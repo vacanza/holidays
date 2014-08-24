@@ -1,0 +1,3 @@
+include *.py
+include *.rst
+include LICENSE
