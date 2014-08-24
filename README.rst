@@ -12,8 +12,8 @@ Example Usage
 
 .. code-block:: python
 
-    >>> from holidays import Holidays
-    >>> us_holidays = Holidays(country='US')
+    >>> import holidays
+    >>> us_holidays = holidays.US()  # or holidays.UnitedStates()
     >>> date(2014,1,1) in us_holidays
     True
     >>> date(2014,1,2) in us_holidays
@@ -46,28 +46,21 @@ If the above fails, please use easy_install instead:
 Available Countries
 -------------------
 
-=============   ==========  ======================================================
-Country         Param Abbr  Prov/State Options
-=============   ==========  ======================================================
-Canada          "CA"        AB, BC, MB, NB, NL, NS, NT, NU, **ON**, PE, QC, SK, YU
-United States   "US"        None
-=============   ==========  ======================================================
+=============   ====  ======================================================
+Country         Abbr  Prov/State Options
+=============   ====  ======================================================
+Canada          "CA"  AB, BC, MB, NB, NL, NS, NT, NU, **ON**, PE, QC, SK, YU
+United States   "US"  None
+=============   ====  ======================================================
 
 
 API
 ---
 
-class holidays.Holiday(country="US", prov=None, years=[], expand=True, observed=True)
+class holidays.Holiday(years=[], expand=True, observed=True, prov=None)
     The main Holiday class used to create holiday list objects.
 
 Parameters:
-
-country
-    A string representing the country to generate the holidays for. (Default: "US")
-
-prov
-    A string specifying a prov/state within *country* that has unique statutory
-    holidays. (Default: CA->ON, US->None)
 
 years
     An iterable list of integers specifying the years that the Holiday object
@@ -82,6 +75,10 @@ observed
     A boolean value which when set to True will include the observed day of a
     holiday that falls on a weekend, when appropriate. (Default: True)
 
+prov
+    A string specifying a province/state that has unique statutory holidays.
+    (Default: Canada='ON', UnitedStates=None)
+
 
 More Examples
 -------------
@@ -90,10 +87,10 @@ More Examples
 
     # Simplest example possible
 
-    >>> from holidays import Holidays
-    >>> date(2014,1,1) in Holidays(country='US')
+    >>> import holidays
+    >>> date(2014,1,1) in holidays.US()
     True
-    >> date(2014,1,2) in Holidays(country='US')
+    >> date(2014,1,2) in holidays.US()
     False
 
     # But this is not efficient because it is initializing a new Holiday object
@@ -101,12 +98,21 @@ More Examples
 
     # It is more efficient to create the object only once
 
-    >>> us_holidays = Holidays(country='US')
+    >>> us_holidays = holidays.US()
     >>> date(2014,1,1) in us_holidays
     True
     >> date(2014,1,2) in us_holidays
     False
 
+    # Each country has two class names that can be called--a full name
+    # and an abbreviation. Use whichever you prefer.
+
+    >>> holidays.UnitedStates() == holidays.US()
+    True
+    >>> holidays.Canada() == holidays.CA()
+    True
+    >>> holidays.US() == holidays.CA()
+    False
 
     # So far we've only checked holidays in 2014 so that's the only year the
     # Holidays object has generated
@@ -130,15 +136,15 @@ More Examples
     # add holidays from new years
 
     >>> us_holidays.expand = False
-    >>> date(2013,1,1) in us_holidays
+    >>> date(2012,1,1) in us_holidays
     False
     >>> us.holidays.expand = True
-    >>> date(2013,1,1) in us_holidays
+    >>> date(2012,1,1) in us_holidays
     True
 
-    # January 1st, 2012 fell on a Sunday so the statutory holiday was observed on
-    # the 2nd. By default the `observed` param is True so the holiday list will
-    # include January 2nd, 2012 as a holiday.
+    # January 1st, 2012 fell on a Sunday so the statutory holiday was observed
+    # on the 2nd. By default the `observed` param is True so the holiday list
+    # will include January 2nd, 2012 as a holiday.
 
     >>> date(2012,1,1) in us_holidays
     True
@@ -159,19 +165,17 @@ More Examples
     >> date(2012,1,2) in us_holidays
     True
 
-    # Sometimes you may not be able to use the official federal statutory
-    # holiday list in your code. Let's pretend you work for a company that
+    # Sometimes we may not be able to use the official federal statutory
+    # holiday list in our code. Let's pretend we work for a company that
     # does not include Columbus Day as a statutory holiday but does include
     # "Ninja Turtle Day" on July 13th. We can create a new class that inherits
-    # the Holidays class and the only method we need to override is _populate()
+    # the UnitedStates class and the only method we need to override is _populate()
 
     >>> from dateutil.relativedelta import relativedelta
-    >>> class CorporateHolidays(Holidays):
+    >>> class CorporateHolidays(holidays.UnitedStates):
     >>>     def _populate(self, year):
     >>>         # Populate the holiday list with the default US holidays
-    >>>         # If you are creating a brand new holiday list you would
-    >>>         # skip this line
-    >>>         Holidays._populate(self, year)
+    >>>         holidays.UnitedStates._populate(self, year)
     >>>         # Remove Columbus Day
     >>>         self.pop(date(year,10,1)+relativedelta(weekday=MO(+2)), None)
     >>>         # Add Ninja Turtle Day
@@ -185,7 +189,33 @@ More Examples
     >>> date(2014,7,13) in CorporateHolidays(country="US")
     True
 
-    # If you write the code necessary to create a holiday list for a country not
+    # We can also inherit from the HolidayBase class which has an empty
+    # _populate method so we start with no holidays and must define them
+    # all ourself. This is how we would create a holidays class for a country
+    # that is not supported yet.
+
+    >>> class NewCountryHolidays(holidays.HolidayBase):
+    >>>     def _populate(self, year):
+    >>>         self[date(year,1,2)] = "Some Federal Holiday"
+    >>>         self[date(year,2,3)] = "Another Federal Holiday"
+    >>> hdays = NewCountryHolidays()
+
+    # We can also include prov/state specific holidays in our new class.
+
+    >>> class NewCountryHolidays(holidays.HolidayBase):
+    >>>     def _populate(self, year):
+    >>>         # Set default prov if not provided
+    >>>         if self.prov == None:
+    >>>             self.prov = 'XX'
+    >>>         self[date(year,1,2)] = "Some Federal Holiday"
+    >>>         if self.prov == 'XX':
+    >>>             self[date(year,2,3)] = "Special XX province-only holiday"
+    >>>         if self.prov == 'YY':
+    >>>             self[date(year,3,4)] = "Special YY province-only holiday"
+    >>> hdays = NewCountryHolidays()
+    >>> hdays = NewCountryHolidays(prov='XX')
+
+    # If you write the code necessary to create a holiday class for a country
     # not currently supported please contribute your code to the project!
 
 

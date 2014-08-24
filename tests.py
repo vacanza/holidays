@@ -13,13 +13,13 @@ from datetime import date, datetime
 from dateutil.relativedelta import relativedelta, MO
 import unittest
 
-from holidays import Holidays
+import holidays
 
 
 class TestBasics(unittest.TestCase):
 
     def setUp(self):
-        self.holidays = Holidays(country="US")
+        self.holidays = holidays.US()
 
     def test_contains(self):
         self.assertTrue(date(2014,1,1) in self.holidays)
@@ -36,115 +36,151 @@ class TestBasics(unittest.TestCase):
         self.assertEquals(self.holidays.get('2014-01-02'), None)
 
     def test_pop(self):
-        holidays = Holidays()
-        self.assertRaises(KeyError, lambda: holidays.pop('2014-01-02'))
-        self.assertFalse(holidays.pop('2014-01-02', False))
-        self.assertTrue(date(2014,1,1) in holidays)
-        self.assertEquals(holidays.pop('2014-01-01'), "New Year's Day")
-        self.assertFalse(date(2014,1,1) in holidays)
-        self.assertTrue(date(2014,7,4) in holidays)
+        self.assertRaises(KeyError, lambda: self.holidays.pop('2014-01-02'))
+        self.assertFalse(self.holidays.pop('2014-01-02', False))
+        self.assertTrue(date(2014,1,1) in self.holidays)
+        self.assertEquals(self.holidays.pop('2014-01-01'), "New Year's Day")
+        self.assertFalse(date(2014,1,1) in self.holidays)
+        self.assertTrue(date(2014,7,4) in self.holidays)
 
     def test_setitem(self):
-        holidays = Holidays(years=[2014])
-        self.assertEquals(len(holidays), 10)
-        holidays[date(2014,1,3)] = "Fake Holiday"
-        self.assertEquals(len(holidays), 11)
-        self.assertTrue(date(2014,1,3) in holidays)
-        self.assertEquals(holidays.get(date(2014,1,3)), "Fake Holiday")
+        self.holidays = holidays.US(years=[2014])
+        self.assertEquals(len(self.holidays), 10)
+        self.holidays[date(2014,1,3)] = "Fake Holiday"
+        self.assertEquals(len(self.holidays), 11)
+        self.assertTrue(date(2014,1,3) in self.holidays)
+        self.assertEquals(self.holidays.get(date(2014,1,3)), "Fake Holiday")
+
+    def test_eq_ne(self):
+        us1 = holidays.UnitedStates()
+        us2 = holidays.US()
+        us3 = holidays.UnitedStates(years=[2014])
+        us4 = holidays.US(years=[2014])
+        ca1 = holidays.Canada()
+        ca2 = holidays.CA()
+        ca3 = holidays.Canada(years=[2014])
+        ca4 = holidays.CA(years=[2014])
+        self.assertEquals(us1, us2)
+        self.assertEquals(us3, us4)
+        self.assertEquals(ca1, ca2)
+        self.assertEquals(ca3, ca4)
+        self.assertNotEquals(us1, us3)
+        self.assertNotEquals(us1, ca1)
+        self.assertNotEquals(us3, ca3)
 
     def test_inheritance(self):
-        class NoColumbusHolidays(Holidays):
+        class NoColumbusHolidays(holidays.US):
             def _populate(self, year):
-                Holidays._populate(self, year)
+                holidays.US._populate(self, year)
                 self.pop(date(year,10, 1)+relativedelta(weekday=MO(+2)), None)
-        holidays = NoColumbusHolidays(country="US")
+        hdays = NoColumbusHolidays()
         self.assertTrue(date(2014,10,13) in self.holidays)
-        self.assertFalse(date(2014,10,13) in holidays)
-        self.assertTrue(date(2014,1,1) in holidays)
+        self.assertFalse(date(2014,10,13) in hdays)
+        self.assertTrue(date(2014,1,1) in hdays)
         self.assertTrue(date(2020,10,12) in self.holidays)
-        self.assertFalse(date(2020,10,12) in holidays)
-        self.assertTrue(date(2020,1,1) in holidays)
+        self.assertFalse(date(2020,10,12) in hdays)
+        self.assertTrue(date(2020,1,1) in hdays)
 
-        class NinjaTurtlesHolidays(Holidays):
+        class NinjaTurtlesHolidays(holidays.US):
             def _populate(self, year):
-                Holidays._populate(self, year)
+                holidays.US._populate(self, year)
                 self[date(year,7,13)] = "Ninja Turtle's Day"
-        holidays = NinjaTurtlesHolidays(country="US")
+        hdays = NinjaTurtlesHolidays()
         self.assertFalse(date(2014,7,13) in self.holidays)
-        self.assertTrue(date(2014,7,13) in holidays)
-        self.assertTrue(date(2014,1,1) in holidays)
+        self.assertTrue(date(2014,7,13) in hdays)
+        self.assertTrue(date(2014,1,1) in hdays)
         self.assertFalse(date(2020,7,13) in self.holidays)
-        self.assertTrue(date(2020,7,13) in holidays)
-        self.assertTrue(date(2020,1,1) in holidays)
+        self.assertTrue(date(2020,7,13) in hdays)
+        self.assertTrue(date(2020,1,1) in hdays)
+
+        class NewCountry(holidays.HolidayBase):
+            def _populate(self, year):
+                self[date(year,1,2)] = "New New Year's"
+        hdays = NewCountry()
+        self.assertFalse(date(2014,1,1) in hdays)
+        self.assertTrue(date(2014,1,2) in hdays)
 
 
 class TestArgs(unittest.TestCase):
 
+    def setUp(self):
+        self.holidays = holidays.US()
+
     def test_country(self):
-        holidays = Holidays()
-        self.assertEquals(holidays.country, "US")
-        holidays = Holidays(country="CA")
-        self.assertEquals(holidays.country, "CA")
-        self.assertEquals(holidays.prov, "ON")
-        holidays = Holidays(country="CA", prov="BC")
-        self.assertEquals(holidays.prov, "BC")
+        self.assertEquals(self.holidays.country, 'US')
+        self.assertTrue(date(2014,7,4) in self.holidays)
+        self.assertFalse(date(2014,7,1) in self.holidays)
+        self.holidays = holidays.UnitedStates()
+        self.assertEquals(self.holidays.country, 'US')
+        self.assertTrue(date(2014,7,4) in self.holidays)
+        self.assertFalse(date(2014,7,1) in self.holidays)
+        self.assertEquals(self.holidays.country, 'US')
+        self.holidays = holidays.CA()
+        self.assertEquals(self.holidays.country, 'CA')
+        self.assertEquals(self.holidays.prov, 'ON')
+        self.assertTrue(date(2014,7,1) in self.holidays)
+        self.assertFalse(date(2014,7,4) in self.holidays)
+        self.holidays = holidays.CA(prov='BC')
+        self.assertEquals(self.holidays.country, 'CA')
+        self.assertEquals(self.holidays.prov, 'BC')
+        self.assertTrue(date(2014,7,1) in self.holidays)
+        self.assertFalse(date(2014,7,4) in self.holidays)
 
     def test_years(self):
-        holidays = Holidays()
-        self.assertEquals(len(holidays.years), 0)
-        self.assertFalse(date(2014,1,2) in holidays)
-        self.assertEquals(len(holidays.years), 1)
-        self.assertTrue(2014 in holidays.years)
-        self.assertFalse(date(2013,1,2) in holidays)
-        self.assertFalse(date(2014,1,2) in holidays)
-        self.assertFalse(date(2015,1,2) in holidays)
-        self.assertEquals(len(holidays.years), 3)
-        self.assertTrue(2013 in holidays.years)
-        self.assertTrue(2015 in holidays.years)
-        holidays = Holidays(years=range(2010,2015+1))
-        self.assertEquals(len(holidays.years), 6)
-        self.assertFalse(2009 in holidays.years)
-        self.assertTrue(2010 in holidays.years)
-        self.assertTrue(2015 in holidays.years)
-        self.assertFalse(2016 in holidays.years)
-        holidays = Holidays(years=(2013,2015,2015))
-        self.assertEquals(len(holidays.years), 2)
-        self.assertTrue(2013 in holidays.years)
-        self.assertFalse(2014 in holidays.years)
-        self.assertTrue(2015 in holidays.years)
+        self.assertEquals(len(self.holidays.years), 0)
+        self.assertFalse(date(2014,1,2) in self.holidays)
+        self.assertEquals(len(self.holidays.years), 1)
+        self.assertTrue(2014 in self.holidays.years)
+        self.assertFalse(date(2013,1,2) in self.holidays)
+        self.assertFalse(date(2014,1,2) in self.holidays)
+        self.assertFalse(date(2015,1,2) in self.holidays)
+        self.assertEquals(len(self.holidays.years), 3)
+        self.assertTrue(2013 in self.holidays.years)
+        self.assertTrue(2015 in self.holidays.years)
+        self.holidays = holidays.US(years=range(2010,2015+1))
+        self.assertEquals(len(self.holidays.years), 6)
+        self.assertFalse(2009 in self.holidays.years)
+        self.assertTrue(2010 in self.holidays.years)
+        self.assertTrue(2015 in self.holidays.years)
+        self.assertFalse(2016 in self.holidays.years)
+        self.holidays = holidays.US(years=(2013,2015,2015))
+        self.assertEquals(len(self.holidays.years), 2)
+        self.assertTrue(2013 in self.holidays.years)
+        self.assertFalse(2014 in self.holidays.years)
+        self.assertTrue(2015 in self.holidays.years)
 
     def test_expand(self):
-        holidays = Holidays(years=(2013,2015), expand=False)
-        self.assertEquals(len(holidays.years), 2)
-        self.assertTrue(2013 in holidays.years)
-        self.assertFalse(2014 in holidays.years)
-        self.assertTrue(2015 in holidays.years)
-        self.assertFalse(date(2014,1,1) in holidays)
-        self.assertEquals(len(holidays.years), 2)
-        self.assertFalse(2014 in holidays.years)
+        self.holidays = holidays.US(years=(2013,2015), expand=False)
+        self.assertEquals(len(self.holidays.years), 2)
+        self.assertTrue(2013 in self.holidays.years)
+        self.assertFalse(2014 in self.holidays.years)
+        self.assertTrue(2015 in self.holidays.years)
+        self.assertFalse(date(2014,1,1) in self.holidays)
+        self.assertEquals(len(self.holidays.years), 2)
+        self.assertFalse(2014 in self.holidays.years)
 
     def test_observed(self):
-        holidays = Holidays(observed=False)
-        self.assertTrue(date(2000,1,1) in holidays)
-        self.assertFalse(date(1999,12,31) in holidays)
-        self.assertTrue(date(2012,1,1) in holidays)
-        self.assertFalse(date(2012,1,2) in holidays)
-        holidays.observed = True
-        self.assertTrue(date(2000,1,1) in holidays)
-        self.assertTrue(date(1999,12,31) in holidays)
-        self.assertTrue(date(2012,1,1) in holidays)
-        self.assertTrue(date(2012,1,2) in holidays)
-        holidays.observed = False
-        self.assertTrue(date(2000,1,1) in holidays)
-        self.assertFalse(date(1999,12,31) in holidays)
-        self.assertTrue(date(2012,1,1) in holidays)
-        self.assertFalse(date(2012,1,2) in holidays)
+        self.holidays = holidays.US(observed=False)
+        self.assertTrue(date(2000,1,1) in self.holidays)
+        self.assertFalse(date(1999,12,31) in self.holidays)
+        self.assertTrue(date(2012,1,1) in self.holidays)
+        self.assertFalse(date(2012,1,2) in self.holidays)
+        self.holidays.observed = True
+        self.assertTrue(date(2000,1,1) in self.holidays)
+        self.assertTrue(date(1999,12,31) in self.holidays)
+        self.assertTrue(date(2012,1,1) in self.holidays)
+        self.assertTrue(date(2012,1,2) in self.holidays)
+        self.holidays.observed = False
+        self.assertTrue(date(2000,1,1) in self.holidays)
+        self.assertFalse(date(1999,12,31) in self.holidays)
+        self.assertTrue(date(2012,1,1) in self.holidays)
+        self.assertFalse(date(2012,1,2) in self.holidays)
 
 
 class TestKeyTransforms(unittest.TestCase):
 
     def setUp(self):
-        self.holidays = Holidays(country="US")
+        self.holidays = holidays.US()
 
     def test_dates(self):
         self.assertTrue(date(2014,1,1) in self.holidays)
@@ -200,7 +236,7 @@ class TestKeyTransforms(unittest.TestCase):
 class TestUS(unittest.TestCase):
 
     def setUp(self):
-        self.holidays = Holidays(country="US", observed=False)
+        self.holidays = holidays.US(observed=False)
 
     def test_new_years(self):
         for year in range(1900, 2100):
@@ -223,9 +259,9 @@ class TestUS(unittest.TestCase):
             self.assertFalse(dt+relativedelta(days=-1) in self.holidays)
             self.assertFalse(dt+relativedelta(days=+1) in self.holidays)
         self.assertFalse("Martin Luther King, Jr. Day" \
-                         in Holidays(country="US", years=[1985]).values())
+                         in holidays.US(years=[1985]).values())
         self.assertTrue("Martin Luther King, Jr. Day" \
-                         in Holidays(country="US", years=[1986]).values())
+                         in holidays.US(years=[1986]).values())
 
     def test_washingtons_birthday(self):
         for dt in [date(1969,2,22), date(1970,2,22), date(1971,2,15),
@@ -274,16 +310,11 @@ class TestUS(unittest.TestCase):
             self.assertTrue(dt in self.holidays)
             self.assertFalse(dt+relativedelta(days=-1) in self.holidays)
             self.assertFalse(dt+relativedelta(days=+1) in self.holidays)
-        self.assertFalse("Armistice Day" \
-                         in Holidays(country="US", years=[1937]).values())
-        self.assertFalse("Armistice Day" \
-                         in Holidays(country="US", years=[1937]).values())
-        self.assertTrue("Armistice Day" \
-                         in Holidays(country="US", years=[1938]).values())
-        self.assertTrue("Armistice Day" \
-                         in Holidays(country="US", years=[1953]).values())
-        self.assertTrue("Veterans Day" \
-                         in Holidays(country="US", years=[1954]).values())
+        self.assertFalse("Armistice Day" in holidays.US(years=[1937]).values())
+        self.assertFalse("Armistice Day" in holidays.US(years=[1937]).values())
+        self.assertTrue("Armistice Day" in holidays.US(years=[1938]).values())
+        self.assertTrue("Armistice Day" in holidays.US(years=[1953]).values())
+        self.assertTrue("Veterans Day" in holidays.US(years=[1954]).values())
         self.assertFalse(date(2012,11,12) in self.holidays)
         self.assertFalse(date(2017,11,10) in self.holidays)
         self.holidays.observed = True
@@ -325,7 +356,7 @@ class TestUS(unittest.TestCase):
 class TestCA(unittest.TestCase):
 
     def setUp(self):
-        self.holidays = Holidays(country="CA", observed=False)
+        self.holidays = holidays.CA(observed=False)
 
     def test_new_years(self):
         for year in range(1900, 2100):
@@ -341,7 +372,7 @@ class TestCA(unittest.TestCase):
         self.holidays.observed = False
 
     def test_islander_day(self):
-        pei_holidays = Holidays(country="CA", prov="PE")
+        pei_holidays = holidays.CA(prov="PE")
         for dt in [date(2009,2,9), date(2010,2,15), date(2011,2,21),
                    date(2012,2,20), date(2013,2,18), date(2014,2,17),
                    date(2015,2,16), date(2016,2,15), date(2020,2,17)]:
@@ -354,10 +385,10 @@ class TestCA(unittest.TestCase):
             self.assertFalse(dt+relativedelta(days=+1) in pei_holidays)
 
     def test_family_day(self):
-        ab_holidays = Holidays(country="CA", prov="AB")
-        bc_holidays = Holidays(country="CA", prov="BC")
-        mb_holidays = Holidays(country="CA", prov="MB")
-        sk_holidays = Holidays(country="CA", prov="SK")
+        ab_holidays = holidays.CA(prov="AB")
+        bc_holidays = holidays.CA(prov="BC")
+        mb_holidays = holidays.CA(prov="MB")
+        sk_holidays = holidays.CA(prov="SK")
         for dt in [date(1990,2,19), date(1999,2,15), date(2000,2,21),
                    date(2006,2,20)]:
             self.assertFalse(dt in self.holidays)
@@ -388,7 +419,7 @@ class TestCA(unittest.TestCase):
 
 
     def test_st_patricks_day(self):
-        nl_holidays = Holidays(country="CA", prov="NL", observed=False)
+        nl_holidays = holidays.CA(prov="NL", observed=False)
         for dt in [date(1900,3,19), date(1999,3,15), date(2000,3,20),
                    date(2012,3,19), date(2013,3,18), date(2014,3,17),
                    date(2015,3,16), date(2016,3,14), date(2020,3,16)]:
@@ -398,7 +429,7 @@ class TestCA(unittest.TestCase):
             self.assertFalse(dt+relativedelta(days=+1) in nl_holidays)
 
     def test_good_friday(self):
-        qc_holidays = Holidays(country="CA", prov="QC")
+        qc_holidays = holidays.CA(prov="QC")
         for dt in [date(1900,4,13), date(1901,4, 5), date(1902,3,28),
                    date(1999,4, 2), date(2000,4,21), date(2010,4, 2),
                    date(2018,3,30), date(2019,4,19), date(2020,4,10)]:
@@ -408,7 +439,7 @@ class TestCA(unittest.TestCase):
             self.assertFalse(dt in qc_holidays)
 
     def test_easter_monday(self):
-        qc_holidays = Holidays(country="CA", prov="QC")
+        qc_holidays = holidays.CA(prov="QC")
         for dt in [date(1900,4,16), date(1901,4, 8), date(1902,3,31),
                    date(1999,4, 5), date(2000,4,24), date(2010,4, 5),
                    date(2018,4, 2), date(2019,4,22), date(2020,4,13)]:
@@ -418,7 +449,7 @@ class TestCA(unittest.TestCase):
             self.assertFalse(dt+relativedelta(days=+1) in qc_holidays)
 
     def test_st_georges_day(self):
-        nl_holidays = Holidays(country="CA", prov="NL")
+        nl_holidays = holidays.CA(prov="NL")
         for dt in [date(1990,4,23), date(1999,4,26), date(2000,4,24),
                    date(2010,4,19), date(2016,4,25), date(2020,4,20)]:
             self.assertFalse(dt in self.holidays)
@@ -434,7 +465,7 @@ class TestCA(unittest.TestCase):
             self.assertFalse(dt+relativedelta(days=+1) in self.holidays)
 
     def test_national_aboriginal_day(self):
-        nt_holidays = Holidays(country="CA", prov="NT")
+        nt_holidays = holidays.CA(prov="NT")
         self.assertFalse(date(1995,6,21) in nt_holidays)
         for year in range(1996, 2100):
             dt = date(year,6,21)
@@ -444,7 +475,7 @@ class TestCA(unittest.TestCase):
             self.assertFalse(dt+relativedelta(days=+1) in nt_holidays)
 
     def test_st_jean_baptiste_day(self):
-        qc_holidays = Holidays(country="CA", prov="QC", observed=False)
+        qc_holidays = holidays.CA(prov="QC", observed=False)
         self.assertFalse(date(1924,6,24) in qc_holidays)
         for year in range(1925, 2100):
             dt = date(year,6,24)
@@ -457,8 +488,8 @@ class TestCA(unittest.TestCase):
         self.assertTrue(date(2001,6,25) in qc_holidays)
 
     def test_discovery_day(self):
-        nl_holidays = Holidays(country="CA", prov="NL")
-        yu_holidays = Holidays(country="CA", prov="YU")
+        nl_holidays = holidays.CA(prov="NL")
+        yu_holidays = holidays.CA(prov="YU")
         for dt in [date(1997,6,23), date(1999,6,21), date(2000,6,26),
                    date(2010,6,21), date(2016,6,27), date(2020,6,22)]:
             self.assertFalse(dt in self.holidays)
@@ -484,7 +515,7 @@ class TestCA(unittest.TestCase):
         self.holidays.observed = False
 
     def test_nunavut_day(self):
-        nu_holidays = Holidays(country="CA", prov="NU", observed=False)
+        nu_holidays = holidays.CA(prov="NU", observed=False)
         self.assertFalse(date(1999,7,9) in nu_holidays)
         self.assertFalse(date(2000,7,9) in nu_holidays)
         self.assertTrue(date(2000,4,1) in nu_holidays)
@@ -499,7 +530,7 @@ class TestCA(unittest.TestCase):
         self.assertTrue(date(2017,7,10) in nu_holidays)
 
     def test_civic_holiday(self):
-        bc_holidays = Holidays(country="CA", prov="BC")
+        bc_holidays = holidays.CA(prov="BC")
         for dt in [date(1900,8,6), date(1955,8,1), date(1973,8,6)]:
             self.assertTrue(dt in self.holidays)
             self.assertFalse(dt in bc_holidays)
@@ -517,7 +548,7 @@ class TestCA(unittest.TestCase):
             self.assertFalse(dt+relativedelta(days=+1) in self.holidays)
 
     def test_thanksgiving(self):
-        ns_holidays = Holidays(country="CA", prov="NB")
+        ns_holidays = holidays.CA(prov="NB")
         for dt in [date(1931,10,12), date(1990,10, 8), date(1999,10,11),
                    date(2000,10, 9), date(2013,10,14), date(2020,10,12)]:
             self.assertTrue(dt in self.holidays)
@@ -526,8 +557,8 @@ class TestCA(unittest.TestCase):
             self.assertFalse(dt in ns_holidays)
 
     def test_remembrance_day(self):
-        ab_holidays = Holidays(country="CA", prov="AB", observed=False)
-        nl_holidays = Holidays(country="CA", prov="NL", observed=False)
+        ab_holidays = holidays.CA(prov="AB", observed=False)
+        nl_holidays = holidays.CA(prov="NL", observed=False)
         self.assertFalse(date(1930,11,11) in ab_holidays)
         self.assertFalse(date(1930,11,11) in nl_holidays)
         for year in range(1931, 2100):
