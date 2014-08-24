@@ -26,30 +26,30 @@ class TestBasics(unittest.TestCase):
         self.assertFalse(date(2014,1,2) in self.holidays)
 
     def test_getitem(self):
-        self.assertEquals(self.holidays[date(2014,1,1)], "New Year's Day")
-        self.assertEquals(self.holidays.get(date(2014,1,1)), "New Year's Day")
+        self.assertEqual(self.holidays[date(2014,1,1)], "New Year's Day")
+        self.assertEqual(self.holidays.get(date(2014,1,1)), "New Year's Day")
         self.assertRaises(KeyError, lambda: self.holidays[date(2014,1,2)])
-        self.assertEquals(self.holidays.get(date(2014,1,2)), None)
+        self.assertEqual(self.holidays.get(date(2014,1,2)), None)
 
     def test_get(self):
-        self.assertEquals(self.holidays.get('2014-01-01'), "New Year's Day")
-        self.assertEquals(self.holidays.get('2014-01-02'), None)
+        self.assertEqual(self.holidays.get('2014-01-01'), "New Year's Day")
+        self.assertEqual(self.holidays.get('2014-01-02'), None)
 
     def test_pop(self):
         self.assertRaises(KeyError, lambda: self.holidays.pop('2014-01-02'))
         self.assertFalse(self.holidays.pop('2014-01-02', False))
         self.assertTrue(date(2014,1,1) in self.holidays)
-        self.assertEquals(self.holidays.pop('2014-01-01'), "New Year's Day")
+        self.assertEqual(self.holidays.pop('2014-01-01'), "New Year's Day")
         self.assertFalse(date(2014,1,1) in self.holidays)
         self.assertTrue(date(2014,7,4) in self.holidays)
 
     def test_setitem(self):
         self.holidays = holidays.US(years=[2014])
-        self.assertEquals(len(self.holidays), 10)
+        self.assertEqual(len(self.holidays), 10)
         self.holidays[date(2014,1,3)] = "Fake Holiday"
-        self.assertEquals(len(self.holidays), 11)
+        self.assertEqual(len(self.holidays), 11)
         self.assertTrue(date(2014,1,3) in self.holidays)
-        self.assertEquals(self.holidays.get(date(2014,1,3)), "Fake Holiday")
+        self.assertEqual(self.holidays.get(date(2014,1,3)), "Fake Holiday")
 
     def test_eq_ne(self):
         us1 = holidays.UnitedStates()
@@ -60,13 +60,13 @@ class TestBasics(unittest.TestCase):
         ca2 = holidays.CA()
         ca3 = holidays.Canada(years=[2014])
         ca4 = holidays.CA(years=[2014])
-        self.assertEquals(us1, us2)
-        self.assertEquals(us3, us4)
-        self.assertEquals(ca1, ca2)
-        self.assertEquals(ca3, ca4)
-        self.assertNotEquals(us1, us3)
-        self.assertNotEquals(us1, ca1)
-        self.assertNotEquals(us3, ca3)
+        self.assertEqual(us1, us2)
+        self.assertEqual(us3, us4)
+        self.assertEqual(ca1, ca2)
+        self.assertEqual(ca3, ca4)
+        self.assertNotEqual(us1, us3)
+        self.assertNotEqual(us1, ca1)
+        self.assertNotEqual(us3, ca3)
 
     def test_inheritance(self):
         class NoColumbusHolidays(holidays.US):
@@ -107,56 +107,56 @@ class TestArgs(unittest.TestCase):
         self.holidays = holidays.US()
 
     def test_country(self):
-        self.assertEquals(self.holidays.country, 'US')
+        self.assertEqual(self.holidays.country, 'US')
         self.assertTrue(date(2014,7,4) in self.holidays)
         self.assertFalse(date(2014,7,1) in self.holidays)
         self.holidays = holidays.UnitedStates()
-        self.assertEquals(self.holidays.country, 'US')
+        self.assertEqual(self.holidays.country, 'US')
         self.assertTrue(date(2014,7,4) in self.holidays)
         self.assertFalse(date(2014,7,1) in self.holidays)
-        self.assertEquals(self.holidays.country, 'US')
+        self.assertEqual(self.holidays.country, 'US')
         self.holidays = holidays.CA()
-        self.assertEquals(self.holidays.country, 'CA')
-        self.assertEquals(self.holidays.prov, 'ON')
+        self.assertEqual(self.holidays.country, 'CA')
+        self.assertEqual(self.holidays.prov, 'ON')
         self.assertTrue(date(2014,7,1) in self.holidays)
         self.assertFalse(date(2014,7,4) in self.holidays)
         self.holidays = holidays.CA(prov='BC')
-        self.assertEquals(self.holidays.country, 'CA')
-        self.assertEquals(self.holidays.prov, 'BC')
+        self.assertEqual(self.holidays.country, 'CA')
+        self.assertEqual(self.holidays.prov, 'BC')
         self.assertTrue(date(2014,7,1) in self.holidays)
         self.assertFalse(date(2014,7,4) in self.holidays)
 
     def test_years(self):
-        self.assertEquals(len(self.holidays.years), 0)
+        self.assertEqual(len(self.holidays.years), 0)
         self.assertFalse(date(2014,1,2) in self.holidays)
-        self.assertEquals(len(self.holidays.years), 1)
+        self.assertEqual(len(self.holidays.years), 1)
         self.assertTrue(2014 in self.holidays.years)
         self.assertFalse(date(2013,1,2) in self.holidays)
         self.assertFalse(date(2014,1,2) in self.holidays)
         self.assertFalse(date(2015,1,2) in self.holidays)
-        self.assertEquals(len(self.holidays.years), 3)
+        self.assertEqual(len(self.holidays.years), 3)
         self.assertTrue(2013 in self.holidays.years)
         self.assertTrue(2015 in self.holidays.years)
         self.holidays = holidays.US(years=range(2010,2015+1))
-        self.assertEquals(len(self.holidays.years), 6)
+        self.assertEqual(len(self.holidays.years), 6)
         self.assertFalse(2009 in self.holidays.years)
         self.assertTrue(2010 in self.holidays.years)
         self.assertTrue(2015 in self.holidays.years)
         self.assertFalse(2016 in self.holidays.years)
         self.holidays = holidays.US(years=(2013,2015,2015))
-        self.assertEquals(len(self.holidays.years), 2)
+        self.assertEqual(len(self.holidays.years), 2)
         self.assertTrue(2013 in self.holidays.years)
         self.assertFalse(2014 in self.holidays.years)
         self.assertTrue(2015 in self.holidays.years)
 
     def test_expand(self):
         self.holidays = holidays.US(years=(2013,2015), expand=False)
-        self.assertEquals(len(self.holidays.years), 2)
+        self.assertEqual(len(self.holidays.years), 2)
         self.assertTrue(2013 in self.holidays.years)
         self.assertFalse(2014 in self.holidays.years)
         self.assertTrue(2015 in self.holidays.years)
         self.assertFalse(date(2014,1,1) in self.holidays)
-        self.assertEquals(len(self.holidays.years), 2)
+        self.assertEqual(len(self.holidays.years), 2)
         self.assertFalse(2014 in self.holidays.years)
 
     def test_observed(self):
@@ -184,7 +184,7 @@ class TestKeyTransforms(unittest.TestCase):
 
     def test_dates(self):
         self.assertTrue(date(2014,1,1) in self.holidays)
-        self.assertEquals(self.holidays[date(2014,1,1)], "New Year's Day")
+        self.assertEqual(self.holidays[date(2014,1,1)], "New Year's Day")
         self.holidays[date(2014,1,3)] = "Fake Holiday"
         self.assertTrue(date(2014,1,3) in self.holidays)
         self.assertTrue(self.holidays.pop(date(2014,1,3)), "Fake Holiday")
@@ -192,7 +192,7 @@ class TestKeyTransforms(unittest.TestCase):
 
     def test_datetimes(self):
         self.assertTrue(datetime(2014,1,1,13,45) in self.holidays)
-        self.assertEquals(self.holidays[datetime(2014,1,1,13,45)], "New Year's Day")
+        self.assertEqual(self.holidays[datetime(2014,1,1,13,45)], "New Year's Day")
         self.holidays[datetime(2014,1,3,1,1)] = "Fake Holiday"
         self.assertTrue(datetime(2014,1,3,2,2) in self.holidays)
         self.assertTrue(self.holidays.pop(datetime(2014,1,3,4,4)), "Fake Holiday")
@@ -200,9 +200,9 @@ class TestKeyTransforms(unittest.TestCase):
 
     def test_timestamp(self):
         self.assertTrue(1388552400 in self.holidays)
-        self.assertEquals(self.holidays[1388552400], "New Year's Day")
+        self.assertEqual(self.holidays[1388552400], "New Year's Day")
         self.assertTrue(1388552400.01 in self.holidays)
-        self.assertEquals(self.holidays[1388552400.01], "New Year's Day")
+        self.assertEqual(self.holidays[1388552400.01], "New Year's Day")
         self.holidays[1388725200] = "Fake Holiday"
         self.assertTrue(1388725201 in self.holidays)
         self.assertTrue(self.holidays.pop(1388725202), "Fake Holiday")
@@ -210,9 +210,9 @@ class TestKeyTransforms(unittest.TestCase):
 
     def test_strings(self):
         self.assertTrue("2014-01-01" in self.holidays)
-        self.assertEquals(self.holidays["2014-01-01"], "New Year's Day")
+        self.assertEqual(self.holidays["2014-01-01"], "New Year's Day")
         self.assertTrue("01/01/2014" in self.holidays)
-        self.assertEquals(self.holidays["01/01/2014"], "New Year's Day")
+        self.assertEqual(self.holidays["01/01/2014"], "New Year's Day")
         self.holidays["01/03/2014"] = "Fake Holiday"
         self.assertTrue("01/03/2014" in self.holidays)
         self.assertTrue(self.holidays.pop("01/03/2014"), "Fake Holiday")
@@ -220,7 +220,7 @@ class TestKeyTransforms(unittest.TestCase):
 
     def test_unicode(self):
         self.assertTrue(u"01/01/2014" in self.holidays)
-        self.assertEquals(self.holidays[u"01/01/2014"], "New Year's Day")
+        self.assertEqual(self.holidays[u"01/01/2014"], "New Year's Day")
         self.holidays[u"01/03/2014"] = "Fake Holiday"
         self.assertTrue(u"01/03/2014" in self.holidays)
         self.assertTrue(self.holidays.pop(u"01/03/2014"), "Fake Holiday")

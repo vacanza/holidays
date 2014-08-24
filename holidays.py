@@ -41,20 +41,27 @@ class HolidayBase(dict):
                     self._populate(year)
             else:
                 # Remove (Observed) dates
-                for k,v in self.items():
+                for k,v in list(self.items()):
                     if v.find("Observed") >= 0:
                         del self[k]
         else:
             return dict.__setattr__(self, key, value)
 
     def __keytransform__(self, key):
+        try:
+            # Python 2
+            string = isinstance(key, str) or isinstance(key, unicode)
+        except NameError:
+            # Python 3
+            string = isinstance(key, bytes) or isinstance(key, str)
+
         if isinstance(key, datetime):
             key = key.date()
         elif isinstance(key, date):
             key = key
         elif isinstance(key, int) or isinstance(key, float):
             key = datetime.fromtimestamp(key).date()
-        elif isinstance(key, str) or isinstance(key, unicode):
+        elif string:
             try:
                 key = parse(key).date()
             except TypeError:
