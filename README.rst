@@ -6,6 +6,12 @@ Holidays is a fast, efficient Python library for generating country-specific
 sets of holidays on the fly. It aims to make determining whether a specific
 date is a holiday as fast and flexible as possible.
 
+.. image:: http://img.shields.io/travis/ryanss/holidays.py.svg
+    :target: https://travis-ci.org/ryanss/holidays.py
+
+.. image:: http://img.shields.io/badge/coverage-100%25-brightgreen.svg
+    :target: https://github.com/ryanss/holidays.py#Coverage
+
 
 Example Usage
 -------------
@@ -235,6 +241,22 @@ Running Tests
 .. code-block:: bash
 
     $ python tests.py
+
+
+Coverage
+--------
+
+.. code-block:: bash
+
+    $ pip install coverage
+    $ coverage run --omit=*site-packages* tests.py
+    $ coverage report
+    Name       Stmts   Miss  Cover
+    ------------------------------
+    holidays     229      0   100%
+    tests        483      0   100%
+    ------------------------------
+    TOTAL        712      0   100%
 
 
 Contributions

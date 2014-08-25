@@ -99,9 +99,6 @@ class HolidayBase(dict):
     def __ne__(self, other):
         return (dict.__ne__(self, other) or self.__dict__ != other.__dict__)
 
-    def _populate(self, year):
-        pass
-
 
 class UnitedStates(HolidayBase):
 
