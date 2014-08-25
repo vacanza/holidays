@@ -218,14 +218,6 @@ class TestKeyTransforms(unittest.TestCase):
         self.assertTrue(self.holidays.pop("01/03/2014"), "Fake Holiday")
         self.assertFalse("01/03/2014" in self.holidays)
 
-    def test_unicode(self):
-        self.assertTrue(u"01/01/2014" in self.holidays)
-        self.assertEqual(self.holidays[u"01/01/2014"], "New Year's Day")
-        self.holidays[u"01/03/2014"] = "Fake Holiday"
-        self.assertTrue(u"01/03/2014" in self.holidays)
-        self.assertTrue(self.holidays.pop(u"01/03/2014"), "Fake Holiday")
-        self.assertFalse(u"01/03/2014" in self.holidays)
-
     def test_exceptions(self):
         self.assertRaises(ValueError, lambda: "abc" in self.holidays)
         self.assertRaises(ValueError, lambda: self.holidays.get("abc123"))

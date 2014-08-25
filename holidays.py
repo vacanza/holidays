@@ -50,10 +50,10 @@ class HolidayBase(dict):
     def __keytransform__(self, key):
         try:
             # Python 2
-            string = isinstance(key, str) or isinstance(key, unicode)
+            is_string = isinstance(key, str) or isinstance(key, unicode)
         except NameError:
             # Python 3
-            string = isinstance(key, bytes) or isinstance(key, str)
+            is_string = isinstance(key, bytes) or isinstance(key, str)
 
         if isinstance(key, datetime):
             key = key.date()
@@ -61,7 +61,7 @@ class HolidayBase(dict):
             key = key
         elif isinstance(key, int) or isinstance(key, float):
             key = datetime.fromtimestamp(key).date()
-        elif string:
+        elif is_string:
             try:
                 key = parse(key).date()
             except TypeError:
