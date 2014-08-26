@@ -1,5 +1,7 @@
 # https://travis-ci.org/ryanss/holidays.py
+
 language: python
+
 python:
     - "2.6"
     - "2.7"
@@ -7,5 +9,13 @@ python:
     - "3.3"
     - "3.4"
     - "pypy"
-install: "pip install python-dateutil"
-script: python tests.py
+
+install:
+    - "pip install python-dateutil"
+    - "pip install flake8"
+
+before_script:
+    - "flake8 holidays.py tests.py"
+
+script:
+    - "python tests.py"
