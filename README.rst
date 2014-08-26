@@ -20,17 +20,17 @@ Example Usage
 
     >>> import holidays
     >>> us_holidays = holidays.US()  # or holidays.UnitedStates()
-    >>> date(2014,1,1) in us_holidays
+    >>> date(2014, 1, 1) in us_holidays
     True
-    >>> date(2014,1,2) in us_holidays
+    >>> date(2014, 1, 2) in us_holidays
     False
-    >>> us_holidays[date(2014,1,1)]
+    >>> us_holidays[date(2014, 1, 1)]
     "New Year's Day"
     >>> '2014-01-01' in us_holidays
     True
     >>> '1/1/2014' in us_holidays
     True
-    >>>1388597445 in us_holidays  # Unix timestamp
+    >>> 1388597445 in us_holidays  # Unix timestamp
     True
 
 
@@ -94,9 +94,9 @@ More Examples
     # Simplest example possible
 
     >>> import holidays
-    >>> date(2014,1,1) in holidays.US()
+    >>> date(2014, 1, 1) in holidays.US()
     True
-    >> date(2014,1,2) in holidays.US()
+    >> date(2014, 1, 2) in holidays.US()
     False
 
     # But this is not efficient because it is initializing a new Holiday object
@@ -105,9 +105,9 @@ More Examples
     # It is more efficient to create the object only once
 
     >>> us_holidays = holidays.US()
-    >>> date(2014,1,1) in us_holidays
+    >>> date(2014, 1, 1) in us_holidays
     True
-    >> date(2014,1,2) in us_holidays
+    >> date(2014, 1, 2) in us_holidays
     False
 
     # Each country has two class names that can be called--a full name
@@ -131,10 +131,10 @@ More Examples
     # Because by default the `expand` param is True the Holiday object will add
     # holidays from other years as they are required.
 
-    >>> date(2013,1,1) in us_holidays
+    >>> date(2013, 1, 1) in us_holidays
     True
     >>> us_holidays.years
-    set([2013,2014])
+    set([2013, 2014])
     >>> len(us_holidays)
     20
 
@@ -142,33 +142,33 @@ More Examples
     # add holidays from new years
 
     >>> us_holidays.expand = False
-    >>> date(2012,1,1) in us_holidays
+    >>> date(2012, 1, 1) in us_holidays
     False
     >>> us.holidays.expand = True
-    >>> date(2012,1,1) in us_holidays
+    >>> date(2012, 1, 1) in us_holidays
     True
 
     # January 1st, 2012 fell on a Sunday so the statutory holiday was observed
     # on the 2nd. By default the `observed` param is True so the holiday list
     # will include January 2nd, 2012 as a holiday.
 
-    >>> date(2012,1,1) in us_holidays
+    >>> date(2012, 1, 1) in us_holidays
     True
-    >>> us_holidays[date(2012,1,1)]
+    >>> us_holidays[date(2012, 1, 1)]
     "New Year's Eve"
-    >>> date(2012,1,2) in us_holidays
+    >>> date(2012, 1, 2) in us_holidays
     True
-    >>> us_holidays.get(date(2012,1,2))
+    >>> us_holidays.get(date(2012 ,1, 2))
     "New Year's Eve (Observed)"
 
     # The `observed` and `expand` values can both be changed on the fly and the
     # holiday list will be adjusted accordingly
 
     >>> us_holidays.observed = False
-    >>> date(2012,1,2) in us_holidays
+    >>> date(2012, 1, 2) in us_holidays
     False
     us_holidays.observed = True
-    >> date(2012,1,2) in us_holidays
+    >> date(2012, 1, 2) in us_holidays
     True
 
     # Sometimes we may not be able to use the official federal statutory
@@ -183,16 +183,16 @@ More Examples
     >>>         # Populate the holiday list with the default US holidays
     >>>         holidays.UnitedStates._populate(self, year)
     >>>         # Remove Columbus Day
-    >>>         self.pop(date(year,10,1)+relativedelta(weekday=MO(+2)), None)
+    >>>         self.pop(date(year, 10, 1) + relativedelta(weekday=MO(+2)), None)
     >>>         # Add Ninja Turtle Day
-    >>>         self[date(year,7,13)] = "Ninja Turtle Day"
-    >>> date(2014,10,14) in Holidays(country="US")
+    >>>         self[date(year, 7, 13)] = "Ninja Turtle Day"
+    >>> date(2014, 10, 14) in Holidays(country="US")
     True
-    >>> date(2014,10,14) in CorporateHolidays(country="US")
+    >>> date(2014, 10, 14) in CorporateHolidays(country="US")
     False
-    >>> date(2014,7,13) in Holidays(country="US")
+    >>> date(2014, 7, 13) in Holidays(country="US")
     False
-    >>> date(2014,7,13) in CorporateHolidays(country="US")
+    >>> date(2014 ,7, 13) in CorporateHolidays(country="US")
     True
 
     # We can also inherit from the HolidayBase class which has an empty
@@ -202,8 +202,8 @@ More Examples
 
     >>> class NewCountryHolidays(holidays.HolidayBase):
     >>>     def _populate(self, year):
-    >>>         self[date(year,1,2)] = "Some Federal Holiday"
-    >>>         self[date(year,2,3)] = "Another Federal Holiday"
+    >>>         self[date(year, 1, 2)] = "Some Federal Holiday"
+    >>>         self[date(year, 2, 3)] = "Another Federal Holiday"
     >>> hdays = NewCountryHolidays()
 
     # We can also include prov/state specific holidays in our new class.
@@ -213,11 +213,11 @@ More Examples
     >>>         # Set default prov if not provided
     >>>         if self.prov == None:
     >>>             self.prov = 'XX'
-    >>>         self[date(year,1,2)] = "Some Federal Holiday"
+    >>>         self[date(year, 1, 2)] = "Some Federal Holiday"
     >>>         if self.prov == 'XX':
-    >>>             self[date(year,2,3)] = "Special XX province-only holiday"
+    >>>             self[date(year, 2, 3)] = "Special XX province-only holiday"
     >>>         if self.prov == 'YY':
-    >>>             self[date(year,3,4)] = "Special YY province-only holiday"
+    >>>             self[date(year, 3, 4)] = "Special YY province-only holiday"
     >>> hdays = NewCountryHolidays()
     >>> hdays = NewCountryHolidays(prov='XX')
 
@@ -251,12 +251,6 @@ Coverage
     $ pip install coverage
     $ coverage run --omit=*site-packages* tests.py
     $ coverage report
-    Name       Stmts   Miss  Cover
-    ------------------------------
-    holidays     229      0   100%
-    tests        483      0   100%
-    ------------------------------
-    TOTAL        712      0   100%
 
 
 Contributions
