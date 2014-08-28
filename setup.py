@@ -1,8 +1,8 @@
 #  holidays.py
 #  -----------
-#  A fast, efficient Python library for generating country-specific lists of
-#  holidays on the fly which aims to make determining whether a specific date
-#  is a hoiday as fast and flexible as possible.
+#  A fast, efficient Python library for generating country-specific sets of
+#  holidays on the fly. It aims to make determining whether a specific date is
+#  a holiday as fast and flexible as possible.
 #
 #  Author:  ryanss <ryanssdev@icloud.com>
 #  Website: https://github.com/ryanss/holidays.py
@@ -25,12 +25,12 @@ setup(
     url='https://github.com/ryanss/holidays.py',
     license='MIT',
     py_modules=['holidays'],
-    description='Generates country-specific lists of statutory holidays',
+    description='Generates country-specific sets of holidays on the fly',
     long_description=open('README.rst').read(),
     install_requires=['python-dateutil'],
     platforms='any',
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',

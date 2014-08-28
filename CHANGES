@@ -1,0 +1,19 @@
+Version 0.2
+===========
+
+Released August 28, 2014
+
+- Each country is now initialized with its own individual class (see examples
+  in README). This is a backward incompatible API change.
+- Adds support for Python 3.2, 3.3, 3.4, and PyPy
+- All code now conforms to PEP8 standards
+
+
+Version 0.1
+===========
+
+Released August 1, 2014
+
+- Initial release
+- Support for Python 2.5, 2.6, 2.7
+- Includes federal and provincial holidays for Canada, United States
