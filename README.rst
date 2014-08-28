@@ -61,19 +61,19 @@ If the above fails, please use easy_install instead:
 Available Countries
 -------------------
 
-=============   ====  ======================================================
-Country         Abbr  Prov/State Options
-=============   ====  ======================================================
-Canada          "CA"  AB, BC, MB, NB, NL, NS, NT, NU, **ON**, PE, QC, SK, YU
-United States   "US"  None
-=============   ====  ======================================================
+==============   ====  ======================================================
+Country          Abbr  Prov/State Options
+==============   ====  ======================================================
+Canada()         CA()  AB, BC, MB, NB, NL, NS, NT, NU, **ON**, PE, QC, SK, YU
+UnitedStates()   US()  None
+==============   ====  ======================================================
 
 
 API
 ---
 
-class holidays.Holiday(years=[], expand=True, observed=True, prov=None)
-    The main Holiday class used to create holiday list objects.
+class holidays.HolidayBase(years=[], expand=True, observed=True, prov=None)
+    The base class used to create holiday country classes.
 
 Parameters:
 
