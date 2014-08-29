@@ -8,7 +8,7 @@
 #  Website: https://github.com/ryanss/holidays.py
 #  License: MIT (see LICENSE file)
 
-__version__ = '0.2'
+__version__ = '0.3-dev'
 
 
 from datetime import date, datetime
@@ -66,12 +66,9 @@ class HolidayBase(dict):
                 raise ValueError("Cannot parse date from string '%s'" % key)
         else:
             raise TypeError("Cannot convert type '%s' to date." % type(key))
-        # Treat Dec 31 as part of the next year
-        # because it can be an Observed date for New Year's Day
-        year = (key + rd(days=+1)).year
-        if self.expand and year not in self.years:
-            self.years.add(year)
-            self._populate(year)
+        if self.expand and key.year not in self.years:
+            self.years.add(key.year)
+            self._populate(key.year)
         return key
 
     def __contains__(self, key):
@@ -109,10 +106,12 @@ class UnitedStates(HolidayBase):
         if year > 1870:
             name = "New Year's Day"
             self[date(year, 1, 1)] = name
-            if self.observed and date(year, 1, 1).weekday() == 5:
-                self[date(year, 1, 1) + rd(days=-1)] = name + " (Observed)"
-            elif self.observed and date(year, 1, 1).weekday() == 6:
+            if self.observed and date(year, 1, 1).weekday() == 6:
                 self[date(year, 1, 1) + rd(days=+1)] = name + " (Observed)"
+            # The next year's observed New Year's Day can be in this year
+            # when it falls on a Friday (Jan 1st is a Saturday)
+            if self.observed and date(year, 12, 31).weekday() == 4:
+                self[date(year, 12, 31)] = name + " (Observed)"
 
         # Martin Luther King, Jr. Day
         if year >= 1986:
@@ -193,10 +192,12 @@ class Canada(HolidayBase):
         if year >= 1867:
             name = "New Year's Day"
             self[date(year, 1, 1)] = name
-            if self.observed and date(year, 1, 1).weekday() == 5:
-                self[date(year, 1, 1) + rd(days=-1)] = name + " (Observed)"
-            elif self.observed and date(year, 1, 1).weekday() == 6:
+            if self.observed and date(year, 1, 1).weekday() == 6:
                 self[date(year, 1, 1) + rd(days=+1)] = name + " (Observed)"
+            # The next year's observed New Year's Day can be in this year
+            # when it falls on a Friday (Jan 1st is a Saturday)
+            if self.observed and date(year, 12, 31).weekday() == 4:
+                self[date(year, 12, 31)] = name + " (Observed)"
 
         # Islander Day
         if self.prov == 'PE' and year >= 2010:
