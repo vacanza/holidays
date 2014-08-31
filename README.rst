@@ -180,6 +180,35 @@ More Examples
     >> date(2012, 1, 2) in us_holidays
     True
 
+    # Holiday objects can be added together and the resulting object will
+    # generate the holidays from both of the initial objects
+
+    >>> north_america = holidays.CA() + holidays.US() + holidays.MX()
+    >>> north_america.get('2014-07-01')
+    "Canada Day"
+    >>> north_america.get('2014-07-04')
+    "Independence Day"
+
+    # The other form of addition is also available
+
+    >>> north_america = holidays.Canada()
+    >>> north_america += holidays.UnitedStates()
+    >>> north_america += holidays.Mexico()
+
+    # When adding two holiday objects together the optional parameters
+    # (observed, expand, prov) from the first object will be used
+
+    >>> ca = holidays.CA(years=[2013, 2014], expand=False, prov='BC')
+    >>> us = holidays.US(years=[2014, 2015], expand=True)
+    >>> (ca + us).years
+    set([2013, 2014, 2015])
+    >>> (ca + us).prov
+    "BC"
+    >>> (ca + us).expand
+    False
+    >>> (us + ca).expand
+    True
+
     # Sometimes we may not be able to use the official federal statutory
     # holiday list in our code. Let's pretend we work for a company that
     # does not include Columbus Day as a statutory holiday but does include

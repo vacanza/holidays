@@ -24,6 +24,8 @@ class HolidayBase(dict):
         self.observed = observed
         self.expand = expand
         self.years = set(years)
+        if not getattr(self, 'prov', False):
+            self.prov = prov
         for year in list(self.years):
             self._populate(year)
 
@@ -93,6 +95,30 @@ class HolidayBase(dict):
 
     def __ne__(self, other):
         return (dict.__ne__(self, other) or self.__dict__ != other.__dict__)
+
+    def __add__(self, other):
+        if not isinstance(other, HolidayBase):
+            raise TypeError()
+        c1 = self.__class__
+        c2 = other.__class__
+        HolidaySum = createHolidaySum(c1, c2)
+        prov = getattr(self, 'prov', None) or getattr(other, 'prov', None)
+        return HolidaySum(years=(self.years | other.years), expand=self.expand,
+                          observed=self.observed, prov=prov)
+
+    def __radd__(self, other):
+        return self.__add__(other)
+
+
+def createHolidaySum(class1, class2):
+
+    class HolidaySum(class1, class2):
+
+        def _populate(self, year):
+            class2._populate(self, year)
+            class1._populate(self, year)
+
+    return HolidaySum
 
 
 class UnitedStates(HolidayBase):
@@ -180,9 +206,9 @@ class UnitedStates(HolidayBase):
 
 class Canada(HolidayBase):
 
-    def __init__(self, prov=None, **kwargs):
+    def __init__(self, **kwargs):
         self.country = 'CA'
-        self.prov = prov
+        self.prov = kwargs.pop('prov', 'ON')
         if not self.prov:
             self.prov = 'ON'
         HolidayBase.__init__(self, **kwargs)

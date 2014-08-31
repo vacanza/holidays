@@ -68,6 +68,48 @@ class TestBasics(unittest.TestCase):
         self.assertNotEqual(us1, ca1)
         self.assertNotEqual(us3, ca3)
 
+    def test_add(self):
+        ca = holidays.CA()
+        us = holidays.US()
+        self.assertFalse('2014-07-01' in us)
+        self.assertTrue('2014-07-01' in ca)
+        self.assertFalse('2014-07-04' in ca)
+        self.assertTrue('2014-07-04' in us)
+        self.assertTrue('2014-07-04' in ca+us)
+        self.assertTrue('2014-07-04' in us+ca)
+        self.assertTrue('2015-07-04' in ca+us)
+        self.assertTrue('2015-07-04' in us+ca)
+        self.assertTrue('2015-07-01' in ca+us)
+        self.assertTrue('2015-07-01' in us+ca)
+        self.assertEqual((ca+us).prov, 'ON')
+        self.assertEqual((us+ca).prov, 'ON')
+        ca = holidays.CA(years=[2014], expand=False)
+        us = holidays.US(years=[2014, 2015], expand=True)
+        self.assertFalse((ca+us).expand)
+        self.assertTrue((us+ca).expand)
+        self.assertEqual((ca+us).years, set([2014, 2015]))
+        self.assertEqual((us+ca).years, set([2014, 2015]))
+
+    def test_radd(self):
+        na = holidays.US()
+        na += holidays.CA()
+        self.assertTrue('2014-07-04' in na)
+        self.assertTrue('2014-07-04' in na)
+        self.assertTrue('2015-07-04' in na)
+        self.assertTrue('2015-07-04' in na)
+        self.assertTrue('2015-07-01' in na)
+        self.assertTrue('2015-07-01' in na)
+        self.assertEqual(na.prov, 'ON')
+        na = holidays.CA()
+        na += holidays.US()
+        self.assertTrue('2014-07-04' in na)
+        self.assertTrue('2014-07-04' in na)
+        self.assertTrue('2015-07-04' in na)
+        self.assertTrue('2015-07-04' in na)
+        self.assertTrue('2015-07-01' in na)
+        self.assertTrue('2015-07-01' in na)
+        self.assertEqual(na.prov, 'ON')
+
     def test_inheritance(self):
         class NoColumbusHolidays(holidays.US):
             def _populate(self, year):
