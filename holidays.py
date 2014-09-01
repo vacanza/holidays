@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 #  holidays.py
 #  -----------
 #  A fast, efficient Python library for generating country-specific sets of
@@ -119,89 +121,6 @@ def createHolidaySum(class1, class2):
             class1._populate(self, year)
 
     return HolidaySum
-
-
-class UnitedStates(HolidayBase):
-
-    def __init__(self, **kwargs):
-        self.country = 'US'
-        HolidayBase.__init__(self, **kwargs)
-
-    def _populate(self, year):
-        # New Year's Day
-        if year > 1870:
-            name = "New Year's Day"
-            self[date(year, 1, 1)] = name
-            if self.observed and date(year, 1, 1).weekday() == 6:
-                self[date(year, 1, 1) + rd(days=+1)] = name + " (Observed)"
-            # The next year's observed New Year's Day can be in this year
-            # when it falls on a Friday (Jan 1st is a Saturday)
-            if self.observed and date(year, 12, 31).weekday() == 4:
-                self[date(year, 12, 31)] = name + " (Observed)"
-
-        # Martin Luther King, Jr. Day
-        if year >= 1986:
-            name = "Martin Luther King, Jr. Day"
-            self[date(year, 1, 1) + rd(weekday=MO(+3))] = name
-
-        # Washington's Birthday
-        name = "Washington's Birthday"
-        if year > 1970:
-            self[date(year, 2, 1) + rd(weekday=MO(+3))] = name
-        elif year >= 1879:
-            self[date(year, 2, 22)] = name
-
-        # Memorial Day
-        if year > 1970:
-            self[date(year, 5, 31) + rd(weekday=MO(-1))] = "Memorial Day"
-        elif year >= 1888:
-            self[date(year, 5, 30)] = "Memorial Day"
-
-        # Independence Day
-        if year > 1870:
-            name = "Independence Day"
-            self[date(year, 7, 4)] = name
-            if self.observed and date(year, 7, 4).weekday() == 5:
-                self[date(year, 7, 4) + rd(days=-1)] = name + " (Observed)"
-            elif self.observed and date(year, 7, 4).weekday() == 6:
-                self[date(year, 7, 4) + rd(days=+1)] = name + " (Observed)"
-
-        # Labor Day
-        if year >= 1894:
-            self[date(year, 9, 1) + rd(weekday=MO)] = "Labor Day"
-
-        # Columbus Day
-        if year >= 1970:
-            self[date(year, 10, 1) + rd(weekday=MO(+2))] = "Columbus Day"
-        elif year >= 1937:
-            self[date(year, 10, 12)] = "Columbus Day"
-
-        # Veterans Day
-        if year > 1953:
-            name = "Veterans Day"
-        else:
-            name = "Armistice Day"
-        if 1978 > year > 1970:
-            self[date(year, 10, 1) + rd(weekday=MO(+4))] = name
-        elif year >= 1938:
-            self[date(year, 11, 11)] = name
-            if self.observed and date(year, 11, 11).weekday() == 5:
-                self[date(year, 11, 11) + rd(days=-1)] = name + " (Observed)"
-            elif self.observed and date(year, 11, 11).weekday() == 6:
-                self[date(year, 11, 11) + rd(days=+1)] = name + " (Observed)"
-
-        # Thanksgiving
-        if year > 1870:
-            self[date(year, 11, 1) + rd(weekday=TH(+4))] = "Thanksgiving"
-
-        # Christmas Day
-        if year > 1870:
-            name = "Christmas Day"
-            self[date(year, 12, 25)] = "Christmas Day"
-            if self.observed and date(year, 12, 25).weekday() == 5:
-                self[date(year, 12, 25) + rd(days=-1)] = name + " (Observed)"
-            elif self.observed and date(year, 12, 25).weekday() == 6:
-                self[date(year, 12, 25) + rd(days=+1)] = name + " (Observed)"
 
 
 class Canada(HolidayBase):
@@ -372,9 +291,159 @@ class Canada(HolidayBase):
                 self[date(year, 12, 26)] = name
 
 
-# Class name shortforms
 class CA(Canada):
     pass
+
+
+class Mexico(HolidayBase):
+    def __init__(self, **kwargs):
+        self.country = 'MX'
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # New Year's Day
+        if year > 1870:
+            name = "Año Nuevo [New Year's Day]"
+            self[date(year, 1, 1)] = name
+            if self.observed and date(year, 1, 1).weekday() == 6:
+                self[date(year, 1, 1) + rd(days=+1)] = name + " (Observed)"
+            # The next year's observed New Year's Day can be in this year
+            # when it falls on a Friday (Jan 1st is a Saturday)
+            if self.observed and date(year, 12, 31).weekday() == 4:
+                self[date(year, 12, 31)] = name + " (Observed)"
+
+        # Constitution Day
+        name = "Día de la Constitución [Constitution Day]"
+        self[date(year, 1, 31) + rd(weekday=MO(+1))] = name
+
+        # Benito Juárez's birthday
+        name = "Natalicio de Benito Juárez [Benito Juárez's birthday]"
+        self[date(year, 3, 1) + rd(weekday=MO(+3))] = name
+
+        # Labor Day
+        self[date(year, 5, 1)] = "Día del Trabajo [Labour Day]"
+        if self.observed and date(year, 5, 1).weekday() == 5:
+            self[date(year, 5, 1) + rd(days=-1)] = name + " (Observed)"
+        elif self.observed and date(year, 5, 1).weekday() == 6:
+            self[date(year, 5, 1) + rd(days=+1)] = name + " (Observed)"
+
+        # Independence Day
+        name = "Día de la Independencia [Independence Day]"
+        self[date(year, 9, 16)] = name
+        if self.observed and date(year, 9, 16).weekday() == 5:
+            self[date(year, 9, 16) + rd(days=-1)] = name + " (Observed)"
+        elif self.observed and date(year, 9, 16).weekday() == 6:
+            self[date(year, 9, 16) + rd(days=+1)] = name + " (Observed)"
+
+        # Revolution Day
+        name = "Día de la Revolución [Revolution Day]"
+        self[date(year, 11, 1) + rd(weekday=MO(+3))] = name
+
+        # Change of Federal Government
+        # Every six years--next observance 2018
+        name = "Transmisión del Poder Ejecutivo Federal"
+        name += " [Change of Federal Government]"
+        years = rd(date(year, 12, 1), date(2018, 12, 1))
+        if years % 6 == 0:
+            self[date(year, 12, 1)] = name
+            if self.observed and date(year, 12, 1).weekday() == 5:
+                self[date(year, 12, 1) + rd(days=-1)] = name + " (Observed)"
+            elif self.observed and date(year, 12, 1).weekday() == 6:
+                self[date(year, 12, 1) + rd(days=+1)] = name + " (Observed)"
+
+        # Christmas
+        self[date(year, 12, 25)] = "Navidad [Christmas]"
+        if self.observed and date(year, 12, 25).weekday() == 5:
+            self[date(year, 12, 25) + rd(days=-1)] = name + " (Observed)"
+        elif self.observed and date(year, 12, 25).weekday() == 6:
+            self[date(year, 12, 25) + rd(days=+1)] = name + " (Observed)"
+
+
+class MX(Mexico):
+    pass
+
+
+class UnitedStates(HolidayBase):
+
+    def __init__(self, **kwargs):
+        self.country = 'US'
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # New Year's Day
+        if year > 1870:
+            name = "New Year's Day"
+            self[date(year, 1, 1)] = name
+            if self.observed and date(year, 1, 1).weekday() == 6:
+                self[date(year, 1, 1) + rd(days=+1)] = name + " (Observed)"
+            # The next year's observed New Year's Day can be in this year
+            # when it falls on a Friday (Jan 1st is a Saturday)
+            if self.observed and date(year, 12, 31).weekday() == 4:
+                self[date(year, 12, 31)] = name + " (Observed)"
+
+        # Martin Luther King, Jr. Day
+        if year >= 1986:
+            name = "Martin Luther King, Jr. Day"
+            self[date(year, 1, 1) + rd(weekday=MO(+3))] = name
+
+        # Washington's Birthday
+        name = "Washington's Birthday"
+        if year > 1970:
+            self[date(year, 2, 1) + rd(weekday=MO(+3))] = name
+        elif year >= 1879:
+            self[date(year, 2, 22)] = name
+
+        # Memorial Day
+        if year > 1970:
+            self[date(year, 5, 31) + rd(weekday=MO(-1))] = "Memorial Day"
+        elif year >= 1888:
+            self[date(year, 5, 30)] = "Memorial Day"
+
+        # Independence Day
+        if year > 1870:
+            name = "Independence Day"
+            self[date(year, 7, 4)] = name
+            if self.observed and date(year, 7, 4).weekday() == 5:
+                self[date(year, 7, 4) + rd(days=-1)] = name + " (Observed)"
+            elif self.observed and date(year, 7, 4).weekday() == 6:
+                self[date(year, 7, 4) + rd(days=+1)] = name + " (Observed)"
+
+        # Labor Day
+        if year >= 1894:
+            self[date(year, 9, 1) + rd(weekday=MO)] = "Labor Day"
+
+        # Columbus Day
+        if year >= 1970:
+            self[date(year, 10, 1) + rd(weekday=MO(+2))] = "Columbus Day"
+        elif year >= 1937:
+            self[date(year, 10, 12)] = "Columbus Day"
+
+        # Veterans Day
+        if year > 1953:
+            name = "Veterans Day"
+        else:
+            name = "Armistice Day"
+        if 1978 > year > 1970:
+            self[date(year, 10, 1) + rd(weekday=MO(+4))] = name
+        elif year >= 1938:
+            self[date(year, 11, 11)] = name
+            if self.observed and date(year, 11, 11).weekday() == 5:
+                self[date(year, 11, 11) + rd(days=-1)] = name + " (Observed)"
+            elif self.observed and date(year, 11, 11).weekday() == 6:
+                self[date(year, 11, 11) + rd(days=+1)] = name + " (Observed)"
+
+        # Thanksgiving
+        if year > 1870:
+            self[date(year, 11, 1) + rd(weekday=TH(+4))] = "Thanksgiving"
+
+        # Christmas Day
+        if year > 1870:
+            name = "Christmas Day"
+            self[date(year, 12, 25)] = "Christmas Day"
+            if self.observed and date(year, 12, 25).weekday() == 5:
+                self[date(year, 12, 25) + rd(days=-1)] = name + " (Observed)"
+            elif self.observed and date(year, 12, 25).weekday() == 6:
+                self[date(year, 12, 25) + rd(days=+1)] = name + " (Observed)"
 
 
 class US(UnitedStates):

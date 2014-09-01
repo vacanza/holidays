@@ -65,6 +65,7 @@ Available Countries
 Country          Abbr  Prov/State Options
 ==============   ====  ======================================================
 Canada()         CA()  AB, BC, MB, NB, NL, NS, NT, NU, **ON**, PE, QC, SK, YU
+Mexico()         MX()  None
 UnitedStates()   US()  None
 ==============   ====  ======================================================
 

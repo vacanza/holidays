@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 #  holidays.py
 #  -----------
 #  A fast, efficient Python library for generating country-specific sets of
