@@ -276,123 +276,6 @@ class TestKeyTransforms(unittest.TestCase):
         self.assertRaises(TypeError, lambda: list() in self.holidays)
 
 
-class TestUS(unittest.TestCase):
-
-    def setUp(self):
-        self.holidays = holidays.US(observed=False)
-
-    def test_new_years(self):
-        self.assertFalse(date(2010, 12, 31) in self.holidays)
-        self.assertFalse(date(2017,  1,  2) in self.holidays)
-        self.holidays.observed = True
-        self.assertTrue(date(2010, 12, 31) in self.holidays)
-        self.assertTrue(date(2017,  1,  2) in self.holidays)
-        self.holidays.observed = False
-        for year in range(1900, 2100):
-            dt = date(year, 1, 1)
-            self.assertTrue(dt in self.holidays)
-            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
-            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
-
-    def test_marthin_luther(self):
-        for dt in [date(1986, 1, 20), date(1999, 1, 18), date(2000, 1, 17),
-                   date(2012, 1, 16), date(2013, 1, 21), date(2014, 1, 20),
-                   date(2015, 1, 19), date(2016, 1, 18), date(2020, 1, 20)]:
-            self.assertTrue(dt in self.holidays)
-            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
-            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
-        self.assertFalse("Martin Luther King, Jr. Day"
-                         in holidays.US(years=[1985]).values())
-        self.assertTrue("Martin Luther King, Jr. Day"
-                        in holidays.US(years=[1986]).values())
-
-    def test_washingtons_birthday(self):
-        for dt in [date(1969, 2, 22), date(1970, 2, 22), date(1971, 2, 15),
-                   date(1997, 2, 17), date(1999, 2, 15), date(2000, 2, 21),
-                   date(2012, 2, 20), date(2013, 2, 18), date(2014, 2, 17),
-                   date(2015, 2, 16), date(2016, 2, 15), date(2020, 2, 17)]:
-            self.assertTrue(dt in self.holidays)
-            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
-            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
-
-    def test_memorial_day(self):
-        for dt in [date(1969, 5, 30), date(1970, 5, 30), date(1971, 5, 31),
-                   date(1997, 5, 26), date(1999, 5, 31), date(2000, 5, 29),
-                   date(2012, 5, 28), date(2013, 5, 27), date(2014, 5, 26),
-                   date(2015, 5, 25), date(2016, 5, 30), date(2020, 5, 25)]:
-            self.assertTrue(dt in self.holidays)
-            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
-            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
-
-    def test_independence_day(self):
-        for year in range(1900, 2100):
-            dt = date(year, 7, 4)
-            self.assertTrue(dt in self.holidays)
-            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
-            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
-        self.assertFalse(date(2010, 7, 5) in self.holidays)
-        self.assertFalse(date(2020, 7, 3) in self.holidays)
-        self.holidays.observed = True
-        self.assertTrue(date(2010, 7, 5) in self.holidays)
-        self.assertTrue(date(2020, 7, 3) in self.holidays)
-
-    def test_labor_day(self):
-        for dt in [date(1997, 9, 1), date(1999, 9, 6), date(2000, 9, 4),
-                   date(2012, 9, 3), date(2013, 9, 2), date(2014, 9, 1),
-                   date(2015, 9, 7), date(2016, 9, 5), date(2020, 9, 7)]:
-            self.assertTrue(dt in self.holidays)
-            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
-            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
-
-    def test_veterans_day(self):
-        for dt in [date(1938, 11, 11), date(1939, 11, 11), date(1970, 11, 11),
-                   date(1971, 10, 25), date(1977, 10, 24), date(1978, 11, 11),
-                   date(2012, 11, 11), date(2013, 11, 11), date(2014, 11, 11),
-                   date(2015, 11, 11), date(2016, 11, 11), date(2020, 11, 11)]:
-            self.assertTrue(dt in self.holidays)
-            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
-            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
-        self.assertFalse("Armistice Day" in holidays.US(years=[1937]).values())
-        self.assertFalse("Armistice Day" in holidays.US(years=[1937]).values())
-        self.assertTrue("Armistice Day" in holidays.US(years=[1938]).values())
-        self.assertTrue("Armistice Day" in holidays.US(years=[1953]).values())
-        self.assertTrue("Veterans Day" in holidays.US(years=[1954]).values())
-        self.assertFalse(date(2012, 11, 12) in self.holidays)
-        self.assertFalse(date(2017, 11, 10) in self.holidays)
-        self.holidays.observed = True
-        self.assertTrue(date(2012, 11, 12) in self.holidays)
-        self.assertTrue(date(2017, 11, 10) in self.holidays)
-
-    def test_columbus_day(self):
-        for dt in [date(1937, 10, 12), date(1969, 10, 12), date(1970, 10, 12),
-                   date(1999, 11, 11), date(2000, 10,  9), date(2001, 10,  8),
-                   date(2013, 10, 14), date(2018, 10,  8), date(2019, 10, 14)]:
-            self.assertTrue(dt in self.holidays)
-            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
-            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
-        self.assertFalse(date(1936, 10, 12) in self.holidays)
-
-    def test_thanksgiving_day(self):
-        for dt in [date(1997, 11, 27), date(1999, 11, 25), date(2000, 11, 23),
-                   date(2012, 11, 22), date(2013, 11, 28), date(2014, 11, 27),
-                   date(2015, 11, 26), date(2016, 11, 24), date(2020, 11, 26)]:
-            self.assertTrue(dt in self.holidays)
-            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
-            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
-
-    def test_christmas_day(self):
-        for year in range(1900, 2100):
-            dt = date(year, 12, 25)
-            self.assertTrue(dt in self.holidays)
-            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
-            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
-        self.assertFalse(date(2010, 12, 24) in self.holidays)
-        self.assertFalse(date(2016, 12, 26) in self.holidays)
-        self.holidays.observed = True
-        self.assertTrue(date(2010, 12, 24) in self.holidays)
-        self.assertTrue(date(2016, 12, 26) in self.holidays)
-
-
 class TestCA(unittest.TestCase):
 
     def setUp(self):
@@ -636,6 +519,221 @@ class TestCA(unittest.TestCase):
         self.holidays.observed = True
         self.assertTrue(date(2009, 12, 28) in self.holidays)
         self.assertTrue(date(2010, 12, 27) in self.holidays)
+
+
+class TestMX(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.MX(observed=False)
+
+    def test_new_years(self):
+        self.assertFalse(date(2010, 12, 31) in self.holidays)
+        self.assertFalse(date(2017,  1,  2) in self.holidays)
+        self.holidays.observed = True
+        self.assertTrue(date(2010, 12, 31) in self.holidays)
+        self.assertTrue(date(2017,  1,  2) in self.holidays)
+        self.holidays.observed = False
+        for year in range(1900, 2100):
+            dt = date(year, 1, 1)
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+
+    def test_constitution_day(self):
+        for dt in [date(2005, 2, 5), date(2006, 2, 5), date(2007, 2, 5),
+                   date(2008, 2, 4), date(2009, 2, 2), date(2010, 2, 1),
+                   date(2015, 2, 2), date(2016, 2, 1), date(2020, 2, 3)]:
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+
+    def test_benito_juarez(self):
+        for dt in [date(2005, 3, 21), date(2006, 3, 21), date(2007, 3, 19),
+                   date(2008, 3, 17), date(2009, 3, 16), date(2010, 3, 15),
+                   date(2015, 3, 16), date(2016, 3, 21), date(2020, 3, 16)]:
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+
+    def test_labor_day(self):
+        self.assertFalse(date(2010, 4, 30) in self.holidays)
+        self.assertFalse(date(2011, 5,  2) in self.holidays)
+        self.holidays.observed = True
+        self.assertTrue(date(2010, 4, 30) in self.holidays)
+        self.assertTrue(date(2011, 5,  2) in self.holidays)
+        self.holidays.observed = False
+        self.assertFalse(date(1922, 5, 1) in self.holidays)
+        for year in range(1923, 2100):
+            dt = date(year, 5, 1)
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+
+    def test_independence_day(self):
+        self.assertFalse(date(2006, 9, 15) in self.holidays)
+        self.assertFalse(date(2007, 9, 17) in self.holidays)
+        self.holidays.observed = True
+        self.assertTrue(date(2006, 9, 15) in self.holidays)
+        self.assertTrue(date(2007, 9, 17) in self.holidays)
+        self.holidays.observed = False
+        for year in range(1900, 2100):
+            dt = date(year, 9, 16)
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+
+    def test_revolution_day(self):
+        for dt in [date(2005, 11, 20), date(2006, 11, 20), date(2007, 11, 19),
+                   date(2008, 11, 17), date(2009, 11, 16), date(2010, 11, 15),
+                   date(2015, 11, 16), date(2016, 11, 21), date(2020, 11, 16)]:
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+
+    def test_change_of_government(self):
+        self.assertFalse(date(2012, 11, 30) in self.holidays)
+        self.assertFalse(date(2024, 12,  2) in self.holidays)
+        self.holidays.observed = True
+        self.assertTrue(date(2012, 11, 30) in self.holidays)
+        self.assertTrue(date(2024, 12,  2) in self.holidays)
+        self.holidays.observed = False
+        for year in range(1970, 2100):
+            dt = date(year, 12, 1)
+            if (2018 - year) % 6 == 0:
+                self.assertTrue(dt in self.holidays)
+                self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+                self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+            else:
+                self.assertFalse(dt in self.holidays)
+
+    def test_christmas(self):
+        for year in range(1900, 2100):
+            dt = date(year, 12, 25)
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+        self.assertFalse(date(2010, 12, 24) in self.holidays)
+        self.assertFalse(date(2016, 12, 26) in self.holidays)
+        self.holidays.observed = True
+        self.assertTrue(date(2010, 12, 24) in self.holidays)
+        self.assertTrue(date(2016, 12, 26) in self.holidays)
+
+
+class TestUS(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.US(observed=False)
+
+    def test_new_years(self):
+        self.assertFalse(date(2010, 12, 31) in self.holidays)
+        self.assertFalse(date(2017,  1,  2) in self.holidays)
+        self.holidays.observed = True
+        self.assertTrue(date(2010, 12, 31) in self.holidays)
+        self.assertTrue(date(2017,  1,  2) in self.holidays)
+        self.holidays.observed = False
+        for year in range(1900, 2100):
+            dt = date(year, 1, 1)
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+
+    def test_marthin_luther(self):
+        for dt in [date(1986, 1, 20), date(1999, 1, 18), date(2000, 1, 17),
+                   date(2012, 1, 16), date(2013, 1, 21), date(2014, 1, 20),
+                   date(2015, 1, 19), date(2016, 1, 18), date(2020, 1, 20)]:
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+        self.assertFalse("Martin Luther King, Jr. Day"
+                         in holidays.US(years=[1985]).values())
+        self.assertTrue("Martin Luther King, Jr. Day"
+                        in holidays.US(years=[1986]).values())
+
+    def test_washingtons_birthday(self):
+        for dt in [date(1969, 2, 22), date(1970, 2, 22), date(1971, 2, 15),
+                   date(1997, 2, 17), date(1999, 2, 15), date(2000, 2, 21),
+                   date(2012, 2, 20), date(2013, 2, 18), date(2014, 2, 17),
+                   date(2015, 2, 16), date(2016, 2, 15), date(2020, 2, 17)]:
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+
+    def test_memorial_day(self):
+        for dt in [date(1969, 5, 30), date(1970, 5, 30), date(1971, 5, 31),
+                   date(1997, 5, 26), date(1999, 5, 31), date(2000, 5, 29),
+                   date(2012, 5, 28), date(2013, 5, 27), date(2014, 5, 26),
+                   date(2015, 5, 25), date(2016, 5, 30), date(2020, 5, 25)]:
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+
+    def test_independence_day(self):
+        for year in range(1900, 2100):
+            dt = date(year, 7, 4)
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+        self.assertFalse(date(2010, 7, 5) in self.holidays)
+        self.assertFalse(date(2020, 7, 3) in self.holidays)
+        self.holidays.observed = True
+        self.assertTrue(date(2010, 7, 5) in self.holidays)
+        self.assertTrue(date(2020, 7, 3) in self.holidays)
+
+    def test_labor_day(self):
+        for dt in [date(1997, 9, 1), date(1999, 9, 6), date(2000, 9, 4),
+                   date(2012, 9, 3), date(2013, 9, 2), date(2014, 9, 1),
+                   date(2015, 9, 7), date(2016, 9, 5), date(2020, 9, 7)]:
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+
+    def test_veterans_day(self):
+        for dt in [date(1938, 11, 11), date(1939, 11, 11), date(1970, 11, 11),
+                   date(1971, 10, 25), date(1977, 10, 24), date(1978, 11, 11),
+                   date(2012, 11, 11), date(2013, 11, 11), date(2014, 11, 11),
+                   date(2015, 11, 11), date(2016, 11, 11), date(2020, 11, 11)]:
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+        self.assertFalse("Armistice Day" in holidays.US(years=[1937]).values())
+        self.assertFalse("Armistice Day" in holidays.US(years=[1937]).values())
+        self.assertTrue("Armistice Day" in holidays.US(years=[1938]).values())
+        self.assertTrue("Armistice Day" in holidays.US(years=[1953]).values())
+        self.assertTrue("Veterans Day" in holidays.US(years=[1954]).values())
+        self.assertFalse(date(2012, 11, 12) in self.holidays)
+        self.assertFalse(date(2017, 11, 10) in self.holidays)
+        self.holidays.observed = True
+        self.assertTrue(date(2012, 11, 12) in self.holidays)
+        self.assertTrue(date(2017, 11, 10) in self.holidays)
+
+    def test_columbus_day(self):
+        for dt in [date(1937, 10, 12), date(1969, 10, 12), date(1970, 10, 12),
+                   date(1999, 11, 11), date(2000, 10,  9), date(2001, 10,  8),
+                   date(2013, 10, 14), date(2018, 10,  8), date(2019, 10, 14)]:
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+        self.assertFalse(date(1936, 10, 12) in self.holidays)
+
+    def test_thanksgiving_day(self):
+        for dt in [date(1997, 11, 27), date(1999, 11, 25), date(2000, 11, 23),
+                   date(2012, 11, 22), date(2013, 11, 28), date(2014, 11, 27),
+                   date(2015, 11, 26), date(2016, 11, 24), date(2020, 11, 26)]:
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+
+    def test_christmas_day(self):
+        for year in range(1900, 2100):
+            dt = date(year, 12, 25)
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+        self.assertFalse(date(2010, 12, 24) in self.holidays)
+        self.assertFalse(date(2016, 12, 26) in self.holidays)
+        self.holidays.observed = True
+        self.assertTrue(date(2010, 12, 24) in self.holidays)
+        self.assertTrue(date(2016, 12, 26) in self.holidays)
 
 
 if __name__ == "__main__":

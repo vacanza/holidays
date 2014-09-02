@@ -302,30 +302,36 @@ class Mexico(HolidayBase):
 
     def _populate(self, year):
         # New Year's Day
-        if year > 1870:
-            name = "Año Nuevo [New Year's Day]"
-            self[date(year, 1, 1)] = name
-            if self.observed and date(year, 1, 1).weekday() == 6:
-                self[date(year, 1, 1) + rd(days=+1)] = name + " (Observed)"
-            # The next year's observed New Year's Day can be in this year
-            # when it falls on a Friday (Jan 1st is a Saturday)
-            if self.observed and date(year, 12, 31).weekday() == 4:
-                self[date(year, 12, 31)] = name + " (Observed)"
+        name = "Año Nuevo [New Year's Day]"
+        self[date(year, 1, 1)] = name
+        if self.observed and date(year, 1, 1).weekday() == 6:
+            self[date(year, 1, 1) + rd(days=+1)] = name + " (Observed)"
+        # The next year's observed New Year's Day can be in this year
+        # when it falls on a Friday (Jan 1st is a Saturday)
+        if self.observed and date(year, 12, 31).weekday() == 4:
+            self[date(year, 12, 31)] = name + " (Observed)"
 
         # Constitution Day
         name = "Día de la Constitución [Constitution Day]"
-        self[date(year, 1, 31) + rd(weekday=MO(+1))] = name
+        if 2006 >= year >= 1917:
+            self[date(year, 2, 5)] = name
+        elif year >= 2007:
+            self[date(year, 2, 1) + rd(weekday=MO(+1))] = name
 
         # Benito Juárez's birthday
         name = "Natalicio de Benito Juárez [Benito Juárez's birthday]"
-        self[date(year, 3, 1) + rd(weekday=MO(+3))] = name
+        if 2006 >= year >= 1917:
+            self[date(year, 3, 21)] = name
+        elif year >= 2007:
+            self[date(year, 3, 1) + rd(weekday=MO(+3))] = name
 
         # Labor Day
-        self[date(year, 5, 1)] = "Día del Trabajo [Labour Day]"
-        if self.observed and date(year, 5, 1).weekday() == 5:
-            self[date(year, 5, 1) + rd(days=-1)] = name + " (Observed)"
-        elif self.observed and date(year, 5, 1).weekday() == 6:
-            self[date(year, 5, 1) + rd(days=+1)] = name + " (Observed)"
+        if year >= 1923:
+            self[date(year, 5, 1)] = "Día del Trabajo [Labour Day]"
+            if self.observed and date(year, 5, 1).weekday() == 5:
+                self[date(year, 5, 1) + rd(days=-1)] = name + " (Observed)"
+            elif self.observed and date(year, 5, 1).weekday() == 6:
+                self[date(year, 5, 1) + rd(days=+1)] = name + " (Observed)"
 
         # Independence Day
         name = "Día de la Independencia [Independence Day]"
@@ -337,14 +343,16 @@ class Mexico(HolidayBase):
 
         # Revolution Day
         name = "Día de la Revolución [Revolution Day]"
-        self[date(year, 11, 1) + rd(weekday=MO(+3))] = name
+        if 2006 >= year >= 1917:
+            self[date(year, 11, 20)] = name
+        elif year >= 2007:
+            self[date(year, 11, 1) + rd(weekday=MO(+3))] = name
 
         # Change of Federal Government
         # Every six years--next observance 2018
         name = "Transmisión del Poder Ejecutivo Federal"
         name += " [Change of Federal Government]"
-        years = rd(date(year, 12, 1), date(2018, 12, 1))
-        if years % 6 == 0:
+        if (2018 - year) % 6 == 0:
             self[date(year, 12, 1)] = name
             if self.observed and date(year, 12, 1).weekday() == 5:
                 self[date(year, 12, 1) + rd(days=-1)] = name + " (Observed)"
