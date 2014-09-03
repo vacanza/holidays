@@ -101,9 +101,7 @@ class HolidayBase(dict):
     def __add__(self, other):
         if not isinstance(other, HolidayBase):
             raise TypeError()
-        c1 = self.__class__
-        c2 = other.__class__
-        HolidaySum = createHolidaySum(c1, c2)
+        HolidaySum = createHolidaySum(self, other)
         prov = getattr(self, 'prov', None) or getattr(other, 'prov', None)
         return HolidaySum(years=(self.years | other.years), expand=self.expand,
                           observed=self.observed, prov=prov)
@@ -112,13 +110,28 @@ class HolidayBase(dict):
         return self.__add__(other)
 
 
-def createHolidaySum(class1, class2):
+def createHolidaySum(h1, h2):
 
-    class HolidaySum(class1, class2):
+    class HolidaySum(HolidayBase):
+
+        def __init__(self, **kwargs):
+            self.holidays = []
+            if getattr(h1, 'holidays', False):
+                for h in h1.holidays:
+                    self.holidays.append(h)
+            else:
+                self.holidays.append(h1)
+            if getattr(h2, 'holidays', False):
+                for h in h2.holidays:
+                    self.holidays.append(h)
+            else:
+                self.holidays.append(h2)
+            HolidayBase.__init__(self, **kwargs)
 
         def _populate(self, year):
-            class2._populate(self, year)
-            class1._populate(self, year)
+            for h in self.holidays[::-1]:
+                h._populate(year)
+                self.update(h)
 
     return HolidaySum
 
@@ -128,8 +141,6 @@ class Canada(HolidayBase):
     def __init__(self, **kwargs):
         self.country = 'CA'
         self.prov = kwargs.pop('prov', 'ON')
-        if not self.prov:
-            self.prov = 'ON'
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
