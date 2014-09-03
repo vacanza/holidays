@@ -9,8 +9,8 @@ date is a holiday as fast and flexible as possible.
 .. image:: http://img.shields.io/travis/ryanss/holidays.py.svg
     :target: https://travis-ci.org/ryanss/holidays.py
 
-.. image:: http://img.shields.io/badge/coverage-100%25-brightgreen.svg
-    :target: https://github.com/ryanss/holidays.py#Coverage
+.. image:: http://img.shields.io/coveralls/ryanss/holidays.py.svg
+    :target: https://coveralls.io/r/ryanss/holidays.py
 
 .. image:: http://img.shields.io/pypi/v/holidays.svg
     :target: https://pypi.python.org/pypi/holidays
@@ -279,6 +279,8 @@ Running Tests
 
 .. code-block:: bash
 
+    $ pip install flake8
+    $ flake8 holidays.py tests.py
     $ python tests.py
 
 
