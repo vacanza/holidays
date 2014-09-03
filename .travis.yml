@@ -19,7 +19,7 @@ before_script:
     - flake8 holidays.py tests.py
 
 script:
-    - coverage run --omit=*site-packages* tests.py
+    - coverage run --omit=*site-packages*,*pypy* tests.py
 
 after_success:
     - coveralls
