@@ -58,16 +58,17 @@ If the above fails, please use easy_install instead:
 
     $ easy_install holidays
 
+
 Available Countries
 -------------------
 
-==============   ====  ======================================================
-Country          Abbr  Prov/State Options
-==============   ====  ======================================================
-Canada()         CA()  AB, BC, MB, NB, NL, NS, NT, NU, **ON**, PE, QC, SK, YU
-Mexico()         MX()  None
-UnitedStates()   US()  None
-==============   ====  ======================================================
+============ ====  ======================================================
+Country      Abbr  Prov/State Options
+============ ====  ======================================================
+Canada       CA    AB, BC, MB, NB, NL, NS, NT, NU, **ON**, PE, QC, SK, YU
+Mexico       MX    None
+UnitedStates US    None
+============ ====  ======================================================
 
 
 API
@@ -93,7 +94,7 @@ observed
 
 prov
     A string specifying a province/state that has unique statutory holidays.
-    (Default: Canada='ON', UnitedStates=None)
+    (Default: Canada='ON', Mexico=None, UnitedStates=None)
 
 
 More Examples
@@ -195,20 +196,6 @@ More Examples
     >>> north_america = holidays.Canada()
     >>> north_america += holidays.UnitedStates()
     >>> north_america += holidays.Mexico()
-
-    # When adding two holiday objects together the optional parameters
-    # (observed, expand, prov) from the first object will be used
-
-    >>> ca = holidays.CA(years=[2013, 2014], expand=False, prov='BC')
-    >>> us = holidays.US(years=[2014, 2015], expand=True)
-    >>> (ca + us).years
-    set([2013, 2014, 2015])
-    >>> (ca + us).prov
-    "BC"
-    >>> (ca + us).expand
-    False
-    >>> (us + ca).expand
-    True
 
     # Sometimes we may not be able to use the official federal statutory
     # holiday list in our code. Let's pretend we work for a company that

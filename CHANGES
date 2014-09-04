@@ -1,3 +1,15 @@
+Version 0.3
+===========
+
+Released September 4, 2014
+
+- Adds federal holidays for Mexico
+- Holiday objects can now be combined with the addition operator (see examples
+  in README)
+- optional parameter `default` added to get() method to make it behave the same
+  as dict.get()
+
+
 Version 0.2
 ===========
 
