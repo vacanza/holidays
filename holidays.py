@@ -84,8 +84,8 @@ class HolidayBase(dict):
     def __setitem__(self, key, value):
         return dict.__setitem__(self, self.__keytransform__(key), value)
 
-    def get(self, key):
-        return dict.get(self, self.__keytransform__(key))
+    def get(self, key, default=None):
+        return dict.get(self, self.__keytransform__(key), default)
 
     def pop(self, key, default=None):
         if default is None:

@@ -36,10 +36,13 @@ class TestBasics(unittest.TestCase):
     def test_get(self):
         self.assertEqual(self.holidays.get('2014-01-01'), "New Year's Day")
         self.assertEqual(self.holidays.get('2014-01-02'), None)
+        self.assertFalse(self.holidays.get('2014-01-02', False))
+        self.assertTrue(self.holidays.get('2014-01-02', True))
 
     def test_pop(self):
         self.assertRaises(KeyError, lambda: self.holidays.pop('2014-01-02'))
         self.assertFalse(self.holidays.pop('2014-01-02', False))
+        self.assertTrue(self.holidays.pop('2014-01-02', True))
         self.assertTrue(date(2014, 1, 1) in self.holidays)
         self.assertEqual(self.holidays.pop('2014-01-01'), "New Year's Day")
         self.assertFalse(date(2014, 1, 1) in self.holidays)
