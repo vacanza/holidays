@@ -1,3 +1,11 @@
+Version 0.3.1
+=============
+
+Released October 9, 2014
+
+- Fix pip installs when python-dateutil not already present
+
+
 Version 0.3
 ===========
 

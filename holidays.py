@@ -10,7 +10,7 @@
 #  Website: https://github.com/ryanss/holidays.py
 #  License: MIT (see LICENSE file)
 
-__version__ = '0.3.1-dev'
+__version__ = '0.3.1'
 
 
 from datetime import date, datetime
