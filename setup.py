@@ -14,12 +14,10 @@ try:
 except ImportError:
     from distutils.core import setup
 
-import holidays
-
 
 setup(
     name='holidays',
-    version=holidays.__version__,
+    version='0.3.1-dev',
     author='ryanss',
     author_email='ryanssdev@icloud.com',
     url='https://github.com/ryanss/holidays.py',
