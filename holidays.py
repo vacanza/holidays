@@ -10,7 +10,7 @@
 #  Website: https://github.com/ryanss/holidays.py
 #  License: MIT (see LICENSE file)
 
-__version__ = '0.3.1'
+__version__ = '0.4-dev'
 
 
 from datetime import date, datetime
@@ -18,6 +18,7 @@ from dateutil.easter import easter
 from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, TH, FR
+import six
 
 
 class HolidayBase(dict):
@@ -50,20 +51,13 @@ class HolidayBase(dict):
             return dict.__setattr__(self, key, value)
 
     def __keytransform__(self, key):
-        try:
-            # Python 2
-            is_string = isinstance(key, str) or isinstance(key, unicode)
-        except NameError:
-            # Python 3
-            is_string = isinstance(key, bytes) or isinstance(key, str)
-
         if isinstance(key, datetime):
             key = key.date()
         elif isinstance(key, date):
             key = key
         elif isinstance(key, int) or isinstance(key, float):
             key = datetime.fromtimestamp(key).date()
-        elif is_string:
+        elif isinstance(key, six.string_types):
             try:
                 key = parse(key).date()
             except TypeError:
