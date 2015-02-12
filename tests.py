@@ -216,6 +216,7 @@ class TestArgs(unittest.TestCase):
         self.assertTrue(2013 in self.holidays.years)
         self.assertFalse(2014 in self.holidays.years)
         self.assertTrue(2015 in self.holidays.years)
+        self.assertTrue(date(2021, 12, 31) in holidays.US(years=[2022]).keys())
 
     def test_expand(self):
         self.holidays = holidays.US(years=(2013, 2015), expand=False)
@@ -243,6 +244,8 @@ class TestArgs(unittest.TestCase):
         self.assertFalse(date(1999, 12, 31) in self.holidays)
         self.assertTrue(date(2012, 1, 1) in self.holidays)
         self.assertFalse(date(2012, 1, 2) in self.holidays)
+        self.holidays = holidays.US(years=[2022], observed=False)
+        self.assertFalse(date(2021, 12, 31) in self.holidays.keys())
 
 
 class TestKeyTransforms(unittest.TestCase):

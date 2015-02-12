@@ -144,6 +144,13 @@ class Canada(HolidayBase):
             self[date(year, 1, 1)] = name
             if self.observed and date(year, 1, 1).weekday() == 6:
                 self[date(year, 1, 1) + rd(days=+1)] = name + " (Observed)"
+            elif self.observed and date(year, 1, 1).weekday() == 5:
+                # Add Dec 31st from the previous year without triggering
+                # the entire year to be added
+                expand = self.expand
+                self.expand = False
+                self[date(year, 1, 1) + rd(days=-1)] = name + " (Observed)"
+                self.expand = expand
             # The next year's observed New Year's Day can be in this year
             # when it falls on a Friday (Jan 1st is a Saturday)
             if self.observed and date(year, 12, 31).weekday() == 4:
@@ -311,6 +318,13 @@ class Mexico(HolidayBase):
         self[date(year, 1, 1)] = name
         if self.observed and date(year, 1, 1).weekday() == 6:
             self[date(year, 1, 1) + rd(days=+1)] = name + " (Observed)"
+        elif self.observed and date(year, 1, 1).weekday() == 5:
+            # Add Dec 31st from the previous year without triggering
+            # the entire year to be added
+            expand = self.expand
+            self.expand = False
+            self[date(year, 1, 1) + rd(days=-1)] = name + " (Observed)"
+            self.expand = expand
         # The next year's observed New Year's Day can be in this year
         # when it falls on a Friday (Jan 1st is a Saturday)
         if self.observed and date(year, 12, 31).weekday() == 4:
@@ -389,6 +403,13 @@ class UnitedStates(HolidayBase):
             self[date(year, 1, 1)] = name
             if self.observed and date(year, 1, 1).weekday() == 6:
                 self[date(year, 1, 1) + rd(days=+1)] = name + " (Observed)"
+            elif self.observed and date(year, 1, 1).weekday() == 5:
+                # Add Dec 31st from the previous year without triggering
+                # the entire year to be added
+                expand = self.expand
+                self.expand = False
+                self[date(year, 1, 1) + rd(days=-1)] = name + " (Observed)"
+                self.expand = expand
             # The next year's observed New Year's Day can be in this year
             # when it falls on a Friday (Jan 1st is a Saturday)
             if self.observed and date(year, 12, 31).weekday() == 4:
