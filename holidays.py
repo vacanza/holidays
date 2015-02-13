@@ -10,8 +10,6 @@
 #  Website: https://github.com/ryanss/holidays.py
 #  License: MIT (see LICENSE file)
 
-__version__ = '0.4-dev'
-
 
 from datetime import date, datetime
 from dateutil.easter import easter
@@ -19,6 +17,9 @@ from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, TH, FR
 import six
+
+
+__version__ = '0.4-dev'
 
 
 class HolidayBase(dict):

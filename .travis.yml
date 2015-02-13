@@ -11,7 +11,7 @@ python:
     - pypy
 
 install:
-    - pip install python-dateutil
+    - python setup.py install
     - pip install flake8
     - pip install coveralls
 
