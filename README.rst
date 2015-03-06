@@ -1,6 +1,6 @@
-===========
+============
 holidays.py
-===========
+============
 
 Holidays is a fast, efficient Python library for generating country-specific
 sets of holidays on the fly. It aims to make determining whether a specific
