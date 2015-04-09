@@ -495,8 +495,8 @@ class NewZealand(HolidayBase):
 
     def _populate(self, year):
         # Bank Holidays Act 1873
-        # The Employment of Females Act 1873 
-        # Factories Act 1894 
+        # The Employment of Females Act 1873
+        # Factories Act 1894
         # Industrial Conciliation and Arbitration Act 1894
         # Labour Day Act 1899
         # Anzac Day Act 1920, 1949, 1956
@@ -548,18 +548,18 @@ class NewZealand(HolidayBase):
         elif year > 1901:
             name = "King's Birthday"
         if year == 1952:
-             self[date(year, 6, 2)] = name # Elizabeth II
+            self[date(year, 6, 2)] = name  # Elizabeth II
         elif year > 1937:
-             self[date(year, 6, 1) + rd(weekday=MO(+1))] = name # EII & GVI 
+            self[date(year, 6, 1) + rd(weekday=MO(+1))] = name  # EII & GVI
         elif year == 1937:
-            self[date(year, 6, 9)] = name  # George VI
+            self[date(year, 6, 9)] = name   # George VI
         elif year == 1936:
-            self[date(year, 6, 23)] = name # Edward VIII
+            self[date(year, 6, 23)] = name  # Edward VIII
         elif year > 1911:
-            self[date(year, 6, 3)] = name  # George V
+            self[date(year, 6, 3)] = name   # George V
         elif year > 1901:
             # http://paperspast.natlib.govt.nz/cgi-bin/paperspast?a=d&d=NZH19091110.2.67
-            self[date(year, 11, 9)] = name # Edward VII
+            self[date(year, 11, 9)] = name  # Edward VII
 
         # Labour Day
         name = "Labour Day"
@@ -583,114 +583,100 @@ class NewZealand(HolidayBase):
             self[date(year, 12, 28)] = name + " (Observed)"
 
         # Province Anniversary Day
-        if self.prov in ('NTL', 'Northland', 'AUK', 'AKL', 'Auckland'):
+        if self.prov in ('NTL', 'Northland', 'AUK', 'AKL', 'Auckland', '*'):
             if 1963 < year <= 1973 and self.prov in ('NTL', 'Northland'):
                 name = "Waitangi Day"
                 dt = date(year, 2, 6)
             else:
                 name = "Auckland Anniversary Day"
                 dt = date(year, 1, 29)
-            self[dt] = name
             if dt.weekday() in (TUESDAY, WEDNESDAY, THURSDAY):
-                self[dt + rd(weekday=MO(-1))] = name + " (Observed)"
+                self[dt + rd(weekday=MO(-1))] = name
             else:
-                self[dt + rd(weekday=MO)] = name + " (Observed)"
+                self[dt + rd(weekday=MO)] = name
 
-        elif self.prov in ('TKI', 'TAR', 'Taranaki', 'New Plymouth'):
+        elif self.prov in ('TKI', 'TAR', 'Taranaki', 'New Plymouth', '*'):
             name = "Taranaki Anniversary Day"
-            self[date(year, 3, 31)] = name
-            self[date(year, 3, 1) + rd(weekday=MO(+2))] = name + " (Observed)"
+            self[date(year, 3, 1) + rd(weekday=MO(+2))] = name
 
-        elif self.prov in ('HKB', 'Hawkes Bay'):
+        elif self.prov in ('HKB', 'Hawkes Bay', '*'):
             name = "Hawkes Bay Anniversary Day"
-            self[date(year, 11, 1)] = name
             labour_day = date(year, 10, 1) + rd(weekday=MO(+4))
-            self[labour_day + rd(weekday=FR(-1))] = name + " (Observed)"
+            self[labour_day + rd(weekday=FR(-1))] = name
 
-        elif self.prov in ('WGN', 'WEL', 'Wellington'):
+        elif self.prov in ('WGN', 'WEL', 'Wellington', '*'):
             name = "Wellington Anniversary Day"
             jan22 = date(year, 1, 22)
-            self[jan22] = name
             if jan22.weekday() in (TUESDAY, WEDNESDAY, THURSDAY):
-                self[jan22 + rd(weekday=MO(-1))] = name + " (Observed)"
+                self[jan22 + rd(weekday=MO(-1))] = name
             else:
-                self[jan22 + rd(weekday=MO)] = name + " (Observed)"
+                self[jan22 + rd(weekday=MO)] = name
 
-        elif self.prov in ('MBH', 'Marlborough'):
+        elif self.prov in ('MBH', 'Marlborough', '*'):
             name = "Marlborough Anniversary Day"
-            nov1 = date(year, 11, 1)
-            self[nov1] = name
             labour_day = date(year, 10, 1) + rd(weekday=MO(+4))
-            self[labour_day + rd(weeks=1)] = name + " (Observed)"
+            self[labour_day + rd(weeks=1)] = name
 
-        elif self.prov in ('NSN', 'NEL', 'Nelson'):
+        elif self.prov in ('NSN', 'NEL', 'Nelson', '*'):
             name = "Nelson Anniversary Day"
             feb1 = date(year, 2, 1)
-            self[feb1] = name
             if feb1.weekday() in (TUESDAY, WEDNESDAY, THURSDAY):
-                self[feb1 + rd(weekday=MO(-1))] = name + " (Observed)"
+                self[feb1 + rd(weekday=MO(-1))] = name
             else:
-                self[feb1 + rd(weekday=MO)] = name + " (Observed)"
+                self[feb1 + rd(weekday=MO)] = name
 
-        elif self.prov in ('CAN', 'Canterbury', 'STC', 'South Canterbury'):
+        elif self.prov in ('CAN', 'Canterbury', '*'):
             name = "Canterbury Anniversary Day"
-            dec16 = date(year, 12, 16)
-            self[dec16] = name
-            if self.prov in ('STC', 'South Canterbury'):
-                sep1 = date(year, 9, 1)
-                self[sep1 + rd(weekday=MO(4))] = name + " (Observed)"
-            else:
-                nov1 = date(year, 11, 1)
-                showday = nov1 + rd(weekday=TU) + rd(weekday=FR(+2))
-                self[showday] = name + " (Observed)"
+            showday = date(year, 11, 1) + rd(weekday=TU) + rd(weekday=FR(+2))
+            self[showday] = name
 
-        elif self.prov in ('WTC', 'WST', 'Westland', 'Greymouth'):
+        elif self.prov in ('STC', 'South Canterbury', '*'):
+            name = "South Canterbury Anniversary Day"
+            dominion_day = date(year, 9, 1) + rd(weekday=MO(4))
+            self[dominion_day] = name
+
+        elif self.prov in ('WTC', 'WST', 'Westland', 'Greymouth', '*'):
             name = "Westland Anniversary Day"
             dec1 = date(year, 12, 1)
-            self[dec1] = name
             # Observance varies?!?!
-            if year == 2005: # special case?!?!
-                self[date(year, 12, 5)] = name + " (Observed)"
+            if year == 2005:     # special case?!?!
+                self[date(year, 12, 5)] = name
             elif dec1.weekday() in (TUESDAY, WEDNESDAY, THURSDAY):
-                self[dec1 + rd(weekday=MO(-1))] = name + " (Observed)"
+                self[dec1 + rd(weekday=MO(-1))] = name
             else:
-                self[dec1 + rd(weekday=MO)] = name + " (Observed)"
+                self[dec1 + rd(weekday=MO)] = name
 
-        elif self.prov in ('OTA', 'Otago'):
+        elif self.prov in ('OTA', 'Otago', '*'):
             name = "Otago Anniversary Day"
             mar23 = date(year, 3, 23)
-            self[mar23] = name
-            # there is no easily determined single day of local observance?!
+            # there is no easily determined single day of local observance?!?!
             if mar23.weekday() in (TUESDAY, WEDNESDAY, THURSDAY):
                 dt = mar23 + rd(weekday=MO(-1))
             else:
                 dt = mar23 + rd(weekday=MO)
-            if dt == easter(year) + rd(weekday=MO): # Avoid Easter Monday
+            if dt == easter(year) + rd(weekday=MO):    # Avoid Easter Monday
                 dt += rd(days=1)
-            self[dt] = name + " (Observed)"
+            self[dt] = name
 
-        elif self.prov in ('STL', 'Southland'):
+        elif self.prov in ('STL', 'Southland', '*'):
             name = "Southland Anniversary Day"
             jan17 = date(year, 1, 17)
-            self[jan17] = name
             if year > 2011:
-                self[easter(year) + rd(weekday=TU)] = name + " (Observed)"
+                self[easter(year) + rd(weekday=TU)] = name
             else:
                 if jan17.weekday() in (TUESDAY, WEDNESDAY, THURSDAY):
-                    self[jan17 + rd(weekday=MO(-1))] = name + " (Observed)"
+                    self[jan17 + rd(weekday=MO(-1))] = name
                 else:
-                    self[jan17 + rd(weekday=MO)] = name + " (Observed)"
+                    self[jan17 + rd(weekday=MO)] = name
 
-        elif self.prov in ('CIT', 'CHA', 'Chatham Islands'):
+        elif self.prov in ('CIT', 'CHA', 'Chatham Islands', '*'):
             name = "Chatham Islands Anniversary Day"
             nov30 = date(year, 11, 30)
-            self[nov30] = name
             if nov30.weekday() in (TUESDAY, WEDNESDAY, THURSDAY):
-                self[nov30 + rd(weekday=MO(-1))] = name + " (Observed)"
+                self[nov30 + rd(weekday=MO(-1))] = name
             else:
-                self[nov30 + rd(weekday=MO)] = name + " (Observed)"
+                self[nov30 + rd(weekday=MO)] = name
 
 
 class NZ(NewZealand):
     pass
-
