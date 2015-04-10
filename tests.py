@@ -138,6 +138,33 @@ class TestBasics(unittest.TestCase):
         self.assertTrue("2015-02-09" in a)
         self.assertTrue("2015-02-16" in a)
 
+    def test_get_names(self):
+        westland = holidays.NZ(prov='WTL')
+        chathams = holidays.NZ(prov='CIT')
+        wild = westland + chathams
+        self.assertEqual(wild[date(1969, 12, 1)], "Westland Anniversary Day")
+        self.assertEqual(wild.get_names(date(1969, 12, 1)),
+                         ["Westland Anniversary Day",
+                          "Chatham Islands Anniversary Day"])
+        self.assertEqual(wild.get_names(date(1969, 1, 1)),
+                         ["New Year's Day"])
+        self.assertEqual(westland.get_names(date(1969, 12, 1)),
+                         ["Westland Anniversary Day"])
+        self.assertEqual(westland.get_names(date(1969, 1, 1)),
+                         ["New Year's Day"])
+        self.assertEqual(chathams.get_names(date(1969, 12, 1)),
+                         ["Chatham Islands Anniversary Day"])
+        self.assertEqual(chathams.get_names(date(1969, 1, 1)),
+                         ["New Year's Day"])
+        ca = holidays.CA()
+        us = holidays.US()
+        mx = holidays.MX()
+        na = ca + us + mx
+        self.assertTrue(date(1969, 12, 25) in na)
+        self.assertEqual(na.get_names(date(1969, 12, 25)),
+                         ["Christmas Day", "Navidad [Christmas]"])
+        self.assertEqual(na.get_names(date(1969, 7, 1)), ["Canada Day"])
+
     def test_radd(self):
         self.assertRaises(TypeError, lambda: 1 + holidays.US())
 
@@ -859,7 +886,11 @@ class TestNZ(unittest.TestCase):
         self.assertFalse(date(2010, 4, 26) in self.holidays)
 
     def test_sovereigns_birthday(self):
-        self.assertTrue(date(1909, 11, 9) in self.holidays)
+        self.assertTrue(date(1909, 11,  9) in self.holidays)
+        self.assertTrue(date(1936,  6, 23) in self.holidays)
+        self.assertTrue(date(1937,  6,  9) in self.holidays)
+        self.assertTrue(date(1940,  6,  3) in self.holidays)
+        self.assertTrue(date(1952,  6,  2) in self.holidays)
         for year in range(1912, 1936):
             dt = date(year, 6, 3)
             self.assertTrue(dt in self.holidays)
@@ -949,7 +980,7 @@ class TestNZ(unittest.TestCase):
                              "Taranaki Anniversary Day")
 
     def test_hawkes_bay_anniversary_day(self):
-        hkb_holidays = holidays.NZ(prov='Hawkes Bay')
+        hkb_holidays = holidays.NZ(prov="Hawke's Bay")
         for year, day in enumerate([19, 25, 24, 22, 21,        # 2001-05
                                     20, 19, 24, 23, 22,        # 2006-10
                                     21, 19, 25, 24, 23,        # 2011-15
@@ -958,7 +989,7 @@ class TestNZ(unittest.TestCase):
             dt = date(year, 10, day)
             self.assertTrue(dt in hkb_holidays, dt)
             self.assertEqual(hkb_holidays[dt],
-                             "Hawkes Bay Anniversary Day")
+                             "Hawke's Bay Anniversary Day")
 
     def test_wellington_anniversary_day(self):
         wgn_holidays = holidays.NZ(prov='Wellington')
@@ -1074,6 +1105,41 @@ class TestNZ(unittest.TestCase):
             self.assertEqual(cit_holidays[dt],
                              "Chatham Islands Anniversary Day", dt)
 
+    def test_all_holidays_present(self):
+        nz_1969 = sum(holidays.NZ(years=[1969], prov=p)
+                      for p in holidays.NZ.PROVINCES)
+        holidays_in_1969 = sum((nz_1969.get_names(key) for key in nz_1969), [])
+        nz_2015 = sum(holidays.NZ(years=[2015], prov=p)
+                      for p in holidays.NZ.PROVINCES)
+        holidays_in_2015 = sum((nz_2015.get_names(key) for key in nz_2015), [])
+        nz_1974 = sum(holidays.NZ(years=[1974], prov=p)
+                      for p in holidays.NZ.PROVINCES)
+        holidays_in_1974 = sum((nz_1974.get_names(key) for key in nz_1974), [])
+        all_holidays = ["New Year's Day",
+                        "Day after New Year's Day",
+                        "Waitangi Day",
+                        "Good Friday",
+                        "Easter Monday",
+                        "Anzac Day",
+                        "Queen's Birthday",
+                        "Labour Day",
+                        "Christmas Day",
+                        "Boxing Day",
+                        "Auckland Anniversary Day",
+                        "Taranaki Anniversary Day",
+                        "Hawke's Bay Anniversary Day",
+                        "Queen's Birthday",
+                        "Labour Day",
+                        "Christmas Day",
+                        "Boxing Day"]
+        for holiday in all_holidays:
+            self.assertTrue(holiday in holidays_in_1969, holiday)
+            self.assertTrue(holiday in holidays_in_2015, holiday)
+        all_holidays.remove("Waitangi Day")
+        all_holidays.insert(2, "New Zealand Day")
+        for holiday in all_holidays:
+            self.assertTrue(holiday in holidays_in_1974, holiday)
+        self.assertFalse("Waitangi Day" in holidays_in_1974, holiday)
 
 if __name__ == "__main__":
     unittest.main()
