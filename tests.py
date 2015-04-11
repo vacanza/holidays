@@ -1106,14 +1106,14 @@ class TestNZ(unittest.TestCase):
                              "Chatham Islands Anniversary Day", dt)
 
     def test_all_holidays_present(self):
-        nz_1969 = sum((holidays.NZ(prov=p) for p in holidays.NZ.ALL_PROVINCES),
-                      holidays.NZ(years=[1969]))
+        nz_1969 = sum(holidays.NZ(years=[1969], prov=p)
+                      for p in holidays.NZ.PROVINCES)
         holidays_in_1969 = sum((nz_1969.get_names(key) for key in nz_1969), [])
-        nz_2015 = sum((holidays.NZ(prov=p) for p in holidays.NZ.ALL_PROVINCES),
-                      holidays.NZ(years=[2015]))
+        nz_2015 = sum(holidays.NZ(years=[2015], prov=p)
+                      for p in holidays.NZ.PROVINCES)
         holidays_in_2015 = sum((nz_2015.get_names(key) for key in nz_2015), [])
-        nz_1974 = sum((holidays.NZ(prov=p) for p in holidays.NZ.ALL_PROVINCES),
-                      holidays.NZ(years=[1974]))
+        nz_1974 = sum(holidays.NZ(years=[1974], prov=p)
+                      for p in holidays.NZ.PROVINCES)
         holidays_in_1974 = sum((nz_1974.get_names(key) for key in nz_1974), [])
         all_holidays = ["New Year's Day",
                         "Day after New Year's Day",

@@ -27,7 +27,7 @@ WEEKEND = (SATURDAY, SUNDAY)
 
 
 class HolidayBase(dict):
-    ALL_PROVINCES = []
+    PROVINCES = []
 
     def __init__(self, years=[], expand=True, observed=True, prov=None):
         self.observed = observed
@@ -174,8 +174,6 @@ def createHolidaySum(h1, h2):
 
 
 class Canada(HolidayBase):
-    ALL_PROVINCES = ['YU', 'NT', 'NU', 'NL', 'BC', 'AB', 'SK', 'MB',
-                     'ON', 'QC', 'NB', 'PE', 'NS']
 
     PROVINCES = ['AB', 'BC', 'MB', 'NB', 'NL', 'NS', 'NT', 'NU', 'ON', 'PE',
                  'QC', 'SK', 'YU']
@@ -533,8 +531,8 @@ class US(UnitedStates):
 
 
 class NewZealand(HolidayBase):
-    ALL_PROVINCES = ['NTL', 'AUK', 'TKI', 'HKB', 'WGN', 'MBH', 'NSN', 'CAN',
-                     'STC', 'WTL', 'OTA', 'STL', 'CIT']
+    PROVINCES = ['NTL', 'AUK', 'TKI', 'HKB', 'WGN', 'MBH', 'NSN', 'CAN',
+                 'STC', 'WTL', 'OTA', 'STL', 'CIT']
 
     def __init__(self, **kwargs):
         self.country = 'NZ'
