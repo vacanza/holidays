@@ -196,6 +196,15 @@ More Examples
     >>> north_america = holidays.Canada()
     >>> north_america += holidays.UnitedStates()
     >>> north_america += holidays.Mexico()
+    >>> north_america.country
+    ['CA', 'US', 'MX']
+
+    # We can even get a set of holidays that include all the province- or
+    # state-specific holidays using the built-in sum() function
+    >>> a = sum([holidays.CA(prov=x) for x in holidays.CA.PROVINCES])
+    >>> a.prov
+    PROVINCES = ['AB', 'BC', 'MB', 'NB', 'NL', 'NS', 'NT', 'NU', 'ON', 'PE',
+                 'QC', 'SK', 'YU']
 
     # Sometimes we may not be able to use the official federal statutory
     # holiday list in our code. Let's pretend we work for a company that
