@@ -96,8 +96,7 @@ class TestBasics(unittest.TestCase):
         self.assertEqual((us+ca).prov, 'ON')
         ca = holidays.CA(years=[2014], expand=False)
         us = holidays.US(years=[2014, 2015], expand=True)
-        self.assertFalse((ca+us).expand)
-        self.assertTrue((us+ca).expand)
+        self.assertTrue((ca+us).expand)
         self.assertEqual((ca+us).years, set([2014, 2015]))
         self.assertEqual((us+ca).years, set([2014, 2015]))
         na = holidays.CA()
@@ -127,6 +126,15 @@ class TestBasics(unittest.TestCase):
         self.assertTrue('2014-02-10' in na)
         self.assertTrue('2014-02-17' in na)
         self.assertTrue('2014-07-04' in na)
+        provs = (holidays.CA(prov='ON', years=[2014]) +
+                 holidays.CA(prov='BC', years=[2015]))
+        self.assertTrue("2015-02-09" in provs)
+        self.assertTrue("2015-02-16" in provs)
+        self.assertEqual(provs.prov, ['ON', 'BC'])
+        a = sum([holidays.CA(prov=x) for x in holidays.CA.PROVINCES])
+        self.assertEqual(a.prov, holidays.CA.PROVINCES)
+        self.assertTrue("2015-02-09" in a)
+        self.assertTrue("2015-02-16" in a)
 
     def test_radd(self):
         self.assertRaises(TypeError, lambda: 1 + holidays.US())

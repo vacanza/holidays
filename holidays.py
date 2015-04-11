@@ -18,10 +18,12 @@ from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, TU, WE, TH, FR
 import six
 
-MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY = range(7)
-WEEKEND = (SATURDAY, SUNDAY)
 
 __version__ = '0.4-dev'
+
+
+MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY = range(7)
+WEEKEND = (SATURDAY, SUNDAY)
 
 
 class HolidayBase(dict):
@@ -96,12 +98,22 @@ class HolidayBase(dict):
         return (dict.__ne__(self, other) or self.__dict__ != other.__dict__)
 
     def __add__(self, other):
-        if not isinstance(other, HolidayBase):
+        if isinstance(other, int) and other == 0:
+            # Required to sum() list of holidays
+            # sum([h1, h2]) is equivalent to (0 + h1 + h2)
+            return self
+        elif not isinstance(other, HolidayBase):
             raise TypeError()
         HolidaySum = createHolidaySum(self, other)
         prov = getattr(self, 'prov', None) or getattr(other, 'prov', None)
-        return HolidaySum(years=(self.years | other.years), expand=self.expand,
-                          observed=self.observed, prov=prov)
+        if self.prov and other.prov and self.prov != other.prov:
+            p1 = self.prov if isinstance(self.prov, list) else [self.prov]
+            p2 = other.prov if isinstance(other.prov, list) else [other.prov]
+            prov = p1 + p2
+        return HolidaySum(years=(self.years | other.years),
+                          expand=(self.expand or other.expand),
+                          observed=(self.observed or other.observed),
+                          prov=prov)
 
     def __radd__(self, other):
         return self.__add__(other)
@@ -134,6 +146,9 @@ def createHolidaySum(h1, h2):
 
 
 class Canada(HolidayBase):
+
+    PROVINCES = ['AB', 'BC', 'MB', 'NB', 'NL', 'NS', 'NT', 'NU', 'ON', 'PE',
+                 'QC', 'SK', 'YU']
 
     def __init__(self, **kwargs):
         self.country = 'CA'
