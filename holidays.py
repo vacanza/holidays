@@ -105,6 +105,16 @@ class HolidayBase(dict):
         elif not isinstance(other, HolidayBase):
             raise TypeError()
         HolidaySum = createHolidaySum(self, other)
+        country = (getattr(self, 'country', None) or
+                   getattr(other, 'country', None))
+        if self.country and other.country and self.country != other.country:
+            c1 = self.country
+            if not isinstance(c1, list):
+                c1 = [c1]
+            c2 = other.country
+            if not isinstance(c2, list):
+                c2 = [c2]
+            country = c1 + c2
         prov = getattr(self, 'prov', None) or getattr(other, 'prov', None)
         if self.prov and other.prov and self.prov != other.prov:
             p1 = self.prov if isinstance(self.prov, list) else [self.prov]
@@ -113,7 +123,7 @@ class HolidayBase(dict):
         return HolidaySum(years=(self.years | other.years),
                           expand=(self.expand or other.expand),
                           observed=(self.observed or other.observed),
-                          prov=prov)
+                          country=country, prov=prov)
 
     def __radd__(self, other):
         return self.__add__(other)
@@ -123,7 +133,8 @@ def createHolidaySum(h1, h2):
 
     class HolidaySum(HolidayBase):
 
-        def __init__(self, **kwargs):
+        def __init__(self, country, **kwargs):
+            self.country = country
             self.holidays = []
             if getattr(h1, 'holidays', False):
                 for h in h1.holidays:
