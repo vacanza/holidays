@@ -137,6 +137,44 @@ class TestBasics(unittest.TestCase):
         self.assertEqual(a.prov, holidays.CA.PROVINCES)
         self.assertTrue("2015-02-09" in a)
         self.assertTrue("2015-02-16" in a)
+        na = holidays.CA() + holidays.US() + holidays.MX()
+        self.assertTrue(date(1969, 12, 25) in na)
+        self.assertEqual(na.get(date(1969, 7, 1)), "Canada Day")
+        self.assertEqual(na.get(date(1969, 12, 25)),
+                         "Christmas Day, Navidad [Christmas]")
+        na = holidays.MX() + holidays.CA() + holidays.US()
+        self.assertEqual(na.get(date(1969, 12, 25)),
+                         "Navidad [Christmas], Christmas Day")
+
+    def test_get_names(self):
+        westland = holidays.NZ(prov='WTL')
+        chathams = holidays.NZ(prov='CIT')
+        wild = westland + chathams
+        self.assertEqual(wild[date(1969, 12, 1)],
+                         ("Westland Anniversary Day, " +
+                          "Chatham Islands Anniversary Day"))
+
+        self.assertEqual(wild.get_names(date(1969, 12, 1)),
+                         ["Westland Anniversary Day",
+                          "Chatham Islands Anniversary Day"])
+        self.assertEqual(wild.get_names(date(1969, 1, 1)),
+                         ["New Year's Day"])
+        self.assertEqual(westland.get_names(date(1969, 12, 1)),
+                         ["Westland Anniversary Day"])
+        self.assertEqual(westland.get_names(date(1969, 1, 1)),
+                         ["New Year's Day"])
+        self.assertEqual(chathams.get_names(date(1969, 12, 1)),
+                         ["Chatham Islands Anniversary Day"])
+        self.assertEqual(chathams.get_names(date(1969, 1, 1)),
+                         ["New Year's Day"])
+        ca = holidays.CA()
+        us = holidays.US()
+        mx = holidays.MX()
+        na = ca + us + mx
+        self.assertTrue(date(1969, 12, 25) in na)
+        self.assertEqual(na.get_names(date(1969, 12, 25)),
+                         ["Christmas Day", "Navidad [Christmas]"])
+        self.assertEqual(na.get_names(date(1969, 7, 1)), ["Canada Day"])
 
     def test_get_names(self):
         westland = holidays.NZ(prov='WTL')

@@ -82,7 +82,37 @@ class HolidayBase(dict):
         return dict.__getitem__(self, self.__keytransform__(key))
 
     def __setitem__(self, key, value):
+        if key in self:
+            if self.get(key).find(value) < 0 \
+                    and value.find(self.get(key)) < 0:
+                value = "%s, %s" % (value, self.get(key))
+            else:
+                value = self.get(key)
         return dict.__setitem__(self, self.__keytransform__(key), value)
+
+    def update(self, *args, **kwargs):
+        args = list(args)
+        for i, arg in enumerate(args):
+            if isinstance(arg, dict):
+                new_arg = dict()
+                for key, value in list(arg.items()):
+                    if key in self:
+                        if self.get(key).find(value) < 0 \
+                                and value.find(self.get(key)) < 0:
+                            new_arg[key] = "%s, %s" % (value, self.get(key))
+                        else:
+                            new_arg[key] = self.get(key)
+                    else:
+                        new_arg[key] = value
+                args[i] = new_arg
+        for key, value in kwargs.items():
+            if key in self:
+                if self.get(key).find(value) < 0 \
+                        and value.find(self.get(key)) < 0:
+                    kwargs[key] = "%s, %s" % (value, self.get(key))
+                else:
+                    kwargs[key] = self.get(key)
+        dict.update(self, *args, **kwargs)
 
     def get(self, key, default=None):
         return dict.get(self, self.__keytransform__(key), default)
