@@ -117,6 +117,9 @@ class HolidayBase(dict):
     def get(self, key, default=None):
         return dict.get(self, self.__keytransform__(key), default)
 
+    def get_list(self, key):
+        return [h for h in self.get(key, "").split(", ") if h]
+
     def pop(self, key, default=None):
         if default is None:
             return dict.pop(self, self.__keytransform__(key))
@@ -159,12 +162,6 @@ class HolidayBase(dict):
     def __radd__(self, other):
         return self.__add__(other)
 
-    def get_names(self, key):
-        if key in self:
-            return [self[key]]
-        else:
-            return []
-
 
 def createHolidaySum(h1, h2):
 
@@ -189,16 +186,6 @@ def createHolidaySum(h1, h2):
             for h in self.holidays[::-1]:
                 h._populate(year)
                 self.update(h)
-
-        def get_names(self, key):
-            seen = set()
-            names = []
-            for h in self.holidays:
-                name = h.get(key)
-                if name and name not in seen:
-                    seen.add(name)
-                    names.append(name)
-            return names
 
     return HolidaySum
 

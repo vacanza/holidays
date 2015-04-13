@@ -146,7 +146,7 @@ class TestBasics(unittest.TestCase):
         self.assertEqual(na.get(date(1969, 12, 25)),
                          "Navidad [Christmas], Christmas Day")
 
-    def test_get_names(self):
+    def test_get_list(self):
         westland = holidays.NZ(prov='WTL')
         chathams = holidays.NZ(prov='CIT')
         wild = westland + chathams
@@ -154,27 +154,28 @@ class TestBasics(unittest.TestCase):
                          ("Westland Anniversary Day, " +
                           "Chatham Islands Anniversary Day"))
 
-        self.assertEqual(wild.get_names(date(1969, 12, 1)),
+        self.assertEqual(wild.get_list(date(1969, 12, 1)),
                          ["Westland Anniversary Day",
                           "Chatham Islands Anniversary Day"])
-        self.assertEqual(wild.get_names(date(1969, 1, 1)),
+        self.assertEqual(wild.get_list(date(1969, 1, 1)),
                          ["New Year's Day"])
-        self.assertEqual(westland.get_names(date(1969, 12, 1)),
+        self.assertEqual(westland.get_list(date(1969, 12, 1)),
                          ["Westland Anniversary Day"])
-        self.assertEqual(westland.get_names(date(1969, 1, 1)),
+        self.assertEqual(westland.get_list(date(1969, 1, 1)),
                          ["New Year's Day"])
-        self.assertEqual(chathams.get_names(date(1969, 12, 1)),
+        self.assertEqual(chathams.get_list(date(1969, 12, 1)),
                          ["Chatham Islands Anniversary Day"])
-        self.assertEqual(chathams.get_names(date(1969, 1, 1)),
+        self.assertEqual(chathams.get_list(date(1969, 1, 1)),
                          ["New Year's Day"])
         ca = holidays.CA()
         us = holidays.US()
         mx = holidays.MX()
         na = ca + us + mx
         self.assertTrue(date(1969, 12, 25) in na)
-        self.assertEqual(na.get_names(date(1969, 12, 25)),
+        self.assertEqual(na.get_list(date(1969, 12, 25)),
                          ["Christmas Day", "Navidad [Christmas]"])
-        self.assertEqual(na.get_names(date(1969, 7, 1)), ["Canada Day"])
+        self.assertEqual(na.get_list(date(1969, 7, 1)), ["Canada Day"])
+        self.assertEqual(na.get_list(date(1969, 1, 3)), [])
 
     def test_radd(self):
         self.assertRaises(TypeError, lambda: 1 + holidays.US())
@@ -1119,13 +1120,13 @@ class TestNZ(unittest.TestCase):
     def test_all_holidays_present(self):
         nz_1969 = sum(holidays.NZ(years=[1969], prov=p)
                       for p in holidays.NZ.PROVINCES)
-        holidays_in_1969 = sum((nz_1969.get_names(key) for key in nz_1969), [])
+        holidays_in_1969 = sum((nz_1969.get_list(key) for key in nz_1969), [])
         nz_2015 = sum(holidays.NZ(years=[2015], prov=p)
                       for p in holidays.NZ.PROVINCES)
-        holidays_in_2015 = sum((nz_2015.get_names(key) for key in nz_2015), [])
+        holidays_in_2015 = sum((nz_2015.get_list(key) for key in nz_2015), [])
         nz_1974 = sum(holidays.NZ(years=[1974], prov=p)
                       for p in holidays.NZ.PROVINCES)
-        holidays_in_1974 = sum((nz_1974.get_names(key) for key in nz_1974), [])
+        holidays_in_1974 = sum((nz_1974.get_list(key) for key in nz_1974), [])
         all_holidays = ["New Year's Day",
                         "Day after New Year's Day",
                         "Waitangi Day",
