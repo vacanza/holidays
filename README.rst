@@ -65,8 +65,10 @@ Available Countries
 ============ ====  ======================================================
 Country      Abbr  Prov/State Options
 ============ ====  ======================================================
+Australia    AU    **ACT**, NSW, NT, QLD, SA, TAS, VIC, WA
 Canada       CA    AB, BC, MB, NB, NL, NS, NT, NU, **ON**, PE, QC, SK, YU
 Mexico       MX    None
+NewZealand   NZ    NTL, AUK, TKI, HKB, WGN, MBH, NSN, CAN, STC, WTL, OTA, STL, CIT
 UnitedStates US    None
 ============ ====  ======================================================
 
