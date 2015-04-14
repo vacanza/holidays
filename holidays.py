@@ -66,7 +66,7 @@ class HolidayBase(dict):
         elif isinstance(key, six.string_types):
             try:
                 key = parse(key).date()
-            except TypeError:
+            except:
                 raise ValueError("Cannot parse date from string '%s'" % key)
         else:
             raise TypeError("Cannot convert type '%s' to date." % type(key))
@@ -105,13 +105,6 @@ class HolidayBase(dict):
                     else:
                         new_arg[key] = value
                 args[i] = new_arg
-        for key, value in kwargs.items():
-            if key in self:
-                if self.get(key).find(value) < 0 \
-                        and value.find(self.get(key)) < 0:
-                    kwargs[key] = "%s, %s" % (value, self.get(key))
-                else:
-                    kwargs[key] = self.get(key)
         dict.update(self, *args, **kwargs)
 
     def get(self, key, default=None):

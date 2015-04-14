@@ -72,6 +72,7 @@ class TestBasics(unittest.TestCase):
         self.assertNotEqual(us1, us3)
         self.assertNotEqual(us1, ca1)
         self.assertNotEqual(us3, ca3)
+        self.assertTrue(us1 != us3)
 
     def test_add(self):
         ca = holidays.CA()
@@ -824,6 +825,8 @@ class TestNZ(unittest.TestCase):
             dt = date(year, 1, day)
             self.assertTrue(dt in self.holidays)
             self.assertEqual(self.holidays[dt][:10], "New Year's")
+        self.assertFalse("1893-01-01" in self.holidays)
+        self.assertTrue("1894-01-01" in self.holidays)
 
     def test_day_after_new_years(self):
         for year in range(1900, 2100):
