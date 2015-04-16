@@ -762,8 +762,7 @@ class Australia(HolidayBase):
 
     def __init__(self, **kwargs):
         self.country = 'AU'
-        if 'state' in kwargs and 'prov' not in kwargs:
-            kwargs['prov'] = kwargs['state']
+        self.prov = kwargs.pop('prov', kwargs.pop('state', 'ACT'))
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -776,7 +775,7 @@ class Australia(HolidayBase):
         # VIC:  Public Holidays Act 1993
         # WA:   Public and Bank Holidays Act 1972
 
-        # TODO do more research history of Aus holidays
+        # TODO do more research on history of Aus holidays
 
         # New Year's Day
         name = "New Year's Day"
@@ -799,6 +798,20 @@ class Australia(HolidayBase):
             name = "Anniversary Day"
             self[jan26] = name
 
+        # Adelaide Cup
+        if self.prov == 'SA':
+            name = "Adelaide Cup"
+            if year >= 2006:
+                # subject to proclamation ?!?!
+                self[date(year, 3, 1) + rd(weekday=MO(+2))] = name
+            else:
+                self[date(year, 3, 1) + rd(weekday=MO(+3))] = name
+
+        # Canberra Day
+        if self.prov == 'ACT':
+            name = "Canberra Day"
+            self[date(year, 3, 1) + rd(weekday=MO(+1))] = name
+
         # Easter
         self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
         if self.prov in ('ACT', 'NSW', 'NT', 'QLD', 'SA', 'VIC'):
@@ -820,28 +833,30 @@ class Australia(HolidayBase):
                     self[apr25 + rd(weekday=MO)] = name + " (Observed)"
 
         # Western Australia Day
-        if self.prov == 'WA':
-            name = "Western Australia Day"
+        if self.prov == 'WA' and year > 1832:
+            if year >= 2015:
+                name = "Western Australia Day"
+            else:
+                name = "Foundation Day"
             self[date(year, 6, 1) + rd(weekday=MO(+1))] = name
 
         # Queen's Birthday
-        # TODO research history
+        # TODO research history for past monarchs
         if year >= 1952:
             name = "Queen's Birthday"
             if self.prov == 'QLD':
-                if year > 2012:
-                    self[date(year, 6, 1) + rd(weekday=MO(+2))] = name
+                if year == 2012:
+                    self[date(year, 10, 1)] = name
+                    self[date(year, 6, 11)] = "Queen's Diamond Jubilee"
                 else:
-                    self[date(year, 10, 1) + rd(weekday=MO(+1))] = name
+                    dt = date(year, 6, 1) + rd(weekday=MO(+2))
+                    self[dt] = name
             elif self.prov == 'WA':
-                #FIXME????
-                self[date(year, 7, 1) + rd(weekday=MO(+4))] = name
+                # by proclamation ?!?!
+                self[date(year, 10, 1) + rd(weekday=MO(-1))] = name
             else:
-                dt = date(year, 6, 1) + rd(weekday=MO(+1))
+                dt = date(year, 6, 1) + rd(weekday=MO(+2))
                 self[dt] = name
-            if year == 2012 and self.prov == 'QLD':
-                name = "Queen's Diamond Jubilee"
-                self[date(year, 6, 11) + rd(weekday=MO(+1))] = name
 
         # Picnic Day
         if self.prov == 'NT':
@@ -867,7 +882,7 @@ class Australia(HolidayBase):
             self[date(year, 5, 1) + rd(weekday=MO)] = name
         elif self.prov == 'TAS':
             name = "Eight Hours Day"
-            self[date(year, 3, 1) + rd(weekday=MO)] = name
+            self[date(year, 3, 1) + rd(weekday=MO(+2))] = name
 
         # Family & Community Day
         if self.prov == 'ACT':

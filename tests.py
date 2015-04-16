@@ -1186,21 +1186,38 @@ class TestAU(unittest.TestCase):
                    date(1999, 4,  2), date(2000, 4, 21), date(2010, 4,  2),
                    date(2018, 3, 30), date(2019, 4, 19), date(2020, 4, 10)]:
             self.assertTrue(dt in self.holidays)
-            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
-            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+            self.assertEqual(self.holidays[dt], "Good Friday")
+
+    def test_easter_saturday(self):
+        for dt in [date(1900, 4, 14), date(1901, 4,  6), date(1902, 3, 29),
+                   date(1999, 4,  3), date(2000, 4, 22), date(2010, 4,  3),
+                   date(2018, 3, 31), date(2019, 4, 20), date(2020, 4, 11)]:
+            for state in ['ACT', 'NSW', 'NT', 'QLD', 'SA', 'VIC']:
+                self.assertTrue(dt in self.state_hols[state], (state,dt))
+                self.assertEqual(self.state_hols[state][dt], "Easter Saturday")
+            for state in ['TAS', 'WA']:
+                self.assertFalse(dt in self.state_hols[state], (state,dt))
+
+    def test_easter_sunday(self):
+        for dt in [date(1900, 4, 15), date(1901, 4,  7), date(1902, 3, 30),
+                   date(1999, 4,  4), date(2010, 4,  4),
+                   date(2018, 4,  1), date(2019, 4, 21), date(2020, 4, 12)]:
+            self.assertTrue(dt in self.state_hols['NSW'], dt)
+            self.assertEqual(self.state_hols['NSW'][dt], "Easter Sunday")
+            for state in ['ACT', 'NT', 'QLD', 'SA', 'VIC', 'TAS', 'WA']:
+                self.assertFalse(dt in self.state_hols[state], (state,dt))
 
     def test_easter_monday(self):
         for dt in [date(1900, 4, 16), date(1901, 4,  8), date(1902, 3, 31),
                    date(1999, 4,  5), date(2010, 4,  5),
                    date(2018, 4,  2), date(2019, 4, 22), date(2020, 4, 13)]:
             self.assertTrue(dt in self.holidays)
-            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertEqual(self.holidays[dt], "Easter Monday")
             self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
 
     def test_labour_day(self):
         for year, day in enumerate([7, 5, 4, 3, 2, 7, 6, ], 2011):
             dt = date(year, 3, day)
-            self.assertFalse(dt in self.holidays, dt)
             self.assertTrue(dt in self.state_hols['WA'], dt)
             self.assertEqual(self.state_hols['WA'][dt], "Labour Day")
         for year, day in enumerate([10, 9, 14], 2014):
@@ -1231,17 +1248,49 @@ class TestAU(unittest.TestCase):
             self.assertFalse(dt in self.state_hols[state], (state,dt))
 
     def test_western_australia_day(self):
-        self.assertFalse(date(2016, 1, 3) in self.holidays)
+        for year, day in enumerate([4, 3, 2], 2012):
+            dt = date(year, 6, day)
+            self.assertTrue(dt in self.state_hols['WA'], dt)
+            self.assertEqual(self.state_hols['WA'][dt], "Foundation Day")
+        for year, day in enumerate([1, 6, 5], 2015):
+            dt = date(year, 6, day)
+            self.assertTrue(dt in self.state_hols['WA'], dt)
+            self.assertEqual(self.state_hols['WA'][dt], "Western Australia Day")
+
+    def test_adelaide_cup(self):
+        for dt in [date(2015, 3, 9), date(2016, 3, 14), date(2017, 3, 13)]:
+            self.assertTrue(dt in self.state_hols['SA'], dt)
+            self.assertEqual(self.state_hols['SA'][dt], "Adelaide Cup")
 
     def test_queens_birthday(self):
-        for year, day in enumerate([4, 3, 2, 7, 6,       # 2001-05
-                                    5, 4, 2, 1, 7,       # 2006-10
-                                    6, 4, 3, 2, 1,       # 2011-15
-                                    6, 5, 4, 3, 1, 7],   # 2016-21
-                                   2001):
-            dt = date(year, 6, day)
-            self.assertTrue(dt in self.holidays, dt)
-            self.assertEqual(self.holidays[dt], "Queen's Birthday")
+        for dt in [date(2012, 10,  1), date(2013,  6, 10), date(2014,  6,  9),
+                   date(2015,  6,  8), date(2016,  6, 13)]:
+            self.assertTrue(dt in self.state_hols['QLD'], dt)
+            self.assertEqual(self.state_hols['QLD'][dt], "Queen's Birthday")
+        self.assertTrue(date(2012, 6, 11) in self.state_hols['QLD'])
+        for dt in [date(2012, 10,  1), date(2013, 9, 30), date(2014, 9, 29),
+                   date(2015,  9, 28), date(2016, 9, 26), date(2017, 9, 25)]:
+            self.assertTrue(dt in self.state_hols['WA'], dt)
+            self.assertEqual(self.state_hols['WA'][dt], "Queen's Birthday")
+        self.assertTrue(date(2015, 6, 8) in self.state_hols['VIC'])
+
+    def test_picnic_day(self):
+        for dt in [date(2015, 8,  3), date(2016,  8, 1)]:
+            self.assertTrue(dt in self.state_hols['NT'], dt)
+            self.assertEqual(self.state_hols['NT'][dt], "Picnic Day")
+
+    def test_family_and_community_day(self):
+        for dt in [date(2010, 9, 26), date(2011, 10, 10), date(2012, 10, 8),
+                   date(2013, 9, 30), date(2014, 9, 29), date(2015, 9, 28),
+                   date(2016, 9, 26)]:
+            self.assertTrue(dt in self.state_hols['ACT'], dt)
+            self.assertEqual(self.state_hols['ACT'][dt],
+                             "Family & Community Day")
+
+    def test_melbourne_cup(self):
+        for dt in [date(2014, 11, 4), date(2015, 11, 3), date(2016, 11, 1)]:
+            self.assertTrue(dt in self.state_hols['VIC'], dt)
+            self.assertEqual(self.state_hols['VIC'][dt], "Melbourne Cup")
 
     def test_christmas_day(self):
         self.holidays.observed = False
@@ -1284,53 +1333,32 @@ class TestAU(unittest.TestCase):
             self.assertTrue(dt in self.holidays, dt)
             self.assertEqual(self.holidays[dt][:6], "Boxing")
 
-    def test_auckland_anniversary_day(self):
-        auk_holidays = holidays.NZ(prov='Auckland')
-        for year, day in enumerate([29, 28, 27, 26, 31,        # 2001-05
-                                    30, 29, 28, 26,  1,        # 2006-10
-                                    31, 30, 28, 27, 26,        # 2011-15
-                                    1,  30, 29, 28, 27,  1],   # 2016-21
-                                   2001):
-            dt = date(year, 2 if day < 9 else 1, day)
-            self.assertTrue(dt in auk_holidays, dt)
-            self.assertEqual(auk_holidays[dt],
-                             "Auckland Anniversary Day")
-
     def test_all_holidays_present(self):
-        nz_1969 = sum(holidays.NZ(years=[1969], prov=p)
-                      for p in holidays.NZ.PROVINCES)
-        holidays_in_1969 = sum((nz_1969.get_names(key) for key in nz_1969), [])
-        nz_2015 = sum(holidays.NZ(years=[2015], prov=p)
-                      for p in holidays.NZ.PROVINCES)
-        holidays_in_2015 = sum((nz_2015.get_names(key) for key in nz_2015), [])
-        nz_1974 = sum(holidays.NZ(years=[1974], prov=p)
-                      for p in holidays.NZ.PROVINCES)
-        holidays_in_1974 = sum((nz_1974.get_names(key) for key in nz_1974), [])
+        au_2015 = sum(holidays.AU(years=[2015], prov=p)
+                      for p in holidays.AU.PROVINCES)
+        holidays_in_2015 = sum((au_2015.get_names(key) for key in au_2015), [])
         all_holidays = ["New Year's Day",
-                        "Day after New Year's Day",
-                        "Waitangi Day",
+                        "Australia Day",
+                        "Adelaide Cup",
+                        "Canberra Day",
                         "Good Friday",
+                        "Easter Saturday",
+                        "Easter Sunday",
                         "Easter Monday",
                         "Anzac Day",
                         "Queen's Birthday",
+                        "Western Australia Day",
+                        "Family & Community Day",
                         "Labour Day",
+                        "Eight Hours Day",
+                        "May Day",
+                        "Picnic Day",
+                        "Melbourne Cup",
                         "Christmas Day",
-                        "Boxing Day",
-                        "Auckland Anniversary Day",
-                        "Taranaki Anniversary Day",
-                        "Hawke's Bay Anniversary Day",
-                        "Queen's Birthday",
-                        "Labour Day",
-                        "Christmas Day",
+                        "Proclamation Day",
                         "Boxing Day"]
         for holiday in all_holidays:
-            self.assertTrue(holiday in holidays_in_1969, holiday)
             self.assertTrue(holiday in holidays_in_2015, holiday)
-        all_holidays.remove("Waitangi Day")
-        all_holidays.insert(2, "New Zealand Day")
-        for holiday in all_holidays:
-            self.assertTrue(holiday in holidays_in_1974, holiday)
-        self.assertFalse("Waitangi Day" in holidays_in_1974, holiday)
 
 if __name__ == "__main__":
     unittest.main()
