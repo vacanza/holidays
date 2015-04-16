@@ -1193,10 +1193,10 @@ class TestAU(unittest.TestCase):
                    date(1999, 4,  3), date(2000, 4, 22), date(2010, 4,  3),
                    date(2018, 3, 31), date(2019, 4, 20), date(2020, 4, 11)]:
             for state in ['ACT', 'NSW', 'NT', 'QLD', 'SA', 'VIC']:
-                self.assertTrue(dt in self.state_hols[state], (state,dt))
+                self.assertTrue(dt in self.state_hols[state], (state, dt))
                 self.assertEqual(self.state_hols[state][dt], "Easter Saturday")
             for state in ['TAS', 'WA']:
-                self.assertFalse(dt in self.state_hols[state], (state,dt))
+                self.assertFalse(dt in self.state_hols[state], (state, dt))
 
     def test_easter_sunday(self):
         for dt in [date(1900, 4, 15), date(1901, 4,  7), date(1902, 3, 30),
@@ -1205,7 +1205,7 @@ class TestAU(unittest.TestCase):
             self.assertTrue(dt in self.state_hols['NSW'], dt)
             self.assertEqual(self.state_hols['NSW'][dt], "Easter Sunday")
             for state in ['ACT', 'NT', 'QLD', 'SA', 'VIC', 'TAS', 'WA']:
-                self.assertFalse(dt in self.state_hols[state], (state,dt))
+                self.assertFalse(dt in self.state_hols[state], (state, dt))
 
     def test_easter_monday(self):
         for dt in [date(1900, 4, 16), date(1901, 4,  8), date(1902, 3, 31),
@@ -1236,16 +1236,16 @@ class TestAU(unittest.TestCase):
         for dt in [date(2015, 4, 27), date(2020, 4, 27)]:
             self.assertFalse(dt in self.holidays, dt)
             for state in ['NT', 'WA']:
-                self.assertTrue(dt in self.state_hols[state], (state,dt))
+                self.assertTrue(dt in self.state_hols[state], (state, dt))
                 self.assertEqual(self.state_hols[state][dt][:5], "Anzac")
             for state in ['ACT', 'QLD', 'SA', 'NSW', 'TAS', 'VIC']:
-                self.assertFalse(dt in self.state_hols[state], (state,dt))
+                self.assertFalse(dt in self.state_hols[state], (state, dt))
         dt = date(2021, 4, 26)
         for state in ['ACT', 'NT', 'QLD', 'SA', 'WA']:
-            self.assertTrue(dt in self.state_hols[state], (state,dt))
+            self.assertTrue(dt in self.state_hols[state], (state, dt))
             self.assertEqual(self.state_hols[state][dt][:5], "Anzac")
         for state in ['NSW', 'TAS', 'VIC']:
-            self.assertFalse(dt in self.state_hols[state], (state,dt))
+            self.assertFalse(dt in self.state_hols[state], (state, dt))
 
     def test_western_australia_day(self):
         for year, day in enumerate([4, 3, 2], 2012):
@@ -1255,7 +1255,8 @@ class TestAU(unittest.TestCase):
         for year, day in enumerate([1, 6, 5], 2015):
             dt = date(year, 6, day)
             self.assertTrue(dt in self.state_hols['WA'], dt)
-            self.assertEqual(self.state_hols['WA'][dt], "Western Australia Day")
+            self.assertEqual(self.state_hols['WA'][dt],
+                             "Western Australia Day")
 
     def test_adelaide_cup(self):
         for dt in [date(2015, 3, 9), date(2016, 3, 14), date(2017, 3, 13)]:
