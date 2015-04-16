@@ -66,7 +66,7 @@ class HolidayBase(dict):
         elif isinstance(key, six.string_types):
             try:
                 key = parse(key).date()
-            except TypeError:
+            except:
                 raise ValueError("Cannot parse date from string '%s'" % key)
         else:
             raise TypeError("Cannot convert type '%s' to date." % type(key))
@@ -105,17 +105,13 @@ class HolidayBase(dict):
                     else:
                         new_arg[key] = value
                 args[i] = new_arg
-        for key, value in kwargs.items():
-            if key in self:
-                if self.get(key).find(value) < 0 \
-                        and value.find(self.get(key)) < 0:
-                    kwargs[key] = "%s, %s" % (value, self.get(key))
-                else:
-                    kwargs[key] = self.get(key)
         dict.update(self, *args, **kwargs)
 
     def get(self, key, default=None):
         return dict.get(self, self.__keytransform__(key), default)
+
+    def get_list(self, key):
+        return [h for h in self.get(key, "").split(", ") if h]
 
     def pop(self, key, default=None):
         if default is None:
@@ -159,12 +155,6 @@ class HolidayBase(dict):
     def __radd__(self, other):
         return self.__add__(other)
 
-    def get_names(self, key):
-        if key in self:
-            return [self[key]]
-        else:
-            return []
-
 
 def createHolidaySum(h1, h2):
 
@@ -189,16 +179,6 @@ def createHolidaySum(h1, h2):
             for h in self.holidays[::-1]:
                 h._populate(year)
                 self.update(h)
-
-        def get_names(self, key):
-            seen = set()
-            names = []
-            for h in self.holidays:
-                name = h.get(key)
-                if name and name not in seen:
-                    seen.add(name)
-                    names.append(name)
-            return names
 
     return HolidaySum
 
