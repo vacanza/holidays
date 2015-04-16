@@ -840,9 +840,12 @@ class Australia(HolidayBase):
                 name = "Foundation Day"
             self[date(year, 6, 1) + rd(weekday=MO(+1))] = name
 
-        # Queen's Birthday
-        # TODO research history for past monarchs
+        # Sovereign's Birthday
         if year >= 1952:
+            name = "Queen's Birthday"
+        elif year > 1901:
+            name = "King's Birthday"
+        if year >= 1936:
             name = "Queen's Birthday"
             if self.prov == 'QLD':
                 if year == 2012:
@@ -857,6 +860,10 @@ class Australia(HolidayBase):
             else:
                 dt = date(year, 6, 1) + rd(weekday=MO(+2))
                 self[dt] = name
+        elif year > 1911:
+            self[date(year, 6, 3)] = name   # George V
+        elif year > 1901:
+            self[date(year, 11, 9)] = name  # Edward VII
 
         # Picnic Day
         if self.prov == 'NT':
@@ -864,7 +871,6 @@ class Australia(HolidayBase):
             self[date(year, 8, 1) + rd(weekday=MO)] = name
 
         # Labour Day
-        # TODO research history
         name = "Labour Day"
         if self.prov in ('NSW', 'ACT', 'SA'):
             self[date(year, 10, 1) + rd(weekday=MO)] = name
