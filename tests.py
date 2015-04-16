@@ -1170,8 +1170,8 @@ class TestAU(unittest.TestCase):
 
     def setUp(self):
         self.holidays = holidays.AU(observed=True)
-        self.state_hols = {state: holidays.AU(observed=True, prov=state)
-                           for state in holidays.AU.PROVINCES}
+        self.state_hols = dict((state, holidays.AU(observed=True, prov=state))
+                               for state in holidays.AU.PROVINCES)
 
     def test_new_years(self):
         for year in range(1900, 2100):
