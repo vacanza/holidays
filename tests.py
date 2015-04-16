@@ -1189,10 +1189,24 @@ class TestAU(unittest.TestCase):
         for year, day in enumerate([26, 26, 28, 27, 26,       # 2011-15
                                     26, 26, 26, 28, 27, 26],  # 2016-21
                                    2011):
+            jan26 = date(year, 1, 26)
             dt = date(year, 1, day)
+            self.assertTrue(jan26 in self.holidays, dt)
+            self.assertEqual(self.holidays[jan26], "Australia Day")
             self.assertTrue(dt in self.holidays, dt)
             self.assertEqual(self.holidays[dt][:10], "Australia ")
+            for state in holidays.AU.PROVINCES:
+                self.assertTrue(jan26 in self.state_hols[state], (state, dt))
+                self.assertEqual(self.state_hols[state][jan26],
+                                 "Australia Day")
+                self.assertTrue(dt in self.state_hols[state], (state, dt))
+                self.assertEqual(self.state_hols[state][dt][:10], "Australia ")
         self.assertFalse(date(2016, 1, 27) in self.holidays)
+        self.assertFalse(date(1887, 1, 26) in self.holidays)
+        self.assertFalse(date(1934, 1, 26) in self.state_hols['SA'])
+        for dt in [date(1889, 1, 26), date(1936, 1, 26), date(1945, 1,  26)]:
+                self.assertTrue(dt in self.state_hols['NSW'], dt)
+                self.assertEqual(self.state_hols['NSW'][dt], "Anniversary Day")
 
     def test_good_friday(self):
         for dt in [date(1900, 4, 13), date(1901, 4,  5), date(1902, 3, 28),
