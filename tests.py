@@ -720,6 +720,8 @@ class TestUS(unittest.TestCase):
                          in holidays.US(years=[1985]).values())
         self.assertTrue("Martin Luther King, Jr. Day"
                         in holidays.US(years=[1986]).values())
+        self.assertTrue(holidays.US(state='AL').get('2015-01-19'),
+                        "Robert E. Lee/Martin Luther King Birthday")
 
     def test_washingtons_birthday(self):
         for dt in [date(1969, 2, 22), date(1970, 2, 22), date(1971, 2, 15),
@@ -729,6 +731,17 @@ class TestUS(unittest.TestCase):
             self.assertTrue(dt in self.holidays)
             self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
             self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+        self.assertTrue(holidays.US(state='AL').get('2015-02-16'),
+                        "George Washington/Thomas Jefferson Birthday")
+
+    def test_condeferate_memorial_day(self):
+        al_holidays = holidays.US(state='AL')
+        self.assertFalse(date(1865, 4, 24) in self.holidays)
+        self.assertFalse(date(1865, 4, 24) in al_holidays)
+        for dt in [date(1866, 4, 23), date(1878, 4, 22), date(1884, 4, 28),
+                   date(2014, 4, 28), date(2015, 4, 27), date(2019, 4, 22)]:
+            self.assertFalse(dt in self.holidays)
+            self.assertTrue(dt in al_holidays)
 
     def test_memorial_day(self):
         for dt in [date(1969, 5, 30), date(1970, 5, 30), date(1971, 5, 31),
@@ -738,6 +751,15 @@ class TestUS(unittest.TestCase):
             self.assertTrue(dt in self.holidays)
             self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
             self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+
+    def test_jefferson_davis_birthday(self):
+        al_holidays = holidays.US(state='AL')
+        self.assertFalse(date(1889, 6, 3) in self.holidays)
+        self.assertFalse(date(1889, 6, 3) in al_holidays)
+        for dt in [date(1890, 6, 2), date(1891, 6, 1), date(1897, 6, 7),
+                   date(2014, 6, 2), date(2015, 6, 1), date(2016, 6, 6)]:
+            self.assertFalse(dt in self.holidays)
+            self.assertTrue(dt in al_holidays)
 
     def test_independence_day(self):
         for year in range(1900, 2100):

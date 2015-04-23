@@ -29,12 +29,14 @@ WEEKEND = (SATURDAY, SUNDAY)
 class HolidayBase(dict):
     PROVINCES = []
 
-    def __init__(self, years=[], expand=True, observed=True, prov=None):
+    def __init__(self, years=[], expand=True, observed=True,
+                 prov=None, state=None):
         self.observed = observed
         self.expand = expand
         self.years = set(years)
         if not getattr(self, 'prov', False):
             self.prov = prov
+        self.state = state
         for year in list(self.years):
             self._populate(year)
 
@@ -448,6 +450,13 @@ class MX(Mexico):
 
 class UnitedStates(HolidayBase):
 
+    STATES = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL',
+              'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME',
+              'MD', 'MH', 'MA', 'MI', 'FM', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV',
+              'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW',
+              'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'VI',
+              'WA', 'WV', 'WI', 'WY']
+
     def __init__(self, **kwargs):
         self.country = 'US'
         HolidayBase.__init__(self, **kwargs)
@@ -474,20 +483,34 @@ class UnitedStates(HolidayBase):
         # Martin Luther King, Jr. Day
         if year >= 1986:
             name = "Martin Luther King, Jr. Day"
+            if self.state == 'AL':
+                name = "Robert E. Lee/Martin Luther King Birthday"
             self[date(year, 1, 1) + rd(weekday=MO(+3))] = name
 
         # Washington's Birthday
         name = "Washington's Birthday"
+        if self.state == 'AL':
+            name = "George Washington/Thomas Jefferson Birthday"
         if year > 1970:
             self[date(year, 2, 1) + rd(weekday=MO(+3))] = name
         elif year >= 1879:
             self[date(year, 2, 22)] = name
+
+        # Confederate Memorial Day
+        if self.state == 'AL' and year >= 1866:
+            name = "Confederate Memorial Day"
+            self[date(year, 4, 1) + rd(weekday=MO(+4))] = name
 
         # Memorial Day
         if year > 1970:
             self[date(year, 5, 31) + rd(weekday=MO(-1))] = "Memorial Day"
         elif year >= 1888:
             self[date(year, 5, 30)] = "Memorial Day"
+
+        # Jefferson Davis Birthday
+        name = "Jefferson Davis Birthday"
+        if self.state == 'AL' and year >= 1890:
+            self[date(year, 6, 1) + rd(weekday=MO)] = name
 
         # Independence Day
         if year > 1870:
