@@ -496,6 +496,13 @@ class UnitedStates(HolidayBase):
         elif year >= 1879:
             self[date(year, 2, 22)] = name
 
+        # Steward's Day
+        name = "Steward's Day"
+        if self.state == 'AK' and year >= 1955:
+            self[date(year, 4, 1) + rd(days=-1, weekday=MO(-1))] = name
+        elif self.state == 'AK' and year >= 1918:
+            self[date(year, 3, 30)] = name
+
         # Confederate Memorial Day
         if self.state == 'AL' and year >= 1866:
             name = "Confederate Memorial Day"
@@ -526,10 +533,19 @@ class UnitedStates(HolidayBase):
             self[date(year, 9, 1) + rd(weekday=MO)] = "Labor Day"
 
         # Columbus Day
-        if year >= 1970:
-            self[date(year, 10, 1) + rd(weekday=MO(+2))] = "Columbus Day"
-        elif year >= 1937:
-            self[date(year, 10, 12)] = "Columbus Day"
+        if self.state != 'AK':
+            if year >= 1970:
+                self[date(year, 10, 1) + rd(weekday=MO(+2))] = "Columbus Day"
+            elif year >= 1937:
+                self[date(year, 10, 12)] = "Columbus Day"
+
+        # Alaska Day
+        if self.state == 'AK' and year >= 1867:
+            self[date(year, 10, 18)] = "Alaska Day"
+            if self.observed and date(year, 10, 18).weekday() == 5:
+                self[date(year, 10, 18) + rd(days=-1)] = name + " (Observed)"
+            elif self.observed and date(year, 10, 18).weekday() == 6:
+                self[date(year, 10, 18) + rd(days=+1)] = name + " (Observed)"
 
         # Veterans Day
         if year > 1953:
