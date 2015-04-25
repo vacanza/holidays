@@ -485,6 +485,8 @@ class UnitedStates(HolidayBase):
             name = "Martin Luther King, Jr. Day"
             if self.state == 'AL':
                 name = "Robert E. Lee/Martin Luther King Birthday"
+            elif self.state == 'AZ':
+                name = "Dr. Martin Luther King Jr./Civil Rights Day"
             self[date(year, 1, 1) + rd(weekday=MO(+3))] = name
 
         # Washington's Birthday

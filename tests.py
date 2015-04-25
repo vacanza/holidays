@@ -722,6 +722,8 @@ class TestUS(unittest.TestCase):
                         in holidays.US(years=[1986]).values())
         self.assertTrue(holidays.US(state='AL').get('2015-01-19'),
                         "Robert E. Lee/Martin Luther King Birthday")
+        self.assertTrue(holidays.US(state='AZ').get('2015-01-19'),
+                        "Dr. Martin Luther King Jr./Civil Rights Day")
 
     def test_washingtons_birthday(self):
         for dt in [date(1969, 2, 22), date(1970, 2, 22), date(1971, 2, 15),
