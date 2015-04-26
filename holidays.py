@@ -485,6 +485,9 @@ class UnitedStates(HolidayBase):
             name = "Martin Luther King, Jr. Day"
             if self.state == 'AL':
                 name = "Robert E. Lee/Martin Luther King Birthday"
+            elif self.state == 'AS':
+                name = ("Dr. Martin Luther King Jr. "
+                        "and Robert E. Lee's Birthdays")
             elif self.state == 'AZ':
                 name = "Dr. Martin Luther King Jr./Civil Rights Day"
             self[date(year, 1, 1) + rd(weekday=MO(+3))] = name
@@ -493,6 +496,8 @@ class UnitedStates(HolidayBase):
         name = "Washington's Birthday"
         if self.state == 'AL':
             name = "George Washington/Thomas Jefferson Birthday"
+        elif self.state == 'AS':
+            name = "George Washington's Birthday and Daisy Gatson Bates Day"
         if year > 1970:
             self[date(year, 2, 1) + rd(weekday=MO(+3))] = name
         elif year >= 1879:
@@ -566,6 +571,15 @@ class UnitedStates(HolidayBase):
         # Thanksgiving
         if year > 1870:
             self[date(year, 11, 1) + rd(weekday=TH(+4))] = "Thanksgiving"
+
+        # Christmas Eve
+        if self.state == 'AS':
+            name = "Christmas Eve"
+            self[date(year, 12, 24)] = name
+            if self.observed and date(year, 12, 24).weekday() == 5:
+                self[date(year, 12, 24) + rd(days=-1)] = name + " (Observed)"
+            elif self.observed and date(year, 12, 24).weekday() == 6:
+                self[date(year, 12, 24) + rd(days=+1)] = name + " (Observed)"
 
         # Christmas Day
         if year > 1870:

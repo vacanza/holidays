@@ -722,6 +722,9 @@ class TestUS(unittest.TestCase):
                         in holidays.US(years=[1986]).values())
         self.assertTrue(holidays.US(state='AL').get('2015-01-19'),
                         "Robert E. Lee/Martin Luther King Birthday")
+        self.assertTrue(holidays.US(state='AS').get('2015-01-19'),
+                        ("Dr. Martin Luther King Jr. "
+                         "and Robert E. Lee's Birthdays"))
         self.assertTrue(holidays.US(state='AZ').get('2015-01-19'),
                         "Dr. Martin Luther King Jr./Civil Rights Day")
 
@@ -735,6 +738,9 @@ class TestUS(unittest.TestCase):
             self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
         self.assertTrue(holidays.US(state='AL').get('2015-02-16'),
                         "George Washington/Thomas Jefferson Birthday")
+        self.assertTrue(holidays.US(state='AS').get('2015-02-16'),
+                        ("George Washington's Birthday "
+                         "and Daisy Gatson Bates Day"))
 
     def test_stewards_day(self):
         ak_holidays = holidays.US(state='AK')
@@ -840,6 +846,16 @@ class TestUS(unittest.TestCase):
             self.assertTrue(dt in self.holidays)
             self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
             self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+
+    def test_christmass_eve(self):
+        as_holidays = holidays.US(state='AS')
+        self.holidays.observed = False
+        for year in range(1900, 2050):
+            self.assertFalse(date(year, 12, 24) in self.holidays)
+            self.assertTrue(date(year, 12, 24) in as_holidays)
+        self.assertTrue(date(2016, 12, 23) in as_holidays)
+        self.assertTrue("Christmas Eve (Observed)" in
+                        as_holidays.get_list(date(2017, 12, 25)))
 
     def test_christmas_day(self):
         for year in range(1900, 2100):
