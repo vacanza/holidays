@@ -728,6 +728,13 @@ class TestUS(unittest.TestCase):
         self.assertTrue(holidays.US(state='AZ').get('2015-01-19'),
                         "Dr. Martin Luther King Jr./Civil Rights Day")
 
+    def test_susan_b_anthony_day(self):
+        ca_holidays = holidays.US(state='CA')
+        self.assertFalse(date(2013, 2, 15) in self.holidays)
+        self.assertFalse(date(2013, 2, 15) in ca_holidays)
+        self.assertFalse(date(2014, 2, 15) in self.holidays)
+        self.assertTrue(date(2014, 2, 15) in ca_holidays)
+
     def test_washingtons_birthday(self):
         for dt in [date(1969, 2, 22), date(1970, 2, 22), date(1971, 2, 15),
                    date(1997, 2, 17), date(1999, 2, 15), date(2000, 2, 21),
@@ -749,6 +756,15 @@ class TestUS(unittest.TestCase):
                    date(2002, 3, 25), date(2014, 3, 31), date(2018, 3, 26)]:
             self.assertFalse(dt in self.holidays)
             self.assertTrue(dt in ak_holidays)
+
+    def test_cesar_chavez_day(self):
+        ca_holidays = holidays.US(state='CA')
+        for year in range(1995, 2021):
+            self.assertFalse(date(year, 3, 31) in self.holidays)
+            self.assertTrue(date(year, 3, 31) in ca_holidays)
+        for year in (1996, 2002, 2013, 2019):
+            self.assertFalse(date(year, 4, 1) in self.holidays)
+            self.assertTrue(date(year, 4, 1) in ca_holidays)
 
     def test_condeferate_memorial_day(self):
         al_holidays = holidays.US(state='AL')
