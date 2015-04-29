@@ -492,6 +492,16 @@ class UnitedStates(HolidayBase):
                 name = "Dr. Martin Luther King Jr./Civil Rights Day"
             self[date(year, 1, 1) + rd(weekday=MO(+3))] = name
 
+        # Lincoln's Birthday
+        name = "Lincoln's Birthday"
+        if (self.state == 'CA' and year >= 1971 and year <= 2009) \
+                or (self.state == 'CT' and year >= 1971):
+            self[date(year, 2, 12)] = name
+            if self.observed and date(year, 2, 12).weekday() == 5:
+                self[date(year, 2, 11)] = name + " (Observed)"
+            elif self.observed and date(year, 2, 12).weekday() == 6:
+                self[date(year, 2, 13)] = name + " (Observed)"
+
         # Susan B. Anthony Day
         if self.state == 'CA' and year >= 2014:
             self[date(year, 2, 15)] = "Susan B. Anthony Day"
@@ -520,6 +530,10 @@ class UnitedStates(HolidayBase):
             self[date(year, 3, 31)] = name
             if self.observed and date(year, 3, 31).weekday() == 6:
                 self[date(year, 4, 1)] = name + " (Observed)"
+
+        # Good Friday
+        if self.state == 'CT':
+            self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
 
         # Confederate Memorial Day
         if self.state == 'AL' and year >= 1866:
