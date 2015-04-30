@@ -512,10 +512,11 @@ class UnitedStates(HolidayBase):
             name = "George Washington/Thomas Jefferson Birthday"
         elif self.state == 'AS':
             name = "George Washington's Birthday and Daisy Gatson Bates Day"
-        if year > 1970:
-            self[date(year, 2, 1) + rd(weekday=MO(+3))] = name
-        elif year >= 1879:
-            self[date(year, 2, 22)] = name
+        if self.state != 'DE':
+            if year > 1970:
+                self[date(year, 2, 1) + rd(weekday=MO(+3))] = name
+            elif year >= 1879:
+                self[date(year, 2, 22)] = name
 
         # Steward's Day
         name = "Steward's Day"
@@ -532,7 +533,7 @@ class UnitedStates(HolidayBase):
                 self[date(year, 4, 1)] = name + " (Observed)"
 
         # Good Friday
-        if self.state == 'CT':
+        if self.state in ('CT', 'DE'):
             self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
 
         # Confederate Memorial Day
@@ -565,7 +566,7 @@ class UnitedStates(HolidayBase):
             self[date(year, 9, 1) + rd(weekday=MO)] = "Labor Day"
 
         # Columbus Day
-        if self.state != 'AK':
+        if self.state not in ('AK', 'DE'):
             if year >= 1970:
                 self[date(year, 10, 1) + rd(weekday=MO(+2))] = "Columbus Day"
             elif year >= 1937:
@@ -578,6 +579,11 @@ class UnitedStates(HolidayBase):
                 self[date(year, 10, 18) + rd(days=-1)] = name + " (Observed)"
             elif self.observed and date(year, 10, 18).weekday() == 6:
                 self[date(year, 10, 18) + rd(days=+1)] = name + " (Observed)"
+
+        # Election Day
+        if self.state == 'DE' and year >= 2008 and year % 2 == 0:
+            dt = date(year, 11, 1) + rd(weekday=MO)
+            self[dt + rd(days=+1)] = "Election Day"
 
         # Veterans Day
         if year > 1953:
@@ -596,6 +602,11 @@ class UnitedStates(HolidayBase):
         # Thanksgiving
         if year > 1870:
             self[date(year, 11, 1) + rd(weekday=TH(+4))] = "Thanksgiving"
+
+        # Day After Thanksgiving
+        if self.state == 'DE' and year >= 1975:
+            dt = date(year, 11, 1) + rd(weekday=TH(+4))
+            self[dt + rd(days=+1)] = "Day After Thanksgiving"
 
         # Christmas Eve
         if self.state == 'AS':
