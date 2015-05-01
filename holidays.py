@@ -532,6 +532,15 @@ class UnitedStates(HolidayBase):
             if self.observed and date(year, 3, 31).weekday() == 6:
                 self[date(year, 4, 1)] = name + " (Observed)"
 
+        # Emancipation Day
+        if self.state == 'DC' and year >= 2005:
+            name = "Emancipation Day"
+            self[date(year, 4, 16)] = name
+            if self.observed and date(year, 4, 16).weekday() == 5:
+                self[date(year, 4, 15)] = name + " (Observed)"
+            elif self.observed and date(year, 4, 16).weekday() == 6:
+                self[date(year, 4, 17)] = name + " (Observed)"
+
         # Good Friday
         if self.state in ('CT', 'DE'):
             self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"

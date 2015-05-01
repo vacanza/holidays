@@ -808,6 +808,18 @@ class TestUS(unittest.TestCase):
             self.assertFalse(date(year, 4, 1) in self.holidays)
             self.assertTrue(date(year, 4, 1) in ca_holidays)
 
+    def test_emancipation_day(self):
+        dc_holidays = holidays.US(state='DC')
+        self.assertFalse(date(2004, 4, 16) in dc_holidays)
+        for year in range(2005, 2020):
+            self.assertFalse(date(year, 4, 16) in self.holidays)
+            self.assertTrue(date(year, 4, 16) in dc_holidays)
+        self.assertTrue(date(2005, 4, 15) in dc_holidays)
+        self.assertTrue(date(2006, 4, 17) in dc_holidays)
+        dc_holidays.observed = False
+        self.assertFalse(date(2005, 4, 15) in dc_holidays)
+        self.assertFalse(date(2006, 4, 17) in dc_holidays)
+
     def test_good_friday(self):
         ct_holidays = holidays.US(state='CT')
         de_holidays = holidays.US(state='DE')
