@@ -770,13 +770,18 @@ class TestUS(unittest.TestCase):
 
     def test_susan_b_anthony_day(self):
         ca_holidays = holidays.US(state='CA')
+        fl_holidays = holidays.US(state='FL')
+        self.assertFalse(date(2010, 2, 15) in fl_holidays)
         self.assertFalse(date(2013, 2, 15) in self.holidays)
         self.assertFalse(date(2013, 2, 15) in ca_holidays)
+        self.assertTrue(date(2013, 2, 15) in fl_holidays)
         self.assertFalse(date(2014, 2, 15) in self.holidays)
         self.assertTrue(date(2014, 2, 15) in ca_holidays)
+        self.assertTrue(date(2014, 2, 15) in fl_holidays)
 
     def test_washingtons_birthday(self):
         de_holidays = holidays.US(state='DE')
+        fl_holidays = holidays.US(state='FL')
         for dt in [date(1969, 2, 22), date(1970, 2, 22), date(1971, 2, 15),
                    date(1997, 2, 17), date(1999, 2, 15), date(2000, 2, 21),
                    date(2012, 2, 20), date(2013, 2, 18), date(2014, 2, 17),
@@ -785,6 +790,7 @@ class TestUS(unittest.TestCase):
             self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
             self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
             self.assertFalse(dt in de_holidays)
+            self.assertNotEqual(fl_holidays.get(dt), "Washington's Birthday")
         self.assertTrue(holidays.US(state='AL').get('2015-02-16'),
                         "George Washington/Thomas Jefferson Birthday")
         self.assertTrue(holidays.US(state='AS').get('2015-02-16'),
@@ -880,12 +886,14 @@ class TestUS(unittest.TestCase):
     def test_columbus_day(self):
         ak_holidays = holidays.US(state='AK')
         de_holidays = holidays.US(state='DE')
+        fl_holidays = holidays.US(state='FL')
         for dt in [date(1937, 10, 12), date(1969, 10, 12), date(1970, 10, 12),
                    date(1999, 10, 11), date(2000, 10,  9), date(2001, 10,  8),
                    date(2013, 10, 14), date(2018, 10,  8), date(2019, 10, 14)]:
             self.assertTrue(dt in self.holidays)
             self.assertFalse(dt in ak_holidays)
             self.assertFalse(dt in de_holidays)
+            self.assertFalse(dt in fl_holidays)
             self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
             self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
         self.assertFalse(date(1936, 10, 12) in self.holidays)
@@ -931,6 +939,7 @@ class TestUS(unittest.TestCase):
 
     def test_thanksgiving_day(self):
         de_holidays = holidays.US(state='DE')
+        fl_holidays = holidays.US(state='FL')
         for dt in [date(1997, 11, 27), date(1999, 11, 25), date(2000, 11, 23),
                    date(2012, 11, 22), date(2013, 11, 28), date(2014, 11, 27),
                    date(2015, 11, 26), date(2016, 11, 24), date(2020, 11, 26)]:
@@ -938,6 +947,11 @@ class TestUS(unittest.TestCase):
             self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
             self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
             self.assertTrue(dt + relativedelta(days=+1) in de_holidays)
+            self.assertEqual(de_holidays.get(dt + relativedelta(days=+1)),
+                             "Day After Thanksgiving")
+            self.assertTrue(dt + relativedelta(days=+1) in fl_holidays)
+            self.assertEqual(fl_holidays.get(dt + relativedelta(days=+1)),
+                             "Friday After Thanksgiving")
 
     def test_christmass_eve(self):
         as_holidays = holidays.US(state='AS')

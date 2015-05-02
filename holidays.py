@@ -503,7 +503,8 @@ class UnitedStates(HolidayBase):
                 self[date(year, 2, 13)] = name + " (Observed)"
 
         # Susan B. Anthony Day
-        if self.state == 'CA' and year >= 2014:
+        if self.state == 'CA' and year >= 2014 \
+                or self.state == 'FL' and year >= 2011:
             self[date(year, 2, 15)] = "Susan B. Anthony Day"
 
         # Washington's Birthday
@@ -512,7 +513,7 @@ class UnitedStates(HolidayBase):
             name = "George Washington/Thomas Jefferson Birthday"
         elif self.state == 'AS':
             name = "George Washington's Birthday and Daisy Gatson Bates Day"
-        if self.state != 'DE':
+        if self.state not in ('DE', 'FL'):
             if year > 1970:
                 self[date(year, 2, 1) + rd(weekday=MO(+3))] = name
             elif year >= 1879:
@@ -575,7 +576,7 @@ class UnitedStates(HolidayBase):
             self[date(year, 9, 1) + rd(weekday=MO)] = "Labor Day"
 
         # Columbus Day
-        if self.state not in ('AK', 'DE'):
+        if self.state not in ('AK', 'DE', 'FL'):
             if year >= 1970:
                 self[date(year, 10, 1) + rd(weekday=MO(+2))] = "Columbus Day"
             elif year >= 1937:
@@ -613,9 +614,14 @@ class UnitedStates(HolidayBase):
             self[date(year, 11, 1) + rd(weekday=TH(+4))] = "Thanksgiving"
 
         # Day After Thanksgiving
-        if self.state == 'DE' and year >= 1975:
+        # Friday After Thanksgiving
+        if self.state in ('DE', 'FL') and year >= 1975:
+            if self.state == 'DE':
+                name = "Day After Thanksgiving"
+            elif self.state == 'FL':
+                name = "Friday After Thanksgiving"
             dt = date(year, 11, 1) + rd(weekday=TH(+4))
-            self[dt + rd(days=+1)] = "Day After Thanksgiving"
+            self[dt + rd(days=+1)] = name
 
         # Christmas Eve
         if self.state == 'AS':
