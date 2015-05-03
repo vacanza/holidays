@@ -490,7 +490,10 @@ class UnitedStates(HolidayBase):
                         "and Robert E. Lee's Birthdays")
             elif self.state == 'AZ':
                 name = "Dr. Martin Luther King Jr./Civil Rights Day"
-            self[date(year, 1, 1) + rd(weekday=MO(+3))] = name
+            elif self.state == 'GA' and year < 2012:
+                name = "Robert E. Lee's Birthday"
+            if self.state != 'GA' or year < 2012:
+                self[date(year, 1, 1) + rd(weekday=MO(+3))] = name
 
         # Lincoln's Birthday
         name = "Lincoln's Birthday"
@@ -513,11 +516,16 @@ class UnitedStates(HolidayBase):
             name = "George Washington/Thomas Jefferson Birthday"
         elif self.state == 'AS':
             name = "George Washington's Birthday and Daisy Gatson Bates Day"
-        if self.state not in ('DE', 'FL'):
+        if self.state not in ('DE', 'FL', 'GA'):
             if year > 1970:
                 self[date(year, 2, 1) + rd(weekday=MO(+3))] = name
             elif year >= 1879:
                 self[date(year, 2, 22)] = name
+        elif self.state == 'GA':
+            if date(year, 12, 24).weekday() != 2:
+                self[date(year, 12, 24)] = name
+            else:
+                self[date(year, 12, 26)] = name
 
         # Steward's Day
         name = "Steward's Day"
@@ -547,7 +555,7 @@ class UnitedStates(HolidayBase):
             self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
 
         # Confederate Memorial Day
-        if self.state == 'AL' and year >= 1866:
+        if self.state in ('AL', 'GA') and year >= 1866:
             name = "Confederate Memorial Day"
             self[date(year, 4, 1) + rd(weekday=MO(+4))] = name
 
@@ -622,6 +630,11 @@ class UnitedStates(HolidayBase):
                 name = "Friday After Thanksgiving"
             dt = date(year, 11, 1) + rd(weekday=TH(+4))
             self[dt + rd(days=+1)] = name
+
+        # Robert E. Lee's Birthday
+        if self.state == 'GA' and year >= 2012:
+            name = "Robert E. Lee's Birthday"
+            self[date(year, 11, 29) + rd(weekday=FR(-1))] = name
 
         # Christmas Eve
         if self.state == 'AS':
