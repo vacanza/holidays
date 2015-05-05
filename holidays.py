@@ -531,6 +531,15 @@ class UnitedStates(HolidayBase):
         if self.state == 'GU' and year >= 1970:
             self[date(year, 3, 1) + rd(weekday=MO)] = "Guam Discovery Day"
 
+        # Prince Jonah Kuhio Kalanianaole Day
+        if self.state == 'HI' and year >= 1949:
+            name = "Prince Jonah Kuhio Kalanianaole Day"
+            self[date(year, 3, 26)] = name
+            if self.observed and date(year, 3, 26).weekday() == 5:
+                self[date(year, 3, 25)] = name + " (Observed)"
+            elif self.observed and date(year, 3, 26).weekday() == 6:
+                self[date(year, 3, 27)] = name + " (Observed)"
+
         # Steward's Day
         name = "Steward's Day"
         if self.state == 'AK' and year >= 1955:
@@ -574,6 +583,15 @@ class UnitedStates(HolidayBase):
         if self.state == 'AL' and year >= 1890:
             self[date(year, 6, 1) + rd(weekday=MO)] = name
 
+        # Kamehameha Day
+        if self.state == 'HI' and year >= 1872:
+            self[date(year, 6, 11)] = "Kamehameha Day"
+            if self.observed and year >= 2011:
+                if date(year, 6, 11).weekday() == 5:
+                    self[date(year, 6, 10)] = "Kamehameha Day (Observed)"
+                elif date(year, 6, 11).weekday() == 6:
+                    self[date(year, 6, 12)] = "Kamehameha Day (Observed)"
+
         # Independence Day
         if year > 1870:
             name = "Independence Day"
@@ -587,12 +605,16 @@ class UnitedStates(HolidayBase):
         if self.state == 'GU' and year >= 1945:
             self[date(year, 7, 21)] = "Liberation Day (Guam)"
 
+        # Statehood Day (Hawaii)
+        if self.state == 'HI' and year >= 1959:
+            self[date(year, 8, 1) + rd(weekday=FR(+3))] = "Statehood Day"
+
         # Labor Day
         if year >= 1894:
             self[date(year, 9, 1) + rd(weekday=MO)] = "Labor Day"
 
         # Columbus Day
-        if self.state not in ('AK', 'DE', 'FL'):
+        if self.state not in ('AK', 'DE', 'FL', 'HI'):
             if year >= 1970:
                 self[date(year, 10, 1) + rd(weekday=MO(+2))] = "Columbus Day"
             elif year >= 1937:
@@ -607,7 +629,7 @@ class UnitedStates(HolidayBase):
                 self[date(year, 10, 18) + rd(days=+1)] = name + " (Observed)"
 
         # Election Day
-        if self.state == 'DE' and year >= 2008 and year % 2 == 0:
+        if self.state in ('DE', 'HI') and year >= 2008 and year % 2 == 0:
             dt = date(year, 11, 1) + rd(weekday=MO)
             self[dt + rd(days=+1)] = "Election Day"
 
