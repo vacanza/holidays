@@ -720,15 +720,19 @@ class TestUS(unittest.TestCase):
                          in holidays.US(years=[1985]).values())
         self.assertTrue("Martin Luther King, Jr. Day"
                         in holidays.US(years=[1986]).values())
-        self.assertTrue(holidays.US(state='AL').get('2015-01-19'),
-                        "Robert E. Lee/Martin Luther King Birthday")
-        self.assertTrue(holidays.US(state='AS').get('2015-01-19'),
-                        ("Dr. Martin Luther King Jr. "
-                         "and Robert E. Lee's Birthdays"))
-        self.assertTrue(holidays.US(state='AZ').get('2015-01-19'),
-                        "Dr. Martin Luther King Jr./Civil Rights Day")
-        self.assertTrue(holidays.US(state='GA').get('2011-01-17'),
-                        "Robert E. Lee's Birthday")
+        self.assertEqual(holidays.US(state='AL').get('2015-01-19'),
+                         "Robert E. Lee/Martin Luther King Birthday")
+        self.assertEqual(holidays.US(state='AS').get('2015-01-19'),
+                         ("Dr. Martin Luther King Jr. "
+                          "and Robert E. Lee's Birthdays"))
+        self.assertEqual(holidays.US(state='AZ').get('2015-01-19'),
+                         "Dr. Martin Luther King Jr./Civil Rights Day")
+        self.assertEqual(holidays.US(state='ID').get('2015-01-19'),
+                         "Martin Luther King, Jr. - Idaho Human Rights Day")
+        self.assertNotEqual(holidays.US(state='ID').get('2000-01-17'),
+                            "Martin Luther King, Jr. - Idaho Human Rights Day")
+        self.assertEqual(holidays.US(state='GA').get('2011-01-17'),
+                         "Robert E. Lee's Birthday")
 
     def test_lincolns_birthday(self):
         ca_holidays = holidays.US(state='CA')
