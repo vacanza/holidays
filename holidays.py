@@ -570,13 +570,19 @@ class UnitedStates(HolidayBase):
                 self[date(year, 4, 17)] = name + " (Observed)"
 
         # Good Friday
-        if self.state in ('CT', 'DE', 'GU'):
+        if self.state in ('CT', 'DE', 'GU', 'IN'):
             self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
 
         # Confederate Memorial Day
         if self.state in ('AL', 'GA') and year >= 1866:
             name = "Confederate Memorial Day"
             self[date(year, 4, 1) + rd(weekday=MO(+4))] = name
+
+        # Primary Election Day
+        if self.state == 'IN' and ((year >= 2006 and year % 2 == 0)
+                                   or year >= 2015):
+            dt = date(year, 5, 1) + rd(weekday=MO)
+            self[dt + rd(days=+1)] = "Primary Election Day"
 
         # Memorial Day
         if year > 1970:
@@ -635,7 +641,8 @@ class UnitedStates(HolidayBase):
                 self[date(year, 10, 18) + rd(days=+1)] = name + " (Observed)"
 
         # Election Day
-        if self.state in ('DE', 'HI', 'IL') and year >= 2008 and year % 2 == 0:
+        if (self.state in ('DE', 'HI', 'IL', 'IN') and year >= 2008 and year % 2 == 0) \
+                or (self.state == 'IN' and year >= 2015):
             dt = date(year, 11, 1) + rd(weekday=MO)
             self[dt + rd(days=+1)] = "Election Day"
 
@@ -663,11 +670,15 @@ class UnitedStates(HolidayBase):
 
         # Day After Thanksgiving
         # Friday After Thanksgiving
-        if self.state in ('DE', 'FL') and year >= 1975:
+        # Lincoln's Birthday
+        if (self.state in ('DE', 'FL') and year >= 1975) \
+                or (self.state == 'IN' and year >= 2010):
             if self.state == 'DE':
                 name = "Day After Thanksgiving"
             elif self.state == 'FL':
                 name = "Friday After Thanksgiving"
+            elif self.state == 'IN':
+                name = "Lincoln's Birthday"
             dt = date(year, 11, 1) + rd(weekday=TH(+4))
             self[dt + rd(days=+1)] = name
 
