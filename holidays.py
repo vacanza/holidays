@@ -570,7 +570,7 @@ class UnitedStates(HolidayBase):
                 self[date(year, 4, 17)] = name + " (Observed)"
 
         # Good Friday
-        if self.state in ('CT', 'DE', 'GU', 'IN'):
+        if self.state in ('CT', 'DE', 'GU', 'IN', 'KY'):
             self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
 
         # Confederate Memorial Day
@@ -692,7 +692,7 @@ class UnitedStates(HolidayBase):
             self[date(year, 12, 8)] = "Lady of Camarin Day"
 
         # Christmas Eve
-        if self.state == 'AS':
+        if self.state == 'AS' or (self.state == 'KY' and year >= 2013):
             name = "Christmas Eve"
             self[date(year, 12, 24)] = name
             if self.observed and date(year, 12, 24).weekday() == 5:
@@ -708,6 +708,13 @@ class UnitedStates(HolidayBase):
                 self[date(year, 12, 25) + rd(days=-1)] = name + " (Observed)"
             elif self.observed and date(year, 12, 25).weekday() == 6:
                 self[date(year, 12, 25) + rd(days=+1)] = name + " (Observed)"
+
+        # New Year's Eve
+        if self.state == 'KY' and year >= 2013:
+            name = "New Year's Eve"
+            self[date(year, 12, 31)] = name
+            if self.observed and date(year, 12, 31).weekday() == 5:
+                self[date(year, 12, 30)] = name + " (Observed)"
 
 
 class US(UnitedStates):
