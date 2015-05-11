@@ -529,6 +529,10 @@ class UnitedStates(HolidayBase):
             else:
                 self[date(year, 12, 26)] = name
 
+        # Mardi Gras
+        if self.state == 'LA' and year >= 1857:
+            self[easter(year) + rd(days=-47)] = "Mardi Gras"
+
         # Guam Discovery Day
         if self.state == 'GU' and year >= 1970:
             self[date(year, 3, 1) + rd(weekday=MO)] = "Guam Discovery Day"
@@ -570,7 +574,7 @@ class UnitedStates(HolidayBase):
                 self[date(year, 4, 17)] = name + " (Observed)"
 
         # Good Friday
-        if self.state in ('CT', 'DE', 'GU', 'IN', 'KY'):
+        if self.state in ('CT', 'DE', 'GU', 'IN', 'KY', 'LA'):
             self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
 
         # Confederate Memorial Day
@@ -641,7 +645,8 @@ class UnitedStates(HolidayBase):
                 self[date(year, 10, 18) + rd(days=+1)] = name + " (Observed)"
 
         # Election Day
-        if (self.state in ('DE', 'HI', 'IL', 'IN') and year >= 2008 and year % 2 == 0) \
+        if (self.state in ('DE', 'HI', 'IL', 'IN', 'LA')
+                and year >= 2008 and year % 2 == 0) \
                 or (self.state == 'IN' and year >= 2015):
             dt = date(year, 11, 1) + rd(weekday=MO)
             self[dt + rd(days=+1)] = "Election Day"
