@@ -573,6 +573,12 @@ class UnitedStates(HolidayBase):
             elif self.observed and date(year, 4, 16).weekday() == 6:
                 self[date(year, 4, 17)] = name + " (Observed)"
 
+        # Patriots' Day
+        if self.state == 'ME' and year >= 1969:
+            self[date(year, 4, 1) + rd(weekday=MO(+3))] = "Patriots' Day"
+        elif self.state == 'ME' and year >= 1894:
+            self[date(year, 4, 19)] = "Patriots' Day"
+
         # Good Friday
         if self.state in ('CT', 'DE', 'GU', 'IN', 'KY', 'LA'):
             self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"

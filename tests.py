@@ -901,6 +901,17 @@ class TestUS(unittest.TestCase):
         self.assertFalse(date(2005, 4, 15) in dc_holidays)
         self.assertFalse(date(2006, 4, 17) in dc_holidays)
 
+    def test_patriots_day(self):
+        me_holidays = holidays.US(state='ME')
+        self.assertFalse(date(1983, 4, 19) in me_holidays)
+        for year in range(1894, 1969):
+            self.assertFalse(date(year, 4, 19) in self.holidays)
+            self.assertTrue(date(year, 4, 19) in me_holidays)
+        for dt in [date(1969, 4, 21), date(1974, 4, 15), date(1975, 4, 21),
+                   date(2015, 4, 20), date(2016, 4, 18), date(2019, 4, 15)]:
+            self.assertFalse(dt in self.holidays)
+            self.assertTrue(dt in me_holidays)
+
     def test_good_friday(self):
         ct_holidays = holidays.US(state='CT')
         de_holidays = holidays.US(state='DE')
