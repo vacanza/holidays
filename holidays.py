@@ -541,6 +541,13 @@ class UnitedStates(HolidayBase):
         if self.state == 'IL' and year >= 1978:
             self[date(year, 3, 1) + rd(weekday=MO)] = "Casimir Pulaski Day"
 
+        # Evacuation Day
+        if self.state == 'MA' and year >= 1901:
+            name = "Evacuation Day"
+            self[date(year, 3, 17)] = name
+            if date(year, 3, 17).weekday() in (5, 6):
+                self[date(year, 3, 17) + rd(weekday=MO)] = name + " (Observed)"
+
         # Prince Jonah Kuhio Kalanianaole Day
         if self.state == 'HI' and year >= 1949:
             name = "Prince Jonah Kuhio Kalanianaole Day"
@@ -574,9 +581,9 @@ class UnitedStates(HolidayBase):
                 self[date(year, 4, 17)] = name + " (Observed)"
 
         # Patriots' Day
-        if self.state == 'ME' and year >= 1969:
+        if self.state in ('ME', 'MA') and year >= 1969:
             self[date(year, 4, 1) + rd(weekday=MO(+3))] = "Patriots' Day"
-        elif self.state == 'ME' and year >= 1894:
+        elif self.state in ('ME', 'MA') and year >= 1894:
             self[date(year, 4, 19)] = "Patriots' Day"
 
         # Good Friday

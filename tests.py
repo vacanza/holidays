@@ -857,6 +857,19 @@ class TestUS(unittest.TestCase):
             self.assertTrue(dt in il_holidays)
             self.assertEqual(il_holidays.get(dt), "Casimir Pulaski Day")
 
+    def test_evacuation_day(self):
+        ma_holidays = holidays.US(state='MA')
+        self.assertFalse(date(1900, 3, 17) in ma_holidays)
+        for year in range(1901, 2050):
+            self.assertFalse(date(year, 3, 17) in self.holidays)
+            self.assertTrue(date(year, 3, 17) in ma_holidays)
+        self.assertFalse(date(1995, 3, 20) in ma_holidays)
+        for dt in [date(2012, 3, 19), date(2013, 3, 18), date(2018, 3, 19)]:
+            self.assertTrue(dt in ma_holidays)
+        ma_holidays.observed = False
+        for dt in [date(2012, 3, 19), date(2013, 3, 18), date(2018, 3, 19)]:
+            self.assertFalse(dt in ma_holidays)
+
     def test_prince_jonah_kuhio_kalanianaole_day(self):
         hi_holidays = holidays.US(state='HI')
         self.assertFalse(date(1948, 3, 26) in hi_holidays)
@@ -903,14 +916,18 @@ class TestUS(unittest.TestCase):
 
     def test_patriots_day(self):
         me_holidays = holidays.US(state='ME')
+        ma_holidays = holidays.US(state='MA')
         self.assertFalse(date(1983, 4, 19) in me_holidays)
+        self.assertFalse(date(1983, 4, 19) in ma_holidays)
         for year in range(1894, 1969):
             self.assertFalse(date(year, 4, 19) in self.holidays)
             self.assertTrue(date(year, 4, 19) in me_holidays)
+            self.assertTrue(date(year, 4, 19) in ma_holidays)
         for dt in [date(1969, 4, 21), date(1974, 4, 15), date(1975, 4, 21),
                    date(2015, 4, 20), date(2016, 4, 18), date(2019, 4, 15)]:
             self.assertFalse(dt in self.holidays)
             self.assertTrue(dt in me_holidays)
+            self.assertTrue(dt in ma_holidays)
 
     def test_good_friday(self):
         ct_holidays = holidays.US(state='CT')
