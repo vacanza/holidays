@@ -1114,6 +1114,7 @@ class TestUS(unittest.TestCase):
         de_holidays = holidays.US(state='DE')
         fl_holidays = holidays.US(state='FL')
         in_holidays = holidays.US(state='IN')
+        md_holidays = holidays.US(state='MD')
         for dt in [date(1997, 11, 27), date(1999, 11, 25), date(2000, 11, 23),
                    date(2012, 11, 22), date(2013, 11, 28), date(2014, 11, 27),
                    date(2015, 11, 26), date(2016, 11, 24), date(2020, 11, 26)]:
@@ -1126,6 +1127,9 @@ class TestUS(unittest.TestCase):
             self.assertTrue(dt + relativedelta(days=+1) in fl_holidays)
             self.assertEqual(fl_holidays.get(dt + relativedelta(days=+1)),
                              "Friday After Thanksgiving")
+            if dt.year >= 2008:
+                self.assertEqual(md_holidays.get(dt + relativedelta(days=1)),
+                                 "American Indian Heritage Day")
             if dt.year >= 2010:
                 self.assertEqual(in_holidays.get(dt + relativedelta(days=1)),
                                  "Lincoln's Birthday")

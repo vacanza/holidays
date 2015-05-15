@@ -689,14 +689,18 @@ class UnitedStates(HolidayBase):
         # Day After Thanksgiving
         # Friday After Thanksgiving
         # Lincoln's Birthday
+        # American Indian Heritage Day
         if (self.state in ('DE', 'FL') and year >= 1975) \
-                or (self.state == 'IN' and year >= 2010):
+                or (self.state == 'IN' and year >= 2010) \
+                or (self.state == 'MD' and year >= 2008):
             if self.state == 'DE':
                 name = "Day After Thanksgiving"
             elif self.state == 'FL':
                 name = "Friday After Thanksgiving"
             elif self.state == 'IN':
                 name = "Lincoln's Birthday"
+            elif self.state == 'MD' and year >= 2008:
+                name = "American Indian Heritage Day"
             dt = date(year, 11, 1) + rd(weekday=TH(+4))
             self[dt + rd(days=+1)] = name
 
