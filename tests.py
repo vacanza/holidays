@@ -1155,6 +1155,7 @@ class TestUS(unittest.TestCase):
     def test_christmass_eve(self):
         as_holidays = holidays.US(state='AS')
         ky_holidays = holidays.US(state='KY')
+        mi_holidays = holidays.US(state='MI')
         self.holidays.observed = False
         for year in range(1900, 2050):
             self.assertFalse(date(year, 12, 24) in self.holidays)
@@ -1162,15 +1163,22 @@ class TestUS(unittest.TestCase):
             if year >= 2013:
                 f = ky_holidays.get(date(year, 12, 24)).find("Eve")
                 self.assertTrue(f > 0)
+                f = mi_holidays.get(date(year, 12, 24)).find("Eve")
+                self.assertTrue(f > 0)
             else:
                 f = ky_holidays.get(date(year, 12, 24), "").find("Eve")
                 self.assertTrue(f < 0)
+                f = mi_holidays.get(date(year, 12, 24), "").find("Eve")
+                self.assertTrue(f < 0)
         self.assertTrue(date(2016, 12, 23) in as_holidays)
         self.assertTrue(date(2016, 12, 23) in ky_holidays)
+        self.assertTrue(date(2016, 12, 23) in mi_holidays)
         self.assertTrue("Christmas Eve (Observed)" in
                         as_holidays.get_list(date(2017, 12, 25)))
         self.assertTrue("Christmas Eve (Observed)" in
                         ky_holidays.get_list(date(2017, 12, 25)))
+        self.assertTrue("Christmas Eve (Observed)" in
+                        mi_holidays.get_list(date(2017, 12, 25)))
 
     def test_christmas_day(self):
         for year in range(1900, 2100):
@@ -1186,10 +1194,13 @@ class TestUS(unittest.TestCase):
 
     def test_new_years_eve(self):
         ky_holidays = holidays.US(state='KY')
+        mi_holidays = holidays.US(state='MI')
         self.assertFalse(date(2012, 12, 31) in ky_holidays)
+        self.assertFalse(date(2012, 12, 31) in mi_holidays)
         for dt in [date(2013, 12, 31), date(2016, 12, 30)]:
             self.assertFalse(dt in self.holidays)
             self.assertTrue(dt in ky_holidays)
+            self.assertTrue(dt in mi_holidays)
 
 
 class TestNZ(unittest.TestCase):
