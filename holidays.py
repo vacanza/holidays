@@ -714,7 +714,7 @@ class UnitedStates(HolidayBase):
             self[date(year, 12, 8)] = "Lady of Camarin Day"
 
         # Christmas Eve
-        if self.state == 'AS' or (self.state in ('KY', 'MI') and year >= 2013):
+        if self.state == 'AS' or (self.state in ('KS', 'MI') and year >= 2013):
             name = "Christmas Eve"
             self[date(year, 12, 24)] = name
             if self.observed and date(year, 12, 24).weekday() == 5:

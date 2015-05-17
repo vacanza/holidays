@@ -1154,29 +1154,29 @@ class TestUS(unittest.TestCase):
 
     def test_christmass_eve(self):
         as_holidays = holidays.US(state='AS')
-        ky_holidays = holidays.US(state='KY')
+        ks_holidays = holidays.US(state='KS')
         mi_holidays = holidays.US(state='MI')
         self.holidays.observed = False
         for year in range(1900, 2050):
             self.assertFalse(date(year, 12, 24) in self.holidays)
             self.assertTrue(date(year, 12, 24) in as_holidays)
             if year >= 2013:
-                f = ky_holidays.get(date(year, 12, 24)).find("Eve")
+                f = ks_holidays.get(date(year, 12, 24)).find("Eve")
                 self.assertTrue(f > 0)
                 f = mi_holidays.get(date(year, 12, 24)).find("Eve")
                 self.assertTrue(f > 0)
             else:
-                f = ky_holidays.get(date(year, 12, 24), "").find("Eve")
+                f = ks_holidays.get(date(year, 12, 24), "").find("Eve")
                 self.assertTrue(f < 0)
                 f = mi_holidays.get(date(year, 12, 24), "").find("Eve")
                 self.assertTrue(f < 0)
         self.assertTrue(date(2016, 12, 23) in as_holidays)
-        self.assertTrue(date(2016, 12, 23) in ky_holidays)
+        self.assertTrue(date(2016, 12, 23) in ks_holidays)
         self.assertTrue(date(2016, 12, 23) in mi_holidays)
         self.assertTrue("Christmas Eve (Observed)" in
                         as_holidays.get_list(date(2017, 12, 25)))
         self.assertTrue("Christmas Eve (Observed)" in
-                        ky_holidays.get_list(date(2017, 12, 25)))
+                        ks_holidays.get_list(date(2017, 12, 25)))
         self.assertTrue("Christmas Eve (Observed)" in
                         mi_holidays.get_list(date(2017, 12, 25)))
 
