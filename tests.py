@@ -725,6 +725,9 @@ class TestUS(unittest.TestCase):
         self.assertEqual(holidays.US(state='AS').get('2015-01-19'),
                          ("Dr. Martin Luther King Jr. "
                           "and Robert E. Lee's Birthdays"))
+        self.assertEqual(holidays.US(state='MS').get('2015-01-19'),
+                         ("Dr. Martin Luther King Jr. "
+                          "and Robert E. Lee's Birthdays"))
         self.assertEqual(holidays.US(state='AZ').get('2015-01-19'),
                          "Dr. Martin Luther King Jr./Civil Rights Day")
         self.assertEqual(holidays.US(state='ID').get('2015-01-19'),
@@ -950,6 +953,7 @@ class TestUS(unittest.TestCase):
     def test_confederate_memorial_day(self):
         al_holidays = holidays.US(state='AL')
         ga_holidays = holidays.US(state='GA')
+        ms_holidays = holidays.US(state='MS')
         self.assertFalse(date(1865, 4, 24) in self.holidays)
         self.assertFalse(date(1865, 4, 24) in al_holidays)
         for dt in [date(1866, 4, 23), date(1878, 4, 22), date(1884, 4, 28),
@@ -957,6 +961,7 @@ class TestUS(unittest.TestCase):
             self.assertFalse(dt in self.holidays)
             self.assertTrue(dt in al_holidays)
             self.assertTrue(dt in ga_holidays)
+            self.assertTrue(dt in ms_holidays)
 
     def test_primary_election_day(self):
         in_holidays = holidays.US(state='IN')

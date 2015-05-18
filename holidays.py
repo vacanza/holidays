@@ -485,7 +485,7 @@ class UnitedStates(HolidayBase):
             name = "Martin Luther King, Jr. Day"
             if self.state == 'AL':
                 name = "Robert E. Lee/Martin Luther King Birthday"
-            elif self.state == 'AS':
+            elif self.state in ('AS', 'MS'):
                 name = ("Dr. Martin Luther King Jr. "
                         "and Robert E. Lee's Birthdays")
             elif self.state == 'AZ':
@@ -591,7 +591,7 @@ class UnitedStates(HolidayBase):
             self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
 
         # Confederate Memorial Day
-        if self.state in ('AL', 'GA') and year >= 1866:
+        if self.state in ('AL', 'GA', 'MS') and year >= 1866:
             name = "Confederate Memorial Day"
             self[date(year, 4, 1) + rd(weekday=MO(+4))] = name
 
