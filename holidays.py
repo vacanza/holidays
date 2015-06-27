@@ -601,6 +601,15 @@ class UnitedStates(HolidayBase):
             dt = date(year, 5, 1) + rd(weekday=MO)
             self[dt + rd(days=+1)] = "Primary Election Day"
 
+        # Truman Day
+        if self.state == 'MO' and year >= 1949:
+            name = "Truman Day"
+            self[date(year, 5, 8)] = name
+            if self.observed and date(year, 5, 8).weekday() == 5:
+                self[date(year, 5, 7)] = name + " (Observed)"
+            elif self.observed and date(year, 5, 8).weekday() == 6:
+                self[date(year, 5, 10)] = name + " (Observed)"
+
         # Memorial Day
         if year > 1970:
             self[date(year, 5, 31) + rd(weekday=MO(-1))] = "Memorial Day"

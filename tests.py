@@ -972,6 +972,22 @@ class TestUS(unittest.TestCase):
             self.assertFalse(dt in self.holidays)
             self.assertTrue(dt in in_holidays)
 
+    def test_truman_day(self):
+        mo_holidays = holidays.US(state='MO', observed=False)
+        self.assertFalse(date(1948, 5, 8) in self.holidays)
+        self.assertFalse(date(1948, 5, 8) in mo_holidays)
+        for year in range(1949, 2100):
+            dt = date(year, 5, 8)
+            self.assertFalse(dt in self.holidays)
+            self.assertTrue(dt in mo_holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in mo_holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in mo_holidays)
+        self.assertFalse(date(2004, 5, 7) in mo_holidays)
+        self.assertFalse(date(2005, 5, 10) in mo_holidays)
+        mo_holidays.observed = True
+        self.assertTrue(date(2004, 5, 7) in mo_holidays)
+        self.assertTrue(date(2005, 5, 10) in mo_holidays)
+
     def test_memorial_day(self):
         for dt in [date(1969, 5, 30), date(1970, 5, 30), date(1971, 5, 31),
                    date(1997, 5, 26), date(1999, 5, 31), date(2000, 5, 29),
