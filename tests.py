@@ -1090,6 +1090,7 @@ class TestUS(unittest.TestCase):
         il_holidays = holidays.US(state='IL')
         in_holidays = holidays.US(state='IN')
         la_holidays = holidays.US(state='LA')
+        mt_holidays = holidays.US(state='MT')
         self.assertFalse(date(2004, 11, 2) in de_holidays)
         for dt in [date(2008, 11, 4), date(2010, 11, 2), date(2012, 11, 6),
                    date(2014, 11, 4), date(2016, 11, 8), date(2018, 11, 6)]:
@@ -1099,12 +1100,14 @@ class TestUS(unittest.TestCase):
             self.assertTrue(dt in il_holidays)
             self.assertTrue(dt in in_holidays)
             self.assertTrue(dt in la_holidays)
+            self.assertTrue(dt in mt_holidays)
         self.assertFalse(date(2015, 11, 3) in self.holidays)
         self.assertFalse(date(2015, 11, 3) in de_holidays)
         self.assertFalse(date(2015, 11, 3) in hi_holidays)
         self.assertFalse(date(2015, 11, 3) in il_holidays)
         self.assertTrue(date(2015, 11, 3) in in_holidays)
         self.assertFalse(date(2015, 11, 3) in la_holidays)
+        self.assertFalse(date(2015, 11, 3) in mt_holidays)
 
     def test_all_souls_day(self):
         gu_holidays = holidays.US(state='GU')

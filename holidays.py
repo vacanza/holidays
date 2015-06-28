@@ -667,7 +667,7 @@ class UnitedStates(HolidayBase):
                 self[date(year, 10, 18) + rd(days=+1)] = name + " (Observed)"
 
         # Election Day
-        if (self.state in ('DE', 'HI', 'IL', 'IN', 'LA')
+        if (self.state in ('DE', 'HI', 'IL', 'IN', 'LA', 'MT')
                 and year >= 2008 and year % 2 == 0) \
                 or (self.state == 'IN' and year >= 2015):
             dt = date(year, 11, 1) + rd(weekday=MO)
