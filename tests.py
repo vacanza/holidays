@@ -963,6 +963,13 @@ class TestUS(unittest.TestCase):
             self.assertTrue(dt in ga_holidays)
             self.assertTrue(dt in ms_holidays)
 
+    def test_arbor_day(self):
+        ne_holidays = holidays.US(state='NE')
+        for dt in [date(1875, 4, 22), date(1988, 4, 22), date(1989, 4, 28),
+                   date(2009, 4, 24), date(2010, 4, 30), date(2014, 4, 25)]:
+            self.assertFalse(dt in self.holidays)
+            self.assertTrue(dt in ne_holidays)
+
     def test_primary_election_day(self):
         in_holidays = holidays.US(state='IN')
         self.assertFalse(date(2004, 5, 4) in in_holidays)

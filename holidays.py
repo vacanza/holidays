@@ -595,6 +595,12 @@ class UnitedStates(HolidayBase):
             name = "Confederate Memorial Day"
             self[date(year, 4, 1) + rd(weekday=MO(+4))] = name
 
+        # Arbor Day
+        if self.state == 'NE' and year >= 1989:
+            self[date(year, 4, 30) + rd(weekday=FR(-1))] = "Arbor Day"
+        elif self.state == 'NE' and year >= 1875:
+            self[date(year, 4, 22)] = "Arbor Day"
+
         # Primary Election Day
         if self.state == 'IN' and ((year >= 2006 and year % 2 == 0)
                                    or year >= 2015):
