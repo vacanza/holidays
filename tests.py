@@ -1091,6 +1091,23 @@ class TestUS(unittest.TestCase):
         self.assertTrue(date(2014, 10, 17) in ak_holidays)
         self.assertTrue(date(2015, 10, 19) in ak_holidays)
 
+    def test_nevada_day(self):
+        nv_holidays = holidays.US(state='NV')
+        self.assertFalse(date(1932, 10, 31) in nv_holidays)
+        for dt in [date(1933, 10, 31), date(1999, 10, 31), date(2000, 10, 27),
+                   date(2002, 10, 25), date(2014, 10, 31), date(2015, 10, 30)]:
+            self.assertFalse(dt in self.holidays)
+            self.assertTrue(dt in nv_holidays)
+        self.assertTrue("Nevada Day (Observed)" in
+                        nv_holidays.get_list(date(1998, 10, 30)))
+        self.assertTrue("Nevada Day (Observed)" in
+                        nv_holidays.get_list(date(1999, 11, 1)))
+        nv_holidays.observed = False
+        self.assertFalse("Nevada Day (Observed)" in
+                         nv_holidays.get_list(date(1998, 10, 30)))
+        self.assertFalse("Nevada Day (Observed)" in
+                         nv_holidays.get_list(date(1999, 11, 1)))
+
     def test_election_day(self):
         de_holidays = holidays.US(state='DE')
         hi_holidays = holidays.US(state='HI')
@@ -1146,6 +1163,7 @@ class TestUS(unittest.TestCase):
         fl_holidays = holidays.US(state='FL')
         in_holidays = holidays.US(state='IN')
         md_holidays = holidays.US(state='MD')
+        nv_holidays = holidays.US(state='NV')
         for dt in [date(1997, 11, 27), date(1999, 11, 25), date(2000, 11, 23),
                    date(2012, 11, 22), date(2013, 11, 28), date(2014, 11, 27),
                    date(2015, 11, 26), date(2016, 11, 24), date(2020, 11, 26)]:
@@ -1168,6 +1186,8 @@ class TestUS(unittest.TestCase):
                 self.assertNotEqual(
                     in_holidays.get(dt + relativedelta(days=1)),
                     "Lincoln's Birthday")
+            self.assertEqual(nv_holidays.get(dt + relativedelta(days=+1)),
+                             "Family Day")
 
     def test_robert_lee_birthday(self):
         ga_holidays = holidays.US(state='GA')

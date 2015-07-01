@@ -658,7 +658,7 @@ class UnitedStates(HolidayBase):
             self[date(year, 9, 1) + rd(weekday=MO)] = "Labor Day"
 
         # Columbus Day
-        if self.state not in ('AK', 'DE', 'FL', 'HI'):
+        if self.state not in ('AK', 'DE', 'FL', 'HI', 'NV'):
             if year >= 1970:
                 self[date(year, 10, 1) + rd(weekday=MO(+2))] = "Columbus Day"
             elif year >= 1937:
@@ -671,6 +671,17 @@ class UnitedStates(HolidayBase):
                 self[date(year, 10, 18) + rd(days=-1)] = name + " (Observed)"
             elif self.observed and date(year, 10, 18).weekday() == 6:
                 self[date(year, 10, 18) + rd(days=+1)] = name + " (Observed)"
+
+        # Nevada Day
+        if self.state == 'NV' and year >= 1933:
+            dt = date(year, 10, 31)
+            if year >= 2000:
+                dt += rd(weekday=FR(-1))
+            self[dt] = "Nevada Day"
+            if self.observed and dt.weekday() == 5:
+                self[dt + rd(days=-1)] = "Nevada Day (Observed)"
+            elif self.observed and dt.weekday() == 6:
+                self[dt + rd(days=+1)] = "Nevada Day (Observed)"
 
         # Election Day
         if (self.state in ('DE', 'HI', 'IL', 'IN', 'LA', 'MT')
@@ -705,9 +716,11 @@ class UnitedStates(HolidayBase):
         # Friday After Thanksgiving
         # Lincoln's Birthday
         # American Indian Heritage Day
+        # Family Day
         if (self.state in ('DE', 'FL') and year >= 1975) \
                 or (self.state == 'IN' and year >= 2010) \
-                or (self.state == 'MD' and year >= 2008):
+                or (self.state == 'MD' and year >= 2008) \
+                or self.state == 'NV':
             if self.state == 'DE':
                 name = "Day After Thanksgiving"
             elif self.state == 'FL':
@@ -716,6 +729,8 @@ class UnitedStates(HolidayBase):
                 name = "Lincoln's Birthday"
             elif self.state == 'MD' and year >= 2008:
                 name = "American Indian Heritage Day"
+            elif self.state == 'NV':
+                name = "Family Day"
             dt = date(year, 11, 1) + rd(weekday=TH(+4))
             self[dt + rd(days=+1)] = name
 
