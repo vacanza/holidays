@@ -488,7 +488,7 @@ class UnitedStates(HolidayBase):
             elif self.state in ('AS', 'MS'):
                 name = ("Dr. Martin Luther King Jr. "
                         "and Robert E. Lee's Birthdays")
-            elif self.state == 'AZ':
+            elif self.state in ('AZ', 'NH'):
                 name = "Dr. Martin Luther King Jr./Civil Rights Day"
             elif self.state == 'GA' and year < 2012:
                 name = "Robert E. Lee's Birthday"
@@ -684,7 +684,7 @@ class UnitedStates(HolidayBase):
                 self[dt + rd(days=+1)] = "Nevada Day (Observed)"
 
         # Election Day
-        if (self.state in ('DE', 'HI', 'IL', 'IN', 'LA', 'MT')
+        if (self.state in ('DE', 'HI', 'IL', 'IN', 'LA', 'MT', 'NH')
                 and year >= 2008 and year % 2 == 0) \
                 or (self.state == 'IN' and year >= 2015):
             dt = date(year, 11, 1) + rd(weekday=MO)
@@ -717,11 +717,11 @@ class UnitedStates(HolidayBase):
         # Lincoln's Birthday
         # American Indian Heritage Day
         # Family Day
-        if (self.state in ('DE', 'FL') and year >= 1975) \
+        if (self.state in ('DE', 'FL', 'NH') and year >= 1975) \
                 or (self.state == 'IN' and year >= 2010) \
                 or (self.state == 'MD' and year >= 2008) \
                 or self.state == 'NV':
-            if self.state == 'DE':
+            if self.state in ('DE', 'NH'):
                 name = "Day After Thanksgiving"
             elif self.state == 'FL':
                 name = "Friday After Thanksgiving"
