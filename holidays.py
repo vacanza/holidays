@@ -499,7 +499,7 @@ class UnitedStates(HolidayBase):
 
         # Lincoln's Birthday
         name = "Lincoln's Birthday"
-        if (self.state in ('CT', 'IL', 'IA') and year >= 1971) \
+        if (self.state in ('CT', 'IL', 'IA', 'NJ') and year >= 1971) \
                 or (self.state == 'CA' and year >= 1971 and year <= 2009):
             self[date(year, 2, 12)] = name
             if self.observed and date(year, 2, 12).weekday() == 5:
@@ -587,7 +587,7 @@ class UnitedStates(HolidayBase):
             self[date(year, 4, 19)] = "Patriots' Day"
 
         # Good Friday
-        if self.state in ('CT', 'DE', 'GU', 'IN', 'KY', 'LA'):
+        if self.state in ('CT', 'DE', 'GU', 'IN', 'KY', 'LA', 'NJ'):
             self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
 
         # Confederate Memorial Day
@@ -684,7 +684,7 @@ class UnitedStates(HolidayBase):
                 self[dt + rd(days=+1)] = "Nevada Day (Observed)"
 
         # Election Day
-        if (self.state in ('DE', 'HI', 'IL', 'IN', 'LA', 'MT', 'NH')
+        if (self.state in ('DE', 'HI', 'IL', 'IN', 'LA', 'MT', 'NH', 'NJ')
                 and year >= 2008 and year % 2 == 0) \
                 or (self.state == 'IN' and year >= 2015):
             dt = date(year, 11, 1) + rd(weekday=MO)

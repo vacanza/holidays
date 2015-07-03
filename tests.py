@@ -744,62 +744,73 @@ class TestUS(unittest.TestCase):
         ct_holidays = holidays.US(state='CT')
         il_holidays = holidays.US(state='IL')
         ia_holidays = holidays.US(state='IA')
+        nj_holidays = holidays.US(state='NJ')
         for year in range(1971, 2010):
             self.assertFalse(date(year, 2, 12) in self.holidays)
             self.assertTrue(date(year, 2, 12) in ca_holidays)
             self.assertTrue(date(year, 2, 12) in ct_holidays)
             self.assertTrue(date(year, 2, 12) in il_holidays)
             self.assertTrue(date(year, 2, 12) in ia_holidays)
+            self.assertTrue(date(year, 2, 12) in nj_holidays)
             if date(year, 2, 12).weekday() == 5:
                 self.assertFalse(date(year, 2, 11) in self.holidays)
                 self.assertTrue(date(year, 2, 11) in ca_holidays)
                 self.assertTrue(date(year, 2, 11) in ct_holidays)
                 self.assertTrue(date(year, 2, 11) in il_holidays)
                 self.assertTrue(date(year, 2, 11) in ia_holidays)
+                self.assertTrue(date(year, 2, 11) in nj_holidays)
             else:
                 self.assertFalse(date(year, 2, 11) in ca_holidays)
                 self.assertFalse(date(year, 2, 11) in ct_holidays)
                 self.assertFalse(date(year, 2, 11) in il_holidays)
                 self.assertFalse(date(year, 2, 11) in ia_holidays)
+                self.assertFalse(date(year, 2, 11) in nj_holidays)
             if date(year, 2, 12).weekday() == 6:
                 self.assertFalse(date(year, 2, 13) in self.holidays)
                 self.assertTrue(date(year, 2, 13) in ca_holidays)
                 self.assertTrue(date(year, 2, 13) in ct_holidays)
                 self.assertTrue(date(year, 2, 13) in il_holidays)
                 self.assertTrue(date(year, 2, 13) in ia_holidays)
+                self.assertTrue(date(year, 2, 13) in nj_holidays)
             else:
                 self.assertFalse(date(year, 2, 13) in ca_holidays)
                 self.assertFalse(date(year, 2, 13) in ct_holidays)
                 self.assertFalse(date(year, 2, 13) in il_holidays)
                 self.assertFalse(date(year, 2, 13) in ia_holidays)
+                self.assertFalse(date(year, 2, 13) in nj_holidays)
         for year in range(2010, 2050):
             self.assertFalse(date(year, 2, 12) in self.holidays)
             self.assertFalse(date(year, 2, 12) in ca_holidays)
             self.assertTrue(date(year, 2, 12) in ct_holidays)
             self.assertTrue(date(year, 2, 12) in il_holidays)
             self.assertTrue(date(year, 2, 12) in ia_holidays)
+            self.assertTrue(date(year, 2, 12) in nj_holidays)
             if date(year, 2, 12).weekday() == 5:
                 self.assertFalse(date(year, 2, 11) in self.holidays)
                 self.assertFalse(date(year, 2, 11) in ca_holidays)
                 self.assertTrue(date(year, 2, 11) in ct_holidays)
                 self.assertTrue(date(year, 2, 11) in il_holidays)
                 self.assertTrue(date(year, 2, 11) in ia_holidays)
+                self.assertTrue(date(year, 2, 11) in nj_holidays)
             else:
                 self.assertFalse(date(year, 2, 11) in ca_holidays)
                 self.assertFalse(date(year, 2, 11) in ct_holidays)
                 self.assertFalse(date(year, 2, 11) in il_holidays)
                 self.assertFalse(date(year, 2, 11) in ia_holidays)
+                self.assertFalse(date(year, 2, 11) in nj_holidays)
             if date(year, 2, 12).weekday() == 6:
                 self.assertFalse(date(year, 2, 13) in self.holidays)
                 self.assertFalse(date(year, 2, 13) in ca_holidays)
                 self.assertTrue(date(year, 2, 13) in ct_holidays)
                 self.assertTrue(date(year, 2, 13) in il_holidays)
                 self.assertTrue(date(year, 2, 13) in ia_holidays)
+                self.assertTrue(date(year, 2, 13) in nj_holidays)
             else:
                 self.assertFalse(date(year, 2, 13) in ca_holidays)
                 self.assertFalse(date(year, 2, 13) in ct_holidays)
                 self.assertFalse(date(year, 2, 13) in il_holidays)
                 self.assertFalse(date(year, 2, 13) in ia_holidays)
+                self.assertFalse(date(year, 2, 13) in nj_holidays)
 
     def test_susan_b_anthony_day(self):
         ca_holidays = holidays.US(state='CA')
@@ -941,6 +952,7 @@ class TestUS(unittest.TestCase):
         in_holidays = holidays.US(state='IN')
         ky_holidays = holidays.US(state='IN')
         la_holidays = holidays.US(state='LA')
+        nj_holidays = holidays.US(state='NJ')
         for dt in [date(1900, 4, 13), date(1901, 4,  5), date(1902, 3, 28),
                    date(1999, 4,  2), date(2000, 4, 21), date(2010, 4,  2),
                    date(2018, 3, 30), date(2019, 4, 19), date(2020, 4, 10)]:
@@ -951,6 +963,7 @@ class TestUS(unittest.TestCase):
             self.assertTrue(dt in in_holidays)
             self.assertTrue(dt in ky_holidays)
             self.assertTrue(dt in la_holidays)
+            self.assertTrue(dt in nj_holidays)
 
     def test_confederate_memorial_day(self):
         al_holidays = holidays.US(state='AL')
@@ -1118,6 +1131,7 @@ class TestUS(unittest.TestCase):
         la_holidays = holidays.US(state='LA')
         mt_holidays = holidays.US(state='MT')
         nh_holidays = holidays.US(state='NH')
+        nj_holidays = holidays.US(state='NJ')
         self.assertFalse(date(2004, 11, 2) in de_holidays)
         for dt in [date(2008, 11, 4), date(2010, 11, 2), date(2012, 11, 6),
                    date(2014, 11, 4), date(2016, 11, 8), date(2018, 11, 6)]:
@@ -1129,6 +1143,7 @@ class TestUS(unittest.TestCase):
             self.assertTrue(dt in la_holidays)
             self.assertTrue(dt in mt_holidays)
             self.assertTrue(dt in nh_holidays)
+            self.assertTrue(dt in nj_holidays)
         self.assertFalse(date(2015, 11, 3) in self.holidays)
         self.assertFalse(date(2015, 11, 3) in de_holidays)
         self.assertFalse(date(2015, 11, 3) in hi_holidays)
@@ -1137,6 +1152,7 @@ class TestUS(unittest.TestCase):
         self.assertFalse(date(2015, 11, 3) in la_holidays)
         self.assertFalse(date(2015, 11, 3) in mt_holidays)
         self.assertFalse(date(2015, 11, 3) in nh_holidays)
+        self.assertFalse(date(2015, 11, 3) in nj_holidays)
 
     def test_all_souls_day(self):
         gu_holidays = holidays.US(state='GU')
