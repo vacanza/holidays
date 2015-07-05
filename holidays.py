@@ -518,7 +518,7 @@ class UnitedStates(HolidayBase):
             name = "George Washington/Thomas Jefferson Birthday"
         elif self.state == 'AS':
             name = "George Washington's Birthday and Daisy Gatson Bates Day"
-        if self.state not in ('DE', 'FL', 'GA'):
+        if self.state not in ('DE', 'FL', 'GA', 'NM'):
             if year > 1970:
                 self[date(year, 2, 1) + rd(weekday=MO(+3))] = name
             elif year >= 1879:
@@ -717,10 +717,11 @@ class UnitedStates(HolidayBase):
         # Lincoln's Birthday
         # American Indian Heritage Day
         # Family Day
+        # New Mexico Presidents' Day
         if (self.state in ('DE', 'FL', 'NH') and year >= 1975) \
                 or (self.state == 'IN' and year >= 2010) \
                 or (self.state == 'MD' and year >= 2008) \
-                or self.state == 'NV':
+                or self.state in ('NV', 'NM'):
             if self.state in ('DE', 'NH'):
                 name = "Day After Thanksgiving"
             elif self.state == 'FL':
@@ -731,6 +732,8 @@ class UnitedStates(HolidayBase):
                 name = "American Indian Heritage Day"
             elif self.state == 'NV':
                 name = "Family Day"
+            elif self.state == 'NM':
+                name = "Presidents' Day"
             dt = date(year, 11, 1) + rd(weekday=TH(+4))
             self[dt + rd(days=+1)] = name
 

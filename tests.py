@@ -827,6 +827,7 @@ class TestUS(unittest.TestCase):
         de_holidays = holidays.US(state='DE')
         fl_holidays = holidays.US(state='FL')
         ga_holidays = holidays.US(state='GA')
+        nm_holidays = holidays.US(state='NM')
         for dt in [date(1969, 2, 22), date(1970, 2, 22), date(1971, 2, 15),
                    date(1997, 2, 17), date(1999, 2, 15), date(2000, 2, 21),
                    date(2012, 2, 20), date(2013, 2, 18), date(2014, 2, 17),
@@ -837,6 +838,7 @@ class TestUS(unittest.TestCase):
             self.assertFalse(dt in de_holidays)
             self.assertNotEqual(fl_holidays.get(dt), "Washington's Birthday")
             self.assertFalse(dt in ga_holidays)
+            self.assertFalse(dt in nm_holidays)
         for dt in [date(2013, 12, 24), date(2014, 12, 26), date(2015, 12, 24)]:
             self.assertTrue(dt in ga_holidays)
             self.assertTrue("Washington's Birthday"
@@ -1186,6 +1188,7 @@ class TestUS(unittest.TestCase):
         md_holidays = holidays.US(state='MD')
         nv_holidays = holidays.US(state='NV')
         nh_holidays = holidays.US(state='NH')
+        nm_holidays = holidays.US(state='NM')
         for dt in [date(1997, 11, 27), date(1999, 11, 25), date(2000, 11, 23),
                    date(2012, 11, 22), date(2013, 11, 28), date(2014, 11, 27),
                    date(2015, 11, 26), date(2016, 11, 24), date(2020, 11, 26)]:
@@ -1200,6 +1203,10 @@ class TestUS(unittest.TestCase):
             self.assertTrue(dt + relativedelta(days=+1) in fl_holidays)
             self.assertEqual(fl_holidays.get(dt + relativedelta(days=+1)),
                              "Friday After Thanksgiving")
+            self.assertEqual(nv_holidays.get(dt + relativedelta(days=+1)),
+                             "Family Day")
+            self.assertEqual(nm_holidays.get(dt + relativedelta(days=+1)),
+                             "Presidents' Day")
             if dt.year >= 2008:
                 self.assertEqual(md_holidays.get(dt + relativedelta(days=1)),
                                  "American Indian Heritage Day")
@@ -1210,8 +1217,6 @@ class TestUS(unittest.TestCase):
                 self.assertNotEqual(
                     in_holidays.get(dt + relativedelta(days=1)),
                     "Lincoln's Birthday")
-            self.assertEqual(nv_holidays.get(dt + relativedelta(days=+1)),
-                             "Family Day")
 
     def test_robert_lee_birthday(self):
         ga_holidays = holidays.US(state='GA')
