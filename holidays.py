@@ -499,7 +499,7 @@ class UnitedStates(HolidayBase):
 
         # Lincoln's Birthday
         name = "Lincoln's Birthday"
-        if (self.state in ('CT', 'IL', 'IA', 'NJ') and year >= 1971) \
+        if (self.state in ('CT', 'IL', 'IA', 'NJ', 'NY') and year >= 1971) \
                 or (self.state == 'CA' and year >= 1971 and year <= 2009):
             self[date(year, 2, 12)] = name
             if self.observed and date(year, 2, 12).weekday() == 5:
@@ -508,8 +508,9 @@ class UnitedStates(HolidayBase):
                 self[date(year, 2, 13)] = name + " (Observed)"
 
         # Susan B. Anthony Day
-        if self.state == 'CA' and year >= 2014 \
-                or self.state == 'FL' and year >= 2011:
+        if (self.state == 'CA' and year >= 2014) \
+                or (self.state == 'FL' and year >= 2011) \
+                or (self.state == 'NY' and year >= 2004):
             self[date(year, 2, 15)] = "Susan B. Anthony Day"
 
         # Washington's Birthday
@@ -684,9 +685,10 @@ class UnitedStates(HolidayBase):
                 self[dt + rd(days=+1)] = "Nevada Day (Observed)"
 
         # Election Day
-        if (self.state in ('DE', 'HI', 'IL', 'IN', 'LA', 'MT', 'NH', 'NJ')
+        if (self.state in
+                ('DE', 'HI', 'IL', 'IN', 'LA', 'MT', 'NH', 'NJ', 'NY')
                 and year >= 2008 and year % 2 == 0) \
-                or (self.state == 'IN' and year >= 2015):
+                or (self.state in ('IN', 'NY') and year >= 2015):
             dt = date(year, 11, 1) + rd(weekday=MO)
             self[dt + rd(days=+1)] = "Election Day"
 
