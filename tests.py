@@ -972,6 +972,7 @@ class TestUS(unittest.TestCase):
         ky_holidays = holidays.US(state='IN')
         la_holidays = holidays.US(state='LA')
         nj_holidays = holidays.US(state='NJ')
+        nc_holidays = holidays.US(state='NC')
         for dt in [date(1900, 4, 13), date(1901, 4,  5), date(1902, 3, 28),
                    date(1999, 4,  2), date(2000, 4, 21), date(2010, 4,  2),
                    date(2018, 3, 30), date(2019, 4, 19), date(2020, 4, 10)]:
@@ -983,6 +984,7 @@ class TestUS(unittest.TestCase):
             self.assertTrue(dt in ky_holidays)
             self.assertTrue(dt in la_holidays)
             self.assertTrue(dt in nj_holidays)
+            self.assertTrue(dt in nc_holidays)
 
     def test_confederate_memorial_day(self):
         al_holidays = holidays.US(state='AL')
@@ -1209,6 +1211,7 @@ class TestUS(unittest.TestCase):
         nv_holidays = holidays.US(state='NV')
         nh_holidays = holidays.US(state='NH')
         nm_holidays = holidays.US(state='NM')
+        nc_holidays = holidays.US(state='NC')
         for dt in [date(1997, 11, 27), date(1999, 11, 25), date(2000, 11, 23),
                    date(2012, 11, 22), date(2013, 11, 28), date(2014, 11, 27),
                    date(2015, 11, 26), date(2016, 11, 24), date(2020, 11, 26)]:
@@ -1219,6 +1222,8 @@ class TestUS(unittest.TestCase):
             self.assertEqual(de_holidays.get(dt + relativedelta(days=+1)),
                              "Day After Thanksgiving")
             self.assertEqual(nh_holidays.get(dt + relativedelta(days=+1)),
+                             "Day After Thanksgiving")
+            self.assertEqual(nc_holidays.get(dt + relativedelta(days=+1)),
                              "Day After Thanksgiving")
             self.assertTrue(dt + relativedelta(days=+1) in fl_holidays)
             self.assertEqual(fl_holidays.get(dt + relativedelta(days=+1)),
@@ -1256,6 +1261,7 @@ class TestUS(unittest.TestCase):
         as_holidays = holidays.US(state='AS')
         ks_holidays = holidays.US(state='KS')
         mi_holidays = holidays.US(state='MI')
+        nc_holidays = holidays.US(state='NC')
         self.holidays.observed = False
         for year in range(1900, 2050):
             self.assertFalse(date(year, 12, 24) in self.holidays)
@@ -1270,15 +1276,20 @@ class TestUS(unittest.TestCase):
                 self.assertTrue(f < 0)
                 f = mi_holidays.get(date(year, 12, 24), "").find("Eve")
                 self.assertTrue(f < 0)
+                f = nc_holidays.get(date(year, 12, 24), "").find("Eve")
+                self.assertTrue(f < 0)
         self.assertTrue(date(2016, 12, 23) in as_holidays)
         self.assertTrue(date(2016, 12, 23) in ks_holidays)
         self.assertTrue(date(2016, 12, 23) in mi_holidays)
+        self.assertTrue(date(2016, 12, 23) in nc_holidays)
         self.assertTrue("Christmas Eve (Observed)" in
-                        as_holidays.get_list(date(2017, 12, 25)))
+                        as_holidays.get_list(date(2017, 12, 22)))
         self.assertTrue("Christmas Eve (Observed)" in
-                        ks_holidays.get_list(date(2017, 12, 25)))
+                        ks_holidays.get_list(date(2017, 12, 22)))
         self.assertTrue("Christmas Eve (Observed)" in
-                        mi_holidays.get_list(date(2017, 12, 25)))
+                        mi_holidays.get_list(date(2017, 12, 22)))
+        self.assertTrue("Christmas Eve (Observed)" in
+                        nc_holidays.get_list(date(2017, 12, 22)))
 
     def test_christmas_day(self):
         for year in range(1900, 2100):
@@ -1291,6 +1302,16 @@ class TestUS(unittest.TestCase):
         self.holidays.observed = True
         self.assertTrue(date(2010, 12, 24) in self.holidays)
         self.assertTrue(date(2016, 12, 26) in self.holidays)
+
+    def test_day_after_christmas(self):
+        nc_holidays = holidays.US(state='NC', observed=False)
+        self.assertFalse(date(2015, 12, 28) in nc_holidays)
+        self.assertFalse(date(2016, 12, 27) in nc_holidays)
+        nc_holidays.observed = True
+        self.assertTrue("Day After Christmas (Observed)" in
+                        nc_holidays.get_list(date(2015, 12, 28)))
+        self.assertTrue("Day After Christmas (Observed)" in
+                        nc_holidays.get_list(date(2016, 12, 27)))
 
     def test_new_years_eve(self):
         ky_holidays = holidays.US(state='KY')

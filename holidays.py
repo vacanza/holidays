@@ -449,6 +449,7 @@ class MX(Mexico):
 
 
 class UnitedStates(HolidayBase):
+    # https://en.wikipedia.org/wiki/Public_holidays_in_the_United_States
 
     STATES = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL',
               'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME',
@@ -588,7 +589,7 @@ class UnitedStates(HolidayBase):
             self[date(year, 4, 19)] = "Patriots' Day"
 
         # Good Friday
-        if self.state in ('CT', 'DE', 'GU', 'IN', 'KY', 'LA', 'NJ'):
+        if self.state in ('CT', 'DE', 'GU', 'IN', 'KY', 'LA', 'NJ', 'NC'):
             self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
 
         # Confederate Memorial Day
@@ -720,11 +721,11 @@ class UnitedStates(HolidayBase):
         # American Indian Heritage Day
         # Family Day
         # New Mexico Presidents' Day
-        if (self.state in ('DE', 'FL', 'NH') and year >= 1975) \
+        if (self.state in ('DE', 'FL', 'NH', 'NC') and year >= 1975) \
                 or (self.state == 'IN' and year >= 2010) \
                 or (self.state == 'MD' and year >= 2008) \
                 or self.state in ('NV', 'NM'):
-            if self.state in ('DE', 'NH'):
+            if self.state in ('DE', 'NH', 'NC'):
                 name = "Day After Thanksgiving"
             elif self.state == 'FL':
                 name = "Friday After Thanksgiving"
@@ -749,13 +750,17 @@ class UnitedStates(HolidayBase):
             self[date(year, 12, 8)] = "Lady of Camarin Day"
 
         # Christmas Eve
-        if self.state == 'AS' or (self.state in ('KS', 'MI') and year >= 2013):
+        if self.state == 'AS' or \
+                (self.state in ('KS', 'MI', 'NC') and year >= 2013):
             name = "Christmas Eve"
             self[date(year, 12, 24)] = name
-            if self.observed and date(year, 12, 24).weekday() == 5:
-                self[date(year, 12, 24) + rd(days=-1)] = name + " (Observed)"
-            elif self.observed and date(year, 12, 24).weekday() == 6:
-                self[date(year, 12, 24) + rd(days=+1)] = name + " (Observed)"
+            name = name + " (Observed)"
+            # If on Friday, observed on Thursday
+            if self.observed and date(year, 12, 24).weekday() == 4:
+                self[date(year, 12, 24) + rd(days=-1)] = name
+            # If on Saturday or Sunday, observed on Friday
+            elif self.observed and date(year, 12, 24).weekday() in (5, 6):
+                self[date(year, 12, 24) + rd(weekday=FR(-1))] = name
 
         # Christmas Day
         if year > 1870:
@@ -765,6 +770,18 @@ class UnitedStates(HolidayBase):
                 self[date(year, 12, 25) + rd(days=-1)] = name + " (Observed)"
             elif self.observed and date(year, 12, 25).weekday() == 6:
                 self[date(year, 12, 25) + rd(days=+1)] = name + " (Observed)"
+
+        # Day After Christmas
+        if self.state == 'NC' and year >= 2013:
+            name = "Day After Christmas"
+            self[date(year, 12, 26)] = name
+            name = name + " (Observed)"
+            # If on Saturday or Sunday, observed on Monday
+            if self.observed and date(year, 12, 26).weekday() in (5, 6):
+                self[date(year, 12, 26) + rd(weekday=MO)] = name
+            # If on Monday, observed on Tuesday
+            elif self.observed and date(year, 12, 26).weekday() == 0:
+                self[date(year, 12, 26) + rd(days=+1)] = name
 
         # New Year's Eve
         if self.state in ('KY', 'MI') and year >= 2013:
