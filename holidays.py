@@ -651,6 +651,10 @@ class UnitedStates(HolidayBase):
         if self.state == 'GU' and year >= 1945:
             self[date(year, 7, 21)] = "Liberation Day (Guam)"
 
+        # Victory Day
+        if self.state == 'RI' and year >= 1948:
+            self[date(year, 8, 1) + rd(weekday=MO(+2))] = "Victory Day"
+
         # Statehood Day (Hawaii)
         if self.state == 'HI' and year >= 1959:
             self[date(year, 8, 1) + rd(weekday=FR(+3))] = "Statehood Day"
