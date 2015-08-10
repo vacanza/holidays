@@ -593,7 +593,7 @@ class UnitedStates(HolidayBase):
             self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
 
         # Confederate Memorial Day
-        if self.state in ('AL', 'GA', 'MS') and year >= 1866:
+        if self.state in ('AL', 'GA', 'MS', 'SC') and year >= 1866:
             name = "Confederate Memorial Day"
             self[date(year, 4, 1) + rd(weekday=MO(+4))] = name
 
