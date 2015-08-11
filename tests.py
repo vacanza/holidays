@@ -1113,6 +1113,7 @@ class TestUS(unittest.TestCase):
         de_holidays = holidays.US(state='DE')
         fl_holidays = holidays.US(state='FL')
         hi_holidays = holidays.US(state='HI')
+        sd_holidays = holidays.US(state='SD')
         for dt in [date(1937, 10, 12), date(1969, 10, 12), date(1970, 10, 12),
                    date(1999, 10, 11), date(2000, 10,  9), date(2001, 10,  8),
                    date(2013, 10, 14), date(2018, 10,  8), date(2019, 10, 14)]:
@@ -1123,6 +1124,7 @@ class TestUS(unittest.TestCase):
             self.assertFalse(dt in hi_holidays)
             self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
             self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+            self.assertEqual(sd_holidays.get(dt), "Native American Day")
         self.assertFalse(date(1936, 10, 12) in self.holidays)
 
     def test_alaska_day(self):

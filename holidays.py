@@ -665,10 +665,14 @@ class UnitedStates(HolidayBase):
 
         # Columbus Day
         if self.state not in ('AK', 'DE', 'FL', 'HI', 'NV'):
+            if self.state == 'SD':
+                name = "Native American Day"
+            else:
+                name = "Columbus Day"
             if year >= 1970:
-                self[date(year, 10, 1) + rd(weekday=MO(+2))] = "Columbus Day"
+                self[date(year, 10, 1) + rd(weekday=MO(+2))] = name
             elif year >= 1937:
-                self[date(year, 10, 12)] = "Columbus Day"
+                self[date(year, 10, 12)] = name
 
         # Alaska Day
         if self.state == 'AK' and year >= 1867:
