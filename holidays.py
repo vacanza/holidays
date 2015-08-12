@@ -589,7 +589,8 @@ class UnitedStates(HolidayBase):
             self[date(year, 4, 19)] = "Patriots' Day"
 
         # Good Friday
-        if self.state in ('CT', 'DE', 'GU', 'IN', 'KY', 'LA', 'NJ', 'NC'):
+        if self.state in ('CT', 'DE', 'GU', 'IN', 'KY',
+                          'LA', 'NJ', 'NC', 'TN'):
             self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
 
         # Confederate Memorial Day

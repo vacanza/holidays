@@ -973,6 +973,7 @@ class TestUS(unittest.TestCase):
         la_holidays = holidays.US(state='LA')
         nj_holidays = holidays.US(state='NJ')
         nc_holidays = holidays.US(state='NC')
+        tn_holidays = holidays.US(state='TN')
         for dt in [date(1900, 4, 13), date(1901, 4,  5), date(1902, 3, 28),
                    date(1999, 4,  2), date(2000, 4, 21), date(2010, 4,  2),
                    date(2018, 3, 30), date(2019, 4, 19), date(2020, 4, 10)]:
@@ -985,6 +986,7 @@ class TestUS(unittest.TestCase):
             self.assertTrue(dt in la_holidays)
             self.assertTrue(dt in nj_holidays)
             self.assertTrue(dt in nc_holidays)
+            self.assertTrue(dt in tn_holidays)
 
     def test_confederate_memorial_day(self):
         al_holidays = holidays.US(state='AL')
@@ -1285,6 +1287,8 @@ class TestUS(unittest.TestCase):
                 f = ks_holidays.get(date(year, 12, 24)).find("Eve")
                 self.assertTrue(f > 0)
                 f = mi_holidays.get(date(year, 12, 24)).find("Eve")
+                self.assertTrue(f > 0)
+                f = nc_holidays.get(date(year, 12, 24)).find("Eve")
                 self.assertTrue(f > 0)
             else:
                 f = ks_holidays.get(date(year, 12, 24), "").find("Eve")
