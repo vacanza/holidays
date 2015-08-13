@@ -481,6 +481,18 @@ class UnitedStates(HolidayBase):
             if self.observed and date(year, 12, 31).weekday() == 4:
                 self[date(year, 12, 31)] = name + " (Observed)"
 
+        # Inauguration Day
+        if self.state in ('DC', 'LA', 'MD', 'VA') and year >= 1789:
+            name = "Inauguration Day"
+            if (year - 1789) % 4 == 0 and year >= 1937:
+                self[date(year, 1, 20)] = name
+                if date(year, 1, 20).weekday == 6:
+                    self[date(year, 1, 21)] = name + " (Observed)"
+            elif (year - 1789) % 4 == 0:
+                self[date(year, 3, 4)] = name
+                if date(year, 3, 4).weekday == 6:
+                    self[date(year, 3, 5)] = name + " (Observed)"
+
         # Martin Luther King, Jr. Day
         if year >= 1986:
             name = "Martin Luther King, Jr. Day"

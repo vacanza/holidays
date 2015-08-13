@@ -709,6 +709,34 @@ class TestUS(unittest.TestCase):
             self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
             self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
 
+    def test_inauguration_day(self):
+        name = "Inauguration Day"
+        dc_holidays = holidays.US(state='DC')
+        la_holidays = holidays.US(state='LA')
+        md_holidays = holidays.US(state='MD')
+        va_holidays = holidays.US(state='VA')
+        for year in (1789, 1793, 1929, 1933):
+            self.assertFalse(name in self.holidays.get_list(date(year, 3, 4)))
+            self.assertTrue(name in dc_holidays.get_list(date(year, 3, 4)))
+            self.assertTrue(name in la_holidays.get_list(date(year, 3, 4)))
+            self.assertTrue(name in md_holidays.get_list(date(year, 3, 4)))
+            self.assertTrue(name in va_holidays.get_list(date(year, 3, 4)))
+        for year in (1937, 1941, 2013, 2017):
+            self.assertFalse(name in self.holidays.get_list(date(year, 1, 20)))
+            self.assertTrue(name in dc_holidays.get_list(date(year, 1, 20)))
+            self.assertTrue(name in la_holidays.get_list(date(year, 1, 20)))
+            self.assertTrue(name in md_holidays.get_list(date(year, 1, 20)))
+            self.assertTrue(name in va_holidays.get_list(date(year, 1, 20)))
+        for year in (1785, 1788, 2010, 2011, 2012, 2014, 2015, 2016):
+            self.assertFalse(name in dc_holidays.get_list(date(year, 3, 4)))
+            self.assertFalse(name in la_holidays.get_list(date(year, 3, 4)))
+            self.assertFalse(name in md_holidays.get_list(date(year, 3, 4)))
+            self.assertFalse(name in va_holidays.get_list(date(year, 3, 4)))
+            self.assertFalse(name in dc_holidays.get_list(date(year, 1, 20)))
+            self.assertFalse(name in la_holidays.get_list(date(year, 1, 20)))
+            self.assertFalse(name in md_holidays.get_list(date(year, 1, 20)))
+            self.assertFalse(name in va_holidays.get_list(date(year, 1, 20)))
+
     def test_marthin_luther(self):
         for dt in [date(1986, 1, 20), date(1999, 1, 18), date(2000, 1, 17),
                    date(2012, 1, 16), date(2013, 1, 21), date(2014, 1, 20),
