@@ -555,6 +555,10 @@ class UnitedStates(HolidayBase):
         if self.state == 'IL' and year >= 1978:
             self[date(year, 3, 1) + rd(weekday=MO)] = "Casimir Pulaski Day"
 
+        # Texas Independence Day
+        if self.state == 'TX' and year >= 1874:
+            self[date(year, 3, 2)] = "Texas Independence Day"
+
         # Evacuation Day
         if self.state == 'MA' and year >= 1901:
             name = "Evacuation Day"
@@ -584,6 +588,8 @@ class UnitedStates(HolidayBase):
             self[date(year, 3, 31)] = name
             if self.observed and date(year, 3, 31).weekday() == 6:
                 self[date(year, 4, 1)] = name + " (Observed)"
+        elif self.state == 'TX' and year >= 2000:
+            self[date(year, 3, 31)] = name
 
         # Emancipation Day
         if self.state == 'DC' and year >= 2005:
@@ -602,13 +608,19 @@ class UnitedStates(HolidayBase):
 
         # Good Friday
         if self.state in ('CT', 'DE', 'GU', 'IN', 'KY',
-                          'LA', 'NJ', 'NC', 'TN'):
+                          'LA', 'NJ', 'NC', 'TN', 'TX'):
             self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
 
         # Confederate Memorial Day
+        name = "Confederate Memorial Day"
         if self.state in ('AL', 'GA', 'MS', 'SC') and year >= 1866:
-            name = "Confederate Memorial Day"
             self[date(year, 4, 1) + rd(weekday=MO(+4))] = name
+        elif self.state == 'TX' and year >= 1931:
+            self[date(year, 1, 19)] = name
+
+        # San Jacinto Day
+        if self.state == 'TX' and year >= 1875:
+            self[date(year, 4, 21)] = "San Jacinto Day"
 
         # Arbor Day
         if self.state == 'NE' and year >= 1989:
@@ -651,6 +663,10 @@ class UnitedStates(HolidayBase):
                 elif date(year, 6, 11).weekday() == 6:
                     self[date(year, 6, 12)] = "Kamehameha Day (Observed)"
 
+        # Emancipation Day In Texas
+        if self.state == 'TX' and year >= 1980:
+            self[date(year, 6, 19)] = "Emancipation Day In Texas"
+
         # Independence Day
         if year > 1870:
             name = "Independence Day"
@@ -671,6 +687,10 @@ class UnitedStates(HolidayBase):
         # Statehood Day (Hawaii)
         if self.state == 'HI' and year >= 1959:
             self[date(year, 8, 1) + rd(weekday=FR(+3))] = "Statehood Day"
+
+        # Lyndon Baines Johnson Day
+        if self.state == 'TX' and year >= 1973:
+            self[date(year, 8, 27)] = "Lyndon Baines Johnson Day"
 
         # Labor Day
         if year >= 1894:
@@ -742,13 +762,13 @@ class UnitedStates(HolidayBase):
         # American Indian Heritage Day
         # Family Day
         # New Mexico Presidents' Day
-        if (self.state in ('DE', 'FL', 'NH', 'NC', 'OK') and year >= 1975) \
+        if (self.state in ('DE', 'FL', 'NH', 'NC', 'OK', 'TX') and year >= 1975) \
                 or (self.state == 'IN' and year >= 2010) \
                 or (self.state == 'MD' and year >= 2008) \
                 or self.state in ('NV', 'NM'):
             if self.state in ('DE', 'NH', 'NC', 'OK'):
                 name = "Day After Thanksgiving"
-            elif self.state == 'FL':
+            elif self.state in ('FL', 'TX'):
                 name = "Friday After Thanksgiving"
             elif self.state == 'IN':
                 name = "Lincoln's Birthday"
@@ -772,7 +792,8 @@ class UnitedStates(HolidayBase):
 
         # Christmas Eve
         if self.state == 'AS' or \
-                (self.state in ('KS', 'MI', 'NC') and year >= 2013):
+                (self.state in ('KS', 'MI', 'NC') and year >= 2013) or \
+                (self.state == 'TX' and year >= 1981):
             name = "Christmas Eve"
             self[date(year, 12, 24)] = name
             name = name + " (Observed)"
@@ -803,6 +824,8 @@ class UnitedStates(HolidayBase):
             # If on Monday, observed on Tuesday
             elif self.observed and date(year, 12, 26).weekday() == 0:
                 self[date(year, 12, 26) + rd(days=+1)] = name
+        elif self.state == 'TX' and year >= 1981:
+            self[date(year, 12, 26)] = "Day After Christmas"
 
         # New Year's Eve
         if self.state in ('KY', 'MI') and year >= 2013:
