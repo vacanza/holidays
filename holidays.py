@@ -680,6 +680,15 @@ class UnitedStates(HolidayBase):
         if self.state == 'GU' and year >= 1945:
             self[date(year, 7, 21)] = "Liberation Day (Guam)"
 
+        # Pioneer Day
+        if self.state == 'UT' and year >= 1849:
+            name = "Pioneer Day"
+            self[date(year, 7, 24)] = name
+            if self.observed and date(year, 7, 24).weekday() == 5:
+                self[date(year, 7, 24) + rd(days=-1)] = name + " (Observed)"
+            elif self.observed and date(year, 7, 24).weekday() == 6:
+                self[date(year, 7, 24) + rd(days=+1)] = name + " (Observed)"
+
         # Victory Day
         if self.state == 'RI' and year >= 1948:
             self[date(year, 8, 1) + rd(weekday=MO(+2))] = "Victory Day"

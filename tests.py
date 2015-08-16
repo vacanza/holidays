@@ -1147,6 +1147,13 @@ class TestUS(unittest.TestCase):
             self.assertFalse(date(year, 7, 21) in self.holidays)
             self.assertTrue(date(year, 7, 21) in gu_holidays)
 
+    def test_pioneer_day(self):
+        ut_holidays = holidays.US(state='UT')
+        self.assertFalse(date(1848, 7, 24) in ut_holidays)
+        for year in (1849, 2050):
+            self.assertFalse(date(year, 7, 24) in self.holidays)
+            self.assertTrue(date(year, 7, 24) in ut_holidays)
+
     def test_victory_day(self):
         ri_holidays = holidays.US(state='RI')
         self.assertFalse(date(1947, 8, 11) in ri_holidays)
