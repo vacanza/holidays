@@ -559,6 +559,10 @@ class UnitedStates(HolidayBase):
         if self.state == 'TX' and year >= 1874:
             self[date(year, 3, 2)] = "Texas Independence Day"
 
+        # Town Meeting Day
+        if self.state == 'VT' and year >= 1800:
+            self[date(year, 3, 1) + rd(weekday=TU)] = "Town Meeting Day"
+
         # Evacuation Day
         if self.state == 'MA' and year >= 1901:
             name = "Evacuation Day"
@@ -696,6 +700,15 @@ class UnitedStates(HolidayBase):
         # Statehood Day (Hawaii)
         if self.state == 'HI' and year >= 1959:
             self[date(year, 8, 1) + rd(weekday=FR(+3))] = "Statehood Day"
+
+        # Bennington Battle Day
+        if self.state == 'VT' and year >= 1778:
+            name = "Bennington Battle Day"
+            self[date(year, 8, 16)] = name
+            if self.observed and date(year, 8, 16).weekday() == 5:
+                self[date(year, 8, 15)] = name + " (Observed)"
+            elif self.observed and date(year, 8, 16).weekday() == 6:
+                self[date(year, 8, 17)] = name + " (Observed)"
 
         # Lyndon Baines Johnson Day
         if self.state == 'TX' and year >= 1973:

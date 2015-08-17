@@ -927,6 +927,14 @@ class TestUS(unittest.TestCase):
             self.assertFalse(date(year, 3, 2) in self.holidays)
             self.assertTrue(date(year, 3, 2) in tx_holidays)
 
+    def test_town_meeting_day(self):
+        vt_holidays = holidays.US(state='VT')
+        self.assertFalse(date(1799, 3, 5) in vt_holidays)
+        for dt in [date(1800, 3, 4), date(1803, 3, 1), date(1804, 3, 6),
+                   date(2011, 3, 1), date(2015, 3, 3), date(2017, 3, 7)]:
+            self.assertFalse(dt in self.holidays)
+            self.assertTrue(dt in vt_holidays)
+
     def test_evacuation_day(self):
         ma_holidays = holidays.US(state='MA')
         self.assertFalse(date(1900, 3, 17) in ma_holidays)
@@ -1169,6 +1177,27 @@ class TestUS(unittest.TestCase):
                    date(2014, 8, 15), date(2015, 8, 21), date(2016, 8, 19)]:
             self.assertFalse(dt in self.holidays)
             self.assertTrue(dt in hi_holidays)
+
+    def test_bennington_battle_day(self):
+        vt_holidays = holidays.US(state='VT')
+        self.assertFalse(date(1777, 8, 16) in vt_holidays)
+        for year in range(1778, 2050):
+            self.assertFalse(date(year, 8, 16) in self.holidays)
+            self.assertTrue(date(year, 8, 16) in vt_holidays)
+        vt_holidays.observed = False
+        self.assertFalse("Bennington Battle Day (Observed)" in
+                         vt_holidays.get_list(date(1997, 8, 15)))
+        vt_holidays.observed = True
+        self.assertTrue("Bennington Battle Day (Observed)" in
+                        vt_holidays.get_list(date(1997, 8, 15)))
+        self.assertFalse("Bennington Battle Day (Observed)" in
+                         vt_holidays.get_list(date(1997, 8, 17)))
+        self.assertTrue("Bennington Battle Day (Observed)" in
+                        vt_holidays.get_list(date(1998, 8, 17)))
+        self.assertFalse("Bennington Battle Day (Observed)" in
+                         vt_holidays.get_list(date(1999, 8, 15)))
+        self.assertFalse("Bennington Battle Day (Observed)" in
+                         vt_holidays.get_list(date(1999, 8, 17)))
 
     def test_lyndon_baines_johnson_day(self):
         tx_holidays = holidays.US(state='TX')
