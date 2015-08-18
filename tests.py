@@ -709,6 +709,19 @@ class TestUS(unittest.TestCase):
             self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
             self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
 
+    def test_lee_jackson_day(self):
+        va_holidays = holidays.US(state='VA')
+        self.assertFalse(date(1888, 1, 19) in va_holidays)
+        self.assertFalse(date(1983, 1, 19) in va_holidays)
+        self.assertFalse("Lee Jackson Day"
+                         in va_holidays.get_list(date(2000, 1, 17)))
+        for dt in [date(1889, 1, 19), date(1982, 1, 19), date(1983, 1, 17),
+                   date(1999, 1, 18), date(2000, 1, 14), date(2001, 1, 12),
+                   date(2013, 1, 18), date(2014, 1, 17), date(2018, 1, 12)]:
+            self.assertFalse("Lee Jackson Day" in self.holidays.get_list(dt))
+            self.assertTrue(dt in va_holidays)
+            self.assertTrue("Lee Jackson Day" in va_holidays.get_list(dt))
+
     def test_inauguration_day(self):
         name = "Inauguration Day"
         dc_holidays = holidays.US(state='DC')

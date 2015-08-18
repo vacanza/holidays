@@ -481,6 +481,16 @@ class UnitedStates(HolidayBase):
             if self.observed and date(year, 12, 31).weekday() == 4:
                 self[date(year, 12, 31)] = name + " (Observed)"
 
+        # Lee Jackson Day
+        name = "Lee Jackson Day"
+        if self.state == 'VA' and year >= 2000:
+            dt = date(year, 1, 1) + rd(weekday=MO(+3)) + rd(weekday=FR(-1))
+            self[dt] = name
+        elif self.state == 'VA' and year >= 1983:
+            self[date(year, 1, 1) + rd(weekday=MO(+3))] = name
+        elif self.state == 'VA' and year >= 1889:
+            self[date(year, 1, 19)] = name
+
         # Inauguration Day
         if self.state in ('DC', 'LA', 'MD', 'VA') and year >= 1789:
             name = "Inauguration Day"
