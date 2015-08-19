@@ -1149,6 +1149,18 @@ class TestUS(unittest.TestCase):
             self.assertFalse(date(year, 6, 19) in self.holidays)
             self.assertTrue(date(year, 6, 19) in tx_holidays)
 
+    def test_west_virginia_day(self):
+        wv_holidays = holidays.US(state='WV')
+        self.assertFalse(date(1926, 6, 20) in wv_holidays)
+        for year in (1927, 2050):
+            self.assertFalse(date(year, 6, 20) in self.holidays)
+            self.assertTrue(date(year, 6, 20) in wv_holidays)
+        self.assertTrue(date(2015, 6, 19) in wv_holidays)
+        self.assertTrue(date(2010, 6, 21) in wv_holidays)
+        wv_holidays.observed = False
+        self.assertFalse(date(2015, 6, 19) in wv_holidays)
+        self.assertFalse(date(2010, 6, 21) in wv_holidays)
+
     def test_independence_day(self):
         for year in range(1900, 2100):
             dt = date(year, 7, 4)
@@ -1345,6 +1357,7 @@ class TestUS(unittest.TestCase):
         nc_holidays = holidays.US(state='NC')
         ok_holidays = holidays.US(state='OK')
         tx_holidays = holidays.US(state='TX')
+        wv_holidays = holidays.US(state='WV')
         for dt in [date(1997, 11, 27), date(1999, 11, 25), date(2000, 11, 23),
                    date(2012, 11, 22), date(2013, 11, 28), date(2014, 11, 27),
                    date(2015, 11, 26), date(2016, 11, 24), date(2020, 11, 26)]:
@@ -1359,6 +1372,8 @@ class TestUS(unittest.TestCase):
             self.assertEqual(nc_holidays.get(dt + relativedelta(days=+1)),
                              "Day After Thanksgiving")
             self.assertEqual(ok_holidays.get(dt + relativedelta(days=+1)),
+                             "Day After Thanksgiving")
+            self.assertEqual(wv_holidays.get(dt + relativedelta(days=+1)),
                              "Day After Thanksgiving")
             self.assertTrue(dt + relativedelta(days=+1) in fl_holidays)
             self.assertEqual(fl_holidays.get(dt + relativedelta(days=+1)),

@@ -681,6 +681,15 @@ class UnitedStates(HolidayBase):
         if self.state == 'TX' and year >= 1980:
             self[date(year, 6, 19)] = "Emancipation Day In Texas"
 
+        # West Virginia Day
+        name = "West Virginia Day"
+        if self.state == 'WV' and year >= 1927:
+            self[date(year, 6, 20)] = name
+            if self.observed and date(year, 6, 20).weekday() == 5:
+                self[date(year, 6, 19)] = name + " (Observed)"
+            elif self.observed and date(year, 6, 20).weekday() == 6:
+                self[date(year, 6, 21)] = name + " (Observed)"
+
         # Independence Day
         if year > 1870:
             name = "Independence Day"
@@ -794,11 +803,11 @@ class UnitedStates(HolidayBase):
         # American Indian Heritage Day
         # Family Day
         # New Mexico Presidents' Day
-        if (self.state in ('DE', 'FL', 'NH', 'NC', 'OK', 'TX') and year >= 1975) \
+        if (self.state in ('DE', 'FL', 'NH', 'NC', 'OK', 'TX', 'WV') and year >= 1975) \
                 or (self.state == 'IN' and year >= 2010) \
                 or (self.state == 'MD' and year >= 2008) \
                 or self.state in ('NV', 'NM'):
-            if self.state in ('DE', 'NH', 'NC', 'OK'):
+            if self.state in ('DE', 'NH', 'NC', 'OK', 'WV'):
                 name = "Day After Thanksgiving"
             elif self.state in ('FL', 'TX'):
                 name = "Friday After Thanksgiving"
