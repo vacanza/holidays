@@ -533,7 +533,8 @@ class UnitedStates(HolidayBase):
         # Susan B. Anthony Day
         if (self.state == 'CA' and year >= 2014) \
                 or (self.state == 'FL' and year >= 2011) \
-                or (self.state == 'NY' and year >= 2004):
+                or (self.state == 'NY' and year >= 2004) \
+                or (self.state == 'WI' and year >= 1976):
             self[date(year, 2, 15)] = "Susan B. Anthony Day"
 
         # Washington's Birthday
@@ -834,7 +835,8 @@ class UnitedStates(HolidayBase):
         # Christmas Eve
         if self.state == 'AS' or \
                 (self.state in ('KS', 'MI', 'NC') and year >= 2013) or \
-                (self.state == 'TX' and year >= 1981):
+                (self.state == 'TX' and year >= 1981) or \
+                (self.state == 'WI' and year >= 2012):
             name = "Christmas Eve"
             self[date(year, 12, 24)] = name
             name = name + " (Observed)"
@@ -869,7 +871,8 @@ class UnitedStates(HolidayBase):
             self[date(year, 12, 26)] = "Day After Christmas"
 
         # New Year's Eve
-        if self.state in ('KY', 'MI') and year >= 2013:
+        if (self.state in ('KY', 'MI') and year >= 2013) or \
+                (self.state == 'WI' and year >= 2012):
             name = "New Year's Eve"
             self[date(year, 12, 31)] = name
             if self.observed and date(year, 12, 31).weekday() == 5:
