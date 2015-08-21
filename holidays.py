@@ -770,7 +770,7 @@ class UnitedStates(HolidayBase):
 
         # Election Day
         if (self.state in
-                ('DE', 'HI', 'IL', 'IN', 'LA', 'MT', 'NH', 'NJ', 'NY')
+                ('DE', 'HI', 'IL', 'IN', 'LA', 'MT', 'NH', 'NJ', 'NY', 'WV')
                 and year >= 2008 and year % 2 == 0) \
                 or (self.state in ('IN', 'NY') and year >= 2015):
             dt = date(year, 11, 1) + rd(weekday=MO)
