@@ -709,6 +709,12 @@ class TestUS(unittest.TestCase):
             self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
             self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
 
+    def test_epiphany(self):
+        pr_holidays = holidays.US(state='PR')
+        for year in range(2010, 2021):
+            self.assertFalse(date(year, 1, 6) in self.holidays)
+            self.assertTrue(date(year, 1, 6) in pr_holidays)
+
     def test_lee_jackson_day(self):
         va_holidays = holidays.US(state='VA')
         self.assertFalse(date(1888, 1, 19) in va_holidays)
@@ -912,6 +918,8 @@ class TestUS(unittest.TestCase):
         self.assertTrue(holidays.US(state='AS').get('2015-02-16'),
                         ("George Washington's Birthday "
                          "and Daisy Gatson Bates Day"))
+        self.assertTrue(holidays.US(state='PR').get('2015-02-16'),
+                        ("Presidents' Day"))
 
     def test_mardi_gras(self):
         la_holidays = holidays.US(state='LA')
@@ -966,6 +974,15 @@ class TestUS(unittest.TestCase):
         ma_holidays.observed = False
         for dt in [date(2012, 3, 19), date(2013, 3, 18), date(2018, 3, 19)]:
             self.assertFalse(dt in ma_holidays)
+
+    def test_emancipation_day_in_puerto_rico(self):
+        pr_holidays = holidays.US(state='PR')
+        for year in range(2010, 2021):
+            self.assertFalse(date(year, 3, 22) in self.holidays)
+            self.assertTrue(date(year, 3, 22) in pr_holidays)
+        self.assertFalse(date(2014, 3, 21) in pr_holidays)
+        self.assertFalse(date(2014, 3, 23) in pr_holidays)
+        self.assertTrue(date(2015, 3, 23) in pr_holidays)
 
     def test_prince_jonah_kuhio_kalanianaole_day(self):
         hi_holidays = holidays.US(state='HI')
@@ -1193,6 +1210,15 @@ class TestUS(unittest.TestCase):
             self.assertFalse(date(year, 7, 24) in self.holidays)
             self.assertTrue(date(year, 7, 24) in ut_holidays)
 
+    def test_constitution_day(self):
+        pr_holidays = holidays.US(state='PR')
+        for year in range(2010, 2021):
+            self.assertFalse(date(year, 7, 25) in self.holidays)
+            self.assertTrue(date(year, 7, 25) in pr_holidays)
+        self.assertFalse(date(2015, 7, 24) in pr_holidays)
+        self.assertFalse(date(2015, 7, 26) in pr_holidays)
+        self.assertTrue(date(2021, 7, 26) in pr_holidays)
+
     def test_victory_day(self):
         ri_holidays = holidays.US(state='RI')
         self.assertFalse(date(1947, 8, 11) in ri_holidays)
@@ -1354,6 +1380,15 @@ class TestUS(unittest.TestCase):
         self.holidays.observed = True
         self.assertTrue(date(2012, 11, 12) in self.holidays)
         self.assertTrue(date(2017, 11, 10) in self.holidays)
+
+    def test_discovery_day(self):
+        pr_holidays = holidays.US(state='PR')
+        for year in range(2010, 2021):
+            self.assertFalse(date(year, 11, 19) in self.holidays)
+            self.assertTrue(date(year, 11, 19) in pr_holidays)
+        self.assertFalse(date(2016, 11, 18) in pr_holidays)
+        self.assertFalse(date(2016, 11, 20) in pr_holidays)
+        self.assertTrue(date(2017, 11, 20) in pr_holidays)
 
     def test_thanksgiving_day(self):
         de_holidays = holidays.US(state='DE')
