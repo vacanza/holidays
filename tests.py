@@ -715,6 +715,12 @@ class TestUS(unittest.TestCase):
             self.assertFalse(date(year, 1, 6) in self.holidays)
             self.assertTrue(date(year, 1, 6) in pr_holidays)
 
+    def test_three_kings_day(self):
+        vi_holidays = holidays.US(state='VI')
+        for year in range(2010, 2021):
+            self.assertFalse(date(year, 1, 6) in self.holidays)
+            self.assertTrue(date(year, 1, 6) in vi_holidays)
+
     def test_lee_jackson_day(self):
         va_holidays = holidays.US(state='VA')
         self.assertFalse(date(1888, 1, 19) in va_holidays)
@@ -920,6 +926,8 @@ class TestUS(unittest.TestCase):
                          "and Daisy Gatson Bates Day"))
         self.assertTrue(holidays.US(state='PR').get('2015-02-16'),
                         ("Presidents' Day"))
+        self.assertTrue(holidays.US(state='VI').get('2015-02-16'),
+                        ("Presidents' Day"))
 
     def test_mardi_gras(self):
         la_holidays = holidays.US(state='LA')
@@ -1022,6 +1030,12 @@ class TestUS(unittest.TestCase):
             self.assertTrue(date(year, 4, 1) in ca_holidays)
             self.assertFalse(date(year, 4, 1) in tx_holidays)
 
+    def test_transfer_day(self):
+        vi_holidays = holidays.US(state='VI')
+        for year in range(2010, 2021):
+            self.assertFalse(date(year, 3, 31) in self.holidays)
+            self.assertTrue(date(year, 3, 31) in vi_holidays)
+
     def test_emancipation_day(self):
         dc_holidays = holidays.US(state='DC')
         self.assertFalse(date(2004, 4, 16) in dc_holidays)
@@ -1049,6 +1063,13 @@ class TestUS(unittest.TestCase):
             self.assertTrue(dt in me_holidays)
             self.assertTrue(dt in ma_holidays)
 
+    def test_holy_thursday(self):
+        vi_holidays = holidays.US(state='VI')
+        for dt in [date(2010, 4,  1), date(2011, 4, 21), date(2013, 3, 28),
+                   date(2014, 4, 17), date(2015, 4,  2), date(2016, 3, 24)]:
+            self.assertFalse(dt in self.holidays)
+            self.assertTrue(dt in vi_holidays)
+
     def test_good_friday(self):
         ct_holidays = holidays.US(state='CT')
         de_holidays = holidays.US(state='DE')
@@ -1060,6 +1081,7 @@ class TestUS(unittest.TestCase):
         nc_holidays = holidays.US(state='NC')
         tn_holidays = holidays.US(state='TN')
         tx_holidays = holidays.US(state='TX')
+        vi_holidays = holidays.US(state='VI')
         for dt in [date(1900, 4, 13), date(1901, 4,  5), date(1902, 3, 28),
                    date(1999, 4,  2), date(2000, 4, 21), date(2010, 4,  2),
                    date(2018, 3, 30), date(2019, 4, 19), date(2020, 4, 10)]:
@@ -1074,6 +1096,15 @@ class TestUS(unittest.TestCase):
             self.assertTrue(dt in nc_holidays)
             self.assertTrue(dt in tn_holidays)
             self.assertTrue(dt in tx_holidays)
+            self.assertTrue(dt in vi_holidays)
+
+    def test_easter_monday(self):
+        vi_holidays = holidays.US(state='VI')
+        for dt in [date(1900, 4, 16), date(1901, 4,  8), date(1902, 3, 31),
+                   date(1999, 4,  5), date(2010, 4,  5),
+                   date(2018, 4,  2), date(2019, 4, 22), date(2020, 4, 13)]:
+            self.assertFalse(dt in self.holidays)
+            self.assertTrue(dt in vi_holidays)
 
     def test_confederate_memorial_day(self):
         al_holidays = holidays.US(state='AL')
@@ -1184,6 +1215,12 @@ class TestUS(unittest.TestCase):
         self.assertFalse(date(2015, 6, 19) in wv_holidays)
         self.assertFalse(date(2010, 6, 21) in wv_holidays)
 
+    def test_emancipation_day_in_virgin_islands(self):
+        vi_holidays = holidays.US(state='VI')
+        for year in (2010, 2021):
+            self.assertFalse(date(year, 7, 3) in self.holidays)
+            self.assertTrue(date(year, 7, 3) in vi_holidays)
+
     def test_independence_day(self):
         for year in range(1900, 2100):
             dt = date(year, 7, 4)
@@ -1277,6 +1314,7 @@ class TestUS(unittest.TestCase):
         fl_holidays = holidays.US(state='FL')
         hi_holidays = holidays.US(state='HI')
         sd_holidays = holidays.US(state='SD')
+        vi_holidays = holidays.US(state='VI')
         for dt in [date(1937, 10, 12), date(1969, 10, 12), date(1970, 10, 12),
                    date(1999, 10, 11), date(2000, 10,  9), date(2001, 10,  8),
                    date(2013, 10, 14), date(2018, 10,  8), date(2019, 10, 14)]:
@@ -1288,6 +1326,8 @@ class TestUS(unittest.TestCase):
             self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
             self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
             self.assertEqual(sd_holidays.get(dt), "Native American Day")
+            self.assertEqual(vi_holidays.get(dt),
+                             "Columbus Day and Puerto Rico Friendship Day")
         self.assertFalse(date(1936, 10, 12) in self.holidays)
 
     def test_alaska_day(self):
@@ -1318,6 +1358,12 @@ class TestUS(unittest.TestCase):
                          nv_holidays.get_list(date(1998, 10, 30)))
         self.assertFalse("Nevada Day (Observed)" in
                          nv_holidays.get_list(date(1999, 11, 1)))
+
+    def test_liberty_day(self):
+        vi_holidays = holidays.US(state='VI')
+        for year in range(2010, 2021):
+            self.assertFalse(date(year, 11, 1) in self.holidays)
+            self.assertTrue(date(year, 11, 1) in vi_holidays)
 
     def test_election_day(self):
         de_holidays = holidays.US(state='DE')

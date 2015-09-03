@@ -485,6 +485,10 @@ class UnitedStates(HolidayBase):
         if self.state == 'PR':
             self[date(year, 1, 6)] = "Epiphany"
 
+        # Three King's Day
+        if self.state == 'VI':
+            self[date(year, 1, 6)] = "Three King's Day"
+
         # Lee Jackson Day
         name = "Lee Jackson Day"
         if self.state == 'VA' and year >= 2000:
@@ -547,7 +551,7 @@ class UnitedStates(HolidayBase):
             name = "George Washington/Thomas Jefferson Birthday"
         elif self.state == 'AS':
             name = "George Washington's Birthday and Daisy Gatson Bates Day"
-        elif self.state == 'PR':
+        elif self.state in ('PR', 'VI'):
             name = "Presidents' Day"
         if self.state not in ('DE', 'FL', 'GA', 'NM', 'PR'):
             if year > 1970:
@@ -559,7 +563,7 @@ class UnitedStates(HolidayBase):
                 self[date(year, 12, 24)] = name
             else:
                 self[date(year, 12, 26)] = name
-        elif self.state == 'PR':
+        elif self.state in ('PR', 'VI'):
             self[date(year, 2, 1) + rd(weekday=MO(+3))] = name
 
         # Mardi Gras
@@ -620,6 +624,10 @@ class UnitedStates(HolidayBase):
         elif self.state == 'TX' and year >= 2000:
             self[date(year, 3, 31)] = name
 
+        # Transfer Day
+        if self.state == 'VI':
+            self[date(year, 3, 31)] = "Transfer Day"
+
         # Emancipation Day
         if self.state == 'DC' and year >= 2005:
             name = "Emancipation Day"
@@ -635,10 +643,18 @@ class UnitedStates(HolidayBase):
         elif self.state in ('ME', 'MA') and year >= 1894:
             self[date(year, 4, 19)] = "Patriots' Day"
 
+        # Holy Thursday
+        if self.state == 'VI':
+            self[easter(year) + rd(weekday=TH(-1))] = "Holy Thursday"
+
         # Good Friday
         if self.state in ('CT', 'DE', 'GU', 'IN', 'KY', 'LA',
-                          'NJ', 'NC', 'PR', 'TN', 'TX'):
+                          'NJ', 'NC', 'PR', 'TN', 'TX', 'VI'):
             self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
+
+        # Easter Monday
+        if self.state == 'VI':
+            self[easter(year) + rd(weekday=MO)] = "Easter Monday"
 
         # Confederate Memorial Day
         name = "Confederate Memorial Day"
@@ -705,6 +721,10 @@ class UnitedStates(HolidayBase):
             elif self.observed and date(year, 6, 20).weekday() == 6:
                 self[date(year, 6, 21)] = name + " (Observed)"
 
+        # Emancipation Day in US Virgin Islands
+        if self.state == 'VI':
+            self[date(year, 7, 3)] = "Emancipation Day"
+
         # Independence Day
         if year > 1870:
             name = "Independence Day"
@@ -762,6 +782,8 @@ class UnitedStates(HolidayBase):
         if self.state not in ('AK', 'DE', 'FL', 'HI', 'NV'):
             if self.state == 'SD':
                 name = "Native American Day"
+            elif self.state == 'VI':
+                name = "Columbus Day and Puerto Rico Friendship Day"
             else:
                 name = "Columbus Day"
             if year >= 1970:
@@ -787,6 +809,10 @@ class UnitedStates(HolidayBase):
                 self[dt + rd(days=-1)] = "Nevada Day (Observed)"
             elif self.observed and dt.weekday() == 6:
                 self[dt + rd(days=+1)] = "Nevada Day (Observed)"
+
+        # Liberty Day
+        if self.state == 'VI':
+            self[date(year, 11, 1)] = "Liberty Day"
 
         # Election Day
         if (self.state in
@@ -895,6 +921,8 @@ class UnitedStates(HolidayBase):
                 self[date(year, 12, 26) + rd(days=+1)] = name
         elif self.state == 'TX' and year >= 1981:
             self[date(year, 12, 26)] = "Day After Christmas"
+        elif self.state == 'VI':
+            self[date(year, 12, 26)] = "Christmas Second Day"
 
         # New Year's Eve
         if (self.state in ('KY', 'MI') and year >= 2013) or \
