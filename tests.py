@@ -740,13 +740,13 @@ class TestUS(unittest.TestCase):
         la_holidays = holidays.US(state='LA')
         md_holidays = holidays.US(state='MD')
         va_holidays = holidays.US(state='VA')
-        for year in (1789, 1793, 1929, 1933):
+        for year in (1789, 1793, 1877, 1929, 1933):
             self.assertFalse(name in self.holidays.get_list(date(year, 3, 4)))
             self.assertTrue(name in dc_holidays.get_list(date(year, 3, 4)))
             self.assertTrue(name in la_holidays.get_list(date(year, 3, 4)))
             self.assertTrue(name in md_holidays.get_list(date(year, 3, 4)))
             self.assertTrue(name in va_holidays.get_list(date(year, 3, 4)))
-        for year in (1937, 1941, 2013, 2017):
+        for year in (1937, 1941, 1957, 2013, 2017):
             self.assertFalse(name in self.holidays.get_list(date(year, 1, 20)))
             self.assertTrue(name in dc_holidays.get_list(date(year, 1, 20)))
             self.assertTrue(name in la_holidays.get_list(date(year, 1, 20)))
@@ -1246,6 +1246,11 @@ class TestUS(unittest.TestCase):
         for year in (1849, 2050):
             self.assertFalse(date(year, 7, 24) in self.holidays)
             self.assertTrue(date(year, 7, 24) in ut_holidays)
+        self.assertTrue('2010-07-23' in ut_holidays)
+        self.assertTrue('2011-07-25' in ut_holidays)
+        ut_holidays.observed = False
+        self.assertFalse('2010-07-23' in ut_holidays)
+        self.assertFalse('2011-07-25' in ut_holidays)
 
     def test_constitution_day(self):
         pr_holidays = holidays.US(state='PR')

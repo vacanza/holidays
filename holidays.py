@@ -504,11 +504,11 @@ class UnitedStates(HolidayBase):
             name = "Inauguration Day"
             if (year - 1789) % 4 == 0 and year >= 1937:
                 self[date(year, 1, 20)] = name
-                if date(year, 1, 20).weekday == 6:
+                if date(year, 1, 20).weekday() == 6:
                     self[date(year, 1, 21)] = name + " (Observed)"
             elif (year - 1789) % 4 == 0:
                 self[date(year, 3, 4)] = name
-                if date(year, 3, 4).weekday == 6:
+                if date(year, 3, 4).weekday() == 6:
                     self[date(year, 3, 5)] = name + " (Observed)"
 
         # Martin Luther King, Jr. Day
