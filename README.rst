@@ -62,15 +62,21 @@ If the above fails, please use easy_install instead:
 Available Countries
 -------------------
 
-============ ====  ======================================================
-Country      Abbr  Prov/State Options
-============ ====  ======================================================
-Australia    AU    **ACT**, NSW, NT, QLD, SA, TAS, VIC, WA
-Canada       CA    AB, BC, MB, NB, NL, NS, NT, NU, **ON**, PE, QC, SK, YU
+============ ====  ===========================================================
+Country      Abbr  Provinces/States Available
+============ ====  ===========================================================
+Australia    AU    prov = **ACT** (default), NSW, NT, QLD, SA, TAS, VIC, WA
+Canada       CA    prov = AB, BC, MB, NB, NL, NS, NT, NU, **ON** (default),
+                   PE, QC, SK, YU
 Mexico       MX    None
-NewZealand   NZ    NTL, AUK, TKI, HKB, WGN, MBH, NSN, CAN, STC, WTL, OTA, STL, CIT
-UnitedStates US    None
-============ ====  ======================================================
+NewZealand   NZ    prov = NTL, AUK, TKI, HKB, WGN, MBH, NSN, CAN, STC, WTL,
+                   OTA, STL, CIT
+UnitedStates US    state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL, GA, GU,
+                   HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MH, MA, MI, FM, MN,
+                   MS, MO, MT, NE, NV, NH, NJ, NM, NY, NC, ND, MP, OH, OK, OR,
+                   PW, PA, PR, RI, SC, SD, TN, TX, UT, VT, VA, VI, WA, WV, WI,
+                   WY
+============ ====  ===========================================================
 
 
 API
