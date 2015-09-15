@@ -19,7 +19,7 @@ before_script:
     - flake8 holidays.py tests.py
 
 script:
-    - coverage run --omit=*site-packages*,*pypy* tests.py
+    - if [[ $TRAVIS_PYTHON_VERSION != 3.2 ]]; then coverage run --omit=*site-packages*,*pypy* tests.py; fi
 
 after_success:
-    - coveralls
+    - if [[ $TRAVIS_PYTHON_VERSION != 3.2 ]]; then coveralls; fi
