@@ -56,6 +56,15 @@ class TestBasics(unittest.TestCase):
         self.assertTrue(date(2014, 1, 3) in self.holidays)
         self.assertEqual(self.holidays.get(date(2014, 1, 3)), "Fake Holiday")
 
+    def test_update(self):
+        h = holidays.HolidayBase()
+        h.update({
+            date(2015, 1, 1): "New Year's Day",
+            '2015-12-25': "Christmas Day",
+        })
+        self.assertTrue('2015-01-01' in h)
+        self.assertTrue(date(2015, 12, 25) in h)
+
     def test_eq_ne(self):
         us1 = holidays.UnitedStates()
         us2 = holidays.US()

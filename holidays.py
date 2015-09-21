@@ -94,20 +94,10 @@ class HolidayBase(dict):
 
     def update(self, *args, **kwargs):
         args = list(args)
-        for i, arg in enumerate(args):
+        for arg in args:
             if isinstance(arg, dict):
-                new_arg = dict()
                 for key, value in list(arg.items()):
-                    if key in self:
-                        if self.get(key).find(value) < 0 \
-                                and value.find(self.get(key)) < 0:
-                            new_arg[key] = "%s, %s" % (value, self.get(key))
-                        else:
-                            new_arg[key] = self.get(key)
-                    else:
-                        new_arg[key] = value
-                args[i] = new_arg
-        dict.update(self, *args, **kwargs)
+                    self[key] = value
 
     def get(self, key, default=None):
         return dict.get(self, self.__keytransform__(key), default)
@@ -156,6 +146,9 @@ class HolidayBase(dict):
 
     def __radd__(self, other):
         return self.__add__(other)
+
+    def _populate(self, year):
+        pass
 
 
 def createHolidaySum(h1, h2):
