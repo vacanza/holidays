@@ -65,6 +65,25 @@ class TestBasics(unittest.TestCase):
         self.assertTrue('2015-01-01' in h)
         self.assertTrue(date(2015, 12, 25) in h)
 
+    def test_append(self):
+        h = holidays.HolidayBase()
+        h.update({
+            date(2015, 1, 1): "New Year's Day",
+            '2015-12-25': "Christmas Day",
+        })
+        h.append([date(2015, 4, 1), '2015-04-03'])
+        h.append(date(2015, 4, 6))
+        h.append('2015-04-07')
+        self.assertTrue('2015-01-01' in h)
+        self.assertTrue(date(2015, 12, 25) in h)
+        self.assertTrue('2015-04-01' in h)
+        self.assertFalse('2015-04-02' in h)
+        self.assertTrue('2015-04-03' in h)
+        self.assertFalse('2015-04-04' in h)
+        self.assertFalse('2015-04-05' in h)
+        self.assertTrue('2015-04-06' in h)
+        self.assertTrue('2015-04-07' in h)
+
     def test_eq_ne(self):
         us1 = holidays.UnitedStates()
         us2 = holidays.US()

@@ -92,12 +92,20 @@ class HolidayBase(dict):
                 value = self.get(key)
         return dict.__setitem__(self, self.__keytransform__(key), value)
 
-    def update(self, *args, **kwargs):
+    def update(self, *args):
         args = list(args)
         for arg in args:
             if isinstance(arg, dict):
                 for key, value in list(arg.items()):
                     self[key] = value
+            elif isinstance(arg, list):
+                for item in arg:
+                    self[item] = "Holiday"
+            else:
+                self[arg] = "Holiday"
+
+    def append(self, *args):
+        return self.update(*args)
 
     def get(self, key, default=None):
         return dict.get(self, self.__keytransform__(key), default)
