@@ -2,9 +2,9 @@
 holidays.py
 ===========
 
-Holidays is a fast, efficient Python library for generating country-specific
-sets of holidays on the fly. It aims to make determining whether a specific
-date is a holiday as fast and flexible as possible.
+Holidays is a fast, efficient Python library for generating country, province
+and state specific sets of holidays on the fly. It aims to make determining
+whether a specific date is a holiday as fast and flexible as possible.
 
 .. image:: http://img.shields.io/travis/ryanss/holidays.py.svg
     :target: https://travis-ci.org/ryanss/holidays.py
@@ -27,20 +27,24 @@ Example Usage
 
 .. code-block:: python
 
-    >>> import holidays
-    >>> us_holidays = holidays.US()  # or holidays.UnitedStates()
-    >>> date(2014, 1, 1) in us_holidays
-    True
-    >>> date(2014, 1, 2) in us_holidays
-    False
-    >>> us_holidays[date(2014, 1, 1)]
-    "New Year's Day"
-    >>> '2014-01-01' in us_holidays
-    True
-    >>> '1/1/2014' in us_holidays
-    True
-    >>> 1388597445 in us_holidays  # Unix timestamp
-    True
+    import holidays
+
+    us_holidays = holidays.UnitedStates()  # or holidays.US()
+
+    date(2015, 1, 1) in us_holidays  # True
+    date(2015, 1, 2) in us_holidays  # False
+
+
+    '2014-01-01' in us_holidays  # True
+    '1/1/2014' in us_holidays  # True
+    1388597445 in us_holidays  # True (Unix timestamp)
+
+    us_holidays.get('2014-01-01')  # "New Year's Day"
+
+    custom_holidays = holidays.HolidayBase()
+    custom_holidays.append({"2015-01-01": "New Year's Day"})
+    custom_holidays.append(['2015-07-01', '07/04/2015'])
+    custom_holidays.append(date(2015, 12, 25))
 
 
 Install
@@ -82,7 +86,7 @@ UnitedStates US    state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL, GA, GU,
 API
 ---
 
-class holidays.HolidayBase(years=[], expand=True, observed=True, prov=None)
+class holidays.HolidayBase(years=[], expand=True, observed=True, prov=None, state=None)
     The base class used to create holiday country classes.
 
 Parameters:
@@ -101,8 +105,31 @@ observed
     holiday that falls on a weekend, when appropriate. (Default: True)
 
 prov
-    A string specifying a province/state that has unique statutory holidays.
-    (Default: Canada='ON', Mexico=None, UnitedStates=None)
+    A string specifying a province that has unique statutory holidays.
+    (Default: Australia='ACT', Canada='ON', NewZealand=None)
+
+state
+    A string specifying a state that has unique statutory holidays.
+    (Default: UnitedStates=None)
+
+Methods:
+
+get(key, default=None)
+    Returns a string containing the name of the holiday(s) in date `key`, which
+    can be of date, datetime, string, unicode, bytes, integer or float type. If
+    multiple holidays fall on the same date the names will be seperated by
+    commas
+
+get_list(key)
+    Same as `get` except returns a `list` of holiday names instead of a comma
+    seperated string
+
+pop(key, default=None)
+    Same as `get` except the key is removed from the holiday object
+
+update/append
+    Accepts dictionary of {date: name} pairs, a list of dates, or even singular
+    date/string/timestamp objects and adds them to the list of holidays
 
 
 More Examples
@@ -138,6 +165,23 @@ More Examples
     True
     >>> holidays.US() == holidays.CA()
     False
+
+    # Let's print out the holidays in 2014 specific to California, USA
+
+    >>> for date, name in sorted(holidays.US(state='CA', years=2014).items()):
+    >>>     print date, name
+    2014-01-01 New Year's Day
+    2014-01-20 Martin Luther King, Jr. Day
+    2014-02-15 Susan B. Anthony Day
+    2014-02-17 Washington's Birthday
+    2014-03-31 César Chávez Day
+    2014-05-26 Memorial Day
+    2014-07-04 Independence Day
+    2014-09-01 Labor Day
+    2014-10-13 Columbus Day
+    2014-11-11 Veterans Day
+    2014-11-27 Thanksgiving
+    2014-12-25 Christmas Day
 
     # So far we've only checked holidays in 2014 so that's the only year the
     # Holidays object has generated
@@ -191,7 +235,7 @@ More Examples
     True
 
     # Holiday objects can be added together and the resulting object will
-    # generate the holidays from both of the initial objects
+    # generate the holidays from all of the initial objects
 
     >>> north_america = holidays.CA() + holidays.US() + holidays.MX()
     >>> north_america.get('2014-07-01')
@@ -266,6 +310,15 @@ More Examples
 
     # If you write the code necessary to create a holiday class for a country
     # not currently supported please contribute your code to the project!
+
+    # Perhaps you just have a list of dates that are holidays and want to turn
+    # them into a Holiday class to access all the useful functionality. You can
+    # use the append() method which accepts a dictionary of {date: name} pairs,
+    # a list of dates, or even singular date/string/timestamp objects.
+
+    >>> custom_holidays = holidays.HolidaysBase()
+    >>> custom_holidays.append(['2015-01-01', '07/04/2015'])
+    >>> custom_holidays.append(date(2015, 12, 25))
 
 
 Development Version
