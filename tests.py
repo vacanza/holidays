@@ -295,6 +295,9 @@ class TestArgs(unittest.TestCase):
         self.assertFalse(2014 in self.holidays.years)
         self.assertTrue(2015 in self.holidays.years)
         self.assertTrue(date(2021, 12, 31) in holidays.US(years=[2022]).keys())
+        self.holidays = holidays.US(years=2015)
+        self.assertFalse(2014 in self.holidays.years)
+        self.assertTrue(2015 in self.holidays.years)
 
     def test_expand(self):
         self.holidays = holidays.US(years=(2013, 2015), expand=False)
