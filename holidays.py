@@ -33,7 +33,7 @@ class HolidayBase(dict):
                  prov=None, state=None):
         self.observed = observed
         self.expand = expand
-        if not isinstance(years, (list, tuple, set)):
+        if isinstance(years, int):
             years = [years, ]
         self.years = set(years)
         if not getattr(self, 'prov', False):
