@@ -1,12 +1,13 @@
 #  holidays.py
 #  -----------
-#  A fast, efficient Python library for generating country-specific sets of
-#  holidays on the fly. It aims to make determining whether a specific date is
-#  a holiday as fast and flexible as possible.
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
 #
 #  Author:  ryanss <ryanssdev@icloud.com>
 #  Website: https://github.com/ryanss/holidays.py
 #  License: MIT (see LICENSE file)
+#  Version: 0.4 (October 4, 2015)
 
 
 try:
@@ -17,13 +18,14 @@ except ImportError:
 
 setup(
     name='holidays',
-    version='0.4-dev',
+    version='0.4',
     author='ryanss',
     author_email='ryanssdev@icloud.com',
     url='https://github.com/ryanss/holidays.py',
+    bugtrack_url='https://github.com/ryanss/holidays.py/issues',
     license='MIT',
     py_modules=['holidays'],
-    description='Generates country-specific sets of holidays on the fly',
+    description='Generate and work with holidays in Python',
     long_description=open('README.rst').read(),
     install_requires=['python-dateutil'],
     platforms='any',

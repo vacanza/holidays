@@ -1,6 +1,14 @@
+Version 0.4
+===========
 
+Released October 4, 2015
 
-- Added holidays for New Zealand
+- Add `append` and `get_list` methods to Holiday objects
+- Add federal and provincial holidays for Australia
+- Add federal and provincial holidays for New Zealand
+- Add state-specific holidays for all US states and territories
+- Include Dec 31st from previous year when observed New Year's Day
+- Add ability to `sum()` Holiday objects
 
 
 Version 0.3.1

@@ -2,9 +2,9 @@
 holidays.py
 ===========
 
-Holidays is a fast, efficient Python library for generating country, province
-and state specific sets of holidays on the fly. It aims to make determining
-whether a specific date is a holiday as fast and flexible as possible.
+A fast, efficient Python library for generating country, province and state
+specific sets of holidays on the fly. It aims to make determining whether a
+specific date is a holiday as fast and flexible as possible.
 
 .. image:: http://img.shields.io/travis/ryanss/holidays.py.svg
     :target: https://travis-ci.org/ryanss/holidays.py
@@ -45,6 +45,9 @@ Example Usage
     custom_holidays.append({"2015-01-01": "New Year's Day"})
     custom_holidays.append(['2015-07-01', '07/04/2015'])
     custom_holidays.append(date(2015, 12, 25))
+    date(2015, 1, 1) in custom_holidays  # True
+    date(2015, 1, 2) in custom_holidays  # False
+    '12/25/2015' in custom_holidays  # True
 
 
 Install

@@ -2,13 +2,14 @@
 
 #  holidays.py
 #  -----------
-#  A fast, efficient Python library for generating country-specific sets of
-#  holidays on the fly. It aims to make determining whether a specific date is
-#  a holiday as fast and flexible as possible.
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
 #
 #  Author:  ryanss <ryanssdev@icloud.com>
 #  Website: https://github.com/ryanss/holidays.py
 #  License: MIT (see LICENSE file)
+#  Version: 0.4 (October 4, 2015)
 
 
 from datetime import date, datetime
@@ -19,7 +20,7 @@ from dateutil.relativedelta import MO, TU, WE, TH, FR, SA
 import six
 
 
-__version__ = '0.4-dev'
+__version__ = '0.4'
 
 
 MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY = range(7)
