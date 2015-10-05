@@ -28,6 +28,7 @@ Example Usage
 .. code-block:: python
 
     import holidays
+    from datetime import date
 
     us_holidays = holidays.UnitedStates()  # or holidays.US()
 
