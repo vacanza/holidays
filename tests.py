@@ -2252,9 +2252,9 @@ class TestDE(unittest.TestCase):
                "Zweiter Weihnachtstag"]
 
         for holiday in all:
-            self.assertTrue(holiday in in_2015, "missing: {}".format(holiday))
+            self.assertTrue(holiday in in_2015, "missing: {0}".format(holiday))
         for holiday in in_2015:
-            self.assertTrue(holiday in all, "extra: {}".format(holiday))
+            self.assertTrue(holiday in all, "extra: {0}".format(holiday))
 
     def test_fixed_holidays(self):
         fixed_days_whole_country = (
