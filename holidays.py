@@ -1333,3 +1333,35 @@ class Australia(HolidayBase):
 
 class AU(Australia):
     pass
+
+
+class Austria(HolidayBase):
+    PROVINCES = ['B', 'K', 'N', 'O', 'S', 'ST', 'T', 'V', 'W']
+
+    def __init__(self, **kwargs):
+        self.country = 'AT'
+        self.prov = kwargs.pop('prov', kwargs.pop('state', 'W'))
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # public holidays
+        self[date(year, 1, 1)] = "Neujahr"
+        self[date(year, 1, 6)] = "Heilige Drei Könige"
+        self[easter(year) + rd(weekday=MO)] = "Ostermontag"
+        self[date(year, 5, 1)] = "Staatsfeiertag"
+        self[easter(year) + rd(days=39)] = "Christi Himmelfahrt"
+        self[easter(year) + rd(days=50)] = "Pfingstmontag"
+        self[easter(year) + rd(days=60)] = "Fronleichnam"
+        self[date(year, 8, 15)] = "Maria Himmelfahrt"
+        if 1919 <= year <= 1934:
+            self[date(year, 11, 12)] = "Nationalfeiertag"
+        if year >= 1967:
+            self[date(year, 10, 26)] = "Nationalfeiertag"
+        self[date(year, 11, 1)] = "Allerheiligen"
+        self[date(year, 12, 8)] = "Maria Empfängnis"
+        self[date(year, 12, 25)] = "Christtag"
+        self[date(year, 12, 26)] = "Stefanitag"
+
+
+class AT(Austria):
+    pass
