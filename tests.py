@@ -247,6 +247,10 @@ class TestBasics(unittest.TestCase):
                 self[date(year, 12, 31)] = "New Year's Eve"
         self.assertTrue(date(2014, 12, 31) in Dec31Holiday())
 
+    def test_no_school(self):
+        with self.assertRaises(ValueError):
+            holidays.US(years=2015, incl_school=True)
+
 
 class TestArgs(unittest.TestCase):
 
@@ -2274,6 +2278,18 @@ class TestAT(unittest.TestCase):
                         "Stefanitag"]
         for holiday in all_holidays:
             self.assertTrue(holiday in at_2015.values())
+
+    def test_school_vacation(self):
+        holidays_at_w = holidays.AT(incl_school=True)
+        for dt in [date(2015, 11, 2), date(2015, 12, 24), date(2015, 12, 30),
+                   date(2015, 3, 30), date(2015, 4, 7), date(2015, 1, 5),
+                   date(2020, 7, 28), date(2020, 8, 26)]:
+            self.assertTrue(dt in holidays_at_w)
+
+        self.assertTrue(date(2015, 7, 6) in holidays_at_w)
+        self.assertFalse(date(2015, 7, 3) in holidays_at_w)
+        self.assertTrue(date(2015, 9, 3) in holidays_at_w)
+        self.assertFalse(date(2015, 9, 6) in holidays_at_w)
 
 
 if __name__ == "__main__":
