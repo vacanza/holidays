@@ -9,7 +9,7 @@
 #  Author:  ryanss <ryanssdev@icloud.com>
 #  Website: https://github.com/ryanss/holidays.py
 #  License: MIT (see LICENSE file)
-#  Version: 0.4 (October 4, 2015)
+#  Version: 0.4.1-dev
 
 
 from datetime import date, datetime
@@ -20,7 +20,7 @@ from dateutil.relativedelta import MO, TU, WE, TH, FR, SA
 import six
 
 
-__version__ = '0.4'
+__version__ = '0.4.1-dev'
 
 
 MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY = range(7)

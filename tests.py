@@ -9,7 +9,7 @@
 #  Author:  ryanss <ryanssdev@icloud.com>
 #  Website: https://github.com/ryanss/holidays.py
 #  License: MIT (see LICENSE file)
-#  Version: 0.4 (October 4, 2015)
+#  Version: 0.4.1-dev
 
 from itertools import product
 from datetime import date, datetime

@@ -75,6 +75,8 @@ Country      Abbr  Provinces/States Available
 Australia    AU    prov = **ACT** (default), NSW, NT, QLD, SA, TAS, VIC, WA
 Canada       CA    prov = AB, BC, MB, NB, NL, NS, NT, NU, **ON** (default),
                    PE, QC, SK, YU
+Germany      DE    BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL, SN, ST, SH,
+                   TH
 Mexico       MX    None
 NewZealand   NZ    prov = NTL, AUK, TKI, HKB, WGN, MBH, NSN, CAN, STC, WTL,
                    OTA, STL, CIT
