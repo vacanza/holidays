@@ -32,7 +32,7 @@ class HolidayBase(dict):
     PROVINCES = []
 
     def __init__(self, years=[], expand=True, observed=True,
-                 prov=None, state=None, incl_school=False):
+                 prov=None, state=None):
         self.observed = observed
         self.expand = expand
         if isinstance(years, int):
@@ -41,11 +41,8 @@ class HolidayBase(dict):
         if not getattr(self, 'prov', False):
             self.prov = prov
         self.state = state
-        self.incl_school = incl_school
         for year in list(self.years):
             self._populate(year)
-            if self.incl_school:
-                self._populate_school(year)
 
     def __setattr__(self, key, value):
         if key == 'observed' and len(self) > 0:
@@ -57,8 +54,6 @@ class HolidayBase(dict):
                 self.clear()
                 for year in years:
                     self._populate(year)
-                    if self.incl_school:
-                        self._populate_school(year)
             else:
                 # Remove (Observed) dates
                 for k, v in list(self.items()):
@@ -84,8 +79,6 @@ class HolidayBase(dict):
         if self.expand and key.year not in self.years:
             self.years.add(key.year)
             self._populate(key.year)
-            if self.incl_school:
-                self._populate_school(key.year)
         return key
 
     def __contains__(self, key):
@@ -168,9 +161,6 @@ class HolidayBase(dict):
 
     def _populate(self, year):
         pass
-
-    def _populate_school(self, year):
-        raise ValueError("School vacations not supported for this country")
 
 
 def createHolidaySum(h1, h2):
@@ -1477,9 +1467,18 @@ class Austria(HolidayBase):
         self[date(year, 12, 25)] = "Christtag"
         self[date(year, 12, 26)] = "Stefanitag"
 
-    def _populate_school(self, year):
-        '''appends school vacation days, which are no official public holidays
-        but only days off for pupils'''
+
+class AT(Austria):
+    pass
+
+
+class AustriaSchool(Austria):
+    """Appends school vacation days, which are not official public holidays
+    but only days off for pupils"""
+
+    def _populate(self, year):
+        Austria._populate(self, year)
+
         # Weihnachtsferien
         start = date(year, 1, 2)
         end = date(year, 1, 5)
@@ -1525,7 +1524,3 @@ class Austria(HolidayBase):
         end = date(year, 12, 31)
         for cur_date in rrule(DAILY, dtstart=start, until=end):
             self.append(cur_date)
-
-
-class AT(Austria):
-    pass
