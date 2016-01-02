@@ -17,6 +17,7 @@ from dateutil.easter import easter
 from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, TU, WE, TH, FR, SA
+from dateutil.rrule import rrule, DAILY
 import six
 
 
@@ -31,7 +32,7 @@ class HolidayBase(dict):
     PROVINCES = []
 
     def __init__(self, years=[], expand=True, observed=True,
-                 prov=None, state=None):
+                 prov=None, state=None, incl_school=False):
         self.observed = observed
         self.expand = expand
         if isinstance(years, int):
@@ -40,8 +41,11 @@ class HolidayBase(dict):
         if not getattr(self, 'prov', False):
             self.prov = prov
         self.state = state
+        self.incl_school = incl_school
         for year in list(self.years):
             self._populate(year)
+            if self.incl_school:
+                self._populate_school(year)
 
     def __setattr__(self, key, value):
         if key == 'observed' and len(self) > 0:
@@ -53,6 +57,8 @@ class HolidayBase(dict):
                 self.clear()
                 for year in years:
                     self._populate(year)
+                    if self.incl_school:
+                        self._populate_school(year)
             else:
                 # Remove (Observed) dates
                 for k, v in list(self.items()):
@@ -78,6 +84,8 @@ class HolidayBase(dict):
         if self.expand and key.year not in self.years:
             self.years.add(key.year)
             self._populate(key.year)
+            if self.incl_school:
+                self._populate_school(key.year)
         return key
 
     def __contains__(self, key):
@@ -160,6 +168,9 @@ class HolidayBase(dict):
 
     def _populate(self, year):
         pass
+
+    def _populate_school(self, year):
+        raise ValueError("School vacations not supported for this country")
 
 
 def createHolidaySum(h1, h2):
@@ -1436,4 +1447,85 @@ class Germany(HolidayBase):
 
 
 class DE(Germany):
+    pass
+
+
+class Austria(HolidayBase):
+    PROVINCES = ['B', 'K', 'N', 'O', 'S', 'ST', 'T', 'V', 'W']
+
+    def __init__(self, **kwargs):
+        self.country = 'AT'
+        self.prov = kwargs.pop('prov', kwargs.pop('state', 'W'))
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # public holidays
+        self[date(year, 1, 1)] = "Neujahr"
+        self[date(year, 1, 6)] = "Heilige Drei Könige"
+        self[easter(year) + rd(weekday=MO)] = "Ostermontag"
+        self[date(year, 5, 1)] = "Staatsfeiertag"
+        self[easter(year) + rd(days=39)] = "Christi Himmelfahrt"
+        self[easter(year) + rd(days=50)] = "Pfingstmontag"
+        self[easter(year) + rd(days=60)] = "Fronleichnam"
+        self[date(year, 8, 15)] = "Maria Himmelfahrt"
+        if 1919 <= year <= 1934:
+            self[date(year, 11, 12)] = "Nationalfeiertag"
+        if year >= 1967:
+            self[date(year, 10, 26)] = "Nationalfeiertag"
+        self[date(year, 11, 1)] = "Allerheiligen"
+        self[date(year, 12, 8)] = "Maria Empfängnis"
+        self[date(year, 12, 25)] = "Christtag"
+        self[date(year, 12, 26)] = "Stefanitag"
+
+    def _populate_school(self, year):
+        '''appends school vacation days, which are no official public holidays
+        but only days off for pupils'''
+        # Weihnachtsferien
+        start = date(year, 1, 2)
+        end = date(year, 1, 5)
+        for cur_date in rrule(DAILY, dtstart=start, until=end):
+            self.append(cur_date)
+
+        # Semesterferien
+        start = date(year, 2, 1) + rd(weekday=MO)
+        end = start + rd(weekday=FR)
+        if self.prov in ['B', 'K', 'S', 'T']:
+            start += rd(days=7)
+            end += rd(days=7)
+        elif self.prov in ['O', 'ST', 'V']:
+            start += rd(days=14)
+            end += rd(days=14)
+        for cur_date in rrule(DAILY, dtstart=start, until=end):
+            self.append(cur_date)
+
+        # Osterferien
+        self.append(easter(year) + rd(weekday=TU))
+        start = easter(year) + rd(weekday=MO(-1))
+        end = start + rd(weekday=FR)
+        for cur_date in rrule(DAILY, dtstart=start, until=end):
+            self.append(cur_date)
+
+        # Pfingsten
+        self.append(easter(year) + rd(days=51))
+
+        # Sommerferien
+        start = date(year, 6, 30) + rd(weekday=MO)
+        end = start + rd(weekday=FR(+9))
+        if self.prov in ['K', 'O', 'S', 'ST', 'T', 'V']:
+            start += rd(days=7)
+            end += rd(days=7)
+        for cur_date in rrule(DAILY, dtstart=start, until=end):
+            self.append(cur_date)
+
+        # Allerseelen
+        self[date(year, 11, 2)] = "Allerheiligen"
+
+        # Weihnachtsferien
+        start = date(year, 12, 24)
+        end = date(year, 12, 31)
+        for cur_date in rrule(DAILY, dtstart=start, until=end):
+            self.append(cur_date)
+
+
+class AT(Austria):
     pass

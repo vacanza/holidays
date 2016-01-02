@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 
 #  holidays.py
 #  -----------
@@ -246,6 +246,10 @@ class TestBasics(unittest.TestCase):
             def _populate(self, year):
                 self[date(year, 12, 31)] = "New Year's Eve"
         self.assertTrue(date(2014, 12, 31) in Dec31Holiday())
+
+    def test_no_school(self):
+        with self.assertRaises(ValueError):
+            holidays.US(years=2015, incl_school=True)
 
 
 class TestArgs(unittest.TestCase):
@@ -2391,6 +2395,77 @@ class TestDE(unittest.TestCase):
             self.assertTrue(date(y, m, d) in self.prov_hols[province])
         for province, (y, m, d) in product(provinces_that_dont, known_good):
             self.assertTrue(date(y, m, d) not in self.prov_hols[province])
+
+
+class TestAT(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.AT()
+
+    def test_new_years(self):
+        for year in range(1900, 2100):
+            dt = date(year, 1, 1)
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+
+    def test_christmas(self):
+        for year in range(1900, 2100):
+            dt = date(year, 12, 25)
+            self.assertTrue(dt in self.holidays)
+            self.assertTrue(dt + relativedelta(days=+1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+2) in self.holidays)
+
+    def test_easter_monday(self):
+        for dt in [date(1900, 4, 16), date(1901, 4,  8), date(1902, 3, 31),
+                   date(1999, 4,  5), date(2000, 4, 24), date(2010, 4,  5),
+                   date(2018, 4,  2), date(2019, 4, 22), date(2020, 4, 13)]:
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+
+    def test_national_day(self):
+        for year in range(1919, 1934):
+            dt = date(year, 11, 12)
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+        for year in range(1967, 2100):
+            dt = date(year, 10, 26)
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+
+    def test_all_holidays_present(self):
+        at_2015 = holidays.AT(years=[2015])
+        all_holidays = ["Neujahr",
+                        "Heilige Drei Könige",
+                        "Ostermontag",
+                        "Staatsfeiertag",
+                        "Christi Himmelfahrt",
+                        "Pfingstmontag",
+                        "Fronleichnam",
+                        "Maria Himmelfahrt",
+                        "Nationalfeiertag",
+                        "Allerheiligen",
+                        "Maria Empfängnis",
+                        "Christtag",
+                        "Stefanitag"]
+        for holiday in all_holidays:
+            self.assertTrue(holiday in at_2015.values())
+
+    def test_school_vacation(self):
+        holidays_at_w = holidays.AT(incl_school=True)
+        for dt in [date(2015, 11, 2), date(2015, 12, 24), date(2015, 12, 30),
+                   date(2015, 3, 30), date(2015, 4, 7), date(2015, 1, 5),
+                   date(2020, 7, 28), date(2020, 8, 26)]:
+            self.assertTrue(dt in holidays_at_w)
+
+        self.assertTrue(date(2015, 7, 6) in holidays_at_w)
+        self.assertFalse(date(2015, 7, 3) in holidays_at_w)
+        self.assertTrue(date(2015, 9, 3) in holidays_at_w)
+        self.assertFalse(date(2015, 9, 6) in holidays_at_w)
 
 
 if __name__ == "__main__":
