@@ -17,7 +17,6 @@ from dateutil.easter import easter
 from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, TU, WE, TH, FR, SA
-from dateutil.rrule import rrule, DAILY
 import six
 
 
@@ -1470,57 +1469,3 @@ class Austria(HolidayBase):
 
 class AT(Austria):
     pass
-
-
-class AustriaSchool(Austria):
-    """Appends school vacation days, which are not official public holidays
-    but only days off for pupils"""
-
-    def _populate(self, year):
-        Austria._populate(self, year)
-
-        # Weihnachtsferien
-        start = date(year, 1, 2)
-        end = date(year, 1, 5)
-        for cur_date in rrule(DAILY, dtstart=start, until=end):
-            self.append(cur_date)
-
-        # Semesterferien
-        start = date(year, 2, 1) + rd(weekday=MO)
-        end = start + rd(weekday=FR)
-        if self.prov in ['B', 'K', 'S', 'T']:
-            start += rd(days=7)
-            end += rd(days=7)
-        elif self.prov in ['O', 'ST', 'V']:
-            start += rd(days=14)
-            end += rd(days=14)
-        for cur_date in rrule(DAILY, dtstart=start, until=end):
-            self.append(cur_date)
-
-        # Osterferien
-        self.append(easter(year) + rd(weekday=TU))
-        start = easter(year) + rd(weekday=MO(-1))
-        end = start + rd(weekday=FR)
-        for cur_date in rrule(DAILY, dtstart=start, until=end):
-            self.append(cur_date)
-
-        # Pfingsten
-        self.append(easter(year) + rd(days=51))
-
-        # Sommerferien
-        start = date(year, 6, 30) + rd(weekday=MO)
-        end = start + rd(weekday=FR(+9))
-        if self.prov in ['K', 'O', 'S', 'ST', 'T', 'V']:
-            start += rd(days=7)
-            end += rd(days=7)
-        for cur_date in rrule(DAILY, dtstart=start, until=end):
-            self.append(cur_date)
-
-        # Allerseelen
-        self[date(year, 11, 2)] = "Allerheiligen"
-
-        # Weihnachtsferien
-        start = date(year, 12, 24)
-        end = date(year, 12, 31)
-        for cur_date in rrule(DAILY, dtstart=start, until=end):
-            self.append(cur_date)
