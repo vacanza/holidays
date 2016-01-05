@@ -7,7 +7,7 @@
 #  Author:  ryanss <ryanssdev@icloud.com>
 #  Website: https://github.com/ryanss/holidays.py
 #  License: MIT (see LICENSE file)
-#  Version: 0.4.1-dev
+#  Version: 0.4.1 (January 5, 2016)
 
 
 try:
@@ -18,7 +18,7 @@ except ImportError:
 
 setup(
     name='holidays',
-    version='0.4.1-dev',
+    version='0.4.1',
     author='ryanss',
     author_email='ryanssdev@icloud.com',
     url='https://github.com/ryanss/holidays.py',
