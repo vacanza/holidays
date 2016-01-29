@@ -368,6 +368,120 @@ class Canada(HolidayBase):
 class CA(Canada):
     pass
 
+class Colombia(HolidayBase):
+    # https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_festivos_en_Colombia
+    def __init__(self, **kwargs):
+        self.country = 'CO'
+        HolidayBase.__init__(self, **kwargs)
+    
+    def moveToNextMon(self, date):
+        if date.weekday() == 1:
+            return date+rd(days=+6)
+        elif date.weekday() == 2:
+            return date+rd(days=+5)
+        elif date.weekday() == 3:
+            return date+rd(days=+4)
+        elif date.weekday() == 4:
+            return date+rd(days=+3)
+        elif date.weekday() == 5:
+            return date+rd(days=+2)
+        elif date.weekday() == 6:
+            return date+rd(days=+1)
+        else:
+            return date
+
+    def _populate(self, year):
+        # Fixed holidays!
+        
+        # New Year's Day
+        self[date(year, 1, 1)] = u"Año Nuevo [New Year's Day]"
+        
+        # Labor Day
+        self[date(year, 5, 1)] = u"Día del Trabajo [Labour Day]"
+        
+        # Independence Day
+        self[date(year, 7, 20)] = u"Día de la Independencia [Independence Day]"
+        
+        # Battle of Boyaca
+        self[date(year, 8, 7)] = u"Batalla de Boyacá [Battle of Boyacá]"
+        
+        # Immaculate Conception
+        self[date(year, 12, 8)] = u"La Inmaculada Concepción [Immaculate Conception]"
+        
+        # Christmas
+        name = "Navidad [Christmas]"
+        if self.observed and date(year, 12, 25).weekday() in WEEKEND:
+            pass
+        else:
+            self[date(year, 12, 25)] = name
+        # if date(year, 12, 25).weekday() in WEEKEND:
+        #     self[date(year, 12, 25)] = name + "Fin de semana [Weekend]"
+        # else:
+        #     self[date(year, 12, 25)] = name
+        
+        # Emiliani Law holidays! 
+        # (Unless it falls on a Monday it is observed the following monday.)
+
+        #  Epiphany
+        name = u"Día de los Reyes Magos [Epiphany]"
+        # newDate = self.moveToNextMon(date(year,1,6))
+        if date(year,1,6).weekday()==0 or not self.observed:
+            self[date(year,1,6)] = name
+        else:
+            self[date(year,1,6)+rd(weekday=MO)] = name + "(Observed)"
+        
+        # Saint Joseph's Day
+        name = u"Día de San José [Saint Joseph's Day]"
+        # newDate = self.moveToNextMon(date(year,3,19))
+        self[date(year,3,19)+rd(weekday=MO)] = name
+        
+        # Saint Peter and Saint Paul's Day
+        name = u"San Pedro y San Pablo [Saint Peter and Saint Paul]"
+        # newDate = self.moveToNextMon(date(year,6,29))
+        self[date(year,6,29)+rd(weekday=MO)] = name
+        
+        # Assumption of Mary
+        name = u"La Asunción [Assumption of Mary]"
+        # newDate = self.moveToNextMon(date(year,8,15))
+        self[date(year,8,15)+rd(weekday=MO)] = name
+        
+        # Discovery of America
+        name = u"Descubrimiento de América [Discovery of America]"
+        # newDate = self.moveToNextMon(date(year,10,12))
+        self[date(year,10,12)+rd(weekday=MO)] = name
+        
+        # All Saints’ Day
+        name = u"Dia de Todos los Santos [All Saint's Day]"
+        # newDate = self.moveToNextMon(date(year,11,1))
+        self[date(year,11,1)+rd(weekday=MO)] = name
+        
+        # Independence of Cartagena
+        name = u"Independencia de Cartagena [Independence of Cartagena]"
+        # newDate = self.moveToNextMon(date(year,11,11))
+        self[date(year,11,11)+rd(weekday=MO)] = name
+        
+        # Holidays based on easter
+        
+        # Maundy Thursday
+        # name = u"Jueves Santo [Maundy Thursday]"
+        # self[easter(year)+rd(days=-3)] = u"Jueves Santo [Maundy Thursday]"
+        self[easter(year) + rd(weekday=TH(-1))] = u"Jueves Santo [Maundy Thursday]"
+        
+        # Good Friday
+        self[easter(year) + rd(weekday=FR(-1))] = u"Viernes Santo [Good Friday]"
+        
+        # Ascension of Jesus
+        self[easter(year) + rd(days=+39) + rd(weekday=MO)] = u"Ascensión del señor [Ascension of Jesus]"
+        
+        # Corpus Christi
+        self[easter(year) + rd(days=+60) + rd(weekday=MO)] = u"Corpus Christi [Corpus Christi]"
+        
+        # Sacred Heart
+        self[easter(year) + rd(days=+68) + rd(weekday=MO)] = u"Sagrado Corazón [Sacred Heart]"
+
+
+class CO(Colombia):
+    pass
 
 class Mexico(HolidayBase):
     def __init__(self, **kwargs):
