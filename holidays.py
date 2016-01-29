@@ -373,22 +373,6 @@ class Colombia(HolidayBase):
     def __init__(self, **kwargs):
         self.country = 'CO'
         HolidayBase.__init__(self, **kwargs)
-    
-    def moveToNextMon(self, date):
-        if date.weekday() == 1:
-            return date+rd(days=+6)
-        elif date.weekday() == 2:
-            return date+rd(days=+5)
-        elif date.weekday() == 3:
-            return date+rd(days=+4)
-        elif date.weekday() == 4:
-            return date+rd(days=+3)
-        elif date.weekday() == 5:
-            return date+rd(days=+2)
-        elif date.weekday() == 6:
-            return date+rd(days=+1)
-        else:
-            return date
 
     def _populate(self, year):
         # Fixed holidays!
