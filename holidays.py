@@ -824,8 +824,8 @@ class UnitedStates(HolidayBase):
             self[date(year, 4, 22)] = "Arbor Day"
 
         # Primary Election Day
-        if self.state == 'IN' and ((year >= 2006 and year % 2 == 0)
-                                   or year >= 2015):
+        if self.state == 'IN' and ((year >= 2006 and year % 2 == 0) or
+                                   year >= 2015):
             dt = date(year, 5, 1) + rd(weekday=MO)
             self[dt + rd(days=+1)] = "Primary Election Day"
 
@@ -966,8 +966,9 @@ class UnitedStates(HolidayBase):
 
         # Election Day
         if (self.state in
-                ('DE', 'HI', 'IL', 'IN', 'LA', 'MT', 'NH', 'NJ', 'NY', 'WV')
-                and year >= 2008 and year % 2 == 0) \
+                ('DE', 'HI', 'IL', 'IN', 'LA',
+                    'MT', 'NH', 'NJ', 'NY', 'WV') and
+                year >= 2008 and year % 2 == 0) \
                 or (self.state in ('IN', 'NY') and year >= 2015):
             dt = date(year, 11, 1) + rd(weekday=MO)
             self[dt + rd(days=+1)] = "Election Day"
@@ -1006,7 +1007,8 @@ class UnitedStates(HolidayBase):
         # American Indian Heritage Day
         # Family Day
         # New Mexico Presidents' Day
-        if (self.state in ('DE', 'FL', 'NH', 'NC', 'OK', 'TX', 'WV') and year >= 1975) \
+        if (self.state in ('DE', 'FL', 'NH', 'NC', 'OK', 'TX', 'WV') and
+            year >= 1975) \
                 or (self.state == 'IN' and year >= 2010) \
                 or (self.state == 'MD' and year >= 2008) \
                 or self.state in ('NV', 'NM'):
