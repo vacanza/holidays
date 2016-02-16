@@ -418,7 +418,7 @@ class Colombia(HolidayBase):
         if self.observed and date(year, 12, 25).weekday() in WEEKEND:
             pass
         else:
-            self[date(year, 12, 25)] = "Navidad [Christmas]"
+            self[date(year, 12, 25)] = u"Navidad [Christmas]"
 
         # Emiliani Law holidays!
         # Unless they fall on a Monday they are observed the following monday
