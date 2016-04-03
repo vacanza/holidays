@@ -1518,7 +1518,7 @@ class China(HolidayBase):
             if this_date.weekday() == MONDAY:
                 # 前一周六及后一周日补上班
                 self[this_date + rd(weekday=SA(-1))] = ''
-                self[this_date + rd(weekday=SU(+1))] = ''
+                self[this_date + rd(weekday=SU(+2))] = ''
             elif this_date.weekday() < THURSDAY:
                 # 前一周末补上班
                 self[this_date + rd(weekday=SA(-1))] = ''
