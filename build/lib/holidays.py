@@ -162,7 +162,7 @@ class HolidayBase(dict):
         pass
 
     def is_working_day(self, date_key):
-        # convert to date class
+        # convert to date class and polulate if needed
         this_date = self.__keytransform__(date_key)
 
         holiday_name = self.get(this_date)
@@ -179,6 +179,30 @@ class HolidayBase(dict):
 
     def is_holiday(self, date_key):
         return not self.is_working_day(date_key)
+
+    def holidays_in_period(self, date_key, days=30):
+        # convert to date class and polulate if needed
+        this_date = self.__keytransform__(date_key)
+
+        if self.expand and this_date.year + 1 not in self.years:
+            # 加上明年, 避免年底日期找不到次年年初的假日
+            self.years.add(this_date.year + 1)
+            self._populate(this_date.year + 1)
+
+        sorted_holidays = sorted(self.items() + [(this_date, '')])
+
+        holidays = []
+
+        start_index = sorted_holidays.index((this_date, ''))
+
+        if (start_index + 1) < len(sorted_holidays):
+            for i in range(start_index + 1, start_index + 1 + days):
+                if (sorted_holidays[i][0] - this_date).days <= days and sorted_holidays[i][1]:
+                    holidays.append(sorted_holidays[i][0])
+                else:
+                    break
+
+        return holidays
 
 
 def createHolidaySum(h1, h2):
@@ -1518,7 +1542,7 @@ class China(HolidayBase):
             if this_date.weekday() == MONDAY:
                 # 前一周六及后一周日补上班
                 self[this_date + rd(weekday=SA(-1))] = ''
-                self[this_date + rd(weekday=SU(+2))] = ''
+                self[this_date + rd(weekday=SU(+1))] = ''
             elif this_date.weekday() < THURSDAY:
                 # 前一周末补上班
                 self[this_date + rd(weekday=SA(-1))] = ''
