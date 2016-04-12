@@ -27,7 +27,7 @@ setup(
     py_modules=['holidays'],
     description='Generate and work with holidays in Python',
     long_description=open('README.rst').read(),
-    install_requires=['python-dateutil'],
+    install_requires=['python-dateutil', 'lunardate'],
     platforms='any',
     classifiers=[
         'Development Status :: 4 - Beta',
