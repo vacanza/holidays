@@ -167,14 +167,14 @@ class HolidayBase(dict):
 
         holiday_name = self.get(this_date)
         if holiday_name == '':
-            # 补上班
+            # shift working day
             return True
 
         elif holiday_name or this_date.weekday() in WEEKEND:
-            # 假日或周末
+            # holiday or weekend
             return False
 
-        # 非周末
+        # working day
         return True
 
     def is_holiday(self, date_key):
@@ -185,7 +185,7 @@ class HolidayBase(dict):
         this_date = self.__keytransform__(date_key)
 
         if self.expand and this_date.year + 1 not in self.years:
-            # 加上明年, 避免年底日期找不到次年年初的假日
+            # if next year doesn't not included, adding next year, so that early holidays in next year will also be included.
             self.years.add(this_date.year + 1)
             self._populate(this_date.year + 1)
 
@@ -1531,7 +1531,7 @@ class China(HolidayBase):
         this_date = date(year, 1, 1)
         self[this_date] = name
         if self.observed and this_date.weekday() in WEEKEND:
-            # 下周一补假
+            # Next monday becomes holiday
             self[this_date + rd(weekday=MO)] = name + " (Observed)"
 
         # Spring Festival
@@ -1540,19 +1540,19 @@ class China(HolidayBase):
         self[this_date] = name
         if self.observed:
             if this_date.weekday() == MONDAY:
-                # 前一周六及后一周日补上班
+                # The previous Saturday and following Sunday are shift working days
                 self[this_date + rd(weekday=SA(-1))] = ''
                 self[this_date + rd(weekday=SU(+1))] = ''
             elif this_date.weekday() < THURSDAY:
-                # 前一周末补上班
+                # the previous weekend are shifted working days
                 self[this_date + rd(weekday=SA(-1))] = ''
                 self[this_date + rd(weekday=SU(-1))] = ''
             else:
-                # 前一及后一周日补上班
+                # The previous and following Sunday are shift working days
                 self[this_date + rd(weekday=SU(-1))] = ''
                 self[this_date + rd(weekday=SU(+2))] = ''
 
-            # 除夕开始,放到初6
+            # six holidays in a row
             self[this_date + rd(days=-1)] = name + " (Observed)"
             self[this_date + rd(days=1)] = name + " (Observed)"
             self[this_date + rd(days=2)] = name + " (Observed)"
@@ -1565,7 +1565,7 @@ class China(HolidayBase):
         this_date = date(year, 4, 4)
         self[this_date] = name
         if self.observed and this_date.weekday() in WEEKEND:
-            # 下周一补假
+            # Next monday becomes holiday
             self[this_date + rd(weekday=MO)] = name + " (Observed)"
 
         # Labor's Day
@@ -1573,7 +1573,7 @@ class China(HolidayBase):
         this_date = date(year, 5, 1)
         self[this_date] = name
         if self.observed and this_date.weekday() in WEEKEND:
-            # 下周一补假
+            # Next monday become holiday
             self[this_date + rd(weekday=MO)] = name + " (Observed)"
 
         # Dragon Boat Festival
@@ -1582,11 +1582,11 @@ class China(HolidayBase):
         self[this_date] = name
         if self.observed:
             if this_date.weekday() == THURSDAY:
-                # 星期四,弹性休假
+                # Following Sunday shift to Thursday
                 self[this_date + rd(days=+1)] = name + " (Observed)"
                 self[this_date + rd(weekday=SU)] = ''
             elif this_date.weekday() == TUESDAY:
-                # 星期二,弹性休假
+                # Previous Saturday shift to Tuesday
                 self[this_date + rd(days=-1)] = name + " (Observed)"
                 self[this_date + rd(weekday=SA(-1))] = ''
 
@@ -1596,11 +1596,11 @@ class China(HolidayBase):
         self[this_date] = name
         if self.observed:
             if this_date.weekday() == THURSDAY:
-                # 星期四,弹性休假
+                # Following Sunday shift to Thursday
                 self[this_date + rd(days=+1)] = name + " (Observed)"
                 self[this_date + rd(weekday=SU)] = ''
             elif this_date.weekday() == TUESDAY:
-                # 星期二,弹性休假
+                # Previous Saturday shift to Tuesday
                 self[this_date + rd(days=-1)] = name + " (Observed)"
                 self[this_date + rd(weekday=SA(-1))] = ''
 
@@ -1610,19 +1610,19 @@ class China(HolidayBase):
         self[this_date] = name
         if self.observed:
             if this_date.weekday() == MONDAY:
-                # 前一周末补上班
+                # the previous weekend are shifted working days
                 self[this_date + rd(weekday=SA(-1))] = ''
                 self[this_date + rd(weekday=SU(-1))] = ''
             elif this_date.weekday() == SATURDAY:
-                # 后一周末补上班
+                # the following weekend are shifted working days
                 self[this_date + rd(weekday=SA(2))] = ''
                 self[this_date + rd(weekday=SU(2))] = ''
             else:
-                # 前一及后一周日补上班
+                # The previous and following Sunday are shift working days
                 self[this_date + rd(weekday=SU(-1))] = ''
                 self[this_date + rd(weekday=SU(+2))] = ''
 
-            # 后面连续放6天
+            # six holidays in a row
             self[this_date + rd(days=1)] = name + " (Observed)"
             self[this_date + rd(days=2)] = name + " (Observed)"
             self[this_date + rd(days=3)] = name + " (Observed)"
