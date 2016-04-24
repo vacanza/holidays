@@ -26,7 +26,7 @@ setup(
     license='MIT',
     py_modules=['holidays'],
     description='Generate and work with holidays in Python',
-    long_description=open('README.rst').read(),
+    long_description=open('README.rst', encoding='utf-8').read(),
     install_requires=['python-dateutil'],
     platforms='any',
     classifiers=[
