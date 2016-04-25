@@ -389,10 +389,7 @@ class Colombia(HolidayBase):
             self[date(year, 1, 1)] = "Año Nuevo [New Year's Day]"
 
         # Labor Day
-        if self.observed and date(year, 5, 1).weekday() in WEEKEND:
-            pass
-        else:
-            self[date(year, 5, 1)] = "Día del Trabajo [Labour Day]"
+        self[date(year, 5, 1)] = "Día del Trabajo [Labour Day]"
 
         # Independence Day
         name = "Día de la Independencia [Independence Day]"
@@ -402,10 +399,7 @@ class Colombia(HolidayBase):
             self[date(year, 7, 20)] = name
 
         # Battle of Boyaca
-        if self.observed and date(year, 8, 7).weekday() in WEEKEND:
-            pass
-        else:
-            self[date(year, 8, 7)] = "Batalla de Boyacá [Battle of Boyacá]"
+        self[date(year, 8, 7)] = "Batalla de Boyacá [Battle of Boyacá]"
 
         # Immaculate Conception
         if self.observed and date(year, 12, 8).weekday() in WEEKEND:
@@ -415,10 +409,7 @@ class Colombia(HolidayBase):
                  ] = "La Inmaculada Concepción [Immaculate Conception]"
 
         # Christmas
-        if self.observed and date(year, 12, 25).weekday() in WEEKEND:
-            pass
-        else:
-            self[date(year, 12, 25)] = "Navidad [Christmas]"
+        self[date(year, 12, 25)] = "Navidad [Christmas]"
 
         # Emiliani Law holidays!
         # Unless they fall on a Monday they are observed the following monday

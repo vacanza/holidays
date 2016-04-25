@@ -625,6 +625,33 @@ class TestCA(unittest.TestCase):
         self.assertTrue(date(2010, 12, 27) in self.holidays)
 
 
+class TestCO(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.CO(observed=True)
+
+    def test_2016(self):
+        # http://www.officeholidays.com/countries/colombia/
+        self.assertTrue(date(2016, 1, 1) in self.holidays)
+        self.assertTrue(date(2016, 1, 11) in self.holidays)
+        self.assertTrue(date(2016, 3, 21) in self.holidays)
+        self.assertTrue(date(2016, 3, 24) in self.holidays)
+        self.assertTrue(date(2016, 3, 25) in self.holidays)
+        self.assertTrue(date(2016, 5, 1) in self.holidays)
+        self.assertTrue(date(2016, 5, 9) in self.holidays)
+        self.assertTrue(date(2016, 5, 30) in self.holidays)
+        self.assertTrue(date(2016, 6, 6) in self.holidays)
+        self.assertTrue(date(2016, 7, 4) in self.holidays)
+        self.assertTrue(date(2016, 7, 20) in self.holidays)
+        self.assertTrue(date(2016, 8, 7) in self.holidays)
+        self.assertTrue(date(2016, 8, 15) in self.holidays)
+        self.assertTrue(date(2016, 10, 17) in self.holidays)
+        self.assertTrue(date(2016, 11, 7) in self.holidays)
+        self.assertTrue(date(2016, 11, 14) in self.holidays)
+        self.assertTrue(date(2016, 12, 8) in self.holidays)
+        self.assertTrue(date(2016, 12, 25) in self.holidays)
+
+
 class TestMX(unittest.TestCase):
 
     def setUp(self):
