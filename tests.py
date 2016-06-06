@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 #  holidays.py
 #  -----------
@@ -2477,6 +2477,114 @@ class TestAT(unittest.TestCase):
                         "Stefanitag"]
         for holiday in all_holidays:
             self.assertTrue(holiday in at_2015.values())
+
+
+class TestUK(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.UK()
+
+    def test_new_years(self):
+        for year in range(1974, 2100):
+            dt = date(year, 1, 1)
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+
+    def test_st_patricks_day(self):
+        for dt in [date(1900, 3, 19), date(1999, 3, 17), date(2001, 3, 19),
+                   date(2012, 3, 19), date(2013, 3, 18), date(2014, 3, 17),
+                   date(2015, 3, 17), date(2016, 3, 17), date(2020, 3, 17)]:
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-3) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+3) in self.holidays)
+
+    def test_good_friday(self):
+        for dt in [date(1900, 4, 13), date(1901, 4,  5), date(1902, 3, 28),
+                   date(1999, 4,  2), date(2000, 4, 21), date(2010, 4,  2),
+                   date(2018, 3, 30), date(2019, 4, 19), date(2020, 4, 10)]:
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+
+    def test_easter_monday(self):
+        for dt in [date(1900, 4, 16), date(1901, 4,  8), date(1902, 3, 31),
+                   date(1999, 4,  5), date(2000, 4, 24), date(2010, 4,  5),
+                   date(2018, 4,  2), date(2019, 4, 22), date(2020, 4, 13)]:
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+
+    def test_may_day(self):
+        for dt in [date(1978, 5, 1), date(1979, 5, 7), date(1980, 5, 5),
+                   date(1999, 5, 3), date(2000, 5, 1), date(2010, 5, 3),
+                   date(2018, 5, 7), date(2019, 5, 6), date(2020, 5, 4)]:
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+
+    def test_spring_bank_holiday(self):
+        for dt in [date(1978, 5, 29), date(1979, 5, 28), date(1980, 5, 26),
+                   date(1999, 5, 31), date(2000, 5, 29), date(2010, 5, 31),
+                   date(2018, 5, 28), date(2019, 5, 27), date(2020, 5, 25)]:
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+
+    def test_christmas_day(self):
+        self.holidays.observed = False
+        for year in range(1900, 2100):
+            dt = date(year, 12, 25)
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+        self.assertFalse(date(2010, 12, 24) in self.holidays)
+        self.assertNotEqual(self.holidays[date(2011, 12, 26)],
+                            "Christmas Day (Observed)")
+        self.holidays.observed = True
+        self.assertEqual(self.holidays[date(2011, 12, 27)],
+                         "Christmas Day (Observed)")
+        for year, day in enumerate([25, 25, 25, 27, 27,        # 2001-05
+                                    25, 25, 25, 25, 27,        # 2006-10
+                                    27, 25, 25, 25, 25,        # 2011-15
+                                    27, 25, 25, 25, 25, 25],   # 2016-21
+                                   2001):
+            dt = date(year, 12, day)
+            self.assertTrue(dt in self.holidays, dt)
+            self.assertEqual(self.holidays[dt][:9], "Christmas")
+
+    def test_boxing_day(self):
+        self.holidays.observed = False
+
+        for year in range(1900, 2100):
+            dt = date(year, 12, 26)
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+        self.assertFalse(date(2009, 12, 28) in self.holidays)
+        self.assertFalse(date(2010, 12, 27) in self.holidays)
+        self.holidays.observed = True
+        self.assertTrue(date(2004, 12, 28) in self.holidays)
+        self.assertTrue(date(2010, 12, 28) in self.holidays)
+        for year, day in enumerate([26, 26, 26, 28, 26,        
+                                    26, 26, 26, 28, 28,        
+                                    26, 26, 26, 26, 26,        
+                                    26, 26, 26, 26, 26, 28],   
+                                   2001):
+            dt = date(year, 12, day)
+            self.assertTrue(dt in self.holidays, dt)
+            self.assertEqual(self.holidays[dt][:6], "Boxing")
+
+    def test_all_holidays_present(self):
+        uk_2015 = holidays.UK(years=[2015])
+        all_holidays = ["New Year's Day",
+                        "St. Patrick's Day",
+                        "Good Friday",
+                        "Easter Monday",
+                        "May Day",
+                        "Spring Bank Holiday",
+                        "Late Summer Bank Holiday",
+                        "Christmas Day",
+                        "Boxing Day"]
+        for holiday in all_holidays:
+            self.assertTrue(holiday in uk_2015.values())
 
 
 if __name__ == "__main__":
