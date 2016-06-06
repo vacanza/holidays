@@ -1607,3 +1607,91 @@ class Austria(HolidayBase):
 
 class AT(Austria):
     pass
+
+
+class UnitedKingdom(HolidayBase):
+    # https://en.wikipedia.org/wiki/Public_holidays_in_the_United_Kingdom
+
+    def __init__(self, **kwargs):
+        self.country = 'UK'
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+
+        # New Year's Day
+        if year >= 1974:
+            name = "New Year's Day"
+            self[date(year, 1, 1)] = name
+            if self.observed and date(year, 1, 1).weekday() == 6:
+                self[date(year, 1, 1) + rd(days=+1)] = name + " (Observed)"
+            elif self.observed and date(year, 1, 1).weekday() == 5:
+                self[date(year, 1, 1) + rd(days=+2)] = name + " (Observed)"
+
+        # St. Patrick's Day
+        name = "St. Patrick's Day"
+        self[date(year, 3, 17)] = name
+        if self.observed and date(year, 3, 17).weekday() in (5, 6):
+            self[date(year, 3, 17) + rd(weekday=MO)] = name + " (Observed)"
+            
+        # Good Friday
+        self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
+
+        # Easter Monday
+        self[easter(year) + rd(weekday=MO)] = "Easter Monday"
+
+        # May Day bank holiday (first Monday in May)
+        if year >= 1978:
+            name = "May Day"
+            if date(year, 5, 1).weekday() == 0:
+                self[date(year, 5, 1)] = name
+            elif date(year, 5, 1).weekday() == 1:
+                self[date(year, 5, 1) + rd(days=+6)] = name
+            elif date(year, 5, 1).weekday() == 2:
+                self[date(year, 5, 1) + rd(days=+5)] = name
+            elif date(year, 5, 1).weekday() == 3:
+                self[date(year, 5, 1) + rd(days=+4)] = name
+            elif date(year, 5, 1).weekday() == 4:
+                self[date(year, 5, 1) + rd(days=+3)] = name
+            elif date(year, 5, 1).weekday() == 5:
+                self[date(year, 5, 1) + rd(days=+2)] = name
+            elif date(year, 5, 1).weekday() == 6:
+                self[date(year, 5, 1) + rd(days=+1)] = name
+
+        # Spring bank holiday (last Monday in May)
+        if year >= 1971:
+            name = "Spring Bank Holiday"
+
+            if date(year, 5, 31).weekday() == 0:
+                self[date(year, 5, 31)] = name
+            else:
+                self[date(year, 5, 31) + rd(weekday=MO(-1))] = name
+
+        # Late Summer bank holiday (last Monday in August)
+        if year >= 1971:
+            name = "Late Summer Bank Holiday"
+
+            if date(year, 8, 31).weekday() == 0:
+                self[date(year, 8, 31)] = name
+            else:
+                self[date(year, 8, 31) + rd(weekday=MO(-1))] = name
+                            
+        # Christmas Day
+        name = "Christmas Day"
+        # Christmas
+        self[date(year, 12, 25)] = name
+        if self.observed and date(year, 12, 25).weekday() == 5:
+            self[date(year, 12, 27)] = name + " (Observed)"
+        elif self.observed and date(year, 12, 25).weekday() == 6:
+            self[date(year, 12, 27)] = name + " (Observed)"
+
+        # Boxing Day
+        name = "Boxing Day"
+        self[date(year, 12, 26)] = name
+        if self.observed and date(year, 12, 26).weekday() == 5:
+            self[date(year, 12, 28)] = name + " (Observed)"
+        elif self.observed and date(year, 12, 26).weekday() == 6:
+            self[date(year, 12, 28)] = name + " (Observed)"
+
+
+class UK(UnitedKingdom):
+    pass
