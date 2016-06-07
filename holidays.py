@@ -67,7 +67,7 @@ class HolidayBase(dict):
         elif isinstance(key, date):
             key = key
         elif isinstance(key, int) or isinstance(key, float):
-            key = datetime.fromtimestamp(key).date()
+            key = datetime.utcfromtimestamp(key).date()
         elif isinstance(key, six.string_types):
             try:
                 key = parse(key).date()
