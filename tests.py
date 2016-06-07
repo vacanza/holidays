@@ -2563,10 +2563,10 @@ class TestUK(unittest.TestCase):
         self.holidays.observed = True
         self.assertTrue(date(2004, 12, 28) in self.holidays)
         self.assertTrue(date(2010, 12, 28) in self.holidays)
-        for year, day in enumerate([26, 26, 26, 28, 26,        
-                                    26, 26, 26, 28, 28,        
-                                    26, 26, 26, 26, 26,        
-                                    26, 26, 26, 26, 26, 28],   
+        for year, day in enumerate([26, 26, 26, 28, 26,
+                                    26, 26, 26, 28, 28,
+                                    26, 26, 26, 26, 26,
+                                    26, 26, 26, 26, 26, 28],
                                    2001):
             dt = date(year, 12, day)
             self.assertTrue(dt in self.holidays, dt)

@@ -1632,7 +1632,7 @@ class UnitedKingdom(HolidayBase):
         self[date(year, 3, 17)] = name
         if self.observed and date(year, 3, 17).weekday() in (5, 6):
             self[date(year, 3, 17) + rd(weekday=MO)] = name + " (Observed)"
-            
+
         # Good Friday
         self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
 
@@ -1674,7 +1674,7 @@ class UnitedKingdom(HolidayBase):
                 self[date(year, 8, 31)] = name
             else:
                 self[date(year, 8, 31) + rd(weekday=MO(-1))] = name
-                            
+
         # Christmas Day
         name = "Christmas Day"
         # Christmas
