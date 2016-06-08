@@ -2493,11 +2493,7 @@ class TestDK(unittest.TestCase):
         self.assertTrue(date(2016, 4, 22) in self.holidays)
         self.assertTrue(date(2016, 5, 5) in self.holidays)
         self.assertTrue(date(2016, 5, 16) in self.holidays)
-        self.assertTrue(date(2016, 6, 5) in self.holidays)
-        self.assertTrue(date(2016, 12, 24) in self.holidays)
         self.assertTrue(date(2016, 12, 25) in self.holidays)
-        self.assertTrue(date(2016, 12, 25) in self.holidays)
-        self.assertTrue(date(2016, 12, 31) in self.holidays)
 
 
 if __name__ == "__main__":

@@ -1629,10 +1629,6 @@ class Denmark(HolidayBase):
         self[easter(year) + rd(days=50)] = "Anden pinsedag"
         self[date(year, 12, 25)] = "Juledag"
         self[date(year, 12, 26)] = "Anden juledag"
-        # Other holidays (banks, most stores and offices are closed)
-        self[date(year, 6, 5)] = "Grundlovsdag"
-        self[date(year, 12, 24)] = "Juleaften"
-        self[date(year, 12, 31)] = "Nytårsaften"
 
 
 class DK(Denmark):
