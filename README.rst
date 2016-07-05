@@ -82,6 +82,8 @@ Germany        DE    BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL, SN, ST,
 Mexico         MX    None
 NewZealand     NZ    prov = NTL, AUK, TKI, HKB, WGN, MBH, NSN, CAN, STC, WTL,
                      OTA, STL, CIT
+Spain          ES    prov = AND, ARG, AST, CAN, CAM, CAL, CAT, CVA, EXT, GAL,
+                     IBA, ICA, MAD, MUR, NAV, PVA, RIO
 UnitedKingdom  UK    None
 UnitedStates   US    state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL, GA,
                      GU, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MH, MA, MI,

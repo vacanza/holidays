@@ -2604,5 +2604,68 @@ class TestUK(unittest.TestCase):
             self.assertTrue(holiday in uk_2015.values())
 
 
+class TestES(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.ES()
+        self.prov_holidays = dict((prov, holidays.ES(prov=prov))
+                                  for prov in holidays.ES.PROVINCES)
+
+    def test_fixed_holidays(self):
+        fixed_days_whole_country = (
+            (1, 1),
+            (1, 6),
+            (5, 1),
+            (8, 15),
+            (11, 1),
+            (12, 6),
+            (12, 8),
+            (12, 25),
+        )
+        for y, (m, d) in product(range(1950, 2050), fixed_days_whole_country):
+            self.assertTrue(date(y, m, d) in self.holidays)
+
+    def test_variable_days_in_2016(self):
+        self.assertTrue(date(2016, 3, 25) in self.holidays)
+        for prov, prov_holidays in self.prov_holidays.items():
+            self.assertEqual(
+                date(2016, 3, 24) in prov_holidays, prov != 'CAT')
+            self.assertEqual(
+                date(2016, 3, 28) in prov_holidays,
+                prov in ['CAT', 'PVA', 'NAV', 'CVA', 'IBA'])
+
+    def test_province_specific_days(self):
+        province_days = {
+            (2, 28): ['AND', 'CAN', 'CAM'],
+            (3, 1): ['IBA'],
+            (3, 8):  ['AST'],
+            (4, 23): ['ARG', 'CAL'],
+            (5, 30): ['ICA'],
+            (5, 2): ['MAD'],
+            (6, 9): ['MUR', 'RIO'],
+            (7, 25): ['GAL'],
+            (9, 8): ['EXT'],
+            (9, 11): ['CAT'],
+            (9, 27): ['NAV'],
+            (10, 9): ['CVA'],
+            (10, 25): ['PVA'],
+            }
+        for prov, prov_holidays in self.prov_holidays.items():
+            for year in range(2010, 2020):
+                self.assertEqual(
+                    date(year, 12, 26) in prov_holidays,
+                    prov in ['CAT', 'IBA'])
+                self.assertEqual(
+                    date(year, 3, 19) in prov_holidays,
+                    prov in ['CVA', 'MUR', 'MAD', 'NAV', 'PVA'])
+                self.assertEqual(
+                    date(year, 6, 24) in prov_holidays,
+                    prov in ['CAT', 'GAL'])
+                for fest_day, fest_prov in province_days.items():
+                    self.assertEqual(
+                        date(year, *fest_day) in prov_holidays,
+                        prov in fest_prov)
+
+
 if __name__ == "__main__":
     unittest.main()
