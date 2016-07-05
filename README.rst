@@ -15,9 +15,6 @@ specific date is a holiday as fast and flexible as possible.
 .. image:: http://img.shields.io/pypi/v/holidays.svg
     :target: https://pypi.python.org/pypi/holidays
 
-.. image:: http://img.shields.io/pypi/dm/holidays.svg
-    :target: https://pypi.python.org/pypi/holidays
-
 .. image:: http://img.shields.io/pypi/l/holidays.svg
     :target: https://github.com/ryanss/holidays.py/blob/master/LICENSE
 
