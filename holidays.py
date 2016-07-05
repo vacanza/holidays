@@ -1609,6 +1609,32 @@ class AT(Austria):
     pass
 
 
+class Denmark(HolidayBase):
+    # https://en.wikipedia.org/wiki/Public_holidays_in_Denmark
+
+    def __init__(self, **kwargs):
+        self.country = 'DK'
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # Public holidays
+        self[date(year, 1, 1)] = "Nytårsdag"
+        self[easter(year) + rd(weekday=TH(-1))] = "Skærtorsdag"
+        self[easter(year) + rd(weekday=FR(-1))] = "Langfredag"
+        self[easter(year)] = "Påskedag"
+        self[easter(year) + rd(weekday=MO)] = "Anden påskedag"
+        self[easter(year) + rd(weekday=FR(+4))] = "Store bededag"
+        self[easter(year) + rd(days=39)] = "Kristi himmelfartsdag"
+        self[easter(year) + rd(days=49)] = "Pinsedag"
+        self[easter(year) + rd(days=50)] = "Anden pinsedag"
+        self[date(year, 12, 25)] = "Juledag"
+        self[date(year, 12, 26)] = "Anden juledag"
+
+
+class DK(Denmark):
+    pass
+
+
 class UnitedKingdom(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_the_United_Kingdom
 
