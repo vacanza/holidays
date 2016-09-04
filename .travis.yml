@@ -13,7 +13,8 @@ python:
 
 install:
     - python setup.py install
-    - pip install flake8
+    - if [[ $TRAVIS_PYTHON_VERSION == 2.6 ]]; then pip install flake8==2.6.2; fi
+    - if [[ $TRAVIS_PYTHON_VERSION != 2.6 ]]; then pip install flake8; fi
     - pip install coveralls
 
 before_script:
