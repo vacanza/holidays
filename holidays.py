@@ -666,8 +666,7 @@ class UnitedStates(HolidayBase):
                 name = "Robert E. Lee's Birthday"
             elif self.state == 'ID' and year >= 2006:
                 name = "Martin Luther King, Jr. - Idaho Human Rights Day"
-            if self.state != 'GA' or year < 2012:
-                self[date(year, 1, 1) + rd(weekday=MO(+3))] = name
+            self[date(year, 1, 1) + rd(weekday=MO(+3))] = name
 
         # Lincoln's Birthday
         name = "Lincoln's Birthday"
@@ -1018,7 +1017,7 @@ class UnitedStates(HolidayBase):
             self[dt + rd(days=+1)] = name
 
         # Robert E. Lee's Birthday
-        if self.state == 'GA' and year >= 2012:
+        if self.state == 'GA' and year >= 1986:
             name = "Robert E. Lee's Birthday"
             self[date(year, 11, 29) + rd(weekday=FR(-1))] = name
 

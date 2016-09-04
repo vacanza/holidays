@@ -1552,8 +1552,9 @@ class TestUS(unittest.TestCase):
 
     def test_robert_lee_birthday(self):
         ga_holidays = holidays.US(state='GA')
-        self.assertFalse(date(2011, 11, 25) in ga_holidays)
-        for dt in [date(2013, 11, 29), date(2014, 11, 28), date(2015, 11, 27),
+        self.assertFalse(date(1985, 11, 25) in ga_holidays)
+        for dt in [date(2007, 11, 23), date(2008, 11, 28), date(2010, 11, 26),
+                   date(2013, 11, 29), date(2014, 11, 28), date(2015, 11, 27),
                    date(2018, 11, 23), date(2019, 11, 29), date(2020, 11, 27)]:
             self.assertFalse(dt in self.holidays)
             self.assertTrue(dt in ga_holidays)
