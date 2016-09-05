@@ -7,7 +7,7 @@
 #  Author:  ryanss <ryanssdev@icloud.com>
 #  Website: https://github.com/ryanss/holidays.py
 #  License: MIT (see LICENSE file)
-#  Version: 0.4.1 (January 5, 2016)
+#  Version: 0.5 (September 5, 2016)
 
 
 import codecs
@@ -19,7 +19,7 @@ except ImportError:
 
 setup(
     name='holidays',
-    version='0.4.1',
+    version='0.5',
     author='ryanss',
     author_email='ryanssdev@icloud.com',
     url='https://github.com/ryanss/holidays.py',
@@ -44,6 +44,7 @@ setup(
         'Programming Language :: Python :: 3.2',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: Office/Business :: Scheduling',
         'Topic :: Software Development :: Libraries :: Python Modules',

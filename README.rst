@@ -33,20 +33,32 @@ Example Usage
     date(2015, 1, 1) in us_holidays  # True
     date(2015, 1, 2) in us_holidays  # False
 
-
+    # The Holiday class will also recognize strings of any format
+    # and int/float representing a Unix timestamp
     '2014-01-01' in us_holidays  # True
-    '1/1/2014' in us_holidays  # True
-    1388597445 in us_holidays  # True (Unix timestamp)
+    '1/1/2014' in us_holidays    # True
+    1388597445 in us_holidays    # True
 
     us_holidays.get('2014-01-01')  # "New Year's Day"
 
+    # Easily create custom Holiday objects with your own dates instead
+    # of using the pre-defined countries/states/provinces available
     custom_holidays = holidays.HolidayBase()
+    # Append custom holiday dates by passing:
+    # 1) a dict with date/name key/value pairs,
     custom_holidays.append({"2015-01-01": "New Year's Day"})
+    # 2) a list of dates (in any format: date, datetime, string, integer),
     custom_holidays.append(['2015-07-01', '07/04/2015'])
+    # 3) a single date item
     custom_holidays.append(date(2015, 12, 25))
+
     date(2015, 1, 1) in custom_holidays  # True
     date(2015, 1, 2) in custom_holidays  # False
-    '12/25/2015' in custom_holidays  # True
+    '12/25/2015' in custom_holidays      # True
+
+    # For more complex logic like 4th Monday of January, you can inherit the
+    # HolidayBase class and define your own _populate(year) method. See below
+    # documentation for examples.
 
 
 Install
