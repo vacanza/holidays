@@ -16,7 +16,7 @@ from datetime import date, datetime
 from dateutil.easter import easter
 from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, TU, WE, TH, FR, SA
+from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
 import six
 
 
@@ -218,13 +218,7 @@ class Canada(HolidayBase):
             if self.observed and date(year, 12, 31).weekday() == 4:
                 self[date(year, 12, 31)] = name + " (Observed)"
 
-        # Islander Day
-        if self.prov == 'PE' and year >= 2010:
-            self[date(year, 2, 1) + rd(weekday=MO(+3))] = "Islander Day"
-        elif self.prov == 'PE' and year == 2009:
-            self[date(year, 2, 1) + rd(weekday=MO(+2))] = "Islander Day"
-
-        # Family Day / Louis Riel Day (MB)
+        # Family Day / Louis Riel Day (MB) / Islander Day (PE) / Heritage Day (NS, YU)
         if self.prov in ('AB', 'SK', 'ON') and year >= 2008:
             self[date(year, 2, 1) + rd(weekday=MO(+3))] = "Family Day"
         elif self.prov in ('AB', 'SK') and year >= 2007:
@@ -235,6 +229,19 @@ class Canada(HolidayBase):
             self[date(year, 2, 1) + rd(weekday=MO(+2))] = "Family Day"
         elif self.prov == 'MB' and year >= 2008:
             self[date(year, 2, 1) + rd(weekday=MO(+3))] = "Louis Riel Day"
+        elif self.prov == 'PE' and year >= 2010:
+            self[date(year, 2, 1) + rd(weekday=MO(+3))] = "Islander Day"
+        elif self.prov == 'PE' and year == 2009:
+            self[date(year, 2, 1) + rd(weekday=MO(+2))] = "Islander Day"
+        elif self.prov in ('NS') and year >= 2015:
+            # http://novascotia.ca/lae/employmentrights/NovaScotiaHeritageDay.asp
+            self[date(year, 2, 1) + rd(weekday=MO(+3))] = "Heritage Day"
+        elif self.prov in ('YU'):
+            # start date?
+            # http://heritageyukon.ca/programs/heritage-day
+            # https://en.wikipedia.org/wiki/Family_Day_(Canada)#Yukon_Heritage_Day
+            # Friday before the last Sunday in February
+            self[date(year, 3, 1) + rd(weekday=SU(-1)) + rd(weekday=FR(-1))] = "Heritage Day"
 
         # St. Patrick's Day
         if self.prov == 'NL' and year >= 1900:
