@@ -321,10 +321,20 @@ class Canada(HolidayBase):
             self[date(2000, 4, 1)] = "Nunavut Day"
 
         # Civic Holiday
-        if self.prov in ('SK', 'ON', 'MB', 'NT') and year >= 1900:
+        if self.prov in ('ON', 'MB', 'NT') and year >= 1900:
             self[date(year, 8, 1) + rd(weekday=MO)] = "Civic Holiday"
+        elif self.prov in ('AB') and year >= 1974:
+            # https://en.wikipedia.org/wiki/Civic_Holiday#Alberta
+            self[date(year, 8, 1) + rd(weekday=MO)] = "Heritage Day"
         elif self.prov in ('BC') and year >= 1974:
+            # https://en.wikipedia.org/wiki/Civic_Holiday
             self[date(year, 8, 1) + rd(weekday=MO)] = "British Columbia Day"
+        elif self.prov in ('NB') and year >- 1900:
+            # https://en.wikipedia.org/wiki/Civic_Holiday
+            self[date(year, 8, 1) + rd(weekday=MO)] = "New Bruswick Day"
+        elif self.prov in ('SK') and year >- 1900:
+            # https://en.wikipedia.org/wiki/Civic_Holiday
+            self[date(year, 8, 1) + rd(weekday=MO)] = "Saskatchewan Day"
 
         # Labour Day
         if year >= 1894:
