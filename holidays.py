@@ -218,7 +218,8 @@ class Canada(HolidayBase):
             if self.observed and date(year, 12, 31).weekday() == 4:
                 self[date(year, 12, 31)] = name + " (Observed)"
 
-        # Family Day / Louis Riel Day (MB) / Islander Day (PE) / Heritage Day (NS, YU)
+        # Family Day / Louis Riel Day (MB) / Islander Day (PE)
+        # / Heritage Day (NS, YU)
         if self.prov in ('AB', 'SK', 'ON') and year >= 2008:
             self[date(year, 2, 1) + rd(weekday=MO(+3))] = "Family Day"
         elif self.prov in ('AB', 'SK') and year >= 2007:
@@ -241,7 +242,8 @@ class Canada(HolidayBase):
             # http://heritageyukon.ca/programs/heritage-day
             # https://en.wikipedia.org/wiki/Family_Day_(Canada)#Yukon_Heritage_Day
             # Friday before the last Sunday in February
-            self[date(year, 3, 1) + rd(weekday=SU(-1)) + rd(weekday=FR(-1))] = "Heritage Day"
+            dt = date(year, 3, 1) + rd(weekday=SU(-1)) + rd(weekday=FR(-1))
+            self[dt] = "Heritage Day"
 
         # St. Patrick's Day
         if self.prov == 'NL' and year >= 1900:
@@ -336,10 +338,10 @@ class Canada(HolidayBase):
         elif self.prov in ('BC') and year >= 1974:
             # https://en.wikipedia.org/wiki/Civic_Holiday
             self[date(year, 8, 1) + rd(weekday=MO)] = "British Columbia Day"
-        elif self.prov in ('NB') and year >- 1900:
+        elif self.prov in ('NB') and year >= 1900:
             # https://en.wikipedia.org/wiki/Civic_Holiday
             self[date(year, 8, 1) + rd(weekday=MO)] = "New Bruswick Day"
-        elif self.prov in ('SK') and year >- 1900:
+        elif self.prov in ('SK') and year >= 1900:
             # https://en.wikipedia.org/wiki/Civic_Holiday
             self[date(year, 8, 1) + rd(weekday=MO)] = "Saskatchewan Day"
 
