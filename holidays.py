@@ -332,7 +332,13 @@ class Canada(HolidayBase):
 
         # Thanksgiving
         if self.prov not in ('NB', 'NS', 'PE', 'NL') and year >= 1931:
-            self[date(year, 10, 1) + rd(weekday=MO(+2))] = "Thanksgiving"
+            if year == 1935:
+                # in 1935, Canadian Thanksgiving was moved due to the General
+                # Election falling on the second Monday of October
+                # https://books.google.ca/books?id=KcwlQsmheG4C&pg=RA1-PA1940&lpg=RA1-PA1940&dq=canada+thanksgiving+1935&source=bl&ots=j4qYrcfGuY&sig=gxXeAQfXVsOF9fOwjSMswPHJPpM&hl=en&sa=X&ved=0ahUKEwjO0f3J2PjOAhVS4mMKHRzKBLAQ6AEIRDAG#v=onepage&q=canada%20thanksgiving%201935&f=false
+                self[date(1935, 10, 25)] = "Thanksgiving"
+            else:
+                self[date(year, 10, 1) + rd(weekday=MO(+2))] = "Thanksgiving"
 
         # Remembrance Day
         name = "Remembrance Day"
