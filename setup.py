@@ -11,15 +11,27 @@
 
 
 import codecs
+import os
+import re
 try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
 
 
+base_dir = os.path.dirname(os.path.abspath(__file__))
+
+def get_version(filename="holidays.py"):
+    with open(os.path.join(base_dir, filename), encoding="utf-8") as initfile:
+        for line in initfile.readlines():
+            m = re.match("__version__ *= *['\"](.*)['\"]", line)
+            if m:
+                return m.group(1)
+
+
 setup(
     name='holidays',
-    version='0.5',
+    version=get_version(),
     author='ryanss',
     author_email='ryanssdev@icloud.com',
     url='https://github.com/ryanss/holidays.py',
