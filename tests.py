@@ -2668,5 +2668,63 @@ class TestES(unittest.TestCase):
                         prov in fest_prov)
 
 
+class TestTAR(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.TAR()
+
+    def test_new_years(self):
+        for year in range(1974, 2100):
+            dt = date(year, 1, 1)
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+
+    def test_good_friday(self):
+        for dt in [date(1900, 4, 13), date(1901, 4,  5), date(1902, 3, 28),
+                   date(1999, 4,  2), date(2000, 4, 21), date(2010, 4,  2),
+                   date(2018, 3, 30), date(2019, 4, 19), date(2020, 4, 10)]:
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+
+    def test_easter_monday(self):
+        for dt in [date(1900, 4, 16), date(1901, 4,  8), date(1902, 3, 31),
+                   date(1999, 4,  5), date(2000, 4, 24), date(2010, 4,  5),
+                   date(2018, 4,  2), date(2019, 4, 22), date(2020, 4, 13)]:
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+
+    def test_labour_day(self):
+        for year in range(1900, 2100):
+            dt = date(year, 5, 1)
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+
+    def test_christmas_day(self):
+        for year in range(1900, 2100):
+            dt = date(year, 12, 25)
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+
+    def test_26_december_day(self):
+        for year in range(1900, 2100):
+            dt = date(year, 12, 26)
+            self.assertTrue(dt in self.holidays)
+            self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
+
+    def test_all_holidays_present(self):
+        tar_2015 = holidays.TAR(years=[2015])
+        all_holidays = ["New Year's Day",
+                        "Good Friday",
+                        "Easter Monday",
+                        "1 May (Labour Day)",
+                        "Christmas Day",
+                        "26 December"]
+        for holiday in all_holidays:
+            self.assertTrue(holiday in tar_2015.values())
+
+
 if __name__ == "__main__":
     unittest.main()
