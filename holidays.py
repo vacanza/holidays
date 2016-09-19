@@ -16,7 +16,7 @@ from datetime import date, datetime
 from dateutil.easter import easter
 from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, TU, WE, TH, FR, SA
+from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
 import six
 
 
@@ -218,13 +218,8 @@ class Canada(HolidayBase):
             if self.observed and date(year, 12, 31).weekday() == 4:
                 self[date(year, 12, 31)] = name + " (Observed)"
 
-        # Islander Day
-        if self.prov == 'PE' and year >= 2010:
-            self[date(year, 2, 1) + rd(weekday=MO(+3))] = "Islander Day"
-        elif self.prov == 'PE' and year == 2009:
-            self[date(year, 2, 1) + rd(weekday=MO(+2))] = "Islander Day"
-
-        # Family Day / Louis Riel Day (MB)
+        # Family Day / Louis Riel Day (MB) / Islander Day (PE)
+        # / Heritage Day (NS, YU)
         if self.prov in ('AB', 'SK', 'ON') and year >= 2008:
             self[date(year, 2, 1) + rd(weekday=MO(+3))] = "Family Day"
         elif self.prov in ('AB', 'SK') and year >= 2007:
@@ -235,6 +230,20 @@ class Canada(HolidayBase):
             self[date(year, 2, 1) + rd(weekday=MO(+2))] = "Family Day"
         elif self.prov == 'MB' and year >= 2008:
             self[date(year, 2, 1) + rd(weekday=MO(+3))] = "Louis Riel Day"
+        elif self.prov == 'PE' and year >= 2010:
+            self[date(year, 2, 1) + rd(weekday=MO(+3))] = "Islander Day"
+        elif self.prov == 'PE' and year == 2009:
+            self[date(year, 2, 1) + rd(weekday=MO(+2))] = "Islander Day"
+        elif self.prov in ('NS') and year >= 2015:
+            # http://novascotia.ca/lae/employmentrights/NovaScotiaHeritageDay.asp
+            self[date(year, 2, 1) + rd(weekday=MO(+3))] = "Heritage Day"
+        elif self.prov in ('YU'):
+            # start date?
+            # http://heritageyukon.ca/programs/heritage-day
+            # https://en.wikipedia.org/wiki/Family_Day_(Canada)#Yukon_Heritage_Day
+            # Friday before the last Sunday in February
+            dt = date(year, 3, 1) + rd(weekday=SU(-1)) + rd(weekday=FR(-1))
+            self[dt] = "Heritage Day"
 
         # St. Patrick's Day
         if self.prov == 'NL' and year >= 1900:
@@ -321,10 +330,20 @@ class Canada(HolidayBase):
             self[date(2000, 4, 1)] = "Nunavut Day"
 
         # Civic Holiday
-        if self.prov in ('SK', 'ON', 'MB', 'NT') and year >= 1900:
+        if self.prov in ('ON', 'MB', 'NT') and year >= 1900:
             self[date(year, 8, 1) + rd(weekday=MO)] = "Civic Holiday"
+        elif self.prov in ('AB') and year >= 1974:
+            # https://en.wikipedia.org/wiki/Civic_Holiday#Alberta
+            self[date(year, 8, 1) + rd(weekday=MO)] = "Heritage Day"
         elif self.prov in ('BC') and year >= 1974:
+            # https://en.wikipedia.org/wiki/Civic_Holiday
             self[date(year, 8, 1) + rd(weekday=MO)] = "British Columbia Day"
+        elif self.prov in ('NB') and year >= 1900:
+            # https://en.wikipedia.org/wiki/Civic_Holiday
+            self[date(year, 8, 1) + rd(weekday=MO)] = "New Bruswick Day"
+        elif self.prov in ('SK') and year >= 1900:
+            # https://en.wikipedia.org/wiki/Civic_Holiday
+            self[date(year, 8, 1) + rd(weekday=MO)] = "Saskatchewan Day"
 
         # Labour Day
         if year >= 1894:
@@ -332,7 +351,13 @@ class Canada(HolidayBase):
 
         # Thanksgiving
         if self.prov not in ('NB', 'NS', 'PE', 'NL') and year >= 1931:
-            self[date(year, 10, 1) + rd(weekday=MO(+2))] = "Thanksgiving"
+            if year == 1935:
+                # in 1935, Canadian Thanksgiving was moved due to the General
+                # Election falling on the second Monday of October
+                # https://books.google.ca/books?id=KcwlQsmheG4C&pg=RA1-PA1940&lpg=RA1-PA1940&dq=canada+thanksgiving+1935&source=bl&ots=j4qYrcfGuY&sig=gxXeAQfXVsOF9fOwjSMswPHJPpM&hl=en&sa=X&ved=0ahUKEwjO0f3J2PjOAhVS4mMKHRzKBLAQ6AEIRDAG#v=onepage&q=canada%20thanksgiving%201935&f=false
+                self[date(1935, 10, 25)] = "Thanksgiving"
+            else:
+                self[date(year, 10, 1) + rd(weekday=MO(+2))] = "Thanksgiving"
 
         # Remembrance Day
         name = "Remembrance Day"
