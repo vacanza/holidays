@@ -4,4 +4,3 @@ MANIFEST
 .coverage
 *.egg-info
 *.pyc
-env*/

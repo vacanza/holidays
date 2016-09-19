@@ -1816,3 +1816,29 @@ class Spain(HolidayBase):
 
 class ES(Spain):
     pass
+
+
+class Target(HolidayBase):
+    # https://en.wikipedia.org/wiki/TARGET2
+    # http://www.ecb.europa.eu/press/pr/date/2000/html/pr001214_4.en.html
+
+    def __init__(self, **kwargs):
+        self.country = 'EU'
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        self[date(year, 1, 1)] = "New Year's Day"
+        e = easter(year)
+        self[e - rd(days=2)] = "Good Friday"
+        self[e + rd(days=1)] = "Easter Monday"
+        self[date(year, 5, 1)] = "1 May (Labour Day)"
+        self[date(year, 12, 25)] = "Christmas Day"
+        self[date(year, 12, 26)] = "26 December"
+
+
+class TAR(Target):
+    pass
+
+
+class EU(Target):
+    pass
