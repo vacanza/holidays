@@ -4,3 +4,5 @@ MANIFEST
 .coverage
 *.egg-info
 *.pyc
+.idea/
+.cache/
