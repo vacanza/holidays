@@ -824,6 +824,8 @@ class UnitedStates(HolidayBase):
         # Confederate Memorial Day
         name = "Confederate Memorial Day"
         if self.state in ('AL', 'GA', 'MS', 'SC') and year >= 1866:
+            if self.state == 'GA' and year >= 2016:
+                name = "State Holiday"
             self[date(year, 4, 1) + rd(weekday=MO(+4))] = name
         elif self.state == 'TX' and year >= 1931:
             self[date(year, 1, 19)] = name
@@ -1043,7 +1045,10 @@ class UnitedStates(HolidayBase):
 
         # Robert E. Lee's Birthday
         if self.state == 'GA' and year >= 1986:
-            name = "Robert E. Lee's Birthday"
+            if year >= 2016:
+                name = "State Holiday"
+            else:
+                name = "Robert E. Lee's Birthday"
             self[date(year, 11, 29) + rd(weekday=FR(-1))] = name
 
         # Lady of Camarin Day
