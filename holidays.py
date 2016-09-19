@@ -340,7 +340,7 @@ class Canada(HolidayBase):
             self[date(year, 8, 1) + rd(weekday=MO)] = "British Columbia Day"
         elif self.prov in ('NB') and year >= 1900:
             # https://en.wikipedia.org/wiki/Civic_Holiday
-            self[date(year, 8, 1) + rd(weekday=MO)] = "New Bruswick Day"
+            self[date(year, 8, 1) + rd(weekday=MO)] = "New Brunswick Day"
         elif self.prov in ('SK') and year >= 1900:
             # https://en.wikipedia.org/wiki/Civic_Holiday
             self[date(year, 8, 1) + rd(weekday=MO)] = "Saskatchewan Day"
