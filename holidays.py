@@ -1845,5 +1845,5 @@ class TAR(Target):
     pass
 
 
-class EU(Target):
+class ECB(Target):
     pass

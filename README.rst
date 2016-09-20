@@ -89,8 +89,8 @@ Canada         CA      prov = AB, BC, MB, NB, NL, NS, NT, NU, **ON** (default),
                        PE, QC, SK, YU
 Colombia       CO      None
 Denmark        DK      None
-EU (TARGET2)   EU,TAR  (Trans-European Automated Real-time Gross Settlement
-                       Express Transfer System)
+ECB (TARGET2)  ECB,TAR European Central Bank
+                       (Trans-European Automated Real-time Gross Settlement
 Germany        DE      BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL, SN, ST,
                        SH, TH
 Mexico         MX      None
