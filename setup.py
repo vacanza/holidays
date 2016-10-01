@@ -7,19 +7,26 @@
 #  Author:  ryanss <ryanssdev@icloud.com>
 #  Website: https://github.com/ryanss/holidays.py
 #  License: MIT (see LICENSE file)
-#  Version: 0.5 (September 5, 2016)
-
 
 import codecs
+import re
 try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
 
 
+with codecs.open('holidays.py', 'r') as fd:
+    version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]',
+                        fd.read(), re.MULTILINE).group(1)
+
+if not version:
+    raise RuntimeError('Cannot find version information')
+
+
 setup(
     name='holidays',
-    version='0.5',
+    version=version,
     author='ryanss',
     author_email='ryanssdev@icloud.com',
     url='https://github.com/ryanss/holidays.py',
