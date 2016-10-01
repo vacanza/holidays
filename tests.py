@@ -2739,5 +2739,6 @@ class TestECB(unittest.TestCase):
         for holiday in self.holidays_tar:
             self.assertTrue(holiday in self.holidays_ecb)
 
+
 if __name__ == "__main__":
     unittest.main()

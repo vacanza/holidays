@@ -1823,7 +1823,7 @@ class ES(Spain):
     pass
 
 
-class Target(HolidayBase):
+class EuropeanCentralBank(HolidayBase):
     # https://en.wikipedia.org/wiki/TARGET2
     # http://www.ecb.europa.eu/press/pr/date/2000/html/pr001214_4.en.html
 
@@ -1841,9 +1841,9 @@ class Target(HolidayBase):
         self[date(year, 12, 26)] = "26 December"
 
 
-class TAR(Target):
+class ECB(EuropeanCentralBank):
     pass
 
 
-class ECB(Target):
+class TAR(EuropeanCentralBank):
     pass
