@@ -2726,5 +2726,18 @@ class TestTAR(unittest.TestCase):
             self.assertTrue(holiday in tar_2015.values())
 
 
+class TestECB(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays_ecb = holidays.ECB()
+        self.holidays_tar = holidays.TAR()
+
+    def test_new_years(self):
+        for year in range(1974, 2100):
+            self.holidays_ecb._populate(year)
+            self.holidays_tar._populate(year)
+        for holiday in self.holidays_tar:
+            self.assertTrue(holiday in self.holidays_ecb)
+
 if __name__ == "__main__":
     unittest.main()
