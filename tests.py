@@ -2531,6 +2531,11 @@ class TestUK(unittest.TestCase):
             self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
             self.assertFalse(dt + relativedelta(days=+1) in self.holidays)
 
+    def test_royal_wedding(self):
+        self.assertTrue('2011-04-29' in self.holidays)
+        self.assertFalse('2010-04-29' in self.holidays)
+        self.assertFalse('2012-04-29' in self.holidays)
+
     def test_may_day(self):
         for dt in [date(1978, 5, 1), date(1979, 5, 7), date(1980, 5, 5),
                    date(1999, 5, 3), date(2000, 5, 1), date(2010, 5, 3),

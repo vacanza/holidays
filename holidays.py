@@ -1691,6 +1691,10 @@ class UnitedKingdom(HolidayBase):
         # Easter Monday
         self[easter(year) + rd(weekday=MO)] = "Easter Monday"
 
+        # Royal Wedding Bank Holiday
+        if year == 2011:
+            self[date(year, 4, 29)] = "Royal Wedding Bank Holiday"
+
         # May Day bank holiday (first Monday in May)
         if year >= 1978:
             name = "May Day"
