@@ -2747,5 +2747,27 @@ class TestECB(unittest.TestCase):
             self.assertTrue(holiday in self.holidays_ecb)
 
 
+class TestCZ(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.CZ()
+
+    def test_2017(self):
+        # http://www.officeholidays.com/countries/czech_republic/2017.php
+        self.assertTrue(date(2017, 1, 1) in self.holidays)
+        self.assertTrue(date(2017, 4, 14) in self.holidays)
+        self.assertTrue(date(2017, 4, 17) in self.holidays)
+        self.assertTrue(date(2017, 5, 1) in self.holidays)
+        self.assertTrue(date(2017, 5, 8) in self.holidays)
+        self.assertTrue(date(2017, 7, 5) in self.holidays)
+        self.assertTrue(date(2017, 7, 6) in self.holidays)
+        self.assertTrue(date(2017, 9, 28) in self.holidays)
+        self.assertTrue(date(2017, 10, 28) in self.holidays)
+        self.assertTrue(date(2017, 11, 17) in self.holidays)
+        self.assertTrue(date(2017, 12, 24) in self.holidays)
+        self.assertTrue(date(2017, 12, 25) in self.holidays)
+        self.assertTrue(date(2017, 12, 26) in self.holidays)
+
+
 if __name__ == "__main__":
     unittest.main()

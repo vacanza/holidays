@@ -1863,3 +1863,48 @@ class ECB(EuropeanCentralBank):
 
 class TAR(EuropeanCentralBank):
     pass
+
+
+class Czech(HolidayBase):
+    # https://en.wikipedia.org/wiki/Public_holidays_in_the_Czech_Republic
+
+    def __init__(self, **kwargs):
+        self.country = 'CZ'
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        self[date(year, 1, 1)] = "Den obnovy samostatného českého státu" \
+            if year >= 2000 else \
+            "Nový rok"
+
+        e = easter(year)
+        self[e - rd(days=2)] = "Velký pátek"
+        self[e + rd(days=1)] = "Velikonoční pondělí"
+
+        if year >= 1951:
+            self[date(year, 5, 1)] = "Svátek práce"
+        if year >= 1992:
+            self[date(year, 5, 8)] = "Den vítězství"
+        elif year >= 1947:
+            self[date(year, 5, 9)] = "Den vítězství nad hitlerovským fašismem"
+        if year >= 1951:
+            self[date(year, 7, 5)] = "Den slovanských věrozvěstů " \
+                "Cyrila a Metoděje"
+            self[date(year, 7, 6)] = "Den upálení mistra Jana Husa"
+        if year >= 2000:
+            self[date(year, 9, 28)] = "Den české státnosti"
+        if year >= 1951:
+            self[date(year, 10, 28)] = "Den vzniku samostatného " \
+                "československého státu"
+        if year >= 1990:
+            self[date(year, 11, 17)] = "Den boje za svobodu a demokracii"
+
+        if year >= 1990:
+            self[date(year, 12, 24)] = "Štědrý den"
+        if year >= 1951:
+            self[date(year, 12, 25)] = "1. svátek vánoční"
+            self[date(year, 12, 26)] = "2. svátek vánoční"
+
+
+class CZ(Czech):
+    pass
