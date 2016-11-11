@@ -2505,7 +2505,10 @@ class TestUK(unittest.TestCase):
         for year in range(1974, 2100):
             dt = date(year, 1, 1)
             self.assertTrue(dt in self.holidays)
-            self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
+            if year == 2000:
+                self.assertTrue(dt + relativedelta(days=-1) in self.holidays)
+            else:
+                self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
 
     def test_st_patricks_day(self):
         for dt in [date(1900, 3, 19), date(1999, 3, 17), date(2001, 3, 19),

@@ -1691,32 +1691,33 @@ class UnitedKingdom(HolidayBase):
         # Easter Monday
         self[easter(year) + rd(weekday=MO)] = "Easter Monday"
 
-        # Royal Wedding Bank Holiday
-        if year == 2011:
-            self[date(year, 4, 29)] = "Royal Wedding Bank Holiday"
-
         # May Day bank holiday (first Monday in May)
         if year >= 1978:
             name = "May Day"
-            if date(year, 5, 1).weekday() == 0:
-                self[date(year, 5, 1)] = name
-            elif date(year, 5, 1).weekday() == 1:
-                self[date(year, 5, 1) + rd(days=+6)] = name
-            elif date(year, 5, 1).weekday() == 2:
-                self[date(year, 5, 1) + rd(days=+5)] = name
-            elif date(year, 5, 1).weekday() == 3:
-                self[date(year, 5, 1) + rd(days=+4)] = name
-            elif date(year, 5, 1).weekday() == 4:
-                self[date(year, 5, 1) + rd(days=+3)] = name
-            elif date(year, 5, 1).weekday() == 5:
-                self[date(year, 5, 1) + rd(days=+2)] = name
-            elif date(year, 5, 1).weekday() == 6:
-                self[date(year, 5, 1) + rd(days=+1)] = name
+            if year == 1995:
+                dt = date(year, 5, 8)
+            else:
+                dt = date(year, 5, 1)
+            if dt.weekday() == 0:
+                self[dt] = name
+            elif dt.weekday() == 1:
+                self[dt + rd(days=+6)] = name
+            elif dt.weekday() == 2:
+                self[dt + rd(days=+5)] = name
+            elif dt.weekday() == 3:
+                self[dt + rd(days=+4)] = name
+            elif dt.weekday() == 4:
+                self[dt + rd(days=+3)] = name
+            elif dt.weekday() == 5:
+                self[dt + rd(days=+2)] = name
+            elif dt.weekday() == 6:
+                self[dt + rd(days=+1)] = name
 
         # Spring bank holiday (last Monday in May)
-        if year >= 1971:
-            name = "Spring Bank Holiday"
-
+        name = "Spring Bank Holiday"
+        if year == 2012:
+            self[date(year, 6, 4)] = name
+        elif year >= 1971:
             if date(year, 5, 31).weekday() == 0:
                 self[date(year, 5, 31)] = name
             else:
@@ -1747,6 +1748,20 @@ class UnitedKingdom(HolidayBase):
             self[date(year, 12, 28)] = name + " (Observed)"
         elif self.observed and date(year, 12, 26).weekday() == 6:
             self[date(year, 12, 28)] = name + " (Observed)"
+
+        # Special holidays
+        if year == 1977:
+            self[date(year, 6, 7)] = "Silver Jubilee of Elizabeth II"
+        elif year == 1981:
+            self[date(year, 7, 29)] = "Wedding of Charles and Diana"
+        elif year == 1999:
+            self[date(year, 12, 31)] = "Millennium Celebrations"
+        elif year == 2002:
+            self[date(year, 6, 3)] = "Golden Jubilee of Elizabeth II"
+        elif year == 2011:
+            self[date(year, 4, 29)] = "Wedding of William and Catherine"
+        elif year == 2012:
+            self[date(year, 6, 5)] = "Diamond Jubilee of Elizabeth II"
 
 
 class UK(UnitedKingdom):
