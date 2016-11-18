@@ -1,3 +1,17 @@
+Version 0.6
+===========
+
+Released November 18, 2016
+
+- Rename project from holidays.py to python-holidays
+- PyPI location `holidays` remains the same
+- Add Czech holidays
+- Add UK special holidays
+- Add ECB TARGET bank holidays
+- Add changes to Georgia state holiday names for 2016
+- Fixes to Canadian holidays
+
+
 Version 0.5
 ===========
 
