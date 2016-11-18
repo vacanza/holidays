@@ -1,11 +1,11 @@
-#  holidays.py
-#  -----------
+#  python-holidays
+#  ---------------
 #  A fast, efficient Python library for generating country, province and state
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
 #  Author:  ryanss <ryanssdev@icloud.com>
-#  Website: https://github.com/ryanss/holidays.py
+#  Website: https://github.com/ryanss/python-holidays
 #  License: MIT (see LICENSE file)
 
 import codecs
@@ -29,8 +29,8 @@ setup(
     version=version,
     author='ryanss',
     author_email='ryanssdev@icloud.com',
-    url='https://github.com/ryanss/holidays.py',
-    bugtrack_url='https://github.com/ryanss/holidays.py/issues',
+    url='https://github.com/ryanss/python-holidays',
+    bugtrack_url='https://github.com/ryanss/python-holidays/issues',
     license='MIT',
     py_modules=['holidays'],
     description='Generate and work with holidays in Python',

@@ -1,22 +1,22 @@
-===========
-holidays.py
-===========
+===============
+python-holidays
+===============
 
 A fast, efficient Python library for generating country, province and state
 specific sets of holidays on the fly. It aims to make determining whether a
 specific date is a holiday as fast and flexible as possible.
 
-.. image:: http://img.shields.io/travis/ryanss/holidays.py.svg
-    :target: https://travis-ci.org/ryanss/holidays.py
+.. image:: http://img.shields.io/travis/ryanss/python-holidays.svg
+    :target: https://travis-ci.org/ryanss/python-holidays
 
-.. image:: http://img.shields.io/coveralls/ryanss/holidays.py.svg
-    :target: https://coveralls.io/r/ryanss/holidays.py
+.. image:: http://img.shields.io/coveralls/ryanss/python-holidays.svg
+    :target: https://coveralls.io/r/ryanss/python-holidays
 
 .. image:: http://img.shields.io/pypi/v/holidays.svg
     :target: https://pypi.python.org/pypi/holidays
 
 .. image:: http://img.shields.io/pypi/l/holidays.svg
-    :target: https://github.com/ryanss/holidays.py/blob/master/LICENSE
+    :target: https://github.com/ryanss/python-holidays/blob/master/LICENSE
 
 
 Example Usage
@@ -353,7 +353,7 @@ The latest development version can be installed directly from GitHub:
 
 .. code-block:: bash
 
-    $ pip install --upgrade https://github.com/ryanss/holidays.py/tarball/master
+    $ pip install --upgrade https://github.com/ryanss/python-holidays/tarball/master
 
 
 Running Tests
@@ -379,8 +379,8 @@ Coverage
 Contributions
 -------------
 
-.. _issues: https://github.com/ryanss/holidays.py/issues
-.. __: https://github.com/ryanss/holidays.py/pulls
+.. _issues: https://github.com/ryanss/python-holidays/issues
+.. __: https://github.com/ryanss/python-holidays/pulls
 
 Issues_ and `Pull Requests`__ are always welcome.
 
@@ -388,7 +388,7 @@ Issues_ and `Pull Requests`__ are always welcome.
 License
 -------
 
-.. __: https://github.com/ryanss/holidays.py/raw/master/LICENSE
+.. __: https://github.com/ryanss/python-holidays/raw/master/LICENSE
 
 Code and documentation are available according to the MIT License
 (see LICENSE__).
