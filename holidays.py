@@ -1908,3 +1908,61 @@ class Czech(HolidayBase):
 
 class CZ(Czech):
     pass
+
+
+
+class Portugal(HolidayBase):
+    # https://en.wikipedia.org/wiki/Public_holidays_in_Portugal
+
+    def __init__(self, **kwargs):
+        self.country = 'PT'
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        self[date(year, 1, 1)] = "Ano Novo"
+
+        e = easter(year)
+        
+        # carnival is no longer a holyday, but some companies let workers off.
+        # @todo recollect the years in which it was a public holyday
+        # self[e - rd(days=47)] = "Carnaval"
+        self[e - rd(days=2)] = "Sexta-feira Santa"
+        self[e             ] = "Páscoa"
+
+        if year < 2013 or year > 2015: # Revoked holidays in 2013–2015
+            self[e + rd(days=60)   ] = "Corpo de Deus"
+            self[date(year, 10,  5)] = "Implantação da República"
+            self[date(year, 11,  1)] = "Dia de Todos os Santos"
+            self[date(year, 12,  1)] = "Restauração da Independência"
+
+        self[date(year,  4, 25)] = "Dia da Liberdade"
+        self[date(year,  5,  1)] = "Dia do Trabalhador"
+        self[date(year,  6, 10)] = "Dia de Portugal"
+        self[date(year,  8, 15)] = "Assunção de Nossa Senhora"
+        self[date(year, 12,  8)] = "Imaculada Conceição"
+        self[date(year, 12, 25)] = "Christmas Day"
+
+
+class PT(Portugal):
+    pass
+
+
+class Portugal_extended(Portugal):
+    """adds carnival, the day before and after xmas, the day before the new year, Lisbon's city holyday..."""
+    def _populate(self, year):
+        super(Portugal_extended, self)._populate(year)
+
+        e = easter(year)
+        self[e - rd(days=47)] = "Carnaval"
+        self[date(year, 12, 24)] = "Vespera de Natal"
+        self[date(year, 12, 26)] = "26 de Dezembro"
+        self[date(year, 12, 31)] = "Vespera de Ano novo"
+        self[date(year,  6, 13)] = "Dia de Santo António"
+
+        # TODO add bridging days 
+        # - get holydays that occur on twesday  and add monday (-1 day)
+        # - get holydays that occur on thursday and add friday (+1 day)
+
+
+class PT_ext(Portugal_extended):
+    pass
