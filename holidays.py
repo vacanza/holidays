@@ -17,7 +17,7 @@ from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
 import six
 
-__version__ = '0.6'
+__version__ = '0.7-dev'
 
 
 MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY = range(7)
@@ -1910,7 +1910,6 @@ class CZ(Czech):
     pass
 
 
-
 class Portugal(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Portugal
 
@@ -1922,15 +1921,16 @@ class Portugal(HolidayBase):
         self[date(year, 1, 1)] = "Ano Novo"
 
         e = easter(year)
-        
+
         # carnival is no longer a holyday, but some companies let workers off.
         # @todo recollect the years in which it was a public holyday
         # self[e - rd(days=47)] = "Carnaval"
         self[e - rd(days=2)] = "Sexta-feira Santa"
-        self[e             ] = "Páscoa"
+        self[e] = "Páscoa"
 
-        if year < 2013 or year > 2015: # Revoked holidays in 2013–2015
-            self[e + rd(days=60)   ] = "Corpo de Deus"
+        # Revoked holidays in 2013–2015
+        if year < 2013 or year > 2015:
+            self[e + rd(days=60)] = "Corpo de Deus"
             self[date(year, 10,  5)] = "Implantação da República"
             self[date(year, 11,  1)] = "Dia de Todos os Santos"
             self[date(year, 12,  1)] = "Restauração da Independência"
@@ -1947,10 +1947,16 @@ class PT(Portugal):
     pass
 
 
-class Portugal_extended(Portugal):
-    """adds carnival, the day before and after xmas, the day before the new year, Lisbon's city holyday..."""
+class PortugalExt(Portugal):
+    """
+    Adds extended days that most people have as a bonus from their companies:
+    - Carnival
+    - the day before and after xmas
+    - the day before the new year
+    - Lisbon's city holyday
+    """
     def _populate(self, year):
-        super(Portugal_extended, self)._populate(year)
+        super(PortugalExt, self)._populate(year)
 
         e = easter(year)
         self[e - rd(days=47)] = "Carnaval"
@@ -1959,10 +1965,10 @@ class Portugal_extended(Portugal):
         self[date(year, 12, 31)] = "Vespera de Ano novo"
         self[date(year,  6, 13)] = "Dia de Santo António"
 
-        # TODO add bridging days 
+        # TODO add bridging days
         # - get holydays that occur on twesday  and add monday (-1 day)
         # - get holydays that occur on thursday and add friday (+1 day)
 
 
-class PT_ext(Portugal_extended):
+class PTE(PortugalExt):
     pass

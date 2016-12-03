@@ -96,6 +96,8 @@ Germany             DE       BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL, SN,
 Mexico              MX       None
 NewZealand          NZ       prov = NTL, AUK, TKI, HKB, WGN, MBH, NSN, CAN, STC, WTL,
                              OTA, STL, CIT
+Portugal            PT       None
+PortugalExt         PTE      *Portugal plus extended days most people have off*
 Spain               ES       prov = AND, ARG, AST, CAN, CAM, CAL, CAT, CVA, EXT, GAL,
                              IBA, ICA, MAD, MUR, NAV, PVA, RIO
 UnitedKingdom       UK       None
