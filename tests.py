@@ -749,6 +749,96 @@ class TestMX(unittest.TestCase):
         self.assertTrue(date(2016, 12, 26) in self.holidays)
 
 
+class TestNetherlands(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.NL()
+
+    def test_2017(self):
+        # http://www.iamsterdam.com/en/visiting/plan-your-trip/practical-info/public-holidays
+        self.assertTrue(date(2017, 1, 1) in self.holidays)
+        self.assertTrue(date(2017, 4, 16) in self.holidays)
+        self.assertTrue(date(2017, 4, 17) in self.holidays)
+        self.assertTrue(date(2017, 4, 27) in self.holidays)
+        self.assertTrue(date(2017, 5, 25) in self.holidays)
+        self.assertTrue(date(2017, 6, 4) in self.holidays)
+        self.assertTrue(date(2017, 6, 5) in self.holidays)
+        self.assertTrue(date(2017, 12, 25) in self.holidays)
+        self.assertTrue(date(2017, 12, 26) in self.holidays)
+
+    def test_new_years(self):
+        self.assertTrue(date(2017, 1, 1) in self.holidays)
+
+    def test_easter(self):
+        self.assertTrue(date(2017, 4, 16) in self.holidays)
+
+    def test_easter_monday(self):
+        self.assertTrue(date(2017, 4, 17) in self.holidays)
+
+    def test_queens_day_between_1891_and_1948(self):
+        # Between 1891 and 1948 Queens Day was celebrated on 8-31
+        self.holidays = holidays.NL(years=[1901])
+        self.assertTrue(date(1901, 8, 31) in self.holidays)
+
+    def test_queens_day_between_1891_and_1948_substituted_later(self):
+        # Between 1891 and 1948 Queens Day was celebrated on 9-1 (one day later)
+        # when Queens Day falls on a Sunday
+        self.holidays = holidays.NL(years=[1947])
+        self.assertTrue(date(1947, 9, 1) in self.holidays)
+
+    def test_queens_day_between_1949_and_2013(self):
+        self.holidays = holidays.NL(years=[1965])
+        self.assertTrue(date(1965, 4, 30) in self.holidays)
+
+    def test_queens_day_between_1949_and_1980_substituted_later(self):
+        self.holidays = holidays.NL(years=[1967])
+        self.assertTrue(date(1967, 5, 1) in self.holidays)
+
+    def test_queens_day_between_1980_and_2013_substituted_earlier(self):
+        self.holidays = holidays.NL(years=[2006])
+        self.assertTrue(date(2006, 4, 29) in self.holidays)
+
+    def test_kings_day_after_2014(self):
+        self.holidays = holidays.NL(years=[2013])
+        self.assertFalse(date(2013, 4, 27) in self.holidays)
+
+        self.holidays = holidays.NL(years=[2017])
+        self.assertTrue(date(2017, 4, 27) in self.holidays)
+
+    def test_kings_day_after_2014_substituted_earlier(self):
+        self.holidays = holidays.NL(years=[2188])
+        self.assertTrue(date(2188, 4, 26) in self.holidays)
+
+    def test_liberation_day(self):
+        self.holidays = holidays.NL(years=1900)
+        self.assertFalse(date(1900, 5, 5) in self.holidays)
+
+        self.holidays = holidays.NL(years=2010)
+        self.assertTrue(date(2020, 5, 5) in self.holidays)
+
+        self.holidays = holidays.NL(years=2010)
+        self.assertFalse(date(2011, 5, 5) in self.holidays)
+
+    def test_ascension_day(self):
+        self.holidays = holidays.NL(years=2017)
+        self.assertTrue(date(2017, 5, 25) in self.holidays)
+
+    def test_whit_sunday(self):
+        self.holidays = holidays.NL(years=2017)
+        self.assertTrue(date(2017, 6, 4) in self.holidays)
+
+    def test_whit_monday(self):
+        self.holidays = holidays.NL(years=2017)
+        self.assertTrue(date(2017, 6, 5) in self.holidays)
+
+    def test_first_christmas(self):
+        self.holidays = holidays.NL(years=2017)
+        self.assertTrue(date(2017, 12, 25) in self.holidays)
+
+    def test_second_christmas(self):
+        self.holidays = holidays.NL(years=2017)
+        self.assertTrue(date(2017, 12, 26) in self.holidays)
+
 class TestUS(unittest.TestCase):
 
     def setUp(self):
