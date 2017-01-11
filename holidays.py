@@ -1979,7 +1979,7 @@ class Netherlands(HolidayBase):
 
     def __init__(self, **kwargs):
         # http://www.iamsterdam.com/en/visiting/plan-your-trip/practical-info/public-holidays
-        self.country = 'NL'
+        self.country = "NL"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -1995,19 +1995,19 @@ class Netherlands(HolidayBase):
         self[easter_date + rd(days = 1)] = "Tweede paasdag"
 
         # Ascension day
-        self[easter_date + rd(days=39)] = 'Hemelvaart'
+        self[easter_date + rd(days=39)] = "Hemelvaart"
 
         # Pentecost
-        self[easter_date + rd(days=49)] = 'Eerste Pinksterdag'
+        self[easter_date + rd(days=49)] = "Eerste Pinksterdag"
 
         # Pentecost monday
-        self[easter_date + rd(days=50)] = 'Tweede Pinksterdag'
+        self[easter_date + rd(days=50)] = "Tweede Pinksterdag"
 
         # First christmas
-        self[date(year, 12, 25)] = 'Eerste Kerstdag'
+        self[date(year, 12, 25)] = "Eerste Kerstdag"
 
         # Second christmas
-        self[date(year, 12, 26)] = 'Tweede Kerstdag'
+        self[date(year, 12, 26)] = "Tweede Kerstdag"
 
         # Liberation day
         if year >= 1947 and year <= 2000:
