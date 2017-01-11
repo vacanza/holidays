@@ -1975,7 +1975,6 @@ class PTE(PortugalExt):
 
 
 class Netherlands(HolidayBase):
-    #https://en.wikipedia.org/wiki/Public_holidays_in_the_Netherlands
     SUNDAY = 6
 
     def __init__(self, **kwargs):
