@@ -781,8 +781,8 @@ class TestNetherlands(unittest.TestCase):
         self.assertTrue(date(1901, 8, 31) in self.holidays)
 
     def test_queens_day_between_1891_and_1948_substituted_later(self):
-        # Between 1891 and 1948 Queens Day was celebrated on 9-1 (one day later)
-        # when Queens Day falls on a Sunday
+        # Between 1891 and 1948 Queens Day was celebrated on 9-1
+        #  (one day later) when Queens Day falls on a Sunday
         self.holidays = holidays.NL(years=[1947])
         self.assertTrue(date(1947, 9, 1) in self.holidays)
 
@@ -838,6 +838,7 @@ class TestNetherlands(unittest.TestCase):
     def test_second_christmas(self):
         self.holidays = holidays.NL(years=2017)
         self.assertTrue(date(2017, 12, 26) in self.holidays)
+
 
 class TestUS(unittest.TestCase):
 

@@ -1992,7 +1992,7 @@ class Netherlands(HolidayBase):
         self[easter_date] = "Eerste paasdag"
 
         # Second easter day
-        self[easter_date + rd(days = 1)] = "Tweede paasdag"
+        self[easter_date + rd(days=1)] = "Tweede paasdag"
 
         # Ascension day
         self[easter_date + rd(days=39)] = "Hemelvaart"
@@ -2019,7 +2019,7 @@ class Netherlands(HolidayBase):
         if year >= 2014:
             kings_day = date(year, 4, 27)
             if kings_day.weekday() == self.SUNDAY:
-                kings_day = kings_day - rd(days = 1)
+                kings_day = kings_day - rd(days=1)
 
             self[kings_day] = "Koningsdag"
 
