@@ -1972,3 +1972,71 @@ class PortugalExt(Portugal):
 
 class PTE(PortugalExt):
     pass
+
+
+class Netherlands(HolidayBase):
+    SUNDAY = 6
+
+    def __init__(self, **kwargs):
+        # http://www.iamsterdam.com/en/visiting/plan-your-trip/practical-info/public-holidays
+        self.country = "NL"
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # New years
+        self[date(year, 1, 1)] = "Nieuwjaarsdag"
+
+        easter_date = easter(year)
+
+        # Easter
+        self[easter_date] = "Eerste paasdag"
+
+        # Second easter day
+        self[easter_date + rd(days=1)] = "Tweede paasdag"
+
+        # Ascension day
+        self[easter_date + rd(days=39)] = "Hemelvaart"
+
+        # Pentecost
+        self[easter_date + rd(days=49)] = "Eerste Pinksterdag"
+
+        # Pentecost monday
+        self[easter_date + rd(days=50)] = "Tweede Pinksterdag"
+
+        # First christmas
+        self[date(year, 12, 25)] = "Eerste Kerstdag"
+
+        # Second christmas
+        self[date(year, 12, 26)] = "Tweede Kerstdag"
+
+        # Liberation day
+        if year >= 1947 and year <= 2000:
+            self[date(year, 5, 5)] = "Bevrijdingsdag"
+        elif year >= 2000 and year % 5 == 0:
+            self[date(year, 5, 5)] = "Bevrijdingsdag"
+
+        # Kingsday
+        if year >= 2014:
+            kings_day = date(year, 4, 27)
+            if kings_day.weekday() == self.SUNDAY:
+                kings_day = kings_day - rd(days=1)
+
+            self[kings_day] = "Koningsdag"
+
+        # Queen's day
+        if year >= 1891 and year <= 2013:
+            queens_day = date(year, 4, 30)
+            if year <= 1948:
+                queens_day = date(year, 8, 31)
+
+            if queens_day.weekday() == self.SUNDAY:
+                if year < 1980:
+                    queens_day = queens_day + rd(days=1)
+                else:
+                    queens_day = queens_day - rd(days=1)
+
+            self[queens_day] = "Koninginnedag"
+
+
+class NL(Netherlands):
+    pass
