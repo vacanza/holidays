@@ -1,3 +1,14 @@
+Version 0.7
+===========
+
+Released January 12, 2016
+
+- Add holidays, extended holidays and tests for Portugal
+- Add holidays and tests for the Netherlands
+- Specify encoding when parsing for version in setup.py
+  allowing package to be installed in non-unicode locales
+
+
 Version 0.6
 ===========
 
