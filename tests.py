@@ -813,12 +813,6 @@ class TestNetherlands(unittest.TestCase):
         self.holidays = holidays.NL(years=1900)
         self.assertFalse(date(1900, 5, 5) in self.holidays)
 
-        self.holidays = holidays.NL(years=2010)
-        self.assertTrue(date(2020, 5, 5) in self.holidays)
-
-        self.holidays = holidays.NL(years=2010)
-        self.assertFalse(date(2011, 5, 5) in self.holidays)
-
     def test_ascension_day(self):
         self.holidays = holidays.NL(years=2017)
         self.assertTrue(date(2017, 5, 25) in self.holidays)

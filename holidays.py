@@ -2012,8 +2012,6 @@ class Netherlands(HolidayBase):
         # Liberation day
         if year >= 1947 and year <= 2000:
             self[date(year, 5, 5)] = "Bevrijdingsdag"
-        elif year >= 2000 and year % 5 == 0:
-            self[date(year, 5, 5)] = "Bevrijdingsdag"
 
         # Kingsday
         if year >= 2014:
