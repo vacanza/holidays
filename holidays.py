@@ -1679,17 +1679,29 @@ class UnitedKingdom(HolidayBase):
             elif self.observed and date(year, 1, 1).weekday() == 5:
                 self[date(year, 1, 1) + rd(days=+2)] = name + " (Observed)"
 
+        # New Year Holiday
+        if self.country == 'Scotland':
+            name = "New Year Holiday"
+            self[date(year, 1, 2)] = name
+            if self.observed and date(year, 1, 2).weekday() in (5, 6):
+                self[date(year, 1, 2) + rd(days=+2)] = name + " (Observed)"
+            elif self.observed and date(year, 1, 2).weekday() == 0:
+                self[date(year, 1, 2) + rd(days=+1)] = name + " (Observed)"
+
         # St. Patrick's Day
-        name = "St. Patrick's Day"
-        self[date(year, 3, 17)] = name
-        if self.observed and date(year, 3, 17).weekday() in (5, 6):
-            self[date(year, 3, 17) + rd(weekday=MO)] = name + " (Observed)"
+        if self.country in ('Northern Ireland', 'Ireland'):
+            name = "St. Patrick's Day"
+            self[date(year, 3, 17)] = name
+            if self.observed and date(year, 3, 17).weekday() in (5, 6):
+                self[date(year, 3, 17) + rd(weekday=MO)] = name + " (Observed)"
 
         # Good Friday
-        self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
+        if self.country != 'Ireland':
+            self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
 
         # Easter Monday
-        self[easter(year) + rd(weekday=MO)] = "Easter Monday"
+        if self.country != 'Scotland':
+            self[easter(year) + rd(weekday=MO)] = "Easter Monday"
 
         # May Day bank holiday (first Monday in May)
         if year >= 1978:
@@ -1714,27 +1726,49 @@ class UnitedKingdom(HolidayBase):
                 self[dt + rd(days=+1)] = name
 
         # Spring bank holiday (last Monday in May)
-        name = "Spring Bank Holiday"
-        if year == 2012:
-            self[date(year, 6, 4)] = name
-        elif year >= 1971:
-            if date(year, 5, 31).weekday() == 0:
-                self[date(year, 5, 31)] = name
-            else:
+        if self.country != 'Ireland':
+            name = "Spring Bank Holiday"
+            if year == 2012:
+                self[date(year, 6, 4)] = name
+            elif year >= 1971:
                 self[date(year, 5, 31) + rd(weekday=MO(-1))] = name
 
-        # Late Summer bank holiday (last Monday in August)
-        if year >= 1971:
-            name = "Late Summer Bank Holiday"
+        # June bank holiday (first Monday in June)
+        if self.country == 'Ireland':
+            self[date(year, 6, 1) + rd(weekday=MO)] = "June Bank Holiday"
 
-            if date(year, 8, 31).weekday() == 0:
-                self[date(year, 8, 31)] = name
-            else:
-                self[date(year, 8, 31) + rd(weekday=MO(-1))] = name
+        # TT bank holiday (first Friday in June)
+        if self.country == 'Isle of Man':
+            self[date(year, 6, 1) + rd(weekday=FR)] = "TT Bank Holiday"
+
+        # Tynwald Day
+        if self.country == 'Isle of Man':
+            self[date(year, 7, 5)] = "Tynwald Day"
+
+        # Battle of the Boyne
+        if self.country == 'Northern Ireland':
+            self[date(year, 7, 12)] = "Battle of the Boyne"
+
+        # Summer bank holiday (first Monday in August)
+        if self.country in ('Scotland', 'Ireland'):
+                self[date(year, 8, 1) + rd(weekday=MO)] = "Summer Bank Holiday"
+
+        # Late Summer bank holiday (last Monday in August)
+        if self.country not in ('Scotland', 'Ireland') and year >= 1971:
+            name = "Late Summer Bank Holiday"
+            self[date(year, 8, 31) + rd(weekday=MO(-1))] = name
+
+        # October Bank Holiday (last Monday in October)
+        if self.country == 'Ireland':
+            name = "October Bank Holiday"
+            self[date(year, 8, 31) + rd(weekday=MO(-1))] = name
+
+        # St. Andrew's Day
+        if self.country == 'Scotland':
+            self[date(year, 11, 30)] = "St. Andrew's Day"
 
         # Christmas Day
         name = "Christmas Day"
-        # Christmas
         self[date(year, 12, 25)] = name
         if self.observed and date(year, 12, 25).weekday() == 5:
             self[date(year, 12, 27)] = name + " (Observed)"
@@ -1750,22 +1784,65 @@ class UnitedKingdom(HolidayBase):
             self[date(year, 12, 28)] = name + " (Observed)"
 
         # Special holidays
-        if year == 1977:
-            self[date(year, 6, 7)] = "Silver Jubilee of Elizabeth II"
-        elif year == 1981:
-            self[date(year, 7, 29)] = "Wedding of Charles and Diana"
-        elif year == 1999:
-            self[date(year, 12, 31)] = "Millennium Celebrations"
-        elif year == 2002:
-            self[date(year, 6, 3)] = "Golden Jubilee of Elizabeth II"
-        elif year == 2011:
-            self[date(year, 4, 29)] = "Wedding of William and Catherine"
-        elif year == 2012:
-            self[date(year, 6, 5)] = "Diamond Jubilee of Elizabeth II"
+        if self.country != 'Ireland':
+            if year == 1977:
+                self[date(year, 6, 7)] = "Silver Jubilee of Elizabeth II"
+            elif year == 1981:
+                self[date(year, 7, 29)] = "Wedding of Charles and Diana"
+            elif year == 1999:
+                self[date(year, 12, 31)] = "Millennium Celebrations"
+            elif year == 2002:
+                self[date(year, 6, 3)] = "Golden Jubilee of Elizabeth II"
+            elif year == 2011:
+                self[date(year, 4, 29)] = "Wedding of William and Catherine"
+            elif year == 2012:
+                self[date(year, 6, 5)] = "Diamond Jubilee of Elizabeth II"
 
 
 class UK(UnitedKingdom):
     pass
+
+
+class England(UnitedKingdom):
+
+    def __init__(self, **kwargs):
+        self.country = 'England'
+        HolidayBase.__init__(self, **kwargs)
+
+
+class Wales(UnitedKingdom):
+
+    def __init__(self, **kwargs):
+        self.country = 'Wales'
+        HolidayBase.__init__(self, **kwargs)
+
+
+class Scotland(UnitedKingdom):
+
+    def __init__(self, **kwargs):
+        self.country = 'Scotland'
+        HolidayBase.__init__(self, **kwargs)
+
+
+class IsleOfMan(UnitedKingdom):
+
+    def __init__(self, **kwargs):
+        self.country = 'Isle of Man'
+        HolidayBase.__init__(self, **kwargs)
+
+
+class NorthernIreland(UnitedKingdom):
+
+    def __init__(self, **kwargs):
+        self.country = 'Northern Ireland'
+        HolidayBase.__init__(self, **kwargs)
+
+
+class Ireland(UnitedKingdom):
+
+    def __init__(self, **kwargs):
+        self.country = 'Ireland'
+        HolidayBase.__init__(self, **kwargs)
 
 
 class Spain(HolidayBase):

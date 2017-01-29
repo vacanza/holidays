@@ -90,15 +90,20 @@ Canada              CA       prov = AB, BC, MB, NB, NL, NS, NT, NU, **ON** (defa
 Colombia            CO       None
 Czech               CZ       None
 Denmark             DK       None
+England                      None
 EuropeanCentralBank ECB,TAR  Trans-European Automated Real-time Gross Settlement (TARGET2)
 Germany             DE       BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL, SN, ST,
                              SH, TH
+Ireland                      None
+Isle of Man                  None
 Mexico              MX       None
 Netherlands         NL       None
 NewZealand          NZ       prov = NTL, AUK, TKI, HKB, WGN, MBH, NSN, CAN, STC, WTL,
                              OTA, STL, CIT
+Northern Ireland             None
 Portugal            PT       None
 PortugalExt         PTE      *Portugal plus extended days most people have off*
+Scotland                     None
 Spain               ES       prov = AND, ARG, AST, CAN, CAM, CAL, CAT, CVA, EXT, GAL,
                              IBA, ICA, MAD, MUR, NAV, PVA, RIO
 UnitedKingdom       UK       None
@@ -107,6 +112,7 @@ UnitedStates        US       state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL,
                              FM, MN, MS, MO, MT, NE, NV, NH, NJ, NM, NY, NC, ND, MP,
                              OH, OK, OR, PW, PA, PR, RI, SC, SD, TN, TX, UT, VT, VA,
                              VI, WA, WV, WI, WY
+Wales                        None
 =================== ======== =============================================================
 
 

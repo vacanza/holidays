@@ -2595,14 +2595,6 @@ class TestUK(unittest.TestCase):
             else:
                 self.assertFalse(dt + relativedelta(days=-1) in self.holidays)
 
-    def test_st_patricks_day(self):
-        for dt in [date(1900, 3, 19), date(1999, 3, 17), date(2001, 3, 19),
-                   date(2012, 3, 19), date(2013, 3, 18), date(2014, 3, 17),
-                   date(2015, 3, 17), date(2016, 3, 17), date(2020, 3, 17)]:
-            self.assertTrue(dt in self.holidays)
-            self.assertFalse(dt + relativedelta(days=-3) in self.holidays)
-            self.assertFalse(dt + relativedelta(days=+3) in self.holidays)
-
     def test_good_friday(self):
         for dt in [date(1900, 4, 13), date(1901, 4,  5), date(1902, 3, 28),
                    date(1999, 4,  2), date(2000, 4, 21), date(2010, 4,  2),
@@ -2685,7 +2677,6 @@ class TestUK(unittest.TestCase):
     def test_all_holidays_present(self):
         uk_2015 = holidays.UK(years=[2015])
         all_holidays = ["New Year's Day",
-                        "St. Patrick's Day",
                         "Good Friday",
                         "Easter Monday",
                         "May Day",
@@ -2695,6 +2686,24 @@ class TestUK(unittest.TestCase):
                         "Boxing Day"]
         for holiday in all_holidays:
             self.assertTrue(holiday in uk_2015.values())
+
+
+class TestScotland(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.Scotland()
+
+    def test_2017(self):
+        self.assertTrue('2017-01-01' in self.holidays)
+        self.assertTrue('2017-01-02' in self.holidays)
+        self.assertTrue('2017-01-03' in self.holidays)
+        self.assertTrue('2017-04-14' in self.holidays)
+        self.assertTrue('2017-05-01' in self.holidays)
+        self.assertTrue('2017-05-29' in self.holidays)
+        self.assertTrue('2017-08-07' in self.holidays)
+        self.assertTrue('2017-11-30' in self.holidays)
+        self.assertTrue('2017-12-25' in self.holidays)
+        self.assertTrue('2017-12-26' in self.holidays)
 
 
 class TestES(unittest.TestCase):
