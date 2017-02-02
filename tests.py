@@ -2678,10 +2678,9 @@ class TestUK(unittest.TestCase):
         uk_2015 = holidays.UK(years=[2015])
         all_holidays = ["New Year's Day",
                         "Good Friday",
-                        "Easter Monday",
+                        "Easter Monday [England, Wales, Northern Ireland]",
                         "May Day",
                         "Spring Bank Holiday",
-                        "Late Summer Bank Holiday",
                         "Christmas Day",
                         "Boxing Day"]
         for holiday in all_holidays:
