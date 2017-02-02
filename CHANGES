@@ -1,7 +1,19 @@
+Version 0.8
+===========
+
+Released February 2, 2017
+
+- Improve United Kingdom holidays
+- Add England, Wales, Scotland
+- Add Northern Ireland, Isle of Man
+- Add Republic of Ireland
+- Fix Liberation Day (NL)
+
+
 Version 0.7
 ===========
 
-Released January 12, 2016
+Released January 12, 2017
 
 - Add holidays, extended holidays and tests for Portugal
 - Add holidays and tests for the Netherlands
