@@ -101,6 +101,7 @@ Netherlands         NL       None
 NewZealand          NZ       prov = NTL, AUK, TKI, HKB, WGN, MBH, NSN, CAN, STC, WTL,
                              OTA, STL, CIT
 Northern Ireland             None
+Norway              NO       None
 Portugal            PT       None
 PortugalExt         PTE      *Portugal plus extended days most people have off*
 Scotland                     None
