@@ -2039,14 +2039,14 @@ class TestNZ(unittest.TestCase):
             self.assertTrue(dt in stl_holidays, dt)
             self.assertEqual(stl_holidays[dt],
                              "Southland Anniversary Day", dt)
-            for year, (month, day) in enumerate([(4, 10), (4,  2), (4, 22),
-                                                 (4,  7), (3, 29), (4, 18),
-                                                 (4,  3), (4, 23), (4, 14),
-                                                 (4,  6)], 2012):
-                dt = date(year, month, day)
-                self.assertTrue(dt in stl_holidays, dt)
-                self.assertEqual(stl_holidays[dt],
-                                 "Southland Anniversary Day", dt)
+        for year, (month, day) in enumerate([(4, 10), (4,  2), (4, 22),
+                                             (4,  7), (3, 29), (4, 18),
+                                             (4,  3), (4, 23), (4, 14),
+                                             (4,  6)], 2012):
+            dt = date(year, month, day)
+            self.assertTrue(dt in stl_holidays, dt)
+            self.assertEqual(stl_holidays[dt],
+                             "Southland Anniversary Day", dt)
 
     def test_chatham_islands_anniversary_day(self):
         cit_holidays = holidays.NZ(prov='Chatham Islands')
@@ -2189,7 +2189,7 @@ class TestAU(unittest.TestCase):
             self.assertEqual(self.state_hols['WA'][dt], "Labour Day")
         for year, day in enumerate([10, 9, 14], 2014):
             dt = date(year, 3, day)
-            self.assertFalse(dt in self.holidays, dt)
+            self.assertNotEqual(self.holidays.get(dt), "Labour Day")
             self.assertTrue(dt in self.state_hols['VIC'], dt)
             self.assertEqual(self.state_hols['VIC'][dt], "Labour Day")
 
@@ -2247,10 +2247,19 @@ class TestAU(unittest.TestCase):
             self.assertTrue(dt in self.state_hols['NT'], dt)
             self.assertEqual(self.state_hols['NT'][dt], "Picnic Day")
 
+    def test_canberra_day(self):
+        for dt in [date(2013, 3, 11), date(2014, 3, 10), date(2015, 3, 9),
+                   date(2016, 3, 14), date(2017, 3, 13), date(2018, 3, 12),
+                   date(2019, 3, 11)]:
+            self.assertTrue(dt in self.state_hols['ACT'], dt)
+            self.assertEqual(self.state_hols['ACT'][dt],
+                             "Canberra Day")
+
     def test_family_and_community_day(self):
-        for dt in [date(2010, 9, 26), date(2011, 10, 10), date(2012, 10, 8),
+        for dt in [date(2010, 9, 27), date(2011, 10, 10), date(2012, 10, 8),
                    date(2013, 9, 30), date(2014, 9, 29), date(2015, 9, 28),
-                   date(2016, 9, 26)]:
+                   date(2016, 9, 26), date(2017, 9, 25), date(2018, 10, 8),
+                   date(2019, 9, 30)]:
             self.assertTrue(dt in self.state_hols['ACT'], dt)
             self.assertEqual(self.state_hols['ACT'][dt],
                              "Family & Community Day")

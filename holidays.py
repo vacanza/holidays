@@ -1320,8 +1320,6 @@ class Australia(HolidayBase):
         # VIC:  Public Holidays Act 1993
         # WA:   Public and Bank Holidays Act 1972
 
-        # TODO do more research on history of Aus holidays
-
         # New Year's Day
         name = "New Year's Day"
         jan1 = date(year, 1, 1)
@@ -1355,7 +1353,7 @@ class Australia(HolidayBase):
         # Canberra Day
         if self.prov == 'ACT':
             name = "Canberra Day"
-            self[date(year, 3, 1) + rd(weekday=MO(+1))] = name
+            self[date(year, 3, 1) + rd(weekday=MO(+2))] = name
 
         # Easter
         self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
@@ -1440,37 +1438,20 @@ class Australia(HolidayBase):
             name = "Family & Community Day"
             if 2007 <= year <= 2009:
                 self[date(year, 11, 1) + rd(weekday=TU)] = name
-            elif year == 2010:
-                # first Monday of the September/October school holidays
+            else:
+                # First Monday of the September/October school holidays
                 # moved to the second Monday if this falls on Labour day
-                # TODO need a formula for the ACT school holidays then
+                # The following formula works until at least 2020
                 # http://www.cmd.act.gov.au/communication/holidays
-                self[date(year, 9, 26)] = name
-            elif year == 2011:
-                self[date(year, 10, 10)] = name
-            elif year == 2012:
-                self[date(year, 10, 8)] = name
-            elif year == 2013:
-                self[date(year, 9, 30)] = name
-            elif year == 2014:
-                self[date(year, 9, 29)] = name
-            elif year == 2015:
-                self[date(year, 9, 28)] = name
-            elif year == 2016:
-                self[date(year, 9, 26)] = name
-            elif 2017 <= year <= 2020:
                 labour_day = date(year, 10, 1) + rd(weekday=MO)
-                if year == 2017:
-                    dt = date(year, 9, 23) + rd(weekday=MO)
-                elif year == 2018:
-                    dt = date(year, 9, 29) + rd(weekday=MO)
-                elif year == 2019:
-                    dt = date(year, 9, 28) + rd(weekday=MO)
-                elif year == 2020:
-                    dt = date(year, 9, 26) + rd(weekday=MO)
+                dt = date(year, 9, 25) + rd(weekday=MO)
+                if year == 2011:
+                    dt = date(year, 10, 10) + rd(weekday=MO)
+                else:
+                    dt = date(year, 9, 25) + rd(weekday=MO)
                 if dt == labour_day:
-                    dt += rd(weekday=MO(+1))
-                self[date(year, 9, 26)] = name
+                    dt += rd(weekday=MO(+2))
+                self[dt] = name
 
         # Melbourne Cup
         if self.prov == 'VIC':
