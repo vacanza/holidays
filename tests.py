@@ -2110,8 +2110,8 @@ class TestAU(unittest.TestCase):
 
     def setUp(self):
         self.holidays = holidays.AU(observed=True)
-        self.state_hols = dict((state, holidays.AU(observed=True, prov=state))
-                               for state in holidays.AU.PROVINCES)
+        self.state_hols = dict((s, holidays.AU(observed=True, state=s))
+                               for s in holidays.AU.STATES)
 
     def test_new_years(self):
         for year in range(1900, 2100):
@@ -2135,7 +2135,7 @@ class TestAU(unittest.TestCase):
             self.assertEqual(self.holidays[jan26], "Australia Day")
             self.assertTrue(dt in self.holidays, dt)
             self.assertEqual(self.holidays[dt][:10], "Australia ")
-            for state in holidays.AU.PROVINCES:
+            for state in holidays.AU.STATES:
                 self.assertTrue(jan26 in self.state_hols[state], (state, dt))
                 self.assertEqual(self.state_hols[state][jan26],
                                  "Australia Day")
@@ -2311,8 +2311,8 @@ class TestAU(unittest.TestCase):
             self.assertEqual(self.holidays[dt][:6], "Boxing")
 
     def test_all_holidays_present(self):
-        au_2015 = sum(holidays.AU(years=[2015], prov=p)
-                      for p in holidays.AU.PROVINCES)
+        au_2015 = sum(holidays.AU(years=[2015], state=s)
+                      for s in holidays.AU.STATES)
         holidays_in_2015 = sum((au_2015.get_list(key) for key in au_2015), [])
         all_holidays = ["New Year's Day",
                         "Australia Day",
