@@ -2224,3 +2224,107 @@ class Norway(HolidayBase):
 
 class NO(Norway):
     pass
+
+
+class Poland(HolidayBase):
+    """
+    Polish holidays.
+    Note that holidays falling on a sunday is "lost",
+    it will not be moved to another day to make up for the collision.
+
+    In Poland, ALL sundays are considered a holiday.
+    Initialize this class with include_sundays=False
+    to not include sundays as a holiday.
+
+    Primary sources:
+    https://en.wikipedia.org/wiki/Public_holidays_in_Poland
+    https://pl.wikipedia.org/wiki/Dni_wolne_od_pracy_w_Polsce
+    https://pl.wikipedia.org/wiki/%C5%9Awi%C4%99ta_pa%C5%84stwowe_w_Polsce
+    """
+    def __init__(self, public_only=True, include_sundays=True, **kwargs):
+        """
+
+        :param include_sundays: Whether to consider sundays as a holiday
+        (which they are in Poland)
+        :param public_only: Wheter to consider only Public holidays
+        (i.e. non-working days)
+        :param kwargs:
+        """
+        self.country = 'PL'
+        self.public_only = public_only
+        self.include_sundays = include_sundays
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+
+        # Add all the sundays of the year before adding the "real" holidays
+        if self.include_sundays:
+            first_day_of_year = date(year, 1, 1)
+            first_sunday_of_year = first_day_of_year\
+                + rd(days=SUNDAY - first_day_of_year.weekday())
+            cur_date = first_sunday_of_year
+
+            while cur_date < date(year+1, 1, 1):
+                assert cur_date.weekday() == SUNDAY
+
+                self[cur_date] = "Niedziela"
+                cur_date += rd(days=7)
+
+        # ======= Non-working days =======
+        if year >= 1989 or year in range(1937, 1945):
+            # Independence Day
+            self[date(year, 11, 11)] = "Narodowe Święto Niepodległości"
+        if year >= 1919:
+            # Constitution Day
+            self[date(year, 5, 3)] = "Święto Narodowe Trzeciego Maja"
+        if year >= 1951:  # date of the bill that established the holidays
+            # New Years
+            self[date(year, 1, 1)] = "Nowy rok"
+            # Epiphany (added in 2011)
+            if year >= 2011:
+                self[date(year, 1, 6)] = "Święto Trzech Króli"
+            e = easter(year)
+            # Easter Sunday
+            self[e] = "Niedziela Wielkanocna"
+            # Easter Monday
+            self[e + rd(days=1)] = "Poniedziałek Wielkanocny"
+            # 1st of May (so called "Work Holiday")
+            self[date(year, 5, 1)] = "Święto Pracy"
+            # Pentecost
+            self[e + rd(days=49)] = "Zielone Świątki"
+            # Corpus Christi
+            self[e + rd(days=60)] = "Dzień Bożego Ciała"
+            if year < 1961 or year >= 1989:
+                # Assumption of the Blessed Virgin Mary
+                self[date(year, 8, 15)] = \
+                    "Wniebowzięcie Najświętszej Marii Panny"
+            # All Saints' Day
+            self[date(year, 11, 1)] = "Uroczystość Wszystkich Świętych"
+            # first day of Christmas
+            self[date(year, 12, 25)] = "pierwszy dzień Bożego Narodzenia"
+            # second day of Christmas
+            self[date(year, 12, 26)] = "drugi dzień Bożego Narodzenia"
+
+        # ===== the rest of National Holidays =====
+        if not self.public_only:
+            if year >= 2011:
+                self[date(year, 3, 1)] = \
+                    "Narodowy Dzień Pamięci 'Żołnierzy Wyklętych'"
+            if year >= 2015:
+                self[date(year, 5, 8)] = "Narodowy Dzień Zwycięstwa"
+            if year >= 2009:
+                self[date(year, 8, 1)] = \
+                    "Narodowy Dzień Pamięci Powstania Warszawskiego"
+            if year >= 2005:
+                self[date(year, 8, 31)] = "Dzień Solidarności i Wolności"
+            if year in range(1945, 2015):
+                self[date(year, 5, 9)] = \
+                    "Narodowe Święto Zwycięstwa i Wolności"
+            if year in range(1945, 1990):
+                self[date(year, 7, 22)] = "Narodowe Święto Odrodzenia Polski"
+            if year in range(1945, 1990):
+                self[date(year, 11, 7)] = "Rocznica Rewolucji Październikowej"
+
+
+class PL(Poland):
+    pass
