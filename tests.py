@@ -3000,5 +3000,124 @@ class TestNorway(unittest.TestCase):
         self.assertFalse('2016-12-28' in self.holidays_with_sundays)
 
 
+class TestJapan(unittest.TestCase):
+    def setUp(self):
+        self.holidays = holidays.Japan(observed=False)
+
+    def test_new_years_day(self):
+        self.assertTrue(date(1949, 1, 1) in self.holidays)
+        self.assertTrue(date(2017, 1, 1) in self.holidays)
+        self.assertTrue(date(2050, 1, 1) in self.holidays)
+
+    def test_coming_of_age(self):
+        self.assertTrue(date(1999, 1, 15)in self.holidays)
+        self.assertTrue(date(2000, 1, 10)in self.holidays)
+        self.assertTrue(date(2017, 1, 9)in self.holidays)
+        self.assertTrue(date(2030, 1, 14)in self.holidays)
+        self.assertTrue(date(2050, 1, 10)in self.holidays)
+
+        self.assertFalse(date(2000, 1, 15)in self.holidays)
+        self.assertFalse(date(2017, 1, 15)in self.holidays)
+        self.assertFalse(date(2030, 1, 15)in self.holidays)
+
+    def test_foundation_day(self):
+        self.assertTrue(date(1949, 2, 11) in self.holidays)
+        self.assertTrue(date(2017, 2, 11) in self.holidays)
+        self.assertTrue(date(2050, 2, 11) in self.holidays)
+
+    def test_vernal_equinox_day(self):
+        self.assertTrue(date(1960, 3, 20) in self.holidays)
+        self.assertTrue(date(1970, 3, 21) in self.holidays)
+        self.assertTrue(date(1980, 3, 20) in self.holidays)
+        self.assertTrue(date(1990, 3, 21) in self.holidays)
+        self.assertTrue(date(2000, 3, 20) in self.holidays)
+        self.assertTrue(date(2010, 3, 21) in self.holidays)
+        self.assertTrue(date(2017, 3, 20) in self.holidays)
+        self.assertTrue(date(2020, 3, 20) in self.holidays)
+        self.assertTrue(date(2030, 3, 20) in self.holidays)
+        self.assertTrue(date(2040, 3, 20) in self.holidays)
+
+    def test_showa_day(self):
+        self.assertTrue(date(1950, 4, 29) in self.holidays)
+        self.assertTrue(date(1990, 4, 29) in self.holidays)
+        self.assertTrue(date(2010, 4, 29) in self.holidays)
+
+    def test_constitution_memorial_day(self):
+        self.assertTrue(date(1950, 5, 3) in self.holidays)
+        self.assertTrue(date(2000, 5, 3) in self.holidays)
+        self.assertTrue(date(2050, 5, 3) in self.holidays)
+
+    def test_greenery_day(self):
+        self.assertFalse(date(1950, 5, 4) in self.holidays)
+        self.assertTrue(date(2007, 5, 4) in self.holidays)
+        self.assertTrue(date(2050, 5, 4) in self.holidays)
+
+    def test_childrens_day(self):
+        self.assertTrue(date(1950, 5, 5) in self.holidays)
+        self.assertTrue(date(2000, 5, 5) in self.holidays)
+        self.assertTrue(date(2050, 5, 5) in self.holidays)
+
+    def test_marine_day(self):
+        self.assertFalse(date(1950, 7, 20) in self.holidays)
+        self.assertTrue(date(2000, 7, 20) in self.holidays)
+        self.assertTrue(date(2003, 7, 21) in self.holidays)
+        self.assertTrue(date(2017, 7, 17) in self.holidays)
+        self.assertTrue(date(2050, 7, 18) in self.holidays)
+
+    def test_mountain_day(self):
+        self.assertFalse(date(1950, 8, 11) in self.holidays)
+        self.assertFalse(date(2015, 8, 11) in self.holidays)
+        self.assertTrue(date(2016, 8, 11) in self.holidays)
+        self.assertTrue(date(2017, 8, 11) in self.holidays)
+        self.assertTrue(date(2050, 8, 11) in self.holidays)
+
+    def test_respect_for_the_aged_day(self):
+        self.assertFalse(date(1965, 9, 15) in self.holidays)
+        self.assertTrue(date(1966, 9, 15) in self.holidays)
+        self.assertTrue(date(2002, 9, 15) in self.holidays)
+        self.assertTrue(date(2003, 9, 15) in self.holidays)
+        self.assertFalse(date(2004, 9, 15) in self.holidays)
+        self.assertTrue(date(2004, 9, 20) in self.holidays)
+        self.assertTrue(date(2017, 9, 18) in self.holidays)
+        self.assertTrue(date(2050, 9, 19) in self.holidays)
+
+    def test_autumnal_equinox_day(self):
+        self.assertTrue(date(2000, 9, 23) in self.holidays)
+        self.assertTrue(date(2010, 9, 23) in self.holidays)
+        self.assertTrue(date(2017, 9, 23) in self.holidays)
+        self.assertTrue(date(2020, 9, 22) in self.holidays)
+        self.assertTrue(date(2030, 9, 23) in self.holidays)
+
+    def test_health_and_sports_day(self):
+        self.assertFalse(date(1965, 10, 10) in self.holidays)
+        self.assertTrue(date(1966, 10, 10) in self.holidays)
+        self.assertTrue(date(1999, 10, 10) in self.holidays)
+        self.assertFalse(date(2000, 10, 10) in self.holidays)
+        self.assertTrue(date(2000, 10, 9) in self.holidays)
+        self.assertTrue(date(2017, 10, 9) in self.holidays)
+        self.assertTrue(date(2050, 10, 10) in self.holidays)
+
+    def test_culture_day(self):
+        self.assertTrue(date(1950, 11, 3) in self.holidays)
+        self.assertTrue(date(2000, 11, 3) in self.holidays)
+        self.assertTrue(date(2050, 11, 3) in self.holidays)
+
+    def test_labour_thanks_giving_day(self):
+        self.assertTrue(date(1950, 11, 23) in self.holidays)
+        self.assertTrue(date(2000, 11, 23) in self.holidays)
+        self.assertTrue(date(2050, 11, 23) in self.holidays)
+
+    def test_emperors_birthday(self):
+        self.assertTrue(date(1989, 12, 23) in self.holidays)
+        self.assertTrue(date(2017, 12, 23) in self.holidays)
+        self.assertTrue(date(2050, 12, 23) in self.holidays)
+
+    def test_invalid_years(self):
+        self.assertRaises(NotImplementedError,
+                          lambda: date(1948, 1, 1) in self.holidays)
+        self.assertRaises(NotImplementedError,
+                          lambda: date(2051, 1, 1) in self.holidays)
+
+
 if __name__ == "__main__":
     unittest.main()
