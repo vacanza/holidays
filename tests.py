@@ -3004,8 +3004,8 @@ class TestFR(unittest.TestCase):
 
     def setUp(self):
         self.holidays = holidays.France()
-        self.prov_holidays = {prov: holidays.France(prov=prov)
-                              for prov in holidays.France.PROVINCES}
+        self.prov_holidays = dict((prov, holidays.France(prov=prov))
+                                  for prov in holidays.France.PROVINCES)
 
     def test_2017(self):
         self.assertTrue(date(2017, 1, 1) in self.holidays)
