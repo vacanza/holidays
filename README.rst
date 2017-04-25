@@ -107,6 +107,7 @@ PortugalExt         PTE      *Portugal plus extended days most people have off*
 Scotland                     None
 Spain               ES       prov = AND, ARG, AST, CAN, CAM, CAL, CAT, CVA, EXT, GAL,
                              IBA, ICA, MAD, MUR, NAV, PVA, RIO
+Sweden              SE       None
 UnitedKingdom       UK       None
 UnitedStates        US       state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL, GA,
                              GU, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MH, MA, MI,
