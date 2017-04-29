@@ -2999,7 +2999,7 @@ class TestNorway(unittest.TestCase):
         self.assertFalse('2016-12-27' in self.holidays_with_sundays)
         self.assertFalse('2016-12-28' in self.holidays_with_sundays)
 
-        
+
 class TestBelgium(unittest.TestCase):
 
     def setUp(self):
