@@ -2999,6 +2999,27 @@ class TestNorway(unittest.TestCase):
         self.assertFalse('2016-12-27' in self.holidays_with_sundays)
         self.assertFalse('2016-12-28' in self.holidays_with_sundays)
 
+        
+class TestBelgium(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.BE()
+
+    def test_2017(self):
+        # https://www.belgium.be/nl/over_belgie/land/belgie_in_een_notendop/feestdagen
+        self.assertTrue(date(2017, 1, 1) in self.holidays)
+        self.assertTrue(date(2017, 4, 16) in self.holidays)
+        self.assertTrue(date(2017, 4, 17) in self.holidays)
+        self.assertTrue(date(2017, 5, 1) in self.holidays)
+        self.assertTrue(date(2017, 5, 25) in self.holidays)
+        self.assertTrue(date(2017, 6, 5) in self.holidays)
+        self.assertTrue(date(2017, 6, 6) in self.holidays)
+        self.assertTrue(date(2017, 7, 21) in self.holidays)
+        self.assertTrue(date(2017, 8, 15) in self.holidays)
+        self.assertTrue(date(2017, 11, 1) in self.holidays)
+        self.assertTrue(date(2017, 11, 11) in self.holidays)
+        self.assertTrue(date(2017, 12, 25) in self.holidays)
+
 
 if __name__ == "__main__":
     unittest.main()
