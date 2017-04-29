@@ -2225,6 +2225,7 @@ class Norway(HolidayBase):
 class NO(Norway):
     pass
 
+
 class Belgium(HolidayBase):
     """
     https://www.belgium.be/nl/over_belgie/land/belgie_in_een_notendop/feestdagen
@@ -2272,6 +2273,7 @@ class Belgium(HolidayBase):
 
         # First christmas
         self[date(year, 12, 25)] = "Kerstmis"
+
 
 class BE(Belgium):
     pass
