@@ -83,7 +83,7 @@ Available Countries
 =================== ======== =============================================================
 Country             Abbr     Provinces/States Available
 =================== ======== =============================================================
-Australia           AU       prov = **ACT** (default), NSW, NT, QLD, SA, TAS, VIC, WA
+Australia           AU       state = ACT, NSW, NT, QLD, SA, TAS, VIC, WA
 Austria             AT       prov = B, K, N, O, S, ST, T, V, **W** (default)
 Canada              CA       prov = AB, BC, MB, NB, NL, NS, NT, NU, **ON** (default),
                              PE, QC, SK, YU
@@ -102,11 +102,13 @@ NewZealand          NZ       prov = NTL, AUK, TKI, HKB, WGN, MBH, NSN, CAN, STC,
                              OTA, STL, CIT
 Northern Ireland             None
 Norway              NO       None
+Poland              PL       None
 Portugal            PT       None
 PortugalExt         PTE      *Portugal plus extended days most people have off*
 Scotland                     None
 Spain               ES       prov = AND, ARG, AST, CAN, CAM, CAL, CAT, CVA, EXT, GAL,
                              IBA, ICA, MAD, MUR, NAV, PVA, RIO
+Sweden              SE       None
 UnitedKingdom       UK       None
 UnitedStates        US       state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL, GA,
                              GU, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MH, MA, MI,
@@ -140,11 +142,11 @@ observed
 
 prov
     A string specifying a province that has unique statutory holidays.
-    (Default: Australia='ACT', Canada='ON', NewZealand=None)
+    (Default: Canada='ON', NewZealand=None)
 
 state
     A string specifying a state that has unique statutory holidays.
-    (Default: UnitedStates=None)
+    (Default: Australia=None, UnitedStates=None)
 
 Methods:
 
