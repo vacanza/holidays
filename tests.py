@@ -3000,5 +3000,120 @@ class TestNorway(unittest.TestCase):
         self.assertFalse('2016-12-28' in self.holidays_with_sundays)
 
 
+class TestPoland(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays_without_sundays = holidays.Poland(include_sundays=False)
+        self.holidays_with_sundays = holidays.Poland()
+        self.holidays_all = holidays.Poland(public_only=False)
+
+    def test_new_years(self):
+        self.assertFalse('1900-01-01' in self.holidays_without_sundays)
+        self.assertTrue('2017-01-01' in self.holidays_without_sundays)
+        self.assertTrue('2999-01-01' in self.holidays_without_sundays)
+
+    def test_easter(self):
+        self.assertFalse('2000-04-20' in self.holidays_without_sundays)
+        self.assertFalse('2000-04-21' in self.holidays_without_sundays)
+        self.assertTrue('2000-04-23' in self.holidays_without_sundays)
+        self.assertTrue('2000-04-24' in self.holidays_without_sundays)
+
+        self.assertFalse('2010-04-01' in self.holidays_without_sundays)
+        self.assertFalse('2010-04-02' in self.holidays_without_sundays)
+        self.assertTrue('2010-04-04' in self.holidays_without_sundays)
+        self.assertTrue('2010-04-05' in self.holidays_without_sundays)
+
+        self.assertFalse('2021-04-01' in self.holidays_without_sundays)
+        self.assertFalse('2021-04-02' in self.holidays_without_sundays)
+        self.assertTrue('2021-04-04' in self.holidays_without_sundays)
+        self.assertTrue('2021-04-05' in self.holidays_without_sundays)
+
+        self.assertFalse('2024-03-28' in self.holidays_without_sundays)
+        self.assertFalse('2024-03-29' in self.holidays_without_sundays)
+        self.assertTrue('2024-03-31' in self.holidays_without_sundays)
+        self.assertTrue('2024-04-01' in self.holidays_without_sundays)
+
+    def test_workers_day(self):
+        self.assertFalse('1900-05-01' in self.holidays_without_sundays)
+        self.assertFalse('1946-05-01' in self.holidays_without_sundays)
+        self.assertTrue('1955-05-01' in self.holidays_without_sundays)
+        self.assertTrue('2017-05-01' in self.holidays_without_sundays)
+        self.assertTrue('2999-05-01' in self.holidays_without_sundays)
+
+    def test_constitution_day(self):
+        self.assertFalse('1900-05-03' in self.holidays_without_sundays)
+        self.assertFalse('1917-05-03' in self.holidays_without_sundays)
+        self.assertTrue('1947-05-03' in self.holidays_without_sundays)
+        self.assertTrue('2017-05-03' in self.holidays_without_sundays)
+        self.assertTrue('2999-05-03' in self.holidays_without_sundays)
+
+    def test_pentecost(self):
+        self.assertTrue('2000-06-11' in self.holidays_without_sundays)
+        self.assertFalse('2000-06-12' in self.holidays_without_sundays)
+
+        self.assertTrue('2010-05-23' in self.holidays_without_sundays)
+        self.assertFalse('2010-05-24' in self.holidays_without_sundays)
+
+        self.assertTrue('2021-05-23' in self.holidays_without_sundays)
+        self.assertFalse('2021-05-24' in self.holidays_without_sundays)
+
+        self.assertTrue('2024-05-19' in self.holidays_without_sundays)
+        self.assertFalse('2024-05-20' in self.holidays_without_sundays)
+
+    def test_christmas(self):
+        self.assertFalse('1901-12-25' in self.holidays_without_sundays)
+        self.assertFalse('1901-12-26' in self.holidays_without_sundays)
+
+        self.assertTrue('2016-12-25' in self.holidays_without_sundays)
+        self.assertTrue('2016-12-26' in self.holidays_without_sundays)
+
+        self.assertTrue('2500-12-25' in self.holidays_without_sundays)
+        self.assertTrue('2500-12-26' in self.holidays_without_sundays)
+
+    def test_sundays(self):
+        self.assertTrue('1989-12-31' in self.holidays_with_sundays)
+        self.assertTrue('2017-02-05' in self.holidays_with_sundays)
+        self.assertTrue('2017-02-12' in self.holidays_with_sundays)
+        self.assertTrue('2032-02-29' in self.holidays_with_sundays)
+
+    def test_not_holiday(self):
+        self.assertFalse('2017-02-06' in self.holidays_without_sundays)
+        self.assertFalse('2017-02-07' in self.holidays_without_sundays)
+        self.assertFalse('2017-02-08' in self.holidays_without_sundays)
+        self.assertFalse('2017-02-09' in self.holidays_without_sundays)
+        self.assertFalse('2017-02-10' in self.holidays_without_sundays)
+
+        self.assertFalse('2001-12-24' in self.holidays_without_sundays)
+        self.assertFalse('2001-05-16' in self.holidays_without_sundays)
+        self.assertFalse('2001-05-18' in self.holidays_without_sundays)
+        self.assertFalse('1999-12-31' in self.holidays_without_sundays)
+        self.assertFalse('2016-12-31' in self.holidays_without_sundays)
+        self.assertFalse('2016-12-27' in self.holidays_without_sundays)
+        self.assertFalse('2016-12-28' in self.holidays_without_sundays)
+
+        self.assertFalse('2017-02-06' in self.holidays_with_sundays)
+        self.assertFalse('2017-02-07' in self.holidays_with_sundays)
+        self.assertFalse('2017-02-08' in self.holidays_with_sundays)
+        self.assertFalse('2017-02-09' in self.holidays_with_sundays)
+        self.assertFalse('2017-02-10' in self.holidays_with_sundays)
+
+        self.assertFalse('2001-12-24' in self.holidays_with_sundays)
+        self.assertFalse('2001-05-16' in self.holidays_with_sundays)
+        self.assertFalse('2001-05-18' in self.holidays_with_sundays)
+        self.assertFalse('1999-12-31' in self.holidays_with_sundays)
+        self.assertFalse('2016-12-31' in self.holidays_with_sundays)
+        self.assertFalse('2016-12-27' in self.holidays_with_sundays)
+        self.assertFalse('2016-12-28' in self.holidays_with_sundays)
+
+    def test_not_public(self):
+        self.assertFalse('2016-12-28' in self.holidays_all)
+        self.assertFalse('2016-05-09' in self.holidays_all)
+        self.assertFalse('2010-03-01' in self.holidays_all)
+        self.assertTrue('2016-03-01' in self.holidays_all)
+        self.assertTrue('2012-08-31' in self.holidays_all)
+        self.assertTrue('1976-11-07' in self.holidays_all)
+        self.assertTrue('1981-07-22' in self.holidays_all)
+
+
 if __name__ == "__main__":
     unittest.main()
