@@ -1973,7 +1973,8 @@ class Czech(HolidayBase):
             "Nový rok"
 
         e = easter(year)
-        self[e - rd(days=2)] = "Velký pátek"
+        if year <= 1951 or year >= 2016:
+            self[e - rd(days=2)] = "Velký pátek"
         self[e + rd(days=1)] = "Velikonoční pondělí"
 
         if year >= 1951:
