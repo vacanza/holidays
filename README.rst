@@ -27,6 +27,7 @@ Example Usage
     from datetime import date
 
     import holidays
+    from datetime import date
 
     us_holidays = holidays.UnitedStates()  # or holidays.US()
 
