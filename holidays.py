@@ -2226,6 +2226,7 @@ class Norway(HolidayBase):
 class NO(Norway):
     pass
 
+
 class Croatia(HolidayBase):
 
     def __init__(self, **kwargs):
@@ -2235,48 +2236,49 @@ class Croatia(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
-        #New Year
+        # New Year
         self[date(year, 1, 1)] = "Nova godina"
 
-        #Sveta tri kralja
+        # Sveta tri kralja
         self[date(year, 1, 6)] = "Sveta tri kralja"
 
-        #Easter
+        # Easter
         e = easter(year)
         self[e] = "Uskrs"
 
-        #Easter Monday
+        # Easter Monday
         self[e + rd(days=1)] = "Easter Monday"
 
-        #Corpus Christi
+        # Corpus Christi
         self[e + rd(days=60)] = "Tijelovo"
 
-        #1 May (Labour Day)
+        # 1 May (Labour Day)
         self[date(year, 5, 1)] = "Praznik rada"
 
-        #Day of Antifascist Struggle
+        # Day of Antifascist Struggle
         self[date(year, 6, 22)] = "Dan antifašističke borbe"
 
-        #Statehood Day
+        # Statehood Day
         self[date(year, 6, 25)] = "Dan državnosti"
 
-        #Homeland Thanksgiving Day
+        # Homeland Thanksgiving Day
         self[date(year, 8, 5)] = "Dan pobjede i domovinske zahvalnosti"
 
-        #Assumption of Mary
+        # Assumption of Mary
         self[date(year, 8, 15)] = "Velika Gospa"
 
-        #Independence Day
+        # Independence Day
         self[date(year, 10, 8)] = "Dan neovisnosti"
 
-        #All Saints’ Day
+        # All Saints’ Day
         self[date(year, 11, 1)] = "Svi sveti"
 
-        #Christmas Day
+        # Christmas Day
         self[date(year, 12, 25)] = "Božić"
 
-        #St Stephen's Day'
+        # St Stephen's Day'
         self[date(year, 12, 26)] = "Sv. Stjepan"
+
 
 class HR(Croatia):
     pass
