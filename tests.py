@@ -3000,5 +3000,23 @@ class TestNorway(unittest.TestCase):
         self.assertFalse('2016-12-28' in self.holidays_with_sundays)
 
 
+class TestCroatia(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.HR()
+
+    def test_2017(self):
+        # http://www.officeholidays.com/countries/croatia/2017.php
+        self.assertTrue(date(2017,  1,  1) in self.holidays)  # New Year
+        self.assertTrue(date(2017,  4, 16) in self.holidays)  # Easter
+        self.assertTrue(date(2017,  5,  1) in self.holidays)  # Labour Day
+        self.assertTrue(date(2017,  6, 15) in self.holidays)  # Corpus Christi
+        self.assertTrue(date(2017,  8, 15) in self.holidays)  # Assumption Day
+        self.assertTrue(date(2017, 11,  1) in self.holidays)  # All Saints Day
+        self.assertTrue(date(2017, 12, 25) in self.holidays)  # Christmas
+        self.assertFalse(date(2017,  4, 14) in self.holidays)  # Good Friday
+        self.assertFalse(date(2017,  4, 2) in self.holidays)  # Nothing at all
+
+
 if __name__ == "__main__":
     unittest.main()

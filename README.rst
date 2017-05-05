@@ -88,6 +88,7 @@ Austria             AT       prov = B, K, N, O, S, ST, T, V, **W** (default)
 Canada              CA       prov = AB, BC, MB, NB, NL, NS, NT, NU, **ON** (default),
                              PE, QC, SK, YU
 Colombia            CO       None
+Croatia             HR       None
 Czech               CZ       None
 Denmark             DK       None
 England                      None
