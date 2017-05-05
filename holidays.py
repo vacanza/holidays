@@ -2255,22 +2255,22 @@ class Croatia(HolidayBase):
         self[date(year, 5, 1)] = "Praznik rada"
 
         #Day of Antifascist Struggle
-        self[date(year, 06, 22)] = "Dan antifašističke borbe"
+        self[date(year, 6, 22)] = "Dan antifašističke borbe"
 
         #Statehood Day
-        self[date(year, 06, 25)] = "Dan državnosti"
+        self[date(year, 6, 25)] = "Dan državnosti"
 
         #Homeland Thanksgiving Day
-        self[date(year, 08, 05)] = "Dan pobjede i domovinske zahvalnosti"
+        self[date(year, 8, 5)] = "Dan pobjede i domovinske zahvalnosti"
 
         #Assumption of Mary
-        self[date(year, 08, 15)] = "Velika Gospa"
+        self[date(year, 8, 15)] = "Velika Gospa"
 
         #Independence Day
-        self[date(year, 10, 08)] = "Dan neovisnosti"
+        self[date(year, 10, 8)] = "Dan neovisnosti"
 
         #All Saints’ Day
-        self[date(year, 11, 01)] = "Svi sveti"
+        self[date(year, 11, 1)] = "Svi sveti"
 
         #Christmas Day
         self[date(year, 12, 25)] = "Božić"

@@ -3020,7 +3020,7 @@ class TestCroatia(unittest.TestCase):
         self.assertTrue(date(2017, 12, 25) in self.holidays)  # Christmas
 
         self.assertFalse(date(2017,  4, 14) in self.holidays)  # Good Friday
-        self.assertFalse(date(2017,  04, 02) in self.holidays)  # Nothing at all
+        self.assertFalse(date(2017,  4, 2) in self.holidays)  # Nothing at all
 
 
 if __name__ == "__main__":
