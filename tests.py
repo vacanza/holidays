@@ -2480,7 +2480,13 @@ class TestDE(unittest.TestCase):
         for province, year in product(provinces_that_have, range(1991, 2050)):
             self.assertTrue(date(year, 10, 31) in self.prov_hols[province])
         for province, year in product(provinces_that_dont, range(1991, 2050)):
+            if year == 2017:
+                continue
             self.assertTrue(date(year, 10, 31) not in self.prov_hols[province])
+
+        # In 2017, the states that don't normally have it, do.
+        for province in provinces_that_dont:
+            self.assertTrue(date(2017, 10, 31) in self.prov_hols[province])
 
     def test_allerheiligen(self):
         provinces_that_have = set(('BW', 'BY', 'NW', 'RP', 'SL'))
