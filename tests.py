@@ -2479,8 +2479,14 @@ class TestDE(unittest.TestCase):
 
         for province, year in product(provinces_that_have, range(1991, 2050)):
             self.assertTrue(date(year, 10, 31) in self.prov_hols[province])
-        for province, year in product(provinces_that_dont, range(1991, 2050)):
+        for province, year in product(provinces_that_dont, range(1991, 2017)):
             self.assertTrue(date(year, 10, 31) not in self.prov_hols[province])
+        for province, year in product(provinces_that_dont, range(2018, 2050)):
+            self.assertTrue(date(year, 10, 31) not in self.prov_hols[province])
+
+        # in 2017 Reformationstag is a public holiday in all prov of Germany
+        for province, year in product(self.prov_hols, [2017]):
+            self.assertTrue(date(year, 10, 31) in self.prov_hols[province])
 
     def test_allerheiligen(self):
         provinces_that_have = set(('BW', 'BY', 'NW', 'RP', 'SL'))
