@@ -2006,6 +2006,45 @@ class CZ(Czech):
     pass
 
 
+class Poland(HolidayBase):
+    # https://en.wikipedia.org/wiki/Public_holidays_in_Poland
+
+    def __init__(self, **kwargs):
+        self.country = 'PL'
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        self[date(year, 1, 1)] = "Nowy Rok"
+        
+        if year <= 1960 or year >= 2011:
+            self[date(year, 1, 6)] = "Święto Trzech Króli"
+
+        self[easter(year) + rd(days=1)] = "Poniedziałek Wielkanocny"
+        self[easter(year) + rd(days=60)] = "Boże Ciało"
+        
+        if year >= 1950:
+            self[date(year, 5, 1)] = "Święto Pracy"
+        if year >= 1990:
+            self[date(year, 5, 3)] = "Święto Konstytucji Trzeciego Maja"
+        if year >= 1945 or year <= 1989:
+            self[date(year, 7, 22)] = "Narodowe Święto Odrodzenia Polski"
+
+        if year >= 1950:
+            self[date(year, 8, 15)] = "Święto Wojska Polskiego"
+        if year >= 1950:
+            self[date(year, 11, 1)] = "Dzień Zmarłych"
+        if year >= 1990:
+            self[date(year, 11, 11)] = "Dzień Niepodległości"
+
+        if year >= 1900:
+            self[date(year, 12, 25)] = "1. dzień Bożego Narodzenia"
+            self[date(year, 12, 26)] = "2. dzień Bożego Narodzenia"
+
+
+class PL(Poland):
+    pass
+
+
 class Portugal(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Portugal
 
