@@ -2006,6 +2006,49 @@ class CZ(Czech):
     pass
 
 
+class Poland(HolidayBase):
+    # https://en.wikipedia.org/wiki/Public_holidays_in_Poland
+
+    def __init__(self, **kwargs):
+        self.country = 'PL'
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        self[date(year, 1, 1)] = "Nowy Rok"
+
+        e = easter(year)
+        if year <= 1951 or year >= 2016:
+            self[e - rd(days=2)] = "Velký pátek"
+        self[e + rd(days=1)] = "Velikonoční pondělí"
+
+        if year >= 1950:
+            self[date(year, 5, 1)] = "Święto Pracy"
+        if year >= 1992:
+            self[date(year, 5, 3)] = "Święto Konstytucji Trzeciego Maja"
+
+        if year >= 1951:
+            self[date(year, 7, 5)] = "Den slovanských věrozvěstů " \
+                "Cyrila a Metoděje"
+            self[date(year, 7, 6)] = "Den upálení mistra Jana Husa"
+        if year >= 2000:
+            self[date(year, 9, 28)] = "Den české státnosti"
+        if year >= 1951:
+            self[date(year, 10, 28)] = "Den vzniku samostatného " \
+                "československého státu"
+        if year >= 1990:
+            self[date(year, 11, 17)] = "Den boje za svobodu a demokracii"
+
+        if year >= 1990:
+            self[date(year, 12, 24)] = "Štědrý den"
+        if year >= 1951:
+            self[date(year, 12, 25)] = "1. svátek vánoční"
+            self[date(year, 12, 26)] = "2. svátek vánoční"
+
+
+class PL(Poland):
+    pass
+
+
 class Portugal(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Portugal
 
