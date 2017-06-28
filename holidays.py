@@ -2226,6 +2226,7 @@ class Norway(HolidayBase):
 class NO(Norway):
     pass
 
+
 class Sweden(HolidayBase):
     """
     Swedish holidays.
@@ -2236,7 +2237,7 @@ class Sweden(HolidayBase):
     Initialize this class with include_sundays=False
     to not include sundays as a holiday.
     Primary sources:
-    https://sv.wikipedia.org/wiki/Helgdagar_i_Sverige and 
+    https://sv.wikipedia.org/wiki/Helgdagar_i_Sverige and
     http://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/lag-1989253-om-allmanna-helgdagar_sfs-1989-253
     """
     def __init__(self, include_sundays=True, **kwargs):
@@ -2300,7 +2301,6 @@ class Sweden(HolidayBase):
         assert pentecost.weekday() == SUNDAY
         assert pentecost_day_two.weekday() == MONDAY
 
-        
         self[good_friday] = "Långfredagen"
         self[resurrection_sunday] = "Påskdagen"
         self[easter_monday] = "Annandag påsk"
@@ -2313,12 +2313,13 @@ class Sweden(HolidayBase):
         if year >= 1953:
             self[date(year, 6, 20) + rd(weekday=SA)] = "Midsommardagen"
         else:
-            self[date(year, 6, 24)] = "Midsommardagen"        
+            self[date(year, 6, 24)] = "Midsommardagen"
         # All saints day. Friday between October 31th and November 6th
         self[date(year, 10, 31) + rd(weekday=SA)] = "Alla helgons dag"
 
         if year <= 1953:
             self[date(year, 3, 25)] = "Jungfru Marie bebådelsedag"
+
 
 class SE(Sweden):
     pass
