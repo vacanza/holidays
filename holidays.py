@@ -2310,9 +2310,6 @@ class Sweden(HolidayBase):
         if year <= 2004:
             self[pentecost_day_two] = "Annandag pingst"
 
-        # Midsummer evening. Friday between June 19th and June 25th
-        self[date(year, 6, 19) + rd(weekday=FR)] = "Midsommarafton"
-
         # Midsummer day. Saturday between June 20th and June 26th
         if year >= 1953:
             self[date(year, 6, 20) + rd(weekday=SA)] = "Midsommardagen"
