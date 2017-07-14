@@ -2862,6 +2862,28 @@ class TestCZ(unittest.TestCase):
         self.assertTrue(date(2017, 12, 26) in self.holidays)
 
 
+class TestPL(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.PL()
+
+    def test_2017(self):
+        # http://www.officeholidays.com/countries/poland/2017.php
+        self.assertTrue(date(2017,  1,  1) in self.holidays)
+        self.assertTrue(date(2017,  1,  6) in self.holidays)
+        self.assertTrue(date(2017,  4, 16) in self.holidays)
+        self.assertTrue(date(2017,  4, 17) in self.holidays)
+        self.assertTrue(date(2017,  5,  1) in self.holidays)
+        self.assertTrue(date(2017,  5,  3) in self.holidays)
+        self.assertTrue(date(2017,  6,  4) in self.holidays)
+        self.assertTrue(date(2017,  6, 15) in self.holidays)
+        self.assertTrue(date(2017,  8, 15) in self.holidays)
+        self.assertTrue(date(2017, 11,  1) in self.holidays)
+        self.assertTrue(date(2017, 11, 11) in self.holidays)
+        self.assertTrue(date(2017, 12, 25) in self.holidays)
+        self.assertTrue(date(2017, 12, 26) in self.holidays)
+
+
 class TestPT(unittest.TestCase):
 
     def setUp(self):
