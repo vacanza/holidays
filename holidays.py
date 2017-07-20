@@ -2256,6 +2256,5 @@ class SouthAfrica(HolidayBase):
                 self[k + rd(days=1)] = v + " (Observed)"
 
 
-
 class ZA(SouthAfrica):
     pass

@@ -3000,5 +3000,30 @@ class TestNorway(unittest.TestCase):
         self.assertFalse('2016-12-28' in self.holidays_with_sundays)
 
 
+class TestSouthAfrica(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.ZA()
+    
+    def test_new_years(self):
+        self.assertTrue('1900-01-01' in self.holidays)
+        self.assertTrue('2017-01-01' in self.holidays)
+        self.assertTrue('2999-01-01' in self.holidays)
+        self.assertTrue('2017-01-02' in self.holidays) #sunday
+        
+    def test_easter(self):
+        self.assertTrue(date(2017, 4, 14) in self.holidays)
+        self.assertTrue(date(2017, 4, 17) in self.holidays)
+        self.assertTrue(date(1994, 4, 1) in self.holidays)
+
+    def test_static(self):
+        self.assertTrue('2004-08-09' in self.holidays)
+
+    def test_not_holiday(self):
+        self.assertFalse('2016-12-28' in self.holidays)
+        self.assertFalse('2015-03-02' in self.holidays)
+
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -105,6 +105,7 @@ Norway              NO       None
 Portugal            PT       None
 PortugalExt         PTE      *Portugal plus extended days most people have off*
 Scotland                     None
+South Africa        ZA       None
 Spain               ES       prov = AND, ARG, AST, CAN, CAM, CAL, CAT, CVA, EXT, GAL,
                              IBA, ICA, MAD, MUR, NAV, PVA, RIO
 UnitedKingdom       UK       None
