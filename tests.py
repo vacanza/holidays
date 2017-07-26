@@ -3000,5 +3000,34 @@ class TestNorway(unittest.TestCase):
         self.assertFalse('2016-12-28' in self.holidays_with_sundays)
 
 
+class TestFR(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.FR()
+
+    def test_2017(self):
+        # http://www.officeholidays.com/countries/france/2017.php
+        self.assertTrue(date(2017, 1, 1) in self.holidays)    # Nouvel an
+        self.assertTrue(date(2017, 5, 1) in self.holidays)    # Fête du travail
+        self.assertTrue(date(2017, 5, 8) in self.holidays)    # Victoire 1945
+        self.assertTrue(date(2017, 7, 14) in self.holidays)   # Fete Nationale
+        self.assertTrue(date(2017, 8, 15) in self.holidays)   # Assomption
+        self.assertTrue(date(2017, 11, 1) in self.holidays)   # La Toussaint
+        self.assertTrue(date(2017, 12, 25) in self.holidays)  # Noël
+        self.assertTrue(date(2017, 4, 17) in self.holidays)   # Lundi de Pâques
+        self.assertTrue(date(2017, 5, 25) in self.holidays)   # Ascension
+        self.assertTrue(date(2017, 6, 5) in self.holidays)    # Lundi de Pentecôte
+
+
+class TestFRAlsace(unittest.TestCase):
+    def setUp(self):
+        self.holidays = holidays.FR(prov='Alsace')
+
+    def test_2017(self):
+        # http://www.officeholidays.com/countries/france/2017.php
+        self.assertTrue(date(2017, 4, 14) in self.holidays)   # Vendredi Saint
+        self.assertTrue(date(2017, 12, 26) in self.holidays)  # Saint-Etienne
+
+
 if __name__ == "__main__":
     unittest.main()
