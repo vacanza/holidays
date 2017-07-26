@@ -14,7 +14,7 @@ from datetime import date, datetime
 from dateutil.easter import easter
 from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
+from dateutil.relativedelta import MO, TU, WE, TH, FR as FRI, SA, SU
 import six
 
 __version__ = '0.8.1'
@@ -239,7 +239,7 @@ class Canada(HolidayBase):
             # http://heritageyukon.ca/programs/heritage-day
             # https://en.wikipedia.org/wiki/Family_Day_(Canada)#Yukon_Heritage_Day
             # Friday before the last Sunday in February
-            dt = date(year, 3, 1) + rd(weekday=SU(-1)) + rd(weekday=FR(-1))
+            dt = date(year, 3, 1) + rd(weekday=SU(-1)) + rd(weekday=FRI(-1))
             self[dt] = "Heritage Day"
 
         # St. Patrick's Day
@@ -255,7 +255,7 @@ class Canada(HolidayBase):
 
         # Good Friday
         if self.prov != 'QC' and year >= 1867:
-            self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
+            self[easter(year) + rd(weekday=FRI(-1))] = "Good Friday"
 
         # Easter Monday
         if self.prov == 'QC' and year >= 1867:
@@ -492,7 +492,7 @@ class Colombia(HolidayBase):
              ] = "Jueves Santo [Maundy Thursday]"
 
         # Good Friday
-        self[easter(year) + rd(weekday=FR(-1))
+        self[easter(year) + rd(weekday=FRI(-1))
              ] = "Viernes Santo [Good Friday]"
 
         # Holidays based on Easter but are observed the following monday
@@ -655,7 +655,7 @@ class UnitedStates(HolidayBase):
         # Lee Jackson Day
         name = "Lee Jackson Day"
         if self.state == 'VA' and year >= 2000:
-            dt = date(year, 1, 1) + rd(weekday=MO(+3)) + rd(weekday=FR(-1))
+            dt = date(year, 1, 1) + rd(weekday=MO(+3)) + rd(weekday=FRI(-1))
             self[dt] = name
         elif self.state == 'VA' and year >= 1983:
             self[date(year, 1, 1) + rd(weekday=MO(+3))] = name
@@ -812,7 +812,7 @@ class UnitedStates(HolidayBase):
         # Good Friday
         if self.state in ('CT', 'DE', 'GU', 'IN', 'KY', 'LA',
                           'NJ', 'NC', 'PR', 'TN', 'TX', 'VI'):
-            self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
+            self[easter(year) + rd(weekday=FRI(-1))] = "Good Friday"
 
         # Easter Monday
         if self.state == 'VI':
@@ -833,7 +833,7 @@ class UnitedStates(HolidayBase):
 
         # Arbor Day
         if self.state == 'NE' and year >= 1989:
-            self[date(year, 4, 30) + rd(weekday=FR(-1))] = "Arbor Day"
+            self[date(year, 4, 30) + rd(weekday=FRI(-1))] = "Arbor Day"
         elif self.state == 'NE' and year >= 1875:
             self[date(year, 4, 22)] = "Arbor Day"
 
@@ -923,7 +923,7 @@ class UnitedStates(HolidayBase):
 
         # Statehood Day (Hawaii)
         if self.state == 'HI' and year >= 1959:
-            self[date(year, 8, 1) + rd(weekday=FR(+3))] = "Statehood Day"
+            self[date(year, 8, 1) + rd(weekday=FRI(+3))] = "Statehood Day"
 
         # Bennington Battle Day
         if self.state == 'VT' and year >= 1778:
@@ -967,7 +967,7 @@ class UnitedStates(HolidayBase):
         if self.state == 'NV' and year >= 1933:
             dt = date(year, 10, 31)
             if year >= 2000:
-                dt += rd(weekday=FR(-1))
+                dt += rd(weekday=FRI(-1))
             self[dt] = "Nevada Day"
             if self.observed and dt.weekday() == 5:
                 self[dt + rd(days=-1)] = "Nevada Day (Observed)"
@@ -1046,7 +1046,7 @@ class UnitedStates(HolidayBase):
                 name = "State Holiday"
             else:
                 name = "Robert E. Lee's Birthday"
-            self[date(year, 11, 29) + rd(weekday=FR(-1))] = name
+            self[date(year, 11, 29) + rd(weekday=FRI(-1))] = name
 
         # Lady of Camarin Day
         if self.state == 'GU':
@@ -1065,7 +1065,7 @@ class UnitedStates(HolidayBase):
                 self[date(year, 12, 24) + rd(days=-1)] = name
             # If on Saturday or Sunday, observed on Friday
             elif self.observed and date(year, 12, 24).weekday() in (5, 6):
-                self[date(year, 12, 24) + rd(weekday=FR(-1))] = name
+                self[date(year, 12, 24) + rd(weekday=FRI(-1))] = name
 
         # Christmas Day
         if year > 1870:
@@ -1151,7 +1151,7 @@ class NewZealand(HolidayBase):
                 self[feb6 + rd(weekday=MO)] = name + " (Observed)"
 
         # Easter
-        self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
+        self[easter(year) + rd(weekday=FRI(-1))] = "Good Friday"
         self[easter(year) + rd(weekday=MO)] = "Easter Monday"
 
         # Anzac Day
@@ -1222,7 +1222,7 @@ class NewZealand(HolidayBase):
         elif self.prov in ('HKB', "Hawke's Bay"):
             name = "Hawke's Bay Anniversary Day"
             labour_day = date(year, 10, 1) + rd(weekday=MO(+4))
-            self[labour_day + rd(weekday=FR(-1))] = name
+            self[labour_day + rd(weekday=FRI(-1))] = name
 
         elif self.prov in ('WGN', 'Wellington'):
             name = "Wellington Anniversary Day"
@@ -1247,7 +1247,7 @@ class NewZealand(HolidayBase):
 
         elif self.prov in ('CAN', 'Canterbury'):
             name = "Canterbury Anniversary Day"
-            showday = date(year, 11, 1) + rd(weekday=TU) + rd(weekday=FR(+2))
+            showday = date(year, 11, 1) + rd(weekday=TU) + rd(weekday=FRI(+2))
             self[showday] = name
 
         elif self.prov in ('STC', 'South Canterbury'):
@@ -1358,7 +1358,7 @@ class Australia(HolidayBase):
             self[date(year, 3, 1) + rd(weekday=MO(+1))] = name
 
         # Easter
-        self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
+        self[easter(year) + rd(weekday=FRI(-1))] = "Good Friday"
         if self.prov in ('ACT', 'NSW', 'NT', 'QLD', 'SA', 'VIC'):
             self[easter(year) + rd(weekday=SA(-1))] = "Easter Saturday"
         if self.prov == 'NSW':
@@ -1646,10 +1646,10 @@ class Denmark(HolidayBase):
         # Public holidays
         self[date(year, 1, 1)] = "Nytårsdag"
         self[easter(year) + rd(weekday=TH(-1))] = "Skærtorsdag"
-        self[easter(year) + rd(weekday=FR(-1))] = "Langfredag"
+        self[easter(year) + rd(weekday=FRI(-1))] = "Langfredag"
         self[easter(year)] = "Påskedag"
         self[easter(year) + rd(weekday=MO)] = "Anden påskedag"
-        self[easter(year) + rd(weekday=FR(+4))] = "Store bededag"
+        self[easter(year) + rd(weekday=FRI(+4))] = "Store bededag"
         self[easter(year) + rd(days=39)] = "Kristi himmelfartsdag"
         self[easter(year) + rd(days=49)] = "Pinsedag"
         self[easter(year) + rd(days=50)] = "Anden pinsedag"
@@ -1701,7 +1701,7 @@ class UnitedKingdom(HolidayBase):
 
         # Good Friday
         if self.country != 'Ireland':
-            self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
+            self[easter(year) + rd(weekday=FRI(-1))] = "Good Friday"
 
         # Easter Monday
         if self.country != 'Scotland':
@@ -1746,7 +1746,7 @@ class UnitedKingdom(HolidayBase):
 
         # TT bank holiday (first Friday in June)
         if self.country == 'Isle of Man':
-            self[date(year, 6, 1) + rd(weekday=FR)] = "TT Bank Holiday"
+            self[date(year, 6, 1) + rd(weekday=FRI)] = "TT Bank Holiday"
 
         # Tynwald Day
         if self.country == 'Isle of Man':
@@ -1879,7 +1879,7 @@ class Spain(HolidayBase):
             self[date(year, 3, 19)] = "San José"
         if self.prov and self.prov != 'CAT':
             self[easter(year) + rd(weeks=-1, weekday=TH)] = "Jueves Santo"
-        self[easter(year) + rd(weeks=-1, weekday=FR)] = "Viernes Santo"
+        self[easter(year) + rd(weeks=-1, weekday=FRI)] = "Viernes Santo"
         if self.prov and self.prov in ['CAT', 'PVA', 'NAV', 'CVA', 'IBA']:
             self[easter(year) + rd(weekday=MO)] = "Lunes de Pascua"
         self[date(year, 5, 1)] = "Día del Trabajador"
@@ -2224,4 +2224,38 @@ class Norway(HolidayBase):
 
 
 class NO(Norway):
+    pass
+
+
+class France(HolidayBase):
+    PROVINCES = {
+        'moselle': ('hr', 'br', 'mos', 'haut-rhin', 'bas-rhin', 'moselle', 'alsace')
+    }
+
+    def __init__(self, **kwargs):
+        self.country = 'FR'
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+
+        e = easter(year)
+
+        self[date(year, 1, 1)] = "Nouvel an"
+        self[date(year,  5,  1)] = "Fête du travail"
+        self[date(year, 5, 8)] = "Victoire 1945"
+        self[date(year, 7, 14)] = "Fete Nationale"
+        self[date(year, 8, 15)] = "Assomption"
+        self[date(year, 11, 1)] = "La Toussaint"
+        self[date(year, 12, 25)] = "Noël"
+
+        self[e + rd(days=1)] = "Lundi de Pâques"
+        self[e + rd(days=39)] = "Ascension"
+        self[e + rd(days=50)] = "Lundi de Pentecôte"
+
+        if self.prov is not None and self.prov.lower() in France.PROVINCES['moselle']:
+            self[e - rd(days=2)] = "Vendredi Saint"
+            self[date(year, 12, 26)] = "Saint-Etienne"
+
+
+class FR(France):
     pass
