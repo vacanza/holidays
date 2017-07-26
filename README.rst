@@ -92,6 +92,7 @@ Czech               CZ       None
 Denmark             DK       None
 England                      None
 EuropeanCentralBank ECB,TAR  Trans-European Automated Real-time Gross Settlement (TARGET2)
+France              FR       MOS
 Germany             DE       BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL, SN, ST,
                              SH, TH
 Ireland                      None
