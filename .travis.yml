@@ -9,24 +9,25 @@ python:
     - 3.4
     - 3.5
     - pypy
-    - pypy3
+    - "pypy3-5.5.0"  # 3.3
+    - "pypy3-5.8.0"  # 3.5
 
 env:
-    - DATEUTIL=python-dateutil==2.2
-    - DATEUTIL=python-dateutil
+    - DATEUTIL="python-dateutil==2.2; python_version != '3.2'"
+    - DATEUTIL="python-dateutil; python_version != '3.2'"
 
 install:
     - pip install $DATEUTIL
     - python setup.py install
-    - if [[ $TRAVIS_PYTHON_VERSION == 2.6 ]]; then pip install flake8==2.6.2; fi
-    - if [[ $TRAVIS_PYTHON_VERSION != 2.6 ]]; then pip install flake8; fi
+    - pip install "flake8==2.6.2; python_version == '2.6'"
+    - pip install "flake8; python_version > '2.6'"
     - pip install coveralls
 
 before_script:
     - flake8 holidays.py tests.py
 
 script:
-    - if [[ $TRAVIS_PYTHON_VERSION != 3.2 ]]; then coverage run --omit=*site-packages*,*pypy* tests.py; else python tests.py; fi
+    - coverage run --omit=*site-packages*,*pypy* tests.py
 
 after_success:
-    - if [[ $TRAVIS_PYTHON_VERSION != 3.2 ]]; then coveralls; fi
+    - coveralls
