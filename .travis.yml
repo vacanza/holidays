@@ -9,8 +9,8 @@ python:
     - 3.4
     - 3.5
     - pypy
-    - "pypy-5.5.0"  # 3.3
-    - "pypy-5.8.0"  # 3.5
+    - "pypy3.3-5.5.0"  # 3.3
+#    - "pypy3.3-5.8.0"  # 3.5
 
 env:
     - DATEUTIL=python-dateutil==2.2
