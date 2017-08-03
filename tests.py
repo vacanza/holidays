@@ -755,7 +755,7 @@ class TestNetherlands(unittest.TestCase):
         self.holidays = holidays.NL()
 
     def test_2017(self):
-        # http://www.iamsterdam.com/en/visiting/plan-your-trip/practical-info/public-holidays
+        # http://www.iamsterdam.com/en/plan-your-trip/practical-info/public-holidays
         self.assertTrue(date(2017, 1, 1) in self.holidays)
         self.assertTrue(date(2017, 4, 16) in self.holidays)
         self.assertTrue(date(2017, 4, 17) in self.holidays)
