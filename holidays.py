@@ -2108,7 +2108,7 @@ class Netherlands(HolidayBase):
         # Liberation day
         # http://www.iamsterdam.com/en/plan-your-trip/practical-info/public-holidays
         # https://en.wikipedia.org/wiki/Liberation_Day_(Netherlands)
-        if year >= 1945 and year % 5 is 0:
+        if year >= 1945 and year % 5 == 0:
             self[date(year, 5, 5)] = "Bevrijdingsdag"
 
         # Kingsday
