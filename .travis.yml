@@ -13,8 +13,8 @@ python:
     - "pypy3-5.8.0"  # 3.5
 
 env:
-    - DATEUTIL="python-dateutil==2.2; python_version != '3.2'"
-    - DATEUTIL="python-dateutil; python_version != '3.2'"
+    - DATEUTIL=python-dateutil==2.2
+    - DATEUTIL=python-dateutil
 
 install:
     - pip install $DATEUTIL
