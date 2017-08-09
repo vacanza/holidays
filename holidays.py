@@ -2252,7 +2252,7 @@ class SouthAfrica(HolidayBase):
         self[date(year, 12, 25)] = "Christmas Day"
         self[date(year, 12, 26)] = "Day of Goodwill"
 
-        for k, v in self.items():
+        for k, v in list(self.items()):
             if self.observed and k.weekday() == 6:
                 self[k + rd(days=1)] = v + " (Observed)"
 
