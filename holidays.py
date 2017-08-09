@@ -2226,12 +2226,13 @@ class Norway(HolidayBase):
 class NO(Norway):
     pass
 
+
 class SouthAfrica(HolidayBase):
     def __init__(self, **kwargs):
         # http://www.gov.za/about-sa/public-holidays
         self.country = "ZA"
         HolidayBase.__init__(self, **kwargs)
-    
+
     def _populate(self, year):
         self[date(year, 1, 1)] = "New Year's Day"
         self[date(year, 3, 21)] = "Human Rights Day"
@@ -2250,7 +2251,7 @@ class SouthAfrica(HolidayBase):
         self[date(year, 12, 16)] = "Day of Reconciliation"
         self[date(year, 12, 25)] = "Christmas Day"
         self[date(year, 12, 26)] = "Day of Goodwill"
-        
+
         for k, v in self.items():
             if self.observed and k.weekday() == 6:
                 self[k + rd(days=1)] = v + " (Observed)"

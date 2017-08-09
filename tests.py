@@ -3004,13 +3004,13 @@ class TestSouthAfrica(unittest.TestCase):
 
     def setUp(self):
         self.holidays = holidays.ZA()
-    
+
     def test_new_years(self):
         self.assertTrue('1900-01-01' in self.holidays)
         self.assertTrue('2017-01-01' in self.holidays)
         self.assertTrue('2999-01-01' in self.holidays)
-        self.assertTrue('2017-01-02' in self.holidays) #sunday
-        
+        self.assertTrue('2017-01-02' in self.holidays)  # sunday
+
     def test_easter(self):
         self.assertTrue(date(2017, 4, 14) in self.holidays)
         self.assertTrue(date(2017, 4, 17) in self.holidays)
@@ -3022,7 +3022,6 @@ class TestSouthAfrica(unittest.TestCase):
     def test_not_holiday(self):
         self.assertFalse('2016-12-28' in self.holidays)
         self.assertFalse('2015-03-02' in self.holidays)
-
 
 
 if __name__ == "__main__":
