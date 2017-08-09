@@ -2074,7 +2074,7 @@ class Netherlands(HolidayBase):
     SUNDAY = 6
 
     def __init__(self, **kwargs):
-        # http://www.iamsterdam.com/en/visiting/plan-your-trip/practical-info/public-holidays
+        # http://www.iamsterdam.com/en/plan-your-trip/practical-info/public-holidays
         self.country = "NL"
         HolidayBase.__init__(self, **kwargs)
 
@@ -2106,7 +2106,7 @@ class Netherlands(HolidayBase):
         self[date(year, 12, 26)] = "Tweede Kerstdag"
 
         # Liberation day
-        if year >= 1947 and year <= 2000:
+        if year >= 1945 and year % 5 == 0:
             self[date(year, 5, 5)] = "Bevrijdingsdag"
 
         # Kingsday
