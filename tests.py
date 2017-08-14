@@ -3000,5 +3000,41 @@ class TestNorway(unittest.TestCase):
         self.assertFalse('2016-12-28' in self.holidays_with_sundays)
 
 
+class TestSI(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.SI()
+
+    def test_holidays(self):
+        """
+        Test all expected holiday dates
+        :return:
+        """
+        self.assertTrue(date(2017, 1, 1) in self.holidays)  # New Year
+        self.assertTrue(date(2017, 1, 2) in self.holidays)  # New Year
+        self.assertTrue(date(2017, 2, 8) in self.holidays)  # Prešeren's day
+        self.assertTrue(date(2016, 3, 28) in self.holidays)  # Easter monday - 2016
+        self.assertTrue(date(2017, 4, 17) in self.holidays)  # Easter monday - 2017
+        self.assertTrue(date(2017, 4, 27) in self.holidays)  # Day of uprising against occupation
+        self.assertTrue(date(2017, 5, 1) in self.holidays)  # Labour day
+        self.assertTrue(date(2017, 5, 2) in self.holidays)  # Labour day
+        self.assertTrue(date(2017, 6, 25) in self.holidays)  # Statehood day
+        self.assertTrue(date(2017, 8, 15) in self.holidays)  # Assumption day
+        self.assertTrue(date(2017, 10, 31) in self.holidays)  # Reformation day
+        self.assertTrue(date(2017, 11, 1) in self.holidays)  # Remembrance day
+        self.assertTrue(date(2017, 12, 25) in self.holidays)  # Christmas
+        self.assertTrue(date(2017, 12, 26) in self.holidays)  # Day of independence and unity
+
+    def test_non_holidays(self):
+        """
+        Test dates that should be excluded from holidays list
+        :return:
+        """
+        self.assertFalse(date(2013, 1, 2) in self.holidays)  # Should not be public holiday / work free day
+        self.assertFalse(date(2014, 1, 2) in self.holidays)  # Should not be public holiday / work free day
+        self.assertFalse(date(2015, 1, 2) in self.holidays)  # Should not be public holiday / work free day
+        self.assertFalse(date(2016, 1, 2) in self.holidays)  # Should not be public holiday / work free day
+
+
 if __name__ == "__main__":
     unittest.main()
