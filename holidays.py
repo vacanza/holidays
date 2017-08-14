@@ -2230,8 +2230,9 @@ class NO(Norway):
 class Slovenia(HolidayBase):
     """
     Contains all work-free public holidays in Slovenia.
-    No holidays are returned before year 1991 when Slovenia became independent country. Before that Slovenia was part
-    of Socialist federal republic of Yugoslavia.
+    No holidays are returned before year 1991 when Slovenia became independent
+    country. Before that Slovenia was part of Socialist federal republic of
+    Yugoslavia.
 
     List of holidays (including those that are not work-free:
     https://en.wikipedia.org/wiki/Public_holidays_in_Slovenia
@@ -2248,7 +2249,8 @@ class Slovenia(HolidayBase):
         if year > 1991:
             self[date(year, 1, 1)] = "novo leto"
 
-            # Between 2012 and 2017 2nd January was not public holiday, or at least not work-free day
+            # Between 2012 and 2017 2nd January was not public holiday,
+            # or at least not work-free day
             if year < 2013 or year > 2016:
                 self[date(year, 1, 2)] = "novo leto"
 
