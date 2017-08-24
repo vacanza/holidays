@@ -2228,9 +2228,8 @@ class NO(Norway):
 
 
 class France(HolidayBase):
-    PROVINCES = {
-        'moselle': ('hr', 'br', 'mos', 'haut-rhin', 'bas-rhin', 'moselle', 'alsace')
-    }
+    PROVINCES = {'moselle': ('hr', 'br', 'mos', 'haut-rhin', 'bas-rhin',
+                             'moselle', 'alsace')}
 
     def __init__(self, **kwargs):
         self.country = 'FR'
@@ -2252,7 +2251,8 @@ class France(HolidayBase):
         self[e + rd(days=39)] = "Ascension"
         self[e + rd(days=50)] = "Lundi de Pentecôte"
 
-        if self.prov is not None and self.prov.lower() in France.PROVINCES['moselle']:
+        if self.prov is not None and \
+           self.prov.lower() in France.PROVINCES['moselle']:
             self[e - rd(days=2)] = "Vendredi Saint"
             self[date(year, 12, 26)] = "Saint-Etienne"
 
