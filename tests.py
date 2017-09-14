@@ -2478,9 +2478,18 @@ class TestDE(unittest.TestCase):
         provinces_that_dont = set(holidays.DE.PROVINCES) - provinces_that_have
 
         for province, year in product(provinces_that_have, range(1991, 2050)):
+            # in 2017 all states got the reformationstag for that year
+            if year == 2017:
+                continue
             self.assertTrue(date(year, 10, 31) in self.prov_hols[province])
         for province, year in product(provinces_that_dont, range(1991, 2050)):
+            # in 2017 all states got the reformationstag for that year
+            if year == 2017:
+                continue
             self.assertTrue(date(year, 10, 31) not in self.prov_hols[province])
+        # check the 2017 case where all states have the reformationstag
+        for province in holidays.DE.PROVINCES:
+            self.assertTrue(date(2017, 10, 31) in self.prov_hols[province])
 
     def test_allerheiligen(self):
         provinces_that_have = set(('BW', 'BY', 'NW', 'RP', 'SL'))

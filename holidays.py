@@ -1584,6 +1584,11 @@ class Germany(HolidayBase):
         if self.prov in ('BB', 'MV', 'SN', 'ST', 'TH'):
             self[date(year, 10, 31)] = 'Reformationstag'
 
+        # in 2017 all states got the Reformationstag (500th anniversary of
+        # Luther's thesis)
+        if year == 2017:
+            self[date(year, 10, 31)] = 'Reformationstag'
+
         if self.prov in ('BW', 'BY', 'NW', 'RP', 'SL'):
             self[date(year, 11, 1)] = 'Allerheiligen'
 
