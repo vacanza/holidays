@@ -204,7 +204,7 @@ More Examples
     # Let's print out the holidays in 2014 specific to California, USA
 
     >>> for date, name in sorted(holidays.US(state='CA', years=2014).items()):
-    >>>     print date, name
+    >>>     print(date, name)
     2014-01-01 New Year's Day
     2014-01-20 Martin Luther King, Jr. Day
     2014-02-15 Susan B. Anthony Day
