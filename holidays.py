@@ -2278,8 +2278,7 @@ class Sweden(HolidayBase):
             self[date(year, 6, 6)] = "Sveriges nationaldag"
 
         self[date(year, 12, 25)] = "Juldagen"
-        self[date(year, 12, 26)] = "Annandag jul"
-        self[date(year, 12, 31)] = "Nyårsafton"
+        self[date(year, 12, 26)] = "Annandag jul"        
 
         # ========= Moving holidays =========
         e = easter(year)
@@ -2314,10 +2313,12 @@ class Sweden(HolidayBase):
             self[date(year, 6, 20) + rd(weekday=SA)] = "Midsommardagen"
         else:
             self[date(year, 6, 24)] = "Midsommardagen"
-        # All saints day. Friday between October 31th and November 6th
-        self[date(year, 10, 31) + rd(weekday=SA)] = "Alla helgons dag"
 
-        if year <= 1953:
+        # All saints day. Saturday between October 31th and November 6th
+        if year >= 1953:
+            self[date(year, 10, 31) + rd(weekday=SA)] = "Alla helgons dag"
+
+        if year < 1953:
             self[date(year, 3, 25)] = "Jungfru Marie bebådelsedag"
 
 
