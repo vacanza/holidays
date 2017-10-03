@@ -2278,7 +2278,7 @@ class Sweden(HolidayBase):
             self[date(year, 6, 6)] = "Sveriges nationaldag"
 
         self[date(year, 12, 25)] = "Juldagen"
-        self[date(year, 12, 26)] = "Annandag jul"        
+        self[date(year, 12, 26)] = "Annandag jul"
 
         # ========= Moving holidays =========
         e = easter(year)
