@@ -1874,7 +1874,7 @@ class Spain(HolidayBase):
 
     def _populate(self, year):
         self[date(year, 1, 1)] = "Año nuevo"
-        self[date(year, 1, 6)] = "Epifanía del Senyor"
+        self[date(year, 1, 6)] = "Epifanía del Señor"
         if self.prov and self.prov in ['CVA', 'MUR', 'MAD', 'NAV', 'PVA']:
             self[date(year, 3, 19)] = "San José"
         if self.prov and self.prov != 'CAT':
@@ -1885,7 +1885,8 @@ class Spain(HolidayBase):
         self[date(year, 5, 1)] = "Día del Trabajador"
         if self.prov and self.prov in ['CAT', 'GAL']:
             self[date(year, 6, 24)] = "San Juan"
-        self[date(year, 8, 15)] = "Assunción de la Virgen"
+        self[date(year, 8, 15)] = "Asunción de la Virgen"
+        self[date(year, 10, 12)] = "Día de la Hispanidad"
         self[date(year, 11, 1)] = "Todos los Santos"
         self[date(year, 12, 6)] = "Día de la constitución Española"
         self[date(year, 12, 8)] = "La Inmaculada Concepción"
