@@ -3,12 +3,10 @@
 language: python
 
 python:
-    - 2.6
     - 2.7
-    - 3.2
-    - 3.3
     - 3.4
     - 3.5
+    - 3.6
     - pypy
     - pypy3
 
@@ -19,15 +17,14 @@ env:
 install:
     - pip install $DATEUTIL
     - python setup.py install
-    - if [[ $TRAVIS_PYTHON_VERSION == 2.6 ]]; then pip install flake8==2.6.2; fi
-    - if [[ $TRAVIS_PYTHON_VERSION != 2.6 ]]; then pip install flake8; fi
+    - pip install flake8
     - pip install coveralls
 
 before_script:
     - flake8 holidays.py tests.py
 
 script:
-    - if [[ $TRAVIS_PYTHON_VERSION != 3.2 ]]; then coverage run --omit=*site-packages*,*pypy* tests.py; else python tests.py; fi
+    - coverage run --omit=*site-packages*,*pypy* tests.py
 
 after_success:
-    - if [[ $TRAVIS_PYTHON_VERSION != 3.2 ]]; then coveralls; fi
+    - coveralls
