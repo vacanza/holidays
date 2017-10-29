@@ -3,7 +3,6 @@
 language: python
 
 python:
-    - 2.6
     - 2.7
     - 3.3
     - 3.4
@@ -18,8 +17,7 @@ env:
 install:
     - pip install $DATEUTIL
     - python setup.py install
-    - if [[ $TRAVIS_PYTHON_VERSION == 2.6 ]]; then pip install flake8==2.6.2; fi
-    - if [[ $TRAVIS_PYTHON_VERSION != 2.6 ]]; then pip install flake8; fi
+    - pip install flake8
     - pip install coveralls
 
 before_script:
