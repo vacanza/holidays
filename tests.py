@@ -2377,28 +2377,28 @@ class TestDE(unittest.TestCase):
         de_2015 = sum(holidays.DE(years=[2015], prov=p)
                       for p in holidays.DE.PROVINCES)
         in_2015 = sum((de_2015.get_list(key) for key in de_2015), [])
-        all = ["Neujahr",
-               "Heilige Drei Könige",
-               "Karfreitag",
-               "Ostern",
-               "Ostermontag",
-               "Maifeiertag",
-               "Christi Himmelfahrt",
-               "Pfingsten",
-               "Pfingstmontag",
-               "Fronleichnam",
-               "Mariä Himmelfahrt",
-               "Tag der Deutschen Einheit",
-               "Reformationstag",
-               "Allerheiligen",
-               "Buß- und Bettag",
-               "Erster Weihnachtstag",
-               "Zweiter Weihnachtstag"]
+        all_de = ["Neujahr",
+                  "Heilige Drei Könige",
+                  "Karfreitag",
+                  "Ostern",
+                  "Ostermontag",
+                  "Maifeiertag",
+                  "Christi Himmelfahrt",
+                  "Pfingsten",
+                  "Pfingstmontag",
+                  "Fronleichnam",
+                  "Mariä Himmelfahrt",
+                  "Tag der Deutschen Einheit",
+                  "Reformationstag",
+                  "Allerheiligen",
+                  "Buß- und Bettag",
+                  "Erster Weihnachtstag",
+                  "Zweiter Weihnachtstag"]
 
-        for holiday in all:
+        for holiday in all_de:
             self.assertTrue(holiday in in_2015, "missing: {}".format(holiday))
         for holiday in in_2015:
-            self.assertTrue(holiday in all, "extra: {}".format(holiday))
+            self.assertTrue(holiday in all_de, "extra: {}".format(holiday))
 
     def test_fixed_holidays(self):
         fixed_days_whole_country = (
