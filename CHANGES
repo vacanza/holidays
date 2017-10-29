@@ -4,6 +4,7 @@ Version 0.9
 Unreleased
 
 - Drop support for EOL Python 2.5, 2.6, 3.2 and 3.3
+- Add support for Python 3.6
 
 
 Version 0.8.1
