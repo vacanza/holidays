@@ -1334,7 +1334,7 @@ class TestUS(unittest.TestCase):
         self.assertFalse(date(2006, 6, 12) in hi_holidays)
         for dt in [date(2011, 6, 10), date(2016, 6, 10), date(2017, 6, 12)]:
             self.assertTrue(dt in hi_holidays)
-            hi_holidays.get(dt) == "Kamehameha Day (Observed)"
+            self.assertEqual(hi_holidays.get(dt), "Kamehameha Day (Observed)")
         hi_holidays.observed = False
         for dt in [date(2011, 6, 10), date(2016, 6, 10), date(2017, 6, 12)]:
             self.assertFalse(dt in hi_holidays)
