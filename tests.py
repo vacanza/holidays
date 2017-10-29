@@ -1080,9 +1080,9 @@ class TestUS(unittest.TestCase):
                         ("George Washington's Birthday "
                          "and Daisy Gatson Bates Day"))
         self.assertTrue(holidays.US(state='PR').get('2015-02-16'),
-                        ("Presidents' Day"))
+                        "Presidents' Day")
         self.assertTrue(holidays.US(state='VI').get('2015-02-16'),
-                        ("Presidents' Day"))
+                        "Presidents' Day")
 
     def test_mardi_gras(self):
         la_holidays = holidays.US(state='LA')

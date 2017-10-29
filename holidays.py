@@ -119,10 +119,10 @@ class HolidayBase(dict):
         return dict.pop(self, self.__keytransform__(key), default)
 
     def __eq__(self, other):
-        return (dict.__eq__(self, other) and self.__dict__ == other.__dict__)
+        return dict.__eq__(self, other) and self.__dict__ == other.__dict__
 
     def __ne__(self, other):
-        return (dict.__ne__(self, other) or self.__dict__ != other.__dict__)
+        return dict.__ne__(self, other) or self.__dict__ != other.__dict__
 
     def __add__(self, other):
         if isinstance(other, int) and other == 0:
