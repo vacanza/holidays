@@ -693,7 +693,7 @@ class UnitedStates(HolidayBase):
         # Lincoln's Birthday
         name = "Lincoln's Birthday"
         if (self.state in ('CT', 'IL', 'IA', 'NJ', 'NY') and year >= 1971) \
-                or (self.state == 'CA' and year >= 1971 and year <= 2009):
+                or (self.state == 'CA' and 1971 <= year <= 2009):
             self[date(year, 2, 12)] = name
             if self.observed and date(year, 2, 12).weekday() == 5:
                 self[date(year, 2, 11)] = name + " (Observed)"
@@ -2176,7 +2176,7 @@ class Netherlands(HolidayBase):
             self[kings_day] = "Koningsdag"
 
         # Queen's day
-        if year >= 1891 and year <= 2013:
+        if 1891 <= year <= 2013:
             queens_day = date(year, 4, 30)
             if year <= 1948:
                 queens_day = date(year, 8, 31)
