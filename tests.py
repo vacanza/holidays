@@ -2413,7 +2413,7 @@ class TestDE(unittest.TestCase):
             self.assertTrue(date(y, m, d) in self.holidays)
 
     def test_heilige_drei_koenige(self):
-        provinces_that_have = set(('BW', 'BY', 'ST'))
+        provinces_that_have = {'BW', 'BY', 'ST'}
         provinces_that_dont = set(holidays.DE.PROVINCES) - provinces_that_have
 
         for province, year in product(provinces_that_have, range(1991, 2050)):
@@ -2435,7 +2435,7 @@ class TestDE(unittest.TestCase):
                       (2017, 4, 16), (2018, 4, 1), (2019, 4, 21),
                       (2020, 4, 12), (2021, 4, 4), (2022, 4, 17),
                       (2023, 4, 9), (2024, 3, 31)]
-        provinces_that_have = set(('BB',))
+        provinces_that_have = {'BB'}
         provinces_that_dont = set(holidays.DE.PROVINCES) - provinces_that_have
 
         for province, (y, m, d) in product(provinces_that_have, known_good):
@@ -2466,7 +2466,7 @@ class TestDE(unittest.TestCase):
                       (2017, 6, 4), (2018, 5, 20), (2019, 6, 9),
                       (2020, 5, 31), (2021, 5, 23), (2022, 6, 5),
                       (2023, 5, 28), (2024, 5, 19)]
-        provinces_that_have = set(('BB',))
+        provinces_that_have = {'BB'}
         provinces_that_dont = set(holidays.DE.PROVINCES) - provinces_that_have
 
         for province, (y, m, d) in product(provinces_that_have, known_good):
@@ -2488,7 +2488,7 @@ class TestDE(unittest.TestCase):
                       (2017, 6, 15), (2018, 5, 31), (2019, 6, 20),
                       (2020, 6, 11), (2021, 6, 3), (2022, 6, 16),
                       (2023, 6, 8), (2024, 5, 30)]
-        provinces_that_have = set(('BW', 'BY', 'HE', 'NW', 'RP', 'SL'))
+        provinces_that_have = {'BW', 'BY', 'HE', 'NW', 'RP', 'SL'}
         provinces_that_dont = set(holidays.DE.PROVINCES) - provinces_that_have
 
         for province, (y, m, d) in product(provinces_that_have, known_good):
@@ -2497,7 +2497,7 @@ class TestDE(unittest.TestCase):
             self.assertTrue(date(y, m, d) not in self.prov_hols[province])
 
     def test_mariae_himmelfahrt(self):
-        provinces_that_have = set(('BY', 'SL'))
+        provinces_that_have = {'BY', 'SL'}
         provinces_that_dont = set(holidays.DE.PROVINCES) - provinces_that_have
 
         for province, year in product(provinces_that_have, range(1991, 2050)):
@@ -2506,7 +2506,7 @@ class TestDE(unittest.TestCase):
             self.assertTrue(date(year, 8, 15) not in self.prov_hols[province])
 
     def test_reformationstag(self):
-        provinces_that_have = set(('BB', 'MV', 'SN', 'ST', 'TH'))
+        provinces_that_have = {'BB', 'MV', 'SN', 'ST', 'TH'}
         provinces_that_dont = set(holidays.DE.PROVINCES) - provinces_that_have
 
         for province, year in product(provinces_that_have, range(1991, 2050)):
@@ -2524,7 +2524,7 @@ class TestDE(unittest.TestCase):
             self.assertTrue(date(2017, 10, 31) in self.prov_hols[province])
 
     def test_allerheiligen(self):
-        provinces_that_have = set(('BW', 'BY', 'NW', 'RP', 'SL'))
+        provinces_that_have = {'BW', 'BY', 'NW', 'RP', 'SL'}
         provinces_that_dont = set(holidays.DE.PROVINCES) - provinces_that_have
 
         for province, year in product(provinces_that_have, range(1991, 2050)):
@@ -2537,7 +2537,7 @@ class TestDE(unittest.TestCase):
                       (2017, 11, 22), (2018, 11, 21), (2019, 11, 20),
                       (2020, 11, 18), (2021, 11, 17), (2022, 11, 16),
                       (2023, 11, 22), (2024, 11, 20)]
-        provinces_that_have = set(('SN',))
+        provinces_that_have = {'SN'}
         provinces_that_dont = set(holidays.DE.PROVINCES) - provinces_that_have
 
         for province, (y, m, d) in product(provinces_that_have, known_good):
