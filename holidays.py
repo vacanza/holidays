@@ -276,11 +276,11 @@ class Canada(HolidayBase):
             else:
                 self[dt1] = "St. George's Day"
 
-        # Victoria Day / National Patriotes Day (QC)
+        # Victoria Day / National Patriots' Day (QC)
         if self.prov not in ('NB', 'NS', 'PE', 'NL', 'QC') and year >= 1953:
             self[date(year, 5, 24) + rd(weekday=MO(-1))] = "Victoria Day"
         elif self.prov == 'QC' and year >= 1953:
-            name = "National Patriotes Day"
+            name = "National Patriots' Day"
             self[date(year, 5, 24) + rd(weekday=MO(-1))] = name
 
         # National Aboriginal Day
@@ -2076,8 +2076,8 @@ class Portugal(HolidayBase):
 
         e = easter(year)
 
-        # carnival is no longer a holyday, but some companies let workers off.
-        # @todo recollect the years in which it was a public holyday
+        # carnival is no longer a holiday, but some companies let workers off.
+        # @todo recollect the years in which it was a public holiday
         # self[e - rd(days=47)] = "Carnaval"
         self[e - rd(days=2)] = "Sexta-feira Santa"
         self[e] = "Páscoa"
@@ -2107,7 +2107,7 @@ class PortugalExt(Portugal):
     - Carnival
     - the day before and after xmas
     - the day before the new year
-    - Lisbon's city holyday
+    - Lisbon's city holiday
     """
     def _populate(self, year):
         super(PortugalExt, self)._populate(year)
