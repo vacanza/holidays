@@ -2103,7 +2103,7 @@ class TestNZ(unittest.TestCase):
         all_holidays.insert(2, "New Zealand Day")
         for holiday in all_holidays:
             self.assertTrue(holiday in holidays_in_1974, holiday)
-        self.assertFalse("Waitangi Day" in holidays_in_1974, holiday)
+        self.assertFalse("Waitangi Day" in holidays_in_1974)
 
 
 class TestAU(unittest.TestCase):
