@@ -2238,16 +2238,20 @@ class Italy(HolidayBase):
     def _populate(self, year):
         self[date(year, 1, 1)] = "Capodanno"
         self[date(year, 1, 6)] = "Epifania del Signore"
+        self[easter(year)] = "Pasqua di Resurrezione"
         self[easter(year) + rd(weekday=MO)] = "Lunedì dell'Angelo"
-        self[date(year, 4, 25)] = "Festa della Liberazione"
+        if year >= 1946:
+            self[date(year, 4, 25)] = "Festa della Liberazione"
         self[date(year, 5, 1)] = "Festa dei Lavoratori"
-        self[date(year, 6, 2)] = "Festa della Repubblica"
+        if year >= 1948:
+            self[date(year, 6, 2)] = "Festa della Repubblica"
         self[date(year, 8, 15)] = "Assunzione della Vergine"
         self[date(year, 11, 1)] = "Tutti i Santi"
         self[date(year, 12, 8)] = "Immacolata Concezione"
         self[date(year, 12, 25)] = "Natale"
         self[date(year, 12, 26)] = "Santo Stefano"
         # Provinces festive day
+        # TODO: add all provinces' saints
         if self.prov:
             if self.prov == 'MI':
                 self[date(year, 12, 7)] = "Sant'Ambrogio"
