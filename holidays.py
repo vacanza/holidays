@@ -68,7 +68,7 @@ class HolidayBase(dict):
         elif isinstance(key, six.string_types):
             try:
                 key = parse(key).date()
-            except:
+            except (ValueError, OverflowError):
                 raise ValueError("Cannot parse date from string '%s'" % key)
         else:
             raise TypeError("Cannot convert type '%s' to date." % type(key))
