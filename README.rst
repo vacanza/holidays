@@ -96,6 +96,7 @@ Germany             DE       BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL, SN,
                              SH, TH
 Ireland                      None
 Isle of Man                  None
+Italy               IT       prov = MI, RM
 Mexico              MX       None
 Netherlands         NL       None
 NewZealand          NZ       prov = NTL, AUK, TKI, HKB, WGN, MBH, NSN, CAN, STC, WTL,

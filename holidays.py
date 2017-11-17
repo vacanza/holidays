@@ -2225,3 +2225,35 @@ class Norway(HolidayBase):
 
 class NO(Norway):
     pass
+
+
+class Italy(HolidayBase):
+    PROVINCES = ['MI', 'RM']
+
+    def __init__(self, **kwargs):
+        self.country = 'IT'
+        self.prov = kwargs.pop('prov', kwargs.pop('state', ''))
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        self[date(year, 1, 1)] = "Capodanno"
+        self[date(year, 1, 6)] = "Epifania del Signore"
+        self[easter(year) + rd(weekday=MO)] = "Lunedì dell'Angelo"
+        self[date(year, 4, 25)] = "Festa della Liberazione"
+        self[date(year, 5, 1)] = "Festa dei Lavoratori"
+        self[date(year, 6, 2)] = "Festa della Repubblica"
+        self[date(year, 8, 15)] = "Assunzione della Vergine"
+        self[date(year, 11, 1)] = "Tutti i Santi"
+        self[date(year, 12, 8)] = "Immacolata Concezione"
+        self[date(year, 12, 25)] = "Natale"
+        self[date(year, 12, 26)] = "Santo Stefano"
+        # Provinces festive day
+        if self.prov:
+            if self.prov == 'MI':
+                self[date(year, 12, 7)] = "Sant'Ambrogio"
+            if self.prov == 'RM':
+                self[date(year, 6, 29)] = "Santi Pietro e Paolo"
+
+
+class IT(Italy):
+    pass
