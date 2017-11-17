@@ -373,7 +373,7 @@ class TestKeyTransforms(unittest.TestCase):
         self.assertFalse("01/03/2014" in self.holidays)
 
     def test_exceptions(self):
-        self.assertRaises(ValueError, lambda: "abc" in self.holidays)
+        self.assertRaises((TypeError, ValueError), lambda: "abc" in self.holidays)
         self.assertRaises(ValueError, lambda: self.holidays.get("abc123"))
         self.assertRaises(ValueError, self.holidays.__setitem__, "abc", "Test")
         self.assertRaises(TypeError, lambda: list() in self.holidays)
