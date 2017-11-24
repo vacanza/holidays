@@ -1,3 +1,17 @@
+Unreleased (Version 0.9?)
+=========================
+
+- Add support for Python 3.6
+- Add Italian holidays (dr.prodigy)
+- Add Slovenian holidays (Cvetk0)
+- Add South African holidays (nickyspag)
+- Add Belgium holidays (fb22)
+- Add French holidays (oiffrig)
+- Add Japanese holidays (kokinomura)
+- Add Polish holidays (tadeoos)
+- Add Swedish holidays (johanpalmqvist)
+- Various fixes
+
 Version 0.8.1
 =============
 
