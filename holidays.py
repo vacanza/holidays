@@ -2312,18 +2312,17 @@ class Sweden(HolidayBase):
     Swedish holidays.
     Note that holidays falling on a sunday are "lost",
     it will not be moved to another day to make up for the collision.
-
     In Sweden, ALL sundays are considered a holiday
     (https://sv.wikipedia.org/wiki/Helgdagar_i_Sverige).
     Initialize this class with include_sundays=False
     to not include sundays as a holiday.
-
     Primary sources:
-    https://sv.wikipedia.org/wiki/Helgdagar_i_Sverige
+    https://sv.wikipedia.org/wiki/Helgdagar_i_Sverige and
+    http://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/lag-1989253-om-allmanna-helgdagar_sfs-1989-253
     """
+
     def __init__(self, include_sundays=True, **kwargs):
         """
-
         :param include_sundays: Whether to consider sundays as a holiday
         (which they are in Sweden)
         :param kwargs:
@@ -2336,11 +2335,11 @@ class Sweden(HolidayBase):
         # Add all the sundays of the year before adding the "real" holidays
         if self.include_sundays:
             first_day_of_year = date(year, 1, 1)
-            first_sunday_of_year = first_day_of_year\
-                + rd(days=SUNDAY - first_day_of_year.weekday())
+            first_sunday_of_year = first_day_of_year \
+                                   + rd(days=SUNDAY - first_day_of_year.weekday())
             cur_date = first_sunday_of_year
 
-            while cur_date < date(year+1, 1, 1):
+            while cur_date < date(year + 1, 1, 1):
                 assert cur_date.weekday() == SUNDAY
 
                 self[cur_date] = "Söndag"
@@ -2352,8 +2351,8 @@ class Sweden(HolidayBase):
         self[date(year, 1, 6)] = "Trettondedag jul"
 
         # Source: https://sv.wikipedia.org/wiki/F%C3%B6rsta_maj
-        if year >= 1890:
-            self[date(year, 5,  1)] = "Första maj"
+        if year >= 1939:
+            self[date(year, 5, 1)] = "Första maj"
 
         # Source: https://sv.wikipedia.org/wiki/Sveriges_nationaldag
         if year >= 2005:
@@ -2385,24 +2384,26 @@ class Sweden(HolidayBase):
         assert pentecost_day_two.weekday() == MONDAY
 
         self[good_friday] = "Långfredagen"
-        self[easter_saturday] = "Påskafton"
         self[resurrection_sunday] = "Påskdagen"
         self[easter_monday] = "Annandag påsk"
         self[ascension_thursday] = "Kristi himmelsfärdsdag"
-        self[pentecost] = "Pingstafton"
-        self[pentecost_day_two] = "Pingstdagen"
+        self[pentecost] = "Pingstdagen"
+        if year <= 2004:
+            self[pentecost_day_two] = "Annandag pingst"
 
         # Midsummer evening. Friday between June 19th and June 25th
         self[date(year, 6, 19) + rd(weekday=FR)] = "Midsommarafton"
 
         # Midsummer day. Saturday between June 20th and June 26th
-        self[date(year, 6, 20) + rd(weekday=SA)] = "Midsommardagen"
-
-        # All saints evening. Friday between October 30th and November 5th
-        self[date(year, 10, 30) + rd(weekday=FR)] = "Allhelgonaafton"
-
-        # All saints day. Friday between October 31th and November 6th
+        if year >= 1953:
+            self[date(year, 6, 20) + rd(weekday=SA)] = "Midsommardagen"
+        else:
+            self[date(year, 6, 24)] = "Midsommardagen"
+            # All saints day. Friday between October 31th and November 6th
         self[date(year, 10, 31) + rd(weekday=SA)] = "Alla helgons dag"
+
+        if year <= 1953:
+            self[date(year, 3, 25)] = "Jungfru Marie bebådelsedag"
 
 
 class SE(Sweden):

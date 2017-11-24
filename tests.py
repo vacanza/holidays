@@ -3140,7 +3140,7 @@ class TestSweden(unittest.TestCase):
     def test_workers_day(self):
         self.assertFalse('1800-05-01' in self.holidays_without_sundays)
         self.assertFalse('1879-05-01' in self.holidays_without_sundays)
-        self.assertTrue('1890-05-01' in self.holidays_without_sundays)
+        self.assertTrue('1939-05-01' in self.holidays_without_sundays)
         self.assertTrue('2017-05-01' in self.holidays_without_sundays)
         self.assertTrue('2999-05-01' in self.holidays_without_sundays)
 
@@ -3156,13 +3156,15 @@ class TestSweden(unittest.TestCase):
         self.assertTrue('2000-06-12' in self.holidays_without_sundays)
 
         self.assertTrue('2010-05-23' in self.holidays_without_sundays)
-        self.assertTrue('2010-05-24' in self.holidays_without_sundays)
+        self.assertFalse('2010-05-24' in self.holidays_without_sundays)
 
         self.assertTrue('2021-05-23' in self.holidays_without_sundays)
-        self.assertTrue('2021-05-24' in self.holidays_without_sundays)
+        self.assertFalse('2021-05-24' in self.holidays_without_sundays)
+
+        self.assertTrue('2003-06-09' in self.holidays_without_sundays)
 
         self.assertTrue('2024-05-19' in self.holidays_without_sundays)
-        self.assertTrue('2024-05-20' in self.holidays_without_sundays)
+        self.assertFalse('2024-05-20' in self.holidays_without_sundays)
 
     def test_christmas(self):
         self.assertTrue('1901-12-25' in self.holidays_without_sundays)
