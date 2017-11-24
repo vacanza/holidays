@@ -2112,7 +2112,7 @@ class Netherlands(HolidayBase):
     SUNDAY = 6
 
     def __init__(self, **kwargs):
-        # http://www.iamsterdam.com/en/visiting/plan-your-trip/practical-info/public-holidays
+        # http://www.iamsterdam.com/en/plan-your-trip/practical-info/public-holidays
         self.country = "NL"
         HolidayBase.__init__(self, **kwargs)
 
@@ -2144,7 +2144,7 @@ class Netherlands(HolidayBase):
         self[date(year, 12, 26)] = "Tweede Kerstdag"
 
         # Liberation day
-        if year >= 1947 and year <= 2000:
+        if year >= 1945 and year % 5 == 0:
             self[date(year, 5, 5)] = "Bevrijdingsdag"
 
         # Kingsday
@@ -2731,4 +2731,38 @@ class Belgium(HolidayBase):
 
 
 class BE(Belgium):
+    pass
+
+
+class SouthAfrica(HolidayBase):
+    def __init__(self, **kwargs):
+        # http://www.gov.za/about-sa/public-holidays
+        self.country = "ZA"
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        self[date(year, 1, 1)] = "New Year's Day"
+        self[date(year, 3, 21)] = "Human Rights Day"
+
+        e = easter(year)
+        good_friday = e - rd(days=2)
+        easter_monday = e + rd(days=1)
+        self[good_friday] = "Good Friday"
+        self[easter_monday] = "Family Day"
+
+        self[date(year, 4, 27)] = "Freedom Day"
+        self[date(year, 5, 1)] = "Worker's Day"
+        self[date(year, 6, 16)] = "Youth Day"
+        self[date(year, 8, 9)] = "National Women's Day"
+        self[date(year, 9, 24)] = "Heritage Day"
+        self[date(year, 12, 16)] = "Day of Reconciliation"
+        self[date(year, 12, 25)] = "Christmas Day"
+        self[date(year, 12, 26)] = "Day of Goodwill"
+
+        for k, v in list(self.items()):
+            if self.observed and k.weekday() == 6:
+                self[k + rd(days=1)] = v + " (Observed)"
+
+
+class ZA(SouthAfrica):
     pass

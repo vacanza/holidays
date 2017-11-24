@@ -759,7 +759,7 @@ class TestNetherlands(unittest.TestCase):
         self.holidays = holidays.NL()
 
     def test_2017(self):
-        # http://www.iamsterdam.com/en/visiting/plan-your-trip/practical-info/public-holidays
+        # http://www.iamsterdam.com/en/plan-your-trip/practical-info/public-holidays
         self.assertTrue(date(2017, 1, 1) in self.holidays)
         self.assertTrue(date(2017, 4, 16) in self.holidays)
         self.assertTrue(date(2017, 4, 17) in self.holidays)
@@ -816,6 +816,14 @@ class TestNetherlands(unittest.TestCase):
     def test_liberation_day(self):
         self.holidays = holidays.NL(years=1900)
         self.assertFalse(date(1900, 5, 5) in self.holidays)
+
+    def test_liberation_day_after_1990_non_lustrum_year(self):
+        self.holidays = holidays.NL(years=2017)
+        self.assertFalse(date(2017, 5, 5) in self.holidays)
+
+    def test_liberation_day_after_1990_in_lustrum_year(self):
+        self.holidays = holidays.NL(years=2020)
+        self.assertTrue(date(2020, 5, 5) in self.holidays)
 
     def test_ascension_day(self):
         self.holidays = holidays.NL(years=2017)
@@ -3349,6 +3357,30 @@ class TestBelgium(unittest.TestCase):
         self.assertTrue(date(2017, 11, 1) in self.holidays)
         self.assertTrue(date(2017, 11, 11) in self.holidays)
         self.assertTrue(date(2017, 12, 25) in self.holidays)
+
+
+class TestSouthAfrica(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.ZA()
+
+    def test_new_years(self):
+        self.assertTrue('1900-01-01' in self.holidays)
+        self.assertTrue('2017-01-01' in self.holidays)
+        self.assertTrue('2999-01-01' in self.holidays)
+        self.assertTrue('2017-01-02' in self.holidays)  # sunday
+
+    def test_easter(self):
+        self.assertTrue(date(2017, 4, 14) in self.holidays)
+        self.assertTrue(date(2017, 4, 17) in self.holidays)
+        self.assertTrue(date(1994, 4, 1) in self.holidays)
+
+    def test_static(self):
+        self.assertTrue('2004-08-09' in self.holidays)
+
+    def test_not_holiday(self):
+        self.assertFalse('2016-12-28' in self.holidays)
+        self.assertFalse('2015-03-02' in self.holidays)
 
 
 if __name__ == "__main__":
