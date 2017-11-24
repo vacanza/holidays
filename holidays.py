@@ -2766,3 +2766,67 @@ class SouthAfrica(HolidayBase):
 
 class ZA(SouthAfrica):
     pass
+
+
+class Slovenia(HolidayBase):
+    """
+    Contains all work-free public holidays in Slovenia.
+    No holidays are returned before year 1991 when Slovenia became independent
+    country. Before that Slovenia was part of Socialist federal republic of
+    Yugoslavia.
+
+    List of holidays (including those that are not work-free:
+    https://en.wikipedia.org/wiki/Public_holidays_in_Slovenia
+    """
+
+    def __init__(self, **kwargs):
+        self.country = 'SI'
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        if year <= 1990:
+            return
+
+        if year > 1991:
+            self[date(year, 1, 1)] = "novo leto"
+
+            # Between 2012 and 2017 2nd January was not public holiday,
+            # or at least not work-free day
+            if year < 2013 or year > 2016:
+                self[date(year, 1, 2)] = "novo leto"
+
+            # Prešeren's day, slovenian cultural holiday
+            self[date(year, 2, 8)] = "Prešernov dan"
+
+            # Easter monday is the only easter related work-free day
+            easter_day = easter(year)
+            self[easter_day + rd(days=1)] = "Velikonočni ponedeljek"
+
+            # Day of uprising against occupation
+            self[date(year, 4, 27)] = "dan upora proti okupatorju"
+
+            # Labour day, two days of it!
+            self[date(year, 5, 1)] = "praznik dela"
+            self[date(year, 5, 2)] = "praznik dela"
+
+            # Statehood day
+            self[date(year, 6, 25)] = "dan državnosti"
+
+            # Assumption day
+            self[date(year, 8, 15)] = "Marijino vnebovzetje"
+
+            # Reformation day
+            self[date(year, 10, 31)] = "dan reformacije"
+
+            # Remembrance day
+            self[date(year, 11, 1)] = "dan spomina na mrtve"
+
+            # Christmas
+            self[date(year, 12, 25)] = "Božič"
+
+            # Day of independence and unity
+            self[date(year, 12, 26)] = "dan samostojnosti in enotnosti"
+
+
+class SI(Slovenia):
+    pass
