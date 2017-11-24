@@ -1781,7 +1781,7 @@ class UnitedKingdom(HolidayBase):
         # October Bank Holiday (last Monday in October)
         if self.country == 'Ireland':
             name = "October Bank Holiday"
-            self[date(year, 8, 31) + rd(weekday=MO(-1))] = name
+            self[date(year, 10, 31) + rd(weekday=MO(-1))] = name
 
         # St. Andrew's Day
         if self.country in ('UK', 'Scotland'):
