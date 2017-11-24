@@ -97,12 +97,14 @@ Germany             DE       BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL, SN,
 Ireland                      None
 Isle of Man                  None
 Italy               IT       prov = MI, RM
+Japan               JP       None
 Mexico              MX       None
 Netherlands         NL       None
 NewZealand          NZ       prov = NTL, AUK, TKI, HKB, WGN, MBH, NSN, CAN, STC, WTL,
                              OTA, STL, CIT
 Northern Ireland             None
 Norway              NO       None
+Polish              PL       None
 Portugal            PT       None
 PortugalExt         PTE      *Portugal plus extended days most people have off*
 Scotland                     None
