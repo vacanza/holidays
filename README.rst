@@ -85,6 +85,7 @@ Country             Abbr     Provinces/States Available
 =================== ======== =============================================================
 Australia           AU       prov = **ACT** (default), NSW, NT, QLD, SA, TAS, VIC, WA
 Austria             AT       prov = B, K, N, O, S, ST, T, V, **W** (default)
+Belgium             BE       None
 Canada              CA       prov = AB, BC, MB, NB, NL, NS, NT, NU, **ON** (default),
                              PE, QC, SK, YU
 Colombia            CO       None

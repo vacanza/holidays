@@ -2679,3 +2679,56 @@ class France(HolidayBase):
 # FR already exists (Friday), we don't want to mess it up
 class FRA(France):
     pass
+
+
+class Belgium(HolidayBase):
+    """
+    https://www.belgium.be/nl/over_belgie/land/belgie_in_een_notendop/feestdagen
+    https://nl.wikipedia.org/wiki/Feestdagen_in_Belgi%C3%AB
+    """
+    def __init__(self, **kwargs):
+        self.country = "BE"
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # New years
+        self[date(year, 1, 1)] = "Nieuwjaarsdag"
+
+        easter_date = easter(year)
+
+        # Easter
+        self[easter_date] = "Pasen"
+
+        # Second easter day
+        self[easter_date + rd(days=1)] = "Paasmaandag"
+
+        # Ascension day
+        self[easter_date + rd(days=39)] = "O.L.H. Hemelvaart"
+
+        # Pentecost
+        self[easter_date + rd(days=49)] = "Pinksteren"
+
+        # Pentecost monday
+        self[easter_date + rd(days=50)] = "Pinkstermaandag"
+
+        # International Workers' Day
+        self[date(year, 5, 1)] = "Dag van de Arbeid"
+
+        # Belgian National Day
+        self[date(year, 7, 21)] = "Nationale feestdag"
+
+        # Assumption of Mary
+        self[date(year, 8, 15)] = "O.L.V. Hemelvaart"
+
+        # All Saints' Day
+        self[date(year, 11, 1)] = "Allerheiligen"
+
+        # Armistice Day
+        self[date(year, 11, 11)] = "Wapenstilstand"
+
+        # First christmas
+        self[date(year, 12, 25)] = "Kerstmis"
+
+
+class BE(Belgium):
+    pass

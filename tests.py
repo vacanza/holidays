@@ -3323,15 +3323,32 @@ class TestFR(unittest.TestCase):
         self.assertTrue(date(2017, 5, 25) in self.holidays)
         self.assertTrue(date(2017, 6, 5) in self.holidays)
         self.assertTrue(date(2017, 7, 14) in self.holidays)
-        self.assertTrue(date(2017, 8, 15) in self.holidays)
-        self.assertTrue(date(2017, 11, 1) in self.holidays)
-        self.assertTrue(date(2017, 11, 11) in self.holidays)
-        self.assertTrue(date(2017, 12, 25) in self.holidays)
 
     def test_alsace_moselle(self):
         am_holidays = self.prov_holidays['Alsace-Moselle']
         self.assertTrue(date(2017, 4, 14) in am_holidays)
         self.assertTrue(date(2017, 12, 26) in am_holidays)
+
+
+class TestBelgium(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.BE()
+
+    def test_2017(self):
+        # https://www.belgium.be/nl/over_belgie/land/belgie_in_een_notendop/feestdagen
+        self.assertTrue(date(2017, 1, 1) in self.holidays)
+        self.assertTrue(date(2017, 4, 16) in self.holidays)
+        self.assertTrue(date(2017, 4, 17) in self.holidays)
+        self.assertTrue(date(2017, 5, 1) in self.holidays)
+        self.assertTrue(date(2017, 5, 25) in self.holidays)
+        self.assertTrue(date(2017, 6, 4) in self.holidays)
+        self.assertTrue(date(2017, 6, 5) in self.holidays)
+        self.assertTrue(date(2017, 7, 21) in self.holidays)
+        self.assertTrue(date(2017, 8, 15) in self.holidays)
+        self.assertTrue(date(2017, 11, 1) in self.holidays)
+        self.assertTrue(date(2017, 11, 11) in self.holidays)
+        self.assertTrue(date(2017, 12, 25) in self.holidays)
 
 
 if __name__ == "__main__":
