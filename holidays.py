@@ -68,7 +68,7 @@ class HolidayBase(dict):
         elif isinstance(key, six.string_types):
             try:
                 key = parse(key).date()
-            except:
+            except (ValueError, OverflowError):
                 raise ValueError("Cannot parse date from string '%s'" % key)
         else:
             raise TypeError("Cannot convert type '%s' to date." % type(key))
@@ -2224,4 +2224,40 @@ class Norway(HolidayBase):
 
 
 class NO(Norway):
+    pass
+
+
+class Italy(HolidayBase):
+    PROVINCES = ['MI', 'RM']
+
+    def __init__(self, **kwargs):
+        self.country = 'IT'
+        self.prov = kwargs.pop('prov', kwargs.pop('state', ''))
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        self[date(year, 1, 1)] = "Capodanno"
+        self[date(year, 1, 6)] = "Epifania del Signore"
+        self[easter(year)] = "Pasqua di Resurrezione"
+        self[easter(year) + rd(weekday=MO)] = "Lunedì dell'Angelo"
+        if year >= 1946:
+            self[date(year, 4, 25)] = "Festa della Liberazione"
+        self[date(year, 5, 1)] = "Festa dei Lavoratori"
+        if year >= 1948:
+            self[date(year, 6, 2)] = "Festa della Repubblica"
+        self[date(year, 8, 15)] = "Assunzione della Vergine"
+        self[date(year, 11, 1)] = "Tutti i Santi"
+        self[date(year, 12, 8)] = "Immacolata Concezione"
+        self[date(year, 12, 25)] = "Natale"
+        self[date(year, 12, 26)] = "Santo Stefano"
+        # Provinces festive day
+        # TODO: add all provinces' saints
+        if self.prov:
+            if self.prov == 'MI':
+                self[date(year, 12, 7)] = "Sant'Ambrogio"
+            if self.prov == 'RM':
+                self[date(year, 6, 29)] = "Santi Pietro e Paolo"
+
+
+class IT(Italy):
     pass

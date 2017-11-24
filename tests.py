@@ -373,10 +373,14 @@ class TestKeyTransforms(unittest.TestCase):
         self.assertFalse("01/03/2014" in self.holidays)
 
     def test_exceptions(self):
-        self.assertRaises(ValueError, lambda: "abc" in self.holidays)
-        self.assertRaises(ValueError, lambda: self.holidays.get("abc123"))
-        self.assertRaises(ValueError, self.holidays.__setitem__, "abc", "Test")
-        self.assertRaises(TypeError, lambda: list() in self.holidays)
+        self.assertRaises(
+            (TypeError, ValueError), lambda: "abc" in self.holidays)
+        self.assertRaises(
+            (TypeError, ValueError), lambda: self.holidays.get("abc123"))
+        self.assertRaises(
+            (TypeError, ValueError), self.holidays.__setitem__, "abc", "Test")
+        self.assertRaises(
+            (TypeError, ValueError), lambda: list() in self.holidays)
 
 
 class TestCA(unittest.TestCase):
@@ -2998,6 +3002,67 @@ class TestNorway(unittest.TestCase):
         self.assertFalse('2016-12-31' in self.holidays_with_sundays)
         self.assertFalse('2016-12-27' in self.holidays_with_sundays)
         self.assertFalse('2016-12-28' in self.holidays_with_sundays)
+
+
+class TestItaly(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.IT()
+
+    def test_2017(self):
+        # https://www.giorni-festivi.it/
+        self.assertTrue(date(2017, 1, 1) in self.holidays)
+        self.assertTrue(date(2017, 1, 6) in self.holidays)
+        self.assertTrue(date(2017, 4, 16) in self.holidays)
+        self.assertTrue(date(2017, 4, 17) in self.holidays)
+        self.assertTrue(date(2017, 4, 25) in self.holidays)
+        self.assertTrue(date(2017, 5, 1) in self.holidays)
+        self.assertTrue(date(2017, 6, 2) in self.holidays)
+        self.assertTrue(date(2017, 8, 15) in self.holidays)
+        self.assertTrue(date(2017, 11, 1) in self.holidays)
+        self.assertTrue(date(2017, 12, 8) in self.holidays)
+        self.assertTrue(date(2017, 12, 25) in self.holidays)
+        self.assertTrue(date(2017, 12, 26) in self.holidays)
+
+    def test_new_years(self):
+        for year in range(1974, 2100):
+            self.assertTrue(date(year, 1, 1) in self.holidays)
+
+    def test_easter(self):
+        self.assertTrue(date(2017, 4, 16) in self.holidays)
+
+    def test_easter_monday(self):
+        self.assertTrue(date(2017, 4, 17) in self.holidays)
+
+    def test_republic_day_before_1948(self):
+        self.holidays = holidays.IT(years=[1947])
+        self.assertFalse(date(1947, 6, 2) in self.holidays)
+
+    def test_republic_day_after_1948(self):
+        self.holidays = holidays.IT(years=[1948])
+        self.assertTrue(date(1948, 6, 2) in self.holidays)
+
+    def test_liberation_day_before_1946(self):
+        self.holidays = holidays.IT(years=1945)
+        self.assertFalse(date(1945, 4, 25) in self.holidays)
+
+    def test_liberation_day_after_1946(self):
+        self.holidays = holidays.IT(years=1946)
+        self.assertTrue(date(1946, 4, 25) in self.holidays)
+
+    def test_christmas(self):
+        self.holidays = holidays.IT(years=2017)
+        self.assertTrue(date(2017, 12, 25) in self.holidays)
+
+    def test_saint_stephan(self):
+        self.holidays = holidays.IT(years=2017)
+        self.assertTrue(date(2017, 12, 26) in self.holidays)
+
+    def test_province_specific_days(self):
+        provMI = (holidays.IT(prov='MI', years=[2017]))
+        provRM = (holidays.IT(prov='RM', years=[2017]))
+        self.assertTrue("2017-12-08" in provMI)
+        self.assertTrue("2017-06-29" in provRM)
 
 
 if __name__ == "__main__":
