@@ -2335,8 +2335,8 @@ class Sweden(HolidayBase):
         # Add all the sundays of the year before adding the "real" holidays
         if self.include_sundays:
             first_day_of_year = date(year, 1, 1)
-            first_sunday_of_year = first_day_of_year \
-                                   + rd(days=SUNDAY - first_day_of_year.weekday())
+            first_sunday_of_year = first_day_of_year\
+                + rd(days=SUNDAY - first_day_of_year.weekday())
             cur_date = first_sunday_of_year
 
             while cur_date < date(year + 1, 1, 1):
