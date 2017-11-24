@@ -92,6 +92,10 @@ Czech               CZ       None
 Denmark             DK       None
 England                      None
 EuropeanCentralBank ECB,TAR  Trans-European Automated Real-time Gross Settlement (TARGET2)
+France              FRA      **Métropole** (default), Alsace-Moselle, Guadeloupe, Guyane,
+                             Martinique, Mayotte, Nouvelle-Calédonie, La Réunion,
+                             Polynésie Française, Saint-Barthélémy, Saint-Martin,
+                             Wallis-et-Futuna
 Germany             DE       BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL, SN, ST,
                              SH, TH
 Ireland                      None
