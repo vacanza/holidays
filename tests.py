@@ -3000,5 +3000,63 @@ class TestNorway(unittest.TestCase):
         self.assertFalse('2016-12-28' in self.holidays_with_sundays)
 
 
+class TestFinland(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.FI()
+
+    def test_fixed_holidays(self):
+        self.assertTrue(date(2017, 1, 1) in self.holidays)
+        self.assertEqual(self.holidays[date(2017, 1, 1)],
+                         "Uudenvuodenpäivä")
+
+        self.assertTrue(date(2017, 1, 6) in self.holidays)
+        self.assertEqual(self.holidays[date(2017, 1, 6)],
+                         "Loppiainen")
+
+        self.assertTrue(date(2017, 5, 1) in self.holidays)
+        self.assertEqual(self.holidays[date(2017, 5, 1)],
+                         "Vappu")
+
+        self.assertTrue(date(2017, 12, 6) in self.holidays)
+        self.assertEqual(self.holidays[date(2017, 12, 6)],
+                         "Itsenäisyyspäivä")
+
+        self.assertTrue(date(2017, 12, 25) in self.holidays)
+        self.assertEqual(self.holidays[date(2017, 12, 25)],
+                         "Joulupäivä")
+
+        self.assertTrue(date(2017, 12, 26) in self.holidays)
+        self.assertEqual(self.holidays[date(2017, 12, 26)],
+                         "Tapaninpäivä")
+
+    def test_relative_holidays(self):
+        self.assertTrue(date(2017, 4, 14) in self.holidays)
+        self.assertEqual(self.holidays[date(2017, 4, 14)],
+                         "Pitkäperjantai")
+
+        self.assertTrue(date(2017, 4, 16) in self.holidays)
+        self.assertEqual(self.holidays[date(2017, 4, 16)],
+                         "Pääsiäispäivä")
+
+        self.assertTrue(date(2017, 4, 17) in self.holidays)
+        self.assertEqual(self.holidays[date(2017, 4, 17)],
+                         "2. pääsiäispäivä")
+
+        self.assertTrue(date(2017, 5, 25) in self.holidays)
+        self.assertEqual(self.holidays[date(2017, 5, 25)],
+                         "Helatorstai")
+
+        self.assertTrue(date(2017, 11, 4) in self.holidays)
+        self.assertEqual(self.holidays[date(2017, 11, 4)],
+                         "Pyhäinpäivä")
+
+    def test_Juhannuspaiva(self):
+        self.assertTrue(date(2017, 6, 24) in self.holidays)
+        self.assertFalse(date(2017, 6, 20) in self.holidays)
+        self.assertTrue(date(2020, 6, 20) in self.holidays)
+        self.assertTrue(date(2021, 6, 26) in self.holidays)
+
+
 if __name__ == "__main__":
     unittest.main()
