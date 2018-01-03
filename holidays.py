@@ -1478,9 +1478,9 @@ class Australia(HolidayBase):
             self[date(year, 11, 1) + rd(weekday=TU)] = name
 
         # The Royal Queensland Show (Ekka)
-        """The Show starts on the first Friday of August - providing this is not prior to the 5th - 
-        in which case it will begin on the second Friday. The Wednesday during the show is a 
-        public holiday."""
+        """The Show starts on the first Friday of August - providing this is
+        not prior to the 5th - in which case it will begin on the second
+        Friday. The Wednesday during the show is a public holiday."""
         if self.prov == 'QLD':
             name = "The Royal Queensland Show"
             self[date(year, 8, 5) + rd(weekday=FR) + rd(weekday=WE)] = name
