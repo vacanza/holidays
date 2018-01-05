@@ -2264,7 +2264,8 @@ class TestAU(unittest.TestCase):
         for year, day in enumerate([15, 14, 12, 11], 2018):
             dt = date(year, 8, day)
             self.assertTrue(dt in self.state_hols['QLD'], dt)
-            self.assertEqual(self.state_hols['QLD'][dt], "The Royal Queensland Show")
+            self.assertEqual(self.state_hols['QLD'][dt],
+                             "The Royal Queensland Show")
 
     def test_christmas_day(self):
         self.holidays.observed = False
