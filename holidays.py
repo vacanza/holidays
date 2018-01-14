@@ -1878,6 +1878,53 @@ class Ireland(UnitedKingdom):
         HolidayBase.__init__(self, **kwargs)
 
 
+class Italy(HolidayBase):
+    PROVINCES = ['BA', 'BO', 'FI', 'MI', 'NA', 'PA', 'RM', 'TS', 'VI']
+
+    def __init__(self, **kwargs):
+        self.country = 'IT'
+        self.prov = kwargs.pop('prov', kwargs.pop('state', ''))
+        HolidayBase.__init__(self, **kwargs)
+        
+    def _populate(self, year):
+        self[date(year, 1, 1)] = "Capodanno"
+        self[date(year, 1, 6)] = "Epifania"
+        self[easter(year) + rd(weekday=MO)] = "Lunedì dell Angelo, Pasquetta"
+        self[date(year, 4, 25)] = "Liberation Day"
+        self[date(year, 5, 1)] = "Festa del Lavoro"
+        self[date(year, 6, 2)] = "Republic Day"
+        self[date(year, 8, 15)] = "Ferragosto"
+        self[date(year, 11, 1)] = "Tutti i santi"
+        self[date(year, 12, 8)] = "Immacolata Concezione"
+        self[date(year, 12, 25)] = "Natale"
+        self[date(year, 12, 26)] = "Santo Stefano"
+        
+        # Provinces festive day
+        if self.prov:
+            if self.prov == 'BA':
+                self[date(year, 12, 6)] = "Saint Nicholas Day"
+            elif self.prov == 'BO':
+                self[date(year, 10, 4)] = "Feast of Saint Petronius"
+            elif self.prov == 'FI':
+                self[date(year, 6, 24)] = "Saint John's Day"
+            elif self.prov == 'MI':
+                self[date(year, 12, 7)] = "Feast of Saint Ambrose"
+            elif self.prov == 'NA':
+                self[date(year, 9, 19)] = "Feast of Saint Gennaro"
+            elif self.prov == 'PA':
+                self[date(year, 7, 15)] = "Saint John's Day"
+            elif self.prov == 'RM':
+                self[date(year, 6, 29)] = "Saint Peter and Saint Paul Day"
+            elif self.prov == 'TS':
+                self[date(year, 11, 3)] = "Feast of Saint Giusto"
+            elif self.prov == 'VI':
+                self[date(year, 4, 25)] = "Feast of Saint Mark"
+
+
+class IT(Italy):
+    pass
+
+
 class Spain(HolidayBase):
     PROVINCES = ['AND', 'ARG', 'AST', 'CAN', 'CAM', 'CAL', 'CAT', 'CVA',
                  'EXT', 'GAL', 'IBA', 'ICA', 'MAD', 'MUR', 'NAV', 'PVA', 'RIO']
