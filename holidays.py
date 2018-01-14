@@ -17,7 +17,7 @@ from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
 import six
 
-__version__ = '0.9'
+__version__ = '0.9.1'
 
 
 MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY = range(7)
@@ -1510,7 +1510,7 @@ class AU(Australia):
 
 
 class Germany(HolidayBase):
-    """Official holidays for Germany in it's current form.
+    """Official holidays for Germany in its current form.
 
     This class doesn't return any holidays before 1990-10-03.
 
@@ -1528,7 +1528,7 @@ class Germany(HolidayBase):
     are some weired edge cases:
 
         - "Mariä Himmelfahrt" is only a holiday in Bavaria (BY) if your
-          municipality is mothly catholic which in term depends on census data.
+          municipality is mostly catholic which in term depends on census data.
           Since we don't have this data but most municipalities in Bavaria
           *are* mostly catholic, we count that as holiday for whole Bavaria.
         - There is an "Augsburger Friedensfest" which only exists in the town
@@ -1876,6 +1876,10 @@ class Ireland(UnitedKingdom):
     def __init__(self, **kwargs):
         self.country = 'Ireland'
         HolidayBase.__init__(self, **kwargs)
+
+
+class IE(Ireland):
+    pass
 
 
 class Spain(HolidayBase):

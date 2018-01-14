@@ -1,3 +1,12 @@
+Version 0.9.1
+=============
+
+Released January 14, 2018
+
+- Added tests for Irish calendar
+- minor fixes and refactoring
+
+
 Version 0.9
 ===========
 
@@ -14,6 +23,7 @@ Released January 14, 2018 (PR merging by dr-prodigy)
 - Add Swedish holidays (johanpalmqvist)
 - Add AU/Queensland The Ekka Show (kirpit)
 - Various fixes
+
 
 Version 0.8.1
 =============
