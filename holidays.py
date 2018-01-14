@@ -1394,10 +1394,12 @@ class Australia(HolidayBase):
             name = "Queen's Birthday"
             if self.prov == 'QLD':
                 if year == 2012:
-                    self[date(year, 10, 1)] = name
                     self[date(year, 6, 11)] = "Queen's Diamond Jubilee"
-                else:
+                if year < 2016 and year != 2012:
                     dt = date(year, 6, 1) + rd(weekday=MO(+2))
+                    self[dt] = name
+                else:
+                    dt = date(year, 10, 1) + rd(weekday=MO)
                     self[dt] = name
             elif self.prov == 'WA':
                 # by proclamation ?!?!

@@ -2243,16 +2243,29 @@ class TestAU(unittest.TestCase):
             self.assertEqual(self.state_hols['SA'][dt], "Adelaide Cup")
 
     def test_queens_birthday(self):
-        for dt in [date(2012, 10,  1), date(2013,  6, 10), date(2014,  6,  9),
-                   date(2015,  6,  8), date(2016,  6, 13)]:
-            self.assertTrue(dt in self.state_hols['QLD'], dt)
-            self.assertEqual(self.state_hols['QLD'][dt], "Queen's Birthday")
-        self.assertTrue(date(2012, 6, 11) in self.state_hols['QLD'])
+        # Western Australia
         for dt in [date(2012, 10,  1), date(2013, 9, 30), date(2014, 9, 29),
                    date(2015,  9, 28), date(2016, 9, 26), date(2017, 9, 25)]:
             self.assertTrue(dt in self.state_hols['WA'], dt)
             self.assertEqual(self.state_hols['WA'][dt], "Queen's Birthday")
-        self.assertTrue(date(2015, 6, 8) in self.state_hols['VIC'])
+        # Other states except Queensland
+        other_states = [
+            date(2010, 6, 14), date(2011, 6, 13), date(2012, 6, 11),
+            date(2013, 6, 10), date(2014, 6, 9), date(2015, 6, 8),
+            date(2016, 6, 13), date(2017, 6, 12), date(2018, 6, 11)]
+        for dt in other_states:
+            self.assertTrue(dt in self.state_hols['NSW'], dt)
+            self.assertTrue(dt in self.state_hols['VIC'], dt)
+            self.assertTrue(dt in self.state_hols['ACT'], dt)
+        # Queensland
+        qld_dates = other_states[:-3]
+        qld_dates.remove(date(2012, 6, 11))
+        qld_dates.extend([date(2012, 10, 1), date(2016, 10, 3),
+                          date(2017, 10, 2), date(2018, 10, 1)])
+        for dt in qld_dates:
+            self.assertTrue(dt in self.state_hols['QLD'], dt)
+            self.assertEqual(self.state_hols['QLD'][dt], "Queen's Birthday")
+        self.assertTrue(date(2012, 6, 11) in self.state_hols['QLD'])
 
     def test_picnic_day(self):
         for dt in [date(2015, 8,  3), date(2016,  8, 1)]:
