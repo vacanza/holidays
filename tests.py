@@ -3464,5 +3464,49 @@ class TestSI(unittest.TestCase):
         self.assertFalse(date(2016, 1, 2) in self.holidays)
 
 
+class TestIE(unittest.TestCase):
+
+    def setUp(self):
+        self.irish_holidays = holidays.IE()
+
+    def test_new_year_day(self):
+        self.assertTrue('2017-01-02' in self.irish_holidays)
+        self.assertTrue('2018-01-01' in self.irish_holidays)
+
+    def test_st_patricks_day(self):
+        self.assertTrue('2017-03-17' in self.irish_holidays)
+        self.assertTrue('2018-03-17' in self.irish_holidays)
+
+    def test_easter_monday(self):
+        self.assertTrue('2017-04-17' in self.irish_holidays)
+        self.assertTrue('2018-04-02' in self.irish_holidays)
+
+    def test_may_bank_holiday(self):
+        self.assertTrue('2017-05-01' in self.irish_holidays)
+        self.assertTrue('2018-05-07' in self.irish_holidays)
+
+    def test_june_bank_holiday(self):
+        self.assertTrue('2017-06-05' in self.irish_holidays)
+        self.assertTrue('2018-06-04' in self.irish_holidays)
+
+    def test_august_bank_holiday(self):
+        self.assertTrue('2017-08-07' in self.irish_holidays)
+        self.assertTrue('2018-08-06' in self.irish_holidays)
+
+    def test_october_bank_holiday(self):
+        self.assertTrue('2017-10-30' in self.irish_holidays)
+        self.assertTrue('2018-10-29' in self.irish_holidays)
+
+    def test_christmas_period(self):
+        self.assertTrue('2015-12-25' in self.irish_holidays)
+        self.assertTrue('2015-12-28' in self.irish_holidays)
+        self.assertTrue('2016-12-26' in self.irish_holidays)
+        self.assertTrue('2016-12-27' in self.irish_holidays)
+        self.assertTrue('2017-12-25' in self.irish_holidays)
+        self.assertTrue('2017-12-26' in self.irish_holidays)
+        self.assertTrue('2018-12-25' in self.irish_holidays)
+        self.assertTrue('2018-12-26' in self.irish_holidays)
+
+
 if __name__ == "__main__":
     unittest.main()
