@@ -4,5 +4,9 @@ MANIFEST
 .coverage
 *.egg-info
 *.pyc
+
 *.sqlite
 /.vs
+=======
+.idea
+

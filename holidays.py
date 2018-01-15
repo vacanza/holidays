@@ -2919,3 +2919,4 @@ class Croatia(HolidayBase):
 
 class HR(Croatia):
     pass
+

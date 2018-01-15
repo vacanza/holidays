@@ -85,6 +85,7 @@ Country             Abbr     Provinces/States Available
 =================== ======== =============================================================
 Australia           AU       prov = **ACT** (default), NSW, NT, QLD, SA, TAS, VIC, WA
 Austria             AT       prov = B, K, N, O, S, ST, T, V, **W** (default)
+Belgium             BE       None
 Canada              CA       prov = AB, BC, MB, NB, NL, NS, NT, NU, **ON** (default),
                              PE, QC, SK, YU
 Colombia            CO       None
@@ -93,21 +94,31 @@ Czech               CZ       None
 Denmark             DK       None
 England                      None
 EuropeanCentralBank ECB,TAR  Trans-European Automated Real-time Gross Settlement (TARGET2)
+France              FRA      **Métropole** (default), Alsace-Moselle, Guadeloupe, Guyane,
+                             Martinique, Mayotte, Nouvelle-Calédonie, La Réunion,
+                             Polynésie Française, Saint-Barthélémy, Saint-Martin,
+                             Wallis-et-Futuna
 Germany             DE       BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL, SN, ST,
                              SH, TH
 Ireland                      None
 Isle of Man                  None
+Italy               IT       prov = MI, RM
+Japan               JP       None
 Mexico              MX       None
 Netherlands         NL       None
 NewZealand          NZ       prov = NTL, AUK, TKI, HKB, WGN, MBH, NSN, CAN, STC, WTL,
                              OTA, STL, CIT
 Northern Ireland             None
 Norway              NO       None
+Polish              PL       None
 Portugal            PT       None
 PortugalExt         PTE      *Portugal plus extended days most people have off*
 Scotland                     None
+Slovenia            SI       None
+South Africa        ZA       None
 Spain               ES       prov = AND, ARG, AST, CAN, CAM, CAL, CAT, CVA, EXT, GAL,
                              IBA, ICA, MAD, MUR, NAV, PVA, RIO
+Sweden              SE       None
 UnitedKingdom       UK       None
 UnitedStates        US       state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL, GA,
                              GU, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MH, MA, MI,
@@ -205,7 +216,7 @@ More Examples
     # Let's print out the holidays in 2014 specific to California, USA
 
     >>> for date, name in sorted(holidays.US(state='CA', years=2014).items()):
-    >>>     print date, name
+    >>>     print(date, name)
     2014-01-01 New Year's Day
     2014-01-20 Martin Luther King, Jr. Day
     2014-02-15 Susan B. Anthony Day
