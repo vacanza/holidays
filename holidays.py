@@ -17,7 +17,7 @@ from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
 import six
 
-__version__ = '0.8.1'
+__version__ = '0.9.1'
 
 
 MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY = range(7)
@@ -68,7 +68,7 @@ class HolidayBase(dict):
         elif isinstance(key, six.string_types):
             try:
                 key = parse(key).date()
-            except:
+            except (ValueError, OverflowError):
                 raise ValueError("Cannot parse date from string '%s'" % key)
         else:
             raise TypeError("Cannot convert type '%s' to date." % type(key))
@@ -1394,10 +1394,12 @@ class Australia(HolidayBase):
             name = "Queen's Birthday"
             if self.prov == 'QLD':
                 if year == 2012:
-                    self[date(year, 10, 1)] = name
                     self[date(year, 6, 11)] = "Queen's Diamond Jubilee"
-                else:
+                if year < 2016 and year != 2012:
                     dt = date(year, 6, 1) + rd(weekday=MO(+2))
+                    self[dt] = name
+                else:
+                    dt = date(year, 10, 1) + rd(weekday=MO)
                     self[dt] = name
             elif self.prov == 'WA':
                 # by proclamation ?!?!
@@ -1477,6 +1479,14 @@ class Australia(HolidayBase):
             name = "Melbourne Cup"
             self[date(year, 11, 1) + rd(weekday=TU)] = name
 
+        # The Royal Queensland Show (Ekka)
+        # The Show starts on the first Friday of August - providing this is
+        # not prior to the 5th - in which case it will begin on the second
+        # Friday. The Wednesday during the show is a public holiday.
+        if self.prov == 'QLD':
+            name = "The Royal Queensland Show"
+            self[date(year, 8, 5) + rd(weekday=FR) + rd(weekday=WE)] = name
+
         # Christmas Day
         name = "Christmas Day"
         dec25 = date(year, 12, 25)
@@ -1500,7 +1510,7 @@ class AU(Australia):
 
 
 class Germany(HolidayBase):
-    """Official holidays for Germany in it's current form.
+    """Official holidays for Germany in its current form.
 
     This class doesn't return any holidays before 1990-10-03.
 
@@ -1518,7 +1528,7 @@ class Germany(HolidayBase):
     are some weired edge cases:
 
         - "Mariä Himmelfahrt" is only a holiday in Bavaria (BY) if your
-          municipality is mothly catholic which in term depends on census data.
+          municipality is mostly catholic which in term depends on census data.
           Since we don't have this data but most municipalities in Bavaria
           *are* mostly catholic, we count that as holiday for whole Bavaria.
         - There is an "Augsburger Friedensfest" which only exists in the town
@@ -1582,6 +1592,11 @@ class Germany(HolidayBase):
             self[date(year, 10, 3)] = 'Tag der Deutschen Einheit'
 
         if self.prov in ('BB', 'MV', 'SN', 'ST', 'TH'):
+            self[date(year, 10, 31)] = 'Reformationstag'
+
+        # in 2017 all states got the Reformationstag (500th anniversary of
+        # Luther's thesis)
+        if year == 2017:
             self[date(year, 10, 31)] = 'Reformationstag'
 
         if self.prov in ('BW', 'BY', 'NW', 'RP', 'SL'):
@@ -1776,7 +1791,7 @@ class UnitedKingdom(HolidayBase):
         # October Bank Holiday (last Monday in October)
         if self.country == 'Ireland':
             name = "October Bank Holiday"
-            self[date(year, 8, 31) + rd(weekday=MO(-1))] = name
+            self[date(year, 10, 31) + rd(weekday=MO(-1))] = name
 
         # St. Andrew's Day
         if self.country in ('UK', 'Scotland'):
@@ -1863,6 +1878,10 @@ class Ireland(UnitedKingdom):
         HolidayBase.__init__(self, **kwargs)
 
 
+class IE(Ireland):
+    pass
+
+
 class Spain(HolidayBase):
     PROVINCES = ['AND', 'ARG', 'AST', 'CAN', 'CAM', 'CAL', 'CAT', 'CVA',
                  'EXT', 'GAL', 'IBA', 'ICA', 'MAD', 'MUR', 'NAV', 'PVA', 'RIO']
@@ -1874,7 +1893,7 @@ class Spain(HolidayBase):
 
     def _populate(self, year):
         self[date(year, 1, 1)] = "Año nuevo"
-        self[date(year, 1, 6)] = "Epifanía del Senyor"
+        self[date(year, 1, 6)] = "Epifanía del Señor"
         if self.prov and self.prov in ['CVA', 'MUR', 'MAD', 'NAV', 'PVA']:
             self[date(year, 3, 19)] = "San José"
         if self.prov and self.prov != 'CAT':
@@ -1885,7 +1904,8 @@ class Spain(HolidayBase):
         self[date(year, 5, 1)] = "Día del Trabajador"
         if self.prov and self.prov in ['CAT', 'GAL']:
             self[date(year, 6, 24)] = "San Juan"
-        self[date(year, 8, 15)] = "Assunción de la Virgen"
+        self[date(year, 8, 15)] = "Asunción de la Virgen"
+        self[date(year, 10, 12)] = "Día de la Hispanidad"
         self[date(year, 11, 1)] = "Todos los Santos"
         self[date(year, 12, 6)] = "Día de la constitución Española"
         self[date(year, 12, 8)] = "La Inmaculada Concepción"
@@ -2006,6 +2026,44 @@ class CZ(Czech):
     pass
 
 
+class Polish(HolidayBase):
+    # https://pl.wikipedia.org/wiki/Dni_wolne_od_pracy_w_Polsce
+
+    def __init__(self, **kwargs):
+        self.country = 'PL'
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        self[date(year, 1, 1)] = 'Nowy Rok'
+        if year >= 2011:
+            self[date(year, 1, 6)] = 'Święto Trzech Króli'
+
+        e = easter(year)
+        self[e] = 'Niedziela Wielkanocna'
+        self[e + rd(days=1)] = 'Poniedziałek Wielkanocny'
+
+        if year >= 1950:
+            self[date(year, 5, 1)] = 'Święto Państwowe'
+        if year >= 1919:
+            self[date(year, 5, 3)] = 'Święto Narodowe Trzeciego Maja'
+
+        self[e + rd(days=49)] = 'Zielone Świątki'
+        self[e + rd(days=60)] = 'Dzień Bożego Ciała'
+
+        self[date(year, 8, 15)] = 'Wniebowzięcie Najświętszej Marii Panny'
+
+        self[date(year, 11, 1)] = 'Uroczystość Wszystkich świętych'
+        if (1937 <= year <= 1945) or year >= 1989:
+            self[date(year, 11, 11)] = 'Narodowe Święto Niepodległości'
+
+        self[date(year, 12, 25)] = 'Boże Narodzenie (pierwszy dzień)'
+        self[date(year, 12, 26)] = 'Boże Narodzenie (drugi dzień)'
+
+
+class PL(Polish):
+    pass
+
+
 class Portugal(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Portugal
 
@@ -2074,7 +2132,7 @@ class Netherlands(HolidayBase):
     SUNDAY = 6
 
     def __init__(self, **kwargs):
-        # http://www.iamsterdam.com/en/visiting/plan-your-trip/practical-info/public-holidays
+        # http://www.iamsterdam.com/en/plan-your-trip/practical-info/public-holidays
         self.country = "NL"
         HolidayBase.__init__(self, **kwargs)
 
@@ -2106,7 +2164,7 @@ class Netherlands(HolidayBase):
         self[date(year, 12, 26)] = "Tweede Kerstdag"
 
         # Liberation day
-        if year >= 1947 and year <= 2000:
+        if year >= 1945 and year % 5 == 0:
             self[date(year, 5, 5)] = "Bevrijdingsdag"
 
         # Kingsday
@@ -2227,57 +2285,636 @@ class NO(Norway):
     pass
 
 
-class Croatia(HolidayBase):
+class Italy(HolidayBase):
+    PROVINCES = ['MI', 'RM']
 
     def __init__(self, **kwargs):
-        # https://www.zakon.hr/z/372/Zakon-o-blagdanima,-spomendanima-i-neradanim-danima-u-Republici-Hrvatskoj
-        # https://hr.wikipedia.org/wiki/Blagdani_i_spomendani_u_Hrvatskoj
-        self.country = "HR"
+        self.country = 'IT'
+        self.prov = kwargs.pop('prov', kwargs.pop('state', ''))
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
-        # New Year
-        self[date(year, 1, 1)] = "Nova godina"
+        self[date(year, 1, 1)] = "Capodanno"
+        self[date(year, 1, 6)] = "Epifania del Signore"
+        self[easter(year)] = "Pasqua di Resurrezione"
+        self[easter(year) + rd(weekday=MO)] = "Lunedì dell'Angelo"
+        if year >= 1946:
+            self[date(year, 4, 25)] = "Festa della Liberazione"
+        self[date(year, 5, 1)] = "Festa dei Lavoratori"
+        if year >= 1948:
+            self[date(year, 6, 2)] = "Festa della Repubblica"
+        self[date(year, 8, 15)] = "Assunzione della Vergine"
+        self[date(year, 11, 1)] = "Tutti i Santi"
+        self[date(year, 12, 8)] = "Immacolata Concezione"
+        self[date(year, 12, 25)] = "Natale"
+        self[date(year, 12, 26)] = "Santo Stefano"
+        # Provinces festive day
+        # TODO: add all provinces' saints
+        if self.prov:
+            if self.prov == 'MI':
+                self[date(year, 12, 7)] = "Sant'Ambrogio"
+            if self.prov == 'RM':
+                self[date(year, 6, 29)] = "Santi Pietro e Paolo"
 
-        # Sveta tri kralja
-        self[date(year, 1, 6)] = "Sveta tri kralja"
+
+class IT(Italy):
+    pass
+
+
+class Sweden(HolidayBase):
+    """
+    Swedish holidays.
+    Note that holidays falling on a sunday are "lost",
+    it will not be moved to another day to make up for the collision.
+    In Sweden, ALL sundays are considered a holiday
+    (https://sv.wikipedia.org/wiki/Helgdagar_i_Sverige).
+    Initialize this class with include_sundays=False
+    to not include sundays as a holiday.
+    Primary sources:
+    https://sv.wikipedia.org/wiki/Helgdagar_i_Sverige and
+    http://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/lag-1989253-om-allmanna-helgdagar_sfs-1989-253
+    """
+
+    def __init__(self, include_sundays=True, **kwargs):
+        """
+        :param include_sundays: Whether to consider sundays as a holiday
+        (which they are in Sweden)
+        :param kwargs:
+        """
+        self.country = "SE"
+        self.include_sundays = include_sundays
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # Add all the sundays of the year before adding the "real" holidays
+        if self.include_sundays:
+            first_day_of_year = date(year, 1, 1)
+            first_sunday_of_year = first_day_of_year\
+                + rd(days=SUNDAY - first_day_of_year.weekday())
+            cur_date = first_sunday_of_year
+
+            while cur_date < date(year + 1, 1, 1):
+                assert cur_date.weekday() == SUNDAY
+
+                self[cur_date] = "Söndag"
+                cur_date += rd(days=7)
+
+        # ========= Static holidays =========
+        self[date(year, 1, 1)] = "Nyårsdagen"
+
+        self[date(year, 1, 6)] = "Trettondedag jul"
+
+        # Source: https://sv.wikipedia.org/wiki/F%C3%B6rsta_maj
+        if year >= 1939:
+            self[date(year, 5, 1)] = "Första maj"
+
+        # Source: https://sv.wikipedia.org/wiki/Sveriges_nationaldag
+        if year >= 2005:
+            self[date(year, 6, 6)] = "Sveriges nationaldag"
+
+        self[date(year, 12, 24)] = "Julafton"
+        self[date(year, 12, 25)] = "Juldagen"
+        self[date(year, 12, 26)] = "Annandag jul"
+        self[date(year, 12, 31)] = "Nyårsafton"
+
+        # ========= Moving holidays =========
+        e = easter(year)
+        maundy_thursday = e - rd(days=3)
+        good_friday = e - rd(days=2)
+        easter_saturday = e - rd(days=1)
+        resurrection_sunday = e
+        easter_monday = e + rd(days=1)
+        ascension_thursday = e + rd(days=39)
+        pentecost = e + rd(days=49)
+        pentecost_day_two = e + rd(days=50)
+
+        assert maundy_thursday.weekday() == THURSDAY
+        assert good_friday.weekday() == FRIDAY
+        assert easter_saturday.weekday() == SATURDAY
+        assert resurrection_sunday.weekday() == SUNDAY
+        assert easter_monday.weekday() == MONDAY
+        assert ascension_thursday.weekday() == THURSDAY
+        assert pentecost.weekday() == SUNDAY
+        assert pentecost_day_two.weekday() == MONDAY
+
+        self[good_friday] = "Långfredagen"
+        self[resurrection_sunday] = "Påskdagen"
+        self[easter_monday] = "Annandag påsk"
+        self[ascension_thursday] = "Kristi himmelsfärdsdag"
+        self[pentecost] = "Pingstdagen"
+        if year <= 2004:
+            self[pentecost_day_two] = "Annandag pingst"
+
+        # Midsummer evening. Friday between June 19th and June 25th
+        self[date(year, 6, 19) + rd(weekday=FR)] = "Midsommarafton"
+
+        # Midsummer day. Saturday between June 20th and June 26th
+        if year >= 1953:
+            self[date(year, 6, 20) + rd(weekday=SA)] = "Midsommardagen"
+        else:
+            self[date(year, 6, 24)] = "Midsommardagen"
+            # All saints day. Friday between October 31th and November 6th
+        self[date(year, 10, 31) + rd(weekday=SA)] = "Alla helgons dag"
+
+        if year <= 1953:
+            self[date(year, 3, 25)] = "Jungfru Marie bebådelsedag"
+
+
+class SE(Sweden):
+    pass
+
+
+class Japan(HolidayBase):
+    # https://en.wikipedia.org/wiki/Public_holidays_in_Japan
+
+    def __init__(self, **kwargs):
+        self.country = 'JP'
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        if year < 1949 or year > 2050:
+            raise NotImplementedError
+
+        # New Year's Day
+        self[date(year, 1, 1)] = "元日"
+
+        # Coming of Age Day
+        if year <= 1999:
+            self[date(year, 1, 15)] = "成人の日"
+        else:
+            self[date(year, 1, 1) + rd(weekday=MO(+2))] = "成人の日"
+
+        # Foundation Day
+        self[date(year, 2, 11)] = "建国記念の日"
+
+        # Vernal Equinox Day
+        self[self._vernal_equinox_day(year)] = "春分の日"
+
+        # The former Emperor's Birthday, Greenery Day or Showa Day
+        if year <= 1988:
+            self[date(year, 4, 29)] = "天皇誕生日"
+        elif year <= 2006:
+            self[date(year, 4, 29)] = "みどりの日"
+        else:
+            self[date(year, 4, 29)] = "昭和の日"
+
+        # Constitution Memorial Day
+        self[date(year, 5, 3)] = "憲法記念日"
+
+        # Greenery Day
+        if year >= 2007:
+            self[date(year, 5, 4)] = "みどりの日"
+
+        # Children's Day
+        self[date(year, 5, 5)] = "こどもの日"
+
+        # Marine Day
+        if year >= 1996 and year <= 2002:
+            self[date(year, 7, 20)] = "海の日"
+        elif year >= 2003:
+            self[date(year, 7, 1) + rd(weekday=MO(+3))] = "海の日"
+
+        # Mountain Day
+        if year >= 2016:
+            self[date(year, 8, 11)] = "山の日"
+
+        # Respect for the Aged Day
+        if year >= 1966 and year <= 2002:
+            self[date(year, 9, 15)] = "敬老の日"
+        elif year >= 2003:
+            self[date(year, 9, 1) + rd(weekday=MO(+3))] = "敬老の日"
+
+        # Autumnal Equinox Day
+        self[self._autumnal_equinox_day(year)] = "秋分の日"
+
+        # Health and Sports Day
+        if year >= 1966 and year <= 1999:
+            self[date(year, 10, 10)] = "体育の日"
+        elif year >= 2000:
+            self[date(year, 10, 1) + rd(weekday=MO(+2))] = "体育の日"
+
+        # Culture Day
+        self[date(year, 11, 3)] = "文化の日"
+
+        # Labour Thanksgiving Day
+        self[date(year, 11, 23)] = "勤労感謝の日"
+
+        # The Emperor's Birthday
+        if year >= 1989:
+            self[date(year, 12, 23)] = "天皇誕生日"
+
+        # A weekday between national holidays becomes a holiday too (国民の休日)
+        self._add_national_holidays(year)
+
+        # Substitute holidays
+        self._add_substitute_holidays(year)
+
+    def _vernal_equinox_day(self, year):
+        day = 20
+        if year % 4 == 0:
+            if year <= 1956:
+                day = 21
+            elif year >= 2092:
+                day = 19
+        elif year % 4 == 1:
+            if year <= 1989:
+                day = 21
+        elif year % 4 == 2:
+            if year <= 2022:
+                day = 21
+        elif year % 4 == 3:
+            if year <= 2055:
+                day = 21
+        return date(year, 3, day)
+
+    def _autumnal_equinox_day(self, year):
+        day = 22
+        if year % 4 == 0:
+            if year <= 2008:
+                day = 23
+        elif year % 4 == 1:
+            if year <= 2041:
+                day = 23
+        elif year % 4 == 2:
+            if year <= 2074:
+                day = 23
+        elif year % 4 == 3:
+            if year <= 1979:
+                day = 24
+            else:
+                day = 23
+        return date(year, 9, day)
+
+    def _add_national_holidays(self, year):
+        if year in (1993, 1999, 2004, 1988, 1994, 2005, 1989, 1995, 2000, 2006,
+                    1990, 2001, 1991, 1996, 2002):
+            self[date(year, 5, 4)] = "国民の休日"
+
+        if year in (2032, 2049, 2060, 2077, 2088, 2094):
+            self[date(year, 9, 21)] = "国民の休日"
+
+        if year in (2009, 2015, 2026, 2037, 2043, 2054, 2065, 2071, 2099):
+            self[date(year, 9, 22)] = "国民の休日"
+
+    def _add_substitute_holidays(self, year):
+        table = (
+            (1, 2, (1978, 1984, 1989, 1995, 2006, 2012, 2017, 2023, 2034, 2040,
+                    2045)),
+            (1, 16, (1978, 1984, 1989, 1995)),
+            (2, 12, (1979, 1990, 1996, 2001, 2007, 2018, 2024, 2029, 2035,
+                     2046)),
+            (3, 21, (1988, 2005, 2016, 2033, 2044, 2050)),
+            (3, 22, (1982, 1999, 2010, 2027)),
+            (4, 30, (1973, 1979, 1984, 1990, 2001, 2007, 2012, 2018, 2029,
+                     2035, 2040, 2046)),
+            (5, 4, (1981, 1987, 1992, 1998)),
+            (5, 6, (1985, 1991, 1996, 2002, 2013, 2019, 2024, 2030, 2041, 2047,
+                    2008, 2014, 2025, 2031, 2036, 2042, 2009, 2015, 2020, 2026,
+                    2037, 2043, 2048)),
+            (7, 21, (1997,)),
+            (8, 12, (2019, 2024, 2030, 2041, 2047)),
+            (9, 16, (1974, 1985, 1991, 1996, 2002)),
+            (9, 23, (2024,)),
+            (9, 24, (1973, 1984, 1990, 2001, 2007, 2018, 2029, 2035, 2046)),
+            (10, 11, (1976, 1982, 1993, 1999)),
+            (11, 4, (1974, 1985, 1991, 1996, 2002, 2013, 2019, 2024, 2030,
+                     2041, 2047)),
+            (11, 24, (1975, 1980, 1986, 1997, 2003, 2008, 2014, 2025, 2031,
+                      2036, 2042)),
+            (12, 24, (1990, 2001, 2007, 2012, 2018)),
+        )
+        for holiday in table:
+            month = holiday[0]
+            day = holiday[1]
+            years = holiday[2]
+            if year in years:
+                self[date(year, month, day)] = "振替休日"
+
+
+class JP(Japan):
+    pass
+
+
+class France(HolidayBase):
+    """Official French holidays.
+
+    Some provinces have specific holidays, only those are included in the
+    PROVINCES, because these provinces have different administrative status,
+    which makes it difficult to enumerate.
+
+    For religious holidays usually happening on Sundays (Easter, Pentecost),
+    only the following Monday is considered a holiday.
+
+    Primary sources:
+        https://fr.wikipedia.org/wiki/Fêtes_et_jours_fériés_en_France
+        https://www.service-public.fr/particuliers/vosdroits/F2405
+    """
+
+    PROVINCES = ['Métropole', 'Alsace-Moselle', 'Guadeloupe', 'Guyane',
+                 'Martinique', 'Mayotte', 'Nouvelle-Calédonie', 'La Réunion',
+                 'Polynésie Française', 'Saint-Barthélémy', 'Saint-Martin',
+                 'Wallis-et-Futuna']
+
+    def __init__(self, **kwargs):
+        self.country = 'FR'
+        self.prov = kwargs.pop('prov', 'Métropole')
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # Civil holidays
+        if year > 1810:
+            self[date(year, 1, 1)] = "Jour de l'an"
+
+        if year > 1919:
+            name = 'Fête du Travail'
+            if year <= 1948:
+                name += ' et de la Concorde sociale'
+            self[date(year, 5, 1)] = name
+
+        if (year >= 1953 and year <= 1959) or year > 1981:
+            self[date(year, 5, 8)] = 'Armistice 1945'
+
+        if year >= 1880:
+            self[date(year, 7, 14)] = 'Fête nationale'
+
+        if year >= 1918:
+            self[date(year, 11, 11)] = 'Armistice 1918'
+
+        # Religious holidays
+        if self.prov in ['Alsace-Moselle', 'Guadeloupe', 'Guyane',
+                         'Martinique', 'Polynésie Française']:
+            self[easter(year) - rd(days=2)] = 'Vendredi saint'
+
+        if self.prov == 'Alsace-Moselle':
+            self[date(year, 12, 26)] = 'Deuxième jour de Noël'
+
+        if year >= 1886:
+            self[easter(year) + rd(days=1)] = 'Lundi de Pâques'
+            self[easter(year) + rd(days=50)] = 'Lundi de Pentecôte'
+
+        if year >= 1802:
+            self[easter(year) + rd(days=39)] = 'Ascension'
+            self[date(year, 8, 15)] = 'Assomption'
+            self[date(year, 11, 1)] = 'Toussaint'
+
+            name = 'Noël'
+            if self.prov == 'Alsace-Moselle':
+                name = 'Premier jour de ' + name
+            self[date(year, 12, 25)] = name
+
+        # Non-metropolitan holidays (starting dates missing)
+        if self.prov == 'Mayotte':
+            self[date(year, 4, 27)] = "Abolition de l'esclavage"
+
+        if self.prov == 'Wallis-et-Futuna':
+            self[date(year, 4, 28)] = 'Saint Pierre Chanel'
+
+        if self.prov == 'Martinique':
+            self[date(year, 5, 22)] = "Abolition de l'esclavage"
+
+        if self.prov in ['Guadeloupe', 'Saint-Martin']:
+            self[date(year, 5, 27)] = "Abolition de l'esclavage"
+
+        if self.prov == 'Guyane':
+            self[date(year, 6, 10)] = "Abolition de l'esclavage"
+
+        if self.prov == 'Polynésie Française':
+            self[date(year, 6, 29)] = "Fête de l'autonomie"
+
+        if self.prov in ['Guadeloupe', 'Martinique']:
+            self[date(year, 7, 21)] = 'Fête Victor Schoelcher'
+
+        if self.prov == 'Wallis-et-Futuna':
+            self[date(year, 7, 29)] = 'Fête du Territoire'
+
+        if self.prov == 'Nouvelle-Calédonie':
+            self[date(year, 9, 24)] = 'Fête de la Citoyenneté'
+
+        if self.prov == 'Saint-Barthélémy':
+            self[date(year, 10, 9)] = "Abolition de l'esclavage"
+
+        if self.prov == 'La Réunion' and year >= 1981:
+            self[date(year, 12, 20)] = "Abolition de l'esclavage"
+
+
+# FR already exists (Friday), we don't want to mess it up
+class FRA(France):
+    pass
+
+
+class Belgium(HolidayBase):
+    """
+    https://www.belgium.be/nl/over_belgie/land/belgie_in_een_notendop/feestdagen
+    https://nl.wikipedia.org/wiki/Feestdagen_in_Belgi%C3%AB
+    """
+    def __init__(self, **kwargs):
+        self.country = "BE"
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # New years
+        self[date(year, 1, 1)] = "Nieuwjaarsdag"
+
+        easter_date = easter(year)
 
         # Easter
-        e = easter(year)
-        self[e] = "Uskrs"
+        self[easter_date] = "Pasen"
 
-        # Easter Monday
-        self[e + rd(days=1)] = "Easter Monday"
+        # Second easter day
+        self[easter_date + rd(days=1)] = "Paasmaandag"
 
-        # Corpus Christi
-        self[e + rd(days=60)] = "Tijelovo"
+        # Ascension day
+        self[easter_date + rd(days=39)] = "O.L.H. Hemelvaart"
 
-        # 1 May (Labour Day)
-        self[date(year, 5, 1)] = "Praznik rada"
+        # Pentecost
+        self[easter_date + rd(days=49)] = "Pinksteren"
 
-        # Day of Antifascist Struggle
-        self[date(year, 6, 22)] = "Dan antifašističke borbe"
+        # Pentecost monday
+        self[easter_date + rd(days=50)] = "Pinkstermaandag"
 
-        # Statehood Day
-        self[date(year, 6, 25)] = "Dan državnosti"
+        # International Workers' Day
+        self[date(year, 5, 1)] = "Dag van de Arbeid"
 
-        # Homeland Thanksgiving Day
-        self[date(year, 8, 5)] = "Dan pobjede i domovinske zahvalnosti"
+        # Belgian National Day
+        self[date(year, 7, 21)] = "Nationale feestdag"
 
         # Assumption of Mary
-        self[date(year, 8, 15)] = "Velika Gospa"
+        self[date(year, 8, 15)] = "O.L.V. Hemelvaart"
 
-        # Independence Day
-        self[date(year, 10, 8)] = "Dan neovisnosti"
+        # All Saints' Day
+        self[date(year, 11, 1)] = "Allerheiligen"
 
-        # All Saints’ Day
-        self[date(year, 11, 1)] = "Svi sveti"
+        # Armistice Day
+        self[date(year, 11, 11)] = "Wapenstilstand"
 
-        # Christmas Day
-        self[date(year, 12, 25)] = "Božić"
+        # First christmas
+        self[date(year, 12, 25)] = "Kerstmis"
 
-        # St Stephen's Day'
-        self[date(year, 12, 26)] = "Sv. Stjepan"
+
+class BE(Belgium):
+    pass
+
+
+class SouthAfrica(HolidayBase):
+    def __init__(self, **kwargs):
+        # http://www.gov.za/about-sa/public-holidays
+        self.country = "ZA"
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        self[date(year, 1, 1)] = "New Year's Day"
+        self[date(year, 3, 21)] = "Human Rights Day"
+
+        e = easter(year)
+        good_friday = e - rd(days=2)
+        easter_monday = e + rd(days=1)
+        self[good_friday] = "Good Friday"
+        self[easter_monday] = "Family Day"
+
+        self[date(year, 4, 27)] = "Freedom Day"
+        self[date(year, 5, 1)] = "Worker's Day"
+        self[date(year, 6, 16)] = "Youth Day"
+        self[date(year, 8, 9)] = "National Women's Day"
+        self[date(year, 9, 24)] = "Heritage Day"
+        self[date(year, 12, 16)] = "Day of Reconciliation"
+        self[date(year, 12, 25)] = "Christmas Day"
+        self[date(year, 12, 26)] = "Day of Goodwill"
+
+        for k, v in list(self.items()):
+            if self.observed and k.weekday() == 6:
+                self[k + rd(days=1)] = v + " (Observed)"
+
+
+class ZA(SouthAfrica):
+    pass
+
+
+class Slovenia(HolidayBase):
+    """
+    Contains all work-free public holidays in Slovenia.
+    No holidays are returned before year 1991 when Slovenia became independent
+    country. Before that Slovenia was part of Socialist federal republic of
+    Yugoslavia.
+
+    List of holidays (including those that are not work-free:
+    https://en.wikipedia.org/wiki/Public_holidays_in_Slovenia
+    """
+
+    def __init__(self, **kwargs):
+        self.country = 'SI'
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        if year <= 1990:
+            return
+
+        if year > 1991:
+            self[date(year, 1, 1)] = "novo leto"
+
+            # Between 2012 and 2017 2nd January was not public holiday,
+            # or at least not work-free day
+            if year < 2013 or year > 2016:
+                self[date(year, 1, 2)] = "novo leto"
+
+            # Prešeren's day, slovenian cultural holiday
+            self[date(year, 2, 8)] = "Prešernov dan"
+
+            # Easter monday is the only easter related work-free day
+            easter_day = easter(year)
+            self[easter_day + rd(days=1)] = "Velikonočni ponedeljek"
+
+            # Day of uprising against occupation
+            self[date(year, 4, 27)] = "dan upora proti okupatorju"
+
+            # Labour day, two days of it!
+            self[date(year, 5, 1)] = "praznik dela"
+            self[date(year, 5, 2)] = "praznik dela"
+
+            # Statehood day
+            self[date(year, 6, 25)] = "dan državnosti"
+
+            # Assumption day
+            self[date(year, 8, 15)] = "Marijino vnebovzetje"
+
+            # Reformation day
+            self[date(year, 10, 31)] = "dan reformacije"
+
+            # Remembrance day
+            self[date(year, 11, 1)] = "dan spomina na mrtve"
+
+            # Christmas
+            self[date(year, 12, 25)] = "Božič"
+
+            # Day of independence and unity
+            self[date(year, 12, 26)] = "dan samostojnosti in enotnosti"
+
+
+class SI(Slovenia):
+    pass
+
+
+class Croatia(HolidayBase):
+    """
+    Contains all work-free public holidays in Croatia.
+    No holidays are returned before year 1991 when Croatia became independent
+    country. Before that Croatia was part of Socialist federal republic of
+    Yugoslavia.
+
+    List of holidays (including those that are not work-free:
+    https://en.wikipedia.org/wiki/Public_holidays_in_Croatia
+    """
+
+    def __init__(self, **kwargs):
+        self.country = 'HR'
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        if year <= 1990:
+            return
+
+        if year > 1991:
+            # Ney Year
+            self[date(year, 1, 1)] = "Nova Godina"
+
+            #Epiphany
+            self[date(year, 1, 6)] = "Bogojavljenje, Sveta tri kralja"
+
+            # Easter
+            self[easter_date] = "Uskrs"
+
+            # Easter Monday
+            easter_day = easter(year)
+            self[easter_day + rd(days=1)] = "Uskrsni ponedjeljak"
+
+            # International Workers' Day
+            self[date(year, 5, 1)] = "Međunarodni praznik rada"
+
+            # Corpus Christi
+            self[easter_day + rd(days=60)] = 'Tijelovo'
+
+            # Anti-Fascist Struggle Day
+            self[date(year, 6, 22)] = 'Dan antifašističke borbe'
+
+            # Statehood Day
+            self[date(year, 6, 25)] = 'Dan državnosti'
+
+            # Victory and Homeland Thanksgiving Day and the Day of Croatian defenders
+            self[date(year, 8, 5)] = 'Dan pobjede i domovinske zahvalnosti'
+
+            # Assumption of Mary
+            self[date(year, 8, 15)] = "Velika Gospa"
+
+            # Independance Day
+            self[date(year, 10, 8)] = "Dan neovisnosti"
+
+            # All Saints' Day
+            self[date(year, 11, 1)] = "Dan svih svetih"
+
+            # Christmas
+            self[date(year, 12, 25)] = "Božić"
+
+            # St. Stephen's Day
+            self[date(year, 12, 26)] = "Sveti Stjepan"
 
 
 class HR(Croatia):
