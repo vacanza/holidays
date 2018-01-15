@@ -2851,3 +2851,72 @@ class Slovenia(HolidayBase):
 
 class SI(Slovenia):
     pass
+
+
+class Croatia(HolidayBase):
+    """
+    Contains all work-free public holidays in Croatia.
+    No holidays are returned before year 1991 when Croatia became independent
+    country. Before that Croatia was part of Socialist federal republic of
+    Yugoslavia.
+
+    List of holidays (including those that are not work-free:
+    https://en.wikipedia.org/wiki/Public_holidays_in_Croatia
+    """
+
+    def __init__(self, **kwargs):
+        self.country = 'HR'
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        if year <= 1990:
+            return
+
+        if year > 1991:
+            # Ney Year
+            self[date(year, 1, 1)] = "Nova Godina"
+
+            #Epiphany
+            self[date(year, 1, 6)] = "Bogojavljenje, Sveta tri kralja"
+
+            # Easter
+            self[easter_date] = "Uskrs"
+
+            # Easter Monday
+            easter_day = easter(year)
+            self[easter_day + rd(days=1)] = "Uskrsni ponedjeljak"
+
+            # International Workers' Day
+            self[date(year, 5, 1)] = "Međunarodni praznik rada"
+
+            # Corpus Christi
+            self[easter_day + rd(days=60)] = 'Tijelovo'
+
+            # Anti-Fascist Struggle Day
+            self[date(year, 6, 22)] = 'Dan antifašističke borbe'
+
+            # Statehood Day
+            self[date(year, 6, 25)] = 'Dan državnosti'
+
+            # Victory and Homeland Thanksgiving Day and the Day of Croatian defenders
+            self[date(year, 8, 5)] = 'Dan pobjede i domovinske zahvalnosti'
+
+            # Assumption of Mary
+            self[date(year, 8, 15)] = "Velika Gospa"
+
+            # Independance Day
+            self[date(year, 10, 8)] = "Dan neovisnosti"
+
+            # All Saints' Day
+            self[date(year, 11, 1)] = "Dan svih svetih"
+
+            # Christmas
+            self[date(year, 12, 25)] = "Božić"
+
+            # St. Stephen's Day
+            self[date(year, 12, 26)] = "Sveti Stjepan"
+
+
+class HR(Croatia):
+    pass
+
