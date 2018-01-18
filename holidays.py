@@ -2026,6 +2026,53 @@ class CZ(Czech):
     pass
 
 
+class Slovak(HolidayBase):
+    # https://sk.wikipedia.org/wiki/Sviatok
+    # https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1993/241/20160101
+
+    def __init__(self, **kwargs):
+        self.country = 'SK'
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        self[date(year, 1, 1)] = "Deň vzniku Slovenskej republiky" \
+
+        self[date(year, 1, 6)] = "Zjavenie Pána (Traja králi a vianočný" \
+            "sviatok pravoslávnych kresťanov)"
+
+        e = easter(year)
+        self[e - rd(days=2)] = "Veľký piatok"
+        self[e + rd(days=1)] = "Veľkonočný pondelok"
+
+        self[date(year, 5, 1)] = "Sviatok práce"
+
+        if year >= 1997:
+            self[date(year, 5, 8)] = "Deň víťazstva nad fašizmom"
+
+        self[date(year, 7, 5)] = "Sviatok svätého Cyrila a svätého Metoda"
+
+        self[date(year, 8, 29)] = "Výročie Slovenského národného povstania"
+
+        self[date(year, 9, 1)] = "Deň Ústavy Slovenskej republiky"
+
+        self[date(year, 9, 15)] = "Sedembolestná Panna Mária"
+
+        self[date(year, 11, 1)] = "Sviatok Všetkých svätých"
+
+        if year >= 2001:
+            self[date(year, 11, 17)] = "Deň boja za slobodu a demokraciu"
+
+        self[date(year, 12, 24)] = "Štedrý deň"
+
+        self[date(year, 12, 25)] = "Prvý sviatok vianočný"
+
+        self[date(year, 12, 26)] = "Druhý sviatok vianočný"
+
+
+class SK(Slovak):
+    pass
+
+
 class Polish(HolidayBase):
     # https://pl.wikipedia.org/wiki/Dni_wolne_od_pracy_w_Polsce
 
