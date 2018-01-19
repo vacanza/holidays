@@ -1,14 +1,16 @@
-Version 0.10
-============
+Version 0.9.2
+=============
 
-Unreleased
+Released January 19, 2018
 
-- Drop support for EOL Python 2.5, 2.6, 3.2 and 3.3
+- Drop support for EOL Python 2.5, 2.6, 3.2 and 3.3 (hugovk)
+- Add Finnish holidays (Ardetus)
+- Add Slovak holidays (Filip Bednárik)
 
 Version 0.9.1
 =============
 
-Released January 19, 2018
+Released January 17, 2018
 
 - Project moved to dr-prodigy
 - Added tests for Irish calendar
