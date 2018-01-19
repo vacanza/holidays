@@ -1,10 +1,11 @@
 Version 0.9.1
 =============
 
-Released January 14, 2018
+Released January 19, 2018
 
+- Project moved to dr-prodigy
 - Added tests for Irish calendar
-- minor fixes and refactoring
+- Minor fixes and refactoring
 
 
 Version 0.9
