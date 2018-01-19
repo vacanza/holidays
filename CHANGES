@@ -1,3 +1,10 @@
+Version 0.10
+============
+
+Unreleased
+
+- Drop support for EOL Python 2.5, 2.6, 3.2 and 3.3
+
 Version 0.9.1
 =============
 
@@ -6,7 +13,6 @@ Released January 19, 2018
 - Project moved to dr-prodigy
 - Added tests for Irish calendar
 - Minor fixes and refactoring
-
 
 Version 0.9
 ===========
@@ -24,7 +30,6 @@ Released January 14, 2018 (PR merging by dr-prodigy)
 - Add Swedish holidays (johanpalmqvist)
 - Add AU/Queensland The Ekka Show (kirpit)
 - Various fixes
-
 
 Version 0.8.1
 =============
