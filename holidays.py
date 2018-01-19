@@ -120,10 +120,10 @@ class HolidayBase(dict):
         return dict.pop(self, self.__keytransform__(key), default)
 
     def __eq__(self, other):
-        return (dict.__eq__(self, other) and self.__dict__ == other.__dict__)
+        return dict.__eq__(self, other) and self.__dict__ == other.__dict__
 
     def __ne__(self, other):
-        return (dict.__ne__(self, other) or self.__dict__ != other.__dict__)
+        return dict.__ne__(self, other) or self.__dict__ != other.__dict__
 
     def __add__(self, other):
         if isinstance(other, int) and other == 0:
@@ -277,11 +277,11 @@ class Canada(HolidayBase):
             else:
                 self[dt1] = "St. George's Day"
 
-        # Victoria Day / National Patriotes Day (QC)
+        # Victoria Day / National Patriots' Day (QC)
         if self.prov not in ('NB', 'NS', 'PE', 'NL', 'QC') and year >= 1953:
             self[date(year, 5, 24) + rd(weekday=MO(-1))] = "Victoria Day"
         elif self.prov == 'QC' and year >= 1953:
-            name = "National Patriotes Day"
+            name = "National Patriots' Day"
             self[date(year, 5, 24) + rd(weekday=MO(-1))] = name
 
         # National Aboriginal Day
@@ -694,7 +694,7 @@ class UnitedStates(HolidayBase):
         # Lincoln's Birthday
         name = "Lincoln's Birthday"
         if (self.state in ('CT', 'IL', 'IA', 'NJ', 'NY') and year >= 1971) \
-                or (self.state == 'CA' and year >= 1971 and year <= 2009):
+                or (self.state == 'CA' and 1971 <= year <= 2009):
             self[date(year, 2, 12)] = name
             if self.observed and date(year, 2, 12).weekday() == 5:
                 self[date(year, 2, 11)] = name + " (Observed)"
@@ -2077,8 +2077,8 @@ class Portugal(HolidayBase):
 
         e = easter(year)
 
-        # carnival is no longer a holyday, but some companies let workers off.
-        # @todo recollect the years in which it was a public holyday
+        # carnival is no longer a holiday, but some companies let workers off.
+        # @todo recollect the years in which it was a public holiday
         # self[e - rd(days=47)] = "Carnaval"
         self[e - rd(days=2)] = "Sexta-feira Santa"
         self[e] = "Páscoa"
@@ -2108,7 +2108,7 @@ class PortugalExt(Portugal):
     - Carnival
     - the day before and after xmas
     - the day before the new year
-    - Lisbon's city holyday
+    - Lisbon's city holiday
     """
     def _populate(self, year):
         super(PortugalExt, self)._populate(year)
@@ -2177,7 +2177,7 @@ class Netherlands(HolidayBase):
             self[kings_day] = "Koningsdag"
 
         # Queen's day
-        if year >= 1891 and year <= 2013:
+        if 1891 <= year <= 2013:
             queens_day = date(year, 4, 30)
             if year <= 1948:
                 queens_day = date(year, 8, 31)
