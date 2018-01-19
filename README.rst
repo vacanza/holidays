@@ -99,7 +99,7 @@ France              FRA      **Métropole** (default), Alsace-Moselle, Guadeloup
                              Wallis-et-Futuna
 Germany             DE       BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL, SN, ST,
                              SH, TH
-Ireland                      None
+Ireland                      IE
 Isle of Man                  None
 Italy               IT       prov = MI, RM
 Japan               JP       None

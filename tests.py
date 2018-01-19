@@ -6,8 +6,9 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com>
-#  Website: https://github.com/ryanss/python-holidays
+#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-1017
+#           dr-prodigy <maurizio.montel@gmail.com> (c) 2018
+#  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from itertools import product

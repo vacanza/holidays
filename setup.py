@@ -4,8 +4,9 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com>
-#  Website: https://github.com/ryanss/python-holidays
+#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#           dr-prodigy <maurizio.montel@gmail.com> (c) 2018
+#  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 import codecs
@@ -29,8 +30,10 @@ setup(
     version=version,
     author='ryanss',
     author_email='ryanssdev@icloud.com',
-    url='https://github.com/ryanss/python-holidays',
-    bugtrack_url='https://github.com/ryanss/python-holidays/issues',
+    maintainer='dr-prodigy',
+    maintainer_email='maurizio.montel@gmail.com',
+    url='https://github.com/dr-prodigy/python-holidays',
+    bugtrack_url='https://github.com/dr-prodigy/python-holidays/issues',
     license='MIT',
     py_modules=['holidays'],
     description='Generate and work with holidays in Python',
