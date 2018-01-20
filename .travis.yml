@@ -13,9 +13,10 @@ python:
 env:
     - DATEUTIL=python-dateutil==2.2
     - DATEUTIL=python-dateutil
+    - CONVDATE=convertdate==2.1.2
 
 install:
-    - pip install $DATEUTIL
+    - pip install $DATEUTIL $CONVDATE
     - python setup.py install
     - pip install flake8
     - pip install coveralls
