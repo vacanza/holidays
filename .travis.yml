@@ -11,9 +11,8 @@ python:
     - pypy3
 
 env:
-    - DATEUTIL=python-dateutil==2.2
-    - DATEUTIL=python-dateutil
-    - CONVDATE=convertdate==2.1.2
+    - DATEUTIL=python-dateutil==2.2 convertdate
+    - DATEUTIL=python-dateutil convertdate==2.1.2
 
 install:
     - pip install $DATEUTIL $CONVDATE
