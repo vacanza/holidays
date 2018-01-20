@@ -2289,9 +2289,9 @@ class Egypt(HolidayBase):
                 self[date(*islam_new_year)] = "عيد رأس السنة الهجرية"
             # Birthday of the Prophet Muhammad
             bith_muhammad = islamic_to_gregorian(islam_year, 3, 11)
-            if bith_muhammad [0] == year:
-                self[date(*bith_muhammad )] = "المولد النبوي الشريف"
-            for i in range(1,4):
+            if bith_muhammad[0] == year:
+                self[date(*bith_muhammad)] = "المولد النبوي الشريف"
+            for i in range(1, 4):
                 # Eid al-Fitr
                 eid_al_fitr = islamic_to_gregorian(islam_year, 10, i)
                 if eid_al_fitr[0] == year:
@@ -2964,6 +2964,7 @@ class Slovenia(HolidayBase):
 class SI(Slovenia):
     pass
 
+
 class Finland(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Finland
 
@@ -2996,6 +2997,7 @@ class Finland(HolidayBase):
 
 class FI(Finland):
     pass
+
 
 def islam_years(greg_year):
     # since the Islamic calendar has 354 or 355 days, it does not
