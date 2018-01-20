@@ -11,10 +11,12 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date, datetime
-from dateutil.easter import easter
+from dateutil.easter import easter, EASTER_ORTHODOX
 from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
+from convertdate.islamic import to_gregorian as islamic_to_gregorian
+from convertdate.islamic import from_gregorian as islamic_from_gregorian
 import six
 
 __version__ = '0.9.1'
@@ -2194,6 +2196,68 @@ class NL(Netherlands):
     pass
 
 
+class Egypt(HolidayBase):
+    SUNDAY = 1
+
+    def __init__(self, **kwargs):
+        # http://www.iamsterdam.com/en/plan-your-trip/practical-info/public-holidays
+        self.country = "NL"
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+
+        # Christmas
+        self[date(year, 1, 7)] = "عيد الميلاد المجيد"
+
+        # National Police Day (and Revolution Day 2011)
+        if year >= 2011:
+            self[date(year, 1, 25)] = "عيد الشرطة"
+
+        # Sinai liberation day
+        if year >= 1982:
+            self[date(year, 4, 25)] = "عيد تحرير سيناء"
+
+        # Labour day
+        self[date(year, 5, 1)] = "عيد العمال"
+
+        # Revolution day
+        if year >= 1952:
+            self[date(year, 7, 23)] = "عيد ثورة 30 يونيو"
+
+        # Armed forces day
+        self[date(year, 10, 6)] = "عيد القوات المسلحة"
+
+        orthodox_easter_date = easter(year, method=EASTER_ORTHODOX)
+
+        # Sham El Nessim
+        self[orthodox_easter_date + rd(days=1)] = "شم النسيم"
+
+        # Islamic holidays, we use a range and check if the revere is still
+        # in the specified year
+        for islam_year in islam_years(year):
+            # Islamic new year
+            islam_new_year = islamic_to_gregorian(islam_year, 12, 30)
+            if islam_new_year[0] == year:
+                self[date(*islam_new_year)] = "عيد رأس السنة الهجرية"
+            # Birthday of the Prophet Muhammad
+            bith_muhammad = islamic_to_gregorian(islam_year, 3, 11)
+            if bith_muhammad [0] == year:
+                self[date(*bith_muhammad )] = "المولد النبوي الشريف"
+            for i in range(1,4):
+                # Eid al-Fitr
+                eid_al_fitr = islamic_to_gregorian(islam_year, 10, i)
+                if eid_al_fitr[0] == year:
+                    self[date(*eid_al_fitr)] = "عيد الفطر المبارك"
+                # Eid al-Adha
+                eid_al_adha = islamic_to_gregorian(islam_year, 12, i+9)
+                if eid_al_adha[0] == year:
+                    self[date(*eid_al_adha)] = "عيد الأضحى المبارك"
+
+
+class EG(Egypt):
+    pass
+
+
 class Norway(HolidayBase):
     """
     Norwegian holidays.
@@ -2851,3 +2915,11 @@ class Slovenia(HolidayBase):
 
 class SI(Slovenia):
     pass
+
+def islam_years(greg_year):
+    # since the Islamic calendar has 354 or 355 days, it does not
+    # map on a Gregorian year: one gregorian year can result in maximum
+    # three Islamic years
+    y1, _, _ = islamic_from_gregorian(greg_year, 1, 1)
+    y2, _, _ = islamic_from_gregorian(greg_year, 12, 31)
+    return range(y1, y2+1)
