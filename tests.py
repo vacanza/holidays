@@ -6,8 +6,9 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com>
-#  Website: https://github.com/ryanss/python-holidays
+#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-1017
+#           dr-prodigy <maurizio.montel@gmail.com> (c) 2018
+#  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from itertools import product
@@ -126,8 +127,8 @@ class TestBasics(unittest.TestCase):
         ca = holidays.CA(years=[2014], expand=False)
         us = holidays.US(years=[2014, 2015], expand=True)
         self.assertTrue((ca+us).expand)
-        self.assertEqual((ca+us).years, set([2014, 2015]))
-        self.assertEqual((us+ca).years, set([2014, 2015]))
+        self.assertEqual((ca+us).years, {2014, 2015})
+        self.assertEqual((us+ca).years, {2014, 2015})
         na = holidays.CA()
         na += holidays.US()
         na += holidays.MX()
@@ -1080,9 +1081,9 @@ class TestUS(unittest.TestCase):
                         ("George Washington's Birthday "
                          "and Daisy Gatson Bates Day"))
         self.assertTrue(holidays.US(state='PR').get('2015-02-16'),
-                        ("Presidents' Day"))
+                        "Presidents' Day")
         self.assertTrue(holidays.US(state='VI').get('2015-02-16'),
-                        ("Presidents' Day"))
+                        "Presidents' Day")
 
     def test_mardi_gras(self):
         la_holidays = holidays.US(state='LA')
@@ -1346,7 +1347,7 @@ class TestUS(unittest.TestCase):
         self.assertFalse(date(2006, 6, 12) in hi_holidays)
         for dt in [date(2011, 6, 10), date(2016, 6, 10), date(2017, 6, 12)]:
             self.assertTrue(dt in hi_holidays)
-            hi_holidays.get(dt) == "Kamehameha Day (Observed)"
+            self.assertEqual(hi_holidays.get(dt), "Kamehameha Day (Observed)")
         hi_holidays.observed = False
         for dt in [date(2011, 6, 10), date(2016, 6, 10), date(2017, 6, 12)]:
             self.assertFalse(dt in hi_holidays)
@@ -2115,7 +2116,7 @@ class TestNZ(unittest.TestCase):
         all_holidays.insert(2, "New Zealand Day")
         for holiday in all_holidays:
             self.assertTrue(holiday in holidays_in_1974, holiday)
-        self.assertFalse("Waitangi Day" in holidays_in_1974, holiday)
+        self.assertFalse("Waitangi Day" in holidays_in_1974)
 
 
 class TestAU(unittest.TestCase):
@@ -2377,28 +2378,28 @@ class TestDE(unittest.TestCase):
         de_2015 = sum(holidays.DE(years=[2015], prov=p)
                       for p in holidays.DE.PROVINCES)
         in_2015 = sum((de_2015.get_list(key) for key in de_2015), [])
-        all = ["Neujahr",
-               "Heilige Drei Könige",
-               "Karfreitag",
-               "Ostern",
-               "Ostermontag",
-               "Maifeiertag",
-               "Christi Himmelfahrt",
-               "Pfingsten",
-               "Pfingstmontag",
-               "Fronleichnam",
-               "Mariä Himmelfahrt",
-               "Tag der Deutschen Einheit",
-               "Reformationstag",
-               "Allerheiligen",
-               "Buß- und Bettag",
-               "Erster Weihnachtstag",
-               "Zweiter Weihnachtstag"]
+        all_de = ["Neujahr",
+                  "Heilige Drei Könige",
+                  "Karfreitag",
+                  "Ostern",
+                  "Ostermontag",
+                  "Maifeiertag",
+                  "Christi Himmelfahrt",
+                  "Pfingsten",
+                  "Pfingstmontag",
+                  "Fronleichnam",
+                  "Mariä Himmelfahrt",
+                  "Tag der Deutschen Einheit",
+                  "Reformationstag",
+                  "Allerheiligen",
+                  "Buß- und Bettag",
+                  "Erster Weihnachtstag",
+                  "Zweiter Weihnachtstag"]
 
-        for holiday in all:
-            self.assertTrue(holiday in in_2015, "missing: {0}".format(holiday))
+        for holiday in all_de:
+            self.assertTrue(holiday in in_2015, "missing: {}".format(holiday))
         for holiday in in_2015:
-            self.assertTrue(holiday in all, "extra: {0}".format(holiday))
+            self.assertTrue(holiday in all_de, "extra: {}".format(holiday))
 
     def test_fixed_holidays(self):
         fixed_days_whole_country = (
@@ -2413,7 +2414,7 @@ class TestDE(unittest.TestCase):
             self.assertTrue(date(y, m, d) in self.holidays)
 
     def test_heilige_drei_koenige(self):
-        provinces_that_have = set(('BW', 'BY', 'ST'))
+        provinces_that_have = {'BW', 'BY', 'ST'}
         provinces_that_dont = set(holidays.DE.PROVINCES) - provinces_that_have
 
         for province, year in product(provinces_that_have, range(1991, 2050)):
@@ -2435,7 +2436,7 @@ class TestDE(unittest.TestCase):
                       (2017, 4, 16), (2018, 4, 1), (2019, 4, 21),
                       (2020, 4, 12), (2021, 4, 4), (2022, 4, 17),
                       (2023, 4, 9), (2024, 3, 31)]
-        provinces_that_have = set(('BB',))
+        provinces_that_have = {'BB'}
         provinces_that_dont = set(holidays.DE.PROVINCES) - provinces_that_have
 
         for province, (y, m, d) in product(provinces_that_have, known_good):
@@ -2466,7 +2467,7 @@ class TestDE(unittest.TestCase):
                       (2017, 6, 4), (2018, 5, 20), (2019, 6, 9),
                       (2020, 5, 31), (2021, 5, 23), (2022, 6, 5),
                       (2023, 5, 28), (2024, 5, 19)]
-        provinces_that_have = set(('BB',))
+        provinces_that_have = {'BB'}
         provinces_that_dont = set(holidays.DE.PROVINCES) - provinces_that_have
 
         for province, (y, m, d) in product(provinces_that_have, known_good):
@@ -2488,7 +2489,7 @@ class TestDE(unittest.TestCase):
                       (2017, 6, 15), (2018, 5, 31), (2019, 6, 20),
                       (2020, 6, 11), (2021, 6, 3), (2022, 6, 16),
                       (2023, 6, 8), (2024, 5, 30)]
-        provinces_that_have = set(('BW', 'BY', 'HE', 'NW', 'RP', 'SL'))
+        provinces_that_have = {'BW', 'BY', 'HE', 'NW', 'RP', 'SL'}
         provinces_that_dont = set(holidays.DE.PROVINCES) - provinces_that_have
 
         for province, (y, m, d) in product(provinces_that_have, known_good):
@@ -2497,7 +2498,7 @@ class TestDE(unittest.TestCase):
             self.assertTrue(date(y, m, d) not in self.prov_hols[province])
 
     def test_mariae_himmelfahrt(self):
-        provinces_that_have = set(('BY', 'SL'))
+        provinces_that_have = {'BY', 'SL'}
         provinces_that_dont = set(holidays.DE.PROVINCES) - provinces_that_have
 
         for province, year in product(provinces_that_have, range(1991, 2050)):
@@ -2506,7 +2507,7 @@ class TestDE(unittest.TestCase):
             self.assertTrue(date(year, 8, 15) not in self.prov_hols[province])
 
     def test_reformationstag(self):
-        provinces_that_have = set(('BB', 'MV', 'SN', 'ST', 'TH'))
+        provinces_that_have = {'BB', 'MV', 'SN', 'ST', 'TH'}
         provinces_that_dont = set(holidays.DE.PROVINCES) - provinces_that_have
 
         for province, year in product(provinces_that_have, range(1991, 2050)):
@@ -2524,7 +2525,7 @@ class TestDE(unittest.TestCase):
             self.assertTrue(date(2017, 10, 31) in self.prov_hols[province])
 
     def test_allerheiligen(self):
-        provinces_that_have = set(('BW', 'BY', 'NW', 'RP', 'SL'))
+        provinces_that_have = {'BW', 'BY', 'NW', 'RP', 'SL'}
         provinces_that_dont = set(holidays.DE.PROVINCES) - provinces_that_have
 
         for province, year in product(provinces_that_have, range(1991, 2050)):
@@ -2537,7 +2538,7 @@ class TestDE(unittest.TestCase):
                       (2017, 11, 22), (2018, 11, 21), (2019, 11, 20),
                       (2020, 11, 18), (2021, 11, 17), (2022, 11, 16),
                       (2023, 11, 22), (2024, 11, 20)]
-        provinces_that_have = set(('SN',))
+        provinces_that_have = {'SN'}
         provinces_that_dont = set(holidays.DE.PROVINCES) - provinces_that_have
 
         for province, (y, m, d) in product(provinces_that_have, known_good):
@@ -2902,6 +2903,30 @@ class TestCZ(unittest.TestCase):
         self.assertTrue(date(2017, 12, 24) in self.holidays)
         self.assertTrue(date(2017, 12, 25) in self.holidays)
         self.assertTrue(date(2017, 12, 26) in self.holidays)
+
+
+class TestSK(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.SK()
+
+    def test_2018(self):
+        # https://www.officeholidays.com/countries/slovakia/2018.php
+        self.assertTrue(date(2018, 1, 1) in self.holidays)
+        self.assertTrue(date(2018, 1, 6) in self.holidays)
+        self.assertTrue(date(2018, 3, 30) in self.holidays)
+        self.assertTrue(date(2018, 5, 1) in self.holidays)
+        self.assertTrue(date(2018, 5, 8) in self.holidays)
+        self.assertTrue(date(2018, 4, 2) in self.holidays)
+        self.assertTrue(date(2018, 7, 5) in self.holidays)
+        self.assertTrue(date(2018, 8, 29) in self.holidays)
+        self.assertTrue(date(2018, 9, 1) in self.holidays)
+        self.assertTrue(date(2018, 9, 15) in self.holidays)
+        self.assertTrue(date(2018, 11, 1) in self.holidays)
+        self.assertTrue(date(2018, 11, 17) in self.holidays)
+        self.assertTrue(date(2018, 12, 24) in self.holidays)
+        self.assertTrue(date(2018, 12, 25) in self.holidays)
+        self.assertTrue(date(2018, 12, 26) in self.holidays)
 
 
 class TestPL(unittest.TestCase):
@@ -3506,6 +3531,69 @@ class TestIE(unittest.TestCase):
         self.assertTrue('2017-12-26' in self.irish_holidays)
         self.assertTrue('2018-12-25' in self.irish_holidays)
         self.assertTrue('2018-12-26' in self.irish_holidays)
+
+
+class TestFinland(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.FI()
+
+    def test_fixed_holidays(self):
+        self.assertTrue(date(2017, 1, 1) in self.holidays)
+        self.assertEqual(self.holidays[date(2017, 1, 1)],
+                         "Uudenvuodenpäivä")
+
+        self.assertTrue(date(2017, 1, 6) in self.holidays)
+        self.assertEqual(self.holidays[date(2017, 1, 6)],
+                         "Loppiainen")
+
+        self.assertTrue(date(2017, 5, 1) in self.holidays)
+        self.assertEqual(self.holidays[date(2017, 5, 1)],
+                         "Vappu")
+
+        self.assertTrue(date(2017, 12, 6) in self.holidays)
+        self.assertEqual(self.holidays[date(2017, 12, 6)],
+                         "Itsenäisyyspäivä")
+
+        self.assertTrue(date(2017, 12, 25) in self.holidays)
+        self.assertEqual(self.holidays[date(2017, 12, 25)],
+                         "Joulupäivä")
+
+        self.assertTrue(date(2017, 12, 26) in self.holidays)
+        self.assertEqual(self.holidays[date(2017, 12, 26)],
+                         "Tapaninpäivä")
+
+    def test_relative_holidays(self):
+        self.assertTrue(date(2017, 4, 14) in self.holidays)
+        self.assertEqual(self.holidays[date(2017, 4, 14)],
+                         "Pitkäperjantai")
+
+        self.assertTrue(date(2017, 4, 16) in self.holidays)
+        self.assertEqual(self.holidays[date(2017, 4, 16)],
+                         "Pääsiäispäivä")
+
+        self.assertTrue(date(2017, 4, 17) in self.holidays)
+        self.assertEqual(self.holidays[date(2017, 4, 17)],
+                         "2. pääsiäispäivä")
+
+        self.assertTrue(date(2017, 5, 25) in self.holidays)
+        self.assertEqual(self.holidays[date(2017, 5, 25)],
+                         "Helatorstai")
+
+        self.assertTrue(date(2017, 11, 4) in self.holidays)
+        self.assertEqual(self.holidays[date(2017, 11, 4)],
+                         "Pyhäinpäivä")
+
+    def test_Juhannus(self):
+        self.assertTrue(date(2017, 6, 24) in self.holidays)
+        self.assertFalse(date(2017, 6, 20) in self.holidays)
+        self.assertTrue(date(2020, 6, 20) in self.holidays)
+        self.assertTrue(date(2021, 6, 26) in self.holidays)
+        self.assertTrue(date(2018, 6, 22) in self.holidays)
+        self.assertEqual(self.holidays[date(2018, 6, 22)],
+                         "Juhannusaatto")
+        self.assertEqual(self.holidays[date(2018, 6, 23)],
+                         "Juhannuspäivä")
 
 
 if __name__ == "__main__":

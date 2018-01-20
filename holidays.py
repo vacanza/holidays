@@ -6,8 +6,9 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com>
-#  Website: https://github.com/ryanss/python-holidays
+#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#           dr-prodigy <maurizio.montel@gmail.com> (c) 2018
+#  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date, datetime
@@ -19,7 +20,7 @@ from convertdate.islamic import to_gregorian as islamic_to_gregorian
 from convertdate.islamic import from_gregorian as islamic_from_gregorian
 import six
 
-__version__ = '0.9.1'
+__version__ = '0.9.2'
 
 
 MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY = range(7)
@@ -121,10 +122,10 @@ class HolidayBase(dict):
         return dict.pop(self, self.__keytransform__(key), default)
 
     def __eq__(self, other):
-        return (dict.__eq__(self, other) and self.__dict__ == other.__dict__)
+        return dict.__eq__(self, other) and self.__dict__ == other.__dict__
 
     def __ne__(self, other):
-        return (dict.__ne__(self, other) or self.__dict__ != other.__dict__)
+        return dict.__ne__(self, other) or self.__dict__ != other.__dict__
 
     def __add__(self, other):
         if isinstance(other, int) and other == 0:
@@ -278,11 +279,11 @@ class Canada(HolidayBase):
             else:
                 self[dt1] = "St. George's Day"
 
-        # Victoria Day / National Patriotes Day (QC)
+        # Victoria Day / National Patriots' Day (QC)
         if self.prov not in ('NB', 'NS', 'PE', 'NL', 'QC') and year >= 1953:
             self[date(year, 5, 24) + rd(weekday=MO(-1))] = "Victoria Day"
         elif self.prov == 'QC' and year >= 1953:
-            name = "National Patriotes Day"
+            name = "National Patriots' Day"
             self[date(year, 5, 24) + rd(weekday=MO(-1))] = name
 
         # National Aboriginal Day
@@ -695,7 +696,7 @@ class UnitedStates(HolidayBase):
         # Lincoln's Birthday
         name = "Lincoln's Birthday"
         if (self.state in ('CT', 'IL', 'IA', 'NJ', 'NY') and year >= 1971) \
-                or (self.state == 'CA' and year >= 1971 and year <= 2009):
+                or (self.state == 'CA' and 1971 <= year <= 2009):
             self[date(year, 2, 12)] = name
             if self.observed and date(year, 2, 12).weekday() == 5:
                 self[date(year, 2, 11)] = name + " (Observed)"
@@ -2028,6 +2029,53 @@ class CZ(Czech):
     pass
 
 
+class Slovak(HolidayBase):
+    # https://sk.wikipedia.org/wiki/Sviatok
+    # https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1993/241/20160101
+
+    def __init__(self, **kwargs):
+        self.country = 'SK'
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        self[date(year, 1, 1)] = "Deň vzniku Slovenskej republiky" \
+
+        self[date(year, 1, 6)] = "Zjavenie Pána (Traja králi a vianočný" \
+            "sviatok pravoslávnych kresťanov)"
+
+        e = easter(year)
+        self[e - rd(days=2)] = "Veľký piatok"
+        self[e + rd(days=1)] = "Veľkonočný pondelok"
+
+        self[date(year, 5, 1)] = "Sviatok práce"
+
+        if year >= 1997:
+            self[date(year, 5, 8)] = "Deň víťazstva nad fašizmom"
+
+        self[date(year, 7, 5)] = "Sviatok svätého Cyrila a svätého Metoda"
+
+        self[date(year, 8, 29)] = "Výročie Slovenského národného povstania"
+
+        self[date(year, 9, 1)] = "Deň Ústavy Slovenskej republiky"
+
+        self[date(year, 9, 15)] = "Sedembolestná Panna Mária"
+
+        self[date(year, 11, 1)] = "Sviatok Všetkých svätých"
+
+        if year >= 2001:
+            self[date(year, 11, 17)] = "Deň boja za slobodu a demokraciu"
+
+        self[date(year, 12, 24)] = "Štedrý deň"
+
+        self[date(year, 12, 25)] = "Prvý sviatok vianočný"
+
+        self[date(year, 12, 26)] = "Druhý sviatok vianočný"
+
+
+class SK(Slovak):
+    pass
+
+
 class Polish(HolidayBase):
     # https://pl.wikipedia.org/wiki/Dni_wolne_od_pracy_w_Polsce
 
@@ -2078,8 +2126,8 @@ class Portugal(HolidayBase):
 
         e = easter(year)
 
-        # carnival is no longer a holyday, but some companies let workers off.
-        # @todo recollect the years in which it was a public holyday
+        # carnival is no longer a holiday, but some companies let workers off.
+        # @todo recollect the years in which it was a public holiday
         # self[e - rd(days=47)] = "Carnaval"
         self[e - rd(days=2)] = "Sexta-feira Santa"
         self[e] = "Páscoa"
@@ -2109,7 +2157,7 @@ class PortugalExt(Portugal):
     - Carnival
     - the day before and after xmas
     - the day before the new year
-    - Lisbon's city holyday
+    - Lisbon's city holiday
     """
     def _populate(self, year):
         super(PortugalExt, self)._populate(year)
@@ -2178,7 +2226,7 @@ class Netherlands(HolidayBase):
             self[kings_day] = "Koningsdag"
 
         # Queen's day
-        if year >= 1891 and year <= 2013:
+        if 1891 <= year <= 2013:
             queens_day = date(year, 4, 30)
             if year <= 1948:
                 queens_day = date(year, 8, 31)
@@ -2914,6 +2962,39 @@ class Slovenia(HolidayBase):
 
 
 class SI(Slovenia):
+    pass
+
+class Finland(HolidayBase):
+    # https://en.wikipedia.org/wiki/Public_holidays_in_Finland
+
+    def __init__(self, **kwargs):
+        self.country = "FI"
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        e = easter(year)
+
+        self[date(year, 1, 1)] = "Uudenvuodenpäivä"
+        self[date(year, 1, 6)] = "Loppiainen"
+        self[e - rd(days=2)] = "Pitkäperjantai"
+        self[e] = "Pääsiäispäivä"
+        self[e + rd(days=1)] = "2. pääsiäispäivä"
+        self[date(year, 5, 1)] = "Vappu"
+        self[e + rd(days=39)] = "Helatorstai"
+        self[e + rd(days=49)] = "Helluntaipäivä"
+        self[date(year, 6, 20) + rd(weekday=SA)] = "Juhannuspäivä"
+        self[date(year, 10, 31) + rd(weekday=SA)] = "Pyhäinpäivä"
+        self[date(year, 12, 6)] = "Itsenäisyyspäivä"
+        self[date(year, 12, 25)] = "Joulupäivä"
+        self[date(year, 12, 26)] = "Tapaninpäivä"
+
+        # Juhannusaatto (Midsummer Eve) and Jouluaatto (Christmas Eve) are not
+        # official holidays, but are de facto.
+        self[date(year, 6, 19) + rd(weekday=FR)] = "Juhannusaatto"
+        self[date(year, 12, 24)] = "Jouluaatto"
+
+
+class FI(Finland):
     pass
 
 def islam_years(greg_year):
