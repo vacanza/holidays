@@ -162,7 +162,7 @@ class TestBasics(unittest.TestCase):
         self.assertTrue("2015-02-09" in provs)
         self.assertTrue("2015-02-16" in provs)
         self.assertEqual(provs.prov, ['ON', 'BC'])
-        a = sum([holidays.CA(prov=x) for x in holidays.CA.PROVINCES])
+        a = sum(holidays.CA(prov=x) for x in holidays.CA.PROVINCES)
         self.assertEqual(a.country, 'CA')
         self.assertEqual(a.prov, holidays.CA.PROVINCES)
         self.assertTrue("2015-02-09" in a)
