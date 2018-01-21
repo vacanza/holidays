@@ -2517,7 +2517,7 @@ class Japan(HolidayBase):
         self[date(year, 5, 5)] = "こどもの日"
 
         # Marine Day
-        if year >= 1996 and year <= 2002:
+        if 1996 <= year <= 2002:
             self[date(year, 7, 20)] = "海の日"
         elif year >= 2003:
             self[date(year, 7, 1) + rd(weekday=MO(+3))] = "海の日"
@@ -2527,7 +2527,7 @@ class Japan(HolidayBase):
             self[date(year, 8, 11)] = "山の日"
 
         # Respect for the Aged Day
-        if year >= 1966 and year <= 2002:
+        if 1966 <= year <= 2002:
             self[date(year, 9, 15)] = "敬老の日"
         elif year >= 2003:
             self[date(year, 9, 1) + rd(weekday=MO(+3))] = "敬老の日"
@@ -2536,7 +2536,7 @@ class Japan(HolidayBase):
         self[self._autumnal_equinox_day(year)] = "秋分の日"
 
         # Health and Sports Day
-        if year >= 1966 and year <= 1999:
+        if 1966 <= year <= 1999:
             self[date(year, 10, 10)] = "体育の日"
         elif year >= 2000:
             self[date(year, 10, 1) + rd(weekday=MO(+2))] = "体育の日"
@@ -2679,7 +2679,7 @@ class France(HolidayBase):
                 name += ' et de la Concorde sociale'
             self[date(year, 5, 1)] = name
 
-        if (year >= 1953 and year <= 1959) or year > 1981:
+        if (1953 <= year <= 1959) or year > 1981:
             self[date(year, 5, 8)] = 'Armistice 1945'
 
         if year >= 1880:
