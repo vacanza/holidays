@@ -3144,10 +3144,10 @@ class TestItaly(unittest.TestCase):
         self.assertTrue(date(2017, 12, 26) in self.holidays)
 
     def test_province_specific_days(self):
-        provMI = (holidays.IT(prov='MI', years=[2017]))
-        provRM = (holidays.IT(prov='RM', years=[2017]))
-        self.assertTrue("2017-12-08" in provMI)
-        self.assertTrue("2017-06-29" in provRM)
+        prov_mi = (holidays.IT(prov='MI', years=[2017]))
+        prov_rm = (holidays.IT(prov='RM', years=[2017]))
+        self.assertTrue("2017-12-08" in prov_mi)
+        self.assertTrue("2017-06-29" in prov_rm)
 
 
 class TestSweden(unittest.TestCase):
