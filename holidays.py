@@ -2168,8 +2168,8 @@ class PortugalExt(Portugal):
         self[date(year,  6, 13)] = "Dia de Santo António"
 
         # TODO add bridging days
-        # - get holydays that occur on twesday  and add monday (-1 day)
-        # - get holydays that occur on thursday and add friday (+1 day)
+        # - get Holidays that occur on Tuesday  and add Monday (-1 day)
+        # - get Holidays that occur on Thursday and add Friday (+1 day)
 
 
 class PTE(PortugalExt):

@@ -1661,7 +1661,7 @@ class TestUS(unittest.TestCase):
             self.assertNotIn(date(year, 12, 8), self.holidays)
             self.assertIn(date(year, 12, 8), gu_holidays)
 
-    def test_christmass_eve(self):
+    def test_christmas_eve(self):
         as_holidays = holidays.US(state='AS')
         ks_holidays = holidays.US(state='KS')
         mi_holidays = holidays.US(state='MI')
@@ -3054,7 +3054,7 @@ class TestNorway(unittest.TestCase):
     def test_not_holiday(self):
         """
         Note: Sundays in Norway are considered holidays,
-        so make sure none of these are actually sundays
+        so make sure none of these are actually Sundays
 
         TODO: Should add more dates that are often confused for being a holiday
         :return:
@@ -3233,7 +3233,7 @@ class TestSweden(unittest.TestCase):
     def test_not_holiday(self):
         """
         Note: Sundays in Sweden are considered holidays,
-        so make sure none of these are actually sundays
+        so make sure none of these are actually Sundays
         :return:
         """
         self.assertNotIn('2017-02-06', self.holidays_without_sundays)
