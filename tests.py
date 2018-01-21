@@ -2123,8 +2123,8 @@ class TestAU(unittest.TestCase):
 
     def setUp(self):
         self.holidays = holidays.AU(observed=True)
-        self.state_hols = dict((state, holidays.AU(observed=True, prov=state))
-                               for state in holidays.AU.PROVINCES)
+        self.state_hols = {state: holidays.AU(observed=True, prov=state)
+                           for state in holidays.AU.PROVINCES}
 
     def test_new_years(self):
         for year in range(1900, 2100):
@@ -2366,8 +2366,8 @@ class TestDE(unittest.TestCase):
 
     def setUp(self):
         self.holidays = holidays.DE()
-        self.prov_hols = dict((prov, holidays.DE(prov=prov))
-                              for prov in holidays.DE.PROVINCES)
+        self.prov_hols = {prov: holidays.DE(prov=prov)
+                          for prov in holidays.DE.PROVINCES}
 
     def test_no_data_before_1990(self):
         de_1989 = sum(holidays.DE(years=[1989], prov=p)
@@ -2751,8 +2751,8 @@ class TestES(unittest.TestCase):
 
     def setUp(self):
         self.holidays = holidays.ES()
-        self.prov_holidays = dict((prov, holidays.ES(prov=prov))
-                                  for prov in holidays.ES.PROVINCES)
+        self.prov_holidays = {prov: holidays.ES(prov=prov)
+                              for prov in holidays.ES.PROVINCES}
 
     def test_fixed_holidays(self):
         fixed_days_whole_country = (
@@ -3377,8 +3377,8 @@ class TestFR(unittest.TestCase):
 
     def setUp(self):
         self.holidays = holidays.France()
-        self.prov_holidays = dict((prov, holidays.France(prov=prov))
-                                  for prov in holidays.France.PROVINCES)
+        self.prov_holidays = {prov: holidays.France(prov=prov)
+                              for prov in holidays.France.PROVINCES}
 
     def test_2017(self):
         self.assertTrue(date(2017, 1, 1) in self.holidays)
