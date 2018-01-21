@@ -340,7 +340,7 @@ class TestKeyTransforms(unittest.TestCase):
         self.assertEqual(self.holidays[date(2014, 1, 1)], "New Year's Day")
         self.holidays[date(2014, 1, 3)] = "Fake Holiday"
         self.assertIn(date(2014, 1, 3), self.holidays)
-        self.assertTrue(self.holidays.pop(date(2014, 1, 3)), "Fake Holiday")
+        self.assertEqual(self.holidays.pop(date(2014, 1, 3)), "Fake Holiday")
         self.assertNotIn(date(2014, 1, 3), self.holidays)
 
     def test_datetimes(self):
@@ -349,8 +349,8 @@ class TestKeyTransforms(unittest.TestCase):
                          "New Year's Day")
         self.holidays[datetime(2014, 1, 3, 1, 1)] = "Fake Holiday"
         self.assertIn(datetime(2014, 1, 3, 2, 2), self.holidays)
-        self.assertTrue(self.holidays.pop(datetime(2014, 1, 3, 4, 4)),
-                        "Fake Holiday")
+        self.assertEqual(self.holidays.pop(datetime(2014, 1, 3, 4, 4)),
+                         "Fake Holiday")
         self.assertNotIn(datetime(2014, 1, 3, 2, 2), self.holidays)
 
     def test_timestamp(self):
@@ -360,7 +360,7 @@ class TestKeyTransforms(unittest.TestCase):
         self.assertEqual(self.holidays[1388552400.01], "New Year's Day")
         self.holidays[1388725200] = "Fake Holiday"
         self.assertIn(1388725201, self.holidays)
-        self.assertTrue(self.holidays.pop(1388725202), "Fake Holiday")
+        self.assertEqual(self.holidays.pop(1388725202), "Fake Holiday")
         self.assertNotIn(1388725201, self.holidays)
 
     def test_strings(self):
@@ -370,7 +370,7 @@ class TestKeyTransforms(unittest.TestCase):
         self.assertEqual(self.holidays["01/01/2014"], "New Year's Day")
         self.holidays["01/03/2014"] = "Fake Holiday"
         self.assertIn("01/03/2014", self.holidays)
-        self.assertTrue(self.holidays.pop("01/03/2014"), "Fake Holiday")
+        self.assertEqual(self.holidays.pop("01/03/2014"), "Fake Holiday")
         self.assertNotIn("01/03/2014", self.holidays)
 
     def test_exceptions(self):
@@ -1074,15 +1074,15 @@ class TestUS(unittest.TestCase):
         for dt in [date(2013, 12, 24), date(2014, 12, 26), date(2015, 12, 24)]:
             self.assertIn(dt, ga_holidays)
             self.assertIn("Washington's Birthday", ga_holidays.get_list(dt))
-        self.assertTrue(holidays.US(state='AL').get('2015-02-16'),
-                        "George Washington/Thomas Jefferson Birthday")
-        self.assertTrue(holidays.US(state='AS').get('2015-02-16'),
-                        ("George Washington's Birthday "
-                         "and Daisy Gatson Bates Day"))
-        self.assertTrue(holidays.US(state='PR').get('2015-02-16'),
-                        "Presidents' Day")
-        self.assertTrue(holidays.US(state='VI').get('2015-02-16'),
-                        "Presidents' Day")
+        self.assertEqual(holidays.US(state='AL').get('2015-02-16'),
+                         "George Washington/Thomas Jefferson Birthday")
+        self.assertEqual(holidays.US(state='AS').get('2015-02-16'),
+                         ("George Washington's Birthday "
+                          "and Daisy Gatson Bates Day"))
+        self.assertEqual(holidays.US(state='PR').get('2015-02-16'),
+                         "Presidents' Day")
+        self.assertEqual(holidays.US(state='VI').get('2015-02-16'),
+                         "Presidents' Day")
 
     def test_mardi_gras(self):
         la_holidays = holidays.US(state='LA')
