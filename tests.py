@@ -381,7 +381,7 @@ class TestKeyTransforms(unittest.TestCase):
         self.assertRaises(
             (TypeError, ValueError), self.holidays.__setitem__, "abc", "Test")
         self.assertRaises(
-            (TypeError, ValueError), lambda: list() in self.holidays)
+            (TypeError, ValueError), lambda: {} in self.holidays)
 
 
 class TestCA(unittest.TestCase):
