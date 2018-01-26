@@ -847,6 +847,68 @@ class TestNetherlands(unittest.TestCase):
         self.assertIn(date(2017, 12, 26), self.holidays)
 
 
+class TestEgypt(unittest.TestCase):
+
+    # Test data: https://www.officeholidays.com/countries/egypt/index.php
+
+    def setUp(self):
+        self.holidays = holidays.Egypt()
+
+    def test_coptic_christmas(self):
+        self.assertFalse(date(2018, 1, 6) in self.holidays)
+        self.assertTrue(date(2018, 1, 7) in self.holidays)
+        self.assertFalse(date(2018, 1, 8) in self.holidays)
+
+    def test_revolution_day(self):
+        self.assertFalse(date(2018, 1, 24) in self.holidays)
+        self.assertTrue(date(2018, 1, 25) in self.holidays)
+        self.assertFalse(date(2018, 1, 26) in self.holidays)
+
+    def test_coptic_spring_festival(self):
+        self.assertFalse(date(2018, 4, 8) in self.holidays)
+        self.assertTrue(date(2018, 4, 9) in self.holidays)
+        self.assertFalse(date(2018, 4, 10) in self.holidays)
+
+    def test_sinai_liberation(self):
+        self.assertFalse(date(2018, 4, 24) in self.holidays)
+        self.assertTrue(date(2018, 4, 25) in self.holidays)
+        self.assertFalse(date(2018, 4, 26) in self.holidays)
+
+    def test_end_of_ramadan(self):
+        self.assertFalse(date(2018, 6, 14) in self.holidays)
+        self.assertTrue(date(2018, 6, 15) in self.holidays)
+        self.assertTrue(date(2018, 6, 16) in self.holidays)
+        self.assertTrue(date(2018, 6, 17) in self.holidays)
+        self.assertFalse(date(2018, 6, 18) in self.holidays)
+
+    def test_revolution_day2(self):
+        self.assertFalse(date(2018, 7, 22) in self.holidays)
+        self.assertTrue(date(2018, 7, 23) in self.holidays)
+        self.assertFalse(date(2018, 7, 24) in self.holidays)
+
+    def test_eid_al_adha(self):
+        self.assertFalse(date(2018, 8, 21) in self.holidays)
+        self.assertTrue(date(2018, 8, 22) in self.holidays)
+        self.assertTrue(date(2018, 8, 23) in self.holidays)
+        self.assertTrue(date(2018, 8, 24) in self.holidays)
+        self.assertFalse(date(2018, 8, 25) in self.holidays)
+
+    def test_el_hijra(self):
+        self.assertFalse(date(2018, 9, 10) in self.holidays)
+        self.assertTrue(date(2018, 9, 11) in self.holidays)
+        self.assertFalse(date(2018, 9, 12) in self.holidays)
+
+    def test_armed_forces(self):
+        self.assertFalse(date(2018, 10, 5) in self.holidays)
+        self.assertTrue(date(2018, 10, 6) in self.holidays)
+        self.assertFalse(date(2018, 10, 7) in self.holidays)
+
+    def test_moulid_el_nabi(self):
+        self.assertFalse(date(2018, 11, 19) in self.holidays)
+        self.assertTrue(date(2018, 11, 20) in self.holidays)
+        self.assertFalse(date(2018, 11, 21) in self.holidays)
+
+
 class TestUS(unittest.TestCase):
 
     def setUp(self):

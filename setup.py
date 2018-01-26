@@ -38,7 +38,7 @@ setup(
     py_modules=['holidays'],
     description='Generate and work with holidays in Python',
     long_description=codecs.open('README.rst', encoding='utf-8').read(),
-    install_requires=['python-dateutil', 'six'],
+    install_requires=['python-dateutil', 'convertdate', 'six'],
     platforms='any',
     classifiers=[
         'Development Status :: 4 - Beta',
