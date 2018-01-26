@@ -2933,3 +2933,90 @@ class Finland(HolidayBase):
 
 class FI(Finland):
     pass
+
+
+class Switzerland(HolidayBase):
+    PROVINCES = ['AG', 'AR', 'AI', 'BL', 'BS', 'BE', 'FR', 'GE', 'GL', 'GR',
+                 'JU', 'LU', 'NE', 'NW', 'OW', 'SG', 'SH', 'SZ', 'SO', 'TG',
+                 'TI', 'UR', 'VD', 'VS', 'ZG', 'ZH']
+
+    def __init__(self, **kwargs):
+        self.country = 'CH'
+        self.prov = kwargs.pop('prov', 'LU')
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # public holidays
+        self[date(year, 1, 1)] = 'Neujahrestag'
+
+        if self.prov in ('AG', 'BE', 'FR', 'GE', 'GL', 'GR', 'JU', 'LU', 'NE',
+                         'OW', 'SH', 'SO', 'TG', 'VD', 'ZG', 'ZH'):
+            self[date(year, 1, 2)] = 'Berchtoldstag'
+
+        if self.prov in ('SZ', 'TI', 'UR'):
+            self[date(year, 1, 6)] = 'Heilige Drei Könige'
+
+        if self.prov == 'NE':
+            self[date(year, 3, 1)] = 'Jahrestag der Ausrufung der Republik'
+
+        if self.prov in ('NW', 'SZ', 'TI', 'UR', 'VS'):
+            self[date(year, 3, 19)] = 'Josefstag'
+
+        # Näfelser Fahrt (first thursday in April but not in holyweek)
+        if self.prov == 'GL' and year >= 1835:
+            if (date(year, 4, 1) + rd(weekday=FR)) != (easter(year) - rd(days=2)):
+                self[date(year, 4, 1) + rd(weekday=TH)] = 'Näfelser Fahrt'
+            else:
+                self[date(year, 4, 8) + rd(weekday=TH)] = 'Näfelser Fahrt'
+
+        # VS don't have easter
+        if self.prov != 'VS':
+            self[easter(year) - rd(days=2)] = 'Karfreitag'
+            self[easter(year) + rd(weekday=MO)] = 'Ostermontag'
+
+        if self.prov in ('BL', 'BS', 'JU', 'NE', 'SH', 'SO', 'TG', 'TI', 'ZH'):
+            self[date(year, 5, 1)] = 'Tag der Arbeit'
+
+        self[easter(year) + rd(days=39)] = 'Auffahrt'
+        self[easter(year) + rd(days=50)] = 'Pfingstmontag'
+
+        if self.prov in ('AI', 'JU', 'LU', 'NW', 'OW', 'SZ', 'TI', 'UR', 'VS', 'ZG'):
+            self[easter(year) + rd(days=60)] = 'Fronleichnam'
+
+        if self.prov == 'JU':
+            self[date(year, 6, 23)] = 'Fest der Unabhängigkeit'
+
+        if self.prov == 'TI':
+            self[date(year, 6, 23)] = 'Peter und Paul'
+
+        if year >= 1291:
+            self[date(year, 8, 1)] = 'Nationalfeiertag'
+
+        if self.prov in ('AI', 'JU', 'LU', 'NW', 'OW', 'SZ', 'TI', 'UR', 'VS', 'ZG'):
+            self[date(year, 8, 15)] = 'Maria Himmelfahrt'
+
+        if self.prov == 'OW':
+            self[date(year, 9, 25)] = 'Bruder Klaus'
+
+        if self.prov in ('AI', 'GL', 'JU', 'LU', 'NW', 'OW', 'SG', 'SZ', 'TI', 'UR', 'VS', 'ZG'):
+            self[date(year, 11, 1)] = 'Allerheiligen'
+
+        if self.prov in ('AI', 'LU', 'NW', 'OW', 'SZ', 'TI', 'UR', 'VS', 'ZG'):
+            self[date(year, 12, 8)] = 'Maria Empfängnis'
+
+        if self.prov == 'GE':
+            self[date(year, 12, 12)] = 'Escalade de Genève'
+
+        self[date(year, 12, 25)] = 'Weihnachten'
+
+        if self.prov in ('AG', 'AR', 'AI', 'BL', 'BS', 'BE', 'FR', 'GL',
+                         'GR', 'LU', 'NE', 'NW', 'OW', 'SG', 'SH', 'SZ',
+                         'SO', 'TG', 'TI', 'UR', 'ZG', 'ZH'):
+            self[date(year, 12, 26)] = 'Stephanstag'
+
+        if self.prov == 'GE':
+            self[date(year, 12, 31)] = 'Wiederherstellung der Republik'
+
+
+class CH(Switzerland):
+    pass
