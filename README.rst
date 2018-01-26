@@ -164,12 +164,12 @@ Methods:
 get(key, default=None)
     Returns a string containing the name of the holiday(s) in date `key`, which
     can be of date, datetime, string, unicode, bytes, integer or float type. If
-    multiple holidays fall on the same date the names will be seperated by
+    multiple holidays fall on the same date the names will be separated by
     commas
 
 get_list(key)
     Same as `get` except returns a `list` of holiday names instead of a comma
-    seperated string
+    separated string
 
 pop(key, default=None)
     Same as `get` except the key is removed from the holiday object
@@ -332,7 +332,7 @@ More Examples
 
     # We can also inherit from the HolidayBase class which has an empty
     # _populate method so we start with no holidays and must define them
-    # all ourself. This is how we would create a holidays class for a country
+    # all ourselves. This is how we would create a holidays class for a country
     # that is not supported yet.
 
     >>> class NewCountryHolidays(holidays.HolidayBase):
