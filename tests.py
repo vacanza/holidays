@@ -3846,7 +3846,7 @@ class TestSwitzerland(unittest.TestCase):
     def test_stephanstag(self):
         provinces_that_have = {'AG', 'AR', 'AI', 'BL', 'BS', 'BE', 'FR', 'GL',
                                'GR', 'LU', 'NE', 'NW', 'OW', 'SG', 'SH', 'SZ',
-                            'SO', 'TG', 'TI', 'UR', 'ZG', 'ZH'}
+                               'SO', 'TG', 'TI', 'UR', 'ZG', 'ZH'}
         provinces_that_dont = set(holidays.CH.PROVINCES) - provinces_that_have
 
         for province, year in product(provinces_that_have, range(1970, 2050)):
@@ -3862,6 +3862,7 @@ class TestSwitzerland(unittest.TestCase):
             self.assertTrue(date(year, 12, 31) in self.prov_hols[province])
         for province, year in product(provinces_that_dont, range(1970, 2050)):
             self.assertTrue(date(year, 12, 31) not in self.prov_hols[province])
+
 
 if __name__ == "__main__":
     unittest.main()
