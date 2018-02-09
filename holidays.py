@@ -224,8 +224,11 @@ class Canada(HolidayBase):
             self[date(year, 2, 1) + rd(weekday=MO(+3))] = "Family Day"
         elif self.prov == 'AB' and year >= 1990:
             self[date(year, 2, 1) + rd(weekday=MO(+3))] = "Family Day"
-        elif self.prov == 'BC' and year >= 2013:
-            self[date(year, 2, 1) + rd(weekday=MO(+2))] = "Family Day"
+        elif self.prov == 'BC':
+            if year >= 2013 and year <=2018:
+                self[date(year, 2, 1) + rd(weekday=MO(+2))] = "Family Day"
+            elif year > 2018:
+                self[date(year, 2, 1) + rd(weekday=MO(+3))] = "Family Day"
         elif self.prov == 'MB' and year >= 2008:
             self[date(year, 2, 1) + rd(weekday=MO(+3))] = "Louis Riel Day"
         elif self.prov == 'PE' and year >= 2010:
