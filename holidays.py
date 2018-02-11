@@ -2375,7 +2375,7 @@ class Italy(HolidayBase):
                 self[date(year, 6, 29)] = "Santi Pietro e Paolo"
             if self.prov == 'TS':
                 self[date(year, 11, 3)] = "San Giusto"
-            if self.prov == 'VI'
+            if self.prov == 'VI':
                 self[date(year, 4, 25)] = "San Marco"
 
 
