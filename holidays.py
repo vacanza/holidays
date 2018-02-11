@@ -2337,7 +2337,7 @@ class NO(Norway):
 
 
 class Italy(HolidayBase):
-    PROVINCES = ['MI', 'RM']
+    PROVINCES = ['BA', 'BO', 'FI', 'MI', 'NA', 'PA', 'RM', 'TS', 'VI']
 
     def __init__(self, **kwargs):
         self.country = 'IT'
@@ -2360,12 +2360,26 @@ class Italy(HolidayBase):
         self[date(year, 12, 25)] = "Natale"
         self[date(year, 12, 26)] = "Santo Stefano"
         # Provinces festive day
-        # TODO: add all provinces' saints
+        # TODO: Check if provinces' saints are correct
         if self.prov:
+            if self.prov == 'BA':
+                self[date(year, 12, 6)] = "San Nicola"
+            if self.prov == 'BO':
+                self[date(year, 10, 4)] = "San Petronio"
+            if self.prov == 'FI':
+                self[date(year, 6, 24)] = "San Giovanni"
             if self.prov == 'MI':
                 self[date(year, 12, 7)] = "Sant'Ambrogio"
+            if self.prov == 'NA':
+                self[date(year, 9, 19)] = "San Gennaro"
+            if self.prov == 'PA':
+                self[date(year, 7, 15)] = "San Giovanni"
             if self.prov == 'RM':
                 self[date(year, 6, 29)] = "Santi Pietro e Paolo"
+            if self.prov == 'TS':
+                self[date(year, 11, 3)] = "San Giusto"
+            if self.prov == 'VI'
+                self[date(year, 4, 25)] = "San Marco"
 
 
 class IT(Italy):
