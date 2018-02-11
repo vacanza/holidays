@@ -3143,10 +3143,24 @@ class TestItaly(unittest.TestCase):
         self.assertIn(date(2017, 12, 26), self.holidays)
 
     def test_province_specific_days(self):
+        prov_ba = (holidays.IT(prov='BA', years=[2017]))
+        prov_bo = (holidays.IT(prov='BO', years=[2017]))
+        prov_fi = (holidays.IT(prov='FI', years=[2017]))
         prov_mi = (holidays.IT(prov='MI', years=[2017]))
+        prov_na = (holidays.IT(prov='NA', years=[2017]))
+        prov_pa = (holidays.IT(prov='PA', years=[2017]))
         prov_rm = (holidays.IT(prov='RM', years=[2017]))
+        prov_ts = (holidays.IT(prov='TS', years=[2017]))
+        prov_vi = (holidays.IT(prov='VI', years=[2017]))
+        self.assertIn("2017-12-06", prov_ba)
+        self.assertIn("2017-10-04", prov_bo)
+        self.assertIn("2017-06-24", prov_fi)
         self.assertIn("2017-12-08", prov_mi)
+        self.assertIn("2017-09-19", prov_na)
+        self.assertIn("2017-07-15", prov_pa)
         self.assertIn("2017-06-29", prov_rm)
+        self.assertIn("2017-11-03", prov_ts)
+        self.assertIn("2017-04-25", prov_vi)
 
 
 class TestSweden(unittest.TestCase):
