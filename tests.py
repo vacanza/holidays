@@ -445,7 +445,7 @@ class TestCA(unittest.TestCase):
             self.assertIn(dt, ab_holidays)
             self.assertIn(dt, bc_holidays)
             self.assertIn(dt, mb_holidays)
-            self.assertIn(dt, sk_holidays)       
+            self.assertIn(dt, sk_holidays)
         for dt in [date(2013, 2, 11), date(2016, 2, 8), date(2020, 2, 10)]:
             self.assertNotIn(dt, self.holidays)
             self.assertNotIn(dt, ab_holidays)
