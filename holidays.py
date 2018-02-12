@@ -2337,7 +2337,17 @@ class NO(Norway):
 
 
 class Italy(HolidayBase):
-    PROVINCES = ['MI', 'RM']
+    PROVINCES = ['Ancona', 'Aosta', 'Bari', 'BA', 'Belluno', 'Bologna', 'BO',
+                 'Bolzano', 'Brescia', 'Campobasso', 'Catania', 'Cesena',
+                 'Chieti', 'Cosenza', 'Crotone', 'Enna', 'Ferrara', 'Firenze',
+                 'FI', 'Forli', 'Frosinone', 'Genova', 'Gorizia', 'Isernia', 'La Spezia',
+                 'Latina', 'Mantova', 'Massa', 'Milano', 'MI', 'Modena', 'Monza',
+                 'Napoli', 'NA', 'Padova', 'Palermo', 'Parma', 'Perugia', 'Pescara',
+                 'Piacenza', 'Pisa', 'Pordenone', 'Potenza', 'Ravenna',
+                 'Reggio Emilia', 'Rieti', 'Rimini', 'Roma', 'Rovigo',
+                 'Salerno', 'Siracusa', 'Teramo', 'Torino', 'Trieste', 'Urbino',
+                 'Venezia', 'Vicenza',
+                 'PA', 'RM', 'TS', 'VI']
 
     def __init__(self, **kwargs):
         self.country = 'IT'
@@ -2360,12 +2370,85 @@ class Italy(HolidayBase):
         self[date(year, 12, 25)] = "Natale"
         self[date(year, 12, 26)] = "Santo Stefano"
         # Provinces festive day
-        # TODO: add all provinces' saints
+        # TODO: Complete all holidays and write tests
+        # Missing:
+        # 'Padova', 'Palermo', 'Parma', 'Perugia', 'Pescara',
+        # 'Piacenza', 'Pisa', 'Pordenone', 'Potenza', 'Ravenna',
+        # 'Reggio Emilia', 'Rieti', 'Rimini', 'Roma', 'Rovigo',
+        # 'Salerno', 'Siracusa', 'Teramo', 'Torino', 'Trieste', 'Urbino',
+        # 'Venezia', 'Vicenza'
         if self.prov:
-            if self.prov == 'MI':
+            if self.prov == 'Ancona':
+                self[date(year, 5, 4)] = "San Ciriaco"
+            elif self.prov == 'Aosta':
+                self[date(year, 9, 7)] = "San Grato"
+            elif self.prov in ('Bari', 'BA'):
+                self[date(year, 12, 6)] = "San Nicola"
+                self[date(year, 5, 7)] = "San Nicola"
+                self[date(year, 5, 8)] = "San Nicola"
+                self[date(year, 5, 9)] = "San Nicola"
+            elif self.prov == 'Belluno':
+                self[date(year, 11, 11)] = "San Martino"
+            elif self.prov in ('Bologna', 'BO'):
+                self[date(year, 10, 4)] = "San Petronio"
+            elif self.prov == 'Bolzano':
+                self[date(year, 8, 15)] = "Maria Santissima Assunta"
+            elif self.prov == 'Brescia':
+                self[date(year, 2, 15)] = "Santi Faustino e Giovita"
+            elif self.prov == 'Campobasso':
+                self[date(year, 4, 23)] = "San Giorgio"
+            elif self.prov == 'Catania':
+                self[date(year, 2, 5)] = "Sant'Agata"
+            elif self.prov == 'Cesena':
+                self[date(year, 6, 24)] = "San Giovanni Battista"
+            elif self.prov == 'Chieti':
+                self[date(year, 5, 11)] = "San Giustino di Chieti"
+            elif self.prov == 'Cosenza':
+                self[date(year, 2, 12)] = "Madonna del Pilerio"
+            elif self.prov == 'Crotone':
+                self[date(year, 10, 9)] = "San Dionigi"
+            elif self.prov == 'Enna':
+                self[date(year, 7, 2)] = "Madonna della Visitazione"
+            elif self.prov == 'Ferrara':
+                self[date(year, 4, 22)] = "San Giorgio"
+            elif self.prov in ('Firenze', 'FI'):
+                self[date(year, 6, 24)] = "San Giovanni Battista"
+            elif self.prov == 'Forli':
+                self[date(year, 2, 4)] = "Madonna del Fuoco"
+            elif self.prov == 'Frosinone':
+                self[date(year, 6, 20)] = "San Silverio"
+            elif self.prov == 'Genova':
+                self[date(year, 6, 24)] = "San Giovanni Battista"
+            elif self.prov == 'Gorizia':
+                self[date(year, 3, 16)] = "Santi Ilario e Taziano"
+            elif self.prov == 'Isernia':
+                self[date(year, 5, 19)] = "San Pietro Celestino"
+            elif self.prov == 'La Spezia':
+                self[date(year, 3, 19)] = "San Giuseppe"
+            elif self.prov == 'Latina':
+                self[date(year, 4, 25)] = "San Marco evangelista"
+                self[date(year, 7, 6)] = "San Marco evangelista"
+            elif self.prov == 'Mantova':
+                self[date(year, 3, 18)] = "Sant'Anselmo da Baggio"
+            elif self.prov == 'Massa':
+                self[date(year, 10, 4)] = "San Francesco d'Assisi"
+            elif self.prov in ('Milano', 'MI'):
                 self[date(year, 12, 7)] = "Sant'Ambrogio"
-            if self.prov == 'RM':
+            elif self.prov == 'Modena':
+                self[date(year, 1, 31)] = "San Geminiano"
+            elif self.prov == 'Monza':
+                self[date(year, 6, 24)] = "San Giovanni Battista"
+            elif self.prov in ('Napoli', 'NA'):
+                self[date(year, 9, 19)] = "San Gennaro"
+
+            elif self.prov == 'PA':
+                self[date(year, 7, 15)] = "San Giovanni"
+            elif self.prov == 'RM':
                 self[date(year, 6, 29)] = "Santi Pietro e Paolo"
+            elif self.prov == 'TS':
+                self[date(year, 11, 3)] = "San Giusto"
+            elif self.prov == 'VI':
+                self[date(year, 4, 25)] = "San Marco"
 
 
 class IT(Italy):
