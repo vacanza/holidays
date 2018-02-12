@@ -2337,16 +2337,17 @@ class NO(Norway):
 
 
 class Italy(HolidayBase):
-    PROVINCES = ['Ancona', 'Aosta', 'Bari', 'Belluno', 'Bologna', 'Bolzano',
-                 'Brescia', 'Campobasso', 'Catania', 'Cesena', 'Chieti',
-                 'Cosenza', 'Crotone', 'Enna', 'Ferrara', 'Firenze', 'Forli',
-                 'Frosinone', 'Genova', 'Gorizia', 'Isernia', 'La Spezia',
-                 'Latina', 'Mantova', 'Massa', 'Milano', 'Modena', 'Monza',
-                 'Napoli', 'Padova', 'Palermo', 'Parma', 'Perugia', 'Pescara',
+    PROVINCES = ['Ancona', 'Aosta', 'Bari', 'BA', 'Belluno', 'Bologna', 'BO',
+                 'Bolzano', 'Brescia', 'Campobasso', 'Catania', 'Cesena',
+                 'Chieti', 'Cosenza', 'Crotone', 'Enna', 'Ferrara', 'Firenze',
+                 'FI', 'Forli', 'Frosinone', 'Genova', 'Gorizia', 'Isernia', 'La Spezia',
+                 'Latina', 'Mantova', 'Massa', 'Milano', 'MI', 'Modena', 'Monza',
+                 'Napoli', 'NA', 'Padova', 'Palermo', 'Parma', 'Perugia', 'Pescara',
                  'Piacenza', 'Pisa', 'Pordenone', 'Potenza', 'Ravenna',
                  'Reggio Emilia', 'Rieti', 'Rimini', 'Roma', 'Rovigo',
                  'Salerno', 'Siracusa', 'Teramo', 'Torino', 'Trieste', 'Urbino',
-                 'Venezia', 'Vicenza']
+                 'Venezia', 'Vicenza',
+                 'PA', 'RM', 'TS', 'VI']
 
     def __init__(self, **kwargs):
         self.country = 'IT'
