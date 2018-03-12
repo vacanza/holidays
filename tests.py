@@ -384,6 +384,18 @@ class TestKeyTransforms(unittest.TestCase):
             (TypeError, ValueError), lambda: {} in self.holidays)
 
 
+class TestCountryHoliday(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.CountryHoliday('US')
+
+    def test_country(self):
+        self.assertEqual(self.holidays.country, 'US')
+
+    def test_exceptions(self):
+        self.assertRaises((KeyError), lambda: holidays.CountryHoliday('XXXX'))
+
+
 class TestCA(unittest.TestCase):
 
     def setUp(self):
