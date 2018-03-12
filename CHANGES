@@ -1,3 +1,11 @@
+Version 0.9.4
+=============
+
+Released March 12, 2018
+
+- Added CountryHoliday(country_name) method
+- Various inspection fixes
+
 Version 0.9.2
 =============
 

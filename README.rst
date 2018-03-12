@@ -28,7 +28,7 @@ Example Usage
 
     import holidays
 
-    us_holidays = holidays.UnitedStates()  # or holidays.US()
+    us_holidays = holidays.UnitedStates()  # or holidays.US(), or holidays.CountryHoliday('US')
 
     date(2015, 1, 1) in us_holidays  # True
     date(2015, 1, 2) in us_holidays  # False
