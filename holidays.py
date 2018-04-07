@@ -205,49 +205,23 @@ class Argentina(HolidayBase):
         self.country = 'AR'
         HolidayBase.__init__(self, **kwargs)
 
-    def _get_carnival_holiday(self, year):
-        if year == 2016:
-            return (date(year, 2, 8), date(year, 2, 9))
-        elif year == 2017:
-            return (date(year, 2, 27), date(year, 2, 28))
-        elif year == 2018:
-            return (date(year, 2, 12), date(year, 2, 13))
-        elif year == 2019:
-            return (date(year, 3, 4), date(year, 3, 5))
-        else:
-            return (None, None)
-
-    def _holy_week(self, year):
-        if year == 2016:
-            return (date(year, 3, 24), date(year, 3, 25))
-        elif year == 2017:
-            return (date(year, 4, 13), date(year, 4, 14))
-        elif year == 2018:
-            return (date(year, 3, 29), date(year, 3, 30))
-        elif year == 2019:
-            return (date(year, 4, 18), date(year, 4, 19))
-        else:
-            return (None, None)
-
     def _populate(self, year):
         # New Year's Day
-        if self.observed and date(year, 1, 1).weekday() in WEEKEND:
+        if not self.observed and date(year, 1, 1).weekday() in WEEKEND:
             pass
         else:
             self[date(year, 1, 1)] = "Año Nuevo [New Year's Day]"
 
         # Carnival days
         name = "Día de Carnaval [Carnival's Day]"
-        carnaval_day1, carnaval_day2 = self._get_carnival_holiday(year)
-        if carnaval_day1 is not None:
-            self[carnaval_day1] = name
-            self[carnaval_day2] = name
+        self[easter(year) - rd(days=48)] = name
+        self[easter(year) - rd(days=47)] = name
 
         # Memory's National Day for the Truth and Justice
         name = "Día Nacional de la Memoria por la Verdad y la Justicia " \
                "[Memory's National Day for the Truth and Justice]"
 
-        if self.observed and date(year, 3, 24).weekday() in WEEKEND:
+        if not self.observed and date(year, 3, 24).weekday() in WEEKEND:
             pass
         else:
             self[date(year, 3, 24)] = name
@@ -255,29 +229,34 @@ class Argentina(HolidayBase):
         # Holy Week
         name_thu = "Semana Santa (Jueves Santo)  [Holy day (Holy Thursday)]"
         name_fri = "Semana Santa (Viernes Santo)  [Holy day (Holy Friday)]"
-        holy_thu, holy_fri = self._get_holy_week(year)
-        if holy_thu is not None:
-            self[holy_thu] = name_thu
-            self[holy_fri] = name_fri
+        name_easter = 'Día de Pascuas [Easter Day]'
+
+        self[easter(year) + rd(weekday=TH(-1))] = name_thu
+        self[easter(year) + rd(weekday=FR(-1))] = name_fri
+
+        if not self.observed and easter(year).weekday() in WEEKEND:
+            pass
+        else:
+            self[easter(year)] = name_easter
 
         # Veterans Day and the Fallen in the Malvinas War
-        if self.observed and date(year, 4, 2).weekday() in WEEKEND:
+        if not self.observed and date(year, 4, 2).weekday() in WEEKEND:
             pass
         else:
             self[date(year, 4, 2)] = "Día del Veterano y de los Caidos " \
                                      "en la Guerra de Malvinas [Veterans Day" \
-                                     "and the Fallen in the Malvinas War"
+                                     "and the Fallen in the Malvinas War]"
 
         # Labor Day
         name = "Día del Trabajo [Labour Day]"
-        if self.observed and date(year, 5, 1).weekday() in WEEKEND:
+        if not self.observed and date(year, 5, 1).weekday() in WEEKEND:
             pass
         else:
             self[date(year, 5, 1)] = name
 
         # May Revolution Day
         name = "Día de la Revolucion de Mayo [May Revolution Day]"
-        if self.observed and date(year, 5, 25).weekday() in WEEKEND:
+        if not self.observed and date(year, 5, 25).weekday() in WEEKEND:
             pass
         else:
             self[date(year, 5, 25)] = name
@@ -286,7 +265,7 @@ class Argentina(HolidayBase):
         name = "Día Pase a la Inmortalidad " \
                "del General Martín Miguel de Güemes [Day Pass " \
                "to the Immortality of General Martín Miguel de Güemes]"
-        if self.observed and date(year, 6, 17).weekday() in WEEKEND:
+        if not self.observed and date(year, 6, 17).weekday() in WEEKEND:
             pass
         else:
             self[date(year, 6, 17)] = name
@@ -295,14 +274,14 @@ class Argentina(HolidayBase):
         name = "Día Pase a la Inmortalidad " \
                "del General D. Manuel Belgrano [Day Pass " \
                "to the Immortality of General D. Manuel Belgrano]"
-        if self.observed and date(year, 6, 20).weekday() in WEEKEND:
+        if not self.observed and date(year, 6, 20).weekday() in WEEKEND:
             pass
         else:
             self[date(year, 6, 20)] = name
 
         # Independence Day
         name = "Día de la Independencia [Independence Day]"
-        if self.observed and date(year, 7, 9).weekday() in WEEKEND:
+        if not self.observed and date(year, 7, 9).weekday() in WEEKEND:
             pass
         else:
             self[date(year, 7, 9)] = name
@@ -311,13 +290,13 @@ class Argentina(HolidayBase):
         name = "Día Pase a la Inmortalidad " \
                "del General D. José de San Martin [Day Pass " \
                "to the Immortality of General D. José de San Martin]"
-        if self.observed and date(year, 8, 17).weekday() in WEEKEND:
+        if not self.observed and date(year, 8, 17).weekday() in WEEKEND:
             pass
         else:
             self[date(year, 8, 17)] = name
 
         # Respect for Cultural Diversity Day or Columbus day
-        if self.observed and date(year, 10, 12).weekday() in WEEKEND:
+        if not self.observed and date(year, 10, 12).weekday() in WEEKEND:
             pass
         elif year < 2010:
             self[date(year, 10, 12)] = "Día de la Raza [Columbus day]"
@@ -327,13 +306,13 @@ class Argentina(HolidayBase):
                                        "Diversity Day]"
         # National Sovereignty Day
         name = "Día Nacional de la Soberanía [National Sovereignty Day]"
-        if self.observed and date(year, 11, 20).weekday() in WEEKEND:
+        if not self.observed and date(year, 11, 20).weekday() in WEEKEND:
             pass
         elif year >= 2010:
             self[date(year, 11, 20)] = name
 
         # Immaculate Conception
-        if self.observed and date(year, 12, 8).weekday() in WEEKEND:
+        if not self.observed and date(year, 12, 8).weekday() in WEEKEND:
             pass
         else:
             self[date(year, 12, 8)

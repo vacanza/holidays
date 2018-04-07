@@ -3882,5 +3882,127 @@ class TestSwitzerland(unittest.TestCase):
             self.assertTrue(date(year, 12, 31) not in self.prov_hols[province])
 
 
+class TestAR(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.AR(observed=True)
+
+    def test_new_years(self):
+        self.holidays.observed = False
+        self.assertNotIn(date(2010, 12, 31), self.holidays)
+        self.assertNotIn(date(2017,  1,  2), self.holidays)
+        self.holidays.observed = True
+        self.assertIn(date(2017,  1,  1), self.holidays)
+        for year in range(1900, 2100):
+            dt = date(year, 1, 1)
+            self.assertIn(dt, self.holidays)
+            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
+            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+
+    def test_carnival_day(self):
+        for dt in [date(2018, 2, 12), date(2018, 2, 13), date(2017, 2, 27),
+                   date(2017, 2, 28), date(2016, 2, 8), date(2016, 2, 9)]:
+            self.assertIn(dt, self.holidays)
+
+    def test_memory_national_day(self):
+        for dt in [date(2018, 3, 24), date(2017, 3, 24),
+                   date(2016, 3, 24)]:
+            self.assertIn(dt, self.holidays)
+
+    def test_holy_week_day(self):
+        for dt in [date(2018, 3, 29), date(2018, 3, 30), date(2017, 4, 13),
+                   date(2017, 4, 14), date(2016, 3, 24), date(2016, 3, 25)]:
+            self.assertIn(dt, self.holidays)
+
+    def test_malvinas_war_day(self):
+        for year in range(1900, 2100):
+            dt = date(year, 4, 2)
+            self.assertIn(dt, self.holidays)
+
+    def test_labor_day(self):
+        self.holidays.observerd = False
+        self.assertNotIn(date(2010, 4, 30), self.holidays)
+        self.assertNotIn(date(2011, 5,  2), self.holidays)
+        self.holidays.observed = True
+        self.assertIn(date(1922, 5, 1), self.holidays)
+        for year in range(1900, 2100):
+            dt = date(year, 5, 1)
+            self.assertIn(dt, self.holidays)
+            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
+            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+
+    def test_may_revolution_day(self):
+        for year in range(1900, 2100):
+            dt = date(year, 5, 1)
+            self.assertIn(dt, self.holidays)
+            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
+            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+
+    def test_guemes_day(self):
+        for year in range(1900, 2100):
+            dt = date(year, 6, 17)
+            self.assertIn(dt, self.holidays)
+            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
+            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+
+    def test_belgrano_day(self):
+        for year in range(1900, 2100):
+            dt = date(year, 6, 20)
+            self.assertIn(dt, self.holidays)
+            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
+            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+
+    def test_independence_day(self):
+        self.holidays.observed = False
+        self.assertNotIn(date(2017, 7, 9), self.holidays)
+        self.assertNotIn(date(2011, 7, 9), self.holidays)
+        self.holidays.observed = True
+        self.assertIn(date(2017, 7, 9), self.holidays)
+        self.assertIn(date(2011, 7, 9), self.holidays)
+        for year in range(1900, 2100):
+            dt = date(year, 7, 9)
+            self.assertIn(dt, self.holidays)
+            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
+            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+
+    def test_san_martin_day(self):
+        for year in range(1900, 2100):
+            dt = date(year, 8, 17)
+            self.assertIn(dt, self.holidays)
+            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
+            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+
+    def test_cultural_day(self):
+        for year in range(1900, 2100):
+            dt = date(year, 10, 12)
+            self.assertIn(dt, self.holidays)
+            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
+            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+
+    def test_national_sovereignty_day(self):
+        for year in range(1900, 2100):
+            dt = date(year, 11, 20)
+            if year < 2010:
+                self.assertNotIn(dt, self.holidays)
+            else:
+                self.assertIn(dt, self.holidays)
+                self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
+                self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+
+    def test_inmaculate_conception_day(self):
+        for year in range(1900, 2100):
+            dt = date(year, 12, 8)
+            self.assertIn(dt, self.holidays)
+            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
+            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+
+    def test_christmas(self):
+        for year in range(1900, 2100):
+            dt = date(year, 12, 25)
+            self.assertIn(dt, self.holidays)
+            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
+            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+
+
 if __name__ == "__main__":
     unittest.main()
