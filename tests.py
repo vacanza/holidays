@@ -3905,6 +3905,10 @@ class TestAR(unittest.TestCase):
             self.assertIn(dt, self.holidays)
 
     def test_memory_national_day(self):
+        self.holidays.observed = False
+        self.assertNotIn(date(1907, 3, 24), self.holidays)
+        self.assertNotIn(date(2002, 3, 24), self.holidays)
+        self.holidays.observed = True
         for dt in [date(2018, 3, 24), date(2017, 3, 24),
                    date(2016, 3, 24)]:
             self.assertIn(dt, self.holidays)
@@ -3932,6 +3936,10 @@ class TestAR(unittest.TestCase):
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
 
     def test_may_revolution_day(self):
+        self.holidays.observed = False
+        self.assertNotIn(date(1930, 5, 25), self.holidays)
+        self.assertNotIn(date(2014, 5, 25), self.holidays)
+        self.holidays.observed = True
         for year in range(1900, 2100):
             dt = date(year, 5, 1)
             self.assertIn(dt, self.holidays)
@@ -3966,6 +3974,10 @@ class TestAR(unittest.TestCase):
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
 
     def test_san_martin_day(self):
+        self.holidays.observed = False
+        self.assertNotIn(date(1930, 8, 10), self.holidays)
+        self.assertNotIn(date(2008, 8, 10), self.holidays)
+        self.holidays.observed = True
         for year in range(1900, 2100):
             dt = date(year, 8, 17)
             self.assertIn(dt, self.holidays)
@@ -3973,6 +3985,10 @@ class TestAR(unittest.TestCase):
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
 
     def test_cultural_day(self):
+        self.holidays.observed = False
+        self.assertNotIn(date(2014, 10, 12), self.holidays)
+        self.assertNotIn(date(1913, 10, 12), self.holidays)
+        self.holidays.observed = True
         for year in range(1900, 2100):
             dt = date(year, 10, 12)
             self.assertIn(dt, self.holidays)
@@ -3990,6 +4006,10 @@ class TestAR(unittest.TestCase):
                 self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
 
     def test_inmaculate_conception_day(self):
+        self.holidays.observed = False
+        self.assertNotIn(date(1940, 12, 8), self.holidays)
+        self.assertNotIn(date(2013, 12, 8), self.holidays)
+        self.holidays.observed = True
         for year in range(1900, 2100):
             dt = date(year, 12, 8)
             self.assertIn(dt, self.holidays)
