@@ -3043,3 +3043,56 @@ class Switzerland(HolidayBase):
 
 class CH(Switzerland):
     pass
+
+class Hungary(HolidayBase):
+    # https://en.wikipedia.org/wiki/Public_holidays_in_Hungary
+    
+    def __init__(self, **kwargs):
+        self.country = "HU"
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # New years
+        self[date(year, 1, 1)] = "Újév"
+
+        # National Day
+        self[date(year, 3, 15)] = "Nemzeti ünnep"
+
+        easter_date = easter(year)
+
+        # Good Friday
+        self[easter_date + rd(weekday=FR(-1)) = "Nagypéntek"
+
+        # Easter
+        self[easter_date] = "Húsvét"
+
+        # Second easter day
+        self[easter_date + rd(days=1)] = "Húsvét Hétfő"
+
+        # Pentecost
+        self[easter_date + rd(days=49)] = "Pünkösd"
+
+        # Pentecost monday
+        self[easter_date + rd(days=50)] = "Pünkösdhétfő"
+
+        # International Workers' Day
+        self[date(year, 5, 1)] = "A Munka ünnepe"
+
+        # State Foundation Day
+        self[date(year, 8, 20)] = "Az államalapítás ünnepe"
+
+        # National Day
+        self[date(year, 10, 23)] = "Nemzeti ünnep"
+
+        # All Saints' Day
+        self[date(year, 11, 1)] = "Mindenszentek"
+
+        # First christmas
+        self[date(year, 12, 25)] = "Karácsony"
+
+        # Second christmas
+        self[date(year, 12, 26)] = "Karácsony másnapja"
+
+
+class Hu(Hungary):
+    pass
