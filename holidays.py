@@ -3095,5 +3095,5 @@ class Hungary(HolidayBase):
         self[date(year, 12, 26)] = "Karácsony másnapja"
 
 
-class Hu(Hungary):
+class HU(Hungary):
     pass
