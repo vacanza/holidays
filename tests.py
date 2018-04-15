@@ -3613,6 +3613,27 @@ class TestFinland(unittest.TestCase):
                          "Juhannuspäivä")
 
 
+class TestHungary(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.HU()
+
+    def test_2017(self):
+        self.assertIn(date(2018, 1, 1), self.holidays) #newyear
+        self.assertIn(date(2018, 3, 15), self.holidays) #national holiday
+        self.assertIn(date(2018, 3, 30), self.holidays) #good friday
+        self.assertIn(date(2018, 4, 1), self.holidays) #easter 1.
+        self.assertIn(date(2018, 4, 2), self.holidays) #easter 2.
+        self.assertIn(date(2018, 5, 1), self.holidays) # International Workers' Day
+        self.assertIn(date(2018, 5, 20), self.holidays) # Pentecost
+        self.assertIn(date(2018, 5, 21), self.holidays)# Pentecost monday
+        self.assertIn(date(2018, 8, 20), self.holidays) # State Foundation Day
+        self.assertIn(date(2018, 10, 23), self.holidays) # National Day
+        self.assertIn(date(2018, 11, 1), self.holidays) # All Saints' Day
+        self.assertIn(date(2018, 12, 25), self.holidays) # First christmas
+        self.assertIn(date(2018, 12, 26), self.holidays) # Second christmas
+
+
 class TestSwitzerland(unittest.TestCase):
 
     def setUp(self):
