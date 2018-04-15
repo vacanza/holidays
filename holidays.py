@@ -3044,9 +3044,10 @@ class Switzerland(HolidayBase):
 class CH(Switzerland):
     pass
 
+
 class Hungary(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Hungary
-    
+
     def __init__(self, **kwargs):
         self.country = "HU"
         HolidayBase.__init__(self, **kwargs)
@@ -3061,7 +3062,7 @@ class Hungary(HolidayBase):
         easter_date = easter(year)
 
         # Good Friday
-        self[easter_date + rd(weekday=FR(-1)) = "Nagypéntek"
+        self[easter_date + rd(weekday=FR(-1))] = "Nagypéntek"
 
         # Easter
         self[easter_date] = "Húsvét"
