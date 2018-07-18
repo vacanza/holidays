@@ -3235,8 +3235,7 @@ class India(HolidayBase):
     https://en.wikipedia.org/wiki/Public_holidays_in_India
     https://www.calendarlabs.com/holidays/india/
     https://slusi.dacnet.nic.in/watershedatlas/list_of_state_abbreviation.htm
-    '''
-    
+    ''' 
     PROVINCES = ['AS','CG','SK','KA','GJ','BR','RJ','OD','TN', 'AP', 'WB', 'KL', 'HR', 'MH', 'MP', 'UP', 'UK', 'TN']
     def __init__(self, **kwargs):
         self.country = "IND"
@@ -3324,25 +3323,3 @@ class India(HolidayBase):
         
 class IND(India):
     pass
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    
