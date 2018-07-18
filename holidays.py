@@ -1,4 +1,4 @@
-0# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 #  python-holidays
 #  ---------------
@@ -3245,7 +3245,7 @@ class India(HolidayBase):
 
     def _populate(self, year):
         # New year
-        self[date(year, 1, 1)]= "New Year"
+        self[date(year, 1, 1)] = "New Year"
 
         # Pongal/ Makar Sankranti
         self[date(year, 1, 14)] = "Makar Sankranti / Pongal"
@@ -3284,7 +3284,8 @@ class India(HolidayBase):
             self[date(year, 4, 1)] = "Odisha Day (Utkala Dibasa)"
             self[date(year, 4, 15)] = "Maha Vishuva Sankranti / Pana Sankranti"
 
-        if self.prov in ('OD', 'AP', 'BR', 'WB', 'KL', 'HR', 'MH', 'UP', 'UK', 'TN'):
+        if self.prov in ('OD', 'AP', 'BR', 'WB', 'KL',
+                         'HR', 'MH', 'UP', 'UK', 'TN'):
             self[date(year, 4, 14)] = "Dr. B. R. Ambedkar's Jayanti"
 
         if self.prov == 'TN':
