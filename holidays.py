@@ -73,6 +73,7 @@ class HolidayBase(dict):
                 raise ValueError("Cannot parse date from string '%s'" % key)
         else:
             raise TypeError("Cannot convert type '%s' to date." % type(key))
+
         if self.expand and key.year not in self.years:
             self.years.add(key.year)
             self._populate(key.year)
