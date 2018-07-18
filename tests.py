@@ -3618,7 +3618,7 @@ class TestHungary(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.HU()
 
-    def test_2017(self):
+    def test_2018(self):
         self.assertIn(date(2018, 1, 1), self.holidays)  # newyear
         self.assertIn(date(2018, 3, 15), self.holidays)  # national holiday
         self.assertIn(date(2018, 3, 30), self.holidays)  # good friday
@@ -4044,6 +4044,20 @@ class TestAR(unittest.TestCase):
             self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
 
+
+class TestIND(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.India()
+
+    def test_2018(self):
+        self.assertIn(date(2018, 1, 1), self.holidays)
+        self.assertIn(date(2018, 10, 2), self.holidays)
+        self.assertIn(date(2018, 8, 15), self.holidays)
+        self.assertIn(date(2018, 1, 26), self.holidays)
+        self.assertIn(date(2018, 12, 25), self.holidays)
+        self.assertIn(date(2018, 5, 1), self.holidays)
+        
 
 if __name__ == "__main__":
     unittest.main()
