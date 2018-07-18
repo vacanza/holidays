@@ -3265,7 +3265,6 @@ class India(HolidayBase):
         
         #Christmas
         self[date(year, 12, 25)] = "Christmas"
-        
     
         #GJ: Gujarat
         if self.prov =="GJ":
@@ -3273,56 +3272,54 @@ class India(HolidayBase):
             self[date(year, 5, 1)] = "Gujarat Day"
             self[date(year, 10, 31)] = "Sardar Patel Jayanti"
         
-        
-        if self.prov == ('BR'):
+        if self.prov == 'BR':
             self[date(year, 3, 22)] = "Bihar Day"
         
-        if self.prov == ('RJ'):
+        if self.prov == 'RJ':
             self[date(year, 3, 30)] = "Rajasthan Day"
             self[date(year, 6, 15)] = "Maharana Pratap Jayanti"
-            
-            
-        if self.prov == ('OD'):
+
+        if self.prov == 'OD':
             self[date(year, 4, 1)] = "Odisha Day (Utkala Dibasa)"
             self[date(year, 4, 15)] = "Maha Vishuva Sankranti / Pana Sankranti"
         
         if self.prov in ('OD', 'AP', 'BR', 'WB', 'KL', 'HR', 'MH', 'UP', 'UK', 'TN'):
             self[date(year, 4, 14)] = "Dr. B. R. Ambedkar's Jayanti"
         
-        if self.prov == ('TN'):
+        if self.prov == 'TN':
             self[date(year, 4, 14)] = "Puthandu (Tamil New Year)"
             self[date(year, 4, 15)] = "Puthandu (Tamil New Year)"
         
-        if self.prov == ('WB'):
+        if self.prov == 'WB':
             self[date(year, 4, 14)] = "Pohela Boishakh"
             self[date(year, 4, 15)] = "Pohela Boishakh"
             self[date(year, 5, 9)] = "Rabindra Jayanti"
                 
-        if self.prov == ('AS'):
+        if self.prov == 'AS':
             self[date(year, 4, 15)] = "Bihu (Assamese New Year)"
         
-        if self.prov == ('MH'):
+        if self.prov == 'MH':
             self[date(year, 5, 1)] = "Maharashtra Day"
         
-        if self.prov == ('SK'):
+        if self.prov == 'SK':
             self[date(year, 5, 16)] = "Annexation Day"
         
-        if self.prov == ('KA'):
+        if self.prov == 'KA':
             self[date(year, 11, 1)] = "Karnataka Rajyotsava"
         
-        if self.prov == ('AP'):
+        if self.prov == 'AP':
             self[date(year, 11, 1)] = "Andhra Pradesh Foundation Day"
         
-        if self.prov == ('HR'):
+        if self.prov == 'HR':
             self[date(year, 11, 1)] = "Haryana Foundation Day"
         
-        if self.prov == ('MP'):
+        if self.prov == 'MP':
             self[date(year, 11, 1)] = "Madhya Pradesh Foundation Day"
         
-        if self.prov == ('KL'):
+        if self.prov == 'KL':
             self[date(year, 11, 1)] = "Kerala Foundation Day"
         
-        if self.prov == ('CG'):
+        if self.prov == 'CG':
             self[date(year, 11, 1)] = "Chhattisgarh Foundation Day"
         
 class IND(India):

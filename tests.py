@@ -4048,7 +4048,7 @@ class TestAR(unittest.TestCase):
 class TestIND(unittest.TestCase):
 
     def setUp(self):
-        self.holidays = holidays.India()
+        self.holidays = holidays.IND()
 
     def test_2018(self):
         self.assertIn(date(2018, 1, 1), self.holidays)
@@ -4057,6 +4057,18 @@ class TestIND(unittest.TestCase):
         self.assertIn(date(2018, 1, 26), self.holidays)
         self.assertIn(date(2018, 12, 25), self.holidays)
         self.assertIn(date(2018, 5, 1), self.holidays)
+        gj_holidays = holidays.IND(prov="GJ")
+        as_holidays = holidays.IND(prov="AS")
+        tn_holidays = holidays.IND(prov="TN")
+        wb_holidays = holidays.IND(prov="WB")
+        for dt in ([date(2018, 1, 14),date(2018, 5, 1),date(2018, 10, 31)]):
+            self.assertIn(dt, gj_holidays)
+        self.assertIn(date(2018, 4, 15), as_holidays)
+        for dt in [date(2018, 4, 15),date(2018, 4, 14)]:
+            self.assertIn(dt, tn_holidays)
+            self.assertIn(dt, wb_holidays)
+            
+        
         
 
 if __name__ == "__main__":
