@@ -3238,7 +3238,7 @@ class India(HolidayBase):
     # https://slusi.dacnet.nic.in/watershedatlas/list_of_state_abbreviation.htm
 
     PROVINCES = ['AS', 'CG', 'SK', 'KA', 'GJ', 'BR', 'RJ', 'OD',
-                 'TN', 'AP', 'WB', 'KL', 'HR', 'MH', 'MP', 'UP', 'UK', 'TN']
+                 'TN', 'AP', 'WB', 'KL', 'HR', 'MH', 'MP', 'UP', 'UK']
 
     def __init__(self, **kwargs):
         self.country = "IND"
