@@ -102,6 +102,7 @@ France              FRA      **Métropole** (default), Alsace-Moselle, Guadeloup
 Germany             DE       BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL, SN, ST,
                              SH, TH
 Hungary             HU       None
+India               IND      AS, SK, CG, KA, GJ, BR, RJ, OD, TN, AP, WB, KL, HR, MH, MP, UP, UK, TN
 Ireland                      IE
 Isle of Man                  None
 Italy               IT       prov = MI, RM
