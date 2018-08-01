@@ -99,11 +99,12 @@ France              FRA      **Métropole** (default), Alsace-Moselle, Guadeloup
                              Martinique, Mayotte, Nouvelle-Calédonie, La Réunion,
                              Polynésie Française, Saint-Barthélémy, Saint-Martin,
                              Wallis-et-Futuna
-Germany             DE       BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL, SN, ST,
-                             SH, TH
+Germany             DE       prov = BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL, SN,
+                             ST, SH, TH
 Hungary             HU       None
-India               IND      AS, SK, CG, KA, GJ, BR, RJ, OD, TN, AP, WB, KL, HR, MH, MP, UP, UK, TN
-Ireland                      IE
+India               IND      prov = AS, SK, CG, KA, GJ, BR, RJ, OD, TN, AP, WB, KL, HR,
+                             MH, MP, UP, UK, TN
+Ireland             IE       None
 Isle of Man                  None
 Italy               IT       prov = MI, RM
 Japan               JP       None
