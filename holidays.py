@@ -18,7 +18,7 @@ from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
 import six
 
-__version__ = '0.9.5'
+__version__ = '0.9.6'
 
 
 MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY = range(7)
@@ -452,14 +452,22 @@ class Canada(HolidayBase):
 
         # Canada Day / Memorial Day (NL)
         if self.prov != 'NL' and year >= 1867:
-            name = "Canada Day"
+            if year >= 1983:
+                name = "Canada Day"
+            else:
+                name = "Dominion Day"
             self[date(year, 7, 1)] = name
-            if self.observed and date(year, 7, 1).weekday() in (5, 6):
+            if year >= 1879 and self.observed \
+                    and date(year, 7, 1).weekday() in (5, 6):
                 self[date(year, 7, 1) + rd(weekday=MO)] = name + " (Observed)"
         elif year >= 1867:
-            name = "Memorial Day"
+            if year >= 1983:
+                name = "Memorial Day"
+            else:
+                name = "Dominion Day"
             self[date(year, 7, 1)] = name
-            if self.observed and date(year, 7, 1).weekday() in (5, 6):
+            if year >= 1879 and self.observed \
+                    and date(year, 7, 1).weekday() in (5, 6):
                 self[date(year, 7, 1) + rd(weekday=MO)] = name + " (Observed)"
 
         # Nunavut Day
@@ -1707,11 +1715,10 @@ class Germany(HolidayBase):
 
             self[easter(year) - rd(days=2)] = 'Karfreitag'
 
-            if self.prov == 'BB':
-                # will always be a Sunday and we have no "observed" rule so
-                # this is pretty pointless but it's nonetheless an official
-                # holiday by law
-                self[easter(year)] = 'Ostern'
+            # will always be a Sunday and we have no "observed" rule so
+            # this is pretty pointless but it's nonetheless an official
+            # holiday by law
+            self[easter(year)] = 'Ostern'
 
             self[easter(year) + rd(days=1)] = 'Ostermontag'
 
@@ -1719,11 +1726,10 @@ class Germany(HolidayBase):
 
             self[easter(year) + rd(days=39)] = 'Christi Himmelfahrt'
 
-            if self.prov == 'BB':
-                # will always be a Sunday and we have no "observed" rule so
-                # this is pretty pointless but it's nonetheless an official
-                # holiday by law
-                self[easter(year) + rd(days=49)] = 'Pfingsten'
+            # will always be a Sunday and we have no "observed" rule so
+            # this is pretty pointless but it's nonetheless an official
+            # holiday by law
+            self[easter(year) + rd(days=49)] = 'Pfingsten'
 
             self[easter(year) + rd(days=50)] = 'Pfingstmontag'
 
@@ -1746,7 +1752,7 @@ class Germany(HolidayBase):
         if self.prov in ('BW', 'BY', 'NW', 'RP', 'SL'):
             self[date(year, 11, 1)] = 'Allerheiligen'
 
-        if self.prov == 'SN':
+        if (year >= 1990 and year <= 1994) or self.prov == 'SN':
             # can be calculated as "last wednesday before year-11-23" which is
             # why we need to go back two wednesdays if year-11-23 happens to be
             # a wednesday
