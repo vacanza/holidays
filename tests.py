@@ -389,6 +389,8 @@ class TestKeyTransforms(unittest.TestCase):
         self.assertRaises(
             (TypeError, ValueError), lambda: self.holidays.get("abc123"))
         self.assertRaises(
+            (ValueError), lambda: self.holidays["20xx-0101"])
+        self.assertRaises(
             (TypeError, ValueError), self.holidays.__setitem__, "abc", "Test")
         self.assertRaises(
             (TypeError, ValueError), lambda: {} in self.holidays)
@@ -3442,7 +3444,7 @@ class TestJapan(unittest.TestCase):
                           lambda: date(2051, 1, 1) in self.holidays)
 
 
-class TestFR(unittest.TestCase):
+class TestFrance(unittest.TestCase):
 
     def setUp(self):
         self.holidays = holidays.France()
@@ -3466,6 +3468,44 @@ class TestFR(unittest.TestCase):
         am_holidays = self.prov_holidays['Alsace-Moselle']
         self.assertIn(date(2017, 4, 14), am_holidays)
         self.assertIn(date(2017, 12, 26), am_holidays)
+
+    def test_mayotte(self):
+        am_holidays = self.prov_holidays['Mayotte']
+        self.assertIn(date(2017, 4, 27), am_holidays)
+
+    def test_wallis_et_futuna(self):
+        am_holidays = self.prov_holidays['Wallis-et-Futuna']
+        self.assertIn(date(2017, 4, 28), am_holidays)
+        self.assertIn(date(2017, 7, 29), am_holidays)
+
+    def test_martinique(self):
+        am_holidays = self.prov_holidays['Martinique']
+        self.assertIn(date(2017, 5, 22), am_holidays)
+
+    def test_guadeloupe(self):
+        am_holidays = self.prov_holidays['Guadeloupe']
+        self.assertIn(date(2017, 5, 27), am_holidays)
+        self.assertIn(date(2017, 7, 21), am_holidays)
+
+    def test_guyane(self):
+        am_holidays = self.prov_holidays['Guyane']
+        self.assertIn(date(2017, 6, 10), am_holidays)
+
+    def test_polynesie_francaise(self):
+        am_holidays = self.prov_holidays['Polynésie Française']
+        self.assertIn(date(2017, 6, 29), am_holidays)
+
+    def test_nouvelle_caledonie(self):
+        am_holidays = self.prov_holidays['Nouvelle-Calédonie']
+        self.assertIn(date(2017, 9, 24), am_holidays)
+
+    def test_saint_barthelemy(self):
+        am_holidays = self.prov_holidays['Saint-Barthélémy']
+        self.assertIn(date(2017, 10, 9), am_holidays)
+
+    def test_la_reunion(self):
+        am_holidays = self.prov_holidays['La Réunion']
+        self.assertIn(date(2017, 12, 20), am_holidays)
 
 
 class TestBelgium(unittest.TestCase):
@@ -3560,6 +3600,9 @@ class TestSI(unittest.TestCase):
         self.assertNotIn(date(2014, 1, 2), self.holidays)
         self.assertNotIn(date(2015, 1, 2), self.holidays)
         self.assertNotIn(date(2016, 1, 2), self.holidays)
+
+    def test_missing_years(self):
+        self.assertNotIn(date(1990, 1, 1), self.holidays)
 
 
 class TestIE(unittest.TestCase):
