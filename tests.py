@@ -2787,6 +2787,7 @@ class TestScotland(unittest.TestCase):
         self.assertIn('2017-12-25', self.holidays)
         self.assertIn('2017-12-26', self.holidays)
 
+
 class TestIsleOfMan(unittest.TestCase):
 
     def setUp(self):
@@ -2795,6 +2796,7 @@ class TestIsleOfMan(unittest.TestCase):
     def test_2018(self):
         self.assertIn('2018-06-01', self.holidays)
         self.assertIn('2018-07-05', self.holidays)
+
 
 class TestES(unittest.TestCase):
 
@@ -3023,6 +3025,7 @@ class TestPT(unittest.TestCase):
         self.assertIn(date(2017, 12, 1), self.holidays)  # Independence
         self.assertIn(date(2017, 12, 8), self.holidays)  # Immaculate
         self.assertIn(date(2017, 12, 25), self.holidays)  # Christmas
+
 
 class TestPortugalExt(unittest.TestCase):
 
@@ -3456,7 +3459,8 @@ class TestFR(unittest.TestCase):
         self.assertIn(date(2017, 7, 14), self.holidays)
 
     def test_others(self):
-        self.assertEqual(self.holidays[date(1948, 5, 1)], 'Fête du Travail et de la Concorde sociale')
+        self.assertEqual(self.holidays[date(1948, 5, 1)],
+                         'Fête du Travail et de la Concorde sociale')
 
     def test_alsace_moselle(self):
         am_holidays = self.prov_holidays['Alsace-Moselle']
