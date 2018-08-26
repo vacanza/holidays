@@ -12,7 +12,7 @@ python:
     - pypy3
 
 env:
-    - DATEUTIL=python-dateutil==2.6.0
+    - DATEUTIL=python-dateutil==2.7.0
     - DATEUTIL=python-dateutil
 
 install:
