@@ -1706,6 +1706,9 @@ class Germany(HolidayBase):
         if year <= 1989:
             return
 
+        if year == 1990:
+            self[date(year, 6, 17)] = 'Tag der deutschen Einheit'
+
         if year > 1990:
 
             self[date(year, 1, 1)] = 'Neujahr'
@@ -1718,18 +1721,18 @@ class Germany(HolidayBase):
             # will always be a Sunday and we have no "observed" rule so
             # this is pretty pointless but it's nonetheless an official
             # holiday by law
-            self[easter(year)] = 'Ostern'
+            self[easter(year)] = 'Ostersonntag'
 
             self[easter(year) + rd(days=1)] = 'Ostermontag'
 
-            self[date(year, 5, 1)] = 'Maifeiertag'
+            self[date(year, 5, 1)] = 'Erster Mai'
 
             self[easter(year) + rd(days=39)] = 'Christi Himmelfahrt'
 
             # will always be a Sunday and we have no "observed" rule so
             # this is pretty pointless but it's nonetheless an official
             # holiday by law
-            self[easter(year) + rd(days=49)] = 'Pfingsten'
+            self[easter(year) + rd(days=49)] = 'Pfingstsonntag'
 
             self[easter(year) + rd(days=50)] = 'Pfingstmontag'
 
