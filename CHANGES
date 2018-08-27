@@ -4,7 +4,7 @@ Version 0.9.7 (beta)
 Released mmmmm dd, yyyy
 
 - added Python 3.7 compatibility (required dateutil >= 2.7.0)
-- Fixed German Reformationstag (adaitche)
+- Fixed German Reformationstag (adaitche) and various other holiday updates
 
 Version 0.9.6
 =============

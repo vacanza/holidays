@@ -2425,11 +2425,11 @@ class TestDE(unittest.TestCase):
         all_de = ["Neujahr",
                   "Heilige Drei Könige",
                   "Karfreitag",
-                  "Ostern",
+                  "Ostersonntag",
                   "Ostermontag",
-                  "Maifeiertag",
+                  "Erster Mai",
                   "Christi Himmelfahrt",
-                  "Pfingsten",
+                  "Pfingstsonntag",
                   "Pfingstmontag",
                   "Fronleichnam",
                   "Mariä Himmelfahrt",
@@ -2475,7 +2475,7 @@ class TestDE(unittest.TestCase):
         for province, (y, m, d) in product(holidays.DE.PROVINCES, known_good):
             self.assertIn(date(y, m, d), self.prov_hols[province])
 
-    def test_ostern(self):
+    def test_ostersonntag(self):
         known_good = [(2014, 4, 20), (2015, 4, 5), (2016, 3, 27),
                       (2017, 4, 16), (2018, 4, 1), (2019, 4, 21),
                       (2020, 4, 12), (2021, 4, 4), (2022, 4, 17),
@@ -2502,7 +2502,7 @@ class TestDE(unittest.TestCase):
         for province, (y, m, d) in product(holidays.DE.PROVINCES, known_good):
             self.assertIn(date(y, m, d), self.prov_hols[province])
 
-    def test_pfingsten(self):
+    def test_pfingstsonntag(self):
         known_good = [(2014, 6, 8), (2015, 5, 24), (2016, 5, 15),
                       (2017, 6, 4), (2018, 5, 20), (2019, 6, 9),
                       (2020, 5, 31), (2021, 5, 23), (2022, 6, 5),
@@ -2584,6 +2584,12 @@ class TestDE(unittest.TestCase):
             self.assertIn(date(y, m, d), self.prov_hols[province])
         for province, (y, m, d) in product(provinces_that_dont, known_good):
             self.assertNotIn(date(y, m, d), self.prov_hols[province])
+
+    def test_tag_der_deutschen_einheit(self):
+        known_good = [(1990, 6, 17)]
+
+        for province, (y, m, d) in product(holidays.DE.PROVINCES, known_good):
+            self.assertIn(date(y, m, d), self.prov_hols[province])
 
 
 class TestAT(unittest.TestCase):
