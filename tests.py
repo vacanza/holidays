@@ -3365,7 +3365,7 @@ class TestJapan(unittest.TestCase):
         self.assertIn(date(2020, 3, 20), self.holidays)
         self.assertIn(date(2030, 3, 20), self.holidays)
         self.assertIn(date(2040, 3, 20), self.holidays)
-        # NOT YET AVAILABLE - self.assertIn(date(2092, 3, 19), self.holidays)
+        self.assertIn(date(2092, 3, 19), self.holidays)
 
     def test_showa_day(self):
         self.assertIn(date(1950, 4, 29), self.holidays)
@@ -3448,7 +3448,7 @@ class TestJapan(unittest.TestCase):
         self.assertRaises(NotImplementedError,
                           lambda: date(1948, 1, 1) in self.holidays)
         self.assertRaises(NotImplementedError,
-                          lambda: date(2051, 1, 1) in self.holidays)
+                          lambda: date(2100, 1, 1) in self.holidays)
 
 
 class TestFrance(unittest.TestCase):

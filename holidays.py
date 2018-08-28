@@ -2635,7 +2635,7 @@ class Japan(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
-        if year < 1949 or year > 2050:
+        if year < 1949 or year > 2099:
             raise NotImplementedError
 
         # New Year's Day
