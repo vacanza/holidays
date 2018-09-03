@@ -382,7 +382,7 @@ The latest development version can be installed directly from GitHub:
 
 .. code-block:: bash
 
-    $ pip install --upgrade https://github.com/dr-prodigy/python-holidays/tarball/master
+    $ pip install --upgrade https://github.com/dr-prodigy/python-holidays/tarball/beta
 
 
 Running Tests
