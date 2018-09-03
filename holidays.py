@@ -1749,6 +1749,11 @@ class Germany(HolidayBase):
         if year == 2017:
             self[date(year, 10, 31)] = 'Reformationstag'
 
+        # since 2018 additional states got the Reformationstag
+        if year >= 2018:
+            if self.prov in ('HB', 'HH', 'NI', 'SH'):
+                self[date(year, 10, 31)] = 'Reformationstag'
+
         if self.prov in ('BW', 'BY', 'NW', 'RP', 'SL'):
             self[date(year, 11, 1)] = 'Allerheiligen'
 
