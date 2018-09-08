@@ -2557,9 +2557,6 @@ class TestDE(unittest.TestCase):
         for province, year in product(prov_yes_since_2018, range(2018, 2050)):
             self.assertIn(date(year, 10, 31), self.prov_hols[province])
         for province, year in product(prov_that_dont, range(1991, 2017)):
-            # in 2017 all states got the reformationstag for that year
-            if year == 2017:
-                continue
             self.assertNotIn(date(year, 10, 31), self.prov_hols[province])
         for province, year in product(prov_not_since_2018, range(2018, 2050)):
             self.assertNotIn(date(year, 10, 31), self.prov_hols[province])
