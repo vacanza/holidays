@@ -2543,25 +2543,26 @@ class TestDE(unittest.TestCase):
             self.assertNotIn(date(year, 8, 15), self.prov_hols[province])
 
     def test_reformationstag(self):
-        min_year = 1991
-        max_year = 2050
-        province_to_start_year = {}
-        province_to_start_year.update(
-            dict.fromkeys(['BB', 'MV', 'SN', 'ST', 'TH'], 0)
-        )
-        province_to_start_year.update(
-            dict.fromkeys(['HB', 'SH', 'NI', 'HH'], 2018)
-        )
+        prov_that_have = {'BB', 'MV', 'SN', 'ST', 'TH'}
+        prov_yes_since_2018 = prov_that_have.union({'HB', 'HH', 'NI', 'SH'})
+        prov_that_dont = set(holidays.DE.PROVINCES) - prov_that_have
+        prov_not_since_2018 = set(holidays.DE.PROVINCES) - prov_yes_since_2018
 
-        for province, year in product(
-            holidays.DE.PROVINCES, range(min_year, max_year)
-        ):
-            # in 2017 all states have the reformationstag
-            start_year = province_to_start_year.get(province, max_year + 1)
-            if year == 2017 or year >= start_year:
-                self.assertIn(date(year, 10, 31), self.prov_hols[province])
-            else:
-                self.assertNotIn(date(year, 10, 31), self.prov_hols[province])
+        for province, year in product(prov_that_have, range(1991, 2050)):
+            # in 2017 all states got the reformationstag for that year
+            if year == 2017:
+                continue
+            self.assertIn(date(year, 10, 31), self.prov_hols[province])
+        # additional provinces got this holiday 2018
+        for province, year in product(prov_yes_since_2018, range(2018, 2050)):
+            self.assertIn(date(year, 10, 31), self.prov_hols[province])
+        for province, year in product(prov_that_dont, range(1991, 2017)):
+            self.assertNotIn(date(year, 10, 31), self.prov_hols[province])
+        for province, year in product(prov_not_since_2018, range(2018, 2050)):
+            self.assertNotIn(date(year, 10, 31), self.prov_hols[province])
+        # check the 2017 case where all states have the reformationstag
+        for province in holidays.DE.PROVINCES:
+            self.assertIn(date(2017, 10, 31), self.prov_hols[province])
 
     def test_allerheiligen(self):
         provinces_that_have = {'BW', 'BY', 'NW', 'RP', 'SL'}
