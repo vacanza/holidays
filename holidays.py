@@ -337,6 +337,11 @@ class Belarus(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        # The current set of holidays came into force in 1998
+        # http://laws.newsby.org/documents/ukazp/pos05/ukaz05806.htm
+        if year <= 1998:
+            return
+
         # New Year's Day
         self[date(year, 1, 1)] = "Новый год"
 
