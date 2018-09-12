@@ -12,7 +12,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date, datetime
-from dateutil.easter import easter
+from dateutil.easter import easter, EASTER_ORTHODOX
 from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
@@ -324,6 +324,56 @@ class Argentina(HolidayBase):
 
 
 class AR(Argentina):
+    pass
+
+
+class Belarus(HolidayBase):
+    """
+    http://president.gov.by/en/holidays_en/
+    http://www.belarus.by/en/about-belarus/national-holidays
+    """
+    def __init__(self, **kwargs):
+        self.country = "BY"
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # The current set of holidays came into force in 1998
+        # http://laws.newsby.org/documents/ukazp/pos05/ukaz05806.htm
+        if year <= 1998:
+            return
+
+        # New Year's Day
+        self[date(year, 1, 1)] = "Новый год"
+
+        # Christmas Day (Orthodox)
+        self[date(year, 1, 7)] = "Рождество Христово " \
+                                 "(православное Рождество)"
+
+        # Women's Day
+        self[date(year, 3, 8)] = "День женщин"
+
+        # Radunitsa ("Day of Rejoicing")
+        self[easter(year, method=EASTER_ORTHODOX) + rd(days=9)] = "Радуница"
+
+        # Labour Day
+        self[date(year, 5, 1)] = "Праздник труда"
+
+        # Victory Day
+        self[date(year, 5, 9)] = "День Победы"
+
+        # Independence Day
+        self[date(year, 7, 3)] = "День Независимости Республики Беларусь " \
+                                 "(День Республики)"
+
+        # October Revolution Day
+        self[date(year, 11, 7)] = "День Октябрьской революции"
+
+        # Christmas Day (Catholic)
+        self[date(year, 12, 25)] = "Рождество Христово " \
+                                   "(католическое Рождество)"
+
+
+class BY(Belarus):
     pass
 
 
