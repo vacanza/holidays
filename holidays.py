@@ -1013,7 +1013,7 @@ class UnitedStates(HolidayBase):
 
         # Mardi Gras
         if self.state == 'LA' and year >= 1857:
-                self[easter(year) + rd(days=-47)] = "Q"
+            self[easter(year) + rd(days=-47)] = "Mardi Gras"
 
         # Guam Discovery Day
         if self.state == 'GU' and year >= 1970:
