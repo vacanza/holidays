@@ -376,6 +376,7 @@ class Belarus(HolidayBase):
 class BY(Belarus):
     pass
 
+
 class Ukraine(HolidayBase):
     """
     http://zakon1.rada.gov.ua/laws/show/322-08/paran454#n454
@@ -400,7 +401,7 @@ class Ukraine(HolidayBase):
 
         # Easter
         self[easter(year, method=EASTER_ORTHODOX)] = "Пасха (Великдень)"
-        
+
         # Holy trinity
         self[easter(year, method=EASTER_ORTHODOX) + rd(days=49)] = "Трійця"
 
@@ -409,10 +410,10 @@ class Ukraine(HolidayBase):
 
         # Victory Day
         self[date(year, 5, 9)] = "День перемоги"
-        
-        #Constitution Day
+
+        # Constitution Day
         self[date(year, 6, 28)] = "День Конституції України"
-      
+
         # Independence Day
         self[date(year, 8, 24)] = "День незалежності України"
 
@@ -421,12 +422,11 @@ class Ukraine(HolidayBase):
 
         # Christmas Day (Catholic)
         if year >= 2017:
-        self[date(year, 12, 25)] = "Різдво Христове (католицьке)"
+            self[date(year, 12, 25)] = "Різдво Христове (католицьке)"
 
 
 class UA(Ukraine):
     pass
-
 
 
 class Canada(HolidayBase):
