@@ -832,7 +832,8 @@ class Ukraine(HolidayBase):
 
         # Christmas Day (Orthodox)
         if year >= 1991:
-            self[date(year, 1, 7)] = "Різдво Христове (православне)"
+            self[date(year, 1, 7)] = "Різдво Христове" \
+                                     "(православне)"
 
         # Women's Day
         if year >= 1966:
@@ -840,7 +841,8 @@ class Ukraine(HolidayBase):
 
         # Easter
         if year >= 1991:
-            self[easter(year, method=EASTER_ORTHODOX)] = "Пасха (Великдень)"
+            self[easter(year, method=EASTER_ORTHODOX)] = "Пасха" \
+                                                         "(Великдень)"
 
         # Holy trinity
         if year >= 1991:
@@ -865,21 +867,23 @@ class Ukraine(HolidayBase):
             self[date(year, 6, 28)] = "День Конституції України"
 
         # Independence Day
+        name = "День незалежності України"
         if year >= 1992:
-            self[date(year, 8, 24)] = "День незалежності України"
+            self[date(year, 8, 24)] = name
         elif year == 1991:
-            self[date(year, 7, 16)] = "День незалежності України"
+            self[date(year, 7, 16)] = name
 
         # Day of the defender of Ukraine
         if year >= 2015:
             self[date(year, 10, 14)] = "День захисника України"
 
         # October Revolution
+        name = "Річниця жовтневого перевороту"
         if 1918 > year > 1999:
-            self[date(year, 11, 7)] = "Річниця жовтневого перевороту"
+            self[date(year, 11, 7)] = name
 
         if 1928 > year > 1999:
-            self[date(year, 11, 8)] = "Річниця жовтневого перевороту"
+            self[date(year, 11, 8)] = name
 
         # USSR Constitution day
         if 1981 > year > 1991:
@@ -887,7 +891,8 @@ class Ukraine(HolidayBase):
 
         # Christmas Day (Catholic)
         if year >= 2017:
-            self[date(year, 12, 25)] = "Різдво Христове (католицьке)"
+            self[date(year, 12, 25)] = "Різдво Христове" \
+                                       "(католицьке)"
 
 
 class UA(Ukraine):
