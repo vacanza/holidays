@@ -377,6 +377,58 @@ class BY(Belarus):
     pass
 
 
+class Ukraine(HolidayBase):
+    """
+    http://zakon1.rada.gov.ua/laws/show/322-08/paran454#n454
+    """
+    def __init__(self, **kwargs):
+        self.country = "UA"
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # The current set of holidays came into force in 1991
+        if year <= 1991:
+            return
+
+        # New Year's Day
+        self[date(year, 1, 1)] = "Новий рік"
+
+        # Christmas Day (Orthodox)
+        self[date(year, 1, 7)] = "Різдво Христове (православне)"
+
+        # Women's Day
+        self[date(year, 3, 8)] = "Міжнародний жіночий день"
+
+        # Easter
+        self[easter(year, method=EASTER_ORTHODOX)] = "Пасха (Великдень)"
+
+        # Holy trinity
+        self[easter(year, method=EASTER_ORTHODOX) + rd(days=49)] = "Трійця"
+
+        # Labour Day
+        self[date(year, 5, 1)] = "День праці"
+
+        # Victory Day
+        self[date(year, 5, 9)] = "День перемоги"
+
+        # Constitution Day
+        self[date(year, 6, 28)] = "День Конституції України"
+
+        # Independence Day
+        self[date(year, 8, 24)] = "День незалежності України"
+
+        # Day of the defender of Ukraine
+        self[date(year, 10, 14)] = "День захисника України"
+
+        # Christmas Day (Catholic)
+        if year >= 2017:
+            self[date(year, 12, 25)] = "Різдво Христове (католицьке)"
+
+
+class UA(Ukraine):
+    pass
+
+
 class Canada(HolidayBase):
 
     PROVINCES = ['AB', 'BC', 'MB', 'NB', 'NL', 'NS', 'NT', 'NU', 'ON', 'PE',
