@@ -4226,7 +4226,7 @@ class TestUkraine(unittest.TestCase):
         self.assertIn(date(2018, 1, 1), self.holidays)
         self.assertIn(date(2018, 1, 7), self.holidays)
         self.assertIn(date(2018, 3, 8), self.holidays)
-        self.assertIn(date(2018, 4, 8), self.holidays) 
+        self.assertIn(date(2018, 4, 8), self.holidays)
         self.assertIn(date(2018, 4, 8), self.holidays)
         self.assertIn(date(2018, 5, 9), self.holidays)
         self.assertIn(date(2018, 5, 27), self.holidays)
