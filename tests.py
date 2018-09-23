@@ -4235,6 +4235,8 @@ class TestUkraine(unittest.TestCase):
         self.assertIn(date(2018, 10, 14), self.holidays)
         self.assertIn(date(2018, 12, 25), self.holidays)
 
+    def test_before_1991(self):
+        self.assertNotIn(date(1990, 12, 31), self.holidays)
 
 class TestBelarus(unittest.TestCase):
 
