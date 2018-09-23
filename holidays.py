@@ -377,74 +377,6 @@ class BY(Belarus):
     pass
 
 
-class Ukraine(HolidayBase):
-    """
-    http://zakon1.rada.gov.ua/laws/show/322-08/paran454#n454
-    """
-    def __init__(self, **kwargs):
-        self.country = "UA"
-        HolidayBase.__init__(self, **kwargs)
-
-    def _populate(self, year):
-        # The current set of holidays came into force in 1991
-        if year <= 1991:
-            return
-
-        # New Year's Day
-        self[date(year, 1, 1)] = "Новий рік"
-
-        # Christmas Day (Orthodox)
-        self[date(year, 1, 7)] = "Різдво Христове (православне)"
-
-        # Women's Day
-        self[date(year, 3, 8)] = "Міжнародний жіночий день"
-
-        # Easter
-        self[easter(year, method=EASTER_ORTHODOX)] = "Пасха (Великдень)"
-
-        # Holy trinity
-        self[easter(year, method=EASTER_ORTHODOX) + rd(days=49)] = "Трійця"
-
-        # Labour Day
-        if year >= 2018:
-            self[date(year, 5, 1)] = "День праці"
-        elif year >= 1918:
-            self[date(year, 5, 1)] = "День міжнародної солідарності трудящих"
-
-        # Labour Day
-        if year <= 2017:
-            self[date(year, 5, 2)] = "День міжнародної солідарності трудящих"
-
-        # Victory Day
-        self[date(year, 5, 9)] = "День перемоги"
-
-        # Constitution Day
-        if year >= 1997:
-            self[date(year, 6, 28)] = "День Конституції України"
-
-        # Independence Day
-        if year >= 1992:
-            self[date(year, 8, 24)] = "День незалежності України"
-        elif year == 1991:
-            self[date(year, 7, 16)] = "День незалежності України"
-
-        # Day of the defender of Ukraine
-        if year >= 2015:
-            self[date(year, 10, 14)] = "День захисника України"
-
-        # October Revolution
-        if 1918 > year > 1999:
-            self[date(year, 10, 14)] = "Річниця жовтневого перевороту "
-
-        # Christmas Day (Catholic)
-        if year >= 2017:
-            self[date(year, 12, 25)] = "Різдво Христове (католицьке)"
-
-
-class UA(Ukraine):
-    pass
-
-
 class Canada(HolidayBase):
 
     PROVINCES = ['AB', 'BC', 'MB', 'NB', 'NL', 'NS', 'NT', 'NU', 'ON', 'PE',
@@ -878,6 +810,74 @@ class Mexico(HolidayBase):
 
 
 class MX(Mexico):
+    pass
+
+
+class Ukraine(HolidayBase):
+    """
+    http://zakon1.rada.gov.ua/laws/show/322-08/paran454#n454
+    """
+    def __init__(self, **kwargs):
+        self.country = "UA"
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # The current set of holidays came into force in 1991
+        if year <= 1991:
+            return
+
+        # New Year's Day
+        self[date(year, 1, 1)] = "Новий рік"
+
+        # Christmas Day (Orthodox)
+        self[date(year, 1, 7)] = "Різдво Христове (православне)"
+
+        # Women's Day
+        self[date(year, 3, 8)] = "Міжнародний жіночий день"
+
+        # Easter
+        self[easter(year, method=EASTER_ORTHODOX)] = "Пасха (Великдень)"
+
+        # Holy trinity
+        self[easter(year, method=EASTER_ORTHODOX) + rd(days=49)] = "Трійця"
+
+        # Labour Day
+        if year >= 2018:
+            self[date(year, 5, 1)] = "День праці"
+        elif year >= 1918:
+            self[date(year, 5, 1)] = "День міжнародної солідарності трудящих"
+
+        # Labour Day
+        if year <= 2017:
+            self[date(year, 5, 2)] = "День міжнародної солідарності трудящих"
+
+        # Victory Day
+        self[date(year, 5, 9)] = "День перемоги"
+
+        # Constitution Day
+        if year >= 1997:
+            self[date(year, 6, 28)] = "День Конституції України"
+
+        # Independence Day
+        if year >= 1992:
+            self[date(year, 8, 24)] = "День незалежності України"
+        elif year == 1991:
+            self[date(year, 7, 16)] = "День незалежності України"
+
+        # Day of the defender of Ukraine
+        if year >= 2015:
+            self[date(year, 10, 14)] = "День захисника України"
+
+        # October Revolution
+        if 1918 > year > 1999:
+            self[date(year, 10, 14)] = "Річниця жовтневого перевороту"
+
+        # Christmas Day (Catholic)
+        if year >= 2017:
+            self[date(year, 12, 25)] = "Різдво Христове (католицьке)"
+
+
+class UA(Ukraine):
     pass
 
 
