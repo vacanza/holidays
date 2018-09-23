@@ -425,7 +425,7 @@ class Ukraine(HolidayBase):
         # Independence Day
         if year >= 1992:
             self[date(year, 8, 24)] = "День незалежності України"
-         elif year == 1991:
+        elif year == 1991:
             self[date(year, 7, 16)] = "День незалежності України"
 
         # Day of the defender of Ukraine
