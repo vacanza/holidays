@@ -852,8 +852,8 @@ class Ukraine(HolidayBase):
         elif year >= 1918:
             self[date(year, 5, 1)] = "День міжнародної солідарності трудящих"
 
-        # Labour Day
-        if year <= 2017:
+        # Labour Day in past
+        if 1981 > year >= 2017:
             self[date(year, 5, 2)] = "День міжнародної солідарності трудящих"
 
         # Victory Day
@@ -876,10 +876,14 @@ class Ukraine(HolidayBase):
 
         # October Revolution
         if 1918 > year > 1999:
-            self[date(year, 10, 14)] = "Річниця жовтневого перевороту"
+            self[date(year, 11, 7)] = "Річниця жовтневого перевороту"
 
         if 1928 > year > 1999:
-            self[date(year, 10, 14)] = "Річниця жовтневого перевороту"
+            self[date(year, 11, 8)] = "Річниця жовтневого перевороту"
+
+        # USSR Constitution day
+        if 1981 > year > 1991:
+            self[date(year, 10, 7)] = "День Конституції СРСР"
 
         # Christmas Day (Catholic)
         if year >= 2017:
@@ -1009,7 +1013,7 @@ class UnitedStates(HolidayBase):
 
         # Mardi Gras
         if self.state == 'LA' and year >= 1857:
-            self[easter(year) + rd(days=-47)] = "Mardi Gras"
+                self[easter(year) + rd(days=-47)] = "Q"
 
         # Guam Discovery Day
         if self.state == 'GU' and year >= 1970:
