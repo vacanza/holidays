@@ -827,19 +827,24 @@ class Ukraine(HolidayBase):
             return
 
         # New Year's Day
-        self[date(year, 1, 1)] = "Новий рік"
+        if year >= 1948:
+            self[date(year, 1, 1)] = "Новий рік"
 
         # Christmas Day (Orthodox)
-        self[date(year, 1, 7)] = "Різдво Христове (православне)"
+        if year >= 1991:
+            self[date(year, 1, 7)] = "Різдво Христове (православне)"
 
         # Women's Day
-        self[date(year, 3, 8)] = "Міжнародний жіночий день"
+        if year >= 1966:
+            self[date(year, 3, 8)] = "Міжнародний жіночий день"
 
         # Easter
-        self[easter(year, method=EASTER_ORTHODOX)] = "Пасха (Великдень)"
+        if year >= 1991:
+            self[easter(year, method=EASTER_ORTHODOX)] = "Пасха (Великдень)"
 
         # Holy trinity
-        self[easter(year, method=EASTER_ORTHODOX) + rd(days=49)] = "Трійця"
+        if year >= 1991:
+            self[easter(year, method=EASTER_ORTHODOX) + rd(days=49)] = "Трійця"
 
         # Labour Day
         if year >= 2018:
@@ -852,7 +857,8 @@ class Ukraine(HolidayBase):
             self[date(year, 5, 2)] = "День міжнародної солідарності трудящих"
 
         # Victory Day
-        self[date(year, 5, 9)] = "День перемоги"
+        if year >= 1965:
+            self[date(year, 5, 9)] = "День перемоги"
 
         # Constitution Day
         if year >= 1997:
@@ -870,6 +876,9 @@ class Ukraine(HolidayBase):
 
         # October Revolution
         if 1918 > year > 1999:
+            self[date(year, 10, 14)] = "Річниця жовтневого перевороту"
+
+        if 1928 > year > 1999:
             self[date(year, 10, 14)] = "Річниця жовтневого перевороту"
 
         # Christmas Day (Catholic)
