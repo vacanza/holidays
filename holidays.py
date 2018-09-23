@@ -411,6 +411,10 @@ class Ukraine(HolidayBase):
         elif year >= 1918:
             self[date(year, 5, 1)] = "День міжнародної солідарності трудящих"
 
+        # Labour Day
+        if year <= 2017:
+            self[date(year, 5, 2)] = "День міжнародної солідарності трудящих"
+
         # Victory Day
         self[date(year, 5, 9)] = "День перемоги"
 
@@ -421,10 +425,16 @@ class Ukraine(HolidayBase):
         # Independence Day
         if year >= 1992:
             self[date(year, 8, 24)] = "День незалежності України"
+         elif year == 1991:
+            self[date(year, 7, 16)] = "День незалежності України"
 
         # Day of the defender of Ukraine
         if year >= 2015:
             self[date(year, 10, 14)] = "День захисника України"
+
+        # October Revolution
+        if 1918 > year > 1999:
+            self[date(year, 10, 14)] = "Річниця жовтневого перевороту "
 
         # Christmas Day (Catholic)
         if year >= 2017:
