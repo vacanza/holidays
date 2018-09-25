@@ -1,10 +1,18 @@
-Version 0.9.7 (beta)
-====================
+Version 0.10.0
+==============
 
-Released mmmmm dd, yyyy
+Released ?
+
+- Added state and prov parameters to CountryHoliday() method
+
+Version 0.9.7
+=============
+
+Released September 12, 2018
 
 - Added Python 3.7 compatibility (required dateutil >= 2.7.0)
 - Fixed German Reformationstag (adaitche, Rosi2143), various other holiday updates
+- Added Belarus (Gennady-Andreyev)
 
 Version 0.9.6
 =============
