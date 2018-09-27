@@ -4270,10 +4270,19 @@ class TestUkraine(unittest.TestCase):
 
     def test_2018(self):
         # http://www.buhoblik.org.ua/kadry-zarplata/vremya/1676-1676-kalendar.html
+        self.assertIn(date(2018, 1, 1), self.holidays)
+        self.assertIn(date(2018, 1, 7), self.holidays)
+        self.assertIn(date(2018, 12, 25), self.holidays)
         self.assertIn(date(2018, 4, 8), self.holidays)
         self.assertIn(date(2018, 5, 27), self.holidays)
+        self.assertIn(date(2018, 5, 9), self.holidays)
+        self.assertIn(date(2018, 6, 28), self.holidays)
+        self.assertIn(date(2018, 8, 24), self.holidays)
+        self.assertIn(date(2018, 10, 14), self.holidays)
 
     def test_old_holidays(self):
+        self.assertIn(date(2018, 5, 1), self.holidays)
+        self.assertIn(date(2016, 5, 2), self.holidays)
         self.assertIn(date(1991, 7, 16), self.holidays)
         self.assertIn(date(1950, 1, 22), self.holidays)
         self.assertIn(date(1999, 11, 7), self.holidays)
@@ -4283,61 +4292,6 @@ class TestUkraine(unittest.TestCase):
         self.assertIn(date(1981, 10, 7), self.holidays)
         self.assertIn(date(1937, 12, 5), self.holidays)
         self.assertIn(date(1918, 3, 18), self.holidays)
-
-    def new_years_day(self):
-        for year in range(1948, 2100):
-            dt = date(year, 1, 1)
-            self.assertIn(dt, self.holidays)
-
-    def christmas_day(self):
-        for year in range(1991, 2100):
-            dt = date(year, 1, 7)
-            self.assertIn(dt, self.holidays)
-
-    def christmas_day_catholic(self):
-        for year in range(2017, 2100):
-            dt = date(year, 12, 25)
-            self.assertIn(dt, self.holidays)
-
-    def womens_day(self):
-        for year in range(1966, 2100):
-            dt = date(year, 3, 8)
-            self.assertIn(dt, self.holidays)
-
-    def labour_day1(self):
-        for year in range(1919, 2100):
-            dt = date(year, 5, 1)
-            self.assertIn(dt, self.holidays)
-
-    def labour_day2(self):
-        for year in range(1929, 2017):
-            dt = date(year, 5, 2)
-            self.assertIn(dt, self.holidays)
-
-    def victory_day(self):
-        for year in range(1965, 2100):
-            dt = date(year, 5, 9)
-            self.assertIn(dt, self.holidays)
-
-    def constitution_day(self):
-        for year in range(1996, 2100):
-            dt = date(year, 6, 28)
-            self.assertIn(dt, self.holidays)
-
-    def constitution_day_ussr(self):
-        for year in range(1981, 1990):
-            dt = date(year, 10, 7)
-            self.assertIn(dt, self.holidays)
-
-    def independence_day(self):
-        for year in range(1992, 2100):
-            dt = date(year, 8, 24)
-            self.assertIn(dt, self.holidays)
-
-    def defenders_day(self):
-        for year in range(2017, 2100):
-            dt = date(year, 10, 14)
-            self.assertIn(dt, self.holidays)
 
 
 if __name__ == "__main__":
