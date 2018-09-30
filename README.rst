@@ -41,6 +41,12 @@ Example Usage
 
     us_holidays.get('2014-01-01')  # "New Year's Day"
 
+    us_pr_holidays = holidays.UnitedStates(state='PR')  # or holidays.US(...), or holidays.CountryHoliday('US', state='PR')
+
+    # some holidays are only present in parts of a country
+    '2018-01-06' in us_holidays     # False
+    '2018-01-06' in us_pr_holidays  # True
+
     # Easily create custom Holiday objects with your own dates instead
     # of using the pre-defined countries/states/provinces available
     custom_holidays = holidays.HolidayBase()

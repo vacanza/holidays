@@ -402,6 +402,14 @@ class TestCountryHoliday(unittest.TestCase):
     def test_country(self):
         self.assertEqual(self.holidays.country, 'US')
 
+    def test_country_state(self):
+        h = holidays.CountryHoliday('US', state='NY')
+        self.assertEqual(h.state, 'NY')
+
+    def test_country_province(self):
+        h = holidays.CountryHoliday('AU', prov='NT')
+        self.assertEqual(h.prov, 'NT')
+
     def test_exceptions(self):
         self.assertRaises((KeyError), lambda: holidays.CountryHoliday('XXXX'))
 
