@@ -1,9 +1,10 @@
 Version 0.9.8 (BETA)
 ====================
 
-Released mmmmm dd, yyyy
+Released September 12, 2018
 
 - Added state and prov parameters to CountryHoliday() method (luto)
+
 
 Version 0.9.7
 =============
