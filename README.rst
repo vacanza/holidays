@@ -28,7 +28,13 @@ Example Usage
 
     import holidays
 
-    us_holidays = holidays.UnitedStates()  # or holidays.US(), or holidays.CountryHoliday('US')
+    us_holidays = holidays.UnitedStates()
+    # or:
+    # us_holidays = holidays.US()
+    # or:
+    # us_holidays = holidays.CountryHoliday('US')
+    # or, for specific prov / states:
+    # us_holidays = holidays.CountryHoliday('US', prov=None, state='CA')
 
     date(2015, 1, 1) in us_holidays  # True
     date(2015, 1, 2) in us_holidays  # False
@@ -40,6 +46,12 @@ Example Usage
     1388597445 in us_holidays    # True
 
     us_holidays.get('2014-01-01')  # "New Year's Day"
+
+    us_pr_holidays = holidays.UnitedStates(state='PR')  # or holidays.US(...), or holidays.CountryHoliday('US', state='PR')
+
+    # some holidays are only present in parts of a country
+    '2018-01-06' in us_holidays     # False
+    '2018-01-06' in us_pr_holidays  # True
 
     # Easily create custom Holiday objects with your own dates instead
     # of using the pre-defined countries/states/provinces available
@@ -127,6 +139,7 @@ Spain               ES       prov = AND, ARG, AST, CAN, CAM, CAL, CAT, CVA, EXT,
 Sweden              SE       None
 Switzerland         CH       prov = AG, AR, AI, BL, BS, BE, FR, GE, GL, GR, JU, LU,
                              NE, NW, OW, SG, SH, SZ, SO, TG, TI, UR, VD, VS, ZG, ZH
+Ukraine             UA       None
 UnitedKingdom       UK       None
 UnitedStates        US       state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL, GA,
                              GU, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MH, MA, MI,
