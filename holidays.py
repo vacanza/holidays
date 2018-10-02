@@ -3395,3 +3395,58 @@ class India(HolidayBase):
 
 class IND(India):
     pass
+
+
+class Croatia(HolidayBase):
+
+    # https://en.wikipedia.org/wiki/Public_holidays_in_Croatia
+        
+    def __init__(self, **kwargs):
+        self.country = "HR"
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # New years
+        self[date(year, 1, 1)] = "Nova Godina"
+        # Epiphany
+        self[date(year, 1, 6)] = "Sveta tri kralja"
+        easter_date = easter(year)
+
+        # Easter
+        self[easter_date] = "Uskrs"
+        # Easter Monday
+        self[easter_date + rd(days=1)] = "Uskrsni ponedjeljak"
+
+        # Corpus Christi
+        self[easter_date + rd(days=60)] = "Tijelovo"
+
+        # International Workers' Day
+        self[date(year, 5, 1)] = "Međunarodni praznik rada"
+
+        # Anti-fascist struggle day
+        self[date(year, 6, 22)] = "Dan antifašističke borbe"
+        
+        # Statehood day
+        self[date(year, 6, 22)] = "Dan državnosti"
+        
+        # Victory and Homeland Thanksgiving Day
+        self[date(year, 8, 5)] = "Dan pobjede i domovinske zahvalnosti"
+
+        # Assumption of Mary
+        self[date(year, 8, 15)] = "Velika Gospa"
+
+        # Independence Day
+        self[date(year, 10, 8)] = "Dan neovisnosti"
+
+        # All Saints' Day
+        self[date(year, 11, 1)] = "Svi sveti"
+        
+        # Christmas day
+        self[date(year, 1, 25)] = "Božić"
+
+        # St. Stephen's day
+        self[date(year, 12, 26)] = "Sveti Stjepan"
+
+
+class HR(Croatia):
+    pass
