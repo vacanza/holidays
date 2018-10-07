@@ -103,6 +103,7 @@ Belgium             BE       None
 Canada              CA       prov = AB, BC, MB, NB, NL, NS, NT, NU, **ON** (default),
                              PE, QC, SK, YU
 Colombia            CO       None
+Croatia             HR       None
 Czech               CZ       None
 Denmark             DK       None
 England                      None
