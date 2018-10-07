@@ -3547,7 +3547,7 @@ class Croatia(HolidayBase):
         self[date(year, 11, 1)] = "Svi sveti"
         
         # Christmas day
-        self[date(year, 1, 25)] = "Božić"
+        self[date(year, 12, 25)] = "Božić"
 
         # St. Stephen's day
         self[date(year, 12, 26)] = "Sveti Stjepan"
