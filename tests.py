@@ -4266,8 +4266,8 @@ class TestBelarus(unittest.TestCase):
 
     def test_before_1998(self):
         self.assertNotIn(date(1997, 7, 3), self.holidays)
-        
-        
+
+
 class TestCroatia(unittest.TestCase):
 
     def setUp(self):
