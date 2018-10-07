@@ -3505,7 +3505,7 @@ class IND(India):
 class Croatia(HolidayBase):
 
     # https://en.wikipedia.org/wiki/Public_holidays_in_Croatia
-        
+
     def __init__(self, **kwargs):
         self.country = "HR"
         HolidayBase.__init__(self, **kwargs)
@@ -3530,10 +3530,10 @@ class Croatia(HolidayBase):
 
         # Anti-fascist struggle day
         self[date(year, 6, 22)] = "Dan antifašističke borbe"
-        
+
         # Statehood day
         self[date(year, 6, 22)] = "Dan državnosti"
-        
+
         # Victory and Homeland Thanksgiving Day
         self[date(year, 8, 5)] = "Dan pobjede i domovinske zahvalnosti"
 
@@ -3545,7 +3545,7 @@ class Croatia(HolidayBase):
 
         # All Saints' Day
         self[date(year, 11, 1)] = "Svi sveti"
-        
+
         # Christmas day
         self[date(year, 12, 25)] = "Božić"
 
