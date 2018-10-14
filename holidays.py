@@ -3243,6 +3243,144 @@ class Switzerland(HolidayBase):
 class CH(Switzerland):
     pass
 
+class Honduras(HolidayBase):
+    # https://www.timeanddate.com/holidays/honduras/
+
+    def __init__(self, **kwargs):
+        self.country = "HND"
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # New Year's Day
+        if self.observed and date(year, 1, 1).weekday() in SUNDAY:
+            pass
+        else:
+            self[date(year, 1, 1)] = "Año Nuevo [New Year's Day]"
+
+        # The Three Wise Men Day
+        if self.observed and date(year, 1, 6):
+            name = "Día de los Reyes Magos [The Three Wise Men Day] (Observed)"
+            self[date(year, 1, 6)] = name
+
+        # The Three Wise Men Day
+        if self.observed and date(year, 2, 3):
+            name = "Día de la virgen de Suyapa [Our Lady of Suyapa] (Observed)"
+            self[date(year, 2, 3)] = name
+
+        # The Father's Day
+        if self.observed and date(year, 3, 19):
+            name = "Día del Padre [Father's Day] (Observed)"
+            self[date(year, 3, 19)] = name
+
+        # Maundy Thursday
+        self[easter(year) + rd(weekday=TH(-1))
+             ] = "Jueves Santo [Maundy Thursday]"
+
+        # Good Friday
+        self[easter(year) + rd(weekday=FR(-1))
+             ] = "Viernes Santo [Good Friday]"
+
+        # Holy Saturday
+        self[easter(year) + rd(weekday=SA(-1))
+             ] = "Sábado de Gloria [Holy Saturday]"
+
+        # Easter Sunday
+        self[easter(year) + rd(weekday=SU(-1))
+             ] = "Domingo de Resurrección [Easter Sunday]"
+
+        # Corpus Christi
+        name = "Corpus Christi [Corpus Christi]"
+        hdate = easter(year) + rd(days=+60)
+        if hdate.weekday() == 0 or not self.observed:
+            self[hdate] = name
+        else:
+            self[hdate + rd(weekday=MO)] = name + "(Observed)"
+
+        # America Day
+        if self.observed and date(year, 4, 14).weekday() in SUNDAY:
+            pass
+        else:
+            self[date(year, 4, 14)] = "Día de las Américas [America Day]"
+
+        # Labor Day
+        if self.observed and date(year, 5, 1).weekday() in SUNDAY:
+            pass
+        else:
+            self[date(year, 5, 1)] = "Día del Trabajo [Labour Day]"
+
+        # Mother's Day
+        may_first = date(year, 5, 1) if not year else date(int(year), 5, 1)
+        weekday_seq = may_first.weekday()
+        mom_day = (14 - weekday_seq)
+        if self.observed and date(may_first.year, 5, mom_day):
+            self[date(year, 5, 1)] = "Día de la madre [Mother's Day] (Observed)"
+
+        # Children's Day
+        if self.observed and date(year, 9, 10):
+            self[date(year, 9, 15)] = "Día del niño [Children's day] (Observed)"
+
+        # Independence Day
+        if self.observed and date(year, 9, 15).weekday() in SUNDAY:
+            pass
+        else:
+            name = "Día de la Independencia [Independence Day]"
+            self[date(year, 9, 15)] = name
+
+        # Teacher's Day
+        if self.observed and date(year, 9, 17):
+            name = "Día del Maestro [Teacher's day] (Observed)"
+            self[date(year, 9, 15)] = name
+
+        # October Holidays are joined on 3 days starting at October 3 to 6.
+        # Some companies work medium day and take the rest on saturday.
+        # This holiday is variant and some companies work normally.
+        # If start day is weekend is ignored.
+        # The main objective of this is to increase the tourism.
+
+        # https://www.hondurastips.hn/2017/09/20/de-donde-nace-el-feriado-morazanico/
+
+        if year < 2014:
+            # Morazan's Day
+            if self.observed and date(year, 10, 3).weekday() in SUNDAY:
+                pass
+            else:
+                self[date(year, 10, 3)] = "Día de Morazán [Morazan's Day]"
+
+            # Columbus Day
+            if self.observed and date(year, 10, 12).weekday() in SUNDAY:
+                pass
+            else:
+                self[date(year, 10, 12)] = "Día de la Raza [Columbus Day]"
+
+            # Amy Day
+            if self.observed and date(year, 10, 21).weekday() in SUNDAY:
+                pass
+            else:
+                self[date(year, 10, 21)] = "Día de las Fuerzas Armadas [Army Day]"
+        else:
+            # Morazan Weekend
+            if self.observed and date(year, 10, 3).weekday() in SUNDAY:
+                pass
+            else:
+                self[date(year, 10, 3)] = "Semana Morazánica [Morazan Weekend]"
+
+            # Morazan Weekend
+            if self.observed and date(year, 10, 4).weekday() in SUNDAY:
+                pass
+            else:
+                self[date(year, 10, 4)] = "Semana Morazánica [Morazan Weekend]"
+
+            # Morazan Weekend
+            if self.observed and date(year, 10, 5).weekday() in SUNDAY:
+                pass
+            else:
+                self[date(year, 10, 5)] = "Semana Morazánica [Morazan Weekend]"
+
+        # Christmas
+        self[date(year, 12, 25)] = "Navidad [Christmas]"
+
+class HND(Honduras):
+    pass
 
 class Hungary(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Hungary
