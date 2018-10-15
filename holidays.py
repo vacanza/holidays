@@ -2223,6 +2223,9 @@ class Czech(HolidayBase):
         if year >= 1951:
             self[date(year, 10, 28)] = "Den vzniku samostatného " \
                 "československého státu"
+        if year == 2018:
+            self[date(year, 10, 30)] = "100. výročie prijatia Deklarácie " \
+                                       "slovenského národa"
         if year >= 1990:
             self[date(year, 11, 17)] = "Den boje za svobodu a demokracii"
 
@@ -2239,7 +2242,7 @@ class CZ(Czech):
 
 class Slovak(HolidayBase):
     # https://sk.wikipedia.org/wiki/Sviatok
-    # https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1993/241/20160101
+    # https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1993/241/20181011.html
 
     def __init__(self, **kwargs):
         self.country = 'SK'
