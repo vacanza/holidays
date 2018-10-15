@@ -2223,9 +2223,6 @@ class Czech(HolidayBase):
         if year >= 1951:
             self[date(year, 10, 28)] = "Den vzniku samostatného " \
                 "československého státu"
-        if year == 2018:
-            self[date(year, 10, 30)] = "100. výročie prijatia Deklarácie " \
-                                       "slovenského národa"
         if year >= 1990:
             self[date(year, 11, 17)] = "Den boje za svobodu a demokracii"
 
@@ -2270,7 +2267,9 @@ class Slovak(HolidayBase):
         self[date(year, 9, 1)] = "Deň Ústavy Slovenskej republiky"
 
         self[date(year, 9, 15)] = "Sedembolestná Panna Mária"
-
+        if year == 2018:
+            self[date(year, 10, 30)] = "100. výročie prijatia Deklarácie " \
+                                       "slovenského národa"
         self[date(year, 11, 1)] = "Sviatok Všetkých svätých"
 
         if year >= 2001:
