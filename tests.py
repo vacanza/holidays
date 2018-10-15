@@ -2994,6 +2994,7 @@ class TestSK(unittest.TestCase):
         self.assertIn(date(2018, 8, 29), self.holidays)
         self.assertIn(date(2018, 9, 1), self.holidays)
         self.assertIn(date(2018, 9, 15), self.holidays)
+        self.assertIn(date(2018, 10, 30), self.holidays)
         self.assertIn(date(2018, 11, 1), self.holidays)
         self.assertIn(date(2018, 11, 17), self.holidays)
         self.assertIn(date(2018, 12, 24), self.holidays)

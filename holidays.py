@@ -2344,7 +2344,7 @@ class CZ(Czech):
 
 class Slovak(HolidayBase):
     # https://sk.wikipedia.org/wiki/Sviatok
-    # https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1993/241/20160101
+    # https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1993/241/20181011.html
 
     def __init__(self, **kwargs):
         self.country = 'SK'
@@ -2372,7 +2372,9 @@ class Slovak(HolidayBase):
         self[date(year, 9, 1)] = "Deň Ústavy Slovenskej republiky"
 
         self[date(year, 9, 15)] = "Sedembolestná Panna Mária"
-
+        if year == 2018:
+            self[date(year, 10, 30)] = "100. výročie prijatia Deklarácie " \
+                                       "slovenského národa"
         self[date(year, 11, 1)] = "Sviatok Všetkých svätých"
 
         if year >= 2001:
