@@ -332,7 +332,6 @@ class Belarus(HolidayBase):
     http://president.gov.by/en/holidays_en/
     http://www.belarus.by/en/about-belarus/national-holidays
     """
-
     def __init__(self, **kwargs):
         self.country = "BY"
         HolidayBase.__init__(self, **kwargs)
@@ -383,7 +382,9 @@ class Brazil(HolidayBase):
     https://pt.wikipedia.org/wiki/Feriados_no_Brasil
     """
 
-    STATES = ['SP']
+    STATES = ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT',
+              'MS', 'MG', 'PA', 'PB', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR',
+              'SC', 'SP', 'SE', 'TO']
 
     def __init__(self, **kwargs):
         self.country = 'BR'
@@ -436,7 +437,8 @@ class Brazil(HolidayBase):
             self[date(year, 11, 20)] = "Consciência Negra"
 
         if self.state == 'AM':
-            self[date(year, 9, 5)] = "Elevação do Amazonas à categoria de província"
+            self[date(year, 9, 5)] = "Elevação do Amazonas" \
+                " à categoria de província"
             self[date(year, 11, 20)] = "Consciência Negra"
             self[date(year, 12, 8)] = "Dia de Nossa Senhora da Conceição"
 
@@ -458,8 +460,8 @@ class Brazil(HolidayBase):
             self[date(year, 10, 28)] = "Dia do Servidor Público"
 
         if self.state == 'MA':
-            self[date(year, 7, 28)
-                 ] = "Adesão do Maranhão à independência do Brasil"
+            self[date(year, 7, 28)] = "Adesão do Maranhão" \
+                " à independência do Brasil"
             self[date(year, 12, 8)] = "Dia de Nossa Senhora da Conceição"
 
         if self.state == 'MT':
@@ -472,11 +474,10 @@ class Brazil(HolidayBase):
             self[date(year, 4, 21)] = "Data Magna de MG"
 
         if self.state == 'PA':
-            self[date(year, 8, 15)
-                 ] = "Adesão do Grão-Pará à independência do Brasil"
+            self[date(year, 8, 15)] = "Adesão do Grão-Pará" \
+                " à independência do Brasil"
 
         if self.state == 'PB':
-
             self[date(year, 8, 5)] = "Fundação do Estado"
 
         if self.state == 'PE':
@@ -507,7 +508,8 @@ class Brazil(HolidayBase):
             self[date(year, 10, 5)] = "Criação de Roraima"
 
         if self.state == 'SC':
-            self[date(year, 8, 11)] = "Criação da capitania, separando-se de SP"
+            self[date(year, 8, 11)] = "Criação da capitania," \
+                " separando-se de SP"
 
         if self.state == 'SP':
             self[date(year, 7, 9)] = "Revolução Constitucionalista de 1932"
