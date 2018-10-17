@@ -100,6 +100,8 @@ Australia           AU       prov = **ACT** (default), NSW, NT, QLD, SA, TAS, VI
 Austria             AT       prov = B, K, N, O, S, ST, T, V, **W** (default)
 Belarus             BY       None
 Belgium             BE       None
+Brazil              BR       state = AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG,
+                             PA, PB, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO
 Canada              CA       prov = AB, BC, MB, NB, NL, NS, NT, NU, **ON** (default),
                              PE, QC, SK, YU
 Colombia            CO       None

@@ -377,6 +377,156 @@ class BY(Belarus):
     pass
 
 
+class Brazil(HolidayBase):
+    """
+    https://pt.wikipedia.org/wiki/Feriados_no_Brasil
+    """
+
+    STATES = ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT',
+              'MS', 'MG', 'PA', 'PB', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR',
+              'SC', 'SP', 'SE', 'TO']
+
+    def __init__(self, **kwargs):
+        self.country = 'BR'
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # New Year's Day
+        self[date(year, 1, 1)] = "Ano novo"
+
+        self[date(year, 4, 21)] = "Tiradentes"
+
+        self[date(year, 5, 1)] = "Dia Mundial do Trabalho"
+
+        self[date(year, 9, 7)] = "Independência do Brasil"
+
+        self[date(year, 10, 12)] = "Nossa Senhora Aparecida"
+
+        self[date(year, 11, 2)] = "Finados"
+
+        self[date(year, 11, 15)] = "Proclamação da República"
+
+        # Christmas Day
+        self[date(year, 12, 25)] = "Natal"
+
+        self[easter(year)] = "Páscoa"
+
+        self[easter(year) + rd(days=60)] = "Corpus Christi"
+
+        quaresma = easter(year) - rd(days=46)
+        self[quaresma] = "Quarta-feira de cinzas (Início da Quaresma)"
+
+        self[quaresma - rd(weekday=TU)] = "Carnaval"
+
+        if self.state == 'AC':
+            self[date(year, 1, 23)] = "Dia do evangélico"
+            self[date(year, 6, 15)] = "Aniversário do Acre"
+            self[date(year, 9, 5)] = "Dia da Amazônia"
+            self[date(year, 11, 17)] = "Assinatura do Tratado de Petrópolis"
+
+        if self.state == 'AL':
+            self[date(year, 6, 24)] = "São João"
+            self[date(year, 6, 29)] = "São Pedro"
+            self[date(year, 9, 16)] = "Emancipação política de Alagoas"
+            self[date(year, 11, 20)] = "Consciência Negra"
+
+        if self.state == 'AP':
+            self[date(year, 3, 19)] = "Dia de São José"
+            self[date(year, 7, 25)] = "São Tiago"
+            self[date(year, 10, 5)] = "Criação do estado"
+            self[date(year, 11, 20)] = "Consciência Negra"
+
+        if self.state == 'AM':
+            self[date(year, 9, 5)] = "Elevação do Amazonas" \
+                " à categoria de província"
+            self[date(year, 11, 20)] = "Consciência Negra"
+            self[date(year, 12, 8)] = "Dia de Nossa Senhora da Conceição"
+
+        if self.state == 'BA':
+            self[date(year, 7, 2)] = "Independência da Bahia"
+
+        if self.state == 'CE':
+            self[date(year, 3, 19)] = "São José"
+            self[date(year, 3, 25)] = "Data Magna do Ceará"
+
+        if self.state == 'DF':
+            self[date(year, 4, 21)] = "Fundação de Brasília"
+            self[date(year, 11, 30)] = "Dia do Evangélico"
+
+        if self.state == 'ES':
+            self[date(year, 10, 28)] = "Dia do Servidor Público"
+
+        if self.state == 'GO':
+            self[date(year, 10, 28)] = "Dia do Servidor Público"
+
+        if self.state == 'MA':
+            self[date(year, 7, 28)] = "Adesão do Maranhão" \
+                " à independência do Brasil"
+            self[date(year, 12, 8)] = "Dia de Nossa Senhora da Conceição"
+
+        if self.state == 'MT':
+            self[date(year, 11, 20)] = "Consciência Negra"
+
+        if self.state == 'MS':
+            self[date(year, 10, 11)] = "Criação do estado"
+
+        if self.state == 'MG':
+            self[date(year, 4, 21)] = "Data Magna de MG"
+
+        if self.state == 'PA':
+            self[date(year, 8, 15)] = "Adesão do Grão-Pará" \
+                " à independência do Brasil"
+
+        if self.state == 'PB':
+            self[date(year, 8, 5)] = "Fundação do Estado"
+
+        if self.state == 'PE':
+            self[date(year, 3, 6)] = "Revolução Pernambucana (Data Magna)"
+            self[date(year, 6, 24)] = "São João"
+
+        if self.state == 'PI':
+            self[date(year, 3, 13)] = "Dia da Batalha do Jenipapo"
+            self[date(year, 10, 19)] = "Dia do Piauí"
+
+        if self.state == 'RJ':
+            self[date(year, 4, 23)] = "Dia de São Jorge"
+            self[date(year, 10, 28)] = "Dia do Funcionário Público"
+            self[date(year, 11, 20)] = "Zumbi dos Palmares"
+
+        if self.state == 'RN':
+            self[date(year, 6, 29)] = "Dia de São Pedro"
+            self[date(year, 10, 3)] = "Mártires de Cunhaú e Uruaçuu"
+
+        if self.state == 'RS':
+            self[date(year, 9, 20)] = "Revolução Farroupilha"
+
+        if self.state == 'RO':
+            self[date(year, 1, 4)] = "Criação do estado"
+            self[date(year, 6, 18)] = "Dia do Evangélico"
+
+        if self.state == 'RR':
+            self[date(year, 10, 5)] = "Criação de Roraima"
+
+        if self.state == 'SC':
+            self[date(year, 8, 11)] = "Criação da capitania," \
+                " separando-se de SP"
+
+        if self.state == 'SP':
+            self[date(year, 7, 9)] = "Revolução Constitucionalista de 1932"
+
+        if self.state == 'SE':
+            self[date(year, 7, 8)] = "Autonomia política de Sergipe"
+
+        if self.state == 'TO':
+            self[date(year, 1, 1)] = "Instalação de Tocantins"
+            self[date(year, 9, 8)] = "Nossa Senhora da Natividade"
+            self[date(year, 10, 5)] = "Criação de Tocantins"
+
+
+class BR(Brazil):
+    pass
+
+
 class Canada(HolidayBase):
 
     PROVINCES = ['AB', 'BC', 'MB', 'NB', 'NL', 'NS', 'NT', 'NU', 'ON', 'PE',
