@@ -318,8 +318,8 @@ class Argentina(HolidayBase):
         if not self.observed and date(year, DECEMBER, 8).weekday() in WEEKEND:
             pass
         else:
-            self[date(year, DECEMBER, 8)
-            ] = "La Inmaculada Concepción [Immaculate Conception]"
+            self[date(year, DECEMBER, 8)] = "La Inmaculada Concepción" \
+                                            " [Immaculate Conception]"
 
         # Christmas
         self[date(year, DECEMBER, 25)] = "Navidad [Christmas]"
@@ -555,7 +555,7 @@ class Canada(HolidayBase):
                 expand = self.expand
                 self.expand = False
                 self[date(year, JANUARY, 1) + rd(days=-1)] = name + \
-                                                             " (Observed)"
+                    " (Observed)"
                 self.expand = expand
             # The next year's observed New Year's Day can be in this year
             # when it falls on a Friday (Jan 1st is a Saturday)
@@ -794,8 +794,8 @@ class Colombia(HolidayBase):
         if self.observed and date(year, DECEMBER, 8).weekday() in WEEKEND:
             pass
         else:
-            self[date(year, DECEMBER, 8)
-            ] = "La Inmaculada Concepción [Immaculate Conception]"
+            self[date(year, DECEMBER, 8)] = "La Inmaculada Concepción" \
+                                            " [Immaculate Conception]"
 
         # Christmas
         self[date(year, DECEMBER, 25)] = "Navidad [Christmas]"
@@ -1122,7 +1122,7 @@ class UnitedStates(HolidayBase):
                 expand = self.expand
                 self.expand = False
                 self[date(year, JANUARY, 1) + rd(days=-1)] = name + \
-                                                             " (Observed)"
+                    " (Observed)"
                 self.expand = expand
             # The next year's observed New Year's Day can be in this year
             # when it falls on a Friday (Jan 1st is a Saturday)
@@ -1752,7 +1752,7 @@ class NewZealand(HolidayBase):
         elif self.prov in ('CAN', 'Canterbury'):
             name = "Canterbury Anniversary Day"
             showday = date(year, NOVEMBER, 1) + rd(weekday=TU) + \
-                      rd(weekday=FR(+2))
+                rd(weekday=FR(+2))
             self[showday] = name
 
         elif self.prov in ('STC', 'South Canterbury'):
@@ -2927,7 +2927,7 @@ class Sweden(HolidayBase):
         if self.include_sundays:
             first_day_of_year = date(year, JANUARY, 1)
             first_sunday_of_year = \
-                first_day_of_year +\
+                first_day_of_year + \
                 rd(days=SUNDAY - first_day_of_year.weekday())
             cur_date = first_sunday_of_year
 
