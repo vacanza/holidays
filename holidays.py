@@ -2804,14 +2804,14 @@ class Italy(HolidayBase):
     PROVINCES = ['Ancona', 'Aosta', 'Bari', 'BA', 'Belluno', 'Bologna', 'BO',
                  'Bolzano', 'Brescia', 'Campobasso', 'Catania', 'Cesena',
                  'Chieti', 'Cosenza', 'Crotone', 'Enna', 'Ferrara', 'Firenze',
-                 'FI', 'Forli', 'Frosinone', 'Genova', 'Gorizia', 'Isernia', 'La Spezia',
-                 'Latina', 'Mantova', 'Massa', 'Milano', 'MI', 'Modena', 'Monza',
-                 'Napoli', 'NA', 'Padova', 'Palermo', 'Parma', 'Perugia', 'Pescara',
-                 'Piacenza', 'Pisa', 'Pordenone', 'Potenza', 'Ravenna',
-                 'Reggio Emilia', 'Rieti', 'Rimini', 'Roma', 'Rovigo',
-                 'Salerno', 'Siracusa', 'Teramo', 'Torino', 'Trieste', 'Urbino',
-                 'Venezia', 'Vicenza',
-                 'PA', 'RM', 'TS', 'VI']
+                 'FI', 'Forli', 'Frosinone', 'Genova', 'Gorizia', 'Isernia',
+                 'La Spezia', 'Latina', 'Mantova', 'Massa', 'Milano', 'MI',
+                 'Modena', 'Monza', 'Napoli', 'NA', 'Padova', 'Palermo',
+                 'Parma', 'Perugia', 'Pescara', 'Piacenza', 'Pisa',
+                 'Pordenone', 'Potenza', 'Ravenna', 'Reggio Emilia',
+                 'Rieti', 'Rimini', 'Roma', 'Rovigo', 'Salerno',
+                 'Siracusa', 'Teramo', 'Torino', 'Trieste', 'Urbino',
+                 'Venezia', 'Vicenza', 'PA', 'RM', 'TS', 'VI']
 
     def __init__(self, **kwargs):
         self.country = 'IT'
@@ -2838,7 +2838,7 @@ class Italy(HolidayBase):
         # 'Reggio Emilia', 'Rieti', 'Rimini', 'Roma', 'Rovigo',
         # 'Salerno', 'Siracusa', 'Teramo', 'Torino', 'Trieste', 'Urbino',
         # 'Venezia', 'Vicenza'
-        
+
         # TODO: add missing provinces' holidays
         # and write missing tests in TestItaly.test_province_specific_days
         if self.prov:
