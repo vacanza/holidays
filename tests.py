@@ -3228,9 +3228,27 @@ class TestItaly(unittest.TestCase):
         self.assertIn(date(2017, 12, 26), self.holidays)
 
     def test_province_specific_days(self):
-        prov_mi = (holidays.IT(prov='MI', years=[2017]))
+        prov_ancona = (holidays.IT(prov='Ancona', years=[2017]))
+        prov_aosta = (holidays.IT(prov='Aosta', years=[2017]))
+        prov_bari = (holidays.IT(prov='Bari', years=[2017]))
+        prov_belluno = (holidays.IT(prov='Belluno', years=[2017]))
+        prov_bologna = (holidays.IT(prov='Bologna', years=[2017]))
+        prov_bolzano = (holidays.IT(prov='Bolzano', years=[2017]))
+        prov_brescia = (holidays.IT(prov='Brescia', years=[2017]))
+        prov_milano = (holidays.IT(prov='Milano', years=[2017]))
         prov_rm = (holidays.IT(prov='RM', years=[2017]))
-        self.assertIn("2017-12-08", prov_mi)
+
+        self.assertIn("2017-05-04", prov_ancona)
+        self.assertIn("2017-09-07", prov_aosta)
+        self.assertIn("2017-12-06", prov_bari)
+        self.assertIn("2017-05-07", prov_bari)
+        self.assertIn("2017-05-08", prov_bari)
+        self.assertIn("2017-05-09", prov_bari)
+        self.assertIn("2017-11-11", prov_belluno)
+        self.assertIn("2017-10-04", prov_bologna)
+        self.assertIn("2017-08-15", prov_bolzano)
+        self.assertIn("2017-02-15", prov_brescia)
+        self.assertIn("2017-12-07", prov_milano)
         self.assertIn("2017-06-29", prov_rm)
 
 
