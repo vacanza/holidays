@@ -416,7 +416,7 @@ class Brazil(HolidayBase):
         quaresma = easter(year) - rd(days=46)
         self[quaresma] = "Quarta-feira de cinzas (Início da Quaresma)"
 
-        self[quaresma - rd(weekday=TU)] = "Carnaval"
+        self[quaresma - rd(weekday=TU(-1))] = "Carnaval"
 
         if self.state == 'AC':
             self[date(year, 1, 23)] = "Dia do evangélico"
