@@ -4332,6 +4332,8 @@ class TestBrazil(unittest.TestCase):
                          "Quarta-feira de cinzas (Início da Quaresma)")
         self.assertIn("2018-02-20", self.holidays)
         self.assertEqual(self.holidays[date(2018, 2, 20)], "Carnaval")
+        self.assertIn("2018-03-30", self.holidays)
+        self.assertEqual(self.holidays[date(2018, 3, 30)], "Sexta-feira Santa")
         self.assertIn("2018-04-01", self.holidays)
         self.assertEqual(self.holidays[date(2018, 4, 1)], "Páscoa")
         self.assertIn("2018-04-21", self.holidays)
