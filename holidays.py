@@ -409,6 +409,8 @@ class Brazil(HolidayBase):
         # Christmas Day
         self[date(year, 12, 25)] = "Natal"
 
+        self[easter(year) - rd(days=2)] = "Sexta-feira Santa"
+
         self[easter(year)] = "Páscoa"
 
         self[easter(year) + rd(days=60)] = "Corpus Christi"
