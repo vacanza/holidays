@@ -2488,9 +2488,13 @@ class TestDE(unittest.TestCase):
                       (2017, 4, 16), (2018, 4, 1), (2019, 4, 21),
                       (2020, 4, 12), (2021, 4, 4), (2022, 4, 17),
                       (2023, 4, 9), (2024, 3, 31)]
+        provinces_that_have = {"BB"}
+        provinces_that_dont = set(holidays.DE.PROVINCES) - provinces_that_have
 
-        for province, (y, m, d) in product(holidays.DE.PROVINCES, known_good):
+        for province, (y, m, d) in product(provinces_that_have, known_good):
             self.assertIn(date(y, m, d), self.prov_hols[province])
+        for province, (y, m, d) in product(provinces_that_dont, known_good):
+            self.assertNotIn(date(y, m, d), self.prov_hols[province])
 
     def test_ostermontag(self):
         known_good = [(2014, 4, 21), (2015, 4, 6), (2016, 3, 28),
@@ -2515,9 +2519,13 @@ class TestDE(unittest.TestCase):
                       (2017, 6, 4), (2018, 5, 20), (2019, 6, 9),
                       (2020, 5, 31), (2021, 5, 23), (2022, 6, 5),
                       (2023, 5, 28), (2024, 5, 19)]
+        provinces_that_have = {"BB"}
+        provinces_that_dont = set(holidays.DE.PROVINCES) - provinces_that_have
 
-        for province, (y, m, d) in product(holidays.DE.PROVINCES, known_good):
+        for province, (y, m, d) in product(provinces_that_have, known_good):
             self.assertIn(date(y, m, d), self.prov_hols[province])
+        for province, (y, m, d) in product(provinces_that_dont, known_good):
+            self.assertNotIn(date(y, m, d), self.prov_hols[province])
 
     def test_pfingstmontag(self):
         known_good = [(2014, 6, 9), (2015, 5, 25), (2016, 5, 16),
