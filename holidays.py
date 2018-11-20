@@ -412,6 +412,8 @@ class Brazil(HolidayBase):
         # Christmas Day
         self[date(year, DEC, 25)] = "Natal"
 
+        self[easter(year) - rd(days=2)] = "Sexta-feira Santa"
+
         self[easter(year)] = "Páscoa"
 
         self[easter(year) + rd(days=60)] = "Corpus Christi"
@@ -419,7 +421,7 @@ class Brazil(HolidayBase):
         quaresma = easter(year) - rd(days=46)
         self[quaresma] = "Quarta-feira de cinzas (Início da Quaresma)"
 
-        self[quaresma - rd(weekday=TU)] = "Carnaval"
+        self[quaresma - rd(weekday=TU(-1))] = "Carnaval"
 
         if self.state == 'AC':
             self[date(year, JAN, 23)] = "Dia do evangélico"
@@ -2108,11 +2110,6 @@ class Germany(HolidayBase):
         # Luther's thesis)
         if year == 2017:
             self[date(year, OCT, 31)] = 'Reformationstag'
-
-        # since 2018 additional states got the Reformationstag
-        if year >= 2018:
-            if self.prov in ('HB', 'HH', 'NI', 'SH'):
-                self[date(year, OCT, 31)] = 'Reformationstag'
 
         if self.prov in ('BW', 'BY', 'NW', 'RP', 'SL'):
             self[date(year, NOV, 1)] = 'Allerheiligen'
