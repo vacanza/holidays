@@ -4291,7 +4291,7 @@ class TestHonduras(unittest.TestCase):
         self.assertIn(date(2018, 10, 3), self.holidays)  # Morazan's weekend
         self.assertIn(date(2018, 12, 25), self.holidays)  # Christmas
 
-       
+
 class TestCroatia(unittest.TestCase):
 
     def setUp(self):
