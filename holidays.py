@@ -409,6 +409,8 @@ class Brazil(HolidayBase):
         # Christmas Day
         self[date(year, 12, 25)] = "Natal"
 
+        self[easter(year) - rd(days=2)] = "Sexta-feira Santa"
+
         self[easter(year)] = "Páscoa"
 
         self[easter(year) + rd(days=60)] = "Corpus Christi"
@@ -416,7 +418,7 @@ class Brazil(HolidayBase):
         quaresma = easter(year) - rd(days=46)
         self[quaresma] = "Quarta-feira de cinzas (Início da Quaresma)"
 
-        self[quaresma - rd(weekday=TU)] = "Carnaval"
+        self[quaresma - rd(weekday=TU(-1))] = "Carnaval"
 
         if self.state == 'AC':
             self[date(year, 1, 23)] = "Dia do evangélico"
