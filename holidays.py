@@ -18,7 +18,7 @@ from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
 import six
 
-__version__ = '0.9.7'
+__version__ = '0.9.8'
 
 
 MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY = range(7)
@@ -188,9 +188,9 @@ def createHolidaySum(h1, h2):
     return HolidaySum
 
 
-def CountryHoliday(country):
+def CountryHoliday(country, prov=None, state=None):
     try:
-        country_holiday = globals()[country]()
+        country_holiday = globals()[country](prov=prov, state=state)
     except (KeyError):
         raise KeyError("Country %s not available" % country)
     return country_holiday
@@ -374,6 +374,156 @@ class Belarus(HolidayBase):
 
 
 class BY(Belarus):
+    pass
+
+
+class Brazil(HolidayBase):
+    """
+    https://pt.wikipedia.org/wiki/Feriados_no_Brasil
+    """
+
+    STATES = ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT',
+              'MS', 'MG', 'PA', 'PB', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR',
+              'SC', 'SP', 'SE', 'TO']
+
+    def __init__(self, **kwargs):
+        self.country = 'BR'
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # New Year's Day
+        self[date(year, 1, 1)] = "Ano novo"
+
+        self[date(year, 4, 21)] = "Tiradentes"
+
+        self[date(year, 5, 1)] = "Dia Mundial do Trabalho"
+
+        self[date(year, 9, 7)] = "Independência do Brasil"
+
+        self[date(year, 10, 12)] = "Nossa Senhora Aparecida"
+
+        self[date(year, 11, 2)] = "Finados"
+
+        self[date(year, 11, 15)] = "Proclamação da República"
+
+        # Christmas Day
+        self[date(year, 12, 25)] = "Natal"
+
+        self[easter(year)] = "Páscoa"
+
+        self[easter(year) + rd(days=60)] = "Corpus Christi"
+
+        quaresma = easter(year) - rd(days=46)
+        self[quaresma] = "Quarta-feira de cinzas (Início da Quaresma)"
+
+        self[quaresma - rd(weekday=TU)] = "Carnaval"
+
+        if self.state == 'AC':
+            self[date(year, 1, 23)] = "Dia do evangélico"
+            self[date(year, 6, 15)] = "Aniversário do Acre"
+            self[date(year, 9, 5)] = "Dia da Amazônia"
+            self[date(year, 11, 17)] = "Assinatura do Tratado de Petrópolis"
+
+        if self.state == 'AL':
+            self[date(year, 6, 24)] = "São João"
+            self[date(year, 6, 29)] = "São Pedro"
+            self[date(year, 9, 16)] = "Emancipação política de Alagoas"
+            self[date(year, 11, 20)] = "Consciência Negra"
+
+        if self.state == 'AP':
+            self[date(year, 3, 19)] = "Dia de São José"
+            self[date(year, 7, 25)] = "São Tiago"
+            self[date(year, 10, 5)] = "Criação do estado"
+            self[date(year, 11, 20)] = "Consciência Negra"
+
+        if self.state == 'AM':
+            self[date(year, 9, 5)] = "Elevação do Amazonas" \
+                " à categoria de província"
+            self[date(year, 11, 20)] = "Consciência Negra"
+            self[date(year, 12, 8)] = "Dia de Nossa Senhora da Conceição"
+
+        if self.state == 'BA':
+            self[date(year, 7, 2)] = "Independência da Bahia"
+
+        if self.state == 'CE':
+            self[date(year, 3, 19)] = "São José"
+            self[date(year, 3, 25)] = "Data Magna do Ceará"
+
+        if self.state == 'DF':
+            self[date(year, 4, 21)] = "Fundação de Brasília"
+            self[date(year, 11, 30)] = "Dia do Evangélico"
+
+        if self.state == 'ES':
+            self[date(year, 10, 28)] = "Dia do Servidor Público"
+
+        if self.state == 'GO':
+            self[date(year, 10, 28)] = "Dia do Servidor Público"
+
+        if self.state == 'MA':
+            self[date(year, 7, 28)] = "Adesão do Maranhão" \
+                " à independência do Brasil"
+            self[date(year, 12, 8)] = "Dia de Nossa Senhora da Conceição"
+
+        if self.state == 'MT':
+            self[date(year, 11, 20)] = "Consciência Negra"
+
+        if self.state == 'MS':
+            self[date(year, 10, 11)] = "Criação do estado"
+
+        if self.state == 'MG':
+            self[date(year, 4, 21)] = "Data Magna de MG"
+
+        if self.state == 'PA':
+            self[date(year, 8, 15)] = "Adesão do Grão-Pará" \
+                " à independência do Brasil"
+
+        if self.state == 'PB':
+            self[date(year, 8, 5)] = "Fundação do Estado"
+
+        if self.state == 'PE':
+            self[date(year, 3, 6)] = "Revolução Pernambucana (Data Magna)"
+            self[date(year, 6, 24)] = "São João"
+
+        if self.state == 'PI':
+            self[date(year, 3, 13)] = "Dia da Batalha do Jenipapo"
+            self[date(year, 10, 19)] = "Dia do Piauí"
+
+        if self.state == 'RJ':
+            self[date(year, 4, 23)] = "Dia de São Jorge"
+            self[date(year, 10, 28)] = "Dia do Funcionário Público"
+            self[date(year, 11, 20)] = "Zumbi dos Palmares"
+
+        if self.state == 'RN':
+            self[date(year, 6, 29)] = "Dia de São Pedro"
+            self[date(year, 10, 3)] = "Mártires de Cunhaú e Uruaçuu"
+
+        if self.state == 'RS':
+            self[date(year, 9, 20)] = "Revolução Farroupilha"
+
+        if self.state == 'RO':
+            self[date(year, 1, 4)] = "Criação do estado"
+            self[date(year, 6, 18)] = "Dia do Evangélico"
+
+        if self.state == 'RR':
+            self[date(year, 10, 5)] = "Criação de Roraima"
+
+        if self.state == 'SC':
+            self[date(year, 8, 11)] = "Criação da capitania," \
+                " separando-se de SP"
+
+        if self.state == 'SP':
+            self[date(year, 7, 9)] = "Revolução Constitucionalista de 1932"
+
+        if self.state == 'SE':
+            self[date(year, 7, 8)] = "Autonomia política de Sergipe"
+
+        if self.state == 'TO':
+            self[date(year, 1, 1)] = "Instalação de Tocantins"
+            self[date(year, 9, 8)] = "Nossa Senhora da Natividade"
+            self[date(year, 10, 5)] = "Criação de Tocantins"
+
+
+class BR(Brazil):
     pass
 
 
@@ -810,6 +960,111 @@ class Mexico(HolidayBase):
 
 
 class MX(Mexico):
+    pass
+
+
+class Ukraine(HolidayBase):
+    """
+    http://zakon1.rada.gov.ua/laws/show/322-08/paran454#n454
+    """
+    def __init__(self, **kwargs):
+        self.country = "UA"
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # The current set of holidays came into force in 1991
+        # But most holiday days was inplemented in 1981
+        if year < 1918:
+            return
+
+        # New Year's Day
+        if year >= 1898:
+            self[date(year, 1, 1)] = "Новий рік"
+
+        # Christmas Day (Orthodox)
+        if year >= 1991:
+            self[date(year, 1, 7)] = "Різдво Христове" \
+                                     " (православне)"
+
+        # Women's Day
+        if year > 1965:
+            self[date(year, 3, 8)] = "Міжнародний жіночий день"
+
+        # Easter
+        if year >= 1991:
+            self[easter(year, method=EASTER_ORTHODOX)] = "Пасха" \
+                                                         " (Великдень)"
+
+        # Holy trinity
+        if year >= 1991:
+            self[easter(year, method=EASTER_ORTHODOX) + rd(days=49)] = "Трійця"
+
+        # Labour Day
+        if year > 2017:
+            name = "День праці"
+        elif 1917 < year <= 2017:
+            name = "День міжнародної солідарності трудящих"
+        self[date(year, 5, 1)] = name
+
+        # Labour Day in past
+        if 1928 < year < 2018:
+            self[date(year, 5, 2)] = "День міжнародної солідарності трудящих"
+
+        # Victory Day
+        name = "День перемоги"
+        if year >= 1965:
+            self[date(year, 5, 9)] = name
+        if 1945 <= year < 1947:
+            self[date(year, 5, 9)] = name
+            self[date(year, 9, 3)] = "День перемоги над Японією"
+
+        # Constitution Day
+        if year >= 1997:
+            self[date(year, 6, 28)] = "День Конституції України"
+
+        # Independence Day
+        name = "День незалежності України"
+        if year > 1991:
+            self[date(year, 8, 24)] = name
+        elif year == 1991:
+            self[date(year, 7, 16)] = name
+
+        # Day of the defender of Ukraine
+        if year >= 2015:
+            self[date(year, 10, 14)] = "День захисника України"
+
+        # USSR Constitution day
+        name = "День Конституції СРСР"
+        if 1981 <= year < 1991:
+            self[date(year, 10, 7)] = name
+        elif 1937 <= year < 1981:
+            self[date(year, 12, 5)] = name
+
+        # October Revolution
+        if 1917 < year < 2000:
+            if year <= 1991:
+                name = "Річниця Великої Жовтневої" \
+                       " соціалістичної революції"
+            else:
+                name = "Річниця жовтневого перевороту"
+            self[date(year, 11, 7)] = name
+            self[date(year, 11, 8)] = name
+
+        # Christmas Day (Catholic)
+        if year >= 2017:
+            self[date(year, 12, 25)] = "Різдво Христове" \
+                                       " (католицьке)"
+        # USSR holidays
+        # Bloody_Sunday_(1905)
+        if 1917 <= year < 1951:
+            self[date(year, 1, 22)] = "День пам'яті 9 січня 1905 року"
+
+        # Paris_Commune
+        if 1917 < year < 1929:
+            self[date(year, 3, 18)] = "День паризької комуни"
+
+
+class UA(Ukraine):
     pass
 
 
@@ -2239,7 +2494,7 @@ class CZ(Czech):
 
 class Slovak(HolidayBase):
     # https://sk.wikipedia.org/wiki/Sviatok
-    # https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1993/241/20160101
+    # https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1993/241/20181011.html
 
     def __init__(self, **kwargs):
         self.country = 'SK'
@@ -2267,7 +2522,9 @@ class Slovak(HolidayBase):
         self[date(year, 9, 1)] = "Deň Ústavy Slovenskej republiky"
 
         self[date(year, 9, 15)] = "Sedembolestná Panna Mária"
-
+        if year == 2018:
+            self[date(year, 10, 30)] = "100. výročie prijatia Deklarácie " \
+                                       "slovenského národa"
         self[date(year, 11, 1)] = "Sviatok Všetkých svätých"
 
         if year >= 2001:
@@ -3509,4 +3766,59 @@ class India(HolidayBase):
 
 
 class IND(India):
+    pass
+
+
+class Croatia(HolidayBase):
+
+    # https://en.wikipedia.org/wiki/Public_holidays_in_Croatia
+
+    def __init__(self, **kwargs):
+        self.country = "HR"
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # New years
+        self[date(year, 1, 1)] = "Nova Godina"
+        # Epiphany
+        self[date(year, 1, 6)] = "Sveta tri kralja"
+        easter_date = easter(year)
+
+        # Easter
+        self[easter_date] = "Uskrs"
+        # Easter Monday
+        self[easter_date + rd(days=1)] = "Uskrsni ponedjeljak"
+
+        # Corpus Christi
+        self[easter_date + rd(days=60)] = "Tijelovo"
+
+        # International Workers' Day
+        self[date(year, 5, 1)] = "Međunarodni praznik rada"
+
+        # Anti-fascist struggle day
+        self[date(year, 6, 22)] = "Dan antifašističke borbe"
+
+        # Statehood day
+        self[date(year, 6, 22)] = "Dan državnosti"
+
+        # Victory and Homeland Thanksgiving Day
+        self[date(year, 8, 5)] = "Dan pobjede i domovinske zahvalnosti"
+
+        # Assumption of Mary
+        self[date(year, 8, 15)] = "Velika Gospa"
+
+        # Independence Day
+        self[date(year, 10, 8)] = "Dan neovisnosti"
+
+        # All Saints' Day
+        self[date(year, 11, 1)] = "Svi sveti"
+
+        # Christmas day
+        self[date(year, 12, 25)] = "Božić"
+
+        # St. Stephen's day
+        self[date(year, 12, 26)] = "Sveti Stjepan"
+
+
+class HR(Croatia):
     pass
