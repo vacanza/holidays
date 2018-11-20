@@ -3574,23 +3574,23 @@ class Honduras(HolidayBase):
 
     def _populate(self, year):
         # New Year's Day
-        if self.observed and date(year, 1, 1):
-            self[date(year, 1, 1)] = "Año Nuevo [New Year's Day]"
+        if self.observed and date(year, JAN, 1):
+            self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
 
         # The Three Wise Men Day
-        if self.observed and date(year, 1, 6):
+        if self.observed and date(year, JAN, 6):
             name = "Día de los Reyes Magos [The Three Wise Men Day] (Observed)"
-            self[date(year, 1, 6)] = name
+            self[date(year, JAN, 6)] = name
 
         # The Three Wise Men Day
-        if self.observed and date(year, 2, 3):
+        if self.observed and date(year, FEB, 3):
             name = "Día de la virgen de Suyapa [Our Lady of Suyapa] (Observed)"
-            self[date(year, 2, 3)] = name
+            self[date(year, FEB, 3)] = name
 
         # The Father's Day
-        if self.observed and date(year, 3, 19):
+        if self.observed and date(year, MAR, 19):
             name = "Día del Padre [Father's Day] (Observed)"
-            self[date(year, 3, 19)] = name
+            self[date(year, MAR, 19)] = name
 
         # Maundy Thursday
         self[easter(year) + rd(weekday=TH(-1))
@@ -3609,34 +3609,35 @@ class Honduras(HolidayBase):
              ] = "Domingo de Resurrección [Easter Sunday]"
 
         # America Day
-        if self.observed and date(year, 4, 14):
-            self[date(year, 4, 14)] = "Día de las Américas [America Day]"
+        if self.observed and date(year, APR, 14):
+            self[date(year, APR, 14)] = "Día de las Américas [America Day]"
 
         # Labor Day
-        if self.observed and date(year, 5, 1):
-            self[date(year, 5, 1)] = "Día del Trabajo [Labour Day]"
+        if self.observed and date(year, MAY, 1):
+            self[date(year, MAY, 1)] = "Día del Trabajo [Labour Day]"
 
         # Mother's Day
         may_first = date(int(year), 5, 1)
         weekday_seq = may_first.weekday()
         mom_day = (14 - weekday_seq)
-        if self.observed and date(year, 5, mom_day):
+        if self.observed and date(year, MAY, mom_day):
             str_day = "Día de la madre [Mother's Day] (Observed)"
-            self[date(year, 5, mom_day)] = str_day
+            self[date(year, MAY, mom_day)] = str_day
 
         # Children's Day
-        if self.observed and date(year, 9, 10):
-            self[date(year, 9, 10)] = "Día del niño [Children day] (Observed)"
+        if self.observed and date(year, SEP, 10):
+            name = "Día del niño [Children day] (Observed)"
+            self[date(year, SEP, 10)] = name
 
         # Independence Day
-        if self.observed and date(year, 9, 15):
+        if self.observed and date(year, SEP, 15):
             name = "Día de la Independencia [Independence Day]"
-            self[date(year, 9, 15)] = name
+            self[date(year, SEP, 15)] = name
 
         # Teacher's Day
-        if self.observed and date(year, 9, 17):
+        if self.observed and date(year, SEP, 17):
             name = "Día del Maestro [Teacher's day] (Observed)"
-            self[date(year, 9, 17)] = name
+            self[date(year, SEP, 17)] = name
 
         # October Holidays are joined on 3 days starting at October 3 to 6.
         # Some companies work medium day and take the rest on saturday.
@@ -3648,32 +3649,35 @@ class Honduras(HolidayBase):
 
         if year <= 2014:
             # Morazan's Day
-            if self.observed and date(year, 10, 3):
-                self[date(year, 10, 3)] = "Día de Morazán [Morazan's Day]"
+            if self.observed and date(year, OCT, 3):
+                self[date(year, OCT, 3)] = "Día de Morazán [Morazan's Day]"
 
             # Columbus Day
-            if self.observed and date(year, 10, 12):
-                self[date(year, 10, 12)] = "Día de la Raza [Columbus Day]"
+            if self.observed and date(year, OCT, 12):
+                self[date(year, OCT, 12)] = "Día de la Raza [Columbus Day]"
 
             # Amy Day
-            if self.observed and date(year, 10, 21):
+            if self.observed and date(year, OCT, 21):
                 str_day = "Día de las Fuerzas Armadas [Army Day]"
-                self[date(year, 10, 21)] = str_day
+                self[date(year, OCT, 21)] = str_day
         else:
             # Morazan Weekend
-            if self.observed and date(year, 10, 3):
-                self[date(year, 10, 3)] = "Semana Morazánica [Morazan Weekend]"
+            if self.observed and date(year, OCT, 3):
+                name = "Semana Morazánica [Morazan Weekend]"
+                self[date(year, OCT, 3)] = name
 
             # Morazan Weekend
-            if self.observed and date(year, 10, 4):
-                self[date(year, 10, 4)] = "Semana Morazánica [Morazan Weekend]"
+            if self.observed and date(year, OCT, 4):
+                name = "Semana Morazánica [Morazan Weekend]"
+                self[date(year, OCT, 4)] = name
 
             # Morazan Weekend
-            if self.observed and date(year, 10, 5):
-                self[date(year, 10, 5)] = "Semana Morazánica [Morazan Weekend]"
+            if self.observed and date(year, OCT, 5):
+                name = "Semana Morazánica [Morazan Weekend]"
+                self[date(year, OCT, 5)] = name
 
         # Christmas
-        self[date(year, 12, 25)] = "Navidad [Christmas]"
+        self[date(year, DEC, 25)] = "Navidad [Christmas]"
 
 
 class HND(Honduras):
