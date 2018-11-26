@@ -575,10 +575,10 @@ class Canada(HolidayBase):
             self[date(year, 2, 1) + rd(weekday=MO(+3))] = "Islander Day"
         elif self.prov == 'PE' and year == 2009:
             self[date(year, 2, 1) + rd(weekday=MO(+2))] = "Islander Day"
-        elif self.prov in 'NS' and year >= 2015:
+        elif self.prov == 'NS' and year >= 2015:
             # http://novascotia.ca/lae/employmentrights/NovaScotiaHeritageDay.asp
             self[date(year, 2, 1) + rd(weekday=MO(+3))] = "Heritage Day"
-        elif self.prov in 'YU':
+        elif self.prov == 'YU':
             # start date?
             # http://heritageyukon.ca/programs/heritage-day
             # https://en.wikipedia.org/wiki/Family_Day_(Canada)#Yukon_Heritage_Day
@@ -681,16 +681,16 @@ class Canada(HolidayBase):
         # Civic Holiday
         if self.prov in ('ON', 'MB', 'NT') and year >= 1900:
             self[date(year, 8, 1) + rd(weekday=MO)] = "Civic Holiday"
-        elif self.prov in 'AB' and year >= 1974:
+        elif self.prov == 'AB' and year >= 1974:
             # https://en.wikipedia.org/wiki/Civic_Holiday#Alberta
             self[date(year, 8, 1) + rd(weekday=MO)] = "Heritage Day"
-        elif self.prov in 'BC' and year >= 1974:
+        elif self.prov == 'BC' and year >= 1974:
             # https://en.wikipedia.org/wiki/Civic_Holiday
             self[date(year, 8, 1) + rd(weekday=MO)] = "British Columbia Day"
-        elif self.prov in 'NB' and year >= 1900:
+        elif self.prov == 'NB' and year >= 1900:
             # https://en.wikipedia.org/wiki/Civic_Holiday
             self[date(year, 8, 1) + rd(weekday=MO)] = "New Brunswick Day"
-        elif self.prov in 'SK' and year >= 1900:
+        elif self.prov == 'SK' and year >= 1900:
             # https://en.wikipedia.org/wiki/Civic_Holiday
             self[date(year, 8, 1) + rd(weekday=MO)] = "Saskatchewan Day"
 
