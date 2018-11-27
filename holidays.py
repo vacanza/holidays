@@ -2074,10 +2074,11 @@ class Germany(HolidayBase):
 
             self[easter(year) - rd(days=2)] = 'Karfreitag'
 
-            # will always be a Sunday and we have no "observed" rule so
-            # this is pretty pointless but it's nonetheless an official
-            # holiday by law
-            self[easter(year)] = 'Ostersonntag'
+            if self.prov == "BB":
+                # will always be a Sunday and we have no "observed" rule so
+                # this is pretty pointless but it's nonetheless an official
+                # holiday by law
+                self[easter(year)] = "Ostersonntag"
 
             self[easter(year) + rd(days=1)] = 'Ostermontag'
 
@@ -2085,10 +2086,11 @@ class Germany(HolidayBase):
 
             self[easter(year) + rd(days=39)] = 'Christi Himmelfahrt'
 
-            # will always be a Sunday and we have no "observed" rule so
-            # this is pretty pointless but it's nonetheless an official
-            # holiday by law
-            self[easter(year) + rd(days=49)] = 'Pfingstsonntag'
+            if self.prov == "BB":
+                # will always be a Sunday and we have no "observed" rule so
+                # this is pretty pointless but it's nonetheless an official
+                # holiday by law
+                self[easter(year) + rd(days=49)] = "Pfingstsonntag"
 
             self[easter(year) + rd(days=50)] = 'Pfingstmontag'
 
