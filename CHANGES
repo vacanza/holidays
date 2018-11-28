@@ -1,3 +1,15 @@
+Version 0.9.9b
+==============
+
+Released ????? ??, ????
+
+- Magic numbers removal (elln2, dr-p)
+- Honduras support (Oscar Romero)
+- Brazil's holidays fixes (victorpluna)
+- Added provinces and holidays in Italy (krolmic, dr-p)
+- Fix regression with German Easter and Pentecost holidays (vlt, Achimh3011)
+- Fixed Canada Holiday Calendar (justinasfour04)
+
 Version 0.9.8
 =============
 
