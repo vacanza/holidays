@@ -1434,7 +1434,7 @@ class UnitedStates(HolidayBase):
             self[date(year, SEP, 1) + rd(weekday=MO)] = "Labor Day"
 
         # Columbus Day
-        if self.state not in ('AK', 'DE', 'FL', 'HI', 'NV'):
+        if self.state not in ('AK', 'AR', 'DE', 'FL', 'HI', 'NV'):
             if self.state == 'SD':
                 name = "Native American Day"
             elif self.state == 'VI':
