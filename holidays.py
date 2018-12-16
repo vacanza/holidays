@@ -1981,10 +1981,12 @@ class Australia(HolidayBase):
                     dt += rd(weekday=MO(+1))
                 self[date(year, SEP, 26)] = name
 
-        # Melbourne Cup
         if self.prov == 'VIC':
-            name = "Melbourne Cup"
-            self[date(year, NOV, 1) + rd(weekday=TU)] = name
+            # Grand Final Day
+            if year == 2019:
+                self[date(year, SEP, 27)] = "Grand Final Day"
+            # Melbourne Cup
+            self[date(year, NOV, 1) + rd(weekday=TU)] = "Melbourne Cup"
 
         # The Royal Queensland Show (Ekka)
         # The Show starts on the first Friday of August - providing this is
