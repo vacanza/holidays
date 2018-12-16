@@ -2333,6 +2333,11 @@ class TestAU(unittest.TestCase):
             self.assertEqual(self.state_hols['ACT'][dt],
                              "Family & Community Day")
 
+    def test_grand_final_day(self):
+            dt = date(2019, 9, 27)
+            self.assertIn(dt, self.state_hols['VIC'], dt)
+            self.assertEqual(self.state_hols['VIC'][dt], "Grand Final Day")
+
     def test_melbourne_cup(self):
         for dt in [date(2014, 11, 4), date(2015, 11, 3), date(2016, 11, 1)]:
             self.assertIn(dt, self.state_hols['VIC'], dt)
