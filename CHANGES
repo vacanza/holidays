@@ -9,6 +9,7 @@ Released ????? ??, ????
 - Added provinces and holidays in Italy (krolmic, dr-p)
 - Fix regression with German Easter and Pentecost holidays (vlt, Achimh3011)
 - Fixed Canada Holiday Calendar (justinasfour04)
+- Fixed Columbus Day in Arkansas - US (johanneshk)
 
 Version 0.9.8
 =============
