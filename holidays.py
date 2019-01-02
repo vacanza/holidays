@@ -3324,26 +3324,17 @@ class SouthAfrica(HolidayBase):
         local_election = "Local government elections"
         presidential = "By presidential decree"
 
-        if year == 1999:
-            self[date(year, 6, 2)] = national_election
-            self[date(year, 12, 31)] = y2k
-        elif year == 2000:
-            self[date(year, 1, 2)] = y2k
-        elif year == 2004:
-            self[date(year, 4, 14)] = national_election
-        elif year == 2006:
-            self[date(year, 3, 1)] = local_election
-        elif year == 2008:
-            self[date(year, 5, 2)] = presidential
-        elif year == 2009:
-            self[date(year, 4, 22)] = national_election
-        elif year == 2011:
-            self[date(year, 5, 18)] = local_election
-            self[date(year, 12, 27)] = presidential
-        elif year == 2014:
-            self[date(year, 5, 7)] = national_election
-        elif year == 2016:
-            self[date(year, 8, 3)] = local_election
+        self[date(1999, 6, 2)] = national_election
+        self[date(1999, 12, 31)] = y2k
+        self[date(2000, 1, 2)] = y2k
+        self[date(2004, 4, 14)] = national_election
+        self[date(2006, 3, 1)] = local_election
+        self[date(2008, 5, 2)] = presidential
+        self[date(2009, 4, 22)] = national_election
+        self[date(2011, 5, 18)] = local_election
+        self[date(2011, 12, 27)] = presidential
+        self[date(2014, 5, 7)] = national_election
+        self[date(2016, 8, 3)] = local_election
 
         # As of 1995/1/1, whenever a public holiday falls on a Sunday,
         # it rolls over to the following Monday
