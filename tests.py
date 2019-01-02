@@ -3552,7 +3552,7 @@ class TestSouthAfrica(unittest.TestCase):
         self.holidays = holidays.ZA()
 
     def test_new_years(self):
-        self.assertIn('1900-01-01', self.holidays)
+        self.assertIn('1910-01-01', self.holidays)
         self.assertIn('2017-01-01', self.holidays)
         self.assertIn('2999-01-01', self.holidays)
         self.assertIn('2017-01-02', self.holidays)  # sunday
@@ -3572,6 +3572,10 @@ class TestSouthAfrica(unittest.TestCase):
     def test_onceoff(self):
         self.assertIn('2016-08-03', self.holidays)  # local elections 2016
         self.assertNotIn('2017-08-03', self.holidays)
+
+    def test_historic(self):
+        self.assertIn('1980-05-31', self.holidays)  # Union/Republic Day
+        self.assertNotIn('2018-05-31', self.holidays)
 
 
 class TestSI(unittest.TestCase):
