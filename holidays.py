@@ -3295,7 +3295,7 @@ class SouthAfrica(HolidayBase):
                 dec_16_name = "Dingaan's Day"
             elif 1951 < year < 1980:
                 dec_16_name = "Day of the Covenant"
-            elif 1978 < year < 1995:
+            elif 1979 < year < 1995:
                 dec_16_name = "Day of the Vow"
             else:
                 dec_16_name = "Day of Reconciliation"
@@ -3357,7 +3357,7 @@ class SouthAfrica(HolidayBase):
         elif 1979 < year < 1995:
             self[date(year, 4, 6)] = "Founder's Day"
 
-        if 1987 < year < 1990:
+        if 1986 < year < 1990:
             historic_workers_day = datetime(year, 5, 1)
             # observed on first Friday in May
             while historic_workers_day.weekday() != 4:
