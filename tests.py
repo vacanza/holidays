@@ -3569,6 +3569,10 @@ class TestSouthAfrica(unittest.TestCase):
         self.assertNotIn('2016-12-28', self.holidays)
         self.assertNotIn('2015-03-02', self.holidays)
 
+    def test_onceoff(self):
+        self.assertIn('2016-08-03', self.holidays)  # local elections 2016
+        self.assertNotIn('2017-08-03', self.holidays)
+
 
 class TestSI(unittest.TestCase):
 
