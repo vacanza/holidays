@@ -3295,8 +3295,35 @@ class SouthAfrica(HolidayBase):
         self[date(year, 12, 25)] = "Christmas Day"
         self[date(year, 12, 26)] = "Day of Goodwill"
 
+        # Once-off public holidays
+        national_election = "National and provincial government elections"
+        local_election = "Local government elections"
+
+        if year == 1999:
+            self[date(year, 6, 2)] = national_election
+            self[date(year, 12, 31)] = "Y2K changeover"
+        elif year == 2000:
+            self[date(year, 1, 2)] = "Y2K changeover"
+        elif year == 2004:
+            self[date(year, 4, 14)] = national_election
+        elif year == 2006:
+            self[date(year, 3, 1)] = local_election
+        elif year == 2008:
+            self[date(year, 5, 2)] = "By presidential decree"
+        elif year == 2009:
+            self[date(year, 4, 22)] = national_election
+        elif year == 2011:
+            self[date(year, 5, 18)] = local_election
+            self[date(year, 12, 27)] = "By presidential decree"
+        elif year == 2014:
+            self[date(year, 5, 7)] = national_election
+        elif year == 2016:
+            self[date(year, 8, 3)] = local_election
+
+        # As of 1994, whenever a public holiday falls on a Sunday,
+        # it rolls over to the following Monday
         for k, v in list(self.items()):
-            if self.observed and k.weekday() == 6:
+            if self.observed and year > 1993 and k.weekday() == 6:
                 self[k + rd(days=1)] = v + " (Observed)"
 
 
