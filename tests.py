@@ -3577,6 +3577,16 @@ class TestSouthAfrica(unittest.TestCase):
         self.assertIn('1980-05-31', self.holidays)  # Union/Republic Day
         self.assertNotIn('2018-05-31', self.holidays)
 
+        self.assertIn('1952-12-16', self.holidays)  # Day of the Vow
+        self.assertIn('1988-05-06', self.holidays)  # Workers' Day
+        self.assertIn('1961-07-10', self.holidays)  # Family Day
+
+        self.assertIn('1947-08-04', self.holidays)  # King's Birthday
+        self.assertNotIn('1948-08-04', self.holidays)
+
+        self.assertIn('1975-09-01', self.holidays)  # Settler's Day
+        self.assertNotIn('1976-09-01', self.holidays)
+
 
 class TestSI(unittest.TestCase):
 
