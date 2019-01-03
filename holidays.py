@@ -18,7 +18,7 @@ from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
 import six
 
-__version__ = '0.9.9b'
+__version__ = '0.9.9'
 
 MON, TUE, WED, THU, FRI, SAT, SUN = range(7)
 WEEKEND = (SAT, SUN)
@@ -3451,9 +3451,9 @@ class SouthAfrica(HolidayBase):
                 dec_16_name = "Day of the Vow"
             else:
                 dec_16_name = "Day of Reconciliation"
-            self[date(year, 12, 16)] = dec_16_name
+            self[date(year, DEC, 16)] = dec_16_name
 
-            self[date(year, 12, 25)] = "Christmas Day"
+            self[date(year, DEC, 25)] = "Christmas Day"
 
             if year > 1979:
                 dec_26_name = "Day of Goodwill"
@@ -3463,12 +3463,12 @@ class SouthAfrica(HolidayBase):
 
         # Observed since 1995/1/1
         if year > 1994:
-            self[date(year, 3, 21)] = "Human Rights Day"
-            self[date(year, 4, 27)] = "Freedom Day"
-            self[date(year, 5, 1)] = "Workers' Day"
-            self[date(year, 6, 16)] = "Youth Day"
-            self[date(year, 8, 9)] = "National Women's Day"
-            self[date(year, 9, 24)] = "Heritage Day"
+            self[date(year, MAR, 21)] = "Human Rights Day"
+            self[date(year, APR, 27)] = "Freedom Day"
+            self[date(year, MAY, 1)] = "Workers' Day"
+            self[date(year, JUN, 16)] = "Youth Day"
+            self[date(year, AUG, 9)] = "National Women's Day"
+            self[date(year, SEP, 24)] = "Heritage Day"
 
         # Once-off public holidays
         national_election = "National and provincial government elections"
@@ -3476,17 +3476,17 @@ class SouthAfrica(HolidayBase):
         local_election = "Local government elections"
         presidential = "By presidential decree"
 
-        self[date(1999, 6, 2)] = national_election
-        self[date(1999, 12, 31)] = y2k
-        self[date(2000, 1, 2)] = y2k
-        self[date(2004, 4, 14)] = national_election
-        self[date(2006, 3, 1)] = local_election
-        self[date(2008, 5, 2)] = presidential
-        self[date(2009, 4, 22)] = national_election
-        self[date(2011, 5, 18)] = local_election
-        self[date(2011, 12, 27)] = presidential
-        self[date(2014, 5, 7)] = national_election
-        self[date(2016, 8, 3)] = local_election
+        self[date(1999, JUN, 2)] = national_election
+        self[date(1999, DEC, 31)] = y2k
+        self[date(2000, JAN, 2)] = y2k
+        self[date(2004, APR, 14)] = national_election
+        self[date(2006, MAR, 1)] = local_election
+        self[date(2008, MAY, 2)] = presidential
+        self[date(2009, APR, 22)] = national_election
+        self[date(2011, MAY, 18)] = local_election
+        self[date(2011, DEC, 27)] = presidential
+        self[date(2014, MAY, 7)] = national_election
+        self[date(2016, AUG, 3)] = local_election
 
         # As of 1995/1/1, whenever a public holiday falls on a Sunday,
         # it rolls over to the following Monday
@@ -3496,14 +3496,14 @@ class SouthAfrica(HolidayBase):
 
         # Historic public holidays no longer observed
         if 1951 < year < 1974:
-            self[date(year, 4, 6)] = "Van Riebeeck's Day"
+            self[date(year, APR, 6)] = "Van Riebeeck's Day"
         elif 1979 < year < 1995:
-            self[date(year, 4, 6)] = "Founder's Day"
+            self[date(year, APR, 6)] = "Founder's Day"
 
         if 1986 < year < 1990:
-            historic_workers_day = datetime(year, 5, 1)
+            historic_workers_day = datetime(year, MAY, 1)
             # observed on first Friday in May
-            while historic_workers_day.weekday() != 4:
+            while historic_workers_day.weekday() != FRI:
                 historic_workers_day += rd(days=1)
 
             self[historic_workers_day] = "Workers' Day"
@@ -3513,15 +3513,15 @@ class SouthAfrica(HolidayBase):
             self[ascension_day] = "Ascension Day"
 
         if 1909 < year < 1952:
-            self[date(year, 5, 24)] = "Empire Day"
+            self[date(year, MAY, 24)] = "Empire Day"
 
         if 1909 < year < 1961:
-            self[date(year, 5, 31)] = "Union Day"
+            self[date(year, MAY, 31)] = "Union Day"
         elif 1960 < year < 1994:
-            self[date(year, 5, 31)] = "Republic Day"
+            self[date(year, MAY, 31)] = "Republic Day"
 
         if 1951 < year < 1961:
-            queens_birthday = datetime(year, 6, 7)
+            queens_birthday = datetime(year, JUN, 7)
             # observed on second Monday in June
             while queens_birthday.weekday() != 0:
                 queens_birthday += rd(days=1)
@@ -3529,10 +3529,10 @@ class SouthAfrica(HolidayBase):
             self[queens_birthday] = "Queen's Birthday"
 
         if 1960 < year < 1974:
-            self[date(year, 7, 10)] = "Family Day"
+            self[date(year, JUL, 10)] = "Family Day"
 
         if 1909 < year < 1952:
-            kings_birthday = datetime(year, 8, 1)
+            kings_birthday = datetime(year, AUG, 1)
             # observed on first Monday in August
             while kings_birthday.weekday() != 0:
                 kings_birthday += rd(days=1)
@@ -3540,14 +3540,14 @@ class SouthAfrica(HolidayBase):
             self[kings_birthday] = "King's Birthday"
 
         if 1951 < year < 1980:
-            settlers_day = datetime(year, 9, 1)
+            settlers_day = datetime(year, SEP, 1)
             while settlers_day.weekday() != 0:
                 settlers_day += rd(days=1)
 
             self[settlers_day] = "Settlers' Day"
 
         if 1951 < year < 1994:
-            self[date(year, 10, 10)] = "Kruger Day"
+            self[date(year, OCT, 10)] = "Kruger Day"
 
 
 class ZA(SouthAfrica):
