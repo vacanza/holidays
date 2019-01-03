@@ -3425,31 +3425,129 @@ class BE(Belgium):
 class SouthAfrica(HolidayBase):
     def __init__(self, **kwargs):
         # http://www.gov.za/about-sa/public-holidays
+        # https://en.wikipedia.org/wiki/Public_holidays_in_South_Africa
         self.country = "ZA"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
-        self[date(year, JAN, 1)] = "New Year's Day"
-        self[date(year, MAR, 21)] = "Human Rights Day"
+        # Observed since 1910, with a few name changes
+        if year > 1909:
+            self[date(year, 1, 1)] = "New Year's Day"
 
-        e = easter(year)
-        good_friday = e - rd(days=2)
-        easter_monday = e + rd(days=1)
-        self[good_friday] = "Good Friday"
-        self[easter_monday] = "Family Day"
+            e = easter(year)
+            good_friday = e - rd(days=2)
+            easter_monday = e + rd(days=1)
+            self[good_friday] = "Good Friday"
+            if year > 1979:
+                self[easter_monday] = "Family Day"
+            else:
+                self[easter_monday] = "Easter Monday"
 
-        self[date(year, APR, 27)] = "Freedom Day"
-        self[date(year, MAY, 1)] = "Worker's Day"
-        self[date(year, JUN, 16)] = "Youth Day"
-        self[date(year, AUG, 9)] = "National Women's Day"
-        self[date(year, SEP, 24)] = "Heritage Day"
-        self[date(year, DEC, 16)] = "Day of Reconciliation"
-        self[date(year, DEC, 25)] = "Christmas Day"
-        self[date(year, DEC, 26)] = "Day of Goodwill"
+            if 1909 < year < 1952:
+                dec_16_name = "Dingaan's Day"
+            elif 1951 < year < 1980:
+                dec_16_name = "Day of the Covenant"
+            elif 1979 < year < 1995:
+                dec_16_name = "Day of the Vow"
+            else:
+                dec_16_name = "Day of Reconciliation"
+            self[date(year, 12, 16)] = dec_16_name
 
+            self[date(year, 12, 25)] = "Christmas Day"
+
+            if year > 1979:
+                dec_26_name = "Day of Goodwill"
+            else:
+                dec_26_name = "Boxing Day"
+            self[date(year, 12, 26)] = dec_26_name
+
+        # Observed since 1995/1/1
+        if year > 1994:
+            self[date(year, 3, 21)] = "Human Rights Day"
+            self[date(year, 4, 27)] = "Freedom Day"
+            self[date(year, 5, 1)] = "Workers' Day"
+            self[date(year, 6, 16)] = "Youth Day"
+            self[date(year, 8, 9)] = "National Women's Day"
+            self[date(year, 9, 24)] = "Heritage Day"
+
+        # Once-off public holidays
+        national_election = "National and provincial government elections"
+        y2k = "Y2K changeover"
+        local_election = "Local government elections"
+        presidential = "By presidential decree"
+
+        self[date(1999, 6, 2)] = national_election
+        self[date(1999, 12, 31)] = y2k
+        self[date(2000, 1, 2)] = y2k
+        self[date(2004, 4, 14)] = national_election
+        self[date(2006, 3, 1)] = local_election
+        self[date(2008, 5, 2)] = presidential
+        self[date(2009, 4, 22)] = national_election
+        self[date(2011, 5, 18)] = local_election
+        self[date(2011, 12, 27)] = presidential
+        self[date(2014, 5, 7)] = national_election
+        self[date(2016, 8, 3)] = local_election
+
+        # As of 1995/1/1, whenever a public holiday falls on a Sunday,
+        # it rolls over to the following Monday
         for k, v in list(self.items()):
-            if self.observed and k.weekday() == SUN:
+            if self.observed and year > 1994 and k.weekday() == SUN:
                 self[k + rd(days=1)] = v + " (Observed)"
+
+        # Historic public holidays no longer observed
+        if 1951 < year < 1974:
+            self[date(year, 4, 6)] = "Van Riebeeck's Day"
+        elif 1979 < year < 1995:
+            self[date(year, 4, 6)] = "Founder's Day"
+
+        if 1986 < year < 1990:
+            historic_workers_day = datetime(year, 5, 1)
+            # observed on first Friday in May
+            while historic_workers_day.weekday() != 4:
+                historic_workers_day += rd(days=1)
+
+            self[historic_workers_day] = "Workers' Day"
+
+        if 1909 < year < 1994:
+            ascension_day = e + rd(days=40)
+            self[ascension_day] = "Ascension Day"
+
+        if 1909 < year < 1952:
+            self[date(year, 5, 24)] = "Empire Day"
+
+        if 1909 < year < 1961:
+            self[date(year, 5, 31)] = "Union Day"
+        elif 1960 < year < 1994:
+            self[date(year, 5, 31)] = "Republic Day"
+
+        if 1951 < year < 1961:
+            queens_birthday = datetime(year, 6, 7)
+            # observed on second Monday in June
+            while queens_birthday.weekday() != 0:
+                queens_birthday += rd(days=1)
+
+            self[queens_birthday] = "Queen's Birthday"
+
+        if 1960 < year < 1974:
+            self[date(year, 7, 10)] = "Family Day"
+
+        if 1909 < year < 1952:
+            kings_birthday = datetime(year, 8, 1)
+            # observed on first Monday in August
+            while kings_birthday.weekday() != 0:
+                kings_birthday += rd(days=1)
+
+            self[kings_birthday] = "King's Birthday"
+
+        if 1951 < year < 1980:
+            settlers_day = datetime(year, 9, 1)
+            while settlers_day.weekday() != 0:
+                settlers_day += rd(days=1)
+
+            self[settlers_day] = "Settlers' Day"
+
+        if 1951 < year < 1994:
+            self[date(year, 10, 10)] = "Kruger Day"
 
 
 class ZA(SouthAfrica):
