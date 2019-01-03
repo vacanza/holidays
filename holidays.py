@@ -2176,6 +2176,7 @@ class Denmark(HolidayBase):
     def _populate(self, year):
         # Public holidays
         self[date(year, JAN, 1)] = "Nytårsdag"
+        self[easter(year) + rd(weekday=SU(-2))] = "Palmesøndag"
         self[easter(year) + rd(weekday=TH(-1))] = "Skærtorsdag"
         self[easter(year) + rd(weekday=FR(-1))] = "Langfredag"
         self[easter(year)] = "Påskedag"
