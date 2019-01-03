@@ -1983,8 +1983,8 @@ class Australia(HolidayBase):
 
         if self.prov == 'VIC':
             # Grand Final Day
-            if year == 2019:
-                self[date(year, SEP, 27)] = "Grand Final Day"
+            if year >= 2015:
+                self[date(year, SEP, 24) + rd(weekday=FR)] = "Grand Final Day"
             # Melbourne Cup
             self[date(year, NOV, 1) + rd(weekday=TU)] = "Melbourne Cup"
 
