@@ -114,7 +114,7 @@ class HolidayBase(dict):
             for delta_days in range(0, date_diff.days, step):
                 day = start + timedelta(days=delta_days)
                 try:
-                    _ = dict.__getitem__(
+                    dict.__getitem__(
                         self,
                         day
                     )
