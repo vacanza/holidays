@@ -47,6 +47,8 @@ Example Usage
 
     us_holidays.get('2014-01-01')  # "New Year's Day"
 
+    us_holidays['2014-01-01': '2014-01-03']  # [date(2014, 1, 1)]
+
     us_pr_holidays = holidays.UnitedStates(state='PR')  # or holidays.US(...), or holidays.CountryHoliday('US', state='PR')
 
     # some holidays are only present in parts of a country

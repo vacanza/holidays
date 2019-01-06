@@ -12,7 +12,7 @@
 #  License: MIT (see LICENSE file)
 
 from itertools import product
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from dateutil.relativedelta import relativedelta, MO
 import unittest
 
@@ -33,6 +33,75 @@ class TestBasics(unittest.TestCase):
         self.assertEqual(self.holidays.get(date(2014, 1, 1)), "New Year's Day")
         self.assertRaises(KeyError, lambda: self.holidays[date(2014, 1, 2)])
         self.assertIsNone(self.holidays.get(date(2014, 1, 2)))
+
+        self.assertListEqual(
+            self.holidays[date(2013, 12, 31): date(2014, 1, 2)],
+            [date(2014, 1, 1)]
+        )
+        self.assertListEqual(
+            self.holidays[date(2013, 12, 24): date(2014, 1, 2)],
+            [date(2013, 12, 25), date(2014, 1, 1)]
+        )
+        self.assertListEqual(
+            self.holidays[date(2013, 12, 25): date(2014, 1, 2): 3],
+            [date(2013, 12, 25)]
+        )
+        self.assertListEqual(
+            self.holidays[date(2013, 12, 25): date(2014, 1, 2): 7],
+            [date(2013, 12, 25), date(2014, 1, 1)]
+        )
+        self.assertListEqual(
+            self.holidays[date(2014, 1, 2): date(2013, 12, 30)],
+            [date(2014, 1, 1)]
+        )
+        self.assertListEqual(
+            self.holidays[date(2014, 1, 2): date(2013, 12, 25)],
+            [date(2014, 1, 1)]
+        )
+        self.assertListEqual(
+            self.holidays[date(2014, 1, 2): date(2013, 12, 24)],
+            [date(2014, 1, 1), date(2013, 12, 25)]
+        )
+        self.assertListEqual(
+            self.holidays[date(2014, 1, 1): date(2013, 12, 24): 3],
+            [date(2014, 1, 1)]
+        )
+        self.assertListEqual(
+            self.holidays[date(2014, 1, 1): date(2013, 12, 24): 7],
+            [date(2014, 1, 1), date(2013, 12, 25)]
+        )
+        self.assertListEqual(
+            self.holidays[date(2013, 12, 31): date(2014, 1, 2): 3],
+            []
+        )
+        self.assertListEqual(
+            self.holidays[
+                date(2014, 1, 1): date(2013, 12, 24): timedelta(days=3)
+            ],
+            [date(2014, 1, 1)]
+        )
+        self.assertListEqual(
+            self.holidays[
+                date(2014, 1, 1): date(2013, 12, 24): timedelta(days=7)
+            ],
+            [date(2014, 1, 1), date(2013, 12, 25)]
+        )
+        self.assertListEqual(
+            self.holidays[
+                date(2013, 12, 31): date(2014, 1, 2): timedelta(days=3)
+            ],
+            []
+        )
+        self.assertRaises(ValueError, lambda: self.holidays[date(2014, 1, 1):])
+        self.assertRaises(ValueError, lambda: self.holidays[:date(2014, 1, 1)])
+        self.assertRaises(
+            TypeError,
+            lambda: self.holidays[date(2014, 1, 1): date(2014, 1, 2): '']
+        )
+        self.assertRaises(
+            ValueError,
+            lambda: self.holidays[date(2014, 1, 1): date(2014, 1, 2): 0]
+        )
 
     def test_get(self):
         self.assertEqual(self.holidays.get('2014-01-01'), "New Year's Day")
