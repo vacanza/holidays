@@ -71,7 +71,7 @@ class TestBasics(unittest.TestCase):
             [date(2014, 1, 1), date(2013, 12, 25)]
         )
         self.assertListEqual(
-            self.holidays[date(2013, 12, 31): date(2014, 1, 2): 3],
+            self.holidays[date(2013, 12, 31): date(2014, 1, 2): -3],
             []
         )
         self.assertListEqual(
