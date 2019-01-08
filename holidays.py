@@ -4077,8 +4077,9 @@ class Croatia(HolidayBase):
 class HR(Croatia):
     pass
 
+
 class Luxembourg(HolidayBase):
-     
+
     # https://en.wikipedia.org/wiki/Public_holidays_in_Luxembourg
 
     def __init__(self, **kwargs):
