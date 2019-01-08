@@ -4078,6 +4078,7 @@ class HR(Croatia):
     pass
 
 class Luxembourg(HolidayBase):
+     
     # https://en.wikipedia.org/wiki/Public_holidays_in_Luxembourg
 
     def __init__(self, **kwargs):
@@ -4090,7 +4091,7 @@ class Luxembourg(HolidayBase):
         self[easter(year) + rd(weekday=MO)] = "Ouschterméindeg"
         self[date(year, MAY, 1)] = "Dag vun der Aarbecht"
         if year >= 2019:
-            # Europe Day: not in legislation yet, but introduced starting in 2019
+            # Europe Day: not in legislation yet, but introduced starting 2019
             self[date(year, MAY, 9)] = "Europadag"
         self[easter(year) + rd(days=39)] = "Christi Himmelfaart"
         self[easter(year) + rd(days=50)] = "Péngschtméindeg"
