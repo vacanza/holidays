@@ -4680,7 +4680,7 @@ class TestBrazil(unittest.TestCase):
         self.assertEqual(to_holidays[date(2018, 10, 5)],
                          "Criação de Tocantins")
 
- 
+
 class TestLU(unittest.TestCase):
 
     def setUp(self):
