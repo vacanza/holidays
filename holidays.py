@@ -4076,3 +4076,245 @@ class Croatia(HolidayBase):
 
 class HR(Croatia):
     pass
+
+
+class Romania(HolidayBase):
+    # https://en.wikipedia.org/wiki/Public_holidays_in_Romania
+
+    def __init__(self, **kwargs):
+        self.country = 'RO'
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # New Year's Day
+        if not self.observed and date(year, 1, 1).weekday() in WEEKEND:
+            pass
+        else:
+            self[date(year, JAN, 1)] = "Anul Nou [New Year's Day]"
+        if not self.observed and date(year, JAN, 2).weekday() in WEEKEND:
+            pass
+        else:
+            self[date(year, JAN, 2)] = "Anul Nou (2) [New Year's Day (2)]"
+
+        # Unification Day (Ziua Unirii)
+        name = "Ziua Unirii [Unification Day]"
+        if not self.observed and date(year, JAN, 24).weekday() in WEEKEND:
+            pass
+        else:
+            self[date(year, JAN, 24)] = name
+        # Holy Week (Orthodox)
+        name_easter = 'Învierea de duminică [Easter Sunday]'
+        name_mon = 'Paști de luni [Easter Monday]'
+
+        if not self.observed and easter(year).weekday() in WEEKEND:
+            pass
+        else:
+            self[easter(year, method=2)] = name_easter
+        self[easter(year, method=2) + rd(weekday=MO)] = name_mon
+
+        # Labor Day
+        name = "Ziua Muncii [Labour Day]"
+        if not self.observed and date(year, MAY, 1).weekday() in WEEKEND:
+            pass
+        else:
+            self[date(year, MAY, 1)] = name
+
+        # Children's Day (Ziua Copilului)
+        if year >= 2017:
+            name = "Ziua Copilului [Children's Day]"
+            if not self.observed and date(year, JUN, 1).weekday() in WEEKEND:
+                pass
+            else:
+                self[date(year, JUN, 1)] = name
+
+        # Pentecostes
+        self[easter(year, method=2) + rd(days=49)] = "Rusalii [Whitsun]"
+        self[easter(year, method=2) + rd(days=50)] = 'Rusalii luni [Pentecost Monday]'
+
+        # Assumption Day
+        name = "Adormirea Maicii Domnului [Assumption Day]"
+        if not self.observed and date(year, AUG, 15).weekday() in WEEKEND:
+            pass
+        else:
+            self[date(year, AUG, 15)] = name
+
+        # St. Andrew's Day
+        name = "Sfântul Andrei [St. Andrew's Day]"
+        if not self.observed and date(year, NOV, 30).weekday() in WEEKEND:
+            pass
+        else:
+            self[date(year, NOV, 30)] = name
+
+        # National Day
+        name = "Ziua Naţională a României [National Day]"
+        if not self.observed and date(year, DEC, 1).weekday() in WEEKEND:
+            pass
+        else:
+            self[date(year, DEC, 1)] = name
+
+        # Christmas
+        self[date(year, DEC, 25)] = "Crăciun [Christmas]"
+
+        # Saint Stephen's Day (Boxing Day)
+        self[date(year, DEC, 26)] = "Crăciun [Saint Stephen's Day]"
+
+
+class RO(Romania):
+    pass
+
+
+class Turkey(HolidayBase):
+    # https://www.feiertagskalender.ch/index.php?geo=3539&jahr=2017&hl=en
+
+    def __init__(self, **kwargs):
+        self.country = 'TR'
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # New Year's Day
+        if not self.observed and date(year, JAN, 1).weekday() in WEEKEND:
+            pass
+        else:
+            self[date(year, JAN, 1)] = "Yılbaşı [New Year's Day]"
+
+        # Children's Day
+        name = "Ulusal Egemenlik ve Çocuk Bayramı [Children's Day]"
+        if not self.observed and date(year, APR, 23).weekday() in WEEKEND:
+            pass
+        else:
+            self[date(year, APR, 23)] = name
+
+        # Labor Day
+        name = "Emek ve Dayanışma Günü [Labour Day]"
+        if not self.observed and date(year, MAY, 1).weekday() in WEEKEND:
+            pass
+        else:
+            self[date(year, MAY, 1)] = name
+
+        # Ramadan and Sacrifice fest
+        tr_years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]
+        ramadan_start = dict()
+        ramadan_end = dict()
+        sacrifice_fest_eve = dict()
+        ramadan_start[2010] = date(2010, AUG, 10)
+        ramadan_end[2010] = date(2010, SEP, 8)
+        sacrifice_fest_eve[2010] = date(2010, NOV, 15)
+        ramadan_start[2011] = date(2011, JUL, 31)
+        ramadan_end[2011] = date(2011, AUG, 29)
+        sacrifice_fest_eve[2011] = date(2011, NOV, 5)
+        ramadan_start[2012] = date(2012, JUL, 31)
+        ramadan_end[2012] = date(2012, AUG, 29)
+        sacrifice_fest_eve[2012] = date(2012, OCT, 24)
+        ramadan_start[2013] = date(2013, JUL, 19)
+        ramadan_end[2013] = date(2013, AUG, 18)
+        sacrifice_fest_eve[2013] = date(2013, OCT, 14)
+        ramadan_start[2014] = date(2014, JUN, 27)
+        ramadan_end[2014] = date(2014, JUL, 27)
+        sacrifice_fest_eve[2014] = date(2014, OCT, 3)
+        ramadan_start[2015] = date(2015, JUN, 17)
+        ramadan_end[2015] = date(2015, JUL, 16)
+        sacrifice_fest_eve[2015] = date(2015, SEP, 22)
+        ramadan_start[2016] = date(2016, JUN, 6)
+        ramadan_end[2016] = date(2016, JUL, 4)
+        sacrifice_fest_eve[2016] = date(2016, SEP, 10)
+        ramadan_start[2017] = date(2017, MAY, 26)
+        ramadan_end[2017] = date(2017, JUL, 24)
+        sacrifice_fest_eve[2017] = date(2017, AUG, 25)
+        ramadan_start[2018] = date(2018, MAY, 15)
+        ramadan_end[2018] = date(2018, JUN, 14)
+        sacrifice_fest_eve[2018] = date(2018, AUG, 19)
+        ramadan_start[2019] = date(2019, MAY, 5)
+        ramadan_end[2019] = date(2019, JUN, 4)
+        sacrifice_fest_eve[2019] = date(2019, AUG, 9)
+        ramadan_start[2020] = date(2020, APR, 23)
+        ramadan_end[2020] = date(2020, MAY, 23)
+        sacrifice_fest_eve[2020] = date(2020, JUL, 29)
+        ramadan_start[2021] = date(2021, APR, 12)
+        ramadan_end[2021] = date(2021, MAY, 10)
+        sacrifice_fest_eve[2021] = date(2021, JUL, 18)
+        ramadan_start[2022] = date(2022, APR, 2)
+        ramadan_end[2022] = date(2022, APR, 30)
+        sacrifice_fest_eve[2022] = date(2022, JUL, 8)
+
+        if year in tr_years:
+            self[ramadan_start[year]] = "Ramazan Başlangıcı [Start of Ramadan]"
+            self[ramadan_end[year]] = "Ramazan Bayram [End of Ramadan]"
+            self[sacrifice_fest_eve[year]] = "Kurban Bayrami [Sacrifice Fest]"
+            self[sacrifice_fest_eve[year] + rd(days=5)] = "Kurban Bayrami End[Sacrifice Fest end]"
+
+        # Ataturk Day
+        name = "Atatürk´ü Anma, Gençlik ve Spor Bayramı [Atatürk Day]"
+        if not self.observed and date(year, MAY, 19).weekday() in WEEKEND:
+            pass
+        else:
+            self[date(year, MAY, 19)] = name
+
+        # Victory Day
+        name = "Zafer Bayrami [Victory Day]"
+        if not self.observed and date(year, AUG, 30).weekday() in WEEKEND:
+            pass
+        else:
+            self[date(year, AUG, 30)] = name
+
+        # Republic Day
+        name = "Cumhuriyet Bayrami [Republic Day]"
+        if not self.observed and date(year, OCT, 29).weekday() in WEEKEND:
+            pass
+        else:
+            self[date(year, OCT, 29)] = name
+
+
+class TR(Turkey):
+    pass
+
+
+class Greece(HolidayBase):
+    # https://en.wikipedia.org/wiki/Public_holidays_in_Greece
+
+    def __init__(self, **kwargs):
+        self.country = 'GR'
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # New Year's Day
+        self[date(year, JAN, 1)] = "Πρωτοχρονιά [New Year's Day]"
+
+        # Epiphany
+        self[date(year, JAN, 6)] = "Θεοφάνεια [Epiphany]"
+
+        # Independence Day
+        self[date(year, MAR, 25)] = "Εικοστή Πέμπτη Μαρτιου [Independence Day]"
+
+        # Holy Week (Orthodox)
+        name_clean_mon = "Καθαρά Δευτέρα [Clean Monday]"
+        name_fri = "Μεγάλη Παρασκευή [Good Friday]"
+        name_easter = "Κυριακή του Πάσχα [Easter Sunday]"
+        name_mon = "Δευτέρα του Πάσχα [Easter Monday]"
+
+        self[easter(year, method=2) - rd(days=48)] = name_clean_mon
+        self[easter(year, method=2) - rd(days=2)] = name_fri
+        self[easter(year, method=2)] = name_easter
+        self[easter(year, method=2) + rd(days=1)] = name_mon
+
+        # Labor Day
+        self[date(year, MAY, 1)] = "Εργατική Πρωτομαγιά [Labour Day]"
+
+        # Pentecosts
+        self[easter(year, method=2) + rd(days=49)] = "Πεντηκοστή [Whitsun]"
+        self[easter(year, method=2) + rd(days=50)] = "Αγίου Πνεύματος [Pentecost Monday]"
+
+        # Assumption Day
+        self[date(year, AUG, 15)] = "Η Κοίμησις της Θεοτόκου [Assumption Day]"
+
+        # Ohi Day
+        self[date(year, OCT, 28)] = "Ημέρα του Όχι [Ohi Day]"
+
+        # Christmas
+        self[date(year, DEC, 25)] = "Χριστούγεννα [Christmas]"
+
+        # Boxing Day
+        self[date(year, DEC, 26)] = "Σύναξις Υπεραγίας Θεοτόκου Μαρίας [Boxing Day]"
+
+
+class GR(Greece):
+    pass
