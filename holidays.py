@@ -4165,6 +4165,7 @@ class RO(Romania):
 
 class Turkey(HolidayBase):
     # https://www.feiertagskalender.ch/index.php?geo=3539&jahr=2017&hl=en
+    # https://en.wikipedia.org/wiki/Public_holidays_in_Turkey
 
     def __init__(self, **kwargs):
         self.country = 'TR'
@@ -4191,63 +4192,20 @@ class Turkey(HolidayBase):
         else:
             self[date(year, MAY, 1)] = name
 
-        # Ramadan and Sacrifice fest
-        tr_years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]
-        ramadan_start = dict()
-        ramadan_end = dict()
-        sacrifice_fest_eve = dict()
-        ramadan_start[2010] = date(2010, AUG, 10)
-        ramadan_end[2010] = date(2010, SEP, 8)
-        sacrifice_fest_eve[2010] = date(2010, NOV, 15)
-        ramadan_start[2011] = date(2011, JUL, 31)
-        ramadan_end[2011] = date(2011, AUG, 29)
-        sacrifice_fest_eve[2011] = date(2011, NOV, 5)
-        ramadan_start[2012] = date(2012, JUL, 31)
-        ramadan_end[2012] = date(2012, AUG, 29)
-        sacrifice_fest_eve[2012] = date(2012, OCT, 24)
-        ramadan_start[2013] = date(2013, JUL, 19)
-        ramadan_end[2013] = date(2013, AUG, 18)
-        sacrifice_fest_eve[2013] = date(2013, OCT, 14)
-        ramadan_start[2014] = date(2014, JUN, 27)
-        ramadan_end[2014] = date(2014, JUL, 27)
-        sacrifice_fest_eve[2014] = date(2014, OCT, 3)
-        ramadan_start[2015] = date(2015, JUN, 17)
-        ramadan_end[2015] = date(2015, JUL, 16)
-        sacrifice_fest_eve[2015] = date(2015, SEP, 22)
-        ramadan_start[2016] = date(2016, JUN, 6)
-        ramadan_end[2016] = date(2016, JUL, 4)
-        sacrifice_fest_eve[2016] = date(2016, SEP, 10)
-        ramadan_start[2017] = date(2017, MAY, 26)
-        ramadan_end[2017] = date(2017, JUL, 24)
-        sacrifice_fest_eve[2017] = date(2017, AUG, 25)
-        ramadan_start[2018] = date(2018, MAY, 15)
-        ramadan_end[2018] = date(2018, JUN, 14)
-        sacrifice_fest_eve[2018] = date(2018, AUG, 19)
-        ramadan_start[2019] = date(2019, MAY, 5)
-        ramadan_end[2019] = date(2019, JUN, 4)
-        sacrifice_fest_eve[2019] = date(2019, AUG, 9)
-        ramadan_start[2020] = date(2020, APR, 23)
-        ramadan_end[2020] = date(2020, MAY, 23)
-        sacrifice_fest_eve[2020] = date(2020, JUL, 29)
-        ramadan_start[2021] = date(2021, APR, 12)
-        ramadan_end[2021] = date(2021, MAY, 10)
-        sacrifice_fest_eve[2021] = date(2021, JUL, 18)
-        ramadan_start[2022] = date(2022, APR, 2)
-        ramadan_end[2022] = date(2022, APR, 30)
-        sacrifice_fest_eve[2022] = date(2022, JUL, 8)
-
-        if year in tr_years:
-            self[ramadan_start[year]] = "Ramazan Başlangıcı [Start of Ramadan]"
-            self[ramadan_end[year]] = "Ramazan Bayram [End of Ramadan]"
-            self[sacrifice_fest_eve[year]] = "Kurban Bayrami [Sacrifice Fest]"
-            self[sacrifice_fest_eve[year] + rd(days=5)] = "Kurban Bayrami End[Sacrifice Fest end]"
-
         # Ataturk Day
         name = "Atatürk´ü Anma, Gençlik ve Spor Bayramı [Atatürk Day]"
         if not self.observed and date(year, MAY, 19).weekday() in WEEKEND:
             pass
         else:
             self[date(year, MAY, 19)] = name
+
+        # Democracy and National Unity Day
+        if year > 2016:
+            name = "Demokrasi ve Millî Birlik Günü [Democracy and National Unity Day]"
+            if not self.observed and date(year, JUL, 15).weekday() in WEEKEND:
+                pass
+            else:
+                self[date(year, JUL, 15)] = name
 
         # Victory Day
         name = "Zafer Bayrami [Victory Day]"
@@ -4262,6 +4220,45 @@ class Turkey(HolidayBase):
             pass
         else:
             self[date(year, OCT, 29)] = name
+
+        # Ramadan and Sacrifice fest
+        tr_years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]
+        ramadan_end = dict()
+        sacrifice_fest = dict()
+        ramadan_end[2010] = date(2010, SEP, 10)
+        sacrifice_fest[2010] = date(2010, NOV, 17)
+        ramadan_end[2011] = date(2011, AUG, 31)
+        sacrifice_fest[2011] = date(2011, NOV, 7)
+        ramadan_end[2012] = date(2012, AUG, 19)
+        sacrifice_fest[2012] = date(2012, OCT, 26)
+        ramadan_end[2013] = date(2013, AUG, 8)
+        sacrifice_fest[2013] = date(2013, OCT, 15)
+        ramadan_end[2014] = date(2014, JUL, 29)
+        sacrifice_fest[2014] = date(2014, OCT, 5)
+        ramadan_end[2015] = date(2015, JUL, 18)
+        sacrifice_fest[2015] = date(2015, SEP, 24)
+        ramadan_end[2016] = date(2016, JUL, 7)
+        sacrifice_fest[2016] = date(2016, SEP, 13)
+        ramadan_end[2017] = date(2017, JUN, 26)
+        sacrifice_fest[2017] = date(2017, SEP, 2)
+        ramadan_end[2018] = date(2018, JUN, 15)
+        sacrifice_fest[2018] = date(2018, AUG, 22)
+        ramadan_end[2019] = date(2019, JUN, 4)
+        sacrifice_fest[2019] = date(2019, AUG, 12)
+        ramadan_end[2020] = date(2020, MAY, 24)
+        sacrifice_fest[2020] = date(2020, JUL, 31)
+        ramadan_end[2021] = date(2021, MAY, 12)
+        sacrifice_fest[2021] = date(2021, JUL, 20)
+        ramadan_end[2022] = date(2022, MAY, 1)
+        sacrifice_fest[2022] = date(2022, JUL, 10)
+
+        if year in tr_years:
+            self[ramadan_end[year]] = "Ramazan Bayram [End of Ramadan]"
+            self[ramadan_end[year] + rd(days=1)] = "Ramazan Bayram [End of Ramadan]"
+            self[ramadan_end[year] + rd(days=2)] = "Ramazan Bayram [End of Ramadan]"
+            self[sacrifice_fest[year]] = "Kurban Bayrami [Sacrifice Fest]"
+            self[sacrifice_fest[year] + rd(days=1)] = "Kurban Bayrami [Sacrifice Fest]"
+            self[sacrifice_fest[year] + rd(days=2)] = "Kurban Bayrami [Sacrifice Fest]"
 
 
 class TR(Turkey):

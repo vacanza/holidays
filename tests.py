@@ -4725,5 +4725,27 @@ class TestGreece(unittest.TestCase):
         self.assertIn(date(2018, 12, 26), self.holidays)
 
 
+class TestTurkey(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.TR()
+
+    def test_TR_2018(self):
+        self.assertIn(date(2018, 1, 1), self.holidays)
+        self.assertIn(date(2018, 4, 23), self.holidays)
+        self.assertIn(date(2018, 5, 1), self.holidays)
+        self.assertIn(date(2018, 5, 19), self.holidays)
+        self.assertIn(date(2018, 7, 15), self.holidays)
+        self.assertIn(date(2018, 8, 30), self.holidays)
+        self.assertIn(date(2018, 10, 29), self.holidays)
+
+        self.assertIn(date(2018, 6, 15), self.holidays)
+        self.assertIn(date(2018, 6, 16), self.holidays)
+        self.assertIn(date(2018, 6, 17), self.holidays)
+        self.assertIn(date(2018, 8, 22), self.holidays)
+        self.assertIn(date(2018, 8, 23), self.holidays)
+        self.assertIn(date(2018, 8, 24), self.holidays)
+
+
 if __name__ == "__main__":
     unittest.main()
