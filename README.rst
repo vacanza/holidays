@@ -135,6 +135,7 @@ Norway              NO       None
 Polish              PL       None
 Portugal            PT       None
 PortugalExt         PTE      *Portugal plus extended days most people have off*
+Russia              RU
 Scotland                     None
 Slovenia            SI       None
 Slovakia            SK       None
@@ -143,7 +144,7 @@ Spain               ES       prov = AND, ARG, AST, CAN, CAM, CAL, CAT, CVA, EXT,
                              IBA, ICA, MAD, MUR, NAV, PVA, RIO
 Sweden              SE       None
 Switzerland         CH       prov = AG, AR, AI, BL, BS, BE, FR, GE, GL, GR, JU, LU,
-                             NE, NW, OW, SG, SH, SZ, SO, TG, TI, UR, VD, VS, ZG, ZH
+                             NE, NW, OW, SG, SH, SZ, SO, TG, TI, UR, VD, VS, ZG, ZH                             
 Ukraine             UA       None
 UnitedKingdom       UK       None
 UnitedStates        US       state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL, GA,
