@@ -4102,7 +4102,7 @@ class Russia(HolidayBase):
         self[date(year, JAN, 6)] = "Новый год"
         # Christmas Day (Orthodox)
         self[date(year, JAN, 7)] = "Православное Рождество"
-        # New Year's Days
+        # New Year's Day
         self[date(year, JAN, 8)] = "Новый год"
         # Man Day
         self[date(year, FEB, 23)] = "День защитника отечества"
@@ -4120,4 +4120,3 @@ class Russia(HolidayBase):
 
 class RU(Russia):
     pass
-
