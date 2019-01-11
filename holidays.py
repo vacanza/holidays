@@ -4076,3 +4076,132 @@ class Croatia(HolidayBase):
 
 class HR(Croatia):
     pass
+
+
+class Chile(HolidayBase):
+    # https://www.feriados.cl
+    # https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Chile
+
+
+    def __init__(self, **kwargs):
+        self.country = 'CL'
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # New Year's Day
+        if not self.observed and date(year, JAN, 1).weekday() in WEEKEND:
+            pass
+        else:
+            self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
+
+        # Holy Week
+        name_fri = "Semana Santa (Viernes Santo)  [Holy day (Holy Friday)]"
+        name_easter = 'Día de Pascuas [Easter Day]'
+
+        self[easter(year) + rd(weekday=FR(-1))] = name_fri
+
+        if not self.observed and easter(year).weekday() in WEEKEND:
+            pass
+        else:
+            self[easter(year)] = name_easter
+
+
+        # Labor Day
+        name = "Día del Trabajo [Labour Day]"
+        if not self.observed and date(year, MAY, 1).weekday() in WEEKEND:
+            pass
+        else:
+            self[date(year, MAY, 1)] = name
+
+        # Naval Glories Day
+        name = "Día de las Glorias Navales [Naval Glories Day]"
+        if not self.observed and date(year, MAY, 21).weekday() in WEEKEND:
+            pass
+        else:
+            self[date(year, MAY, 21)] = name
+
+        # Saint Peter and Saint Paul.
+        name = "San Pedro y San Pablo [Saint Peter and Saint Paul]"
+        if not self.observed and date(year, JUN, 29).weekday() in WEEKEND:
+            pass
+        else:
+            self[date(year, JUN, 29)] = name
+
+        # Day of Virgin of Carmen.
+        name = "Virgen del Carmen [Virgin of Carmen]"
+        if not self.observed and date(year, JUL, 16).weekday() in WEEKEND:
+            pass
+        else:
+            self[date(year, JUL, 16)] = name
+
+
+        # Day of Assumption of the Virgin
+        name = "Asunsión de la Virgen [Assumption of the Virgin]"
+        if not self.observed and date(year, AUG, 15).weekday() in WEEKEND:
+            pass
+        else:
+            self[date(year, AUG, 15)] = name
+
+        # Independence Day
+        name = "Día de la Independencia [Independence Day]"
+        if not self.observed and date(year, SEP, 18).weekday() in WEEKEND:
+            pass
+        else:
+            self[date(year, SEP, 18)] = name
+
+        # Day of Glories of the Army of Chile
+        name = "Día de las Glorias del Ejército de Chile [Day of " \
+                                    		"Glories of the Army of Chile]"
+        if not self.observed and date(year, SEP, 19).weekday() in WEEKEND:
+            pass
+        else:
+            self[date(year, SEP, 19)] = name
+
+        # National Holidays
+        name = "Fiestas Patrias [National Holidays]"
+        if not self.observed and date(year, SEP, 20).weekday() in WEEKEND:
+            pass
+        else:
+            self[date(year, SEP, 20)] = name
+
+
+        # Day of the Meeting of Two Worlds
+        if not self.observed and date(year, OCT, 12).weekday() in WEEKEND:
+            pass
+        elif year < 2010:
+            self[date(year, OCT, 12)] = "Día de la Raza [Columbus day]"
+        else:
+            self[date(year, OCT, 12)] = "Día del Respeto a la Diversidad" \
+                                            " [Day of the Meeting " \
+                                            " of Two Worlds]"
+        # National Day of the Evangelical and Protestant Churches
+        name = "Día Nacional de las Iglesias Evangélicas y Protestantes " \
+                                    		" [National Day of the " \
+                                  		    " Evangelical and " \
+   											" Protestant Churches]"
+        if not self.observed and date(year, OCT, 31).weekday() in WEEKEND:
+            pass
+        else:
+            self[date(year, OCT, 31)] = name
+			
+        # All Saints Day
+        name = "Día de Todos los Santos [All Saints Day]"
+        if not self.observed and date(year, NOV, 1).weekday() in WEEKEND:
+            pass
+        else:
+            self[date(year, NOV, 1)] = name
+
+
+        # Immaculate Conception
+        if not self.observed and date(year, DEC, 8).weekday() in WEEKEND:
+            pass
+        else:
+            self[date(year, DEC, 8)] = "La Inmaculada Concepción" \
+                                            " [Immaculate Conception]"
+
+        # Christmas
+        self[date(year, DEC, 25)] = "Navidad [Christmas]"
+
+
+class CL(Chile):
+    pass
