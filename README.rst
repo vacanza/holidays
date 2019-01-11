@@ -135,6 +135,7 @@ Norway              NO       None
 Polish              PL       None
 Portugal            PT       None
 PortugalExt         PTE      *Portugal plus extended days most people have off*
+Russia              RU       None
 Scotland                     None
 Slovenia            SI       None
 Slovakia            SK       None
