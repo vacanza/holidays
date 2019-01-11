@@ -4076,3 +4076,59 @@ class Croatia(HolidayBase):
 
 class HR(Croatia):
     pass
+
+
+class Russia(HolidayBase):
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Russia
+    """
+
+    def __init__(self, **kwargs):
+        self.country = "RU"
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # The current set of holidays came into force in 2001
+        # http://www.consultant.ru/document/cons_doc_LAW_34683/98ef2900507766e70ff29c0b9d8e2353ea80a1cf/
+        if year <= 2001:
+            return
+
+        # New Year's Days
+        self[date(year, JAN, 1)] = "Новый год"
+        self[date(year, JAN, 2)] = "Новый год"
+        self[date(year, JAN, 3)] = "Новый год"
+        self[date(year, JAN, 4)] = "Новый год"
+        self[date(year, JAN, 5)] = "Новый год"
+        self[date(year, JAN, 6)] = "Новый год"
+
+        # Christmas Day (Orthodox)
+        self[date(year, JAN, 7)] = "Рождество Христово " \
+                                   "(православное Рождество)"
+        self[date(year, JAN, 8)] = "Новый год"
+
+        # Mens's Day
+        self[date(year, FEB, 23)] = "День защитника отечества"
+
+        # Women's Day
+        self[date(year, MAR, 8)] = "День женщин"
+
+        # Labour Day
+        self[date(year, MAY, 1)] = "Праздник Весны и Труда"
+
+        # Victory Day
+        self[date(year, MAY, 9)] = "День Победы"
+
+        # Independence Day
+        self[date(year, JUN, 12)] = "День России" \
+
+
+        # October Revolution Day
+        self[date(year, NOV, 4)] = "День народного единства"
+
+        # Christmas Day (Catholic)
+        self[date(year, DEC, 31)] = "Новый год"
+
+
+class RU(Russia):
+    pass
+
