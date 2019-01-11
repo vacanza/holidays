@@ -4119,7 +4119,7 @@ class Russia(HolidayBase):
         self[date(year, MAY, 9)] = "День Победы"
 
         # Independence Day
-        self[date(year, JUN, 12)] = "День России" \
+        self[date(year, JUN, 12)] = "День России" 
 
 
         # October Revolution Day
