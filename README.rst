@@ -126,7 +126,7 @@ Italy               IT       prov = AN, AO, BA, BL, BO, BS, BZ, CB, Cesena, CH, 
                              EN, FC, FE, FI, Forlì, FR, GE, GO, IS, KR, LT, MB, MI, MO,
                              MN, MS, NA, PA, PC, PD, PG, PR, RM, SP, TS, VI
 Japan               JP       None
-Lithuania           LT		 None
+Lithuania           LT       None
 Mexico              MX       None
 Netherlands         NL       None
 NewZealand          NZ       prov = NTL, AUK, TKI, HKB, WGN, MBH, NSN, CAN, STC, WTL,
