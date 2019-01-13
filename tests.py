@@ -4687,21 +4687,36 @@ class TestLithuania(unittest.TestCase):
         self.holidays = holidays.LT()
 
     def test_2018(self):
-        self.assertIn(date(2018, 1, 1), self.holidays)  # New Year's Day
-        self.assertIn(date(2018, 2, 16), self.holidays)  # Day of Restoration of the State of Lithuania
-        self.assertIn(date(2018, 3, 11), self.holidays)  # Day of Restoration of Independence of Lithuania
-        self.assertIn(date(2018, 4, 1), self.holidays)  # Easter
-        self.assertIn(date(2018, 4, 2), self.holidays)  # Easter 2nd day
-        self.assertIn(date(2018, 5, 1), self.holidays)  # International Workers' Day
-        self.assertIn(date(2018, 5, 6), self.holidays)  # Mother's day
-        self.assertIn(date(2018, 6, 3), self.holidays)  # Fathers's day
-        self.assertIn(date(2018, 6, 24), self.holidays)  # St. John's Day, Day of Dew
-        self.assertIn(date(2018, 7, 6), self.holidays)  # Statehood Day
-        self.assertIn(date(2018, 8, 15), self.holidays)  # Assumption Day
-        self.assertIn(date(2018, 11, 1), self.holidays)  # All Saints' Day
-        self.assertIn(date(2018, 12, 24), self.holidays)  # Christmas Eve
-        self.assertIn(date(2018, 12, 25), self.holidays)  # Christmas 1st day
-        self.assertIn(date(2018, 12, 26), self.holidays)  # Christmas 2nd day
+        # New Year's Day
+        self.assertIn(date(2018, 1, 1), self.holidays)
+        # Day of Restoration of the State of Lithuania
+        self.assertIn(date(2018, 2, 16), self.holidays)
+        # Day of Restoration of Independence of Lithuania
+        self.assertIn(date(2018, 3, 11), self.holidays)
+        # Easter
+        self.assertIn(date(2018, 4, 1), self.holidays)
+        # Easter 2nd day
+        self.assertIn(date(2018, 4, 2), self.holidays)
+        # International Workers' Day
+        self.assertIn(date(2018, 5, 1), self.holidays)
+        # Mother's day
+        self.assertIn(date(2018, 5, 6), self.holidays)
+        # Fathers's day
+        self.assertIn(date(2018, 6, 3), self.holidays)
+        # St. John's Day, Day of Dew
+        self.assertIn(date(2018, 6, 24), self.holidays)
+        # Statehood Day
+        self.assertIn(date(2018, 7, 6), self.holidays)
+        # Assumption Day
+        self.assertIn(date(2018, 8, 15), self.holidays)
+        # All Saints' Day
+        self.assertIn(date(2018, 11, 1), self.holidays)
+        # Christmas Eve
+        self.assertIn(date(2018, 12, 24), self.holidays)
+        # Christmas 1st day
+        self.assertIn(date(2018, 12, 25), self.holidays)
+        # Christmas 2nd day
+        self.assertIn(date(2018, 12, 26), self.holidays)
 
     def test_easter(self):
         self.assertNotIn(date(2019, 4, 20), self.holidays)
