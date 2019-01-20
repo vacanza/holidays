@@ -121,11 +121,12 @@ Hungary             HU       None
 India               IND      prov = AS, SK, CG, KA, GJ, BR, RJ, OD, TN, AP, WB, KL, HR,
                              MH, MP, UP, UK, TN
 Ireland             IE       None
-Isle of Man                  None
+IsleOfMan                    None
 Italy               IT       prov = AN, AO, BA, BL, BO, BS, BZ, CB, Cesena, CH, CS, CT,
                              EN, FC, FE, FI, Forlì, FR, GE, GO, IS, KR, LT, MB, MI, MO,
                              MN, MS, NA, PA, PC, PD, PG, PR, RM, SP, TS, VI
 Japan               JP       None
+Luxembourg          LU       None
 Mexico              MX       None
 Netherlands         NL       None
 NewZealand          NZ       prov = NTL, AUK, TKI, HKB, WGN, MBH, NSN, CAN, STC, WTL,
