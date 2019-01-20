@@ -11,7 +11,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from dateutil.easter import easter, EASTER_ORTHODOX
 from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta as rd
@@ -85,6 +85,43 @@ class HolidayBase(dict):
         return dict.__contains__(self, self.__keytransform__(key))
 
     def __getitem__(self, key):
+        if isinstance(key, slice):
+            if not key.start or not key.stop:
+                raise ValueError("Both start and stop must be given.")
+
+            start = self.__keytransform__(key.start)
+            stop = self.__keytransform__(key.stop)
+
+            if key.step is None:
+                step = 1
+            elif isinstance(key.step, timedelta):
+                step = key.step.days
+            elif isinstance(key.step, int):
+                step = key.step
+            else:
+                raise TypeError(
+                    "Cannot convert type '%s' to int." % type(key.step)
+                )
+
+            if step == 0:
+                raise ValueError('Step value must not be zero.')
+
+            date_diff = stop - start
+            if date_diff.days < 0 <= step or date_diff.days >= 0 > step:
+                step *= -1
+
+            days_in_range = []
+            for delta_days in range(0, date_diff.days, step):
+                day = start + timedelta(days=delta_days)
+                try:
+                    dict.__getitem__(
+                        self,
+                        day
+                    )
+                    days_in_range.append(day)
+                except (KeyError):
+                    pass
+            return days_in_range
         return dict.__getitem__(self, self.__keytransform__(key))
 
     def __setitem__(self, key, value):
