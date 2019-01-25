@@ -2115,6 +2115,9 @@ class Germany(HolidayBase):
         if year == 2017:
             self[date(year, OCT, 31)] = 'Reformationstag'
 
+        if year >= 2019 and self.prov in ('BE'):
+            self[date(year, MAR, 8)] = 'Internationaler Frauentag'
+
         if self.prov in ('BW', 'BY', 'NW', 'RP', 'SL'):
             self[date(year, NOV, 1)] = 'Allerheiligen'
 
