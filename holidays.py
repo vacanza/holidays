@@ -7,7 +7,7 @@
 #  specific date is a holiday as fast and flexible as possible.
 #
 #  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2018
+#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2019
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -18,7 +18,7 @@ from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
 import six
 
-__version__ = '0.9.9'
+__version__ = '0.9.10'
 
 MON, TUE, WED, THU, FRI, SAT, SUN = range(7)
 WEEKEND = (SAT, SUN)

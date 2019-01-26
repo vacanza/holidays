@@ -399,15 +399,20 @@ More Examples
     >>> custom_holidays.append(date(2015, 12, 25))
 
 
+>>> from datetime import date
+>>> holidays.US()[date(2013, 12, 31): date(2014, 1, 2)]
+
 Development Version
 -------------------
 
-The latest development version can be installed directly from GitHub:
+The latest development (beta) version can be installed directly from GitHub:
 
 .. code-block:: bash
 
     $ pip install --upgrade https://github.com/dr-prodigy/python-holidays/tarball/beta
 
+All new features are always first pushed to beta branch, then released on
+master branch upon official version upgrades.
 
 Running Tests
 -------------
@@ -434,9 +439,16 @@ Contributions
 
 .. _issues: https://github.com/dr-prodigy/python-holidays/issues
 .. __: https://github.com/dr-prodigy/python-holidays/pulls
+.. _`beta branch`: https://github.com/dr-prodigy/python-holidays/tree/beta
 
 Issues_ and `Pull Requests`__ are always welcome.
 
+When contributing with fixes and new features, please start forking/branching
+from `beta branch`_, to work on latest code and reduce merging issues.
+
+Also, whenever possible, please provide 100% test coverage for your new code.
+
+Thanks a lot for your support.
 
 License
 -------
