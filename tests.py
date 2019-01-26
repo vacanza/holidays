@@ -2682,6 +2682,18 @@ class TestDE(unittest.TestCase):
         for province, (y, m, d) in product(holidays.DE.PROVINCES, known_good):
             self.assertIn(date(y, m, d), self.prov_hols[province])
 
+    def test_internationaler_frauentag(self):
+        prov_that_have = {'BE'}
+        prov_that_dont = set(holidays.DE.PROVINCES) - prov_that_have
+
+        for province, year in product(
+                holidays.DE.PROVINCES, range(1991, 2018)):
+            self.assertNotIn(date(year, 3, 8), self.prov_hols[province])
+        for province, year in product(prov_that_have, range(2019, 2050)):
+            self.assertIn(date(year, 3, 8), self.prov_hols[province])
+        for province, year in product(prov_that_dont, range(2019, 2050)):
+            self.assertNotIn(date(year, 3, 8), self.prov_hols[province])
+
 
 class TestAT(unittest.TestCase):
 
