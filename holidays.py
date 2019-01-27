@@ -2089,6 +2089,9 @@ class Germany(HolidayBase):
 
             self[date(year, MAY, 1)] = 'Erster Mai'
 
+            if self.prov == "BE" and year == 2020:
+                self[date(year, MAY, 8)] = '75. Jahrestag der Befreiung vom Nationalsozialismus und der Beendigung des Zweiten Weltkriegs in Europa'
+
             self[easter(year) + rd(days=39)] = 'Christi Himmelfahrt'
 
             if self.prov == "BB":
