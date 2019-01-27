@@ -2074,6 +2074,9 @@ class Germany(HolidayBase):
             if self.prov in ('BW', 'BY', 'ST'):
                 self[date(year, JAN, 6)] = 'Heilige Drei Könige'
 
+            if self.prov == "BE" and year >= 2019:
+                self[date(year, MAR, 8)] = 'Internationaler Frauentag'
+
             self[easter(year) - rd(days=2)] = 'Karfreitag'
 
             if self.prov == "BB":
