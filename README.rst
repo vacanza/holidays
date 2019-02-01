@@ -117,6 +117,7 @@ France              FRA      **Métropole** (default), Alsace-Moselle, Guadeloup
                              Wallis-et-Futuna
 Germany             DE       prov = BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL, SN,
                              ST, SH, TH
+Greece              GR       None
 Hungary             HU       None
 India               IND      prov = AS, SK, CG, KA, GJ, BR, RJ, OD, TN, AP, WB, KL, HR,
                              MH, MP, UP, UK, TN
@@ -135,6 +136,7 @@ Norway              NO       None
 Polish              PL       None
 Portugal            PT       None
 PortugalExt         PTE      *Portugal plus extended days most people have off*
+Romania             RO       None
 Scotland                     None
 Slovenia            SI       None
 Slovakia            SK       None
@@ -144,6 +146,7 @@ Spain               ES       prov = AND, ARG, AST, CAN, CAM, CAL, CAT, CVA, EXT,
 Sweden              SE       None
 Switzerland         CH       prov = AG, AR, AI, BL, BS, BE, FR, GE, GL, GR, JU, LU,
                              NE, NW, OW, SG, SH, SZ, SO, TG, TI, UR, VD, VS, ZG, ZH
+Turkey              TR       None
 Ukraine             UA       None
 UnitedKingdom       UK       None
 UnitedStates        US       state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL, GA,
