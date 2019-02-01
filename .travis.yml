@@ -7,8 +7,7 @@ python:
     - 3.4
     - 3.5
     - 3.6
-# temporarily commented due to TravisCI issues
-#    - 3.7
+    - 3.7
     - pypy
     - pypy3
 
