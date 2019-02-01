@@ -2,10 +2,6 @@
 
 language: python
 
-sudo: required
-
-dist: xenial
-
 python:
     - 2.7
     - 3.4
