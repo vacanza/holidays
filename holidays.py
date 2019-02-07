@@ -4129,7 +4129,8 @@ class Romania(HolidayBase):
 
         # Pentecostes
         self[easter(year, method=2) + rd(days=49)] = "Rusalii [Whitsun]"
-        self[easter(year, method=2) + rd(days=50)] = 'Rusalii luni [Pentecost Monday]'
+        self[easter(year, method=2) + rd(days=50)] = 'Rusalii luni ' \
+                                                     '[Pentecost Monday]'
 
         # Assumption Day
         name = "Adormirea Maicii Domnului [Assumption Day]"
@@ -4201,7 +4202,8 @@ class Turkey(HolidayBase):
 
         # Democracy and National Unity Day
         if year > 2016:
-            name = "Demokrasi ve Millî Birlik Günü [Democracy and National Unity Day]"
+            name = "Demokrasi ve Millî Birlik Günü [Democracy and National " \
+                   "Unity Day]"
             if not self.observed and date(year, JUL, 15).weekday() in WEEKEND:
                 pass
             else:
@@ -4222,7 +4224,10 @@ class Turkey(HolidayBase):
             self[date(year, OCT, 29)] = name
 
         # Ramadan and Sacrifice fest
-        tr_years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]
+        tr_years = [2010, 2011, 2012, 2013,
+                    2014, 2015, 2016, 2017,
+                    2018, 2019, 2020, 2021,
+                    2022]
         ramadan_end = dict()
         sacrifice_fest = dict()
         ramadan_end[2010] = date(2010, SEP, 10)
@@ -4254,11 +4259,15 @@ class Turkey(HolidayBase):
 
         if year in tr_years:
             self[ramadan_end[year]] = "Ramazan Bayram [End of Ramadan]"
-            self[ramadan_end[year] + rd(days=1)] = "Ramazan Bayram [End of Ramadan]"
-            self[ramadan_end[year] + rd(days=2)] = "Ramazan Bayram [End of Ramadan]"
+            self[ramadan_end[year] + rd(days=1)] = "Ramazan Bayram " \
+                                                   "[End of Ramadan]"
+            self[ramadan_end[year] + rd(days=2)] = "Ramazan Bayram " \
+                                                   "[End of Ramadan]"
             self[sacrifice_fest[year]] = "Kurban Bayrami [Sacrifice Fest]"
-            self[sacrifice_fest[year] + rd(days=1)] = "Kurban Bayrami [Sacrifice Fest]"
-            self[sacrifice_fest[year] + rd(days=2)] = "Kurban Bayrami [Sacrifice Fest]"
+            self[sacrifice_fest[year] + rd(days=1)] = "Kurban Bayrami " \
+                                                      "[Sacrifice Fest]"
+            self[sacrifice_fest[year] + rd(days=2)] = "Kurban Bayrami " \
+                                                      "[Sacrifice Fest]"
 
 
 class TR(Turkey):
@@ -4298,7 +4307,8 @@ class Greece(HolidayBase):
 
         # Pentecosts
         self[easter(year, method=2) + rd(days=49)] = "Πεντηκοστή [Whitsun]"
-        self[easter(year, method=2) + rd(days=50)] = "Αγίου Πνεύματος [Pentecost Monday]"
+        self[easter(year, method=2) + rd(days=50)] = "Αγίου Πνεύματος " \
+                                                     "[Pentecost Monday]"
 
         # Assumption Day
         self[date(year, AUG, 15)] = "Η Κοίμησις της Θεοτόκου [Assumption Day]"
@@ -4310,7 +4320,8 @@ class Greece(HolidayBase):
         self[date(year, DEC, 25)] = "Χριστούγεννα [Christmas]"
 
         # Boxing Day
-        self[date(year, DEC, 26)] = "Σύναξις Υπεραγίας Θεοτόκου Μαρίας [Boxing Day]"
+        self[date(year, DEC, 26)] = "Σύναξις Υπεραγίας Θεοτόκου Μαρίας " \
+                                    "[Boxing Day]"
 
 
 class GR(Greece):
