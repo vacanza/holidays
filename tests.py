@@ -3031,6 +3031,9 @@ class TestSouthAfrica(unittest.TestCase):
         self.assertFalse('2016-12-28' in self.holidays)
         self.assertFalse('2015-03-02' in self.holidays)
 
+    def test_election2019(self):
+        self.assertTrue('2019-05-08' in self.holidays)
+
 
 if __name__ == "__main__":
     unittest.main()
