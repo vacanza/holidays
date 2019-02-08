@@ -1814,7 +1814,7 @@ class Australia(HolidayBase):
 
     def __init__(self, **kwargs):
         self.country = 'AU'
-        self.prov = kwargs.pop('prov', kwargs.pop('state', 'ACT'))
+        self.prov = kwargs.pop('prov', None)
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -1868,7 +1868,7 @@ class Australia(HolidayBase):
         self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
         if self.prov in ('ACT', 'NSW', 'NT', 'QLD', 'SA', 'VIC'):
             self[easter(year) + rd(weekday=SA(-1))] = "Easter Saturday"
-        if self.prov == 'NSW':
+        if self.prov in ('ACT', 'NSW', 'QLD', 'VIC'):
             self[easter(year)] = "Easter Sunday"
         self[easter(year) + rd(weekday=MO)] = "Easter Monday"
 
@@ -1911,7 +1911,7 @@ class Australia(HolidayBase):
             elif self.prov == 'WA':
                 # by proclamation ?!?!
                 self[date(year, OCT, 1) + rd(weekday=MO(-1))] = name
-            else:
+            elif self.prov in ('NSW', 'VIC', 'ACT', 'SA', 'NT', 'TAS'):
                 dt = date(year, JUN, 1) + rd(weekday=MO(+2))
                 self[dt] = name
         elif year > 1911:
@@ -1923,6 +1923,11 @@ class Australia(HolidayBase):
         if self.prov == 'NT':
             name = "Picnic Day"
             self[date(year, AUG, 1) + rd(weekday=MO)] = name
+
+        # Bank Holiday
+        if self.prov == 'NSW':
+            name = "Bank Holiday"
+            self[date(year, 8, 1) + rd(weekday=MO)] = name
 
         # Labour Day
         name = "Labour Day"
@@ -1967,19 +1972,14 @@ class Australia(HolidayBase):
                 self[date(year, SEP, 28)] = name
             elif year == 2016:
                 self[date(year, SEP, 26)] = name
-            elif 2017 <= year <= 2020:
-                labour_day = date(year, OCT, 1) + rd(weekday=MO)
-                if year == 2017:
-                    dt = date(year, SEP, 23) + rd(weekday=MO)
-                elif year == 2018:
-                    dt = date(year, SEP, 29) + rd(weekday=MO)
-                elif year == 2019:
-                    dt = date(year, SEP, 28) + rd(weekday=MO)
-                elif year == 2020:
-                    dt = date(year, SEP, 26) + rd(weekday=MO)
-                if dt == labour_day:
-                    dt += rd(weekday=MO(+1))
-                self[date(year, SEP, 26)] = name
+            elif year == 2017:
+                self[date(year, SEP, 25)] = name
+
+        # Reconciliation Day
+        if self.prov == 'ACT':
+            name = "Reconciliation Day"
+            if year >= 2018:
+                self[date(year, 5, 27) + rd(weekday=MO)] = name
 
         if self.prov == 'VIC':
             # Grand Final Day
