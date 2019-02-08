@@ -3487,6 +3487,7 @@ class SouthAfrica(HolidayBase):
         self[date(2011, DEC, 27)] = presidential
         self[date(2014, MAY, 7)] = national_election
         self[date(2016, AUG, 3)] = local_election
+        self[date(2019, MAY, 8)] = national_election
 
         # As of 1995/1/1, whenever a public holiday falls on a Sunday,
         # it rolls over to the following Monday
@@ -3548,9 +3549,6 @@ class SouthAfrica(HolidayBase):
 
         if 1951 < year < 1994:
             self[date(year, OCT, 10)] = "Kruger Day"
-
-        if year == 2019:
-            self[date(year, 5, 8)] = "Election Day"
 
 
 class ZA(SouthAfrica):
