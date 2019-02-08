@@ -6,17 +6,17 @@ A fast, efficient Python library for generating country, province and state
 specific sets of holidays on the fly. It aims to make determining whether a
 specific date is a holiday as fast and flexible as possible.
 
-.. image:: http://img.shields.io/travis/ryanss/python-holidays.svg
-    :target: https://travis-ci.org/ryanss/python-holidays
+.. image:: http://img.shields.io/travis/dr-prodigy/python-holidays.svg
+    :target: https://travis-ci.org/dr-prodigy/python-holidays
 
-.. image:: http://img.shields.io/coveralls/ryanss/python-holidays.svg
-    :target: https://coveralls.io/r/ryanss/python-holidays
+.. image:: http://img.shields.io/coveralls/dr-prodigy/python-holidays.svg
+    :target: https://coveralls.io/r/dr-prodigy/python-holidays
 
 .. image:: http://img.shields.io/pypi/v/holidays.svg
     :target: https://pypi.python.org/pypi/holidays
 
 .. image:: http://img.shields.io/pypi/l/holidays.svg
-    :target: https://github.com/ryanss/python-holidays/blob/master/LICENSE
+    :target: https://github.com/dr-prodigy/python-holidays/blob/master/LICENSE
 
 
 Example Usage
@@ -28,7 +28,13 @@ Example Usage
 
     import holidays
 
-    us_holidays = holidays.UnitedStates()  # or holidays.US()
+    us_holidays = holidays.UnitedStates()
+    # or:
+    # us_holidays = holidays.US()
+    # or:
+    # us_holidays = holidays.CountryHoliday('US')
+    # or, for specific prov / states:
+    # us_holidays = holidays.CountryHoliday('US', prov=None, state='CA')
 
     date(2015, 1, 1) in us_holidays  # True
     date(2015, 1, 2) in us_holidays  # False
@@ -40,6 +46,12 @@ Example Usage
     1388597445 in us_holidays    # True
 
     us_holidays.get('2014-01-01')  # "New Year's Day"
+
+    us_pr_holidays = holidays.UnitedStates(state='PR')  # or holidays.US(...), or holidays.CountryHoliday('US', state='PR')
+
+    # some holidays are only present in parts of a country
+    '2018-01-06' in us_holidays     # False
+    '2018-01-06' in us_pr_holidays  # True
 
     # Easily create custom Holiday objects with your own dates instead
     # of using the pre-defined countries/states/provinces available
@@ -83,31 +95,56 @@ Available Countries
 =================== ======== =============================================================
 Country             Abbr     Provinces/States Available
 =================== ======== =============================================================
+Argentina           AR       None
 Australia           AU       prov = **ACT** (default), NSW, NT, QLD, SA, TAS, VIC, WA
 Austria             AT       prov = B, K, N, O, S, ST, T, V, **W** (default)
+Belarus             BY       None
+Belgium             BE       None
+Brazil              BR       state = AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG,
+                             PA, PB, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO
 Canada              CA       prov = AB, BC, MB, NB, NL, NS, NT, NU, **ON** (default),
                              PE, QC, SK, YU
 Colombia            CO       None
+Croatia             HR       None
 Czech               CZ       None
 Denmark             DK       None
 England                      None
 EuropeanCentralBank ECB,TAR  Trans-European Automated Real-time Gross Settlement (TARGET2)
-Germany             DE       BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL, SN, ST,
-                             SH, TH
-Ireland                      None
+Finland             FI       None
+France              FRA      **Métropole** (default), Alsace-Moselle, Guadeloupe, Guyane,
+                             Martinique, Mayotte, Nouvelle-Calédonie, La Réunion,
+                             Polynésie Française, Saint-Barthélémy, Saint-Martin,
+                             Wallis-et-Futuna
+Germany             DE       prov = BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL, SN,
+                             ST, SH, TH
+Hungary             HU       None
+India               IND      prov = AS, SK, CG, KA, GJ, BR, RJ, OD, TN, AP, WB, KL, HR,
+                             MH, MP, UP, UK, TN
+Ireland             IE       None
 Isle of Man                  None
+Italy               IT       prov = AN, AO, BA, BL, BO, BS, BZ, CB, Cesena, CH, CS, CT,
+                             EN, FC, FE, FI, Forlì, FR, GE, GO, IS, KR, LT, MB, MI, MO,
+                             MN, MS, NA, PA, PC, PD, PG, PR, RM, SP, TS, VI
+Japan               JP       None
 Mexico              MX       None
 Netherlands         NL       None
 NewZealand          NZ       prov = NTL, AUK, TKI, HKB, WGN, MBH, NSN, CAN, STC, WTL,
                              OTA, STL, CIT
 Northern Ireland             None
 Norway              NO       None
+Polish              PL       None
 Portugal            PT       None
 PortugalExt         PTE      *Portugal plus extended days most people have off*
 Scotland                     None
+Slovenia            SI       None
+Slovakia            SK       None
 South Africa        ZA       None
 Spain               ES       prov = AND, ARG, AST, CAN, CAM, CAL, CAT, CVA, EXT, GAL,
                              IBA, ICA, MAD, MUR, NAV, PVA, RIO
+Sweden              SE       None
+Switzerland         CH       prov = AG, AR, AI, BL, BS, BE, FR, GE, GL, GR, JU, LU,
+                             NE, NW, OW, SG, SH, SZ, SO, TG, TI, UR, VD, VS, ZG, ZH
+Ukraine             UA       None
 UnitedKingdom       UK       None
 UnitedStates        US       state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL, GA,
                              GU, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MH, MA, MI,
@@ -152,12 +189,12 @@ Methods:
 get(key, default=None)
     Returns a string containing the name of the holiday(s) in date `key`, which
     can be of date, datetime, string, unicode, bytes, integer or float type. If
-    multiple holidays fall on the same date the names will be seperated by
+    multiple holidays fall on the same date the names will be separated by
     commas
 
 get_list(key)
     Same as `get` except returns a `list` of holiday names instead of a comma
-    seperated string
+    separated string
 
 pop(key, default=None)
     Same as `get` except the key is removed from the holiday object
@@ -205,7 +242,7 @@ More Examples
     # Let's print out the holidays in 2014 specific to California, USA
 
     >>> for date, name in sorted(holidays.US(state='CA', years=2014).items()):
-    >>>     print date, name
+    >>>     print(date, name)
     2014-01-01 New Year's Day
     2014-01-20 Martin Luther King, Jr. Day
     2014-02-15 Susan B. Anthony Day
@@ -320,7 +357,7 @@ More Examples
 
     # We can also inherit from the HolidayBase class which has an empty
     # _populate method so we start with no holidays and must define them
-    # all ourself. This is how we would create a holidays class for a country
+    # all ourselves. This is how we would create a holidays class for a country
     # that is not supported yet.
 
     >>> class NewCountryHolidays(holidays.HolidayBase):
@@ -364,7 +401,7 @@ The latest development version can be installed directly from GitHub:
 
 .. code-block:: bash
 
-    $ pip install --upgrade https://github.com/ryanss/python-holidays/tarball/master
+    $ pip install --upgrade https://github.com/dr-prodigy/python-holidays/tarball/beta
 
 
 Running Tests
@@ -390,8 +427,8 @@ Coverage
 Contributions
 -------------
 
-.. _issues: https://github.com/ryanss/python-holidays/issues
-.. __: https://github.com/ryanss/python-holidays/pulls
+.. _issues: https://github.com/dr-prodigy/python-holidays/issues
+.. __: https://github.com/dr-prodigy/python-holidays/pulls
 
 Issues_ and `Pull Requests`__ are always welcome.
 
@@ -399,7 +436,7 @@ Issues_ and `Pull Requests`__ are always welcome.
 License
 -------
 
-.. __: https://github.com/ryanss/python-holidays/raw/master/LICENSE
+.. __: https://github.com/dr-prodigy/python-holidays/raw/master/LICENSE
 
 Code and documentation are available according to the MIT License
 (see LICENSE__).

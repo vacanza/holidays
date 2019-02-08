@@ -1,26 +1,25 @@
-# https://travis-ci.org/ryanss/python-holidays
+# https://travis-ci.org/dr-prodigy/python-holidays
 
 language: python
 
 python:
-    - 2.6
     - 2.7
-    - 3.3
     - 3.4
     - 3.5
+    - 3.6
+# temporarily commented due to TravisCI issues
+#    - 3.7
     - pypy
-    - pypy3.3-5.2-alpha1 # Python 3.3
-    - pypy3.5-5.8.0 # Python 3.5
+    - pypy3
 
 env:
-    - DATEUTIL=python-dateutil==2.2
+    - DATEUTIL=python-dateutil==2.7.0
     - DATEUTIL=python-dateutil
 
 install:
     - pip install $DATEUTIL
     - python setup.py install
-    - pip install "flake8==2.6.2; python_version == '2.6'"
-    - pip install "flake8; python_version > '2.6'"
+    - pip install flake8
     - pip install coveralls
 
 before_script:

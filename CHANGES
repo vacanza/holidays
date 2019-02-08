@@ -1,3 +1,100 @@
+Version 0.9.9
+=============
+
+Released January 3, 2019
+
+- Magic numbers removal (elln2, dr-p)
+- Honduras support (Oscar Romero)
+- Brazil's holidays fixes (victorpluna)
+- Added provinces and holidays in Italy (krolmic, dr-p)
+- Fixed regression with German Easter and Pentecost holidays (vlt, Achimh3011)
+- Fixed Canada Holiday Calendar (justinasfour04)
+- Fixed Columbus Day in Arkansas - US (johanneshk)
+- Added Grand Final Day in Victoria - AU (isha1111)
+- Added Palm Sunday to Danish holidays (jmkjaer)
+- South Africa's holidays fixes (Gordonei)
+
+Version 0.9.8
+=============
+
+Released October 18, 2018
+
+- Added Ukraine (Anian-igor)
+- Added Croatia (fran1987)
+- Added Brazil (fcrespo82)
+
+Version 0.9.7
+=============
+
+Released September 12, 2018
+
+- Added prov/state parameters to CountryHoliday() (luto)
+- Added Python 3.7 compatibility (required dateutil >= 2.7.0)
+- Fixed German Reformationstag (adaitche, Rosi2143), various other holiday updates
+- Added Belarus (Gennady-Andreyev)
+
+Version 0.9.6
+=============
+
+Released August 1, 2018
+
+- Added India (Shaurya Uppal)
+- Fixed Canadian holidays (Canada / Dominion Day)
+- Fixed German holidays (Buß- und Bettag, Ostern, Pfingsten)
+
+Version 0.9.5
+=============
+
+Released April 23, 2018
+
+- Added Hungary (Peter Zsak)
+- Added Argentina (Emmanuel Arias)
+
+Version 0.9.4
+=============
+
+Released March 12, 2018
+
+- Added CountryHoliday(country_name) method
+- Added Switzerland with all cantons (Phil)
+- Canada holiday updates (goodfore)
+- Various inspection fixes
+
+Version 0.9.2
+=============
+
+Released January 19, 2018
+
+- Drop support for EOL Python 2.5, 2.6, 3.2 and 3.3 (hugovk)
+- Add Finnish holidays (Ardetus)
+- Add Slovak holidays (Filip Bednárik)
+
+Version 0.9.1
+=============
+
+Released January 17, 2018
+
+- Project moved to dr-prodigy
+- Added tests for Irish calendar
+- Minor fixes and refactoring
+
+Version 0.9
+===========
+
+Released January 14, 2018 (PR merging by dr-prodigy)
+
+- Add support for Python 3.6 (dr-prodigy)
+- Add Italian holidays (dr-prodigy)
+- Add Slovenian holidays (Cvetk0)
+- Add South African holidays (nickyspag)
+- Add Belgium holidays (fb22)
+- Add French holidays (oiffrig)
+- Add Japanese holidays (kokinomura)
+- Add Polish holidays (tadeoos)
+- Add Swedish holidays (johanpalmqvist)
+- Add AU/Queensland The Ekka Show (kirpit)
+- Various fixes
+
 Version 0.8.1
 =============
 
