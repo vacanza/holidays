@@ -4087,45 +4087,23 @@ class Romania(HolidayBase):
 
     def _populate(self, year):
         # New Year's Day
-        if not self.observed and date(year, 1, 1).weekday() in WEEKEND:
-            pass
-        else:
-            self[date(year, JAN, 1)] = "Anul Nou [New Year's Day]"
-        if not self.observed and date(year, JAN, 2).weekday() in WEEKEND:
-            pass
-        else:
-            self[date(year, JAN, 2)] = "Anul Nou (2) [New Year's Day (2)]"
+        self[date(year, JAN, 1)] = "Anul Nou [New Year's Day]"
+        self[date(year, JAN, 2)] = "Anul Nou (2) [New Year's Day (2)]"
 
         # Unification Day (Ziua Unirii)
-        name = "Ziua Unirii [Unification Day]"
-        if not self.observed and date(year, JAN, 24).weekday() in WEEKEND:
-            pass
-        else:
-            self[date(year, JAN, 24)] = name
-        # Holy Week (Orthodox)
-        name_easter = 'Învierea de duminică [Easter Sunday]'
-        name_mon = 'Paști de luni [Easter Monday]'
+        self[date(year, JAN, 24)] = "Ziua Unirii [Unification Day]"
 
-        if not self.observed and easter(year).weekday() in WEEKEND:
-            pass
-        else:
-            self[easter(year, method=2)] = name_easter
-        self[easter(year, method=2) + rd(weekday=MO)] = name_mon
+        # Holy Week (Orthodox)
+        self[easter(year, method=2)] = 'Învierea de duminică [Easter Sunday]'
+        self[easter(year, method=2) + rd(weekday=MO)] = 'Paști de luni ' \
+                                                        '[Easter Monday]'
 
         # Labor Day
-        name = "Ziua Muncii [Labour Day]"
-        if not self.observed and date(year, MAY, 1).weekday() in WEEKEND:
-            pass
-        else:
-            self[date(year, MAY, 1)] = name
+        self[date(year, MAY, 1)] = "Ziua Muncii [Labour Day]"
 
         # Children's Day (Ziua Copilului)
         if year >= 2017:
-            name = "Ziua Copilului [Children's Day]"
-            if not self.observed and date(year, JUN, 1).weekday() in WEEKEND:
-                pass
-            else:
-                self[date(year, JUN, 1)] = name
+            self[date(year, JUN, 1)] = "Ziua Copilului [Children's Day]"
 
         # Pentecostes
         self[easter(year, method=2) + rd(days=49)] = "Rusalii [Whitsun]"
@@ -4133,25 +4111,14 @@ class Romania(HolidayBase):
                                                      '[Pentecost Monday]'
 
         # Assumption Day
-        name = "Adormirea Maicii Domnului [Assumption Day]"
-        if not self.observed and date(year, AUG, 15).weekday() in WEEKEND:
-            pass
-        else:
-            self[date(year, AUG, 15)] = name
+        self[date(year, AUG, 15)] = "Adormirea Maicii Domnului " \
+                                    "[Assumption Day]"
 
         # St. Andrew's Day
-        name = "Sfântul Andrei [St. Andrew's Day]"
-        if not self.observed and date(year, NOV, 30).weekday() in WEEKEND:
-            pass
-        else:
-            self[date(year, NOV, 30)] = name
+        self[date(year, NOV, 30)] = "Sfântul Andrei [St. Andrew's Day]"
 
         # National Day
-        name = "Ziua Naţională a României [National Day]"
-        if not self.observed and date(year, DEC, 1).weekday() in WEEKEND:
-            pass
-        else:
-            self[date(year, DEC, 1)] = name
+        self[date(year, DEC, 1)] = "Ziua Naţională a României [National Day]"
 
         # Christmas
         self[date(year, DEC, 25)] = "Crăciun [Christmas]"
@@ -4174,54 +4141,29 @@ class Turkey(HolidayBase):
 
     def _populate(self, year):
         # New Year's Day
-        if not self.observed and date(year, JAN, 1).weekday() in WEEKEND:
-            pass
-        else:
-            self[date(year, JAN, 1)] = "Yılbaşı [New Year's Day]"
+        self[date(year, JAN, 1)] = "Yılbaşı [New Year's Day]"
 
         # Children's Day
-        name = "Ulusal Egemenlik ve Çocuk Bayramı [Children's Day]"
-        if not self.observed and date(year, APR, 23).weekday() in WEEKEND:
-            pass
-        else:
-            self[date(year, APR, 23)] = name
+        self[date(year, APR, 23)] = "Ulusal Egemenlik ve Çocuk Bayramı " \
+                                    "[Children's Day]"
 
         # Labor Day
-        name = "Emek ve Dayanışma Günü [Labour Day]"
-        if not self.observed and date(year, MAY, 1).weekday() in WEEKEND:
-            pass
-        else:
-            self[date(year, MAY, 1)] = name
+        self[date(year, MAY, 1)] = "Emek ve Dayanışma Günü [Labour Day]"
 
         # Ataturk Day
-        name = "Atatürk´ü Anma, Gençlik ve Spor Bayramı [Atatürk Day]"
-        if not self.observed and date(year, MAY, 19).weekday() in WEEKEND:
-            pass
-        else:
-            self[date(year, MAY, 19)] = name
+        self[date(year, MAY, 19)] = "Atatürk´ü Anma, Gençlik ve Spor Bayramı" \
+                                    " [Atatürk Day]"
 
         # Democracy and National Unity Day
         if year > 2016:
-            name = "Demokrasi ve Millî Birlik Günü [Democracy and National " \
-                   "Unity Day]"
-            if not self.observed and date(year, JUL, 15).weekday() in WEEKEND:
-                pass
-            else:
-                self[date(year, JUL, 15)] = name
+            self[date(year, JUL, 15)] = "Demokrasi ve Millî Birlik Günü " \
+                                        "[Democracy and National Unity Day]"
 
         # Victory Day
-        name = "Zafer Bayrami [Victory Day]"
-        if not self.observed and date(year, AUG, 30).weekday() in WEEKEND:
-            pass
-        else:
-            self[date(year, AUG, 30)] = name
+        self[date(year, AUG, 30)] = "Zafer Bayrami [Victory Day]"
 
         # Republic Day
-        name = "Cumhuriyet Bayrami [Republic Day]"
-        if not self.observed and date(year, OCT, 29).weekday() in WEEKEND:
-            pass
-        else:
-            self[date(year, OCT, 29)] = name
+        self[date(year, OCT, 29)] = "Cumhuriyet Bayrami [Republic Day]"
 
         # Ramadan and Sacrifice fest
         tr_years = [2010, 2011, 2012, 2013,

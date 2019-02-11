@@ -5,3 +5,8 @@ MANIFEST
 *.egg-info
 *.pyc
 .idea
+.pytest_cache
+.venv
+.vscode
+*.code-workspace
+.gitignore
