@@ -3761,6 +3761,9 @@ class TestSouthAfrica(unittest.TestCase):
         self.assertIn('1975-09-01', self.holidays)  # Settler's Day
         self.assertNotIn('1976-09-01', self.holidays)
 
+    def test_election2019(self):
+        self.assertTrue('2019-05-08' in self.holidays)  # Election Day 2019
+
 
 class TestSI(unittest.TestCase):
 
