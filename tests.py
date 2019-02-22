@@ -2579,6 +2579,16 @@ class TestDE(unittest.TestCase):
         for province, (y, m, d) in product(holidays.DE.PROVINCES, known_good):
             self.assertIn(date(y, m, d), self.prov_hols[province])
 
+    def test_75_jahrestag_beendigung_zweiter_weltkrieg(self):
+        known_good = [(2020, 5, 8)]
+        provinces_that_have = {"BE"}
+        provinces_that_dont = set(holidays.DE.PROVINCES) - provinces_that_have
+
+        for province, (y, m, d) in product(provinces_that_have, known_good):
+            self.assertIn(date(y, m, d), self.prov_hols[province])
+        for province, (y, m, d) in product(provinces_that_dont, known_good):
+            self.assertNotIn(date(y, m, d), self.prov_hols[province])
+
     def test_christi_himmelfahrt(self):
         known_good = [(2014, 5, 29), (2015, 5, 14), (2016, 5, 5),
                       (2017, 5, 25), (2018, 5, 10), (2019, 5, 30),
