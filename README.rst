@@ -104,6 +104,7 @@ Belarus             BY       None
 Belgium             BE       None
 Brazil              BR       state = AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG,
                              PA, PB, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO
+Bulgaria            BG       None
 Canada              CA       prov = AB, BC, MB, NB, NL, NS, NT, NU, **ON** (default),
                              PE, QC, SK, YU
 Colombia            CO       None
