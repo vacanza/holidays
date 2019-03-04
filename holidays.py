@@ -2672,7 +2672,8 @@ class CZ(Czechia):
 
 class Czech(Czechia):
     def __init__(self):
-        warnings.warn("Czech is deprecated, use Czechia instead.", DeprecationWarning)
+        warnings.warn("Czech is deprecated, use Czechia instead.",
+                      DeprecationWarning)
         super(Czech, self).__init__()
 
 
