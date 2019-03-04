@@ -15,6 +15,7 @@ from itertools import product
 from datetime import date, datetime, timedelta
 from dateutil.relativedelta import relativedelta, MO
 import unittest
+import warnings
 
 import holidays
 
@@ -3140,6 +3141,14 @@ class TestCZ(unittest.TestCase):
 
     def test_others(self):
         self.assertIn(date(1991, 5, 9), self.holidays)
+
+    def test_czech_deprecated(self):
+        with warnings.catch_warnings(record=True) as w:
+            warnings.simplefilter("always")
+            czech = holidays.Czech()
+            self.assertIsInstance(czech, holidays.Czechia)
+            self.assertEqual(1, len(w))
+            self.assertTrue(issubclass(w[-1].category, DeprecationWarning))
 
 
 class TestSK(unittest.TestCase):

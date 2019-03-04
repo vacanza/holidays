@@ -17,6 +17,8 @@ from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
 import six
+import warnings
+
 
 __version__ = '0.9.10'
 
@@ -2620,7 +2622,7 @@ class TAR(EuropeanCentralBank):
     pass
 
 
-class Czech(HolidayBase):
+class Czechia(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_the_Czech_Republic
 
     def __init__(self, **kwargs):
@@ -2664,8 +2666,15 @@ class Czech(HolidayBase):
             self[date(year, DEC, 26)] = "2. svátek vánoční"
 
 
-class CZ(Czech):
+class CZ(Czechia):
     pass
+
+
+class Czech(Czechia):
+    def __init__(self):
+        warnings.warn("Czech is deprecated, use Czechia instead.",
+                      DeprecationWarning)
+        super(Czech, self).__init__()
 
 
 class Slovak(HolidayBase):
