@@ -2333,7 +2333,8 @@ class TestAU(unittest.TestCase):
             self.assertEqual(self.state_hols['NT'][dt], "Picnic Day")
 
     def test_family_and_community_day(self):
-        for dt in [date(2010, 9, 26), date(2011, 10, 10), date(2012, 10, 8),
+        for dt in [date(2007, 11, 6), date(2008, 11, 4), date(2009, 11, 3),
+                   date(2010, 9, 26), date(2011, 10, 10), date(2012, 10, 8),
                    date(2013, 9, 30), date(2014, 9, 29), date(2015, 9, 28),
                    date(2016, 9, 26), date(2017, 9, 25)]:
             self.assertIn(dt, self.state_hols['ACT'], dt)
