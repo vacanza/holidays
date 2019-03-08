@@ -2234,9 +2234,10 @@ class TestAU(unittest.TestCase):
         for dt in [date(1900, 4, 15), date(1901, 4, 7), date(1902, 3, 30),
                    date(1999, 4, 4), date(2010, 4, 4),
                    date(2018, 4, 1), date(2019, 4, 21), date(2020, 4, 12)]:
-            self.assertIn(dt, self.state_hols['NSW'], dt)
-            self.assertEqual(self.state_hols['NSW'][dt], "Easter Sunday")
-            for state in ['ACT', 'NT', 'QLD', 'SA', 'VIC', 'TAS', 'WA']:
+            for state in ['NSW', 'ACT', 'QLD', 'VIC']:
+                self.assertIn(dt, self.state_hols[state], (state, dt))
+                self.assertEqual(self.state_hols[state][dt], "Easter Sunday")
+            for state in ['NT', 'SA', 'TAS', 'WA']:
                 self.assertNotIn(dt, self.state_hols[state], (state, dt))
 
     def test_easter_monday(self):
@@ -2246,6 +2247,12 @@ class TestAU(unittest.TestCase):
             self.assertIn(dt, self.holidays)
             self.assertEqual(self.holidays[dt], "Easter Monday")
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+
+    def test_bank_holiday(self):
+        for dt in [date(1912, 8, 5), date(1913, 8, 5),
+                   date(1999, 8, 2), date(2018, 8, 6), date(2020, 8, 3)]:
+            self.assertIn(dt, self.state_hols['NSW'], dt)
+            self.assertEqual(self.state_hols['NSW'][dt], "Bank Holiday")
 
     def test_labour_day(self):
         for year, day in enumerate([7, 5, 4, 3, 2, 7, 6, ], 2011):
@@ -2328,15 +2335,19 @@ class TestAU(unittest.TestCase):
     def test_family_and_community_day(self):
         for dt in [date(2010, 9, 26), date(2011, 10, 10), date(2012, 10, 8),
                    date(2013, 9, 30), date(2014, 9, 29), date(2015, 9, 28),
-                   date(2016, 9, 26)]:
+                   date(2016, 9, 26), date(2017, 9, 25)]:
             self.assertIn(dt, self.state_hols['ACT'], dt)
-            self.assertEqual(self.state_hols['ACT'][dt],
-                             "Family & Community Day")
+            self.assertEqual(self.state_hols['ACT'][dt], "Family & Community Day")
+
+    def test_reconciliation_day(self):
+        for dt in [date(2018, 5, 28), date(2019, 5, 27), date(2020, 6, 1)]:
+            self.assertIn(dt, self.state_hols['ACT'], dt)
+            self.assertEqual(self.state_hols['ACT'][dt], "Reconciliation Day")
 
     def test_grand_final_day(self):
-            dt = date(2019, 9, 27)
-            self.assertIn(dt, self.state_hols['VIC'], dt)
-            self.assertEqual(self.state_hols['VIC'][dt], "Grand Final Day")
+        dt = date(2019, 9, 27)
+        self.assertIn(dt, self.state_hols['VIC'], dt)
+        self.assertEqual(self.state_hols['VIC'][dt], "Grand Final Day")
 
     def test_melbourne_cup(self):
         for dt in [date(2014, 11, 4), date(2015, 11, 3), date(2016, 11, 1)]:

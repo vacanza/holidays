@@ -1926,8 +1926,9 @@ class Australia(HolidayBase):
 
         # Bank Holiday
         if self.prov == 'NSW':
-            name = "Bank Holiday"
-            self[date(year, 8, 1) + rd(weekday=MO)] = name
+            if year >= 1912:
+                name = "Bank Holiday"
+                self[date(year, 8, 1) + rd(weekday=MO)] = name
 
         # Labour Day
         name = "Labour Day"
@@ -1985,6 +1986,7 @@ class Australia(HolidayBase):
             # Grand Final Day
             if year >= 2015:
                 self[date(year, SEP, 24) + rd(weekday=FR)] = "Grand Final Day"
+
             # Melbourne Cup
             self[date(year, NOV, 1) + rd(weekday=TU)] = "Melbourne Cup"
 
