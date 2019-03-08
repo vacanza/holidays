@@ -2249,7 +2249,7 @@ class TestAU(unittest.TestCase):
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
 
     def test_bank_holiday(self):
-        for dt in [date(1912, 8, 5), date(1913, 8, 5),
+        for dt in [date(1912, 8, 5), date(1913, 8, 4),
                    date(1999, 8, 2), date(2018, 8, 6), date(2020, 8, 3)]:
             self.assertIn(dt, self.state_hols['NSW'], dt)
             self.assertEqual(self.state_hols['NSW'][dt], "Bank Holiday")
