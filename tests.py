@@ -2337,7 +2337,8 @@ class TestAU(unittest.TestCase):
                    date(2013, 9, 30), date(2014, 9, 29), date(2015, 9, 28),
                    date(2016, 9, 26), date(2017, 9, 25)]:
             self.assertIn(dt, self.state_hols['ACT'], dt)
-            self.assertEqual(self.state_hols['ACT'][dt], "Family & Community Day")
+            self.assertEqual(self.state_hols['ACT'][dt],
+                             "Family & Community Day")
 
     def test_reconciliation_day(self):
         for dt in [date(2018, 5, 28), date(2019, 5, 27), date(2020, 6, 1)]:
