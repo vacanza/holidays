@@ -2519,6 +2519,26 @@ class TestDE(unittest.TestCase):
         for province, (y, m, d) in product(holidays.DE.PROVINCES, known_good):
             self.assertIn(date(y, m, d), self.prov_hols[province])
 
+    def test_weltkindertag(self):
+        known_good = [(2019, 9, 20), (2021, 9, 20)]
+
+        provinces_that_have = {"TH"}
+        provinces_that_dont = set(holidays.DE.PROVINCES) - provinces_that_have
+        for province, (y, m, d) in product(provinces_that_have, known_good):
+            self.assertIn(date(y, m, d), self.prov_hols[province])
+        for province, (y, m, d) in product(provinces_that_dont, known_good):
+            self.assertNotIn(date(y, m, d), self.prov_hols[province])
+
+    def test_frauentag(self):
+        known_good = [(2019, 3, 8), ]
+
+        provinces_that_have = {"BE"}
+        provinces_that_dont = set(holidays.DE.PROVINCES) - provinces_that_have
+        for province, (y, m, d) in product(provinces_that_have, known_good):
+            self.assertIn(date(y, m, d), self.prov_hols[province])
+        for province, (y, m, d) in product(provinces_that_dont, known_good):
+            self.assertNotIn(date(y, m, d), self.prov_hols[province])
+
     def test_pfingstsonntag(self):
         known_good = [(2014, 6, 8), (2015, 5, 24), (2016, 5, 15),
                       (2017, 6, 4), (2018, 5, 20), (2019, 6, 9),
