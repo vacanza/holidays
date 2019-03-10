@@ -2104,6 +2104,9 @@ class Germany(HolidayBase):
 
             self[date(year, OCT, 3)] = 'Tag der Deutschen Einheit'
 
+        if year >= 2019 and self.prov == 'TH':
+            self[date(year, SEP, 20)] = 'Weltkindertag'
+
         if self.prov in ('BB', 'MV', 'SN', 'ST', 'TH'):
             self[date(year, OCT, 31)] = 'Reformationstag'
 
