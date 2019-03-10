@@ -2126,6 +2126,13 @@ class Germany(HolidayBase):
             weekday_delta = WE(-2) if base_data.weekday() == 2 else WE(-1)
             self[base_data + rd(weekday=weekday_delta)] = 'Buß- und Bettag'
 
+        if year >= 2019:
+            if self.prov == 'TH':
+                self[date(year, SEP, 20)] = 'Weltkindertag'
+
+            if self.prov == 'BE':
+                self[date(year, MAR, 8)] = "Frauentag"
+
         self[date(year, DEC, 25)] = 'Erster Weihnachtstag'
         self[date(year, DEC, 26)] = 'Zweiter Weihnachtstag'
 
