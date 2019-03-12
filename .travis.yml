@@ -8,8 +8,8 @@ python:
     - 3.5
     - 3.6
     - 3.7
-    - pypy2.7-6.0
-    - pypy3.5-6.0
+    # Pypy
+    - pypy3.5
 
 env:
     - DATEUTIL=python-dateutil==2.7.0
