@@ -1,5 +1,4 @@
 # https://travis-ci.org/dr-prodigy/python-holidays
-dist: xenial
 language: python
 
 python:
@@ -7,7 +6,6 @@ python:
     - 3.4
     - 3.5
     - 3.6
-    - 3.7
     # Pypy
     - pypy3.5
 
