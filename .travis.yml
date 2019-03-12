@@ -1,5 +1,5 @@
 # https://travis-ci.org/dr-prodigy/python-holidays
-
+dist: xenial
 language: python
 
 python:
@@ -7,10 +7,10 @@ python:
     - 3.4
     - 3.5
     - 3.6
+    - 3.7
 # temporarily commented due to TravisCI issues
-#    - 3.7
-    - pypy
-    - pypy3
+#    - pypy
+#    - pypy3
 
 env:
     - DATEUTIL=python-dateutil==2.7.0
