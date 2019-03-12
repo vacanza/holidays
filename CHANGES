@@ -1,13 +1,16 @@
-Version 0.9.10B
-===============
+Version 0.9.10
+==============
 
-Released ???? ??, ????
+Released March 12, 2019
 
 - Added Lithuanian holidays support (GiedriusMauza)
 - Added Luxembourgish holidays (theFeverDog)
-- Added Added Russian holidays (mshinkareva)
+- Added Russian holidays (mshinkareva)
+- Added Bulgarian holidays (pavelsof)
 - Holidays in date range (elln2)
-- German holidays update (MrtnBckr)
+- German holidays updates (MrtnBckr, alexanderschulze)
+- South African holidays updates (nickyspag)
+- Australian holidays updates (itssimon)
 
 Version 0.9.9
 =============
