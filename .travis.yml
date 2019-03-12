@@ -1,4 +1,5 @@
 # https://travis-ci.org/dr-prodigy/python-holidays
+
 language: python
 
 python:
@@ -8,8 +9,8 @@ python:
     - 3.6
 # temporarily commented due to TravisCI issues
 #    - 3.7
-	- pypy
-	- pypy3
+    - pypy
+    - pypy3
 
 env:
     - DATEUTIL=python-dateutil==2.7.0
