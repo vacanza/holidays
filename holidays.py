@@ -3244,10 +3244,14 @@ class Japan(HolidayBase):
         # Foundation Day
         self[date(year, FEB, 11)] = "建国記念の日"
 
+        # Reiwa Emperor's Birthday
+        if year >= 2020:
+            self[date(year, FEB, 23)] = '天皇誕生日'
+
         # Vernal Equinox Day
         self[self._vernal_equinox_day(year)] = "春分の日"
 
-        # The former Emperor's Birthday, Greenery Day or Showa Day
+        # Showa Emperor's Birthday, Greenery Day or Showa Day
         if year <= 1988:
             self[date(year, APR, 29)] = "天皇誕生日"
         elif year <= 2006:
@@ -3296,9 +3300,16 @@ class Japan(HolidayBase):
         # Labour Thanksgiving Day
         self[date(year, NOV, 23)] = "勤労感謝の日"
 
-        # The Emperor's Birthday
-        if year >= 1989:
+        # Heisei Emperor's Birthday
+        if 1989 <= year <= 2018:
             self[date(year, DEC, 23)] = "天皇誕生日"
+
+        # Regarding the Emperor of Reiwa
+        if year == 2019:
+            # Enthronement Day
+            self[date(year, MAY, 1)] = '天皇の即位の日'
+            # Enthronement ceremony
+            self[date(year, OCT, 22)] = '即位礼正殿の儀が行われる日'
 
         # A weekday between national holidays becomes a holiday too (国民の休日)
         self._add_national_holidays(year)
@@ -3353,6 +3364,10 @@ class Japan(HolidayBase):
         if year in (2009, 2015, 2026, 2037, 2043, 2054, 2065, 2071, 2099):
             self[date(year, SEP, 22)] = "国民の休日"
 
+        if year == 2019:
+            self[date(year, APR, 30)] = '国民の休日'
+            self[date(year, MAY, 2)] = '国民の休日'
+
     def _add_substitute_holidays(self, year):
         table = (
             (1, 2, (1978, 1984, 1989, 1995, 2006, 2012, 2017, 2023, 2034, 2040,
@@ -3360,6 +3375,7 @@ class Japan(HolidayBase):
             (1, 16, (1978, 1984, 1989, 1995)),
             (2, 12, (1979, 1990, 1996, 2001, 2007, 2018, 2024, 2029, 2035,
                      2046)),
+            (2, 24, (2020,)),
             (3, 21, (1988, 2005, 2016, 2033, 2044, 2050)),
             (3, 22, (1982, 1999, 2010, 2027)),
             (4, 30, (1973, 1979, 1984, 1990, 2001, 2007, 2012, 2018, 2029,
