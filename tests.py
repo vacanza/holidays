@@ -3729,7 +3729,14 @@ class TestJapan(unittest.TestCase):
     def test_emperors_birthday(self):
         self.assertIn(date(1989, 12, 23), self.holidays)
         self.assertIn(date(2017, 12, 23), self.holidays)
-        self.assertIn(date(2050, 12, 23), self.holidays)
+        self.assertNotIn(date(2019, 12, 23), self.holidays)
+        self.assertIn(date(2020, 2, 23), self.holidays)
+
+    def test_reiwa_emperor_holidays(self):
+        self.assertIn(date(2019, 4, 30), self.holidays)
+        self.assertIn(date(2019, 5, 1), self.holidays)
+        self.assertIn(date(2019, 5, 2), self.holidays)
+        self.assertIn(date(2019, 10, 22), self.holidays)
 
     def test_invalid_years(self):
         self.assertRaises(NotImplementedError,
