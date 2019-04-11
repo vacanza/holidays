@@ -1982,7 +1982,7 @@ class Australia(HolidayBase):
                 self[date(year, MAR, 1) + rd(weekday=MO(+2))] = name
             elif year == 2012:
                 self[date(year, MAR, 12)] = name
-                     
+
         # Easter
         self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
         if self.prov in ('ACT', 'NSW', 'NT', 'QLD', 'SA', 'VIC'):

@@ -2535,10 +2535,10 @@ class TestAU(unittest.TestCase):
             self.assertIn(dt, self.holidays, dt)
             self.assertEqual(self.holidays[dt][:6], "Boxing")
 
-    def test_all_holidays_present(self):
-        au_2015 = sum(holidays.AU(years=[2015], prov=p)
+    def test_all_holidays(self):
+        au = sum(holidays.AU(years=[1957, 2012, 2015], prov=p)
                       for p in holidays.AU.PROVINCES)
-        holidays_in_2015 = sum((au_2015.get_list(key) for key in au_2015), [])
+        holidays_found = sum((au.get_list(key) for key in au), [])
         all_holidays = ["New Year's Day",
                         "Australia Day",
                         "Adelaide Cup",
@@ -2560,7 +2560,7 @@ class TestAU(unittest.TestCase):
                         "Proclamation Day",
                         "Boxing Day"]
         for holiday in all_holidays:
-            self.assertIn(holiday, holidays_in_2015, holiday)
+            self.assertIn(holiday, holidays_found, holiday)
 
 
 class TestDE(unittest.TestCase):
