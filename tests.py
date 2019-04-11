@@ -2537,7 +2537,7 @@ class TestAU(unittest.TestCase):
 
     def test_all_holidays(self):
         au = sum(holidays.AU(years=[1957, 2012, 2015], prov=p)
-                      for p in holidays.AU.PROVINCES)
+                 for p in holidays.AU.PROVINCES)
         holidays_found = sum((au.get_list(key) for key in au), [])
         all_holidays = ["New Year's Day",
                         "Australia Day",
