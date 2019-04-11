@@ -1970,10 +1970,19 @@ class Australia(HolidayBase):
                 self[date(year, MAR, 1) + rd(weekday=MO(+3))] = name
 
         # Canberra Day
-        if self.prov == 'ACT':
+        # Info from https://www.timeanddate.com/holidays/australia/canberra-day
+        # and https://en.wikipedia.org/wiki/Canberra_Day
+        if self.prov == 'ACT' and year >= 1913:
             name = "Canberra Day"
-            self[date(year, MAR, 1) + rd(weekday=MO(+1))] = name
-
+            if year >= 1913 and year <= 1957:
+                self[date(year, MAR, 12)] = name
+            elif year >= 1958 and year <= 2007:
+                self[date(year, MAR, 1) + rd(weekday=MO(+3))] = name
+            elif year >= 2008 and year != 2012:
+                self[date(year, MAR, 1) + rd(weekday=MO(+2))] = name
+            elif year == 2012:
+                self[date(year, MAR, 12)] = name
+                     
         # Easter
         self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
         if self.prov in ('ACT', 'NSW', 'NT', 'QLD', 'SA', 'VIC'):
