@@ -5010,7 +5010,8 @@ class TestEstonia(unittest.TestCase):
 
     def test_easter_sunday(self):
         test_date = date(2019, 4, 21)
-        self.assertEqual(self.holidays.get(test_date), "ülestõusmispühade 1. püha")
+        self.assertEqual(self.holidays.get(test_date),
+                         "ülestõusmispühade 1. püha")
         self.assertIn(test_date, self.holidays)
 
     def test_spring_day(self):
@@ -5023,7 +5024,7 @@ class TestEstonia(unittest.TestCase):
         self.assertEqual(self.holidays.get(test_date), "nelipühade 1. püha")
         self.assertIn(test_date, self.holidays)
 
-    def test_victoy_day(self):
+    def test_victory_day(self):
         test_date = date(self.cur_date.year, 6, 23)
         self.assertEqual(self.holidays.get(test_date), "võidupüha")
         self.assertIn(test_date, self.holidays)
