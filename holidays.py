@@ -2493,6 +2493,10 @@ class UK(UnitedKingdom):
     pass
 
 
+class GB(UnitedKingdom):
+    pass
+
+
 class England(UnitedKingdom):
 
     def __init__(self, **kwargs):
