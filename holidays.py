@@ -682,6 +682,8 @@ class Canada(HolidayBase):
             self[date(year, FEB, 1) + rd(weekday=MO(+3))] = "Family Day"
         elif self.prov == 'AB' and year >= 1990:
             self[date(year, FEB, 1) + rd(weekday=MO(+3))] = "Family Day"
+        elif self.prov == 'NB' and year >= 2018:
+            self[date(year, FEB, 1) + rd(weekday=MO(+3))] = "Family Day"
         elif self.prov == 'BC':
             if year >= 2013 and year <= 2018:
                 self[date(year, FEB, 1) + rd(weekday=MO(+2))] = \

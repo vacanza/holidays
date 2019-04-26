@@ -581,6 +581,7 @@ class TestCA(unittest.TestCase):
         bc_holidays = holidays.CA(prov="BC")
         mb_holidays = holidays.CA(prov="MB")
         sk_holidays = holidays.CA(prov="SK")
+        nb_holidays = holidays.CA(prov="NB")
         for dt in [date(1990, 2, 19), date(1999, 2, 15), date(2000, 2, 21),
                    date(2006, 2, 20)]:
             self.assertNotIn(dt, self.holidays)
@@ -601,6 +602,8 @@ class TestCA(unittest.TestCase):
             self.assertNotIn(dt, bc_holidays)
             self.assertIn(dt, mb_holidays)
             self.assertIn(dt, sk_holidays)
+        for dt in [date(2018, 2, 19)]:
+                self.assertIn(dt, nb_holidays)
         for dt in [date(2019, 2, 18), date(2020, 2, 17)]:
             self.assertIn(dt, self.holidays)
             self.assertIn(dt, ab_holidays)
