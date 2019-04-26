@@ -603,7 +603,7 @@ class TestCA(unittest.TestCase):
             self.assertIn(dt, mb_holidays)
             self.assertIn(dt, sk_holidays)
         for dt in [date(2018, 2, 19)]:
-                self.assertIn(dt, nb_holidays)
+            self.assertIn(dt, nb_holidays)
         for dt in [date(2019, 2, 18), date(2020, 2, 17)]:
             self.assertIn(dt, self.holidays)
             self.assertIn(dt, ab_holidays)
