@@ -4433,3 +4433,32 @@ class Estonia(HolidayBase):
 
 class EE(Estonia):
     pass
+
+
+class Iceland(HolidayBase):
+    # https://en.wikipedia.org/wiki/Public_holidays_in_Iceland
+    # https://www.officeholidays.com/countries/iceland/index.php
+    def __init__(self, **kwargs):
+        self.country = "IS"
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # Public holidays
+        self[date(year, JAN, 1)] = "Nýársdagur"
+        self[easter(year) - rd(days=3)] = "Skírdagur"
+        self[easter(year)] = "Páskadagur"
+        self[easter(year) + rd(days=1)] = "Annar í páskum"
+        self[
+            rd(dt1=date(year, APR, 18), dt2=date(year, APR, 25), weekday=TH)
+        ] = "Sumardagurinn fyrsti"
+        self[date(year, MAY, 1)] = "Verkalýðsdagurinn"
+        self[easter(year) + rd(days=39)] = "Uppstigningardagur"
+        self[easter(year) + rd(days=49)] = "Hvítasunnudagur"
+        self[easter(year) + rd(days=50)] = "Annar í hvítasunnu"
+        self[date(year, JUN, 17)] = "Þjóðhátíðardagurinn"
+        # First Monday of August
+        self[date(year, AUG, 1) + rd(weekday=MO)] = "Frídagur verslunarmanna"
+        self[date(year, DEC, 24)] = "Aðfangadagur"
+        self[date(year, DEC, 25)] = "Jóladagur"
+        self[date(year, DEC, 26)] = "Annar í jólum"
+        self[date(year, DEC, 31)] = "Gamlársdagur"
