@@ -2818,7 +2818,7 @@ class SK(Slovak):
     pass
 
 
-class Polish(HolidayBase):
+class Poland(HolidayBase):
     # https://pl.wikipedia.org/wiki/Dni_wolne_od_pracy_w_Polsce
 
     def __init__(self, **kwargs):
@@ -2852,7 +2852,14 @@ class Polish(HolidayBase):
         self[date(year, DEC, 26)] = 'Boże Narodzenie (drugi dzień)'
 
 
-class PL(Polish):
+class Polish(Poland):
+    def __init__(self):
+        warnings.warn("Polish is deprecated, use Poland instead.",
+                      DeprecationWarning)
+        super(Poland, self).__init__()
+
+
+class PL(Poland):
     pass
 
 

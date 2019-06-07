@@ -97,8 +97,8 @@ Available Countries
 =================== ======== =============================================================
 Country             Abbr     Provinces/States Available
 =================== ======== =============================================================
-Aruba               AW       None
 Argentina           AR       None
+Aruba               AW       None
 Australia           AU       prov = **ACT** (default), NSW, NT, QLD, SA, TAS, VIC, WA
 Austria             AT       prov = B, K, N, O, S, ST, T, V, **W** (default)
 Belarus             BY       None
@@ -141,7 +141,7 @@ NewZealand          NZ       prov = NTL, AUK, TKI, HKB, WGN, MBH, NSN, CAN, STC,
                              OTA, STL, CIT
 Northern Ireland             None
 Norway              NO       None
-Polish              PL       None
+Poland              PL       None
 Portugal            PT       None
 PortugalExt         PTE      *Portugal plus extended days most people have off*
 Russia              RU       None
