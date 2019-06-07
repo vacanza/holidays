@@ -97,6 +97,7 @@ Available Countries
 =================== ======== =============================================================
 Country             Abbr     Provinces/States Available
 =================== ======== =============================================================
+Aruba               AW       None
 Argentina           AR       None
 Australia           AU       prov = **ACT** (default), NSW, NT, QLD, SA, TAS, VIC, WA
 Austria             AT       prov = B, K, N, O, S, ST, T, V, **W** (default)
