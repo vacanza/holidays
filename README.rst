@@ -112,6 +112,7 @@ Croatia             HR       None
 Czech               CZ       None
 Denmark             DK       None
 England                      None
+Estonia             EE       None
 EuropeanCentralBank ECB,TAR  Trans-European Automated Real-time Gross Settlement (TARGET2)
 Finland             FI       None
 France              FRA      **Métropole** (default), Alsace-Moselle, Guadeloupe, Guyane,
@@ -121,6 +122,7 @@ France              FRA      **Métropole** (default), Alsace-Moselle, Guadeloup
 Germany             DE       prov = BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL, SN,
                              ST, SH, TH
 Hungary             HU       None
+Iceland             IS       None
 India               IND      prov = AS, SK, CG, KA, GJ, BR, RJ, OD, TN, AP, WB, KL, HR,
                              MH, MP, UP, UK, TN
 Ireland             IE       None
@@ -129,6 +131,7 @@ Italy               IT       prov = AN, AO, BA, BL, BO, BS, BZ, CB, Cesena, CH, 
                              EN, FC, FE, FI, Forlì, FR, GE, GO, IS, KR, LT, MB, MI, MO,
                              MN, MS, NA, PA, PC, PD, PG, PR, RM, SP, TS, VI
 Japan               JP       None
+Kenya               KE       None
 Lithuania           LT       None
 Luxembourg          LU       None
 Mexico              MX       None
