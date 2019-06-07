@@ -5058,5 +5058,57 @@ class TestEstonia(unittest.TestCase):
         self.assertIn(test_date, self.holidays)
 
 
+class TestIceland(unittest.TestCase):
+    def setUp(self):
+        self.holidays = holidays.Iceland()
+        self.cur_date = datetime.now()
+
+    def test_new_year(self):
+        test_date = date(self.cur_date.year, 1, 1)
+        self.assertEqual(self.holidays.get(test_date), "Nýársdagur")
+        self.assertIn(test_date, self.holidays)
+
+    def test_maundy_thursday(self):
+        test_date = date(self.cur_date.year, 4, 18)
+        self.assertEqual(self.holidays.get(test_date), "Skírdagur")
+        self.assertIn(test_date, self.holidays)
+
+    def test_first_day_of_summer(self):
+        test_date = date(self.cur_date.year, 4, 25)
+        self.assertEqual(self.holidays.get(test_date), "Sumardagurinn fyrsti")
+        self.assertIn(test_date, self.holidays)
+
+    def test_commerce_day(self):
+        test_date = date(self.cur_date.year, 8, 5)
+        self.assertEqual(self.holidays.get(test_date),
+                         "Frídagur verslunarmanna")
+        self.assertIn(test_date, self.holidays)
+
+
+class TestKenya(unittest.TestCase):
+    def setUp(self):
+        self.holidays = holidays.Kenya()
+
+    def test_2019(self):
+        # New Year's Day
+        self.assertIn(date(2019, 1, 1), self.holidays)
+        # Good Friday
+        self.assertIn(date(2019, 4, 19), self.holidays)
+        # Easter Monday
+        self.assertIn(date(2019, 4, 22), self.holidays)
+        # Labour Day
+        self.assertIn(date(2019, 5, 1), self.holidays)
+        # Madaraka Day
+        self.assertIn(date(2019, 6, 1), self.holidays)
+        # Mashujaa Day
+        self.assertIn(date(2019, 10, 20), self.holidays)
+        # Jamhuri (Independence) Day
+        self.assertIn(date(2019, 12, 12), self.holidays)
+        # Christmas Day
+        self.assertIn(date(2019, 12, 25), self.holidays)
+        # Boxing Day
+        self.assertIn(date(2018, 12, 26), self.holidays)
+
+
 if __name__ == "__main__":
     unittest.main()
