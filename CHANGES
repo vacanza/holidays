@@ -8,6 +8,7 @@ Released ????? ??, ????
 - Added support for Estonian holidays (RaulVS14)
 - Added support for Iceland and Kenya (justinasfour04)
 - Added support for Aruba (orson1282)
+- Polish deprecation: replaced by Poland (dr-p)
 
 Version 0.9.10
 ==============
@@ -84,6 +85,7 @@ Released March 12, 2018
 - Added Switzerland with all cantons (Phil)
 - Canada holiday updates (goodfore)
 - Various inspection fixes
+- Czech deprecation: replaced by Czechia (janpipek)
 
 Version 0.9.2
 =============
