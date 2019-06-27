@@ -4980,6 +4980,599 @@ class TestLithuania(unittest.TestCase):
         self.assertNotIn(date(2002, 6, 24), self.holidays)
         self.assertIn(date(2020, 6, 24), self.holidays)
 
+class TestHongKong(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.HK()
+    
+    def test_common(self):
+        self.assertTrue(self.holidays.isLeapYear(2000))
+        self.assertFalse(self.holidays.isLeapYear(2100))
+        holidaysNoObserved = holidays.HK(observed=False)
+        self.assertEqual(holidaysNoObserved[date(2019,1,1)], \
+            "The first day of January")
+
+    def test_2005(self):
+        self.assertEqual(self.holidays[date(2006,1,2)], \
+            "The day following the first day of January")
+        self.assertEqual(self.holidays[date(2006,1,28)], \
+            "The day preceding Lunar New Year's Day")
+        self.assertEqual(self.holidays[date(2006,1,30)], \
+            "The second day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2006,1,31)], \
+            "The third day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2006,4,5)], \
+            "Ching Ming Festival")
+        self.assertEqual(self.holidays[date(2006,4,14)], \
+            "Good Friday")
+        self.assertEqual(self.holidays[date(2006,4,15)], \
+            "The day following Good Friday")
+        self.assertEqual(self.holidays[date(2006,4,17)], \
+            "Easter Monday")
+        self.assertEqual(self.holidays[date(2006,5,1)], \
+            "Labour Day")
+        self.assertEqual(self.holidays[date(2006,5,5)], \
+            "Birthday of the Buddha")
+        self.assertEqual(self.holidays[date(2006,5,31)], \
+            "Tuen Ng Festival")
+        self.assertEqual(self.holidays[date(2006,7,1)], \
+            "Hong Kong Special Administrative Region Establishment Day")
+        self.assertEqual(self.holidays[date(2006,10,2)], \
+            "The day following National Day")
+        self.assertEqual(self.holidays[date(2006,10,7)], \
+            "The day following the Chinese Mid-Autumn Festival")
+        self.assertEqual(self.holidays[date(2006,10,30)], \
+            "Chung Yeung Festival")
+        self.assertEqual(self.holidays[date(2006,12,25)], \
+            "Christmas Day")
+        self.assertEqual(self.holidays[date(2006,12,26)], \
+            "The first weekday after Christmas Day")
+
+    def test_2006(self):
+        self.assertEqual(self.holidays[date(2006,1,2)], \
+            "The day following the first day of January")
+        self.assertEqual(self.holidays[date(2006,1,28)], \
+            "The day preceding Lunar New Year's Day")
+        self.assertEqual(self.holidays[date(2006,1,30)], \
+            "The second day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2006,1,31)], \
+            "The third day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2006,4,5)], \
+            "Ching Ming Festival")
+        self.assertEqual(self.holidays[date(2006,4,14)], \
+            "Good Friday")
+        self.assertEqual(self.holidays[date(2006,4,15)], \
+            "The day following Good Friday")
+        self.assertEqual(self.holidays[date(2006,4,17)], \
+            "Easter Monday")
+        self.assertEqual(self.holidays[date(2006,5,1)], \
+            "Labour Day")
+        self.assertEqual(self.holidays[date(2006,5,5)], \
+            "Birthday of the Buddha")
+        self.assertEqual(self.holidays[date(2006,5,31)], \
+            "Tuen Ng Festival")
+        self.assertEqual(self.holidays[date(2006,7,1)], \
+            "Hong Kong Special Administrative Region Establishment Day")
+        self.assertEqual(self.holidays[date(2006,10,2)], \
+            "The day following National Day")
+        self.assertEqual(self.holidays[date(2006,10,7)], \
+            "The day following the Chinese Mid-Autumn Festival")
+        self.assertEqual(self.holidays[date(2006,10,30)], \
+            "Chung Yeung Festival")
+        self.assertEqual(self.holidays[date(2006,12,25)], \
+            "Christmas Day")
+        self.assertEqual(self.holidays[date(2006,12,26)], \
+            "The first weekday after Christmas Day")
+
+    def test_2007(self):
+        self.assertEqual(self.holidays[date(2007,1,1)], \
+            "The first day of January")
+        self.assertEqual(self.holidays[date(2007,2,17)], \
+            "The day preceding Lunar New Year's Day")
+        self.assertEqual(self.holidays[date(2007,2,19)], \
+            "The second day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2007,2,20)], \
+            "The third day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2007,4,5)], \
+            "Ching Ming Festival")
+        self.assertEqual(self.holidays[date(2007,4,6)], \
+            "Good Friday")
+        self.assertEqual(self.holidays[date(2007,4,7)], \
+            "The day following Good Friday")
+        self.assertEqual(self.holidays[date(2007,4,9)], \
+            "Easter Monday")
+        self.assertEqual(self.holidays[date(2007,5,1)], \
+            "Labour Day")
+        self.assertEqual(self.holidays[date(2007,5,24)], \
+            "Birthday of the Buddha")
+        self.assertEqual(self.holidays[date(2007,6,19)], \
+            "Tuen Ng Festival")
+        self.assertEqual(self.holidays[date(2007,7,2)], \
+            "The day following Hong Kong Special Administrative Region " + \
+                "Establishment Day")
+        self.assertEqual(self.holidays[date(2007,9,26)], \
+            "The day following the Chinese Mid-Autumn Festival")
+        self.assertEqual(self.holidays[date(2007,10,1)], \
+            "National Day")
+        self.assertEqual(self.holidays[date(2007,10,19)], \
+            "Chung Yeung Festival")
+        self.assertEqual(self.holidays[date(2007,12,25)], \
+            "Christmas Day")
+        self.assertEqual(self.holidays[date(2007,12,26)], \
+            "The first weekday after Christmas Day")
+
+    def test_2008(self):
+        self.assertEqual(self.holidays[date(2008,1,1)], \
+            "The first day of January")
+        self.assertEqual(self.holidays[date(2008,2,7)], \
+            "Lunar New Year's Day")
+        self.assertEqual(self.holidays[date(2008,2,8)], \
+            "The second day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2008,2,9)], \
+            "The third day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2008,3,21)], \
+            "Good Friday")
+        self.assertEqual(self.holidays[date(2008,3,22)], \
+            "The day following Good Friday")
+        self.assertEqual(self.holidays[date(2008,3,24)], \
+            "Easter Monday")
+        self.assertEqual(self.holidays[date(2008,4,4)], \
+            "Ching Ming Festival")
+        self.assertEqual(self.holidays[date(2008,5,1)], \
+            "Labour Day")
+        self.assertEqual(self.holidays[date(2008,5,12)], \
+            "Birthday of the Buddha")
+        self.assertEqual(self.holidays[date(2008,6,9)], \
+            "The day following Tuen Ng Festival")
+        self.assertEqual(self.holidays[date(2008,7,1)], \
+            "Hong Kong Special Administrative Region Establishment Day")
+        self.assertEqual(self.holidays[date(2008,9,15)], \
+            "The day following the Chinese Mid-Autumn Festival")
+        self.assertEqual(self.holidays[date(2008,10,1)], \
+            "National Day")
+        self.assertEqual(self.holidays[date(2008,10,7)], \
+            "Chung Yeung Festival")
+        self.assertEqual(self.holidays[date(2008,12,25)], \
+            "Christmas Day")
+        self.assertEqual(self.holidays[date(2008,12,26)], \
+            "The first weekday after Christmas Day")
+
+    def test_2009(self):
+        self.assertEqual(self.holidays[date(2009,1,1)], \
+            "The first day of January")
+        self.assertEqual(self.holidays[date(2009,1,26)], \
+            "Lunar New Year's Day")
+        self.assertEqual(self.holidays[date(2009,1,27)], \
+            "The second day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2009,1,28)], \
+            "The third day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2009,4,4)], \
+            "Ching Ming Festival")
+        self.assertEqual(self.holidays[date(2009,4,10)], \
+            "Good Friday")
+        self.assertEqual(self.holidays[date(2009,4,11)], \
+            "The day following Good Friday")
+        self.assertEqual(self.holidays[date(2009,4,13)], \
+            "Easter Monday")
+        self.assertEqual(self.holidays[date(2009,5,1)], \
+            "Labour Day")
+        self.assertEqual(self.holidays[date(2009,5,2)], \
+            "Birthday of the Buddha")
+        self.assertEqual(self.holidays[date(2009,5,28)], \
+            "Tuen Ng Festival")
+        self.assertEqual(self.holidays[date(2009,7,1)], \
+            "Hong Kong Special Administrative Region Establishment Day")
+        self.assertEqual(self.holidays[date(2009,10,1)], \
+            "National Day")
+        self.assertEqual(self.holidays[date(2009,10,3)], \
+            "Chinese Mid-Autumn Festival")
+        self.assertEqual(self.holidays[date(2009,10,26)], \
+            "Chung Yeung Festival")
+        self.assertEqual(self.holidays[date(2009,12,25)], \
+            "Christmas Day")
+        self.assertEqual(self.holidays[date(2009,12,26)], \
+            "The first weekday after Christmas Day")
+
+    def test_2010(self):
+        self.assertEqual(self.holidays[date(2010,1,1)], \
+            "The first day of January")
+        self.assertEqual(self.holidays[date(2010,2,13)], \
+            "The day preceding Lunar New Year's Day")
+        self.assertEqual(self.holidays[date(2010,2,15)], \
+            "The second day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2010,2,16)], \
+            "The third day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2010,4,2)], \
+            "Good Friday")
+        self.assertEqual(self.holidays[date(2010,4,3)], \
+            "The day following Good Friday")
+        self.assertEqual(self.holidays[date(2010,4,5)], \
+            "Ching Ming Festival")
+        self.assertEqual(self.holidays[date(2010,4,6)], \
+            "The day following Easter Monday")
+        self.assertEqual(self.holidays[date(2010,5,1)], \
+            "Labour Day")
+        self.assertEqual(self.holidays[date(2010,5,21)], \
+            "Birthday of the Buddha")
+        self.assertEqual(self.holidays[date(2010,6,16)], \
+            "Tuen Ng Festival")
+        self.assertEqual(self.holidays[date(2010,7,1)], \
+            "Hong Kong Special Administrative Region Establishment Day")
+        self.assertEqual(self.holidays[date(2010,9,23)], \
+            "The day following the Chinese Mid-Autumn Festival")
+        self.assertEqual(self.holidays[date(2010,10,1)], \
+            "National Day")
+        self.assertEqual(self.holidays[date(2010,10,16)], \
+            "Chung Yeung Festival")
+        self.assertEqual(self.holidays[date(2010,12,25)], \
+            "Christmas Day")
+        self.assertEqual(self.holidays[date(2010,12,27)], \
+            "The first weekday after Christmas Day")
+
+    def test_2011(self):
+        self.assertEqual(self.holidays[date(2011,1,1)], \
+            "The first day of January")
+        self.assertEqual(self.holidays[date(2011,2,3)], \
+            "Lunar New Year's Day")
+        self.assertEqual(self.holidays[date(2011,2,4)], \
+            "The second day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2011,2,5)], \
+            "The third day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2011,4,5)], \
+            "Ching Ming Festival")
+        self.assertEqual(self.holidays[date(2011,4,22)], \
+            "Good Friday")
+        self.assertEqual(self.holidays[date(2011,4,23)], \
+            "The day following Good Friday")
+        self.assertEqual(self.holidays[date(2011,4,25)], \
+            "Easter Monday")
+        self.assertEqual(self.holidays[date(2011,5,2)], \
+            "The day following Labour Day")
+        self.assertEqual(self.holidays[date(2011,5,10)], \
+            "Birthday of the Buddha")
+        self.assertEqual(self.holidays[date(2011,6,6)], \
+            "Tuen Ng Festival")
+        self.assertEqual(self.holidays[date(2011,7,1)], \
+            "Hong Kong Special Administrative Region Establishment Day")
+        self.assertEqual(self.holidays[date(2011,9,13)], \
+            "The day following the Chinese Mid-Autumn Festival")
+        self.assertEqual(self.holidays[date(2011,10,1)], \
+            "National Day")
+        self.assertEqual(self.holidays[date(2011,10,5)], \
+            "Chung Yeung Festival")
+        self.assertEqual(self.holidays[date(2011,12,26)], \
+            "The first weekday after Christmas Day")
+        self.assertEqual(self.holidays[date(2011,12,27)], \
+            "The second weekday after Christmas Day")
+
+    def test_2012(self):
+        self.assertEqual(self.holidays[date(2012,1,2)], \
+            "The day following the first day of January")
+        self.assertEqual(self.holidays[date(2012,1,23)], \
+            "Lunar New Year's Day")
+        self.assertEqual(self.holidays[date(2012,1,24)], \
+            "The second day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2012,1,25)], \
+            "The third day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2012,4,4)], \
+            "Ching Ming Festival")
+        self.assertEqual(self.holidays[date(2012,4,6)], \
+            "Good Friday")
+        self.assertEqual(self.holidays[date(2012,4,7)], \
+            "The day following Good Friday")
+        self.assertEqual(self.holidays[date(2012,4,9)], \
+            "Easter Monday")
+        self.assertEqual(self.holidays[date(2012,4,28)], \
+            "Birthday of the Buddha")
+        self.assertEqual(self.holidays[date(2012,5,1)], \
+            "Labour Day")
+        self.assertEqual(self.holidays[date(2012,6,23)], \
+            "Tuen Ng Festival")
+        self.assertEqual(self.holidays[date(2012,7,2)], \
+            "The day following Hong Kong Special Administrative Region " + \
+                "Establishment Day")
+        self.assertEqual(self.holidays[date(2012,10,1)], \
+            "The day following the Chinese Mid-Autumn Festival")
+        self.assertEqual(self.holidays[date(2012,10,2)], \
+            "The day following National Day")
+        self.assertEqual(self.holidays[date(2012,10,23)], \
+            "Chung Yeung Festival")
+        self.assertEqual(self.holidays[date(2012,12,25)], \
+            "Christmas Day")
+        self.assertEqual(self.holidays[date(2012,12,26)], \
+            "The first weekday after Christmas Day")
+
+    def test_2013(self):
+        self.assertEqual(self.holidays[date(2013,1,1)], \
+            "The first day of January")
+        self.assertEqual(self.holidays[date(2013,2,11)], \
+            "The second day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2013,2,12)], \
+            "The third day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2013,2,13)], \
+            "The fourth day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2013,3,29)], \
+            "Good Friday")
+        self.assertEqual(self.holidays[date(2013,3,30)], \
+            "The day following Good Friday")
+        self.assertEqual(self.holidays[date(2013,4,1)], \
+            "Easter Monday")
+        self.assertEqual(self.holidays[date(2013,4,4)], \
+            "Ching Ming Festival")
+        self.assertEqual(self.holidays[date(2013,5,1)], \
+            "Labour Day")
+        self.assertEqual(self.holidays[date(2013,5,17)], \
+            "Birthday of the Buddha")
+        self.assertEqual(self.holidays[date(2013,6,12)], \
+            "Tuen Ng Festival")
+        self.assertEqual(self.holidays[date(2013,7,1)], \
+            "Hong Kong Special Administrative Region Establishment Day")
+        self.assertEqual(self.holidays[date(2013,9,20)], \
+            "The day following the Chinese Mid-Autumn Festival")
+        self.assertEqual(self.holidays[date(2013,10,1)], \
+            "National Day")
+        self.assertEqual(self.holidays[date(2013,10,14)], \
+            "The day following Chung Yeung Festival")
+        self.assertEqual(self.holidays[date(2013,12,25)], \
+            "Christmas Day")
+        self.assertEqual(self.holidays[date(2013,12,26)], \
+            "The first weekday after Christmas Day")
+
+    def test_2014(self):
+        self.assertEqual(self.holidays[date(2014,1,1)], \
+            "The first day of January")
+        self.assertEqual(self.holidays[date(2014,1,31)], \
+            "Lunar New Year's Day")
+        self.assertEqual(self.holidays[date(2014,2,1)], \
+            "The second day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2014,2,3)], \
+            "The fourth day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2014,4,5)], \
+            "Ching Ming Festival")
+        self.assertEqual(self.holidays[date(2014,4,18)], \
+            "Good Friday")
+        self.assertEqual(self.holidays[date(2014,4,19)], \
+            "The day following Good Friday")
+        self.assertEqual(self.holidays[date(2014,4,21)], \
+            "Easter Monday")
+        self.assertEqual(self.holidays[date(2014,5,1)], \
+            "Labour Day")
+        self.assertEqual(self.holidays[date(2014,5,6)], \
+            "Birthday of the Buddha")
+        self.assertEqual(self.holidays[date(2014,6,2)], \
+            "Tuen Ng Festival")
+        self.assertEqual(self.holidays[date(2014,7,1)], \
+            "Hong Kong Special Administrative Region Establishment Day")
+        self.assertEqual(self.holidays[date(2014,9,9)], \
+            "The day following the Chinese Mid-Autumn Festival")
+        self.assertEqual(self.holidays[date(2014,10,1)], \
+            "National Day")
+        self.assertEqual(self.holidays[date(2014,10,2)], \
+            "Chung Yeung Festival")
+        self.assertEqual(self.holidays[date(2014,12,25)], \
+            "Christmas Day")
+        self.assertEqual(self.holidays[date(2014,12,26)], \
+            "The first weekday after Christmas Day")
+
+    def test_2015(self):
+        self.assertEqual(self.holidays[date(2015,1,1)], \
+            "The first day of January")
+        self.assertEqual(self.holidays[date(2015,2,19)], \
+            "Lunar New Year's Day")
+        self.assertEqual(self.holidays[date(2015,2,20)], \
+            "The second day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2015,2,21)], \
+            "The third day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2015,4,3)], \
+            "Good Friday")
+        self.assertEqual(self.holidays[date(2015,4,4)], \
+            "The day following Good Friday")
+        self.assertEqual(self.holidays[date(2015,4,6)], \
+            "The day following Ching Ming Festival")
+        self.assertEqual(self.holidays[date(2015,4,7)], \
+            "The day following Easter Monday")
+        self.assertEqual(self.holidays[date(2015,5,1)], \
+            "Labour Day")
+        self.assertEqual(self.holidays[date(2015,5,25)], \
+            "Birthday of the Buddha")
+        self.assertEqual(self.holidays[date(2015,6,20)], \
+            "Tuen Ng Festival")
+        self.assertEqual(self.holidays[date(2015,7,1)], \
+            "Hong Kong Special Administrative Region Establishment Day")
+        self.assertEqual(self.holidays[date(2015,9,3)], \
+            "The 70th anniversary day of the victory of the Chinese " + \
+                "people's war of resistance against Japanese aggression")
+        self.assertEqual(self.holidays[date(2015,9,28)], \
+            "The day following the Chinese Mid-Autumn Festival")
+        self.assertEqual(self.holidays[date(2015,10,1)], \
+            "National Day")
+        self.assertEqual(self.holidays[date(2015,10,21)], \
+            "Chung Yeung Festival")
+        self.assertEqual(self.holidays[date(2015,12,25)], \
+            "Christmas Day")
+        self.assertEqual(self.holidays[date(2015,12,26)], \
+            "The first weekday after Christmas Day")
+
+    def test_2016(self):
+        self.assertEqual(self.holidays[date(2016,1,1)], \
+            "The first day of January")
+        self.assertEqual(self.holidays[date(2016,2,8)], \
+            "Lunar New Year's Day")
+        self.assertEqual(self.holidays[date(2016,2,9)], \
+            "The second day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2016,2,10)], \
+            "The third day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2016,3,25)], \
+            "Good Friday")
+        self.assertEqual(self.holidays[date(2016,3,26)], \
+            "The day following Good Friday")
+        self.assertEqual(self.holidays[date(2016,3,28)], \
+            "Easter Monday")
+        self.assertEqual(self.holidays[date(2016,4,4)], \
+            "Ching Ming Festival")
+        self.assertEqual(self.holidays[date(2016,5,2)], \
+            "The day following Labour Day")
+        self.assertEqual(self.holidays[date(2016,5,14)], \
+            "Birthday of the Buddha")
+        self.assertEqual(self.holidays[date(2016,6,9)], \
+            "Tuen Ng Festival")
+        self.assertEqual(self.holidays[date(2016,7,1)], \
+            "Hong Kong Special Administrative Region Establishment Day")
+        self.assertEqual(self.holidays[date(2016,9,16)], \
+            "The day following the Chinese Mid-Autumn Festival")
+        self.assertEqual(self.holidays[date(2016,10,1)], \
+            "National Day")
+        self.assertEqual(self.holidays[date(2016,10,10)], \
+            "The day following Chung Yeung Festival")
+        self.assertEqual(self.holidays[date(2016,12,26)], \
+            "The first weekday after Christmas Day")
+        self.assertEqual(self.holidays[date(2016,12,27)], \
+            "The second weekday after Christmas Day")
+
+    def test_2017(self):
+        self.assertEqual(self.holidays[date(2017,1,2)], \
+            "The day following the first day of January")
+        self.assertEqual(self.holidays[date(2017,1,28)], \
+            "Lunar New Year's Day")
+        self.assertEqual(self.holidays[date(2017,1,30)], \
+            "The third day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2017,1,31)], \
+            "The fourth day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2017,4,4)], \
+            "Ching Ming Festival")
+        self.assertEqual(self.holidays[date(2017,4,14)], \
+            "Good Friday")
+        self.assertEqual(self.holidays[date(2017,4,15)], \
+            "The day following Good Friday")
+        self.assertEqual(self.holidays[date(2017,4,17)], \
+            "Easter Monday")
+        self.assertEqual(self.holidays[date(2017,5,1)], \
+            "Labour Day")
+        self.assertEqual(self.holidays[date(2017,5,3)], \
+            "Birthday of the Buddha")
+        self.assertEqual(self.holidays[date(2017,5,30)], \
+            "Tuen Ng Festival")
+        self.assertEqual(self.holidays[date(2017,7,1)], \
+            "Hong Kong Special Administrative Region Establishment Day")
+        self.assertEqual(self.holidays[date(2017,10,2)], \
+            "The day following National Day")
+        self.assertEqual(self.holidays[date(2017,10,5)], \
+            "The day following the Chinese Mid-Autumn Festival")
+        self.assertEqual(self.holidays[date(2017,10,28)], \
+            "Chung Yeung Festival")
+        self.assertEqual(self.holidays[date(2017,12,25)], \
+            "Christmas Day")
+        self.assertEqual(self.holidays[date(2017,12,26)], \
+            "The first weekday after Christmas Day")
+
+    def test_2018(self):
+        self.assertEqual(self.holidays[date(2018,1,1)], \
+            "The first day of January")
+        self.assertEqual(self.holidays[date(2018,2,16)], \
+            "Lunar New Year's Day")
+        self.assertEqual(self.holidays[date(2018,2,17)], \
+            "The second day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2018,2,19)], \
+            "The fourth day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2018,3,30)], \
+            "Good Friday")
+        self.assertEqual(self.holidays[date(2018,3,31)], \
+            "The day following Good Friday")
+        self.assertEqual(self.holidays[date(2018,4,2)], \
+            "Easter Monday")
+        self.assertEqual(self.holidays[date(2018,4,5)], \
+            "Ching Ming Festival")
+        self.assertEqual(self.holidays[date(2018,5,1)], \
+            "Labour Day")
+        self.assertEqual(self.holidays[date(2018,5,22)], \
+            "Birthday of the Buddha")
+        self.assertEqual(self.holidays[date(2018,6,18)], \
+            "Tuen Ng Festival")
+        self.assertEqual(self.holidays[date(2018,7,2)], \
+            "The day following Hong Kong Special Administrative Region " + \
+                "Establishment Day")
+        self.assertEqual(self.holidays[date(2018,9,25)], \
+            "The day following the Chinese Mid-Autumn Festival")
+        self.assertEqual(self.holidays[date(2018,10,1)], \
+            "National Day")
+        self.assertEqual(self.holidays[date(2018,10,17)], \
+            "Chung Yeung Festival")
+        self.assertEqual(self.holidays[date(2018,12,25)], \
+            "Christmas Day")
+        self.assertEqual(self.holidays[date(2018,12,26)], \
+            "The first weekday after Christmas Day")
+
+    def test_2019(self):
+        self.assertEqual(self.holidays[date(2019,1,1)], \
+            "The first day of January")
+        self.assertEqual(self.holidays[date(2019,2,5)], \
+            "Lunar New Year's Day")
+        self.assertEqual(self.holidays[date(2019,2,6)], \
+            "The second day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2019,2,7)], \
+            "The third day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2019,4,5)], \
+            "Ching Ming Festival")
+        self.assertEqual(self.holidays[date(2019,4,19)], \
+            "Good Friday")
+        self.assertEqual(self.holidays[date(2019,4,20)], \
+            "The day following Good Friday")
+        self.assertEqual(self.holidays[date(2019,4,22)], \
+            "Easter Monday")
+        self.assertEqual(self.holidays[date(2019,5,1)], \
+            "Labour Day")
+        self.assertEqual(self.holidays[date(2019,5,13)], \
+            "The day following Birthday of the Buddha")
+        self.assertEqual(self.holidays[date(2019,6,7)], \
+            "Tuen Ng Festival")
+        self.assertEqual(self.holidays[date(2019,7,1)], \
+            "Hong Kong Special Administrative Region Establishment Day")
+        self.assertEqual(self.holidays[date(2019,9,14)], \
+            "The day following the Chinese Mid-Autumn Festival")
+        self.assertEqual(self.holidays[date(2019,10,1)], \
+            "National Day")
+        self.assertEqual(self.holidays[date(2019,10,7)], \
+            "Chung Yeung Festival")
+        self.assertEqual(self.holidays[date(2019,12,25)], \
+            "Christmas Day")
+        self.assertEqual(self.holidays[date(2019,12,26)], \
+            "The first weekday after Christmas Day")
+
+    def test_2020(self):
+        self.assertEqual(self.holidays[date(2020,1,1)], \
+            "The first day of January")
+        self.assertEqual(self.holidays[date(2020,1,25)], \
+            "Lunar New Year's Day")
+        self.assertEqual(self.holidays[date(2020,1,27)], \
+            "The third day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2020,1,28)], \
+            "The fourth day of Lunar New Year")
+        self.assertEqual(self.holidays[date(2020,4,4)], \
+            "Ching Ming Festival")
+        self.assertEqual(self.holidays[date(2020,4,10)], \
+            "Good Friday")
+        self.assertEqual(self.holidays[date(2020,4,11)], \
+            "The day following Good Friday")
+        self.assertEqual(self.holidays[date(2020,4,13)], \
+            "Easter Monday")
+        self.assertEqual(self.holidays[date(2020,4,30)], \
+            "Birthday of the Buddha")
+        self.assertEqual(self.holidays[date(2020,5,1)], \
+            "Labour Day")
+        self.assertEqual(self.holidays[date(2020,6,25)], \
+            "Tuen Ng Festival")
+        self.assertEqual(self.holidays[date(2020,7,1)], \
+            "Hong Kong Special Administrative Region Establishment Day")
+        self.assertEqual(self.holidays[date(2020,10,1)], \
+            "National Day")
+        self.assertEqual(self.holidays[date(2020,10,2)], \
+            "The day following the Chinese Mid-Autumn Festival")
+        self.assertEqual(self.holidays[date(2020,10,26)], \
+            "The day following Chung Yeung Festival")
+        self.assertEqual(self.holidays[date(2020,12,25)], \
+            "Christmas Day")
+        self.assertEqual(self.holidays[date(2020,12,26)], \
+            "The first weekday after Christmas Day")
 
 if __name__ == "__main__":
     unittest.main()
