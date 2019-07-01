@@ -472,6 +472,10 @@ class TestCountryHoliday(unittest.TestCase):
     def test_country(self):
         self.assertEqual(self.holidays.country, 'US')
 
+    def test_country_years(self):
+        h = holidays.CountryHoliday('US', years=[2015, 2016])
+        self.assertEqual(h.years, {2015, 2016})
+
     def test_country_state(self):
         h = holidays.CountryHoliday('US', state='NY')
         self.assertEqual(h.state, 'NY')
