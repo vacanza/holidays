@@ -3963,6 +3963,11 @@ class Switzerland(HolidayBase):
                          'VS', 'ZG'):
             self[date(year, AUG, 15)] = 'Maria Himmelfahrt'
 
+        if self.prov == 'VD':
+            # Monday after the third Sunday of September
+            dt = date(year, SEP, 1) + rd(weekday=SU(+3)) + rd(weekday=MO)
+            self[dt] = 'Lundi du Jeûne'
+
         if self.prov == 'OW':
             self[date(year, SEP, 25)] = 'Bruder Klaus'
 
