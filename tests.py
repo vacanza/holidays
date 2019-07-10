@@ -4185,6 +4185,7 @@ class TestSwitzerland(unittest.TestCase):
                   'Peter und Paul',
                   'Nationalfeiertag',
                   'Maria Himmelfahrt',
+                  'Lundi du Jeûne',
                   'Bruder Klaus',
                   'Allerheiligen',
                   'Maria Empfängnis',
@@ -4375,6 +4376,19 @@ class TestSwitzerland(unittest.TestCase):
             self.assertTrue(date(year, 8, 15) in self.prov_hols[province])
         for province, year in product(provinces_that_dont, range(1970, 2050)):
             self.assertTrue(date(year, 8, 15) not in self.prov_hols[province])
+
+    def test_lundi_du_jeune(self):
+        known_good = [(2014, 9, 22), (2015, 9, 21), (2016, 9, 19),
+                      (2017, 9, 18), (2018, 9, 17), (2019, 9, 16),
+                      (2020, 9, 21), (2021, 9, 20), (2022, 9, 19),
+                      (2023, 9, 18), (2024, 9, 16)]
+        provinces_that_have = {'VD'}
+        provinces_that_dont = set(holidays.CH.PROVINCES) - provinces_that_have
+
+        for province, (y, m, d) in product(provinces_that_have, known_good):
+            self.assertTrue(date(y, m, d) in self.prov_hols[province])
+        for province, (y, m, d) in product(provinces_that_dont, known_good):
+            self.assertTrue(date(y, m, d) not in self.prov_hols[province])
 
     def test_bruder_chlaus(self):
         provinces_that_have = {'OW'}
