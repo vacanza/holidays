@@ -8,7 +8,11 @@ Released ????? ??, ????
 - Added support for Estonian holidays (RaulVS14)
 - Added support for Iceland and Kenya (justinasfour04)
 - Added support for Aruba (orson1282)
+- Added support for Hong Kong (polifaces)
+- Switzerland fixes (spasche)
 - Polish deprecation: replaced by Poland (dr-p)
+- Czech(ia) - Slovak(ia) fixes (dr-p)
+- Allow passing years to CountryHoliday (mr.shu)
 
 Version 0.9.10
 ==============
