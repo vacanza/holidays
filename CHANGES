@@ -10,6 +10,7 @@ Released ????? ??, ????
 - Added support for Aruba (orson1282)
 - Added support for Hong Kong (polifaces)
 - Switzerland fixes (spasche)
+- Croatia fix (pave121, dr-p)
 - Polish deprecation: replaced by Poland (dr-p)
 - Czech(ia) - Slovak(ia) fixes (dr-p)
 - Allow passing years to CountryHoliday (mr.shu)

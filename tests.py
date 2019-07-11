@@ -4731,6 +4731,7 @@ class TestCroatia(unittest.TestCase):
         self.assertIn(date(2018, 4, 1), self.holidays)
         self.assertIn(date(2018, 4, 2), self.holidays)
         self.assertIn(date(2018, 5, 1), self.holidays)
+        self.assertIn(date(2018, 6, 25), self.holidays)
         self.assertIn(date(2018, 8, 15), self.holidays)
         self.assertIn(date(2018, 10, 8), self.holidays)
         self.assertIn(date(2018, 11, 1), self.holidays)

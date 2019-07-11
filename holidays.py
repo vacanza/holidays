@@ -4306,7 +4306,7 @@ class Croatia(HolidayBase):
         self[date(year, JUN, 22)] = "Dan antifašističke borbe"
 
         # Statehood day
-        self[date(year, JUN, 22)] = "Dan državnosti"
+        self[date(year, JUN, 25)] = "Dan državnosti"
 
         # Victory and Homeland Thanksgiving Day
         self[date(year, AUG, 5)] = "Dan pobjede i domovinske zahvalnosti"
