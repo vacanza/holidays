@@ -2864,7 +2864,7 @@ class Polish(Poland):
     def __init__(self, **kwargs):
         warnings.warn("Polish is deprecated, use Poland instead.",
                       DeprecationWarning)
-        super(Poland, self).__init__()
+        super(Polish, self).__init__()
 
 
 class PL(Poland):
