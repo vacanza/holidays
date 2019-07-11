@@ -2763,13 +2763,13 @@ class CZ(Czechia):
 
 
 class Czech(Czechia):
-    def __init__(self):
+    def __init__(self, **kwargs):
         warnings.warn("Czech is deprecated, use Czechia instead.",
                       DeprecationWarning)
         super(Czech, self).__init__()
 
 
-class Slovak(HolidayBase):
+class Slovakia(HolidayBase):
     # https://sk.wikipedia.org/wiki/Sviatok
     # https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1993/241/20181011.html
 
@@ -2815,8 +2815,15 @@ class Slovak(HolidayBase):
         self[date(year, DEC, 26)] = "Druhý sviatok vianočný"
 
 
-class SK(Slovak):
+class SK(Slovakia):
     pass
+
+
+class Slovak(Slovakia):
+    def __init__(self, **kwargs):
+        warnings.warn("Slovak is deprecated, use Slovakia instead.",
+                      DeprecationWarning)
+        super(Slovak, self).__init__()
 
 
 class Poland(HolidayBase):
@@ -2854,7 +2861,7 @@ class Poland(HolidayBase):
 
 
 class Polish(Poland):
-    def __init__(self):
+    def __init__(self, **kwargs):
         warnings.warn("Polish is deprecated, use Poland instead.",
                       DeprecationWarning)
         super(Poland, self).__init__()
