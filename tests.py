@@ -5439,5 +5439,6 @@ class TestPeru(unittest.TestCase):
         self.assertIn(date(2019, 12, 8), self.holidays)
         self.assertIn(date(2019, 12, 25), self.holidays)
 
+
 if __name__ == "__main__":
     unittest.main()
