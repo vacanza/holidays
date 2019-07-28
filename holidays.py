@@ -4889,3 +4889,68 @@ class HongKong(HolidayBase):
 
 class HK(HongKong):
     pass
+
+
+class Peru(HolidayBase):
+    # https://www.gob.pe/feriados
+    # https://es.wikipedia.org/wiki/Anexo:Días_feriados_en_el_Perú
+    def __init__(self, **kwargs):
+        self.country = "PE"
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # New Year's Day
+        self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
+
+        # Feast of Saints Peter and Paul
+        name = "San Pedro y San Pablo [Feast of Saints Peter and Paul]"
+        self[date(year, JUN, 29)] = name
+
+        # Independence Day
+        name = "Día de la Independencia [Independence Day]"
+        self[date(year, JUL, 28)] = name
+
+        name = "Día de las Fuerzas Armadas y la Policía del Perú"
+        self[date(year, JUL, 29)] = name
+
+        # Santa Rosa de Lima
+        name = "Día de Santa Rosa de Lima"
+        self[date(year, AUG, 30)] = name
+
+        # Battle of Angamos
+        name = "Combate Naval de Angamos [Battle of Angamos]"
+        self[date(year, OCT, 8)] = name
+
+        # Holy Thursday
+        self[easter(year) + rd(weekday=TH(-1))
+             ] = "Jueves Santo [Maundy Thursday]"
+
+        # Good Friday
+        self[easter(year) + rd(weekday=FR(-1))
+             ] = "Viernes Santo [Good Friday]"
+
+        # Holy Saturday
+        self[easter(year) + rd(weekday=SA(-1))
+             ] = "Sábado de Gloria [Holy Saturday]"
+
+        # Easter Sunday
+        self[easter(year) + rd(weekday=SU(-1))
+             ] = "Domingo de Resurrección [Easter Sunday]"
+
+        # Labor Day
+        self[date(year, MAY, 1)] = "Día del Trabajo [Labour Day]"
+
+        # All Saints Day
+        name = "Día de Todos Los Santos [All Saints Day]"
+        self[date(year, NOV, 1)] = name
+
+        # Inmaculada Concepción
+        name = "Inmaculada Concepción [Immaculate Conception]"
+        self[date(year, DEC, 8)] = name
+
+        # Christmas
+        self[date(year, DEC, 25)] = "Navidad [Christmas]"
+
+
+class PE(Peru):
+    pass
