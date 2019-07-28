@@ -20,7 +20,7 @@ import six
 import warnings
 
 
-__version__ = '0.9.11b'
+__version__ = '0.9.11'
 
 MON, TUE, WED, THU, FRI, SAT, SUN = range(7)
 WEEKEND = (SAT, SUN)
