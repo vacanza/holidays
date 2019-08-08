@@ -3012,10 +3012,11 @@ class TestUK(unittest.TestCase):
     def test_may_day(self):
         for dt in [date(1978, 5, 1), date(1979, 5, 7), date(1980, 5, 5),
                    date(1999, 5, 3), date(2000, 5, 1), date(2010, 5, 3),
-                   date(2018, 5, 7), date(2019, 5, 6), date(2020, 5, 4)]:
+                   date(2018, 5, 7), date(2019, 5, 6), date(2020, 5, 8)]:
             self.assertIn(dt, self.holidays)
             self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+        self.assertNotIn(date(2020, 5, 4), self.holidays)
 
     def test_spring_bank_holiday(self):
         for dt in [date(1978, 5, 29), date(1979, 5, 28), date(1980, 5, 26),
@@ -3106,6 +3107,25 @@ class TestIsleOfMan(unittest.TestCase):
     def test_2018(self):
         self.assertIn('2018-06-01', self.holidays)
         self.assertIn('2018-07-05', self.holidays)
+
+
+class TestIreland(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.Ireland()
+
+    def test_2020(self):
+        self.assertIn('2020-01-01', self.holidays)  # New Year's Day
+        self.assertIn('2020-03-17', self.holidays)  # St. Patrick's Day
+        self.assertIn('2020-04-13', self.holidays)  # Easter Monday
+        self.assertIn('2020-05-04', self.holidays)  # May Day in IE
+        self.assertNotIn('2020-05-08', self.holidays)  # May Day in UK not IE
+        self.assertIn('2020-06-01', self.holidays)  # June Bank Holiday
+        self.assertIn('2020-08-03', self.holidays)  # Summer Bank Holiday
+        self.assertIn('2020-10-26', self.holidays)  # October Bank Holiday
+        self.assertIn('2020-12-25', self.holidays)  # Christmas Day
+        self.assertIn('2020-12-26', self.holidays)  # Boxing Day
+        self.assertIn('2020-12-28', self.holidays)  # Boxing Day (Observed)
 
 
 class TestES(unittest.TestCase):

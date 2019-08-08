@@ -2457,24 +2457,28 @@ class UnitedKingdom(HolidayBase):
         # May Day bank holiday (first Monday in May)
         if year >= 1978:
             name = "May Day"
-            if year == 1995:
-                dt = date(year, MAY, 8)
+            if year == 2020 and self.country != 'Ireland':
+                # Moved to Friday to mark 75th anniversary of VE Day.
+                self[date(year, MAY, 8)] = name
             else:
-                dt = date(year, MAY, 1)
-            if dt.weekday() == MON:
-                self[dt] = name
-            elif dt.weekday() == TUE:
-                self[dt + rd(days=+6)] = name
-            elif dt.weekday() == WED:
-                self[dt + rd(days=+5)] = name
-            elif dt.weekday() == THU:
-                self[dt + rd(days=+4)] = name
-            elif dt.weekday() == FRI:
-                self[dt + rd(days=+3)] = name
-            elif dt.weekday() == SAT:
-                self[dt + rd(days=+2)] = name
-            elif dt.weekday() == SUN:
-                self[dt + rd(days=+1)] = name
+                if year == 1995:
+                    dt = date(year, MAY, 8)
+                else:
+                    dt = date(year, MAY, 1)
+                if dt.weekday() == MON:
+                    self[dt] = name
+                elif dt.weekday() == TUE:
+                    self[dt + rd(days=+6)] = name
+                elif dt.weekday() == WED:
+                    self[dt + rd(days=+5)] = name
+                elif dt.weekday() == THU:
+                    self[dt + rd(days=+4)] = name
+                elif dt.weekday() == FRI:
+                    self[dt + rd(days=+3)] = name
+                elif dt.weekday() == SAT:
+                    self[dt + rd(days=+2)] = name
+                elif dt.weekday() == SUN:
+                    self[dt + rd(days=+1)] = name
 
         # Spring bank holiday (last Monday in May)
         if self.country != 'Ireland':
