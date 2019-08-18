@@ -3738,7 +3738,7 @@ class SouthAfrica(HolidayBase):
         if year == 2011:
             self[date(2011, MAY, 18)] = local_election
             self[date(2011, DEC, 27)] = presidential
-        if year == 2014:    
+        if year == 2014:
             self[date(2014, MAY, 7)] = national_election
         if year == 2016:
             self[date(2016, AUG, 3)] = local_election
