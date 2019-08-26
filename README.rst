@@ -302,11 +302,11 @@ More Examples
     >>> date(2012, 1, 1) in us_holidays
     True
     >>> us_holidays[date(2012, 1, 1)]
-    "New Year's Eve"
+    "New Year's Day"
     >>> date(2012, 1, 2) in us_holidays
     True
     >>> us_holidays.get(date(2012 ,1, 2))
-    "New Year's Eve (Observed)"
+    "New Year's Day (Observed)"
 
     # The `observed` and `expand` values can both be changed on the fly and the
     # holiday list will be adjusted accordingly
