@@ -3963,7 +3963,9 @@ class TestSouthAfrica(unittest.TestCase):
         self.assertNotIn('2015-03-02', self.holidays)
 
     def test_onceoff(self):
-        self.assertIn('2016-08-03', self.holidays)  # local elections 2016
+        self.assertIn('1999-12-31', self.holidays)   # Y2K
+        self.assertIn('2008-05-02', self.holidays)   # Y2K
+        self.assertIn('2000-01-02', self.holidays)   # Y2K
         self.assertNotIn('2017-08-03', self.holidays)
 
     def test_historic(self):
@@ -3980,7 +3982,14 @@ class TestSouthAfrica(unittest.TestCase):
         self.assertIn('1975-09-01', self.holidays)  # Settler's Day
         self.assertNotIn('1976-09-01', self.holidays)
 
-    def test_election2019(self):
+    def test_elections(self):
+        self.assertTrue('1999-06-02' in self.holidays)  # Election Day 1999
+        self.assertTrue('2004-04-14' in self.holidays)  # Election Day 2004
+        self.assertTrue('2006-03-01' in self.holidays)  # Local Election
+        self.assertTrue('2009-04-22' in self.holidays)  # Election Day 2008
+        self.assertTrue('2011-05-18' in self.holidays)  # Election Day 2011
+        self.assertTrue('2014-05-07' in self.holidays)  # Election Day 2014
+        self.assertTrue('2016-08-03' in self.holidays)  # Election Day 2016
         self.assertTrue('2019-05-08' in self.holidays)  # Election Day 2019
 
 
