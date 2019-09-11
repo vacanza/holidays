@@ -4183,16 +4183,13 @@ class India(HolidayBase):
     # https://slusi.dacnet.nic.in/watershedatlas/list_of_state_abbreviation.htm
 
     PROVINCES = ['AS', 'CG', 'SK', 'KA', 'GJ', 'BR', 'RJ', 'OD',
-                 'TN', 'AP', 'WB', 'KL', 'HR', 'MH', 'MP', 'UP', 'UK']
+                 'TN', 'AP', 'WB', 'KL', 'HR', 'MH', 'MP', 'UP', 'UK', 'TS']
 
     def __init__(self, **kwargs):
         self.country = "IND"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
-        # New year
-        self[date(year, JAN, 1)] = "New Year"
-
         # Pongal/ Makar Sankranti
         self[date(year, JAN, 14)] = "Makar Sankranti / Pongal"
 
@@ -4271,6 +4268,10 @@ class India(HolidayBase):
         if self.prov == 'CG':
             self[date(year, NOV, 1)] = "Chhattisgarh Foundation Day"
 
+#TS is Telangana State which was bifurcated in 2014 from AP (AndhraPradesh)
+        if self.prov == 'TS':
+            self[date(year, OCT, 06)] = "Bathukamma Festival"
+            self[date(year, APR, 06)] = "Eid al-Fitr"
 
 class IND(India):
     pass
