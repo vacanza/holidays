@@ -2357,13 +2357,13 @@ class Austria(HolidayBase):
         self[easter(year) + rd(days=39)] = "Christi Himmelfahrt"
         self[easter(year) + rd(days=50)] = "Pfingstmontag"
         self[easter(year) + rd(days=60)] = "Fronleichnam"
-        self[date(year, AUG, 15)] = "Maria Himmelfahrt"
+        self[date(year, AUG, 15)] = "Mariä Himmelfahrt"
         if 1919 <= year <= 1934:
             self[date(year, NOV, 12)] = "Nationalfeiertag"
         if year >= 1967:
             self[date(year, OCT, 26)] = "Nationalfeiertag"
         self[date(year, NOV, 1)] = "Allerheiligen"
-        self[date(year, DEC, 8)] = "Maria Empfängnis"
+        self[date(year, DEC, 8)] = "Mariä Empfängnis"
         self[date(year, DEC, 25)] = "Christtag"
         self[date(year, DEC, 26)] = "Stefanitag"
 
@@ -3968,7 +3968,7 @@ class Switzerland(HolidayBase):
 
         if self.prov in ('AI', 'JU', 'LU', 'NW', 'OW', 'SZ', 'TI', 'UR',
                          'VS', 'ZG'):
-            self[date(year, AUG, 15)] = 'Maria Himmelfahrt'
+            self[date(year, AUG, 15)] = 'Mariä Himmelfahrt'
 
         if self.prov == 'VD':
             # Monday after the third Sunday of September
@@ -3984,7 +3984,7 @@ class Switzerland(HolidayBase):
 
         if self.prov in ('AI', 'LU', 'NW', 'OW', 'SZ', 'TI', 'UR', 'VS',
                          'ZG'):
-            self[date(year, DEC, 8)] = 'Maria Empfängnis'
+            self[date(year, DEC, 8)] = 'Mariä Empfängnis'
 
         if self.prov == 'GE':
             self[date(year, DEC, 12)] = 'Escalade de Genève'
