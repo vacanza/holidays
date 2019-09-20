@@ -4,6 +4,9 @@ Version 0.9.12b
 Released ?????? ??, ????
 
 - Correctly handle United Kingdom "May Day" holiday in 2020 - #219 (robfraz)
+- Support for Nigeria (ioluwayo)
+- Support for India - Telangana (kiranbeethoju)
+- Other minor fixes
 
 Version 0.9.11
 ==============

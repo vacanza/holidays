@@ -4281,10 +4281,12 @@ class India(HolidayBase):
         if self.prov == 'CG':
             self[date(year, NOV, 1)] = "Chhattisgarh Foundation Day"
 
-#TS is Telangana State which was bifurcated in 2014 from AP (AndhraPradesh)
+        # TS is Telangana State which was bifurcated in 2014 from AP
+        # (AndhraPradesh)
         if self.prov == 'TS':
             self[date(year, OCT, 06)] = "Bathukamma Festival"
             self[date(year, APR, 06)] = "Eid al-Fitr"
+
 
 class IND(India):
     pass
