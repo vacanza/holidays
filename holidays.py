@@ -3726,19 +3726,28 @@ class SouthAfrica(HolidayBase):
         y2k = "Y2K changeover"
         local_election = "Local government elections"
         presidential = "By presidential decree"
-
-        self[date(1999, JUN, 2)] = national_election
-        self[date(1999, DEC, 31)] = y2k
-        self[date(2000, JAN, 2)] = y2k
-        self[date(2004, APR, 14)] = national_election
-        self[date(2006, MAR, 1)] = local_election
-        self[date(2008, MAY, 2)] = presidential
-        self[date(2009, APR, 22)] = national_election
-        self[date(2011, MAY, 18)] = local_election
-        self[date(2011, DEC, 27)] = presidential
-        self[date(2014, MAY, 7)] = national_election
-        self[date(2016, AUG, 3)] = local_election
-        self[date(2019, MAY, 8)] = national_election
+        if year == 1999:
+            self[date(1999, JUN, 2)] = national_election
+            self[date(1999, DEC, 31)] = y2k
+        if year == 2000:
+            self[date(2000, JAN, 2)] = y2k
+        if year == 2004:
+            self[date(2004, APR, 14)] = national_election
+        if year == 2006:
+            self[date(2006, MAR, 1)] = local_election
+        if year == 2008:
+            self[date(2008, MAY, 2)] = presidential
+        if year == 2009:
+            self[date(2009, APR, 22)] = national_election
+        if year == 2011:
+            self[date(2011, MAY, 18)] = local_election
+            self[date(2011, DEC, 27)] = presidential
+        if year == 2014:
+            self[date(2014, MAY, 7)] = national_election
+        if year == 2016:
+            self[date(2016, AUG, 3)] = local_election
+        if year == 2019:
+            self[date(2019, MAY, 8)] = national_election
 
         # As of 1995/1/1, whenever a public holiday falls on a Sunday,
         # it rolls over to the following Monday
