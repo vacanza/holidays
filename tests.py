@@ -2942,10 +2942,10 @@ class TestAT(unittest.TestCase):
                         "Christi Himmelfahrt",
                         "Pfingstmontag",
                         "Fronleichnam",
-                        "Maria Himmelfahrt",
+                        "Mariä Himmelfahrt",
                         "Nationalfeiertag",
                         "Allerheiligen",
-                        "Maria Empfängnis",
+                        "Mariä Empfängnis",
                         "Christtag",
                         "Stefanitag"]
         for holiday in all_holidays:
@@ -4232,9 +4232,9 @@ class TestSwitzerland(unittest.TestCase):
                   'Wiederherstellung der Republik']
 
         for holiday in all_ch:
-            self.assertTrue(holiday in in_2018, "missing: {}".format(holiday))
+            self.assertTrue(holiday in all_ch, "missing: {}".format(holiday))
         for holiday in in_2018:
-            self.assertTrue(holiday in all_ch, "extra: {}".format(holiday))
+            self.assertTrue(holiday in in_2018, "extra: {}".format(holiday))
 
     def test_fixed_holidays(self):
         fixed_days_whole_country = (
@@ -4625,12 +4625,12 @@ class TestIND(unittest.TestCase):
 
     def test_2018(self):
         self.assertIn(date(2018, 1, 1), self.holidays)
-        self.assertIn(date(2018, 10, 2), self.holidays)
-        self.assertIn(date(2018, 8, 15), self.holidays)
-        self.assertIn(date(2018, 1, 26), self.holidays)
-        self.assertIn(date(2018, 12, 25), self.holidays)
-        self.assertIn(date(2018, 5, 1), self.holidays)
         self.assertIn(date(2018, 1, 14), self.holidays)
+        self.assertIn(date(2018, 1, 26), self.holidays)
+        self.assertIn(date(2018, 5, 1), self.holidays)
+        self.assertIn(date(2018, 8, 15), self.holidays)
+        self.assertIn(date(2018, 10, 2), self.holidays)
+        self.assertIn(date(2018, 12, 25), self.holidays)
 
         gj_holidays = holidays.IND(prov="GJ")
         as_holidays = holidays.IND(prov="AS")
@@ -5481,6 +5481,29 @@ class TestNigeria(unittest.TestCase):
         self.assertIn(date(2019, 10, 1), self.holidays)
         self.assertIn(date(2019, 12, 25), self.holidays)
         self.assertIn(date(2019, 12, 26), self.holidays)
+
+
+class TestChile(unittest.TestCase):
+    def setUp(self):
+        self.holidays = holidays.Chile()
+
+    def test_2019(self):
+        # No laborables (sector público) not included
+        self.assertIn(date(2019, 1, 1), self.holidays)
+        # self.assertIn(date(2019, 4, 18), self.holidays)
+        self.assertIn(date(2019, 4, 19), self.holidays)
+        self.assertIn(date(2019, 5, 1), self.holidays)
+        self.assertIn(date(2019, 5, 21), self.holidays)
+        self.assertIn(date(2019, 6, 29), self.holidays)
+        self.assertIn(date(2019, 7, 16), self.holidays)
+        self.assertIn(date(2019, 8, 15), self.holidays)
+        self.assertIn(date(2019, 9, 18), self.holidays)
+        self.assertIn(date(2019, 9, 19), self.holidays)
+        self.assertIn(date(2019, 9, 20), self.holidays)
+        self.assertIn(date(2019, 10, 12), self.holidays)
+        self.assertIn(date(2019, 11, 1), self.holidays)
+        self.assertIn(date(2019, 12, 8), self.holidays)
+        self.assertIn(date(2019, 12, 25), self.holidays)
 
 
 if __name__ == "__main__":
