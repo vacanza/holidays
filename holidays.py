@@ -3249,7 +3249,7 @@ class Italy(HolidayBase):
             elif self.prov == 'EN':
                 self[date(year, JUL, 2)] = "Madonna della Visitazione"
             elif self.prov == 'FE':
-                self[date(year, APR, 22)] = "San Giorgio"
+                self[date(year, APR, 23)] = "San Giorgio"
             elif self.prov == 'FI':
                 self[date(year, JUN, 24)] = "San Giovanni Battista"
             elif self.prov == 'FR':

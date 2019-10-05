@@ -3617,7 +3617,7 @@ class TestItaly(unittest.TestCase):
         self.assertIn("2017-07-02", prov_en)
         self.assertIn("2017-06-24", prov_fc)
         self.assertIn("2017-02-04", prov_fc)
-        self.assertIn("2017-04-22", prov_fe)
+        self.assertIn("2017-04-23", prov_fe)
         self.assertIn("2017-06-24", prov_fi)
         self.assertIn("2017-06-20", prov_fr)
         self.assertIn("2017-06-24", prov_ge)
