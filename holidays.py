@@ -4139,10 +4139,13 @@ class HND(Honduras):
 class Hungary(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Hungary
     # observed days off work around national holidays in the last 10 years:
-    # https://www.munkaugyiforum.hu/munkaugyi-segedanyagok/2018-evi-munkaszuneti-napok-koruli-munkarend-9-2017-ngm-rendelet
+    # https://www.munkaugyiforum.hu/munkaugyi-segedanyagok/
+    #     2018-evi-munkaszuneti-napok-koruli-munkarend-9-2017-ngm-rendelet
     # codification dates:
-    # - https://hvg.hu/gazdasag/20170307_Megszavaztak_munkaszuneti_nap_lett_a_nagypentek
-    # - https://www.tankonyvtar.hu/hu/tartalom/historia/92-10/ch01.html#id496839
+    # - https://hvg.hu/gazdasag/
+    #      20170307_Megszavaztak_munkaszuneti_nap_lett_a_nagypentek
+    # - https://www.tankonyvtar.hu/hu/tartalom/historia/
+    #      92-10/ch01.html#id496839
 
     def __init__(self, **kwargs):
         self.country = "HU"
@@ -4233,8 +4236,10 @@ class Hungary(HolidayBase):
                 and date(year, DEC, 31).weekday() == MON:
             self[date(year, DEC, 31)] = "Szilveszter"
 
-    def _add_with_observed_day_off(self, day, desc, since=2010, before=True, after=True):
-        """Swapped days off were in place earlier but I haven't found official record yet."""
+    def _add_with_observed_day_off(self, day, desc, since=2010,
+                                   before=True, after=True):
+        # Swapped days off were in place earlier but
+        # I haven't found official record yet.
         self[day] = desc
         # TODO: should it be a separate flag?
         if self.observed and since <= day.year:
