@@ -2942,10 +2942,10 @@ class TestAT(unittest.TestCase):
                         "Christi Himmelfahrt",
                         "Pfingstmontag",
                         "Fronleichnam",
-                        "Maria Himmelfahrt",
+                        "Mariä Himmelfahrt",
                         "Nationalfeiertag",
                         "Allerheiligen",
-                        "Maria Empfängnis",
+                        "Mariä Empfängnis",
                         "Christtag",
                         "Stefanitag"]
         for holiday in all_holidays:
@@ -4193,7 +4193,8 @@ class TestHungary(unittest.TestCase):
 
     def test_foundation_day_renamed_during_communism(self):
         for year in range(1950, 1990):
-            self.assertEqual(self.holidays[date(year, 8, 20)], "A kenyér ünnepe")
+            self.assertEqual(
+                self.holidays[date(year, 8, 20)], "A kenyér ünnepe")
 
     def test_christian_holidays_2nd_day_was_not_held_in_1955(self):
         hu_1955 = holidays.Hungary(years=[1955])
@@ -4227,19 +4228,20 @@ class TestHungary(unittest.TestCase):
             self.assertIn(date(year, 11, 1), self.holidays)
 
     def test_additional_day_off(self):
-        observed_days_off = holidays.HU(observed=True, years=range(2010, self.next_year))
+        observed_days_off = holidays.HU(
+            observed=True, years=range(2010, self.next_year))
         for day in [
-            date(2010, 12, 24),
-            date(2011,  3, 14), date(2011, 10, 31),
-            date(2012,  3, 16), date(2012,  4, 30), date(2012, 10, 22),
-            date(2012, 11,  2), date(2012, 12, 24),
-            date(2013,  8, 19), date(2013, 12, 24), date(2013, 12, 27),
-            date(2014,  5,  2), date(2014, 10, 24), date(2014, 12, 24),
-            date(2015,  1,  2), date(2015,  8, 21), date(2015, 12, 24),
-            date(2016,  3, 14), date(2016, 10, 31),
-            date(2018,  3, 16), date(2018,  4, 30), date(2018, 10, 22),
-            date(2018, 11,  2), date(2018, 12, 24), date(2018, 12, 31),
-            date(2019,  8, 19), date(2019, 12, 24), date(2019, 12, 27)]:
+                date(2010, 12, 24),
+                date(2011,  3, 14), date(2011, 10, 31),
+                date(2012,  3, 16), date(2012,  4, 30), date(2012, 10, 22),
+                date(2012, 11,  2), date(2012, 12, 24),
+                date(2013,  8, 19), date(2013, 12, 24), date(2013, 12, 27),
+                date(2014,  5,  2), date(2014, 10, 24), date(2014, 12, 24),
+                date(2015,  1,  2), date(2015,  8, 21), date(2015, 12, 24),
+                date(2016,  3, 14), date(2016, 10, 31),
+                date(2018,  3, 16), date(2018,  4, 30), date(2018, 10, 22),
+                date(2018, 11,  2), date(2018, 12, 24), date(2018, 12, 31),
+                date(2019,  8, 19), date(2019, 12, 24), date(2019, 12, 27)]:
             self.assertNotIn(day, self.holidays)
             self.assertIn(day, observed_days_off)
 
@@ -4248,17 +4250,17 @@ class TestHungary(unittest.TestCase):
         self.assertIn(date(2018, 12, 31), observed_day_off)
 
     def test_2018(self):
-        self.assertIn(date(2018, 1, 1), self.holidays)  # newyear
-        self.assertIn(date(2018, 3, 15), self.holidays)  # national holiday
-        self.assertIn(date(2018, 3, 30), self.holidays) # good friday
-        self.assertIn(date(2018, 4, 1), self.holidays)  # easter 1.
-        self.assertIn(date(2018, 4, 2), self.holidays)  # easter 2.
-        self.assertIn(date(2018, 5, 1), self.holidays)  # Workers' Day
-        self.assertIn(date(2018, 5, 20), self.holidays)  # Pentecost
-        self.assertIn(date(2018, 5, 21), self.holidays)  # Pentecost monday
+        self.assertIn(date(2018, 1, 1), self.holidays)    # newyear
+        self.assertIn(date(2018, 3, 15), self.holidays)   # national holiday
+        self.assertIn(date(2018, 3, 30), self.holidays)   # good friday
+        self.assertIn(date(2018, 4, 1), self.holidays)    # easter 1.
+        self.assertIn(date(2018, 4, 2), self.holidays)    # easter 2.
+        self.assertIn(date(2018, 5, 1), self.holidays)    # Workers' Day
+        self.assertIn(date(2018, 5, 20), self.holidays)   # Pentecost
+        self.assertIn(date(2018, 5, 21), self.holidays)   # Pentecost monday
         self.assertIn(date(2018, 8, 20), self.holidays)  # State Foundation Day
         self.assertIn(date(2018, 10, 23), self.holidays)  # National Day
-        self.assertIn(date(2018, 11, 1), self.holidays)  # All Saints' Day
+        self.assertIn(date(2018, 11, 1), self.holidays)   # All Saints' Day
         self.assertIn(date(2018, 12, 25), self.holidays)  # First christmas
         self.assertIn(date(2018, 12, 26), self.holidays)  # Second christmas
 
@@ -4291,11 +4293,11 @@ class TestSwitzerland(unittest.TestCase):
                   'Fest der Unabhängigkeit',
                   'Peter und Paul',
                   'Nationalfeiertag',
-                  'Maria Himmelfahrt',
+                  'Mariä Himmelfahrt',
                   'Lundi du Jeûne',
                   'Bruder Klaus',
                   'Allerheiligen',
-                  'Maria Empfängnis',
+                  'Mariä Empfängnis',
                   'Escalade de Genève',
                   'Weihnachten',
                   'Stephanstag',
@@ -4694,7 +4696,6 @@ class TestIND(unittest.TestCase):
         self.holidays = holidays.IND()
 
     def test_2018(self):
-        self.assertIn(date(2018, 1, 1), self.holidays)
         self.assertIn(date(2018, 10, 2), self.holidays)
         self.assertIn(date(2018, 8, 15), self.holidays)
         self.assertIn(date(2018, 1, 26), self.holidays)
@@ -4719,6 +4720,7 @@ class TestIND(unittest.TestCase):
         mp_holidays = holidays.IND(prov="MP")
         up_holidays = holidays.IND(prov="UP")
         uk_holidays = holidays.IND(prov="UK")
+        ts_holidays = holidays.IND(prov="TS")
 
         for dt in ([date(2018, 1, 14), date(2018, 5, 1), date(2018, 10, 31)]):
             self.assertIn(dt, gj_holidays)
@@ -4731,6 +4733,7 @@ class TestIND(unittest.TestCase):
         self.assertIn(date(2018, 3, 30), rj_holidays)
         self.assertIn(date(2018, 6, 15), rj_holidays)
         self.assertIn(date(2018, 4, 1), od_holidays)
+        self.assertIn(date(2018, 4, 6), ts_holidays)
         self.assertIn(date(2018, 4, 15), od_holidays)
         self.assertIn(date(2018, 4, 14), od_holidays)
         self.assertIn(date(2018, 4, 14), br_holidays)
@@ -4744,6 +4747,7 @@ class TestIND(unittest.TestCase):
         self.assertIn(date(2018, 4, 15), as_holidays)
         self.assertIn(date(2018, 5, 1), mh_holidays)
         self.assertIn(date(2018, 5, 16), sk_holidays)
+        self.assertIn(date(2018, 10, 6), ts_holidays)
         self.assertIn(date(2018, 11, 1), ka_holidays)
         self.assertIn(date(2018, 11, 1), ap_holidays)
         self.assertIn(date(2018, 11, 1), hr_holidays)
