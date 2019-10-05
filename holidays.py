@@ -3264,6 +3264,8 @@ class Italy(HolidayBase):
                 self[date(year, MAR, 19)] = "San Giuseppe"
             elif self.prov == 'LT':
                 self[date(year, APR, 25)] = "San Marco evangelista"
+            elif self.prov == 'ME':
+                self[date(year, JUN, 3)] = "Madonna della Lettera"
             elif self.prov == 'MI':
                 self[date(year, DEC, 7)] = "Sant'Ambrogio"
             elif self.prov == 'MN':
@@ -3288,6 +3290,8 @@ class Italy(HolidayBase):
                 self[date(year, JUL, 4)] = "Sant'Antonino di Piacenza"
             elif self.prov == 'RM':
                 self[date(year, JUN, 29)] = "Santi Pietro e Paolo"
+            elif self.prov == 'TO':
+                self[date(year, JUN, 24)] = "San Giovanni Battista"
             elif self.prov == 'TS':
                 self[date(year, NOV, 3)] = "San Giusto"
             elif self.prov == 'VI':
