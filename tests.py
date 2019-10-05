@@ -3586,6 +3586,7 @@ class TestItaly(unittest.TestCase):
         prov_kr = (holidays.IT(prov='KR', years=[2017]))
         prov_lt = (holidays.IT(prov='LT', years=[2017]))
         prov_mb = (holidays.IT(prov='MB', years=[2017]))
+        prov_me = (holidays.IT(prov='ME', years=[2017]))
         prov_mi = (holidays.IT(prov='MI', years=[2017]))
         prov_mn = (holidays.IT(prov='MN', years=[2017]))
         prov_mo = (holidays.IT(prov='MO', years=[2017]))
@@ -3598,6 +3599,7 @@ class TestItaly(unittest.TestCase):
         prov_pr = (holidays.IT(prov='PR', years=[2017]))
         prov_rm = (holidays.IT(prov='RM', years=[2017]))
         prov_sp = (holidays.IT(prov='SP', years=[2017]))
+        prov_to = (holidays.IT(prov='TO', years=[2017]))
         prov_ts = (holidays.IT(prov='TS', years=[2017]))
         prov_vi = (holidays.IT(prov='VI', years=[2017]))
 
@@ -3625,6 +3627,7 @@ class TestItaly(unittest.TestCase):
         self.assertIn("2017-10-09", prov_kr)
         self.assertIn("2017-04-25", prov_lt)
         self.assertIn("2017-06-24", prov_mb)
+        self.assertIn("2017-06-03", prov_me)
         self.assertIn("2017-12-07", prov_mi)
         self.assertIn("2017-03-18", prov_mn)
         self.assertIn("2017-01-31", prov_mo)
@@ -3636,6 +3639,7 @@ class TestItaly(unittest.TestCase):
         self.assertIn("2017-01-29", prov_pg)
         self.assertIn("2017-01-13", prov_pr)
         self.assertIn("2017-06-29", prov_rm)
+        self.assertIn("2017-06-24", prov_to)
         self.assertIn("2017-11-03", prov_ts)
         self.assertIn("2017-04-25", prov_vi)
 
