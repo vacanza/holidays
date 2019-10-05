@@ -7,6 +7,7 @@ Released ?????? ??, ????
 - Support for India - Telangana (kiranbeethoju, dr-p)
 - Correctly handle United Kingdom "May Day" holiday in 2020 - #219 (robfraz)
 - Hungary fixes (gypapp)
+- Chile test fixes (rpanai)
 - Other minor fixes
 
 Version 0.9.11
