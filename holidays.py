@@ -2251,7 +2251,7 @@ class Germany(HolidayBase):
 
     def __init__(self, **kwargs):
         self.country = 'DE'
-        self.prov = kwargs.pop('prov', 'SH')
+        self.prov = kwargs.pop('prov', None)
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
