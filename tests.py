@@ -5313,6 +5313,11 @@ class TestIceland(unittest.TestCase):
                          "Frídagur verslunarmanna")
         self.assertIn(test_date, self.holidays)
 
+    def test_holy_friday(self):
+        test_date = date(2019, 4, 19)
+        self.assertEqual(self.holidays.get(test_date), "Föstudagurinn langi")
+        self.assertIn(test_date, self.holidays)
+
 
 class TestKenya(unittest.TestCase):
     def setUp(self):

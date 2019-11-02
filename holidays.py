@@ -4706,6 +4706,7 @@ class Iceland(HolidayBase):
         # Public holidays
         self[date(year, JAN, 1)] = "Nýársdagur"
         self[easter(year) - rd(days=3)] = "Skírdagur"
+        self[easter(year) + rd(weekday=FR(-1))] = "Föstudagurinn langi"
         self[easter(year)] = "Páskadagur"
         self[easter(year) + rd(days=1)] = "Annar í páskum"
         self[date(year, APR, 19) + rd(weekday=TH(+1))] = \
