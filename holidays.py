@@ -2301,7 +2301,7 @@ class Germany(HolidayBase):
             if self.prov in ('BY', 'SL'):
                 self[date(year, AUG, 15)] = 'Mariä Himmelfahrt'
 
-            self[date(year, OCT, 3)] = 'Tag der Deutschen Einheit'
+        self[date(year, OCT, 3)] = 'Tag der Deutschen Einheit'
 
         if self.prov in ('BB', 'MV', 'SN', 'ST', 'TH'):
             self[date(year, OCT, 31)] = 'Reformationstag'
