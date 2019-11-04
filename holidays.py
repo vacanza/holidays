@@ -2317,7 +2317,7 @@ class Germany(HolidayBase):
         if self.prov in ('BW', 'BY', 'NW', 'RP', 'SL'):
             self[date(year, NOV, 1)] = 'Allerheiligen'
 
-        if (year >= 1990 and year <= 1994) or self.prov == 'SN':
+        if year <= 1994 or self.prov == 'SN':
             # can be calculated as "last wednesday before year-11-23" which is
             # why we need to go back two wednesdays if year-11-23 happens to be
             # a wednesday
