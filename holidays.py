@@ -2345,9 +2345,6 @@ class Germany(HolidayBase):
         if year <= 1989:
             return
 
-        if year == 1990:
-            self[date(year, JUN, 17)] = 'Tag der deutschen Einheit'
-
         if year > 1990:
 
             self[date(year, JAN, 1)] = 'Neujahr'
