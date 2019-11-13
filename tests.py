@@ -2707,6 +2707,9 @@ class TestDE(unittest.TestCase):
         for y, (m, d) in product(range(1991, 2050), fixed_days_whole_country):
             self.assertIn(date(y, m, d), self.holidays)
 
+    def test_tag_der_deutschen_einheit_in_1990(self):
+        self.assertIn(date(1990, 10, 3), self.holidays)
+
     def test_heilige_drei_koenige(self):
         provinces_that_have = {'BW', 'BY', 'ST'}
         provinces_that_dont = set(holidays.DE.PROVINCES) - provinces_that_have
