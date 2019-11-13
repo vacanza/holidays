@@ -2877,12 +2877,6 @@ class TestDE(unittest.TestCase):
         for province, (y, m, d) in product(provinces_that_dont, known_good):
             self.assertNotIn(date(y, m, d), self.prov_hols[province])
 
-    def test_tag_der_deutschen_einheit(self):
-        known_good = [(1990, 6, 17)]
-
-        for province, (y, m, d) in product(holidays.DE.PROVINCES, known_good):
-            self.assertIn(date(y, m, d), self.prov_hols[province])
-
     def test_internationaler_frauentag(self):
         prov_that_have = {'BE'}
         prov_that_dont = set(holidays.DE.PROVINCES) - prov_that_have
