@@ -16,9 +16,10 @@ from dateutil.easter import easter, EASTER_ORTHODOX
 from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
+import inspect
 import six
+import sys
 import warnings
-
 
 __version__ = '0.9.11'
 
@@ -226,6 +227,13 @@ def createHolidaySum(h1, h2):
                 self.update(h)
 
     return HolidaySum
+
+
+def list_supported_countries():
+    """List all supported countries incl. their abbreviation."""
+    return [name for name, obj in
+            inspect.getmembers(sys.modules[__name__], inspect.isclass)
+            if obj.__module__ is __name__]
 
 
 def CountryHoliday(country, years=[], prov=None, state=None):
