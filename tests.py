@@ -468,11 +468,6 @@ class TestKeyTransforms(unittest.TestCase):
             (TypeError, ValueError), lambda: {} in self.holidays)
 
 
-
-
-
-
-
 class TestCountryHoliday(unittest.TestCase):
 
     def setUp(self):
