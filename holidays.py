@@ -2919,7 +2919,7 @@ class Slovak(Slovakia):
     def __init__(self, **kwargs):
         warnings.warn("Slovak is deprecated, use Slovakia instead.",
                       DeprecationWarning)
-        super(Slovak, self).__init__()
+        super(Slovak, self).__init__(**kwargs)
 
 
 class Poland(HolidayBase):
@@ -2960,7 +2960,7 @@ class Polish(Poland):
     def __init__(self, **kwargs):
         warnings.warn("Polish is deprecated, use Poland instead.",
                       DeprecationWarning)
-        super(Polish, self).__init__()
+        super(Polish, self).__init__(**kwargs)
 
 
 class PL(Poland):
