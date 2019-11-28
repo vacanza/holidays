@@ -2862,7 +2862,7 @@ class Czech(Czechia):
     def __init__(self, **kwargs):
         warnings.warn("Czech is deprecated, use Czechia instead.",
                       DeprecationWarning)
-        super(Czech, self).__init__()
+        super(Czech, self).__init__(**kwargs)
 
 
 class Slovakia(HolidayBase):
