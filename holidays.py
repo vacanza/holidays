@@ -16,11 +16,12 @@ from dateutil.easter import easter, EASTER_ORTHODOX
 from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
+import inspect
 import six
+import sys
 import warnings
 
-
-__version__ = '0.9.11'
+__version__ = '0.9.12'
 
 MON, TUE, WED, THU, FRI, SAT, SUN = range(7)
 WEEKEND = (SAT, SUN)
@@ -228,10 +229,21 @@ def createHolidaySum(h1, h2):
     return HolidaySum
 
 
-def CountryHoliday(country, years=[], prov=None, state=None):
+def list_supported_countries():
+    """List all supported countries incl. their abbreviation."""
+    return [name for name, obj in
+            inspect.getmembers(sys.modules[__name__], inspect.isclass)
+            if obj.__module__ is __name__]
+
+
+def CountryHoliday(country, years=[], prov=None, state=None, expand=True,
+                   observed=True):
     try:
         country_holiday = globals()[country](years=years,
-                                             prov=prov, state=state)
+                                             prov=prov,
+                                             state=state,
+                                             expand=expand,
+                                             observed=observed)
     except (KeyError):
         raise KeyError("Country %s not available" % country)
     return country_holiday
@@ -940,6 +952,89 @@ class Canada(HolidayBase):
 
 
 class CA(Canada):
+    pass
+
+
+class Chile(HolidayBase):
+    # https://www.feriados.cl
+    # https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Chile
+
+    def __init__(self, **kwargs):
+        self.country = 'CL'
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # New Year's Day
+        self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
+
+        # Holy Week
+        name_fri = "Semana Santa (Viernes Santo)  [Holy day (Holy Friday)]"
+        name_easter = 'Día de Pascuas [Easter Day]'
+
+        self[easter(year) + rd(weekday=FR(-1))] = name_fri
+        self[easter(year)] = name_easter
+
+        # Labor Day
+        name = "Día del Trabajo [Labour Day]"
+        self[date(year, MAY, 1)] = name
+
+        # Naval Glories Day
+        name = "Día de las Glorias Navales [Naval Glories Day]"
+        self[date(year, MAY, 21)] = name
+
+        # Saint Peter and Saint Paul.
+        name = "San Pedro y San Pablo [Saint Peter and Saint Paul]"
+        self[date(year, JUN, 29)] = name
+
+        # Day of Virgin of Carmen.
+        name = "Virgen del Carmen [Virgin of Carmen]"
+        self[date(year, JUL, 16)] = name
+
+        # Day of Assumption of the Virgin
+        name = "Asunsión de la Virgen [Assumption of the Virgin]"
+        self[date(year, AUG, 15)] = name
+
+        # Independence Day
+        name = "Día de la Independencia [Independence Day]"
+        self[date(year, SEP, 18)] = name
+
+        # Day of Glories of the Army of Chile
+        name = "Día de las Glorias del Ejército de Chile [Day of " \
+               "Glories of the Army of Chile]"
+        self[date(year, SEP, 19)] = name
+        # National Holidays Ley 20.215
+        name = "Fiestas Patrias [National Holidays]"
+        if year > 2014 and date(year, SEP, 19).weekday() in [WED, THU]:
+            self[date(year, SEP, 20)] = name
+
+        # Day of the Meeting of Two Worlds
+        if year < 2010:
+            self[date(year, OCT, 12)] = "Día de la Raza [Columbus day]"
+        else:
+            self[date(year, OCT, 12)] = "Día del Respeto a la Diversidad" \
+                                            " [Day of the Meeting " \
+                                            " of Two Worlds]"
+
+        # National Day of the Evangelical and Protestant Churches
+        name = "Día Nacional de las Iglesias Evangélicas y Protestantes " \
+               " [National Day of the " \
+               " Evangelical and " \
+               " Protestant Churches]"
+        self[date(year, OCT, 31)] = name
+
+        # All Saints Day
+        name = "Día de Todos los Santos [All Saints Day]"
+        self[date(year, NOV, 1)] = name
+
+        # Immaculate Conception
+        self[date(year, DEC, 8)] = "La Inmaculada Concepción" \
+                                   " [Immaculate Conception]"
+
+        # Christmas
+        self[date(year, DEC, 25)] = "Navidad [Christmas]"
+
+
+class CL(Chile):
     pass
 
 
@@ -2251,15 +2346,12 @@ class Germany(HolidayBase):
 
     def __init__(self, **kwargs):
         self.country = 'DE'
-        self.prov = kwargs.pop('prov', 'SH')
+        self.prov = kwargs.pop('prov', None)
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
         if year <= 1989:
             return
-
-        if year == 1990:
-            self[date(year, JUN, 17)] = 'Tag der deutschen Einheit'
 
         if year > 1990:
 
@@ -2301,7 +2393,7 @@ class Germany(HolidayBase):
             if self.prov in ('BY', 'SL'):
                 self[date(year, AUG, 15)] = 'Mariä Himmelfahrt'
 
-            self[date(year, OCT, 3)] = 'Tag der Deutschen Einheit'
+        self[date(year, OCT, 3)] = 'Tag der Deutschen Einheit'
 
         if self.prov in ('BB', 'MV', 'SN', 'ST', 'TH'):
             self[date(year, OCT, 31)] = 'Reformationstag'
@@ -2317,7 +2409,7 @@ class Germany(HolidayBase):
         if self.prov in ('BW', 'BY', 'NW', 'RP', 'SL'):
             self[date(year, NOV, 1)] = 'Allerheiligen'
 
-        if (year >= 1990 and year <= 1994) or self.prov == 'SN':
+        if year <= 1994 or self.prov == 'SN':
             # can be calculated as "last wednesday before year-11-23" which is
             # why we need to go back two wednesdays if year-11-23 happens to be
             # a wednesday
@@ -2325,7 +2417,7 @@ class Germany(HolidayBase):
             weekday_delta = WE(-2) if base_data.weekday() == 2 else WE(-1)
             self[base_data + rd(weekday=weekday_delta)] = 'Buß- und Bettag'
 
-        if (year >= 2019):
+        if year >= 2019:
             if self.prov == 'TH':
                 self[date(year, SEP, 20)] = 'Weltkindertag'
 
@@ -2357,13 +2449,13 @@ class Austria(HolidayBase):
         self[easter(year) + rd(days=39)] = "Christi Himmelfahrt"
         self[easter(year) + rd(days=50)] = "Pfingstmontag"
         self[easter(year) + rd(days=60)] = "Fronleichnam"
-        self[date(year, AUG, 15)] = "Maria Himmelfahrt"
+        self[date(year, AUG, 15)] = "Mariä Himmelfahrt"
         if 1919 <= year <= 1934:
             self[date(year, NOV, 12)] = "Nationalfeiertag"
         if year >= 1967:
             self[date(year, OCT, 26)] = "Nationalfeiertag"
         self[date(year, NOV, 1)] = "Allerheiligen"
-        self[date(year, DEC, 8)] = "Maria Empfängnis"
+        self[date(year, DEC, 8)] = "Mariä Empfängnis"
         self[date(year, DEC, 25)] = "Christtag"
         self[date(year, DEC, 26)] = "Stefanitag"
 
@@ -2457,24 +2549,28 @@ class UnitedKingdom(HolidayBase):
         # May Day bank holiday (first Monday in May)
         if year >= 1978:
             name = "May Day"
-            if year == 1995:
-                dt = date(year, MAY, 8)
+            if year == 2020 and self.country != 'Ireland':
+                # Moved to Friday to mark 75th anniversary of VE Day.
+                self[date(year, MAY, 8)] = name
             else:
-                dt = date(year, MAY, 1)
-            if dt.weekday() == MON:
-                self[dt] = name
-            elif dt.weekday() == TUE:
-                self[dt + rd(days=+6)] = name
-            elif dt.weekday() == WED:
-                self[dt + rd(days=+5)] = name
-            elif dt.weekday() == THU:
-                self[dt + rd(days=+4)] = name
-            elif dt.weekday() == FRI:
-                self[dt + rd(days=+3)] = name
-            elif dt.weekday() == SAT:
-                self[dt + rd(days=+2)] = name
-            elif dt.weekday() == SUN:
-                self[dt + rd(days=+1)] = name
+                if year == 1995:
+                    dt = date(year, MAY, 8)
+                else:
+                    dt = date(year, MAY, 1)
+                if dt.weekday() == MON:
+                    self[dt] = name
+                elif dt.weekday() == TUE:
+                    self[dt + rd(days=+6)] = name
+                elif dt.weekday() == WED:
+                    self[dt + rd(days=+5)] = name
+                elif dt.weekday() == THU:
+                    self[dt + rd(days=+4)] = name
+                elif dt.weekday() == FRI:
+                    self[dt + rd(days=+3)] = name
+                elif dt.weekday() == SAT:
+                    self[dt + rd(days=+2)] = name
+                elif dt.weekday() == SUN:
+                    self[dt + rd(days=+1)] = name
 
         # Spring bank holiday (last Monday in May)
         if self.country != 'Ireland':
@@ -2766,7 +2862,7 @@ class Czech(Czechia):
     def __init__(self, **kwargs):
         warnings.warn("Czech is deprecated, use Czechia instead.",
                       DeprecationWarning)
-        super(Czech, self).__init__()
+        super(Czech, self).__init__(**kwargs)
 
 
 class Slovakia(HolidayBase):
@@ -2823,7 +2919,7 @@ class Slovak(Slovakia):
     def __init__(self, **kwargs):
         warnings.warn("Slovak is deprecated, use Slovakia instead.",
                       DeprecationWarning)
-        super(Slovak, self).__init__()
+        super(Slovak, self).__init__(**kwargs)
 
 
 class Poland(HolidayBase):
@@ -2864,7 +2960,7 @@ class Polish(Poland):
     def __init__(self, **kwargs):
         warnings.warn("Polish is deprecated, use Poland instead.",
                       DeprecationWarning)
-        super(Polish, self).__init__()
+        super(Polish, self).__init__(**kwargs)
 
 
 class PL(Poland):
@@ -3162,7 +3258,7 @@ class Italy(HolidayBase):
             elif self.prov == 'EN':
                 self[date(year, JUL, 2)] = "Madonna della Visitazione"
             elif self.prov == 'FE':
-                self[date(year, APR, 22)] = "San Giorgio"
+                self[date(year, APR, 23)] = "San Giorgio"
             elif self.prov == 'FI':
                 self[date(year, JUN, 24)] = "San Giovanni Battista"
             elif self.prov == 'FR':
@@ -3177,6 +3273,8 @@ class Italy(HolidayBase):
                 self[date(year, MAR, 19)] = "San Giuseppe"
             elif self.prov == 'LT':
                 self[date(year, APR, 25)] = "San Marco evangelista"
+            elif self.prov == 'ME':
+                self[date(year, JUN, 3)] = "Madonna della Lettera"
             elif self.prov == 'MI':
                 self[date(year, DEC, 7)] = "Sant'Ambrogio"
             elif self.prov == 'MN':
@@ -3201,6 +3299,8 @@ class Italy(HolidayBase):
                 self[date(year, JUL, 4)] = "Sant'Antonino di Piacenza"
             elif self.prov == 'RM':
                 self[date(year, JUN, 29)] = "Santi Pietro e Paolo"
+            elif self.prov == 'TO':
+                self[date(year, JUN, 24)] = "San Giovanni Battista"
             elif self.prov == 'TS':
                 self[date(year, NOV, 3)] = "San Giusto"
             elif self.prov == 'VI':
@@ -3722,19 +3822,28 @@ class SouthAfrica(HolidayBase):
         y2k = "Y2K changeover"
         local_election = "Local government elections"
         presidential = "By presidential decree"
-
-        self[date(1999, JUN, 2)] = national_election
-        self[date(1999, DEC, 31)] = y2k
-        self[date(2000, JAN, 2)] = y2k
-        self[date(2004, APR, 14)] = national_election
-        self[date(2006, MAR, 1)] = local_election
-        self[date(2008, MAY, 2)] = presidential
-        self[date(2009, APR, 22)] = national_election
-        self[date(2011, MAY, 18)] = local_election
-        self[date(2011, DEC, 27)] = presidential
-        self[date(2014, MAY, 7)] = national_election
-        self[date(2016, AUG, 3)] = local_election
-        self[date(2019, MAY, 8)] = national_election
+        if year == 1999:
+            self[date(1999, JUN, 2)] = national_election
+            self[date(1999, DEC, 31)] = y2k
+        if year == 2000:
+            self[date(2000, JAN, 2)] = y2k
+        if year == 2004:
+            self[date(2004, APR, 14)] = national_election
+        if year == 2006:
+            self[date(2006, MAR, 1)] = local_election
+        if year == 2008:
+            self[date(2008, MAY, 2)] = presidential
+        if year == 2009:
+            self[date(2009, APR, 22)] = national_election
+        if year == 2011:
+            self[date(2011, MAY, 18)] = local_election
+            self[date(2011, DEC, 27)] = presidential
+        if year == 2014:
+            self[date(2014, MAY, 7)] = national_election
+        if year == 2016:
+            self[date(2016, AUG, 3)] = local_election
+        if year == 2019:
+            self[date(2019, MAY, 8)] = national_election
 
         # As of 1995/1/1, whenever a public holiday falls on a Sunday,
         # it rolls over to the following Monday
@@ -3968,7 +4077,7 @@ class Switzerland(HolidayBase):
 
         if self.prov in ('AI', 'JU', 'LU', 'NW', 'OW', 'SZ', 'TI', 'UR',
                          'VS', 'ZG'):
-            self[date(year, AUG, 15)] = 'Maria Himmelfahrt'
+            self[date(year, AUG, 15)] = 'Mariä Himmelfahrt'
 
         if self.prov == 'VD':
             # Monday after the third Sunday of September
@@ -3984,7 +4093,7 @@ class Switzerland(HolidayBase):
 
         if self.prov in ('AI', 'LU', 'NW', 'OW', 'SZ', 'TI', 'UR', 'VS',
                          'ZG'):
-            self[date(year, DEC, 8)] = 'Maria Empfängnis'
+            self[date(year, DEC, 8)] = 'Mariä Empfängnis'
 
         if self.prov == 'GE':
             self[date(year, DEC, 12)] = 'Escalade de Genève'
@@ -4125,6 +4234,14 @@ class HND(Honduras):
 
 class Hungary(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Hungary
+    # observed days off work around national holidays in the last 10 years:
+    # https://www.munkaugyiforum.hu/munkaugyi-segedanyagok/
+    #     2018-evi-munkaszuneti-napok-koruli-munkarend-9-2017-ngm-rendelet
+    # codification dates:
+    # - https://hvg.hu/gazdasag/
+    #      20170307_Megszavaztak_munkaszuneti_nap_lett_a_nagypentek
+    # - https://www.tankonyvtar.hu/hu/tartalom/historia/
+    #      92-10/ch01.html#id496839
 
     def __init__(self, **kwargs):
         self.country = "HU"
@@ -4132,45 +4249,100 @@ class Hungary(HolidayBase):
 
     def _populate(self, year):
         # New years
-        self[date(year, JAN, 1)] = "Újév"
+        self._add_with_observed_day_off(date(year, JAN, 1), "Újév", since=2014)
 
         # National Day
-        self[date(year, MAR, 15)] = "Nemzeti ünnep"
+        if 1945 <= year <= 1950 or 1989 <= year:
+            self._add_with_observed_day_off(
+                date(year, MAR, 15), "Nemzeti ünnep")
+
+        # Soviet era
+        if 1950 <= year <= 1989:
+            # Proclamation of Soviet socialist governing system
+            self[date(year, MAR, 21)] = \
+                "A Tanácsköztársaság kikiáltásának ünnepe"
+            # Liberation Day
+            self[date(year, APR, 4)] = "A felszabadulás ünnepe"
+            # Memorial day of The Great October Soviet Socialist Revolution
+            if year not in (1956, 1989):
+                self[date(year, NOV, 7)] = \
+                    "A nagy októberi szocialista forradalom ünnepe"
 
         easter_date = easter(year)
 
         # Good Friday
-        self[easter_date + rd(weekday=FR(-1))] = "Nagypéntek"
+        if 2017 <= year:
+            self[easter_date + rd(weekday=FR(-1))] = "Nagypéntek"
 
         # Easter
         self[easter_date] = "Húsvét"
 
         # Second easter day
-        self[easter_date + rd(days=1)] = "Húsvét Hétfő"
+        if 1955 != year:
+            self[easter_date + rd(days=1)] = "Húsvét Hétfő"
 
         # Pentecost
         self[easter_date + rd(days=49)] = "Pünkösd"
 
         # Pentecost monday
-        self[easter_date + rd(days=50)] = "Pünkösdhétfő"
+        if year <= 1952 or 1992 <= year:
+            self[easter_date + rd(days=50)] = "Pünkösdhétfő"
 
         # International Workers' Day
-        self[date(year, MAY, 1)] = "A Munka ünnepe"
+        if 1946 <= year:
+            self._add_with_observed_day_off(
+                date(year, MAY, 1), "A Munka ünnepe")
+        if 1950 <= year <= 1953:
+            self[date(year, MAY, 2)] = "A Munka ünnepe"
 
-        # State Foundation Day
-        self[date(year, AUG, 20)] = "Az államalapítás ünnepe"
+        # State Foundation Day (1771-????, 1891-)
+        if 1950 <= year < 1990:
+            self[date(year, AUG, 20)] = "A kenyér ünnepe"
+        else:
+            self._add_with_observed_day_off(
+                date(year, AUG, 20), "Az államalapítás ünnepe")
 
         # National Day
-        self[date(year, OCT, 23)] = "Nemzeti ünnep"
+        if 1991 <= year:
+            self._add_with_observed_day_off(
+                date(year, OCT, 23), "Nemzeti ünnep")
 
         # All Saints' Day
-        self[date(year, NOV, 1)] = "Mindenszentek"
+        if 1999 <= year:
+            self._add_with_observed_day_off(
+                date(year, NOV, 1), "Mindenszentek")
+
+        # Christmas Eve is not endorsed officially
+        # but nowadays it is usually a day off work
+        if self.observed and 2010 <= year \
+                and date(year, DEC, 24).weekday() not in WEEKEND:
+            self[date(year, DEC, 24)] = "Szenteste"
 
         # First christmas
         self[date(year, DEC, 25)] = "Karácsony"
 
         # Second christmas
-        self[date(year, DEC, 26)] = "Karácsony másnapja"
+        if 1955 != year:
+            self._add_with_observed_day_off(
+                date(year, DEC, 26), "Karácsony másnapja", since=2013,
+                before=False, after=True)
+
+        # New Year's Eve
+        if self.observed and 2014 <= year \
+                and date(year, DEC, 31).weekday() == MON:
+            self[date(year, DEC, 31)] = "Szilveszter"
+
+    def _add_with_observed_day_off(self, day, desc, since=2010,
+                                   before=True, after=True):
+        # Swapped days off were in place earlier but
+        # I haven't found official record yet.
+        self[day] = desc
+        # TODO: should it be a separate flag?
+        if self.observed and since <= day.year:
+            if day.weekday() == TUE and before:
+                self[day - rd(days=1)] = desc + " előtti pihenőnap"
+            elif day.weekday() == THU and after:
+                self[day + rd(days=1)] = desc + " utáni pihenőnap"
 
 
 class HU(Hungary):
@@ -4183,16 +4355,13 @@ class India(HolidayBase):
     # https://slusi.dacnet.nic.in/watershedatlas/list_of_state_abbreviation.htm
 
     PROVINCES = ['AS', 'CG', 'SK', 'KA', 'GJ', 'BR', 'RJ', 'OD',
-                 'TN', 'AP', 'WB', 'KL', 'HR', 'MH', 'MP', 'UP', 'UK']
+                 'TN', 'AP', 'WB', 'KL', 'HR', 'MH', 'MP', 'UP', 'UK', 'TS']
 
     def __init__(self, **kwargs):
         self.country = "IND"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
-        # New year
-        self[date(year, JAN, 1)] = "New Year"
-
         # Pongal/ Makar Sankranti
         self[date(year, JAN, 14)] = "Makar Sankranti / Pongal"
 
@@ -4270,6 +4439,12 @@ class India(HolidayBase):
 
         if self.prov == 'CG':
             self[date(year, NOV, 1)] = "Chhattisgarh Foundation Day"
+
+        # TS is Telangana State which was bifurcated in 2014 from AP
+        # (AndhraPradesh)
+        if self.prov == 'TS':
+            self[date(year, OCT, 6)] = "Bathukamma Festival"
+            self[date(year, APR, 6)] = "Eid al-Fitr"
 
 
 class IND(India):
@@ -4536,6 +4711,7 @@ class Iceland(HolidayBase):
         # Public holidays
         self[date(year, JAN, 1)] = "Nýársdagur"
         self[easter(year) - rd(days=3)] = "Skírdagur"
+        self[easter(year) + rd(weekday=FR(-1))] = "Föstudagurinn langi"
         self[easter(year)] = "Páskadagur"
         self[easter(year) + rd(days=1)] = "Annar í páskum"
         self[date(year, APR, 19) + rd(weekday=TH(+1))] = \
@@ -4953,6 +5129,39 @@ class Peru(HolidayBase):
 
 
 class PE(Peru):
+    pass
+
+
+class Nigeria(HolidayBase):
+    # https://en.wikipedia.org/wiki/Public_holidays_in_Nigeria
+    def __init__(self, **kwargs):
+        self.country = "NG"
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # New Year's Day
+        self[date(year, JAN, 1)] = "New Year's day"
+
+        # Worker's day
+        self[date(year, MAY, 1)] = "Worker's day"
+
+        # Children's day
+        self[date(year, MAY, 27)] = "Children's day"
+
+        # Democracy day
+        self[date(year, JUN, 12)] = "Democracy day"
+
+        # Independence Day
+        self[date(year, OCT, 1)] = "Independence day"
+
+        # Christmas day
+        self[date(year, DEC, 25)] = "Christmas day"
+
+        # Boxing day
+        self[date(year, DEC, 26)] = "Boxing day"
+
+
+class NG(Nigeria):
     pass
 
 
