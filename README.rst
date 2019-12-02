@@ -112,6 +112,7 @@ Colombia            CO       None
 Croatia             HR       None
 Czechia             CZ       None
 Denmark             DK       None
+Dominican Republic  DO       None
 England                      None
 Estonia             EE       None
 EuropeanCentralBank ECB,TAR  Trans-European Automated Real-time Gross Settlement (TARGET2)
