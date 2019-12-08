@@ -5273,7 +5273,7 @@ class TestHongKong(unittest.TestCase):
         for year, month, day in [
                 (2006, 1, 30), (2007, 2, 19), (2008, 2, 8), (2009, 1, 27),
                 (2010, 2, 15), (2011, 2, 4), (2012, 1, 24), (2013, 2, 11),
-                (2014, 2, 1),  (2015, 2, 20), (2016, 2, 9), (2018, 2, 17),
+                (2014, 2, 1), (2015, 2, 20), (2016, 2, 9), (2018, 2, 17),
                 (2019, 2, 6)]:
             self.assertEqual(self.holidays[date(year, month, day)],
                              "The second day of Lunar New Year")
@@ -5489,8 +5489,8 @@ class TestSingapore(unittest.TestCase):
         # total holidays (11 + 3 falling on a Sunday)
         self.assertEqual(len(holidays.Singapore(years=[2020])), 11 + 3)
         # holidays estimated using lunar calendar
-        self.assertIn(date(2021, 5, 26), self.holidays))
-        self.assertIn(date(2021, 11, 3), self.holidays))
+        self.assertIn(date(2021, 5, 26), self.holidays)
+        self.assertIn(date(2021, 11, 3), self.holidays)
         # holidays estimated using libary hijri-converter
         try:
             from hijri_converter import convert
@@ -5498,6 +5498,7 @@ class TestSingapore(unittest.TestCase):
             self.assertIn(date(2021, 7, 20), self.holidays)
         except ImportError:
             pass
+
 
 if __name__ == "__main__":
     unittest.main()
