@@ -5241,7 +5241,7 @@ class Singapore(HolidayBase):
 
             def warning_on_one_line(message, category, filename,
                                     lineno, file=None, line=None):
-                return filename + ': ' + message + '\n'
+                return filename + ': ' + str(message) + '\n'
             warnings.formatwarning = warning_on_one_line
             warnings.warn("Hari Raja Puasa is missing." +
                           "To estimate, install hijri-converter library")
@@ -5268,7 +5268,7 @@ class Singapore(HolidayBase):
 
             def warning_on_one_line(message, category, filename, lineno,
                                     file=None, line=None):
-                return filename + ': ' + message + '\n'
+                return filename + ': ' + str(message) + '\n'
             warnings.formatwarning = warning_on_one_line
             warnings.warn("Hari Raja Haji is missing." +
                           "To estimate, install hijri-converter library")
