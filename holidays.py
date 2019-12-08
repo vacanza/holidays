@@ -4967,14 +4967,14 @@ class Singapore(HolidayBase):
 
     # Holidays prior to 2000 may not be accurate.
 
-    # Holidays after to 2020: the following four annual scheduled but moving
-    # date holidays (announced yearly) are estimated:
+    # Holidays after 2020: the following four annual scheduled but moving date
+    # holidays (announced yearly) are estimated:
     # - Hari Raya Puasa*
     # - Hari Raya Haji*
     # - Vesak Day
     # - Deepavali
-    # *only if hijri-converter library is installed, otherwise a
-    #  warning is raised that this holiday is missing. hjiri-converter requires
+    # *only if hijri-converter library is installed, otherwise a warning is
+    #  raised that this holiday is missing. hjiri-converter requires
     #  Python >= 3.6
 
     def __init__(self, **kwargs):
@@ -5025,7 +5025,7 @@ class Singapore(HolidayBase):
                 if year <= 1968:
                     storeholiday(self, hol_date + rd(days=+1),
                                  "Second day of Hari Raya Puasa")
-        if True:
+        else:
             for date_obs in self.get_hrp_date(year):
                 hol_date = date_obs
                 storeholiday(self, hol_date,
@@ -5050,7 +5050,7 @@ class Singapore(HolidayBase):
                 hol_date = date(year, *date_obs)
                 storeholiday(self, hol_date,
                              "Hari Raya Haji")
-        if True:
+        else:
             for date_obs in self.get_hrh_date(year):
                 hol_date = date_obs
                 storeholiday(self, hol_date,
