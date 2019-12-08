@@ -5440,5 +5440,35 @@ class TestPeru(unittest.TestCase):
         self.assertIn(date(2019, 12, 25), self.holidays)
 
 
+class TestSingapore(unittest.TestCase):
+    def setUp(self):
+        self.holidays = holidays.Singapore()
+
+    def test_2019_2020(self):
+        # Source: https://www.mom.gov.sg/employment-practices/public-holidays
+        self.assertIn(date(2019, 1, 1), self.holidays)
+        self.assertIn(date(2019, 2, 5), self.holidays)
+        self.assertIn(date(2019, 2, 6), self.holidays)
+        self.assertIn(date(2019, 4, 19), self.holidays)
+        self.assertIn(date(2019, 5, 1), self.holidays)
+        self.assertIn(date(2019, 5, 19), self.holidays)
+        self.assertIn(date(2019, 6, 5), self.holidays)
+        self.assertIn(date(2019, 8, 9), self.holidays)
+        self.assertIn(date(2019, 8, 11), self.holidays)
+        self.assertIn(date(2019, 10, 27), self.holidays)
+        self.assertIn(date(2019, 12, 25), self.holidays)
+        self.assertIn(date(2020, 1, 1), self.holidays)
+        self.assertIn(date(2020, 1, 25), self.holidays)
+        self.assertIn(date(2020, 1, 26), self.holidays)
+        self.assertIn(date(2020, 4, 10), self.holidays)
+        self.assertIn(date(2020, 5, 1), self.holidays)
+        self.assertIn(date(2020, 5, 7), self.holidays)
+        self.assertIn(date(2020, 5, 24), self.holidays)
+        self.assertIn(date(2020, 7, 31), self.holidays)
+        self.assertIn(date(2020, 8, 9), self.holidays)
+        self.assertIn(date(2020, 11, 14), self.holidays)
+        self.assertIn(date(2020, 12, 25), self.holidays)
+
+
 if __name__ == "__main__":
     unittest.main()
