@@ -5208,7 +5208,6 @@ class Singapore(HolidayBase):
         leap_month = self.get_leap_month(year)
         for m in range(1, 1 + (1 > leap_month)):
             span_days += self.lunar_month_days(year, m)
-        span_days -= 1
         return self.SOLAR_START_DATE + timedelta(span_days)
 
     # Estimate Gregorian date of Vesak

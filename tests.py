@@ -5444,8 +5444,23 @@ class TestSingapore(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.Singapore()
 
-    def test_2019_2020(self):
+    def test_Singapore(self):
         # Source: https://www.mom.gov.sg/employment-practices/public-holidays
+        # 2018
+        self.assertIn(date(2018, 1, 1), self.holidays)
+        self.assertIn(date(2018, 2, 16), self.holidays)
+        self.assertIn(date(2018, 2, 17), self.holidays)
+        self.assertIn(date(2018, 3, 30), self.holidays)
+        self.assertIn(date(2018, 5, 1), self.holidays)
+        self.assertIn(date(2018, 5, 29), self.holidays)
+        self.assertIn(date(2018, 6, 15), self.holidays)
+        self.assertIn(date(2018, 8, 9), self.holidays)
+        self.assertIn(date(2018, 8, 22), self.holidays)
+        self.assertIn(date(2018, 11, 6), self.holidays)
+        self.assertIn(date(2018, 12, 25), self.holidays)
+        # total holidays (11 + 0 falling on a Sunday)
+        self.assertEqual(len(holidays.Singapore(years=[2018])), 11 + 0)
+        # 2019
         self.assertIn(date(2019, 1, 1), self.holidays)
         self.assertIn(date(2019, 2, 5), self.holidays)
         self.assertIn(date(2019, 2, 6), self.holidays)
@@ -5457,6 +5472,9 @@ class TestSingapore(unittest.TestCase):
         self.assertIn(date(2019, 8, 11), self.holidays)
         self.assertIn(date(2019, 10, 27), self.holidays)
         self.assertIn(date(2019, 12, 25), self.holidays)
+        # total holidays (11 + 3 falling on a Sunday)
+        self.assertEqual(len(holidays.Singapore(years=[2019])), 11 + 3)
+        # 2020
         self.assertIn(date(2020, 1, 1), self.holidays)
         self.assertIn(date(2020, 1, 25), self.holidays)
         self.assertIn(date(2020, 1, 26), self.holidays)
@@ -5468,7 +5486,18 @@ class TestSingapore(unittest.TestCase):
         self.assertIn(date(2020, 8, 9), self.holidays)
         self.assertIn(date(2020, 11, 14), self.holidays)
         self.assertIn(date(2020, 12, 25), self.holidays)
-
+        # total holidays (11 + 3 falling on a Sunday)
+        self.assertEqual(len(holidays.Singapore(years=[2020])), 11 + 3)
+        # holidays estimated using lunar calendar
+        self.assertIn(date(2021, 5, 26), self.holidays))
+        self.assertIn(date(2021, 11, 3), self.holidays))
+        # holidays estimated using libary hijri-converter
+        try:
+            from hijri_converter import convert
+            self.assertIn(date(2021, 5, 13), self.holidays)
+            self.assertIn(date(2021, 7, 20), self.holidays)
+        except ImportError:
+            pass
 
 if __name__ == "__main__":
     unittest.main()
