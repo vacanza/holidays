@@ -16,6 +16,7 @@ from datetime import date, datetime, timedelta
 from dateutil.relativedelta import relativedelta, MO
 import unittest
 import warnings
+import sys
 
 import holidays
 
@@ -5492,12 +5493,11 @@ class TestSingapore(unittest.TestCase):
         self.assertIn(date(2021, 5, 26), self.holidays)
         self.assertIn(date(2021, 11, 3), self.holidays)
         # holidays estimated using libary hijri-converter
-        try:
-            from hijri_converter import convert
-            self.assertIn(date(2021, 5, 13), self.holidays)
-            self.assertIn(date(2021, 7, 20), self.holidays)
-        except ImportError:
-            pass
+        if sys.version_info >= (3, 6)
+            import importlib
+            if importlib.util.find_spec("hijri_converter"):
+                self.assertIn(date(2021, 5, 13), self.holidays)
+                self.assertIn(date(2021, 7, 20), self.holidays)
 
 
 if __name__ == "__main__":
