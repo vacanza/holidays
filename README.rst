@@ -147,6 +147,7 @@ Portugal            PT       None
 PortugalExt         PTE      *Portugal plus extended days most people have off*
 Russia              RU       None
 Scotland                     None
+Singapore           SG       None
 Slovakia            SK       None
 Slovenia            SI       None
 South Africa        ZA       None

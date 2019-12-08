@@ -1,20 +1,45 @@
 # https://travis-ci.org/dr-prodigy/python-holidays
-dist: xenial
+dist: bionic
 language: python
 
 python:
-    - 2.7
-    - 3.4
-    - 3.5
-    - 3.6
-    - 3.7
+    - '3.8'
+    - '3.7'
+    - '3.6'
+    - '3.5'
+    - '2.7'
 # temporarily commented due to TravisCI issues
 #    - pypy
 #    - pypy3
 
+jobs:
+# hijri-converter not available < python 3.6
+  include:
+    - python: '3.8'
+      install: 
+        - pip install hijri-converter
+        - pip install python-dateutil
+        - python setup.py install
+        - pip install flake8
+        - pip install coveralls
+    - python: '3.7'
+      install: 
+        - pip install hijri-converter
+        - pip install python-dateutil
+        - python setup.py install
+        - pip install flake8
+        - pip install coveralls
+    - python: '3.6'
+      install: 
+        - pip install hijri-converter
+        - pip install python-dateutil
+        - python setup.py install
+        - pip install flake8
+        - pip install coveralls
+
 env:
-    - DATEUTIL=python-dateutil==2.7.0
     - DATEUTIL=python-dateutil
+    - DATEUTIL=python-dateutil==2.7.0
 
 install:
     - pip install $DATEUTIL
