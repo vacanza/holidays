@@ -140,6 +140,7 @@ Mexico              MX       None
 Netherlands         NL       None
 NewZealand          NZ       prov = NTL, AUK, TKI, HKB, WGN, MBH, NSN, CAN, STC, WTL,
                              OTA, STL, CIT
+Nicaragua           NI       prov = MN
 Nigeria             NG       None
 Northern Ireland             None
 Norway              NO       None
