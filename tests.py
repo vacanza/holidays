@@ -5628,5 +5628,6 @@ class TestDominicanRepublic(unittest.TestCase):
         # New Year's Day
         self.assertIn(date(2019, 1, 1), self.do_holidays)
 
+
 if __name__ == "__main__":
     unittest.main()
