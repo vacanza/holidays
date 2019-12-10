@@ -5245,18 +5245,21 @@ class Nicaragua(HolidayBase):
         # New Years
         self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
         # Maundy Thursday
-        self[easter(year) + rd(weekday=TH(-1))] = "Jueves Santo [Maundy Thursday]"
+        self[easter(year) + rd(weekday=TH(-1))] =\
+            "Jueves Santo [Maundy Thursday]"
         # Good Friday
         self[easter(year) + rd(weekday=FR(-1))] = "Viernes Santo [Good Friday]"
         # Labor Day
         self[date(year, MAY, 1)] = "Día del Trabajo [Labour Day]"
         # Revolution Day
-        if 2020 >= year >= 1979: 
+        if 2020 >= year >= 1979:
             self[date(year, JUL, 19)] = "Día de la Revolución [Revolution Day]"
         # Battle of San Jacinto Day
-        self[date(year, SEP, 14)] = "Batalla de San Jacinto [Battle of San Jacinto]"
+        self[date(year, SEP, 14)] =\
+            "Batalla de San Jacinto [Battle of San Jacinto]"
         # Independence Day
-        self[date(year, SEP, 15)] = "Día de la Independencia [Independence Day]"
+        self[date(year, SEP, 15)] =\
+            "Día de la Independencia [Independence Day]"
         # Virgin's Day
         self[date(year, DEC, 8)] = "Concepción de María [Virgin's Day]"
         # Christmas
@@ -5269,7 +5272,7 @@ class Nicaragua(HolidayBase):
                 self[date(year, AUG, 1)] = "Bajada de Santo Domingo"
                 # Santo Domingo Day Up
                 self[date(year, AUG, 10)] = "Subida de Santo Domingo"
-                
+
 
 class NI(Nicaragua):
     pass
