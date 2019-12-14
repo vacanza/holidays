@@ -4967,14 +4967,14 @@ class Singapore(HolidayBase):
 
     # Holidays prior to 2000 may not be accurate.
 
-    # Holidays after 2020: the following four annual scheduled but moving date
-    # holidays (announced yearly) are estimated:
+    # Holidays after 2020: the following four moving date holidays whose exact
+    # date is announced yearly are estimated (and so denoted):
     # - Hari Raya Puasa*
     # - Hari Raya Haji*
     # - Vesak Day
     # - Deepavali
     # *only if hijri-converter library is installed, otherwise a warning is
-    #  raised that this holiday is missing. hjiri-converter requires
+    #  raised that this holiday is missing. hijri-converter requires
     #  Python >= 3.6
 
     def __init__(self, **kwargs):
@@ -4982,8 +4982,6 @@ class Singapore(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
-        if year < 1969:
-            return
 
         def storeholiday(self, hol_date, hol_name):
             """
@@ -5010,21 +5008,23 @@ class Singapore(HolidayBase):
         # Hari Raya Puasa
         # aka Eid al-Fitr
         # date of observance is announced yearly
-        dates_obs = {2001: [(DEC, 16)], 2002: [(DEC,  6)],
-                     2003: [(NOV, 25)], 2004: [(NOV, 14)], 2005: [(NOV,  3)],
-                     2006: [(OCT, 24)], 2007: [(OCT, 13)], 2008: [(OCT,  1)],
+        dates_obs = {2001: [(DEC, 16)], 2002: [(DEC, 6)],
+                     2003: [(NOV, 25)], 2004: [(NOV, 14)], 2005: [(NOV, 3)],
+                     2006: [(OCT, 24)], 2007: [(OCT, 13)], 2008: [(OCT, 1)],
                      2009: [(SEP, 20)], 2010: [(SEP, 10)], 2011: [(AUG, 30)],
-                     2012: [(AUG, 19)], 2013: [(AUG,  8)], 2014: [(JUL, 28)],
-                     2015: [(JUL, 17)], 2016: [(JUL,  6)], 2017: [(JUN, 25)],
-                     2018: [(JUN, 15)], 2019: [(JUN,  5)], 2020: [(MAY, 24)]}
+                     2012: [(AUG, 19)], 2013: [(AUG, 8)], 2014: [(JUL, 28)],
+                     2015: [(JUL, 17)], 2016: [(JUL, 6)], 2017: [(JUN, 25)],
+                     2018: [(JUN, 15)], 2019: [(JUN, 5)], 2020: [(MAY, 24)]}
         if year in dates_obs:
             for date_obs in dates_obs[year]:
                 hol_date = date(year, *date_obs)
                 storeholiday(self, hol_date, "Hari Raya Puasa")
                 # Second day of Hari Raya Puasa (up to and including 1968)
-                if year <= 1968:
-                    storeholiday(self, hol_date + rd(days=+1),
-                                 "Second day of Hari Raya Puasa")
+                # Removed since we don't have Hari Raya Puasa dates for the
+                # the years <= 1968:
+                # if year <= 1968:
+                #     storeholiday(self, hol_date + rd(days=+1),
+                #                  "Second day of Hari Raya Puasa")
         else:
             for date_obs in self.get_hrp_date(year):
                 hol_date = date_obs
@@ -5038,12 +5038,12 @@ class Singapore(HolidayBase):
         # Hari Raya Haji
         # aka Eid al-Adha
         # date of observance is announced yearly
-        dates_obs = {2001: [(MAR,  6)], 2002: [(FEB, 23)],
-                     2003: [(FEB, 12)], 2004: [(FEB,  1)], 2005: [(JAN, 21)],
-                     2006: [(JAN, 10)], 2007: [(DEC, 20)], 2008: [(DEC,  8)],
-                     2009: [(NOV, 27)], 2010: [(NOV, 17)], 2011: [(NOV,  6)],
-                     2012: [(OCT, 26)], 2013: [(OCT, 15)], 2014: [(OCT,  5)],
-                     2015: [(SEP, 24)], 2016: [(SEP, 12)], 2017: [(SEP,  1)],
+        dates_obs = {2001: [(MAR, 6)], 2002: [(FEB, 23)],
+                     2003: [(FEB, 12)], 2004: [(FEB, 1)], 2005: [(JAN, 21)],
+                     2006: [(JAN, 10)], 2007: [(DEC, 20)], 2008: [(DEC, 8)],
+                     2009: [(NOV, 27)], 2010: [(NOV, 17)], 2011: [(NOV, 6)],
+                     2012: [(OCT, 26)], 2013: [(OCT, 15)], 2014: [(OCT, 5)],
+                     2015: [(SEP, 24)], 2016: [(SEP, 12)], 2017: [(SEP, 1)],
                      2018: [(AUG, 22)], 2019: [(AUG, 11)], 2020: [(JUL, 31)]}
         if year in dates_obs:
             for date_obs in dates_obs[year]:
@@ -5073,13 +5073,13 @@ class Singapore(HolidayBase):
         # Vesak Day
         # date of observance is announced yearly
         # https://en.wikipedia.org/wiki/Vesak#Dates_of_observance
-        dates_obs = {2001: (MAY,  7), 2002: (MAY, 27),
-                     2003: (MAY, 15), 2004: (JUN,  2), 2005: (MAY, 23),
+        dates_obs = {2001: (MAY, 7), 2002: (MAY, 27),
+                     2003: (MAY, 15), 2004: (JUN, 2), 2005: (MAY, 23),
                      2006: (MAY, 12), 2007: (MAY, 31), 2008: (MAY, 19),
-                     2009: (MAY,  9), 2010: (MAY, 28), 2011: (MAY, 17),
-                     2012: (MAY,  5), 2013: (MAY, 24), 2014: (MAY, 13),
-                     2015: (JUN,  1), 2016: (MAY, 20), 2017: (MAY, 10),
-                     2018: (MAY, 29), 2019: (MAY, 19), 2020: (MAY,  7)}
+                     2009: (MAY, 9), 2010: (MAY, 28), 2011: (MAY, 17),
+                     2012: (MAY, 5), 2013: (MAY, 24), 2014: (MAY, 13),
+                     2015: (JUN, 1), 2016: (MAY, 20), 2017: (MAY, 10),
+                     2018: (MAY, 29), 2019: (MAY, 19), 2020: (MAY, 7)}
         if year in dates_obs:
             hol_date = date(year, *dates_obs[year])
             storeholiday(self, hol_date, "Vesak Day")
@@ -5093,13 +5093,13 @@ class Singapore(HolidayBase):
         # Deepavali
         # aka Diwali
         # date of observance is announced yearly
-        dates_obs = {2001: (NOV, 14), 2002: (NOV,  3),
-                     2003: (OCT, 23), 2004: (NOV, 11), 2005: (NOV,  1),
-                     2006: (OCT, 21), 2007: (NOV,  8), 2008: (OCT, 27),
-                     2009: (OCT, 17), 2010: (NOV,  5), 2011: (OCT, 26),
-                     2012: (NOV, 13), 2013: (NOV,  2), 2014: (OCT, 22),
+        dates_obs = {2001: (NOV, 14), 2002: (NOV, 3),
+                     2003: (OCT, 23), 2004: (NOV, 11), 2005: (NOV, 1),
+                     2006: (OCT, 21), 2007: (NOV, 8), 2008: (OCT, 27),
+                     2009: (OCT, 17), 2010: (NOV, 5), 2011: (OCT, 26),
+                     2012: (NOV, 13), 2013: (NOV, 2), 2014: (OCT, 22),
                      2015: (NOV, 10), 2016: (OCT, 29), 2017: (OCT, 18),
-                     2018: (NOV,  6), 2019: (OCT, 27), 2020: (NOV, 14)}
+                     2018: (NOV, 6), 2019: (OCT, 27), 2020: (NOV, 14)}
         if year in dates_obs:
             hol_date = date(year, *dates_obs[year])
             storeholiday(self, hol_date, "Deepavali")
@@ -5115,7 +5115,7 @@ class Singapore(HolidayBase):
             storeholiday(self, date(year, DEC, 26), "Boxing Day")
 
         # Polling Day
-        dates_obs = {2001: (NOV,  3), 2006: (MAY, 6),
+        dates_obs = {2001: (NOV, 3), 2006: (MAY, 6),
                      2011: (MAY, 7), 2015: (SEP, 11)}
         if year in dates_obs:
             self[date(year, *dates_obs[year])] = "Polling Day"
@@ -5185,12 +5185,12 @@ class Singapore(HolidayBase):
     LUNAR_END_DATE, SOLAR_END_DATE = (2099, 12, 30), date(2100, 2, 18)
 
     def get_leap_month(self, lunar_year):
-        return (self.g_lunar_month_days[lunar_year-self.START_YEAR] >> 16) \
-                & 0x0F
+        return (self.g_lunar_month_days[lunar_year - self.START_YEAR] >> 16) \
+            & 0x0F
 
     def lunar_month_days(self, lunar_year, lunar_month):
-        return 29 + ((self.g_lunar_month_days[lunar_year-self.START_YEAR] >>
-                      lunar_month) & 0x01)
+        return 29 + ((self.g_lunar_month_days[lunar_year - self.START_YEAR]
+                      >> lunar_month) & 0x01)
 
     def lunar_year_days(self, year):
         days = 0
@@ -5205,9 +5205,10 @@ class Singapore(HolidayBase):
         span_days = 0
         for y in range(self.START_YEAR, year):
             span_days += self.lunar_year_days(y)
-        leap_month = self.get_leap_month(year)
-        for m in range(1, 1 + (1 > leap_month)):
-            span_days += self.lunar_month_days(year, m)
+        # Always in first month (by definition)
+        # leap_month = self.get_leap_month(year)
+        # for m in range(1, 1 + (1 > leap_month)):
+        #     span_days += self.lunar_month_days(year, m)
         return self.SOLAR_START_DATE + timedelta(span_days)
 
     # Estimate Gregorian date of Vesak
@@ -5243,8 +5244,8 @@ class Singapore(HolidayBase):
                                     lineno, file=None, line=None):
                 return filename + ': ' + str(message) + '\n'
             warnings.formatwarning = warning_on_one_line
-            warnings.warn("Hari Raja Puasa is missing." +
-                          "To estimate, install hijri-converter library")
+            warnings.warn("Hari Raja Puasa is missing."
+                          + "To estimate, install hijri-converter library")
             warnings.warn("pip install -U hijri-converter")
             warnings.warn("(see https://hijri-converter.readthedocs.io/ )")
             return []
@@ -5270,8 +5271,8 @@ class Singapore(HolidayBase):
                                     file=None, line=None):
                 return filename + ': ' + str(message) + '\n'
             warnings.formatwarning = warning_on_one_line
-            warnings.warn("Hari Raja Haji is missing." +
-                          "To estimate, install hijri-converter library")
+            warnings.warn("Hari Raja Haji is missing."
+                          + "To estimate, install hijri-converter library")
             warnings.warn("pip install -U hijri-converter")
             warnings.warn("(see https://hijri-converter.readthedocs.io/ )")
             return []

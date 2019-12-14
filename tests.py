@@ -5446,6 +5446,18 @@ class TestSingapore(unittest.TestCase):
         self.holidays = holidays.Singapore()
 
     def test_Singapore(self):
+        # <= 1968 holidays
+        self.assertIn(date(1968, 1, 2), self.holidays)
+        self.assertIn(date(1968, 4, 13), self.holidays)
+        self.assertIn(date(1968, 4, 15), self.holidays)
+        self.assertIn(date(1968, 12, 26), self.holidays)
+        # latest polling day
+        self.assertIn(date(2015, 9, 11), self.holidays)
+        # SG50
+        self.assertIn(date(2015, 8, 7), self.holidays)
+        # Year with lunar leap month
+        self.assertIn(date(2015, 8, 7), self.holidays)
+        # Latest holidays
         # Source: https://www.mom.gov.sg/employment-practices/public-holidays
         # 2018
         self.assertIn(date(2018, 1, 1), self.holidays)
