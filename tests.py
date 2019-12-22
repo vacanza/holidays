@@ -5668,7 +5668,6 @@ class TestSingapore(unittest.TestCase):
 
     def test_Singapore(self):
         # <= 1968 holidays
-        self.assertIn(date(1968, 1, 2), self.holidays)
         self.assertIn(date(1968, 4, 13), self.holidays)
         self.assertIn(date(1968, 4, 15), self.holidays)
         self.assertIn(date(1968, 12, 26), self.holidays)
@@ -5729,6 +5728,9 @@ class TestSingapore(unittest.TestCase):
         if sys.version_info >= (3, 6):
             import importlib
             if importlib.util.find_spec("hijri_converter"):
+                # <= 1968 holidays
+                self.assertIn(date(1968, 1, 2), self.holidays)
+                # 2021
                 self.assertIn(date(2021, 5, 13), self.holidays)
                 self.assertIn(date(2021, 7, 20), self.holidays)
 
