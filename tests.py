@@ -16,6 +16,7 @@ from datetime import date, datetime, timedelta
 from dateutil.relativedelta import relativedelta, MO
 import unittest
 import warnings
+import sys
 
 import holidays
 
@@ -5387,7 +5388,7 @@ class TestHongKong(unittest.TestCase):
         for year, month, day in [
                 (2006, 1, 30), (2007, 2, 19), (2008, 2, 8), (2009, 1, 27),
                 (2010, 2, 15), (2011, 2, 4), (2012, 1, 24), (2013, 2, 11),
-                (2014, 2, 1),  (2015, 2, 20), (2016, 2, 9), (2018, 2, 17),
+                (2014, 2, 1), (2015, 2, 20), (2016, 2, 9), (2018, 2, 17),
                 (2019, 2, 6)]:
             self.assertEqual(self.holidays[date(year, month, day)],
                              "The second day of Lunar New Year")
@@ -5659,6 +5660,77 @@ class TestNicaragua(unittest.TestCase):
         self.assertIn(date(year, 8, 1), mn_holidays)
         # Santo Domingo Day Up
         self.assertIn(date(year, 8, 10), mn_holidays)
+
+
+class TestSingapore(unittest.TestCase):
+    def setUp(self):
+        self.holidays = holidays.Singapore()
+
+    def test_Singapore(self):
+        # <= 1968 holidays
+        self.assertIn(date(1968, 1, 2), self.holidays)
+        self.assertIn(date(1968, 4, 13), self.holidays)
+        self.assertIn(date(1968, 4, 15), self.holidays)
+        self.assertIn(date(1968, 12, 26), self.holidays)
+        # latest polling day
+        self.assertIn(date(2015, 9, 11), self.holidays)
+        # SG50
+        self.assertIn(date(2015, 8, 7), self.holidays)
+        # Year with lunar leap month
+        self.assertIn(date(2015, 8, 7), self.holidays)
+        # Latest holidays
+        # Source: https://www.mom.gov.sg/employment-practices/public-holidays
+        # 2018
+        self.assertIn(date(2018, 1, 1), self.holidays)
+        self.assertIn(date(2018, 2, 16), self.holidays)
+        self.assertIn(date(2018, 2, 17), self.holidays)
+        self.assertIn(date(2018, 3, 30), self.holidays)
+        self.assertIn(date(2018, 5, 1), self.holidays)
+        self.assertIn(date(2018, 5, 29), self.holidays)
+        self.assertIn(date(2018, 6, 15), self.holidays)
+        self.assertIn(date(2018, 8, 9), self.holidays)
+        self.assertIn(date(2018, 8, 22), self.holidays)
+        self.assertIn(date(2018, 11, 6), self.holidays)
+        self.assertIn(date(2018, 12, 25), self.holidays)
+        # total holidays (11 + 0 falling on a Sunday)
+        self.assertEqual(len(holidays.Singapore(years=[2018])), 11 + 0)
+        # 2019
+        self.assertIn(date(2019, 1, 1), self.holidays)
+        self.assertIn(date(2019, 2, 5), self.holidays)
+        self.assertIn(date(2019, 2, 6), self.holidays)
+        self.assertIn(date(2019, 4, 19), self.holidays)
+        self.assertIn(date(2019, 5, 1), self.holidays)
+        self.assertIn(date(2019, 5, 19), self.holidays)
+        self.assertIn(date(2019, 6, 5), self.holidays)
+        self.assertIn(date(2019, 8, 9), self.holidays)
+        self.assertIn(date(2019, 8, 11), self.holidays)
+        self.assertIn(date(2019, 10, 27), self.holidays)
+        self.assertIn(date(2019, 12, 25), self.holidays)
+        # total holidays (11 + 3 falling on a Sunday)
+        self.assertEqual(len(holidays.Singapore(years=[2019])), 11 + 3)
+        # 2020
+        self.assertIn(date(2020, 1, 1), self.holidays)
+        self.assertIn(date(2020, 1, 25), self.holidays)
+        self.assertIn(date(2020, 1, 26), self.holidays)
+        self.assertIn(date(2020, 4, 10), self.holidays)
+        self.assertIn(date(2020, 5, 1), self.holidays)
+        self.assertIn(date(2020, 5, 7), self.holidays)
+        self.assertIn(date(2020, 5, 24), self.holidays)
+        self.assertIn(date(2020, 7, 31), self.holidays)
+        self.assertIn(date(2020, 8, 9), self.holidays)
+        self.assertIn(date(2020, 11, 14), self.holidays)
+        self.assertIn(date(2020, 12, 25), self.holidays)
+        # total holidays (11 + 3 falling on a Sunday)
+        self.assertEqual(len(holidays.Singapore(years=[2020])), 11 + 3)
+        # holidays estimated using lunar calendar
+        self.assertIn(date(2021, 5, 26), self.holidays)
+        self.assertIn(date(2021, 11, 3), self.holidays)
+        # holidays estimated using libary hijri-converter
+        if sys.version_info >= (3, 6):
+            import importlib
+            if importlib.util.find_spec("hijri_converter"):
+                self.assertIn(date(2021, 5, 13), self.holidays)
+                self.assertIn(date(2021, 7, 20), self.holidays)
 
 
 if __name__ == "__main__":
