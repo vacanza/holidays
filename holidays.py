@@ -5279,6 +5279,7 @@ class NI(Nicaragua):
 
 class Serbia(HolidayBase):
     #https://en.wikipedia.org/wiki/Public_holidays_in_Serbia
+
     def __init__(self, **kwargs):
         self.country = 'RS'
         HolidayBase.__init__(self, **kwargs)
@@ -5288,9 +5289,9 @@ class Serbia(HolidayBase):
         name = "Нова година"
         self[date(year, JAN, 1)] = name 
         self[date(year, JAN, 2)] = name
-        if self.observed and date(year, JAN, 1).weekday()==SAT:
+        if self.observed and date(year, JAN, 1).weekday() == SAT:
             self[date(year, JAN, 1) + rd(weekday=MO)] = name + " (Observed)"
-        if self.observed and date(year, JAN, 1).weekday()==SUN:
+        if self.observed and date(year, JAN, 1).weekday() == SUN:
             self[date(year, JAN, 1) + rd(weekday=TU)] = name + " (Observed)"
         # Orthodox Christmas
         name = "Божић"
@@ -5299,17 +5300,17 @@ class Serbia(HolidayBase):
         name = "Дан државности Србије"
         self[date(year, FEB, 15)] = name
         self[date(year, FEB, 16)] = name
-        if self.observed and date(year, FEB, 15).weekday()==SAT:
+        if self.observed and date(year, FEB, 15).weekday() == SAT:
             self[date(year, FEB, 15) + rd(weekday=MO)] = name + " (Observed)"
-        if self.observed and date(year, FEB, 15).weekday()==SUN:
+        if self.observed and date(year, FEB, 15).weekday() == SUN:
             self[date(year, FEB, 15) + rd(weekday=TU)] = name + " (Observed)"
         # International Workers' Day
         name = "Празник рада"
         self[date(year, MAY, 1)] = name
         self[date(year, MAY, 2)] = name
-        if self.observed and date(year, MAY, 1).weekday()==SAT:
+        if self.observed and date(year, MAY, 1).weekday() == SAT:
             self[date(year, MAY, 1) + rd(weekday=MO)] = name + " (Observed)"
-        if self.observed and date(year, MAY, 1).weekday()==SUN:
+        if self.observed and date(year, MAY, 1).weekday() == SUN:
             self[date(year, MAY, 1) + rd(weekday=TU)] = name + " (Observed)"
         # Armistice day
         name = "Дан примирја у Првом светском рату"
