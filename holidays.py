@@ -5276,3 +5276,52 @@ class Nicaragua(HolidayBase):
 
 class NI(Nicaragua):
     pass
+
+class Serbia(HolidayBase):
+    #https://en.wikipedia.org/wiki/Public_holidays_in_Serbia
+    def __init__(self, **kwargs):
+        self.country = 'RS'
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        # New Year's Day
+        name = "Нова година"
+        self[date(year, JAN, 1)] = name 
+        self[date(year, JAN, 2)] = name
+        if self.observed and date(year, JAN, 1).weekday()==SAT:
+            self[date(year, JAN, 1) + rd(weekday=MO)] = name + " (Observed)"
+        if self.observed and date(year, JAN, 1).weekday()==SUN:
+            self[date(year, JAN, 1) + rd(weekday=TU)] = name + " (Observed)"
+        # Orthodox Christmas
+        name = "Божић"
+        self[date(year, JAN, 7)] = name
+        # Statehood day
+        name = "Дан државности Србије"
+        self[date(year, FEB, 15)] = name
+        self[date(year, FEB, 16)] = name
+        if self.observed and date(year, FEB, 15).weekday()==SAT:
+            self[date(year, FEB, 15) + rd(weekday=MO)] = name + " (Observed)"
+        if self.observed and date(year, FEB, 15).weekday()==SUN:
+            self[date(year, FEB, 15) + rd(weekday=TU)] = name + " (Observed)"
+        # International Workers' Day
+        name = "Празник рада"
+        self[date(year, MAY, 1)] = name
+        self[date(year, MAY, 2)] = name
+        if self.observed and date(year, MAY, 1).weekday()==SAT:
+            self[date(year, MAY, 1) + rd(weekday=MO)] = name + " (Observed)"
+        if self.observed and date(year, MAY, 1).weekday()==SUN:
+            self[date(year, MAY, 1) + rd(weekday=TU)] = name + " (Observed)"
+        # Armistice day
+        name = "Дан примирја у Првом светском рату"
+        self[date(year, NOV, 11)] = name
+        if self.observed and date(year, NOV, 11).weekday() == SUN:
+            name = name + " (Observed)"
+            self[date(year, NOV, 11) + rd(weekday=MO)] = name
+        # Easter
+        self[easter(year, method=EASTER_ORTHODOX)-rd(days=2)] = "Велики петак"
+        self[easter(year, method=EASTER_ORTHODOX)-rd(days=1)] = "Велика субота"
+        self[easter(year, method=EASTER_ORTHODOX)] = "Васкрс"
+        self[easter(year, method=EASTER_ORTHODOX)+rd(days=1)] = "Други дан Васкрса"
+
+class RS(Serbia):
+    pass
