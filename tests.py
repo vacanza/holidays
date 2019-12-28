@@ -4780,6 +4780,14 @@ class TestBelarus(unittest.TestCase):
         self.assertIn(date(2018, 11, 7), self.holidays)
         self.assertIn(date(2018, 12, 25), self.holidays)
 
+    def test_new_year(self):
+        self.assertIn(date(2019, 1, 1), self.holidays)
+        self.assertNotIn(date(2019, 1, 2), self.holidays)
+        self.assertIn(date(2020, 1, 1), self.holidays)
+        self.assertIn(date(2020, 1, 2), self.holidays)
+        self.assertIn(date(2021, 1, 1), self.holidays)
+        self.assertIn(date(2021, 1, 2), self.holidays)
+
     def test_radunitsa(self):
         # http://calendar.by/content.php?id=20
         self.assertIn(date(2012, 4, 24), self.holidays)
