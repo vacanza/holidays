@@ -470,6 +470,12 @@ class Belarus(HolidayBase):
         # New Year's Day
         self[date(year, JAN, 1)] = "Новый год"
 
+        # Jan 2nd is the national holiday (New Year) from 2020
+        # http://president.gov.by/uploads/documents/2019/464uk.pdf
+        if year >= 2020:
+            # New Year's Day
+            self[date(year, JAN, 2)] = "Новый год"
+
         # Christmas Day (Orthodox)
         self[date(year, JAN, 7)] = "Рождество Христово " \
                                    "(православное Рождество)"
