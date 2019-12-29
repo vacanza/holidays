@@ -5322,8 +5322,8 @@ class Serbia(HolidayBase):
         self[easter(year, method=EASTER_ORTHODOX)-rd(days=2)] = "Велики петак"
         self[easter(year, method=EASTER_ORTHODOX)-rd(days=1)] = "Велика субота"
         self[easter(year, method=EASTER_ORTHODOX)] = "Васкрс"
-        self[easter(year, method=EASTER_ORTHODOX)+rd(days=1)] = "Други дан \
-            Васкрса"
+        self[easter(year, method=EASTER_ORTHODOX)+rd(days=1)] = \
+            "Други дан Васкрса"
 
 
 class RS(Serbia):
