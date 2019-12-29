@@ -5669,5 +5669,37 @@ class TestNicaragua(unittest.TestCase):
         self.assertIn(date(year, 8, 10), mn_holidays)
 
 
+class TestSerbia(unittest.TestCase):
+    def setUp(self):
+        self.holidays = holidays.Serbia()
+
+    def test_2020(self):
+        # New Year
+        self.assertIn(date(2020, 1, 1), self.holidays)
+        self.assertIn(date(2020, 1, 2), self.holidays)
+        self.assertNotIn(date(2020, 1, 3), self.holidays)
+        # Orthodox Christmas
+        self.assertIn(date(2020, 1, 7), self.holidays)
+        self.assertNotIn(date(2020, 1, 8), self.holidays)
+        # Statehood day
+        self.assertIn(date(2020, 2, 15), self.holidays)
+        self.assertIn(date(2020, 2, 16), self.holidays)
+        self.assertIn(date(2020, 2, 17), self.holidays)
+        self.assertNotIn(date(2020, 2, 18), self.holidays)
+        # Labour Day
+        self.assertIn(date(2020, 5, 1), self.holidays)
+        self.assertIn(date(2020, 5, 2), self.holidays)
+        self.assertNotIn(date(2020, 5, 3), self.holidays)
+        # Orthodox Christmas
+        self.assertIn(date(2020, 4, 17), self.holidays)
+        self.assertIn(date(2020, 4, 18), self.holidays)
+        self.assertIn(date(2020, 4, 19), self.holidays)
+        self.assertIn(date(2020, 4, 20), self.holidays)
+        self.assertNotIn(date(2020, 4, 21), self.holidays)
+        # Armistice Day
+        self.assertIn(date(2020, 11, 11), self.holidays)
+        self.assertNotIn(date(2020, 11, 12), self.holidays)
+
+
 if __name__ == "__main__":
     unittest.main()
