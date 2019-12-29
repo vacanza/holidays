@@ -5283,8 +5283,9 @@ class Nicaragua(HolidayBase):
 class NI(Nicaragua):
     pass
 
+
 class Serbia(HolidayBase):
-    #https://en.wikipedia.org/wiki/Public_holidays_in_Serbia
+    # https://en.wikipedia.org/wiki/Public_holidays_in_Serbia
 
     def __init__(self, **kwargs):
         self.country = 'RS'
@@ -5293,7 +5294,7 @@ class Serbia(HolidayBase):
     def _populate(self, year):
         # New Year's Day
         name = "Нова година"
-        self[date(year, JAN, 1)] = name 
+        self[date(year, JAN, 1)] = name
         self[date(year, JAN, 2)] = name
         if self.observed and date(year, JAN, 1).weekday() == SAT:
             self[date(year, JAN, 1) + rd(weekday=MO)] = name + " (Observed)"
@@ -5328,7 +5329,9 @@ class Serbia(HolidayBase):
         self[easter(year, method=EASTER_ORTHODOX)-rd(days=2)] = "Велики петак"
         self[easter(year, method=EASTER_ORTHODOX)-rd(days=1)] = "Велика субота"
         self[easter(year, method=EASTER_ORTHODOX)] = "Васкрс"
-        self[easter(year, method=EASTER_ORTHODOX)+rd(days=1)] = "Други дан Васкрса"
+        self[easter(year, method=EASTER_ORTHODOX)+rd(days=1)] = "Други дан \
+            Васкрса"
+
 
 class RS(Serbia):
     pass
