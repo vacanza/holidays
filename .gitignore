@@ -6,3 +6,4 @@ MANIFEST
 *.egg-info
 *.pyc
 .idea
+.vscode/
