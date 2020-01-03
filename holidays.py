@@ -319,6 +319,10 @@ class AW(Aruba):
     pass
 
 
+class ABW(Aruba):
+    pass
+
+
 class Argentina(HolidayBase):
     # https://www.argentina.gob.ar/interior/feriados
     # https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Argentina
@@ -451,6 +455,10 @@ class AR(Argentina):
     pass
 
 
+class ARG(Argentina):
+    pass
+
+
 class Belarus(HolidayBase):
     """
     http://president.gov.by/en/holidays_en/
@@ -499,6 +507,10 @@ class Belarus(HolidayBase):
 
 
 class BY(Belarus):
+    pass
+
+
+class BLR(Belarus):
     pass
 
 
@@ -655,6 +667,10 @@ class BR(Brazil):
     pass
 
 
+class BRA(Brazil):
+    pass
+
+
 class Bulgaria(HolidayBase):
     """
     Official holidays in Bulgaria in their current form. This class does not
@@ -723,6 +739,10 @@ class Bulgaria(HolidayBase):
 
 
 class BG(Bulgaria):
+    pass
+
+
+class BGR(Bulgaria):
     pass
 
 
@@ -955,6 +975,10 @@ class CA(Canada):
     pass
 
 
+class CAN(Canada):
+    pass
+
+
 class Chile(HolidayBase):
     # https://www.feriados.cl
     # https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Chile
@@ -1035,6 +1059,10 @@ class Chile(HolidayBase):
 
 
 class CL(Chile):
+    pass
+
+
+class CHL(Chile):
     pass
 
 
@@ -1177,6 +1205,10 @@ class CO(Colombia):
     pass
 
 
+class COL(Colombia):
+    pass
+
+
 class Mexico(HolidayBase):
 
     def __init__(self, **kwargs):
@@ -1264,6 +1296,10 @@ class Mexico(HolidayBase):
 
 
 class MX(Mexico):
+    pass
+
+
+class MEX(Mexico):
     pass
 
 
@@ -1370,6 +1406,10 @@ class Ukraine(HolidayBase):
 
 
 class UA(Ukraine):
+    pass
+
+
+class UKR(Ukraine):
     pass
 
 
@@ -1889,6 +1929,10 @@ class US(UnitedStates):
     pass
 
 
+class USA(UnitedStates):
+    pass
+
+
 class NewZealand(HolidayBase):
     PROVINCES = ['NTL', 'AUK', 'TKI', 'HKB', 'WGN', 'MBH', 'NSN', 'CAN',
                  'STC', 'WTL', 'OTA', 'STL', 'CIT']
@@ -2084,6 +2128,10 @@ class NewZealand(HolidayBase):
 
 
 class NZ(NewZealand):
+    pass
+
+
+class NZL(NewZealand):
     pass
 
 
@@ -2308,6 +2356,10 @@ class AU(Australia):
     pass
 
 
+class AUS(Australia):
+    pass
+
+
 class Germany(HolidayBase):
     """Official holidays for Germany in its current form.
 
@@ -2332,7 +2384,7 @@ class Germany(HolidayBase):
           *are* mostly catholic, we count that as holiday for whole Bavaria.
         - There is an "Augsburger Friedensfest" which only exists in the town
           Augsburg. This is excluded for Bavaria.
-        - "Gründonnerstag" (Thursday before easter) is not a holiday but pupil
+        - "Gründonnerstag" (Thursday before easter) is not a holiday but pupils
            don't have to go to school (but only in Baden Württemberg) which is
            solved by adjusting school holidays to include this day. It is
            excluded from our list.
@@ -2432,6 +2484,10 @@ class DE(Germany):
     pass
 
 
+class DEU(Germany):
+    pass
+
+
 class Austria(HolidayBase):
     PROVINCES = ['B', 'K', 'N', 'O', 'S', 'ST', 'T', 'V', 'W']
 
@@ -2464,6 +2520,10 @@ class AT(Austria):
     pass
 
 
+class AUT(Austria):
+    pass
+
+
 class Denmark(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Denmark
 
@@ -2488,6 +2548,10 @@ class Denmark(HolidayBase):
 
 
 class DK(Denmark):
+    pass
+
+
+class DNK(Denmark):
     pass
 
 
@@ -2666,6 +2730,10 @@ class GB(UnitedKingdom):
     pass
 
 
+class GBR(UnitedKingdom):
+    pass
+
+
 class England(UnitedKingdom):
 
     def __init__(self, **kwargs):
@@ -2709,6 +2777,10 @@ class Ireland(UnitedKingdom):
 
 
 class IE(Ireland):
+    pass
+
+
+class IRL(Ireland):
     pass
 
 
@@ -2781,6 +2853,10 @@ class Spain(HolidayBase):
 
 
 class ES(Spain):
+    pass
+
+
+class ESP(Spain):
     pass
 
 
@@ -2858,6 +2934,10 @@ class CZ(Czechia):
     pass
 
 
+class CZE(Czechia):
+    pass
+
+
 class Czech(Czechia):
     def __init__(self, **kwargs):
         warnings.warn("Czech is deprecated, use Czechia instead.",
@@ -2915,6 +2995,10 @@ class SK(Slovakia):
     pass
 
 
+class SVK(Slovakia):
+    pass
+
+
 class Slovak(Slovakia):
     def __init__(self, **kwargs):
         warnings.warn("Slovak is deprecated, use Slovakia instead.",
@@ -2967,6 +3051,10 @@ class PL(Poland):
     pass
 
 
+class POL(Poland):
+    pass
+
+
 class Portugal(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Portugal
 
@@ -3004,6 +3092,10 @@ class PT(Portugal):
     pass
 
 
+class PRT(Portugal):
+    pass
+
+
 class PortugalExt(Portugal):
     """
     Adds extended days that most people have as a bonus from their companies:
@@ -3029,6 +3121,10 @@ class PortugalExt(Portugal):
 
 
 class PTE(PortugalExt):
+    pass
+
+
+class PRTE(PortugalExt):
     pass
 
 
@@ -3095,6 +3191,10 @@ class Netherlands(HolidayBase):
 
 
 class NL(Netherlands):
+    pass
+
+
+class NLD(Netherlands):
     pass
 
 
@@ -3188,6 +3288,10 @@ class Norway(HolidayBase):
 
 
 class NO(Norway):
+    pass
+
+
+class NOR(Norway):
     pass
 
 
@@ -3317,6 +3421,10 @@ class IT(Italy):
     pass
 
 
+class ITA(Italy):
+    pass
+
+
 class Sweden(HolidayBase):
     """
     Swedish holidays.
@@ -3418,6 +3526,10 @@ class Sweden(HolidayBase):
 
 
 class SE(Sweden):
+    pass
+
+
+class SWE(Sweden):
     pass
 
 
@@ -3608,6 +3720,10 @@ class JP(Japan):
     pass
 
 
+class JPN(Japan):
+    pass
+
+
 class France(HolidayBase):
     """Official French holidays.
 
@@ -3769,6 +3885,10 @@ class BE(Belgium):
     pass
 
 
+class BEL(Belgium):
+    pass
+
+
 class SouthAfrica(HolidayBase):
     def __init__(self, **kwargs):
         # http://www.gov.za/about-sa/public-holidays
@@ -3911,6 +4031,10 @@ class ZA(SouthAfrica):
     pass
 
 
+class ZAF(SouthAfrica):
+    pass
+
+
 class Slovenia(HolidayBase):
     """
     Contains all work-free public holidays in Slovenia.
@@ -3975,6 +4099,10 @@ class SI(Slovenia):
     pass
 
 
+class SVN(Slovenia):
+    pass
+
+
 class Finland(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Finland
 
@@ -4006,6 +4134,10 @@ class Finland(HolidayBase):
 
 
 class FI(Finland):
+    pass
+
+
+class FIN(Finland):
     pass
 
 
@@ -4110,6 +4242,10 @@ class Switzerland(HolidayBase):
 
 
 class CH(Switzerland):
+    pass
+
+
+class CHE(Switzerland):
     pass
 
 
@@ -4226,6 +4362,10 @@ class Honduras(HolidayBase):
 
         # Christmas
         self[date(year, DEC, 25)] = "Navidad [Christmas]"
+
+
+class HN(Honduras):
+    pass
 
 
 class HND(Honduras):
@@ -4349,6 +4489,10 @@ class HU(Hungary):
     pass
 
 
+class HUN(Hungary):
+    pass
+
+
 class India(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_India
     # https://www.calendarlabs.com/holidays/india/
@@ -4447,6 +4591,10 @@ class India(HolidayBase):
             self[date(year, APR, 6)] = "Eid al-Fitr"
 
 
+class IN(India):
+    pass
+
+
 class IND(India):
     pass
 
@@ -4506,6 +4654,10 @@ class HR(Croatia):
     pass
 
 
+class HRV(Croatia):
+    pass
+
+
 class Luxembourg(HolidayBase):
 
     # https://en.wikipedia.org/wiki/Public_holidays_in_Luxembourg
@@ -4532,6 +4684,10 @@ class Luxembourg(HolidayBase):
 
 
 class LU(Luxembourg):
+    pass
+
+
+class LUX(Luxembourg):
     pass
 
 
@@ -4576,6 +4732,10 @@ class Russia(HolidayBase):
 
 
 class RU(Russia):
+    pass
+
+
+class RUS(Russia):
     pass
 
 
@@ -4651,6 +4811,10 @@ class LT(Lithuania):
     pass
 
 
+class LTU(Lithuania):
+    pass
+
+
 class Estonia(HolidayBase):
     def __init__(self, **kwargs):
         self.country = "EE"
@@ -4700,6 +4864,10 @@ class EE(Estonia):
     pass
 
 
+class EST(Estonia):
+    pass
+
+
 class Iceland(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Iceland
     # https://www.officeholidays.com/countries/iceland/index.php
@@ -4734,6 +4902,10 @@ class IS(Iceland):
     pass
 
 
+class ISL(Iceland):
+    pass
+
+
 class Kenya(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Kenya
     # http://kenyaembassyberlin.de/Public-Holidays-in-Kenya.48.0.html
@@ -4759,6 +4931,10 @@ class Kenya(HolidayBase):
 
 
 class KE(Kenya):
+    pass
+
+
+class KEN(Kenya):
     pass
 
 
@@ -5067,6 +5243,10 @@ class HK(HongKong):
     pass
 
 
+class HKG(HongKong):
+    pass
+
+
 class Peru(HolidayBase):
     # https://www.gob.pe/feriados
     # https://es.wikipedia.org/wiki/Anexo:Días_feriados_en_el_Perú
@@ -5132,6 +5312,10 @@ class PE(Peru):
     pass
 
 
+class PER(Peru):
+    pass
+
+
 class Nigeria(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Nigeria
     def __init__(self, **kwargs):
@@ -5162,6 +5346,10 @@ class Nigeria(HolidayBase):
 
 
 class NG(Nigeria):
+    pass
+
+
+class NGA(Nigeria):
     pass
 
 
@@ -5233,6 +5421,10 @@ class DO(DominicanRepublic):
     pass
 
 
+class DOM(DominicanRepublic):
+    pass
+
+
 class Nicaragua(HolidayBase):
     PROVINCES = ['MN']
 
@@ -5275,4 +5467,8 @@ class Nicaragua(HolidayBase):
 
 
 class NI(Nicaragua):
+    pass
+
+
+class NIC(Nicaragua):
     pass
