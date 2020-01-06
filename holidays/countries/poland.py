@@ -1,0 +1,53 @@
+import warnings
+from datetime import date
+
+from dateutil.easter import easter
+from dateutil.relativedelta import relativedelta as rd
+
+from holidays.constants import *
+from holidays.holiday_base import HolidayBase
+
+
+class Poland(HolidayBase):
+    # https://pl.wikipedia.org/wiki/Dni_wolne_od_pracy_w_Polsce
+
+    def __init__(self, **kwargs):
+        self.country = 'PL'
+        HolidayBase.__init__(self, **kwargs)
+
+    def _populate(self, year):
+        self[date(year, JAN, 1)] = 'Nowy Rok'
+        if year >= 2011:
+            self[date(year, JAN, 6)] = 'Święto Trzech Króli'
+
+        e = easter(year)
+        self[e] = 'Niedziela Wielkanocna'
+        self[e + rd(days=1)] = 'Poniedziałek Wielkanocny'
+
+        if year >= 1950:
+            self[date(year, MAY, 1)] = 'Święto Państwowe'
+        if year >= 1919:
+            self[date(year, MAY, 3)] = 'Święto Narodowe Trzeciego Maja'
+
+        self[e + rd(days=49)] = 'Zielone Świątki'
+        self[e + rd(days=60)] = 'Dzień Bożego Ciała'
+
+        self[date(year, AUG, 15)] = 'Wniebowzięcie Najświętszej Marii Panny'
+
+        self[date(year, NOV, 1)] = 'Uroczystość Wszystkich świętych'
+        if (1937 <= year <= 1945) or year >= 1989:
+            self[date(year, NOV, 11)] = 'Narodowe Święto Niepodległości'
+
+        self[date(year, DEC, 25)] = 'Boże Narodzenie (pierwszy dzień)'
+        self[date(year, DEC, 26)] = 'Boże Narodzenie (drugi dzień)'
+
+
+class Polish(Poland):
+    def __init__(self, **kwargs):
+        warnings.warn("Polish is deprecated, use Poland instead.",
+                      DeprecationWarning)
+        super(Polish, self).__init__(**kwargs)
+
+
+class PL(Poland):
+    pass
