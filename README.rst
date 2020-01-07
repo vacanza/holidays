@@ -108,6 +108,7 @@ Brazil              BR       state = AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT,
 Bulgaria            BG       None
 Canada              CA       prov = AB, BC, MB, NB, NL, NS, NT, NU, **ON** (default),
                              PE, QC, SK, YU
+Chile               CL       None
 Colombia            CO       None
 Croatia             HR       None
 Czechia             CZ       None
@@ -123,6 +124,8 @@ France              FRA      **Métropole** (default), Alsace-Moselle, Guadeloup
                              Wallis-et-Futuna
 Germany             DE       prov = BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL, SN,
                              ST, SH, TH
+HongKong            HK       None
+Honduras            HND      None
 Hungary             HU       None
 Iceland             IS       None
 India               IND      prov = AS, SK, CG, KA, GJ, BR, RJ, OD, TN, AP, WB, KL, HR,
