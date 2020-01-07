@@ -124,6 +124,8 @@ France              FRA       **Métropole** (default), Alsace-Moselle, Guadelou
                               Wallis-et-Futuna
 Germany             DE/DEU    prov = BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL, SN,
                               ST, SH, TH
+Honduras            HND       None
+HongKong            HK       None
 Hungary             HU/HUN    None
 Iceland             IS/ISL    None
 India               IN/IND    prov = AS, SK, CG, KA, GJ, BR, RJ, OD, TN, AP, WB, KL, HR,
@@ -168,6 +170,7 @@ UnitedStates        US/USA    state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL
                               VI, WA, WV, WI, WY
 Wales                         None
 =================== ========= =============================================================
+=======
 
 
 API
