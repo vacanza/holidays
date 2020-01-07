@@ -125,7 +125,7 @@ France              FRA       **Métropole** (default), Alsace-Moselle, Guadelou
 Germany             DE/DEU    prov = BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL, SN,
                               ST, SH, TH
 Honduras            HND       None
-HongKong            HK       None
+HongKong            HK/HKG    None
 Hungary             HU/HUN    None
 Iceland             IS/ISL    None
 India               IN/IND    prov = AS, SK, CG, KA, GJ, BR, RJ, OD, TN, AP, WB, KL, HR,
