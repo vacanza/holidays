@@ -124,6 +124,7 @@ France              FRA       **Métropole** (default), Alsace-Moselle, Guadelou
                               Wallis-et-Futuna
 Germany             DE/DEU    prov = BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL, SN,
                               ST, SH, TH
+Greece              GR/GRC    None
 Honduras            HND       None
 HongKong            HK/HKG    None
 Hungary             HU/HUN    None
