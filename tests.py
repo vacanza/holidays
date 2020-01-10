@@ -5753,20 +5753,6 @@ class TestGreece(unittest.TestCase):
             self.assertIn(d, self.gr_holidays)
             self.assertIn("Καθαρά Δευτέρα [Clean Monday]", self.gr_holidays[d])
 
-    def test_gr_good_friday(self):
-        checkdates = (date(2018, 4, 6),
-                      date(2019, 4, 26),
-                      date(2020, 4, 17),
-                      date(2021, 4, 30),
-                      date(2022, 4, 22),
-                      date(2023, 4, 14),
-                      date(2024, 5, 3))
-
-        for d in checkdates:
-            self.assertIn(d, self.gr_holidays)
-            self.assertIn("Μεγάλη Παρασκευή [Good Friday]",
-                          self.gr_holidays[d])
-
     def test_gr_easter_monday(self):
         checkdates = (date(2018, 4, 9),
                       date(2019, 4, 29),

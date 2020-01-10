@@ -5552,9 +5552,6 @@ class Greece(HolidayBase):
         # Independence Day
         self[date(year, MAR, 25)] = "Εικοστή Πέμπτη Μαρτίου [Independence Day]"
 
-        # Good Friday
-        self[eday - rd(days=2)] = "Μεγάλη Παρασκευή [Good Friday]"
-
         # Easter Monday
         self[eday + rd(days=1)] = "Δευτέρα του Πάσχα [Easter Monday]"
 
