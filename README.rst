@@ -132,6 +132,7 @@ India               IN/IND    prov = AS, SK, CG, KA, GJ, BR, RJ, OD, TN, AP, WB,
                               MH, MP, UP, UK, TN
 Ireland             IE/IRL    None
 IsleOfMan                     None
+Israel              IL        None
 Italy               IT/ITA    prov = AN, AO, BA, BL, BO, BS, BZ, CB, Cesena, CH, CS, CT,
                               EN, FC, FE, FI, Forlì, FR, GE, GO, IS, KR, LT, MB, MI, MO,
                               MN, MS, NA, PA, PC, PD, PG, PR, RM, SP, TS, VI
