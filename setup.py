@@ -17,7 +17,7 @@ except ImportError:
     from distutils.core import setup
 
 
-with codecs.open('holidays.py', 'r', 'utf-8') as fd:
+with codecs.open('holidays/__init__.py', 'r', 'utf-8') as fd:
     version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]',
                         fd.read(), re.MULTILINE).group(1)
 

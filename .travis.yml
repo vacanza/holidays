@@ -7,7 +7,6 @@ python:
     - '3.7'
     - '3.6'
     - '3.5'
-    - '2.7'
 # temporarily commented due to TravisCI issues
 #    - pypy
 #    - pypy3
@@ -39,7 +38,6 @@ jobs:
 
 env:
     - DATEUTIL=python-dateutil
-    - DATEUTIL=python-dateutil==2.7.0
 
 install:
     - pip install $DATEUTIL
