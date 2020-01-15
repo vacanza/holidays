@@ -78,9 +78,9 @@ class Chile(HolidayBase):
         if year < 2010:
             self[date(year, OCT, 12)] = "Día de la Raza [Columbus day]"
         else:
-            self[date(year, OCT, 12)] = "Día del Respeto a la Diversidad" \
-                                            " [Day of the Meeting " \
-                                            " of Two Worlds]"
+            self[date(year, OCT, 12)] = "Día del Respeto a la Diversidad"\
+                                        " [Day of the Meeting " \
+                                        " of Two Worlds]"
 
         # National Day of the Evangelical and Protestant Churches
         name = "Día Nacional de las Iglesias Evangélicas y Protestantes " \

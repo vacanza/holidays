@@ -255,8 +255,8 @@ class Singapore(HolidayBase):
             & 0x0F
 
     def lunar_month_days(self, lunar_year, lunar_month):
-        return 29 + ((self.g_lunar_month_days[lunar_year - self.START_YEAR]
-                      >> lunar_month) & 0x01)
+        return 29 + ((self.g_lunar_month_days[lunar_year - self.START_YEAR] >>
+                      lunar_month) & 0x01)
 
     def lunar_year_days(self, year):
         days = 0
@@ -310,8 +310,8 @@ class Singapore(HolidayBase):
                                     lineno, file=None, line=None):
                 return filename + ': ' + str(message) + '\n'
             warnings.formatwarning = warning_on_one_line
-            warnings.warn("Hari Raja Puasa is missing."
-                          + "To estimate, install hijri-converter library")
+            warnings.warn("Hari Raja Puasa is missing." +
+                          "To estimate, install hijri-converter library")
             warnings.warn("pip install -U hijri-converter")
             warnings.warn("(see https://hijri-converter.readthedocs.io/ )")
             return []
@@ -337,8 +337,8 @@ class Singapore(HolidayBase):
                                     file=None, line=None):
                 return filename + ': ' + str(message) + '\n'
             warnings.formatwarning = warning_on_one_line
-            warnings.warn("Hari Raja Haji is missing."
-                          + "To estimate, install hijri-converter library")
+            warnings.warn("Hari Raja Haji is missing." +
+                          "To estimate, install hijri-converter library")
             warnings.warn("pip install -U hijri-converter")
             warnings.warn("(see https://hijri-converter.readthedocs.io/ )")
             return []

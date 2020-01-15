@@ -86,7 +86,8 @@ class HongKong(HolidayBase):
 
         # Ching Ming Festival
         name = "Ching Ming Festival"
-        if self.isLeapYear(year) or (self.isLeapYear(year-1) and year > 2008):
+        if self.isLeapYear(year) or (self.isLeapYear(year - 1) and
+                                     year > 2008):
             ching_ming_date = date(year, APR, 4)
         else:
             ching_ming_date = date(year, APR, 5)
@@ -296,11 +297,11 @@ class HongKong(HolidayBase):
     LUNAR_END_DATE, SOLAR_END_DATE = (2099, 12, 30), datetime(2100, 2, 18)
 
     def get_leap_month(self, lunar_year):
-        return (self.g_lunar_month_days[lunar_year-self.START_YEAR] >> 16) \
+        return (self.g_lunar_month_days[lunar_year - self.START_YEAR] >> 16) \
             & 0x0F
 
     def lunar_month_days(self, lunar_year, lunar_month):
-        return 29 + ((self.g_lunar_month_days[lunar_year-self.START_YEAR] >>
+        return 29 + ((self.g_lunar_month_days[lunar_year - self.START_YEAR] >>
                       lunar_month) & 0x01)
 
     def lunar_year_days(self, year):
