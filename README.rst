@@ -435,7 +435,7 @@ Running Tests
 .. code-block:: bash
 
     $ pip install flake8
-    $ flake8 holidays.py tests.py
+    $ flake8 constants.py holiday_base.py utils.py holidays/countries/*.py
     $ python tests.py
 
 
