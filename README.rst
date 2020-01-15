@@ -153,6 +153,7 @@ Portugal            PT/PRT    None
 PortugalExt         PTE/PRTE  *Portugal plus extended days most people have off*
 Russia              RU/RUS    None
 Scotland                      None
+Serbia              RS/SRB    None
 Singapore           SG/SGP    None
 Slovakia            SK/SVK    None
 Slovenia            SI/SVN    None
@@ -171,6 +172,7 @@ UnitedStates        US/USA    state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL
                               VI, WA, WV, WI, WY
 Wales                         None
 =================== ========= =============================================================
+=======
 
 
 API
