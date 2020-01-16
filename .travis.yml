@@ -8,70 +8,24 @@ python:
     - '3.6'
     - '3.5'
     - '2.7'
-    - pypy
-    - pypy3
-# temporarily commented due to TravisCI issues
-#    - pypy
-#    - pypy3
+    - 'pypy3'
 
 jobs:
 # hijri-converter not available < python 3.6
   include:
-    - python: '3.8'
+    - if: python IN ('3.8', '3.7', '3.6', 'pypy3')
       install: 
         - pip install hijri-converter
         - pip install python-dateutil
         - python setup.py install
         - pip install flake8
         - pip install coveralls
-    - python: '3.7'
-      install: 
-        - pip install hijri-converter
-        - pip install python-dateutil
-        - python setup.py install
-        - pip install flake8
-        - pip install coveralls
-    - python: '3.6'
-      install: 
-        - pip install hijri-converter
-        - pip install python-dateutil
-        - python setup.py install
-        - pip install flake8
-        - pip install coveralls
-    - python: '3.5'
+    - if: python IN ('3.5', '2.7')
       install:
         - pip install python-dateutil
         - python setup.py install
         - pip install flake8
         - pip install coveralls
-    - python: '2.7'
-      install:
-        - pip install python-dateutil
-        - python setup.py install
-        - pip install flake8
-        - pip install coveralls
-    - python: pypy3
-      install:
-        - pip install hijri-converter
-        - pip install python-dateutil
-        - python setup.py install
-        - pip install flake8
-        - pip install coveralls
-    - python: pypy
-      install:
-        - pip install python-dateutil
-        - python setup.py install
-        - pip install flake8
-        - pip install coveralls
-
-env:
-    - DATEUTIL=python-dateutil
-
-install:
-    - pip install $DATEUTIL
-    - python setup.py install
-    - pip install flake8
-    - pip install coveralls
 
 before_script:
     - flake8 --ignore=F401,W504 constants.py holiday_base.py utils.py holidays/countries/*.py
