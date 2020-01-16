@@ -2,30 +2,25 @@
 dist: bionic
 language: python
 
-python:
-    - '3.8'
-    - '3.7'
-    - '3.6'
-    - '3.5'
-    - '2.7'
-    - 'pypy3'
+before_install:
+  - pip install --upgrade pip
 
-jobs:
 # hijri-converter not available < python 3.6
+install:
+#  - pip install hijri-converter
+  - pip install python-dateutil
+  - python setup.py install
+  - pip install flake8
+  - pip install coveralls
+
+matrix:
   include:
-    - if: python IN ('3.8', '3.7', '3.6', 'pypy3')
-      install: 
-        - pip install hijri-converter
-        - pip install python-dateutil
-        - python setup.py install
-        - pip install flake8
-        - pip install coveralls
-    - if: python IN ('3.5', '2.7')
-      install:
-        - pip install python-dateutil
-        - python setup.py install
-        - pip install flake8
-        - pip install coveralls
+    - python: '3.8'
+    - python: '3.7'
+    - python: '3.6'
+    - python: '3.5'
+    - python: '2.7'
+    - python: 'pypy3'
 
 before_script:
     - flake8 --ignore=F401,W504 constants.py holiday_base.py utils.py holidays/countries/*.py
