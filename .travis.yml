@@ -5,12 +5,12 @@ language: python
 before_install:
   - pip install --upgrade pip
 
-# hijri-converter not available < python 3.6
 install:
-  - if [ $TRAVIS_PYTHON_VERSION == '3.8' ||
-    $TRAVIS_PYTHON_VERSION == '3.7' ||
-    $TRAVIS_PYTHON_VERSION == '3.6' ||
-    $TRAVIS_PYTHON_VERSION == 'pypy3' ]; then pip install hijri-converter
+# hijri-converter not available < python 3.6
+  - if [ $TRAVIS_PYTHON_VERSION == '3.8' ]; then pip install hijri-converter
+  - if [ $TRAVIS_PYTHON_VERSION == '3.7' ]; then pip install hijri-converter
+  - if [ $TRAVIS_PYTHON_VERSION == '3.6' ]; then pip install hijri-converter
+  - if [ $TRAVIS_PYTHON_VERSION == 'pypy3' ]; then pip install hijri-converter
   - pip install python-dateutil
   - python setup.py install
   - pip install flake8
