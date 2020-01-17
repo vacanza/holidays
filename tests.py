@@ -5734,7 +5734,7 @@ class TestSingapore(unittest.TestCase):
         self.assertIn(date(2021, 11, 3), self.holidays)
         # holidays estimated using libary hijri-converter
         if sys.version_info >= (3, 6):
-            import importlib
+            import importlib.util
             if importlib.util.find_spec("hijri_converter"):
                 # <= 1968 holidays
                 self.assertIn(date(1968, 1, 2), self.holidays)
