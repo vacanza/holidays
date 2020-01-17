@@ -1,6 +1,7 @@
 # https://travis-ci.org/dr-prodigy/python-holidays
 dist: bionic
 language: python
+cache: pip
 
 before_install:
   - pip install --upgrade pip
