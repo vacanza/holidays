@@ -24,6 +24,7 @@ from .croatia import Croatia, HR
 from .czechia import Czechia, Czech, CZ
 from .denmark import Denmark, DK
 from .dominican_republic import DominicanRepublic, DO
+from .egypt import Egypt, EG
 from .estonia import Estonia, EE
 from .european_central_bank import EuropeanCentralBank, ECB, TAR
 from .finland import Finland, FI
