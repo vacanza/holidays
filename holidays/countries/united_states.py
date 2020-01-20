@@ -376,7 +376,8 @@ class UnitedStates(HolidayBase):
 
         # Alaska Day
         if self.state == 'AK' and year >= 1867:
-            self[date(year, OCT, 18)] = "Alaska Day"
+            name = "Alaska Day"
+            self[date(year, OCT, 18)] = name
             if self.observed \
                     and date(year, OCT, 18).weekday() == SAT:
                 self[date(year, OCT, 18) + rd(days=-1)] = name + \
