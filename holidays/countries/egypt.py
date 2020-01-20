@@ -22,6 +22,7 @@ from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, \
 from holidays.holiday_base import HolidayBase
 WEEKEND = (FRI, SAT)
 
+
 class Egypt(HolidayBase):
 
     # Holidays here are estimates, it is common for the day to be pushed
@@ -109,9 +110,9 @@ class Egypt(HolidayBase):
         for date_obs in self.get_gre_date(year, 12, 9):
             hol_date = date_obs
             self[hol_date] = "Arafat Day"
-            self[hol_date+rd(days=1)] = "Eid al-Fitr"
-            self[hol_date+rd(days=2)] = "Eid al-Fitr Holiday"
-            self[hol_date+rd(days=3)] = "Eid al-Fitr Holiday"
+            self[hol_date + rd(days=1)] = "Eid al-Fitr"
+            self[hol_date + rd(days=2)] = "Eid al-Fitr Holiday"
+            self[hol_date + rd(days=3)] = "Eid al-Fitr Holiday"
 
         # Islamic New Year - (hijari_year, 1, 1)
         for date_obs in self.get_gre_date(year, 1, 1):
@@ -136,7 +137,7 @@ class Egypt(HolidayBase):
                 return filename + ': ' + str(message) + '\n'
             warnings.formatwarning = warning_on_one_line
             warnings.warn("Error estimating Islamic Holidays." +
-                        "To estimate, install hijri-converter library")
+                          "To estimate, install hijri-converter library")
             warnings.warn("pip install -U hijri-converter")
             warnings.warn("(see https://hijri-converter.readthedocs.io/ )")
             return []

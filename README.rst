@@ -114,7 +114,7 @@ Croatia             HR/HRV    None
 Czechia             CZ/CZE    None
 Denmark             DK/DNK    None
 Dominican Republic  DO/DOM    None
-Egypt               EG/Egy    None
+Egypt               EG/EGY    None
 England                       None
 Estonia             EE/EST    None
 EuropeanCentralBank ECB/TAR   Trans-European Automated Real-time Gross Settlement (TARGET2)
