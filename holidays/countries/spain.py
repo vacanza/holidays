@@ -59,7 +59,7 @@ class Spain(HolidayBase):
             elif self.prov == 'ARG':
                 self[date(year, APR, 23)] = "Día de San Jorge"
             elif self.prov == 'AST':
-                self[date(year, MAR, 8)] = "Día de Asturias"
+                self[date(year, SEP, 8)] = "Día de Asturias"
             elif self.prov == 'CAN':
                 self[date(year, FEB, 28)] = "Día de la Montaña"
             elif self.prov == 'CAM':
