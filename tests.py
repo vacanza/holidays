@@ -5803,16 +5803,9 @@ class TestEgypt(unittest.TestCase):
         self.assertIn(date(2019, 4, 28), self.holidays)
         self.assertIn(date(2019, 4, 29), self.holidays)
         self.assertIn(date(2019, 5, 1), self.holidays)
-        self.assertIn(date(2019, 6, 4), self.holidays)
-        self.assertIn(date(2019, 6, 5), self.holidays)
         self.assertIn(date(2019, 6, 30), self.holidays)
         self.assertIn(date(2019, 7, 23), self.holidays)
-        self.assertIn(date(2019, 8, 10), self.holidays)
-        self.assertIn(date(2019, 8, 11), self.holidays)
-        self.assertIn(date(2019, 8, 12), self.holidays)
-        self.assertIn(date(2019, 8, 31), self.holidays)
         self.assertIn(date(2019, 10, 6), self.holidays)
-        self.assertIn(date(2019, 11, 9), self.holidays)
 
     def test_coptic_christmas(self):
         self.assertIn(date(2019, 1, 7), self.holidays)
@@ -5822,12 +5815,6 @@ class TestEgypt(unittest.TestCase):
 
     def test_labour_day(self):
         self.assertIn(date(2019, 5, 1), self.holidays)
-
-    def test_eid_alfitr(self):
-        self.assertIn(date(2019, 6, 4), self.holidays)
-
-    def test_eid_aladha(self):
-        self.assertIn(date(2019, 8, 11), self.holidays)
 
     def test_25_jan_from_2009(self):
         # Before 2009 Jan 25th wasn't celebrated
@@ -5839,6 +5826,16 @@ class TestEgypt(unittest.TestCase):
             import importlib.util
             if importlib.util.find_spec("hijri_converter"):
                 self.holidays = holidays.EG(years=[2010])
+                self.assertIn(date(2019, 6, 5), self.holidays)
+                self.assertIn(date(2019, 8, 10), self.holidays)
+                self.assertIn(date(2019, 8, 11), self.holidays)
+                self.assertIn(date(2019, 8, 12), self.holidays)
+                self.assertIn(date(2019, 8, 31), self.holidays)
+                self.assertIn(date(2019, 11, 9), self.holidays)
+                # eid_alfitr
+                self.assertIn(date(2019, 6, 4), self.holidays)
+                # eid_aladha
+                self.assertIn(date(2019, 8, 11), self.holidays)
                 # islamic_new_year
                 self.assertIn(date(2019, 8, 31), self.holidays)
                 # eid_elfetr_2010
