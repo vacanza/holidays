@@ -5059,6 +5059,12 @@ class TestBrazil(unittest.TestCase):
         self.assertIn("2018-10-19", pi_holidays)
         self.assertEqual(pi_holidays[date(2018, 10, 19)], "Dia do Piauí")
 
+    def test_PR_holidays(self):
+        pr_holidays = holidays.BR(state="PR")
+        self.assertIn("2018-12-19", pr_holidays)
+        self.assertEqual(pr_holidays[date(2018, 12, 19)],
+                         "Emancipação do Paraná")
+
     def test_RJ_holidays(self):
         rj_holidays = holidays.BR(state="RJ")
         self.assertIn("2018-04-23", rj_holidays)

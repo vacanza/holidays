@@ -27,8 +27,8 @@ class Brazil(HolidayBase):
     """
 
     STATES = ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT',
-              'MS', 'MG', 'PA', 'PB', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR',
-              'SC', 'SP', 'SE', 'TO']
+              'MS', 'MG', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RS', 'RO',
+              'RR', 'SC', 'SP', 'SE', 'TO']
 
     def __init__(self, **kwargs):
         self.country = 'BR'
@@ -134,6 +134,9 @@ class Brazil(HolidayBase):
         if self.state == 'PI':
             self[date(year, MAR, 13)] = "Dia da Batalha do Jenipapo"
             self[date(year, OCT, 19)] = "Dia do Piauí"
+
+        if self.state == 'PR':
+            self[date(year, DEC, 19)] = "Emancipação do Paraná"
 
         if self.state == 'RJ':
             self[date(year, APR, 23)] = "Dia de São Jorge"
