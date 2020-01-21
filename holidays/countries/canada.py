@@ -25,7 +25,7 @@ from holidays.holiday_base import HolidayBase
 
 class Canada(HolidayBase):
     PROVINCES = ['AB', 'BC', 'MB', 'NB', 'NL', 'NS', 'NT', 'NU', 'ON', 'PE',
-                 'QC', 'SK', 'YU']
+                 'QC', 'SK', 'YT']
 
     def __init__(self, **kwargs):
         self.country = 'CA'
@@ -55,7 +55,7 @@ class Canada(HolidayBase):
                 self[date(year, DEC, 31)] = name + " (Observed)"
 
         # Family Day / Louis Riel Day (MB) / Islander Day (PE)
-        # / Heritage Day (NS, YU)
+        # / Heritage Day (NS, YT)
         if self.prov in ('AB', 'SK', 'ON') and year >= 2008:
             self[date(year, FEB, 1) + rd(weekday=MO(+3))] = "Family Day"
         elif self.prov in ('AB', 'SK') and year >= 2007:
@@ -81,7 +81,7 @@ class Canada(HolidayBase):
         elif self.prov == 'NS' and year >= 2015:
             # http://novascotia.ca/lae/employmentrights/NovaScotiaHeritageDay.asp
             self[date(year, FEB, 1) + rd(weekday=MO(+3))] = "Heritage Day"
-        elif self.prov == 'YU':
+        elif self.prov == 'YT':
             # start date?
             # http://heritageyukon.ca/programs/heritage-day
             # https://en.wikipedia.org/wiki/Family_Day_(Canada)#Yukon_Heritage_Day
@@ -150,7 +150,7 @@ class Canada(HolidayBase):
                 self[dt2] = "Discovery Day"
             else:
                 self[dt1] = "Discovery Day"
-        elif self.prov == 'YU' and year >= 1912:
+        elif self.prov == 'YT' and year >= 1912:
             self[date(year, AUG, 1) + rd(weekday=MO(+3))] = "Discovery Day"
 
         # Canada Day / Memorial Day (NL)

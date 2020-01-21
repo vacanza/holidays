@@ -784,17 +784,17 @@ class TestCA(unittest.TestCase):
 
     def test_discovery_day(self):
         nl_holidays = holidays.CA(prov="NL")
-        yu_holidays = holidays.CA(prov="YU")
+        yt_holidays = holidays.CA(prov="YT")
         for dt in [date(1997, 6, 23), date(1999, 6, 21), date(2000, 6, 26),
                    date(2010, 6, 21), date(2016, 6, 27), date(2020, 6, 22)]:
             self.assertNotIn(dt, self.holidays)
             self.assertIn(dt, nl_holidays)
-            self.assertNotIn(dt, yu_holidays)
+            self.assertNotIn(dt, yt_holidays)
         for dt in [date(1912, 8, 19), date(1999, 8, 16), date(2000, 8, 21),
                    date(2006, 8, 21), date(2016, 8, 15), date(2020, 8, 17)]:
             self.assertNotIn(dt, self.holidays)
             self.assertNotIn(dt, nl_holidays)
-            self.assertIn(dt, yu_holidays)
+            self.assertIn(dt, yt_holidays)
 
     def test_canada_day(self):
         for year in range(1900, 2100):
