@@ -5868,7 +5868,7 @@ class TestIsrael(unittest.TestCase):
         self.assertIn(official_memorial_day, il_holidays)
         self.assertIn(holiday_name, il_holidays[official_memorial_day])
         self.assertIn(observed_memorial_day, il_holidays)
-        self.assertIn(f'{holiday_name} (Observed)', il_holidays[observed_memorial_day])
+        self.assertIn(holiday_name + ' (Observed)', il_holidays[observed_memorial_day])
 
         # Earlier
         il_holidays = holidays.IL(years=[2018], observed=True)
