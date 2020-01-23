@@ -30,16 +30,18 @@ class Israel(HolidayBase):
         # Passover
         name = "Passover I"
         year, month, day = hebrew.to_jd_gregorianyear(year, hebrew.NISAN, 14)
-        self[date(year, month, day)] = name + ' - Eve'
-        self[date(year, month, day) + rd(days=1)] = name
+        passover_start_dt = date(year, month, day)
+        self[passover_start_dt] = name + ' - Eve'
+        self[passover_start_dt + rd(days=1)] = name
 
         name = 'Passover'
         for offset in range(2, 6):
-            self[date(year, month, day) + rd(days=offset)] = name + ' - Chol HaMoed'
+            self[passover_start_dt + rd(days=offset)] = \
+                name + ' - Chol HaMoed'
 
         name = "Passover VII"
-        self[date(year, month, day) + rd(days=6)] = name + ' - Eve'
-        self[date(year, month, day) + rd(days=7)] = name
+        self[passover_start_dt + rd(days=6)] = name + ' - Eve'
+        self[passover_start_dt + rd(days=7)] = name
 
         # Memorial Day
         name = "Memorial Day"
@@ -55,7 +57,8 @@ class Israel(HolidayBase):
                 observed_delta = 1
 
             if observed_delta != 0:
-                self[date(year, month, day) + rd(days=observed_delta + 1)] = name + " (Observed)"
+                self[date(year, month, day) + rd(days=observed_delta + 1)] = \
+                    name + " (Observed)"
 
         # Independence Day
         name = "Independence Day"
@@ -63,7 +66,8 @@ class Israel(HolidayBase):
         self[date(year, month, day) + rd(days=1)] = name
 
         if self.observed and observed_delta != 0:
-            self[date(year, month, day) + rd(days=observed_delta + 1)] = name + " (Observed)"
+            self[date(year, month, day) + rd(days=observed_delta + 1)] = \
+                name + " (Observed)"
 
         # Lag Baomer
         name = "Lag B'Omer"
@@ -92,16 +96,17 @@ class Israel(HolidayBase):
         # Sukkot
         name = "Sukkot I"
         year, month, day = hebrew.to_jd_gregorianyear(year, hebrew.TISHRI, 14)
-        self[date(year, month, day)] = name + ' - Eve'
-        self[date(year, month, day) + rd(days=1)] = name
+        sukkot_start_dt = date(year, month, day)
+        self[sukkot_start_dt] = name + ' - Eve'
+        self[sukkot_start_dt + rd(days=1)] = name
 
         name = 'Sukkot'
         for offset in range(2, 7):
-            self[date(year, month, day) + rd(days=offset)] = name + ' - Chol HaMoed'
+            self[sukkot_start_dt + rd(days=offset)] = name + ' - Chol HaMoed'
 
         name = "Sukkot VII"
-        self[date(year, month, day) + rd(days=7)] = name + ' - Eve'
-        self[date(year, month, day) + rd(days=8)] = name
+        self[sukkot_start_dt + rd(days=7)] = name + ' - Eve'
+        self[sukkot_start_dt + rd(days=8)] = name
 
         # Hanukkah
         name = 'Hanukkah'
@@ -123,6 +128,7 @@ class Israel(HolidayBase):
 
 class IL(Israel):
     pass
+
 
 class ISR(Israel):
     pass
