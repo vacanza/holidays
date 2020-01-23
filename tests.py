@@ -5877,7 +5877,7 @@ class TestIsrael(unittest.TestCase):
         self.assertIn(official_memorial_day, il_holidays)
         self.assertIn(holiday_name, il_holidays[official_memorial_day])
         self.assertIn(observed_memorial_day, il_holidays)
-        self.assertIn(f'{holiday_name} (Observed)', il_holidays[observed_memorial_day])
+        self.assertIn(holiday_name + ' (Observed)', il_holidays[observed_memorial_day])
 
         # On time
         il_holidays = holidays.IL(years=[2020], observed=True)
@@ -5887,7 +5887,6 @@ class TestIsrael(unittest.TestCase):
 
         for names in il_holidays.values():
             self.assertNotIn(f'{holiday_name} (Observed)', names)
-
 
 
 if __name__ == "__main__":
