@@ -9,18 +9,21 @@ before_install:
 install:
 # hijri-converter not available < python 3.6
   - if [[
+      $TRAVIS_PYTHON_VERSION == '3.9' ||
       $TRAVIS_PYTHON_VERSION == '3.8' ||
       $TRAVIS_PYTHON_VERSION == '3.7' ||
       $TRAVIS_PYTHON_VERSION == '3.6' ||
       $TRAVIS_PYTHON_VERSION == 'pypy3'
     ]]; then pip install hijri-converter; fi
   - pip install python-dateutil
-  - python setup.py install
+  - pip install six
   - pip install flake8
   - pip install coveralls
+  - python setup.py install
 
 matrix:
   include:
+    - python: '3.9'
     - python: '3.8'
     - python: '3.7'
     - python: '3.6'
