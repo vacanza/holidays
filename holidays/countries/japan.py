@@ -71,11 +71,15 @@ class Japan(HolidayBase):
         # Marine Day
         if 1996 <= year <= 2002:
             self[date(year, JUL, 20)] = "海の日"
+        elif year == 2020:
+            self[date(year, JUL, 23)] = "海の日"
         elif year >= 2003:
             self[date(year, JUL, 1) + rd(weekday=MO(+3))] = "海の日"
 
         # Mountain Day
-        if year >= 2016:
+        if year == 2020:
+            self[date(year, AUG, 10)] = "山の日"
+        elif year >= 2016:
             self[date(year, AUG, 11)] = "山の日"
 
         # Respect for the Aged Day
@@ -90,6 +94,8 @@ class Japan(HolidayBase):
         # Health and Sports Day
         if 1966 <= year <= 1999:
             self[date(year, OCT, 10)] = "体育の日"
+        elif year == 2020:
+            self[date(year, JUL, 24)] = "体育の日"
         elif year >= 2000:
             self[date(year, OCT, 1) + rd(weekday=MO(+2))] = "体育の日"
 
