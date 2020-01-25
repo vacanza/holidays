@@ -37,6 +37,7 @@ from .iceland import Iceland, IS
 from .india import India, IND
 from .ireland import Ireland, IE
 from .italy import Italy, IT
+from .israel import Israel, ISR, IL
 from .japan import Japan, JP
 from .kenya import Kenya, KE
 from .lithuania import Lithuania, LT
