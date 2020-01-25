@@ -49,6 +49,7 @@ from .new_zealand import NewZealand, NZ
 from .nicaragua import Nicaragua, NI
 from .nigeria import Nigeria, NG
 from .norway import Norway, NO
+from .paraguay import Paraguay, PY
 from .peru import Peru, PE
 from .poland import Poland, Polish, PL
 from .portugal import Portugal, PT, PortugalExt, PTE

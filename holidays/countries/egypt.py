@@ -36,7 +36,7 @@ class Egypt(HolidayBase):
     # *only if hijri-converter library is installed, otherwise a warning is
     #  raised that this holiday is missing. hijri-converter requires
     #  Python >= 3.6
-    # is_weekend function is there, however not actviated for accuracy.
+    # is_weekend function is there, however not activated for accuracy.
 
     def __init__(self, **kwargs):
         self.country = 'EG'
@@ -125,8 +125,10 @@ class Egypt(HolidayBase):
             self[hol_date] = "Prophet Muhammad's Birthday"
 
     def get_gre_date(self, year, Hmonth, Hday):
-        """returns the gregian date of of a  of the given gregorian calendar
-        yyyy year with Hijari Month & Day"""
+        """
+        returns the gregian date of of a  of the given gregorian calendar
+        yyyy year with Hijari Month & Day
+        """
         try:
             from hijri_converter import convert
         except ImportError:

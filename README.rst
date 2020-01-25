@@ -150,6 +150,7 @@ Nicaragua           NI/NIC    prov = MN
 Nigeria             NG/NGA    None
 Northern Ireland              None
 Norway              NO/NOR    None
+Paraguay            PY/PRY    None
 Peru                PE/PER    None
 Poland              PL/POL    None
 Portugal            PT/PRT    None
