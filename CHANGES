@@ -1,7 +1,7 @@
-Version 0.10.0b1
-================
+Version 0.10.0
+==============
 
-Released ??????? ??, ????
+Released January 25, 2020
 
 - Project structure refactoring (MaxHaertwig, dr-p)
 - Added support for Python3.8 (dr-p)
