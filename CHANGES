@@ -6,13 +6,12 @@ Released ??????? ??, ????
 - Project structure refactoring (MaxHaertwig, dr-p)
 - Added support for Python3.8 (dr-p)
 - Dropped support for pypy and Python3.4, welcome back pypy3 (dr-p)
-- Fully reviewed Travis CI integration
+- Fully reviewed Travis CI integration (dr-p)
 - Added 3-digit country ISO codes (MaxHaertwig)
+- Support for Israel (giladmaya)
 - Support for Egypt (gaberm)
 - Support for Serbia (kosugor)
-- Support for Dominican Republic (gabmartinez)
 - Support for Singapore (mborsetti)
-- Support for Nicaragua (CARocha)
 - README.rst fixes / sync
 - Brazil-Parana support (jbroudou, dr-p)
 - Canada, Spain, US fixes (jbroudou)
