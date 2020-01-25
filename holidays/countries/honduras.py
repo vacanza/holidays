@@ -136,5 +136,9 @@ class Honduras(HolidayBase):
         self[date(year, DEC, 25)] = "Navidad [Christmas]"
 
 
+class HN(Honduras):
+    pass
+
+
 class HND(Honduras):
     pass

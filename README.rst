@@ -126,7 +126,7 @@ France              FRA       **Métropole** (default), Alsace-Moselle, Guadelou
 Germany             DE/DEU    prov = BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL, SN,
                               ST, SH, TH
 Greece              GR/GRC    None
-Honduras            HND       None
+Honduras            HN/HND    None
 HongKong            HK/HKG    None
 Hungary             HU/HUN    None
 Iceland             IS/ISL    None
@@ -176,7 +176,6 @@ UnitedStates        US/USA    state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL
                               VI, WA, WV, WI, WY
 Wales                         None
 =================== ========= =============================================================
-=======
 
 
 API
