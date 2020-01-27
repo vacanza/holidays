@@ -16,9 +16,8 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd, TH, FR, MO
 
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, \
-    OCT, \
-    NOV, DEC
+from holidays.constants import (JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, 
+                                OCT, NOV, DEC)
 from holidays.holiday_base import HolidayBase
 
 
@@ -34,15 +33,15 @@ class Spain(HolidayBase):
     def _populate(self, year):
         self[date(year, JAN, 1)] = "Año nuevo"
         self[date(year, JAN, 6)] = "Epifanía del Señor"
-        if self.prov and self.prov in ['CVA', 'MUR', 'MAD', 'NAV', 'PVA']:
+        if self.prov and self.prov in ['CVA', 'MUR', 'MAD', 'NAV', 'PVA', 'CAM']:
             self[date(year, MAR, 19)] = "San José"
-        if self.prov and self.prov != 'CAT':
+        if self.prov and self.prov not in ['CAT', 'CVA']:
             self[easter(year) + rd(weeks=-1, weekday=TH)] = "Jueves Santo"
-        self[easter(year) + rd(weeks=-1, weekday=FR)] = "Viernes Santo"
-        if self.prov and self.prov in ['CAT', 'PVA', 'NAV', 'CVA', 'IBA']:
+            self[easter(year) + rd(weeks=-1, weekday=FR)] = "Viernes Santo"
+        if self.prov and self.prov in ['CAT', 'PVA', 'NAV', 'CVA', 'IBA', 'CAM']:
             self[easter(year) + rd(weekday=MO)] = "Lunes de Pascua"
-        self[date(year, MAY, 1)] = "Día del Trabajador"
-        if self.prov and self.prov in ['CAT', 'GAL']:
+            self[date(year, MAY, 1)] = "Día del Trabajador"
+        if self.prov and self.prov in ['CAT', 'GAL', 'CVA']:
             self[date(year, JUN, 24)] = "San Juan"
         self[date(year, AUG, 15)] = "Asunción de la Virgen"
         self[date(year, OCT, 12)] = "Día de la Hispanidad"
