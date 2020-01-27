@@ -3141,7 +3141,6 @@ class TestES(unittest.TestCase):
         fixed_days_whole_country = (
             (1, 1),
             (1, 6),
-            (5, 1),
             (8, 15),
             (10, 12),
             (11, 1),
@@ -3153,13 +3152,16 @@ class TestES(unittest.TestCase):
             self.assertIn(date(y, m, d), self.holidays)
 
     def test_variable_days_in_2016(self):
-        self.assertIn(date(2016, 3, 25), self.holidays)
         for prov, prov_holidays in self.prov_holidays.items():
             self.assertEqual(
-                date(2016, 3, 24) in prov_holidays, prov != 'CAT')
+                date(2016, 3, 24) in prov_holidays,
+                prov not in ['CAT', 'CVA'])
+            self.assertEqual(
+                date(2016, 3, 25) in prov_holidays,
+                prov not in ['CAT', 'CVA'])
             self.assertEqual(
                 date(2016, 3, 28) in prov_holidays,
-                prov in ['CAT', 'PVA', 'NAV', 'CVA', 'IBA'])
+                prov in ['CAT', 'PVA', 'NAV', 'CVA', 'IBA', 'CAM'])
 
     def test_province_specific_days(self):
         province_days = {
@@ -3167,6 +3169,7 @@ class TestES(unittest.TestCase):
             (3, 1): ['IBA'],
             (4, 23): ['ARG', 'CAL'],
             (5, 30): ['ICA'],
+            (5, 1): ['CAT', 'PVA', 'NAV', 'CVA', 'IBA', 'CAM'],
             (5, 2): ['MAD'],
             (6, 9): ['MUR', 'RIO'],
             (7, 25): ['GAL'],
@@ -3183,10 +3186,10 @@ class TestES(unittest.TestCase):
                     prov in ['CAT', 'IBA'])
                 self.assertEqual(
                     date(year, 3, 19) in prov_holidays,
-                    prov in ['CVA', 'MUR', 'MAD', 'NAV', 'PVA'])
+                    prov in ['CVA', 'MUR', 'MAD', 'NAV', 'PVA', 'CAM'])
                 self.assertEqual(
                     date(year, 6, 24) in prov_holidays,
-                    prov in ['CAT', 'GAL'])
+                    prov in ['CAT', 'GAL', 'CVA'])
                 for fest_day, fest_prov in province_days.items():
                     self.assertEqual(
                         date(year, *fest_day) in prov_holidays,
