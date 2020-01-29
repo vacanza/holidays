@@ -109,3 +109,7 @@ class Turkey(HolidayBase):
 
 class TR(Turkey):
     pass
+
+
+class TUR(Turkey):
+    pass
