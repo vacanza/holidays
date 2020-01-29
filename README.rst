@@ -167,6 +167,7 @@ Spain               ES/ESP    prov = AND, ARG, AST, CAN, CAM, CAL, CAT, CVA, EXT
 Sweden              SE/SWE    None
 Switzerland         CH/CHE    prov = AG, AR, AI, BL, BS, BE, FR, GE, GL, GR, JU, LU,
                               NE, NW, OW, SG, SH, SZ, SO, TG, TI, UR, VD, VS, ZG, ZH
+Turkey              TR        None
 Ukraine             UA/UKR    None
 UnitedKingdom       UK/GB/GBR None
 UnitedStates        US/USA    state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL, GA,
