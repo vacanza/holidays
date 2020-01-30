@@ -20,6 +20,7 @@ from holidays.constants import JAN, FEB, MAR, MAY, JUN, JUL, AUG, SEP, OCT, \
     NOV, DEC
 from holidays.constants import SUN
 from holidays.holiday_base import HolidayBase
+from holidays.utils import get_gre_date
 
 
 class Singapore(HolidayBase):
@@ -301,57 +302,11 @@ class Singapore(HolidayBase):
 
     # Estimate Gregorian date(s) of Hara Rasa Puasa
     def get_hrp_date(self, year):
-        try:
-            from hijri_converter import convert
-        except ImportError:
-            import warnings
-
-            def warning_on_one_line(message, category, filename,
-                                    lineno, file=None, line=None):
-                return filename + ': ' + str(message) + '\n'
-            warnings.formatwarning = warning_on_one_line
-            warnings.warn("Hari Raja Puasa is missing." +
-                          "To estimate, install hijri-converter library")
-            warnings.warn("pip install -U hijri-converter")
-            warnings.warn("(see https://hijri-converter.readthedocs.io/ )")
-            return []
-        Hyear = convert.Gregorian(year, 1, 1).to_hijri().datetuple()[0]
-        hrps = []
-        hrps.append(convert.Hijri(Hyear - 1, 10, 1).to_gregorian())
-        hrps.append(convert.Hijri(Hyear, 10, 1).to_gregorian())
-        hrps.append(convert.Hijri(Hyear + 1, 10, 1).to_gregorian())
-        hrp_dates = []
-        for hrp in hrps:
-            if hrp.year == year:
-                hrp_dates.append(date(*hrp.datetuple()))
-        return hrp_dates
+        return get_gre_date(year, 10, 1)
 
     # Estimate Gregorian date(s) of Hara Rasa Haji
     def get_hrh_date(self, year):
-        try:
-            from hijri_converter import convert
-        except ImportError:
-            import warnings
-
-            def warning_on_one_line(message, category, filename, lineno,
-                                    file=None, line=None):
-                return filename + ': ' + str(message) + '\n'
-            warnings.formatwarning = warning_on_one_line
-            warnings.warn("Hari Raja Haji is missing." +
-                          "To estimate, install hijri-converter library")
-            warnings.warn("pip install -U hijri-converter")
-            warnings.warn("(see https://hijri-converter.readthedocs.io/ )")
-            return []
-        Hyear = convert.Gregorian(year, 1, 1).to_hijri().datetuple()[0]
-        hrhs = []
-        hrhs.append(convert.Hijri(Hyear - 1, 12, 10).to_gregorian())
-        hrhs.append(convert.Hijri(Hyear, 12, 10).to_gregorian())
-        hrhs.append(convert.Hijri(Hyear + 1, 12, 10).to_gregorian())
-        hrh_dates = []
-        for hrh in hrhs:
-            if hrh.year == year:
-                hrh_dates.append(date(*hrh.datetuple()))
-        return hrh_dates
+        return get_gre_date(year, 12, 10)
 
 
 class SG(Singapore):

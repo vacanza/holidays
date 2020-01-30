@@ -12,22 +12,15 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-
 from dateutil.relativedelta import relativedelta as rd
-from holidays.constants import FRI, SAT
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, \
-    OCT, \
-    NOV, DEC
+from holidays.constants import JAN, APR, MAY, JUL, AUG, OCT
 from holidays.holiday_base import HolidayBase
+from holidays.utils import get_gre_date
 
 
 class Turkey(HolidayBase):
 
     # https://en.wikipedia.org/wiki/Public_holidays_in_Turkey
-
-    # *only if hijri-converter library is installed, otherwise a warning is
-    #  raised that this holiday is missing. hijri-converter requires
-    #  Python >= 3.6
 
     def __init__(self, **kwargs):
         self.country = 'TR'
@@ -61,7 +54,7 @@ class Turkey(HolidayBase):
 
         # Ramadan Feast
         # Date of observance is announced yearly, This is an estimate.
-        for date_obs in self.get_gre_date(year, 10, 1):
+        for date_obs in get_gre_date(year, 10, 1):
             hol_date = date_obs
             self[hol_date] = "Ramadan Feast"
             self[hol_date + rd(days=1)] = "Ramadan Feast Holiday"
@@ -69,42 +62,12 @@ class Turkey(HolidayBase):
 
         # Sacrifice Feast
         # Date of observance is announced yearly, This is an estimate.
-        for date_obs in self.get_gre_date(year, 12, 10):
+        for date_obs in get_gre_date(year, 12, 10):
             hol_date = date_obs
             self[hol_date] = "Sacrifice Feast"
             self[hol_date + rd(days=1)] = "Sacrifice Feast Holiday"
             self[hol_date + rd(days=2)] = "Sacrifice Feast Holiday"
             self[hol_date + rd(days=3)] = "Sacrifice Feast Holiday"
-
-    def get_gre_date(self, year, Hmonth, Hday):
-        """
-        returns the gregian date of of a  of the given gregorian calendar
-        yyyy year with Hijari Month & Day
-        """
-        try:
-            from hijri_converter import convert
-        except ImportError:
-            import warnings
-
-            def warning_on_one_line(message, category, filename, lineno,
-                                    file=None, line=None):
-                return filename + ': ' + str(message) + '\n'
-            warnings.formatwarning = warning_on_one_line
-            warnings.warn("Error estimating Islamic Holidays." +
-                          "To estimate, install hijri-converter library")
-            warnings.warn("pip install -U hijri-converter")
-            warnings.warn("(see https://hijri-converter.readthedocs.io/ )")
-            return []
-        Hyear = convert.Gregorian(year, 1, 1).to_hijri().datetuple()[0]
-        hrhs = []
-        hrhs.append(convert.Hijri(Hyear - 1, Hmonth, Hday).to_gregorian())
-        hrhs.append(convert.Hijri(Hyear, Hmonth, Hday).to_gregorian())
-        hrhs.append(convert.Hijri(Hyear + 1, Hmonth, Hday).to_gregorian())
-        hrh_dates = []
-        for hrh in hrhs:
-            if hrh.year == year:
-                hrh_dates.append(date(*hrh.datetuple()))
-        return hrh_dates
 
 
 class TR(Turkey):
