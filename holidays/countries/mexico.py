@@ -40,15 +40,17 @@ class Mexico(HolidayBase):
         # Constitution Day
         name = "Día de la Constitución [Constitution Day]"
         if self.observed and year >= 2007:
-            self[date(year, FEB, 1) + rd(weekday=MO(+1))] = name + " (Observed)"
+            self[date(year, FEB, 1) + rd(weekday=MO(+1))] = \
+                name + " (Observed)"
 
         if year >= 1917:
             self[date(year, FEB, 5)] = name
-        
+
         # Benito Juárez's birthday
         name = "Natalicio de Benito Juárez [Benito Juárez's birthday]"
         if self.observed and year >= 2007:
-            self[date(year, MAR, 1) + rd(weekday=MO(+3))] = name + " (Observed)"
+            self[date(year, MAR, 1) + rd(weekday=MO(+3))] = \
+                name + " (Observed)"
 
         if year >= 1917:
             self[date(year, MAR, 21)] = name
@@ -72,7 +74,8 @@ class Mexico(HolidayBase):
         # Revolution Day
         name = "Día de la Revolución [Revolution Day]"
         if self.observed and year >= 2007:
-            self[date(year, NOV, 1) + rd(weekday=MO(+3))] = name + " (Observed)"
+            self[date(year, NOV, 1) + rd(weekday=MO(+3))] = \
+                name + " (Observed)"
 
         if year >= 1917:
             self[date(year, NOV, 20)] = name

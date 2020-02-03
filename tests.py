@@ -945,10 +945,10 @@ class TestMX(unittest.TestCase):
 
     def test_new_years(self):
         self.assertNotIn(date(2010, 12, 31), self.holidays)
-        self.assertNotIn(date(2017, 01, 02), self.holidays)
+        self.assertNotIn(date(2017, 1, 2), self.holidays)
         self.holidays.observed = True
         self.assertIn(date(2010, 12, 31), self.holidays)
-        self.assertIn(date(2017, 01, 02), self.holidays)
+        self.assertIn(date(2017, 1, 2), self.holidays)
         self.holidays.observed = False
         for year in range(1900, 2100):
             dt = date(year, 1, 1)
@@ -1055,10 +1055,10 @@ class TestMX(unittest.TestCase):
 
     def test_change_of_government(self):
         self.assertNotIn(date(2012, 11, 30), self.holidays)
-        self.assertNotIn(date(2024, 12, 02), self.holidays)
+        self.assertNotIn(date(2024, 12, 2), self.holidays)
         self.holidays.observed = True
         self.assertIn(date(2012, 11, 30), self.holidays)
-        self.assertIn(date(2024, 12, 02), self.holidays)
+        self.assertIn(date(2024, 12, 2), self.holidays)
         self.holidays.observed = False
         for year in range(1950, 2100):
             dt = date(year, 12, 1)
