@@ -3202,41 +3202,41 @@ class TestES(unittest.TestCase):
         for prov, prov_holidays in self.prov_holidays.items():
             self.assertEqual(
                 date(2016, 3, 24) in prov_holidays,
-                prov not in ['CAT', 'CVA'])
+                prov not in ['CT', 'VC'])
             self.assertEqual(
                 date(2016, 3, 25) in prov_holidays,
-                prov not in ['CAT', 'CVA'])
+                prov not in ['CT', 'VC'])
             self.assertEqual(
                 date(2016, 3, 28) in prov_holidays,
-                prov in ['CAT', 'PVA', 'NAV', 'CVA', 'IBA', 'CAM'])
+                prov in ['CT', 'PV', 'NC', 'VC', 'IB', 'CM'])
 
     def test_province_specific_days(self):
         province_days = {
-            (2, 28): ['AND', 'CAN', 'CAM'],
-            (3, 1): ['IBA'],
-            (4, 23): ['ARG', 'CAL'],
-            (5, 30): ['ICA'],
-            (5, 1): ['CAT', 'PVA', 'NAV', 'CVA', 'IBA', 'CAM'],
-            (5, 2): ['MAD'],
-            (6, 9): ['MUR', 'RIO'],
-            (7, 25): ['GAL'],
-            (9, 8): ['AST', 'EXT'],
-            (9, 11): ['CAT'],
-            (9, 27): ['NAV'],
-            (10, 9): ['CVA'],
-            (10, 25): ['PVA'],
+            (2, 28): ['AN', 'CB', 'CM'],
+            (3, 1): ['IB'],
+            (4, 23): ['AR', 'CL'],
+            (5, 30): ['CN'],
+            (5, 1): ['CT', 'PV', 'NC', 'VC', 'IB', 'CM'],
+            (5, 2): ['MD'],
+            (6, 9): ['MC', 'RI'],
+            (7, 25): ['GA'],
+            (9, 8): ['AS', 'EX'],
+            (9, 11): ['CT'],
+            (9, 27): ['NC'],
+            (10, 9): ['VC'],
+            (10, 25): ['PV'],
         }
         for prov, prov_holidays in self.prov_holidays.items():
             for year in range(2010, 2020):
                 self.assertEqual(
                     date(year, 12, 26) in prov_holidays,
-                    prov in ['CAT', 'IBA'])
+                    prov in ['CT', 'IB'])
                 self.assertEqual(
                     date(year, 3, 19) in prov_holidays,
-                    prov in ['CVA', 'MUR', 'MAD', 'NAV', 'PVA', 'CAM'])
+                    prov in ['VC', 'MC', 'MD', 'NC', 'PV', 'CM'])
                 self.assertEqual(
                     date(year, 6, 24) in prov_holidays,
-                    prov in ['CAT', 'GAL', 'CVA'])
+                    prov in ['CT', 'GA', 'VC'])
                 for fest_day, fest_prov in province_days.items():
                     self.assertEqual(
                         date(year, *fest_day) in prov_holidays,

@@ -21,8 +21,8 @@ from holidays.holiday_base import HolidayBase
 
 
 class Spain(HolidayBase):
-    PROVINCES = ['AND', 'ARG', 'AST', 'CAN', 'CAM', 'CAL', 'CAT', 'CVA',
-                 'EXT', 'GAL', 'IBA', 'ICA', 'MAD', 'MUR', 'NAV', 'PVA', 'RIO']
+    PROVINCES = ['AN', 'AR', 'AS', 'CB', 'CM', 'CL', 'CT', 'VC',
+                 'EX', 'GA', 'IB', 'CN', 'MD', 'MC', 'NC', 'PV', 'RI']
 
     def __init__(self, **kwargs):
         self.country = 'ES'
@@ -33,16 +33,16 @@ class Spain(HolidayBase):
         self[date(year, JAN, 1)] = "Año nuevo"
         self[date(year, JAN, 6)] = "Epifanía del Señor"
         if self.prov and self.prov in \
-                ['CVA', 'MUR', 'MAD', 'NAV', 'PVA', 'CAM']:
+                ['VC', 'MC', 'MD', 'NC', 'PV', 'CM']:
             self[date(year, MAR, 19)] = "San José"
-        if self.prov and self.prov not in ['CAT', 'CVA']:
+        if self.prov and self.prov not in ['CT', 'VC']:
             self[easter(year) + rd(weeks=-1, weekday=TH)] = "Jueves Santo"
             self[easter(year) + rd(weeks=-1, weekday=FR)] = "Viernes Santo"
         if self.prov and self.prov in \
-                ['CAT', 'PVA', 'NAV', 'CVA', 'IBA', 'CAM']:
+                ['CT', 'PV', 'NC', 'VC', 'IB', 'CM']:
             self[easter(year) + rd(weekday=MO)] = "Lunes de Pascua"
             self[date(year, MAY, 1)] = "Día del Trabajador"
-        if self.prov and self.prov in ['CAT', 'GAL', 'CVA']:
+        if self.prov and self.prov in ['CT', 'GA', 'VC']:
             self[date(year, JUN, 24)] = "San Juan"
         self[date(year, AUG, 15)] = "Asunción de la Virgen"
         self[date(year, OCT, 12)] = "Día de la Hispanidad"
@@ -50,43 +50,43 @@ class Spain(HolidayBase):
         self[date(year, DEC, 6)] = "Día de la constitución Española"
         self[date(year, DEC, 8)] = "La Inmaculada Concepción"
         self[date(year, DEC, 25)] = "Navidad"
-        if self.prov and self.prov in ['CAT', 'IBA']:
+        if self.prov and self.prov in ['CT', 'IB']:
             self[date(year, DEC, 26)] = "San Esteban"
         # Provinces festive day
         if self.prov:
-            if self.prov == 'AND':
+            if self.prov == 'AN':
                 self[date(year, FEB, 28)] = "Día de Andalucia"
-            elif self.prov == 'ARG':
+            elif self.prov == 'AR':
                 self[date(year, APR, 23)] = "Día de San Jorge"
-            elif self.prov == 'AST':
+            elif self.prov == 'AS':
                 self[date(year, SEP, 8)] = "Día de Asturias"
-            elif self.prov == 'CAN':
+            elif self.prov == 'CB':
                 self[date(year, FEB, 28)] = "Día de la Montaña"
-            elif self.prov == 'CAM':
+            elif self.prov == 'CM':
                 self[date(year, FEB, 28)] = "Día de Castilla - La Mancha"
-            elif self.prov == 'CAL':
+            elif self.prov == 'CL':
                 self[date(year, APR, 23)] = "Día de Castilla y Leon"
-            elif self.prov == 'CAT':
+            elif self.prov == 'CT':
                 self[date(year, SEP, 11)] = "Día Nacional de Catalunya"
-            elif self.prov == 'CVA':
+            elif self.prov == 'VC':
                 self[date(year, OCT, 9)] = "Día de la Comunidad Valenciana"
-            elif self.prov == 'EXT':
+            elif self.prov == 'EX':
                 self[date(year, SEP, 8)] = "Día de Extremadura"
-            elif self.prov == 'GAL':
+            elif self.prov == 'GA':
                 self[date(year, JUL, 25)] = "Día Nacional de Galicia"
-            elif self.prov == 'IBA':
+            elif self.prov == 'IB':
                 self[date(year, MAR, 1)] = "Día de las Islas Baleares"
-            elif self.prov == 'ICA':
+            elif self.prov == 'CN':
                 self[date(year, MAY, 30)] = "Día de Canarias"
-            elif self.prov == 'MAD':
+            elif self.prov == 'MD':
                 self[date(year, MAY, 2)] = "Día de Comunidad De Madrid"
-            elif self.prov == 'MUR':
+            elif self.prov == 'MC':
                 self[date(year, JUN, 9)] = "Día de la Región de Murcia"
-            elif self.prov == 'NAV':
+            elif self.prov == 'NC':
                 self[date(year, SEP, 27)] = "Día de Navarra"
-            elif self.prov == 'PVA':
+            elif self.prov == 'PV':
                 self[date(year, OCT, 25)] = "Día del Páis Vasco"
-            elif self.prov == 'RIO':
+            elif self.prov == 'RI':
                 self[date(year, JUN, 9)] = "Día de La Rioja"
 
 
