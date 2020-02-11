@@ -100,7 +100,7 @@ Country             ISO code  Provinces/States Available
 Argentina           AR/ARG    None
 Aruba               AW/ABW    None
 Australia           AU/AUS    prov = **ACT** (default), NSW, NT, QLD, SA, TAS, VIC, WA
-Austria             AT/AUT    prov = B, K, N, O, S, ST, T, V, **W** (default)
+Austria             AT/AUT    prov = AT-1, AT-2, AT-3, AT-4, AT-5, AT-6, AT-7, AT-8, **AT-9** (default)
 Belarus             BY/BLR    None
 Belgium             BE/BEL    None
 Brazil              BR/BRA    state = AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG,
