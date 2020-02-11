@@ -242,7 +242,10 @@ class UnitedStates(HolidayBase):
         if self.state in ('AL', 'GA', 'MS', 'SC') and year >= 1866:
             if self.state == 'GA' and year >= 2016:
                 name = "State Holiday"
-            self[date(year, APR, 1) + rd(weekday=MO(+4))] = name
+            if self.state == 'GA' and year == 2020:
+                self[date(year, APR, 10)] = name
+            else:
+                self[date(year, APR, 1) + rd(weekday=MO(+4))] = name
         elif self.state == 'TX' and year >= 1931:
             self[date(year, JAN, 19)] = name
 

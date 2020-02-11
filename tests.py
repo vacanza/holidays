@@ -1607,6 +1607,7 @@ class TestUS(unittest.TestCase):
         self.assertNotIn(date(1930, 1, 19), tx_holidays)
         self.assertNotIn(date(1931, 1, 19), self.holidays)
         self.assertIn(date(1931, 1, 19), tx_holidays)
+        self.assertIn(date(2020, 4, 10), ga_holidays)
 
     def test_san_jacinto_day(self):
         tx_holidays = holidays.US(state='TX')
