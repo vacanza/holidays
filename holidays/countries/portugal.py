@@ -51,7 +51,7 @@ class Portugal(HolidayBase):
         self[date(year, 6, 10)] = "Dia de Portugal"
         self[date(year, 8, 15)] = "Assunção de Nossa Senhora"
         self[date(year, DEC, 8)] = "Imaculada Conceição"
-        self[date(year, DEC, 25)] = "Christmas Day"
+        self[date(year, DEC, 25)] = "Dia de Natal"
 
 
 class PT(Portugal):
@@ -76,9 +76,9 @@ class PortugalExt(Portugal):
 
         e = easter(year)
         self[e - rd(days=47)] = "Carnaval"
-        self[date(year, DEC, 24)] = "Vespera de Natal"
+        self[date(year, DEC, 24)] = "Véspera de Natal"
         self[date(year, DEC, 26)] = "26 de Dezembro"
-        self[date(year, DEC, 31)] = "Vespera de Ano novo"
+        self[date(year, DEC, 31)] = "Véspera de Ano Novo"
         self[date(year, 6, 13)] = "Dia de Santo António"
 
         # TODO add bridging days
