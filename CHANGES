@@ -3,13 +3,12 @@ Version 0.10.2b
 
 Released ???????? ??, ????
 
-- Support for Spain (piliamaurizio, dr-p)
+- Support for Spain (piliamaurizio, jbroudou, dr-p)
 - Support for Turkey (cemkaragozlu)
 - Mexico fix (Rosi2143, dr-p)
 - Croatia fix (sebojanko, dr-p)
 - US Georgia fix (jbroudou, dr-p)
 - Austria province ISO3166-2 adoption (jbroudou, dr-p)
-- Spain province ISO3166-2 adoption (jbroudou, dr-p)
 - Portugal typos & name fixes (reinaldoramosarxi)
 
 Version 0.10.1
