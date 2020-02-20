@@ -413,7 +413,7 @@ More Examples
     # use the append() method which accepts a dictionary of {date: name} pairs,
     # a list of dates, or even singular date/string/timestamp objects.
 
-    >>> custom_holidays = holidays.HolidaysBase()
+    >>> custom_holidays = holidays.HolidayBase()
     >>> custom_holidays.append(['2015-01-01', '07/04/2015'])
     >>> custom_holidays.append(date(2015, 12, 25))
 
