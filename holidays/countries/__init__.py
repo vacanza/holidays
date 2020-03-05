@@ -41,6 +41,7 @@ from .italy import Italy, IT
 from .israel import Israel, ISR, IL
 from .japan import Japan, JP
 from .kenya import Kenya, KE
+from .korea import Korea, KR, KOR
 from .lithuania import Lithuania, LT
 from .luxembourg import Luxembourg, LU
 from .mexico import Mexico, MX
