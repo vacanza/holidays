@@ -140,6 +140,7 @@ Italy               IT/ITA    prov = AN, AO, BA, BL, BO, BS, BZ, CB, Cesena, CH,
                               MN, MS, NA, PA, PC, PD, PG, PR, RM, SP, TS, VI
 Japan               JP/JPN    None
 Kenya               KE/KEN    None
+Korea               KR/KOR    None
 Lithuania           LT/LTU    None
 Luxembourg          LU/LUX    None
 Mexico              MX/MEX    None
