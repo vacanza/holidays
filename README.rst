@@ -269,7 +269,7 @@ More Examples
     >>> for date, name in sorted(holidays.US(state='CA', years=2014).items()):
     >>>     print(date, name)
     2014-01-01 New Year's Day
-    2014-01-20 Martin Luther King, Jr. Day
+    2014-01-20 Martin Luther King Jr. Day
     2014-02-15 Susan B. Anthony Day
     2014-02-17 Washington's Birthday
     2014-03-31 César Chávez Day

@@ -92,7 +92,7 @@ class UnitedStates(HolidayBase):
 
         # Martin Luther King, Jr. Day
         if year >= 1986:
-            name = "Martin Luther King, Jr. Day"
+            name = "Martin Luther King Jr. Day"
             if self.state == 'AL':
                 name = "Robert E. Lee/Martin Luther King Birthday"
             elif self.state in ('AS', 'MS'):

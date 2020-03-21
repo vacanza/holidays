@@ -234,7 +234,7 @@ Released September 5, 2016
 
 - Add support for Python 3.5
 - Add holidays and tests for Columbia, Denmark, Spain, United Kingdom
-- Fix Martin Luther King, Jr. Day in state of Georgia
+- Fix Martin Luther King Jr. Day in state of Georgia
 - Fix setup.py install error with non-standard sys default encoding
 
 
