@@ -1246,16 +1246,16 @@ class TestUS(unittest.TestCase):
             self.assertNotIn(name, md_holidays.get_list(date(year, 1, 20)))
             self.assertNotIn(name, va_holidays.get_list(date(year, 1, 20)))
 
-    def test_marthin_luther(self):
+    def test_martin_luther(self):
         for dt in [date(1986, 1, 20), date(1999, 1, 18), date(2000, 1, 17),
                    date(2012, 1, 16), date(2013, 1, 21), date(2014, 1, 20),
                    date(2015, 1, 19), date(2016, 1, 18), date(2020, 1, 20)]:
             self.assertIn(dt, self.holidays)
             self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
-        self.assertNotIn("Martin Luther King, Jr. Day",
+        self.assertNotIn("Martin Luther King Jr. Day",
                          holidays.US(years=[1985]).values())
-        self.assertIn("Martin Luther King, Jr. Day",
+        self.assertIn("Martin Luther King Jr. Day",
                       holidays.US(years=[1986]).values())
         self.assertEqual(holidays.US(state='AL').get('2015-01-19'),
                          "Robert E. Lee/Martin Luther King Birthday")
@@ -1272,7 +1272,7 @@ class TestUS(unittest.TestCase):
         self.assertEqual(holidays.US(state='ID').get('2015-01-19'),
                          "Martin Luther King, Jr. - Idaho Human Rights Day")
         self.assertNotEqual(holidays.US(state='ID').get('2000-01-17'),
-                            "Martin Luther King, Jr. - Idaho Human Rights Day")
+                            "Martin Luther King Jr. - Idaho Human Rights Day")
         self.assertEqual(holidays.US(state='GA').get('2011-01-17'),
                          "Robert E. Lee's Birthday")
 
