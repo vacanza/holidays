@@ -44,13 +44,13 @@ class Spain(HolidayBase):
                 ['ML', 'MC', 'PV', 'VC']:
             self[date(year, MAR, 19)] = "San José"
         elif year == 2017 and self.prov and self.prov in ['PV']:
-                self[date(year, MAR, 19)] = "San José"
+            self[date(year, MAR, 19)] = "San José"
         elif 2018 <= year <= 2019 and self.prov and self.prov in \
                 ['GA', 'MC', 'NC', 'PV', 'VC']:
             self[date(year, MAR, 19)] = "San José"
         elif 2020 <= year <= 2025 and self.prov and self.prov in \
                 ['CM', 'GA', 'MC', 'NC', 'PV', 'VC']:
-                self[date(year, MAR, 19)] = "San José"
+            self[date(year, MAR, 19)] = "San José"
         if self.prov and self.prov not in ['CT', 'VC']:
             self[easter(year) + rd(weeks=-1, weekday=TH)] = "Jueves Santo"
             self[easter(year) + rd(weeks=-1, weekday=FR)] = "Viernes Santo"
