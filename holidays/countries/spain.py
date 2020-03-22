@@ -22,7 +22,7 @@ from holidays.holiday_base import HolidayBase
 
 class Spain(HolidayBase):
     PROVINCES = ['AN', 'AR', 'AS', 'CB', 'CM', 'CL', 'CT', 'VC',
-                 'EX', 'GA', 'IB', 'CN', 'MD', 'MC', 'NC', 'PV', 'RI']
+                 'EX', 'GA', 'IB', 'CN', 'MD', 'MC', 'ML', 'NC', 'PV', 'RI']
 
     def __init__(self, **kwargs):
         self.country = 'ES'
@@ -32,9 +32,25 @@ class Spain(HolidayBase):
     def _populate(self, year):
         self[date(year, JAN, 1)] = "Año nuevo"
         self[date(year, JAN, 6)] = "Epifanía del Señor"
-        if self.prov and self.prov in \
-                ['VC', 'MC', 'MD', 'NC', 'PV', 'CM']:
+
+        if year < 2015 and self.prov and self.prov in \
+                ['AR', 'CL', 'CM', 'EX', 'GA', 'MD', 'ML', 'MC', 'NC',
+                 'PV', 'VC']:
             self[date(year, MAR, 19)] = "San José"
+        elif year == 2015 and self.prov and self.prov in \
+                ['CM', 'MD', 'ML', 'MC', 'NC', 'PV', 'VC']:
+            self[date(year, MAR, 19)] = "San José"
+        elif year == 2016 and self.prov and self.prov in \
+                ['ML', 'MC', 'PV', 'VC']:
+            self[date(year, MAR, 19)] = "San José"
+        elif year == 2017 and self.prov and self.prov in ['PV']:
+                self[date(year, MAR, 19)] = "San José"
+        elif 2018 <= year <= 2019 and self.prov and self.prov in \
+                ['GA', 'MC', 'NC', 'PV', 'VC']:
+            self[date(year, MAR, 19)] = "San José"
+        elif 2020 <= year <= 2025 and self.prov and self.prov in \
+                ['CM', 'GA', 'MC', 'NC', 'PV', 'VC']:
+                self[date(year, MAR, 19)] = "San José"
         if self.prov and self.prov not in ['CT', 'VC']:
             self[easter(year) + rd(weeks=-1, weekday=TH)] = "Jueves Santo"
             self[easter(year) + rd(weeks=-1, weekday=FR)] = "Viernes Santo"

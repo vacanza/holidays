@@ -3227,13 +3227,35 @@ class TestES(unittest.TestCase):
             (10, 25): ['PV'],
         }
         for prov, prov_holidays in self.prov_holidays.items():
-            for year in range(2010, 2020):
+            for year in range(2010, 2025):
                 self.assertEqual(
                     date(year, 12, 26) in prov_holidays,
                     prov in ['CT', 'IB'])
-                self.assertEqual(
-                    date(year, 3, 19) in prov_holidays,
-                    prov in ['VC', 'MC', 'MD', 'NC', 'PV', 'CM'])
+                if year < 2015:
+                    self.assertEqual(
+                        date(year, 3, 19) in prov_holidays,
+                        prov in ['AR', 'CL', 'CM', 'EX', 'GA', 'MD', 'ML',
+                                 'MC', 'NC', 'PV', 'VC'])
+                elif year == 2015:
+                    self.assertEqual(
+                        date(year, 3, 19) in prov_holidays,
+                        prov in ['CM', 'MD', 'ML', 'MC', 'NC', 'PV', 'VC'])
+                elif year == 2016:
+                    self.assertEqual(
+                        date(year, 3, 19) in prov_holidays,
+                        prov in ['ML', 'MC', 'PV', 'VC'])
+                elif year == 2017:
+                    self.assertEqual(
+                        date(year, 3, 19) in prov_holidays,
+                        prov in ['PV'])
+                elif 2018 <= year <= 2019:
+                    self.assertEqual(
+                        date(year, 3, 19) in prov_holidays,
+                        prov in ['GA', 'MC', 'NC', 'PV', 'VC'])
+                elif year == 2020:
+                    self.assertEqual(
+                        date(year, 3, 19) in prov_holidays,
+                        prov in ['CM', 'GA', 'MC', 'NC', 'PV', 'VC'])
                 self.assertEqual(
                     date(year, 6, 24) in prov_holidays,
                     prov in ['CT', 'GA', 'VC'])
