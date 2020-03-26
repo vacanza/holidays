@@ -393,9 +393,6 @@ class Korea(HolidayBase):
         days = self.__getLunarDaysBeforeBaseYear(
             year - 1) + self.__getLunarDaysBeforeBaseMonth(
             year, month - 1, True) + day
-        # if (isIntercalation is True) and (self.__getLunarIntercalationMonth(
-        #                                   self.__getLunarData(year)) == month):
-        #     days += self.__getLunarDays(year, month, False)
         return days
 
     def __isSolarIntercalationYear(self, lunarData):
