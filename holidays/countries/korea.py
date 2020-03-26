@@ -453,8 +453,8 @@ class Korea(HolidayBase):
                 solarDay = absDays - absDaysByMonth + 1
                 break
 
-        if (solarYear == 1582) and (solarMonth == 10) and (solarDay > 4):
-            solarDay += 10
+        # if (solarYear == 1582) and (solarMonth == 10) and (solarDay > 4):
+        #     solarDay += 10
 
         self.solarYear = solarYear
         self.solarMonth = solarMonth
@@ -472,16 +472,16 @@ class Korea(HolidayBase):
 
         if minValue <= dateValue and maxValue >= dateValue:
             if month > 0 and month < 13 and day > 0:
-                if isLunar:
-                    dayLimit = self.__getLunarDays(year, month,
+                # if isLunar:
+                dayLimit = self.__getLunarDays(year, month,
                                                    isIntercalation)
-                else:
-                    dayLimit = self.__getSolarDays(year, month)
-                if isLunar is False and year == 1582 and month == 10:
-                    if day > 4 and day < 15:
-                        return isValid
-                    else:
-                        dayLimit += 10
+                # else:
+                #     dayLimit = self.__getSolarDays(year, month)
+                # if isLunar is False and year == 1582 and month == 10:
+                #     if day > 4 and day < 15:
+                #         return isValid
+                #     else:
+                #         dayLimit += 10
 
                 if day <= dayLimit:
                     isValid = True

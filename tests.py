@@ -6022,7 +6022,7 @@ class TestKorea(unittest.TestCase):
                          "New Year's Day")
 
         self.assertNotIn(date(1582, 10, 2), self.holidays)
-        self.assertNotIn(date(1582, 10, 14), self.holidays)
+        self.assertNotIn(date(1582, 11, 14), self.holidays)
 
     def test_first_day_of_january(self):
         for year in range(2006, 2021):
