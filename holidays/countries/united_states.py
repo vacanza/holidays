@@ -90,9 +90,9 @@ class UnitedStates(HolidayBase):
                 if date(year, MAR, 4).weekday() == SUN:
                     self[date(year, MAR, 5)] = name + " (Observed)"
 
-        # Martin Luther King, Jr. Day
+        # Martin Luther King Jr. Day
         if year >= 1986:
-            name = "Martin Luther King, Jr. Day"
+            name = "Martin Luther King Jr. Day"
             if self.state == 'AL':
                 name = "Robert E. Lee/Martin Luther King Birthday"
             elif self.state in ('AS', 'MS'):
@@ -242,7 +242,10 @@ class UnitedStates(HolidayBase):
         if self.state in ('AL', 'GA', 'MS', 'SC') and year >= 1866:
             if self.state == 'GA' and year >= 2016:
                 name = "State Holiday"
-            self[date(year, APR, 1) + rd(weekday=MO(+4))] = name
+            if self.state == 'GA' and year == 2020:
+                self[date(year, APR, 10)] = name
+            else:
+                self[date(year, APR, 1) + rd(weekday=MO(+4))] = name
         elif self.state == 'TX' and year >= 1931:
             self[date(year, JAN, 19)] = name
 

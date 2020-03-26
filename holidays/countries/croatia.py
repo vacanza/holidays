@@ -50,8 +50,9 @@ class Croatia(HolidayBase):
         # Anti-fascist struggle day
         self[date(year, JUN, 22)] = "Dan antifašističke borbe"
 
-        # Statehood day
-        self[date(year, JUN, 25)] = "Dan državnosti"
+        if year < 2020:
+            # Statehood day
+            self[date(year, JUN, 25)] = "Dan državnosti"
 
         # Victory and Homeland Thanksgiving Day
         self[date(year, AUG, 5)] = "Dan pobjede i domovinske zahvalnosti"
@@ -64,6 +65,10 @@ class Croatia(HolidayBase):
 
         # All Saints' Day
         self[date(year, NOV, 1)] = "Svi sveti"
+
+        if year >= 2020:
+            # Memorial day
+            self[date(year, NOV, 18)] = "Dan sjećanja"
 
         # Christmas day
         self[date(year, DEC, 25)] = "Božić"

@@ -1,3 +1,18 @@
+Version 0.10.2b
+===============
+
+Released ???????? ??, ????
+
+- Support for Spain (piliamaurizio, jbroudou, dr-p, gerardo15)
+- Support for Turkey (cemkaragozlu)
+- Support for Korea (1kko, dr-p)
+- Mexico fix (Rosi2143, dr-p)
+- Croatia fix (sebojanko, dr-p)
+- US Georgia fix (jbroudou, dr-p)
+- Austria province ISO3166-2 adoption (jbroudou, dr-p)
+- Portugal typos & name fixes (reinaldoramosarxi)
+- US MLK renamed (snoopyjc, dr-p)
+
 Version 0.10.1
 ==============
 
@@ -220,7 +235,7 @@ Released September 5, 2016
 
 - Add support for Python 3.5
 - Add holidays and tests for Columbia, Denmark, Spain, United Kingdom
-- Fix Martin Luther King, Jr. Day in state of Georgia
+- Fix Martin Luther King Jr. Day in state of Georgia
 - Fix setup.py install error with non-standard sys default encoding
 
 

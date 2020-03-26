@@ -14,12 +14,12 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, FR, SA
+from dateutil.relativedelta import relativedelta as rd
 from holidays.constants import FRI, SAT
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, \
-    OCT, \
-    NOV, DEC
+from holidays.constants import JAN, APR, MAY, JUN, JUL, OCT
 from holidays.holiday_base import HolidayBase
+from holidays.utils import get_gre_date
+
 WEEKEND = (FRI, SAT)
 
 
@@ -44,17 +44,18 @@ class Egypt(HolidayBase):
 
     def _populate(self, year):
 
+        """
+        # Function to store the holiday name in the appropriate
+        # date and to shift the Public holiday in case it happens
+        # on a Saturday(Weekend)
+        # (NOT USED)
         def is_weekend(self, hol_date, hol_name):
-            """
-            Function to store the holiday name in the appropriate
-            date and to shift the Public holiday in case it happens
-            on a Saturday(Weekend)
-            """
             if hol_date.weekday() == FRI:
                 self[hol_date] = hol_name + " [Friday]"
                 self[hol_date + rd(days=+2)] = "Sunday following " + hol_name
             else:
                 self[hol_date] = hol_name
+        """
 
         # New Year's Day
         self[date(year, JAN, 1)] = "New Year's Day - Bank Holiday"
@@ -99,7 +100,7 @@ class Egypt(HolidayBase):
         # having the Holiday on Weekend does change the number of days,
         # deceided to leave it since marking a Weekend as a holiday
         # wouldn't do much harm.
-        for date_obs in self.get_gre_date(year, 10, 1):
+        for date_obs in get_gre_date(year, 10, 1):
             hol_date = date_obs
             self[hol_date] = "Eid al-Fitr"
             self[hol_date + rd(days=1)] = "Eid al-Fitr Holiday"
@@ -107,7 +108,7 @@ class Egypt(HolidayBase):
 
         # Arafat Day & Eid al-Adha - Scarfice Festive
         # date of observance is announced yearly
-        for date_obs in self.get_gre_date(year, 12, 9):
+        for date_obs in get_gre_date(year, 12, 9):
             hol_date = date_obs
             self[hol_date] = "Arafat Day"
             self[hol_date + rd(days=1)] = "Eid al-Fitr"
@@ -115,44 +116,14 @@ class Egypt(HolidayBase):
             self[hol_date + rd(days=3)] = "Eid al-Fitr Holiday"
 
         # Islamic New Year - (hijari_year, 1, 1)
-        for date_obs in self.get_gre_date(year, 1, 1):
+        for date_obs in get_gre_date(year, 1, 1):
             hol_date = date_obs
             self[hol_date] = "Islamic New Year"
 
         # Prophet Muhammad's Birthday - (hijari_year, 3, 12)
-        for date_obs in self.get_gre_date(year, 3, 12):
+        for date_obs in get_gre_date(year, 3, 12):
             hol_date = date_obs
             self[hol_date] = "Prophet Muhammad's Birthday"
-
-    def get_gre_date(self, year, Hmonth, Hday):
-        """
-        returns the gregian date of of a  of the given gregorian calendar
-        yyyy year with Hijari Month & Day
-        """
-        try:
-            from hijri_converter import convert
-        except ImportError:
-            import warnings
-
-            def warning_on_one_line(message, category, filename, lineno,
-                                    file=None, line=None):
-                return filename + ': ' + str(message) + '\n'
-            warnings.formatwarning = warning_on_one_line
-            warnings.warn("Error estimating Islamic Holidays." +
-                          "To estimate, install hijri-converter library")
-            warnings.warn("pip install -U hijri-converter")
-            warnings.warn("(see https://hijri-converter.readthedocs.io/ )")
-            return []
-        Hyear = convert.Gregorian(year, 1, 1).to_hijri().datetuple()[0]
-        hrhs = []
-        hrhs.append(convert.Hijri(Hyear - 1, Hmonth, Hday).to_gregorian())
-        hrhs.append(convert.Hijri(Hyear, Hmonth, Hday).to_gregorian())
-        hrhs.append(convert.Hijri(Hyear + 1, Hmonth, Hday).to_gregorian())
-        hrh_dates = []
-        for hrh in hrhs:
-            if hrh.year == year:
-                hrh_dates.append(date(*hrh.datetuple()))
-        return hrh_dates
 
 
 class EG(Egypt):

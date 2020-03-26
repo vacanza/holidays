@@ -100,7 +100,7 @@ Country             ISO code  Provinces/States Available
 Argentina           AR/ARG    None
 Aruba               AW/ABW    None
 Australia           AU/AUS    prov = **ACT** (default), NSW, NT, QLD, SA, TAS, VIC, WA
-Austria             AT/AUT    prov = B, K, N, O, S, ST, T, V, **W** (default)
+Austria             AT/AUT    prov = 1, 2, 3, 4, 5, 6, 7, 8, **9** (default)
 Belarus             BY/BLR    None
 Belgium             BE/BEL    None
 Brazil              BR/BRA    state = AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG,
@@ -140,6 +140,7 @@ Italy               IT/ITA    prov = AN, AO, BA, BL, BO, BS, BZ, CB, Cesena, CH,
                               MN, MS, NA, PA, PC, PD, PG, PR, RM, SP, TS, VI
 Japan               JP/JPN    None
 Kenya               KE/KEN    None
+Korea               KR/KOR    None
 Lithuania           LT/LTU    None
 Luxembourg          LU/LUX    None
 Mexico              MX/MEX    None
@@ -162,11 +163,12 @@ Singapore           SG/SGP    None
 Slovakia            SK/SVK    None
 Slovenia            SI/SVN    None
 South Africa        ZA/ZAF    None
-Spain               ES/ESP    prov = AND, ARG, AST, CAN, CAM, CAL, CAT, CVA, EXT, GAL,
-                              IBA, ICA, MAD, MUR, NAV, PVA, RIO
+Spain               ES/ESP    prov = AN, AR, AS, CB, CL, CM, CN, CT, EX, GA, IB, MC,
+                              MD, NC, PV, RI, VC
 Sweden              SE/SWE    None
 Switzerland         CH/CHE    prov = AG, AR, AI, BL, BS, BE, FR, GE, GL, GR, JU, LU,
                               NE, NW, OW, SG, SH, SZ, SO, TG, TI, UR, VD, VS, ZG, ZH
+Turkey              TR/TUR    None
 Ukraine             UA/UKR    None
 UnitedKingdom       UK/GB/GBR None
 UnitedStates        US/USA    state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL, GA,
@@ -267,7 +269,7 @@ More Examples
     >>> for date, name in sorted(holidays.US(state='CA', years=2014).items()):
     >>>     print(date, name)
     2014-01-01 New Year's Day
-    2014-01-20 Martin Luther King, Jr. Day
+    2014-01-20 Martin Luther King Jr. Day
     2014-02-15 Susan B. Anthony Day
     2014-02-17 Washington's Birthday
     2014-03-31 César Chávez Day
@@ -412,7 +414,7 @@ More Examples
     # use the append() method which accepts a dictionary of {date: name} pairs,
     # a list of dates, or even singular date/string/timestamp objects.
 
-    >>> custom_holidays = holidays.HolidaysBase()
+    >>> custom_holidays = holidays.HolidayBase()
     >>> custom_holidays.append(['2015-01-01', '07/04/2015'])
     >>> custom_holidays.append(date(2015, 12, 25))
 
