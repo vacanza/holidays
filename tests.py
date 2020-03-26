@@ -6309,27 +6309,6 @@ class TestVietnam(unittest.TestCase):
         for year in range(1979, 2099):
             self.assertIn("International New Year's Day", self.holidays[date(year, 1, 1)])
 
-    # def test_lunar_new_year_eve(self):
-    #     for year, month, day in [
-    #         (2017, 1, 27), (2018, 2, 15), (2019, 2, 4), (2020, 1, 24),
-    #         (2021, 2, 11)]:
-    #         self.assertEqual(self.holidays[date(year, month, day)],
-    #             "Vietnamese New Year Eve")
-    #         self.assertEqual(self.holidays[date(year, month, day + 1)],
-    #             "Vietnamese New Year")
-
-    # def test_tet_holiday(self):
-    #     for year, month, day in [
-    #         (2017, 1, 26), (2017, 1, 29), (2017, 1, 30), (2017, 1, 31), (2017, 2, 1),
-    #         (2018, 2, 14), (2018, 2, 17), (2018, 2, 18), (2018, 2, 19), (2018, 2, 20),
-    #         (2019, 2, 2), (2019, 2, 3), (2019, 2, 6), (2019, 2, 7), (2019, 2, 8), (2019, 2, 9), (2019, 2, 10),
-    #         (2020, 1, 23), (2020,1,26), (2020,1,27), (2020,1,28), (2020,1,29),
-    #         (2021, 2, 13), (2021, 2, 14), (2021, 2, 15), (2021, 2, 16)]:
-    #         self.assertEqual(self.holidays[date(year, month, day)], "Tet holiday")
-
-
-
-
     def test_lunar_new_year(self):
         lunar_new_year_list=[
                 (2008, 2, 7),  (2009, 1, 26), (2010, 2, 14), (2011, 2, 3),
@@ -6350,11 +6329,9 @@ class TestVietnam(unittest.TestCase):
             self.assertEqual(self.holidays[date(year, month, day)+relativedelta(days=+4)],
                              "The fifth day of Tet Holiday")
 
-
     def test_king_hung_day(self):
         for year, month, day in [(2020, 4, 2), (2021, 4, 21), (2022, 4, 10)]:
             self.assertEqual(self.holidays[date(year, month, day)], "Hung Kings Commemoration Day")
-        pass
 
     def test_libreration_day(self):
         for year in range(1979, 2099):
