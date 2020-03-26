@@ -6193,6 +6193,10 @@ class TestKorea(unittest.TestCase):
                 (2018, 5, 7), (2019, 5, 6)]:
             self.assertEqual(self.holidays[date(year, month, day)],
                              "Alternative holiday of Children's Day")
+        for year, mont, day in [
+                (2025, 5, 6), (2044, 5, 6)]:
+            self.assertIn("Alternative holiday of Children's Day",
+                          self.holidays[date(year, month, day)])
 
     def test_birthday_of_buddha(self):
         name = "Birthday of the Buddha"
@@ -6331,7 +6335,8 @@ class TestVietnam(unittest.TestCase):
 
     def test_king_hung_day(self):
         for year, month, day in [(2020, 4, 2), (2021, 4, 21), (2022, 4, 10)]:
-            self.assertEqual(self.holidays[date(year, month, day)], "Hung Kings Commemoration Day")
+            self.assertEqual(self.holidays[date(year, month, day)], 
+                "Hung Kings Commemoration Day")
 
     def test_libreration_day(self):
         for year in range(1979, 2099):

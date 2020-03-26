@@ -100,28 +100,30 @@ class Korea(HolidayBase):
             # removed from holiday since 2007
             pass
 
-        # Children's Day
-        name = "Children's Day"
-        childrens_date = date(year, MAY, 5)
-        if self.observed and year >= 2015:
-            if childrens_date.weekday() == SUN:
-                self[childrens_date] = name
-                self[childrens_date + rd(days=+1)] = alt_holiday + name
-            elif childrens_date.weekday() == SAT:
-                self[childrens_date] = name
-                self[childrens_date + rd(days=+2)] = alt_holiday + name
-            else:
-                self[childrens_date] = name
-        elif self.observed and year >= 1975:
-            self[childrens_date] = name
-        else:
-            pass
-
         # Birthday of the Buddha
         name = "Birthday of the Buddha"
         dt = self.get_solar_date(year, 4, 8)
         buddha_date = date(dt.year, dt.month, dt.day)
         self[buddha_date] = name
+
+        # Children's Day
+        name = "Children's Day"
+        childrens_date = date(year, MAY, 5)
+        if year >= 1975:
+            self[childrens_date] = name
+            if self.observed and year >= 2015:
+                if childrens_date.weekday() == SUN:
+                    self[childrens_date + rd(days=+1)] = alt_holiday + name
+                if childrens_date.weekday() == SAT:
+                    self[childrens_date + rd(days=+2)] = alt_holiday + name
+
+                # check if holiday overlaps with other holidays, should be next day.
+                # most likely: Birthday of the Buddah
+                if self[childrens_date] != name:
+                    self[childrens_date + rd(days=+1)] = alt_holiday + name
+        else:
+            # no children's day before 1975
+            pass
 
         # Labour Day
         name = "Labour Day"
