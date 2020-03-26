@@ -6021,6 +6021,9 @@ class TestKorea(unittest.TestCase):
         self.assertEqual(holidaysNoObserved[date(2019, 1, 1)],
                          "New Year's Day")
 
+        self.assertNotIn(date(1582, 10, 2), self.holidays)
+        self.assertNotIn(date(1582, 10, 14), self.holidays)
+
     def test_first_day_of_january(self):
         for year in range(2006, 2021):
             self.assertIn(self.holidays[date(year, 1, 1)],
@@ -6260,6 +6263,11 @@ class TestVietnam(unittest.TestCase):
         for year in range(1979, 2099):
             self.assertIn("International Labor Day",
                 self.holidays[date(year, 5, 1)])
+
+    def test_independence_day(self):
+        for year in range(1979, 2099):
+            self.assertIn("Independence Day",
+                self.holidays[date(year, 9, 2)])
 
 
 if __name__ == "__main__":

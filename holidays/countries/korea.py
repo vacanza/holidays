@@ -393,9 +393,9 @@ class Korea(HolidayBase):
         days = self.__getLunarDaysBeforeBaseYear(
             year - 1) + self.__getLunarDaysBeforeBaseMonth(
             year, month - 1, True) + day
-        if (isIntercalation is True) and (self.__getLunarIntercalationMonth(
-                                          self.__getLunarData(year)) == month):
-            days += self.__getLunarDays(year, month, False)
+        # if (isIntercalation is True) and (self.__getLunarIntercalationMonth(
+        #                                   self.__getLunarData(year)) == month):
+        #     days += self.__getLunarDays(year, month, False)
         return days
 
     def __isSolarIntercalationYear(self, lunarData):
@@ -463,32 +463,6 @@ class Korea(HolidayBase):
         self.solarMonth = solarMonth
         self.solarDay = solarDay
 
-    def __setLunarDateBySolarDate(self, solarYear, solarMonth, solarDay):
-        absDays = self.__getSolarAbsDays(solarYear, solarMonth, solarDay)
-        lunarYear = solarYear if (absDays >= self.__getLunarAbsDays(
-            solarYear, 1, 1, False)) else solarYear - 1
-        lunarMonth = 0
-        lunarDay = 0
-        isIntercalation = False
-
-        for month in range(12, 0, -1):
-            absDaysByMonth = self.__getLunarAbsDays(lunarYear, month, 1, False)
-            if absDays >= absDaysByMonth:
-                lunarMonth = month
-                if self.__getLunarIntercalationMonth(
-                   self.__getLunarData(lunarYear)) == month:
-                    isIntercalation = absDays >= self.__getLunarAbsDays(
-                        lunarYear, month, 1, True)
-
-                lunarDay = absDays - self.__getLunarAbsDays(
-                    lunarYear, lunarMonth, 1, isIntercalation) + 1
-                break
-
-        self.lunarYear = lunarYear
-        self.lunarMonth = lunarMonth
-        self.lunarDay = lunarDay
-        self.isIntercalation = isIntercalation
-
     def __checkValidDate(self, isLunar, isIntercalation, year, month, day):
         isValid = False
         dateValue = year * 10000 + month * 100 + day
@@ -529,17 +503,6 @@ class Korea(HolidayBase):
                     self.__getLunarData(lunarYear)) == lunarMonth)
             self.__setSolarDateByLunarDate(
                 lunarYear, lunarMonth, lunarDay, isIntercalation)
-            isValid = True
-        return isValid
-
-    def setSolarDate(self, solarYear, solarMonth, solarDay):
-        isValid = False
-        if self.__checkValidDate(False, False, solarYear,
-                                 solarMonth, solarDay):
-            self.solarYear = solarYear
-            self.solarMonth = solarMonth
-            self.solarDay = solarDay
-            self.__setLunarDateBySolarDate(solarYear, solarMonth, solarDay)
             isValid = True
         return isValid
 
