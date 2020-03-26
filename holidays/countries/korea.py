@@ -474,7 +474,7 @@ class Korea(HolidayBase):
             if month > 0 and month < 13 and day > 0:
                 # if isLunar:
                 dayLimit = self.__getLunarDays(year, month,
-                                                   isIntercalation)
+                                               isIntercalation)
                 # else:
                 #     dayLimit = self.__getSolarDays(year, month)
                 # if isLunar is False and year == 1582 and month == 10:
