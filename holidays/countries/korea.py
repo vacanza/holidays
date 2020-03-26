@@ -117,7 +117,7 @@ class Korea(HolidayBase):
                 if childrens_date.weekday() == SAT:
                     self[childrens_date + rd(days=+2)] = alt_holiday + name
 
-                # check if holiday overlaps with other holidays, should be next day.
+                # if holiday overlaps with other holidays, should be next day.
                 # most likely: Birthday of the Buddah
                 if self[childrens_date] != name:
                     self[childrens_date + rd(days=+1)] = alt_holiday + name
