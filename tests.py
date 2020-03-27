@@ -6281,9 +6281,9 @@ class TestKorea(unittest.TestCase):
                              "Alternative holiday of Chuseok")
 
     def test_national_foundation_day(self):
-        for year in range(1948, 2099):
+        for year in range(1948, 2050):
             if year in [1952, 1963, 1971, 1990, 2009, 2017, 2028,
-                        2036, 2039, 2047, 2058, 2066, 2085]:
+                        2036, 2039, 2047]:
                 self.assertIn("National Foundation Day",
                               self.holidays[date(year, 10, 3)])
             else:
@@ -6296,7 +6296,7 @@ class TestKorea(unittest.TestCase):
                              "Hangeul Day")
 
     def test_christmas_day(self):
-        for year in range(1948, 2007):
+        for year in range(1948, 2050):
             self.assertEqual(self.holidays[date(year, 12, 25)],
                              "Christmas Day")
 
