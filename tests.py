@@ -6310,7 +6310,7 @@ class TestVietnam(unittest.TestCase):
         self.assertEqual(self.holidays[date(2020, 1, 1)], "International New Year's Day")
 
     def test_first_day_of_january(self):
-        for year in range(1979, 2099):
+        for year in range(1979, 2050):
             self.assertIn("International New Year's Day", self.holidays[date(year, 1, 1)])
 
     def test_lunar_new_year(self):
@@ -6338,18 +6338,18 @@ class TestVietnam(unittest.TestCase):
             self.assertEqual(self.holidays[date(year, month, day)], 
                 "Hung Kings Commemoration Day")
 
-    def test_libreration_day(self):
-        for year in range(1979, 2099):
+    def test_liberation_day(self):
+        for year in range(1979, 2050):
             self.assertIn("Liberation Day/Reunification Day",
                 self.holidays[date(year, 4, 30)])
 
     def test_international_labor_day(self):
-        for year in range(1979, 2099):
+        for year in range(1979, 2050):
             self.assertIn("International Labor Day",
                 self.holidays[date(year, 5, 1)])
 
     def test_independence_day(self):
-        for year in range(1979, 2099):
+        for year in range(1979, 2050):
             self.assertIn("Independence Day",
                 self.holidays[date(year, 9, 2)])
 

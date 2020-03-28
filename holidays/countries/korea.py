@@ -33,6 +33,7 @@ class Korea(HolidayBase):
     def __init__(self, **kwargs):
         self.country = "KR"
         HolidayBase.__init__(self, **kwargs)
+        self.korean_cal = KoreanLunarCalendar()
 
     def _populate(self, year):
 
@@ -185,9 +186,9 @@ class Korea(HolidayBase):
 
     # convert lunar calendar date to solar
     def get_solar_date(self, year, month, day):
-        cal = KoreanLunarCalendar()
-        cal.setLunarDate(year, month, day, False)
-        return date(cal.solarYear, cal.solarMonth, cal.solarDay)
+        self.korean_cal.setLunarDate(year, month, day, False)
+        return date(self.korean_cal.solarYear, self.korean_cal.solarMonth,
+                    self.korean_cal.solarDay)
 
     def first_lower(self, s):
         return s[0].lower() + s[1:]
