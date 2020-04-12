@@ -111,9 +111,9 @@ class Egypt(HolidayBase):
         for date_obs in get_gre_date(year, 12, 9):
             hol_date = date_obs
             self[hol_date] = "Arafat Day"
-            self[hol_date + rd(days=1)] = "Eid al-Fitr"
-            self[hol_date + rd(days=2)] = "Eid al-Fitr Holiday"
-            self[hol_date + rd(days=3)] = "Eid al-Fitr Holiday"
+            self[hol_date + rd(days=1)] = "Eid al-Adha"
+            self[hol_date + rd(days=2)] = "Eid al-Adha Holiday"
+            self[hol_date + rd(days=3)] = "Eid al-Adha Holiday"
 
         # Islamic New Year - (hijari_year, 1, 1)
         for date_obs in get_gre_date(year, 1, 1):
