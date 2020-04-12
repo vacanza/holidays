@@ -144,6 +144,7 @@ Korea               KR/KOR    None
 Lithuania           LT/LTU    None
 Luxembourg          LU/LUX    None
 Mexico              MX/MEX    None
+Morocco             MA/MOR    None
 Netherlands         NL/NLD    None
 NewZealand          NZ/NZL    prov = NTL, AUK, TKI, HKB, WGN, MBH, NSN, CAN, STC, WTL,
                               OTA, STL, CIT

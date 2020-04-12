@@ -69,3 +69,4 @@ from .united_kingdom import UnitedKingdom, UK, GB, England, Wales, Scotland,\
     IsleOfMan, NorthernIreland
 from .united_states import UnitedStates, US
 from .vietnam import Vietnam, VN
+from .morocco import Morocco, MA, MOR
