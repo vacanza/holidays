@@ -9,64 +9,64 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from .argentina import Argentina, AR
-from .aruba import Aruba, AW
-from .australia import Australia, AU
-from .austria import Austria, AT
-from .belarus import Belarus, BY
-from .belgium import Belgium, BE
-from .brazil import Brazil, BR
-from .bulgaria import Bulgaria, BG
-from .canada import Canada, CA
-from .chile import Chile, CL
-from .colombia import Colombia, CO
-from .croatia import Croatia, HR
-from .czechia import Czechia, Czech, CZ
-from .denmark import Denmark, DK
-from .dominican_republic import DominicanRepublic, DO
-from .egypt import Egypt, EG
-from .estonia import Estonia, EE
+from .argentina import Argentina, AR, ARG
+from .aruba import Aruba, AW, ABW
+from .australia import Australia, AU, AUS
+from .austria import Austria, AT, AUT
+from .belarus import Belarus, BY, BLR
+from .belgium import Belgium, BE, BEL
+from .brazil import Brazil, BR, BRA
+from .bulgaria import Bulgaria, BG, BLG
+from .canada import Canada, CA, CAN
+from .chile import Chile, CL, CHL
+from .colombia import Colombia, CO, COL
+from .croatia import Croatia, HR, HRV
+from .czechia import Czechia, Czech, CZ, CZE
+from .denmark import Denmark, DK, DNK
+from .dominican_republic import DominicanRepublic, DO, DOM
+from .egypt import Egypt, EG, EGY
+from .estonia import Estonia, EE, EST
 from .european_central_bank import EuropeanCentralBank, ECB, TAR
-from .finland import Finland, FI
+from .finland import Finland, FI, FIN
 from .france import France, FRA
-from .germany import Germany, DE
-from .greece import Greece, GR
-from .honduras import Honduras, HND
-from .hongkong import HongKong, HK
-from .hungary import Hungary, HU
-from .iceland import Iceland, IS
-from .india import India, IND
-from .ireland import Ireland, IE
-from .italy import Italy, IT
-from .israel import Israel, ISR, IL
-from .japan import Japan, JP
-from .kenya import Kenya, KE
+from .germany import Germany, DE, DEU
+from .greece import Greece, GR, GRC
+from .honduras import Honduras, HN, HND
+from .hongkong import HongKong, HK, HKG
+from .hungary import Hungary, HU, HUN
+from .iceland import Iceland, IS, ISL
+from .india import India, IN, IND
+from .ireland import Ireland, IE, IRL
+from .italy import Italy, IT, ITA
+from .israel import Israel, IL, ISR
+from .japan import Japan, JP, JPN
+from .kenya import Kenya, KE, KEN
 from .korea import Korea, KR, KOR
-from .lithuania import Lithuania, LT
-from .luxembourg import Luxembourg, LU
-from .mexico import Mexico, MX
+from .lithuania import Lithuania, LT, LTU
+from .luxembourg import Luxembourg, LU, LUX
+from .mexico import Mexico, MX, MEX
 from .morocco import Morocco, MA, MOR
-from .netherlands import Netherlands, NL
-from .new_zealand import NewZealand, NZ
-from .nicaragua import Nicaragua, NI
-from .nigeria import Nigeria, NG
-from .norway import Norway, NO
-from .paraguay import Paraguay, PY
-from .peru import Peru, PE
-from .poland import Poland, Polish, PL
-from .portugal import Portugal, PT, PortugalExt, PTE
-from .russia import Russia, RU
-from .serbia import Serbia, RS
-from .singapore import Singapore, SG
-from .slovakia import Slovakia, Slovak, SK
-from .slovenia import Slovenia, SI
-from .south_africa import SouthAfrica, ZA
-from .spain import Spain, ES
-from .sweden import Sweden, SE
-from .switzerland import Switzerland, CH
-from .turkey import Turkey, TR
-from .ukraine import Ukraine, UA
+from .netherlands import Netherlands, NL, NLD
+from .new_zealand import NewZealand, NZ, NZL
+from .nicaragua import Nicaragua, NI, NIC
+from .nigeria import Nigeria, NG, NGA
+from .norway import Norway, NO, NOR
+from .paraguay import Paraguay, PY, PRY
+from .peru import Peru, PE, PER
+from .poland import Poland, Polish, PL, POL
+from .portugal import Portugal, PT, PRT, PortugalExt, PTE
+from .russia import Russia, RU, RUS
+from .serbia import Serbia, RS, SRB
+from .singapore import Singapore, SG, SGP
+from .slovakia import Slovakia, Slovak, SK, SVK
+from .slovenia import Slovenia, SI, SVN
+from .south_africa import SouthAfrica, ZA, ZAF
+from .spain import Spain, ES, ESP
+from .sweden import Sweden, SE, SWE
+from .switzerland import Switzerland, CH, CHE
+from .turkey import Turkey, TR, TUR
+from .ukraine import Ukraine, UA, UKR
 from .united_kingdom import UnitedKingdom, UK, GB, England, Wales, Scotland,\
-    IsleOfMan, NorthernIreland
-from .united_states import UnitedStates, US
-from .vietnam import Vietnam, VN
+    IsleOfMan, NorthernIreland, GBR
+from .united_states import UnitedStates, US, USA
+from .vietnam import Vietnam, VN, VNM
