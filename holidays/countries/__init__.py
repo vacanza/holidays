@@ -45,6 +45,7 @@ from .korea import Korea, KR, KOR
 from .lithuania import Lithuania, LT
 from .luxembourg import Luxembourg, LU
 from .mexico import Mexico, MX
+from .morocco import Morocco, MA, MOR
 from .netherlands import Netherlands, NL
 from .new_zealand import NewZealand, NZ
 from .nicaragua import Nicaragua, NI
@@ -69,4 +70,3 @@ from .united_kingdom import UnitedKingdom, UK, GB, England, Wales, Scotland,\
     IsleOfMan, NorthernIreland
 from .united_states import UnitedStates, US
 from .vietnam import Vietnam, VN
-from .morocco import Morocco, MA, MOR

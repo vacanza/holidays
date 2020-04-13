@@ -65,7 +65,8 @@ class Morocco(HolidayBase):
 
         # Independence Manifesto Day post 1944
         if year > 1944:
-            self[date(year, JAN, 11)] = "Commémoration de la présentation du manifeste de l'indépendance"
+            self[date(year, JAN, 11)] = "Commémoration de la présentation " \
+                                        "du manifeste de l'indépendance"
 
         # Labor day
         self[date(year, MAY, 1)] = "Fête du Travail"
@@ -79,12 +80,11 @@ class Morocco(HolidayBase):
             self[date(year, NOV, 18)] = "Fête du Trône"
 
         # Oued Ed-Dahab Day
-
         self[date(year, AUG, 14)] = "Journée de Oued Ed-Dahab"
 
         # Revolution Day
-
-        self[date(year, AUG, 20)] = "Commémoration de la révolution du Roi et du peuple"
+        self[date(year, AUG, 20)] = "Commémoration de la révolution du " \
+                                    "Roi et du peuple"
 
         # Youth day
         if year > 2000:
@@ -110,7 +110,7 @@ class Morocco(HolidayBase):
             self[hol_date] = "Eid al-Fitr"
             self[hol_date + rd(days=1)] = "Eid al-Fitr"
 
-        # Eid al-Adha - Sacrfice Festive
+        # Eid al-Adha - Sacrifice Festive
         # date of observance is announced yearly
         for date_obs in get_gre_date(year, 12, 10):
             hol_date = date_obs
