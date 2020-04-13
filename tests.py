@@ -280,8 +280,8 @@ class TestBasics(unittest.TestCase):
         self.assertEqual(na.get_list(date(1969, 1, 3)), [])
 
     def test_list_supported_countries(self):
-        self.assertEqual(holidays.list_supported_countries()[0], "AR")
-        self.assertEqual(holidays.list_supported_countries()[-1], "ZA")
+        self.assertIn("AR", holidays.list_supported_countries())
+        self.assertIn("ZA", holidays.list_supported_countries())
 
     def test_radd(self):
         self.assertRaises(TypeError, lambda: 1 + holidays.US())
