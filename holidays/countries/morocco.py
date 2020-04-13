@@ -13,37 +13,40 @@
 
 from datetime import date
 
-from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from holidays.constants import FRI, SAT
-from holidays.constants import JAN, APR, MAY, JUN, JUL, OCT
+from holidays.constants import SAT, SUN
+from holidays.constants import JAN, MAR, MAY, JUL, AUG, NOV
 from holidays.holiday_base import HolidayBase
 from holidays.utils import get_gre_date
 
-WEEKEND = (FRI, SAT)
+WEEKEND = (SAT, SUN)
 
 
-class Egypt(HolidayBase):
+class Morocco(HolidayBase):
+    """
+    Moroccan holidays
+    Note that holidays falling on a sunday is "lost",
+    it will not be moved to another day to make up for the collision.
 
-    # Holidays here are estimates, it is common for the day to be pushed
-    # if falls in a weekend, although not a rule that can be implemented.
     # Holidays after 2020: the following four moving date holidays whose exact
     # date is announced yearly are estimated (and so denoted):
     # - Eid El Fetr*
     # - Eid El Adha*
-    # - Arafat Day*
-    # - Moulad El Naby*
+    # - 1er Moharram*
+    # - Aid al Mawlid Annabawi*
     # *only if hijri-converter library is installed, otherwise a warning is
     #  raised that this holiday is missing. hijri-converter requires
     #  Python >= 3.6
-    # is_weekend function is there, however not activated for accuracy.
+    Primary sources:
+    https://fr.wikipedia.org/wiki/F%C3%AAtes_et_jours_f%C3%A9ri%C3%A9s_au_Maroc
+    https://www.mmsp.gov.ma/fr/pratiques.aspx?id=38
+    """
 
     def __init__(self, **kwargs):
-        self.country = 'EG'
+        self.country = 'MA'
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
-
         """
         # Function to store the holiday name in the appropriate
         # date and to shift the Public holiday in case it happens
@@ -58,42 +61,44 @@ class Egypt(HolidayBase):
         """
 
         # New Year's Day
-        self[date(year, JAN, 1)] = "New Year's Day - Bank Holiday"
+        self[date(year, JAN, 1)] = "Nouvel an - Premier janvier"
 
-        # Coptic Christmas
-        self[date(year, JAN, 7)] = "Coptic Christmas"
+        # Independence Manifesto Day post 1944
+        if year > 1944:
+            self[date(year, JAN, 11)] = "Commémoration de la présentation " \
+                                        "du manifeste de l'indépendance"
 
-        # 25th of Jan
-        if year >= 2012:
-            self[date(year, JAN, 25)] = "Revolution Day - January 25"
-        elif year >= 2009:
-            self[date(year, JAN, 25)] = "Police Day"
+        # Labor day
+        self[date(year, MAY, 1)] = "Fête du Travail"
+
+        # Throne day
+        if year > 2000:
+            self[date(year, JUL, 30)] = "Fête du Trône"
+        elif year > 1962:
+            self[date(year, MAR, 3)] = "Fête du Trône"
         else:
-            pass
+            self[date(year, NOV, 18)] = "Fête du Trône"
 
-        # Coptic Easter - Orthodox Easter
-        self[easter(year, 2)] = "Coptic Easter Sunday"
-
-        # Sham El Nessim - Spring Festival
-        self[easter(year, 2) + rd(days=1)] = "Sham El Nessim"
-
-        # Sinai Libration Day
-        if year > 1982:
-            self[date(year, APR, 25)] = "Sinai Liberation Day"
-
-        # Labour Day
-        self[date(year, MAY, 1)] = "Labour Day"
-
-        # Armed Forces Day
-        self[date(year, OCT, 6)] = "Armed Forces Day"
-
-        # 30 June Revolution Day
-        if year >= 2014:
-            self[date(year, JUN, 30)] = "30 June Revolution Day"
+        # Oued Ed-Dahab Day
+        self[date(year, AUG, 14)] = "Journée de Oued Ed-Dahab"
 
         # Revolution Day
-        if year > 1952:
-            self[date(year, JUL, 23)] = "Revolution Day"
+        self[date(year, AUG, 20)] = "Commémoration de la révolution du " \
+                                    "Roi et du peuple"
+
+        # Youth day
+        if year > 2000:
+            self[date(year, AUG, 21)] = "Fête de la jeunesse"
+        else:
+            self[date(year, JUL, 9)] = "Fête du Trône"
+
+        # Green March
+        if year > 1975:
+            self[date(year, NOV, 6)] = "Marche verte"
+
+        # Independance day
+        if year > 1956:
+            self[date(year, NOV, 18)] = "Fête de l'indépendance"
 
         # Eid al-Fitr - Feast Festive
         # date of observance is announced yearly, This is an estimate since
@@ -103,32 +108,30 @@ class Egypt(HolidayBase):
         for date_obs in get_gre_date(year, 10, 1):
             hol_date = date_obs
             self[hol_date] = "Eid al-Fitr"
-            self[hol_date + rd(days=1)] = "Eid al-Fitr Holiday"
-            self[hol_date + rd(days=2)] = "Eid al-Fitr Holiday"
+            self[hol_date + rd(days=1)] = "Eid al-Fitr"
 
-        # Arafat Day & Eid al-Adha - Scarfice Festive
+        # Eid al-Adha - Sacrifice Festive
         # date of observance is announced yearly
-        for date_obs in get_gre_date(year, 12, 9):
+        for date_obs in get_gre_date(year, 12, 10):
             hol_date = date_obs
-            self[hol_date] = "Arafat Day"
+            self[hol_date] = "Eid al-Adha"
             self[hol_date + rd(days=1)] = "Eid al-Adha"
-            self[hol_date + rd(days=2)] = "Eid al-Adha Holiday"
-            self[hol_date + rd(days=3)] = "Eid al-Adha Holiday"
 
         # Islamic New Year - (hijari_year, 1, 1)
         for date_obs in get_gre_date(year, 1, 1):
             hol_date = date_obs
-            self[hol_date] = "Islamic New Year"
+            self[hol_date] = "1er Moharram"
 
         # Prophet Muhammad's Birthday - (hijari_year, 3, 12)
         for date_obs in get_gre_date(year, 3, 12):
             hol_date = date_obs
-            self[hol_date] = "Prophet Muhammad's Birthday"
+            self[hol_date] = "Aid al Mawlid Annabawi"
+            self[hol_date + rd(days=1)] = "Aid al Mawlid Annabawi"
 
 
-class EG(Egypt):
+class MA(Morocco):
     pass
 
 
-class EGY(Egypt):
+class MOR(Morocco):
     pass
