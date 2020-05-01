@@ -57,7 +57,7 @@ class Spain(HolidayBase):
         if self.prov and self.prov in \
                 ['CT', 'PV', 'NC', 'VC', 'IB', 'CM']:
             self[easter(year) + rd(weekday=MO)] = "Lunes de Pascua"
-            self[date(year, MAY, 1)] = "Día del Trabajador"
+        self[date(year, MAY, 1)] = "Día del Trabajador"
         if self.prov and self.prov in ['CT', 'GA', 'VC']:
             self[date(year, JUN, 24)] = "San Juan"
         self[date(year, AUG, 15)] = "Asunción de la Virgen"
