@@ -1,6 +1,6 @@
 import inspect
 import holidays
-from datetime import date
+from datetime import date, timedelta
 
 
 def list_supported_countries():
@@ -54,3 +54,14 @@ def get_gre_date(year, Hmonth, Hday):
         if gre.year == year:
             gre_dates.append(date(*gre.datetuple()))
     return gre_dates
+
+
+def sunday_holiday_to_monday(h_day):
+    """
+    returns the following day when a holiday fall in sunday, otherwise
+    returns the argument
+    Python >= 3.6
+    """
+    if h_day.weekday() == holidays.constants.SUN:
+        return h_day + timedelta(days=1)
+    return h_day
