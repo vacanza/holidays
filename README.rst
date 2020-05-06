@@ -424,6 +424,10 @@ More Examples
 >>> from datetime import date
 >>> holidays.US()[date(2013, 12, 31): date(2014, 1, 2)]
 
+# Intermediate years are only shown if they are listed in the years parameter.
+
+>>> holidays.US(years=[2014])[datetime.date(2013, 1, 1): datetime.date(2015, 12, 31)]
+
 Development Version
 -------------------
 
