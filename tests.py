@@ -3188,6 +3188,7 @@ class TestES(unittest.TestCase):
         fixed_days_whole_country = (
             (1, 1),
             (1, 6),
+            (5, 1),
             (8, 15),
             (10, 12),
             (11, 1),
@@ -3216,7 +3217,6 @@ class TestES(unittest.TestCase):
             (3, 1): ['IB'],
             (4, 23): ['AR', 'CL'],
             (5, 30): ['CN'],
-            (5, 1): ['CT', 'PV', 'NC', 'VC', 'IB', 'CM'],
             (5, 2): ['MD'],
             (6, 9): ['MC', 'RI'],
             (7, 25): ['GA'],
