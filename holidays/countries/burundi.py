@@ -20,8 +20,6 @@ from holidays.constants import JAN, FEB, APR, MAY, JUL, AUG, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.utils import get_gre_date
 
-import pry
-
 
 class Burundi(HolidayBase):
     """
