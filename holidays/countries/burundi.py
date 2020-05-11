@@ -61,10 +61,7 @@ class Burundi(HolidayBase):
 
         # Ascension Day
         name = "Ascension Day"
-        hol_date = easter(year) + rd(days=+39)
-        self[hol_date] = name
-        if hol_date.weekday() == SUN:
-            self[easter(year) + rd(days=+40)] = name + " (Observed)"
+        self[easter(year) + rd(days=+39)] = name
 
         # Independence Day post 1962
         name = "Independence Day"
@@ -83,8 +80,6 @@ class Burundi(HolidayBase):
         # Assumption Day
         name = 'Assumption Day'
         self[date(year, AUG, 15)] = name
-        if date(year, AUG, 15).weekday() == SUN:
-            self[date(year, FEB, 6)] = name + " (Observed)"
 
         # Prince Louis Rwagasore Day
         name = "Prince Louis Rwagasore Day"
