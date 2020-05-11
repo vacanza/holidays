@@ -48,20 +48,30 @@ class Burundi(HolidayBase):
             self[date(year, FEB, 6)] = name + " (Observed)"
 
         # President Ntaryamira Day
+        name = "President Ntaryamira Day"
         self[date(year, APR, 6)] = "President Ntaryamira Day"
+        if date(year, AUG, 6).weekday() == SUN:
+            self[date(year, AUG, 7)] = name + " (Observeed)"
 
         # Labour Day
-        self[date(year, MAY, 1)] = "Labour Day"
+        name = "Labour Day"
+        self[date(year, MAY, 1)] = name
+        if date(year, MAY, 1).weekday() == SUN:
+            self[date(year, MAY, 2)] = name + " (Observeed)"
 
         # Ascension Day
-        self[easter(year) + rd(days=+39)] = "Ascension Day"
+        name = "Ascension Day"
+        hol_date = easter(year) + rd(days=+39)
+        self[hol_date] = name
+        if hol_date.weekday() == SUN:
+            self[aster(year) + rd(days=+40)] = name + " (Observeed)"
 
         # Independence Day post 1962
         name = "Independence Day"
         if year > 1961:
             self[date(year, JUL, 1)] = name
             if date(year, JUL, 1).weekday() == SUN:
-                self[date(year, FEB, 6)] = name
+                self[date(year, JUL, 2)] = name
 
         # Eid Al Adha- Feast of the Sacrifice
         # date of observance is announced yearly
@@ -89,7 +99,10 @@ class Burundi(HolidayBase):
             self[date(year, FEB, 6)] = name + " (Observeed)"
 
         # All Saints' Day
-        self[date(year, NOV, 1)] = "All Saints' Day"
+        name = "All Saints' Day"
+        self[date(year, NOV, 1)] = name
+        if date(year, NOV, 1).weekday() == SUN:
+            self[date(year, NOV, 2)] = name + " (Observeed)"
 
         # Christmas Day
         self[date(year, DEC, 25)] = "Christmas Day"

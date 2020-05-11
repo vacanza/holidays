@@ -6424,12 +6424,9 @@ class TestBurundi(unittest.TestCase):
         for year in range(1979, 2050):
             self.assertIn("New Year's Day", self.holidays[date(year, 1, 1)])
 
-    def test_independence_day(self):
+    def test_unity_day(self):
         self.assertIn("Unity Day", self.holidays[date(2017, 2, 5)])
         self.assertIn("Unity Day", self.holidays[date(2018, 2, 5)])
-
-        self.assertIn("Unity Day (Observed)", self.holidays[date(2017, 2, 6)])
-        self.assertIn("Unity Day (Observed)", self.holidays[date(2023, 2, 6)])
 
     def test_rwagasore_day(self):
         self.assertIn("Prince Louis Rwagasore Day", self.holidays[date(2017, 10, 13)])
@@ -6437,11 +6434,9 @@ class TestBurundi(unittest.TestCase):
 
     def test_ndadaye_day(self):
         self.assertIn("President Ndadaye's Day", self.holidays[date(2017, 10, 21)])
-
-    def test_ndadaye_day(self):
         self.assertIn("President Ndadaye's Day", self.holidays[date(2017, 10, 21)])
 
-    def test_unity_day(self):
+    def test_independence_day(self):
         for year in range(1962, 2050):
             self.assertIn(date(year, 7, 1), self.holidays)
         
@@ -6454,6 +6449,12 @@ class TestBurundi(unittest.TestCase):
 
     def test_assumption_Day(self):
         self.assertIn('Assumption Day', self.holidays[date(2020, 8, 15)])
+
+    def test_all_saints_Day(self):
+        self.assertIn("All Saints' Day", self.holidays[date(2020, 11, 1)])
+
+    def test_christmas_Day(self):
+        self.assertIn("Christmas Day", self.holidays[date(2020, 12, 25)])
 
     def test_eid_al_adha(self):
         if sys.version_info >= (3, 6):
