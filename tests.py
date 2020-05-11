@@ -20,8 +20,6 @@ import sys
 
 import holidays
 
-import pry
-
 
 class TestBasics(unittest.TestCase):
 
