@@ -6451,7 +6451,7 @@ class TestBurundi(unittest.TestCase):
         self.assertIn("Independence Day (Observed)", self.holidays[date(2018, 7, 2)])
 
     def test_ascension_day(self):
-        self.assertIn(date(2020, 5, 21), self.holidays)
+        self.assertIn("Ascension Day", self.holidays[date(2020, 5, 21)])
 
     def test_assumption_Day(self):
         self.assertIn('Assumption Day', self.holidays[date(2020, 8, 15)])
