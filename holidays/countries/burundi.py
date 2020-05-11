@@ -50,28 +50,28 @@ class Burundi(HolidayBase):
         # President Ntaryamira Day
         name = "President Ntaryamira Day"
         self[date(year, APR, 6)] = "President Ntaryamira Day"
-        if date(year, AUG, 6).weekday() == SUN:
-            self[date(year, AUG, 7)] = name + " (Observeed)"
+        if date(year, APR, 6).weekday() == SUN:
+            self[date(year, APR, 7)] = name + " (Observed)"
 
         # Labour Day
         name = "Labour Day"
         self[date(year, MAY, 1)] = name
         if date(year, MAY, 1).weekday() == SUN:
-            self[date(year, MAY, 2)] = name + " (Observeed)"
+            self[date(year, MAY, 2)] = name + " (Observed)"
 
         # Ascension Day
         name = "Ascension Day"
         hol_date = easter(year) + rd(days=+39)
         self[hol_date] = name
         if hol_date.weekday() == SUN:
-            self[aster(year) + rd(days=+40)] = name + " (Observeed)"
+            self[easter(year) + rd(days=+40)] = name + " (Observed)"
 
         # Independence Day post 1962
         name = "Independence Day"
         if year > 1961:
             self[date(year, JUL, 1)] = name
             if date(year, JUL, 1).weekday() == SUN:
-                self[date(year, JUL, 2)] = name
+                self[date(year, JUL, 2)] = name + " (Observed)"
 
         # Eid Al Adha- Feast of the Sacrifice
         # date of observance is announced yearly
@@ -84,25 +84,25 @@ class Burundi(HolidayBase):
         name = 'Assumption Day'
         self[date(year, AUG, 15)] = name
         if date(year, AUG, 15).weekday() == SUN:
-            self[date(year, FEB, 6)] = name + " (Observeed)"
+            self[date(year, FEB, 6)] = name + " (Observed)"
 
         # Prince Louis Rwagasore Day
         name = "Prince Louis Rwagasore Day"
         self[date(year, OCT, 13)] = name
         if date(year, OCT, 13).weekday() == SUN:
-            self[date(year, FEB, 6)] = name + " (Observeed)"
+            self[date(year, OCT, 14)] = name + " (Observed)"
 
         # President Ndadaye's Day
         name = "President Ndadaye's Day"
         self[date(year, OCT, 21)] = name
         if date(year, OCT, 21).weekday() == SUN:
-            self[date(year, FEB, 6)] = name + " (Observeed)"
+            self[date(year, OCT, 22)] = name + " (Observed)"
 
         # All Saints' Day
         name = "All Saints' Day"
         self[date(year, NOV, 1)] = name
         if date(year, NOV, 1).weekday() == SUN:
-            self[date(year, NOV, 2)] = name + " (Observeed)"
+            self[date(year, NOV, 2)] = name + " (Observed)"
 
         # Christmas Day
         self[date(year, DEC, 25)] = "Christmas Day"

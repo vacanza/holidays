@@ -6426,15 +6426,22 @@ class TestBurundi(unittest.TestCase):
 
     def test_unity_day(self):
         self.assertIn("Unity Day", self.holidays[date(2017, 2, 5)])
-        self.assertIn("Unity Day", self.holidays[date(2018, 2, 5)])
+        self.assertIn("Unity Day (Observed)", self.holidays[date(2017, 2, 6)])
+
+    def test_labour_day(self):
+        self.assertIn("Labour Day", self.holidays[date(2017, 5, 1)])
+        self.assertIn("Labour Day (Observed)", self.holidays[date(2022, 5, 2)])
 
     def test_rwagasore_day(self):
         self.assertIn("Prince Louis Rwagasore Day", self.holidays[date(2017, 10, 13)])
-        self.assertIn("Prince Louis Rwagasore Day", self.holidays[date(2018, 10, 13)])
+        self.assertIn("Prince Louis Rwagasore Day (Observed)", self.holidays[date(2024, 10, 14)])
+
+    def test_ntaryamira_day(self):
+        self.assertIn("President Ntaryamira Day", self.holidays[date(2017, 4, 6)])
 
     def test_ndadaye_day(self):
         self.assertIn("President Ndadaye's Day", self.holidays[date(2017, 10, 21)])
-        self.assertIn("President Ndadaye's Day", self.holidays[date(2017, 10, 21)])
+        self.assertIn("President Ndadaye's Day (Observed)", self.holidays[date(2018, 10, 22)])
 
     def test_independence_day(self):
         for year in range(1962, 2050):
@@ -6443,8 +6450,9 @@ class TestBurundi(unittest.TestCase):
         for year in range(1930, 1962):
             self.assertNotIn(date(year, 7, 1), self.holidays)
 
+        self.assertIn("Independence Day (Observed)", self.holidays[date(2018, 7, 2)])
+
     def test_ascension_day(self):
-        self.holidays = holidays.BI(years=2020)
         self.assertIn(date(2020, 5, 21), self.holidays)
 
     def test_assumption_Day(self):
@@ -6452,6 +6460,7 @@ class TestBurundi(unittest.TestCase):
 
     def test_all_saints_Day(self):
         self.assertIn("All Saints' Day", self.holidays[date(2020, 11, 1)])
+        self.assertIn("All Saints' Day (Observed)", self.holidays[date(2020, 11, 2)])
 
     def test_christmas_Day(self):
         self.assertIn("Christmas Day", self.holidays[date(2020, 12, 25)])
