@@ -57,7 +57,7 @@ class Latvia(HolidayBase):
 
         # Mother's day. Second Sunday in May. 
         # !! Not a public holiday.
-        self[date(year, 5, 1) + rd(weekday=SU) + 7] = "Mātes diena"
+        # self[date(year, 5, 1) + rd(weekday=SU) + 7] = "Mātes diena"
 
         # https://likumi.lv/ta/id/308097-par-darbadienas-parcelsanu-2020-gada
         # self[date(2020, 6, 22)] = "Pirmssvētku diena - 7 darba stundas. \
@@ -75,7 +75,7 @@ class Latvia(HolidayBase):
 
         # Fathers's day. Second Sunday in September. 
         # !! Not a public holiday.
-        self[date(year, 9, 1) + rd(weekday=SU) + 7] = "Tēva diena"
+        # self[date(year, 9, 1) + rd(weekday=SU) + 7] = "Tēva diena"
 
         # Proclamation Day of the Republic of Latvia
         if year >= 1918:
