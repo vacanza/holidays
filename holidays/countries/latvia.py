@@ -6,11 +6,11 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2020
-#           rolandinsh <rolands@mediabox.lv> (c) 2020
-#  Website: https://github.com/rolandinsh/python-holidays
-#  License: MIT (see LICENSE file)
+#  Author:      ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#               dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2020
+#  Contributor: rolandinsh <rolands@mediabox.lv> (c) 2020
+#  Website:     https://github.com/rolandinsh/python-holidays
+#  License:     MIT (see LICENSE file)
 
 from datetime import date
 
@@ -54,15 +54,6 @@ class Latvia(HolidayBase):
             self[date(year, 5, 4)] = "Latvijas Republikas \
                 Neatkarības atjaunošanas diena"
 
-
-        # Mother's day. Second Sunday in May. 
-        # !! Not a public holiday.
-        # self[date(year, 5, 1) + rd(weekday=SU) + 7] = "Mātes diena"
-
-        # https://likumi.lv/ta/id/308097-par-darbadienas-parcelsanu-2020-gada
-        # self[date(2020, 6, 22)] = "Pirmssvētku diena - 7 darba stundas. \
-        #     Valsts un pašvaldības iestādes pārceļ darba dienu uz 13.06.2020"
-
         # by law https://likumi.lv/ta/id/72608-par-svetku-atceres-un-atzimejamam-dienam 
         # Midsummer's Eve
         if year >= 1990:
@@ -73,23 +64,10 @@ class Latvia(HolidayBase):
         if year >= 1990:
             self[date(year, 6, 24)] = "Jāņu dienu"
 
-        # Fathers's day. Second Sunday in September. 
-        # !! Not a public holiday.
-        # self[date(year, 9, 1) + rd(weekday=SU) + 7] = "Tēva diena"
-
         # Proclamation Day of the Republic of Latvia
         if year >= 1918:
             self[date(year, 11, 18)] = "Latvijas Republikas proklamēšanas diena"
-            # @todo make sure this is true:
-            # name = "Latvijas Republikas proklamēšanas diena"
-            # first_date = date(year, NOV, 18)
-            # self[first_date] = name
-            # if self.observed:
-            #     self[first_date] = name
-            #     if first_date.weekday() == SAT:
-            #         self[first_date + rd(days=+2)] = name + " observed"
-            #     elif first_date.weekday() == SUN:
-            #         self[first_date + rd(days=+1)] = name + " observed"
+
         # Christmas Eve
         self[date(year, 12, 24)] = "Ziemassvētku vakars"
 

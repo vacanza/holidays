@@ -5251,7 +5251,6 @@ class TestRussia(unittest.TestCase):
         self.assertIn(date(2018, 11, 4), self.holidays)
 
 
-# @todo write full test
 class TestLatvia(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.LV()
