@@ -4398,7 +4398,7 @@ class TestSwitzerland(unittest.TestCase):
             self.assertTrue(date(y, m, d) in self.holidays)
 
     def test_berchtoldstag(self):
-        provinces_that_have = {'AG', 'BE', 'FR', 'GE', 'GL', 'GR', 'JU', 'LU',
+        provinces_that_have = {'AG', 'BE', 'FR', 'GL', 'GR', 'JU', 'LU',
                                'NE', 'OW', 'SH', 'SO', 'TG', 'VD', 'ZG', 'ZH'}
         provinces_that_dont = set(holidays.CH.PROVINCES) - provinces_that_have
 

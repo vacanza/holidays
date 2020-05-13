@@ -33,7 +33,7 @@ class Switzerland(HolidayBase):
         # public holidays
         self[date(year, JAN, 1)] = 'Neujahrestag'
 
-        if self.prov in ('AG', 'BE', 'FR', 'GE', 'GL', 'GR', 'JU', 'LU',
+        if self.prov in ('AG', 'BE', 'FR', 'GL', 'GR', 'JU', 'LU',
                          'NE', 'OW', 'SH', 'SO', 'TG', 'VD', 'ZG', 'ZH'):
             self[date(year, JAN, 2)] = 'Berchtoldstag'
 
