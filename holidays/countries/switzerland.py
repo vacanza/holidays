@@ -95,6 +95,11 @@ class Switzerland(HolidayBase):
             dt = date(year, SEP, 1) + rd(weekday=SU(+3)) + rd(weekday=MO)
             self[dt] = 'Lundi du Jeûne'
 
+        if self.prov == 'GE':
+            # Thursday after the first Sunday of September
+            dt = date(year, SEP, 1) + rd(weekday=SU) + rd(weekday=TH)
+            self[dt] = 'Jeûne genevois'
+
         if self.prov == 'OW':
             self[date(year, SEP, 25)] = 'Bruder Klaus'
 
@@ -105,9 +110,6 @@ class Switzerland(HolidayBase):
         if self.prov in ('AI', 'LU', 'NW', 'OW', 'SZ', 'TI', 'UR', 'VS',
                          'ZG'):
             self[date(year, DEC, 8)] = 'Mariä Empfängnis'
-
-        if self.prov == 'GE':
-            self[date(year, DEC, 12)] = 'Escalade de Genève'
 
         self[date(year, DEC, 25)] = 'Weihnachten'
 
