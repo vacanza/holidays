@@ -32,8 +32,8 @@ class Korea(HolidayBase):
 
     def __init__(self, **kwargs):
         self.country = "KR"
-        HolidayBase.__init__(self, **kwargs)
         self.korean_cal = KoreanLunarCalendar()
+        HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
 
