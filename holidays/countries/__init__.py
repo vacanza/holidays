@@ -17,6 +17,7 @@ from .belarus import Belarus, BY, BLR
 from .belgium import Belgium, BE, BEL
 from .brazil import Brazil, BR, BRA
 from .bulgaria import Bulgaria, BG, BLG
+from .burundi import Burundi, BI, BDI
 from .canada import Canada, CA, CAN
 from .chile import Chile, CL, CHL
 from .colombia import Colombia, CO, COL
