@@ -6298,6 +6298,12 @@ class TestKorea(unittest.TestCase):
         for year in range(1948, 2050):
             self.assertEqual(self.holidays[date(year, 12, 25)],
                              "Christmas Day")
+            
+    def test_years_range(self):
+        self.holidays = holidays.KR(years=range(2006, 2021))
+        for year in range(2006, 2021):
+            self.assertIn(self.holidays[date(year, 1, 1)],
+                          "New Year's Day")
 
 
 class TestVietnam(unittest.TestCase):
@@ -6351,6 +6357,11 @@ class TestVietnam(unittest.TestCase):
         for year in range(1979, 2050):
             self.assertIn("Independence Day",
                           self.holidays[date(year, 9, 2)])
+            
+    def test_years_range(self):
+        self.holidays = holidays.VN(years=range(1979, 2050))
+        for year in range(1979, 2050):
+            self.assertIn("International New Year's Day", self.holidays[date(year, 1, 1)])
 
 
 class TestMorocco(unittest.TestCase):
