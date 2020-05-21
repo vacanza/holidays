@@ -14,7 +14,7 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import relativedelta as rd, FR
 
 from holidays.constants import JAN, APR, MAY, AUG, DEC
 from holidays.constants import SUN
@@ -36,6 +36,9 @@ class Netherlands(HolidayBase):
 
         # Easter
         self[easter_date] = "Eerste paasdag"
+
+        # Good friday
+        self[easter_date + rd(weekday=FR(-1))] = "Goede Vrijdag"
 
         # Second easter day
         self[easter_date + rd(days=1)] = "Tweede paasdag"
