@@ -36,7 +36,7 @@ class Netherlands(HolidayBase):
 
         # Easter
         self[easter_date] = "Eerste paasdag"
-        
+
         # Good friday
         self[easter_date + rd(weekday=FR(-1))] = "Goede Vrijdag"
 
