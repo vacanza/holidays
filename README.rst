@@ -448,7 +448,7 @@ Running Tests
 .. code-block:: bash
 
     $ pip install flake8
-    $ flake8 --ignore=F401,W504 constants.py holiday_base.py utils.py holidays/countries/*.py
+    $ flake8
     $ python tests.py
 
 
