@@ -47,14 +47,15 @@ class Latvia(HolidayBase):
         # International Workers' Day
         self[date(year, 5, 1)] = "Darba svētki"
 
-        # Restoration of Independence Day (1990). 
-        # Latvia proclaimed its independence from the USSR, 
+        # Restoration of Independence Day (1990).
+        # Latvia proclaimed its independence from the USSR,
         #   and restoration of the Republic of Latvia.
         if year >= 1990:
             self[date(year, 5, 4)] = "Latvijas Republikas \
                 Neatkarības atjaunošanas diena"
 
-        # by law https://likumi.lv/ta/id/72608-par-svetku-atceres-un-atzimejamam-dienam 
+        # by law
+        # https://likumi.lv/ta/id/72608-par-svetku-atceres-un-atzimejamam-dienam
         # Midsummer's Eve
         if year >= 1990:
             self[date(year, 6, 23)] = "Līgo diena"
@@ -66,7 +67,8 @@ class Latvia(HolidayBase):
 
         # Proclamation Day of the Republic of Latvia
         if year >= 1918:
-            self[date(year, 11, 18)] = "Latvijas Republikas proklamēšanas diena"
+            self[date(year, 11, 18)] = \
+                "Latvijas Republikas proklamēšanas diena"
 
         # Christmas Eve
         self[date(year, 12, 24)] = "Ziemassvētku vakars"
