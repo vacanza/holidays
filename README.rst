@@ -226,7 +226,7 @@ get_list(key)
 pop(key, default=None)
     Same as `get` except the key is removed from the holiday object
 
-pop_name(name)
+pop_named(name)
     Same as `pop` but takes the name of the holiday rather than the date
 
 update/append
