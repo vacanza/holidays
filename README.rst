@@ -372,7 +372,7 @@ More Examples
     >>>         # Populate the holiday list with the default US holidays
     >>>         holidays.UnitedStates._populate(self, year)
     >>>         # Remove Columbus Day
-    >>>         self.pop_name("Columbus Day")
+    >>>         self.pop_named("Columbus Day")
     >>>         # Add Ninja Turtle Day
     >>>         self[date(year, 7, 13)] = "Ninja Turtle Day"
     >>> date(2014, 10, 14) in Holidays(country="US")
