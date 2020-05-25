@@ -149,6 +149,13 @@ class HolidayBase(dict):
             return dict.pop(self, self.__keytransform__(key))
         return dict.pop(self, self.__keytransform__(key), default)
 
+    def pop_named(self, name):
+        to_pop = [key for key in self if self[key] == name]
+        if not to_pop:
+            raise KeyError
+        for key in to_pop:
+            self.pop(key)
+
     def __eq__(self, other):
         return dict.__eq__(self, other) and self.__dict__ == other.__dict__
 
