@@ -152,7 +152,7 @@ class HolidayBase(dict):
     def pop_named(self, name):
         to_pop = [key for key in self if self[key] == name]
         if not to_pop:
-            raise KeyError
+            raise KeyError(name)
         for key in to_pop:
             self.pop(key)
 
