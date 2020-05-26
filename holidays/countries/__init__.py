@@ -64,6 +64,7 @@ from .south_africa import SouthAfrica, ZA, ZAF
 from .spain import Spain, ES, ESP
 from .sweden import Sweden, SE, SWE
 from .switzerland import Switzerland, CH, CHE
+from .thailand import Thailand, TH, THA
 from .turkey import Turkey, TR, TUR
 from .ukraine import Ukraine, UA, UKR
 from .united_kingdom import UnitedKingdom, UK, GB, England, Wales, Scotland,\
