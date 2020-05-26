@@ -169,6 +169,7 @@ Spain               ES/ESP    prov = AN, AR, AS, CB, CL, CM, CN, CT, EX, GA, IB,
 Sweden              SE/SWE    None
 Switzerland         CH/CHE    prov = AG, AR, AI, BL, BS, BE, FR, GE, GL, GR, JU, LU,
                               NE, NW, OW, SG, SH, SZ, SO, TG, TI, UR, VD, VS, ZG, ZH
+Thailand            TH/THA    None
 Turkey              TR/TUR    None
 Ukraine             UA/UKR    None
 UnitedKingdom       UK/GB/GBR None
