@@ -129,7 +129,7 @@ class UnitedStates(HolidayBase):
         name = "Washington's Birthday"
         if self.state == 'AL':
             name = "George Washington/Thomas Jefferson Birthday"
-        elif self.state == 'AS':
+        elif self.state == 'AR':
             name = "George Washington's Birthday and Daisy Gatson Bates Day"
         elif self.state in ('PR', 'VI'):
             name = "Presidents' Day"
