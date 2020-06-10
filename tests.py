@@ -1259,7 +1259,7 @@ class TestUS(unittest.TestCase):
                       holidays.US(years=[1986]).values())
         self.assertEqual(holidays.US(state='AL').get('2015-01-19'),
                          "Robert E. Lee/Martin Luther King Birthday")
-        self.assertEqual(holidays.US(state='AS').get('2015-01-19'),
+        self.assertEqual(holidays.US(state='AR').get('2015-01-19'),
                          ("Dr. Martin Luther King Jr. "
                           "and Robert E. Lee's Birthdays"))
         self.assertEqual(holidays.US(state='MS').get('2015-01-19'),
@@ -1404,7 +1404,7 @@ class TestUS(unittest.TestCase):
             self.assertIn("Washington's Birthday", ga_holidays.get_list(dt))
         self.assertEqual(holidays.US(state='AL').get('2015-02-16'),
                          "George Washington/Thomas Jefferson Birthday")
-        self.assertEqual(holidays.US(state='AS').get('2015-02-16'),
+        self.assertEqual(holidays.US(state='AR').get('2015-02-16'),
                          ("George Washington's Birthday "
                           "and Daisy Gatson Bates Day"))
         self.assertEqual(holidays.US(state='PR').get('2015-02-16'),
