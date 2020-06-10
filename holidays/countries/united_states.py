@@ -95,7 +95,7 @@ class UnitedStates(HolidayBase):
             name = "Martin Luther King Jr. Day"
             if self.state == 'AL':
                 name = "Robert E. Lee/Martin Luther King Birthday"
-            elif self.state in ('AS', 'MS'):
+            elif (self.state == 'MS') or ((self.state == 'AR') and (year <= 2017)):
                 name = ("Dr. Martin Luther King Jr. "
                         "and Robert E. Lee's Birthdays")
             elif self.state in ('AZ', 'NH'):
@@ -129,7 +129,7 @@ class UnitedStates(HolidayBase):
         name = "Washington's Birthday"
         if self.state == 'AL':
             name = "George Washington/Thomas Jefferson Birthday"
-        elif self.state == 'AS':
+        elif self.state == 'AR':
             name = "George Washington's Birthday and Daisy Gatson Bates Day"
         elif self.state in ('PR', 'VI'):
             name = "Presidents' Day"
