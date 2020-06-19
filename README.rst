@@ -212,6 +212,10 @@ state
     A string specifying a state that has unique statutory holidays.
     (Default: UnitedStates=None)
 
+lang
+    A string specifying a language of holiday name.
+    (Default: English)
+
 Methods:
 
 get(key, default=None)

@@ -2,7 +2,7 @@
 
 #  python-holidays
 #  ---------------
-#  A fast, efficient Python library for generating country, province and state
+#  A fast, efficient Python library for generating country, province and state and languages
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
@@ -21,7 +21,7 @@ class HolidayBase(dict):
     PROVINCES = []
 
     def __init__(self, years=[], expand=True, observed=True,
-                 prov=None, state=None):
+                 prov=None, state=None, lang=None):
         self.observed = observed
         self.expand = expand
         if isinstance(years, int):
@@ -30,6 +30,7 @@ class HolidayBase(dict):
         if not getattr(self, 'prov', False):
             self.prov = prov
         self.state = state
+        self.lang = lang
         for year in list(self.years):
             self._populate(year)
 
