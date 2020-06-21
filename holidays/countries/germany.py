@@ -43,6 +43,8 @@ class Germany(HolidayBase):
           municipality is mostly catholic which in term depends on census data.
           Since we don't have this data but most municipalities in Bavaria
           *are* mostly catholic, we count that as holiday for whole Bavaria.
+          We added BYP for the municipality in Bavaria with more protestants. Here
+          this is excluded.
         - There is an "Augsburger Friedensfest" which only exists in the town
           Augsburg. This is excluded for Bavaria.
         - "Gründonnerstag" (Thursday before easter) is not a holiday but pupils
@@ -54,7 +56,7 @@ class Germany(HolidayBase):
           both provinces.
     """
 
-    PROVINCES = ['BW', 'BY', 'BE', 'BB', 'HB', 'HH', 'HE', 'MV', 'NI', 'NW',
+    PROVINCES = ['BW', 'BY', 'BYP', 'BE', 'BB', 'HB', 'HH', 'HE', 'MV', 'NI', 'NW',
                  'RP', 'SL', 'SN', 'ST', 'SH', 'TH']
 
     def __init__(self, **kwargs):
@@ -70,7 +72,7 @@ class Germany(HolidayBase):
 
             self[date(year, JAN, 1)] = 'Neujahr'
 
-            if self.prov in ('BW', 'BY', 'ST'):
+            if self.prov in ('BW', 'BY', 'BYP', 'ST'):
                 self[date(year, JAN, 6)] = 'Heilige Drei Könige'
 
             self[easter(year) - rd(days=2)] = 'Karfreitag'
@@ -100,7 +102,7 @@ class Germany(HolidayBase):
 
             self[easter(year) + rd(days=50)] = 'Pfingstmontag'
 
-            if self.prov in ('BW', 'BY', 'HE', 'NW', 'RP', 'SL'):
+            if self.prov in ('BW', 'BY', 'BYP', 'HE', 'NW', 'RP', 'SL'):
                 self[easter(year) + rd(days=60)] = 'Fronleichnam'
 
             if self.prov in ('BY', 'SL'):
@@ -119,7 +121,7 @@ class Germany(HolidayBase):
         if year == 2017:
             self[date(year, OCT, 31)] = 'Reformationstag'
 
-        if self.prov in ('BW', 'BY', 'NW', 'RP', 'SL'):
+        if self.prov in ('BW', 'BY', 'BYP', 'NW', 'RP', 'SL'):
             self[date(year, NOV, 1)] = 'Allerheiligen'
 
         if year <= 1994 or self.prov == 'SN':
