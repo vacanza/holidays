@@ -124,8 +124,8 @@ France              FRA       **Métropole** (default), Alsace-Moselle, Guadelou
                               Martinique, Mayotte, Nouvelle-Calédonie, La Réunion,
                               Polynésie Française, Saint-Barthélémy, Saint-Martin,
                               Wallis-et-Futuna
-Germany             DE/DEU    prov = BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL, SN,
-                              ST, SH, TH
+Germany             DE/DEU    prov = BW, BY, BYP, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL,
+                              SN, ST, SH, TH
 Greece              GR/GRC    None
 Honduras            HN/HND    None
 HongKong            HK/HKG    None

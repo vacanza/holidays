@@ -43,8 +43,8 @@ class Germany(HolidayBase):
           municipality is mostly catholic which in term depends on census data.
           Since we don't have this data but most municipalities in Bavaria
           *are* mostly catholic, we count that as holiday for whole Bavaria.
-          We added BYP for the municipality in Bavaria with more protestants. Here
-          this is excluded.
+          We added BYP for the municipality in Bavaria with more protestants.
+          Here this is excluded.
         - There is an "Augsburger Friedensfest" which only exists in the town
           Augsburg. This is excluded for Bavaria.
         - "Gründonnerstag" (Thursday before easter) is not a holiday but pupils
@@ -56,8 +56,8 @@ class Germany(HolidayBase):
           both provinces.
     """
 
-    PROVINCES = ['BW', 'BY', 'BYP', 'BE', 'BB', 'HB', 'HH', 'HE', 'MV', 'NI', 'NW',
-                 'RP', 'SL', 'SN', 'ST', 'SH', 'TH']
+    PROVINCES = ['BW', 'BY', 'BYP', 'BE', 'BB', 'HB', 'HH', 'HE', 'MV', 'NI',
+                 'NW', 'RP', 'SL', 'SN', 'ST', 'SH', 'TH']
 
     def __init__(self, **kwargs):
         self.country = 'DE'
