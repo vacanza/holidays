@@ -159,6 +159,7 @@ Peru                PE/PER    None
 Poland              PL/POL    None
 Portugal            PT/PRT    None
 PortugalExt         PTE/PRTE  *Portugal plus extended days most people have off*
+Romania             RO/ROU    None
 Russia              RU/RUS    None
 Scotland                      None
 Serbia              RS/SRB    None
