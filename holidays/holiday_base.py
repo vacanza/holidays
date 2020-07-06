@@ -149,6 +149,11 @@ class HolidayBase(dict):
             return dict.pop(self, self.__keytransform__(key))
         return dict.pop(self, self.__keytransform__(key), default)
 
+    def get_named(self, name):
+        # find all dates matching provided name (accepting partial
+        # strings too, case insensitive), returning them in a list
+        return [key for key in self if name.lower() in self[key].lower()]
+
     def __eq__(self, other):
         return dict.__eq__(self, other) and self.__dict__ == other.__dict__
 

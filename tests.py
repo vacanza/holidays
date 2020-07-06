@@ -327,6 +327,10 @@ class TestBasics(unittest.TestCase):
 
         self.assertIn(date(2014, 12, 31), Dec31Holiday())
 
+    def test_get_named(self):
+        us = holidays.UnitedStates(years=[2020])
+        # check for "New Year's Day" presence in get_named("new")
+        self.assertIn(date(2020, 1, 1), us.get_named('new'))
 
 class TestArgs(unittest.TestCase):
 

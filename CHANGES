@@ -3,6 +3,7 @@ Version 0.10.3
 
 Released ????? ??, ????
 
+- Added get_named(substring) method to retrieve holidays by name (dr-p)
 - Support for Burundi (bmwachajr)
 - Support for Latvia (rolandinsh)
 - Support for Romania (dorianm)

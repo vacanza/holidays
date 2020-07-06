@@ -222,6 +222,12 @@ get(key, default=None)
     multiple holidays fall on the same date the names will be separated by
     commas
 
+get(key, default=None)
+    Returns a string containing the name of the holiday(s) in date `key`, which
+    can be of date, datetime, string, unicode, bytes, integer or float type. If
+    multiple holidays fall on the same date the names will be separated by
+    commas
+
 get_list(key)
     Same as `get` except returns a `list` of holiday names instead of a comma
     separated string
@@ -360,6 +366,18 @@ More Examples
     >>> a.prov
     PROVINCES = ['AB', 'BC', 'MB', 'NB', 'NL', 'NS', 'NT', 'NU', 'ON', 'PE',
                  'QC', 'SK', 'YU']
+
+    # Holidays can be retrieved using their name too.
+    # `get_named(key)` receives a string and returns a list of holidays
+    # matching it (even partially, with case insensitive check)
+
+    >>> us_holidays = holidays.UnitedStates(years=2020)
+    >>> us_holidays.get_named('day')
+    [datetime.date(2020, 1, 1), datetime.date(2020, 1, 20),
+    datetime.date(2020, 2, 17), datetime.date(2020, 5, 25),
+    datetime.date(2020, 7, 4), datetime.date(2020, 7, 3),
+    datetime.date(2020, 9, 7), datetime.date(2020, 10, 12),
+    datetime.date(2020, 11, 11), datetime.date(2020, 12, 25)]
 
     # Sometimes we may not be able to use the official federal statutory
     # holiday list in our code. Let's pretend we work for a company that
