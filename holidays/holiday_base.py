@@ -144,15 +144,23 @@ class HolidayBase(dict):
     def get_list(self, key):
         return [h for h in self.get(key, "").split(", ") if h]
 
+    def get_named(self, name):
+        # find all dates matching provided name (accepting partial
+        # strings too, case insensitive), returning them in a list
+        return [key for key in self if name.lower() in self[key].lower()]
+
     def pop(self, key, default=None):
         if default is None:
             return dict.pop(self, self.__keytransform__(key))
         return dict.pop(self, self.__keytransform__(key), default)
 
-    def get_named(self, name):
-        # find all dates matching provided name (accepting partial
-        # strings too, case insensitive), returning them in a list
-        return [key for key in self if name.lower() in self[key].lower()]
+    def pop_named(self, name):
+        to_pop = self.get_named(name)
+        if not to_pop:
+            raise KeyError(name)
+        for key in to_pop:
+            self.pop(key)
+        return to_pop
 
     def __eq__(self, other):
         return dict.__eq__(self, other) and self.__dict__ == other.__dict__

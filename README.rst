@@ -232,8 +232,16 @@ get_list(key)
     Same as `get` except returns a `list` of holiday names instead of a comma
     separated string
 
+get_named(name)
+    Returns a `list` of holidays matching (even partially) the provided name
+    (case insensitive check)
+
 pop(key, default=None)
     Same as `get` except the key is removed from the holiday object
+
+pop_named(name)
+    Same as `pop` but takes the name of the holiday (or part of it) rather than
+    the date
 
 update/append
     Accepts dictionary of {date: name} pairs, a list of dates, or even singular
@@ -385,13 +393,12 @@ More Examples
     # "Ninja Turtle Day" on July 13th. We can create a new class that inherits
     # the UnitedStates class and the only method we need to override is _populate()
 
-    >>> from dateutil.relativedelta import relativedelta
     >>> class CorporateHolidays(holidays.UnitedStates):
     >>>     def _populate(self, year):
     >>>         # Populate the holiday list with the default US holidays
     >>>         holidays.UnitedStates._populate(self, year)
     >>>         # Remove Columbus Day
-    >>>         self.pop(date(year, 10, 1) + relativedelta(weekday=MO(+2)), None)
+    >>>         self.pop_named("Columbus Day")
     >>>         # Add Ninja Turtle Day
     >>>         self[date(year, 7, 13)] = "Ninja Turtle Day"
     >>> date(2014, 10, 14) in Holidays(country="US")
