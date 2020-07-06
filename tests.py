@@ -120,6 +120,13 @@ class TestBasics(unittest.TestCase):
         self.assertNotIn(date(2014, 1, 1), self.holidays)
         self.assertIn(date(2014, 7, 4), self.holidays)
 
+    def test_pop_named(self):
+        self.assertIn(date(2014, 1, 1), self.holidays)
+        self.holidays.pop_named("New Year's Day")
+        self.assertNotIn(date(2014, 1, 1), self.holidays)
+        self.assertRaises(KeyError,
+                          lambda: self.holidays.pop_named("New Year's Dayz"))
+
     def test_setitem(self):
         self.holidays = holidays.US(years=[2014])
         self.assertEqual(len(self.holidays), 10)
