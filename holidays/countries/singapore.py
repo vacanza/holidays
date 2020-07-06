@@ -81,7 +81,8 @@ class Singapore(HolidayBase):
                      2009: [(SEP, 20)], 2010: [(SEP, 10)], 2011: [(AUG, 30)],
                      2012: [(AUG, 19)], 2013: [(AUG, 8)], 2014: [(JUL, 28)],
                      2015: [(JUL, 17)], 2016: [(JUL, 6)], 2017: [(JUN, 25)],
-                     2018: [(JUN, 15)], 2019: [(JUN, 5)], 2020: [(MAY, 24)]}
+                     2018: [(JUN, 15)], 2019: [(JUN, 5)], 2020: [(MAY, 24)],
+                     2021: [(MAY, 13)]}
         if year in dates_obs:
             for date_obs in dates_obs[year]:
                 hol_date = date(year, *date_obs)
@@ -111,7 +112,8 @@ class Singapore(HolidayBase):
                      2009: [(NOV, 27)], 2010: [(NOV, 17)], 2011: [(NOV, 6)],
                      2012: [(OCT, 26)], 2013: [(OCT, 15)], 2014: [(OCT, 5)],
                      2015: [(SEP, 24)], 2016: [(SEP, 12)], 2017: [(SEP, 1)],
-                     2018: [(AUG, 22)], 2019: [(AUG, 11)], 2020: [(JUL, 31)]}
+                     2018: [(AUG, 22)], 2019: [(AUG, 11)], 2020: [(JUL, 31)],
+                     2021: [(JUL, 20)]}
         if year in dates_obs:
             for date_obs in dates_obs[year]:
                 hol_date = date(year, *date_obs)
@@ -146,7 +148,8 @@ class Singapore(HolidayBase):
                      2009: (MAY, 9), 2010: (MAY, 28), 2011: (MAY, 17),
                      2012: (MAY, 5), 2013: (MAY, 24), 2014: (MAY, 13),
                      2015: (JUN, 1), 2016: (MAY, 20), 2017: (MAY, 10),
-                     2018: (MAY, 29), 2019: (MAY, 19), 2020: (MAY, 7)}
+                     2018: (MAY, 29), 2019: (MAY, 19), 2020: (MAY, 7),
+                     2021: (MAY, 26)}
         if year in dates_obs:
             hol_date = date(year, *dates_obs[year])
             storeholiday(self, hol_date, "Vesak Day")
@@ -166,7 +169,8 @@ class Singapore(HolidayBase):
                      2009: (OCT, 17), 2010: (NOV, 5), 2011: (OCT, 26),
                      2012: (NOV, 13), 2013: (NOV, 2), 2014: (OCT, 22),
                      2015: (NOV, 10), 2016: (OCT, 29), 2017: (OCT, 18),
-                     2018: (NOV, 6), 2019: (OCT, 27), 2020: (NOV, 14)}
+                     2018: (NOV, 6), 2019: (OCT, 27), 2020: (NOV, 14),
+                     2021: (NOV, 4)}
         if year in dates_obs:
             hol_date = date(year, *dates_obs[year])
             storeholiday(self, hol_date, "Deepavali")
