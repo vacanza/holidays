@@ -34,7 +34,7 @@ class Singapore(HolidayBase):
 
     # Holidays prior to 2000 may not be accurate.
 
-    # Holidays after 2020: the following four moving date holidays whose exact
+    # Holidays after 2021: the following four moving date holidays whose exact
     # date is announced yearly are estimated (and so denoted):
     # - Hari Raya Puasa*
     # - Hari Raya Haji*
