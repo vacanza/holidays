@@ -182,8 +182,8 @@ class Singapore(HolidayBase):
             storeholiday(self, date(year, DEC, 26), "Boxing Day")
 
         # Polling Day
-        dates_obs = {2001: (NOV, 3), 2006: (MAY, 6),
-                     2011: (MAY, 7), 2015: (SEP, 11)}
+        dates_obs = {2001: (NOV, 3), 2006: (MAY, 6),  2011: (MAY, 7),
+                     2015: (SEP, 11), 2020: (JUL, 10)}
         if year in dates_obs:
             self[date(year, *dates_obs[year])] = "Polling Day"
 
