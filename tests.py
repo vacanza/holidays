@@ -5879,7 +5879,7 @@ class TestSingapore(unittest.TestCase):
         self.assertEqual(len(holidays.Singapore(years=[2020])), 11 + 3)
         # holidays estimated using lunar calendar
         self.assertIn(date(2021, 5, 26), self.holidays)
-        self.assertIn(date(2021, 11, 3), self.holidays)
+        self.assertIn(date(2021, 11, 4), self.holidays)
         # holidays estimated using libary hijri-converter
         if sys.version_info >= (3, 6):
             import importlib.util
