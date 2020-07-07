@@ -5876,11 +5876,11 @@ class TestSingapore(unittest.TestCase):
         self.assertIn(date(2020, 11, 14), self.holidays)
         self.assertIn(date(2020, 12, 25), self.holidays)
         # total holidays (11 + 3 falling on a Sunday)
-        self.assertEqual(len(holidays.Singapore(years=[2020])), 11 + 3)
+        self.assertEqual(len(holidays.Singapore(years=[2020])), 11 + 4)
         # holidays estimated using lunar calendar
         self.assertIn(date(2021, 5, 26), self.holidays)
         self.assertIn(date(2021, 11, 4), self.holidays)
-        # holidays estimated using libary hijri-converter
+        # holidays estimated using library hijri-converter
         if sys.version_info >= (3, 6):
             import importlib.util
             if importlib.util.find_spec("hijri_converter"):
