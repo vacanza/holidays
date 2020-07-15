@@ -1,7 +1,7 @@
 Version 0.10.3
 ==============
 
-Released ????? ??, ????
+Released July 15, 2020
 
 - Added get_named(substring) method to retrieve holidays by name (dr-p)
 - Added pop_named(substring) method to pop specific holiday/s by name (samtregar, dr-p)
