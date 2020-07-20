@@ -24,7 +24,7 @@ def CountryHoliday(country, years=[], prov=None, state=None, expand=True,
 
 def get_gre_date(year, Hmonth, Hday):
     """
-    returns the gregian date of of a  of the given gregorian calendar
+    returns the gregian date of a given gregorian calendar
     yyyy year with Hijari Month & Day
     works *only* if hijri-converter library is installed, otherwise a warning
     is raised that this holiday is missing. hijri-converter requires
