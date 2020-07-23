@@ -4,3 +4,4 @@ convertdate
 korean_lunar_calendar
 six
 flake8
+bump2version
