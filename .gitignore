@@ -7,3 +7,4 @@ MANIFEST
 *.pyc
 .idea
 .vscode/
+coverage.xml
