@@ -24,6 +24,7 @@ from .colombia import Colombia, CO, COL
 from .croatia import Croatia, HR, HRV
 from .czechia import Czechia, Czech, CZ, CZE
 from .denmark import Denmark, DK, DNK
+from .djibouti import Djibouti, DJ, DJI
 from .dominican_republic import DominicanRepublic, DO, DOM
 from .egypt import Egypt, EG, EGY
 from .estonia import Estonia, EE, EST
