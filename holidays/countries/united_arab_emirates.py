@@ -21,18 +21,22 @@ from holidays.utils import get_gre_date
 
 WEEKEND = (FRI, SAT)
 
+
 class UnitedArabEmirates(HolidayBase):
 
-    # Holidays are regulated by the Article 74 of Federal Law No. 08 for the year 1980: 
-    # https://www.ilo.org/dyn/natlex/docs/ELECTRONIC/11956/69376/F417089305/ARE11956.pdf 
-    # However the law is not applied literally, and was amended often in the past few years. 
-    # 2017 holidays: https://www.khaleejtimes.com/nation/uae-official-public-holidays-list-2017
-    # 2018 holidays: https://www.thenational.ae/uae/government/uae-public-holidays-2018-announced-by-abu-dhabi-government-1.691393
-    # 2019 holidays: https://www.thenational.ae/uae/government/uae-public-holidays-for-2019-and-2020-announced-by-cabinet-1.833425
-    # 2020 holidays: https://u.ae/en/information-and-services/public-holidays-and-religious-affairs/public-holidays
+    # Holidays are regulated by the Article 74
+    # of Federal Law No. 08 for the year 1980:
+    # https://www.ilo.org/dyn/natlex/docs/ELECTRONIC/11956/69376/F417089305/ARE11956.pdf
+    # However the law is not applied literally,
+    # and was amended often in the past few years.
+    # Sources:
+    # 2017: https://www.khaleejtimes.com/nation/uae-official-public-holidays-list-2017
+    # 2018: https://www.thenational.ae/uae/government/uae-public-holidays-2018-announced-by-abu-dhabi-government-1.691393
+    # 2019: https://www.thenational.ae/uae/government/uae-public-holidays-for-2019-and-2020-announced-by-cabinet-1.833425
+    # 2020: https://u.ae/en/information-and-services/public-holidays-and-religious-affairs/public-holidays
 
     # Holidays based on the Islamic Calendar are estimated (and so denoted),
-    # as are announced each year and based on moon sightings: 
+    # as are announced each year and based on moon sightings:
     # - Eid al-Fitr*
     # - Eid al-Adha*
     # - Arafat (Hajj) Day*
@@ -42,7 +46,7 @@ class UnitedArabEmirates(HolidayBase):
     # *only if hijri-converter library is installed, otherwise a warning is
     #  raised that this holiday is missing. hijri-converter requires
     #  Python >= 3.6
-    
+
     def __init__(self, **kwargs):
         self.country = 'AE'
         HolidayBase.__init__(self, **kwargs)
@@ -68,7 +72,7 @@ class UnitedArabEmirates(HolidayBase):
         # Date is announced each year. Usually stretches along 3 or 4 days,
         # in some instances prepending/appending a day or two
         # before/after the official holiday.
-        dates_obs = {2017: [(JUN, 25)], 2018: [(JUN, 14)], 2019: [(JUN, 3)], 
+        dates_obs = {2017: [(JUN, 25)], 2018: [(JUN, 14)], 2019: [(JUN, 3)],
                      2020: [(MAY, 24)]}
         if year in dates_obs:
             for date_obs in dates_obs[year]:
@@ -84,7 +88,7 @@ class UnitedArabEmirates(HolidayBase):
                 self[hol_date + rd(days=2)] = "Eid al-Fitr Holiday* (*estimated)"
 
         # Arafat Day & Eid al-Adha
-        dates_obs = {2017: [(AUG, 31)], 2018: [(AUG, 20)], 2019: [(AUG, 10)], 
+        dates_obs = {2017: [(AUG, 31)], 2018: [(AUG, 20)], 2019: [(AUG, 10)],
                      2020: [(JUL, 30)]}
         if year in dates_obs:
             for date_obs in dates_obs[year]:
@@ -102,7 +106,7 @@ class UnitedArabEmirates(HolidayBase):
                 self[hol_date + rd(days=3)] = "Eid al-Adha Holiday* (*estimated)"
 
         # Islamic New Year - (hijari_year, 1, 1)
-        dates_obs = {2017: [(SEP, 22)], 2018: [(SEP, 11)], 2019: [(AUG, 31)], 
+        dates_obs = {2017: [(SEP, 22)], 2018: [(SEP, 11)], 2019: [(AUG, 31)],
                      2020: [(AUG, 23)]}
         if year in dates_obs:
             for date_obs in dates_obs[year]:
@@ -114,7 +118,7 @@ class UnitedArabEmirates(HolidayBase):
                 self[hol_date] = "Al Hijra - Islamic New Year* (*estimated)"
 
         # Leilat al-Miraj - The Prophet's ascension (hijari_year, 7, 27)
-        if year <= 2018: # starting from 2019 the UAE government removed this.
+        if year <= 2018:  # starting from 2019 the UAE government removed this
             dates_obs = {2017: [(APR, 23)], 2018: [(APR, 13)]}
             if year in dates_obs:
                 for date_obs in dates_obs[year]:
@@ -126,8 +130,9 @@ class UnitedArabEmirates(HolidayBase):
                     self[hol_date] = "Leilat al-Miraj - The Prophet's ascension* (*estimated)"
 
         # Prophet Muhammad's Birthday - (hijari_year, 3, 12)
-        if year <= 2019: # starting from 2020 the UAE government removed this.
-            dates_obs = {2017: [(NOV, 30)], 2018: [(NOV, 19)], 2019: [(NOV, 9)]}
+        if year <= 2019:  # starting from 2020 the UAE government removed this
+            dates_obs = {2017: [(NOV, 30)], 2018: [(NOV, 19)],
+                         2019: [(NOV, 9)]}
             if year in dates_obs:
                 for date_obs in dates_obs[year]:
                     hol_date = date(year, *date_obs)
@@ -137,8 +142,10 @@ class UnitedArabEmirates(HolidayBase):
                     hol_date = date_obs
                     self[hol_date] = "Mawlud al-Nabi - Prophet Mohammad's Birthday* (*estimated)"
 
+
 class AE(UnitedArabEmirates):
     pass
+
 
 class ARE(UnitedArabEmirates):
     pass
