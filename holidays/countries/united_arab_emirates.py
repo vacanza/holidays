@@ -74,73 +74,79 @@ class UnitedArabEmirates(HolidayBase):
         # before/after the official holiday.
         dates_obs = {2017: [(JUN, 25)], 2018: [(JUN, 14)], 2019: [(JUN, 3)],
                      2020: [(MAY, 24)]}
+        fitr = "Eid al-Fitr"
         if year in dates_obs:
             for date_obs in dates_obs[year]:
                 hol_date = date(year, *date_obs)
-                self[hol_date] = "Eid al-Fitr"
-                self[hol_date + rd(days=1)] = "Eid al-Fitr Holiday"
-                self[hol_date + rd(days=2)] = "Eid al-Fitr Holiday"
+                self[hol_date] = fitr
+                self[hol_date + rd(days=1)] = f'{fitr} Holiday'
+                self[hol_date + rd(days=2)] = f'{fitr} Holiday'
         else:
             for date_obs in get_gre_date(year, 10, 1):
                 hol_date = date_obs
-                self[hol_date] = "Eid al-Fitr* (*estimated)"
-                self[hol_date + rd(days=1)] = "Eid al-Fitr Holiday* (*estimated)"
-                self[hol_date + rd(days=2)] = "Eid al-Fitr Holiday* (*estimated)"
+                self[hol_date] = f'{fitr}* (*estimated)'
+                self[hol_date + rd(days=1)] = f'{fitr} Holiday* (*estimated)'
+                self[hol_date + rd(days=2)] = f'{fitr} Holiday* (*estimated)'
 
         # Arafat Day & Eid al-Adha
         dates_obs = {2017: [(AUG, 31)], 2018: [(AUG, 20)], 2019: [(AUG, 10)],
                      2020: [(JUL, 30)]}
+        hajj = "Arafat (Hajj) Day"
+        adha = "Eid al-Adha"
         if year in dates_obs:
             for date_obs in dates_obs[year]:
                 hol_date = date(year, *date_obs)
-                self[hol_date] = "Arafat (Hajj) Day"
-                self[hol_date + rd(days=1)] = "Eid al-Adha"
-                self[hol_date + rd(days=2)] = "Eid al-Adha Holiday"
-                self[hol_date + rd(days=3)] = "Eid al-Adha Holiday"
+                self[hol_date] = hajj
+                self[hol_date + rd(days=1)] = adha
+                self[hol_date + rd(days=2)] = f'{adha} Holiday'
+                self[hol_date + rd(days=3)] = f'{adha} Holiday'
         else:
             for date_obs in get_gre_date(year, 12, 9):
                 hol_date = date_obs
-                self[hol_date] = "Arafat (Hajj) Day* (*estimated)"
-                self[hol_date + rd(days=1)] = "Eid al-Adha* (*estimated)"
-                self[hol_date + rd(days=2)] = "Eid al-Adha Holiday* (*estimated)"
-                self[hol_date + rd(days=3)] = "Eid al-Adha Holiday* (*estimated)"
+                self[hol_date] = f'{hajj}* (*estimated)'
+                self[hol_date + rd(days=1)] = f'{adha}* (*estimated)'
+                self[hol_date + rd(days=2)] = f'{adha}* Holiday* (*estimated)'
+                self[hol_date + rd(days=3)] = f'{adha} Holiday* (*estimated)'
 
         # Islamic New Year - (hijari_year, 1, 1)
         dates_obs = {2017: [(SEP, 22)], 2018: [(SEP, 11)], 2019: [(AUG, 31)],
                      2020: [(AUG, 23)]}
+        new_hijri_year = "Al Hijra - Islamic New Year"
         if year in dates_obs:
             for date_obs in dates_obs[year]:
                 hol_date = date(year, *date_obs)
-                self[hol_date] = "Al Hijra - Islamic New Year"
+                self[hol_date] = new_hijri_year
         else:
             for date_obs in get_gre_date(year, 1, 1):
                 hol_date = date_obs
-                self[hol_date] = "Al Hijra - Islamic New Year* (*estimated)"
+                self[hol_date] = f'{new_hijri_year}* (*estimated)'
 
         # Leilat al-Miraj - The Prophet's ascension (hijari_year, 7, 27)
         if year <= 2018:  # starting from 2019 the UAE government removed this
             dates_obs = {2017: [(APR, 23)], 2018: [(APR, 13)]}
+            ascension = "Leilat al-Miraj - The Prophet's ascension"
             if year in dates_obs:
                 for date_obs in dates_obs[year]:
                     hol_date = date(year, *date_obs)
-                    self[hol_date] = "Leilat al-Miraj - The Prophet's ascension"
+                    self[hol_date] = ascension
             else:
                 for date_obs in get_gre_date(year, 7, 27):
                     hol_date = date_obs
-                    self[hol_date] = "Leilat al-Miraj - The Prophet's ascension* (*estimated)"
+                    self[hol_date] = f'{ascension}* (*estimated)'
 
         # Prophet Muhammad's Birthday - (hijari_year, 3, 12)
         if year <= 2019:  # starting from 2020 the UAE government removed this
             dates_obs = {2017: [(NOV, 30)], 2018: [(NOV, 19)],
                          2019: [(NOV, 9)]}
+            mawlud = "Mawlud al-Nabi - Prophet Mohammad's Birthday"
             if year in dates_obs:
                 for date_obs in dates_obs[year]:
                     hol_date = date(year, *date_obs)
-                    self[hol_date] = "Mawlud al-Nabi - Prophet Mohammad's Birthday"
+                    self[hol_date] = mawlud
             else:
                 for date_obs in get_gre_date(year, 3, 12):
                     hol_date = date_obs
-                    self[hol_date] = "Mawlud al-Nabi - Prophet Mohammad's Birthday* (*estimated)"
+                    self[hol_date] = f'{mawlud}* (*estimated)'
 
 
 class AE(UnitedArabEmirates):
