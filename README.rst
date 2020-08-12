@@ -175,6 +175,7 @@ Switzerland         CH/CHE    prov = AG, AR, AI, BL, BS, BE, FR, GE, GL, GR, JU,
                               NE, NW, OW, SG, SH, SZ, SO, TG, TI, UR, VD, VS, ZG, ZH
 Turkey              TR/TUR    None
 Ukraine             UA/UKR    None
+UnitedArabEmirates  AE/ARE    None
 UnitedKingdom       UK/GB/GBR None
 UnitedStates        US/USA    state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL, GA,
                               GU, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MH, MA, MI,
