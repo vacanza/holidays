@@ -184,7 +184,8 @@ class Korea(HolidayBase):
         christmas_date = date(year, DEC, 25)
         self[christmas_date] = name
 
-        # Just for year 2020 - since 2020.08.15 is Sat, the government decides to make 2020.08.17 holiday, yay
+        # Just for year 2020 - since 2020.08.15 is Sat, the government
+        # decided to make 2020.08.17 holiday, yay
         name = "Alternative public holiday"
         alt_date = date(2020, OCT, 17)
         self[alt_date] = name

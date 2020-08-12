@@ -114,6 +114,7 @@ Colombia            CO/COL    None
 Croatia             HR/HRV    None
 Czechia             CZ/CZE    None
 Denmark             DK/DNK    None
+Djibouti            DJ/DJI    None
 Dominican Republic  DO/DOM    None
 Egypt               EG/EGY    None
 England                       None
