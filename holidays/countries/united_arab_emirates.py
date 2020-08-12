@@ -30,10 +30,10 @@ class UnitedArabEmirates(HolidayBase):
     # However the law is not applied literally,
     # and was amended often in the past few years.
     # Sources:
-    # 2017: https://www.khaleejtimes.com/nation/uae-official-public-holidays-list-2017
-    # 2018: https://www.thenational.ae/uae/government/uae-public-holidays-2018-announced-by-abu-dhabi-government-1.691393
-    # 2019: https://www.thenational.ae/uae/government/uae-public-holidays-for-2019-and-2020-announced-by-cabinet-1.833425
-    # 2020: https://u.ae/en/information-and-services/public-holidays-and-religious-affairs/public-holidays
+    # 2017: https://www.khaleejtimes.com/nation/uae-official-public-holidays-list-2017   # noqa: E501
+    # 2018: https://www.thenational.ae/uae/government/uae-public-holidays-2018-announced-by-abu-dhabi-government-1.691393  # noqa: E501
+    # 2019: https://www.thenational.ae/uae/government/uae-public-holidays-for-2019-and-2020-announced-by-cabinet-1.833425  # noqa: E501
+    # 2020: https://u.ae/en/information-and-services/public-holidays-and-religious-affairs/public-holidays  # noqa: E501
 
     # Holidays based on the Islamic Calendar are estimated (and so denoted),
     # as are announced each year and based on moon sightings:
@@ -79,14 +79,16 @@ class UnitedArabEmirates(HolidayBase):
             for date_obs in dates_obs[year]:
                 hol_date = date(year, *date_obs)
                 self[hol_date] = fitr
-                self[hol_date + rd(days=1)] = f'{fitr} Holiday'
-                self[hol_date + rd(days=2)] = f'{fitr} Holiday'
+                self[hol_date + rd(days=1)] = '{} Holiday'.format(fitr)
+                self[hol_date + rd(days=2)] = '{} Holiday'.format(fitr)
         else:
             for date_obs in get_gre_date(year, 10, 1):
                 hol_date = date_obs
-                self[hol_date] = f'{fitr}* (*estimated)'
-                self[hol_date + rd(days=1)] = f'{fitr} Holiday* (*estimated)'
-                self[hol_date + rd(days=2)] = f'{fitr} Holiday* (*estimated)'
+                self[hol_date] = '{}* (*estimated)'.format(fitr)
+                self[hol_date + rd(days=1)] =\
+                    '{} Holiday* (*estimated)'.format(fitr)
+                self[hol_date + rd(days=2)] =\
+                    '{} Holiday* (*estimated)'.format(fitr)
 
         # Arafat Day & Eid al-Adha
         dates_obs = {2017: [(AUG, 31)], 2018: [(AUG, 20)], 2019: [(AUG, 10)],
@@ -98,15 +100,17 @@ class UnitedArabEmirates(HolidayBase):
                 hol_date = date(year, *date_obs)
                 self[hol_date] = hajj
                 self[hol_date + rd(days=1)] = adha
-                self[hol_date + rd(days=2)] = f'{adha} Holiday'
-                self[hol_date + rd(days=3)] = f'{adha} Holiday'
+                self[hol_date + rd(days=2)] = '{} Holiday'.format(adha)
+                self[hol_date + rd(days=3)] = '{} Holiday'.format(adha)
         else:
             for date_obs in get_gre_date(year, 12, 9):
                 hol_date = date_obs
-                self[hol_date] = f'{hajj}* (*estimated)'
-                self[hol_date + rd(days=1)] = f'{adha}* (*estimated)'
-                self[hol_date + rd(days=2)] = f'{adha}* Holiday* (*estimated)'
-                self[hol_date + rd(days=3)] = f'{adha} Holiday* (*estimated)'
+                self[hol_date] = '{}* (*estimated)'.format(hajj)
+                self[hol_date + rd(days=1)] = '{}* (*estimated)'.format(adha)
+                self[hol_date + rd(days=2)] =\
+                    '{}* Holiday* (*estimated)'.format(adha)
+                self[hol_date + rd(days=3)] =\
+                    '{} Holiday* (*estimated)'.format(adha)
 
         # Islamic New Year - (hijari_year, 1, 1)
         dates_obs = {2017: [(SEP, 22)], 2018: [(SEP, 11)], 2019: [(AUG, 31)],
@@ -119,7 +123,7 @@ class UnitedArabEmirates(HolidayBase):
         else:
             for date_obs in get_gre_date(year, 1, 1):
                 hol_date = date_obs
-                self[hol_date] = f'{new_hijri_year}* (*estimated)'
+                self[hol_date] = '{}* (*estimated)'.format(new_hijri_year)
 
         # Leilat al-Miraj - The Prophet's ascension (hijari_year, 7, 27)
         if year <= 2018:  # starting from 2019 the UAE government removed this
@@ -132,7 +136,7 @@ class UnitedArabEmirates(HolidayBase):
             else:
                 for date_obs in get_gre_date(year, 7, 27):
                     hol_date = date_obs
-                    self[hol_date] = f'{ascension}* (*estimated)'
+                    self[hol_date] = '{}* (*estimated)'.format(ascension)
 
         # Prophet Muhammad's Birthday - (hijari_year, 3, 12)
         if year <= 2019:  # starting from 2020 the UAE government removed this
@@ -146,7 +150,7 @@ class UnitedArabEmirates(HolidayBase):
             else:
                 for date_obs in get_gre_date(year, 3, 12):
                     hol_date = date_obs
-                    self[hol_date] = f'{mawlud}* (*estimated)'
+                    self[hol_date] = '{}* (*estimated)'.format(mawlud)
 
 
 class AE(UnitedArabEmirates):
