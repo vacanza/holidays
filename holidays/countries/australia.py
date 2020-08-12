@@ -218,8 +218,11 @@ class Australia(HolidayBase):
         # Friday. The Wednesday during the show is a public holiday.
         if self.prov == 'QLD':
             name = "The Royal Queensland Show"
-            self[date(year, AUG, 5) + rd(weekday=FR) + rd(weekday=WE)] = \
-                name
+            if year == 2020:
+                self[date(year, AUG, 14)] = name
+            else:
+                self[date(year, AUG, 5) + rd(weekday=FR) + rd(weekday=WE)] = \
+                    name
 
         # Christmas Day
         name = "Christmas Day"
