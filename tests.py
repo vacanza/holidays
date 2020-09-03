@@ -2635,8 +2635,13 @@ class TestAU(unittest.TestCase):
 
     def test_grand_final_day(self):
         dt = date(2019, 9, 27)
+        dt_2020 = date(2020, 10, 23)
+        dt_2020_old = date(2020, 9, 25)
         self.assertIn(dt, self.state_hols['VIC'], dt)
         self.assertEqual(self.state_hols['VIC'][dt], "Grand Final Day")
+        self.assertIn(dt_2020, self.state_hols['VIC'], dt_2020)
+        self.assertEqual(self.state_hols['VIC'][dt_2020], "Grand Final Day")
+        self.assertNotIn(dt_2020_old, self.state_hols['VIC'], dt_2020_old)
 
     def test_melbourne_cup(self):
         for dt in [date(2014, 11, 4), date(2015, 11, 3), date(2016, 11, 1)]:
