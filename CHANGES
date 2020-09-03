@@ -26,6 +26,7 @@ Released July 15, 2020
 - Added korean_cal attribute to Korea and Vietnam (seriousran, pelennor)
 - United States fixes (patrick-nicholson, raffg, dr-p)
 - Singapore fixes + 2021 holidays (mborsetti)
+- Croatia fixes (jangrg, dr-p)
 
 
 Version 0.10.2

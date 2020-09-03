@@ -73,7 +73,8 @@ class Croatia(HolidayBase):
 
         if year >= 2020:
             # Memorial day
-            self[date(year, NOV, 18)] = "Dan sjećanja na žrtve Domovinskog rata"
+            self[date(year, NOV, 18)] =\
+                "Dan sjećanja na žrtve Domovinskog rata"
 
         # Christmas day
         self[date(year, DEC, 25)] = "Božić"
