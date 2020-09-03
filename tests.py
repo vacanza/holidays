@@ -1281,7 +1281,7 @@ class TestUS(unittest.TestCase):
         self.assertEqual(holidays.US(state='NH').get('2015-01-19'),
                          "Dr. Martin Luther King Jr./Civil Rights Day")
         self.assertEqual(holidays.US(state='ID').get('2015-01-19'),
-                         "Martin Luther King, Jr. - Idaho Human Rights Day")
+                         "Martin Luther King Jr. - Idaho Human Rights Day")
         self.assertNotEqual(holidays.US(state='ID').get('2000-01-17'),
                             "Martin Luther King Jr. - Idaho Human Rights Day")
         self.assertEqual(holidays.US(state='GA').get('2011-01-17'),
