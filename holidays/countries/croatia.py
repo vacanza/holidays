@@ -39,13 +39,17 @@ class Croatia(HolidayBase):
         # Easter
         self[easter_date] = "Uskrs"
         # Easter Monday
-        self[easter_date + rd(days=1)] = "Uskrsni ponedjeljak"
+        self[easter_date + rd(days=1)] = "Uskršnji ponedjeljak"
 
         # Corpus Christi
         self[easter_date + rd(days=60)] = "Tijelovo"
 
         # International Workers' Day
         self[date(year, MAY, 1)] = "Međunarodni praznik rada"
+
+        if year >= 2020:
+            # Statehood day
+            self[date(year, MAY, 30)] = "Dan državnosti"
 
         # Anti-fascist struggle day
         self[date(year, JUN, 22)] = "Dan antifašističke borbe"
@@ -60,15 +64,16 @@ class Croatia(HolidayBase):
         # Assumption of Mary
         self[date(year, AUG, 15)] = "Velika Gospa"
 
-        # Independence Day
-        self[date(year, OCT, 8)] = "Dan neovisnosti"
+        if year < 2020:
+            # Independence Day
+            self[date(year, OCT, 8)] = "Dan neovisnosti"
 
         # All Saints' Day
-        self[date(year, NOV, 1)] = "Svi sveti"
+        self[date(year, NOV, 1)] = "Dan svih svetih"
 
         if year >= 2020:
             # Memorial day
-            self[date(year, NOV, 18)] = "Dan sjećanja"
+            self[date(year, NOV, 18)] = "Dan sjećanja na žrtve Domovinskog rata"
 
         # Christmas day
         self[date(year, DEC, 25)] = "Božić"
