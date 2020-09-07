@@ -53,13 +53,12 @@ class Russia(HolidayBase):
         self[date(year, MAY, 9)] = "День Победы"
         # Russia's Day
         self[date(year, JUN, 12)] = "День России"
-        if year>=2005:
+        if year >= 2005:
             # Unity Day
             self[date(year, NOV, 4)] = "День народного единства"
         else:
             # October Revolution Day
             self[date(year, NOV, 7)] = "День Октябрьской революции"
-            
 
 
 class RU(Russia):
