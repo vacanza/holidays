@@ -1937,6 +1937,7 @@ class TestUS(unittest.TestCase):
         self.assertIn(date(2017, 11, 20), pr_holidays)
 
     def test_thanksgiving_day(self):
+        ca_holidays = holidays.US(state='CA')
         de_holidays = holidays.US(state='DE')
         fl_holidays = holidays.US(state='FL')
         in_holidays = holidays.US(state='IN')
@@ -1964,6 +1965,8 @@ class TestUS(unittest.TestCase):
             self.assertEqual(ok_holidays.get(dt + relativedelta(days=+1)),
                              "Day After Thanksgiving")
             self.assertEqual(wv_holidays.get(dt + relativedelta(days=+1)),
+                             "Day After Thanksgiving")
+            self.assertEqual(ca_holidays.get(dt + relativedelta(days=+1)),
                              "Day After Thanksgiving")
             self.assertIn(dt + relativedelta(days=+1), fl_holidays)
             self.assertEqual(fl_holidays.get(dt + relativedelta(days=+1)),
