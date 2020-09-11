@@ -1956,6 +1956,8 @@ class TestUS(unittest.TestCase):
             self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
             self.assertIn(dt + relativedelta(days=+1), de_holidays)
+            self.assertEqual(ca_holidays.get(dt + relativedelta(days=+1)),
+                             "Day After Thanksgiving")
             self.assertEqual(de_holidays.get(dt + relativedelta(days=+1)),
                              "Day After Thanksgiving")
             self.assertEqual(nh_holidays.get(dt + relativedelta(days=+1)),
@@ -1965,8 +1967,6 @@ class TestUS(unittest.TestCase):
             self.assertEqual(ok_holidays.get(dt + relativedelta(days=+1)),
                              "Day After Thanksgiving")
             self.assertEqual(wv_holidays.get(dt + relativedelta(days=+1)),
-                             "Day After Thanksgiving")
-            self.assertEqual(ca_holidays.get(dt + relativedelta(days=+1)),
                              "Day After Thanksgiving")
             self.assertIn(dt + relativedelta(days=+1), fl_holidays)
             self.assertEqual(fl_holidays.get(dt + relativedelta(days=+1)),
