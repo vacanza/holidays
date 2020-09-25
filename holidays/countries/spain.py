@@ -84,7 +84,7 @@ class Spain(HolidayBase):
             elif self.prov == 'AS':
                 self._is_observed(date(year, SEP, 8), "Día de Asturias")
             elif self.prov == 'CB':
-                self[date(year, AUG, 1) + rd(weeks=1, weekday=SUN)] = "Día de la Montaña";
+                self._is_observed(date(year, JUL, 28), "Día de las Instituciones de Cantabria")
             elif self.prov == 'CM':
                 self._is_observed(date(year, MAY, 31), "Día de Castilla - La Mancha")
             elif self.prov == 'CL':
