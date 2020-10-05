@@ -61,7 +61,27 @@ class Angola(HolidayBase):
 
 
     def _populate(self, year):
-    
+        # New Year's Day
+        self._long_weekends("Ano novo", [year, JAN, 1])
+
+        self._long_weekends("Dia do Início da Luta Armada", [year, FEB, 4])
+
+        self._long_weekends("Dia Internacional da Mulher",[year, MAR, 8])
+
+        self._long_weekends("Dia da Libertação da África Austral",[year, MAR, 23])
+
+        self._long_weekends("Dia da Paz e Reconciliação",[year, APR, 4 ])
+
+        self._long_weekends("Dia Mundial do Trabalho",[year, MAY, 1])
+
+        self._long_weekends("Dia do Herói Nacional",[ year, SEP, 17 ])
+
+        self._long_weekends("Dia dos Finados",[year, NOV, 2])
+
+        self._long_weekends("Dia da Independência",[ year, NOV, 11 ])
+
+        # Christmas Day
+        self._long_weekends("Dia de Natal e da Família",[year, DEC, 25 ])
 
         self[easter(year) - rd(days=2)] = "Sexta-feira Santa"
         self[easter(year)] = "Páscoa"
