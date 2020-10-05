@@ -97,6 +97,7 @@ Available Countries
 =================== ========= =============================================================
 Country             ISO code  Provinces/States Available
 =================== ========= =============================================================
+Angola              AO/AGO    None
 Argentina           AR/ARG    None
 Aruba               AW/ABW    None
 Australia           AU/AUS    prov = **ACT** (default), NSW, NT, QLD, SA, TAS, VIC, WA
