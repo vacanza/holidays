@@ -109,7 +109,8 @@ Bulgaria            BG/BLG    None
 Burundi             BI/BDI    None
 Canada              CA/CAN    prov = AB, BC, MB, NB, NL, NS, NT, NU, **ON** (default),
                               PE, QC, SK, YU
-Chile               CL/CHL    None
+Chile               CL/CHL    state = AI, AN, AP, AR, AT, BI, CO, LI, LL, LR, MA, ML, NB,
+                              RM, TA, VS
 Colombia            CO/COL    None
 Croatia             HR/HRV    None
 Czechia             CZ/CZE    None
