@@ -57,7 +57,8 @@ class Mexico(HolidayBase):
 
         # Labor Day
         if year >= 1923:
-            self[date(year, MAY, 1)] = "Día del Trabajo [Labour Day]"
+            name = "Día del Trabajo [Labour Day]"
+            self[date(year, MAY, 1)] = name
             if self.observed and date(year, MAY, 1).weekday() == SAT:
                 self[date(year, MAY, 1) + rd(days=-1)] = name + " (Observed)"
             elif self.observed and date(year, MAY, 1).weekday() == SUN:
