@@ -121,7 +121,7 @@ England                       None
 Estonia             EE/EST    None
 EuropeanCentralBank ECB/TAR   Trans-European Automated Real-time Gross Settlement (TARGET2)
 Finland             FI/FIN    None
-France              FRA       **Métropole** (default), Alsace-Moselle, Guadeloupe, Guyane,
+France              FR/FRA    **Métropole** (default), Alsace-Moselle, Guadeloupe, Guyane,
                               Martinique, Mayotte, Nouvelle-Calédonie, La Réunion,
                               Polynésie Française, Saint-Barthélémy, Saint-Martin,
                               Wallis-et-Futuna
@@ -176,7 +176,7 @@ Switzerland         CH/CHE    prov = AG, AR, AI, BL, BS, BE, FR, GE, GL, GR, JU,
 Turkey              TR/TUR    None
 Ukraine             UA/UKR    None
 UnitedArabEmirates  AE/ARE    None
-UnitedKingdom       UK/GB/GBR None
+UnitedKingdom       GB/GBR/UK None
 UnitedStates        US/USA    state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL, GA,
                               GU, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MH, MA, MI,
                               FM, MN, MS, MO, MT, NE, NV, NH, NJ, NM, NY, NC, ND, MP,
