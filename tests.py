@@ -14,5 +14,36 @@
 from test import *
 
 
+class TestKazakhstan(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.KZ()
+
+    def test2020(self):
+        _holidays = [
+            date(2020, 1, 1),
+            date(2020, 1, 2),
+            date(2020, 1, 3),
+            date(2020, 1, 7),
+            date(2020, 3, 8),
+            date(2020, 3, 21),
+            date(2020, 3, 22),
+            date(2020, 3, 23),
+            date(2020, 5, 1),
+            date(2020, 5, 7),
+            date(2020, 5, 9),
+            date(2020, 7, 6),
+            date(2020, 7, 31),
+            date(2020, 8, 30),
+            date(2020, 12, 1),
+            date(2020, 12, 16),
+            date(2020, 12, 17),
+        ]
+
+        for kaz_hol in _holidays:
+            self.assertIn(kaz_hol, self.holidays)
+
+
+
 if __name__ == "__main__":
     unittest.main()
