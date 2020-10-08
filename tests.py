@@ -4949,6 +4949,9 @@ class TestCroatia(unittest.TestCase):
         self.assertIn(date(2018, 11, 1), self.holidays)
         self.assertIn(date(2018, 12, 25), self.holidays)
         self.assertIn(date(2018, 12, 26), self.holidays)
+
+    def test_2020_new(self):
+        self.assertIn(date(2020, 5, 30), self.holidays)
         self.assertIn(date(2020, 11, 18), self.holidays)
 
 
