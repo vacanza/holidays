@@ -24,33 +24,33 @@ def CountryHoliday(country, years=[], prov=None, state=None, expand=True,
 
 def get_gre_date(year, Hmonth, Hday):
     """
-    returns the gregian date of a given gregorian calendar
-    yyyy year with Hijari Month & Day
-    works *only* if hijri-converter library is installed, otherwise a warning
-    is raised that this holiday is missing. hijri-converter requires
-    Python >= 3.6
+    Returns the gregorian dates within the gregorian year 'year'
+    of all instances of islamic calendar 'Hmonth' and 'Hday'.
+    Defaults to using the hijri-converter library if it is installed
+    otherwise it uses the less-precise convertdate one (which is a
+    requirement).
     """
     try:
         from hijri_converter import convert
+
+        Hyear = convert.Gregorian(year, 1, 1).to_hijri().datetuple()[0]
+        gres = [convert.Hijri(y, Hmonth, Hday).to_gregorian() for y in range(Hyear - 1, Hyear + 2)]
+        gre_dates = [date(*gre.datetuple()) for gre in gres if gre.year == year]
+        return gre_dates
     except ImportError:
         import warnings
+        from convertdate import islamic
 
         def warning_on_one_line(message, category, filename, lineno,
                                 file=None, line=None):
             return filename + ': ' + str(message) + '\n'
+
         warnings.formatwarning = warning_on_one_line
-        warnings.warn("Error estimating Islamic Holidays." +
-                      "To estimate, install hijri-converter library")
-        warnings.warn("pip install -U hijri-converter")
+        warnings.warn("Islamic Holidays estimated using 'convertdate' package.")
+        warnings.warn("For higher precision, install 'hijri-converter' package:"
+                      " pip install -U hijri-converter")
         warnings.warn("(see https://hijri-converter.readthedocs.io/ )")
-        return []
-    Hyear = convert.Gregorian(year, 1, 1).to_hijri().datetuple()[0]
-    gres = []
-    gres.append(convert.Hijri(Hyear - 1, Hmonth, Hday).to_gregorian())
-    gres.append(convert.Hijri(Hyear, Hmonth, Hday).to_gregorian())
-    gres.append(convert.Hijri(Hyear + 1, Hmonth, Hday).to_gregorian())
-    gre_dates = []
-    for gre in gres:
-        if gre.year == year:
-            gre_dates.append(date(*gre.datetuple()))
-    return gre_dates
+        Hyear = islamic.from_gregorian(year, 1, 1)[0]
+        gres = [islamic.to_gregorian(y, Hmonth, Hmonth) for y in range (Hyear - 1, Hyear + 2)]
+        gre_dates = [date(*gre) for gre in gres if gre[0] == year]
+        return gre_dates
