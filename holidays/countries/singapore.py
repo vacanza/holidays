@@ -191,7 +191,7 @@ class Singapore(HolidayBase):
                 in_lieu_date = hol_date + rd(days=+1)
                 while in_lieu_date in self:
                     in_lieu_date += rd(days=+1)
-                self[in_lieu_date] = f'{hol_name} [In lieu]'
+                self[in_lieu_date] = hol_name + '[In lieu]'
 
     # The below is used to calculate lunar new year (i.e. Chinese new year)
     # Code borrowed from Hong Kong entry as of 16-Nov-19
