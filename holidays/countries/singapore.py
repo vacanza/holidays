@@ -86,7 +86,8 @@ class Singapore(HolidayBase):
                 # Second day of Hari Raya Puasa (up to and including 1968)
                 if year <= 1968:
                     hol_date += rd(days=+1)
-                    self[hol_date] = "Second day of Hari Raya Puasa* (*estimated)"
+                    self[hol_date] = ("Second day of Hari Raya Puasa*"
+                                      " (*estimated)")
 
         # Hari Raya Haji
         # aka Eid al-Adha
