@@ -223,30 +223,30 @@ state
 Methods:
 
 get(key, default=None)
-    Returns a string containing the name of the holiday(s) in date `key`, which
+    Returns a string containing the name of the holiday(s) in date ``key``, which
     can be of date, datetime, string, unicode, bytes, integer or float type. If
     multiple holidays fall on the same date the names will be separated by
     commas
 
 get(key, default=None)
-    Returns a string containing the name of the holiday(s) in date `key`, which
+    Returns a string containing the name of the holiday(s) in date ``key``, which
     can be of date, datetime, string, unicode, bytes, integer or float type. If
     multiple holidays fall on the same date the names will be separated by
     commas
 
 get_list(key)
-    Same as `get` except returns a `list` of holiday names instead of a comma
+    Same as ``get`` except returns a ``list`` of holiday names instead of a comma
     separated string
 
 get_named(name)
-    Returns a `list` of holidays matching (even partially) the provided name
+    Returns a ``list`` of holidays matching (even partially) the provided name
     (case insensitive check)
 
 pop(key, default=None)
-    Same as `get` except the key is removed from the holiday object
+    Same as ``get`` except the key is removed from the holiday object
 
 pop_named(name)
-    Same as `pop` but takes the name of the holiday (or part of it) rather than
+    Same as ``pop`` but takes the name of the holiday (or part of it) rather than
     the date
 
 update/append
@@ -265,7 +265,7 @@ More Examples
     >>> import holidays
     >>> date(2014, 1, 1) in holidays.US()
     True
-    >> date(2014, 1, 2) in holidays.US()
+    >>> date(2014, 1, 2) in holidays.US()
     False
 
     # But this is not efficient because it is initializing a new Holiday object
@@ -314,7 +314,7 @@ More Examples
     >>> len(us_holidays)
     10
 
-    # Because by default the `expand` param is True the Holiday object will add
+    # Because by default the ``expand`` param is True the Holiday object will add
     # holidays from other years as they are required.
 
     >>> date(2013, 1, 1) in us_holidays
@@ -324,7 +324,7 @@ More Examples
     >>> len(us_holidays)
     20
 
-    # If we change the `expand` param to False the Holiday object will no longer
+    # If we change the ``expand`` param to False the Holiday object will no longer
     # add holidays from new years
 
     >>> us_holidays.expand = False
@@ -335,7 +335,7 @@ More Examples
     True
 
     # January 1st, 2012 fell on a Sunday so the statutory holiday was observed
-    # on the 2nd. By default the `observed` param is True so the holiday list
+    # on the 2nd. By default the ``observed`` param is True so the holiday list
     # will include January 2nd, 2012 as a holiday.
 
     >>> date(2012, 1, 1) in us_holidays
@@ -347,7 +347,7 @@ More Examples
     >>> us_holidays.get(date(2012 ,1, 2))
     "New Year's Day (Observed)"
 
-    # The `observed` and `expand` values can both be changed on the fly and the
+    # The ``observed`` and ``expand`` values can both be changed on the fly and the
     # holiday list will be adjusted accordingly
 
     >>> us_holidays.observed = False
@@ -382,7 +382,7 @@ More Examples
                  'QC', 'SK', 'YU']
 
     # Holidays can be retrieved using their name too.
-    # `get_named(key)` receives a string and returns a list of holidays
+    # ``get_named(key)`` receives a string and returns a list of holidays
     # matching it (even partially, with case insensitive check)
 
     >>> us_holidays = holidays.UnitedStates(years=2020)
