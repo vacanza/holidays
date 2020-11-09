@@ -24,6 +24,8 @@ from holidays.holiday_base import HolidayBase
 class Angola(HolidayBase):
 
     def __init__(self, **kwargs):
+        # https://www.officeholidays.com/countries/angola/
+        # https://www.timeanddate.com/holidays/angola/
         self.country = 'AO'
         HolidayBase.__init__(self, **kwargs)
 
