@@ -14,6 +14,7 @@ Released ????? ??, ????
 - Russia fixes (tserekh)
 - Ireland fixes (chiuczek)
 - France fix (mborsetti)
+- Fix on occasional pop_named exception (mborsetti)
 
 
 Version 0.10.3
