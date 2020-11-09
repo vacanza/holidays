@@ -5744,6 +5744,15 @@ class TestChile(unittest.TestCase):
         self.holidays_AP = holidays.CL(state='AP')
         self.holidays_NB = holidays.CHL(state='NB')
 
+    def test_2009(self):
+        self.assertIn(date(2009, 10, 12), self.holidays)
+
+    def test_2017(self):
+        self.assertIn(date(2017, 1, 2), self.holidays)
+
+    def test_2018(self):
+        self.assertIn(date(2018, 9, 17), self.holidays)
+
     def test_2019(self):
         # No laborables (sector público) not included
         self.assertIn(date(2019, 1, 1), self.holidays)
@@ -5801,6 +5810,14 @@ class TestChile(unittest.TestCase):
         self.assertIn(date(2021, 12, 25), self.holidays)
         self.assertIn(date(2021, 6, 7), self.holidays_AP)
         self.assertIn(date(2021, 8, 20), self.holidays_NB)
+
+    def test_2024(self):
+        self.assertIn(date(2024, 10, 12), self.holidays)
+
+    def test_2029(self):
+        self.assertIn(date(2029, 7, 2), self.holidays)
+        self.assertIn(date(2029, 10, 15), self.holidays)
+
 
 class TestDominicanRepublic(unittest.TestCase):
     def setUp(self):

@@ -31,7 +31,6 @@ class Chile(HolidayBase):
     STATES = ['AI', 'AN', 'AP', 'AR', 'AT', 'BI', 'CO', 'LI', 'LL', 'LR',
               'MA', 'ML', 'NB', 'RM', 'TA', 'VS']
 
-
     def __init__(self, **kwargs):
         self.country = 'CL'
         HolidayBase.__init__(self, **kwargs)
@@ -72,7 +71,7 @@ class Chile(HolidayBase):
             elif date(year, JUN, 29).weekday() == FRI:
                 self[date(year, JUN, 29) + rd(weekday=MO)] = name
             else:
-                self[date(year, JUN, 292)] = name
+                self[date(year, JUN, 29)] = name
 
         # Day of Virgin of Carmen (Law 20.148)
         if year > 2006:
@@ -123,7 +122,7 @@ class Chile(HolidayBase):
 
         # National Day of the Evangelical and Protestant Churches (Law 20.299)
         if year > 2007:
-            name = ("Día Nacional de las Iglesias Evangélicas y Protestantes " 
+            name = ("Día Nacional de las Iglesias Evangélicas y Protestantes "
                     " [Reformation Day]")
             self[date(year, OCT, 31)] = name
 
@@ -147,9 +146,10 @@ class Chile(HolidayBase):
         # región de Ñuble
         if self.state == 'NB' and year >= 2014:
             # Law 20.678
-            self[date(year, AUG, 20)] = ("Nacimiento del Prócer de la Independencia"
-                                         " (Chillán y Chillán Viejo)"
-                                         " [Nativity of Bernardo O'Higgins]")
+            self[date(year, AUG, 20)] =\
+                ("Nacimiento del Prócer de la Independencia"
+                 " (Chillán y Chillán Viejo)"
+                 " [Nativity of Bernardo O'Higgins]")
 
 
 class CL(Chile):
