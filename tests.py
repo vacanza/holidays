@@ -5308,7 +5308,7 @@ class TestLatvia(unittest.TestCase):
     def test_2020(self):
         # https://www.officeholidays.com/countries/latvia/2020
         # https://en.wikipedia.org/wiki/Public_holidays_in_Latvia
-        # https://likumi.lv/ta/id/72608-par-svetku-atceres-un-atzimejamam-dienam 
+        # https://likumi.lv/ta/id/72608-par-svetku-atceres-un-atzimejamam-dienam
         self.assertIn(date(2020, 1, 1), self.holidays)
         self.assertIn(date(2020, 4, 10), self.holidays)
         self.assertIn(date(2020, 4, 13), self.holidays)
@@ -6370,7 +6370,7 @@ class TestKorea(unittest.TestCase):
         for year in range(1948, 2050):
             self.assertEqual(self.holidays[date(year, 12, 25)],
                              "Christmas Day")
-            
+
     def test_years_range(self):
         self.holidays = holidays.KR(years=range(2006, 2021))
         for year in range(2006, 2021):
@@ -6429,7 +6429,7 @@ class TestVietnam(unittest.TestCase):
         for year in range(1979, 2050):
             self.assertIn("Independence Day",
                           self.holidays[date(year, 9, 2)])
-            
+
     def test_years_range(self):
         self.holidays = holidays.VN(years=range(1979, 2050))
         for year in range(1979, 2050):
@@ -6527,7 +6527,7 @@ class TestBurundi(unittest.TestCase):
     def test_independence_day(self):
         for year in range(1962, 2050):
             self.assertIn(date(year, 7, 1), self.holidays)
-        
+
         for year in range(1930, 1962):
             self.assertNotIn(date(year, 7, 1), self.holidays)
 
@@ -6566,7 +6566,7 @@ class UnitedArabEmirates(unittest.TestCase):
         self.assertIn(date(2020, 12, 1), self.holidays)
         self.assertIn(date(2020, 12, 2), self.holidays)
         self.assertIn(date(2020, 12, 3), self.holidays)
-        
+
     def test_commemoration_day_since_2015(self):
         # Before 2009 Jan 25th wasn't celebrated
         self.holidays = holidays.AE(years=[2015])
@@ -6592,7 +6592,7 @@ class UnitedArabEmirates(unittest.TestCase):
                 self.assertIn(date(2018, 4, 13), self.holidays)
                 # Prophet's Birthday 2018
                 self.assertIn(date(2018, 11, 19), self.holidays)
-                
+
 
 class TestDjibouti(unittest.TestCase):
 
@@ -6628,6 +6628,36 @@ class TestDjibouti(unittest.TestCase):
                 self.assertIn(date(2019, 8, 10), self.holidays)
                 # muhammad's birthday 2019
                 self.assertIn(date(2019, 11, 9), self.holidays)
+
+class TestAngola(unittest.TestCase):
+    def test_AO_holidays(self):
+        self.holidays = holidays.AO(years=2020)
+        self.assertIn("2020-01-01", self.holidays)
+        self.assertEqual(self.holidays[date(2020,1,1)], "Ano novo")
+        self.assertIn("2020-02-03", self.holidays)
+        self.assertEqual(self.holidays[date(2020,2,3)], "Dia do Início da Luta Armada (Ponte antes do feriado)")
+        self.assertIn("2020-02-04", self.holidays)
+        self.assertEqual(self.holidays[date(2020,2,4)], "Dia do Início da Luta Armada")
+        self.assertIn("2020-02-25", self.holidays)
+        self.assertEqual(self.holidays[date(2020,2,25)], "Carnaval")
+        self.assertIn("2020-03-23", self.holidays)
+        self.assertEqual(self.holidays[date(2020,3,23)], "Dia da Libertação da África Austral")
+        self.assertIn("2020-04-10", self.holidays)
+        self.assertEqual(self.holidays[date(2020,4,10)], "Sexta-feira Santa")
+        self.assertIn("2020-04-12", self.holidays)
+        self.assertEqual(self.holidays[date(2020,4,12)], "Páscoa")
+        self.assertIn("2020-05-01", self.holidays)
+        self.assertEqual(self.holidays[date(2020,5,1)], "Dia Mundial do Trabalho")
+        self.assertIn("2020-09-17", self.holidays)
+        self.assertEqual(self.holidays[date(2020,9,17)], "Dia do Herói Nacional")
+        self.assertIn("2020-09-18", self.holidays)
+        self.assertEqual(self.holidays[date(2020,9,18)], "Dia do Herói Nacional (Ponte depois do feriado)")
+        self.assertIn("2020-11-02", self.holidays)
+        self.assertEqual(self.holidays[date(2020,11,2)], "Dia dos Finados")
+        self.assertIn("2020-11-11", self.holidays)
+        self.assertEqual(self.holidays[date(2020,11,11)], "Dia da Independência")
+        self.assertIn("2020-12-25", self.holidays)
+        self.assertEqual(self.holidays[date(2020,12,25)], "Dia de Natal e da Família")
 
 
 if __name__ == "__main__":
