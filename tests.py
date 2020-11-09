@@ -11,14 +11,28 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from itertools import product
-from datetime import date, datetime, timedelta
-from dateutil.relativedelta import relativedelta, MO
+import os
+import sys
 import unittest
 import warnings
-import sys
+from glob import glob
+from itertools import product
+
+from datetime import date, datetime, timedelta
+from dateutil.relativedelta import relativedelta, MO
+from flake8.api import legacy as flake8
 
 import holidays
+
+
+class TestFlake8(unittest.TestCase):
+
+    def test_flake8(self):
+        """Test that we conform to PEP-8."""
+        self.style_guide = flake8.get_style_guide(ignore=['I', 'F401', 'W504'])
+        self.py_files = [y for x in os.walk(os.path.abspath('holidays')) for y in glob(os.path.join(x[0], '*.py'))]
+        self.report = self.style_guide.check_files(self.py_files)
+        self.assertEqual(self.report.get_statistics('E'), [])
 
 
 class TestBasics(unittest.TestCase):
