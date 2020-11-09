@@ -6597,7 +6597,9 @@ class TestBurundi(unittest.TestCase):
             self.assertIn(date(year, 7, 1), self.holidays)
         
         for year in range(1930, 1962):
-            self.assertNotIn(date(year, 7, 1), self.holidays)
+            if year != 1958:
+                # in 1958 it's Eid Al Adha (as estimated by convertdate)
+                self.assertNotIn(date(year, 7, 1), self.holidays)
 
         self.assertIn("Independence Day (Observed)", self.holidays[date(2018, 7, 2)])
 
