@@ -5285,6 +5285,10 @@ class TestRussia(unittest.TestCase):
 
     def setUp(self):
         self.holidays = holidays.RU()
+        
+    def test_before_2005(self):
+        self.assertIn(date(2004, 11, 7), self.holidays)
+        self.assertNotIn(date(2004, 11, 4), self.holidays)
 
     def test_2018(self):
         # https://en.wikipedia.org/wiki/Public_holidays_in_Russia
@@ -5302,6 +5306,7 @@ class TestRussia(unittest.TestCase):
         self.assertIn(date(2018, 5, 9), self.holidays)
         self.assertIn(date(2018, 6, 12), self.holidays)
         self.assertIn(date(2018, 11, 4), self.holidays)
+        self.assertNotIn(date(2018, 11, 7), self.holidays)
 
 
 class TestLatvia(unittest.TestCase):
