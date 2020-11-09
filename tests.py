@@ -6700,5 +6700,29 @@ class TestDjibouti(unittest.TestCase):
                 self.assertIn(date(2019, 11, 9), self.holidays)
 
 
+class TestAngola(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.AO()
+
+    def test_new_years(self):
+        self.assertIn('1975-01-01', self.holidays)
+        self.assertIn('2017-01-01', self.holidays)
+        self.assertIn('2999-01-01', self.holidays)
+        self.assertIn('2017-01-02', self.holidays)  # sunday
+
+    def test_easter(self):
+        self.assertIn(date(2017, 4, 14), self.holidays)
+        self.assertIn(date(2020, 4, 10), self.holidays)
+        self.assertIn(date(1994, 4, 1), self.holidays)
+
+    def test_static(self):
+        self.assertIn('2004-03-08', self.holidays)
+
+    def test_not_holiday(self):
+        self.assertNotIn('2016-12-28', self.holidays)
+        self.assertNotIn('2015-03-02', self.holidays)
+
+
 if __name__ == "__main__":
     unittest.main()
