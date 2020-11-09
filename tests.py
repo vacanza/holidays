@@ -1281,7 +1281,7 @@ class TestUS(unittest.TestCase):
         self.assertEqual(holidays.US(state='NH').get('2015-01-19'),
                          "Dr. Martin Luther King Jr./Civil Rights Day")
         self.assertEqual(holidays.US(state='ID').get('2015-01-19'),
-                         "Martin Luther King, Jr. - Idaho Human Rights Day")
+                         "Martin Luther King Jr. - Idaho Human Rights Day")
         self.assertNotEqual(holidays.US(state='ID').get('2000-01-17'),
                             "Martin Luther King Jr. - Idaho Human Rights Day")
         self.assertEqual(holidays.US(state='GA').get('2011-01-17'),
@@ -2635,8 +2635,13 @@ class TestAU(unittest.TestCase):
 
     def test_grand_final_day(self):
         dt = date(2019, 9, 27)
+        dt_2020 = date(2020, 10, 23)
+        dt_2020_old = date(2020, 9, 25)
         self.assertIn(dt, self.state_hols['VIC'], dt)
         self.assertEqual(self.state_hols['VIC'][dt], "Grand Final Day")
+        self.assertIn(dt_2020, self.state_hols['VIC'], dt_2020)
+        self.assertEqual(self.state_hols['VIC'][dt_2020], "Grand Final Day")
+        self.assertNotIn(dt_2020_old, self.state_hols['VIC'], dt_2020_old)
 
     def test_melbourne_cup(self):
         for dt in [date(2014, 11, 4), date(2015, 11, 3), date(2016, 11, 1)]:
@@ -2644,7 +2649,7 @@ class TestAU(unittest.TestCase):
             self.assertEqual(self.state_hols['VIC'][dt], "Melbourne Cup")
 
     def test_royal_queensland_show(self):
-        for year, day in enumerate([15, 14, 12, 11, 10, 16], 2018):
+        for year, day in enumerate([15, 14, 14, 11, 10, 16], 2018):
             dt = date(year, 8, day)
             self.assertIn(dt, self.state_hols['QLD'], dt)
             self.assertEqual(self.state_hols['QLD'][dt],
@@ -6259,7 +6264,7 @@ class TestKorea(unittest.TestCase):
             (2018, 5, 7), (2019, 5, 6)]:
             self.assertEqual(self.holidays[date(year, month, day)],
                              "Alternative holiday of Children's Day")
-        for year, mont, day in [
+        for year, month, day in [
             (2025, 5, 6), (2044, 5, 6)]:
             self.assertIn("Alternative holiday of Children's Day",
                           self.holidays[date(year, month, day)])
@@ -6550,6 +6555,79 @@ class TestBurundi(unittest.TestCase):
                 # eid Al Adha
                 self.assertIn(date(2020, 7, 31), self.holidays)
                 self.assertIn(date(2020, 7, 31), self.holidays)
+
+class UnitedArabEmirates(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.AE()
+
+    def test_2020(self):
+        self.assertIn(date(2020, 1, 1), self.holidays)
+        self.assertIn(date(2020, 12, 1), self.holidays)
+        self.assertIn(date(2020, 12, 2), self.holidays)
+        self.assertIn(date(2020, 12, 3), self.holidays)
+        
+    def test_commemoration_day_since_2015(self):
+        # Before 2009 Jan 25th wasn't celebrated
+        self.holidays = holidays.AE(years=[2015])
+        self.assertIn(date(2015, 11, 30), self.holidays)
+
+    def test_hijri_based(self):
+        if sys.version_info >= (3, 6):
+            import importlib.util
+            if importlib.util.find_spec("hijri_converter"):
+                self.holidays = holidays.AE(years=[2020])
+                # Eid Al-Fitr
+                self.assertIn(date(2020, 5, 24), self.holidays)
+                self.assertIn(date(2020, 5, 25), self.holidays)
+                self.assertIn(date(2020, 5, 26), self.holidays)
+                # Arafat Day & Eid Al-Adha
+                self.assertIn(date(2020, 7, 30), self.holidays)
+                self.assertIn(date(2020, 7, 31), self.holidays)
+                self.assertIn(date(2020, 8, 1), self.holidays)
+                self.assertIn(date(2020, 8, 2), self.holidays)
+                # Islamic New Year
+                self.assertIn(date(2020, 8, 23), self.holidays)
+                # Leilat Al-Miraj 2018
+                self.assertIn(date(2018, 4, 13), self.holidays)
+                # Prophet's Birthday 2018
+                self.assertIn(date(2018, 11, 19), self.holidays)
+                
+
+class TestDjibouti(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.DJ()
+
+    def test_2019(self):
+        self.assertIn(date(2019, 5, 1), self.holidays)
+        self.assertIn(date(2019, 6, 27), self.holidays)
+        self.assertIn(date(2019, 6, 28), self.holidays)
+
+    def test_labour_day(self):
+        self.assertIn(date(2019, 5, 1), self.holidays)
+
+    def test_hijri_based(self):
+        if sys.version_info >= (3, 6):
+            import importlib.util
+            if importlib.util.find_spec("hijri_converter"):
+                self.holidays = holidays.DJ(years=[2010])
+                self.assertIn(date(2019, 6, 5), self.holidays)
+                self.assertIn(date(2019, 8, 10), self.holidays)
+                self.assertIn(date(2019, 8, 11), self.holidays)
+                self.assertIn(date(2019, 8, 12), self.holidays)
+                self.assertIn(date(2019, 8, 31), self.holidays)
+                self.assertIn(date(2019, 11, 9), self.holidays)
+                # eid_alfitr
+                self.assertIn(date(2019, 6, 5), self.holidays)
+                # eid_aladha
+                self.assertIn(date(2019, 8, 11), self.holidays)
+                # islamic_new_year
+                self.assertIn(date(2019, 8, 31), self.holidays)
+                # arafat_2019
+                self.assertIn(date(2019, 8, 10), self.holidays)
+                # muhammad's birthday 2019
+                self.assertIn(date(2019, 11, 9), self.holidays)
 
 
 class TestAngola(unittest.TestCase):

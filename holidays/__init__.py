@@ -17,4 +17,4 @@ from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT,
 from holidays.holiday_base import HolidayBase, createHolidaySum
 from holidays.utils import list_supported_countries, CountryHoliday
 
-__version__ = '0.10.3'
+__version__ = '0.10.4'

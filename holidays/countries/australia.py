@@ -206,7 +206,10 @@ class Australia(HolidayBase):
 
         if self.prov == 'VIC':
             # Grand Final Day
-            if year >= 2015:
+            if year == 2020:
+                # Rescheduled due to COVID-19
+                self[date(year, OCT, 23)] = "Grand Final Day"
+            elif year >= 2015:
                 self[date(year, SEP, 24) + rd(weekday=FR)] = "Grand Final Day"
 
             # Melbourne Cup
@@ -218,8 +221,11 @@ class Australia(HolidayBase):
         # Friday. The Wednesday during the show is a public holiday.
         if self.prov == 'QLD':
             name = "The Royal Queensland Show"
-            self[date(year, AUG, 5) + rd(weekday=FR) + rd(weekday=WE)] = \
-                name
+            if year == 2020:
+                self[date(year, AUG, 14)] = name
+            else:
+                self[date(year, AUG, 5) + rd(weekday=FR) + rd(weekday=WE)] = \
+                    name
 
         # Christmas Day
         name = "Christmas Day"

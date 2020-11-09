@@ -25,6 +25,7 @@ from .colombia import Colombia, CO, COL
 from .croatia import Croatia, HR, HRV
 from .czechia import Czechia, Czech, CZ, CZE
 from .denmark import Denmark, DK, DNK
+from .djibouti import Djibouti, DJ, DJI
 from .dominican_republic import DominicanRepublic, DO, DOM
 from .egypt import Egypt, EG, EGY
 from .estonia import Estonia, EE, EST
@@ -70,6 +71,7 @@ from .sweden import Sweden, SE, SWE
 from .switzerland import Switzerland, CH, CHE
 from .turkey import Turkey, TR, TUR
 from .ukraine import Ukraine, UA, UKR
+from .united_arab_emirates import UnitedArabEmirates, AE, ARE
 from .united_kingdom import UnitedKingdom, UK, GB, England, Wales, Scotland,\
     IsleOfMan, NorthernIreland, GBR
 from .united_states import UnitedStates, US, USA

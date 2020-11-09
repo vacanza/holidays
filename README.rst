@@ -114,6 +114,7 @@ Colombia            CO/COL    None
 Croatia             HR/HRV    None
 Czechia             CZ/CZE    None
 Denmark             DK/DNK    None
+Djibouti            DJ/DJI    None
 Dominican Republic  DO/DOM    None
 Egypt               EG/EGY    None
 England                       None
@@ -152,7 +153,7 @@ NewZealand          NZ/NZL    prov = NTL, AUK, TKI, HKB, WGN, MBH, NSN, CAN, STC
                               OTA, STL, CIT
 Nicaragua           NI/NIC    prov = MN
 Nigeria             NG/NGA    None
-Northern Ireland              None
+NorthernIreland               None
 Norway              NO/NOR    None
 Paraguay            PY/PRY    None
 Peru                PE/PER    None
@@ -174,6 +175,7 @@ Switzerland         CH/CHE    prov = AG, AR, AI, BL, BS, BE, FR, GE, GL, GR, JU,
                               NE, NW, OW, SG, SH, SZ, SO, TG, TI, UR, VD, VS, ZG, ZH
 Turkey              TR/TUR    None
 Ukraine             UA/UKR    None
+UnitedArabEmirates  AE/ARE    None
 UnitedKingdom       UK/GB/GBR None
 UnitedStates        US/USA    state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL, GA,
                               GU, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MH, MA, MI,
