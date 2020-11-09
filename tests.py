@@ -3977,8 +3977,8 @@ class TestFrance(unittest.TestCase):
 
     def setUp(self):
         self.holidays = holidays.France()
-        self.prov_holidays = {prov: holidays.France(prov=prov)
-                              for prov in holidays.France.PROVINCES}
+        self.prov_holidays = {prov: holidays.FR(prov=prov)
+                              for prov in holidays.FRA.PROVINCES}
 
     def test_2017(self):
         self.assertIn(date(2017, 1, 1), self.holidays)
@@ -4952,6 +4952,9 @@ class TestCroatia(unittest.TestCase):
         self.assertIn(date(2018, 11, 1), self.holidays)
         self.assertIn(date(2018, 12, 25), self.holidays)
         self.assertIn(date(2018, 12, 26), self.holidays)
+
+    def test_2020_new(self):
+        self.assertIn(date(2020, 5, 30), self.holidays)
         self.assertIn(date(2020, 11, 18), self.holidays)
 
 
