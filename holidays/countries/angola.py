@@ -14,94 +14,51 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, TU
+from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import (
-    JAN,
-    FEB,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-)
-from holidays.constants import WEEKEND, TUE, THU
-
-
+from holidays.constants import TUE, SUN
+from holidays.constants import FEB, MAR, APR, MAY, SEP, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
 class Angola(HolidayBase):
-    """
-    Official Holidays in Angola in their current form
-    Source1: https://en.wikipedia.org/wiki/Public_holidays_in_Angola
-    Source2: http://www.siac.gv.ao/downloads/181029-Lei-Feriados.pdf
-    """
 
     def __init__(self, **kwargs):
-        self.country = "AO"
+        # https://www.officeholidays.com/countries/angola/
+        # https://www.timeanddate.com/holidays/angola/
+        self.country = 'AO'
         HolidayBase.__init__(self, **kwargs)
 
-    def _long_weekends(self, description, full_date):
-        """
-        According to the most recently low in Angola:
-        If the holidays happens to be on a Tuesday,
-        the Monday before that is a holiday as well,
-        If it happens to be on a Thursday,
-        the Friday before it is a Holiday as well
-        """
-
-        if date(*full_date).weekday() in WEEKEND:
-            pass
-        elif date(*full_date).weekday() == TUE:
-            self[date(*full_date)] = description
-            self[date(*full_date) - rd(days=1)] = (
-                description + " (Ponte antes do feriado)"
-            )
-
-        elif date(*full_date).weekday() == THU:
-            self[date(*full_date)] = description
-            self[date(*full_date) + rd(days=1)] = (
-                description + " (Ponte depois do feriado)"
-            )
-        else:
-            self[date(*full_date)] = description
-
     def _populate(self, year):
+        # Observed since 1975
+        if year > 1974:
+            self[date(year, 1, 1)] = "New Year's Day"
 
-        self._long_weekends("Ano novo", [year, JAN, 1])
+            e = easter(year)
+            good_friday = e - rd(days=2)
+            self[good_friday] = "Good Friday"
 
-        self._long_weekends("Dia do Início da Luta Armada", [year, FEB, 4])
+            # carnival is the Tuesday before Ash Wednesday
+            # which is 40 days before easter excluding sundays
+            carnival = e - rd(days=46)
+            while carnival.weekday() != TUE:
+                carnival = carnival - rd(days=1)
+            self[carnival] = "Carnival"
 
-        self._long_weekends("Dia Internacional da Mulher", [year, MAR, 8])
+            self[date(year, FEB, 4)] = "Liberation Day"
+            self[date(year, MAR, 8)] = "International Woman's Day"
+            self[date(year, APR, 4)] = "Peace Day"
+            self[date(year, MAY, 1)] = "Labour Day"
+            self[date(year, SEP, 17)] = "National Heroes' Day"
+            self[date(year, NOV, 2)] = "All Souls' Day"
+            self[date(year, NOV, 11)] = "Independence Day"
+            self[date(year, DEC, 25)] = "Christmas Day"
 
-        date = [year, MAR, 23]
-        self._long_weekends("Dia da Libertação da África Austral", date)
-
-        self._long_weekends("Dia da Paz e Reconciliação", [year, APR, 4])
-
-        self._long_weekends("Dia Mundial do Trabalho", [year, MAY, 1])
-
-        self._long_weekends("Dia do Herói Nacional", [year, SEP, 17])
-
-        self._long_weekends("Dia dos Finados", [year, NOV, 2])
-
-        self._long_weekends("Dia da Independência", [year, NOV, 11])
-
-        self._long_weekends("Dia de Natal e da Família", [year, DEC, 25])
-
-        self[easter(year) - rd(days=2)] = "Sexta-feira Santa"
-
-        self[easter(year)] = "Páscoa"
-
-        quaresma = easter(year) - rd(days=46)
-
-        self[quaresma - rd(weekday=TU(-1))] = "Carnaval"
+            # As of 1995/1/1, whenever a public holiday falls on a Sunday,
+            # it rolls over to the following Monday
+        for k, v in list(self.items()):
+            if self.observed and year > 1994 and k.weekday() == SUN:
+                self[k + rd(days=1)] = v + " (Observed)"
 
 
 class AO(Angola):
