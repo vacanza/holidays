@@ -16,7 +16,7 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import TUE, SUN
+from holidays.constants import TUE, THU, SUN
 from holidays.constants import FEB, MAR, APR, MAY, SEP, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
@@ -54,9 +54,16 @@ class Angola(HolidayBase):
             self[date(year, NOV, 11)] = "Independence Day"
             self[date(year, DEC, 25)] = "Christmas Day"
 
-            # As of 1995/1/1, whenever a public holiday falls on a Sunday,
-            # it rolls over to the following Monday
+        # As of 1995/1/1, whenever a public holiday falls on a Sunday,
+        # it rolls over to the following Monday
+        # Since 2018 when a public holiday falls on the Tuesday or Thursday
+        # the Monday or Friday is also a holiday
         for k, v in list(self.items()):
+            if self.observed and year > 2017:
+                if k.weekday() == TUE:
+                    self[k - rd(days=1)] = v + " (Day off)"
+                elif k.weekday() == THU:
+                    self[k + rd(days=1)] = v + " (Day off)"
             if self.observed and year > 1994 and k.weekday() == SUN:
                 self[k + rd(days=1)] = v + " (Observed)"
 
