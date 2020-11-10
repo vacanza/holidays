@@ -6,10 +6,10 @@ A fast, efficient Python library for generating country, province and state
 specific sets of holidays on the fly. It aims to make determining whether a
 specific date is a holiday as fast and flexible as possible.
 
-.. image:: http://img.shields.io/travis/dr-prodigy/python-holidays.svg
+.. image:: http://img.shields.io/travis/dr-prodigy/python-holidays/master
     :target: https://travis-ci.org/dr-prodigy/python-holidays
 
-.. image:: http://img.shields.io/coveralls/dr-prodigy/python-holidays.svg
+.. image:: http://img.shields.io/coveralls/dr-prodigy/python-holidays/master
     :target: https://coveralls.io/r/dr-prodigy/python-holidays
 
 .. image:: http://img.shields.io/pypi/v/holidays.svg
