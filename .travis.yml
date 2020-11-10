@@ -17,7 +17,7 @@ install:
       $TRAVIS_PYTHON_VERSION == 'pypy3'
     ]]; then pip install hijri-converter; fi
   - pip install python-dateutil
-  - pip install convertdate
+  - pip install convertdate==2.2.0
   - pip install korean_lunar_calendar
   - pip install six
   - pip install flake8
