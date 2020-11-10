@@ -16,6 +16,7 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
+
 from holidays.constants import TUE, THU, SUN
 from holidays.constants import FEB, MAR, APR, MAY, SEP, NOV, DEC
 from holidays.holiday_base import HolidayBase
@@ -64,8 +65,6 @@ class Angola(HolidayBase):
                     self[k - rd(days=1)] = v + " (Day off)"
                 elif k.weekday() == THU:
                     self[k + rd(days=1)] = v + " (Day off)"
-            if self.observed and year > 1994 and k.weekday() == SUN:
-                self[k + rd(days=1)] = v + " (Observed)"
 
 
 class AO(Angola):
