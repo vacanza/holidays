@@ -166,6 +166,8 @@ class UnitedKingdom(HolidayBase):
 
         # Boxing Day
         name = "Boxing Day"
+        if self.country == "Ireland":
+            name = "St. Stephen's Day"
         self[date(year, DEC, 26)] = name
         if self.observed and date(year, DEC, 26).weekday() == SAT:
             self[date(year, DEC, 28)] = name + " (Observed)"

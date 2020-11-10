@@ -110,7 +110,8 @@ Bulgaria            BG/BLG    None
 Burundi             BI/BDI    None
 Canada              CA/CAN    prov = AB, BC, MB, NB, NL, NS, NT, NU, **ON** (default),
                               PE, QC, SK, YU
-Chile               CL/CHL    None
+Chile               CL/CHL    state = AI, AN, AP, AR, AT, BI, CO, LI, LL, LR, MA, ML, NB,
+                              RM, TA, VS
 Colombia            CO/COL    None
 Croatia             HR/HRV    None
 Czechia             CZ/CZE    None
@@ -122,7 +123,7 @@ England                       None
 Estonia             EE/EST    None
 EuropeanCentralBank ECB/TAR   Trans-European Automated Real-time Gross Settlement (TARGET2)
 Finland             FI/FIN    None
-France              FRA       **Métropole** (default), Alsace-Moselle, Guadeloupe, Guyane,
+France              FR/FRA    **Métropole** (default), Alsace-Moselle, Guadeloupe, Guyane,
                               Martinique, Mayotte, Nouvelle-Calédonie, La Réunion,
                               Polynésie Française, Saint-Barthélémy, Saint-Martin,
                               Wallis-et-Futuna
@@ -177,7 +178,7 @@ Switzerland         CH/CHE    prov = AG, AR, AI, BL, BS, BE, FR, GE, GL, GR, JU,
 Turkey              TR/TUR    None
 Ukraine             UA/UKR    None
 UnitedArabEmirates  AE/ARE    None
-UnitedKingdom       UK/GB/GBR None
+UnitedKingdom       GB/GBR/UK None
 UnitedStates        US/USA    state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL, GA,
                               GU, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MH, MA, MI,
                               FM, MN, MS, MO, MT, NE, NV, NH, NJ, NM, NY, NC, ND, MP,

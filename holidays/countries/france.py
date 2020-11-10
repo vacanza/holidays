@@ -123,6 +123,10 @@ class France(HolidayBase):
             self[date(year, DEC, 20)] = "Abolition de l'esclavage"
 
 
-# FR already exists (Friday), we don't want to mess it up
+# *Warning* FR is also used by dateutlis (Friday), so be careful with its use
+class FR(France):
+    pass
+
+
 class FRA(France):
     pass
