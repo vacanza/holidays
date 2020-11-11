@@ -16,7 +16,8 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import TUE, SUN
+
+from holidays.constants import TUE, THU, SUN
 from holidays.constants import FEB, MAR, APR, MAY, SEP, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
@@ -31,6 +32,14 @@ class Angola(HolidayBase):
 
     def _populate(self, year):
         # Observed since 1975
+        # TODO do more research on history of Angolan holidays
+
+        if year > 2018:
+            self[date(year, MAR, 23)] = "Southern Africa Liberation Day"
+
+        if year > 1979:
+            self[date(year, SEP, 17)] = "National Heroes' Day"
+
         if year > 1974:
             self[date(year, 1, 1)] = "New Year's Day"
 
@@ -49,16 +58,25 @@ class Angola(HolidayBase):
             self[date(year, MAR, 8)] = "International Woman's Day"
             self[date(year, APR, 4)] = "Peace Day"
             self[date(year, MAY, 1)] = "Labour Day"
-            self[date(year, SEP, 17)] = "National Heroes' Day"
             self[date(year, NOV, 2)] = "All Souls' Day"
             self[date(year, NOV, 11)] = "Independence Day"
             self[date(year, DEC, 25)] = "Christmas Day"
 
-            # As of 1995/1/1, whenever a public holiday falls on a Sunday,
-            # it rolls over to the following Monday
+        # As of 1995/1/1, whenever a public holiday falls on a Sunday,
+        # it rolls over to the following Monday
+        # Since 2018 when a public holiday falls on the Tuesday or Thursday
+        # the Monday or Friday is also a holiday
         for k, v in list(self.items()):
-            if self.observed and year > 1994 and k.weekday() == SUN:
-                self[k + rd(days=1)] = v + " (Observed)"
+            if self.observed and year > 1974:
+                if k.weekday() == SUN:
+                    self[k + rd(days=1)] = v + " (Observed)"
+            if self.observed and year > 2017:
+                if k.weekday() == SUN:
+                    pass
+                if k.weekday() == TUE:
+                    self[k - rd(days=1)] = v + " (Day off)"
+                elif k.weekday() == THU:
+                    self[k + rd(days=1)] = v + " (Day off)"
 
 
 class AO(Angola):
