@@ -117,7 +117,7 @@ Croatia             HR/HRV    None
 Czechia             CZ/CZE    None
 Denmark             DK/DNK    None
 Djibouti            DJ/DJI    None
-Dominican Republic  DO/DOM    None
+DominicanRepublic   DO/DOM    None
 Egypt               EG/EGY    None
 England                       None
 Estonia             EE/EST    None
@@ -169,7 +169,7 @@ Serbia              RS/SRB    None
 Singapore           SG/SGP    None
 Slovakia            SK/SVK    None
 Slovenia            SI/SVN    None
-South Africa        ZA/ZAF    None
+SouthAfrica         ZA/ZAF    None
 Spain               ES/ESP    prov = AN, AR, AS, CB, CL, CM, CN, CT, EX, GA, IB, MC,
                               MD, NC, PV, RI, VC
 Sweden              SE/SWE    None
