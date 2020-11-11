@@ -148,6 +148,7 @@ Korea               KR/KOR    None
 Latvia              LV/LVA    None
 Lithuania           LT/LTU    None
 Luxembourg          LU/LUX    None
+Malawi              MW/MWI    None
 Mexico              MX/MEX    None
 Morocco             MA/MOR    None
 Netherlands         NL/NLD    None

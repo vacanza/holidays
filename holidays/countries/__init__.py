@@ -48,6 +48,7 @@ from .korea import Korea, KR, KOR
 from .latvia import Latvia, LV, LVA
 from .lithuania import Lithuania, LT, LTU
 from .luxembourg import Luxembourg, LU, LUX
+from .malawi import Malawi, MW, MWI
 from .mexico import Mexico, MX, MEX
 from .morocco import Morocco, MA, MOR
 from .netherlands import Netherlands, NL, NLD

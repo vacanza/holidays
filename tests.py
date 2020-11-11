@@ -6738,5 +6738,33 @@ class TestAngola(unittest.TestCase):
         self.assertNotIn('2015-03-02', self.holidays)
 
 
+class TestMalawi(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.MW()
+
+    def test_new_years(self):
+        self.assertIn('2015-01-01', self.holidays)
+        self.assertIn('2017-01-01', self.holidays)
+        self.assertIn('2999-01-01', self.holidays)
+        self.assertIn('2017-01-02', self.holidays)  # sunday
+
+    def test_good_friday(self):
+        self.assertIn('2022-04-15', self.holidays)
+        self.assertIn('2018-03-30', self.holidays)
+
+    def test_easter(self):
+        self.assertIn(date(2017, 4, 14), self.holidays)
+        self.assertIn(date(2020, 4, 10), self.holidays)
+        self.assertIn(date(2015, 4, 6), self.holidays)
+
+    def test_static(self):
+        self.assertIn('2004-03-03', self.holidays)
+
+    def test_not_holiday(self):
+        self.assertNotIn('2016-12-28', self.holidays)
+        self.assertNotIn('2015-03-02', self.holidays)
+
+
 if __name__ == "__main__":
     unittest.main()
