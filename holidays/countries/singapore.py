@@ -50,27 +50,13 @@ class Singapore(HolidayBase):
 
     def _populate(self, year):
 
-        def storeholiday(self, hol_date, hol_name):
-            """
-            Function to store the holiday name in the appropriate
-            date and to implement Section 4(2) of the Holidays Act:
-            'if any day specified in the Schedule falls on a Sunday,
-            the day next following not being itself a public holiday
-            is declared a public holiday in Singapore.'
-            """
-            if hol_date.weekday() == SUN:
-                self[hol_date] = hol_name + " [Sunday]"
-                self[hol_date + rd(days=+1)] = "Monday following " + hol_name
-            else:
-                self[hol_date] = hol_name
-
         # New Year's Day
-        storeholiday(self, date(year, JAN, 1), "New Year's Day")
+        self[date(year, JAN, 1)] = "New Year's Day"
 
         # Chinese New Year (two days)
         hol_date = self.get_lunar_n_y_date(year)
         self[hol_date] = "Chinese New Year"
-        storeholiday(self, hol_date + rd(days=+1), "Chinese New Year")
+        self[hol_date + rd(days=+1)] = "Chinese New Year"
 
         # Hari Raya Puasa
         # aka Eid al-Fitr
@@ -86,22 +72,22 @@ class Singapore(HolidayBase):
         if year in dates_obs:
             for date_obs in dates_obs[year]:
                 hol_date = date(year, *date_obs)
-                storeholiday(self, hol_date, "Hari Raya Puasa")
+                self[hol_date] = "Hari Raya Puasa"
                 # Second day of Hari Raya Puasa (up to and including 1968)
                 # Removed since we don't have Hari Raya Puasa dates for the
                 # the years <= 1968:
                 # if year <= 1968:
-                #     storeholiday(self, hol_date + rd(days=+1),
+                #     self[hol_date + rd(days=+1),
                 #                  "Second day of Hari Raya Puasa")
         else:
             for date_obs in self.get_hrp_date(year):
                 hol_date = date_obs
-                storeholiday(self, hol_date,
-                             "Hari Raya Puasa* (*estimated)")
+                self[hol_date] = "Hari Raya Puasa* (*estimated)"
                 # Second day of Hari Raya Puasa (up to and including 1968)
                 if year <= 1968:
-                    storeholiday(self, hol_date + rd(days=+1),
-                                 "Second day of Hari Raya Puasa* (*estimated)")
+                    hol_date += rd(days=+1)
+                    self[hol_date] = ("Second day of Hari Raya Puasa*"
+                                      " (*estimated)")
 
         # Hari Raya Haji
         # aka Eid al-Adha
@@ -117,13 +103,11 @@ class Singapore(HolidayBase):
         if year in dates_obs:
             for date_obs in dates_obs[year]:
                 hol_date = date(year, *date_obs)
-                storeholiday(self, hol_date,
-                             "Hari Raya Haji")
+                self[hol_date] = "Hari Raya Haji"
         else:
             for date_obs in self.get_hrh_date(year):
                 hol_date = date_obs
-                storeholiday(self, hol_date,
-                             "Hari Raya Haji* (*estimated)")
+                self[hol_date] = "Hari Raya Haji* (*estimated)"
 
         # Holy Saturday (up to and including 1968)
         if year <= 1968:
@@ -137,7 +121,7 @@ class Singapore(HolidayBase):
             self[easter(year) + rd(weekday=MO(1))] = "Easter Monday"
 
         # Labour Day
-        storeholiday(self, date(year, MAY, 1), "Labour Day")
+        self[date(year, MAY, 1)] = "Labour Day"
 
         # Vesak Day
         # date of observance is announced yearly
@@ -152,13 +136,13 @@ class Singapore(HolidayBase):
                      2021: (MAY, 26)}
         if year in dates_obs:
             hol_date = date(year, *dates_obs[year])
-            storeholiday(self, hol_date, "Vesak Day")
+            self[hol_date] = "Vesak Day"
         else:
-            storeholiday(self, self.get_vesak_date(year),
-                         "Vesak Day* (*estimated; ~10% chance +/- 1 day)")
+            hol_date = self.get_vesak_date(year)
+            self[hol_date] = "Vesak Day* (*estimated; ~10% chance +/- 1 day)"
 
         # National Day
-        storeholiday(self, date(year, AUG, 9), "National Day")
+        self[date(year, AUG, 9)] = "National Day"
 
         # Deepavali
         # aka Diwali
@@ -173,17 +157,17 @@ class Singapore(HolidayBase):
                      2021: (NOV, 4)}
         if year in dates_obs:
             hol_date = date(year, *dates_obs[year])
-            storeholiday(self, hol_date, "Deepavali")
+            self[hol_date] = "Deepavali"
         else:
-            storeholiday(self, self.get_s_diwali_date(year),
-                         "Deepavali* (*estimated; rarely on day after)")
+            hol_date = self.get_s_diwali_date(year)
+            self[hol_date] = "Deepavali* (*estimated; rarely on day after)"
 
         # Christmas Day
-        storeholiday(self, date(year, DEC, 25), "Christmas Day")
+        self[date(year, DEC, 25)] = "Christmas Day"
 
         # Boxing day (up to and including 1968)
         if year <= 1968:
-            storeholiday(self, date(year, DEC, 26), "Boxing Day")
+            self[date(year, DEC, 26)] = "Boxing Day"
 
         # Polling Day
         dates_obs = {2001: (NOV, 3), 2006: (MAY, 6), 2011: (MAY, 7),
@@ -197,7 +181,19 @@ class Singapore(HolidayBase):
         if year == 2015:
             self[date(2015, AUG, 7)] = "SG50 Public Holiday"
 
-    # The below is used to calcluate lunar new year (i.e. Chinese new year)
+        # Check for holidays that fall on a Sunday and implement Section 4(2)
+        # of the Holidays Act: "if any day specified in the Schedule falls on
+        # a Sunday, the day next following not being itself a public holiday
+        # is declared a public holiday in Singapore."
+        for (hol_date, hol_name) in list(self.items()):
+            if hol_date.weekday() == SUN:
+                self[hol_date] += ' [Sunday]'
+                in_lieu_date = hol_date + rd(days=+1)
+                while in_lieu_date in self:
+                    in_lieu_date += rd(days=+1)
+                self[in_lieu_date] = hol_name + '[In lieu]'
+
+    # The below is used to calculate lunar new year (i.e. Chinese new year)
     # Code borrowed from Hong Kong entry as of 16-Nov-19
     # Should probably be a function available to multiple countries
 

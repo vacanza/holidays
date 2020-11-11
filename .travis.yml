@@ -8,15 +8,16 @@ before_install:
 
 install:
 # hijri-converter not available < python 3.6
+# use Python 3.9 to test missing hijri-converter
+#      $TRAVIS_PYTHON_VERSION == '3.9' ||
   - if [[
-      $TRAVIS_PYTHON_VERSION == '3.9' ||
       $TRAVIS_PYTHON_VERSION == '3.8' ||
       $TRAVIS_PYTHON_VERSION == '3.7' ||
       $TRAVIS_PYTHON_VERSION == '3.6' ||
       $TRAVIS_PYTHON_VERSION == 'pypy3'
     ]]; then pip install hijri-converter; fi
   - pip install python-dateutil
-  - pip install convertdate
+  - pip install convertdate==2.2.0
   - pip install korean_lunar_calendar
   - pip install six
   - pip install flake8
@@ -26,7 +27,7 @@ install:
 
 matrix:
   include:
-#    - python: '3.9'
+    - python: '3.9'
     - python: '3.8'
     - python: '3.7'
     - python: '3.6'

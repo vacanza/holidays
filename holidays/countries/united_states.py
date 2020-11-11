@@ -452,12 +452,12 @@ class UnitedStates(HolidayBase):
         # American Indian Heritage Day
         # Family Day
         # New Mexico Presidents' Day
-        if (self.state in ('DE', 'FL', 'NH', 'NC', 'OK', 'TX', 'WV') and
+        if (self.state in ('CA', 'DE', 'FL', 'NH', 'NC', 'OK', 'TX', 'WV') and
             year >= 1975) \
                 or (self.state == 'IN' and year >= 2010) \
                 or (self.state == 'MD' and year >= 2008) \
                 or self.state in ('NV', 'NM'):
-            if self.state in ('DE', 'NH', 'NC', 'OK', 'WV'):
+            if self.state in ('CA', 'DE', 'NH', 'NC', 'OK', 'WV'):
                 name = "Day After Thanksgiving"
             elif self.state in ('FL', 'TX'):
                 name = "Friday After Thanksgiving"
