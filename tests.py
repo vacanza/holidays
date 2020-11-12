@@ -3196,8 +3196,9 @@ class TestIreland(unittest.TestCase):
 class TestES(unittest.TestCase):
 
     def setUp(self):
-        self.holidays = holidays.ES()
-        self.prov_holidays = {prov: holidays.ES(prov=prov)
+        self.holidays = holidays.ES(observed=False)
+        self.holidays_observed = holidays.ES()
+        self.prov_holidays = {prov: holidays.ES(observed=False, prov=prov)
                               for prov in holidays.ES.PROVINCES}
 
     def test_fixed_holidays(self):
@@ -3215,6 +3216,21 @@ class TestES(unittest.TestCase):
         for y, (m, d) in product(range(1950, 2050), fixed_days_whole_country):
             self.assertIn(date(y, m, d), self.holidays)
 
+    def test_fixed_holidays_observed(self):
+        fixed_days_whole_country = (
+            (1, 1),
+            (1, 6),
+            (5, 1),
+            (8, 15),
+            (10, 12),
+            (11, 2),
+            (12, 7),
+            (12, 8),
+            (12, 25),
+        )
+        for (m, d) in fixed_days_whole_country:
+            self.assertIn(date(2020, m, d), self.holidays_observed)
+
     def test_variable_days_in_2016(self):
         for prov, prov_holidays in self.prov_holidays.items():
             self.assertEqual(
@@ -3229,13 +3245,15 @@ class TestES(unittest.TestCase):
 
     def test_province_specific_days(self):
         province_days = {
-            (2, 28): ['AN', 'CB', 'CM'],
+            (2, 28): ['AN'],
             (3, 1): ['IB'],
             (4, 23): ['AR', 'CL'],
             (5, 30): ['CN'],
+            (5, 31): ['CM'],
             (5, 2): ['MD'],
             (6, 9): ['MC', 'RI'],
             (7, 25): ['GA'],
+            (7, 28): ['CB'],
             (9, 8): ['AS', 'EX'],
             (9, 11): ['CT'],
             (9, 27): ['NC'],
