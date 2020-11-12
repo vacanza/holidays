@@ -35,32 +35,32 @@ class Angola(HolidayBase):
         # TODO do more research on history of Angolan holidays
 
         if year > 2018:
-            self[date(year, MAR, 23)] = "Southern Africa Liberation Day"
+            self[date(year, MAR, 23)] = "Dia da Libertação da África Austral"
 
         if year > 1979:
-            self[date(year, SEP, 17)] = "National Heroes' Day"
+            self[date(year, SEP, 17)] = "Dia do Herói Nacional"
 
         if year > 1974:
-            self[date(year, 1, 1)] = "New Year's Day"
+            self[date(year, 1, 1)] = "Ano novo"
 
             e = easter(year)
             good_friday = e - rd(days=2)
-            self[good_friday] = "Good Friday"
+            self[good_friday] = "Sexta-feira Santa"
 
             # carnival is the Tuesday before Ash Wednesday
             # which is 40 days before easter excluding sundays
             carnival = e - rd(days=46)
             while carnival.weekday() != TUE:
                 carnival = carnival - rd(days=1)
-            self[carnival] = "Carnival"
+            self[carnival] = "Carnaval"
 
-            self[date(year, FEB, 4)] = "Liberation Day"
-            self[date(year, MAR, 8)] = "International Woman's Day"
-            self[date(year, APR, 4)] = "Peace Day"
-            self[date(year, MAY, 1)] = "Labour Day"
-            self[date(year, NOV, 2)] = "All Souls' Day"
-            self[date(year, NOV, 11)] = "Independence Day"
-            self[date(year, DEC, 25)] = "Christmas Day"
+            self[date(year, FEB, 4)] = "Dia do Início da Luta Armada"
+            self[date(year, MAR, 8)] = "Dia Internacional da Mulher"
+            self[date(year, APR, 4)] = "Dia da Paz e Reconciliação"
+            self[date(year, MAY, 1)] = "Dia Mundial do Trabalho"
+            self[date(year, NOV, 2)] = "Dia dos Finados"
+            self[date(year, NOV, 11)] = "Dia da Independência"
+            self[date(year, DEC, 25)] = "Dia de Natal e da Família"
 
         # As of 1995/1/1, whenever a public holiday falls on a Sunday,
         # it rolls over to the following Monday
