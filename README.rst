@@ -6,10 +6,10 @@ A fast, efficient Python library for generating country, province and state
 specific sets of holidays on the fly. It aims to make determining whether a
 specific date is a holiday as fast and flexible as possible.
 
-.. image:: http://img.shields.io/travis/dr-prodigy/python-holidays.svg
+.. image:: http://img.shields.io/travis/dr-prodigy/python-holidays/master
     :target: https://travis-ci.org/dr-prodigy/python-holidays
 
-.. image:: http://img.shields.io/coveralls/dr-prodigy/python-holidays.svg
+.. image:: http://img.shields.io/coveralls/dr-prodigy/python-holidays/master
     :target: https://coveralls.io/r/dr-prodigy/python-holidays
 
 .. image:: http://img.shields.io/pypi/v/holidays.svg
@@ -97,6 +97,7 @@ Available Countries
 =================== ========= =============================================================
 Country             ISO code  Provinces/States Available
 =================== ========= =============================================================
+Angola              AO/AGO    None
 Argentina           AR/ARG    None
 Aruba               AW/ABW    None
 Australia           AU/AUS    prov = **ACT** (default), NSW, NT, QLD, SA, TAS, VIC, WA
@@ -109,19 +110,20 @@ Bulgaria            BG/BLG    None
 Burundi             BI/BDI    None
 Canada              CA/CAN    prov = AB, BC, MB, NB, NL, NS, NT, NU, **ON** (default),
                               PE, QC, SK, YU
-Chile               CL/CHL    None
+Chile               CL/CHL    state = AI, AN, AP, AR, AT, BI, CO, LI, LL, LR, MA, ML, NB,
+                              RM, TA, VS
 Colombia            CO/COL    None
 Croatia             HR/HRV    None
 Czechia             CZ/CZE    None
 Denmark             DK/DNK    None
 Djibouti            DJ/DJI    None
-Dominican Republic  DO/DOM    None
+DominicanRepublic   DO/DOM    None
 Egypt               EG/EGY    None
 England                       None
 Estonia             EE/EST    None
 EuropeanCentralBank ECB/TAR   Trans-European Automated Real-time Gross Settlement (TARGET2)
 Finland             FI/FIN    None
-France              FRA       **Métropole** (default), Alsace-Moselle, Guadeloupe, Guyane,
+France              FR/FRA    **Métropole** (default), Alsace-Moselle, Guadeloupe, Guyane,
                               Martinique, Mayotte, Nouvelle-Calédonie, La Réunion,
                               Polynésie Française, Saint-Barthélémy, Saint-Martin,
                               Wallis-et-Futuna
@@ -146,6 +148,7 @@ Korea               KR/KOR    None
 Latvia              LV/LVA    None
 Lithuania           LT/LTU    None
 Luxembourg          LU/LUX    None
+Malawi              MW/MWI    None
 Mexico              MX/MEX    None
 Morocco             MA/MOR    None
 Netherlands         NL/NLD    None
@@ -167,7 +170,7 @@ Serbia              RS/SRB    None
 Singapore           SG/SGP    None
 Slovakia            SK/SVK    None
 Slovenia            SI/SVN    None
-South Africa        ZA/ZAF    None
+SouthAfrica         ZA/ZAF    None
 Spain               ES/ESP    prov = AN, AR, AS, CB, CL, CM, CN, CT, EX, GA, IB, MC,
                               MD, NC, PV, RI, VC
 Sweden              SE/SWE    None
@@ -176,7 +179,7 @@ Switzerland         CH/CHE    prov = AG, AR, AI, BL, BS, BE, FR, GE, GL, GR, JU,
 Turkey              TR/TUR    None
 Ukraine             UA/UKR    None
 UnitedArabEmirates  AE/ARE    None
-UnitedKingdom       UK/GB/GBR None
+UnitedKingdom       GB/GBR/UK None
 UnitedStates        US/USA    state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL, GA,
                               GU, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MH, MA, MI,
                               FM, MN, MS, MO, MT, NE, NV, NH, NJ, NM, NY, NC, ND, MP,
