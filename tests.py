@@ -6753,6 +6753,11 @@ class TestAngola(unittest.TestCase):
         self.assertIn('2004-03-08', self.holidays)
         self.assertIn('2020-03-23', self.holidays)
 
+    def test_long_weekend(self):
+        self.assertIn('2020-02-03', self.holidays)
+        self.assertIn('2019-04-05', self.holidays)
+        self.assertIn('2050-03-07', self.holidays)
+
     def test_not_holiday(self):
         self.assertNotIn('2016-12-28', self.holidays)
         self.assertNotIn('2015-03-02', self.holidays)
