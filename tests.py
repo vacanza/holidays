@@ -4108,6 +4108,7 @@ class TestSouthAfrica(unittest.TestCase):
 
     def test_static(self):
         self.assertIn('2004-08-09', self.holidays)
+        self.assertIn('2022-12-27', self.holidays) # Christmas (Observed)
 
     def test_not_holiday(self):
         self.assertNotIn('2016-12-28', self.holidays)
