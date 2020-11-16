@@ -65,6 +65,8 @@ class Angola(HolidayBase):
                     self[k - rd(days=1)] = v + " (Day off)"
                 elif k.weekday() == THU:
                     self[k + rd(days=1)] = v + " (Day off)"
+            if self.observed and year > 1994 and k.weekday() == SUN:
+                self[k + rd(days=1)] = v + " (Observed)"
 
 
 class AO(Angola):
