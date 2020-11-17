@@ -3086,10 +3086,17 @@ class TestUK(unittest.TestCase):
             self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
 
-    def test_royal_wedding(self):
-        self.assertIn('2011-04-29', self.holidays)
-        self.assertNotIn('2010-04-29', self.holidays)
-        self.assertNotIn('2012-04-29', self.holidays)
+    def test_royal_weddings(self):
+        for dt in [date(1981, 7, 29), date(2011, 4, 29)]:
+            self.assertIn(dt, self.holidays)
+            self.assertNotIn(dt + relativedelta(years=-1), self.holidays)
+            self.assertNotIn(dt + relativedelta(years=+1), self.holidays)
+
+    def test_queens_jubilees(self):
+        for dt in [date(1977, 6, 7), date(2002, 6, 3), date(2012, 6, 5), date(2022, 6, 3)]:
+            self.assertIn(dt, self.holidays)
+            self.assertNotIn(dt + relativedelta(years=-1), self.holidays)
+            self.assertNotIn(dt + relativedelta(years=+1), self.holidays)
 
     def test_may_day(self):
         for dt in [date(1978, 5, 1), date(1979, 5, 7), date(1980, 5, 5),
