@@ -4108,6 +4108,7 @@ class TestSouthAfrica(unittest.TestCase):
 
     def test_static(self):
         self.assertIn('2004-08-09', self.holidays)
+        self.assertIn('2022-12-27', self.holidays) # Christmas (Observed)
 
     def test_not_holiday(self):
         self.assertNotIn('2016-12-28', self.holidays)
@@ -5320,7 +5321,7 @@ class TestRussia(unittest.TestCase):
 
     def setUp(self):
         self.holidays = holidays.RU()
-        
+
     def test_before_2005(self):
         self.assertIn(date(2004, 11, 7), self.holidays)
         self.assertNotIn(date(2004, 11, 4), self.holidays)
@@ -5351,7 +5352,7 @@ class TestLatvia(unittest.TestCase):
     def test_2020(self):
         # https://www.officeholidays.com/countries/latvia/2020
         # https://en.wikipedia.org/wiki/Public_holidays_in_Latvia
-        # https://likumi.lv/ta/id/72608-par-svetku-atceres-un-atzimejamam-dienam 
+        # https://likumi.lv/ta/id/72608-par-svetku-atceres-un-atzimejamam-dienam
         self.assertIn(date(2020, 1, 1), self.holidays)
         self.assertIn(date(2020, 4, 10), self.holidays)
         self.assertIn(date(2020, 4, 13), self.holidays)
@@ -6470,7 +6471,7 @@ class TestKorea(unittest.TestCase):
         for year in range(1948, 2050):
             self.assertEqual(self.holidays[date(year, 12, 25)],
                              "Christmas Day")
-            
+
     def test_years_range(self):
         self.holidays = holidays.KR(years=range(2006, 2021))
         for year in range(2006, 2021):
@@ -6529,7 +6530,7 @@ class TestVietnam(unittest.TestCase):
         for year in range(1979, 2050):
             self.assertIn("Independence Day",
                           self.holidays[date(year, 9, 2)])
-            
+
     def test_years_range(self):
         self.holidays = holidays.VN(years=range(1979, 2050))
         for year in range(1979, 2050):
@@ -6627,7 +6628,7 @@ class TestBurundi(unittest.TestCase):
     def test_independence_day(self):
         for year in range(1962, 2050):
             self.assertIn(date(year, 7, 1), self.holidays)
-        
+
         for year in range(1930, 1962):
             if year != 1958:
                 # in 1958 it's Eid Al Adha (as estimated by convertdate)
@@ -6668,7 +6669,7 @@ class UnitedArabEmirates(unittest.TestCase):
         self.assertIn(date(2020, 12, 1), self.holidays)
         self.assertIn(date(2020, 12, 2), self.holidays)
         self.assertIn(date(2020, 12, 3), self.holidays)
-        
+
     def test_commemoration_day_since_2015(self):
         # Before 2009 Jan 25th wasn't celebrated
         self.holidays = holidays.AE(years=[2015])
@@ -6694,7 +6695,7 @@ class UnitedArabEmirates(unittest.TestCase):
                 self.assertIn(date(2018, 4, 13), self.holidays)
                 # Prophet's Birthday 2018
                 self.assertIn(date(2018, 11, 19), self.holidays)
-                
+
 
 class TestDjibouti(unittest.TestCase):
 
@@ -6750,10 +6751,17 @@ class TestAngola(unittest.TestCase):
 
     def test_static(self):
         self.assertIn('2004-03-08', self.holidays)
+        self.assertIn('2020-03-23', self.holidays)
+
+    def test_long_weekend(self):
+        self.assertIn('2020-02-03', self.holidays)
+        self.assertIn('2019-04-05', self.holidays)
+        self.assertIn('2050-03-07', self.holidays)
 
     def test_not_holiday(self):
         self.assertNotIn('2016-12-28', self.holidays)
         self.assertNotIn('2015-03-02', self.holidays)
+        self.assertNotIn('2018-03-23', self.holidays)
 
 
 class TestMalawi(unittest.TestCase):
