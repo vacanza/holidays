@@ -78,19 +78,12 @@ class Korea(HolidayBase):
         # Independence Movement Day
         name = "Independence Movement Day"
         independence_date = date(year, MAR, 1)
-        if self.observed and year >= 2015:
-            if independence_date.weekday() == SUN:
-                self[independence_date] = name
-                self[independence_date + rd(days=+1)] = alt_holiday + name
-            else:
-                self[independence_date] = name
-        else:
-            self[independence_date] = name
+        self[independence_date] = name
 
         # Tree Planting Day
         name = "Tree Planting Day"
         planting_date = date(year, APR, 5)
-        if self.observed and year >= 1949 and year <= 2007 and year != 1960:
+        if self.observed and 1949 <= year <= 2007 and year != 1960:
             self[planting_date] = name
         else:
             # removed from holiday since 2007
@@ -134,7 +127,7 @@ class Korea(HolidayBase):
         # Constitution Day
         name = "Constitution Day"
         constitution_date = date(year, JUL, 17)
-        if self.observed and year >= 1948 and year <= 2007:
+        if self.observed and 1948 <= year <= 2007:
             self[constitution_date] = name
         else:
             # removed from holiday since 2008
