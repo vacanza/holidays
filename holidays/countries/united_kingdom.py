@@ -189,6 +189,8 @@ class UnitedKingdom(HolidayBase):
                     " Catherine"
             elif year == 2012:
                 self[date(year, JUN, 5)] = "Diamond Jubilee of Elizabeth II"
+            elif year == 2022:
+                self[date(year, JUN, 3)] = "Platinum Jubilee of Elizabeth II"
 
 
 class UK(UnitedKingdom):
