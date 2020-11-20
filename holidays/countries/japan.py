@@ -15,8 +15,8 @@ from datetime import date
 
 from dateutil.relativedelta import relativedelta as rd, MO
 
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUL, AUG, SEP, OCT, \
-    NOV, DEC
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, \
+    OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -105,12 +105,20 @@ class Japan(HolidayBase):
         # Labour Thanksgiving Day
         self[date(year, NOV, 23)] = "勤労感謝の日"
 
-        # Heisei Emperor's Birthday
+        # Regarding the Emperor of Heisei
         if 1989 <= year <= 2018:
+            # Heisei Emperor's Birthday
             self[date(year, DEC, 23)] = "天皇誕生日"
 
+            if year == 1990:
+                # Enthronement ceremony
+                self[date(year, NOV, 12)] = "即位礼正殿の儀"
+
         # Regarding the Emperor of Reiwa
-        if year == 2019:
+        if year == 1993:
+            # Marriage ceremony
+            self[date(year, JUN, 9)] = "結婚の儀"
+        elif year == 2019:
             # Enthronement Day
             self[date(year, MAY, 1)] = '天皇の即位の日'
             # Enthronement ceremony
