@@ -20,6 +20,7 @@ Released ????? ??, ????
 - France fix (mborsetti)
 - Mexico fix (mborsetti)
 - Singapore 2022 fix (mborsetti)
+- Japan 1990-1993 fixes (sakurai-youhei)
 - Fix on occasional pop_named exception (mborsetti)
 - convertdate fallback if hijri-converter not available (mborsetti, dr-p)
 - enabled Travis tests for python3.9 (mborsetti)
