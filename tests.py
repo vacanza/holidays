@@ -4000,6 +4000,7 @@ class TestJapan(unittest.TestCase):
         self.assertIn(date(2020, 2, 23), self.holidays)
 
     def test_reiwa_emperor_holidays(self):
+        self.assertIn(date(1993, 6, 9), self.holidays)
         self.assertIn(date(2019, 4, 30), self.holidays)
         self.assertIn(date(2019, 5, 1), self.holidays)
         self.assertIn(date(2019, 5, 2), self.holidays)
