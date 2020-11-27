@@ -73,6 +73,8 @@ class Japan(HolidayBase):
             self[date(year, JUL, 20)] = "海の日"
         elif year == 2020:
             self[date(year, JUL, 23)] = "海の日"
+        elif year == 2021:
+            self[date(year, JUL, 22)] = "海の日"
         elif year >= 2003:
             self[date(year, JUL, 1) + rd(weekday=MO(+3))] = "海の日"
 
