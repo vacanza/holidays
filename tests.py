@@ -3953,6 +3953,7 @@ class TestJapan(unittest.TestCase):
         self.assertIn(date(2016, 8, 11), self.holidays)
         self.assertIn(date(2017, 8, 11), self.holidays)
         self.assertIn(date(2020, 8, 10), self.holidays)
+        self.assertIn(date(2021, 8, 8), self.holidays)
         self.assertIn(date(2050, 8, 11), self.holidays)
 
     def test_respect_for_the_aged_day(self):
