@@ -3981,6 +3981,7 @@ class TestJapan(unittest.TestCase):
         self.assertIn(date(2000, 10, 9), self.holidays)
         self.assertIn(date(2017, 10, 9), self.holidays)
         self.assertIn(date(2020, 7, 24), self.holidays)
+        self.assertIn(date(2021, 7, 23), self.holidays)
         self.assertIn(date(2050, 10, 10), self.holidays)
 
     def test_culture_day(self):

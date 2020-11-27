@@ -94,10 +94,14 @@ class Japan(HolidayBase):
         # Health and Sports Day
         if 1966 <= year <= 1999:
             self[date(year, OCT, 10)] = "体育の日"
-        elif year == 2020:
-            self[date(year, JUL, 24)] = "体育の日"
-        elif year >= 2000:
+        elif 2000 <= year <= 2019:
             self[date(year, OCT, 1) + rd(weekday=MO(+2))] = "体育の日"
+        elif year == 2020:
+            self[date(year, JUL, 24)] = "スポーツの日"
+        elif year == 2021:
+            self[date(year, JUL, 23)] = "スポーツの日"
+        elif 2022 <= year:
+            self[date(year, OCT, 1) + rd(weekday=MO(+2))] = "スポーツの日"
 
         # Culture Day
         self[date(year, NOV, 3)] = "文化の日"
