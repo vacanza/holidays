@@ -73,12 +73,16 @@ class Japan(HolidayBase):
             self[date(year, JUL, 20)] = "海の日"
         elif year == 2020:
             self[date(year, JUL, 23)] = "海の日"
+        elif year == 2021:
+            self[date(year, JUL, 22)] = "海の日"
         elif year >= 2003:
             self[date(year, JUL, 1) + rd(weekday=MO(+3))] = "海の日"
 
         # Mountain Day
         if year == 2020:
             self[date(year, AUG, 10)] = "山の日"
+        elif year == 2021:
+            self[date(year, AUG, 8)] = "山の日"
         elif year >= 2016:
             self[date(year, AUG, 11)] = "山の日"
 
@@ -94,10 +98,14 @@ class Japan(HolidayBase):
         # Health and Sports Day
         if 1966 <= year <= 1999:
             self[date(year, OCT, 10)] = "体育の日"
-        elif year == 2020:
-            self[date(year, JUL, 24)] = "体育の日"
-        elif year >= 2000:
+        elif 2000 <= year <= 2019:
             self[date(year, OCT, 1) + rd(weekday=MO(+2))] = "体育の日"
+        elif year == 2020:
+            self[date(year, JUL, 24)] = "スポーツの日"
+        elif year == 2021:
+            self[date(year, JUL, 23)] = "スポーツの日"
+        elif 2022 <= year:
+            self[date(year, OCT, 1) + rd(weekday=MO(+2))] = "スポーツの日"
 
         # Culture Day
         self[date(year, NOV, 3)] = "文化の日"
@@ -198,6 +206,7 @@ class Japan(HolidayBase):
                     2008, 2014, 2025, 2031, 2036, 2042, 2009, 2015, 2020, 2026,
                     2037, 2043, 2048)),
             (7, 21, (1997,)),
+            (8, 9, (2021,)),
             (8, 12, (2019, 2024, 2030, 2041, 2047)),
             (9, 16, (1974, 1985, 1991, 1996, 2002)),
             (9, 23, (2024,)),
