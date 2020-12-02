@@ -102,7 +102,10 @@ class SouthAfrica(HolidayBase):
         # it rolls over to the following Monday
         for k, v in list(self.items()):
             if self.observed and year > 1994 and k.weekday() == SUN:
-                self[k + rd(days=1)] = v + " (Observed)"
+                add_days = 1
+                while self.get(k + rd(days=add_days)) is not None:
+                    add_days += 1
+                self[k + rd(days=add_days)] = v + " (Observed)"
 
         # Historic public holidays no longer observed
         if 1951 < year < 1974:

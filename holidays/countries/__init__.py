@@ -14,6 +14,7 @@ from .argentina import Argentina, AR, ARG
 from .aruba import Aruba, AW, ABW
 from .australia import Australia, AU, AUS
 from .austria import Austria, AT, AUT
+from .bangladesh import Bangladesh, BD, BGD
 from .belarus import Belarus, BY, BLR
 from .belgium import Belgium, BE, BEL
 from .brazil import Brazil, BR, BRA
@@ -48,6 +49,7 @@ from .korea import Korea, KR, KOR
 from .latvia import Latvia, LV, LVA
 from .lithuania import Lithuania, LT, LTU
 from .luxembourg import Luxembourg, LU, LUX
+from .malawi import Malawi, MW, MWI
 from .mexico import Mexico, MX, MEX
 from .morocco import Morocco, MA, MOR
 from .netherlands import Netherlands, NL, NLD

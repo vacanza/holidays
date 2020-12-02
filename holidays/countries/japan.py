@@ -15,8 +15,8 @@ from datetime import date
 
 from dateutil.relativedelta import relativedelta as rd, MO
 
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUL, AUG, SEP, OCT, \
-    NOV, DEC
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, \
+    OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -73,12 +73,16 @@ class Japan(HolidayBase):
             self[date(year, JUL, 20)] = "海の日"
         elif year == 2020:
             self[date(year, JUL, 23)] = "海の日"
+        elif year == 2021:
+            self[date(year, JUL, 22)] = "海の日"
         elif year >= 2003:
             self[date(year, JUL, 1) + rd(weekday=MO(+3))] = "海の日"
 
         # Mountain Day
         if year == 2020:
             self[date(year, AUG, 10)] = "山の日"
+        elif year == 2021:
+            self[date(year, AUG, 8)] = "山の日"
         elif year >= 2016:
             self[date(year, AUG, 11)] = "山の日"
 
@@ -94,10 +98,14 @@ class Japan(HolidayBase):
         # Health and Sports Day
         if 1966 <= year <= 1999:
             self[date(year, OCT, 10)] = "体育の日"
-        elif year == 2020:
-            self[date(year, JUL, 24)] = "体育の日"
-        elif year >= 2000:
+        elif 2000 <= year <= 2019:
             self[date(year, OCT, 1) + rd(weekday=MO(+2))] = "体育の日"
+        elif year == 2020:
+            self[date(year, JUL, 24)] = "スポーツの日"
+        elif year == 2021:
+            self[date(year, JUL, 23)] = "スポーツの日"
+        elif 2022 <= year:
+            self[date(year, OCT, 1) + rd(weekday=MO(+2))] = "スポーツの日"
 
         # Culture Day
         self[date(year, NOV, 3)] = "文化の日"
@@ -105,12 +113,20 @@ class Japan(HolidayBase):
         # Labour Thanksgiving Day
         self[date(year, NOV, 23)] = "勤労感謝の日"
 
-        # Heisei Emperor's Birthday
+        # Regarding the Emperor of Heisei
         if 1989 <= year <= 2018:
+            # Heisei Emperor's Birthday
             self[date(year, DEC, 23)] = "天皇誕生日"
 
+            if year == 1990:
+                # Enthronement ceremony
+                self[date(year, NOV, 12)] = "即位礼正殿の儀"
+
         # Regarding the Emperor of Reiwa
-        if year == 2019:
+        if year == 1993:
+            # Marriage ceremony
+            self[date(year, JUN, 9)] = "結婚の儀"
+        elif year == 2019:
             # Enthronement Day
             self[date(year, MAY, 1)] = '天皇の即位の日'
             # Enthronement ceremony
@@ -190,6 +206,7 @@ class Japan(HolidayBase):
                     2008, 2014, 2025, 2031, 2036, 2042, 2009, 2015, 2020, 2026,
                     2037, 2043, 2048)),
             (7, 21, (1997,)),
+            (8, 9, (2021,)),
             (8, 12, (2019, 2024, 2030, 2041, 2047)),
             (9, 16, (1974, 1985, 1991, 1996, 2002)),
             (9, 23, (2024,)),
