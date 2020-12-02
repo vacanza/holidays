@@ -3086,10 +3086,17 @@ class TestUK(unittest.TestCase):
             self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
 
-    def test_royal_wedding(self):
-        self.assertIn('2011-04-29', self.holidays)
-        self.assertNotIn('2010-04-29', self.holidays)
-        self.assertNotIn('2012-04-29', self.holidays)
+    def test_royal_weddings(self):
+        for dt in [date(1981, 7, 29), date(2011, 4, 29)]:
+            self.assertIn(dt, self.holidays)
+            self.assertNotIn(dt + relativedelta(years=-1), self.holidays)
+            self.assertNotIn(dt + relativedelta(years=+1), self.holidays)
+
+    def test_queens_jubilees(self):
+        for dt in [date(1977, 6, 7), date(2002, 6, 3), date(2012, 6, 5), date(2022, 6, 3)]:
+            self.assertIn(dt, self.holidays)
+            self.assertNotIn(dt + relativedelta(years=-1), self.holidays)
+            self.assertNotIn(dt + relativedelta(years=+1), self.holidays)
 
     def test_may_day(self):
         for dt in [date(1978, 5, 1), date(1979, 5, 7), date(1980, 5, 5),
@@ -3213,8 +3220,9 @@ class TestIreland(unittest.TestCase):
 class TestES(unittest.TestCase):
 
     def setUp(self):
-        self.holidays = holidays.ES()
-        self.prov_holidays = {prov: holidays.ES(prov=prov)
+        self.holidays = holidays.ES(observed=False)
+        self.holidays_observed = holidays.ES()
+        self.prov_holidays = {prov: holidays.ES(observed=False, prov=prov)
                               for prov in holidays.ES.PROVINCES}
 
     def test_fixed_holidays(self):
@@ -3232,6 +3240,21 @@ class TestES(unittest.TestCase):
         for y, (m, d) in product(range(1950, 2050), fixed_days_whole_country):
             self.assertIn(date(y, m, d), self.holidays)
 
+    def test_fixed_holidays_observed(self):
+        fixed_days_whole_country = (
+            (1, 1),
+            (1, 6),
+            (5, 1),
+            (8, 15),
+            (10, 12),
+            (11, 2),
+            (12, 7),
+            (12, 8),
+            (12, 25),
+        )
+        for (m, d) in fixed_days_whole_country:
+            self.assertIn(date(2020, m, d), self.holidays_observed)
+
     def test_variable_days_in_2016(self):
         for prov, prov_holidays in self.prov_holidays.items():
             self.assertEqual(
@@ -3246,13 +3269,15 @@ class TestES(unittest.TestCase):
 
     def test_province_specific_days(self):
         province_days = {
-            (2, 28): ['AN', 'CB', 'CM'],
+            (2, 28): ['AN'],
             (3, 1): ['IB'],
             (4, 23): ['AR', 'CL'],
             (5, 30): ['CN'],
+            (5, 31): ['CM'],
             (5, 2): ['MD'],
             (6, 9): ['MC', 'RI'],
             (7, 25): ['GA'],
+            (7, 28): ['CB'],
             (9, 8): ['AS', 'EX'],
             (9, 11): ['CT'],
             (9, 27): ['NC'],
@@ -3919,6 +3944,7 @@ class TestJapan(unittest.TestCase):
         self.assertIn(date(2003, 7, 21), self.holidays)
         self.assertIn(date(2017, 7, 17), self.holidays)
         self.assertIn(date(2020, 7, 23), self.holidays)
+        self.assertIn(date(2021, 7, 22), self.holidays)
         self.assertIn(date(2050, 7, 18), self.holidays)
 
     def test_mountain_day(self):
@@ -3927,6 +3953,7 @@ class TestJapan(unittest.TestCase):
         self.assertIn(date(2016, 8, 11), self.holidays)
         self.assertIn(date(2017, 8, 11), self.holidays)
         self.assertIn(date(2020, 8, 10), self.holidays)
+        self.assertIn(date(2021, 8, 8), self.holidays)
         self.assertIn(date(2050, 8, 11), self.holidays)
 
     def test_respect_for_the_aged_day(self):
@@ -3956,6 +3983,7 @@ class TestJapan(unittest.TestCase):
         self.assertIn(date(2000, 10, 9), self.holidays)
         self.assertIn(date(2017, 10, 9), self.holidays)
         self.assertIn(date(2020, 7, 24), self.holidays)
+        self.assertIn(date(2021, 7, 23), self.holidays)
         self.assertIn(date(2050, 10, 10), self.holidays)
 
     def test_culture_day(self):
@@ -3975,6 +4003,7 @@ class TestJapan(unittest.TestCase):
         self.assertIn(date(2020, 2, 23), self.holidays)
 
     def test_reiwa_emperor_holidays(self):
+        self.assertIn(date(1993, 6, 9), self.holidays)
         self.assertIn(date(2019, 4, 30), self.holidays)
         self.assertIn(date(2019, 5, 1), self.holidays)
         self.assertIn(date(2019, 5, 2), self.holidays)
@@ -4090,6 +4119,7 @@ class TestSouthAfrica(unittest.TestCase):
 
     def test_static(self):
         self.assertIn('2004-08-09', self.holidays)
+        self.assertIn('2022-12-27', self.holidays) # Christmas (Observed)
 
     def test_not_holiday(self):
         self.assertNotIn('2016-12-28', self.holidays)
@@ -6325,10 +6355,6 @@ class TestKorea(unittest.TestCase):
             self.assertEqual(self.holidays[date(year, month, day)],
                              "Independence Movement Day")
 
-        self.assertEqual(self.holidays[date(2020, 3, 2)],
-                         "Alternative holiday of Independence Movement Day")
-        self.assertNotIn(date(2009, 3, 2), self.holidays)
-
     def test_tree_planting_day(self):
         for year, month, day in [
             (1949, 4, 5), (1962, 4, 5), (1982, 4, 5), (1990, 4, 5),
@@ -6734,10 +6760,57 @@ class TestAngola(unittest.TestCase):
         self.assertIn('2004-03-08', self.holidays)
         self.assertIn('2020-03-23', self.holidays)
 
+    def test_long_weekend(self):
+        self.assertIn('2020-02-03', self.holidays)
+        self.assertIn('2019-04-05', self.holidays)
+        self.assertIn('2050-03-07', self.holidays)
+
     def test_not_holiday(self):
         self.assertNotIn('2016-12-28', self.holidays)
         self.assertNotIn('2015-03-02', self.holidays)
         self.assertNotIn('2018-03-23', self.holidays)
+
+
+class TestMalawi(unittest.TestCase):
+
+    def setUp(self):
+        self.holidays = holidays.MW()
+
+    def test_new_years(self):
+        self.assertIn('2015-01-01', self.holidays)
+        self.assertIn('2017-01-01', self.holidays)
+        self.assertIn('2999-01-01', self.holidays)
+        self.assertIn('2017-01-02', self.holidays)  # sunday
+
+    def test_good_friday(self):
+        self.assertIn('2022-04-15', self.holidays)
+        self.assertIn('2018-03-30', self.holidays)
+
+    def test_easter(self):
+        self.assertIn(date(2017, 4, 14), self.holidays)
+        self.assertIn(date(2020, 4, 10), self.holidays)
+        self.assertIn(date(2015, 4, 6), self.holidays)
+
+    def test_static(self):
+        self.assertIn('2004-03-03', self.holidays)
+
+    def test_not_holiday(self):
+        self.assertNotIn('2016-12-28', self.holidays)
+        self.assertNotIn('2015-03-02', self.holidays)
+
+
+class TestBangladesh(unittest.TestCase):
+    def setUp(self):
+        self.holidays = holidays.BD()
+
+    def test_2020(self):
+        self.assertIn(date(2020, 2, 21), self.holidays)
+        self.assertIn(date(2020, 3, 17), self.holidays)
+        self.assertIn(date(2020, 3, 26), self.holidays)
+        self.assertIn(date(2020, 4, 14), self.holidays)
+        self.assertIn(date(2020,5, 1), self.holidays)
+        self.assertIn(date(2020, 8, 15), self.holidays)
+        self.assertIn(date(2020, 12, 16), self.holidays)
 
 
 if __name__ == "__main__":
