@@ -102,6 +102,7 @@ Argentina           AR/ARG    None
 Aruba               AW/ABW    None
 Australia           AU/AUS    prov = **ACT** (default), NSW, NT, QLD, SA, TAS, VIC, WA
 Austria             AT/AUT    prov = 1, 2, 3, 4, 5, 6, 7, 8, **9** (default)
+Bangladesh          BD/BDG    None
 Belarus             BY/BLR    None
 Belgium             BE/BEL    None
 Brazil              BR/BRA    state = AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG,

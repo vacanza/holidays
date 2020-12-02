@@ -6799,5 +6799,19 @@ class TestMalawi(unittest.TestCase):
         self.assertNotIn('2015-03-02', self.holidays)
 
 
+class TestBangladesh(unittest.TestCase):
+    def setUp(self):
+        self.holidays = holidays.BD()
+
+    def test_2020(self):
+        self.assertIn(date(2020, 2, 21), self.holidays)
+        self.assertIn(date(2020, 3, 17), self.holidays)
+        self.assertIn(date(2020, 3, 26), self.holidays)
+        self.assertIn(date(2020, 4, 14), self.holidays)
+        self.assertIn(date(2020,5, 1), self.holidays)
+        self.assertIn(date(2020, 8, 15), self.holidays)
+        self.assertIn(date(2020, 12, 16), self.holidays)
+
+
 if __name__ == "__main__":
     unittest.main()
