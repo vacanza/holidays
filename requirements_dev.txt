@@ -1,7 +1,16 @@
+# package runtime requirements
+python-dateutil==2.8.1
+convertdate==2.2.0
+korean_lunar_calendar==0.2.1
+six==1.15.0
 
-python-dateutil
-convertdate
-korean_lunar_calendar
-six
+# test requirements
+pytest
+pytest-cov
+coverage
 flake8
+
+#deployment
+pip>=19.2.3
 bump2version
+wheel>=0.33.6
