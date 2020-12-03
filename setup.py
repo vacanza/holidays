@@ -16,10 +16,8 @@ try:
 except ImportError:
     from distutils.core import setup
 
-
 with codecs.open('holidays/__init__.py', 'r', 'utf-8') as fd:
-    version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]',
-                        fd.read(), re.MULTILINE).group(1)
+    version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', fd.read(), re.MULTILINE).group(1)
 
 if not version:
     raise RuntimeError('Cannot find version information')
@@ -36,22 +34,19 @@ setup(
     license='MIT',
     description='Generate and work with holidays in Python',
     long_description=codecs.open('README.rst', encoding='utf-8').read(),
-    install_requires=['python-dateutil', 'six', 'convertdate',
-                      'korean_lunar_calendar'],
-    platforms='any',
+    install_requires=['python-dateutil', 'six', 'korean_lunar_calendar'],
+    python_requires='>=3.6',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: Office/Business :: Scheduling',
