@@ -7,7 +7,7 @@ six==1.15.0
 # test requirements
 pytest
 pytest-cov
-coverage
+coverage[toml]
 pre-commit
 flake8
 
