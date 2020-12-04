@@ -21,19 +21,20 @@ from holidays.holiday_base import HolidayBase
 
 
 class Nicaragua(HolidayBase):
-    PROVINCES = ['MN']
+    PROVINCES = ["MN"]
 
     def __init__(self, **kwargs):
-        self.country = 'NI'
-        self.prov = kwargs.pop('prov', kwargs.pop('state', 'MN'))
+        self.country = "NI"
+        self.prov = kwargs.pop("prov", kwargs.pop("state", "MN"))
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
         # New Years
         self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
         # Maundy Thursday
-        self[easter(year) + rd(weekday=TH(-1))] =\
-            "Jueves Santo [Maundy Thursday]"
+        self[
+            easter(year) + rd(weekday=TH(-1))
+        ] = "Jueves Santo [Maundy Thursday]"
         # Good Friday
         self[easter(year) + rd(weekday=FR(-1))] = "Viernes Santo [Good Friday]"
         # Labor Day
@@ -42,11 +43,13 @@ class Nicaragua(HolidayBase):
         if 2020 >= year >= 1979:
             self[date(year, JUL, 19)] = "Día de la Revolución [Revolution Day]"
         # Battle of San Jacinto Day
-        self[date(year, SEP, 14)] =\
-            "Batalla de San Jacinto [Battle of San Jacinto]"
+        self[
+            date(year, SEP, 14)
+        ] = "Batalla de San Jacinto [Battle of San Jacinto]"
         # Independence Day
-        self[date(year, SEP, 15)] =\
-            "Día de la Independencia [Independence Day]"
+        self[
+            date(year, SEP, 15)
+        ] = "Día de la Independencia [Independence Day]"
         # Virgin's Day
         self[date(year, DEC, 8)] = "Concepción de María [Virgin's Day]"
         # Christmas
@@ -54,7 +57,7 @@ class Nicaragua(HolidayBase):
 
         # Provinces festive day
         if self.prov:
-            if self.prov == 'MN':
+            if self.prov == "MN":
                 # Santo Domingo Day Down
                 self[date(year, AUG, 1)] = "Bajada de Santo Domingo"
                 # Santo Domingo Day Up

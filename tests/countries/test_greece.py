@@ -11,16 +11,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import os
-import sys
 import unittest
-import warnings
-from glob import glob
-from itertools import product
 
-from datetime import date, datetime, timedelta
-from dateutil.relativedelta import relativedelta, MO
-from flake8.api import legacy as flake8
+from datetime import date
 
 import holidays
 
@@ -35,14 +28,21 @@ class TestGreece(unittest.TestCase):
             fdays = (
                 (date(y, 1, 1), "Πρωτοχρονιά [New Year's Day]"),
                 (date(y, 1, 6), "Θεοφάνεια [Epiphany]"),
-                (date(y, 3, 25), "Εικοστή Πέμπτη Μαρτίου " + "[Independence Day]"),
+                (
+                    date(y, 3, 25),
+                    "Εικοστή Πέμπτη Μαρτίου " + "[Independence Day]",
+                ),
                 (date(y, 5, 1), "Εργατική Πρωτομαγιά [Labour day]"),
-                (date(y, 8, 15), "Κοίμηση της Θεοτόκου " + "[Assumption of Mary]"),
+                (
+                    date(y, 8, 15),
+                    "Κοίμηση της Θεοτόκου " + "[Assumption of Mary]",
+                ),
                 (date(y, 10, 28), "Ημέρα του Όχι [Ochi Day]"),
                 (date(y, 12, 25), "Χριστούγεννα [Christmas]"),
                 (
                     date(y, 12, 26),
-                    "Επόμενη ημέρα των Χριστουγέννων " + "[Day after Christmas]",
+                    "Επόμενη ημέρα των Χριστουγέννων "
+                    + "[Day after Christmas]",
                 ),
             )
 
@@ -78,7 +78,9 @@ class TestGreece(unittest.TestCase):
 
         for d in checkdates:
             self.assertIn(d, self.gr_holidays)
-            self.assertIn("Δευτέρα του Πάσχα [Easter Monday]", self.gr_holidays[d])
+            self.assertIn(
+                "Δευτέρα του Πάσχα [Easter Monday]", self.gr_holidays[d]
+            )
 
     def test_gr_monday_of_the_holy_spirit(self):
         checkdates = (

@@ -24,7 +24,7 @@ class Denmark(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Denmark
 
     def __init__(self, **kwargs):
-        self.country = 'DK'
+        self.country = "DK"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

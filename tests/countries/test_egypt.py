@@ -11,16 +11,10 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import os
 import sys
 import unittest
-import warnings
-from glob import glob
-from itertools import product
 
-from datetime import date, datetime, timedelta
-from dateutil.relativedelta import relativedelta, MO
-from flake8.api import legacy as flake8
+from datetime import date
 
 import holidays
 
@@ -78,4 +72,3 @@ class TestEgypt(unittest.TestCase):
                 self.assertIn(date(2010, 11, 15), self.holidays)
                 # muhammad's birthday
                 self.assertIn(date(2010, 2, 26), self.holidays)
-

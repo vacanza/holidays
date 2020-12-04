@@ -48,7 +48,7 @@ class UnitedArabEmirates(HolidayBase):
     #  Python >= 3.6
 
     def __init__(self, **kwargs):
-        self.country = 'AE'
+        self.country = "AE"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -57,7 +57,7 @@ class UnitedArabEmirates(HolidayBase):
         self[date(year, JAN, 1)] = "New Year's Day"
 
         # Commemoration Day, since 2015.
-        if (year >= 2015 and year < 2019):
+        if year >= 2015 and year < 2019:
             self[date(year, NOV, 30)] = "Commemoration Day"
         elif year >= 2019:
             self[date(year, DEC, 1)] = "Commemoration Day"
@@ -72,27 +72,37 @@ class UnitedArabEmirates(HolidayBase):
         # Date is announced each year. Usually stretches along 3 or 4 days,
         # in some instances prepending/appending a day or two
         # before/after the official holiday.
-        dates_obs = {2017: [(JUN, 25)], 2018: [(JUN, 14)], 2019: [(JUN, 3)],
-                     2020: [(MAY, 24)]}
+        dates_obs = {
+            2017: [(JUN, 25)],
+            2018: [(JUN, 14)],
+            2019: [(JUN, 3)],
+            2020: [(MAY, 24)],
+        }
         fitr = "Eid al-Fitr"
         if year in dates_obs:
             for date_obs in dates_obs[year]:
                 hol_date = date(year, *date_obs)
                 self[hol_date] = fitr
-                self[hol_date + rd(days=1)] = '{} Holiday'.format(fitr)
-                self[hol_date + rd(days=2)] = '{} Holiday'.format(fitr)
+                self[hol_date + rd(days=1)] = "{} Holiday".format(fitr)
+                self[hol_date + rd(days=2)] = "{} Holiday".format(fitr)
         else:
             for date_obs in get_gre_date(year, 10, 1):
                 hol_date = date_obs
-                self[hol_date] = '{}* (*estimated)'.format(fitr)
-                self[hol_date + rd(days=1)] =\
-                    '{} Holiday* (*estimated)'.format(fitr)
-                self[hol_date + rd(days=2)] =\
-                    '{} Holiday* (*estimated)'.format(fitr)
+                self[hol_date] = "{}* (*estimated)".format(fitr)
+                self[
+                    hol_date + rd(days=1)
+                ] = "{} Holiday* (*estimated)".format(fitr)
+                self[
+                    hol_date + rd(days=2)
+                ] = "{} Holiday* (*estimated)".format(fitr)
 
         # Arafat Day & Eid al-Adha
-        dates_obs = {2017: [(AUG, 31)], 2018: [(AUG, 20)], 2019: [(AUG, 10)],
-                     2020: [(JUL, 30)]}
+        dates_obs = {
+            2017: [(AUG, 31)],
+            2018: [(AUG, 20)],
+            2019: [(AUG, 10)],
+            2020: [(JUL, 30)],
+        }
         hajj = "Arafat (Hajj) Day"
         adha = "Eid al-Adha"
         if year in dates_obs:
@@ -100,21 +110,27 @@ class UnitedArabEmirates(HolidayBase):
                 hol_date = date(year, *date_obs)
                 self[hol_date] = hajj
                 self[hol_date + rd(days=1)] = adha
-                self[hol_date + rd(days=2)] = '{} Holiday'.format(adha)
-                self[hol_date + rd(days=3)] = '{} Holiday'.format(adha)
+                self[hol_date + rd(days=2)] = "{} Holiday".format(adha)
+                self[hol_date + rd(days=3)] = "{} Holiday".format(adha)
         else:
             for date_obs in get_gre_date(year, 12, 9):
                 hol_date = date_obs
-                self[hol_date] = '{}* (*estimated)'.format(hajj)
-                self[hol_date + rd(days=1)] = '{}* (*estimated)'.format(adha)
-                self[hol_date + rd(days=2)] =\
-                    '{}* Holiday* (*estimated)'.format(adha)
-                self[hol_date + rd(days=3)] =\
-                    '{} Holiday* (*estimated)'.format(adha)
+                self[hol_date] = "{}* (*estimated)".format(hajj)
+                self[hol_date + rd(days=1)] = "{}* (*estimated)".format(adha)
+                self[
+                    hol_date + rd(days=2)
+                ] = "{}* Holiday* (*estimated)".format(adha)
+                self[
+                    hol_date + rd(days=3)
+                ] = "{} Holiday* (*estimated)".format(adha)
 
         # Islamic New Year - (hijari_year, 1, 1)
-        dates_obs = {2017: [(SEP, 22)], 2018: [(SEP, 11)], 2019: [(AUG, 31)],
-                     2020: [(AUG, 23)]}
+        dates_obs = {
+            2017: [(SEP, 22)],
+            2018: [(SEP, 11)],
+            2019: [(AUG, 31)],
+            2020: [(AUG, 23)],
+        }
         new_hijri_year = "Al Hijra - Islamic New Year"
         if year in dates_obs:
             for date_obs in dates_obs[year]:
@@ -123,7 +139,7 @@ class UnitedArabEmirates(HolidayBase):
         else:
             for date_obs in get_gre_date(year, 1, 1):
                 hol_date = date_obs
-                self[hol_date] = '{}* (*estimated)'.format(new_hijri_year)
+                self[hol_date] = "{}* (*estimated)".format(new_hijri_year)
 
         # Leilat al-Miraj - The Prophet's ascension (hijari_year, 7, 27)
         if year <= 2018:  # starting from 2019 the UAE government removed this
@@ -136,12 +152,15 @@ class UnitedArabEmirates(HolidayBase):
             else:
                 for date_obs in get_gre_date(year, 7, 27):
                     hol_date = date_obs
-                    self[hol_date] = '{}* (*estimated)'.format(ascension)
+                    self[hol_date] = "{}* (*estimated)".format(ascension)
 
         # Prophet Muhammad's Birthday - (hijari_year, 3, 12)
         if year <= 2019:  # starting from 2020 the UAE government removed this
-            dates_obs = {2017: [(NOV, 30)], 2018: [(NOV, 19)],
-                         2019: [(NOV, 9)]}
+            dates_obs = {
+                2017: [(NOV, 30)],
+                2018: [(NOV, 19)],
+                2019: [(NOV, 9)],
+            }
             mawlud = "Mawlud al-Nabi - Prophet Mohammad's Birthday"
             if year in dates_obs:
                 for date_obs in dates_obs[year]:
@@ -150,7 +169,7 @@ class UnitedArabEmirates(HolidayBase):
             else:
                 for date_obs in get_gre_date(year, 3, 12):
                     hol_date = date_obs
-                    self[hol_date] = '{}* (*estimated)'.format(mawlud)
+                    self[hol_date] = "{}* (*estimated)".format(mawlud)
 
 
 class AE(UnitedArabEmirates):

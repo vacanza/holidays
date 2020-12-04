@@ -51,7 +51,9 @@ class Latvia(HolidayBase):
         # Latvia proclaimed its independence from the USSR,
         #   and restoration of the Republic of Latvia.
         if year >= 1990:
-            self[date(year, 5, 4)] = "Latvijas Republikas \
+            self[
+                date(year, 5, 4)
+            ] = "Latvijas Republikas \
                 Neatkarības atjaunošanas diena"
 
         # by law
@@ -67,8 +69,9 @@ class Latvia(HolidayBase):
 
         # Proclamation Day of the Republic of Latvia
         if year >= 1918:
-            self[date(year, 11, 18)] = \
-                "Latvijas Republikas proklamēšanas diena"
+            self[
+                date(year, 11, 18)
+            ] = "Latvijas Republikas proklamēšanas diena"
 
         # Christmas Eve
         self[date(year, 12, 24)] = "Ziemassvētku vakars"

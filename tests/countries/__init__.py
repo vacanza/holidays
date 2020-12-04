@@ -10,18 +10,3 @@
 #           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2020
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
-
-import os
-import sys
-import unittest
-import warnings
-from glob import glob
-from itertools import product
-
-from datetime import date, datetime, timedelta
-from dateutil.relativedelta import relativedelta, MO
-from flake8.api import legacy as flake8
-
-import holidays
-
-

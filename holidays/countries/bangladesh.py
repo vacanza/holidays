@@ -19,7 +19,7 @@ class Bangladesh(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Bangladesh
 
     def __init__(self, **kwargs):
-        self.country = 'TR'
+        self.country = "TR"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -28,8 +28,9 @@ class Bangladesh(HolidayBase):
         self[date(year, FEB, 21)] = "International Mother's language Day"
 
         # 17th March
-        self[date(year, MAR, 17)] = "Sheikh Mujibur Rahman's Birthday " \
-                                    "and Children's Day"
+        self[date(year, MAR, 17)] = (
+            "Sheikh Mujibur Rahman's Birthday " "and Children's Day"
+        )
 
         # 26th March
         self[date(year, MAR, 26)] = "Independence Day"

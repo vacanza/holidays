@@ -74,7 +74,16 @@ from .switzerland import Switzerland, CH, CHE
 from .turkey import Turkey, TR, TUR
 from .ukraine import Ukraine, UA, UKR
 from .united_arab_emirates import UnitedArabEmirates, AE, ARE
-from .united_kingdom import UnitedKingdom, UK, GB, England, Wales, Scotland,\
-    IsleOfMan, NorthernIreland, GBR
+from .united_kingdom import (
+    UnitedKingdom,
+    UK,
+    GB,
+    England,
+    Wales,
+    Scotland,
+    IsleOfMan,
+    NorthernIreland,
+    GBR,
+)
 from .united_states import UnitedStates, US, USA
 from .vietnam import Vietnam, VN, VNM

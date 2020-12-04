@@ -17,8 +17,7 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAY, JUL, AUG, SEP, OCT, \
-    NOV, DEC
+from holidays.constants import JAN, MAY, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -27,14 +26,16 @@ class Slovakia(HolidayBase):
     # https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1993/241/20181011.html
 
     def __init__(self, **kwargs):
-        self.country = 'SK'
+        self.country = "SK"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
         self[date(year, JAN, 1)] = "Deň vzniku Slovenskej republiky"
-        self[date(year, JAN, 6)] = "Zjavenie Pána (Traja králi a" \
-                                   " vianočnýsviatok pravoslávnych" \
-                                   " kresťanov)"
+        self[date(year, JAN, 6)] = (
+            "Zjavenie Pána (Traja králi a"
+            " vianočnýsviatok pravoslávnych"
+            " kresťanov)"
+        )
 
         e = easter(year)
         self[e - rd(days=2)] = "Veľký piatok"
@@ -47,15 +48,17 @@ class Slovakia(HolidayBase):
 
         self[date(year, JUL, 5)] = "Sviatok svätého Cyrila a svätého Metoda"
 
-        self[date(year, AUG, 29)] = "Výročie Slovenského národného" \
-                                    " povstania"
+        self[date(year, AUG, 29)] = (
+            "Výročie Slovenského národného" " povstania"
+        )
 
         self[date(year, SEP, 1)] = "Deň Ústavy Slovenskej republiky"
 
         self[date(year, SEP, 15)] = "Sedembolestná Panna Mária"
         if year == 2018:
-            self[date(year, OCT, 30)] = "100. výročie prijatia" \
-                " Deklarácie slovenského národa"
+            self[date(year, OCT, 30)] = (
+                "100. výročie prijatia" " Deklarácie slovenského národa"
+            )
         self[date(year, NOV, 1)] = "Sviatok Všetkých svätých"
 
         if year >= 2001:
@@ -78,6 +81,7 @@ class SVK(Slovakia):
 
 class Slovak(Slovakia):
     def __init__(self, **kwargs):
-        warnings.warn("Slovak is deprecated, use Slovakia instead.",
-                      DeprecationWarning)
+        warnings.warn(
+            "Slovak is deprecated, use Slovakia instead.", DeprecationWarning
+        )
         super(Slovak, self).__init__(**kwargs)

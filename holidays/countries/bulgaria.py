@@ -41,7 +41,7 @@ class Bulgaria(HolidayBase):
     """
 
     def __init__(self, **kwargs):
-        self.country = 'BG'
+        self.country = "BG"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -52,20 +52,24 @@ class Bulgaria(HolidayBase):
         self[date(year, JAN, 1)] = "Нова година"
 
         # Liberation Day
-        self[date(year, MAR, 3)] = \
-            "Ден на Освобождението на България от османско иго"
+        self[
+            date(year, MAR, 3)
+        ] = "Ден на Освобождението на България от османско иго"
 
         # International Workers' Day
-        self[date(year, MAY, 1)] = \
-            "Ден на труда и на международната работническа солидарност"
+        self[
+            date(year, MAY, 1)
+        ] = "Ден на труда и на международната работническа солидарност"
 
         # Saint George's Day
-        self[date(year, MAY, 6)] = \
-            "Гергьовден, Ден на храбростта и Българската армия"
+        self[
+            date(year, MAY, 6)
+        ] = "Гергьовден, Ден на храбростта и Българската армия"
 
         # Bulgarian Education and Culture and Slavonic Literature Day
-        self[date(year, MAY, 24)] = \
-            "Ден на българската просвета и култура и на славянската писменост"
+        self[
+            date(year, MAY, 24)
+        ] = "Ден на българската просвета и култура и на славянската писменост"
 
         # Unification Day
         self[date(year, SEP, 6)] = "Ден на Съединението"
@@ -82,10 +86,12 @@ class Bulgaria(HolidayBase):
         self[date(year, DEC, 26)] = "Рождество Христово"
 
         # Easter
-        self[easter(year, method=EASTER_ORTHODOX) - rd(days=2)] = \
-            "Велики петък"
-        self[easter(year, method=EASTER_ORTHODOX) - rd(days=1)] = \
-            "Велика събота"
+        self[
+            easter(year, method=EASTER_ORTHODOX) - rd(days=2)
+        ] = "Велики петък"
+        self[
+            easter(year, method=EASTER_ORTHODOX) - rd(days=1)
+        ] = "Велика събота"
         self[easter(year, method=EASTER_ORTHODOX)] = "Великден"
 
 

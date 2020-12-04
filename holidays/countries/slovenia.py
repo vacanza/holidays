@@ -16,8 +16,7 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, FEB, APR, MAY, JUN, AUG, OCT, \
-    NOV, DEC
+from holidays.constants import JAN, FEB, APR, MAY, JUN, AUG, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -33,7 +32,7 @@ class Slovenia(HolidayBase):
     """
 
     def __init__(self, **kwargs):
-        self.country = 'SI'
+        self.country = "SI"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

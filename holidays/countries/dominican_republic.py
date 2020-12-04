@@ -25,7 +25,7 @@ class DominicanRepublic(HolidayBase):
     # https://es.wikipedia.org/wiki/Rep%C3%BAblica_Dominicana#D%C3%ADas_festivos_nacionales
 
     def __init__(self, **kwargs):
-        self.country = 'DO'
+        self.country = "DO"
         HolidayBase.__init__(self, **kwargs)
 
     @staticmethod
@@ -68,12 +68,17 @@ class DominicanRepublic(HolidayBase):
 
         # Restoration Day
         # Judgment No. 14 of Feb 20, 2008 of the Supreme Court of Justice
-        restoration_day = date(year, AUG, 16) if ((year - 2000) % 4 == 0) \
-            and year < 2008 else self.__change_day_by_law(date(year, AUG, 16))
+        restoration_day = (
+            date(year, AUG, 16)
+            if ((year - 2000) % 4 == 0) and year < 2008
+            else self.__change_day_by_law(date(year, AUG, 16))
+        )
         self[restoration_day] = "Día de la Restauración [Restoration Day]"
 
         # Our Lady of Mercedes Day
-        self[date(year, SEP, 24)] = "Día de las Mercedes \
+        self[
+            date(year, SEP, 24)
+        ] = "Día de las Mercedes \
             [Our Lady of Mercedes Day]"
 
         # Constitution Day

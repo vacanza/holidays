@@ -13,8 +13,7 @@
 
 from datetime import date
 
-from holidays.constants import JAN, MAR, APR, MAY, JUN, AUG, OCT, \
-    NOV, DEC
+from holidays.constants import JAN, MAR, APR, MAY, JUN, AUG, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -23,8 +22,26 @@ class India(HolidayBase):
     # https://www.calendarlabs.com/holidays/india/
     # https://slusi.dacnet.nic.in/watershedatlas/list_of_state_abbreviation.htm
 
-    PROVINCES = ['AS', 'CG', 'SK', 'KA', 'GJ', 'BR', 'RJ', 'OD',
-                 'TN', 'AP', 'WB', 'KL', 'HR', 'MH', 'MP', 'UP', 'UK', 'TS']
+    PROVINCES = [
+        "AS",
+        "CG",
+        "SK",
+        "KA",
+        "GJ",
+        "BR",
+        "RJ",
+        "OD",
+        "TN",
+        "AP",
+        "WB",
+        "KL",
+        "HR",
+        "MH",
+        "MP",
+        "UP",
+        "UK",
+        "TS",
+    ]
 
     def __init__(self, **kwargs):
         self.country = "IND"
@@ -57,61 +74,72 @@ class India(HolidayBase):
             self[date(year, MAY, 1)] = "Gujarat Day"
             self[date(year, OCT, 31)] = "Sardar Patel Jayanti"
 
-        if self.prov == 'BR':
+        if self.prov == "BR":
             self[date(year, MAR, 22)] = "Bihar Day"
 
-        if self.prov == 'RJ':
+        if self.prov == "RJ":
             self[date(year, MAR, 30)] = "Rajasthan Day"
             self[date(year, JUN, 15)] = "Maharana Pratap Jayanti"
 
-        if self.prov == 'OD':
+        if self.prov == "OD":
             self[date(year, APR, 1)] = "Odisha Day (Utkala Dibasa)"
-            self[date(year, APR, 15)] = "Maha Vishuva Sankranti / Pana" \
-                                        " Sankranti"
+            self[date(year, APR, 15)] = (
+                "Maha Vishuva Sankranti / Pana" " Sankranti"
+            )
 
-        if self.prov in ('OD', 'AP', 'BR', 'WB', 'KL',
-                         'HR', 'MH', 'UP', 'UK', 'TN'):
+        if self.prov in (
+            "OD",
+            "AP",
+            "BR",
+            "WB",
+            "KL",
+            "HR",
+            "MH",
+            "UP",
+            "UK",
+            "TN",
+        ):
             self[date(year, APR, 14)] = "Dr. B. R. Ambedkar's Jayanti"
 
-        if self.prov == 'TN':
+        if self.prov == "TN":
             self[date(year, APR, 14)] = "Puthandu (Tamil New Year)"
             self[date(year, APR, 15)] = "Puthandu (Tamil New Year)"
 
-        if self.prov == 'WB':
+        if self.prov == "WB":
             self[date(year, APR, 14)] = "Pohela Boishakh"
             self[date(year, APR, 15)] = "Pohela Boishakh"
             self[date(year, MAY, 9)] = "Rabindra Jayanti"
 
-        if self.prov == 'AS':
+        if self.prov == "AS":
             self[date(year, APR, 15)] = "Bihu (Assamese New Year)"
 
-        if self.prov == 'MH':
+        if self.prov == "MH":
             self[date(year, MAY, 1)] = "Maharashtra Day"
 
-        if self.prov == 'SK':
+        if self.prov == "SK":
             self[date(year, MAY, 16)] = "Annexation Day"
 
-        if self.prov == 'KA':
+        if self.prov == "KA":
             self[date(year, NOV, 1)] = "Karnataka Rajyotsava"
 
-        if self.prov == 'AP':
+        if self.prov == "AP":
             self[date(year, NOV, 1)] = "Andhra Pradesh Foundation Day"
 
-        if self.prov == 'HR':
+        if self.prov == "HR":
             self[date(year, NOV, 1)] = "Haryana Foundation Day"
 
-        if self.prov == 'MP':
+        if self.prov == "MP":
             self[date(year, NOV, 1)] = "Madhya Pradesh Foundation Day"
 
-        if self.prov == 'KL':
+        if self.prov == "KL":
             self[date(year, NOV, 1)] = "Kerala Foundation Day"
 
-        if self.prov == 'CG':
+        if self.prov == "CG":
             self[date(year, NOV, 1)] = "Chhattisgarh Foundation Day"
 
         # TS is Telangana State which was bifurcated in 2014 from AP
         # (AndhraPradesh)
-        if self.prov == 'TS':
+        if self.prov == "TS":
             self[date(year, OCT, 6)] = "Bathukamma Festival"
             self[date(year, APR, 6)] = "Eid al-Fitr"
 

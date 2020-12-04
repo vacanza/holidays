@@ -11,16 +11,10 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import os
-import sys
 import unittest
-import warnings
-from glob import glob
-from itertools import product
 
-from datetime import date, datetime, timedelta
-from dateutil.relativedelta import relativedelta, MO
-from flake8.api import legacy as flake8
+from datetime import date
+from dateutil.relativedelta import relativedelta
 
 import holidays
 
@@ -297,7 +291,9 @@ class TestNZ(unittest.TestCase):
             self.holidays[date(2011, 12, 26)], "Christmas Day (Observed)"
         )
         self.holidays.observed = True
-        self.assertEqual(self.holidays[date(2011, 12, 27)], "Christmas Day (Observed)")
+        self.assertEqual(
+            self.holidays[date(2011, 12, 27)], "Christmas Day (Observed)"
+        )
         for year, day in enumerate(
             [
                 25,
@@ -495,7 +491,9 @@ class TestNZ(unittest.TestCase):
         ):
             dt = date(year, 1, day)
             self.assertIn(dt, wgn_holidays, dt)
-            self.assertEqual(wgn_holidays[dt], "Wellington Anniversary Day", dt)
+            self.assertEqual(
+                wgn_holidays[dt], "Wellington Anniversary Day", dt
+            )
 
     def test_marlborough_anniversary_day(self):
         mbh_holidays = holidays.NZ(prov="Marlborough")
@@ -527,7 +525,9 @@ class TestNZ(unittest.TestCase):
         ):
             dt = date(year, 11 if day < 9 else 10, day)
             self.assertIn(dt, mbh_holidays, dt)
-            self.assertEqual(mbh_holidays[dt], "Marlborough Anniversary Day", dt)
+            self.assertEqual(
+                mbh_holidays[dt], "Marlborough Anniversary Day", dt
+            )
 
     def test_nelson_anniversary_day(self):
         nsn_holidays = holidays.NZ(prov="Nelson")
@@ -591,7 +591,9 @@ class TestNZ(unittest.TestCase):
         ):
             dt = date(year, 11, day)
             self.assertIn(dt, can_holidays, dt)
-            self.assertEqual(can_holidays[dt], "Canterbury Anniversary Day", dt)
+            self.assertEqual(
+                can_holidays[dt], "Canterbury Anniversary Day", dt
+            )
 
     def test_south_canterbury_anniversary_day(self):
         stc_holidays = holidays.NZ(prov="South Canterbury")
@@ -623,7 +625,9 @@ class TestNZ(unittest.TestCase):
         ):
             dt = date(year, 9, day)
             self.assertIn(dt, stc_holidays, dt)
-            self.assertEqual(stc_holidays[dt], "South Canterbury Anniversary Day", dt)
+            self.assertEqual(
+                stc_holidays[dt], "South Canterbury Anniversary Day", dt
+            )
 
     def test_westland_anniversary_day(self):
         wtc_holidays = holidays.NZ(prov="Westland")
@@ -692,7 +696,8 @@ class TestNZ(unittest.TestCase):
     def test_southland_anniversary_day(self):
         stl_holidays = holidays.NZ(prov="Southland")
         for year, day in enumerate(
-            [15, 14, 20, 19, 17, 16, 15, 14, 19, 18, 17], 2001  # 2001-05  # 2006-11
+            [15, 14, 20, 19, 17, 16, 15, 14, 19, 18, 17],
+            2001,  # 2001-05  # 2006-11
         ):
             dt = date(year, 1, day)
             self.assertIn(dt, stl_holidays, dt)
@@ -714,7 +719,9 @@ class TestNZ(unittest.TestCase):
             ):
                 dt = date(year, month, day)
                 self.assertIn(dt, stl_holidays, dt)
-                self.assertEqual(stl_holidays[dt], "Southland Anniversary Day", dt)
+                self.assertEqual(
+                    stl_holidays[dt], "Southland Anniversary Day", dt
+                )
 
     def test_chatham_islands_anniversary_day(self):
         cit_holidays = holidays.NZ(prov="Chatham Islands")
@@ -746,14 +753,22 @@ class TestNZ(unittest.TestCase):
         ):
             dt = date(year, 12 if day < 9 else 11, day)
             self.assertIn(dt, cit_holidays, dt)
-            self.assertEqual(cit_holidays[dt], "Chatham Islands Anniversary Day", dt)
+            self.assertEqual(
+                cit_holidays[dt], "Chatham Islands Anniversary Day", dt
+            )
 
     def test_all_holidays_present(self):
-        nz_1969 = sum(holidays.NZ(years=[1969], prov=p) for p in holidays.NZ.PROVINCES)
+        nz_1969 = sum(
+            holidays.NZ(years=[1969], prov=p) for p in holidays.NZ.PROVINCES
+        )
         holidays_in_1969 = sum((nz_1969.get_list(key) for key in nz_1969), [])
-        nz_2015 = sum(holidays.NZ(years=[2015], prov=p) for p in holidays.NZ.PROVINCES)
+        nz_2015 = sum(
+            holidays.NZ(years=[2015], prov=p) for p in holidays.NZ.PROVINCES
+        )
         holidays_in_2015 = sum((nz_2015.get_list(key) for key in nz_2015), [])
-        nz_1974 = sum(holidays.NZ(years=[1974], prov=p) for p in holidays.NZ.PROVINCES)
+        nz_1974 = sum(
+            holidays.NZ(years=[1974], prov=p) for p in holidays.NZ.PROVINCES
+        )
         holidays_in_1974 = sum((nz_1974.get_list(key) for key in nz_1974), [])
         all_holidays = [
             "New Year's Day",
@@ -791,4 +806,3 @@ class TestNZ(unittest.TestCase):
         for holiday in all_holidays:
             self.assertIn(holiday, holidays_in_1974, holiday)
         self.assertNotIn("Waitangi Day", holidays_in_1974)
-

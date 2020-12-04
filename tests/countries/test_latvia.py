@@ -11,16 +11,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import os
-import sys
 import unittest
-import warnings
-from glob import glob
-from itertools import product
 
-from datetime import date, datetime, timedelta
-from dateutil.relativedelta import relativedelta, MO
-from flake8.api import legacy as flake8
+from datetime import date
 
 import holidays
 
@@ -45,4 +38,3 @@ class TestLatvia(unittest.TestCase):
         self.assertIn(date(2020, 12, 25), self.holidays)
         self.assertIn(date(2020, 12, 26), self.holidays)
         self.assertIn(date(2020, 12, 31), self.holidays)
-

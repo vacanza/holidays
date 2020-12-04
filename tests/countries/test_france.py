@@ -11,16 +11,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import os
-import sys
 import unittest
-import warnings
-from glob import glob
-from itertools import product
 
-from datetime import date, datetime, timedelta
-from dateutil.relativedelta import relativedelta, MO
-from flake8.api import legacy as flake8
+from datetime import date
 
 import holidays
 
@@ -43,7 +36,8 @@ class TestFrance(unittest.TestCase):
 
     def test_others(self):
         self.assertEqual(
-            self.holidays[date(1948, 5, 1)], "Fête du Travail et de la Concorde sociale"
+            self.holidays[date(1948, 5, 1)],
+            "Fête du Travail et de la Concorde sociale",
         )
 
     def test_alsace_moselle(self):
@@ -88,4 +82,3 @@ class TestFrance(unittest.TestCase):
     def test_la_reunion(self):
         am_holidays = self.prov_holidays["La Réunion"]
         self.assertIn(date(2017, 12, 20), am_holidays)
-

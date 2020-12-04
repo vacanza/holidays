@@ -16,8 +16,19 @@ from datetime import date, timedelta
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd, SA, FR, MO
 
-from holidays.constants import JAN, FEB, MAR, MAY, JUN, JUL, AUG, SEP, OCT, \
-    NOV, DEC
+from holidays.constants import (
+    JAN,
+    FEB,
+    MAR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+)
 from holidays.constants import SUN
 from holidays.holiday_base import HolidayBase
 from holidays.utils import get_gre_date
@@ -61,14 +72,29 @@ class Singapore(HolidayBase):
         # Hari Raya Puasa
         # aka Eid al-Fitr
         # date of observance is announced yearly
-        dates_obs = {2001: [(DEC, 16)], 2002: [(DEC, 6)],
-                     2003: [(NOV, 25)], 2004: [(NOV, 14)], 2005: [(NOV, 3)],
-                     2006: [(OCT, 24)], 2007: [(OCT, 13)], 2008: [(OCT, 1)],
-                     2009: [(SEP, 20)], 2010: [(SEP, 10)], 2011: [(AUG, 30)],
-                     2012: [(AUG, 19)], 2013: [(AUG, 8)], 2014: [(JUL, 28)],
-                     2015: [(JUL, 17)], 2016: [(JUL, 6)], 2017: [(JUN, 25)],
-                     2018: [(JUN, 15)], 2019: [(JUN, 5)], 2020: [(MAY, 24)],
-                     2021: [(MAY, 13)]}
+        dates_obs = {
+            2001: [(DEC, 16)],
+            2002: [(DEC, 6)],
+            2003: [(NOV, 25)],
+            2004: [(NOV, 14)],
+            2005: [(NOV, 3)],
+            2006: [(OCT, 24)],
+            2007: [(OCT, 13)],
+            2008: [(OCT, 1)],
+            2009: [(SEP, 20)],
+            2010: [(SEP, 10)],
+            2011: [(AUG, 30)],
+            2012: [(AUG, 19)],
+            2013: [(AUG, 8)],
+            2014: [(JUL, 28)],
+            2015: [(JUL, 17)],
+            2016: [(JUL, 6)],
+            2017: [(JUN, 25)],
+            2018: [(JUN, 15)],
+            2019: [(JUN, 5)],
+            2020: [(MAY, 24)],
+            2021: [(MAY, 13)],
+        }
         if year in dates_obs:
             for date_obs in dates_obs[year]:
                 hol_date = date(year, *date_obs)
@@ -86,20 +112,36 @@ class Singapore(HolidayBase):
                 # Second day of Hari Raya Puasa (up to and including 1968)
                 if year <= 1968:
                     hol_date += rd(days=+1)
-                    self[hol_date] = ("Second day of Hari Raya Puasa*"
-                                      " (*estimated)")
+                    self[hol_date] = (
+                        "Second day of Hari Raya Puasa*" " (*estimated)"
+                    )
 
         # Hari Raya Haji
         # aka Eid al-Adha
         # date of observance is announced yearly
-        dates_obs = {2001: [(MAR, 6)], 2002: [(FEB, 23)],
-                     2003: [(FEB, 12)], 2004: [(FEB, 1)], 2005: [(JAN, 21)],
-                     2006: [(JAN, 10)], 2007: [(DEC, 20)], 2008: [(DEC, 8)],
-                     2009: [(NOV, 27)], 2010: [(NOV, 17)], 2011: [(NOV, 6)],
-                     2012: [(OCT, 26)], 2013: [(OCT, 15)], 2014: [(OCT, 5)],
-                     2015: [(SEP, 24)], 2016: [(SEP, 12)], 2017: [(SEP, 1)],
-                     2018: [(AUG, 22)], 2019: [(AUG, 11)], 2020: [(JUL, 31)],
-                     2021: [(JUL, 20)]}
+        dates_obs = {
+            2001: [(MAR, 6)],
+            2002: [(FEB, 23)],
+            2003: [(FEB, 12)],
+            2004: [(FEB, 1)],
+            2005: [(JAN, 21)],
+            2006: [(JAN, 10)],
+            2007: [(DEC, 20)],
+            2008: [(DEC, 8)],
+            2009: [(NOV, 27)],
+            2010: [(NOV, 17)],
+            2011: [(NOV, 6)],
+            2012: [(OCT, 26)],
+            2013: [(OCT, 15)],
+            2014: [(OCT, 5)],
+            2015: [(SEP, 24)],
+            2016: [(SEP, 12)],
+            2017: [(SEP, 1)],
+            2018: [(AUG, 22)],
+            2019: [(AUG, 11)],
+            2020: [(JUL, 31)],
+            2021: [(JUL, 20)],
+        }
         if year in dates_obs:
             for date_obs in dates_obs[year]:
                 hol_date = date(year, *date_obs)
@@ -126,14 +168,29 @@ class Singapore(HolidayBase):
         # Vesak Day
         # date of observance is announced yearly
         # https://en.wikipedia.org/wiki/Vesak#Dates_of_observance
-        dates_obs = {2001: (MAY, 7), 2002: (MAY, 27),
-                     2003: (MAY, 15), 2004: (JUN, 2), 2005: (MAY, 23),
-                     2006: (MAY, 12), 2007: (MAY, 31), 2008: (MAY, 19),
-                     2009: (MAY, 9), 2010: (MAY, 28), 2011: (MAY, 17),
-                     2012: (MAY, 5), 2013: (MAY, 24), 2014: (MAY, 13),
-                     2015: (JUN, 1), 2016: (MAY, 20), 2017: (MAY, 10),
-                     2018: (MAY, 29), 2019: (MAY, 19), 2020: (MAY, 7),
-                     2021: (MAY, 26)}
+        dates_obs = {
+            2001: (MAY, 7),
+            2002: (MAY, 27),
+            2003: (MAY, 15),
+            2004: (JUN, 2),
+            2005: (MAY, 23),
+            2006: (MAY, 12),
+            2007: (MAY, 31),
+            2008: (MAY, 19),
+            2009: (MAY, 9),
+            2010: (MAY, 28),
+            2011: (MAY, 17),
+            2012: (MAY, 5),
+            2013: (MAY, 24),
+            2014: (MAY, 13),
+            2015: (JUN, 1),
+            2016: (MAY, 20),
+            2017: (MAY, 10),
+            2018: (MAY, 29),
+            2019: (MAY, 19),
+            2020: (MAY, 7),
+            2021: (MAY, 26),
+        }
         if year in dates_obs:
             hol_date = date(year, *dates_obs[year])
             self[hol_date] = "Vesak Day"
@@ -147,14 +204,29 @@ class Singapore(HolidayBase):
         # Deepavali
         # aka Diwali
         # date of observance is announced yearly
-        dates_obs = {2001: (NOV, 14), 2002: (NOV, 3),
-                     2003: (OCT, 23), 2004: (NOV, 11), 2005: (NOV, 1),
-                     2006: (OCT, 21), 2007: (NOV, 8), 2008: (OCT, 27),
-                     2009: (OCT, 17), 2010: (NOV, 5), 2011: (OCT, 26),
-                     2012: (NOV, 13), 2013: (NOV, 2), 2014: (OCT, 22),
-                     2015: (NOV, 10), 2016: (OCT, 29), 2017: (OCT, 18),
-                     2018: (NOV, 6), 2019: (OCT, 27), 2020: (NOV, 14),
-                     2021: (NOV, 4)}
+        dates_obs = {
+            2001: (NOV, 14),
+            2002: (NOV, 3),
+            2003: (OCT, 23),
+            2004: (NOV, 11),
+            2005: (NOV, 1),
+            2006: (OCT, 21),
+            2007: (NOV, 8),
+            2008: (OCT, 27),
+            2009: (OCT, 17),
+            2010: (NOV, 5),
+            2011: (OCT, 26),
+            2012: (NOV, 13),
+            2013: (NOV, 2),
+            2014: (OCT, 22),
+            2015: (NOV, 10),
+            2016: (OCT, 29),
+            2017: (OCT, 18),
+            2018: (NOV, 6),
+            2019: (OCT, 27),
+            2020: (NOV, 14),
+            2021: (NOV, 4),
+        }
         if year in dates_obs:
             hol_date = date(year, *dates_obs[year])
             self[hol_date] = "Deepavali"
@@ -170,8 +242,13 @@ class Singapore(HolidayBase):
             self[date(year, DEC, 26)] = "Boxing Day"
 
         # Polling Day
-        dates_obs = {2001: (NOV, 3), 2006: (MAY, 6), 2011: (MAY, 7),
-                     2015: (SEP, 11), 2020: (JUL, 10)}
+        dates_obs = {
+            2001: (NOV, 3),
+            2006: (MAY, 6),
+            2011: (MAY, 7),
+            2015: (SEP, 11),
+            2020: (JUL, 10),
+        }
         if year in dates_obs:
             self[date(year, *dates_obs[year])] = "Polling Day"
 
@@ -187,11 +264,11 @@ class Singapore(HolidayBase):
         # is declared a public holiday in Singapore."
         for (hol_date, hol_name) in list(self.items()):
             if hol_date.weekday() == SUN:
-                self[hol_date] += ' [Sunday]'
+                self[hol_date] += " [Sunday]"
                 in_lieu_date = hol_date + rd(days=+1)
                 while in_lieu_date in self:
                     in_lieu_date += rd(days=+1)
-                self[in_lieu_date] = hol_name + '[In lieu]'
+                self[in_lieu_date] = hol_name + "[In lieu]"
 
     # The below is used to calculate lunar new year (i.e. Chinese new year)
     # Code borrowed from Hong Kong entry as of 16-Nov-19
@@ -203,46 +280,205 @@ class Singapore(HolidayBase):
     # 29 days. The 12th to 15th digits indicate the month of the next month.
     # If it is 0x0F, it means that there is no leap month.
     g_lunar_month_days = [
-        0xF0EA4, 0xF1D4A, 0x52C94, 0xF0C96, 0xF1536,
-        0x42AAC, 0xF0AD4, 0xF16B2, 0x22EA4, 0xF0EA4,  # 1901-1910
-        0x6364A, 0xF164A, 0xF1496, 0x52956, 0xF055A,
-        0xF0AD6, 0x216D2, 0xF1B52, 0x73B24, 0xF1D24,  # 1911-1920
-        0xF1A4A, 0x5349A, 0xF14AC, 0xF056C, 0x42B6A,
-        0xF0DA8, 0xF1D52, 0x23D24, 0xF1D24, 0x61A4C,  # 1921-1930
-        0xF0A56, 0xF14AE, 0x5256C, 0xF16B4, 0xF0DA8,
-        0x31D92, 0xF0E92, 0x72D26, 0xF1526, 0xF0A56,  # 1931-1940
-        0x614B6, 0xF155A, 0xF0AD4, 0x436AA, 0xF1748,
-        0xF1692, 0x23526, 0xF152A, 0x72A5A, 0xF0A6C,  # 1941-1950
-        0xF155A, 0x52B54, 0xF0B64, 0xF1B4A, 0x33A94,
-        0xF1A94, 0x8152A, 0xF152E, 0xF0AAC, 0x6156A,  # 1951-1960
-        0xF15AA, 0xF0DA4, 0x41D4A, 0xF1D4A, 0xF0C94,
-        0x3192E, 0xF1536, 0x72AB4, 0xF0AD4, 0xF16D2,  # 1961-1970
-        0x52EA4, 0xF16A4, 0xF164A, 0x42C96, 0xF1496,
-        0x82956, 0xF055A, 0xF0ADA, 0x616D2, 0xF1B52,  # 1971-1980
-        0xF1B24, 0x43A4A, 0xF1A4A, 0xA349A, 0xF14AC,
-        0xF056C, 0x60B6A, 0xF0DAA, 0xF1D92, 0x53D24,  # 1981-1990
-        0xF1D24, 0xF1A4C, 0x314AC, 0xF14AE, 0x829AC,
-        0xF06B4, 0xF0DAA, 0x52D92, 0xF0E92, 0xF0D26,  # 1991-2000
-        0x42A56, 0xF0A56, 0xF14B6, 0x22AB4, 0xF0AD4,
-        0x736AA, 0xF1748, 0xF1692, 0x53526, 0xF152A,  # 2001-2010
-        0xF0A5A, 0x4155A, 0xF156A, 0x92B54, 0xF0BA4,
-        0xF1B4A, 0x63A94, 0xF1A94, 0xF192A, 0x42A5C,  # 2011-2020
-        0xF0AAC, 0xF156A, 0x22B64, 0xF0DA4, 0x61D52,
-        0xF0E4A, 0xF0C96, 0x5192E, 0xF1956, 0xF0AB4,  # 2021-2030
-        0x315AC, 0xF16D2, 0xB2EA4, 0xF16A4, 0xF164A,
-        0x63496, 0xF1496, 0xF0956, 0x50AB6, 0xF0B5A,  # 2031-2040
-        0xF16D4, 0x236A4, 0xF1B24, 0x73A4A, 0xF1A4A,
-        0xF14AA, 0x5295A, 0xF096C, 0xF0B6A, 0x31B54,  # 2041-2050
-        0xF1D92, 0x83D24, 0xF1D24, 0xF1A4C, 0x614AC,
-        0xF14AE, 0xF09AC, 0x40DAA, 0xF0EAA, 0xF0E92,  # 2051-2060
-        0x31D26, 0xF0D26, 0x72A56, 0xF0A56, 0xF14B6,
-        0x52AB4, 0xF0AD4, 0xF16CA, 0x42E94, 0xF1694,  # 2061-2070
-        0x8352A, 0xF152A, 0xF0A5A, 0x6155A, 0xF156A,
-        0xF0B54, 0x4174A, 0xF1B4A, 0xF1A94, 0x3392A,  # 2071-2080
-        0xF192C, 0x7329C, 0xF0AAC, 0xF156A, 0x52B64,
-        0xF0DA4, 0xF1D4A, 0x41C94, 0xF0C96, 0x8192E,  # 2081-2090
-        0xF0956, 0xF0AB6, 0x615AC, 0xF16D4, 0xF0EA4,
-        0x42E4A, 0xF164A, 0xF1516, 0x22936,           # 2090-2099
+        0xF0EA4,
+        0xF1D4A,
+        0x52C94,
+        0xF0C96,
+        0xF1536,
+        0x42AAC,
+        0xF0AD4,
+        0xF16B2,
+        0x22EA4,
+        0xF0EA4,  # 1901-1910
+        0x6364A,
+        0xF164A,
+        0xF1496,
+        0x52956,
+        0xF055A,
+        0xF0AD6,
+        0x216D2,
+        0xF1B52,
+        0x73B24,
+        0xF1D24,  # 1911-1920
+        0xF1A4A,
+        0x5349A,
+        0xF14AC,
+        0xF056C,
+        0x42B6A,
+        0xF0DA8,
+        0xF1D52,
+        0x23D24,
+        0xF1D24,
+        0x61A4C,  # 1921-1930
+        0xF0A56,
+        0xF14AE,
+        0x5256C,
+        0xF16B4,
+        0xF0DA8,
+        0x31D92,
+        0xF0E92,
+        0x72D26,
+        0xF1526,
+        0xF0A56,  # 1931-1940
+        0x614B6,
+        0xF155A,
+        0xF0AD4,
+        0x436AA,
+        0xF1748,
+        0xF1692,
+        0x23526,
+        0xF152A,
+        0x72A5A,
+        0xF0A6C,  # 1941-1950
+        0xF155A,
+        0x52B54,
+        0xF0B64,
+        0xF1B4A,
+        0x33A94,
+        0xF1A94,
+        0x8152A,
+        0xF152E,
+        0xF0AAC,
+        0x6156A,  # 1951-1960
+        0xF15AA,
+        0xF0DA4,
+        0x41D4A,
+        0xF1D4A,
+        0xF0C94,
+        0x3192E,
+        0xF1536,
+        0x72AB4,
+        0xF0AD4,
+        0xF16D2,  # 1961-1970
+        0x52EA4,
+        0xF16A4,
+        0xF164A,
+        0x42C96,
+        0xF1496,
+        0x82956,
+        0xF055A,
+        0xF0ADA,
+        0x616D2,
+        0xF1B52,  # 1971-1980
+        0xF1B24,
+        0x43A4A,
+        0xF1A4A,
+        0xA349A,
+        0xF14AC,
+        0xF056C,
+        0x60B6A,
+        0xF0DAA,
+        0xF1D92,
+        0x53D24,  # 1981-1990
+        0xF1D24,
+        0xF1A4C,
+        0x314AC,
+        0xF14AE,
+        0x829AC,
+        0xF06B4,
+        0xF0DAA,
+        0x52D92,
+        0xF0E92,
+        0xF0D26,  # 1991-2000
+        0x42A56,
+        0xF0A56,
+        0xF14B6,
+        0x22AB4,
+        0xF0AD4,
+        0x736AA,
+        0xF1748,
+        0xF1692,
+        0x53526,
+        0xF152A,  # 2001-2010
+        0xF0A5A,
+        0x4155A,
+        0xF156A,
+        0x92B54,
+        0xF0BA4,
+        0xF1B4A,
+        0x63A94,
+        0xF1A94,
+        0xF192A,
+        0x42A5C,  # 2011-2020
+        0xF0AAC,
+        0xF156A,
+        0x22B64,
+        0xF0DA4,
+        0x61D52,
+        0xF0E4A,
+        0xF0C96,
+        0x5192E,
+        0xF1956,
+        0xF0AB4,  # 2021-2030
+        0x315AC,
+        0xF16D2,
+        0xB2EA4,
+        0xF16A4,
+        0xF164A,
+        0x63496,
+        0xF1496,
+        0xF0956,
+        0x50AB6,
+        0xF0B5A,  # 2031-2040
+        0xF16D4,
+        0x236A4,
+        0xF1B24,
+        0x73A4A,
+        0xF1A4A,
+        0xF14AA,
+        0x5295A,
+        0xF096C,
+        0xF0B6A,
+        0x31B54,  # 2041-2050
+        0xF1D92,
+        0x83D24,
+        0xF1D24,
+        0xF1A4C,
+        0x614AC,
+        0xF14AE,
+        0xF09AC,
+        0x40DAA,
+        0xF0EAA,
+        0xF0E92,  # 2051-2060
+        0x31D26,
+        0xF0D26,
+        0x72A56,
+        0xF0A56,
+        0xF14B6,
+        0x52AB4,
+        0xF0AD4,
+        0xF16CA,
+        0x42E94,
+        0xF1694,  # 2061-2070
+        0x8352A,
+        0xF152A,
+        0xF0A5A,
+        0x6155A,
+        0xF156A,
+        0xF0B54,
+        0x4174A,
+        0xF1B4A,
+        0xF1A94,
+        0x3392A,  # 2071-2080
+        0xF192C,
+        0x7329C,
+        0xF0AAC,
+        0xF156A,
+        0x52B64,
+        0xF0DA4,
+        0xF1D4A,
+        0x41C94,
+        0xF0C96,
+        0x8192E,  # 2081-2090
+        0xF0956,
+        0xF0AB6,
+        0x615AC,
+        0xF16D4,
+        0xF0EA4,
+        0x42E4A,
+        0xF164A,
+        0xF1516,
+        0x22936,  # 2090-2099
     ]
     # Define range of years
     START_YEAR, END_YEAR = 1901, 1900 + len(g_lunar_month_days)
@@ -252,12 +488,18 @@ class Singapore(HolidayBase):
     LUNAR_END_DATE, SOLAR_END_DATE = (2099, 12, 30), date(2100, 2, 18)
 
     def get_leap_month(self, lunar_year):
-        return (self.g_lunar_month_days[lunar_year - self.START_YEAR] >> 16) \
-            & 0x0F
+        return (
+            self.g_lunar_month_days[lunar_year - self.START_YEAR] >> 16
+        ) & 0x0F
 
     def lunar_month_days(self, lunar_year, lunar_month):
-        return 29 + ((self.g_lunar_month_days[lunar_year - self.START_YEAR] >>
-                      lunar_month) & 0x01)
+        return 29 + (
+            (
+                self.g_lunar_month_days[lunar_year - self.START_YEAR]
+                >> lunar_month
+            )
+            & 0x01
+        )
 
     def lunar_year_days(self, year):
         days = 0
@@ -287,7 +529,7 @@ class Singapore(HolidayBase):
         for m in range(1, 4 + (4 > leap_month)):
             span_days += self.lunar_month_days(year, m)
         span_days += 14
-        return (self.SOLAR_START_DATE + timedelta(span_days))
+        return self.SOLAR_START_DATE + timedelta(span_days)
 
     # Estimate Gregorian date of Southern India Diwali
     def get_s_diwali_date(self, year):
@@ -298,7 +540,7 @@ class Singapore(HolidayBase):
         for m in range(1, 10 + (10 > leap_month)):
             span_days += self.lunar_month_days(year, m)
         span_days -= 2
-        return (self.SOLAR_START_DATE + timedelta(span_days))
+        return self.SOLAR_START_DATE + timedelta(span_days)
 
     # Estimate Gregorian date(s) of Hara Rasa Puasa
     def get_hrp_date(self, year):

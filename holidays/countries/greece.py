@@ -24,7 +24,7 @@ class Greece(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Greece
 
     def __init__(self, **kwargs):
-        self.country = 'GR'
+        self.country = "GR"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -49,8 +49,9 @@ class Greece(HolidayBase):
         self[date(year, MAY, 1)] = "Εργατική Πρωτομαγιά [Labour day]"
 
         # Monday of the Holy Spirit
-        self[eday + rd(days=50)] = \
-            "Δευτέρα του Αγίου Πνεύματος [Monday of the Holy Spirit]"
+        self[
+            eday + rd(days=50)
+        ] = "Δευτέρα του Αγίου Πνεύματος [Monday of the Holy Spirit]"
 
         # Assumption of Mary
         self[date(year, AUG, 15)] = "Κοίμηση της Θεοτόκου [Assumption of Mary]"
@@ -62,8 +63,9 @@ class Greece(HolidayBase):
         self[date(year, DEC, 25)] = "Χριστούγεννα [Christmas]"
 
         # Day after Christmas
-        self[date(year, DEC, 26)] = \
-            "Επόμενη ημέρα των Χριστουγέννων [Day after Christmas]"
+        self[
+            date(year, DEC, 26)
+        ] = "Επόμενη ημέρα των Χριστουγέννων [Day after Christmas]"
 
 
 class GR(Greece):

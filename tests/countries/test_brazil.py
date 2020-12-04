@@ -11,16 +11,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import os
-import sys
 import unittest
-import warnings
-from glob import glob
-from itertools import product
 
-from datetime import date, datetime, timedelta
-from dateutil.relativedelta import relativedelta, MO
-from flake8.api import legacy as flake8
+from datetime import date
 
 import holidays
 
@@ -46,17 +39,25 @@ class TestBrazil(unittest.TestCase):
         self.assertIn("2018-04-21", self.holidays)
         self.assertEqual(self.holidays[date(2018, 4, 21)], "Tiradentes")
         self.assertIn("2018-05-01", self.holidays)
-        self.assertEqual(self.holidays[date(2018, 5, 1)], "Dia Mundial do Trabalho")
+        self.assertEqual(
+            self.holidays[date(2018, 5, 1)], "Dia Mundial do Trabalho"
+        )
         self.assertIn("2018-05-31", self.holidays)
         self.assertEqual(self.holidays[date(2018, 5, 31)], "Corpus Christi")
         self.assertIn("2018-09-07", self.holidays)
-        self.assertEqual(self.holidays[date(2018, 9, 7)], "Independência do Brasil")
+        self.assertEqual(
+            self.holidays[date(2018, 9, 7)], "Independência do Brasil"
+        )
         self.assertIn("2018-10-12", self.holidays)
-        self.assertEqual(self.holidays[date(2018, 10, 12)], "Nossa Senhora Aparecida")
+        self.assertEqual(
+            self.holidays[date(2018, 10, 12)], "Nossa Senhora Aparecida"
+        )
         self.assertIn("2018-11-02", self.holidays)
         self.assertEqual(self.holidays[date(2018, 11, 2)], "Finados")
         self.assertIn("2018-11-15", self.holidays)
-        self.assertEqual(self.holidays[date(2018, 11, 15)], "Proclamação da República")
+        self.assertEqual(
+            self.holidays[date(2018, 11, 15)], "Proclamação da República"
+        )
         self.assertIn("2018-12-25", self.holidays)
         self.assertEqual(self.holidays[date(2018, 12, 25)], "Natal")
 
@@ -70,7 +71,8 @@ class TestBrazil(unittest.TestCase):
         self.assertEqual(ac_holidays[date(2018, 9, 5)], "Dia da Amazônia")
         self.assertIn("2018-11-17", ac_holidays)
         self.assertEqual(
-            ac_holidays[date(2018, 11, 17)], "Assinatura do Tratado de Petrópolis"
+            ac_holidays[date(2018, 11, 17)],
+            "Assinatura do Tratado de Petrópolis",
         )
 
     def test_AL_holidays(self):
@@ -114,7 +116,9 @@ class TestBrazil(unittest.TestCase):
     def test_BA_holidays(self):
         ba_holidays = holidays.BR(state="BA")
         self.assertIn("2018-07-02", ba_holidays)
-        self.assertEqual(ba_holidays[date(2018, 7, 2)], "Independência da Bahia")
+        self.assertEqual(
+            ba_holidays[date(2018, 7, 2)], "Independência da Bahia"
+        )
 
     def test_CE_holidays(self):
         ce_holidays = holidays.BR(state="CE")
@@ -135,12 +139,16 @@ class TestBrazil(unittest.TestCase):
     def test_ES_holidays(self):
         es_holidays = holidays.BR(state="ES")
         self.assertIn("2018-10-28", es_holidays)
-        self.assertEqual(es_holidays[date(2018, 10, 28)], "Dia do Servidor Público")
+        self.assertEqual(
+            es_holidays[date(2018, 10, 28)], "Dia do Servidor Público"
+        )
 
     def test_GO_holidays(self):
         go_holidays = holidays.BR(state="GO")
         self.assertIn("2018-10-28", go_holidays)
-        self.assertEqual(go_holidays[date(2018, 10, 28)], "Dia do Servidor Público")
+        self.assertEqual(
+            go_holidays[date(2018, 10, 28)], "Dia do Servidor Público"
+        )
 
     def test_MA_holidays(self):
         ma_holidays = holidays.BR(state="MA")
@@ -167,7 +175,9 @@ class TestBrazil(unittest.TestCase):
     def test_MG_holidays(self):
         mg_holidays = holidays.BR(state="MG")
         self.assertIn("2018-04-21", mg_holidays)
-        self.assertEqual(mg_holidays[date(2018, 4, 21)], "Data Magna de MG, Tiradentes")
+        self.assertEqual(
+            mg_holidays[date(2018, 4, 21)], "Data Magna de MG, Tiradentes"
+        )
 
     def test_PA_holidays(self):
         pa_holidays = holidays.BR(state="PA")
@@ -186,7 +196,8 @@ class TestBrazil(unittest.TestCase):
         pe_holidays = holidays.BR(state="PE")
         self.assertIn("2018-03-06", pe_holidays)
         self.assertEqual(
-            pe_holidays[date(2018, 3, 6)], "Revolução Pernambucana (Data Magna)"
+            pe_holidays[date(2018, 3, 6)],
+            "Revolução Pernambucana (Data Magna)",
         )
         self.assertIn("2018-06-24", pe_holidays)
         self.assertEqual(pe_holidays[date(2018, 6, 24)], "São João")
@@ -194,21 +205,27 @@ class TestBrazil(unittest.TestCase):
     def test_PI_holidays(self):
         pi_holidays = holidays.BR(state="PI")
         self.assertIn("2018-03-13", pi_holidays)
-        self.assertEqual(pi_holidays[date(2018, 3, 13)], "Dia da Batalha do Jenipapo")
+        self.assertEqual(
+            pi_holidays[date(2018, 3, 13)], "Dia da Batalha do Jenipapo"
+        )
         self.assertIn("2018-10-19", pi_holidays)
         self.assertEqual(pi_holidays[date(2018, 10, 19)], "Dia do Piauí")
 
     def test_PR_holidays(self):
         pr_holidays = holidays.BR(state="PR")
         self.assertIn("2018-12-19", pr_holidays)
-        self.assertEqual(pr_holidays[date(2018, 12, 19)], "Emancipação do Paraná")
+        self.assertEqual(
+            pr_holidays[date(2018, 12, 19)], "Emancipação do Paraná"
+        )
 
     def test_RJ_holidays(self):
         rj_holidays = holidays.BR(state="RJ")
         self.assertIn("2018-04-23", rj_holidays)
         self.assertEqual(rj_holidays[date(2018, 4, 23)], "Dia de São Jorge")
         self.assertIn("2018-10-28", rj_holidays)
-        self.assertEqual(rj_holidays[date(2018, 10, 28)], "Dia do Funcionário Público")
+        self.assertEqual(
+            rj_holidays[date(2018, 10, 28)], "Dia do Funcionário Público"
+        )
         self.assertIn("2018-11-20", rj_holidays)
         self.assertEqual(rj_holidays[date(2018, 11, 20)], "Zumbi dos Palmares")
 
@@ -217,12 +234,16 @@ class TestBrazil(unittest.TestCase):
         self.assertIn("2018-06-29", rn_holidays)
         self.assertEqual(rn_holidays[date(2018, 6, 29)], "Dia de São Pedro")
         self.assertIn("2018-10-03", rn_holidays)
-        self.assertEqual(rn_holidays[date(2018, 10, 3)], "Mártires de Cunhaú e Uruaçuu")
+        self.assertEqual(
+            rn_holidays[date(2018, 10, 3)], "Mártires de Cunhaú e Uruaçuu"
+        )
 
     def test_RS_holidays(self):
         rs_holidays = holidays.BR(state="RS")
         self.assertIn("2018-09-20", rs_holidays)
-        self.assertEqual(rs_holidays[date(2018, 9, 20)], "Revolução Farroupilha")
+        self.assertEqual(
+            rs_holidays[date(2018, 9, 20)], "Revolução Farroupilha"
+        )
 
     def test_RO_holidays(self):
         ro_holidays = holidays.BR(state="RO")
@@ -240,20 +261,24 @@ class TestBrazil(unittest.TestCase):
         sc_holidays = holidays.BR(state="SC")
         self.assertIn("2018-08-11", sc_holidays)
         self.assertEqual(
-            sc_holidays[date(2018, 8, 11)], "Criação da capitania, separando-se de SP"
+            sc_holidays[date(2018, 8, 11)],
+            "Criação da capitania, separando-se de SP",
         )
 
     def test_SP_holidays(self):
         sp_holidays = holidays.BR(state="SP")
         self.assertIn("2018-07-09", sp_holidays)
         self.assertEqual(
-            sp_holidays[date(2018, 7, 9)], "Revolução Constitucionalista de 1932"
+            sp_holidays[date(2018, 7, 9)],
+            "Revolução Constitucionalista de 1932",
         )
 
     def test_SE_holidays(self):
         se_holidays = holidays.BR(state="SE")
         self.assertIn("2018-07-08", se_holidays)
-        self.assertEqual(se_holidays[date(2018, 7, 8)], "Autonomia política de Sergipe")
+        self.assertEqual(
+            se_holidays[date(2018, 7, 8)], "Autonomia política de Sergipe"
+        )
 
     def test_TO_holidays(self):
         to_holidays = holidays.BR(state="TO")
@@ -262,6 +287,10 @@ class TestBrazil(unittest.TestCase):
             to_holidays[date(2018, 1, 1)], "Instalação de Tocantins, Ano novo"
         )
         self.assertIn("2018-09-08", to_holidays)
-        self.assertEqual(to_holidays[date(2018, 9, 8)], "Nossa Senhora da Natividade")
+        self.assertEqual(
+            to_holidays[date(2018, 9, 8)], "Nossa Senhora da Natividade"
+        )
         self.assertIn("2018-10-05", to_holidays)
-        self.assertEqual(to_holidays[date(2018, 10, 5)], "Criação de Tocantins")
+        self.assertEqual(
+            to_holidays[date(2018, 10, 5)], "Criação de Tocantins"
+        )

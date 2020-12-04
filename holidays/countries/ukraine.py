@@ -16,8 +16,7 @@ from datetime import date
 from dateutil.easter import easter, EASTER_ORTHODOX
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAR, MAY, JUN, JUL, AUG, SEP, OCT, \
-    NOV, DEC
+from holidays.constants import JAN, MAR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -42,8 +41,7 @@ class Ukraine(HolidayBase):
 
         # Christmas Day (Orthodox)
         if year >= 1991:
-            self[date(year, JAN, 7)] = "Різдво Христове" \
-                " (православне)"
+            self[date(year, JAN, 7)] = "Різдво Христове" " (православне)"
 
         # Women's Day
         if year > 1965:
@@ -51,8 +49,7 @@ class Ukraine(HolidayBase):
 
         # Easter
         if year >= 1991:
-            self[easter(year, method=EASTER_ORTHODOX)] = "Пасха" \
-                                                         " (Великдень)"
+            self[easter(year, method=EASTER_ORTHODOX)] = "Пасха" " (Великдень)"
 
         # Holy trinity
         if year >= 1991:
@@ -102,8 +99,7 @@ class Ukraine(HolidayBase):
         # October Revolution
         if 1917 < year < 2000:
             if year <= 1991:
-                name = "Річниця Великої Жовтневої" \
-                       " соціалістичної революції"
+                name = "Річниця Великої Жовтневої" " соціалістичної революції"
             else:
                 name = "Річниця жовтневого перевороту"
             self[date(year, NOV, 7)] = name
@@ -111,8 +107,7 @@ class Ukraine(HolidayBase):
 
         # Christmas Day (Catholic)
         if year >= 2017:
-            self[date(year, DEC, 25)] = "Різдво Христове" \
-                " (католицьке)"
+            self[date(year, DEC, 25)] = "Різдво Христове" " (католицьке)"
         # USSR holidays
         # Bloody_Sunday_(1905)
         if 1917 <= year < 1951:

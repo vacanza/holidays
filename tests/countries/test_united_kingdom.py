@@ -11,16 +11,10 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import os
-import sys
 import unittest
-import warnings
-from glob import glob
-from itertools import product
 
-from datetime import date, datetime, timedelta
-from dateutil.relativedelta import relativedelta, MO
-from flake8.api import legacy as flake8
+from datetime import date
+from dateutil.relativedelta import relativedelta
 
 import holidays
 
@@ -136,7 +130,9 @@ class TestUK(unittest.TestCase):
             self.holidays[date(2011, 12, 26)], "Christmas Day (Observed)"
         )
         self.holidays.observed = True
-        self.assertEqual(self.holidays[date(2011, 12, 27)], "Christmas Day (Observed)")
+        self.assertEqual(
+            self.holidays[date(2011, 12, 27)], "Christmas Day (Observed)"
+        )
         for year, day in enumerate(
             [
                 25,

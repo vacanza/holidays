@@ -11,16 +11,10 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import os
-import sys
 import unittest
-import warnings
-from glob import glob
-from itertools import product
 
-from datetime import date, datetime, timedelta
-from dateutil.relativedelta import relativedelta, MO
-from flake8.api import legacy as flake8
+from datetime import date
+from dateutil.relativedelta import relativedelta
 
 import holidays
 
@@ -47,7 +41,8 @@ class TestAU(unittest.TestCase):
 
     def test_australia_day(self):
         for year, day in enumerate(
-            [26, 26, 28, 27, 26, 26, 26, 26, 28, 27, 26], 2011  # 2011-15  # 2016-21
+            [26, 26, 28, 27, 26, 26, 26, 26, 28, 27, 26],
+            2011,  # 2011-15  # 2016-21
         ):
             jan26 = date(year, 1, 26)
             dt = date(year, 1, day)
@@ -57,7 +52,9 @@ class TestAU(unittest.TestCase):
             self.assertEqual(self.holidays[dt][:10], "Australia ")
             for state in holidays.AU.PROVINCES:
                 self.assertIn(jan26, self.state_hols[state], (state, dt))
-                self.assertEqual(self.state_hols[state][jan26], "Australia Day")
+                self.assertEqual(
+                    self.state_hols[state][jan26], "Australia Day"
+                )
                 self.assertIn(dt, self.state_hols[state], (state, dt))
                 self.assertEqual(self.state_hols[state][dt][:10], "Australia ")
         self.assertNotIn(date(2016, 1, 27), self.holidays)
@@ -144,7 +141,18 @@ class TestAU(unittest.TestCase):
             self.assertEqual(self.state_hols["NSW"][dt], "Bank Holiday")
 
     def test_labour_day(self):
-        for year, day in enumerate([7, 5, 4, 3, 2, 7, 6,], 2011):
+        for year, day in enumerate(
+            [
+                7,
+                5,
+                4,
+                3,
+                2,
+                7,
+                6,
+            ],
+            2011,
+        ):
             dt = date(year, 3, day)
             self.assertIn(dt, self.state_hols["WA"], dt)
             self.assertEqual(self.state_hols["WA"][dt], "Labour Day")
@@ -183,7 +191,9 @@ class TestAU(unittest.TestCase):
         for year, day in enumerate([1, 6, 5], 2015):
             dt = date(year, 6, day)
             self.assertIn(dt, self.state_hols["WA"], dt)
-            self.assertEqual(self.state_hols["WA"][dt], "Western Australia Day")
+            self.assertEqual(
+                self.state_hols["WA"][dt], "Western Australia Day"
+            )
 
     def test_adelaide_cup(self):
         for dt in [date(2015, 3, 9), date(2016, 3, 14), date(2017, 3, 13)]:
@@ -222,7 +232,12 @@ class TestAU(unittest.TestCase):
         qld_dates = other_states[:-3]
         qld_dates.remove(date(2012, 6, 11))
         qld_dates.extend(
-            [date(2012, 10, 1), date(2016, 10, 3), date(2017, 10, 2), date(2018, 10, 1)]
+            [
+                date(2012, 10, 1),
+                date(2016, 10, 3),
+                date(2017, 10, 2),
+                date(2018, 10, 1),
+            ]
         )
         for dt in qld_dates:
             self.assertIn(dt, self.state_hols["QLD"], dt)
@@ -249,7 +264,9 @@ class TestAU(unittest.TestCase):
             date(2017, 9, 25),
         ]:
             self.assertIn(dt, self.state_hols["ACT"], dt)
-            self.assertEqual(self.state_hols["ACT"][dt], "Family & Community Day")
+            self.assertEqual(
+                self.state_hols["ACT"][dt], "Family & Community Day"
+            )
 
     def test_reconciliation_day(self):
         for dt in [date(2018, 5, 28), date(2019, 5, 27), date(2020, 6, 1)]:
@@ -275,7 +292,9 @@ class TestAU(unittest.TestCase):
         for year, day in enumerate([15, 14, 14, 11, 10, 16], 2018):
             dt = date(year, 8, day)
             self.assertIn(dt, self.state_hols["QLD"], dt)
-            self.assertEqual(self.state_hols["QLD"][dt], "The Royal Queensland Show")
+            self.assertEqual(
+                self.state_hols["QLD"][dt], "The Royal Queensland Show"
+            )
 
     def test_christmas_day(self):
         self.holidays.observed = False
@@ -288,7 +307,9 @@ class TestAU(unittest.TestCase):
             self.holidays[date(2011, 12, 26)], "Christmas Day (Observed)"
         )
         self.holidays.observed = True
-        self.assertEqual(self.holidays[date(2011, 12, 27)], "Christmas Day (Observed)")
+        self.assertEqual(
+            self.holidays[date(2011, 12, 27)], "Christmas Day (Observed)"
+        )
         for year, day in enumerate(
             [
                 25,
@@ -362,7 +383,8 @@ class TestAU(unittest.TestCase):
 
     def test_all_holidays(self):
         au = sum(
-            holidays.AU(years=[1957, 2012, 2015], prov=p) for p in holidays.AU.PROVINCES
+            holidays.AU(years=[1957, 2012, 2015], prov=p)
+            for p in holidays.AU.PROVINCES
         )
         holidays_found = sum((au.get_list(key) for key in au), [])
         all_holidays = [

@@ -11,16 +11,10 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import os
-import sys
 import unittest
-import warnings
-from glob import glob
-from itertools import product
 
-from datetime import date, datetime, timedelta
-from dateutil.relativedelta import relativedelta, MO
-from flake8.api import legacy as flake8
+from datetime import date
+from dateutil.relativedelta import relativedelta
 
 import holidays
 
@@ -87,18 +81,22 @@ class TestVietnam(unittest.TestCase):
     def test_king_hung_day(self):
         for year, month, day in [(2020, 4, 2), (2021, 4, 21), (2022, 4, 10)]:
             self.assertEqual(
-                self.holidays[date(year, month, day)], "Hung Kings Commemoration Day"
+                self.holidays[date(year, month, day)],
+                "Hung Kings Commemoration Day",
             )
 
     def test_liberation_day(self):
         for year in range(1979, 2050):
             self.assertIn(
-                "Liberation Day/Reunification Day", self.holidays[date(year, 4, 30)]
+                "Liberation Day/Reunification Day",
+                self.holidays[date(year, 4, 30)],
             )
 
     def test_international_labor_day(self):
         for year in range(1979, 2050):
-            self.assertIn("International Labor Day", self.holidays[date(year, 5, 1)])
+            self.assertIn(
+                "International Labor Day", self.holidays[date(year, 5, 1)]
+            )
 
     def test_independence_day(self):
         for year in range(1979, 2050):

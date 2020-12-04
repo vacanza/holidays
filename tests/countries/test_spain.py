@@ -11,19 +11,12 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import os
-import sys
 import unittest
-import warnings
-from glob import glob
 from itertools import product
 
-from datetime import date, datetime, timedelta
-from dateutil.relativedelta import relativedelta, MO
-from flake8.api import legacy as flake8
+from datetime import date
 
 import holidays
-
 
 
 class TestES(unittest.TestCase):
@@ -129,7 +122,9 @@ class TestES(unittest.TestCase):
                         prov in ["ML", "MC", "PV", "VC"],
                     )
                 elif year == 2017:
-                    self.assertEqual(date(year, 3, 19) in prov_holidays, prov in ["PV"])
+                    self.assertEqual(
+                        date(year, 3, 19) in prov_holidays, prov in ["PV"]
+                    )
                 elif 2018 <= year <= 2019:
                     self.assertEqual(
                         date(year, 3, 19) in prov_holidays,
@@ -141,9 +136,11 @@ class TestES(unittest.TestCase):
                         prov in ["CM", "GA", "MC", "NC", "PV", "VC"],
                     )
                 self.assertEqual(
-                    date(year, 6, 24) in prov_holidays, prov in ["CT", "GA", "VC"]
+                    date(year, 6, 24) in prov_holidays,
+                    prov in ["CT", "GA", "VC"],
                 )
                 for fest_day, fest_prov in province_days.items():
                     self.assertEqual(
-                        date(year, *fest_day) in prov_holidays, prov in fest_prov
+                        date(year, *fest_day) in prov_holidays,
+                        prov in fest_prov,
                     )

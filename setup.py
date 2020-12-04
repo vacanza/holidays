@@ -11,34 +11,40 @@
 
 import codecs
 import re
+
 try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
 
 
-with codecs.open('holidays/__init__.py', 'r', 'utf-8') as fd:
-    version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]',
-                        fd.read(), re.MULTILINE).group(1)
+with codecs.open("holidays/__init__.py", "r", "utf-8") as fd:
+    version = re.search(
+        r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', fd.read(), re.MULTILINE
+    ).group(1)
 
 if not version:
-    raise RuntimeError('Cannot find version information')
+    raise RuntimeError("Cannot find version information")
 
 setup(
-    name='holidays',
+    name="holidays",
     version=version,
-    author='ryanss',
-    author_email='ryanssdev@icloud.com',
-    maintainer='dr-prodigy',
-    maintainer_email='maurizio.montel@gmail.com',
-    url='https://github.com/dr-prodigy/python-holidays',
-    packages=['holidays', 'holidays/countries'],
-    license='MIT',
-    description='Generate and work with holidays in Python',
-    long_description=codecs.open('README.rst', encoding='utf-8').read(),
-    install_requires=['python-dateutil', 'six', 'convertdate<=2.2.0',
-                      'korean_lunar_calendar'],
-    platforms='any',
+    author="ryanss",
+    author_email="ryanssdev@icloud.com",
+    maintainer="dr-prodigy",
+    maintainer_email="maurizio.montel@gmail.com",
+    url="https://github.com/dr-prodigy/python-holidays",
+    packages=["holidays", "holidays/countries"],
+    license="MIT",
+    description="Generate and work with holidays in Python",
+    long_description=codecs.open("README.rst", encoding="utf-8").read(),
+    install_requires=[
+        "python-dateutil",
+        "six",
+        "convertdate<=2.2.0",
+        "korean_lunar_calendar",
+    ],
+    platforms="any",
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',

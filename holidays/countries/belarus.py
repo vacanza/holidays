@@ -46,8 +46,9 @@ class Belarus(HolidayBase):
             self[date(year, JAN, 2)] = "Новый год"
 
         # Christmas Day (Orthodox)
-        self[date(year, JAN, 7)] = "Рождество Христово " \
-                                   "(православное Рождество)"
+        self[date(year, JAN, 7)] = (
+            "Рождество Христово " "(православное Рождество)"
+        )
 
         # Women's Day
         self[date(year, MAR, 8)] = "День женщин"
@@ -62,15 +63,17 @@ class Belarus(HolidayBase):
         self[date(year, MAY, 9)] = "День Победы"
 
         # Independence Day
-        self[date(year, JUL, 3)] = "День Независимости Республики Беларусь " \
-                                   "(День Республики)"
+        self[date(year, JUL, 3)] = (
+            "День Независимости Республики Беларусь " "(День Республики)"
+        )
 
         # October Revolution Day
         self[date(year, NOV, 7)] = "День Октябрьской революции"
 
         # Christmas Day (Catholic)
-        self[date(year, DEC, 25)] = "Рождество Христово " \
-                                    "(католическое Рождество)"
+        self[date(year, DEC, 25)] = (
+            "Рождество Христово " "(католическое Рождество)"
+        )
 
 
 class BY(Belarus):

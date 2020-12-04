@@ -11,16 +11,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import os
-import sys
 import unittest
-import warnings
-from glob import glob
-from itertools import product
 
-from datetime import date, datetime, timedelta
-from dateutil.relativedelta import relativedelta, MO
-from flake8.api import legacy as flake8
+from datetime import date
 
 import holidays
 
@@ -117,7 +110,8 @@ class TestHongKong(unittest.TestCase):
             (2020, 1, 27),
         ]:
             self.assertEqual(
-                self.holidays[date(year, month, day)], "The third day of Lunar New Year"
+                self.holidays[date(year, month, day)],
+                "The third day of Lunar New Year",
             )
 
         for year, month, day in [
@@ -176,7 +170,9 @@ class TestHongKong(unittest.TestCase):
             (2019, 4, 19),
             (2020, 4, 10),
         ]:
-            self.assertEqual(self.holidays[date(year, month, day)], "Good Friday")
+            self.assertEqual(
+                self.holidays[date(year, month, day)], "Good Friday"
+            )
 
         for year, month, day in [
             (2019, 4, 20),
@@ -196,7 +192,8 @@ class TestHongKong(unittest.TestCase):
             (2014, 4, 19),
         ]:
             self.assertEqual(
-                self.holidays[date(year, month, day)], "The day following Good Friday"
+                self.holidays[date(year, month, day)],
+                "The day following Good Friday",
             )
 
         for year, month, day in [
@@ -214,7 +211,9 @@ class TestHongKong(unittest.TestCase):
             (2019, 4, 22),
             (2020, 4, 13),
         ]:
-            self.assertEqual(self.holidays[date(year, month, day)], "Easter Monday")
+            self.assertEqual(
+                self.holidays[date(year, month, day)], "Easter Monday"
+            )
 
         name = "The day following Easter Monday"
         self.assertEqual(self.holidays[date(2010, 4, 6)], name)
@@ -264,7 +263,8 @@ class TestHongKong(unittest.TestCase):
             )
 
         self.assertEqual(
-            self.holidays[date(2008, 6, 9)], "The day " + "following Tuen Ng Festival"
+            self.holidays[date(2008, 6, 9)],
+            "The day " + "following Tuen Ng Festival",
         )
 
     def test_hksar_day(self):
@@ -284,7 +284,9 @@ class TestHongKong(unittest.TestCase):
         ]:
             self.assertEqual(
                 self.holidays[date(year, 7, 1)],
-                "Hong Kong " + "Special Administrative Region Establishment " + "Day",
+                "Hong Kong "
+                + "Special Administrative Region Establishment "
+                + "Day",
             )
 
         name = (
@@ -318,7 +320,8 @@ class TestHongKong(unittest.TestCase):
             )
 
         self.assertEqual(
-            self.holidays[date(2009, 10, 3)], "Chinese " + "Mid-Autumn Festival"
+            self.holidays[date(2009, 10, 3)],
+            "Chinese " + "Mid-Autumn Festival",
         )
 
     def test_national_day(self):
@@ -359,7 +362,8 @@ class TestHongKong(unittest.TestCase):
             (2019, 10, 7),
         ]:
             self.assertEqual(
-                self.holidays[date(year, month, day)], "Chung " + "Yeung Festival"
+                self.holidays[date(year, month, day)],
+                "Chung " + "Yeung Festival",
             )
 
         name = "The day following Chung Yeung Festival"
@@ -383,7 +387,9 @@ class TestHongKong(unittest.TestCase):
             2019,
             2020,
         ]:
-            self.assertEqual(self.holidays[date(year, 12, 25)], "Christmas " + "Day")
+            self.assertEqual(
+                self.holidays[date(year, 12, 25)], "Christmas " + "Day"
+            )
 
         name = "The first weekday after Christmas Day"
         for year in range(2006, 2010):

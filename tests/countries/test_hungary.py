@@ -11,16 +11,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import os
-import sys
 import unittest
-import warnings
-from glob import glob
-from itertools import product
 
-from datetime import date, datetime, timedelta
-from dateutil.relativedelta import relativedelta, MO
-from flake8.api import legacy as flake8
+from datetime import date
 
 import holidays
 
@@ -45,7 +38,9 @@ class TestHungary(unittest.TestCase):
 
     def test_foundation_day_renamed_during_communism(self):
         for year in range(1950, 1990):
-            self.assertEqual(self.holidays[date(year, 8, 20)], "A kenyér ünnepe")
+            self.assertEqual(
+                self.holidays[date(year, 8, 20)], "A kenyér ünnepe"
+            )
 
     def test_christian_holidays_2nd_day_was_not_held_in_1955(self):
         hu_1955 = holidays.Hungary(years=[1955])

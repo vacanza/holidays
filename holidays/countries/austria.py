@@ -16,17 +16,16 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd, MO
 
-from holidays.constants import JAN, MAY, AUG, OCT, \
-    NOV, DEC
+from holidays.constants import JAN, MAY, AUG, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
 class Austria(HolidayBase):
-    PROVINCES = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+    PROVINCES = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
     def __init__(self, **kwargs):
-        self.country = 'AT'
-        self.prov = kwargs.pop('prov', kwargs.pop('state', '9'))
+        self.country = "AT"
+        self.prov = kwargs.pop("prov", kwargs.pop("state", "9"))
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

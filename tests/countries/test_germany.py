@@ -11,16 +11,10 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import os
-import sys
 import unittest
-import warnings
-from glob import glob
 from itertools import product
 
-from datetime import date, datetime, timedelta
-from dateutil.relativedelta import relativedelta, MO
-from flake8.api import legacy as flake8
+from datetime import date
 
 import holidays
 
@@ -33,11 +27,15 @@ class TestDE(unittest.TestCase):
         }
 
     def test_no_data_before_1990(self):
-        de_1989 = sum(holidays.DE(years=[1989], prov=p) for p in holidays.DE.PROVINCES)
+        de_1989 = sum(
+            holidays.DE(years=[1989], prov=p) for p in holidays.DE.PROVINCES
+        )
         self.assertEqual(len(de_1989), 0)
 
     def test_all_holidays_present(self):
-        de_2015 = sum(holidays.DE(years=[2015], prov=p) for p in holidays.DE.PROVINCES)
+        de_2015 = sum(
+            holidays.DE(years=[2015], prov=p) for p in holidays.DE.PROVINCES
+        )
         in_2015 = sum((de_2015.get_list(key) for key in de_2015), [])
         all_de = [
             "Neujahr",
@@ -324,7 +322,9 @@ class TestDE(unittest.TestCase):
         prov_that_have = {"BE"}
         prov_that_dont = set(holidays.DE.PROVINCES) - prov_that_have
 
-        for province, year in product(holidays.DE.PROVINCES, range(1991, 2018)):
+        for province, year in product(
+            holidays.DE.PROVINCES, range(1991, 2018)
+        ):
             self.assertNotIn(date(year, 3, 8), self.prov_hols[province])
         for province, year in product(prov_that_have, range(2019, 2050)):
             self.assertIn(date(year, 3, 8), self.prov_hols[province])

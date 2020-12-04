@@ -16,8 +16,7 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd, MO, TH, FR
 
-from holidays.constants import JAN, MAR, MAY, JUN, JUL, AUG, OCT, \
-    NOV, DEC
+from holidays.constants import JAN, MAR, MAY, JUN, JUL, AUG, OCT, NOV, DEC
 from holidays.constants import MON, WEEKEND
 from holidays.holiday_base import HolidayBase
 
@@ -26,7 +25,7 @@ class Colombia(HolidayBase):
     # https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_festivos_en_Colombia
 
     def __init__(self, **kwargs):
-        self.country = 'CO'
+        self.country = "CO"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -58,8 +57,9 @@ class Colombia(HolidayBase):
         if self.observed and date(year, DEC, 8).weekday() in WEEKEND:
             pass
         else:
-            self[date(year, DEC, 8)] = "La Inmaculada Concepción" \
-                " [Immaculate Conception]"
+            self[date(year, DEC, 8)] = (
+                "La Inmaculada Concepción" " [Immaculate Conception]"
+            )
 
         # Christmas
         self[date(year, DEC, 25)] = "Navidad [Christmas]"
@@ -100,34 +100,31 @@ class Colombia(HolidayBase):
         if date(year, OCT, 12).weekday() == MON or not self.observed:
             self[date(year, OCT, 12)] = name
         else:
-            self[date(year, OCT, 12) + rd(weekday=MO)] = name + \
-                "(Observed)"
+            self[date(year, OCT, 12) + rd(weekday=MO)] = name + "(Observed)"
 
         # All Saints’ Day
         name = "Dia de Todos los Santos [All Saint's Day]"
         if date(year, NOV, 1).weekday() == MON or not self.observed:
             self[date(year, NOV, 1)] = name
         else:
-            self[date(year, NOV, 1) + rd(weekday=MO)] = name + \
-                "(Observed)"
+            self[date(year, NOV, 1) + rd(weekday=MO)] = name + "(Observed)"
 
         # Independence of Cartagena
         name = "Independencia de Cartagena [Independence of Cartagena]"
         if date(year, NOV, 11).weekday() == MON or not self.observed:
             self[date(year, NOV, 11)] = name
         else:
-            self[date(year, NOV, 11) + rd(weekday=MO)] = name + \
-                "(Observed)"
+            self[date(year, NOV, 11) + rd(weekday=MO)] = name + "(Observed)"
 
         # Holidays based on Easter
 
         # Maundy Thursday
-        self[easter(year) + rd(weekday=TH(-1))
-             ] = "Jueves Santo [Maundy Thursday]"
+        self[
+            easter(year) + rd(weekday=TH(-1))
+        ] = "Jueves Santo [Maundy Thursday]"
 
         # Good Friday
-        self[easter(year) + rd(weekday=FR(-1))
-             ] = "Viernes Santo [Good Friday]"
+        self[easter(year) + rd(weekday=FR(-1))] = "Viernes Santo [Good Friday]"
 
         # Holidays based on Easter but are observed the following monday
         # (unless they occur on a monday)

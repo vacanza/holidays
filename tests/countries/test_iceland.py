@@ -11,16 +11,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import os
-import sys
 import unittest
-import warnings
-from glob import glob
-from itertools import product
 
-from datetime import date, datetime, timedelta
-from dateutil.relativedelta import relativedelta, MO
-from flake8.api import legacy as flake8
+from datetime import date, datetime
 
 import holidays
 
@@ -47,7 +40,9 @@ class TestIceland(unittest.TestCase):
 
     def test_commerce_day(self):
         test_date = date(2019, 8, 5)
-        self.assertEqual(self.holidays.get(test_date), "Frídagur verslunarmanna")
+        self.assertEqual(
+            self.holidays.get(test_date), "Frídagur verslunarmanna"
+        )
         self.assertIn(test_date, self.holidays)
 
     def test_holy_friday(self):

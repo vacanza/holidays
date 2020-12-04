@@ -11,16 +11,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import os
-import sys
 import unittest
-import warnings
-from glob import glob
-from itertools import product
 
-from datetime import date, datetime, timedelta
-from dateutil.relativedelta import relativedelta, MO
-from flake8.api import legacy as flake8
+from datetime import date
 
 import holidays
 
@@ -104,4 +97,3 @@ class TestChile(unittest.TestCase):
     def test_2029(self):
         self.assertIn(date(2029, 7, 2), self.holidays)
         self.assertIn(date(2029, 10, 15), self.holidays)
-
