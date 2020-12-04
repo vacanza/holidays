@@ -8,3 +8,4 @@ MANIFEST
 .idea
 .vscode/
 coverage.xml
+.tox

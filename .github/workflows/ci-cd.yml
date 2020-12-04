@@ -35,7 +35,7 @@ jobs:
           python -m pip install -e .
       - name: Run tests
         run: |
-          py.test --cov=./ --cov-report term --cov-report xml --cov-config=pyproject.toml tests
+          py.test
       - name: Upload Coverage
         # The version of coveralls that supports py27, doesn't support github actions
         if: matrix.python-version != '2.7'
