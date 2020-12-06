@@ -1,8 +1,9 @@
 Version 0.10.4
 ==============
 
-Released ????? ??, ????
+Released December 6, 2020
 
+- Dropped support for Python 3.5
 - Support for Djibouti (Abdisamade)
 - Support for United Arab Emirates (marcomasulli, mborsetti)
 - Support for Chile (mborsetti, dr-p)
