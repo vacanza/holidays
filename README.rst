@@ -474,24 +474,33 @@ The latest development (beta) version can be installed directly from GitHub:
 All new features are always first pushed to beta branch, then released on
 master branch upon official version upgrades.
 
-Running Tests
--------------
+Running Tests and Coverage
+--------------------------
 
 .. code-block:: bash
 
-    $ pip install flake8
-    $ flake8
-    $ python tests.py
+    $ pip install -r requirements_dev.txt
+    $ pytest
 
 
-Coverage
---------
+Ensure all staged files are up to standard
+------------------------------------------
+
+.. _pre-commit: https://github.com/dr-prodigy/python-holidays/issues
+
+Install the githooks with `pre-commit`_, after that the quality assurance
+tests will run on all staged files before you commit them and intercept
+the commit if the staged files aren't up to standard.
 
 .. code-block:: bash
 
-    $ pip install coverage
-    $ coverage run --omit=*site-packages* tests.py
-    $ coverage report -m
+    $ pre-commit install
+
+Manually run the quality assurance tests on all tracked files.
+
+.. code-block:: bash
+
+    $ pre-commit run -a
 
 
 Contributions
