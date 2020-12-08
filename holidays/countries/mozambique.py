@@ -18,7 +18,7 @@ from dateutil.relativedelta import relativedelta as rd
 
 
 from holidays.constants import TUE, THU, SUN
-from holidays.constants import FEB, MAR, APR, MAY, SEP, NOV, DEC
+from holidays.constants import FEB, APR, MAY, JUN, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 class Mozambique(HolidayBase):
@@ -27,7 +27,7 @@ class Mozambique(HolidayBase):
 
         self.country = 'MOZ'
         HolidayBase.__init__(self, **kwargs)
-    
+
     def _populate(self, year):
 
         if year > 1974:
@@ -43,7 +43,16 @@ class Mozambique(HolidayBase):
                 carnival = carnival - rd(days=1)
             self[carnival] = "Carnaval"
 
+            self[date(year, FEB, 3)] = "Dia dos Heróis Moçambicanos"
+            self[date(year, APR, 7)] = "Dia da Mulher Moçambicana"
+            self[date(year, MAY, 1)] = "Dia Mundial do Trabalho"
+            self[date(year, JUN, 25)] = "Dia da Independência Nacional"
+            self[date(year, SEP, 7)] = "Dia da Vitória"
+            self[date(year, SEP, 25)] = "Dia das Forças Armadas"
+            self[date(year, OCT, 4)] = "Dia da Paz e Reconciliação"
+            self[date(year, DEC, 25)] = "Dia de Natal e da Família"
 
+            
 
 
 
