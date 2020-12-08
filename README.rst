@@ -152,6 +152,7 @@ Luxembourg          LU/LUX    None
 Malawi              MW/MWI    None
 Mexico              MX/MEX    None
 Morocco             MA/MOR    None
+Mozambique          MZ/MOZ    None
 Netherlands         NL/NLD    None
 NewZealand          NZ/NZL    prov = NTL, AUK, TKI, HKB, WGN, MBH, NSN, CAN, STC, WTL,
                               OTA, STL, CIT
