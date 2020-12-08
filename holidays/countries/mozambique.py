@@ -21,10 +21,10 @@ from holidays.constants import TUE, THU, SUN
 from holidays.constants import FEB, APR, MAY, JUN, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
+
 class Mozambique(HolidayBase):
 
     def __init__(self, **kwargs):
-
         self.country = 'MOZ'
         HolidayBase.__init__(self, **kwargs)
 
@@ -52,9 +52,12 @@ class Mozambique(HolidayBase):
             self[date(year, OCT, 4)] = "Dia da Paz e Reconciliação"
             self[date(year, DEC, 25)] = "Dia de Natal e da Família"
 
-            
-
-
+            #  whenever a public holiday falls on a Sunday,
+            # it rolls over to the following Monday
+            for k, v in list(self.items()):
+                if self.observed and year > 1974:
+                    if k.weekday() == SUN:
+                        self[k + rd(days=1)] = v + " (PONTE)"
 
 
 class MZ(Mozambique):
