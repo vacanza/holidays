@@ -353,6 +353,12 @@ class TestBasics(unittest.TestCase):
         # check for "New Year's Day" presence in get_named("new")
         self.assertIn(date(2020, 1, 1), us.get_named('new'))
 
+        # check for searching holiday in US when the observed holiday is on a different year than input one
+        us = holidays.US(years=[2022])
+        us.get_named("Thanksgiving")
+        self.assertEqual([2022], list(us.years))
+
+
 class TestArgs(unittest.TestCase):
 
     def setUp(self):
