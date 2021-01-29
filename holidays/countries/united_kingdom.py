@@ -24,6 +24,9 @@ from holidays.holiday_base import HolidayBase
 
 class UnitedKingdom(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_the_United_Kingdom
+    # This class is extended by other countries (Ireland, Isle of Man, ...)
+    # It must be taken into account when adding or modifying holidays.
+    # Look at _country_specific() method for country specific behavior.
 
     def __init__(self, **kwargs):
         self.country = 'UK'
@@ -66,13 +69,6 @@ class UnitedKingdom(HolidayBase):
                 self[date(year, MAR, 17) + rd(weekday=MO)] = name + \
                     " (Observed)"
 
-        # Easter Monday
-        if self.country != 'Scotland':
-            name = "Easter Monday"
-            if self.country == 'UK':
-                name += " [England, Wales, Northern Ireland]"
-            self[easter(year) + rd(weekday=MO)] = name
-
         # TT bank holiday (first Friday in June)
         if self.country == 'Isle of Man':
             self[date(year, JUN, 1) + rd(weekday=FR)] = "TT Bank Holiday"
@@ -110,21 +106,21 @@ class UnitedKingdom(HolidayBase):
         elif self.observed and date(year, DEC, 25).weekday() == SUN:
             self[date(year, DEC, 27)] = name + " (Observed)"
 
-        # Boxing Day
-        name = "Boxing Day"
-        self[date(year, DEC, 26)] = name
-        if self.observed and date(year, DEC, 26).weekday() == SAT:
-            self[date(year, DEC, 28)] = name + " (Observed)"
-        elif self.observed and date(year, DEC, 26).weekday() == SUN:
-            self[date(year, DEC, 28)] = name + " (Observed)"
+        # Overwrite to modify country specific holidays
+        self._country_specific(year)
 
-        self._country_especific(year)
-
-    def _country_especific(self, year: int):
+    def _country_specific(self, year):
         # UnitedKingdom exclusive holidays
 
         # Good Friday
         self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
+
+        # Easter Monday
+        if self.country != 'Scotland':
+            name = "Easter Monday"
+            if self.country == 'UK':
+                name += " [England, Wales, Northern Ireland]"
+            self[easter(year) + rd(weekday=MO)] = name
 
         # Late Summer bank holiday (last Monday in August)
         if self.country not in ('Scotland') and year >= 1971:
@@ -165,6 +161,14 @@ class UnitedKingdom(HolidayBase):
             self[date(year, JUN, 4)] = name
         elif year >= 1971:
             self[date(year, MAY, 31) + rd(weekday=MO(-1))] = name
+
+        # Boxing Day
+        name = "Boxing Day"
+        self[date(year, DEC, 26)] = name
+        if self.observed and date(year, DEC, 26).weekday() == SAT:
+            self[date(year, DEC, 28)] = name + " (Observed)"
+        elif self.observed and date(year, DEC, 26).weekday() == SUN:
+            self[date(year, DEC, 28)] = name + " (Observed)"
 
         # Special holidays
         if year == 1977:
