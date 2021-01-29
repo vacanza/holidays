@@ -31,17 +31,12 @@ class Ireland(UnitedKingdom):
     def _country_specific(self, year):
         # Ireland exclusive holidays
 
+        # St. Patrick's Day
         name = "St. Patrick's Day"
         self[date(year, MAR, 17)] = name
         if self.observed and date(year, MAR, 17).weekday() in WEEKEND:
             self[date(year, MAR, 17) + rd(weekday=MO)] = name + \
                 " (Observed)"
-
-        # June bank holiday (first Monday in June)
-        self[date(year, JUN, 1) + rd(weekday=MO)] = "June Bank Holiday"
-
-        # Summer bank holiday (first Monday in August)
-        self[date(year, AUG, 1) + rd(weekday=MO)] = "Summer Bank Holiday"
 
         # Easter Monday
         self[easter(year) + rd(weekday=MO)] = "Easter Monday"
@@ -67,6 +62,12 @@ class Ireland(UnitedKingdom):
                 self[dt + rd(days=+2)] = name
             elif dt.weekday() == SUN:
                 self[dt + rd(days=+1)] = name
+
+        # June bank holiday (first Monday in June)
+        self[date(year, JUN, 1) + rd(weekday=MO)] = "June Bank Holiday"
+
+        # Summer bank holiday (first Monday in August)
+        self[date(year, AUG, 1) + rd(weekday=MO)] = "Summer Bank Holiday"
 
         # October Bank Holiday (last Monday in October)
         self[date(year, OCT, 31) + rd(weekday=MO(-1))] = "October Bank Holiday"
