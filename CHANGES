@@ -4,6 +4,10 @@ Version 0.10.5
 Released ??????? ??, ????
 
 - Dropped support for Python 2
+- Support for Mozambique (jusce17)
+- Angola fixes (jusce17)
+- Portugal localized holidays (jusce17)
+- Disable year expansion on name search #411 (giladmaya)
 
 
 Version 0.10.4
