@@ -9,7 +9,7 @@ before_install:
 install:
   - pip install hijri-converter; fi
   - pip install python-dateutil
-  - pip install "convertdate"
+  - pip install convertdate
   - pip install korean_lunar_calendar
   - pip install six
   - pip install flake8
