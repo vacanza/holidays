@@ -147,7 +147,10 @@ class HolidayBase(dict):
     def get_named(self, name):
         # find all dates matching provided name (accepting partial
         # strings too, case insensitive), returning them in a list
+        original_expand = self.expand
+        self.expand = False
         matches = [key for key in self if name.lower() in self[key].lower()]
+        self.expand = original_expand
         return matches
 
     def pop(self, key, default=None):
