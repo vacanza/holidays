@@ -36,7 +36,7 @@ setup(
     license='MIT',
     description='Generate and work with holidays in Python',
     long_description=codecs.open('README.rst', encoding='utf-8').read(),
-    install_requires=['python-dateutil', 'six', 'convertdate<=2.2.0',
+    install_requires=['python-dateutil', 'six', 'convertdate',
                       'korean_lunar_calendar'],
     platforms='any',
     classifiers=[
@@ -45,8 +45,6 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
