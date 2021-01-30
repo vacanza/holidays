@@ -6818,6 +6818,25 @@ class TestBangladesh(unittest.TestCase):
         self.assertIn(date(2020, 8, 15), self.holidays)
         self.assertIn(date(2020, 12, 16), self.holidays)
 
+class TestMozambique(unittest.TestCase):
+    def setUp(self):
+        self.holidays = holidays.MZ()
+
+    def test_new_years(self):
+        self.assertIn('1975-01-01', self.holidays)
+        self.assertIn('2017-01-01', self.holidays)
+        self.assertIn('2999-01-01', self.holidays)
+        self.assertIn('2017-01-02', self.holidays)  # sunday
+
+    def test_easter(self):
+        self.assertIn(date(2017, 4, 14), self.holidays)
+        self.assertIn(date(2020, 4, 10), self.holidays)
+        self.assertIn(date(1994, 4, 1), self.holidays)
+
+    def test_not_holiday(self):
+        self.assertNotIn('2018-02-04', self.holidays)
+        self.assertNotIn('2015-04-13', self.holidays)
+        self.assertNotIn('2018-03-23', self.holidays)
 
 if __name__ == "__main__":
     unittest.main()
