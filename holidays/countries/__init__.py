@@ -52,6 +52,7 @@ from .luxembourg import Luxembourg, LU, LUX
 from .malawi import Malawi, MW, MWI
 from .mexico import Mexico, MX, MEX
 from .morocco import Morocco, MA, MOR
+from .mozambique import Mozambique, MZ, MOZ
 from .netherlands import Netherlands, NL, NLD
 from .new_zealand import NewZealand, NZ, NZL
 from .nicaragua import Nicaragua, NI, NIC
