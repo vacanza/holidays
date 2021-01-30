@@ -6,8 +6,11 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  tasnim<tasnimislam1999@gmail.com>
-#  ISO code = BD
+#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#           tasnim<tasnimislam1999@gmail.com>
+#  Website: https://github.com/dr-prodigy/python-holidays
+#  License: MIT (see LICENSE file)
 
 from datetime import date
 from holidays.constants import FEB, MAR, APR, MAY, AUG, DEC
