@@ -27,7 +27,7 @@ class India(HolidayBase):
                  'TN', 'AP', 'WB', 'KL', 'HR', 'MH', 'MP', 'UP', 'UK', 'TS']
 
     def __init__(self, **kwargs):
-        self.country = "IND"
+        self.country = "IN"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

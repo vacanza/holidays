@@ -3222,6 +3222,41 @@ class TestIreland(unittest.TestCase):
         self.assertIn('2020-12-26', self.holidays)  # Boxing Day
         self.assertIn('2020-12-28', self.holidays)  # Boxing Day (Observed)
 
+    def test_may_day(self):
+        # Specific Ireland "May Day"
+        for dt in [date(1978, 5, 1), date(1979, 5, 7), date(1980, 5, 5),
+                   date(1995, 5, 8), date(1999, 5, 3), date(2000, 5, 1),
+                   date(2010, 5, 3), date(2018, 5, 7), date(2019, 5, 6),
+                   date(2020, 5, 4)]:
+            self.assertIn(dt, self.holidays)
+            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
+            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+
+    def test_st_stephens_day(self):
+        # St. Stephen's Day
+        self.holidays.observed = False
+
+        for year in range(1900, 2100):
+            dt = date(year, 12, 26)
+            self.assertIn(dt, self.holidays)
+            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+        self.assertNotIn(date(2009, 12, 28), self.holidays)
+        self.assertNotIn(date(2010, 12, 27), self.holidays)
+        self.holidays.observed = True
+        self.assertIn(date(2004, 12, 28), self.holidays)
+        self.assertIn(date(2010, 12, 28), self.holidays)
+        for year, day in enumerate([26, 26, 26, 28, 26,
+                                    26, 26, 26, 28, 28,
+                                    26, 26, 26, 26, 26,
+                                    26, 26, 26, 26, 26, 28],
+                                   2001):
+            dt = date(year, 12, day)
+            self.assertIn(dt, self.holidays, dt)
+            self.assertIn(
+                self.holidays[dt], 
+                ["St. Stephen's Day", "St. Stephen's Day (Observed)"]
+            )
+
 
 class TestES(unittest.TestCase):
 
