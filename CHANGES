@@ -9,6 +9,7 @@ Released ??????? ??, ????
 - Portugal localized holidays (jusce17)
 - Disable year expansion on name search #411 (giladmaya)
 - Israel fixes (new convertdate version) #407 (giladmaya)
+- Ireland fixes (ISO-2 code, partial split from UK) #417 (javicalle)
 
 
 Version 0.10.4
