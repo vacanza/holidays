@@ -10,6 +10,7 @@ Released ??????? ??, ????
 - Disable year expansion on name search #411 (giladmaya)
 - Israel fixes (new convertdate version) #407 (giladmaya)
 - Ireland fixes (ISO-2 code, partial split from UK) #417 (javicalle)
+- Honduras fix (ISO-2 code) #405 (dr-p, agorajek)
 
 
 Version 0.10.4
