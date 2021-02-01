@@ -12,7 +12,7 @@
 #  License: MIT (see LICENSE file)
 
 
-from convertdate import hebrew
+from convertdate import hebrew, gregorian
 from datetime import date
 from dateutil.relativedelta import relativedelta as rd
 from holidays.holiday_base import HolidayBase
@@ -24,12 +24,29 @@ class Israel(HolidayBase):
 
         HolidayBase.__init__(self, **kwargs)
 
+    @staticmethod
+    def _to_ymd_tuple(jd_date):
+        try:
+            year, month, day = jd_date
+        except TypeError:
+            year, month, day = gregorian.from_jd(jd_date)
+
+        return year, month, day
+
+    def _hebrew_to_jd_gregorian(self, year, month, day):
+        # convertdate used to return a gregorian tuple, but now returns a
+        # julian day count in 2.3
+        # https://github.com/fitnr/convertdate/commit/98d2c60075ec2a19076e0ffdc6037ba182dbbcb8
+        jd_date = hebrew.to_jd_gregorianyear(year, month, day)
+        return self._to_ymd_tuple(jd_date)
+
     def _populate(self, year):
         is_leap_year = hebrew.leap(year + hebrew.HEBREW_YEAR_OFFSET)
 
         # Passover
         name = "Passover I"
-        year, month, day = hebrew.to_jd_gregorianyear(year, hebrew.NISAN, 14)
+        year, month, day = self._hebrew_to_jd_gregorian(year, hebrew.NISAN, 14)
+
         passover_start_dt = date(year, month, day)
         self[passover_start_dt] = name + ' - Eve'
         self[passover_start_dt + rd(days=1)] = name
@@ -45,7 +62,7 @@ class Israel(HolidayBase):
 
         # Memorial Day
         name = "Memorial Day"
-        year, month, day = hebrew.to_jd_gregorianyear(year, hebrew.IYYAR, 3)
+        year, month, day = self._hebrew_to_jd_gregorian(year, hebrew.IYYAR, 3)
         self[date(year, month, day) + rd(days=1)] = name
 
         observed_delta = 0
@@ -62,7 +79,7 @@ class Israel(HolidayBase):
 
         # Independence Day
         name = "Independence Day"
-        year, month, day = hebrew.to_jd_gregorianyear(year, hebrew.IYYAR, 4)
+        year, month, day = self._hebrew_to_jd_gregorian(year, hebrew.IYYAR, 4)
         self[date(year, month, day) + rd(days=1)] = name
 
         if self.observed and observed_delta != 0:
@@ -71,31 +88,33 @@ class Israel(HolidayBase):
 
         # Lag Baomer
         name = "Lag B'Omer"
-        year, month, day = hebrew.to_jd_gregorianyear(year, hebrew.IYYAR, 18)
+        year, month, day = self._hebrew_to_jd_gregorian(year, hebrew.IYYAR, 18)
         self[date(year, month, day)] = name
 
         # Shavuot
         name = "Shavuot"
-        year, month, day = hebrew.to_jd_gregorianyear(year, hebrew.SIVAN, 5)
+        year, month, day = self._hebrew_to_jd_gregorian(year, hebrew.SIVAN, 5)
         self[date(year, month, day)] = name + " - Eve"
         self[date(year, month, day) + rd(days=1)] = name
 
         # Rosh Hashana
         name = "Rosh Hashanah"
-        year, month, day = hebrew.to_jd_gregorianyear(year, hebrew.ELUL, 29)
+        year, month, day = self._hebrew_to_jd_gregorian(year, hebrew.ELUL, 29)
         self[date(year, month, day)] = name + " - Eve"
         self[date(year, month, day) + rd(days=1)] = name
         self[date(year, month, day) + rd(days=2)] = name
 
         # Yom Kippur
         name = "Yom Kippur"
-        year, month, day = hebrew.to_jd_gregorianyear(year, hebrew.TISHRI, 9)
+        year, month, day = self._hebrew_to_jd_gregorian(year, hebrew.TISHRI, 9)
         self[date(year, month, day)] = name + ' - Eve'
         self[date(year, month, day) + rd(days=1)] = name
 
         # Sukkot
         name = "Sukkot I"
-        year, month, day = hebrew.to_jd_gregorianyear(year, hebrew.TISHRI, 14)
+        year, month, day = self._hebrew_to_jd_gregorian(
+            year, hebrew.TISHRI, 14,
+        )
         sukkot_start_dt = date(year, month, day)
         self[sukkot_start_dt] = name + ' - Eve'
         self[sukkot_start_dt + rd(days=1)] = name
@@ -110,14 +129,16 @@ class Israel(HolidayBase):
 
         # Hanukkah
         name = 'Hanukkah'
-        year, month, day = hebrew.to_jd_gregorianyear(year, hebrew.KISLEV, 25)
+        year, month, day = self._hebrew_to_jd_gregorian(
+            year, hebrew.KISLEV, 25,
+        )
         for offset in range(8):
             self[date(year, month, day) + rd(days=offset)] = name
 
         # Purim
         name = 'Purim'
         heb_month = hebrew.VEADAR if is_leap_year else hebrew.ADAR
-        year, month, day = hebrew.to_jd_gregorianyear(year, heb_month, 14)
+        year, month, day = self._hebrew_to_jd_gregorian(year, heb_month, 14)
         self[date(year, month, day)] = name
 
         self[date(year, month, day) - rd(days=1)] = name + ' - Eve'

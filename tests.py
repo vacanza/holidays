@@ -6112,6 +6112,10 @@ class TestEgypt(unittest.TestCase):
 
 
 class TestIsrael(unittest.TestCase):
+    def test_hebrew_jd_to_gregorian(self):
+        self.assertEqual(holidays.IL._to_ymd_tuple((1, 2, 3)), (1, 2, 3))
+        self.assertEqual(holidays.IL._to_ymd_tuple(2459246.5), (2021, 2, 1))
+
     def test_memorial_day(self):
         self._test_observed_holidays('Memorial Day')
 
