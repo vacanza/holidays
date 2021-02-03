@@ -1,9 +1,11 @@
 Version 0.10.5
 ==============
 
-Released ??????? ??, ????
+Released February 3, 2021
 
-- Dropped support for Python 2
+- Dropped support for Python 2 (dr-p)
+- Removed convertdate<=2.2.0 constraint (dr-p)
+- Travis CI integration review (dr-p)
 - Support for Mozambique (jusce17)
 - Angola fixes (jusce17)
 - Portugal localized holidays (jusce17)
