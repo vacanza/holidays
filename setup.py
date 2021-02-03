@@ -37,7 +37,7 @@ setup(
     description='Generate and work with holidays in Python',
     long_description=codecs.open('README.rst', encoding='utf-8').read(),
     install_requires=['python-dateutil', 'six', 'convertdate',
-                      'korean_lunar_calendar'],
+                      'korean_lunar_calendar','hijri_converter'],
     platforms='any',
     classifiers=[
         'Development Status :: 4 - Beta',
