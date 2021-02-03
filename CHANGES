@@ -1,7 +1,7 @@
-Version 0.10.5
-==============
+Version 0.10.5.1
+================
 
-Released February 3, 2021
+Released February 4, 2021
 
 - Dropped support for Python 2 (dr-p)
 - Removed convertdate<=2.2.0 constraint (dr-p)
