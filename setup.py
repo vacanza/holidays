@@ -36,7 +36,7 @@ setup(
     license='MIT',
     description='Generate and work with holidays in Python',
     long_description=codecs.open('README.rst', encoding='utf-8').read(),
-    install_requires=['python-dateutil', 'six', 'convertdate>=0.2.3',
+    install_requires=['python-dateutil', 'six', 'convertdate>=2.3.0',
                       'korean_lunar_calendar', 'hijri_converter'],
     platforms='any',
     classifiers=[
