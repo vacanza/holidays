@@ -167,6 +167,7 @@ Portugal            PT/PRT    None
 PortugalExt         PTE/PRTE  *Portugal plus extended days most people have off*
 Romania             RO/ROU    None
 Russia              RU/RUS    None
+SaudiArabia         SA/SAU    None
 Scotland                      None
 Serbia              RS/SRB    None
 Singapore           SG/SGP    None

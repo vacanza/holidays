@@ -64,6 +64,7 @@ from .poland import Poland, Polish, PL, POL
 from .portugal import Portugal, PT, PRT, PortugalExt, PTE
 from .romania import Romania, RO, ROU
 from .russia import Russia, RU, RUS
+from .saudi_arabia import SaudiArabia, SA, SAU
 from .serbia import Serbia, RS, SRB
 from .singapore import Singapore, SG, SGP
 from .slovakia import Slovakia, Slovak, SK, SVK
