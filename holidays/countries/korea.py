@@ -180,7 +180,7 @@ class Korea(HolidayBase):
         # Just for year 2020 - since 2020.08.15 is Sat, the government
         # decided to make 2020.08.17 holiday, yay
         name = "Alternative public holiday"
-        alt_date = date(2020, OCT, 17)
+        alt_date = date(2020, AUG, 17)
         self[alt_date] = name
 
     # convert lunar calendar date to solar
