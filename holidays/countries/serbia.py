@@ -25,7 +25,7 @@ class Serbia(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Serbia
 
     def __init__(self, **kwargs):
-        self.country = 'RS'
+        self.country = "RS"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -56,13 +56,16 @@ class Serbia(HolidayBase):
         if self.observed and date(year, NOV, 11).weekday() == SUN:
             self[date(year, NOV, 12)] = name + " (Observed)"
         # Easter
-        self[easter(year, method=EASTER_ORTHODOX) - rd(days=2)] = \
-            "Велики петак"
-        self[easter(year, method=EASTER_ORTHODOX) - rd(days=1)] = \
-            "Велика субота"
+        self[
+            easter(year, method=EASTER_ORTHODOX) - rd(days=2)
+        ] = "Велики петак"
+        self[
+            easter(year, method=EASTER_ORTHODOX) - rd(days=1)
+        ] = "Велика субота"
         self[easter(year, method=EASTER_ORTHODOX)] = "Васкрс"
-        self[easter(year, method=EASTER_ORTHODOX) + rd(days=1)] = \
-            "Други дан Васкрса"
+        self[
+            easter(year, method=EASTER_ORTHODOX) + rd(days=1)
+        ] = "Други дан Васкрса"
 
 
 class RS(Serbia):

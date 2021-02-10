@@ -6,8 +6,14 @@ MANIFEST
 *.egg-info
 *.pyc
 .idea
+<<<<<<< HEAD
 
 
 # IDE Stuff
 .vscode/
 *.DS_Store
+=======
+.vscode/
+coverage.xml
+.tox
+>>>>>>> 10aa24a6058b8a4c65e533b7fcd10948a0ffadf1

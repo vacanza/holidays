@@ -24,7 +24,7 @@ class Romania(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Romania
 
     def __init__(self, **kwargs):
-        self.country = 'RO'
+        self.country = "RO"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

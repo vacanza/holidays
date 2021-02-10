@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  python-holidays
 #  ---------------
 #  A fast, efficient Python library for generating country, province and state
@@ -11,21 +12,23 @@
 
 import codecs
 import re
+
 try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
 
 
-with codecs.open('holidays/__init__.py', 'r', 'utf-8') as fd:
-    version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]',
-                        fd.read(), re.MULTILINE).group(1)
+with codecs.open("holidays/__init__.py", "r", "utf-8") as fd:
+    version = re.search(
+        r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', fd.read(), re.MULTILINE
+    ).group(1)
 
 if not version:
-    raise RuntimeError('Cannot find version information')
+    raise RuntimeError("Cannot find version information")
 
 setup(
-    name='holidays',
+    name="holidays",
     version=version,
     author='ryanss',
     author_email='ryanssdev@icloud.com',

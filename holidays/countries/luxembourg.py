@@ -25,7 +25,7 @@ class Luxembourg(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Luxembourg
 
     def __init__(self, **kwargs):
-        self.country = 'LU'
+        self.country = "LU"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

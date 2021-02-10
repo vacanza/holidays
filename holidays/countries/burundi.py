@@ -34,7 +34,7 @@ class Burundi(HolidayBase):
     """
 
     def __init__(self, **kwargs):
-        self.country = 'BI'
+        self.country = "BI"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -78,7 +78,7 @@ class Burundi(HolidayBase):
             self[hol_date + rd(days=1)] = "Eid Al Adha"
 
         # Assumption Day
-        name = 'Assumption Day'
+        name = "Assumption Day"
         self[date(year, AUG, 15)] = name
 
         # Prince Louis Rwagasore Day

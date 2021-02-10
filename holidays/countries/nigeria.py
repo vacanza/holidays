@@ -13,8 +13,7 @@
 
 from datetime import date
 
-from holidays.constants import JAN, MAY, JUN, OCT, \
-    DEC
+from holidays.constants import JAN, MAY, JUN, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
