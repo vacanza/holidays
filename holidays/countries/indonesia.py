@@ -15,7 +15,8 @@ from datetime import date, timedelta
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd, SA, FR, MO
-from holidays.constants import JAN, FEB, MAR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.constants import JAN, FEB, MAR, MAY, JUN, JUL, AUG, SEP, OCT, \
+    NOV, DEC
 from holidays.constants import SAT, SUN
 from holidays.holiday_base import HolidayBase
 from holidays.utils import get_gre_date
@@ -24,8 +25,6 @@ from holidays.utils import get_gre_date
 class Indonesia(HolidayBase):
 
     # https://en.wikipedia.org/wiki/Public_holidays_in_Indonesia
-
-
     def __init__(self, **kwargs):
         self.country = "ID"
         HolidayBase.__init__(self, **kwargs)
@@ -125,13 +124,7 @@ class Indonesia(HolidayBase):
         name = "Hari Raya Waisak"
         dt = self.get_solar_date(year, 4, 8)
         buddha_date = date(dt.year, dt.month, dt.day)
-        if self.observed:
-            if buddha_date.weekday() == SUN:
-                self[buddha_date + rd(days=+1)] = day_following + name
-            else:
-                self[buddha_date] = name
-        else:
-            self[buddha_date] = name
+        self[buddha_date] = name
 
         # Labour Day
         self[date(year, MAY, 1)] = "Labour Day"
@@ -164,8 +157,8 @@ class Indonesia(HolidayBase):
     # The below is used to calculate lunar new year (i.e. Chinese new year)
     # Code borrowed from Hong Kong entry as of 16-Nov-19
     # Should probably be a function available to multiple countries
-
     # Store the number of days per year from 1901 to 2099, and the number of
+
     # days from the 1st to the 13th to store the monthly (including the month
     # of the month), 1 means that the month is 30 days. 0 means the month is
     # 29 days. The 12th to 15th digits indicate the month of the next month.
@@ -257,6 +250,7 @@ class Indonesia(HolidayBase):
 
 class ID(Indonesia):
     pass
+
 
 class IDN(Indonesia):
     pass
