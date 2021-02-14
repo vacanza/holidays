@@ -133,7 +133,7 @@ class Indonesia(HolidayBase):
         name = "Kenaikan Yesus Kristus"
         self[easter(year) + rd(days=+39)] = name
 
-       # Pancasila Day
+        # Pancasila Day
         self[date(year, JUN, 1)] = "Pancasila Day"
 
         # National Day
