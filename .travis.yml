@@ -1,29 +1,27 @@
 # https://travis-ci.org/dr-prodigy/python-holidays
-dist: xenial
+dist: bionic
 language: python
+cache: pip
 
-python:
-    - 2.7
-    - 3.4
-    - 3.5
-    - 3.6
-    - 3.7
-# temporarily commented due to TravisCI issues
-#    - pypy
-#    - pypy3
-
-env:
-    - DATEUTIL=python-dateutil==2.7.0
-    - DATEUTIL=python-dateutil
+before_install:
+  - pip install --upgrade pip
 
 install:
-    - pip install $DATEUTIL
-    - python setup.py install
-    - pip install flake8
-    - pip install coveralls
+  - pip install flake8
+  - pip install coveralls
+  - python setup.py install
+
+
+matrix:
+  include:
+    - python: '3.9'
+    - python: '3.8'
+    - python: '3.7'
+    - python: '3.6'
+    - python: 'pypy3'
 
 before_script:
-    - flake8 holidays.py tests.py
+    - flake8
 
 script:
     - coverage run --omit=*site-packages*,*pypy* tests.py

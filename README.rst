@@ -6,10 +6,10 @@ A fast, efficient Python library for generating country, province and state
 specific sets of holidays on the fly. It aims to make determining whether a
 specific date is a holiday as fast and flexible as possible.
 
-.. image:: http://img.shields.io/travis/dr-prodigy/python-holidays.svg
+.. image:: http://img.shields.io/travis/dr-prodigy/python-holidays/master
     :target: https://travis-ci.org/dr-prodigy/python-holidays
 
-.. image:: http://img.shields.io/coveralls/dr-prodigy/python-holidays.svg
+.. image:: http://img.shields.io/coveralls/dr-prodigy/python-holidays/master
     :target: https://coveralls.io/r/dr-prodigy/python-holidays
 
 .. image:: http://img.shields.io/pypi/v/holidays.svg
@@ -94,79 +94,102 @@ If the above fails, please use easy_install instead:
 Available Countries
 -------------------
 
-=================== ======== =============================================================
-Country             Abbr     Provinces/States Available
-=================== ======== =============================================================
-Argentina           AR       None
-Aruba               AW       None
-Australia           AU       prov = **ACT** (default), NSW, NT, QLD, SA, TAS, VIC, WA
-Austria             AT       prov = B, K, N, O, S, ST, T, V, **W** (default)
-Belarus             BY       None
-Belgium             BE       None
-Brazil              BR       state = AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG,
-                             PA, PB, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO
-Bulgaria            BG       None
-Canada              CA       prov = AB, BC, MB, NB, NL, NS, NT, NU, **ON** (default),
-                             PE, QC, SK, YU
-Colombia            CO       None
-Croatia             HR       None
-Czechia             CZ       None
-Denmark             DK       None
-Dominican Republic  DO       None
-England                      None
-Estonia             EE       None
-EuropeanCentralBank ECB,TAR  Trans-European Automated Real-time Gross Settlement (TARGET2)
-Finland             FI       None
-France              FRA      **Métropole** (default), Alsace-Moselle, Guadeloupe, Guyane,
-                             Martinique, Mayotte, Nouvelle-Calédonie, La Réunion,
-                             Polynésie Française, Saint-Barthélémy, Saint-Martin,
-                             Wallis-et-Futuna
-Germany             DE       prov = BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL, SN,
-                             ST, SH, TH
-Hungary             HU       None
-Iceland             IS       None
-India               IND      prov = AS, SK, CG, KA, GJ, BR, RJ, OD, TN, AP, WB, KL, HR,
-                             MH, MP, UP, UK, TN
-Ireland             IE       None
-IsleOfMan                    None
-Italy               IT       prov = AN, AO, BA, BL, BO, BS, BZ, CB, Cesena, CH, CS, CT,
-                             EN, FC, FE, FI, Forlì, FR, GE, GO, IS, KR, LT, MB, MI, MO,
-                             MN, MS, NA, PA, PC, PD, PG, PR, RM, SP, TS, VI
-Japan               JP       None
-Kenya               KE       None
-Lithuania           LT       None
-Luxembourg          LU       None
-Mexico              MX       None
-Netherlands         NL       None
-NewZealand          NZ       prov = NTL, AUK, TKI, HKB, WGN, MBH, NSN, CAN, STC, WTL,
-                             OTA, STL, CIT
-Nicaragua           NI       prov = MN
-Nigeria             NG       None
-Northern Ireland             None
-Norway              NO       None
-Peru                PE       None
-Poland              PL       None
-Portugal            PT       None
-PortugalExt         PTE      *Portugal plus extended days most people have off*
-Russia              RU       None
-Scotland                     None
-Slovakia            SK       None
-Slovenia            SI       None
-South Africa        ZA       None
-Spain               ES       prov = AND, ARG, AST, CAN, CAM, CAL, CAT, CVA, EXT, GAL,
-                             IBA, ICA, MAD, MUR, NAV, PVA, RIO
-Sweden              SE       None
-Switzerland         CH       prov = AG, AR, AI, BL, BS, BE, FR, GE, GL, GR, JU, LU,
-                             NE, NW, OW, SG, SH, SZ, SO, TG, TI, UR, VD, VS, ZG, ZH
-Ukraine             UA       None
-UnitedKingdom       UK       None
-UnitedStates        US       state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL, GA,
-                             GU, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MH, MA, MI,
-                             FM, MN, MS, MO, MT, NE, NV, NH, NJ, NM, NY, NC, ND, MP,
-                             OH, OK, OR, PW, PA, PR, RI, SC, SD, TN, TX, UT, VT, VA,
-                             VI, WA, WV, WI, WY
-Wales                        None
-=================== ======== =============================================================
+=================== ========= =============================================================
+Country             ISO code  Provinces/States Available
+=================== ========= =============================================================
+Angola              AO/AGO    None
+Argentina           AR/ARG    None
+Aruba               AW/ABW    None
+Australia           AU/AUS    prov = **ACT** (default), NSW, NT, QLD, SA, TAS, VIC, WA
+Austria             AT/AUT    prov = 1, 2, 3, 4, 5, 6, 7, 8, **9** (default)
+Bangladesh          BD/BDG    None
+Belarus             BY/BLR    None
+Belgium             BE/BEL    None
+Brazil              BR/BRA    state = AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG,
+                              PA, PB, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO
+Bulgaria            BG/BLG    None
+Burundi             BI/BDI    None
+Canada              CA/CAN    prov = AB, BC, MB, NB, NL, NS, NT, NU, **ON** (default),
+                              PE, QC, SK, YU
+Chile               CL/CHL    state = AI, AN, AP, AR, AT, BI, CO, LI, LL, LR, MA, ML, NB,
+                              RM, TA, VS
+Colombia            CO/COL    None
+Croatia             HR/HRV    None
+Czechia             CZ/CZE    None
+Denmark             DK/DNK    None
+Djibouti            DJ/DJI    None
+DominicanRepublic   DO/DOM    None
+Egypt               EG/EGY    None
+England                       None
+Estonia             EE/EST    None
+EuropeanCentralBank ECB/TAR   Trans-European Automated Real-time Gross Settlement (TARGET2)
+Finland             FI/FIN    None
+France              FR/FRA    **Métropole** (default), Alsace-Moselle, Guadeloupe, Guyane,
+                              Martinique, Mayotte, Nouvelle-Calédonie, La Réunion,
+                              Polynésie Française, Saint-Barthélémy, Saint-Martin,
+                              Wallis-et-Futuna
+Germany             DE/DEU    prov = BW, BY, BYP, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL,
+                              SN, ST, SH, TH
+Greece              GR/GRC    None
+Honduras            HN/HND    None
+HongKong            HK/HKG    None
+Hungary             HU/HUN    None
+Iceland             IS/ISL    None
+India               IN/IND    prov = AS, SK, CG, KA, GJ, BR, RJ, OD, TN, AP, WB, KL, HR,
+                              MH, MP, UP, UK, TN
+Ireland             IE/IRL    None
+IsleOfMan                     None
+Israel              IL/ISR    None
+Italy               IT/ITA    prov = AN, AO, BA, BL, BO, BS, BZ, CB, Cesena, CH, CS, CT,
+                              EN, FC, FE, FI, Forlì, FR, GE, GO, IS, KR, LT, MB, MI, MO,
+                              MN, MS, NA, PA, PC, PD, PG, PR, RM, SP, TS, VI
+Japan               JP/JPN    None
+Kenya               KE/KEN    None
+Korea               KR/KOR    None
+Latvia              LV/LVA    None
+Lithuania           LT/LTU    None
+Luxembourg          LU/LUX    None
+Malawi              MW/MWI    None
+Mexico              MX/MEX    None
+Morocco             MA/MOR    None
+Mozambique          MZ/MOZ    None
+Netherlands         NL/NLD    None
+NewZealand          NZ/NZL    prov = NTL, AUK, TKI, HKB, WGN, MBH, NSN, CAN, STC, WTL,
+                              OTA, STL, CIT
+Nicaragua           NI/NIC    prov = MN
+Nigeria             NG/NGA    None
+NorthernIreland               None
+Norway              NO/NOR    None
+Paraguay            PY/PRY    None
+Peru                PE/PER    None
+Poland              PL/POL    None
+Portugal            PT/PRT    None
+PortugalExt         PTE/PRTE  *Portugal plus extended days most people have off*
+Romania             RO/ROU    None
+Russia              RU/RUS    None
+Scotland                      None
+Serbia              RS/SRB    None
+Singapore           SG/SGP    None
+Slovakia            SK/SVK    None
+Slovenia            SI/SVN    None
+SouthAfrica         ZA/ZAF    None
+Spain               ES/ESP    prov = AN, AR, AS, CB, CL, CM, CN, CT, EX, GA, IB, MC,
+                              MD, NC, PV, RI, VC
+Sweden              SE/SWE    None
+Switzerland         CH/CHE    prov = AG, AR, AI, BL, BS, BE, FR, GE, GL, GR, JU, LU,
+                              NE, NW, OW, SG, SH, SZ, SO, TG, TI, UR, VD, VS, ZG, ZH
+Turkey              TR/TUR    None
+Ukraine             UA/UKR    None
+UnitedArabEmirates  AE/ARE    None
+UnitedKingdom       GB/GBR/UK None
+UnitedStates        US/USA    state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL, GA,
+                              GU, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MH, MA, MI,
+                              FM, MN, MS, MO, MT, NE, NV, NH, NJ, NM, NY, NC, ND, MP,
+                              OH, OK, OR, PW, PA, PR, RI, SC, SD, TN, TX, UT, VT, VA,
+                              VI, WA, WV, WI, WY
+Vietnam             VN/VNM
+Wales                         None
+=================== ========= =============================================================
 
 
 API
@@ -206,12 +229,26 @@ get(key, default=None)
     multiple holidays fall on the same date the names will be separated by
     commas
 
+get(key, default=None)
+    Returns a string containing the name of the holiday(s) in date `key`, which
+    can be of date, datetime, string, unicode, bytes, integer or float type. If
+    multiple holidays fall on the same date the names will be separated by
+    commas
+
 get_list(key)
     Same as `get` except returns a `list` of holiday names instead of a comma
     separated string
 
+get_named(name)
+    Returns a `list` of holidays matching (even partially) the provided name
+    (case insensitive check)
+
 pop(key, default=None)
     Same as `get` except the key is removed from the holiday object
+
+pop_named(name)
+    Same as `pop` but takes the name of the holiday (or part of it) rather than
+    the date
 
 update/append
     Accepts dictionary of {date: name} pairs, a list of dates, or even singular
@@ -243,8 +280,8 @@ More Examples
     >> date(2014, 1, 2) in us_holidays
     False
 
-    # Each country has two class names that can be called--a full name
-    # and an abbreviation. Use whichever you prefer.
+    # Each country has three class names that can be called--a full name
+    # and the 2 and 3-digit ISO codes. Use whichever you prefer.
 
     >>> holidays.UnitedStates() == holidays.US()
     True
@@ -258,7 +295,7 @@ More Examples
     >>> for date, name in sorted(holidays.US(state='CA', years=2014).items()):
     >>>     print(date, name)
     2014-01-01 New Year's Day
-    2014-01-20 Martin Luther King, Jr. Day
+    2014-01-20 Martin Luther King Jr. Day
     2014-02-15 Susan B. Anthony Day
     2014-02-17 Washington's Birthday
     2014-03-31 César Chávez Day
@@ -345,19 +382,30 @@ More Examples
     PROVINCES = ['AB', 'BC', 'MB', 'NB', 'NL', 'NS', 'NT', 'NU', 'ON', 'PE',
                  'QC', 'SK', 'YU']
 
+    # Holidays can be retrieved using their name too.
+    # `get_named(key)` receives a string and returns a list of holidays
+    # matching it (even partially, with case insensitive check)
+
+    >>> us_holidays = holidays.UnitedStates(years=2020)
+    >>> us_holidays.get_named('day')
+    [datetime.date(2020, 1, 1), datetime.date(2020, 1, 20),
+    datetime.date(2020, 2, 17), datetime.date(2020, 5, 25),
+    datetime.date(2020, 7, 4), datetime.date(2020, 7, 3),
+    datetime.date(2020, 9, 7), datetime.date(2020, 10, 12),
+    datetime.date(2020, 11, 11), datetime.date(2020, 12, 25)]
+
     # Sometimes we may not be able to use the official federal statutory
     # holiday list in our code. Let's pretend we work for a company that
     # does not include Columbus Day as a statutory holiday but does include
     # "Ninja Turtle Day" on July 13th. We can create a new class that inherits
     # the UnitedStates class and the only method we need to override is _populate()
 
-    >>> from dateutil.relativedelta import relativedelta
     >>> class CorporateHolidays(holidays.UnitedStates):
     >>>     def _populate(self, year):
     >>>         # Populate the holiday list with the default US holidays
     >>>         holidays.UnitedStates._populate(self, year)
     >>>         # Remove Columbus Day
-    >>>         self.pop(date(year, 10, 1) + relativedelta(weekday=MO(+2)), None)
+    >>>         self.pop_named("Columbus Day")
     >>>         # Add Ninja Turtle Day
     >>>         self[date(year, 7, 13)] = "Ninja Turtle Day"
     >>> date(2014, 10, 14) in Holidays(country="US")
@@ -403,13 +451,17 @@ More Examples
     # use the append() method which accepts a dictionary of {date: name} pairs,
     # a list of dates, or even singular date/string/timestamp objects.
 
-    >>> custom_holidays = holidays.HolidaysBase()
+    >>> custom_holidays = holidays.HolidayBase()
     >>> custom_holidays.append(['2015-01-01', '07/04/2015'])
     >>> custom_holidays.append(date(2015, 12, 25))
 
 
 >>> from datetime import date
 >>> holidays.US()[date(2013, 12, 31): date(2014, 1, 2)]
+
+# Intermediate years are only shown if they are listed in the years parameter.
+
+>>> holidays.US(years=[2014])[datetime.date(2013, 1, 1): datetime.date(2015, 12, 31)]
 
 Development Version
 -------------------
@@ -429,7 +481,7 @@ Running Tests
 .. code-block:: bash
 
     $ pip install flake8
-    $ flake8 holidays.py tests.py
+    $ flake8
     $ python tests.py
 
 

@@ -1,3 +1,110 @@
+Version 0.10.5.2
+================
+
+Released February 4, 2021
+
+- Dropped support for Python 2 (dr-p)
+- Removed convertdate<=2.2.0 constraint (dr-p)
+- Travis CI integration review (dr-p)
+- Support for Mozambique (jusce17)
+- Angola fixes (jusce17)
+- Portugal localized holidays (jusce17)
+- Disable year expansion on name search #411 (giladmaya)
+- Israel fixes (new convertdate version) #407 (giladmaya)
+- Ireland fixes (ISO-2 code, partial split from UK) #417 (javicalle)
+- Honduras fix (ISO-2 code) #405 (dr-p, agorajek)
+
+
+Version 0.10.4
+==============
+
+Released December 6, 2020
+
+- Dropped support for Python 3.5
+- Support for Djibouti (Abdisamade)
+- Support for United Arab Emirates (marcomasulli, mborsetti)
+- Support for Chile (mborsetti, dr-p)
+- Support for Angola (jusce17, pietervdw115, dr-p)
+- Support for Malawi (pietervdw115)
+- Support for Bangladesh (dr-p, tasnimislam)
+- Korea fixes (MYUNGJE, dr-p, hiddentrap)
+- Australia 2020 fix (bencollerson, trauty-is-me)
+- Croatia fixes and updates (jangrg, mborsetti, dr-p)
+- United States fixes (raffg, bgmiles, dr-p)
+- UK fixes/improvements (dr-p, richard-kunert, emreay-)
+- Russia fixes (tserekh)
+- Ireland fixes (chiuczek)
+- Spain observed holidays fix (sermayoral)
+- South Africa observed holidays fix (pietervdw115)
+- France fix (mborsetti)
+- Mexico fix (mborsetti)
+- Singapore 2022 fix (mborsetti)
+- Japan 1990-1993 fixes (sakurai-youhei)
+- Fix on occasional pop_named exception (mborsetti)
+- convertdate fallback if hijri-converter not available (mborsetti, dr-p)
+- enabled Travis tests for python3.9 (mborsetti)
+- added flake8 to unittests (mborsetti)
+
+
+Version 0.10.3
+==============
+
+Released July 15, 2020
+
+- Added get_named(substring) method to retrieve holidays by name (dr-p)
+- Added pop_named(substring) method to pop specific holiday/s by name (samtregar, dr-p)
+- Support for Burundi (bmwachajr)
+- Support for Latvia (rolandinsh)
+- Support for Romania (dorianm)
+- Spain fix (dr-p)
+- Netherlands fix (RooieRakkert)
+- Switzerland fixes (cgrigis)
+- Germany fix (MikeTsenatek)
+- Added korean_cal attribute to Korea and Vietnam (seriousran, pelennor)
+- United States fixes (patrick-nicholson, dr-p)
+- Singapore fixes + 2021 holidays (mborsetti)
+
+
+Version 0.10.2
+==============
+
+Released April 13, 2020
+
+- Support for Spain (piliamaurizio, jbroudou, dr-p, gerardo15)
+- Support for Turkey (cemkaragozlu)
+- Support for Korea (1kko, dr-p)
+- Support for Vietnam (1kko, dr-p)
+- Support for Morocco (abensrhir, dr-p)
+- Mexico fix (Rosi2143, dr-p)
+- Croatia fix (sebojanko, dr-p)
+- US Georgia fix (jbroudou, dr-p)
+- Austria province ISO3166-2 adoption (jbroudou, dr-p)
+- Portugal typos & name fixes (reinaldoramosarxi)
+- US MLK renamed (snoopyjc, dr-p)
+- ISO-3 codes export fix (dr-p)
+
+Version 0.10.1
+==============
+
+Released January 25, 2020
+
+- Project structure refactoring (MaxHaertwig, dr-p)
+- Added support for Python3.8 (dr-p)
+- Dropped support for pypy and Python3.4, welcome back pypy3 (dr-p)
+- Fully reviewed Travis CI integration (dr-p)
+- Added 3-digit country ISO codes (MaxHaertwig)
+- Support for Paraguay (dr-p, sfeliu)
+- Support for Israel (giladmaya, dr-p)
+- Support for Egypt (gaberm)
+- Support for Serbia (kosugor)
+- Support for Singapore (mborsetti)
+- README.rst fixes / sync
+- Brazil-Parana support (dr-p, jbroudou)
+- Japan fixes (dr-p, thophan92, saurabh3896)
+- Canada, Spain, US fixes (jbroudou)
+- Belarus fix (mpolyakovsky)
+
+
 Version 0.9.12
 ==============
 
@@ -198,7 +305,7 @@ Released September 5, 2016
 
 - Add support for Python 3.5
 - Add holidays and tests for Columbia, Denmark, Spain, United Kingdom
-- Fix Martin Luther King, Jr. Day in state of Georgia
+- Fix Martin Luther King Jr. Day in state of Georgia
 - Fix setup.py install error with non-standard sys default encoding
 
 

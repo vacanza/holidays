@@ -6,3 +6,8 @@ MANIFEST
 *.egg-info
 *.pyc
 .idea
+
+
+# IDE Stuff
+.vscode/
+*.DS_Store
