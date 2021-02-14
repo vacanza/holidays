@@ -42,12 +42,12 @@ class Indonesia(HolidayBase):
 
         # Day of Silence
         # https://en.wikipedia.org/wiki/Nyepi
-        dates_obs = {2009: (MARCH, 26), 2010: (MARCH, 16), 2011: (MARCH, 5),
-                     2012: (MARCH, 23), 2013: (MARCH, 12), 2014: (MARCH, 31),
-                     2015: (MARCH, 21), 2016: (MARCH, 9), 2017: (MARCH, 28),
-                     2018: (MARCH, 17), 2019: (MARCH, 7), 2020: (MARCH, 25),
-                     2021: (MARCH, 14), 2022: (MARCH, 3), 2023: (MARCH, 22),
-                     2024: (MARCH, 11), 2025: (MARCH, 29), 2026: (MARCH, 19)}
+        dates_obs = {2009: (MAR, 26), 2010: (MAR, 16), 2011: (MAR, 5),
+                     2012: (MAR, 23), 2013: (MAR, 12), 2014: (MAR, 31),
+                     2015: (MAR, 21), 2016: (MAR, 9), 2017: (MAR, 28),
+                     2018: (MAR, 17), 2019: (MAR, 7), 2020: (MAR, 25),
+                     2021: (MAR, 14), 2022: (MAR, 3), 2023: (MAR, 22),
+                     2024: (MAR, 11), 2025: (MAR, 29), 2026: (MAR, 19)}
         if year in dates_obs:
             hol_date = date(year, *dates_obs[year])
             self[hol_date] = "Nyepi"
@@ -141,7 +141,7 @@ class Indonesia(HolidayBase):
         self[easter(year) + rd(days=+39)] = name
 
        # Pancasila Day
-        self[date(year, June, 1)] = "Pancasila Day"
+        self[date(year, JUN, 1)] = "Pancasila Day"
 
         # National Day
         self[date(year, AUG, 17)] = "Indonesia Independence Day"
