@@ -40,7 +40,7 @@ class Curacao(HolidayBase):
         self[easter(year) + rd(weekday=FR(-1))] = "Goede Vrijdag [Good Friday]"
 
         # Easter Monday
-        self[easter(year) + rd(days=1)] = "Di Dos Dia di Pasco di Resureccion \
+        self[easter(year) + rd(days=1)] = "Di Dos Dia di Pasku di Resureccion \
             [Easter Monday]"
 
         # King's Day
@@ -86,7 +86,7 @@ class Curacao(HolidayBase):
         self[date(year, DEC, 25)] = "Kerstdag [Christmas]"
 
         # Second Christmas
-        self[date(year, DEC, 26)] = "2e Kerstdag [Second Christmas]"
+        self[date(year, DEC, 26)] = "2de Kerstdag [Second Christmas]"
 
 
 class CW(Curacao):
