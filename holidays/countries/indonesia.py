@@ -142,18 +142,6 @@ class Indonesia(HolidayBase):
         # Christmas Day
         self[date(year, DEC, 25)] = "Christmas Day"
 
-        # Check for holidays that fall on a Sunday and implement Section 4(2)
-        # of the Holidays Act: "if any day specified in the Schedule falls on
-        # a Sunday, the day next following not being itself a public holiday
-        # is declared a public holiday in Singapore."
-        for (hol_date, hol_name) in list(self.items()):
-            if hol_date.weekday() == SUN:
-                self[hol_date] += ' [Sunday]'
-                in_lieu_date = hol_date + rd(days=+1)
-                while in_lieu_date in self:
-                    in_lieu_date += rd(days=+1)
-                self[in_lieu_date] = hol_name + '[In lieu]'
-
     # The below is used to calculate lunar new year (i.e. Chinese new year)
     # Code borrowed from Hong Kong entry as of 16-Nov-19
     # Should probably be a function available to multiple countries
