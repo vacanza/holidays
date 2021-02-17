@@ -33,6 +33,7 @@ from .estonia import Estonia, EE, EST
 from .european_central_bank import EuropeanCentralBank, ECB, TAR
 from .finland import Finland, FI, FIN
 from .france import France, FR, FRA
+from .georgia import Georgia, GE, GEO
 from .germany import Germany, DE, DEU
 from .greece import Greece, GR, GRC
 from .honduras import Honduras, HN, HND
