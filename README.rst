@@ -476,24 +476,14 @@ The latest development (beta) version can be installed directly from GitHub:
 All new features are always first pushed to beta branch, then released on
 master branch upon official version upgrades.
 
-Running Tests
--------------
+Running Tests and Coverage
+--------------------------
 
 .. code-block:: bash
 
-    $ pip install flake8
+    $ pip install -r requirements_dev.txt
     $ flake8
-    $ python tests.py
-
-
-Coverage
---------
-
-.. code-block:: bash
-
-    $ pip install coverage
-    $ coverage run --omit=*site-packages* tests.py
-    $ coverage report -m
+    $ pytest
 
 
 Contributions
