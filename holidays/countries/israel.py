@@ -13,8 +13,16 @@
 
 
 from convertdate import gregorian, hebrew
-from convertdate.holidays import hanukkah, lag_baomer, passover, purim, \
-    rosh_hashanah, shavuot, sukkot, yom_kippur
+from convertdate.holidays import (
+    hanukkah,
+    lag_baomer,
+    passover,
+    purim,
+    rosh_hashanah,
+    shavuot,
+    sukkot,
+    yom_kippur,
+)
 from datetime import date
 from dateutil.relativedelta import relativedelta as rd
 
@@ -30,7 +38,7 @@ class Israel(HolidayBase):
 
     def _populate(self, year):
         # Passover
-        name = 'Passover I'
+        name = "Passover I"
         year, month, day = passover(year, eve=True)
         passover_start_dt = date(year, month, day)
         self[passover_start_dt] = name + " - Eve"
@@ -45,9 +53,10 @@ class Israel(HolidayBase):
         self[passover_start_dt + rd(days=7)] = name
 
         # Memorial Day
-        name = 'Memorial Day'
+        name = "Memorial Day"
         year, month, day = gregorian.from_jd(
-            hebrew.to_jd_gregorianyear(year, hebrew.IYYAR, 3))
+            hebrew.to_jd_gregorianyear(year, hebrew.IYYAR, 3)
+        )
         self[date(year, month, day) + rd(days=1)] = name
 
         observed_delta = 0
@@ -64,7 +73,7 @@ class Israel(HolidayBase):
                 )
 
         # Independence Day
-        name = 'Independence Day'
+        name = "Independence Day"
         self[date(year, month, day) + rd(days=2)] = name
 
         if self.observed and observed_delta != 0:
@@ -78,26 +87,28 @@ class Israel(HolidayBase):
         self[date(year, month, day)] = name
 
         # Shavuot
-        name = 'Shavuot'
+        name = "Shavuot"
         year, month, day = shavuot(year, eve=True)
-        self[date(year, month, day)] = name + ' - Eve'
+        self[date(year, month, day)] = name + " - Eve"
         self[date(year, month, day) + rd(days=1)] = name
 
         # Rosh Hashana
-        name = 'Rosh Hashanah'
+        name = "Rosh Hashanah"
         year, month, day = rosh_hashanah(year, eve=True)
-        self[date(year, month, day)] = name + ' - Eve'
+        self[date(year, month, day)] = name + " - Eve"
         self[date(year, month, day) + rd(days=1)] = name
         self[date(year, month, day) + rd(days=2)] = name
 
         # Yom Kippur
         name = "Yom Kippur"
-        year, month, day = hebrew.to_jd_gregorianyear(year, hebrew.TISHRI, 9)
+        year, month, day = gregorian.from_jd(
+            hebrew.to_jd_gregorianyear(year, hebrew.TISHRI, 9)
+        )
         self[date(year, month, day)] = name + " - Eve"
         self[date(year, month, day) + rd(days=1)] = name
 
         # Sukkot
-        name = 'Sukkot I'
+        name = "Sukkot I"
         year, month, day = sukkot(year, eve=True)
         sukkot_start_dt = date(year, month, day)
         self[sukkot_start_dt] = name + " - Eve"
@@ -113,14 +124,18 @@ class Israel(HolidayBase):
 
         # Hanukkah
         name = "Hanukkah"
-        year, month, day = hebrew.to_jd_gregorianyear(year, hebrew.KISLEV, 25)
+        year, month, day = gregorian.from_jd(
+            hebrew.to_jd_gregorianyear(year, hebrew.KISLEV, 25)
+        )
         for offset in range(8):
             self[date(year, month, day) + rd(days=offset)] = name
 
         # Purim
         name = "Purim"
         heb_month = hebrew.VEADAR if is_leap_year(year) else hebrew.ADAR
-        year, month, day = hebrew.to_jd_gregorianyear(year, heb_month, 14)
+        year, month, day = gregorian.from_jd(
+            hebrew.to_jd_gregorianyear(year, heb_month, 14)
+        )
         self[date(year, month, day)] = name
 
         self[date(year, month, day) - rd(days=1)] = name + " - Eve"

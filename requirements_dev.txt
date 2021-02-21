@@ -1,6 +1,6 @@
 # package runtime requirements
 python-dateutil==2.8.1
-convertdate==2.2.0
+convertdate==2.3.0
 korean_lunar_calendar==0.2.1
 six==1.15.0
 

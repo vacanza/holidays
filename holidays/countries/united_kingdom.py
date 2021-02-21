@@ -65,31 +65,31 @@ class UnitedKingdom(HolidayBase):
                 )
 
         # TT bank holiday (first Friday in June)
-        if self.country == 'Isle of Man':
+        if self.country == "Isle of Man":
             self[date(year, JUN, 1) + rd(weekday=FR)] = "TT Bank Holiday"
 
         # Tynwald Day
-        if self.country == 'Isle of Man':
+        if self.country == "Isle of Man":
             self[date(year, JUL, 5)] = "Tynwald Day"
 
         # Battle of the Boyne
-        if self.country in ('UK', 'Northern Ireland'):
+        if self.country in ("UK", "Northern Ireland"):
             name = "Battle of the Boyne"
-            if self.country == 'UK':
+            if self.country == "UK":
                 name += " [Northern Ireland]"
             self[date(year, JUL, 12)] = name
 
         # Summer bank holiday (first Monday in August)
-        if self.country in ('UK', 'Scotland'):
+        if self.country in ("UK", "Scotland"):
             name = "Summer Bank Holiday"
-            if self.country == 'UK':
+            if self.country == "UK":
                 name += " [Scotland]"
             self[date(year, AUG, 1) + rd(weekday=MO)] = name
 
         # St. Andrew's Day
-        if self.country in ('UK', 'Scotland'):
+        if self.country in ("UK", "Scotland"):
             name = "St. Andrew's Day"
-            if self.country == 'UK':
+            if self.country == "UK":
                 name += " [Scotland]"
             self[date(year, NOV, 30)] = name
 
@@ -177,7 +177,7 @@ class UnitedKingdom(HolidayBase):
             self[date(year, AUG, 1) + rd(weekday=MO)] = name
 
         # Late Summer bank holiday (last Monday in August)
-        if self.country not in ('Scotland') and year >= 1971:
+        if self.country not in ("Scotland") and year >= 1971:
             name = "Late Summer Bank Holiday"
             if self.country == "UK":
                 name += " [England, Wales, Northern Ireland]"

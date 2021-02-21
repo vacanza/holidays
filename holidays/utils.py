@@ -55,10 +55,11 @@ def get_gre_date(year, Hmonth, Hday):
     requirement).
     """
     Hyear = convert.Gregorian(year, 1, 1).to_hijri().datetuple()[0]
-    gres = [convert.Hijri(y, Hmonth, Hday).to_gregorian()
-            for y in range(Hyear - 1, Hyear + 2)]
-    gre_dates = [date(*gre.datetuple())
-                 for gre in gres if gre.year == year]
+    gres = [
+        convert.Hijri(y, Hmonth, Hday).to_gregorian()
+        for y in range(Hyear - 1, Hyear + 2)
+    ]
+    gre_dates = [date(*gre.datetuple()) for gre in gres if gre.year == year]
     return gre_dates
 
 
