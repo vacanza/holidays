@@ -10,3 +10,4 @@
 #           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2020
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
+from tests import *
