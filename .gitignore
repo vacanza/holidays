@@ -6,6 +6,7 @@ MANIFEST
 coverage.xml
 *.egg-info
 *.pyc
+.tox
 .idea
 
 

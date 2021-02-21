@@ -9,6 +9,7 @@ before_install:
 install:
   - pip install flake8
   - pip install coveralls
+  - python -m pip install -r requirements_dev.txt
   - python setup.py install
 
 
@@ -24,7 +25,7 @@ before_script:
     - flake8
 
 script:
-    - coverage run --omit=*site-packages*,*pypy* tests.py
+    - pytest
 
 after_success:
     - coveralls
