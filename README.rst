@@ -482,7 +482,7 @@ Running Tests and Coverage
 .. code-block:: bash
 
     $ pip install -r requirements_dev.txt
-    $ pytest
+    $ python -m pytest .
 
 
 Ensure all staged files are up to standard
