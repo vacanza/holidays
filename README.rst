@@ -485,6 +485,24 @@ Running Tests and Coverage
     $ flake8
     $ pytest
 
+Ensure all staged files are up to standard
+------------------------------------------
+
+.. _pre-commit: https://github.com/dr-prodigy/python-holidays/issues
+
+Install the githooks with `pre-commit`_, after that the quality assurance
+tests will run on all staged files before you commit them and intercept
+the commit if the staged files aren't up to standard.
+
+.. code-block:: bash
+
+    $ pre-commit install
+
+Manually run the quality assurance tests on all tracked files.
+
+.. code-block:: bash
+
+    $ pre-commit run -a
 
 Contributions
 -------------
