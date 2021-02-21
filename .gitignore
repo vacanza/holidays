@@ -3,6 +3,7 @@ dist/
 venv/
 MANIFEST
 .coverage
+coverage.xml
 *.egg-info
 *.pyc
 .idea
