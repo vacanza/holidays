@@ -271,4 +271,3 @@ class TestCA(unittest.TestCase):
         self.holidays.observed = True
         self.assertIn(date(2009, 12, 28), self.holidays)
         self.assertIn(date(2010, 12, 27), self.holidays)
-
