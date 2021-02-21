@@ -12,12 +12,8 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-from glob import glob
-from itertools import product
 
 from datetime import date
-from dateutil.relativedelta import relativedelta, MO
-from flake8.api import legacy as flake8
 
 import holidays
 
