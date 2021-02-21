@@ -20,7 +20,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macOS-latest]
-        python-version: [2.7, 3.6, 3.7, 3.8, 3.9, pypy3]
+        python-version: [3.6, 3.7, 3.8, 3.9, pypy3]
 
     steps:
       - uses: actions/checkout@v2
@@ -37,8 +37,6 @@ jobs:
         run: |
           py.test
       - name: Upload Coverage
-        # The version of coveralls that supports py27, doesn't support github actions
-        if: matrix.python-version != '2.7'
         run: coveralls
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
