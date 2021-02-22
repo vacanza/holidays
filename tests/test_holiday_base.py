@@ -11,12 +11,28 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+import os
+from glob import glob
+from flake8.api import legacy as flake8
 import unittest
 
 from datetime import date, datetime, timedelta
 from dateutil.relativedelta import relativedelta, MO
 
 import holidays
+
+
+class TestFlake8(unittest.TestCase):
+    def test_flake8(self):
+        """Test that we conform to PEP-8."""
+        self.style_guide = flake8.get_style_guide()
+        self.py_files = [
+            y
+            for x in os.walk(os.path.abspath("holidays"))
+            for y in glob(os.path.join(x[0], "*.py"))
+        ]
+        self.report = self.style_guide.check_files(self.py_files)
+        self.assertEqual(self.report.get_statistics("E"), [])
 
 
 class TestBasics(unittest.TestCase):
@@ -354,6 +370,12 @@ class TestBasics(unittest.TestCase):
         us = holidays.UnitedStates(years=[2020])
         # check for "New Year's Day" presence in get_named("new")
         self.assertIn(date(2020, 1, 1), us.get_named("new"))
+
+        # check for searching holiday in US when the observed holiday is on
+        # a different year than input one
+        us = holidays.US(years=[2022])
+        us.get_named("Thanksgiving")
+        self.assertEqual([2022], list(us.years))
 
 
 class TestArgs(unittest.TestCase):
