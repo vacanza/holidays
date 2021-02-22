@@ -22,19 +22,6 @@ from dateutil.relativedelta import relativedelta, MO
 import holidays
 
 
-class TestFlake8(unittest.TestCase):
-    def test_flake8(self):
-        """Test that we conform to PEP-8."""
-        self.style_guide = flake8.get_style_guide()
-        self.py_files = [
-            y
-            for x in os.walk(os.path.abspath("holidays"))
-            for y in glob(os.path.join(x[0], "*.py"))
-        ]
-        self.report = self.style_guide.check_files(self.py_files)
-        self.assertEqual(self.report.get_statistics("E"), [])
-
-
 class TestBasics(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.US()

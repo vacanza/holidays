@@ -19,7 +19,6 @@ exclude = '''
 [tool.coverage.run]
 branch = true
 include = [
-  #'holidays/*',
   'tests.py',
 ]
 omit = [
