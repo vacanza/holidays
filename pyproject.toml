@@ -1,6 +1,6 @@
 [tool.black]
 line-length = 79
-target-version = ['py27', 'py35', 'py36', 'py37', 'py38']
+target-version = ['py36', 'py37', 'py38']
 exclude = '''
 /(
     \.eggs
@@ -19,12 +19,14 @@ exclude = '''
 [tool.coverage.run]
 branch = true
 include = [
-  'holidays/*',
+#  'holidays/*',
+  'tests.py',
 ]
 omit = [
   'setup.py',
   'holidays/__init__.py',
   'tests/*',
+  'tests.py',
 # comment the above line if you want to see if all tests did run
   ]
 
