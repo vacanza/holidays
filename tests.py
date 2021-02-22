@@ -11,7 +11,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from tests import *
+from test import *
 
 if __name__ == "__main__":
     unittest.main()

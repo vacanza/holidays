@@ -19,13 +19,13 @@ exclude = '''
 [tool.coverage.run]
 branch = true
 include = [
-#  'holidays/*',
+  #'holidays/*',
   'tests.py',
 ]
 omit = [
   'setup.py',
   'holidays/__init__.py',
-  'tests/*',
+  'test/*',
   'tests.py',
 # comment the above line if you want to see if all tests did run
   ]
