@@ -53,6 +53,7 @@ from .test_luxembourg import *
 from .test_malawi import *
 from .test_mexico import *
 from .test_morocco import *
+from .test_mozambique import *
 from .test_netherlands import *
 from .test_new_zealand import *
 from .test_nicaragua import *
@@ -64,6 +65,7 @@ from .test_poland import *
 from .test_portugal import *
 from .test_romania import *
 from .test_russia import *
+from .test_saudiarabia import *
 from .test_serbia import *
 from .test_singapore import *
 from .test_slovakia import *
