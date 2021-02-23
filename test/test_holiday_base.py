@@ -11,9 +11,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import os
-from glob import glob
-from flake8.api import legacy as flake8
 import unittest
 
 from datetime import date, datetime, timedelta
