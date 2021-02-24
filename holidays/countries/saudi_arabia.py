@@ -26,21 +26,21 @@ WEEKEND = (FRI, SAT)
 class SaudiArabia(HolidayBase):
 
     """
-        There are only 3 official national holidays in Saudi:
-        https://laboreducation.hrsd.gov.sa/en/gallery/274
-        The national day holiday is based on the Georgian calendar while the
-        other two holidays are based on the Islamic Calendar, and they are
-        estimates as they announced each year and based on moon sightings;
-        which are:
-            - Eid al-Fitr*
-            - Eid al-Adha*
-        * only if hijri-converter library is installed, otherwise a warning is
-        raised that this holiday is missing. hijri-converter requires
-        Python >= 3.6
+    There are only 3 official national holidays in Saudi:
+    https://laboreducation.hrsd.gov.sa/en/gallery/274
+    The national day holiday is based on the Georgian calendar while the
+    other two holidays are based on the Islamic Calendar, and they are
+    estimates as they announced each year and based on moon sightings;
+    which are:
+        - Eid al-Fitr*
+        - Eid al-Adha*
+    * only if hijri-converter library is installed, otherwise a warning is
+    raised that this holiday is missing. hijri-converter requires
+    Python >= 3.6
     """
 
     def __init__(self, **kwargs):
-        self.country = 'SA'
+        self.country = "SA"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

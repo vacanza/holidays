@@ -23,9 +23,8 @@ from .united_kingdom import UnitedKingdom
 
 
 class Ireland(UnitedKingdom):
-
     def __init__(self, **kwargs):
-        self.country = 'IE'
+        self.country = "IE"
         HolidayBase.__init__(self, **kwargs)
 
     def _country_specific(self, year):
@@ -35,8 +34,7 @@ class Ireland(UnitedKingdom):
         name = "St. Patrick's Day"
         self[date(year, MAR, 17)] = name
         if self.observed and date(year, MAR, 17).weekday() in WEEKEND:
-            self[date(year, MAR, 17) + rd(weekday=MO)] = name + \
-                " (Observed)"
+            self[date(year, MAR, 17) + rd(weekday=MO)] = name + " (Observed)"
 
         # Easter Monday
         self[easter(year) + rd(weekday=MO)] = "Easter Monday"

@@ -15,8 +15,20 @@ from datetime import date
 
 from dateutil.relativedelta import relativedelta as rd, MO
 
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, \
-    OCT, NOV, DEC
+from holidays.constants import (
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+)
 from holidays.holiday_base import HolidayBase
 
 
@@ -24,7 +36,7 @@ class Japan(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Japan
 
     def __init__(self, **kwargs):
-        self.country = 'JP'
+        self.country = "JP"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -45,7 +57,7 @@ class Japan(HolidayBase):
 
         # Reiwa Emperor's Birthday
         if year >= 2020:
-            self[date(year, FEB, 23)] = '天皇誕生日'
+            self[date(year, FEB, 23)] = "天皇誕生日"
 
         # Vernal Equinox Day
         self[self._vernal_equinox_day(year)] = "春分の日"
@@ -128,9 +140,9 @@ class Japan(HolidayBase):
             self[date(year, JUN, 9)] = "結婚の儀"
         elif year == 2019:
             # Enthronement Day
-            self[date(year, MAY, 1)] = '天皇の即位の日'
+            self[date(year, MAY, 1)] = "天皇の即位の日"
             # Enthronement ceremony
-            self[date(year, OCT, 22)] = '即位礼正殿の儀が行われる日'
+            self[date(year, OCT, 22)] = "即位礼正殿の儀が行われる日"
 
         # A weekday between national holidays becomes a holiday too (国民の休日)
         self._add_national_holidays(year)
@@ -175,8 +187,23 @@ class Japan(HolidayBase):
         return date(year, SEP, day)
 
     def _add_national_holidays(self, year):
-        if year in (1993, 1999, 2004, 1988, 1994, 2005, 1989, 1995, 2000, 2006,
-                    1990, 2001, 1991, 1996, 2002):
+        if year in (
+            1993,
+            1999,
+            2004,
+            1988,
+            1994,
+            2005,
+            1989,
+            1995,
+            2000,
+            2006,
+            1990,
+            2001,
+            1991,
+            1996,
+            2002,
+        ):
             self[date(year, MAY, 4)] = "国民の休日"
 
         if year in (2032, 2049, 2060, 2077, 2088, 2094):
@@ -186,25 +213,85 @@ class Japan(HolidayBase):
             self[date(year, SEP, 22)] = "国民の休日"
 
         if year == 2019:
-            self[date(year, APR, 30)] = '国民の休日'
-            self[date(year, MAY, 2)] = '国民の休日'
+            self[date(year, APR, 30)] = "国民の休日"
+            self[date(year, MAY, 2)] = "国民の休日"
 
     def _add_substitute_holidays(self, year):
         table = (
-            (1, 2, (1978, 1984, 1989, 1995, 2006, 2012, 2017, 2023, 2034, 2040,
-                    2045)),
+            (
+                1,
+                2,
+                (
+                    1978,
+                    1984,
+                    1989,
+                    1995,
+                    2006,
+                    2012,
+                    2017,
+                    2023,
+                    2034,
+                    2040,
+                    2045,
+                ),
+            ),
             (1, 16, (1978, 1984, 1989, 1995)),
-            (2, 12, (1979, 1990, 1996, 2001, 2007, 2018, 2024, 2029, 2035,
-                     2046)),
+            (
+                2,
+                12,
+                (1979, 1990, 1996, 2001, 2007, 2018, 2024, 2029, 2035, 2046),
+            ),
             (2, 24, (2020,)),
             (3, 21, (1988, 2005, 2016, 2033, 2044, 2050)),
             (3, 22, (1982, 1999, 2010, 2027)),
-            (4, 30, (1973, 1979, 1984, 1990, 2001, 2007, 2012, 2018, 2029,
-                     2035, 2040, 2046)),
+            (
+                4,
+                30,
+                (
+                    1973,
+                    1979,
+                    1984,
+                    1990,
+                    2001,
+                    2007,
+                    2012,
+                    2018,
+                    2029,
+                    2035,
+                    2040,
+                    2046,
+                ),
+            ),
             (5, 4, (1981, 1987, 1992, 1998)),
-            (5, 6, (1985, 1991, 1996, 2002, 2013, 2019, 2024, 2030, 2041, 2047,
-                    2008, 2014, 2025, 2031, 2036, 2042, 2009, 2015, 2020, 2026,
-                    2037, 2043, 2048)),
+            (
+                5,
+                6,
+                (
+                    1985,
+                    1991,
+                    1996,
+                    2002,
+                    2013,
+                    2019,
+                    2024,
+                    2030,
+                    2041,
+                    2047,
+                    2008,
+                    2014,
+                    2025,
+                    2031,
+                    2036,
+                    2042,
+                    2009,
+                    2015,
+                    2020,
+                    2026,
+                    2037,
+                    2043,
+                    2048,
+                ),
+            ),
             (7, 21, (1997,)),
             (8, 9, (2021,)),
             (8, 12, (2019, 2024, 2030, 2041, 2047)),
@@ -212,10 +299,40 @@ class Japan(HolidayBase):
             (9, 23, (2024,)),
             (9, 24, (1973, 1984, 1990, 2001, 2007, 2018, 2029, 2035, 2046)),
             (10, 11, (1976, 1982, 1993, 1999)),
-            (11, 4, (1974, 1985, 1991, 1996, 2002, 2013, 2019, 2024, 2030,
-                     2041, 2047)),
-            (11, 24, (1975, 1980, 1986, 1997, 2003, 2008, 2014, 2025, 2031,
-                      2036, 2042)),
+            (
+                11,
+                4,
+                (
+                    1974,
+                    1985,
+                    1991,
+                    1996,
+                    2002,
+                    2013,
+                    2019,
+                    2024,
+                    2030,
+                    2041,
+                    2047,
+                ),
+            ),
+            (
+                11,
+                24,
+                (
+                    1975,
+                    1980,
+                    1986,
+                    1997,
+                    2003,
+                    2008,
+                    2014,
+                    2025,
+                    2031,
+                    2036,
+                    2042,
+                ),
+            ),
             (12, 24, (1990, 2001, 2007, 2012, 2018)),
         )
         for holiday in table:

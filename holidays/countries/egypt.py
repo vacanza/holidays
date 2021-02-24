@@ -39,7 +39,7 @@ class Egypt(HolidayBase):
     # is_weekend function is there, however not activated for accuracy.
 
     def __init__(self, **kwargs):
-        self.country = 'EG'
+        self.country = "EG"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

@@ -49,13 +49,14 @@ class Vietnam(HolidayBase):
                 self[first_date + rd(days=+1)] = name + " observed"
 
         # Lunar New Year
-        name = ["Vietnamese New Year",           # index: 0
-                "The second day of Tet Holiday",  # index: 1
-                "The third day of Tet Holiday",  # index: 2
-                "The forth day of Tet Holiday",  # index: 3
-                "The fifth day of Tet Holiday",  # index: 4
-                "Vietnamese New Year's Eve",     # index: -1
-                ]
+        name = [
+            "Vietnamese New Year",  # index: 0
+            "The second day of Tet Holiday",  # index: 1
+            "The third day of Tet Holiday",  # index: 2
+            "The forth day of Tet Holiday",  # index: 3
+            "The fifth day of Tet Holiday",  # index: 4
+            "Vietnamese New Year's Eve",  # index: -1
+        ]
         dt = self.get_solar_date(year, 1, 1)
         new_year_date = date(dt.year, dt.month, dt.day)
         if self.observed:
@@ -91,8 +92,11 @@ class Vietnam(HolidayBase):
     # convert lunar calendar date to solar
     def get_solar_date(self, year, month, day):
         self.korean_cal.setLunarDate(year, month, day, False)
-        return date(self.korean_cal.solarYear, self.korean_cal.solarMonth,
-                    self.korean_cal.solarDay)
+        return date(
+            self.korean_cal.solarYear,
+            self.korean_cal.solarMonth,
+            self.korean_cal.solarDay,
+        )
 
 
 class VN(Vietnam):
