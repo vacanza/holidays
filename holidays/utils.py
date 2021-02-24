@@ -62,16 +62,3 @@ def get_gre_date(year, Hmonth, Hday):
     ]
     gre_dates = [date(*gre.datetuple()) for gre in gres if gre.year == year]
     return gre_dates
-
-
-def is_leap_year(year):
-    # step 1 check if divisible by 4
-    if year % 4 == 0:
-        # step 2 check if divisible by 100
-        if year % 100 == 0:
-            # step 3 check if divisble by 400
-            if year % 400 == 0:
-                return True
-        else:
-            return True
-    return False
