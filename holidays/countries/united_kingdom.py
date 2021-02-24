@@ -150,58 +150,12 @@ class UnitedKingdom(HolidayBase):
         elif year >= 1971:
             self[date(year, MAY, 31) + rd(weekday=MO(-1))] = name
 
-        # June bank holiday (first Monday in June)
-        if self.country == "Ireland":
-            self[date(year, JUN, 1) + rd(weekday=MO)] = "June Bank Holiday"
-
-        # TT bank holiday (first Friday in June)
-        if self.country == "Isle of Man":
-            self[date(year, JUN, 1) + rd(weekday=FR)] = "TT Bank Holiday"
-
-        # Tynwald Day
-        if self.country == "Isle of Man":
-            self[date(year, JUL, 5)] = "Tynwald Day"
-
-        # Battle of the Boyne
-        if self.country in ("UK", "Northern Ireland"):
-            name = "Battle of the Boyne"
-            if self.country == "UK":
-                name += " [Northern Ireland]"
-            self[date(year, JUL, 12)] = name
-
-        # Summer bank holiday (first Monday in August)
-        if self.country in ("UK", "Scotland", "Ireland"):
-            name = "Summer Bank Holiday"
-            if self.country == "UK":
-                name += " [Scotland]"
-            self[date(year, AUG, 1) + rd(weekday=MO)] = name
-
         # Late Summer bank holiday (last Monday in August)
         if self.country not in ("Scotland") and year >= 1971:
             name = "Late Summer Bank Holiday"
             if self.country == "UK":
                 name += " [England, Wales, Northern Ireland]"
             self[date(year, AUG, 31) + rd(weekday=MO(-1))] = name
-
-        # October Bank Holiday (last Monday in October)
-        if self.country == "Ireland":
-            name = "October Bank Holiday"
-            self[date(year, OCT, 31) + rd(weekday=MO(-1))] = name
-
-        # St. Andrew's Day
-        if self.country in ("UK", "Scotland"):
-            name = "St. Andrew's Day"
-            if self.country == "UK":
-                name += " [Scotland]"
-            self[date(year, NOV, 30)] = name
-
-        # Christmas Day
-        name = "Christmas Day"
-        self[date(year, DEC, 25)] = name
-        if self.observed and date(year, DEC, 25).weekday() == SAT:
-            self[date(year, DEC, 27)] = name + " (Observed)"
-        elif self.observed and date(year, DEC, 25).weekday() == SUN:
-            self[date(year, DEC, 27)] = name + " (Observed)"
 
         # Boxing Day
         name = "Boxing Day"

@@ -65,7 +65,7 @@ from .test_poland import *
 from .test_portugal import *
 from .test_romania import *
 from .test_russia import *
-from .test_saudiarabia import *
+from .test_saudi_arabia import *
 from .test_serbia import *
 from .test_singapore import *
 from .test_slovakia import *

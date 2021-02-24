@@ -14,7 +14,6 @@
 import unittest
 
 from datetime import date
-
 from dateutil.relativedelta import relativedelta
 
 import holidays

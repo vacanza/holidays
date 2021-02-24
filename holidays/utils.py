@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 #  python-holidays
 #  ---------------
 #  A fast, efficient Python library for generating country, province and state
