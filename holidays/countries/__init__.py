@@ -25,6 +25,7 @@ from .canada import Canada, CA, CAN
 from .chile import Chile, CL, CHL
 from .colombia import Colombia, CO, COL
 from .croatia import Croatia, HR, HRV
+from .curacao import Curacao, CW, CUW
 from .czechia import Czechia, Czech, CZ, CZE
 from .denmark import Denmark, DK, DNK
 from .djibouti import Djibouti, DJ, DJI

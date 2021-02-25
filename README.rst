@@ -115,6 +115,7 @@ Chile               CL/CHL    state = AI, AN, AP, AR, AT, BI, CO, LI, LL, LR, MA
                               RM, TA, VS
 Colombia            CO/COL    None
 Croatia             HR/HRV    None
+Curacao             CW/CUW    None
 Czechia             CZ/CZE    None
 Denmark             DK/DNK    None
 Djibouti            DJ/DJI    None
