@@ -25,6 +25,7 @@ from .test_canada import *
 from .test_chile import *
 from .test_colombia import *
 from .test_croatia import *
+from .test_curacao import *
 from .test_czechia import *
 from .test_denmark import *
 from .test_djibouti import *
