@@ -275,6 +275,7 @@ class Japan(HolidayBase):
                 5,
                 6,
                 (
+                    1974,
                     1985,
                     1991,
                     1996,
