@@ -157,3 +157,5 @@ class TestJapan(unittest.TestCase):
         self.assertRaises(
             NotImplementedError, lambda: date(2100, 1, 1) in self.holidays
         )
+    def test_showa_emperor_holidays(self):
+        self.assertIn(date(1989, 2, 24), self.holidays)

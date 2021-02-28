@@ -71,6 +71,10 @@ class Japan(HolidayBase):
         else:
             self[date(year, APR, 29)] = "昭和の日"
 
+        # State Funeral of Emperor Shōwa
+        if year == 1989:
+            self[date(year, FEB, 24)] = "大喪の礼"
+
         # Constitution Memorial Day
         self[date(year, MAY, 3)] = "憲法記念日"
 
