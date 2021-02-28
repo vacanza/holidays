@@ -131,6 +131,9 @@ class Japan(HolidayBase):
         self[date(year, NOV, 23)] = "勤労感謝の日"
 
         # Regarding the Emperor of Heisei
+        if year == 1959:
+            # Marriage ceremony
+            self[date(year, APR, 10)] = "結婚の儀"
         if 1989 <= year <= 2018:
             # Heisei Emperor's Birthday
             self[date(year, DEC, 23)] = "天皇誕生日"
