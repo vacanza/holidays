@@ -53,7 +53,8 @@ class Japan(HolidayBase):
             self[date(year, JAN, 1) + rd(weekday=MO(+2))] = "成人の日"
 
         # Foundation Day
-        self[date(year, FEB, 11)] = "建国記念の日"
+        if year >= 1967:
+            self[date(year, FEB, 11)] = "建国記念の日"
 
         # Reiwa Emperor's Birthday
         if year >= 2020:

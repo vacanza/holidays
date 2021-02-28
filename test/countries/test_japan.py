@@ -39,7 +39,9 @@ class TestJapan(unittest.TestCase):
         self.assertNotIn(date(2030, 1, 15), self.holidays)
 
     def test_foundation_day(self):
-        self.assertIn(date(1949, 2, 11), self.holidays)
+        self.assertNotIn(date(1949, 2, 11), self.holidays)
+        self.assertNotIn(date(1966, 2, 11), self.holidays)
+        self.assertIn(date(1967, 2, 11), self.holidays)
         self.assertIn(date(2017, 2, 11), self.holidays)
         self.assertIn(date(2050, 2, 11), self.holidays)
 
