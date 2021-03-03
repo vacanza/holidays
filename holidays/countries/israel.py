@@ -128,12 +128,9 @@ class Israel(HolidayBase):
         # Purim
         name = "Purim"
         year, month, day = purim(year, eve=True)
-        self[date(year, month, day)] = name
-
-        self[date(year, month, day) - rd(days=1)] = name + " - Eve"
-
-        name = "Shushan Purim"
+        self[date(year, month, day)] = name + " - Eve"
         self[date(year, month, day) + rd(days=1)] = name
+        self[date(year, month, day) + rd(days=2)] = "Shushan Purim"
 
 
 class IL(Israel):
