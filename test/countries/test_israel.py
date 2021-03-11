@@ -20,6 +20,12 @@ import holidays
 
 
 class TestIsrael(unittest.TestCase):
+    def test_purim_day(self):
+        il_holidays = holidays.IL(years=[2017], observed=True)
+        assert il_holidays.get_list(date(2017, 3, 11)) == ["Purim - Eve"]
+        assert il_holidays.get_list(date(2017, 3, 12)) == ["Purim"]
+        assert il_holidays.get_list(date(2017, 3, 13)) == ["Shushan Purim"]
+
     def test_memorial_day(self):
         self._test_observed_holidays("Memorial Day")
 
