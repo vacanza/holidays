@@ -210,7 +210,7 @@ class TestUK(unittest.TestCase):
         all_holidays = [
             "New Year's Day",
             "Good Friday",
-            "Easter Monday [England, Wales, Northern Ireland]",
+            "Easter Monday [England/Wales/Northern Ireland]",
             "May Day",
             "Spring Bank Holiday",
             "Christmas Day",
