@@ -45,6 +45,7 @@ from .test_india import *
 from .test_ireland import *
 from .test_israel import *
 from .test_italy import *
+from .test_jamaica import *
 from .test_japan import *
 from .test_kenya import *
 from .test_korea import *
