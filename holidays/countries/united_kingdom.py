@@ -114,7 +114,7 @@ class UnitedKingdom(HolidayBase):
         if self.country != "Scotland":
             name = "Easter Monday"
             if self.country == "UK":
-                name += " [England, Wales, Northern Ireland]"
+                name += " [England/Wales/Northern Ireland]"
             self[easter(year) + rd(weekday=MO)] = name
 
         # May Day bank holiday (first Monday in May)
@@ -154,7 +154,7 @@ class UnitedKingdom(HolidayBase):
         if self.country not in ("Scotland") and year >= 1971:
             name = "Late Summer Bank Holiday"
             if self.country == "UK":
-                name += " [England, Wales, Northern Ireland]"
+                name += " [England/Wales/Northern Ireland]"
             self[date(year, AUG, 31) + rd(weekday=MO(-1))] = name
 
         # Boxing Day

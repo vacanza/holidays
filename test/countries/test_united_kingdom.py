@@ -94,6 +94,7 @@ class TestUK(unittest.TestCase):
             date(1999, 5, 3),
             date(2000, 5, 1),
             date(2010, 5, 3),
+            date(2016, 5, 2),
             date(2018, 5, 7),
             date(2019, 5, 6),
             date(2020, 5, 8),
@@ -210,11 +211,13 @@ class TestUK(unittest.TestCase):
         all_holidays = [
             "New Year's Day",
             "Good Friday",
-            "Easter Monday [England, Wales, Northern Ireland]",
+            "Easter Monday [England/Wales/Northern Ireland]",
             "May Day",
             "Spring Bank Holiday",
+            "Late Summer Bank Holiday [England/Wales/Northern Ireland]",
             "Christmas Day",
             "Boxing Day",
+            "St. Patrick's Day [Northern Ireland]",
         ]
         for holiday in all_holidays:
             self.assertIn(holiday, uk_2015.values())
@@ -244,3 +247,12 @@ class TestIsleOfMan(unittest.TestCase):
     def test_2018(self):
         self.assertIn("2018-06-01", self.holidays)
         self.assertIn("2018-07-05", self.holidays)
+
+
+class TestNorthernIreland(unittest.TestCase):
+    def setUp(self):
+        self.holidays = holidays.NorthernIreland()
+
+    def test_2018(self):
+        self.assertIn("2018-03-17", self.holidays)
+        self.assertIn("2018-07-12", self.holidays)
