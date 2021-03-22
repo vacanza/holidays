@@ -49,7 +49,10 @@ class Serbia(HolidayBase):
         self[date(year, MAY, 1)] = name
         self[date(year, MAY, 2)] = name
         if self.observed and date(year, MAY, 1).weekday() in WEEKEND:
-            self[date(year, MAY, 3)] = name + " (Observed)"
+            if date(year, MAY, 2) == easter(year, method=EASTER_ORTHODOX):
+                self[date(year, MAY, 4)] = name + " (Observed)"
+            else:
+                self[date(year, MAY, 3)] = name + " (Observed)"
         # Armistice day
         name = "Дан примирја у Првом светском рату"
         self[date(year, NOV, 11)] = name
