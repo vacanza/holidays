@@ -16,8 +16,7 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd, FR
 
-from holidays.constants import JAN, APR, MAY, JUL, AUG, \
-    OCT, DEC
+from holidays.constants import JAN, APR, MAY, JUL, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -25,7 +24,7 @@ class Curacao(HolidayBase):
     # https://loketdigital.gobiernu.cw/Loket/product/571960bbe1e5fe8712b10a1323630e70
 
     def __init__(self, **kwargs):
-        self.country = 'CW'
+        self.country = "CW"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -33,14 +32,18 @@ class Curacao(HolidayBase):
         self[date(year, JAN, 1)] = "Nieuwjaarsdag [New Year's Day]"
 
         # Carnaval Monday
-        self[easter(year) + rd(days=-48)] = "Maandag na de Grote Karnaval  \
+        self[
+            easter(year) + rd(days=-48)
+        ] = "Maandag na de Grote Karnaval  \
             [Carnaval Monday]"
 
         # Good Friday
         self[easter(year) + rd(weekday=FR(-1))] = "Goede Vrijdag [Good Friday]"
 
         # Easter Monday
-        self[easter(year) + rd(days=1)] = "Di Dos Dia di Pasku di Resureccion \
+        self[
+            easter(year) + rd(days=1)
+        ] = "Di Dos Dia di Pasku di Resureccion \
             [Easter Monday]"
 
         # King's Day
@@ -75,11 +78,15 @@ class Curacao(HolidayBase):
         self[easter(year) + rd(days=39)] = "Hemelvaartsdag [Ascension Day]"
 
         # Dia di Himno y Bandera
-        self[date(year, JUL, 2)] = "Dia di Himno y Bandera \
+        self[
+            date(year, JUL, 2)
+        ] = "Dia di Himno y Bandera \
             [National Anthem & Flag Day]"
 
         # Dia di Pais Kòrsou
-        self[date(year, OCT, 10)] = "Dia di Pais Kòrsou \
+        self[
+            date(year, OCT, 10)
+        ] = "Dia di Pais Kòrsou \
             [Curaçao Day]"
 
         # Christmas Day
