@@ -94,7 +94,7 @@ class TestUK(unittest.TestCase):
             date(1999, 5, 3),
             date(2000, 5, 1),
             date(2010, 5, 3),
-            date(2011, 5, 9),
+            date(2016, 5, 2),
             date(2018, 5, 7),
             date(2019, 5, 6),
             date(2020, 5, 8),
