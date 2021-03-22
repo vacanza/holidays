@@ -247,6 +247,7 @@ class TestIsleOfMan(unittest.TestCase):
         self.assertIn("2018-06-01", self.holidays)
         self.assertIn("2018-07-05", self.holidays)
 
+
 class TestNorthernIreland(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.NorthernIreland()
