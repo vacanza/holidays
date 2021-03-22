@@ -39,7 +39,9 @@ class TestJapan(unittest.TestCase):
         self.assertNotIn(date(2030, 1, 15), self.holidays)
 
     def test_foundation_day(self):
-        self.assertIn(date(1949, 2, 11), self.holidays)
+        self.assertNotIn(date(1949, 2, 11), self.holidays)
+        self.assertNotIn(date(1966, 2, 11), self.holidays)
+        self.assertIn(date(1967, 2, 11), self.holidays)
         self.assertIn(date(2017, 2, 11), self.holidays)
         self.assertIn(date(2050, 2, 11), self.holidays)
 
@@ -140,6 +142,13 @@ class TestJapan(unittest.TestCase):
         self.assertIn(date(2017, 12, 23), self.holidays)
         self.assertNotIn(date(2019, 12, 23), self.holidays)
         self.assertIn(date(2020, 2, 23), self.holidays)
+
+    def test_showa_emperor_holidays(self):
+        self.assertIn(date(1989, 2, 24), self.holidays)
+
+    def test_heisei_emperor_holidays(self):
+        self.assertIn(date(1959, 4, 10), self.holidays)
+        self.assertIn(date(1990, 11, 12), self.holidays)
 
     def test_reiwa_emperor_holidays(self):
         self.assertIn(date(1993, 6, 9), self.holidays)

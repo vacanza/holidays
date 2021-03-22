@@ -53,7 +53,8 @@ class Japan(HolidayBase):
             self[date(year, JAN, 1) + rd(weekday=MO(+2))] = "成人の日"
 
         # Foundation Day
-        self[date(year, FEB, 11)] = "建国記念の日"
+        if year >= 1967:
+            self[date(year, FEB, 11)] = "建国記念の日"
 
         # Reiwa Emperor's Birthday
         if year >= 2020:
@@ -69,6 +70,10 @@ class Japan(HolidayBase):
             self[date(year, APR, 29)] = "みどりの日"
         else:
             self[date(year, APR, 29)] = "昭和の日"
+
+        # State Funeral of Emperor Shōwa
+        if year == 1989:
+            self[date(year, FEB, 24)] = "大喪の礼"
 
         # Constitution Memorial Day
         self[date(year, MAY, 3)] = "憲法記念日"
@@ -126,6 +131,9 @@ class Japan(HolidayBase):
         self[date(year, NOV, 23)] = "勤労感謝の日"
 
         # Regarding the Emperor of Heisei
+        if year == 1959:
+            # Marriage ceremony
+            self[date(year, APR, 10)] = "結婚の儀"
         if 1989 <= year <= 2018:
             # Heisei Emperor's Birthday
             self[date(year, DEC, 23)] = "天皇誕生日"
@@ -267,6 +275,7 @@ class Japan(HolidayBase):
                 5,
                 6,
                 (
+                    1974,
                     1985,
                     1991,
                     1996,
