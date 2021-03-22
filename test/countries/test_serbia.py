@@ -43,8 +43,14 @@ class TestSerbia(unittest.TestCase):
         self.assertIn(date(2016, 5, 1), self.holidays)
         self.assertIn(date(2016, 5, 2), self.holidays)
         self.assertIn(date(2016, 5, 3), self.holidays)
+        self.assertIn(date(2021, 5, 1), self.holidays)
+        self.assertIn(date(2021, 5, 2), self.holidays)
+        self.assertIn(date(2021, 5, 3), self.holidays)
+        self.assertIn(date(2021, 5, 4), self.holidays)
         self.holidays.observed = False
         self.assertNotIn(date(2016, 5, 3), self.holidays)
+        self.assertIn(date(2021, 5, 3), self.holidays)
+        self.assertNotIn(date(2021, 5, 4), self.holidays)
 
     def test_armistice_day(self):
         # If November 11th is in Weekend, test oberved
