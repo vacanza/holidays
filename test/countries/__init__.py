@@ -35,6 +35,7 @@ from .test_estonia import *
 from .test_european_central_bank import *
 from .test_finland import *
 from .test_france import *
+from .test_georgia import *
 from .test_germany import *
 from .test_greece import *
 from .test_honduras import *

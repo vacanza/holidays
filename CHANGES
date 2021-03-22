@@ -7,6 +7,7 @@ Released -
 - Support for Saudi Arabia #429 (OsaydAbdu)
 - Support for Curacao #431 (RaychelM, dr-p)
 - Support for Jamaica #433 (edyarm, dr-p)
+- Support for Georgia #435 (Okroshiashvili, dr-p)
 - __init.py__ flake8 issue fix #423 (dr-p)
 - Korea 2020 fix #414, #415 (dr-p, janggiKim, spar7453)
 - Israel fix #442 (giladmaya)
