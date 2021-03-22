@@ -263,7 +263,7 @@ class Singapore(HolidayBase):
         # a Sunday, the day next following not being itself a public holiday
         # is declared a public holiday in Singapore."
         for (hol_date, hol_name) in list(self.items()):
-            if hol_date.weekday() == SUN:
+            if hol_date.year == year and hol_date.weekday() == SUN:
                 self[hol_date] += " [Sunday]"
                 in_lieu_date = hol_date + rd(days=+1)
                 while in_lieu_date in self:
