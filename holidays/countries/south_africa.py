@@ -100,7 +100,7 @@ class SouthAfrica(HolidayBase):
         # As of 1995/1/1, whenever a public holiday falls on a Sunday,
         # it rolls over to the following Monday
         for k, v in list(self.items()):
-            if self.observed and year > 1994 and k.weekday() == SUN:
+            if self.observed and year > 1994 and k.weekday() == SUN and k.year == year:
                 add_days = 1
                 while self.get(k + rd(days=add_days)) is not None:
                     add_days += 1
