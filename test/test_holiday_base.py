@@ -11,6 +11,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+import pickle
 import unittest
 
 from datetime import date, datetime, timedelta
@@ -446,6 +447,16 @@ class TestArgs(unittest.TestCase):
         self.assertNotIn(date(1878, 7, 3), self.holidays)
         self.holidays.observed = True
         self.assertIn(date(2018, 7, 2), self.holidays)
+
+    def test_serialization(self):
+        loaded_holidays = pickle.loads(pickle.dumps(self.holidays))
+        assert loaded_holidays == self.holidays
+
+        dt = datetime(2020, 1, 1)
+        res = dt in self.holidays
+        loaded_holidays = pickle.loads(pickle.dumps(self.holidays))
+        assert loaded_holidays == self.holidays
+        assert (dt in loaded_holidays) == res
 
 
 class TestKeyTransforms(unittest.TestCase):
