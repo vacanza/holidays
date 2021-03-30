@@ -16,6 +16,7 @@ Released -
 - Serbia fix #446 (kosugor)
 - United Kingdom get_list fix #448 (bletham)
 - Singapore fix for multi-year #419 (mborsetti)
+- Fixed holidays pickling #451 (giladmaya)
 
 
 Version 0.10.5.2
