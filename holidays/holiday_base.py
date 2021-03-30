@@ -209,6 +209,9 @@ class HolidayBase(dict):
     def _populate(self, year):
         pass
 
+    def __reduce__(self):
+        return super(HolidayBase, self).__reduce__()
+
 
 def createHolidaySum(h1, h2):
     class HolidaySum(HolidayBase):
