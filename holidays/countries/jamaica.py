@@ -24,7 +24,7 @@ class Jamaica(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Jamaica
 
     def __init__(self, **kwargs):
-        self.country = 'JM'
+        self.country = "JM"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -33,7 +33,7 @@ class Jamaica(HolidayBase):
         name = "New Year's Day"
         _date = date(year, JAN, 1)
         if self.observed and _date.weekday() == SUN:
-            self[_date + rd(weekday=MO(+1))] = name + ' (Observed)'
+            self[_date + rd(weekday=MO(+1))] = name + " (Observed)"
         else:
             self[_date] = name
 
@@ -47,7 +47,7 @@ class Jamaica(HolidayBase):
         name = "Labour Day"
         _date = date(year, MAY, 23)
         if self.observed and _date.weekday() == SUN:
-            self[_date + rd(weekday=MO)] = name + ' (Observed)'
+            self[_date + rd(weekday=MO)] = name + " (Observed)"
         else:
             self[_date] = name
 
@@ -58,7 +58,7 @@ class Jamaica(HolidayBase):
         name = "Emancipation Day"
         _date = date(year, AUG, 1)
         if self.observed and _date.weekday() == SUN:
-            self[_date + rd(weekday=MO)] = name + ' (Observed)'
+            self[_date + rd(weekday=MO)] = name + " (Observed)"
         else:
             self[_date] = name
 

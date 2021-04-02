@@ -14,5 +14,4 @@ flake8
 
 #deployment
 pip>=19.2.3
-bump2version
 wheel>=0.33.6
