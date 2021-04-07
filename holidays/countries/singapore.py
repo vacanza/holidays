@@ -45,7 +45,7 @@ class Singapore(HolidayBase):
 
     # Holidays prior to 2000 may not be accurate.
 
-    # Holidays after 2021: the following four moving date holidays whose exact
+    # Holidays after 2022: the following four moving date holidays whose exact
     # date is announced yearly are estimated (and so denoted):
     # - Hari Raya Puasa*
     # - Hari Raya Haji*
@@ -94,6 +94,7 @@ class Singapore(HolidayBase):
             2019: [(JUN, 5)],
             2020: [(MAY, 24)],
             2021: [(MAY, 13)],
+            2022: [(MAY, 2)],
         }
         if year in dates_obs:
             for date_obs in dates_obs[year]:
@@ -141,6 +142,7 @@ class Singapore(HolidayBase):
             2019: [(AUG, 11)],
             2020: [(JUL, 31)],
             2021: [(JUL, 20)],
+            2022: [(JUL, 9)],
         }
         if year in dates_obs:
             for date_obs in dates_obs[year]:
@@ -190,6 +192,7 @@ class Singapore(HolidayBase):
             2019: (MAY, 19),
             2020: (MAY, 7),
             2021: (MAY, 26),
+            2022: (MAY, 15),
         }
         if year in dates_obs:
             hol_date = date(year, *dates_obs[year])
@@ -226,6 +229,7 @@ class Singapore(HolidayBase):
             2019: (OCT, 27),
             2020: (NOV, 14),
             2021: (NOV, 4),
+            2022: (NOV, 24),
         }
         if year in dates_obs:
             hol_date = date(year, *dates_obs[year])
