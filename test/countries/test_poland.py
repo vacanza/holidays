@@ -39,6 +39,11 @@ class TestPL(unittest.TestCase):
         self.assertIn(date(2017, 12, 25), self.holidays)
         self.assertIn(date(2017, 12, 26), self.holidays)
 
+        self.assertNotIn(date(2017, 11, 12), self.holidays)
+
+    def test_2018(self):
+        self.assertIn(date(2018, 11, 12), self.holidays)
+
     def test_polish_deprecated(self):
         with warnings.catch_warnings(record=True) as w:
             warnings.simplefilter("always")
