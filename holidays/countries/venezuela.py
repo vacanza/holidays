@@ -46,8 +46,6 @@ class Venezuela(HolidayBase):
         # New Year's Day
         self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
 
-        self[date(year, APR, 19)] = "Declaración de la Independencia"
-
         self[date(year, MAY, 1)] = "Dia Mundial del Trabajador"
 
         self[date(year, JUN, 24)] = "Batalla de Carabobo"
@@ -63,14 +61,25 @@ class Venezuela(HolidayBase):
 
         self[date(year, DEC, 25)] = "Día de Navidad"
 
+        self[date(year, DEC, 31)] = "Fiesta de Fin de Año"
+
         # Semana Santa y Carnaval
 
-        # self[easter(year) - rd(weekday=FR(-1))] = "Viernes Santo"
-        self[easter(year) - rd(days=2)] = "Viernes Santo"
+        if date(year, APR, 19) == (easter(year) - rd(days=2)):
+            self[easter(year) - rd(days=2)] = "Viernes Santo y Declaración de la Independencia"
+        else:
+            # self[easter(year) - rd(weekday=FR(-1))] = "Viernes Santo"
+            self[date(year, APR, 19)] = "Declaración de la Independencia"
+            self[easter(year) - rd(days=2)] = "Viernes Santo"
 
         # self[easter(year) - rd(weekday=TH(-1))] = "Jueves Santo"
-        self[easter(year) - rd(days=3)] = "Jueves Santo"
 
+        if date(year, APR, 19) == (easter(year) - rd(days=3)):
+            self[easter(year) - rd(days=3)] = "Jueves Santo y Declaración de la Independencia"
+        else:
+            # self[easter(year) - rd(weekday=FR(-1))] = "Viernes Santo"
+            self[date(year, APR, 19)] = "Declaración de la Independencia"
+            self[easter(year) - rd(days=3)] = "Jueves Santo"        
 
         self[easter(year) - rd(days=47)] = "Martes de Carnaval"
 
@@ -79,9 +88,9 @@ class Venezuela(HolidayBase):
 
 
 
-class VN(Venezuela):
+class VZ(Venezuela):
     pass
 
 
-class VNZ(Venezuela):
+class VZL(Venezuela):
     pass
