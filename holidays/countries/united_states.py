@@ -375,6 +375,10 @@ class UnitedStates(HolidayBase):
                 elif date(year, JUN, 11).weekday() == SUN:
                     self[date(year, JUN, 12)] = "Kamehameha Day (Observed)"
 
+        # Juneteenth National Independence Day
+        if year >= 2021:
+            self[date(year, JUN, 19)] = "Juneteenth National Independence Day"
+
         # Emancipation Day In Texas
         if self.state == "TX" and year >= 1980:
             self[date(year, JUN, 19)] = "Emancipation Day In Texas"
