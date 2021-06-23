@@ -7,7 +7,7 @@
 #  specific date is a holiday as fast and flexible as possible.
 #
 #  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2020
+#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -43,7 +43,7 @@ class Morocco(HolidayBase):
     """
 
     def __init__(self, **kwargs):
-        self.country = 'MA'
+        self.country = "MA"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -65,8 +65,10 @@ class Morocco(HolidayBase):
 
         # Independence Manifesto Day post 1944
         if year > 1944:
-            self[date(year, JAN, 11)] = "Commémoration de la présentation " \
-                                        "du manifeste de l'indépendance"
+            self[date(year, JAN, 11)] = (
+                "Commémoration de la présentation "
+                "du manifeste de l'indépendance"
+            )
 
         # Labor day
         self[date(year, MAY, 1)] = "Fête du Travail"
@@ -83,8 +85,9 @@ class Morocco(HolidayBase):
         self[date(year, AUG, 14)] = "Journée de Oued Ed-Dahab"
 
         # Revolution Day
-        self[date(year, AUG, 20)] = "Commémoration de la révolution du " \
-                                    "Roi et du peuple"
+        self[date(year, AUG, 20)] = (
+            "Commémoration de la révolution du " "Roi et du peuple"
+        )
 
         # Youth day
         if year > 2000:

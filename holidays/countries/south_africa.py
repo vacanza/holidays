@@ -7,7 +7,7 @@
 #  specific date is a holiday as fast and flexible as possible.
 #
 #  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2020
+#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -17,8 +17,7 @@ from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import FRI, SUN
-from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, \
-    DEC
+from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -101,7 +100,12 @@ class SouthAfrica(HolidayBase):
         # As of 1995/1/1, whenever a public holiday falls on a Sunday,
         # it rolls over to the following Monday
         for k, v in list(self.items()):
-            if self.observed and year > 1994 and k.weekday() == SUN:
+            if (
+                self.observed
+                and year > 1994
+                and k.weekday() == SUN
+                and k.year == year
+            ):
                 add_days = 1
                 while self.get(k + rd(days=add_days)) is not None:
                     add_days += 1

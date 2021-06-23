@@ -7,7 +7,7 @@
 #  specific date is a holiday as fast and flexible as possible.
 #
 #  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2020
+#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -23,7 +23,7 @@ class Turkey(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Turkey
 
     def __init__(self, **kwargs):
-        self.country = 'TR'
+        self.country = "TR"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -38,8 +38,9 @@ class Turkey(HolidayBase):
         self[date(year, MAY, 1)] = "Labour Day"
 
         # 19th of May
-        self[date(year, MAY, 19)] = "Commemoration of Ataturk, Youth and "\
-            "Sports Day"
+        self[date(year, MAY, 19)] = (
+            "Commemoration of Ataturk, Youth and " "Sports Day"
+        )
 
         # 15th of Jul
         # Became a national holiday after 15 Jul 2016 coup d'etat attempt.

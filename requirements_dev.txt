@@ -1,0 +1,17 @@
+# package runtime requirements
+python-dateutil
+six
+convertdate>=2.3.0
+korean_lunar_calendar
+hijri_converter
+
+# test requirements
+pytest
+pytest-cov
+coverage[toml]
+pre-commit
+flake8
+
+#deployment
+pip>=19.2.3
+wheel>=0.33.6

@@ -7,7 +7,7 @@
 #  specific date is a holiday as fast and flexible as possible.
 #
 #  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2020
+#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -16,8 +16,7 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd, FR, SA
 
-from holidays.constants import JAN, MAR, MAY, JUN, OCT, \
-    DEC
+from holidays.constants import JAN, MAR, MAY, JUN, OCT, DEC
 from holidays.constants import MON, THU, FRI, SAT, SUN
 from holidays.holiday_base import HolidayBase
 
@@ -50,9 +49,9 @@ class Sweden(HolidayBase):
         # Add all the sundays of the year before adding the "real" holidays
         if self.include_sundays:
             first_day_of_year = date(year, JAN, 1)
-            first_sunday_of_year = \
-                first_day_of_year + \
-                rd(days=SUN - first_day_of_year.weekday())
+            first_sunday_of_year = first_day_of_year + rd(
+                days=SUN - first_day_of_year.weekday()
+            )
             cur_date = first_sunday_of_year
 
             while cur_date < date(year + 1, 1, 1):

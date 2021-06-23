@@ -5,5 +5,10 @@ MANIFEST
 .coverage
 *.egg-info
 *.pyc
+*.DS_Store
+coverage.xml
+.tox
+
+# IDE Stuff
 .idea
 .vscode/

@@ -7,7 +7,7 @@
 #  specific date is a holiday as fast and flexible as possible.
 #
 #  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2020
+#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -34,16 +34,16 @@ class Iceland(HolidayBase):
         self[easter(year) + rd(weekday=FR(-1))] = "Föstudagurinn langi"
         self[easter(year)] = "Páskadagur"
         self[easter(year) + rd(days=1)] = "Annar í páskum"
-        self[date(year, APR, 19) + rd(weekday=TH(+1))] = \
-            "Sumardagurinn fyrsti"
+        self[date(year, APR, 19) + rd(weekday=TH(+1))] = "Sumardagurinn fyrsti"
         self[date(year, MAY, 1)] = "Verkalýðsdagurinn"
         self[easter(year) + rd(days=39)] = "Uppstigningardagur"
         self[easter(year) + rd(days=49)] = "Hvítasunnudagur"
         self[easter(year) + rd(days=50)] = "Annar í hvítasunnu"
         self[date(year, JUN, 17)] = "Þjóðhátíðardagurinn"
         # First Monday of August
-        self[date(year, AUG, 1) + rd(weekday=MO(+1))] = \
-            "Frídagur verslunarmanna"
+        self[
+            date(year, AUG, 1) + rd(weekday=MO(+1))
+        ] = "Frídagur verslunarmanna"
         self[date(year, DEC, 24)] = "Aðfangadagur"
         self[date(year, DEC, 25)] = "Jóladagur"
         self[date(year, DEC, 26)] = "Annar í jólum"

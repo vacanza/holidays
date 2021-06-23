@@ -7,7 +7,7 @@
 #  specific date is a holiday as fast and flexible as possible.
 #
 #  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2020
+#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -45,8 +45,9 @@ class Korea(HolidayBase):
         if self.observed:
             self[first_date] = name
             if first_date.weekday() == SUN:
-                self[first_date + rd(days=+1)] = alt_holiday + \
-                    self.first_lower(name)
+                self[
+                    first_date + rd(days=+1)
+                ] = alt_holiday + self.first_lower(name)
                 first_date = first_date + rd(days=+1)
             else:
                 self[first_date] = name
@@ -78,19 +79,12 @@ class Korea(HolidayBase):
         # Independence Movement Day
         name = "Independence Movement Day"
         independence_date = date(year, MAR, 1)
-        if self.observed and year >= 2015:
-            if independence_date.weekday() == SUN:
-                self[independence_date] = name
-                self[independence_date + rd(days=+1)] = alt_holiday + name
-            else:
-                self[independence_date] = name
-        else:
-            self[independence_date] = name
+        self[independence_date] = name
 
         # Tree Planting Day
         name = "Tree Planting Day"
         planting_date = date(year, APR, 5)
-        if self.observed and year >= 1949 and year <= 2007 and year != 1960:
+        if self.observed and 1949 <= year <= 2007 and year != 1960:
             self[planting_date] = name
         else:
             # removed from holiday since 2007
@@ -134,7 +128,7 @@ class Korea(HolidayBase):
         # Constitution Day
         name = "Constitution Day"
         constitution_date = date(year, JUL, 17)
-        if self.observed and year >= 1948 and year <= 2007:
+        if self.observed and 1948 <= year <= 2007:
             self[constitution_date] = name
         else:
             # removed from holiday since 2008
@@ -186,15 +180,19 @@ class Korea(HolidayBase):
 
         # Just for year 2020 - since 2020.08.15 is Sat, the government
         # decided to make 2020.08.17 holiday, yay
-        name = "Alternative public holiday"
-        alt_date = date(2020, OCT, 17)
-        self[alt_date] = name
+        if year == 2020:
+            name = "Alternative public holiday"
+            alt_date = date(2020, AUG, 17)
+            self[alt_date] = name
 
     # convert lunar calendar date to solar
     def get_solar_date(self, year, month, day):
         self.korean_cal.setLunarDate(year, month, day, False)
-        return date(self.korean_cal.solarYear, self.korean_cal.solarMonth,
-                    self.korean_cal.solarDay)
+        return date(
+            self.korean_cal.solarYear,
+            self.korean_cal.solarMonth,
+            self.korean_cal.solarDay,
+        )
 
     def first_lower(self, s):
         return s[0].lower() + s[1:]

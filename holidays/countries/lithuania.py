@@ -7,7 +7,7 @@
 #  specific date is a holiday as fast and flexible as possible.
 #
 #  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2020
+#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -34,14 +34,14 @@ class Lithuania(HolidayBase):
 
         # Day of Restoration of the State of Lithuania (1918)
         if year >= 1918:
-            self[date(year, 2, 16)] = "Lietuvos valstybės " \
-                                      "atkūrimo diena"
+            self[date(year, 2, 16)] = "Lietuvos valstybės " "atkūrimo diena"
 
         # Day of Restoration of Independence of Lithuania
         # (from the Soviet Union, 1990)
         if year >= 1990:
-            self[date(year, 3, 11)] = "Lietuvos nepriklausomybės " \
-                                      "atkūrimo diena"
+            self[date(year, 3, 11)] = (
+                "Lietuvos nepriklausomybės " "atkūrimo diena"
+            )
 
         # Easter
         easter_date = easter(year)
@@ -66,13 +66,16 @@ class Lithuania(HolidayBase):
 
         # Statehood Day
         if year >= 1991:
-            self[date(year, 7, 6)] = "Valstybės (Lietuvos " \
-                                     "karaliaus Mindaugo " \
-                                     "karūnavimo) diena"
+            self[date(year, 7, 6)] = (
+                "Valstybės (Lietuvos "
+                "karaliaus Mindaugo "
+                "karūnavimo) diena"
+            )
 
         # Assumption Day
-        self[date(year, 8, 15)] = "Žolinė (Švč. Mergelės " \
-                                  "Marijos ėmimo į dangų diena)"
+        self[date(year, 8, 15)] = (
+            "Žolinė (Švč. Mergelės " "Marijos ėmimo į dangų diena)"
+        )
 
         # All Saints' Day
         self[date(year, 11, 1)] = "Visų šventųjų diena (Vėlinės)"

@@ -7,7 +7,7 @@
 #  specific date is a holiday as fast and flexible as possible.
 #
 #  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2020
+#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -16,8 +16,7 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd, TH, FR, SA, SU
 
-from holidays.constants import JAN, FEB, MAR, APR, MAY, SEP, OCT, \
-    DEC
+from holidays.constants import JAN, FEB, MAR, APR, MAY, SEP, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -25,7 +24,7 @@ class Honduras(HolidayBase):
     # https://www.timeanddate.com/holidays/honduras/
 
     def __init__(self, **kwargs):
-        self.country = "HND"
+        self.country = "HN"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -49,20 +48,22 @@ class Honduras(HolidayBase):
             self[date(year, MAR, 19)] = name
 
         # Maundy Thursday
-        self[easter(year) + rd(weekday=TH(-1))
-             ] = "Jueves Santo [Maundy Thursday]"
+        self[
+            easter(year) + rd(weekday=TH(-1))
+        ] = "Jueves Santo [Maundy Thursday]"
 
         # Good Friday
-        self[easter(year) + rd(weekday=FR(-1))
-             ] = "Viernes Santo [Good Friday]"
+        self[easter(year) + rd(weekday=FR(-1))] = "Viernes Santo [Good Friday]"
 
         # Holy Saturday
-        self[easter(year) + rd(weekday=SA(-1))
-             ] = "Sábado de Gloria [Holy Saturday]"
+        self[
+            easter(year) + rd(weekday=SA(-1))
+        ] = "Sábado de Gloria [Holy Saturday]"
 
         # Easter Sunday
-        self[easter(year) + rd(weekday=SU(-1))
-             ] = "Domingo de Resurrección [Easter Sunday]"
+        self[
+            easter(year) + rd(weekday=SU(-1))
+        ] = "Domingo de Resurrección [Easter Sunday]"
 
         # America Day
         if self.observed and date(year, APR, 14):
@@ -75,7 +76,7 @@ class Honduras(HolidayBase):
         # Mother's Day
         may_first = date(int(year), 5, 1)
         weekday_seq = may_first.weekday()
-        mom_day = (14 - weekday_seq)
+        mom_day = 14 - weekday_seq
         if self.observed and date(year, MAY, mom_day):
             str_day = "Día de la madre [Mother's Day] (Observed)"
             self[date(year, MAY, mom_day)] = str_day

@@ -7,7 +7,7 @@
 #  specific date is a holiday as fast and flexible as possible.
 #
 #  Author:      ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#               dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2020
+#               dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
 #  Contributor: rolandinsh <rolands@mediabox.lv> (c) 2020
 #  Website:     https://github.com/rolandinsh/python-holidays
 #  License:     MIT (see LICENSE file)
@@ -51,7 +51,9 @@ class Latvia(HolidayBase):
         # Latvia proclaimed its independence from the USSR,
         #   and restoration of the Republic of Latvia.
         if year >= 1990:
-            self[date(year, 5, 4)] = "Latvijas Republikas \
+            self[
+                date(year, 5, 4)
+            ] = "Latvijas Republikas \
                 Neatkarības atjaunošanas diena"
 
         # by law
@@ -67,8 +69,9 @@ class Latvia(HolidayBase):
 
         # Proclamation Day of the Republic of Latvia
         if year >= 1918:
-            self[date(year, 11, 18)] = \
-                "Latvijas Republikas proklamēšanas diena"
+            self[
+                date(year, 11, 18)
+            ] = "Latvijas Republikas proklamēšanas diena"
 
         # Christmas Eve
         self[date(year, 12, 24)] = "Ziemassvētku vakars"

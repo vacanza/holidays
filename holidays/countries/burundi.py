@@ -7,7 +7,7 @@
 #  specific date is a holiday as fast and flexible as possible.
 #
 #  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2020
+#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -34,7 +34,7 @@ class Burundi(HolidayBase):
     """
 
     def __init__(self, **kwargs):
-        self.country = 'BI'
+        self.country = "BI"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -78,7 +78,7 @@ class Burundi(HolidayBase):
             self[hol_date + rd(days=1)] = "Eid Al Adha"
 
         # Assumption Day
-        name = 'Assumption Day'
+        name = "Assumption Day"
         self[date(year, AUG, 15)] = name
 
         # Prince Louis Rwagasore Day

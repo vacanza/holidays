@@ -7,7 +7,7 @@
 #  specific date is a holiday as fast and flexible as possible.
 #
 #  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2020
+#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -20,21 +20,24 @@ from dateutil.parser import parse
 class HolidayBase(dict):
     PROVINCES = []
 
-    def __init__(self, years=[], expand=True, observed=True,
-                 prov=None, state=None):
+    def __init__(
+        self, years=[], expand=True, observed=True, prov=None, state=None
+    ):
         self.observed = observed
         self.expand = expand
         if isinstance(years, int):
-            years = [years, ]
+            years = [
+                years,
+            ]
         self.years = set(years)
-        if not getattr(self, 'prov', False):
+        if not getattr(self, "prov", False):
             self.prov = prov
         self.state = state
         for year in list(self.years):
             self._populate(year)
 
     def __setattr__(self, key, value):
-        if key == 'observed' and len(self) > 0:
+        if key == "observed" and len(self) > 0:
             dict.__setattr__(self, key, value)
             if value is True:
                 # Add (Observed) dates
@@ -94,7 +97,7 @@ class HolidayBase(dict):
                 )
 
             if step == 0:
-                raise ValueError('Step value must not be zero.')
+                raise ValueError("Step value must not be zero.")
 
             date_diff = stop - start
             if date_diff.days < 0 <= step or date_diff.days >= 0 > step:
@@ -104,10 +107,7 @@ class HolidayBase(dict):
             for delta_days in range(0, date_diff.days, step):
                 day = start + timedelta(days=delta_days)
                 try:
-                    dict.__getitem__(
-                        self,
-                        day
-                    )
+                    dict.__getitem__(self, day)
                     days_in_range.append(day)
                 except KeyError:
                     pass
@@ -116,8 +116,7 @@ class HolidayBase(dict):
 
     def __setitem__(self, key, value):
         if key in self:
-            if self.get(key).find(value) < 0 \
-                    and value.find(self.get(key)) < 0:
+            if self.get(key).find(value) < 0 and value.find(self.get(key)) < 0:
                 value = "%s, %s" % (value, self.get(key))
             else:
                 value = self.get(key)
@@ -147,7 +146,10 @@ class HolidayBase(dict):
     def get_named(self, name):
         # find all dates matching provided name (accepting partial
         # strings too, case insensitive), returning them in a list
+        original_expand = self.expand
+        self.expand = False
         matches = [key for key in self if name.lower() in self[key].lower()]
+        self.expand = original_expand
         return matches
 
     def pop(self, key, default=None):
@@ -177,8 +179,9 @@ class HolidayBase(dict):
         elif not isinstance(other, HolidayBase):
             raise TypeError()
         HolidaySum = createHolidaySum(self, other)
-        country = (getattr(self, 'country', None) or
-                   getattr(other, 'country', None))
+        country = getattr(self, "country", None) or getattr(
+            other, "country", None
+        )
         if self.country and other.country and self.country != other.country:
             c1 = self.country
             if not isinstance(c1, list):
@@ -187,15 +190,18 @@ class HolidayBase(dict):
             if not isinstance(c2, list):
                 c2 = [c2]
             country = c1 + c2
-        prov = getattr(self, 'prov', None) or getattr(other, 'prov', None)
+        prov = getattr(self, "prov", None) or getattr(other, "prov", None)
         if self.prov and other.prov and self.prov != other.prov:
             p1 = self.prov if isinstance(self.prov, list) else [self.prov]
             p2 = other.prov if isinstance(other.prov, list) else [other.prov]
             prov = p1 + p2
-        return HolidaySum(years=(self.years | other.years),
-                          expand=(self.expand or other.expand),
-                          observed=(self.observed or other.observed),
-                          country=country, prov=prov)
+        return HolidaySum(
+            years=(self.years | other.years),
+            expand=(self.expand or other.expand),
+            observed=(self.observed or other.observed),
+            country=country,
+            prov=prov,
+        )
 
     def __radd__(self, other):
         return self.__add__(other)
@@ -203,19 +209,21 @@ class HolidayBase(dict):
     def _populate(self, year):
         pass
 
+    def __reduce__(self):
+        return super(HolidayBase, self).__reduce__()
+
 
 def createHolidaySum(h1, h2):
     class HolidaySum(HolidayBase):
-
         def __init__(self, country, **kwargs):
             self.country = country
             self.holidays = []
-            if getattr(h1, 'holidays', False):
+            if getattr(h1, "holidays", False):
                 for h in h1.holidays:
                     self.holidays.append(h)
             else:
                 self.holidays.append(h1)
-            if getattr(h2, 'holidays', False):
+            if getattr(h2, "holidays", False):
                 for h in h2.holidays:
                     self.holidays.append(h)
             else:

@@ -7,7 +7,7 @@
 #  specific date is a holiday as fast and flexible as possible.
 #
 #  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2020
+#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -25,7 +25,7 @@ class EuropeanCentralBank(HolidayBase):
     # http://www.ecb.europa.eu/press/pr/date/2000/html/pr001214_4.en.html
 
     def __init__(self, **kwargs):
-        self.country = 'EU'
+        self.country = "EU"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

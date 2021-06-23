@@ -7,7 +7,7 @@
 #  specific date is a holiday as fast and flexible as possible.
 #
 #  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2020
+#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -27,7 +27,7 @@ class Paraguay(HolidayBase):
     # http://www.calendarioparaguay.com/
 
     def __init__(self, **kwargs):
-        self.country = 'PY'
+        self.country = "PY"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -38,8 +38,7 @@ class Paraguay(HolidayBase):
             self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
 
         # Patriots day
-        name = "Día de los Héroes de la Patria" \
-               "[Patriots Day]"
+        name = "Día de los Héroes de la Patria" "[Patriots Day]"
 
         if not self.observed and date(year, MAR, 1).weekday() in WEEKEND:
             pass
@@ -51,7 +50,7 @@ class Paraguay(HolidayBase):
         # Holy Week
         name_thu = "Semana Santa (Jueves Santo)  [Holy day (Holy Thursday)]"
         name_fri = "Semana Santa (Viernes Santo)  [Holy day (Holy Friday)]"
-        name_easter = 'Día de Pascuas [Easter Day]'
+        name_easter = "Día de Pascuas [Easter Day]"
 
         self[easter(year) + rd(weekday=TH(-1))] = name_thu
         self[easter(year) + rd(weekday=FR(-1))] = name_fri

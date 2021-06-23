@@ -7,7 +7,7 @@
 #  specific date is a holiday as fast and flexible as possible.
 #
 #  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2020
+#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -25,7 +25,7 @@ class Serbia(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Serbia
 
     def __init__(self, **kwargs):
-        self.country = 'RS'
+        self.country = "RS"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -49,20 +49,26 @@ class Serbia(HolidayBase):
         self[date(year, MAY, 1)] = name
         self[date(year, MAY, 2)] = name
         if self.observed and date(year, MAY, 1).weekday() in WEEKEND:
-            self[date(year, MAY, 3)] = name + " (Observed)"
+            if date(year, MAY, 2) == easter(year, method=EASTER_ORTHODOX):
+                self[date(year, MAY, 4)] = name + " (Observed)"
+            else:
+                self[date(year, MAY, 3)] = name + " (Observed)"
         # Armistice day
         name = "Дан примирја у Првом светском рату"
         self[date(year, NOV, 11)] = name
         if self.observed and date(year, NOV, 11).weekday() == SUN:
             self[date(year, NOV, 12)] = name + " (Observed)"
         # Easter
-        self[easter(year, method=EASTER_ORTHODOX) - rd(days=2)] = \
-            "Велики петак"
-        self[easter(year, method=EASTER_ORTHODOX) - rd(days=1)] = \
-            "Велика субота"
+        self[
+            easter(year, method=EASTER_ORTHODOX) - rd(days=2)
+        ] = "Велики петак"
+        self[
+            easter(year, method=EASTER_ORTHODOX) - rd(days=1)
+        ] = "Велика субота"
         self[easter(year, method=EASTER_ORTHODOX)] = "Васкрс"
-        self[easter(year, method=EASTER_ORTHODOX) + rd(days=1)] = \
-            "Други дан Васкрса"
+        self[
+            easter(year, method=EASTER_ORTHODOX) + rd(days=1)
+        ] = "Други дан Васкрса"
 
 
 class RS(Serbia):
