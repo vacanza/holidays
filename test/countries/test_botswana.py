@@ -23,7 +23,7 @@ class TestBotswana(unittest.TestCase):
         self.holidays = holidays.BW()
 
     def test_new_years(self):
-        self.assertIn(date(1914, 1, 1), self.holidays)
+        self.assertIn(date(1966, 1, 1), self.holidays)
         self.assertIn(date(2018, 1, 1), self.holidays)
         self.assertIn(date(2999, 1, 1), self.holidays)
         self.assertIn(date(2017, 1, 2), self.holidays)  # sunday
@@ -34,8 +34,8 @@ class TestBotswana(unittest.TestCase):
         self.assertIn(date(1994, 4, 1), self.holidays)
 
     def test_static(self):
-        self.assertIn(date(2004, 8, 9), self.holidays)
-        self.assertIn(date(2022, 12, 27), self.holidays)  # Christmas
+        self.assertIn(date(2004, 7, 1), self.holidays)
+        self.assertIn(date(2022, 12, 26), self.holidays)  # Christmas
 
     def test_not_holiday(self):
         self.assertNotIn(date(2016, 12, 28), self.holidays)
