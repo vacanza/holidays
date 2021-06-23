@@ -53,7 +53,7 @@ class Botswana(HolidayBase):
             self[date(year, JUL, 1)] = "Sir Seretse Khama Day"
 
             # 3rd Monday of July = "President's Day"
-            # Find the date of the 3rd Monday 
+            # Find the date of the 3rd Monday
             # for the given year
             d = date(year, 7, 15)
             while d.isoweekday() != 1 and (15 <= d.day <= 21):
@@ -89,15 +89,16 @@ class Botswana(HolidayBase):
             ):
                 # Add the (Observed) holiday
                 self[k + rd(days=1)] = v + " (Observed)"
-            
-            # If there is a holiday and an (Observed) holiday on the same day, 
+
+            # If there is a holiday and an (Observed) holiday on the same day,
             # add an (Observed) holiday for that holiday
-            if len(self.get(k).split(',')) > 1:
-                # self.get(date) returns a string containing holidays as a comma delimited string
-                # split on delimiter to determine if there are multiple on the same day
+            if len(self.get(k).split(",")) > 1:
+                # self.get(date) returns a string containing holidays as a
+                # comma delimited string split on delimiter to determine if
+                # there are multiple on the same day
 
                 # Add an (Observed) for the one that is not (Observed)
-                for i in self.get(k).split(','):
+                for i in self.get(k).split(","):
                     if " (Observed)" not in i:
                         self[k + rd(days=1)] = i + " (Observed)"
 
