@@ -18,7 +18,7 @@ from datetime import date
 import holidays
 
 
-class TestSouthAfrica(unittest.TestCase):
+class TestBotswana(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.BW()
 
@@ -35,9 +35,7 @@ class TestSouthAfrica(unittest.TestCase):
 
     def test_static(self):
         self.assertIn(date(2004, 8, 9), self.holidays)
-        self.assertIn(
-            date(2022, 12, 27), self.holidays
-        )  # Christmas (Observed)
+        self.assertIn(date(2022, 12, 27), self.holidays)  # Christmas
 
     def test_not_holiday(self):
         self.assertNotIn(date(2016, 12, 28), self.holidays)
