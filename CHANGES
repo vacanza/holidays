@@ -1,3 +1,13 @@
+Version 0.11.2
+==============
+
+Released ????, ????
+
+- Poland fix #464 (m-ganko)
+- Singapore updates for 2022 #456 (mborsetti)
+- .gitignore fix #462 (TheLastProject)
+- Pre-commit v.2.0.3 (dr-p)
+
 Version 0.11.1
 ==============
 
