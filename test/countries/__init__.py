@@ -18,6 +18,7 @@ from .test_austria import *
 from .test_bangladesh import *
 from .test_belarus import *
 from .test_belgium import *
+from .test_botswana import *
 from .test_brazil import *
 from .test_bulgaria import *
 from .test_burundi import *
