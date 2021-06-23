@@ -40,6 +40,7 @@ class TestBotswana(unittest.TestCase):
     def test_not_holiday(self):
         self.assertNotIn(date(2016, 12, 28), self.holidays)
         self.assertNotIn(date(2015, 3, 2), self.holidays)
+        self.assertNotIn(date(1964, 4, 16), self.holidays)
 
     def test_onceoff(self):
         self.assertIn(date(2019, 7, 2), self.holidays)
