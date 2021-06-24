@@ -19,7 +19,7 @@ from datetime import date
 import holidays
 
 
-class TestES(unittest.TestCase):
+class TestSpain(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.ES(observed=False)
         self.holidays_observed = holidays.ES()
@@ -63,9 +63,7 @@ class TestES(unittest.TestCase):
             self.assertEqual(
                 date(2016, 3, 24) in prov_holidays, prov not in ["CT", "VC"]
             )
-            self.assertEqual(
-                date(2016, 3, 25) in prov_holidays, prov not in ["CT", "VC"]
-            )
+            assert date(2016, 3, 25) in prov_holidays
             self.assertEqual(
                 date(2016, 3, 28) in prov_holidays,
                 prov in ["CT", "PV", "NC", "VC", "IB", "CM"],
