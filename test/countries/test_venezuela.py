@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #  python-holidays
 #  ---------------
 #  A fast, efficient Python library for generating country, province and state
@@ -20,7 +21,9 @@ class TestVenezuela(unittest.TestCase):
     def test_VZ_holidays(self):
         self.holidays = holidays.VN(years=2019)
         self.assertIn("2019-01-01", self.holidays)
-        self.assertEqual(self.holidays[date(2019, 1, 1)], "Año Nuevo [New Year's Day]")
+        self.assertEqual(
+            self.holidays[date(2019, 1, 1)], "Año Nuevo [New Year's Day]"
+        )
         self.assertIn("2019-03-04", self.holidays)
         self.assertEqual(
             self.holidays[date(2019, 3, 4)],
@@ -31,25 +34,32 @@ class TestVenezuela(unittest.TestCase):
         self.assertIn("2019-04-18", self.holidays)
         self.assertEqual(self.holidays[date(2019, 4, 18)], "Jueves Santo")
         self.assertIn("2019-04-19", self.holidays)
-        self.assertEqual(self.holidays[date(2019, 4, 19)], "Viernes Santo y Dia de la Independencia")
+        self.assertEqual(
+            self.holidays[date(2019, 4, 19)],
+            "Viernes Santo y " "Dia de la " "Independencia",
+        )
         self.assertIn("2019-05-01", self.holidays)
-        self.assertEqual(self.holidays[date(2019, 5, 1)], "Dia Mundial del Trabajador")
+        self.assertEqual(
+            self.holidays[date(2019, 5, 1)], "Dia Mundial del Trabajador"
+        )
         self.assertIn("2019-06-24", self.holidays)
-        self.assertEqual(self.holidays[date(2019, 6, 24)], "Batalla de Carabobo")
+        self.assertEqual(
+            self.holidays[date(2019, 6, 24)], "Batalla de Carabobo"
+        )
         self.assertIn("2019-05-01", self.holidays)
         self.assertEqual(
             self.holidays[date(2019, 7, 5)], "Dia de la Independencia"
         )
         self.assertIn("2019-07-24", self.holidays)
-        self.assertEqual(self.holidays[date(2019, 7, 24)], "Natalicio de Simón Bolívar")
+        self.assertEqual(
+            self.holidays[date(2019, 7, 24)], "Natalicio de Simón Bolívar"
+        )
         self.assertIn("2019-10-12", self.holidays)
         self.assertEqual(
             self.holidays[date(2019, 10, 12)], "Día de la Resistencia Indígena"
         )
         self.assertIn("2019-12-24", self.holidays)
-        self.assertEqual(
-            self.holidays[date(2019, 12, 24)], "Nochebuena"
-        )
+        self.assertEqual(self.holidays[date(2019, 12, 24)], "Nochebuena")
         self.assertIn("2019-12-25", self.holidays)
         self.assertEqual(self.holidays[date(2019, 12, 25)], "Día de Navidad")
         self.assertIn("2019-12-31", self.holidays)

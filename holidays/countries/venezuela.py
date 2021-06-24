@@ -37,7 +37,6 @@ class Venezuela(HolidayBase):
     https://dias-festivos.eu/dias-festivos/venezuela/#
     """
 
-
     def __init__(self, **kwargs):
         self.country = "VEN"
         HolidayBase.__init__(self, **kwargs)
@@ -66,7 +65,9 @@ class Venezuela(HolidayBase):
         # Semana Santa y Carnaval
 
         if date(year, APR, 19) == (easter(year) - rd(days=2)):
-            self[easter(year) - rd(days=2)] = "Viernes Santo y Declaración de la Independencia"
+            self[easter(year) - rd(days=2)] = (
+                "Viernes Santo y Declaración " "de la Independencia"
+            )
         else:
             # self[easter(year) - rd(weekday=FR(-1))] = "Viernes Santo"
             self[date(year, APR, 19)] = "Declaración de la Independencia"
@@ -75,17 +76,17 @@ class Venezuela(HolidayBase):
         # self[easter(year) - rd(weekday=TH(-1))] = "Jueves Santo"
 
         if date(year, APR, 19) == (easter(year) - rd(days=3)):
-            self[easter(year) - rd(days=3)] = "Jueves Santo y Declaración de la Independencia"
+            self[easter(year) - rd(days=3)] = (
+                "Jueves Santo y Declaración " "de la Independencia"
+            )
         else:
             # self[easter(year) - rd(weekday=FR(-1))] = "Viernes Santo"
             self[date(year, APR, 19)] = "Declaración de la Independencia"
-            self[easter(year) - rd(days=3)] = "Jueves Santo"        
+            self[easter(year) - rd(days=3)] = "Jueves Santo"
 
         self[easter(year) - rd(days=47)] = "Martes de Carnaval"
 
         self[easter(year) - rd(days=48)] = "Lunes de Carnaval"
-
-
 
 
 class VZ(Venezuela):
