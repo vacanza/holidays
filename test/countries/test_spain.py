@@ -19,7 +19,7 @@ from datetime import date
 import holidays
 
 
-class TestES(unittest.TestCase):
+class TestSpain(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.ES(observed=False)
         self.holidays_observed = holidays.ES()
