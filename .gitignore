@@ -8,7 +8,9 @@ MANIFEST
 *.DS_Store
 coverage.xml
 .tox
+.venv
 
 # IDE Stuff
 .idea
 .vscode/
+*.code-workspace
