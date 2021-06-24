@@ -38,7 +38,7 @@ class Venezuela(HolidayBase):
     """
 
     def __init__(self, **kwargs):
-        self.country = "VEN"
+        self.country = "YV"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -65,9 +65,9 @@ class Venezuela(HolidayBase):
         # Semana Santa y Carnaval
 
         if date(year, APR, 19) == (easter(year) - rd(days=2)):
-            self[easter(year) - rd(days=2)] = (
-                "Viernes Santo y Declaración " "de la Independencia"
-            )
+            self[
+                easter(year) - rd(days=2)
+            ] = "Viernes Santo y Declaración de la Independencia"
         else:
             # self[easter(year) - rd(weekday=FR(-1))] = "Viernes Santo"
             self[date(year, APR, 19)] = "Declaración de la Independencia"
