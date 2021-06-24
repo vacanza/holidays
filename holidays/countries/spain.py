@@ -117,7 +117,7 @@ class Spain(HolidayBase):
             self._is_observed(date(year, MAR, 19), "San José")
         if self.prov and self.prov not in ["CT", "VC"]:
             self[easter(year) + rd(weeks=-1, weekday=TH)] = "Jueves Santo"
-            self[easter(year) + rd(weeks=-1, weekday=FR)] = "Viernes Santo"
+        self[easter(year) + rd(weeks=-1, weekday=FR)] = "Viernes Santo"
         if self.prov and self.prov in ["CT", "PV", "NC", "VC", "IB", "CM"]:
             self[easter(year) + rd(weekday=MO)] = "Lunes de Pascua"
         self._is_observed(date(year, MAY, 1), "Día del Trabajador")
