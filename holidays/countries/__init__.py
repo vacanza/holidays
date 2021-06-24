@@ -92,4 +92,5 @@ from .united_kingdom import (
     GBR,
 )
 from .united_states import UnitedStates, US, USA
+from .venezuela import Venezuela, YV, VEN
 from .vietnam import Vietnam, VN, VNM

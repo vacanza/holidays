@@ -18,8 +18,8 @@ import holidays
 
 
 class TestVenezuela(unittest.TestCase):
-    def test_VZ_holidays(self):
-        self.holidays = holidays.VN(years=2019)
+    def test_YV_holidays(self):
+        self.holidays = holidays.YV(years=2019)
         self.assertIn("2019-01-01", self.holidays)
         self.assertEqual(
             self.holidays[date(2019, 1, 1)], "Año Nuevo [New Year's Day]"
