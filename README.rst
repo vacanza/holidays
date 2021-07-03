@@ -152,6 +152,8 @@ Korea               KR/KOR    None
 Latvia              LV/LVA    None
 Lithuania           LT/LTU    None
 Luxembourg          LU/LUX    None
+Malaysia            MY/MYS    state = JHR, KDH, KTN, MLK, NSN, PHG, PNG, PRK, PLS, SBH, SWK,
+                              SGR, TRG, KUL, LBN, PJY
 Malawi              MW/MWI    None
 Mexico              MX/MEX    None
 Morocco             MA/MOR    None
