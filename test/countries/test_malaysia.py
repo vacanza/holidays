@@ -71,16 +71,6 @@ class TestMalaysia(unittest.TestCase):
         self.assertIn(date(2020, 11, 11), Kelantan_holidays)
         self.assertIn(date(2029, 11, 12), Kelantan_holidays)
 
-    def test_MLK_holidays(self):
-        Malacca_holidays = holidays.MY(
-            years=[2018, 2019, 2020, 2021, 2022], state="MLK"
-        )
-        self.assertIn(date(2020, 4, 15), Malacca_holidays)
-        self.assertIn(date(2021, 10, 8), Malacca_holidays)
-        self.assertIn(date(2018, 10, 12), Malacca_holidays)
-        self.assertIn(date(2019, 10, 11), Malacca_holidays)
-        self.assertIn(date(2020, 10, 9), Malacca_holidays)
-
     def test_NSN_holidays(self):
         Negeri_Sembilan_holidays = holidays.MY(
             years=[2018, 2019, 2020, 2021, 2022], state="NSN"
@@ -173,19 +163,6 @@ class TestMalaysia(unittest.TestCase):
         self.assertIn(date(2021, 7, 20), Terengganu_holidays)
         self.assertIn(date(2022, 7, 9), Terengganu_holidays)
 
-    def test_MLK_holidays(self):
-        Malacca_holidays = holidays.MY(
-            years=[2018, 2019, 2020, 2021, 2022], state="MLK"
-        )
-        # Declaration of Malacca as a Historical City in Melaka
-        self.assertIn(date(2018, 4, 15), Malacca_holidays)
-
-        # Birthday of the Governor of Melaka
-        self.assertIn(date(2018, 10, 12), Malacca_holidays)
-        self.assertIn(date(2019, 10, 11), Malacca_holidays)
-        self.assertIn(date(2020, 10, 9), Malacca_holidays)
-        self.assertIn(date(2021, 10, 8), Malacca_holidays)
-
     def test_KUL_holidays(self):
         Kuala_Lumpur_holidays = holidays.MY(
             years=[1970, 2018, 2019, 2020, 2021, 2022], state="KUL"
@@ -230,19 +207,3 @@ class TestMalaysia(unittest.TestCase):
         self.assertIn(date(2022, 2, 1), Putrajaya_holidays)
         self.assertNotIn(date(1972, 2, 1), Putrajaya_holidays)
         self.assertIn(date(2022, 1, 18), Putrajaya_holidays)
-
-    # PLS and PHG do not require test just yet
-
-    # def test_PLS_holidays(self):
-    #     Perlis_holidays = holidays.MY(years=[2018,2019,2020,2021,2022],state="PLS")
-    #     self.assertIn(date(2018,11,11), Perlis_holidays)
-    #     self.assertIn(date(2019,11,12), Perlis_holidays)
-    #     self.assertIn(date(2020,11,11), Perlis_holidays)
-    #     self.assertIn(date(2029,11,12), Perlis_holidays)
-
-    # def test_PHG_holidays(self):
-    #     Pahang_holidays = holidays.MY(years=[2018,2019,2020,2021,2022],state="PHG")
-    #     self.assertIn(date(2018,11,11), Pahang_holidays)
-    #     self.assertIn(date(2019,11,12), Pahang_holidays)
-    #     self.assertIn(date(2020,11,11), Pahang_holidays)
-    #     self.assertIn(date(2029,11,12), Pahang_holidays)

@@ -41,7 +41,6 @@ from holidays.constants import (
     OCT,
     NOV,
     DEC,
-    SUN,
 )
 from holidays.constants import SUN
 from holidays.holiday_base import HolidayBase
@@ -91,9 +90,10 @@ class Malaysia(HolidayBase):
             ] = "Birthday of the Sultan of Negeri Sembilan"
 
         # Thaipusam is an annual Hindu festival,
-        # bserved on the day of the first full moon during the Tamil month of Thai
-        # TODO  This dates are hardcore we need to find a way to calculate it
-        # dynamically
+        # bserved on the day of the first full moon
+        # during the Tamil month of Thai
+        # TODO  This dates are hardcore we need to
+        # find a way to calculate it dynamically
         dates_obs = {
             2018: [(JAN, 31)],
             2019: [(JAN, 21)],
@@ -379,10 +379,12 @@ class Malaysia(HolidayBase):
                 date(year, *dates_obs[year])
             ] = "Malaysia General Election Holiday"
 
-        # Check for holidays that fall on a Sunday and implement Section 3
-        # of Malaysian Holidays Act: " if any day specified in the Schedule falls on
-        # Sunday then the day following shall be a public holiday and if such day is already
-        # a public holiday, then the day following shall be a public holiday"
+        # Check for holidays that fall on a Sunday and
+        # implement Section 3 of Malaysian Holidays Act:
+        # " if any day specified in the Schedule falls on
+        # Sunday then the day following shall be a public
+        # holiday and if such day is already a public holiday,
+        # then the day following shall be a public holiday"
         for (hol_date, hol_name) in list(self.items()):
             if hol_date.year == year and hol_date.weekday() == SUN:
                 self[hol_date] += " [Sunday]"
@@ -401,8 +403,6 @@ class Malaysia(HolidayBase):
         Returns:
             int: The day of the first friday.
         """
-
-        desired_day = []
         d = date(year, month, 1)
         while d.month == month:
             if d.weekday() == 4:
