@@ -100,7 +100,7 @@ class Botswana(HolidayBase):
                 # Add an (Observed) for the one that is not (Observed)
                 for i in self.get(k).split(","):
                     if " (Observed)" not in i:
-                        self[k + rd(days=1)] = i + " (Observed)"
+                        self[k + rd(days=1)] = i.lstrip() + " (Observed)"
 
         # Once off ad-hoc holidays
         self[date(2019, JUL, 2)] = "Public Holiday"
