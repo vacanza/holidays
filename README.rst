@@ -157,8 +157,8 @@ Mexico              MX/MEX    None
 Morocco             MA/MOR    None
 Mozambique          MZ/MOZ    None
 Netherlands         NL/NLD    None
-NewZealand          NZ/NZL    prov = NTL, AUK, TKI, HKB, WGN, MBH, NSN, CAN, STC, WTL,
-                              OTA, STL, CIT
+NewZealand          NZ/NZL    prov = AUK, CAN, CIT, HKB, MBH, NSN, NTL, OTA, STC, STL,
+                              TKI, WGN, WTL
 Nicaragua           NI/NIC    prov = MN
 Nigeria             NG/NGA    None
 NorthernIreland               None
