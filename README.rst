@@ -130,8 +130,8 @@ France              FR/FRA    **Métropole** (default), Alsace-Moselle, Guadelou
                               Polynésie Française, Saint-Barthélémy, Saint-Martin,
                               Wallis-et-Futuna
 Georgia             GE/GEO
-Germany             DE/DEU    prov = BW, BY, BYP, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL,
-                              SN, ST, SH, TH
+Germany             DE/DEU    prov = BB, BE, BW, BY, BYP, HB, HE, HH, MV, NI, NW, RP, SH,
+                              SL, SN, ST, TH
 Greece              GR/GRC    None
 Honduras            HN/HND    None
 HongKong            HK/HKG    None
