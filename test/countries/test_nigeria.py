@@ -22,11 +22,16 @@ class TestNigeria(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.Nigeria()
 
+    def test_not_holiday(self):
+        self.assertNotIn(date(1966, 1, 1), self.holidays)
+
     def test_fixed_holidays(self):
+        self.assertIn(date(2015, 5, 29), self.holidays)
         self.assertIn(date(2019, 1, 1), self.holidays)
         self.assertIn(date(2019, 5, 1), self.holidays)
-        self.assertIn(date(2019, 5, 27), self.holidays)
         self.assertIn(date(2019, 6, 12), self.holidays)
         self.assertIn(date(2019, 10, 1), self.holidays)
         self.assertIn(date(2019, 12, 25), self.holidays)
         self.assertIn(date(2019, 12, 26), self.holidays)
+        self.assertIn(date(2020, 6, 12), self.holidays)
+        self.assertIn(date(2021, 6, 14), self.holidays)
