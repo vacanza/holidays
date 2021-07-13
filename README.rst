@@ -105,8 +105,8 @@ Austria             AT/AUT    prov = 1, 2, 3, 4, 5, 6, 7, 8, **9** (default)
 Bangladesh          BD/BDG    None
 Belarus             BY/BLR    None
 Belgium             BE/BEL    None
-Brazil              BR/BRA    state = AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG,
-                              PA, PB, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO
+Brazil              BR/BRA    state = AC, AL, AM, AP, BA, CE, DF, ES, GO, MA, MG, MS, MT,
+                              PA, PB, PE, PI, RJ, RN, RO, RR, RS, SC, SE, SP, TO
 Bulgaria            BG/BLG    None
 Burundi             BI/BDI    None
 Canada              CA/CAN    prov = AB, BC, MB, NB, NL, NS, NT, NU, **ON** (default),
