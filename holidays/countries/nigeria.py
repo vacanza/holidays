@@ -13,7 +13,12 @@
 
 from datetime import date
 
+from dateutil.easter import easter
+from holidays.utils import get_gre_date
+from dateutil.relativedelta import relativedelta as rd
+
 from holidays.constants import JAN, MAY, JUN, OCT, DEC
+from holidays.constants import SAT
 from holidays.holiday_base import HolidayBase
 
 
@@ -27,23 +32,65 @@ class Nigeria(HolidayBase):
         # New Year's Day
         self[date(year, JAN, 1)] = "New Year's day"
 
+        # Calculate Easter for given year followed by easter related holidays
+        e = easter(year)
+
+        good_friday = e - rd(days=2)
+        self[good_friday] = "Good Friday"
+
+        easter_monday = e + rd(days=1)
+        self[easter_monday] = "Easter Monday"
+
         # Worker's day
         self[date(year, MAY, 1)] = "Worker's day"
 
-        # Children's day
-        self[date(year, MAY, 27)] = "Children's day"
+        # Eid al-Fitr - Feast Festive
+        # This is an estimate
+        # date of observance is announced yearly
+        for date_obs in get_gre_date(year, 9, 30):
+            hol_date = date_obs
+            self[hol_date] = "Eid al-Fitr"
+            self[hol_date + rd(days=1)] = "Eid al-Fitr Holiday"
 
-        # Democracy day
-        self[date(year, JUN, 12)] = "Democracy day"
+        # Arafat Day & Eid al-Adha - Scarfice Festive
+        # This is an estimate
+        # date of observance is announced yearly
+        for date_obs in get_gre_date(year, 12, 10):
+            hol_date = date_obs
+            self[hol_date] = "Eid al-Adha"
+            self[hol_date + rd(days=1)] = "Eid al-Adha Holiday"
 
         # Independence Day
-        self[date(year, OCT, 1)] = "Independence day"
+        self[date(year, OCT, 1)] = "National day"
 
         # Christmas day
         self[date(year, DEC, 25)] = "Christmas day"
 
         # Boxing day
         self[date(year, DEC, 26)] = "Boxing day"
+
+        # Democracy day moved around after its inception in 2000
+        # Initally it fell on May 29th
+        if 2019 > year > 1999:
+            self[date(year, MAY, 29)] = "Democracy day"
+        # In 2018 it was announced that the holiday
+        # will move to June 12th from 2019
+        if year >= 2019:
+            self[date(year, JUN, 12)] = "Democracy day"
+
+        # Observed holidays
+        for k, v in list(self.items()):
+            # If a holiday falls on a Saturday the
+            # following Monday is Observed as a public holiday
+            if (
+                self.observed
+                and year > 2015
+                and k.weekday() == SAT
+                and k.year == year
+                and v.upper() in ("WORKER'S DAY", "DEMOCRACY DAY")
+            ):
+                # Add the (Observed) holiday
+                self[k + rd(days=2)] = v + " (Observed)"
 
 
 class NG(Nigeria):
