@@ -137,8 +137,8 @@ Honduras            HN/HND    None
 HongKong            HK/HKG    None
 Hungary             HU/HUN    None
 Iceland             IS/ISL    None
-India               IN/IND    prov = AS, SK, CG, KA, GJ, BR, RJ, OD, TN, AP, WB, KL, HR,
-                              MH, MP, UP, UK, TN
+India               IN/IND    prov = AP, AS, BR, CG, GJ, HR, KA, KL, MH, MP, OD, RJ, SK,
+                              TN, TN, UK, UP, WB
 Ireland             IE/IRL    None
 IsleOfMan                     None
 Israel              IL/ISR    None
