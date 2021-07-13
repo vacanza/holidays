@@ -17,6 +17,10 @@ specific date is a holiday as fast and flexible as possible.
 
 .. image:: http://img.shields.io/pypi/l/holidays.svg
     :target: https://github.com/dr-prodigy/python-holidays/blob/master/LICENSE
+    
+.. image:: https://img.shields.io/conda/v/conda-forge/holidays?color=blue&logo=anaconda
+    :target: https://anaconda.org/conda-forge/holidays
+    :alt: conda version
 
 
 Example Usage
@@ -89,6 +93,12 @@ If the above fails, please use easy_install instead:
 .. code-block:: bash
 
     $ easy_install holidays
+    
+Alternatively, you can install it with conda (Anaconda/Miniconda):
+
+.. code-block:: bash
+
+    $ conda install -c conda-forge holidays
 
 
 Available Countries
