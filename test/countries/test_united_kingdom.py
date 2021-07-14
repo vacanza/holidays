@@ -115,10 +115,12 @@ class TestUK(unittest.TestCase):
             date(2018, 5, 28),
             date(2019, 5, 27),
             date(2020, 5, 25),
+            date(2022, 6, 2),
         ]:
             self.assertIn(dt, self.holidays)
             self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+            if dt != date(2022, 6, 2):
+                self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
 
     def test_christmas_day(self):
         self.holidays.observed = False
