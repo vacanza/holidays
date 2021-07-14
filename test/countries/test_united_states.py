@@ -667,9 +667,15 @@ class TestUS(unittest.TestCase):
     def test_emancipation_day_in_texas(self):
         tx_holidays = holidays.US(state="TX")
         self.assertNotIn(date(1979, 6, 19), tx_holidays)
-        for year in (1980, 2050):
+        for year in (1980, 2020):
             self.assertNotIn(date(year, 6, 19), self.holidays)
             self.assertIn(date(year, 6, 19), tx_holidays)
+        for year in (2021, 2050):
+            self.assertIn(date(year, 6, 19), tx_holidays)
+
+    def test_juneteenth(self):
+        self.assertNotIn(date(2020, 6, 19), self.holidays)
+        self.assertIn(date(2021, 6, 19), self.holidays)
 
     def test_west_virginia_day(self):
         wv_holidays = holidays.US(state="WV")

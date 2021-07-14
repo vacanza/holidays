@@ -18,6 +18,7 @@ from .austria import Austria, AT, AUT
 from .bangladesh import Bangladesh, BD, BGD
 from .belarus import Belarus, BY, BLR
 from .belgium import Belgium, BE, BEL
+from .botswana import Botswana, BW, BWA
 from .brazil import Brazil, BR, BRA
 from .bulgaria import Bulgaria, BG, BLG
 from .burundi import Burundi, BI, BDI
@@ -53,6 +54,7 @@ from .korea import Korea, KR, KOR
 from .latvia import Latvia, LV, LVA
 from .lithuania import Lithuania, LT, LTU
 from .luxembourg import Luxembourg, LU, LUX
+from .malaysia import Malaysia, MY, MYS
 from .malawi import Malawi, MW, MWI
 from .mexico import Mexico, MX, MEX
 from .morocco import Morocco, MA, MOR
@@ -92,4 +94,5 @@ from .united_kingdom import (
     GBR,
 )
 from .united_states import UnitedStates, US, USA
+from .venezuela import Venezuela, YV, VEN
 from .vietnam import Vietnam, VN, VNM

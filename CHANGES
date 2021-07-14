@@ -3,8 +3,12 @@ Version 0.11.2
 
 Released ????, ????
 
+- Support for Venezuela #470 (antusystem, dr-p)
+- Support for Botswana #477 (pietervdw115)
 - Poland fix #464 (m-ganko)
 - Singapore updates for 2022 #456 (mborsetti)
+- US updates #474 (ChristianAlexander)
+- UK updates #487 (orrock, dr-p)
 - .gitignore fix #462 (TheLastProject)
 - Pre-commit v.2.0.3 (dr-p)
 

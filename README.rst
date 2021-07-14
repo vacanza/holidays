@@ -105,6 +105,7 @@ Austria             AT/AUT    prov = 1, 2, 3, 4, 5, 6, 7, 8, **9** (default)
 Bangladesh          BD/BDG    None
 Belarus             BY/BLR    None
 Belgium             BE/BEL    None
+Botswana            BW/BWA    None
 Brazil              BR/BRA    state = AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG,
                               PA, PB, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO
 Bulgaria            BG/BLG    None
@@ -152,6 +153,8 @@ Korea               KR/KOR    None
 Latvia              LV/LVA    None
 Lithuania           LT/LTU    None
 Luxembourg          LU/LUX    None
+Malaysia            MY/MYS    state = JHR, KDH, KTN, MLK, NSN, PHG, PNG, PRK, PLS, SBH, SWK,
+                              SGR, TRG, KUL, LBN, PJY
 Malawi              MW/MWI    None
 Mexico              MX/MEX    None
 Morocco             MA/MOR    None
@@ -191,6 +194,7 @@ UnitedStates        US/USA    state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL
                               FM, MN, MS, MO, MT, NE, NV, NH, NJ, NM, NY, NC, ND, MP,
                               OH, OK, OR, PW, PA, PR, RI, SC, SD, TN, TX, UT, VT, VA,
                               VI, WA, WV, WI, WY
+Venezuela           YV/VEN
 Vietnam             VN/VNM
 Wales                         None
 =================== ========= =============================================================

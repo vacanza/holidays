@@ -18,6 +18,7 @@ from .test_austria import *
 from .test_bangladesh import *
 from .test_belarus import *
 from .test_belgium import *
+from .test_botswana import *
 from .test_brazil import *
 from .test_bulgaria import *
 from .test_burundi import *
@@ -82,4 +83,5 @@ from .test_ukraine import *
 from .test_united_arab_emirates import *
 from .test_united_kingdom import *
 from .test_united_states import *
+from .test_venezuela import *
 from .test_vietnam import *
