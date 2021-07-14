@@ -44,7 +44,7 @@ class Nigeria(HolidayBase):
             self[easter_monday] = "Easter Monday"
 
             # Worker's day
-            self[date(year, MAY, 1)] = "Worker's day"
+            self[date(year, MAY, 1)] = "Workers' day"
 
             # Eid al-Fitr - Feast Festive
             # This is an estimate
