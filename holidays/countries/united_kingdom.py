@@ -147,6 +147,8 @@ class UnitedKingdom(HolidayBase):
         name = "Spring Bank Holiday"
         if year == 2012:
             self[date(year, JUN, 4)] = name
+        elif year == 2022:
+            self[date(year, JUN, 2)] = name
         elif year >= 1971:
             self[date(year, MAY, 31) + rd(weekday=MO(-1))] = name
 
