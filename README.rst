@@ -106,8 +106,8 @@ Bangladesh          BD/BDG    None
 Belarus             BY/BLR    None
 Belgium             BE/BEL    None
 Botswana            BW/BWA    None
-Brazil              BR/BRA    state = AC, AL, AP, AM, BA, CE, DF, ES, GO, MA, MT, MS, MG,
-                              PA, PB, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO
+Brazil              BR/BRA    state = AC, AL, AM, AP, BA, CE, DF, ES, GO, MA, MG, MS, MT,
+                              PA, PB, PE, PI, RJ, RN, RO, RR, RS, SC, SE, SP, TO
 Bulgaria            BG/BLG    None
 Burundi             BI/BDI    None
 Canada              CA/CAN    prov = AB, BC, MB, NB, NL, NS, NT, NU, **ON** (default),
@@ -131,15 +131,15 @@ France              FR/FRA    **Métropole** (default), Alsace-Moselle, Guadelou
                               Polynésie Française, Saint-Barthélémy, Saint-Martin,
                               Wallis-et-Futuna
 Georgia             GE/GEO
-Germany             DE/DEU    prov = BW, BY, BYP, BE, BB, HB, HH, HE, MV, NI, NW, RP, SL,
-                              SN, ST, SH, TH
+Germany             DE/DEU    prov = BB, BE, BW, BY, BYP, HB, HE, HH, MV, NI, NW, RP, SH,
+                              SL, SN, ST, TH
 Greece              GR/GRC    None
 Honduras            HN/HND    None
 HongKong            HK/HKG    None
 Hungary             HU/HUN    None
 Iceland             IS/ISL    None
-India               IN/IND    prov = AS, SK, CG, KA, GJ, BR, RJ, OD, TN, AP, WB, KL, HR,
-                              MH, MP, UP, UK, TN
+India               IN/IND    prov = AP, AS, BR, CG, GJ, HR, KA, KL, MH, MP, OD, RJ, SK,
+                              TN, TN, UK, UP, WB
 Ireland             IE/IRL    None
 IsleOfMan                     None
 Israel              IL/ISR    None
@@ -160,8 +160,8 @@ Mexico              MX/MEX    None
 Morocco             MA/MOR    None
 Mozambique          MZ/MOZ    None
 Netherlands         NL/NLD    None
-NewZealand          NZ/NZL    prov = NTL, AUK, TKI, HKB, WGN, MBH, NSN, CAN, STC, WTL,
-                              OTA, STL, CIT
+NewZealand          NZ/NZL    prov = AUK, CAN, CIT, HKB, MBH, NSN, NTL, OTA, STC, STL,
+                              TKI, WGN, WTL
 Nicaragua           NI/NIC    prov = MN
 Nigeria             NG/NGA    None
 NorthernIreland               None
