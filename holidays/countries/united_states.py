@@ -361,6 +361,10 @@ class UnitedStates(HolidayBase):
         elif year >= 1888:
             self[date(year, MAY, 30)] = "Memorial Day"
 
+        # Juneteenth Day
+        if year > 2020:
+            self[date(year, JUN, 19)] = "Juneteenth National Independence Day"
+
         # Jefferson Davis Birthday
         name = "Jefferson Davis Birthday"
         if self.state == "AL" and year >= 1890:
