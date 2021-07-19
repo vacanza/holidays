@@ -16,7 +16,7 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd, MO, FR, WE, TU
 
-from holidays.constants import JAN, FEB, MAR, APR, JUN, SEP, OCT, NOV, DEC
+from holidays.constants import JAN, FEB, MAR, APR, JUN, JUL, SEP, OCT, NOV, DEC
 from holidays.constants import TUE, WED, THU, WEEKEND
 from holidays.holiday_base import HolidayBase
 
@@ -109,6 +109,71 @@ class NewZealand(HolidayBase):
         elif year > 1901:
             # http://paperspast.natlib.govt.nz/cgi-bin/paperspast?a=d&d=NZH19091110.2.67
             self[date(year, NOV, 9)] = name  # Edward VII
+
+        # Matariki
+        name = "Matariki"
+        if year == 2022:
+            self[date(year, JUN, 24)] = name
+        elif year == 2023:
+            self[date(year, JUL, 14)] = name
+        elif year == 2024:
+            self[date(year, JUN, 28)] = name
+        elif year == 2025:
+            self[date(year, JUN, 20)] = name
+        elif year == 2026:
+            self[date(year, JUL, 10)] = name
+        elif year == 2027:
+            self[date(year, JUN, 25)] = name
+        elif year == 2028:
+            self[date(year, JUL, 14)] = name
+        elif year == 2029:
+            self[date(year, JUL, 6)] = name
+        elif year == 2030:
+            self[date(year, JUN, 21)] = name
+        elif year == 2031:
+            self[date(year, JUL, 11)] = name
+        elif year == 2032:
+            self[date(year, JUL, 2)] = name
+        elif year == 2033:
+            self[date(year, JUN, 24)] = name
+        elif year == 2034:
+            self[date(year, JUL, 7)] = name
+        elif year == 2035:
+            self[date(year, JUN, 29)] = name
+        elif year == 2036:
+            self[date(year, JUL, 18)] = name
+        elif year == 2037:
+            self[date(year, JUL, 10)] = name
+        elif year == 2038:
+            self[date(year, JUN, 25)] = name
+        elif year == 2039:
+            self[date(year, JUL, 15)] = name
+        elif year == 2040:
+            self[date(year, JUL, 6)] = name
+        elif year == 2041:
+            self[date(year, JUL, 19)] = name
+        elif year == 2042:
+            self[date(year, JUL, 11)] = name
+        elif year == 2043:
+            self[date(year, JUL, 3)] = name
+        elif year == 2044:
+            self[date(year, JUN, 24)] = name
+        elif year == 2045:
+            self[date(year, JUL, 7)] = name
+        elif year == 2046:
+            self[date(year, JUN, 29)] = name
+        elif year == 2047:
+            self[date(year, JUL, 19)] = name
+        elif year == 2048:
+            self[date(year, JUL, 3)] = name
+        elif year == 2049:
+            self[date(year, JUN, 25)] = name
+        elif year == 2050:
+            self[date(year, JUL, 15)] = name
+        elif year == 2051:
+            self[date(year, JUN, 30)] = name
+        elif year == 2052:
+            self[date(year, JUN, 21)] = name
 
         # Labour Day
         name = "Labour Day"
