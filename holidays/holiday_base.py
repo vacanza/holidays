@@ -13,7 +13,6 @@
 
 from datetime import timedelta, datetime, date
 
-import six
 from dateutil.parser import parse
 
 
@@ -61,7 +60,7 @@ class HolidayBase(dict):
             key = key
         elif isinstance(key, int) or isinstance(key, float):
             key = datetime.utcfromtimestamp(key).date()
-        elif isinstance(key, six.string_types):
+        elif isinstance(key, str):
             try:
                 key = parse(key).date()
             except (ValueError, OverflowError):
