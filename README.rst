@@ -197,6 +197,7 @@ UnitedStates        US/USA    state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL
 Venezuela           YV/VEN
 Vietnam             VN/VNM
 Wales                         None
+Zambia              ZM/ZMB    None
 =================== ========= =============================================================
 
 
