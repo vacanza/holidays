@@ -249,6 +249,46 @@ class TestNZ(unittest.TestCase):
             self.assertIn(dt, self.holidays, dt)
             self.assertEqual(self.holidays[dt], "Queen's Birthday")
 
+    def test_matariki(self):
+        for dt in [
+            date(2022, 6, 24),
+            date(2023, 7, 14),
+            date(2024, 6, 28),
+            date(2025, 6, 20),
+            date(2026, 7, 10),
+            date(2027, 6, 25),
+            date(2028, 7, 14),
+            date(2029, 7, 6),
+            date(2030, 6, 21),
+            date(2031, 7, 11),
+            date(2032, 7, 2),
+            date(2033, 6, 24),
+            date(2034, 7, 7),
+            date(2035, 6, 29),
+            date(2036, 7, 18),
+            date(2037, 7, 10),
+            date(2038, 6, 25),
+            date(2039, 7, 15),
+            date(2040, 7, 6),
+            date(2041, 7, 19),
+            date(2042, 7, 11),
+            date(2043, 7, 3),
+            date(2044, 6, 24),
+            date(2045, 7, 7),
+            date(2046, 6, 29),
+            date(2047, 7, 19),
+            date(2048, 7, 3),
+            date(2049, 6, 25),
+            date(2050, 7, 15),
+            date(2051, 6, 30),
+            date(2052, 6, 21)
+        ]:
+            self.assertIn(dt, self.holidays)
+            self.assertEqual(self.holidays[dt], "Matariki")
+            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
+            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+
+
     def test_labour_day(self):
         for year, day in enumerate(
             [
