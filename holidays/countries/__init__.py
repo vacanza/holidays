@@ -96,3 +96,4 @@ from .united_kingdom import (
 from .united_states import UnitedStates, US, USA
 from .venezuela import Venezuela, YV, VEN
 from .vietnam import Vietnam, VN, VNM
+from .zambia import Zambia, ZM, ZMB

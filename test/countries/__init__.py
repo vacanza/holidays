@@ -85,3 +85,4 @@ from .test_united_kingdom import *
 from .test_united_states import *
 from .test_venezuela import *
 from .test_vietnam import *
+from .test_zambia import *
