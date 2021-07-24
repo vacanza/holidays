@@ -281,13 +281,12 @@ class TestNZ(unittest.TestCase):
             date(2049, 6, 25),
             date(2050, 7, 15),
             date(2051, 6, 30),
-            date(2052, 6, 21)
+            date(2052, 6, 21),
         ]:
             self.assertIn(dt, self.holidays)
             self.assertEqual(self.holidays[dt], "Matariki")
             self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
-
 
     def test_labour_day(self):
         for year, day in enumerate(
