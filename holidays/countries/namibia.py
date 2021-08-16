@@ -4,7 +4,7 @@
 #  ---------------
 #  Based off of the nice template created by ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #
-#  Author: Jean Naudé <jean@spatialedge.co.za> (c) 2021 - 2022
+#  Author: Jean Naudé <jean@spatialedge.co.za> (c) 2021
 #          dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -26,7 +26,7 @@ class Namibia(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
-        # write holidays
+        
         if year > 1990:
             self[date(year, JAN, 1)] = "New Year's Day"
             self[date(year, MAR, 21)] = "Independence Day"
