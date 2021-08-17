@@ -22,7 +22,16 @@ class Lesotho(HolidayBase):
             self[date(year, JAN, 1)] = "New Year's Day"
 
             self[date(year, MAR, 11)] = "Moshoeshoe's Day"
-            self[date(year, APR, 4)] = "Heroes Day"
+
+            if year == 2002:
+                # https://tinyurl.com/lesothourl
+                self[date(year, APR, 4)] = "Heroes Day"
+                self[date(year, MAY, 25)] = "Africa Day"
+            else:
+                if year > 2002:
+                    self[date(year, MAY, 25)] = "Africa/Heroes Day"
+                else:
+                    self[date(year, APR, 4)] = "Heroes Day"
 
             e = easter(year)
             good_friday = e - rd(days=2)
