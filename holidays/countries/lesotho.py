@@ -30,7 +30,7 @@ class Lesotho(HolidayBase):
             else:
                 if year > 2002:
                     self[date(year, MAY, 25)] = "Africa/Heroes Day"
-                else:
+                elif year < 2002:
                     self[date(year, APR, 4)] = "Heroes Day"
 
             e = easter(year)
