@@ -25,7 +25,7 @@ class TestNamibia(unittest.TestCase):
         self.assertIn(date(1991, 1, 1), self.holidays)
         self.assertIn(date(1999, 1, 1), self.holidays)
         self.assertIn(date(2000, 1, 1), self.holidays)
-        self.assertIn(date(2017, 1, 2), self.holidays)  # sunday
+        self.assertIn(date(2017, 1, 2), self.holidays)  # observed holiday
 
     def test_easter(self):
         self.assertIn(date(2017, 4, 14), self.holidays)
