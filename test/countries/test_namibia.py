@@ -22,26 +22,28 @@ class TestNamibia(unittest.TestCase):
         self.holidays = holidays.NA()
 
     def test_new_years(self):
-        self.assertIn("1991-01-01", self.holidays)
-        self.assertIn("1999-01-01", self.holidays)
-        self.assertIn("2000-01-01", self.holidays)
-        self.assertIn("2017-01-02", self.holidays)  # sunday
+        self.assertIn(date(1991, 1, 1), self.holidays)
+        self.assertIn(date(1999, 1, 1), self.holidays)
+        self.assertIn(date(2000, 1, 1), self.holidays)
+        self.assertIn(date(2017, 1, 2), self.holidays)  # sunday
 
     def test_easter(self):
-        self.assertIn("2017, 4, 14", self.holidays)
-        self.assertIn("2017, 4, 17", self.holidays)
-        self.assertIn("1994, 4, 1", self.holidays)
+        self.assertIn(date(2017, 4, 14), self.holidays)
+        self.assertIn(date(2017, 4, 17), self.holidays)
+        self.assertIn(date(1994, 4, 1), self.holidays)
 
     def test_static(self):
-        self.assertIn("2022-12-27", self.holidays)  # Christmas (Observed)
+        self.assertIn(
+            date(2022, 12, 27), self.holidays
+        )  # Christmas (Observed)
 
     def test_onceoff(self):
-        self.assertIn("1999-12-31", self.holidays)  # Y2K
-        self.assertIn("2000-01-03", self.holidays)  # Y2K
-        self.assertNotIn("2010-01-10", self.holidays)  # notinY2k
+        self.assertIn(date(1999, 12, 31), self.holidays)  # Y2K
+        self.assertIn(date(2000, 1, 3), self.holidays)  # Y2K
+        self.assertNotIn(date(2010, 1, 10), self.holidays)  # notinY2k
 
     def test_namibian_women_int_rights(self):
-        self.assertIn("2004, 9, 10", self.holidays)
+        self.assertIn(date(2004, 9, 10), self.holidays)
         self.assertIn(
-            "2005, 9, 10", self.holidays
+            date(2005, 9, 10), self.holidays
         )  # test namib women and int. human rights day
