@@ -44,33 +44,6 @@ class Lesotho(HolidayBase):
             self[date(year, DEC, 25)] = "Christmas Day"
             self[date(year, DEC, 26)] = "Boxing Day"
 
-            e = easter(year)
-            good_friday = e - rd(days=2)
-            easter_monday = e + rd(days=1)
-            self[good_friday] = "Good Friday"
-            if year > 1979:
-                self[easter_monday] = "Family Day"
-            else:
-                self[easter_monday] = "Easter Monday"
-
-            if 1909 < year < 1952:
-                dec_16_name = "Dingaan's Day"
-            elif 1951 < year < 1980:
-                dec_16_name = "Day of the Covenant"
-            elif 1979 < year < 1995:
-                dec_16_name = "Day of the Vow"
-            else:
-                dec_16_name = "Day of Reconciliation"
-            self[date(year, DEC, 16)] = dec_16_name
-
-            self[date(year, DEC, 25)] = "Christmas Day"
-
-            if year > 1979:
-                dec_26_name = "Day of Goodwill"
-            else:
-                dec_26_name = "Boxing Day"
-            self[date(year, 12, 26)] = dec_26_name
-
 
 class LS(Lesotho):
     pass
