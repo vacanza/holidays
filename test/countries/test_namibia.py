@@ -1,4 +1,13 @@
 # -*- coding: utf-8 -*-
+#  python-holidays
+#  ---------------------
+#  Based off of the nice template created by ryanss
+#  <ryanssdev@icloud.com> (c) 2014-2017
+#  Author: Jean Naudé <jean@spatialedge.co.za> (c) 2021
+#          dr-prodigy <maurizio.montel@gmail.com> (c)
+#           2017-2021
+#  Website: https://github.com/dr-prodigy/python-holidays
+#  License: MIT (see LICENSE file)
 import unittest
 
 from datetime import date
@@ -17,9 +26,9 @@ class TestNamibia(unittest.TestCase):
         self.assertIn("2017-01-02", self.holidays)  # sunday
 
     def test_easter(self):
-        self.assertIn(date(2017, 4, 14), self.holidays)
-        self.assertIn(date(2017, 4, 17), self.holidays)
-        self.assertIn(date(1994, 4, 1), self.holidays)
+        self.assertIn("2017, 4, 14", self.holidays)
+        self.assertIn("2017, 4, 17", self.holidays)
+        self.assertIn("1994, 4, 1", self.holidays)
 
     def test_static(self):
         self.assertIn("2022-12-27", self.holidays)  # Christmas (Observed)
@@ -27,6 +36,10 @@ class TestNamibia(unittest.TestCase):
     def test_onceoff(self):
         self.assertIn("1999-12-31", self.holidays)  # Y2K
         self.assertIn("2000-01-03", self.holidays)  # Y2K
-        self.assertNotIn(
-            "2010-01-10", self.holidays
-        )  # check that it is not in Y2K
+        self.assertNotIn("2010-01-10", self.holidays)  # notinY2k
+
+    def test_namibian_women_int_rights(self):
+        self.assertIn("2004, 9, 10", self.holidays)
+        self.assertIn(
+            "2005, 9, 10", self.holidays
+        )  # test namib women and int. human rights day
