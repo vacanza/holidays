@@ -16,7 +16,7 @@ from datetime import date
 from dateutil.easter import easter, EASTER_ORTHODOX
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAR, MAY, SEP, NOV, DEC
+from holidays.constants import JAN, MAR, APR, MAY, SEP, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -35,6 +35,7 @@ class Bulgaria(HolidayBase):
     Sources (Bulgarian):
     - http://lex.bg/laws/ldoc/1594373121
     - https://www.parliament.bg/bg/24
+    - https://kik-info.com/spravochnik/calendar/2021/
 
     Sources (English):
     - https://en.wikipedia.org/wiki/Public_holidays_in_Bulgaria
@@ -56,11 +57,21 @@ class Bulgaria(HolidayBase):
             date(year, MAR, 3)
         ] = "Ден на Освобождението на България от османско иго"
 
+        # Friday Holiday
+        self[
+            date(year, APR, 30)
+        ] = "Велики петък"
+
         # International Workers' Day
         self[
             date(year, MAY, 1)
         ] = "Ден на труда и на международната работническа солидарност"
 
+        # Resurrection Monday
+        self[
+            date(year, MAY, 3)
+        ] = "Возкресенни понеделник"
+        
         # Saint George's Day
         self[
             date(year, MAY, 6)
