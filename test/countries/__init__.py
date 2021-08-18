@@ -52,6 +52,7 @@ from .test_japan import *
 from .test_kenya import *
 from .test_korea import *
 from .test_latvia import *
+from .test_lesotho import *
 from .test_lithuania import *
 from .test_luxembourg import *
 from .test_malawi import *
