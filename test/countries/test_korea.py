@@ -244,7 +244,8 @@ class TestKorea(unittest.TestCase):
                 self.holidays[date(year, 8, 15)], "Liberation Day"
             )
         self.assertEqual(
-            self.holidays[date(2021, 8, 16)], "Alternative holiday of Liberation Day"
+            self.holidays[date(2021, 8, 16)],
+            "Alternative holiday of Liberation Day",
         )
 
     def test_chuseok(self):
