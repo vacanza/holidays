@@ -76,6 +76,7 @@ from .test_slovakia import *
 from .test_slovenia import *
 from .test_south_africa import *
 from .test_spain import *
+from .test_swaziland import *
 from .test_sweden import *
 from .test_switzerland import *
 from .test_turkey import *

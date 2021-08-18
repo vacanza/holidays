@@ -77,6 +77,7 @@ from .slovakia import Slovakia, Slovak, SK, SVK
 from .slovenia import Slovenia, SI, SVN
 from .south_africa import SouthAfrica, ZA, ZAF
 from .spain import Spain, ES, ESP
+from .swaziland import Swaziland, SZ, SZW
 from .sweden import Sweden, SE, SWE
 from .switzerland import Switzerland, CH, CHE
 from .turkey import Turkey, TR, TUR

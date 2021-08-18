@@ -56,7 +56,7 @@ class Swaziland(HolidayBase):
                 # https://www.officeholidays.com/holidays/swaziland/birthday-of-king-mswati-iii
                 self[date(year, APR, 19)] = "King's Birthday"
 
-            self[date(year, MAY, 1)] = "Workers' Day"
+            self[date(year, MAY, 1)] = "Workers Day"
             self[date(year, SEP, 6)] = "Independence Day"
             self[date(year, DEC, 25)] = "Christmas Day"
             self[date(year, DEC, 26)] = "Boxing Day"
@@ -70,21 +70,34 @@ class Swaziland(HolidayBase):
             if year == 2000:
                 self[date(2000, JAN, 3)] = y2k
 
-            # As of 2021/1/1, whenever a public holiday falls on a Saturday or
+            # As of 2021/1/1, whenever a public holiday falls on a
             # Sunday
             # it rolls over to the following Monday
-            for k, v in list(self.items()):
+
+            for x, y in list(self.items()):
                 if (
                     self.observed
-                    and year > 2020
-                    and k.weekday() == SAT
-                    or k.weekday() == SUN
+                    and year >= 2020
+                    and x.weekday() == SAT
+                    and x.year == year
+                ):
+                    add_days = 1
+                    while self.get(x + rd(days=add_days)) is not None:
+                        add_days += 1
+                    self[x + rd(days=add_days)] = y + "(DayOff)"
+
+            for k, v in list(self.items()):
+                # if (self.holidays - rd(days=1)):
+                if (
+                    self.observed
+                    and year >= 2020
+                    and k.weekday() == SUN
                     and k.year == year
                 ):
                     add_days = 1
                     while self.get(k + rd(days=add_days)) is not None:
                         add_days += 1
-                    self[k + rd(days=add_days)] = v + " Day Off"
+                    self[k + rd(days=add_days)] = v + "(DayOff)"
 
 
 class SZ(Swaziland):
