@@ -50,20 +50,14 @@ class TestUY(unittest.TestCase):
 
     def test_dia_de_reyes(self):
         self.holidays.observed = False
-        self.assertNotIn(date(2021, 1, 6), self.holidays)
-        self.holidays.observed = True
-        for dt in [date(2021, 1, 26)]:
-            self.assertIn(dt, self.holidays)
+        for year in range(1900, 2100):
+            dt = date(year, 1, 6)
+        self.assertIn(dt, self.holidays)
 
     def test_holy_week_day(self):
         for dt in [
             date(2021, 1, 6),
         ]:
-            self.assertIn(dt, self.holidays)
-
-    def test_malvinas_war_day(self):
-        for year in range(1900, 2100):
-            dt = date(year, 4, 2)
             self.assertIn(dt, self.holidays)
 
     def test_labor_day(self):
@@ -104,9 +98,6 @@ class TestUY(unittest.TestCase):
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
 
     def test_declaratoria_de_la_independencia_day(self):
-        self.holidays.observed = False
-        self.assertNotIn(date(1930, 8, 25), self.holidays)
-        self.assertNotIn(date(2008, 8, 25), self.holidays)
         self.holidays.observed = True
         for year in range(1900, 2100):
             dt = date(year, 8, 25)
@@ -116,13 +107,10 @@ class TestUY(unittest.TestCase):
 
     def test_dia_de_la_raza_day(self):
         for year in range(1900, 2100):
-            dt = date(year, 10, 12)
-            if year < 2010:
-                self.assertNotIn(dt, self.holidays)
-            else:
-                self.assertIn(dt, self.holidays)
-                self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-                self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+            dt = date(year, 10, 11)
+            self.assertIn(dt, self.holidays)
+            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
+            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
 
     def test_dia_de_los_difuntos_day(self):
         for year in range(1900, 2100):

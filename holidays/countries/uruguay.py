@@ -17,13 +17,24 @@ from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd, FR, TH
 
 from holidays.constants import WEEKEND
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, OCT, NOV, DEC
+from holidays.constants import (
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    OCT,
+    NOV,
+    DEC,
+)
 from holidays.holiday_base import HolidayBase
 
 
 class Uruguay(HolidayBase):
     # https://www.ute.com.uy/clientes/tramites-y-servicios/potencia-contratada
-
 
     def __init__(self, **kwargs):
         self.country = "UY"
@@ -42,13 +53,12 @@ class Uruguay(HolidayBase):
         self[easter(year) - rd(days=48)] = name
         self[easter(year) - rd(days=47)] = name
 
-        # Día de Reyes - Feriado en el cual se conmemora la llegada de los reyes magos a Jesus
+        # Día de Reyes - Feriado en el cual se conmemora la llegada de
+        # los reyes magos a Jesus
         if not self.observed and date(year, JAN, 6).weekday() in WEEKEND:
             pass
         else:
-            self[date(year, JAN, 6)] = (
-                "Día de Reyes "
-            )
+            self[date(year, JAN, 6)] = "Día de Reyes"
 
         # Holy Week
         name_thu = "Semana Santa (Jueves Santo)  [Holy day (Holy Thursday)]"
@@ -70,7 +80,7 @@ class Uruguay(HolidayBase):
             self[date(year, APR, 19)] = (
                 "Desembarco de los 33 Orientales "
                 "Landing of the 33 Orientals"
-                " Aterrissagem dos 33 Orientais"    
+                " Aterrissagem dos 33 Orientais"
                 " Sbarco dei 33 orientali"
             )
 
@@ -89,18 +99,14 @@ class Uruguay(HolidayBase):
             self[date(year, MAY, 17)] = name
 
         # Natalicio de José Gervacio Artigas
-        name = (
-            "Natalicio de José Gervacio Artigas "
-        )
+        name = "Natalicio de José Gervacio Artigas "
         if not self.observed and date(year, JUN, 19).weekday() in WEEKEND:
             pass
         else:
             self[date(year, JUN, 19)] = name
 
         # Jura de la Constitución
-        name = (
-            "Jura de la constitución "
-        )
+        name = "Jura de la constitución "
         if not self.observed and date(year, JUL, 18).weekday() in WEEKEND:
             pass
         else:
@@ -125,10 +131,10 @@ class Uruguay(HolidayBase):
                 " Cultural Diversity Day]"
             )
         # Día de los difuntos
-        name = "Día de los difuntos]"
+        name = "Día de los difuntos"
         if not self.observed and date(year, NOV, 2).weekday() in WEEKEND:
             pass
-        elif year >= 2010:
+        else:
             self[date(year, NOV, 2)] = name
 
         # Christmas
@@ -139,5 +145,5 @@ class UY(Uruguay):
     pass
 
 
-class UY(Uruguay):
+class URY(Uruguay):
     pass

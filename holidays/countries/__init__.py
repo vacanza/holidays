@@ -94,6 +94,7 @@ from .united_kingdom import (
     GBR,
 )
 from .united_states import UnitedStates, US, USA
+from .uruguay import Uruguay, UY, URY
 from .venezuela import Venezuela, YV, VEN
 from .vietnam import Vietnam, VN, VNM
 from .zambia import Zambia, ZM, ZMB
