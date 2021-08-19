@@ -38,13 +38,13 @@ class TestLesotho(unittest.TestCase):
         self.assertIn(date(2002, 4, 4), self.holidays)
         self.assertIn(date(2002, 5, 25), self.holidays)
 
-    def test_heroes_day(self):
+    def test_africa_heroes_day(self):
+        self.assertIn(date(2002, 4, 4), self.holidays)
+        self.assertIn(date(2002, 5, 25), self.holidays)
+        self.assertIn(date(2001, 4, 4), self.holidays)
+        self.assertIn(date(2003, 5, 25), self.holidays)
         self.assertIn(date(1998, 4, 4), self.holidays)
         self.assertNotIn(date(2003, 4, 4), self.holidays)
-
-    def test_africa_heroes_day(self):
-        self.assertNotIn(date(2001, 5, 25), self.holidays)
-        self.assertIn(date(2003, 5, 25), self.holidays)
 
     def test_kings_birthday(self):
         self.assertIn(date(1997, 5, 2), self.holidays)
@@ -52,7 +52,6 @@ class TestLesotho(unittest.TestCase):
         self.assertIn(date(1998, 7, 17), self.holidays)
 
     def test_normal_days(self):
-        self.assertIn(date(2020, 1, 1), self.holidays)
         self.assertIn(date(2001, 3, 11), self.holidays)
         self.assertIn(date(2021, 5, 1), self.holidays)
         self.assertIn(date(2018, 10, 4), self.holidays)

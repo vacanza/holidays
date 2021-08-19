@@ -10,12 +10,11 @@
 #           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
-from datetime import date, datetime
+from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import FRI, SUN
 from holidays.constants import JAN, MAR, APR, MAY, JUL, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
@@ -29,9 +28,8 @@ class Lesotho(HolidayBase):
 
     def _populate(self, year):
         if year > 1995:
-            # Observed since 1995, with a few name changes
+            # https://www.ilo.org/dyn/travail/docs/2093/Public%20Holidays%20Act%201995.pdf
             self[date(year, JAN, 1)] = "New Year's Day"
-
             self[date(year, MAR, 11)] = "Moshoeshoe's Day"
 
             if year == 2002:
