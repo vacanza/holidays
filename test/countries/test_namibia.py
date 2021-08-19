@@ -30,12 +30,8 @@ class TestNamibia(unittest.TestCase):
     def test_easter(self):
         self.assertIn(date(2017, 4, 14), self.holidays)
         self.assertIn(date(2017, 4, 17), self.holidays)
+        self.assertIn(date(2017, 5, 25), self.holidays)
         self.assertIn(date(1994, 4, 1), self.holidays)
-
-    def test_static(self):
-        self.assertIn(
-            date(2022, 12, 27), self.holidays
-        )  # Christmas (Observed)
 
     def test_onceoff(self):
         self.assertIn(date(1999, 12, 31), self.holidays)  # Y2K
@@ -47,3 +43,14 @@ class TestNamibia(unittest.TestCase):
         self.assertIn(
             date(2005, 9, 10), self.holidays
         )  # test namib women and int. human rights day
+
+    def normal_holidays(self):
+        self.assertIn(date(2020, 5, 1), self.holidays)
+        self.assertIn(date(2020, 5, 4), self.holidays)
+        self.assertIn(date(2020, 5, 25), self.holidays)
+        self.assertIn(date(2020, 8, 26), self.holidays)
+
+    def observed(self):
+        self.assertIn(date(2021, 3, 22), self.holidays)
+        self.assertIn(date(2021, 12, 27), self.holidays)
+        self.assertIn(date(2022, 12, 27), self.holidays)
