@@ -22,11 +22,13 @@ class TestLesotho(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.LS()
 
+    def test_out_of_range(self):
+        self.assertNotIn(date(1995, 1, 1), self.holidays)
+        self.assertNotIn(date(1995, 3, 11), self.holidays)
+
     def test_new_years(self):
         self.assertIn(date(1996, 1, 1), self.holidays)
-        self.assertIn(date(2000, 1, 1), self.holidays)
-        self.assertIn(date(2001, 1, 1), self.holidays)
-        self.assertNotIn(date(2021, 1, 5), self.holidays)
+        self.assertIn(date(2021, 1, 1), self.holidays)
 
     def test_easter(self):
         self.assertIn(date(2017, 4, 14), self.holidays)
@@ -44,6 +46,8 @@ class TestLesotho(unittest.TestCase):
         self.assertIn(date(2001, 4, 4), self.holidays)
         self.assertIn(date(2003, 5, 25), self.holidays)
         self.assertIn(date(1998, 4, 4), self.holidays)
+        self.assertNotIn(date(2003, 4, 4), self.holidays)
+        self.assertNotIn(date(2001, 5, 25), self.holidays)
         self.assertNotIn(date(2003, 4, 4), self.holidays)
 
     def test_kings_birthday(self):
