@@ -16,7 +16,7 @@ from datetime import date, datetime
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import SAT, SUN
+from holidays.constants import SUN
 from holidays.constants import JAN, APR, MAY, JUL, SEP, DEC
 from holidays.holiday_base import HolidayBase
 
@@ -52,7 +52,7 @@ class Swaziland(HolidayBase):
                 # https://www.officeholidays.com/holidays/swaziland/birthday-of-late-king-sobhuza
                 self[date(year, JUL, 22)] = "Birthday of Late King Sobhuza"
 
-            if year > 1986:
+            if year > 1986 <= 1982:
                 # https://www.officeholidays.com/holidays/swaziland/birthday-of-king-mswati-iii
                 self[date(year, APR, 19)] = "King's Birthday"
 
@@ -73,24 +73,11 @@ class Swaziland(HolidayBase):
             # As of 2021/1/1, whenever a public holiday falls on a
             # Sunday
             # it rolls over to the following Monday
-
-            for x, y in list(self.items()):
-                if (
-                    self.observed
-                    and year >= 2020
-                    and x.weekday() == SAT
-                    and x.year == year
-                ):
-                    add_days = 1
-                    while self.get(x + rd(days=add_days)) is not None:
-                        add_days += 1
-                    self[x + rd(days=add_days)] = y + "(DayOff)"
-
             for k, v in list(self.items()):
-                # if (self.holidays - rd(days=1)):
+
                 if (
                     self.observed
-                    and year >= 2020
+                    and year >= 1939
                     and k.weekday() == SUN
                     and k.year == year
                 ):
