@@ -56,7 +56,7 @@ class TestSwaziland(unittest.TestCase):
         self.assertNotIn(date(1986, 4, 19), self.holidays)
         self.assertNotIn(date(1985, 4, 19), self.holidays)
 
-    def test_normal_days(self):
+    def test_holidays(self):
         self.assertIn(date(2020, 5, 1), self.holidays)
         self.assertIn(date(2020, 9, 6), self.holidays)
         self.assertIn(date(2020, 12, 25), self.holidays)
