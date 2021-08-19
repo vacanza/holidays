@@ -22,29 +22,38 @@ class TestSwaziland(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.SZ()
 
+    def test_out_of_range(self):
+        self.assertNotIn(date(1920, 1, 1), self.holidays)
+        self.assertNotIn(date(1938, 1, 1), self.holidays)
+
     def test_new_years(self):
         self.assertIn(date(1996, 1, 1), self.holidays)
         self.assertIn(date(2000, 1, 1), self.holidays)
         self.assertIn(date(2001, 1, 1), self.holidays)
-        self.assertNotIn(date(2021, 1, 5), self.holidays)
 
     def test_easter(self):
         self.assertIn(date(2017, 4, 14), self.holidays)
         self.assertIn(date(2017, 4, 17), self.holidays)
         self.assertIn(date(2017, 5, 25), self.holidays)
+        self.assertNotIn(date(2017, 5, 26), self.holidays)
 
     def test_once_off(self):
         self.assertIn(date(1999, 12, 31), self.holidays)  # y2k
         self.assertIn(date(2000, 1, 3), self.holidays)  # y2k
 
     def test_national_flag_day(self):
+        self.assertNotIn(date(1968, 4, 25), self.holidays)
         self.assertIn(date(2004, 4, 26), self.holidays)
+        self.assertNotIn(date(2004, 4, 25), self.holidays)
         self.assertIn(date(2005, 4, 25), self.holidays)
         self.assertNotIn(date(2005, 4, 26), self.holidays)
+        self.assertIn(date(2006, 4, 25), self.holidays)
 
     def test_kings_birthday(self):
+        self.assertNotIn(date(1982, 7, 22), self.holidays)
         self.assertIn(date(1983, 7, 22), self.holidays)
         self.assertIn(date(1987, 4, 19), self.holidays)
+        self.assertNotIn(date(1986, 4, 19), self.holidays)
         self.assertNotIn(date(1985, 4, 19), self.holidays)
 
     def test_normal_days(self):
@@ -55,6 +64,5 @@ class TestSwaziland(unittest.TestCase):
 
     def test_observed(self):
         self.assertIn(date(2021, 4, 26), self.holidays)
-        self.assertIn(date(2021, 5, 3), self.holidays)
         self.assertIn(date(2021, 12, 27), self.holidays)
-        self.assertNotIn(date(2021, 12, 28), self.holidays)
+        self.assertIn(date(2023, 1, 2), self.holidays)

@@ -52,11 +52,11 @@ class Swaziland(HolidayBase):
                 # https://www.officeholidays.com/holidays/swaziland/birthday-of-late-king-sobhuza
                 self[date(year, JUL, 22)] = "Birthday of Late King Sobhuza"
 
-            if year > 1986 <= 1982:
+            if year > 1986:
                 # https://www.officeholidays.com/holidays/swaziland/birthday-of-king-mswati-iii
                 self[date(year, APR, 19)] = "King's Birthday"
 
-            self[date(year, MAY, 1)] = "Workers Day"
+            self[date(year, MAY, 1)] = "Worker's Day"
             self[date(year, SEP, 6)] = "Independence Day"
             self[date(year, DEC, 25)] = "Christmas Day"
             self[date(year, DEC, 26)] = "Boxing Day"
@@ -84,7 +84,7 @@ class Swaziland(HolidayBase):
                     add_days = 1
                     while self.get(k + rd(days=add_days)) is not None:
                         add_days += 1
-                    self[k + rd(days=add_days)] = v + "(DayOff)"
+                    self[k + rd(days=add_days)] = v + " (Day Off)"
 
 
 class SZ(Swaziland):
