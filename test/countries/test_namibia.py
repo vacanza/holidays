@@ -21,6 +21,9 @@ class TestNamibia(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.NA()
 
+    def test_out_of_range_year(self):
+        self.assertNotIn(date(1970, 1, 1), self.holidays)
+
     def test_new_years(self):
         self.assertIn(date(1991, 1, 1), self.holidays)
         self.assertIn(date(1999, 1, 1), self.holidays)
@@ -44,13 +47,13 @@ class TestNamibia(unittest.TestCase):
             date(2005, 9, 10), self.holidays
         )  # test namib women and int. human rights day
 
-    def normal_holidays(self):
+    def test_holidays(self):
         self.assertIn(date(2020, 5, 1), self.holidays)
         self.assertIn(date(2020, 5, 4), self.holidays)
         self.assertIn(date(2020, 5, 25), self.holidays)
         self.assertIn(date(2020, 8, 26), self.holidays)
 
-    def observed(self):
+    def test_observed(self):
         self.assertIn(date(2021, 3, 22), self.holidays)
         self.assertIn(date(2021, 12, 27), self.holidays)
         self.assertIn(date(2022, 12, 27), self.holidays)
