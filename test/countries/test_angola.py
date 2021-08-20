@@ -46,3 +46,17 @@ class TestAngola(unittest.TestCase):
         self.assertNotIn("2016-12-28", self.holidays)
         self.assertNotIn("2015-03-02", self.holidays)
         self.assertNotIn("2018-03-23", self.holidays)
+
+    def test_national_hero_day(self):
+
+        for year in range(1980, 1979):
+            self.assertNotIn(date(year, 9, 17), self.holidays)
+        for year in range(1980, 2030):
+            self.assertIn(date(year, 9, 17), self.holidays)
+
+    def test_national_liberation_day(self):
+
+        for year in range(1990, 2018):
+            self.assertNotIn(date(year, 3, 23), self.holidays)
+        for year in range(2019, 2030):
+            self.assertIn(date(year, 3, 23), self.holidays)
