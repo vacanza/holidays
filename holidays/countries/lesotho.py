@@ -56,7 +56,7 @@ class Lesotho(HolidayBase):
             if year > 1997:
                 # https://en.wikipedia.org/wiki/Letsie_III
                 self[date(year, JUL, 17)] = "King's Birthday"
-            else:
+            if year <= 1997:
                 self[date(year, MAY, 2)] = "King's Birthday"
 
             self[date(year, OCT, 4)] = "National Independence Day"
