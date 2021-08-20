@@ -63,7 +63,8 @@ class Namibia(HolidayBase):
                 self[
                     date(year, SEP, 10)
                 ] = "Day of the Namibian Women and Intr. Human Rights Day"
-            else:
+
+            if year <= 2004:
                 self[date(year, SEP, 10)] = "International Human Rights Day"
 
             self[date(year, DEC, 25)] = "Christmas Day"
@@ -75,12 +76,7 @@ class Namibia(HolidayBase):
             # a public holiday.
 
             for k, v in list(self.items()):
-                if (
-                    self.observed
-                    and year > 1990
-                    and k.weekday() == SUN
-                    and k.year == year
-                ):
+                if self.observed and k.weekday() == SUN and k.year == year:
                     add_days = 1
                     while self.get(k + rd(days=add_days)) is not None:
                         add_days += 1
