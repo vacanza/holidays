@@ -43,10 +43,6 @@ class TestSwaziland(unittest.TestCase):
 
     def test_national_flag_day(self):
         self.assertNotIn(date(1968, 4, 25), self.holidays)
-        self.assertIn(date(2004, 4, 26), self.holidays)
-        self.assertNotIn(date(2004, 4, 25), self.holidays)
-        self.assertIn(date(2005, 4, 25), self.holidays)
-        self.assertNotIn(date(2005, 4, 26), self.holidays)
         self.assertIn(date(2006, 4, 25), self.holidays)
 
     def test_kings_birthday(self):
