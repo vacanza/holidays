@@ -42,11 +42,7 @@ class Swaziland(HolidayBase):
             self[ascension_day] = "Ascension Day"
 
             if year > 1968:
-                if year == 2004:
-                    # https://gazettes.africa/archive/sz/2004/sz-government-gazette-dated-2004-04-21-no-41.pdf
-                    self[date(year, APR, 26)] = "National Flag Day"
-                else:
-                    self[date(year, APR, 25)] = "National Flag Day"
+                self[date(year, APR, 25)] = "National Flag Day"
 
             if year > 1982:
                 # https://www.officeholidays.com/holidays/swaziland/birthday-of-late-king-sobhuza
@@ -75,12 +71,7 @@ class Swaziland(HolidayBase):
             # it rolls over to the following Monday
             for k, v in list(self.items()):
 
-                if (
-                    self.observed
-                    and year >= 1939
-                    and k.weekday() == SUN
-                    and k.year == year
-                ):
+                if self.observed and k.weekday() == SUN and k.year == year:
                     add_days = 1
                     while self.get(k + rd(days=add_days)) is not None:
                         add_days += 1
