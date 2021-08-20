@@ -56,4 +56,4 @@ class TestNamibia(unittest.TestCase):
     def test_observed(self):
         self.assertIn(date(2021, 3, 22), self.holidays)
         self.assertIn(date(2021, 12, 27), self.holidays)
-        self.assertIn(date(2022, 12, 27), self.holidays)
+        self.assertIn(date(2022, 12, 26), self.holidays)

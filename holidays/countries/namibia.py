@@ -77,10 +77,7 @@ class Namibia(HolidayBase):
 
             for k, v in list(self.items()):
                 if self.observed and k.weekday() == SUN and k.year == year:
-                    add_days = 1
-                    while self.get(k + rd(days=add_days)) is not None:
-                        add_days += 1
-                    self[k + rd(days=add_days)] = v + " (Observed)"
+                    self[k + rd(days=1)] = v + " (Observed)"
 
 
 class NA(Namibia):
