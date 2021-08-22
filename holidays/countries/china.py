@@ -20,7 +20,7 @@ from korean_lunar_calendar import KoreanLunarCalendar
 
 class China(HolidayBase):
     """
-    https://en.wikipedia.org/wiki/Public_holidays_in_Russia
+    https://en.wikipedia.org/wiki/Public_holidays_in_China
     """
 
     def __init__(self, **kwargs):
