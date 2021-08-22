@@ -24,6 +24,7 @@ from .bulgaria import Bulgaria, BG, BLG
 from .burundi import Burundi, BI, BDI
 from .canada import Canada, CA, CAN
 from .chile import Chile, CL, CHL
+from .china import China, CN, CHN
 from .colombia import Colombia, CO, COL
 from .croatia import Croatia, HR, HRV
 from .curacao import Curacao, CW, CUW

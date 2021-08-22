@@ -114,6 +114,7 @@ Canada              CA/CAN    prov = AB, BC, MB, NB, NL, NS, NT, NU, **ON** (def
                               PE, QC, SK, YU
 Chile               CL/CHL    state = AI, AN, AP, AR, AT, BI, CO, LI, LL, LR, MA, ML, NB,
                               RM, TA, VS
+China               CN/CHN
 Colombia            CO/COL    None
 Croatia             HR/HRV    None
 Curacao             CW/CUW    None
