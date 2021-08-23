@@ -20,7 +20,7 @@ import holidays
 
 class TestZimbabwe(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.ZM()
+        self.holidays = holidays.ZW()
 
     def test_new_years(self):
         self.assertIn(date(2010, 1, 1), self.holidays)
@@ -39,6 +39,6 @@ class TestZimbabwe(unittest.TestCase):
         self.assertNotIn(date(2016, 1, 12), self.holidays)
         self.assertNotIn(date(1999, 2, 3), self.holidays)
 
-    def youth_day(self):
-        self.assertIn(date(2018, 2, 24), self.holidays)
+    def test_youth_day(self):
+        self.assertIn(date(2019, 2, 24), self.holidays)
         self.assertNotIn(date(2015, 2, 24), self.holidays)

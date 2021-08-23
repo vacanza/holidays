@@ -16,8 +16,8 @@ from datetime import date, datetime
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import FEB, SUN
-from holidays.constants import JAN, APR, MAY, AUG, DEC
+from holidays.constants import SUN
+from holidays.constants import JAN, FEB, APR, MAY, AUG, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -32,7 +32,7 @@ class Zimbabwe(HolidayBase):
         if year > 1987:
             self[date(year, JAN, 1)] = "New Year's Day"
 
-            if year >= 2018:
+            if year > 2017:
                 # https://en.wikipedia.org/wiki/Robert_Gabriel_Mugabe_National_Youth_Day
                 self[
                     date(year, FEB, 24)
