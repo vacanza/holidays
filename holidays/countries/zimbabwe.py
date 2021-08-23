@@ -16,7 +16,7 @@ from datetime import date, datetime
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import SUN
+from holidays.constants import TUE, SUN
 from holidays.constants import JAN, FEB, APR, MAY, AUG, DEC
 from holidays.holiday_base import HolidayBase
 
@@ -35,7 +35,7 @@ class Zimbabwe(HolidayBase):
             if year > 2017:
                 # https://en.wikipedia.org/wiki/Robert_Gabriel_Mugabe_National_Youth_Day
                 self[
-                    date(year, FEB, 24)
+                    date(year, FEB, 21)
                 ] = "Robert Gabriel Mugabe National Youth Day"
 
             e = easter(year)
@@ -43,8 +43,8 @@ class Zimbabwe(HolidayBase):
             easter_saturday = e - rd(days=1)
             easter_monday = e + rd(days=1)
             self[good_friday] = "Good Friday"
-            self[easter_monday] = "Easter Monday"
             self[easter_saturday] = "Easter Saturday"
+            self[easter_monday] = "Easter Monday"
 
             self[date(year, APR, 18)] = "Independence Day"
 
@@ -55,12 +55,14 @@ class Zimbabwe(HolidayBase):
             # observed on second Monday in August
             while zimbabwe_heroes_day.weekday() != 0:
                 zimbabwe_heroes_day += rd(days=1)
+
             self[zimbabwe_heroes_day] = "Zimbabwe Heroes' Day"
 
-            defence_forces_day = datetime(year, AUG, 8)
+            defence_forces_day = datetime(year, AUG, 9)
             # observed Tuesday after second monday of August
-            while defence_forces_day.weekday() != 0:
+            while defence_forces_day.weekday() != TUE:
                 defence_forces_day += rd(days=1)
+
             self[defence_forces_day] = "Defense Forces Day"
 
             self[date(year, DEC, 22)] = "Unity Day"
