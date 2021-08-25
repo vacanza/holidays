@@ -40,5 +40,5 @@ class TestZimbabwe(unittest.TestCase):
         self.assertNotIn(date(1999, 2, 3), self.holidays)
 
     def test_youth_day(self):
-        self.assertIn(date(2019, 2, 24), self.holidays)
-        self.assertNotIn(date(2015, 2, 24), self.holidays)
+        self.assertIn(date(2019, 2, 21), self.holidays)
+        self.assertNotIn(date(2015, 2, 21), self.holidays)
