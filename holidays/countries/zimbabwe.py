@@ -16,7 +16,7 @@ from datetime import date, datetime
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import TUE, SUN
+from holidays.constants import MON, TUE, SUN
 from holidays.constants import JAN, FEB, APR, MAY, AUG, DEC
 from holidays.holiday_base import HolidayBase
 
@@ -51,17 +51,25 @@ class Zimbabwe(HolidayBase):
             self[date(year, MAY, 1)] = "Workers' Day"
             self[date(year, MAY, 25)] = "Africa Day"
 
-            zimbabwe_heroes_day = datetime(year, AUG, 7)
-            # observed on second Monday in August
-            while zimbabwe_heroes_day.weekday() != 0:
-                zimbabwe_heroes_day += rd(days=1)
+            # 2nd Monday of August
+            # Find the date of the 2nd Monday
+            # for the given year
+            zimbabwe_heroes_day = date(year, AUG, 8)
+            while zimbabwe_heroes_day.isoweekday() != MON and (
+                8 <= zimbabwe_heroes_day.day <= 14
+            ):
+                zimbabwe_heroes_day = zimbabwe_heroes_day + rd(days=1)
 
             self[zimbabwe_heroes_day] = "Zimbabwe Heroes' Day"
 
-            defence_forces_day = datetime(year, AUG, 9)
-            # observed Tuesday after second monday of August
-            while defence_forces_day.weekday() != TUE:
-                defence_forces_day += rd(days=1)
+            # 2nd Tuesday of August
+            # Find the date of the 2nd Tuesday
+            # for the given year
+            defence_forces_day = datetime(year, AUG, 8)
+            while defence_forces_day.isoweekday() != TUE and (
+                8 <= defence_forces_day.day <= 14
+            ):
+                defence_forces_day = defence_forces_day + rd(days=1)
 
             self[defence_forces_day] = "Defense Forces Day"
 
