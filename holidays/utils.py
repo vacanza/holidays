@@ -12,13 +12,20 @@
 #  License: MIT (see LICENSE file)
 
 import inspect
+from typing import Iterable, List, Optional, Type, Union
+
 import holidays
 from datetime import date
 from hijri_converter import convert
 
 
-def list_supported_countries():
-    """List all supported countries incl. their abbreviation."""
+def list_supported_countries() -> List[str]:
+    """List all supported countries, including their ISO 3166-1 Alpha country
+    codes (Alpha-2 and Alpha-3).
+
+    :return: A list of countries supported (ISO 3166-1 Alpha-2 and Alpha-3
+       country codes plus the internal name of the Class).
+    """
     return [
         name
         for name, obj in inspect.getmembers(
@@ -28,8 +35,29 @@ def list_supported_countries():
 
 
 def CountryHoliday(
-    country, years=[], prov=None, state=None, expand=True, observed=True
-):
+    country: str,
+    years: Union[int, Iterable[int]] = None,
+    prov: Optional[str] = None,
+    state: Optional[str] = None,
+    expand: bool = True,
+    observed: bool = True,
+) -> Type["holidays.HolidayBase"]:
+    """
+    Instantiates a Holiday object using a country code.
+
+    :param country: An ISO 3166-1 Alpha-2 or Alpha-3 country code.
+    :param years: The year(s) to pre-calculate holidays for at instantiation.
+    :param prov: The Province (see documentation of what is supported; not
+       implemented for all countries).
+    :param state: The State (see documentation for what is supported; not
+       implemented for all countries).
+    :param expand: If True (default), the entire year is added when one
+       date is requested.
+    :param observed: If True (default), include the day when the holiday
+       is observed (e.g. a holiday falling on a Sunday being observed the
+       following Monday (this doesn't work for all countries).
+    :return: a Holiday instance of the country requested.
+    """
     try:
         country_classes = inspect.getmembers(
             holidays.countries, inspect.isclass
@@ -47,13 +75,16 @@ def CountryHoliday(
     return country_holiday
 
 
-def get_gre_date(year, Hmonth, Hday):
+def get_gre_date(year: int, Hmonth: int, Hday: int) -> List[date]:
     """
-    Returns the gregorian dates within the gregorian year 'year'
-    of all instances of islamic calendar 'Hmonth' and 'Hday'.
-    Defaults to using the hijri-converter library if it is installed
-    otherwise it uses the less-precise convertdate one (which is a
-    requirement).
+    Return the gregorian dates within the gregorian year given of all instances
+    of month and date of the islamic calendar.
+
+    :param year: The gregorian year.
+    :param Hmonth: The hijri month.
+    :param Hday: The hijri day.
+    :return: list of gregorian dates within the year matching the hijri day
+       month.
     """
     Hyear = convert.Gregorian(year, 1, 1).to_hijri().datetuple()[0]
     gres = [
