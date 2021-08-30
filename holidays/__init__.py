@@ -26,7 +26,7 @@ from holidays.constants import (
     NOV,
     DEC,
 )
-from holidays.holiday_base import HolidayBase, createHolidaySum
+from holidays.holiday_base import HolidayBase
 from holidays.utils import list_supported_countries, CountryHoliday
 
 __version__ = "0.11.3"

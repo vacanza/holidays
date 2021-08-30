@@ -58,9 +58,7 @@ class Bulgaria(HolidayBase):
         ] = "Ден на Освобождението на България от османско иго"
 
         # Friday Holiday
-        self[
-            date(year, APR, 30)
-        ] = "Велики петък"
+        self[date(year, APR, 30)] = "Велики петък"
 
         # International Workers' Day
         self[
@@ -68,10 +66,8 @@ class Bulgaria(HolidayBase):
         ] = "Ден на труда и на международната работническа солидарност"
 
         # Resurrection Monday
-        self[
-            date(year, MAY, 3)
-        ] = "Возкресенни понеделник"
-        
+        self[date(year, MAY, 3)] = "Возкресенни понеделник"
+
         # Saint George's Day
         self[
             date(year, MAY, 6)
