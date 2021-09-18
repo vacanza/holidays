@@ -37,7 +37,7 @@ class Norway(HolidayBase):
     https://www.timeanddate.no/merkedag/norge/
     """
 
-    def __init__(self, include_sundays=True, **kwargs):
+    def __init__(self, include_sundays=False, **kwargs):
         """
 
         :param include_sundays: Whether to consider sundays as a holiday
