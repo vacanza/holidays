@@ -227,6 +227,8 @@ class Australia(HolidayBase):
             name = "The Royal Queensland Show"
             if year == 2020:
                 self[date(year, AUG, 14)] = name
+            if year == 2021:
+                self[date(year, OCT, 29)] = name
             else:
                 self[
                     date(year, AUG, 5) + rd(weekday=FR) + rd(weekday=WE)
