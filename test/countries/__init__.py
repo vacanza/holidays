@@ -59,6 +59,7 @@ from .test_malawi import *
 from .test_mexico import *
 from .test_morocco import *
 from .test_mozambique import *
+from .test_namibia import *
 from .test_netherlands import *
 from .test_new_zealand import *
 from .test_nicaragua import *
