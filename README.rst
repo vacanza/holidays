@@ -102,7 +102,7 @@ Argentina           AR/ARG    None
 Aruba               AW/ABW    None
 Australia           AU/AUS    prov = **ACT** (default), NSW, NT, QLD, SA, TAS, VIC, WA
 Austria             AT/AUT    prov = 1, 2, 3, 4, 5, 6, 7, 8, **9** (default)
-Bangladesh          BD/BDG    None
+Bangladesh          BD/BGD    None
 Belarus             BY/BLR    None
 Belgium             BE/BEL    None
 Botswana            BW/BWA    None
@@ -127,8 +127,8 @@ England                       None
 Estonia             EE/EST    None
 EuropeanCentralBank ECB/TAR   Trans-European Automated Real-time Gross Settlement (TARGET2)
 Finland             FI/FIN    None
-France              FR/FRA    **Métropole** (default), Alsace-Moselle, Guadeloupe, Guyane,
-                              Martinique, Mayotte, Nouvelle-Calédonie, La Réunion,
+France              FR/FRA    prov = **Métropole** (default), Alsace-Moselle, Guadeloupe,
+                              Guyane, Martinique, Mayotte, Nouvelle-Calédonie, La Réunion,
                               Polynésie Française, Saint-Barthélémy, Saint-Martin,
                               Wallis-et-Futuna
 Georgia             GE/GEO
