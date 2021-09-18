@@ -151,6 +151,7 @@ Japan               JP/JPN    None
 Kenya               KE/KEN    None
 Korea               KR/KOR    None
 Latvia              LV/LVA    None
+Lesotho             LS/LSO    None
 Lithuania           LT/LTU    None
 Luxembourg          LU/LUX    None
 Malaysia            MY/MYS    state = JHR, KDH, KTN, MLK, NSN, PHG, PNG, PRK, PLS, SBH, SWK,
