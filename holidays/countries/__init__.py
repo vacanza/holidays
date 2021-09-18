@@ -70,7 +70,7 @@ from .norway import Norway, NO, NOR
 from .paraguay import Paraguay, PY, PRY
 from .peru import Peru, PE, PER
 from .poland import Poland, Polish, PL, POL
-from .portugal import Portugal, PT, PRT, PortugalExt, PTE
+from .portugal import Portugal, PT, PRT, PortugalExt, PTE, PRTE
 from .romania import Romania, RO, ROU
 from .russia import Russia, RU, RUS
 from .saudi_arabia import SaudiArabia, SA, SAU
