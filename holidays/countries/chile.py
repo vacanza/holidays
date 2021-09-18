@@ -74,6 +74,12 @@ class Chile(HolidayBase):
         name = "Día de las Glorias Navales [Navy Day]"
         self[date(year, MAY, 21)] = name
 
+        name = "Día Nacional de los Pueblos Indígenas"
+        if year == 2021:
+            self[date(year, JUN, 21)] = name
+        if year > 2021:
+            self[date(year, JUN, 19)] = name
+
         # Saint Peter and Saint Paul (Law 18.432)
         name = "San Pedro y San Pablo [Saint Peter and Saint Paul]"
         if year < 2020:

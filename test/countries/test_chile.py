@@ -78,6 +78,7 @@ class TestChile(unittest.TestCase):
         self.assertIn(date(2021, 4, 3), self.holidays)
         self.assertIn(date(2021, 5, 1), self.holidays)
         self.assertIn(date(2021, 5, 21), self.holidays)
+        self.assertIn(date(2021, 6, 21), self.holidays)
         self.assertIn(date(2021, 6, 28), self.holidays)
         self.assertIn(date(2021, 7, 16), self.holidays)
         self.assertIn(date(2021, 8, 15), self.holidays)
@@ -92,6 +93,7 @@ class TestChile(unittest.TestCase):
         self.assertIn(date(2021, 8, 20), self.holidays_NB)
 
     def test_2024(self):
+        self.assertIn(date(2024, 6, 19), self.holidays)
         self.assertIn(date(2024, 10, 12), self.holidays)
 
     def test_2029(self):
