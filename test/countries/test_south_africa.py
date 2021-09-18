@@ -70,3 +70,4 @@ class TestSouthAfrica(unittest.TestCase):
         self.assertTrue("2014-05-07" in self.holidays)  # Election Day 2014
         self.assertTrue("2016-08-03" in self.holidays)  # Election Day 2016
         self.assertTrue("2019-05-08" in self.holidays)  # Election Day 2019
+        self.assertTrue("2021-11-01" in self.holidays)  # Election Day 2019
