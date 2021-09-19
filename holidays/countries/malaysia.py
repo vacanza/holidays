@@ -335,7 +335,7 @@ class Malaysia(HolidayBase):
 
         # Check for holidays that fall on a Sunday and
         # implement Section 3 of Malaysian Holidays Act:
-        # " if any day specified in the Schedule falls on
+        # "if any day specified in the Schedule falls on
         # Sunday then the day following shall be a public
         # holiday and if such day is already a public holiday,
         # then the day following shall be a public holiday"
@@ -382,7 +382,7 @@ class Malaysia(HolidayBase):
         # State holidays (multiple states) #
         # ---------------------------------#
 
-        # 1 January (TODO or the following day if the 1 January should fall on a
+        # 1 January (or the following day if the 1 January should fall on a
         # weekly holiday in any State or in the Federal Territory).
         if self.state in (
             "KUL",
@@ -397,14 +397,11 @@ class Malaysia(HolidayBase):
             "SWK",
             "SGR",
         ):
-            self[date(year, JAN, 1)] = "New Year's Day"
-
-        # 1 July (TODO or the following day if the 1 July should fall on a
-        # weekly holiday in any State or in the Federal Territory).
-        if self.state == "NSN":
-            self[
-                date(year, JAN, 14)
-            ] = "Birthday of the Sultan of Negeri Sembilan"
+            hol_date = date(year, JAN, 1)
+            self[hol_date] = "New Year's Day"
+            if hol_date == SUN:
+                self[hol_date] += " [Sunday]"
+                self[date(year, JAN, 2)] = "New Year's Day [In lieu]"
 
         # Isra and Mi'raj.
         if self.state in ("KDH", "NSN", "PLS", "TRG"):
@@ -522,7 +519,6 @@ class Malaysia(HolidayBase):
 
         elif self.state == "KTN":
             self[date(year, NOV, 11)] = "Birthday of the Sultan of Kelantan"
-
             self[
                 date(year, NOV, 12)
             ] = "Birthday of the Sultan of Kelantan Holiday"
@@ -534,6 +530,11 @@ class Malaysia(HolidayBase):
             self[
                 date(year, AUG, 24)
             ] = "Birthday of the Governor of the State of Melaka"
+
+        elif self.state == "NSN":
+            self[
+                date(year, JAN, 14)
+            ] = "Birthday of the Sultan of Negeri Sembilan"
 
         elif self.state == "PHG":
             self[date(year, MAY, 22)] = "Hari Hol of Pahang"
@@ -580,7 +581,6 @@ class Malaysia(HolidayBase):
                 byweekday=SA,
             )[0]
             self[first_sat_oct] = "Birthday of the Governor of Sabah"
-
             if year > 2018:
                 self[date(year, DEC, 24)] = "Christmas Eve"
 
@@ -588,7 +588,6 @@ class Malaysia(HolidayBase):
             self[
                 date(year, MAR, 4)
             ] = "Anniversary of the Installation of the Sultan of Terengganu"
-
             self[date(year, APR, 26)] = "Birthday of the Sultan of Terengganu"
 
     def my_islamic_to_gre(self, year: int, month: int, day: int):
