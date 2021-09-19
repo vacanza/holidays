@@ -29,8 +29,8 @@ class HongKong(HolidayBase):
 
     def __init__(self, **kwargs):
         self.country = "HK"
-        HolidayBase.__init__(self, **kwargs)
         self.cnls = ChineseLuniSolar()
+        HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
 

@@ -84,7 +84,7 @@ def islamic_to_gre(Gyear: int, Hmonth: int, Hday: int) -> List[date]:
     :param year: The Gregorian year.
     :param Hmonth: The Hijri (Islamic) month.
     :param Hday: The Hijri (Islamic) day.
-    :return: list of Gregorian dates within the year matching the hijri day
+    :return: List of Gregorian dates within the year matching the hijri day
        month.
     """
     Hyear = convert.Gregorian(Gyear, 1, 1).to_hijri().datetuple()[0]
@@ -455,4 +455,21 @@ class ChineseLuniSolar:
         for m in range(1, 10 + (10 > leap_month)):
             span_days += self._lunar_month_days(year, m)
         span_days -= 2
+        return self.SOLAR_START_DATE + timedelta(span_days)
+
+    def thaipusam_date(self, year: int) -> date:
+        """Return the estimated Gregorian date of Thaipusam (Tamil).
+
+        The full moon in the Tamil month of Thai (January/February).
+
+        https://en.wikipedia.org/wiki/Thaipusam
+
+        :param year: The Gregorian year.
+        :return: Estimated Gregorian date of Southern India Diwali.
+        """
+        span_days = self._span_days(year)
+        leap_month = self._get_leap_month(year)
+        for m in range(1, 1 + (leap_month <= 6)):
+            span_days += self._lunar_month_days(year, m)
+        span_days -= 15
         return self.SOLAR_START_DATE + timedelta(span_days)

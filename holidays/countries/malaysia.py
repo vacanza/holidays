@@ -11,22 +11,11 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-# TODO
-# Add Isra and Miraj in Malaysia
-# Add NUZUL AL-QUARAN DAY
-# Fix Thaipusam Holiday
-# Add The Sultan of Pahang Hol in Pahang
-# Add Birthday of SPB Yang di Pertuan Agong
-# Add Birthday of the Sultan of Kedah in Kedah
-# Add Birthday of the Raja of Perlis
-# Add Hijri New Year Awal Muharram or Maal Hijrah
-# Add The Sultan of Johor Hol
-# Add Muhammad's Birthday
-
 from datetime import date, timedelta
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, SA, FR, MO
+from dateutil.relativedelta import relativedelta as rd, MO, FR, SA, SU
+from dateutil.rrule import MONTHLY, rrule
 
 from holidays.constants import (
     JAN,
@@ -44,41 +33,80 @@ from holidays.constants import (
 )
 from holidays.constants import SUN
 from holidays.holiday_base import HolidayBase
-from holidays.utils import islamic_to_gre
+from holidays.utils import ChineseLuniSolar, islamic_to_gre
 
 
 class Malaysia(HolidayBase):
+    """
+    Malaysia holidays.
+    ==================
+
+    All States are supported, as follows:
+
+    - JHR: Johor
+    - KDH: Kedah
+    - KTN: Kelantan
+    - MLK: Malacca
+    - NSN: Negeri Sembilan
+    - PHG: Pahang
+    - PNG: Penang
+    - PRK: Perak
+    - PLS: Perlis
+    - SBH: Sabah
+    - SWK: Sarawak
+    - SGR: Selangor
+    - TRG: Terengganu
+    - KUL: FT Kuala Lumpur
+    - LBN: FT Labuan
+    - PJY: FT Putrajaya
+
+    **Limitations**
+
+    - Prior to 2021: holidays are not accurate.
+    - 2027 and later: Thaipusam dates are are estimated, and so denoted.
+
+    **References**:
+
+    - `Wikipedia <https://en.wikipedia.org/wiki/Public_holidays_in_Malaysia>`__  # noqa: E501
+
+    **Creator**: Eden
+
+    **Maintainer**: Mike Borsetti, https://github.com/mborsetti
+    """
+
     STATES = [
         "JHR",  # "Johor"
-        "KDH",  # "Kedah",
-        "KTN",  # "Kelantan",
-        "MLK",  # "Malacca",
-        "NSN",  # "Negeri Sembilan",
-        "PHG",  # "Pahang",
-        "PNG",  # "Penang",
-        "PRK",  # "Perak",
-        "PLS",  # "Perlis",
-        "SBH",  # "Sabah",
-        "SWK",  # "Sarawak",
-        "SGR",  # "Selangor",
-        "TRG",  # "Terengganu",
-        "KUL",  # "Kuala Lumpur",
-        "LBN",  # "Labuan",
-        "PJY",  # "Putrajaya",
+        "KDH",  # "Kedah"
+        "KTN",  # "Kelantan"
+        "MLK",  # "Malacca"
+        "NSN",  # "Negeri Sembilan"
+        "PHG",  # "Pahang"
+        "PNG",  # "Penang"
+        "PRK",  # "Perak"
+        "PLS",  # "Perlis"
+        "SBH",  # "Sabah"
+        "SWK",  # "Sarawak"
+        "SGR",  # "Selangor"
+        "TRG",  # "Terengganu"
+        "KUL",  # "FT Kuala Lumpur"
+        "LBN",  # "FT Labuan"
+        "PJY",  # "FT Putrajaya"
     ]
 
     def __init__(self, **kwargs):
         self.country = "MY"
+        self.cnls = ChineseLuniSolar()
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
 
         # New Year's Day
-        self[date(year, JAN, 1)] = "New Year's Day"
+        if self.state not in ("JHR", "KDH", "KTN", "PLS", "TRG"):
+            self[date(year, JAN, 1)] = "New Year's Day"
 
         # Birthday of the Prophet Muhammad (s.a.w.).
         # a.k.a. Hari Keputeraan Nabi Muhammad (Sabah Act)
-        for hol_date in islamic_to_gre(year, 3, 13):
+        for hol_date in self.my_islamic_to_gre(year, 3, 12):
             self[
                 hol_date
             ] = "Maulidur Rasul (Birthday of the Prophet Muhammad)"
@@ -88,10 +116,12 @@ class Malaysia(HolidayBase):
 
         # Chinese New Year (one day in the States of Kelantan and Terengganu,
         # two days in the other States).
-        hol_date = self.get_lunar_n_y_date(year)
+        hol_date = self.cnls.lunar_n_y_date(year)
         self[hol_date] = "Chinese New Year"
-        if self.state != "KTN" and self.state != "TRG":
-            self[hol_date + rd(days=+1)] = "Chinese New Year Holiday"
+        # The second day of Chinese New Year is not a federal holiday in
+        # Kelantan and Terengganu. However, it is gazetted as a state holiday
+        # in both states, effectively making it a nationwide holiday.
+        self[hol_date + rd(days=+1)] = "Chinese New Year Holiday"
 
         # Wesak Day.
         # Date of observance is announced yearly
@@ -124,24 +154,35 @@ class Malaysia(HolidayBase):
             hol_date = date(year, *dates_obs[year])
             self[hol_date] = "Vesak Day"
         else:
-            hol_date = self.get_vesak_date(year)
+            hol_date = self.cnls.vesak_date(year)
             self[hol_date] = "Vesak Day* (*estimated; ~10% chance +/- 1 day)"
 
         # Birthday of [His Majesty] the Yang di-Pertuan Agong.
-        first_mon_jun = rrule(
-            MONTHLY,
-            dtstart=date(year, JUN, 1),
-            count=1,
-            bysetpos=1,
-            byweekday=MO,
-        )[0]
-        self[first_mon_jun] = "Birthday of SPB Yang di-Pertuan Agong"
+        if year <= 2017:
+            hol_date = rrule(
+                MONTHLY,
+                dtstart=date(year, JUN, 1),
+                count=1,
+                bysetpos=1,
+                byweekday=SA,
+            )[0]
+        elif year == 2018:
+            hol_date = date(2018, SEP, 9)
+        else:
+            hol_date = rrule(
+                MONTHLY,
+                dtstart=date(year, JUN, 1),
+                count=1,
+                bysetpos=1,
+                byweekday=MO,
+            )[0]
+        self[hol_date] = "Birthday of SPB Yang di-Pertuan Agong"
 
         # Hari Raya Puasa (2 days).
         # aka Eid al-Fitr;
         # exact date of observance is announced yearly
         dates_obs = {
-            2001: [(DEC, 16)],
+            2001: [(DEC, 17)],
             2002: [(DEC, 6)],
             2003: [(NOV, 25)],
             2004: [(NOV, 14)],
@@ -168,31 +209,17 @@ class Malaysia(HolidayBase):
             for date_obs in dates_obs[year]:
                 hol_date = date(year, *date_obs)
                 self[hol_date] = "Hari Raya Puasa"
-                # Second day of Hari Raya Puasa (up to and including 1968)
-                # Removed since we don't have Hari Raya Puasa dates for the
-                # the years <= 1968:
-                # if year <= 1968:
-                #     self[hol_date + rd(days=+1),
-                #                  "Second day of Hari Raya Puasa")
+                self[hol_date + rd(days=+1)] = "Second day of Hari Raya Puasa"
         else:
             for date_obs in islamic_to_gre(year, 10, 1):
                 hol_date = date_obs
                 self[hol_date] = "Hari Raya Puasa* (*estimated)"
-                # Second day of Hari Raya Puasa (up to and including 1968)
-                if year <= 1968:
-                    hol_date += rd(days=+1)
-                    self[hol_date] = (
-                        "Second day of Hari Raya Puasa*" " (*estimated)"
-                    )
+                self[hol_date + rd(days=+1)] = (
+                    "Second day of Hari Raya Puasa*" " (*estimated)"
+                )
 
-        # The last two days in May (Pesta Kaamatan).
-        # (Sarawak Act)
-        if self.state in ("LBN", "SBH"):
-            self[date(year, MAY, 30)] = "Pesta Kaamatan"
-            self[date(year, MAY, 31)] = "Pesta Kaamatan (Second day)"
-
-        # Hari Raya Haji (two days in the States of Kelantan and Terengganu,
-        # one day in the other States).
+        # Hari Raya Haji and Arafat Day.
+        # Date of observance is announced yearly.
         dates_obs = {
             2001: [(MAR, 6)],
             2002: [(FEB, 23)],
@@ -222,49 +249,58 @@ class Malaysia(HolidayBase):
                 hol_date = date(year, *date_obs)
                 self[hol_date] = "Hari Raya Haji"
                 if self.state == "TRG":
-                    # The Arafat Day is one day before Eid al-Adha
+                    # Arafat Day is one day before Eid al-Adha
                     self[hol_date - rd(days=1)] = "Arafat Day"
-                if self.state in ("KDH", "KTN", "PLS"):
-                    # The Arafat Day is one day before Eid al-Adha
+                if self.state in ("KDH", "KTN", "PLS", "TRG"):
+                    # Second day
                     self[hol_date + rd(days=1)] = "Hari Raya Haji Holiday"
         else:
-            for date_obs in self.get_hrh_date(year):
+            for date_obs in islamic_to_gre(year, 12, 10):
                 hol_date = date_obs
                 self[hol_date] = "Hari Raya Haji* (*estimated)"
+                if self.state == "TRG":
+                    # Arafat Day is one day before Eid al-Adha
+                    self[hol_date - rd(days=1)] = "Arafat Day* (*estimated)"
+                if self.state in ("KDH", "KTN", "PLS", "TRG"):
+                    # Second day
+                    self[
+                        hol_date + rd(days=1)
+                    ] = "Hari Raya Haji Holiday* (*estimated)"
 
         # Deepavali.
         # aka Diwali;
         # date of observance is announced yearly
-        dates_obs = {
-            2001: (NOV, 14),
-            2002: (NOV, 3),
-            2003: (OCT, 23),
-            2004: (NOV, 11),
-            2005: (NOV, 1),
-            2006: (OCT, 21),
-            2007: (NOV, 8),
-            2008: (OCT, 27),
-            2009: (OCT, 17),
-            2010: (NOV, 5),
-            2011: (OCT, 26),
-            2012: (NOV, 13),
-            2013: (NOV, 2),
-            2014: (OCT, 22),
-            2015: (NOV, 10),
-            2016: (OCT, 29),
-            2017: (OCT, 18),
-            2018: (NOV, 6),
-            2019: (OCT, 27),
-            2020: (NOV, 14),
-            2021: (NOV, 4),
-            2022: (NOV, 24),
-        }
-        if year in dates_obs:
-            hol_date = date(year, *dates_obs[year])
-            self[hol_date] = "Deepavali"
-        else:
-            hol_date = self.get_s_diwali_date(year)
-            self[hol_date] = "Deepavali* (*estimated; rarely on day after)"
+        if self.state != "SWK":
+            dates_obs = {
+                2001: (NOV, 14),
+                2002: (NOV, 3),
+                2003: (OCT, 23),
+                2004: (NOV, 11),
+                2005: (NOV, 1),
+                2006: (OCT, 21),
+                2007: (NOV, 8),
+                2008: (OCT, 27),
+                2009: (OCT, 17),
+                2010: (NOV, 5),
+                2011: (OCT, 26),
+                2012: (NOV, 13),
+                2013: (NOV, 2),
+                2014: (OCT, 22),
+                2015: (NOV, 10),
+                2016: (OCT, 29),
+                2017: (OCT, 18),
+                2018: (NOV, 6),
+                2019: (OCT, 27),
+                2020: (NOV, 14),
+                2021: (NOV, 4),
+                2022: (NOV, 24),
+            }
+            if year in dates_obs:
+                hol_date = date(year, *dates_obs[year])
+                self[hol_date] = "Deepavali"
+            else:
+                hol_date = self.cnls.s_diwali_date(year)
+                self[hol_date] = "Deepavali* (*estimated; rarely on day after)"
 
         # Christmas day.
         self[date(year, DEC, 25)] = "Christmas Day"
@@ -284,18 +320,39 @@ class Malaysia(HolidayBase):
 
             # Birthday of Tuan Yang Terutama Yang di-Pertua Negeri Sarawak (the
             # second Saturday of September).
-            second_sat_sep = rrule(
+            second_sat_oct = rrule(
                 MONTHLY,
-                dtstart=date(year, SEP, 1),
+                dtstart=date(year, OCT, 1),
                 count=1,
                 bysetpos=2,
                 byweekday=SA,
             )[0]
-            self[second_sat_sep] = "Birthday of the Governor of Sarawak"
+            self[second_sat_oct] = "Birthday of the Governor of Sarawak"
 
             # Sarawak Independence Day
             if year > 2016:
                 self[date(year, JUL, 22)] = "Sarawak Day"
+
+        # Check for holidays that fall on a Sunday and
+        # implement Section 3 of Malaysian Holidays Act:
+        # " if any day specified in the Schedule falls on
+        # Sunday then the day following shall be a public
+        # holiday and if such day is already a public holiday,
+        # then the day following shall be a public holiday"
+        for (hol_date, hol_name) in list(self.items()):
+            if hol_date.year == year and hol_date.weekday() == SUN:
+                self[hol_date] += " [Sunday]"
+                in_lieu_date = hol_date + rd(days=+1)
+                while in_lieu_date in self:
+                    in_lieu_date += rd(days=+1)
+                self[in_lieu_date] = hol_name + " [In lieu]"
+
+        # The last two days in May (Pesta Kaamatan).
+        # (Sarawak Act)
+        # Day following a Sunday is not a holiday
+        if self.state in ("LBN", "SBH"):
+            self[date(year, MAY, 30)] = "Pesta Kaamatan"
+            self[date(year, MAY, 31)] = "Pesta Kaamatan (Second day)"
 
         # ------------------------------#
         # Other holidays (decrees etc.) #
@@ -315,7 +372,7 @@ class Malaysia(HolidayBase):
             ] = "Malaysia General Election Holiday"
 
         # Awal Muharram.
-        for hol_date in islamic_to_gre(year, 1, 2):
+        for hol_date in self.my_islamic_to_gre(year, 1, 1):
             self[hol_date] = "Awal Muharram (Hijri New Year)"
 
         # Labour Day.
@@ -349,14 +406,14 @@ class Malaysia(HolidayBase):
                 date(year, JAN, 14)
             ] = "Birthday of the Sultan of Negeri Sembilan"
 
-        # Isra and Miraj.
+        # Isra and Mi'raj.
         if self.state in ("KDH", "NSN", "PLS", "TRG"):
-            for hol_date in islamic_to_gre(year, 7, 28):
-                self[hol_date] = "Isra and Miraj"
+            for hol_date in islamic_to_gre(year, 7, 27):
+                self[hol_date] = "Isra and Mi'raj"
 
         # Beginning of Ramadan.
         if self.state in ("JHR", "KDH", "MLK"):
-            for hol_date in islamic_to_gre(year, 9, 2):
+            for hol_date in islamic_to_gre(year, 9, 1):
                 self[hol_date] = "Begining of Ramadan"
 
         # Nuzul Al-Quran Day.
@@ -364,14 +421,11 @@ class Malaysia(HolidayBase):
             "JHR",
             "KDH",
             "MLK",
+            "NSN",
             "SBH",
             "SWK",
-            "TRG",
         ):
             for hol_date in islamic_to_gre(year, 9, 17):
-                self[hol_date] = "Nuzul Al-Quran Day"
-        if self.state == "TRG":
-            for hol_date in islamic_to_gre(year, 9, 18):
                 self[hol_date] = "Nuzul Al-Quran Day"
 
         # Hari Raya Aidilfitri.
@@ -412,9 +466,7 @@ class Malaysia(HolidayBase):
                 hol_date = date_obs
                 self[hol_date] = "Hari Raya Aidilfitri* (*estimated)"
                 hol_date += rd(days=+1)
-                self[hol_date] = (
-                    "Hari Raya Aidilfitri Holiday*" " (*estimated)"
-                )
+                self[hol_date] = "Hari Raya Aidilfitri Holiday* (*estimated)"
 
         # Good Friday.
         if self.state in ("SBH", "SWK"):
@@ -424,8 +476,6 @@ class Malaysia(HolidayBase):
         # An annual Hindu festival observed on the day of the first full moon
         # during the Tamil month of Thai
         if self.state in ("JHR", "KUL", "NSN", "PJY", "PNG", "PRK", "SGR"):
-            # TODO  This dates are hardcore we need to
-            # find a way to calculate it dynamically
             dates_obs = {
                 2018: [(JAN, 31)],
                 2019: [(JAN, 21)],
@@ -442,6 +492,9 @@ class Malaysia(HolidayBase):
                 for date_obs in dates_obs[year]:
                     hol_date = date(year, *date_obs)
                     self[hol_date] = "Thaipusam"
+            else:
+                hol_date = self.cnls.thaipusam_date(year)
+                self[hol_date] = "Thaipusam* (*estimated)"
 
         # Federal Territory Day.
         if self.state in ("KUL", "LBN", "PJY"):
@@ -454,6 +507,18 @@ class Malaysia(HolidayBase):
         if self.state == "JHR":
             if year > 2014:
                 self[date(year, MAR, 23)] = "Birthday of the Sultan of Johor"
+            for date_obs in islamic_to_gre(year, 2, 6):
+                self[date_obs] = "Hari Hol of Sultan Iskandar of Johor"
+
+        elif self.state == "KDH":
+            third_sun_jun = rrule(
+                MONTHLY,
+                dtstart=date(year, JUN, 1),
+                count=1,
+                bysetpos=3,
+                byweekday=SU,
+            )[0]
+            self[third_sun_jun] = "Birthday of The Sultan of Kedah"
 
         elif self.state == "KTN":
             self[date(year, NOV, 11)] = "Birthday of the Sultan of Kelantan"
@@ -466,15 +531,24 @@ class Malaysia(HolidayBase):
             self[
                 date(year, APR, 15)
             ] = "Declaration of Malacca as a Historical City in Melaka"
+            self[
+                date(year, AUG, 24)
+            ] = "Birthday of the Governor of the State of Melaka"
 
-            second_fri_oct = rrule(
+        elif self.state == "PHG":
+            self[date(year, MAY, 22)] = "Hari Hol of Pahang"
+            self[date(year, JUL, 30)] = "Birthday of the Sultan of Pahang"
+
+        elif self.state == "PNG":
+            self[date(year, JUL, 7)] = "George Town Heritage Day"
+            second_sat_jul = rrule(
                 MONTHLY,
-                dtstart=date(year, OCT, 1),
+                dtstart=date(year, JUL, 1),
                 count=1,
                 bysetpos=2,
-                byweekday=FR,
+                byweekday=SA,
             )[0]
-            self[second_fri_oct] = "Birthday of the Governor of Melaka"
+            self[second_sat_jul] = "Birthday of the Governor of Penang"
 
         elif self.state == "PRK":
             if year > 2016:
@@ -488,20 +562,11 @@ class Malaysia(HolidayBase):
                 self[first_fri_nov] = "Birthday of the Sultan of Perak"
             else:
                 # This Holiday used to be on 27th until 2017
-                # https://www.officeholidays.com/holidays/malaysia/birthday-of-the-sultan-of-perak
+                # https://www.officeholidays.com/holidays/malaysia/birthday-of-the-sultan-of-perak  # noqa: E501
                 self[date(year, NOV, 27)] = "Birthday of the Sultan of Perak"
 
-        elif self.state == "PNG":
-            self[date(year, JUL, 7)] = "George Town Heritage Day"
-
-            second_sat_jul = rrule(
-                MONTHLY,
-                dtstart=date(year, JUL, 1),
-                count=1,
-                bysetpos=2,
-                byweekday=SA,
-            )[0]
-            self[second_sat_jul] = "Birthday of the Governor of Penang"
+        elif self.state == "PLS":
+            self[date(year, JUL, 17)] = "Birthday of The Raja of Perlis"
 
         elif self.state == "SGR":
             self[date(year, DEC, 11)] = "Birthday of The Sultan of Selangor"
@@ -526,27 +591,37 @@ class Malaysia(HolidayBase):
 
             self[date(year, APR, 26)] = "Birthday of the Sultan of Terengganu"
 
-        # Check for holidays that fall on a Sunday and
-        # implement Section 3 of Malaysian Holidays Act:
-        # " if any day specified in the Schedule falls on
-        # Sunday then the day following shall be a public
-        # holiday and if such day is already a public holiday,
-        # then the day following shall be a public holiday"
-        for (hol_date, hol_name) in list(self.items()):
-            if hol_date.year == year and hol_date.weekday() == SUN:
-                self[hol_date] += " [Sunday]"
-                in_lieu_date = hol_date + rd(days=+1)
-                while in_lieu_date in self:
-                    in_lieu_date += rd(days=+1)
-                self[in_lieu_date] = hol_name + " [In lieu]"
+    def my_islamic_to_gre(self, year: int, month: int, day: int):
+        """
+        Malaysia seems to have a slightly different Hijri calendar. This
+        function returns the adjusted date.
 
-    # Estimate Gregorian date(s) of Hara Rasa Puasa
-    def get_hrp_date(self, year):
-        return get_gre_date(year, 10, 1)
+        Only knows years 2000 to 2030.
 
-    # Estimate Gregorian date(s) of Hara Rasa Haji
-    def get_hrh_date(self, year):
-        return get_gre_date(year, 12, 10)
+        :param year: The Gregorian year.
+        :param Hmonth: The Hijri (Islamic) month.
+        :param Hday: The Hijri (Islamic) day.
+        :return: List of Gregorian dates within the year matching the hijri day
+           month, adjusted for Malaysia.
+        """
+        hol_dates = islamic_to_gre(year, month, day)
+        if year in (
+            2003,
+            2004,
+            2010,
+            2011,
+            2013,
+            2017,
+            2019,
+            2021,
+            2024,
+            2025,
+            2027,
+        ):
+            hol_dates = [
+                hol_date + timedelta(days=1) for hol_date in hol_dates
+            ]
+        return hol_dates
 
 
 class MY(Malaysia):

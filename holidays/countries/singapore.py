@@ -14,7 +14,7 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, SA, FR, MO
+from dateutil.relativedelta import relativedelta as rd, MO, FR, SA
 
 from holidays.constants import (
     JAN,
@@ -31,7 +31,7 @@ from holidays.constants import (
 )
 from holidays.constants import SUN
 from holidays.holiday_base import HolidayBase
-from holidays.utils import islamic_to_gre, ChineseLuniSolar
+from holidays.utils import ChineseLuniSolar, islamic_to_gre
 
 
 class Singapore(HolidayBase):
@@ -41,37 +41,33 @@ class Singapore(HolidayBase):
 
     **Limitations**
 
-    - Prior to 1969 (Act 24 of 1968—Holidays (Amendment) Act 1968): holidays are
-      estimated.
+    - Prior to 1969 (Act 24 of 1968—Holidays (Amendment) Act 1968): holidays
+      are estimated.
     - Prior to 2000: holidays may not be accurate.
     - 2022 and later: the following four moving date holidays (whose exact
       date is announced yearly) are estimated, and so denoted:
 
-      - Hari Raya Puasa*
-      - Hari Raya Haji*
+      - Hari Raya Puasa
+      - Hari Raya Haji
       - Vesak Day
       - Deepavali
-    *only if the ``hijri-converter`` library is installed, otherwise a warning
-    is raised that this holiday is missing. ``hijri-converter`` requires
-    Python >= 3.6.
 
     **Sources**:
 
     - `Holidays Act <https://sso.agc.gov.sg/Act/HA1998>`__
-    - `Ministry of Manpower <https://www.mom.gov.sg/employment-practices/public-holidays>`__
+    - `Ministry of Manpower <https://www.mom.gov.sg/employment-practices/public-holidays>`__  # noqa: E501
 
     **References**:
 
-    - `Wikipedia <https://en.wikipedia.org/wiki/Public_holidays_in_Singapore>`__
+    - `Wikipedia <https://en.wikipedia.org/wiki/Public_holidays_in_Singapore>`__  # noqa: E501
 
-    **Maintainer**:
-    Mike Borsetti, mike@borsetti.com
+    **Maintainer**: Mike Borsetti, https://github.com/mborsetti
     """
 
     def __init__(self, **kwargs):
         self.country = "SG"
-        HolidayBase.__init__(self, **kwargs)
         self.cnls = ChineseLuniSolar()
+        HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
 
