@@ -12,6 +12,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date, timedelta
+from typing import Iterable, Optional, Union
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd, MO, FR, SA, SU
@@ -37,66 +38,76 @@ from holidays.utils import ChineseLuniSolar, islamic_to_gre
 
 
 class Malaysia(HolidayBase):
-    """
-    Malaysia holidays.
-    ==================
-
-    All States are supported, as follows:
-
-    - JHR: Johor
-    - KDH: Kedah
-    - KTN: Kelantan
-    - MLK: Malacca
-    - NSN: Negeri Sembilan
-    - PHG: Pahang
-    - PNG: Penang
-    - PRK: Perak
-    - PLS: Perlis
-    - SBH: Sabah
-    - SWK: Sarawak
-    - SGR: Selangor
-    - TRG: Terengganu
-    - KUL: FT Kuala Lumpur
-    - LBN: FT Labuan
-    - PJY: FT Putrajaya
-
-    **Limitations**
-
-    - Prior to 2021: holidays are not accurate.
-    - 2027 and later: Thaipusam dates are are estimated, and so denoted.
-
-    **References**:
-
-    - `Wikipedia <https://en.wikipedia.org/wiki/Public_holidays_in_Malaysia>`__  # noqa: E501
-
-    **Creator**: Eden
-
-    **Maintainer**: Mike Borsetti, https://github.com/mborsetti
-    """
 
     STATES = [
-        "JHR",  # "Johor"
-        "KDH",  # "Kedah"
-        "KTN",  # "Kelantan"
-        "MLK",  # "Malacca"
-        "NSN",  # "Negeri Sembilan"
-        "PHG",  # "Pahang"
-        "PNG",  # "Penang"
-        "PRK",  # "Perak"
-        "PLS",  # "Perlis"
-        "SBH",  # "Sabah"
-        "SWK",  # "Sarawak"
-        "SGR",  # "Selangor"
-        "TRG",  # "Terengganu"
-        "KUL",  # "FT Kuala Lumpur"
-        "LBN",  # "FT Labuan"
-        "PJY",  # "FT Putrajaya"
+        "JHR",
+        "KDH",
+        "KTN",
+        "MLK",
+        "NSN",
+        "PHG",
+        "PRK",
+        "PLS",
+        "PNG",
+        "SBH",
+        "SWK",
+        "SGR",
+        "TRG",
+        "KUL",
+        "LBN",
+        "PJY",
     ]
 
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        years: Union[int, Iterable[int]] = None,
+        expand: bool = True,
+        observed: bool = True,
+        prov: Optional[str] = None,
+        state: Optional[str] = None,
+    ) -> None:
+        """
+        An subclass of :py:class:`HolidayBase` representing public holidays in
+        Malaysia.
+
+        If ``state`` is not supplied, only nationwide holidays are
+        returned. The following ``state`` codes are used (ISO 3166-2
+        subdivision codes are not yet supported):
+
+        - JHR: Johor
+        - KDH: Kedah
+        - KTN: Kelantan
+        - MLK: Melaka
+        - NSN: Negeri Sembilan
+        - PHG: Pahang
+        - PRK: Perak
+        - PLS: Perlis
+        - PNG: Pulau Pinang
+        - SBH: Sabah
+        - SWK: Sarawak
+        - SGR: Selangor
+        - TRG: Terengganu
+        - KUL: FT Kuala Lumpur
+        - LBN: FT Labuan
+        - PJY: FT Putrajaya
+
+        Limitations:
+
+        - Prior to 2021: holidays are not accurate.
+        - 2027 and later: Thaipusam dates are are estimated, and so denoted.
+
+        Reference: `Wikipedia
+        <https://en.wikipedia.org/wiki/Public_holidays_in_Malaysia>`__
+
+        Country created by: `Eden <https://github.com/jusce17>`__
+
+        Country maintained by: `Mike Borsetti <https://github.com/mborsetti>`__
+
+        See parameters and usage in :py:class:`HolidayBase`.
+        """
         self.country = "MY"
         self.cnls = ChineseLuniSolar()
-        HolidayBase.__init__(self, **kwargs)
+        super().__init__(years, expand, observed, prov, state)
 
     def _populate(self, year):
 
@@ -154,7 +165,7 @@ class Malaysia(HolidayBase):
             hol_date = date(year, *dates_obs[year])
             self[hol_date] = "Vesak Day"
         else:
-            hol_date = self.cnls.vesak_date(year)
+            hol_date = self.cnls.vesak_may_date(year)
             self[hol_date] = "Vesak Day* (*estimated; ~10% chance +/- 1 day)"
 
         # Birthday of [His Majesty] the Yang di-Pertuan Agong.
@@ -624,8 +635,28 @@ class Malaysia(HolidayBase):
 
 
 class MY(Malaysia):
-    pass
+
+    # __init__ required for IDE typing and inheritance of docstring.
+    def __init__(
+        self,
+        years: Union[int, Iterable[int]] = None,
+        expand: bool = True,
+        observed: bool = True,
+        prov: Optional[str] = None,
+        state: Optional[str] = None,
+    ) -> None:
+        super().__init__(years, expand, observed, prov, state)
 
 
 class MYS(Malaysia):
-    pass
+
+    # __init__ required for IDE typing and inheritance of docstring.
+    def __init__(
+        self,
+        years: Union[int, Iterable[int]] = None,
+        expand: bool = True,
+        observed: bool = True,
+        prov: Optional[str] = None,
+        state: Optional[str] = None,
+    ) -> None:
+        super().__init__(years, expand, observed, prov, state)

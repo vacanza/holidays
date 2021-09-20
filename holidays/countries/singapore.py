@@ -12,6 +12,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from typing import Iterable, Optional, Union
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd, MO, FR, SA
@@ -35,39 +36,51 @@ from holidays.utils import ChineseLuniSolar, islamic_to_gre
 
 
 class Singapore(HolidayBase):
-    """
-    Singapore holidays.
-    ===================
+    def __init__(
+        self,
+        years: Union[int, Iterable[int]] = None,
+        expand: bool = True,
+        observed: bool = True,
+        prov: Optional[str] = None,
+        state: Optional[str] = None,
+    ) -> None:
+        """
+        An subclass of :py:class:`HolidayBase` representing public holidays in
+        Singapore.
 
-    **Limitations**
+        Limitations:
 
-    - Prior to 1969 (Act 24 of 1968—Holidays (Amendment) Act 1968): holidays
-      are estimated.
-    - Prior to 2000: holidays may not be accurate.
-    - 2022 and later: the following four moving date holidays (whose exact
-      date is announced yearly) are estimated, and so denoted:
+        - Prior to 1969: holidays are estimated.
+        - Prior to 2000: holidays may not be accurate.
+        - 2022 and later: the following four moving date holidays (whose exact
+          date is announced yearly) are estimated, and so denoted:
 
-      - Hari Raya Puasa
-      - Hari Raya Haji
-      - Vesak Day
-      - Deepavali
+          - Hari Raya Puasa
+          - Hari Raya Haji
+          - Vesak Day
+          - Deepavali
 
-    **Sources**:
+        Sources:
 
-    - `Holidays Act <https://sso.agc.gov.sg/Act/HA1998>`__
-    - `Ministry of Manpower <https://www.mom.gov.sg/employment-practices/public-holidays>`__  # noqa: E501
+        - `Holidays Act <https://sso.agc.gov.sg/Act/HA1998>`__ (Act 24 of
+          1968—Holidays (Amendment) Act 1968)
+        - `Ministry of Manpower
+          <https://www.mom.gov.sg/employment-practices/public-holidays>`__
 
-    **References**:
+        References:
 
-    - `Wikipedia <https://en.wikipedia.org/wiki/Public_holidays_in_Singapore>`__  # noqa: E501
+        - `Wikipedia
+          <https://en.wikipedia.org/wiki/Public_holidays_in_Singapore>`__
 
-    **Maintainer**: Mike Borsetti, https://github.com/mborsetti
-    """
+        Country created and maintained by: `Mike Borsetti
+        <https://github.com/mborsetti>`__
 
-    def __init__(self, **kwargs):
+        See parameters and usage in :py:class:`HolidayBase`.
+        """
+
         self.country = "SG"
         self.cnls = ChineseLuniSolar()
-        HolidayBase.__init__(self, **kwargs)
+        super().__init__(years, expand, observed, prov, state)
 
     def _populate(self, year):
 
@@ -286,8 +299,28 @@ class Singapore(HolidayBase):
 
 
 class SG(Singapore):
-    pass
+
+    # __init__ required for IDE typing and inheritance of docstring.
+    def __init__(
+        self,
+        years: Union[int, Iterable[int]] = None,
+        expand: bool = True,
+        observed: bool = True,
+        prov: Optional[str] = None,
+        state: Optional[str] = None,
+    ) -> None:
+        super().__init__(years, expand, observed, prov, state)
 
 
 class SGP(Singapore):
-    pass
+
+    # __init__ required for IDE typing and inheritance of docstring.
+    def __init__(
+        self,
+        years: Union[int, Iterable[int]] = None,
+        expand: bool = True,
+        observed: bool = True,
+        prov: Optional[str] = None,
+        state: Optional[str] = None,
+    ) -> None:
+        super().__init__(years, expand, observed, prov, state)

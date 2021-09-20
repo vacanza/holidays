@@ -44,20 +44,24 @@ def CountryHoliday(
     observed: bool = True,
 ) -> Type["holidays.HolidayBase"]:
     """
-    Instantiates a Holiday object using a country code.
+    Instantiates a :py:class:`HolidayBase` object of the subclass matching the
+    ISO 3166-1 country code.
+
+    Used to retrieve public holidays using a country code string.
 
     :param country: An ISO 3166-1 Alpha-2 or Alpha-3 country code.
-    :param years: The year(s) to pre-calculate holidays for at instantiation.
+    :param years: The year(s) to pre-calculate public holidays for at
+       instantiation.
     :param prov: The Province (see documentation of what is supported; not
        implemented for all countries).
     :param state: The State (see documentation for what is supported; not
        implemented for all countries).
     :param expand: If True (default), the entire year is added when one
-       date is requested.
-    :param observed: If True (default), include the day when the holiday
-       is observed (e.g. a holiday falling on a Sunday being observed the
-       following Monday (this doesn't work for all countries).
-    :return: a Holiday instance of the country requested.
+       date from that year is requested.
+    :param observed: If True (default), include the day when the public
+       holiday is observed (e.g. a holiday falling on a Sunday being
+       observed the following Monday). This doesn't work for all countries.
+    :return: a subclass of :py:class:`HolidayBase` of the matching country.
     """
     try:
         country_classes = inspect.getmembers(
@@ -78,14 +82,19 @@ def CountryHoliday(
 
 def islamic_to_gre(Gyear: int, Hmonth: int, Hday: int) -> List[date]:
     """
-    Find the Gregorian dates within the Gregorian year of all instances of
-    Islamic calendar month and day.
+    Find the Gregorian dates of all instances of Islamic (Lunar Hijrī) calendar
+    month and day falling within the Gregorian year. There could be up to two
+    such instances in a single Gregorian year since the Islamic (Lunar Hijrī)
+    calendar is about 11 days shorter.
+
+    Relies on package `hijri_converter
+    <https://www.pypy.org/package/hijri_converter>`__.
 
     :param year: The Gregorian year.
-    :param Hmonth: The Hijri (Islamic) month.
-    :param Hday: The Hijri (Islamic) day.
-    :return: List of Gregorian dates within the year matching the hijri day
-       month.
+    :param Hmonth: The Lunar Hijrī (Islamic) month.
+    :param Hday: The Lunar Hijrī (Islamic) day.
+    :return: List of Gregorian dates within the Gregorian year specified that
+      match the Islamic (Lunar Hijrī) calendar day and month specified.
     """
     Hyear = convert.Gregorian(Gyear, 1, 1).to_hijri().datetuple()[0]
     gres = [
@@ -102,13 +111,17 @@ class ChineseLuniSolar:
         This class has functions that generate Gregorian dates for holidays
         based on the Chinese lunisolar calendar.
 
+        See `Wikipedia
+        <https://en.wikipedia.org/wiki/Chinese_New_Year#Dates_in_Chinese_\
+        lunisolar_calendar>`__
+
         Usage example:
+
         >>> from holidays.utils import ChineseLuniSolar
         >>> cnls = ChineseLuniSolar()
         >>> print(cnls.lunar_n_y_date(2010))
         2010-02-14
 
-        See https://en.wikipedia.org/wiki/Chinese_New_Year#Dates_in_Chinese_lunisolar_calendar # noqa: E501
         """
 
         # A binary representation starting from year 1901 of the number of
@@ -387,6 +400,8 @@ class ChineseLuniSolar:
         """
         Return Gregorian date of Chinese Lunar New Year.
 
+        Faster implementation than calling ``lunar_to_gre(year, 1, 1)``.
+
         :param year: The Gregorian year.
         :return: The Date of Chinese Lunar New Year.
         """
@@ -410,9 +425,10 @@ class ChineseLuniSolar:
     def lunar_to_gre(
         self, year: int, month: int, day: int, leap: bool = True
     ) -> date:
-        """Return Gregorian date of a given Chinese Lunar date.
+        """Return Gregorian date of a Chinese Lunar month and day in a given
+        Gregorian year.
 
-        :param year: The Chinese Lunar year.
+        :param year: The Gregorian year.
         :param year: The Chinese Lunar month.
         :param year: The Chinese Lunar day.
         :return: The Gregorian date.
@@ -425,9 +441,11 @@ class ChineseLuniSolar:
         return self.SOLAR_START_DATE + timedelta(span_days)
 
     def vesak_date(self, year: int) -> date:
-        """Return the estimated Gregorian date of Vesak.
-
-        https://en.wikipedia.org/wiki/Vesak#Dates_of_observance
+        """Return the estimated Gregorian date of Vesak for Thailand, Laos,
+        Singapore and Indonesia, corresponding to the fourteenth day of the
+        fourth month in the Chinese lunar calendar. See
+        `Wikipedia
+        <https://en.wikipedia.org/wiki/Vesak#Dates_of_observance>`__.
 
         :param year: The Gregorian year.
         :return: Estimated Gregorian date of Vesak.
@@ -439,16 +457,33 @@ class ChineseLuniSolar:
         span_days += 14
         return self.SOLAR_START_DATE + timedelta(span_days)
 
+    def vesak_may_date(self, year: int) -> date:
+        """Return the estimated Gregorian date of Vesak for Sri Lanka, Nepal,
+        India, Bangladesh and Malaysia, corresponding to the the day of the
+        first full moon in May in the Gregorian calendar. See
+        `Wikipedia
+        <https://en.wikipedia.org/wiki/Vesak#Dates_of_observance>`__.
+
+        :param year: The Gregorian year.
+        :return: Estimated Gregorian date of Vesak.
+        """
+        span_days = self._span_days(year)
+        vesak_may_date = self.SOLAR_START_DATE + timedelta(span_days + 14)
+        m = 1
+        while vesak_may_date.month < 5:
+            vesak_may_date += timedelta(self._lunar_month_days(year, m))
+            m += 1
+        return vesak_may_date
+
     def s_diwali_date(self, year: int) -> date:
         """Return the estimated Gregorian date of Southern India (Tamil) Diwali.
 
-        The date of Amāvásyā (new moon) of Kārttikai (corresponding with the
-        months of November/December in the Gregorian Calendar).
-
-        https://en.wikipedia.org/wiki/Diwali
+        Defined as the date of Amāvásyā (new moon) of Kārttikai (corresponding
+        with the months of November or December in the Gregorian Calendar).
+        See `Wikipedia <https://en.wikipedia.org/wiki/Diwali>`__.
 
         :param year: The Gregorian year.
-        :return: Estimated Gregorian date of Southern India Diwali.
+        :return: Estimated Gregorian date of Southern India (Tamil) Diwali.
         """
         span_days = self._span_days(year)
         leap_month = self._get_leap_month(year)
@@ -460,12 +495,12 @@ class ChineseLuniSolar:
     def thaipusam_date(self, year: int) -> date:
         """Return the estimated Gregorian date of Thaipusam (Tamil).
 
-        The full moon in the Tamil month of Thai (January/February).
-
-        https://en.wikipedia.org/wiki/Thaipusam
+        Defined as the date of the full moon in the Tamil month of Thai
+        (corresponding with the months of January or February in the Gregorian
+        Calendar). See `Wikipedia <https://en.wikipedia.org/wiki/Thaipusam>`__.
 
         :param year: The Gregorian year.
-        :return: Estimated Gregorian date of Southern India Diwali.
+        :return: Estimated Gregorian date of Thaipusam (Tamil).
         """
         span_days = self._span_days(year)
         leap_month = self._get_leap_month(year)
