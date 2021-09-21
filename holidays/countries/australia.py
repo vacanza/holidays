@@ -213,6 +213,9 @@ class Australia(HolidayBase):
             if year == 2020:
                 # Rescheduled due to COVID-19
                 self[date(year, OCT, 23)] = "Grand Final Day"
+            elif year == 2021:
+                # Rescheduled due to COVID-19
+                self[date(year, SEP, 25)] = "Grand Final Day"
             elif year >= 2015:
                 self[date(year, SEP, 24) + rd(weekday=FR)] = "Grand Final Day"
 
