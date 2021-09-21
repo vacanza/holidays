@@ -277,7 +277,7 @@ class TestAU(unittest.TestCase):
         dt = date(2019, 9, 27)
         dt_2020 = date(2020, 10, 23)
         dt_2020_old = date(2020, 9, 25)
-        dt_2021 = date(2021, 9, 25)
+        dt_2021 = date(2021, 9, 24)
         self.assertIn(dt, self.state_hols["VIC"], dt)
         self.assertEqual(self.state_hols["VIC"][dt], "Grand Final Day")
         self.assertIn(dt_2020, self.state_hols["VIC"], dt_2020)
