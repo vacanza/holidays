@@ -17,7 +17,7 @@ from dateutil.relativedelta import relativedelta as rd
 from holidays.constants import FRI, SAT
 from holidays.constants import SEP
 from holidays.holiday_base import HolidayBase
-from holidays.utils import get_gre_date
+from holidays.utils import islamic_to_gre
 
 # Weekend used to be THU, FRI before June 28th, 2013
 WEEKEND = (FRI, SAT)
@@ -51,7 +51,7 @@ class SaudiArabia(HolidayBase):
         # or from 1/10 to 4/10 depending on observed Islamic calendar)
 
         holiday_name = "Eid al-Fitr Holiday"
-        for hijri_date in get_gre_date(year, 9, 29):
+        for hijri_date in islamic_to_gre(year, 9, 29):
             self[hijri_date + rd(days=1)] = holiday_name
             self[hijri_date + rd(days=2)] = holiday_name
             self[hijri_date + rd(days=3)] = holiday_name
@@ -71,7 +71,7 @@ class SaudiArabia(HolidayBase):
         # Arafat Day & Eid al-Adha
         # date of observance is announced yearly
         holiday_name = "Eid al-Adha Holiday"
-        for hijri_date in get_gre_date(year, 12, 9):
+        for hijri_date in islamic_to_gre(year, 12, 9):
             self[hijri_date] = holiday_name
             self[hijri_date + rd(days=1)] = holiday_name
             self[hijri_date + rd(days=2)] = holiday_name
