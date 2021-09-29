@@ -174,7 +174,7 @@ class HolidayBase(dict):
         self.expand = expand
         if isinstance(years, int):
             years = [years]
-        self.years = set(years) if years else set()
+        self.years = set(years) if years is not None else set()
         if not getattr(self, "prov", False):
             self.prov = prov
         self.state = state
