@@ -290,6 +290,22 @@ class TestCA(unittest.TestCase):
             self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
 
+    def test_national_day_for_truth_and_reconciliation(self):
+        for dt in [
+            date(1991, 9, 30),
+            date(2020, 9, 30),
+        ]:
+            self.assertNotIn(dt, self.holidays)
+            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
+        mb_holidays = holidays.CA(prov="MB")
+        for dt in [
+            date(2021, 9, 30),
+            date(2030, 9, 30),
+        ]:
+            self.assertIn(dt, mb_holidays)
+            self.assertNotIn(dt + relativedelta(days=-1), mb_holidays)
+            self.assertNotIn(dt, self.holidays)
+
     def test_thanksgiving(self):
         ns_holidays = holidays.CA(prov="NB")
         for dt in [
