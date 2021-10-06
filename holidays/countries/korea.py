@@ -26,9 +26,13 @@ from korean_lunar_calendar import KoreanLunarCalendar
 
 class Korea(HolidayBase):
 
-    # https://publicholidays.co.kr/ko/2020-dates/
-    # https://en.wikipedia.org/wiki/Public_holidays_in_South_Korea
-    # http://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EA%B4%80%EA%B3%B5%EC%84%9C%EC%9D%98%20%EA%B3%B5%ED%9C%B4%EC%9D%BC%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95
+    # 1. https://publicholidays.co.kr/ko/2020-dates/
+    # 2. https://en.wikipedia.org/wiki/Public_holidays_in_South_Korea
+    # 3. http://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EA%B4%80%EA%B3%B5%EC%84%9C%EC%9D%98%20%EA%B3%B5%ED%9C%B4%EC%9D%BC%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B7%9C%EC%A0%95
+
+    # According to (3), the holidays in Korea are as follows:
+    # Independence movement day, Liberation day, National Foundation Day, Hangul Day, Children's Day have alternative holiday if they fell on saturday or sunday.
+    # Lunar New Year's Day, Korean Mid Autumn Day have alternative holiday if they fell on only sunday.
 
     def __init__(self, **kwargs):
         self.country = "KR"
