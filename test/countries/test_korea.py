@@ -388,6 +388,9 @@ class TestKorea(unittest.TestCase):
         for year in range(1948, 2007):
             self.assertEqual(self.holidays[date(year, 10, 9)], "Hangeul Day")
 
+        for year, month, day in [(2021, 10, 11)]:
+            self.assertEqual(self.holidays[date(year, month, day)], "Alternative holiday of Hangeul Day")
+
     def test_christmas_day(self):
         for year in range(1948, 2050):
             self.assertEqual(
