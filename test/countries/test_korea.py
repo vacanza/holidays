@@ -124,14 +124,11 @@ class TestKorea(unittest.TestCase):
                 "Independence Movement Day",
             )
 
-        for year, month, day in [
-            (2025, 3, 3)
-        ]:
+        for year, month, day in [(2025, 3, 3)]:
             self.assertEqual(
                 self.holidays[date(year, month, day)],
                 "Alternative holiday of Independence Movement Day",
             )
-
 
     def test_tree_planting_day(self):
         for year, month, day in [
@@ -385,15 +382,20 @@ class TestKorea(unittest.TestCase):
                 )
 
         for year, month, day in [(2021, 10, 4)]:
-            self.assertEqual(self.holidays[date(year, month, day)], "Alternative holiday of National Foundation Day")
-
+            self.assertEqual(
+                self.holidays[date(year, month, day)],
+                "Alternative holiday of National Foundation Day",
+            )
 
     def test_hangeul_day(self):
         for year in range(1948, 2007):
             self.assertEqual(self.holidays[date(year, 10, 9)], "Hangeul Day")
 
         for year, month, day in [(2021, 10, 11)]:
-            self.assertEqual(self.holidays[date(year, month, day)], "Alternative holiday of Hangeul Day")
+            self.assertEqual(
+                self.holidays[date(year, month, day)],
+                "Alternative holiday of Hangeul Day",
+            )
 
     def test_christmas_day(self):
         for year in range(1948, 2050):
