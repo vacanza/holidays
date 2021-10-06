@@ -11,9 +11,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, datetime, timedelta
+from datetime import date
 
-from dateutil.relativedelta import relativedelta as rd, FR, SA, MO
+from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, OCT, DEC
 from holidays.constants import MON, TUE, WED, THU, FRI, SAT, SUN
@@ -45,10 +45,7 @@ class Korea(HolidayBase):
         if self.observed:
             self[first_date] = name
             if first_date.weekday() == SUN:
-                self[
-                    first_date + rd(days=+1)
-                ] = alt_holiday + self.first_lower(name)
-                first_date = first_date + rd(days=+1)
+                self[first_date + rd(days=+1)] = alt_holiday + self.first_lower(name)
             else:
                 self[first_date] = name
         else:
