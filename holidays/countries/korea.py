@@ -141,22 +141,20 @@ class Korea(HolidayBase):
         name = "Chuseok"
         preceding_day_chuseok = "The day preceding of " + name
         second_day_chuseok = "The second day of " + name
+
         dt = self.get_solar_date(year, 8, 15)
-        new_year_date = date(dt.year, dt.month, dt.day)
+        chuseok_date = date(dt.year, dt.month, dt.day)
+
+        self[chuseok_date + rd(days=-1)] = preceding_day_chuseok
+        self[chuseok_date] = name
+        self[chuseok_date + rd(days=+1)] = second_day_chuseok
+
         if self.observed and year >= 2014:
-            if new_year_date.weekday() in [TUE, WED, THU, FRI]:
-                self[new_year_date + rd(days=-1)] = preceding_day_chuseok
-                self[new_year_date] = name
-                self[new_year_date + rd(days=+1)] = second_day_chuseok
-            elif new_year_date.weekday() in [SAT, SUN, MON]:
-                self[new_year_date + rd(days=-1)] = preceding_day_chuseok
-                self[new_year_date] = name
-                self[new_year_date + rd(days=+1)] = second_day_chuseok
-                self[new_year_date + rd(days=+2)] = alt_holiday + name
-        else:
-            self[new_year_date + rd(days=-1)] = preceding_day_chuseok
-            self[new_year_date] = name
-            self[new_year_date + rd(days=+1)] = second_day_chuseok
+            for cur_rd, cur_name in [(-1, preceding_day_chuseok), (0, name), (+1, second_day_chuseok)]:
+                target_date = chuseok_date + rd(days=cur_rd)
+                is_alt, alt_date = self.get_next_first_non_holiday(cur_name, target_date)
+                if is_alt:
+                    self[alt_date] = alt_holiday + name
 
         # National Foundation Day
         name = "National Foundation Day"
