@@ -131,10 +131,9 @@ class Korea(HolidayBase):
         if year >= 1945:
             self[libration_date] = name
             if self.observed and year >= 2021:
-                if libration_date.weekday() == SUN:
-                    self[libration_date + rd(days=+1)] = alt_holiday + name
-                if libration_date.weekday() == SAT:
-                    self[libration_date + rd(days=+2)] = alt_holiday + name
+                is_alt, alt_date = self.get_next_first_non_holiday(name, libration_date, include_sat=True)
+                if is_alt:
+                    self[alt_date] = alt_holiday + name
         else:
             pass
 
