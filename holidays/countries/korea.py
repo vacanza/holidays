@@ -55,20 +55,17 @@ class Korea(HolidayBase):
 
         dt = self.get_solar_date(year, 1, 1)
         new_year_date = date(dt.year, dt.month, dt.day)
+
+        self[new_year_date + rd(days=-1)] = preceding_day_lunar
+        self[new_year_date] = name
+        self[new_year_date + rd(days=+1)] = second_day_lunar
+
         if self.observed and year >= 2015:
-            if new_year_date.weekday() in [TUE, WED, THU, FRI]:
-                self[new_year_date + rd(days=-1)] = preceding_day_lunar
-                self[new_year_date] = name
-                self[new_year_date + rd(days=+1)] = second_day_lunar
-            elif new_year_date.weekday() in [SAT, SUN, MON]:
-                self[new_year_date + rd(days=-1)] = preceding_day_lunar
-                self[new_year_date] = name
-                self[new_year_date + rd(days=+1)] = second_day_lunar
-                self[new_year_date + rd(days=+2)] = alt_holiday + name
-        else:
-            self[new_year_date + rd(days=-1)] = preceding_day_lunar
-            self[new_year_date] = name
-            self[new_year_date + rd(days=+1)] = second_day_lunar
+            for cur_rd in [-1, 0, +1]:
+                target_date = new_year_date + rd(days=cur_rd)
+                is_alt, alt_date = self.get_next_first_non_holiday(target_date)
+                if is_alt:
+                    self[alt_date] = alt_holiday + name
 
         # Independence Movement Day
         name = "Independence Movement Day"
@@ -195,6 +192,19 @@ class Korea(HolidayBase):
 
     def first_lower(self, s):
         return s[0].lower() + s[1:]
+
+    def get_next_first_non_holiday(self, cur, include_sat=False):
+        target_weekday = [SUN]
+        if include_sat:
+            target_weekday.append(SAT)
+
+        if cur.weekday() in target_weekday:
+            for _ in range(356):  # avoid `while True` for preventing infinite loop
+                cur = cur + rd(days=1)
+                if cur not in self and cur.weekday() not in target_weekday:
+                    return True, cur
+        else:
+            return False, cur
 
 
 class KR(Korea):
