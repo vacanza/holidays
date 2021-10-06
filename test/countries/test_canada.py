@@ -126,7 +126,6 @@ class TestCA(unittest.TestCase):
             self.assertNotIn(dt + relativedelta(days=+1), nl_holidays)
 
     def test_good_friday(self):
-        qc_holidays = holidays.CA(prov="QC")
         for dt in [
             date(1900, 4, 13),
             date(1901, 4, 5),
@@ -141,10 +140,8 @@ class TestCA(unittest.TestCase):
             self.assertIn(dt, self.holidays)
             self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
-            self.assertNotIn(dt, qc_holidays)
 
     def test_easter_monday(self):
-        qc_holidays = holidays.CA(prov="QC")
         for dt in [
             date(1900, 4, 16),
             date(1901, 4, 8),
@@ -156,17 +153,15 @@ class TestCA(unittest.TestCase):
             date(2019, 4, 22),
             date(2020, 4, 13),
         ]:
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, qc_holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), qc_holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), qc_holidays)
+            self.assertIn(dt, self.holidays)
+            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
+            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
 
     def test_st_georges_day(self):
         nl_holidays = holidays.CA(prov="NL")
         for dt in [
             date(1990, 4, 23),
             date(1999, 4, 26),
-            date(2000, 4, 24),
             date(2010, 4, 19),
             date(2016, 4, 25),
             date(2020, 4, 20),

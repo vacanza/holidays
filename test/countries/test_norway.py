@@ -19,8 +19,8 @@ import holidays
 
 class TestNorway(unittest.TestCase):
     def setUp(self):
-        self.holidays_without_sundays = holidays.Norway(include_sundays=False)
-        self.holidays_with_sundays = holidays.Norway()
+        self.holidays_without_sundays = holidays.Norway()
+        self.holidays_with_sundays = holidays.Norway(include_sundays=True)
 
     def test_new_years(self):
         self.assertIn("1900-01-01", self.holidays_without_sundays)

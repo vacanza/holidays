@@ -102,7 +102,7 @@ Argentina           AR/ARG    None
 Aruba               AW/ABW    None
 Australia           AU/AUS    prov = **ACT** (default), NSW, NT, QLD, SA, TAS, VIC, WA
 Austria             AT/AUT    prov = 1, 2, 3, 4, 5, 6, 7, 8, **9** (default)
-Bangladesh          BD/BDG    None
+Bangladesh          BD/BGD    None
 Belarus             BY/BLR    None
 Belgium             BE/BEL    None
 Botswana            BW/BWA    None
@@ -114,6 +114,7 @@ Canada              CA/CAN    prov = AB, BC, MB, NB, NL, NS, NT, NU, **ON** (def
                               PE, QC, SK, YU
 Chile               CL/CHL    state = AI, AN, AP, AR, AT, BI, CO, LI, LL, LR, MA, ML, NB,
                               RM, TA, VS
+China               CN/CHN
 Colombia            CO/COL    None
 Croatia             HR/HRV    None
 Curacao             CW/CUW    None
@@ -126,8 +127,8 @@ England                       None
 Estonia             EE/EST    None
 EuropeanCentralBank ECB/TAR   Trans-European Automated Real-time Gross Settlement (TARGET2)
 Finland             FI/FIN    None
-France              FR/FRA    **Métropole** (default), Alsace-Moselle, Guadeloupe, Guyane,
-                              Martinique, Mayotte, Nouvelle-Calédonie, La Réunion,
+France              FR/FRA    prov = **Métropole** (default), Alsace-Moselle, Guadeloupe,
+                              Guyane, Martinique, Mayotte, Nouvelle-Calédonie, La Réunion,
                               Polynésie Française, Saint-Barthélémy, Saint-Martin,
                               Wallis-et-Futuna
 Georgia             GE/GEO
@@ -151,6 +152,7 @@ Japan               JP/JPN    None
 Kenya               KE/KEN    None
 Korea               KR/KOR    None
 Latvia              LV/LVA    None
+Lesotho             LS/LSO    None
 Lithuania           LT/LTU    None
 Luxembourg          LU/LUX    None
 Malaysia            MY/MYS    state = JHR, KDH, KTN, MLK, NSN, PHG, PNG, PRK, PLS, SBH, SWK,
@@ -160,6 +162,7 @@ Mexico              MX/MEX    None
 Morocco             MA/MOR    None
 Mozambique          MZ/MOZ    None
 Netherlands         NL/NLD    None
+Namibia             NA/NAM    None
 NewZealand          NZ/NZL    prov = AUK, CAN, CIT, HKB, MBH, NSN, NTL, OTA, STC, STL,
                               TKI, WGN, WTL
 Nicaragua           NI/NIC    prov = MN
@@ -182,6 +185,7 @@ Slovenia            SI/SVN    None
 SouthAfrica         ZA/ZAF    None
 Spain               ES/ESP    prov = AN, AR, AS, CB, CL, CM, CN, CT, EX, GA, IB, MC,
                               MD, NC, PV, RI, VC
+Swaziland           SZ/SZW    None
 Sweden              SE/SWE    None
 Switzerland         CH/CHE    prov = AG, AR, AI, BL, BS, BE, FR, GE, GL, GR, JU, LU,
                               NE, NW, OW, SG, SH, SZ, SO, TG, TI, UR, VD, VS, ZG, ZH
@@ -197,6 +201,8 @@ UnitedStates        US/USA    state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL
 Venezuela           YV/VEN
 Vietnam             VN/VNM
 Wales                         None
+Zambia              ZM/ZMB    None
+Zimbabwe            ZW/ZWE    None
 =================== ========= =============================================================
 
 

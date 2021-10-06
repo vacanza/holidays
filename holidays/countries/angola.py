@@ -57,7 +57,6 @@ class Angola(HolidayBase):
             self[date(year, MAR, 8)] = "Dia Internacional da Mulher"
             self[date(year, APR, 4)] = "Dia da Paz e Reconciliação"
             self[date(year, MAY, 1)] = "Dia Mundial do Trabalho"
-            self[date(year, SEP, 17)] = "Dia dos Heroes Nacional"
             self[date(year, NOV, 2)] = "Dia dos Finados"
             self[date(year, NOV, 11)] = "Dia da Independência"
             self[date(year, DEC, 25)] = "Dia de Natal e da Família"

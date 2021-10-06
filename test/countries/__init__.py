@@ -52,12 +52,14 @@ from .test_japan import *
 from .test_kenya import *
 from .test_korea import *
 from .test_latvia import *
+from .test_lesotho import *
 from .test_lithuania import *
 from .test_luxembourg import *
 from .test_malawi import *
 from .test_mexico import *
 from .test_morocco import *
 from .test_mozambique import *
+from .test_namibia import *
 from .test_netherlands import *
 from .test_new_zealand import *
 from .test_nicaragua import *
@@ -76,6 +78,7 @@ from .test_slovakia import *
 from .test_slovenia import *
 from .test_south_africa import *
 from .test_spain import *
+from .test_swaziland import *
 from .test_sweden import *
 from .test_switzerland import *
 from .test_turkey import *
@@ -83,5 +86,7 @@ from .test_ukraine import *
 from .test_united_arab_emirates import *
 from .test_united_kingdom import *
 from .test_united_states import *
+from .test_uruguay import *
 from .test_venezuela import *
 from .test_vietnam import *
+from .test_zambia import *

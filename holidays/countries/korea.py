@@ -134,8 +134,13 @@ class Korea(HolidayBase):
         # Liberation Day
         name = "Liberation Day"
         libration_date = date(year, AUG, 15)
-        if self.observed and year >= 1945:
+        if year >= 1945:
             self[libration_date] = name
+            if self.observed and year >= 2021:
+                if libration_date.weekday() == SUN:
+                    self[libration_date + rd(days=+1)] = alt_holiday + name
+                if libration_date.weekday() == SAT:
+                    self[libration_date + rd(days=+2)] = alt_holiday + name
         else:
             pass
 

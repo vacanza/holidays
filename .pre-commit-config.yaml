@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.3.0
+    rev: v4.0.1
     hooks:
       - id: check-ast
       - id: check-builtin-literals
@@ -11,18 +11,19 @@ repos:
         args: [--fix=lf]
 
   - repo: https://github.com/python/black
-    rev: 20.8b1
+    rev: 21.9b0
     hooks:
       - id: black
         language_version: python3
 
   - repo: https://gitlab.com/pycqa/flake8
-    rev: 3.8.4
+    rev: 3.9.2
     hooks:
       - id: flake8
+        args: [--max-line-length=79]
 
   - repo: https://github.com/pre-commit/pygrep-hooks
-    rev: v1.7.0
+    rev: v1.9.0
     hooks:
       - id: rst-backticks
 
@@ -33,6 +34,6 @@ repos:
         additional_dependencies: [rstcheck]
 
   - repo: https://github.com/asottile/setup-cfg-fmt
-    rev: v1.16.0
+    rev: v1.17.0
     hooks:
       - id: setup-cfg-fmt

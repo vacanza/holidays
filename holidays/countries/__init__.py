@@ -24,6 +24,7 @@ from .bulgaria import Bulgaria, BG, BLG
 from .burundi import Burundi, BI, BDI
 from .canada import Canada, CA, CAN
 from .chile import Chile, CL, CHL
+from .china import China, CN, CHN
 from .colombia import Colombia, CO, COL
 from .croatia import Croatia, HR, HRV
 from .curacao import Curacao, CW, CUW
@@ -52,6 +53,7 @@ from .japan import Japan, JP, JPN
 from .kenya import Kenya, KE, KEN
 from .korea import Korea, KR, KOR
 from .latvia import Latvia, LV, LVA
+from .lesotho import Lesotho, LS, LSO
 from .lithuania import Lithuania, LT, LTU
 from .luxembourg import Luxembourg, LU, LUX
 from .malaysia import Malaysia, MY, MYS
@@ -59,6 +61,7 @@ from .malawi import Malawi, MW, MWI
 from .mexico import Mexico, MX, MEX
 from .morocco import Morocco, MA, MOR
 from .mozambique import Mozambique, MZ, MOZ
+from .namibia import Namibia, NA, NAM
 from .netherlands import Netherlands, NL, NLD
 from .new_zealand import NewZealand, NZ, NZL
 from .nicaragua import Nicaragua, NI, NIC
@@ -67,7 +70,7 @@ from .norway import Norway, NO, NOR
 from .paraguay import Paraguay, PY, PRY
 from .peru import Peru, PE, PER
 from .poland import Poland, Polish, PL, POL
-from .portugal import Portugal, PT, PRT, PortugalExt, PTE
+from .portugal import Portugal, PT, PRT, PortugalExt, PTE, PRTE
 from .romania import Romania, RO, ROU
 from .russia import Russia, RU, RUS
 from .saudi_arabia import SaudiArabia, SA, SAU
@@ -77,6 +80,7 @@ from .slovakia import Slovakia, Slovak, SK, SVK
 from .slovenia import Slovenia, SI, SVN
 from .south_africa import SouthAfrica, ZA, ZAF
 from .spain import Spain, ES, ESP
+from .swaziland import Swaziland, SZ, SZW
 from .sweden import Sweden, SE, SWE
 from .switzerland import Switzerland, CH, CHE
 from .turkey import Turkey, TR, TUR
@@ -94,5 +98,8 @@ from .united_kingdom import (
     GBR,
 )
 from .united_states import UnitedStates, US, USA
+from .uruguay import Uruguay, UY, URY
 from .venezuela import Venezuela, YV, VEN
 from .vietnam import Vietnam, VN, VNM
+from .zambia import Zambia, ZM, ZMB
+from .zimbabwe import Zimbabwe, ZW, ZWE

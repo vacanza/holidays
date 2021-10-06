@@ -17,7 +17,7 @@ from dateutil.relativedelta import relativedelta as rd
 from holidays.constants import SAT, SUN
 from holidays.constants import JAN, MAR, MAY, JUL, AUG, NOV
 from holidays.holiday_base import HolidayBase
-from holidays.utils import get_gre_date
+from holidays.utils import islamic_to_gre
 
 WEEKEND = (SAT, SUN)
 
@@ -108,25 +108,25 @@ class Morocco(HolidayBase):
         # having the Holiday on Weekend does change the number of days,
         # deceided to leave it since marking a Weekend as a holiday
         # wouldn't do much harm.
-        for date_obs in get_gre_date(year, 10, 1):
+        for date_obs in islamic_to_gre(year, 10, 1):
             hol_date = date_obs
             self[hol_date] = "Eid al-Fitr"
             self[hol_date + rd(days=1)] = "Eid al-Fitr"
 
         # Eid al-Adha - Sacrifice Festive
         # date of observance is announced yearly
-        for date_obs in get_gre_date(year, 12, 10):
+        for date_obs in islamic_to_gre(year, 12, 10):
             hol_date = date_obs
             self[hol_date] = "Eid al-Adha"
             self[hol_date + rd(days=1)] = "Eid al-Adha"
 
         # Islamic New Year - (hijari_year, 1, 1)
-        for date_obs in get_gre_date(year, 1, 1):
+        for date_obs in islamic_to_gre(year, 1, 1):
             hol_date = date_obs
             self[hol_date] = "1er Moharram"
 
         # Prophet Muhammad's Birthday - (hijari_year, 3, 12)
-        for date_obs in get_gre_date(year, 3, 12):
+        for date_obs in islamic_to_gre(year, 3, 12):
             hol_date = date_obs
             self[hol_date] = "Aid al Mawlid Annabawi"
             self[hol_date + rd(days=1)] = "Aid al Mawlid Annabawi"

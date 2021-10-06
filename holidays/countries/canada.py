@@ -118,12 +118,10 @@ class Canada(HolidayBase):
             else:
                 self[dt1] = "St. Patrick's Day"
 
-        # Good Friday
-        if self.prov != "QC" and year >= 1867:
+        if year >= 1867:
+            # Good Friday
             self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
-
-        # Easter Monday
-        if self.prov == "QC" and year >= 1867:
+            # Easter Monday
             self[easter(year) + rd(weekday=MO)] = "Easter Monday"
 
         # St. George's Day

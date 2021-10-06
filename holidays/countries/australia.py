@@ -213,6 +213,9 @@ class Australia(HolidayBase):
             if year == 2020:
                 # Rescheduled due to COVID-19
                 self[date(year, OCT, 23)] = "Grand Final Day"
+            elif year == 2021:
+                # Rescheduled due to COVID-19
+                self[date(year, SEP, 24)] = "Grand Final Day"
             elif year >= 2015:
                 self[date(year, SEP, 24) + rd(weekday=FR)] = "Grand Final Day"
 
@@ -227,6 +230,8 @@ class Australia(HolidayBase):
             name = "The Royal Queensland Show"
             if year == 2020:
                 self[date(year, AUG, 14)] = name
+            if year == 2021:
+                self[date(year, OCT, 29)] = name
             else:
                 self[
                     date(year, AUG, 5) + rd(weekday=FR) + rd(weekday=WE)

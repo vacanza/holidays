@@ -1,3 +1,34 @@
+Version 0.11.3.1
+================
+
+Released September 29, 2021
+
+- Support for Zambia #495, #496 (engineervix)
+- Support for Uruguay #489, #490, #491, #492, #493 (jemazzeo, dr-p)
+- Support for Lesotho #512 (pietervdw115)
+- Support for Namibia #513 (pietervdw115)
+- Support for Swaziland #514 (pietervdw115)
+- Support for Zimbabwe #517 (pietervdw115)
+- Support for China #515 (tserekh)
+- Refactor lunisolar and islamic calendar #524 (mborsetti)
+- Removed six dependency #494 (mborsetti)
+- Type hinting #497, #498 (mborsetti)
+- Malaysia refactoring & updates #524 (mborsetti)
+- New Zealand updates #499 (36wish)
+- USA, Angola fixes (jusce17)
+- Kenya updates #502 (MainaKamau92)
+- Korea updates #508 (0xF4D3C0D3, dr-p)
+- Bulgaria updates #509 (BasakUlker, dr-p)
+- Australia updates #516 (cmckeague)
+- South Africa updates (lispwarez, dr-p)
+- Canada updates #457 (dr-p)
+- PRTE (PortugalExt) fix #520 (dr-p)
+- Norway updates #472 (dr-p)
+- Chile updates #473 (dr-p)
+- Australia updates #525 (jeremychrimes)
+- README iso codes typo / improvements #520 (dr-p)
+- .gitattributes fix #522 (mborsetti)
+
 Version 0.11.2
 ==============
 
@@ -5,6 +36,7 @@ Released July 18, 2021
 
 - Support for Venezuela #470 (antusystem, dr-p)
 - Support for Botswana #477 (pietervdw115)
+- Support for Malaysia #466 (jusce17) *needs improvement*
 - Poland fix #464 (m-ganko)
 - Singapore updates for 2022 #456 (mborsetti)
 - US updates #474, #488 (ChristianAlexander, jusce17)

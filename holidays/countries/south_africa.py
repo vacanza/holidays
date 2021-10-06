@@ -17,7 +17,19 @@ from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import FRI, SUN
-from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, DEC
+from holidays.constants import (
+    JAN,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+)
 from holidays.holiday_base import HolidayBase
 
 
@@ -74,6 +86,7 @@ class SouthAfrica(HolidayBase):
         y2k = "Y2K changeover"
         local_election = "Local government elections"
         presidential = "By presidential decree"
+        municipal_election = "Municipal elections"
         if year == 1999:
             self[date(1999, JUN, 2)] = national_election
             self[date(1999, DEC, 31)] = y2k
@@ -96,6 +109,8 @@ class SouthAfrica(HolidayBase):
             self[date(2016, AUG, 3)] = local_election
         if year == 2019:
             self[date(2019, MAY, 8)] = national_election
+        if year == 2021:
+            self[date(2021, NOV, 1)] = municipal_election
 
         # As of 1995/1/1, whenever a public holiday falls on a Sunday,
         # it rolls over to the following Monday
