@@ -45,15 +45,7 @@ class Korea(HolidayBase):
 
         # New Year's Day
         name = "New Year's Day"
-        first_date = date(year, JAN, 1)
-        if self.observed:
-            self[first_date] = name
-            if first_date.weekday() == SUN:
-                self[first_date + rd(days=+1)] = alt_holiday + self.first_lower(name)
-            else:
-                self[first_date] = name
-        else:
-            self[first_date] = name
+        self[date(year, JAN, 1)] = name
 
         # Lunar New Year
         name = "Lunar New Year's Day"
