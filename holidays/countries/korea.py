@@ -61,9 +61,9 @@ class Korea(HolidayBase):
         self[new_year_date + rd(days=+1)] = second_day_lunar
 
         if self.observed and year >= 2015:
-            for cur_rd in [-1, 0, +1]:
+            for cur_rd, cur_name in [(-1, preceding_day_lunar), (0, name), (+1, second_day_lunar)]:
                 target_date = new_year_date + rd(days=cur_rd)
-                is_alt, alt_date = self.get_next_first_non_holiday(target_date)
+                is_alt, alt_date = self.get_next_first_non_holiday(cur_name, target_date)
                 if is_alt:
                     self[alt_date] = alt_holiday + name
 
@@ -74,7 +74,7 @@ class Korea(HolidayBase):
         self[independence_date] = name
 
         if self.observed and year >= 2021:
-            is_alt, alt_date = self.get_next_first_non_holiday(independence_date, include_sat=True)
+            is_alt, alt_date = self.get_next_first_non_holiday(name, independence_date, include_sat=True)
             if is_alt:
                 self[alt_date] = alt_holiday + name
 
@@ -99,15 +99,9 @@ class Korea(HolidayBase):
         if year >= 1975:
             self[childrens_date] = name
             if self.observed and year >= 2015:
-                if childrens_date.weekday() == SUN:
-                    self[childrens_date + rd(days=+1)] = alt_holiday + name
-                if childrens_date.weekday() == SAT:
-                    self[childrens_date + rd(days=+2)] = alt_holiday + name
-
-                # if holiday overlaps with other holidays, should be next day.
-                # most likely: Birthday of the Buddah
-                if self[childrens_date] != name:
-                    self[childrens_date + rd(days=+1)] = alt_holiday + name
+                is_alt, alt_date = self.get_next_first_non_holiday(name, childrens_date, include_sat=True)
+                if is_alt:
+                    self[alt_date] = alt_holiday + name
         else:
             # no children's day before 1975
             pass
@@ -196,19 +190,22 @@ class Korea(HolidayBase):
             self.korean_cal.solarDay,
         )
 
-    def get_next_first_non_holiday(self, cur, include_sat=False):
+    def get_next_first_non_holiday(self, name, cur, include_sat=False):
         target_weekday = [SUN]
         if include_sat:
             target_weekday.append(SAT)
 
-        if cur.weekday() in target_weekday:
-            for _ in range(356):  # avoid `while True` for preventing infinite loop
-                cur = cur + rd(days=1)
-                if cur not in self and cur.weekday() not in target_weekday:
-                    return True, cur
-        else:
-            return False, cur
+        is_alt = False
 
+        for _ in range(365):  # avoid `while True` for preventing infinite loop
+            if (
+                    (cur.weekday() in target_weekday) or  # if it's weekend(may include sat or not)
+                    (cur in self and name != self[cur])  # if it's already another holiday
+            ):
+                cur = cur + rd(days=1)
+                is_alt = True
+                continue
+            return is_alt, cur
 
 class KR(Korea):
     pass
