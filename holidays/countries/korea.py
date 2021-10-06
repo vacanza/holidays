@@ -161,6 +161,11 @@ class Korea(HolidayBase):
         foundation_date = date(year, OCT, 3)
         self[foundation_date] = name
 
+        if self.observed and year >= 2021:
+            is_alt, alt_date = self.get_next_first_non_holiday(name, foundation_date, include_sat=True)
+            if is_alt:
+                self[alt_date] = alt_holiday + name
+
         # Hangul Day
         name = "Hangeul Day"
         hangeul_date = date(year, OCT, 9)
@@ -170,7 +175,6 @@ class Korea(HolidayBase):
             is_alt, alt_date = self.get_next_first_non_holiday(name, hangeul_date, include_sat=True)
             if is_alt:
                 self[alt_date] = alt_holiday + name
-
 
         # Christmas Day
         name = "Christmas Day"
