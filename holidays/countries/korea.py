@@ -190,9 +190,6 @@ class Korea(HolidayBase):
             self.korean_cal.solarDay,
         )
 
-    def first_lower(self, s):
-        return s[0].lower() + s[1:]
-
     def get_next_first_non_holiday(self, cur, include_sat=False):
         target_weekday = [SUN]
         if include_sat:
