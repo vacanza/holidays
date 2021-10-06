@@ -124,6 +124,15 @@ class TestKorea(unittest.TestCase):
                 "Independence Movement Day",
             )
 
+        for year, month, day in [
+            (2025, 3, 3)
+        ]:
+            self.assertEqual(
+                self.holidays[date(year, month, day)],
+                "Alternative holiday of Independence Movement Day",
+            )
+
+
     def test_tree_planting_day(self):
         for year, month, day in [
             (1949, 4, 5),

@@ -70,7 +70,13 @@ class Korea(HolidayBase):
         # Independence Movement Day
         name = "Independence Movement Day"
         independence_date = date(year, MAR, 1)
+
         self[independence_date] = name
+
+        if self.observed and year >= 2021:
+            is_alt, alt_date = self.get_next_first_non_holiday(independence_date, include_sat=True)
+            if is_alt:
+                self[alt_date] = alt_holiday + name
 
         # Tree Planting Day
         name = "Tree Planting Day"
