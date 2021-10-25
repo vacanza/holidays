@@ -190,6 +190,7 @@ Sweden              SE/SWE    None
 Switzerland         CH/CHE    prov = AG, AR, AI, BL, BS, BE, FR, GE, GL, GR, JU, LU,
                               NE, NW, OW, SG, SH, SZ, SO, TG, TI, UR, VD, VS, ZG, ZH
 Turkey              TR/TUR    None
+Tunisia             TN/TUN    None
 Ukraine             UA/UKR    None
 UnitedArabEmirates  AE/ARE    None
 UnitedKingdom       GB/GBR/UK None
