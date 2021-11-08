@@ -18,29 +18,50 @@ from holidays.holiday_base import HolidayBase
 
 
 class India(HolidayBase):
+    # https://www.india.gov.in/calendar
+    # https://www.india.gov.in/state-and-ut-holiday-calendar
     # https://en.wikipedia.org/wiki/Public_holidays_in_India
-    # https://www.calendarlabs.com/holidays/india/
+    # https://www.calendarlabs.com/holidays/india/2021
     # https://slusi.dacnet.nic.in/watershedatlas/list_of_state_abbreviation.htm
 
     PROVINCES = [
-        "AS",
-        "CG",
-        "SK",
-        "KA",
-        "GJ",
-        "BR",
-        "RJ",
-        "OD",
-        "TN",
-        "AP",
-        "WB",
-        "KL",
-        "HR",
-        "MH",
-        "MP",
-        "UP",
-        "UK",
-        "TS",
+        "AP",  # Andhra Pradesh
+        "AR",  # Arunachal Pradesh
+        "AS",  # Assam
+        "BR",  # Bihar
+        "CG",  # Chhattisgarh
+        "GA",  # Goa
+        "GJ",  # Gujarat
+        "HR",  # Haryana
+        "HP",  # Himachal Pradesh
+        "JK",  # Jammu and Kashmir
+        "JH",  # Jharkhand
+        "KA",  # Karnataka
+        "KL",  # Kerala
+        "MP",  # Madhya Pradesh
+        "MH",  # Maharashtra
+        "MN",  # Manipur
+        "ML",  # Meghalaya
+        "MZ",  # Mizoram
+        "NL",  # Nagaland
+        "OR",  # Orissa
+        "PB",  # Punjab
+        "RJ",  # Rajasthan
+        "SK",  # Sikkim
+        "TN",  # Tamil Nadu
+        "TR",  # Tripura
+        "TS",  # Telangana
+        "UK",  # Uttarakhand
+        "UP",  # Uttar Pradesh
+        "WB",  # West Bengal
+        "AN",  # Andaman and Nicobar Islands
+        "CH",  # Chandigarh
+        "DH",  # Dadra and Nagar Haveli
+        "DD",  # Daman and Diu
+        "DL",  # Delhi
+        "LA",  # Ladakh
+        "LD",  # Lakshadweep
+        "PY",  # Pondicherry
     ]
 
     def __init__(self, **kwargs):
@@ -137,8 +158,6 @@ class India(HolidayBase):
         if self.prov == "CG":
             self[date(year, NOV, 1)] = "Chhattisgarh Foundation Day"
 
-        # TS is Telangana State which was bifurcated in 2014 from AP
-        # (AndhraPradesh)
         if self.prov == "TS":
             self[date(year, OCT, 6)] = "Bathukamma Festival"
             self[date(year, APR, 6)] = "Eid al-Fitr"
