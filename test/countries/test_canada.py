@@ -24,6 +24,7 @@ class TestCA(unittest.TestCase):
         self.holidays = holidays.CA(observed=False)
 
     def test_new_years(self):
+        self.assertNotIn(date(1866, 12, 31), self.holidays)
         self.assertNotIn(date(2010, 12, 31), self.holidays)
         self.assertNotIn(date(2017, 1, 2), self.holidays)
         self.holidays.observed = True
@@ -63,6 +64,7 @@ class TestCA(unittest.TestCase):
         mb_holidays = holidays.CA(prov="MB")
         sk_holidays = holidays.CA(prov="SK")
         nb_holidays = holidays.CA(prov="NB")
+        ns_holidays = holidays.CA(prov="NS")
         for dt in [
             date(1990, 2, 19),
             date(1999, 2, 15),
@@ -106,6 +108,7 @@ class TestCA(unittest.TestCase):
             self.assertNotIn(dt, mb_holidays)
             self.assertNotIn(dt, sk_holidays)
         self.assertEqual(mb_holidays[date(2014, 2, 17)], "Louis Riel Day")
+        self.assertEqual(ns_holidays[date(2015, 2, 16)], "Heritage Day")
 
     def test_st_patricks_day(self):
         nl_holidays = holidays.CA(prov="NL", observed=False)
