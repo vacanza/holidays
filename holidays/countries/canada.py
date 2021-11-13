@@ -230,7 +230,9 @@ class Canada(HolidayBase):
         # National Day for Truth and Reconciliation
         provinces = ("MB", "NS")
         if self.prov in provinces and year >= 2021:
-            self[date(year, SEP, 30)] = "National Day for Truth and Reconciliation"
+            self[
+                date(year, SEP, 30)
+            ] = "National Day for Truth and Reconciliation"
 
         # Thanksgiving
         if self.prov not in ("NB", "NS", "PE", "NL") and year >= 1931:
