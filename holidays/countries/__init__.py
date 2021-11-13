@@ -50,6 +50,7 @@ from .italy import Italy, IT, ITA
 from .israel import Israel, IL, ISR
 from .jamaica import Jamaica, JM, JAM
 from .japan import Japan, JP, JPN
+from .kazakhstan import Kazakhstan, KZ, KAZ
 from .kenya import Kenya, KE, KEN
 from .korea import Korea, KR, KOR
 from .latvia import Latvia, LV, LVA
