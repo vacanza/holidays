@@ -365,6 +365,11 @@ class UnitedStates(HolidayBase):
         if year > 2020:
             self[date(year, JUN, 19)] = "Juneteenth National Independence Day"
 
+            if self.observed and date(year, JUN, 19).weekday() == SAT:
+                self[date(year, JUN, 18)] = name + " (Observed)"
+            elif self.observed and date(year, JUN, 19).weekday() == SUN:
+                self[date(year, JUN, 20)] = name + " (Observed)"
+
         # Jefferson Davis Birthday
         name = "Jefferson Davis Birthday"
         if self.state == "AL" and year >= 1890:
