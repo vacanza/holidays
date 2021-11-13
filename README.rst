@@ -149,6 +149,7 @@ Italy               IT/ITA    prov = AN, AO, BA, BL, BO, BS, BZ, CB, Cesena, CH,
                               MN, MS, NA, PA, PC, PD, PG, PR, RM, SP, TS, VI
 Jamaica             JM/JAM    None
 Japan               JP/JPN    None
+Kazakhstan          KZ/KAZ    None
 Kenya               KE/KEN    None
 Korea               KR/KOR    None
 Latvia              LV/LVA    None
