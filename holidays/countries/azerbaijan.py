@@ -19,6 +19,7 @@ from holidays.utils import islamic_to_gre
 
 OBSERVED_SUFFIX = " (Observed)"
 
+
 class Azerbaijan(HolidayBase):
 
     # https://en.wikipedia.org/wiki/Public_holidays_in_Azerbaijan
@@ -29,7 +30,7 @@ class Azerbaijan(HolidayBase):
 
     def _add_observed(self, holiday: date) -> None:
         if self.observed and holiday.weekday() in (SAT, SUN):
-            next_monday = holiday + rd(days = 7 - holiday.weekday())
+            next_monday = holiday + rd(days=7 - holiday.weekday())
             if not self.get(next_monday, None):
                 self[next_monday] = self[holiday] + OBSERVED_SUFFIX
 
@@ -39,7 +40,7 @@ class Azerbaijan(HolidayBase):
         self[date(year, JAN, 1)] = "New Year's Day"
         self[date(year, JAN, 2)] = "New Year's Day"
         self._add_observed(date(year, JAN, 2))
-            
+
         # Black January
         self[date(year, JAN, 20)] = "Black January"
         self._add_observed(date(year, JAN, 20))
@@ -49,7 +50,8 @@ class Azerbaijan(HolidayBase):
         self._add_observed(date(year, MAR, 8))
 
         # Novruz
-        for i in range(5): self[date(year, MAR, 20 + i)] = "Novruz"
+        for i in range(5):
+            self[date(year, MAR, 20 + i)] = "Novruz"
         self._add_observed(date(year, MAR, 24))
 
         # Victory Day
@@ -78,7 +80,9 @@ class Azerbaijan(HolidayBase):
         self._add_observed(date(year, NOV, 9))
 
         # International Solidarity Day of Azerbaijanis
-        self[date(year, DEC, 31)] = "International Solidarity Day of Azerbaijanis"
+        self[
+            date(year, DEC, 31)
+        ] = "International Solidarity Day of Azerbaijanis"
         self._add_observed(date(year, DEC, 31))
 
         # Ramadan

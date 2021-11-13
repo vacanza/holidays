@@ -61,4 +61,4 @@ class TestAzerbaijan(unittest.TestCase):
                 # Sacrifice Feast
                 self.assertIn(date(2020, 7, 31), self.holidays)
                 self.assertIn(date(2020, 8, 1), self.holidays)
-                self.assertIn(date(2020, 8, 3), self.holidays) # observed
+                self.assertIn(date(2020, 8, 3), self.holidays)  # observed
