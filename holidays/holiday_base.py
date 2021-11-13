@@ -35,9 +35,9 @@ class HolidayBase(dict):
 
     The key is always returned as a `datetime.date` object.
 
-    To maximize speed, the list of holidays is build as needed on the fly, one
+    To maximize speed, the list of holidays is built as needed on the fly, one
     calendar year at a time. When you instantiate the object, it is empty, but
-    the moment a key is being accessed it will build that entire year's list of
+    the moment a key is accessed it will build that entire year's list of
     holidays. To prepopulate holidays, instantiate the class with the years
     argument:
 
@@ -150,7 +150,7 @@ class HolidayBase(dict):
         state: Optional[str] = None,
     ) -> None:
         """
-        To maximize speed, by default the list of holidays is build as needed
+        To maximize speed, by default the list of holidays is built as needed
         on the fly, one calendar year at a time. When you instantiate the
         object, it is empty, but the moment you try to read a key it will build
         that year's list of holidays. To prepopulate holiday date, instantiate
