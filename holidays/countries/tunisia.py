@@ -15,12 +15,13 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from holidays.constants import AUG, MAR, SAT,SUN
+from holidays.constants import AUG, MAR, SAT, SUN
 from holidays.constants import JAN, APR, MAY, JUN, JUL, OCT
 from holidays.holiday_base import HolidayBase
 from holidays.utils import islamic_to_gre
 
-WEEKEND = (SAT,SUN)
+WEEKEND = (SAT, SUN)
+
 
 class Tunisia(HolidayBase):
 
@@ -80,7 +81,6 @@ class Tunisia(HolidayBase):
         # Evacuation Day
         self[date(year, OCT, 15)] = "Evacuation Day"
 
-
         # Eid al-Fitr - Feast Festive
         # date of observance is announced yearly, This is an estimate since
         # having the Holiday on Weekend does change the number of days,
@@ -110,6 +110,7 @@ class Tunisia(HolidayBase):
         for date_obs in islamic_to_gre(year, 3, 12):
             hol_date = date_obs
             self[hol_date] = "Prophet Muhammad's Birthday"
+
 
 class TN(Tunisia):
     pass

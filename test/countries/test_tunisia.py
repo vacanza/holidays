@@ -14,9 +14,10 @@
 import unittest
 from datetime import date
 import holidays
+import sys
+
 
 class TestTunisia(unittest.TestCase):
-
     def setUp(self):
         self.holidays = holidays.TN()
 
@@ -29,7 +30,7 @@ class TestTunisia(unittest.TestCase):
             date(2021, 5, 1),
             date(2021, 7, 25),
             date(2021, 8, 13),
-            date(2021, 10, 15)
+            date(2021, 10, 15),
         ]
         for TN_hol in _holidays:
             self.assertIn(TN_hol, self.holidays)
@@ -40,16 +41,15 @@ class TestTunisia(unittest.TestCase):
 
             if importlib.util.find_spec("hijri_converter"):
                 self.holidays = holidays.TN(years=[2015])
-                
+
                 # eid_alfitr
                 self.assertIn(date(2015, 7, 17), self.holidays)
                 # eid_aladha
                 self.assertIn(date(2015, 9, 24), self.holidays)
                 # islamic_new_year
                 self.assertIn(date(2015, 10, 14), self.holidays)
-                
+
                 # eid_elfetr_2019
                 self.assertIn(date(2019, 6, 6), self.holidays)
                 # arafat_2019
                 self.assertIn(date(2019, 8, 11), self.holidays)
-
