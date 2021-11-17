@@ -84,7 +84,6 @@ class TestSpain(unittest.TestCase):
             (9, 11): ["CT"],
             (9, 27): ["NC"],
             (10, 9): ["VC"],
-            (10, 25): ["PV"],
         }
         for prov, prov_holidays in self.prov_holidays.items():
             for year in range(2010, 2025):
@@ -142,3 +141,11 @@ class TestSpain(unittest.TestCase):
                         date(year, *fest_day) in prov_holidays,
                         prov in fest_prov,
                     )
+
+    def test_change_of_province_specific_days(self):
+        prov_holidays = self.prov_holidays["PV"]
+        self.assertNotIn(date(2010, 10, 25), prov_holidays)
+        self.assertIn(date(2011, 10, 25), prov_holidays)
+        self.assertIn(date(2012, 10, 25), prov_holidays)
+        self.assertIn(date(2013, 10, 25), prov_holidays)
+        self.assertNotIn(date(2014, 10, 25), prov_holidays)
