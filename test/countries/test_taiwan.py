@@ -39,7 +39,7 @@ class TestTunisia(unittest.TestCase):
         self.assertIn(date(2021, 2, 16), self.holidays)  # Spring Festival
         self.assertIn(date(2021, 2, 28), self.holidays)  # Peace Memorial Day
         self.assertIn(date(2021, 4, 4), self.holidays)  # Children's Day
-        self.assertIn(date(2021, 7, 14), self.holidays)  # Dragon Boat Festival
+        self.assertIn(date(2021, 6, 14), self.holidays)  # Dragon Boat Festival
         self.assertIn(date(2021, 9, 21), self.holidays)  # Mid-Autumn Festival
         self.assertIn(date(2021, 10, 10), self.holidays)  # National Day day 1
         self.assertIn(date(2021, 10, 11), self.holidays)  # National Day day 2
