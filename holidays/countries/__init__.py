@@ -86,6 +86,7 @@ from .swaziland import Swaziland, SZ, SZW
 from .sweden import Sweden, SE, SWE
 from .switzerland import Switzerland, CH, CHE
 from .turkey import Turkey, TR, TUR
+from .tunisia import Tunisia, TUN, TN
 from .ukraine import Ukraine, UA, UKR
 from .united_arab_emirates import UnitedArabEmirates, AE, ARE
 from .united_kingdom import (
