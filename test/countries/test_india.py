@@ -124,6 +124,7 @@ class TestIND(unittest.TestCase):
         self.assertIn(date(2018, 8, 15), la_holidays)
         self.assertIn(date(2018, 8, 15), ld_holidays)
         self.assertIn(date(2018, 8, 15), py_holidays)
+        self.assertIn(date(2018, 10, 15), mh_holidays)
 
         # test Diwali and Holi warning
         self.assertIn(date(2009, 1, 14), self.holidays)

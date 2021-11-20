@@ -138,6 +138,7 @@ class India(HolidayBase):
 
         if self.prov == "MH":
             self[date(year, MAY, 1)] = "Maharashtra Day"
+            self[date(year, OCT, 15)] = "Dussehra"
 
         if self.prov == "SK":
             self[date(year, MAY, 16)] = "Annexation Day"
