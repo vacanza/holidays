@@ -141,6 +141,7 @@ Hungary             HU/HUN    None
 Iceland             IS/ISL    None
 India               IN/IND    prov = AP, AS, BR, CG, GJ, HR, KA, KL, MH, MP, OD, RJ, SK,
                               TN, TN, UK, UP, WB
+Indonesia           ID
 Ireland             IE/IRL    None
 IsleOfMan                     None
 Israel              IL/ISR    None
@@ -170,6 +171,7 @@ Nigeria             NG/NGA    None
 NorthernIreland               None
 Norway              NO/NOR    None
 Paraguay            PY/PRY    None
+Philippines         PH
 Peru                PE/PER    None
 Poland              PL/POL    None
 Portugal            PT/PRT    None
@@ -189,6 +191,7 @@ Swaziland           SZ/SZW    None
 Sweden              SE/SWE    None
 Switzerland         CH/CHE    prov = AG, AR, AI, BL, BS, BE, FR, GE, GL, GR, JU, LU,
                               NE, NW, OW, SG, SH, SZ, SO, TG, TI, UR, VD, VS, ZG, ZH
+Thailand            TH
 Turkey              TR/TUR    None
 Ukraine             UA/UKR    None
 UnitedArabEmirates  AE/ARE    None
