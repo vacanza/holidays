@@ -168,10 +168,11 @@ class India(HolidayBase):
         # https://github.com/facebook/prophet/blob/main/python/prophet/hdays.py
         # Warnings kept in place so that users are aware
 
-        warning_msg = (
-            "We only support Diwali and Holi holidays from 2010 to 2030"
-        )
-        warnings.warn(warning_msg, Warning)
+        if year < 2010 or year > 2030:
+            warning_msg = (
+                "Diwali and Holi holidays available from 2010 to 2030 only"
+            )
+            warnings.warn(warning_msg, Warning)
 
         name1 = "Diwali"
         name2 = "Holi"
