@@ -13,6 +13,7 @@ Released ???????? ???, ????
 - India fixes #553, #554, #539 (canute24, dr-p)
 - Spain fixes #555 (tserekh)
 - Italy fixes #546 (dr-p, rtraverso86)
+- Korea fixes #535 (0xF4D3C0D3)
 - Travis CI removal (mborsetti, dr-p)
 
 Version 0.11.3.1
