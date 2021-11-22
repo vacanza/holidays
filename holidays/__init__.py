@@ -29,4 +29,4 @@ from holidays.constants import (
 from holidays.holiday_base import HolidayBase
 from holidays.utils import list_supported_countries, CountryHoliday
 
-__version__ = "0.11.3"
+__version__ = "0.11.4"

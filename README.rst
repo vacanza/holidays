@@ -102,6 +102,7 @@ Argentina           AR/ARG    None
 Aruba               AW/ABW    None
 Australia           AU/AUS    prov = **ACT** (default), NSW, NT, QLD, SA, TAS, VIC, WA
 Austria             AT/AUT    prov = 1, 2, 3, 4, 5, 6, 7, 8, **9** (default)
+Azerbaijan          AZ/AZE    None
 Bangladesh          BD/BGD    None
 Belarus             BY/BLR    None
 Belgium             BE/BEL    None
@@ -149,6 +150,7 @@ Italy               IT/ITA    prov = AN, AO, BA, BL, BO, BS, BZ, CB, Cesena, CH,
                               MN, MS, NA, PA, PC, PD, PG, PR, RM, SP, TS, VI
 Jamaica             JM/JAM    None
 Japan               JP/JPN    None
+Kazakhstan          KZ/KAZ    None
 Kenya               KE/KEN    None
 Korea               KR/KOR    None
 Latvia              LV/LVA    None
@@ -189,7 +191,9 @@ Swaziland           SZ/SZW    None
 Sweden              SE/SWE    None
 Switzerland         CH/CHE    prov = AG, AR, AI, BL, BS, BE, FR, GE, GL, GR, JU, LU,
                               NE, NW, OW, SG, SH, SZ, SO, TG, TI, UR, VD, VS, ZG, ZH
+Taiwan              TW/TWN    None
 Turkey              TR/TUR    None
+Tunisia             TN/TUN    None
 Ukraine             UA/UKR    None
 UnitedArabEmirates  AE/ARE    None
 UnitedKingdom       GB/GBR/UK None
@@ -198,8 +202,8 @@ UnitedStates        US/USA    state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL
                               FM, MN, MS, MO, MT, NE, NV, NH, NJ, NM, NY, NC, ND, MP,
                               OH, OK, OR, PW, PA, PR, RI, SC, SD, TN, TX, UT, VT, VA,
                               VI, WA, WV, WI, WY
-Venezuela           YV/VEN
-Vietnam             VN/VNM
+Venezuela           YV/VEN    None
+Vietnam             VN/VNM    None
 Wales                         None
 Zambia              ZM/ZMB    None
 Zimbabwe            ZW/ZWE    None

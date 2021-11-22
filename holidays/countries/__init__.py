@@ -15,6 +15,7 @@ from .argentina import Argentina, AR, ARG
 from .aruba import Aruba, AW, ABW
 from .australia import Australia, AU, AUS
 from .austria import Austria, AT, AUT
+from .azerbaijan import Azerbaijan, AZ, AZE
 from .bangladesh import Bangladesh, BD, BGD
 from .belarus import Belarus, BY, BLR
 from .belgium import Belgium, BE, BEL
@@ -50,6 +51,7 @@ from .italy import Italy, IT, ITA
 from .israel import Israel, IL, ISR
 from .jamaica import Jamaica, JM, JAM
 from .japan import Japan, JP, JPN
+from .kazakhstan import Kazakhstan, KZ, KAZ
 from .kenya import Kenya, KE, KEN
 from .korea import Korea, KR, KOR
 from .latvia import Latvia, LV, LVA
@@ -83,7 +85,9 @@ from .spain import Spain, ES, ESP
 from .swaziland import Swaziland, SZ, SZW
 from .sweden import Sweden, SE, SWE
 from .switzerland import Switzerland, CH, CHE
+from .taiwan import Taiwan, TW, TWN
 from .turkey import Turkey, TR, TUR
+from .tunisia import Tunisia, TUN, TN
 from .ukraine import Ukraine, UA, UKR
 from .united_arab_emirates import UnitedArabEmirates, AE, ARE
 from .united_kingdom import (

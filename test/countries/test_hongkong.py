@@ -23,8 +23,8 @@ class TestHongKong(unittest.TestCase):
         self.holidays = holidays.HK()
 
     def test_common(self):
-        self.assertTrue(self.holidays.isLeapYear(2000))
-        self.assertFalse(self.holidays.isLeapYear(2100))
+        self.assertTrue(self.holidays.is_leap_year(2000))
+        self.assertFalse(self.holidays.is_leap_year(2100))
         holidaysNoObserved = holidays.HK(observed=False)
         self.assertEqual(
             holidaysNoObserved[date(2019, 1, 1)], "The first day of January"
