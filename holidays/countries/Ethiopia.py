@@ -12,7 +12,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-import calander
+import calendar
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 from holidays.constants import SAT,SUN
@@ -76,12 +76,12 @@ class Ethiopia(HolidayBase):
         self[date(year, MAY, 1)] = "የሰራተኞች ቀን"
 
         # Patriots Day
-        if year > 1941
-        self[date(year, MAY, 5)] = "የአርበኞች ቀን"
+        if year > 1941:
+          self[date(year, MAY, 5)] = "የአርበኞች ቀን"
         
         # Derg Downfall Day
         if year > 1991:
-        self[date(year, MAY, 28)] = "ደርግ የወደቀበት ቀን"
+          self[date(year, MAY, 28)] = "ደርግ የወደቀበት ቀን"
         
         # Downfall of King. Hailesilassie
         if year < 1991 and year > 1974 :
