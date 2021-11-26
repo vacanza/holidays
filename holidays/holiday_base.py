@@ -392,6 +392,22 @@ class HolidayBase(dict):
     def __reduce__(self) -> Union[str, Tuple[Any, ...]]:
         return super(HolidayBase, self).__reduce__()
 
+    def __repr__(self):
+        if len(self) == 0:
+            _repr = f"holidays.CountryHoliday({self.country!r}"
+            if self.prov:
+                _repr += f", prov={self.prov!r}"
+            if self.state:
+                _repr += f", state={self.state!r}"
+            _repr += ")"
+            return _repr
+        return super(HolidayBase, self).__repr__()
+
+    def __str__(self):
+        if len(self) == 0:
+            return str(self.__dict__)
+        return super(HolidayBase, self).__str__()
+
 
 class HolidaySum(HolidayBase):
     country: Union[str, List[str]]
