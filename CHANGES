@@ -17,6 +17,7 @@ Released ???????? ???, ????
 - Travis CI removal #557 (mborsetti, dr-p)
 - Test coverage improvement (dr-p)
 - More useful __repr__ and __str__ #360 (dr-p, kootenpv, d33tah)
+- Date slices support fix #529, #530 (justinwaf, mborsetti, dr-p)
 
 Version 0.11.3.1
 ================

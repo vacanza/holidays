@@ -267,7 +267,7 @@ class HolidayBase(dict):
             for delta_days in range(0, date_diff.days, step):
                 day = start + timedelta(days=delta_days)
                 try:
-                    dict.__getitem__(self, day)
+                    self.__getitem__(day)
                     days_in_range.append(day)
                 except KeyError:
                     pass
