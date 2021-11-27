@@ -496,10 +496,19 @@ master branch upon official version upgrades.
 Running Tests and Coverage
 --------------------------
 
+Project provides automated tests and coverage checks with pytest. Here is the
+commands to execute them.
+
 .. code-block:: bash
 
     $ pip install -r requirements_dev.txt
     $ python -m pytest .
+
+Or, if you want to retrieve uncovered lines too
+
+.. code-block:: bash
+
+    $ python -m pytest --cov-report term-missing .
 
 
 Ensure all staged files are up to standard
@@ -534,7 +543,8 @@ Issues_ and `Pull Requests`__ are always welcome.
 When contributing with fixes and new features, please start forking/branching
 from `beta branch`_, to work on latest code and reduce merging issues.
 
-Also, whenever possible, please provide 100% test coverage for your new code.
+Contributed PR are required to include valid test coverage **(95%
+minimum, 100% whenever possible)** in order to be merged.
 
 Thanks a lot for your support.
 
