@@ -69,7 +69,6 @@ class TestEthiopia(unittest.TestCase):
     def test_downfall_of_dergue(self):
         self.assertIn(date(2019, 5, 28), self.holidays)
 
-
     def test_hijri_based(self):
         if sys.version_info >= (3, 6):
             import importlib.util
