@@ -68,7 +68,7 @@ class TestEthiopia(unittest.TestCase):
 
 
     def test_hijri_based(self):
-        if sys.version_info >= (3, 6):
+        if sys.version_info.major >= (3, 6):
             import importlib.util
 
             if importlib.util.find_spec("hijri_converter"):
