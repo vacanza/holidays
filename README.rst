@@ -18,6 +18,10 @@ specific date is a holiday as fast and flexible as possible.
 .. image:: http://img.shields.io/pypi/l/holidays.svg
     :target: https://github.com/dr-prodigy/python-holidays/blob/master/LICENSE
 
+.. image:: https://readthedocs.org/projects/python-holidays/badge/?version=latest
+    :target: https://python-holidays.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
+
 
 Example Usage
 -------------

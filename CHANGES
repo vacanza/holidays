@@ -3,6 +3,7 @@ Version 0.11.4
 
 Released ???????? ???, ????
 
+- Sphinx documentation (mborsetti, dr-p)
 - Support for Kazakhstan #534 (chiuczek, intelliHugh)
 - Support for Azerbaijan #540 (eldar-mustafayev)
 - Support for Tunisia #543 (ihebski)
@@ -11,7 +12,7 @@ Released ???????? ???, ????
 - More useful __repr__ and __str__ #360 (dr-p, kootenpv, d33tah)
 - Date slices support fix #529, #530 (justinwaf, mborsetti, dr-p)
 - Test coverage improvement (dr-p)
-- doc fixes #549 (canute24)
+- Doc fixes #549 (canute24)
 - Canada updates and test review #533, #536 (cturra)
 - US updates and fixes #537, #559 (khawley, evohnave, dr-p)
 - India fixes #553, #554, #539 (canute24, dr-p)
