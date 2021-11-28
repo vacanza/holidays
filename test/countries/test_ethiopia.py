@@ -38,10 +38,10 @@ class TestEthiopia(unittest.TestCase):
 
     def test_ethiopian_christmas(self):
         self.assertIn(date(2019, 1, 7), self.holidays)
-        
+
     def test_ethiopian_newyear(self):
         self.assertIn(date(2019, 9, 12), self.holidays)
-        
+
     def test_ethiopian_meskel(self):
         self.assertIn(date(2019, 9, 28), self.holidays)
 
@@ -59,7 +59,7 @@ class TestEthiopia(unittest.TestCase):
 
     def test_labour_day(self):
         self.assertIn(date(2019, 5, 1), self.holidays)
-    
+
     def test_patriots_day(self):
         self.assertIn(date(2019, 5, 5), self.holidays)
 
