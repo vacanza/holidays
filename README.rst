@@ -535,6 +535,20 @@ Manually run the quality assurance tests on all tracked files.
     $ pre-commit run -a
 
 
+Build sphinx documentation
+--------------------------
+
+.. _readthedocs.io: https://python-holidays.readthedocs.io/en/latest/
+
+Project provides a sphinx documentation source under ./docs/source, published
+online on `readthedocs.io`_.
+To test/build locally the documentation in html, run this command:
+
+.. code-block:: bash
+
+    $ sphinx-build -b html docs/source/ docs/build/html
+
+
 Contributions
 -------------
 
