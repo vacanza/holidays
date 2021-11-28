@@ -38,6 +38,9 @@ class TestEthiopia(unittest.TestCase):
 
     def test_ethiopian_christmas(self):
         self.assertIn(date(2019, 1, 7), self.holidays)
+        
+    def not_holiday(self):
+        self.notassertIn(date,2019,9,11),self.holidays)
 
     def test_ethiopian_newyear(self):
         self.assertIn(date(2019, 9, 12), self.holidays)
@@ -68,24 +71,14 @@ class TestEthiopia(unittest.TestCase):
 
 
     def test_hijri_based(self):
-        name = 'hijri_converter'
-        if (spec := importlib.util.find_spec(name)) is not None:
-            module = importlib.util.module_from_spec(spec)
-            sys.modules[name] = module
-            spec.loader.exec_module(module)
-            self.holidays = holidays.ET(years=[2010])
-            self.assertIn(date(2019, 6, 4), self.holidays)
-            self.assertIn(date(2019, 8, 11), self.holidays)
-            self.assertIn(date(2019, 11, 10), self.holidays)
-            # eid_alfitr
-            self.assertIn(date(2019, 6, 4), self.holidays)
-            # eid_aladha
-            self.assertIn(date(2019, 8, 11), self.holidays)
-            # muhammad's birthday
-            self.assertIn(date(2019, 11, 10), self.holidays)
-            # eid_elfetr_2010
-            self.assertIn(date(2010, 9, 10), self.holidays)
-            # arafat_2010
-            self.assertIn(date(2010, 11, 15), self.holidays)
-            # muhammad's birthday2010
-            self.assertIn(date(2010, 2, 26), self.holidays)
+        if sys.version_info >= (3, 6):
+            import importlib.util
+
+            if importlib.util.find_spec("hijri_converter"):
+                self.holidays = holidays.ET(years=[2019])
+                # eid_alfitr
+                self.assertIn(date(2019, 6, 4), self.holidays)
+                # eid_aladha
+                self.assertIn(date(2019, 8, 11), self.holidays)
+                # muhammad's birthday
+                self.assertIn(date(2019, 11, 10), self.holidays)
