@@ -39,9 +39,6 @@ class TestEthiopia(unittest.TestCase):
     def test_ethiopian_christmas(self):
         self.assertIn(date(2019, 1, 7), self.holidays)
         
-    def not_holiday(self):
-        self.assertNotIn(date,2019,9,11),self.holidays)
-
     def test_ethiopian_newyear(self):
         self.assertIn(date(2019, 9, 12), self.holidays)
         
