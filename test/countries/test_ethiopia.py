@@ -74,11 +74,13 @@ class TestEthiopia(unittest.TestCase):
             import importlib.util
 
             if importlib.util.find_spec("hijri_converter"):
-                self.holidays = holidays.ET(years=[2019])
                 # eid_alfitr
-                self.assertIn(date(2019, 6, 4), self.holidays)
-                # eid_aladha
-                self.assertIn(date(2019, 8, 11), self.holidays)
-                # muhammad's birthday
-                self.assertIn(date(2019, 11, 10), self.holidays)
+                self.holidays = holidays.ET(years=[2019])
                 
+                # eid_aladha
+                self.assertIn(date(2019, 6, 4), self.holidays)
+                
+                # muhammad's birthday
+                self.assertIn(date(2019, 8, 11), self.holidays)
+                
+                self.assertIn(date(2019, 11, 10), self.holidays)
