@@ -1090,7 +1090,7 @@ class TestMalaysia(unittest.TestCase):
         # Declaration of Malacca as a Historical City in Melaka
         self.assertIn(date(2018, 4, 15), Malacca_holidays)
         self.assertIn(date(2019, 4, 15), Malacca_holidays)
-        # Birthday of the Governor of Melaka
+        # Birthday of the Governor of MelakaMelaka
 
     #        self.assertIn(date(2018, 10, 12), Malacca_holidays)
     #        self.assertIn(date(2019, 10, 11), Malacca_holidays)
