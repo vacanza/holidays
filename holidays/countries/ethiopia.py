@@ -12,6 +12,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 from holidays.constants import SAT,SUN
@@ -56,7 +57,7 @@ class Ethiopia(HolidayBase):
           self[date(year, SEP, 28)] = "መስቀል"
 
         # Ethiopian Christmas
-          self[date(year, JAN, 7)] = "ገና"
+        self[date(year, JAN, 7)] = "ገና"
         
         # Ethiopian Ephiphany
         self[date(year, JAN, 19)] = "ጥምቀት"
