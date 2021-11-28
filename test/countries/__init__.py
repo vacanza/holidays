@@ -33,6 +33,7 @@ from .test_djibouti import *
 from .test_dominican_republic import *
 from .test_egypt import *
 from .test_estonia import *
+from .test_ethiopia import *
 from .test_european_central_bank import *
 from .test_finland import *
 from .test_france import *

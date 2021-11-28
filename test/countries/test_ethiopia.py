@@ -30,6 +30,7 @@ class TestEthiopia(unittest.TestCase):
         self.assertIn(date(2019, 4, 28), self.holidays)
         self.assertIn(date(2019, 4, 26), self.holidays)
         self.assertIn(date(2019, 5, 1), self.holidays)
+        self.assertIn(date(2019, 5, 5), self.holidays)
         self.assertIn(date(2019, 5, 28), self.holidays)
         self.assertIn(date(2019, 9, 12), self.holidays)
         self.assertIn(date(2019, 9, 28), self.holidays)
@@ -38,9 +39,32 @@ class TestEthiopia(unittest.TestCase):
     def test_ethiopian_christmas(self):
         self.assertIn(date(2019, 1, 7), self.holidays)
 
+    def test_ethiopian_newyear(self):
+        self.assertIn(date(2019, 9, 12), self.holidays)
+        
+    def test_ethiopian_meskel(self):
+        self.assertIn(date(2019, 9, 28), self.holidays)
+
+    def test_ethiopian_ephiphany(self):
+        self.assertIn(date(2019, 1, 19), self.holidays)
+
+    def test_adwa_victory(self):
+        self.assertIn(date(2019, 3, 2), self.holidays)
+
+    def test_easter_good_friday(self):
+        self.assertIn(date(2019, 4, 26), self.holidays)
+
+    def test_easter(self):
+        self.assertIn(date(2019, 4, 28), self.holidays)
 
     def test_labour_day(self):
         self.assertIn(date(2019, 5, 1), self.holidays)
+    
+    def test_patriots_day(self):
+        self.assertIn(date(2019, 5, 5), self.holidays)
+
+    def test_downfall_of_dergue(self):
+        self.assertIn(date(2019, 5, 28), self.holidays)
 
 
     def test_hijri_based(self):
