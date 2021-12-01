@@ -95,15 +95,15 @@ class Colombia(HolidayBase):
         else:
             self[date(year, AUG, 15) + rd(weekday=MO)] = name + "(Observed)"
 
-        # Columbus Day
-        name = "Día de la Raza [Columbus Day]"
+        # Discovery of America
+        name = "Descubrimiento de América [Discovery of America]"
         if date(year, OCT, 12).weekday() == MON or not self.observed:
             self[date(year, OCT, 12)] = name
         else:
             self[date(year, OCT, 12) + rd(weekday=MO)] = name + "(Observed)"
 
         # All Saints’ Day
-        name = "Día de Todos los Santos [All Saint's Day]"
+        name = "Dia de Todos los Santos [All Saint's Day]"
         if date(year, NOV, 1).weekday() == MON or not self.observed:
             self[date(year, NOV, 1)] = name
         else:
