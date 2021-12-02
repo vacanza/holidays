@@ -29,7 +29,7 @@ from .china import China, CN, CHN
 from .colombia import Colombia, CO, COL
 from .croatia import Croatia, HR, HRV
 from .curacao import Curacao, CW, CUW
-from .czechia import Czechia, Czech, CZ, CZE
+from .czechia import Czechia, CZ, CZE
 from .denmark import Denmark, DK, DNK
 from .djibouti import Djibouti, DJ, DJI
 from .dominican_republic import DominicanRepublic, DO, DOM
