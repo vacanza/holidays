@@ -18,7 +18,6 @@ from datetime import date
 import holidays
 
 
-
 class TestIndonesia(unittest.TestCase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Indonesia
     def setUp(self):
@@ -27,20 +26,21 @@ class TestIndonesia(unittest.TestCase):
     def test_holidays(self):
         self.assertIn(date(2020, 1, 1), self.holidays)  # New Year's Day
         self.assertIn(date(2020, 1, 25), self.holidays)  # Chinese New Year
+        self.assertIn(date(2020, 3, 21), self.holidays)  # Ascension of the Prophet
         self.assertIn(date(2020, 3, 25), self.holidays)  # Day of Silence
-
-        self.assertIn(date(2020, 4, 10), self.holidays) # Good Friday
+        self.assertIn(date(2020, 4, 10), self.holidays)  # Good Friday
         self.assertIn(date(2020, 5, 1), self.holidays) 	# Labour Day
-        self.assertIn(date(2020, 5, 21), self.holidays) # Ascension Day
+        self.assertIn(date(2020, 5, 21), self.holidays)  # Ascension Day
         self.assertIn(date(2020, 4, 30), self.holidays)  # Buddha's Birthday
-        self.assertIn(date(2020, 6, 1), self.holidays) # Pancasila Day
-        self.assertIn(date(2020, 9, 17), self.holidays) # Independence Day
-        self.assertIn(date(2020, 12, 25), self.holidays)  # Christmas Day
-        self.assertIn(date(2020, 9, 20), self.holidays)   #	Islamic New Year
-        self.assertIn(date(2020, 10, 28), self.holidays)  # Birthday of the Prophet
-        self.assertIn(date(2020, 3, 21), self.holidays) # Ascension of the Prophet
-        self.assertIn(date(2020, 6, 21), self.holidays) # Eid al-Fitr day 1
+        self.assertIn(date(2020, 6, 1), self.holidays)  # Pancasila Day
+        self.assertIn(date(2020, 6, 21), self.holidays)  # Eid al-Fitr day 1
         self.assertIn(date(2020, 6, 22), self.holidays)  # Eid al-Fitr day 2
-        self.assertIn(date(2020, 7, 30), self.holidays) # Eid al-Adha
+        self.assertIn(date(2020, 7, 30), self.holidays)  # Eid al-Adha
+        self.assertIn(date(2020, 9, 17), self.holidays)  # Independence Day
+        self.assertIn(date(2020, 9, 20), self.holidays)  # Islamic New Year
+        self.assertIn(date(2020, 10, 28), self.holidays)  # Birthday of the Prophet
+        self.assertIn(date(2020, 12, 25), self.holidays)  # Christmas Day
+
+
 
 
