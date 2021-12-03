@@ -198,10 +198,6 @@ Ukraine             UA/UKR    None
 UnitedArabEmirates  AE/ARE    None
 UnitedKingdom       UK/GB/GBR state = **UK** (default), England, IsleOfMan,
                               NorthernIreland, Scotland, Wales
-IsleOfMan                     None
-NorthernIreland               None
-Wales                         None
-England                       None
 UnitedStates        US/USA    state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL, GA,
                               GU, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MH, MA, MI,
                               FM, MN, MS, MO, MT, NE, NV, NH, NJ, NM, NY, NC, ND, MP,
