@@ -82,8 +82,10 @@ class Thailand(HolidayBase):
 
         # Coronation Day, removed in 2017 and re-established on 4 May in 2019
         name = "Coronation Day"
-        if year < 2017 or year > 2019:
+        if year < 2017:
             self[date(year, 5, 5)] = name
+        elif year > 2019:
+            self[date(year, 5, 4)] = name
 
         # Queen Suthida's Birthday
         name = "Queen Suthida's Birthday"

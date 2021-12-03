@@ -28,6 +28,7 @@ class TestThailand(unittest.TestCase):
         self.assertIn(date(2020, 2, 8), self.holidays)  # Magha Puja
         self.assertIn(date(2020, 4, 6), self.holidays)  # Chakri Memorial Day
         self.assertIn(date(2020, 4, 14), self.holidays)  # Songkran Festival
+        self.assertIn(date(2016, 5, 5), self.holidays)  # Coronation Day
         self.assertIn(date(2020, 5, 4), self.holidays)  # Coronation Day
         # Royal Ploughing Ceremony
         # Vesakb
