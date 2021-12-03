@@ -58,8 +58,8 @@ from .latvia import Latvia, LV, LVA
 from .lesotho import Lesotho, LS, LSO
 from .lithuania import Lithuania, LT, LTU
 from .luxembourg import Luxembourg, LU, LUX
-from .malaysia import Malaysia, MY, MYS
 from .malawi import Malawi, MW, MWI
+from .malaysia import Malaysia, MY, MYS
 from .mexico import Mexico, MX, MEX
 from .morocco import Morocco, MA, MOR
 from .mozambique import Mozambique, MZ, MOZ
@@ -94,16 +94,16 @@ from .united_kingdom import (
     UnitedKingdom,
     UK,
     GB,
+    GBR,
     England,
     Wales,
     Scotland,
     IsleOfMan,
     NorthernIreland,
-    GBR,
 )
 from .united_states import UnitedStates, US, USA
 from .uruguay import Uruguay, UY, URY
-from .venezuela import Venezuela, YV, VEN
+from .venezuela import Venezuela, VE, VEN
 from .vietnam import Vietnam, VN, VNM
 from .zambia import Zambia, ZM, ZMB
 from .zimbabwe import Zimbabwe, ZW, ZWE
