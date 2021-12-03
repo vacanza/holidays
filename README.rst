@@ -128,7 +128,6 @@ Denmark             DK/DNK    None
 Djibouti            DJ/DJI    None
 DominicanRepublic   DO/DOM    None
 Egypt               EG/EGY    None
-England                       None
 Estonia             EE/EST    None
 EuropeanCentralBank ECB/TAR   Trans-European Automated Real-time Gross Settlement (TARGET2)
 Finland             FI/FIN    None
@@ -147,7 +146,6 @@ Iceland             IS/ISL    None
 India               IN/IND    prov = AP, AS, BR, CG, GJ, HR, KA, KL, MH, MP, OD, RJ, SK,
                               TN, TN, UK, UP, WB
 Ireland             IE/IRL    None
-IsleOfMan                     None
 Israel              IL/ISR    None
 Italy               IT/ITA    prov = AN, AO, BA, BL, BO, BS, BZ, CB, Cesena, CH, CS, CT,
                               EN, FC, FE, FI, Forlì, FR, GE, GO, IS, KR, LT, MB, MI, MO,
@@ -173,7 +171,6 @@ NewZealand          NZ/NZL    prov = AUK, CAN, CIT, HKB, MBH, NSN, NTL, OTA, STC
                               TKI, WGN, WTL
 Nicaragua           NI/NIC    prov = MN
 Nigeria             NG/NGA    None
-NorthernIreland               None
 Norway              NO/NOR    None
 Paraguay            PY/PRY    None
 Peru                PE/PER    None
@@ -183,7 +180,6 @@ PortugalExt         PTE/PRTE  *Portugal plus extended days most people have off*
 Romania             RO/ROU    None
 Russia              RU/RUS    None
 SaudiArabia         SA/SAU    None
-Scotland                      None
 Serbia              RS/SRB    None
 Singapore           SG/SGP    None
 Slovakia            SK/SVK    None
@@ -200,7 +196,12 @@ Turkey              TR/TUR    None
 Tunisia             TN/TUN    None
 Ukraine             UA/UKR    None
 UnitedArabEmirates  AE/ARE    None
-UnitedKingdom       GB/GBR/UK None
+UnitedKingdom       UK/GB/GBR state = **UK** (default), England, IsleOfMan,
+                              NorthernIreland, Scotland, Wales
+IsleOfMan                     None
+NorthernIreland               None
+Wales                         None
+England                       None
 UnitedStates        US/USA    state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL, GA,
                               GU, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MH, MA, MI,
                               FM, MN, MS, MO, MT, NE, NV, NH, NJ, NM, NY, NC, ND, MP,
@@ -208,7 +209,6 @@ UnitedStates        US/USA    state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL
                               VI, WA, WV, WI, WY
 Venezuela           YV/VEN    None
 Vietnam             VN/VNM    None
-Wales                         None
 Zambia              ZM/ZMB    None
 Zimbabwe            ZW/ZWE    None
 =================== ========= =============================================================
