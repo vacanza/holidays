@@ -15,7 +15,7 @@ from datetime import date
 
 from lunarcalendar import Lunar, Converter
 
-from holidays import HolidayBase
+from holidays.holiday_base import HolidayBase
 
 
 class Thailand(HolidayBase):

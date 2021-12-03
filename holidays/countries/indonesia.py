@@ -19,7 +19,7 @@ from dateutil.relativedelta import FR
 from dateutil.relativedelta import relativedelta as rd
 from lunarcalendar import Lunar, Converter
 
-from holidays import HolidayBase
+from holidays.holiday_base import HolidayBase
 from holidays.utils import ChineseLuniSolar
 from holidays.utils import islamic_to_gre
 

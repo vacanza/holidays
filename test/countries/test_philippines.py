@@ -33,12 +33,12 @@ class TestPhilippines(unittest.TestCase):
         self.assertIn(date(2020, 4, 10), self.holidays)  # Good Friday
         self.assertIn(date(2020, 4, 11), self.holidays)  # Black Saturday
         self.assertIn(date(2020, 4, 9), self.holidays)  # Day of Valor
-        self.assertIn(date(2020, 5, 1), self.holidays) # 	Labor Day
+        self.assertIn(date(2020, 5, 1), self.holidays)  # Labor Day
         self.assertIn(date(2020, 5, 24), self.holidays)  # Eid al-Fitr
         self.assertIn(date(2020, 6, 12), self.holidays)  # Independence Day
-        self.assertIn(date(2020, 6, 31), self.holidays)  # Eid'l Adha
-        self.assertIn(date(2020, 9, 21), self.holidays)  # 	Ninoy Aquino Day
-        # self.assertIn(date(2020), self.holidays) # National Heroes' Day  last Sunday of August in 1931. fom 2007 last Monday in August
+        self.assertIn(date(2020, 7, 31), self.holidays)  # Eid'l Adha
+        self.assertIn(date(2020, 8, 21), self.holidays)  # Ninoy Aquino Day
+        # National Heroes' Day tests in it own test
         self.assertIn(date(2020, 11, 1), self.holidays)  # All Saints' Day
         self.assertIn(date(2020, 11, 2), self.holidays)  # All Souls Day
         self.assertIn(date(2020, 11, 30), self.holidays)  # Bonifacio Day
@@ -47,3 +47,12 @@ class TestPhilippines(unittest.TestCase):
         self.assertIn(date(2020, 12, 25), self.holidays)  # Christmas Day
         self.assertIn(date(2020, 12, 30), self.holidays)  # Rizal Day
         self.assertIn(date(2020, 12, 31), self.holidays)  # New Year's Eve
+
+    def test_national_heroes_day(self):
+        # before 2017 last sunday of august
+        self.assertIn(date(2005, 8, 28), self.holidays)  # National Heroes' Day
+        self.assertIn(date(2006, 8, 27), self.holidays)  # National Heroes' Day
+        # 2007 and after last monday of august
+        self.assertIn(date(2007, 8, 27), self.holidays)  # National Heroes' Day
+        self.assertIn(date(2020, 8, 31), self.holidays)  # National Heroes' Day
+        self.assertIn(date(2021, 8, 30), self.holidays)  # National Heroes' Day

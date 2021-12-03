@@ -16,7 +16,8 @@ from convertdate.islamic import from_gregorian, to_gregorian
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays import HolidayBase
+from holidays.holiday_base import HolidayBase
+
 from holidays.utils import ChineseLuniSolar
 
 
@@ -49,12 +50,17 @@ class Philippines(HolidayBase):
         name = "EDSA Revolution Anniversary"
         self[date(year, 2, 25)] = name
 
+        # Maundy Thursday
+        name = "Maundy Thursday"
+        self[easter(year) - rd(days=3)] = name
+
         # Good Friday
         name = "Good Friday"
-        for offset in range(-1, 2, 1):
-            ds = easter(year + offset) - rd(days=2)
-            if ds.year == year:
-                self[ds] = name
+        self[easter(year) - rd(days=2)] = name
+
+        # Black Saturday
+        name = "Black Saturday"
+        self[easter(year) - rd(days=1)] = name
 
         # Day of Valor
         name = "Day of Valor"
@@ -73,25 +79,31 @@ class Philippines(HolidayBase):
         for offset in range(-1, 2, 1):
             islam_year = from_gregorian(year + offset, 6, 15)[0]
             y, m, d = to_gregorian(islam_year, 10, 1)
-            ds = date(y, m, d) - timedelta(days=1)
+            ds = date(y, m, d)
             if ds.year == year:
                 self[ds] = name
 
         # Eid al-Adha, i.e., Feast of the Sacrifice
         name = "Feast of the Sacrifice"
         for offset in range(-1, 2, 1):
-            islam_year = from_gregorian(year + offset, 8, 22)[0]
+            islam_year = from_gregorian(year + offset, 7, 1)[0]
             y, m, d = to_gregorian(islam_year, 12, 10)
             if y == year:
                 self[date(y, m, d)] = name
 
         # Ninoy Aquino Day
-        name = "Ninoy Aquino Day"
-        self[date(year, 8, 21)] = name
+        self[date(year, 8, 21)] = "Ninoy Aquino Day"
 
         # National Heroes' Day
         name = "National Heroes' Day"
-        self[date(year, 8, 27)] = name
+        # https://en.wikipedia.org/wiki/Heroes%27_Day#Philippines
+        last_day_of_august = date(year, 8, 31)
+        if year >= 2007:
+            # last monday of august
+            self[last_day_of_august - timedelta(days=last_day_of_august.weekday())] = name
+        else:
+            idx = (last_day_of_august.weekday() + 1) % 7  # MON = 0, SUN = 6 -> SUN = 0 .. SAT = 6
+            self[last_day_of_august - timedelta(days=idx)] = name
 
         # All Saints' Day
         name = "All Saints' Day"
