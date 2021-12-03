@@ -108,7 +108,7 @@ class Indonesia(HolidayBase):
             if ds.year == year:
                 self[ds] = name
 
-        # Buddha's Birthday
+        # Buddha's Birthday (differs in Indonesia and China)
         if year >= 1983:
             for offset in range(-1, 2, 1):
                 ds = Converter.Lunar2Solar(Lunar(year + offset, 4, 15)).to_date()
@@ -127,14 +127,16 @@ class Indonesia(HolidayBase):
             y1, m1, d1 = to_gregorian(islam_year, 10, 1)
             y2, m2, d2 = to_gregorian(islam_year, 10, 2)
             if y1 == year:
-                self[date(y1, m2, d2)] = name
+                self[date(y1, m1, d1)] = name
             if y2 == year:
                 self[date(y2, m2, d2)] = name
+
         # Eid al - Adha
+        name = "Eid Al Adha"
         for date_obs in islamic_to_gre(year, 12, 10):
             hol_date = date_obs
-            self[hol_date] = "Eid Al Adha"
-            self[hol_date + rd(days=1)] = "Eid Al Adha"
+            self[hol_date] = name
+            self[hol_date + rd(days=1)] = name
 
         # Independence Day
         name = "Independence Day"
