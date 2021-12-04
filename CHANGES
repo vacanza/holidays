@@ -9,6 +9,7 @@ Released ???????? ???, ????
 - Support for Tunisia #543 (ihebski)
 - Support for Taiwan #547 (ifurther)
 - Support for North Macedonia #570 (tserekh)
+- Support for Ethiopia #558 (tedtad, dr-p)
 - Travis CI removal #557 (mborsetti, dr-p)
 - More useful __repr__ and __str__ #360 (dr-p, kootenpv, d33tah)
 - Czech (ie: misspelled Czechia) deprecated support removed (dr-p)
