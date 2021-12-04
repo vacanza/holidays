@@ -50,9 +50,9 @@ class Ethiopia(HolidayBase):
 
     # Finding of true cross
     if self.is_leap_year(year):
-      self[date(year, SEP, 29)] = "መስቀል/Finding of True Cross"
-    else:
       self[date(year, SEP, 28)] = "መስቀል/Finding of True Cross"
+    else:
+      self[date(year, SEP, 27)] = "መስቀል/Finding of True Cross"
 
     # Ethiopian Christmas
     self[date(year, JAN, 7)] = "ገና/Ethiopian X-Mas"
@@ -94,18 +94,18 @@ class Ethiopia(HolidayBase):
     # wouldn't do much harm.
     for date_obs in islamic_to_gre(year, 10, 1):
       hol_date = date_obs
-      self[hol_date + rd(days=1)] = "ኢድ አልፈጥር/Eid-Al-Fitr"
+      self[hol_date ] = "ኢድ አልፈጥር/Eid-Al-Fitr"
 
     # Eid al-Adha - Scarfice Festive
     # date of observance is announced yearly
     for date_obs in islamic_to_gre(year, 12, 9):
       hol_date = date_obs
-      self[hol_date ] = "አረፋ/Eid-Al-Adha"
+      self[hol_date + rd(days=1)] = "አረፋ/Eid-Al-Adha"
 
     # Prophet Muhammad's Birthday - (hijari_year, 3, 12)
     for date_obs in islamic_to_gre(year, 3, 12):
       hol_date = date_obs
-      self[hol_date] = "መውሊድ/Prophet Muhammad's Birthday"
+      self[hol_date+ rd(days=1)] = "መውሊድ/Prophet Muhammad's Birthday"
 
   def is_leap_year(self, year):
     year=year+1
