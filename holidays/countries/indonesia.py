@@ -182,3 +182,7 @@ class Indonesia(HolidayBase):
 
 class ID(Indonesia):
     pass
+
+
+class IDN(Indonesia):
+    pass

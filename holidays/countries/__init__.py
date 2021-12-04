@@ -46,7 +46,7 @@ from .hongkong import HongKong, HK, HKG
 from .hungary import Hungary, HU, HUN
 from .iceland import Iceland, IS, ISL
 from .india import India, IN, IND
-from .indonesia import Indonesia, ID
+from .indonesia import Indonesia, ID, IDN
 from .ireland import Ireland, IE, IRL
 from .italy import Italy, IT, ITA
 from .israel import Israel, IL, ISR
@@ -70,10 +70,10 @@ from .new_zealand import NewZealand, NZ, NZL
 from .nicaragua import Nicaragua, NI, NIC
 from .nigeria import Nigeria, NG, NGA
 from .norway import Norway, NO, NOR
-from .pakistan import Pakistan, PK
+from .pakistan import Pakistan, PK, PAK
 from .paraguay import Paraguay, PY, PRY
 from .peru import Peru, PE, PER
-from .philippines import Philippines, PH
+from .philippines import Philippines, PH, PHL
 from .poland import Poland, Polish, PL, POL
 from .portugal import Portugal, PT, PRT, PortugalExt, PTE, PRTE
 from .romania import Romania, RO, ROU
@@ -89,7 +89,7 @@ from .swaziland import Swaziland, SZ, SZW
 from .sweden import Sweden, SE, SWE
 from .switzerland import Switzerland, CH, CHE
 from .taiwan import Taiwan, TW, TWN
-from .thailand import Thailand, TH
+from .thailand import Thailand, TH, THA
 from .turkey import Turkey, TR, TUR
 from .tunisia import Tunisia, TUN, TN
 from .ukraine import Ukraine, UA, UKR

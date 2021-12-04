@@ -146,3 +146,7 @@ class Philippines(HolidayBase):
 
 class PH(Philippines):
     pass
+
+
+class PHL(Philippines):
+    pass

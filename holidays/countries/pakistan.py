@@ -109,3 +109,7 @@ class Pakistan(HolidayBase):
 
 class PK(Pakistan):
     pass
+
+
+class PAK(Pakistan):
+    pass

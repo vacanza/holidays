@@ -218,3 +218,7 @@ class Thailand(HolidayBase):
 
 class TH(Thailand):
     pass
+
+
+class THA(Thailand):
+    pass

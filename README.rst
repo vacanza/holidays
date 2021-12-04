@@ -145,7 +145,7 @@ Hungary             HU/HUN    None
 Iceland             IS/ISL    None
 India               IN/IND    prov = AP, AS, BR, CG, GJ, HR, KA, KL, MH, MP, OD, RJ, SK,
                               TN, TN, UK, UP, WB
-Indonesia           ID        None
+Indonesia           ID/IND    None
 Ireland             IE/IRL    None
 Israel              IL/ISR    None
 Italy               IT/ITA    prov = AN, AO, BA, BL, BO, BS, BZ, CB, Cesena, CH, CS, CT,
@@ -173,9 +173,9 @@ NewZealand          NZ/NZL    prov = AUK, CAN, CIT, HKB, MBH, NSN, NTL, OTA, STC
 Nicaragua           NI/NIC    prov = MN
 Nigeria             NG/NGA    None
 Norway              NO/NOR    None
-Pakistan            PK        None
+Pakistan            PK/PAK    None
 Paraguay            PY/PRY    None
-Philippines         PH        None
+Philippines         PH/PHL    None
 Peru                PE/PER    None
 Poland              PL/POL    None
 Portugal            PT/PRT    None
@@ -195,7 +195,7 @@ Sweden              SE/SWE    None
 Switzerland         CH/CHE    prov = AG, AR, AI, BL, BS, BE, FR, GE, GL, GR, JU, LU,
                               NE, NW, OW, SG, SH, SZ, SO, TG, TI, UR, VD, VS, ZG, ZH
 Taiwan              TW/TWN    None
-Thailand            TH        None
+Thailand            TH/THA    None
 Turkey              TR/TUR    None
 Tunisia             TN/TUN    None
 Ukraine             UA/UKR    None
