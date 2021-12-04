@@ -32,13 +32,23 @@ class TestThailand(unittest.TestCase):
         self.assertIn(date(2020, 5, 4), self.holidays)  # Coronation Day
         # Royal Ploughing Ceremony
         # Vesakb
-        self.assertIn(date(2020, 6, 3), self.holidays)  # Queen Suthida's Birthday
+        self.assertIn(
+            date(2020, 6, 3), self.holidays
+        )  # Queen Suthida's Birthday
         self.assertIn(date(2020, 7, 28), self.holidays)  # King's Birthday
         self.assertIn(date(2020, 7, 5), self.holidays)  # Asalha Puja
         self.assertIn(date(2020, 7, 6), self.holidays)  # Beginning of Vassa
-        self.assertIn(date(2020, 8, 12), self.holidays)  # The Queen Mother's Birthday
-        self.assertIn(date(2020, 10, 13), self.holidays)  # King Bhumibol Adulyadej Memorial Day
-        self.assertIn(date(2020, 10, 23), self.holidays)  # King Chulalongkorn Day
-        self.assertIn(date(2020, 12, 5), self.holidays)  # King Bhumibol Adulyadej's Birthday Anniversary
+        self.assertIn(
+            date(2020, 8, 12), self.holidays
+        )  # The Queen Mother's Birthday
+        self.assertIn(
+            date(2020, 10, 13), self.holidays
+        )  # King Bhumibol Adulyadej Memorial Day
+        self.assertIn(
+            date(2020, 10, 23), self.holidays
+        )  # King Chulalongkorn Day
+        self.assertIn(
+            date(2020, 12, 5), self.holidays
+        )  # King Bhumibol Adulyadej's Birthday Anniversary
         self.assertIn(date(2020, 12, 10), self.holidays)  # Constitution Day
         self.assertIn(date(2020, 12, 31), self.holidays)  # New Year 's Eve

@@ -36,9 +36,9 @@ class Thailand(HolidayBase):
 
         # Magha Pujab
         # Note:
-        # This holiday is determined by Buddhist calendar, which is not currently
-        # available. Only hard coded version of this holiday from 2016 to 2019
-        # is available.
+        # This holiday is determined by Buddhist calendar, which is not
+        # currently available. Only hard coded version of this holiday
+        # from 2016 to 2021 is available.
 
         name = "Magha Pujab/Makha Bucha"
         if year == 2016:
@@ -53,6 +53,10 @@ class Thailand(HolidayBase):
             self[date(year, 2, 8)] = name
         elif year == 2021:
             self[date(year, 2, 26)] = name
+        elif year == 2022:
+            self[date(year, 2, 26)] = name
+        elif year == 2023:
+            self[date(year, 3, 6)] = name
         else:
             pass
 
@@ -147,7 +151,7 @@ class Thailand(HolidayBase):
             pass
 
         # Beginning of Vassa
-        warning_msg = "We only support Vassa holiday from 2006 to 2020"
+        warning_msg = "We only support Vassa holiday from 2006 to 2022"
         warnings.warn(warning_msg, Warning)
         name = "Beginning of Vassa"
         if year == 2006:

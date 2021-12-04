@@ -49,10 +49,10 @@ class Indonesia(HolidayBase):
 
         # Day of Silence / Nyepi
         # Note:
-        # This holiday is determined by Balinese calendar, which is not currently
-        # available. Only hard coded version of this holiday from 2009 to 2019
-        # is available.
-        warning_msg = "We only support Nyepi holiday from 2009 to 2019"
+        # This holiday is determined by Balinese calendar, which is not
+        # currently available. Only hard coded version of this holiday
+        # from 2009 to 2026 is available.
+        warning_msg = "We only support Nyepi holiday from 2009 to 2026"
         warnings.warn(warning_msg, Warning)
 
         # Day of Silence/ Nyepi
@@ -83,6 +83,16 @@ class Indonesia(HolidayBase):
             self[date(year, 3, 25)] = name
         elif year == 2021:
             self[date(year, 3, 14)] = name
+        elif year == 2022:
+            self[date(year, 3, 3)] = name
+        elif year == 2023:
+            self[date(year, 3, 22)] = name
+        elif year == 2024:
+            self[date(year, 3, 11)] = name
+        elif year == 2025:
+            self[date(year, 3, 29)] = name
+        elif year == 2026:
+            self[date(year, 3, 19)] = name
         else:
             pass
         # Good Friday
@@ -99,8 +109,6 @@ class Indonesia(HolidayBase):
             if y == year:
                 self[date(y, m, d)] = "Ascension of the Prophet"
 
-
-
         # Ascension of Jesus Christ
         name = "Ascension of Jesus"
         for offset in range(-1, 2, 1):
@@ -111,7 +119,9 @@ class Indonesia(HolidayBase):
         # Buddha's Birthday (differs in Indonesia and China)
         if year >= 1983:
             for offset in range(-1, 2, 1):
-                ds = Converter.Lunar2Solar(Lunar(year + offset, 4, 15)).to_date()
+                ds = Converter.Lunar2Solar(
+                    Lunar(year + offset, 4, 15)
+                ).to_date()
                 if ds.year == year:
                     self[ds] = "Buddha's Birthday"
 

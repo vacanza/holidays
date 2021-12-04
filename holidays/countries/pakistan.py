@@ -71,7 +71,6 @@ class Pakistan(HolidayBase):
             if y3 == year:
                 self[date(y3, m3, d3)] = name
 
-
         # Eid al-Fitr
         name = "Eid al-Fitr"
         for offset in range(-1, 2, 1):

@@ -28,7 +28,9 @@ class TestPhilippines(unittest.TestCase):
 
         self.assertIn(date(2020, 1, 25), self.holidays)  # Chinese New Year
 
-        self.assertIn(date(2020, 2, 25), self.holidays)  # EDSA Revolution Anniversary
+        self.assertIn(
+            date(2020, 2, 25), self.holidays
+        )  # EDSA Revolution Anniversary
         self.assertIn(date(2020, 4, 9), self.holidays)  # Maundy Thursday
         self.assertIn(date(2020, 4, 10), self.holidays)  # Good Friday
         self.assertIn(date(2020, 4, 11), self.holidays)  # Black Saturday
@@ -42,7 +44,9 @@ class TestPhilippines(unittest.TestCase):
         self.assertIn(date(2020, 11, 1), self.holidays)  # All Saints' Day
         self.assertIn(date(2020, 11, 2), self.holidays)  # All Souls Day
         self.assertIn(date(2020, 11, 30), self.holidays)  # Bonifacio Day
-        self.assertIn(date(2020, 12, 8), self.holidays)  # Feast of the Immaculate Conception of the Blessed Virgin Mary
+        self.assertIn(
+            date(2020, 12, 8), self.holidays
+        )  # Feast of the Immaculate Conception of the Blessed Virgin Mary
         self.assertIn(date(2020, 12, 24), self.holidays)  # Christmas Eve
         self.assertIn(date(2020, 12, 25), self.holidays)  # Christmas Day
         self.assertIn(date(2020, 12, 30), self.holidays)  # Rizal Day

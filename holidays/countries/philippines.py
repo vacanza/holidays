@@ -38,7 +38,9 @@ class Philippines(HolidayBase):
         name = "New Year's Day"
         self[date(year, 1, 1)] = name
 
-        self[self.cnls.lunar_n_y_date(year)] = "Chinese New Year (Spring Festival)"
+        self[
+            self.cnls.lunar_n_y_date(year)
+        ] = "Chinese New Year (Spring Festival)"
         # Maundy Thursday
         name = "Maundy Thursday"
         for offset in range(-1, 2, 1):
@@ -100,9 +102,14 @@ class Philippines(HolidayBase):
         last_day_of_august = date(year, 8, 31)
         if year >= 2007:
             # last monday of august
-            self[last_day_of_august - timedelta(days=last_day_of_august.weekday())] = name
+            self[
+                last_day_of_august
+                - timedelta(days=last_day_of_august.weekday())
+            ] = name
         else:
-            idx = (last_day_of_august.weekday() + 1) % 7  # MON = 0, SUN = 6 -> SUN = 0 .. SAT = 6
+            idx = (
+                last_day_of_august.weekday() + 1
+            ) % 7  # MON = 0, SUN = 6 -> SUN = 0 .. SAT = 6
             self[last_day_of_august - timedelta(days=idx)] = name
 
         # All Saints' Day

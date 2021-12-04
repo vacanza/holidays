@@ -25,7 +25,9 @@ class TestPakistan(unittest.TestCase):
 
     def test_holidays(self):
         # National holidays
-        self.assertIn(date(2020, 2, 5), self.holidays)  # Kashmir Solidarity Day
+        self.assertIn(
+            date(2020, 2, 5), self.holidays
+        )  # Kashmir Solidarity Day
         self.assertIn(date(2020, 3, 23), self.holidays)  # Pakistan Day
         self.assertIn(date(2020, 5, 1), self.holidays)  # Labour Day
         self.assertIn(date(2020, 8, 14), self.holidays)  # Independence Day
