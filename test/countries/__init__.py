@@ -65,6 +65,7 @@ from .test_new_zealand import *
 from .test_nicaragua import *
 from .test_nigeria import *
 from .test_norway import *
+from .test_pakistan import *
 from .test_paraguay import *
 from .test_peru import *
 from .test_poland import *

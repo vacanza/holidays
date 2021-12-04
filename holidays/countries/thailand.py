@@ -180,6 +180,10 @@ class Thailand(HolidayBase):
             self[date(year, 7, 17)] = name
         elif year == 2020:
             self[date(year, 7, 6)] = name
+        elif year == 2021:
+            self[date(year, 7, 21)] = name
+        elif year == 2022:
+            self[date(year, 7, 14)] = name
         else:
             pass
 

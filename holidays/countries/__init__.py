@@ -68,6 +68,7 @@ from .new_zealand import NewZealand, NZ, NZL
 from .nicaragua import Nicaragua, NI, NIC
 from .nigeria import Nigeria, NG, NGA
 from .norway import Norway, NO, NOR
+from .pakistan import Pakistan, PK
 from .paraguay import Paraguay, PY, PRY
 from .peru import Peru, PE, PER
 from .philippines import Philippines, PH
