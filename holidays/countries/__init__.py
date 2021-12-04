@@ -15,6 +15,7 @@ from .argentina import Argentina, AR, ARG
 from .aruba import Aruba, AW, ABW
 from .australia import Australia, AU, AUS
 from .austria import Austria, AT, AUT
+from .azerbaijan import Azerbaijan, AZ, AZE
 from .bangladesh import Bangladesh, BD, BGD
 from .belarus import Belarus, BY, BLR
 from .belgium import Belgium, BE, BEL
@@ -28,7 +29,7 @@ from .china import China, CN, CHN
 from .colombia import Colombia, CO, COL
 from .croatia import Croatia, HR, HRV
 from .curacao import Curacao, CW, CUW
-from .czechia import Czechia, Czech, CZ, CZE
+from .czechia import Czechia, CZ, CZE
 from .denmark import Denmark, DK, DNK
 from .djibouti import Djibouti, DJ, DJI
 from .dominican_republic import DominicanRepublic, DO, DOM
@@ -58,8 +59,8 @@ from .latvia import Latvia, LV, LVA
 from .lesotho import Lesotho, LS, LSO
 from .lithuania import Lithuania, LT, LTU
 from .luxembourg import Luxembourg, LU, LUX
-from .malaysia import Malaysia, MY, MYS
 from .malawi import Malawi, MW, MWI
+from .malaysia import Malaysia, MY, MYS
 from .mexico import Mexico, MX, MEX
 from .morocco import Morocco, MA, MOR
 from .mozambique import Mozambique, MZ, MOZ
@@ -87,24 +88,26 @@ from .spain import Spain, ES, ESP
 from .swaziland import Swaziland, SZ, SZW
 from .sweden import Sweden, SE, SWE
 from .switzerland import Switzerland, CH, CHE
+from .taiwan import Taiwan, TW, TWN
 from .thailand import Thailand, TH
 from .turkey import Turkey, TR, TUR
+from .tunisia import Tunisia, TUN, TN
 from .ukraine import Ukraine, UA, UKR
 from .united_arab_emirates import UnitedArabEmirates, AE, ARE
 from .united_kingdom import (
     UnitedKingdom,
     UK,
     GB,
+    GBR,
     England,
     Wales,
     Scotland,
     IsleOfMan,
     NorthernIreland,
-    GBR,
 )
 from .united_states import UnitedStates, US, USA
 from .uruguay import Uruguay, UY, URY
-from .venezuela import Venezuela, YV, VEN
+from .venezuela import Venezuela, VE, VEN
 from .vietnam import Vietnam, VN, VNM
 from .zambia import Zambia, ZM, ZMB
 from .zimbabwe import Zimbabwe, ZW, ZWE

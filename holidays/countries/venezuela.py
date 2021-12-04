@@ -89,7 +89,7 @@ class Venezuela(HolidayBase):
         self[easter(year) - rd(days=48)] = "Lunes de Carnaval"
 
 
-class YV(Venezuela):
+class VE(Venezuela):
     pass
 
 

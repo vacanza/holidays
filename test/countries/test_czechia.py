@@ -42,10 +42,14 @@ class TestCZ(unittest.TestCase):
     def test_others(self):
         self.assertIn(date(1991, 5, 9), self.holidays)
 
-    def test_czech_deprecated(self):
-        with warnings.catch_warnings(record=True) as w:
-            warnings.simplefilter("always")
-            czech = holidays.Czech()
-            self.assertIsInstance(czech, holidays.Czechia)
-            self.assertEqual(1, len(w))
-            self.assertTrue(issubclass(w[-1].category, DeprecationWarning))
+    def test_older_years(self):
+        self.assertNotIn(date(1950, 5, 1), self.holidays)
+        self.assertNotIn(date(1991, 5, 8), self.holidays)
+        self.assertIn(date(1990, 5, 9), self.holidays)
+        self.assertNotIn(date(1946, 5, 9), self.holidays)
+        self.assertNotIn(date(1950, 7, 5), self.holidays)
+        self.assertNotIn(date(1950, 10, 28), self.holidays)
+        self.assertNotIn(date(1989, 11, 17), self.holidays)
+        self.assertNotIn(date(1989, 12, 24), self.holidays)
+        self.assertNotIn(date(1950, 12, 25), self.holidays)
+        self.assertNotIn(date(1950, 12, 26), self.holidays)

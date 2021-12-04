@@ -132,13 +132,18 @@ class UnitedStates(HolidayBase):
 
         # Lee Jackson Day
         name = "Lee Jackson Day"
-        if self.state == "VA" and year >= 2000:
-            dt = date(year, JAN, 1) + rd(weekday=MO(+3)) + rd(weekday=FR(-1))
-            self[dt] = name
-        elif self.state == "VA" and year >= 1983:
-            self[date(year, JAN, 1) + rd(weekday=MO(+3))] = name
-        elif self.state == "VA" and year >= 1889:
-            self[date(year, JAN, 19)] = name
+        if self.state == "VA":
+            if 2000 <= year <= 2020:
+                dt = (
+                    date(year, JAN, 1)
+                    + rd(weekday=MO(+3))
+                    + rd(weekday=FR(-1))
+                )
+                self[dt] = name
+            elif 1983 <= year <= 2020:
+                self[date(year, JAN, 1) + rd(weekday=MO(+3))] = name
+            elif 1889 <= year <= 2020:
+                self[date(year, JAN, 19)] = name
 
         # Inauguration Day
         if self.state in ("DC", "LA", "MD", "VA") and year >= 1789:

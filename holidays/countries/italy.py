@@ -83,6 +83,7 @@ class Italy(HolidayBase):
         "SA",
         "SR",
         "TE",
+        "TN",
         "TO",
         "TS",
         "Pesaro",
@@ -188,6 +189,8 @@ class Italy(HolidayBase):
                 self[date(year, JUL, 4)] = "Sant'Antonino di Piacenza"
             elif self.prov == "RM":
                 self[date(year, JUN, 29)] = "Santi Pietro e Paolo"
+            elif self.prov == "TN":
+                self[date(year, JUN, 26)] = "San Vigilio"
             elif self.prov == "TO":
                 self[date(year, JUN, 24)] = "San Giovanni Battista"
             elif self.prov == "TS":
