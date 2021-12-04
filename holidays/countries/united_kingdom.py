@@ -57,7 +57,7 @@ class UnitedKingdom(HolidayBase):
                 self[date(year, JAN, 2) + rd(days=+1)] = name + " (Observed)"
 
         # St. Patrick's Day
-        if self.state in ("UK", "NorthernIreland"):
+        if self.state in ("UK", "Northern Ireland"):
             name = "St. Patrick's Day"
             if self.state == "UK":
                 name += " [Northern Ireland]"
@@ -68,15 +68,15 @@ class UnitedKingdom(HolidayBase):
                 )
 
         # TT bank holiday (first Friday in June)
-        if self.state == "IsleOfMan":
+        if self.state == "Isle of Man":
             self[date(year, JUN, 1) + rd(weekday=FR)] = "TT Bank Holiday"
 
         # Tynwald Day
-        if self.state == "IsleOfMan":
+        if self.state == "Isle of Man":
             self[date(year, JUL, 5)] = "Tynwald Day"
 
         # Battle of the Boyne
-        if self.state in ("UK", "NorthernIreland"):
+        if self.state in ("UK", "Northern Ireland"):
             name = "Battle of the Boyne"
             if self.country == "UK":
                 name += " [Northern Ireland]"
@@ -232,19 +232,19 @@ class Scotland(UnitedKingdom):
 class IsleOfMan(UnitedKingdom):
     def __init__(self, **kwargs):
         warnings.warn(
-            "IsleOfMan is deprecated, use UK(state='IsleOfMan') instead.",
+            "IsleOfMan is deprecated, use UK(state='Isle of Man') instead.",
             DeprecationWarning,
         )
-        kwargs["state"] = "IsleOfMan"
+        kwargs["state"] = "Isle of Man"
         UnitedKingdom.__init__(self, **kwargs)
 
 
 class NorthernIreland(UnitedKingdom):
     def __init__(self, **kwargs):
         warnings.warn(
-            "NorthernIreland is deprecated, use UK(state='NorthernIreland') "
+            "Northern Ireland is deprecated, use UK(state='Northern Ireland') "
             "instead.",
             DeprecationWarning,
         )
-        kwargs["state"] = "NorthernIreland"
+        kwargs["state"] = "Northern Ireland"
         UnitedKingdom.__init__(self, **kwargs)

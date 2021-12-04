@@ -26,8 +26,8 @@ class TestUK(unittest.TestCase):
         self.holidays_england = holidays.UK(state="England")
         self.holidays_wales = holidays.UK(state="Wales")
         self.holidays_scotland = holidays.UK(state="Scotland")
-        self.holidays_isleofman = holidays.UK(state="IsleOfMan")
-        self.holidays_northernireland = holidays.UK(state="NorthernIreland")
+        self.holidays_isleofman = holidays.UK(state="Isle of Man")
+        self.holidays_northernireland = holidays.UK(state="Northern Ireland")
 
     def test_new_years(self):
         for year in range(1974, 2100):
