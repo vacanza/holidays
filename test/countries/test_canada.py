@@ -24,6 +24,7 @@ class TestCA(unittest.TestCase):
         self.holidays = holidays.CA(observed=False)
 
     def test_new_years(self):
+        self.assertNotIn(date(1866, 12, 31), self.holidays)
         self.assertNotIn(date(2010, 12, 31), self.holidays)
         self.assertNotIn(date(2017, 1, 2), self.holidays)
         self.holidays.observed = True
@@ -63,6 +64,7 @@ class TestCA(unittest.TestCase):
         mb_holidays = holidays.CA(prov="MB")
         sk_holidays = holidays.CA(prov="SK")
         nb_holidays = holidays.CA(prov="NB")
+        ns_holidays = holidays.CA(prov="NS")
         for dt in [
             date(1990, 2, 19),
             date(1999, 2, 15),
@@ -106,6 +108,7 @@ class TestCA(unittest.TestCase):
             self.assertNotIn(dt, mb_holidays)
             self.assertNotIn(dt, sk_holidays)
         self.assertEqual(mb_holidays[date(2014, 2, 17)], "Louis Riel Day")
+        self.assertEqual(ns_holidays[date(2015, 2, 16)], "Heritage Day")
 
     def test_st_patricks_day(self):
         nl_holidays = holidays.CA(prov="NL", observed=False)
@@ -289,6 +292,22 @@ class TestCA(unittest.TestCase):
             self.assertIn(dt, self.holidays)
             self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+
+    def test_national_day_for_truth_and_reconciliation(self):
+        for dt in [
+            date(1991, 9, 30),
+            date(2020, 9, 30),
+        ]:
+            self.assertNotIn(dt, self.holidays)
+            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
+        mb_holidays = holidays.CA(prov="MB")
+        for dt in [
+            date(2021, 9, 30),
+            date(2030, 9, 30),
+        ]:
+            self.assertIn(dt, mb_holidays)
+            self.assertNotIn(dt + relativedelta(days=-1), mb_holidays)
+            self.assertNotIn(dt, self.holidays)
 
     def test_thanksgiving(self):
         ns_holidays = holidays.CA(prov="NB")
