@@ -30,8 +30,7 @@ class TestThailand(unittest.TestCase):
         self.assertIn(date(2020, 4, 14), self.holidays)  # Songkran Festival
         self.assertIn(date(2016, 5, 5), self.holidays)  # Coronation Day
         self.assertIn(date(2020, 5, 4), self.holidays)  # Coronation Day
-        # Royal Ploughing Ceremony
-        # Vesakb
+        self.assertIn(date(2020, 4, 30), self.holidays)  # Vesakb/ Buddha's Birthday
         self.assertIn(
             date(2020, 6, 3), self.holidays
         )  # Queen Suthida's Birthday

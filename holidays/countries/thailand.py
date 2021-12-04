@@ -38,8 +38,9 @@ class Thailand(HolidayBase):
         # Note:
         # This holiday is determined by Buddhist calendar, which is not
         # currently available. Only hard coded version of this holiday
-        # from 2016 to 2021 is available.
-
+        # from 2016 to 2023 is available.
+        warning_msg = "We only support Magha Pujab holiday from 2016 to 2026"
+        warnings.warn(warning_msg, Warning)
         name = "Magha Pujab/Makha Bucha"
         if year == 2016:
             self[date(year, 2, 22)] = name
@@ -80,7 +81,7 @@ class Thailand(HolidayBase):
         # Buddha's Birthday
         name = "Buddha's Birthday"
         for offset in range(-1, 2, 1):
-            ds = Converter.Lunar2Solar(Lunar(year + offset, 4, 15)).to_date()
+            ds = Converter.Lunar2Solar(Lunar(year + offset, 4, 8)).to_date()
             if ds.year == year:
                 self[ds] = name
 
