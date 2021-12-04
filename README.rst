@@ -203,7 +203,7 @@ UnitedStates        US/USA    state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL
                               FM, MN, MS, MO, MT, NE, NV, NH, NJ, NM, NY, NC, ND, MP,
                               OH, OK, OR, PW, PA, PR, RI, SC, SD, TN, TX, UT, VT, VA,
                               VI, WA, WV, WI, WY
-Venezuela           YV/VEN    None
+Venezuela           VE/VEN    None
 Vietnam             VN/VNM    None
 Zambia              ZM/ZMB    None
 Zimbabwe            ZW/ZWE    None

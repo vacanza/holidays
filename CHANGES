@@ -10,9 +10,13 @@ Released ???????? ???, ????
 - Support for Taiwan #547 (ifurther)
 - Travis CI removal #557 (mborsetti, dr-p)
 - More useful __repr__ and __str__ #360 (dr-p, kootenpv, d33tah)
-- Date slices support fix #529, #530 (justinwaf, mborsetti, dr-p)
+- Czech (ie: misspelled Czechia) deprecated support removed (dr-p)
+
 - Test coverage improvement (dr-p)
+- Date slices support fix #529, #530 (justinwaf, mborsetti, dr-p)
 - Doc fixes #549 (canute24)
+- UK standalone states deprecation #566 (dr-p)
+- Venezuela ISO code fix #567 (Skatox, dr-p)
 - Canada updates and test review #533, #536 (cturra)
 - US updates and fixes #537, #559 (khawley, evohnave, dr-p)
 - India fixes #553, #554, #539 (canute24, dr-p)
@@ -20,8 +24,6 @@ Released ???????? ???, ????
 - Italy fixes #546 (dr-p, rtraverso86)
 - Korea fixes #535 (0xF4D3C0D3)
 - Colombia fixes #564 (jahirfiquitiva)
-- Czech (ie: misspelled Czechia) deprecated support removed (dr-p)
-- UK standalone states deprecation #566 (dr-p)
 
 Version 0.11.3.1
 ================
