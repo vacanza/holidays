@@ -171,7 +171,7 @@ NewZealand          NZ/NZL    prov = AUK, CAN, CIT, HKB, MBH, NSN, NTL, OTA, STC
                               TKI, WGN, WTL
 Nicaragua           NI/NIC    prov = MN
 Nigeria             NG/NGA    None
-North Macedonia     MK/MKD    None
+NorthMacedonia      MK/MKD    None
 Norway              NO/NOR    None
 Paraguay            PY/PRY    None
 Peru                PE/PER    None
