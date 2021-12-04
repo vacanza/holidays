@@ -129,6 +129,7 @@ Djibouti            DJ/DJI    None
 DominicanRepublic   DO/DOM    None
 Egypt               EG/EGY    None
 Estonia             EE/EST    None
+Ethiopia            ET/ETH    None
 EuropeanCentralBank ECB/TAR   Trans-European Automated Real-time Gross Settlement (TARGET2)
 Finland             FI/FIN    None
 France              FR/FRA    prov = **Métropole** (default), Alsace-Moselle, Guadeloupe,
