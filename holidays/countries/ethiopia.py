@@ -12,7 +12,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-
+from calendar import isleap
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 from holidays.constants import SAT,SUN
@@ -43,13 +43,13 @@ class Ethiopia(HolidayBase):
 
   def _populate(self, year):
     # New Year's Day
-    if self.is_leap_year(year):
+    if isleap(year+1):
       self[date(year, SEP, 12)] = "አዲስ ዓመት እንቁጣጣሽ/Ethiopian New Year"
     else:
       self[date(year, SEP, 11)] = "አዲስ ዓመት እንቁጣጣሽ/Ethiopian New Year"
 
     # Finding of true cross
-    if self.is_leap_year(year):
+    if isleap(year+1):
       self[date(year, SEP, 28)] = "መስቀል/Finding of True Cross"
     else:
       self[date(year, SEP, 27)] = "መስቀል/Finding of True Cross"
@@ -83,7 +83,7 @@ class Ethiopia(HolidayBase):
 
     # Downfall of King. Hailesilassie
     if year < 1991 and year > 1974 :
-      if self.is_leap_year(year):
+      if isleap(year+1):
         self[date(year, SEP, 13)] = "ደርግ የመጣበት ቀን/Formation of Dergue"
       else:
         self[date(year, SEP, 12)] = "ደርግ የመጣበት ቀን/Formation of Dergue"
@@ -107,16 +107,6 @@ class Ethiopia(HolidayBase):
       hol_date = date_obs
       self[hol_date+ rd(days=1)] = "መውሊድ/Prophet Muhammad's Birthday"
 
-  def is_leap_year(self, year):
-    year=year+1
-    if year % 4 != 0:
-      return False
-    elif year % 100 != 0:
-      return True
-    elif year % 400 != 0:
-      return False
-    else:
-      return True
 
 class ET(Ethiopia):
   pass
