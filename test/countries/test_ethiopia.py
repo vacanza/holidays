@@ -23,6 +23,18 @@ class TestEthiopia(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.ET()
 
+    ## Check isleap loops
+    def test_not_holiday(self):
+        self.assertNotIn(date(2019, 9, 11), self.holidays)  
+        self.assertNotIn(date(2019, 9, 27), self.holidays)
+        self.assertNotIn(date(2019, 9, 13), self.holidays)
+        self.assertNotIn(date(1940, 5, 5), self.holidays)
+        self.assertNotIn(date(1990, 5, 28), self.holidays)
+        self.assertNotIn(date(1971, 9, 13), self.holidays)
+        self.assertNotIn(date(1970, 9, 12), self.holidays)
+        self.assertNotIn(date(1993, 9, 13), self.holidays)
+        self.assertNotIn(date(1994, 9, 12), self.holidays)
+
     def test_2019(self):
         self.assertIn(date(2019, 1, 7), self.holidays)
         self.assertIn(date(2019, 1, 19), self.holidays)
@@ -35,6 +47,8 @@ class TestEthiopia(unittest.TestCase):
         self.assertIn(date(2019, 9, 12), self.holidays)
         self.assertIn(date(2019, 9, 28), self.holidays)
         self.assertIn(date(2019, 11, 10), self.holidays)
+        self.assertIn(date(1975, 9, 13), self.holidays)
+        self.assertIn(date(1976, 9, 12), self.holidays)
 
     def test_ethiopian_christmas(self):
         self.assertIn(date(2019, 1, 7), self.holidays)
