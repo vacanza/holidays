@@ -44,14 +44,14 @@ class Ethiopia(HolidayBase):
     def _populate(self, year):
         # New Year's Day
         name = "አዲስ ዓመት እንቁጣጣሽ/Ethiopian New Year"
-        if isleap(year):
+        if isleap(year+1):
             self[date(year, SEP, 12)] = name
         else:
             self[date(year, SEP, 11)] = name
 
         # Finding of true cross
         name = "መስቀል/Finding of True Cross"
-        if isleap(year):
+        if isleap(year+1):
             self[date(year, SEP, 28)] = name
         else:
             self[date(year, SEP, 27)] = name
@@ -88,7 +88,7 @@ class Ethiopia(HolidayBase):
         # Downfall of King. Hailesilassie
         if 1974 < year < 1991:
             name = "ደርግ የመጣበት ቀን/Formation of Dergue"
-            if isleap(year):
+            if isleap(year+1):
                 self[date(year, SEP, 13)] = name
             else:
                 self[date(year, SEP, 12)] = name
