@@ -50,7 +50,7 @@ def get_supported_countries() -> Mapping[str, "CountryInfo"]:
     }
 
 
-@dataclasses.dataclass
+# @dataclasses.dataclass  # only for Python > 6. Can be added as a dependency
 class CountryInfo:
     """Container for country info."""
 
