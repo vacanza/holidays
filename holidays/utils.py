@@ -46,7 +46,7 @@ def get_supported_countries() -> Mapping[str, "CountryInfo"]:
         for k in countries
         if k.__module__.startswith(
             "holidays.countries"
-        )  # only subclasses from countries
+        )  # only subclasses from countries module
     }
 
 

@@ -29,7 +29,11 @@ class TestUtils(unittest.TestCase):
 
     @unittest.skip("Ireland file don't contains a direct HolidayBase subclass")
     def test_get_supported_countries(self):
-        files = [name for name in os.listdir('./holidays/countries') if not name.startswith("__")]
+        files = [
+            name
+            for name in os.listdir("./holidays/countries")
+            if not name.startswith("__")
+        ]
         print("g_s_c: %s" % list(self.g_s_c.keys()))
         print("files: %s" % files)
         self.assertTrue(self.g_s_c)
@@ -44,13 +48,30 @@ class TestUtils(unittest.TestCase):
         self.assertEqual(es_ci.name, "Spain")
         self.assertFalse(es_ci.states)
         self.assertCountEqual(
-            es_ci.provinces, 
-            ['AN', 'AR', 'AS', 'CN', 'CB', 'CE', 'CM', 'CL', 'CT', 'VC', 'EX', 'GA', 'IB', 'MD', 'MC', 'ML', 'NC', 'PV', 'RI']
+            es_ci.provinces,
+            [
+                "AN",
+                "AR",
+                "AS",
+                "CN",
+                "CB",
+                "CE",
+                "CM",
+                "CL",
+                "CT",
+                "VC",
+                "EX",
+                "GA",
+                "IB",
+                "MD",
+                "MC",
+                "ML",
+                "NC",
+                "PV",
+                "RI",
+            ],
         )
-        self.assertCountEqual(
-            es_ci.subcountries, 
-            es_ci.provinces
-        )
+        self.assertCountEqual(es_ci.subcountries, es_ci.provinces)
 
         us_ci = holidays.utils.CountryInfo(type(self.holidays))
         self.assertEqual(us_ci.name, "UnitedStates")
