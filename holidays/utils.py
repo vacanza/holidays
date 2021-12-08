@@ -19,6 +19,7 @@ from typing import Iterable, List, Mapping, Optional, Type, Union
 import holidays
 from hijri_converter import convert
 
+
 def list_supported_countries() -> List[str]:
     """List all supported countries, including their ISO 3166-1 Alpha country
     codes (Alpha-2 and Alpha-3).
