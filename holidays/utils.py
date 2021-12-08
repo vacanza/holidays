@@ -12,12 +12,14 @@
 #  License: MIT (see LICENSE file)
 
 import inspect
+from datetime import date, timedelta
 from functools import lru_cache
-from typing import Iterable, List, Optional, Type, Union
+from typing import Iterable, List, Mapping, Optional, Type, Union
 
 import holidays
-from datetime import date, timedelta
 from hijri_converter import convert
+
+import dataclasses
 
 
 def list_supported_countries() -> List[str]:
@@ -33,6 +35,46 @@ def list_supported_countries() -> List[str]:
             holidays.countries, inspect.isclass
         )
     ]
+
+
+def get_supported_countries() -> Mapping[str, "CountryInfo"]:
+    """Get the supported countries with its CountryInfo."""
+
+    countries = holidays.HolidayBase.__subclasses__()
+    return {
+        k.__name__: CountryInfo(k)
+        for k in countries
+        if k.__module__.startswith(
+            "holidays.countries"
+        )  # only subclasses from countries
+    }
+
+
+@dataclasses.dataclass
+class CountryInfo:
+    """Container for country info."""
+
+    name: str
+    subclasses: List[str]
+    states: Optional[List[str]] = None
+    provinces: Optional[List[str]] = None
+
+    def __init__(self, country: Type["holidays.HolidayBase"]):
+        self.name = country.__name__
+        self.subclasses = [cls.__name__ for cls in country.__subclasses__()]
+        self.provinces = (
+            country.PROVINCES if hasattr(country, "PROVINCES") else None
+        )
+        self.states = country.STATES if hasattr(country, "STATES") else None
+
+    @property
+    def subcountries(self):
+        if self.states:
+            return self.states
+        elif self.provinces:
+            return self.provinces
+        else:
+            return None
 
 
 def CountryHoliday(
