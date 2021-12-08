@@ -34,8 +34,6 @@ class TestUtils(unittest.TestCase):
             for name in os.listdir("./holidays/countries")
             if not name.startswith("__")
         ]
-        print("g_s_c: %s" % list(self.g_s_c.keys()))
-        print("files: %s" % files)
         self.assertTrue(self.g_s_c)
         self.assertEqual(len(list(self.g_s_c.keys())), len(files))
 
@@ -55,7 +53,6 @@ class TestUtils(unittest.TestCase):
                 "AS",
                 "CN",
                 "CB",
-                "CE",
                 "CM",
                 "CL",
                 "CT",
