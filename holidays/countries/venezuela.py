@@ -54,7 +54,9 @@ class Venezuela(HolidayBase):
         self[date(year, JUL, 24)] = "Natalicio de Simón Bolívar"
 
         self[date(year, OCT, 12)] = "Día de la Resistencia Indígena"
-
+        
+        self[date(year, DEC, 17)] = "Muerte del Libertador Simón Bolívar"
+        
         # Christmas Day
         self[date(year, DEC, 24)] = "Nochebuena"
 
