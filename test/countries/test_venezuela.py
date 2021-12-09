@@ -58,6 +58,8 @@ class TestVenezuela(unittest.TestCase):
         self.assertEqual(
             self.holidays[date(2019, 10, 12)], "Día de la Resistencia Indígena"
         )
+        self.assertIn("2019-12-17", self.holidays)
+        self.assertEqual(self.holidays[date(2019, 12, 17)], "Muerte del Libertador Simón Bolívar")
         self.assertIn("2019-12-24", self.holidays)
         self.assertEqual(self.holidays[date(2019, 12, 24)], "Nochebuena")
         self.assertIn("2019-12-25", self.holidays)
