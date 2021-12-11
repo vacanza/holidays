@@ -77,11 +77,3 @@ class SK(Slovakia):
 
 class SVK(Slovakia):
     pass
-
-
-class Slovak(Slovakia):
-    def __init__(self, **kwargs):
-        warnings.warn(
-            "Slovak is deprecated, use Slovakia instead.", DeprecationWarning
-        )
-        super(Slovak, self).__init__(**kwargs)

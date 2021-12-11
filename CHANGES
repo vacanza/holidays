@@ -14,6 +14,7 @@ Released ???????? ???, ????
 - More useful __repr__ and __str__ #360 (dr-p, kootenpv, d33tah)
 - Support for Czech (ie: misspelled Czechia) drop (dr-p)
 - Support for Polish (ie: misspelled Poland) drop (dr-p)
+- Support for Slovak (ie: misspelled Slovakia) drop (dr-p)
 
 - Test coverage improvement (dr-p)
 - Date slices support fix #529, #530 (justinwaf, mborsetti, dr-p)

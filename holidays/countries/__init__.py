@@ -80,7 +80,7 @@ from .russia import Russia, RU, RUS
 from .saudi_arabia import SaudiArabia, SA, SAU
 from .serbia import Serbia, RS, SRB
 from .singapore import Singapore, SG, SGP
-from .slovakia import Slovakia, Slovak, SK, SVK
+from .slovakia import Slovakia, SK, SVK
 from .slovenia import Slovenia, SI, SVN
 from .south_africa import SouthAfrica, ZA, ZAF
 from .spain import Spain, ES, ESP
