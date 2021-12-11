@@ -69,7 +69,7 @@ from .netherlands import Netherlands, NL, NLD
 from .new_zealand import NewZealand, NZ, NZL
 from .nicaragua import Nicaragua, NI, NIC
 from .nigeria import Nigeria, NG, NGA
-from .north_macedonia import MK, MKD
+from .north_macedonia import NorthMacedonia, MK, MKD
 from .norway import Norway, NO, NOR
 from .paraguay import Paraguay, PY, PRY
 from .peru import Peru, PE, PER
