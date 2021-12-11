@@ -25,7 +25,7 @@ class TestEthiopia(unittest.TestCase):
 
     ## Check isleap loops
     def test_not_holiday(self):
-        self.assertNotIn(date(2019, 9, 11), self.holidays)  
+        self.assertNotIn(date(2019, 9, 11), self.holidays)
         self.assertNotIn(date(2019, 9, 27), self.holidays)
         self.assertNotIn(date(2019, 9, 13), self.holidays)
         self.assertNotIn(date(1940, 5, 5), self.holidays)
