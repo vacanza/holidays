@@ -64,11 +64,3 @@ class PL(Poland):
 
 class POL(Poland):
     pass
-
-
-class Polish(Poland):
-    def __init__(self, **kwargs):
-        warnings.warn(
-            "Polish is deprecated, use Poland instead.", DeprecationWarning
-        )
-        super(Polish, self).__init__(**kwargs)

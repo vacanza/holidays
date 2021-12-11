@@ -43,11 +43,3 @@ class TestPL(unittest.TestCase):
 
     def test_2018(self):
         self.assertIn(date(2018, 11, 12), self.holidays)
-
-    def test_polish_deprecated(self):
-        with warnings.catch_warnings(record=True) as w:
-            warnings.simplefilter("always")
-            poland = holidays.Polish()
-            self.assertIsInstance(poland, holidays.Poland)
-            self.assertEqual(1, len(w))
-            self.assertTrue(issubclass(w[-1].category, DeprecationWarning))
