@@ -71,3 +71,15 @@ class TestVenezuela(unittest.TestCase):
         self.assertEqual(
             self.holidays[date(2019, 12, 31)], "Fiesta de Fin de Año"
         )
+
+        self.assertEqual(self.holidays[date(2020, 4, 9)], "Jueves Santo")
+        self.assertEqual(self.holidays[date(2020, 4, 10)], "Viernes Santo")
+        self.assertEqual(
+            self.holidays[date(2020, 4, 19)],
+            "Declaración de la Independencia",
+        )
+
+        self.assertEqual(
+            self.holidays[date(1984, 4, 19)],
+            "Jueves Santo y Declaración de la Independencia",
+        )

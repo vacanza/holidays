@@ -38,7 +38,7 @@ class Venezuela(HolidayBase):
     """
 
     def __init__(self, **kwargs):
-        self.country = "YV"
+        self.country = "VE"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -65,25 +65,19 @@ class Venezuela(HolidayBase):
         self[date(year, DEC, 31)] = "Fiesta de Fin de Año"
 
         # Semana Santa y Carnaval
-
         if date(year, APR, 19) == (easter(year) - rd(days=2)):
             self[
-                easter(year) - rd(days=2)
+                date(year, APR, 19)
             ] = "Viernes Santo y Declaración de la Independencia"
+            self[easter(year) - rd(days=3)] = "Jueves Santo"
+        elif date(year, APR, 19) == (easter(year) - rd(days=3)):
+            self[
+                date(year, APR, 19)
+            ] = "Jueves Santo y Declaración de la Independencia"
+            self[easter(year) - rd(days=2)] = "Viernes Santo"
         else:
-            # self[easter(year) - rd(weekday=FR(-1))] = "Viernes Santo"
             self[date(year, APR, 19)] = "Declaración de la Independencia"
             self[easter(year) - rd(days=2)] = "Viernes Santo"
-
-        # self[easter(year) - rd(weekday=TH(-1))] = "Jueves Santo"
-
-        if date(year, APR, 19) == (easter(year) - rd(days=3)):
-            self[easter(year) - rd(days=3)] = (
-                "Jueves Santo y Declaración " "de la Independencia"
-            )
-        else:
-            # self[easter(year) - rd(weekday=FR(-1))] = "Viernes Santo"
-            self[date(year, APR, 19)] = "Declaración de la Independencia"
             self[easter(year) - rd(days=3)] = "Jueves Santo"
 
         self[easter(year) - rd(days=47)] = "Martes de Carnaval"
