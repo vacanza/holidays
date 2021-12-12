@@ -22,39 +22,43 @@ from holidays.utils import islamic_to_gre
 
 WEEKEND = (SAT, SUN)
 
+# Ethiopian holidays are estimated: it is common for the day to be pushed
+# if falls in a weekend, although not a rule that can be implemented.
+# Holidays after 2020: the following four moving date holidays whose exact
+# date is announced yearly are estimated (and so denoted):
+# - Eid El Fetr*
+# - Eid El Adha*
+# - Arafat Day*
+# - Moulad El Naby*
+# *only if hijri-converter library is installed, otherwise a warning is
+#  raised that this holiday is missing. hijri-converter requires
+#  Python >= 3.6
+# is_weekend function is there, however not activated for accuracy.
+
 
 class Ethiopia(HolidayBase):
-    # Holidays here are estimates, it is common for the day to be pushed
-    # if falls in a weekend, although not a rule that can be implemented.
-    # Holidays after 2020: the following four moving date holidays whose exact
-    # date is announced yearly are estimated (and so denoted):
-    # - Eid El Fetr*
-    # - Eid El Adha*
-    # - Arafat Day*
-    # - Moulad El Naby*
-    # *only if hijri-converter library is installed, otherwise a warning is
-    #  raised that this holiday is missing. hijri-converter requires
-    #  Python >= 3.6
-    # is_weekend function is there, however not activated for accuracy.
-
     def __init__(self, **kwargs):
         self.country = "ET"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
         # New Year's Day
-        name = "አዲስ ዓመት እንቁጣጣሽ/Ethiopian New Year"
-        if isleap(year):
-            self[date(year, SEP, 12)] = name
+        # The Ethiopian New Year is called Kudus Yohannes in Ge'ez and
+        # Tigrinya, while in Amharic,
+        # the official language of Ethiopia it is called Enkutatash.
+        # It occurs on September 11 in the Gregorian Calendar;
+        # except for the year preceding a leap year, when it occurs on
+        # September 12.
+        if self.ethiopian_isleap(year):
+            self[date(year, SEP, 12)] = "አዲስ ዓመት እንቁጣጣሽ/Ethiopian New Year"
         else:
-            self[date(year, SEP, 11)] = name
+            self[date(year, SEP, 11)] = "አዲስ ዓመት እንቁጣጣሽ/Ethiopian New Year"
 
         # Finding of true cross
-        name = "መስቀል/Finding of True Cross"
-        if isleap(year):
-            self[date(year, SEP, 28)] = name
+        if self.ethiopian_isleap(year):
+            self[date(year, SEP, 28)] = "መስቀል/Finding of True Cross"
         else:
-            self[date(year, SEP, 27)] = name
+            self[date(year, SEP, 27)] = "መስቀል/Finding of True Cross"
 
         # Ethiopian Christmas
         self[date(year, JAN, 7)] = "ገና/Ethiopian X-Mas"
@@ -86,12 +90,12 @@ class Ethiopia(HolidayBase):
             ] = "ደርግ የወደቀበት ቀን/Downfall of Dergue regime"
 
         # Downfall of King. Hailesilassie
-        if 1974 < year < 1991:
-            name = "ደርግ የመጣበት ቀን/Formation of Dergue"
-            if isleap(year):
-                self[date(year, SEP, 13)] = name
+        if year < 1991 and year > 1974:
+            if self.ethiopian_isleap(year):
+                self[date(year, SEP, 13)] = "ደርግ የመጣበት ቀን/Formation of Dergue"
             else:
-                self[date(year, SEP, 12)] = name
+                self[date(year, SEP, 12)] = "ደርግ የመጣበት ቀን/Formation of Dergue"
+
         # Eid al-Fitr - Feast Festive
         # date of observance is announced yearly, This is an estimate since
         # having the Holiday on Weekend does change the number of days,
@@ -111,6 +115,15 @@ class Ethiopia(HolidayBase):
         for date_obs in islamic_to_gre(year, 3, 12):
             hol_date = date_obs
             self[hol_date + rd(days=1)] = "መውሊድ/Prophet Muhammad's Birthday"
+
+    # Ethiopian leap years are coincident with leap years in the Gregorian
+    # calendar until the end of February 2100. It starts earlier from new year
+    # of western calendar.
+    # Ethiopian leap year starts on Sep 11, so it has an effect on
+    # holidays between Sep 11 and Jan 1. Therefore, here on the following
+    # function we intentionally add 1 to the leap year to offset the difference
+    def ethiopian_isleap(self, year):
+        return isleap(year + 1)
 
 
 class ET(Ethiopia):
