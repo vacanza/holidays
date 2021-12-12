@@ -20,7 +20,7 @@ Released ???????? ???, ????
 - Date slices support fix #529, #530 (justinwaf, mborsetti, dr-p)
 - Doc fixes #549 (canute24)
 - UK standalone states deprecation #566 (dr-p)
-- Venezuela ISO code fix #567 (Skatox, dr-p)
+- Venezuela ISO code + other fixes #567, #576 (Skatox, dr-p, antusystem)
 - Canada updates and test review #533, #536 (cturra)
 - US updates and fixes #537, #559 (khawley, evohnave, dr-p)
 - India fixes #553, #554, #539 (canute24, dr-p)
