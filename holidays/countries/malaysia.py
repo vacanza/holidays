@@ -38,7 +38,7 @@ from holidays.utils import ChineseLuniSolar, islamic_to_gre
 
 
 class Malaysia(HolidayBase):
-
+    country = "MY"
     STATES = [
         "JHR",
         "KDH",
@@ -105,7 +105,6 @@ class Malaysia(HolidayBase):
 
         See parameters and usage in :py:class:`HolidayBase`.
         """
-        self.country = "MY"
         self.cnls = ChineseLuniSolar()
         super().__init__(years, expand, observed, prov, state)
 

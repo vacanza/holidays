@@ -27,8 +27,9 @@ class Argentina(HolidayBase):
     # http://servicios.lanacion.com.ar/feriados
     # https://www.clarin.com/feriados/
 
+    country = "AR"
+
     def __init__(self, **kwargs):
-        self.country = "AR"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

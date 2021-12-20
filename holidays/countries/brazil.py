@@ -37,6 +37,7 @@ class Brazil(HolidayBase):
     https://pt.wikipedia.org/wiki/Feriados_no_Brasil
     """
 
+    country = "BR"
     STATES = [
         "AC",
         "AL",
@@ -68,7 +69,6 @@ class Brazil(HolidayBase):
     ]
 
     def __init__(self, **kwargs):
-        self.country = "BR"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

@@ -22,9 +22,10 @@ from holidays.holiday_base import HolidayBase
 
 
 class Netherlands(HolidayBase):
+    country = "NL"
+
     def __init__(self, **kwargs):
         # http://www.iamsterdam.com/en/plan-your-trip/practical-info/public-holidays
-        self.country = "NL"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

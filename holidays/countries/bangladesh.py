@@ -21,8 +21,9 @@ class Bangladesh(HolidayBase):
     # https://mopa.gov.bd/sites/default/files/files/mopa.gov.bd/public_holiday/61c35b73_e335_462a_9bcf_4695b23b6d82/reg4-2019-212.PDF
     # https://en.wikipedia.org/wiki/Public_holidays_in_Bangladesh
 
+    country = "TR"
+
     def __init__(self, **kwargs):
-        self.country = "TR"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

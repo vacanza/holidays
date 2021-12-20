@@ -22,10 +22,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class Namibia(HolidayBase):
+    country = "NA"
+
     def __init__(self, **kwargs):
         # https://www.officeholidays.com/countries/namibia
         # https://www.timeanddate.com/holidays/namibia/
-        self.country = "NA"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

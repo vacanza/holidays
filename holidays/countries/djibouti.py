@@ -42,8 +42,9 @@ class Djibouti(HolidayBase):
     #  Python >= 3.6
     # is_weekend function is there, however not activated for accuracy.
 
+    country = "DJ"
+
     def __init__(self, **kwargs):
-        self.country = "DJ"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

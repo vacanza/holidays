@@ -26,8 +26,9 @@ class Belgium(HolidayBase):
     https://nl.wikipedia.org/wiki/Feestdagen_in_Belgi%C3%AB
     """
 
+    country = "BE"
+
     def __init__(self, **kwargs):
-        self.country = "BE"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

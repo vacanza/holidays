@@ -12,8 +12,9 @@ class Kazakhstan(HolidayBase):
     https://www.officeholidays.com/countries/kazakhstan/2020
     """
 
+    country = "KZ"
+
     def __init__(self, **kwargs):
-        self.country = "KZ"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

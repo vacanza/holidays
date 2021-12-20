@@ -33,8 +33,9 @@ class Burundi(HolidayBase):
     https://www.officeholidays.com/countries/burundi
     """
 
+    country = "BI"
+
     def __init__(self, **kwargs):
-        self.country = "BI"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

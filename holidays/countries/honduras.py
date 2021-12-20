@@ -23,8 +23,9 @@ from holidays.holiday_base import HolidayBase
 class Honduras(HolidayBase):
     # https://www.timeanddate.com/holidays/honduras/
 
+    country = "HN"
+
     def __init__(self, **kwargs):
-        self.country = "HN"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

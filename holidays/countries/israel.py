@@ -30,8 +30,9 @@ from holidays.holiday_base import HolidayBase
 
 
 class Israel(HolidayBase):
+    country = "IL"
+
     def __init__(self, **kwargs):
-        self.country = "IL"
 
         HolidayBase.__init__(self, **kwargs)
 

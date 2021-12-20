@@ -25,8 +25,9 @@ class China(HolidayBase):
     https://en.wikipedia.org/wiki/Public_holidays_in_China
     """
 
+    country = "CN"
+
     def __init__(self, **kwargs):
-        self.country = "CN"
         self.cnls = ChineseLuniSolar()
         HolidayBase.__init__(self, **kwargs)
 

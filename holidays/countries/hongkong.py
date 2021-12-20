@@ -27,8 +27,9 @@ class HongKong(HolidayBase):
     # https://www.gov.hk/en/about/abouthk/holiday/2020.htm
     # https://en.wikipedia.org/wiki/Public_holidays_in_Hong_Kong
 
+    country = "HK"
+
     def __init__(self, **kwargs):
-        self.country = "HK"
         self.cnls = ChineseLuniSolar()
         HolidayBase.__init__(self, **kwargs)
 

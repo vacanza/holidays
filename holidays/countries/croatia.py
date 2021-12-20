@@ -25,8 +25,9 @@ class Croatia(HolidayBase):
     # https://narodne-novine.nn.hr/clanci/sluzbeni/2019_11_110_2212.html
     # https://en.wikipedia.org/wiki/Public_holidays_in_Croatia
 
+    country = "HR"
+
     def __init__(self, **kwargs):
-        self.country = "HR"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

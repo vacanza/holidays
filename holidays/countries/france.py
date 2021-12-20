@@ -35,6 +35,7 @@ class France(HolidayBase):
         https://www.service-public.fr/particuliers/vosdroits/F2405
     """
 
+    country = "FR"
     PROVINCES = [
         "Métropole",
         "Alsace-Moselle",
@@ -51,7 +52,6 @@ class France(HolidayBase):
     ]
 
     def __init__(self, **kwargs):
-        self.country = "FR"
         self.prov = kwargs.pop("prov", "Métropole")
         HolidayBase.__init__(self, **kwargs)
 

@@ -40,8 +40,9 @@ class Korea(HolidayBase):
     # Lunar New Year's Day, Korean Mid Autumn Day have alt holiday if they
     #   fell on only sunday.
 
+    country = "KR"
+
     def __init__(self, **kwargs):
-        self.country = "KR"
         self.korean_cal = KoreanLunarCalendar()
         HolidayBase.__init__(self, **kwargs)
 

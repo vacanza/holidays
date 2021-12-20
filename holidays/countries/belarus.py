@@ -26,8 +26,9 @@ class Belarus(HolidayBase):
     http://www.belarus.by/en/about-belarus/national-holidays
     """
 
+    country = "BY"
+
     def __init__(self, **kwargs):
-        self.country = "BY"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

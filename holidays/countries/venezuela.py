@@ -37,8 +37,9 @@ class Venezuela(HolidayBase):
     https://dias-festivos.eu/dias-festivos/venezuela/#
     """
 
+    country = "VE"
+
     def __init__(self, **kwargs):
-        self.country = "VE"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

@@ -24,6 +24,7 @@ WEEKEND = (SAT, SUN)
 
 
 class Tunisia(HolidayBase):
+    country = "TN"
 
     # Holidays here are estimates, it is common for the day to be pushed
     # if falls in a weekend, although not a rule that can be implemented.
@@ -39,7 +40,6 @@ class Tunisia(HolidayBase):
     # is_weekend function is there, however not activated for accuracy.
 
     def __init__(self, **kwargs):
-        self.country = "TN"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

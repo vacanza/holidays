@@ -24,8 +24,9 @@ from holidays.holiday_base import HolidayBase
 class Serbia(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Serbia
 
+    country = "RS"
+
     def __init__(self, **kwargs):
-        self.country = "RS"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

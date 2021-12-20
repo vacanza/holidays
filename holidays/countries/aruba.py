@@ -24,8 +24,9 @@ class Aruba(HolidayBase):
     # http://www.gobierno.aw/informacion-tocante-servicio/vakantie-y-dia-di-fiesta_43437/item/dia-di-fiesta_14809.html
     # https://www.visitaruba.com/about-aruba/national-holidays-and-celebrations/
 
+    country = "AW"
+
     def __init__(self, **kwargs):
-        self.country = "AW"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

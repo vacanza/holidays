@@ -24,8 +24,9 @@ from holidays.holiday_base import HolidayBase
 class Colombia(HolidayBase):
     # https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_festivos_en_Colombia
 
+    country = "CO"
+
     def __init__(self, **kwargs):
-        self.country = "CO"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

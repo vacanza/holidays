@@ -25,8 +25,9 @@ class Kenya(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Kenya
     # http://kenyaembassyberlin.de/Public-Holidays-in-Kenya.48.0.html
     # https://www.officeholidays.com/holidays/kenya/moi-day
+    country = "KE"
+
     def __init__(self, **kwargs):
-        self.country = "KE"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

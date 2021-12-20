@@ -23,8 +23,9 @@ from holidays.holiday_base import HolidayBase
 class Curacao(HolidayBase):
     # https://loketdigital.gobiernu.cw/Loket/product/571960bbe1e5fe8712b10a1323630e70
 
+    country = "CW"
+
     def __init__(self, **kwargs):
-        self.country = "CW"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

@@ -25,8 +25,9 @@ class Taiwan(HolidayBase):
     https://en.wikipedia.org/wiki/Public_holidays_in_Taiwan
     """
 
+    country = "TW"
+
     def __init__(self, **kwargs):
-        self.country = "TW"
         HolidayBase.__init__(self, **kwargs)
         self.cnls = ChineseLuniSolar()
 

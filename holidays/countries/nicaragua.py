@@ -21,10 +21,10 @@ from holidays.holiday_base import HolidayBase
 
 
 class Nicaragua(HolidayBase):
+    country = "NI"
     PROVINCES = ["MN"]
 
     def __init__(self, **kwargs):
-        self.country = "NI"
         self.prov = kwargs.pop("prov", kwargs.pop("state", "MN"))
         HolidayBase.__init__(self, **kwargs)
 

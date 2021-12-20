@@ -24,8 +24,9 @@ class Azerbaijan(HolidayBase):
 
     # https://en.wikipedia.org/wiki/Public_holidays_in_Azerbaijan
 
+    country = "AZ"
+
     def __init__(self, **kwargs):
-        self.country = "AZ"
         HolidayBase.__init__(self, **kwargs)
 
     def _add_observed(self, holiday: date) -> None:

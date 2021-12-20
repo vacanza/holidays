@@ -23,8 +23,9 @@ from holidays.holiday_base import HolidayBase
 class Peru(HolidayBase):
     # https://www.gob.pe/feriados
     # https://es.wikipedia.org/wiki/Anexo:Días_feriados_en_el_Perú
+    country = "PE"
+
     def __init__(self, **kwargs):
-        self.country = "PE"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

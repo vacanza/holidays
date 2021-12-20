@@ -37,6 +37,7 @@ from holidays.holiday_base import HolidayBase
 class UnitedStates(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_the_United_States
 
+    country = "US"
     STATES = [
         "AL",
         "AK",
@@ -100,7 +101,6 @@ class UnitedStates(HolidayBase):
     ]
 
     def __init__(self, **kwargs):
-        self.country = "US"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

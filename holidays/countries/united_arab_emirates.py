@@ -46,9 +46,9 @@ class UnitedArabEmirates(HolidayBase):
     # *only if hijri-converter library is installed, otherwise a warning is
     #  raised that this holiday is missing. hijri-converter requires
     #  Python >= 3.6
+    country = "AE"
 
     def __init__(self, **kwargs):
-        self.country = "AE"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

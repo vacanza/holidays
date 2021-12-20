@@ -32,8 +32,9 @@ class Hungary(HolidayBase):
     # - https://www.tankonyvtar.hu/hu/tartalom/historia/
     #      92-10/ch01.html#id496839
 
+    country = "HU"
+
     def __init__(self, **kwargs):
-        self.country = "HU"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

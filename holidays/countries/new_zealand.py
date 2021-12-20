@@ -22,6 +22,7 @@ from holidays.holiday_base import HolidayBase
 
 
 class NewZealand(HolidayBase):
+    country = "NZ"
     PROVINCES = [
         "NTL",
         "AUK",
@@ -39,7 +40,6 @@ class NewZealand(HolidayBase):
     ]
 
     def __init__(self, **kwargs):
-        self.country = "NZ"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

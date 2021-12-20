@@ -21,9 +21,9 @@ from holidays.utils import islamic_to_gre
 class Turkey(HolidayBase):
 
     # https://en.wikipedia.org/wiki/Public_holidays_in_Turkey
+    country = "TR"
 
     def __init__(self, **kwargs):
-        self.country = "TR"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

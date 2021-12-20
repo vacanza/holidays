@@ -23,8 +23,9 @@ from holidays.holiday_base import HolidayBase
 class Jamaica(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Jamaica
 
+    country = "JM"
+
     def __init__(self, **kwargs):
-        self.country = "JM"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

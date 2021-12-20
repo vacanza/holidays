@@ -26,6 +26,7 @@ class India(HolidayBase):
     # https://slusi.dacnet.nic.in/watershedatlas/list_of_state_abbreviation.htm
     # https://vahan.parivahan.gov.in/vahan4dashboard/
 
+    country = "IN"
     PROVINCES = [
         "AP",  # Andhra Pradesh
         "AR",  # Arunachal Pradesh
@@ -67,7 +68,6 @@ class India(HolidayBase):
     ]
 
     def __init__(self, **kwargs):
-        self.country = "IN"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

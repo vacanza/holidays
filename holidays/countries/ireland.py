@@ -23,8 +23,9 @@ from .united_kingdom import UnitedKingdom
 
 
 class Ireland(UnitedKingdom):
+    country = "IE"
+
     def __init__(self, **kwargs):
-        self.country = "IE"
         HolidayBase.__init__(self, **kwargs)
 
     def _country_specific(self, year):

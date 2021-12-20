@@ -24,8 +24,9 @@ class EuropeanCentralBank(HolidayBase):
     # https://en.wikipedia.org/wiki/TARGET2
     # http://www.ecb.europa.eu/press/pr/date/2000/html/pr001214_4.en.html
 
+    country = "EU"
+
     def __init__(self, **kwargs):
-        self.country = "EU"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

@@ -39,8 +39,9 @@ class SaudiArabia(HolidayBase):
     Python >= 3.6
     """
 
+    country = "SA"
+
     def __init__(self, **kwargs):
-        self.country = "SA"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

@@ -23,8 +23,9 @@ from holidays.holiday_base import HolidayBase
 
 
 class Mozambique(HolidayBase):
+    country = "MZ"
+
     def __init__(self, **kwargs):
-        self.country = "MOZ"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

@@ -26,8 +26,9 @@ class Paraguay(HolidayBase):
     # https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Paraguay
     # http://www.calendarioparaguay.com/
 
+    country = "PY"
+
     def __init__(self, **kwargs):
-        self.country = "PY"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

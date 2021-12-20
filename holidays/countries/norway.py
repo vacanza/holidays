@@ -37,6 +37,8 @@ class Norway(HolidayBase):
     https://www.timeanddate.no/merkedag/norge/
     """
 
+    country = "NO"
+
     def __init__(self, include_sundays=False, **kwargs):
         """
 
@@ -44,7 +46,6 @@ class Norway(HolidayBase):
         (which they are in Norway)
         :param kwargs:
         """
-        self.country = "NO"
         self.include_sundays = include_sundays
         HolidayBase.__init__(self, **kwargs)
 

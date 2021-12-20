@@ -30,8 +30,9 @@ class Vietnam(HolidayBase):
     # http://vbpl.vn/TW/Pages/vbpqen-toanvan.aspx?ItemID=11013 Article.115
     # https://www.timeanddate.com/holidays/vietnam/
 
+    country = "VN"
+
     def __init__(self, **kwargs):
-        self.country = "VN"
         self.korean_cal = KoreanLunarCalendar()
         HolidayBase.__init__(self, **kwargs)
 

@@ -34,6 +34,7 @@ from holidays.holiday_base import HolidayBase
 
 
 class Spain(HolidayBase):
+    country = "ES"
     PROVINCES = [
         "AN",
         "AR",
@@ -56,7 +57,6 @@ class Spain(HolidayBase):
     ]
 
     def __init__(self, **kwargs):
-        self.country = "ES"
         self.prov = kwargs.pop("prov", kwargs.pop("state", ""))
         HolidayBase.__init__(self, **kwargs)
 

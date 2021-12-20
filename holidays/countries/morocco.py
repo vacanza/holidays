@@ -42,8 +42,9 @@ class Morocco(HolidayBase):
     https://www.mmsp.gov.ma/fr/pratiques.aspx?id=38
     """
 
+    country = "MA"
+
     def __init__(self, **kwargs):
-        self.country = "MA"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

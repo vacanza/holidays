@@ -35,13 +35,14 @@ class Sweden(HolidayBase):
     http://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/lag-1989253-om-allmanna-helgdagar_sfs-1989-253
     """
 
+    country = "SE"
+
     def __init__(self, include_sundays=True, **kwargs):
         """
         :param include_sundays: Whether to consider sundays as a holiday
         (which they are in Sweden)
         :param kwargs:
         """
-        self.country = "SE"
         self.include_sundays = include_sundays
         HolidayBase.__init__(self, **kwargs)
 

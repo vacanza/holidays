@@ -31,8 +31,9 @@ class Slovenia(HolidayBase):
     https://en.wikipedia.org/wiki/Public_holidays_in_Slovenia
     """
 
+    country = "SI"
+
     def __init__(self, **kwargs):
-        self.country = "SI"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

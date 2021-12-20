@@ -36,6 +36,8 @@ from holidays.utils import ChineseLuniSolar, islamic_to_gre
 
 
 class Singapore(HolidayBase):
+    country = "SG"
+
     def __init__(
         self,
         years: Union[int, Iterable[int]] = None,
@@ -78,7 +80,6 @@ class Singapore(HolidayBase):
         See parameters and usage in :py:class:`HolidayBase`.
         """
 
-        self.country = "SG"
         self.cnls = ChineseLuniSolar()
         super().__init__(years, expand, observed, prov, state)
 

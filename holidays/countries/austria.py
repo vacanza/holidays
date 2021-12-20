@@ -21,10 +21,10 @@ from holidays.holiday_base import HolidayBase
 
 
 class Austria(HolidayBase):
+    country = "AT"
     PROVINCES = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
     def __init__(self, **kwargs):
-        self.country = "AT"
         self.prov = kwargs.pop("prov", kwargs.pop("state", "9"))
         HolidayBase.__init__(self, **kwargs)
 
