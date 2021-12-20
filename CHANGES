@@ -17,6 +17,7 @@ Released ???????? ???, ????
 - Support for Slovak (ie: misspelled Slovakia) drop (dr-p)
 
 - Test coverage improvement (dr-p)
+- "country" property moved to class attributes #573 (dr-p, madphysicist)
 - Date slices support fix #529, #530 (justinwaf, mborsetti, dr-p)
 - Doc fixes #549 (canute24)
 - UK standalone states deprecation #566 (dr-p)
