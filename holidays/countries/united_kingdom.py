@@ -78,14 +78,14 @@ class UnitedKingdom(HolidayBase):
         # Battle of the Boyne
         if self.state in ("UK", "Northern Ireland"):
             name = "Battle of the Boyne"
-            if self.country == "UK":
+            if self.state == "UK":
                 name += " [Northern Ireland]"
             self[date(year, JUL, 12)] = name
 
         # Summer bank holiday (first Monday in August)
         if self.state in ("UK", "Scotland"):
             name = "Summer Bank Holiday"
-            if self.country == "UK":
+            if self.state == "UK":
                 name += " [Scotland]"
             self[date(year, AUG, 1) + rd(weekday=MO)] = name
 
@@ -158,7 +158,7 @@ class UnitedKingdom(HolidayBase):
         # Late Summer bank holiday (last Monday in August)
         if self.state not in ("Scotland") and year >= 1971:
             name = "Late Summer Bank Holiday"
-            if self.country == "UK":
+            if self.state == "UK":
                 name += " [England/Wales/Northern Ireland]"
             self[date(year, AUG, 31) + rd(weekday=MO(-1))] = name
 
