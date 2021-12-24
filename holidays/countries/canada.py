@@ -259,7 +259,7 @@ class Canada(HolidayBase):
         if year >= 1867:
             self[date(year, DEC, 25)] = "Christmas Day"
             if self.observed and date(year, DEC, 25).weekday() == SAT:
-                self[date(year, DEC, 24)] = "Christmas Day (Observed)"
+                self[date(year, DEC, 27)] = "Christmas Day (Observed)"
             elif self.observed and date(year, DEC, 25).weekday() == SUN:
                 self[date(year, DEC, 26)] = "Christmas Day (Observed)"
 
