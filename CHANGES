@@ -1,7 +1,10 @@
-Version 0.11.4
-==============
+Version 0.12
+============
 
 Released ???????? ???, ????
+
+- Release increase (v.0.12)
+- Copyright update 2022
 
 - Sphinx documentation (mborsetti, dr-p)
 - Support for Kazakhstan #534 (chiuczek, intelliHugh)
@@ -12,9 +15,9 @@ Released ???????? ???, ????
 - Support for Ethiopia #558 (tedtad, dr-p)
 - Travis CI removal #557 (mborsetti, dr-p)
 - More useful __repr__ and __str__ #360 (dr-p, kootenpv, d33tah)
-- Support for Czech (ie: misspelled Czechia) drop (dr-p)
-- Support for Polish (ie: misspelled Poland) drop (dr-p)
-- Support for Slovak (ie: misspelled Slovakia) drop (dr-p)
+- Drop support for Czech (ie: misspelled Czechia) (dr-p)
+- Drop support for Polish (ie: misspelled Poland) (dr-p)
+- Drop support for Slovak (ie: misspelled Slovakia) (dr-p)
 
 - Test coverage improvement (dr-p)
 - "country" property moved to class attributes #573 (dr-p, madphysicist)
