@@ -201,7 +201,7 @@ class Spain(HolidayBase):
             elif self.prov == "PV":
                 if 2011 <= year <= 2013:
                     self._is_observed(
-                        date(year, OCT, 25), "Día del " "Páis Vasco"
+                        date(year, OCT, 25), "Día del " "País Vasco"
                     )
             elif self.prov == "RI":
                 self._is_observed(date(year, JUN, 9), "Día de " "La Rioja")
