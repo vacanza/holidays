@@ -369,6 +369,10 @@ class UnitedStates(HolidayBase):
         # Juneteenth Day
         if year > 2020:
             self[date(year, JUN, 19)] = "Juneteenth National Independence Day"
+            if self.observed and date(year, JUN, 19).weekday() == SAT:
+                self[date(year, JUN, 18)] = name + " (Observed)"
+            elif self.observed and date(year, JUN, 19).weekday() == SUN:
+                self[date(year, JUN, 20)] = name + " (Observed)"
 
             if self.observed and date(year, JUN, 19).weekday() == SAT:
                 self[date(year, JUN, 18)] = name + " (Observed)"
