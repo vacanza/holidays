@@ -42,6 +42,9 @@ class TestUS(unittest.TestCase):
             self.assertNotIn(date(year, 6, 19), self.holidays)
         for year in range(2021, 2030):
             self.assertIn(date(year, 6, 19), self.holidays)
+        self.holidays.observed = True
+        self.assertIn(date(2021, 6, 18), self.holidays)
+        self.assertIn(date(2022, 6, 20), self.holidays)
 
     def test_epiphany(self):
         pr_holidays = holidays.US(state="PR")
