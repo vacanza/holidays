@@ -74,6 +74,7 @@ class TestSpain(unittest.TestCase):
             (2, 28): ["AN"],
             (3, 1): ["IB"],
             (4, 23): ["AR", "CL"],
+            (8, 5): ["CE"],
             (5, 30): ["CN"],
             (5, 31): ["CM"],
             (5, 2): ["MD"],
