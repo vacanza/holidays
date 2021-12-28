@@ -14,6 +14,7 @@ Released ???????? ???, ????
 - Support for North Macedonia #570 (tserekh)
 - Support for Ethiopia #558 (tedtad, dr-p)
 - Travis CI removal #557 (mborsetti, dr-p)
+- CD/CI tests - Pypi versions review (dr-p)
 - More useful __repr__ and __str__ #360 (dr-p, kootenpv, d33tah)
 - Drop support for Czech (ie: misspelled Czechia) (dr-p)
 - Drop support for Polish (ie: misspelled Poland) (dr-p)
