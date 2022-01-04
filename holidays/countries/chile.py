@@ -6,8 +6,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -25,6 +25,8 @@ class Chile(HolidayBase):
     # https://www.feriados.cl
     # http://www.feriadoschilenos.cl/ (excellent history)
     # https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Chile
+
+    country = "CL"
 
     # ISO 3166-2 codes for the principal subdivisions, called regions
     STATES = [
@@ -47,7 +49,6 @@ class Chile(HolidayBase):
     ]
 
     def __init__(self, **kwargs):
-        self.country = "CL"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

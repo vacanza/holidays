@@ -6,8 +6,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -24,8 +24,9 @@ from holidays.holiday_base import HolidayBase
 class Czechia(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_the_Czech_Republic
 
+    country = "CZ"
+
     def __init__(self, **kwargs):
-        self.country = "CZ"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -75,11 +76,3 @@ class CZ(Czechia):
 
 class CZE(Czechia):
     pass
-
-
-class Czech(Czechia):
-    def __init__(self, **kwargs):
-        warnings.warn(
-            "Czech is deprecated, use Czechia instead.", DeprecationWarning
-        )
-        super(Czech, self).__init__(**kwargs)

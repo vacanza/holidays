@@ -6,8 +6,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -35,6 +35,7 @@ from holidays.holiday_base import HolidayBase
 
 
 class Canada(HolidayBase):
+    country = "CA"
     PROVINCES = [
         "AB",
         "BC",
@@ -52,7 +53,6 @@ class Canada(HolidayBase):
     ]
 
     def __init__(self, **kwargs):
-        self.country = "CA"
         self.prov = kwargs.pop("prov", "ON")
         HolidayBase.__init__(self, **kwargs)
 
@@ -226,6 +226,13 @@ class Canada(HolidayBase):
         # Labour Day
         if year >= 1894:
             self[date(year, SEP, 1) + rd(weekday=MO)] = "Labour Day"
+
+        # National Day for Truth and Reconciliation
+        provinces = ("MB", "NS")
+        if self.prov in provinces and year >= 2021:
+            self[
+                date(year, SEP, 30)
+            ] = "National Day for Truth and Reconciliation"
 
         # Thanksgiving
         if self.prov not in ("NB", "NS", "PE", "NL") and year >= 1931:

@@ -6,8 +6,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -122,6 +122,12 @@ class TestKorea(unittest.TestCase):
             self.assertEqual(
                 self.holidays[date(year, month, day)],
                 "Independence Movement Day",
+            )
+
+        for year, month, day in [(2025, 3, 3)]:
+            self.assertEqual(
+                self.holidays[date(year, month, day)],
+                "Alternative holiday of Independence Movement Day",
             )
 
     def test_tree_planting_day(self):
@@ -375,9 +381,21 @@ class TestKorea(unittest.TestCase):
                     self.holidays[date(year, 10, 3)], "National Foundation Day"
                 )
 
+        for year, month, day in [(2021, 10, 4)]:
+            self.assertEqual(
+                self.holidays[date(year, month, day)],
+                "Alternative holiday of National Foundation Day",
+            )
+
     def test_hangeul_day(self):
         for year in range(1948, 2007):
             self.assertEqual(self.holidays[date(year, 10, 9)], "Hangeul Day")
+
+        for year, month, day in [(2021, 10, 11)]:
+            self.assertEqual(
+                self.holidays[date(year, month, day)],
+                "Alternative holiday of Hangeul Day",
+            )
 
     def test_christmas_day(self):
         for year in range(1948, 2050):

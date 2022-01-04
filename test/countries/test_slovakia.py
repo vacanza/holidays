@@ -6,8 +6,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -41,11 +41,3 @@ class TestSK(unittest.TestCase):
         self.assertIn(date(2018, 12, 24), self.holidays)
         self.assertIn(date(2018, 12, 25), self.holidays)
         self.assertIn(date(2018, 12, 26), self.holidays)
-
-    def test_slovak_deprecated(self):
-        with warnings.catch_warnings(record=True) as w:
-            warnings.simplefilter("always")
-            slovakia = holidays.Slovak()
-            self.assertIsInstance(slovakia, holidays.Slovakia)
-            self.assertEqual(1, len(w))
-            self.assertTrue(issubclass(w[-1].category, DeprecationWarning))

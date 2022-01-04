@@ -6,8 +6,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -42,6 +42,9 @@ class TestUS(unittest.TestCase):
             self.assertNotIn(date(year, 6, 19), self.holidays)
         for year in range(2021, 2030):
             self.assertIn(date(year, 6, 19), self.holidays)
+        self.holidays.observed = True
+        self.assertIn(date(2021, 6, 18), self.holidays)
+        self.assertIn(date(2022, 6, 20), self.holidays)
 
     def test_epiphany(self):
         pr_holidays = holidays.US(state="PR")
@@ -681,8 +684,21 @@ class TestUS(unittest.TestCase):
             self.assertIn(date(year, 6, 19), tx_holidays)
 
     def test_juneteenth(self):
+        # Not recognized before 2021
         self.assertNotIn(date(2020, 6, 19), self.holidays)
         self.assertIn(date(2021, 6, 19), self.holidays)
+
+        juneteenth_observed = [
+            date(2021, 6, 18),  # Friday prior
+            date(2022, 6, 20),  # Monday following
+        ]
+        self.holidays.observed = True
+        for observed_holiday in juneteenth_observed:
+            self.assertIn(observed_holiday, self.holidays)
+
+        self.holidays.observed = False
+        for observed_holiday in juneteenth_observed:
+            self.assertNotIn(observed_holiday, self.holidays)
 
     def test_west_virginia_day(self):
         wv_holidays = holidays.US(state="WV")

@@ -6,8 +6,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -21,10 +21,10 @@ from holidays.holiday_base import HolidayBase
 
 
 class Austria(HolidayBase):
+    country = "AT"
     PROVINCES = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
     def __init__(self, **kwargs):
-        self.country = "AT"
         self.prov = kwargs.pop("prov", kwargs.pop("state", "9"))
         HolidayBase.__init__(self, **kwargs)
 

@@ -18,6 +18,10 @@ specific date is a holiday as fast and flexible as possible.
 .. image:: http://img.shields.io/pypi/l/holidays.svg
     :target: https://github.com/dr-prodigy/python-holidays/blob/master/LICENSE
 
+.. image:: https://readthedocs.org/projects/python-holidays/badge/?version=latest
+    :target: https://python-holidays.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
+
 
 Example Usage
 -------------
@@ -102,6 +106,7 @@ Argentina           AR/ARG    None
 Aruba               AW/ABW    None
 Australia           AU/AUS    prov = **ACT** (default), NSW, NT, QLD, SA, TAS, VIC, WA
 Austria             AT/AUT    prov = 1, 2, 3, 4, 5, 6, 7, 8, **9** (default)
+Azerbaijan          AZ/AZE    None
 Bangladesh          BD/BGD    None
 Belarus             BY/BLR    None
 Belgium             BE/BEL    None
@@ -123,8 +128,8 @@ Denmark             DK/DNK    None
 Djibouti            DJ/DJI    None
 DominicanRepublic   DO/DOM    None
 Egypt               EG/EGY    None
-England                       None
 Estonia             EE/EST    None
+Ethiopia            ET/ETH    None
 EuropeanCentralBank ECB/TAR   Trans-European Automated Real-time Gross Settlement (TARGET2)
 Finland             FI/FIN    None
 France              FR/FRA    prov = **Métropole** (default), Alsace-Moselle, Guadeloupe,
@@ -142,13 +147,13 @@ Iceland             IS/ISL    None
 India               IN/IND    prov = AP, AS, BR, CG, GJ, HR, KA, KL, MH, MP, OD, RJ, SK,
                               TN, TN, UK, UP, WB
 Ireland             IE/IRL    None
-IsleOfMan                     None
 Israel              IL/ISR    None
 Italy               IT/ITA    prov = AN, AO, BA, BL, BO, BS, BZ, CB, Cesena, CH, CS, CT,
                               EN, FC, FE, FI, Forlì, FR, GE, GO, IS, KR, LT, MB, MI, MO,
                               MN, MS, NA, PA, PC, PD, PG, PR, RM, SP, TS, VI
 Jamaica             JM/JAM    None
 Japan               JP/JPN    None
+Kazakhstan          KZ/KAZ    None
 Kenya               KE/KEN    None
 Korea               KR/KOR    None
 Latvia              LV/LVA    None
@@ -167,7 +172,7 @@ NewZealand          NZ/NZL    prov = AUK, CAN, CIT, HKB, MBH, NSN, NTL, OTA, STC
                               TKI, WGN, WTL
 Nicaragua           NI/NIC    prov = MN
 Nigeria             NG/NGA    None
-NorthernIreland               None
+NorthMacedonia      MK/MKD    None
 Norway              NO/NOR    None
 Paraguay            PY/PRY    None
 Peru                PE/PER    None
@@ -177,7 +182,6 @@ PortugalExt         PTE/PRTE  *Portugal plus extended days most people have off*
 Romania             RO/ROU    None
 Russia              RU/RUS    None
 SaudiArabia         SA/SAU    None
-Scotland                      None
 Serbia              RS/SRB    None
 Singapore           SG/SGP    None
 Slovakia            SK/SVK    None
@@ -189,18 +193,20 @@ Swaziland           SZ/SZW    None
 Sweden              SE/SWE    None
 Switzerland         CH/CHE    prov = AG, AR, AI, BL, BS, BE, FR, GE, GL, GR, JU, LU,
                               NE, NW, OW, SG, SH, SZ, SO, TG, TI, UR, VD, VS, ZG, ZH
+Taiwan              TW/TWN    None
 Turkey              TR/TUR    None
+Tunisia             TN/TUN    None
 Ukraine             UA/UKR    None
 UnitedArabEmirates  AE/ARE    None
-UnitedKingdom       GB/GBR/UK None
+UnitedKingdom       UK/GB/GBR state = **UK** (default), England, Isle of Man,
+                              Northern Ireland, Scotland, Wales
 UnitedStates        US/USA    state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL, GA,
                               GU, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MH, MA, MI,
                               FM, MN, MS, MO, MT, NE, NV, NH, NJ, NM, NY, NC, ND, MP,
                               OH, OK, OR, PW, PA, PR, RI, SC, SD, TN, TX, UT, VT, VA,
                               VI, WA, WV, WI, WY
-Venezuela           YV/VEN
-Vietnam             VN/VNM
-Wales                         None
+Venezuela           VE/VEN    None
+Vietnam             VN/VNM    None
 Zambia              ZM/ZMB    None
 Zimbabwe            ZW/ZWE    None
 =================== ========= =============================================================
@@ -492,10 +498,19 @@ master branch upon official version upgrades.
 Running Tests and Coverage
 --------------------------
 
+Project provides automated tests and coverage checks with pytest. Here is the
+commands to execute them.
+
 .. code-block:: bash
 
     $ pip install -r requirements_dev.txt
     $ python -m pytest .
+
+Or, if you want to retrieve uncovered lines too
+
+.. code-block:: bash
+
+    $ python -m pytest --cov-report term-missing .
 
 
 Ensure all staged files are up to standard
@@ -518,6 +533,20 @@ Manually run the quality assurance tests on all tracked files.
     $ pre-commit run -a
 
 
+Build sphinx documentation
+--------------------------
+
+.. _readthedocs.io: https://python-holidays.readthedocs.io/en/latest/
+
+Project provides a sphinx documentation source under ./docs/source, published
+online on `readthedocs.io`_.
+To test/build locally the documentation in html, run this command:
+
+.. code-block:: bash
+
+    $ sphinx-build -b html docs/source/ docs/build/html
+
+
 Contributions
 -------------
 
@@ -530,7 +559,8 @@ Issues_ and `Pull Requests`__ are always welcome.
 When contributing with fixes and new features, please start forking/branching
 from `beta branch`_, to work on latest code and reduce merging issues.
 
-Also, whenever possible, please provide 100% test coverage for your new code.
+Contributed PR are required to include valid test coverage **(95%
+minimum, 100% whenever possible)** in order to be merged.
 
 Thanks a lot for your support.
 

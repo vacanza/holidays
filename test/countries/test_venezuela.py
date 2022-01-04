@@ -5,8 +5,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -18,8 +18,8 @@ import holidays
 
 
 class TestVenezuela(unittest.TestCase):
-    def test_YV_holidays(self):
-        self.holidays = holidays.YV(years=2019)
+    def test_VE_holidays(self):
+        self.holidays = holidays.VE(years=2019)
         self.assertIn("2019-01-01", self.holidays)
         self.assertEqual(
             self.holidays[date(2019, 1, 1)], "Año Nuevo [New Year's Day]"
@@ -58,6 +58,11 @@ class TestVenezuela(unittest.TestCase):
         self.assertEqual(
             self.holidays[date(2019, 10, 12)], "Día de la Resistencia Indígena"
         )
+        self.assertIn("2019-12-17", self.holidays)
+        self.assertEqual(
+            self.holidays[date(2019, 12, 17)],
+            "Muerte del Libertador Simón Bolívar",
+        )
         self.assertIn("2019-12-24", self.holidays)
         self.assertEqual(self.holidays[date(2019, 12, 24)], "Nochebuena")
         self.assertIn("2019-12-25", self.holidays)
@@ -65,4 +70,16 @@ class TestVenezuela(unittest.TestCase):
         self.assertIn("2019-12-31", self.holidays)
         self.assertEqual(
             self.holidays[date(2019, 12, 31)], "Fiesta de Fin de Año"
+        )
+
+        self.assertEqual(self.holidays[date(2020, 4, 9)], "Jueves Santo")
+        self.assertEqual(self.holidays[date(2020, 4, 10)], "Viernes Santo")
+        self.assertEqual(
+            self.holidays[date(2020, 4, 19)],
+            "Declaración de la Independencia",
+        )
+
+        self.assertEqual(
+            self.holidays[date(1984, 4, 19)],
+            "Jueves Santo y Declaración de la Independencia",
         )

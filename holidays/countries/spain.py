@@ -6,8 +6,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -34,6 +34,7 @@ from holidays.holiday_base import HolidayBase
 
 
 class Spain(HolidayBase):
+    country = "ES"
     PROVINCES = [
         "AN",
         "AR",
@@ -56,7 +57,6 @@ class Spain(HolidayBase):
     ]
 
     def __init__(self, **kwargs):
-        self.country = "ES"
         self.prov = kwargs.pop("prov", kwargs.pop("state", ""))
         HolidayBase.__init__(self, **kwargs)
 
@@ -185,7 +185,10 @@ class Spain(HolidayBase):
             elif self.prov == "NC":
                 self._is_observed(date(year, SEP, 27), "Día de Navarra")
             elif self.prov == "PV":
-                self._is_observed(date(year, OCT, 25), "Día del Páis Vasco")
+                if 2011 <= year <= 2013:
+                    self._is_observed(
+                        date(year, OCT, 25), "Día del Páis Vasco"
+                    )
             elif self.prov == "RI":
                 self._is_observed(date(year, JUN, 9), "Día de La Rioja")
 

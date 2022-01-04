@@ -6,8 +6,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -24,8 +24,9 @@ class EuropeanCentralBank(HolidayBase):
     # https://en.wikipedia.org/wiki/TARGET2
     # http://www.ecb.europa.eu/press/pr/date/2000/html/pr001214_4.en.html
 
+    country = "EU"
+
     def __init__(self, **kwargs):
-        self.country = "EU"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

@@ -6,8 +6,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -43,11 +43,3 @@ class TestPL(unittest.TestCase):
 
     def test_2018(self):
         self.assertIn(date(2018, 11, 12), self.holidays)
-
-    def test_polish_deprecated(self):
-        with warnings.catch_warnings(record=True) as w:
-            warnings.simplefilter("always")
-            poland = holidays.Polish()
-            self.assertIsInstance(poland, holidays.Poland)
-            self.assertEqual(1, len(w))
-            self.assertTrue(issubclass(w[-1].category, DeprecationWarning))

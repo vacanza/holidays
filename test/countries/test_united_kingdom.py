@@ -6,12 +6,13 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 import unittest
+import warnings
 
 from datetime import date
 from dateutil.relativedelta import relativedelta
@@ -21,12 +22,12 @@ import holidays
 
 class TestUK(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.England()
-        self.holidays = holidays.Wales()
-        self.holidays = holidays.Scotland()
-        self.holidays = holidays.IsleOfMan()
-        self.holidays = holidays.NorthernIreland()
         self.holidays = holidays.UK()
+        self.holidays_england = holidays.UK(state="England")
+        self.holidays_wales = holidays.UK(state="Wales")
+        self.holidays_scotland = holidays.UK(state="Scotland")
+        self.holidays_isleofman = holidays.UK(state="Isle of Man")
+        self.holidays_northernireland = holidays.UK(state="Northern Ireland")
 
     def test_new_years(self):
         for year in range(1974, 2100):
@@ -224,37 +225,62 @@ class TestUK(unittest.TestCase):
         for holiday in all_holidays:
             self.assertIn(holiday, uk_2015.values())
 
+    def test_scotland(self):
+        self.assertIn("2017-01-01", self.holidays_scotland)
+        self.assertIn("2017-01-02", self.holidays_scotland)
+        self.assertIn("2017-01-03", self.holidays_scotland)
+        self.assertIn("2017-04-14", self.holidays_scotland)
+        self.assertIn("2017-05-01", self.holidays_scotland)
+        self.assertIn("2017-05-29", self.holidays_scotland)
+        self.assertIn("2017-08-07", self.holidays_scotland)
+        self.assertIn("2017-11-30", self.holidays_scotland)
+        self.assertIn("2017-12-25", self.holidays_scotland)
+        self.assertIn("2017-12-26", self.holidays_scotland)
+
+    def test_isleofman(self):
+        self.assertIn("2018-06-01", self.holidays_isleofman)
+        self.assertIn("2018-07-05", self.holidays_isleofman)
+
+    def test_northernireland(self):
+        self.assertIn("2018-03-17", self.holidays_northernireland)
+        self.assertIn("2018-07-12", self.holidays_northernireland)
+
+
+class TestEngland(unittest.TestCase):
+    def test_warning(self):
+        with warnings.catch_warnings(record=True) as w:
+            warnings.simplefilter("always")
+            england = holidays.England()
+            self.assertIsInstance(england, holidays.England)
+            self.assertEqual(1, len(w))
+            self.assertTrue(issubclass(w[-1].category, DeprecationWarning))
+
 
 class TestScotland(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.Scotland()
-
-    def test_2017(self):
-        self.assertIn("2017-01-01", self.holidays)
-        self.assertIn("2017-01-02", self.holidays)
-        self.assertIn("2017-01-03", self.holidays)
-        self.assertIn("2017-04-14", self.holidays)
-        self.assertIn("2017-05-01", self.holidays)
-        self.assertIn("2017-05-29", self.holidays)
-        self.assertIn("2017-08-07", self.holidays)
-        self.assertIn("2017-11-30", self.holidays)
-        self.assertIn("2017-12-25", self.holidays)
-        self.assertIn("2017-12-26", self.holidays)
+    def test_warning(self):
+        with warnings.catch_warnings(record=True) as w:
+            warnings.simplefilter("always")
+            scotland = holidays.Scotland()
+            self.assertIsInstance(scotland, holidays.Scotland)
+            self.assertEqual(1, len(w))
+            self.assertTrue(issubclass(w[-1].category, DeprecationWarning))
 
 
 class TestIsleOfMan(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.IsleOfMan()
-
-    def test_2018(self):
-        self.assertIn("2018-06-01", self.holidays)
-        self.assertIn("2018-07-05", self.holidays)
+    def test_warning(self):
+        with warnings.catch_warnings(record=True) as w:
+            warnings.simplefilter("always")
+            isleofman = holidays.IsleOfMan()
+            self.assertIsInstance(isleofman, holidays.IsleOfMan)
+            self.assertEqual(1, len(w))
+            self.assertTrue(issubclass(w[-1].category, DeprecationWarning))
 
 
 class TestNorthernIreland(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.NorthernIreland()
-
-    def test_2018(self):
-        self.assertIn("2018-03-17", self.holidays)
-        self.assertIn("2018-07-12", self.holidays)
+    def test_warning(self):
+        with warnings.catch_warnings(record=True) as w:
+            warnings.simplefilter("always")
+            northernisland = holidays.NorthernIreland()
+            self.assertIsInstance(northernisland, holidays.NorthernIreland)
+            self.assertEqual(1, len(w))
+            self.assertTrue(issubclass(w[-1].category, DeprecationWarning))

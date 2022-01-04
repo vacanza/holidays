@@ -1,3 +1,38 @@
+Version 0.12
+============
+
+Released January 4, 2022
+
+- Release increase (v.0.12, was v.0.11.4 during beta)
+- Copyright update 2022
+- Sphinx documentation (mborsetti, dr-p)
+- Support for Kazakhstan #534 (chiuczek, intelliHugh)
+- Support for Azerbaijan #540 (eldar-mustafayev)
+- Support for Tunisia #543 (ihebski)
+- Support for Taiwan #547 (ifurther)
+- Support for North Macedonia #570 (tserekh)
+- Support for Ethiopia #558 (tedtad, dr-p)
+- Travis CI removal #557 (mborsetti, dr-p)
+- CD/CI tests - Pypi versions review (dr-p)
+- More useful __repr__ and __str__ #360 (dr-p, kootenpv, d33tah)
+- Drop support for Czech (ie: misspelled Czechia) (dr-p)
+- Drop support for Polish (ie: misspelled Poland) (dr-p)
+- Drop support for Slovak (ie: misspelled Slovakia) (dr-p)
+
+- Test coverage improvement (dr-p)
+- "country" property moved to class attributes #573 (dr-p, madphysicist)
+- Date slices support fix #529, #530 (justinwaf, mborsetti, dr-p)
+- Doc fixes #549 (canute24)
+- UK standalone states deprecation #566 (dr-p)
+- Venezuela ISO code + other fixes #567, #576 (Skatox, dr-p, antusystem)
+- Canada updates and test review #533, #536 (cturra)
+- US updates and fixes #537, #559, #578 (khawley, evohnave, amelkiy, dr-p)
+- India fixes #553, #554, #539 (canute24, dr-p)
+- Spain fixes #555 (tserekh)
+- Italy fixes #546 (dr-p, rtraverso86)
+- Korea fixes #535 (0xF4D3C0D3)
+- Colombia fixes #564 (jahirfiquitiva)
+
 Version 0.11.3.1
 ================
 

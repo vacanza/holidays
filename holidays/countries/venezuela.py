@@ -6,8 +6,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -37,8 +37,9 @@ class Venezuela(HolidayBase):
     https://dias-festivos.eu/dias-festivos/venezuela/#
     """
 
+    country = "VE"
+
     def __init__(self, **kwargs):
-        self.country = "YV"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -55,6 +56,8 @@ class Venezuela(HolidayBase):
 
         self[date(year, OCT, 12)] = "Día de la Resistencia Indígena"
 
+        self[date(year, DEC, 17)] = "Muerte del Libertador Simón Bolívar"
+
         # Christmas Day
         self[date(year, DEC, 24)] = "Nochebuena"
 
@@ -63,25 +66,19 @@ class Venezuela(HolidayBase):
         self[date(year, DEC, 31)] = "Fiesta de Fin de Año"
 
         # Semana Santa y Carnaval
-
         if date(year, APR, 19) == (easter(year) - rd(days=2)):
             self[
-                easter(year) - rd(days=2)
+                date(year, APR, 19)
             ] = "Viernes Santo y Declaración de la Independencia"
+            self[easter(year) - rd(days=3)] = "Jueves Santo"
+        elif date(year, APR, 19) == (easter(year) - rd(days=3)):
+            self[
+                date(year, APR, 19)
+            ] = "Jueves Santo y Declaración de la Independencia"
+            self[easter(year) - rd(days=2)] = "Viernes Santo"
         else:
-            # self[easter(year) - rd(weekday=FR(-1))] = "Viernes Santo"
             self[date(year, APR, 19)] = "Declaración de la Independencia"
             self[easter(year) - rd(days=2)] = "Viernes Santo"
-
-        # self[easter(year) - rd(weekday=TH(-1))] = "Jueves Santo"
-
-        if date(year, APR, 19) == (easter(year) - rd(days=3)):
-            self[easter(year) - rd(days=3)] = (
-                "Jueves Santo y Declaración " "de la Independencia"
-            )
-        else:
-            # self[easter(year) - rd(weekday=FR(-1))] = "Viernes Santo"
-            self[date(year, APR, 19)] = "Declaración de la Independencia"
             self[easter(year) - rd(days=3)] = "Jueves Santo"
 
         self[easter(year) - rd(days=47)] = "Martes de Carnaval"
@@ -89,7 +86,7 @@ class Venezuela(HolidayBase):
         self[easter(year) - rd(days=48)] = "Lunes de Carnaval"
 
 
-class YV(Venezuela):
+class VE(Venezuela):
     pass
 
 

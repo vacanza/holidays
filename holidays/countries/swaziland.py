@@ -6,8 +6,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -22,10 +22,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class Swaziland(HolidayBase):
+    country = "SZ"
+
     def __init__(self, **kwargs):
         # https://swazilii.org/sz/legislation/act/1938/71
         # https://www.officeholidays.com/countries/swaziland
-        self.country = "SZ"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
