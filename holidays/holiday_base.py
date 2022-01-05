@@ -233,7 +233,7 @@ class HolidayBase(dict):
         key: Union[
             datetime,
             date,
-            int,
+            float,
             str,
             Iterable[Union[datetime, date, float, str]],
         ],

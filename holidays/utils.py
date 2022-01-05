@@ -42,7 +42,7 @@ def CountryHoliday(
     state: Optional[str] = None,
     expand: bool = True,
     observed: bool = True,
-) -> Type["holidays.HolidayBase"]:
+) -> "holidays.HolidayBase":
     """
     Instantiates a :py:class:`HolidayBase` object of the subclass matching the
     ISO 3166-1 country code.
