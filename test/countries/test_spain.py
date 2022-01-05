@@ -146,28 +146,29 @@ class TestSpain(unittest.TestCase):
                     prov in ["CT", "GA", "VC"],
                 )
 
-                eid_al_fitr_current_year = islamic_to_gre(year, 10, 1)[0]
-                eid_al_adha_current_year = islamic_to_gre(year, 12, 10)[0]
                 year_province_days = deepcopy(province_days)
-                year_province_days.update(
-                    {
-                        (
-                            eid_al_fitr_current_year.month,
-                            eid_al_fitr_current_year.day,
-                        ): ["ML"],
-                        (
-                            eid_al_adha_current_year.month,
-                            eid_al_adha_current_year.day,
-                        ): ["ML"],
-                    }
-                )
+                if prov in ["ML"]:
+                    eid_al_fitr_current_year = islamic_to_gre(year, 10, 1)[0]
+                    eid_al_adha_current_year = islamic_to_gre(year, 12, 10)[0]
+                    year_province_days.update(
+                        {
+                            (
+                                eid_al_fitr_current_year.month,
+                                eid_al_fitr_current_year.day,
+                            ): ["ML"],
+                            (
+                                eid_al_adha_current_year.month,
+                                eid_al_adha_current_year.day,
+                            ): ["ML"],
+                        }
+                    )
 
                 for fest_day, fest_prov in year_province_days.items():
                     self.assertEqual(
                         date(year, *fest_day) in prov_holidays,
                         prov in fest_prov,
-                        "Failed date %s, province %s"
-                        % (date(year, *fest_day), prov),
+                        "Failed date %s, province %s: %s"
+                        % (date(year, *fest_day), prov, fest_prov),
                     )
 
     def test_change_of_province_specific_days(self):
