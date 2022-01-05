@@ -53,7 +53,11 @@ class Israel(HolidayBase):
 
         # Memorial Day
         name = "Memorial Day"
-        memorial_day_dt = date(*gregorian.from_jd(hebrew.to_jd_gregorianyear(year, hebrew.IYYAR, 3)))
+        memorial_day_dt = date(
+            *gregorian.from_jd(
+                hebrew.to_jd_gregorianyear(year, hebrew.IYYAR, 3)
+            )
+        )
         self[memorial_day_dt + rd(days=1)] = name
 
         observed_delta = 0

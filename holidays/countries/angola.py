@@ -48,7 +48,6 @@ class Angola(HolidayBase):
                 if self.observed and date(year, DEC, 31).weekday() == MON:
                     self[date(year, DEC, 31)] = "Ano novo (Day off)"
 
-
             e = easter(year)
             good_friday = e - rd(days=2)
             self[good_friday] = "Sexta-feira Santa"

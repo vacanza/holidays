@@ -545,10 +545,10 @@ class TestCountryHoliday(unittest.TestCase):
 
 class TestAllInSameYear(unittest.TestCase):
     """Test that only holidays in the year(s) requested are returned."""
+
     country: str
     hol: datetime
     year: int
-
 
     def setUp(self):
         self.countries = holidays.list_supported_countries()
