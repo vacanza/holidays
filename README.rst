@@ -187,8 +187,12 @@ Singapore           SG/SGP    None
 Slovakia            SK/SVK    None
 Slovenia            SI/SVN    None
 SouthAfrica         ZA/ZAF    None
-Spain               ES/ESP    prov = AN, AR, AS, CB, CL, CM, CN, CT, EX, GA, IB, MC,
-                              MD, NC, PV, RI, VC
+Spain               ES/ESP    prov = AN (Andalucía), AR (Aragón), AS (Asturias),
+                              CB (Cantabria), CE (Ceuta), CL (Castilla y León),
+                              CM (Castilla La Mancha), CN (Canarias), CT (Cataluña),
+                              EX (Extremadura), GA (Galicia), IB (Islas Baleares),
+                              MC (Murcia), MD (Madrid), NC (Navarra), PV (País Vasco),
+                              RI (La Rioja), VC (Comunidad Valenciana)
 Swaziland           SZ/SZW    None
 Sweden              SE/SWE    None
 Switzerland         CH/CHE    prov = AG, AR, AI, BL, BS, BE, FR, GE, GL, GR, JU, LU,
