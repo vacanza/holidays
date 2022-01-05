@@ -146,7 +146,10 @@ class Spain(HolidayBase):
             elif self.prov == "CB":
                 self._is_observed(
                     date(year, JUL, 28),
-                    "Día de las Instituci" "ones de " "Cantabria",
+                    "Día de las " "Instituciones de " "Cantabria",
+                )
+                self._is_observed(
+                    date(year, SEP, 15), "Día de la " "Bien Aparecida"
                 )
             elif self.prov == "CE":
                 self._is_observed(
@@ -190,12 +193,12 @@ class Spain(HolidayBase):
             elif self.prov == "ML":
                 self._is_observed(date(year, SEP, 8), "Vírgen de la victoria")
                 self._is_observed(date(year, SEP, 17), "Día de " "Melilla")
-                for date_obs in islamic_to_gre(year, 10, 1):
-                    hol_date = date_obs
-                    self._is_observed(hol_date, "Aid Al-Fitr")
-                for date_obs in islamic_to_gre(year, 12, 10):
-                    hol_date = date_obs
-                    self._is_observed(hol_date, "Aid Al-Adha")
+                self._is_observed(
+                    islamic_to_gre(year, 10, 1)[0], "Aid Al-Fitr"
+                )
+                self._is_observed(
+                    islamic_to_gre(year, 12, 10)[0], "Aid Al-Adha"
+                )
             elif self.prov == "NC":
                 self._is_observed(date(year, SEP, 27), "Día de " "Navarra")
             elif self.prov == "PV":

@@ -15,8 +15,13 @@ import unittest
 from itertools import product
 
 from datetime import date
+from dateutil.easter import easter
+from dateutil.relativedelta import relativedelta as rd, TH, FR, MO
 
 import holidays
+from holidays.utils import islamic_to_gre
+
+from copy import deepcopy
 
 
 class TestSpain(unittest.TestCase):
@@ -74,15 +79,18 @@ class TestSpain(unittest.TestCase):
             (2, 28): ["AN"],
             (3, 1): ["IB"],
             (4, 23): ["AR", "CL"],
-            (8, 5): ["CE"],
             (5, 30): ["CN"],
             (5, 31): ["CM"],
             (5, 2): ["MD"],
             (6, 9): ["MC", "RI"],
             (7, 25): ["GA"],
             (7, 28): ["CB"],
-            (9, 8): ["AS", "EX"],
+            (8, 5): ["CE"],
+            (9, 2): ["CE"],
+            (9, 8): ["AS", "EX", "ML"],
             (9, 11): ["CT"],
+            (9, 15): ["CB"],
+            (9, 17): ["ML"],
             (9, 27): ["NC"],
             (10, 9): ["VC"],
         }
@@ -137,10 +145,29 @@ class TestSpain(unittest.TestCase):
                     date(year, 6, 24) in prov_holidays,
                     prov in ["CT", "GA", "VC"],
                 )
-                for fest_day, fest_prov in province_days.items():
+
+                eid_al_fitr_current_year = islamic_to_gre(year, 10, 1)[0]
+                eid_al_adha_current_year = islamic_to_gre(year, 12, 10)[0]
+                year_province_days = deepcopy(province_days)
+                year_province_days.update(
+                    {
+                        (
+                            eid_al_fitr_current_year.month,
+                            eid_al_fitr_current_year.day,
+                        ): ["ML"],
+                        (
+                            eid_al_adha_current_year.month,
+                            eid_al_adha_current_year.day,
+                        ): ["ML"],
+                    }
+                )
+
+                for fest_day, fest_prov in year_province_days.items():
                     self.assertEqual(
                         date(year, *fest_day) in prov_holidays,
                         prov in fest_prov,
+                        "Failed date %s, province %s"
+                        % (date(year, *fest_day), prov),
                     )
 
     def test_change_of_province_specific_days(self):
