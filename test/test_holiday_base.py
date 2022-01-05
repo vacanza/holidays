@@ -409,7 +409,7 @@ class TestArgs(unittest.TestCase):
         self.assertIn(2013, self.holidays.years)
         self.assertNotIn(2014, self.holidays.years)
         self.assertIn(2015, self.holidays.years)
-        self.assertIn(date(2021, 12, 31), holidays.US(years=[2022]).keys())
+        self.assertIn(date(2021, 12, 31), holidays.US(years=[2021]).keys())
         self.holidays = holidays.US(years=2015)
         self.assertNotIn(2014, self.holidays.years)
         self.assertIn(2015, self.holidays.years)
@@ -541,3 +541,56 @@ class TestCountryHoliday(unittest.TestCase):
 
     def test_exceptions(self):
         self.assertRaises((KeyError), lambda: holidays.CountryHoliday("XXXX"))
+
+
+class TestAllInSameYear(unittest.TestCase):
+    """Test that only holidays in the year(s) requested are returned."""
+    country: str
+    hol: datetime
+    year: int
+
+
+    def setUp(self):
+        self.countries = holidays.list_supported_countries()
+
+    def tearDown(self):
+        """https://stackoverflow.com/questions/4414234/"""
+
+        def list2reason(exc_list):
+            if exc_list and exc_list[-1][0] is self:
+                return exc_list[-1][1]
+
+        result = self.defaultTestResult()
+        self._feedErrorsToResult(result, self._outcome.errors)
+        error = list2reason(result.errors)
+        failure = list2reason(result.failures)
+        text = error if error else failure
+        if text:
+            print(
+                f"{text.splitlines()[-1]} in country {self.country}: "
+                f"holiday {self.hol} returned for year {self.year}"
+            )
+            print(
+                holidays.CountryHoliday(
+                    self.country, prov=None, state=None, years=[self.year]
+                ).get_list(self.hol)
+            )
+
+    def test_all_countries(self):
+        """
+        Only holidays in the year(s) requested should be returned. This
+        ensures that we avoid triggering a "RuntimeError: dictionary changed
+        size during iteration" error.
+
+        Here we test all countries for the 12-year period starting ten years
+        ago and ending 2 years from now.
+        """
+        for self.country in [ctr for ctr in self.countries if len(ctr) == 2]:
+            for self.year in range(
+                date.today().year - 10, date.today().year + 3
+            ):
+                hols = holidays.CountryHoliday(
+                    self.country, prov=None, state=None, years=[self.year]
+                )
+                for self.hol in hols:
+                    assert self.hol.year == self.year

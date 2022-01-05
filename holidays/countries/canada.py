@@ -63,15 +63,8 @@ class Canada(HolidayBase):
             self[date(year, JAN, 1)] = name
             if self.observed and date(year, JAN, 1).weekday() == SUN:
                 self[date(year, JAN, 1) + rd(days=+1)] = name + " (Observed)"
-            elif self.observed and date(year, JAN, 1).weekday() == SAT:
-                # Add Dec 31st from the previous year without triggering
-                # the entire year to be added
-                expand = self.expand
-                self.expand = False
-                self[date(year, JAN, 1) + rd(days=-1)] = name + " (Observed)"
-                self.expand = expand
-            # The next year's observed New Year's Day can be in this year
-            # when it falls on a Friday (Jan 1st is a Saturday)
+            # The following year's observed New Year's Day can be in this year
+            # when it falls on a Friday (Jan 1st is a Saturday).
             if self.observed and date(year, DEC, 31).weekday() == FRI:
                 self[date(year, DEC, 31)] = name + " (Observed)"
 

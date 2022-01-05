@@ -28,8 +28,8 @@ class Taiwan(HolidayBase):
     country = "TW"
 
     def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
         self.cnls = ChineseLuniSolar()
+        HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
         # New Year's Day

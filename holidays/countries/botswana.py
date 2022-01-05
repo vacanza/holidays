@@ -103,8 +103,9 @@ class Botswana(HolidayBase):
                     if " (Observed)" not in i:
                         self[k + rd(days=1)] = i.lstrip() + " (Observed)"
 
-        # Once off ad-hoc holidays
-        self[date(2019, JUL, 2)] = "Public Holiday"
+        # Once off ad-hoc holiday.
+        if year == 2019:
+            self[date(year, JUL, 2)] = "Public Holiday"
 
 
 class BW(Botswana):

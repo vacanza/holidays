@@ -13,7 +13,8 @@
 
 from datetime import date
 from dateutil.relativedelta import relativedelta as rd
-from holidays.constants import JAN, MAR, MAY, JUN, NOV, DEC, SAT, SUN
+from holidays.constants import SAT, SUN
+from holidays.constants import JAN, MAR, MAY, JUN, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.utils import islamic_to_gre
 
@@ -32,10 +33,10 @@ class Azerbaijan(HolidayBase):
     def _add_observed(self, holiday: date) -> None:
         if self.observed and holiday.weekday() in (SAT, SUN):
             next_monday = holiday + rd(days=7 - holiday.weekday())
-            if not self.get(next_monday, None):
+            if next_monday.year == holiday.year and not self.get(next_monday, None):
                 self[next_monday] = self[holiday] + OBSERVED_SUFFIX
 
-    def _populate(self, year):
+    def _populate(self, year: int) -> None:
 
         # 1st of Jan
         self[date(year, JAN, 1)] = "New Year's Day"
@@ -85,17 +86,28 @@ class Azerbaijan(HolidayBase):
             date(year, DEC, 31)
         ] = "International Solidarity Day of Azerbaijanis"
         self._add_observed(date(year, DEC, 31))
+        # If the prior year's International Solidarity Day of Azerbaijanis falls
+        # on a Saturday or Monday, the 1st Monday of the current year is also a
+        # holiday.
+        if self.observed and date(year - 1, DEC, 31).weekday() == SUN:
+            self[
+                date(year, JAN, 1)
+            ] = "International Solidarity Day of Azerbaijanis" + OBSERVED_SUFFIX
+        elif self.observed and date(year - 1, DEC, 31).weekday() == SAT:
+            self[
+                date(year, JAN, 2)
+            ] = "International Solidarity Day of Azerbaijanis" + OBSERVED_SUFFIX
 
         # Ramadan
         # Date of observance is announced yearly, This is an estimate.
-        hol_date = islamic_to_gre(year, 10, 1)[0]
+        hol_date = islamic_to_gre(year, OCT, 1)[0]
         self[hol_date] = "Ramadan"
         self[hol_date + rd(days=1)] = "Ramadan"
         self._add_observed(hol_date + rd(days=1))
 
         # Festival of the Sacrifice
         # Date of observance is announced yearly, This is an estimate.
-        hol_date = islamic_to_gre(year, 12, 10)[0]
+        hol_date = islamic_to_gre(year, DEC, 10)[0]
         self[hol_date] = "Festival of the Sacrifice"
         self[hol_date + rd(days=1)] = "Festival of the Sacrifice"
         self._add_observed(hol_date + rd(days=1))
