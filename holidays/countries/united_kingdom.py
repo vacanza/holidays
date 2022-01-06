@@ -157,7 +157,7 @@ class UnitedKingdom(HolidayBase):
             self[date(year, MAY, 31) + rd(weekday=MO(-1))] = name
 
         # Late Summer bank holiday (last Monday in August)
-        if self.state not in ("Scotland") and year >= 1971:
+        if self.state not in ("Scotland",) and year >= 1971:
             name = "Late Summer Bank Holiday"
             if self.state == "UK":
                 name += " [England/Wales/Northern Ireland]"
