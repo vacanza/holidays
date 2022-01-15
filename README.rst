@@ -135,7 +135,7 @@ Germany               DE    prov = BB, BE, BW, BY, BYP, HB, HE, HH, MV, NI, NW,
                             RP, SH, SL, SN, ST, TH
 Greece                GR    None
 Honduras              HN    None
-HongKong              HK    None
+Hong Kong             HK    None
 Hungary               HU    None
 Iceland               IS    None
 India                 IN    prov = AP, AS, BR, CG, GJ, HR, KA, KL, MH, MP, OD,
@@ -163,7 +163,7 @@ Morocco               MA    None
 Mozambique            MZ    None
 Netherlands           NL    None
 Namibia               NA    None
-NewZealand            NZ    prov = AUK, CAN, CIT, HKB, MBH, NSN, NTL, OTA, STC,
+New Zealand           NZ    prov = AUK, CAN, CIT, HKB, MBH, NSN, NTL, OTA, STC,
                             STL, TKI, WGN, WTL
 Nicaragua             NI    prov = MN
 Nigeria               NG    None
@@ -182,8 +182,13 @@ Singapore             SG    None
 Slovakia              SK    None
 Slovenia              SI    None
 South Africa          ZA    None
-Spain                 ES    prov = AN, AR, AS, CB, CL, CM, CN, CT, EX, GA, IB,
-                            MC, MD, NC, PV, RI, VC
+Spain                 ES    prov = AN (Andalucía), AR (Aragón), AS (Asturias),
+                            CB (Cantabria), CE (Ceuta), CL (Castilla y León),
+                            CM (Castilla La Mancha), CN (Canarias), CT
+                            (Cataluña), EX (Extremadura), GA (Galicia), IB
+                            (Islas Baleares), MC (Murcia), MD (Madrid), NC
+                            (Navarra), PV (País Vasco), RI (La Rioja), VC
+                            (Comunidad Valenciana)
 Swaziland             SZ    None
 Sweden                SE    None
 Switzerland           CH    prov = AG, AR, AI, BL, BS, BE, FR, GE, GL, GR, JU,
