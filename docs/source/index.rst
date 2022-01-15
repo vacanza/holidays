@@ -3,18 +3,22 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root ``toctree`` directive.
 
-Welcome to python-holidays's documentation!
-===========================================
+.. Excellent cheat sheet at https://sphinx-tutorial.readthedocs.io/cheatsheet/
+
+.. To rebuild the API autodoc files run
+   $ sphinx-apidoc -o docs\_api -f -T -e webchanges -n
+
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :hidden:
+   :maxdepth: 3
+   :caption: Contents
 
+   Overview <self>
+   examples
+   contributing
+   api
+   changelog
+   genindex
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. include:: ../../README.rst

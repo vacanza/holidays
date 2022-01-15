@@ -27,7 +27,7 @@ class UnitedKingdom(HolidayBase):
     # It must be taken into account when adding or modifying holidays.
     # Look at _country_specific() method for country specific behavior.
 
-    country = "UK"
+    country = "GB"
 
     def __init__(self, **kwargs):
         # default state to UK
