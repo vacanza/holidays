@@ -10,71 +10,63 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
-
 from datetime import timedelta, datetime, date
-from typing import Any, Iterable, List, Optional, Tuple, Union
+from typing import Any, Iterable, List, Optional, TYPE_CHECKING, Tuple, Union
 
 from dateutil.parser import parse
+
+if TYPE_CHECKING:
+    from holidays.utils import country_holidays  # required by docstring
 
 
 class HolidayBase(dict):
     """
-    A dict-like object containing the holidays for a specific country (and
-    province or state if so initiated); inherits the dict class (so behaves
-    similarly to a dict). Dates without a key in the Holiday object are not
-    holidays.
+    The base class for a new dictionary containing the public holidays.
 
-    The key of the object is the date of the holiday and the value is the name
-    of the holiday itself. When passing the date as a key, the date can be
-    expressed as one of the following formats:
+    It is generally instantiated using the :func:`country_holidays` function.
 
-    * datetime.datetime type;
-    * datetime.date types;
-    * a float representing a Unix timestamp;
-    * or a string of any format (recognized by datetime.parse).
+    The key of the :class:`dict`-like :class:`HolidayBase` object is the
+    `date` of the holiday, and the value is the name of the holiday itself.
+    Dates where a key is not present are not public holidays (or, if
+    **observed** is False, days when a public holiday is observed).
 
-    The key is always returned as a `datetime.date` object.
+    When passing the `date` as a key, the `date` can be expressed in one of the
+    following types:
 
-    To maximize speed, the list of holidays is built as needed on the fly, one
-    calendar year at a time. When you instantiate the object, it is empty, but
-    the moment a key is accessed it will build that entire year's list of
-    holidays. To prepopulate holidays, instantiate the class with the years
-    argument:
+    * :class:`datetime.date`,
+    * :class:`datetime.datetime`,
+    * a :class:`str` of any format recognized by :func:`dateutil.parser.parse`,
+    * or a :class:`float` or :class:`int` representing a POSIX timestamp.
 
-    us_holidays = holidays.US(years=2020)
+    The key is always returned as a :class:`datetime.date` object.
 
+    To maximize speed, the list of public holidays is built on the fly as
+    needed, one calendar year at a time. When the object is instantiated
+    without a **years** parameter, it is empty, but, unless **expand** is set
+    to False, as soon as a key is accessed the class will calculate that entire
+    year's list of holidays and set the keys with them.
+
+    If you need to list the holidays as opposed to querying individual dates,
+    instantiate the class with the **years** parameter.
 
     Example usage:
 
+    >>> from holidays import country_holidays
+    >>> us_holidays = country_holidays('US')
+    # For specific prov / state:
+    >>> calif_holidays = country_holidays('US', prov=None, state='CA')
+
+    The below will cause 2015 holidays to be calculated on the fly:
+
     >>> from datetime import date
-    >>> import holidays
-
-    ISO 3166‑1 Alpha 2 code:
-
-    >>> us_holidays = holidays.US()
-
-    or:
-
-    >>> us_holidays = holidays.UnitedStates()
-
-    or:
-
-    >>> us_holidays = holidays.CountryHoliday('US')
-
-    or, for specific prov / states:
-
-    >>> us_holidays = holidays.CountryHoliday('US', prov=None, state='CA')
-
-    The below will cause 2015 holidays to be calculated:
-
     >>> assert date(2015, 1, 1) in us_holidays
 
     This will be faster because 2015 holidays are already calculated:
 
     >>> assert date(2015, 1, 2) not in us_holidays
 
-    The Holiday class will also recognize strings of any format and int/float
-    representing a Unix timestamp:
+    The :class:`HolidayBase` class also recognizes strings of many formats
+    and numbers representing a POSIX timestamp:
 
     >>> assert '2014-01-01' in us_holidays
     >>> assert '1/1/2014' in us_holidays
@@ -92,7 +84,7 @@ class HolidayBase(dict):
 
     List all 2020 holidays:
 
-    >>> us_holidays = holidays.US(years=2020)
+    >>> us_holidays = country_holidays('US', years=2020)
     >>> for day in us_holidays.items():
     ...     print(day)
     (datetime.date(2020, 1, 1), "New Year's Day")
@@ -107,39 +99,37 @@ class HolidayBase(dict):
     (datetime.date(2020, 11, 26), 'Thanksgiving')
     (datetime.date(2020, 12, 25), 'Christmas Day')
 
-
     Some holidays are only present in parts of a country:
 
-    >>> us_pr_holidays = holidays.US(state='PR')
+    >>> us_pr_holidays = country_holidays('US', state='PR')
     >>> assert '2018-01-06' not in us_holidays
     >>> assert '2018-01-06' in us_pr_holidays
 
+    Append custom holiday dates by passing one of:
 
-    Easily create custom Holiday objects with your own dates instead
-    of using the pre-defined countries/states/provinces available:
+    * a :class:`dict` with date/name key/value pairs (e.g.
+      ``{'2010-07-10': 'My birthday!'}``),
+    * a list of dates (as a :class:`datetime.date`, :class:`datetime.datetime`,
+      :class:`str`, :class:`int`, or :class:`float`); ``'Holiday'`` will be
+      used as a description,
+    * or a single date item (of one of the types above); ``'Holiday'`` will be
+      used as a description:
 
-    >>> custom_holidays = holidays.HolidayBase()
-
-    Append custom holiday dates by passing
-    (1) a dict with date/name key/value pairs,
-    (2) a list of dates (in any format: date, datetime, string, integer)
-    ("Holiday" will be used as a description),
-    (3) a single date item ("Holiday" will be used as a description):
-
-    >>> custom_holidays.append({'2015-01-01': "New Year's Day"})
-    >>> custom_holidays.append(['2015-07-01', '07/04/2015'])
-    >>> custom_holidays.append(date(2015, 12, 25))
+    >>> custom_holidays = country_holidays('US', years=2015)
+    >>> custom_holidays.update({'2015-01-01': "New Year's Day"})
+    >>> custom_holidays.update(['2015-07-01', '07/04/2015'])
+    >>> custom_holidays.update(date(2015, 12, 25))
     >>> assert date(2015, 1, 1) in custom_holidays
     >>> assert date(2015, 1, 2) not in custom_holidays
     >>> assert '12/25/2015' in custom_holidays
 
     For more complex logic, like 4th Monday of January, you can inherit the
-    HolidayBase class and define your own _populate(year) method. See
-    documentation for examples.
-
+    :class:`HolidayBase` class and define your own :meth:`_populate` method.
+    See documentation for examples.
     """
 
     country: str
+    """The country's ISO 3166-1 alpha-2 code."""
 
     def __init__(
         self,
@@ -150,24 +140,27 @@ class HolidayBase(dict):
         state: Optional[str] = None,
     ) -> None:
         """
-        To maximize speed, by default the list of holidays is built as needed
-        on the fly, one calendar year at a time. When you instantiate the
-        object, it is empty, but the moment you try to read a key it will build
-        that year's list of holidays. To prepopulate holiday date, instantiate
-        the class with the `years` parameter.
+        :param years:
+            The year(s) to pre-calculate public holidays for at instantiation.
 
-        :param years: The year(s) to pre-calculate holidays for at
-           instantiation.
-        :param expand: If True (default), the entire year is added when one
-           date is requested.
-        :param observed: If True (default), include the day when the holiday
-           is observed (e.g. a holiday falling on a Sunday being observed the
-           following Monday (this doesn't work for all countries).
-        :param prov: The Province (see documentation of what is supported; not
-           implemented for all countries).
-        :param state: The State (see documentation for what is supported; not
-           implemented for all countries).
-        :return: None.
+        :param prov:
+            The Province (not implemented for all countries; see
+            documentation).
+
+        :param state:
+            The State (not implemented for all countries; see documentation).
+
+        :param expand:
+            Whether the entire year is calculated when one date from that year
+            is requested.
+
+        :param observed:
+            Whether to include the dates when public holiday are observed
+            (e.g. a holiday falling on a Sunday being observed the
+            following Monday). This doesn't work for all countries.
+
+        :return:
+            A :class:`HolidayBase` object matching the **country**.
         """
         super().__init__()
         self.observed = observed
@@ -199,43 +192,55 @@ class HolidayBase(dict):
         else:
             return dict.__setattr__(self, key, value)
 
-    def __keytransform__(self, key: Union[datetime, date, float, str]) -> date:
-        """Transforms the date from one of datetime.datetime or datetime.date
-        types, Unix timestamp in float type or string to datetime.date, which
-        is how it's stored by the class."""
+    def __keytransform__(self, key: Union[date, datetime, str, float]) -> date:
+        """Transforms the date from one of the following types:
+
+        * :class:`datetime.date`,
+        * :class:`datetime.datetime`,
+        * a :class:`str` of any format recognized by
+          :func:`dateutil.parser.parse`,
+        * or a :class:`float` or :class:`int` representing a POSIX timestamp
+
+        to :class:`datetime.date`, which is how it's stored by the class."""
         if isinstance(key, datetime):
-            key = key.date()
+            out_key = key.date()
         elif isinstance(key, date):
-            key = key
+            out_key = key
         elif isinstance(key, int) or isinstance(key, float):
-            key = datetime.utcfromtimestamp(key).date()
+            out_key = datetime.utcfromtimestamp(key).date()
         elif isinstance(key, str):
             try:
-                key = parse(key).date()
+                out_key = parse(key).date()
             except (ValueError, OverflowError):
                 raise ValueError("Cannot parse date from string '%s'" % key)
         else:
             raise TypeError("Cannot convert type '%s' to date." % type(key))
 
-        if self.expand and key.year not in self.years:
-            self.years.add(key.year)
-            self._populate(key.year)
-        return key
+        if self.expand and out_key.year not in self.years:
+            self.years.add(out_key.year)
+            self._populate(out_key.year)
+        return out_key
 
-    def __contains__(self, key: Union[datetime, date, float, str]) -> bool:
+    def __contains__(self, key: Union[date, datetime, str, float]) -> bool:
         """Return true if date is in self, false otherwise. Accepts a date in
-        datetime.datetime or datetime.date types, as a Unix timestamp in float
-        type or a string)."""
+        the following types:
+
+        * :class:`datetime.date`,
+        * :class:`datetime.datetime`,
+        * a :class:`str` of any format recognized by
+          :func:`dateutil.parser.parse`,
+        * or a :class:`float` or :class:`int` representing a POSIX timestamp.
+        """
         return dict.__contains__(self, self.__keytransform__(key))
 
     def __getitem__(
         self,
         key: Union[
-            datetime,
             date,
-            float,
+            datetime,
             str,
-            Iterable[Union[datetime, date, float, str]],
+            float,
+            Iterable[Union[date, datetime, str, float]],
         ],
     ) -> Union[str, List[str], List[date], bool]:
         if isinstance(key, slice):
@@ -275,7 +280,7 @@ class HolidayBase(dict):
         return dict.__getitem__(self, self.__keytransform__(key))
 
     def __setitem__(
-        self, key: Union[datetime, date, float, str], value
+        self, key: Union[date, datetime, str, float], value
     ) -> None:
         if key in self:
             if self.get(key).find(value) < 0 and value.find(self.get(key)) < 0:
@@ -285,14 +290,24 @@ class HolidayBase(dict):
         return dict.__setitem__(self, self.__keytransform__(key), value)
 
     def update(self, *args) -> None:
-        """Update the Holidays object, overwriting existing dates. Return None.
+        """Update the object, overwriting existing dates.
 
-        update() accepts either another dictionary object or an iterable of
-        key/value pairs (as tuples or other iterables of length two) like
-        dict.update() but also a single date or a list of dates, for which the
-        value will be set to "Holiday"."""
-        args = list(args)
-        for arg in args:
+        :param:
+            Either another dictionary object where keys are dates and values
+            are holiday names, or a single date (or a list of dates) for which
+            the value will be set to "Holiday".
+
+            Dates can be expressed in one or more of the following types:
+
+            * :class:`datetime.date`,
+            * :class:`datetime.datetime`,
+            * a :class:`str` of any format recognized by
+              :func:`dateutil.parser.parse`,
+            * or a :class:`float` or :class:`int` representing a POSIX
+              timestamp.
+        """
+        args_list = list(args)
+        for arg in args_list:
             if isinstance(arg, dict):
                 for key, value in list(arg.items()):
                     self[key] = value
@@ -303,32 +318,61 @@ class HolidayBase(dict):
                 self[arg] = "Holiday"
 
     def append(self, *args) -> None:
-        """Alias for update() to mimic list type."""
+        """Alias for :meth:`update` to mimic list type."""
         return self.update(*args)
 
     def get(
         self,
-        key: Union[datetime, date, float, str],
+        key: Union[date, datetime, str, float],
         default: Optional[Any] = None,
     ) -> str:
-        """Return the holiday name for a date (in datetime.datetime or
-        datetime.date types, as a Unix timestamp in float type or a string) if
-        date is a holiday, else default. If default is not given, it defaults
-        to None, so that this method never raises a KeyError.  If more than one
-        holiday is present, they are separated by a comma."""
+        """Return the holiday name for a date if date is a holiday, else
+        default. If default is not given, it defaults to None, so that this
+        method never raises a KeyError. If more than one holiday is present,
+        they are separated by a comma.
+
+        :param key:
+            The date expressed in one of the following types:
+
+            * :class:`datetime.date`,
+            * :class:`datetime.datetime`,
+            * a :class:`str` of any format recognized by
+              :func:`dateutil.parser.parse`,
+            * or a :class:`float` or :class:`int` representing a POSIX
+              timestamp.
+
+        :param default:
+            The default value to return if no value is found.
+        """
         return dict.get(self, self.__keytransform__(key), default)
 
-    def get_list(self, key: Union[datetime, date, float, str]) -> List[str]:
-        """Return a list of all holiday names for a date (in datetime.datetime
-        or datetime.date types, as a Unix timestamp in float type or a string)
-        if date is a holiday, else default. If default is not given, it
-        defaults to None, so that this method never raises a KeyError."""
+    def get_list(self, key: Union[date, datetime, str, float]) -> List[str]:
+        """Return a list of all holiday names for a date if date is a holiday,
+        else empty string.
+
+        :param key:
+            The date expressed in one of the following types:
+
+            * :class:`datetime.date`,
+            * :class:`datetime.datetime`,
+            * a :class:`str` of any format recognized by
+              :func:`dateutil.parser.parse`,
+            * or a :class:`float` or :class:`int` representing a POSIX
+              timestamp.
+        """
         return [h for h in self.get(key, "").split(", ") if h]
 
     def get_named(self, name: str) -> List[date]:
         """Return a list of all holiday dates matching the provided holiday
         name. The match will be made case insensitively and partial matches
-        will be included."""
+        will be included.
+
+        :param name:
+            The holiday's name to try to match.
+
+        :return:
+            A list of all holiday dates matching the provided holiday name.
+        """
         original_expand = self.expand
         self.expand = False
         matches = [
@@ -339,14 +383,31 @@ class HolidayBase(dict):
 
     def pop(
         self,
-        key: Union[datetime, date, float, str],
+        key: Union[date, datetime, str, float],
         default: Optional[Any] = None,
     ) -> Union[str, List[str], List[date], bool]:
-        """If date (in datetime.datetime or datetime.date types, as a Unix
-        timestamp in float type or a string) is a holiday, remove it (no longer
-        treat it as a holiday) and return its date, else return default. If
-        default is not given and date is not a holiday, a KeyError is
-        raised."""
+        """If date is a holiday, remove it and return its date, else return
+        default.
+
+        :param key:
+            The date expressed in one of the following types:
+
+            * :class:`datetime.date`,
+            * :class:`datetime.datetime`,
+            * a :class:`str` of any format recognized by
+              :func:`dateutil.parser.parse`,
+            * or a :class:`float` or :class:`int` representing a POSIX
+              timestamp.
+
+        :param default:
+            The default value to return if no match is found.
+
+        :return:
+            The date removed.
+
+        :raise:
+            KeyError if date is not a holiday and default is not given.
+        """
         if default is None:
             return dict.pop(self, self.__keytransform__(key))
         return dict.pop(self, self.__keytransform__(key), default)
@@ -354,8 +415,20 @@ class HolidayBase(dict):
     def pop_named(self, name: str) -> List[date]:
         """Remove (no longer treat at as holiday) all dates matching the
         provided holiday name. The match will be made case insensitively and
-        partial matches will be removed. If default is not given and date is
-        not a holiday, a KeyError is raised."""
+        partial matches will be removed.
+
+        :param name:
+            The holiday's name to try to match.
+
+        :param default:
+            The default value to return if no match is found.
+
+        :return:
+            A list of dates removed.
+
+        :raise:
+            KeyError if date is not a holiday and default is not given.
+        """
         to_pop = self.get_named(name)
         if not to_pop:
             raise KeyError(name)
@@ -371,12 +444,21 @@ class HolidayBase(dict):
 
     def __add__(
         self, other: Union[int, "HolidayBase", "HolidaySum"]
-    ) -> Union["HolidayBase", "HolidaySum"]:
-        """Add two Holiday together creating a HolidaySum object."""
+    ) -> "HolidaySum":
+        """Add another dictionary of public holidays creating a
+        :class:`HolidaySum` object.
+
+        :param other:
+            The dictionary of public holiday to be added.
+
+        :return:
+            A :class:`HolidaySum` object unless the other object cannot be
+            added, then :class:`self`.
+        """
         if isinstance(other, int) and other == 0:
             # Required to sum() list of holidays
             # sum([h1, h2]) is equivalent to (0 + h1 + h2)
-            return self
+            return self  # TODO understand why this is necessary (typing issue)
         elif not isinstance(other, (HolidayBase, HolidaySum)):
             raise TypeError(
                 "Holiday objects can only be added with other Holiday objects"
@@ -386,7 +468,13 @@ class HolidayBase(dict):
     def __radd__(self, other: Any) -> "HolidaySum":
         return self.__add__(other)
 
+    def __pos__(self):
+        """Enables type checking for the unary operator + (e.g. a + b instead of
+        a.__add__(b))."""
+        pass
+
     def _populate(self, year: int) -> None:
+        """meta: public"""
         pass
 
     def __reduce__(self) -> Union[str, Tuple[Any, ...]]:
@@ -394,7 +482,7 @@ class HolidayBase(dict):
 
     def __repr__(self):
         if len(self) == 0:
-            _repr = f"holidays.CountryHoliday({self.country!r}"
+            _repr = f"holidays.Holidays({self.country!r}"
             if self.prov:
                 _repr += f", prov={self.prov!r}"
             if self.state:
@@ -410,10 +498,23 @@ class HolidayBase(dict):
 
 
 class HolidaySum(HolidayBase):
+    """
+    Returns a :class:`dict`-like object resulting from the addition of two or
+    more individual dictionaries of public holidays. The original dictionaries
+    are available as a :class:`list` in the attribute :attr:`holidays,` and
+    :attr:`country`, :attr:`prov` and :attr:`state` attributes are added
+    together and could become :class:`list` s. Holiday names, when different,
+    are merged. All years are calculated (expanded) for all operands.
+    """
+
     country: Union[str, List[str]]
+    """Countries included in the addition."""
     prov: Optional[Union[str, List[str]]]
+    """Provinces included in the addition."""
     state: Optional[Union[str, List[str]]]
+    """States included in the addition."""
     holidays: List[HolidayBase]
+    """The original HolidayBase objects included in the addition."""
 
     def __init__(
         self,
@@ -421,22 +522,19 @@ class HolidaySum(HolidayBase):
         h2: Union[HolidayBase, "HolidaySum"],
     ) -> None:
         """
-        Class containing holidays that have been generated through adding
-        individual holidays. The original holidays are kept in the attribute
-        'holidays' as a list, and `country`, `prov` and `state` attributes are
-        added together and could be lists. Holiday names, when different, are
-        merged.  All years are expanded for all operands.
+        :param h1:
+            The first HolidayBase object to add.
 
-        :param h1: The first Holiday object to add
-        :param h2: The other Holiday object to add
+        :param h2:
+            The other HolidayBase object to add.
 
         Example:
 
-        >>> from pprint import pprint
-        >>> import holidays
-        >>> nafta_holidays = holidays.US(years=2020) + holidays.CA() \
-        ...     + holidays.MX()
+        >>> from holidays import country_holidays
+        >>> nafta_holidays = country_holidays('US', years=2020) + \
+country_holidays('CA') + country_holidays('MX')
         >>> dates = sorted(nafta_holidays.items(), key=lambda x: x[0])
+        >>> from pprint import pprint
         >>> pprint(dates[:10], width=72)
         [(datetime.date(2020, 1, 1), "Año Nuevo [New Year's Day]"),
          (datetime.date(2020, 1, 20), 'Martin Luther King Jr. Day'),

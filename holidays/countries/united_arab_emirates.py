@@ -17,7 +17,7 @@ from dateutil.relativedelta import relativedelta as rd
 from holidays.constants import FRI, SAT
 from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, SEP, NOV, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.utils import islamic_to_gre
+from holidays.utils import _islamic_to_gre
 
 WEEKEND = (FRI, SAT)
 
@@ -86,7 +86,7 @@ class UnitedArabEmirates(HolidayBase):
                 self[hol_date + rd(days=1)] = "{} Holiday".format(fitr)
                 self[hol_date + rd(days=2)] = "{} Holiday".format(fitr)
         else:
-            for date_obs in islamic_to_gre(year, 10, 1):
+            for date_obs in _islamic_to_gre(year, 10, 1):
                 hol_date = date_obs
                 self[hol_date] = "{}* (*estimated)".format(fitr)
                 self[
@@ -113,7 +113,7 @@ class UnitedArabEmirates(HolidayBase):
                 self[hol_date + rd(days=2)] = "{} Holiday".format(adha)
                 self[hol_date + rd(days=3)] = "{} Holiday".format(adha)
         else:
-            for date_obs in islamic_to_gre(year, 12, 9):
+            for date_obs in _islamic_to_gre(year, 12, 9):
                 hol_date = date_obs
                 self[hol_date] = "{}* (*estimated)".format(hajj)
                 self[hol_date + rd(days=1)] = "{}* (*estimated)".format(adha)
@@ -137,7 +137,7 @@ class UnitedArabEmirates(HolidayBase):
                 hol_date = date(year, *date_obs)
                 self[hol_date] = new_hijri_year
         else:
-            for date_obs in islamic_to_gre(year, 1, 1):
+            for date_obs in _islamic_to_gre(year, 1, 1):
                 hol_date = date_obs
                 self[hol_date] = "{}* (*estimated)".format(new_hijri_year)
 
@@ -150,7 +150,7 @@ class UnitedArabEmirates(HolidayBase):
                     hol_date = date(year, *date_obs)
                     self[hol_date] = ascension
             else:
-                for date_obs in islamic_to_gre(year, 7, 27):
+                for date_obs in _islamic_to_gre(year, 7, 27):
                     hol_date = date_obs
                     self[hol_date] = "{}* (*estimated)".format(ascension)
 
@@ -167,7 +167,7 @@ class UnitedArabEmirates(HolidayBase):
                     hol_date = date(year, *date_obs)
                     self[hol_date] = mawlud
             else:
-                for date_obs in islamic_to_gre(year, 3, 12):
+                for date_obs in _islamic_to_gre(year, 3, 12):
                     hol_date = date_obs
                     self[hol_date] = "{}* (*estimated)".format(mawlud)
 

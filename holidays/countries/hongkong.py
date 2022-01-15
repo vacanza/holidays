@@ -19,7 +19,7 @@ from dateutil.relativedelta import relativedelta as rd, FR, SA, MO
 from holidays.constants import JAN, APR, MAY, JUL, SEP, OCT, DEC
 from holidays.constants import MON, TUE, WED, THU, FRI, SAT, SUN
 from holidays.holiday_base import HolidayBase
-from holidays.utils import ChineseLuniSolar
+from holidays.utils import _ChineseLuniSolar
 
 
 class HongKong(HolidayBase):
@@ -30,7 +30,7 @@ class HongKong(HolidayBase):
     country = "HK"
 
     def __init__(self, **kwargs):
-        self.cnls = ChineseLuniSolar()
+        self.cnls = _ChineseLuniSolar()
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
