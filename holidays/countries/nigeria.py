@@ -14,7 +14,7 @@
 from datetime import date
 
 from dateutil.easter import easter
-from holidays.utils import islamic_to_gre
+from holidays.utils import _islamic_to_gre
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAY, JUN, OCT, DEC
@@ -50,7 +50,7 @@ class Nigeria(HolidayBase):
             # Eid al-Fitr - Feast Festive
             # This is an estimate
             # date of observance is announced yearly
-            for date_obs in islamic_to_gre(year, 10, 1):
+            for date_obs in _islamic_to_gre(year, 10, 1):
                 hol_date = date_obs
                 self[hol_date] = "Eid al-Fitr"
                 self[hol_date + rd(days=1)] = "Eid al-Fitr Holiday"
@@ -58,7 +58,7 @@ class Nigeria(HolidayBase):
             # Arafat Day & Eid al-Adha - Scarfice Festive
             # This is an estimate
             # date of observance is announced yearly
-            for date_obs in islamic_to_gre(year, 12, 10):
+            for date_obs in _islamic_to_gre(year, 12, 10):
                 hol_date = date_obs
                 self[hol_date] = "Eid al-Adha"
                 self[hol_date + rd(days=1)] = "Eid al-Adha Holiday"

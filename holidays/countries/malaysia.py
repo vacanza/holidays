@@ -34,7 +34,7 @@ from holidays.constants import (
 )
 from holidays.constants import SUN
 from holidays.holiday_base import HolidayBase
-from holidays.utils import ChineseLuniSolar, islamic_to_gre
+from holidays.utils import _ChineseLuniSolar, _islamic_to_gre
 
 
 class Malaysia(HolidayBase):
@@ -105,7 +105,7 @@ class Malaysia(HolidayBase):
 
         See parameters and usage in :py:class:`HolidayBase`.
         """
-        self.cnls = ChineseLuniSolar()
+        self.cnls = _ChineseLuniSolar()
         super().__init__(years, expand, observed, prov, state)
 
     def _populate(self, year):
@@ -221,7 +221,7 @@ class Malaysia(HolidayBase):
                 self[hol_date] = "Hari Raya Puasa"
                 self[hol_date + rd(days=+1)] = "Second day of Hari Raya Puasa"
         else:
-            for date_obs in islamic_to_gre(year, 10, 1):
+            for date_obs in _islamic_to_gre(year, 10, 1):
                 hol_date = date_obs
                 self[hol_date] = "Hari Raya Puasa* (*estimated)"
                 self[hol_date + rd(days=+1)] = (
@@ -265,7 +265,7 @@ class Malaysia(HolidayBase):
                     # Second day
                     self[hol_date + rd(days=1)] = "Hari Raya Haji Holiday"
         else:
-            for date_obs in islamic_to_gre(year, 12, 10):
+            for date_obs in _islamic_to_gre(year, 12, 10):
                 hol_date = date_obs
                 self[hol_date] = "Hari Raya Haji* (*estimated)"
                 if self.state == "TRG":
@@ -415,12 +415,12 @@ class Malaysia(HolidayBase):
 
         # Isra and Mi'raj.
         if self.state in ("KDH", "NSN", "PLS", "TRG"):
-            for hol_date in islamic_to_gre(year, 7, 27):
+            for hol_date in _islamic_to_gre(year, 7, 27):
                 self[hol_date] = "Isra and Mi'raj"
 
         # Beginning of Ramadan.
         if self.state in ("JHR", "KDH", "MLK"):
-            for hol_date in islamic_to_gre(year, 9, 1):
+            for hol_date in _islamic_to_gre(year, 9, 1):
                 self[hol_date] = "Begining of Ramadan"
 
         # Nuzul Al-Quran Day.
@@ -432,7 +432,7 @@ class Malaysia(HolidayBase):
             "SBH",
             "SWK",
         ):
-            for hol_date in islamic_to_gre(year, 9, 17):
+            for hol_date in _islamic_to_gre(year, 9, 17):
                 self[hol_date] = "Nuzul Al-Quran Day"
 
         # Hari Raya Aidilfitri.
@@ -469,7 +469,7 @@ class Malaysia(HolidayBase):
                 hol_date += rd(days=+1)
                 self[hol_date] = "Hari Raya Aidilfitri Holiday"
         else:
-            for date_obs in islamic_to_gre(year, 10, 1):
+            for date_obs in _islamic_to_gre(year, 10, 1):
                 hol_date = date_obs
                 self[hol_date] = "Hari Raya Aidilfitri* (*estimated)"
                 hol_date += rd(days=+1)
@@ -514,7 +514,7 @@ class Malaysia(HolidayBase):
         if self.state == "JHR":
             if year > 2014:
                 self[date(year, MAR, 23)] = "Birthday of the Sultan of Johor"
-            for date_obs in islamic_to_gre(year, 2, 6):
+            for date_obs in _islamic_to_gre(year, 2, 6):
                 self[date_obs] = "Hari Hol of Sultan Iskandar of Johor"
 
         elif self.state == "KDH":
@@ -613,7 +613,7 @@ class Malaysia(HolidayBase):
         :return: List of Gregorian dates within the year matching the hijri day
            month, adjusted for Malaysia.
         """
-        hol_dates = islamic_to_gre(year, month, day)
+        hol_dates = _islamic_to_gre(year, month, day)
         if year in (
             2003,
             2004,

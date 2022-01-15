@@ -26,7 +26,11 @@ from holidays.constants import (
     NOV,
     DEC,
 )
-from holidays.holiday_base import HolidayBase
-from holidays.utils import list_supported_countries, CountryHoliday
+from holidays.holiday_base import *  # * import required for IDE docstrings
+from holidays.utils import (
+    CountryHoliday,
+    country_holidays,
+    list_supported_countries,
+)
 
-__version__ = "0.12"
+__version__ = "0.12.1"
