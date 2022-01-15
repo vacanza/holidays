@@ -32,7 +32,7 @@ from holidays.constants import (
 )
 from holidays.constants import SUN
 from holidays.holiday_base import HolidayBase
-from holidays.utils import ChineseLuniSolar, islamic_to_gre
+from holidays.utils import _ChineseLuniSolar, _islamic_to_gre
 
 
 class Singapore(HolidayBase):
@@ -80,7 +80,7 @@ class Singapore(HolidayBase):
         See parameters and usage in :py:class:`HolidayBase`.
         """
 
-        self.cnls = ChineseLuniSolar()
+        self.cnls = _ChineseLuniSolar()
         super().__init__(years, expand, observed, prov, state)
 
     def _populate(self, year):
@@ -131,7 +131,7 @@ class Singapore(HolidayBase):
                 #     self[hol_date + rd(days=+1),
                 #                  "Second day of Hari Raya Puasa")
         else:
-            for date_obs in islamic_to_gre(year, 10, 1):
+            for date_obs in _islamic_to_gre(year, 10, 1):
                 hol_date = date_obs
                 self[hol_date] = "Hari Raya Puasa* (*estimated)"
                 # Second day of Hari Raya Puasa (up to and including 1968)
@@ -173,7 +173,7 @@ class Singapore(HolidayBase):
                 hol_date = date(year, *date_obs)
                 self[hol_date] = "Hari Raya Haji"
         else:
-            for date_obs in islamic_to_gre(year, 12, 10):
+            for date_obs in _islamic_to_gre(year, 12, 10):
                 hol_date = date_obs
                 self[hol_date] = "Hari Raya Haji* (*estimated)"
 

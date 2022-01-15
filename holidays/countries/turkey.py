@@ -15,7 +15,7 @@ from datetime import date
 from dateutil.relativedelta import relativedelta as rd
 from holidays.constants import JAN, APR, MAY, JUL, AUG, OCT
 from holidays.holiday_base import HolidayBase
-from holidays.utils import islamic_to_gre
+from holidays.utils import _islamic_to_gre
 
 
 class Turkey(HolidayBase):
@@ -55,7 +55,7 @@ class Turkey(HolidayBase):
 
         # Ramadan Feast
         # Date of observance is announced yearly, This is an estimate.
-        for date_obs in islamic_to_gre(year, 10, 1):
+        for date_obs in _islamic_to_gre(year, 10, 1):
             hol_date = date_obs
             self[hol_date] = "Ramadan Feast"
             self[hol_date + rd(days=1)] = "Ramadan Feast Holiday"
@@ -63,7 +63,7 @@ class Turkey(HolidayBase):
 
         # Sacrifice Feast
         # Date of observance is announced yearly, This is an estimate.
-        for date_obs in islamic_to_gre(year, 12, 10):
+        for date_obs in _islamic_to_gre(year, 12, 10):
             hol_date = date_obs
             self[hol_date] = "Sacrifice Feast"
             self[hol_date + rd(days=1)] = "Sacrifice Feast Holiday"
