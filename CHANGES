@@ -1,3 +1,13 @@
+Version 0.12.1
+==============
+
+Released ?????? ??, ????
+
+- Spain improvements #580 (gtrabanco)
+- US fixes #594, #595 (apicht)
+- UK fixes #587 (mborsetti)
+- Type hints fixes #589 (mborsetti)
+
 Version 0.12
 ============
 
@@ -5,7 +15,7 @@ Released January 4, 2022
 
 - Release increase (v.0.12, was v.0.11.4 during beta)
 - Copyright update 2022
-- Sphinx documentation (mborsetti, dr-p)
+- Sphinx documentation stub (mborsetti, dr-p)
 - Support for Kazakhstan #534 (chiuczek, intelliHugh)
 - Support for Azerbaijan #540 (eldar-mustafayev)
 - Support for Tunisia #543 (ihebski)
