@@ -3,6 +3,11 @@ Version 0.12.1
 
 Released ?????? ??, ????
 
+- Spain improvements #580 (gtrabanco)
+- US fixes #594, #595 (apicht)
+- UK fixes #587 (mborsetti)
+- Type hints fixes #589 (mborsetti)
+
 Version 0.12
 ============
 
