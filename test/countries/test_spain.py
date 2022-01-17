@@ -265,7 +265,7 @@ class TestSpain(unittest.TestCase):
                     date(2022, *fest_date) in prov_holidays,
                     prov in fest_provs,
                     "Failed date `%s`, province `%s`: %s"
-                    % (date(2022, *fest_date), prov, ",".join(fest_provs)),
+                    % (date(2022, *fest_date), prov, ", ".join(fest_provs)),
                 )
 
     def test_change_of_province_specific_days(self):
