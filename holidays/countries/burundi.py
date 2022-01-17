@@ -18,7 +18,7 @@ from dateutil.relativedelta import relativedelta as rd
 from holidays.constants import SUN
 from holidays.constants import JAN, FEB, APR, MAY, JUL, AUG, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.utils import islamic_to_gre
+from holidays.utils import _islamic_to_gre
 
 
 class Burundi(HolidayBase):
@@ -73,7 +73,7 @@ class Burundi(HolidayBase):
 
         # Eid Al Adha- Feast of the Sacrifice
         # date of observance is announced yearly
-        for date_obs in islamic_to_gre(year, 12, 10):
+        for date_obs in _islamic_to_gre(year, 12, 10):
             hol_date = date_obs
             self[hol_date] = "Eid Al Adha"
             self[hol_date + rd(days=1)] = "Eid Al Adha"

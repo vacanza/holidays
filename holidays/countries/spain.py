@@ -31,7 +31,7 @@ from holidays.constants import (
 )
 from holidays.constants import SUN
 from holidays.holiday_base import HolidayBase
-from holidays.utils import islamic_to_gre
+from holidays.utils import _islamic_to_gre
 
 
 class Spain(HolidayBase):
@@ -194,10 +194,10 @@ class Spain(HolidayBase):
                 self._is_observed(date(year, SEP, 8), "Vírgen de la victoria")
                 self._is_observed(date(year, SEP, 17), "Día de " "Melilla")
                 self._is_observed(
-                    islamic_to_gre(year, 10, 1)[0], "Aid Al-Fitr"
+                    _islamic_to_gre(year, 10, 1)[0], "Aid Al-Fitr"
                 )
                 self._is_observed(
-                    islamic_to_gre(year, 12, 10)[0], "Aid Al-Adha"
+                    _islamic_to_gre(year, 12, 10)[0], "Aid Al-Adha"
                 )
             elif self.prov == "NC":
                 self._is_observed(date(year, SEP, 27), "Día de " "Navarra")
