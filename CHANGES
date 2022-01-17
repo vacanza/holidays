@@ -3,6 +3,8 @@ Version 0.12.1
 
 Released ?????? ??, ????
 
+- Sphinx documentation (mborsetti)
+- Refactoring / cleanups / code and naming reviews (mborsetti)
 - Spain improvements #580 (gtrabanco)
 - US fixes #594, #595 (apicht)
 - UK fixes #587 (mborsetti)
