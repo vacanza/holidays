@@ -111,9 +111,7 @@ class TestSpain(unittest.TestCase):
             (10, 9): ["VC"],
         }
         for prov, prov_holidays in self.prov_holidays.items():
-            for year in range(2010, 2025):
-                if year == 2022:
-                    continue
+            for year in range(2010, 2021):
                 self.assertEqual(
                     date(year, 12, 26) in prov_holidays, prov in ["CT", "IB"]
                 )
