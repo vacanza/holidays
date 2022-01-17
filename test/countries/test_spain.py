@@ -221,7 +221,7 @@ class TestSpain(unittest.TestCase):
             ],
             (4, 18): ["CT", "IB", "NC", "PV", "RI", "VC"],
             (4, 23): ["AR", "CL"],
-            (5, 2): ["AN", "AS", "CL", "EX", "MC"],
+            (5, 2): ["AN", "AS", "CL", "EX", "MC", "MD"],
             (5, 3): ["ML"],
             (5, 17): ["GA"],
             (5, 30): ["CN"],
