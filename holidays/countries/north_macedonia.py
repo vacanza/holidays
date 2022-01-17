@@ -17,7 +17,7 @@ from holidays.constants import JAN, MAY, SEP, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
 from dateutil.easter import easter, EASTER_ORTHODOX
 from dateutil.relativedelta import relativedelta as rd
-from holidays.utils import islamic_to_gre
+from holidays.utils import _islamic_to_gre
 
 
 class NorthMacedonia(HolidayBase):
@@ -45,7 +45,7 @@ class NorthMacedonia(HolidayBase):
             date(year, OCT, 23)
         ] = "Day of the Macedonian Revolutionary Struggle"
         self[date(year, DEC, 8)] = "Saint Clement of Ohrid Day"
-        for date_obs in islamic_to_gre(year, 10, 1):
+        for date_obs in _islamic_to_gre(year, 10, 1):
             self[date_obs] = "Eid al-Fitr"
 
 

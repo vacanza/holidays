@@ -16,7 +16,7 @@ from datetime import date
 import holidays
 
 
-class TestTunisia(unittest.TestCase):
+class TestTaiwan(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.TW()
 
