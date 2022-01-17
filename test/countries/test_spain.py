@@ -46,6 +46,8 @@ class TestSpain(unittest.TestCase):
             (12, 25),
         )
         for y, (m, d) in product(range(1950, 2050), fixed_days_whole_country):
+            if y == 2022:
+                continue
             self.assertIn(date(y, m, d), self.holidays)
 
     def test_fixed_holidays_observed(self):
@@ -74,6 +76,20 @@ class TestSpain(unittest.TestCase):
                 prov in ["CT", "PV", "NC", "VC", "IB", "CM"],
             )
 
+    def test_fix_days_in_2022(self):
+        fix_days_whole_country_2022 = (
+            (1, 1),
+            (1, 6),
+            (4, 15),
+            (8, 15),
+            (10, 12),
+            (11, 1),
+            (12, 6),
+            (12, 8),
+        )
+        for (m, d) in fix_days_whole_country_2022:
+            self.assertIn(date(2022, m, d), self.holidays_observed)
+
     def test_province_specific_days(self):
         province_days = {
             (2, 28): ["AN"],
@@ -96,6 +112,8 @@ class TestSpain(unittest.TestCase):
         }
         for prov, prov_holidays in self.prov_holidays.items():
             for year in range(2010, 2025):
+                if year == 2022:
+                    continue
                 self.assertEqual(
                     date(year, 12, 26) in prov_holidays, prov in ["CT", "IB"]
                 )
@@ -163,13 +181,92 @@ class TestSpain(unittest.TestCase):
                         }
                     )
 
+                if year == 2022:
+                    year_province_days.update(
+                        {(7, 25): ["GA", "MD", "NC", "PV"]}
+                    )
+
                 for fest_day, fest_prov in year_province_days.items():
                     self.assertEqual(
                         date(year, *fest_day) in prov_holidays,
                         prov in fest_prov,
-                        "Failed date %s, province %s: %s"
+                        "Failed date `%s`, province `%s`: %s"
                         % (date(year, *fest_day), prov, fest_prov),
                     )
+
+    def test_variable_days_in_2022(self):
+        province_days = {
+            (2, 28): ["AN"],
+            (3, 1): ["IB"],
+            (3, 19): ["VC"],
+            (4, 14): [
+                "AN",
+                "AR",
+                "AS",
+                "CB",
+                "CE",
+                "CL",
+                "CM",
+                "CN",
+                "EX",
+                "GA",
+                "IB",
+                "MC",
+                "MD",
+                "ML",
+                "NC",
+                "PV",
+                "RI",
+                "VC",
+            ],
+            (4, 18): ["CT", "IB", "NC", "PV", "RI", "VC"],
+            (4, 23): ["AR", "CL"],
+            (5, 2): ["AN", "AS", "CL", "EX", "MC"],
+            (5, 3): ["ML"],
+            (5, 17): ["GA"],
+            (5, 30): ["CN"],
+            (5, 31): ["CM"],
+            (6, 6): ["CT"],
+            (6, 9): ["MU", "RI"],
+            (6, 16): ["CM"],
+            (6, 24): ["CT", "GA", "VC"],
+            (7, 9): ["CE"],
+            (7, 11): ["ML"],
+            (7, 25): ["GA", "NC", "MD", "PV"],
+            (7, 28): ["CB"],
+            (8, 5): ["CE"],
+            (9, 2): ["CE"],
+            (9, 6): ["PV"],
+            (9, 8): ["AS", "EX", "ML"],
+            (9, 15): ["CB"],
+            (9, 17): ["ML"],
+            (12, 26): [
+                "AN",
+                "AR",
+                "AS",
+                "CB",
+                "CL",
+                "CM",
+                "CN",
+                "CT",
+                "EX",
+                "IB",
+                "MC",
+                "MD",
+                "ML",
+                "NC",
+                "RI",
+            ],
+        }
+
+        for fest_date, fest_provs in province_days.items():
+            for prov, prov_holidays in self.prov_holidays.items():
+                self.assertEqual(
+                    date(2022, *fest_date) in prov_holidays,
+                    prov in fest_provs,
+                    "Failed date `%s`, province `%s`: %s"
+                    % (date(2022, *fest_date), prov, ",".join(fest_provs)),
+                )
 
     def test_change_of_province_specific_days(self):
         prov_holidays = self.prov_holidays["PV"]
