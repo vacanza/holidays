@@ -19,7 +19,7 @@ from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd, TH, FR, MO
 
 import holidays
-from holidays.utils import islamic_to_gre
+from holidays.utils import _islamic_to_gre
 
 from copy import deepcopy
 
@@ -148,8 +148,8 @@ class TestSpain(unittest.TestCase):
 
                 year_province_days = deepcopy(province_days)
                 if prov in ["ML"]:
-                    eid_al_fitr_current_year = islamic_to_gre(year, 10, 1)[0]
-                    eid_al_adha_current_year = islamic_to_gre(year, 12, 10)[0]
+                    eid_al_fitr_current_year = _islamic_to_gre(year, 10, 1)[0]
+                    eid_al_adha_current_year = _islamic_to_gre(year, 12, 10)[0]
                     year_province_days.update(
                         {
                             (

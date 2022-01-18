@@ -13,7 +13,7 @@
 
 from datetime import date
 
-from holidays.constants import JAN, FEB, MAR, MAY, JUN, NOV
+from holidays.constants import JAN, FEB, MAR, MAY, JUN, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -60,6 +60,8 @@ class Russia(HolidayBase):
         else:
             # October Revolution Day
             self[date(year, NOV, 7)] = "День Октябрьской революции"
+        # New Year's Day
+        self[date(year, DEC, 31)] = "Новый год"
 
 
 class RU(Russia):
