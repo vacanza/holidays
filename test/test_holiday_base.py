@@ -571,7 +571,7 @@ class TestAllInSameYear(unittest.TestCase):
                 f"holiday {self.hol} returned for year {self.year}"
             )
             print(
-                holidays.CountryHoliday(
+                holidays.country_holidays(
                     self.country, prov=None, state=None, years=[self.year]
                 ).get_list(self.hol)
             )
@@ -585,11 +585,11 @@ class TestAllInSameYear(unittest.TestCase):
         Here we test all countries for the 12-year period starting ten years
         ago and ending 2 years from now.
         """
-        for self.country in [ctr for ctr in self.countries if len(ctr) == 2]:
+        for self.country in self.countries:
             for self.year in range(
                 date.today().year - 10, date.today().year + 3
             ):
-                hols = holidays.CountryHoliday(
+                hols = holidays.country_holidays(
                     self.country, prov=None, state=None, years=[self.year]
                 )
                 for self.hol in hols:
