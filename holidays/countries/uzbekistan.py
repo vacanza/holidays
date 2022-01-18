@@ -12,10 +12,9 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from dateutil.relativedelta import relativedelta as rd
 from holidays.constants import JAN, MAR, MAY, SEP, OCT, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.utils import islamic_to_gre
+from holidays.utils import _islamic_to_gre
 
 
 class Uzbekistan(HolidayBase):
@@ -29,8 +28,7 @@ class Uzbekistan(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
-        """Populate the holidays for a given year
-        """
+        """Populate the holidays for a given year"""
         # New Year's holiday
         self[date(year, JAN, 1)] = "New Year"
 
@@ -42,7 +40,7 @@ class Uzbekistan(HolidayBase):
 
         # Ramadan Khait
         # Date of observance is announced yearly, This is an estimate.
-        for hol_date in islamic_to_gre(year, 10, 1):
+        for hol_date in _islamic_to_gre(year, 10, 1):
             self[hol_date] = "Ramadan Khait"
 
         # Memorial Day
@@ -50,7 +48,7 @@ class Uzbekistan(HolidayBase):
 
         # Kurban Khait
         # Date of observance is announced yearly, This is an estimate.
-        for hol_date in islamic_to_gre(year, 12, 10):
+        for hol_date in _islamic_to_gre(year, 12, 10):
             self[hol_date] = "Kurban Khait"
 
             # Independence Day
@@ -61,6 +59,7 @@ class Uzbekistan(HolidayBase):
 
         # Constitution Day
         self[date(year, DEC, 8)] = "Constitution"
+
 
 class UZ(Uzbekistan):
     pass

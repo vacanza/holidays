@@ -207,6 +207,8 @@ United States         US    state = AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL,
                             MA, MI, FM, MN, MS, MO, MT, NE, NV, NH, NJ, NM, NY,
                             NC, ND, MP, OH, OK, OR, PW, PA, PR, RI, SC, SD, TN,
                             TX, UT, VT, VA, VI, WA, WV, WI, WY
+Uruguay               UY    None
+Uzbekistan            UZ    None
 Venezuela             VE    None
 Vietnam               VN    None
 Zambia                ZM    None
