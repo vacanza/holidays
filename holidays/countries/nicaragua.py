@@ -22,10 +22,12 @@ from holidays.holiday_base import HolidayBase
 
 class Nicaragua(HolidayBase):
     country = "NI"
-    PROVINCES = ["MN"]
+    subdivisions = ["MN"]
 
     def __init__(self, **kwargs):
-        self.prov = kwargs.pop("prov", kwargs.pop("state", "MN"))
+        # Default subdivision to MN; prov for backwards compatibility
+        if not kwargs.get("subdiv", kwargs.get("prov")):
+            kwargs["subdiv"] = "MN"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -56,8 +58,8 @@ class Nicaragua(HolidayBase):
         self[date(year, DEC, 25)] = "Navidad [Christmas]"
 
         # Provinces festive day
-        if self.prov:
-            if self.prov == "MN":
+        if self.subdiv:
+            if self.subdiv == "MN":
                 # Santo Domingo Day Down
                 self[date(year, AUG, 1)] = "Bajada de Santo Domingo"
                 # Santo Domingo Day Up

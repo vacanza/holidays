@@ -35,7 +35,8 @@ from holidays.holiday_base import HolidayBase
 
 class Italy(HolidayBase):
     country = "IT"
-    PROVINCES = [
+    subdivisions = [
+        # provinces
         "AN",
         "AO",
         "BA",
@@ -45,7 +46,6 @@ class Italy(HolidayBase):
         "BS",
         "CB",
         "CT",
-        "Cesena",
         "CH",
         "CS",
         "KR",
@@ -53,13 +53,13 @@ class Italy(HolidayBase):
         "FE",
         "FI",
         "FC",
-        "Forli",
         "FR",
         "GE",
         "GO",
         "IS",
         "SP",
         "LT",
+        "ME",
         "MN",
         "MS",
         "MI",
@@ -87,16 +87,18 @@ class Italy(HolidayBase):
         "TN",
         "TO",
         "TS",
-        "Pesaro",
         "PU",
-        "Urbino",
         "VE",
         "VC",
         "VI",
+        # cities
+        "Cesena",
+        "Forlì",
+        "Pesaro",
+        "Urbino",
     ]
 
     def __init__(self, **kwargs):
-        self.prov = kwargs.pop("prov", kwargs.pop("state", ""))
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -116,86 +118,86 @@ class Italy(HolidayBase):
         self[date(year, DEC, 26)] = "Santo Stefano"
 
         # Provinces holidays
-        if self.prov:
-            if self.prov == "AN":
+        if self.subdiv:
+            if self.subdiv == "AN":
                 self[date(year, MAY, 4)] = "San Ciriaco"
-            elif self.prov == "AO":
+            elif self.subdiv == "AO":
                 self[date(year, SEP, 7)] = "San Grato"
-            elif self.prov in ("BA"):
+            elif self.subdiv in ("BA"):
                 self[date(year, DEC, 6)] = "San Nicola"
-            elif self.prov == "BL":
+            elif self.subdiv == "BL":
                 self[date(year, NOV, 11)] = "San Martino"
-            elif self.prov in ("BO"):
+            elif self.subdiv in ("BO"):
                 self[date(year, OCT, 4)] = "San Petronio"
-            elif self.prov == "BZ":
+            elif self.subdiv == "BZ":
                 self[date(year, AUG, 15)] = "Maria Santissima Assunta"
-            elif self.prov == "BS":
+            elif self.subdiv == "BS":
                 self[date(year, FEB, 15)] = "Santi Faustino e Giovita"
-            elif self.prov == "CB":
+            elif self.subdiv == "CB":
                 self[date(year, APR, 23)] = "San Giorgio"
-            elif self.prov == "CT":
+            elif self.subdiv == "CT":
                 self[date(year, FEB, 5)] = "Sant'Agata"
-            elif self.prov in ("FC", "Cesena"):
+            elif self.subdiv in ("FC", "Cesena"):
                 self[date(year, JUN, 24)] = "San Giovanni Battista"
-            if self.prov in ("FC", "Forlì"):
+            if self.subdiv in ("FC", "Forlì"):
                 self[date(year, FEB, 4)] = "Madonna del Fuoco"
-            elif self.prov == "CH":
+            elif self.subdiv == "CH":
                 self[date(year, MAY, 11)] = "San Giustino di Chieti"
-            elif self.prov == "CS":
+            elif self.subdiv == "CS":
                 self[date(year, FEB, 12)] = "Madonna del Pilerio"
-            elif self.prov == "KR":
+            elif self.subdiv == "KR":
                 self[date(year, OCT, 9)] = "San Dionigi"
-            elif self.prov == "EN":
+            elif self.subdiv == "EN":
                 self[date(year, JUL, 2)] = "Madonna della Visitazione"
-            elif self.prov == "FE":
+            elif self.subdiv == "FE":
                 self[date(year, APR, 23)] = "San Giorgio"
-            elif self.prov == "FI":
+            elif self.subdiv == "FI":
                 self[date(year, JUN, 24)] = "San Giovanni Battista"
-            elif self.prov == "FR":
+            elif self.subdiv == "FR":
                 self[date(year, JUN, 20)] = "San Silverio"
-            elif self.prov == "GE":
+            elif self.subdiv == "GE":
                 self[date(year, JUN, 24)] = "San Giovanni Battista"
-            elif self.prov == "GO":
+            elif self.subdiv == "GO":
                 self[date(year, MAR, 16)] = "Santi Ilario e Taziano"
-            elif self.prov == "IS":
+            elif self.subdiv == "IS":
                 self[date(year, MAY, 19)] = "San Pietro Celestino"
-            elif self.prov == "SP":
+            elif self.subdiv == "SP":
                 self[date(year, MAR, 19)] = "San Giuseppe"
-            elif self.prov == "LT":
+            elif self.subdiv == "LT":
                 self[date(year, APR, 25)] = "San Marco evangelista"
-            elif self.prov == "ME":
+            elif self.subdiv == "ME":
                 self[date(year, JUN, 3)] = "Madonna della Lettera"
-            elif self.prov == "MI":
+            elif self.subdiv == "MI":
                 self[date(year, DEC, 7)] = "Sant'Ambrogio"
-            elif self.prov == "MN":
+            elif self.subdiv == "MN":
                 self[date(year, MAR, 18)] = "Sant'Anselmo da Baggio"
-            elif self.prov == "MS":
+            elif self.subdiv == "MS":
                 self[date(year, OCT, 4)] = "San Francesco d'Assisi"
-            elif self.prov == "MO":
+            elif self.subdiv == "MO":
                 self[date(year, JAN, 31)] = "San Geminiano"
-            elif self.prov == "MB":
+            elif self.subdiv == "MB":
                 self[date(year, JUN, 24)] = "San Giovanni Battista"
-            elif self.prov == "NA":
+            elif self.subdiv == "NA":
                 self[date(year, SEP, 19)] = "San Gennaro"
-            elif self.prov == "PD":
+            elif self.subdiv == "PD":
                 self[date(year, JUN, 13)] = "Sant'Antonio di Padova"
-            elif self.prov == "PA":
+            elif self.subdiv == "PA":
                 self[date(year, JUL, 15)] = "San Giovanni"
-            elif self.prov == "PR":
+            elif self.subdiv == "PR":
                 self[date(year, JAN, 13)] = "Sant'Ilario di Poitiers"
-            elif self.prov == "PG":
+            elif self.subdiv == "PG":
                 self[date(year, JAN, 29)] = "Sant'Ercolano e San Lorenzo"
-            elif self.prov == "PC":
+            elif self.subdiv == "PC":
                 self[date(year, JUL, 4)] = "Sant'Antonino di Piacenza"
-            elif self.prov == "RM":
+            elif self.subdiv == "RM":
                 self[date(year, JUN, 29)] = "Santi Pietro e Paolo"
-            elif self.prov == "TN":
+            elif self.subdiv == "TN":
                 self[date(year, JUN, 26)] = "San Vigilio"
-            elif self.prov == "TO":
+            elif self.subdiv == "TO":
                 self[date(year, JUN, 24)] = "San Giovanni Battista"
-            elif self.prov == "TS":
+            elif self.subdiv == "TS":
                 self[date(year, NOV, 3)] = "San Giusto"
-            elif self.prov == "VI":
+            elif self.subdiv == "VI":
                 self[date(year, APR, 25)] = "San Marco"
 
         # TODO: add missing provinces' holidays:

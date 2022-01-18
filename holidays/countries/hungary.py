@@ -42,7 +42,7 @@ class Hungary(HolidayBase):
         self._add_with_observed_day_off(date(year, JAN, 1), "Újév", since=2014)
         # Since 2014, the last day of the year is an observed day off if New
         # Year's Day falls on a Tuesday.
-        if year >= 2104:
+        if year >= 2014:
             if self.observed and date(year, DEC, 31).weekday() == MON:
                 self[date(year, DEC, 31)] = "Újév előtti pihenőnap"
 

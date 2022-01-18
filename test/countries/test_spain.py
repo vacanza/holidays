@@ -29,8 +29,8 @@ class TestSpain(unittest.TestCase):
         self.holidays = holidays.ES(observed=False)
         self.holidays_observed = holidays.ES()
         self.prov_holidays = {
-            prov: holidays.ES(observed=False, prov=prov)
-            for prov in holidays.ES.PROVINCES
+            prov: holidays.ES(observed=False, subdiv=prov)
+            for prov in holidays.ES.subdivisions
         }
 
     def test_fixed_holidays(self):

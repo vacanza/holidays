@@ -2,7 +2,7 @@
 
 #  python-holidays
 #  ---------------
-#  A fast, efficient Python library for generating country, province and state
+#  A fast, efficient Python library for generating country and subdivision
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
@@ -11,28 +11,29 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+# from __future__ import annotations  # add in Python 3.7
+
 import inspect
 from functools import lru_cache
-from typing import Iterable, List, Optional, Set, TYPE_CHECKING, Union
+from typing import Dict, Iterable, List, Optional, Union
 
 from datetime import date, timedelta
 
 from hijri_converter import convert
 
 import holidays.countries
-
-if TYPE_CHECKING:
-    from holidays import HolidayBase  # required by docstring, typing
+from holidays.holiday_base import HolidayBase
 
 
 def country_holidays(
     country: str,
+    subdiv: Optional[str] = None,
     years: Union[int, Iterable[int]] = None,
-    prov: Optional[str] = None,
-    state: Optional[str] = None,
     expand: bool = True,
     observed: bool = True,
-) -> "HolidayBase":
+    prov: Optional[str] = None,
+    state: Optional[str] = None,
+) -> HolidayBase:
     """
     Returns a new dictionary-like :py:class:`HolidayBase` object for the public
     holidays of the country matching **country** and other keyword arguments.
@@ -40,14 +41,12 @@ def country_holidays(
     :param country:
         An ISO 3166-1 Alpha-2 country code.
 
+    :param subdiv:
+        The subdivision (e.g. state or province); not implemented for all
+        countries (see documentation).
+
     :param years:
         The year(s) to pre-calculate public holidays for at instantiation.
-
-    :param prov:
-        The Province (not implemented for all countries; see documentation).
-
-    :param state:
-        The State (not implemented for all countries; see documentation).
 
     :param expand:
         Whether the entire year is calculated when one date from that year
@@ -57,6 +56,12 @@ def country_holidays(
         Whether to include the dates of when public holiday are observed
         (e.g. a holiday falling on a Sunday being observed the following
         Monday). False may not work for all countries.
+
+    :param prov:
+        *deprecated* use subdiv instead.
+
+    :param state:
+        *deprecated* use subdiv instead.
 
     :return:
         A :py:class:`HolidayBase` object matching the **country**.
@@ -89,8 +94,8 @@ def country_holidays(
 
     >>> from holidays import country_holidays
     >>> us_holidays = country_holidays('US')
-    # For specific prov / state:
-    >>> calif_holidays = country_holidays('US', prov=None, state='CA')
+    # For a specific subdivision (e.g. state or province):
+    >>> calif_holidays = country_holidays('US', subdiv='CA')
 
     The below will cause 2015 holidays to be calculated on the fly:
 
@@ -137,7 +142,7 @@ def country_holidays(
 
     Some holidays are only present in parts of a country:
 
-    >>> us_pr_holidays = country_holidays('US', state='PR')
+    >>> us_pr_holidays = country_holidays('US', subdiv='PR')
     >>> assert '2018-01-06' not in us_holidays
     >>> assert '2018-01-06' in us_pr_holidays
 
@@ -170,46 +175,51 @@ def country_holidays(
         country = next(obj for name, obj in country_classes if name == country)
         country_holiday = country(
             years=years,
-            prov=prov,
-            state=state,
+            subdiv=subdiv,
             expand=expand,
             observed=observed,
+            prov=prov,
+            state=state,
         )
     except StopIteration:
-        raise KeyError("Country %s not available" % country)
+        raise NotImplementedError(f"Country {country} not available")
     return country_holiday
 
 
 def CountryHoliday(
     country: str,
+    subdiv: Optional[str] = None,
     years: Union[int, Iterable[int]] = None,
-    prov: Optional[str] = None,
-    state: Optional[str] = None,
     expand: bool = True,
     observed: bool = True,
-) -> "HolidayBase":
+    prov: Optional[str] = None,
+    state: Optional[str] = None,
+) -> HolidayBase:
     """
     Deprecated name for :py:func:`country_holidays`.
 
     :meta private:
     """
-    return country_holidays(country, years, prov, state, expand, observed)
+    return country_holidays(
+        country, subdiv, years, expand, observed, prov, state
+    )
 
 
-def list_supported_countries() -> Set[str]:
+def list_supported_countries() -> Dict[str, List[str]]:
     """
-    Get all supported countries.
+    Get all supported countries and their subdivisions.
 
     :return:
-        A set of ISO 3166-1 Alpha-2 country codes with all the countries
-        supported.
+        A dictionary where the key is the ISO 3166-1 Alpha-2 country codes and
+        the value is a list of supported subdivision codes.
     """
-    return set(
-        obj.country
+    return {
+        obj.country: obj.subdivisions
         for name, obj in inspect.getmembers(
             holidays.countries, inspect.isclass
         )
-    )
+        if obj.__base__ == HolidayBase
+    }
 
 
 def _islamic_to_gre(Gyear: int, Hmonth: int, Hday: int) -> List[date]:

@@ -27,7 +27,7 @@ class India(HolidayBase):
     # https://vahan.parivahan.gov.in/vahan4dashboard/
 
     country = "IN"
-    PROVINCES = [
+    subdivisions = [
         "AP",  # Andhra Pradesh
         "AR",  # Arunachal Pradesh
         "AS",  # Assam
@@ -92,25 +92,25 @@ class India(HolidayBase):
         self[date(year, DEC, 25)] = "Christmas"
 
         # GJ: Gujarat
-        if self.prov == "GJ":
+        if self.subdiv == "GJ":
             self[date(year, JAN, 14)] = "Uttarayan"
             self[date(year, MAY, 1)] = "Gujarat Day"
             self[date(year, OCT, 31)] = "Sardar Patel Jayanti"
 
-        if self.prov == "BR":
+        if self.subdiv == "BR":
             self[date(year, MAR, 22)] = "Bihar Day"
 
-        if self.prov == "RJ":
+        if self.subdiv == "RJ":
             self[date(year, MAR, 30)] = "Rajasthan Day"
             self[date(year, JUN, 15)] = "Maharana Pratap Jayanti"
 
-        if self.prov == "OR":
+        if self.subdiv == "OR":
             self[date(year, APR, 1)] = "Odisha Day (Utkala Dibasa)"
             self[date(year, APR, 15)] = (
                 "Maha Vishuva Sankranti / Pana" " Sankranti"
             )
 
-        if self.prov in (
+        if self.subdiv in (
             "OR",
             "AP",
             "BR",
@@ -124,44 +124,44 @@ class India(HolidayBase):
         ):
             self[date(year, APR, 14)] = "Dr. B. R. Ambedkar's Jayanti"
 
-        if self.prov == "TN":
+        if self.subdiv == "TN":
             self[date(year, APR, 14)] = "Puthandu (Tamil New Year)"
             self[date(year, APR, 15)] = "Puthandu (Tamil New Year)"
 
-        if self.prov == "WB":
+        if self.subdiv == "WB":
             self[date(year, APR, 14)] = "Pohela Boishakh"
             self[date(year, APR, 15)] = "Pohela Boishakh"
             self[date(year, MAY, 9)] = "Rabindra Jayanti"
 
-        if self.prov == "AS":
+        if self.subdiv == "AS":
             self[date(year, APR, 15)] = "Bihu (Assamese New Year)"
 
-        if self.prov == "MH":
+        if self.subdiv == "MH":
             self[date(year, MAY, 1)] = "Maharashtra Day"
             self[date(year, OCT, 15)] = "Dussehra"
 
-        if self.prov == "SK":
+        if self.subdiv == "SK":
             self[date(year, MAY, 16)] = "Annexation Day"
 
-        if self.prov == "KA":
+        if self.subdiv == "KA":
             self[date(year, NOV, 1)] = "Karnataka Rajyotsava"
 
-        if self.prov == "AP":
+        if self.subdiv == "AP":
             self[date(year, NOV, 1)] = "Andhra Pradesh Foundation Day"
 
-        if self.prov == "HR":
+        if self.subdiv == "HR":
             self[date(year, NOV, 1)] = "Haryana Foundation Day"
 
-        if self.prov == "MP":
+        if self.subdiv == "MP":
             self[date(year, NOV, 1)] = "Madhya Pradesh Foundation Day"
 
-        if self.prov == "KL":
+        if self.subdiv == "KL":
             self[date(year, NOV, 1)] = "Kerala Foundation Day"
 
-        if self.prov == "CG":
+        if self.subdiv == "CG":
             self[date(year, NOV, 1)] = "Chhattisgarh Foundation Day"
 
-        if self.prov == "TS":
+        if self.subdiv == "TS":
             self[date(year, OCT, 6)] = "Bathukamma Festival"
             self[date(year, APR, 6)] = "Eid al-Fitr"
 

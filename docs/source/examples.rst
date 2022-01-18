@@ -40,7 +40,7 @@ Let's print out the holidays in 2014 specific to California, USA:
 
 .. code-block:: python
 
-   >>> for date, name in sorted(holidays.US(state='CA', years=2014).items()):
+   >>> for date, name in sorted(holidays.US(subdiv='CA', years=2014).items()):
    >>>     print(date, name)
    2014-01-01 New Year's Day
    2014-01-20 Martin Luther King Jr. Day
@@ -165,15 +165,15 @@ The other form of addition is also available:
    >>> north_america.country
    ['CA', 'US', 'MX']
 
-We can even get a set of holidays that include all the province- or
-state-specific holidays using the built-in :py:func:`sum` function:
+We can even get a set of holidays that include all the subdivision-specific
+holidays using the built-in :py:func:`sum` function:
 
 .. code-block:: python
 
-   >>> a = sum([holidays.CA(prov=x) for x in holidays.CA.PROVINCES])
-   >>> a.prov
-   PROVINCES = ['AB', 'BC', 'MB', 'NB', 'NL', 'NS', 'NT', 'NU', 'ON', 'PE',
-                'QC', 'SK', 'YU']
+   >>> a = sum([holidays.CA(subdiv=x) for x in holidays.CA.subdivisions])
+   >>> a.subdiv
+   ['AB', 'BC', 'MB', 'NB', 'NL', 'NS', 'NT', 'NU', 'ON', 'PE', 'QC', 'SK',
+    'YU']
 
 
 Creating custom holidays (or augmenting existing ones with private ones)
@@ -217,30 +217,31 @@ that is not supported yet:
    >>>         self[date(year, 2, 3)] = "Another Federal Holiday"
    >>> hdays = NewCountryHolidays()
 
-We can also include prov/state specific holidays in our new class:
+We can also include holidays for a subdivision (e.g. prov/state) in our new
+class:
 
 .. code-block:: python
 
    >>> class NewCountryHolidays(holidays.HolidayBase):
    >>>     def _populate(self, year):
-   >>>         # Set default prov if not provided
-   >>>         if self.prov == None:
-   >>>             self.prov = 'XX'
+   >>>         # Set default subdiv if not provided
+   >>>         if self.subdiv == None:
+   >>>             self.subdiv = 'XX'
    >>>         self[date(year, 1, 2)] = "Some Federal Holiday"
-   >>>         if self.prov == 'XX':
-   >>>             self[date(year, 2, 3)] = "Special XX province-only holiday"
-   >>>         if self.prov == 'YY':
-   >>>             self[date(year, 3, 4)] = "Special YY province-only holiday"
+   >>>         if self.subdiv == 'XX':
+   >>>             self[date(year, 2, 3)] = "Special XX subdiv-only holiday"
+   >>>         if self.subdiv == 'YY':
+   >>>             self[date(year, 3, 4)] = "Special YY subdiv-only holiday"
    >>> hdays = NewCountryHolidays()
-   >>> hdays = NewCountryHolidays(prov='XX')
+   >>> hdays = NewCountryHolidays(subdiv='XX')
 
 If you write the code necessary to create a holiday class for a country
 not currently supported please contribute your code to the project!
 
 Perhaps you just have a list of dates that are holidays and want to turn
 them into a Holiday class to access all the useful functionality. You can
-use the py:meth:`append()` method which accepts a dictionary of {date: name} pairs,
-a list of dates, or even singular date/string/timestamp objects:
+use the py:meth:`append()` method which accepts a dictionary of {date: name}
+pairs, a list of dates, or even singular date/string/timestamp objects:
 
 .. code-block:: python
 

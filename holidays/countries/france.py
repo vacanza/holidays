@@ -36,7 +36,7 @@ class France(HolidayBase):
     """
 
     country = "FR"
-    PROVINCES = [
+    subdivisions = [
         "Métropole",
         "Alsace-Moselle",
         "Guadeloupe",
@@ -52,7 +52,9 @@ class France(HolidayBase):
     ]
 
     def __init__(self, **kwargs):
-        self.prov = kwargs.pop("prov", "Métropole")
+        # Default subdivision to Métropole; prov for backwards compatibility
+        if not kwargs.get("subdiv", kwargs.get("prov")):
+            kwargs["subdiv"] = "Métropole"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -76,7 +78,7 @@ class France(HolidayBase):
             self[date(year, NOV, 11)] = "Armistice 1918"
 
         # Religious holidays
-        if self.prov in [
+        if self.subdiv in [
             "Alsace-Moselle",
             "Guadeloupe",
             "Guyane",
@@ -85,7 +87,7 @@ class France(HolidayBase):
         ]:
             self[easter(year) - rd(days=2)] = "Vendredi saint"
 
-        if self.prov == "Alsace-Moselle":
+        if self.subdiv == "Alsace-Moselle":
             self[date(year, DEC, 26)] = "Deuxième jour de Noël"
 
         if year >= 1886:
@@ -98,42 +100,42 @@ class France(HolidayBase):
             self[date(year, NOV, 1)] = "Toussaint"
 
             name = "Noël"
-            if self.prov == "Alsace-Moselle":
+            if self.subdiv == "Alsace-Moselle":
                 name = "Premier jour de " + name
             self[date(year, DEC, 25)] = name
 
         # Non-metropolitan holidays (starting dates missing)
-        if self.prov == "Mayotte":
+        if self.subdiv == "Mayotte":
             self[date(year, APR, 27)] = "Abolition de l'esclavage"
 
-        if self.prov == "Wallis-et-Futuna":
+        if self.subdiv == "Wallis-et-Futuna":
             self[date(year, APR, 28)] = "Saint Pierre Chanel"
 
-        if self.prov == "Martinique":
+        if self.subdiv == "Martinique":
             self[date(year, MAY, 22)] = "Abolition de l'esclavage"
 
-        if self.prov in ["Guadeloupe", "Saint-Martin"]:
+        if self.subdiv in ["Guadeloupe", "Saint-Martin"]:
             self[date(year, MAY, 27)] = "Abolition de l'esclavage"
 
-        if self.prov == "Guyane":
+        if self.subdiv == "Guyane":
             self[date(year, JUN, 10)] = "Abolition de l'esclavage"
 
-        if self.prov == "Polynésie Française":
+        if self.subdiv == "Polynésie Française":
             self[date(year, JUN, 29)] = "Fête de l'autonomie"
 
-        if self.prov in ["Guadeloupe", "Martinique"]:
+        if self.subdiv in ["Guadeloupe", "Martinique"]:
             self[date(year, JUL, 21)] = "Fête Victor Schoelcher"
 
-        if self.prov == "Wallis-et-Futuna":
+        if self.subdiv == "Wallis-et-Futuna":
             self[date(year, JUL, 29)] = "Fête du Territoire"
 
-        if self.prov == "Nouvelle-Calédonie":
+        if self.subdiv == "Nouvelle-Calédonie":
             self[date(year, SEP, 24)] = "Fête de la Citoyenneté"
 
-        if self.prov == "Saint-Barthélémy":
+        if self.subdiv == "Saint-Barthélémy":
             self[date(year, OCT, 9)] = "Abolition de l'esclavage"
 
-        if self.prov == "La Réunion" and year >= 1981:
+        if self.subdiv == "La Réunion" and year >= 1981:
             self[date(year, DEC, 20)] = "Abolition de l'esclavage"
 
 

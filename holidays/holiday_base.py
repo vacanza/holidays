@@ -2,7 +2,7 @@
 
 #  python-holidays
 #  ---------------
-#  A fast, efficient Python library for generating country, province and state
+#  A fast, efficient Python library for generating country and subdivision
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
@@ -10,8 +10,21 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
+
+# from __future__ import annotations  # add in Python 3.7
+
+import warnings
 from datetime import timedelta, datetime, date
-from typing import Any, Iterable, List, Optional, TYPE_CHECKING, Tuple, Union
+from typing import (
+    Any,
+    Iterable,
+    List,
+    Optional,
+    Set,
+    TYPE_CHECKING,
+    Tuple,
+    Union,
+)
 
 from dateutil.parser import parse
 
@@ -53,8 +66,8 @@ class HolidayBase(dict):
 
     >>> from holidays import country_holidays
     >>> us_holidays = country_holidays('US')
-    # For specific prov / state:
-    >>> calif_holidays = country_holidays('US', prov=None, state='CA')
+    # For a specific subdivisions (e.g. state or province):
+    >>> calif_holidays = country_holidays('US', subdiv='CA')
 
     The below will cause 2015 holidays to be calculated on the fly:
 
@@ -101,7 +114,7 @@ class HolidayBase(dict):
 
     Some holidays are only present in parts of a country:
 
-    >>> us_pr_holidays = country_holidays('US', state='PR')
+    >>> us_pr_holidays = country_holidays('US', subdiv='PR')
     >>> assert '2018-01-06' not in us_holidays
     >>> assert '2018-01-06' in us_pr_holidays
 
@@ -130,25 +143,43 @@ class HolidayBase(dict):
 
     country: str
     """The country's ISO 3166-1 alpha-2 code."""
+    subdivisions: List[str] = []
+    """The subdivisions supported for this country (see documentation)."""
+    years: Set[int]
+    """The years calculated."""
+    expand: bool
+    """Whether the entire year is calculated when one date from that year
+    is requested."""
+    observed: bool
+    """Whether dates when public holiday are observed are included."""
+    subdiv: Optional[str] = None
+    """The subdiv requested."""
+    _deprecated_subdivisions: List[str] = []
+    """Other subdivisions whose names are deprecated or aliases of the official
+    ones."""
 
     def __init__(
         self,
         years: Union[int, Iterable[int]] = None,
         expand: bool = True,
         observed: bool = True,
-        prov: Optional[str] = None,
-        state: Optional[str] = None,
+        subdiv: Optional[str] = None,
+        prov: Optional[str] = None,  # deprecated
+        state: Optional[str] = None,  # deprecated
     ) -> None:
         """
         :param years:
             The year(s) to pre-calculate public holidays for at instantiation.
 
+        :param subdiv:
+            The subdivision (e.g. state or province); not implemented for all
+            countries (see documentation).
+
         :param prov:
-            The Province (not implemented for all countries; see
-            documentation).
+            *deprecated* use subdiv instead.
 
         :param state:
-            The State (not implemented for all countries; see documentation).
+            *deprecated* use subdiv instead.
 
         :param expand:
             Whether the entire year is calculated when one date from that year
@@ -165,12 +196,25 @@ class HolidayBase(dict):
         super().__init__()
         self.observed = observed
         self.expand = expand
+        self.subdiv = subdiv or prov or state
+        if prov or state:
+            warnings.warn(
+                f"Arguments prov and state are deprecated, use subdiv='{prov or state}' instead.",
+                DeprecationWarning,
+            )
+        if not isinstance(self, HolidaySum):
+            if (
+                subdiv
+                and subdiv
+                not in self.subdivisions + self._deprecated_subdivisions
+            ):
+                raise NotImplementedError(
+                    f"Country {self.country} does not have subdivision '{subdiv}'"
+                )
         if isinstance(years, int):
-            years = [years]
-        self.years = set(years) if years is not None else set()
-        if not getattr(self, "prov", False):
-            self.prov = prov
-        self.state = state
+            self.years = {years}
+        else:
+            self.years = set(years) if years is not None else set()
         for year in self.years.copy():
             self._populate(year)
 
@@ -483,10 +527,8 @@ class HolidayBase(dict):
     def __repr__(self):
         if len(self) == 0:
             _repr = f"holidays.Holidays({self.country!r}"
-            if self.prov:
-                _repr += f", prov={self.prov!r}"
-            if self.state:
-                _repr += f", state={self.state!r}"
+            if self.subdiv:
+                _repr += f", subdiv={self.subdiv!r}"
             _repr += ")"
             return _repr
         return super(HolidayBase, self).__repr__()
@@ -502,19 +544,19 @@ class HolidaySum(HolidayBase):
     Returns a :class:`dict`-like object resulting from the addition of two or
     more individual dictionaries of public holidays. The original dictionaries
     are available as a :class:`list` in the attribute :attr:`holidays,` and
-    :attr:`country`, :attr:`prov` and :attr:`state` attributes are added
+    :attr:`country` and :attr:`subdiv` attributes are added
     together and could become :class:`list` s. Holiday names, when different,
     are merged. All years are calculated (expanded) for all operands.
     """
 
     country: Union[str, List[str]]
     """Countries included in the addition."""
-    prov: Optional[Union[str, List[str]]]
-    """Provinces included in the addition."""
-    state: Optional[Union[str, List[str]]]
-    """States included in the addition."""
+    subdiv: Optional[Union[str, List[str]]]
+    """Subdivisions included in the addition."""
     holidays: List[HolidayBase]
     """The original HolidayBase objects included in the addition."""
+    years: Set[int]
+    """The years calculated."""
 
     def __init__(
         self,
@@ -565,7 +607,12 @@ country_holidays('CA') + country_holidays('MX')
         kwargs["expand"] = h1.expand or h2.expand
         kwargs["observed"] = h1.observed or h2.observed
         # join country and subdivisions data
-        for attr in ("country", "prov", "state"):
+        # TODO this way makes no sense: joining Italy Catania (IT, CA) with
+        # USA Mississippi (US, MS) and USA Michigan (US, MI) yields
+        # country=["IT", "US"] and subdiv=["CA", "MS", "MI"], which could very
+        # well be California and Messina and Milano, or Catania, Mississippi
+        # and Milano, or ... you get the picture.
+        for attr in ("country", "subdiv"):
             if (
                 getattr(h1, attr)
                 and getattr(h2, attr)

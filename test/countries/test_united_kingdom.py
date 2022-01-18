@@ -23,11 +23,11 @@ import holidays
 class TestUK(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.UK()
-        self.holidays_england = holidays.UK(state="England")
-        self.holidays_wales = holidays.UK(state="Wales")
-        self.holidays_scotland = holidays.UK(state="Scotland")
-        self.holidays_isleofman = holidays.UK(state="Isle of Man")
-        self.holidays_northernireland = holidays.UK(state="Northern Ireland")
+        self.holidays_england = holidays.UK(subdiv="England")
+        self.holidays_wales = holidays.UK(subdiv="Wales")
+        self.holidays_scotland = holidays.UK(subdiv="Scotland")
+        self.holidays_isleofman = holidays.UK(subdiv="Isle of Man")
+        self.holidays_northernireland = holidays.UK(subdiv="Northern Ireland")
 
     def test_new_years(self):
         for year in range(1974, 2100):
@@ -266,12 +266,14 @@ class TestScotland(unittest.TestCase):
             self.assertTrue(issubclass(w[-1].category, DeprecationWarning))
 
 
-class TestIsleOfMan(unittest.TestCase):
+class TestIsleOfManAsGB(unittest.TestCase):
+    """Deprecated backwards compatibility"""
+
     def test_warning(self):
         with warnings.catch_warnings(record=True) as w:
             warnings.simplefilter("always")
-            isleofman = holidays.IsleOfMan()
-            self.assertIsInstance(isleofman, holidays.IsleOfMan)
+            isleofman = holidays.UnitedKingdom(state="Isle of Man")
+            # self.assertIsInstance(isleofman, holidays.IsleOfMan)
             self.assertEqual(1, len(w))
             self.assertTrue(issubclass(w[-1].category, DeprecationWarning))
 

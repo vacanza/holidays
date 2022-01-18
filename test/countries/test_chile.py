@@ -21,8 +21,8 @@ import holidays
 class TestChile(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.Chile()
-        self.holidays_AP = holidays.CL(state="AP")
-        self.holidays_NB = holidays.CHL(state="NB")
+        self.holidays_AP = holidays.CL(subdiv="AP")
+        self.holidays_NB = holidays.CHL(subdiv="NB")
 
     def test_2009(self):
         self.assertIn(date(2009, 10, 12), self.holidays)

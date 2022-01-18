@@ -22,7 +22,8 @@ class TestFrance(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.France()
         self.prov_holidays = {
-            prov: holidays.FR(prov=prov) for prov in holidays.FRA.PROVINCES
+            prov: holidays.FR(subdiv=prov)
+            for prov in holidays.FRA.subdivisions
         }
 
     def test_2017(self):

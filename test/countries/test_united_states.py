@@ -47,19 +47,19 @@ class TestUS(unittest.TestCase):
         self.assertIn(date(2022, 6, 20), self.holidays)
 
     def test_epiphany(self):
-        pr_holidays = holidays.US(state="PR")
+        pr_holidays = holidays.US(subdiv="PR")
         for year in range(2010, 2021):
             self.assertNotIn(date(year, 1, 6), self.holidays)
             self.assertIn(date(year, 1, 6), pr_holidays)
 
     def test_three_kings_day(self):
-        vi_holidays = holidays.US(state="VI")
+        vi_holidays = holidays.US(subdiv="VI")
         for year in range(2010, 2021):
             self.assertNotIn(date(year, 1, 6), self.holidays)
             self.assertIn(date(year, 1, 6), vi_holidays)
 
     def test_lee_jackson_day(self):
-        va_holidays = holidays.US(state="VA")
+        va_holidays = holidays.US(subdiv="VA")
         self.assertNotIn(date(1888, 1, 19), va_holidays)
         self.assertNotIn(date(1983, 1, 19), va_holidays)
         self.assertNotIn(
@@ -82,10 +82,10 @@ class TestUS(unittest.TestCase):
 
     def test_inauguration_day(self):
         name = "Inauguration Day"
-        dc_holidays = holidays.US(state="DC")
-        la_holidays = holidays.US(state="LA")
-        md_holidays = holidays.US(state="MD")
-        va_holidays = holidays.US(state="VA")
+        dc_holidays = holidays.US(subdiv="DC")
+        la_holidays = holidays.US(subdiv="LA")
+        md_holidays = holidays.US(subdiv="MD")
+        va_holidays = holidays.US(subdiv="VA")
         for year in (1789, 1793, 1877, 1929, 1933):
             self.assertNotIn(name, self.holidays.get_list(date(year, 3, 4)))
             self.assertIn(name, dc_holidays.get_list(date(year, 3, 4)))
@@ -130,45 +130,45 @@ class TestUS(unittest.TestCase):
             "Martin Luther King Jr. Day", holidays.US(years=[1986]).values()
         )
         self.assertEqual(
-            holidays.US(state="AL").get("2015-01-19"),
+            holidays.US(subdiv="AL").get("2015-01-19"),
             "Robert E. Lee/Martin Luther King Birthday",
         )
         self.assertEqual(
-            holidays.US(state="AR").get("2015-01-19"),
+            holidays.US(subdiv="AR").get("2015-01-19"),
             ("Dr. Martin Luther King Jr. " "and Robert E. Lee's Birthdays"),
         )
         self.assertEqual(
-            holidays.US(state="MS").get("2015-01-19"),
+            holidays.US(subdiv="MS").get("2015-01-19"),
             ("Dr. Martin Luther King Jr. " "and Robert E. Lee's Birthdays"),
         )
         self.assertEqual(
-            holidays.US(state="AZ").get("2015-01-19"),
+            holidays.US(subdiv="AZ").get("2015-01-19"),
             "Dr. Martin Luther King Jr./Civil Rights Day",
         )
         self.assertEqual(
-            holidays.US(state="NH").get("2015-01-19"),
+            holidays.US(subdiv="NH").get("2015-01-19"),
             "Dr. Martin Luther King Jr./Civil Rights Day",
         )
         self.assertEqual(
-            holidays.US(state="ID").get("2015-01-19"),
+            holidays.US(subdiv="ID").get("2015-01-19"),
             "Martin Luther King Jr. - Idaho Human Rights Day",
         )
         self.assertNotEqual(
-            holidays.US(state="ID").get("2000-01-17"),
+            holidays.US(subdiv="ID").get("2000-01-17"),
             "Martin Luther King Jr. - Idaho Human Rights Day",
         )
         self.assertEqual(
-            holidays.US(state="GA").get("2011-01-17"),
+            holidays.US(subdiv="GA").get("2011-01-17"),
             "Robert E. Lee's Birthday",
         )
 
     def test_lincolns_birthday(self):
-        ca_holidays = holidays.US(state="CA")
-        ct_holidays = holidays.US(state="CT")
-        il_holidays = holidays.US(state="IL")
-        ia_holidays = holidays.US(state="IA")
-        nj_holidays = holidays.US(state="NJ")
-        ny_holidays = holidays.US(state="NY")
+        ca_holidays = holidays.US(subdiv="CA")
+        ct_holidays = holidays.US(subdiv="CT")
+        il_holidays = holidays.US(subdiv="IL")
+        ia_holidays = holidays.US(subdiv="IA")
+        nj_holidays = holidays.US(subdiv="NJ")
+        ny_holidays = holidays.US(subdiv="NY")
         for year in range(1971, 2010):
             self.assertNotIn(date(year, 2, 12), self.holidays)
             self.assertIn(date(year, 2, 12), ca_holidays)
@@ -247,10 +247,10 @@ class TestUS(unittest.TestCase):
                 self.assertNotIn(date(year, 2, 13), ny_holidays)
 
     def test_susan_b_anthony_day(self):
-        ca_holidays = holidays.US(state="CA")
-        fl_holidays = holidays.US(state="FL")
-        ny_holidays = holidays.US(state="NY")
-        wi_holidays = holidays.US(state="WI")
+        ca_holidays = holidays.US(subdiv="CA")
+        fl_holidays = holidays.US(subdiv="FL")
+        ny_holidays = holidays.US(subdiv="NY")
+        wi_holidays = holidays.US(subdiv="WI")
         self.assertNotIn(date(1975, 2, 15), wi_holidays)
         self.assertNotIn(date(2000, 2, 15), ca_holidays)
         self.assertNotIn(date(2000, 2, 15), fl_holidays)
@@ -270,10 +270,10 @@ class TestUS(unittest.TestCase):
         self.assertIn(date(2014, 2, 15), wi_holidays)
 
     def test_washingtons_birthday(self):
-        de_holidays = holidays.US(state="DE")
-        fl_holidays = holidays.US(state="FL")
-        ga_holidays = holidays.US(state="GA")
-        nm_holidays = holidays.US(state="NM")
+        de_holidays = holidays.US(subdiv="DE")
+        fl_holidays = holidays.US(subdiv="FL")
+        ga_holidays = holidays.US(subdiv="GA")
+        nm_holidays = holidays.US(subdiv="NM")
         for dt in [
             date(1969, 2, 22),
             date(1970, 2, 22),
@@ -299,22 +299,22 @@ class TestUS(unittest.TestCase):
             self.assertIn(dt, ga_holidays)
             self.assertIn("Washington's Birthday", ga_holidays.get_list(dt))
         self.assertEqual(
-            holidays.US(state="AL").get("2015-02-16"),
+            holidays.US(subdiv="AL").get("2015-02-16"),
             "George Washington/Thomas Jefferson Birthday",
         )
         self.assertEqual(
-            holidays.US(state="AR").get("2015-02-16"),
+            holidays.US(subdiv="AR").get("2015-02-16"),
             ("George Washington's Birthday " "and Daisy Gatson Bates Day"),
         )
         self.assertEqual(
-            holidays.US(state="PR").get("2015-02-16"), "Presidents' Day"
+            holidays.US(subdiv="PR").get("2015-02-16"), "Presidents' Day"
         )
         self.assertEqual(
-            holidays.US(state="VI").get("2015-02-16"), "Presidents' Day"
+            holidays.US(subdiv="VI").get("2015-02-16"), "Presidents' Day"
         )
 
     def test_mardi_gras(self):
-        la_holidays = holidays.US(state="LA")
+        la_holidays = holidays.US(subdiv="LA")
         self.assertNotIn(date(1856, 2, 5), la_holidays)
         for dt in [
             date(1857, 2, 24),
@@ -328,7 +328,7 @@ class TestUS(unittest.TestCase):
             self.assertIn(dt, la_holidays)
 
     def test_guam_discovery_day(self):
-        gu_holidays = holidays.US(state="GU")
+        gu_holidays = holidays.US(subdiv="GU")
         self.assertNotIn(date(1969, 3, 1), gu_holidays)
         for dt in [
             date(1970, 3, 2),
@@ -343,7 +343,7 @@ class TestUS(unittest.TestCase):
             self.assertEqual(gu_holidays.get(dt), "Guam Discovery Day")
 
     def test_casimir_pulaski_day(self):
-        il_holidays = holidays.US(state="IL")
+        il_holidays = holidays.US(subdiv="IL")
         self.assertNotIn(date(1977, 3, 7), il_holidays)
         for dt in [
             date(1978, 3, 6),
@@ -358,14 +358,14 @@ class TestUS(unittest.TestCase):
             self.assertEqual(il_holidays.get(dt), "Casimir Pulaski Day")
 
     def test_texas_independence_day(self):
-        tx_holidays = holidays.US(state="TX")
+        tx_holidays = holidays.US(subdiv="TX")
         self.assertNotIn(date(1873, 3, 2), tx_holidays)
         for year in range(1874, 2050):
             self.assertNotIn(date(year, 3, 2), self.holidays)
             self.assertIn(date(year, 3, 2), tx_holidays)
 
     def test_town_meeting_day(self):
-        vt_holidays = holidays.US(state="VT")
+        vt_holidays = holidays.US(subdiv="VT")
         self.assertNotIn(date(1799, 3, 5), vt_holidays)
         for dt in [
             date(1800, 3, 4),
@@ -379,7 +379,7 @@ class TestUS(unittest.TestCase):
             self.assertIn(dt, vt_holidays)
 
     def test_evacuation_day(self):
-        ma_holidays = holidays.US(state="MA")
+        ma_holidays = holidays.US(subdiv="MA")
         self.assertNotIn(date(1900, 3, 17), ma_holidays)
         for year in range(1901, 2050):
             self.assertNotIn(date(year, 3, 17), self.holidays)
@@ -392,7 +392,7 @@ class TestUS(unittest.TestCase):
             self.assertNotIn(dt, ma_holidays)
 
     def test_emancipation_day_in_puerto_rico(self):
-        pr_holidays = holidays.US(state="PR")
+        pr_holidays = holidays.US(subdiv="PR")
         for year in range(2010, 2021):
             self.assertNotIn(date(year, 3, 22), self.holidays)
             self.assertIn(date(year, 3, 22), pr_holidays)
@@ -401,7 +401,7 @@ class TestUS(unittest.TestCase):
         self.assertIn(date(2015, 3, 23), pr_holidays)
 
     def test_prince_jonah_kuhio_kalanianaole_day(self):
-        hi_holidays = holidays.US(state="HI")
+        hi_holidays = holidays.US(subdiv="HI")
         self.assertNotIn(date(1948, 3, 26), hi_holidays)
         for year in range(1949, 2050):
             self.assertNotIn(date(year, 3, 26), self.holidays)
@@ -418,7 +418,7 @@ class TestUS(unittest.TestCase):
             self.assertNotIn(dt, hi_holidays)
 
     def test_stewards_day(self):
-        ak_holidays = holidays.US(state="AK")
+        ak_holidays = holidays.US(subdiv="AK")
         self.assertNotIn(date(1917, 3, 30), ak_holidays)
         for dt in [
             date(1918, 3, 30),
@@ -432,8 +432,8 @@ class TestUS(unittest.TestCase):
             self.assertIn(dt, ak_holidays)
 
     def test_cesar_chavez_day(self):
-        ca_holidays = holidays.US(state="CA")
-        tx_holidays = holidays.US(state="TX")
+        ca_holidays = holidays.US(subdiv="CA")
+        tx_holidays = holidays.US(subdiv="TX")
         for year in range(1995, 2000):
             self.assertNotIn(date(year, 3, 31), self.holidays)
             self.assertIn(date(year, 3, 31), ca_holidays)
@@ -447,13 +447,13 @@ class TestUS(unittest.TestCase):
             self.assertNotIn(date(year, 4, 1), tx_holidays)
 
     def test_transfer_day(self):
-        vi_holidays = holidays.US(state="VI")
+        vi_holidays = holidays.US(subdiv="VI")
         for year in range(2010, 2021):
             self.assertNotIn(date(year, 3, 31), self.holidays)
             self.assertIn(date(year, 3, 31), vi_holidays)
 
     def test_emancipation_day(self):
-        dc_holidays = holidays.US(state="DC")
+        dc_holidays = holidays.US(subdiv="DC")
         self.assertNotIn(date(2004, 4, 16), dc_holidays)
         for year in range(2005, 2020):
             self.assertNotIn(date(year, 4, 16), self.holidays)
@@ -465,8 +465,8 @@ class TestUS(unittest.TestCase):
         self.assertNotIn(date(2006, 4, 17), dc_holidays)
 
     def test_patriots_day(self):
-        me_holidays = holidays.US(state="ME")
-        ma_holidays = holidays.US(state="MA")
+        me_holidays = holidays.US(subdiv="ME")
+        ma_holidays = holidays.US(subdiv="MA")
         self.assertNotIn(date(1983, 4, 19), me_holidays)
         self.assertNotIn(date(1983, 4, 19), ma_holidays)
         for year in range(1894, 1969):
@@ -486,7 +486,7 @@ class TestUS(unittest.TestCase):
             self.assertIn(dt, ma_holidays)
 
     def test_holy_thursday(self):
-        vi_holidays = holidays.US(state="VI")
+        vi_holidays = holidays.US(subdiv="VI")
         for dt in [
             date(2010, 4, 1),
             date(2011, 4, 21),
@@ -499,17 +499,17 @@ class TestUS(unittest.TestCase):
             self.assertIn(dt, vi_holidays)
 
     def test_good_friday(self):
-        ct_holidays = holidays.US(state="CT")
-        de_holidays = holidays.US(state="DE")
-        gu_holidays = holidays.US(state="GU")
-        in_holidays = holidays.US(state="IN")
-        ky_holidays = holidays.US(state="IN")
-        la_holidays = holidays.US(state="LA")
-        nj_holidays = holidays.US(state="NJ")
-        nc_holidays = holidays.US(state="NC")
-        tn_holidays = holidays.US(state="TN")
-        tx_holidays = holidays.US(state="TX")
-        vi_holidays = holidays.US(state="VI")
+        ct_holidays = holidays.US(subdiv="CT")
+        de_holidays = holidays.US(subdiv="DE")
+        gu_holidays = holidays.US(subdiv="GU")
+        in_holidays = holidays.US(subdiv="IN")
+        ky_holidays = holidays.US(subdiv="IN")
+        la_holidays = holidays.US(subdiv="LA")
+        nj_holidays = holidays.US(subdiv="NJ")
+        nc_holidays = holidays.US(subdiv="NC")
+        tn_holidays = holidays.US(subdiv="TN")
+        tx_holidays = holidays.US(subdiv="TX")
+        vi_holidays = holidays.US(subdiv="VI")
         for dt in [
             date(1900, 4, 13),
             date(1901, 4, 5),
@@ -535,7 +535,7 @@ class TestUS(unittest.TestCase):
             self.assertIn(dt, vi_holidays)
 
     def test_easter_monday(self):
-        vi_holidays = holidays.US(state="VI")
+        vi_holidays = holidays.US(subdiv="VI")
         for dt in [
             date(1900, 4, 16),
             date(1901, 4, 8),
@@ -550,11 +550,11 @@ class TestUS(unittest.TestCase):
             self.assertIn(dt, vi_holidays)
 
     def test_confederate_memorial_day(self):
-        al_holidays = holidays.US(state="AL")
-        ga_holidays = holidays.US(state="GA")
-        ms_holidays = holidays.US(state="MS")
-        sc_holidays = holidays.US(state="SC")
-        tx_holidays = holidays.US(state="TX")
+        al_holidays = holidays.US(subdiv="AL")
+        ga_holidays = holidays.US(subdiv="GA")
+        ms_holidays = holidays.US(subdiv="MS")
+        sc_holidays = holidays.US(subdiv="SC")
+        tx_holidays = holidays.US(subdiv="TX")
         self.assertNotIn(date(1865, 4, 24), self.holidays)
         self.assertNotIn(date(1865, 4, 24), al_holidays)
         for dt in [
@@ -576,14 +576,14 @@ class TestUS(unittest.TestCase):
         self.assertIn(date(2020, 4, 10), ga_holidays)
 
     def test_san_jacinto_day(self):
-        tx_holidays = holidays.US(state="TX")
+        tx_holidays = holidays.US(subdiv="TX")
         self.assertNotIn(date(1874, 4, 21), tx_holidays)
         for year in (1875, 2050):
             self.assertNotIn(date(year, 4, 21), self.holidays)
             self.assertIn(date(year, 4, 21), tx_holidays)
 
     def test_arbor_day(self):
-        ne_holidays = holidays.US(state="NE")
+        ne_holidays = holidays.US(subdiv="NE")
         for dt in [
             date(1875, 4, 22),
             date(1988, 4, 22),
@@ -596,7 +596,7 @@ class TestUS(unittest.TestCase):
             self.assertIn(dt, ne_holidays)
 
     def test_primary_election_day(self):
-        in_holidays = holidays.US(state="IN")
+        in_holidays = holidays.US(subdiv="IN")
         self.assertNotIn(date(2004, 5, 4), in_holidays)
         for dt in [
             date(2006, 5, 2),
@@ -611,7 +611,7 @@ class TestUS(unittest.TestCase):
             self.assertIn(dt, in_holidays)
 
     def test_truman_day(self):
-        mo_holidays = holidays.US(state="MO", observed=False)
+        mo_holidays = holidays.US(subdiv="MO", observed=False)
         self.assertNotIn(date(1948, 5, 8), self.holidays)
         self.assertNotIn(date(1948, 5, 8), mo_holidays)
         for year in range(1949, 2100):
@@ -646,7 +646,7 @@ class TestUS(unittest.TestCase):
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
 
     def test_jefferson_davis_birthday(self):
-        al_holidays = holidays.US(state="AL")
+        al_holidays = holidays.US(subdiv="AL")
         self.assertNotIn(date(1889, 6, 3), self.holidays)
         self.assertNotIn(date(1889, 6, 3), al_holidays)
         for dt in [
@@ -661,7 +661,7 @@ class TestUS(unittest.TestCase):
             self.assertIn(dt, al_holidays)
 
     def test_kamehameha_day(self):
-        hi_holidays = holidays.US(state="HI")
+        hi_holidays = holidays.US(subdiv="HI")
         self.assertNotIn(date(1871, 6, 11), hi_holidays)
         for year in range(1872, 2050):
             self.assertNotIn(date(year, 6, 11), self.holidays)
@@ -675,7 +675,7 @@ class TestUS(unittest.TestCase):
             self.assertNotIn(dt, hi_holidays)
 
     def test_emancipation_day_in_texas(self):
-        tx_holidays = holidays.US(state="TX")
+        tx_holidays = holidays.US(subdiv="TX")
         self.assertNotIn(date(1979, 6, 19), tx_holidays)
         for year in (1980, 2020):
             self.assertNotIn(date(year, 6, 19), self.holidays)
@@ -701,7 +701,7 @@ class TestUS(unittest.TestCase):
             self.assertNotIn(observed_holiday, self.holidays)
 
     def test_west_virginia_day(self):
-        wv_holidays = holidays.US(state="WV")
+        wv_holidays = holidays.US(subdiv="WV")
         self.assertNotIn(date(1926, 6, 20), wv_holidays)
         for year in (1927, 2050):
             self.assertNotIn(date(year, 6, 20), self.holidays)
@@ -713,7 +713,7 @@ class TestUS(unittest.TestCase):
         self.assertNotIn(date(2010, 6, 21), wv_holidays)
 
     def test_emancipation_day_in_virgin_islands(self):
-        vi_holidays = holidays.US(state="VI")
+        vi_holidays = holidays.US(subdiv="VI")
         for year in (2010, 2021):
             self.assertNotIn(date(year, 7, 3), self.holidays)
             self.assertIn(date(year, 7, 3), vi_holidays)
@@ -731,14 +731,14 @@ class TestUS(unittest.TestCase):
         self.assertIn(date(2020, 7, 3), self.holidays)
 
     def test_liberation_day_guam(self):
-        gu_holidays = holidays.US(state="GU")
+        gu_holidays = holidays.US(subdiv="GU")
         self.assertNotIn(date(1944, 7, 21), gu_holidays)
         for year in range(1945, 2100):
             self.assertNotIn(date(year, 7, 21), self.holidays)
             self.assertIn(date(year, 7, 21), gu_holidays)
 
     def test_pioneer_day(self):
-        ut_holidays = holidays.US(state="UT")
+        ut_holidays = holidays.US(subdiv="UT")
         self.assertNotIn(date(1848, 7, 24), ut_holidays)
         for year in (1849, 2050):
             self.assertNotIn(date(year, 7, 24), self.holidays)
@@ -750,7 +750,7 @@ class TestUS(unittest.TestCase):
         self.assertNotIn("2011-07-25", ut_holidays)
 
     def test_constitution_day(self):
-        pr_holidays = holidays.US(state="PR")
+        pr_holidays = holidays.US(subdiv="PR")
         for year in range(2010, 2021):
             self.assertNotIn(date(year, 7, 25), self.holidays)
             self.assertIn(date(year, 7, 25), pr_holidays)
@@ -759,7 +759,7 @@ class TestUS(unittest.TestCase):
         self.assertIn(date(2021, 7, 26), pr_holidays)
 
     def test_victory_day(self):
-        ri_holidays = holidays.US(state="RI")
+        ri_holidays = holidays.US(subdiv="RI")
         self.assertNotIn(date(1947, 8, 11), ri_holidays)
         for dt in [
             date(1948, 8, 9),
@@ -773,7 +773,7 @@ class TestUS(unittest.TestCase):
             self.assertIn(dt, ri_holidays)
 
     def test_statehood_day(self):
-        hi_holidays = holidays.US(state="HI")
+        hi_holidays = holidays.US(subdiv="HI")
         self.assertNotIn(date(1958, 8, 15), hi_holidays)
         for dt in [
             date(1959, 8, 21),
@@ -787,7 +787,7 @@ class TestUS(unittest.TestCase):
             self.assertIn(dt, hi_holidays)
 
     def test_bennington_battle_day(self):
-        vt_holidays = holidays.US(state="VT")
+        vt_holidays = holidays.US(subdiv="VT")
         self.assertNotIn(date(1777, 8, 16), vt_holidays)
         for year in range(1778, 2050):
             self.assertNotIn(date(year, 8, 16), self.holidays)
@@ -820,7 +820,7 @@ class TestUS(unittest.TestCase):
         )
 
     def test_lyndon_baines_johnson_day(self):
-        tx_holidays = holidays.US(state="TX")
+        tx_holidays = holidays.US(subdiv="TX")
         self.assertNotIn(date(1972, 8, 27), tx_holidays)
         for year in (1973, 2050):
             self.assertNotIn(date(year, 8, 27), self.holidays)
@@ -843,12 +843,12 @@ class TestUS(unittest.TestCase):
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
 
     def test_columbus_day(self):
-        ak_holidays = holidays.US(state="AK")
-        de_holidays = holidays.US(state="DE")
-        fl_holidays = holidays.US(state="FL")
-        hi_holidays = holidays.US(state="HI")
-        sd_holidays = holidays.US(state="SD")
-        vi_holidays = holidays.US(state="VI")
+        ak_holidays = holidays.US(subdiv="AK")
+        de_holidays = holidays.US(subdiv="DE")
+        fl_holidays = holidays.US(subdiv="FL")
+        hi_holidays = holidays.US(subdiv="HI")
+        sd_holidays = holidays.US(subdiv="SD")
+        vi_holidays = holidays.US(subdiv="VI")
         for dt in [
             date(1937, 10, 12),
             date(1969, 10, 12),
@@ -875,7 +875,7 @@ class TestUS(unittest.TestCase):
         self.assertNotIn(date(1936, 10, 12), self.holidays)
 
     def test_alaska_day(self):
-        ak_holidays = holidays.US(state="AK", observed=False)
+        ak_holidays = holidays.US(subdiv="AK", observed=False)
         self.assertNotIn(date(1866, 10, 18), ak_holidays)
         for year in range(1867, 2050):
             self.assertIn(date(year, 10, 18), ak_holidays)
@@ -887,7 +887,7 @@ class TestUS(unittest.TestCase):
         self.assertIn(date(2015, 10, 19), ak_holidays)
 
     def test_nevada_day(self):
-        nv_holidays = holidays.US(state="NV")
+        nv_holidays = holidays.US(subdiv="NV")
         self.assertNotIn(date(1932, 10, 31), nv_holidays)
         for dt in [
             date(1933, 10, 31),
@@ -914,22 +914,22 @@ class TestUS(unittest.TestCase):
         )
 
     def test_liberty_day(self):
-        vi_holidays = holidays.US(state="VI")
+        vi_holidays = holidays.US(subdiv="VI")
         for year in range(2010, 2021):
             self.assertNotIn(date(year, 11, 1), self.holidays)
             self.assertIn(date(year, 11, 1), vi_holidays)
 
     def test_election_day(self):
-        de_holidays = holidays.US(state="DE")
-        hi_holidays = holidays.US(state="HI")
-        il_holidays = holidays.US(state="IL")
-        in_holidays = holidays.US(state="IN")
-        la_holidays = holidays.US(state="LA")
-        mt_holidays = holidays.US(state="MT")
-        nh_holidays = holidays.US(state="NH")
-        nj_holidays = holidays.US(state="NJ")
-        ny_holidays = holidays.US(state="NY")
-        wv_holidays = holidays.US(state="WV")
+        de_holidays = holidays.US(subdiv="DE")
+        hi_holidays = holidays.US(subdiv="HI")
+        il_holidays = holidays.US(subdiv="IL")
+        in_holidays = holidays.US(subdiv="IN")
+        la_holidays = holidays.US(subdiv="LA")
+        mt_holidays = holidays.US(subdiv="MT")
+        nh_holidays = holidays.US(subdiv="NH")
+        nj_holidays = holidays.US(subdiv="NJ")
+        ny_holidays = holidays.US(subdiv="NY")
+        wv_holidays = holidays.US(subdiv="WV")
         self.assertNotIn(date(2004, 11, 2), de_holidays)
         for dt in [
             date(2008, 11, 4),
@@ -963,7 +963,7 @@ class TestUS(unittest.TestCase):
         self.assertNotIn(date(2015, 11, 3), wv_holidays)
 
     def test_all_souls_day(self):
-        gu_holidays = holidays.US(state="GU")
+        gu_holidays = holidays.US(subdiv="GU")
         for year in range(1945, 2100):
             self.assertNotIn(date(year, 11, 2), self.holidays)
             self.assertIn(date(year, 11, 2), gu_holidays)
@@ -998,7 +998,7 @@ class TestUS(unittest.TestCase):
         self.assertIn(date(2017, 11, 10), self.holidays)
 
     def test_discovery_day(self):
-        pr_holidays = holidays.US(state="PR")
+        pr_holidays = holidays.US(subdiv="PR")
         for year in range(2010, 2021):
             self.assertNotIn(date(year, 11, 19), self.holidays)
             self.assertIn(date(year, 11, 19), pr_holidays)
@@ -1007,18 +1007,18 @@ class TestUS(unittest.TestCase):
         self.assertIn(date(2017, 11, 20), pr_holidays)
 
     def test_thanksgiving_day(self):
-        ca_holidays = holidays.US(state="CA")
-        de_holidays = holidays.US(state="DE")
-        fl_holidays = holidays.US(state="FL")
-        in_holidays = holidays.US(state="IN")
-        md_holidays = holidays.US(state="MD")
-        nv_holidays = holidays.US(state="NV")
-        nh_holidays = holidays.US(state="NH")
-        nm_holidays = holidays.US(state="NM")
-        nc_holidays = holidays.US(state="NC")
-        ok_holidays = holidays.US(state="OK")
-        tx_holidays = holidays.US(state="TX")
-        wv_holidays = holidays.US(state="WV")
+        ca_holidays = holidays.US(subdiv="CA")
+        de_holidays = holidays.US(subdiv="DE")
+        fl_holidays = holidays.US(subdiv="FL")
+        in_holidays = holidays.US(subdiv="IN")
+        md_holidays = holidays.US(subdiv="MD")
+        nv_holidays = holidays.US(subdiv="NV")
+        nh_holidays = holidays.US(subdiv="NH")
+        nm_holidays = holidays.US(subdiv="NM")
+        nc_holidays = holidays.US(subdiv="NC")
+        ok_holidays = holidays.US(subdiv="OK")
+        tx_holidays = holidays.US(subdiv="TX")
+        wv_holidays = holidays.US(subdiv="WV")
         for dt in [
             date(1997, 11, 27),
             date(1999, 11, 25),
@@ -1091,7 +1091,7 @@ class TestUS(unittest.TestCase):
                 )
 
     def test_robert_lee_birthday(self):
-        ga_holidays = holidays.US(state="GA")
+        ga_holidays = holidays.US(subdiv="GA")
         self.assertNotIn(date(1985, 11, 25), ga_holidays)
         for dt in [
             date(2007, 11, 23),
@@ -1108,18 +1108,18 @@ class TestUS(unittest.TestCase):
             self.assertIn(dt, ga_holidays)
 
     def test_lady_of_camarin_day(self):
-        gu_holidays = holidays.US(state="GU")
+        gu_holidays = holidays.US(subdiv="GU")
         for year in range(1945, 2100):
             self.assertNotIn(date(year, 12, 8), self.holidays)
             self.assertIn(date(year, 12, 8), gu_holidays)
 
     def test_christmas_eve(self):
-        as_holidays = holidays.US(state="AS")
-        ks_holidays = holidays.US(state="KS")
-        mi_holidays = holidays.US(state="MI")
-        nc_holidays = holidays.US(state="NC")
-        tx_holidays = holidays.US(state="TX")
-        wi_holidays = holidays.US(state="WI")
+        as_holidays = holidays.US(subdiv="AS")
+        ks_holidays = holidays.US(subdiv="KS")
+        mi_holidays = holidays.US(subdiv="MI")
+        nc_holidays = holidays.US(subdiv="NC")
+        tx_holidays = holidays.US(subdiv="TX")
+        wi_holidays = holidays.US(subdiv="WI")
         self.holidays.observed = False
         for year in range(1900, 2050):
             self.assertNotIn(date(year, 12, 24), self.holidays)
@@ -1192,8 +1192,8 @@ class TestUS(unittest.TestCase):
         self.assertIn(date(2016, 12, 26), self.holidays)
 
     def test_day_after_christmas(self):
-        nc_holidays = holidays.US(state="NC", observed=False)
-        tx_holidays = holidays.US(state="TX", observed=False)
+        nc_holidays = holidays.US(subdiv="NC", observed=False)
+        tx_holidays = holidays.US(subdiv="TX", observed=False)
         self.assertNotIn(date(2015, 12, 28), nc_holidays)
         self.assertNotIn(date(2016, 12, 27), nc_holidays)
         self.assertNotIn(date(2015, 12, 28), tx_holidays)
@@ -1218,9 +1218,9 @@ class TestUS(unittest.TestCase):
         )
 
     def test_new_years_eve(self):
-        ky_holidays = holidays.US(state="KY")
-        mi_holidays = holidays.US(state="MI")
-        wi_holidays = holidays.US(state="WI")
+        ky_holidays = holidays.US(subdiv="KY")
+        mi_holidays = holidays.US(subdiv="MI")
+        wi_holidays = holidays.US(subdiv="WI")
         self.assertNotIn(date(2012, 12, 31), ky_holidays)
         self.assertNotIn(date(2012, 12, 31), mi_holidays)
         self.assertNotIn(date(2011, 12, 31), wi_holidays)

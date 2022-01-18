@@ -24,7 +24,7 @@ class TestNicaragua(unittest.TestCase):
 
     def test_ni_holidays_2020(self):
         year = 2020
-        mn_holidays = holidays.NI(prov="MN")
+        mn_holidays = holidays.NI(subdiv="MN")
 
         # New Year's Day
         self.assertIn(date(year, 1, 1), self.ni_holidays)

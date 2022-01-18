@@ -39,7 +39,7 @@ from holidays.utils import _ChineseLuniSolar, _islamic_to_gre
 
 class Malaysia(HolidayBase):
     country = "MY"
-    STATES = [
+    subdivisions = [
         "JHR",
         "KDH",
         "KTN",
@@ -63,6 +63,7 @@ class Malaysia(HolidayBase):
         years: Union[int, Iterable[int]] = None,
         expand: bool = True,
         observed: bool = True,
+        subdiv: Optional[str] = None,
         prov: Optional[str] = None,
         state: Optional[str] = None,
     ) -> None:
@@ -70,8 +71,8 @@ class Malaysia(HolidayBase):
         An subclass of :py:class:`HolidayBase` representing public holidays in
         Malaysia.
 
-        If ``state`` is not supplied, only nationwide holidays are
-        returned. The following ``state`` codes are used (ISO 3166-2
+        If ``subdiv`` for a state is not supplied, only nationwide holidays are
+        returned. The following ``subdiv`` state codes are used (ISO 3166-2
         subdivision codes are not yet supported):
 
         - JHR: Johor
@@ -106,12 +107,12 @@ class Malaysia(HolidayBase):
         See parameters and usage in :py:class:`HolidayBase`.
         """
         self.cnls = _ChineseLuniSolar()
-        super().__init__(years, expand, observed, prov, state)
+        super().__init__(years, expand, observed, subdiv, prov, state)
 
     def _populate(self, year):
 
         # New Year's Day
-        if self.state not in ("JHR", "KDH", "KTN", "PLS", "TRG"):
+        if self.subdiv not in ("JHR", "KDH", "KTN", "PLS", "TRG"):
             self[date(year, JAN, 1)] = "New Year's Day"
 
         # Birthday of the Prophet Muhammad (s.a.w.).
@@ -258,20 +259,20 @@ class Malaysia(HolidayBase):
             for date_obs in dates_obs[year]:
                 hol_date = date(year, *date_obs)
                 self[hol_date] = "Hari Raya Haji"
-                if self.state == "TRG":
+                if self.subdiv == "TRG":
                     # Arafat Day is one day before Eid al-Adha
                     self[hol_date - rd(days=1)] = "Arafat Day"
-                if self.state in ("KDH", "KTN", "PLS", "TRG"):
+                if self.subdiv in ("KDH", "KTN", "PLS", "TRG"):
                     # Second day
                     self[hol_date + rd(days=1)] = "Hari Raya Haji Holiday"
         else:
             for date_obs in _islamic_to_gre(year, 12, 10):
                 hol_date = date_obs
                 self[hol_date] = "Hari Raya Haji* (*estimated)"
-                if self.state == "TRG":
+                if self.subdiv == "TRG":
                     # Arafat Day is one day before Eid al-Adha
                     self[hol_date - rd(days=1)] = "Arafat Day* (*estimated)"
-                if self.state in ("KDH", "KTN", "PLS", "TRG"):
+                if self.subdiv in ("KDH", "KTN", "PLS", "TRG"):
                     # Second day
                     self[
                         hol_date + rd(days=1)
@@ -280,7 +281,7 @@ class Malaysia(HolidayBase):
         # Deepavali.
         # aka Diwali;
         # date of observance is announced yearly
-        if self.state != "SWK":
+        if self.subdiv != "SWK":
             dates_obs = {
                 2001: (NOV, 14),
                 2002: (NOV, 3),
@@ -321,7 +322,7 @@ class Malaysia(HolidayBase):
         # ---------------------------------------------------------#
         # Holidays from the Sarawak Ordinance (not included above) #
         # ---------------------------------------------------------#
-        if self.state == "SWK":
+        if self.subdiv == "SWK":
             # Dayak Festival Day (the first day of June) and the following day.
             self[date(year, JUN, 1)] = "Gawai Dayak"
             self[date(year, JUN, 2)] = "Gawai Dayak (Second day)"
@@ -360,7 +361,7 @@ class Malaysia(HolidayBase):
         # The last two days in May (Pesta Kaamatan).
         # (Sarawak Act)
         # Day following a Sunday is not a holiday
-        if self.state in ("LBN", "SBH"):
+        if self.subdiv in ("LBN", "SBH"):
             self[date(year, MAY, 30)] = "Pesta Kaamatan"
             self[date(year, MAY, 31)] = "Pesta Kaamatan (Second day)"
 
@@ -394,7 +395,7 @@ class Malaysia(HolidayBase):
 
         # 1 January (or the following day if the 1 January should fall on a
         # weekly holiday in any State or in the Federal Territory).
-        if self.state in (
+        if self.subdiv in (
             "KUL",
             "LBN",
             "MLK",
@@ -414,17 +415,17 @@ class Malaysia(HolidayBase):
                 self[date(year, JAN, 2)] = "New Year's Day [In lieu]"
 
         # Isra and Mi'raj.
-        if self.state in ("KDH", "NSN", "PLS", "TRG"):
+        if self.subdiv in ("KDH", "NSN", "PLS", "TRG"):
             for hol_date in _islamic_to_gre(year, 7, 27):
                 self[hol_date] = "Isra and Mi'raj"
 
         # Beginning of Ramadan.
-        if self.state in ("JHR", "KDH", "MLK"):
+        if self.subdiv in ("JHR", "KDH", "MLK"):
             for hol_date in _islamic_to_gre(year, 9, 1):
                 self[hol_date] = "Begining of Ramadan"
 
         # Nuzul Al-Quran Day.
-        if self.state and self.state not in (
+        if self.subdiv not in (
             "JHR",
             "KDH",
             "MLK",
@@ -476,13 +477,13 @@ class Malaysia(HolidayBase):
                 self[hol_date] = "Hari Raya Aidilfitri Holiday* (*estimated)"
 
         # Good Friday.
-        if self.state in ("SBH", "SWK"):
+        if self.subdiv in ("SBH", "SWK"):
             self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
 
         # Thaipusam.
         # An annual Hindu festival observed on the day of the first full moon
         # during the Tamil month of Thai
-        if self.state in ("JHR", "KUL", "NSN", "PJY", "PNG", "PRK", "SGR"):
+        if self.subdiv in ("JHR", "KUL", "NSN", "PJY", "PNG", "PRK", "SGR"):
             dates_obs = {
                 2018: [(JAN, 31)],
                 2019: [(JAN, 21)],
@@ -504,20 +505,20 @@ class Malaysia(HolidayBase):
                 self[hol_date] = "Thaipusam* (*estimated)"
 
         # Federal Territory Day.
-        if self.state in ("KUL", "LBN", "PJY"):
+        if self.subdiv in ("KUL", "LBN", "PJY"):
             if year > 1973:
                 self[date(year, FEB, 1)] = "Federal Territory Day"
 
         # State holidays (single state)
         # -----------------------------
 
-        if self.state == "JHR":
+        if self.subdiv == "JHR":
             if year > 2014:
                 self[date(year, MAR, 23)] = "Birthday of the Sultan of Johor"
             for date_obs in _islamic_to_gre(year, 2, 6):
                 self[date_obs] = "Hari Hol of Sultan Iskandar of Johor"
 
-        elif self.state == "KDH":
+        elif self.subdiv == "KDH":
             third_sun_jun = rrule(
                 MONTHLY,
                 dtstart=date(year, JUN, 1),
@@ -527,13 +528,13 @@ class Malaysia(HolidayBase):
             )[0]
             self[third_sun_jun] = "Birthday of The Sultan of Kedah"
 
-        elif self.state == "KTN":
+        elif self.subdiv == "KTN":
             self[date(year, NOV, 11)] = "Birthday of the Sultan of Kelantan"
             self[
                 date(year, NOV, 12)
             ] = "Birthday of the Sultan of Kelantan Holiday"
 
-        elif self.state == "MLK":
+        elif self.subdiv == "MLK":
             self[
                 date(year, APR, 15)
             ] = "Declaration of Malacca as a Historical City in Melaka"
@@ -541,16 +542,16 @@ class Malaysia(HolidayBase):
                 date(year, AUG, 24)
             ] = "Birthday of the Governor of the State of Melaka"
 
-        elif self.state == "NSN":
+        elif self.subdiv == "NSN":
             self[
                 date(year, JAN, 14)
             ] = "Birthday of the Sultan of Negeri Sembilan"
 
-        elif self.state == "PHG":
+        elif self.subdiv == "PHG":
             self[date(year, MAY, 22)] = "Hari Hol of Pahang"
             self[date(year, JUL, 30)] = "Birthday of the Sultan of Pahang"
 
-        elif self.state == "PNG":
+        elif self.subdiv == "PNG":
             self[date(year, JUL, 7)] = "George Town Heritage Day"
             second_sat_jul = rrule(
                 MONTHLY,
@@ -561,7 +562,7 @@ class Malaysia(HolidayBase):
             )[0]
             self[second_sat_jul] = "Birthday of the Governor of Penang"
 
-        elif self.state == "PRK":
+        elif self.subdiv == "PRK":
             if year > 2016:
                 first_fri_nov = rrule(
                     MONTHLY,
@@ -576,13 +577,13 @@ class Malaysia(HolidayBase):
                 # https://www.officeholidays.com/holidays/malaysia/birthday-of-the-sultan-of-perak  # noqa: E501
                 self[date(year, NOV, 27)] = "Birthday of the Sultan of Perak"
 
-        elif self.state == "PLS":
+        elif self.subdiv == "PLS":
             self[date(year, JUL, 17)] = "Birthday of The Raja of Perlis"
 
-        elif self.state == "SGR":
+        elif self.subdiv == "SGR":
             self[date(year, DEC, 11)] = "Birthday of The Sultan of Selangor"
 
-        elif self.state == "SBH":
+        elif self.subdiv == "SBH":
             first_sat_oct = rrule(
                 MONTHLY,
                 dtstart=date(year, OCT, 1),
@@ -594,7 +595,7 @@ class Malaysia(HolidayBase):
             if year > 2018:
                 self[date(year, DEC, 24)] = "Christmas Eve"
 
-        elif self.state == "TRG":
+        elif self.subdiv == "TRG":
             self[
                 date(year, MAR, 4)
             ] = "Anniversary of the Installation of the Sultan of Terengganu"
@@ -641,10 +642,11 @@ class MY(Malaysia):
         years: Union[int, Iterable[int]] = None,
         expand: bool = True,
         observed: bool = True,
+        subdiv: Optional[str] = None,
         prov: Optional[str] = None,
         state: Optional[str] = None,
     ) -> None:
-        super().__init__(years, expand, observed, prov, state)
+        super().__init__(years, expand, observed, subdiv, prov, state)
 
 
 class MYS(Malaysia):
@@ -655,7 +657,8 @@ class MYS(Malaysia):
         years: Union[int, Iterable[int]] = None,
         expand: bool = True,
         observed: bool = True,
+        subdiv: Optional[str] = None,
         prov: Optional[str] = None,
         state: Optional[str] = None,
     ) -> None:
-        super().__init__(years, expand, observed, prov, state)
+        super().__init__(years, expand, observed, subdiv, prov, state)

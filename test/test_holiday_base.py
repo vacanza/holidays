@@ -206,8 +206,8 @@ class TestBasics(unittest.TestCase):
         self.assertIn("2015-07-04", na)
         self.assertIn("2015-07-01", na)
         self.assertIn("2000-02-05", na)
-        self.assertEqual((ca + us).prov, "ON")
-        self.assertEqual((us + ca).prov, "ON")
+        self.assertEqual((ca + us).subdiv, "ON")
+        self.assertEqual((us + ca).subdiv, "ON")
         ca = holidays.CA(years=[2014], expand=False)
         us = holidays.US(years=[2014, 2015], expand=True)
         self.assertTrue((ca + us).expand)
@@ -224,7 +224,7 @@ class TestBasics(unittest.TestCase):
         self.assertIn("2015-07-01", na)
         self.assertIn("2015-07-01", na)
         self.assertIn("2000-02-05", na)
-        self.assertEqual(na.prov, "ON")
+        self.assertEqual(na.subdiv, "ON")
         na = holidays.CA() + holidays.US()
         na += holidays.MX()
         self.assertIn("2014-07-04", na)
@@ -234,22 +234,22 @@ class TestBasics(unittest.TestCase):
         self.assertIn("2015-07-01", na)
         self.assertIn("2015-07-01", na)
         self.assertIn("2000-02-05", na)
-        self.assertEqual(na.prov, "ON")
+        self.assertEqual(na.subdiv, "ON")
         self.assertRaises(TypeError, lambda: holidays.US() + {})
-        na = ca + (us + mx) + ca + (mx + us + holidays.CA(prov="BC"))
+        na = ca + (us + mx) + ca + (mx + us + holidays.CA(subdiv="BC"))
         self.assertIn("2000-02-05", na)
         self.assertIn("2014-02-10", na)
         self.assertIn("2014-02-17", na)
         self.assertIn("2014-07-04", na)
-        provs = holidays.CA(prov="ON", years=[2014]) + holidays.CA(
-            prov="BC", years=[2015]
+        provs = holidays.CA(subdiv="ON", years=[2014]) + holidays.CA(
+            subdiv="BC", years=[2015]
         )
         self.assertIn("2015-02-09", provs)
         self.assertIn("2015-02-16", provs)
-        self.assertEqual(provs.prov, ["ON", "BC"])
-        a = sum(holidays.CA(prov=x) for x in holidays.CA.PROVINCES)
+        self.assertEqual(provs.subdiv, ["ON", "BC"])
+        a = sum(holidays.CA(subdiv=x) for x in holidays.CA.subdivisions)
         self.assertEqual(a.country, "CA")
-        self.assertEqual(a.prov, holidays.CA.PROVINCES)
+        self.assertEqual(a.subdiv, holidays.CA.subdivisions)
         self.assertIn("2015-02-09", a)
         self.assertIn("2015-02-16", a)
         na = holidays.CA() + holidays.US() + holidays.MX()
@@ -265,21 +265,22 @@ class TestBasics(unittest.TestCase):
         )
 
     def test_get_list(self):
-        westland = holidays.NZ(prov="WTL")
-        chathams = holidays.NZ(prov="CIT")
+        westland = holidays.NZ(subdiv="WTL")
+        chathams = holidays.NZ(subdiv="CIT")
         wild = westland + chathams
         self.assertEqual(
             wild[date(1969, 12, 1)],
-            ("Westland Anniversary Day, " + "Chatham Islands Anniversary Day"),
+            ("West Coast Anniversary Day, Chatham Islands Anniversary Day"),
         )
 
         self.assertEqual(
             wild.get_list(date(1969, 12, 1)),
-            ["Westland Anniversary Day", "Chatham Islands Anniversary Day"],
+            ["West Coast Anniversary Day", "Chatham Islands Anniversary Day"],
         )
         self.assertEqual(wild.get_list(date(1969, 1, 1)), ["New Year's Day"])
         self.assertEqual(
-            westland.get_list(date(1969, 12, 1)), ["Westland Anniversary Day"]
+            westland.get_list(date(1969, 12, 1)),
+            ["West Coast Anniversary Day"],
         )
         self.assertEqual(
             westland.get_list(date(1969, 1, 1)), ["New Year's Day"]
@@ -306,6 +307,7 @@ class TestBasics(unittest.TestCase):
     def test_list_supported_countries(self):
         self.assertIn("AR", holidays.list_supported_countries())
         self.assertIn("ZA", holidays.list_supported_countries())
+        self.assertIn("CA", holidays.list_supported_countries()["US"])
 
     def test_radd(self):
         self.assertRaises(TypeError, lambda: 1 + holidays.US())
@@ -378,12 +380,12 @@ class TestArgs(unittest.TestCase):
         self.assertEqual(self.holidays.country, "US")
         self.holidays = holidays.CA()
         self.assertEqual(self.holidays.country, "CA")
-        self.assertEqual(self.holidays.prov, "ON")
+        self.assertEqual(self.holidays.subdiv, "ON")
         self.assertIn(date(2014, 7, 1), self.holidays)
         self.assertNotIn(date(2014, 7, 4), self.holidays)
-        self.holidays = holidays.CA(prov="BC")
+        self.holidays = holidays.CA(subdiv="BC")
         self.assertEqual(self.holidays.country, "CA")
-        self.assertEqual(self.holidays.prov, "BC")
+        self.assertEqual(self.holidays.subdiv, "BC")
         self.assertIn(date(2014, 7, 1), self.holidays)
         self.assertNotIn(date(2014, 7, 4), self.holidays)
 
@@ -532,15 +534,27 @@ class TestCountryHoliday(unittest.TestCase):
         self.assertEqual(h.years, {2015, 2016})
 
     def test_country_state(self):
-        h = holidays.CountryHoliday("US", state="NY")
-        self.assertEqual(h.state, "NY")
+        h = holidays.CountryHoliday("US", subdiv="NY")
+        self.assertEqual(h.subdiv, "NY")
 
     def test_country_province(self):
-        h = holidays.CountryHoliday("AU", prov="NT")
-        self.assertEqual(h.prov, "NT")
+        h = holidays.CountryHoliday("AU", subdiv="NT")
+        self.assertEqual(h.subdiv, "NT")
 
     def test_exceptions(self):
-        self.assertRaises((KeyError), lambda: holidays.CountryHoliday("XXXX"))
+        self.assertRaises(
+            NotImplementedError, lambda: holidays.CountryHoliday("XXXX")
+        )
+        self.assertRaises(
+            NotImplementedError, lambda: holidays.country_holidays("XXXX")
+        )
+        self.assertRaises(
+            NotImplementedError,
+            lambda: holidays.country_holidays("US", subdiv="XXXX"),
+        )
+        self.assertRaises(
+            NotImplementedError, lambda: holidays.US(subdiv="XXXX")
+        )
 
 
 class TestAllInSameYear(unittest.TestCase):
@@ -571,8 +585,8 @@ class TestAllInSameYear(unittest.TestCase):
                 f"holiday {self.hol} returned for year {self.year}"
             )
             print(
-                holidays.CountryHoliday(
-                    self.country, prov=None, state=None, years=[self.year]
+                holidays.country_holidays(
+                    self.country, subdiv=None, years=[self.year]
                 ).get_list(self.hol)
             )
 
@@ -585,12 +599,12 @@ class TestAllInSameYear(unittest.TestCase):
         Here we test all countries for the 12-year period starting ten years
         ago and ending 2 years from now.
         """
-        for self.country in [ctr for ctr in self.countries if len(ctr) == 2]:
+        for self.country in self.countries:
             for self.year in range(
                 date.today().year - 10, date.today().year + 3
             ):
-                hols = holidays.CountryHoliday(
-                    self.country, prov=None, state=None, years=[self.year]
+                hols = holidays.country_holidays(
+                    self.country, years=[self.year]
                 )
                 for self.hol in hols:
                     assert self.hol.year == self.year

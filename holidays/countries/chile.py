@@ -29,7 +29,7 @@ class Chile(HolidayBase):
     country = "CL"
 
     # ISO 3166-2 codes for the principal subdivisions, called regions
-    STATES = [
+    subdivisions = [
         "AI",
         "AN",
         "AP",
@@ -169,7 +169,7 @@ class Chile(HolidayBase):
         self[date(year, DEC, 25)] = "Navidad [Christmas]"
 
         # región de Arica y Parinacota
-        if self.state == "AP" and year >= 2020:
+        if self.subdiv == "AP" and year >= 2020:
             # Law 20.663
             self[date(year, JUN, 7)] = (
                 "Asalto y Toma del Morro de Arica"
@@ -177,7 +177,7 @@ class Chile(HolidayBase):
             )
 
         # región de Ñuble
-        if self.state == "NB" and year >= 2014:
+        if self.subdiv == "NB" and year >= 2014:
             # Law 20.678
             self[date(year, AUG, 20)] = (
                 "Nacimiento del Prócer de la Independencia"

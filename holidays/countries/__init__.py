@@ -48,6 +48,7 @@ from .hungary import Hungary, HU, HUN
 from .iceland import Iceland, IS, ISL
 from .india import India, IN, IND
 from .ireland import Ireland, IE, IRL
+from .isle_of_man import IsleOfMan, IM
 from .italy import Italy, IT, ITA
 from .israel import Israel, IL, ISR
 from .jamaica import Jamaica, JM, JAM
@@ -100,7 +101,6 @@ from .united_kingdom import (
     England,
     Wales,
     Scotland,
-    IsleOfMan,
     NorthernIreland,
 )
 from .united_states import UnitedStates, US, USA

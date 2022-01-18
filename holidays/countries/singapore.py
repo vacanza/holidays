@@ -43,6 +43,7 @@ class Singapore(HolidayBase):
         years: Union[int, Iterable[int]] = None,
         expand: bool = True,
         observed: bool = True,
+        subdiv: Optional[str] = None,
         prov: Optional[str] = None,
         state: Optional[str] = None,
     ) -> None:
@@ -81,7 +82,7 @@ class Singapore(HolidayBase):
         """
 
         self.cnls = _ChineseLuniSolar()
-        super().__init__(years, expand, observed, prov, state)
+        super().__init__(years, expand, observed, subdiv, prov, state)
 
     def _populate(self, year):
 
@@ -307,10 +308,11 @@ class SG(Singapore):
         years: Union[int, Iterable[int]] = None,
         expand: bool = True,
         observed: bool = True,
+        subdiv: Optional[str] = None,
         prov: Optional[str] = None,
         state: Optional[str] = None,
     ) -> None:
-        super().__init__(years, expand, observed, prov, state)
+        super().__init__(years, expand, observed, subdiv, prov, state)
 
 
 class SGP(Singapore):
@@ -321,7 +323,8 @@ class SGP(Singapore):
         years: Union[int, Iterable[int]] = None,
         expand: bool = True,
         observed: bool = True,
+        subdiv: Optional[str] = None,
         prov: Optional[str] = None,
         state: Optional[str] = None,
     ) -> None:
-        super().__init__(years, expand, observed, prov, state)
+        super().__init__(years, expand, observed, subdiv, prov, state)
