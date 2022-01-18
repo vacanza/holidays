@@ -6,6 +6,7 @@ Released ?????? ??, ????
 - Sphinx documentation #600, #601, #602 (mborsetti)
 - Support for Uzbekistan #593 (slako, dr-p)
 - Refactoring / cleanups / code and naming reviews (mborsetti)
+- Wrong year expansion fix #586 (mborsetti, dr-p)
 - Spain improvements #580 (gtrabanco)
 - US fixes #594, #595 (apicht)
 - UK fixes #587 (mborsetti)
