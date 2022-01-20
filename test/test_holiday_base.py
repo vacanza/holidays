@@ -13,6 +13,7 @@
 
 import pickle
 import unittest
+import warnings
 
 from datetime import date, datetime, timedelta
 from dateutil.relativedelta import relativedelta, MO
@@ -516,31 +517,43 @@ class TestKeyTransforms(unittest.TestCase):
         self.assertRaises((TypeError, ValueError), lambda: {} in self.holidays)
 
 
-class TestCountryHoliday(unittest.TestCase):
+class TestCountryHolidayDeprecation(unittest.TestCase):
+    def test_deprecation(self):
+        with warnings.catch_warnings(record=True) as w:
+            warnings.simplefilter("always")
+            h = holidays.CountryHoliday("IT")
+            self.assertIsInstance(h, holidays.HolidayBase)
+            self.assertEqual(1, len(w))
+            self.assertTrue(issubclass(w[-1].category, DeprecationWarning))
+
+
+class TestCountryHolidays(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.CountryHoliday("US")
+        self.holidays = holidays.country_holidays("US")
 
     def test_country(self):
         self.assertEqual(self.holidays.country, "US")
 
     def test_country_single_year(self):
-        h = holidays.CountryHoliday("US", years=2021)
+        h = holidays.country_holidays("US", years=2021)
         self.assertEqual(h.years, {2021})
 
     def test_country_years(self):
-        h = holidays.CountryHoliday("US", years=[2015, 2016])
+        h = holidays.country_holidays("US", years=[2015, 2016])
         self.assertEqual(h.years, {2015, 2016})
 
     def test_country_state(self):
-        h = holidays.CountryHoliday("US", state="NY")
+        h = holidays.country_holidays("US", state="NY")
         self.assertEqual(h.state, "NY")
 
     def test_country_province(self):
-        h = holidays.CountryHoliday("AU", prov="NT")
+        h = holidays.country_holidays("AU", prov="NT")
         self.assertEqual(h.prov, "NT")
 
     def test_exceptions(self):
-        self.assertRaises((KeyError), lambda: holidays.CountryHoliday("XXXX"))
+        self.assertRaises(
+            (KeyError), lambda: holidays.country_holidays("XXXX")
+        )
 
 
 class TestAllInSameYear(unittest.TestCase):

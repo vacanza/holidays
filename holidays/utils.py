@@ -12,6 +12,7 @@
 #  License: MIT (see LICENSE file)
 
 import inspect
+import warnings
 from functools import lru_cache
 from typing import Iterable, List, Optional, Set, TYPE_CHECKING, Union
 
@@ -193,6 +194,11 @@ def CountryHoliday(
 
     :meta private:
     """
+
+    warnings.warn(
+        "CountryHoliday is deprecated, use country_holidays instead.",
+        DeprecationWarning,
+    )
     return country_holidays(country, years, prov, state, expand, observed)
 
 
