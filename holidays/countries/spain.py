@@ -191,7 +191,7 @@ class Spain(HolidayBase):
                 )
                 if year >= 2022:
                     self._is_observed(
-                        islamic_to_gre(year, 12, 10)[0], "Eid Adha"
+                        _islamic_to_gre(year, 12, 10)[0], "Eid Adha"
                     )
             elif self.prov == "CM":
                 if year >= 2022:
@@ -244,19 +244,19 @@ class Spain(HolidayBase):
                 self._is_observed(date(year, SEP, 17), "Día de " "Melilla")
                 if year == 2022:
                     self._is_observed(
-                        islamic_to_gre(year, 10, 1)[0] + rd(days=+1),
+                        _islamic_to_gre(year, 10, 1)[0] + rd(days=+1),
                         "Aid Al-Fitr",
                     )
                     self._is_observed(
-                        islamic_to_gre(year, 12, 10)[0] + rd(days=+2),
+                        _islamic_to_gre(year, 12, 10)[0] + rd(days=+2),
                         "Aid Al-Adha",
                     )
                 else:
                     self._is_observed(
-                        islamic_to_gre(year, 10, 1)[0], "Aid Al-Fitr"
+                        _islamic_to_gre(year, 10, 1)[0], "Aid Al-Fitr"
                     )
                     self._is_observed(
-                        islamic_to_gre(year, 12, 10)[0], "Aid Al-Adha"
+                        _islamic_to_gre(year, 12, 10)[0], "Aid Al-Adha"
                     )
             elif self.prov == "NC":
                 if year >= 2022:
