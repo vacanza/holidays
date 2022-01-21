@@ -60,7 +60,7 @@ class Nigeria(HolidayBase):
             # This is an estimate
             # date of observance is announced yearly
             for yr in (year - 1, year):
-                for date_obs in _islamic_to_gre(year, 10, 1):
+                for date_obs in _islamic_to_gre(yr, 10, 1):
                     hol_date = date_obs
                     _add_holiday(hol_date, "Eid al-Fitr")
                     _add_holiday(hol_date + rd(days=1), "Eid al-Fitr Holiday")
@@ -69,7 +69,7 @@ class Nigeria(HolidayBase):
             # This is an estimate
             # date of observance is announced yearly
             for yr in (year - 1, year):
-                for date_obs in _islamic_to_gre(year, 12, 10):
+                for date_obs in _islamic_to_gre(yr, 12, 10):
                     hol_date = date_obs
                     _add_holiday(hol_date, "Eid al-Adha")
                     _add_holiday(hol_date + rd(days=1), "Eid al-Adha Holiday")
