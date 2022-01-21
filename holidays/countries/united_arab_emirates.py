@@ -52,6 +52,13 @@ class UnitedArabEmirates(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        def _add_holiday(dt: date, hol: str) -> None:
+            """Only add if in current year; prevents adding holidays across
+            years (handles multi-day Islamic holidays that straddle Gregorian
+            years).
+            """
+            if dt.year == year:
+                self[dt] = hol
 
         # New Year's Day
         self[date(year, JAN, 1)] = "New Year's Day"
@@ -86,15 +93,18 @@ class UnitedArabEmirates(HolidayBase):
                 self[hol_date + rd(days=1)] = "{} Holiday".format(fitr)
                 self[hol_date + rd(days=2)] = "{} Holiday".format(fitr)
         else:
-            for date_obs in _islamic_to_gre(year, 10, 1):
-                hol_date = date_obs
-                self[hol_date] = "{}* (*estimated)".format(fitr)
-                self[
-                    hol_date + rd(days=1)
-                ] = "{} Holiday* (*estimated)".format(fitr)
-                self[
-                    hol_date + rd(days=2)
-                ] = "{} Holiday* (*estimated)".format(fitr)
+            for yr in (year - 1, year):
+                for date_obs in _islamic_to_gre(yr, 10, 1):
+                    hol_date = date_obs
+                    _add_holiday(hol_date, "{}* (*estimated)".format(fitr))
+                    _add_holiday(
+                        hol_date + rd(days=1),
+                        "{} Holiday* (*estimated)".format(fitr),
+                    )
+                    _add_holiday(
+                        hol_date + rd(days=2),
+                        "{} Holiday* (*estimated)".format(fitr),
+                    )
 
         # Arafat Day & Eid al-Adha
         dates_obs = {
@@ -113,16 +123,21 @@ class UnitedArabEmirates(HolidayBase):
                 self[hol_date + rd(days=2)] = "{} Holiday".format(adha)
                 self[hol_date + rd(days=3)] = "{} Holiday".format(adha)
         else:
-            for date_obs in _islamic_to_gre(year, 12, 9):
-                hol_date = date_obs
-                self[hol_date] = "{}* (*estimated)".format(hajj)
-                self[hol_date + rd(days=1)] = "{}* (*estimated)".format(adha)
-                self[
-                    hol_date + rd(days=2)
-                ] = "{}* Holiday* (*estimated)".format(adha)
-                self[
-                    hol_date + rd(days=3)
-                ] = "{} Holiday* (*estimated)".format(adha)
+            for yr in (year - 1, year):
+                for date_obs in _islamic_to_gre(yr, 12, 9):
+                    hol_date = date_obs
+                    _add_holiday(hol_date, "{}* (*estimated)".format(hajj))
+                    _add_holiday(
+                        hol_date + rd(days=1), "{}* (*estimated)".format(adha)
+                    )
+                    _add_holiday(
+                        hol_date + rd(days=2),
+                        "{}* Holiday* (*estimated)".format(adha),
+                    )
+                    _add_holiday(
+                        hol_date + rd(days=3),
+                        "{} Holiday* (*estimated)".format(adha),
+                    )
 
         # Islamic New Year - (hijari_year, 1, 1)
         dates_obs = {

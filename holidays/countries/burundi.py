@@ -39,6 +39,15 @@ class Burundi(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+
+        def _add_holiday(dt: date, hol: str) -> None:
+            """Only add if in current year; prevents adding holidays across
+            years (handles multi-day Islamic holidays that straddle Gregorian
+            years).
+            """
+            if dt.year == year:
+                self[dt] = hol
+
         # New Year's Day
         self[date(year, JAN, 1)] = "New Year's Day"
 
@@ -73,10 +82,11 @@ class Burundi(HolidayBase):
 
         # Eid Al Adha- Feast of the Sacrifice
         # date of observance is announced yearly
-        for date_obs in _islamic_to_gre(year, 12, 10):
-            hol_date = date_obs
-            self[hol_date] = "Eid Al Adha"
-            self[hol_date + rd(days=1)] = "Eid Al Adha"
+        for yr in (year - 1, year):
+            for date_obs in _islamic_to_gre(yr, 12, 10):
+                hol_date = date_obs
+                _add_holiday(hol_date, "Eid Al Adha")
+                _add_holiday(hol_date + rd(days=1), "Eid Al Adha")
 
         # Assumption Day
         name = "Assumption Day"

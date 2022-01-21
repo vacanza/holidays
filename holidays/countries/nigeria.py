@@ -31,6 +31,15 @@ class Nigeria(HolidayBase):
 
     def _populate(self, year):
         if year > 1978:
+
+            def _add_holiday(dt: date, hol: str) -> None:
+                """Only add if in current year; prevents adding holidays across
+                years (handles multi-day Islamic holidays that straddle
+                Gregorian years).
+                """
+                if dt.year == year:
+                    self[dt] = hol
+
             # New Year's Day
             self[date(year, JAN, 1)] = "New Year's day"
 
@@ -50,18 +59,20 @@ class Nigeria(HolidayBase):
             # Eid al-Fitr - Feast Festive
             # This is an estimate
             # date of observance is announced yearly
-            for date_obs in _islamic_to_gre(year, 10, 1):
-                hol_date = date_obs
-                self[hol_date] = "Eid al-Fitr"
-                self[hol_date + rd(days=1)] = "Eid al-Fitr Holiday"
+            for yr in (year - 1, year):
+                for date_obs in _islamic_to_gre(year, 10, 1):
+                    hol_date = date_obs
+                    _add_holiday(hol_date, "Eid al-Fitr")
+                    _add_holiday(hol_date + rd(days=1), "Eid al-Fitr Holiday")
 
             # Arafat Day & Eid al-Adha - Scarfice Festive
             # This is an estimate
             # date of observance is announced yearly
-            for date_obs in _islamic_to_gre(year, 12, 10):
-                hol_date = date_obs
-                self[hol_date] = "Eid al-Adha"
-                self[hol_date + rd(days=1)] = "Eid al-Adha Holiday"
+            for yr in (year - 1, year):
+                for date_obs in _islamic_to_gre(year, 12, 10):
+                    hol_date = date_obs
+                    _add_holiday(hol_date, "Eid al-Adha")
+                    _add_holiday(hol_date + rd(days=1), "Eid al-Adha Holiday")
 
             # Independence Day
             self[date(year, OCT, 1)] = "National day"
@@ -94,6 +105,15 @@ class Nigeria(HolidayBase):
                 ):
                     # Add the (Observed) holiday
                     self[k + rd(days=2)] = v + " (Observed)"
+
+        def _add_holiday(dt: date, hol: str) -> None:
+            """Only add if in current year; prevents adding holidays across
+            years (handles multi-day Islamic holidays that straddle Gregorian
+            years).
+            """
+            if dt.year == year:
+                self[dt] = hol
+
 
 
 class NG(Nigeria):

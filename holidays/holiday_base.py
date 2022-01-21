@@ -171,7 +171,7 @@ class HolidayBase(dict):
         if not getattr(self, "prov", False):
             self.prov = prov
         self.state = state
-        for year in self.years.copy():
+        for year in self.years:
             self._populate(year)
 
     def __setattr__(self, key: str, value: Any) -> None:

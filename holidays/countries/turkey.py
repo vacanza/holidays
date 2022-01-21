@@ -27,6 +27,13 @@ class Turkey(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        def _add_holiday(dt: date, hol: str) -> None:
+            """Only add if in current year; prevents adding holidays across
+            years (handles multi-day Islamic holidays that straddle Gregorian
+            years).
+            """
+            if dt.year == year:
+                self[dt] = hol
 
         # 1st of Jan
         self[date(year, JAN, 1)] = "New Year's Day"
@@ -55,20 +62,22 @@ class Turkey(HolidayBase):
 
         # Ramadan Feast
         # Date of observance is announced yearly, This is an estimate.
-        for date_obs in _islamic_to_gre(year, 10, 1):
-            hol_date = date_obs
-            self[hol_date] = "Ramadan Feast"
-            self[hol_date + rd(days=1)] = "Ramadan Feast Holiday"
-            self[hol_date + rd(days=2)] = "Ramadan Feast Holiday"
+        for yr in (year - 1, year):
+            for date_obs in _islamic_to_gre(yr, 10, 1):
+                hol_date = date_obs
+                _add_holiday(hol_date, "Ramadan Feast")
+                _add_holiday(hol_date + rd(days=1), "Ramadan Feast Holiday")
+                _add_holiday(hol_date + rd(days=2), "Ramadan Feast Holiday")
 
         # Sacrifice Feast
         # Date of observance is announced yearly, This is an estimate.
-        for date_obs in _islamic_to_gre(year, 12, 10):
-            hol_date = date_obs
-            self[hol_date] = "Sacrifice Feast"
-            self[hol_date + rd(days=1)] = "Sacrifice Feast Holiday"
-            self[hol_date + rd(days=2)] = "Sacrifice Feast Holiday"
-            self[hol_date + rd(days=3)] = "Sacrifice Feast Holiday"
+        for yr in (year - 1, year):
+            for date_obs in _islamic_to_gre(yr, 12, 10):
+                hol_date = date_obs
+                _add_holiday(hol_date, "Sacrifice Feast")
+                _add_holiday(hol_date + rd(days=1), "Sacrifice Feast Holiday")
+                _add_holiday(hol_date + rd(days=2), "Sacrifice Feast Holiday")
+                _add_holiday(hol_date + rd(days=3), "Sacrifice Feast Holiday")
 
 
 class TR(Turkey):
