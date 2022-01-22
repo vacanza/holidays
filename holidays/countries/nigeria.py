@@ -115,7 +115,6 @@ class Nigeria(HolidayBase):
                 self[dt] = hol
 
 
-
 class NG(Nigeria):
     pass
 

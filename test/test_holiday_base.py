@@ -606,7 +606,8 @@ class TestAllInSameYear(unittest.TestCase):
             for self.country in self.countries:
                 for self.year in range(
                     # date.today().year - 10, date.today().year + 3
-                    1950, 2051
+                    1950,
+                    2051,
                 ):
                     hols = holidays.country_holidays(
                         self.country, prov=None, state=None, years=[self.year]
