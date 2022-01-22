@@ -13,6 +13,7 @@
 
 import pickle
 import unittest
+import warnings
 
 from datetime import date, datetime, timedelta
 from dateutil.relativedelta import relativedelta, MO
@@ -518,32 +519,42 @@ class TestKeyTransforms(unittest.TestCase):
         self.assertRaises((TypeError, ValueError), lambda: {} in self.holidays)
 
 
-class TestCountryHoliday(unittest.TestCase):
+class TestCountryHolidayDeprecation(unittest.TestCase):
+    def test_deprecation(self):
+        with warnings.catch_warnings(record=True) as w:
+            warnings.simplefilter("always")
+            h = holidays.CountryHoliday("IT")
+            self.assertIsInstance(h, holidays.HolidayBase)
+            self.assertEqual(1, len(w))
+            self.assertTrue(issubclass(w[-1].category, DeprecationWarning))
+
+
+class TestCountryHolidays(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.CountryHoliday("US")
+        self.holidays = holidays.country_holidays("US")
 
     def test_country(self):
         self.assertEqual(self.holidays.country, "US")
 
     def test_country_single_year(self):
-        h = holidays.CountryHoliday("US", years=2021)
+        h = holidays.country_holidays("US", years=2021)
         self.assertEqual(h.years, {2021})
 
     def test_country_years(self):
-        h = holidays.CountryHoliday("US", years=[2015, 2016])
+        h = holidays.country_holidays("US", years=[2015, 2016])
         self.assertEqual(h.years, {2015, 2016})
 
     def test_country_state(self):
-        h = holidays.CountryHoliday("US", subdiv="NY")
+        h = holidays.country_holidays("US", subdiv="NY")
         self.assertEqual(h.subdiv, "NY")
 
     def test_country_province(self):
-        h = holidays.CountryHoliday("AU", subdiv="NT")
+        h = holidays.country_holidays("AU", subdiv="NT")
         self.assertEqual(h.subdiv, "NT")
 
     def test_exceptions(self):
         self.assertRaises(
-            NotImplementedError, lambda: holidays.CountryHoliday("XXXX")
+            NotImplementedError, lambda: holidays.country_holidays("XXXX")
         )
         self.assertRaises(
             NotImplementedError, lambda: holidays.country_holidays("XXXX")

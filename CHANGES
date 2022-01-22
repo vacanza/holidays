@@ -4,9 +4,11 @@ Version 0.12.1
 Released ?????? ??, ????
 
 - Sphinx documentation #600, #601, #602 (mborsetti)
-- Support for Uzbekistan #593 (slako, dr-p)
+- CountryHoliday class deprecation (replaced by country_holidays) (mborsetti, dr-p)
 - Refactoring / cleanups / code and naming reviews (mborsetti)
-- Spain improvements #580 (gtrabanco)
+- Support for Uzbekistan #593 (slako, dr-p)
+- Wrong year expansion fix #586 (mborsetti, dr-p)
+- Spain improvements #580,#603 (gtrabanco, dr-p)
 - US fixes #594, #595 (apicht)
 - UK fixes #587 (mborsetti)
 - Russia fixes #582 (Enzokot)
