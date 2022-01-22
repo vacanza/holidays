@@ -30,7 +30,7 @@ import holidays  # noqa: E402 module level import not at top of file
 
 # -- Project information -----------------------------------------------------
 
-project = "python-holidays"
+project = "holidays"
 copyright = str(date.today().year)
 author = "dr-prodigy"
 version = holidays.__version__
