@@ -127,3 +127,10 @@ class TestSingapore(unittest.TestCase):
                 self.assertIn(
                     date(2023, 6, 28), self.holidays
                 )  # Hari Raya Haji
+
+    def test_aliases(self):
+        """For coverage purposes"""
+        h = holidays.SG()
+        self.assertIsInstance(h, holidays.Singapore)
+        h = holidays.SGP()
+        self.assertIsInstance(h, holidays.Singapore)
