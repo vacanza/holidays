@@ -130,11 +130,11 @@ class TestIND(unittest.TestCase):
 
     def test_diwali_and_holi(self):
         warnings.simplefilter("always")
-        with self.assertWarns(Warning) as w:
+        with self.assertWarns(Warning):
             # Diwali and Holi out of range
             holidays.IN(years=2009)
 
-        with self.assertWarns(Warning) as w:
+        with self.assertWarns(Warning):
             # Diwali and Holi out of range
             holidays.IN(years=2031)
 
