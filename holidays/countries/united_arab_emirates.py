@@ -14,12 +14,16 @@
 from datetime import date
 
 from dateutil.relativedelta import relativedelta as rd
-from holidays.constants import FRI, SAT
+from holidays.constants import SAT, SUN
 from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, SEP, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.utils import islamic_to_gre
 
-WEEKEND = (FRI, SAT)
+# starting in 2022, UAE aligned his weekend days with Europe,
+# now weekends are on Sat and Sun.
+# https://choice.npr.org/index.html?origin=https://www.npr.org/2021/12/08/1062435944/uae-work-week-change-saturday-sunday-weekends-global-markets
+
+WEEKEND = (SAT, SUN)
 
 
 class UnitedArabEmirates(HolidayBase):
