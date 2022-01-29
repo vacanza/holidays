@@ -14,7 +14,7 @@
 from datetime import date
 
 from dateutil.relativedelta import relativedelta as rd
-from holidays.constants import FRI, SAT, THU
+from holidays.constants import THU, FRI, SAT, SUN
 from holidays.constants import SEP
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
@@ -45,10 +45,15 @@ class SaudiArabia(HolidayBase):
     def _populate(self, year):
         if year < 2013:
             # Weekend used to be THU, FRI before June 28th, 2013
-            # On that year both Eids were after that date so the below works:
+            # On that year both Eids were after that date so what below works:
             WEEKEND = (THU, FRI)
-        else:
+        elif year < 2022:
             WEEKEND = (FRI, SAT)
+        else:
+            # from 2022 on, UAE aligns his weekend days with Europe,
+            # setting weekend on Sat and Sun.
+            # https://text.npr.org/1062435944
+            WEEKEND = (SAT, SUN)
 
         observed_str = " (observed)"
 
