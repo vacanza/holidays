@@ -12,6 +12,7 @@
 #  License: MIT (see LICENSE file)
 
 import pickle
+import sys
 import unittest
 import warnings
 
@@ -597,13 +598,19 @@ class TestAllInSameYear(unittest.TestCase):
 
         Here we test all countries for the 12-year period starting ten years
         ago and ending 2 years from now.
+
+        This is logic test and not a code compatibility test, so for expediency
+        we only run it once on the latest Python version.
         """
-        for self.country in self.countries:
-            for self.year in range(
-                date.today().year - 10, date.today().year + 3
-            ):
-                hols = holidays.country_holidays(
-                    self.country, prov=None, state=None, years=[self.year]
-                )
-                for self.hol in hols:
-                    assert self.hol.year == self.year
+        if sys.version_info[0:1] == (3, 10):
+            for self.country in self.countries:
+                for self.year in range(
+                    # date.today().year - 10, date.today().year + 3
+                    1950,
+                    2051,
+                ):
+                    hols = holidays.country_holidays(
+                        self.country, prov=None, state=None, years=[self.year]
+                    )
+                    for self.hol in hols:
+                        assert self.hol.year == self.year

@@ -62,3 +62,8 @@ class TestAzerbaijan(unittest.TestCase):
                 self.assertIn(date(2020, 7, 31), self.holidays)
                 self.assertIn(date(2020, 8, 1), self.holidays)
                 self.assertIn(date(2020, 8, 3), self.holidays)  # observed
+
+    def test_dec_31_on_weekend(self):
+        """Test when Dec 31 of previous year is on a weekend."""
+        self.assertIn(date(2023, JAN, 2), self.holidays)
+        self.assertIn(date(2024, JAN, 1), self.holidays)
