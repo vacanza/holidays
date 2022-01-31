@@ -22,7 +22,11 @@ Released January 4, 2022
 
 - Release increase (v.0.12, was v.0.11.4 during beta)
 - Copyright update 2022
+<<<<<<< HEAD
 - Sphinx documentation stub (mborsetti, dr-p)
+=======
+- Sphinx documentation (mborsetti, dr-p)
+>>>>>>> master
 - Support for Kazakhstan #534 (chiuczek, intelliHugh)
 - Support for Azerbaijan #540 (eldar-mustafayev)
 - Support for Tunisia #543 (ihebski)
