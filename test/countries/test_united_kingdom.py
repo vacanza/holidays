@@ -273,7 +273,7 @@ class TestIsleOfManAsGB(unittest.TestCase):
         with warnings.catch_warnings(record=True) as w:
             warnings.simplefilter("always")
             isleofman = holidays.UnitedKingdom(state="Isle of Man")
-            # self.assertIsInstance(isleofman, holidays.IsleOfMan)
+            self.assertIsInstance(isleofman, holidays.UnitedKingdom)
             self.assertEqual(1, len(w))
             self.assertTrue(issubclass(w[-1].category, DeprecationWarning))
 

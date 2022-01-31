@@ -129,18 +129,19 @@ class Spain(HolidayBase):
             and self.subdiv in ["CT", "IB", "PV", "NC", "RI", "VC"]
         ):
             self[easter(year) + rd(weekday=MO)] = "Lunes de Pascua"
-        elif (
-            2022 > year
-            and self.subdiv in ["CT", "PV", "NC", "VC", "IB", "CM"]
-        ):
+        elif 2022 > year and self.subdiv in [
+            "CT",
+            "PV",
+            "NC",
+            "VC",
+            "IB",
+            "CM",
+        ]:
             self[easter(year) + rd(weekday=MO)] = "Lunes de Pascua"
 
         if 2022 != year:
             self._is_observed(date(year, MAY, 1), "Día del Trabajador")
-        elif (
-            2022 == year
-            and self.subdiv in ["AN", "AS", "CL", "EX", "MC"]
-        ):
+        elif 2022 == year and self.subdiv in ["AN", "AS", "CL", "EX", "MC"]:
             self._is_observed(
                 date(year, MAY, 2), "Día del Trabajador (Trasladado)"
             )
@@ -155,10 +156,7 @@ class Spain(HolidayBase):
         self._is_observed(date(year, DEC, 8), "La Inmaculada Concepción")
         if year != 2022:
             self._is_observed(date(year, DEC, 25), "Navidad")
-        elif (
-            year == 2022
-            and self.subdiv not in ["CE", "GA", "PV", "VC"]
-        ):
+        elif year == 2022 and self.subdiv not in ["CE", "GA", "PV", "VC"]:
             self._is_observed(date(year, DEC, 26), "Navidad (Trasladado)")
         if self.subdiv in ["CT", "IB"]:
             self._is_observed(date(year, DEC, 26), "San Esteban")
