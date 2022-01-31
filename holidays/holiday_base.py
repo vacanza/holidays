@@ -34,7 +34,29 @@ if TYPE_CHECKING:
 
 class HolidayBase(dict):
     """
-    The base class for a new dictionary containing the public holidays.
+    A dict-like object containing the holidays for a specific country (and
+    province or state if so initiated); inherits the dict class (so behaves
+    similarly to a dict). Dates without a key in the Holiday object are not
+    holidays.
+
+    The key of the object is the date of the holiday and the value is the name
+    of the holiday itself. When passing the date as a key, the date can be
+    expressed as one of the following formats:
+
+    * datetime.datetime type;
+    * datetime.date types;
+    * a float representing a Unix timestamp;
+    * or a string of any format (recognized by datetime.parse).
+
+    The key is always returned as a `datetime.date` object.
+
+    To maximize speed, the list of holidays is built as needed on the fly, one
+    calendar year at a time. When you instantiate the object, it is empty, but
+    the moment a key is accessed it will build that entire year's list of
+    holidays. To prepopulate holidays, instantiate the class with the years
+    argument:
+
+    us_holidays = holidays.US(years=2020)
 
     It is generally instantiated using the :func:`country_holidays` function.
 

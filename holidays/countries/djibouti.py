@@ -62,6 +62,14 @@ class Djibouti(HolidayBase):
                 self[hol_date] = hol_name
         """
 
+        def _add_holiday(dt: date, hol: str) -> None:
+            """Only add if in current year; prevents adding holidays across
+            years (handles multi-day Islamic holidays that straddle Gregorian
+            years).
+            """
+            if dt.year == year:
+                self[dt] = hol
+
         # New Year's Day
         self[date(year, JAN, 1)] = "Nouvel an"
 
@@ -83,18 +91,24 @@ class Djibouti(HolidayBase):
         # having the Holiday on Weekend does change the number of days,
         # deceided to leave it since marking a Weekend as a holiday
         # wouldn't do much harm.
-        for date_obs in _islamic_to_gre(year, 10, 1):
-            hol_date = date_obs
-            self[hol_date] = "Eid al-Fitr"
-            self[hol_date + rd(days=1)] = "Eid al-Fitr deuxième jour"
+        for yr in (year - 1, year):
+            for date_obs in _islamic_to_gre(yr, 10, 1):
+                hol_date = date_obs
+                _add_holiday(hol_date, "Eid al-Fitr")
+                _add_holiday(
+                    hol_date + rd(days=1), "Eid al-Fitr deuxième jour"
+                )
 
         # Arafat & Eid al-Adha - Scarfice Festive
         # date of observance is announced yearly
-        for date_obs in _islamic_to_gre(year, 12, 9):
-            hol_date = date_obs
-            self[hol_date] = "Arafat"
-            self[hol_date + rd(days=1)] = "Eid al-Adha"
-            self[hol_date + rd(days=2)] = "Eid al-Adha deuxième jour"
+        for yr in (year - 1, year):
+            for date_obs in _islamic_to_gre(yr, 12, 9):
+                hol_date = date_obs
+                _add_holiday(hol_date, "Arafat")
+                _add_holiday(hol_date + rd(days=1), "Eid al-Adha")
+                _add_holiday(
+                    hol_date + rd(days=2), "Eid al-Adha deuxième jour"
+                )
 
         # Islamic New Year - (hijari_year, 1, 1)
         for date_obs in _islamic_to_gre(year, 1, 1):

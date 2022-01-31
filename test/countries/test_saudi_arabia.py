@@ -40,7 +40,7 @@ class TestSaudiArabia(unittest.TestCase):
 
     def test_national_day(self):
         self.assertIn(date(2020, 9, 23), self.holidays)
-        # National day started as a holiday at 2005
+        # National day started as a holiday on 2005
         self.assertNotIn(date(2004, 9, 23), self.holidays)
         self.assertIn(date(2005, 9, 23), self.holidays)
 
@@ -67,14 +67,26 @@ class TestSaudiArabia(unittest.TestCase):
             import importlib.util
 
             if importlib.util.find_spec("hijri_converter"):
-                self.holidays = holidays.SA(years=[2020])
-                # eid alfitr
+                self.holidays = holidays.SA(years=[2020, 2022])
+                # eid al-fitr
+                self.assertIn(date(2022, 5, 1), self.holidays)
+                self.assertIn(date(2022, 5, 2), self.holidays)
+                self.assertIn(date(2022, 5, 3), self.holidays)
+                self.assertIn(date(2022, 5, 4), self.holidays)
+
+                # eid al-adha
+                self.assertIn(date(2022, 7, 10), self.holidays)
+                self.assertIn(date(2022, 7, 11), self.holidays)
+                self.assertIn(date(2022, 7, 12), self.holidays)
+                self.assertIn(date(2022, 7, 13), self.holidays)
+
+                # eid al-fitr
                 self.assertIn(date(2020, 5, 23), self.holidays)
                 self.assertIn(date(2020, 5, 24), self.holidays)
                 self.assertIn(date(2020, 5, 25), self.holidays)
                 self.assertIn(date(2020, 5, 26), self.holidays)
 
-                # eid aladha
+                # eid al-adha
                 self.assertIn(date(2020, 7, 30), self.holidays)
                 self.assertIn(date(2020, 7, 31), self.holidays)
                 self.assertIn(date(2020, 8, 1), self.holidays)
@@ -85,20 +97,18 @@ class TestSaudiArabia(unittest.TestCase):
             import importlib.util
 
             if importlib.util.find_spec("hijri_converter"):
-                self.holidays = holidays.SA(years=range(2014, 2021))
-                # observed eid alfitr
+                self.holidays = holidays.SA(years=range(2019, 2023))
+                # observed eid al-fitr
                 self.assertIn(date(2020, 5, 27), self.holidays)
 
-                # self.assertIn(date(2016, 7, 10), self.holidays)
-                # self.assertIn(date(2016, 7, 11), self.holidays)
+                self.assertIn(date(2019, 6, 8), self.holidays)
 
-                self.assertIn(date(2018, 6, 18), self.holidays)
-                self.assertIn(date(2018, 6, 19), self.holidays)
+                # osbserved eid al-adha
+                self.assertIn(date(2022, 7, 12), self.holidays)
+                self.assertIn(date(2022, 7, 13), self.holidays)
 
-                self.assertIn(date(2019, 6, 9), self.holidays)
-
-                # osbserved eid aladha
-                self.assertIn(date(2014, 10, 8), self.holidays)
+                self.assertIn(date(2020, 8, 3), self.holidays)
+                self.assertIn(date(2020, 8, 4), self.holidays)
 
                 # self.assertIn(date(2017, 8, 3), self.holidays)
                 # self.assertIn(date(2017, 8, 4), self.holidays)
@@ -117,31 +127,31 @@ class TestSaudiArabia(unittest.TestCase):
                 self.holidays = holidays.SA(
                     observed=False, years=range(2014, 2021)
                 )
-                # observed eid alfitr
+                # observed eid al-fitr
                 self.assertNotIn(date(2020, 5, 27), self.holidays)
 
-                # self.assertNotIn(date(2016, 7, 10), self.holidays)
-                # self.assertNotIn(date(2016, 7, 11), self.holidays)
+                self.assertNotIn(date(2016, 7, 10), self.holidays)
+                self.assertNotIn(date(2016, 7, 11), self.holidays)
 
                 self.assertNotIn(date(2018, 6, 18), self.holidays)
                 self.assertNotIn(date(2018, 6, 19), self.holidays)
 
                 self.assertNotIn(date(2019, 6, 9), self.holidays)
 
-                # osbserved eid aladha
+                # osbserved eid al-adha
                 self.assertNotIn(date(2014, 10, 8), self.holidays)
 
-                # self.assertNotIn(date(2017, 8, 3), self.holidays)
-                # self.assertNotIn(date(2017, 8, 4), self.holidays)
+                self.assertNotIn(date(2017, 8, 3), self.holidays)
+                self.assertNotIn(date(2017, 8, 4), self.holidays)
 
                 # self.assertNotIn(date(2019, 8, 13), self.holidays)
-                # self.assertNotIn(date(2019, 8, 14), self.holidays)
+                self.assertNotIn(date(2019, 8, 14), self.holidays)
 
-                # self.assertNotIn(date(2017, 8, 6), self.holidays)
+                self.assertNotIn(date(2017, 8, 6), self.holidays)
 
     def test_hijri_based_with_two_holidays_in_one_year(self):
         """
-        Note: this might required change if weekend changes
+        Note: this might be required change if weekend changes
         took effect in the holiday.SA class (weekend changed
         on June 28th, 2013), from (Thursdays and Fridays) to
         (Fridays, Saturdays).
@@ -159,11 +169,11 @@ class TestSaudiArabia(unittest.TestCase):
                 self.assertIn(date(2006, 10, 24), self.holidays)
                 self.assertIn(date(2006, 10, 25), self.holidays)
                 self.assertIn(date(2006, 10, 26), self.holidays)
-                # eid_aladha 1 (hijiry year 1426)
+                # eid al-adha 1 (hijri year 1426)
                 self.assertIn(date(2006, 1, 9), self.holidays)
                 self.assertIn(date(2006, 1, 10), self.holidays)
                 self.assertIn(date(2006, 1, 11), self.holidays)
                 self.assertIn(date(2006, 1, 12), self.holidays)
-                # eid_aladha 2 (hijiry year 1427)
+                # eid al-adha 2 (hijri year 1427)
                 # The remaining holidays fall in the next year 2007
                 self.assertIn(date(2006, 12, 31), self.holidays)
