@@ -242,8 +242,8 @@ class Scotland(UnitedKingdom):
 class NorthernIreland(UnitedKingdom):
     def __init__(self, **kwargs):
         warnings.warn(
-            "Northern Ireland is deprecated, use UK(subdiv='Northern Ireland') "
-            "instead.",
+            "Northern Ireland is deprecated, use UK(subdiv='Northern Ireland')"
+            " instead.",
             DeprecationWarning,
         )
         kwargs["subdiv"] = "Northern Ireland"

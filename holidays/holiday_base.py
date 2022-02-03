@@ -221,7 +221,8 @@ class HolidayBase(dict):
         self.subdiv = subdiv or prov or state
         if prov or state:
             warnings.warn(
-                f"Arguments prov and state are deprecated, use subdiv='{prov or state}' instead.",
+                "Arguments prov and state are deprecated, use subdiv="
+                f"'{prov or state}' instead.",
                 DeprecationWarning,
             )
         if not isinstance(self, HolidaySum):
@@ -231,7 +232,8 @@ class HolidayBase(dict):
                 not in self.subdivisions + self._deprecated_subdivisions
             ):
                 raise NotImplementedError(
-                    f"Country {self.country} does not have subdivision '{subdiv}'"
+                    "Country {self.country} does not have subdivision "
+                    f"'{subdiv}'"
                 )
         if isinstance(years, int):
             self.years = {years}
