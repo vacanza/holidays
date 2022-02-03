@@ -550,7 +550,7 @@ class HolidayBase(dict):
 
     def __repr__(self):
         if len(self) == 0:
-            _repr = f"holidays.Holidays({self.country!r}"
+            _repr = f"holidays.country_holidays({self.country!r}"
             if self.subdiv:
                 _repr += f", subdiv={self.subdiv!r}"
             _repr += ")"
