@@ -41,6 +41,7 @@ Released January 4, 2022
 - Test coverage improvement (dr-p)
 - "country" property moved to class attributes #573 (dr-p, madphysicist)
 - Date slices support fix #529, #530 (justinwaf, mborsetti, dr-p)
+- Dictionary changed during iteration fix #569 (mborsetti)
 - Doc fixes #549 (canute24)
 - UK standalone states deprecation #566 (dr-p)
 - Venezuela ISO code + other fixes #567, #576 (Skatox, dr-p, antusystem)
