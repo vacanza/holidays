@@ -3,6 +3,7 @@ Version 0.12.1
 
 Released ?????? ??, ????
 
+- New subdivision parameter (subdiv), prov/state deprecation #608, #597, #374 (mborsetti)
 - Sphinx documentation #600, #601, #602 (mborsetti)
 - CountryHoliday class deprecation (replaced by country_holidays) (mborsetti, dr-p)
 - Refactoring / cleanups / code and naming reviews (mborsetti)
@@ -10,6 +11,7 @@ Released ?????? ??, ????
 - Wrong year expansion fix #586, #606 (mborsetti, dr-p)
 - Spain improvements #580,#603 (gtrabanco, dr-p)
 - UAE updates (weekend change) #609 (marcomasulli, dr-p)
+- India updates #548 (mborsetti)
 - US fixes #594, #595 (apicht)
 - UK fixes #587 (mborsetti)
 - Russia fixes #582 (Enzokot)
