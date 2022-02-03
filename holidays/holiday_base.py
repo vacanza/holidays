@@ -232,7 +232,7 @@ class HolidayBase(dict):
                 not in self.subdivisions + self._deprecated_subdivisions
             ):
                 raise NotImplementedError(
-                    "Country {self.country} does not have subdivision "
+                    f"Country {self.country} does not have subdivision "
                     f"'{subdiv}'"
                 )
         if isinstance(years, int):
