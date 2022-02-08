@@ -217,7 +217,7 @@ following countries and their subdivisions are available:
      - None
    * - Italy
      - IT
-     - Provinces: AN, AO, BA, BL, BO, BZ, BS, CB, CT, CH, CS, KR, EN, FE, FI, FC, FR, GE, GO, IS, SP, LT, ME, MN, MS, MI, MO, MB, NA, PD, PA, PR, PG, PE, PC, PI, PD, PT, RA, RE, RI, RN, RM, RO, SA, SR, TE, TN, TO, TS, PU, VE, VC, VI; Cities: Cesena, Forlì, Pesaro, Urbino
+     - Provinces: AG, AL, AN, AO, AP, AQ, AR, AT, AV, BA, BG, BI, BL, BN, BO, BR, BS, BT, BZ, CA, CB, CE, CH, CL, CN, CO, CR, CS, CT, CZ, EN, FC, FE, FG, FI, FM, FR, GE, GO, GR, IM, IS, KR, LC, LE, LI, LO, LT, LU, MB, MC, ME, MI, MN, MO, MS, MT, NA, NO, NU, OR, PA, PC, PD, PE, PG, PI, PN, PO, PR, PT, PU, PV, PZ, RA, RC, RE, RG, RI, RM, RN, RO, SA, SI, SO, SP, SR, SS, SU, SV, TA, TE, TN, TO, TP, TR, TS, TV, UD, VA, VB, VC, VE, VI, VR, VT, VV; Cities: Barletta, Andria, Trani, Cesena, Forlì, Pesaro, Urbino
    * - Jamaica
      - JM
      - None
