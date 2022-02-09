@@ -50,8 +50,8 @@ class TestSpain(unittest.TestCase):
             (5, 1),
             (8, 15),
             (10, 12),
-            (11, 2),
-            (12, 7),
+            (11, 1),
+            (12, 6),
             (12, 8),
             (12, 25),
         )
@@ -74,22 +74,14 @@ class TestSpain(unittest.TestCase):
             (2, 28): ["AN"],
             (3, 1): ["IB"],
             (4, 23): ["AR", "CL"],
+            (6, 9): ["MC", "RI"],
             (5, 30): ["CN"],
             (5, 31): ["CM"],
-            (5, 2): ["MD"],
-            (6, 9): ["MC", "RI"],
-            (7, 25): ["GA"],
             (7, 28): ["CB"],
-            (9, 8): ["AS", "EX"],
-            (9, 11): ["CT"],
-            (9, 27): ["NC"],
-            (10, 9): ["VC"],
+            (12, 3): ["NC"],
         }
         for prov, prov_holidays in self.prov_holidays.items():
             for year in range(2010, 2025):
-                self.assertEqual(
-                    date(year, 12, 26) in prov_holidays, prov in ["CT", "IB"]
-                )
                 if year < 2015:
                     self.assertEqual(
                         date(year, 3, 19) in prov_holidays,

@@ -187,8 +187,8 @@ Singapore           SG/SGP    None
 Slovakia            SK/SVK    None
 Slovenia            SI/SVN    None
 SouthAfrica         ZA/ZAF    None
-Spain               ES/ESP    prov = AN, AR, AS, CB, CL, CM, CN, CT, EX, GA, IB, MC,
-                              MD, NC, PV, RI, VC
+Spain               ES/ESP    prov = AN, AR, AS, CB, CE, CL, CM, CN, CT, EX, GA, IB, MC,
+                              MD, ML, NC, PV, RI, VC
 Swaziland           SZ/SZW    None
 Sweden              SE/SWE    None
 Switzerland         CH/CHE    prov = AG, AR, AI, BL, BS, BE, FR, GE, GL, GR, JU, LU,
