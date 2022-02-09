@@ -15,7 +15,16 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, MO, TU, WE, TH, FR, SA, SU
+from dateutil.relativedelta import (
+    relativedelta as rd,
+    MO,
+    TU,
+    WE,
+    TH,
+    FR,
+    SA,
+    SU,
+)
 
 from holidays.constants import (
     JAN,
@@ -38,9 +47,11 @@ class Italy(HolidayBase):
     country = "IT"
     # Reference: https://it.wikipedia.org/wiki/Province_d%27Italia
     # Please maintain in alphabetical order for easy updating in the future
-    # The alphabetical order is except cities of provinces with multiple head cities that directly follows the main province id
-    # like BT, Barletta, Andria, Trani, for easily grouping them.
-    # In that case if you use the 2 char id you'll take the first Santo Patrono defined. If you want one specific you'll have to use
+    # The alphabetical order is except cities of provinces with multiple head
+    # cities that directly follows the main province id like BT, Barletta,
+    # Andria, Trani, for easily grouping them.
+    # In that case if you use the 2 char id you'll take the first Santo
+    # Patrono defined. If you want one specific you'll have to use
     # the full name of the city like "Andria" instead of "BT".
     subdivisions = [
         "AG",
@@ -179,7 +190,8 @@ class Italy(HolidayBase):
         self[date(year, DEC, 26)] = "Santo Stefano"
 
         # Provinces holidays
-        # Reference from: https://it.wikipedia.org/wiki/Santi_patroni_cattolici_delle_citt%C3%A0_capoluogo_di_provincia_italiane
+        # Reference from:
+        # https://it.wikipedia.org/wiki/Santi_patroni_cattolici_delle_citt%C3%A0_capoluogo_di_provincia_italiane
         # Please maintain in alphabetical order for easy updating in the future
         if self.subdiv:
             if self.subdiv == "AG":
@@ -197,7 +209,9 @@ class Italy(HolidayBase):
             elif self.subdiv == "AR":
                 self[date(year, AUG, 7)] = "San Donato D'Arezzo"
             elif self.subdiv == "AT":
-                self[date(year, MAY, 1) + rd(weekday=TU)] = "San Secondo di Asti" # <--- First Tuesday in May
+                self[
+                    date(year, MAY, 1) + rd(weekday=TU)
+                ] = "San Secondo di Asti"  # <--- First Tuesday in May
             elif self.subdiv == "AV":
                 self[date(year, FEB, 14)] = "San Modestino"
             elif self.subdiv == "BA":
@@ -213,13 +227,18 @@ class Italy(HolidayBase):
             elif self.subdiv == "BO":
                 self[date(year, OCT, 4)] = "San Petronio"
             elif self.subdiv == "BR":
-                self[date(year, SEP, 1) + rd(weekday=SU)] = "San Teodoro d'Amasea e San Lorenzo da Brindisi" # <--- First sunday in september
+                # first Sunday of September
+                self[
+                    date(year, SEP, 1) + rd(weekday=SU)
+                ] = "San Teodoro d'Amasea e San Lorenzo da Brindisi"
             elif self.subdiv == "BS":
                 self[date(year, FEB, 15)] = "Santi Faustino e Giovita"
             elif self.subdiv in ("BT", "Barletta"):
                 self[date(year, DEC, 30)] = "San Ruggero"
             if self.subdiv in ("BT", "Andria"):
-                self[date(year, SEP, 1) + rd(weekday=SU(+3))] = "San Riccardo di Andria" # <--- Third sunday in September
+                self[
+                    date(year, SEP, 1) + rd(weekday=SU(+3))
+                ] = "San Riccardo di Andria"  # <--- Third sunday in September
             if self.subdiv in ("BT", "Trani"):
                 self[date(year, MAY, 3)] = "San Nicola Pellegrino"
             elif self.subdiv == "BZ":
@@ -369,7 +388,9 @@ class Italy(HolidayBase):
             elif self.subdiv == "SS":
                 self[date(year, DEC, 6)] = "San Nicola"
             elif self.subdiv == "SU":
-                self[date(year, MAY, 1) + rd(weekday=SU(+2)) + rd(weekday=TH)] = "San Ponziano" # <--- Thursday after second sunday in May
+                self[
+                    date(year, MAY, 1) + rd(weekday=SU(+2)) + rd(weekday=TH)
+                ] = "San Ponziano"  # <--- Thursday after second sunday in May
             elif self.subdiv == "SV":
                 self[date(year, MAR, 18)] = "Nostra Signora della Misericordia"
             elif self.subdiv == "TA":
