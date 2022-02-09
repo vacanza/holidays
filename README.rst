@@ -8,7 +8,7 @@ It aims to make determining whether a specific date is a holiday as fast and
 flexible as possible.
 
 .. image:: https://github.com/dr-prodigy/python-holidays/workflows/Tests/badge.svg
-    :target: https://github.com/dr-prodigy/python-holidays/actions
+    :target: actions
 
 .. image:: http://img.shields.io/coveralls/dr-prodigy/python-holidays/master
     :target: https://coveralls.io/r/dr-prodigy/python-holidays
@@ -17,7 +17,7 @@ flexible as possible.
     :target: https://pypi.python.org/pypi/holidays
 
 .. image:: http://img.shields.io/pypi/l/holidays.svg
-    :target: https://github.com/dr-prodigy/python-holidays/blob/master/LICENSE
+    :target: LICENSE
 
 .. image:: https://readthedocs.org/projects/python-holidays/badge/?version=latest
     :target: https://python-holidays.readthedocs.io/en/latest/?badge=latest
@@ -408,9 +408,9 @@ master branch upon official version upgrades.
 Contributions
 -------------
 
-.. _Issues: https://github.com/dr-prodigy/python-holidays/issues
-.. _pull requests: https://github.com/dr-prodigy/python-holidays/pulls
-.. _here: https://github.com/dr-prodigy/python-holidays/raw/master/CONTRIBUTING.rst
+.. _Issues: issues
+.. _pull requests: pulls
+.. _here: CONTRIBUTING.rst
 
 Issues_ and `pull requests`_ are always welcome.  Please see
 `here`_ for more information.
@@ -418,7 +418,7 @@ Issues_ and `pull requests`_ are always welcome.  Please see
 License
 -------
 
-.. __: https://github.com/dr-prodigy/python-holidays/raw/master/LICENSE
+.. __: LICENSE
 
 Code and documentation are available according to the MIT License
 (see LICENSE__).
