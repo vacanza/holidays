@@ -8,7 +8,7 @@ It aims to make determining whether a specific date is a holiday as fast and
 flexible as possible.
 
 .. image:: https://github.com/dr-prodigy/python-holidays/workflows/Tests/badge.svg
-    :target: /dr-prodigy/python-holidays/actions
+    :target: actions
 
 .. image:: http://img.shields.io/coveralls/dr-prodigy/python-holidays/master
     :target: https://coveralls.io/r/dr-prodigy/python-holidays
@@ -408,8 +408,8 @@ master branch upon official version upgrades.
 Contributions
 -------------
 
-.. _Issues: /dr-prodigy/python-holidays/issues
-.. _pull requests: /dr-prodigy/python-holidays/pulls
+.. _Issues: issues
+.. _pull requests: pulls
 .. _here: CONTRIBUTING.rst
 
 Issues_ and `pull requests`_ are always welcome.  Please see
