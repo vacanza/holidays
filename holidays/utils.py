@@ -173,8 +173,10 @@ def country_holidays(
         country_classes = inspect.getmembers(
             holidays.countries, inspect.isclass
         )
-        country = next(obj for name, obj in country_classes if name == country)
-        country_holiday = country(
+        country_class = next(
+            obj for name, obj in country_classes if name == country
+        )
+        country_holiday = country_class(
             years=years,
             subdiv=subdiv,
             expand=expand,

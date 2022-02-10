@@ -17,6 +17,7 @@ import warnings
 from datetime import timedelta, datetime, date
 from typing import (
     Any,
+    Dict,
     Iterable,
     List,
     Optional,
@@ -289,7 +290,9 @@ class HolidayBase(dict):
             self._populate(out_key.year)
         return out_key
 
-    def __contains__(self, key: Union[date, datetime, str, float]) -> bool:
+    def __contains__(  # type: ignore[override]
+        self, key: Union[date, datetime, str, float]
+    ) -> bool:
         """Return true if date is in self, false otherwise. Accepts a date in
         the following types:
 
@@ -308,9 +311,8 @@ class HolidayBase(dict):
             datetime,
             str,
             float,
-            Iterable[Union[date, datetime, str, float]],
         ],
-    ) -> Union[str, List[str], List[date], bool]:
+    ) -> str:
         if isinstance(key, slice):
             if not key.start or not key.stop:
                 raise ValueError("Both start and stop must be given.")
@@ -357,7 +359,8 @@ class HolidayBase(dict):
                 value = self.get(key)
         return dict.__setitem__(self, self.__keytransform__(key), value)
 
-    def update(self, *args) -> None:
+    def update(self, *args) -> None:  # type: ignore[override]
+        # TODO: fix arguments; should not be *args (cannot properly Type hint)
         """Update the object, overwriting existing dates.
 
         :param:
@@ -389,7 +392,7 @@ class HolidayBase(dict):
         """Alias for :meth:`update` to mimic list type."""
         return self.update(*args)
 
-    def get(
+    def get(  # type: ignore[override]
         self,
         key: Union[date, datetime, str, float],
         default: Optional[Any] = None,
@@ -412,7 +415,14 @@ class HolidayBase(dict):
         :param default:
             The default value to return if no value is found.
         """
-        return dict.get(self, self.__keytransform__(key), default)
+        return dict.get(
+            self,
+            self.__keytransform__(key),
+            default,  # type: ignore[arg-type]
+        )
+        # TODO: the above generates the following mypy error:
+        # error: Argument 3 to "get" of "Mapping" has incompatible type
+        # "Optional[Any]"; expected "str"  [arg-type]
 
     def get_list(self, key: Union[date, datetime, str, float]) -> List[str]:
         """Return a list of all holiday names for a date if date is a holiday,
@@ -507,7 +517,7 @@ class HolidayBase(dict):
     def __eq__(self, other: object) -> bool:
         return dict.__eq__(self, other) and self.__dict__ == other.__dict__
 
-    def __ne__(self, other: dict) -> bool:
+    def __ne__(self, other: object) -> bool:
         return dict.__ne__(self, other) or self.__dict__ != other.__dict__
 
     def __add__(
@@ -526,7 +536,8 @@ class HolidayBase(dict):
         if isinstance(other, int) and other == 0:
             # Required to sum() list of holidays
             # sum([h1, h2]) is equivalent to (0 + h1 + h2)
-            return self  # TODO understand why this is necessary (typing issue)
+            return self  # type: ignore[return-value]
+            # TODO understand why the above type ignore is is necessary
         elif not isinstance(other, (HolidayBase, HolidaySum)):
             raise TypeError(
                 "Holiday objects can only be added with other Holiday objects"
@@ -573,9 +584,9 @@ class HolidaySum(HolidayBase):
     are merged. All years are calculated (expanded) for all operands.
     """
 
-    country: Union[str, List[str]]
+    country: Union[str, List[str]]  # type: ignore[assignment]
     """Countries included in the addition."""
-    subdiv: Optional[Union[str, List[str]]]
+    subdiv: Optional[Union[str, List[str]]]  # type: ignore[assignment]
     """Subdivisions included in the addition."""
     holidays: List[HolidayBase]
     """The original HolidayBase objects included in the addition."""
@@ -625,7 +636,7 @@ country_holidays('CA') + country_holidays('MX')
                     self.holidays.append(h)
             else:
                 self.holidays.append(operand)
-        kwargs = {}
+        kwargs: Dict[str, Any] = {}
         # join years, expand and observed
         kwargs["years"] = h1.years | h2.years
         kwargs["expand"] = h1.expand or h2.expand

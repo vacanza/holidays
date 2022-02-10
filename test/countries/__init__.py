@@ -11,9 +11,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 import pkgutil
+from importlib.abc import MetaPathFinder, PathEntryFinder
+from typing import Union
+
+loader: Union[MetaPathFinder, PathEntryFinder]
+module_name: str
+is_pkg: bool
 
 __all__ = []
 for loader, module_name, is_pkg in pkgutil.walk_packages(__path__):
     __all__.append(module_name)
-    _module = loader.find_module(module_name).load_module(module_name)
+    _module = loader.find_module(  # type: ignore[union-attr]
+        module_name
+    ).load_module(  # type: ignore[call-arg]
+        module_name
+    )
     globals()[module_name] = _module
