@@ -141,7 +141,14 @@ class Spain(HolidayBase):
 
         if 2022 != year:
             self._is_observed(date(year, MAY, 1), "Día del Trabajador")
-        elif 2022 == year and self.subdiv in ["AN", "AS", "CL", "EX", "MC"]:
+        elif 2022 == year and self.subdiv in [
+            "AN",
+            "AS",
+            "CL",
+            "EX",
+            "MC",
+            "AR",
+        ]:
             self._is_observed(
                 date(year, MAY, 2), "Día del Trabajador (Trasladado)"
             )
@@ -271,9 +278,10 @@ class Spain(HolidayBase):
             elif self.subdiv == "RI":
                 self._is_observed(date(year, JUN, 9), "Día de La Rioja")
             elif self.subdiv == "VC":
-                self._is_observed(
-                    date(year, OCT, 9), "Día de la Comunidad Valenciana"
-                )
+                if year <= 2021:
+                    self._is_observed(
+                        date(year, OCT, 9), "Día de la Comunidad Valenciana"
+                    )
 
 
 class ES(Spain):
