@@ -3,7 +3,6 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root ``toctree`` directive.
 
-<<<<<<< HEAD
 .. Excellent cheat sheet at https://sphinx-tutorial.readthedocs.io/cheatsheet/
 
 .. To rebuild the API autodoc files run
@@ -23,20 +22,3 @@
    genindex
 
 .. include:: ../../README.rst
-=======
-Welcome to python-holidays's documentation!
-===========================================
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
->>>>>>> master
