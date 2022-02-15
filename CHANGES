@@ -1,7 +1,7 @@
 Version 0.13
 ============
 
-Released ?????? ??, ????
+Released February 15, 2022
 
 - New subdivision parameter (subdiv), prov/state deprecation #608, #597, #374 (mborsetti)
 - CountryHoliday class deprecation (replaced by country_holidays) (mborsetti, dr-p)
