@@ -368,11 +368,6 @@ class UnitedStates(HolidayBase):
             elif self.observed and date(year, JUN, 19).weekday() == SUN:
                 self[date(year, JUN, 20)] = name + " (Observed)"
 
-            if self.observed and date(year, JUN, 19).weekday() == SAT:
-                self[date(year, JUN, 18)] = name + " (Observed)"
-            elif self.observed and date(year, JUN, 19).weekday() == SUN:
-                self[date(year, JUN, 20)] = name + " (Observed)"
-
         # Jefferson Davis Birthday
         name = "Jefferson Davis Birthday"
         if self.subdiv == "AL" and year >= 1890:
@@ -380,12 +375,13 @@ class UnitedStates(HolidayBase):
 
         # Kamehameha Day
         if self.subdiv == "HI" and year >= 1872:
-            self[date(year, JUN, 11)] = "Kamehameha Day"
+            name = "Kamehameha Day"
+            self[date(year, JUN, 11)] = name
             if self.observed and year >= 2011:
                 if date(year, JUN, 11).weekday() == SAT:
-                    self[date(year, JUN, 10)] = "Kamehameha Day (Observed)"
+                    self[date(year, JUN, 10)] = name + " (Observed)"
                 elif date(year, JUN, 11).weekday() == SUN:
-                    self[date(year, JUN, 12)] = "Kamehameha Day (Observed)"
+                    self[date(year, JUN, 12)] = name + " (Observed)"
         # Emancipation Day In Texas
         if self.subdiv == "TX" and year >= 1980:
             self[date(year, JUN, 19)] = "Emancipation Day In Texas"
