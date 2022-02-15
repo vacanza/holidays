@@ -11,6 +11,7 @@ coverage[toml]
 pre-commit
 flake8
 sphinx
+tox
 
 # deployment
 pip>=19.2.3
