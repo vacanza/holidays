@@ -26,18 +26,22 @@ Thanks a lot for your support.
 Running tests
 -------------
 
+First step is installing all the required dependencies with:
+
+.. code-block:: bash
+
+    $ pip install -r requirements_dev.txt
+
 The project provides automated tests and coverage checks with tox; just run:
 
 .. code-block:: bash
 
     $ tox
 
-
 Alternatively, you can run pytest to run tests and coverage:
 
 .. code-block:: bash
 
-    $ pip install -r requirements_dev.txt
     $ python -m pytest .
     # if you want to retrieve uncovered lines too:
     $ python -m pytest --cov-report term-missing .
