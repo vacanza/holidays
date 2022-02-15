@@ -20,10 +20,9 @@ import holidays
 class TestSwitzerland(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.CH()
-        self.prov_hols = dict(
-            (prov, holidays.CH(subdiv=prov))
-            for prov in holidays.CH.subdivisions
-        )
+        self.prov_hols = {
+            prov: holidays.CH(subdiv=prov) for prov in holidays.CH.subdivisions
+        }
 
     def test_all_holidays_present(self):
         ch_2018 = sum(
@@ -61,9 +60,9 @@ class TestSwitzerland(unittest.TestCase):
         ]
 
         for holiday in all_ch:
-            self.assertTrue(holiday in all_ch, "missing: {}".format(holiday))
+            self.assertTrue(holiday in all_ch, f"missing: {holiday}")
         for holiday in in_2018:
-            self.assertTrue(holiday in in_2018, "extra: {}".format(holiday))
+            self.assertTrue(holiday in in_2018, f"extra: {holiday}")
 
     def test_fixed_holidays(self):
         fixed_days_whole_country = (

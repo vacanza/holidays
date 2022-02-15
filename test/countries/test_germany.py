@@ -58,9 +58,9 @@ class TestDE(unittest.TestCase):
         ]
 
         for holiday in all_de:
-            self.assertIn(holiday, in_2015, "missing: {}".format(holiday))
+            self.assertIn(holiday, in_2015, f"missing: {holiday}")
         for holiday in in_2015:
-            self.assertIn(holiday, all_de, "extra: {}".format(holiday))
+            self.assertIn(holiday, all_de, f"extra: {holiday}")
 
     def test_fixed_holidays(self):
         fixed_days_whole_country = (

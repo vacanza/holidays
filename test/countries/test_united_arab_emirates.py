@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import sys
+import importlib.util
 import unittest
 
 from datetime import date
@@ -33,23 +33,20 @@ class UnitedArabEmirates(unittest.TestCase):
         self.assertIn(date(2015, 11, 30), self.holidays)
 
     def test_hijri_based(self):
-        if sys.version_info >= (3, 6):
-            import importlib.util
-
-            if importlib.util.find_spec("hijri_converter"):
-                self.holidays = holidays.AE(years=[2020])
-                # Eid Al-Fitr
-                self.assertIn(date(2020, 5, 24), self.holidays)
-                self.assertIn(date(2020, 5, 25), self.holidays)
-                self.assertIn(date(2020, 5, 26), self.holidays)
-                # Arafat Day & Eid Al-Adha
-                self.assertIn(date(2020, 7, 30), self.holidays)
-                self.assertIn(date(2020, 7, 31), self.holidays)
-                self.assertIn(date(2020, 8, 1), self.holidays)
-                self.assertIn(date(2020, 8, 2), self.holidays)
-                # Islamic New Year
-                self.assertIn(date(2020, 8, 23), self.holidays)
-                # Leilat Al-Miraj 2018
-                self.assertIn(date(2018, 4, 13), self.holidays)
-                # Prophet's Birthday 2018
-                self.assertIn(date(2018, 11, 19), self.holidays)
+        if importlib.util.find_spec("hijri_converter"):
+            self.holidays = holidays.AE(years=[2020])
+            # Eid Al-Fitr
+            self.assertIn(date(2020, 5, 24), self.holidays)
+            self.assertIn(date(2020, 5, 25), self.holidays)
+            self.assertIn(date(2020, 5, 26), self.holidays)
+            # Arafat Day & Eid Al-Adha
+            self.assertIn(date(2020, 7, 30), self.holidays)
+            self.assertIn(date(2020, 7, 31), self.holidays)
+            self.assertIn(date(2020, 8, 1), self.holidays)
+            self.assertIn(date(2020, 8, 2), self.holidays)
+            # Islamic New Year
+            self.assertIn(date(2020, 8, 23), self.holidays)
+            # Leilat Al-Miraj 2018
+            self.assertIn(date(2018, 4, 13), self.holidays)
+            # Prophet's Birthday 2018
+            self.assertIn(date(2018, 11, 19), self.holidays)

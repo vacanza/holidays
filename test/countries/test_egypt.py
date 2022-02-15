@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import sys
+import importlib.util
 import unittest
 
 from datetime import date
@@ -47,26 +47,23 @@ class TestEgypt(unittest.TestCase):
         self.assertIn(date(2010, 1, 25), self.holidays)
 
     def test_hijri_based(self):
-        if sys.version_info >= (3, 6):
-            import importlib.util
-
-            if importlib.util.find_spec("hijri_converter"):
-                self.holidays = holidays.EG(years=[2010])
-                self.assertIn(date(2019, 6, 5), self.holidays)
-                self.assertIn(date(2019, 8, 10), self.holidays)
-                self.assertIn(date(2019, 8, 11), self.holidays)
-                self.assertIn(date(2019, 8, 12), self.holidays)
-                self.assertIn(date(2019, 8, 31), self.holidays)
-                self.assertIn(date(2019, 11, 9), self.holidays)
-                # eid_alfitr
-                self.assertIn(date(2019, 6, 4), self.holidays)
-                # eid_aladha
-                self.assertIn(date(2019, 8, 11), self.holidays)
-                # islamic_new_year
-                self.assertIn(date(2019, 8, 31), self.holidays)
-                # eid_elfetr_2010
-                self.assertIn(date(2010, 9, 10), self.holidays)
-                # arafat_2010
-                self.assertIn(date(2010, 11, 15), self.holidays)
-                # muhammad's birthda
-                self.assertIn(date(2010, 2, 26), self.holidays)
+        if importlib.util.find_spec("hijri_converter"):
+            self.holidays = holidays.EG(years=[2010])
+            self.assertIn(date(2019, 6, 5), self.holidays)
+            self.assertIn(date(2019, 8, 10), self.holidays)
+            self.assertIn(date(2019, 8, 11), self.holidays)
+            self.assertIn(date(2019, 8, 12), self.holidays)
+            self.assertIn(date(2019, 8, 31), self.holidays)
+            self.assertIn(date(2019, 11, 9), self.holidays)
+            # eid_alfitr
+            self.assertIn(date(2019, 6, 4), self.holidays)
+            # eid_aladha
+            self.assertIn(date(2019, 8, 11), self.holidays)
+            # islamic_new_year
+            self.assertIn(date(2019, 8, 31), self.holidays)
+            # eid_elfetr_2010
+            self.assertIn(date(2010, 9, 10), self.holidays)
+            # arafat_2010
+            self.assertIn(date(2010, 11, 15), self.holidays)
+            # muhammad's birthda
+            self.assertIn(date(2010, 2, 26), self.holidays)

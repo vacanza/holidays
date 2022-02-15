@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import sys
+import importlib.util
 import unittest
 
 from datetime import date
@@ -112,19 +112,12 @@ class TestSingapore(unittest.TestCase):
         self.assertIn(date(2023, 6, 2), self.holidays)  # Vesak Day
         self.assertIn(date(2023, 11, 11), self.holidays)  # Deepavali
         # holidays estimated using library hijri-converter
-        if sys.version_info >= (3, 6):
-            import importlib.util
-
-            if importlib.util.find_spec("hijri_converter"):
-                # <= 1968 holidays
-                self.assertIn(date(1968, 1, 2), self.holidays)
-                # 2021
-                self.assertIn(
-                    date(2023, 4, 21), self.holidays
-                )  # Hari Raya Puasa
-                self.assertIn(
-                    date(2023, 6, 28), self.holidays
-                )  # Hari Raya Haji
+        if importlib.util.find_spec("hijri_converter"):
+            # <= 1968 holidays
+            self.assertIn(date(1968, 1, 2), self.holidays)
+            # 2021
+            self.assertIn(date(2023, 4, 21), self.holidays)  # Hari Raya Puasa
+            self.assertIn(date(2023, 6, 28), self.holidays)  # Hari Raya Haji
 
     def test_aliases(self):
         """For coverage purposes"""

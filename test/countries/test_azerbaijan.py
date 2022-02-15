@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import sys
+import importlib.util
 import unittest
 
 from datetime import date
@@ -48,18 +48,15 @@ class TestAzerbaijan(unittest.TestCase):
         self.assertIn(date(2020, DEC, 31), self.holidays)
 
     def test_hijri_based(self):
-        if sys.version_info >= (3, 6):
-            import importlib.util
-
-            if importlib.util.find_spec("hijri_converter"):
-                self.holidays = holidays.AZ(years=[2020])
-                # Ramadan Feast
-                self.assertIn(date(2020, 5, 24), self.holidays)
-                self.assertIn(date(2020, 5, 25), self.holidays)
-                # Sacrifice Feast
-                self.assertIn(date(2020, 7, 31), self.holidays)
-                self.assertIn(date(2020, 8, 1), self.holidays)
-                self.assertIn(date(2020, 8, 3), self.holidays)  # observed
+        if importlib.util.find_spec("hijri_converter"):
+            self.holidays = holidays.AZ(years=[2020])
+            # Ramadan Feast
+            self.assertIn(date(2020, 5, 24), self.holidays)
+            self.assertIn(date(2020, 5, 25), self.holidays)
+            # Sacrifice Feast
+            self.assertIn(date(2020, 7, 31), self.holidays)
+            self.assertIn(date(2020, 8, 1), self.holidays)
+            self.assertIn(date(2020, 8, 3), self.holidays)  # observed
 
     def test_dec_31_on_weekend(self):
         """Test when Dec 31 of previous year is on a weekend."""
