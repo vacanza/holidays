@@ -1,14 +1,15 @@
-Version 0.12.1
-==============
+Version 0.13
+============
 
 Released ?????? ??, ????
 
 - New subdivision parameter (subdiv), prov/state deprecation #608, #597, #374 (mborsetti)
-- Sphinx documentation #600, #601, #602 (mborsetti)
 - CountryHoliday class deprecation (replaced by country_holidays) (mborsetti, dr-p)
+- Sphinx documentation #600, #601, #602 (mborsetti)
+- Integration of mypy in pre-commit #620 (mborsetti)
+- Wrong year expansion fix #586, #606, #625 (mborsetti, TeejMonster, dr-p)
 - Refactoring / cleanups / code and naming reviews (mborsetti)
 - Support for Uzbekistan #593 (slako, dr-p)
-- Wrong year expansion fix #586, #606 (mborsetti, dr-p)
 - Italy fixes/improvements #617, #614 (energywave)
 - Spain improvements #580, #603, #624 (gtrabanco, delaosa, dr-p)
 - UAE updates (weekend change) #609 (marcomasulli, dr-p)
@@ -23,7 +24,6 @@ Version 0.12
 
 Released January 4, 2022
 
-- Release increase (v.0.12, was v.0.11.4 during beta)
 - Copyright update 2022
 - Sphinx documentation stub (mborsetti, dr-p)
 - Support for Kazakhstan #534 (chiuczek, intelliHugh)
