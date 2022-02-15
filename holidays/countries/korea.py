@@ -259,6 +259,9 @@ class Korea(HolidayBase):
         :return:
            A tuple consisting of a flag set to whether the date is different
            and the date itself.
+
+        :raise RuntimeError:
+           When no such date is not found.
         """
         target_weekday = [SUN]
         if include_sat:
@@ -276,6 +279,8 @@ class Korea(HolidayBase):
                 is_alt = True
                 continue
             return is_alt, cur
+
+        raise RuntimeError("Next non-holiday date not found")
 
 
 class KR(Korea):
