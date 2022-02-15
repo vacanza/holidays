@@ -35,7 +35,7 @@ jobs:
           python -m pip install -e .
       - name: Run tests
         run: |
-          py.test
+          pytest
       - name: Upload Coverage
         run: coveralls --service=github
         env:
