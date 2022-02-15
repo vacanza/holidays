@@ -408,8 +408,8 @@ master branch upon official version upgrades.
 Contributions
 -------------
 
-.. _Issues: issues
-.. _pull requests: pulls
+.. _Issues: https://github.com/dr-prodigy/python-holidays/issues
+.. _pull requests: https://github.com/dr-prodigy/python-holidays/pulls
 .. _here: CONTRIBUTING.rst
 
 Issues_ and `pull requests`_ are always welcome.  Please see
