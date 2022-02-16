@@ -62,6 +62,7 @@ from .lithuania import Lithuania, LT, LTU
 from .luxembourg import Luxembourg, LU, LUX
 from .malawi import Malawi, MW, MWI
 from .malaysia import Malaysia, MY, MYS
+from .malta import Malta, MT, MLT
 from .mexico import Mexico, MX, MEX
 from .morocco import Morocco, MA, MOR
 from .mozambique import Mozambique, MZ, MOZ
