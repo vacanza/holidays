@@ -53,6 +53,5 @@ class Malta(HolidayBase):
 class MT(Malta):
     pass
 
-
 class MLT(Malta):
     pass
