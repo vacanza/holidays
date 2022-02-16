@@ -50,8 +50,10 @@ class Malta(HolidayBase):
         self[date(year, DEC, 13)] = "Republic Day"
         self[date(year, DEC, 25)] = "Christmas Day"
 
+
 class MT(Malta):
     pass
+
 
 class MLT(Malta):
     pass
