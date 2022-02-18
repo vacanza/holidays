@@ -210,6 +210,8 @@ class Australia(HolidayBase):
         if self.subdiv == "VIC":
             # Grand Final Day
             if year == 2022:
+                # Current planned grand final date.
+                # Could change at the dicression of the AFL
                 self[date(2022, 9, 23)] = "Grand Final Day"
             elif year == 2020:
                 # Rescheduled due to COVID-19
