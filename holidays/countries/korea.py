@@ -260,8 +260,6 @@ class Korea(HolidayBase):
            A tuple consisting of a flag set to whether the date is different
            and the date itself.
 
-        :raise RuntimeError:
-           When no such date is not found.
         """
 
         start_value = cur
@@ -276,30 +274,6 @@ class Korea(HolidayBase):
             check_2 = cur in self and name != self[cur]
 
         return start_value != cur, cur
-    def get_next_first_non_holiday(
-        self, name: str, cur: date, include_sat: bool = False
-    ) -> Tuple[bool, date]:
-        """Returns the first day from the date provided that's not already a
-        holiday of a different name nor a weekend.
-
-        :param name:
-           The name of the holiday.
-
-        :param cur:
-           The current date of the holiday.
-
-        :param include_sat:
-           Whether Saturday is to be considered a weekend in addition to
-           Sunday.
-
-        :return:
-           A tuple consisting of a flag set to whether the date is different
-           and the date itself.
-
-        :raise RuntimeError:
-           When no such date is not found.
-        """
-
 
 class KR(Korea):
     pass
