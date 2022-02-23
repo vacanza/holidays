@@ -25,6 +25,11 @@ class TestUkraine(unittest.TestCase):
     def test_before_1918(self):
         self.assertNotIn(date(1917, 12, 31), self.holidays)
 
+    def test_1950(self):
+        self.assertEqual(
+            self.holidays[date(1950, 5, 1)], "День міжнародної солідарності трудящих"
+        )
+
     def test_2018(self):
         # http://www.buhoblik.org.ua/kadry-zarplata/vremya/1676-1676-kalendar.html
         self.assertIn(date(2018, 1, 1), self.holidays)

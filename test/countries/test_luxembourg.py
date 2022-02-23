@@ -22,6 +22,20 @@ class TestLU(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.LU()
 
+    def test_2018(self):
+        year = 2018
+        # https://www.officeholidays.com/countries/luxembourg/2018
+        self.assertIn(date(year, 1, 1), self.holidays)
+        self.assertIn(date(year, 4, 2), self.holidays)
+        self.assertIn(date(year, 5, 1), self.holidays)
+        self.assertIn(date(year, 5, 10), self.holidays)
+        self.assertIn(date(year, 5, 21), self.holidays)
+        self.assertIn(date(year, 6, 23), self.holidays)
+        self.assertIn(date(year, 8, 15), self.holidays)
+        self.assertIn(date(year, 11, 1), self.holidays)
+        self.assertIn(date(year, 12, 25), self.holidays)
+        self.assertIn(date(year, 12, 26), self.holidays)
+
     def test_2019(self):
         # https://www.officeholidays.com/countries/luxembourg/2019
         self.assertIn(date(2019, 1, 1), self.holidays)

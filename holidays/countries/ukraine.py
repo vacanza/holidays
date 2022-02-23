@@ -31,13 +31,13 @@ class Ukraine(HolidayBase):
 
     def _populate(self, year):
         # The current set of holidays came into force in 1991
-        # But most holiday days was inplemented in 1981
-        if year < 1918:
-            return
+        # But most holiday days was implemented in 1981
 
-        # New Year's Day
         if year >= 1898:
+            # New Year's Day
             self[date(year, JAN, 1)] = "Новий рік"
+            if year < 1918:
+                return
 
         # Christmas Day (Orthodox)
         if year >= 1991:
@@ -58,7 +58,7 @@ class Ukraine(HolidayBase):
         # Labour Day
         if year > 2017:
             name = "День праці"
-        elif 1917 < year <= 2017:
+        else:
             name = "День міжнародної солідарності трудящих"
         self[date(year, MAY, 1)] = name
 

@@ -78,11 +78,11 @@ class Australia(HolidayBase):
             name = "Canberra Day"
             if year >= 1913 and year <= 1957:
                 self[date(year, MAR, 12)] = name
-            elif year >= 1958 and year <= 2007:
+            if year >= 1958 and year <= 2007:
                 self[date(year, MAR, 1) + rd(weekday=MO(+3))] = name
-            elif year >= 2008 and year != 2012:
+            if year >= 2008 and year != 2012:
                 self[date(year, MAR, 1) + rd(weekday=MO(+2))] = name
-            elif year == 2012:
+            if year == 2012:
                 self[date(year, MAR, 12)] = name
 
         # Easter

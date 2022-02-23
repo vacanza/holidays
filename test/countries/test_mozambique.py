@@ -37,3 +37,11 @@ class TestMozambique(unittest.TestCase):
         self.assertNotIn("2018-02-04", self.holidays)
         self.assertNotIn("2015-04-13", self.holidays)
         self.assertNotIn("2018-03-23", self.holidays)
+
+    def test_pre1974(self):
+        # Holidays not defined since 1975
+        self.assertEqual(len(holidays.Mozambique(years=[1974])), 0)
+
+    def test_observed(self):
+        not_observed = holidays.MZ(observed=False)
+        self.assertNotIn(date(2017, 1, 2), not_observed)

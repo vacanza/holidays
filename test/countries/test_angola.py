@@ -60,3 +60,7 @@ class TestAngola(unittest.TestCase):
             self.assertNotIn(date(year, 3, 23), self.holidays)
         for year in range(2019, 2030):
             self.assertIn(date(year, 3, 23), self.holidays)
+
+    def test_pre1974(self):
+        # Holidays not defined since 1975
+        self.assertEqual(len(holidays.Angola(years=[1974])), 0)

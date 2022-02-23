@@ -24,6 +24,16 @@ class TestChile(unittest.TestCase):
         self.holidays_AP = holidays.CL(state="AP")
         self.holidays_NB = holidays.CHL(state="NB")
 
+    def test_dia_del_carmen(self):
+        # Day of Virgin of Carmen started after 2006
+        self.assertNotIn(date(2006, 7, 16), self.holidays)
+        self.assertIn(date(2007, 7, 16), self.holidays)
+
+    def test_2007(self):
+        # National Day started after 2007
+        self.assertNotIn(date(2007, 10, 31), self.holidays)
+        self.assertIn(date(2008, 10, 31), self.holidays)
+
     def test_2009(self):
         self.assertIn(date(2009, 10, 12), self.holidays)
 

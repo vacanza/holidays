@@ -49,3 +49,14 @@ class TestSK(unittest.TestCase):
             self.assertIsInstance(slovakia, holidays.Slovakia)
             self.assertEqual(1, len(w))
             self.assertTrue(issubclass(w[-1].category, DeprecationWarning))
+
+    def test_special_dates(self):
+        self.assertNotIn(date(1996, 5, 8), self.holidays)
+        self.assertIn(date(1997, 5, 8), self.holidays)
+
+        self.assertNotIn(date(2017, 10, 30), self.holidays)
+        self.assertIn(date(2018, 10, 30), self.holidays)
+        self.assertNotIn(date(2019, 10, 30), self.holidays)
+
+        self.assertNotIn(date(2000, 11, 17), self.holidays)
+        self.assertIn(date(2001, 11, 17), self.holidays)

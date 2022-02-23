@@ -127,3 +127,10 @@ class TestSingapore(unittest.TestCase):
                 self.assertIn(
                     date(2023, 6, 28), self.holidays
                 )  # Hari Raya Haji
+
+    def test_aliases(self):
+        holidays1 = holidays.Singapore()
+        holidays2 = holidays.SG()
+        holidays3 = holidays.SGP()
+        self.assertEqual(list(holidays1), list(holidays2))
+        self.assertEqual(list(holidays1), list(holidays3))

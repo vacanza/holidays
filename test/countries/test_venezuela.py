@@ -19,7 +19,7 @@ import holidays
 
 class TestVenezuela(unittest.TestCase):
     def test_YV_holidays(self):
-        self.holidays = holidays.YV(years=2019)
+        self.holidays = holidays.YV(years=range(2018, 2019))
         self.assertIn("2019-01-01", self.holidays)
         self.assertEqual(
             self.holidays[date(2019, 1, 1)], "Año Nuevo [New Year's Day]"
@@ -34,6 +34,9 @@ class TestVenezuela(unittest.TestCase):
         self.assertIn("2019-04-18", self.holidays)
         self.assertEqual(self.holidays[date(2019, 4, 18)], "Jueves Santo")
         self.assertIn("2019-04-19", self.holidays)
+        self.assertEqual(
+            self.holidays[date(2018, 4, 19)], "Declaración de la Independencia"
+        )
         self.assertEqual(
             self.holidays[date(2019, 4, 19)],
             "Viernes Santo y Declaración de la Independencia",

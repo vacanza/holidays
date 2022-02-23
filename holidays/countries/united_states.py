@@ -545,15 +545,15 @@ class UnitedStates(HolidayBase):
         ):
             if self.state in ("CA", "DE", "NH", "NC", "OK", "WV"):
                 name = "Day After Thanksgiving"
-            elif self.state in ("FL", "TX"):
+            if self.state in ("FL", "TX"):
                 name = "Friday After Thanksgiving"
-            elif self.state == "IN":
+            if self.state == "IN":
                 name = "Lincoln's Birthday"
-            elif self.state == "MD" and year >= 2008:
+            if self.state == "MD" and year >= 2008:
                 name = "American Indian Heritage Day"
-            elif self.state == "NV":
+            if self.state == "NV":
                 name = "Family Day"
-            elif self.state == "NM":
+            if self.state == "NM":
                 name = "Presidents' Day"
             dt = date(year, NOV, 1) + rd(weekday=TH(+4))
             self[dt + rd(days=+1)] = name

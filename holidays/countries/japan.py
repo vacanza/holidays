@@ -165,13 +165,13 @@ class Japan(HolidayBase):
                 day = 21
             elif year >= 2092:
                 day = 19
-        elif year % 4 == 1:
+        if year % 4 == 1:
             if year <= 1989:
                 day = 21
-        elif year % 4 == 2:
+        if year % 4 == 2:
             if year <= 2022:
                 day = 21
-        elif year % 4 == 3:
+        if year % 4 == 3:
             if year <= 2055:
                 day = 21
         return date(year, MAR, day)
@@ -181,13 +181,13 @@ class Japan(HolidayBase):
         if year % 4 == 0:
             if year <= 2008:
                 day = 23
-        elif year % 4 == 1:
+        if year % 4 == 1:
             if year <= 2041:
                 day = 23
-        elif year % 4 == 2:
+        if year % 4 == 2:
             if year <= 2074:
                 day = 23
-        elif year % 4 == 3:
+        if year % 4 == 3:
             if year <= 1979:
                 day = 24
             else:

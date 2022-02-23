@@ -108,3 +108,8 @@ class TestVietnam(unittest.TestCase):
             self.assertIn(
                 "International New Year's Day", self.holidays[date(year, 1, 1)]
             )
+
+    def test_not_observed(self):
+        self.holidays = holidays.VN(observed=False)
+        # New Years Day
+        self.assertNotIn("2023-01-02", self.holidays)

@@ -225,23 +225,18 @@ class Korea(HolidayBase):
         )
 
     def get_next_first_non_holiday(self, name, cur, include_sat=False):
+        start_value = cur
         target_weekday = [SUN]
         if include_sat:
             target_weekday.append(SAT)
+        check_1 = cur.weekday() in target_weekday # Exclude weekends
+        check_2 = cur in self and name != self[cur] # Exclude if already a holiday
+        while check_1 or check_2:
+            cur = cur + rd(days=1)
+            check_1 = cur.weekday() in target_weekday
+            check_2 = cur in self and name != self[cur]
 
-        is_alt = False
-
-        for _ in range(365):  # avoid `while True` for preventing infinite loop
-            if (
-                cur.weekday() in target_weekday
-            ) or (  # if it's weekend(may include sat or not)
-                cur in self and name != self[cur]
-            ):  # if it's already another holiday
-                cur = cur + rd(days=1)
-                is_alt = True
-                continue
-            return is_alt, cur
-
+        return start_value != cur, cur
 
 class KR(Korea):
     pass

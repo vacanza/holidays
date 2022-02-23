@@ -130,17 +130,17 @@ class UnitedKingdom(HolidayBase):
                     dt = date(year, MAY, 1)
                 if dt.weekday() == MON:
                     self[dt] = name
-                elif dt.weekday() == TUE:
+                if dt.weekday() == TUE:
                     self[dt + rd(days=+6)] = name
-                elif dt.weekday() == WED:
+                if dt.weekday() == WED:
                     self[dt + rd(days=+5)] = name
-                elif dt.weekday() == THU:
+                if dt.weekday() == THU:
                     self[dt + rd(days=+4)] = name
-                elif dt.weekday() == FRI:
+                if dt.weekday() == FRI:
                     self[dt + rd(days=+3)] = name
-                elif dt.weekday() == SAT:
+                if dt.weekday() == SAT:
                     self[dt + rd(days=+2)] = name
-                elif dt.weekday() == SUN:
+                if dt.weekday() == SUN:
                     self[dt + rd(days=+1)] = name
 
         # Spring bank holiday (last Monday in May)

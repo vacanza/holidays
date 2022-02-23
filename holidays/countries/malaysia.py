@@ -410,7 +410,7 @@ class Malaysia(HolidayBase):
         ):
             hol_date = date(year, JAN, 1)
             self[hol_date] = "New Year's Day"
-            if hol_date == SUN:
+            if hol_date.weekday() == SUN:
                 self[hol_date] += " [Sunday]"
                 self[date(year, JAN, 2)] = "New Year's Day [In lieu]"
 

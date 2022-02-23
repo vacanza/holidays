@@ -501,3 +501,8 @@ class TestSwitzerland(unittest.TestCase):
             self.assertTrue(date(year, 12, 31) in self.prov_hols[province])
         for province, year in product(provinces_that_dont, range(1970, 2050)):
             self.assertTrue(date(year, 12, 31) not in self.prov_hols[province])
+
+    def test_national_feiertag(self):
+        # Before 1291, national fiertag was not celebrated
+        self.holidays = holidays.CH(years=[1290])
+        self.assertNotIn(date(1290, 8, 1), self.holidays)
