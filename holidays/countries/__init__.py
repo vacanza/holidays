@@ -29,7 +29,6 @@ from .china import China, CN, CHN
 from .colombia import Colombia, CO, COL
 from .croatia import Croatia, HR, HRV
 from .curacao import Curacao, CW, CUW
-from .cyprus import Cyprus, CY
 from .czechia import Czechia, Czech, CZ, CZE
 from .denmark import Denmark, DK, DNK
 from .djibouti import Djibouti, DJ, DJI
