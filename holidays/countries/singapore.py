@@ -6,8 +6,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -32,15 +32,18 @@ from holidays.constants import (
 )
 from holidays.constants import SUN
 from holidays.holiday_base import HolidayBase
-from holidays.utils import ChineseLuniSolar, islamic_to_gre
+from holidays.utils import _ChineseLuniSolar, _islamic_to_gre
 
 
 class Singapore(HolidayBase):
+    country = "SG"
+
     def __init__(
         self,
         years: Union[int, Iterable[int]] = None,
         expand: bool = True,
         observed: bool = True,
+        subdiv: Optional[str] = None,
         prov: Optional[str] = None,
         state: Optional[str] = None,
     ) -> None:
@@ -78,9 +81,8 @@ class Singapore(HolidayBase):
         See parameters and usage in :py:class:`HolidayBase`.
         """
 
-        self.country = "SG"
-        self.cnls = ChineseLuniSolar()
-        super().__init__(years, expand, observed, prov, state)
+        self.cnls = _ChineseLuniSolar()
+        super().__init__(years, expand, observed, subdiv, prov, state)
 
     def _populate(self, year):
 
@@ -130,7 +132,7 @@ class Singapore(HolidayBase):
                 #     self[hol_date + rd(days=+1),
                 #                  "Second day of Hari Raya Puasa")
         else:
-            for date_obs in islamic_to_gre(year, 10, 1):
+            for date_obs in _islamic_to_gre(year, 10, 1):
                 hol_date = date_obs
                 self[hol_date] = "Hari Raya Puasa* (*estimated)"
                 # Second day of Hari Raya Puasa (up to and including 1968)
@@ -172,7 +174,7 @@ class Singapore(HolidayBase):
                 hol_date = date(year, *date_obs)
                 self[hol_date] = "Hari Raya Haji"
         else:
-            for date_obs in islamic_to_gre(year, 12, 10):
+            for date_obs in _islamic_to_gre(year, 12, 10):
                 hol_date = date_obs
                 self[hol_date] = "Hari Raya Haji* (*estimated)"
 
@@ -306,10 +308,11 @@ class SG(Singapore):
         years: Union[int, Iterable[int]] = None,
         expand: bool = True,
         observed: bool = True,
+        subdiv: Optional[str] = None,
         prov: Optional[str] = None,
         state: Optional[str] = None,
     ) -> None:
-        super().__init__(years, expand, observed, prov, state)
+        super().__init__(years, expand, observed, subdiv, prov, state)
 
 
 class SGP(Singapore):
@@ -320,7 +323,8 @@ class SGP(Singapore):
         years: Union[int, Iterable[int]] = None,
         expand: bool = True,
         observed: bool = True,
+        subdiv: Optional[str] = None,
         prov: Optional[str] = None,
         state: Optional[str] = None,
     ) -> None:
-        super().__init__(years, expand, observed, prov, state)
+        super().__init__(years, expand, observed, subdiv, prov, state)

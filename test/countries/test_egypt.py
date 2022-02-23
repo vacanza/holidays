@@ -6,8 +6,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -89,5 +89,5 @@ class TestEgypt(unittest.TestCase):
                 self.assertIn(date(2010, 9, 10), self.holidays)
                 # arafat_2010
                 self.assertIn(date(2010, 11, 15), self.holidays)
-                # muhammad's birthday
+                # muhammad's birthda
                 self.assertIn(date(2010, 2, 26), self.holidays)

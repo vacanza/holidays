@@ -6,13 +6,15 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 import pickle
+import sys
 import unittest
+import warnings
 
 from datetime import date, datetime, timedelta
 from dateutil.relativedelta import relativedelta, MO
@@ -206,8 +208,8 @@ class TestBasics(unittest.TestCase):
         self.assertIn("2015-07-04", na)
         self.assertIn("2015-07-01", na)
         self.assertIn("2000-02-05", na)
-        self.assertEqual((ca + us).prov, "ON")
-        self.assertEqual((us + ca).prov, "ON")
+        self.assertEqual((ca + us).subdiv, "ON")
+        self.assertEqual((us + ca).subdiv, "ON")
         ca = holidays.CA(years=[2014], expand=False)
         us = holidays.US(years=[2014, 2015], expand=True)
         self.assertTrue((ca + us).expand)
@@ -224,7 +226,7 @@ class TestBasics(unittest.TestCase):
         self.assertIn("2015-07-01", na)
         self.assertIn("2015-07-01", na)
         self.assertIn("2000-02-05", na)
-        self.assertEqual(na.prov, "ON")
+        self.assertEqual(na.subdiv, "ON")
         na = holidays.CA() + holidays.US()
         na += holidays.MX()
         self.assertIn("2014-07-04", na)
@@ -234,22 +236,22 @@ class TestBasics(unittest.TestCase):
         self.assertIn("2015-07-01", na)
         self.assertIn("2015-07-01", na)
         self.assertIn("2000-02-05", na)
-        self.assertEqual(na.prov, "ON")
+        self.assertEqual(na.subdiv, "ON")
         self.assertRaises(TypeError, lambda: holidays.US() + {})
-        na = ca + (us + mx) + ca + (mx + us + holidays.CA(prov="BC"))
+        na = ca + (us + mx) + ca + (mx + us + holidays.CA(subdiv="BC"))
         self.assertIn("2000-02-05", na)
         self.assertIn("2014-02-10", na)
         self.assertIn("2014-02-17", na)
         self.assertIn("2014-07-04", na)
-        provs = holidays.CA(prov="ON", years=[2014]) + holidays.CA(
-            prov="BC", years=[2015]
+        provs = holidays.CA(subdiv="ON", years=[2014]) + holidays.CA(
+            subdiv="BC", years=[2015]
         )
         self.assertIn("2015-02-09", provs)
         self.assertIn("2015-02-16", provs)
-        self.assertEqual(provs.prov, ["ON", "BC"])
-        a = sum(holidays.CA(prov=x) for x in holidays.CA.PROVINCES)
+        self.assertEqual(provs.subdiv, ["ON", "BC"])
+        a = sum(holidays.CA(subdiv=x) for x in holidays.CA.subdivisions)
         self.assertEqual(a.country, "CA")
-        self.assertEqual(a.prov, holidays.CA.PROVINCES)
+        self.assertEqual(a.subdiv, holidays.CA.subdivisions)
         self.assertIn("2015-02-09", a)
         self.assertIn("2015-02-16", a)
         na = holidays.CA() + holidays.US() + holidays.MX()
@@ -265,21 +267,22 @@ class TestBasics(unittest.TestCase):
         )
 
     def test_get_list(self):
-        westland = holidays.NZ(prov="WTL")
-        chathams = holidays.NZ(prov="CIT")
+        westland = holidays.NZ(subdiv="WTL")
+        chathams = holidays.NZ(subdiv="CIT")
         wild = westland + chathams
         self.assertEqual(
             wild[date(1969, 12, 1)],
-            ("Westland Anniversary Day, " + "Chatham Islands Anniversary Day"),
+            ("West Coast Anniversary Day, Chatham Islands Anniversary Day"),
         )
 
         self.assertEqual(
             wild.get_list(date(1969, 12, 1)),
-            ["Westland Anniversary Day", "Chatham Islands Anniversary Day"],
+            ["West Coast Anniversary Day", "Chatham Islands Anniversary Day"],
         )
         self.assertEqual(wild.get_list(date(1969, 1, 1)), ["New Year's Day"])
         self.assertEqual(
-            westland.get_list(date(1969, 12, 1)), ["Westland Anniversary Day"]
+            westland.get_list(date(1969, 12, 1)),
+            ["West Coast Anniversary Day"],
         )
         self.assertEqual(
             westland.get_list(date(1969, 1, 1)), ["New Year's Day"]
@@ -306,6 +309,7 @@ class TestBasics(unittest.TestCase):
     def test_list_supported_countries(self):
         self.assertIn("AR", holidays.list_supported_countries())
         self.assertIn("ZA", holidays.list_supported_countries())
+        self.assertIn("CA", holidays.list_supported_countries()["US"])
 
     def test_radd(self):
         self.assertRaises(TypeError, lambda: 1 + holidays.US())
@@ -378,12 +382,12 @@ class TestArgs(unittest.TestCase):
         self.assertEqual(self.holidays.country, "US")
         self.holidays = holidays.CA()
         self.assertEqual(self.holidays.country, "CA")
-        self.assertEqual(self.holidays.prov, "ON")
+        self.assertEqual(self.holidays.subdiv, "ON")
         self.assertIn(date(2014, 7, 1), self.holidays)
         self.assertNotIn(date(2014, 7, 4), self.holidays)
-        self.holidays = holidays.CA(prov="BC")
+        self.holidays = holidays.CA(subdiv="BC")
         self.assertEqual(self.holidays.country, "CA")
-        self.assertEqual(self.holidays.prov, "BC")
+        self.assertEqual(self.holidays.subdiv, "BC")
         self.assertIn(date(2014, 7, 1), self.holidays)
         self.assertNotIn(date(2014, 7, 4), self.holidays)
 
@@ -409,7 +413,7 @@ class TestArgs(unittest.TestCase):
         self.assertIn(2013, self.holidays.years)
         self.assertNotIn(2014, self.holidays.years)
         self.assertIn(2015, self.holidays.years)
-        self.assertIn(date(2021, 12, 31), holidays.US(years=[2022]).keys())
+        self.assertIn(date(2021, 12, 31), holidays.US(years=[2021]).keys())
         self.holidays = holidays.US(years=2015)
         self.assertNotIn(2014, self.holidays.years)
         self.assertIn(2015, self.holidays.years)
@@ -516,28 +520,106 @@ class TestKeyTransforms(unittest.TestCase):
         self.assertRaises((TypeError, ValueError), lambda: {} in self.holidays)
 
 
-class TestCountryHoliday(unittest.TestCase):
+class TestCountryHolidayDeprecation(unittest.TestCase):
+    def test_deprecation(self):
+        with warnings.catch_warnings(record=True) as w:
+            warnings.simplefilter("always")
+            h = holidays.CountryHoliday("IT")
+            self.assertIsInstance(h, holidays.HolidayBase)
+            self.assertEqual(1, len(w))
+            self.assertTrue(issubclass(w[-1].category, DeprecationWarning))
+
+
+class TestCountryHolidays(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.CountryHoliday("US")
+        self.holidays = holidays.country_holidays("US")
 
     def test_country(self):
         self.assertEqual(self.holidays.country, "US")
 
     def test_country_single_year(self):
-        h = holidays.CountryHoliday("US", years=2021)
+        h = holidays.country_holidays("US", years=2021)
         self.assertEqual(h.years, {2021})
 
     def test_country_years(self):
-        h = holidays.CountryHoliday("US", years=[2015, 2016])
+        h = holidays.country_holidays("US", years=[2015, 2016])
         self.assertEqual(h.years, {2015, 2016})
 
     def test_country_state(self):
-        h = holidays.CountryHoliday("US", state="NY")
-        self.assertEqual(h.state, "NY")
+        h = holidays.country_holidays("US", subdiv="NY")
+        self.assertEqual(h.subdiv, "NY")
 
     def test_country_province(self):
-        h = holidays.CountryHoliday("AU", prov="NT")
-        self.assertEqual(h.prov, "NT")
+        h = holidays.country_holidays("AU", subdiv="NT")
+        self.assertEqual(h.subdiv, "NT")
 
     def test_exceptions(self):
-        self.assertRaises((KeyError), lambda: holidays.CountryHoliday("XXXX"))
+        self.assertRaises(
+            NotImplementedError, lambda: holidays.country_holidays("XXXX")
+        )
+        self.assertRaises(
+            NotImplementedError, lambda: holidays.country_holidays("XXXX")
+        )
+        self.assertRaises(
+            NotImplementedError,
+            lambda: holidays.country_holidays("US", subdiv="XXXX"),
+        )
+        self.assertRaises(
+            NotImplementedError, lambda: holidays.US(subdiv="XXXX")
+        )
+
+
+class TestAllInSameYear(unittest.TestCase):
+    """Test that only holidays in the year(s) requested are returned."""
+
+    country: str
+    hol: datetime
+    year: int
+
+    def setUp(self):
+        self.countries = holidays.list_supported_countries()
+
+    def tearDown(self):
+        """https://stackoverflow.com/questions/4414234/"""
+
+        def list2reason(exc_list):
+            if exc_list and exc_list[-1][0] is self:
+                return exc_list[-1][1]
+
+        result = self.defaultTestResult()
+        self._feedErrorsToResult(result, self._outcome.errors)
+        error = list2reason(result.errors)
+        failure = list2reason(result.failures)
+        text = error if error else failure
+        if text:
+            print(
+                f"{text.splitlines()[-1]} in country {self.country}: "
+                f"holiday {self.hol} returned for year {self.year}"
+            )
+            print(
+                holidays.country_holidays(
+                    self.country, subdiv=None, years=[self.year]
+                ).get_list(self.hol)
+            )
+
+    def test_all_countries(self):
+        """
+        Only holidays in the year(s) requested should be returned. This
+        ensures that we avoid triggering a "RuntimeError: dictionary changed
+        size during iteration" error.
+
+        Here we test all countries for the 12-year period starting ten years
+        ago and ending 2 years from now.
+
+        This is logic test and not a code compatibility test, so for expediency
+        we only run it once on the latest Python version.
+        """
+        for self.country in self.countries:
+            for self.year in range(
+                date.today().year - 10, date.today().year + 3
+            ):
+                hols = holidays.country_holidays(
+                    self.country, years=[self.year]
+                )
+                for self.hol in hols:
+                    assert self.hol.year == self.year

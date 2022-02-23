@@ -6,8 +6,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -35,13 +35,14 @@ class Sweden(HolidayBase):
     http://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/lag-1989253-om-allmanna-helgdagar_sfs-1989-253
     """
 
+    country = "SE"
+
     def __init__(self, include_sundays=True, **kwargs):
         """
         :param include_sundays: Whether to consider sundays as a holiday
         (which they are in Sweden)
         :param kwargs:
         """
-        self.country = "SE"
         self.include_sundays = include_sundays
         HolidayBase.__init__(self, **kwargs)
 

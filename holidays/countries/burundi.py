@@ -6,8 +6,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -18,7 +18,7 @@ from dateutil.relativedelta import relativedelta as rd
 from holidays.constants import SUN
 from holidays.constants import JAN, FEB, APR, MAY, JUL, AUG, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.utils import islamic_to_gre
+from holidays.utils import _islamic_to_gre
 
 
 class Burundi(HolidayBase):
@@ -33,11 +33,20 @@ class Burundi(HolidayBase):
     https://www.officeholidays.com/countries/burundi
     """
 
+    country = "BI"
+
     def __init__(self, **kwargs):
-        self.country = "BI"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        def _add_holiday(dt: date, hol: str) -> None:
+            """Only add if in current year; prevents adding holidays across
+            years (handles multi-day Islamic holidays that straddle Gregorian
+            years).
+            """
+            if dt.year == year:
+                self[dt] = hol
+
         # New Year's Day
         self[date(year, JAN, 1)] = "New Year's Day"
 
@@ -72,10 +81,11 @@ class Burundi(HolidayBase):
 
         # Eid Al Adha- Feast of the Sacrifice
         # date of observance is announced yearly
-        for date_obs in islamic_to_gre(year, 12, 10):
-            hol_date = date_obs
-            self[hol_date] = "Eid Al Adha"
-            self[hol_date + rd(days=1)] = "Eid Al Adha"
+        for yr in (year - 1, year):
+            for date_obs in _islamic_to_gre(yr, 12, 10):
+                hol_date = date_obs
+                _add_holiday(hol_date, "Eid Al Adha")
+                _add_holiday(hol_date + rd(days=1), "Eid Al Adha")
 
         # Assumption Day
         name = "Assumption Day"

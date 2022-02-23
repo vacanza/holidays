@@ -6,8 +6,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -926,7 +926,7 @@ class TestMalaysia(unittest.TestCase):
         }
 
         for col, state in enumerate(columns):
-            my_holidays = holidays.Malaysia(years=2021, state=state)
+            my_holidays = holidays.Malaysia(years=2021, subdiv=state)
             # check if all holidays are in here
             tot_holidays = 0
             for hol_date, is_holiday in rows.items():
@@ -955,7 +955,7 @@ class TestMalaysia(unittest.TestCase):
         self.assertIn(date(2001, 12, 25), self.holidays)
 
     def test_JHR_holidays(self):
-        Johor_holidays = holidays.MY(years=2015, state="JHR")
+        Johor_holidays = holidays.MY(years=2015, subdiv="JHR")
         # Birthday of the Sultan of Johor
         self.assertIn(date(2015, 3, 23), Johor_holidays)
         self.assertIn(date(2016, 3, 23), Johor_holidays)
@@ -966,7 +966,7 @@ class TestMalaysia(unittest.TestCase):
 
     def test_KDH_holidays(self):
         Kedah_holidays = holidays.MY(
-            years=[2018, 2019, 2020, 2021, 2022], state="KDH"
+            years=[2018, 2019, 2020, 2021, 2022], subdiv="KDH"
         )
         self.assertIn(date(2018, 8, 22), Kedah_holidays)
         self.assertIn(date(2019, 8, 11), Kedah_holidays)
@@ -976,7 +976,7 @@ class TestMalaysia(unittest.TestCase):
 
     def test_KTN_holidays(self):
         Kelantan_holidays = holidays.MY(
-            years=[2018, 2019, 2020, 2021, 2022], state="KTN"
+            years=[2018, 2019, 2020, 2021, 2022], subdiv="KTN"
         )
         self.assertIn(date(2018, 11, 11), Kelantan_holidays)
         self.assertIn(date(2019, 11, 12), Kelantan_holidays)
@@ -985,7 +985,7 @@ class TestMalaysia(unittest.TestCase):
 
     def test_NSN_holidays(self):
         Negeri_Sembilan_holidays = holidays.MY(
-            years=[2018, 2019, 2020, 2021, 2022], state="NSN"
+            years=[2018, 2019, 2020, 2021, 2022], subdiv="NSN"
         )
         self.assertIn(date(2018, 1, 14), Negeri_Sembilan_holidays)
         self.assertIn(date(2023, 1, 14), Negeri_Sembilan_holidays)
@@ -994,7 +994,7 @@ class TestMalaysia(unittest.TestCase):
 
     def test_PNG_holidays(self):
         Penang_holidays = holidays.MY(
-            years=[2023, 2024, 2019, 2020, 2021, 2022], state="PNG"
+            years=[2023, 2024, 2019, 2020, 2021, 2022], subdiv="PNG"
         )
         self.assertIn(date(2020, 7, 7), Penang_holidays)
         self.assertIn(date(2020, 7, 11), Penang_holidays)
@@ -1005,7 +1005,7 @@ class TestMalaysia(unittest.TestCase):
 
     def test_PRK_holidays(self):
         Perak_holidays = holidays.MY(
-            years=[2013, 2018, 2019, 2020, 2021, 2022], state="PRK"
+            years=[2013, 2018, 2019, 2020, 2021, 2022], subdiv="PRK"
         )
         self.assertIn(date(2018, 11, 2), Perak_holidays)
         self.assertIn(date(2019, 11, 1), Perak_holidays)
@@ -1017,7 +1017,7 @@ class TestMalaysia(unittest.TestCase):
 
     def test_SBH_holidays(self):
         Sabah_holidays = holidays.MY(
-            years=[2017, 2018, 2019, 2020, 2021, 2022], state="SBH"
+            years=[2017, 2018, 2019, 2020, 2021, 2022], subdiv="SBH"
         )
         self.assertIn(date(2018, 5, 30), Sabah_holidays)
         self.assertIn(date(2018, 5, 31), Sabah_holidays)
@@ -1032,7 +1032,7 @@ class TestMalaysia(unittest.TestCase):
 
     def test_SWK_holidays(self):
         Sarawakholidays = holidays.MY(
-            years=[2018, 2019, 2020, 2021, 2022], state="SWK"
+            years=[2018, 2019, 2020, 2021, 2022], subdiv="SWK"
         )
         # Gawai Dayak
         self.assertIn(date(2018, 6, 1), Sarawakholidays)
@@ -1051,7 +1051,7 @@ class TestMalaysia(unittest.TestCase):
 
     def test_SGR_holidays(self):
         Selangor_holidays = holidays.MY(
-            years=[2018, 2019, 2020, 2021, 2022], state="SGR"
+            years=[2018, 2019, 2020, 2021, 2022], subdiv="SGR"
         )
         # Birthday of The Sultan of Selangor
         self.assertIn(date(2018, 12, 11), Selangor_holidays)
@@ -1062,7 +1062,7 @@ class TestMalaysia(unittest.TestCase):
 
     def test_TRG_holidays(self):
         Terengganu_holidays = holidays.MY(
-            years=[2018, 2019, 2020, 2021, 2022], state="TRG"
+            years=[2018, 2019, 2020, 2021, 2022], subdiv="TRG"
         )
         # Anniversary of the Installation of the Sultan of Terengganu
         self.assertIn(date(2018, 3, 4), Terengganu_holidays)
@@ -1076,7 +1076,7 @@ class TestMalaysia(unittest.TestCase):
 
     def test_KUL_holidays(self):
         Kuala_Lumpur_holidays = holidays.MY(
-            years=[1970, 2018, 2019, 2020, 2021, 2022, 2023], state="KUL"
+            years=[1970, 2018, 2019, 2020, 2021, 2022, 2023], subdiv="KUL"
         )
         # Federal Territory Day
         self.assertIn(date(2018, 2, 1), Kuala_Lumpur_holidays)
@@ -1088,12 +1088,12 @@ class TestMalaysia(unittest.TestCase):
 
     def test_MLK_holidays(self):
         Malacca_holidays = holidays.MY(
-            years=[2018, 2019, 2020, 2021, 2022], state="MLK"
+            years=[2018, 2019, 2020, 2021, 2022], subdiv="MLK"
         )
         # Declaration of Malacca as a Historical City in Melaka
         self.assertIn(date(2018, 4, 15), Malacca_holidays)
         self.assertIn(date(2019, 4, 15), Malacca_holidays)
-        # Birthday of the Governor of Melaka
+        # Birthday of the Governor of MelakaMelaka
 
     #        self.assertIn(date(2018, 10, 12), Malacca_holidays)
     #        self.assertIn(date(2019, 10, 11), Malacca_holidays)
@@ -1102,7 +1102,7 @@ class TestMalaysia(unittest.TestCase):
 
     def test_LBN_holidays(self):
         Labuan_holidays = holidays.MY(
-            years=[1972, 2018, 2019, 2020, 2021, 2022], state="LBN"
+            years=[1972, 2018, 2019, 2020, 2021, 2022], subdiv="LBN"
         )
         # Pesta Kaamatan
         self.assertIn(date(2018, 5, 30), Labuan_holidays)
@@ -1114,7 +1114,7 @@ class TestMalaysia(unittest.TestCase):
 
     def test_PJY_holidays(self):
         Putrajaya_holidays = holidays.MY(
-            years=[2018, 2019, 2020, 2021, 2022], state="PJY"
+            years=[2018, 2019, 2020, 2021, 2022], subdiv="PJY"
         )
         # Federal Territory Day
         self.assertIn(date(2020, 2, 1), Putrajaya_holidays)

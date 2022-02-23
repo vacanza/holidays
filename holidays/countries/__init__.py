@@ -5,8 +5,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -29,12 +29,13 @@ from .china import China, CN, CHN
 from .colombia import Colombia, CO, COL
 from .croatia import Croatia, HR, HRV
 from .curacao import Curacao, CW, CUW
-from .czechia import Czechia, Czech, CZ, CZE
+from .czechia import Czechia, CZ, CZE
 from .denmark import Denmark, DK, DNK
 from .djibouti import Djibouti, DJ, DJI
 from .dominican_republic import DominicanRepublic, DO, DOM
 from .egypt import Egypt, EG, EGY
 from .estonia import Estonia, EE, EST
+from .ethiopia import Ethiopia, ET, ETH
 from .european_central_bank import EuropeanCentralBank, ECB, TAR
 from .finland import Finland, FI, FIN
 from .france import France, FR, FRA
@@ -47,6 +48,7 @@ from .hungary import Hungary, HU, HUN
 from .iceland import Iceland, IS, ISL
 from .india import India, IN, IND
 from .ireland import Ireland, IE, IRL
+from .isle_of_man import IsleOfMan, IM
 from .italy import Italy, IT, ITA
 from .israel import Israel, IL, ISR
 from .jamaica import Jamaica, JM, JAM
@@ -58,8 +60,8 @@ from .latvia import Latvia, LV, LVA
 from .lesotho import Lesotho, LS, LSO
 from .lithuania import Lithuania, LT, LTU
 from .luxembourg import Luxembourg, LU, LUX
-from .malaysia import Malaysia, MY, MYS
 from .malawi import Malawi, MW, MWI
+from .malaysia import Malaysia, MY, MYS
 from .mexico import Mexico, MX, MEX
 from .morocco import Morocco, MA, MOR
 from .mozambique import Mozambique, MZ, MOZ
@@ -68,17 +70,18 @@ from .netherlands import Netherlands, NL, NLD
 from .new_zealand import NewZealand, NZ, NZL
 from .nicaragua import Nicaragua, NI, NIC
 from .nigeria import Nigeria, NG, NGA
+from .north_macedonia import NorthMacedonia, MK, MKD
 from .norway import Norway, NO, NOR
 from .paraguay import Paraguay, PY, PRY
 from .peru import Peru, PE, PER
-from .poland import Poland, Polish, PL, POL
+from .poland import Poland, PL, POL
 from .portugal import Portugal, PT, PRT, PortugalExt, PTE, PRTE
 from .romania import Romania, RO, ROU
 from .russia import Russia, RU, RUS
 from .saudi_arabia import SaudiArabia, SA, SAU
 from .serbia import Serbia, RS, SRB
 from .singapore import Singapore, SG, SGP
-from .slovakia import Slovakia, Slovak, SK, SVK
+from .slovakia import Slovakia, SK, SVK
 from .slovenia import Slovenia, SI, SVN
 from .south_africa import SouthAfrica, ZA, ZAF
 from .spain import Spain, ES, ESP
@@ -94,16 +97,16 @@ from .united_kingdom import (
     UnitedKingdom,
     UK,
     GB,
+    GBR,
     England,
     Wales,
     Scotland,
-    IsleOfMan,
     NorthernIreland,
-    GBR,
 )
 from .united_states import UnitedStates, US, USA
 from .uruguay import Uruguay, UY, URY
-from .venezuela import Venezuela, YV, VEN
+from .uzbekistan import Uzbekistan, UZ, UZB
+from .venezuela import Venezuela, VE, VEN
 from .vietnam import Vietnam, VN, VNM
 from .zambia import Zambia, ZM, ZMB
 from .zimbabwe import Zimbabwe, ZW, ZWE

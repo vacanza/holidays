@@ -6,8 +6,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -43,3 +43,4 @@ class TestRussia(unittest.TestCase):
         self.assertIn(date(2018, 6, 12), self.holidays)
         self.assertIn(date(2018, 11, 4), self.holidays)
         self.assertNotIn(date(2018, 11, 7), self.holidays)
+        self.assertIn(date(2018, 12, 31), self.holidays)

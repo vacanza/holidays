@@ -9,6 +9,8 @@ MANIFEST
 coverage.xml
 .tox
 .venv
+docs/_build
+docs/source/_build
 
 # IDE Stuff
 .idea

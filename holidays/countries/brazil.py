@@ -6,8 +6,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -37,7 +37,8 @@ class Brazil(HolidayBase):
     https://pt.wikipedia.org/wiki/Feriados_no_Brasil
     """
 
-    STATES = [
+    country = "BR"
+    subdivisions = [
         "AC",
         "AL",
         "AP",
@@ -68,7 +69,6 @@ class Brazil(HolidayBase):
     ]
 
     def __init__(self, **kwargs):
-        self.country = "BR"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -101,7 +101,7 @@ class Brazil(HolidayBase):
 
         self[quaresma - rd(weekday=TU(-1))] = "Carnaval"
 
-        if self.state == "AC":
+        if self.subdiv == "AC":
             self[date(year, JAN, 23)] = "Dia do evangélico"
             self[date(year, JUN, 15)] = "Aniversário do Acre"
             self[date(year, SEP, 5)] = "Dia da Amazônia"
@@ -109,107 +109,107 @@ class Brazil(HolidayBase):
                 "Assinatura do Tratado de" " Petrópolis"
             )
 
-        if self.state == "AL":
+        if self.subdiv == "AL":
             self[date(year, JUN, 24)] = "São João"
             self[date(year, JUN, 29)] = "São Pedro"
             self[date(year, SEP, 16)] = "Emancipação política de Alagoas"
             self[date(year, NOV, 20)] = "Consciência Negra"
 
-        if self.state == "AP":
+        if self.subdiv == "AP":
             self[date(year, MAR, 19)] = "Dia de São José"
             self[date(year, JUL, 25)] = "São Tiago"
             self[date(year, OCT, 5)] = "Criação do estado"
             self[date(year, NOV, 20)] = "Consciência Negra"
 
-        if self.state == "AM":
+        if self.subdiv == "AM":
             self[date(year, SEP, 5)] = (
                 "Elevação do Amazonas" " à categoria de província"
             )
             self[date(year, NOV, 20)] = "Consciência Negra"
             self[date(year, DEC, 8)] = "Dia de Nossa Senhora da Conceição"
 
-        if self.state == "BA":
+        if self.subdiv == "BA":
             self[date(year, JUL, 2)] = "Independência da Bahia"
 
-        if self.state == "CE":
+        if self.subdiv == "CE":
             self[date(year, MAR, 19)] = "São José"
             self[date(year, MAR, 25)] = "Data Magna do Ceará"
 
-        if self.state == "DF":
+        if self.subdiv == "DF":
             self[date(year, APR, 21)] = "Fundação de Brasília"
             self[date(year, NOV, 30)] = "Dia do Evangélico"
 
-        if self.state == "ES":
+        if self.subdiv == "ES":
             self[date(year, OCT, 28)] = "Dia do Servidor Público"
 
-        if self.state == "GO":
+        if self.subdiv == "GO":
             self[date(year, OCT, 28)] = "Dia do Servidor Público"
 
-        if self.state == "MA":
+        if self.subdiv == "MA":
             self[date(year, JUL, 28)] = (
                 "Adesão do Maranhão" " à independência do Brasil"
             )
             self[date(year, DEC, 8)] = "Dia de Nossa Senhora da Conceição"
 
-        if self.state == "MT":
+        if self.subdiv == "MT":
             self[date(year, NOV, 20)] = "Consciência Negra"
 
-        if self.state == "MS":
+        if self.subdiv == "MS":
             self[date(year, OCT, 11)] = "Criação do estado"
 
-        if self.state == "MG":
+        if self.subdiv == "MG":
             self[date(year, APR, 21)] = "Data Magna de MG"
 
-        if self.state == "PA":
+        if self.subdiv == "PA":
             self[date(year, AUG, 15)] = (
                 "Adesão do Grão-Pará" " à independência do Brasil"
             )
 
-        if self.state == "PB":
+        if self.subdiv == "PB":
             self[date(year, AUG, 5)] = "Fundação do Estado"
 
-        if self.state == "PE":
+        if self.subdiv == "PE":
             self[date(year, MAR, 6)] = "Revolução Pernambucana (Data Magna)"
             self[date(year, JUN, 24)] = "São João"
 
-        if self.state == "PI":
+        if self.subdiv == "PI":
             self[date(year, MAR, 13)] = "Dia da Batalha do Jenipapo"
             self[date(year, OCT, 19)] = "Dia do Piauí"
 
-        if self.state == "PR":
+        if self.subdiv == "PR":
             self[date(year, DEC, 19)] = "Emancipação do Paraná"
 
-        if self.state == "RJ":
+        if self.subdiv == "RJ":
             self[date(year, APR, 23)] = "Dia de São Jorge"
             self[date(year, OCT, 28)] = "Dia do Funcionário Público"
             self[date(year, NOV, 20)] = "Zumbi dos Palmares"
 
-        if self.state == "RN":
+        if self.subdiv == "RN":
             self[date(year, JUN, 29)] = "Dia de São Pedro"
             self[date(year, OCT, 3)] = "Mártires de Cunhaú e Uruaçuu"
 
-        if self.state == "RS":
+        if self.subdiv == "RS":
             self[date(year, SEP, 20)] = "Revolução Farroupilha"
 
-        if self.state == "RO":
+        if self.subdiv == "RO":
             self[date(year, JAN, 4)] = "Criação do estado"
             self[date(year, JUN, 18)] = "Dia do Evangélico"
 
-        if self.state == "RR":
+        if self.subdiv == "RR":
             self[date(year, OCT, 5)] = "Criação de Roraima"
 
-        if self.state == "SC":
+        if self.subdiv == "SC":
             self[date(year, AUG, 11)] = (
                 "Criação da capitania," " separando-se de SP"
             )
 
-        if self.state == "SP":
+        if self.subdiv == "SP":
             self[date(year, JUL, 9)] = "Revolução Constitucionalista de 1932"
 
-        if self.state == "SE":
+        if self.subdiv == "SE":
             self[date(year, JUL, 8)] = "Autonomia política de Sergipe"
 
-        if self.state == "TO":
+        if self.subdiv == "TO":
             self[date(year, JAN, 1)] = "Instalação de Tocantins"
             self[date(year, SEP, 8)] = "Nossa Senhora da Natividade"
             self[date(year, OCT, 5)] = "Criação de Tocantins"

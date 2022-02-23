@@ -1,0 +1,16 @@
+/**
+css/custom.css
+See https://docs.readthedocs.io/en/stable/guides/adding-custom-css.html#overriding-or-replacing-a-theme-s-stylesheet
+**/
+
+/* This line is theme specific - it includes the base theme CSS */
+/*@import '../alabaster.css';  /* for Alabaster */
+@import 'theme.css';       /* for the Read the Docs theme */
+
+.underline {
+  text-decoration: underline;
+}
+
+.tight-table td {
+  white-space: normal !important;
+}

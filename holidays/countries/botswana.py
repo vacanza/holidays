@@ -6,8 +6,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -22,13 +22,14 @@ from holidays.holiday_base import HolidayBase
 
 
 class Botswana(HolidayBase):
-    def __init__(self, **kwargs):
-        # https://www.gov.bw/public-holidays
-        # https://publicholidays.africa/botswana/2021-dates/
-        # https://www.timeanddate.com/holidays/botswana/
-        # http://www.ilo.org/dyn/travail/docs/1766/Public%20Holidays%20Act.pdf
+    # https://www.gov.bw/public-holidays
+    # https://publicholidays.africa/botswana/2021-dates/
+    # https://www.timeanddate.com/holidays/botswana/
+    # http://www.ilo.org/dyn/travail/docs/1766/Public%20Holidays%20Act.pdf
 
-        self.country = "BW"
+    country = "BW"
+
+    def __init__(self, **kwargs):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year: int):
@@ -102,8 +103,9 @@ class Botswana(HolidayBase):
                     if " (Observed)" not in i:
                         self[k + rd(days=1)] = i.lstrip() + " (Observed)"
 
-        # Once off ad-hoc holidays
-        self[date(2019, JUL, 2)] = "Public Holiday"
+        # Once off ad-hoc holiday.
+        if year == 2019:
+            self[date(year, JUL, 2)] = "Public Holiday"
 
 
 class BW(Botswana):

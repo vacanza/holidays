@@ -6,8 +6,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -38,7 +38,7 @@ class TestCA(unittest.TestCase):
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
 
     def test_islander_day(self):
-        pei_holidays = holidays.CA(prov="PE")
+        pei_holidays = holidays.CA(subdiv="PE")
         for dt in [
             date(2009, 2, 9),
             date(2010, 2, 15),
@@ -59,12 +59,12 @@ class TestCA(unittest.TestCase):
             self.assertNotIn(dt + relativedelta(days=+1), pei_holidays)
 
     def test_family_day(self):
-        ab_holidays = holidays.CA(prov="AB")
-        bc_holidays = holidays.CA(prov="BC")
-        mb_holidays = holidays.CA(prov="MB")
-        sk_holidays = holidays.CA(prov="SK")
-        nb_holidays = holidays.CA(prov="NB")
-        ns_holidays = holidays.CA(prov="NS")
+        ab_holidays = holidays.CA(subdiv="AB")
+        bc_holidays = holidays.CA(subdiv="BC")
+        mb_holidays = holidays.CA(subdiv="MB")
+        sk_holidays = holidays.CA(subdiv="SK")
+        nb_holidays = holidays.CA(subdiv="NB")
+        ns_holidays = holidays.CA(subdiv="NS")
         for dt in [
             date(1990, 2, 19),
             date(1999, 2, 15),
@@ -111,7 +111,7 @@ class TestCA(unittest.TestCase):
         self.assertEqual(ns_holidays[date(2015, 2, 16)], "Heritage Day")
 
     def test_st_patricks_day(self):
-        nl_holidays = holidays.CA(prov="NL", observed=False)
+        nl_holidays = holidays.CA(subdiv="NL", observed=False)
         for dt in [
             date(1900, 3, 19),
             date(1999, 3, 15),
@@ -161,7 +161,7 @@ class TestCA(unittest.TestCase):
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
 
     def test_st_georges_day(self):
-        nl_holidays = holidays.CA(prov="NL")
+        nl_holidays = holidays.CA(subdiv="NL")
         for dt in [
             date(1990, 4, 23),
             date(1999, 4, 26),
@@ -188,7 +188,7 @@ class TestCA(unittest.TestCase):
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
 
     def test_national_aboriginal_day(self):
-        nt_holidays = holidays.CA(prov="NT")
+        nt_holidays = holidays.CA(subdiv="NT")
         self.assertNotIn(date(1995, 6, 21), nt_holidays)
         for year in range(1996, 2100):
             dt = date(year, 6, 21)
@@ -198,7 +198,7 @@ class TestCA(unittest.TestCase):
             self.assertNotIn(dt + relativedelta(days=+1), nt_holidays)
 
     def test_st_jean_baptiste_day(self):
-        qc_holidays = holidays.CA(prov="QC", observed=False)
+        qc_holidays = holidays.CA(subdiv="QC", observed=False)
         self.assertNotIn(date(1924, 6, 24), qc_holidays)
         for year in range(1925, 2100):
             dt = date(year, 6, 24)
@@ -211,8 +211,8 @@ class TestCA(unittest.TestCase):
         self.assertIn(date(2001, 6, 25), qc_holidays)
 
     def test_discovery_day(self):
-        nl_holidays = holidays.CA(prov="NL")
-        yt_holidays = holidays.CA(prov="YT")
+        nl_holidays = holidays.CA(subdiv="NL")
+        yt_holidays = holidays.CA(subdiv="YT")
         for dt in [
             date(1997, 6, 23),
             date(1999, 6, 21),
@@ -249,7 +249,7 @@ class TestCA(unittest.TestCase):
         self.assertIn(date(2007, 7, 2), self.holidays)
 
     def test_nunavut_day(self):
-        nu_holidays = holidays.CA(prov="NU", observed=False)
+        nu_holidays = holidays.CA(subdiv="NU", observed=False)
         self.assertNotIn(date(1999, 7, 9), nu_holidays)
         self.assertNotIn(date(2000, 7, 9), nu_holidays)
         self.assertIn(date(2000, 4, 1), nu_holidays)
@@ -264,7 +264,7 @@ class TestCA(unittest.TestCase):
         self.assertIn(date(2017, 7, 10), nu_holidays)
 
     def test_civic_holiday(self):
-        bc_holidays = holidays.CA(prov="BC")
+        bc_holidays = holidays.CA(subdiv="BC")
         for dt in [date(1900, 8, 6), date(1955, 8, 1), date(1973, 8, 6)]:
             self.assertIn(dt, self.holidays)
             self.assertNotIn(dt, bc_holidays)
@@ -300,7 +300,7 @@ class TestCA(unittest.TestCase):
         ]:
             self.assertNotIn(dt, self.holidays)
             self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-        mb_holidays = holidays.CA(prov="MB")
+        mb_holidays = holidays.CA(subdiv="MB")
         for dt in [
             date(2021, 9, 30),
             date(2030, 9, 30),
@@ -310,7 +310,7 @@ class TestCA(unittest.TestCase):
             self.assertNotIn(dt, self.holidays)
 
     def test_thanksgiving(self):
-        ns_holidays = holidays.CA(prov="NB")
+        ns_holidays = holidays.CA(subdiv="NB")
         for dt in [
             date(1931, 10, 12),
             date(1990, 10, 8),
@@ -325,8 +325,8 @@ class TestCA(unittest.TestCase):
             self.assertNotIn(dt, ns_holidays)
 
     def test_remembrance_day(self):
-        ab_holidays = holidays.CA(prov="AB", observed=False)
-        nl_holidays = holidays.CA(prov="NL", observed=False)
+        ab_holidays = holidays.CA(subdiv="AB", observed=False)
+        nl_holidays = holidays.CA(subdiv="NL", observed=False)
         self.assertNotIn(date(1930, 11, 11), ab_holidays)
         self.assertNotIn(date(1930, 11, 11), nl_holidays)
         for year in range(1931, 2100):

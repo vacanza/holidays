@@ -6,8 +6,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -22,7 +22,8 @@ class TestFrance(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.France()
         self.prov_holidays = {
-            prov: holidays.FR(prov=prov) for prov in holidays.FRA.PROVINCES
+            prov: holidays.FR(subdiv=prov)
+            for prov in holidays.FRA.subdivisions
         }
 
     def test_2017(self):

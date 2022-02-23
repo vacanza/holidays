@@ -6,17 +6,18 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from typing import Tuple
 
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, OCT, DEC
-from holidays.constants import MON, TUE, WED, THU, FRI, SAT, SUN
+from holidays.constants import SAT, SUN
 from holidays.holiday_base import HolidayBase
 
 # Installation: pip install korean_lunar_calendar
@@ -40,8 +41,9 @@ class Korea(HolidayBase):
     # Lunar New Year's Day, Korean Mid Autumn Day have alt holiday if they
     #   fell on only sunday.
 
+    country = "KR"
+
     def __init__(self, **kwargs):
-        self.country = "KR"
         self.korean_cal = KoreanLunarCalendar()
         HolidayBase.__init__(self, **kwargs)
 
@@ -216,7 +218,21 @@ class Korea(HolidayBase):
             self[alt_date] = name
 
     # convert lunar calendar date to solar
-    def get_solar_date(self, year, month, day):
+    def get_solar_date(self, year: int, month: int, day: int) -> date:
+        """Return the Gregorian calendar date of a Korean lunar calendar date.
+
+        :param year:
+           The Korean lunar year(년).
+
+        :param month:
+           The Korean lunar month(월).
+
+        :param day:
+           The Korean lunar day(일).
+
+        :return:
+           The Korean Gregorian date.
+        """
         self.korean_cal.setLunarDate(year, month, day, False)
         return date(
             self.korean_cal.solarYear,
@@ -224,7 +240,30 @@ class Korea(HolidayBase):
             self.korean_cal.solarDay,
         )
 
-    def get_next_first_non_holiday(self, name, cur, include_sat=False):
+    def get_next_first_non_holiday(
+        self, name: str, cur: date, include_sat: bool = False
+    ) -> Tuple[bool, date]:
+        """Returns the first day from the date provided that's not already a
+        holiday of a different name nor a weekend.
+
+        :param name:
+           The name of the holiday.
+
+        :param cur:
+           The current date of the holiday.
+
+        :param include_sat:
+           Whether Saturday is to be considered a weekend in addition to
+           Sunday.
+
+        :return:
+           A tuple consisting of a flag set to whether the date is different
+           and the date itself.
+
+        :raise RuntimeError:
+           When no such date is not found.
+        """
+
         start_value = cur
         target_weekday = [SUN]
         if include_sat:
@@ -237,6 +276,30 @@ class Korea(HolidayBase):
             check_2 = cur in self and name != self[cur]
 
         return start_value != cur, cur
+    def get_next_first_non_holiday(
+        self, name: str, cur: date, include_sat: bool = False
+    ) -> Tuple[bool, date]:
+        """Returns the first day from the date provided that's not already a
+        holiday of a different name nor a weekend.
+
+        :param name:
+           The name of the holiday.
+
+        :param cur:
+           The current date of the holiday.
+
+        :param include_sat:
+           Whether Saturday is to be considered a weekend in addition to
+           Sunday.
+
+        :return:
+           A tuple consisting of a flag set to whether the date is different
+           and the date itself.
+
+        :raise RuntimeError:
+           When no such date is not found.
+        """
+
 
 class KR(Korea):
     pass

@@ -6,8 +6,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -24,7 +24,7 @@ class TestNicaragua(unittest.TestCase):
 
     def test_ni_holidays_2020(self):
         year = 2020
-        mn_holidays = holidays.NI(prov="MN")
+        mn_holidays = holidays.NI(subdiv="MN")
 
         # New Year's Day
         self.assertIn(date(year, 1, 1), self.ni_holidays)

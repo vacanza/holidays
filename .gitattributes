@@ -1,2 +1,2 @@
-*       text eol=lf
-*.bat   text eol=crlf
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text eol=auto

@@ -6,8 +6,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -21,11 +21,13 @@ from holidays.holiday_base import HolidayBase
 
 
 class Nicaragua(HolidayBase):
-    PROVINCES = ["MN"]
+    country = "NI"
+    subdivisions = ["MN"]
 
     def __init__(self, **kwargs):
-        self.country = "NI"
-        self.prov = kwargs.pop("prov", kwargs.pop("state", "MN"))
+        # Default subdivision to MN; prov for backwards compatibility
+        if not kwargs.get("subdiv", kwargs.get("prov")):
+            kwargs["subdiv"] = "MN"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -56,8 +58,8 @@ class Nicaragua(HolidayBase):
         self[date(year, DEC, 25)] = "Navidad [Christmas]"
 
         # Provinces festive day
-        if self.prov:
-            if self.prov == "MN":
+        if self.subdiv:
+            if self.subdiv == "MN":
                 # Santo Domingo Day Down
                 self[date(year, AUG, 1)] = "Bajada de Santo Domingo"
                 # Santo Domingo Day Up

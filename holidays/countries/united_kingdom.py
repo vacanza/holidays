@@ -6,17 +6,17 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
-
+import warnings
 from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd, MO, FR
 
-from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, OCT, NOV, DEC
+from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, NOV, DEC
 from holidays.constants import MON, TUE, WED, THU, FRI, SAT, SUN, WEEKEND
 from holidays.holiday_base import HolidayBase
 
@@ -27,8 +27,14 @@ class UnitedKingdom(HolidayBase):
     # It must be taken into account when adding or modifying holidays.
     # Look at _country_specific() method for country specific behavior.
 
+    country = "GB"
+    subdivisions = ["UK", "England", "Northern Ireland", "Scotland", "Wales"]
+    _deprecated_subdivisions = ["Isle of Man"]
+
     def __init__(self, **kwargs):
-        self.country = "UK"
+        # default subdiv to UK; state for backwards compatibility
+        if not kwargs.get("subdiv", kwargs.get("state")):
+            kwargs["subdiv"] = "UK"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -43,9 +49,9 @@ class UnitedKingdom(HolidayBase):
                 self[date(year, JAN, 1) + rd(days=+2)] = name + " (Observed)"
 
         # New Year Holiday
-        if self.country in ("UK", "Scotland"):
+        if self.subdiv in ("UK", "Scotland"):
             name = "New Year Holiday"
-            if self.country == "UK":
+            if self.subdiv == "UK":
                 name += " [Scotland]"
             self[date(year, JAN, 2)] = name
             if self.observed and date(year, JAN, 2).weekday() in WEEKEND:
@@ -54,9 +60,9 @@ class UnitedKingdom(HolidayBase):
                 self[date(year, JAN, 2) + rd(days=+1)] = name + " (Observed)"
 
         # St. Patrick's Day
-        if self.country in ("UK", "Northern Ireland"):
+        if self.subdiv in ("UK", "Northern Ireland"):
             name = "St. Patrick's Day"
-            if self.country == "UK":
+            if self.subdiv == "UK":
                 name += " [Northern Ireland]"
             self[date(year, MAR, 17)] = name
             if self.observed and date(year, MAR, 17).weekday() in WEEKEND:
@@ -64,32 +70,24 @@ class UnitedKingdom(HolidayBase):
                     name + " (Observed)"
                 )
 
-        # TT bank holiday (first Friday in June)
-        if self.country == "Isle of Man":
-            self[date(year, JUN, 1) + rd(weekday=FR)] = "TT Bank Holiday"
-
-        # Tynwald Day
-        if self.country == "Isle of Man":
-            self[date(year, JUL, 5)] = "Tynwald Day"
-
         # Battle of the Boyne
-        if self.country in ("UK", "Northern Ireland"):
+        if self.subdiv in ("UK", "Northern Ireland"):
             name = "Battle of the Boyne"
-            if self.country == "UK":
+            if self.subdiv == "UK":
                 name += " [Northern Ireland]"
             self[date(year, JUL, 12)] = name
 
         # Summer bank holiday (first Monday in August)
-        if self.country in ("UK", "Scotland"):
+        if self.subdiv in ("UK", "Scotland"):
             name = "Summer Bank Holiday"
-            if self.country == "UK":
+            if self.subdiv == "UK":
                 name += " [Scotland]"
             self[date(year, AUG, 1) + rd(weekday=MO)] = name
 
         # St. Andrew's Day
-        if self.country in ("UK", "Scotland"):
+        if self.subdiv in ("UK", "Scotland"):
             name = "St. Andrew's Day"
-            if self.country == "UK":
+            if self.subdiv == "UK":
                 name += " [Scotland]"
             self[date(year, NOV, 30)] = name
 
@@ -103,17 +101,20 @@ class UnitedKingdom(HolidayBase):
 
         # Overwrite to modify country specific holidays
         self._country_specific(year)
+        self._additional_holidays(year)
 
     def _country_specific(self, year):
+        # This method is replaced by class Ireland
+
         # UnitedKingdom exclusive holidays
 
         # Good Friday
         self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
 
         # Easter Monday
-        if self.country != "Scotland":
+        if self.subdiv != "Scotland":
             name = "Easter Monday"
-            if self.country == "UK":
+            if self.subdiv == "UK":
                 name += " [England/Wales/Northern Ireland]"
             self[easter(year) + rd(weekday=MO)] = name
 
@@ -153,9 +154,9 @@ class UnitedKingdom(HolidayBase):
             self[date(year, MAY, 31) + rd(weekday=MO(-1))] = name
 
         # Late Summer bank holiday (last Monday in August)
-        if self.country not in ("Scotland") and year >= 1971:
+        if self.subdiv != "Scotland" and year >= 1971:
             name = "Late Summer Bank Holiday"
-            if self.country == "UK":
+            if self.subdiv == "UK":
                 name += " [England/Wales/Northern Ireland]"
             self[date(year, AUG, 31) + rd(weekday=MO(-1))] = name
 
@@ -183,6 +184,18 @@ class UnitedKingdom(HolidayBase):
         elif year == 2022:
             self[date(year, JUN, 3)] = "Platinum Jubilee of Elizabeth II"
 
+    def _additional_holidays(self, year):
+        # Method used to handle Isle of Man (replaced by class IsleOfMan)
+        if self.subdiv == "Isle of Man":
+            warnings.warn(
+                "Isle of Man as a 'state' of GB is deprecated, use country "
+                "code IM instead.",
+                DeprecationWarning,
+            )
+            from .isle_of_man import IsleOfMan
+
+            IsleOfMan._additional_holidays(self, year)  # type: ignore
+
 
 class UK(UnitedKingdom):
     pass
@@ -198,29 +211,40 @@ class GBR(UnitedKingdom):
 
 class England(UnitedKingdom):
     def __init__(self, **kwargs):
-        self.country = "England"
-        HolidayBase.__init__(self, **kwargs)
+        warnings.warn(
+            "England is deprecated, use UK(subdiv='England') instead.",
+            DeprecationWarning,
+        )
+        kwargs["subdiv"] = "England"
+        UnitedKingdom.__init__(self, **kwargs)
 
 
 class Wales(UnitedKingdom):
     def __init__(self, **kwargs):
-        self.country = "Wales"
-        HolidayBase.__init__(self, **kwargs)
+        warnings.warn(
+            "Wales is deprecated, use UK(subdiv='Wales') instead.",
+            DeprecationWarning,
+        )
+        kwargs["subdiv"] = "Wales"
+        UnitedKingdom.__init__(self, **kwargs)
 
 
 class Scotland(UnitedKingdom):
     def __init__(self, **kwargs):
-        self.country = "Scotland"
-        HolidayBase.__init__(self, **kwargs)
-
-
-class IsleOfMan(UnitedKingdom):
-    def __init__(self, **kwargs):
-        self.country = "Isle of Man"
-        HolidayBase.__init__(self, **kwargs)
+        warnings.warn(
+            "Scotland is deprecated, use UK(subdiv='Scotland') instead.",
+            DeprecationWarning,
+        )
+        kwargs["subdiv"] = "Scotland"
+        UnitedKingdom.__init__(self, **kwargs)
 
 
 class NorthernIreland(UnitedKingdom):
     def __init__(self, **kwargs):
-        self.country = "Northern Ireland"
-        HolidayBase.__init__(self, **kwargs)
+        warnings.warn(
+            "Northern Ireland is deprecated, use UK(subdiv='Northern Ireland')"
+            " instead.",
+            DeprecationWarning,
+        )
+        kwargs["subdiv"] = "Northern Ireland"
+        UnitedKingdom.__init__(self, **kwargs)

@@ -6,8 +6,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -55,7 +55,8 @@ class Germany(HolidayBase):
           both provinces.
     """
 
-    PROVINCES = [
+    country = "DE"
+    subdivisions = [
         "BW",
         "BY",
         "BYP",
@@ -76,8 +77,6 @@ class Germany(HolidayBase):
     ]
 
     def __init__(self, **kwargs):
-        self.country = "DE"
-        self.prov = kwargs.pop("prov", None)
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -88,12 +87,12 @@ class Germany(HolidayBase):
 
             self[date(year, JAN, 1)] = "Neujahr"
 
-            if self.prov in ("BW", "BY", "BYP", "ST"):
+            if self.subdiv in ("BW", "BY", "BYP", "ST"):
                 self[date(year, JAN, 6)] = "Heilige Drei Könige"
 
             self[easter(year) - rd(days=2)] = "Karfreitag"
 
-            if self.prov == "BB":
+            if self.subdiv == "BB":
                 # will always be a Sunday and we have no "observed" rule so
                 # this is pretty pointless but it's nonetheless an official
                 # holiday by law
@@ -103,7 +102,7 @@ class Germany(HolidayBase):
 
             self[date(year, MAY, 1)] = "Erster Mai"
 
-            if self.prov == "BE" and year == 2020:
+            if self.subdiv == "BE" and year == 2020:
                 self[date(year, MAY, 8)] = (
                     "75. Jahrestag der Befreiung vom Nationalsozialismus "
                     "und der Beendigung des Zweiten Weltkriegs in Europa"
@@ -111,7 +110,7 @@ class Germany(HolidayBase):
 
             self[easter(year) + rd(days=39)] = "Christi Himmelfahrt"
 
-            if self.prov == "BB":
+            if self.subdiv == "BB":
                 # will always be a Sunday and we have no "observed" rule so
                 # this is pretty pointless but it's nonetheless an official
                 # holiday by law
@@ -119,18 +118,18 @@ class Germany(HolidayBase):
 
             self[easter(year) + rd(days=50)] = "Pfingstmontag"
 
-            if self.prov in ("BW", "BY", "BYP", "HE", "NW", "RP", "SL"):
+            if self.subdiv in ("BW", "BY", "BYP", "HE", "NW", "RP", "SL"):
                 self[easter(year) + rd(days=60)] = "Fronleichnam"
 
-            if self.prov in ("BY", "SL"):
+            if self.subdiv in ("BY", "SL"):
                 self[date(year, AUG, 15)] = "Mariä Himmelfahrt"
 
         self[date(year, OCT, 3)] = "Tag der Deutschen Einheit"
 
-        if self.prov in ("BB", "MV", "SN", "ST", "TH"):
+        if self.subdiv in ("BB", "MV", "SN", "ST", "TH"):
             self[date(year, OCT, 31)] = "Reformationstag"
 
-        if self.prov in ("HB", "SH", "NI", "HH") and year >= 2018:
+        if self.subdiv in ("HB", "SH", "NI", "HH") and year >= 2018:
             self[date(year, OCT, 31)] = "Reformationstag"
 
         # in 2017 all states got the Reformationstag (500th anniversary of
@@ -138,10 +137,10 @@ class Germany(HolidayBase):
         if year == 2017:
             self[date(year, OCT, 31)] = "Reformationstag"
 
-        if self.prov in ("BW", "BY", "BYP", "NW", "RP", "SL"):
+        if self.subdiv in ("BW", "BY", "BYP", "NW", "RP", "SL"):
             self[date(year, NOV, 1)] = "Allerheiligen"
 
-        if year <= 1994 or self.prov == "SN":
+        if year <= 1994 or self.subdiv == "SN":
             # can be calculated as "last wednesday before year-11-23" which is
             # why we need to go back two wednesdays if year-11-23 happens to be
             # a wednesday
@@ -150,10 +149,10 @@ class Germany(HolidayBase):
             self[base_data + rd(weekday=weekday_delta)] = "Buß- und Bettag"
 
         if year >= 2019:
-            if self.prov == "TH":
+            if self.subdiv == "TH":
                 self[date(year, SEP, 20)] = "Weltkindertag"
 
-            if self.prov == "BE":
+            if self.subdiv == "BE":
                 self[date(year, MAR, 8)] = "Internationaler Frauentag"
 
         self[date(year, DEC, 25)] = "Erster Weihnachtstag"

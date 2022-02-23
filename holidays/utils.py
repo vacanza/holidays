@@ -2,85 +2,235 @@
 
 #  python-holidays
 #  ---------------
-#  A fast, efficient Python library for generating country, province and state
+#  A fast, efficient Python library for generating country and subdivision
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import inspect
-from functools import lru_cache
-from typing import Iterable, List, Optional, Type, Union
+# from __future__ import annotations  # add in Python 3.7
 
-import holidays
+import inspect
+import warnings
+from functools import lru_cache
+from typing import Dict, Iterable, List, Optional, Union
+
 from datetime import date, timedelta
+
 from hijri_converter import convert
 
-
-def list_supported_countries() -> List[str]:
-    """List all supported countries, including their ISO 3166-1 Alpha country
-    codes (Alpha-2 and Alpha-3).
-
-    :return: A list of countries supported (ISO 3166-1 Alpha-2 and Alpha-3
-       country codes plus the internal name of the Class).
-    """
-    return [
-        name
-        for name, obj in inspect.getmembers(
-            holidays.countries, inspect.isclass
-        )
-    ]
+import holidays.countries
+from holidays.holiday_base import HolidayBase
 
 
-def CountryHoliday(
+def country_holidays(
     country: str,
+    subdiv: Optional[str] = None,
     years: Union[int, Iterable[int]] = None,
-    prov: Optional[str] = None,
-    state: Optional[str] = None,
     expand: bool = True,
     observed: bool = True,
-) -> Type["holidays.HolidayBase"]:
+    prov: Optional[str] = None,
+    state: Optional[str] = None,
+) -> HolidayBase:
     """
-    Instantiates a :py:class:`HolidayBase` object of the subclass matching the
-    ISO 3166-1 country code.
+    Returns a new dictionary-like :py:class:`HolidayBase` object for the public
+    holidays of the country matching **country** and other keyword arguments.
 
-    Used to retrieve public holidays using a country code string.
+    :param country:
+        An ISO 3166-1 Alpha-2 country code.
 
-    :param country: An ISO 3166-1 Alpha-2 or Alpha-3 country code.
-    :param years: The year(s) to pre-calculate public holidays for at
-       instantiation.
-    :param prov: The Province (see documentation of what is supported; not
-       implemented for all countries).
-    :param state: The State (see documentation for what is supported; not
-       implemented for all countries).
-    :param expand: If True (default), the entire year is added when one
-       date from that year is requested.
-    :param observed: If True (default), include the day when the public
-       holiday is observed (e.g. a holiday falling on a Sunday being
-       observed the following Monday). This doesn't work for all countries.
-    :return: a subclass of :py:class:`HolidayBase` of the matching country.
+    :param subdiv:
+        The subdivision (e.g. state or province); not implemented for all
+        countries (see documentation).
+
+    :param years:
+        The year(s) to pre-calculate public holidays for at instantiation.
+
+    :param expand:
+        Whether the entire year is calculated when one date from that year
+        is requested.
+
+    :param observed:
+        Whether to include the dates of when public holiday are observed
+        (e.g. a holiday falling on a Sunday being observed the following
+        Monday). False may not work for all countries.
+
+    :param prov:
+        *deprecated* use subdiv instead.
+
+    :param state:
+        *deprecated* use subdiv instead.
+
+    :return:
+        A :py:class:`HolidayBase` object matching the **country**.
+
+    The key of the :class:`dict`-like :class:`HolidayBase` object is the
+    `date` of the holiday, and the value is the name of the holiday itself.
+    Dates where a key is not present are not public holidays (or, if
+    **observed** is False, days when a public holiday is observed).
+
+    When passing the `date` as a key, the `date` can be expressed in one of the
+    following types:
+
+    * :class:`datetime.date`,
+    * :class:`datetime.datetime`,
+    * a :class:`str` of any format recognized by :func:`dateutil.parser.parse`,
+    * or a :class:`float` or :class:`int` representing a POSIX timestamp.
+
+    The key is always returned as a :class:`datetime.date` object.
+
+    To maximize speed, the list of public holidays is built on the fly as
+    needed, one calendar year at a time. When the object is instantiated
+    without a **years** parameter, it is empty, but, unless **expand** is set
+    to False, as soon as a key is accessed the class will calculate that entire
+    year's list of holidays and set the keys with them.
+
+    If you need to list the holidays as opposed to querying individual dates,
+    instantiate the class with the **years** parameter.
+
+    Example usage:
+
+    >>> from holidays import country_holidays
+    >>> us_holidays = country_holidays('US')
+    # For a specific subdivision (e.g. state or province):
+    >>> calif_holidays = country_holidays('US', subdiv='CA')
+
+    The below will cause 2015 holidays to be calculated on the fly:
+
+    >>> from datetime import date
+    >>> assert date(2015, 1, 1) in us_holidays
+
+    This will be faster because 2015 holidays are already calculated:
+
+    >>> assert date(2015, 1, 2) not in us_holidays
+
+    The :class:`HolidayBase` class also recognizes strings of many formats
+    and numbers representing a POSIX timestamp:
+
+    >>> assert '2014-01-01' in us_holidays
+    >>> assert '1/1/2014' in us_holidays
+    >>> assert 1388597445 in us_holidays
+
+    Show the holiday's name:
+
+    >>> us_holidays.get('2014-01-01')
+    "New Year's Day"
+
+    Check a range:
+
+    >>> us_holidays['2014-01-01': '2014-01-03']
+    [datetime.date(2014, 1, 1)]
+
+    List all 2020 holidays:
+
+    >>> us_holidays = country_holidays('US', years=2020)
+    >>> for day in us_holidays.items():
+    ...     print(day)
+    (datetime.date(2020, 1, 1), "New Year's Day")
+    (datetime.date(2020, 1, 20), 'Martin Luther King Jr. Day')
+    (datetime.date(2020, 2, 17), "Washington's Birthday")
+    (datetime.date(2020, 5, 25), 'Memorial Day')
+    (datetime.date(2020, 7, 4), 'Independence Day')
+    (datetime.date(2020, 7, 3), 'Independence Day (Observed)')
+    (datetime.date(2020, 9, 7), 'Labor Day')
+    (datetime.date(2020, 10, 12), 'Columbus Day')
+    (datetime.date(2020, 11, 11), 'Veterans Day')
+    (datetime.date(2020, 11, 26), 'Thanksgiving')
+    (datetime.date(2020, 12, 25), 'Christmas Day')
+
+    Some holidays are only present in parts of a country:
+
+    >>> us_pr_holidays = country_holidays('US', subdiv='PR')
+    >>> assert '2018-01-06' not in us_holidays
+    >>> assert '2018-01-06' in us_pr_holidays
+
+    Append custom holiday dates by passing one of:
+
+    * a :class:`dict` with date/name key/value pairs (e.g.
+      ``{'2010-07-10': 'My birthday!'}``),
+    * a list of dates (as a :class:`datetime.date`, :class:`datetime.datetime`,
+      :class:`str`, :class:`int`, or :class:`float`); ``'Holiday'`` will be
+      used as a description,
+    * or a single date item (of one of the types above); ``'Holiday'`` will be
+      used as a description:
+
+    >>> custom_holidays = country_holidays('US', years=2015)
+    >>> custom_holidays.update({'2015-01-01': "New Year's Day"})
+    >>> custom_holidays.update(['2015-07-01', '07/04/2015'])
+    >>> custom_holidays.update(date(2015, 12, 25))
+    >>> assert date(2015, 1, 1) in custom_holidays
+    >>> assert date(2015, 1, 2) not in custom_holidays
+    >>> assert '12/25/2015' in custom_holidays
+
+    For more complex logic, like 4th Monday of January, you can inherit the
+    :class:`HolidayBase` class and define your own :meth:`_populate` method.
+    See documentation for examples.
     """
     try:
         country_classes = inspect.getmembers(
             holidays.countries, inspect.isclass
         )
-        country = next(obj for name, obj in country_classes if name == country)
-        country_holiday = country(
+        country_class = next(
+            obj for name, obj in country_classes if name == country
+        )
+        country_holiday = country_class(
             years=years,
-            prov=prov,
-            state=state,
+            subdiv=subdiv,
             expand=expand,
             observed=observed,
+            prov=prov,
+            state=state,
         )
     except StopIteration:
-        raise KeyError("Country %s not available" % country)
+        raise NotImplementedError(f"Country {country} not available")
     return country_holiday
 
 
-def islamic_to_gre(Gyear: int, Hmonth: int, Hday: int) -> List[date]:
+def CountryHoliday(
+    country: str,
+    subdiv: Optional[str] = None,
+    years: Union[int, Iterable[int]] = None,
+    expand: bool = True,
+    observed: bool = True,
+    prov: Optional[str] = None,
+    state: Optional[str] = None,
+) -> HolidayBase:
+    """
+    Deprecated name for :py:func:`country_holidays`.
+
+    :meta private:
+    """
+
+    warnings.warn(
+        "CountryHoliday is deprecated, use country_holidays instead.",
+        DeprecationWarning,
+    )
+    return country_holidays(
+        country, subdiv, years, expand, observed, prov, state
+    )
+
+
+def list_supported_countries() -> Dict[str, List[str]]:
+    """
+    Get all supported countries and their subdivisions.
+
+    :return:
+        A dictionary where the key is the ISO 3166-1 Alpha-2 country codes and
+        the value is a list of supported subdivision codes.
+    """
+    return {
+        obj.country: obj.subdivisions
+        for name, obj in inspect.getmembers(
+            holidays.countries, inspect.isclass
+        )
+        if obj.__base__ == HolidayBase
+    }
+
+
+def _islamic_to_gre(Gyear: int, Hmonth: int, Hday: int) -> List[date]:
     """
     Find the Gregorian dates of all instances of Islamic (Lunar Hijrī) calendar
     month and day falling within the Gregorian year. There could be up to two
@@ -90,11 +240,18 @@ def islamic_to_gre(Gyear: int, Hmonth: int, Hday: int) -> List[date]:
     Relies on package `hijri_converter
     <https://www.pypy.org/package/hijri_converter>`__.
 
-    :param year: The Gregorian year.
-    :param Hmonth: The Lunar Hijrī (Islamic) month.
-    :param Hday: The Lunar Hijrī (Islamic) day.
-    :return: List of Gregorian dates within the Gregorian year specified that
-      match the Islamic (Lunar Hijrī) calendar day and month specified.
+    :param Gyear:
+        The Gregorian year.
+
+    :param Hmonth:
+        The Lunar Hijrī (Islamic) month.
+
+    :param Hday:
+        The Lunar Hijrī (Islamic) day.
+
+    :return:
+        List of Gregorian dates within the Gregorian year specified that
+        matches the Islamic (Lunar Hijrī) calendar day and month specified.
     """
     Hyear = convert.Gregorian(Gyear, 1, 1).to_hijri().datetuple()[0]
     gres = [
@@ -105,7 +262,7 @@ def islamic_to_gre(Gyear: int, Hmonth: int, Hday: int) -> List[date]:
     return gre_dates
 
 
-class ChineseLuniSolar:
+class _ChineseLuniSolar:
     def __init__(self):
         """
         This class has functions that generate Gregorian dates for holidays
@@ -117,11 +274,10 @@ class ChineseLuniSolar:
 
         Usage example:
 
-        >>> from holidays.utils import ChineseLuniSolar
-        >>> cnls = ChineseLuniSolar()
+        >>> from holidays.utils import _ChineseLuniSolar
+        >>> cnls = _ChineseLuniSolar()
         >>> print(cnls.lunar_n_y_date(2010))
         2010-02-14
-
         """
 
         # A binary representation starting from year 1901 of the number of
@@ -344,10 +500,14 @@ class ChineseLuniSolar:
     @lru_cache()
     def _get_leap_month(self, lunar_year: int) -> int:
         """
-        Returns the leap month in the year.
+        Calculate the leap lunar month in a lunar year.
 
-        :param lunar_year: The lunar year.
-        :return: The number of the leap month if one, otherwise 15.
+        :param lunar_year:
+            The lunar year.
+
+        :return:
+            The number of the leap month if one exists in the year, otherwise
+            15.
         """
         return (
             self.G_LUNAR_MONTH_DAYS[lunar_year - self.START_YEAR] >> 16
@@ -355,11 +515,16 @@ class ChineseLuniSolar:
 
     def _lunar_month_days(self, lunar_year: int, lunar_month: int) -> int:
         """
-        Return the number of days in the lunar month.
+        Calculate the number of days in a lunar month.
 
-        :param lunar_year: The lunar year.
-        :param lunar_month: The month of the lunar year.
-        :return: The number of days in the lunar month.
+        :param lunar_year:
+            The lunar year.
+
+        :param lunar_month:
+            The lunar month of the lunar year.
+
+        :return:
+            The number of days in the lunar month.
         """
         return 29 + (
             (
@@ -371,9 +536,13 @@ class ChineseLuniSolar:
 
     def _lunar_year_days(self, year: int) -> int:
         """
-        Return the number of days in the lunar year.
-        :param year: The lunar year.
-        :return: The number of days in the lunar year.
+        Calculate the number of days in a lunar year.
+
+        :param year:
+            The lunar year.
+
+        :return:
+            The number of days in the lunar year.
         """
         days = 0
         months_day = self.G_LUNAR_MONTH_DAYS[year - self.START_YEAR]
@@ -385,11 +554,14 @@ class ChineseLuniSolar:
     @lru_cache()
     def _span_days(self, year: int) -> int:
         """
-        Return the number of days since self.SOLAR_START_DATE to the beginning
-        of the year.
+        Calculate the number of days elapsed since self.SOLAR_START_DATE to the
+        beginning of the year.
 
-        :param year: The year.
-        :return: The number of days since self.SOLAR_START_DATE.
+        :param year:
+            The year.
+
+        :return:
+             The number of days since self.SOLAR_START_DATE.
         """
         span_days = 0
         for y in range(self.START_YEAR, year):
@@ -398,12 +570,16 @@ class ChineseLuniSolar:
 
     def lunar_n_y_date(self, year: int) -> date:
         """
-        Return Gregorian date of Chinese Lunar New Year.
+        Calculate the Gregorian date of Chinese Lunar New Year.
 
-        Faster implementation than calling ``lunar_to_gre(year, 1, 1)``.
+        This is a faster implementation than calling
+        ``lunar_to_gre(year, 1, 1)``.
 
-        :param year: The Gregorian year.
-        :return: The Date of Chinese Lunar New Year.
+        :param year:
+            The Gregorian year.
+
+        :return:
+            The Gregorian date of Chinese Lunar New Year.
         """
         # The Chinese calendar defines the lunar month containing the winter
         # solstice as the eleventh month, which means that Chinese New Year
@@ -425,13 +601,21 @@ class ChineseLuniSolar:
     def lunar_to_gre(
         self, year: int, month: int, day: int, leap: bool = True
     ) -> date:
-        """Return Gregorian date of a Chinese Lunar month and day in a given
-        Gregorian year.
+        """
+        Calculate the Gregorian date of a Chinese lunar day and month in a
+        given Gregorian year.
 
-        :param year: The Gregorian year.
-        :param year: The Chinese Lunar month.
-        :param year: The Chinese Lunar day.
-        :return: The Gregorian date.
+        :param year:
+            The Gregorian year.
+
+        :param year:
+            The Chinese lunar month.
+
+        :param year:
+            The Chinese lunar day.
+
+        :return:
+            The Gregorian date.
         """
         span_days = self._span_days(year)
         leap_month = self._get_leap_month(year) if leap else 15
@@ -441,14 +625,18 @@ class ChineseLuniSolar:
         return self.SOLAR_START_DATE + timedelta(span_days)
 
     def vesak_date(self, year: int) -> date:
-        """Return the estimated Gregorian date of Vesak for Thailand, Laos,
+        """
+        Calculate the estimated Gregorian date of Vesak for Thailand, Laos,
         Singapore and Indonesia, corresponding to the fourteenth day of the
-        fourth month in the Chinese lunar calendar. See
-        `Wikipedia
+        fourth month in the Chinese lunar calendar. See `Wikipedia
         <https://en.wikipedia.org/wiki/Vesak#Dates_of_observance>`__.
 
-        :param year: The Gregorian year.
-        :return: Estimated Gregorian date of Vesak.
+        :param year:
+            The Gregorian year.
+
+        :return:
+            Estimated Gregorian date of Vesak (14th day of 4th month of the
+            lunar calendar).
         """
         span_days = self._span_days(year)
         leap_month = self._get_leap_month(year)
@@ -458,14 +646,17 @@ class ChineseLuniSolar:
         return self.SOLAR_START_DATE + timedelta(span_days)
 
     def vesak_may_date(self, year: int) -> date:
-        """Return the estimated Gregorian date of Vesak for Sri Lanka, Nepal,
-        India, Bangladesh and Malaysia, corresponding to the the day of the
-        first full moon in May in the Gregorian calendar. See
-        `Wikipedia
+        """
+        Calculate the estimated Gregorian date of Vesak for Sri Lanka, Nepal,
+        India, Bangladesh and Malaysia, corresponding to the day of the
+        first full moon in May in the Gregorian calendar. See `Wikipedia
         <https://en.wikipedia.org/wiki/Vesak#Dates_of_observance>`__.
 
-        :param year: The Gregorian year.
-        :return: Estimated Gregorian date of Vesak.
+        :param year:
+            The Gregorian year.
+
+        :return:
+            Estimated Gregorian date of Vesak (first full moon in May).
         """
         span_days = self._span_days(year)
         vesak_may_date = self.SOLAR_START_DATE + timedelta(span_days + 14)
@@ -476,14 +667,19 @@ class ChineseLuniSolar:
         return vesak_may_date
 
     def s_diwali_date(self, year: int) -> date:
-        """Return the estimated Gregorian date of Southern India (Tamil) Diwali.
+        """
+        Calculate the estimated Gregorian date of Southern India (Tamil)
+        Diwali.
 
-        Defined as the date of Amāvásyā (new moon) of Kārttikai (corresponding
-        with the months of November or December in the Gregorian Calendar).
-        See `Wikipedia <https://en.wikipedia.org/wiki/Diwali>`__.
+        Defined as the date of Amāvásyā (new moon) of Kārttikai, which
+        corresponds with the months of November or December in the Gregorian
+        calendar. See `Wikipedia <https://en.wikipedia.org/wiki/Diwali>`__.
 
-        :param year: The Gregorian year.
-        :return: Estimated Gregorian date of Southern India (Tamil) Diwali.
+        :param year:
+            The Gregorian year.
+
+        :return:
+            Estimated Gregorian date of Southern India (Tamil) Diwali.
         """
         span_days = self._span_days(year)
         leap_month = self._get_leap_month(year)
@@ -493,14 +689,18 @@ class ChineseLuniSolar:
         return self.SOLAR_START_DATE + timedelta(span_days)
 
     def thaipusam_date(self, year: int) -> date:
-        """Return the estimated Gregorian date of Thaipusam (Tamil).
+        """
+        Calculate the estimated Gregorian date of Thaipusam (Tamil).
 
-        Defined as the date of the full moon in the Tamil month of Thai
-        (corresponding with the months of January or February in the Gregorian
-        Calendar). See `Wikipedia <https://en.wikipedia.org/wiki/Thaipusam>`__.
+        Defined as the date of the full moon in the Tamil month of Thai, which
+        corresponds with the months of January or February in the Gregorian
+        calendar. See `Wikipedia <https://en.wikipedia.org/wiki/Thaipusam>`__.
 
-        :param year: The Gregorian year.
-        :return: Estimated Gregorian date of Thaipusam (Tamil).
+        :param year:
+            The Gregorian year.
+
+        :return:
+            Estimated Gregorian date of Thaipusam (Tamil).
         """
         span_days = self._span_days(year)
         leap_month = self._get_leap_month(year)

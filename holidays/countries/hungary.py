@@ -6,8 +6,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -32,13 +32,19 @@ class Hungary(HolidayBase):
     # - https://www.tankonyvtar.hu/hu/tartalom/historia/
     #      92-10/ch01.html#id496839
 
+    country = "HU"
+
     def __init__(self, **kwargs):
-        self.country = "HU"
         HolidayBase.__init__(self, **kwargs)
 
-    def _populate(self, year):
+    def _populate(self, year: int) -> None:
         # New years
         self._add_with_observed_day_off(date(year, JAN, 1), "Újév", since=2014)
+        # Since 2014, the last day of the year is an observed day off if New
+        # Year's Day falls on a Tuesday.
+        if year >= 2014:
+            if self.observed and date(year, DEC, 31).weekday() == MON:
+                self[date(year, DEC, 31)] = "Újév előtti pihenőnap"
 
         # National Day
         if 1945 <= year <= 1950 or 1989 <= year:
@@ -139,14 +145,23 @@ class Hungary(HolidayBase):
             self[date(year, DEC, 31)] = "Szilveszter"
 
     def _add_with_observed_day_off(
-        self, day, desc, since=2010, before=True, after=True
-    ):
+        self,
+        day: date,
+        desc: str,
+        since: int = 2010,
+        before: bool = True,
+        after: bool = True,
+    ) -> None:
         # Swapped days off were in place earlier but
         # I haven't found official record yet.
         self[day] = desc
         # TODO: should it be a separate flag?
         if self.observed and since <= day.year:
-            if day.weekday() == TUE and before:
+            if (
+                day.weekday() == TUE
+                and before
+                and not (day.month == JAN and day.day == 1)
+            ):
                 self[day - rd(days=1)] = desc + " előtti pihenőnap"
             elif day.weekday() == THU and after:
                 self[day + rd(days=1)] = desc + " utáni pihenőnap"

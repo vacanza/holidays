@@ -1,10 +1,21 @@
 # -*- coding: utf-8 -*-
 
+#  python-holidays
+#  ---------------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/dr-prodigy/python-holidays
+#  License: MIT (see LICENSE file)
+
 from datetime import date
 from dateutil.relativedelta import relativedelta as rd
 from holidays.constants import JAN, MAR, MAY, JUL, AUG, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.utils import islamic_to_gre
+from holidays.utils import _islamic_to_gre
 
 
 class Kazakhstan(HolidayBase):
@@ -12,8 +23,9 @@ class Kazakhstan(HolidayBase):
     https://www.officeholidays.com/countries/kazakhstan/2020
     """
 
+    country = "KZ"
+
     def __init__(self, **kwargs):
-        self.country = "KZ"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -51,7 +63,7 @@ class Kazakhstan(HolidayBase):
         self[date(year, JUL, 6)] = "Capital City Day"
 
         # Kurban Ait
-        for hol_date in islamic_to_gre(year, 12, 10):
+        for hol_date in _islamic_to_gre(year, 12, 10):
             self[hol_date] = "Kurban Ait"
 
         # Constitution Day

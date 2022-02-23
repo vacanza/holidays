@@ -6,8 +6,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -24,8 +24,9 @@ from holidays.holiday_base import HolidayBase
 class Colombia(HolidayBase):
     # https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_festivos_en_Colombia
 
+    country = "CO"
+
     def __init__(self, **kwargs):
-        self.country = "CO"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -95,15 +96,15 @@ class Colombia(HolidayBase):
         else:
             self[date(year, AUG, 15) + rd(weekday=MO)] = name + "(Observed)"
 
-        # Discovery of America
-        name = "Descubrimiento de América [Discovery of America]"
+        # Columbus Day
+        name = "Día de la Raza [Columbus Day]"
         if date(year, OCT, 12).weekday() == MON or not self.observed:
             self[date(year, OCT, 12)] = name
         else:
             self[date(year, OCT, 12) + rd(weekday=MO)] = name + "(Observed)"
 
         # All Saints’ Day
-        name = "Dia de Todos los Santos [All Saint's Day]"
+        name = "Día de Todos los Santos [All Saint's Day]"
         if date(year, NOV, 1).weekday() == MON or not self.observed:
             self[date(year, NOV, 1)] = name
         else:

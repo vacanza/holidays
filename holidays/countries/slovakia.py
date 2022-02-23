@@ -6,8 +6,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -25,8 +25,9 @@ class Slovakia(HolidayBase):
     # https://sk.wikipedia.org/wiki/Sviatok
     # https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1993/241/20181011.html
 
+    country = "SK"
+
     def __init__(self, **kwargs):
-        self.country = "SK"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -77,11 +78,3 @@ class SK(Slovakia):
 
 class SVK(Slovakia):
     pass
-
-
-class Slovak(Slovakia):
-    def __init__(self, **kwargs):
-        warnings.warn(
-            "Slovak is deprecated, use Slovakia instead.", DeprecationWarning
-        )
-        super(Slovak, self).__init__(**kwargs)
