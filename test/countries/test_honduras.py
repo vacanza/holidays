@@ -36,6 +36,7 @@ class TestHonduras(unittest.TestCase):
         self.assertIn(date(2018, 1, 1), self.holidays)  # New Year
         self.assertIn(date(2018, 4, 14), self.holidays)  # America's Day
         self.assertIn(date(2018, 5, 1), self.holidays)  # Workers' Day
+        self.assertNotIn(date(2018, 5, 6), self.holidays)  # Mother's Day
         self.assertIn(date(2018, 5, 13), self.holidays)  # Mother's Day
         self.assertIn(date(2018, 9, 10), self.holidays)  # Children weekend
         self.assertIn(date(2018, 9, 15), self.holidays)  # Independence Day
