@@ -16,20 +16,37 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd, MO
 
-from holidays.constants import MAR, MAY, JUN, AUG, OCT, DEC
+from holidays.constants import FEB, MAR, MAY, JUN, AUG, OCT, DEC
 from holidays.constants import MON, TUE, WED, THU, FRI, SAT, SUN, WEEKEND
 from holidays.holiday_base import HolidayBase
-from .united_kingdom import UnitedKingdom
 
+class Ireland(HolidayBase):
+    """
+    Official holidays in Ireland, as declared in the Citizen's Information
+    bulletin:
+    https://www.citizensinformation.ie/en/employment/employment_rights_and_conditions/leave_and_holidays/public_holidays_in_ireland.html
+    """
 
-class Ireland(UnitedKingdom):
     country = "IE"
+    subdivisions = []
 
     def __init__(self, **kwargs):
         HolidayBase.__init__(self, **kwargs)
 
-    def _country_specific(self, year):
-        # Ireland exclusive holidays
+    def _populate(self, year):
+        self[date(year, JAN, 1)] = "New Year's Day"
+
+        # St. Brigid's Day
+        if year >= 2023:
+            dt = date(year, FEB, 1)
+            self[dt] = "St. Brigid's Day"
+
+            if self.observed and dt.weekday() != FRI:
+                self[date(year, FEB, 1) + rd(weekday=MO)] = "St. Brigid's Day (Observed)"
+
+        # One-off day of rememberance and recognition
+        if year == 2022:
+            self[date(year, MAR, 18)] = "Day of Rememberance and Recognition"
 
         # St. Patrick's Day
         name = "St. Patrick's Day"
@@ -40,7 +57,7 @@ class Ireland(UnitedKingdom):
         # Easter Monday
         self[easter(year) + rd(weekday=MO)] = "Easter Monday"
 
-        # May Day bank holiday (first Monday in May)
+        # May bank holiday (first Monday in May)
         if year >= 1978:
             name = "May Day"
             if year == 1995:
@@ -66,10 +83,18 @@ class Ireland(UnitedKingdom):
         self[date(year, JUN, 1) + rd(weekday=MO)] = "June Bank Holiday"
 
         # Summer bank holiday (first Monday in August)
-        self[date(year, AUG, 1) + rd(weekday=MO)] = "Summer Bank Holiday"
+        self[date(year, AUG, 1) + rd(weekday=MO)] = "August Bank Holiday"
 
         # October Bank Holiday (last Monday in October)
         self[date(year, OCT, 31) + rd(weekday=MO(-1))] = "October Bank Holiday"
+
+        # Christmas Day
+        name = "Christmas Day"
+        self[date(year, DEC, 25)] = name
+        if self.observed and date(year, DEC, 25).weekday() == SAT:
+            self[date(year, DEC, 27)] = name + " (Observed)"
+        elif self.observed and date(year, DEC, 25).weekday() == SUN:
+            self[date(year, DEC, 27)] = name + " (Observed)"
 
         # St. Stephen's Day
         name = "St. Stephen's Day"
