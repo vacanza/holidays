@@ -82,6 +82,11 @@ class TestSaudiArabia(unittest.TestCase):
         self.assertNotIn(date(2016, 9, 22), self.holidays)
         self.assertNotIn(date(2017, 9, 24), self.holidays)
 
+    def test_national_day_overlaps_hijri_holiday(self):
+        # Eid al-Fitr Holiday is on the same day as the
+        # national day, so there is no extra holidays given for it.
+        self.assertIn(date(2074, 2, 22), self.holidays)
+
     def test_founding_day(self):
         self.assertIn(date(2022, 2, 22), self.holidays)
         self.assertIn(date(2030, 2, 22), self.holidays)
@@ -106,6 +111,11 @@ class TestSaudiArabia(unittest.TestCase):
         self.holidays.observed = False
         self.assertNotIn(date(2030, 2, 21), self.holidays)
         self.assertNotIn(date(2031, 2, 23), self.holidays)
+
+    def test_founding_day_overlaps_hijri_holiday(self):
+        # Eid al-Fitr Holiday is on the same day as the
+        # founding day, so there is no extra holidays given for it.
+        self.assertIn(date(2061, 2, 22), self.holidays)
 
     def test_hijri_based(self):
         if sys.version_info >= (3, 6):

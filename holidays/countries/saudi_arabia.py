@@ -113,7 +113,7 @@ class SaudiArabia(HolidayBase):
 
         # National Day holiday (started at the year 2005).
         # Note: if national day happens within the Eid al-Fitr Holiday or
-        # within Eid al-Fitr Holiday, then it is not holiday.
+        # within Eid al-Fitr Holiday, there is no extra holidays given for it.
         holiday_name = "National Day Holiday"
         if year >= 2005:
             national_day = date(year, SEP, 23)
@@ -130,7 +130,7 @@ class SaudiArabia(HolidayBase):
 
         # Founding Day holiday (started 2022).
         # Note: if founding day happens within the Eid al-Fitr Holiday or
-        # within Eid al-Fitr Holiday, then it is not holiday.
+        # within Eid al-Fitr Holiday, there is no extra holidays given for it.
         holiday_name = "Founding Day Holiday"
         if year >= 2022:
             founding_day = date(year, FEB, 22)
