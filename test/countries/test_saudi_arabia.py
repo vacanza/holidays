@@ -38,6 +38,26 @@ class TestSaudiArabia(unittest.TestCase):
         # National day holiday
         self.assertIn(date(2021, 9, 23), self.holidays)
 
+    def test_weekends(self):
+        # Weekend changed from (Thursday, Friday) to
+        # (Friday, Saturday) at 2013
+        # September 23rd, 2010 was Thursday (Weekend)
+        # so, observed is Wednesday
+        self.assertIn(date(2010, 9, 22), self.holidays)
+        self.assertIn(date(2010, 9, 23), self.holidays)
+        self.assertNotIn(date(2010, 9, 24), self.holidays)
+
+        # September 23rd, 2006 was Friday (Weekend)
+        # so, observed is Saturday
+        self.assertNotIn(date(2005, 9, 22), self.holidays)
+        self.assertIn(date(2005, 9, 23), self.holidays)
+        self.assertIn(date(2005, 9, 24), self.holidays)
+
+        # September 23rd, 2006 was Saturday (Weekday before 2013)
+        self.assertNotIn(date(2006, 9, 22), self.holidays)
+        self.assertIn(date(2006, 9, 23), self.holidays)
+        self.assertNotIn(date(2006, 9, 24), self.holidays)
+
     def test_national_day(self):
         self.assertIn(date(2020, 9, 23), self.holidays)
         # National day started as a holiday on 2005
@@ -61,6 +81,31 @@ class TestSaudiArabia(unittest.TestCase):
         self.holidays.observed = False
         self.assertNotIn(date(2016, 9, 22), self.holidays)
         self.assertNotIn(date(2017, 9, 24), self.holidays)
+
+    def test_founding_day(self):
+        self.assertIn(date(2022, 2, 22), self.holidays)
+        self.assertIn(date(2030, 2, 22), self.holidays)
+        # founding day started as a holiday on 2022
+        self.assertNotIn(date(2021, 2, 22), self.holidays)
+        self.assertNotIn(date(2005, 2, 22), self.holidays)
+
+    def test_founding_day_observed(self):
+        # February 22nd, 2030 is Friday (Weekend)
+        # so, observed is Thursday
+        self.assertIn(date(2030, 2, 21), self.holidays)
+        self.assertIn(date(2030, 2, 22), self.holidays)
+        self.assertNotIn(date(2016, 2, 23), self.holidays)
+
+        # February 22nd, 2031 is Saturday (Weekend)
+        # so, observed is Sunday
+        self.assertNotIn(date(2031, 2, 21), self.holidays)
+        self.assertIn(date(2031, 2, 22), self.holidays)
+        self.assertIn(date(2031, 2, 23), self.holidays)
+
+    def test_founding_day_not_observed(self):
+        self.holidays.observed = False
+        self.assertNotIn(date(2030, 2, 21), self.holidays)
+        self.assertNotIn(date(2031, 2, 23), self.holidays)
 
     def test_hijri_based(self):
         if sys.version_info >= (3, 6):
