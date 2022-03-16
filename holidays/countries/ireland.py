@@ -90,19 +90,15 @@ class Ireland(HolidayBase):
 
         # Christmas Day
         name = "Christmas Day"
-        self[date(year, DEC, 25)] = name
-        if self.observed and date(year, DEC, 25).weekday() == SAT:
-            self[date(year, DEC, 27)] = name + " (Observed)"
-        elif self.observed and date(year, DEC, 25).weekday() == SUN:
-            self[date(year, DEC, 27)] = name + " (Observed)"
+        self[date(year, DEC, 25)] = "Christmas Day"
+        if self.observed and date(year, DEC, 25).weekday() in WEEKEND:
+            self[date(year, DEC, 27) + rd(weekday=MON)] = name + " (Observed)"
 
         # St. Stephen's Day
         name = "St. Stephen's Day"
         self[date(year, DEC, 26)] = name
-        if self.observed and date(year, DEC, 26).weekday() == SAT:
-            self[date(year, DEC, 28)] = name + " (Observed)"
-        elif self.observed and date(year, DEC, 26).weekday() == SUN:
-            self[date(year, DEC, 28)] = name + " (Observed)"
+        if self.observed and date(year, DEC, 26).weekday() in WEEKEND:
+            self[date(year, DEC, 26) + rd(weekday=TUE)] = name + " (Observed)"
 
 
 class IE(Ireland):
