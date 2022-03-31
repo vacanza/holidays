@@ -33,4 +33,4 @@ from holidays.utils import (
     list_supported_countries,
 )
 
-__version__ = "0.13"
+__version__ = "0.14"
