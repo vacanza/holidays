@@ -251,6 +251,9 @@ following countries and their subdivisions are available:
    * - Malawi
      - MW
      - None
+   * - Malta
+     - MT
+     - None
    * - Mexico
      - MX
      - None
