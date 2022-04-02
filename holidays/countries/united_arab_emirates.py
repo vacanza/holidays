@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 #  python-holidays
 #  ---------------
 #  A fast, efficient Python library for generating country, province and state
@@ -90,20 +88,20 @@ class UnitedArabEmirates(HolidayBase):
             for date_obs in dates_obs[year]:
                 hol_date = date(year, *date_obs)
                 self[hol_date] = fitr
-                self[hol_date + rd(days=1)] = "{} Holiday".format(fitr)
-                self[hol_date + rd(days=2)] = "{} Holiday".format(fitr)
+                self[hol_date + rd(days=1)] = f"{fitr} Holiday"
+                self[hol_date + rd(days=2)] = f"{fitr} Holiday"
         else:
             for yr in (year - 1, year):
                 for date_obs in _islamic_to_gre(yr, 10, 1):
                     hol_date = date_obs
-                    _add_holiday(hol_date, "{}* (*estimated)".format(fitr))
+                    _add_holiday(hol_date, f"{fitr}* (*estimated)")
                     _add_holiday(
                         hol_date + rd(days=1),
-                        "{} Holiday* (*estimated)".format(fitr),
+                        f"{fitr} Holiday* (*estimated)",
                     )
                     _add_holiday(
                         hol_date + rd(days=2),
-                        "{} Holiday* (*estimated)".format(fitr),
+                        f"{fitr} Holiday* (*estimated)",
                     )
 
         # Arafat Day & Eid al-Adha
@@ -120,23 +118,23 @@ class UnitedArabEmirates(HolidayBase):
                 hol_date = date(year, *date_obs)
                 self[hol_date] = hajj
                 self[hol_date + rd(days=1)] = adha
-                self[hol_date + rd(days=2)] = "{} Holiday".format(adha)
-                self[hol_date + rd(days=3)] = "{} Holiday".format(adha)
+                self[hol_date + rd(days=2)] = f"{adha} Holiday"
+                self[hol_date + rd(days=3)] = f"{adha} Holiday"
         else:
             for yr in (year - 1, year):
                 for date_obs in _islamic_to_gre(yr, 12, 9):
                     hol_date = date_obs
-                    _add_holiday(hol_date, "{}* (*estimated)".format(hajj))
+                    _add_holiday(hol_date, f"{hajj}* (*estimated)")
                     _add_holiday(
-                        hol_date + rd(days=1), "{}* (*estimated)".format(adha)
+                        hol_date + rd(days=1), f"{adha}* (*estimated)"
                     )
                     _add_holiday(
                         hol_date + rd(days=2),
-                        "{}* Holiday* (*estimated)".format(adha),
+                        f"{adha}* Holiday* (*estimated)",
                     )
                     _add_holiday(
                         hol_date + rd(days=3),
-                        "{} Holiday* (*estimated)".format(adha),
+                        f"{adha} Holiday* (*estimated)",
                     )
 
         # Islamic New Year - (hijari_year, 1, 1)
@@ -154,7 +152,7 @@ class UnitedArabEmirates(HolidayBase):
         else:
             for date_obs in _islamic_to_gre(year, 1, 1):
                 hol_date = date_obs
-                self[hol_date] = "{}* (*estimated)".format(new_hijri_year)
+                self[hol_date] = f"{new_hijri_year}* (*estimated)"
 
         # Leilat al-Miraj - The Prophet's ascension (hijari_year, 7, 27)
         if year <= 2018:  # starting from 2019 the UAE government removed this
@@ -167,7 +165,7 @@ class UnitedArabEmirates(HolidayBase):
             else:
                 for date_obs in _islamic_to_gre(year, 7, 27):
                     hol_date = date_obs
-                    self[hol_date] = "{}* (*estimated)".format(ascension)
+                    self[hol_date] = f"{ascension}* (*estimated)"
 
         # Prophet Muhammad's Birthday - (hijari_year, 3, 12)
         if year <= 2019:  # starting from 2020 the UAE government removed this
@@ -184,7 +182,7 @@ class UnitedArabEmirates(HolidayBase):
             else:
                 for date_obs in _islamic_to_gre(year, 3, 12):
                     hol_date = date_obs
-                    self[hol_date] = "{}* (*estimated)".format(mawlud)
+                    self[hol_date] = f"{mawlud}* (*estimated)"
 
 
 class AE(UnitedArabEmirates):
