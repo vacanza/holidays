@@ -3,6 +3,7 @@ Version 0.14
 
 Released ????? ??, ????
 
+- Drop support for EOL Python 3.6 #328 (hugovk, dr-p)
 - Support for Malta #612, #630 (rafelbev)
 
 
