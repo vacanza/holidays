@@ -8,15 +8,16 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
-
 from datetime import date
+from typing import List
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd, MO
 
-from holidays.constants import FEB, MAR, MAY, JUN, AUG, OCT, DEC
+from holidays.constants import JAN, FEB, MAR, MAY, JUN, AUG, OCT, DEC
 from holidays.constants import MON, TUE, WED, THU, FRI, SAT, SUN, WEEKEND
 from holidays.holiday_base import HolidayBase
+
 
 class Ireland(HolidayBase):
     """
@@ -26,7 +27,7 @@ class Ireland(HolidayBase):
     """
 
     country = "IE"
-    subdivisions = []
+    subdivisions: List[str] = []
 
     def __init__(self, **kwargs):
         HolidayBase.__init__(self, **kwargs)
@@ -40,7 +41,9 @@ class Ireland(HolidayBase):
             self[dt] = "St. Brigid's Day"
 
             if self.observed and dt.weekday() != FRI:
-                self[date(year, FEB, 1) + rd(weekday=MO)] = "St. Brigid's Day (Observed)"
+                self[
+                    date(year, FEB, 1) + rd(weekday=MO)
+                ] = "St. Brigid's Day (Observed)"
 
         # One-off day of rememberance and recognition
         if year == 2022:
@@ -95,10 +98,8 @@ class Ireland(HolidayBase):
         # St. Stephen's Day
         name = "St. Stephen's Day"
         self[date(year, DEC, 26)] = name
-        if self.observed and date(year, DEC, 26).weekday() == SAT:
-            self[date(year, DEC, 26) + rd(weekday=MON)] = name + " (Observed)"
-        elif self.observed and date(year, DEC, 26).weekday() == SUN:
-            self[date(year, DEC, 26) + rd(weekday=TUE)] = name + " (Observed)"
+        if self.observed and date(year, DEC, 26).weekday() in WEEKEND:
+            self[date(year, DEC, 26) + rd(days=2)] = name + " (Observed)"
 
 
 class IE(Ireland):
