@@ -5,8 +5,8 @@ Released ????? ??, ????
 
 - Drop support for EOL Python 3.6 #328 (hugovk, dr-p)
 - Support for Malta #612, #630 (rafelbev)
+- Ireland as standalone country #636, #639 (TeoTN, dr-p, javicalle)
 - Australia fixes #631 (jeremychrimes)
-- Ireland fixes #639 (TeoTN, dr-p, javicalle)
 - Saudi Arabia fixes #642 (OsaydAbdu)
 
 
