@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 #  python-holidays
 #  ---------------
 #  A fast, efficient Python library for generating country and subdivision
@@ -354,7 +352,7 @@ class HolidayBase(dict):
     ) -> None:
         if key in self:
             if self.get(key).find(value) < 0 and value.find(self.get(key)) < 0:
-                value = "%s, %s" % (value, self.get(key))
+                value = f"{value}, {self.get(key)}"
             else:
                 value = self.get(key)
         return dict.__setitem__(self, self.__keytransform__(key), value)
@@ -557,7 +555,7 @@ class HolidayBase(dict):
         pass
 
     def __reduce__(self) -> Union[str, Tuple[Any, ...]]:
-        return super(HolidayBase, self).__reduce__()
+        return super().__reduce__()
 
     def __repr__(self):
         if len(self) == 0:
@@ -566,12 +564,12 @@ class HolidayBase(dict):
                 _repr += f", subdiv={self.subdiv!r}"
             _repr += ")"
             return _repr
-        return super(HolidayBase, self).__repr__()
+        return super().__repr__()
 
     def __str__(self):
         if len(self) == 0:
             return str(self.__dict__)
-        return super(HolidayBase, self).__str__()
+        return super().__str__()
 
 
 class HolidaySum(HolidayBase):
