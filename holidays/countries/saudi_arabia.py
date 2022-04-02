@@ -12,8 +12,8 @@
 from datetime import date
 
 from dateutil.relativedelta import relativedelta as rd
-from holidays.constants import THU, FRI, SAT, SUN
-from holidays.constants import SEP
+from holidays.constants import THU, FRI, SAT
+from holidays.constants import SEP, FEB
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
 
@@ -21,12 +21,14 @@ from holidays.utils import _islamic_to_gre
 class SaudiArabia(HolidayBase):
 
     """
-    There are only 3 official national holidays in Saudi:
+    There are only 4 official national holidays in Saudi:
     https://laboreducation.hrsd.gov.sa/en/gallery/274
     https://laboreducation.hrsd.gov.sa/en/labor-education/322
-    The national day holiday is based on the Georgian calendar while the
-    other two holidays are based on the Islamic Calendar, and they are
-    estimates as they announced each year and based on moon sightings;
+    https://english.alarabiya.net/News/gulf/2022/01/27/Saudi-Arabia-to-commemorate-Founding-Day-on-Feb-22-annually-Royal-order
+    The national day and the founding day holidays are based on the
+    Georgian calendar while the other two holidays are based on the
+    Islamic Calendar, and they are estimates as they announced each
+    year and based on moon sightings;
     they are:
         - Eid al-Fitr*
         - Eid al-Adha*
@@ -43,15 +45,11 @@ class SaudiArabia(HolidayBase):
     def _populate(self, year):
         if year < 2013:
             # Weekend used to be THU, FRI before June 28th, 2013
-            # On that year both Eids were after that date so what below works:
+            # On that year both Eids were after that date, and foudning
+            # day holiday started at 2022; so what below works,
             WEEKEND = (THU, FRI)
-        elif year < 2022:
-            WEEKEND = (FRI, SAT)
         else:
-            # from 2022 on, UAE aligns his weekend days with Europe,
-            # setting weekend on Sat and Sun.
-            # https://text.npr.org/1062435944
-            WEEKEND = (SAT, SUN)
+            WEEKEND = (FRI, SAT)
 
         observed_str = " (observed)"
 
@@ -113,19 +111,37 @@ class SaudiArabia(HolidayBase):
 
         # National Day holiday (started at the year 2005).
         # Note: if national day happens within the Eid al-Fitr Holiday or
-        # within Eid al-Fitr Holiday, then it is not holiday.
+        # within Eid al-Fitr Holiday, there is no extra holidays given for it.
         holiday_name = "National Day Holiday"
         if year >= 2005:
             national_day = date(year, SEP, 23)
             if national_day not in self:
                 self[national_day] = holiday_name
-
-                if self.observed and national_day.weekday() == FRI:
+                # First weekend day(Thursaday before 2013 and Friday otherwise)
+                if self.observed and national_day.weekday() == WEEKEND[0]:
                     national_day -= rd(days=1)
                     self[national_day] = holiday_name + observed_str
-                elif self.observed and national_day.weekday() == SAT:
+                # Second weekend day(Friday before 2013 and Saturday otherwise)
+                elif self.observed and national_day.weekday() == WEEKEND[1]:
                     national_day += rd(days=1)
                     self[national_day] = holiday_name + observed_str
+
+        # Founding Day holiday (started 2022).
+        # Note: if founding day happens within the Eid al-Fitr Holiday or
+        # within Eid al-Fitr Holiday, there is no extra holidays given for it.
+        holiday_name = "Founding Day Holiday"
+        if year >= 2022:
+            founding_day = date(year, FEB, 22)
+            if founding_day not in self:
+                self[founding_day] = holiday_name
+                # First weekend day(Thursaday before 2013 and Friday otherwise)
+                if self.observed and founding_day.weekday() == WEEKEND[0]:
+                    founding_day -= rd(days=1)
+                    self[founding_day] = holiday_name + observed_str
+                # Second weekend day(Friday before 2013 and Saturday otherwise)
+                elif self.observed and founding_day.weekday() == WEEKEND[1]:
+                    founding_day += rd(days=1)
+                    self[founding_day] = holiday_name + observed_str
 
 
 class SA(SaudiArabia):
