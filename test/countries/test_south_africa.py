@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 #  python-holidays
 #  ---------------
 #  A fast, efficient Python library for generating country, province and state
@@ -63,12 +61,12 @@ class TestSouthAfrica(unittest.TestCase):
         self.assertNotIn("1976-09-01", self.holidays)
 
     def test_elections(self):
-        self.assertTrue("1999-06-02" in self.holidays)  # Election Day 1999
-        self.assertTrue("2004-04-14" in self.holidays)  # Election Day 2004
-        self.assertTrue("2006-03-01" in self.holidays)  # Local Election
-        self.assertTrue("2009-04-22" in self.holidays)  # Election Day 2008
-        self.assertTrue("2011-05-18" in self.holidays)  # Election Day 2011
-        self.assertTrue("2014-05-07" in self.holidays)  # Election Day 2014
-        self.assertTrue("2016-08-03" in self.holidays)  # Election Day 2016
-        self.assertTrue("2019-05-08" in self.holidays)  # Election Day 2019
-        self.assertTrue("2021-11-01" in self.holidays)  # Election Day 2019
+        self.assertIn("1999-06-02", self.holidays)  # Election Day 1999
+        self.assertIn("2004-04-14", self.holidays)  # Election Day 2004
+        self.assertIn("2006-03-01", self.holidays)  # Local Election
+        self.assertIn("2009-04-22", self.holidays)  # Election Day 2008
+        self.assertIn("2011-05-18", self.holidays)  # Election Day 2011
+        self.assertIn("2014-05-07", self.holidays)  # Election Day 2014
+        self.assertIn("2016-08-03", self.holidays)  # Election Day 2016
+        self.assertIn("2019-05-08", self.holidays)  # Election Day 2019
+        self.assertIn("2021-11-01", self.holidays)  # Election Day 2019

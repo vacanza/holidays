@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 #  python-holidays
 #  ---------------
 #  A fast, efficient Python library for generating country, province and state
@@ -11,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import sys
+import importlib.util
 import unittest
 
 from datetime import date
@@ -63,91 +61,81 @@ class TestSaudiArabia(unittest.TestCase):
         self.assertNotIn(date(2017, 9, 24), self.holidays)
 
     def test_hijri_based(self):
-        if sys.version_info >= (3, 6):
-            import importlib.util
+        if importlib.util.find_spec("hijri_converter"):
+            self.holidays = holidays.SA(years=[2020, 2022])
+            # eid al-fitr
+            self.assertIn(date(2022, 5, 1), self.holidays)
+            self.assertIn(date(2022, 5, 2), self.holidays)
+            self.assertIn(date(2022, 5, 3), self.holidays)
+            self.assertIn(date(2022, 5, 4), self.holidays)
 
-            if importlib.util.find_spec("hijri_converter"):
-                self.holidays = holidays.SA(years=[2020, 2022])
-                # eid al-fitr
-                self.assertIn(date(2022, 5, 1), self.holidays)
-                self.assertIn(date(2022, 5, 2), self.holidays)
-                self.assertIn(date(2022, 5, 3), self.holidays)
-                self.assertIn(date(2022, 5, 4), self.holidays)
+            # eid al-adha
+            self.assertIn(date(2022, 7, 10), self.holidays)
+            self.assertIn(date(2022, 7, 11), self.holidays)
+            self.assertIn(date(2022, 7, 12), self.holidays)
+            self.assertIn(date(2022, 7, 13), self.holidays)
 
-                # eid al-adha
-                self.assertIn(date(2022, 7, 10), self.holidays)
-                self.assertIn(date(2022, 7, 11), self.holidays)
-                self.assertIn(date(2022, 7, 12), self.holidays)
-                self.assertIn(date(2022, 7, 13), self.holidays)
+            # eid al-fitr
+            self.assertIn(date(2020, 5, 23), self.holidays)
+            self.assertIn(date(2020, 5, 24), self.holidays)
+            self.assertIn(date(2020, 5, 25), self.holidays)
+            self.assertIn(date(2020, 5, 26), self.holidays)
 
-                # eid al-fitr
-                self.assertIn(date(2020, 5, 23), self.holidays)
-                self.assertIn(date(2020, 5, 24), self.holidays)
-                self.assertIn(date(2020, 5, 25), self.holidays)
-                self.assertIn(date(2020, 5, 26), self.holidays)
-
-                # eid al-adha
-                self.assertIn(date(2020, 7, 30), self.holidays)
-                self.assertIn(date(2020, 7, 31), self.holidays)
-                self.assertIn(date(2020, 8, 1), self.holidays)
-                self.assertIn(date(2020, 8, 2), self.holidays)
+            # eid al-adha
+            self.assertIn(date(2020, 7, 30), self.holidays)
+            self.assertIn(date(2020, 7, 31), self.holidays)
+            self.assertIn(date(2020, 8, 1), self.holidays)
+            self.assertIn(date(2020, 8, 2), self.holidays)
 
     def test_hijri_based_observed(self):
-        if sys.version_info >= (3, 6):
-            import importlib.util
+        if importlib.util.find_spec("hijri_converter"):
+            self.holidays = holidays.SA(years=range(2019, 2023))
+            # observed eid al-fitr
+            self.assertIn(date(2020, 5, 27), self.holidays)
 
-            if importlib.util.find_spec("hijri_converter"):
-                self.holidays = holidays.SA(years=range(2019, 2023))
-                # observed eid al-fitr
-                self.assertIn(date(2020, 5, 27), self.holidays)
+            self.assertIn(date(2019, 6, 8), self.holidays)
 
-                self.assertIn(date(2019, 6, 8), self.holidays)
+            # osbserved eid al-adha
+            self.assertIn(date(2022, 7, 12), self.holidays)
+            self.assertIn(date(2022, 7, 13), self.holidays)
 
-                # osbserved eid al-adha
-                self.assertIn(date(2022, 7, 12), self.holidays)
-                self.assertIn(date(2022, 7, 13), self.holidays)
+            self.assertIn(date(2020, 8, 3), self.holidays)
+            self.assertIn(date(2020, 8, 4), self.holidays)
 
-                self.assertIn(date(2020, 8, 3), self.holidays)
-                self.assertIn(date(2020, 8, 4), self.holidays)
+            # self.assertIn(date(2017, 8, 3), self.holidays)
+            # self.assertIn(date(2017, 8, 4), self.holidays)
 
-                # self.assertIn(date(2017, 8, 3), self.holidays)
-                # self.assertIn(date(2017, 8, 4), self.holidays)
+            # self.assertIn(date(2019, 8, 13), self.holidays)
+            # self.assertIn(date(2019, 8, 14), self.holidays)
 
-                # self.assertIn(date(2019, 8, 13), self.holidays)
-                # self.assertIn(date(2019, 8, 14), self.holidays)
-
-                # self.assertIn(date(2017, 8, 6), self.holidays)
+            # self.assertIn(date(2017, 8, 6), self.holidays)
 
     def test_hijri_based_not_observed(self):
+        if importlib.util.find_spec("hijri_converter"):
+            self.holidays = holidays.SA(
+                observed=False, years=range(2014, 2021)
+            )
+            # observed eid al-fitr
+            self.assertNotIn(date(2020, 5, 27), self.holidays)
 
-        if sys.version_info >= (3, 6):
-            import importlib.util
+            self.assertNotIn(date(2016, 7, 10), self.holidays)
+            self.assertNotIn(date(2016, 7, 11), self.holidays)
 
-            if importlib.util.find_spec("hijri_converter"):
-                self.holidays = holidays.SA(
-                    observed=False, years=range(2014, 2021)
-                )
-                # observed eid al-fitr
-                self.assertNotIn(date(2020, 5, 27), self.holidays)
+            self.assertNotIn(date(2018, 6, 18), self.holidays)
+            self.assertNotIn(date(2018, 6, 19), self.holidays)
 
-                self.assertNotIn(date(2016, 7, 10), self.holidays)
-                self.assertNotIn(date(2016, 7, 11), self.holidays)
+            self.assertNotIn(date(2019, 6, 9), self.holidays)
 
-                self.assertNotIn(date(2018, 6, 18), self.holidays)
-                self.assertNotIn(date(2018, 6, 19), self.holidays)
+            # osbserved eid al-adha
+            self.assertNotIn(date(2014, 10, 8), self.holidays)
 
-                self.assertNotIn(date(2019, 6, 9), self.holidays)
+            self.assertNotIn(date(2017, 8, 3), self.holidays)
+            self.assertNotIn(date(2017, 8, 4), self.holidays)
 
-                # osbserved eid al-adha
-                self.assertNotIn(date(2014, 10, 8), self.holidays)
+            # self.assertNotIn(date(2019, 8, 13), self.holidays)
+            self.assertNotIn(date(2019, 8, 14), self.holidays)
 
-                self.assertNotIn(date(2017, 8, 3), self.holidays)
-                self.assertNotIn(date(2017, 8, 4), self.holidays)
-
-                # self.assertNotIn(date(2019, 8, 13), self.holidays)
-                self.assertNotIn(date(2019, 8, 14), self.holidays)
-
-                self.assertNotIn(date(2017, 8, 6), self.holidays)
+            self.assertNotIn(date(2017, 8, 6), self.holidays)
 
     def test_hijri_based_with_two_holidays_in_one_year(self):
         """
@@ -157,23 +145,20 @@ class TestSaudiArabia(unittest.TestCase):
         (Fridays, Saturdays).
         Currently, using newest weekend days (Fridays, and Saturdays)
         """
-        if sys.version_info >= (3, 6):
-            import importlib.util
-
-            if importlib.util.find_spec("hijri_converter"):
-                self.holidays = holidays.SA(years=[2006])
-                # eid_alfitr
-                # 23rd is a weekend day (Saturday), so there
-                # is a one day shift
-                self.assertIn(date(2006, 10, 23), self.holidays)
-                self.assertIn(date(2006, 10, 24), self.holidays)
-                self.assertIn(date(2006, 10, 25), self.holidays)
-                self.assertIn(date(2006, 10, 26), self.holidays)
-                # eid al-adha 1 (hijri year 1426)
-                self.assertIn(date(2006, 1, 9), self.holidays)
-                self.assertIn(date(2006, 1, 10), self.holidays)
-                self.assertIn(date(2006, 1, 11), self.holidays)
-                self.assertIn(date(2006, 1, 12), self.holidays)
-                # eid al-adha 2 (hijri year 1427)
-                # The remaining holidays fall in the next year 2007
-                self.assertIn(date(2006, 12, 31), self.holidays)
+        if importlib.util.find_spec("hijri_converter"):
+            self.holidays = holidays.SA(years=[2006])
+            # eid_alfitr
+            # 23rd is a weekend day (Saturday), so there
+            # is a one day shift
+            self.assertIn(date(2006, 10, 23), self.holidays)
+            self.assertIn(date(2006, 10, 24), self.holidays)
+            self.assertIn(date(2006, 10, 25), self.holidays)
+            self.assertIn(date(2006, 10, 26), self.holidays)
+            # eid al-adha 1 (hijri year 1426)
+            self.assertIn(date(2006, 1, 9), self.holidays)
+            self.assertIn(date(2006, 1, 10), self.holidays)
+            self.assertIn(date(2006, 1, 11), self.holidays)
+            self.assertIn(date(2006, 1, 12), self.holidays)
+            # eid al-adha 2 (hijri year 1427)
+            # The remaining holidays fall in the next year 2007
+            self.assertIn(date(2006, 12, 31), self.holidays)

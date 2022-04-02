@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 #  python-holidays
 #  ---------------
 #  A fast, efficient Python library for generating country, province and state
@@ -33,4 +31,4 @@ from holidays.utils import (
     list_supported_countries,
 )
 
-__version__ = "0.13"
+__version__ = "0.14"
