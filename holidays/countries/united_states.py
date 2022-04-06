@@ -253,8 +253,8 @@ class UnitedStates(HolidayBase):
             elif self.observed and date(year, MAR, 26).weekday() == SUN:
                 self[date(year, MAR, 27)] = name + " (Observed)"
 
-        # Steward's Day
-        name = "Steward's Day"
+        # Seward's Day
+        name = "Seward's Day"
         if self.subdiv == "AK" and year >= 1955:
             self[date(year, APR, 1) + rd(days=-1, weekday=MO(-1))] = name
         elif self.subdiv == "AK" and year >= 1918:

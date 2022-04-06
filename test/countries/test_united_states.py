@@ -415,7 +415,7 @@ class TestUS(unittest.TestCase):
         for dt in [date(1949, 3, 25), date(2016, 3, 25), date(2017, 3, 27)]:
             self.assertNotIn(dt, hi_holidays)
 
-    def test_stewards_day(self):
+    def test_sewards_day(self):
         ak_holidays = holidays.US(subdiv="AK")
         self.assertNotIn(date(1917, 3, 30), ak_holidays)
         for dt in [
