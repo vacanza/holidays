@@ -22,6 +22,7 @@ from dateutil.relativedelta import (
 from holidays.constants import JAN, FEB, MAY, JUN, JUL, SEP, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
+
 def get_observed(d, always_post=False):
     wdnum = d.isoweekday()
     if always_post and wdnum == 6:  # treat sat as sun
@@ -31,6 +32,7 @@ def get_observed(d, always_post=False):
     if wdnum == 7:
         return d + rd(weekday=MO(+1))
     return d
+
 
 class UnitedStatesMarket(HolidayBase):
     # https://www.nyse.com/markets/hours-calendars
@@ -56,6 +58,7 @@ class UnitedStatesMarket(HolidayBase):
         self[date(year, NOV, 1) + rd(weekday=TH(4))] = "Thanksgiving Day"
         xmas = date(year, DEC, 25)
         self[get_observed(xmas)] = "Christmas Day (observed)"
+
 
 USMarket = UnitedStatesMarket
 USMkt = UnitedStatesMarket

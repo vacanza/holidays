@@ -199,7 +199,6 @@ class TestUnitedStatesMarket(unittest.TestCase):
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
             self.assertNotIn(dt + relativedelta(days=-7), self.holidays)
 
-
     def test_all_holidays_present(self):
         usmkt_2015 = holidays.UnitedStatesMarket(years=[2015])
         all_holidays = [
