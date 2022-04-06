@@ -104,6 +104,7 @@ from .united_kingdom import (
     NorthernIreland,
 )
 from .united_states import UnitedStates, US, USA
+from .us_market import UnitedStatesMarket, USMarket, USMkt
 from .uruguay import Uruguay, UY, URY
 from .uzbekistan import Uzbekistan, UZ, UZB
 from .venezuela import Venezuela, VE, VEN
