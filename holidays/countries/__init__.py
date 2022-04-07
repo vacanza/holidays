@@ -72,6 +72,7 @@ from .nicaragua import Nicaragua, NI, NIC
 from .nigeria import Nigeria, NG, NGA
 from .north_macedonia import NorthMacedonia, MK, MKD
 from .norway import Norway, NO, NOR
+from .nyse import NewYorkStockExchange, NYSE
 from .paraguay import Paraguay, PY, PRY
 from .peru import Peru, PE, PER
 from .poland import Poland, PL, POL
@@ -104,7 +105,6 @@ from .united_kingdom import (
     NorthernIreland,
 )
 from .united_states import UnitedStates, US, USA
-from .us_market import UnitedStatesMarket, USMarket, USMkt
 from .uruguay import Uruguay, UY, URY
 from .uzbekistan import Uzbekistan, UZ, UZB
 from .venezuela import Venezuela, VE, VEN
