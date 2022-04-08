@@ -424,7 +424,8 @@ class TestNewYorkStockExchange(unittest.TestCase):
         def _make_special_holiday_list(begin, end, days=None, weekends=False):
             _list = []
             for d in (
-                begin + timedelta(days=n) for n in range((end - begin).days)
+                begin + timedelta(days=n)
+                for n in range((end - begin).days + 1)
             ):
                 if not weekends and d.isoweekday() in [6, 7]:
                     continue
@@ -447,6 +448,19 @@ class TestNewYorkStockExchange(unittest.TestCase):
             + oneoff_bank_holidays
             + paper_crisis_holidays
         ):
+            self.assertIn(dt, self.holidays)
+
+        # double check that we catch beginning/ending of holiday periods -
+        # covers off-by-one errors
+        for dt in [
+            date(1914, JUL, 31),  # begin WWI holidays
+            date(1914, NOV, 27),  # end WWI holidays
+            date(1933, MAR, 6),  # begin oneoff bank holidays
+            date(1933, MAR, 14),  # end oneoff bank holidays
+            date(1968, JUN, 12),  # begin paper crisis holidays
+            # no need for paper criss end because they
+            # were only on Wednesdays and the final date is not a Wednesday
+        ]:
             self.assertIn(dt, self.holidays)
 
     def test_all_modern_holidays_present(self):

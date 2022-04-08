@@ -190,7 +190,8 @@ class NewYorkStockExchange(HolidayBase):
             begin = date(year, JUL, 31)
             end = date(year, NOV, 27)
             for d in (
-                begin + timedelta(days=n) for n in range((end - begin).days)
+                begin + timedelta(days=n)
+                for n in range((end - begin).days + 1)
             ):
                 if d.isoweekday() in [6, 7]:
                     continue
@@ -221,7 +222,8 @@ class NewYorkStockExchange(HolidayBase):
             begin = date(year, MAR, 6)
             end = date(year, MAR, 14)
             for d in (
-                begin + timedelta(days=n) for n in range((end - begin).days)
+                begin + timedelta(days=n)
+                for n in range((end - begin).days + 1)
             ):
                 if d.isoweekday() in [6, 7]:
                     continue
@@ -250,7 +252,8 @@ class NewYorkStockExchange(HolidayBase):
             begin = date(year, JUN, 12)
             end = date(year, DEC, 31)
             for d in (
-                begin + timedelta(days=n) for n in range((end - begin).days)
+                begin + timedelta(days=n)
+                for n in range((end - begin).days + 1)
             ):
                 if d.isoweekday() != 3:  # Wednesday special holiday
                     continue
