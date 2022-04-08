@@ -454,14 +454,18 @@ class TestNewYorkStockExchange(unittest.TestCase):
         # covers off-by-one errors
         for dt in [
             date(1914, JUL, 31),  # begin WWI holidays
-            date(1914, NOV, 27),  # end WWI holidays
             date(1933, MAR, 6),  # begin oneoff bank holidays
-            date(1933, MAR, 14),  # end oneoff bank holidays
             date(1968, JUN, 12),  # begin paper crisis holidays
-            # no need for paper criss end because they
-            # were only on Wednesdays and the final date is not a Wednesday
         ]:
             self.assertIn(dt, self.holidays)
+            self.assertNotIn(dt - timedelta(days=1), self.holidays)
+
+        for dt in [
+            date(1914, NOV, 27),  # end WWI holidays
+            date(1933, MAR, 14),  # end oneoff bank holidays
+        ]:
+            self.assertIn(dt, self.holidays)
+            self.assertNotIn(dt + timedelta(days=1), self.holidays)
 
     def test_all_modern_holidays_present(self):
         nyse_2021 = holidays.NewYorkStockExchange(years=[2021])
