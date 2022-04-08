@@ -394,7 +394,7 @@ following financial markets are available:
      - ECB
      - Trans-European Automated Real-time Gross Settlement (TARGET2)
    * - New York Stock Exchange
-     - NYSE
+     - XNYS
      - NYSE market holidays (used by all other US-exchanges, including NASDAQ, etc.)
 
 
