@@ -153,6 +153,11 @@ class UnitedKingdom(HolidayBase):
         elif year >= 1971:
             self[date(year, MAY, 31) + rd(weekday=MO(-1))] = name
 
+        # Platinum Jubilee bank holiday (one off)
+        name = "Platinum Jubilee bank holiday"
+        if year == 2022:
+            self[date(year, JUN, 3)] = name
+
         # Late Summer bank holiday (last Monday in August)
         if self.subdiv != "Scotland" and year >= 1971:
             name = "Late Summer Bank Holiday"
