@@ -29,7 +29,7 @@ class Madagascar(HolidayBase):
         # https://www.timeanddate.com/holidays/madagascar/
         HolidayBase.__init__(self, **kwargs)
 
-def _populate(self, year):
+    def _populate(self, year):
         # Observed since 1947
         if year > 1946:
             self[date(year, 1, 1)] = "Taom-baovao"
