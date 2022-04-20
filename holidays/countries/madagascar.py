@@ -54,6 +54,6 @@ class MG(Madagascar):
     pass
 
 
-class MG(Madagascar):
+class MDG(Madagascar):
     pass
    
