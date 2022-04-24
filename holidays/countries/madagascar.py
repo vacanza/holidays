@@ -41,6 +41,7 @@ class Madagascar(HolidayBase):
             self[easter(year)+rd(days=1)]="Alatsinain'ny paska"
             self[easter(year) + rd(days=49)] = "Pentekosta"
             self[easter(year) + rd(days=50)] = "Alatsinain'ny pentekosta"
+            slef[date(year,6,1)+rd(day = 1, weekday = SU(3))]="Fetin'ny ray"
             self[easter(year) + rd(days=39)] = "Fiakaran'ny Jesosy kristy tany an-danitra"
             self[date(year, 8, 15)] = "Fiakaran'ny Masina Maria tany an-danitra"
             
