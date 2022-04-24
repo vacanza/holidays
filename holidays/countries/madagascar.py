@@ -46,9 +46,9 @@ class Madagascar(HolidayBase):
             self[date(year, 8, 15)] = "Fiakaran'ny Masina Maria tany an-danitra"
             
             if easter(year)+rd(days = 49) == date(year,5,1)+rd(day = 31, weekday = SU(-1)):
-                self[date(2020,5,1)+rd(day = 31, weekday = SU(-1))+rd(days = 7)]="Fetin'ny Reny"
+                self[date(year,5,1)+rd(day = 31, weekday = SU(-1))+rd(days = 7)]="Fetin'ny Reny"
             else:
-                self[date(2020,5,1)+rd(day = 31, weekday = SU(-1))]="Fetin'ny Reny"
+                self[date(year,5,1)+rd(day = 31, weekday = SU(-1))]="Fetin'ny Reny"
                 
                 
            
