@@ -245,6 +245,9 @@ following countries and their subdivisions are available:
    * - Luxembourg
      - LU
      - None
+   * - Madagascar
+     - MG
+     - None
    * - Malaysia
      - MY
      - States: JHR, KDH, KTN, MLK, NSN, PHG, PNG, PRK, PLS, SBH, SWK, SGR, TRG, KUL, LBN, PJY
