@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 #  python-holidays
 #  ---------------
 #  A fast, efficient Python library for generating country, province and state
@@ -14,7 +12,7 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd,MO,SU
+from dateutil.relativedelta import relativedelta as rd, MO, SU
 
 from holidays.constants import TUE, SAT, SUN
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUL, SEP, OCT, NOV, DEC
@@ -35,28 +33,30 @@ class Madagascar(HolidayBase):
             self[date(year, 1, 1)] = "Taom-baovao"
             self[date(year, 3, 8)] = "Fetin'ny vehivavy"
             self[date(year, 3, 29)] = "Fetin'ny mahery fo"
-            self[date(year, 11, 1)]= "Fetin'ny olo-masina"
-            self[date(year, 12, 25)]= "Fetin'ny noely"
-            self[easter(year)]="fetin'ny paska"
-            self[easter(year)+rd(days=1)]="Alatsinain'ny paska"
+            self[date(year, 11, 1)] = "Fetin'ny olo-masina"
+            self[date(year, 12, 25)] = "Fetin'ny noely"
+            self[easter(year)] = "fetin'ny paska"
+            self[easter(year) + rd(days=1)] = "Alatsinain'ny paska"
             self[easter(year) + rd(days=49)] = "Pentekosta"
             self[easter(year) + rd(days=50)] = "Alatsinain'ny pentekosta"
-            self[date(year,6,1)+rd(day = 1, weekday = SU(3))]="Fetin'ny ray"
-            self[easter(year) + rd(days=39)] = "Fiakaran'ny Jesosy kristy tany an-danitra"
-            self[date(year, 8, 15)] = "Fiakaran'ny Masina Maria tany an-danitra"
-            
-            if easter(year)+rd(days = 49) == date(year,5,1)+rd(day = 31, weekday = SU(-1)):
-                self[date(year,5,1)+rd(day = 31, weekday = SU(-1))+rd(days = 7)]="Fetin'ny Reny"
+            self[date(year, 6, 1) + rd(day=1, weekday=SU(3))] = "Fetin'ny ray"
+            self[
+                easter(year) + rd(days=39)
+            ] = "Fiakaran'ny Jesosy kristy tany an-danitra"
+            self[
+                date(year, 8, 15)
+            ] = "Fiakaran'ny Masina Maria tany an-danitra"
+
+            if easter(year) + rd(days=49) == date(year, 5, 1) + rd(
+                day=31, weekday=SU(-1)
+            ):
+                self[
+                    date(year, 5, 1) + rd(day=31, weekday=SU(-1)) + rd(days=7)
+                ] = "Fetin'ny Reny"
             else:
-                self[date(year,5,1)+rd(day = 31, weekday = SU(-1))]="Fetin'ny Reny"
-                
-                
-           
-            
-
-
-
-    
+                self[
+                    date(year, 5, 1) + rd(day=31, weekday=SU(-1))
+                ] = "Fetin'ny Reny"
 
 
 class MG(Madagascar):
@@ -65,4 +65,3 @@ class MG(Madagascar):
 
 class MDG(Madagascar):
     pass
-   

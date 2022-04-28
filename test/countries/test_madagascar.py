@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 #  python-holidays
 #  ---------------
 #  A fast, efficient Python library for generating country, province and state
@@ -31,12 +29,9 @@ class TestMadagascar(unittest.TestCase):
         self.assertIn(date(2015, 3, 29), self.holidays)
         self.assertIn(date(2022, 3, 29), self.holidays)
 
-
-
     def test_paska(self):
         self.assertIn(date(2022, 4, 17), self.holidays)  # Andron'ny paska
         self.assertIn(date(2022, 4, 18), self.holidays)  # Alatsinain'ny Paska
-
 
     def test_not_holiday(self):
         self.assertNotIn(date(2022, 4, 20), self.holidays)
