@@ -38,17 +38,6 @@ from holidays.constants import (
 from holidays.holiday_base import HolidayBase
 
 
-def get_observed(d, always_post=False):
-    wdnum = d.isoweekday()
-    if always_post and wdnum == 6:  # treat sat as sun
-        wdnum = 7
-    if wdnum == 6:
-        return d + rd(weekday=FR(-1))
-    if wdnum == 7:
-        return d + rd(weekday=MO(+1))
-    return d
-
-
 class NewYorkStockExchange(HolidayBase):
     # https://www.nyse.com/markets/hours-calendars
     # historical data:
@@ -62,8 +51,18 @@ class NewYorkStockExchange(HolidayBase):
     def __init__(self, **kwargs):
         HolidayBase.__init__(self, **kwargs)
 
+    def _get_observed(self, d, always_post=False):
+        wdnum = d.isoweekday()
+        if always_post and wdnum == 6:  # treat sat as sun
+            wdnum = 7
+        if wdnum == 6:
+            return d + rd(weekday=FR(-1))
+        if wdnum == 7:
+            return d + rd(weekday=MO(+1))
+        return d
+
     def _set_observed_date(self, date, name, always_post=False):
-        date_obs = get_observed(date, always_post=always_post)
+        date_obs = self._get_observed(date, always_post=always_post)
         if date_obs == date:
             self[date] = name
         else:
@@ -293,4 +292,9 @@ class NewYorkStockExchange(HolidayBase):
             ] = "Day of Mourning for President Gerald R. Ford"
 
 
-NYSE = NewYorkStockExchange
+class XNYS(NewYorkStockExchange):
+    pass
+
+
+class NYSE(NewYorkStockExchange):
+    pass

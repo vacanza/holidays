@@ -35,7 +35,6 @@ from .dominican_republic import DominicanRepublic, DO, DOM
 from .egypt import Egypt, EG, EGY
 from .estonia import Estonia, EE, EST
 from .ethiopia import Ethiopia, ET, ETH
-from .european_central_bank import EuropeanCentralBank, ECB, TAR
 from .finland import Finland, FI, FIN
 from .france import France, FR, FRA
 from .georgia import Georgia, GE, GEO
@@ -72,7 +71,6 @@ from .nicaragua import Nicaragua, NI, NIC
 from .nigeria import Nigeria, NG, NGA
 from .north_macedonia import NorthMacedonia, MK, MKD
 from .norway import Norway, NO, NOR
-from .nyse import NewYorkStockExchange, NYSE
 from .paraguay import Paraguay, PY, PRY
 from .peru import Peru, PE, PER
 from .poland import Poland, PL, POL
