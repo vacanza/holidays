@@ -205,7 +205,7 @@ following countries and their subdivisions are available:
      - None
    * - India
      - IN
-     - States: AP, AS, BR, CG, GJ, HR, KA, KL, MH, MP, OD, RJ, SK, TN, TN, UK, UP, WB
+     - States: AN, AP, AR, AS, BR, CG, CH, DD, DH, DL, GA, GJ, HP, HR, JH, JK, KA, KL, LA, LD, MH, ML, MN, MP, MZ, NL, OR, PB, PY, RJ, SK, TN, TR, TS, UK, UP, WB
    * - Ireland
      - IE
      - None
