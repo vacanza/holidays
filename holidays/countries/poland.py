@@ -46,7 +46,7 @@ class Poland(HolidayBase):
 
         self[date(year, AUG, 15)] = "Wniebowzięcie Najświętszej Marii Panny"
 
-        self[date(year, NOV, 1)] = "Uroczystość Wszystkich świętych"
+        self[date(year, NOV, 1)] = "Uroczystość Wszystkich Świętych"
         if (1937 <= year <= 1945) or year >= 1989:
             self[date(year, NOV, 11)] = "Narodowe Święto Niepodległości"
         if year == 2018:
