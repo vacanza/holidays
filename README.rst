@@ -155,6 +155,9 @@ following countries and their subdivisions are available:
    * - Curaçao
      - CW
      - None
+   * - Cyprus
+     - CY
+     - None
    * - Czechia
      - CZ
      - None
