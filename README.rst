@@ -2,9 +2,9 @@
 python-holidays
 ===============
 
-A fast, efficient Python library for generating country- and subdivision- (e.g.
+python-holidays is a fast, efficient Python library for generating country- and subdivision- (e.g.
 state or province) specific sets of government-designated holidays on the fly.
-It aims to make determining whether a specific date is a holiday as fast and
+python-holidays aims to make determining whether a specific date is a holiday as fast and
 flexible as possible.
 
 .. image:: https://github.com/dr-prodigy/python-holidays/workflows/Tests/badge.svg
