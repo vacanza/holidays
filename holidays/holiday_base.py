@@ -292,9 +292,7 @@ class HolidayBase(Dict[date, str]):
             self._populate(out_key.year)
         return out_key
 
-    def __contains__(
-        self, key: object
-    ) -> bool:
+    def __contains__(self, key: object) -> bool:
         """Return true if date is in self, false otherwise. Accepts a date in
         the following types:
 
@@ -308,8 +306,7 @@ class HolidayBase(Dict[date, str]):
             raise TypeError("Cannot convert type '%s' to date." % type(key))
 
         contained = dict.__contains__(
-            cast("Mapping[Any, Any]", self),
-            self.__keytransform__(key)
+            cast("Mapping[Any, Any]", self), self.__keytransform__(key)
         )
         return contained
 
@@ -350,9 +347,7 @@ class HolidayBase(Dict[date, str]):
             return days_in_range
         return dict.__getitem__(self, self.__keytransform__(key))
 
-    def __setitem__(
-        self, key: DateLike, value: str
-    ) -> None:
+    def __setitem__(self, key: DateLike, value: str) -> None:
         if key in self:
             if self.get(key).find(value) < 0 and value.find(self.get(key)) < 0:
                 value = f"{value}, {self.get(key)}"
@@ -361,12 +356,7 @@ class HolidayBase(Dict[date, str]):
         return dict.__setitem__(self, self.__keytransform__(key), value)
 
     def update(  # type: ignore[override]
-        self,
-        *args: Union[
-            Dict[DateLike, str],
-            List[DateLike],
-            DateLike
-        ]
+        self, *args: Union[Dict[DateLike, str], List[DateLike], DateLike]
     ) -> None:
         # TODO: fix arguments; should not be *args (cannot properly Type hint)
         """Update the object, overwriting existing dates.
@@ -397,12 +387,7 @@ class HolidayBase(Dict[date, str]):
                 self[arg] = "Holiday"
 
     def append(
-        self,
-        *args: Union[
-            Dict[DateLike, str],
-            List[DateLike],
-            DateLike
-        ]
+        self, *args: Union[Dict[DateLike, str], List[DateLike], DateLike]
     ) -> None:
         """Alias for :meth:`update` to mimic list type."""
         return self.update(*args)
