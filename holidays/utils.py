@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 #  python-holidays
 #  ---------------
 #  A fast, efficient Python library for generating country and subdivision
@@ -23,6 +21,7 @@ from datetime import date, timedelta
 from hijri_converter import convert
 
 import holidays.countries
+import holidays.financial
 from holidays.holiday_base import HolidayBase
 
 
@@ -225,6 +224,23 @@ def list_supported_countries() -> Dict[str, List[str]]:
         obj.country: obj.subdivisions
         for name, obj in inspect.getmembers(
             holidays.countries, inspect.isclass
+        )
+        if obj.__base__ == HolidayBase
+    }
+
+
+def list_supported_financial() -> Dict[str, List[str]]:
+    """
+    Get all supported financial markets and their subdivisions.
+
+    :return:
+        A dictionary where the key is the market codes and
+        the value is a list of supported subdivision codes.
+    """
+    return {
+        obj.country: obj.subdivisions
+        for name, obj in inspect.getmembers(
+            holidays.financial, inspect.isclass
         )
         if obj.__base__ == HolidayBase
     }

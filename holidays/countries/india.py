@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 #  python-holidays
 #  ---------------
 #  A fast, efficient Python library for generating country, province and state
@@ -28,27 +26,35 @@ class India(HolidayBase):
 
     country = "IN"
     subdivisions = [
+        "AN",  # Andaman and Nicobar Islands
         "AP",  # Andhra Pradesh
         "AR",  # Arunachal Pradesh
         "AS",  # Assam
         "BR",  # Bihar
         "CG",  # Chhattisgarh
+        "CH",  # Chandigarh
+        "DD",  # Daman and Diu
+        "DH",  # Dadra and Nagar Haveli
+        "DL",  # Delhi
         "GA",  # Goa
         "GJ",  # Gujarat
-        "HR",  # Haryana
         "HP",  # Himachal Pradesh
-        "JK",  # Jammu and Kashmir
+        "HR",  # Haryana
         "JH",  # Jharkhand
+        "JK",  # Jammu and Kashmir
         "KA",  # Karnataka
         "KL",  # Kerala
-        "MP",  # Madhya Pradesh
+        "LA",  # Ladakh
+        "LD",  # Lakshadweep
         "MH",  # Maharashtra
-        "MN",  # Manipur
         "ML",  # Meghalaya
+        "MN",  # Manipur
+        "MP",  # Madhya Pradesh
         "MZ",  # Mizoram
         "NL",  # Nagaland
         "OR",  # Orissa / Odisha (Govt sites (dacnet/vahan) use code "OR")
         "PB",  # Punjab
+        "PY",  # Pondicherry
         "RJ",  # Rajasthan
         "SK",  # Sikkim
         "TN",  # Tamil Nadu
@@ -57,14 +63,6 @@ class India(HolidayBase):
         "UK",  # Uttarakhand
         "UP",  # Uttar Pradesh
         "WB",  # West Bengal
-        "AN",  # Andaman and Nicobar Islands
-        "CH",  # Chandigarh
-        "DH",  # Dadra and Nagar Haveli
-        "DD",  # Daman and Diu
-        "DL",  # Delhi
-        "LA",  # Ladakh
-        "LD",  # Lakshadweep
-        "PY",  # Pondicherry
     ]
 
     def __init__(self, **kwargs):

@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 #  python-holidays
 #  ---------------
 #  A fast, efficient Python library for generating country, province and state
@@ -21,6 +19,7 @@ from holidays.constants import (
     JAN,
     FEB,
     MAR,
+    APR,
     MAY,
     JUN,
     JUL,
@@ -55,7 +54,7 @@ class Singapore(HolidayBase):
 
         - Prior to 1969: holidays are estimated.
         - Prior to 2000: holidays may not be accurate.
-        - 2022 and later: the following four moving date holidays (whose exact
+        - 2024 and later: the following four moving date holidays (whose exact
           date is announced yearly) are estimated, and so denoted:
 
           - Hari Raya Puasa
@@ -120,6 +119,7 @@ class Singapore(HolidayBase):
             2020: [(MAY, 24)],
             2021: [(MAY, 13)],
             2022: [(MAY, 2)],
+            2023: [(APR, 22)],
         }
         if year in dates_obs:
             for date_obs in dates_obs[year]:
@@ -168,6 +168,7 @@ class Singapore(HolidayBase):
             2020: [(JUL, 31)],
             2021: [(JUL, 20)],
             2022: [(JUL, 9)],
+            2023: [(JUN, 29)],
         }
         if year in dates_obs:
             for date_obs in dates_obs[year]:
@@ -218,6 +219,7 @@ class Singapore(HolidayBase):
             2020: (MAY, 7),
             2021: (MAY, 26),
             2022: (MAY, 15),
+            2023: (JUN, 3),
         }
         if year in dates_obs:
             hol_date = date(year, *dates_obs[year])
@@ -255,6 +257,7 @@ class Singapore(HolidayBase):
             2020: (NOV, 14),
             2021: (NOV, 4),
             2022: (NOV, 24),
+            2023: (NOV, 12),
         }
         if year in dates_obs:
             hol_date = date(year, *dates_obs[year])

@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 #  python-holidays
 #  ---------------
 #  A fast, efficient Python library for generating country, province and state
@@ -11,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import sys
+import importlib.util
 import unittest
 
 from datetime import date
@@ -87,12 +85,9 @@ class TestBurundi(unittest.TestCase):
         self.assertIn("Christmas Day", self.holidays[date(2020, 12, 25)])
 
     def test_eid_al_adha(self):
-        if sys.version_info >= (3, 6):
-            import importlib.util
+        if importlib.util.find_spec("hijri_converter"):
+            self.holidays = holidays.Burundi(years=[2019, 1999])
 
-            if importlib.util.find_spec("hijri_converter"):
-                self.holidays = holidays.Burundi(years=[2019, 1999])
-
-                # eid Al Adha
-                self.assertIn(date(2020, 7, 31), self.holidays)
-                self.assertIn(date(2020, 7, 31), self.holidays)
+            # eid Al Adha
+            self.assertIn(date(2020, 7, 31), self.holidays)
+            self.assertIn(date(2020, 7, 31), self.holidays)

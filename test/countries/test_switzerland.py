@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 #  python-holidays
 #  ---------------
 #  A fast, efficient Python library for generating country, province and state
@@ -22,10 +20,9 @@ import holidays
 class TestSwitzerland(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.CH()
-        self.prov_hols = dict(
-            (prov, holidays.CH(subdiv=prov))
-            for prov in holidays.CH.subdivisions
-        )
+        self.prov_hols = {
+            prov: holidays.CH(subdiv=prov) for prov in holidays.CH.subdivisions
+        }
 
     def test_all_holidays_present(self):
         ch_2018 = sum(
@@ -63,9 +60,9 @@ class TestSwitzerland(unittest.TestCase):
         ]
 
         for holiday in all_ch:
-            self.assertTrue(holiday in all_ch, "missing: {}".format(holiday))
+            self.assertIn(holiday, all_ch, f"missing: {holiday}")
         for holiday in in_2018:
-            self.assertTrue(holiday in in_2018, "extra: {}".format(holiday))
+            self.assertIn(holiday, in_2018, f"extra: {holiday}")
 
     def test_fixed_holidays(self):
         fixed_days_whole_country = (
@@ -74,7 +71,7 @@ class TestSwitzerland(unittest.TestCase):
             (12, 25),  # Weihnachten
         )
         for y, (m, d) in product(range(1291, 2050), fixed_days_whole_country):
-            self.assertTrue(date(y, m, d) in self.holidays)
+            self.assertIn(date(y, m, d), self.holidays)
 
     def test_berchtoldstag(self):
         provinces_that_have = {
@@ -99,9 +96,9 @@ class TestSwitzerland(unittest.TestCase):
         )
 
         for province, year in product(provinces_that_have, range(1970, 2050)):
-            self.assertTrue(date(year, 1, 2) in self.prov_hols[province])
+            self.assertIn(date(year, 1, 2), self.prov_hols[province])
         for province, year in product(provinces_that_dont, range(1970, 2050)):
-            self.assertTrue(date(year, 1, 2) not in self.prov_hols[province])
+            self.assertNotIn(date(year, 1, 2), self.prov_hols[province])
 
     def test_heilige_drei_koenige(self):
         provinces_that_have = {"SZ", "TI", "UR"}
@@ -110,9 +107,9 @@ class TestSwitzerland(unittest.TestCase):
         )
 
         for province, year in product(provinces_that_have, range(1970, 2050)):
-            self.assertTrue(date(year, 1, 6) in self.prov_hols[province])
+            self.assertIn(date(year, 1, 6), self.prov_hols[province])
         for province, year in product(provinces_that_dont, range(1970, 2050)):
-            self.assertTrue(date(year, 1, 6) not in self.prov_hols[province])
+            self.assertNotIn(date(year, 1, 6), self.prov_hols[province])
 
     def test_jahrestag_der_ausrufung_der_republik(self):
         provinces_that_have = {"NE"}
@@ -121,9 +118,9 @@ class TestSwitzerland(unittest.TestCase):
         )
 
         for province, year in product(provinces_that_have, range(1970, 2050)):
-            self.assertTrue(date(year, 3, 1) in self.prov_hols[province])
+            self.assertIn(date(year, 3, 1), self.prov_hols[province])
         for province, year in product(provinces_that_dont, range(1970, 2050)):
-            self.assertTrue(date(year, 3, 1) not in self.prov_hols[province])
+            self.assertNotIn(date(year, 3, 1), self.prov_hols[province])
 
     def test_josefstag(self):
         provinces_that_have = {"NW", "SZ", "TI", "UR", "VS"}
@@ -132,9 +129,9 @@ class TestSwitzerland(unittest.TestCase):
         )
 
         for province, year in product(provinces_that_have, range(1970, 2050)):
-            self.assertTrue(date(year, 3, 19) in self.prov_hols[province])
+            self.assertIn(date(year, 3, 19), self.prov_hols[province])
         for province, year in product(provinces_that_dont, range(1970, 2050)):
-            self.assertTrue(date(year, 3, 19) not in self.prov_hols[province])
+            self.assertNotIn(date(year, 3, 19), self.prov_hols[province])
 
     def test_naefelser_fahrt(self):
         known_good = [
@@ -163,9 +160,9 @@ class TestSwitzerland(unittest.TestCase):
         )
 
         for province, (y, m, d) in product(provinces_that_have, known_good):
-            self.assertTrue(date(y, m, d) in self.prov_hols[province])
+            self.assertIn(date(y, m, d), self.prov_hols[province])
         for province, (y, m, d) in product(provinces_that_dont, known_good):
-            self.assertTrue(date(y, m, d) not in self.prov_hols[province])
+            self.assertNotIn(date(y, m, d), self.prov_hols[province])
 
     def test_karfreitag(self):
         known_good = [
@@ -193,9 +190,9 @@ class TestSwitzerland(unittest.TestCase):
             set(holidays.CH.subdivisions) - provinces_that_dont
         )
         for province, (y, m, d) in product(provinces_that_have, known_good):
-            self.assertTrue(date(y, m, d) in self.prov_hols[province])
+            self.assertIn(date(y, m, d), self.prov_hols[province])
         for province, (y, m, d) in product(provinces_that_dont, known_good):
-            self.assertTrue(date(y, m, d) not in self.prov_hols[province])
+            self.assertNotIn(date(y, m, d), self.prov_hols[province])
 
     def test_ostern(self):
         known_good = [
@@ -222,7 +219,7 @@ class TestSwitzerland(unittest.TestCase):
         for province, (y, m, d) in product(
             holidays.CH.subdivisions, known_good
         ):
-            self.assertTrue(date(y, m, d) in self.prov_hols[province])
+            self.assertIn(date(y, m, d), self.prov_hols[province])
 
     def test_ostermontag(self):
         known_good = [
@@ -250,9 +247,9 @@ class TestSwitzerland(unittest.TestCase):
             set(holidays.CH.subdivisions) - provinces_that_dont
         )
         for province, (y, m, d) in product(provinces_that_have, known_good):
-            self.assertTrue(date(y, m, d) in self.prov_hols[province])
+            self.assertIn(date(y, m, d), self.prov_hols[province])
         for province, (y, m, d) in product(provinces_that_dont, known_good):
-            self.assertTrue(date(y, m, d) not in self.prov_hols[province])
+            self.assertNotIn(date(y, m, d), self.prov_hols[province])
 
     def test_auffahrt(self):
         known_good = [
@@ -279,7 +276,7 @@ class TestSwitzerland(unittest.TestCase):
         for province, (y, m, d) in product(
             holidays.CH.subdivisions, known_good
         ):
-            self.assertTrue(date(y, m, d) in self.prov_hols[province])
+            self.assertIn(date(y, m, d), self.prov_hols[province])
 
     def test_pfingsten(self):
         known_good = [
@@ -306,7 +303,7 @@ class TestSwitzerland(unittest.TestCase):
         for province, (y, m, d) in product(
             holidays.CH.subdivisions, known_good
         ):
-            self.assertTrue(date(y, m, d) in self.prov_hols[province])
+            self.assertIn(date(y, m, d), self.prov_hols[province])
 
     def test_pfingstmontag(self):
         known_good = [
@@ -333,7 +330,7 @@ class TestSwitzerland(unittest.TestCase):
         for province, (y, m, d) in product(
             holidays.CH.subdivisions, known_good
         ):
-            self.assertTrue(date(y, m, d) in self.prov_hols[province])
+            self.assertIn(date(y, m, d), self.prov_hols[province])
 
     def test_fronleichnam(self):
         known_good = [
@@ -366,9 +363,9 @@ class TestSwitzerland(unittest.TestCase):
         )
 
         for province, (y, m, d) in product(provinces_that_have, known_good):
-            self.assertTrue(date(y, m, d) in self.prov_hols[province])
+            self.assertIn(date(y, m, d), self.prov_hols[province])
         for province, (y, m, d) in product(provinces_that_dont, known_good):
-            self.assertTrue(date(y, m, d) not in self.prov_hols[province])
+            self.assertNotIn(date(y, m, d), self.prov_hols[province])
 
     def test_fest_der_unabhaengikeit(self):
         provinces_that_have = {"JU"}
@@ -377,12 +374,12 @@ class TestSwitzerland(unittest.TestCase):
         )
 
         for province, year in product(provinces_that_have, range(1970, 2050)):
-            self.assertTrue(date(year, 6, 23) in self.prov_hols[province])
+            self.assertIn(date(year, 6, 23), self.prov_hols[province])
         # 2011 is "Fronleichnam" on the same date, we don't test this year
         for province, year in product(provinces_that_dont, range(1970, 2010)):
-            self.assertTrue(date(year, 6, 23) not in self.prov_hols[province])
+            self.assertNotIn(date(year, 6, 23), self.prov_hols[province])
         for province, year in product(provinces_that_dont, range(2012, 2050)):
-            self.assertTrue(date(year, 6, 23) not in self.prov_hols[province])
+            self.assertNotIn(date(year, 6, 23), self.prov_hols[province])
 
     def test_peter_und_paul(self):
         provinces_that_have = {"TI"}
@@ -391,9 +388,9 @@ class TestSwitzerland(unittest.TestCase):
         )
 
         for province, year in product(provinces_that_have, range(1970, 2050)):
-            self.assertTrue(date(year, 6, 29) in self.prov_hols[province])
+            self.assertIn(date(year, 6, 29), self.prov_hols[province])
         for province, year in product(provinces_that_dont, range(1970, 2050)):
-            self.assertTrue(date(year, 6, 29) not in self.prov_hols[province])
+            self.assertNotIn(date(year, 6, 29), self.prov_hols[province])
 
     def test_mariae_himmelfahrt(self):
         provinces_that_have = {
@@ -413,9 +410,9 @@ class TestSwitzerland(unittest.TestCase):
         )
 
         for province, year in product(provinces_that_have, range(1970, 2050)):
-            self.assertTrue(date(year, 8, 15) in self.prov_hols[province])
+            self.assertIn(date(year, 8, 15), self.prov_hols[province])
         for province, year in product(provinces_that_dont, range(1970, 2050)):
-            self.assertTrue(date(year, 8, 15) not in self.prov_hols[province])
+            self.assertNotIn(date(year, 8, 15), self.prov_hols[province])
 
     def test_lundi_du_jeune(self):
         known_good = [
@@ -437,9 +434,9 @@ class TestSwitzerland(unittest.TestCase):
         )
 
         for province, (y, m, d) in product(provinces_that_have, known_good):
-            self.assertTrue(date(y, m, d) in self.prov_hols[province])
+            self.assertIn(date(y, m, d), self.prov_hols[province])
         for province, (y, m, d) in product(provinces_that_dont, known_good):
-            self.assertTrue(date(y, m, d) not in self.prov_hols[province])
+            self.assertNotIn(date(y, m, d), self.prov_hols[province])
 
     def test_bruder_chlaus(self):
         provinces_that_have = {"OW"}
@@ -448,9 +445,9 @@ class TestSwitzerland(unittest.TestCase):
         )
 
         for province, year in product(provinces_that_have, range(1970, 2050)):
-            self.assertTrue(date(year, 9, 25) in self.prov_hols[province])
+            self.assertIn(date(year, 9, 25), self.prov_hols[province])
         for province, year in product(provinces_that_dont, range(1970, 2050)):
-            self.assertTrue(date(year, 9, 25) not in self.prov_hols[province])
+            self.assertNotIn(date(year, 9, 25), self.prov_hols[province])
 
     def test_allerheiligen(self):
         provinces_that_have = {
@@ -472,9 +469,9 @@ class TestSwitzerland(unittest.TestCase):
         )
 
         for province, year in product(provinces_that_have, range(1970, 2050)):
-            self.assertTrue(date(year, 11, 1) in self.prov_hols[province])
+            self.assertIn(date(year, 11, 1), self.prov_hols[province])
         for province, year in product(provinces_that_dont, range(1970, 2050)):
-            self.assertTrue(date(year, 11, 1) not in self.prov_hols[province])
+            self.assertNotIn(date(year, 11, 1), self.prov_hols[province])
 
     def test_jeune_genevois(self):
         known_good = [
@@ -497,9 +494,9 @@ class TestSwitzerland(unittest.TestCase):
         )
 
         for province, (y, m, d) in product(provinces_that_have, known_good):
-            self.assertTrue(date(y, m, d) in self.prov_hols[province])
+            self.assertIn(date(y, m, d), self.prov_hols[province])
         for province, (y, m, d) in product(provinces_that_dont, known_good):
-            self.assertTrue(date(y, m, d) not in self.prov_hols[province])
+            self.assertNotIn(date(y, m, d), self.prov_hols[province])
 
     def test_stephanstag(self):
         provinces_that_have = {
@@ -531,9 +528,9 @@ class TestSwitzerland(unittest.TestCase):
         )
 
         for province, year in product(provinces_that_have, range(1970, 2050)):
-            self.assertTrue(date(year, 12, 26) in self.prov_hols[province])
+            self.assertIn(date(year, 12, 26), self.prov_hols[province])
         for province, year in product(provinces_that_dont, range(1970, 2050)):
-            self.assertTrue(date(year, 12, 26) not in self.prov_hols[province])
+            self.assertNotIn(date(year, 12, 26), self.prov_hols[province])
 
     def test_wiedererstellung_der_republik(self):
         provinces_that_have = {"GE"}
@@ -542,6 +539,6 @@ class TestSwitzerland(unittest.TestCase):
         )
 
         for province, year in product(provinces_that_have, range(1970, 2050)):
-            self.assertTrue(date(year, 12, 31) in self.prov_hols[province])
+            self.assertIn(date(year, 12, 31), self.prov_hols[province])
         for province, year in product(provinces_that_dont, range(1970, 2050)):
-            self.assertTrue(date(year, 12, 31) not in self.prov_hols[province])
+            self.assertNotIn(date(year, 12, 31), self.prov_hols[province])

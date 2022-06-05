@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 #  python-holidays
 #  ---------------
 #  A fast, efficient Python library for generating country, province and state
@@ -310,6 +308,10 @@ class TestBasics(unittest.TestCase):
         self.assertIn("AR", holidays.list_supported_countries())
         self.assertIn("ZA", holidays.list_supported_countries())
         self.assertIn("CA", holidays.list_supported_countries()["US"])
+
+    def test_list_supported_financial(self):
+        self.assertIn("ECB", holidays.list_supported_financial())
+        self.assertIn("NYSE", holidays.list_supported_financial())
 
     def test_radd(self):
         self.assertRaises(TypeError, lambda: 1 + holidays.US())

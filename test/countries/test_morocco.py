@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 #  python-holidays
 #  ---------------
 #  A fast, efficient Python library for generating country, province and state
@@ -11,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import sys
+import importlib.util
 import unittest
 
 from datetime import date
@@ -66,21 +64,18 @@ class TestMorocco(unittest.TestCase):
             self.assertIn(holiday, self.holidays)
 
     def test_hijri_based(self):
-        if sys.version_info >= (3, 6):
-            import importlib.util
+        if importlib.util.find_spec("hijri_converter"):
+            self.holidays = holidays.Morocco(years=[2019, 1999])
+            # eid_alfitr
+            self.assertIn(date(2019, 6, 4), self.holidays)
+            self.assertIn(date(2019, 6, 5), self.holidays)
+            # eid_aladha
+            self.assertIn(date(2019, 8, 11), self.holidays)
+            self.assertIn(date(2019, 8, 12), self.holidays)
+            # islamic_new_year
+            self.assertIn(date(2019, 8, 31), self.holidays)
 
-            if importlib.util.find_spec("hijri_converter"):
-                self.holidays = holidays.Morocco(years=[2019, 1999])
-                # eid_alfitr
-                self.assertIn(date(2019, 6, 4), self.holidays)
-                self.assertIn(date(2019, 6, 5), self.holidays)
-                # eid_aladha
-                self.assertIn(date(2019, 8, 11), self.holidays)
-                self.assertIn(date(2019, 8, 12), self.holidays)
-                # islamic_new_year
-                self.assertIn(date(2019, 8, 31), self.holidays)
+            self.assertIn(date(2019, 11, 9), self.holidays)
+            self.assertIn(date(2019, 11, 10), self.holidays)
 
-                self.assertIn(date(2019, 11, 9), self.holidays)
-                self.assertIn(date(2019, 11, 10), self.holidays)
-
-                self.assertIn(date(1999, 4, 17), self.holidays)
+            self.assertIn(date(1999, 4, 17), self.holidays)

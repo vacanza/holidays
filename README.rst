@@ -155,6 +155,9 @@ following countries and their subdivisions are available:
    * - Curaçao
      - CW
      - None
+   * - Cyprus
+     - CY
+     - None
    * - Czechia
      - CZ
      - None
@@ -205,7 +208,7 @@ following countries and their subdivisions are available:
      - None
    * - India
      - IN
-     - States: AP, AS, BR, CG, GJ, HR, KA, KL, MH, MP, OD, RJ, SK, TN, TN, UK, UP, WB
+     - States: AN, AP, AR, AS, BR, CG, CH, DD, DH, DL, GA, GJ, HP, HR, JH, JK, KA, KL, LA, LD, MH, ML, MN, MP, MZ, NL, OR, PB, PY, RJ, SK, TN, TR, TS, UK, UP, WB
    * - Ireland
      - IE
      - None
@@ -245,11 +248,17 @@ following countries and their subdivisions are available:
    * - Luxembourg
      - LU
      - None
+   * - Madagascar
+     - MG
+     - None
    * - Malaysia
      - MY
      - States: JHR, KDH, KTN, MLK, NSN, PHG, PNG, PRK, PLS, SBH, SWK, SGR, TRG, KUL, LBN, PJY
    * - Malawi
      - MW
+     - None
+   * - Malta
+     - MT
      - None
    * - Mexico
      - MX
@@ -390,6 +399,9 @@ following financial markets are available:
    * - European Central Bank
      - ECB
      - Trans-European Automated Real-time Gross Settlement (TARGET2)
+   * - New York Stock Exchange
+     - XNYS
+     - NYSE market holidays (used by all other US-exchanges, including NASDAQ, etc.)
 
 
 Beta Version

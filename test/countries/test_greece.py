@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 #  python-holidays
 #  ---------------
 #  A fast, efficient Python library for generating country, province and state
@@ -99,3 +97,32 @@ class TestGreece(unittest.TestCase):
                 "Δευτέρα του Αγίου Πνεύματος " + "[Monday of the Holy Spirit]",
                 self.gr_holidays[d],
             )
+
+    def test_gr_labour_day_observed(self):
+        # Dates when labour day was observed on a different date
+        checkdates = (
+            date(2016, 5, 3),
+            date(2021, 5, 4),
+            date(2022, 5, 2),
+            date(2033, 5, 2),
+        )
+        # Years when labour date was observed on May 1st
+        checkyears = (2017, 2018, 2019, 2020, 2023)
+
+        for d in checkdates:
+            self.assertIn(d, self.gr_holidays)
+            self.assertIn(
+                "Εργατική Πρωτομαγιά [Labour day] (Observed)",
+                self.gr_holidays[d],
+            )
+
+        # Check that there is no observed day created for years
+        # when Labour Day was on May 1st
+        for year in checkyears:
+            for day in (2, 3, 4):
+                d = date(year, 5, day)
+                if d in self.gr_holidays:
+                    self.assertNotIn(
+                        "Εργατική Πρωτομαγιά [Labour day] (Observed)",
+                        self.gr_holidays[d],
+                    )
