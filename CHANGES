@@ -1,9 +1,10 @@
 Version 0.14
 ============
 
-Released ????? ??, ????
+Released June 5, 2022
 
 - Drop support for EOL Python 3.6 #328 (hugovk, dr-p)
+- Package review #662 (dimbleby)
 - Added financial markets support: ECB and NYSE, list_supported_financial() method (dr-p)
 - Support for NY Stock Exchange #651, #458 (nadime, dr-p)
 - Support for Malta #612, #630 (rafelbev)
