@@ -28,7 +28,7 @@ from holidays.holiday_base import HolidayBase
 def country_holidays(
     country: str,
     subdiv: Optional[str] = None,
-    years: Union[int, Iterable[int]] = None,
+    years: Optional[Union[int, Iterable[int]]] = None,
     expand: bool = True,
     observed: bool = True,
     prov: Optional[str] = None,
@@ -175,7 +175,7 @@ def country_holidays(
         country_class = next(
             obj for name, obj in country_classes if name == country
         )
-        country_holiday = country_class(
+        country_holiday: HolidayBase = country_class(
             years=years,
             subdiv=subdiv,
             expand=expand,
@@ -191,7 +191,7 @@ def country_holidays(
 def CountryHoliday(
     country: str,
     subdiv: Optional[str] = None,
-    years: Union[int, Iterable[int]] = None,
+    years: Optional[Union[int, Iterable[int]]] = None,
     expand: bool = True,
     observed: bool = True,
     prov: Optional[str] = None,
@@ -279,7 +279,7 @@ def _islamic_to_gre(Gyear: int, Hmonth: int, Hday: int) -> List[date]:
 
 
 class _ChineseLuniSolar:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         This class has functions that generate Gregorian dates for holidays
         based on the Chinese lunisolar calendar.
