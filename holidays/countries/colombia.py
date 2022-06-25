@@ -15,142 +15,128 @@ from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd, MO, TH, FR
 
 from holidays.constants import JAN, MAR, MAY, JUN, JUL, AUG, OCT, NOV, DEC
-from holidays.constants import MON, WEEKEND
+from holidays.constants import MON
 from holidays.holiday_base import HolidayBase
 
 
 class Colombia(HolidayBase):
-    # https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_festivos_en_Colombia
-
     country = "CO"
 
     def __init__(self, **kwargs):
         HolidayBase.__init__(self, **kwargs)
 
-    def _populate(self, year):
+    def _add_with_bridge(self, _date, name):
+        if self.observed and _date.weekday() != MON and _date.year >= 1983:
+            self[_date + rd(weekday=MO)] = name + " (Observed)"
+        else:
+            self[_date] = name
 
-        # Fixed date holidays!
-        # If observed=True and they fall on a weekend they are not observed.
-        # If observed=False there are 18 holidays
+    def _populate(self, year):
+        self._add_fixed_date_holidays(year)
+        self._add_flexible_date_holidays(year)
+        self._add_easter_based_holidays(year)
+
+    def _add_fixed_date_holidays(self, year):
+        """
+        These holidays are always on the same date no matter what day of the
+        week they fall on.
+        """
 
         # New Year's Day
-        if self.observed and date(year, JAN, 1).weekday() in WEEKEND:
-            pass
-        else:
-            self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
+        self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
 
         # Labor Day
         self[date(year, MAY, 1)] = "Día del Trabajo [Labour Day]"
 
         # Independence Day
-        name = "Día de la Independencia [Independence Day]"
-        if self.observed and date(year, JUL, 20).weekday() in WEEKEND:
-            pass
-        else:
-            self[date(year, JUL, 20)] = name
+        self[date(year, JUL, 20)] = (
+            "Día de la Independencia [Independence Day]"
+        )
 
         # Battle of Boyaca
         self[date(year, AUG, 7)] = "Batalla de Boyacá [Battle of Boyacá]"
 
         # Immaculate Conception
-        if self.observed and date(year, DEC, 8).weekday() in WEEKEND:
-            pass
-        else:
-            self[date(year, DEC, 8)] = (
-                "La Inmaculada Concepción" " [Immaculate Conception]"
-            )
+        self[date(year, DEC, 8)] = (
+            "La Inmaculada Concepción [Immaculate Conception]"
+        )
 
         # Christmas
         self[date(year, DEC, 25)] = "Navidad [Christmas]"
 
-        # Emiliani Law holidays!
-        # Unless they fall on a Monday they are observed the following monday
-
-        #  Epiphany
-        name = "Día de los Reyes Magos [Epiphany]"
-        if date(year, JAN, 6).weekday() == MON or not self.observed:
-            self[date(year, JAN, 6)] = name
-        else:
-            self[date(year, JAN, 6) + rd(weekday=MO)] = name + "(Observed)"
+    def _add_flexible_date_holidays(self, year):
+        # Epiphany
+        self._add_with_bridge(
+            date(year, JAN, 6),
+            "Día de los Reyes Magos [Epiphany]",
+        )
 
         # Saint Joseph's Day
-        name = "Día de San José [Saint Joseph's Day]"
-        if date(year, MAR, 19).weekday() == MON or not self.observed:
-            self[date(year, MAR, 19)] = name
-        else:
-            self[date(year, MAR, 19) + rd(weekday=MO)] = name + "(Observed)"
+        self._add_with_bridge(
+            date(year, MAR, 19),
+            "Día de San José [Saint Joseph's Day]",
+        )
 
         # Saint Peter and Saint Paul's Day
-        name = "San Pedro y San Pablo [Saint Peter and Saint Paul]"
-        if date(year, JUN, 29).weekday() == MON or not self.observed:
-            self[date(year, JUN, 29)] = name
-        else:
-            self[date(year, JUN, 29) + rd(weekday=MO)] = name + "(Observed)"
+        self._add_with_bridge(
+            date(year, JUN, 29),
+            "San Pedro y San Pablo [Saint Peter and Saint Paul]",
+        )
 
         # Assumption of Mary
-        name = "La Asunción [Assumption of Mary]"
-        if date(year, AUG, 15).weekday() == MON or not self.observed:
-            self[date(year, AUG, 15)] = name
-        else:
-            self[date(year, AUG, 15) + rd(weekday=MO)] = name + "(Observed)"
+        self._add_with_bridge(
+            date(year, AUG, 15),
+            "La Asunción [Assumption of Mary]",
+        )
 
         # Columbus Day
-        name = "Día de la Raza [Columbus Day]"
-        if date(year, OCT, 12).weekday() == MON or not self.observed:
-            self[date(year, OCT, 12)] = name
-        else:
-            self[date(year, OCT, 12) + rd(weekday=MO)] = name + "(Observed)"
+        self._add_with_bridge(
+            date(year, OCT, 12),
+            "Día de la Raza [Columbus Day]",
+        )
 
         # All Saints’ Day
-        name = "Día de Todos los Santos [All Saint's Day]"
-        if date(year, NOV, 1).weekday() == MON or not self.observed:
-            self[date(year, NOV, 1)] = name
-        else:
-            self[date(year, NOV, 1) + rd(weekday=MO)] = name + "(Observed)"
+        self._add_with_bridge(
+            date(year, NOV, 1),
+            "Día de Todos los Santos [All Saint's Day]",
+        )
 
         # Independence of Cartagena
-        name = "Independencia de Cartagena [Independence of Cartagena]"
-        if date(year, NOV, 11).weekday() == MON or not self.observed:
-            self[date(year, NOV, 11)] = name
-        else:
-            self[date(year, NOV, 11) + rd(weekday=MO)] = name + "(Observed)"
+        self._add_with_bridge(
+            date(year, NOV, 11),
+            "Independencia de Cartagena [Independence of Cartagena]",
+        )
 
-        # Holidays based on Easter
+    def _add_easter_based_holidays(self, year):
+        _easter = easter(year)
+        self._add_fixed_easter_based_holidays(_easter)
+        self._add_flexible_easter_based_holidays(_easter)
 
+    def _add_fixed_easter_based_holidays(self, _easter):
         # Maundy Thursday
-        self[
-            easter(year) + rd(weekday=TH(-1))
-        ] = "Jueves Santo [Maundy Thursday]"
+        self[_easter + rd(weekday=TH(-1))] = "Jueves Santo [Maundy Thursday]"
 
         # Good Friday
-        self[easter(year) + rd(weekday=FR(-1))] = "Viernes Santo [Good Friday]"
+        self[_easter + rd(weekday=FR(-1))] = "Viernes Santo [Good Friday]"
 
-        # Holidays based on Easter but are observed the following monday
-        # (unless they occur on a monday)
-
+    def _add_flexible_easter_based_holidays(self, _easter):
         # Ascension of Jesus
-        name = "Ascensión del señor [Ascension of Jesus]"
-        hdate = easter(year) + rd(days=+39)
-        if hdate.weekday() == MON or not self.observed:
-            self[hdate] = name
-        else:
-            self[hdate + rd(weekday=MO)] = name + "(Observed)"
+        self._add_with_bridge(
+            _easter + rd(days=+39),
+            "Ascensión del señor [Ascension of Jesus]",
+        )
 
         # Corpus Christi
-        name = "Corpus Christi [Corpus Christi]"
-        hdate = easter(year) + rd(days=+60)
-        if hdate.weekday() == MON or not self.observed:
-            self[hdate] = name
-        else:
-            self[hdate + rd(weekday=MO)] = name + "(Observed)"
+        self._add_with_bridge(
+            _easter + rd(days=+60),
+            "Corpus Christi [Corpus Christi]",
+        )
 
         # Sacred Heart
-        name = "Sagrado Corazón [Sacred Heart]"
-        hdate = easter(year) + rd(days=+68)
-        if hdate.weekday() == MON or not self.observed:
-            self[hdate] = name
-        else:
-            self[hdate + rd(weekday=MO)] = name + "(Observed)"
+        self._add_with_bridge(
+            _easter + rd(days=+68),
+            "Sagrado Corazón [Sacred Heart]",
+        )
 
 
 class CO(Colombia):
