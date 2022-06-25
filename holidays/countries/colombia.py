@@ -26,7 +26,15 @@ class Colombia(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _add_with_bridge(self, _date, name):
-        if self.observed and _date.weekday() != MON and _date.year >= 1983:
+        """
+        On the 6th of December 1983, the government of Colombia declared which
+        holidays are to take effect, and also clarified that a subset of them
+        are to take place the next Monday if they do not fall on a Monday.
+        This law is "Ley 51 de 1983" which translates to law 51 of 1983.
+        Link: https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=4954#:~:text=Determina%20los%20d%C3%ADas%20festivos%20en,remuneraci%C3%B3n%20del%20d%C3%ADa%20festivo%20art.
+        """
+
+        if self.observed and _date.weekday() != MON and _date.year > 1983:
             self[_date + rd(weekday=MO)] = name + " (Observed)"
         else:
             self[_date] = name
@@ -65,6 +73,11 @@ class Colombia(HolidayBase):
         self[date(year, DEC, 25)] = "Navidad [Christmas]"
 
     def _add_flexible_date_holidays(self, year):
+        """
+        These holidays fall on the next Monday if they are not already on
+        Monday.
+        """
+
         # Epiphany
         self._add_with_bridge(
             date(year, JAN, 6),
@@ -108,6 +121,10 @@ class Colombia(HolidayBase):
         )
 
     def _add_easter_based_holidays(self, year):
+        """
+        These holidays change each year based on when easter is.
+        """
+
         _easter = easter(year)
         self._add_fixed_easter_based_holidays(_easter)
         self._add_flexible_easter_based_holidays(_easter)

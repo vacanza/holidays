@@ -15,6 +15,7 @@ from datetime import date
 from datetime import timedelta
 
 import holidays
+from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, OCT, NOV, DEC
 
 
 class TestCO(unittest.TestCase):
@@ -37,23 +38,198 @@ class TestCO(unittest.TestCase):
         # https://www.officeholidays.com/countries/colombia/2016
         year = 2016
         expected_holidays = [
-            date(year, 1, 1),
-            date(year, 1, 11),
-            date(year, 3, 21),
-            date(year, 3, 24),
-            date(year, 3, 25),
-            date(year, 5, 1),
-            date(year, 5, 9),
-            date(year, 5, 30),
-            date(year, 6, 6),
-            date(year, 7, 4),
-            date(year, 7, 20),
-            date(year, 8, 7),
-            date(year, 8, 15),
-            date(year, 10, 17),
-            date(year, 11, 7),
-            date(year, 11, 14),
-            date(year, 12, 8),
-            date(year, 12, 25),
+            date(year, JAN, 1),
+            date(year, JAN, 11),
+            date(year, MAR, 21),
+            date(year, MAR, 24),
+            date(year, MAR, 25),
+            date(year, MAY, 1),
+            date(year, MAY, 9),
+            date(year, MAY, 30),
+            date(year, JUN, 6),
+            date(year, JUL, 4),
+            date(year, JUL, 20),
+            date(year, AUG, 7),
+            date(year, AUG, 15),
+            date(year, OCT, 17),
+            date(year, NOV, 7),
+            date(year, NOV, 14),
+            date(year, DEC, 8),
+            date(year, DEC, 25),
+        ]
+        self._check_all_dates(year, expected_holidays)
+
+    def test_2017(self):
+        # https://www.officeholidays.com/countries/colombia/2017
+        year = 2017
+        expected_holidays = [
+            date(year, JAN, 1),
+            date(year, JAN, 9),
+            date(year, MAR, 20),
+            date(year, APR, 13),
+            date(year, APR, 14),
+            date(year, MAY, 1),
+            date(year, MAY, 29),
+            date(year, JUN, 19),
+            date(year, JUN, 26),
+            date(year, JUL, 3),
+            date(year, JUL, 20),
+            date(year, AUG, 7),
+            date(year, AUG, 21),
+            date(year, OCT, 16),
+            date(year, NOV, 6),
+            date(year, NOV, 13),
+            date(year, DEC, 8),
+            date(year, DEC, 25),
+        ]
+        self._check_all_dates(year, expected_holidays)
+
+    def test_2018(self):
+        # https://publicholidays.co/2018-dates/
+        year = 2018
+        expected_holidays = [
+            date(year, JAN, 1),
+            date(year, JAN, 8),
+            date(year, MAR, 19),
+            date(year, MAR, 29),
+            date(year, MAR, 30),
+            date(year, MAY, 1),
+            date(year, MAY, 14),
+            date(year, JUN, 4),
+            date(year, JUN, 11),
+            date(year, JUL, 2),
+            date(year, JUL, 20),
+            date(year, AUG, 7),
+            date(year, AUG, 20),
+            date(year, OCT, 15),
+            date(year, NOV, 5),
+            date(year, NOV, 12),
+            date(year, DEC, 8),
+            date(year, DEC, 25),
+        ]
+        self._check_all_dates(year, expected_holidays)
+
+    def test_2019(self):
+        # https://www.officeholidays.com/countries/colombia/2019
+        year = 2019
+        expected_holidays = [
+            date(year, JAN, 1),
+            date(year, JAN, 7),
+            date(year, MAR, 25),
+            date(year, APR, 18),
+            date(year, APR, 19),
+            date(year, MAY, 1),
+            date(year, JUN, 3),
+            date(year, JUN, 24),
+            date(year, JUL, 1),
+            date(year, JUL, 1),
+            date(year, JUL, 20),
+            date(year, AUG, 7),
+            date(year, AUG, 19),
+            date(year, OCT, 14),
+            date(year, NOV, 4),
+            date(year, NOV, 11),
+            date(year, DEC, 8),
+            date(year, DEC, 25),
+        ]
+        self._check_all_dates(year, expected_holidays)
+
+    def test_2020(self):
+        # https://www.officeholidays.com/countries/colombia/2020
+        year = 2020
+        expected_holidays = [
+            date(year, JAN, 1),
+            date(year, JAN, 6),
+            date(year, MAR, 23),
+            date(year, APR, 9),
+            date(year, APR, 10),
+            date(year, MAY, 1),
+            date(year, MAY, 25),
+            date(year, JUN, 15),
+            date(year, JUN, 22),
+            date(year, JUN, 29),
+            date(year, JUL, 20),
+            date(year, AUG, 7),
+            date(year, AUG, 17),
+            date(year, OCT, 12),
+            date(year, NOV, 2),
+            date(year, NOV, 16),
+            date(year, DEC, 8),
+            date(year, DEC, 25),
+        ]
+        self._check_all_dates(year, expected_holidays)
+
+    def test_2021(self):
+        # https://www.officeholidays.com/countries/colombia/2021
+        year = 2021
+        expected_holidays = [
+            date(year, JAN, 1),
+            date(year, JAN, 11),
+            date(year, MAR, 22),
+            date(year, APR, 1),
+            date(year, APR, 2),
+            date(year, MAY, 1),
+            date(year, MAY, 17),
+            date(year, JUN, 7),
+            date(year, JUN, 14),
+            date(year, JUL, 5),
+            date(year, JUL, 20),
+            date(year, AUG, 7),
+            date(year, AUG, 16),
+            date(year, OCT, 18),
+            date(year, NOV, 1),
+            date(year, NOV, 15),
+            date(year, DEC, 8),
+            date(year, DEC, 25),
+        ]
+        self._check_all_dates(year, expected_holidays)
+
+    def test_2022(self):
+        # https://www.officeholidays.com/countries/colombia/2022
+        year = 2022
+        expected_holidays = [
+            date(year, JAN, 1),
+            date(year, JAN, 10),
+            date(year, MAR, 21),
+            date(year, APR, 14),
+            date(year, APR, 15),
+            date(year, MAY, 1),
+            date(year, MAY, 30),
+            date(year, JUN, 20),
+            date(year, JUN, 27),
+            date(year, JUL, 4),
+            date(year, JUL, 20),
+            date(year, AUG, 7),
+            date(year, AUG, 15),
+            date(year, OCT, 17),
+            date(year, NOV, 7),
+            date(year, NOV, 14),
+            date(year, DEC, 8),
+            date(year, DEC, 25),
+        ]
+        self._check_all_dates(year, expected_holidays)
+
+    def test_2023(self):
+        # https://publicholidays.co/2023-dates/
+        year = 2023
+        expected_holidays = [
+            date(year, JAN, 1),
+            date(year, JAN, 9),
+            date(year, MAR, 20),
+            date(year, APR, 6),
+            date(year, APR, 7),
+            date(year, MAY, 1),
+            date(year, MAY, 22),
+            date(year, JUN, 12),
+            date(year, JUN, 19),
+            date(year, JUL, 3),
+            date(year, JUL, 20),
+            date(year, AUG, 7),
+            date(year, AUG, 21),
+            date(year, OCT, 16),
+            date(year, NOV, 6),
+            date(year, NOV, 13),
+            date(year, DEC, 8),
+            date(year, DEC, 25),
         ]
         self._check_all_dates(year, expected_holidays)
