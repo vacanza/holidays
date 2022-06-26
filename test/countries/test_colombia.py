@@ -233,3 +233,86 @@ class TestCO(unittest.TestCase):
             date(year, DEC, 25),
         ]
         self._check_all_dates(year, expected_holidays)
+
+    def test_1984(self):
+        year = 1984
+        expected_holidays = [
+            date(year, JAN, 1),
+            date(year, JAN, 9),
+            date(year, MAR, 19),
+            date(year, APR, 19),
+            date(year, APR, 20),
+            date(year, MAY, 1),
+            date(year, JUN, 4),
+            date(year, JUN, 25),
+            date(year, JUL, 2),
+            date(year, JUL, 2),
+            date(year, JUL, 20),
+            date(year, AUG, 7),
+            date(year, AUG, 20),
+            date(year, OCT, 15),
+            date(year, NOV, 5),
+            date(year, NOV, 12),
+            date(year, DEC, 8),
+            date(year, DEC, 25),
+        ]
+        self._check_all_dates(year, expected_holidays)
+
+    def test_1983(self):
+        year = 1983
+        expected_holidays = [
+            date(year, JAN, 1),
+            date(year, JAN, 6),
+            date(year, MAR, 19),
+            date(year, MAR, 31),
+            date(year, APR, 1),
+            date(year, MAY, 1),
+            date(year, MAY, 12),
+            date(year, JUN, 2),
+            date(year, JUN, 29),
+            date(year, JUL, 20),
+            date(year, AUG, 7),
+            date(year, AUG, 15),
+            date(year, OCT, 12),
+            date(year, NOV, 1),
+            date(year, NOV, 11),
+            date(year, DEC, 8),
+            date(year, DEC, 25),
+        ]
+        self._check_all_dates(year, expected_holidays)
+
+    def test_1951(self):
+        year = 1951
+        expected_holidays = [
+            date(year, JAN, 1),
+            date(year, JAN, 6),
+            date(year, MAR, 19),
+            date(year, MAR, 22),
+            date(year, MAR, 23),
+            date(year, MAY, 1),
+            date(year, MAY, 3),
+            date(year, MAY, 24),
+            date(year, JUN, 29),
+            date(year, JUL, 20),
+            date(year, AUG, 7),
+            date(year, AUG, 15),
+            date(year, OCT, 12),
+            date(year, NOV, 1),
+            date(year, NOV, 11),
+            date(year, DEC, 8),
+            date(year, DEC, 25),
+        ]
+        self._check_all_dates(year, expected_holidays)
+
+    def test_1950(self):
+        year = 1950
+        expected_holidays = [
+            date(year, JAN, 1),
+            date(year, MAY, 1),
+            date(year, JUL, 20),
+            date(year, AUG, 7),
+            date(year, OCT, 12),
+            date(year, NOV, 11),
+            date(year, DEC, 25),
+        ]
+        self._check_all_dates(year, expected_holidays)
