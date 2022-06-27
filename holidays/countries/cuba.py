@@ -41,11 +41,10 @@ class Cuba(HolidayBase):
         """
 
         name = "Aniversario de la Revolución [Anniversary of the Revolution]"
+        self[date(year, JAN, 1)] = name
         if year <= 2013 and self.observed \
                 and date(year, JAN, 1).weekday() == SUN:
             self[date(year, JAN, 1) + rd(weekday=MO)] = name + " (Observed)"
-        else:
-            self[date(year, JAN, 1)] = name
 
         # Granted in 2007 decree.
         if year > 2007:
@@ -59,10 +58,9 @@ class Cuba(HolidayBase):
             self[easter(year) - rd(days=2)] = "Viernes Santo [Good Friday]"
 
         name = "Día Internacional de los Trabajadores [Labour Day]"
+        self[date(year, MAY, 1)] = name
         if self.observed and date(year, MAY, 1).weekday() == SUN:
             self[date(year, MAY, 1) + rd(weekday=MO)] = name + " (Observed)"
-        else:
-            self[date(year, MAY, 1)] = name
 
         self[date(year, JUL, 25)] = (
             "Conmemoración del asalto a Moncada "
@@ -79,10 +77,9 @@ class Cuba(HolidayBase):
         )
 
         name = "Inicio de las Guerras de Independencia [Independence Day]"
+        self[date(year, OCT, 10)] = name
         if self.observed and date(year, OCT, 10).weekday() == SUN:
             self[date(year, OCT, 10) + rd(weekday=MO)] = name + " (Observed)"
-        else:
-            self[date(year, OCT, 10)] = name
 
         # In 1969, Christmas was cancelled for the sugar harvest but then was
         # cancelled for good:

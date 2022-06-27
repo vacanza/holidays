@@ -112,6 +112,7 @@ class TestCuba(unittest.TestCase):
     def test_2006(self):
         year = 2006
         expected = [
+            date(year, JAN, 1),
             date(year, JAN, 2),
             date(year, MAY, 1),
             date(year, JUL, 25),
@@ -156,6 +157,7 @@ class TestCuba(unittest.TestCase):
         expected = [
             date(year, JAN, 1),
             date(year, JAN, 2),
+            date(year, MAY, 1),
             date(year, MAY, 2),
             date(year, JUL, 25),
             date(year, JUL, 26),
@@ -169,6 +171,7 @@ class TestCuba(unittest.TestCase):
     def test_2012(self):
         year = 2012
         expected = [
+            date(year, JAN, 1),
             date(year, JAN, 2),
             date(year, JAN, 2),
             date(year, APR, 6),
@@ -260,6 +263,7 @@ class TestCuba(unittest.TestCase):
             date(year, JUL, 25),
             date(year, JUL, 26),
             date(year, JUL, 27),
+            date(year, OCT, 10),
             date(year, OCT, 11),
             date(year, DEC, 25),
             date(year, DEC, 31),
@@ -273,6 +277,7 @@ class TestCuba(unittest.TestCase):
             date(year, JAN, 1),
             date(year, JAN, 2),
             date(year, APR, 15),
+            date(year, MAY, 1),
             date(year, MAY, 2),
             date(year, JUL, 25),
             date(year, JUL, 26),
