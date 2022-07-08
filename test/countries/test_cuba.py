@@ -15,7 +15,7 @@ from datetime import date
 from datetime import timedelta
 
 import holidays
-from holidays.constants import (JAN, MAR, APR, MAY, JUL, OCT, DEC)
+from holidays.constants import JAN, MAR, APR, MAY, JUL, OCT, DEC
 
 
 class TestCuba(unittest.TestCase):

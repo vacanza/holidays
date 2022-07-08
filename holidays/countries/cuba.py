@@ -14,7 +14,7 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd, MO
 
-from holidays.constants import (JAN, MAY, JUL, OCT, DEC)
+from holidays.constants import JAN, MAY, JUL, OCT, DEC
 from holidays.constants import SUN
 from holidays.holiday_base import HolidayBase
 
@@ -42,8 +42,11 @@ class Cuba(HolidayBase):
 
         name = "Aniversario de la Revolución [Anniversary of the Revolution]"
         self[date(year, JAN, 1)] = name
-        if year <= 2013 and self.observed \
-                and date(year, JAN, 1).weekday() == SUN:
+        if (
+            year <= 2013
+            and self.observed
+            and date(year, JAN, 1).weekday() == SUN
+        ):
             self[date(year, JAN, 1) + rd(weekday=MO)] = name + " (Observed)"
 
         # Granted in 2007 decree.
@@ -67,9 +70,9 @@ class Cuba(HolidayBase):
             "[Commemoration of the Assault of the Moncada garrison]"
         )
 
-        self[date(year, JUL, 26)] = (
-            "Día de la Rebeldía Nacional [Day of the National Rebellion]"
-        )
+        self[
+            date(year, JUL, 26)
+        ] = "Día de la Rebeldía Nacional [Day of the National Rebellion]"
 
         self[date(year, JUL, 27)] = (
             "Conmemoración del asalto a Moncada "
