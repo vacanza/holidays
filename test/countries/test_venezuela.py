@@ -14,7 +14,7 @@ import unittest
 from datetime import date
 from datetime import timedelta
 
-from holidays.constants import (JAN, FEB, MAR, APR, MAY, JUN, JUL, OCT, DEC)
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, OCT, DEC
 import holidays
 
 
@@ -233,6 +233,6 @@ class TestVenezuela(unittest.TestCase):
         self.assertNotIn(date(1920, OCT, 12), self.holidays)
         self.assertIn(date(1921, OCT, 12), self.holidays)
         old_name = self.holidays.get(date(2001, OCT, 12)).lower()
-        self.assertIn('raza', old_name)
+        self.assertIn("raza", old_name)
         new_name = self.holidays.get(date(2002, OCT, 12)).lower()
-        self.assertIn('resistencia', new_name)
+        self.assertIn("resistencia", new_name)
