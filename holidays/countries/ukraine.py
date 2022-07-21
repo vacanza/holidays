@@ -69,7 +69,9 @@ class Ukraine(HolidayBase):
         name = "День перемоги"
 
         if year >= 2016:
-            self[date(year, MAY, 9)] = "День перемоги над нацизмом у Другій світовій війні"
+            self[
+                date(year, MAY, 9)
+            ] = "День перемоги над нацизмом у Другій світовій війні"
         elif 1965 <= year <= 2015:
             self[date(year, MAY, 9)] = name
         elif 1945 <= year <= 1946:
