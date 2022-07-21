@@ -3,6 +3,7 @@ Version 0.15
 
 Released ?????? ??, ????
 
+- Typechecking implementation, first release (HolidayBase, utils, some sample countries) #661 (dimbleby)
 
 Version 0.14.2
 ==============
