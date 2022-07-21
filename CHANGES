@@ -6,6 +6,7 @@ Released ?????? ??, ????
 - Typechecking implementation, first release (HolidayBase, utils, some sample countries) #661 (dimbleby)
 - US fixes #675 (arkid15r)
 - UA refactoring #681 (kasya)
+- Bump actions/setup-python from 3.1.0 to 4.1.0 #682 (dr-p)
 
 Version 0.14.2
 ==============
