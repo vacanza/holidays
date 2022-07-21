@@ -5,6 +5,7 @@ Released ?????? ??, ????
 
 - Typechecking implementation, first release (HolidayBase, utils, some sample countries) #661 (dimbleby)
 - US fixes #675 (arkid15r)
+- UA refactoring #681 (kasya)
 
 Version 0.14.2
 ==============
