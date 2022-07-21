@@ -35,7 +35,7 @@ class TestUkraine(unittest.TestCase):
         self.assertIn(date(2018, 8, 24), self.holidays)
         self.assertIn(date(2018, 10, 14), self.holidays)
         self.assertIn(date(2018, 12, 25), self.holidays)
-    
+
     def test_2022(self):
         self.assertIn(date(2022, 1, 1), self.holidays)
         self.assertIn(date(2022, 1, 7), self.holidays)
