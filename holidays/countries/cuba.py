@@ -28,9 +28,9 @@ class Cuba(HolidayBase):
     def _populate(self, year):
         """
         Overview: https://en.wikipedia.org/wiki/Public_holidays_in_Cuba
-        1984 (DEC 28): https://files.sld.cu/prevemi/files/2013/03/ley_49_codigo_trabajo_1984.pdf
-        2007 (NOV 19): https://www.gacetaoficial.gob.cu/sites/default/files/go_x_053_2007.pdf
-        2013 (DEC 20): https://www.gacetaoficial.gob.cu/es/ley-no-116-codigo-de-trabajo
+        1984 (DEC 28): https://bit.ly/3okNBbt
+        2007 (NOV 19): https://bit.ly/3oFbhaZ
+        2013 (DEC 20): https://bit.ly/3zoO3vC
         Note: for holidays that can be moved to a Monday if they fall on a
               Monday, between 1984 and 2013, the State Committee of Work and
               Social Security would determine if they would be moved to the
@@ -54,8 +54,8 @@ class Cuba(HolidayBase):
             self[date(year, JAN, 2)] = "Día de la Victoria [Victory Day]"
 
         # Granted temporarily in 2012 and 2013:
-        #   https://www.cnn.com/2012/03/31/world/americas/cuba-good-friday/index.html#:~:text=During%20his%20visit%20to%20Cuba,since%20the%201959%20Cuban%20revolution.
-        #   https://www.catholicnewsagency.com/news/29455/cuban-government-makes-good-friday-official-holiday
+        #   https://cnn.it/3v5V6GY
+        #   https://bit.ly/3v6bM18
         # Permanently granted in 2013 decree for 2014 and onwards.
         if year >= 2012:
             self[easter(year) - rd(days=2)] = "Viernes Santo [Good Friday]"
@@ -86,12 +86,12 @@ class Cuba(HolidayBase):
 
         # In 1969, Christmas was cancelled for the sugar harvest but then was
         # cancelled for good:
-        #   https://time.com/vault/issue/1969-11-07/page/44/
+        #   https://bit.ly/3OpwX5i
         # In 1997, Christmas was temporarily back for the pope's visit:
-        #   http://www.cnn.com/WORLD/9712/15/castro.christmas/
+        #   https://cnn.it/3Omn349
         # In 1998, Christmas returns for good:
-        #   https://www.independent.co.uk/news/cuba-ends-its-30year-ban-on-christmas-1193525.html
-        #   https://www.ilo.org/dyn/travail/docs/1320/DECRETO-LEY%20No.%20189-1998.pdf
+        #   https://bit.ly/3cyXhwz
+        #   https://bit.ly/3cyXj7F
         if year >= 1997 or year < 1969:
             self[date(year, DEC, 25)] = "Día de Navidad [Christmas Day]"
 
