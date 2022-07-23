@@ -3,7 +3,7 @@ Version 0.15
 
 Released ?????? ??, ????
 
-- Support for Cuba #678 (bthompson)
+- Support for Cuba #678 (bthompson, dr-p)
 - Typechecking implementation, first release (HolidayBase, utils, some sample countries) #661 (dimbleby)
 - Test coverage improvement #633 (akosfurton, dr-p)
 - Drop support for PortugalExt (ie: extended Portugal) (dr-p)

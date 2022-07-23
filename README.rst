@@ -152,6 +152,9 @@ following countries and their subdivisions are available:
    * - Croatia
      - HR
      - None
+   * - Cuba
+     - CU
+     - None
    * - Curaçao
      - CW
      - None
