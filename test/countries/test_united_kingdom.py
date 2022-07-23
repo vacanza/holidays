@@ -24,7 +24,6 @@ class TestUK(unittest.TestCase):
         self.holidays_england = holidays.UK(subdiv="England")
         self.holidays_wales = holidays.UK(subdiv="Wales")
         self.holidays_scotland = holidays.UK(subdiv="Scotland")
-        self.holidays_isleofman = holidays.UK(subdiv="Isle of Man")
         self.holidays_northernireland = holidays.UK(subdiv="Northern Ireland")
 
     def test_new_years(self):
@@ -235,52 +234,6 @@ class TestUK(unittest.TestCase):
         self.assertIn("2017-12-25", self.holidays_scotland)
         self.assertIn("2017-12-26", self.holidays_scotland)
 
-    def test_isleofman(self):
-        self.assertIn("2018-06-01", self.holidays_isleofman)
-        self.assertIn("2018-07-05", self.holidays_isleofman)
-
     def test_northernireland(self):
         self.assertIn("2018-03-17", self.holidays_northernireland)
         self.assertIn("2018-07-12", self.holidays_northernireland)
-
-
-class TestEngland(unittest.TestCase):
-    def test_warning(self):
-        with warnings.catch_warnings(record=True) as w:
-            warnings.simplefilter("always")
-            england = holidays.England()
-            self.assertIsInstance(england, holidays.England)
-            self.assertEqual(1, len(w))
-            self.assertTrue(issubclass(w[-1].category, DeprecationWarning))
-
-
-class TestScotland(unittest.TestCase):
-    def test_warning(self):
-        with warnings.catch_warnings(record=True) as w:
-            warnings.simplefilter("always")
-            scotland = holidays.Scotland()
-            self.assertIsInstance(scotland, holidays.Scotland)
-            self.assertEqual(1, len(w))
-            self.assertTrue(issubclass(w[-1].category, DeprecationWarning))
-
-
-class TestIsleOfManAsGB(unittest.TestCase):
-    """Deprecated backwards compatibility"""
-
-    def test_warning(self):
-        with warnings.catch_warnings(record=True) as w:
-            warnings.simplefilter("always")
-            isleofman = holidays.UnitedKingdom(state="Isle of Man")
-            self.assertIsInstance(isleofman, holidays.UnitedKingdom)
-            self.assertEqual(1, len(w))
-            self.assertTrue(issubclass(w[-1].category, DeprecationWarning))
-
-
-class TestNorthernIreland(unittest.TestCase):
-    def test_warning(self):
-        with warnings.catch_warnings(record=True) as w:
-            warnings.simplefilter("always")
-            northernisland = holidays.NorthernIreland()
-            self.assertIsInstance(northernisland, holidays.NorthernIreland)
-            self.assertEqual(1, len(w))
-            self.assertTrue(issubclass(w[-1].category, DeprecationWarning))

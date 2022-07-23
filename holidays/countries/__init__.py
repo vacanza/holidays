@@ -100,10 +100,6 @@ from .united_kingdom import (
     UK,
     GB,
     GBR,
-    England,
-    Wales,
-    Scotland,
-    NorthernIreland,
 )
 from .united_states import UnitedStates, US, USA
 from .uruguay import Uruguay, UY, URY

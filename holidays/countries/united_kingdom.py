@@ -28,7 +28,6 @@ class UnitedKingdom(HolidayBase):
 
     country = "GB"
     subdivisions = ["UK", "England", "Northern Ireland", "Scotland", "Wales"]
-    _deprecated_subdivisions = ["Isle of Man"]
 
     def __init__(self, **kwargs: Any) -> None:
         # default subdiv to UK; state for backwards compatibility
@@ -206,44 +205,3 @@ class GB(UnitedKingdom):
 
 class GBR(UnitedKingdom):
     pass
-
-
-class England(UnitedKingdom):
-    def __init__(self, **kwargs: Any) -> None:
-        warnings.warn(
-            "England is deprecated, use UK(subdiv='England') instead.",
-            DeprecationWarning,
-        )
-        kwargs["subdiv"] = "England"
-        UnitedKingdom.__init__(self, **kwargs)
-
-
-class Wales(UnitedKingdom):
-    def __init__(self, **kwargs: Any) -> None:
-        warnings.warn(
-            "Wales is deprecated, use UK(subdiv='Wales') instead.",
-            DeprecationWarning,
-        )
-        kwargs["subdiv"] = "Wales"
-        UnitedKingdom.__init__(self, **kwargs)
-
-
-class Scotland(UnitedKingdom):
-    def __init__(self, **kwargs: Any) -> None:
-        warnings.warn(
-            "Scotland is deprecated, use UK(subdiv='Scotland') instead.",
-            DeprecationWarning,
-        )
-        kwargs["subdiv"] = "Scotland"
-        UnitedKingdom.__init__(self, **kwargs)
-
-
-class NorthernIreland(UnitedKingdom):
-    def __init__(self, **kwargs: Any) -> None:
-        warnings.warn(
-            "Northern Ireland is deprecated, use UK(subdiv='Northern Ireland')"
-            " instead.",
-            DeprecationWarning,
-        )
-        kwargs["subdiv"] = "Northern Ireland"
-        UnitedKingdom.__init__(self, **kwargs)
