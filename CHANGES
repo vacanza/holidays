@@ -3,9 +3,10 @@ Version 0.15
 
 Released ?????? ??, ????
 
+- Support for Cuba #678 (bthompson)
 - Typechecking implementation, first release (HolidayBase, utils, some sample countries) #661 (dimbleby)
 - US fixes #675 (arkid15r)
-- UA refactoring #681 (kasya)
+- Ukraine refactoring #681 (kasya)
 - Bump pre-commit and setup-python actions #672, #682 (dr-p)
 
 Version 0.14.2
