@@ -5,6 +5,7 @@ Released ?????? ??, ????
 
 - Support for Cuba #678 (bthompson)
 - Typechecking implementation, first release (HolidayBase, utils, some sample countries) #661 (dimbleby)
+- Test coverage improvement #633 (akosfurton)
 - US fixes #675 (arkid15r)
 - Colombia fixes & test improvements #676 (bkthomps)
 - Venezuela fixes & test improvements #677 (bkthomps)
