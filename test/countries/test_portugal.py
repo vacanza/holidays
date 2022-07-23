@@ -56,7 +56,7 @@ class TestPT(unittest.TestCase):
 
 class TestPortugalExt(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.PortugalExt()
+        self.holidays = holidays.Portugal(subdiv="Ext")
 
     def test_2017(self):
         self.assertIn(date(2017, 12, 24), self.holidays)  # Christmas' Eve
