@@ -342,18 +342,19 @@ class TestCA(unittest.TestCase):
         self.assertIn(date(2007, 11, 12), nl_holidays)
 
     def test_christmas_day(self):
+        self.holidays.observed = False
         for year in range(1900, 2100):
             dt = date(year, 12, 25)
             self.assertIn(dt, self.holidays)
             self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-        self.assertNotIn(date(2010, 12, 24), self.holidays)
+        self.assertNotIn(date(2010, 12, 27), self.holidays)
         self.assertNotEqual(
             self.holidays[date(2011, 12, 26)], "Christmas Day (Observed)"
         )
         self.holidays.observed = True
-        self.assertIn(date(2010, 12, 24), self.holidays)
+        self.assertIn(date(2010, 12, 27), self.holidays)
         self.assertEqual(
-            self.holidays[date(2011, 12, 26)], "Christmas Day (Observed)"
+            self.holidays[date(2011, 12, 27)], "Christmas Day (Observed)"
         )
 
     def test_boxing_day(self):
