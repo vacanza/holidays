@@ -88,9 +88,7 @@ class TestIsrael(unittest.TestCase):
         )
         self.assertIn(official_memorial_day, il_holidays)
         self.assertIn(holiday_name, il_holidays[official_memorial_day])
-        self.assertNotEqual(
-            il_holidays[observed_memorial_day], "Memorial Day"
-        )
+        self.assertNotEqual(il_holidays[observed_memorial_day], "Memorial Day")
 
         # Earlier
         il_holidays = holidays.IL(years=[2018], observed=False)

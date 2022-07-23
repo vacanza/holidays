@@ -54,7 +54,7 @@ class TestDominicanRepublic(unittest.TestCase):
 
     def test_change_day_by_law(self):
         year = 1996
-        self.do_holidays = holidays.DO(years = [year])
+        self.do_holidays = holidays.DO(years=[year])
         # New Year's Day
         self.assertIn(date(year, 1, 1), self.do_holidays)
         # Epiphany

@@ -38,10 +38,10 @@ class TestFrance(unittest.TestCase):
             self.holidays[date(1948, 5, 1)],
             "Fête du Travail et de la Concorde sociale",
         )
-        self.assertNotIn(date(1810, 1, 1), self.holidays) # Jour de l'an
+        self.assertNotIn(date(1810, 1, 1), self.holidays)  # Jour de l'an
         self.assertIn(date(1811, 1, 1), self.holidays)
 
-        self.assertNotIn(date(1879, 7, 14), self.holidays) # Fete nationale
+        self.assertNotIn(date(1879, 7, 14), self.holidays)  # Fete nationale
         self.assertIn(date(1880, 7, 14), self.holidays)
 
     def test_alsace_moselle(self):

@@ -51,9 +51,7 @@ class TestEgypt(unittest.TestCase):
 
     def test_revolution_day(self):
         self.holidays = holidays.EG(years=[1953])
-        self.assertEqual(
-            self.holidays[date(1953, 7, 23)], "Revolution Day"
-        )
+        self.assertEqual(self.holidays[date(1953, 7, 23)], "Revolution Day")
         self.holidays = holidays.EG(years=[1952])
         self.assertNotIn(date(1952, 7, 23), self.holidays)
 

@@ -25,7 +25,8 @@ class TestUkraine(unittest.TestCase):
 
     def test_1950(self):
         self.assertEqual(
-            self.holidays[date(1950, 5, 1)], "День міжнародної солідарності трудящих"
+            self.holidays[date(1950, 5, 1)],
+            "День міжнародної солідарності трудящих",
         )
 
     def test_2018(self):

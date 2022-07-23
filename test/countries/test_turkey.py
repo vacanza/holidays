@@ -26,10 +26,11 @@ class TestTurkey(unittest.TestCase):
         self.assertIn(date(2015, 4, 23), self.holidays)
         self.assertIn(date(2015, 5, 1), self.holidays)
         self.assertIn(date(2015, 5, 19), self.holidays)
-        self.assertNotIn(date(2015, 7, 15), self.holidays) # Became Holiday in 2016
+        self.assertNotIn(
+            date(2015, 7, 15), self.holidays
+        )  # Became Holiday in 2016
         self.assertIn(date(2015, 8, 30), self.holidays)
         self.assertIn(date(2015, 10, 29), self.holidays)
-
 
     def test_2019(self):
         self.assertIn(date(2019, 1, 1), self.holidays)

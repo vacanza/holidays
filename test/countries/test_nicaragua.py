@@ -49,7 +49,7 @@ class TestNicaragua(unittest.TestCase):
 
     def test_ni_holidays_1979(self):
         year = 1979
-        self.ni_holidays = holidays.NI(years = [year])
+        self.ni_holidays = holidays.NI(years=[year])
 
         # New Year's Day
         self.assertIn(date(year, 1, 1), self.ni_holidays)

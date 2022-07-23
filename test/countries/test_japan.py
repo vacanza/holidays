@@ -22,9 +22,9 @@ class TestJapan(unittest.TestCase):
 
     def test_not_implemented(self):
         with self.assertRaises(NotImplementedError):
-            holidays.Japan(years = [1945])
+            holidays.Japan(years=[1945])
         with self.assertRaises(NotImplementedError):
-            holidays.Japan(years = [2100])
+            holidays.Japan(years=[2100])
 
     def test_new_years_day(self):
         self.assertIn(date(1949, 1, 1), self.holidays)

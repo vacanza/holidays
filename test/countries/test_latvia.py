@@ -53,7 +53,6 @@ class TestLatvia(unittest.TestCase):
         self.assertIn(date(year, 12, 26), self.holidays)
         self.assertIn(date(year, 12, 31), self.holidays)
 
-
     def test_2020(self):
         # https://www.officeholidays.com/countries/latvia/2020
         # https://en.wikipedia.org/wiki/Public_holidays_in_Latvia

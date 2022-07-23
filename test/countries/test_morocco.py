@@ -75,12 +75,11 @@ class TestMorocco(unittest.TestCase):
         # Independence Day post 1956
         self.holidays = holidays.Morocco(years=[1957])
         self.assertEqual(
-            self.holidays[date(1957, 11, 18)], "Fête de l'indépendance, Fête du Trône"
+            self.holidays[date(1957, 11, 18)],
+            "Fête de l'indépendance, Fête du Trône",
         )
         self.holidays = holidays.Morocco(years=[1956])
-        self.assertEqual(
-            self.holidays[date(1956, 11, 18)], "Fête du Trône"
-        )
+        self.assertEqual(self.holidays[date(1956, 11, 18)], "Fête du Trône")
 
     def test_hijri_based(self):
         if importlib.util.find_spec("hijri_converter"):

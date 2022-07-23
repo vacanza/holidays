@@ -57,7 +57,9 @@ class TestPL(unittest.TestCase):
 
     def test_swieto_trzech_kroli(self):
         self.holidays = holidays.Poland(years=[2011])
-        self.assertEqual(self.holidays[date(2011, 1, 6)], "Święto Trzech Króli")
+        self.assertEqual(
+            self.holidays[date(2011, 1, 6)], "Święto Trzech Króli"
+        )
         self.holidays = holidays.Poland(years=[2010])
         self.assertNotIn(date(2010, 1, 6), self.holidays)
 
