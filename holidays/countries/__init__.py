@@ -27,7 +27,9 @@ from .chile import Chile, CL, CHL
 from .china import China, CN, CHN
 from .colombia import Colombia, CO, COL
 from .croatia import Croatia, HR, HRV
+from .cuba import Cuba, CU, CUB
 from .curacao import Curacao, CW, CUW
+from .cyprus import Cyprus, CY, CYP
 from .czechia import Czechia, CZ, CZE
 from .denmark import Denmark, DK, DNK
 from .djibouti import Djibouti, DJ, DJI
@@ -35,7 +37,6 @@ from .dominican_republic import DominicanRepublic, DO, DOM
 from .egypt import Egypt, EG, EGY
 from .estonia import Estonia, EE, EST
 from .ethiopia import Ethiopia, ET, ETH
-from .european_central_bank import EuropeanCentralBank, ECB, TAR
 from .finland import Finland, FI, FIN
 from .france import France, FR, FRA
 from .georgia import Georgia, GE, GEO
@@ -59,6 +60,7 @@ from .latvia import Latvia, LV, LVA
 from .lesotho import Lesotho, LS, LSO
 from .lithuania import Lithuania, LT, LTU
 from .luxembourg import Luxembourg, LU, LUX
+from .madagascar import Madagascar, MG, MDG
 from .malawi import Malawi, MW, MWI
 from .malaysia import Malaysia, MY, MYS
 from .malta import Malta, MT, MLT

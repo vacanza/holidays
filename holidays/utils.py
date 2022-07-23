@@ -21,13 +21,14 @@ from datetime import date, timedelta
 from hijri_converter import convert
 
 import holidays.countries
+import holidays.financial
 from holidays.holiday_base import HolidayBase
 
 
 def country_holidays(
     country: str,
     subdiv: Optional[str] = None,
-    years: Union[int, Iterable[int]] = None,
+    years: Optional[Union[int, Iterable[int]]] = None,
     expand: bool = True,
     observed: bool = True,
     prov: Optional[str] = None,
@@ -174,7 +175,7 @@ def country_holidays(
         country_class = next(
             obj for name, obj in country_classes if name == country
         )
-        country_holiday = country_class(
+        country_holiday: HolidayBase = country_class(
             years=years,
             subdiv=subdiv,
             expand=expand,
@@ -190,7 +191,7 @@ def country_holidays(
 def CountryHoliday(
     country: str,
     subdiv: Optional[str] = None,
-    years: Union[int, Iterable[int]] = None,
+    years: Optional[Union[int, Iterable[int]]] = None,
     expand: bool = True,
     observed: bool = True,
     prov: Optional[str] = None,
@@ -223,6 +224,23 @@ def list_supported_countries() -> Dict[str, List[str]]:
         obj.country: obj.subdivisions
         for name, obj in inspect.getmembers(
             holidays.countries, inspect.isclass
+        )
+        if obj.__base__ == HolidayBase
+    }
+
+
+def list_supported_financial() -> Dict[str, List[str]]:
+    """
+    Get all supported financial markets and their subdivisions.
+
+    :return:
+        A dictionary where the key is the market codes and
+        the value is a list of supported subdivision codes.
+    """
+    return {
+        obj.country: obj.subdivisions
+        for name, obj in inspect.getmembers(
+            holidays.financial, inspect.isclass
         )
         if obj.__base__ == HolidayBase
     }
@@ -261,7 +279,7 @@ def _islamic_to_gre(Gyear: int, Hmonth: int, Hday: int) -> List[date]:
 
 
 class _ChineseLuniSolar:
-    def __init__(self):
+    def __init__(self) -> None:
         """
         This class has functions that generate Gregorian dates for holidays
         based on the Chinese lunisolar calendar.

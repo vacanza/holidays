@@ -10,6 +10,7 @@
 #  License: MIT (see LICENSE file)
 import warnings
 from datetime import date
+from typing import Any
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd, MO, FR
@@ -29,13 +30,13 @@ class UnitedKingdom(HolidayBase):
     subdivisions = ["UK", "England", "Northern Ireland", "Scotland", "Wales"]
     _deprecated_subdivisions = ["Isle of Man"]
 
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Any) -> None:
         # default subdiv to UK; state for backwards compatibility
         if not kwargs.get("subdiv", kwargs.get("state")):
             kwargs["subdiv"] = "UK"
         HolidayBase.__init__(self, **kwargs)
 
-    def _populate(self, year):
+    def _populate(self, year: int) -> None:
 
         # New Year's Day
         if year >= 1974:
@@ -101,7 +102,7 @@ class UnitedKingdom(HolidayBase):
         self._country_specific(year)
         self._additional_holidays(year)
 
-    def _country_specific(self, year):
+    def _country_specific(self, year: int) -> None:
         # This method is replaced by class Ireland
 
         # UnitedKingdom exclusive holidays
@@ -182,7 +183,7 @@ class UnitedKingdom(HolidayBase):
         elif year == 2022:
             self[date(year, JUN, 3)] = "Platinum Jubilee of Elizabeth II"
 
-    def _additional_holidays(self, year):
+    def _additional_holidays(self, year: int) -> None:
         # Method used to handle Isle of Man (replaced by class IsleOfMan)
         if self.subdiv == "Isle of Man":
             warnings.warn(
@@ -208,7 +209,7 @@ class GBR(UnitedKingdom):
 
 
 class England(UnitedKingdom):
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Any) -> None:
         warnings.warn(
             "England is deprecated, use UK(subdiv='England') instead.",
             DeprecationWarning,
@@ -218,7 +219,7 @@ class England(UnitedKingdom):
 
 
 class Wales(UnitedKingdom):
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Any) -> None:
         warnings.warn(
             "Wales is deprecated, use UK(subdiv='Wales') instead.",
             DeprecationWarning,
@@ -228,7 +229,7 @@ class Wales(UnitedKingdom):
 
 
 class Scotland(UnitedKingdom):
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Any) -> None:
         warnings.warn(
             "Scotland is deprecated, use UK(subdiv='Scotland') instead.",
             DeprecationWarning,
@@ -238,7 +239,7 @@ class Scotland(UnitedKingdom):
 
 
 class NorthernIreland(UnitedKingdom):
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs: Any) -> None:
         warnings.warn(
             "Northern Ireland is deprecated, use UK(subdiv='Northern Ireland')"
             " instead.",

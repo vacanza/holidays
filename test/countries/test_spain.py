@@ -255,8 +255,13 @@ class TestSpain(unittest.TestCase):
             ],
         }
 
+        observed_prov_holidays = {
+            prov: holidays.ES(observed=True, subdiv=prov)
+            for prov in holidays.ES.subdivisions
+        }
+
         for fest_date, fest_provs in province_days.items():
-            for prov, prov_holidays in self.prov_holidays.items():
+            for prov, prov_holidays in observed_prov_holidays.items():
                 self.assertEqual(
                     date(2022, *fest_date) in prov_holidays,
                     prov in fest_provs,

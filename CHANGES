@@ -1,10 +1,37 @@
-Version 0.14
+Version 0.15
 ============
 
-Released ????? ??, ????
+Released ?????? ??, ????
+
+- Support for Cuba #678 (bthompson)
+- Typechecking implementation, first release (HolidayBase, utils, some sample countries) #661 (dimbleby)
+- US fixes #675 (arkid15r)
+- Colombia fixes & test improvements #676 (bkthomps)
+- Venezuela fixes & test improvements #677 (bkthomps)
+- Ukraine refactoring #681 (kasya)
+- Bump pre-commit and setup-python actions #672, #682 (dr-p)
+
+Version 0.14.2
+==============
+
+Released June 5, 2022
 
 - Drop support for EOL Python 3.6 #328 (hugovk, dr-p)
+- Package review #662 (dimbleby)
+- Added financial markets support: ECB and NYSE, list_supported_financial() method (dr-p)
+- Support for NY Stock Exchange #651, #458 (nadime, dr-p)
 - Support for Malta #612, #630 (rafelbev)
+- Support for Madagascar #656 (fav007)
+- Support for Cyprus #410, #665 (digidestination, avnigo)
+- Ireland as standalone country #636, #639 (TeoTN, dr-p, javicalle)
+- Australia fixes #631 (jeremychrimes)
+- Singapore updates #652 (mborsetti)
+- Saudi Arabia fixes #642 (OsaydAbdu)
+- Spain fixes #634 (javicalle)
+- US fixes #648 (dashdrum)
+- Greece fixes #659 (tudorvaran)
+- India doc fixes #657 (dr-p)
+- Poland fix #663 (kfsz)
 
 
 Version 0.13

@@ -21,6 +21,11 @@ class TestPL(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.PL()
 
+    def test_1910(self):
+        self.assertNotIn(date(1910, 5, 1), self.holidays)
+        self.assertNotIn(date(1910, 5, 3), self.holidays)
+        self.assertNotIn(date(1910, 11, 11), self.holidays)
+
     def test_2017(self):
         # http://www.officeholidays.com/countries/poland/2017.php
         self.assertIn(date(2017, 1, 1), self.holidays)

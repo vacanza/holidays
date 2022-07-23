@@ -104,14 +104,6 @@ class Nigeria(HolidayBase):
                     # Add the (Observed) holiday
                     self[k + rd(days=2)] = v + " (Observed)"
 
-        def _add_holiday(dt: date, hol: str) -> None:
-            """Only add if in current year; prevents adding holidays across
-            years (handles multi-day Islamic holidays that straddle Gregorian
-            years).
-            """
-            if dt.year == year:
-                self[dt] = hol
-
 
 class NG(Nigeria):
     pass

@@ -92,8 +92,14 @@ class TestIreland(unittest.TestCase):
             2001,
         ):
             dt = date(year, 12, day)
+            print(self.holidays[dt])
             self.assertIn(dt, self.holidays, dt)
             self.assertIn(
                 self.holidays[dt],
-                ["St. Stephen's Day", "St. Stephen's Day (Observed)"],
+                [
+                    "St. Stephen's Day",
+                    "St. Stephen's Day (Observed)",
+                    "Christmas Day (Observed), St. Stephen's Day",
+                    "St. Stephen's Day, Christmas Day (Observed)",
+                ],
             )

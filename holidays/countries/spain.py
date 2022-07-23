@@ -147,9 +147,7 @@ class Spain(HolidayBase):
             "MC",
             "AR",
         ]:
-            self._is_observed(
-                date(year, MAY, 2), "Día del Trabajador (Trasladado)"
-            )
+            self._is_observed(date(year, MAY, 1), "Día del Trabajador")
         if self.subdiv in ["CT", "GA", "VC"]:
             self._is_observed(date(year, JUN, 24), "San Juan")
         self._is_observed(date(year, AUG, 15), "Asunción de la Virgen")
