@@ -6,6 +6,8 @@ Released ?????? ??, ????
 - Support for Cuba #678 (bthompson)
 - Typechecking implementation, first release (HolidayBase, utils, some sample countries) #661 (dimbleby)
 - US fixes #675 (arkid15r)
+- Colombia fixes & test improvements #676 (bkthomps)
+- Venezuela fixes & test improvements #677 (bkthomps)
 - Ukraine refactoring #681 (kasya)
 - Bump pre-commit and setup-python actions #672, #682 (dr-p)
 
