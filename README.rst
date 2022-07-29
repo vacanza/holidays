@@ -7,22 +7,38 @@ state or province) specific sets of government-designated holidays on the fly.
 It aims to make determining whether a specific date is a holiday as fast and
 flexible as possible.
 
-.. image:: https://github.com/dr-prodigy/python-holidays/workflows/Tests/badge.svg
-    :target: actions
+:Package:
+    .. image:: https://img.shields.io/pypi/pyversions/holidays.svg?logo=python&label=Python&logoColor=gold
+        :target: https://pypi.python.org/pypi/holidays
+        :alt: Python supported versions
 
-.. image:: http://img.shields.io/coveralls/dr-prodigy/python-holidays/master
-    :target: https://coveralls.io/r/dr-prodigy/python-holidays
+    .. image:: http://img.shields.io/pypi/v/holidays.svg?logo=pypi&label=PyPI&logoColor=gold
+        :target: https://pypi.python.org/pypi/holidays
+        :alt: PyPI version
 
-.. image:: http://img.shields.io/pypi/v/holidays.svg
-    :target: https://pypi.python.org/pypi/holidays
+    .. image:: https://img.shields.io/pypi/dm/holidays.svg?color=blue&label=Downloads&logo=pypi&logoColor=gold
+        :target: https://pypi.python.org/pypi/holidays
+        :alt: Downloads
 
-.. image:: http://img.shields.io/pypi/l/holidays.svg
-    :target: LICENSE
+:CD/CI:
+    .. image:: https://github.com/dr-prodigy/python-holidays/workflows/Tests/badge.svg
+        :target: actions
 
-.. image:: https://readthedocs.org/projects/python-holidays/badge/?version=latest
-    :target: https://python-holidays.readthedocs.io/en/latest/?badge=latest
-    :alt: Documentation Status
+    .. image:: http://img.shields.io/coveralls/dr-prodigy/python-holidays/master
+        :target: https://coveralls.io/r/dr-prodigy/python-holidays
 
+:Docs:
+    .. image:: https://readthedocs.org/projects/python-holidays/badge/?version=latest
+        :target: https://python-holidays.readthedocs.io/en/latest/?badge=latest
+        :alt: Documentation Status
+
+:Meta:
+    .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
+        :alt: Code style
+
+    .. image:: http://img.shields.io/pypi/l/holidays.svg
+        :target: LICENSE
+        :alt: License
 
 Install
 -------
