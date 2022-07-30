@@ -195,13 +195,13 @@ the US and the only method we need to override is :py:meth:`_populate`:
    >>>         self.pop_named("Columbus Day")
    >>>         # Add Ninja Turtle Day
    >>>         self[date(year, 7, 13)] = "Ninja Turtle Day"
-   >>> date(2014, 10, 14) in Holidays(country="US")
+   >>> date(2014, 10, 14) in holidays.country_holidays(country="US")
    True
-   >>> date(2014, 10, 14) in CorporateHolidays(country="US")
+   >>> date(2014, 10, 14) in CorporateHolidays()
    False
-   >>> date(2014, 7, 13) in Holidays(country="US")
+   >>> date(2014, 7, 13) in holidays.country_holidays(country="US")
    False
-   >>> date(2014 ,7, 13) in CorporateHolidays(country="US")
+   >>> date(2014 ,7, 13) in CorporateHolidays()
    True
 
 We can also inherit from the HolidayBase class which has an empty

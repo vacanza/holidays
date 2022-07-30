@@ -17,6 +17,7 @@ Released ?????? ??, ????
 - Canada fixes #579 (dr-p, scubaandre)
 - Ukraine refactoring #681 (kasya)
 - Bump pre-commit and setup-python actions #672, #682, #686 (dr-p)
+- Doc example fix #685 (steakhutzeee, dr-p)
 
 Version 0.14.2
 ==============
