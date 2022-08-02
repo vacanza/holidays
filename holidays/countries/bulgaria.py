@@ -64,9 +64,6 @@ class Bulgaria(HolidayBase):
             date(year, MAY, 1)
         ] = "Ден на труда и на международната работническа солидарност"
 
-        # Resurrection Monday
-        self[date(year, MAY, 3)] = "Возкресенни понеделник"
-
         # Saint George's Day
         self[
             date(year, MAY, 6)
@@ -99,7 +96,9 @@ class Bulgaria(HolidayBase):
             easter(year, method=EASTER_ORTHODOX) - rd(days=1)
         ] = "Велика събота"
         self[easter(year, method=EASTER_ORTHODOX)] = "Великден"
-
+        self[
+            easter(year, method=EASTER_ORTHODOX) + rd(days=1)
+        ] = "Великден"
 
 class BG(Bulgaria):
     pass
