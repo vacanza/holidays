@@ -17,7 +17,7 @@ Released ?????? ??, ????
 - Canada fixes #579 (dr-p, scubaandre)
 - Ukraine refactoring #681 (kasya)
 - Italy update #689 (g-gg, dr-p)
-- Bump pre-commit and setup-python actions #672, #682, #686 (dr-p)
+- Bump pre-commit and setup-python actions #672, #682, #686, #688 (dr-p)
 - Doc example fix #685 (steakhutzeee, dr-p)
 
 
