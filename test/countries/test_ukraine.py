@@ -23,17 +23,37 @@ class TestUkraine(unittest.TestCase):
     def test_before_1918(self):
         self.assertNotIn(date(1917, 12, 31), self.holidays)
 
+    def test_1950(self):
+        self.assertEqual(
+            self.holidays[date(1950, 5, 1)],
+            "День міжнародної солідарності трудящих",
+        )
+
     def test_2018(self):
         # http://www.buhoblik.org.ua/kadry-zarplata/vremya/1676-1676-kalendar.html
         self.assertIn(date(2018, 1, 1), self.holidays)
         self.assertIn(date(2018, 1, 7), self.holidays)
-        self.assertIn(date(2018, 12, 25), self.holidays)
+        self.assertIn(date(2018, 3, 8), self.holidays)
         self.assertIn(date(2018, 4, 8), self.holidays)
         self.assertIn(date(2018, 5, 27), self.holidays)
         self.assertIn(date(2018, 5, 9), self.holidays)
         self.assertIn(date(2018, 6, 28), self.holidays)
         self.assertIn(date(2018, 8, 24), self.holidays)
         self.assertIn(date(2018, 10, 14), self.holidays)
+        self.assertIn(date(2018, 12, 25), self.holidays)
+
+    def test_2022(self):
+        self.assertIn(date(2022, 1, 1), self.holidays)
+        self.assertIn(date(2022, 1, 7), self.holidays)
+        self.assertIn(date(2022, 3, 8), self.holidays)
+        self.assertIn(date(2022, 4, 24), self.holidays)
+        self.assertIn(date(2022, 5, 9), self.holidays)
+        self.assertIn(date(2022, 6, 12), self.holidays)
+        self.assertIn(date(2022, 6, 28), self.holidays)
+        self.assertIn(date(2022, 7, 28), self.holidays)
+        self.assertIn(date(2022, 8, 24), self.holidays)
+        self.assertIn(date(2022, 10, 14), self.holidays)
+        self.assertIn(date(2022, 12, 25), self.holidays)
 
     def test_old_holidays(self):
         self.assertIn(date(2018, 5, 1), self.holidays)

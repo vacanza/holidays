@@ -79,7 +79,7 @@ class Canada(HolidayBase):
         elif self.subdiv == "NB" and year >= 2018:
             self[date(year, FEB, 1) + rd(weekday=MO(+3))] = "Family Day"
         elif self.subdiv == "BC":
-            if year >= 2013 and year <= 2018:
+            if 2013 <= year <= 2018:
                 self[date(year, FEB, 1) + rd(weekday=MO(+2))] = "Family Day"
             elif year > 2018:
                 self[date(year, FEB, 1) + rd(weekday=MO(+3))] = "Family Day"
@@ -251,20 +251,19 @@ class Canada(HolidayBase):
 
         # Christmas Day
         if year >= 1867:
-            self[date(year, DEC, 25)] = "Christmas Day"
-            if self.observed and date(year, DEC, 25).weekday() == SAT:
-                self[date(year, DEC, 24)] = "Christmas Day (Observed)"
-            elif self.observed and date(year, DEC, 25).weekday() == SUN:
-                self[date(year, DEC, 26)] = "Christmas Day (Observed)"
+            name = "Christmas Day"
+            name_observed = name + " (Observed)"
+            if self.observed and date(year, DEC, 25).weekday() in WEEKEND:
+                self[date(year, DEC, 27)] = name_observed
+            else:
+                self[date(year, DEC, 25)] = name
 
         # Boxing Day
         if year >= 1867:
             name = "Boxing Day"
             name_observed = name + " (Observed)"
             if self.observed and date(year, DEC, 26).weekday() in WEEKEND:
-                self[date(year, DEC, 26) + rd(weekday=MO)] = name_observed
-            elif self.observed and date(year, DEC, 26).weekday() == 0:
-                self[date(year, DEC, 27)] = name_observed
+                self[date(year, DEC, 28)] = name_observed
             else:
                 self[date(year, DEC, 26)] = name
 

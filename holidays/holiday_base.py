@@ -14,10 +14,12 @@
 import warnings
 from datetime import timedelta, datetime, date
 from typing import (
+    cast,
     Any,
     Dict,
     Iterable,
     List,
+    Mapping,
     Optional,
     Set,
     TYPE_CHECKING,
@@ -30,8 +32,10 @@ from dateutil.parser import parse
 if TYPE_CHECKING:
     from holidays.utils import country_holidays  # required by docstring
 
+DateLike = Union[date, datetime, str, float, int]
 
-class HolidayBase(dict):
+
+class HolidayBase(Dict[date, str]):
     """
     A dict-like object containing the holidays for a specific country (and
     province or state if so initiated); inherits the dict class (so behaves
@@ -181,7 +185,7 @@ class HolidayBase(dict):
 
     def __init__(
         self,
-        years: Union[int, Iterable[int]] = None,
+        years: Optional[Union[int, Iterable[int]]] = None,
         expand: bool = True,
         observed: bool = True,
         subdiv: Optional[str] = None,
@@ -259,7 +263,7 @@ class HolidayBase(dict):
         else:
             return dict.__setattr__(self, key, value)
 
-    def __keytransform__(self, key: Union[date, datetime, str, float]) -> date:
+    def __keytransform__(self, key: DateLike) -> date:
         """Transforms the date from one of the following types:
 
         * :class:`datetime.date`,
@@ -288,9 +292,7 @@ class HolidayBase(dict):
             self._populate(out_key.year)
         return out_key
 
-    def __contains__(  # type: ignore[override]
-        self, key: Union[date, datetime, str, float]
-    ) -> bool:
+    def __contains__(self, key: object) -> bool:
         """Return true if date is in self, false otherwise. Accepts a date in
         the following types:
 
@@ -300,17 +302,15 @@ class HolidayBase(dict):
           :func:`dateutil.parser.parse`,
         * or a :class:`float` or :class:`int` representing a POSIX timestamp.
         """
-        return dict.__contains__(self, self.__keytransform__(key))
+        if not isinstance(key, (date, datetime, str, float, int)):
+            raise TypeError("Cannot convert type '%s' to date." % type(key))
 
-    def __getitem__(
-        self,
-        key: Union[
-            date,
-            datetime,
-            str,
-            float,
-        ],
-    ) -> str:
+        contained = dict.__contains__(
+            cast("Mapping[Any, Any]", self), self.__keytransform__(key)
+        )
+        return contained
+
+    def __getitem__(self, key: DateLike) -> str:
         if isinstance(key, slice):
             if not key.start or not key.stop:
                 raise ValueError("Both start and stop must be given.")
@@ -347,9 +347,7 @@ class HolidayBase(dict):
             return days_in_range
         return dict.__getitem__(self, self.__keytransform__(key))
 
-    def __setitem__(
-        self, key: Union[date, datetime, str, float], value
-    ) -> None:
+    def __setitem__(self, key: DateLike, value: str) -> None:
         if key in self:
             if self.get(key).find(value) < 0 and value.find(self.get(key)) < 0:
                 value = f"{value}, {self.get(key)}"
@@ -357,7 +355,9 @@ class HolidayBase(dict):
                 value = self.get(key)
         return dict.__setitem__(self, self.__keytransform__(key), value)
 
-    def update(self, *args) -> None:  # type: ignore[override]
+    def update(  # type: ignore[override]
+        self, *args: Union[Dict[DateLike, str], List[DateLike], DateLike]
+    ) -> None:
         # TODO: fix arguments; should not be *args (cannot properly Type hint)
         """Update the object, overwriting existing dates.
 
@@ -386,15 +386,17 @@ class HolidayBase(dict):
             else:
                 self[arg] = "Holiday"
 
-    def append(self, *args) -> None:
+    def append(
+        self, *args: Union[Dict[DateLike, str], List[DateLike], DateLike]
+    ) -> None:
         """Alias for :meth:`update` to mimic list type."""
         return self.update(*args)
 
-    def get(  # type: ignore[override]
+    def get(
         self,
-        key: Union[date, datetime, str, float],
-        default: Optional[Any] = None,
-    ) -> str:
+        key: DateLike,
+        default: Union[str, Any] = None,
+    ) -> Union[str, Any]:
         """Return the holiday name for a date if date is a holiday, else
         default. If default is not given, it defaults to None, so that this
         method never raises a KeyError. If more than one holiday is present,
@@ -416,13 +418,10 @@ class HolidayBase(dict):
         return dict.get(
             self,
             self.__keytransform__(key),
-            default,  # type: ignore[arg-type]
+            default,
         )
-        # TODO: the above generates the following mypy error:
-        # error: Argument 3 to "get" of "Mapping" has incompatible type
-        # "Optional[Any]"; expected "str"  [arg-type]
 
-    def get_list(self, key: Union[date, datetime, str, float]) -> List[str]:
+    def get_list(self, key: DateLike) -> List[str]:
         """Return a list of all holiday names for a date if date is a holiday,
         else empty string.
 
@@ -459,9 +458,9 @@ class HolidayBase(dict):
 
     def pop(
         self,
-        key: Union[date, datetime, str, float],
-        default: Optional[Any] = None,
-    ) -> Union[str, List[str], List[date], bool]:
+        key: DateLike,
+        default: Union[str, Any] = None,
+    ) -> Union[str, Any]:
         """If date is a holiday, remove it and return its date, else return
         default.
 
@@ -520,7 +519,7 @@ class HolidayBase(dict):
 
     def __add__(
         self, other: Union[int, "HolidayBase", "HolidaySum"]
-    ) -> "HolidaySum":
+    ) -> "HolidayBase":
         """Add another dictionary of public holidays creating a
         :class:`HolidaySum` object.
 
@@ -534,18 +533,17 @@ class HolidayBase(dict):
         if isinstance(other, int) and other == 0:
             # Required to sum() list of holidays
             # sum([h1, h2]) is equivalent to (0 + h1 + h2)
-            return self  # type: ignore[return-value]
-            # TODO understand why the above type ignore is is necessary
+            return self
         elif not isinstance(other, (HolidayBase, HolidaySum)):
             raise TypeError(
                 "Holiday objects can only be added with other Holiday objects"
             )
         return HolidaySum(self, other)
 
-    def __radd__(self, other: Any) -> "HolidaySum":
+    def __radd__(self, other: Any) -> "HolidayBase":
         return self.__add__(other)
 
-    def __pos__(self):
+    def __pos__(self) -> "HolidayBase":
         """Enables type checking for the unary operator + (e.g. a + b instead of
         a.__add__(b))."""
         pass
@@ -557,7 +555,7 @@ class HolidayBase(dict):
     def __reduce__(self) -> Union[str, Tuple[Any, ...]]:
         return super().__reduce__()
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         if len(self) == 0:
             _repr = f"holidays.country_holidays({self.country!r}"
             if self.subdiv:
@@ -566,7 +564,7 @@ class HolidayBase(dict):
             return _repr
         return super().__repr__()
 
-    def __str__(self):
+    def __str__(self) -> str:
         if len(self) == 0:
             return str(self.__dict__)
         return super().__str__()
@@ -673,4 +671,4 @@ country_holidays('CA') + country_holidays('MX')
     def _populate(self, year: int) -> None:
         for h in self.holidays[::-1]:
             h._populate(year)
-            self.update(h)
+            self.update(cast("Dict[DateLike, str]", h))

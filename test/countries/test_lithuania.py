@@ -73,3 +73,13 @@ class TestLithuania(unittest.TestCase):
     def test_day_of_dew(self):
         self.assertNotIn(date(2002, 6, 24), self.holidays)
         self.assertIn(date(2020, 6, 24), self.holidays)
+
+    def test_day_of_restoration_and_statehood(self):
+        self.assertNotIn(date(1917, 2, 16), self.holidays)
+        self.assertIn(date(1918, 2, 16), self.holidays)
+
+        self.assertNotIn(date(1989, 3, 11), self.holidays)
+        self.assertIn(date(1990, 3, 11), self.holidays)
+
+        self.assertNotIn(date(1990, 7, 6), self.holidays)
+        self.assertIn(date(1991, 7, 6), self.holidays)

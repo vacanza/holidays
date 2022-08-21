@@ -63,15 +63,15 @@ class HongKong(HolidayBase):
                 self[new_year_date] = name
                 self[new_year_date + rd(days=+1)] = second_day_lunar
                 self[new_year_date + rd(days=+2)] = third_day_lunar
-            elif new_year_date.weekday() == FRI:
+            if new_year_date.weekday() == FRI:
                 self[new_year_date] = name
                 self[new_year_date + rd(days=+1)] = second_day_lunar
                 self[new_year_date + rd(days=+3)] = fourth_day_lunar
-            elif new_year_date.weekday() == SAT:
+            if new_year_date.weekday() == SAT:
                 self[new_year_date] = name
                 self[new_year_date + rd(days=+2)] = third_day_lunar
                 self[new_year_date + rd(days=+3)] = fourth_day_lunar
-            elif new_year_date.weekday() == SUN:
+            if new_year_date.weekday() == SUN:
                 if year in [2006, 2007, 2010]:
                     self[new_year_date + rd(days=-1)] = preceding_day_lunar
                     self[new_year_date + rd(days=+1)] = second_day_lunar

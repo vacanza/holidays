@@ -27,6 +27,7 @@ from .chile import Chile, CL, CHL
 from .china import China, CN, CHN
 from .colombia import Colombia, CO, COL
 from .croatia import Croatia, HR, HRV
+from .cuba import Cuba, CU, CUB
 from .curacao import Curacao, CW, CUW
 from .cyprus import Cyprus, CY, CYP
 from .czechia import Czechia, CZ, CZE
@@ -76,7 +77,7 @@ from .norway import Norway, NO, NOR
 from .paraguay import Paraguay, PY, PRY
 from .peru import Peru, PE, PER
 from .poland import Poland, PL, POL
-from .portugal import Portugal, PT, PRT, PortugalExt, PTE, PRTE
+from .portugal import Portugal, PT, PRT
 from .romania import Romania, RO, ROU
 from .russia import Russia, RU, RUS
 from .saudi_arabia import SaudiArabia, SA, SAU
@@ -99,10 +100,6 @@ from .united_kingdom import (
     UK,
     GB,
     GBR,
-    England,
-    Wales,
-    Scotland,
-    NorthernIreland,
 )
 from .united_states import UnitedStates, US, USA
 from .uruguay import Uruguay, UY, URY

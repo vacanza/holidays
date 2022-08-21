@@ -40,7 +40,7 @@ class Nicaragua(HolidayBase):
         # Labor Day
         self[date(year, MAY, 1)] = "Día del Trabajo [Labour Day]"
         # Revolution Day
-        if 2020 >= year >= 1979:
+        if year >= 1979:
             self[date(year, JUL, 19)] = "Día de la Revolución [Revolution Day]"
         # Battle of San Jacinto Day
         self[

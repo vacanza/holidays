@@ -46,3 +46,25 @@ class TestPL(unittest.TestCase):
 
     def test_2018(self):
         self.assertIn(date(2018, 11, 12), self.holidays)
+
+    def test_swieto_trzech_kroli(self):
+        self.holidays = holidays.Poland(years=[2011])
+        self.assertEqual(
+            self.holidays[date(2011, 1, 6)], "Święto Trzech Króli"
+        )
+        self.holidays = holidays.Poland(years=[2010])
+        self.assertNotIn(date(2010, 1, 6), self.holidays)
+
+    def test_swieto_panstwowe(self):
+        self.holidays = holidays.Poland(years=[1950])
+        self.assertEqual(self.holidays[date(1950, 5, 1)], "Święto Państwowe")
+        self.holidays = holidays.Poland(years=[1949])
+        self.assertNotIn(date(1949, 5, 1), self.holidays)
+
+    def test_swieto_narodowe_trzeciego_maja(self):
+        self.holidays = holidays.Poland(years=[1919])
+        self.assertEqual(
+            self.holidays[date(1919, 5, 3)], "Święto Narodowe Trzeciego Maja"
+        )
+        self.holidays = holidays.Poland(years=[1918])
+        self.assertNotIn(date(1918, 5, 3), self.holidays)

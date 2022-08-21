@@ -240,6 +240,7 @@ class Italy(HolidayBase):
             if self.subdiv in ("BT", "Trani"):
                 self[date(year, MAY, 3)] = "San Nicola Pellegrino"
             elif self.subdiv == "BZ":
+                self[easter(year) + rd(days=50)] = "Lunedì di Pentecoste"
                 self[date(year, AUG, 15)] = "Maria Santissima Assunta"
             elif self.subdiv == "CA":
                 self[date(year, OCT, 30)] = "San Saturnino di Cagliari"

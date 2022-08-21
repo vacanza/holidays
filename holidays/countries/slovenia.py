@@ -38,45 +38,44 @@ class Slovenia(HolidayBase):
         if year <= 1990:
             return
 
-        if year > 1991:
-            self[date(year, JAN, 1)] = "novo leto"
+        self[date(year, JAN, 1)] = "novo leto"
 
-            # Between 2012 and 2017 2nd January was not public holiday,
-            # or at least not work-free day
-            if year < 2013 or year > 2016:
-                self[date(year, JAN, 2)] = "novo leto"
+        # Between 2012 and 2017 2nd January was not public holiday,
+        # or at least not work-free day
+        if year < 2013 or year > 2016:
+            self[date(year, JAN, 2)] = "novo leto"
 
-            # Prešeren's day, slovenian cultural holiday
-            self[date(year, FEB, 8)] = "Prešernov dan"
+        # Prešeren's day, slovenian cultural holiday
+        self[date(year, FEB, 8)] = "Prešernov dan"
 
-            # Easter monday is the only easter related work-free day
-            easter_day = easter(year)
-            self[easter_day + rd(days=1)] = "Velikonočni ponedeljek"
+        # Easter monday is the only easter related work-free day
+        easter_day = easter(year)
+        self[easter_day + rd(days=1)] = "Velikonočni ponedeljek"
 
-            # Day of uprising against occupation
-            self[date(year, APR, 27)] = "dan upora proti okupatorju"
+        # Day of uprising against occupation
+        self[date(year, APR, 27)] = "dan upora proti okupatorju"
 
-            # Labour day, two days of it!
-            self[date(year, MAY, 1)] = "praznik dela"
-            self[date(year, MAY, 2)] = "praznik dela"
+        # Labour day, two days of it!
+        self[date(year, MAY, 1)] = "praznik dela"
+        self[date(year, MAY, 2)] = "praznik dela"
 
-            # Statehood day
-            self[date(year, JUN, 25)] = "dan državnosti"
+        # Statehood day
+        self[date(year, JUN, 25)] = "dan državnosti"
 
-            # Assumption day
-            self[date(year, AUG, 15)] = "Marijino vnebovzetje"
+        # Assumption day
+        self[date(year, AUG, 15)] = "Marijino vnebovzetje"
 
-            # Reformation day
-            self[date(year, OCT, 31)] = "dan reformacije"
+        # Reformation day
+        self[date(year, OCT, 31)] = "dan reformacije"
 
-            # Remembrance day
-            self[date(year, NOV, 1)] = "dan spomina na mrtve"
+        # Remembrance day
+        self[date(year, NOV, 1)] = "dan spomina na mrtve"
 
-            # Christmas
-            self[date(year, DEC, 25)] = "Božič"
+        # Christmas
+        self[date(year, DEC, 25)] = "Božič"
 
-            # Day of independence and unity
-            self[date(year, DEC, 26)] = "dan samostojnosti in enotnosti"
+        # Day of independence and unity
+        self[date(year, DEC, 26)] = "dan samostojnosti in enotnosti"
 
 
 class SI(Slovenia):

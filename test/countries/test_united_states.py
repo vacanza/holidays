@@ -10,11 +10,10 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-
 from datetime import date
-from dateutil.relativedelta import relativedelta
 
 import holidays
+from dateutil.relativedelta import relativedelta
 
 
 class TestUS(unittest.TestCase):
@@ -1015,6 +1014,7 @@ class TestUS(unittest.TestCase):
         nm_holidays = holidays.US(subdiv="NM")
         nc_holidays = holidays.US(subdiv="NC")
         ok_holidays = holidays.US(subdiv="OK")
+        pa_holidays = holidays.US(subdiv="PA")
         tx_holidays = holidays.US(subdiv="TX")
         wv_holidays = holidays.US(subdiv="WV")
         for dt in [
@@ -1050,6 +1050,10 @@ class TestUS(unittest.TestCase):
             )
             self.assertEqual(
                 ok_holidays.get(dt + relativedelta(days=+1)),
+                "Day After Thanksgiving",
+            )
+            self.assertEqual(
+                pa_holidays.get(dt + relativedelta(days=+1)),
                 "Day After Thanksgiving",
             )
             self.assertEqual(

@@ -18,6 +18,10 @@ class TestTaiwan(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.TW()
 
+    def test1911(self):
+        # No Holidays before 1911
+        self.assertEqual(0, len(holidays.TW(years=[1910])))
+
     def test1946(self):
         self.assertNotIn(
             date(1946, 2, 28), self.holidays

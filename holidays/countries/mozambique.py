@@ -53,7 +53,7 @@ class Mozambique(HolidayBase):
             #  whenever a public holiday falls on a Sunday,
             # it rolls over to the following Monday
             for k, v in list(self.items()):
-                if self.observed and year > 1974:
+                if self.observed:
                     if k.weekday() == SUN:
                         self[k + rd(days=1)] = v + " (PONTE)"
 

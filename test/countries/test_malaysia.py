@@ -1074,12 +1074,15 @@ class TestMalaysia(unittest.TestCase):
 
     def test_KUL_holidays(self):
         Kuala_Lumpur_holidays = holidays.MY(
-            years=[1970, 2018, 2019, 2020, 2021, 2022], subdiv="KUL"
+            years=[1970, 2018, 2019, 2020, 2021, 2022, 2023], subdiv="KUL"
         )
         # Federal Territory Day
         self.assertIn(date(2018, 2, 1), Kuala_Lumpur_holidays)
         self.assertIn(date(2019, 2, 1), Kuala_Lumpur_holidays)
         self.assertNotIn(date(1970, 2, 1), Kuala_Lumpur_holidays)
+        self.assertEqual(
+            self.holidays[date(2023, 1, 2)], "New Year's Day [In lieu]"
+        )
 
     def test_MLK_holidays(self):
         Malacca_holidays = holidays.MY(
@@ -1116,3 +1119,8 @@ class TestMalaysia(unittest.TestCase):
         self.assertIn(date(2022, 2, 1), Putrajaya_holidays)
         self.assertNotIn(date(1972, 2, 1), Putrajaya_holidays)
         self.assertIn(date(2022, 1, 18), Putrajaya_holidays)
+
+    def test_aliases(self):
+        holidays1 = holidays.MY()
+        holidays2 = holidays.MYS()
+        self.assertEqual(list(holidays1), list(holidays2))

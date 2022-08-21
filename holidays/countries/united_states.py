@@ -12,23 +12,28 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, MO, FR, TH, TU
-
+from dateutil.relativedelta import FR, MO, TH, TU
+from dateutil.relativedelta import relativedelta as rd
 from holidays.constants import (
-    JAN,
-    FEB,
-    MAR,
     APR,
-    MAY,
-    JUN,
-    JUL,
     AUG,
-    SEP,
-    OCT,
-    NOV,
     DEC,
+    FEB,
+    FRI,
+    JAN,
+    JUL,
+    JUN,
+    MAR,
+    MAY,
+    MON,
+    NOV,
+    OCT,
+    SAT,
+    SEP,
+    SUN,
+    WED,
+    WEEKEND,
 )
-from holidays.constants import MON, WED, FRI, SAT, SUN, WEEKEND
 from holidays.holiday_base import HolidayBase
 
 
@@ -538,19 +543,19 @@ class UnitedStates(HolidayBase):
             )
             or (self.subdiv == "IN" and year >= 2010)
             or (self.subdiv == "MD" and year >= 2008)
-            or self.subdiv in ("NV", "NM")
+            or self.subdiv in ("NM", "NV", "PA")
         ):
-            if self.subdiv in ("CA", "DE", "NH", "NC", "OK", "WV"):
+            if self.subdiv in ("CA", "DE", "NH", "NC", "OK", "PA", "WV"):
                 name = "Day After Thanksgiving"
-            elif self.subdiv in ("FL", "TX"):
+            if self.subdiv in ("FL", "TX"):
                 name = "Friday After Thanksgiving"
-            elif self.subdiv == "IN":
+            if self.subdiv == "IN":
                 name = "Lincoln's Birthday"
-            elif self.subdiv == "MD" and year >= 2008:
+            if self.subdiv == "MD" and year >= 2008:
                 name = "American Indian Heritage Day"
-            elif self.subdiv == "NV":
+            if self.subdiv == "NV":
                 name = "Family Day"
-            elif self.subdiv == "NM":
+            if self.subdiv == "NM":
                 name = "Presidents' Day"
             dt = date(year, NOV, 1) + rd(weekday=TH(+4))
             self[dt + rd(days=+1)] = name

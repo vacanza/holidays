@@ -15,8 +15,6 @@ from datetime import date
 
 import holidays
 
-date(1950, 6, 19)
-
 
 class TestChina(unittest.TestCase):
     # https: // en.wikipedia.org / wiki / Public_holidays_in_China

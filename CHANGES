@@ -1,3 +1,26 @@
+Version 0.15
+============
+
+Released August 21, 2022
+
+- Added support for Python3.11 (dr-p)
+- Updated README - improved badges area (dr-p)
+- Support for Cuba #678 (bthompson, dr-p)
+- Typechecking implementation, first release (HolidayBase, utils, some sample countries) #661 (dimbleby)
+- Test coverage improvement #633 (akosfurton, dr-p)
+- Drop support for UK subdivisions as countries (England, Scotland..) (dr-p)
+- Drop support for IsleOfMan as UK subdivision (dr-p)
+- Drop support for PortugalExt (ie: extended Portugal) (dr-p)
+- US fixes #675 (arkid15r)
+- Colombia fixes & test improvements #676 (bkthomps)
+- Venezuela fixes & test improvements #677 (bkthomps)
+- Canada fixes #579 (dr-p, scubaandre)
+- Ukraine refactoring #681 (kasya)
+- Italy update #689 (g-gg, dr-p)
+- Bump pre-commit and setup-python actions #672, #682, #686, #688 (dr-p)
+- Doc example fix #685 (steakhutzeee, dr-p)
+
+
 Version 0.14.2
 ==============
 

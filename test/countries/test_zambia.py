@@ -66,3 +66,8 @@ class TestZambia(unittest.TestCase):
         self.assertNotIn("2016-12-28", self.holidays)
         self.assertNotIn("2015-03-02", self.holidays)
         self.assertNotIn("2017-04-28", self.holidays)
+
+    def test_observed(self):
+        self.holidays = holidays.ZM(observed=False)
+        # African Freedom Day (on Sunday)
+        self.assertNotIn("1969-05-26", self.holidays)

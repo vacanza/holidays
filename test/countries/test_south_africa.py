@@ -21,6 +21,7 @@ class TestSouthAfrica(unittest.TestCase):
         self.holidays = holidays.ZA()
 
     def test_new_years(self):
+        self.assertNotIn("1908-01-01", self.holidays)
         self.assertIn("1910-01-01", self.holidays)
         self.assertIn("2017-01-01", self.holidays)
         self.assertIn("2999-01-01", self.holidays)

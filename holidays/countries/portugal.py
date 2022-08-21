@@ -81,21 +81,3 @@ class PT(Portugal):
 
 class PRT(Portugal):
     pass
-
-
-class PortugalExt(Portugal):
-    def __init__(self, **kwargs):
-        warnings.warn(
-            "PortugalExt is deprecated, use PT(subdiv='Ext') instead.",
-            DeprecationWarning,
-        )
-        kwargs["subdiv"] = "Ext"
-        Portugal.__init__(self, **kwargs)
-
-
-class PTE(PortugalExt):
-    pass
-
-
-class PRTE(PortugalExt):
-    pass

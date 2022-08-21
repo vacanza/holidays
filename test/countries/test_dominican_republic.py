@@ -51,3 +51,31 @@ class TestDominicanRepublic(unittest.TestCase):
         # Change day by law test
         # New Year's Day
         self.assertIn(date(2019, 1, 1), self.do_holidays)
+
+    def test_change_day_by_law(self):
+        year = 1996
+        self.do_holidays = holidays.DO(years=[year])
+        # New Year's Day
+        self.assertIn(date(year, 1, 1), self.do_holidays)
+        # Epiphany
+        self.assertIn(date(year, 1, 6), self.do_holidays)
+        # Lady of Altagracia
+        self.assertIn(date(year, 1, 21), self.do_holidays)
+        # Juan Pablo Duarte Day
+        self.assertIn(date(year, 1, 26), self.do_holidays)
+        # Independence Day
+        self.assertIn(date(year, 2, 27), self.do_holidays)
+        # Good Friday
+        self.assertIn(date(year, 4, 5), self.do_holidays)
+        # Labor Day
+        self.assertIn(date(year, 5, 1), self.do_holidays)
+        # Feast of Corpus Christi
+        self.assertIn(date(year, 6, 11), self.do_holidays)
+        # Restoration Day
+        self.assertIn(date(year, 8, 16), self.do_holidays)
+        # Our Lady of Mercedes Day
+        self.assertIn(date(year, 9, 24), self.do_holidays)
+        # Constitution Day
+        self.assertIn(date(year, 11, 6), self.do_holidays)
+        # Christmas Day
+        self.assertIn(date(year, 12, 25), self.do_holidays)

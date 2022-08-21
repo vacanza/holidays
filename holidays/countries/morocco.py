@@ -141,14 +141,6 @@ class Morocco(HolidayBase):
                 _add_holiday(hol_date, "Aid al Mawlid Annabawi")
                 _add_holiday(hol_date + rd(days=1), "Aid al Mawlid Annabawi")
 
-        def _add_holiday(dt: date, hol: str) -> None:
-            """Only add if in current year; prevents adding holidays across
-            years (handles multi-day Islamic holidays that straddle Gregorian
-            years).
-            """
-            if dt.year == year:
-                self[dt] = hol
-
 
 class MA(Morocco):
     pass

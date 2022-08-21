@@ -63,6 +63,24 @@ class TestMorocco(unittest.TestCase):
         for holiday in _holidays:
             self.assertIn(holiday, self.holidays)
 
+    def test_independence_manifesto_day(self):
+        # Independence Manifesto Day post 1944
+        self.holidays = holidays.Morocco(years=[1945])
+        self.assertIn(date(1945, 1, 11), self.holidays)
+
+        self.holidays = holidays.Morocco(years=[1944])
+        self.assertNotIn(date(1944, 1, 11), self.holidays)
+
+    def test_independence_day(self):
+        # Independence Day post 1956
+        self.holidays = holidays.Morocco(years=[1957])
+        self.assertEqual(
+            self.holidays[date(1957, 11, 18)],
+            "Fête de l'indépendance, Fête du Trône",
+        )
+        self.holidays = holidays.Morocco(years=[1956])
+        self.assertEqual(self.holidays[date(1956, 11, 18)], "Fête du Trône")
+
     def test_hijri_based(self):
         if importlib.util.find_spec("hijri_converter"):
             self.holidays = holidays.Morocco(years=[2019, 1999])
