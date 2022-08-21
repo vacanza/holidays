@@ -2,7 +2,7 @@ from holidays.holiday_base import HolidayBase
 import pandas as pd
 
 
-def holidays_to_series(cls: HolidayBase, name: str = 'holiday') -> pd.Series:
+def holidays_to_series(cls: HolidayBase, name: str = "holiday") -> pd.Series:
     """Get Pandas Series from HolidayBase object
 
     Example usage:
@@ -24,7 +24,7 @@ def holidays_to_series(cls: HolidayBase, name: str = 'holiday') -> pd.Series:
             Name: holiday, dtype: object
 
     :param cls:
-        The HolidaysBase object to convert to Pandas Series. 
+        The HolidaysBase object to convert to Pandas Series.
         Make sure the years parameter is not empty.
 
     :param name:
@@ -36,7 +36,7 @@ def holidays_to_series(cls: HolidayBase, name: str = 'holiday') -> pd.Series:
     return pd.Series(index=cls.keys(), data=cls.values(), name=name)
 
 
-def holidays_to_dataframe(cls: HolidayBase, name='holiday') -> pd.DataFrame:
+def holidays_to_dataframe(cls: HolidayBase, name="holiday") -> pd.DataFrame:
     """Get Pandas DataFrame from HolidayBase object
 
     Example usage:
@@ -58,7 +58,7 @@ def holidays_to_dataframe(cls: HolidayBase, name='holiday') -> pd.DataFrame:
             2022-12-26                         Christmas Day (Observed)
 
     :param cls:
-        The HolidaysBase object to convert to Pandas DataFrame. 
+        The HolidaysBase object to convert to Pandas DataFrame.
         Make sure the years parameter is not empty.
 
     :param name:
