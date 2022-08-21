@@ -16,8 +16,10 @@ Released ?????? ??, ????
 - Venezuela fixes & test improvements #677 (bkthomps)
 - Canada fixes #579 (dr-p, scubaandre)
 - Ukraine refactoring #681 (kasya)
+- Italy update #689 (g-gg, dr-p)
 - Bump pre-commit and setup-python actions #672, #682, #686 (dr-p)
 - Doc example fix #685 (steakhutzeee, dr-p)
+
 
 Version 0.14.2
 ==============
