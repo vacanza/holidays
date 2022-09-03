@@ -51,18 +51,16 @@ class NewYorkStockExchange(HolidayBase):
     def __init__(self, **kwargs):
         HolidayBase.__init__(self, **kwargs)
 
-    def _get_observed(self, d, always_post=False):
+    def _get_observed(self, d):
         wdnum = d.isoweekday()
-        if always_post and wdnum == 6:  # treat sat as sun
-            wdnum = 7
         if wdnum == 6:
             return d + rd(weekday=FR(-1))
         if wdnum == 7:
             return d + rd(weekday=MO(+1))
         return d
 
-    def _set_observed_date(self, date, name, always_post=False):
-        date_obs = self._get_observed(date, always_post=always_post)
+    def _set_observed_date(self, date, name):
+        date_obs = self._get_observed(date)
         if date_obs == date:
             self[date] = name
         else:
@@ -73,8 +71,13 @@ class NewYorkStockExchange(HolidayBase):
         # REGULAR HOLIDAYS
         ##############################################################
         # NYD
-        nyd = date(year, JAN, 1)
-        self._set_observed_date(nyd, "New Year's Day", always_post=True)
+        this_year_nye = date(year, DEC, 31)
+        if this_year_nye.isoweekday() == 5:  # check if NYE should be observed
+            self._set_observed_date(  # from Jan 1 next year.
+                this_year_nye + rd(days=+1), "New Year's Day"
+            )
+
+        self._set_observed_date(date(year, JAN, 1), "New Year's Day")
 
         # MLK - observed 1998 - 3rd Monday of Jan
         if year >= 1998:
