@@ -12,37 +12,31 @@
 from datetime import date, timedelta
 
 from dateutil.easter import easter
-from dateutil.relativedelta import (
-    relativedelta as rd,
-    MO,
-    TU,
-    TH,
-    FR,
-)
-
+from dateutil.relativedelta import FR, MO, TH, TU
+from dateutil.relativedelta import relativedelta as rd
 from holidays.constants import (
-    JAN,
-    FEB,
-    MAR,
     APR,
-    MAY,
-    JUN,
-    JUL,
     AUG,
-    SEP,
-    OCT,
-    NOV,
     DEC,
+    FEB,
+    JAN,
+    JUL,
+    JUN,
+    MAR,
+    MAY,
+    NOV,
+    OCT,
+    SEP,
 )
-
 from holidays.holiday_base import HolidayBase
 
 
 class NewYorkStockExchange(HolidayBase):
+    # Official regulations:
+    # https://www.nyse.com/publicdocs/nyse/regulation/nyse/NYSE_Rules.pdf
     # https://www.nyse.com/markets/hours-calendars
     # Historical data:
     # s3.amazonaws.com/armstrongeconomics-wp/2013/07/NYSE-Closings.pdf
-    # https://www.nyse.com/publicdocs/nyse/regulation/nyse/NYSE_Rules.pdf
 
     country = "NYSE"
 
