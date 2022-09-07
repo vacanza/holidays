@@ -68,8 +68,8 @@ class NewYorkStockExchange(HolidayBase):
         self._set_observed_date(date(year, JAN, 1), "New Year's Day")
 
         # https://www.nyse.com/publicdocs/nyse/regulation/nyse/NYSE_Rules.pdf
-        # As per Rule 7.2.: check if next year's NYD falls on Saturday and needs
-        # to be observed on Friday (Dec 31 of previous year).
+        # As per Rule 7.2.: check if next year's NYD falls on Saturday and
+        # needs to be observed on Friday (Dec 31 of previous year).
         dec_31 = date(year, DEC, 31)
         if dec_31.isoweekday() == 5:
             self._set_observed_date(dec_31 + rd(days=+1), "New Year's Day")
