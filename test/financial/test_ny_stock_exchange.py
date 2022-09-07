@@ -42,13 +42,13 @@ class TestNewYorkStockExchange(unittest.TestCase):
             date(1950, JAN, 2),
             date(1999, JAN, 1),
             date(1999, DEC, 31),
-            date(2001, JAN, 1),
             date(2010, JAN, 1),
             date(2018, JAN, 1),
             date(2019, JAN, 1),
             date(2020, JAN, 1),
             date(2021, JAN, 1),
             date(2021, DEC, 31),
+            date(2027, DEC, 31),
         ]:
             self.assertIn(dt, self.holidays)
             self.assertNotIn(dt + relativedelta(days=-1), self.holidays)

@@ -40,11 +40,9 @@ from holidays.holiday_base import HolidayBase
 
 class NewYorkStockExchange(HolidayBase):
     # https://www.nyse.com/markets/hours-calendars
-    # historical data:
+    # Historical data:
     # s3.amazonaws.com/armstrongeconomics-wp/2013/07/NYSE-Closings.pdf
-    # also available for 1901- at:
-    # nyseholidays.blogspot.com/2012/11/nyse-holidays-from-<year1>-<year2>.html
-    # where year1 ends in 01, year2 ends in 00 (e.g. 1901-1910)
+    # https://www.nyse.com/publicdocs/nyse/regulation/nyse/NYSE_Rules.pdf
 
     country = "NYSE"
 
@@ -70,14 +68,17 @@ class NewYorkStockExchange(HolidayBase):
         ##############################################################
         # REGULAR HOLIDAYS
         ##############################################################
-        # NYD
-        this_year_nye = date(year, DEC, 31)
-        if this_year_nye.isoweekday() == 5:  # check if NYE should be observed
-            self._set_observed_date(  # from Jan 1 next year.
-                this_year_nye + rd(days=+1), "New Year's Day"
-            )
 
+        # NYD
+        # This year's New Year Day.
         self._set_observed_date(date(year, JAN, 1), "New Year's Day")
+
+        # https://www.nyse.com/publicdocs/nyse/regulation/nyse/NYSE_Rules.pdf
+        # As per Rule 7.2.: check if next year's NYD falls on Saturday and needs
+        # to be observed on Friday (Dec 31 of previous year).
+        dec_31 = date(year, DEC, 31)
+        if dec_31.isoweekday() == 5:
+            self._set_observed_date(dec_31 + rd(days=+1), "New Year's Day")
 
         # MLK - observed 1998 - 3rd Monday of Jan
         if year >= 1998:
