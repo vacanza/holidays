@@ -96,8 +96,9 @@ class Bolivia(HolidayBase):
         self[easter(year) + rd(days=+60)] = "Corpus Christi"
 
         # Andean New Year.
+        name = "Año Nuevo Andino"
         if year >= 2010:
-            self[date(year, JUN, 21)] = "Año Nuevo Andino"
+            self[date(year, JUN, 21)] = name
 
         if self.observed and date(year, JUN, 21).weekday() == SUN:
             self[date(year, JUN, 21) + rd(days=+1)] = f"{name} (Observed)"
@@ -146,7 +147,8 @@ class Bolivia(HolidayBase):
             self[date(year, NOV, 18)] = "Dia del departamento de Beni"
 
         # Christmas Day.
-        self[date(year, DEC, 25)] = "Navidad"
+        name = "Navidad"
+        self[date(year, DEC, 25)] = name
 
         if self.observed and date(year, DEC, 25).weekday() == SUN:
             self[date(year, DEC, 25) + rd(days=+1)] = f"{name} (Observed)"
