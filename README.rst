@@ -141,6 +141,9 @@ following countries and their subdivisions are available:
    * - Belgium
      - BE
      - None
+   * - Bolivia
+     - BO
+     - Departments: B, C, H, L, N, O, P, S, T
    * - Botswana
      - BW
      - None
