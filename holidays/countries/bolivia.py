@@ -65,6 +65,9 @@ class Bolivia(HolidayBase):
                 date(year, JAN, 22)
             ] = "Nacimiento del Estado Plurinacional de Bolivia"
 
+        # Good Friday.
+        self[easter(year) + rd(weekday=FR(-1))] = "Viernes Santo"
+
         # La Tablada.
         if self.subdiv == "T":
             self[date(year, APR, 15)] = "La Tablada"
@@ -77,9 +80,6 @@ class Bolivia(HolidayBase):
         name = "Feriado por Carnaval"
         self[easter(year) + rd(days=-48)] = name
         self[easter(year) + rd(days=-47)] = f"{name} (Observed)"
-
-        # Good Friday.
-        self[easter(year) + rd(weekday=FR(-1))] = "Viernes Santo"
 
         # Labor Day.
         name = "Dia del trabajo"
