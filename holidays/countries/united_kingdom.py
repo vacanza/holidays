@@ -15,7 +15,7 @@ from typing import Any
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd, MO, FR
 
-from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, NOV, DEC
+from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, NOV, DEC
 from holidays.constants import MON, TUE, WED, THU, FRI, SAT, SUN, WEEKEND
 from holidays.holiday_base import HolidayBase
 
@@ -181,6 +181,7 @@ class UnitedKingdom(HolidayBase):
             self[date(year, JUN, 5)] = "Diamond Jubilee of Elizabeth II"
         elif year == 2022:
             self[date(year, JUN, 3)] = "Platinum Jubilee of Elizabeth II"
+            self[date(year, SEP, 19)] = "State Funeral of Queen Elizabeth II"
 
     def _additional_holidays(self, year: int) -> None:
         # Method used to handle Isle of Man (replaced by class IsleOfMan)
