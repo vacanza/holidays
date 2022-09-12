@@ -275,9 +275,15 @@ class TestAU(unittest.TestCase):
         dt = date(2022, 9, 23)
         for state in ["ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"]:
             self.assertIn(dt, self.state_hols[state], (state, dt))
-            self.assertEqual(self.state_hols[state][dt], "National Day of Mourning for Queen Elizabeth II")
+            self.assertEqual(
+                self.state_hols[state][dt],
+                "National Day of Mourning for Queen Elizabeth II",
+            )
         self.assertIn(dt, self.holidays, dt)
-        self.assertEqual(self.holidays[dt], "National Day of Mourning for Queen Elizabeth II")
+        self.assertEqual(
+            self.holidays[dt],
+            "National Day of Mourning for Queen Elizabeth II",
+        )
 
     def test_grand_final_day(self):
         dt = date(2019, 9, 27)
