@@ -272,7 +272,7 @@ class TestAU(unittest.TestCase):
             self.assertEqual(self.state_hols["ACT"][dt], "Reconciliation Day")
 
     def test_national_day_of_mourning_for_queen_elizabeth_II(self):
-        dt = date(2022, 9, 23)
+        dt = date(2022, 9, 22)
         for state in ["ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"]:
             self.assertIn(dt, self.state_hols[state], (state, dt))
             self.assertEqual(
@@ -290,7 +290,7 @@ class TestAU(unittest.TestCase):
         dt_2020 = date(2020, 10, 23)
         dt_2020_old = date(2020, 9, 25)
         dt_2021 = date(2021, 9, 24)
-        dt_2022 = date(2022, 9, 24)
+        dt_2022 = date(2022, 9, 23)
         self.assertIn(dt, self.state_hols["VIC"], dt)
         self.assertEqual(self.state_hols["VIC"][dt], "Grand Final Day")
         self.assertIn(dt_2020, self.state_hols["VIC"], dt_2020)

@@ -208,12 +208,12 @@ class Australia(HolidayBase):
         # National Day of Mourning for Queen Elizabeth II
         name = "National Day of Mourning for Queen Elizabeth II"
         if year == 2022:
-            self[date(year, SEP, 23)] = name
+            self[date(year, SEP, 22)] = name
 
         if self.subdiv == "VIC":
             # Grand Final Day
             if year == 2022:
-                self[date(2022, SEP, 24)] = "Grand Final Day"
+                self[date(2022, SEP, 23)] = "Grand Final Day"
             elif year == 2020:
                 # Rescheduled due to COVID-19
                 self[date(year, OCT, 23)] = "Grand Final Day"
