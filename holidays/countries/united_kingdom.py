@@ -181,7 +181,6 @@ class UnitedKingdom(HolidayBase):
             self[date(year, JUN, 5)] = "Diamond Jubilee of Elizabeth II"
         elif year == 2022:
             self[date(year, JUN, 3)] = "Platinum Jubilee of Elizabeth II"
-        elif year == 2022:
             self[date(year, SEP, 19)] = "State Funeral of Queen Elizabeth II"
 
     def _additional_holidays(self, year: int) -> None:
