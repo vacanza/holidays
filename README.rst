@@ -282,6 +282,9 @@ following countries and their subdivisions are available:
    * - Mexico
      - MX
      - None
+   * - Moldova
+     - MD
+     - None
    * - Morocco
      - MA
      - None
