@@ -12,57 +12,47 @@
 from datetime import date, timedelta
 
 from dateutil.easter import easter
-from dateutil.relativedelta import (
-    relativedelta as rd,
-    MO,
-    TU,
-    TH,
-    FR,
-)
-
+from dateutil.relativedelta import FR, MO, TH, TU
+from dateutil.relativedelta import relativedelta as rd
 from holidays.constants import (
-    JAN,
-    FEB,
-    MAR,
     APR,
-    MAY,
-    JUN,
-    JUL,
     AUG,
-    SEP,
-    OCT,
-    NOV,
     DEC,
+    FEB,
+    JAN,
+    JUL,
+    JUN,
+    MAR,
+    MAY,
+    NOV,
+    OCT,
+    SEP,
 )
-
 from holidays.holiday_base import HolidayBase
 
 
 class NewYorkStockExchange(HolidayBase):
+    # Official regulations:
+    # https://www.nyse.com/publicdocs/nyse/regulation/nyse/NYSE_Rules.pdf
     # https://www.nyse.com/markets/hours-calendars
-    # historical data:
+    # Historical data:
     # s3.amazonaws.com/armstrongeconomics-wp/2013/07/NYSE-Closings.pdf
-    # also available for 1901- at:
-    # nyseholidays.blogspot.com/2012/11/nyse-holidays-from-<year1>-<year2>.html
-    # where year1 ends in 01, year2 ends in 00 (e.g. 1901-1910)
 
     country = "NYSE"
 
     def __init__(self, **kwargs):
         HolidayBase.__init__(self, **kwargs)
 
-    def _get_observed(self, d, always_post=False):
+    def _get_observed(self, d):
         wdnum = d.isoweekday()
-        if always_post and wdnum == 6:  # treat sat as sun
-            wdnum = 7
         if wdnum == 6:
             return d + rd(weekday=FR(-1))
         if wdnum == 7:
             return d + rd(weekday=MO(+1))
         return d
 
-    def _set_observed_date(self, date, name, always_post=False):
-        date_obs = self._get_observed(date, always_post=always_post)
+    def _set_observed_date(self, date, name):
+        date_obs = self._get_observed(date)
         if date_obs == date:
             self[date] = name
         else:
@@ -72,9 +62,17 @@ class NewYorkStockExchange(HolidayBase):
         ##############################################################
         # REGULAR HOLIDAYS
         ##############################################################
+
         # NYD
-        nyd = date(year, JAN, 1)
-        self._set_observed_date(nyd, "New Year's Day", always_post=True)
+        # This year's New Year Day.
+        self._set_observed_date(date(year, JAN, 1), "New Year's Day")
+
+        # https://www.nyse.com/publicdocs/nyse/regulation/nyse/NYSE_Rules.pdf
+        # As per Rule 7.2.: check if next year's NYD falls on Saturday and
+        # needs to be observed on Friday (Dec 31 of previous year).
+        dec_31 = date(year, DEC, 31)
+        if dec_31.isoweekday() == 5:
+            self._set_observed_date(dec_31 + rd(days=+1), "New Year's Day")
 
         # MLK - observed 1998 - 3rd Monday of Jan
         if year >= 1998:
