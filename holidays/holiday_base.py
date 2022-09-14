@@ -349,11 +349,12 @@ class HolidayBase(Dict[date, str]):
 
     def __setitem__(self, key: DateLike, value: str) -> None:
         if key in self:
-            if self.get(key).find(value) < 0 and value.find(self.get(key)) < 0:
-                value = f"{value}, {self.get(key)}"
-            else:
-                value = self.get(key)
-        return dict.__setitem__(self, self.__keytransform__(key), value)
+            delimiter = ", "
+            holiday_names = set(self.get(key).split(delimiter))
+            holiday_names.add(value)
+            value = delimiter.join(sorted(holiday_names))
+
+        dict.__setitem__(self, self.__keytransform__(key), value)
 
     def update(  # type: ignore[override]
         self, *args: Union[Dict[DateLike, str], List[DateLike], DateLike]
