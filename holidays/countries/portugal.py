@@ -22,7 +22,7 @@ class Portugal(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Portugal
 
     country = "PT"
-    subdivisions = ["Ext"]
+    subdivisions = ["Ext", "Porto", "Lisboa"]
 
     def __init__(self, **kwargs):
         HolidayBase.__init__(self, **kwargs)
@@ -73,6 +73,16 @@ class Portugal(HolidayBase):
             # TODO add bridging days
             # - get Holidays that occur on Tuesday  and add Monday (-1 day)
             # - get Holidays that occur on Thursday and add Friday (+1 day)
+            
+        elif self.subdiv == "Porto":
+            self[e - rd(days=47)] = "Carnaval"
+            self[date(year, JUN, 24)] = "Dia de São João"
+            self[date(year, DEC, 24)] = "Véspera de Natal"
+            
+        elif self.subdiv == "Lisboa":
+            self[e - rd(days=47)] = "Carnaval"
+            self[date(year, JUN, 13)] = "Dia de Santo António"
+            self[date(year, DEC, 24)] = "Véspera de Natal"
 
 
 class PT(Portugal):
