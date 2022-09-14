@@ -70,6 +70,10 @@ Quick Start
     # the below is the same, but takes a string:
     us_holidays = holidays.country_holidays('US')  # this is a dict
 
+    nyse_holidays = holidays.NYSE()  # this is a dict
+    # the below is the same, but takes a string:
+    nyse_holidays = holidays.financial_holidays('NYSE')  # this is a dict
+
     date(2015, 1, 1) in us_holidays  # True
     date(2015, 1, 2) in us_holidays  # False
     us_holidays.get('2014-01-01')  # "New Year's Day"

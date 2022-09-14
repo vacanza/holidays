@@ -188,6 +188,65 @@ def country_holidays(
     return country_holiday
 
 
+def financial_holidays(
+    market: str,
+    subdiv: Optional[str] = None,
+    years: Optional[Union[int, Iterable[int]]] = None,
+    expand: bool = True,
+    observed: bool = True,
+) -> HolidayBase:
+    """
+    Returns a new dictionary-like :py:class:`HolidayBase` object for the public
+    holidays of the financial market matching **market** and other keyword
+    arguments.
+
+    :param market:
+        An ISO 3166-1 Alpha-2 market code.
+
+    :param subdiv:
+        Currently not implemented for markets (see documentation).
+
+    :param years:
+        The year(s) to pre-calculate public holidays for at instantiation.
+
+    :param expand:
+        Whether the entire year is calculated when one date from that year
+        is requested.
+
+    :param observed:
+        Whether to include the dates of when public holiday are observed
+        (e.g. a holiday falling on a Sunday being observed the following
+        Monday). False may not work for all countries.
+
+    :return:
+        A :py:class:`HolidayBase` object matching the **market**.
+
+    Example usage:
+
+    >>> from holidays import financial_holidays
+    >>> nyse_holidays = financial_holidays('NYSE')
+
+    See :py:func:`country_holidays` documentation for further details and
+    examples.
+    """
+    try:
+        financial_classes = inspect.getmembers(
+            holidays.financial, inspect.isclass
+        )
+        financial_class = next(
+            obj for name, obj in financial_classes if name == market
+        )
+        financial_holiday: HolidayBase = financial_class(
+            years=years,
+            subdiv=subdiv,
+            expand=expand,
+            observed=observed,
+        )
+    except StopIteration:
+        raise NotImplementedError(f"Financial market {market} not available")
+    return financial_holiday
+
+
 def CountryHoliday(
     country: str,
     subdiv: Optional[str] = None,
@@ -238,7 +297,7 @@ def list_supported_financial() -> Dict[str, List[str]]:
         the value is a list of supported subdivision codes.
     """
     return {
-        obj.country: obj.subdivisions
+        obj.market: obj.subdivisions
         for name, obj in inspect.getmembers(
             holidays.financial, inspect.isclass
         )

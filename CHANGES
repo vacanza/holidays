@@ -3,6 +3,7 @@ Version 0.16
 
 Released ?????? ??, ????
 
+- Financial market support review, new method financial_holidays(..) #694 (dr-p)
 - Support for Moldova #695 (Thedand)
 - Support for Bolivia #679, #698 (kasya)
 - UK updates #702 (JPunter)
