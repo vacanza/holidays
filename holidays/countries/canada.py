@@ -223,8 +223,13 @@ class Canada(HolidayBase):
         # Funeral of Queen Elizabeth II
         # https://www.narcity.com/provinces-territories-will-have-a-day-off-monday-mourn-queen
         # TODO: the territories holiday status (NT, NU, YT) is still preliminary
-        if self.subdiv in ("BC", "NB", "NL", "NS", "PE", "YT") and year == 2022:
-            self[date(year, SEP, 19)] = "Day of Mourning for the Funeral of Her Majesty the Queen Elizabeth II"
+        if (
+            self.subdiv in ("BC", "NB", "NL", "NS", "PE", "YT")
+            and year == 2022
+        ):
+            self[
+                date(year, SEP, 19)
+            ] = "Day of Mourning for the Funeral of Her Majesty the Queen Elizabeth II"
 
         # National Day for Truth and Reconciliation
         if self.subdiv in ("MB", "NS") and year >= 2021:

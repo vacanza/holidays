@@ -371,12 +371,22 @@ class TestCA(unittest.TestCase):
     def test_queens_funeral(self):
         queen_funeral_year = 2022
         queen_funeral = date(queen_funeral_year, 9, 19)
-        subdivisions_following_queen_funeral = ("BC", "NB", "NL", "NS", "PE", "YT")
+        subdivisions_following_queen_funeral = (
+            "BC",
+            "NB",
+            "NL",
+            "NS",
+            "PE",
+            "YT",
+        )
 
         for subdivision in holidays.Canada.subdivisions:
             holidays_canada = holidays.CA(subdiv=subdivision)
             for year in range(1900, 2100):
-                if year == queen_funeral_year and subdivision in subdivisions_following_queen_funeral:
+                if (
+                    year == queen_funeral_year
+                    and subdivision in subdivisions_following_queen_funeral
+                ):
                     self.assertIn(queen_funeral, holidays_canada)
                 else:
                     self.assertNotIn(queen_funeral, holidays_canada)
