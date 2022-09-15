@@ -225,8 +225,9 @@ class Canada(HolidayBase):
         # TODO: the territories holiday status (NT, NU, YT) is still tentative
         queen_funeral_observers = ("BC", "NB", "NL", "NS", "PE", "YT")
         if self.subdiv in queen_funeral_observers and year == 2022:
-            holiday_name = "Funeral of Her Majesty the Queen Elizabeth II"
-            self[date(year, SEP, 19)] = holiday_name
+            self[
+                date(year, SEP, 19)
+            ] = "Funeral of Her Majesty the Queen Elizabeth II"
 
         # National Day for Truth and Reconciliation
         if self.subdiv in ("MB", "NS") and year >= 2021:
