@@ -116,12 +116,11 @@ class Australia(HolidayBase):
             self[date(year, JUN, 1) + rd(weekday=MO(+1))] = name
 
         # Sovereign's Birthday
-        if year >= 1952:
+        if 1952 <= year <= 2022:
             name = "Queen's Birthday"
         elif year > 1901:
             name = "King's Birthday"
         if year >= 1936:
-            name = "Queen's Birthday"
             if self.subdiv == "QLD":
                 if year == 2012:
                     self[date(year, JUN, 11)] = "Queen's Diamond Jubilee"
