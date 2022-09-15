@@ -369,16 +369,11 @@ class TestCA(unittest.TestCase):
         self.assertIn(date(2010, 12, 27), self.holidays)
 
     def test_queens_funeral(self):
-        queen_funeral_year = 2022
-        queen_funeral = date(queen_funeral_year, 9, 19)
         observers = ("BC", "NB", "NL", "NS", "PE", "YT")
-
         for subdiv in holidays.CA.subdivisions:
             holidays_canada = holidays.CA(subdiv=subdiv)
             for year in range(1900, 2100):
-                err_msg = f"{subdiv} {year} {year == queen_funeral_year}"
-                err_msg += f" {subdiv in observers}"
-                if year == queen_funeral_year and subdiv in observers:
-                    self.assertIn(queen_funeral, holidays_canada, err_msg)
+                if year == 2022 and subdiv in observers:
+                    self.assertIn(date(year, 9, 19), holidays_canada)
                 else:
-                    self.assertNotIn(queen_funeral, holidays_canada, err_msg)
+                    self.assertNotIn(date(year, 9, 19), holidays_canada)
