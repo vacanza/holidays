@@ -246,6 +246,7 @@ class TestNZ(unittest.TestCase):
             dt = date(year, 6, day)
             self.assertIn(dt, self.holidays, dt)
             self.assertEqual(self.holidays[dt], "Queen's Birthday")
+        self.assertEqual(self.holidays[date(2023, 6, 5)], "King's Birthday")
 
     def test_matariki(self):
         for dt in [

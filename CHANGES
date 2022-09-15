@@ -6,9 +6,10 @@ Released ?????? ??, ????
 - Financial market support review, new method financial_holidays(..) #694 (dr-p)
 - Support for Moldova #695 (Thedand)
 - Support for Bolivia #679, #698 (kasya)
-- UK updates #702 (JPunter)
+- UK updates #702 (JPunter, violuke)
 - Australia updates #699 (Ryan-McCrory)
 - Canada updates #710 (bkthomps)
+- New Zealand updates #708, #709 (dr-p, markhoneth)
 - NYSE updates #693, #696 (kasya)
 
 Version 0.15

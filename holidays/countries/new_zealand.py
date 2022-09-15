@@ -114,7 +114,7 @@ class NewZealand(HolidayBase):
                 self[apr25 + rd(weekday=MO)] = name + " (Observed)"
 
         # Sovereign's Birthday
-        if year >= 1952:
+        if 1952 <= year <= 2022:
             name = "Queen's Birthday"
         elif year > 1901:
             name = "King's Birthday"
@@ -196,6 +196,10 @@ class NewZealand(HolidayBase):
             self[date(year, JUN, 30)] = name
         elif year == 2052:
             self[date(year, JUN, 21)] = name
+
+        # Queen Elizabeth II Memorial Day
+        if year == 2022:
+            self[date(year, SEP, 26)] = "Queen Elizabeth II Memorial Day"
 
         # Labour Day
         name = "Labour Day"
