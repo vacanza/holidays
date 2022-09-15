@@ -349,6 +349,8 @@ class HolidayBase(Dict[date, str]):
 
     def __setitem__(self, key: DateLike, value: str) -> None:
         if key in self:
+            # If there are multiple holidays on the same date
+            # order their names alphabetically.
             delimiter = ", "
             holiday_names = set(self.get(key).split(delimiter))
             holiday_names.add(value)
