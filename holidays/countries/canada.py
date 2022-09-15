@@ -220,6 +220,14 @@ class Canada(HolidayBase):
         if year >= 1894:
             self[date(year, SEP, 1) + rd(weekday=MO)] = "Labour Day"
 
+        # Funeral of Queen Elizabeth II
+        # https://www.narcity.com/provinces-territories-will-have-a-day-off-monday-mourn-queen
+        # TODO: the territories holiday status (NT, NU, YT) is still tentative
+        queen_funeral_observers = ("BC", "NB", "NL", "NS", "PE", "YT")
+        if self.subdiv in queen_funeral_observers and year == 2022:
+            holiday_name = "Funeral of Her Majesty the Queen Elizabeth II"
+            self[date(year, SEP, 19)] = holiday_name
+
         # National Day for Truth and Reconciliation
         if self.subdiv in ("MB", "NS") and year >= 2021:
             self[
