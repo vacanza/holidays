@@ -32,7 +32,7 @@ class Cuba(HolidayBase):
         2007 (NOV 19): https://bit.ly/3oFbhaZ
         2013 (DEC 20): https://bit.ly/3zoO3vC
         Note: for holidays that can be moved to a Monday if they fall on a
-              Monday, between 1984 and 2013, the State Committee of Work and
+              Sunday, between 1984 and 2013, the State Committee of Work and
               Social Security would determine if they would be moved to the
               Monday, or if they would stay on the Sunday, presumably depending
               on quotas. After 2013, they always move to Monday. I could not
