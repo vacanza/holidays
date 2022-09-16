@@ -116,12 +116,11 @@ class Australia(HolidayBase):
             self[date(year, JUN, 1) + rd(weekday=MO(+1))] = name
 
         # Sovereign's Birthday
-        if year >= 1952:
+        if 1952 <= year <= 2022:
             name = "Queen's Birthday"
         elif year > 1901:
             name = "King's Birthday"
         if year >= 1936:
-            name = "Queen's Birthday"
             if self.subdiv == "QLD":
                 if year == 2012:
                     self[date(year, JUN, 11)] = "Queen's Diamond Jubilee"
@@ -205,12 +204,15 @@ class Australia(HolidayBase):
             if year >= 2018:
                 self[date(year, 5, 27) + rd(weekday=MO)] = name
 
+        # National Day of Mourning for Queen Elizabeth II
+        name = "National Day of Mourning for Queen Elizabeth II"
+        if year == 2022:
+            self[date(year, SEP, 22)] = name
+
         if self.subdiv == "VIC":
             # Grand Final Day
             if year == 2022:
-                # Current planned grand final date.
-                # Could change at the dicression of the AFL
-                self[date(2022, 9, 23)] = "Grand Final Day"
+                self[date(2022, SEP, 23)] = "Grand Final Day"
             elif year == 2020:
                 # Rescheduled due to COVID-19
                 self[date(year, OCT, 23)] = "Grand Final Day"

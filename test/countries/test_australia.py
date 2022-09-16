@@ -271,6 +271,20 @@ class TestAU(unittest.TestCase):
             self.assertIn(dt, self.state_hols["ACT"], dt)
             self.assertEqual(self.state_hols["ACT"][dt], "Reconciliation Day")
 
+    def test_national_day_of_mourning_for_queen_elizabeth_II(self):
+        dt = date(2022, 9, 22)
+        for state in ["ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"]:
+            self.assertIn(dt, self.state_hols[state], (state, dt))
+            self.assertEqual(
+                self.state_hols[state][dt],
+                "National Day of Mourning for Queen Elizabeth II",
+            )
+        self.assertIn(dt, self.holidays, dt)
+        self.assertEqual(
+            self.holidays[dt],
+            "National Day of Mourning for Queen Elizabeth II",
+        )
+
     def test_grand_final_day(self):
         dt = date(2019, 9, 27)
         dt_2020 = date(2020, 10, 23)

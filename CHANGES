@@ -1,3 +1,23 @@
+Version 0.16
+============
+
+Released September 16, 2022
+
+This release is dedicated to Queen Elizabeth II (21 April 1926 – 8 September 2022),
+who lived her long life as a monarch through 2 centuries, in both happy and difficult moments,
+with grace, dignity and an always inspiring strong sense of duty and warm heart.
+Goodbye "Lilibet", you have symbolically been a queen, a mother and a grandmother
+to a lot of us, and will be dearly missed.
+
+- Financial market support review, new method financial_holidays(..) #694 (dr-p)
+- Support for Moldova #695 (Thedand)
+- Support for Bolivia #679, #698 (kasya)
+- UK updates #702 (JPunter, violuke)
+- Australia updates #699 (Ryan-McCrory, dr-p)
+- Canada updates #710 (bkthomps)
+- New Zealand updates #708, #709 (dr-p, markhoneth)
+- NYSE updates #693, #696 (kasya)
+
 Version 0.15
 ============
 

@@ -560,14 +560,36 @@ class TestCountryHolidays(unittest.TestCase):
             NotImplementedError, lambda: holidays.country_holidays("XXXX")
         )
         self.assertRaises(
-            NotImplementedError, lambda: holidays.country_holidays("XXXX")
-        )
-        self.assertRaises(
             NotImplementedError,
             lambda: holidays.country_holidays("US", subdiv="XXXX"),
         )
         self.assertRaises(
             NotImplementedError, lambda: holidays.US(subdiv="XXXX")
+        )
+
+
+class TestFinancialHolidays(unittest.TestCase):
+    def setUp(self):
+        self.holidays = holidays.financial_holidays("NYSE")
+
+    def test_market(self):
+        self.assertEqual(self.holidays.market, "NYSE")
+
+    def test_market_single_year(self):
+        h = holidays.financial_holidays("NYSE", years=2021)
+        self.assertEqual(h.years, {2021})
+
+    def test_market_years(self):
+        h = holidays.financial_holidays("NYSE", years=[2015, 2016])
+        self.assertEqual(h.years, {2015, 2016})
+
+    def test_exceptions(self):
+        self.assertRaises(
+            NotImplementedError, lambda: holidays.financial_holidays("XXXX")
+        )
+        self.assertRaises(
+            NotImplementedError,
+            lambda: holidays.financial_holidays("NYSE", subdiv="XXXX"),
         )
 
 

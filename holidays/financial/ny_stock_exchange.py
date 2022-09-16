@@ -12,59 +12,49 @@
 from datetime import date, timedelta
 
 from dateutil.easter import easter
-from dateutil.relativedelta import (
-    relativedelta as rd,
-    MO,
-    TU,
-    TH,
-    FR,
-)
-
+from dateutil.relativedelta import FR, MO, TH, TU
+from dateutil.relativedelta import relativedelta as rd
 from holidays.constants import (
-    JAN,
-    FEB,
-    MAR,
     APR,
-    MAY,
-    JUN,
-    JUL,
     AUG,
-    SEP,
-    OCT,
-    NOV,
     DEC,
+    FEB,
+    JAN,
+    JUL,
+    JUN,
+    MAR,
+    MAY,
+    NOV,
+    OCT,
+    SEP,
 )
-
 from holidays.holiday_base import HolidayBase
 
 
 class NewYorkStockExchange(HolidayBase):
+    # Official regulations:
+    # https://www.nyse.com/publicdocs/nyse/regulation/nyse/NYSE_Rules.pdf
     # https://www.nyse.com/markets/hours-calendars
-    # historical data:
+    # Historical data:
     # s3.amazonaws.com/armstrongeconomics-wp/2013/07/NYSE-Closings.pdf
-    # also available for 1901- at:
-    # nyseholidays.blogspot.com/2012/11/nyse-holidays-from-<year1>-<year2>.html
-    # where year1 ends in 01, year2 ends in 00 (e.g. 1901-1910)
 
-    country = "NYSE"
+    market = "NYSE"
 
     def __init__(self, **kwargs):
         HolidayBase.__init__(self, **kwargs)
 
-    def _get_observed(self, d, always_post=False):
+    def _get_observed(self, d):
         wdnum = d.isoweekday()
-        if always_post and wdnum == 6:  # treat sat as sun
-            wdnum = 7
         if wdnum == 6:
             return d + rd(weekday=FR(-1))
         if wdnum == 7:
             return d + rd(weekday=MO(+1))
         return d
 
-    def _set_observed_date(self, date, name, always_post=False):
-        date_obs = self._get_observed(date, always_post=always_post)
-        if date_obs == date:
-            self[date] = name
+    def _set_observed_date(self, holiday_date, name):
+        date_obs = self._get_observed(holiday_date)
+        if date_obs == holiday_date:
+            self[holiday_date] = name
         else:
             self[date_obs] = name + " (Observed)"
 
@@ -72,9 +62,17 @@ class NewYorkStockExchange(HolidayBase):
         ##############################################################
         # REGULAR HOLIDAYS
         ##############################################################
+
         # NYD
-        nyd = date(year, JAN, 1)
-        self._set_observed_date(nyd, "New Year's Day", always_post=True)
+        # This year's New Year Day.
+        self._set_observed_date(date(year, JAN, 1), "New Year's Day")
+
+        # https://www.nyse.com/publicdocs/nyse/regulation/nyse/NYSE_Rules.pdf
+        # As per Rule 7.2.: check if next year's NYD falls on Saturday and
+        # needs to be observed on Friday (Dec 31 of previous year).
+        dec_31 = date(year, DEC, 31)
+        if dec_31.isoweekday() == 5:
+            self._set_observed_date(dec_31 + rd(days=+1), "New Year's Day")
 
         # MLK - observed 1998 - 3rd Monday of Jan
         if year >= 1998:
@@ -83,7 +81,7 @@ class NewYorkStockExchange(HolidayBase):
             ] = "Martin Luther King Jr. Day"
 
         # LINCOLN BIRTHDAY: observed 1896 - 1953 and 1968, Feb 12 (observed)
-        if (year >= 1896 and year <= 1953) or year == 1968:
+        if (1896 <= year <= 1953) or year == 1968:
             lincoln = date(year, FEB, 12)
             self._set_observed_date(lincoln, "Lincoln's Birthday")
 
@@ -103,14 +101,14 @@ class NewYorkStockExchange(HolidayBase):
 
         # MEM DAY (May 30) - closed every year since 1873
         # last Mon in May since 1971
-        if year >= 1873 and year < 1971:
+        if 1873 <= year < 1971:
             memday = date(year, MAY, 30)
             self._set_observed_date(memday, "Memorial Day")
         else:
             self[date(year, MAY, 31) + rd(weekday=MO(-1))] = "Memorial Day"
 
         # FLAG DAY: June 14th 1916 - 1953
-        if year >= 1916 and year <= 1953:
+        if 1916 <= year <= 1953:
             flagday = date(year, JUN, 14)
             self._set_observed_date(flagday, "Flag Day")
 
@@ -130,7 +128,7 @@ class NewYorkStockExchange(HolidayBase):
             self[date(year, SEP, 1) + rd(weekday=MO(1))] = "Labor Day"
 
         # COLUMBUS DAY/INDIGENOUS PPL DAY: Oct 12 - closed 1909-1953
-        if year >= 1909 and year <= 1953:
+        if 1909 <= year <= 1953:
             colday = date(year, OCT, 12)
             self._set_observed_date(colday, "Columbus Day")
 
@@ -142,7 +140,7 @@ class NewYorkStockExchange(HolidayBase):
             self[date(year, NOV, 1) + rd(weekday=TU(1))] = "Election Day"
 
         # VETERAN'S DAY: Nov 11 - closed 1918, 1921, 1934-1953
-        if year in [1918, 1921] or (year >= 1934 and year <= 1953):
+        if year in [1918, 1921] or (1934 <= year <= 1953):
             vetday = date(year, NOV, 11)
             self._set_observed_date(vetday, "Veteran's Day")
 

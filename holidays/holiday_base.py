@@ -168,6 +168,8 @@ class HolidayBase(Dict[date, str]):
 
     country: str
     """The country's ISO 3166-1 alpha-2 code."""
+    market: str
+    """The market's ISO 3166-1 alpha-2 code."""
     subdivisions: List[str] = []
     """The subdivisions supported for this country (see documentation)."""
     years: Set[int]
@@ -234,10 +236,16 @@ class HolidayBase(Dict[date, str]):
                 and subdiv
                 not in self.subdivisions + self._deprecated_subdivisions
             ):
-                raise NotImplementedError(
-                    f"Country {self.country} does not have subdivision "
-                    f"'{subdiv}'"
-                )
+                if hasattr(self, "market"):
+                    raise NotImplementedError(
+                        f"Market {self.market} does not have subdivision "
+                        f"'{subdiv}'"
+                    )
+                else:
+                    raise NotImplementedError(
+                        f"Country {self.country} does not have subdivision "
+                        f"'{subdiv}'"
+                    )
         if isinstance(years, int):
             self.years = {years}
         else:
@@ -556,11 +564,20 @@ class HolidayBase(Dict[date, str]):
         return super().__reduce__()
 
     def __repr__(self) -> str:
+        _repr = ""
         if len(self) == 0:
-            _repr = f"holidays.country_holidays({self.country!r}"
-            if self.subdiv:
-                _repr += f", subdiv={self.subdiv!r}"
-            _repr += ")"
+            if hasattr(self, "market"):
+                _repr = f"holidays.financial_holidays({self.market!r}"
+                if self.subdiv:
+                    _repr += f", subdiv={self.subdiv!r}"
+                _repr += ")"
+            if hasattr(self, "country"):
+                if _repr:
+                    _repr += " + "
+                _repr += f"holidays.country_holidays({self.country!r}"
+                if self.subdiv:
+                    _repr += f", subdiv={self.subdiv!r}"
+                _repr += ")"
             return _repr
         return super().__repr__()
 
@@ -582,6 +599,8 @@ class HolidaySum(HolidayBase):
 
     country: Union[str, List[str]]  # type: ignore[assignment]
     """Countries included in the addition."""
+    market: Union[str, List[str]]  # type: ignore[assignment]
+    """Markets included in the addition."""
     subdiv: Optional[Union[str, List[str]]]  # type: ignore[assignment]
     """Subdivisions included in the addition."""
     holidays: List[HolidayBase]
@@ -643,10 +662,12 @@ country_holidays('CA') + country_holidays('MX')
         # country=["IT", "US"] and subdiv=["CA", "MS", "MI"], which could very
         # well be California and Messina and Milano, or Catania, Mississippi
         # and Milano, or ... you get the picture.
-        for attr in ("country", "subdiv"):
+        # Same goes when countries and markets are being mixed (working, yet
+        # still nonsensical)
+        for attr in ("country", "market", "subdiv"):
             if (
-                getattr(h1, attr)
-                and getattr(h2, attr)
+                getattr(h1, attr, None)
+                and getattr(h2, attr, None)
                 and getattr(h1, attr) != getattr(h2, attr)
             ):
                 a1 = (
@@ -661,10 +682,13 @@ country_holidays('CA') + country_holidays('MX')
                 )
                 kwargs[attr] = a1 + a2
             else:
-                kwargs[attr] = getattr(h1, attr, None) or getattr(
-                    h2, attr, None
-                )
-        self.country = kwargs.pop("country")
+                arg = getattr(h1, attr, None) or getattr(h2, attr, None)
+                if arg:
+                    kwargs[attr] = arg
+        if kwargs.__contains__("market"):
+            self.market = kwargs.pop("market")
+        if kwargs.__contains__("country"):
+            self.country = kwargs.pop("country")
 
         HolidayBase.__init__(self, **kwargs)
 

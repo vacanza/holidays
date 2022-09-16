@@ -84,6 +84,14 @@ class TestUK(unittest.TestCase):
             self.assertNotIn(dt + relativedelta(years=-1), self.holidays)
             self.assertNotIn(dt + relativedelta(years=+1), self.holidays)
 
+    def test_royal_funerals(self):
+        for dt in [
+            date(2022, 9, 19),
+        ]:
+            self.assertIn(dt, self.holidays)
+            self.assertNotIn(dt + relativedelta(years=-1), self.holidays)
+            self.assertNotIn(dt + relativedelta(years=+1), self.holidays)
+
     def test_may_day(self):
         for dt in [
             date(1978, 5, 1),

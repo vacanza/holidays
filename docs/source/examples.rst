@@ -29,12 +29,13 @@ It is more efficient to create the object only once:
    >>> date(2014, 1, 2) in us_holidays
    False
 
-You can use the :py:func:`country_holidays` function to create the object using
-a string with the country code:
+You can use the :py:func:`country_holidays` or :py:func:`financial_holidays`
+functions to create the object using a string with the country code:
 
 .. code-block:: python
 
    >>> us_holidays = holidays.country_holidays('US')
+   >>> nyse_holidays = holidays.financial_holidays('NYSE')
 
 Let's print out the holidays in 2014 specific to California, USA:
 

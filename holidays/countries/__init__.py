@@ -18,6 +18,7 @@ from .azerbaijan import Azerbaijan, AZ, AZE
 from .bangladesh import Bangladesh, BD, BGD
 from .belarus import Belarus, BY, BLR
 from .belgium import Belgium, BE, BEL
+from .bolivia import Bolivia, BO, BOL
 from .botswana import Botswana, BW, BWA
 from .brazil import Brazil, BR, BRA
 from .bulgaria import Bulgaria, BG, BLG
@@ -65,6 +66,7 @@ from .malawi import Malawi, MW, MWI
 from .malaysia import Malaysia, MY, MYS
 from .malta import Malta, MT, MLT
 from .mexico import Mexico, MX, MEX
+from .moldova import Moldova, MD
 from .morocco import Morocco, MA, MOR
 from .mozambique import Mozambique, MZ, MOZ
 from .namibia import Namibia, NA, NAM

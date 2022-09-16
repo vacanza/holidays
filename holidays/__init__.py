@@ -29,8 +29,9 @@ from holidays.holiday_base import *  # * import required for IDE docstrings
 from holidays.utils import (
     CountryHoliday,
     country_holidays,
+    financial_holidays,
     list_supported_countries,
     list_supported_financial,
 )
 
-__version__ = "0.15"
+__version__ = "0.16"
