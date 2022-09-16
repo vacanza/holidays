@@ -298,6 +298,8 @@ class Singapore(HolidayBase):
             if hol_date.year == year and hol_date.weekday() == SUN:
                 self[hol_date] += " [Sunday]"
                 in_lieu_date = hol_date + rd(days=+1)
+                if "[In lieu]" in self.get(in_lieu_date, ""):
+                    continue  # holiday already applied
                 while in_lieu_date in self:
                     in_lieu_date += rd(days=+1)
                 self[in_lieu_date] = hol_name + " [In lieu]"

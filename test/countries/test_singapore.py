@@ -101,3 +101,10 @@ class TestSingapore(unittest.TestCase):
         self.assertIsInstance(h, holidays.Singapore)
         h = holidays.SGP()
         self.assertIsInstance(h, holidays.Singapore)
+
+    def test_multiple_calls_of_populate(self):
+        hol = holidays.Singapore()
+        hol._populate(2017)
+        self.assertEqual(len(hol), 14)
+        hol._populate(2017)
+        self.assertEqual(len(hol), 14)
