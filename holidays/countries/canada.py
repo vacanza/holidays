@@ -123,9 +123,7 @@ class Canada(HolidayBase):
             # https://en.wikipedia.org/wiki/Family_Day_(Canada)#Yukon_Heritage_Day
             # Friday before the last Sunday in February
             dt = date(year, MAR, 1) + rd(weekday=SU(-1)) + rd(weekday=FR(-1))
-            self[dt] = self._(
-                "heritage_day"
-            )
+            self[dt] = self._("heritage_day")
 
         # St. Patrick's Day
         if self.subdiv == "NL" and year >= 1900:
@@ -235,14 +233,10 @@ class Canada(HolidayBase):
 
         # Civic Holiday
         if self.subdiv in ("ON", "MB", "NT") and year >= 1900:
-            self[date(year, AUG, 1) + rd(weekday=MO)] = self._(
-                'civic_holiday'
-            )
+            self[date(year, AUG, 1) + rd(weekday=MO)] = self._("civic_holiday")
         elif self.subdiv == "AB" and year >= 1974:
             # https://en.wikipedia.org/wiki/Civic_Holiday#Alberta
-            self[date(year, AUG, 1) + rd(weekday=MO)] = self._(
-                "heritage_day"
-            )
+            self[date(year, AUG, 1) + rd(weekday=MO)] = self._("heritage_day")
         elif self.subdiv == "BC" and year >= 1974:
             # https://en.wikipedia.org/wiki/Civic_Holiday
             self[date(year, AUG, 1) + rd(weekday=MO)] = self._(
@@ -272,9 +266,9 @@ class Canada(HolidayBase):
 
         # National Day for Truth and Reconciliation
         if self.subdiv in ("MB", "NS") and year >= 2021:
-            self[
-                date(year, SEP, 30)
-            ] = self._("national_day_for_truth_and_reconciliation")
+            self[date(year, SEP, 30)] = self._(
+                "national_day_for_truth_and_reconciliation"
+            )
 
         # Thanksgiving
         if self.subdiv not in ("NB", "NS", "PE", "NL") and year >= 1931:
