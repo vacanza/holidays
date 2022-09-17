@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, datetime
+from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
@@ -19,7 +19,7 @@ from holidays.constants import JAN, APR, MAY, JUL, SEP, DEC
 from holidays.holiday_base import HolidayBase
 
 
-class Swaziland(HolidayBase):
+class Eswatini(HolidayBase):
     country = "SZ"
 
     def __init__(self, **kwargs):
@@ -77,9 +77,14 @@ class Swaziland(HolidayBase):
                     self[k + rd(days=add_days)] = v + " (Day Off)"
 
 
-class SZ(Swaziland):
+class Swaziland(Eswatini):
+    # Old country name.
     pass
 
 
-class SZW(Swaziland):
+class SZ(Eswatini):
+    pass
+
+
+class SZW(Eswatini):
     pass
