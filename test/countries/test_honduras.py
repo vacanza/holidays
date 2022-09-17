@@ -34,6 +34,23 @@ class TestHonduras(unittest.TestCase):
                 self.assertNotIn(start_date, self.holidays)
             start_date += delta
 
+    def test_2014(self):
+        year = 2014
+        expected_holidays = [
+            date(year, JAN, 1),
+            date(year, APR, 14),
+            date(year, APR, 17),
+            date(year, APR, 18),
+            date(year, APR, 19),
+            date(year, MAY, 1),
+            date(year, SEP, 15),
+            date(year, OCT, 3),
+            date(year, OCT, 12),
+            date(year, OCT, 21),
+            date(year, DEC, 25),
+        ]
+        self._check_all_dates(year, expected_holidays)
+
     def test_2016(self):
         # https://www.officeholidays.com/countries/honduras/2016
         year = 2016
