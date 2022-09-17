@@ -24,6 +24,15 @@ import holidays.countries
 import holidays.financial
 from holidays.holiday_base import HolidayBase
 
+import i18n
+
+i18n.load_path.append('translations')
+i18n.set('fallback', 'en')
+
+
+def translate(country, key, locale):
+    return i18n.t(country + '.' + key, locale=locale)
+
 
 def country_holidays(
     country: str,
@@ -33,6 +42,7 @@ def country_holidays(
     observed: bool = True,
     prov: Optional[str] = None,
     state: Optional[str] = None,
+    language: str = 'en',
 ) -> HolidayBase:
     """
     Returns a new dictionary-like :py:class:`HolidayBase` object for the public
@@ -62,6 +72,14 @@ def country_holidays(
 
     :param state:
         *deprecated* use subdiv instead.
+
+    :param language:
+        The language which the returned holidays shall be translated to.
+        Must be an ISO 2-digit language code. Default is English if the
+        language does not exist or is not supported. This feature is
+        still being worked on and thus not all countries support it. The
+        goal is to have translations for all of a countries official
+        languages and English.
 
     :return:
         A :py:class:`HolidayBase` object matching the **country**.
@@ -182,6 +200,7 @@ def country_holidays(
             observed=observed,
             prov=prov,
             state=state,
+            language=language,
         )
     except StopIteration:
         raise NotImplementedError(f"Country {country} not available")

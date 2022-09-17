@@ -3,6 +3,7 @@ python-dateutil
 convertdate>=2.3.0
 korean_lunar_calendar
 hijri_converter
+python-i18n[YAML]
 
 # test requirements
 pytest

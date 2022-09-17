@@ -193,6 +193,7 @@ class HolidayBase(Dict[date, str]):
         subdiv: Optional[str] = None,
         prov: Optional[str] = None,  # deprecated
         state: Optional[str] = None,  # deprecated
+        language: str = 'en',
     ) -> None:
         """
         :param years:
@@ -217,6 +218,11 @@ class HolidayBase(Dict[date, str]):
             (e.g. a holiday falling on a Sunday being observed the
             following Monday). This doesn't work for all countries.
 
+        :param language:
+            The language which the returned holidays shall be translated to.
+            Must be an ISO 2-digit language code. Default is English if the
+            language does not exist or is not supported.
+
         :return:
             A :class:`HolidayBase` object matching the **country**.
         """
@@ -224,6 +230,7 @@ class HolidayBase(Dict[date, str]):
         self.observed = observed
         self.expand = expand
         self.subdiv = subdiv or prov or state
+        self.language = language
         if prov or state:
             warnings.warn(
                 "Arguments prov and state are deprecated, use subdiv="

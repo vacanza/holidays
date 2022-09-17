@@ -45,6 +45,7 @@ class Singapore(HolidayBase):
         subdiv: Optional[str] = None,
         prov: Optional[str] = None,
         state: Optional[str] = None,
+        language: str = 'en',
     ) -> None:
         """
         An subclass of :py:class:`HolidayBase` representing public holidays in
@@ -314,8 +315,11 @@ class SG(Singapore):
         subdiv: Optional[str] = None,
         prov: Optional[str] = None,
         state: Optional[str] = None,
+        language: str = 'en',
     ) -> None:
-        super().__init__(years, expand, observed, subdiv, prov, state)
+        super().__init__(
+            years, expand, observed, subdiv, prov, state, language
+        )
 
 
 class SGP(Singapore):
@@ -329,5 +333,8 @@ class SGP(Singapore):
         subdiv: Optional[str] = None,
         prov: Optional[str] = None,
         state: Optional[str] = None,
+        language: str = 'en',
     ) -> None:
-        super().__init__(years, expand, observed, subdiv, prov, state)
+        super().__init__(
+            years, expand, observed, subdiv, prov, state, language
+        )
