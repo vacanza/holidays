@@ -183,10 +183,10 @@ class HongKong(HolidayBase):
         dt = self.cnls.lunar_to_gre(year, 8, 15)
         mid_autumn_date = date(dt.year, dt.month, dt.day)
         if self.observed:
-            if mid_autumn_date.weekday() == SAT:
+            if mid_autumn_date.weekday() != SAT:
                 self[mid_autumn_date] = name
             else:
-                self[mid_autumn_date + rd(days=+1)] = (
+                self[mid_autumn_date + rd(days=+2)] = (
                     day_following + "the " + name
                 )
             mid_autumn_date = mid_autumn_date + rd(days=+1)
