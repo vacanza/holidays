@@ -64,7 +64,7 @@ class Malaysia(HolidayBase):
         subdiv: Optional[str] = None,
         prov: Optional[str] = None,
         state: Optional[str] = None,
-        language: str = 'en',
+        language: str = "en",
     ) -> None:
         """
         An subclass of :py:class:`HolidayBase` representing public holidays in
@@ -644,7 +644,7 @@ class MY(Malaysia):
         subdiv: Optional[str] = None,
         prov: Optional[str] = None,
         state: Optional[str] = None,
-        language: str = 'en',
+        language: str = "en",
     ) -> None:
         super().__init__(
             years, expand, observed, subdiv, prov, state, language
@@ -662,7 +662,7 @@ class MYS(Malaysia):
         subdiv: Optional[str] = None,
         prov: Optional[str] = None,
         state: Optional[str] = None,
-        language: str = 'en',
+        language: str = "en",
     ) -> None:
         super().__init__(
             years, expand, observed, subdiv, prov, state, language

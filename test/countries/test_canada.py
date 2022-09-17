@@ -385,7 +385,7 @@ class TestCA(unittest.TestCase):
 
     def test_translate_english_results_in_english(self):
         dt = date(2011, 1, 1)
-        self.holidays.language = 'en'
+        self.holidays.language = "en"
         self.assertIn(dt, self.holidays)
         self.assertEqual(self.holidays[dt], "New Year's Day")
 
@@ -397,12 +397,12 @@ class TestCA(unittest.TestCase):
 
     def test_translate_invalid_results_in_english(self):
         dt = date(2011, 1, 1)
-        self.holidays.language = 'invalid_language'
+        self.holidays.language = "invalid_language"
         self.assertIn(dt, self.holidays)
         self.assertEqual(self.holidays[dt], "New Year's Day")
 
     def test_translate_french_results_in_french(self):
         dt = date(2011, 1, 1)
-        self.holidays.language = 'fr'
+        self.holidays.language = "fr"
         self.assertIn(dt, self.holidays)
         self.assertEqual(self.holidays[dt], "Jour de l'an")

@@ -26,12 +26,12 @@ from holidays.holiday_base import HolidayBase
 
 import i18n
 
-i18n.load_path.append('translations')
-i18n.set('fallback', 'en')
+i18n.load_path.append("translations")
+i18n.set("fallback", "en")
 
 
 def translate(country, key, locale):
-    return i18n.t(country + '.' + key, locale=locale)
+    return i18n.t(country + "." + key, locale=locale)
 
 
 def country_holidays(
@@ -42,7 +42,7 @@ def country_holidays(
     observed: bool = True,
     prov: Optional[str] = None,
     state: Optional[str] = None,
-    language: str = 'en',
+    language: str = "en",
 ) -> HolidayBase:
     """
     Returns a new dictionary-like :py:class:`HolidayBase` object for the public

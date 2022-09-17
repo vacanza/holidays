@@ -193,7 +193,7 @@ class HolidayBase(Dict[date, str]):
         subdiv: Optional[str] = None,
         prov: Optional[str] = None,  # deprecated
         state: Optional[str] = None,  # deprecated
-        language: str = 'en',
+        language: str = "en",
     ) -> None:
         """
         :param years:
