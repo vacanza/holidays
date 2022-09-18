@@ -89,7 +89,7 @@ from .slovakia import Slovakia, SK, SVK
 from .slovenia import Slovenia, SI, SVN
 from .south_africa import SouthAfrica, ZA, ZAF
 from .spain import Spain, ES, ESP
-from .eswatini import Swaziland, SZ, SZW
+from .eswatini import Eswatini, Swaziland, SZ, SZW
 from .sweden import Sweden, SE, SWE
 from .switzerland import Switzerland, CH, CHE
 from .taiwan import Taiwan, TW, TWN
