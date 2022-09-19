@@ -10,25 +10,13 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-
 from datetime import date, timedelta
-from dateutil.relativedelta import relativedelta, WE
+
+from dateutil.relativedelta import WE, relativedelta
 
 import holidays
-from holidays.constants import (
-    JAN,
-    FEB,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-)
+from holidays.constants import (APR, AUG, DEC, FEB, JAN, JUL, JUN, MAR, MAY,
+                                NOV, OCT, SEP)
 
 
 class TestNewYorkStockExchange(unittest.TestCase):

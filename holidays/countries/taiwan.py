@@ -12,10 +12,10 @@
 from datetime import date
 
 from dateutil.relativedelta import relativedelta as rd
-from holidays.utils import _ChineseLuniSolar
 
-from holidays.constants import JAN, FEB, APR, MAY, OCT
+from holidays.constants import APR, FEB, JAN, MAY, OCT
 from holidays.holiday_base import HolidayBase
+from holidays.utils import _ChineseLuniSolar
 
 
 class Taiwan(HolidayBase):

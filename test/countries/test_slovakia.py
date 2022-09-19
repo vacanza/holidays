@@ -11,7 +11,6 @@
 
 import unittest
 import warnings
-
 from datetime import date
 
 import holidays

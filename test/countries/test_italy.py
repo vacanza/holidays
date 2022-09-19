@@ -10,7 +10,6 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-
 from datetime import date
 
 import holidays

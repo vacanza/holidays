@@ -11,7 +11,6 @@
 
 import unittest
 
-
 import holidays
 
 

@@ -12,20 +12,9 @@
 # from __future__ import annotations  # add in Python 3.7
 
 import warnings
-from datetime import timedelta, datetime, date
-from typing import (
-    cast,
-    Any,
-    Dict,
-    Iterable,
-    List,
-    Mapping,
-    Optional,
-    Set,
-    TYPE_CHECKING,
-    Tuple,
-    Union,
-)
+from datetime import date, datetime, timedelta
+from typing import (TYPE_CHECKING, Any, Dict, Iterable, List, Mapping,
+                    Optional, Set, Tuple, Union, cast)
 
 from dateutil.parser import parse
 

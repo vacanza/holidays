@@ -11,11 +11,10 @@
 
 import unittest
 import warnings
-
 from datetime import date
 
 import holidays
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, AUG, OCT, NOV, DEC
+from holidays.constants import APR, AUG, DEC, FEB, JAN, JUN, MAR, MAY, NOV, OCT
 
 
 class TestIND(unittest.TestCase):

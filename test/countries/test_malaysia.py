@@ -10,24 +10,11 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-
 from datetime import date
 
 import holidays
-from holidays.constants import (
-    JAN,
-    FEB,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-)
+from holidays.constants import (APR, AUG, DEC, FEB, JAN, JUL, JUN, MAR, MAY,
+                                NOV, OCT, SEP)
 
 
 class TestMalaysia(unittest.TestCase):
