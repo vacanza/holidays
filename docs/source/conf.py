@@ -12,17 +12,21 @@
 #
 import os
 import sys
+
 from datetime import date
 from typing import Dict, List, Union
 
-# below required for local build
-import sphinx_rtd_theme  # noqa: F401 'sphinx_rtd_theme' imported but unused
 from docutils import nodes
 from docutils.nodes import Element, Node
+
 from sphinx.writers.html import HTMLTranslator
+
+# below required for local build
+import sphinx_rtd_theme  # noqa: F401 'sphinx_rtd_theme' imported but unused
 
 sys.path.insert(0, os.path.abspath("../.."))
 import holidays  # noqa: E402 module level import not at top of file
+
 
 # -- Project information -----------------------------------------------------
 
