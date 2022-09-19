@@ -13,8 +13,16 @@
 from datetime import date
 
 from convertdate import gregorian, hebrew
-from convertdate.holidays import (hanukkah, lag_baomer, passover, purim,
-                                  rosh_hashanah, shavuot, sukkot, yom_kippur)
+from convertdate.holidays import (
+    hanukkah,
+    lag_baomer,
+    passover,
+    purim,
+    rosh_hashanah,
+    shavuot,
+    sukkot,
+    yom_kippur,
+)
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.holiday_base import HolidayBase

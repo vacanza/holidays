@@ -15,8 +15,20 @@ from datetime import date, timedelta
 from dateutil.relativedelta import WE, relativedelta
 
 import holidays
-from holidays.constants import (APR, AUG, DEC, FEB, JAN, JUL, JUN, MAR, MAY,
-                                NOV, OCT, SEP)
+from holidays.constants import (
+    APR,
+    AUG,
+    DEC,
+    FEB,
+    JAN,
+    JUL,
+    JUN,
+    MAR,
+    MAY,
+    NOV,
+    OCT,
+    SEP,
+)
 
 
 class TestNewYorkStockExchange(unittest.TestCase):

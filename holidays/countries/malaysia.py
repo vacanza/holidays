@@ -17,8 +17,21 @@ from dateutil.relativedelta import FR, MO, SA, SU
 from dateutil.relativedelta import relativedelta as rd
 from dateutil.rrule import MONTHLY, rrule
 
-from holidays.constants import (APR, AUG, DEC, FEB, JAN, JUL, JUN, MAR, MAY,
-                                NOV, OCT, SEP, SUN)
+from holidays.constants import (
+    APR,
+    AUG,
+    DEC,
+    FEB,
+    JAN,
+    JUL,
+    JUN,
+    MAR,
+    MAY,
+    NOV,
+    OCT,
+    SEP,
+    SUN,
+)
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _ChineseLuniSolar, _islamic_to_gre
 
