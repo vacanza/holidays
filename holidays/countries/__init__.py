@@ -36,8 +36,8 @@ from .denmark import Denmark, DK, DNK
 from .djibouti import Djibouti, DJ, DJI
 from .dominican_republic import DominicanRepublic, DO, DOM
 from .egypt import Egypt, EG, EGY
-from .eswatini import Eswatini, Swaziland, SZ, SZW
 from .estonia import Estonia, EE, EST
+from .eswatini import Eswatini, Swaziland, SZ, SZW
 from .ethiopia import Ethiopia, ET, ETH
 from .finland import Finland, FI, FIN
 from .france import France, FR, FRA
