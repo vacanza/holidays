@@ -27,6 +27,17 @@ class UnitedKingdom(HolidayBase):
     # Look at _country_specific() method for country specific behavior.
 
     country = "GB"
+    special_holidays = {
+        1977: (("Jun 7", "Silver Jubilee of Elizabeth II"),),
+        1981: (("Jul 29", "Wedding of Charles and Diana"),),
+        2002: (("Jun 3", "Golden Jubilee of Elizabeth II"),),
+        2011: (("Apr 29", "Wedding of William and Catherine"),),
+        2012: (("Jun 5", "Diamond Jubilee of Elizabeth II"),),
+        2022: (
+            ("Jun 3", "Platinum Jubilee of Elizabeth II"),
+            ("Sep 19", "State Funeral of Queen Elizabeth II"),
+        ),
+    }
     subdivisions = ["UK", "England", "Northern Ireland", "Scotland", "Wales"]
 
     def __init__(self, **kwargs: Any) -> None:
@@ -101,6 +112,8 @@ class UnitedKingdom(HolidayBase):
         self._country_specific(year)
         self._additional_holidays(year)
 
+        self._populate_special_holidays(year)
+
     def _country_specific(self, year: int) -> None:
         # This method is replaced by class Ireland
 
@@ -167,21 +180,8 @@ class UnitedKingdom(HolidayBase):
             self[date(year, DEC, 28)] = name + " (Observed)"
 
         # Special holidays
-        if year == 1977:
-            self[date(year, JUN, 7)] = "Silver Jubilee of Elizabeth II"
-        elif year == 1981:
-            self[date(year, JUL, 29)] = "Wedding of Charles and Diana"
-        elif year == 1999:
+        if year == 1999:
             self[date(year, DEC, 31)] = "Millennium Celebrations"
-        elif year == 2002:
-            self[date(year, JUN, 3)] = "Golden Jubilee of Elizabeth II"
-        elif year == 2011:
-            self[date(year, APR, 29)] = "Wedding of William and Catherine"
-        elif year == 2012:
-            self[date(year, JUN, 5)] = "Diamond Jubilee of Elizabeth II"
-        elif year == 2022:
-            self[date(year, JUN, 3)] = "Platinum Jubilee of Elizabeth II"
-            self[date(year, SEP, 19)] = "State Funeral of Queen Elizabeth II"
 
     def _additional_holidays(self, year: int) -> None:
         # Method used to handle Isle of Man (replaced by class IsleOfMan)

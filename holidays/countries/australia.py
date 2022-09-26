@@ -20,7 +20,16 @@ from holidays.holiday_base import HolidayBase
 
 
 class Australia(HolidayBase):
+
     country = "AU"
+    special_holidays = {
+        2022: (
+            (
+                "Sep 22",
+                "National Day of Mourning for Queen Elizabeth II",
+            ),
+        ),
+    }
     subdivisions = ["ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"]
 
     def __init__(self, **kwargs):
@@ -204,11 +213,6 @@ class Australia(HolidayBase):
             if year >= 2018:
                 self[date(year, 5, 27) + rd(weekday=MO)] = name
 
-        # National Day of Mourning for Queen Elizabeth II
-        name = "National Day of Mourning for Queen Elizabeth II"
-        if year == 2022:
-            self[date(year, SEP, 22)] = name
-
         if self.subdiv == "VIC":
             # Grand Final Day
             if year == 2022:
@@ -256,6 +260,8 @@ class Australia(HolidayBase):
         self[dec26] = name
         if self.observed and dec26.weekday() in WEEKEND:
             self[date(year, DEC, 28)] = name + " (Observed)"
+
+        self._populate_special_holidays(year)
 
 
 class AU(Australia):

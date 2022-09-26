@@ -647,3 +647,22 @@ class TestAllInSameYear(unittest.TestCase):
                 )
                 for self.hol in hols:
                     assert self.hol.year == self.year
+
+
+class TestCountrySpecialHolidays(unittest.TestCase):
+    def setUp(self):
+        self.holidays = holidays.country_holidays("US")
+
+    def test_populate_special_holidays(self):
+        self.holidays.special_holidays = {
+            1111: (("Jan 1", "Test holiday"),),
+            2222: (("Feb 2", "Test holiday"),),
+        }
+
+        self.holidays._populate_special_holidays(1111)
+        self.assertIn("1111-01-01", self.holidays)
+        self.assertNotIn("2222-02-02", self.holidays)
+
+        self.holidays._populate_special_holidays(2222)
+        self.assertIn("1111-01-01", self.holidays)
+        self.assertIn("2222-02-02", self.holidays)

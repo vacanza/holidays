@@ -161,6 +161,27 @@ class HolidayBase(Dict[date, str]):
     >>> assert date(2015, 1, 2) not in custom_holidays
     >>> assert '12/25/2015' in custom_holidays
 
+    For adding special (one-off) holidays use :attr:`special_holidays`
+    and :meth:`_populate_special_holidays` method. For example:
+
+    .. code-block:: python
+
+        special_holidays = {
+            1977: (("Jun 7", "Silver Jubilee of Elizabeth II"),),
+            1981: (("Jul 29", "Wedding of Charles and Diana"),),
+            2002: (("Jun 3", "Golden Jubilee of Elizabeth II"),),
+            2011: (("Apr 29", "Wedding of William and Catherine"),),
+            2012: (("Jun 5", "Diamond Jubilee of Elizabeth II"),),
+            2022: (
+                ("Jun 3", "Platinum Jubilee of Elizabeth II"),
+                ("Sep 19", "State Funeral of Queen Elizabeth II"),
+            ),
+        }
+
+        def _populate(self, year: int) -> None:
+            ...
+            self._populate_special_holidays(year)
+
     For more complex logic, like 4th Monday of January, you can inherit the
     :class:`HolidayBase` class and define your own :meth:`_populate` method.
     See documentation for examples.
@@ -181,6 +202,9 @@ class HolidayBase(Dict[date, str]):
     """Whether dates when public holiday are observed are included."""
     subdiv: Optional[str] = None
     """The subdiv requested."""
+    special_holidays: Dict = {}
+    """A list of the country's special (non-regular) holidays for a specific
+    year."""
     _deprecated_subdivisions: List[str] = []
     """Other subdivisions whose names are deprecated or aliases of the official
     ones."""
@@ -559,6 +583,11 @@ class HolidayBase(Dict[date, str]):
     def _populate(self, year: int) -> None:
         """meta: public"""
         pass
+
+    def _populate_special_holidays(self, year) -> None:
+        """Populate holidays from the special holidays list."""
+        for dt, name in self.special_holidays.get(year, ()):
+            self[f"{dt}, {year}"] = name
 
     def __reduce__(self) -> Union[str, Tuple[Any, ...]]:
         return super().__reduce__()
