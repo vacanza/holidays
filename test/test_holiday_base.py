@@ -654,6 +654,9 @@ class TestCountrySpecialHolidays(unittest.TestCase):
         self.holidays = holidays.country_holidays("US")
 
     def test_populate_special_holidays(self):
+        self.holidays._populate_special_holidays(1111)
+        self.assertEqual(0, len(self.holidays))
+
         self.holidays.special_holidays = {
             1111: (("Jan 1", "Test holiday"),),
             2222: (("Feb 2", "Test holiday"),),
