@@ -161,14 +161,16 @@ class HolidayBase(Dict[date, str]):
     >>> assert date(2015, 1, 2) not in custom_holidays
     >>> assert '12/25/2015' in custom_holidays
 
-    For adding special (one-off) holidays use :attr:`special_holidays`
-    and :meth:`_populate_special_holidays` method. For example:
+    For special (one-off) country-wide holidays handling use
+    :attr:`special_holidays` and :meth:`_populate_special_holidays`.
+    For example:
 
     .. code-block:: python
 
         special_holidays = {
             1977: (("Jun 7", "Silver Jubilee of Elizabeth II"),),
             1981: (("Jul 29", "Wedding of Charles and Diana"),),
+            1999: (("Dec 31", "Millennium Celebrations"),),
             2002: (("Jun 3", "Golden Jubilee of Elizabeth II"),),
             2011: (("Apr 29", "Wedding of William and Catherine"),),
             2012: (("Jun 5", "Diamond Jubilee of Elizabeth II"),),
@@ -202,9 +204,9 @@ class HolidayBase(Dict[date, str]):
     """Whether dates when public holiday are observed are included."""
     subdiv: Optional[str] = None
     """The subdiv requested."""
-    special_holidays: Dict = {}
-    """A list of the country's special (non-regular) holidays for a specific
-    year."""
+    special_holidays: Dict[int, Tuple[Tuple[str, str], ...]] = {}
+    """A list of the country-wide special (as opposite to regular) holidays for
+    a specific year."""
     _deprecated_subdivisions: List[str] = []
     """Other subdivisions whose names are deprecated or aliases of the official
     ones."""

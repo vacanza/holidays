@@ -30,6 +30,7 @@ class UnitedKingdom(HolidayBase):
     special_holidays = {
         1977: (("Jun 7", "Silver Jubilee of Elizabeth II"),),
         1981: (("Jul 29", "Wedding of Charles and Diana"),),
+        1999: (("Dec 31", "Millennium Celebrations"),),
         2002: (("Jun 3", "Golden Jubilee of Elizabeth II"),),
         2011: (("Apr 29", "Wedding of William and Catherine"),),
         2012: (("Jun 5", "Diamond Jubilee of Elizabeth II"),),
@@ -178,10 +179,6 @@ class UnitedKingdom(HolidayBase):
             self[date(year, DEC, 28)] = name + " (Observed)"
         elif self.observed and date(year, DEC, 26).weekday() == SUN:
             self[date(year, DEC, 28)] = name + " (Observed)"
-
-        # Special holidays
-        if year == 1999:
-            self[date(year, DEC, 31)] = "Millennium Celebrations"
 
     def _additional_holidays(self, year: int) -> None:
         # Method used to handle Isle of Man (replaced by class IsleOfMan)
