@@ -19,6 +19,7 @@ from .bangladesh import Bangladesh, BD, BGD
 from .belarus import Belarus, BY, BLR
 from .belgium import Belgium, BE, BEL
 from .bolivia import Bolivia, BO, BOL
+from .bosnia_and_herzegovina import BosniaAndHerzegovina, BA, BIH
 from .botswana import Botswana, BW, BWA
 from .brazil import Brazil, BR, BRA
 from .bulgaria import Bulgaria, BG, BLG
