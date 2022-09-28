@@ -46,10 +46,10 @@ class BosniaAndHerzegovina(HolidayBase):
         # Labor Day.
         may_1 = date(year, MAY, 1)
         self[may_1] = "Dan rada"
-        self[date(year, MAY, 2)] = "Drugi dan Dana rada"
+        self[may_1 + rd(days=+1)] = "Drugi dan Dana rada"
 
         if self.observed and may_1.weekday() == SUN:
-            self[date(year, MAY, 1) + rd(days=+2)] = "Treći dan Dana rada"
+            self[may_1 + rd(days=+2)] = "Treći dan Dana rada"
 
         if self.subdiv == "FBiH":
             # Independence Day.
