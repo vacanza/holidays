@@ -665,7 +665,13 @@ class TestCountrySpecialHolidays(unittest.TestCase):
         self.holidays._populate_special_holidays(1111)
         self.assertIn("1111-01-01", self.holidays)
         self.assertNotIn("2222-02-02", self.holidays)
+        self.assertEqual(12, len(self.holidays))
 
         self.holidays._populate_special_holidays(2222)
         self.assertIn("1111-01-01", self.holidays)
         self.assertIn("2222-02-02", self.holidays)
+        self.assertEqual(13, len(self.holidays))
+
+        self.holidays._populate_special_holidays(1111)
+        self.holidays._populate_special_holidays(2222)
+        self.assertEqual(13, len(self.holidays))
