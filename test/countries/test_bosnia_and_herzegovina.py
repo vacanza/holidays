@@ -200,7 +200,13 @@ class TestBA(unittest.TestCase):
         for dt in (date(2021, 7, 8), date(2021, 7, 19)):
             self.assertNotIn(dt, fbih_holidays)
 
-        for dt in (date(2022, 7, 9), date(2021, 7, 20)):
+        for dt in (
+            date(2022, 7, 9),
+            date(2021, 7, 20),
+            date(2022, 7, 10),
+            date(2022, 7, 11),
+            date(2022, 7, 12),
+        ):
             self.assertIn(dt, fbih_holidays)
             self.assertEqual(fbih_holidays[dt], "Kurban Bajram")
 

@@ -44,10 +44,11 @@ class BosniaAndHerzegovina(HolidayBase):
             self[date(year, JAN, 1) + rd(days=+2)] = "Treći dan Nove Godine"
 
         # Labor Day.
-        self[date(year, MAY, 1)] = "Dan rada"
+        may_1 = date(year, MAY, 1)
+        self[may_1] = "Dan rada"
         self[date(year, MAY, 2)] = "Drugi dan Dana rada"
 
-        if self.observed and date(year, MAY, 1).weekday() == SUN:
+        if self.observed and may_1.weekday() == SUN:
             self[date(year, MAY, 1) + rd(days=+2)] = "Treći dan Dana rada"
 
         if self.subdiv == "FBiH":
@@ -71,15 +72,18 @@ class BosniaAndHerzegovina(HolidayBase):
             ] = "Tijelovo (Tijelo i Krv Kristova)"
 
             # Eid al-Fitr.
-            # Date of observance is announced yearly, This is an estimate.
+            # Date of observance is announced yearly, this is an estimate.
             for dt in _islamic_to_gre(year, 10, 1):
                 self[dt] = "Ramazanski Bajram"
                 self[dt + rd(days=+1)] = "Drugi Dan Ramazanski Bajram"
 
             # Eid ul-Adha.
-            # Date of observance is announced yearly, This is an estimate.
+            # Date of observance is announced yearly, this is an estimate.
+            name = "Kurban Bajram"
             for dt in _islamic_to_gre(year, 12, 10):
-                self[dt] = "Kurban Bajram"
+                self[dt] = name
+                for d in range(1, 4):
+                    self[dt + rd(days=+d)] = name
 
             # Islamic New Year.
             for dt in _islamic_to_gre(year, 1, 1):
@@ -100,7 +104,7 @@ class BosniaAndHerzegovina(HolidayBase):
             # St. Stephen's Day.
             self[date(year, DEC, 26)] = "Stipandan (Stjepandan)"
 
-        if self.subdiv == "RS":
+        elif self.subdiv == "RS":
             # Orthodox Christmas Eve.
             self[date(year, JAN, 6)] = "Pravoslavno Badnje veče"
 
