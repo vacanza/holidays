@@ -10,7 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Iterable, Optional, Union
+from typing import Dict, Iterable, List, Optional, Tuple, Union
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd, MO, FR, SA
@@ -96,7 +96,7 @@ class Singapore(HolidayBase):
         # Hari Raya Puasa
         # aka Eid al-Fitr
         # date of observance is announced yearly
-        dates_fixed_multiple_obs: dict[int, list[tuple[int, int]]] = {
+        dates_fixed_multiple_obs: Dict[int, List[Tuple[int, int]]] = {
             2001: [(DEC, 16)],
             2002: [(DEC, 6)],
             2003: [(NOV, 25)],
@@ -196,7 +196,7 @@ class Singapore(HolidayBase):
         # Vesak Day
         # date of observance is announced yearly
         # https://en.wikipedia.org/wiki/Vesak#Dates_of_observance
-        dates_fixed_obs: dict[int, tuple[int, int]] = {
+        dates_fixed_obs: Dict[int, Tuple[int, int]] = {
             2001: (MAY, 7),
             2002: (MAY, 27),
             2003: (MAY, 15),
