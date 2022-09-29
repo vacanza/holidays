@@ -75,7 +75,7 @@ class TestSingapore(unittest.TestCase):
         self.assertIn(date(2023, APR, 7), self.holidays)
         self.assertIn(date(2023, APR, 22), self.holidays)
         self.assertIn(date(2023, MAY, 1), self.holidays)
-        self.assertIn(date(2023, JUN, 3), self.holidays)
+        self.assertIn(date(2023, JUN, 2), self.holidays)
         self.assertIn(date(2023, JUN, 29), self.holidays)
         self.assertIn(date(2023, AUG, 9), self.holidays)
         self.assertIn(date(2023, NOV, 12), self.holidays)

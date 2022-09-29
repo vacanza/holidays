@@ -47,7 +47,7 @@ class Singapore(HolidayBase):
         state: Optional[str] = None,
     ) -> None:
         """
-        An subclass of :py:class:`HolidayBase` representing public holidays in
+        A subclass of :py:class:`HolidayBase` representing public holidays in
         Singapore.
 
         Limitations:
@@ -83,7 +83,7 @@ class Singapore(HolidayBase):
         self.cnls = _ChineseLuniSolar()
         super().__init__(years, expand, observed, subdiv, prov, state)
 
-    def _populate(self, year):
+    def _populate(self, year: int) -> None:
 
         # New Year's Day
         self[date(year, JAN, 1)] = "New Year's Day"
@@ -96,7 +96,7 @@ class Singapore(HolidayBase):
         # Hari Raya Puasa
         # aka Eid al-Fitr
         # date of observance is announced yearly
-        dates_obs = {
+        dates_fixed_multiple_obs: dict[int, list[tuple[int, int]]] = {
             2001: [(DEC, 16)],
             2002: [(DEC, 6)],
             2003: [(NOV, 25)],
@@ -121,9 +121,9 @@ class Singapore(HolidayBase):
             2022: [(MAY, 2)],
             2023: [(APR, 22)],
         }
-        if year in dates_obs:
-            for date_obs in dates_obs[year]:
-                hol_date = date(year, *date_obs)
+        if year in dates_fixed_multiple_obs:
+            for month_day in dates_fixed_multiple_obs[year]:
+                hol_date = date(year, *month_day)
                 self[hol_date] = "Hari Raya Puasa"
                 # Second day of Hari Raya Puasa (up to and including 1968)
                 # Removed since we don't have Hari Raya Puasa dates for the
@@ -145,7 +145,7 @@ class Singapore(HolidayBase):
         # Hari Raya Haji
         # aka Eid al-Adha
         # date of observance is announced yearly
-        dates_obs = {
+        dates_fixed_multiple_obs = {
             2001: [(MAR, 6)],
             2002: [(FEB, 23)],
             2003: [(FEB, 12)],
@@ -170,9 +170,9 @@ class Singapore(HolidayBase):
             2022: [(JUL, 9)],
             2023: [(JUN, 29)],
         }
-        if year in dates_obs:
-            for date_obs in dates_obs[year]:
-                hol_date = date(year, *date_obs)
+        if year in dates_fixed_multiple_obs:
+            for month_day in dates_fixed_multiple_obs[year]:
+                hol_date = date(year, *month_day)
                 self[hol_date] = "Hari Raya Haji"
         else:
             for date_obs in _islamic_to_gre(year, 12, 10):
@@ -196,7 +196,7 @@ class Singapore(HolidayBase):
         # Vesak Day
         # date of observance is announced yearly
         # https://en.wikipedia.org/wiki/Vesak#Dates_of_observance
-        dates_obs = {
+        dates_fixed_obs: dict[int, tuple[int, int]] = {
             2001: (MAY, 7),
             2002: (MAY, 27),
             2003: (MAY, 15),
@@ -219,10 +219,12 @@ class Singapore(HolidayBase):
             2020: (MAY, 7),
             2021: (MAY, 26),
             2022: (MAY, 15),
-            2023: (JUN, 3),
+            # 2023 date revised by MOM on 29-sep-22
+            # https://www.mom.gov.sg/newsroom/press-releases/2022/0929-revised-date-for-vesak-day-2023
+            2023: (JUN, 2),
         }
-        if year in dates_obs:
-            hol_date = date(year, *dates_obs[year])
+        if year in dates_fixed_obs:
+            hol_date = date(year, *dates_fixed_obs[year])
             self[hol_date] = "Vesak Day"
         else:
             hol_date = self.cnls.vesak_date(year)
@@ -234,7 +236,7 @@ class Singapore(HolidayBase):
         # Deepavali
         # aka Diwali
         # date of observance is announced yearly
-        dates_obs = {
+        dates_fixed_obs = {
             2001: (NOV, 14),
             2002: (NOV, 3),
             2003: (OCT, 23),
@@ -259,8 +261,8 @@ class Singapore(HolidayBase):
             2022: (NOV, 24),
             2023: (NOV, 12),
         }
-        if year in dates_obs:
-            hol_date = date(year, *dates_obs[year])
+        if year in dates_fixed_obs:
+            hol_date = date(year, *dates_fixed_obs[year])
             self[hol_date] = "Deepavali"
         else:
             hol_date = self.cnls.s_diwali_date(year)
@@ -274,15 +276,15 @@ class Singapore(HolidayBase):
             self[date(year, DEC, 26)] = "Boxing Day"
 
         # Polling Day
-        dates_obs = {
+        dates_fixed_obs = {
             2001: (NOV, 3),
             2006: (MAY, 6),
             2011: (MAY, 7),
             2015: (SEP, 11),
             2020: (JUL, 10),
         }
-        if year in dates_obs:
-            self[date(year, *dates_obs[year])] = "Polling Day"
+        if year in dates_fixed_obs:
+            self[date(year, *dates_fixed_obs[year])] = "Polling Day"
 
         # SG50 Public holiday
         # Announced on 14 March 2015
