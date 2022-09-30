@@ -168,15 +168,15 @@ class HolidayBase(Dict[date, str]):
     .. code-block:: python
 
         special_holidays = {
-            1977: (("Jun 7", "Silver Jubilee of Elizabeth II"),),
-            1981: (("Jul 29", "Wedding of Charles and Diana"),),
-            1999: (("Dec 31", "Millennium Celebrations"),),
-            2002: (("Jun 3", "Golden Jubilee of Elizabeth II"),),
-            2011: (("Apr 29", "Wedding of William and Catherine"),),
-            2012: (("Jun 5", "Diamond Jubilee of Elizabeth II"),),
+            1977: ((JUN, 7, "Silver Jubilee of Elizabeth II"),),
+            1981: ((JUL, 29, "Wedding of Charles and Diana"),),
+            1999: ((DEC, 31, "Millennium Celebrations"),),
+            2002: ((JUN, 3, "Golden Jubilee of Elizabeth II"),),
+            2011: ((APR, 29, "Wedding of William and Catherine"),),
+            2012: ((JUN, 5, "Diamond Jubilee of Elizabeth II"),),
             2022: (
-                ("Jun 3", "Platinum Jubilee of Elizabeth II"),
-                ("Sep 19", "State Funeral of Queen Elizabeth II"),
+                (JUN, 3, "Platinum Jubilee of Elizabeth II"),
+                (SEP, 19, "State Funeral of Queen Elizabeth II"),
             ),
         }
 
@@ -204,7 +204,7 @@ class HolidayBase(Dict[date, str]):
     """Whether dates when public holiday are observed are included."""
     subdiv: Optional[str] = None
     """The subdiv requested."""
-    special_holidays: Dict[int, Tuple[Tuple[str, str], ...]] = {}
+    special_holidays: Dict[int, Tuple[Tuple[int, int, str], ...]] = {}
     """A list of the country-wide special (as opposite to regular) holidays for
     a specific year."""
     _deprecated_subdivisions: List[str] = []
@@ -588,8 +588,8 @@ class HolidayBase(Dict[date, str]):
 
     def _populate_special_holidays(self, year) -> None:
         """Populate holidays from the special holidays list."""
-        for dt, name in self.special_holidays.get(year, ()):
-            self[f"{dt}, {year}"] = name
+        for month, day, name in self.special_holidays.get(year, ()):
+            self[f"{year}-{month}-{day}"] = name
 
     def __reduce__(self) -> Union[str, Tuple[Any, ...]]:
         return super().__reduce__()

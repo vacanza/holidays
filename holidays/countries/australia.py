@@ -25,7 +25,8 @@ class Australia(HolidayBase):
     special_holidays = {
         2022: (
             (
-                "Sep 22",
+                SEP,
+                22,
                 "National Day of Mourning for Queen Elizabeth II",
             ),
         ),

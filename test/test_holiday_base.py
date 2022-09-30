@@ -10,14 +10,13 @@
 #  License: MIT (see LICENSE file)
 
 import pickle
-import sys
 import unittest
 import warnings
-
 from datetime import date, datetime, timedelta
-from dateutil.relativedelta import relativedelta, MO
 
 import holidays
+from dateutil.relativedelta import MO, relativedelta
+from holidays.constants import FEB, JAN
 
 
 class TestBasics(unittest.TestCase):
@@ -658,8 +657,8 @@ class TestCountrySpecialHolidays(unittest.TestCase):
         self.assertEqual(0, len(self.holidays))
 
         self.holidays.special_holidays = {
-            1111: (("Jan 1", "Test holiday"),),
-            2222: (("Feb 2", "Test holiday"),),
+            1111: ((JAN, 1, "Test holiday"),),
+            2222: ((FEB, 2, "Test holiday"),),
         }
 
         self.holidays._populate_special_holidays(1111)

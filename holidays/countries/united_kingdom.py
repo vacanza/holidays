@@ -28,15 +28,15 @@ class UnitedKingdom(HolidayBase):
 
     country = "GB"
     special_holidays = {
-        1977: (("Jun 7", "Silver Jubilee of Elizabeth II"),),
-        1981: (("Jul 29", "Wedding of Charles and Diana"),),
-        1999: (("Dec 31", "Millennium Celebrations"),),
-        2002: (("Jun 3", "Golden Jubilee of Elizabeth II"),),
-        2011: (("Apr 29", "Wedding of William and Catherine"),),
-        2012: (("Jun 5", "Diamond Jubilee of Elizabeth II"),),
+        1977: ((JUN, 7, "Silver Jubilee of Elizabeth II"),),
+        1981: ((JUL, 29, "Wedding of Charles and Diana"),),
+        1999: ((DEC, 31, "Millennium Celebrations"),),
+        2002: ((JUN, 3, "Golden Jubilee of Elizabeth II"),),
+        2011: ((APR, 29, "Wedding of William and Catherine"),),
+        2012: ((JUN, 5, "Diamond Jubilee of Elizabeth II"),),
         2022: (
-            ("Jun 3", "Platinum Jubilee of Elizabeth II"),
-            ("Sep 19", "State Funeral of Queen Elizabeth II"),
+            (JUN, 3, "Platinum Jubilee of Elizabeth II"),
+            (SEP, 19, "State Funeral of Queen Elizabeth II"),
         ),
     }
     subdivisions = ["UK", "England", "Northern Ireland", "Scotland", "Wales"]
