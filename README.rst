@@ -268,6 +268,9 @@ following countries and their subdivisions are available:
    * - Lesotho
      - LS
      - None
+   * - Liechtenstein
+     - LI
+     - LIE
    * - Lithuania
      - LT
      - None
