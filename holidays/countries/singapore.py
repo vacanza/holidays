@@ -95,7 +95,8 @@ class Singapore(HolidayBase):
 
         # Hari Raya Puasa
         # aka Eid al-Fitr
-        # date of observance is announced yearly
+        # Date of observance is announced yearly.
+        # An Islamic holiday could fall twice in the same Gregorian year.
         dates_fixed_multiple_obs: Dict[int, List[Tuple[int, int]]] = {
             2001: [(DEC, 16)],
             2002: [(DEC, 6)],
@@ -144,7 +145,8 @@ class Singapore(HolidayBase):
 
         # Hari Raya Haji
         # aka Eid al-Adha
-        # date of observance is announced yearly
+        # Date of observance is announced yearly.
+        # An Islamic holiday could fall twice in the same Gregorian year.
         dates_fixed_multiple_obs = {
             2001: [(MAR, 6)],
             2002: [(FEB, 23)],
