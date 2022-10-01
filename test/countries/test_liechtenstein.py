@@ -24,7 +24,8 @@ class TestLI(unittest.TestCase):
         for dt in (date(2010, 12, 30), date(2017, 1, 3)):
             self.assertNotIn(dt, self.holidays)
 
-        for dt in (date(2022, 1, 1), date(2021, 1, 1)):
+        for year in (2021, 2022):
+            dt = date(year, 1, 1)
             self.assertIn(dt, self.holidays)
             self.assertEqual(self.holidays[dt], "Neujahr")
 
@@ -32,7 +33,8 @@ class TestLI(unittest.TestCase):
         for dt in (date(2010, 12, 30), date(2017, 1, 3)):
             self.assertNotIn(dt, self.holidays)
 
-        for dt in (date(2022, 1, 2), date(2021, 1, 2)):
+        for year in (2021, 2022):
+            dt = date(year, 1, 2)
             self.assertIn(dt, self.holidays)
             self.assertEqual(self.holidays[dt], "Berchtoldstag")
 
@@ -40,7 +42,8 @@ class TestLI(unittest.TestCase):
         for dt in (date(2010, 1, 5), date(2017, 1, 7)):
             self.assertNotIn(dt, self.holidays)
 
-        for dt in (date(2022, 1, 6), date(2021, 1, 6)):
+        for year in (2021, 2022):
+            dt = date(year, 1, 6)
             self.assertIn(dt, self.holidays)
             self.assertEqual(self.holidays[dt], "Drei Könige")
 
@@ -48,7 +51,8 @@ class TestLI(unittest.TestCase):
         for dt in (date(2010, 2, 1), date(2017, 2, 3)):
             self.assertNotIn(dt, self.holidays)
 
-        for dt in (date(2022, 2, 2), date(2021, 2, 2)):
+        for year in (2021, 2022):
+            dt = date(year, 2, 2)
             self.assertIn(dt, self.holidays)
             self.assertEqual(self.holidays[dt], "Mariä Lichtmess")
 
@@ -64,7 +68,8 @@ class TestLI(unittest.TestCase):
         for dt in (date(2022, 3, 18), date(2021, 3, 20)):
             self.assertNotIn(dt, self.holidays)
 
-        for dt in (date(2022, 3, 19), date(2021, 3, 19)):
+        for year in (2021, 2022):
+            dt = date(year, 3, 19)
             self.assertIn(dt, self.holidays)
             self.assertEqual(self.holidays[dt], "Josefstag")
 
@@ -96,7 +101,8 @@ class TestLI(unittest.TestCase):
         for dt in (date(2022, 5, 2), date(2021, 4, 30)):
             self.assertNotIn(dt, self.holidays)
 
-        for dt in (date(2022, 5, 1), date(2021, 5, 1)):
+        for year in (2021, 2022):
+            dt = date(year, 5, 1)
             self.assertIn(dt, self.holidays)
             self.assertEqual(self.holidays[dt], "Tag der Arbeit")
 
@@ -136,7 +142,8 @@ class TestLI(unittest.TestCase):
         for dt in (date(2022, 5, 14), date(2021, 8, 16)):
             self.assertNotIn(dt, self.holidays)
 
-        for dt in (date(2022, 8, 15), date(2021, 8, 15)):
+        for year in (2021, 2022):
+            dt = date(year, 8, 15)
             self.assertIn(dt, self.holidays)
             self.assertEqual(self.holidays[dt], "Staatsfeiertag")
 
@@ -144,7 +151,8 @@ class TestLI(unittest.TestCase):
         for dt in (date(2022, 9, 7), date(2021, 9, 9)):
             self.assertNotIn(dt, self.holidays)
 
-        for dt in (date(2022, 9, 8), date(2021, 9, 8)):
+        for year in (2021, 2022):
+            dt = date(year, 9, 8)
             self.assertIn(dt, self.holidays)
             self.assertEqual(self.holidays[dt], "Maria Geburt")
 
@@ -152,7 +160,8 @@ class TestLI(unittest.TestCase):
         for dt in (date(2022, 10, 31), date(2022, 11, 2)):
             self.assertNotIn(dt, self.holidays)
 
-        for dt in (date(2022, 11, 1), date(2021, 11, 1)):
+        for year in (2021, 2022):
+            dt = date(year, 11, 1)
             self.assertIn(dt, self.holidays)
             self.assertEqual(self.holidays[dt], "Allerheiligen")
 
@@ -160,23 +169,28 @@ class TestLI(unittest.TestCase):
         for dt in (date(2022, 12, 7), date(2022, 12, 9)):
             self.assertNotIn(dt, self.holidays)
 
-        for dt in (date(2022, 12, 8), date(2021, 12, 8)):
+        for year in (2021, 2022):
+            dt = date(year, 12, 8)
             self.assertIn(dt, self.holidays)
             self.assertEqual(self.holidays[dt], "Maria Empfängnis")
 
     def test_christmas_eve(self):
-        for dt in (date(2022, 12, 23), date(2021, 12, 23)):
+        for year in (2021, 2022):
+            dt = date(year, 12, 23)
             self.assertNotIn(dt, self.holidays)
 
-        for dt in (date(2022, 12, 24), date(2021, 12, 24)):
+        for year in (2021, 2022):
+            dt = date(year, 12, 24)
             self.assertIn(dt, self.holidays)
             self.assertEqual(self.holidays[dt], "Heiliger Abend")
 
     def test_christmas_day(self):
-        for dt in (date(2022, 12, 23), date(2021, 12, 23)):
+        for year in (2021, 2022):
+            dt = date(year, 12, 23)
             self.assertNotIn(dt, self.holidays)
 
-        for dt in (date(2022, 12, 25), date(2021, 12, 25)):
+        for year in (2021, 2022):
+            dt = date(year, 12, 25)
             self.assertIn(dt, self.holidays)
             self.assertEqual(self.holidays[dt], "Weihnachten")
 
@@ -184,14 +198,17 @@ class TestLI(unittest.TestCase):
         for dt in (date(2022, 12, 23), date(2021, 12, 27)):
             self.assertNotIn(dt, self.holidays)
 
-        for dt in (date(2022, 12, 26), date(2021, 12, 26)):
+        for year in (2021, 2022):
+            dt = date(year, 12, 26)
             self.assertIn(dt, self.holidays)
             self.assertEqual(self.holidays[dt], "Stefanstag")
 
     def test_new_years_eve(self):
-        for dt in (date(2022, 12, 30), date(2021, 12, 30)):
+        for year in (2021, 2022):
+            dt = date(year, 12, 30)
             self.assertNotIn(dt, self.holidays)
 
-        for dt in (date(2022, 12, 31), date(2021, 12, 31)):
+        for year in (2021, 2022):
+            dt = date(year, 12, 31)
             self.assertIn(dt, self.holidays)
             self.assertEqual(self.holidays[dt], "Silvester")

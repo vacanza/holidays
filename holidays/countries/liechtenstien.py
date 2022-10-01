@@ -22,7 +22,7 @@ class Liechtenstien(HolidayBase):
     """
     Liechtenstien holidays.
     See https://en.wikipedia.org/wiki/Public_holidays_in_Liechtenstein
-                for details.
+    for details.
     """
 
     country = "LI"
@@ -40,7 +40,7 @@ class Liechtenstien(HolidayBase):
         # Candlemas.
         self[date(year, FEB, 2)] = "Mariä Lichtmess"
 
-        # Shrove Tuesday
+        # Shrove Tuesday.
         self[easter(year) + rd(days=-47)] = "Fasnachtsdienstag"
 
         # Saint Joseph's Day.
