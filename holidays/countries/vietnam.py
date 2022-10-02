@@ -13,11 +13,7 @@ from datetime import date
 
 from dateutil.relativedelta import relativedelta as rd
 
-# Installation: pip install korean_lunar_calendar
-# URL: https://github.com/usingsky/korean_lunar_calendar_py/
-from korean_lunar_calendar import KoreanLunarCalendar
-
-from holidays.constants import JAN, APR, MAY, SEP
+from holidays.constants import JAN, APR, MAY, SEP, SAT, SUN
 from holidays.holiday_base import HolidayBase
 
 
@@ -31,6 +27,15 @@ class Vietnam(HolidayBase):
     country = "VN"
 
     def __init__(self, **kwargs):
+        try:
+            # Installation: pip install korean_lunar_calendar
+            # URL: https://github.com/usingsky/korean_lunar_calendar_py/
+            from korean_lunar_calendar import KoreanLunarCalendar
+        except ImportError:
+            raise Exception(
+                "Could not import korean-lunar-calendar. "
+                "Please install using pip install -U holidays[lunar]"
+            )
         self.korean_cal = KoreanLunarCalendar()
         HolidayBase.__init__(self, **kwargs)
 

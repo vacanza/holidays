@@ -12,9 +12,21 @@
 
 from datetime import date
 
-from convertdate import gregorian, hebrew
-from convertdate.holidays import hanukkah, lag_baomer, passover, purim
-from convertdate.holidays import rosh_hashanah, shavuot, sukkot, yom_kippur
+try:
+    from convertdate import gregorian, hebrew
+    from convertdate.holidays import (
+        hanukkah,
+        lag_baomer,
+        passover,
+        purim,
+        rosh_hashanah,
+        shavuot,
+        sukkot,
+        yom_kippur,
+    )
+except ImportError:
+    gregorian = hebrew = None
+
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import WED, THU, SAT
@@ -24,6 +36,15 @@ from holidays.holiday_base import HolidayBase
 class Israel(HolidayBase):
 
     country = "IL"
+
+    def __init__(self, **kwargs):
+        if not gregorian:
+            raise Exception(
+                "Could not import convertdate. "
+                "Please install using pip install -U holidays[israel]"
+            )
+
+        HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
