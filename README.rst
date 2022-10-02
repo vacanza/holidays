@@ -111,306 +111,405 @@ using its `ISO 3166-1 alpha-2 code`_, the same used for domain names. The
 following countries and their subdivisions are available:
 
 .. list-table::
-   :widths: 23 4 83
+   :widths: 23 4 83 15
    :header-rows: 1
    :class: tight-table
 
    * - Country
      - Code
      - Subdivisions Available
+     - Install extras
    * - Angola
      - AO
+     - None
      - None
    * - Argentina
      - AR
      - None
+     - None
    * - Aruba
      - AW
+     - None
      - None
    * - Australia
      - AU
      - States and territories: **ACT** (default), NSW, NT, QLD, SA, TAS, VIC, WA
+     - None
    * - Austria
      - AT
      - States: 1, 2, 3, 4, 5, 6, 7, 8, **9** (default)
+     - None
    * - Azerbaijan
      - AZ
      - None
+     - holidays[islamic]
    * - Bangladesh
      - BD
+     - None
      - None
    * - Belarus
      - BY
      - None
+     - None
    * - Belgium
      - BE
+     - None
      - None
    * - Bolivia
      - BO
      - Departments: B, C, H, L, N, O, P, S, T
+     - None
    * - Bosnia and Herzegovina
      - BA
      - Departments: FBiH, RS, BD
+     - None
    * - Botswana
      - BW
+     - None
      - None
    * - Brazil
      - BR
      - States: AC, AL, AM, AP, BA, CE, DF, ES, GO, MA, MG, MS, MT, PA, PB, PE, PI, RJ, RN, RO, RR, RS, SC, SE, SP, TO
+     - None
    * - Bulgaria
      - BG
+     - None
      - None
    * - Burundi
      - BI
      - None
+     - holidays[islamic]
    * - Canada
      - CA
      - Provinces and territories: AB, BC, MB, NB, NL, NS NT, NU, **ON** (default), PE, QC, SK, YT
+     - None
    * - Chile
      - CL
      - Regions: AI, AN, AP, AR, AT, BI, CO, LI, LL, LR, MA, ML, NB, RM, TA, VS
+     - None
    * - China
      - CN
+     - None
      - None
    * - Colombia
      - CO
      - None
+     - None
    * - Croatia
      - HR
+     - None
      - None
    * - Cuba
      - CU
      - None
+     - None
    * - Curaçao
      - CW
+     - None
      - None
    * - Cyprus
      - CY
      - None
+     - None
    * - Czechia
      - CZ
+     - None
      - None
    * - Denmark
      - DK
      - None
+     - None
    * - Djibouti
      - DJ
      - None
+     - holidays[islamic]
    * - Dominican Republic
      - DO
+     - None
      - None
    * - Egypt
      - EG
      - None
+     - holidays[islamic]
    * - Estonia
      - EE
+     - None
      - None
    * - Ethiopia
      - ET
      - None
+     - holidays[islamic]
    * - Finland
      - FI
+     - None
      - None
    * - France
      - FR
      - Départements: **Métropole** (default), Alsace-Moselle, Guadeloupe, Guyane, Martinique, Mayotte, Nouvelle-Calédonie, La Réunion, Polynésie Française, Saint-Barthélémy, Saint-Martin, Wallis-et-Futuna
+     - None
    * - Georgia
      - GE
+     - None
      - None
    * - Germany
      - DE
      - States: BB, BE, BW, BY, BYP, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH
+     - None
    * - Greece
      - GR
+     - None
      - None
    * - Honduras
      - HN
      - None
+     - None
    * - Hong Kong
      - HK
+     - None
      - None
    * - Hungary
      - HU
      - None
+     - None
    * - Iceland
      - IS
+     - None
      - None
    * - India
      - IN
      - States: AN, AP, AR, AS, BR, CG, CH, DD, DH, DL, GA, GJ, HP, HR, JH, JK, KA, KL, LA, LD, MH, ML, MN, MP, MZ, NL, OR, PB, PY, RJ, SK, TN, TR, TS, UK, UP, WB
+     - None
    * - Ireland
      - IE
+     - None
      - None
    * - Isle of Man
      - IM
      - None
+     - None
    * - Israel
      - IL
      - None
+     - holidays[israel]
    * - Italy
      - IT
      - Provinces: AG, AL, AN, AO, AP, AQ, AR, AT, AV, BA, BG, BI, BL, BN, BO, BR, BS, BT, BZ, CA, CB, CE, CH, CL, CN, CO, CR, CS, CT, CZ, EN, FC, FE, FG, FI, FM, FR, GE, GO, GR, IM, IS, KR, LC, LE, LI, LO, LT, LU, MB, MC, ME, MI, MN, MO, MS, MT, NA, NO, NU, OR, PA, PC, PD, PE, PG, PI, PN, PO, PR, PT, PU, PV, PZ, RA, RC, RE, RG, RI, RM, RN, RO, SA, SI, SO, SP, SR, SS, SU, SV, TA, TE, TN, TO, TP, TR, TS, TV, UD, VA, VB, VC, VE, VI, VR, VT, VV; Cities: Barletta, Andria, Trani, Cesena, Forlì, Pesaro, Urbino
+     - None
    * - Jamaica
      - JM
+     - None
      - None
    * - Japan
      - JP
      - None
+     - None
    * - Kazakhstan
      - KZ
      - None
+     - holidays[islamic]
    * - Kenya
      - KE
+     - None
      - None
    * - Korea
      - KR
      - None
+     - holidays[lunar]
    * - Latvia
      - LV
+     - None
      - None
    * - Lesotho
      - LS
      - None
+     - None
    * - Liechtenstein
      - LI
+     - None
      - None
    * - Lithuania
      - LT
      - None
+     - None
    * - Luxembourg
      - LU
+     - None
      - None
    * - Madagascar
      - MG
      - None
+     - None
    * - Malaysia
      - MY
      - States: JHR, KDH, KTN, MLK, NSN, PHG, PNG, PRK, PLS, SBH, SWK, SGR, TRG, KUL, LBN, PJY
+     - holidays[islamic]
    * - Malawi
      - MW
+     - None
      - None
    * - Malta
      - MT
      - None
+     - None
    * - Mexico
      - MX
+     - None
      - None
    * - Moldova
      - MD
      - None
+     - None
    * - Morocco
      - MA
      - None
+     - holidays[islamic]
    * - Mozambique
      - MZ
+     - None
      - None
    * - Netherlands
      - NL
      - None
+     - None
    * - Namibia
      - NA
+     - None
      - None
    * - New Zealand
      - NZ
      - Regions: AUK, CAN, HKB, MBH, NSN, NTL, OTA, STL, TKI, WGN, WTC, CIT; Sub-regions: South Canterbury
+     - None
    * - Nicaragua
      - NI
      - Departments: **MN** (default)
+     - None
    * - Nigeria
      - NG
      - None
+     - holidays[islamic]
    * - North Macedonia
      - MK
      - None
+     - holidays[islamic]
    * - Norway
      - NO
+     - None
      - None
    * - Paraguay
      - PY
      - None
+     - None
    * - Peru
      - PE
+     - None
      - None
    * - Poland
      - PL
      - None
+     - None
    * - Portugal
      - PT
      - Districts: 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18; Use subdiv='Ext' to include holidays most people have off
+     - None
    * - Romania
      - RO
+     - None
      - None
    * - Russia
      - RU
      - None
+     - None
    * - Saudi Arabia
      - SA
+     - None
      - None
    * - Serbia
      - RS
      - None
+     - None
    * - Singapore
      - SG
      - None
+     - holidays[islamic]
    * - Slovakia
      - SK
+     - None
      - None
    * - Slovenia
      - SI
      - None
+     - None
    * - South Africa
      - ZA
+     - None
      - None
    * - Spain
      - ES
      - Autonomous communities: AN (Andalucía), AR (Aragón), AS (Asturias), CB (Cantabria), CE (Ceuta), CL (Castilla y León), CM (Castilla La Mancha), CN (Canarias), CT (Cataluña), EX (Extremadura), GA (Galicia), IB (Islas Baleares), MC (Murcia), MD (Madrid), NC (Navarra), PV (País Vasco), RI (La Rioja), VC (Comunidad Valenciana)
+     - holidays[islamic]
    * - Swaziland
      - SZ
+     - None
      - None
    * - Sweden
      - SE
      - None
+     - None
    * - Switzerland
      - CH
      - Cantons: AG, AR, AI, BL, BS, BE, FR, GE, GL, GR, JU, LU, NE, NW, OW, SG, SH, SZ, SO, TG, TI, UR, VD, VS, ZG, ZH
+     - None
    * - Taiwan
      - TW
+     - None
      - None
    * - Turkey
      - TR
      - None
+     - holidays[islamic]
    * - Tunisia
      - TN
      - None
+     - holidays[islamic]
    * - Ukraine
      - UA
+     - None
      - None
    * - United Arab Emirates
      - AE
      - None
+     - holidays[islamic]
    * - United Kingdom
      - GB
      - Subdivisions: **UK** (default), England, Northern Ireland, Scotland, Wales. For Isle of Man use country code IM.
+     - None
    * - United States
      - US
      - States and territories: AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL, GA, GU, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MH, MA, MI, FM, MN, MS, MO, MT, NE, NV, NH, NJ, NM, NY, NC, ND, MP, OH, OK, OR, PW, PA, PR, RI, SC, SD, TN, TX, UT, VT, VA, VI, WA, WV, WI, WY
+     - None
    * - Uruguay
      - UY
+     - None
      - None
    * - Uzbekistan
      - UZ
      - None
+     - holidays[islamic]
    * - Venezuela
      - VE
+     - None
      - None
    * - Vietnam
      - VN
      - None
+     - holidays[lunar]
    * - Zambia
      - ZM
      - None
+     - None
    * - Zimbabwe
      - ZW
+     - None
      - None
 
 

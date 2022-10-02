@@ -17,9 +17,6 @@ from datetime import date, timedelta
 from functools import lru_cache
 from typing import Dict, Iterable, List, Optional, Union
 
-from hijri_converter import convert
-from hijri_converter.ummalqura import GREGORIAN_RANGE
-
 import holidays.countries
 import holidays.financial
 from holidays.holiday_base import HolidayBase
@@ -328,6 +325,15 @@ def _islamic_to_gre(Gyear: int, Hmonth: int, Hday: int) -> List[date]:
         List of Gregorian dates within the Gregorian year specified that
         matches the Islamic (Lunar Hijrī) calendar day and month specified.
     """
+    try:
+        from hijri_converter import convert
+        from hijri_converter.ummalqura import GREGORIAN_RANGE
+    except ImportError:
+        raise Exception(
+            "Could not import hijri-converter. "
+            "Please install using pip install -U holidays[islamic]"
+        )
+
     gre_dates: List[date] = []
 
     # To avoid hijri_converter check range OverflowError.
