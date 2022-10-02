@@ -170,32 +170,35 @@ class TestJapan(unittest.TestCase):
         )
 
     def test_substitute_holidays(self):
-        self.assertIn(date(2024, 2, 12), self.holidays)
-        self.assertIn(date(2024, 5, 6), self.holidays)
-        self.assertIn(date(2024, 8, 12), self.holidays)
-        self.assertIn(date(2024, 9, 23), self.holidays)
-        self.assertIn(date(2024, 11, 4), self.holidays)
-        self.assertIn(date(2025, 2, 24), self.holidays)
-        self.assertIn(date(2025, 5, 6), self.holidays)
-        self.assertIn(date(2025, 11, 24), self.holidays)
-        self.assertIn(date(2026, 5, 6), self.holidays)
-        self.assertIn(date(2027, 3, 22), self.holidays)
-        self.assertIn(date(2029, 2, 12), self.holidays)
-        self.assertIn(date(2029, 4, 30), self.holidays)
-        self.assertIn(date(2029, 9, 24), self.holidays)
-        self.assertIn(date(2030, 5, 6), self.holidays)
-        self.assertIn(date(2030, 8, 12), self.holidays)
-        self.assertIn(date(2030, 11, 4), self.holidays)
-        self.assertIn(date(2031, 2, 24), self.holidays)
-        self.assertIn(date(2031, 5, 6), self.holidays)
-        self.assertIn(date(2031, 11, 24), self.holidays)
-        self.assertIn(date(2033, 3, 21), self.holidays)
-        self.assertIn(date(2034, 1, 2), self.holidays)
-        self.assertIn(date(2035, 2, 12), self.holidays)
-        self.assertIn(date(2035, 4, 30), self.holidays)
-        self.assertIn(date(2035, 9, 24), self.holidays)
-        self.assertIn(date(2036, 5, 6), self.holidays)
-        self.assertIn(date(2036, 11, 24), self.holidays)
-        self.assertIn(date(2037, 5, 6), self.holidays)
-        self.assertIn(date(2040, 1, 2), self.holidays)
-        self.assertIn(date(2040, 4, 30), self.holidays)
+        for dt in (
+            (2024, 2, 12),
+            (2024, 5, 6),
+            (2024, 8, 12),
+            (2024, 9, 23),
+            (2024, 11, 4),
+            (2025, 2, 24),
+            (2025, 5, 6),
+            (2025, 11, 24),
+            (2026, 5, 6),
+            (2027, 3, 22),
+            (2029, 2, 12),
+            (2029, 4, 30),
+            (2029, 9, 24),
+            (2030, 5, 6),
+            (2030, 8, 12),
+            (2030, 11, 4),
+            (2031, 2, 24),
+            (2031, 5, 6),
+            (2031, 11, 24),
+            (2033, 3, 21),
+            (2034, 1, 2),
+            (2035, 2, 12),
+            (2035, 4, 30),
+            (2035, 9, 24),
+            (2036, 5, 6),
+            (2036, 11, 24),
+            (2037, 5, 6),
+            (2040, 1, 2),
+            (2040, 4, 30),
+        ):
+            self.assertIn(date(*dt), self.holidays)
