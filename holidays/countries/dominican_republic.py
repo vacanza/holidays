@@ -19,13 +19,12 @@ from holidays.holiday_base import HolidayBase
 
 
 class DominicanRepublic(HolidayBase):
-    # http://ojd.org.do/Normativas/LABORAL/Leyes/Ley%20No.%20%20139-97.pdf
-    # https://es.wikipedia.org/wiki/Rep%C3%BAblica_Dominicana#D%C3%ADas_festivos_nacionales
+    """
+    http://ojd.org.do/Normativas/LABORAL/Leyes/Ley%20No.%20%20139-97.pdf
+    https://es.wikipedia.org/wiki/Rep%C3%BAblica_Dominicana#D%C3%ADas_festivos_nacionales
+    """
 
     country = "DO"
-
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
 
     @staticmethod
     def __change_day_by_law(holiday, latest_days=(3, 4)):

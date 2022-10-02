@@ -21,9 +21,6 @@ class IsleOfMan(UnitedKingdom):
 
     country = "IM"
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-
     def _additional_holidays(self, year):
         # We're subclassing UnitedKingdom and replacing its
         # _additional_holidays method to add Isle of Man exclusive holidays

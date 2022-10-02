@@ -25,9 +25,6 @@ class NorthMacedonia(HolidayBase):
 
     country = "MK"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
         self[date(year, JAN, 1)] = "New Year's Day"
 

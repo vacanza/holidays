@@ -74,9 +74,6 @@ class Germany(HolidayBase):
         "TH",
     ]
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
         if year <= 1989:
             return

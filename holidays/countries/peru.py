@@ -19,12 +19,12 @@ from holidays.holiday_base import HolidayBase
 
 
 class Peru(HolidayBase):
-    # https://www.gob.pe/feriados
-    # https://es.wikipedia.org/wiki/Anexo:Días_feriados_en_el_Perú
-    country = "PE"
+    """
+    https://www.gob.pe/feriados
+    https://es.wikipedia.org/wiki/Anexo:Días_feriados_en_el_Perú
+    """
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
+    country = "PE"
 
     def _populate(self, year):
         # New Year's Day

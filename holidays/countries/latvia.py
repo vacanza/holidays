@@ -18,14 +18,12 @@ from holidays.holiday_base import HolidayBase
 
 
 class Latvia(HolidayBase):
-
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Latvia
-    # https://information.lv/
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Latvia
+    https://information.lv/
+    """
 
     country = "LV"
-
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
         # New Year's Day

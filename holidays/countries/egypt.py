@@ -38,9 +38,6 @@ class Egypt(HolidayBase):
 
     country = "EG"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
 
         """

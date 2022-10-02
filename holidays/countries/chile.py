@@ -20,9 +20,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class Chile(HolidayBase):
-    # https://www.feriados.cl
-    # http://www.feriadoschilenos.cl/ (excellent history)
-    # https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Chile
+    """
+    https://www.feriados.cl
+    http://www.feriadoschilenos.cl/ (excellent history)
+    https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Chile
+    """
 
     country = "CL"
 
@@ -45,9 +47,6 @@ class Chile(HolidayBase):
         "TA",
         "VS",
     ]
-
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
         # New Year's Day (Law 2.977)

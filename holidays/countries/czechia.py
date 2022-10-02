@@ -20,12 +20,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class Czechia(HolidayBase):
-    # https://en.wikipedia.org/wiki/Public_holidays_in_the_Czech_Republic
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_the_Czech_Republic
+    """
 
     country = "CZ"
-
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
         self[date(year, JAN, 1)] = (

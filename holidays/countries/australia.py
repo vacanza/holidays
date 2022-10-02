@@ -23,9 +23,6 @@ class Australia(HolidayBase):
     country = "AU"
     subdivisions = ["ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"]
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
         # ACT:  Holidays Act 1958
         # NSW:  Public Holidays Act 2010

@@ -42,9 +42,6 @@ class Morocco(HolidayBase):
 
     country = "MA"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
         """
         # Function to store the holiday name in the appropriate

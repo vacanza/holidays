@@ -17,14 +17,17 @@ from holidays.holiday_base import HolidayBase
 
 
 class India(HolidayBase):
-    # https://www.india.gov.in/calendar
-    # https://www.india.gov.in/state-and-ut-holiday-calendar
-    # https://en.wikipedia.org/wiki/Public_holidays_in_India
-    # https://www.calendarlabs.com/holidays/india/2021
-    # https://slusi.dacnet.nic.in/watershedatlas/list_of_state_abbreviation.htm
-    # https://vahan.parivahan.gov.in/vahan4dashboard/
+    """
+    https://www.india.gov.in/calendar
+    https://www.india.gov.in/state-and-ut-holiday-calendar
+    https://en.wikipedia.org/wiki/Public_holidays_in_India
+    https://www.calendarlabs.com/holidays/india/2021
+    https://slusi.dacnet.nic.in/watershedatlas/list_of_state_abbreviation.htm
+    https://vahan.parivahan.gov.in/vahan4dashboard/
+    """
 
     country = "IN"
+
     subdivisions = [
         "AN",  # Andaman and Nicobar Islands
         "AP",  # Andhra Pradesh
@@ -64,9 +67,6 @@ class India(HolidayBase):
         "UP",  # Uttar Pradesh
         "WB",  # West Bengal
     ]
-
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
         # Pongal/ Makar Sankranti

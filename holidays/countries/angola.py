@@ -21,12 +21,12 @@ from holidays.holiday_base import HolidayBase
 
 
 class Angola(HolidayBase):
-    country = "AO"
+    """
+    https://www.officeholidays.com/countries/angola/
+    https://www.timeanddate.com/holidays/angola/
+    """
 
-    def __init__(self, **kwargs):
-        # https://www.officeholidays.com/countries/angola/
-        # https://www.timeanddate.com/holidays/angola/
-        HolidayBase.__init__(self, **kwargs)
+    country = "AO"
 
     def _populate(self, year: int) -> None:
         # Observed since 1975

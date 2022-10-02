@@ -61,9 +61,6 @@ class NewZealand(HolidayBase):
         "WTL",  # Correct code is WTC
     ]
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
         # Bank Holidays Act 1873
         # The Employment of Females Act 1873

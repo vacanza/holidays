@@ -21,10 +21,12 @@ from holidays.holiday_base import HolidayBase
 
 
 class UnitedKingdom(HolidayBase):
-    # https://en.wikipedia.org/wiki/Public_holidays_in_the_United_Kingdom
-    # This class is extended by other countries (Ireland, Isle of Man, ...)
-    # It must be taken into account when adding or modifying holidays.
-    # Look at _country_specific() method for country specific behavior.
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_the_United_Kingdom
+    This class is extended by other countries (Ireland, Isle of Man, ...)
+    It must be taken into account when adding or modifying holidays.
+    Look at _country_specific() method for country specific behavior.
+    """
 
     country = "GB"
     subdivisions = ["UK", "England", "Northern Ireland", "Scotland", "Wales"]

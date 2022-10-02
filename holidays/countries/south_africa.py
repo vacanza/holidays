@@ -32,12 +32,12 @@ from holidays.holiday_base import HolidayBase
 
 
 class SouthAfrica(HolidayBase):
-    country = "ZA"
+    """
+    http://www.gov.za/about-sa/public-holidays
+    https://en.wikipedia.org/wiki/Public_holidays_in_South_Africa
+    """
 
-    def __init__(self, **kwargs):
-        # http://www.gov.za/about-sa/public-holidays
-        # https://en.wikipedia.org/wiki/Public_holidays_in_South_Africa
-        HolidayBase.__init__(self, **kwargs)
+    country = "ZA"
 
     def _populate(self, year):
         # Observed since 1910, with a few name changes

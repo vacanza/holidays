@@ -21,11 +21,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class Nigeria(HolidayBase):
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Nigeria
-    country = "NG"
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Nigeria
+    """
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
+    country = "NG"
 
     def _populate(self, year):
         if year > 1978:

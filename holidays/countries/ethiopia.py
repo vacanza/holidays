@@ -35,10 +35,8 @@ WEEKEND = (SAT, SUN)
 
 
 class Ethiopia(HolidayBase):
-    country = "ET"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
+    country = "ET"
 
     def _populate(self, year):
         # New Year's Day

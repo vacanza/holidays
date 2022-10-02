@@ -17,12 +17,11 @@ from holidays.utils import _islamic_to_gre
 
 
 class Turkey(HolidayBase):
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Turkey
+    """
 
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Turkey
     country = "TR"
-
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
         def _add_holiday(dt: date, hol: str) -> None:

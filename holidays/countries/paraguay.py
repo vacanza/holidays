@@ -20,14 +20,13 @@ from holidays.holiday_base import HolidayBase
 
 
 class Paraguay(HolidayBase):
-    # https://www.ghp.com.py/news/feriados-nacionales-del-ano-2019-en-paraguay
-    # https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Paraguay
-    # http://www.calendarioparaguay.com/
+    """
+    https://www.ghp.com.py/news/feriados-nacionales-del-ano-2019-en-paraguay
+    https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Paraguay
+    http://www.calendarioparaguay.com/
+    """
 
     country = "PY"
-
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
         # New Year's Day

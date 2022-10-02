@@ -32,12 +32,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class Uruguay(HolidayBase):
-    # https://www.ute.com.uy/clientes/tramites-y-servicios/potencia-contratada
+    """
+    https://www.ute.com.uy/clientes/tramites-y-servicios/potencia-contratada
+    """
 
     country = "UY"
-
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
         # New Year's Day

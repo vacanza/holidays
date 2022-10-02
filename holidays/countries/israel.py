@@ -28,11 +28,8 @@ from holidays.holiday_base import HolidayBase
 
 
 class Israel(HolidayBase):
+
     country = "IL"
-
-    def __init__(self, **kwargs):
-
-        HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
         # Passover

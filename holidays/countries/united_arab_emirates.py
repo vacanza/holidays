@@ -46,9 +46,6 @@ class UnitedArabEmirates(HolidayBase):
     #  Python >= 3.6
     country = "AE"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
         def _add_holiday(dt: date, hol: str) -> None:
             """Only add if in current year; prevents adding holidays across

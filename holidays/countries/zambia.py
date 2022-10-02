@@ -20,14 +20,14 @@ from holidays.holiday_base import HolidayBase
 
 
 class Zambia(HolidayBase):
-    country = "ZM"
+    """
+    https://www.officeholidays.com/countries/zambia/
+    https://www.timeanddate.com/holidays/zambia/
+    https://en.wikipedia.org/wiki/Public_holidays_in_Zambia
+    https://www.parliament.gov.zm/sites/default/files/documents/acts/Public%20Holidays%20Act.pdf
+    """
 
-    def __init__(self, **kwargs):
-        # https://www.officeholidays.com/countries/zambia/
-        # https://www.timeanddate.com/holidays/zambia/
-        # https://en.wikipedia.org/wiki/Public_holidays_in_Zambia
-        # https://www.parliament.gov.zm/sites/default/files/documents/acts/Public%20Holidays%20Act.pdf
-        HolidayBase.__init__(self, **kwargs)
+    country = "ZM"
 
     def _populate(self, year):
         # Observed since 1965

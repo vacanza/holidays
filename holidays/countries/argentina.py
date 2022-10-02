@@ -20,15 +20,14 @@ from holidays.holiday_base import HolidayBase
 
 
 class Argentina(HolidayBase):
-    # https://www.argentina.gob.ar/interior/feriados
-    # https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Argentina
-    # http://servicios.lanacion.com.ar/feriados
-    # https://www.clarin.com/feriados/
+    """
+    https://www.argentina.gob.ar/interior/feriados
+    https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Argentina
+    http://servicios.lanacion.com.ar/feriados
+    https://www.clarin.com/feriados/
+    """
 
     country = "AR"
-
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
         # New Year's Day
