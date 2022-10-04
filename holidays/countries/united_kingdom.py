@@ -203,16 +203,7 @@ class UnitedKingdom(HolidayBase):
             self[date(year, SEP, 19)] = "State Funeral of Queen Elizabeth II"
 
     def _additional_holidays(self, year: int) -> None:
-        # Method used to handle Isle of Man (replaced by class IsleOfMan)
-        if self.subdiv == "Isle of Man":
-            warnings.warn(
-                "Isle of Man as a 'state' of GB is deprecated, use country "
-                "code IM instead.",
-                DeprecationWarning,
-            )
-            from .isle_of_man import IsleOfMan
-
-            IsleOfMan._additional_holidays(self, year)  # type: ignore
+        pass
 
 
 class UK(UnitedKingdom):

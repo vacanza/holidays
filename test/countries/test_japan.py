@@ -49,6 +49,7 @@ class TestJapan(unittest.TestCase):
         self.assertIn(date(2050, 2, 11), self.holidays)
 
     def test_vernal_equinox_day(self):
+        self.assertIn(date(1951, 3, 21), self.holidays)
         self.assertIn(date(1956, 3, 21), self.holidays)
         self.assertIn(date(1960, 3, 20), self.holidays)
         self.assertIn(date(1970, 3, 21), self.holidays)
@@ -60,6 +61,7 @@ class TestJapan(unittest.TestCase):
         self.assertIn(date(2020, 3, 20), self.holidays)
         self.assertIn(date(2030, 3, 20), self.holidays)
         self.assertIn(date(2040, 3, 20), self.holidays)
+        self.assertIn(date(2055, 3, 21), self.holidays)
         self.assertIn(date(2092, 3, 19), self.holidays)
 
     def test_showa_day(self):
@@ -111,13 +113,14 @@ class TestJapan(unittest.TestCase):
         self.assertIn(date(2050, 9, 19), self.holidays)
 
     def test_autumnal_equinox_day(self):
+        self.assertIn(date(1979, 9, 24), self.holidays)
         self.assertIn(date(2000, 9, 23), self.holidays)
         self.assertIn(date(2010, 9, 23), self.holidays)
         self.assertIn(date(2017, 9, 23), self.holidays)
         self.assertIn(date(2020, 9, 22), self.holidays)
         self.assertIn(date(2030, 9, 23), self.holidays)
-        self.assertIn(date(1979, 9, 24), self.holidays)
-        self.assertIn(date(2032, 9, 21), self.holidays)
+        self.assertIn(date(2037, 9, 23), self.holidays)
+        self.assertIn(date(2041, 9, 23), self.holidays)
 
     def test_health_and_sports_day(self):
         self.assertNotIn(date(1965, 10, 10), self.holidays)
@@ -160,6 +163,9 @@ class TestJapan(unittest.TestCase):
         self.assertIn(date(2019, 5, 2), self.holidays)
         self.assertIn(date(2019, 10, 22), self.holidays)
 
+    def test_national_holidays(self):
+        self.assertIn(date(2032, 9, 21), self.holidays)
+
     def test_invalid_years(self):
         self.assertRaises(
             NotImplementedError, lambda: date(1948, 1, 1) in self.holidays
@@ -167,3 +173,10 @@ class TestJapan(unittest.TestCase):
         self.assertRaises(
             NotImplementedError, lambda: date(2100, 1, 1) in self.holidays
         )
+
+
+# #     def test_yyy(self):
+# for year in range(1948, 2042):
+#     if year % 4 != 1:
+#         continue
+#     print(year)

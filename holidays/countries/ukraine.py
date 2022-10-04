@@ -34,11 +34,8 @@ class Ukraine(HolidayBase):
         if year <= 1917:
             return
 
-        if year >= 1898:
-            # New Year's Day
-            self[date(year, JAN, 1)] = "Новий рік"
-            if year < 1918:
-                return
+        # New Year's Day
+        self[date(year, JAN, 1)] = "Новий рік"
 
         # Christmas Day (Orthodox)
         if year >= 1991:
@@ -59,7 +56,7 @@ class Ukraine(HolidayBase):
         # Labour Day
         if year >= 2018:
             name = "День праці"
-        elif 1918 <= year <= 2017:
+        else:
             name = "День міжнародної солідарності трудящих"
         self[date(year, MAY, 1)] = name
 
