@@ -3,7 +3,8 @@ Version 0.17
 
 Released ?????? ??, ????
 
-
+- Sort overlapping holiday names #713 (kasya, arkid15r)
+- Singapore fix - avoid multiple adds on in lieu holidays (amas01) #717
 
 Version 0.16
 ============
