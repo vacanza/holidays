@@ -3,6 +3,7 @@ Version 0.17
 
 Released ?????? ??, ????
 
+- Added isort to pre-commit #722 (arkid15r)
 - Sort overlapping holiday names #713 (kasya, arkid15r)
 - Singapore fix - avoid multiple adds on in lieu holidays (amas01) #717
 
