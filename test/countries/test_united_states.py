@@ -12,8 +12,9 @@
 import unittest
 from datetime import date
 
-import holidays
 from dateutil.relativedelta import relativedelta
+
+import holidays
 
 
 class TestUS(unittest.TestCase):

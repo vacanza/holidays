@@ -11,11 +11,10 @@
 
 import importlib.util
 import unittest
-
 from datetime import date
 
 import holidays
-from holidays.constants import JAN, MAR, MAY, JUN, NOV, DEC
+from holidays.constants import DEC, JAN, JUN, MAR, MAY, NOV
 
 
 class TestAzerbaijan(unittest.TestCase):
