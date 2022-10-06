@@ -15,8 +15,9 @@ import unittest
 import warnings
 from datetime import date, datetime, timedelta
 
-import holidays
 from dateutil.relativedelta import MO, relativedelta
+
+import holidays
 
 
 class TestBasics(unittest.TestCase):

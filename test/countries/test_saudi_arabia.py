@@ -11,7 +11,6 @@
 
 import importlib.util
 import unittest
-
 from datetime import date
 
 import holidays
