@@ -15,7 +15,7 @@ import unittest
 import warnings
 from datetime import date, datetime, timedelta
 
-from dateutil.relativedelta import MO, relativedelta
+from dateutil.relativedelta import relativedelta, MO
 
 import holidays
 

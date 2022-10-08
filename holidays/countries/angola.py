@@ -15,18 +15,18 @@ from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import (
-    APR,
-    DEC,
-    FEB,
-    JAN,
-    MAR,
-    MAY,
     MON,
-    NOV,
-    SEP,
-    SUN,
-    THU,
     TUE,
+    THU,
+    SUN,
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    SEP,
+    NOV,
+    DEC,
 )
 from holidays.holiday_base import HolidayBase
 

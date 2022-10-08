@@ -12,24 +12,24 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import FR, MO, SA
 from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import MO, FR, SA
 
 from holidays.constants import (
-    AUG,
-    DEC,
-    FRI,
-    JAN,
-    JUL,
-    JUN,
-    MAY,
-    NOV,
-    OCT,
-    SAT,
-    SEP,
-    SUN,
-    THU,
     TUE,
+    THU,
+    FRI,
+    SAT,
+    SUN,
+    JAN,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
 )
 from holidays.holiday_base import HolidayBase
 
