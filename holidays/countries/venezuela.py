@@ -14,7 +14,7 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, APR, MAY, JUN, JUL, OCT, DEC
+from holidays.constants import APR, DEC, JAN, JUL, JUN, MAY, OCT
 from holidays.holiday_base import HolidayBase
 
 

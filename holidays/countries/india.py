@@ -12,7 +12,7 @@
 import warnings
 from datetime import date
 
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, AUG, OCT, NOV, DEC
+from holidays.constants import APR, AUG, DEC, FEB, JAN, JUN, MAR, MAY, NOV, OCT
 from holidays.holiday_base import HolidayBase
 
 

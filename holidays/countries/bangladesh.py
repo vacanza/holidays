@@ -11,7 +11,8 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from holidays.constants import FEB, MAR, APR, MAY, AUG, DEC
+
+from holidays.constants import APR, AUG, DEC, FEB, MAR, MAY
 from holidays.holiday_base import HolidayBase
 
 

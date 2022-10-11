@@ -10,9 +10,8 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-from itertools import product
-
 from datetime import date
+from itertools import product
 
 import holidays
 
