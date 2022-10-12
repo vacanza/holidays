@@ -6,7 +6,9 @@ MANIFEST
 *.egg-info
 *.pyc
 .idea
-
+.tox/
+.venv/
+docs/_build/
 
 # IDE Stuff
 .vscode/
