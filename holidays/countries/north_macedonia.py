@@ -11,10 +11,11 @@
 
 from datetime import date
 
-from holidays.constants import JAN, MAY, SEP, AUG, OCT, DEC
-from holidays.holiday_base import HolidayBase
-from dateutil.easter import easter, EASTER_ORTHODOX
+from dateutil.easter import EASTER_ORTHODOX, easter
 from dateutil.relativedelta import relativedelta as rd
+
+from holidays.constants import AUG, DEC, JAN, MAY, OCT, SEP
+from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
 
 

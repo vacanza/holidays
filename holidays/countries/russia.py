@@ -11,7 +11,7 @@
 
 from datetime import date
 
-from holidays.constants import JAN, FEB, MAR, MAY, JUN, NOV, DEC
+from holidays.constants import DEC, FEB, JAN, JUN, MAR, MAY, NOV
 from holidays.holiday_base import HolidayBase
 
 
