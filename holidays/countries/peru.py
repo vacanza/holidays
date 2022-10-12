@@ -1,31 +1,30 @@
-# -*- coding: utf-8 -*-
-
 #  python-holidays
 #  ---------------
 #  A fast, efficient Python library for generating country, province and state
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, TH, FR, SA, SU
+from dateutil.relativedelta import FR, SA, SU, TH
+from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAY, JUN, JUL, AUG, OCT, \
-    NOV, DEC
+from holidays.constants import AUG, DEC, JAN, JUL, JUN, MAY, NOV, OCT
 from holidays.holiday_base import HolidayBase
 
 
 class Peru(HolidayBase):
     # https://www.gob.pe/feriados
     # https://es.wikipedia.org/wiki/Anexo:Días_feriados_en_el_Perú
+    country = "PE"
+
     def __init__(self, **kwargs):
-        self.country = "PE"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -52,20 +51,22 @@ class Peru(HolidayBase):
         self[date(year, OCT, 8)] = name
 
         # Holy Thursday
-        self[easter(year) + rd(weekday=TH(-1))
-             ] = "Jueves Santo [Maundy Thursday]"
+        self[
+            easter(year) + rd(weekday=TH(-1))
+        ] = "Jueves Santo [Maundy Thursday]"
 
         # Good Friday
-        self[easter(year) + rd(weekday=FR(-1))
-             ] = "Viernes Santo [Good Friday]"
+        self[easter(year) + rd(weekday=FR(-1))] = "Viernes Santo [Good Friday]"
 
         # Holy Saturday
-        self[easter(year) + rd(weekday=SA(-1))
-             ] = "Sábado de Gloria [Holy Saturday]"
+        self[
+            easter(year) + rd(weekday=SA(-1))
+        ] = "Sábado de Gloria [Holy Saturday]"
 
         # Easter Sunday
-        self[easter(year) + rd(weekday=SU(-1))
-             ] = "Domingo de Resurrección [Easter Sunday]"
+        self[
+            easter(year) + rd(weekday=SU(-1))
+        ] = "Domingo de Resurrección [Easter Sunday]"
 
         # Labor Day
         self[date(year, MAY, 1)] = "Día del Trabajo [Labour Day]"

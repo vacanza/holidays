@@ -1,23 +1,21 @@
-# -*- coding: utf-8 -*-
-
 #  python-holidays
 #  ---------------
 #  A fast, efficient Python library for generating country, province and state
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, FR
+from dateutil.relativedelta import FR
+from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAR, APR, MAY, AUG, \
-    DEC
+from holidays.constants import APR, AUG, DEC, JAN, MAR, MAY
 from holidays.holiday_base import HolidayBase
 
 
@@ -25,8 +23,9 @@ class Aruba(HolidayBase):
     # http://www.gobierno.aw/informacion-tocante-servicio/vakantie-y-dia-di-fiesta_43437/item/dia-di-fiesta_14809.html
     # https://www.visitaruba.com/about-aruba/national-holidays-and-celebrations/
 
+    country = "AW"
+
     def __init__(self, **kwargs):
-        self.country = 'AW'
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -37,18 +36,24 @@ class Aruba(HolidayBase):
         self[date(year, JAN, 25)] = "Dia Di Betico [Betico Day]"
 
         # Carnaval Monday
-        self[easter(year) + rd(days=-48)] = "Dialuna di Carnaval \
+        self[
+            easter(year) + rd(days=-48)
+        ] = "Dialuna di Carnaval \
             [Carnaval Monday]"
 
         # Dia di Himno y Bandera
-        self[date(year, MAR, 18)] = "Dia di Himno y Bandera \
+        self[
+            date(year, MAR, 18)
+        ] = "Dia di Himno y Bandera \
             [National Anthem & Flag Day]"
 
         # Good Friday
         self[easter(year) + rd(weekday=FR(-1))] = "Bierna Santo [Good Friday]"
 
         # Easter Monday
-        self[easter(year) + rd(days=1)] = "Di Dos Dia di Pasco di Resureccion \
+        self[
+            easter(year) + rd(days=1)
+        ] = "Di Dos Dia di Pasco di Resureccion \
             [Easter Monday]"
 
         # King's Day
@@ -83,7 +88,9 @@ class Aruba(HolidayBase):
         self[date(year, DEC, 25)] = "Pasco di Nacemento [Christmas]"
 
         # Second Christmas
-        self[date(year, DEC, 26)] = "Di Dos Dia di Pasco di \
+        self[
+            date(year, DEC, 26)
+        ] = "Di Dos Dia di Pasco di \
             Nacemento [Second Christmas]"
 
 

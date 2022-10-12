@@ -1,23 +1,21 @@
-# -*- coding: utf-8 -*-
-
 #  python-holidays
 #  ---------------
 #  A fast, efficient Python library for generating country, province and state
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
 
 from dateutil.relativedelta import relativedelta as rd
-from holidays.constants import SAT, SUN
-from holidays.constants import JAN, MAR, MAY, JUL, AUG, NOV
+
+from holidays.constants import AUG, JAN, JUL, MAR, MAY, NOV, SAT, SUN
 from holidays.holiday_base import HolidayBase
-from holidays.utils import get_gre_date
+from holidays.utils import _islamic_to_gre
 
 WEEKEND = (SAT, SUN)
 
@@ -42,8 +40,9 @@ class Morocco(HolidayBase):
     https://www.mmsp.gov.ma/fr/pratiques.aspx?id=38
     """
 
+    country = "MA"
+
     def __init__(self, **kwargs):
-        self.country = 'MA'
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -60,13 +59,23 @@ class Morocco(HolidayBase):
                 self[hol_date] = hol_name
         """
 
+        def _add_holiday(dt: date, hol: str) -> None:
+            """Only add if in current year; prevents adding holidays across
+            years (handles multi-day Islamic holidays that straddle Gregorian
+            years).
+            """
+            if dt.year == year:
+                self[dt] = hol
+
         # New Year's Day
         self[date(year, JAN, 1)] = "Nouvel an - Premier janvier"
 
         # Independence Manifesto Day post 1944
         if year > 1944:
-            self[date(year, JAN, 11)] = "Commémoration de la présentation " \
-                                        "du manifeste de l'indépendance"
+            self[date(year, JAN, 11)] = (
+                "Commémoration de la présentation "
+                "du manifeste de l'indépendance"
+            )
 
         # Labor day
         self[date(year, MAY, 1)] = "Fête du Travail"
@@ -83,8 +92,9 @@ class Morocco(HolidayBase):
         self[date(year, AUG, 14)] = "Journée de Oued Ed-Dahab"
 
         # Revolution Day
-        self[date(year, AUG, 20)] = "Commémoration de la révolution du " \
-                                    "Roi et du peuple"
+        self[date(year, AUG, 20)] = (
+            "Commémoration de la révolution du " "Roi et du peuple"
+        )
 
         # Youth day
         if year > 2000:
@@ -105,28 +115,31 @@ class Morocco(HolidayBase):
         # having the Holiday on Weekend does change the number of days,
         # deceided to leave it since marking a Weekend as a holiday
         # wouldn't do much harm.
-        for date_obs in get_gre_date(year, 10, 1):
-            hol_date = date_obs
-            self[hol_date] = "Eid al-Fitr"
-            self[hol_date + rd(days=1)] = "Eid al-Fitr"
+        for yr in (year - 1, year):
+            for date_obs in _islamic_to_gre(yr, 10, 1):
+                hol_date = date_obs
+                _add_holiday(hol_date, "Eid al-Fitr")
+                _add_holiday(hol_date + rd(days=1), "Eid al-Fitr")
 
         # Eid al-Adha - Sacrifice Festive
         # date of observance is announced yearly
-        for date_obs in get_gre_date(year, 12, 10):
-            hol_date = date_obs
-            self[hol_date] = "Eid al-Adha"
-            self[hol_date + rd(days=1)] = "Eid al-Adha"
+        for yr in (year - 1, year):
+            for date_obs in _islamic_to_gre(yr, 12, 10):
+                hol_date = date_obs
+                _add_holiday(hol_date, "Eid al-Adha")
+                _add_holiday(hol_date + rd(days=1), "Eid al-Adha")
 
         # Islamic New Year - (hijari_year, 1, 1)
-        for date_obs in get_gre_date(year, 1, 1):
+        for date_obs in _islamic_to_gre(year, 1, 1):
             hol_date = date_obs
             self[hol_date] = "1er Moharram"
 
         # Prophet Muhammad's Birthday - (hijari_year, 3, 12)
-        for date_obs in get_gre_date(year, 3, 12):
-            hol_date = date_obs
-            self[hol_date] = "Aid al Mawlid Annabawi"
-            self[hol_date + rd(days=1)] = "Aid al Mawlid Annabawi"
+        for yr in (year - 1, year):
+            for date_obs in _islamic_to_gre(yr, 3, 12):
+                hol_date = date_obs
+                _add_holiday(hol_date, "Aid al Mawlid Annabawi")
+                _add_holiday(hol_date + rd(days=1), "Aid al Mawlid Annabawi")
 
 
 class MA(Morocco):

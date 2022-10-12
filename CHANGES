@@ -1,3 +1,202 @@
+Version 0.17
+============
+
+Released ?????? ??, ????
+
+- Added isort to pre-commit #722 (arkid15r)
+- Sort overlapping holiday names #713 (kasya, arkid15r)
+- Singapore fix - avoid multiple adds on in lieu holidays (amas01) #717
+
+Version 0.16
+============
+
+Released September 16, 2022
+
+This release is dedicated to Queen Elizabeth II (21 April 1926 – 8 September 2022),
+who lived her long life as a monarch through 2 centuries, in both happy and difficult moments,
+with grace, dignity and an always inspiring strong sense of duty and warm heart.
+Goodbye "Lilibet", you have symbolically been a queen, a mother and a grandmother
+to a lot of us, and will be dearly missed.
+
+- Financial market support review, new method financial_holidays(..) #694 (dr-p)
+- Support for Moldova #695 (Thedand)
+- Support for Bolivia #679, #698 (kasya)
+- UK updates #702 (JPunter, violuke)
+- Australia updates #699 (Ryan-McCrory, dr-p)
+- Canada updates #710 (bkthomps)
+- New Zealand updates #708, #709 (dr-p, markhoneth)
+- NYSE updates #693, #696 (kasya)
+
+Version 0.15
+============
+
+Released August 21, 2022
+
+- Added support for Python3.11 (dr-p)
+- Updated README - improved badges area (dr-p)
+- Support for Cuba #678 (bthompson, dr-p)
+- Typechecking implementation, first release (HolidayBase, utils, some sample countries) #661 (dimbleby)
+- Test coverage improvement #633 (akosfurton, dr-p)
+- Drop support for UK subdivisions as countries (England, Scotland..) (dr-p)
+- Drop support for IsleOfMan as UK subdivision (dr-p)
+- Drop support for PortugalExt (ie: extended Portugal) (dr-p)
+- US fixes #675 (arkid15r)
+- Colombia fixes & test improvements #676 (bkthomps)
+- Venezuela fixes & test improvements #677 (bkthomps)
+- Canada fixes #579 (dr-p, scubaandre)
+- Ukraine refactoring #681 (kasya)
+- Italy update #689 (g-gg, dr-p)
+- Bump pre-commit and setup-python actions #672, #682, #686, #688 (dr-p)
+- Doc example fix #685 (steakhutzeee, dr-p)
+
+
+Version 0.14.2
+==============
+
+Released June 5, 2022
+
+- Drop support for EOL Python 3.6 #328 (hugovk, dr-p)
+- Package review #662 (dimbleby)
+- Added financial markets support: ECB and NYSE, list_supported_financial() method (dr-p)
+- Support for NY Stock Exchange #651, #458 (nadime, dr-p)
+- Support for Malta #612, #630 (rafelbev)
+- Support for Madagascar #656 (fav007)
+- Support for Cyprus #410, #665 (digidestination, avnigo)
+- Ireland as standalone country #636, #639 (TeoTN, dr-p, javicalle)
+- Australia fixes #631 (jeremychrimes)
+- Singapore updates #652 (mborsetti)
+- Saudi Arabia fixes #642 (OsaydAbdu)
+- Spain fixes #634 (javicalle)
+- US fixes #648 (dashdrum)
+- Greece fixes #659 (tudorvaran)
+- India doc fixes #657 (dr-p)
+- Poland fix #663 (kfsz)
+
+
+Version 0.13
+============
+
+Released February 15, 2022
+
+- New subdivision parameter (subdiv), prov/state deprecation #608, #597, #374 (mborsetti)
+- CountryHoliday class deprecation (replaced by country_holidays) (mborsetti, dr-p)
+- Sphinx documentation #600, #601, #602 (mborsetti)
+- Integration of mypy in pre-commit #620 (mborsetti)
+- Wrong year expansion fix #586, #606, #625 (mborsetti, TeejMonster, dr-p)
+- Refactoring / cleanups / code and naming reviews (mborsetti)
+- Support for Uzbekistan #593 (slako, dr-p)
+- Italy fixes/improvements #617, #614 (energywave)
+- Spain improvements #580, #603, #624 (gtrabanco, delaosa, dr-p)
+- UAE updates (weekend change) #609 (marcomasulli, dr-p)
+- India updates #548 (mborsetti)
+- US fixes #594, #595, #619 (apicht, SudoRob, dr-p)
+- UK fixes #587 (mborsetti)
+- Russia fixes #582 (Enzokot)
+- Type hints fixes #589 (mborsetti)
+
+Version 0.12
+============
+
+Released January 4, 2022
+
+- Copyright update 2022
+- Sphinx documentation stub (mborsetti, dr-p)
+- Support for Kazakhstan #534 (chiuczek, intelliHugh)
+- Support for Azerbaijan #540 (eldar-mustafayev)
+- Support for Tunisia #543 (ihebski)
+- Support for Taiwan #547 (ifurther)
+- Support for North Macedonia #570 (tserekh)
+- Support for Ethiopia #558 (tedtad, dr-p)
+- Travis CI removal #557 (mborsetti, dr-p)
+- CD/CI tests - Pypi versions review (dr-p)
+- More useful __repr__ and __str__ #360 (dr-p, kootenpv, d33tah)
+- Drop support for Czech (ie: misspelled Czechia) (dr-p)
+- Drop support for Polish (ie: misspelled Poland) (dr-p)
+- Drop support for Slovak (ie: misspelled Slovakia) (dr-p)
+
+- Test coverage improvement (dr-p)
+- "country" property moved to class attributes #573 (dr-p, madphysicist)
+- Date slices support fix #529, #530 (justinwaf, mborsetti, dr-p)
+- Dictionary changed during iteration fix #569 (mborsetti)
+- Doc fixes #549 (canute24)
+- UK standalone states deprecation #566 (dr-p)
+- Venezuela ISO code + other fixes #567, #576 (Skatox, dr-p, antusystem)
+- Canada updates and test review #533, #536 (cturra)
+- US updates and fixes #537, #559, #578 (khawley, evohnave, amelkiy, dr-p)
+- India fixes #553, #554, #539 (canute24, dr-p)
+- Spain fixes #555 (tserekh)
+- Italy fixes #546 (dr-p, rtraverso86)
+- Korea fixes #535 (0xF4D3C0D3)
+- Colombia fixes #564 (jahirfiquitiva)
+
+Version 0.11.3.1
+================
+
+Released September 29, 2021
+
+- Support for Zambia #495, #496 (engineervix)
+- Support for Uruguay #489, #490, #491, #492, #493 (jemazzeo, dr-p)
+- Support for Lesotho #512 (pietervdw115)
+- Support for Namibia #513 (pietervdw115)
+- Support for Swaziland #514 (pietervdw115)
+- Support for Zimbabwe #517 (pietervdw115)
+- Support for China #515 (tserekh)
+- Refactor lunisolar and islamic calendar #524 (mborsetti)
+- Removed six dependency #494 (mborsetti)
+- Type hinting #497, #498 (mborsetti)
+- Malaysia refactoring & updates #524 (mborsetti)
+- New Zealand updates #499 (36wish)
+- USA, Angola fixes (jusce17)
+- Kenya updates #502 (MainaKamau92)
+- Korea updates #508 (0xF4D3C0D3, dr-p)
+- Bulgaria updates #509 (BasakUlker, dr-p)
+- Australia updates #516 (cmckeague)
+- South Africa updates (lispwarez, dr-p)
+- Canada updates #457 (dr-p)
+- PRTE (PortugalExt) fix #520 (dr-p)
+- Norway updates #472 (dr-p)
+- Chile updates #473 (dr-p)
+- Australia updates #525 (jeremychrimes)
+- README iso codes typo / improvements #520 (dr-p)
+- .gitattributes fix #522 (mborsetti)
+
+Version 0.11.2
+==============
+
+Released July 18, 2021
+
+- Support for Venezuela #470 (antusystem, dr-p)
+- Support for Botswana #477 (pietervdw115)
+- Support for Malaysia #466 (jusce17) *needs improvement*
+- Poland fix #464 (m-ganko)
+- Singapore updates for 2022 #456 (mborsetti)
+- US updates #474, #488 (ChristianAlexander, jusce17)
+- NG updates #486 (pietervdw115)
+- UK updates #487 (orrock, dr-p)
+- .gitignore fix #462 (TheLastProject)
+- Pre-commit v.2.0.3 (dr-p)
+
+Version 0.11.1
+==============
+
+Released April 2, 2021
+
+- Github Actions CI/CD integration (s-weigand, dr-p)
+- Support for Saudi Arabia #429 (OsaydAbdu)
+- Support for Curacao #431 (RaychelM, dr-p)
+- Support for Jamaica #433 (edyarm, dr-p)
+- Support for Georgia #435 (Okroshiashvili, dr-p)
+- __init.py__ flake8 issue fix #423 (dr-p)
+- Korea 2020 fix #414, #415 (dr-p, janggiKim, spar7453)
+- Singapore fix for multi-year #419 (mborsetti)
+- Israel fix #442 (giladmaya)
+- Japan fix #445 (osoken)
+- Serbia fix #446 (kosugor)
+- United Kingdom get_list fix #448 (bletham)
+- Singapore fix for multi-year #419 (mborsetti)
+- Fixed holidays pickling #451 (giladmaya)
+
+
 Version 0.10.5.2
 ================
 

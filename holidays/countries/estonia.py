@@ -1,13 +1,11 @@
-# -*- coding: utf-8 -*-
-
 #  python-holidays
 #  ---------------
 #  A fast, efficient Python library for generating country, province and state
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -16,13 +14,14 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, FEB, MAY, JUN, AUG, DEC
+from holidays.constants import AUG, DEC, FEB, JAN, JUN, MAY
 from holidays.holiday_base import HolidayBase
 
 
 class Estonia(HolidayBase):
+    country = "EE"
+
     def __init__(self, **kwargs):
-        self.country = "EE"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

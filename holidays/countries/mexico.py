@@ -1,29 +1,27 @@
-# -*- coding: utf-8 -*-
-
 #  python-holidays
 #  ---------------
 #  A fast, efficient Python library for generating country, province and state
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
 
-from dateutil.relativedelta import relativedelta as rd, MO
+from dateutil.relativedelta import MO
+from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import FRI, SAT, SUN
-from holidays.constants import JAN, FEB, MAR, MAY, SEP, NOV, DEC
+from holidays.constants import DEC, FEB, FRI, JAN, MAR, MAY, NOV, SAT, SEP, SUN
 from holidays.holiday_base import HolidayBase
 
 
 class Mexico(HolidayBase):
+    country = "MX"
 
     def __init__(self, **kwargs):
-        self.country = 'MX'
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -40,8 +38,9 @@ class Mexico(HolidayBase):
         # Constitution Day
         name = "Día de la Constitución [Constitution Day]"
         if self.observed and year >= 2007:
-            self[date(year, FEB, 1) + rd(weekday=MO(+1))] = \
+            self[date(year, FEB, 1) + rd(weekday=MO(+1))] = (
                 name + " (Observed)"
+            )
 
         if year >= 1917:
             self[date(year, FEB, 5)] = name
@@ -49,8 +48,9 @@ class Mexico(HolidayBase):
         # Benito Juárez's birthday
         name = "Natalicio de Benito Juárez [Benito Juárez's birthday]"
         if self.observed and year >= 2007:
-            self[date(year, MAR, 1) + rd(weekday=MO(+3))] = \
+            self[date(year, MAR, 1) + rd(weekday=MO(+3))] = (
                 name + " (Observed)"
+            )
 
         if year >= 1917:
             self[date(year, MAR, 21)] = name
@@ -75,8 +75,9 @@ class Mexico(HolidayBase):
         # Revolution Day
         name = "Día de la Revolución [Revolution Day]"
         if self.observed and year >= 2007:
-            self[date(year, NOV, 1) + rd(weekday=MO(+3))] = \
+            self[date(year, NOV, 1) + rd(weekday=MO(+3))] = (
                 name + " (Observed)"
+            )
 
         if year >= 1917:
             self[date(year, NOV, 20)] = name

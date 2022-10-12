@@ -1,13 +1,11 @@
-# -*- coding: utf-8 -*-
-
 #  python-holidays
 #  ---------------
 #  A fast, efficient Python library for generating country, province and state
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -16,8 +14,7 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAY, DEC
-from holidays.constants import MON, THU, FRI, SUN
+from holidays.constants import DEC, FRI, JAN, MAY, MON, SUN, THU
 from holidays.holiday_base import HolidayBase
 
 
@@ -37,14 +34,15 @@ class Norway(HolidayBase):
     https://www.timeanddate.no/merkedag/norge/
     """
 
-    def __init__(self, include_sundays=True, **kwargs):
+    country = "NO"
+
+    def __init__(self, include_sundays=False, **kwargs):
         """
 
         :param include_sundays: Whether to consider sundays as a holiday
         (which they are in Norway)
         :param kwargs:
         """
-        self.country = "NO"
         self.include_sundays = include_sundays
         HolidayBase.__init__(self, **kwargs)
 
@@ -52,9 +50,9 @@ class Norway(HolidayBase):
         # Add all the sundays of the year before adding the "real" holidays
         if self.include_sundays:
             first_day_of_year = date(year, JAN, 1)
-            first_sunday_of_year = \
-                first_day_of_year + \
-                rd(days=SUN - first_day_of_year.weekday())
+            first_sunday_of_year = first_day_of_year + rd(
+                days=SUN - first_day_of_year.weekday()
+            )
             cur_date = first_sunday_of_year
 
             while cur_date < date(year + 1, 1, 1):

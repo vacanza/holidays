@@ -1,24 +1,36 @@
-# -*- coding: utf-8 -*-
-
 #  python-holidays
 #  ---------------
 #  A fast, efficient Python library for generating country, province and state
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, MO, FR, SA
+from dateutil.relativedelta import FR, MO, SA
+from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAY, JUN, JUL, AUG, SEP, OCT, \
-    NOV, DEC
-from holidays.constants import TUE, THU, FRI, SAT, SUN
+from holidays.constants import (
+    AUG,
+    DEC,
+    FRI,
+    JAN,
+    JUL,
+    JUN,
+    MAY,
+    NOV,
+    OCT,
+    SAT,
+    SEP,
+    SUN,
+    THU,
+    TUE,
+)
 from holidays.holiday_base import HolidayBase
 
 
@@ -27,12 +39,29 @@ class Chile(HolidayBase):
     # http://www.feriadoschilenos.cl/ (excellent history)
     # https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Chile
 
+    country = "CL"
+
     # ISO 3166-2 codes for the principal subdivisions, called regions
-    STATES = ['AI', 'AN', 'AP', 'AR', 'AT', 'BI', 'CO', 'LI', 'LL', 'LR',
-              'MA', 'ML', 'NB', 'RM', 'TA', 'VS']
+    subdivisions = [
+        "AI",
+        "AN",
+        "AP",
+        "AR",
+        "AT",
+        "BI",
+        "CO",
+        "LI",
+        "LL",
+        "LR",
+        "MA",
+        "ML",
+        "NB",
+        "RM",
+        "TA",
+        "VS",
+    ]
 
     def __init__(self, **kwargs):
-        self.country = 'CL'
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
@@ -45,7 +74,7 @@ class Chile(HolidayBase):
         # Holy Week (Law 2.977)
         name_fri = "Semana Santa (Viernes Santo) [Good Friday)]"
         name_sat = "Semana Santa (Sábado Santo) [Good Saturday)]"
-        name_easter = 'Día de Pascuas [Easter Day]'
+        name_easter = "Día de Pascuas [Easter Day]"
 
         self[easter(year) + rd(weekday=FR(-1))] = name_fri
         self[easter(year) + rd(weekday=SA(-1))] = name_sat
@@ -59,6 +88,12 @@ class Chile(HolidayBase):
         name = "Día de las Glorias Navales [Navy Day]"
         self[date(year, MAY, 21)] = name
 
+        name = "Día Nacional de los Pueblos Indígenas"
+        if year == 2021:
+            self[date(year, JUN, 21)] = name
+        if year > 2021:
+            self[date(year, JUN, 19)] = name
+
         # Saint Peter and Saint Paul (Law 18.432)
         name = "San Pedro y San Pablo [Saint Peter and Saint Paul]"
         if year < 2020:
@@ -66,8 +101,10 @@ class Chile(HolidayBase):
         else:
             # floating Monday holiday (Law 19.668)
             if date(year, JUN, 29).weekday() <= THU:
-                self[date(year, JUN, 29) + rd(date(year, JUN, 29),
-                                              weekday=MO(-1))] = name
+                self[
+                    date(year, JUN, 29)
+                    + rd(date(year, JUN, 29), weekday=MO(-1))
+                ] = name
             elif date(year, JUN, 29).weekday() == FRI:
                 self[date(year, JUN, 29) + rd(weekday=MO)] = name
             else:
@@ -106,15 +143,19 @@ class Chile(HolidayBase):
         if year < 2010:
             self[date(year, OCT, 12)] = "Día de la Raza [Columbus day]"
         elif year < 2020:
-            self[date(year, OCT, 12)] = "Día del Respeto a la Diversidad"\
-                                        " [Day of the Meeting " \
-                                        " of Two Worlds]"
+            self[date(year, OCT, 12)] = (
+                "Día del Respeto a la Diversidad"
+                " [Day of the Meeting "
+                " of Two Worlds]"
+            )
         else:
             # floating Monday holiday (Law 19.668)
-            name = ("Día del Descubrimiento de dos Mundos [Columbus Day]")
+            name = "Día del Descubrimiento de dos Mundos [Columbus Day]"
             if date(year, OCT, 12).weekday() <= THU:
-                self[date(year, OCT, 12) + rd(date(year, OCT, 12),
-                                              weekday=MO(-1))] = name
+                self[
+                    date(year, OCT, 12)
+                    + rd(date(year, OCT, 12), weekday=MO(-1))
+                ] = name
             elif date(year, OCT, 12).weekday() == FRI:
                 self[date(year, OCT, 12) + rd(weekday=MO)] = name
             else:
@@ -122,8 +163,10 @@ class Chile(HolidayBase):
 
         # National Day of the Evangelical and Protestant Churches (Law 20.299)
         if year > 2007:
-            name = ("Día Nacional de las Iglesias Evangélicas y Protestantes "
-                    " [Reformation Day]")
+            name = (
+                "Día Nacional de las Iglesias Evangélicas y Protestantes "
+                " [Reformation Day]"
+            )
             self[date(year, OCT, 31)] = name
 
         # All Saints Day (Law 2.977)
@@ -131,25 +174,29 @@ class Chile(HolidayBase):
         self[date(year, NOV, 1)] = name
 
         # Immaculate Conception (Law 2.977)
-        self[date(year, DEC, 8)] = "La Inmaculada Concepción" \
-                                   " [Immaculate Conception]"
+        self[date(year, DEC, 8)] = (
+            "La Inmaculada Concepción" " [Immaculate Conception]"
+        )
 
         # Christmas (Law 2.977)
         self[date(year, DEC, 25)] = "Navidad [Christmas]"
 
         # región de Arica y Parinacota
-        if self.state == 'AP' and year >= 2020:
+        if self.subdiv == "AP" and year >= 2020:
             # Law 20.663
-            self[date(year, JUN, 7)] = ("Asalto y Toma del Morro de Arica"
-                                        " [Assault and Capture of Cape Arica]")
+            self[date(year, JUN, 7)] = (
+                "Asalto y Toma del Morro de Arica"
+                " [Assault and Capture of Cape Arica]"
+            )
 
         # región de Ñuble
-        if self.state == 'NB' and year >= 2014:
+        if self.subdiv == "NB" and year >= 2014:
             # Law 20.678
-            self[date(year, AUG, 20)] =\
-                ("Nacimiento del Prócer de la Independencia"
-                 " (Chillán y Chillán Viejo)"
-                 " [Nativity of Bernardo O'Higgins]")
+            self[date(year, AUG, 20)] = (
+                "Nacimiento del Prócer de la Independencia"
+                " (Chillán y Chillán Viejo)"
+                " [Nativity of Bernardo O'Higgins]"
+            )
 
 
 class CL(Chile):

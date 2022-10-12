@@ -1,27 +1,25 @@
-# -*- coding: utf-8 -*-
-
 #  python-holidays
 #  ---------------
 #  A fast, efficient Python library for generating country, province and state
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date, datetime, timedelta
 
-from dateutil.relativedelta import relativedelta as rd, FR, SA, MO
-
-from holidays.constants import JAN, APR, MAY, SEP
-from holidays.constants import SAT, SUN
-from holidays.holiday_base import HolidayBase
+from dateutil.relativedelta import FR, MO, SA
+from dateutil.relativedelta import relativedelta as rd
 
 # Installation: pip install korean_lunar_calendar
 # URL: https://github.com/usingsky/korean_lunar_calendar_py/
 from korean_lunar_calendar import KoreanLunarCalendar
+
+from holidays.constants import APR, JAN, MAY, SAT, SEP, SUN
+from holidays.holiday_base import HolidayBase
 
 
 class Vietnam(HolidayBase):
@@ -30,8 +28,9 @@ class Vietnam(HolidayBase):
     # http://vbpl.vn/TW/Pages/vbpqen-toanvan.aspx?ItemID=11013 Article.115
     # https://www.timeanddate.com/holidays/vietnam/
 
+    country = "VN"
+
     def __init__(self, **kwargs):
-        self.country = "VN"
         self.korean_cal = KoreanLunarCalendar()
         HolidayBase.__init__(self, **kwargs)
 
@@ -49,13 +48,14 @@ class Vietnam(HolidayBase):
                 self[first_date + rd(days=+1)] = name + " observed"
 
         # Lunar New Year
-        name = ["Vietnamese New Year",           # index: 0
-                "The second day of Tet Holiday",  # index: 1
-                "The third day of Tet Holiday",  # index: 2
-                "The forth day of Tet Holiday",  # index: 3
-                "The fifth day of Tet Holiday",  # index: 4
-                "Vietnamese New Year's Eve",     # index: -1
-                ]
+        name = [
+            "Vietnamese New Year",  # index: 0
+            "The second day of Tet Holiday",  # index: 1
+            "The third day of Tet Holiday",  # index: 2
+            "The forth day of Tet Holiday",  # index: 3
+            "The fifth day of Tet Holiday",  # index: 4
+            "Vietnamese New Year's Eve",  # index: -1
+        ]
         dt = self.get_solar_date(year, 1, 1)
         new_year_date = date(dt.year, dt.month, dt.day)
         if self.observed:
@@ -91,8 +91,11 @@ class Vietnam(HolidayBase):
     # convert lunar calendar date to solar
     def get_solar_date(self, year, month, day):
         self.korean_cal.setLunarDate(year, month, day, False)
-        return date(self.korean_cal.solarYear, self.korean_cal.solarMonth,
-                    self.korean_cal.solarDay)
+        return date(
+            self.korean_cal.solarYear,
+            self.korean_cal.solarMonth,
+            self.korean_cal.solarDay,
+        )
 
 
 class VN(Vietnam):

@@ -1,13 +1,11 @@
-# -*- coding: utf-8 -*-
-
 #  python-holidays
 #  ---------------
 #  A fast, efficient Python library for generating country, province and state
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
@@ -15,7 +13,7 @@ from datetime import date, timedelta
 
 from dateutil.easter import easter
 
-from holidays.constants import JAN, MAY, JUN, AUG, OCT, NOV, DEC
+from holidays.constants import AUG, DEC, JAN, JUN, MAY, NOV, OCT
 from holidays.holiday_base import HolidayBase
 
 
@@ -25,8 +23,9 @@ class Croatia(HolidayBase):
     # https://narodne-novine.nn.hr/clanci/sluzbeni/2019_11_110_2212.html
     # https://en.wikipedia.org/wiki/Public_holidays_in_Croatia
 
+    country = "HR"
+
     def __init__(self, **kwargs):
-        self.country = "HR"
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):

@@ -2,3 +2,4 @@ include *.py
 include *.rst
 include LICENSE
 include CHANGES
+include py.typed

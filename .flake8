@@ -1,4 +1,0 @@
-[flake8]
-ignore = F401,W504
-exclude = __init__.py,*.pyc,tests.py
-paths = ./holidays/

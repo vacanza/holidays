@@ -5,11 +5,15 @@ MANIFEST
 .coverage
 *.egg-info
 *.pyc
-.idea
-.tox/
-.venv/
-docs/_build/
+*.DS_Store
+coverage.xml
+.tox
+.venv
+docs/_build
+docs/source/_build
 
 # IDE Stuff
+.idea
 .vscode/
-*.DS_Store
+*.code-workspace
+Pipfile

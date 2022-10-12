@@ -1,22 +1,21 @@
-# -*- coding: utf-8 -*-
-
 #  python-holidays
 #  ---------------
 #  A fast, efficient Python library for generating country, province and state
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Author:  ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2021
+#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, MO, FR
+from dateutil.relativedelta import FR, MO
+from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, FEB, MAY, JUN, AUG, SEP, NOV, DEC
+from holidays.constants import AUG, DEC, FEB, JAN, JUN, MAY, NOV, SEP
 from holidays.holiday_base import HolidayBase
 
 
@@ -24,8 +23,9 @@ class DominicanRepublic(HolidayBase):
     # http://ojd.org.do/Normativas/LABORAL/Leyes/Ley%20No.%20%20139-97.pdf
     # https://es.wikipedia.org/wiki/Rep%C3%BAblica_Dominicana#D%C3%ADas_festivos_nacionales
 
+    country = "DO"
+
     def __init__(self, **kwargs):
-        self.country = 'DO'
         HolidayBase.__init__(self, **kwargs)
 
     @staticmethod
@@ -68,12 +68,17 @@ class DominicanRepublic(HolidayBase):
 
         # Restoration Day
         # Judgment No. 14 of Feb 20, 2008 of the Supreme Court of Justice
-        restoration_day = date(year, AUG, 16) if ((year - 2000) % 4 == 0) \
-            and year < 2008 else self.__change_day_by_law(date(year, AUG, 16))
+        restoration_day = (
+            date(year, AUG, 16)
+            if ((year - 2000) % 4 == 0) and year < 2008
+            else self.__change_day_by_law(date(year, AUG, 16))
+        )
         self[restoration_day] = "Día de la Restauración [Restoration Day]"
 
         # Our Lady of Mercedes Day
-        self[date(year, SEP, 24)] = "Día de las Mercedes \
+        self[
+            date(year, SEP, 24)
+        ] = "Día de las Mercedes \
             [Our Lady of Mercedes Day]"
 
         # Constitution Day
