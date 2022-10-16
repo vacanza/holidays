@@ -315,7 +315,7 @@ class HolidayBase(Dict[date, str]):
             cast("Mapping[Any, Any]", self), self.__keytransform__(key)
         )
 
-    def __getitem__(self, key: DateLike) -> str:
+    def __getitem__(self, key: DateLike) -> Any:
         if isinstance(key, slice):
             if not key.start or not key.stop:
                 raise ValueError("Both start and stop must be given.")

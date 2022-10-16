@@ -162,7 +162,7 @@ following countries and their subdivisions are available:
      - None
    * - Canada
      - CA
-     - Provinces and territories: AB, BC, MB, NB, NL, NS NT, NU, **ON** (default), PE, QC, SK, YU
+     - Provinces and territories: AB, BC, MB, NB, NL, NS NT, NU, **ON** (default), PE, QC, SK, YT
    * - Chile
      - CL
      - Regions: AI, AN, AP, AR, AT, BI, CO, LI, LL, LR, MA, ML, NB, RM, TA, VS
@@ -330,7 +330,7 @@ following countries and their subdivisions are available:
      - None
    * - Portugal
      - PT
-     - Use subd='Ext' to include holidays most people have off
+     - Use subdiv='Ext' to include holidays most people have off
    * - Romania
      - RO
      - None
