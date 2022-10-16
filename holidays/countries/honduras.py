@@ -71,7 +71,7 @@ class Honduras(HolidayBase):
             # (First Wednesday of October from 12 noon to Saturday 12 noon)
             holiday_name = "Semana Morazánica [Morazan Weekend]"
             first_wednesday = date(year, OCT, 1)
-            if first_wednesday.weekday() != WE:
+            if first_wednesday.weekday() != WE.weekday:
                 first_wednesday += rd(weekday=WE(+1))
             self[first_wednesday] = holiday_name
             self[first_wednesday + rd(days=1)] = holiday_name
