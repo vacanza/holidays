@@ -318,7 +318,7 @@ class HolidayBase(Dict[date, str]):
         )
         return contained
 
-    def __getitem__(self, key: DateLike) -> str:
+    def __getitem__(self, key: DateLike) -> Any:
         if isinstance(key, slice):
             if not key.start or not key.stop:
                 raise ValueError("Both start and stop must be given.")
