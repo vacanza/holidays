@@ -533,10 +533,16 @@ class TestJapan(unittest.TestCase):
             self.assertEqual(self.holidays[date(year, 11, 23)], "勤労感謝の日")
 
     def test_emperors_birthday(self):
-        self.assertIn(date(1989, 12, 23), self.holidays)
-        self.assertIn(date(2017, 12, 23), self.holidays)
+        for year in range(1949, 1989):
+            self.assertIn(date(year, 4, 29), self.holidays)
+            self.assertEqual(self.holidays[date(year, 4, 29)], "天皇誕生日")
+        for year in range(1989, 2019):
+            self.assertIn(date(year, 12, 23), self.holidays)
+            self.assertEqual(self.holidays[date(year, 12, 23)], "天皇誕生日")
+        for year in range(2020, 2051):
+            self.assertIn(date(year, 2, 23), self.holidays)
+            self.assertEqual(self.holidays[date(year, 2, 23)], "天皇誕生日")
         self.assertNotIn(date(2019, 12, 23), self.holidays)
-        self.assertIn(date(2020, 2, 23), self.holidays)
 
     def test_showa_emperor_holidays(self):
         self.assertIn(date(1989, 2, 24), self.holidays)
