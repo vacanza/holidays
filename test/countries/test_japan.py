@@ -26,9 +26,8 @@ class TestJapan(unittest.TestCase):
             holidays.Japan(years=[2100])
 
     def test_new_years_day(self):
-        self.assertIn(date(1949, 1, 1), self.holidays)
-        self.assertIn(date(2017, 1, 1), self.holidays)
-        self.assertIn(date(2050, 1, 1), self.holidays)
+        for year in range(1949, 2050):
+            self.assertIn(date(year, 1, 1), self.holidays)
 
     def test_coming_of_age(self):
         for year in range(1949, 2000):
@@ -95,9 +94,8 @@ class TestJapan(unittest.TestCase):
     def test_foundation_day(self):
         self.assertNotIn(date(1949, 2, 11), self.holidays)
         self.assertNotIn(date(1966, 2, 11), self.holidays)
-        self.assertIn(date(1967, 2, 11), self.holidays)
-        self.assertIn(date(2017, 2, 11), self.holidays)
-        self.assertIn(date(2050, 2, 11), self.holidays)
+        for year in range(1969, 2051):
+            self.assertIn(date(year, 2, 11), self.holidays)
 
     def test_vernal_equinox_day(self):
         self.assertIn(date(1956, 3, 21), self.holidays)
