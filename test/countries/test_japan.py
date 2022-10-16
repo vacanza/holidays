@@ -31,11 +31,62 @@ class TestJapan(unittest.TestCase):
         self.assertIn(date(2050, 1, 1), self.holidays)
 
     def test_coming_of_age(self):
-        self.assertIn(date(1999, 1, 15), self.holidays)
-        self.assertIn(date(2000, 1, 10), self.holidays)
-        self.assertIn(date(2017, 1, 9), self.holidays)
-        self.assertIn(date(2030, 1, 14), self.holidays)
-        self.assertIn(date(2050, 1, 10), self.holidays)
+        for year in range(1949, 2000):
+            self.assertIn(date(year, 1, 15), self.holidays)
+        for dt in (
+            (2000, 1, 10),
+            (2001, 1, 8),
+            (2002, 1, 14),
+            (2003, 1, 13),
+            (2004, 1, 12),
+            (2005, 1, 10),
+            (2006, 1, 9),
+            (2007, 1, 8),
+            (2008, 1, 14),
+            (2009, 1, 12),
+            (2010, 1, 11),
+            (2011, 1, 10),
+            (2012, 1, 9),
+            (2013, 1, 14),
+            (2014, 1, 13),
+            (2015, 1, 12),
+            (2016, 1, 11),
+            (2017, 1, 9),
+            (2018, 1, 8),
+            (2019, 1, 14),
+            (2020, 1, 13),
+            (2021, 1, 11),
+            (2022, 1, 10),
+            (2023, 1, 9),
+            (2024, 1, 8),
+            (2025, 1, 13),
+            (2026, 1, 12),
+            (2027, 1, 11),
+            (2028, 1, 10),
+            (2029, 1, 8),
+            (2030, 1, 14),
+            (2031, 1, 13),
+            (2032, 1, 12),
+            (2033, 1, 10),
+            (2034, 1, 9),
+            (2035, 1, 8),
+            (2036, 1, 14),
+            (2037, 1, 12),
+            (2038, 1, 11),
+            (2039, 1, 10),
+            (2040, 1, 9),
+            (2041, 1, 14),
+            (2042, 1, 13),
+            (2043, 1, 12),
+            (2044, 1, 11),
+            (2045, 1, 9),
+            (2046, 1, 8),
+            (2047, 1, 14),
+            (2048, 1, 13),
+            (2049, 1, 11),
+            (2050, 1, 10),
+        ):
+            self.assertIn(date(*dt), self.holidays)
 
         self.assertNotIn(date(2000, 1, 15), self.holidays)
         self.assertNotIn(date(2017, 1, 15), self.holidays)
