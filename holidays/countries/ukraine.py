@@ -35,7 +35,8 @@ class Ukraine(HolidayBase):
             return
 
         # New Year's Day
-        self[date(year, JAN, 1)] = "Новий рік"
+        if year <= 1929 or year >= 1948:
+            self[date(year, JAN, 1)] = "Новий рік"
 
         # Christmas Day (Julian calendar)
         if year >= 1991:
