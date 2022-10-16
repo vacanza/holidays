@@ -402,13 +402,58 @@ class TestJapan(unittest.TestCase):
             self.assertEqual(self.holidays[date(*dt)], "敬老の日")
 
     def test_autumnal_equinox_day(self):
-        self.assertIn(date(2000, 9, 23), self.holidays)
-        self.assertIn(date(2010, 9, 23), self.holidays)
-        self.assertIn(date(2017, 9, 23), self.holidays)
-        self.assertIn(date(2020, 9, 22), self.holidays)
-        self.assertIn(date(2030, 9, 23), self.holidays)
-        self.assertIn(date(1979, 9, 24), self.holidays)
-        self.assertIn(date(2032, 9, 21), self.holidays)
+        for dt in (
+            (1949, 9, 23),
+            (1950, 9, 23),
+            (1951, 9, 24),
+            (1952, 9, 23),
+            (1953, 9, 23),
+            (1954, 9, 23),
+            (1955, 9, 24),
+            (1956, 9, 23),
+            (1957, 9, 23),
+            (1958, 9, 23),
+            (1959, 9, 24),
+            (1960, 9, 23),
+            (1961, 9, 23),
+            (1962, 9, 23),
+            (1963, 9, 24),
+            (1964, 9, 23),
+            (1965, 9, 23),
+            (1966, 9, 23),
+            (1967, 9, 24),
+            (1968, 9, 23),
+            (1969, 9, 23),
+            (1970, 9, 23),
+            (1971, 9, 24),
+            (1972, 9, 23),
+            (1973, 9, 23),
+            (1974, 9, 23),
+            (1975, 9, 24),
+            (1976, 9, 23),
+            (1977, 9, 23),
+            (1978, 9, 23),
+            (1979, 9, 24),
+            (1980, 9, 23),
+            (1981, 9, 23),
+            (1982, 9, 23),
+            (1983, 9, 23),
+            (1984, 9, 23),
+            (1985, 9, 23),
+            (1986, 9, 23),
+            (1987, 9, 23),
+            (1988, 9, 23),
+            (1989, 9, 23),
+            (1990, 9, 23),
+            (1991, 9, 23),
+            (1992, 9, 23),
+            (1993, 9, 23),
+            (1994, 9, 23),
+            (1995, 9, 23),
+            (1996, 9, 23),
+        ):
+            self.assertIn(date(*dt), self.holidays)
+            self.assertEqual(self.holidays[date(*dt)], "秋分の日")
 
     def test_health_and_sports_day(self):
         self.assertNotIn(date(1965, 10, 10), self.holidays)
