@@ -456,15 +456,71 @@ class TestJapan(unittest.TestCase):
             self.assertEqual(self.holidays[date(*dt)], "秋分の日")
 
     def test_health_and_sports_day(self):
-        self.assertNotIn(date(1965, 10, 10), self.holidays)
-        self.assertIn(date(1966, 10, 10), self.holidays)
-        self.assertIn(date(1999, 10, 10), self.holidays)
+        for year in range(1949, 1966):
+            self.assertNotIn(date(year, 10, 10), self.holidays)
+        for year in range(1966, 2000):
+            self.assertIn(date(year, 10, 10), self.holidays)
+            self.assertEqual(self.holidays[date(year, 10, 10)], "体育の日")
+        for dt in (
+            (2000, 10, 9),
+            (2001, 10, 8),
+            (2002, 10, 14),
+            (2003, 10, 13),
+            (2004, 10, 11),
+            (2005, 10, 10),
+            (2006, 10, 9),
+            (2007, 10, 8),
+            (2008, 10, 13),
+            (2009, 10, 12),
+            (2010, 10, 11),
+            (2011, 10, 10),
+            (2012, 10, 8),
+            (2013, 10, 14),
+            (2014, 10, 13),
+            (2015, 10, 12),
+            (2016, 10, 10),
+            (2017, 10, 9),
+            (2018, 10, 8),
+            (2019, 10, 14),
+        ):
+            self.assertIn(date(*dt), self.holidays)
+            self.assertEqual(self.holidays[date(*dt)], "体育の日")
+        for dt in (
+            (2020, 7, 24),
+            (2021, 7, 23),
+            (2022, 10, 10),
+            (2023, 10, 9),
+            (2024, 10, 14),
+            (2025, 10, 13),
+            (2026, 10, 12),
+            (2027, 10, 11),
+            (2028, 10, 9),
+            (2029, 10, 8),
+            (2030, 10, 14),
+            (2031, 10, 13),
+            (2032, 10, 11),
+            (2033, 10, 10),
+            (2034, 10, 9),
+            (2035, 10, 8),
+            (2036, 10, 13),
+            (2037, 10, 12),
+            (2038, 10, 11),
+            (2039, 10, 10),
+            (2040, 10, 8),
+            (2041, 10, 14),
+            (2042, 10, 13),
+            (2043, 10, 12),
+            (2044, 10, 10),
+            (2045, 10, 9),
+            (2046, 10, 8),
+            (2047, 10, 14),
+            (2048, 10, 12),
+            (2049, 10, 11),
+            (2050, 10, 10),
+        ):
+            self.assertIn(date(*dt), self.holidays)
+            self.assertEqual(self.holidays[date(*dt)], "スポーツの日")
         self.assertNotIn(date(2000, 10, 10), self.holidays)
-        self.assertIn(date(2000, 10, 9), self.holidays)
-        self.assertIn(date(2017, 10, 9), self.holidays)
-        self.assertIn(date(2020, 7, 24), self.holidays)
-        self.assertIn(date(2021, 7, 23), self.holidays)
-        self.assertIn(date(2050, 10, 10), self.holidays)
 
     def test_culture_day(self):
         self.assertIn(date(1950, 11, 3), self.holidays)
