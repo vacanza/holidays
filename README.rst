@@ -330,7 +330,7 @@ following countries and their subdivisions are available:
      - None
    * - Portugal
      - PT
-     - Use subd='Ext' to include holidays most people have off
+     - Use subdiv='Ext' to include holidays most people have off
    * - Romania
      - RO
      - None
