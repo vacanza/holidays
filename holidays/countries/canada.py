@@ -264,20 +264,16 @@ class Canada(HolidayBase):
         # Christmas Day
         if year >= 1867:
             name = "Christmas Day"
-            name_observed = name + " (Observed)"
+            self[date(year, DEC, 25)] = name
             if self.observed and date(year, DEC, 25).weekday() in WEEKEND:
-                self[date(year, DEC, 27)] = name_observed
-            else:
-                self[date(year, DEC, 25)] = name
+                self[date(year, DEC, 27)] = name + " (Observed)"
 
         # Boxing Day
         if year >= 1867:
             name = "Boxing Day"
-            name_observed = name + " (Observed)"
+            self[date(year, DEC, 26)] = name
             if self.observed and date(year, DEC, 26).weekday() in WEEKEND:
-                self[date(year, DEC, 28)] = name_observed
-            else:
-                self[date(year, DEC, 26)] = name
+                self[date(year, DEC, 28)] = name + " (Observed)"
 
 
 class CA(Canada):

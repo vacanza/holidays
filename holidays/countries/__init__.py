@@ -37,6 +37,7 @@ from .djibouti import DJ, DJI, Djibouti
 from .dominican_republic import DO, DOM, DominicanRepublic
 from .egypt import EG, EGY, Egypt
 from .estonia import EE, EST, Estonia
+from .eswatini import SZ, SZW, Eswatini, Swaziland
 from .ethiopia import ET, ETH, Ethiopia
 from .finland import FI, FIN, Finland
 from .france import FR, FRA, France
@@ -89,7 +90,6 @@ from .slovakia import SK, SVK, Slovakia
 from .slovenia import SI, SVN, Slovenia
 from .south_africa import ZA, ZAF, SouthAfrica
 from .spain import ES, ESP, Spain
-from .swaziland import SZ, SZW, Swaziland
 from .sweden import SE, SWE, Sweden
 from .switzerland import CH, CHE, Switzerland
 from .taiwan import TW, TWN, Taiwan
