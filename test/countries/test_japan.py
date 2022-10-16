@@ -344,14 +344,62 @@ class TestJapan(unittest.TestCase):
                 self.assertEqual(self.holidays[date(year, 8, 11)], "山の日")
 
     def test_respect_for_the_aged_day(self):
-        self.assertNotIn(date(1965, 9, 15), self.holidays)
-        self.assertIn(date(1966, 9, 15), self.holidays)
-        self.assertIn(date(2002, 9, 15), self.holidays)
-        self.assertIn(date(2003, 9, 15), self.holidays)
-        self.assertNotIn(date(2004, 9, 15), self.holidays)
-        self.assertIn(date(2004, 9, 20), self.holidays)
-        self.assertIn(date(2017, 9, 18), self.holidays)
-        self.assertIn(date(2050, 9, 19), self.holidays)
+        for year in range(1949, 1966):
+            self.assertNotIn(date(year, 9, 15), self.holidays)
+        for year in range(1966, 2004):
+            self.assertIn(date(year, 9, 15), self.holidays)
+            self.assertEqual(self.holidays[date(year, 9, 15)], "敬老の日")
+        for dt in (
+            (2004, 9, 20),
+            (2005, 9, 19),
+            (2006, 9, 18),
+            (2007, 9, 17),
+            (2008, 9, 15),
+            (2009, 9, 21),
+            (2010, 9, 20),
+            (2011, 9, 19),
+            (2012, 9, 17),
+            (2013, 9, 16),
+            (2014, 9, 15),
+            (2015, 9, 21),
+            (2016, 9, 19),
+            (2017, 9, 18),
+            (2018, 9, 17),
+            (2019, 9, 16),
+            (2020, 9, 21),
+            (2021, 9, 20),
+            (2022, 9, 19),
+            (2023, 9, 18),
+            (2024, 9, 16),
+            (2025, 9, 15),
+            (2026, 9, 21),
+            (2027, 9, 20),
+            (2028, 9, 18),
+            (2029, 9, 17),
+            (2030, 9, 16),
+            (2031, 9, 15),
+            (2032, 9, 20),
+            (2033, 9, 19),
+            (2034, 9, 18),
+            (2035, 9, 17),
+            (2036, 9, 15),
+            (2037, 9, 21),
+            (2038, 9, 20),
+            (2039, 9, 19),
+            (2040, 9, 17),
+            (2041, 9, 16),
+            (2042, 9, 15),
+            (2043, 9, 21),
+            (2044, 9, 19),
+            (2045, 9, 18),
+            (2046, 9, 17),
+            (2047, 9, 16),
+            (2048, 9, 21),
+            (2049, 9, 20),
+            (2050, 9, 19),
+        ):
+            self.assertIn(date(*dt), self.holidays)
+            self.assertEqual(self.holidays[date(*dt)], "敬老の日")
 
     def test_autumnal_equinox_day(self):
         self.assertIn(date(2000, 9, 23), self.holidays)
