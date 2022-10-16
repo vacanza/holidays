@@ -330,13 +330,18 @@ class TestJapan(unittest.TestCase):
         self.assertNotIn(date(1950, 7, 20), self.holidays)
 
     def test_mountain_day(self):
-        self.assertNotIn(date(1950, 8, 11), self.holidays)
-        self.assertNotIn(date(2015, 8, 11), self.holidays)
-        self.assertIn(date(2016, 8, 11), self.holidays)
-        self.assertIn(date(2017, 8, 11), self.holidays)
-        self.assertIn(date(2020, 8, 10), self.holidays)
-        self.assertIn(date(2021, 8, 8), self.holidays)
-        self.assertIn(date(2050, 8, 11), self.holidays)
+        for year in range(1949, 2016):
+            self.assertNotIn(date(year, 8, 11), self.holidays)
+        for year in range(2016, 2051):
+            if year == 2020:
+                self.assertIn(date(year, 8, 10), self.holidays)
+                self.assertEqual(self.holidays[date(year, 8, 10)], "山の日")
+            elif year == 2021:
+                self.assertIn(date(year, 8, 8), self.holidays)
+                self.assertEqual(self.holidays[date(year, 8, 8)], "山の日")
+            else:
+                self.assertIn(date(year, 8, 11), self.holidays)
+                self.assertEqual(self.holidays[date(year, 8, 11)], "山の日")
 
     def test_respect_for_the_aged_day(self):
         self.assertNotIn(date(1965, 9, 15), self.holidays)
