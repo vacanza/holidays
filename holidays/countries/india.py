@@ -25,7 +25,7 @@ class India(HolidayBase):
     # https://vahan.parivahan.gov.in/vahan4dashboard/
 
     country = "IN"
-    subdivisions = [
+    subdivisions = (
         "AN",  # Andaman and Nicobar Islands
         "AP",  # Andhra Pradesh
         "AR",  # Arunachal Pradesh
@@ -63,7 +63,7 @@ class India(HolidayBase):
         "UK",  # Uttarakhand
         "UP",  # Uttar Pradesh
         "WB",  # West Bengal
-    ]
+    )
 
     def __init__(self, **kwargs):
         HolidayBase.__init__(self, **kwargs)

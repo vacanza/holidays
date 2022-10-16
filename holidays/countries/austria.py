@@ -21,7 +21,7 @@ from holidays.holiday_base import HolidayBase
 
 class Austria(HolidayBase):
     country = "AT"
-    subdivisions = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    subdivisions = ("1", "2", "3", "4", "5", "6", "7", "8", "9")
 
     def __init__(self, **kwargs):
         if isinstance(kwargs.get("subdiv"), int):

@@ -22,7 +22,7 @@ class Portugal(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Portugal
 
     country = "PT"
-    subdivisions = ["Ext"]
+    subdivisions = ("Ext",)
 
     def __init__(self, **kwargs):
         HolidayBase.__init__(self, **kwargs)

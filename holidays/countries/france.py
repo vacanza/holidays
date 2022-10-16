@@ -34,20 +34,20 @@ class France(HolidayBase):
     """
 
     country = "FR"
-    subdivisions = [
-        "Métropole",
+    subdivisions = (
         "Alsace-Moselle",
         "Guadeloupe",
         "Guyane",
+        "La Réunion",
         "Martinique",
         "Mayotte",
+        "Métropole",
         "Nouvelle-Calédonie",
-        "La Réunion",
         "Polynésie Française",
         "Saint-Barthélémy",
         "Saint-Martin",
         "Wallis-et-Futuna",
-    ]
+    )
 
     def __init__(self, **kwargs):
         # Default subdivision to Métropole; prov for backwards compatibility

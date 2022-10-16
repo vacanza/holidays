@@ -35,7 +35,7 @@ from holidays.holiday_base import HolidayBase
 
 class Australia(HolidayBase):
     country = "AU"
-    subdivisions = ["ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"]
+    subdivisions = ("ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA")
 
     def __init__(self, **kwargs):
         HolidayBase.__init__(self, **kwargs)

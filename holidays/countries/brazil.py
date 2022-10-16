@@ -37,20 +37,20 @@ class Brazil(HolidayBase):
     """
 
     country = "BR"
-    subdivisions = [
+    subdivisions = (
         "AC",
         "AL",
-        "AP",
         "AM",
+        "AP",
         "BA",
         "CE",
         "DF",
         "ES",
         "GO",
         "MA",
-        "MT",
-        "MS",
         "MG",
+        "MS",
+        "MT",
         "PA",
         "PB",
         "PE",
@@ -58,14 +58,14 @@ class Brazil(HolidayBase):
         "PR",
         "RJ",
         "RN",
-        "RS",
         "RO",
         "RR",
+        "RS",
         "SC",
-        "SP",
         "SE",
+        "SP",
         "TO",
-    ]
+    )
 
     def __init__(self, **kwargs):
         HolidayBase.__init__(self, **kwargs)

@@ -44,7 +44,6 @@ class Ireland(HolidayBase):
     """
 
     country = "IE"
-    subdivisions: List[str] = []
 
     def __init__(self, **kwargs):
         HolidayBase.__init__(self, **kwargs)

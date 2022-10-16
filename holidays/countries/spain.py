@@ -36,7 +36,7 @@ from holidays.utils import _islamic_to_gre
 
 class Spain(HolidayBase):
     country = "ES"
-    subdivisions = [
+    subdivisions = (
         "AN",
         "AR",
         "AS",
@@ -56,7 +56,7 @@ class Spain(HolidayBase):
         "PV",
         "RI",
         "VC",
-    ]
+    )
 
     def __init__(self, **kwargs):
         HolidayBase.__init__(self, **kwargs)

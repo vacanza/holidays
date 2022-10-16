@@ -164,7 +164,7 @@ The other form of addition is also available:
    >>> north_america += holidays.US()
    >>> north_america += holidays.MX()
    >>> north_america.country
-   ['CA', 'US', 'MX']
+   ('CA', 'US', 'MX')
 
 We can even get a set of holidays that include all the subdivision-specific
 holidays using the built-in :py:func:`sum` function:
@@ -173,8 +173,8 @@ holidays using the built-in :py:func:`sum` function:
 
    >>> a = sum([holidays.CA(subdiv=x) for x in holidays.CA.subdivisions])
    >>> a.subdiv
-   ['AB', 'BC', 'MB', 'NB', 'NL', 'NS', 'NT', 'NU', 'ON', 'PE', 'QC', 'SK',
-    'YU']
+   ('AB', 'BC', 'MB', 'NB', 'NL', 'NS', 'NT', 'NU', 'ON', 'PE', 'QC', 'SK',
+    'YU')
 
 
 Creating custom holidays (or augmenting existing ones with private ones)

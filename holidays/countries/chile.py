@@ -42,7 +42,7 @@ class Chile(HolidayBase):
     country = "CL"
 
     # ISO 3166-2 codes for the principal subdivisions, called regions
-    subdivisions = [
+    subdivisions = (
         "AI",
         "AN",
         "AP",
@@ -59,7 +59,7 @@ class Chile(HolidayBase):
         "RM",
         "TA",
         "VS",
-    ]
+    )
 
     def __init__(self, **kwargs):
         HolidayBase.__init__(self, **kwargs)

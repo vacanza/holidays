@@ -46,7 +46,7 @@ class UnitedKingdom(HolidayBase):
     # Look at _country_specific() method for country specific behavior.
 
     country = "GB"
-    subdivisions = ["UK", "England", "Northern Ireland", "Scotland", "Wales"]
+    subdivisions = ("England", "Northern Ireland", "Scotland", "UK", "Wales")
 
     def __init__(self, **kwargs: Any) -> None:
         # default subdiv to UK; state for backwards compatibility

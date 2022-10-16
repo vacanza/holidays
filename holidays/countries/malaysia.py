@@ -38,24 +38,24 @@ from holidays.utils import _ChineseLuniSolar, _islamic_to_gre
 
 class Malaysia(HolidayBase):
     country = "MY"
-    subdivisions = [
+    subdivisions = (
         "JHR",
         "KDH",
         "KTN",
+        "KUL",
+        "LBN",
         "MLK",
         "NSN",
         "PHG",
-        "PRK",
+        "PJY",
         "PLS",
         "PNG",
+        "PRK",
         "SBH",
-        "SWK",
         "SGR",
+        "SWK",
         "TRG",
-        "KUL",
-        "LBN",
-        "PJY",
-    ]
+    )
 
     def __init__(
         self,

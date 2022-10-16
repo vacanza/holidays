@@ -21,13 +21,13 @@ from holidays.holiday_base import HolidayBase
 
 class Switzerland(HolidayBase):
     country = "CH"
-    subdivisions = [
+    subdivisions = (
         "AG",
-        "AR",
         "AI",
+        "AR",
+        "BE",
         "BL",
         "BS",
-        "BE",
         "FR",
         "GE",
         "GL",
@@ -39,8 +39,8 @@ class Switzerland(HolidayBase):
         "OW",
         "SG",
         "SH",
-        "SZ",
         "SO",
+        "SZ",
         "TG",
         "TI",
         "UR",
@@ -48,7 +48,7 @@ class Switzerland(HolidayBase):
         "VS",
         "ZG",
         "ZH",
-    ]
+    )
 
     def __init__(self, **kwargs):
         HolidayBase.__init__(self, **kwargs)

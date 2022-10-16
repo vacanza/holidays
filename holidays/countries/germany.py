@@ -55,25 +55,25 @@ class Germany(HolidayBase):
     """
 
     country = "DE"
-    subdivisions = [
+    subdivisions = (
+        "BB",
+        "BE",
         "BW",
         "BY",
         "BYP",
-        "BE",
-        "BB",
         "HB",
-        "HH",
         "HE",
+        "HH",
         "MV",
         "NI",
         "NW",
         "RP",
+        "SH",
         "SL",
         "SN",
         "ST",
-        "SH",
         "TH",
-    ]
+    )
 
     def __init__(self, **kwargs):
         HolidayBase.__init__(self, **kwargs)

@@ -216,7 +216,7 @@ class TestBasics(unittest.TestCase):
         na = holidays.CA()
         na += holidays.US()
         na += holidays.MX()
-        self.assertEqual(na.country, ["CA", "US", "MX"])
+        self.assertEqual(na.country, ("CA", "US", "MX"))
         self.assertIn("2014-07-04", na)
         self.assertIn("2014-07-04", na)
         self.assertIn("2015-07-04", na)
@@ -246,7 +246,7 @@ class TestBasics(unittest.TestCase):
         )
         self.assertIn("2015-02-09", provs)
         self.assertIn("2015-02-16", provs)
-        self.assertEqual(provs.subdiv, ["ON", "BC"])
+        self.assertEqual(provs.subdiv, ("ON", "BC"))
         a = sum(holidays.CA(subdiv=x) for x in holidays.CA.subdivisions)
         self.assertEqual(a.country, "CA")
         self.assertEqual(a.subdiv, holidays.CA.subdivisions)
@@ -305,9 +305,13 @@ class TestBasics(unittest.TestCase):
         self.assertEqual(na.get_list(date(1969, 1, 3)), [])
 
     def test_list_supported_countries(self):
-        self.assertIn("AR", holidays.list_supported_countries())
-        self.assertIn("ZA", holidays.list_supported_countries())
-        self.assertIn("CA", holidays.list_supported_countries()["US"])
+        supported_countries = holidays.list_supported_countries()
+        self.assertIn("AR", supported_countries)
+        self.assertIn("ZA", supported_countries)
+
+        us_subdivisions = supported_countries["US"]
+        self.assertIn("CA", us_subdivisions)
+        self.assertTrue(isinstance(us_subdivisions, tuple))
 
     def test_list_supported_financial(self):
         self.assertIn("ECB", holidays.list_supported_financial())

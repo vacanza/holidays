@@ -39,7 +39,7 @@ class Bolivia(HolidayBase):
     """
 
     country = "BO"
-    subdivisions = [
+    subdivisions = (
         "B",
         "C",
         "H",
@@ -49,7 +49,7 @@ class Bolivia(HolidayBase):
         "P",
         "S",
         "T",
-    ]
+    )
 
     def _populate(self, year):
         # New Year's Day.

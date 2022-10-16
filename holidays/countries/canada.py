@@ -38,7 +38,7 @@ from holidays.holiday_base import HolidayBase
 
 class Canada(HolidayBase):
     country = "CA"
-    subdivisions = [
+    subdivisions = (
         "AB",
         "BC",
         "MB",
@@ -52,7 +52,7 @@ class Canada(HolidayBase):
         "QC",
         "SK",
         "YT",
-    ]
+    )
 
     def __init__(self, **kwargs):
         # Default subdivision to ON; prov for backwards compatibility

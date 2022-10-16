@@ -36,35 +36,35 @@ from holidays.holiday_base import HolidayBase
 
 class NewZealand(HolidayBase):
     country = "NZ"
-    subdivisions = [
+    subdivisions = (
         # https://en.wikipedia.org/wiki/ISO_3166-2:NZ
         "AUK",  # Auckland / Tāmaki-makau-rau
-        # "BOP",  # Bay of Plenty / Te Moana a Toi Te Huatahi
         "CAN",  # Canterbury / Waitaha
-        # "GIS",  # Gisborne / Tūranga nui a Kiwa
+        "CIT",  # Chatham Islands Territory / Wharekauri
         "HKB",  # Hawke's Bay / Te Matau a Māui
         "MBH",  # Marlborough
-        # "MWT",  # Manawatu-Wanganui
         "NSN",  # Nelson / Whakatū
         "NTL",  # Northland / Te Tai tokerau
         "OTA",  # Otago / Ō Tākou
+        "South Canterbury",
         "STL",  # Southland / Murihiku
-        # "TAS",  # Tasman
         "TKI",  # Taranaki
-        # "WKO",  # Waikato
         "WGN",  # Wellington / Te Whanga-nui-a-Tara
         "WTC",  # West Coast / Te Taihau ā uru
-        "CIT",  # Chatham Islands Territory / Wharekauri
-        "South Canterbury",
-    ]
-    _deprecated_subdivisions = [
+        # "BOP",  # Bay of Plenty / Te Moana a Toi Te Huatahi
+        # "GIS",  # Gisborne / Tūranga nui a Kiwa
+        # "MWT",  # Manawatu-Wanganui
+        # "TAS",  # Tasman
+        # "WKO",  # Waikato
+    )
+    _deprecated_subdivisions = (
         "Auckland",
         "Canterbury",
         "Chatham Islands",
         "Hawke's Bay",
         "Marlborough",
-        "Northland",
         "Nelson",
+        "Northland",
         "Otago",
         "South Canterbury",
         "Southland",
@@ -74,7 +74,7 @@ class NewZealand(HolidayBase):
         "West Coast",
         "Westland",  # Correct name is West Coast
         "WTL",  # Correct code is WTC
-    ]
+    )
 
     def __init__(self, **kwargs):
         HolidayBase.__init__(self, **kwargs)

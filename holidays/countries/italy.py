@@ -43,10 +43,11 @@ class Italy(HolidayBase):
     # In that case if you use the 2 char id you'll take the first Santo
     # Patrono defined. If you want one specific you'll have to use
     # the full name of the city like "Andria" instead of "BT".
-    subdivisions = [
+    subdivisions = (
         "AG",
         "AL",
         "AN",
+        "Andria",
         "AO",
         "AP",
         "AQ",
@@ -54,6 +55,7 @@ class Italy(HolidayBase):
         "AT",
         "AV",
         "BA",
+        "Barletta",
         "BG",
         "BI",
         "BL",
@@ -62,13 +64,11 @@ class Italy(HolidayBase):
         "BR",
         "BS",
         "BT",
-        "Barletta",
-        "Andria",
-        "Trani",
         "BZ",
         "CA",
         "CB",
         "CE",
+        "Cesena",
         "CH",
         "CL",
         "CN",
@@ -79,12 +79,11 @@ class Italy(HolidayBase):
         "CZ",
         "EN",
         "FC",
-        "Forlì",
-        "Cesena",
         "FE",
         "FG",
         "FI",
         "FM",
+        "Forlì",
         "FR",
         "GE",
         "GO",
@@ -114,6 +113,7 @@ class Italy(HolidayBase):
         "PC",
         "PD",
         "PE",
+        "Pesaro",
         "PG",
         "PI",
         "PN",
@@ -121,8 +121,6 @@ class Italy(HolidayBase):
         "PR",
         "PT",
         "PU",
-        "Pesaro",
-        "Urbino",
         "PV",
         "PZ",
         "RA",
@@ -147,9 +145,11 @@ class Italy(HolidayBase):
         "TO",
         "TP",
         "TR",
+        "Trani",
         "TS",
         "TV",
         "UD",
+        "Urbino",
         "VA",
         "VB",
         "VC",
@@ -158,7 +158,7 @@ class Italy(HolidayBase):
         "VR",
         "VT",
         "VV",
-    ]
+    )
 
     def __init__(self, **kwargs):
         HolidayBase.__init__(self, **kwargs)

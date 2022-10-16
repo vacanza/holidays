@@ -170,7 +170,7 @@ class HolidayBase(Dict[date, str]):
     """The country's ISO 3166-1 alpha-2 code."""
     market: str
     """The market's ISO 3166-1 alpha-2 code."""
-    subdivisions: List[str] = []
+    subdivisions: Tuple[str, ...] = ()
     """The subdivisions supported for this country (see documentation)."""
     years: Set[int]
     """The years calculated."""
@@ -181,7 +181,7 @@ class HolidayBase(Dict[date, str]):
     """Whether dates when public holiday are observed are included."""
     subdiv: Optional[str] = None
     """The subdiv requested."""
-    _deprecated_subdivisions: List[str] = []
+    _deprecated_subdivisions: Tuple[str, ...] = ()
     """Other subdivisions whose names are deprecated or aliases of the official
     ones."""
 
@@ -662,7 +662,7 @@ country_holidays('CA') + country_holidays('MX')
         # join country and subdivisions data
         # TODO this way makes no sense: joining Italy Catania (IT, CA) with
         # USA Mississippi (US, MS) and USA Michigan (US, MI) yields
-        # country=["IT", "US"] and subdiv=["CA", "MS", "MI"], which could very
+        # country=("IT", "US") and subdiv=("CA", "MS", "MI"), which could very
         # well be California and Messina and Milano, or Catania, Mississippi
         # and Milano, or ... you get the picture.
         # Same goes when countries and markets are being mixed (working, yet
@@ -675,13 +675,13 @@ country_holidays('CA') + country_holidays('MX')
             ):
                 a1 = (
                     getattr(h1, attr)
-                    if isinstance(getattr(h1, attr), list)
-                    else [getattr(h1, attr)]
+                    if isinstance(getattr(h1, attr), tuple)
+                    else (getattr(h1, attr),)
                 )
                 a2 = (
                     getattr(h2, attr)
-                    if isinstance(getattr(h2, attr), list)
-                    else [getattr(h2, attr)]
+                    if isinstance(getattr(h2, attr), tuple)
+                    else (getattr(h2, attr),)
                 )
                 kwargs[attr] = a1 + a2
             else:
