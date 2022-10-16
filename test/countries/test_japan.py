@@ -206,9 +206,12 @@ class TestJapan(unittest.TestCase):
         self.assertIn(date(2092, 3, 19), self.holidays)
 
     def test_showa_day(self):
-        self.assertIn(date(1950, 4, 29), self.holidays)
-        self.assertIn(date(1990, 4, 29), self.holidays)
-        self.assertIn(date(2010, 4, 29), self.holidays)
+        for year in range(1949, 2007):
+            self.assertIn(date(year, 4, 29), self.holidays)
+            self.assertNotEqual(self.holidays[date(year, 4, 29)], "昭和の日")
+        for year in range(2007, 2051):
+            self.assertIn(date(year, 4, 29), self.holidays)
+            self.assertEqual(self.holidays[date(year, 4, 29)], "昭和の日")
 
     def test_constitution_memorial_day(self):
         self.assertIn(date(1950, 5, 3), self.holidays)
