@@ -268,13 +268,66 @@ class TestJapan(unittest.TestCase):
             self.assertEqual(self.holidays[date(year, 5, 5)], "こどもの日")
 
     def test_marine_day(self):
+        for dt in (
+            (1996, 7, 20),
+            (1997, 7, 20),
+            (1998, 7, 20),
+            (1999, 7, 20),
+            (2000, 7, 20),
+            (2001, 7, 20),
+            (2002, 7, 20),
+            (2003, 7, 21),
+            (2004, 7, 19),
+            (2005, 7, 18),
+            (2006, 7, 17),
+            (2007, 7, 16),
+            (2008, 7, 21),
+            (2009, 7, 20),
+            (2010, 7, 19),
+            (2011, 7, 18),
+            (2012, 7, 16),
+            (2013, 7, 15),
+            (2014, 7, 21),
+            (2015, 7, 20),
+            (2016, 7, 18),
+            (2017, 7, 17),
+            (2018, 7, 16),
+            (2019, 7, 15),
+            (2020, 7, 23),
+            (2021, 7, 22),
+            (2022, 7, 18),
+            (2023, 7, 17),
+            (2024, 7, 15),
+            (2025, 7, 21),
+            (2026, 7, 20),
+            (2027, 7, 19),
+            (2028, 7, 17),
+            (2029, 7, 16),
+            (2030, 7, 15),
+            (2031, 7, 21),
+            (2032, 7, 19),
+            (2033, 7, 18),
+            (2034, 7, 17),
+            (2035, 7, 16),
+            (2036, 7, 21),
+            (2037, 7, 20),
+            (2038, 7, 19),
+            (2039, 7, 18),
+            (2040, 7, 16),
+            (2041, 7, 15),
+            (2042, 7, 21),
+            (2043, 7, 20),
+            (2044, 7, 18),
+            (2045, 7, 17),
+            (2046, 7, 16),
+            (2047, 7, 15),
+            (2048, 7, 20),
+            (2049, 7, 19),
+            (2050, 7, 18),
+        ):
+            self.assertIn(date(*dt), self.holidays)
+            self.assertEqual(self.holidays[date(*dt)], "海の日")
         self.assertNotIn(date(1950, 7, 20), self.holidays)
-        self.assertIn(date(2000, 7, 20), self.holidays)
-        self.assertIn(date(2003, 7, 21), self.holidays)
-        self.assertIn(date(2017, 7, 17), self.holidays)
-        self.assertIn(date(2020, 7, 23), self.holidays)
-        self.assertIn(date(2021, 7, 22), self.holidays)
-        self.assertIn(date(2050, 7, 18), self.holidays)
 
     def test_mountain_day(self):
         self.assertNotIn(date(1950, 8, 11), self.holidays)
