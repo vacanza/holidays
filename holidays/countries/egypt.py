@@ -13,8 +13,8 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from holidays.constants import FRI, SAT
-from holidays.constants import JAN, APR, MAY, JUN, JUL, OCT
+
+from holidays.constants import APR, FRI, JAN, JUL, JUN, MAY, OCT, SAT
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
 

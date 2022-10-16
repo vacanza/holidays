@@ -1,3 +1,16 @@
+Version 0.17
+============
+
+Released ?????? ??, ????
+
+- Added isort to pre-commit #722 (arkid15r)
+- Get item multiple return type fix (dr-p) TODO: possible refactor required
+- Sort overlapping holiday names #713 (kasya, arkid15r)
+- Swaziland deprecation, replaced by Eswatini #721 (bkthomps)
+- Singapore fix - avoid multiple adds on in lieu holidays #717 (amas01)
+- Canada fixes #715, #733 (bkthomps, MichaelThessel)
+- Honduras fix #720 (bkthomps)
+
 Version 0.16
 ============
 

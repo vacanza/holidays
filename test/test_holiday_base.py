@@ -260,7 +260,7 @@ class TestBasics(unittest.TestCase):
         )
         na = holidays.MX() + holidays.CA() + holidays.US()
         self.assertEqual(
-            na.get(date(1969, 12, 25)), "Navidad [Christmas], Christmas Day"
+            na.get(date(1969, 12, 25)), "Christmas Day, Navidad [Christmas]"
         )
 
     def test_get_list(self):
@@ -269,12 +269,12 @@ class TestBasics(unittest.TestCase):
         wild = westland + chathams
         self.assertEqual(
             wild[date(1969, 12, 1)],
-            ("West Coast Anniversary Day, Chatham Islands Anniversary Day"),
+            ("Chatham Islands Anniversary Day, West Coast Anniversary Day"),
         )
 
         self.assertEqual(
             wild.get_list(date(1969, 12, 1)),
-            ["West Coast Anniversary Day", "Chatham Islands Anniversary Day"],
+            ["Chatham Islands Anniversary Day", "West Coast Anniversary Day"],
         )
         self.assertEqual(wild.get_list(date(1969, 1, 1)), ["New Year's Day"])
         self.assertEqual(

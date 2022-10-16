@@ -13,10 +13,9 @@
 
 import inspect
 import warnings
+from datetime import date, timedelta
 from functools import lru_cache
 from typing import Dict, Iterable, List, Optional, Union
-
-from datetime import date, timedelta
 
 from hijri_converter import convert
 

@@ -10,13 +10,12 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-
 from datetime import date
 
 import holidays
 
 
-class TestSwaziland(unittest.TestCase):
+class TestEswatini(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.SZ()
 
