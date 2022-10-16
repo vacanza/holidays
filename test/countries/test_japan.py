@@ -523,9 +523,9 @@ class TestJapan(unittest.TestCase):
         self.assertNotIn(date(2000, 10, 10), self.holidays)
 
     def test_culture_day(self):
-        self.assertIn(date(1950, 11, 3), self.holidays)
-        self.assertIn(date(2000, 11, 3), self.holidays)
-        self.assertIn(date(2050, 11, 3), self.holidays)
+        for year in range(1949, 2050):
+            self.assertIn(date(year, 11, 3), self.holidays)
+            self.assertEqual(self.holidays[date(year, 11, 3)], "文化の日")
 
     def test_labour_thanks_giving_day(self):
         self.assertIn(date(1950, 11, 23), self.holidays)
