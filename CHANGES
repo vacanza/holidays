@@ -3,6 +3,7 @@ Version 0.17
 
 Released ?????? ??, ????
 
+- Support for Bosnia and Herzegovina #683, #725 (kasya, arkid15r)
 - Added isort to pre-commit #722 (arkid15r)
 - Get item multiple return type fix (dr-p) TODO: possible refactor required
 - Sort overlapping holiday names #713 (kasya, arkid15r)
