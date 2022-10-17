@@ -274,7 +274,7 @@ following countries and their subdivisions are available:
      - None
    * - Liechtenstein
      - LI
-     - LIE
+     - None
    * - Lithuania
      - LT
      - None
