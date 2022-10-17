@@ -12,21 +12,22 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, FR, TH
+from dateutil.relativedelta import FR, TH
+from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import WEEKEND
 from holidays.constants import (
-    JAN,
-    FEB,
-    MAR,
     APR,
-    MAY,
-    JUN,
-    JUL,
     AUG,
-    OCT,
-    NOV,
     DEC,
+    FEB,
+    JAN,
+    JUL,
+    JUN,
+    MAR,
+    MAY,
+    NOV,
+    OCT,
+    WEEKEND,
 )
 from holidays.holiday_base import HolidayBase
 

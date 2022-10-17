@@ -11,21 +11,22 @@
 
 from datetime import date
 
-from dateutil.relativedelta import relativedelta as rd, MO
+from dateutil.relativedelta import MO
+from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import (
-    JAN,
-    FEB,
-    MAR,
     APR,
-    MAY,
-    JUN,
-    JUL,
     AUG,
-    SEP,
-    OCT,
-    NOV,
     DEC,
+    FEB,
+    JAN,
+    JUL,
+    JUN,
+    MAR,
+    MAY,
+    NOV,
+    OCT,
+    SEP,
 )
 from holidays.holiday_base import HolidayBase
 
@@ -248,7 +249,7 @@ class Japan(HolidayBase):
                 12,
                 (1979, 1990, 1996, 2001, 2007, 2018, 2024, 2029, 2035, 2046),
             ),
-            (2, 24, (2020,)),
+            (2, 24, (2020, 2025, 2031, 2042, 2048)),
             (3, 21, (1988, 2005, 2016, 2033, 2044, 2050)),
             (3, 22, (1982, 1999, 2010, 2027)),
             (

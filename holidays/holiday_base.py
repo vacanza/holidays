@@ -12,9 +12,9 @@
 # from __future__ import annotations  # add in Python 3.7
 
 import warnings
-from datetime import timedelta, datetime, date
+from datetime import date, datetime, timedelta
 from typing import (
-    cast,
+    TYPE_CHECKING,
     Any,
     Dict,
     Iterable,
@@ -22,9 +22,9 @@ from typing import (
     Mapping,
     Optional,
     Set,
-    TYPE_CHECKING,
     Tuple,
     Union,
+    cast,
 )
 
 from dateutil.parser import parse
@@ -318,7 +318,7 @@ class HolidayBase(Dict[date, str]):
         )
         return contained
 
-    def __getitem__(self, key: DateLike) -> str:
+    def __getitem__(self, key: DateLike) -> Any:
         if isinstance(key, slice):
             if not key.start or not key.stop:
                 raise ValueError("Both start and stop must be given.")
@@ -357,11 +357,14 @@ class HolidayBase(Dict[date, str]):
 
     def __setitem__(self, key: DateLike, value: str) -> None:
         if key in self:
-            if self.get(key).find(value) < 0 and value.find(self.get(key)) < 0:
-                value = f"{value}, {self.get(key)}"
-            else:
-                value = self.get(key)
-        return dict.__setitem__(self, self.__keytransform__(key), value)
+            # If there are multiple holidays on the same date
+            # order their names alphabetically.
+            delimiter = ", "
+            holiday_names = set(self.get(key).split(delimiter))
+            holiday_names.add(value)
+            value = delimiter.join(sorted(holiday_names))
+
+        dict.__setitem__(self, self.__keytransform__(key), value)
 
     def update(  # type: ignore[override]
         self, *args: Union[Dict[DateLike, str], List[DateLike], DateLike]

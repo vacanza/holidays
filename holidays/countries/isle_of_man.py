@@ -10,9 +10,11 @@
 #  License: MIT (see LICENSE file)
 from datetime import date
 
-from dateutil.relativedelta import relativedelta as rd, FR
+from dateutil.relativedelta import FR
+from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JUN, JUL
+from holidays.constants import JUL, JUN
+
 from .united_kingdom import UnitedKingdom
 
 

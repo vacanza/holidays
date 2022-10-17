@@ -12,22 +12,26 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, MO, SU, FR
+from dateutil.relativedelta import FR, MO, SU
+from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import FRI, SAT, SUN, WEEKEND
 from holidays.constants import (
-    JAN,
-    FEB,
-    MAR,
     APR,
-    MAY,
-    JUN,
-    JUL,
     AUG,
-    SEP,
-    OCT,
-    NOV,
     DEC,
+    FEB,
+    FRI,
+    JAN,
+    JUL,
+    JUN,
+    MAR,
+    MAY,
+    NOV,
+    OCT,
+    SAT,
+    SEP,
+    SUN,
+    WEEKEND,
 )
 from holidays.holiday_base import HolidayBase
 
@@ -261,20 +265,16 @@ class Canada(HolidayBase):
         # Christmas Day
         if year >= 1867:
             name = "Christmas Day"
-            name_observed = name + " (Observed)"
+            self[date(year, DEC, 25)] = name
             if self.observed and date(year, DEC, 25).weekday() in WEEKEND:
-                self[date(year, DEC, 27)] = name_observed
-            else:
-                self[date(year, DEC, 25)] = name
+                self[date(year, DEC, 27)] = name + " (Observed)"
 
         # Boxing Day
         if year >= 1867:
             name = "Boxing Day"
-            name_observed = name + " (Observed)"
+            self[date(year, DEC, 26)] = name
             if self.observed and date(year, DEC, 26).weekday() in WEEKEND:
-                self[date(year, DEC, 28)] = name_observed
-            else:
-                self[date(year, DEC, 26)] = name
+                self[date(year, DEC, 28)] = name + " (Observed)"
 
 
 class CA(Canada):

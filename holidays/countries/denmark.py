@@ -12,9 +12,10 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, SU, TH, FR, MO
+from dateutil.relativedelta import FR, MO, SU, TH
+from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, DEC
+from holidays.constants import DEC, JAN
 from holidays.holiday_base import HolidayBase
 
 

@@ -12,12 +12,11 @@
 from datetime import date
 
 from dateutil.easter import easter
-from holidays.utils import _islamic_to_gre
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAY, JUN, OCT, DEC
-from holidays.constants import SAT
+from holidays.constants import DEC, JAN, JUN, MAY, OCT, SAT
 from holidays.holiday_base import HolidayBase
+from holidays.utils import _islamic_to_gre
 
 
 class Nigeria(HolidayBase):
