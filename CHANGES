@@ -10,6 +10,7 @@ Released ?????? ??, ????
 - Singapore fix - avoid multiple adds on in lieu holidays #717 (amas01)
 - Canada fixes #715, #733 (bkthomps, MichaelThessel)
 - Honduras fix #720 (bkthomps)
+- Japan upgrades (added substitute holidays) #723 (shohirose)
 
 Version 0.16
 ============
