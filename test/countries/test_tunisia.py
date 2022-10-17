@@ -9,10 +9,11 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+import importlib.util
 import unittest
 from datetime import date
+
 import holidays
-import importlib.util
 
 
 class TestTunisia(unittest.TestCase):

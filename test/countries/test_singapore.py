@@ -11,11 +11,10 @@
 
 import importlib.util
 import unittest
-
 from datetime import date
 
 import holidays
-from holidays.constants import JAN, APR, MAY, JUN, AUG, NOV, DEC
+from holidays.constants import APR, AUG, DEC, JAN, JUN, MAY, NOV
 
 
 class TestSingapore(unittest.TestCase):

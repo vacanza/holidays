@@ -10,7 +10,6 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-
 from datetime import date
 
 import holidays
@@ -282,7 +281,7 @@ class TestBrazil(unittest.TestCase):
         to_holidays = holidays.BR(subdiv="TO")
         self.assertIn("2018-01-01", to_holidays)
         self.assertEqual(
-            to_holidays[date(2018, 1, 1)], "Instalação de Tocantins, Ano novo"
+            to_holidays[date(2018, 1, 1)], "Ano novo, Instalação de Tocantins"
         )
         self.assertIn("2018-09-08", to_holidays)
         self.assertEqual(

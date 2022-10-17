@@ -10,12 +10,10 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-
-from datetime import date
-from datetime import timedelta
+from datetime import date, timedelta
 
 import holidays
-from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, OCT, NOV, DEC
+from holidays.constants import APR, AUG, DEC, JAN, JUL, JUN, MAR, MAY, NOV, OCT
 
 
 class TestCO(unittest.TestCase):

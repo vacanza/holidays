@@ -10,12 +10,10 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-
-from datetime import date
-from datetime import timedelta
+from datetime import date, timedelta
 
 import holidays
-from holidays.constants import JAN, MAR, APR, MAY, JUL, OCT, DEC
+from holidays.constants import APR, DEC, JAN, JUL, MAR, MAY, OCT
 
 
 class TestCuba(unittest.TestCase):
