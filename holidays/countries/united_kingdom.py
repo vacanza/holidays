@@ -201,6 +201,7 @@ class UnitedKingdom(HolidayBase):
             self[date(year, JUN, 3)] = "Platinum Jubilee of Elizabeth II"
             self[date(year, SEP, 19)] = "State Funeral of Queen Elizabeth II"
 
+
 class UK(UnitedKingdom):
     pass
 
