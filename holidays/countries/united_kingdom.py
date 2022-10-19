@@ -118,7 +118,6 @@ class UnitedKingdom(HolidayBase):
 
         # Overwrite to modify country specific holidays
         self._country_specific(year)
-        self._additional_holidays(year)
 
     def _country_specific(self, year: int) -> None:
         # This method is replaced by class Ireland
@@ -201,10 +200,6 @@ class UnitedKingdom(HolidayBase):
         elif year == 2022:
             self[date(year, JUN, 3)] = "Platinum Jubilee of Elizabeth II"
             self[date(year, SEP, 19)] = "State Funeral of Queen Elizabeth II"
-
-    def _additional_holidays(self, year: int) -> None:
-        pass
-
 
 class UK(UnitedKingdom):
     pass

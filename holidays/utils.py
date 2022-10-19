@@ -333,7 +333,7 @@ def _islamic_to_gre(Gyear: int, Hmonth: int, Hday: int) -> List[date]:
     # To avoid hijri_converter check range OverflowError.
     dt = (Gyear, Hmonth, Hday)
     dt_min, dt_max = GREGORIAN_RANGE
-    if dt < dt_min or dt > dt_max:  #
+    if dt < dt_min or dt > dt_max:
         return gre_dates
 
     Hyear = convert.Gregorian(Gyear, 1, 1).to_hijri().datetuple()[0]

@@ -165,28 +165,23 @@ class Japan(HolidayBase):
                 day = 21
             elif year >= 2092:
                 day = 19
-        elif year % 4 == 1 and year <= 1989:
-            day = 21
-        elif year % 4 == 2 and year <= 2022:
-            day = 21
-        if year % 4 == 3 and year <= 2055:
+        elif ((year % 4 == 1 and year <= 1989) or
+              (year % 4 == 2 and year <= 2022) or
+              (year % 4 == 3 and year <= 2055)):
             day = 21
 
         return date(year, MAR, day)
 
     def _autumnal_equinox_day(self, year):
         day = 22
-        if year % 4 == 0 and year <= 2008:
-            day = 23
-        elif year % 4 == 1 and year <= 2041:
-            day = 23
-        elif year % 4 == 2 and year <= 2074:
+        if ((year % 4 == 0 and year <= 2008) or
+            (year % 4 == 1 and year <= 2041) or
+            (year % 4 == 2 and year <= 2074)):
             day = 23
         elif year % 4 == 3:
+            day = 23
             if year <= 1979:
                 day = 24
-            else:
-                day = 23
 
         return date(year, SEP, day)
 
