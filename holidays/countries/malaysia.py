@@ -304,7 +304,7 @@ class Malaysia(HolidayBase):
                 2019: (OCT, 27),
                 2020: (NOV, 14),
                 2021: (NOV, 4),
-                2022: (NOV, 24),
+                2022: (OCT, 24),
             }
             if year in dates_obs:
                 hol_date = date(year, *dates_obs[year])
