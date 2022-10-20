@@ -586,7 +586,11 @@ class HolidayBase(Dict[date, str]):
         pass
 
     def _populate(self, year: int) -> None:
-        """Populate holidays main method."""
+        """
+        Populate holidays main method.
+
+        :meta public:
+        """
 
         # Special holidays list.
         for month, day, name in self.special_holidays.get(year, ()):
