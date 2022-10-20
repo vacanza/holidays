@@ -38,7 +38,7 @@ from holidays.holiday_base import HolidayBase
 class Ukraine(HolidayBase):
     """
     Current holidays list:
-    http://zakon1.rada.gov.ua/laws/show/322-08/paran454#n454
+    https://zakon1.rada.gov.ua/laws/show/322-08/paran454#n454
 
     27.01.1995: holiday on weekend move to next workday
     https://zakon.rada.gov.ua/laws/show/35/95-вр

@@ -183,6 +183,7 @@ class TestUkraine(unittest.TestCase):
             date(2020, 4, 20),
             date(2021, 5, 4),
             date(2022, 4, 25),
+            date(2062, 5, 2),  # rare case
             # Holy trinity
             date(1995, 6, 12),
             date(1996, 6, 3),
