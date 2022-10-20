@@ -35,6 +35,7 @@ class Vietnam(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
 
         # New Year's Day
         name = "International New Year's Day"

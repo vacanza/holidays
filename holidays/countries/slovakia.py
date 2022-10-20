@@ -29,6 +29,8 @@ class Slovakia(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         self[date(year, JAN, 1)] = "Deň vzniku Slovenskej republiky"
         self[date(year, JAN, 6)] = (
             "Zjavenie Pána (Traja králi a"

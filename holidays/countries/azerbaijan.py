@@ -38,6 +38,7 @@ class Azerbaijan(HolidayBase):
                 self[next_monday] = self[holiday] + OBSERVED_SUFFIX
 
     def _populate(self, year: int) -> None:
+        super()._populate(year)
 
         # 1st of Jan
         self[date(year, JAN, 1)] = "New Year's Day"

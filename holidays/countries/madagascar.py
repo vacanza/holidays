@@ -42,6 +42,8 @@ class Madagascar(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         # Observed since 1947
         if year > 1946:
             self[date(year, 1, 1)] = "Taom-baovao"

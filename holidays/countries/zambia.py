@@ -29,6 +29,8 @@ class Zambia(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         # Observed since 1965
         if year > 1964:
             self[date(year, JAN, 1)] = "New Year's Day"

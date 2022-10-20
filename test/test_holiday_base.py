@@ -654,24 +654,23 @@ class TestCountrySpecialHolidays(unittest.TestCase):
         self.holidays = holidays.country_holidays("US")
 
     def test_populate_special_holidays(self):
-        self.holidays._populate_special_holidays(1111)
+        self.holidays._populate(1111)  # special_holidays is empty.
         self.assertEqual(0, len(self.holidays))
 
         self.holidays.special_holidays = {
             1111: ((JAN, 1, "Test holiday"),),
             2222: ((FEB, 2, "Test holiday"),),
+            3333: (),
         }
 
-        self.holidays._populate_special_holidays(1111)
-        self.assertIn("1111-01-01", self.holidays)
-        self.assertNotIn("2222-02-02", self.holidays)
-        self.assertEqual(12, len(self.holidays))
+        self.assertNotIn(3333, self.holidays.years)
 
-        self.holidays._populate_special_holidays(2222)
         self.assertIn("1111-01-01", self.holidays)
         self.assertIn("2222-02-02", self.holidays)
         self.assertEqual(13, len(self.holidays))
 
-        self.holidays._populate_special_holidays(1111)
-        self.holidays._populate_special_holidays(2222)
+        self.holidays._populate(1111)
+        self.holidays._populate(2222)
+        self.assertIn("1111-01-01", self.holidays)
+        self.assertIn("2222-02-02", self.holidays)
         self.assertEqual(13, len(self.holidays))

@@ -28,6 +28,8 @@ class Eswatini(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         # Observed since 1938
         if year > 1938:
             self[date(year, JAN, 1)] = "New Year's Day"

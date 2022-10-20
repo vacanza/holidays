@@ -79,6 +79,8 @@ class Germany(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         if year <= 1989:
             return
 

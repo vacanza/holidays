@@ -67,6 +67,7 @@ class UnitedKingdom(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year: int) -> None:
+        super()._populate(year)
 
         # New Year's Day
         if year >= 1974:
@@ -131,8 +132,6 @@ class UnitedKingdom(HolidayBase):
         # Overwrite to modify country specific holidays
         self._country_specific(year)
         self._additional_holidays(year)
-
-        self._populate_special_holidays(year)
 
     def _country_specific(self, year: int) -> None:
         # This method is replaced by class Ireland

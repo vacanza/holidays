@@ -162,8 +162,7 @@ class HolidayBase(Dict[date, str]):
     >>> assert '12/25/2015' in custom_holidays
 
     For special (one-off) country-wide holidays handling use
-    :attr:`special_holidays` and :meth:`_populate_special_holidays`.
-    For example:
+    :attr:`special_holidays`:
 
     .. code-block:: python
 
@@ -180,9 +179,10 @@ class HolidayBase(Dict[date, str]):
             ),
         }
 
-        def _populate(self, year: int) -> None:
+        def _populate(self, year):
+            super._populate(year)
+
             ...
-            self._populate_special_holidays(year)
 
     For more complex logic, like 4th Monday of January, you can inherit the
     :class:`HolidayBase` class and define your own :meth:`_populate` method.
@@ -586,13 +586,11 @@ class HolidayBase(Dict[date, str]):
         pass
 
     def _populate(self, year: int) -> None:
-        """meta: public"""
-        pass
+        """Populate holidays main method."""
 
-    def _populate_special_holidays(self, year) -> None:
-        """Populate holidays from the special holidays list."""
+        # Special holidays list.
         for month, day, name in self.special_holidays.get(year, ()):
-            self[f"{year}-{month}-{day}"] = name
+            self[date(year, month, day)] = name
 
     def __reduce__(self) -> Union[str, Tuple[Any, ...]]:
         return super().__reduce__()
@@ -726,7 +724,7 @@ country_holidays('CA') + country_holidays('MX')
 
         HolidayBase.__init__(self, **kwargs)
 
-    def _populate(self, year: int) -> None:
+    def _populate(self, year):
         for h in self.holidays[::-1]:
             h._populate(year)
             self.update(cast("Dict[DateLike, str]", h))

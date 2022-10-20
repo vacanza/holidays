@@ -37,6 +37,7 @@ class Mozambique(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
 
         if year > 1974:
             self[date(year, 1, 1)] = "Ano novo"

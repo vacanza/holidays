@@ -60,6 +60,8 @@ class NewYorkStockExchange(HolidayBase):
             self[date_obs] = name + " (Observed)"
 
     def _populate(self, year):
+        super()._populate(year)
+
         ##############################################################
         # REGULAR HOLIDAYS
         ##############################################################

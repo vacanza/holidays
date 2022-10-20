@@ -42,6 +42,8 @@ class Ethiopia(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
         # The Ethiopian New Year is called Kudus Yohannes in Ge'ez and
         # Tigrinya, while in Amharic,

@@ -39,6 +39,8 @@ class DominicanRepublic(HolidayBase):
         return holiday
 
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
         self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
 

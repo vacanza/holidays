@@ -30,6 +30,8 @@ class Nicaragua(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         # New Years
         self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
         # Maundy Thursday

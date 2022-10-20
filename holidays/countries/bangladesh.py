@@ -26,6 +26,7 @@ class Bangladesh(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
 
         # 21st Feb
         self[date(year, FEB, 21)] = "International Mother's language Day"

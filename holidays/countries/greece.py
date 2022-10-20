@@ -28,6 +28,7 @@ class Greece(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
 
         eday = easter(year, method=EASTER_ORTHODOX)
 

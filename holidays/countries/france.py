@@ -56,6 +56,8 @@ class France(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         # Civil holidays
         if year > 1810:
             self[date(year, JAN, 1)] = "Jour de l'an"

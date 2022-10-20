@@ -164,6 +164,8 @@ class Italy(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         self[date(year, JAN, 1)] = "Capodanno"
         self[date(year, JAN, 6)] = "Epifania del Signore"
         self[easter(year)] = "Pasqua di Resurrezione"

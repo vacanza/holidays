@@ -82,6 +82,8 @@ class NewZealand(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         # Bank Holidays Act 1873
         # The Employment of Females Act 1873
         # Factories Act 1894
@@ -329,8 +331,6 @@ class NewZealand(HolidayBase):
                 self[nov30 + rd(weekday=MO(-1))] = name
             else:
                 self[nov30 + rd(weekday=MO)] = name
-
-        self._populate_special_holidays(year)
 
 
 class NZ(NewZealand):

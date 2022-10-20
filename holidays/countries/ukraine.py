@@ -29,6 +29,8 @@ class Ukraine(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         # The current set of holidays came into force in 1991
         # But most holiday days were implemented in 1918
         if year <= 1917:

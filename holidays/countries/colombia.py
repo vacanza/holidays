@@ -55,6 +55,8 @@ class Colombia(HolidayBase):
             self[_date] = name
 
     def _populate(self, year):
+        super()._populate(year)
+
         self._add_fixed_date_holidays(year)
         self._add_flexible_date_holidays(year)
         self._add_easter_based_holidays(year)

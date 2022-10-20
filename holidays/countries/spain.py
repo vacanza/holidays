@@ -68,6 +68,8 @@ class Spain(HolidayBase):
             self[date_holiday] = name_holiday
 
     def _populate(self, year):
+        super()._populate(year)
+
         self._is_observed(date(year, JAN, 1), "Año nuevo")
         self._is_observed(date(year, JAN, 6), "Epifanía del Señor")
 

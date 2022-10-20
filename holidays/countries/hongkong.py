@@ -47,6 +47,7 @@ class HongKong(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
 
         day_following = "The day following "
 

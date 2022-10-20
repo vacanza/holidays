@@ -41,6 +41,8 @@ class Uruguay(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
         if not self.observed and date(year, JAN, 1).weekday() in WEEKEND:
             pass

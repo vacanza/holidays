@@ -62,6 +62,8 @@ class UnitedArabEmirates(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         def _add_holiday(dt: date, hol: str) -> None:
             """Only add if in current year; prevents adding holidays across
             years (handles multi-day Islamic holidays that straddle Gregorian

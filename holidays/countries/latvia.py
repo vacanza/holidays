@@ -29,6 +29,8 @@ class Latvia(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
         self[date(year, 1, 1)] = "Jaunais gads"
 

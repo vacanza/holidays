@@ -40,6 +40,8 @@ class Angola(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year: int) -> None:
+        super()._populate(year)
+
         # Observed since 1975
         # TODO do more research on history of Angolan holidays
 

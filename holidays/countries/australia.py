@@ -51,6 +51,8 @@ class Australia(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         # ACT:  Holidays Act 1958
         # NSW:  Public Holidays Act 2010
         # NT:   Public Holidays Act 2013
@@ -275,8 +277,6 @@ class Australia(HolidayBase):
         self[dec26] = name
         if self.observed and dec26.weekday() in WEEKEND:
             self[date(year, DEC, 28)] = name + " (Observed)"
-
-        self._populate_special_holidays(year)
 
 
 class AU(Australia):
