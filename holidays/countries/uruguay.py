@@ -61,8 +61,8 @@ class Uruguay(HolidayBase):
             self[date(year, JAN, 6)] = "Día de Reyes"
 
         # Holy Week
-        name_thu = "Semana Santa (Jueves Santo)  [Holy day (Holy Thursday)]"
-        name_fri = "Semana Santa (Viernes Santo)  [Holy day (Holy Friday)]"
+        name_thu = "Semana Santa (Jueves Santo) [Holy day (Holy Thursday)]"
+        name_fri = "Semana Santa (Viernes Santo) [Holy day (Holy Friday)]"
         name_easter = "Día de Pascuas [Easter Day]"
 
         self[easter(year) + rd(weekday=TH(-1))] = name_thu
@@ -99,14 +99,14 @@ class Uruguay(HolidayBase):
             self[date(year, MAY, 17)] = name
 
         # Natalicio de José Gervacio Artigas
-        name = "Natalicio de José Gervacio Artigas "
+        name = "Natalicio de José Gervacio Artigas"
         if not self.observed and date(year, JUN, 19).weekday() in WEEKEND:
             pass
         else:
             self[date(year, JUN, 19)] = name
 
         # Jura de la Constitución
-        name = "Jura de la constitución "
+        name = "Jura de la constitución"
         if not self.observed and date(year, JUL, 18).weekday() in WEEKEND:
             pass
         else:

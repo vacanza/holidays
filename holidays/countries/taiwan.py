@@ -34,7 +34,7 @@ class Taiwan(HolidayBase):
         if year > 1911:
             self[
                 date(year, JAN, 1)
-            ] = "Founding of the Republic of China  (New Year's Day)"
+            ] = "Founding of the Republic of China (New Year's Day)"
             hol_date = self.cnls.lunar_n_y_date(year)
             self[hol_date + rd(days=-1)] = "Chinese New Year's Eve"
             self[hol_date] = "Spring Festival"
