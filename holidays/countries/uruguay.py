@@ -100,7 +100,7 @@ class Uruguay(HolidayBase):
 
         for dt, name in holiday_pairs:
             if dt.weekday() in (TU.weekday, WE.weekday):
-                self[dt - rd(weekday=MO(-1))] = name
+                self[dt + rd(weekday=MO(-1))] = name
             elif dt.weekday() in (TH.weekday, FR.weekday):
                 self[dt + rd(weekday=MO(+1))] = name
             else:
