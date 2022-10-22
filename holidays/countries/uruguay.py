@@ -72,7 +72,7 @@ class Uruguay(HolidayBase):
             easter(year) + rd(weekday=TH(-1))
         ] = "Semana Santa (Jueves Santo)  [Holy day (Holy Thursday)]"
         self[
-            easter(year) - rd(weekday=FR(-1))
+            easter(year) + rd(weekday=FR(-1))
         ] = "Semana Santa (Viernes Santo)  [Holy day (Holy Friday)]"
 
         self[easter(year)] = "Día de Pascuas [Easter Day]"
