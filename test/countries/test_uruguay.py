@@ -107,14 +107,14 @@ class TestUY(unittest.TestCase):
 
     def test_carnival_day(self):
         for dt in (
-            date(2021, 2, 15),
-            date(2021, 2, 16),
-            date(2018, 2, 12),
-            date(2018, 2, 13),
-            date(2017, 2, 27),
-            date(2017, 2, 28),
             date(2016, 2, 8),
             date(2016, 2, 9),
+            date(2017, 2, 27),
+            date(2017, 2, 28),
+            date(2018, 2, 12),
+            date(2018, 2, 13),
+            date(2021, 2, 15),
+            date(2021, 2, 16),
         ):
             self.assertIn(dt, self.holidays)
             self.assertEqual(
@@ -167,11 +167,11 @@ class TestUY(unittest.TestCase):
 
     def test_día_del_respeto_a_la_diversidad_cultural(self):
         for dt in (
-            date(2021, 10, 11),
-            date(2020, 10, 12),
-            date(2019, 10, 12),
-            date(2018, 10, 15),
             date(2017, 10, 16),
+            date(2018, 10, 15),
+            date(2019, 10, 12),
+            date(2020, 10, 12),
+            date(2021, 10, 11),
         ):
             self.assertIn(dt, self.holidays)
             self.assertEqual(
