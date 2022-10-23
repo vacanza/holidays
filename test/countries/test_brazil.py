@@ -255,11 +255,22 @@ class TestBrazil(unittest.TestCase):
         self.assertEqual(rr_holidays[date(2018, 10, 5)], "Criação de Roraima")
 
     def test_SC_holidays(self):
+        name = "Criação da capitania, separando-se de SP"
         sc_holidays = holidays.BR(subdiv="SC")
         self.assertIn("2018-08-11", sc_holidays)
         self.assertEqual(
             sc_holidays[date(2018, 8, 11)],
-            "Criação da capitania, separando-se de SP",
+            name,
+        )
+        self.assertIn("2017-08-11", sc_holidays)
+        self.assertEqual(
+            sc_holidays[date(2017, 8, 11)],
+            name,
+        )
+        self.assertIn(date(2021, 8, 15), sc_holidays)
+        self.assertEqual(
+            sc_holidays[date(2021, 8, 15)],
+            name,
         )
 
     def test_SP_holidays(self):
