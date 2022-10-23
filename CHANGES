@@ -6,7 +6,7 @@ Released ?????? ??, ????
 - 100% test coverage, code refactoring #747, #749 (arkid15r)
 - Support for Bosnia and Herzegovina #683, #725 (kasya, arkid15r)
 - Support for Liechtenstein #650, #728, #758 (kasya, arkid15r)
-- Added isort to pre-commit #722 (arkid15r)
+- Added isort to pre-commit #722, #734 (arkid15r, dr-p)
 - Get item multiple return type fix (dr-p) TODO: possible refactor required
 - Sort overlapping holiday names #713 (kasya, arkid15r)
 - Swaziland deprecation, replaced by Eswatini #721 (bkthomps)
