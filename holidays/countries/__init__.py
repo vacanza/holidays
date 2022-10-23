@@ -61,7 +61,7 @@ from .kenya import KE, KEN, Kenya
 from .korea import KOR, KR, Korea
 from .latvia import LV, LVA, Latvia
 from .lesotho import LS, LSO, Lesotho
-from .liechtenstien import LI, LIE, Liechtenstien
+from .liechtenstein import LI, LIE, Liechtenstein
 from .lithuania import LT, LTU, Lithuania
 from .luxembourg import LU, LUX, Luxembourg
 from .madagascar import MDG, MG, Madagascar

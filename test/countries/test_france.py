@@ -85,3 +85,7 @@ class TestFrance(unittest.TestCase):
     def test_la_reunion(self):
         am_holidays = self.prov_holidays["La Réunion"]
         self.assertIn(date(2017, 12, 20), am_holidays)
+
+    def test_pre_1802(self):
+        self.assertNotIn(date(1801, 8, 15), self.holidays)
+        self.assertNotIn(date(1801, 11, 1), self.holidays)

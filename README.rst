@@ -150,7 +150,6 @@ following countries and their subdivisions are available:
      - Departments: B, C, H, L, N, O, P, S, T
    * - Bosnia and Herzegovina
      - BA
-     - BIH
      - Departments: FBiH, RS, BD
    * - Botswana
      - BW

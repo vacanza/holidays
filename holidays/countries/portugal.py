@@ -8,25 +8,15 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
-import warnings
+
 from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import (
-    APR,
-    AUG,
-    DEC,
-    JAN,
-    JUL,
-    JUN,
-    MAR,
-    MAY,
-    NOV,
-    OCT,
-    SEP,
-)
+from holidays.constants import \
+    JAN, MAR, APR, MAY, JUN, JUL,\
+    AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
