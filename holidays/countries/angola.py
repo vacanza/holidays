@@ -43,38 +43,42 @@ class Angola(HolidayBase):
         # Observed since 1975
         # TODO do more research on history of Angolan holidays
 
+        if year < 1975:
+            return
+
+        self[date(year, JAN, 1)] = "Ano novo"
+        # Since 2018, if the following year's New Year's Day falls on a
+        # Tuesday, the 31st of the current year is also a holiday.
+        if year >= 2018:
+            if self.observed and date(year, DEC, 31).weekday() == MON:
+                self[date(year, DEC, 31)] = "Ano novo (Day off)"
+
+        e = easter(year)
+        good_friday = e - rd(days=2)
+        self[good_friday] = "Sexta-feira Santa"
+
+        # carnival is the Tuesday before Ash Wednesday
+        # which is 40 days before easter excluding sundays
+        carnival = e - rd(days=46)
+        while carnival.weekday() != TUE:
+            carnival = carnival - rd(days=1)
+        self[carnival] = "Carnaval"
+
+        self[date(year, FEB, 4)] = "Dia do Início da Luta Armada"
+        self[date(year, MAR, 8)] = "Dia Internacional da Mulher"
+
         if year > 2018:
             self[date(year, MAR, 23)] = "Dia da Libertação da África Austral"
+
+        self[date(year, APR, 4)] = "Dia da Paz e Reconciliação"
+        self[date(year, MAY, 1)] = "Dia Mundial do Trabalho"
 
         if year > 1979:
             self[date(year, SEP, 17)] = "Dia do Herói Nacional"
 
-        if year > 1974:
-            self[date(year, JAN, 1)] = "Ano novo"
-            # Since 2018, if the following year's New Year's Day falls on a
-            # Tuesday, the 31st of the current year is also a holiday.
-            if year >= 2018:
-                if self.observed and date(year, DEC, 31).weekday() == MON:
-                    self[date(year, DEC, 31)] = "Ano novo (Day off)"
-
-            e = easter(year)
-            good_friday = e - rd(days=2)
-            self[good_friday] = "Sexta-feira Santa"
-
-            # carnival is the Tuesday before Ash Wednesday
-            # which is 40 days before easter excluding sundays
-            carnival = e - rd(days=46)
-            while carnival.weekday() != TUE:
-                carnival = carnival - rd(days=1)
-            self[carnival] = "Carnaval"
-
-            self[date(year, FEB, 4)] = "Dia do Início da Luta Armada"
-            self[date(year, MAR, 8)] = "Dia Internacional da Mulher"
-            self[date(year, APR, 4)] = "Dia da Paz e Reconciliação"
-            self[date(year, MAY, 1)] = "Dia Mundial do Trabalho"
-            self[date(year, NOV, 2)] = "Dia dos Finados"
-            self[date(year, NOV, 11)] = "Dia da Independência"
-            self[date(year, DEC, 25)] = "Dia de Natal e da Família"
+        self[date(year, NOV, 2)] = "Dia dos Finados"
+        self[date(year, NOV, 11)] = "Dia da Independência"
+        self[date(year, DEC, 25)] = "Dia de Natal e da Família"
 
         # As of 1995/1/1, whenever a public holiday falls on a Sunday,
         # it rolls over to the following Monday

@@ -26,9 +26,8 @@ class IsleOfMan(UnitedKingdom):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    def _additional_holidays(self, year):
-        # We're subclassing UnitedKingdom and replacing its
-        # _additional_holidays method to add Isle of Man exclusive holidays
+    def _populate(self, year: int) -> None:
+        super()._populate(year)
 
         # TT bank holiday (first Friday in June)
         self[date(year, JUN, 1) + rd(weekday=FR)] = "TT Bank Holiday"
