@@ -47,3 +47,8 @@ exclude_lines = [
   'if 0:',
   'if __name__ == .__main__.:',
 ]
+
+[tool.isort]
+line_length = 79
+no_inline_sort = true
+profile = "black"
