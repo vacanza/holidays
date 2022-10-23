@@ -14,7 +14,9 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, APR, MAY, JUN, AUG, OCT, NOV, DEC
+from holidays.constants import \
+    JAN, MAR, APR, MAY, JUN, JUL,\
+    AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -22,7 +24,30 @@ class Portugal(HolidayBase):
     # https://en.wikipedia.org/wiki/Public_holidays_in_Portugal
 
     country = "PT"
-    subdivisions = ["Ext"]
+    # https://en.wikipedia.org/wiki/Districts_of_Portugal
+    # Only the 18 mainland districts have been included
+    # `Ext` represents the national holidays most people have off
+    subdivisions = [
+        "Ext",
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+    ]
 
     def __init__(self, **kwargs):
         HolidayBase.__init__(self, **kwargs)
@@ -73,6 +98,42 @@ class Portugal(HolidayBase):
             # TODO add bridging days
             # - get Holidays that occur on Tuesday  and add Monday (-1 day)
             # - get Holidays that occur on Thursday and add Friday (+1 day)
+
+        # District holidays
+        if self.subdiv == "01":
+            self[date(year, MAY, 12)] = "Dia de Santa Joana"
+        if self.subdiv == "02":
+            self[e + rd(days=4) + rd(weeks=5)] = "Quinta-feira da Ascensão"
+        if self.subdiv in ("03", "13"):
+            self[date(year, JUN, 24)] = "Dia de São João"
+        if self.subdiv == "04":
+            self[date(year, AUG, 22)] = "Dia de Nossa Senhora das Graças"
+        if self.subdiv == "05":
+            self[
+                e + rd(days=2) + rd(weeks=2)
+            ] = "Dia de Nossa Senhora de Mércoles"
+        if self.subdiv == "06":
+            self[date(year, JUL, 4)] = "Dia de Santa Isabel"
+        if self.subdiv == "07":
+            self[date(year, JUN, 29)] = "Dia de S. Pedro"
+        if self.subdiv == "08":
+            self[date(year, SEP, 7)] = "Dia do Município de Faro"
+        if self.subdiv == "09":
+            self[date(year, NOV, 27)] = "Dia do Município da Guarda"
+        if self.subdiv == "10":
+            self[date(year, MAY, 22)] = "Dia do Município de Leiria"
+        if self.subdiv in ("11", "17"):
+            self[date(year, JUN, 13)] = "Dia de Santo António"
+        if self.subdiv == "12":
+            self[date(year, MAY, 23)] = "Dia do Município de Portalegre"
+        if self.subdiv == "14":
+            self[date(year, MAR, 19)] = "Dia de S. José"
+        if self.subdiv == "15":
+            self[date(year, SEP, 15)] = "Dia de Bocage"
+        if self.subdiv == "16":
+            self[date(year, AUG, 20)] = "Dia de Nossa Senhora da Agonia"
+        if self.subdiv == "18":
+            self[date(year, SEP, 21)] = "Dia de S. Mateus"
 
 
 class PT(Portugal):
