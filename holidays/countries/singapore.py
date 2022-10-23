@@ -13,23 +13,23 @@ from datetime import date
 from typing import Dict, Iterable, List, Optional, Tuple, Union
 
 from dateutil.easter import easter
-from dateutil.relativedelta import FR, MO, SA
 from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import MO, FR, SA
 
 from holidays.constants import (
-    APR,
-    AUG,
-    DEC,
-    FEB,
-    JAN,
-    JUL,
-    JUN,
-    MAR,
-    MAY,
-    NOV,
-    OCT,
-    SEP,
     SUN,
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    SEP,
+    AUG,
+    OCT,
+    NOV,
+    DEC,
 )
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _ChineseLuniSolar, _islamic_to_gre

@@ -15,23 +15,8 @@ from dateutil.easter import EASTER_ORTHODOX, easter
 from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import (
-    APR,
-    AUG,
-    DEC,
-    FRI,
-    JAN,
-    JUL,
-    JUN,
-    MAR,
-    MAY,
-    NOV,
-    OCT,
-    SAT,
-    SEP,
-    SUN,
-    WEEKEND,
-)
+from holidays.constants import JAN, APR, MAR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.constants import FRI, SAT, SUN, WEEKEND
 from holidays.holiday_base import HolidayBase
 
 
