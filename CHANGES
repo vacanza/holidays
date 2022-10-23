@@ -9,6 +9,7 @@ Released ?????? ??, ????
 - Added isort to pre-commit #722, #734 (arkid15r, dr-p)
 - Get item multiple return type fix (dr-p) TODO: possible refactor required
 - Sort overlapping holiday names #713 (kasya, arkid15r)
+- Portugal improvements #753 (Nalguedo)
 - Swaziland deprecation, replaced by Eswatini #721 (bkthomps)
 - Singapore fixes #717, #726 (amas01, mborsetti)
 - Canada fixes #715, #733 (bkthomps, MichaelThessel)
