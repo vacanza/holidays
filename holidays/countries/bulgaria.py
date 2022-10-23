@@ -56,16 +56,10 @@ class Bulgaria(HolidayBase):
             date(year, MAR, 3)
         ] = "Ден на Освобождението на България от османско иго"
 
-        # Friday Holiday
-        self[date(year, APR, 30)] = "Велики петък"
-
         # International Workers' Day
         self[
             date(year, MAY, 1)
         ] = "Ден на труда и на международната работническа солидарност"
-
-        # Resurrection Monday
-        self[date(year, MAY, 3)] = "Возкресенни понеделник"
 
         # Saint George's Day
         self[
@@ -73,9 +67,10 @@ class Bulgaria(HolidayBase):
         ] = "Гергьовден, Ден на храбростта и Българската армия"
 
         # Bulgarian Education and Culture and Slavonic Literature Day
-        self[
-            date(year, MAY, 24)
-        ] = "Ден на българската просвета и култура и на славянската писменост"
+        self[date(year, MAY, 24)] = (
+            "Ден на светите братя Кирил и Методий, на българската азбука, "
+            "просвета и култура и на славянската книжовност"
+        )
 
         # Unification Day
         self[date(year, SEP, 6)] = "Ден на Съединението"
@@ -92,13 +87,11 @@ class Bulgaria(HolidayBase):
         self[date(year, DEC, 26)] = "Рождество Христово"
 
         # Easter
-        self[
-            easter(year, method=EASTER_ORTHODOX) - rd(days=2)
-        ] = "Велики петък"
-        self[
-            easter(year, method=EASTER_ORTHODOX) - rd(days=1)
-        ] = "Велика събота"
-        self[easter(year, method=EASTER_ORTHODOX)] = "Великден"
+        dt = easter(year, method=EASTER_ORTHODOX)
+        self[dt - rd(days=2)] = "Велики петък"
+        self[dt - rd(days=1)] = "Велика събота"
+        self[dt] = "Великден"
+        self[dt + rd(days=1)] = " Великден"
 
 
 class BG(Bulgaria):

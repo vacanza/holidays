@@ -137,6 +137,26 @@ class TestBasics(unittest.TestCase):
         self.assertIn(date(2014, 1, 3), self.holidays)
         self.assertEqual(self.holidays.get(date(2014, 1, 3)), "Fake Holiday")
 
+    def test_str(self):
+        self.holidays = holidays.US()
+        self.assertEqual(
+            str(self.holidays),
+            "{'observed': True, 'expand': True, 'subdiv': None, "
+            "'years': set()}",
+        )
+
+        self.holidays = holidays.US(years=1900)
+        self.assertEqual(
+            str(self.holidays),
+            '{datetime.date(1900, 1, 1): "New Year\'s Day", '
+            'datetime.date(1900, 2, 22): "Washington\'s Birthday", '
+            "datetime.date(1900, 5, 30): 'Memorial Day', "
+            "datetime.date(1900, 7, 4): 'Independence Day', "
+            "datetime.date(1900, 9, 3): 'Labor Day', "
+            "datetime.date(1900, 11, 22): 'Thanksgiving', "
+            "datetime.date(1900, 12, 25): 'Christmas Day'}",
+        )
+
     def test_update(self):
         h = holidays.HolidayBase()
         h.update(
@@ -263,6 +283,12 @@ class TestBasics(unittest.TestCase):
         self.assertEqual(
             na.get(date(1969, 12, 25)), "Christmas Day, Navidad [Christmas]"
         )
+
+        ecb = holidays.ECB()
+        nyse = holidays.NYSE()
+        ecb_nyse = ecb + nyse
+        self.assertEqual(len(ecb) + len(nyse), len(ecb_nyse))
+        self.assertEqual(ecb_nyse.market, ["ECB", "NYSE"])
 
     def test_get_list(self):
         westland = holidays.NZ(subdiv="WTL")
@@ -464,6 +490,13 @@ class TestArgs(unittest.TestCase):
         assert loaded_holidays == self.holidays
         assert (dt in loaded_holidays) == res
 
+    def test_deprecation_warnings(self):
+        with self.assertWarns(Warning):
+            holidays.US(prov="AL")
+
+        with self.assertWarns(Warning):
+            holidays.US(state="WY")
+
 
 class TestKeyTransforms(unittest.TestCase):
     def setUp(self):
@@ -516,6 +549,7 @@ class TestKeyTransforms(unittest.TestCase):
         self.assertRaises(
             (TypeError, ValueError), lambda: self.holidays.get("abc123")
         )
+        self.assertRaises(TypeError, lambda: self.holidays.get({"123"}))
         self.assertRaises(
             (TypeError, ValueError), self.holidays.__setitem__, "abc", "Test"
         )

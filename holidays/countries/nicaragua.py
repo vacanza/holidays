@@ -57,12 +57,10 @@ class Nicaragua(HolidayBase):
         self[date(year, DEC, 25)] = "Navidad [Christmas]"
 
         # Provinces festive day
-        if self.subdiv:
-            if self.subdiv == "MN":
-                # Santo Domingo Day Down
-                self[date(year, AUG, 1)] = "Bajada de Santo Domingo"
-                # Santo Domingo Day Up
-                self[date(year, AUG, 10)] = "Subida de Santo Domingo"
+        # Santo Domingo Day Down
+        self[date(year, AUG, 1)] = "Bajada de Santo Domingo"
+        # Santo Domingo Day Up
+        self[date(year, AUG, 10)] = "Subida de Santo Domingo"
 
 
 class NI(Nicaragua):
