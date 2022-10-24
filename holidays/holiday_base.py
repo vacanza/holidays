@@ -552,7 +552,19 @@ class HolidayBase(Dict[date, str]):
         return self.__add__(other)
 
     def _populate(self, year: int) -> None:
-        """meta: public"""
+        """This is a private class that populates (generates and adds) holidays
+        for a given year. To keep things fast, it assumes that no holidays for
+        the year have already been populated. It should not be called directly;
+        to add holidays to an object, use the update() method:
+
+        >>> from holidays import country_holidays
+        >>> us_holidays = country_holidays('US', years=2020)
+        # to add new holidays to the object:
+        >>> us_holidays.update(country_holidays('US', years=2021))
+
+        :param year:
+            The year to populate with holidays.
+        """
         pass
 
     def __reduce__(self) -> Union[str, Tuple[Any, ...]]:
