@@ -165,7 +165,7 @@ class TestUY(unittest.TestCase):
                 "Batalla de las Piedras [Battle of the stones]",
             )
 
-    def test_día_del_respeto_a_la_diversidad_cultural(self):
+    def test_dia_del_respeto_a_la_diversidad_cultural(self):
         for dt in (
             date(2017, 10, 16),
             date(2018, 10, 15),
