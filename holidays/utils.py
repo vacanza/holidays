@@ -280,11 +280,11 @@ def list_supported_countries() -> Dict[str, List[str]]:
         the value is a list of supported subdivision codes.
     """
     return {
-        obj.country: obj.subdivisions
-        for name, obj in inspect.getmembers(
+        cls.country: cls.subdivisions
+        for name, cls in inspect.getmembers(
             holidays.countries, inspect.isclass
         )
-        if obj.__base__ == HolidayBase
+        if len(name) == 2 and issubclass(cls, HolidayBase)
     }
 
 
@@ -297,11 +297,9 @@ def list_supported_financial() -> Dict[str, List[str]]:
         the value is a list of supported subdivision codes.
     """
     return {
-        obj.market: obj.subdivisions
-        for name, obj in inspect.getmembers(
-            holidays.financial, inspect.isclass
-        )
-        if obj.__base__ == HolidayBase
+        cls.market: cls.subdivisions
+        for _, cls in inspect.getmembers(holidays.financial, inspect.isclass)
+        if issubclass(cls, HolidayBase)
     }
 
 
