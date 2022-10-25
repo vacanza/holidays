@@ -10,12 +10,11 @@
 #  License: MIT (see LICENSE file)
 
 import pickle
-import sys
 import unittest
 import warnings
 from datetime import date, datetime, timedelta
 
-from dateutil.relativedelta import relativedelta, MO
+from dateutil.relativedelta import relativedelta, MO, TU, SA, SU
 
 import holidays
 
@@ -167,6 +166,24 @@ class TestBasics(unittest.TestCase):
         )
         self.assertIn("2015-01-01", h)
         self.assertIn(date(2015, 12, 25), h)
+
+    def test_is_weekend(self):
+        h = holidays.HolidayBase()
+
+        h.weekend = (MO.weekday, TU.weekday)
+        for dt in (date(2022, 10, 3), date(2022, 10, 4)):
+            self.assertTrue(h._is_weekend(dt))
+
+        h.weekend = ()
+        for dt in (date(2022, 10, 3), date(2022, 10, 4)):
+            self.assertFalse(h._is_weekend(dt))
+
+        h.weekend = (SA.weekday, SU.weekday)
+        for dt in (date(2022, 10, 1), date(2022, 10, 2)):
+            self.assertTrue(h._is_weekend(dt))
+
+        for dt in (date(2022, 10, 3), date(2022, 10, 4)):
+            self.assertFalse(h._is_weekend(dt))
 
     def test_append(self):
         h = holidays.HolidayBase()

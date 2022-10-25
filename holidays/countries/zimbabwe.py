@@ -13,8 +13,9 @@ from datetime import date, datetime
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import MO, TU, SU
 
-from holidays.constants import MON, TUE, SUN, JAN, FEB, APR, MAY, AUG, DEC
+from holidays.constants import JAN, FEB, APR, MAY, AUG, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -53,7 +54,7 @@ class Zimbabwe(HolidayBase):
             # Find the date of the 2nd Monday
             # for the given year
             zimbabwe_heroes_day = date(year, AUG, 8)
-            while zimbabwe_heroes_day.isoweekday() != MON and (
+            while zimbabwe_heroes_day.weekday() != MO.weekday and (
                 8 <= zimbabwe_heroes_day.day <= 14
             ):
                 zimbabwe_heroes_day = zimbabwe_heroes_day + rd(days=1)
@@ -64,7 +65,7 @@ class Zimbabwe(HolidayBase):
             # Find the date of the 2nd Tuesday
             # for the given year
             defence_forces_day = datetime(year, AUG, 8)
-            while defence_forces_day.isoweekday() != TUE and (
+            while defence_forces_day.weekday() != TU.weekday and (
                 8 <= defence_forces_day.day <= 14
             ):
                 defence_forces_day = defence_forces_day + rd(days=1)
@@ -76,7 +77,11 @@ class Zimbabwe(HolidayBase):
             self[date(year, DEC, 26)] = "Boxing Day"
 
             for k, v in list(self.items()):
-                if self.observed and k.weekday() == SUN and k.year == year:
+                if (
+                    self.observed
+                    and k.weekday() == SU.weekday
+                    and k.year == year
+                ):
                     add_days = 1
                     while self.get(k + rd(days=add_days)) is not None:
                         add_days += 1

@@ -10,7 +10,6 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-import warnings
 from datetime import date
 
 from dateutil.relativedelta import relativedelta

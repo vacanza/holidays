@@ -12,8 +12,9 @@
 from datetime import date
 
 from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import SA, SU
 
-from holidays.constants import SAT, SUN, JAN, MAR, MAY, JUN, OCT, NOV, DEC
+from holidays.constants import JAN, MAR, MAY, JUN, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
 
@@ -30,7 +31,7 @@ class Azerbaijan(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _add_observed(self, holiday: date) -> None:
-        if self.observed and holiday.weekday() in (SAT, SUN):
+        if self.observed and self._is_weekend(holiday):
             next_monday = holiday + rd(days=7 - holiday.weekday())
             if next_monday.year == holiday.year and not self.get(
                 next_monday, None
@@ -90,12 +91,12 @@ class Azerbaijan(HolidayBase):
         # If the prior year's International Solidarity Day of Azerbaijanis
         # falls on a Saturday or Monday, the 1st Monday of the current year is
         # also a holiday.
-        if self.observed and date(year - 1, DEC, 31).weekday() == SUN:
+        if self.observed and date(year - 1, DEC, 31).weekday() == SU.weekday:
             self[date(year, JAN, 1)] = (
                 "International Solidarity Day of Azerbaijanis"
                 + OBSERVED_SUFFIX
             )
-        elif self.observed and date(year - 1, DEC, 31).weekday() == SAT:
+        elif self.observed and date(year - 1, DEC, 31).weekday() == SA.weekday:
             self[date(year, JAN, 2)] = (
                 "International Solidarity Day of Azerbaijanis"
                 + OBSERVED_SUFFIX

@@ -12,7 +12,7 @@
 import unittest
 from datetime import date
 
-from dateutil.relativedelta import relativedelta
+from dateutil.relativedelta import SA, SU, relativedelta
 
 import holidays
 
@@ -175,7 +175,7 @@ class TestUS(unittest.TestCase):
             self.assertIn(date(year, 2, 12), ia_holidays)
             self.assertIn(date(year, 2, 12), nj_holidays)
             self.assertIn(date(year, 2, 12), ny_holidays)
-            if date(year, 2, 12).weekday() == 5:
+            if date(year, 2, 12).weekday() == SA.weekday:
                 self.assertNotIn(date(year, 2, 11), self.holidays)
                 self.assertIn(date(year, 2, 11), ca_holidays)
                 self.assertIn(date(year, 2, 11), ct_holidays)
@@ -190,7 +190,7 @@ class TestUS(unittest.TestCase):
                 self.assertNotIn(date(year, 2, 11), ia_holidays)
                 self.assertNotIn(date(year, 2, 11), nj_holidays)
                 self.assertNotIn(date(year, 2, 11), ny_holidays)
-            if date(year, 2, 12).weekday() == 6:
+            if date(year, 2, 12).weekday() == SU.weekday:
                 self.assertNotIn(date(year, 2, 13), self.holidays)
                 self.assertIn(date(year, 2, 13), ca_holidays)
                 self.assertIn(date(year, 2, 13), ct_holidays)
@@ -213,7 +213,7 @@ class TestUS(unittest.TestCase):
             self.assertIn(date(year, 2, 12), ia_holidays)
             self.assertIn(date(year, 2, 12), nj_holidays)
             self.assertIn(date(year, 2, 12), ny_holidays)
-            if date(year, 2, 12).weekday() == 5:
+            if date(year, 2, 12).weekday() == SA.weekday:
                 self.assertNotIn(date(year, 2, 11), self.holidays)
                 self.assertNotIn(date(year, 2, 11), ca_holidays)
                 self.assertIn(date(year, 2, 11), ct_holidays)
@@ -228,7 +228,7 @@ class TestUS(unittest.TestCase):
                 self.assertNotIn(date(year, 2, 11), ia_holidays)
                 self.assertNotIn(date(year, 2, 11), nj_holidays)
                 self.assertNotIn(date(year, 2, 11), ny_holidays)
-            if date(year, 2, 12).weekday() == 6:
+            if date(year, 2, 12).weekday() == SU.weekday:
                 self.assertNotIn(date(year, 2, 13), self.holidays)
                 self.assertNotIn(date(year, 2, 13), ca_holidays)
                 self.assertIn(date(year, 2, 13), ct_holidays)

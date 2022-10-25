@@ -13,17 +13,10 @@
 from datetime import date
 
 from convertdate import gregorian, hebrew
-from convertdate.holidays import (
-    hanukkah,
-    lag_baomer,
-    passover,
-    purim,
-    rosh_hashanah,
-    shavuot,
-    sukkot,
-    yom_kippur,
-)
+from convertdate.holidays import hanukkah, lag_baomer, passover, purim
+from convertdate.holidays import rosh_hashanah, shavuot, sukkot, yom_kippur
 from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import SA
 
 from holidays.holiday_base import HolidayBase
 
@@ -64,7 +57,7 @@ class Israel(HolidayBase):
             day_in_week = memorial_day_dt.weekday()
             if day_in_week in (2, 3):
                 observed_delta = -(day_in_week - 1)
-            elif 2004 <= year and day_in_week == 5:
+            elif 2004 <= year and day_in_week == SA.weekday:
                 observed_delta = 1
 
             if observed_delta != 0:

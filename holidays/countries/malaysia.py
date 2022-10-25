@@ -17,21 +17,8 @@ from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, FR, SA, SU
 from dateutil.rrule import MONTHLY, rrule
 
-from holidays.constants import (
-    SUN,
-    JAN,
-    FEB,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-)
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
+from holidays.constants import OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _ChineseLuniSolar, _islamic_to_gre
 
@@ -350,7 +337,7 @@ class Malaysia(HolidayBase):
         # holiday and if such day is already a public holiday,
         # then the day following shall be a public holiday"
         for (hol_date, hol_name) in list(self.items()):
-            if hol_date.year == year and hol_date.weekday() == SUN:
+            if hol_date.year == year and hol_date.weekday() == SU.weekday:
                 self[hol_date] += " [Sunday]"
                 in_lieu_date = hol_date + rd(days=+1)
                 while in_lieu_date in self:
@@ -409,7 +396,7 @@ class Malaysia(HolidayBase):
         ):
             hol_date = date(year, JAN, 1)
             self[hol_date] = "New Year's Day"
-            if hol_date.weekday() == SUN:
+            if hol_date.weekday() == SU.weekday:
                 self[hol_date] += " [Sunday]"
                 self[date(year, JAN, 2)] = "New Year's Day [In lieu]"
 

@@ -144,7 +144,9 @@ class Germany(HolidayBase):
             # why we need to go back two wednesdays if year-11-23 happens to be
             # a wednesday
             base_data = date(year, NOV, 23)
-            weekday_delta = WE(-2) if base_data.weekday() == 2 else WE(-1)
+            weekday_delta = (
+                WE(-2) if base_data.weekday() == WE.weekday else WE(-1)
+            )
             self[base_data + rd(weekday=weekday_delta)] = "Buß- und Bettag"
 
         if year >= 2019:

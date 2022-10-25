@@ -13,23 +13,10 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import TH, FR, MO
+from dateutil.relativedelta import MO, TH, FR, SU
 
-from holidays.constants import (
-    SUN,
-    JAN,
-    FEB,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-)
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
+from holidays.constants import OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
 
@@ -62,7 +49,7 @@ class Spain(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _is_observed(self, date_holiday, name_holiday):
-        if self.observed and date_holiday.weekday() == SUN:
+        if self.observed and date_holiday.weekday() == SU.weekday:
             self[date_holiday + rd(days=+1)] = name_holiday + " (Trasladado)"
         else:
             self[date_holiday] = name_holiday

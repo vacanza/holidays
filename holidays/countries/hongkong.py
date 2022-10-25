@@ -9,28 +9,13 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, datetime, timedelta
+from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, FR, SA
+from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
 
-from holidays.constants import (
-    MON,
-    TUE,
-    WED,
-    THU,
-    FRI,
-    SAT,
-    SUN,
-    JAN,
-    APR,
-    MAY,
-    JUL,
-    SEP,
-    OCT,
-    DEC,
-)
+from holidays.constants import JAN, APR, MAY, JUL, SEP, OCT, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _ChineseLuniSolar
 
@@ -54,7 +39,7 @@ class HongKong(HolidayBase):
         name = "The first day of January"
         first_date = date(year, JAN, 1)
         if self.observed:
-            if first_date.weekday() == SUN:
+            if first_date.weekday() == SU.weekday:
                 self[
                     first_date + rd(days=+1)
                 ] = day_following + self.first_lower(name)
@@ -74,19 +59,24 @@ class HongKong(HolidayBase):
         new_year_date = date(dt.year, dt.month, dt.day)
         if self.observed:
             self[new_year_date] = name
-            if new_year_date.weekday() in [MON, TUE, WED, THU]:
+            if new_year_date.weekday() in (
+                MO.weekday,
+                TU.weekday,
+                WE.weekday,
+                TH.weekday,
+            ):
                 self[new_year_date] = name
                 self[new_year_date + rd(days=+1)] = second_day_lunar
                 self[new_year_date + rd(days=+2)] = third_day_lunar
-            if new_year_date.weekday() == FRI:
+            if new_year_date.weekday() == FR.weekday:
                 self[new_year_date] = name
                 self[new_year_date + rd(days=+1)] = second_day_lunar
                 self[new_year_date + rd(days=+3)] = fourth_day_lunar
-            if new_year_date.weekday() == SAT:
+            if new_year_date.weekday() == SA.weekday:
                 self[new_year_date] = name
                 self[new_year_date + rd(days=+2)] = third_day_lunar
                 self[new_year_date + rd(days=+3)] = fourth_day_lunar
-            if new_year_date.weekday() == SUN:
+            if new_year_date.weekday() == SU.weekday:
                 if year in [2006, 2007, 2010]:
                     self[new_year_date + rd(days=-1)] = preceding_day_lunar
                     self[new_year_date + rd(days=+1)] = second_day_lunar
@@ -109,7 +99,7 @@ class HongKong(HolidayBase):
         else:
             ching_ming_date = date(year, APR, 5)
         if self.observed:
-            if ching_ming_date.weekday() == SUN:
+            if ching_ming_date.weekday() == SU.weekday:
                 self[ching_ming_date + rd(days=+1)] = day_following + name
                 ching_ming_date = ching_ming_date + rd(days=+1)
             else:
@@ -143,7 +133,7 @@ class HongKong(HolidayBase):
         dt = self.cnls.lunar_to_gre(year, 4, 8)
         buddha_date = date(dt.year, dt.month, dt.day)
         if self.observed:
-            if buddha_date.weekday() == SUN:
+            if buddha_date.weekday() == SU.weekday:
                 self[buddha_date + rd(days=+1)] = day_following + name
             else:
                 self[buddha_date] = name
@@ -154,7 +144,7 @@ class HongKong(HolidayBase):
         name = "Labour Day"
         labour_date = date(year, MAY, 1)
         if self.observed:
-            if labour_date.weekday() == SUN:
+            if labour_date.weekday() == SU.weekday:
                 self[labour_date + rd(days=+1)] = day_following + name
             else:
                 self[labour_date] = name
@@ -166,7 +156,7 @@ class HongKong(HolidayBase):
         dt = self.cnls.lunar_to_gre(year, 5, 5)
         tuen_ng_date = date(dt.year, dt.month, dt.day)
         if self.observed:
-            if tuen_ng_date.weekday() == SUN:
+            if tuen_ng_date.weekday() == SU.weekday:
                 self[tuen_ng_date + rd(days=+1)] = day_following + name
             else:
                 self[tuen_ng_date] = name
@@ -177,7 +167,7 @@ class HongKong(HolidayBase):
         name = "Hong Kong Special Administrative Region Establishment Day"
         hksar_date = date(year, JUL, 1)
         if self.observed:
-            if hksar_date.weekday() == SUN:
+            if hksar_date.weekday() == SU.weekday:
                 self[hksar_date + rd(days=+1)] = day_following + name
             else:
                 self[hksar_date] = name
@@ -198,7 +188,7 @@ class HongKong(HolidayBase):
         dt = self.cnls.lunar_to_gre(year, 8, 15)
         mid_autumn_date = date(dt.year, dt.month, dt.day)
         if self.observed:
-            if mid_autumn_date.weekday() == SAT:
+            if mid_autumn_date.weekday() == SA.weekday:
                 self[mid_autumn_date] = name
             else:
                 self[mid_autumn_date + rd(days=+1)] = (
@@ -213,7 +203,7 @@ class HongKong(HolidayBase):
         national_date = date(year, OCT, 1)
         if self.observed:
             if (
-                national_date.weekday() == SUN
+                national_date.weekday() == SU.weekday
                 or national_date == mid_autumn_date
             ):
                 self[national_date + rd(days=+1)] = day_following + name
@@ -227,7 +217,7 @@ class HongKong(HolidayBase):
         dt = self.cnls.lunar_to_gre(year, 9, 9)
         chung_yeung_date = date(dt.year, dt.month, dt.day)
         if self.observed:
-            if chung_yeung_date.weekday() == SUN:
+            if chung_yeung_date.weekday() == SU.weekday:
                 self[chung_yeung_date + rd(days=+1)] = day_following + name
             else:
                 self[chung_yeung_date] = name
@@ -240,11 +230,11 @@ class HongKong(HolidayBase):
         second_after_christmas = "The second weekday after " + name
         christmas_date = date(year, DEC, 25)
         if self.observed:
-            if christmas_date.weekday() == SUN:
+            if christmas_date.weekday() == SU.weekday:
                 self[christmas_date] = name
                 self[christmas_date + rd(days=+1)] = first_after_christmas
                 self[christmas_date + rd(days=+2)] = second_after_christmas
-            elif christmas_date.weekday() == SAT:
+            elif christmas_date.weekday() == SA.weekday:
                 self[christmas_date] = name
                 self[christmas_date + rd(days=+2)] = first_after_christmas
             else:

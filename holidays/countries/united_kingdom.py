@@ -8,34 +8,14 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
-import warnings
 from datetime import date
 from typing import Any
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, FR
+from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
 
-from holidays.constants import (
-    MON,
-    TUE,
-    WED,
-    THU,
-    FRI,
-    SAT,
-    SUN,
-    WEEKEND,
-    JAN,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    NOV,
-    DEC,
-)
+from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -60,9 +40,9 @@ class UnitedKingdom(HolidayBase):
         if year >= 1974:
             name = "New Year's Day"
             self[date(year, JAN, 1)] = name
-            if self.observed and date(year, JAN, 1).weekday() == SUN:
+            if self.observed and date(year, JAN, 1).weekday() == SU.weekday:
                 self[date(year, JAN, 1) + rd(days=+1)] = name + " (Observed)"
-            elif self.observed and date(year, JAN, 1).weekday() == SAT:
+            elif self.observed and date(year, JAN, 1).weekday() == SA.weekday:
                 self[date(year, JAN, 1) + rd(days=+2)] = name + " (Observed)"
 
         # New Year Holiday
@@ -71,9 +51,9 @@ class UnitedKingdom(HolidayBase):
             if self.subdiv == "UK":
                 name += " [Scotland]"
             self[date(year, JAN, 2)] = name
-            if self.observed and date(year, JAN, 2).weekday() in WEEKEND:
+            if self.observed and self._is_weekend(date(year, JAN, 2)):
                 self[date(year, JAN, 2) + rd(days=+2)] = name + " (Observed)"
-            elif self.observed and date(year, JAN, 2).weekday() == MON:
+            elif self.observed and date(year, JAN, 2).weekday() == MO.weekday:
                 self[date(year, JAN, 2) + rd(days=+1)] = name + " (Observed)"
 
         # St. Patrick's Day
@@ -82,7 +62,7 @@ class UnitedKingdom(HolidayBase):
             if self.subdiv == "UK":
                 name += " [Northern Ireland]"
             self[date(year, MAR, 17)] = name
-            if self.observed and date(year, MAR, 17).weekday() in WEEKEND:
+            if self.observed and self._is_weekend(date(year, MAR, 17)):
                 self[date(year, MAR, 17) + rd(weekday=MO)] = (
                     name + " (Observed)"
                 )
@@ -111,9 +91,9 @@ class UnitedKingdom(HolidayBase):
         # Christmas Day
         name = "Christmas Day"
         self[date(year, DEC, 25)] = name
-        if self.observed and date(year, DEC, 25).weekday() == SAT:
+        if self.observed and date(year, DEC, 25).weekday() == SA.weekday:
             self[date(year, DEC, 27)] = name + " (Observed)"
-        elif self.observed and date(year, DEC, 25).weekday() == SUN:
+        elif self.observed and date(year, DEC, 25).weekday() == SU.weekday:
             self[date(year, DEC, 27)] = name + " (Observed)"
 
         # Overwrite to modify country specific holidays
@@ -145,19 +125,19 @@ class UnitedKingdom(HolidayBase):
                     dt = date(year, MAY, 8)
                 else:
                     dt = date(year, MAY, 1)
-                if dt.weekday() == MON:
+                if dt.weekday() == MO.weekday:
                     self[dt] = name
-                if dt.weekday() == TUE:
+                if dt.weekday() == TU.weekday:
                     self[dt + rd(days=+6)] = name
-                if dt.weekday() == WED:
+                if dt.weekday() == WE.weekday:
                     self[dt + rd(days=+5)] = name
-                if dt.weekday() == THU:
+                if dt.weekday() == TH.weekday:
                     self[dt + rd(days=+4)] = name
-                if dt.weekday() == FRI:
+                if dt.weekday() == FR.weekday:
                     self[dt + rd(days=+3)] = name
-                if dt.weekday() == SAT:
+                if dt.weekday() == SA.weekday:
                     self[dt + rd(days=+2)] = name
-                if dt.weekday() == SUN:
+                if dt.weekday() == SU.weekday:
                     self[dt + rd(days=+1)] = name
 
         # Spring bank holiday (last Monday in May)
@@ -179,9 +159,9 @@ class UnitedKingdom(HolidayBase):
         # Boxing Day
         name = "Boxing Day"
         self[date(year, DEC, 26)] = name
-        if self.observed and date(year, DEC, 26).weekday() == SAT:
+        if self.observed and date(year, DEC, 26).weekday() == SA.weekday:
             self[date(year, DEC, 28)] = name + " (Observed)"
-        elif self.observed and date(year, DEC, 26).weekday() == SUN:
+        elif self.observed and date(year, DEC, 26).weekday() == SU.weekday:
             self[date(year, DEC, 28)] = name + " (Observed)"
 
         # Special holidays

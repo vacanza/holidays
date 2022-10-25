@@ -13,8 +13,9 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import SA, SU
 
-from holidays.constants import SAT, SUN, MAY, JUL, SEP, OCT, DEC
+from holidays.constants import MAY, JUL, SEP, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -72,7 +73,7 @@ class Botswana(HolidayBase):
             if (
                 self.observed
                 and year > 2015
-                and k.weekday() == SAT
+                and k.weekday() == SA.weekday
                 and k.year == year
                 and v.upper() in ("BOXING DAY", "LABOUR DAY")
             ):
@@ -81,7 +82,7 @@ class Botswana(HolidayBase):
             if (
                 self.observed
                 and year > 1994
-                and k.weekday() == SUN
+                and k.weekday() == SU.weekday
                 and k.year == year
                 and v.upper() != "NEW YEAR'S DAY HOLIDAY"
             ):

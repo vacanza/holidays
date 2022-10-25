@@ -15,20 +15,8 @@ from datetime import date, timedelta
 from dateutil.relativedelta import relativedelta, WE
 
 import holidays
-from holidays.constants import (
-    APR,
-    AUG,
-    DEC,
-    FEB,
-    JAN,
-    JUL,
-    JUN,
-    MAR,
-    MAY,
-    NOV,
-    OCT,
-    SEP,
-)
+from holidays.constants import APR, AUG, DEC, FEB, JAN, JUL, JUN, MAR, MAY
+from holidays.constants import NOV, OCT, SEP
 
 
 class TestNewYorkStockExchange(unittest.TestCase):
@@ -428,7 +416,7 @@ class TestNewYorkStockExchange(unittest.TestCase):
                 begin + timedelta(days=n)
                 for n in range((end - begin).days + 1)
             ):
-                if not weekends and d.isoweekday() in [6, 7]:
+                if not weekends and d.weekday() in holidays.NYSE.weekend:
                     continue
                 if days is None or d.isoweekday() in days:
                     _list.append(d)

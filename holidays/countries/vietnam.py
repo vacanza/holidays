@@ -9,15 +9,16 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, datetime, timedelta
+from datetime import date
 
 from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import SA, SU
 
 # Installation: pip install korean_lunar_calendar
 # URL: https://github.com/usingsky/korean_lunar_calendar_py/
 from korean_lunar_calendar import KoreanLunarCalendar
 
-from holidays.constants import JAN, APR, MAY, SEP, SAT, SUN
+from holidays.constants import JAN, APR, MAY, SEP
 from holidays.holiday_base import HolidayBase
 
 
@@ -41,9 +42,9 @@ class Vietnam(HolidayBase):
         self[first_date] = name
         if self.observed:
             self[first_date] = name
-            if first_date.weekday() == SAT:
+            if first_date.weekday() == SA.weekday:
                 self[first_date + rd(days=+2)] = name + " observed"
-            elif first_date.weekday() == SUN:
+            elif first_date.weekday() == SU.weekday:
                 self[first_date + rd(days=+1)] = name + " observed"
 
         # Lunar New Year

@@ -13,22 +13,10 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import FR
+from dateutil.relativedelta import FR, SU
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import (
-    SUN,
-    JAN,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-)
+from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -57,7 +45,7 @@ class Bolivia(HolidayBase):
         if year >= 1825:
             self[date(year, JAN, 1)] = name
 
-        if self.observed and date(year, JAN, 1).weekday() == SUN:
+        if self.observed and date(year, JAN, 1).weekday() == SU.weekday:
             self[date(year, JAN, 1) + rd(days=+1)] = f"{name} (Observed)"
 
         # Plurinational State Foundation Day.
@@ -86,7 +74,7 @@ class Bolivia(HolidayBase):
         name = "Dia del trabajo"
         self[date(year, MAY, 1)] = name
 
-        if self.observed and date(year, MAY, 1).weekday() == SUN:
+        if self.observed and date(year, MAY, 1).weekday() == SU.weekday:
             self[date(year, MAY, 1) + rd(days=+1)] = f"{name} (Observed)"
 
         # Chuquisaca Day.
@@ -101,7 +89,7 @@ class Bolivia(HolidayBase):
         if year >= 2010:
             self[date(year, JUN, 21)] = name
 
-        if self.observed and date(year, JUN, 21).weekday() == SUN:
+        if self.observed and date(year, JUN, 21).weekday() == SU.weekday:
             self[date(year, JUN, 21) + rd(days=+1)] = f"{name} (Observed)"
 
         # La Paz Day.
@@ -117,7 +105,7 @@ class Bolivia(HolidayBase):
         if year >= 1825:
             self[date(year, AUG, 6)] = name
 
-        if self.observed and date(year, AUG, 6).weekday() > 5:
+        if self.observed and date(year, AUG, 6).weekday() > FR.weekday:
             self[date(year, AUG, 6) + rd(days=+1)] = f"{name} (Observed)"
 
         # Cochabamba Day.
@@ -136,7 +124,7 @@ class Bolivia(HolidayBase):
         name = "Todos Santos"
         self[date(year, NOV, 2)] = name
 
-        if self.observed and date(year, NOV, 2).weekday() == SUN:
+        if self.observed and date(year, NOV, 2).weekday() == SU.weekday:
             self[date(year, NOV, 2) + rd(days=+1)] = f"{name} (Observed)"
 
         # Potosí Day.
@@ -151,7 +139,7 @@ class Bolivia(HolidayBase):
         name = "Navidad"
         self[date(year, DEC, 25)] = name
 
-        if self.observed and date(year, DEC, 25).weekday() == SUN:
+        if self.observed and date(year, DEC, 25).weekday() == SU.weekday:
             self[date(year, DEC, 25) + rd(days=+1)] = f"{name} (Observed)"
 
 

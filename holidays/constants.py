@@ -9,7 +9,21 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+import warnings
+
+warnings.warn(
+    "Weekday constants (MON, TUE, WED, THU, FRI, SAT, SUN) are deprecated "
+    "in favor of MO, TU, WE, TH, FR, SA, SU objects from "
+    "dateutil.relativedelta.",
+    DeprecationWarning,
+)
 MON, TUE, WED, THU, FRI, SAT, SUN = range(7)
+
+
+warnings.warn(
+    "WEEKEND is deprecated. Use HolidayBase.weekend instead.",
+    DeprecationWarning,
+)
 WEEKEND = (SAT, SUN)
 
 JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC = range(1, 13)

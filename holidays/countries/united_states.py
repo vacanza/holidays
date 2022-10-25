@@ -12,29 +12,11 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import FR, MO, TH, TU
+from dateutil.relativedelta import MO, TH, TU, WE, FR, SA, SU
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import (
-    MON,
-    WED,
-    FRI,
-    SAT,
-    SUN,
-    WEEKEND,
-    JAN,
-    FEB,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-)
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
+from holidays.constants import OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -112,11 +94,11 @@ class UnitedStates(HolidayBase):
         if year > 1870:
             name = "New Year's Day"
             self[date(year, JAN, 1)] = name
-            if self.observed and date(year, JAN, 1).weekday() == SUN:
+            if self.observed and date(year, JAN, 1).weekday() == SU.weekday:
                 self[date(year, JAN, 1) + rd(days=+1)] = name + " (Observed)"
             # The following year's observed New Year's Day can be in this year
             # when it falls on a Friday (Jan 1st is a Saturday).
-            if self.observed and date(year, DEC, 31).weekday() == FRI:
+            if self.observed and date(year, DEC, 31).weekday() == FR.weekday:
                 self[date(year, DEC, 31)] = name + " (Observed)"
 
         # Epiphany
@@ -147,11 +129,11 @@ class UnitedStates(HolidayBase):
             name = "Inauguration Day"
             if (year - 1789) % 4 == 0 and year >= 1937:
                 self[date(year, JAN, 20)] = name
-                if date(year, JAN, 20).weekday() == SUN:
+                if date(year, JAN, 20).weekday() == SU.weekday:
                     self[date(year, JAN, 21)] = name + " (Observed)"
             elif (year - 1789) % 4 == 0:
                 self[date(year, MAR, 4)] = name
-                if date(year, MAR, 4).weekday() == SUN:
+                if date(year, MAR, 4).weekday() == SU.weekday:
                     self[date(year, MAR, 5)] = name + " (Observed)"
 
         # Martin Luther King Jr. Day
@@ -180,9 +162,9 @@ class UnitedStates(HolidayBase):
             self.subdiv in ("CT", "IL", "IA", "NJ", "NY") and year >= 1971
         ) or (self.subdiv == "CA" and 1971 <= year <= 2009):
             self[date(year, FEB, 12)] = name
-            if self.observed and date(year, FEB, 12).weekday() == SAT:
+            if self.observed and date(year, FEB, 12).weekday() == SA.weekday:
                 self[date(year, FEB, 11)] = name + " (Observed)"
-            elif self.observed and date(year, FEB, 12).weekday() == SUN:
+            elif self.observed and date(year, FEB, 12).weekday() == SU.weekday:
                 self[date(year, FEB, 13)] = name + " (Observed)"
 
         # Susan B. Anthony Day
@@ -208,7 +190,7 @@ class UnitedStates(HolidayBase):
             elif year >= 1879:
                 self[date(year, FEB, 22)] = name
         elif self.subdiv == "GA":
-            if date(year, DEC, 24).weekday() != WED:
+            if date(year, DEC, 24).weekday() != WE.weekday:
                 self[date(year, DEC, 24)] = name
             else:
                 self[date(year, DEC, 26)] = name
@@ -239,7 +221,7 @@ class UnitedStates(HolidayBase):
         if self.subdiv == "MA" and year >= 1901:
             name = "Evacuation Day"
             self[date(year, MAR, 17)] = name
-            if date(year, MAR, 17).weekday() in WEEKEND:
+            if self._is_weekend(date(year, MAR, 17)):
                 self[date(year, MAR, 17) + rd(weekday=MO)] = (
                     name + " (Observed)"
                 )
@@ -247,16 +229,16 @@ class UnitedStates(HolidayBase):
         # Emancipation Day
         if self.subdiv == "PR":
             self[date(year, MAR, 22)] = "Emancipation Day"
-            if self.observed and date(year, MAR, 22).weekday() == SUN:
+            if self.observed and date(year, MAR, 22).weekday() == SU.weekday:
                 self[date(year, MAR, 23)] = "Emancipation Day (Observed)"
 
         # Prince Jonah Kuhio Kalanianaole Day
         if self.subdiv == "HI" and year >= 1949:
             name = "Prince Jonah Kuhio Kalanianaole Day"
             self[date(year, MAR, 26)] = name
-            if self.observed and date(year, MAR, 26).weekday() == SAT:
+            if self.observed and date(year, MAR, 26).weekday() == SA.weekday:
                 self[date(year, MAR, 25)] = name + " (Observed)"
-            elif self.observed and date(year, MAR, 26).weekday() == SUN:
+            elif self.observed and date(year, MAR, 26).weekday() == SU.weekday:
                 self[date(year, MAR, 27)] = name + " (Observed)"
 
         # Seward's Day
@@ -270,7 +252,7 @@ class UnitedStates(HolidayBase):
         name = "César Chávez Day"
         if self.subdiv == "CA" and year >= 1995:
             self[date(year, MAR, 31)] = name
-            if self.observed and date(year, MAR, 31).weekday() == SUN:
+            if self.observed and date(year, MAR, 31).weekday() == SU.weekday:
                 self[date(year, APR, 1)] = name + " (Observed)"
         elif self.subdiv == "TX" and year >= 2000:
             self[date(year, MAR, 31)] = name
@@ -283,9 +265,9 @@ class UnitedStates(HolidayBase):
         if self.subdiv == "DC" and year >= 2005:
             name = "Emancipation Day"
             self[date(year, APR, 16)] = name
-            if self.observed and date(year, APR, 16).weekday() == SAT:
+            if self.observed and date(year, APR, 16).weekday() == SA.weekday:
                 self[date(year, APR, 15)] = name + " (Observed)"
-            elif self.observed and date(year, APR, 16).weekday() == SUN:
+            elif self.observed and date(year, APR, 16).weekday() == SU.weekday:
                 self[date(year, APR, 17)] = name + " (Observed)"
 
         # Patriots' Day
@@ -352,9 +334,9 @@ class UnitedStates(HolidayBase):
         if self.subdiv == "MO" and year >= 1949:
             name = "Truman Day"
             self[date(year, MAY, 8)] = name
-            if self.observed and date(year, MAY, 8).weekday() == SAT:
+            if self.observed and date(year, MAY, 8).weekday() == SA.weekday:
                 self[date(year, MAY, 7)] = name + " (Observed)"
-            elif self.observed and date(year, MAY, 8).weekday() == SUN:
+            elif self.observed and date(year, MAY, 8).weekday() == SU.weekday:
                 self[date(year, MAY, 10)] = name + " (Observed)"
 
         # Memorial Day
@@ -367,9 +349,9 @@ class UnitedStates(HolidayBase):
         if year > 2020:
             name = "Juneteenth National Independence Day"
             self[date(year, JUN, 19)] = name
-            if self.observed and date(year, JUN, 19).weekday() == SAT:
+            if self.observed and date(year, JUN, 19).weekday() == SA.weekday:
                 self[date(year, JUN, 18)] = name + " (Observed)"
-            elif self.observed and date(year, JUN, 19).weekday() == SUN:
+            elif self.observed and date(year, JUN, 19).weekday() == SU.weekday:
                 self[date(year, JUN, 20)] = name + " (Observed)"
 
         # Jefferson Davis Birthday
@@ -382,9 +364,9 @@ class UnitedStates(HolidayBase):
             name = "Kamehameha Day"
             self[date(year, JUN, 11)] = name
             if self.observed and year >= 2011:
-                if date(year, JUN, 11).weekday() == SAT:
+                if date(year, JUN, 11).weekday() == SA.weekday:
                     self[date(year, JUN, 10)] = name + " (Observed)"
-                elif date(year, JUN, 11).weekday() == SUN:
+                elif date(year, JUN, 11).weekday() == SU.weekday:
                     self[date(year, JUN, 12)] = name + " (Observed)"
         # Emancipation Day In Texas
         if self.subdiv == "TX" and year >= 1980:
@@ -394,9 +376,9 @@ class UnitedStates(HolidayBase):
         name = "West Virginia Day"
         if self.subdiv == "WV" and year >= 1927:
             self[date(year, JUN, 20)] = name
-            if self.observed and date(year, JUN, 20).weekday() == SAT:
+            if self.observed and date(year, JUN, 20).weekday() == SA.weekday:
                 self[date(year, JUN, 19)] = name + " (Observed)"
-            elif self.observed and date(year, JUN, 20).weekday() == SUN:
+            elif self.observed and date(year, JUN, 20).weekday() == SU.weekday:
                 self[date(year, JUN, 21)] = name + " (Observed)"
 
         # Emancipation Day in US Virgin Islands
@@ -407,9 +389,9 @@ class UnitedStates(HolidayBase):
         if year > 1870:
             name = "Independence Day"
             self[date(year, JUL, 4)] = name
-            if self.observed and date(year, JUL, 4).weekday() == SAT:
+            if self.observed and date(year, JUL, 4).weekday() == SA.weekday:
                 self[date(year, JUL, 4) + rd(days=-1)] = name + " (Observed)"
-            elif self.observed and date(year, JUL, 4).weekday() == SUN:
+            elif self.observed and date(year, JUL, 4).weekday() == SU.weekday:
                 self[date(year, JUL, 4) + rd(days=+1)] = name + " (Observed)"
 
         # Liberation Day (Guam)
@@ -420,15 +402,15 @@ class UnitedStates(HolidayBase):
         if self.subdiv == "UT" and year >= 1849:
             name = "Pioneer Day"
             self[date(year, JUL, 24)] = name
-            if self.observed and date(year, JUL, 24).weekday() == SAT:
+            if self.observed and date(year, JUL, 24).weekday() == SA.weekday:
                 self[date(year, JUL, 24) + rd(days=-1)] = name + " (Observed)"
-            elif self.observed and date(year, JUL, 24).weekday() == SUN:
+            elif self.observed and date(year, JUL, 24).weekday() == SU.weekday:
                 self[date(year, JUL, 24) + rd(days=+1)] = name + " (Observed)"
 
         # Constitution Day
         if self.subdiv == "PR":
             self[date(year, JUL, 25)] = "Constitution Day"
-            if self.observed and date(year, JUL, 25).weekday() == SUN:
+            if self.observed and date(year, JUL, 25).weekday() == SU.weekday:
                 self[date(year, JUL, 26)] = "Constitution Day (Observed)"
 
         # Victory Day
@@ -443,9 +425,9 @@ class UnitedStates(HolidayBase):
         if self.subdiv == "VT" and year >= 1778:
             name = "Bennington Battle Day"
             self[date(year, AUG, 16)] = name
-            if self.observed and date(year, AUG, 16).weekday() == SAT:
+            if self.observed and date(year, AUG, 16).weekday() == SA.weekday:
                 self[date(year, AUG, 15)] = name + " (Observed)"
-            elif self.observed and date(year, AUG, 16).weekday() == SUN:
+            elif self.observed and date(year, AUG, 16).weekday() == SU.weekday:
                 self[date(year, AUG, 17)] = name + " (Observed)"
 
         # Lyndon Baines Johnson Day
@@ -473,9 +455,9 @@ class UnitedStates(HolidayBase):
         if self.subdiv == "AK" and year >= 1867:
             name = "Alaska Day"
             self[date(year, OCT, 18)] = name
-            if self.observed and date(year, OCT, 18).weekday() == SAT:
+            if self.observed and date(year, OCT, 18).weekday() == SA.weekday:
                 self[date(year, OCT, 18) + rd(days=-1)] = name + " (Observed)"
-            elif self.observed and date(year, OCT, 18).weekday() == SUN:
+            elif self.observed and date(year, OCT, 18).weekday() == SU.weekday:
                 self[date(year, OCT, 18) + rd(days=+1)] = name + " (Observed)"
 
         # Nevada Day
@@ -484,9 +466,9 @@ class UnitedStates(HolidayBase):
             if year >= 2000:
                 dt += rd(weekday=FR(-1))
             self[dt] = "Nevada Day"
-            if self.observed and dt.weekday() == SAT:
+            if self.observed and dt.weekday() == SA.weekday:
                 self[dt + rd(days=-1)] = "Nevada Day (Observed)"
-            elif self.observed and dt.weekday() == SUN:
+            elif self.observed and dt.weekday() == SU.weekday:
                 self[dt + rd(days=+1)] = "Nevada Day (Observed)"
 
         # Liberty Day
@@ -516,15 +498,15 @@ class UnitedStates(HolidayBase):
             self[date(year, OCT, 1) + rd(weekday=MO(+4))] = name
         elif year >= 1938:
             self[date(year, NOV, 11)] = name
-            if self.observed and date(year, NOV, 11).weekday() == SAT:
+            if self.observed and date(year, NOV, 11).weekday() == SA.weekday:
                 self[date(year, NOV, 11) + rd(days=-1)] = name + " (Observed)"
-            elif self.observed and date(year, NOV, 11).weekday() == SUN:
+            elif self.observed and date(year, NOV, 11).weekday() == SU.weekday:
                 self[date(year, NOV, 11) + rd(days=+1)] = name + " (Observed)"
 
         # Discovery Day
         if self.subdiv == "PR":
             self[date(year, NOV, 19)] = "Discovery Day"
-            if self.observed and date(year, NOV, 19).weekday() == SUN:
+            if self.observed and date(year, NOV, 19).weekday() == SU.weekday:
                 self[date(year, NOV, 20)] = "Discovery Day (Observed)"
 
         # Thanksgiving
@@ -584,19 +566,19 @@ class UnitedStates(HolidayBase):
             self[date(year, DEC, 24)] = name
             name = name + " (Observed)"
             # If on Friday, observed on Thursday
-            if self.observed and date(year, DEC, 24).weekday() == FRI:
+            if self.observed and date(year, DEC, 24).weekday() == FR.weekday:
                 self[date(year, DEC, 24) + rd(days=-1)] = name
             # If on Saturday or Sunday, observed on Friday
-            elif self.observed and date(year, DEC, 24).weekday() in WEEKEND:
+            elif self.observed and self._is_weekend(date(year, DEC, 24)):
                 self[date(year, DEC, 24) + rd(weekday=FR(-1))] = name
 
         # Christmas Day
         if year > 1870:
             name = "Christmas Day"
             self[date(year, DEC, 25)] = "Christmas Day"
-            if self.observed and date(year, DEC, 25).weekday() == SAT:
+            if self.observed and date(year, DEC, 25).weekday() == SA.weekday:
                 self[date(year, DEC, 25) + rd(days=-1)] = name + " (Observed)"
-            elif self.observed and date(year, DEC, 25).weekday() == SUN:
+            elif self.observed and date(year, DEC, 25).weekday() == SU.weekday:
                 self[date(year, DEC, 25) + rd(days=+1)] = name + " (Observed)"
 
         # Day After Christmas
@@ -605,10 +587,10 @@ class UnitedStates(HolidayBase):
             self[date(year, DEC, 26)] = name
             name = name + " (Observed)"
             # If on Saturday or Sunday, observed on Monday
-            if self.observed and date(year, DEC, 26).weekday() in WEEKEND:
+            if self.observed and self._is_weekend(date(year, DEC, 26)):
                 self[date(year, DEC, 26) + rd(weekday=MO)] = name
             # If on Monday, observed on Tuesday
-            elif self.observed and date(year, DEC, 26).weekday() == MON:
+            elif self.observed and date(year, DEC, 26).weekday() == MO.weekday:
                 self[date(year, DEC, 26) + rd(days=+1)] = name
         elif self.subdiv == "TX" and year >= 1981:
             self[date(year, DEC, 26)] = "Day After Christmas"
@@ -621,7 +603,7 @@ class UnitedStates(HolidayBase):
         ):
             name = "New Year's Eve"
             self[date(year, DEC, 31)] = name
-            if self.observed and date(year, DEC, 31).weekday() == SAT:
+            if self.observed and date(year, DEC, 31).weekday() == SA.weekday:
                 self[date(year, DEC, 30)] = name + " (Observed)"
 
 

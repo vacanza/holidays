@@ -13,7 +13,7 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import FR
+from dateutil.relativedelta import FR, SU
 
 from holidays.constants import JAN, MAR, APR, MAY, AUG, DEC
 from holidays.holiday_base import HolidayBase
@@ -59,7 +59,7 @@ class Aruba(HolidayBase):
         # King's Day
         if year >= 2014:
             kings_day = date(year, APR, 27)
-            if kings_day.weekday() == 6:
+            if kings_day.weekday() == SU.weekday:
                 kings_day = kings_day - rd(days=1)
 
             self[kings_day] = "Aña di Rey [King's Day]"
@@ -70,7 +70,7 @@ class Aruba(HolidayBase):
             if year <= 1948:
                 queens_day = date(year, AUG, 31)
 
-            if queens_day.weekday() == 6:
+            if queens_day.weekday() == SU.weekday:
                 if year < 1980:
                     queens_day = queens_day + rd(days=1)
                 else:

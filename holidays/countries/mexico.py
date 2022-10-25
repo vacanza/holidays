@@ -12,9 +12,9 @@
 from datetime import date
 
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO
+from dateutil.relativedelta import MO, FR, SA, SU
 
-from holidays.constants import FRI, SAT, SUN, JAN, FEB, MAR, MAY, SEP, NOV, DEC
+from holidays.constants import JAN, FEB, MAR, MAY, SEP, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -28,11 +28,11 @@ class Mexico(HolidayBase):
         # New Year's Day
         name = "Año Nuevo [New Year's Day]"
         self[date(year, JAN, 1)] = name
-        if self.observed and date(year, JAN, 1).weekday() == SUN:
+        if self.observed and date(year, JAN, 1).weekday() == SU.weekday:
             self[date(year, JAN, 1) + rd(days=+1)] = name + " (Observed)"
         # The next year's observed New Year's Day can be in this year
         # when it falls on a Friday (Jan 1st is a Saturday)
-        if self.observed and date(year, DEC, 31).weekday() == FRI:
+        if self.observed and date(year, DEC, 31).weekday() == FR.weekday:
             self[date(year, DEC, 31)] = name + " (Observed)"
 
         # Constitution Day
@@ -59,17 +59,17 @@ class Mexico(HolidayBase):
         if year >= 1923:
             name = "Día del Trabajo [Labour Day]"
             self[date(year, MAY, 1)] = name
-            if self.observed and date(year, MAY, 1).weekday() == SAT:
+            if self.observed and date(year, MAY, 1).weekday() == SA.weekday:
                 self[date(year, MAY, 1) + rd(days=-1)] = name + " (Observed)"
-            elif self.observed and date(year, MAY, 1).weekday() == SUN:
+            elif self.observed and date(year, MAY, 1).weekday() == SU.weekday:
                 self[date(year, MAY, 1) + rd(days=+1)] = name + " (Observed)"
 
         # Independence Day
         name = "Día de la Independencia [Independence Day]"
         self[date(year, SEP, 16)] = name
-        if self.observed and date(year, SEP, 16).weekday() == SAT:
+        if self.observed and date(year, SEP, 16).weekday() == SA.weekday:
             self[date(year, SEP, 16) + rd(days=-1)] = name + " (Observed)"
-        elif self.observed and date(year, SEP, 16).weekday() == SUN:
+        elif self.observed and date(year, SEP, 16).weekday() == SU.weekday:
             self[date(year, SEP, 16) + rd(days=+1)] = name + " (Observed)"
 
         # Revolution Day
@@ -88,16 +88,16 @@ class Mexico(HolidayBase):
         name += " [Change of Federal Government]"
         if year >= 1970 and (2096 - year) % 6 == 0:
             self[date(year, DEC, 1)] = name
-            if self.observed and date(year, DEC, 1).weekday() == SAT:
+            if self.observed and date(year, DEC, 1).weekday() == SA.weekday:
                 self[date(year, DEC, 1) + rd(days=-1)] = name + " (Observed)"
-            elif self.observed and date(year, DEC, 1).weekday() == SUN:
+            elif self.observed and date(year, DEC, 1).weekday() == SU.weekday:
                 self[date(year, DEC, 1) + rd(days=+1)] = name + " (Observed)"
 
         # Christmas
         self[date(year, DEC, 25)] = "Navidad [Christmas]"
-        if self.observed and date(year, DEC, 25).weekday() == SAT:
+        if self.observed and date(year, DEC, 25).weekday() == SA.weekday:
             self[date(year, DEC, 25) + rd(days=-1)] = name + " (Observed)"
-        elif self.observed and date(year, DEC, 25).weekday() == SUN:
+        elif self.observed and date(year, DEC, 25).weekday() == SU.weekday:
             self[date(year, DEC, 25) + rd(days=+1)] = name + " (Observed)"
 
 

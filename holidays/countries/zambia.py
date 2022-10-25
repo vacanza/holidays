@@ -13,8 +13,9 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import SU
 
-from holidays.constants import SUN, JAN, MAR, APR, MAY, JUL, AUG, OCT, DEC
+from holidays.constants import JAN, MAR, APR, MAY, JUL, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -81,7 +82,7 @@ class Zambia(HolidayBase):
         # it rolls over to the following Monday
         for k, v in list(self.items()):
             if self.observed and year > 1964:
-                if k.weekday() == SUN:
+                if k.weekday() == SU.weekday:
                     self[k + rd(days=1)] = v + " (Observed)"
 
         # Once-off public holidays

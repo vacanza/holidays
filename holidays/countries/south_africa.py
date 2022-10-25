@@ -13,22 +13,10 @@ from datetime import date, datetime
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import MO, FR, SU
 
-from holidays.constants import (
-    FRI,
-    SUN,
-    JAN,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-)
+from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT
+from holidays.constants import NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -118,7 +106,7 @@ class SouthAfrica(HolidayBase):
             if (
                 self.observed
                 and year > 1994
-                and k.weekday() == SUN
+                and k.weekday() == SU.weekday
                 and k.year == year
             ):
                 add_days = 1
@@ -135,7 +123,7 @@ class SouthAfrica(HolidayBase):
         if 1986 < year < 1990:
             historic_workers_day = datetime(year, MAY, 1)
             # observed on first Friday in May
-            while historic_workers_day.weekday() != FRI:
+            while historic_workers_day.weekday() != FR.weekday:
                 historic_workers_day += rd(days=1)
 
             self[historic_workers_day] = "Workers' Day"
@@ -155,7 +143,7 @@ class SouthAfrica(HolidayBase):
         if 1951 < year < 1961:
             queens_birthday = datetime(year, JUN, 7)
             # observed on second Monday in June
-            while queens_birthday.weekday() != 0:
+            while queens_birthday.weekday() != MO.weekday:
                 queens_birthday += rd(days=1)
 
             self[queens_birthday] = "Queen's Birthday"
@@ -166,14 +154,14 @@ class SouthAfrica(HolidayBase):
         if 1909 < year < 1952:
             kings_birthday = datetime(year, AUG, 1)
             # observed on first Monday in August
-            while kings_birthday.weekday() != 0:
+            while kings_birthday.weekday() != MO.weekday:
                 kings_birthday += rd(days=1)
 
             self[kings_birthday] = "King's Birthday"
 
         if 1951 < year < 1980:
             settlers_day = datetime(year, SEP, 1)
-            while settlers_day.weekday() != 0:
+            while settlers_day.weekday() != MO.weekday:
                 settlers_day += rd(days=1)
 
             self[settlers_day] = "Settlers' Day"

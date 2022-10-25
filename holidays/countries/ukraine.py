@@ -12,26 +12,11 @@
 from datetime import date
 
 from dateutil.easter import EASTER_ORTHODOX, easter
-from dateutil.relativedelta import MO
+from dateutil.relativedelta import MO, FR, SA
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import (
-    JAN,
-    APR,
-    MAR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-    FRI,
-    SAT,
-    SUN,
-    WEEKEND,
-)
+from holidays.constants import JAN, APR, MAR, MAY, JUN, JUL, AUG, SEP, OCT
+from holidays.constants import NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -68,7 +53,7 @@ class Ukraine(HolidayBase):
             if (
                 self.observed
                 and (1996 <= year <= 1998 or year >= 2000)
-                and dt.weekday() in WEEKEND
+                and self._is_weekend(dt)
             ):
                 self[dt + rd(weekday=MO(+1))] = "Вихідний за 1 січня"
 
@@ -79,7 +64,7 @@ class Ukraine(HolidayBase):
             if (
                 self.observed
                 and (1996 <= year <= 1998 or year >= 2000)
-                and dt.weekday() in WEEKEND
+                and self._is_weekend(dt)
             ):
                 self[dt + rd(weekday=MO(+1))] = "Вихідний за 7 січня"
 
@@ -90,7 +75,7 @@ class Ukraine(HolidayBase):
             if (
                 self.observed
                 and (1995 <= year <= 1997 or year >= 2000)
-                and dt.weekday() in WEEKEND
+                and self._is_weekend(dt)
             ):
                 self[dt + rd(weekday=MO(+1))] = "Вихідний за 8 березня"
 
@@ -130,7 +115,7 @@ class Ukraine(HolidayBase):
         if (
             self.observed
             and (1995 <= year <= 1997 or year >= 1999)
-            and dt.weekday() in WEEKEND
+            and self._is_weekend(dt)
         ):
             name = "Вихідний за 1 травня"
             if year <= 2017:
@@ -145,7 +130,7 @@ class Ukraine(HolidayBase):
             if (
                 self.observed
                 and (1995 <= year <= 1997 or year >= 1999)
-                and dt.weekday() in WEEKEND
+                and self._is_weekend(dt)
             ):
                 self[dt + rd(days=+2)] = "Вихідний за 2 травня"
 
@@ -165,7 +150,7 @@ class Ukraine(HolidayBase):
         if (
             self.observed
             and (1995 <= year <= 1997 or year >= 1999)
-            and dt.weekday() in WEEKEND
+            and self._is_weekend(dt)
         ):
             self[dt + rd(weekday=MO(+1))] = "Вихідний за 9 травня"
 
@@ -176,7 +161,7 @@ class Ukraine(HolidayBase):
             if (
                 self.observed
                 and (year == 1997 or year >= 1999)
-                and dt.weekday() in WEEKEND
+                and self._is_weekend(dt)
             ):
                 self[dt + rd(weekday=MO(+1))] = "Вихідний за 28 червня"
 
@@ -184,7 +169,7 @@ class Ukraine(HolidayBase):
         if year >= 2022:
             dt = date(year, JUL, 28)
             self[dt] = "День Української Державності"
-            if self.observed and dt.weekday() in WEEKEND:
+            if self.observed and self._is_weekend(dt):
                 self[dt + rd(weekday=MO(+1))] = "Вихідний за 28 липня"
 
         # Independence Day
@@ -195,7 +180,7 @@ class Ukraine(HolidayBase):
             if (
                 self.observed
                 and (1995 <= year <= 1997 or year >= 1999)
-                and dt.weekday() in WEEKEND
+                and self._is_weekend(dt)
             ):
                 self[dt + rd(weekday=MO(+1))] = "Вихідний за 24 серпня"
         elif year == 1991:
@@ -208,7 +193,7 @@ class Ukraine(HolidayBase):
             if year >= 2021:
                 name = "День захисників і захисниць України"
             self[dt] = name
-            if self.observed and dt.weekday() in WEEKEND:
+            if self.observed and self._is_weekend(dt):
                 self[dt + rd(weekday=MO(+1))] = "Вихідний за 14 жовтня"
 
         # October Revolution
@@ -218,16 +203,16 @@ class Ukraine(HolidayBase):
             self[dt] = name
             self[dt + rd(days=+1)] = name
             if self.observed and (1995 <= year <= 1997 or year >= 1999):
-                if dt.weekday() in (SAT, SUN):
+                if self._is_weekend(dt):
                     self[dt + rd(days=+2)] = "Вихідний за 7 листопада"
-                if dt.weekday() in (FRI, SAT):
+                if dt.weekday() in (FR.weekday, SA.weekday):
                     self[dt + rd(days=+3)] = "Вихідний за 8 листопада"
 
         # Christmas Day (Gregorian calendar)
         if year >= 2017:
             dt = date(year, DEC, 25)
             self[dt] = "Різдво Христове (за григоріанським календарем)"
-            if self.observed and dt.weekday() in WEEKEND:
+            if self.observed and self._is_weekend(dt):
                 self[dt + rd(weekday=MO(+1))] = "Вихідний за 25 грудня"
 
         # USSR holidays

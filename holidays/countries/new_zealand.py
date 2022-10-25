@@ -13,24 +13,9 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, TU, WE, FR
+from dateutil.relativedelta import MO, TU, WE, TH, FR
 
-from holidays.constants import (
-    TUE,
-    WED,
-    THU,
-    WEEKEND,
-    JAN,
-    FEB,
-    MAR,
-    APR,
-    JUN,
-    JUL,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-)
+from holidays.constants import JAN, FEB, MAR, APR, JUN, JUL, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -97,13 +82,13 @@ class NewZealand(HolidayBase):
         name = "New Year's Day"
         jan1 = date(year, JAN, 1)
         self[jan1] = name
-        if self.observed and jan1.weekday() in WEEKEND:
+        if self.observed and self._is_weekend(jan1):
             self[date(year, JAN, 3)] = name + " (Observed)"
 
         name = "Day after New Year's Day"
         jan2 = date(year, JAN, 2)
         self[jan2] = name
-        if self.observed and jan2.weekday() in WEEKEND:
+        if self.observed and self._is_weekend(jan2):
             self[date(year, JAN, 4)] = name + " (Observed)"
 
         # Waitangi Day
@@ -113,7 +98,7 @@ class NewZealand(HolidayBase):
                 name = "Waitangi Day"
             feb6 = date(year, FEB, 6)
             self[feb6] = name
-            if self.observed and year >= 2014 and feb6.weekday() in WEEKEND:
+            if self.observed and year >= 2014 and self._is_weekend(feb6):
                 self[feb6 + rd(weekday=MO)] = name + " (Observed)"
 
         # Easter
@@ -125,7 +110,7 @@ class NewZealand(HolidayBase):
             name = "Anzac Day"
             apr25 = date(year, APR, 25)
             self[apr25] = name
-            if self.observed and year >= 2014 and apr25.weekday() in WEEKEND:
+            if self.observed and year >= 2014 and self._is_weekend(apr25):
                 self[apr25 + rd(weekday=MO)] = name + " (Observed)"
 
         # Sovereign's Birthday
@@ -227,14 +212,14 @@ class NewZealand(HolidayBase):
         name = "Christmas Day"
         dec25 = date(year, DEC, 25)
         self[dec25] = name
-        if self.observed and dec25.weekday() in WEEKEND:
+        if self.observed and self._is_weekend(dec25):
             self[date(year, DEC, 27)] = name + " (Observed)"
 
         # Boxing Day
         name = "Boxing Day"
         dec26 = date(year, DEC, 26)
         self[dec26] = name
-        if self.observed and dec26.weekday() in WEEKEND:
+        if self.observed and self._is_weekend(dec26):
             self[date(year, DEC, 28)] = name + " (Observed)"
 
         # Province Anniversary Day
@@ -245,7 +230,7 @@ class NewZealand(HolidayBase):
             else:
                 name = "Auckland Anniversary Day"
                 dt = date(year, JAN, 29)
-            if dt.weekday() in (TUE, WED, THU):
+            if dt.weekday() in (TU.weekday, WE.weekday, TH.weekday):
                 self[dt + rd(weekday=MO(-1))] = name
             else:
                 self[dt + rd(weekday=MO)] = name
@@ -262,7 +247,7 @@ class NewZealand(HolidayBase):
         elif self.subdiv in ("WGN", "Wellington"):
             name = "Wellington Anniversary Day"
             jan22 = date(year, JAN, 22)
-            if jan22.weekday() in (TUE, WED, THU):
+            if jan22.weekday() in (TU.weekday, WE.weekday, TH.weekday):
                 self[jan22 + rd(weekday=MO(-1))] = name
             else:
                 self[jan22 + rd(weekday=MO)] = name
@@ -275,7 +260,7 @@ class NewZealand(HolidayBase):
         elif self.subdiv in ("NSN", "Nelson"):
             name = "Nelson Anniversary Day"
             feb1 = date(year, FEB, 1)
-            if feb1.weekday() in (TUE, WED, THU):
+            if feb1.weekday() in (TU.weekday, WE.weekday, TH.weekday):
                 self[feb1 + rd(weekday=MO(-1))] = name
             else:
                 self[feb1 + rd(weekday=MO)] = name
@@ -296,7 +281,7 @@ class NewZealand(HolidayBase):
             # Observance varies?!?!
             if year == 2005:  # special case?!?!
                 self[date(year, DEC, 5)] = name
-            elif dec1.weekday() in (TUE, WED, THU):
+            elif dec1.weekday() in (TU.weekday, WE.weekday, TH.weekday):
                 self[dec1 + rd(weekday=MO(-1))] = name
             else:
                 self[dec1 + rd(weekday=MO)] = name
@@ -305,7 +290,7 @@ class NewZealand(HolidayBase):
             name = "Otago Anniversary Day"
             mar23 = date(year, MAR, 23)
             # there is no easily determined single day of local observance?!?!
-            if mar23.weekday() in (TUE, WED, THU):
+            if mar23.weekday() in (TU.weekday, WE.weekday, TH.weekday):
                 dt = mar23 + rd(weekday=MO(-1))
             else:
                 dt = mar23 + rd(weekday=MO)
@@ -319,7 +304,7 @@ class NewZealand(HolidayBase):
             if year > 2011:
                 self[easter(year) + rd(weekday=TU)] = name
             else:
-                if jan17.weekday() in (TUE, WED, THU):
+                if jan17.weekday() in (TU.weekday, WE.weekday, TH.weekday):
                     self[jan17 + rd(weekday=MO(-1))] = name
                 else:
                     self[jan17 + rd(weekday=MO)] = name
@@ -327,7 +312,7 @@ class NewZealand(HolidayBase):
         elif self.subdiv in ("CIT", "Chatham Islands"):
             name = "Chatham Islands Anniversary Day"
             nov30 = date(year, NOV, 30)
-            if nov30.weekday() in (TUE, WED, THU):
+            if nov30.weekday() in (TU.weekday, WE.weekday, TH.weekday):
                 self[nov30 + rd(weekday=MO(-1))] = name
             else:
                 self[nov30 + rd(weekday=MO)] = name

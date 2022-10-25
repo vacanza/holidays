@@ -13,26 +13,9 @@ from typing import List
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO
+from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
 
-from holidays.constants import (
-    MON,
-    TUE,
-    WED,
-    THU,
-    FRI,
-    SAT,
-    SUN,
-    WEEKEND,
-    JAN,
-    FEB,
-    MAR,
-    MAY,
-    JUN,
-    AUG,
-    OCT,
-    DEC,
-)
+from holidays.constants import JAN, FEB, MAR, MAY, JUN, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -57,7 +40,7 @@ class Ireland(HolidayBase):
             dt = date(year, FEB, 1)
             self[dt] = "St. Brigid's Day"
 
-            if self.observed and dt.weekday() != FRI:
+            if self.observed and dt.weekday() != FR.weekday:
                 self[
                     date(year, FEB, 1) + rd(weekday=MO)
                 ] = "St. Brigid's Day (Observed)"
@@ -69,7 +52,7 @@ class Ireland(HolidayBase):
         # St. Patrick's Day
         name = "St. Patrick's Day"
         self[date(year, MAR, 17)] = name
-        if self.observed and date(year, MAR, 17).weekday() in WEEKEND:
+        if self.observed and self._is_weekend(date(year, MAR, 17)):
             self[date(year, MAR, 17) + rd(weekday=MO)] = name + " (Observed)"
 
         # Easter Monday
@@ -82,19 +65,19 @@ class Ireland(HolidayBase):
                 dt = date(year, MAY, 8)
             else:
                 dt = date(year, MAY, 1)
-            if dt.weekday() == MON:
+            if dt.weekday() == MO.weekday:
                 self[dt] = name
-            if dt.weekday() == TUE:
+            if dt.weekday() == TU.weekday:
                 self[dt + rd(days=+6)] = name
-            if dt.weekday() == WED:
+            if dt.weekday() == WE.weekday:
                 self[dt + rd(days=+5)] = name
-            if dt.weekday() == THU:
+            if dt.weekday() == TH.weekday:
                 self[dt + rd(days=+4)] = name
-            if dt.weekday() == FRI:
+            if dt.weekday() == FR.weekday:
                 self[dt + rd(days=+3)] = name
-            if dt.weekday() == SAT:
+            if dt.weekday() == SA.weekday:
                 self[dt + rd(days=+2)] = name
-            if dt.weekday() == SUN:
+            if dt.weekday() == SU.weekday:
                 self[dt + rd(days=+1)] = name
 
         # June bank holiday (first Monday in June)
@@ -109,13 +92,15 @@ class Ireland(HolidayBase):
         # Christmas Day
         name = "Christmas Day"
         self[date(year, DEC, 25)] = "Christmas Day"
-        if self.observed and date(year, DEC, 25).weekday() in WEEKEND:
-            self[date(year, DEC, 25) + rd(weekday=MON)] = name + " (Observed)"
+        if self.observed and self._is_weekend(date(year, DEC, 25)):
+            self[date(year, DEC, 25) + rd(weekday=MO.weekday)] = (
+                name + " (Observed)"
+            )
 
         # St. Stephen's Day
         name = "St. Stephen's Day"
         self[date(year, DEC, 26)] = name
-        if self.observed and date(year, DEC, 26).weekday() in WEEKEND:
+        if self.observed and self._is_weekend(date(year, DEC, 26)):
             self[date(year, DEC, 26) + rd(days=2)] = name + " (Observed)"
 
 

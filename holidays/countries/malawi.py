@@ -13,8 +13,9 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import SA, SU
 
-from holidays.constants import SAT, SUN, JAN, MAR, MAY, JUL, OCT, DEC
+from holidays.constants import JAN, MAR, MAY, JUL, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -48,9 +49,9 @@ class Malawi(HolidayBase):
 
         for k, v in list(self.items()):
             if self.observed and year > 1994:
-                if k.weekday() == SUN:
+                if k.weekday() == SU.weekday:
                     self[k + rd(days=1)] = v + " (Observed)"
-                elif k.weekday() == SAT:
+                elif k.weekday() == SA.weekday:
                     self[k + rd(days=2)] = v + " (Observed)"
 
 

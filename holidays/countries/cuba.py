@@ -13,9 +13,9 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO
+from dateutil.relativedelta import MO, SU
 
-from holidays.constants import SUN, JAN, MAY, JUL, OCT, DEC
+from holidays.constants import JAN, MAY, JUL, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -45,7 +45,7 @@ class Cuba(HolidayBase):
         if (
             year <= 2013
             and self.observed
-            and date(year, JAN, 1).weekday() == SUN
+            and date(year, JAN, 1).weekday() == SU.weekday
         ):
             self[date(year, JAN, 1) + rd(weekday=MO)] = name + " (Observed)"
 
@@ -62,7 +62,7 @@ class Cuba(HolidayBase):
 
         name = "Día Internacional de los Trabajadores [Labour Day]"
         self[date(year, MAY, 1)] = name
-        if self.observed and date(year, MAY, 1).weekday() == SUN:
+        if self.observed and date(year, MAY, 1).weekday() == SU.weekday:
             self[date(year, MAY, 1) + rd(weekday=MO)] = name + " (Observed)"
 
         self[date(year, JUL, 25)] = (
@@ -81,7 +81,7 @@ class Cuba(HolidayBase):
 
         name = "Inicio de las Guerras de Independencia [Independence Day]"
         self[date(year, OCT, 10)] = name
-        if self.observed and date(year, OCT, 10).weekday() == SUN:
+        if self.observed and date(year, OCT, 10).weekday() == SU.weekday:
             self[date(year, OCT, 10) + rd(weekday=MO)] = name + " (Observed)"
 
         # In 1969, Christmas was cancelled for the sugar harvest but then was

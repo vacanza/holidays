@@ -13,21 +13,9 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import FR, SA
+from dateutil.relativedelta import MO, TH, FR, SA, SU
 
-from holidays.constants import (
-    MON,
-    THU,
-    FRI,
-    SAT,
-    SUN,
-    JAN,
-    MAR,
-    MAY,
-    JUN,
-    OCT,
-    DEC,
-)
+from holidays.constants import JAN, MAR, MAY, JUN, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -61,12 +49,12 @@ class Sweden(HolidayBase):
         if self.include_sundays:
             first_day_of_year = date(year, JAN, 1)
             first_sunday_of_year = first_day_of_year + rd(
-                days=SUN - first_day_of_year.weekday()
+                days=SU.weekday - first_day_of_year.weekday()
             )
             cur_date = first_sunday_of_year
 
             while cur_date < date(year + 1, 1, 1):
-                assert cur_date.weekday() == SUN
+                assert cur_date.weekday() == SU.weekday
 
                 self[cur_date] = "Söndag"
                 cur_date += rd(days=7)
@@ -100,14 +88,14 @@ class Sweden(HolidayBase):
         pentecost = e + rd(days=49)
         pentecost_day_two = e + rd(days=50)
 
-        assert maundy_thursday.weekday() == THU
-        assert good_friday.weekday() == FRI
-        assert easter_saturday.weekday() == SAT
-        assert resurrection_sunday.weekday() == SUN
-        assert easter_monday.weekday() == MON
-        assert ascension_thursday.weekday() == THU
-        assert pentecost.weekday() == SUN
-        assert pentecost_day_two.weekday() == MON
+        assert maundy_thursday.weekday() == TH.weekday
+        assert good_friday.weekday() == FR.weekday
+        assert easter_saturday.weekday() == SA.weekday
+        assert resurrection_sunday.weekday() == SU.weekday
+        assert easter_monday.weekday() == MO.weekday
+        assert ascension_thursday.weekday() == TH.weekday
+        assert pentecost.weekday() == SU.weekday
+        assert pentecost_day_two.weekday() == MO.weekday
 
         self[good_friday] = "Långfredagen"
         self[resurrection_sunday] = "Påskdagen"
