@@ -13,7 +13,7 @@ import unittest
 from datetime import date, timedelta
 
 import holidays
-from holidays.constants import APR, DEC, FEB, JAN, JUL, JUN, MAR, MAY, OCT
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, OCT, DEC
 
 
 class TestVenezuela(unittest.TestCase):

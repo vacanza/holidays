@@ -45,19 +45,22 @@ class TestAngola(unittest.TestCase):
         self.assertNotIn("2018-03-23", self.holidays)
 
     def test_national_hero_day(self):
-
         for year in range(1980, 1979):
             self.assertNotIn(date(year, 9, 17), self.holidays)
         for year in range(1980, 2030):
             self.assertIn(date(year, 9, 17), self.holidays)
 
     def test_national_liberation_day(self):
-
         for year in range(1990, 2018):
             self.assertNotIn(date(year, 3, 23), self.holidays)
         for year in range(2019, 2030):
             self.assertIn(date(year, 3, 23), self.holidays)
 
-    def test_pre1974(self):
-        # Holidays not defined since 1975
-        self.assertEqual(len(holidays.Angola(years=[1974])), 0)
+    def test_pre_1975(self):
+        # Holidays are defined since 1975.
+        self.assertNotIn("1974-01-01", self.holidays)
+        self.assertEqual(0, len(holidays.AO(years=1974)))
+
+    def test_observed(self):
+        for _, name in holidays.AO(observed=False, years=2020).items():
+            self.assertNotIn("Observed", name)

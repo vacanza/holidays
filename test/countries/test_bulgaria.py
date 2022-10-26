@@ -30,17 +30,9 @@ class TestBulgaria(unittest.TestCase):
         for year in range(1990, 2020):
             self.assertIn(date(year, 3, 3), self.holidays)
 
-    def test_friday_holiday(self):
-        for year in range(1990, 2020):
-            self.assertIn(date(year, 4, 30), self.holidays)
-
     def test_labour_day(self):
         for year in range(1990, 2020):
             self.assertIn(date(year, 5, 1), self.holidays)
-
-    def test_resurrection_monday(self):
-        for year in range(1990, 2020):
-            self.assertIn(date(year, 5, 3), self.holidays)
 
     def test_saint_georges_day(self):
         for year in range(1990, 2020):
@@ -95,7 +87,13 @@ class TestBulgaria(unittest.TestCase):
             (2022, 4, 24),
         ]:
             easter = date(year, month, day)
-            easter_saturday = easter - timedelta(days=1)
             easter_friday = easter - timedelta(days=2)
-            for holiday in [easter_friday, easter_saturday, easter]:
+            easter_saturday = easter - timedelta(days=1)
+            easter_monday = easter + timedelta(days=1)
+            for holiday in [
+                easter_friday,
+                easter_saturday,
+                easter,
+                easter_monday,
+            ]:
                 self.assertIn(holiday, self.holidays)
