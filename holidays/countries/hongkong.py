@@ -184,8 +184,7 @@ class HongKong(HolidayBase):
         mid_autumn_date = date(dt.year, dt.month, dt.day)
         if self.observed:
             if mid_autumn_date.weekday() == SAT:
-                self[mid_autumn_date + rd(days=+2)] = "The second day following " + name
-                mid_autumn_date = mid_autumn_date + rd(days=+2)
+                self[mid_autumn_date] = name
             else:
                 self[mid_autumn_date + rd(days=+1)] = (
                     day_following + "the " + name
