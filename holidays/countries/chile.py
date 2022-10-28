@@ -145,7 +145,7 @@ class Chile(HolidayBase):
         elif year < 2020:
             self[date(year, OCT, 12)] = (
                 "Día del Respeto a la Diversidad"
-                " [Day of the Meeting "
+                " [Day of the Meeting"
                 " of Two Worlds]"
             )
         else:
@@ -164,7 +164,7 @@ class Chile(HolidayBase):
         # National Day of the Evangelical and Protestant Churches (Law 20.299)
         if year > 2007:
             name = (
-                "Día Nacional de las Iglesias Evangélicas y Protestantes "
+                "Día Nacional de las Iglesias Evangélicas y Protestantes"
                 " [Reformation Day]"
             )
             self[date(year, OCT, 31)] = name
@@ -174,9 +174,9 @@ class Chile(HolidayBase):
         self[date(year, NOV, 1)] = name
 
         # Immaculate Conception (Law 2.977)
-        self[date(year, DEC, 8)] = (
-            "La Inmaculada Concepción" " [Immaculate Conception]"
-        )
+        self[
+            date(year, DEC, 8)
+        ] = "La Inmaculada Concepción [Immaculate Conception]"
 
         # Christmas (Law 2.977)
         self[date(year, DEC, 25)] = "Navidad [Christmas]"
