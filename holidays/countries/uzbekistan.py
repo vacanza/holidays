@@ -11,7 +11,7 @@
 
 from datetime import date
 
-from holidays.constants import DEC, JAN, MAR, MAY, OCT, SEP
+from holidays.constants import JAN, MAR, MAY, SEP, OCT, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
 

@@ -13,11 +13,9 @@ from datetime import date
 
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import AUG, JAN, JUL, MAR, MAY, NOV, SAT, SUN
+from holidays.constants import JAN, MAR, MAY, JUL, AUG, NOV
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
-
-WEEKEND = (SAT, SUN)
 
 
 class Morocco(HolidayBase):

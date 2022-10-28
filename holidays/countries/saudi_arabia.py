@@ -13,7 +13,7 @@ from datetime import date
 
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import FEB, FRI, SAT, SEP, THU
+from holidays.constants import THU, FRI, SAT, FEB, SEP
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
 

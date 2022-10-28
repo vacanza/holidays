@@ -13,7 +13,7 @@ from datetime import date, timedelta
 
 from dateutil.easter import easter
 
-from holidays.constants import AUG, DEC, JAN, JUN, MAY, NOV, OCT
+from holidays.constants import JAN, MAY, JUN, AUG, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 

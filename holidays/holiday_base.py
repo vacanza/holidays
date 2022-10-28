@@ -29,9 +29,6 @@ from typing import (
 
 from dateutil.parser import parse
 
-if TYPE_CHECKING:
-    from holidays.utils import country_holidays  # required by docstring
-
 DateLike = Union[date, datetime, str, float, int]
 
 
@@ -336,13 +333,13 @@ class HolidayBase(Dict[date, str]):
           :func:`dateutil.parser.parse`,
         * or a :class:`float` or :class:`int` representing a POSIX timestamp.
         """
+
         if not isinstance(key, (date, datetime, str, float, int)):
             raise TypeError("Cannot convert type '%s' to date." % type(key))
 
-        contained = dict.__contains__(
+        return dict.__contains__(
             cast("Mapping[Any, Any]", self), self.__keytransform__(key)
         )
-        return contained
 
     def __getitem__(self, key: DateLike) -> Any:
         if isinstance(key, slice):
@@ -580,11 +577,6 @@ class HolidayBase(Dict[date, str]):
     def __radd__(self, other: Any) -> "HolidayBase":
         return self.__add__(other)
 
-    def __pos__(self) -> "HolidayBase":
-        """Enables type checking for the unary operator + (e.g. a + b instead of
-        a.__add__(b))."""
-        pass
-
     def _populate(self, year: int) -> None:
         """
         Populate holidays main method.
@@ -721,10 +713,11 @@ country_holidays('CA') + country_holidays('MX')
                 arg = getattr(h1, attr, None) or getattr(h2, attr, None)
                 if arg:
                     kwargs[attr] = arg
-        if kwargs.__contains__("market"):
-            self.market = kwargs.pop("market")
-        if kwargs.__contains__("country"):
+
+        if "country" in kwargs:
             self.country = kwargs.pop("country")
+        if "market" in kwargs:
+            self.market = kwargs.pop("market")
 
         HolidayBase.__init__(self, **kwargs)
 

@@ -34,3 +34,7 @@ class TestMadagascar(unittest.TestCase):
 
     def test_not_holiday(self):
         self.assertNotIn(date(2022, 4, 20), self.holidays)
+
+    def test_1946(self):
+        mg_holidays = holidays.MG(years=1946)
+        self.assertEqual(0, len(mg_holidays))

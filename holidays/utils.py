@@ -18,6 +18,7 @@ from functools import lru_cache
 from typing import Dict, Iterable, List, Optional, Union
 
 from hijri_converter import convert
+from hijri_converter.ummalqura import GREGORIAN_RANGE
 
 import holidays.countries
 import holidays.financial
@@ -327,12 +328,23 @@ def _islamic_to_gre(Gyear: int, Hmonth: int, Hday: int) -> List[date]:
         List of Gregorian dates within the Gregorian year specified that
         matches the Islamic (Lunar Hijrī) calendar day and month specified.
     """
+    gre_dates: List[date] = []
+
+    # To avoid hijri_converter check range OverflowError.
+    dt = (Gyear, Hmonth, Hday)
+    dt_min, dt_max = GREGORIAN_RANGE
+    if dt < dt_min or dt > dt_max:
+        return gre_dates
+
     Hyear = convert.Gregorian(Gyear, 1, 1).to_hijri().datetuple()[0]
     gres = [
         convert.Hijri(y, Hmonth, Hday).to_gregorian()
         for y in range(Hyear - 1, Hyear + 2)
     ]
-    gre_dates = [date(*gre.datetuple()) for gre in gres if gre.year == Gyear]
+    gre_dates.extend(
+        (date(*gre.datetuple()) for gre in gres if gre.year == Gyear)
+    )
+
     return gre_dates
 
 

@@ -12,10 +12,10 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import FR, MO
 from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import MO, FR
 
-from holidays.constants import AUG, DEC, FEB, JAN, JUN, MAY, NOV, SEP
+from holidays.constants import JAN, FEB, MAY, JUN, AUG, SEP, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -80,8 +80,7 @@ class DominicanRepublic(HolidayBase):
         # Our Lady of Mercedes Day
         self[
             date(year, SEP, 24)
-        ] = "Día de las Mercedes \
-            [Our Lady of Mercedes Day]"
+        ] = "Día de las Mercedes [Our Lady of Mercedes Day]"
 
         # Constitution Day
         constitution_day = self.__change_day_by_law(date(year, NOV, 6))

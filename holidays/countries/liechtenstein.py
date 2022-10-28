@@ -19,9 +19,9 @@ from holidays.constants import AUG, DEC, FEB, JAN, MAR, MAY, NOV, SEP
 from holidays.holiday_base import HolidayBase
 
 
-class Liechtenstien(HolidayBase):
+class Liechtenstein(HolidayBase):
     """
-    Liechtenstien holidays.
+    Liechtenstein holidays.
     See https://en.wikipedia.org/wiki/Public_holidays_in_Liechtenstein
     for details.
     """
@@ -96,9 +96,9 @@ class Liechtenstien(HolidayBase):
         self[date(year, DEC, 31)] = "Silvester"
 
 
-class LI(Liechtenstien):
+class LI(Liechtenstein):
     pass
 
 
-class LIE(Liechtenstien):
+class LIE(Liechtenstein):
     pass
