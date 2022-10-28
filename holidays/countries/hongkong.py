@@ -193,7 +193,14 @@ class HongKong(HolidayBase):
                 mid_autumn_date = mid_autumn_date + rd(days=+1)
         else:
             self[mid_autumn_date] = name
-
+            
+        #unlike 2009-10-03(SAT)holiday set on same day, 
+        #2022-09-10(SAT) holiday set on next Monday
+        ##In future may have same case and need to add the special cases##
+        if year == 2022:
+            self[mid_autumn_date + rd(days=+2)] = ("The second day of the " + name)
+            mid_autumn_date = mid_autumn_date + rd(days=+2)
+            
         # National Day
         name = "National Day"
         national_date = date(year, OCT, 1)
