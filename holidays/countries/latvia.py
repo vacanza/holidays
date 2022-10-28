@@ -51,8 +51,7 @@ class Latvia(HolidayBase):
         if year >= 1990:
             self[
                 date(year, 5, 4)
-            ] = "Latvijas Republikas \
-                Neatkarības atjaunošanas diena"
+            ] = "Latvijas Republikas Neatkarības atjaunošanas diena"
 
         # by law
         # https://likumi.lv/ta/id/72608-par-svetku-atceres-un-atzimejamam-dienam

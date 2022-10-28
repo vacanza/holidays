@@ -66,8 +66,8 @@ class Argentina(HolidayBase):
             self[date(year, MAR, 24)] = name
 
         # Holy Week
-        name_thu = "Semana Santa (Jueves Santo)  [Holy day (Holy Thursday)]"
-        name_fri = "Semana Santa (Viernes Santo)  [Holy day (Holy Friday)]"
+        name_thu = "Semana Santa (Jueves Santo) [Holy day (Holy Thursday)]"
+        name_fri = "Semana Santa (Viernes Santo) [Holy day (Holy Friday)]"
         name_easter = "Día de Pascuas [Easter Day]"
 
         self[easter(year) + rd(weekday=TH(-1))] = name_thu
@@ -165,9 +165,9 @@ class Argentina(HolidayBase):
         if not self.observed and date(year, DEC, 8).weekday() in WEEKEND:
             pass
         else:
-            self[date(year, DEC, 8)] = (
-                "La Inmaculada Concepción" " [Immaculate Conception]"
-            )
+            self[
+                date(year, DEC, 8)
+            ] = "La Inmaculada Concepción [Immaculate Conception]"
 
         # Christmas
         self[date(year, DEC, 25)] = "Navidad [Christmas]"
