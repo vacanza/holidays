@@ -261,7 +261,7 @@ class Singapore(HolidayBase):
             2019: (OCT, 27),
             2020: (NOV, 14),
             2021: (NOV, 4),
-            2022: (NOV, 24),
+            2022: (OCT, 24),
             2023: (NOV, 12),
         }
         if year in dates_fixed_obs:
