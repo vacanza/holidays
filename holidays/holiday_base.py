@@ -177,7 +177,7 @@ class HolidayBase(Dict[date, str]):
         }
 
         def _populate(self, year):
-            super._populate(year)
+            super()._populate(year)
 
             ...
 
