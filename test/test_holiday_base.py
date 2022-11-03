@@ -481,14 +481,12 @@ class TestArgs(unittest.TestCase):
         self.assertIn(date(2018, 7, 2), self.holidays)
 
     def test_serialization(self):
-        loaded_holidays = pickle.loads(pickle.dumps(self.holidays))
-        assert loaded_holidays == self.holidays
-
         dt = datetime(2020, 1, 1)
-        res = dt in self.holidays
+        self.assertIn(dt, self.holidays)
+
         loaded_holidays = pickle.loads(pickle.dumps(self.holidays))
-        assert loaded_holidays == self.holidays
-        assert (dt in loaded_holidays) == res
+        self.assertEqual(loaded_holidays, self.holidays)
+        self.assertIn(dt, self.holidays)
 
     def test_deprecation_warnings(self):
         with self.assertWarns(Warning):
@@ -680,4 +678,4 @@ class TestAllInSameYear(unittest.TestCase):
                     self.country, years=[self.year]
                 )
                 for self.hol in hols:
-                    assert self.hol.year == self.year
+                    self.assertEqual(self.hol.year, self.year)
