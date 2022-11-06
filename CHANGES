@@ -9,8 +9,16 @@ Released ?????? ??, ????
 - Added isort to pre-commit #722, #734 (arkid15r, dr-p)
 - Get item multiple return type fix (dr-p) TODO: possible refactor required
 - Sort overlapping holiday names #713 (kasya, arkid15r)
+- Supported country / financial lists fix #764 (arkid15r)
+- Various refactorings #777 (arkid15r)
+- Various refactorings #756, #759, #760, #766, #767, #775, #776, #780 (KJhellico)
 - Portugal improvements #753 (Nalguedo)
+- Brazil improvements #761, #592 (Nalguedo)
+- Uruguay improvements #758 (kasya)
+- Hong Kong improvements #779 (poshingchu)
 - Swaziland deprecation, replaced by Eswatini #721 (bkthomps)
+- Norway, Sweden rework #771 (arkid15r)
+- South Africa rework #773 (KJhellico)
 - Singapore fixes #717, #726, #754 (amas01, mborsetti, kasya)
 - Canada fixes #715, #733 (bkthomps, MichaelThessel)
 - Honduras fixes #720, #744 (bkthomps, arkid15r)
@@ -18,7 +26,7 @@ Released ?????? ??, ????
 - Malaysia fix #736 (shahonseven)
 - Ukraine fixes #743, #746 (KJhellico)
 - Bulgaria fixes #748 (KJhellico)
-- Various refactorings #756, #759, #760, #766, #767, #775, #776, #780 (KJhellico)
+- Isle of Man fix #762, #764 (arkid15r)
 
 Version 0.16
 ============
