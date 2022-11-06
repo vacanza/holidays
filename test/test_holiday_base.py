@@ -9,6 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+import pathlib
 import pickle
 import sys
 import unittest
@@ -331,13 +332,38 @@ class TestBasics(unittest.TestCase):
         self.assertEqual(na.get_list(date(1969, 1, 3)), [])
 
     def test_list_supported_countries(self):
-        self.assertIn("AR", holidays.list_supported_countries())
-        self.assertIn("ZA", holidays.list_supported_countries())
-        self.assertIn("CA", holidays.list_supported_countries()["US"])
+        supported_countries = holidays.list_supported_countries()
+
+        countries_files = [
+            path
+            for path in pathlib.Path("holidays/countries").glob("*.py")
+            if not str(path).endswith("__init__.py")
+        ]
+        self.assertEqual(
+            len(countries_files),
+            len(supported_countries),
+        )
+
+        self.assertIn("AR", supported_countries)
+        self.assertIn("CA", supported_countries["US"])
+        self.assertIn("IM", supported_countries)
+        self.assertIn("ZA", supported_countries)
 
     def test_list_supported_financial(self):
-        self.assertIn("ECB", holidays.list_supported_financial())
-        self.assertIn("NYSE", holidays.list_supported_financial())
+        supported_financial = holidays.list_supported_financial()
+
+        financial_files = [
+            path
+            for path in pathlib.Path("holidays/financial").glob("*.py")
+            if not str(path).endswith("__init__.py")
+        ]
+        self.assertEqual(
+            len(financial_files),
+            len(supported_financial),
+        )
+
+        self.assertIn("ECB", supported_financial)
+        self.assertIn("NYSE", supported_financial)
 
     def test_radd(self):
         self.assertRaises(TypeError, lambda: 1 + holidays.US())
