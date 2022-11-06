@@ -204,9 +204,15 @@ class HongKong(HolidayBase):
                 self[mid_autumn_date + rd(days=+1)] = (
                     day_following + "the " + name
                 )
-            mid_autumn_date = mid_autumn_date + rd(days=+1)
+                mid_autumn_date = mid_autumn_date + rd(days=+1)
         else:
             self[mid_autumn_date] = name
+
+        if year == 2022:
+            self[mid_autumn_date + rd(days=+2)] = (
+                "The second day of the " + name
+            )
+            mid_autumn_date = mid_autumn_date + rd(days=+2)
 
         # National Day
         name = "National Day"

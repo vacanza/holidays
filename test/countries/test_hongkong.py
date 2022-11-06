@@ -310,16 +310,28 @@ class TestHongKong(unittest.TestCase):
             (2018, 9, 25),
             (2019, 9, 14),
             (2020, 10, 2),
+            (2021, 9, 22),
+            (2023, 9, 30),
+            (2024, 9, 18),
+            (2025, 10, 7),
+            (2026, 9, 26),
         ]:
             self.assertEqual(
                 self.holidays[date(year, month, day)],
                 "The " + "day following the Chinese Mid-Autumn Festival",
             )
 
-        self.assertEqual(
-            self.holidays[date(2009, 10, 3)],
-            "Chinese " + "Mid-Autumn Festival",
-        )
+        for year, month, day in [(2009, 10, 3)]:
+            self.assertEqual(
+                self.holidays[date(year, month, day)],
+                "Chinese " + "Mid-Autumn Festival",
+            )
+
+        for year, month, day in [(2022, 9, 12)]:
+            self.assertEqual(
+                self.holidays[date(year, month, day)],
+                "The second day of the " + "Chinese Mid-Autumn Festival",
+            )
 
     def test_national_day(self):
         for year in [
