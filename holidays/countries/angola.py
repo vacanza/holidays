@@ -59,9 +59,7 @@ class Angola(HolidayBase):
 
         # carnival is the Tuesday before Ash Wednesday
         # which is 40 days before easter excluding sundays
-        carnival = e - rd(days=46)
-        while carnival.weekday() != TUE:
-            carnival = carnival - rd(days=1)
+        carnival = e + rd(days=-47)
         self[carnival] = "Carnaval"
 
         self[date(year, FEB, 4)] = "Dia do Início da Luta Armada"

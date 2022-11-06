@@ -25,6 +25,17 @@ class TestAngola(unittest.TestCase):
         self.assertIn("2999-01-01", self.holidays)
         self.assertIn("2017-01-02", self.holidays)  # sunday
 
+    def test_carnival(self):
+        self.assertIn("1994-02-15", self.holidays)
+        self.assertIn("2002-02-12", self.holidays)
+        self.assertIn("2010-02-16", self.holidays)
+        self.assertIn("2017-02-28", self.holidays)
+        self.assertIn("2018-02-13", self.holidays)
+        self.assertIn("2019-03-05", self.holidays)
+        self.assertIn("2020-02-25", self.holidays)
+        self.assertIn("2021-02-16", self.holidays)
+        self.assertIn("2022-03-01", self.holidays)
+
     def test_easter(self):
         self.assertIn(date(2017, 4, 14), self.holidays)
         self.assertIn(date(2020, 4, 10), self.holidays)
