@@ -12,21 +12,22 @@
 from datetime import date
 
 from dateutil.easter import easter
+from dateutil.relativedelta import SU, TU
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import TU
 
 from holidays.constants import (
-    JAN,
-    MAR,
     APR,
-    MAY,
-    JUN,
-    JUL,
     AUG,
-    SEP,
-    OCT,
-    NOV,
     DEC,
+    JAN,
+    JUL,
+    JUN,
+    MAR,
+    MAY,
+    NOV,
+    OCT,
+    SEP,
+    WEEKEND,
 )
 from holidays.holiday_base import HolidayBase
 
@@ -198,9 +199,10 @@ class Brazil(HolidayBase):
             self[date(year, OCT, 5)] = "Criação de Roraima"
 
         if self.subdiv == "SC":
-            self[date(year, AUG, 11)] = (
-                "Criação da capitania," " separando-se de SP"
-            )
+            dt = date(year, AUG, 11)
+            if year >= 2018 and dt.weekday() not in WEEKEND:
+                dt += rd(weekday=SU)
+            self[dt] = "Criação da capitania, separando-se de SP"
 
         if self.subdiv == "SP":
             self[date(year, JUL, 9)] = "Revolução Constitucionalista de 1932"
