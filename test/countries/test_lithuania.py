@@ -82,3 +82,7 @@ class TestLithuania(unittest.TestCase):
 
         self.assertNotIn(date(1990, 7, 6), self.holidays)
         self.assertIn(date(1991, 7, 6), self.holidays)
+
+    def test_all_souls_day(self):
+        self.assertNotIn(date(2018, 11, 2), self.holidays)
+        self.assertIn(date(2021, 11, 2), self.holidays)
