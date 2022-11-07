@@ -327,12 +327,11 @@ class TestHongKong(unittest.TestCase):
                 "Chinese " + "Mid-Autumn Festival",
             )
 
-        for year, month, day in [(2022, 9, 12), (2029, 9, 24)]:
+        for year, month, day in [(2022, 9, 12)]:
             self.assertEqual(
                 self.holidays[date(year, month, day)],
                 "The second day of the "
                 + "Chinese Mid-Autumn Festival (Monday)",
-
             )
 
     def test_national_day(self):
