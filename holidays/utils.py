@@ -270,22 +270,22 @@ def CountryHoliday(
     )
 
 
-def list_supported_countries() -> Dict[str, Tuple[str]]:
+def list_supported_countries() -> Dict[str, List[str]]:
     """
     Get all supported countries and their subdivisions.
 
     :return:
         A dictionary where the key is the ISO 3166-1 Alpha-2 country codes and
-        the value is a tuple of supported subdivision codes.
+        the value is a list of supported subdivision codes.
     """
     return {
-        obj.country: obj.subdivisions
+        obj.country: list(obj.subdivisions)
         for _, obj in inspect.getmembers(holidays.countries, inspect.isclass)
         if obj.__base__ == HolidayBase
     }
 
 
-def list_supported_financial() -> Dict[str, Tuple[str]]:
+def list_supported_financial() -> Dict[str, List[str]]:
     """
     Get all supported financial markets and their subdivisions.
 
@@ -294,7 +294,7 @@ def list_supported_financial() -> Dict[str, Tuple[str]]:
         the value is a tuple of supported subdivision codes.
     """
     return {
-        obj.market: obj.subdivisions
+        obj.market: list(obj.subdivisions)
         for _, obj in inspect.getmembers(holidays.financial, inspect.isclass)
         if obj.__base__ == HolidayBase
     }
