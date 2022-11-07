@@ -294,7 +294,7 @@ def list_supported_financial() -> Dict[str, List[str]]:
 
     :return:
         A dictionary where the key is the market codes and
-        the value is a tuple of supported subdivision codes.
+        the value is a list of supported subdivision codes.
     """
     return {
         cls.market: list(cls.subdivisions)
