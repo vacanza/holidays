@@ -12,10 +12,10 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import FR
 from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import FR
 
-from holidays.constants import APR, AUG, DEC, JAN, JUL, MAY, OCT
+from holidays.constants import JAN, APR, MAY, JUL, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -34,8 +34,7 @@ class Curacao(HolidayBase):
         # Carnaval Monday
         self[
             easter(year) + rd(days=-48)
-        ] = "Maandag na de Grote Karnaval  \
-            [Carnaval Monday]"
+        ] = "Maandag na de Grote Karnaval [Carnaval Monday]"
 
         # Good Friday
         self[easter(year) + rd(weekday=FR(-1))] = "Goede Vrijdag [Good Friday]"
@@ -43,8 +42,7 @@ class Curacao(HolidayBase):
         # Easter Monday
         self[
             easter(year) + rd(days=1)
-        ] = "Di Dos Dia di Pasku di Resureccion \
-            [Easter Monday]"
+        ] = "Di Dos Dia di Pasku di Resureccion [Easter Monday]"
 
         # King's Day
         if year >= 2014:
@@ -80,14 +78,10 @@ class Curacao(HolidayBase):
         # Dia di Himno y Bandera
         self[
             date(year, JUL, 2)
-        ] = "Dia di Himno y Bandera \
-            [National Anthem & Flag Day]"
+        ] = "Dia di Himno y Bandera [National Anthem & Flag Day]"
 
         # Dia di Pais Kòrsou
-        self[
-            date(year, OCT, 10)
-        ] = "Dia di Pais Kòrsou \
-            [Curaçao Day]"
+        self[date(year, OCT, 10)] = "Dia di Pais Kòrsou [Curaçao Day]"
 
         # Christmas Day
         self[date(year, DEC, 25)] = "Kerstdag [Christmas]"

@@ -10,10 +10,10 @@
 #  License: MIT (see LICENSE file)
 from datetime import date
 
-from dateutil.relativedelta import FR
 from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import FR
 
-from holidays.constants import JUL, JUN
+from holidays.constants import JUN, JUL
 
 from .united_kingdom import UnitedKingdom
 
@@ -26,9 +26,8 @@ class IsleOfMan(UnitedKingdom):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    def _additional_holidays(self, year):
-        # We're subclassing UnitedKingdom and replacing its
-        # _additional_holidays method to add Isle of Man exclusive holidays
+    def _populate(self, year: int) -> None:
+        super()._populate(year)
 
         # TT bank holiday (first Friday in June)
         self[date(year, JUN, 1) + rd(weekday=FR)] = "TT Bank Holiday"
@@ -38,4 +37,8 @@ class IsleOfMan(UnitedKingdom):
 
 
 class IM(IsleOfMan):
+    pass
+
+
+class IMN(IsleOfMan):
     pass

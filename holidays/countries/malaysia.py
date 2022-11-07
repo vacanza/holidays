@@ -13,24 +13,24 @@ from datetime import date, timedelta
 from typing import Iterable, Optional, Union
 
 from dateutil.easter import easter
-from dateutil.relativedelta import FR, MO, SA, SU
 from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import MO, FR, SA, SU
 from dateutil.rrule import MONTHLY, rrule
 
 from holidays.constants import (
-    APR,
-    AUG,
-    DEC,
-    FEB,
-    JAN,
-    JUL,
-    JUN,
-    MAR,
-    MAY,
-    NOV,
-    OCT,
-    SEP,
     SUN,
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
 )
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _ChineseLuniSolar, _islamic_to_gre
@@ -303,7 +303,7 @@ class Malaysia(HolidayBase):
                 2019: (OCT, 27),
                 2020: (NOV, 14),
                 2021: (NOV, 4),
-                2022: (NOV, 24),
+                2022: (OCT, 24),
             }
             if year in dates_obs:
                 hol_date = date(year, *dates_obs[year])

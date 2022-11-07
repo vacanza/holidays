@@ -9,27 +9,13 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, datetime
+from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import MO
 
-from holidays.constants import (
-    APR,
-    AUG,
-    DEC,
-    FRI,
-    JAN,
-    JUL,
-    JUN,
-    MAR,
-    MAY,
-    MON,
-    OCT,
-    SAT,
-    SEP,
-    SUN,
-)
+from holidays.constants import SAT, SUN, JAN, MAY, JUL, SEP, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -46,8 +32,8 @@ class Botswana(HolidayBase):
 
     def _populate(self, year: int):
         if year > 1965:
-            self[date(year, 1, 1)] = "New Year's Day"
-            self[date(year, 1, 2)] = "New Year's Day Holiday"
+            self[date(year, JAN, 1)] = "New Year's Day"
+            self[date(year, JAN, 2)] = "New Year's Day Holiday"
 
             # Easter and easter related calculations
             e = easter(year)
@@ -66,12 +52,7 @@ class Botswana(HolidayBase):
             self[date(year, JUL, 1)] = "Sir Seretse Khama Day"
 
             # 3rd Monday of July = "President's Day"
-            # Find the date of the 3rd Monday
-            # for the given year
-            d = date(year, 7, 15)
-            while d.isoweekday() != 1 and (15 <= d.day <= 21):
-                d = d + rd(days=1)
-
+            d = date(year, JUL, 1) + rd(weekday=MO(+3))
             self[d] = "President's Day"
             self[d + rd(days=1)] = "President's Day Holiday"
 
@@ -79,7 +60,7 @@ class Botswana(HolidayBase):
             self[date(year, OCT, 1)] = "Botswana Day Holiday"
 
             self[date(year, DEC, 25)] = "Christmas Day"
-            self[date(year, 12, 26)] = "Boxing Day"
+            self[date(year, DEC, 26)] = "Boxing Day"
 
         for k, v in list(self.items()):
             # Whenever Boxing Day falls on a Saturday,

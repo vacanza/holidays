@@ -47,7 +47,7 @@ The latest stable version can always be installed or updated via pip:
 
 .. code-block:: bash
 
-    $ pip install --update holidays
+    $ pip install --upgrade holidays
 
 
 Documentation
@@ -148,6 +148,9 @@ following countries and their subdivisions are available:
    * - Bolivia
      - BO
      - Departments: B, C, H, L, N, O, P, S, T
+   * - Bosnia and Herzegovina
+     - BA
+     - Departments: FBiH, RS, BD
    * - Botswana
      - BW
      - None
@@ -268,6 +271,9 @@ following countries and their subdivisions are available:
    * - Lesotho
      - LS
      - None
+   * - Liechtenstein
+     - LI
+     - None
    * - Lithuania
      - LT
      - None
@@ -330,7 +336,7 @@ following countries and their subdivisions are available:
      - None
    * - Portugal
      - PT
-     - Use subdiv='Ext' to include holidays most people have off
+     - Districts: 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18; Use subdiv='Ext' to include holidays most people have off
    * - Romania
      - RO
      - None

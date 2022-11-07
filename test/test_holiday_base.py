@@ -9,13 +9,14 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+import pathlib
 import pickle
 import sys
 import unittest
 import warnings
 from datetime import date, datetime, timedelta
 
-from dateutil.relativedelta import MO, relativedelta
+from dateutil.relativedelta import relativedelta, MO
 
 import holidays
 
@@ -136,6 +137,26 @@ class TestBasics(unittest.TestCase):
         self.assertEqual(len(self.holidays), 11)
         self.assertIn(date(2014, 1, 3), self.holidays)
         self.assertEqual(self.holidays.get(date(2014, 1, 3)), "Fake Holiday")
+
+    def test_str(self):
+        self.holidays = holidays.US()
+        self.assertEqual(
+            str(self.holidays),
+            "{'observed': True, 'expand': True, 'subdiv': None, "
+            "'years': set()}",
+        )
+
+        self.holidays = holidays.US(years=1900)
+        self.assertEqual(
+            str(self.holidays),
+            '{datetime.date(1900, 1, 1): "New Year\'s Day", '
+            'datetime.date(1900, 2, 22): "Washington\'s Birthday", '
+            "datetime.date(1900, 5, 30): 'Memorial Day', "
+            "datetime.date(1900, 7, 4): 'Independence Day', "
+            "datetime.date(1900, 9, 3): 'Labor Day', "
+            "datetime.date(1900, 11, 22): 'Thanksgiving', "
+            "datetime.date(1900, 12, 25): 'Christmas Day'}",
+        )
 
     def test_update(self):
         h = holidays.HolidayBase()
@@ -264,6 +285,12 @@ class TestBasics(unittest.TestCase):
             na.get(date(1969, 12, 25)), "Christmas Day, Navidad [Christmas]"
         )
 
+        ecb = holidays.ECB()
+        nyse = holidays.NYSE()
+        ecb_nyse = ecb + nyse
+        self.assertEqual(len(ecb) + len(nyse), len(ecb_nyse))
+        self.assertEqual(ecb_nyse.market, ["ECB", "NYSE"])
+
     def test_get_list(self):
         westland = holidays.NZ(subdiv="WTL")
         chathams = holidays.NZ(subdiv="CIT")
@@ -306,20 +333,44 @@ class TestBasics(unittest.TestCase):
 
     def test_list_supported_countries(self):
         supported_countries = holidays.list_supported_countries()
+
         self.assertIn("AR", supported_countries)
+        self.assertIn("CA", supported_countries["US"])
+        self.assertIn("IM", supported_countries)
         self.assertIn("ZA", supported_countries)
 
         us_subdivisions = supported_countries["US"]
         self.assertIn("CA", us_subdivisions)
         self.assertTrue(isinstance(us_subdivisions, list))
 
+        countries_files = [
+            path
+            for path in pathlib.Path("holidays/countries").glob("*.py")
+            if not str(path).endswith("__init__.py")
+        ]
+        self.assertEqual(
+            len(countries_files),
+            len(supported_countries),
+        )
+
     def test_list_supported_financial(self):
         supported_financial = holidays.list_supported_financial()
-        self.assertIn("ECB", supported_financial)
-        self.assertIn("NYSE", supported_financial)
 
         nyse = supported_financial["NYSE"]
         self.assertTrue(isinstance(nyse, list))
+
+        financial_files = [
+            path
+            for path in pathlib.Path("holidays/financial").glob("*.py")
+            if not str(path).endswith("__init__.py")
+        ]
+        self.assertEqual(
+            len(financial_files),
+            len(supported_financial),
+        )
+
+        self.assertIn("ECB", supported_financial)
+        self.assertIn("NYSE", supported_financial)
 
     def test_radd(self):
         self.assertRaises(TypeError, lambda: 1 + holidays.US())
@@ -463,14 +514,19 @@ class TestArgs(unittest.TestCase):
         self.assertIn(date(2018, 7, 2), self.holidays)
 
     def test_serialization(self):
-        loaded_holidays = pickle.loads(pickle.dumps(self.holidays))
-        assert loaded_holidays == self.holidays
-
         dt = datetime(2020, 1, 1)
-        res = dt in self.holidays
+        self.assertIn(dt, self.holidays)
+
         loaded_holidays = pickle.loads(pickle.dumps(self.holidays))
-        assert loaded_holidays == self.holidays
-        assert (dt in loaded_holidays) == res
+        self.assertEqual(loaded_holidays, self.holidays)
+        self.assertIn(dt, self.holidays)
+
+    def test_deprecation_warnings(self):
+        with self.assertWarns(Warning):
+            holidays.US(prov="AL")
+
+        with self.assertWarns(Warning):
+            holidays.US(state="WY")
 
 
 class TestKeyTransforms(unittest.TestCase):
@@ -524,6 +580,7 @@ class TestKeyTransforms(unittest.TestCase):
         self.assertRaises(
             (TypeError, ValueError), lambda: self.holidays.get("abc123")
         )
+        self.assertRaises(TypeError, lambda: self.holidays.get({"123"}))
         self.assertRaises(
             (TypeError, ValueError), self.holidays.__setitem__, "abc", "Test"
         )
@@ -654,4 +711,4 @@ class TestAllInSameYear(unittest.TestCase):
                     self.country, years=[self.year]
                 )
                 for self.hol in hols:
-                    assert self.hol.year == self.year
+                    self.assertEqual(self.hol.year, self.year)

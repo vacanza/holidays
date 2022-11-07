@@ -30,6 +30,16 @@ class TestBotswana(unittest.TestCase):
         self.assertIn(date(2017, 4, 17), self.holidays)
         self.assertIn(date(1994, 4, 1), self.holidays)
 
+    def test_presidents_day(self):
+        self.assertIn(date(2000, 7, 17), self.holidays)
+        self.assertIn(date(2000, 7, 18), self.holidays)
+        self.assertIn(date(2020, 7, 20), self.holidays)
+        self.assertIn(date(2020, 7, 21), self.holidays)
+        self.assertIn(date(2021, 7, 19), self.holidays)
+        self.assertIn(date(2021, 7, 20), self.holidays)
+        self.assertIn(date(2022, 7, 18), self.holidays)
+        self.assertIn(date(2022, 7, 19), self.holidays)
+
     def test_static(self):
         self.assertIn(date(2004, 7, 1), self.holidays)
         self.assertIn(date(2022, 12, 26), self.holidays)  # Christmas

@@ -29,9 +29,6 @@ from typing import (
 
 from dateutil.parser import parse
 
-if TYPE_CHECKING:
-    from holidays.utils import country_holidays  # required by docstring
-
 DateLike = Union[date, datetime, str, float, int]
 
 
@@ -308,13 +305,13 @@ class HolidayBase(Dict[date, str]):
           :func:`dateutil.parser.parse`,
         * or a :class:`float` or :class:`int` representing a POSIX timestamp.
         """
+
         if not isinstance(key, (date, datetime, str, float, int)):
             raise TypeError("Cannot convert type '%s' to date." % type(key))
 
-        contained = dict.__contains__(
+        return dict.__contains__(
             cast("Mapping[Any, Any]", self), self.__keytransform__(key)
         )
-        return contained
 
     def __getitem__(self, key: DateLike) -> Any:
         if isinstance(key, slice):
@@ -552,13 +549,20 @@ class HolidayBase(Dict[date, str]):
     def __radd__(self, other: Any) -> "HolidayBase":
         return self.__add__(other)
 
-    def __pos__(self) -> "HolidayBase":
-        """Enables type checking for the unary operator + (e.g. a + b instead of
-        a.__add__(b))."""
-        pass
-
     def _populate(self, year: int) -> None:
-        """meta: public"""
+        """This is a private class that populates (generates and adds) holidays
+        for a given year. To keep things fast, it assumes that no holidays for
+        the year have already been populated. It should not be called directly;
+        to add holidays to an object, use the update() method:
+
+        >>> from holidays import country_holidays
+        >>> us_holidays = country_holidays('US', years=2020)
+        # to add new holidays to the object:
+        >>> us_holidays.update(country_holidays('US', years=2021))
+
+        :param year:
+            The year to populate with holidays.
+        """
         pass
 
     def __reduce__(self) -> Union[str, Tuple[Any, ...]]:
@@ -686,10 +690,11 @@ country_holidays('CA') + country_holidays('MX')
                 arg = getattr(h1, attr, None) or getattr(h2, attr, None)
                 if arg:
                     kwargs[attr] = arg
-        if kwargs.__contains__("market"):
-            self.market = kwargs.pop("market")
-        if kwargs.__contains__("country"):
+
+        if "country" in kwargs:
             self.country = kwargs.pop("country")
+        if "market" in kwargs:
+            self.market = kwargs.pop("market")
 
         HolidayBase.__init__(self, **kwargs)
 

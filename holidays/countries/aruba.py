@@ -12,10 +12,10 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import FR
 from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import FR
 
-from holidays.constants import APR, AUG, DEC, JAN, MAR, MAY
+from holidays.constants import JAN, MAR, APR, MAY, AUG, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -38,14 +38,12 @@ class Aruba(HolidayBase):
         # Carnaval Monday
         self[
             easter(year) + rd(days=-48)
-        ] = "Dialuna di Carnaval \
-            [Carnaval Monday]"
+        ] = "Dialuna di Carnaval [Carnaval Monday]"
 
         # Dia di Himno y Bandera
         self[
             date(year, MAR, 18)
-        ] = "Dia di Himno y Bandera \
-            [National Anthem & Flag Day]"
+        ] = "Dia di Himno y Bandera [National Anthem & Flag Day]"
 
         # Good Friday
         self[easter(year) + rd(weekday=FR(-1))] = "Bierna Santo [Good Friday]"
@@ -53,8 +51,7 @@ class Aruba(HolidayBase):
         # Easter Monday
         self[
             easter(year) + rd(days=1)
-        ] = "Di Dos Dia di Pasco di Resureccion \
-            [Easter Monday]"
+        ] = "Di Dos Dia di Pasco di Resureccion [Easter Monday]"
 
         # King's Day
         if year >= 2014:
@@ -90,8 +87,7 @@ class Aruba(HolidayBase):
         # Second Christmas
         self[
             date(year, DEC, 26)
-        ] = "Di Dos Dia di Pasco di \
-            Nacemento [Second Christmas]"
+        ] = "Di Dos Dia di Pasco di Nacemento [Second Christmas]"
 
 
 class AW(Aruba):

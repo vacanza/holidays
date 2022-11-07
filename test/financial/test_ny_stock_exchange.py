@@ -12,7 +12,7 @@
 import unittest
 from datetime import date, timedelta
 
-from dateutil.relativedelta import WE, relativedelta
+from dateutil.relativedelta import relativedelta, WE
 
 import holidays
 from holidays.constants import (

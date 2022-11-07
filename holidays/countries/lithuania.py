@@ -12,8 +12,8 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import SU
 from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import SU
 
 from holidays.holiday_base import HolidayBase
 
@@ -79,6 +79,10 @@ class Lithuania(HolidayBase):
 
         # All Saints' Day
         self[date(year, 11, 1)] = "Visų šventųjų diena (Vėlinės)"
+
+        # All Souls' Day
+        if year >= 2020:
+            self[date(year, 11, 2)] = "Mirusiųjų atminimo diena (Vėlinės)"
 
         # Christmas Eve
         self[date(year, 12, 24)] = "Šv. Kūčios"

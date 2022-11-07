@@ -19,6 +19,7 @@ from .bangladesh import BD, BGD, Bangladesh
 from .belarus import BLR, BY, Belarus
 from .belgium import BE, BEL, Belgium
 from .bolivia import BO, BOL, Bolivia
+from .bosnia_and_herzegovina import BA, BIH, BosniaAndHerzegovina
 from .botswana import BW, BWA, Botswana
 from .brazil import BR, BRA, Brazil
 from .bulgaria import BG, BLG, Bulgaria
@@ -50,7 +51,7 @@ from .hungary import HU, HUN, Hungary
 from .iceland import IS, ISL, Iceland
 from .india import IN, IND, India
 from .ireland import IE, IRL, Ireland
-from .isle_of_man import IM, IsleOfMan
+from .isle_of_man import IM, IMN, IsleOfMan
 from .israel import IL, ISR, Israel
 from .italy import IT, ITA, Italy
 from .jamaica import JAM, JM, Jamaica
@@ -60,6 +61,7 @@ from .kenya import KE, KEN, Kenya
 from .korea import KOR, KR, Korea
 from .latvia import LV, LVA, Latvia
 from .lesotho import LS, LSO, Lesotho
+from .liechtenstein import LI, LIE, Liechtenstein
 from .lithuania import LT, LTU, Lithuania
 from .luxembourg import LU, LUX, Luxembourg
 from .madagascar import MDG, MG, Madagascar

@@ -12,10 +12,10 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import FR, SA, TH, WE
 from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import WE, TH, FR, SA
 
-from holidays.constants import APR, DEC, JAN, MAY, OCT, SEP
+from holidays.constants import JAN, APR, MAY, SEP, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -70,9 +70,7 @@ class Honduras(HolidayBase):
             # Morazan Weekend
             # (First Wednesday of October from 12 noon to Saturday 12 noon)
             holiday_name = "Semana Morazánica [Morazan Weekend]"
-            first_wednesday = date(year, OCT, 1)
-            if first_wednesday.weekday() != WE:
-                first_wednesday += rd(weekday=WE(+1))
+            first_wednesday = date(year, OCT, 1) + rd(weekday=WE(+1))
             self[first_wednesday] = holiday_name
             self[first_wednesday + rd(days=1)] = holiday_name
             self[first_wednesday + rd(days=2)] = holiday_name
