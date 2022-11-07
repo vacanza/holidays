@@ -356,6 +356,9 @@ class TestBasics(unittest.TestCase):
     def test_list_supported_financial(self):
         supported_financial = holidays.list_supported_financial()
 
+        self.assertIn("ECB", supported_financial)
+        self.assertIn("NYSE", supported_financial)
+
         nyse = supported_financial["NYSE"]
         self.assertTrue(isinstance(nyse, list))
 
@@ -368,9 +371,6 @@ class TestBasics(unittest.TestCase):
             len(financial_files),
             len(supported_financial),
         )
-
-        self.assertIn("ECB", supported_financial)
-        self.assertIn("NYSE", supported_financial)
 
     def test_radd(self):
         self.assertRaises(TypeError, lambda: 1 + holidays.US())
