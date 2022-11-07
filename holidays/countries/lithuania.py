@@ -80,6 +80,10 @@ class Lithuania(HolidayBase):
         # All Saints' Day
         self[date(year, 11, 1)] = "Visų šventųjų diena (Vėlinės)"
 
+        # All Souls' Day
+        if year >= 2020:
+            self[date(year, 11, 2)] = "Mirusiųjų atminimo diena (Vėlinės)"
+
         # Christmas Eve
         self[date(year, 12, 24)] = "Šv. Kūčios"
 

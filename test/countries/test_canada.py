@@ -56,6 +56,21 @@ class TestCA(unittest.TestCase):
             self.assertNotIn(dt + relativedelta(days=-1), pei_holidays)
             self.assertNotIn(dt + relativedelta(days=+1), pei_holidays)
 
+    def test_yukon_heritage_day(self):
+        # https://www.timeanddate.com/holidays/canada/heritage-day-yukon
+        yt_holidays = holidays.CA(subdiv="YT")
+        for dt in [
+            date(2017, 2, 24),
+            date(2018, 2, 23),
+            date(2019, 2, 22),
+            date(2020, 2, 21),
+            date(2021, 2, 26),
+            date(2022, 2, 25),
+        ]:
+            self.assertIn(dt, yt_holidays)
+            self.assertNotIn(dt + relativedelta(days=-1), yt_holidays)
+            self.assertNotIn(dt + relativedelta(days=+1), yt_holidays)
+
     def test_family_day(self):
         ab_holidays = holidays.CA(subdiv="AB")
         bc_holidays = holidays.CA(subdiv="BC")

@@ -332,6 +332,7 @@ class TestHongKong(unittest.TestCase):
                 self.holidays[date(year, month, day)],
                 "The second day of the "
                 + "Chinese Mid-Autumn Festival (Monday)",
+
             )
 
     def test_national_day(self):

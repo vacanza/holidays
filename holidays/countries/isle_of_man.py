@@ -38,3 +38,7 @@ class IsleOfMan(UnitedKingdom):
 
 class IM(IsleOfMan):
     pass
+
+
+class IMN(IsleOfMan):
+    pass

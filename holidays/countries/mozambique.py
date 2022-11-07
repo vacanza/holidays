@@ -14,7 +14,7 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import TUE, SUN, FEB, APR, MAY, JUN, SEP, OCT, DEC
+from holidays.constants import SUN, FEB, APR, MAY, JUN, SEP, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -34,9 +34,7 @@ class Mozambique(HolidayBase):
 
             # carnival is the Tuesday before Ash Wednesday
             # which is 40 days before easter excluding sundays
-            carnival = e - rd(days=46)
-            while carnival.weekday() != TUE:
-                carnival = carnival - rd(days=1)
+            carnival = e + rd(days=-47)
             self[carnival] = "Carnaval"
 
             self[date(year, FEB, 3)] = "Dia dos Heróis Moçambicanos"
