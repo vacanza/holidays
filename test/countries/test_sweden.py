@@ -74,6 +74,39 @@ class TestSweden(unittest.TestCase, SundayHolidays):
         self.assertIn("2024-05-19", self.holidays)
         self.assertNotIn("2024-05-20", self.holidays)
 
+    def test_midsommar(self):
+        for dt in [
+            "1950-06-23",
+            "1950-06-24",
+            "1951-06-23",
+            "1951-06-24",
+            "1952-06-23",
+            "1952-06-24",
+            "1953-06-19",
+            "1953-06-20",
+            "1954-06-25",
+            "1954-06-26",
+            "2019-06-21",
+            "2019-06-22",
+            "2020-06-19",
+            "2020-06-20",
+            "2021-06-25",
+            "2021-06-26",
+            "2022-06-24",
+            "2022-06-25",
+        ]:
+            self.assertIn(dt, self.holidays)
+
+        for dt in [
+            "1952-06-20",
+            "1952-06-21",
+            "1953-06-23",
+            "1953-06-24",
+            "1954-06-23",
+            "1954-06-24",
+        ]:
+            self.assertNotIn(dt, self.holidays)
+
     def test_christmas(self):
         self.assertIn("1901-12-25", self.holidays)
         self.assertIn("1901-12-26", self.holidays)

@@ -16,19 +16,7 @@ from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import FR, SA, SU
 
-from holidays.constants import (
-    MON,
-    THU,
-    FRI,
-    SAT,
-    SUN,
-    JAN,
-    MAR,
-    MAY,
-    JUN,
-    OCT,
-    DEC,
-)
+from holidays.constants import JAN, MAR, MAY, JUN, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -97,7 +85,9 @@ class Sweden(HolidayBase):
         if year <= 2004:
             self[easter_day + rd(days=+50)] = "Annandag pingst"
 
-        # Source https://sv.wikipedia.org/wiki/Midsommarafton and https://www.nordiskamuseet.se/aretsdagar/midsommarafton
+        # Source:
+        # https://sv.wikipedia.org/wiki/Midsommarafton
+        # https://www.nordiskamuseet.se/aretsdagar/midsommarafton
         if year >= 1953:
             # Midsummer evening. Friday between June 19th and June 25th
             self[date(year, JUN, 19) + rd(weekday=FR)] = "Midsommarafton"
@@ -106,7 +96,7 @@ class Sweden(HolidayBase):
         else:
             self[date(year, JUN, 23)] = "Midsommarafton"
             self[date(year, JUN, 24)] = "Midsommardagen"
-            
+
         # All saints day. Saturday between October 31th and November 6th
         self[date(year, OCT, 31) + rd(weekday=SA)] = "Alla helgons dag"
 
