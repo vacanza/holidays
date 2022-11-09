@@ -296,6 +296,9 @@ class TestHongKong(unittest.TestCase):
 
     def test_mid_autumn_festival(self):
         for year, month, day in [
+            (2003, 9, 12),
+            (2004, 9, 29),
+            (2005, 9, 19),
             (2006, 10, 7),
             (2007, 9, 26),
             (2008, 9, 15),
@@ -321,7 +324,7 @@ class TestHongKong(unittest.TestCase):
                 "The " + "day following the Chinese Mid-Autumn Festival",
             )
 
-        for year, month, day in [(2009, 10, 3)]:
+        for year, month, day in [(2002, 9, 21), (2009, 10, 3)]:
             self.assertEqual(
                 self.holidays[date(year, month, day)],
                 "Chinese " + "Mid-Autumn Festival",

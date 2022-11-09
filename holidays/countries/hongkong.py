@@ -199,11 +199,16 @@ class HongKong(HolidayBase):
         mid_autumn_date = date(dt.year, dt.month, dt.day)
         if self.observed:
             # if Chinese Mid-Autumn Festival lies on Saturday
+            # before 1983 public holiday lies on Monday
             # from 1983 to 2010 public holiday lies on same day
             # since 2011 public holiday lies on Monday
-            if mid_autumn_date.weekday() == SAT and year < 2011:
+            if mid_autumn_date.weekday() == SAT and (
+                year <= 2010 and year >= 1983
+            ):
                 self[mid_autumn_date] = name
-            elif mid_autumn_date.weekday() == SAT and year >= 2011:
+            elif mid_autumn_date.weekday() == SAT and (
+                year >= 2011 or year < 1983
+            ):
                 self[mid_autumn_date + rd(days=+2)] = (
                     "The second day of the " + name + " (Monday)"
                 )
