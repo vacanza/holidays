@@ -10,24 +10,24 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-
 from datetime import date, timedelta
+
 from dateutil.relativedelta import relativedelta, WE
 
 import holidays
 from holidays.constants import (
-    JAN,
-    FEB,
-    MAR,
     APR,
-    MAY,
-    JUN,
-    JUL,
     AUG,
-    SEP,
-    OCT,
-    NOV,
     DEC,
+    FEB,
+    JAN,
+    JUL,
+    JUN,
+    MAR,
+    MAY,
+    NOV,
+    OCT,
+    SEP,
 )
 
 

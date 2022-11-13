@@ -13,8 +13,8 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from holidays.constants import FRI, SAT
-from holidays.constants import JAN, APR, MAY, JUN, JUL, OCT
+
+from holidays.constants import FRI, SAT, JAN, APR, MAY, JUN, JUL, OCT
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
 
@@ -38,10 +38,8 @@ class Egypt(HolidayBase):
 
     country = "EG"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
 
         """
         # Function to store the holiday name in the appropriate

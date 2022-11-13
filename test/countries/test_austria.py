@@ -10,8 +10,8 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-
 from datetime import date
+
 from dateutil.relativedelta import relativedelta
 
 import holidays
@@ -83,3 +83,7 @@ class TestAT(unittest.TestCase):
         ]
         for holiday in all_holidays:
             self.assertIn(holiday, at_2015.values())
+
+    def test_subdiv(self):
+        at_holidays = holidays.AT(subdiv=1)
+        self.assertEqual("1", at_holidays.subdiv)

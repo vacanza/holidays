@@ -1,3 +1,36 @@
+Version 0.17
+============
+
+Released November 13, 2022
+
+- 100% test coverage, code refactoring #747, #749 (arkid15r)
+- Special holidays (one-off) support #724 (arkid15r, dr-p)
+- Support for Bosnia and Herzegovina #683, #725 (kasya, arkid15r)
+- Support for Liechtenstein #650, #728, #758 (kasya, arkid15r)
+- Added isort to pre-commit #722, #734 (arkid15r, dr-p)
+- Get item multiple return type fix (dr-p) TODO: possible refactor required
+- Sort overlapping holiday names #713 (kasya, arkid15r)
+- Supported country / financial lists fix #764 (arkid15r)
+- Various refactorings #777 (arkid15r)
+- Various refactorings #756, #759, #760, #766, #767, #770, #775, #776, #780 (KJhellico)
+- Portugal improvements #753 (Nalguedo)
+- Brazil improvements #761, #592 (Nalguedo)
+- Uruguay improvements #758 (kasya)
+- Hong Kong improvements #779, #782 (poshingchu)
+- Swaziland deprecation, replaced by Eswatini #721 (bkthomps)
+- Norway, Sweden rework #771 (arkid15r)
+- South Africa rework #773 (KJhellico)
+- Singapore fixes #717, #726, #754, #782 (amas01, mborsetti, kasya, poshingchu)
+- Canada fixes #715, #733 (bkthomps, MichaelThessel)
+- Honduras fixes #720, #744 (bkthomps, arkid15r)
+- Japan upgrades (added substitute holidays) #723 (shohirose)
+- Malaysia fix #736, #782 (shahonseven, poshingchu)
+- Ukraine fixes #743, #746 (KJhellico)
+- Bulgaria fixes #748 (KJhellico)
+- Isle of Man fix #762, #764 (arkid15r)
+- Lithuania fix #781 (Nalguedo)
+- Sweden fix #783 (sander-visser, KJhellico)
+
 Version 0.16
 ============
 

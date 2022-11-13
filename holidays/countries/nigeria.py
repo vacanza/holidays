@@ -12,22 +12,23 @@
 from datetime import date
 
 from dateutil.easter import easter
-from holidays.utils import _islamic_to_gre
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAY, JUN, OCT, DEC
-from holidays.constants import SAT
+from holidays.constants import SAT, JAN, MAY, JUN, OCT, DEC
 from holidays.holiday_base import HolidayBase
+from holidays.utils import _islamic_to_gre
 
 
 class Nigeria(HolidayBase):
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Nigeria
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Nigeria
+    """
+
     country = "NG"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         if year > 1978:
 
             def _add_holiday(dt: date, hol: str) -> None:

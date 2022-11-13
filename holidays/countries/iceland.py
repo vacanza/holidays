@@ -12,21 +12,24 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, FR, TH, MO
+from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import MO, TH, FR
 
 from holidays.constants import JAN, APR, MAY, JUN, AUG, DEC
 from holidays.holiday_base import HolidayBase
 
 
 class Iceland(HolidayBase):
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Iceland
-    # https://www.officeholidays.com/countries/iceland/index.php
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Iceland
+    https://www.officeholidays.com/countries/iceland/index.php
+    """
+
     country = "IS"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # Public holidays
         self[date(year, JAN, 1)] = "Nýársdagur"
         self[easter(year) - rd(days=3)] = "Skírdagur"

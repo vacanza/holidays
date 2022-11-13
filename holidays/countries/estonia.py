@@ -19,12 +19,12 @@ from holidays.holiday_base import HolidayBase
 
 
 class Estonia(HolidayBase):
+
     country = "EE"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         e = easter(year)
 
         # New Year's Day

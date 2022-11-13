@@ -11,22 +11,23 @@
 
 from datetime import date
 
-from dateutil.easter import easter, EASTER_ORTHODOX
-from dateutil.relativedelta import relativedelta as rd, MO, TU
+from dateutil.easter import EASTER_ORTHODOX, easter
+from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import MO, TU
 
-from holidays.constants import JAN, MAR, MAY, AUG, OCT, DEC, WEEKEND
+from holidays.constants import WEEKEND, JAN, MAR, MAY, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
 class Greece(HolidayBase):
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Greece
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Greece
+    """
 
     country = "GR"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
 
         eday = easter(year, method=EASTER_ORTHODOX)
 

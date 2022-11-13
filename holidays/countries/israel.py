@@ -10,6 +10,8 @@
 #  License: MIT (see LICENSE file)
 
 
+from datetime import date
+
 from convertdate import gregorian, hebrew
 from convertdate.holidays import (
     hanukkah,
@@ -21,20 +23,18 @@ from convertdate.holidays import (
     sukkot,
     yom_kippur,
 )
-from datetime import date
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.holiday_base import HolidayBase
 
 
 class Israel(HolidayBase):
+
     country = "IL"
 
-    def __init__(self, **kwargs):
-
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # Passover
         name = "Passover I"
         passover_start_dt = date(*passover(year, eve=True))

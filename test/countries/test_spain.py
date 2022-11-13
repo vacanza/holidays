@@ -10,16 +10,15 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
+from copy import deepcopy
+from datetime import date
 from itertools import product
 
-from datetime import date
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, TH, FR, MO
+from dateutil.relativedelta import relativedelta as rd
 
 import holidays
 from holidays.utils import _islamic_to_gre
-
-from copy import deepcopy
 
 
 class TestSpain(unittest.TestCase):
@@ -68,7 +67,7 @@ class TestSpain(unittest.TestCase):
             self.assertEqual(
                 date(2016, 3, 24) in prov_holidays, prov not in ["CT", "VC"]
             )
-            assert date(2016, 3, 25) in prov_holidays
+            self.assertIn(date(2016, 3, 25), prov_holidays)
             self.assertEqual(
                 date(2016, 3, 28) in prov_holidays,
                 prov in ["CT", "PV", "NC", "VC", "IB", "CM"],

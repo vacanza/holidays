@@ -11,10 +11,11 @@
 
 from datetime import date
 
+from dateutil.easter import EASTER_ORTHODOX, easter
+from dateutil.relativedelta import relativedelta as rd
+
 from holidays.constants import JAN, MAY, SEP, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
-from dateutil.easter import easter, EASTER_ORTHODOX
-from dateutil.relativedelta import relativedelta as rd
 from holidays.utils import _islamic_to_gre
 
 
@@ -25,10 +26,9 @@ class NorthMacedonia(HolidayBase):
 
     country = "MK"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         self[date(year, JAN, 1)] = "New Year's Day"
 
         self[date(year, JAN, 7)] = "Christmas Day (Orthodox)"

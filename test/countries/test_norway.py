@@ -10,88 +10,88 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
+from test.countries.base import SundayHolidays
 
+from dateutil.parser import parse
+from dateutil.relativedelta import MO, SU
 
 import holidays
 
 
-class TestNorway(unittest.TestCase):
+class TestNorway(unittest.TestCase, SundayHolidays):
     def setUp(self):
-        self.holidays_without_sundays = holidays.Norway()
-        self.holidays_with_sundays = holidays.Norway(include_sundays=True)
+        self.holidays = holidays.Norway()
 
     def test_new_years(self):
-        self.assertIn("1900-01-01", self.holidays_without_sundays)
-        self.assertIn("2017-01-01", self.holidays_without_sundays)
-        self.assertIn("2999-01-01", self.holidays_without_sundays)
+        self.assertIn("1900-01-01", self.holidays)
+        self.assertIn("2017-01-01", self.holidays)
+        self.assertIn("2999-01-01", self.holidays)
 
     def test_easter(self):
-        self.assertIn("2000-04-20", self.holidays_without_sundays)
-        self.assertIn("2000-04-21", self.holidays_without_sundays)
-        self.assertIn("2000-04-23", self.holidays_without_sundays)
-        self.assertIn("2000-04-24", self.holidays_without_sundays)
+        self.assertIn("2000-04-20", self.holidays)
+        self.assertIn("2000-04-21", self.holidays)
+        self.assertIn("2000-04-23", self.holidays)
+        self.assertIn("2000-04-24", self.holidays)
 
-        self.assertIn("2010-04-01", self.holidays_without_sundays)
-        self.assertIn("2010-04-02", self.holidays_without_sundays)
-        self.assertIn("2010-04-04", self.holidays_without_sundays)
-        self.assertIn("2010-04-05", self.holidays_without_sundays)
+        self.assertIn("2010-04-01", self.holidays)
+        self.assertIn("2010-04-02", self.holidays)
+        self.assertIn("2010-04-04", self.holidays)
+        self.assertIn("2010-04-05", self.holidays)
 
-        self.assertIn("2021-04-01", self.holidays_without_sundays)
-        self.assertIn("2021-04-02", self.holidays_without_sundays)
-        self.assertIn("2021-04-04", self.holidays_without_sundays)
-        self.assertIn("2021-04-05", self.holidays_without_sundays)
+        self.assertIn("2021-04-01", self.holidays)
+        self.assertIn("2021-04-02", self.holidays)
+        self.assertIn("2021-04-04", self.holidays)
+        self.assertIn("2021-04-05", self.holidays)
 
-        self.assertIn("2024-03-28", self.holidays_without_sundays)
-        self.assertIn("2024-03-29", self.holidays_without_sundays)
-        self.assertIn("2024-03-31", self.holidays_without_sundays)
-        self.assertIn("2024-04-01", self.holidays_without_sundays)
+        self.assertIn("2024-03-28", self.holidays)
+        self.assertIn("2024-03-29", self.holidays)
+        self.assertIn("2024-03-31", self.holidays)
+        self.assertIn("2024-04-01", self.holidays)
 
     def test_workers_day(self):
-        self.assertNotIn("1900-05-01", self.holidays_without_sundays)
-        self.assertNotIn("1946-05-01", self.holidays_without_sundays)
-        self.assertIn("1947-05-01", self.holidays_without_sundays)
-        self.assertIn("2017-05-01", self.holidays_without_sundays)
-        self.assertIn("2999-05-01", self.holidays_without_sundays)
+        self.assertNotIn("1900-05-01", self.holidays)
+        self.assertNotIn("1946-05-01", self.holidays)
+        self.assertIn("1947-05-01", self.holidays)
+        self.assertIn("2017-05-01", self.holidays)
+        self.assertIn("2999-05-01", self.holidays)
 
     def test_constitution_day(self):
-        self.assertNotIn("1900-05-17", self.holidays_without_sundays)
-        self.assertNotIn("1946-05-17", self.holidays_without_sundays)
-        self.assertIn("1947-05-17", self.holidays_without_sundays)
-        self.assertIn("2017-05-17", self.holidays_without_sundays)
-        self.assertIn("2999-05-17", self.holidays_without_sundays)
+        self.assertNotIn("1900-05-17", self.holidays)
+        self.assertNotIn("1946-05-17", self.holidays)
+        self.assertIn("1947-05-17", self.holidays)
+        self.assertIn("2017-05-17", self.holidays)
+        self.assertIn("2999-05-17", self.holidays)
 
     def test_pentecost(self):
-        self.assertIn("2000-06-11", self.holidays_without_sundays)
-        self.assertIn("2000-06-12", self.holidays_without_sundays)
+        pentecost_days = (
+            ("2000-06-11", "2000-06-12"),
+            ("2010-05-23", "2010-05-24"),
+            ("2024-05-19", "2024-05-20"),
+        )
 
-        self.assertIn("2010-05-23", self.holidays_without_sundays)
-        self.assertIn("2010-05-24", self.holidays_without_sundays)
+        for day1, day2 in pentecost_days:
+            self.assertIn(day1, self.holidays)
+            self.assertEqual(parse(day1).weekday(), SU.weekday)
 
-        self.assertIn("2021-05-23", self.holidays_without_sundays)
-        self.assertIn("2021-05-24", self.holidays_without_sundays)
-
-        self.assertIn("2024-05-19", self.holidays_without_sundays)
-        self.assertIn("2024-05-20", self.holidays_without_sundays)
+            self.assertIn(day2, self.holidays)
+            self.assertEqual(parse(day2).weekday(), MO.weekday)
 
     def test_christmas(self):
-        self.assertIn("1901-12-25", self.holidays_without_sundays)
-        self.assertIn("1901-12-26", self.holidays_without_sundays)
+        self.assertIn("1901-12-25", self.holidays)
+        self.assertIn("1901-12-26", self.holidays)
 
-        self.assertIn("2016-12-25", self.holidays_without_sundays)
-        self.assertIn("2016-12-26", self.holidays_without_sundays)
+        self.assertIn("2016-12-25", self.holidays)
+        self.assertIn("2016-12-26", self.holidays)
 
-        self.assertIn("2500-12-25", self.holidays_without_sundays)
-        self.assertIn("2500-12-26", self.holidays_without_sundays)
+        self.assertIn("2500-12-25", self.holidays)
+        self.assertIn("2500-12-26", self.holidays)
 
     def test_sundays(self):
         """
-        Sundays are considered holidays in Norway
-        :return:
+        Sundays are considered holidays in Norway.
         """
-        self.assertIn("1989-12-31", self.holidays_with_sundays)
-        self.assertIn("2017-02-05", self.holidays_with_sundays)
-        self.assertIn("2017-02-12", self.holidays_with_sundays)
-        self.assertIn("2032-02-29", self.holidays_with_sundays)
+
+        super().test_sundays(holidays.Norway)
 
     def test_not_holiday(self):
         """
@@ -101,30 +101,16 @@ class TestNorway(unittest.TestCase):
         TODO: Should add more dates that are often confused for being a holiday
         :return:
         """
-        self.assertNotIn("2017-02-06", self.holidays_without_sundays)
-        self.assertNotIn("2017-02-07", self.holidays_without_sundays)
-        self.assertNotIn("2017-02-08", self.holidays_without_sundays)
-        self.assertNotIn("2017-02-09", self.holidays_without_sundays)
-        self.assertNotIn("2017-02-10", self.holidays_without_sundays)
+        self.assertNotIn("2017-02-06", self.holidays)
+        self.assertNotIn("2017-02-07", self.holidays)
+        self.assertNotIn("2017-02-08", self.holidays)
+        self.assertNotIn("2017-02-09", self.holidays)
+        self.assertNotIn("2017-02-10", self.holidays)
 
-        self.assertNotIn("2001-12-24", self.holidays_without_sundays)
-        self.assertNotIn("2001-05-16", self.holidays_without_sundays)
-        self.assertNotIn("2001-05-18", self.holidays_without_sundays)
-        self.assertNotIn("1999-12-31", self.holidays_without_sundays)
-        self.assertNotIn("2016-12-31", self.holidays_without_sundays)
-        self.assertNotIn("2016-12-27", self.holidays_without_sundays)
-        self.assertNotIn("2016-12-28", self.holidays_without_sundays)
-
-        self.assertNotIn("2017-02-06", self.holidays_with_sundays)
-        self.assertNotIn("2017-02-07", self.holidays_with_sundays)
-        self.assertNotIn("2017-02-08", self.holidays_with_sundays)
-        self.assertNotIn("2017-02-09", self.holidays_with_sundays)
-        self.assertNotIn("2017-02-10", self.holidays_with_sundays)
-
-        self.assertNotIn("2001-12-24", self.holidays_with_sundays)
-        self.assertNotIn("2001-05-16", self.holidays_with_sundays)
-        self.assertNotIn("2001-05-18", self.holidays_with_sundays)
-        self.assertNotIn("1999-12-31", self.holidays_with_sundays)
-        self.assertNotIn("2016-12-31", self.holidays_with_sundays)
-        self.assertNotIn("2016-12-27", self.holidays_with_sundays)
-        self.assertNotIn("2016-12-28", self.holidays_with_sundays)
+        self.assertNotIn("2001-12-24", self.holidays)
+        self.assertNotIn("2001-05-16", self.holidays)
+        self.assertNotIn("2001-05-18", self.holidays)
+        self.assertNotIn("1999-12-31", self.holidays)
+        self.assertNotIn("2016-12-31", self.holidays)
+        self.assertNotIn("2016-12-27", self.holidays)
+        self.assertNotIn("2016-12-28", self.holidays)

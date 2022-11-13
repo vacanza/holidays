@@ -10,8 +10,10 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+
 from dateutil.relativedelta import relativedelta as rd
-from holidays.constants import JAN, MAR, MAY, JUN, OCT, NOV, DEC, SAT, SUN
+
+from holidays.constants import SAT, SUN, JAN, MAR, MAY, JUN, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
 
@@ -19,13 +21,11 @@ OBSERVED_SUFFIX = " (Observed)"
 
 
 class Azerbaijan(HolidayBase):
-
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Azerbaijan
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Azerbaijan
+    """
 
     country = "AZ"
-
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
 
     def _add_observed(self, holiday: date) -> None:
         if self.observed and holiday.weekday() in (SAT, SUN):
@@ -36,6 +36,7 @@ class Azerbaijan(HolidayBase):
                 self[next_monday] = self[holiday] + OBSERVED_SUFFIX
 
     def _populate(self, year: int) -> None:
+        super()._populate(year)
 
         # 1st of Jan
         self[date(year, JAN, 1)] = "New Year's Day"

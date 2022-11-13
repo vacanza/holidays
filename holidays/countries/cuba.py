@@ -12,20 +12,19 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, MO
+from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import MO
 
-from holidays.constants import JAN, MAY, JUL, OCT, DEC
-from holidays.constants import SUN
+from holidays.constants import SUN, JAN, MAY, JUL, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
 class Cuba(HolidayBase):
     country = "CU"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         """
         Overview: https://en.wikipedia.org/wiki/Public_holidays_in_Cuba
         1984 (DEC 28): https://bit.ly/3okNBbt

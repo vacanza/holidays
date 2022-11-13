@@ -22,10 +22,9 @@ class Russia(HolidayBase):
 
     country = "RU"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
         self[date(year, JAN, 1)] = "Новый год"
         # New Year's Day

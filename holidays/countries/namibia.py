@@ -14,20 +14,21 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import SUN
-from holidays.constants import JAN, MAR, MAY, AUG, SEP, DEC
+from holidays.constants import SUN, JAN, MAR, MAY, AUG, SEP, DEC
 from holidays.holiday_base import HolidayBase
 
 
 class Namibia(HolidayBase):
+    """
+    https://www.officeholidays.com/countries/namibia
+    https://www.timeanddate.com/holidays/namibia/
+
+    """
+
     country = "NA"
 
-    def __init__(self, **kwargs):
-        # https://www.officeholidays.com/countries/namibia
-        # https://www.timeanddate.com/holidays/namibia/
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
 
         if year >= 1990:
             self[date(year, JAN, 1)] = "New Year's Day"

@@ -11,7 +11,7 @@
 
 from datetime import date
 
-from dateutil.easter import easter, EASTER_ORTHODOX
+from dateutil.easter import EASTER_ORTHODOX, easter
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAR, MAY, JUL, NOV, DEC
@@ -26,10 +26,9 @@ class Belarus(HolidayBase):
 
     country = "BY"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # The current set of holidays came into force in 1998
         # http://laws.newsby.org/documents/ukazp/pos05/ukaz05806.htm
         if year <= 1998:

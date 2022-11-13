@@ -9,13 +9,14 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, datetime
+from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import MO, FR
 
-from holidays.constants import FRI, SUN
 from holidays.constants import (
+    SUN,
     JAN,
     MAR,
     APR,
@@ -32,17 +33,19 @@ from holidays.holiday_base import HolidayBase
 
 
 class SouthAfrica(HolidayBase):
+    """
+    http://www.gov.za/about-sa/public-holidays
+    https://en.wikipedia.org/wiki/Public_holidays_in_South_Africa
+    """
+
     country = "ZA"
 
-    def __init__(self, **kwargs):
-        # http://www.gov.za/about-sa/public-holidays
-        # https://en.wikipedia.org/wiki/Public_holidays_in_South_Africa
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # Observed since 1910, with a few name changes
         if year > 1909:
-            self[date(year, 1, 1)] = "New Year's Day"
+            self[date(year, JAN, 1)] = "New Year's Day"
 
             e = easter(year)
             good_friday = e - rd(days=2)
@@ -69,7 +72,7 @@ class SouthAfrica(HolidayBase):
                 dec_26_name = "Day of Goodwill"
             else:
                 dec_26_name = "Boxing Day"
-            self[date(year, 12, 26)] = dec_26_name
+            self[date(year, DEC, 26)] = dec_26_name
 
         # Observed since 1995/1/1
         if year > 1994:
@@ -106,6 +109,7 @@ class SouthAfrica(HolidayBase):
             self[date(2014, MAY, 7)] = national_election
         if year == 2016:
             self[date(2016, AUG, 3)] = local_election
+            self[date(2016, DEC, 27)] = presidential
         if year == 2019:
             self[date(2019, MAY, 8)] = national_election
         if year == 2021:
@@ -120,10 +124,8 @@ class SouthAfrica(HolidayBase):
                 and k.weekday() == SUN
                 and k.year == year
             ):
-                add_days = 1
-                while self.get(k + rd(days=add_days)) is not None:
-                    add_days += 1
-                self[k + rd(days=add_days)] = v + " (Observed)"
+                if not self.get(k + rd(days=1)):
+                    self[k + rd(days=1)] = v + " (Observed)"
 
         # Historic public holidays no longer observed
         if 1951 < year < 1974:
@@ -132,11 +134,8 @@ class SouthAfrica(HolidayBase):
             self[date(year, APR, 6)] = "Founder's Day"
 
         if 1986 < year < 1990:
-            historic_workers_day = datetime(year, MAY, 1)
             # observed on first Friday in May
-            while historic_workers_day.weekday() != FRI:
-                historic_workers_day += rd(days=1)
-
+            historic_workers_day = date(year, MAY, 1) + rd(weekday=FR)
             self[historic_workers_day] = "Workers' Day"
 
         if 1909 < year < 1994:
@@ -152,29 +151,21 @@ class SouthAfrica(HolidayBase):
             self[date(year, MAY, 31)] = "Republic Day"
 
         if 1951 < year < 1961:
-            queens_birthday = datetime(year, JUN, 7)
-            # observed on second Monday in June
-            while queens_birthday.weekday() != 0:
-                queens_birthday += rd(days=1)
-
+            # observed on second Monday in July
+            queens_birthday = date(year, JUL, 1) + rd(weekday=MO(+2))
             self[queens_birthday] = "Queen's Birthday"
 
         if 1960 < year < 1974:
             self[date(year, JUL, 10)] = "Family Day"
 
         if 1909 < year < 1952:
-            kings_birthday = datetime(year, AUG, 1)
             # observed on first Monday in August
-            while kings_birthday.weekday() != 0:
-                kings_birthday += rd(days=1)
-
+            kings_birthday = date(year, AUG, 1) + rd(weekday=MO)
             self[kings_birthday] = "King's Birthday"
 
         if 1951 < year < 1980:
-            settlers_day = datetime(year, SEP, 1)
-            while settlers_day.weekday() != 0:
-                settlers_day += rd(days=1)
-
+            # observed on first Monday in September
+            settlers_day = date(year, SEP, 1) + rd(weekday=MO)
             self[settlers_day] = "Settlers' Day"
 
         if 1951 < year < 1994:

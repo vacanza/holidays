@@ -11,11 +11,10 @@
 
 import unittest
 import warnings
-
 from datetime import date
 
 import holidays
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, AUG, OCT, NOV, DEC
+from holidays.constants import APR, AUG, DEC, FEB, JAN, JUN, MAR, MAY, NOV, OCT
 
 
 class TestIND(unittest.TestCase):
@@ -180,3 +179,9 @@ class TestIND(unittest.TestCase):
         self.assertEqual(self.holidays[date(2029, NOV, 5)], diwali_name)
         self.assertEqual(self.holidays[date(2030, MAR, 19)], holi_name)
         self.assertEqual(self.holidays[date(2030, OCT, 26)], diwali_name)
+
+    def test_pre_1947(self):
+        self.assertNotIn(date(1946, 8, 15), self.holidays)
+
+    def test_pre_1950(self):
+        self.assertNotIn(date(1949, 1, 26), self.holidays)

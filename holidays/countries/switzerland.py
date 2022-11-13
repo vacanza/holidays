@@ -12,7 +12,8 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, FR, TH, MO, SU
+from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import MO, FR, TH, SU
 
 from holidays.constants import JAN, MAR, APR, MAY, JUN, AUG, SEP, NOV, DEC
 from holidays.holiday_base import HolidayBase
@@ -49,10 +50,9 @@ class Switzerland(HolidayBase):
         "ZH",
     ]
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # public holidays
         self[date(year, JAN, 1)] = "Neujahrestag"
 

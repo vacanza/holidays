@@ -12,21 +12,24 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, TH, FR, SA, SU
+from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import TH, FR, SA, SU
 
 from holidays.constants import JAN, MAY, JUN, JUL, AUG, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
 class Peru(HolidayBase):
-    # https://www.gob.pe/feriados
-    # https://es.wikipedia.org/wiki/Anexo:Días_feriados_en_el_Perú
+    """
+    https://www.gob.pe/feriados
+    https://es.wikipedia.org/wiki/Anexo:Días_feriados_en_el_Perú
+    """
+
     country = "PE"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
         self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
 

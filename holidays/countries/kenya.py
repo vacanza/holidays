@@ -12,23 +12,25 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, FR, MO
+from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import MO, FR
 
-from holidays.constants import JAN, MAY, JUN, OCT, DEC
-from holidays.constants import SUN
+from holidays.constants import SUN, JAN, MAY, JUN, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
 class Kenya(HolidayBase):
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Kenya
-    # http://kenyaembassyberlin.de/Public-Holidays-in-Kenya.48.0.html
-    # https://www.officeholidays.com/holidays/kenya/moi-day
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Kenya
+    http://kenyaembassyberlin.de/Public-Holidays-in-Kenya.48.0.html
+    https://www.officeholidays.com/holidays/kenya/moi-day
+    """
+
     country = "KE"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # Public holidays
         self[date(year, JAN, 1)] = "New Year's Day"
         self[date(year, MAY, 1)] = "Labour Day"

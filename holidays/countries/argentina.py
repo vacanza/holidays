@@ -12,25 +12,38 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, FR, TH
+from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import TH, FR
 
-from holidays.constants import WEEKEND
-from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, OCT, NOV, DEC
+from holidays.constants import (
+    WEEKEND,
+    JAN,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    OCT,
+    NOV,
+    DEC,
+)
 from holidays.holiday_base import HolidayBase
 
 
 class Argentina(HolidayBase):
-    # https://www.argentina.gob.ar/interior/feriados
-    # https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Argentina
-    # http://servicios.lanacion.com.ar/feriados
-    # https://www.clarin.com/feriados/
+    """
+    https://www.argentina.gob.ar/interior/feriados
+    https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Argentina
+    http://servicios.lanacion.com.ar/feriados
+    https://www.clarin.com/feriados/
+    """
 
     country = "AR"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
         if not self.observed and date(year, JAN, 1).weekday() in WEEKEND:
             pass
@@ -54,8 +67,8 @@ class Argentina(HolidayBase):
             self[date(year, MAR, 24)] = name
 
         # Holy Week
-        name_thu = "Semana Santa (Jueves Santo)  [Holy day (Holy Thursday)]"
-        name_fri = "Semana Santa (Viernes Santo)  [Holy day (Holy Friday)]"
+        name_thu = "Semana Santa (Jueves Santo) [Holy day (Holy Thursday)]"
+        name_fri = "Semana Santa (Viernes Santo) [Holy day (Holy Friday)]"
         name_easter = "Día de Pascuas [Easter Day]"
 
         self[easter(year) + rd(weekday=TH(-1))] = name_thu
@@ -153,9 +166,9 @@ class Argentina(HolidayBase):
         if not self.observed and date(year, DEC, 8).weekday() in WEEKEND:
             pass
         else:
-            self[date(year, DEC, 8)] = (
-                "La Inmaculada Concepción" " [Immaculate Conception]"
-            )
+            self[
+                date(year, DEC, 8)
+            ] = "La Inmaculada Concepción [Immaculate Conception]"
 
         # Christmas
         self[date(year, DEC, 25)] = "Navidad [Christmas]"

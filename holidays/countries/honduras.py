@@ -12,39 +12,24 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, TH, FR, SA, SU
+from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import WE, TH, FR, SA
 
-from holidays.constants import JAN, FEB, MAR, APR, MAY, SEP, OCT, DEC
+from holidays.constants import JAN, APR, MAY, SEP, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
 class Honduras(HolidayBase):
-    # https://www.timeanddate.com/holidays/honduras/
+    # Artículo 339 del Código del Trabajo:
+    # https://www.ilo.org/dyn/natlex/docs/WEBTEXT/29076/64849/S59HND01.htm#:~:text=El%20presente%20C%C3%B3digo%20regula%20las,compensaci%C3%B3n%20equitativa%20de%20su%20inversi%C3%B3n.
 
     country = "HN"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
-        if self.observed and date(year, JAN, 1):
-            self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
-
-        # The Three Wise Men Day
-        if self.observed and date(year, JAN, 6):
-            name = "Día de los Reyes Magos [The Three Wise Men Day] (Observed)"
-            self[date(year, JAN, 6)] = name
-
-        # The Three Wise Men Day
-        if self.observed and date(year, FEB, 3):
-            name = "Día de la virgen de Suyapa [Our Lady of Suyapa] (Observed)"
-            self[date(year, FEB, 3)] = name
-
-        # The Father's Day
-        if self.observed and date(year, MAR, 19):
-            name = "Día del Padre [Father's Day] (Observed)"
-            self[date(year, MAR, 19)] = name
+        self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
 
         # Maundy Thursday
         self[
@@ -59,78 +44,35 @@ class Honduras(HolidayBase):
             easter(year) + rd(weekday=SA(-1))
         ] = "Sábado de Gloria [Holy Saturday]"
 
-        # Easter Sunday
-        self[
-            easter(year) + rd(weekday=SU(-1))
-        ] = "Domingo de Resurrección [Easter Sunday]"
-
-        # America Day
-        if self.observed and date(year, APR, 14):
-            self[date(year, APR, 14)] = "Día de las Américas [America Day]"
+        # Panamerican Day
+        self[date(year, APR, 14)] = "Día de las Américas [Panamerican Day]"
 
         # Labor Day
-        if self.observed and date(year, MAY, 1):
-            self[date(year, MAY, 1)] = "Día del Trabajo [Labour Day]"
-
-        # Mother's Day
-        may_first = date(int(year), 5, 1)
-        weekday_seq = may_first.weekday()
-        mom_day = 14 - weekday_seq
-        if self.observed and date(year, MAY, mom_day):
-            str_day = "Día de la madre [Mother's Day] (Observed)"
-            self[date(year, MAY, mom_day)] = str_day
-
-        # Children's Day
-        if self.observed and date(year, SEP, 10):
-            name = "Día del niño [Children day] (Observed)"
-            self[date(year, SEP, 10)] = name
+        self[date(year, MAY, 1)] = "Día del Trabajo [Labor Day]"
 
         # Independence Day
-        if self.observed and date(year, SEP, 15):
-            name = "Día de la Independencia [Independence Day]"
-            self[date(year, SEP, 15)] = name
+        self[
+            date(year, SEP, 15)
+        ] = "Día de la Independencia [Independence Day]"
 
-        # Teacher's Day
-        if self.observed and date(year, SEP, 17):
-            name = "Día del Maestro [Teacher's day] (Observed)"
-            self[date(year, SEP, 17)] = name
-
-        # October Holidays are joined on 3 days starting at October 3 to 6.
-        # Some companies work medium day and take the rest on saturday.
-        # This holiday is variant and some companies work normally.
-        # If start day is weekend is ignored.
-        # The main objective of this is to increase the tourism.
-
-        # https://www.hondurastips.hn/2017/09/20/de-donde-nace-el-feriado-morazanico/
-
+        # https://www.tsc.gob.hn/web/leyes/Decreto_78-2015_Traslado_de_Feriados_Octubre.pdf
         if year <= 2014:
             # Morazan's Day
-            if self.observed and date(year, OCT, 3):
-                self[date(year, OCT, 3)] = "Día de Morazán [Morazan's Day]"
+            self[date(year, OCT, 3)] = "Día de Morazán [Morazan's Day]"
 
             # Columbus Day
-            if self.observed and date(year, OCT, 12):
-                self[date(year, OCT, 12)] = "Día de la Raza [Columbus Day]"
+            self[date(year, OCT, 12)] = "Día de la Raza [Columbus Day]"
 
-            # Amy Day
-            if self.observed and date(year, OCT, 21):
-                str_day = "Día de las Fuerzas Armadas [Army Day]"
-                self[date(year, OCT, 21)] = str_day
+            # Army Day
+            self[date(year, OCT, 21)] = "Día de las Fuerzas Armadas [Army Day]"
         else:
             # Morazan Weekend
-            if self.observed and date(year, OCT, 3):
-                name = "Semana Morazánica [Morazan Weekend]"
-                self[date(year, OCT, 3)] = name
-
-            # Morazan Weekend
-            if self.observed and date(year, OCT, 4):
-                name = "Semana Morazánica [Morazan Weekend]"
-                self[date(year, OCT, 4)] = name
-
-            # Morazan Weekend
-            if self.observed and date(year, OCT, 5):
-                name = "Semana Morazánica [Morazan Weekend]"
-                self[date(year, OCT, 5)] = name
+            # (First Wednesday of October from 12 noon to Saturday 12 noon)
+            holiday_name = "Semana Morazánica [Morazan Weekend]"
+            first_wednesday = date(year, OCT, 1) + rd(weekday=WE(+1))
+            self[first_wednesday] = holiday_name
+            self[first_wednesday + rd(days=1)] = holiday_name
+            self[first_wednesday + rd(days=2)] = holiday_name
 
         # Christmas
         self[date(year, DEC, 25)] = "Navidad [Christmas]"

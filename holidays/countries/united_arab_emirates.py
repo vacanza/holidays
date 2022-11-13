@@ -12,8 +12,20 @@
 from datetime import date
 
 from dateutil.relativedelta import relativedelta as rd
-from holidays.constants import FRI, SAT
-from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, SEP, NOV, DEC
+
+from holidays.constants import (
+    FRI,
+    SAT,
+    JAN,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    NOV,
+    DEC,
+)
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
 
@@ -46,10 +58,9 @@ class UnitedArabEmirates(HolidayBase):
     #  Python >= 3.6
     country = "AE"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         def _add_holiday(dt: date, hol: str) -> None:
             """Only add if in current year; prevents adding holidays across
             years (handles multi-day Islamic holidays that straddle Gregorian

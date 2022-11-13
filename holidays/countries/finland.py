@@ -12,21 +12,23 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, SA, FR
+from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import FR, SA
 
 from holidays.constants import JAN, MAY, JUN, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
 class Finland(HolidayBase):
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Finland
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Finland
+    """
 
     country = "FI"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         e = easter(year)
 
         self[date(year, JAN, 1)] = "Uudenvuodenpäivä"

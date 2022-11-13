@@ -12,17 +12,34 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, MO, FR, SA
+from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import MO, FR, SA
 
-from holidays.constants import JAN, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.constants import TUE, THU, FRI, SAT, SUN
+from holidays.constants import (
+    TUE,
+    THU,
+    FRI,
+    SAT,
+    SUN,
+    JAN,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+)
 from holidays.holiday_base import HolidayBase
 
 
 class Chile(HolidayBase):
-    # https://www.feriados.cl
-    # http://www.feriadoschilenos.cl/ (excellent history)
-    # https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Chile
+    """
+    https://www.feriados.cl
+    http://www.feriadoschilenos.cl/ (excellent history)
+    https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Chile
+    """
 
     country = "CL"
 
@@ -46,10 +63,9 @@ class Chile(HolidayBase):
         "VS",
     ]
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day (Law 2.977)
         self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
         # Day after, if it's a Sunday (Law 20.983)
@@ -130,7 +146,7 @@ class Chile(HolidayBase):
         elif year < 2020:
             self[date(year, OCT, 12)] = (
                 "Día del Respeto a la Diversidad"
-                " [Day of the Meeting "
+                " [Day of the Meeting"
                 " of Two Worlds]"
             )
         else:
@@ -149,7 +165,7 @@ class Chile(HolidayBase):
         # National Day of the Evangelical and Protestant Churches (Law 20.299)
         if year > 2007:
             name = (
-                "Día Nacional de las Iglesias Evangélicas y Protestantes "
+                "Día Nacional de las Iglesias Evangélicas y Protestantes"
                 " [Reformation Day]"
             )
             self[date(year, OCT, 31)] = name
@@ -159,9 +175,9 @@ class Chile(HolidayBase):
         self[date(year, NOV, 1)] = name
 
         # Immaculate Conception (Law 2.977)
-        self[date(year, DEC, 8)] = (
-            "La Inmaculada Concepción" " [Immaculate Conception]"
-        )
+        self[
+            date(year, DEC, 8)
+        ] = "La Inmaculada Concepción [Immaculate Conception]"
 
         # Christmas (Law 2.977)
         self[date(year, DEC, 25)] = "Navidad [Christmas]"

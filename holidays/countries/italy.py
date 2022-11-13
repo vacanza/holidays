@@ -13,16 +13,8 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import (
-    relativedelta as rd,
-    MO,
-    TU,
-    WE,
-    TH,
-    FR,
-    SA,
-    SU,
-)
+from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import MO, TU, TH, SU
 
 from holidays.constants import (
     JAN,
@@ -42,6 +34,7 @@ from holidays.holiday_base import HolidayBase
 
 
 class Italy(HolidayBase):
+
     country = "IT"
     # Reference: https://it.wikipedia.org/wiki/Province_d%27Italia
     # Please maintain in alphabetical order for easy updating in the future
@@ -168,10 +161,9 @@ class Italy(HolidayBase):
         "VV",
     ]
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         self[date(year, JAN, 1)] = "Capodanno"
         self[date(year, JAN, 6)] = "Epifania del Signore"
         self[easter(year)] = "Pasqua di Resurrezione"

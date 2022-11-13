@@ -10,21 +10,24 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+
 from dateutil.relativedelta import relativedelta as rd
+
 from holidays.constants import JAN, APR, MAY, JUL, AUG, OCT
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
 
 
 class Turkey(HolidayBase):
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Turkey
+    """
 
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Turkey
     country = "TR"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         def _add_holiday(dt: date, hol: str) -> None:
             """Only add if in current year; prevents adding holidays across
             years (handles multi-day Islamic holidays that straddle Gregorian

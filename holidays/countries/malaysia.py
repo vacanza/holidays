@@ -13,10 +13,12 @@ from datetime import date, timedelta
 from typing import Iterable, Optional, Union
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, MO, FR, SA, SU
+from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import MO, FR, SA, SU
 from dateutil.rrule import MONTHLY, rrule
 
 from holidays.constants import (
+    SUN,
     JAN,
     FEB,
     MAR,
@@ -30,7 +32,6 @@ from holidays.constants import (
     NOV,
     DEC,
 )
-from holidays.constants import SUN
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _ChineseLuniSolar, _islamic_to_gre
 
@@ -58,7 +59,7 @@ class Malaysia(HolidayBase):
 
     def __init__(
         self,
-        years: Union[int, Iterable[int]] = None,
+        years: Optional[Union[int, Iterable[int]]] = None,
         expand: bool = True,
         observed: bool = True,
         subdiv: Optional[str] = None,
@@ -108,6 +109,7 @@ class Malaysia(HolidayBase):
         super().__init__(years, expand, observed, subdiv, prov, state)
 
     def _populate(self, year):
+        super()._populate(year)
 
         # New Year's Day
         if self.subdiv not in ("JHR", "KDH", "KTN", "PLS", "TRG"):
@@ -302,7 +304,7 @@ class Malaysia(HolidayBase):
                 2019: (OCT, 27),
                 2020: (NOV, 14),
                 2021: (NOV, 4),
-                2022: (NOV, 24),
+                2022: (OCT, 24),
             }
             if year in dates_obs:
                 hol_date = date(year, *dates_obs[year])
@@ -637,7 +639,7 @@ class MY(Malaysia):
     # __init__ required for IDE typing and inheritance of docstring.
     def __init__(
         self,
-        years: Union[int, Iterable[int]] = None,
+        years: Optional[Union[int, Iterable[int]]] = None,
         expand: bool = True,
         observed: bool = True,
         subdiv: Optional[str] = None,
@@ -652,7 +654,7 @@ class MYS(Malaysia):
     # __init__ required for IDE typing and inheritance of docstring.
     def __init__(
         self,
-        years: Union[int, Iterable[int]] = None,
+        years: Optional[Union[int, Iterable[int]]] = None,
         expand: bool = True,
         observed: bool = True,
         subdiv: Optional[str] = None,

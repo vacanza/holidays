@@ -10,8 +10,8 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-
 from datetime import date
+
 from dateutil.relativedelta import relativedelta
 
 import holidays
@@ -92,7 +92,6 @@ class TestIreland(unittest.TestCase):
             2001,
         ):
             dt = date(year, 12, day)
-            print(self.holidays[dt])
             self.assertIn(dt, self.holidays, dt)
             self.assertIn(
                 self.holidays[dt],

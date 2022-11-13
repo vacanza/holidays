@@ -8,10 +8,15 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
-from holidays.countries import *
-from holidays.financial import *
-from holidays.constants import MON, TUE, WED, THU, FRI, SAT, SUN, WEEKEND
 from holidays.constants import (
+    MON,
+    TUE,
+    WED,
+    THU,
+    FRI,
+    SAT,
+    SUN,
+    WEEKEND,
     JAN,
     FEB,
     MAR,
@@ -25,6 +30,8 @@ from holidays.constants import (
     NOV,
     DEC,
 )
+from holidays.countries import *
+from holidays.financial import *
 from holidays.holiday_base import *  # * import required for IDE docstrings
 from holidays.utils import (
     CountryHoliday,
@@ -34,4 +41,4 @@ from holidays.utils import (
     list_supported_financial,
 )
 
-__version__ = "0.16"
+__version__ = "0.17"
