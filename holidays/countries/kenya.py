@@ -20,13 +20,13 @@ from holidays.holiday_base import HolidayBase
 
 
 class Kenya(HolidayBase):
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Kenya
-    # http://kenyaembassyberlin.de/Public-Holidays-in-Kenya.48.0.html
-    # https://www.officeholidays.com/holidays/kenya/moi-day
-    country = "KE"
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Kenya
+    http://kenyaembassyberlin.de/Public-Holidays-in-Kenya.48.0.html
+    https://www.officeholidays.com/holidays/kenya/moi-day
+    """
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
+    country = "KE"
 
     def _populate(self, year):
         super()._populate(year)

@@ -20,11 +20,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class Netherlands(HolidayBase):
-    country = "NL"
+    """
+    http://www.iamsterdam.com/en/plan-your-trip/practical-info/public-holidays
+    """
 
-    def __init__(self, **kwargs):
-        # http://www.iamsterdam.com/en/plan-your-trip/practical-info/public-holidays
-        HolidayBase.__init__(self, **kwargs)
+    country = "NL"
 
     def _populate(self, year):
         super()._populate(year)

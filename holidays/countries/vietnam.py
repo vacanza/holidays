@@ -22,10 +22,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class Vietnam(HolidayBase):
-
-    # https://publicholidays.vn/
-    # http://vbpl.vn/TW/Pages/vbpqen-toanvan.aspx?ItemID=11013 Article.115
-    # https://www.timeanddate.com/holidays/vietnam/
+    """
+    https://publicholidays.vn/
+    http://vbpl.vn/TW/Pages/vbpqen-toanvan.aspx?ItemID=11013 Article.115
+    https://www.timeanddate.com/holidays/vietnam/
+    """
 
     country = "VN"
 

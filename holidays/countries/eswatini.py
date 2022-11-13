@@ -20,12 +20,12 @@ from holidays.holiday_base import HolidayBase
 
 
 class Eswatini(HolidayBase):
-    country = "SZ"
+    """
+    https://swazilii.org/sz/legislation/act/1938/71
+    https://www.officeholidays.com/countries/swaziland
+    """
 
-    def __init__(self, **kwargs):
-        # https://swazilii.org/sz/legislation/act/1938/71
-        # https://www.officeholidays.com/countries/swaziland
-        HolidayBase.__init__(self, **kwargs)
+    country = "SZ"
 
     def _populate(self, year):
         super()._populate(year)

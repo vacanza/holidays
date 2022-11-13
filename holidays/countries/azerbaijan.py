@@ -21,13 +21,11 @@ OBSERVED_SUFFIX = " (Observed)"
 
 
 class Azerbaijan(HolidayBase):
-
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Azerbaijan
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Azerbaijan
+    """
 
     country = "AZ"
-
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
 
     def _add_observed(self, holiday: date) -> None:
         if self.observed and holiday.weekday() in (SAT, SUN):

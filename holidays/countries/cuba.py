@@ -22,9 +22,6 @@ from holidays.holiday_base import HolidayBase
 class Cuba(HolidayBase):
     country = "CU"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
         super()._populate(year)
 

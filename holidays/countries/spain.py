@@ -58,9 +58,6 @@ class Spain(HolidayBase):
         "VC",
     ]
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _is_observed(self, date_holiday, name_holiday):
         if self.observed and date_holiday.weekday() == SUN:
             self[date_holiday + rd(days=+1)] = name_holiday + " (Trasladado)"

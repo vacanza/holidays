@@ -19,10 +19,8 @@ from holidays.holiday_base import HolidayBase
 
 
 class Mexico(HolidayBase):
-    country = "MX"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
+    country = "MX"
 
     def _add_with_observed(self, holiday: date, name: str):
         self[holiday] = name

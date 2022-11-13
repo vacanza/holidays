@@ -58,9 +58,6 @@ class UnitedArabEmirates(HolidayBase):
     #  Python >= 3.6
     country = "AE"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
         super()._populate(year)
 

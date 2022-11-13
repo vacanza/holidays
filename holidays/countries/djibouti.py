@@ -42,9 +42,6 @@ class Djibouti(HolidayBase):
 
     country = "DJ"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
         super()._populate(year)
 

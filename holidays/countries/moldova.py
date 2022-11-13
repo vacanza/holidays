@@ -19,12 +19,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class Moldova(HolidayBase):
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Moldova
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Moldova
+    """
 
     country = "MD"
-
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)

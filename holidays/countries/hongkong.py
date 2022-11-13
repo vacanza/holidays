@@ -36,9 +36,10 @@ from holidays.utils import _ChineseLuniSolar
 
 
 class HongKong(HolidayBase):
-
-    # https://www.gov.hk/en/about/abouthk/holiday/2020.htm
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Hong_Kong
+    """
+    https://www.gov.hk/en/about/abouthk/holiday/2020.htm
+    https://en.wikipedia.org/wiki/Public_holidays_in_Hong_Kong
+    """
 
     country = "HK"
 

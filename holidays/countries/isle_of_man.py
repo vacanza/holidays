@@ -23,12 +23,10 @@ class IsleOfMan(UnitedKingdom):
 
     country = "IM"
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-
     def _populate(self, year: int) -> None:
         super()._populate(year)
 
+        # Isle of Man exclusive holidays
         # TT bank holiday (first Friday in June)
         self[date(year, JUN, 1) + rd(weekday=FR)] = "TT Bank Holiday"
 

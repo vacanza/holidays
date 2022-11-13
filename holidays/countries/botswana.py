@@ -20,15 +20,14 @@ from holidays.holiday_base import HolidayBase
 
 
 class Botswana(HolidayBase):
-    # https://www.gov.bw/public-holidays
-    # https://publicholidays.africa/botswana/2021-dates/
-    # https://www.timeanddate.com/holidays/botswana/
-    # http://www.ilo.org/dyn/travail/docs/1766/Public%20Holidays%20Act.pdf
+    """
+    https://www.gov.bw/public-holidays
+    https://publicholidays.africa/botswana/2021-dates/
+    https://www.timeanddate.com/holidays/botswana/
+    http://www.ilo.org/dyn/travail/docs/1766/Public%20Holidays%20Act.pdf
+    """
 
     country = "BW"
-
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year: int):
         super()._populate(year)

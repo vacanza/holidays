@@ -20,12 +20,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class Poland(HolidayBase):
-    # https://pl.wikipedia.org/wiki/Dni_wolne_od_pracy_w_Polsce
+    """
+    https://pl.wikipedia.org/wiki/Dni_wolne_od_pracy_w_Polsce
+    """
 
     country = "PL"
-
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)

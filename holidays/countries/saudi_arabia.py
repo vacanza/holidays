@@ -19,7 +19,6 @@ from holidays.utils import _islamic_to_gre
 
 
 class SaudiArabia(HolidayBase):
-
     """
     There are only 4 official national holidays in Saudi:
     https://laboreducation.hrsd.gov.sa/en/gallery/274
@@ -38,9 +37,6 @@ class SaudiArabia(HolidayBase):
     """
 
     country = "SA"
-
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)

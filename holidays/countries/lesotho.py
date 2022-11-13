@@ -18,12 +18,12 @@ from holidays.holiday_base import HolidayBase
 
 
 class Lesotho(HolidayBase):
-    country = "LS"
+    """
+    https://tinyurl.com/lesothosmallurl1324251
+    https://www.timeanddate.com/holidays/lesotho/
+    """
 
-    def __init__(self, **kwargs):
-        # https://tinyurl.com/lesothosmallurl1324251
-        # https://www.timeanddate.com/holidays/lesotho/
-        HolidayBase.__init__(self, **kwargs)
+    country = "LS"
 
     def _populate(self, year):
         super()._populate(year)

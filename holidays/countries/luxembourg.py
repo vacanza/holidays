@@ -20,13 +20,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class Luxembourg(HolidayBase):
-
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Luxembourg
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Luxembourg
+    """
 
     country = "LU"
-
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)

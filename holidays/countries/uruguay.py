@@ -21,8 +21,8 @@ from holidays.holiday_base import HolidayBase
 
 class Uruguay(HolidayBase):
     """
-    # https://www.ute.com.uy/clientes/tramites-y-servicios/potencia-contratada
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Uruguay
+    https://www.ute.com.uy/clientes/tramites-y-servicios/potencia-contratada
+    https://en.wikipedia.org/wiki/Public_holidays_in_Uruguay
     """
 
     country = "UY"

@@ -39,9 +39,6 @@ class Ukraine(HolidayBase):
 
     country = "UA"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _add_observed(self, holiday: date) -> None:
         """
         27.01.1995: holiday on weekend move to next workday

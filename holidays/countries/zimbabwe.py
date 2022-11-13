@@ -20,12 +20,12 @@ from holidays.holiday_base import HolidayBase
 
 
 class Zimbabwe(HolidayBase):
-    country = "ZW"
+    """
+    https://en.wikipedia.org/wiki/Robert_Mugabe
+    https://en.wikipedia.org/wiki/Public_holidays_in_Zimbabwe
+    """
 
-    def __init__(self, **kwargs):
-        # https://en.wikipedia.org/wiki/Robert_Mugabe
-        # https://en.wikipedia.org/wiki/Public_holidays_in_Zimbabwe
-        HolidayBase.__init__(self, **kwargs)
+    country = "ZW"
 
     def _populate(self, year):
         super()._populate(year)

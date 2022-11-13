@@ -19,12 +19,12 @@ from holidays.holiday_base import HolidayBase
 
 
 class Madagascar(HolidayBase):
-    country = "MG"
+    """
+    https://www.officeholidays.com/countries/madagascar
+    https://www.timeanddate.com/holidays/madagascar/
+    """
 
-    def __init__(self, **kwargs):
-        # https://www.officeholidays.com/countries/madagascar
-        # https://www.timeanddate.com/holidays/madagascar/
-        HolidayBase.__init__(self, **kwargs)
+    country = "MG"
 
     def _populate(self, year):
         super()._populate(year)
