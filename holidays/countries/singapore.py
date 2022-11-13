@@ -40,7 +40,7 @@ class Singapore(HolidayBase):
 
     def __init__(
         self,
-        years: Union[int, Iterable[int]] = None,
+        years: Optional[Union[int, Iterable[int]]] = None,
         expand: bool = True,
         observed: bool = True,
         subdiv: Optional[str] = None,
@@ -314,7 +314,7 @@ class SG(Singapore):
     # __init__ required for IDE typing and inheritance of docstring.
     def __init__(
         self,
-        years: Union[int, Iterable[int]] = None,
+        years: Optional[Union[int, Iterable[int]]] = None,
         expand: bool = True,
         observed: bool = True,
         subdiv: Optional[str] = None,
@@ -329,7 +329,7 @@ class SGP(Singapore):
     # __init__ required for IDE typing and inheritance of docstring.
     def __init__(
         self,
-        years: Union[int, Iterable[int]] = None,
+        years: Optional[Union[int, Iterable[int]]] = None,
         expand: bool = True,
         observed: bool = True,
         subdiv: Optional[str] = None,
