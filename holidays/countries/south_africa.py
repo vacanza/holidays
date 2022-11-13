@@ -41,6 +41,8 @@ class SouthAfrica(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         # Observed since 1910, with a few name changes
         if year > 1909:
             self[date(year, JAN, 1)] = "New Year's Day"

@@ -34,13 +34,25 @@ from holidays.holiday_base import HolidayBase
 
 
 class Australia(HolidayBase):
+
     country = "AU"
+    special_holidays = {
+        2022: (
+            (
+                SEP,
+                22,
+                "National Day of Mourning for Queen Elizabeth II",
+            ),
+        ),
+    }
     subdivisions = ["ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"]
 
     def __init__(self, **kwargs):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         # ACT:  Holidays Act 1958
         # NSW:  Public Holidays Act 2010
         # NT:   Public Holidays Act 2013
@@ -217,11 +229,6 @@ class Australia(HolidayBase):
             name = "Reconciliation Day"
             if year >= 2018:
                 self[date(year, 5, 27) + rd(weekday=MO)] = name
-
-        # National Day of Mourning for Queen Elizabeth II
-        name = "National Day of Mourning for Queen Elizabeth II"
-        if year == 2022:
-            self[date(year, SEP, 22)] = name
 
         if self.subdiv == "VIC":
             # Grand Final Day

@@ -84,7 +84,8 @@ class Singapore(HolidayBase):
         self.cnls = _ChineseLuniSolar()
         super().__init__(years, expand, observed, subdiv, prov, state)
 
-    def _populate(self, year: int) -> None:
+    def _populate(self, year) -> None:
+        super()._populate(year)
 
         # New Year's Day
         self[date(year, JAN, 1)] = "New Year's Day"

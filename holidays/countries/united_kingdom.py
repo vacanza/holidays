@@ -39,6 +39,18 @@ class UnitedKingdom(HolidayBase):
     # Look at _country_specific() method for country specific behavior.
 
     country = "GB"
+    special_holidays = {
+        1977: ((JUN, 7, "Silver Jubilee of Elizabeth II"),),
+        1981: ((JUL, 29, "Wedding of Charles and Diana"),),
+        1999: ((DEC, 31, "Millennium Celebrations"),),
+        2002: ((JUN, 3, "Golden Jubilee of Elizabeth II"),),
+        2011: ((APR, 29, "Wedding of William and Catherine"),),
+        2012: ((JUN, 5, "Diamond Jubilee of Elizabeth II"),),
+        2022: (
+            (JUN, 3, "Platinum Jubilee of Elizabeth II"),
+            (SEP, 19, "State Funeral of Queen Elizabeth II"),
+        ),
+    }
     subdivisions = ["UK", "England", "Northern Ireland", "Scotland", "Wales"]
 
     def __init__(self, **kwargs: Any) -> None:
@@ -48,6 +60,7 @@ class UnitedKingdom(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year: int) -> None:
+        super()._populate(year)
 
         # New Year's Day
         if year >= 1974:
@@ -157,23 +170,6 @@ class UnitedKingdom(HolidayBase):
         self[dt] = name
         if self.observed and dt.weekday() in WEEKEND:
             self[dt + rd(days=+2)] = name + " (Observed)"
-
-        # Special holidays
-        if year == 1977:
-            self[date(year, JUN, 7)] = "Silver Jubilee of Elizabeth II"
-        elif year == 1981:
-            self[date(year, JUL, 29)] = "Wedding of Charles and Diana"
-        elif year == 1999:
-            self[date(year, DEC, 31)] = "Millennium Celebrations"
-        elif year == 2002:
-            self[date(year, JUN, 3)] = "Golden Jubilee of Elizabeth II"
-        elif year == 2011:
-            self[date(year, APR, 29)] = "Wedding of William and Catherine"
-        elif year == 2012:
-            self[date(year, JUN, 5)] = "Diamond Jubilee of Elizabeth II"
-        elif year == 2022:
-            self[date(year, JUN, 3)] = "Platinum Jubilee of Elizabeth II"
-            self[date(year, SEP, 19)] = "State Funeral of Queen Elizabeth II"
 
 
 class UK(UnitedKingdom):

@@ -43,6 +43,8 @@ class SaudiArabia(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         if year < 2013:
             # Weekend used to be THU, FRI before June 28th, 2013
             # On that year both Eids were after that date, and foudning

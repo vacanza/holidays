@@ -109,6 +109,7 @@ class Malaysia(HolidayBase):
         super().__init__(years, expand, observed, subdiv, prov, state)
 
     def _populate(self, year):
+        super()._populate(year)
 
         # New Year's Day
         if self.subdiv not in ("JHR", "KDH", "KTN", "PLS", "TRG"):

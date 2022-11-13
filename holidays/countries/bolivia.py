@@ -52,6 +52,8 @@ class Bolivia(HolidayBase):
     ]
 
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day.
         name = "Año Nuevo"
         if year >= 1825:

@@ -4,6 +4,7 @@ Version 0.17
 Released ?????? ??, ????
 
 - 100% test coverage, code refactoring #747, #749 (arkid15r)
+- Special holidays (one-off) support #724 (arkid15r, dr-p)
 - Support for Bosnia and Herzegovina #683, #725 (kasya, arkid15r)
 - Support for Liechtenstein #650, #728, #758 (kasya, arkid15r)
 - Added isort to pre-commit #722, #734 (arkid15r, dr-p)

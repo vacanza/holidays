@@ -69,6 +69,8 @@ class India(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         # Pongal/ Makar Sankranti
         self[date(year, JAN, 14)] = "Makar Sankranti / Pongal"
 

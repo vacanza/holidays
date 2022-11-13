@@ -29,6 +29,8 @@ class Aruba(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
         self[date(year, JAN, 1)] = "Aña Nobo [New Year's Day]"
 

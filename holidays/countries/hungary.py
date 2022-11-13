@@ -49,6 +49,8 @@ class Hungary(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year: int) -> None:
+        super()._populate(year)
+
         # New years
         self._add_with_observed_day_off(date(year, JAN, 1), "Újév", since=2014)
         # Since 2014, the last day of the year is an observed day off if New

@@ -28,6 +28,8 @@ class Iceland(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         # Public holidays
         self[date(year, JAN, 1)] = "Nýársdagur"
         self[easter(year) - rd(days=3)] = "Skírdagur"

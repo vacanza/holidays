@@ -32,6 +32,8 @@ class Mexico(HolidayBase):
             self[holiday + rd(days=+1)] = name + " (Observed)"
 
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
         name = "Año Nuevo [New Year's Day]"
         dt = date(year, JAN, 1)

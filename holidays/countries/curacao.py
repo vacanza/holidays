@@ -28,6 +28,8 @@ class Curacao(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
         self[date(year, JAN, 1)] = "Nieuwjaarsdag [New Year's Day]"
 

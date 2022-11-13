@@ -58,6 +58,8 @@ class Sweden(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         if self.include_sundays:  # Optionally add all Sundays of the year.
             year_first_day = datetime(year, JAN, 1)
             year_last_day = datetime(year, DEC, 31)

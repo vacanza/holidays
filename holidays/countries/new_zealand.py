@@ -35,7 +35,9 @@ from holidays.holiday_base import HolidayBase
 
 
 class NewZealand(HolidayBase):
+
     country = "NZ"
+    special_holidays = {2022: ((SEP, 26, "Queen Elizabeth II Memorial Day"),)}
     subdivisions = [
         # https://en.wikipedia.org/wiki/ISO_3166-2:NZ
         "AUK",  # Auckland / Tāmaki-makau-rau
@@ -80,6 +82,8 @@ class NewZealand(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         # Bank Holidays Act 1873
         # The Employment of Females Act 1873
         # Factories Act 1894
@@ -211,10 +215,6 @@ class NewZealand(HolidayBase):
             self[date(year, JUN, 30)] = name
         elif year == 2052:
             self[date(year, JUN, 21)] = name
-
-        # Queen Elizabeth II Memorial Day
-        if year == 2022:
-            self[date(year, SEP, 26)] = "Queen Elizabeth II Memorial Day"
 
         # Labour Day
         name = "Labour Day"

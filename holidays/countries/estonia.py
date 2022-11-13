@@ -25,6 +25,8 @@ class Estonia(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         e = easter(year)
 
         # New Year's Day

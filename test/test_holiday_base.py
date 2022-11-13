@@ -11,7 +11,6 @@
 
 import pathlib
 import pickle
-import sys
 import unittest
 import warnings
 from datetime import date, datetime, timedelta
@@ -19,6 +18,7 @@ from datetime import date, datetime, timedelta
 from dateutil.relativedelta import relativedelta, MO
 
 import holidays
+from holidays.constants import FEB, JAN
 
 
 class TestBasics(unittest.TestCase):
@@ -705,3 +705,30 @@ class TestAllInSameYear(unittest.TestCase):
                 )
                 for self.hol in hols:
                     self.assertEqual(self.hol.year, self.year)
+
+
+class TestCountrySpecialHolidays(unittest.TestCase):
+    def setUp(self):
+        self.holidays = holidays.country_holidays("US")
+
+    def test_populate_special_holidays(self):
+        self.holidays._populate(1111)  # special_holidays is empty.
+        self.assertEqual(0, len(self.holidays))
+
+        self.holidays.special_holidays = {
+            1111: ((JAN, 1, "Test holiday"),),
+            2222: ((FEB, 2, "Test holiday"),),
+            3333: (),
+        }
+
+        self.assertNotIn(3333, self.holidays.years)
+
+        self.assertIn("1111-01-01", self.holidays)
+        self.assertIn("2222-02-02", self.holidays)
+        self.assertEqual(13, len(self.holidays))
+
+        self.holidays._populate(1111)
+        self.holidays._populate(2222)
+        self.assertIn("1111-01-01", self.holidays)
+        self.assertIn("2222-02-02", self.holidays)
+        self.assertEqual(13, len(self.holidays))

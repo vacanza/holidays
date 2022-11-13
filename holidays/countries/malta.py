@@ -27,6 +27,8 @@ class Malta(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         self[date(year, JAN, 1)] = "New Year"
         self[date(year, FEB, 10)] = "Feast of St. Paul's Shipwreck"
         self[date(year, MAR, 19)] = "Feast of St. Joseph"

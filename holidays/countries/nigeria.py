@@ -27,6 +27,8 @@ class Nigeria(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         if year > 1978:
 
             def _add_holiday(dt: date, hol: str) -> None:

@@ -29,6 +29,8 @@ class Venezuela(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         """
         Overview: https://dias-festivos.eu/dias-festivos/venezuela/#
         Various decrees about holidays:

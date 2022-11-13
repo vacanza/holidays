@@ -46,6 +46,7 @@ class Djibouti(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
 
         """
         # Function to store the holiday name in the appropriate

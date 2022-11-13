@@ -158,6 +158,29 @@ class HolidayBase(Dict[date, str]):
     >>> assert date(2015, 1, 2) not in custom_holidays
     >>> assert '12/25/2015' in custom_holidays
 
+    For special (one-off) country-wide holidays handling use
+    :attr:`special_holidays`:
+
+    .. code-block:: python
+
+        special_holidays = {
+            1977: ((JUN, 7, "Silver Jubilee of Elizabeth II"),),
+            1981: ((JUL, 29, "Wedding of Charles and Diana"),),
+            1999: ((DEC, 31, "Millennium Celebrations"),),
+            2002: ((JUN, 3, "Golden Jubilee of Elizabeth II"),),
+            2011: ((APR, 29, "Wedding of William and Catherine"),),
+            2012: ((JUN, 5, "Diamond Jubilee of Elizabeth II"),),
+            2022: (
+                (JUN, 3, "Platinum Jubilee of Elizabeth II"),
+                (SEP, 19, "State Funeral of Queen Elizabeth II"),
+            ),
+        }
+
+        def _populate(self, year):
+            super()._populate(year)
+
+            ...
+
     For more complex logic, like 4th Monday of January, you can inherit the
     :class:`HolidayBase` class and define your own :meth:`_populate` method.
     See documentation for examples.
@@ -178,6 +201,9 @@ class HolidayBase(Dict[date, str]):
     """Whether dates when public holiday are observed are included."""
     subdiv: Optional[str] = None
     """The subdiv requested."""
+    special_holidays: Dict[int, Tuple[Tuple[int, int, str], ...]] = {}
+    """A list of the country-wide special (as opposite to regular) holidays for
+    a specific year."""
     _deprecated_subdivisions: List[str] = []
     """Other subdivisions whose names are deprecated or aliases of the official
     ones."""
@@ -554,18 +580,23 @@ class HolidayBase(Dict[date, str]):
     def _populate(self, year: int) -> None:
         """This is a private class that populates (generates and adds) holidays
         for a given year. To keep things fast, it assumes that no holidays for
-        the year have already been populated. It should not be called directly;
-        to add holidays to an object, use the update() method:
+        the year have already been populated. It is required to be called
+        internally by any country populate() method, while should not be called
+        directly from outside.
+        To add holidays to an object, use the update() method:
+
+        :param year:
+            The year to populate with holidays.
 
         >>> from holidays import country_holidays
         >>> us_holidays = country_holidays('US', years=2020)
         # to add new holidays to the object:
         >>> us_holidays.update(country_holidays('US', years=2021))
-
-        :param year:
-            The year to populate with holidays.
         """
-        pass
+
+        # Special holidays list.
+        for month, day, name in self.special_holidays.get(year, ()):
+            self[date(year, month, day)] = name
 
     def __reduce__(self) -> Union[str, Tuple[Any, ...]]:
         return super().__reduce__()
@@ -700,7 +731,7 @@ country_holidays('CA') + country_holidays('MX')
 
         HolidayBase.__init__(self, **kwargs)
 
-    def _populate(self, year: int) -> None:
+    def _populate(self, year):
         for h in self.holidays[::-1]:
             h._populate(year)
             self.update(cast("Dict[DateLike, str]", h))

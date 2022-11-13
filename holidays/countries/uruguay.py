@@ -20,15 +20,16 @@ from holidays.holiday_base import HolidayBase
 
 
 class Uruguay(HolidayBase):
+    """
     # https://www.ute.com.uy/clientes/tramites-y-servicios/potencia-contratada
     # https://en.wikipedia.org/wiki/Public_holidays_in_Uruguay
+    """
 
     country = "UY"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # Mandatory paid holidays:
 
         # New Year's Day.
@@ -62,7 +63,8 @@ class Uruguay(HolidayBase):
 
         # Moveable holidays:
 
-        # Carnival days.
+        # Carnival days
+        # revisar este día para futuros casos
         name = "Día de Carnaval [Carnival's Day]"
         self[easter(year) - rd(days=48)] = name
         self[easter(year) - rd(days=47)] = name
