@@ -103,13 +103,11 @@ class Korea(HolidayBase):
                 self[alt_date] = alt_holiday + name
 
         # Tree Planting Day
+        # removed from holiday since 2006
         name = "Tree Planting Day"
         planting_date = date(year, APR, 5)
-        if self.observed and 1949 <= year <= 2007 and year != 1960:
+        if self.observed and 1949 <= year <= 2005 and year != 1960:
             self[planting_date] = name
-        else:
-            # removed from holiday since 2007
-            pass
 
         # Birthday of the Buddha
         name = "Birthday of the Buddha"
@@ -134,7 +132,10 @@ class Korea(HolidayBase):
 
         # Labour Day
         name = "Labour Day"
-        labour_date = date(year, MAY, 1)
+        if year >= 1994:
+            labour_date = date(year, MAY, 1)
+        else:
+            labour_date = date(year, MAR, 10)
         self[labour_date] = name
 
         # Memorial Day
@@ -143,13 +144,11 @@ class Korea(HolidayBase):
         self[memorial_date] = name
 
         # Constitution Day
+        # removed from holiday since 2008
         name = "Constitution Day"
         constitution_date = date(year, JUL, 17)
         if self.observed and 1948 <= year <= 2007:
             self[constitution_date] = name
-        else:
-            # removed from holiday since 2008
-            pass
 
         # Liberation Day
         name = "Liberation Day"
@@ -204,15 +203,16 @@ class Korea(HolidayBase):
 
         # Hangul Day
         name = "Hangeul Day"
-        hangeul_date = date(year, OCT, 9)
-        self[hangeul_date] = name
+        if year <= 1990 or year >= 2013:
+            hangeul_date = date(year, OCT, 9)
+            self[hangeul_date] = name
 
-        if self.observed and year >= 2021:
-            is_alt, alt_date = self.get_next_first_non_holiday(
-                name, hangeul_date, include_sat=True
-            )
-            if is_alt:
-                self[alt_date] = alt_holiday + name
+            if self.observed and year >= 2021:
+                is_alt, alt_date = self.get_next_first_non_holiday(
+                    name, hangeul_date, include_sat=True
+                )
+                if is_alt:
+                    self[alt_date] = alt_holiday + name
 
         # Christmas Day
         name = "Christmas Day"
