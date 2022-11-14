@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, datetime, timedelta
+from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd

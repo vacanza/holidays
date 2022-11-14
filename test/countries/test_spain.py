@@ -14,9 +14,6 @@ from copy import deepcopy
 from datetime import date
 from itertools import product
 
-from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
-
 import holidays
 from holidays.utils import _islamic_to_gre
 
