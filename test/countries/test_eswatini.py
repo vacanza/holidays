@@ -9,7 +9,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+
 import unittest
+import warnings
 from datetime import date
 
 import holidays
@@ -59,3 +61,12 @@ class TestEswatini(unittest.TestCase):
         self.assertIn(date(2021, 4, 26), self.holidays)
         self.assertIn(date(2021, 12, 27), self.holidays)
         self.assertIn(date(2023, 1, 2), self.holidays)
+
+    def test_swaziland_deprecation_warning(self):
+        warnings.simplefilter("default")
+        with self.assertWarns(Warning):
+            holidays.Swaziland()
+
+        warnings.simplefilter("error")
+        with self.assertRaises(Warning):
+            holidays.Swaziland()
