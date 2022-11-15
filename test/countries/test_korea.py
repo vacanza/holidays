@@ -404,3 +404,6 @@ class TestKorea(unittest.TestCase):
         self.holidays = holidays.KR(years=range(2006, 2021))
         for year in range(2006, 2021):
             self.assertIn(self.holidays[date(year, 1, 1)], "New Year's Day")
+
+    def test_special_holidays(self):
+        self.assertIn("2020-08-17", self.holidays)

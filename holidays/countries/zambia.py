@@ -27,6 +27,12 @@ class Zambia(HolidayBase):
     """
 
     country = "ZM"
+    special_holidays = {
+        2021: (
+            (JUL, 2, "Memorial service for Kenneth Kaunda"),
+            (JUL, 7, "Funeral of Kenneth Kaunda"),
+        )
+    }
 
     def _populate(self, year):
         super()._populate(year)
@@ -85,11 +91,6 @@ class Zambia(HolidayBase):
             if self.observed and year > 1964:
                 if k.weekday() == SUN:
                     self[k + rd(days=1)] = v + " (Observed)"
-
-        # Once-off public holidays
-        if year == 2021:
-            self[date(2021, JUL, 2)] = "Memorial service for Kenneth Kaunda"
-            self[date(2021, JUL, 7)] = "Funeral of Kenneth Kaunda"
 
 
 class ZM(Zambia):

@@ -28,10 +28,8 @@ class TestHongKong(unittest.TestCase):
         )
         self.assertEqual(
             self.holidays[date(2015, 9, 3)],
-            "The 70th "
-            + "anniversary day of the victory of the Chinese "
-            + "people's war of resistance against Japanese "
-            + "aggression",
+            "The 70th anniversary day of the victory of the Chinese "
+            "people's war of resistance against Japanese aggression",
         )
 
     def test_first_day_of_january(self):

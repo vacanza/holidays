@@ -43,9 +43,11 @@ class TestSK(unittest.TestCase):
         self.assertNotIn(date(1996, 5, 8), self.holidays)
         self.assertIn(date(1997, 5, 8), self.holidays)
 
-        self.assertNotIn(date(2017, 10, 30), self.holidays)
-        self.assertIn(date(2018, 10, 30), self.holidays)
-        self.assertNotIn(date(2019, 10, 30), self.holidays)
-
         self.assertNotIn(date(2000, 11, 17), self.holidays)
         self.assertIn(date(2001, 11, 17), self.holidays)
+
+    def test_special_holidays(self):
+        self.assertIn(date(2018, 10, 30), self.holidays)
+
+        self.assertNotIn(date(2017, 10, 30), self.holidays)
+        self.assertNotIn(date(2019, 10, 30), self.holidays)

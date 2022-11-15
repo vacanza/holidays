@@ -37,6 +37,9 @@ class Japan(HolidayBase):
     """
 
     country = "JP"
+    special_holidays = {
+        1989: ((FEB, 24, "大喪の礼"),),  # State Funeral of Emperor Shōwa.
+    }
 
     def _populate(self, year):
         super()._populate(year)
@@ -71,10 +74,6 @@ class Japan(HolidayBase):
             self[date(year, APR, 29)] = "みどりの日"
         else:
             self[date(year, APR, 29)] = "昭和の日"
-
-        # State Funeral of Emperor Shōwa
-        if year == 1989:
-            self[date(year, FEB, 24)] = "大喪の礼"
 
         # Constitution Memorial Day
         self[date(year, MAY, 3)] = "憲法記念日"
@@ -212,11 +211,9 @@ class Japan(HolidayBase):
 
         if year in (2032, 2049, 2060, 2077, 2088, 2094):
             self[date(year, SEP, 21)] = "国民の休日"
-
-        if year in (2009, 2015, 2026, 2037, 2043, 2054, 2065, 2071, 2099):
+        elif year in (2009, 2015, 2026, 2037, 2043, 2054, 2065, 2071, 2099):
             self[date(year, SEP, 22)] = "国民の休日"
-
-        if year == 2019:
+        elif year == 2019:
             self[date(year, APR, 30)] = "国民の休日"
             self[date(year, MAY, 2)] = "国民の休日"
 

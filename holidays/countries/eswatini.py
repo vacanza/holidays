@@ -26,6 +26,11 @@ class Eswatini(HolidayBase):
     """
 
     country = "SZ"
+    special_holidays = {
+        # https://mg.co.za/article/1999-12-09-swaziland-declares-bank-holidays/
+        1999: ((DEC, 31, "Y2K changeover"),),
+        2000: ((JAN, 3, "Y2K changeover"),),
+    }
 
     def _populate(self, year):
         super()._populate(year)
@@ -57,15 +62,6 @@ class Eswatini(HolidayBase):
             self[date(year, SEP, 6)] = "Independence Day"
             self[date(year, DEC, 25)] = "Christmas Day"
             self[date(year, DEC, 26)] = "Boxing Day"
-
-            # Once-off public holidays
-            y2k = "Y2K changeover"
-
-            if year == 1999:
-                # https://mg.co.za/article/1999-12-09-swaziland-declares-bank-holidays/
-                self[date(1999, DEC, 31)] = y2k
-            if year == 2000:
-                self[date(2000, JAN, 3)] = y2k
 
             # As of 2021/1/1, whenever a public holiday falls on a
             # Sunday

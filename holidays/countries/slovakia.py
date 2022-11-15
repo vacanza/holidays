@@ -26,6 +26,11 @@ class Slovakia(HolidayBase):
     """
 
     country = "SK"
+    special_holidays = {
+        2018: (
+            (OCT, 30, "100. výročie prijatia Deklarácie slovenského národa"),
+        )
+    }
 
     def _populate(self, year):
         super()._populate(year)
@@ -55,10 +60,7 @@ class Slovakia(HolidayBase):
         self[date(year, SEP, 1)] = "Deň Ústavy Slovenskej republiky"
 
         self[date(year, SEP, 15)] = "Sedembolestná Panna Mária"
-        if year == 2018:
-            self[date(year, OCT, 30)] = (
-                "100. výročie prijatia" " Deklarácie slovenského národa"
-            )
+
         self[date(year, NOV, 1)] = "Sviatok Všetkých svätých"
 
         if year >= 2001:

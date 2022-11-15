@@ -25,6 +25,9 @@ class Poland(HolidayBase):
     """
 
     country = "PL"
+    special_holidays = {
+        2018: ((NOV, 12, "Narodowe Święto Niepodległości - 100-lecie"),)
+    }
 
     def _populate(self, year):
         super()._populate(year)
@@ -50,9 +53,6 @@ class Poland(HolidayBase):
         self[date(year, NOV, 1)] = "Uroczystość Wszystkich Świętych"
         if (1937 <= year <= 1945) or year >= 1989:
             self[date(year, NOV, 11)] = "Narodowe Święto Niepodległości"
-        if year == 2018:
-            name = "Narodowe Święto Niepodległości - 100-lecie"
-            self[date(year, NOV, 12)] = name
 
         self[date(year, DEC, 25)] = "Boże Narodzenie (pierwszy dzień)"
         self[date(year, DEC, 26)] = "Boże Narodzenie (drugi dzień)"

@@ -34,7 +34,7 @@ class TestEswatini(unittest.TestCase):
         self.assertIn(date(2017, 5, 25), self.holidays)
         self.assertNotIn(date(2017, 5, 26), self.holidays)
 
-    def test_once_off(self):
+    def test_special_holidays(self):
         self.assertIn(date(1999, 12, 31), self.holidays)  # y2k
         self.assertIn(date(2000, 1, 3), self.holidays)  # y2k
 

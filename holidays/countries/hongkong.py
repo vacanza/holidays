@@ -42,6 +42,19 @@ class HongKong(HolidayBase):
     """
 
     country = "HK"
+    special_holidays = {
+        # Special holiday on 2015 - The 70th anniversary day of the victory
+        # of the Chinese people's war of resistance against Japanese
+        # aggression.
+        2015: (
+            (
+                SEP,
+                3,
+                "The 70th anniversary day of the victory of the Chinese "
+                "people's war of resistance against Japanese aggression",
+            ),
+        ),
+    }
 
     def __init__(self, **kwargs):
         self.cnls = _ChineseLuniSolar()
@@ -185,15 +198,6 @@ class HongKong(HolidayBase):
                 self[hksar_date] = name
         else:
             self[hksar_date] = name
-
-        # Special holiday on 2015 - The 70th anniversary day of the victory
-        # of the Chinese people's war of resistance against Japanese aggression
-        name = (
-            "The 70th anniversary day of the victory of the Chinese "
-            + "people's war of resistance against Japanese aggression"
-        )
-        if year == 2015:
-            self[date(year, SEP, 3)] = name
 
         # Chinese Mid-Autumn Festival
         name = "Chinese Mid-Autumn Festival"

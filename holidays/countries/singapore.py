@@ -37,6 +37,12 @@ from holidays.utils import _ChineseLuniSolar, _islamic_to_gre
 
 class Singapore(HolidayBase):
     country = "SG"
+    special_holidays = {
+        # SG50 Public holiday
+        # Announced on 14 March 2015
+        # https://www.mom.gov.sg/newsroom/press-releases/2015/sg50-public-holiday-on-7-august-2015
+        2015: ((AUG, 7, "SG50 Public Holiday"),)
+    }
 
     def __init__(
         self,
@@ -289,12 +295,6 @@ class Singapore(HolidayBase):
         }
         if year in dates_fixed_obs:
             self[date(year, *dates_fixed_obs[year])] = "Polling Day"
-
-        # SG50 Public holiday
-        # Announced on 14 March 2015
-        # https://www.mom.gov.sg/newsroom/press-releases/2015/sg50-public-holiday-on-7-august-2015
-        if year == 2015:
-            self[date(2015, AUG, 7)] = "SG50 Public Holiday"
 
         # Check for holidays that fall on a Sunday and implement Section 4(2)
         # of the Holidays Act: "if any day specified in the Schedule falls on

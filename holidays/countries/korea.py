@@ -50,6 +50,11 @@ class Korea(HolidayBase):
     """
 
     country = "KR"
+    special_holidays = {
+        # Just for year 2020 - since 2020.08.15 is Sat, the government
+        # decided to make 2020.08.17 holiday, yay
+        2020: ((AUG, 17, "Alternative public holiday"),)
+    }
 
     def __init__(self, **kwargs):
         self.korean_cal = KoreanLunarCalendar()
@@ -218,13 +223,6 @@ class Korea(HolidayBase):
         name = "Christmas Day"
         christmas_date = date(year, DEC, 25)
         self[christmas_date] = name
-
-        # Just for year 2020 - since 2020.08.15 is Sat, the government
-        # decided to make 2020.08.17 holiday, yay
-        if year == 2020:
-            name = "Alternative public holiday"
-            alt_date = date(2020, AUG, 17)
-            self[alt_date] = name
 
     # convert lunar calendar date to solar
     def get_solar_date(self, year: int, month: int, day: int) -> date:
