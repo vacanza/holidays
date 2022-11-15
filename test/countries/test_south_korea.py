@@ -10,12 +10,13 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
+import warnings
 from datetime import date
 
 import holidays
 
 
-class TestKorea(unittest.TestCase):
+class TestSouthKorea(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.KR()
 
@@ -404,3 +405,12 @@ class TestKorea(unittest.TestCase):
         self.holidays = holidays.KR(years=range(2006, 2021))
         for year in range(2006, 2021):
             self.assertIn(self.holidays[date(year, 1, 1)], "New Year's Day")
+
+    def test_korea_deprecation_warning(self):
+        warnings.simplefilter("default")
+        with self.assertWarns(Warning):
+            holidays.Korea()
+
+        warnings.simplefilter("error")
+        with self.assertRaises(Warning):
+            holidays.Korea()

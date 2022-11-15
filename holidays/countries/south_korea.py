@@ -9,6 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+
+import warnings
 from datetime import date
 from typing import Tuple
 
@@ -34,7 +36,7 @@ from holidays.constants import (
 from holidays.holiday_base import HolidayBase
 
 
-class Korea(HolidayBase):
+class SouthKorea(HolidayBase):
     """
     1. https://publicholidays.co.kr/ko/2020-dates/
     2. https://en.wikipedia.org/wiki/Public_holidays_in_South_Korea
@@ -285,6 +287,16 @@ class Korea(HolidayBase):
             check_2 = cur in self and name != self[cur]
 
         return start_value != cur, cur
+
+
+class Korea(SouthKorea):
+    def __init__(self, *args, **kwargs) -> None:
+        warnings.warn(
+            "Korea is deprecated, use SouthKorea instead.",
+            DeprecationWarning,
+        )
+
+        super().__init__(*args, **kwargs)
 
 
 class KR(Korea):

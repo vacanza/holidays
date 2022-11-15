@@ -262,9 +262,6 @@ following countries and their subdivisions are available:
    * - Kenya
      - KE
      - None
-   * - Korea
-     - KR
-     - None
    * - Latvia
      - LV
      - None
@@ -360,6 +357,9 @@ following countries and their subdivisions are available:
      - None
    * - South Africa
      - ZA
+     - None
+  * - South Korea
+     - KR
      - None
    * - Spain
      - ES
