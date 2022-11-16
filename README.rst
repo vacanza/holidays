@@ -358,7 +358,7 @@ following countries and their subdivisions are available:
    * - South Africa
      - ZA
      - None
-  * - South Korea
+   * - South Korea
      - KR
      - None
    * - Spain
