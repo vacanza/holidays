@@ -38,6 +38,11 @@ from holidays.utils import _ChineseLuniSolar, _islamic_to_gre
 
 class Malaysia(HolidayBase):
     country = "MY"
+    special_holidays = {
+        1999: ((NOV, 29, "Malaysia General Election Holiday"),),
+        2018: ((MAY, 9, "Malaysia General Election Holiday"),),
+    }
+
     subdivisions = [
         "JHR",
         "KDH",
@@ -368,19 +373,6 @@ class Malaysia(HolidayBase):
         # ------------------------------#
         # Other holidays (decrees etc.) #
         # ------------------------------#
-
-        # Malaysia General Election Holiday.
-        dates_obs = {
-            # The years 1955 1959 1995 seems to have the elections
-            # one weekday but I am not sure if they were marked as
-            # holidays.
-            1999: (NOV, 29),
-            2018: (MAY, 9),
-        }
-        if year in dates_obs:
-            self[
-                date(year, *dates_obs[year])
-            ] = "Malaysia General Election Holiday"
 
         # Awal Muharram.
         for hol_date in self.my_islamic_to_gre(year, 1, 1):
