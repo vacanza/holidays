@@ -63,21 +63,19 @@ class Uruguay(HolidayBase):
 
         # Moveable holidays:
 
+        easter_date = easter(year)
+
         # Carnival days
         # revisar este día para futuros casos
         name = "Día de Carnaval [Carnival's Day]"
-        self[easter(year) - rd(days=48)] = name
-        self[easter(year) - rd(days=47)] = name
+        self[easter_date + rd(days=-48)] = name
+        self[easter_date + rd(days=-47)] = name
 
         # Holy Week.
-        self[
-            easter(year) + rd(weekday=TH(-1))
-        ] = "Semana Santa (Jueves Santo)  [Holy day (Holy Thursday)]"
-        self[
-            easter(year) + rd(weekday=FR(-1))
-        ] = "Semana Santa (Viernes Santo)  [Holy day (Holy Friday)]"
+        self[easter_date + rd(days=-3)] = "Jueves Santo [Holy Thursday]"
+        self[easter_date + rd(days=-2)] = "Viernes Santo [Holy Friday]"
 
-        self[easter(year)] = "Día de Pascuas [Easter Day]"
+        self[easter_date] = "Día de Pascuas [Easter Day]"
 
         holiday_pairs = (
             (

@@ -122,19 +122,19 @@ class TestUY(unittest.TestCase):
             )
 
     def test_holy_week_day(self):
-        for dt in (
+        for dt, name in (
             (
                 date(2021, 4, 1),
-                "Semana Santa (Jueves Santo)  [Holy day (Holy Thursday)]",
+                "Jueves Santo [Holy Thursday]",
             ),
             (
                 date(2021, 4, 2),
-                "Semana Santa (Viernes Santo)  [Holy day (Holy Friday)]",
+                "Viernes Santo [Holy Friday]",
             ),
             (date(2021, 4, 4), "Día de Pascuas [Easter Day]"),
         ):
-            self.assertIn(dt[0], self.holidays)
-            self.assertEqual(self.holidays[dt[0]], dt[1])
+            self.assertIn(dt, self.holidays)
+            self.assertEqual(self.holidays[dt], name)
 
     def test_desembarco_de_los_33_orientales(self):
         for dt in (

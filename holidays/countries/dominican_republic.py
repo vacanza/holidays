@@ -13,7 +13,7 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, FR
+from dateutil.relativedelta import MO
 
 from holidays.constants import TUE, WED, JAN, FEB, MAY, JUN, AUG, SEP, NOV, DEC
 from holidays.holiday_base import HolidayBase
@@ -58,7 +58,7 @@ class DominicanRepublic(HolidayBase):
         self[date(year, FEB, 27)] = "Día de Independencia [Independence Day]"
 
         # Good Friday
-        self[easter(year) + rd(weekday=FR(-1))] = "Viernes Santo [Good Friday]"
+        self[easter(year) + rd(days=-2)] = "Viernes Santo [Good Friday]"
 
         # Labor Day
         labor_day = self.__change_day_by_law(date(year, MAY, 1), (3, 4, 6))

@@ -33,14 +33,13 @@ class Latvia(HolidayBase):
 
         # Good Friday
         easter_date = easter(year)
-        self[easter_date - rd(days=2)] = "Lielā Piektdiena"
+        self[easter_date + rd(days=-2)] = "Lielā Piektdiena"
 
         # Easter
-        easter_date = easter(year)
         self[easter_date] = "Lieldienas"
 
         # Easter 2nd day
-        self[easter_date + rd(days=1)] = "Otrās Lieldienas"
+        self[easter_date + rd(days=+1)] = "Otrās Lieldienas"
 
         # International Workers' Day
         self[date(year, 5, 1)] = "Darba svētki"

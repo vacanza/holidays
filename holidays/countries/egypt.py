@@ -11,7 +11,7 @@
 
 from datetime import date
 
-from dateutil.easter import easter
+from dateutil.easter import easter, EASTER_ORTHODOX
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import FRI, SAT, JAN, APR, MAY, JUN, JUL, OCT
@@ -77,10 +77,11 @@ class Egypt(HolidayBase):
             pass
 
         # Coptic Easter - Orthodox Easter
-        self[easter(year, 2)] = "Coptic Easter Sunday"
+        easter_date = easter(year, EASTER_ORTHODOX)
+        self[easter_date] = "Coptic Easter Sunday"
 
         # Sham El Nessim - Spring Festival
-        self[easter(year, 2) + rd(days=1)] = "Sham El Nessim"
+        self[easter_date + rd(days=+1)] = "Sham El Nessim"
 
         # Sinai Libration Day
         if year > 1982:

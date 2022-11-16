@@ -12,7 +12,7 @@
 from calendar import isleap
 from datetime import date
 
-from dateutil.easter import easter
+from dateutil.easter import easter, EASTER_ORTHODOX
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import SAT, SUN, JAN, MAR, MAY, SEP
@@ -67,10 +67,11 @@ class Ethiopia(HolidayBase):
         self[date(year, JAN, 19)] = "ጥምቀት/Ephiphany"
 
         # Ethiopian Good Friday
-        self[easter(year, 2) - rd(days=2)] = "ስቅለት/Ethiopian Good Friday"
+        easter_date = easter(year, EASTER_ORTHODOX)
+        self[easter_date + rd(days=-2)] = "ስቅለት/Ethiopian Good Friday"
 
         # Ethiopian  Easter - Orthodox Easter
-        self[easter(year, 2)] = "ፋሲካ/Ethiopian Easter"
+        self[easter_date] = "ፋሲካ/Ethiopian Easter"
 
         # Adwa Victory Day
         if year > 1896:

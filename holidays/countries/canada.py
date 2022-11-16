@@ -13,7 +13,7 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, FR, SU
+from dateutil.relativedelta import MO, SU
 
 from holidays.constants import (
     FRI,
@@ -128,10 +128,11 @@ class Canada(HolidayBase):
             dt = self._get_nearest_monday(date(year, MAR, 17))
             self[dt] = "St. Patrick's Day"
 
+        easter_date = easter(year)
         # Good Friday
-        self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
+        self[easter_date + rd(days=-2)] = "Good Friday"
         # Easter Monday
-        self[easter(year) + rd(weekday=MO)] = "Easter Monday"
+        self[easter_date + rd(days=+1)] = "Easter Monday"
 
         # St. George's Day
         if self.subdiv == "NL" and year >= 1990:

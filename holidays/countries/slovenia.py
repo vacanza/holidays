@@ -48,8 +48,7 @@ class Slovenia(HolidayBase):
         self[date(year, FEB, 8)] = "Prešernov dan"
 
         # Easter monday is the only easter related work-free day
-        easter_day = easter(year)
-        self[easter_day + rd(days=1)] = "Velikonočni ponedeljek"
+        self[easter(year) + rd(days=+1)] = "Velikonočni ponedeljek"
 
         # Day of uprising against occupation
         self[date(year, APR, 27)] = "dan upora proti okupatorju"
