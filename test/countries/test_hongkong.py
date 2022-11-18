@@ -35,9 +35,8 @@ class TestHongKong(unittest.TestCase):
         )
 
     def test_first_day_of_january(self):
-        exception_years = [2006, 2012, 2017]
         for year in range(2006, 2021):
-            if year in exception_years:
+            if year in {2006, 2012, 2017}:
                 self.assertEqual(
                     self.holidays[date(year, 1, 2)],
                     "The day following the first day of January",

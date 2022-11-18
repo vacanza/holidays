@@ -115,7 +115,7 @@ class Portugal(HolidayBase):
             self[date(year, MAY, 12)] = "Dia de Santa Joana"
         if self.subdiv == "02":
             self[e + rd(days=4) + rd(weeks=5)] = "Quinta-feira da Ascensão"
-        if self.subdiv in ("03", "13"):
+        if self.subdiv in {"03", "13"}:
             self[date(year, JUN, 24)] = "Dia de São João"
         if self.subdiv == "04":
             self[date(year, AUG, 22)] = "Dia de Nossa Senhora das Graças"
@@ -133,7 +133,7 @@ class Portugal(HolidayBase):
             self[date(year, NOV, 27)] = "Dia do Município da Guarda"
         if self.subdiv == "10":
             self[date(year, MAY, 22)] = "Dia do Município de Leiria"
-        if self.subdiv in ("11", "17"):
+        if self.subdiv in {"11", "17"}:
             self[date(year, JUN, 13)] = "Dia de Santo António"
         if self.subdiv == "12":
             self[date(year, MAY, 23)] = "Dia do Município de Portalegre"

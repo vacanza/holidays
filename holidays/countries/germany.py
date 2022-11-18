@@ -85,7 +85,7 @@ class Germany(HolidayBase):
 
             self[date(year, JAN, 1)] = "Neujahr"
 
-            if self.subdiv in ("BW", "BY", "BYP", "ST"):
+            if self.subdiv in {"BW", "BY", "BYP", "ST"}:
                 self[date(year, JAN, 6)] = "Heilige Drei Könige"
 
             self[easter(year) - rd(days=2)] = "Karfreitag"
@@ -116,22 +116,22 @@ class Germany(HolidayBase):
 
             self[easter(year) + rd(days=50)] = "Pfingstmontag"
 
-            if self.subdiv in ("BW", "BY", "BYP", "HE", "NW", "RP", "SL"):
+            if self.subdiv in {"BW", "BY", "BYP", "HE", "NW", "RP", "SL"}:
                 self[easter(year) + rd(days=60)] = "Fronleichnam"
 
-            if self.subdiv in ("BY", "SL"):
+            if self.subdiv in {"BY", "SL"}:
                 self[date(year, AUG, 15)] = "Mariä Himmelfahrt"
 
         self[date(year, OCT, 3)] = "Tag der Deutschen Einheit"
 
         if (
-            self.subdiv in ("BB", "MV", "SN", "ST", "TH")
-            or (self.subdiv in ("HB", "SH", "NI", "HH") and year >= 2018)
+            self.subdiv in {"BB", "MV", "SN", "ST", "TH"}
+            or (self.subdiv in {"HB", "HH", "NI", "SH"} and year >= 2018)
             or year == 2017
         ):
             self[date(year, OCT, 31)] = "Reformationstag"
 
-        if self.subdiv in ("BW", "BY", "BYP", "NW", "RP", "SL"):
+        if self.subdiv in {"BW", "BY", "BYP", "NW", "RP", "SL"}:
             self[date(year, NOV, 1)] = "Allerheiligen"
 
         if year <= 1994 or self.subdiv == "SN":

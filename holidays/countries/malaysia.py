@@ -112,7 +112,7 @@ class Malaysia(HolidayBase):
         super()._populate(year)
 
         # New Year's Day
-        if self.subdiv not in ("JHR", "KDH", "KTN", "PLS", "TRG"):
+        if self.subdiv not in {"JHR", "KDH", "KTN", "PLS", "TRG"}:
             self[date(year, JAN, 1)] = "New Year's Day"
 
         # Birthday of the Prophet Muhammad (s.a.w.).
@@ -262,7 +262,7 @@ class Malaysia(HolidayBase):
                 if self.subdiv == "TRG":
                     # Arafat Day is one day before Eid al-Adha
                     self[hol_date - rd(days=1)] = "Arafat Day"
-                if self.subdiv in ("KDH", "KTN", "PLS", "TRG"):
+                if self.subdiv in {"KDH", "KTN", "PLS", "TRG"}:
                     # Second day
                     self[hol_date + rd(days=1)] = "Hari Raya Haji Holiday"
         else:
@@ -272,7 +272,7 @@ class Malaysia(HolidayBase):
                 if self.subdiv == "TRG":
                     # Arafat Day is one day before Eid al-Adha
                     self[hol_date - rd(days=1)] = "Arafat Day* (*estimated)"
-                if self.subdiv in ("KDH", "KTN", "PLS", "TRG"):
+                if self.subdiv in {"KDH", "KTN", "PLS", "TRG"}:
                     # Second day
                     self[
                         hol_date + rd(days=1)
@@ -361,7 +361,7 @@ class Malaysia(HolidayBase):
         # The last two days in May (Pesta Kaamatan).
         # (Sarawak Act)
         # Day following a Sunday is not a holiday
-        if self.subdiv in ("LBN", "SBH"):
+        if self.subdiv in {"LBN", "SBH"}:
             self[date(year, MAY, 30)] = "Pesta Kaamatan"
             self[date(year, MAY, 31)] = "Pesta Kaamatan (Second day)"
 
@@ -395,19 +395,19 @@ class Malaysia(HolidayBase):
 
         # 1 January (or the following day if the 1 January should fall on a
         # weekly holiday in any State or in the Federal Territory).
-        if self.subdiv in (
+        if self.subdiv in {
             "KUL",
             "LBN",
             "MLK",
             "NSN",
             "PHG",
+            "PJY",
             "PNG",
             "PRK",
-            "PJY",
             "SBH",
-            "SWK",
             "SGR",
-        ):
+            "SWK",
+        }:
             hol_date = date(year, JAN, 1)
             self[hol_date] = "New Year's Day"
             if hol_date.weekday() == SUN:
@@ -415,24 +415,24 @@ class Malaysia(HolidayBase):
                 self[date(year, JAN, 2)] = "New Year's Day [In lieu]"
 
         # Isra and Mi'raj.
-        if self.subdiv in ("KDH", "NSN", "PLS", "TRG"):
+        if self.subdiv in {"KDH", "NSN", "PLS", "TRG"}:
             for hol_date in _islamic_to_gre(year, 7, 27):
                 self[hol_date] = "Isra and Mi'raj"
 
         # Beginning of Ramadan.
-        if self.subdiv in ("JHR", "KDH", "MLK"):
+        if self.subdiv in {"JHR", "KDH", "MLK"}:
             for hol_date in _islamic_to_gre(year, 9, 1):
                 self[hol_date] = "Begining of Ramadan"
 
         # Nuzul Al-Quran Day.
-        if self.subdiv not in (
+        if self.subdiv not in {
             "JHR",
             "KDH",
             "MLK",
             "NSN",
             "SBH",
             "SWK",
-        ):
+        }:
             for hol_date in _islamic_to_gre(year, 9, 17):
                 self[hol_date] = "Nuzul Al-Quran Day"
 
@@ -477,13 +477,13 @@ class Malaysia(HolidayBase):
                 self[hol_date] = "Hari Raya Aidilfitri Holiday* (*estimated)"
 
         # Good Friday.
-        if self.subdiv in ("SBH", "SWK"):
+        if self.subdiv in {"SBH", "SWK"}:
             self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
 
         # Thaipusam.
         # An annual Hindu festival observed on the day of the first full moon
         # during the Tamil month of Thai
-        if self.subdiv in ("JHR", "KUL", "NSN", "PJY", "PNG", "PRK", "SGR"):
+        if self.subdiv in {"JHR", "KUL", "NSN", "PJY", "PNG", "PRK", "SGR"}:
             dates_obs = {
                 2018: [(JAN, 31)],
                 2019: [(JAN, 21)],
@@ -505,7 +505,7 @@ class Malaysia(HolidayBase):
                 self[hol_date] = "Thaipusam* (*estimated)"
 
         # Federal Territory Day.
-        if self.subdiv in ("KUL", "LBN", "PJY"):
+        if self.subdiv in {"KUL", "LBN", "PJY"}:
             if year > 1973:
                 self[date(year, FEB, 1)] = "Federal Territory Day"
 
@@ -615,7 +615,7 @@ class Malaysia(HolidayBase):
            month, adjusted for Malaysia.
         """
         hol_dates = _islamic_to_gre(year, month, day)
-        if year in (
+        if year in {
             2003,
             2004,
             2010,
@@ -627,7 +627,7 @@ class Malaysia(HolidayBase):
             2024,
             2025,
             2027,
-        ):
+        }:
             hol_dates = [
                 hol_date + timedelta(days=1) for hol_date in hol_dates
             ]

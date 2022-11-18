@@ -78,13 +78,13 @@ class France(HolidayBase):
             self[date(year, NOV, 11)] = "Armistice 1918"
 
         # Religious holidays
-        if self.subdiv in [
+        if self.subdiv in {
             "Alsace-Moselle",
             "Guadeloupe",
             "Guyane",
             "Martinique",
             "Polynésie Française",
-        ]:
+        }:
             self[easter(year) - rd(days=2)] = "Vendredi saint"
 
         if self.subdiv == "Alsace-Moselle":
@@ -114,7 +114,7 @@ class France(HolidayBase):
         if self.subdiv == "Martinique":
             self[date(year, MAY, 22)] = "Abolition de l'esclavage"
 
-        if self.subdiv in ["Guadeloupe", "Saint-Martin"]:
+        if self.subdiv in {"Guadeloupe", "Saint-Martin"}:
             self[date(year, MAY, 27)] = "Abolition de l'esclavage"
 
         if self.subdiv == "Guyane":
@@ -123,7 +123,7 @@ class France(HolidayBase):
         if self.subdiv == "Polynésie Française":
             self[date(year, JUN, 29)] = "Fête de l'autonomie"
 
-        if self.subdiv in ["Guadeloupe", "Martinique"]:
+        if self.subdiv in {"Guadeloupe", "Martinique"}:
             self[date(year, JUL, 21)] = "Fête Victor Schoelcher"
 
         if self.subdiv == "Wallis-et-Futuna":

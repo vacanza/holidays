@@ -100,7 +100,7 @@ class Nigeria(HolidayBase):
                     and year > 2015
                     and k.weekday() == SAT
                     and k.year == year
-                    and v.upper() in ("WORKER'S DAY", "DEMOCRACY DAY")
+                    and v.upper() in {"DEMOCRACY DAY", "WORKER'S DAY"}
                 ):
                     # Add the (Observed) holiday
                     self[k + rd(days=2)] = v + " (Observed)"

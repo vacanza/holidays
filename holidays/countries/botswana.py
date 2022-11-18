@@ -71,7 +71,7 @@ class Botswana(HolidayBase):
                 and year > 2015
                 and k.weekday() == SAT
                 and k.year == year
-                and v.upper() in ("BOXING DAY", "LABOUR DAY")
+                and v.upper() in {"BOXING DAY", "LABOUR DAY"}
             ):
                 # Add the (Observed) holiday
                 self[k + rd(days=2)] = v + " Holiday"
