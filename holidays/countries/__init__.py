@@ -51,7 +51,7 @@ from .hungary import HU, HUN, Hungary
 from .iceland import IS, ISL, Iceland
 from .india import IN, IND, India
 from .ireland import IE, IRL, Ireland
-from .isle_of_man import IM, IsleOfMan
+from .isle_of_man import IM, IMN, IsleOfMan
 from .israel import IL, ISR, Israel
 from .italy import IT, ITA, Italy
 from .jamaica import JAM, JM, Jamaica

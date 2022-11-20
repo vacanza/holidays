@@ -20,14 +20,16 @@ from holidays.holiday_base import HolidayBase
 
 
 class Angola(HolidayBase):
+    """
+    https://www.officeholidays.com/countries/angola/
+    https://www.timeanddate.com/holidays/angola/
+    """
+
     country = "AO"
 
-    def __init__(self, **kwargs):
-        # https://www.officeholidays.com/countries/angola/
-        # https://www.timeanddate.com/holidays/angola/
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year: int) -> None:
+        super()._populate(year)
+
         # Observed since 1975
         # TODO do more research on history of Angolan holidays
 
@@ -47,9 +49,7 @@ class Angola(HolidayBase):
 
         # carnival is the Tuesday before Ash Wednesday
         # which is 40 days before easter excluding sundays
-        carnival = e - rd(days=46)
-        while carnival.weekday() != TU.weekday:
-            carnival = carnival - rd(days=1)
+        carnival = e + rd(days=-47)
         self[carnival] = "Carnaval"
 
         self[date(year, FEB, 4)] = "Dia do Início da Luta Armada"

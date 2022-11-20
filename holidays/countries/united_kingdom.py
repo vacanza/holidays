@@ -13,19 +13,33 @@ from typing import Any
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
+from dateutil.relativedelta import MO, FR
 
 from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
 class UnitedKingdom(HolidayBase):
-    # https://en.wikipedia.org/wiki/Public_holidays_in_the_United_Kingdom
-    # This class is extended by other countries (Ireland, Isle of Man, ...)
-    # It must be taken into account when adding or modifying holidays.
-    # Look at _country_specific() method for country specific behavior.
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_the_United_Kingdom
+    This class is extended by other countries (Ireland, Isle of Man, ...)
+    It must be taken into account when adding or modifying holidays.
+    Look at _country_specific() method for country specific behavior.
+    """
 
     country = "GB"
+    special_holidays = {
+        1977: ((JUN, 7, "Silver Jubilee of Elizabeth II"),),
+        1981: ((JUL, 29, "Wedding of Charles and Diana"),),
+        1999: ((DEC, 31, "Millennium Celebrations"),),
+        2002: ((JUN, 3, "Golden Jubilee of Elizabeth II"),),
+        2011: ((APR, 29, "Wedding of William and Catherine"),),
+        2012: ((JUN, 5, "Diamond Jubilee of Elizabeth II"),),
+        2022: (
+            (JUN, 3, "Platinum Jubilee of Elizabeth II"),
+            (SEP, 19, "State Funeral of Queen Elizabeth II"),
+        ),
+    }
     subdivisions = ["UK", "England", "Northern Ireland", "Scotland", "Wales"]
 
     def __init__(self, **kwargs: Any) -> None:
@@ -35,37 +49,37 @@ class UnitedKingdom(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year: int) -> None:
+        super()._populate(year)
 
         # New Year's Day
         if year >= 1974:
             name = "New Year's Day"
-            self[date(year, JAN, 1)] = name
-            if self.observed and date(year, JAN, 1).weekday() == SU.weekday:
-                self[date(year, JAN, 1) + rd(days=+1)] = name + " (Observed)"
-            elif self.observed and date(year, JAN, 1).weekday() == SA.weekday:
-                self[date(year, JAN, 1) + rd(days=+2)] = name + " (Observed)"
+            dt = date(year, JAN, 1)
+            self[dt] = name
+            if self.observed and self._is_weekend(dt):
+                self[dt + rd(weekday=MO)] = name + " (Observed)"
 
         # New Year Holiday
         if self.subdiv in ("UK", "Scotland"):
             name = "New Year Holiday"
+            dt = date(year, JAN, 2)
             if self.subdiv == "UK":
                 name += " [Scotland]"
-            self[date(year, JAN, 2)] = name
-            if self.observed and self._is_weekend(year, JAN, 2):
-                self[date(year, JAN, 2) + rd(days=+2)] = name + " (Observed)"
-            elif self.observed and date(year, JAN, 2).weekday() == MO.weekday:
-                self[date(year, JAN, 2) + rd(days=+1)] = name + " (Observed)"
+            self[dt] = name
+            if self.observed and self._is_weekend(dt):
+                self[dt + rd(days=+2)] = name + " (Observed)"
+            elif self.observed and dt.weekday() == MO.weekday:
+                self[dt + rd(days=+1)] = name + " (Observed)"
 
         # St. Patrick's Day
         if self.subdiv in ("UK", "Northern Ireland"):
             name = "St. Patrick's Day"
+            dt = date(year, MAR, 17)
             if self.subdiv == "UK":
                 name += " [Northern Ireland]"
-            self[date(year, MAR, 17)] = name
-            if self.observed and self._is_weekend(year, MAR, 17):
-                self[date(year, MAR, 17) + rd(weekday=MO)] = (
-                    name + " (Observed)"
-                )
+            self[dt] = name
+            if self.observed and self._is_weekend(dt):
+                self[dt + rd(weekday=MO)] = name + " (Observed)"
 
         # Battle of the Boyne
         if self.subdiv in ("UK", "Northern Ireland"):
@@ -90,11 +104,10 @@ class UnitedKingdom(HolidayBase):
 
         # Christmas Day
         name = "Christmas Day"
-        self[date(year, DEC, 25)] = name
-        if self.observed and date(year, DEC, 25).weekday() == SA.weekday:
-            self[date(year, DEC, 27)] = name + " (Observed)"
-        elif self.observed and date(year, DEC, 25).weekday() == SU.weekday:
-            self[date(year, DEC, 27)] = name + " (Observed)"
+        dt = date(year, DEC, 25)
+        self[dt] = name
+        if self.observed and self._is_weekend(dt):
+            self[dt + rd(days=+2)] = name + " (Observed)"
 
         # Overwrite to modify country specific holidays
         self._country_specific(year)
@@ -117,28 +130,12 @@ class UnitedKingdom(HolidayBase):
         # May Day bank holiday (first Monday in May)
         if year >= 1978:
             name = "May Day"
-            if year == 2020:
-                # Moved to Friday to mark 75th anniversary of VE Day.
-                self[date(year, MAY, 8)] = name
+            if year == 1995 or year == 2020:
+                # In 2020 moved to Friday to mark 75th anniversary of VE Day.
+                dt = date(year, MAY, 8)
             else:
-                if year == 1995:
-                    dt = date(year, MAY, 8)
-                else:
-                    dt = date(year, MAY, 1)
-                if dt.weekday() == MO.weekday:
-                    self[dt] = name
-                if dt.weekday() == TU.weekday:
-                    self[dt + rd(days=+6)] = name
-                if dt.weekday() == WE.weekday:
-                    self[dt + rd(days=+5)] = name
-                if dt.weekday() == TH.weekday:
-                    self[dt + rd(days=+4)] = name
-                if dt.weekday() == FR.weekday:
-                    self[dt + rd(days=+3)] = name
-                if dt.weekday() == SA.weekday:
-                    self[dt + rd(days=+2)] = name
-                if dt.weekday() == SU.weekday:
-                    self[dt + rd(days=+1)] = name
+                dt = date(year, MAY, 1) + rd(weekday=MO)
+            self[dt] = name
 
         # Spring bank holiday (last Monday in May)
         name = "Spring Bank Holiday"
@@ -158,28 +155,10 @@ class UnitedKingdom(HolidayBase):
 
         # Boxing Day
         name = "Boxing Day"
-        self[date(year, DEC, 26)] = name
-        if self.observed and date(year, DEC, 26).weekday() == SA.weekday:
-            self[date(year, DEC, 28)] = name + " (Observed)"
-        elif self.observed and date(year, DEC, 26).weekday() == SU.weekday:
-            self[date(year, DEC, 28)] = name + " (Observed)"
-
-        # Special holidays
-        if year == 1977:
-            self[date(year, JUN, 7)] = "Silver Jubilee of Elizabeth II"
-        elif year == 1981:
-            self[date(year, JUL, 29)] = "Wedding of Charles and Diana"
-        elif year == 1999:
-            self[date(year, DEC, 31)] = "Millennium Celebrations"
-        elif year == 2002:
-            self[date(year, JUN, 3)] = "Golden Jubilee of Elizabeth II"
-        elif year == 2011:
-            self[date(year, APR, 29)] = "Wedding of William and Catherine"
-        elif year == 2012:
-            self[date(year, JUN, 5)] = "Diamond Jubilee of Elizabeth II"
-        elif year == 2022:
-            self[date(year, JUN, 3)] = "Platinum Jubilee of Elizabeth II"
-            self[date(year, SEP, 19)] = "State Funeral of Queen Elizabeth II"
+        dt = date(year, DEC, 26)
+        self[dt] = name
+        if self.observed and self._is_weekend(dt):
+            self[dt + rd(days=+2)] = name + " (Observed)"
 
 
 class UK(UnitedKingdom):

@@ -45,9 +45,6 @@ class Spain(HolidayBase):
         "VC",
     ]
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _is_observed(self, date_holiday, name_holiday):
         if self.observed and date_holiday.weekday() == SU.weekday:
             self[date_holiday + rd(days=+1)] = name_holiday + " (Trasladado)"
@@ -55,6 +52,8 @@ class Spain(HolidayBase):
             self[date_holiday] = name_holiday
 
     def _populate(self, year):
+        super()._populate(year)
+
         self._is_observed(date(year, JAN, 1), "Año nuevo")
         self._is_observed(date(year, JAN, 6), "Epifanía del Señor")
 

@@ -919,7 +919,7 @@ class TestMalaysia(unittest.TestCase):
                     self.assertIn(hol_date, my_holidays)
                     tot_holidays += 1
             # check that there are no extra ones
-            assert len(my_holidays) == tot_holidays
+            self.assertEqual(len(my_holidays), tot_holidays)
 
     def test_Malaysia(self):
         # Federal Public Holidays

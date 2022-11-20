@@ -20,14 +20,15 @@ from holidays.holiday_base import HolidayBase
 
 
 class Denmark(HolidayBase):
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Denmark
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Denmark
+    """
 
     country = "DK"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # Public holidays
         self[date(year, JAN, 1)] = "Nytårsdag"
         self[easter(year) + rd(weekday=SU(-2))] = "Palmesøndag"

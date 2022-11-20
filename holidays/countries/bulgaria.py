@@ -41,10 +41,9 @@ class Bulgaria(HolidayBase):
 
     country = "BG"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         if year < 1990:
             return
 

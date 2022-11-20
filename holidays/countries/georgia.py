@@ -25,10 +25,8 @@ class Georgia(HolidayBase):
 
     country = "GE"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
 
         # New Year's Day
         name = "ახალი წელი"

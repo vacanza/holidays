@@ -20,14 +20,15 @@ from holidays.holiday_base import HolidayBase
 
 
 class Japan(HolidayBase):
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Japan
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Japan
+    """
 
     country = "JP"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         if year < 1949 or year > 2099:
             raise NotImplementedError
 

@@ -20,13 +20,12 @@ from holidays.holiday_base import HolidayBase
 
 
 class DominicanRepublic(HolidayBase):
-    # http://ojd.org.do/Normativas/LABORAL/Leyes/Ley%20No.%20%20139-97.pdf
-    # https://es.wikipedia.org/wiki/Rep%C3%BAblica_Dominicana#D%C3%ADas_festivos_nacionales
+    """
+    http://ojd.org.do/Normativas/LABORAL/Leyes/Ley%20No.%20%20139-97.pdf
+    https://es.wikipedia.org/wiki/Rep%C3%BAblica_Dominicana#D%C3%ADas_festivos_nacionales
+    """
 
     country = "DO"
-
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
 
     @staticmethod
     def __change_day_by_law(holiday, latest_days=(TH.weekday, FR.weekday)):
@@ -39,6 +38,8 @@ class DominicanRepublic(HolidayBase):
         return holiday
 
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
         self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
 
@@ -78,8 +79,7 @@ class DominicanRepublic(HolidayBase):
         # Our Lady of Mercedes Day
         self[
             date(year, SEP, 24)
-        ] = "Día de las Mercedes \
-            [Our Lady of Mercedes Day]"
+        ] = "Día de las Mercedes [Our Lady of Mercedes Day]"
 
         # Constitution Day
         constitution_day = self.__change_day_by_law(date(year, NOV, 6))

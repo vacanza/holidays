@@ -19,14 +19,14 @@ from holidays.holiday_base import HolidayBase
 
 
 class Cyprus(HolidayBase):
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Cyprus
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Cyprus
+    """
 
     country = "CY"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
 
         eday = easter(year, method=EASTER_ORTHODOX)
 

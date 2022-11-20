@@ -9,6 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+import pathlib
 import pickle
 import unittest
 import warnings
@@ -17,6 +18,7 @@ from datetime import date, datetime, timedelta
 from dateutil.relativedelta import relativedelta, MO, TU, SA, SU
 
 import holidays
+from holidays.constants import FEB, JAN
 
 
 class TestBasics(unittest.TestCase):
@@ -348,13 +350,38 @@ class TestBasics(unittest.TestCase):
         self.assertEqual(na.get_list(date(1969, 1, 3)), [])
 
     def test_list_supported_countries(self):
-        self.assertIn("AR", holidays.list_supported_countries())
-        self.assertIn("ZA", holidays.list_supported_countries())
-        self.assertIn("CA", holidays.list_supported_countries()["US"])
+        supported_countries = holidays.list_supported_countries()
+
+        countries_files = [
+            path
+            for path in pathlib.Path("holidays/countries").glob("*.py")
+            if not str(path).endswith("__init__.py")
+        ]
+        self.assertEqual(
+            len(countries_files),
+            len(supported_countries),
+        )
+
+        self.assertIn("AR", supported_countries)
+        self.assertIn("CA", supported_countries["US"])
+        self.assertIn("IM", supported_countries)
+        self.assertIn("ZA", supported_countries)
 
     def test_list_supported_financial(self):
-        self.assertIn("ECB", holidays.list_supported_financial())
-        self.assertIn("NYSE", holidays.list_supported_financial())
+        supported_financial = holidays.list_supported_financial()
+
+        financial_files = [
+            path
+            for path in pathlib.Path("holidays/financial").glob("*.py")
+            if not str(path).endswith("__init__.py")
+        ]
+        self.assertEqual(
+            len(financial_files),
+            len(supported_financial),
+        )
+
+        self.assertIn("ECB", supported_financial)
+        self.assertIn("NYSE", supported_financial)
 
     def test_radd(self):
         self.assertRaises(TypeError, lambda: 1 + holidays.US())
@@ -498,14 +525,12 @@ class TestArgs(unittest.TestCase):
         self.assertIn(date(2018, 7, 2), self.holidays)
 
     def test_serialization(self):
-        loaded_holidays = pickle.loads(pickle.dumps(self.holidays))
-        assert loaded_holidays == self.holidays
-
         dt = datetime(2020, 1, 1)
-        res = dt in self.holidays
+        self.assertIn(dt, self.holidays)
+
         loaded_holidays = pickle.loads(pickle.dumps(self.holidays))
-        assert loaded_holidays == self.holidays
-        assert (dt in loaded_holidays) == res
+        self.assertEqual(loaded_holidays, self.holidays)
+        self.assertIn(dt, self.holidays)
 
     def test_deprecation_warnings(self):
         with self.assertWarns(Warning):
@@ -697,4 +722,31 @@ class TestAllInSameYear(unittest.TestCase):
                     self.country, years=[self.year]
                 )
                 for self.hol in hols:
-                    assert self.hol.year == self.year
+                    self.assertEqual(self.hol.year, self.year)
+
+
+class TestCountrySpecialHolidays(unittest.TestCase):
+    def setUp(self):
+        self.holidays = holidays.country_holidays("US")
+
+    def test_populate_special_holidays(self):
+        self.holidays._populate(1111)  # special_holidays is empty.
+        self.assertEqual(0, len(self.holidays))
+
+        self.holidays.special_holidays = {
+            1111: ((JAN, 1, "Test holiday"),),
+            2222: ((FEB, 2, "Test holiday"),),
+            3333: (),
+        }
+
+        self.assertNotIn(3333, self.holidays.years)
+
+        self.assertIn("1111-01-01", self.holidays)
+        self.assertIn("2222-02-02", self.holidays)
+        self.assertEqual(13, len(self.holidays))
+
+        self.holidays._populate(1111)
+        self.holidays._populate(2222)
+        self.assertIn("1111-01-01", self.holidays)
+        self.assertIn("2222-02-02", self.holidays)
+        self.assertEqual(13, len(self.holidays))

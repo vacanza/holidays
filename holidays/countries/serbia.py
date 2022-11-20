@@ -20,14 +20,15 @@ from holidays.holiday_base import HolidayBase
 
 
 class Serbia(HolidayBase):
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Serbia
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Serbia
+    """
 
     country = "RS"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
         name = "Нова година"
         self[date(year, JAN, 1)] = name

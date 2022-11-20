@@ -20,15 +20,16 @@ from holidays.holiday_base import HolidayBase
 
 
 class Aruba(HolidayBase):
-    # http://www.gobierno.aw/informacion-tocante-servicio/vakantie-y-dia-di-fiesta_43437/item/dia-di-fiesta_14809.html
-    # https://www.visitaruba.com/about-aruba/national-holidays-and-celebrations/
+    """
+    http://www.gobierno.aw/informacion-tocante-servicio/vakantie-y-dia-di-fiesta_43437/item/dia-di-fiesta_14809.html
+    https://www.visitaruba.com/about-aruba/national-holidays-and-celebrations/
+    """
 
     country = "AW"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
         self[date(year, JAN, 1)] = "Aña Nobo [New Year's Day]"
 
@@ -38,14 +39,12 @@ class Aruba(HolidayBase):
         # Carnaval Monday
         self[
             easter(year) + rd(days=-48)
-        ] = "Dialuna di Carnaval \
-            [Carnaval Monday]"
+        ] = "Dialuna di Carnaval [Carnaval Monday]"
 
         # Dia di Himno y Bandera
         self[
             date(year, MAR, 18)
-        ] = "Dia di Himno y Bandera \
-            [National Anthem & Flag Day]"
+        ] = "Dia di Himno y Bandera [National Anthem & Flag Day]"
 
         # Good Friday
         self[easter(year) + rd(weekday=FR(-1))] = "Bierna Santo [Good Friday]"
@@ -53,8 +52,7 @@ class Aruba(HolidayBase):
         # Easter Monday
         self[
             easter(year) + rd(days=1)
-        ] = "Di Dos Dia di Pasco di Resureccion \
-            [Easter Monday]"
+        ] = "Di Dos Dia di Pasco di Resureccion [Easter Monday]"
 
         # King's Day
         if year >= 2014:
@@ -90,8 +88,7 @@ class Aruba(HolidayBase):
         # Second Christmas
         self[
             date(year, DEC, 26)
-        ] = "Di Dos Dia di Pasco di \
-            Nacemento [Second Christmas]"
+        ] = "Di Dos Dia di Pasco di Nacemento [Second Christmas]"
 
 
 class AW(Aruba):

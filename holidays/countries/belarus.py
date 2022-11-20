@@ -26,10 +26,9 @@ class Belarus(HolidayBase):
 
     country = "BY"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # The current set of holidays came into force in 1998
         # http://laws.newsby.org/documents/ukazp/pos05/ukaz05806.htm
         if year <= 1998:

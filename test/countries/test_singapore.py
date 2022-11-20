@@ -60,7 +60,7 @@ class TestSingapore(unittest.TestCase):
         self.assertIn(date(2022, 5, 16), self.holidays)
         self.assertIn(date(2022, 7, 9), self.holidays)
         self.assertIn(date(2022, 8, 9), self.holidays)
-        self.assertIn(date(2022, 11, 24), self.holidays)
+        self.assertIn(date(2022, 10, 24), self.holidays)
         self.assertIn(date(2022, 12, 25), self.holidays)
         self.assertIn(date(2022, 12, 26), self.holidays)
         # 2022: total holidays (11 + 3 falling on a Sunday)

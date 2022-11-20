@@ -22,17 +22,18 @@ from holidays.holiday_base import HolidayBase
 
 
 class Argentina(HolidayBase):
-    # https://www.argentina.gob.ar/interior/feriados
-    # https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Argentina
-    # http://servicios.lanacion.com.ar/feriados
-    # https://www.clarin.com/feriados/
+    """
+    https://www.argentina.gob.ar/interior/feriados
+    https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Argentina
+    http://servicios.lanacion.com.ar/feriados
+    https://www.clarin.com/feriados/
+    """
 
     country = "AR"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
         if not self.observed and self._is_weekend(year, JAN, 1):
             pass
@@ -56,8 +57,8 @@ class Argentina(HolidayBase):
             self[date(year, MAR, 24)] = name
 
         # Holy Week
-        name_thu = "Semana Santa (Jueves Santo)  [Holy day (Holy Thursday)]"
-        name_fri = "Semana Santa (Viernes Santo)  [Holy day (Holy Friday)]"
+        name_thu = "Semana Santa (Jueves Santo) [Holy day (Holy Thursday)]"
+        name_fri = "Semana Santa (Viernes Santo) [Holy day (Holy Friday)]"
         name_easter = "Día de Pascuas [Easter Day]"
 
         self[easter(year) + rd(weekday=TH(-1))] = name_thu
@@ -155,9 +156,9 @@ class Argentina(HolidayBase):
         if not self.observed and self._is_weekend(year, DEC, 8):
             pass
         else:
-            self[date(year, DEC, 8)] = (
-                "La Inmaculada Concepción" " [Immaculate Conception]"
-            )
+            self[
+                date(year, DEC, 8)
+            ] = "La Inmaculada Concepción [Immaculate Conception]"
 
         # Christmas
         self[date(year, DEC, 25)] = "Navidad [Christmas]"

@@ -12,8 +12,8 @@
 from datetime import date
 
 from dateutil.easter import easter
+from dateutil.relativedelta import SU, TU
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import TU
 
 from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT
 from holidays.constants import NOV, DEC
@@ -56,10 +56,9 @@ class Brazil(HolidayBase):
         "TO",
     ]
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
         self[date(year, JAN, 1)] = "Ano novo"
 
@@ -187,9 +186,10 @@ class Brazil(HolidayBase):
             self[date(year, OCT, 5)] = "Criação de Roraima"
 
         if self.subdiv == "SC":
-            self[date(year, AUG, 11)] = (
-                "Criação da capitania," " separando-se de SP"
-            )
+            dt = date(year, AUG, 11)
+            if year >= 2018 and not self._is_weekend(dt):
+                dt += rd(weekday=SU)
+            self[dt] = "Criação da capitania, separando-se de SP"
 
         if self.subdiv == "SP":
             self[date(year, JUL, 9)] = "Revolução Constitucionalista de 1932"

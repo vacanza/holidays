@@ -13,7 +13,7 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import TU, SU
+from dateutil.relativedelta import SU
 
 from holidays.constants import FEB, APR, MAY, JUN, SEP, OCT, DEC
 from holidays.holiday_base import HolidayBase
@@ -22,10 +22,8 @@ from holidays.holiday_base import HolidayBase
 class Mozambique(HolidayBase):
     country = "MZ"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
 
         if year > 1974:
             self[date(year, 1, 1)] = "Ano novo"
@@ -35,9 +33,7 @@ class Mozambique(HolidayBase):
 
             # carnival is the Tuesday before Ash Wednesday
             # which is 40 days before easter excluding sundays
-            carnival = e - rd(days=46)
-            while carnival.weekday() != TU.weekday:
-                carnival = carnival - rd(days=1)
+            carnival = e + rd(days=-47)
             self[carnival] = "Carnaval"
 
             self[date(year, FEB, 3)] = "Dia dos Heróis Moçambicanos"

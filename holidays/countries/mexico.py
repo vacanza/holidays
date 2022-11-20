@@ -19,17 +19,25 @@ from holidays.holiday_base import HolidayBase
 
 
 class Mexico(HolidayBase):
+
     country = "MX"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
+    def _add_with_observed(self, holiday: date, name: str):
+        self[holiday] = name
+        if self.observed and holiday.weekday() == SA.weekday:
+            self[holiday + rd(days=-1)] = name + " (Observed)"
+        elif self.observed and holiday.weekday() == SU.weekday:
+            self[holiday + rd(days=+1)] = name + " (Observed)"
 
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
         name = "Año Nuevo [New Year's Day]"
-        self[date(year, JAN, 1)] = name
-        if self.observed and date(year, JAN, 1).weekday() == SU.weekday:
-            self[date(year, JAN, 1) + rd(days=+1)] = name + " (Observed)"
+        dt = date(year, JAN, 1)
+        self[dt] = name
+        if self.observed and dt.weekday() == SU.weekday:
+            self[dt + rd(days=+1)] = name + " (Observed)"
         # The next year's observed New Year's Day can be in this year
         # when it falls on a Friday (Jan 1st is a Saturday)
         if self.observed and date(year, DEC, 31).weekday() == FR.weekday:
@@ -58,19 +66,13 @@ class Mexico(HolidayBase):
         # Labor Day
         if year >= 1923:
             name = "Día del Trabajo [Labour Day]"
-            self[date(year, MAY, 1)] = name
-            if self.observed and date(year, MAY, 1).weekday() == SA.weekday:
-                self[date(year, MAY, 1) + rd(days=-1)] = name + " (Observed)"
-            elif self.observed and date(year, MAY, 1).weekday() == SU.weekday:
-                self[date(year, MAY, 1) + rd(days=+1)] = name + " (Observed)"
+            dt = date(year, MAY, 1)
+            self._add_with_observed(dt, name)
 
         # Independence Day
         name = "Día de la Independencia [Independence Day]"
-        self[date(year, SEP, 16)] = name
-        if self.observed and date(year, SEP, 16).weekday() == SA.weekday:
-            self[date(year, SEP, 16) + rd(days=-1)] = name + " (Observed)"
-        elif self.observed and date(year, SEP, 16).weekday() == SU.weekday:
-            self[date(year, SEP, 16) + rd(days=+1)] = name + " (Observed)"
+        dt = date(year, SEP, 16)
+        self._add_with_observed(dt, name)
 
         # Revolution Day
         name = "Día de la Revolución [Revolution Day]"
@@ -84,21 +86,18 @@ class Mexico(HolidayBase):
 
         # Change of Federal Government
         # Every six years--next observance 2018
-        name = "Transmisión del Poder Ejecutivo Federal"
-        name += " [Change of Federal Government]"
         if year >= 1970 and (2096 - year) % 6 == 0:
-            self[date(year, DEC, 1)] = name
-            if self.observed and date(year, DEC, 1).weekday() == SA.weekday:
-                self[date(year, DEC, 1) + rd(days=-1)] = name + " (Observed)"
-            elif self.observed and date(year, DEC, 1).weekday() == SU.weekday:
-                self[date(year, DEC, 1) + rd(days=+1)] = name + " (Observed)"
+            name = (
+                "Transmisión del Poder Ejecutivo Federal"
+                " [Change of Federal Government]"
+            )
+            dt = date(year, DEC, 1)
+            self._add_with_observed(dt, name)
 
         # Christmas
-        self[date(year, DEC, 25)] = "Navidad [Christmas]"
-        if self.observed and date(year, DEC, 25).weekday() == SA.weekday:
-            self[date(year, DEC, 25) + rd(days=-1)] = name + " (Observed)"
-        elif self.observed and date(year, DEC, 25).weekday() == SU.weekday:
-            self[date(year, DEC, 25) + rd(days=+1)] = name + " (Observed)"
+        name = "Navidad [Christmas]"
+        dt = date(year, DEC, 25)
+        self._add_with_observed(dt, name)
 
 
 class MX(Mexico):

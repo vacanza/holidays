@@ -19,15 +19,16 @@ from holidays.holiday_base import HolidayBase
 
 
 class Slovakia(HolidayBase):
-    # https://sk.wikipedia.org/wiki/Sviatok
-    # https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1993/241/20181011.html
+    """
+    https://sk.wikipedia.org/wiki/Sviatok
+    https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1993/241/20181011.html
+    """
 
     country = "SK"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         self[date(year, JAN, 1)] = "Deň vzniku Slovenskej republiky"
         self[date(year, JAN, 6)] = (
             "Zjavenie Pána (Traja králi a"

@@ -27,7 +27,7 @@ class Singapore(HolidayBase):
 
     def __init__(
         self,
-        years: Union[int, Iterable[int]] = None,
+        years: Optional[Union[int, Iterable[int]]] = None,
         expand: bool = True,
         observed: bool = True,
         subdiv: Optional[str] = None,
@@ -71,7 +71,8 @@ class Singapore(HolidayBase):
         self.cnls = _ChineseLuniSolar()
         super().__init__(years, expand, observed, subdiv, prov, state)
 
-    def _populate(self, year: int) -> None:
+    def _populate(self, year) -> None:
+        super()._populate(year)
 
         # New Year's Day
         self[date(year, JAN, 1)] = "New Year's Day"
@@ -248,7 +249,7 @@ class Singapore(HolidayBase):
             2019: (OCT, 27),
             2020: (NOV, 14),
             2021: (NOV, 4),
-            2022: (NOV, 24),
+            2022: (OCT, 24),
             2023: (NOV, 12),
         }
         if year in dates_fixed_obs:
@@ -300,7 +301,7 @@ class SG(Singapore):
     # __init__ required for IDE typing and inheritance of docstring.
     def __init__(
         self,
-        years: Union[int, Iterable[int]] = None,
+        years: Optional[Union[int, Iterable[int]]] = None,
         expand: bool = True,
         observed: bool = True,
         subdiv: Optional[str] = None,
@@ -315,7 +316,7 @@ class SGP(Singapore):
     # __init__ required for IDE typing and inheritance of docstring.
     def __init__(
         self,
-        years: Union[int, Iterable[int]] = None,
+        years: Optional[Union[int, Iterable[int]]] = None,
         expand: bool = True,
         observed: bool = True,
         subdiv: Optional[str] = None,

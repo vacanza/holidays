@@ -19,16 +19,16 @@ from holidays.holiday_base import HolidayBase
 
 
 class Lithuania(HolidayBase):
-
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Lithuania
-    # https://www.kalendorius.today/
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Lithuania
+    https://www.kalendorius.today/
+    """
 
     country = "LT"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
         self[date(year, 1, 1)] = "Naujieji metai"
 
@@ -79,6 +79,10 @@ class Lithuania(HolidayBase):
 
         # All Saints' Day
         self[date(year, 11, 1)] = "Visų šventųjų diena (Vėlinės)"
+
+        # All Souls' Day
+        if year >= 2020:
+            self[date(year, 11, 2)] = "Mirusiųjų atminimo diena (Vėlinės)"
 
         # Christmas Eve
         self[date(year, 12, 24)] = "Šv. Kūčios"

@@ -22,10 +22,9 @@ from holidays.holiday_base import HolidayBase
 class Cuba(HolidayBase):
     country = "CU"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         """
         Overview: https://en.wikipedia.org/wiki/Public_holidays_in_Cuba
         1984 (DEC 28): https://bit.ly/3okNBbt

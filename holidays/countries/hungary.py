@@ -20,22 +20,18 @@ from holidays.holiday_base import HolidayBase
 
 
 class Hungary(HolidayBase):
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Hungary
-    # observed days off work around national holidays in the last 10 years:
-    # https://www.munkaugyiforum.hu/munkaugyi-segedanyagok/
-    #     2018-evi-munkaszuneti-napok-koruli-munkarend-9-2017-ngm-rendelet
-    # codification dates:
-    # - https://hvg.hu/gazdasag/
-    #      20170307_Megszavaztak_munkaszuneti_nap_lett_a_nagypentek
-    # - https://www.tankonyvtar.hu/hu/tartalom/historia/
-    #      92-10/ch01.html#id496839
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Hungary
+    Codification dates:
+      - https://hvg.hu/gazdasag/20170307_Megszavaztak_munkaszuneti_nap_lett_a_nagypentek  # noqa
+      - https://www.tankonyvtar.hu/hu/tartalom/historia/92-10/ch01.html#id496839
+    """
 
     country = "HU"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year: int) -> None:
+        super()._populate(year)
+
         # New years
         self._add_with_observed_day_off(date(year, JAN, 1), "Újév", since=2014)
         # Since 2014, the last day of the year is an observed day off if New

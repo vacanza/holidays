@@ -17,15 +17,15 @@ from holidays.holiday_base import HolidayBase
 
 
 class Bangladesh(HolidayBase):
-    # https://mopa.gov.bd/sites/default/files/files/mopa.gov.bd/public_holiday/61c35b73_e335_462a_9bcf_4695b23b6d82/reg4-2019-212.PDF
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Bangladesh
+    """
+    https://mopa.gov.bd/sites/default/files/files/mopa.gov.bd/public_holiday/61c35b73_e335_462a_9bcf_4695b23b6d82/reg4-2019-212.PDF
+    https://en.wikipedia.org/wiki/Public_holidays_in_Bangladesh
+    """
 
     country = "BD"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
 
         # 21st Feb
         self[date(year, FEB, 21)] = "International Mother's language Day"

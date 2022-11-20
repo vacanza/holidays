@@ -92,7 +92,6 @@ class TestIreland(unittest.TestCase):
             2001,
         ):
             dt = date(year, 12, day)
-            print(self.holidays[dt])
             self.assertIn(dt, self.holidays, dt)
             self.assertIn(
                 self.holidays[dt],

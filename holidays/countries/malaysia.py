@@ -46,7 +46,7 @@ class Malaysia(HolidayBase):
 
     def __init__(
         self,
-        years: Union[int, Iterable[int]] = None,
+        years: Optional[Union[int, Iterable[int]]] = None,
         expand: bool = True,
         observed: bool = True,
         subdiv: Optional[str] = None,
@@ -96,6 +96,7 @@ class Malaysia(HolidayBase):
         super().__init__(years, expand, observed, subdiv, prov, state)
 
     def _populate(self, year):
+        super()._populate(year)
 
         # New Year's Day
         if self.subdiv not in ("JHR", "KDH", "KTN", "PLS", "TRG"):
@@ -625,7 +626,7 @@ class MY(Malaysia):
     # __init__ required for IDE typing and inheritance of docstring.
     def __init__(
         self,
-        years: Union[int, Iterable[int]] = None,
+        years: Optional[Union[int, Iterable[int]]] = None,
         expand: bool = True,
         observed: bool = True,
         subdiv: Optional[str] = None,
@@ -640,7 +641,7 @@ class MYS(Malaysia):
     # __init__ required for IDE typing and inheritance of docstring.
     def __init__(
         self,
-        years: Union[int, Iterable[int]] = None,
+        years: Optional[Union[int, Iterable[int]]] = None,
         expand: bool = True,
         observed: bool = True,
         subdiv: Optional[str] = None,

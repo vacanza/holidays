@@ -34,12 +34,12 @@ from holidays.utils import _islamic_to_gre
 
 
 class Ethiopia(HolidayBase):
+
     country = "ET"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
         # The Ethiopian New Year is called Kudus Yohannes in Ge'ez and
         # Tigrinya, while in Amharic,

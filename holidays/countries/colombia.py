@@ -30,9 +30,6 @@ class Colombia(HolidayBase):
 
     country = "CO"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _add_with_bridge(self, _date, name):
         """
         On the 6th of December 1983, the government of Colombia declared which
@@ -59,6 +56,8 @@ class Colombia(HolidayBase):
             self[_date] = name
 
     def _populate(self, year):
+        super()._populate(year)
+
         self._add_fixed_date_holidays(year)
         self._add_flexible_date_holidays(year)
         self._add_easter_based_holidays(year)

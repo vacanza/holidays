@@ -21,14 +21,16 @@ from holidays.holiday_base import HolidayBase
 
 
 class Eswatini(HolidayBase):
+    """
+    https://swazilii.org/sz/legislation/act/1938/71
+    https://www.officeholidays.com/countries/swaziland
+    """
+
     country = "SZ"
 
-    def __init__(self, **kwargs):
-        # https://swazilii.org/sz/legislation/act/1938/71
-        # https://www.officeholidays.com/countries/swaziland
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # Observed since 1938
         if year > 1938:
             self[date(year, JAN, 1)] = "New Year's Day"

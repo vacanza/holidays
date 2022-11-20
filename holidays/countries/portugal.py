@@ -20,7 +20,9 @@ from holidays.holiday_base import HolidayBase
 
 
 class Portugal(HolidayBase):
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Portugal
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Portugal
+    """
 
     country = "PT"
     # https://en.wikipedia.org/wiki/Districts_of_Portugal
@@ -48,10 +50,9 @@ class Portugal(HolidayBase):
         "18",
     ]
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         self[date(year, JAN, 1)] = "Ano Novo"
 
         e = easter(year)

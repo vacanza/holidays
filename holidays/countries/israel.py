@@ -22,13 +22,12 @@ from holidays.holiday_base import HolidayBase
 
 
 class Israel(HolidayBase):
+
     country = "IL"
 
-    def __init__(self, **kwargs):
-
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # Passover
         name = "Passover I"
         passover_start_dt = date(*passover(year, eve=True))
