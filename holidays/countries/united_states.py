@@ -221,7 +221,7 @@ class UnitedStates(HolidayBase):
         if self.subdiv == "MA" and year >= 1901:
             name = "Evacuation Day"
             self[date(year, MAR, 17)] = name
-            if self._is_weekend(date(year, MAR, 17)):
+            if self._is_weekend(year, MAR, 17):
                 self[date(year, MAR, 17) + rd(weekday=MO)] = (
                     name + " (Observed)"
                 )
@@ -569,7 +569,7 @@ class UnitedStates(HolidayBase):
             if self.observed and date(year, DEC, 24).weekday() == FR.weekday:
                 self[date(year, DEC, 24) + rd(days=-1)] = name
             # If on Saturday or Sunday, observed on Friday
-            elif self.observed and self._is_weekend(date(year, DEC, 24)):
+            elif self.observed and self._is_weekend(year, DEC, 24):
                 self[date(year, DEC, 24) + rd(weekday=FR(-1))] = name
 
         # Christmas Day
@@ -587,7 +587,7 @@ class UnitedStates(HolidayBase):
             self[date(year, DEC, 26)] = name
             name = name + " (Observed)"
             # If on Saturday or Sunday, observed on Monday
-            if self.observed and self._is_weekend(date(year, DEC, 26)):
+            if self.observed and self._is_weekend(year, DEC, 26):
                 self[date(year, DEC, 26) + rd(weekday=MO)] = name
             # If on Monday, observed on Tuesday
             elif self.observed and date(year, DEC, 26).weekday() == MO.weekday:

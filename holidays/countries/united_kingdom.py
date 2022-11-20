@@ -51,7 +51,7 @@ class UnitedKingdom(HolidayBase):
             if self.subdiv == "UK":
                 name += " [Scotland]"
             self[date(year, JAN, 2)] = name
-            if self.observed and self._is_weekend(date(year, JAN, 2)):
+            if self.observed and self._is_weekend(year, JAN, 2):
                 self[date(year, JAN, 2) + rd(days=+2)] = name + " (Observed)"
             elif self.observed and date(year, JAN, 2).weekday() == MO.weekday:
                 self[date(year, JAN, 2) + rd(days=+1)] = name + " (Observed)"
@@ -62,7 +62,7 @@ class UnitedKingdom(HolidayBase):
             if self.subdiv == "UK":
                 name += " [Northern Ireland]"
             self[date(year, MAR, 17)] = name
-            if self.observed and self._is_weekend(date(year, MAR, 17)):
+            if self.observed and self._is_weekend(year, MAR, 17):
                 self[date(year, MAR, 17) + rd(weekday=MO)] = (
                     name + " (Observed)"
                 )

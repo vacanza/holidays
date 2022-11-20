@@ -31,7 +31,7 @@ class Paraguay(HolidayBase):
 
     def _populate(self, year):
         # New Year's Day
-        if not self.observed and self._is_weekend(date(year, JAN, 1)):
+        if not self.observed and self._is_weekend(year, JAN, 1):
             pass
         else:
             self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
@@ -39,7 +39,7 @@ class Paraguay(HolidayBase):
         # Patriots day
         name = "Día de los Héroes de la Patria" "[Patriots Day]"
 
-        if not self.observed and self._is_weekend(date(year, MAR, 1)):
+        if not self.observed and self._is_weekend(year, MAR, 1):
             pass
         elif date(year, MAR, 1).weekday() >= WE.weekday:
             self[date(year, MAR, 1) + rd(weekday=MO(+1))] = name
@@ -61,21 +61,21 @@ class Paraguay(HolidayBase):
 
         # Labor Day
         name = "Día de los Trabajadores [Labour Day]"
-        if not self.observed and self._is_weekend(date(year, MAY, 1)):
+        if not self.observed and self._is_weekend(year, MAY, 1):
             pass
         else:
             self[date(year, MAY, 1)] = name
 
         # Independence Day
         name = "Día de la Independencia Nacional [Independence Day]"
-        if not self.observed and self._is_weekend(date(year, MAY, 15)):
+        if not self.observed and self._is_weekend(year, MAY, 15):
             pass
         else:
             self[date(year, MAY, 15)] = name
 
         # Peace in Chaco Day.
         name = "Día de la Paz del Chaco [Peace in Chaco Day]"
-        if not self.observed and self._is_weekend(date(year, JUN, 12)):
+        if not self.observed and self._is_weekend(year, JUN, 12):
             pass
         elif date(year, JUN, 12).weekday() >= WE.weekday:
             self[date(year, JUN, 12) + rd(weekday=MO(+1))] = name
@@ -84,21 +84,21 @@ class Paraguay(HolidayBase):
 
         # Asuncion Fundation's Day
         name = "Día de la Fundación de Asunción [Asuncion Fundation's Day]"
-        if not self.observed and self._is_weekend(date(year, AUG, 15)):
+        if not self.observed and self._is_weekend(year, AUG, 15):
             pass
         else:
             self[date(year, AUG, 15)] = name
 
         # Boqueron's Battle
         name = "Batalla de Boquerón [Boqueron's Battle]"
-        if not self.observed and self._is_weekend(date(year, SEP, 29)):
+        if not self.observed and self._is_weekend(year, SEP, 29):
             pass
         else:
             self[date(year, SEP, 29)] = name
 
         # Caacupe Virgin Day
         name = "Día de la Virgen de Caacupé [Caacupe Virgin Day]"
-        if not self.observed and self._is_weekend(date(year, DEC, 8)):
+        if not self.observed and self._is_weekend(year, DEC, 8):
             pass
         else:
             self[date(year, DEC, 8)] = name

@@ -34,7 +34,7 @@ class Argentina(HolidayBase):
 
     def _populate(self, year):
         # New Year's Day
-        if not self.observed and self._is_weekend(date(year, JAN, 1)):
+        if not self.observed and self._is_weekend(year, JAN, 1):
             pass
         else:
             self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
@@ -50,7 +50,7 @@ class Argentina(HolidayBase):
             "[Memory's National Day for the Truth and Justice]"
         )
 
-        if not self.observed and self._is_weekend(date(year, MAR, 24)):
+        if not self.observed and self._is_weekend(year, MAR, 24):
             pass
         else:
             self[date(year, MAR, 24)] = name
@@ -69,7 +69,7 @@ class Argentina(HolidayBase):
             self[easter(year)] = name_easter
 
         # Veterans Day and the Fallen in the Malvinas War
-        if not self.observed and self._is_weekend(date(year, APR, 2)):
+        if not self.observed and self._is_weekend(year, APR, 2):
             pass
         else:
             self[date(year, APR, 2)] = (
@@ -81,14 +81,14 @@ class Argentina(HolidayBase):
 
         # Labor Day
         name = "Día del Trabajo [Labour Day]"
-        if not self.observed and self._is_weekend(date(year, MAY, 1)):
+        if not self.observed and self._is_weekend(year, MAY, 1):
             pass
         else:
             self[date(year, MAY, 1)] = name
 
         # May Revolution Day
         name = "Día de la Revolucion de Mayo [May Revolution Day]"
-        if not self.observed and self._is_weekend(date(year, MAY, 25)):
+        if not self.observed and self._is_weekend(year, MAY, 25):
             pass
         else:
             self[date(year, MAY, 25)] = name
@@ -99,7 +99,7 @@ class Argentina(HolidayBase):
             "del General Martín Miguel de Güemes [Day Pass "
             "to the Immortality of General Martín Miguel de Güemes]"
         )
-        if not self.observed and self._is_weekend(date(year, JUN, 17)):
+        if not self.observed and self._is_weekend(year, JUN, 17):
             pass
         else:
             self[date(year, JUN, 17)] = name
@@ -110,14 +110,14 @@ class Argentina(HolidayBase):
             "del General D. Manuel Belgrano [Day Pass "
             "to the Immortality of General D. Manuel Belgrano]"
         )
-        if not self.observed and self._is_weekend(date(year, JUN, 20)):
+        if not self.observed and self._is_weekend(year, JUN, 20):
             pass
         else:
             self[date(year, JUN, 20)] = name
 
         # Independence Day
         name = "Día de la Independencia [Independence Day]"
-        if not self.observed and self._is_weekend(date(year, JUL, 9)):
+        if not self.observed and self._is_weekend(year, JUL, 9):
             pass
         else:
             self[date(year, JUL, 9)] = name
@@ -128,13 +128,13 @@ class Argentina(HolidayBase):
             "del General D. José de San Martin [Day Pass "
             "to the Immortality of General D. José de San Martin]"
         )
-        if not self.observed and self._is_weekend(date(year, AUG, 17)):
+        if not self.observed and self._is_weekend(year, AUG, 17):
             pass
         else:
             self[date(year, AUG, 17)] = name
 
         # Respect for Cultural Diversity Day or Columbus day
-        if not self.observed and self._is_weekend(date(year, OCT, 12)):
+        if not self.observed and self._is_weekend(year, OCT, 12):
             pass
         elif year < 2010:
             self[date(year, OCT, 12)] = "Día de la Raza [Columbus day]"
@@ -146,13 +146,13 @@ class Argentina(HolidayBase):
             )
         # National Sovereignty Day
         name = "Día Nacional de la Soberanía [National Sovereignty Day]"
-        if not self.observed and self._is_weekend(date(year, NOV, 20)):
+        if not self.observed and self._is_weekend(year, NOV, 20):
             pass
         elif year >= 2010:
             self[date(year, NOV, 20)] = name
 
         # Immaculate Conception
-        if not self.observed and self._is_weekend(date(year, DEC, 8)):
+        if not self.observed and self._is_weekend(year, DEC, 8):
             pass
         else:
             self[date(year, DEC, 8)] = (

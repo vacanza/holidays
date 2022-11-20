@@ -44,7 +44,7 @@ class UnitedArabEmirates(HolidayBase):
     #  raised that this holiday is missing. hijri-converter requires
     #  Python >= 3.6
     country = "AE"
-    weekend = (FR.weekday, SA.weekday)
+    weekend = {FR.weekday, SA.weekday}
 
     def __init__(self, **kwargs):
         HolidayBase.__init__(self, **kwargs)

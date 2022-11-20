@@ -117,7 +117,7 @@ class Hungary(HolidayBase):
         if (
             self.observed
             and 2010 <= year
-            and not self._is_weekend(date(year, DEC, 24))
+            and not self._is_weekend(year, DEC, 24)
         ):
             self[date(year, DEC, 24)] = "Szenteste"
 

@@ -170,7 +170,7 @@ class TestBasics(unittest.TestCase):
     def test_is_weekend(self):
         h = holidays.HolidayBase()
 
-        h.weekend = (MO.weekday, TU.weekday)
+        h.weekend = {MO.weekday, TU.weekday}
         for dt in (date(2022, 10, 3), date(2022, 10, 4)):
             self.assertTrue(h._is_weekend(dt))
 
@@ -178,7 +178,7 @@ class TestBasics(unittest.TestCase):
         for dt in (date(2022, 10, 3), date(2022, 10, 4)):
             self.assertFalse(h._is_weekend(dt))
 
-        h.weekend = (SA.weekday, SU.weekday)
+        h.weekend = {SA.weekday, SU.weekday}
         for dt in (date(2022, 10, 1), date(2022, 10, 2)):
             self.assertTrue(h._is_weekend(dt))
 

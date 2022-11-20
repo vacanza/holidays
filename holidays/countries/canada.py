@@ -160,7 +160,7 @@ class Canada(HolidayBase):
             if (
                 year >= 1879
                 and self.observed
-                and self._is_weekend(date(year, JUL, 1))
+                and self._is_weekend(year, JUL, 1)
             ):
                 self[date(year, JUL, 1) + rd(weekday=MO)] = (
                     name + " (Observed)"
@@ -174,7 +174,7 @@ class Canada(HolidayBase):
             if (
                 year >= 1879
                 and self.observed
-                and self._is_weekend(date(year, JUL, 1))
+                and self._is_weekend(year, JUL, 1)
             ):
                 self[date(year, JUL, 1) + rd(weekday=MO)] = (
                     name + " (Observed)"
@@ -250,14 +250,14 @@ class Canada(HolidayBase):
         if year >= 1867:
             name = "Christmas Day"
             self[date(year, DEC, 25)] = name
-            if self.observed and self._is_weekend(date(year, DEC, 25)):
+            if self.observed and self._is_weekend(year, DEC, 25):
                 self[date(year, DEC, 27)] = name + " (Observed)"
 
         # Boxing Day
         if year >= 1867:
             name = "Boxing Day"
             self[date(year, DEC, 26)] = name
-            if self.observed and self._is_weekend(date(year, DEC, 26)):
+            if self.observed and self._is_weekend(year, DEC, 26):
                 self[date(year, DEC, 28)] = name + " (Observed)"
 
 

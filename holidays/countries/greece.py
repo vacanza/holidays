@@ -55,7 +55,7 @@ class Greece(HolidayBase):
         name_observed = name + " (Observed)"
 
         self[date(year, MAY, 1)] = name
-        if self.observed and self._is_weekend(date(year, MAY, 1)):
+        if self.observed and self._is_weekend(year, MAY, 1):
             # https://en.wikipedia.org/wiki/Public_holidays_in_Greece
             labour_day_observed_date = date(year, MAY, 1) + rd(weekday=MO)
             # In 2016 and 2021, Labour Day coincided with other holidays

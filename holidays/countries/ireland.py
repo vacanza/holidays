@@ -52,7 +52,7 @@ class Ireland(HolidayBase):
         # St. Patrick's Day
         name = "St. Patrick's Day"
         self[date(year, MAR, 17)] = name
-        if self.observed and self._is_weekend(date(year, MAR, 17)):
+        if self.observed and self._is_weekend(year, MAR, 17):
             self[date(year, MAR, 17) + rd(weekday=MO)] = name + " (Observed)"
 
         # Easter Monday
@@ -92,7 +92,7 @@ class Ireland(HolidayBase):
         # Christmas Day
         name = "Christmas Day"
         self[date(year, DEC, 25)] = "Christmas Day"
-        if self.observed and self._is_weekend(date(year, DEC, 25)):
+        if self.observed and self._is_weekend(year, DEC, 25):
             self[date(year, DEC, 25) + rd(weekday=MO.weekday)] = (
                 name + " (Observed)"
             )
@@ -100,7 +100,7 @@ class Ireland(HolidayBase):
         # St. Stephen's Day
         name = "St. Stephen's Day"
         self[date(year, DEC, 26)] = name
-        if self.observed and self._is_weekend(date(year, DEC, 26)):
+        if self.observed and self._is_weekend(year, DEC, 26):
             self[date(year, DEC, 26) + rd(days=2)] = name + " (Observed)"
 
 

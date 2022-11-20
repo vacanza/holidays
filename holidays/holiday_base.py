@@ -171,7 +171,7 @@ class HolidayBase(Dict[date, str]):
     _deprecated_subdivisions: List[str] = []
     """Other subdivisions whose names are deprecated or aliases of the official
     ones."""
-    weekend: Tuple[int, int] = (SA.weekday, SU.weekday)
+    weekend: Set[int] = {SA.weekday, SU.weekday}
     """Country weekend days."""
 
     def __init__(
@@ -547,11 +547,16 @@ class HolidayBase(Dict[date, str]):
         """meta: public"""
         pass
 
-    def _is_weekend(self, dt):
+    def _is_weekend(self, *args):
         """
         Returns True if date's week day is a weekend day.
         Returns False otherwise.
         """
+        if len(args) == 1:
+            dt = args[0]
+        else:
+            dt = date(*args)
+
         return dt.weekday() in self.weekend
 
     def __reduce__(self) -> Union[str, Tuple[Any, ...]]:
