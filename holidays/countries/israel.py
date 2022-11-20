@@ -24,7 +24,7 @@ from convertdate.holidays import (
     yom_kippur,
 )
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import TU, WE
+from dateutil.relativedelta import WE, TH
 
 from holidays.holiday_base import HolidayBase
 
