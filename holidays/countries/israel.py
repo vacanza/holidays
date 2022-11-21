@@ -62,7 +62,7 @@ class Israel(HolidayBase):
         observed_delta = 0
         if self.observed:
             day_in_week = memorial_day_dt.weekday()
-            if day_in_week in {TU.weekday, WE.weekday}:
+            if day_in_week in {WE.weekday, TH.weekday}:
                 observed_delta = -(day_in_week - 1)
             elif 2004 <= year and day_in_week == 5:
                 observed_delta = 1
