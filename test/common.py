@@ -56,6 +56,7 @@ class TestCase(unittest.TestCase):
                 "Country alias object must be a subclass of the "
                 "main country class.",
             )
+            self.assertEqual(alias(), cls())
 
             class_name = alias.__name__
             if len(class_name) == 2:
