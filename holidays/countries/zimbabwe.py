@@ -35,9 +35,7 @@ class Zimbabwe(HolidayBase):
 
             if year > 2017:
                 # https://en.wikipedia.org/wiki/Robert_Gabriel_Mugabe_National_Youth_Day
-                self[
-                    date(year, FEB, 21)
-                ] = "Robert Gabriel Mugabe National Youth Day"
+                self[date(year, FEB, 21)] = "Robert Gabriel Mugabe National Youth Day"
 
             e = easter(year)
             good_friday = e - rd(days=2)

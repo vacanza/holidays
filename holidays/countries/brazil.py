@@ -15,20 +15,7 @@ from dateutil.easter import easter
 from dateutil.relativedelta import SU, TU
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import (
-    APR,
-    AUG,
-    DEC,
-    JAN,
-    JUL,
-    JUN,
-    MAR,
-    MAY,
-    NOV,
-    OCT,
-    SEP,
-    WEEKEND,
-)
+from holidays.constants import APR, AUG, DEC, JAN, JUL, JUN, MAR, MAY, NOV, OCT, SEP, WEEKEND
 from holidays.holiday_base import HolidayBase
 
 
@@ -104,9 +91,7 @@ class Brazil(HolidayBase):
             self[date(year, JAN, 23)] = "Dia do evangélico"
             self[date(year, JUN, 15)] = "Aniversário do Acre"
             self[date(year, SEP, 5)] = "Dia da Amazônia"
-            self[date(year, NOV, 17)] = (
-                "Assinatura do Tratado de" " Petrópolis"
-            )
+            self[date(year, NOV, 17)] = "Assinatura do Tratado de" " Petrópolis"
 
         if self.subdiv == "AL":
             self[date(year, JUN, 24)] = "São João"
@@ -121,9 +106,7 @@ class Brazil(HolidayBase):
             self[date(year, NOV, 20)] = "Consciência Negra"
 
         if self.subdiv == "AM":
-            self[date(year, SEP, 5)] = (
-                "Elevação do Amazonas" " à categoria de província"
-            )
+            self[date(year, SEP, 5)] = "Elevação do Amazonas" " à categoria de província"
             self[date(year, NOV, 20)] = "Consciência Negra"
             self[date(year, DEC, 8)] = "Dia de Nossa Senhora da Conceição"
 
@@ -145,9 +128,7 @@ class Brazil(HolidayBase):
             self[date(year, OCT, 28)] = "Dia do Servidor Público"
 
         if self.subdiv == "MA":
-            self[date(year, JUL, 28)] = (
-                "Adesão do Maranhão" " à independência do Brasil"
-            )
+            self[date(year, JUL, 28)] = "Adesão do Maranhão" " à independência do Brasil"
             self[date(year, DEC, 8)] = "Dia de Nossa Senhora da Conceição"
 
         if self.subdiv == "MT":
@@ -160,9 +141,7 @@ class Brazil(HolidayBase):
             self[date(year, APR, 21)] = "Data Magna de MG"
 
         if self.subdiv == "PA":
-            self[date(year, AUG, 15)] = (
-                "Adesão do Grão-Pará" " à independência do Brasil"
-            )
+            self[date(year, AUG, 15)] = "Adesão do Grão-Pará" " à independência do Brasil"
 
         if self.subdiv == "PB":
             self[date(year, AUG, 5)] = "Fundação do Estado"

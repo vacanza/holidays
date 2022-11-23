@@ -254,20 +254,14 @@ class HolidayBase(Dict[date, str]):
                 DeprecationWarning,
             )
         if not isinstance(self, HolidaySum):
-            if (
-                subdiv
-                and subdiv
-                not in self.subdivisions + self._deprecated_subdivisions
-            ):
+            if subdiv and subdiv not in self.subdivisions + self._deprecated_subdivisions:
                 if hasattr(self, "market"):
                     raise NotImplementedError(
-                        f"Market {self.market} does not have subdivision "
-                        f"'{subdiv}'"
+                        f"Market {self.market} does not have subdivision " f"'{subdiv}'"
                     )
                 else:
                     raise NotImplementedError(
-                        f"Country {self.country} does not have subdivision "
-                        f"'{subdiv}'"
+                        f"Country {self.country} does not have subdivision " f"'{subdiv}'"
                     )
         if isinstance(years, int):
             self.years = {years}
@@ -337,9 +331,7 @@ class HolidayBase(Dict[date, str]):
         if not isinstance(key, (date, datetime, str, float, int)):
             raise TypeError("Cannot convert type '%s' to date." % type(key))
 
-        return dict.__contains__(
-            cast("Mapping[Any, Any]", self), self.__keytransform__(key)
-        )
+        return dict.__contains__(cast("Mapping[Any, Any]", self), self.__keytransform__(key))
 
     def __getitem__(self, key: DateLike) -> Any:
         if isinstance(key, slice):
@@ -356,9 +348,7 @@ class HolidayBase(Dict[date, str]):
             elif isinstance(key.step, int):
                 step = key.step
             else:
-                raise TypeError(
-                    "Cannot convert type '%s' to int." % type(key.step)
-                )
+                raise TypeError("Cannot convert type '%s' to int." % type(key.step))
 
             if step == 0:
                 raise ValueError("Step value must not be zero.")
@@ -420,9 +410,7 @@ class HolidayBase(Dict[date, str]):
             else:
                 self[arg] = "Holiday"
 
-    def append(
-        self, *args: Union[Dict[DateLike, str], List[DateLike], DateLike]
-    ) -> None:
+    def append(self, *args: Union[Dict[DateLike, str], List[DateLike], DateLike]) -> None:
         """Alias for :meth:`update` to mimic list type."""
         return self.update(*args)
 
@@ -484,9 +472,7 @@ class HolidayBase(Dict[date, str]):
         """
         original_expand = self.expand
         self.expand = False
-        matches = [
-            key for key in self if name.lower() in str(self[key]).lower()
-        ]
+        matches = [key for key in self if name.lower() in str(self[key]).lower()]
         self.expand = original_expand
         return matches
 
@@ -551,9 +537,7 @@ class HolidayBase(Dict[date, str]):
     def __ne__(self, other: object) -> bool:
         return dict.__ne__(self, other) or self.__dict__ != other.__dict__
 
-    def __add__(
-        self, other: Union[int, "HolidayBase", "HolidaySum"]
-    ) -> "HolidayBase":
+    def __add__(self, other: Union[int, "HolidayBase", "HolidaySum"]) -> "HolidayBase":
         """Add another dictionary of public holidays creating a
         :class:`HolidaySum` object.
 
@@ -569,9 +553,7 @@ class HolidayBase(Dict[date, str]):
             # sum([h1, h2]) is equivalent to (0 + h1 + h2)
             return self
         elif not isinstance(other, (HolidayBase, HolidaySum)):
-            raise TypeError(
-                "Holiday objects can only be added with other Holiday objects"
-            )
+            raise TypeError("Holiday objects can only be added with other Holiday objects")
         return HolidaySum(self, other)
 
     def __radd__(self, other: Any) -> "HolidayBase":

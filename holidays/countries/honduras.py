@@ -32,17 +32,13 @@ class Honduras(HolidayBase):
         self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
 
         # Maundy Thursday
-        self[
-            easter(year) + rd(weekday=TH(-1))
-        ] = "Jueves Santo [Maundy Thursday]"
+        self[easter(year) + rd(weekday=TH(-1))] = "Jueves Santo [Maundy Thursday]"
 
         # Good Friday
         self[easter(year) + rd(weekday=FR(-1))] = "Viernes Santo [Good Friday]"
 
         # Holy Saturday
-        self[
-            easter(year) + rd(weekday=SA(-1))
-        ] = "Sábado de Gloria [Holy Saturday]"
+        self[easter(year) + rd(weekday=SA(-1))] = "Sábado de Gloria [Holy Saturday]"
 
         # Panamerican Day
         self[date(year, APR, 14)] = "Día de las Américas [Panamerican Day]"
@@ -51,9 +47,7 @@ class Honduras(HolidayBase):
         self[date(year, MAY, 1)] = "Día del Trabajo [Labor Day]"
 
         # Independence Day
-        self[
-            date(year, SEP, 15)
-        ] = "Día de la Independencia [Independence Day]"
+        self[date(year, SEP, 15)] = "Día de la Independencia [Independence Day]"
 
         # https://www.tsc.gob.hn/web/leyes/Decreto_78-2015_Traslado_de_Feriados_Octubre.pdf
         if year <= 2014:

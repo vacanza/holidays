@@ -24,17 +24,11 @@ class TestTaiwan(unittest.TestCase):
         self.assertEqual(0, len(holidays.TW(years=[1910])))
 
     def test1946(self):
-        self.assertNotIn(
-            date(1946, 2, 28), self.holidays
-        )  # NO Peace Memorial Day
+        self.assertNotIn(date(1946, 2, 28), self.holidays)  # NO Peace Memorial Day
 
     def test2021(self):
-        self.assertIn(
-            date(2021, 1, 1), self.holidays
-        )  # Founding of the Republic of China
-        self.assertIn(
-            date(2021, 2, 11), self.holidays
-        )  # Chinese New Year's Eve
+        self.assertIn(date(2021, 1, 1), self.holidays)  # Founding of the Republic of China
+        self.assertIn(date(2021, 2, 11), self.holidays)  # Chinese New Year's Eve
         self.assertIn(date(2021, 2, 12), self.holidays)  # Spring Festival
         self.assertIn(date(2021, 2, 13), self.holidays)  # Spring Festival
         self.assertIn(date(2021, 2, 14), self.holidays)  # Spring Festival

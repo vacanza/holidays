@@ -16,19 +16,7 @@ from dateutil.easter import easter
 from dateutil.relativedelta import FR
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import (
-    SUN,
-    JAN,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-)
+from holidays.constants import SUN, JAN, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -64,9 +52,7 @@ class Bolivia(HolidayBase):
 
         # Plurinational State Foundation Day.
         if year >= 2010:
-            self[
-                date(year, JAN, 22)
-            ] = "Nacimiento del Estado Plurinacional de Bolivia"
+            self[date(year, JAN, 22)] = "Nacimiento del Estado Plurinacional de Bolivia"
 
         # Good Friday.
         self[easter(year) + rd(weekday=FR(-1))] = "Viernes Santo"

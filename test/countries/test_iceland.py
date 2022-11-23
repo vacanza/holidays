@@ -37,9 +37,7 @@ class TestIceland(unittest.TestCase):
 
     def test_commerce_day(self):
         test_date = date(2019, 8, 5)
-        self.assertEqual(
-            self.holidays.get(test_date), "Frídagur verslunarmanna"
-        )
+        self.assertEqual(self.holidays.get(test_date), "Frídagur verslunarmanna")
         self.assertIn(test_date, self.holidays)
 
     def test_holy_friday(self):

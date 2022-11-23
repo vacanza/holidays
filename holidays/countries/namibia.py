@@ -60,9 +60,7 @@ class Namibia(HolidayBase):
 
             if year > 2004:
                 # http://www.lac.org.na/laws/2004/3348.pdf
-                self[
-                    date(year, SEP, 10)
-                ] = "Day of the Namibian Women and Intr. Human Rights Day"
+                self[date(year, SEP, 10)] = "Day of the Namibian Women and Intr. Human Rights Day"
 
             if year <= 2004:
                 self[date(year, SEP, 10)] = "International Human Rights Day"

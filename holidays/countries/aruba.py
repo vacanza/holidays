@@ -37,22 +37,16 @@ class Aruba(HolidayBase):
         self[date(year, JAN, 25)] = "Dia Di Betico [Betico Day]"
 
         # Carnaval Monday
-        self[
-            easter(year) + rd(days=-48)
-        ] = "Dialuna di Carnaval [Carnaval Monday]"
+        self[easter(year) + rd(days=-48)] = "Dialuna di Carnaval [Carnaval Monday]"
 
         # Dia di Himno y Bandera
-        self[
-            date(year, MAR, 18)
-        ] = "Dia di Himno y Bandera [National Anthem & Flag Day]"
+        self[date(year, MAR, 18)] = "Dia di Himno y Bandera [National Anthem & Flag Day]"
 
         # Good Friday
         self[easter(year) + rd(weekday=FR(-1))] = "Bierna Santo [Good Friday]"
 
         # Easter Monday
-        self[
-            easter(year) + rd(days=1)
-        ] = "Di Dos Dia di Pasco di Resureccion [Easter Monday]"
+        self[easter(year) + rd(days=1)] = "Di Dos Dia di Pasco di Resureccion [Easter Monday]"
 
         # King's Day
         if year >= 2014:
@@ -86,9 +80,7 @@ class Aruba(HolidayBase):
         self[date(year, DEC, 25)] = "Pasco di Nacemento [Christmas]"
 
         # Second Christmas
-        self[
-            date(year, DEC, 26)
-        ] = "Di Dos Dia di Pasco di Nacemento [Second Christmas]"
+        self[date(year, DEC, 26)] = "Di Dos Dia di Pasco di Nacemento [Second Christmas]"
 
 
 class AW(Aruba):

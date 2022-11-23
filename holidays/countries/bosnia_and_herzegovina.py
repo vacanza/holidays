@@ -57,20 +57,14 @@ class BosniaAndHerzegovina(HolidayBase):
             self[date(year, MAR, 1)] = "Dan nezavisnosti"
 
             # Catholic Good Friday.
-            self[
-                easter(year) + rd(weekday=FR(-1))
-            ] = "Veliki Petak (Katolički)"
+            self[easter(year) + rd(weekday=FR(-1))] = "Veliki Petak (Katolički)"
 
             # Catholic Easter.
             self[easter(year)] = "Uskrs (Katolički)"
-            self[
-                easter(year) + rd(weekday=MO(+1))
-            ] = "Uskrsni ponedjeljak (Katolički)"
+            self[easter(year) + rd(weekday=MO(+1))] = "Uskrsni ponedjeljak (Katolički)"
 
             # Corpus Cristi.
-            self[
-                easter(year) + rd(days=+60)
-            ] = "Tijelovo (Tijelo i Krv Kristova)"
+            self[easter(year) + rd(days=+60)] = "Tijelovo (Tijelo i Krv Kristova)"
 
             # Eid al-Fitr.
             # Date of observance is announced yearly, this is an estimate.
@@ -119,15 +113,11 @@ class BosniaAndHerzegovina(HolidayBase):
             self[date(year, JAN, 14)] = "Pravoslavna Nova Godina"
 
             # Orthodox Good Friday.
-            self[
-                easter(year, method=2) + rd(weekday=FR(-1))
-            ] = "Veliki Petak (Pravoslavni)"
+            self[easter(year, method=2) + rd(weekday=FR(-1))] = "Veliki Petak (Pravoslavni)"
 
             # Orthodox Easter.
             self[easter(year, method=2)] = "Vaskrs (Pravoslavni)"
-            self[
-                easter(year, method=2) + rd(weekday=MO(+1))
-            ] = "Uskrsni ponedjeljak (Pravoslavni)"
+            self[easter(year, method=2) + rd(weekday=MO(+1))] = "Uskrsni ponedjeljak (Pravoslavni)"
 
             # Victory Day.
             self[date(year, MAY, 9)] = "Dan pobjede"
@@ -137,8 +127,7 @@ class BosniaAndHerzegovina(HolidayBase):
 
             # Dayton Agreement Day.
             self[date(year, NOV, 21)] = (
-                "Dan uspostave Opšteg okvirnog sporazuma za mir u "
-                "Bosni i Hercegovini"
+                "Dan uspostave Opšteg okvirnog sporazuma za mir u " "Bosni i Hercegovini"
             )
 
 

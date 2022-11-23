@@ -40,9 +40,7 @@ class Cyprus(HolidayBase):
         self[eday - rd(days=48)] = "Καθαρά Δευτέρα [Clean Monday]"
 
         # Greek Independence Day
-        self[
-            date(year, MAR, 25)
-        ] = "Εικοστή Πέμπτη Μαρτίου [Greek Independence Day]"
+        self[date(year, MAR, 25)] = "Εικοστή Πέμπτη Μαρτίου [Greek Independence Day]"
 
         # Cyprus National Day
         self[date(year, APR, 1)] = "1η Απριλίου [Cyprus National Day]"
@@ -60,17 +58,13 @@ class Cyprus(HolidayBase):
         self[date(year, MAY, 1)] = "Εργατική Πρωτομαγιά [Labour day]"
 
         # Monday of the Holy Spirit
-        self[
-            eday + rd(days=50)
-        ] = "Δευτέρα του Αγίου Πνεύματος [Monday of the Holy Spirit]"
+        self[eday + rd(days=50)] = "Δευτέρα του Αγίου Πνεύματος [Monday of the Holy Spirit]"
 
         # Assumption of Mary
         self[date(year, AUG, 15)] = "Κοίμηση της Θεοτόκου [Assumption of Mary]"
 
         # Cyprus Independence Day
-        self[
-            date(year, OCT, 1)
-        ] = "Ημέρα Ανεξαρτησίας της Κύπρου [Cyprus Independence Day]"
+        self[date(year, OCT, 1)] = "Ημέρα Ανεξαρτησίας της Κύπρου [Cyprus Independence Day]"
 
         # Ochi Day
         self[date(year, OCT, 28)] = "Ημέρα του Όχι [Ochi Day]"
@@ -82,9 +76,7 @@ class Cyprus(HolidayBase):
         self[date(year, DEC, 25)] = "Χριστούγεννα [Christmas]"
 
         # Day after Christmas
-        self[
-            date(year, DEC, 26)
-        ] = "Δεύτερη μέρα Χριστουγέννων [Day after Christmas]"
+        self[date(year, DEC, 26)] = "Δεύτερη μέρα Χριστουγέννων [Day after Christmas]"
 
 
 class CY(Cyprus):

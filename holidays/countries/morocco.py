@@ -70,8 +70,7 @@ class Morocco(HolidayBase):
         # Independence Manifesto Day post 1944
         if year > 1944:
             self[date(year, JAN, 11)] = (
-                "Commémoration de la présentation "
-                "du manifeste de l'indépendance"
+                "Commémoration de la présentation " "du manifeste de l'indépendance"
             )
 
         # Labor day
@@ -89,9 +88,7 @@ class Morocco(HolidayBase):
         self[date(year, AUG, 14)] = "Journée de Oued Ed-Dahab"
 
         # Revolution Day
-        self[date(year, AUG, 20)] = (
-            "Commémoration de la révolution du " "Roi et du peuple"
-        )
+        self[date(year, AUG, 20)] = "Commémoration de la révolution du " "Roi et du peuple"
 
         # Youth day
         if year > 2000:

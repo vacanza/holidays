@@ -14,20 +14,7 @@ from datetime import date
 from dateutil.easter import EASTER_ORTHODOX, easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import (
-    JAN,
-    APR,
-    MAR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-    WEEKEND,
-)
+from holidays.constants import JAN, APR, MAR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC, WEEKEND
 from holidays.holiday_base import HolidayBase
 
 
@@ -59,9 +46,7 @@ class Ukraine(HolidayBase):
             )
         ):
             next_workday = holiday + rd(days=1)
-            while next_workday.weekday() in WEEKEND or self.get(
-                next_workday, None
-            ):
+            while next_workday.weekday() in WEEKEND or self.get(next_workday, None):
                 next_workday += rd(days=1)
             self[next_workday] = "Вихідний за " + self[holiday]
 
@@ -79,9 +64,7 @@ class Ukraine(HolidayBase):
 
         # Christmas Day (Julian calendar)
         if year >= 1991:
-            self[
-                date(year, JAN, 7)
-            ] = "Різдво Христове (за юліанським календарем)"
+            self[date(year, JAN, 7)] = "Різдво Христове (за юліанським календарем)"
 
         # Women's Day
         if year >= 1966:
@@ -109,10 +92,7 @@ class Ukraine(HolidayBase):
         name = "День перемоги"
         dt = date(year, MAY, 9)
         if year >= 2016:
-            self[dt] = (
-                "День перемоги над нацизмом у Другій світовій війні "
-                "(День перемоги)"
-            )
+            self[dt] = "День перемоги над нацизмом у Другій світовій війні " "(День перемоги)"
         elif 1965 <= year <= 2015:
             self[dt] = name
         elif 1945 <= year <= 1946:
@@ -149,9 +129,7 @@ class Ukraine(HolidayBase):
 
         # Christmas Day (Gregorian calendar)
         if year >= 2017:
-            self[
-                date(year, DEC, 25)
-            ] = "Різдво Христове (за григоріанським календарем)"
+            self[date(year, DEC, 25)] = "Різдво Христове (за григоріанським календарем)"
 
         for dt in sorted(list(self.keys())):
             if dt.year == year:

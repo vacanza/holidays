@@ -42,9 +42,7 @@ class Uruguay(HolidayBase):
         self[date(year, JUL, 18)] = "Jura de la constitución"
 
         # Declaratoria de la Independencia.
-        self[
-            date(year, AUG, 25)
-        ] = "Día de la Independencia [Independence Day]"
+        self[date(year, AUG, 25)] = "Día de la Independencia [Independence Day]"
 
         # Christmas.
         self[date(year, DEC, 25)] = "Navidad [Christmas]"
@@ -95,8 +93,7 @@ class Uruguay(HolidayBase):
                 # "Día del Respeto a la Diversidad Cultural
                 # [Respect for Cultural Diversity Day].
                 date(year, OCT, 12),
-                "Día del Respeto a la Diversidad Cultural "
-                "[Respect for Cultural Diversity Day]",
+                "Día del Respeto a la Diversidad Cultural " "[Respect for Cultural Diversity Day]",
             ),
         )
 

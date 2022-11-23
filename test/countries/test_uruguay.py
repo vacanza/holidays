@@ -63,9 +63,7 @@ class TestUY(unittest.TestCase):
             self.assertIn(dt, self.holidays)
             self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
-            self.assertEqual(
-                self.holidays[dt], "Día de la Independencia [Independence Day]"
-            )
+            self.assertEqual(self.holidays[dt], "Día de la Independencia [Independence Day]")
 
     def test_christmas(self):
         for year in range(1900, 2100):
@@ -117,9 +115,7 @@ class TestUY(unittest.TestCase):
             date(2021, 2, 16),
         ):
             self.assertIn(dt, self.holidays)
-            self.assertEqual(
-                self.holidays[dt], "Día de Carnaval [Carnival's Day]"
-            )
+            self.assertEqual(self.holidays[dt], "Día de Carnaval [Carnival's Day]")
 
     def test_holy_week_day(self):
         for dt in (
@@ -176,6 +172,5 @@ class TestUY(unittest.TestCase):
             self.assertIn(dt, self.holidays)
             self.assertEqual(
                 self.holidays[dt],
-                "Día del Respeto a la Diversidad Cultural "
-                "[Respect for Cultural Diversity Day]",
+                "Día del Respeto a la Diversidad Cultural " "[Respect for Cultural Diversity Day]",
             )

@@ -36,9 +36,7 @@ class TestBA(unittest.TestCase):
 
         for dt in (date(2017, 1, 3), date(2023, 1, 3)):
             self.assertIn(dt, self.holidays_observed)
-            self.assertEqual(
-                self.holidays_observed[dt], "Treći dan Nove Godine"
-            )
+            self.assertEqual(self.holidays_observed[dt], "Treći dan Nove Godine")
 
     def test_orthodox_christmas_eve(self):
         rs_holidays = holidays.BA(subdiv="RS")
@@ -112,9 +110,7 @@ class TestBA(unittest.TestCase):
 
         for dt in (date(2022, 4, 18), date(2021, 4, 5)):
             self.assertIn(dt, fbih_holidays)
-            self.assertEqual(
-                fbih_holidays[dt], "Uskrsni ponedjeljak (Katolički)"
-            )
+            self.assertEqual(fbih_holidays[dt], "Uskrsni ponedjeljak (Katolički)")
 
     def test_orthodox_good_friday(self):
         rs_holidays = holidays.BA(subdiv="RS")
@@ -138,9 +134,7 @@ class TestBA(unittest.TestCase):
 
         for dt in (date(2022, 4, 25), date(2020, 4, 20)):
             self.assertIn(dt, rs_holidays)
-            self.assertEqual(
-                rs_holidays[dt], "Uskrsni ponedjeljak (Pravoslavni)"
-            )
+            self.assertEqual(rs_holidays[dt], "Uskrsni ponedjeljak (Pravoslavni)")
 
     def test_labor_day(self):
         for dt in (date(2022, 5, 4), date(2021, 5, 4)):
@@ -166,9 +160,7 @@ class TestBA(unittest.TestCase):
 
         for dt in (date(2022, 6, 16), date(2021, 6, 3)):
             self.assertIn(dt, fbih_holidays)
-            self.assertEqual(
-                fbih_holidays[dt], "Tijelovo (Tijelo i Krv Kristova)"
-            )
+            self.assertEqual(fbih_holidays[dt], "Tijelovo (Tijelo i Krv Kristova)")
 
     def test_victory_day(self):
         rs_holidays = holidays.BA(subdiv="RS")
@@ -260,8 +252,7 @@ class TestBA(unittest.TestCase):
             self.assertIn(dt, rs_holidays)
             self.assertEqual(
                 rs_holidays[dt],
-                "Dan uspostave Opšteg okvirnog sporazuma za mir u "
-                "Bosni i Hercegovini",
+                "Dan uspostave Opšteg okvirnog sporazuma za mir u " "Bosni i Hercegovini",
             )
 
     def test_statehood_day(self):

@@ -26,8 +26,7 @@ class TestSpain(unittest.TestCase):
         self.holidays = holidays.ES(observed=False)
         self.holidays_observed = holidays.ES()
         self.prov_holidays = {
-            prov: holidays.ES(observed=False, subdiv=prov)
-            for prov in holidays.ES.subdivisions
+            prov: holidays.ES(observed=False, subdiv=prov) for prov in holidays.ES.subdivisions
         }
 
     def test_fixed_holidays(self):
@@ -64,9 +63,7 @@ class TestSpain(unittest.TestCase):
 
     def test_variable_days_in_2016(self):
         for prov, prov_holidays in self.prov_holidays.items():
-            self.assertEqual(
-                date(2016, 3, 24) in prov_holidays, prov not in ["CT", "VC"]
-            )
+            self.assertEqual(date(2016, 3, 24) in prov_holidays, prov not in ["CT", "VC"])
             self.assertIn(date(2016, 3, 25), prov_holidays)
             self.assertEqual(
                 date(2016, 3, 28) in prov_holidays,
@@ -109,9 +106,7 @@ class TestSpain(unittest.TestCase):
         }
         for prov, prov_holidays in self.prov_holidays.items():
             for year in range(2010, 2021):
-                self.assertEqual(
-                    date(year, 12, 26) in prov_holidays, prov in ["CT", "IB"]
-                )
+                self.assertEqual(date(year, 12, 26) in prov_holidays, prov in ["CT", "IB"])
                 if year < 2015:
                     self.assertEqual(
                         date(year, 3, 19) in prov_holidays,
@@ -141,9 +136,7 @@ class TestSpain(unittest.TestCase):
                         prov in ["ML", "MC", "PV", "VC"],
                     )
                 elif year == 2017:
-                    self.assertEqual(
-                        date(year, 3, 19) in prov_holidays, prov in ["PV"]
-                    )
+                    self.assertEqual(date(year, 3, 19) in prov_holidays, prov in ["PV"])
                 elif 2018 <= year <= 2019:
                     self.assertEqual(
                         date(year, 3, 19) in prov_holidays,
@@ -177,9 +170,7 @@ class TestSpain(unittest.TestCase):
                     )
 
                 if year == 2022:
-                    year_province_days.update(
-                        {(7, 25): ["GA", "MD", "NC", "PV"]}
-                    )
+                    year_province_days.update({(7, 25): ["GA", "MD", "NC", "PV"]})
 
                 for fest_day, fest_prov in year_province_days.items():
                     self.assertEqual(
@@ -255,8 +246,7 @@ class TestSpain(unittest.TestCase):
         }
 
         observed_prov_holidays = {
-            prov: holidays.ES(observed=True, subdiv=prov)
-            for prov in holidays.ES.subdivisions
+            prov: holidays.ES(observed=True, subdiv=prov) for prov in holidays.ES.subdivisions
         }
 
         for fest_date, fest_provs in province_days.items():

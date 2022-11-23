@@ -14,19 +14,7 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import (
-    JAN,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-)
+from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -120,9 +108,7 @@ class Portugal(HolidayBase):
         if self.subdiv == "04":
             self[date(year, AUG, 22)] = "Dia de Nossa Senhora das Graças"
         if self.subdiv == "05":
-            self[
-                e + rd(days=2) + rd(weeks=2)
-            ] = "Dia de Nossa Senhora de Mércoles"
+            self[e + rd(days=2) + rd(weeks=2)] = "Dia de Nossa Senhora de Mércoles"
         if self.subdiv == "06":
             self[date(year, JUL, 4)] = "Dia de Santa Isabel"
         if self.subdiv == "07":

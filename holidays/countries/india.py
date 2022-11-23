@@ -106,9 +106,7 @@ class India(HolidayBase):
 
         if self.subdiv == "OR":
             self[date(year, APR, 1)] = "Odisha Day (Utkala Dibasa)"
-            self[date(year, APR, 15)] = (
-                "Maha Vishuva Sankranti / Pana" " Sankranti"
-            )
+            self[date(year, APR, 15)] = "Maha Vishuva Sankranti / Pana" " Sankranti"
 
         if self.subdiv in (
             "OR",
@@ -170,9 +168,7 @@ class India(HolidayBase):
         # Warnings kept in place so that users are aware
 
         if year < 2010 or year > 2030:
-            warning_msg = (
-                "Diwali and Holi holidays available from 2010 to 2030 only"
-            )
+            warning_msg = "Diwali and Holi holidays available from 2010 to 2030 only"
             warnings.warn(warning_msg, Warning)
 
         name1 = "Diwali"

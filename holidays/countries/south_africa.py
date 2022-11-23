@@ -15,20 +15,7 @@ from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, FR
 
-from holidays.constants import (
-    SUN,
-    JAN,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-)
+from holidays.constants import SUN, JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -118,12 +105,7 @@ class SouthAfrica(HolidayBase):
         # As of 1995/1/1, whenever a public holiday falls on a Sunday,
         # it rolls over to the following Monday
         for k, v in list(self.items()):
-            if (
-                self.observed
-                and year > 1994
-                and k.weekday() == SUN
-                and k.year == year
-            ):
+            if self.observed and year > 1994 and k.weekday() == SUN and k.year == year:
                 if not self.get(k + rd(days=1)):
                     self[k + rd(days=1)] = v + " (Observed)"
 

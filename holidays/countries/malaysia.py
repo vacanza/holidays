@@ -17,21 +17,7 @@ from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, FR, SA, SU
 from dateutil.rrule import MONTHLY, rrule
 
-from holidays.constants import (
-    SUN,
-    JAN,
-    FEB,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-)
+from holidays.constants import SUN, JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _ChineseLuniSolar, _islamic_to_gre
 
@@ -118,9 +104,7 @@ class Malaysia(HolidayBase):
         # Birthday of the Prophet Muhammad (s.a.w.).
         # a.k.a. Hari Keputeraan Nabi Muhammad (Sabah Act)
         for hol_date in self.my_islamic_to_gre(year, 3, 12):
-            self[
-                hol_date
-            ] = "Maulidur Rasul (Birthday of the Prophet Muhammad)"
+            self[hol_date] = "Maulidur Rasul (Birthday of the Prophet Muhammad)"
 
         # Hari Kebangsaan or National Day.
         self[date(year, AUG, 31)] = "National Day"
@@ -225,9 +209,7 @@ class Malaysia(HolidayBase):
             for date_obs in _islamic_to_gre(year, 10, 1):
                 hol_date = date_obs
                 self[hol_date] = "Hari Raya Puasa* (*estimated)"
-                self[hol_date + rd(days=+1)] = (
-                    "Second day of Hari Raya Puasa*" " (*estimated)"
-                )
+                self[hol_date + rd(days=+1)] = "Second day of Hari Raya Puasa*" " (*estimated)"
 
         # Hari Raya Haji and Arafat Day.
         # Date of observance is announced yearly.
@@ -274,9 +256,7 @@ class Malaysia(HolidayBase):
                     self[hol_date - rd(days=1)] = "Arafat Day* (*estimated)"
                 if self.subdiv in ("KDH", "KTN", "PLS", "TRG"):
                     # Second day
-                    self[
-                        hol_date + rd(days=1)
-                    ] = "Hari Raya Haji Holiday* (*estimated)"
+                    self[hol_date + rd(days=1)] = "Hari Raya Haji Holiday* (*estimated)"
 
         # Deepavali.
         # aka Diwali;
@@ -378,9 +358,7 @@ class Malaysia(HolidayBase):
             2018: (MAY, 9),
         }
         if year in dates_obs:
-            self[
-                date(year, *dates_obs[year])
-            ] = "Malaysia General Election Holiday"
+            self[date(year, *dates_obs[year])] = "Malaysia General Election Holiday"
 
         # Awal Muharram.
         for hol_date in self.my_islamic_to_gre(year, 1, 1):
@@ -530,22 +508,14 @@ class Malaysia(HolidayBase):
 
         elif self.subdiv == "KTN":
             self[date(year, NOV, 11)] = "Birthday of the Sultan of Kelantan"
-            self[
-                date(year, NOV, 12)
-            ] = "Birthday of the Sultan of Kelantan Holiday"
+            self[date(year, NOV, 12)] = "Birthday of the Sultan of Kelantan Holiday"
 
         elif self.subdiv == "MLK":
-            self[
-                date(year, APR, 15)
-            ] = "Declaration of Malacca as a Historical City in Melaka"
-            self[
-                date(year, AUG, 24)
-            ] = "Birthday of the Governor of the State of Melaka"
+            self[date(year, APR, 15)] = "Declaration of Malacca as a Historical City in Melaka"
+            self[date(year, AUG, 24)] = "Birthday of the Governor of the State of Melaka"
 
         elif self.subdiv == "NSN":
-            self[
-                date(year, JAN, 14)
-            ] = "Birthday of the Sultan of Negeri Sembilan"
+            self[date(year, JAN, 14)] = "Birthday of the Sultan of Negeri Sembilan"
 
         elif self.subdiv == "PHG":
             self[date(year, MAY, 22)] = "Hari Hol of Pahang"
@@ -628,9 +598,7 @@ class Malaysia(HolidayBase):
             2025,
             2027,
         ):
-            hol_dates = [
-                hol_date + timedelta(days=1) for hol_date in hol_dates
-            ]
+            hol_dates = [hol_date + timedelta(days=1) for hol_date in hol_dates]
         return hol_dates
 
 

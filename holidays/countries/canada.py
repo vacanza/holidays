@@ -114,12 +114,7 @@ class Canada(HolidayBase):
             # http://heritageyukon.ca/programs/heritage-day
             # https://en.wikipedia.org/wiki/Family_Day_(Canada)#Yukon_Heritage_Day
             # Friday before the last Sunday in February
-            dt = (
-                date(year, MAR, 1)
-                + rd(days=-1)
-                + rd(weekday=SU(-1))
-                + rd(days=-2)
-            )
+            dt = date(year, MAR, 1) + rd(days=-1) + rd(weekday=SU(-1)) + rd(days=-2)
             self[dt] = "Heritage Day"
 
         # St. Patrick's Day
@@ -218,15 +213,11 @@ class Canada(HolidayBase):
         # TODO: the territories holiday status (NT, NU, YT) is still tentative
         queen_funeral_observers = ("BC", "NB", "NL", "NS", "PE", "YT")
         if self.subdiv in queen_funeral_observers and year == 2022:
-            self[
-                date(2022, SEP, 19)
-            ] = "Funeral of Her Majesty the Queen Elizabeth II"
+            self[date(2022, SEP, 19)] = "Funeral of Her Majesty the Queen Elizabeth II"
 
         # National Day for Truth and Reconciliation
         if self.subdiv in ("MB", "NS") and year >= 2021:
-            self[
-                date(year, SEP, 30)
-            ] = "National Day for Truth and Reconciliation"
+            self[date(year, SEP, 30)] = "National Day for Truth and Reconciliation"
 
         # Thanksgiving
         if self.subdiv not in ("NB", "NS", "PE", "NL") and year >= 1931:

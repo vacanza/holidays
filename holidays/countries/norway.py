@@ -56,9 +56,9 @@ class Norway(HolidayBase):
             year_last_day = datetime(year, DEC, 31)
 
             # Get all Sundays including first/last day of the year cases.
-            sundays = rrule.rrule(
-                rrule.WEEKLY, byweekday=SU, dtstart=year_first_day
-            ).between(year_first_day, year_last_day, inc=True)
+            sundays = rrule.rrule(rrule.WEEKLY, byweekday=SU, dtstart=year_first_day).between(
+                year_first_day, year_last_day, inc=True
+            )
             for sunday in sundays:
                 self[sunday.date()] = "Søndag"
 

@@ -51,19 +51,13 @@ class Bulgaria(HolidayBase):
         self[date(year, JAN, 1)] = "Нова година"
 
         # Liberation Day
-        self[
-            date(year, MAR, 3)
-        ] = "Ден на Освобождението на България от османско иго"
+        self[date(year, MAR, 3)] = "Ден на Освобождението на България от османско иго"
 
         # International Workers' Day
-        self[
-            date(year, MAY, 1)
-        ] = "Ден на труда и на международната работническа солидарност"
+        self[date(year, MAY, 1)] = "Ден на труда и на международната работническа солидарност"
 
         # Saint George's Day
-        self[
-            date(year, MAY, 6)
-        ] = "Гергьовден, Ден на храбростта и Българската армия"
+        self[date(year, MAY, 6)] = "Гергьовден, Ден на храбростта и Българската армия"
 
         # Bulgarian Education and Culture and Slavonic Literature Day
         self[date(year, MAY, 24)] = (

@@ -71,18 +71,14 @@ class Colombia(HolidayBase):
         self[date(year, MAY, 1)] = "Día del Trabajo [Labour Day]"
 
         # Independence Day
-        self[
-            date(year, JUL, 20)
-        ] = "Día de la Independencia [Independence Day]"
+        self[date(year, JUL, 20)] = "Día de la Independencia [Independence Day]"
 
         # Battle of Boyaca
         self[date(year, AUG, 7)] = "Batalla de Boyacá [Battle of Boyacá]"
 
         if year > 1950:
             # Immaculate Conception
-            self[
-                date(year, DEC, 8)
-            ] = "La Inmaculada Concepción [Immaculate Conception]"
+            self[date(year, DEC, 8)] = "La Inmaculada Concepción [Immaculate Conception]"
 
         # Christmas
         self[date(year, DEC, 25)] = "Navidad [Christmas]"
@@ -149,9 +145,7 @@ class Colombia(HolidayBase):
     def _add_fixed_easter_based_holidays(self, _easter):
         if _easter.year > 1950:
             # Maundy Thursday
-            self[
-                _easter + rd(weekday=TH(-1))
-            ] = "Jueves Santo [Maundy Thursday]"
+            self[_easter + rd(weekday=TH(-1))] = "Jueves Santo [Maundy Thursday]"
 
             # Good Friday
             self[_easter + rd(weekday=FR(-1))] = "Viernes Santo [Good Friday]"

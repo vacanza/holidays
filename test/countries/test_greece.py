@@ -38,8 +38,7 @@ class TestGreece(unittest.TestCase):
                 (date(y, 12, 25), "Χριστούγεννα [Christmas]"),
                 (
                     date(y, 12, 26),
-                    "Επόμενη ημέρα των Χριστουγέννων "
-                    + "[Day after Christmas]",
+                    "Επόμενη ημέρα των Χριστουγέννων " + "[Day after Christmas]",
                 ),
             )
 
@@ -75,9 +74,7 @@ class TestGreece(unittest.TestCase):
 
         for d in checkdates:
             self.assertIn(d, self.gr_holidays)
-            self.assertIn(
-                "Δευτέρα του Πάσχα [Easter Monday]", self.gr_holidays[d]
-            )
+            self.assertIn("Δευτέρα του Πάσχα [Easter Monday]", self.gr_holidays[d])
 
     def test_gr_monday_of_the_holy_spirit(self):
         checkdates = (

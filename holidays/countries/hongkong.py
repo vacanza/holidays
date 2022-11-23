@@ -15,22 +15,7 @@ from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, FR, SA
 
-from holidays.constants import (
-    MON,
-    TUE,
-    WED,
-    THU,
-    FRI,
-    SAT,
-    SUN,
-    JAN,
-    APR,
-    MAY,
-    JUL,
-    SEP,
-    OCT,
-    DEC,
-)
+from holidays.constants import MON, TUE, WED, THU, FRI, SAT, SUN, JAN, APR, MAY, JUL, SEP, OCT, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _ChineseLuniSolar
 
@@ -57,9 +42,7 @@ class HongKong(HolidayBase):
         first_date = date(year, JAN, 1)
         if self.observed:
             if first_date.weekday() == SUN:
-                self[
-                    first_date + rd(days=+1)
-                ] = day_following + self.first_lower(name)
+                self[first_date + rd(days=+1)] = day_following + self.first_lower(name)
                 first_date = first_date + rd(days=+1)
             else:
                 self[first_date] = name
@@ -104,9 +87,7 @@ class HongKong(HolidayBase):
 
         # Ching Ming Festival
         name = "Ching Ming Festival"
-        if self.is_leap_year(year) or (
-            self.is_leap_year(year - 1) and year > 2008
-        ):
+        if self.is_leap_year(year) or (self.is_leap_year(year - 1) and year > 2008):
             ching_ming_date = date(year, APR, 4)
         else:
             ching_ming_date = date(year, APR, 5)
@@ -124,20 +105,14 @@ class HongKong(HolidayBase):
         easter_monday = "Easter Monday"
         if self.observed:
             self[easter(year) + rd(weekday=FR(-1))] = good_friday
-            self[easter(year) + rd(weekday=SA(-1))] = (
-                day_following + good_friday
-            )
+            self[easter(year) + rd(weekday=SA(-1))] = day_following + good_friday
             if ching_ming_date == easter(year) + rd(weekday=MO):
-                self[easter(year) + rd(weekday=MO) + rd(days=+1)] = (
-                    day_following + easter_monday
-                )
+                self[easter(year) + rd(weekday=MO) + rd(days=+1)] = day_following + easter_monday
             else:
                 self[easter(year) + rd(weekday=MO)] = easter_monday
         else:
             self[easter(year) + rd(weekday=FR(-1))] = good_friday
-            self[easter(year) + rd(weekday=SA(-1))] = (
-                day_following + good_friday
-            )
+            self[easter(year) + rd(weekday=SA(-1))] = day_following + good_friday
             self[easter(year) + rd(weekday=MO)] = easter_monday
 
         # Birthday of the Buddha
@@ -213,9 +188,7 @@ class HongKong(HolidayBase):
                     )
                     mid_autumn_date = mid_autumn_date + rd(days=+2)
             else:
-                self[mid_autumn_date + rd(days=+1)] = (
-                    day_following + "the " + name
-                )
+                self[mid_autumn_date + rd(days=+1)] = day_following + "the " + name
                 mid_autumn_date = mid_autumn_date + rd(days=+1)
         else:
             self[mid_autumn_date] = name
@@ -224,10 +197,7 @@ class HongKong(HolidayBase):
         name = "National Day"
         national_date = date(year, OCT, 1)
         if self.observed:
-            if (
-                national_date.weekday() == SUN
-                or national_date == mid_autumn_date
-            ):
+            if national_date.weekday() == SUN or national_date == mid_autumn_date:
                 self[national_date + rd(days=+1)] = day_following + name
             else:
                 self[national_date] = name

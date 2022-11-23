@@ -46,9 +46,7 @@ class Greece(HolidayBase):
         self[eday + rd(days=1)] = "Δευτέρα του Πάσχα [Easter Monday]"
 
         # Monday of the Holy Spirit
-        self[
-            eday + rd(days=50)
-        ] = "Δευτέρα του Αγίου Πνεύματος [Monday of the Holy Spirit]"
+        self[eday + rd(days=50)] = "Δευτέρα του Αγίου Πνεύματος [Monday of the Holy Spirit]"
 
         # Labour Day
         name = "Εργατική Πρωτομαγιά [Labour day]"
@@ -74,9 +72,7 @@ class Greece(HolidayBase):
         self[date(year, DEC, 25)] = "Χριστούγεννα [Christmas]"
 
         # Day after Christmas
-        self[
-            date(year, DEC, 26)
-        ] = "Επόμενη ημέρα των Χριστουγέννων [Day after Christmas]"
+        self[date(year, DEC, 26)] = "Επόμενη ημέρα των Χριστουγέννων [Day after Christmas]"
 
 
 class GR(Greece):

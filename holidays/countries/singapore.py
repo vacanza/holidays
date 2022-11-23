@@ -16,21 +16,7 @@ from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, FR, SA
 
-from holidays.constants import (
-    SUN,
-    JAN,
-    FEB,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    SEP,
-    AUG,
-    OCT,
-    NOV,
-    DEC,
-)
+from holidays.constants import SUN, JAN, FEB, MAR, APR, MAY, JUN, JUL, SEP, AUG, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _ChineseLuniSolar, _islamic_to_gre
 
@@ -141,9 +127,7 @@ class Singapore(HolidayBase):
                 # Second day of Hari Raya Puasa (up to and including 1968)
                 if year <= 1968:
                     hol_date += rd(days=+1)
-                    self[hol_date] = (
-                        "Second day of Hari Raya Puasa*" " (*estimated)"
-                    )
+                    self[hol_date] = "Second day of Hari Raya Puasa*" " (*estimated)"
 
         # Hari Raya Haji
         # aka Eid al-Adha

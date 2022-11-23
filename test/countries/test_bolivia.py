@@ -31,9 +31,7 @@ class TestBO(unittest.TestCase):
 
         for dt in (date(2017, 1, 2), date(2023, 1, 2)):
             self.assertIn(dt, self.holidays_observed)
-            self.assertEqual(
-                self.holidays_observed[dt], "Año Nuevo (Observed)"
-            )
+            self.assertEqual(self.holidays_observed[dt], "Año Nuevo (Observed)")
 
     def test_plurinational_state_foundation_day(self):
         for dt in (date(2009, 1, 22), date(2017, 1, 23)):
@@ -84,9 +82,7 @@ class TestBO(unittest.TestCase):
 
         for dt in (date(2020, 2, 25), date(2023, 2, 21)):
             self.assertIn(dt, self.holidays)
-            self.assertEqual(
-                self.holidays[dt], "Feriado por Carnaval (Observed)"
-            )
+            self.assertEqual(self.holidays[dt], "Feriado por Carnaval (Observed)")
 
     def test_good_friday(self):
         for dt in (date(2022, 4, 20), date(2021, 4, 1)):
@@ -106,9 +102,7 @@ class TestBO(unittest.TestCase):
 
         for dt in (date(2022, 5, 2), date(2016, 5, 2)):
             self.assertIn(dt, self.holidays_observed)
-            self.assertEqual(
-                self.holidays_observed[dt], "Dia del trabajo (Observed)"
-            )
+            self.assertEqual(self.holidays_observed[dt], "Dia del trabajo (Observed)")
 
     def test_chuquisaca_day(self):
         self.assertNotIn(date(2020, 5, 25), self.holidays)
@@ -119,9 +113,7 @@ class TestBO(unittest.TestCase):
 
         for dt in (date(2020, 5, 25), date(2021, 5, 25)):
             self.assertIn(dt, h_holidays)
-            self.assertEqual(
-                h_holidays[dt], "Día del departamento de Chuquisaca"
-            )
+            self.assertEqual(h_holidays[dt], "Día del departamento de Chuquisaca")
 
     def test_corpus_christi(self):
         for dt in (date(2020, 6, 10), date(2020, 6, 12)):
@@ -141,9 +133,7 @@ class TestBO(unittest.TestCase):
 
         for dt in (date(2020, 6, 22), date(2015, 6, 22)):
             self.assertIn(dt, self.holidays_observed)
-            self.assertEqual(
-                self.holidays_observed[dt], "Año Nuevo Andino (Observed)"
-            )
+            self.assertEqual(self.holidays_observed[dt], "Año Nuevo Andino (Observed)")
 
     def test_la_paz_day(self):
         self.assertNotIn(date(2020, 7, 16), self.holidays)
@@ -174,9 +164,7 @@ class TestBO(unittest.TestCase):
 
         for dt in (date(2023, 8, 7), date(2017, 8, 7)):
             self.assertIn(dt, self.holidays_observed)
-            self.assertEqual(
-                self.holidays_observed[dt], "Dia de la Patria (Observed)"
-            )
+            self.assertEqual(self.holidays_observed[dt], "Dia de la Patria (Observed)")
 
     def test_cochabamba_day(self):
         self.assertNotIn(date(2020, 9, 14), self.holidays)
@@ -187,9 +175,7 @@ class TestBO(unittest.TestCase):
 
         for dt in (date(2020, 9, 14), date(2021, 9, 14)):
             self.assertIn(dt, c_holidays)
-            self.assertEqual(
-                c_holidays[dt], "Día del departamento de Cochabamba"
-            )
+            self.assertEqual(c_holidays[dt], "Día del departamento de Cochabamba")
 
     def test_santa_cruz_day(self):
         self.assertNotIn(date(2020, 9, 24), self.holidays)
@@ -200,9 +186,7 @@ class TestBO(unittest.TestCase):
 
         for dt in (date(2020, 9, 24), date(2021, 9, 24)):
             self.assertIn(dt, s_holidays)
-            self.assertEqual(
-                s_holidays[dt], "Día del departamento de Santa Cruz"
-            )
+            self.assertEqual(s_holidays[dt], "Día del departamento de Santa Cruz")
 
     def test_pando_day(self):
         self.assertNotIn(date(2020, 10, 11), self.holidays)
@@ -225,9 +209,7 @@ class TestBO(unittest.TestCase):
 
         for dt in (date(2025, 11, 3), date(2014, 11, 3)):
             self.assertIn(dt, self.holidays_observed)
-            self.assertEqual(
-                self.holidays_observed[dt], "Todos Santos (Observed)"
-            )
+            self.assertEqual(self.holidays_observed[dt], "Todos Santos (Observed)")
 
     def test_potosi_day(self):
         self.assertNotIn(date(2020, 11, 10), self.holidays)

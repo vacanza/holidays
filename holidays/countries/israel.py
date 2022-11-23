@@ -52,9 +52,7 @@ class Israel(HolidayBase):
         # Memorial Day
         name = "Memorial Day"
         memorial_day_dt = date(
-            *gregorian.from_jd(
-                hebrew.to_jd_gregorianyear(year, hebrew.IYYAR, 3)
-            )
+            *gregorian.from_jd(hebrew.to_jd_gregorianyear(year, hebrew.IYYAR, 3))
         )
         self[memorial_day_dt + rd(days=1)] = name
 
@@ -67,18 +65,14 @@ class Israel(HolidayBase):
                 observed_delta = 1
 
             if observed_delta != 0:
-                self[memorial_day_dt + rd(days=observed_delta + 1)] = (
-                    name + " (Observed)"
-                )
+                self[memorial_day_dt + rd(days=observed_delta + 1)] = name + " (Observed)"
 
         # Independence Day
         name = "Independence Day"
         self[memorial_day_dt + rd(days=2)] = name
 
         if self.observed and observed_delta != 0:
-            self[memorial_day_dt + rd(days=observed_delta + 2)] = (
-                name + " (Observed)"
-            )
+            self[memorial_day_dt + rd(days=observed_delta + 2)] = name + " (Observed)"
 
         # Lag Baomer
         name = "Lag B'Omer"

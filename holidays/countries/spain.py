@@ -15,21 +15,7 @@ from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import TH, FR, MO
 
-from holidays.constants import (
-    SUN,
-    JAN,
-    FEB,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-)
+from holidays.constants import SUN, JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
 
@@ -95,18 +81,12 @@ class Spain(HolidayBase):
             and self.subdiv in ["CM", "MD", "ML", "MC", "NC", "PV", "VC"]
         ):
             self._is_observed(date(year, MAR, 19), "San José")
-        elif (
-            year == 2016
-            and self.subdiv
-            and self.subdiv in ["ML", "MC", "PV", "VC"]
-        ):
+        elif year == 2016 and self.subdiv and self.subdiv in ["ML", "MC", "PV", "VC"]:
             self._is_observed(date(year, MAR, 19), "San José")
         elif year == 2017 and self.subdiv in ["PV"]:
             self._is_observed(date(year, MAR, 19), "San José")
         elif (
-            2018 <= year <= 2019
-            and self.subdiv
-            and self.subdiv in ["GA", "MC", "NC", "PV", "VC"]
+            2018 <= year <= 2019 and self.subdiv and self.subdiv in ["GA", "MC", "NC", "PV", "VC"]
         ):
             self._is_observed(date(year, MAR, 19), "San José")
         elif (
@@ -122,11 +102,7 @@ class Spain(HolidayBase):
         elif year == 2022 and self.subdiv and self.subdiv not in ["CT"]:
             self[easter(year) + rd(weeks=-1, weekday=TH)] = "Jueves Santo"
         self[easter(year) + rd(weeks=-1, weekday=FR)] = "Viernes Santo"
-        if (
-            2022 == year
-            and self.subdiv
-            and self.subdiv in ["CT", "IB", "PV", "NC", "RI", "VC"]
-        ):
+        if 2022 == year and self.subdiv and self.subdiv in ["CT", "IB", "PV", "NC", "RI", "VC"]:
             self[easter(year) + rd(weekday=MO)] = "Lunes de Pascua"
         elif 2022 > year and self.subdiv in [
             "CT",
@@ -154,9 +130,7 @@ class Spain(HolidayBase):
         self._is_observed(date(year, AUG, 15), "Asunción de la Virgen")
         self._is_observed(date(year, OCT, 12), "Día de la Hispanidad")
         self._is_observed(date(year, NOV, 1), "Todos los Santos")
-        self._is_observed(
-            date(year, DEC, 6), "Día de la Constitución Española"
-        )
+        self._is_observed(date(year, DEC, 6), "Día de la Constitución Española")
         self._is_observed(date(year, DEC, 8), "La Inmaculada Concepción")
         if year != 2022:
             self._is_observed(date(year, DEC, 25), "Navidad")
@@ -180,9 +154,7 @@ class Spain(HolidayBase):
             self._is_observed(date(year, SEP, 15), "Día de la Bien Aparecida")
         elif self.subdiv == "CE":
             self._is_observed(date(year, AUG, 5), "Nuestra Señora de África")
-            self._is_observed(
-                date(year, SEP, 2), "Día de la Ciudad Autónoma de Ceuta"
-            )
+            self._is_observed(date(year, SEP, 2), "Día de la Ciudad Autónoma de Ceuta")
             if year >= 2022:
                 self._is_observed(_islamic_to_gre(year, 12, 10)[0], "Eid Adha")
         elif self.subdiv == "CM":
@@ -195,26 +167,20 @@ class Spain(HolidayBase):
             self._is_observed(date(year, APR, 23), "Día de Castilla y Leon")
         elif self.subdiv == "CT":
             if year >= 2022:
-                self._is_observed(
-                    date(year, JUN, 6), "Día de la Pascua Granada"
-                )
+                self._is_observed(date(year, JUN, 6), "Día de la Pascua Granada")
             self._is_observed(date(year, SEP, 11), "Día Nacional de Catalunya")
         elif self.subdiv == "EX":
             self._is_observed(date(year, SEP, 8), "Día de Extremadura")
         elif self.subdiv == "GA":
             if year >= 2022:
-                self._is_observed(
-                    date(year, MAY, 17), "Día de las letras Gallegas"
-                )
+                self._is_observed(date(year, MAY, 17), "Día de las letras Gallegas")
             self._is_observed(date(year, JUL, 25), "Día Nacional de Galicia")
         elif self.subdiv == "IB":
             self._is_observed(date(year, MAR, 1), "Día de las Islas Baleares")
         elif self.subdiv == "MD":
             self._is_observed(date(year, MAY, 2), "Día de Comunidad de Madrid")
             if year >= 2022:
-                self._is_observed(
-                    date(year, JUL, 25), "Día de Santiago Apóstol"
-                )
+                self._is_observed(date(year, JUL, 25), "Día de Santiago Apóstol")
         elif self.subdiv == "MC":
             self._is_observed(date(year, JUN, 9), "Día de la Región de Murcia")
         elif self.subdiv == "ML":
@@ -230,23 +196,15 @@ class Spain(HolidayBase):
                     "Aid Al-Adha",
                 )
             else:
-                self._is_observed(
-                    _islamic_to_gre(year, 10, 1)[0], "Aid Al-Fitr"
-                )
-                self._is_observed(
-                    _islamic_to_gre(year, 12, 10)[0], "Aid Al-Adha"
-                )
+                self._is_observed(_islamic_to_gre(year, 10, 1)[0], "Aid Al-Fitr")
+                self._is_observed(_islamic_to_gre(year, 12, 10)[0], "Aid Al-Adha")
         elif self.subdiv == "NC":
             if year >= 2022:
-                self._is_observed(
-                    date(year, JUL, 25), "Día de Santiago Apóstol"
-                )
+                self._is_observed(date(year, JUL, 25), "Día de Santiago Apóstol")
             self._is_observed(date(year, SEP, 27), "Día de Navarra")
         elif self.subdiv == "PV":
             if year >= 2022:
-                self._is_observed(
-                    date(year, JUL, 25), "Día de Santiago Apóstol"
-                )
+                self._is_observed(date(year, JUL, 25), "Día de Santiago Apóstol")
                 self._is_observed(date(year, SEP, 6), "Día de Elcano")
             if 2011 <= year <= 2013:
                 self._is_observed(date(year, OCT, 25), "Día del País Vasco")
@@ -254,9 +212,7 @@ class Spain(HolidayBase):
             self._is_observed(date(year, JUN, 9), "Día de La Rioja")
         elif self.subdiv == "VC":
             if year <= 2021:
-                self._is_observed(
-                    date(year, OCT, 9), "Día de la Comunidad Valenciana"
-                )
+                self._is_observed(date(year, OCT, 9), "Día de la Comunidad Valenciana")
 
 
 class ES(Spain):

@@ -77,9 +77,7 @@ class DominicanRepublic(HolidayBase):
         self[restoration_day] = "Día de la Restauración [Restoration Day]"
 
         # Our Lady of Mercedes Day
-        self[
-            date(year, SEP, 24)
-        ] = "Día de las Mercedes [Our Lady of Mercedes Day]"
+        self[date(year, SEP, 24)] = "Día de las Mercedes [Our Lady of Mercedes Day]"
 
         # Constitution Day
         constitution_day = self.__change_day_by_law(date(year, NOV, 6))

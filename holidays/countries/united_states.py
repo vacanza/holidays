@@ -132,11 +132,7 @@ class UnitedStates(HolidayBase):
         name = "Lee Jackson Day"
         if self.subdiv == "VA":
             if 2000 <= year <= 2020:
-                dt = (
-                    date(year, JAN, 1)
-                    + rd(weekday=MO(+3))
-                    + rd(weekday=FR(-1))
-                )
+                dt = date(year, JAN, 1) + rd(weekday=MO(+3)) + rd(weekday=FR(-1))
                 self[dt] = name
             elif 1983 <= year <= 2020:
                 self[date(year, JAN, 1) + rd(weekday=MO(+3))] = name
@@ -160,13 +156,8 @@ class UnitedStates(HolidayBase):
             name = "Martin Luther King Jr. Day"
             if self.subdiv == "AL":
                 name = "Robert E. Lee/Martin Luther King Birthday"
-            elif (self.subdiv == "MS") or (
-                (self.subdiv == "AR") and (year <= 2017)
-            ):
-                name = (
-                    "Dr. Martin Luther King Jr. "
-                    "and Robert E. Lee's Birthdays"
-                )
+            elif (self.subdiv == "MS") or ((self.subdiv == "AR") and (year <= 2017)):
+                name = "Dr. Martin Luther King Jr. " "and Robert E. Lee's Birthdays"
             elif self.subdiv in ("AZ", "NH"):
                 name = "Dr. Martin Luther King Jr./Civil Rights Day"
             elif self.subdiv == "GA" and year < 2012:
@@ -177,9 +168,9 @@ class UnitedStates(HolidayBase):
 
         # Lincoln's Birthday
         name = "Lincoln's Birthday"
-        if (
-            self.subdiv in ("CT", "IL", "IA", "NJ", "NY") and year >= 1971
-        ) or (self.subdiv == "CA" and 1971 <= year <= 2009):
+        if (self.subdiv in ("CT", "IL", "IA", "NJ", "NY") and year >= 1971) or (
+            self.subdiv == "CA" and 1971 <= year <= 2009
+        ):
             self[date(year, FEB, 12)] = name
             if self.observed and date(year, FEB, 12).weekday() == SAT:
                 self[date(year, FEB, 11)] = name + " (Observed)"
@@ -241,9 +232,7 @@ class UnitedStates(HolidayBase):
             name = "Evacuation Day"
             self[date(year, MAR, 17)] = name
             if date(year, MAR, 17).weekday() in WEEKEND:
-                self[date(year, MAR, 17) + rd(weekday=MO)] = (
-                    name + " (Observed)"
-                )
+                self[date(year, MAR, 17) + rd(weekday=MO)] = name + " (Observed)"
 
         # Emancipation Day
         if self.subdiv == "PR":
@@ -343,9 +332,7 @@ class UnitedStates(HolidayBase):
             self[date(year, APR, 22)] = "Arbor Day"
 
         # Primary Election Day
-        if self.subdiv == "IN" and (
-            (year >= 2006 and year % 2 == 0) or year >= 2015
-        ):
+        if self.subdiv == "IN" and ((year >= 2006 and year % 2 == 0) or year >= 2015):
             dt = date(year, MAY, 1) + rd(weekday=MO)
             self[dt + rd(days=+1)] = "Primary Election Day"
 
@@ -496,8 +483,7 @@ class UnitedStates(HolidayBase):
 
         # Election Day
         if (
-            self.subdiv
-            in ("DE", "HI", "IL", "IN", "LA", "MT", "NH", "NJ", "NY", "WV")
+            self.subdiv in ("DE", "HI", "IL", "IN", "LA", "MT", "NH", "NJ", "NY", "WV")
             and year >= 2008
             and year % 2 == 0
         ) or (self.subdiv in ("IN", "NY") and year >= 2015):
@@ -539,10 +525,7 @@ class UnitedStates(HolidayBase):
         # Family Day
         # New Mexico Presidents' Day
         if (
-            (
-                self.subdiv in ("CA", "DE", "FL", "NH", "NC", "OK", "TX", "WV")
-                and year >= 1975
-            )
+            (self.subdiv in ("CA", "DE", "FL", "NH", "NC", "OK", "TX", "WV") and year >= 1975)
             or (self.subdiv == "IN" and year >= 2010)
             or (self.subdiv == "MD" and year >= 2008)
             or self.subdiv in ("NM", "NV", "PA")

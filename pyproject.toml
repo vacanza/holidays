@@ -1,5 +1,5 @@
 [tool.black]
-line-length = 79
+line-length = 99
 target-version = ['py37', 'py38', 'py39', 'py310', 'py311']
 exclude = '''
 /(
@@ -49,6 +49,6 @@ exclude_lines = [
 ]
 
 [tool.isort]
-line_length = 79
+line_length = 99
 no_inline_sort = true
 profile = "black"

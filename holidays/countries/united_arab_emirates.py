@@ -13,19 +13,7 @@ from datetime import date
 
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import (
-    FRI,
-    SAT,
-    JAN,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    NOV,
-    DEC,
-)
+from holidays.constants import FRI, SAT, JAN, APR, MAY, JUN, JUL, AUG, SEP, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
 
@@ -136,9 +124,7 @@ class UnitedArabEmirates(HolidayBase):
                 for date_obs in _islamic_to_gre(yr, 12, 9):
                     hol_date = date_obs
                     _add_holiday(hol_date, f"{hajj}* (*estimated)")
-                    _add_holiday(
-                        hol_date + rd(days=1), f"{adha}* (*estimated)"
-                    )
+                    _add_holiday(hol_date + rd(days=1), f"{adha}* (*estimated)")
                     _add_holiday(
                         hol_date + rd(days=2),
                         f"{adha}* Holiday* (*estimated)",

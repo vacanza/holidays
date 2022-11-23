@@ -169,12 +169,8 @@ def country_holidays(
     See documentation for examples.
     """
     try:
-        country_classes = inspect.getmembers(
-            holidays.countries, inspect.isclass
-        )
-        country_class = next(
-            obj for name, obj in country_classes if name == country
-        )
+        country_classes = inspect.getmembers(holidays.countries, inspect.isclass)
+        country_class = next(obj for name, obj in country_classes if name == country)
         country_holiday: HolidayBase = country_class(
             years=years,
             subdiv=subdiv,
@@ -230,12 +226,8 @@ def financial_holidays(
     examples.
     """
     try:
-        financial_classes = inspect.getmembers(
-            holidays.financial, inspect.isclass
-        )
-        financial_class = next(
-            obj for name, obj in financial_classes if name == market
-        )
+        financial_classes = inspect.getmembers(holidays.financial, inspect.isclass)
+        financial_class = next(obj for name, obj in financial_classes if name == market)
         financial_holiday: HolidayBase = financial_class(
             years=years,
             subdiv=subdiv,
@@ -266,9 +258,7 @@ def CountryHoliday(
         "CountryHoliday is deprecated, use country_holidays instead.",
         DeprecationWarning,
     )
-    return country_holidays(
-        country, subdiv, years, expand, observed, prov, state
-    )
+    return country_holidays(country, subdiv, years, expand, observed, prov, state)
 
 
 def list_supported_countries() -> Dict[str, List[str]]:
@@ -281,9 +271,7 @@ def list_supported_countries() -> Dict[str, List[str]]:
     """
     return {
         cls.country: cls.subdivisions
-        for name, cls in inspect.getmembers(
-            holidays.countries, inspect.isclass
-        )
+        for name, cls in inspect.getmembers(holidays.countries, inspect.isclass)
         if len(name) == 2 and issubclass(cls, HolidayBase)
     }
 
@@ -335,13 +323,8 @@ def _islamic_to_gre(Gyear: int, Hmonth: int, Hday: int) -> List[date]:
         return gre_dates
 
     Hyear = convert.Gregorian(Gyear, 1, 1).to_hijri().datetuple()[0]
-    gres = [
-        convert.Hijri(y, Hmonth, Hday).to_gregorian()
-        for y in range(Hyear - 1, Hyear + 2)
-    ]
-    gre_dates.extend(
-        (date(*gre.datetuple()) for gre in gres if gre.year == Gyear)
-    )
+    gres = [convert.Hijri(y, Hmonth, Hday).to_gregorian() for y in range(Hyear - 1, Hyear + 2)]
+    gre_dates.extend((date(*gre.datetuple()) for gre in gres if gre.year == Gyear))
 
     return gre_dates
 
@@ -593,9 +576,7 @@ class _ChineseLuniSolar:
             The number of the leap month if one exists in the year, otherwise
             15.
         """
-        return (
-            self.G_LUNAR_MONTH_DAYS[lunar_year - self.START_YEAR] >> 16
-        ) & 0x0F
+        return (self.G_LUNAR_MONTH_DAYS[lunar_year - self.START_YEAR] >> 16) & 0x0F
 
     def _lunar_month_days(self, lunar_year: int, lunar_month: int) -> int:
         """
@@ -610,13 +591,7 @@ class _ChineseLuniSolar:
         :return:
             The number of days in the lunar month.
         """
-        return 29 + (
-            (
-                self.G_LUNAR_MONTH_DAYS[lunar_year - self.START_YEAR]
-                >> lunar_month
-            )
-            & 0x01
-        )
+        return 29 + ((self.G_LUNAR_MONTH_DAYS[lunar_year - self.START_YEAR] >> lunar_month) & 0x01)
 
     def _lunar_year_days(self, year: int) -> int:
         """
@@ -682,9 +657,7 @@ class _ChineseLuniSolar:
         #     span_days += self._lunar_month_days(year, m)
         return self.SOLAR_START_DATE + timedelta(span_days)
 
-    def lunar_to_gre(
-        self, year: int, month: int, day: int, leap: bool = True
-    ) -> date:
+    def lunar_to_gre(self, year: int, month: int, day: int, leap: bool = True) -> date:
         """
         Calculate the Gregorian date of a Chinese lunar day and month in a
         given Gregorian year.

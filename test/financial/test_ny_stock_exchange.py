@@ -15,20 +15,7 @@ from datetime import date, timedelta
 from dateutil.relativedelta import relativedelta, WE
 
 import holidays
-from holidays.constants import (
-    APR,
-    AUG,
-    DEC,
-    FEB,
-    JAN,
-    JUL,
-    JUN,
-    MAR,
-    MAY,
-    NOV,
-    OCT,
-    SEP,
-)
+from holidays.constants import APR, AUG, DEC, FEB, JAN, JUL, JUN, MAR, MAY, NOV, OCT, SEP
 
 
 class TestNewYorkStockExchange(unittest.TestCase):
@@ -416,39 +403,25 @@ class TestNewYorkStockExchange(unittest.TestCase):
             date(2001, SEP, 12),  # Closed for Sept 11, 2001 Attacks
             date(2001, SEP, 13),  # Closed for Sept 11, 2001 Attacks
             date(2001, SEP, 14),  # Closed for Sept 11, 2001 Attacks
-            date(
-                2004, JUN, 11
-            ),  # Day of Mourning for President Ronald W. Reagan
+            date(2004, JUN, 11),  # Day of Mourning for President Ronald W. Reagan
             date(2007, JAN, 2),  # Day of Mourning for President Gerald R. Ford
         ]
 
         def _make_special_holiday_list(begin, end, days=None, weekends=False):
             _list = []
-            for d in (
-                begin + timedelta(days=n)
-                for n in range((end - begin).days + 1)
-            ):
+            for d in (begin + timedelta(days=n) for n in range((end - begin).days + 1)):
                 if not weekends and d.isoweekday() in [6, 7]:
                     continue
                 if days is None or d.isoweekday() in days:
                     _list.append(d)
             return _list
 
-        wwi_holidays = _make_special_holiday_list(
-            date(1914, JUL, 31), date(1914, NOV, 27)
-        )
-        oneoff_bank_holidays = _make_special_holiday_list(
-            date(1933, MAR, 6), date(1933, MAR, 14)
-        )
+        wwi_holidays = _make_special_holiday_list(date(1914, JUL, 31), date(1914, NOV, 27))
+        oneoff_bank_holidays = _make_special_holiday_list(date(1933, MAR, 6), date(1933, MAR, 14))
         paper_crisis_holidays = _make_special_holiday_list(
             date(1968, JUN, 12), date(1968, DEC, 31), days=[WE]
         )
-        for dt in (
-            special_holidays
-            + wwi_holidays
-            + oneoff_bank_holidays
-            + paper_crisis_holidays
-        ):
+        for dt in special_holidays + wwi_holidays + oneoff_bank_holidays + paper_crisis_holidays:
             self.assertIn(dt, self.holidays)
 
         # double check that we catch beginning/ending of holiday periods -

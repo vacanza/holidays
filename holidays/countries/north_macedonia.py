@@ -39,9 +39,7 @@ class NorthMacedonia(HolidayBase):
         self[date(year, AUG, 2)] = "Republic Day"
         self[date(year, SEP, 8)] = "Independence Day"
         self[date(year, OCT, 11)] = "Day of Macedonian Uprising in 1941"
-        self[
-            date(year, OCT, 23)
-        ] = "Day of the Macedonian Revolutionary Struggle"
+        self[date(year, OCT, 23)] = "Day of the Macedonian Revolutionary Struggle"
         self[date(year, DEC, 8)] = "Saint Clement of Ohrid Day"
         for date_obs in _islamic_to_gre(year, 10, 1):
             self[date_obs] = "Eid al-Fitr"

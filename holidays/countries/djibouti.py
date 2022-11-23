@@ -91,9 +91,7 @@ class Djibouti(HolidayBase):
             for date_obs in _islamic_to_gre(yr, 10, 1):
                 hol_date = date_obs
                 _add_holiday(hol_date, "Eid al-Fitr")
-                _add_holiday(
-                    hol_date + rd(days=1), "Eid al-Fitr deuxième jour"
-                )
+                _add_holiday(hol_date + rd(days=1), "Eid al-Fitr deuxième jour")
 
         # Arafat & Eid al-Adha - Scarfice Festive
         # date of observance is announced yearly
@@ -102,9 +100,7 @@ class Djibouti(HolidayBase):
                 hol_date = date_obs
                 _add_holiday(hol_date, "Arafat")
                 _add_holiday(hol_date + rd(days=1), "Eid al-Adha")
-                _add_holiday(
-                    hol_date + rd(days=2), "Eid al-Adha deuxième jour"
-                )
+                _add_holiday(hol_date + rd(days=2), "Eid al-Adha deuxième jour")
 
         # Islamic New Year - (hijari_year, 1, 1)
         for date_obs in _islamic_to_gre(year, 1, 1):

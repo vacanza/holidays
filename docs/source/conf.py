@@ -245,15 +245,11 @@ class PatchedHTMLTranslator(HTMLTranslator):
             # ---------------------------------------------------------
         if "refuri" in node:
             atts["href"] = node["refuri"] or "#"
-            if self.settings.cloak_email_addresses and atts["href"].startswith(
-                "mailto:"
-            ):
+            if self.settings.cloak_email_addresses and atts["href"].startswith("mailto:"):
                 atts["href"] = self.cloak_mailto(atts["href"])
                 self.in_mailto = True
         else:
-            assert (
-                "refid" in node
-            ), 'References must have "refuri" or "refid" attribute.'
+            assert "refid" in node, 'References must have "refuri" or "refid" attribute.'
             atts["href"] = "#" + node["refid"]
         if not isinstance(node.parent, nodes.TextElement):
             assert len(node) == 1 and isinstance(node[0], nodes.image)
@@ -266,8 +262,7 @@ class PatchedHTMLTranslator(HTMLTranslator):
 
         if node.get("secnumber"):
             self.body.append(
-                ("%s" + self.secnumber_suffix)
-                % ".".join(map(str, node["secnumber"]))
+                ("%s" + self.secnumber_suffix) % ".".join(map(str, node["secnumber"]))
             )
 
 

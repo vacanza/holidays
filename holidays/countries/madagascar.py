@@ -43,21 +43,13 @@ class Madagascar(HolidayBase):
         self[easter(year) + rd(days=49)] = "Pentekosta"
         self[easter(year) + rd(days=50)] = "Alatsinain'ny pentekosta"
         self[date(year, 6, 1) + rd(day=1, weekday=SU(3))] = "Fetin'ny ray"
-        self[
-            easter(year) + rd(days=39)
-        ] = "Fiakaran'ny Jesosy kristy tany an-danitra"
+        self[easter(year) + rd(days=39)] = "Fiakaran'ny Jesosy kristy tany an-danitra"
         self[date(year, 8, 15)] = "Fiakaran'ny Masina Maria tany an-danitra"
 
-        if easter(year) + rd(days=49) == date(year, 5, 1) + rd(
-            day=31, weekday=SU(-1)
-        ):
-            self[
-                date(year, 5, 1) + rd(day=31, weekday=SU(-1)) + rd(days=7)
-            ] = "Fetin'ny Reny"
+        if easter(year) + rd(days=49) == date(year, 5, 1) + rd(day=31, weekday=SU(-1)):
+            self[date(year, 5, 1) + rd(day=31, weekday=SU(-1)) + rd(days=7)] = "Fetin'ny Reny"
         else:
-            self[
-                date(year, 5, 1) + rd(day=31, weekday=SU(-1))
-            ] = "Fetin'ny Reny"
+            self[date(year, 5, 1) + rd(day=31, weekday=SU(-1))] = "Fetin'ny Reny"
 
 
 class MG(Madagascar):

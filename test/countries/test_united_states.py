@@ -60,9 +60,7 @@ class TestUS(unittest.TestCase):
         va_holidays = holidays.US(subdiv="VA")
         self.assertNotIn(date(1888, 1, 19), va_holidays)
         self.assertNotIn(date(1983, 1, 19), va_holidays)
-        self.assertNotIn(
-            "Lee Jackson Day", va_holidays.get_list(date(2000, 1, 17))
-        )
+        self.assertNotIn("Lee Jackson Day", va_holidays.get_list(date(2000, 1, 17)))
         for dt in [
             date(1889, 1, 19),
             date(1982, 1, 19),
@@ -121,12 +119,8 @@ class TestUS(unittest.TestCase):
             self.assertIn(dt, self.holidays)
             self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
-        self.assertNotIn(
-            "Martin Luther King Jr. Day", holidays.US(years=[1985]).values()
-        )
-        self.assertIn(
-            "Martin Luther King Jr. Day", holidays.US(years=[1986]).values()
-        )
+        self.assertNotIn("Martin Luther King Jr. Day", holidays.US(years=[1985]).values())
+        self.assertIn("Martin Luther King Jr. Day", holidays.US(years=[1986]).values())
         self.assertEqual(
             holidays.US(subdiv="AL").get("2015-01-19"),
             "Robert E. Lee/Martin Luther King Birthday",
@@ -304,12 +298,8 @@ class TestUS(unittest.TestCase):
             holidays.US(subdiv="AR").get("2015-02-16"),
             ("George Washington's Birthday " "and Daisy Gatson Bates Day"),
         )
-        self.assertEqual(
-            holidays.US(subdiv="PR").get("2015-02-16"), "Presidents' Day"
-        )
-        self.assertEqual(
-            holidays.US(subdiv="VI").get("2015-02-16"), "Presidents' Day"
-        )
+        self.assertEqual(holidays.US(subdiv="PR").get("2015-02-16"), "Presidents' Day")
+        self.assertEqual(holidays.US(subdiv="VI").get("2015-02-16"), "Presidents' Day")
 
     def test_mardi_gras(self):
         la_holidays = holidays.US(subdiv="LA")
@@ -897,19 +887,11 @@ class TestUS(unittest.TestCase):
         ]:
             self.assertNotIn(dt, self.holidays)
             self.assertIn(dt, nv_holidays)
-        self.assertIn(
-            "Nevada Day (Observed)", nv_holidays.get_list(date(1998, 10, 30))
-        )
-        self.assertIn(
-            "Nevada Day (Observed)", nv_holidays.get_list(date(1999, 11, 1))
-        )
+        self.assertIn("Nevada Day (Observed)", nv_holidays.get_list(date(1998, 10, 30)))
+        self.assertIn("Nevada Day (Observed)", nv_holidays.get_list(date(1999, 11, 1)))
         nv_holidays.observed = False
-        self.assertNotIn(
-            "Nevada Day (Observed)", nv_holidays.get_list(date(1998, 10, 30))
-        )
-        self.assertNotIn(
-            "Nevada Day (Observed)", nv_holidays.get_list(date(1999, 11, 1))
-        )
+        self.assertNotIn("Nevada Day (Observed)", nv_holidays.get_list(date(1998, 10, 30)))
+        self.assertNotIn("Nevada Day (Observed)", nv_holidays.get_list(date(1999, 11, 1)))
 
     def test_liberty_day(self):
         vi_holidays = holidays.US(subdiv="VI")
@@ -1071,12 +1053,8 @@ class TestUS(unittest.TestCase):
                 tx_holidays.get(dt + relativedelta(days=+1)),
                 "Friday After Thanksgiving",
             )
-            self.assertEqual(
-                nv_holidays.get(dt + relativedelta(days=+1)), "Family Day"
-            )
-            self.assertEqual(
-                nm_holidays.get(dt + relativedelta(days=+1)), "Presidents' Day"
-            )
+            self.assertEqual(nv_holidays.get(dt + relativedelta(days=+1)), "Family Day")
+            self.assertEqual(nm_holidays.get(dt + relativedelta(days=+1)), "Presidents' Day")
             if dt.year >= 2008:
                 self.assertEqual(
                     md_holidays.get(dt + relativedelta(days=1)),

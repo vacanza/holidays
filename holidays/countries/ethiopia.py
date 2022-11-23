@@ -85,9 +85,7 @@ class Ethiopia(HolidayBase):
 
         # Derg Downfall Day
         if year > 1991:
-            self[
-                date(year, MAY, 28)
-            ] = "ደርግ የወደቀበት ቀን/Downfall of Dergue regime"
+            self[date(year, MAY, 28)] = "ደርግ የወደቀበት ቀን/Downfall of Dergue regime"
 
         # Downfall of King. Hailesilassie
         if year < 1991 and year > 1974:

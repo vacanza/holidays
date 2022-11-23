@@ -18,19 +18,7 @@ from dateutil.relativedelta import relativedelta as rd
 # URL: https://github.com/usingsky/korean_lunar_calendar_py/
 from korean_lunar_calendar import KoreanLunarCalendar
 
-from holidays.constants import (
-    SAT,
-    SUN,
-    JAN,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    OCT,
-    DEC,
-)
+from holidays.constants import SAT, SUN, JAN, MAR, APR, MAY, JUN, JUL, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -83,9 +71,7 @@ class Korea(HolidayBase):
                 (+1, second_day_lunar),
             ]:
                 target_date = new_year_date + rd(days=cur_rd)
-                is_alt, alt_date = self.get_next_first_non_holiday(
-                    cur_name, target_date
-                )
+                is_alt, alt_date = self.get_next_first_non_holiday(cur_name, target_date)
                 if is_alt:
                     self[alt_date] = alt_holiday + name
 
@@ -184,9 +170,7 @@ class Korea(HolidayBase):
                 (+1, second_day_chuseok),
             ]:
                 target_date = chuseok_date + rd(days=cur_rd)
-                is_alt, alt_date = self.get_next_first_non_holiday(
-                    cur_name, target_date
-                )
+                is_alt, alt_date = self.get_next_first_non_holiday(cur_name, target_date)
                 if is_alt:
                     self[alt_date] = alt_holiday + name
 
@@ -276,9 +260,7 @@ class Korea(HolidayBase):
         if include_sat:
             target_weekday.append(SAT)
         check_1 = cur.weekday() in target_weekday  # Exclude weekends
-        check_2 = (
-            cur in self and name != self[cur]
-        )  # Exclude if already a holiday
+        check_2 = cur in self and name != self[cur]  # Exclude if already a holiday
         while check_1 or check_2:
             cur = cur + rd(days=1)
             check_1 = cur.weekday() in target_weekday

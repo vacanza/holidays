@@ -71,33 +71,21 @@ class TestBasics(unittest.TestCase):
             self.holidays[date(2014, 1, 1) : date(2013, 12, 24) : 7],
             [date(2014, 1, 1), date(2013, 12, 25)],
         )
+        self.assertListEqual(self.holidays[date(2013, 12, 31) : date(2014, 1, 2) : -3], [])
         self.assertListEqual(
-            self.holidays[date(2013, 12, 31) : date(2014, 1, 2) : -3], []
-        )
-        self.assertListEqual(
-            self.holidays[
-                date(2014, 1, 1) : date(2013, 12, 24) : timedelta(days=3)
-            ],
+            self.holidays[date(2014, 1, 1) : date(2013, 12, 24) : timedelta(days=3)],
             [date(2014, 1, 1)],
         )
         self.assertListEqual(
-            self.holidays[
-                date(2014, 1, 1) : date(2013, 12, 24) : timedelta(days=7)
-            ],
+            self.holidays[date(2014, 1, 1) : date(2013, 12, 24) : timedelta(days=7)],
             [date(2014, 1, 1), date(2013, 12, 25)],
         )
         self.assertListEqual(
-            self.holidays[
-                date(2013, 12, 31) : date(2014, 1, 2) : timedelta(days=3)
-            ],
+            self.holidays[date(2013, 12, 31) : date(2014, 1, 2) : timedelta(days=3)],
             [],
         )
-        self.assertRaises(
-            ValueError, lambda: self.holidays[date(2014, 1, 1) :]
-        )
-        self.assertRaises(
-            ValueError, lambda: self.holidays[: date(2014, 1, 1)]
-        )
+        self.assertRaises(ValueError, lambda: self.holidays[date(2014, 1, 1) :])
+        self.assertRaises(ValueError, lambda: self.holidays[: date(2014, 1, 1)])
         self.assertRaises(
             TypeError,
             lambda: self.holidays[date(2014, 1, 1) : date(2014, 1, 2) : ""],
@@ -126,9 +114,7 @@ class TestBasics(unittest.TestCase):
         self.assertIn(date(2014, 1, 1), self.holidays)
         self.holidays.pop_named("New Year's Day")
         self.assertNotIn(date(2014, 1, 1), self.holidays)
-        self.assertRaises(
-            KeyError, lambda: self.holidays.pop_named("New Year's Dayz")
-        )
+        self.assertRaises(KeyError, lambda: self.holidays.pop_named("New Year's Dayz"))
 
     def test_setitem(self):
         self.holidays = holidays.US(years=[2014])
@@ -142,8 +128,7 @@ class TestBasics(unittest.TestCase):
         self.holidays = holidays.US()
         self.assertEqual(
             str(self.holidays),
-            "{'observed': True, 'expand': True, 'subdiv': None, "
-            "'years': set()}",
+            "{'observed': True, 'expand': True, 'subdiv': None, " "'years': set()}",
         )
 
         self.holidays = holidays.US(years=1900)
@@ -262,9 +247,7 @@ class TestBasics(unittest.TestCase):
         self.assertIn("2014-02-10", na)
         self.assertIn("2014-02-17", na)
         self.assertIn("2014-07-04", na)
-        provs = holidays.CA(subdiv="ON", years=[2014]) + holidays.CA(
-            subdiv="BC", years=[2015]
-        )
+        provs = holidays.CA(subdiv="ON", years=[2014]) + holidays.CA(subdiv="BC", years=[2015])
         self.assertIn("2015-02-09", provs)
         self.assertIn("2015-02-16", provs)
         self.assertEqual(provs.subdiv, ["ON", "BC"])
@@ -277,13 +260,9 @@ class TestBasics(unittest.TestCase):
         self.assertIn(date(1969, 12, 25), na)
         self.assertEqual(na.get(date(1969, 7, 1)), "Dominion Day")
         self.assertEqual(na.get(date(1983, 7, 1)), "Canada Day")
-        self.assertEqual(
-            na.get(date(1969, 12, 25)), "Christmas Day, Navidad [Christmas]"
-        )
+        self.assertEqual(na.get(date(1969, 12, 25)), "Christmas Day, Navidad [Christmas]")
         na = holidays.MX() + holidays.CA() + holidays.US()
-        self.assertEqual(
-            na.get(date(1969, 12, 25)), "Christmas Day, Navidad [Christmas]"
-        )
+        self.assertEqual(na.get(date(1969, 12, 25)), "Christmas Day, Navidad [Christmas]")
 
         ecb = holidays.ECB()
         nyse = holidays.NYSE()
@@ -309,16 +288,12 @@ class TestBasics(unittest.TestCase):
             westland.get_list(date(1969, 12, 1)),
             ["West Coast Anniversary Day"],
         )
-        self.assertEqual(
-            westland.get_list(date(1969, 1, 1)), ["New Year's Day"]
-        )
+        self.assertEqual(westland.get_list(date(1969, 1, 1)), ["New Year's Day"])
         self.assertEqual(
             chathams.get_list(date(1969, 12, 1)),
             ["Chatham Islands Anniversary Day"],
         )
-        self.assertEqual(
-            chathams.get_list(date(1969, 1, 1)), ["New Year's Day"]
-        )
+        self.assertEqual(chathams.get_list(date(1969, 1, 1)), ["New Year's Day"])
         ca = holidays.CA()
         us = holidays.US()
         mx = holidays.MX()
@@ -536,14 +511,10 @@ class TestKeyTransforms(unittest.TestCase):
 
     def test_datetimes(self):
         self.assertIn(datetime(2014, 1, 1, 13, 45), self.holidays)
-        self.assertEqual(
-            self.holidays[datetime(2014, 1, 1, 13, 45)], "New Year's Day"
-        )
+        self.assertEqual(self.holidays[datetime(2014, 1, 1, 13, 45)], "New Year's Day")
         self.holidays[datetime(2014, 1, 3, 1, 1)] = "Fake Holiday"
         self.assertIn(datetime(2014, 1, 3, 2, 2), self.holidays)
-        self.assertEqual(
-            self.holidays.pop(datetime(2014, 1, 3, 4, 4)), "Fake Holiday"
-        )
+        self.assertEqual(self.holidays.pop(datetime(2014, 1, 3, 4, 4)), "Fake Holiday")
         self.assertNotIn(datetime(2014, 1, 3, 2, 2), self.holidays)
 
     def test_timestamp(self):
@@ -567,16 +538,10 @@ class TestKeyTransforms(unittest.TestCase):
         self.assertNotIn("01/03/2014", self.holidays)
 
     def test_exceptions(self):
-        self.assertRaises(
-            (TypeError, ValueError), lambda: "abc" in self.holidays
-        )
-        self.assertRaises(
-            (TypeError, ValueError), lambda: self.holidays.get("abc123")
-        )
+        self.assertRaises((TypeError, ValueError), lambda: "abc" in self.holidays)
+        self.assertRaises((TypeError, ValueError), lambda: self.holidays.get("abc123"))
         self.assertRaises(TypeError, lambda: self.holidays.get({"123"}))
-        self.assertRaises(
-            (TypeError, ValueError), self.holidays.__setitem__, "abc", "Test"
-        )
+        self.assertRaises((TypeError, ValueError), self.holidays.__setitem__, "abc", "Test")
         self.assertRaises((TypeError, ValueError), lambda: {} in self.holidays)
 
 
@@ -614,16 +579,12 @@ class TestCountryHolidays(unittest.TestCase):
         self.assertEqual(h.subdiv, "NT")
 
     def test_exceptions(self):
-        self.assertRaises(
-            NotImplementedError, lambda: holidays.country_holidays("XXXX")
-        )
+        self.assertRaises(NotImplementedError, lambda: holidays.country_holidays("XXXX"))
         self.assertRaises(
             NotImplementedError,
             lambda: holidays.country_holidays("US", subdiv="XXXX"),
         )
-        self.assertRaises(
-            NotImplementedError, lambda: holidays.US(subdiv="XXXX")
-        )
+        self.assertRaises(NotImplementedError, lambda: holidays.US(subdiv="XXXX"))
 
 
 class TestFinancialHolidays(unittest.TestCase):
@@ -642,9 +603,7 @@ class TestFinancialHolidays(unittest.TestCase):
         self.assertEqual(h.years, {2015, 2016})
 
     def test_exceptions(self):
-        self.assertRaises(
-            NotImplementedError, lambda: holidays.financial_holidays("XXXX")
-        )
+        self.assertRaises(NotImplementedError, lambda: holidays.financial_holidays("XXXX"))
         self.assertRaises(
             NotImplementedError,
             lambda: holidays.financial_holidays("NYSE", subdiv="XXXX"),
@@ -679,9 +638,9 @@ class TestAllInSameYear(unittest.TestCase):
                 f"holiday {self.hol} returned for year {self.year}"
             )
             print(
-                holidays.country_holidays(
-                    self.country, subdiv=None, years=[self.year]
-                ).get_list(self.hol)
+                holidays.country_holidays(self.country, subdiv=None, years=[self.year]).get_list(
+                    self.hol
+                )
             )
 
     def test_all_countries(self):
@@ -697,12 +656,8 @@ class TestAllInSameYear(unittest.TestCase):
         we only run it once on the latest Python version.
         """
         for self.country in self.countries:
-            for self.year in range(
-                date.today().year - 10, date.today().year + 3
-            ):
-                hols = holidays.country_holidays(
-                    self.country, years=[self.year]
-                )
+            for self.year in range(date.today().year - 10, date.today().year + 3):
+                hols = holidays.country_holidays(self.country, years=[self.year])
                 for self.hol in hols:
                     self.assertEqual(self.hol.year, self.year)
 

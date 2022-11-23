@@ -75,9 +75,7 @@ class TestCyprus(unittest.TestCase):
 
         for d in checkdates:
             self.assertIn(d, self.cy_holidays)
-            self.assertIn(
-                "Μεγάλη Παρασκευή [Good Friday]", self.cy_holidays[d]
-            )
+            self.assertIn("Μεγάλη Παρασκευή [Good Friday]", self.cy_holidays[d])
 
     def test_cy_easter_sunday(self):
         checkdates = (
@@ -92,9 +90,7 @@ class TestCyprus(unittest.TestCase):
 
         for d in checkdates:
             self.assertIn(d, self.cy_holidays)
-            self.assertIn(
-                "Κυριακή του Πάσχα [Easter Sunday]", self.cy_holidays[d]
-            )
+            self.assertIn("Κυριακή του Πάσχα [Easter Sunday]", self.cy_holidays[d])
 
     def test_cy_easter_monday(self):
         checkdates = (
@@ -109,9 +105,7 @@ class TestCyprus(unittest.TestCase):
 
         for d in checkdates:
             self.assertIn(d, self.cy_holidays)
-            self.assertIn(
-                "Δευτέρα του Πάσχα [Easter Monday]", self.cy_holidays[d]
-            )
+            self.assertIn("Δευτέρα του Πάσχα [Easter Monday]", self.cy_holidays[d])
 
     def test_cy_monday_of_the_holy_spirit(self):
         checkdates = (

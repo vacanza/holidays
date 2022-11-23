@@ -74,8 +74,7 @@ class SaudiArabia(HolidayBase):
                     _add_holiday((hijri_date + rd(days=dys)), holiday_name)
                 if self.observed:
                     weekend_days = sum(
-                        (hijri_date + rd(days=dys)).weekday() in WEEKEND
-                        for dys in range(4)
+                        (hijri_date + rd(days=dys)).weekday() in WEEKEND for dys in range(4)
                     )
                     for dys in range(weekend_days):
                         _add_holiday(
@@ -98,8 +97,7 @@ class SaudiArabia(HolidayBase):
                     _add_holiday((hijri_date + rd(days=dys)), holiday_name)
                 if self.observed:
                     weekend_days = sum(
-                        (hijri_date + rd(days=dys)).weekday() in WEEKEND
-                        for dys in range(4)
+                        (hijri_date + rd(days=dys)).weekday() in WEEKEND for dys in range(4)
                     )
                     for dys in range(weekend_days):
                         _add_holiday(

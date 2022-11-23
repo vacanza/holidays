@@ -33,23 +33,17 @@ class TestBurundi(unittest.TestCase):
         self.assertIn("Labour Day (Observed)", self.holidays[date(2022, 5, 2)])
 
     def test_rwagasore_day(self):
-        self.assertIn(
-            "Prince Louis Rwagasore Day", self.holidays[date(2017, 10, 13)]
-        )
+        self.assertIn("Prince Louis Rwagasore Day", self.holidays[date(2017, 10, 13)])
         self.assertIn(
             "Prince Louis Rwagasore Day (Observed)",
             self.holidays[date(2024, 10, 14)],
         )
 
     def test_ntaryamira_day(self):
-        self.assertIn(
-            "President Ntaryamira Day", self.holidays[date(2017, 4, 6)]
-        )
+        self.assertIn("President Ntaryamira Day", self.holidays[date(2017, 4, 6)])
 
     def test_ndadaye_day(self):
-        self.assertIn(
-            "President Ndadaye's Day", self.holidays[date(2017, 10, 21)]
-        )
+        self.assertIn("President Ndadaye's Day", self.holidays[date(2017, 10, 21)])
         self.assertIn(
             "President Ndadaye's Day (Observed)",
             self.holidays[date(2018, 10, 22)],
@@ -64,9 +58,7 @@ class TestBurundi(unittest.TestCase):
                 # in 1958 it's Eid Al Adha (as estimated by convertdate)
                 self.assertNotIn(date(year, 7, 1), self.holidays)
 
-        self.assertIn(
-            "Independence Day (Observed)", self.holidays[date(2018, 7, 2)]
-        )
+        self.assertIn("Independence Day (Observed)", self.holidays[date(2018, 7, 2)])
 
     def test_ascension_day(self):
         self.assertIn("Ascension Day", self.holidays[date(2020, 5, 21)])
@@ -76,9 +68,7 @@ class TestBurundi(unittest.TestCase):
 
     def test_all_saints_Day(self):
         self.assertIn("All Saints' Day", self.holidays[date(2020, 11, 1)])
-        self.assertIn(
-            "All Saints' Day (Observed)", self.holidays[date(2020, 11, 2)]
-        )
+        self.assertIn("All Saints' Day (Observed)", self.holidays[date(2020, 11, 2)])
 
     def test_christmas_Day(self):
         self.assertIn("Christmas Day", self.holidays[date(2020, 12, 25)])

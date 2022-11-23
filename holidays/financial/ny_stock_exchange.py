@@ -15,20 +15,7 @@ from dateutil.easter import easter
 from dateutil.relativedelta import FR, MO, TH, TU
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import (
-    APR,
-    AUG,
-    DEC,
-    FEB,
-    JAN,
-    JUL,
-    JUN,
-    MAR,
-    MAY,
-    NOV,
-    OCT,
-    SEP,
-)
+from holidays.constants import APR, AUG, DEC, FEB, JAN, JUL, JUN, MAR, MAY, NOV, OCT, SEP
 from holidays.holiday_base import HolidayBase
 
 
@@ -79,9 +66,7 @@ class NewYorkStockExchange(HolidayBase):
 
         # MLK - observed 1998 - 3rd Monday of Jan
         if year >= 1998:
-            self[
-                date(year, JAN, 1) + rd(weekday=MO(3))
-            ] = "Martin Luther King Jr. Day"
+            self[date(year, JAN, 1) + rd(weekday=MO(3))] = "Martin Luther King Jr. Day"
 
         # LINCOLN BIRTHDAY: observed 1896 - 1953 and 1968, Feb 12 (observed)
         if (1896 <= year <= 1953) or year == 1968:
@@ -93,9 +78,7 @@ class NewYorkStockExchange(HolidayBase):
             wash = date(year, FEB, 22)
             self._set_observed_date(wash, "Washington's Birthday")
         else:
-            self[
-                date(year, FEB, 1) + rd(weekday=MO(3))
-            ] = "Washington's Birthday"
+            self[date(year, FEB, 1) + rd(weekday=MO(3))] = "Washington's Birthday"
 
         # GOOD FRIDAY - closed every year except 1898, 1906, and 1907
         e = easter(year)
@@ -118,9 +101,7 @@ class NewYorkStockExchange(HolidayBase):
         # JUNETEENTH: since 2021
         if year >= 2021:
             juneteenth = date(year, JUN, 19)
-            self._set_observed_date(
-                juneteenth, "Juneteenth National Independence Day"
-            )
+            self._set_observed_date(juneteenth, "Juneteenth National Independence Day")
 
         # INDEPENDENCE DAY (July 4) - history suggests closed every year
         j4th = date(year, JUL, 4)
@@ -189,10 +170,7 @@ class NewYorkStockExchange(HolidayBase):
             # Beginning of WWI
             begin = date(year, JUL, 31)
             end = date(year, NOV, 27)
-            for d in (
-                begin + timedelta(days=n)
-                for n in range((end - begin).days + 1)
-            ):
+            for d in (begin + timedelta(days=n) for n in range((end - begin).days + 1)):
                 if d.isoweekday() in [6, 7]:
                     continue
                 self[d] = "World War I"
@@ -211,9 +189,7 @@ class NewYorkStockExchange(HolidayBase):
             self[date(year, SEP, 10)] = "Return of General Pershing"
         elif year == 1923:
             self[date(year, AUG, 3)] = "Death of President Warren G. Harding"
-            self[
-                date(year, AUG, 10)
-            ] = "Funeral of President Warren G. Harding"
+            self[date(year, AUG, 10)] = "Funeral of President Warren G. Harding"
         elif year == 1927:
             self[date(year, JUN, 13)] = "Parade for Colonel Charles Lindbergh"
         elif year == 1929:
@@ -221,10 +197,7 @@ class NewYorkStockExchange(HolidayBase):
         elif year == 1933:
             begin = date(year, MAR, 6)
             end = date(year, MAR, 14)
-            for d in (
-                begin + timedelta(days=n)
-                for n in range((end - begin).days + 1)
-            ):
+            for d in (begin + timedelta(days=n) for n in range((end - begin).days + 1)):
                 if d.isoweekday() in [6, 7]:
                     continue
                 self[d] = "Special Bank Holiday"
@@ -245,52 +218,35 @@ class NewYorkStockExchange(HolidayBase):
         elif year == 1965:
             self[date(year, DEC, 24)] = "Christmas Eve"
         elif year == 1968:
-            self[
-                date(year, APR, 9)
-            ] = "Day of Mourning for Martin Luther King Jr."
+            self[date(year, APR, 9)] = "Day of Mourning for Martin Luther King Jr."
             self[date(year, JUL, 5)] = "Day after Independence Day"
             begin = date(year, JUN, 12)
             end = date(year, DEC, 31)
-            for d in (
-                begin + timedelta(days=n)
-                for n in range((end - begin).days + 1)
-            ):
+            for d in (begin + timedelta(days=n) for n in range((end - begin).days + 1)):
                 if d.isoweekday() != 3:  # Wednesday special holiday
                     continue
                 self[d] = "Paper Crisis"
         elif year == 1969:
             self[date(year, FEB, 10)] = "Heavy Snow"
-            self[
-                date(year, MAR, 31)
-            ] = "Funeral of President Dwight D. Eisenhower"
-            self[
-                date(year, JUL, 21)
-            ] = "National Participation in Lunar Exploration"
+            self[date(year, MAR, 31)] = "Funeral of President Dwight D. Eisenhower"
+            self[date(year, JUL, 21)] = "National Participation in Lunar Exploration"
         elif year == 1972:
             self[date(year, DEC, 28)] = "Funeral for President Harry S. Truman"
         elif year == 1973:
-            self[
-                date(year, JAN, 25)
-            ] = "Funeral for President Lyndon B. Johnson"
+            self[date(year, JAN, 25)] = "Funeral for President Lyndon B. Johnson"
         elif year == 1977:
             self[date(year, JUL, 14)] = "Blackout in New Yor City"
         elif year == 1994:
-            self[
-                date(year, APR, 27)
-            ] = "Funeral for President Richard M. Nixon"
+            self[date(year, APR, 27)] = "Funeral for President Richard M. Nixon"
         elif year == 2001:
             self[date(year, SEP, 11)] = "Closed for Sept 11, 2001 Attacks"
             self[date(year, SEP, 12)] = "Closed for Sept 11, 2001 Attacks"
             self[date(year, SEP, 13)] = "Closed for Sept 11, 2001 Attacks"
             self[date(year, SEP, 14)] = "Closed for Sept 11, 2001 Attacks"
         elif year == 2004:
-            self[
-                date(year, JUN, 11)
-            ] = "Day of Mourning for President Ronald W. Reagan"
+            self[date(year, JUN, 11)] = "Day of Mourning for President Ronald W. Reagan"
         elif year == 2007:
-            self[
-                date(year, JAN, 2)
-            ] = "Day of Mourning for President Gerald R. Ford"
+            self[date(year, JAN, 2)] = "Day of Mourning for President Gerald R. Ford"
 
 
 class XNYS(NewYorkStockExchange):

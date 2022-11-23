@@ -41,13 +41,9 @@ class Venezuela(HolidayBase):
 
         self[date(year, JAN, 1)] = "Año Nuevo [New Year's]"
 
-        self[
-            easter(year) - rd(days=48)
-        ] = "Lunes de Carnaval [Monday of Carnival]"
+        self[easter(year) - rd(days=48)] = "Lunes de Carnaval [Monday of Carnival]"
 
-        self[
-            easter(year) - rd(days=47)
-        ] = "Martes de Carnaval [Tuesday of Carnival]"
+        self[easter(year) - rd(days=47)] = "Martes de Carnaval [Tuesday of Carnival]"
 
         self[easter(year) - rd(days=3)] = "Jueves Santo [Maundy Thursday]"
 
@@ -61,26 +57,18 @@ class Venezuela(HolidayBase):
 
         # https://bit.ly/3B4Xd1L
         if year >= 1946:
-            self[
-                date(year, MAY, 1)
-            ] = "Dia Mundial del Trabajador [International Worker's Day]"
+            self[date(year, MAY, 1)] = "Dia Mundial del Trabajador [International Worker's Day]"
 
         # Note: not sure about the start year, but this event happened in 1824
         if year >= 1971 or (1918 > year >= 1824):
-            self[
-                date(year, JUN, 24)
-            ] = "Batalla de Carabobo [Battle of Carabobo]"
+            self[date(year, JUN, 24)] = "Batalla de Carabobo [Battle of Carabobo]"
 
         # Note: not sure about the start year, but this event happened in 1811
         if year >= 1811:
-            self[
-                date(year, JUL, 5)
-            ] = "Día de la Independencia [Independence Day]"
+            self[date(year, JUL, 5)] = "Día de la Independencia [Independence Day]"
 
         if year >= 1918:
-            self[
-                date(year, JUL, 24)
-            ] = "Natalicio de Simón Bolívar [Birth of Simon Bolivar]"
+            self[date(year, JUL, 24)] = "Natalicio de Simón Bolívar [Birth of Simon Bolivar]"
 
         if year >= 2002:
             self[
@@ -92,9 +80,7 @@ class Venezuela(HolidayBase):
         # Note: not sure about the start year nor the reason this was
         # Note: celebrated; the historical records are unclear
         if 1909 <= year < 1918:
-            self[
-                date(year, OCT, 28)
-            ] = "Día Festivo Desconocido [Unknown Holiday]"
+            self[date(year, OCT, 28)] = "Día Festivo Desconocido [Unknown Holiday]"
 
         self[date(year, DEC, 24)] = "Nochebuena [Christmas Eve]"
 

@@ -43,9 +43,7 @@ class Iceland(HolidayBase):
         self[easter(year) + rd(days=50)] = "Annar í hvítasunnu"
         self[date(year, JUN, 17)] = "Þjóðhátíðardagurinn"
         # First Monday of August
-        self[
-            date(year, AUG, 1) + rd(weekday=MO(+1))
-        ] = "Frídagur verslunarmanna"
+        self[date(year, AUG, 1) + rd(weekday=MO(+1))] = "Frídagur verslunarmanna"
         self[date(year, DEC, 24)] = "Aðfangadagur"
         self[date(year, DEC, 25)] = "Jóladagur"
         self[date(year, DEC, 26)] = "Annar í jólum"

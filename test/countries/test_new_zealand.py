@@ -325,13 +325,9 @@ class TestNZ(unittest.TestCase):
             self.assertIn(dt, self.holidays)
             self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
         self.assertNotIn(date(2010, 12, 24), self.holidays)
-        self.assertNotEqual(
-            self.holidays[date(2011, 12, 26)], "Christmas Day (Observed)"
-        )
+        self.assertNotEqual(self.holidays[date(2011, 12, 26)], "Christmas Day (Observed)")
         self.holidays.observed = True
-        self.assertEqual(
-            self.holidays[date(2011, 12, 27)], "Christmas Day (Observed)"
-        )
+        self.assertEqual(self.holidays[date(2011, 12, 27)], "Christmas Day (Observed)")
         for year, day in enumerate(
             [
                 25,
@@ -529,9 +525,7 @@ class TestNZ(unittest.TestCase):
         ):
             dt = date(year, 1, day)
             self.assertIn(dt, wgn_holidays, dt)
-            self.assertEqual(
-                wgn_holidays[dt], "Wellington Anniversary Day", dt
-            )
+            self.assertEqual(wgn_holidays[dt], "Wellington Anniversary Day", dt)
 
     def test_marlborough_anniversary_day(self):
         mbh_holidays = holidays.NZ(subdiv="Marlborough")
@@ -563,9 +557,7 @@ class TestNZ(unittest.TestCase):
         ):
             dt = date(year, 11 if day < 9 else 10, day)
             self.assertIn(dt, mbh_holidays, dt)
-            self.assertEqual(
-                mbh_holidays[dt], "Marlborough Anniversary Day", dt
-            )
+            self.assertEqual(mbh_holidays[dt], "Marlborough Anniversary Day", dt)
 
     def test_nelson_anniversary_day(self):
         nsn_holidays = holidays.NZ(subdiv="Nelson")
@@ -629,9 +621,7 @@ class TestNZ(unittest.TestCase):
         ):
             dt = date(year, 11, day)
             self.assertIn(dt, can_holidays, dt)
-            self.assertEqual(
-                can_holidays[dt], "Canterbury Anniversary Day", dt
-            )
+            self.assertEqual(can_holidays[dt], "Canterbury Anniversary Day", dt)
 
     def test_south_canterbury_anniversary_day(self):
         stc_holidays = holidays.NZ(subdiv="South Canterbury")
@@ -663,9 +653,7 @@ class TestNZ(unittest.TestCase):
         ):
             dt = date(year, 9, day)
             self.assertIn(dt, stc_holidays, dt)
-            self.assertEqual(
-                stc_holidays[dt], "South Canterbury Anniversary Day", dt
-            )
+            self.assertEqual(stc_holidays[dt], "South Canterbury Anniversary Day", dt)
 
     def test_westland_anniversary_day(self):
         wtc_holidays = holidays.NZ(subdiv="Westland")
@@ -697,9 +685,7 @@ class TestNZ(unittest.TestCase):
         ):
             dt = date(year, 12 if day < 9 else 11, day)
             self.assertIn(dt, wtc_holidays, dt)
-            self.assertEqual(
-                wtc_holidays[dt], "West Coast Anniversary Day", dt
-            )
+            self.assertEqual(wtc_holidays[dt], "West Coast Anniversary Day", dt)
 
     def test_otago_anniversary_day(self):
         ota_holidays = holidays.NZ(subdiv="Otago")
@@ -759,9 +745,7 @@ class TestNZ(unittest.TestCase):
             ):
                 dt = date(year, month, day)
                 self.assertIn(dt, stl_holidays, dt)
-                self.assertEqual(
-                    stl_holidays[dt], "Southland Anniversary Day", dt
-                )
+                self.assertEqual(stl_holidays[dt], "Southland Anniversary Day", dt)
 
     def test_chatham_islands_anniversary_day(self):
         cit_holidays = holidays.NZ(subdiv="Chatham Islands")
@@ -793,25 +777,14 @@ class TestNZ(unittest.TestCase):
         ):
             dt = date(year, 12 if day < 9 else 11, day)
             self.assertIn(dt, cit_holidays, dt)
-            self.assertEqual(
-                cit_holidays[dt], "Chatham Islands Anniversary Day", dt
-            )
+            self.assertEqual(cit_holidays[dt], "Chatham Islands Anniversary Day", dt)
 
     def test_all_holidays_present(self):
-        nz_1969 = sum(
-            holidays.NZ(years=[1969], subdiv=p)
-            for p in holidays.NZ.subdivisions
-        )
+        nz_1969 = sum(holidays.NZ(years=[1969], subdiv=p) for p in holidays.NZ.subdivisions)
         holidays_in_1969 = sum((nz_1969.get_list(key) for key in nz_1969), [])
-        nz_2015 = sum(
-            holidays.NZ(years=[2015], subdiv=p)
-            for p in holidays.NZ.subdivisions
-        )
+        nz_2015 = sum(holidays.NZ(years=[2015], subdiv=p) for p in holidays.NZ.subdivisions)
         holidays_in_2015 = sum((nz_2015.get_list(key) for key in nz_2015), [])
-        nz_1974 = sum(
-            holidays.NZ(years=[1974], subdiv=p)
-            for p in holidays.NZ.subdivisions
-        )
+        nz_1974 = sum(holidays.NZ(years=[1974], subdiv=p) for p in holidays.NZ.subdivisions)
         holidays_in_1974 = sum((nz_1974.get_list(key) for key in nz_1974), [])
         all_holidays = [
             "New Year's Day",

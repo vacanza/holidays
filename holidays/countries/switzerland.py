@@ -86,9 +86,7 @@ class Switzerland(HolidayBase):
 
         # Näfelser Fahrt (first Thursday in April but not in Holy Week)
         if self.subdiv == "GL" and year >= 1835:
-            if (date(year, APR, 1) + rd(weekday=FR)) != (
-                easter(year) - rd(days=2)
-            ):
+            if (date(year, APR, 1) + rd(weekday=FR)) != (easter(year) - rd(days=2)):
                 self[date(year, APR, 1) + rd(weekday=TH)] = "Näfelser Fahrt"
             else:
                 self[date(year, APR, 8) + rd(weekday=TH)] = "Näfelser Fahrt"

@@ -166,9 +166,7 @@ class TestSaudiArabia(unittest.TestCase):
 
     def test_hijri_based_not_observed(self):
         if importlib.util.find_spec("hijri_converter"):
-            self.holidays = holidays.SA(
-                observed=False, years=range(2014, 2021)
-            )
+            self.holidays = holidays.SA(observed=False, years=range(2014, 2021))
             # observed eid al-fitr
             self.assertNotIn(date(2020, 5, 27), self.holidays)
 

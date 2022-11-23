@@ -32,9 +32,7 @@ class Slovakia(HolidayBase):
 
         self[date(year, JAN, 1)] = "Deň vzniku Slovenskej republiky"
         self[date(year, JAN, 6)] = (
-            "Zjavenie Pána (Traja králi a"
-            " vianočnýsviatok pravoslávnych"
-            " kresťanov)"
+            "Zjavenie Pána (Traja králi a" " vianočnýsviatok pravoslávnych" " kresťanov)"
         )
 
         e = easter(year)
@@ -48,17 +46,13 @@ class Slovakia(HolidayBase):
 
         self[date(year, JUL, 5)] = "Sviatok svätého Cyrila a svätého Metoda"
 
-        self[date(year, AUG, 29)] = (
-            "Výročie Slovenského národného" " povstania"
-        )
+        self[date(year, AUG, 29)] = "Výročie Slovenského národného" " povstania"
 
         self[date(year, SEP, 1)] = "Deň Ústavy Slovenskej republiky"
 
         self[date(year, SEP, 15)] = "Sedembolestná Panna Mária"
         if year == 2018:
-            self[date(year, OCT, 30)] = (
-                "100. výročie prijatia" " Deklarácie slovenského národa"
-            )
+            self[date(year, OCT, 30)] = "100. výročie prijatia" " Deklarácie slovenského národa"
         self[date(year, NOV, 1)] = "Sviatok Všetkých svätých"
 
         if year >= 2001:
