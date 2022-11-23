@@ -1,7 +1,10 @@
-Version 0.17
-============
+Version 0.17.1
+==============
 
-Released November 13, 2022
+Released November 23, 2022
+- Swaziland deprecation warning fix #794 (arkid15r)
+
+First release (0.17) November 13, 2022
 
 - 100% test coverage, code refactoring #747, #749 (arkid15r)
 - Special holidays (one-off) support #724 (arkid15r, dr-p)
