@@ -14,7 +14,6 @@
 import warnings
 from datetime import date, datetime, timedelta
 from typing import (
-    TYPE_CHECKING,
     Any,
     Dict,
     Iterable,

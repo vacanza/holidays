@@ -95,10 +95,10 @@ Some holidays may be only present in parts of a country:
     '2018-01-06' in us_holidays     # False
     '2018-01-06' in us_pr_holidays  # True
 
-.. _documentation: https://python-holidays.readthedocs.io/
+.. _python-holidays documentation: https://python-holidays.readthedocs.io/
 
-Please see the `documentation`_ for additional examples and detailed
-information.
+Please see the `python-holidays documentation`_ for additional examples and
+detailed information.
 
 
 Available Countries
@@ -238,6 +238,9 @@ following countries and their subdivisions are available:
    * - India
      - IN
      - States: AN, AP, AR, AS, BR, CG, CH, DD, DH, DL, GA, GJ, HP, HR, JH, JK, KA, KL, LA, LD, MH, ML, MN, MP, MZ, NL, OR, PB, PY, RJ, SK, TN, TR, TS, UK, UP, WB
+   * - Indonesia
+     - ID
+     - None
    * - Ireland
      - IE
      - None
