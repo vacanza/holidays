@@ -3,6 +3,7 @@ Version 0.18
 
 Released ???????? ??, ????
 
+- Code refactoring #801 (arkid15r)
 - Pre-commit reviews #786, #795 (KJhellico, arkid15r, dr-p)
 - Import cleanup, flake8 settings review #792 (arkid15r, KJhellico, dr-p)
 - Special holidays refactoring for 13 countries #796 (arkid15r, KJhellico)
