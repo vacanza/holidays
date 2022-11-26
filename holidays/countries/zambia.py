@@ -13,8 +13,9 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import MO
 
-from holidays.constants import SUN, JAN, MAR, APR, MAY, JUL, AUG, OCT, DEC
+from holidays.constants import SUN, JAN, MAR, APR, MAY, JUL, AUG, SEP, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -28,68 +29,75 @@ class Zambia(HolidayBase):
 
     country = "ZM"
     special_holidays = {
+        2016: (
+            (AUG, 11, "General elections and referendum"),
+            (
+                SEP,
+                13,
+                "Inauguration ceremony of President-elect "
+                "and Vice President-elect",
+            ),
+        ),
+        2018: (
+            (MAR, 9, "Public holiday"),
+            (JUL, 26, "Lusaka mayoral and other local government elections"),
+        ),
         2021: (
             (JUL, 2, "Memorial service for Kenneth Kaunda"),
             (JUL, 7, "Funeral of Kenneth Kaunda"),
-        )
+            (AUG, 12, "General elections"),
+            (AUG, 13, "Counting in general elections"),
+            (AUG, 24, "Presidential inauguration"),
+        ),
+        2022: ((MAR, 18, "Funeral of Rupiah Banda"),),
     }
 
     def _populate(self, year):
-        super()._populate(year)
 
         # Observed since 1965
-        if year > 1964:
-            self[date(year, JAN, 1)] = "New Year's Day"
-            self[date(year, MAR, 12)] = "Youth Day"
+        if year <= 1964:
+            return
 
-            e = easter(year)
-            good_friday = e - rd(days=2)
-            holy_saturday = e - rd(days=1)
-            easter_monday = e + rd(days=1)
-            self[good_friday] = "Good Friday"
-            self[holy_saturday] = "Holy Saturday"
-            self[easter_monday] = "Easter Monday"
+        super()._populate(year)
 
-            self[date(year, MAY, 1)] = "Labour Day"
-            self[date(year, MAY, 25)] = "Africa Freedom Day"
+        self[date(year, JAN, 1)] = "New Year's Day"
 
-            # 1st Monday of July = "Heroes' Day"
-            # Find the date of the 1st Monday
-            # for the given year and month
-            d1 = date(year, JUL, 7)
-            offset = -d1.weekday()  # weekday = 0 means monday
-            d1 = d1 + rd(days=offset)
-
-            self[d1] = "Heroes' Day"
-            self[d1 + rd(days=1)] = "Unity Day"
-
-            # 1st Monday of Aug = "Farmers' Day"
-            d2 = date(year, AUG, 7)
-            offset = -d2.weekday()
-            d2 = d2 + rd(days=offset)
-
-            self[d2] = "Farmers' Day"
-
-            self[date(year, OCT, 24)] = "Independence Day"
-            self[date(year, DEC, 25)] = "Christmas Day"
-
-        # Observed since 1991
-        if year > 1990:
+        if year >= 1991:
             self[date(year, MAR, 8)] = "International Women's Day"
 
-        # Observed since 2015
-        if year > 2014:
+        self[date(year, MAR, 12)] = "Youth Day"
+
+        easter_date = easter(year)
+        self[easter_date + rd(days=-2)] = "Good Friday"
+        self[easter_date + rd(days=-1)] = "Holy Saturday"
+        self[easter_date + rd(days=1)] = "Easter Monday"
+
+        if year >= 2022:
+            self[date(year, APR, 28)] = "Kenneth Kaunda Day"
+
+        self[date(year, MAY, 1)] = "Labour Day"
+        self[date(year, MAY, 25)] = "Africa Freedom Day"
+
+        # 1st Monday of July = "Heroes' Day"
+        dt = date(year, JUL, 1) + rd(weekday=MO)
+        self[dt] = "Heroes' Day"
+        self[dt + rd(days=1)] = "Unity Day"
+
+        # 1st Monday of Aug = "Farmers' Day"
+        dt = date(year, AUG, 1) + rd(weekday=MO)
+        self[dt] = "Farmers' Day"
+
+        if year >= 2015:
             self[date(year, OCT, 18)] = "National Prayer Day"
 
-        # Observed since 2022
-        if year > 2021:
-            self[date(year, APR, 28)] = "Kenneth Kaunda Day"
+        self[date(year, OCT, 24)] = "Independence Day"
+        self[date(year, DEC, 25)] = "Christmas Day"
 
         # whenever a public holiday falls on a Sunday,
         # it rolls over to the following Monday
-        for k, v in list(self.items()):
-            if self.observed and year > 1964:
-                if k.weekday() == SUN:
+        if self.observed:
+            for k, v in list(self.items()):
+                if k.year == year and k.weekday() == SUN:
                     self[k + rd(days=1)] = v + " (Observed)"
 
 
