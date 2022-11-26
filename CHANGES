@@ -7,6 +7,7 @@ Released ???????? ??, ????
 - Import cleanup, flake8 settings review #792 (arkid15r, KJhellico, dr-p)
 - Special holidays refactoring for 13 countries #796 (arkid15r, KJhellico)
 - Support for Indonesia #787 (KJhellico)
+- Korea renamed to South Korea #797 (arkid15r)
 - Hong Kong optimizations #786 (KJhellico)
 - Korea fixes #791 (KJhellico) + test optimizations (dr-p)
 
