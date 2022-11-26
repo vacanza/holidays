@@ -168,8 +168,6 @@ class HongKong(HolidayBase):
                 self[hksar_date + rd(days=+1)] = day_following + name
             else:
                 self[hksar_date] = name
-        else:
-            self[hksar_date] = name
 
         # Chinese Mid-Autumn Festival
         name = "Chinese Mid-Autumn Festival"
