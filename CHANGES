@@ -11,6 +11,7 @@ Released ???????? ??, ????
 - Hong Kong optimizations #786 (KJhellico)
 - Korea fixes #791 (KJhellico) + test optimizations (dr-p)
 - Zambia: optimizations and refactoring #798 (KJhellico)
+- Vietnam: optimizations and refactoring #799 (KJhellico)
 
 Version 0.17.2
 ==============
