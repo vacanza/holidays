@@ -3,7 +3,7 @@ Version 0.18
 
 Released ???????? ??, ????
 
-- Pre-commit reviews #786 (KJhellico, dr-p)
+- Pre-commit reviews #786, #795 (KJhellico, arkid15r, dr-p)
 - Import cleanup, flake8 settings review #792 (arkid15r, dr-p)
 - Support for Indonesia #787 (KJhellico)
 - Hong Kong optimizations #786 (KJhellico)
