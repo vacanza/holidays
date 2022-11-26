@@ -50,6 +50,7 @@ from .hongkong import HK, HKG, HongKong
 from .hungary import HU, HUN, Hungary
 from .iceland import IS, ISL, Iceland
 from .india import IN, IND, India
+from .indonesia import ID, IDN, Indonesia
 from .ireland import IE, IRL, Ireland
 from .isle_of_man import IM, IMN, IsleOfMan
 from .israel import IL, ISR, Israel
