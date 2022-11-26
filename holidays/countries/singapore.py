@@ -10,7 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Dict, Iterable, List, Optional, Tuple, Union
+from typing import Dict, Iterable, Optional, Tuple, Union
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd

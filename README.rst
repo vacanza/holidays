@@ -238,6 +238,9 @@ following countries and their subdivisions are available:
    * - India
      - IN
      - States: AN, AP, AR, AS, BR, CG, CH, DD, DH, DL, GA, GJ, HP, HR, JH, JK, KA, KL, LA, LD, MH, ML, MN, MP, MZ, NL, OR, PB, PY, RJ, SK, TN, TR, TS, UK, UP, WB
+   * - Indonesia
+     - ID
+     - None
    * - Ireland
      - IE
      - None
