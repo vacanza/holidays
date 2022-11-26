@@ -10,12 +10,13 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
+import warnings
 from datetime import date
 
 import holidays
 
 
-class TestKorea(unittest.TestCase):
+class TestSouthKorea(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.KR()
 
@@ -361,3 +362,12 @@ class TestKorea(unittest.TestCase):
 
     def test_special_holidays(self):
         self.assertIn("2020-08-17", self.holidays)
+
+    def test_korea_deprecation_warning(self):
+        warnings.simplefilter("default")
+        with self.assertWarns(Warning):
+            holidays.Korea()
+
+        warnings.simplefilter("error")
+        with self.assertRaises(Warning):
+            holidays.Korea()
