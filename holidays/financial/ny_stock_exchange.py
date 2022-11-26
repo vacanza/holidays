@@ -12,7 +12,7 @@
 from datetime import date, timedelta
 
 from dateutil.easter import easter
-from dateutil.relativedelta import FR, MO, TH, TU
+from dateutil.relativedelta import MO, TU, TH, FR, SA, SU
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import (
@@ -99,7 +99,7 @@ class NewYorkStockExchange(HolidayBase):
 
         # GOOD FRIDAY - closed every year except 1898, 1906, and 1907
         e = easter(year)
-        if year not in [1898, 1906, 1907]:
+        if year not in {1898, 1906, 1907}:
             self[e - rd(days=2)] = "Good Friday"
 
         # MEM DAY (May 30) - closed every year since 1873
@@ -139,11 +139,11 @@ class NewYorkStockExchange(HolidayBase):
         # closed until 1969, then closed pres years 1972-80
         if year <= 1968:
             self[date(year, NOV, 1) + rd(weekday=TU(1))] = "Election Day"
-        elif year in [1972, 1976, 1980]:
+        elif year in {1972, 1976, 1980}:
             self[date(year, NOV, 1) + rd(weekday=TU(1))] = "Election Day"
 
         # VETERAN'S DAY: Nov 11 - closed 1918, 1921, 1934-1953
-        if year in [1918, 1921] or (1934 <= year <= 1953):
+        if year in {1918, 1921} or (1934 <= year <= 1953):
             vetday = date(year, NOV, 11)
             self._set_observed_date(vetday, "Veteran's Day")
 
@@ -193,7 +193,7 @@ class NewYorkStockExchange(HolidayBase):
                 begin + timedelta(days=n)
                 for n in range((end - begin).days + 1)
             ):
-                if d.isoweekday() in [6, 7]:
+                if d.weekday() in {SA.weekday, SU.weekday}:
                     continue
                 self[d] = "World War I"
         elif year == 1917:
@@ -225,7 +225,7 @@ class NewYorkStockExchange(HolidayBase):
                 begin + timedelta(days=n)
                 for n in range((end - begin).days + 1)
             ):
-                if d.isoweekday() in [6, 7]:
+                if d.weekday() in {SA.weekday, SU.weekday}:
                     continue
                 self[d] = "Special Bank Holiday"
         elif year == 1945:

@@ -75,13 +75,13 @@ class Switzerland(HolidayBase):
         ):
             self[date(year, JAN, 2)] = "Berchtoldstag"
 
-        if self.subdiv in ("SZ", "TI", "UR"):
+        if self.subdiv in {"SZ", "TI", "UR"}:
             self[date(year, JAN, 6)] = "Heilige Drei Könige"
 
         if self.subdiv == "NE":
             self[date(year, MAR, 1)] = "Jahrestag der Ausrufung der Republik"
 
-        if self.subdiv in ("NW", "SZ", "TI", "UR", "VS"):
+        if self.subdiv in {"NW", "SZ", "TI", "UR", "VS"}:
             self[date(year, MAR, 19)] = "Josefstag"
 
         # Näfelser Fahrt (first Thursday in April but not in Holy Week)
@@ -101,7 +101,7 @@ class Switzerland(HolidayBase):
             self[easter(year) - rd(days=2)] = "Karfreitag"
             self[easter(year) + rd(weekday=MO)] = "Ostermontag"
 
-        if self.subdiv in (
+        if self.subdiv in {
             "BL",
             "BS",
             "JU",
@@ -111,7 +111,7 @@ class Switzerland(HolidayBase):
             "TG",
             "TI",
             "ZH",
-        ):
+        }:
             self[date(year, MAY, 1)] = "Tag der Arbeit"
 
         self[easter(year) + rd(days=39)] = "Auffahrt"
@@ -121,7 +121,7 @@ class Switzerland(HolidayBase):
 
         self[easter(year) + rd(days=50)] = "Pfingstmontag"
 
-        if self.subdiv in (
+        if self.subdiv in {
             "AI",
             "JU",
             "LU",
@@ -132,7 +132,7 @@ class Switzerland(HolidayBase):
             "UR",
             "VS",
             "ZG",
-        ):
+        }:
             self[easter(year) + rd(days=60)] = "Fronleichnam"
 
         if self.subdiv == "JU":
@@ -144,7 +144,7 @@ class Switzerland(HolidayBase):
         if year >= 1291:
             self[date(year, AUG, 1)] = "Nationalfeiertag"
 
-        if self.subdiv in (
+        if self.subdiv in {
             "AI",
             "JU",
             "LU",
@@ -155,7 +155,7 @@ class Switzerland(HolidayBase):
             "UR",
             "VS",
             "ZG",
-        ):
+        }:
             self[date(year, AUG, 15)] = "Mariä Himmelfahrt"
 
         if self.subdiv == "VD":
@@ -171,7 +171,7 @@ class Switzerland(HolidayBase):
         if self.subdiv == "OW":
             self[date(year, SEP, 25)] = "Bruder Klaus"
 
-        if self.subdiv in (
+        if self.subdiv in {
             "AI",
             "GL",
             "JU",
@@ -184,10 +184,10 @@ class Switzerland(HolidayBase):
             "UR",
             "VS",
             "ZG",
-        ):
+        }:
             self[date(year, NOV, 1)] = "Allerheiligen"
 
-        if self.subdiv in (
+        if self.subdiv in {
             "AI",
             "LU",
             "NW",
@@ -197,18 +197,18 @@ class Switzerland(HolidayBase):
             "UR",
             "VS",
             "ZG",
-        ):
+        }:
             self[date(year, DEC, 8)] = "Mariä Empfängnis"
 
         self[date(year, DEC, 25)] = "Weihnachten"
 
-        if self.subdiv in (
+        if self.subdiv in {
             "AG",
-            "AR",
             "AI",
+            "AR",
+            "BE",
             "BL",
             "BS",
-            "BE",
             "FR",
             "GL",
             "GR",
@@ -218,14 +218,14 @@ class Switzerland(HolidayBase):
             "OW",
             "SG",
             "SH",
-            "SZ",
             "SO",
+            "SZ",
             "TG",
             "TI",
             "UR",
             "ZG",
             "ZH",
-        ):
+        }:
             self[date(year, DEC, 26)] = "Stephanstag"
 
         if self.subdiv == "GE":

@@ -110,7 +110,7 @@ class India(HolidayBase):
                 "Maha Vishuva Sankranti / Pana" " Sankranti"
             )
 
-        if self.subdiv in (
+        if self.subdiv in {
             "OR",
             "AP",
             "BR",
@@ -121,7 +121,7 @@ class India(HolidayBase):
             "UP",
             "UK",
             "TN",
-        ):
+        }:
             self[date(year, APR, 14)] = "Dr. B. R. Ambedkar's Jayanti"
 
         if self.subdiv == "TN":

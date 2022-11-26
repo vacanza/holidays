@@ -34,7 +34,7 @@ class TestHonduras(unittest.TestCase):
 
     def test_2014(self):
         year = 2014
-        expected_holidays = [
+        expected_holidays = {
             date(year, JAN, 1),
             date(year, APR, 14),
             date(year, APR, 17),
@@ -46,13 +46,13 @@ class TestHonduras(unittest.TestCase):
             date(year, OCT, 12),
             date(year, OCT, 21),
             date(year, DEC, 25),
-        ]
+        }
         self._check_all_dates(year, expected_holidays)
 
     def test_2016(self):
         # https://www.officeholidays.com/countries/honduras/2016
         year = 2016
-        expected_holidays = [
+        expected_holidays = {
             date(year, JAN, 1),
             date(year, MAR, 24),
             date(year, MAR, 25),
@@ -64,13 +64,13 @@ class TestHonduras(unittest.TestCase):
             date(year, OCT, 6),
             date(year, OCT, 7),
             date(year, DEC, 25),
-        ]
+        }
         self._check_all_dates(year, expected_holidays)
 
     def test_2021(self):
         # https://www.officeholidays.com/countries/honduras/2021
         year = 2021
-        expected_holidays = [
+        expected_holidays = {
             date(year, JAN, 1),
             date(year, APR, 1),
             date(year, APR, 2),
@@ -82,13 +82,13 @@ class TestHonduras(unittest.TestCase):
             date(year, OCT, 7),
             date(year, OCT, 8),
             date(year, DEC, 25),
-        ]
+        }
         self._check_all_dates(year, expected_holidays)
 
     def test_2022(self):
         # https://www.officeholidays.com/countries/honduras/2022
         year = 2022
-        expected_holidays = [
+        expected_holidays = {
             date(year, JAN, 1),
             date(year, APR, 14),
             date(year, APR, 15),
@@ -99,12 +99,12 @@ class TestHonduras(unittest.TestCase):
             date(year, OCT, 6),
             date(year, OCT, 7),
             date(year, DEC, 25),
-        ]
+        }
         self._check_all_dates(year, expected_holidays)
 
     def test_2025(self):
         year = 2025
-        expected_holidays = [
+        expected_holidays = {
             date(year, JAN, 1),
             date(year, APR, 14),
             date(year, APR, 17),
@@ -116,5 +116,5 @@ class TestHonduras(unittest.TestCase):
             date(year, OCT, 2),
             date(year, OCT, 3),
             date(year, DEC, 25),
-        ]
+        }
         self._check_all_dates(year, expected_holidays)
