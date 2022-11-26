@@ -37,12 +37,22 @@ class Japan(HolidayBase):
     """
 
     country = "JP"
+    special_holidays = {
+        1959: ((APR, 10, "結婚の儀"),),  # The Crown Prince marriage ceremony.
+        1989: ((FEB, 24, "大喪の礼"),),  # State Funeral of Emperor Shōwa.
+        1990: ((NOV, 12, "即位礼正殿の儀"),),  # Enthronement ceremony.
+        1993: ((JUN, 9, "結婚の儀"),),  # The Crown Prince marriage ceremony.
+        2019: (
+            (MAY, 1, "天皇の即位の日"),  # Enthronement day.
+            (OCT, 22, "即位礼正殿の儀が行われる日"),  # Enthronement ceremony.
+        ),
+    }
 
     def _populate(self, year):
-        super()._populate(year)
-
         if year < 1949 or year > 2099:
             raise NotImplementedError
+
+        super()._populate(year)
 
         # New Year's Day
         self[date(year, JAN, 1)] = "元日"
@@ -71,10 +81,6 @@ class Japan(HolidayBase):
             self[date(year, APR, 29)] = "みどりの日"
         else:
             self[date(year, APR, 29)] = "昭和の日"
-
-        # State Funeral of Emperor Shōwa
-        if year == 1989:
-            self[date(year, FEB, 24)] = "大喪の礼"
 
         # Constitution Memorial Day
         self[date(year, MAY, 3)] = "憲法記念日"
@@ -132,26 +138,9 @@ class Japan(HolidayBase):
         self[date(year, NOV, 23)] = "勤労感謝の日"
 
         # Regarding the Emperor of Heisei
-        if year == 1959:
-            # Marriage ceremony
-            self[date(year, APR, 10)] = "結婚の儀"
         if 1989 <= year <= 2018:
             # Heisei Emperor's Birthday
             self[date(year, DEC, 23)] = "天皇誕生日"
-
-            if year == 1990:
-                # Enthronement ceremony
-                self[date(year, NOV, 12)] = "即位礼正殿の儀"
-
-        # Regarding the Emperor of Reiwa
-        if year == 1993:
-            # Marriage ceremony
-            self[date(year, JUN, 9)] = "結婚の儀"
-        elif year == 2019:
-            # Enthronement Day
-            self[date(year, MAY, 1)] = "天皇の即位の日"
-            # Enthronement ceremony
-            self[date(year, OCT, 22)] = "即位礼正殿の儀が行われる日"
 
         # A weekday between national holidays becomes a holiday too (国民の休日)
         self._add_national_holidays(year)
@@ -212,11 +201,9 @@ class Japan(HolidayBase):
 
         if year in (2032, 2049, 2060, 2077, 2088, 2094):
             self[date(year, SEP, 21)] = "国民の休日"
-
-        if year in (2009, 2015, 2026, 2037, 2043, 2054, 2065, 2071, 2099):
+        elif year in (2009, 2015, 2026, 2037, 2043, 2054, 2065, 2071, 2099):
             self[date(year, SEP, 22)] = "国民の休日"
-
-        if year == 2019:
+        elif year == 2019:
             self[date(year, APR, 30)] = "国民の休日"
             self[date(year, MAY, 2)] = "国民の休日"
 

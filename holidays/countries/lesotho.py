@@ -24,6 +24,10 @@ class Lesotho(HolidayBase):
     """
 
     country = "LS"
+    special_holidays = {
+        # https://tinyurl.com/lesothourl
+        2002: ((APR, 4, "Heroes Day"), (MAY, 25, "Africa Day"))
+    }
 
     def _populate(self, year):
         super()._populate(year)
@@ -32,11 +36,6 @@ class Lesotho(HolidayBase):
             # https://www.ilo.org/dyn/travail/docs/2093/Public%20Holidays%20Act%201995.pdf
             self[date(year, JAN, 1)] = "New Year's Day"
             self[date(year, MAR, 11)] = "Moshoeshoe's Day"
-
-            if year == 2002:
-                # https://tinyurl.com/lesothourl
-                self[date(year, APR, 4)] = "Heroes Day"
-                self[date(year, MAY, 25)] = "Africa Day"
 
             if year < 2002:
                 self[date(year, APR, 4)] = "Heroes Day"

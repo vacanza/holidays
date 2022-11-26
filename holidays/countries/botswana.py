@@ -28,6 +28,7 @@ class Botswana(HolidayBase):
     """
 
     country = "BW"
+    special_holidays = {2019: ((JUL, 2, "Public Holiday"),)}
 
     def _populate(self, year: int):
         super()._populate(year)
@@ -96,10 +97,6 @@ class Botswana(HolidayBase):
                 for i in self.get(k).split(","):
                     if " (Observed)" not in i:
                         self[k + rd(days=1)] = i.lstrip() + " (Observed)"
-
-        # Once off ad-hoc holiday.
-        if year == 2019:
-            self[date(year, JUL, 2)] = "Public Holiday"
 
 
 class BW(Botswana):

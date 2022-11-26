@@ -1,7 +1,23 @@
-Version 0.17
+Version 0.18
 ============
 
-Released November 13, 2022
+Released ???????? ??, ????
+
+- Pre-commit reviews #786, #795 (KJhellico, arkid15r, dr-p)
+- Import cleanup, flake8 settings review #792 (arkid15r, KJhellico, dr-p)
+- Special holidays refactoring for 13 countries #796 (arkid15r, KJhellico)
+- Support for Indonesia #787 (KJhellico)
+- Korea renamed to South Korea #797 (arkid15r)
+- Hong Kong optimizations #786 (KJhellico)
+- Korea fixes #791 (KJhellico) + test optimizations (dr-p)
+
+Version 0.17.2
+==============
+
+Released November 23, 2022
+- Swaziland deprecation warning fix #794 (arkid15r)
+
+First release (0.17) November 13, 2022
 
 - 100% test coverage, code refactoring #747, #749 (arkid15r)
 - Special holidays (one-off) support #724 (arkid15r, dr-p)

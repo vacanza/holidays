@@ -33,7 +33,7 @@ class TestLesotho(unittest.TestCase):
         self.assertIn(date(2017, 5, 25), self.holidays)
         self.assertIn(date(2021, 5, 13), self.holidays)
 
-    def test_once_off(self):
+    def test_special_holidays(self):
         self.assertIn(date(2002, 4, 4), self.holidays)
         self.assertIn(date(2002, 5, 25), self.holidays)
 
