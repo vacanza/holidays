@@ -251,6 +251,22 @@ pairs, a list of dates, or even singular date/string/timestamp objects:
    >>> custom_holidays.append(date(2015, 12, 25))
 
 
+Add years to an existing Holiday object
+---------------------------------------
+
+Because the Holiday class is a subclass of dictionary, we use the `update()
+<https://docs.python.org/3/library/stdtypes.html?highlight=update#dict.update>`__ method to add years to an existing
+holiday object:
+
+.. code-block:: python
+
+   >>> from holidays import country_holidays
+   >>> us_holidays = country_holidays('US', years=2020)
+   # to add new years of holidays to the object:
+   >>> us_holidays.update(country_holidays('US', years=2021))
+
+
+
 Other ways to specify the country
 ---------------------------------
 

@@ -12,24 +12,25 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, MO, WE, TH, FR
+from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import MO, TH, FR
 
-from holidays.constants import JAN, MAR, MAY, JUN, AUG, SEP, DEC
-from holidays.constants import WED, WEEKEND
+from holidays.constants import WED, WEEKEND, JAN, MAR, MAY, JUN, AUG, SEP, DEC
 from holidays.holiday_base import HolidayBase
 
 
 class Paraguay(HolidayBase):
-    # https://www.ghp.com.py/news/feriados-nacionales-del-ano-2019-en-paraguay
-    # https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Paraguay
-    # http://www.calendarioparaguay.com/
+    """
+    https://www.ghp.com.py/news/feriados-nacionales-del-ano-2019-en-paraguay
+    https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Paraguay
+    http://www.calendarioparaguay.com/
+    """
 
     country = "PY"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
         if not self.observed and date(year, JAN, 1).weekday() in WEEKEND:
             pass
@@ -37,7 +38,7 @@ class Paraguay(HolidayBase):
             self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
 
         # Patriots day
-        name = "Día de los Héroes de la Patria" "[Patriots Day]"
+        name = "Día de los Héroes de la Patria [Patriots Day]"
 
         if not self.observed and date(year, MAR, 1).weekday() in WEEKEND:
             pass
@@ -47,8 +48,8 @@ class Paraguay(HolidayBase):
             self[date(year, MAR, 1)] = name
 
         # Holy Week
-        name_thu = "Semana Santa (Jueves Santo)  [Holy day (Holy Thursday)]"
-        name_fri = "Semana Santa (Viernes Santo)  [Holy day (Holy Friday)]"
+        name_thu = "Semana Santa (Jueves Santo) [Holy day (Holy Thursday)]"
+        name_fri = "Semana Santa (Viernes Santo) [Holy day (Holy Friday)]"
         name_easter = "Día de Pascuas [Easter Day]"
 
         self[easter(year) + rd(weekday=TH(-1))] = name_thu

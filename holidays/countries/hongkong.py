@@ -12,18 +12,34 @@
 from datetime import date, datetime, timedelta
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, FR, SA, MO
+from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import MO, FR, SA
 
-from holidays.constants import JAN, APR, MAY, JUL, SEP, OCT, DEC
-from holidays.constants import MON, TUE, WED, THU, FRI, SAT, SUN
+from holidays.constants import (
+    MON,
+    TUE,
+    WED,
+    THU,
+    FRI,
+    SAT,
+    SUN,
+    JAN,
+    APR,
+    MAY,
+    JUL,
+    SEP,
+    OCT,
+    DEC,
+)
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _ChineseLuniSolar
 
 
 class HongKong(HolidayBase):
-
-    # https://www.gov.hk/en/about/abouthk/holiday/2020.htm
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Hong_Kong
+    """
+    https://www.gov.hk/en/about/abouthk/holiday/2020.htm
+    https://en.wikipedia.org/wiki/Public_holidays_in_Hong_Kong
+    """
 
     country = "HK"
 
@@ -32,6 +48,7 @@ class HongKong(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
 
         day_following = "The day following "
 
@@ -183,13 +200,23 @@ class HongKong(HolidayBase):
         dt = self.cnls.lunar_to_gre(year, 8, 15)
         mid_autumn_date = date(dt.year, dt.month, dt.day)
         if self.observed:
+            # if Chinese Mid-Autumn Festival lies on Saturday
+            # before 1983 public holiday lies on Monday
+            # from 1983 to 2010 public holiday lies on same day
+            # since 2011 public holiday lies on Monday
             if mid_autumn_date.weekday() == SAT:
-                self[mid_autumn_date] = name
+                if 1983 <= year <= 2010:
+                    self[mid_autumn_date] = name
+                else:
+                    self[mid_autumn_date + rd(days=+2)] = (
+                        "The second day of the " + name + " (Monday)"
+                    )
+                    mid_autumn_date = mid_autumn_date + rd(days=+2)
             else:
                 self[mid_autumn_date + rd(days=+1)] = (
                     day_following + "the " + name
                 )
-            mid_autumn_date = mid_autumn_date + rd(days=+1)
+                mid_autumn_date = mid_autumn_date + rd(days=+1)
         else:
             self[mid_autumn_date] = name
 

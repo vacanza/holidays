@@ -11,7 +11,8 @@
 
 from datetime import date
 
-from dateutil.relativedelta import relativedelta as rd, MO
+from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import MO
 
 from holidays.constants import (
     JAN,
@@ -31,14 +32,15 @@ from holidays.holiday_base import HolidayBase
 
 
 class Japan(HolidayBase):
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Japan
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Japan
+    """
 
     country = "JP"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         if year < 1949 or year > 2099:
             raise NotImplementedError
 
@@ -164,52 +166,47 @@ class Japan(HolidayBase):
                 day = 21
             elif year >= 2092:
                 day = 19
-        if year % 4 == 1:
-            if year <= 1989:
-                day = 21
-        if year % 4 == 2:
-            if year <= 2022:
-                day = 21
-        if year % 4 == 3:
-            if year <= 2055:
-                day = 21
+        elif (
+            (year % 4 == 1 and year <= 1989)
+            or (year % 4 == 2 and year <= 2022)
+            or (year % 4 == 3 and year <= 2055)
+        ):
+            day = 21
+
         return date(year, MAR, day)
 
     def _autumnal_equinox_day(self, year):
         day = 22
-        if year % 4 == 0:
-            if year <= 2008:
-                day = 23
-        if year % 4 == 1:
-            if year <= 2041:
-                day = 23
-        if year % 4 == 2:
-            if year <= 2074:
-                day = 23
-        if year % 4 == 3:
+        if (
+            (year % 4 == 0 and year <= 2008)
+            or (year % 4 == 1 and year <= 2041)
+            or (year % 4 == 2 and year <= 2074)
+        ):
+            day = 23
+        elif year % 4 == 3:
+            day = 23
             if year <= 1979:
                 day = 24
-            else:
-                day = 23
+
         return date(year, SEP, day)
 
     def _add_national_holidays(self, year):
         if year in (
-            1993,
-            1999,
-            2004,
             1988,
-            1994,
-            2005,
             1989,
-            1995,
-            2000,
-            2006,
             1990,
-            2001,
             1991,
+            1993,
+            1994,
+            1995,
             1996,
+            1999,
+            2000,
+            2001,
             2002,
+            2004,
+            2005,
+            2006,
         ):
             self[date(year, MAY, 4)] = "国民の休日"
 
@@ -248,7 +245,7 @@ class Japan(HolidayBase):
                 12,
                 (1979, 1990, 1996, 2001, 2007, 2018, 2024, 2029, 2035, 2046),
             ),
-            (2, 24, (2020,)),
+            (2, 24, (2020, 2025, 2031, 2042, 2048)),
             (3, 21, (1988, 2005, 2016, 2033, 2044, 2050)),
             (3, 22, (1982, 1999, 2010, 2027)),
             (

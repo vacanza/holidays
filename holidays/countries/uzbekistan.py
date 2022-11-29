@@ -10,6 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+
 from holidays.constants import JAN, MAR, MAY, SEP, OCT, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
@@ -22,10 +23,9 @@ class Uzbekistan(HolidayBase):
 
     country = "UZ"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         """Populate the holidays for a given year"""
         # New Year's holiday
         self[date(year, JAN, 1)] = "New Year"

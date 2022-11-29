@@ -9,12 +9,13 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from calendar import isleap
+from datetime import date
+
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from holidays.constants import SAT, SUN
-from holidays.constants import JAN, MAR, MAY, SEP
+
+from holidays.constants import SAT, SUN, JAN, MAR, MAY, SEP
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
 
@@ -35,12 +36,12 @@ WEEKEND = (SAT, SUN)
 
 
 class Ethiopia(HolidayBase):
+
     country = "ET"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
         # The Ethiopian New Year is called Kudus Yohannes in Ge'ez and
         # Tigrinya, while in Amharic,

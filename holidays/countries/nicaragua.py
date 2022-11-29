@@ -12,7 +12,8 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, TH, FR
+from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import TH, FR
 
 from holidays.constants import JAN, MAY, JUL, AUG, SEP, DEC
 from holidays.holiday_base import HolidayBase
@@ -29,6 +30,8 @@ class Nicaragua(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         # New Years
         self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
         # Maundy Thursday
@@ -56,12 +59,10 @@ class Nicaragua(HolidayBase):
         self[date(year, DEC, 25)] = "Navidad [Christmas]"
 
         # Provinces festive day
-        if self.subdiv:
-            if self.subdiv == "MN":
-                # Santo Domingo Day Down
-                self[date(year, AUG, 1)] = "Bajada de Santo Domingo"
-                # Santo Domingo Day Up
-                self[date(year, AUG, 10)] = "Subida de Santo Domingo"
+        # Santo Domingo Day Down
+        self[date(year, AUG, 1)] = "Bajada de Santo Domingo"
+        # Santo Domingo Day Up
+        self[date(year, AUG, 10)] = "Subida de Santo Domingo"
 
 
 class NI(Nicaragua):

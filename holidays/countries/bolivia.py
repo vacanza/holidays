@@ -15,18 +15,19 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import FR
 from dateutil.relativedelta import relativedelta as rd
+
 from holidays.constants import (
-    APR,
-    AUG,
-    DEC,
-    JAN,
-    JUL,
-    JUN,
-    MAY,
-    NOV,
-    OCT,
-    SEP,
     SUN,
+    JAN,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
 )
 from holidays.holiday_base import HolidayBase
 
@@ -51,6 +52,8 @@ class Bolivia(HolidayBase):
     ]
 
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day.
         name = "Año Nuevo"
         if year >= 1825:

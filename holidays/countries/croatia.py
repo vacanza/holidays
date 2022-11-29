@@ -18,17 +18,17 @@ from holidays.holiday_base import HolidayBase
 
 
 class Croatia(HolidayBase):
-
-    # Updated with act 022-03 / 19-01 / 219 of 14 November 2019
-    # https://narodne-novine.nn.hr/clanci/sluzbeni/2019_11_110_2212.html
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Croatia
+    """
+    Updated with act 022-03 / 19-01 / 219 of 14 November 2019
+    https://narodne-novine.nn.hr/clanci/sluzbeni/2019_11_110_2212.html
+    https://en.wikipedia.org/wiki/Public_holidays_in_Croatia
+    """
 
     country = "HR"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # New years
         self[date(year, JAN, 1)] = "Nova Godina"
 

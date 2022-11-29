@@ -9,25 +9,27 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, datetime
+import warnings
+from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import SUN
-from holidays.constants import JAN, APR, MAY, JUL, SEP, DEC
+from holidays.constants import SUN, JAN, APR, MAY, JUL, SEP, DEC
 from holidays.holiday_base import HolidayBase
 
 
-class Swaziland(HolidayBase):
+class Eswatini(HolidayBase):
+    """
+    https://swazilii.org/sz/legislation/act/1938/71
+    https://www.officeholidays.com/countries/swaziland
+    """
+
     country = "SZ"
 
-    def __init__(self, **kwargs):
-        # https://swazilii.org/sz/legislation/act/1938/71
-        # https://www.officeholidays.com/countries/swaziland
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # Observed since 1938
         if year > 1938:
             self[date(year, JAN, 1)] = "New Year's Day"
@@ -77,9 +79,19 @@ class Swaziland(HolidayBase):
                     self[k + rd(days=add_days)] = v + " (Day Off)"
 
 
-class SZ(Swaziland):
+class Swaziland(Eswatini):
+    def __init__(self, *args, **kwargs) -> None:
+        warnings.warn(
+            "Swaziland is deprecated, use Eswatini instead.",
+            DeprecationWarning,
+        )
+
+        super().__init__(*args, **kwargs)
+
+
+class SZ(Eswatini):
     pass
 
 
-class SZW(Swaziland):
+class SZW(Eswatini):
     pass

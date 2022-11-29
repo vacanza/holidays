@@ -10,23 +10,22 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-
 from datetime import date
 
 import holidays
 from holidays.constants import (
-    JAN,
-    FEB,
-    MAR,
     APR,
-    MAY,
-    JUN,
-    JUL,
     AUG,
-    SEP,
-    OCT,
-    NOV,
     DEC,
+    FEB,
+    JAN,
+    JUL,
+    JUN,
+    MAR,
+    MAY,
+    NOV,
+    OCT,
+    SEP,
 )
 
 
@@ -932,7 +931,7 @@ class TestMalaysia(unittest.TestCase):
                     self.assertIn(hol_date, my_holidays)
                     tot_holidays += 1
             # check that there are no extra ones
-            assert len(my_holidays) == tot_holidays
+            self.assertEqual(len(my_holidays), tot_holidays)
 
     def test_Malaysia(self):
         # Federal Public Holidays

@@ -12,22 +12,22 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, SU
+from dateutil.relativedelta import relativedelta as rd
 
 from holidays.holiday_base import HolidayBase
 
 
 class Latvia(HolidayBase):
-
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Latvia
-    # https://information.lv/
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Latvia
+    https://information.lv/
+    """
 
     country = "LV"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
         self[date(year, 1, 1)] = "Jaunais gads"
 
@@ -51,8 +51,7 @@ class Latvia(HolidayBase):
         if year >= 1990:
             self[
                 date(year, 5, 4)
-            ] = "Latvijas Republikas \
-                Neatkarības atjaunošanas diena"
+            ] = "Latvijas Republikas Neatkarības atjaunošanas diena"
 
         # by law
         # https://likumi.lv/ta/id/72608-par-svetku-atceres-un-atzimejamam-dienam

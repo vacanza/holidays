@@ -10,7 +10,6 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-
 from datetime import date
 
 import holidays
@@ -101,3 +100,6 @@ class TestChina(unittest.TestCase):
         self.assertIn(date(2015, 10, 1), self.holidays)  # National Day day 1
         self.assertIn(date(2015, 10, 2), self.holidays)  # National Day day 2
         self.assertIn(date(2015, 10, 3), self.holidays)  # National Day day 3
+
+    def test_pre_1950(self):
+        self.assertNotIn(date(1949, 1, 1), self.holidays)

@@ -10,7 +10,6 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-
 from datetime import date
 
 import holidays
@@ -69,3 +68,6 @@ class TestNicaragua(unittest.TestCase):
         self.assertIn(date(year, 12, 8), self.ni_holidays)
         # Christmas Day
         self.assertIn(date(year, 12, 25), self.ni_holidays)
+
+    def test_pre_1979(self):
+        self.assertNotIn(date(1978, 7, 19), self.ni_holidays)

@@ -12,10 +12,10 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, MO, TH, FR
+from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import MO, TH, FR
 
-from holidays.constants import JAN, MAR, MAY, JUN, JUL, AUG, OCT, NOV, DEC
-from holidays.constants import MON
+from holidays.constants import MON, JAN, MAR, MAY, JUN, JUL, AUG, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -29,9 +29,6 @@ class Colombia(HolidayBase):
     """
 
     country = "CO"
-
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
 
     def _add_with_bridge(self, _date, name):
         """
@@ -55,6 +52,8 @@ class Colombia(HolidayBase):
             self[_date] = name
 
     def _populate(self, year):
+        super()._populate(year)
+
         self._add_fixed_date_holidays(year)
         self._add_flexible_date_holidays(year)
         self._add_easter_based_holidays(year)

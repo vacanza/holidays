@@ -12,21 +12,22 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import FR, MO, SU, WE
 from dateutil.relativedelta import relativedelta as rd
-from holidays.constants import AUG, DEC, FEB, JAN, JUN, MAY, OCT, SUN, WEEKEND
+from dateutil.relativedelta import MO, WE, FR, SU
+
+from holidays.constants import SUN, WEEKEND, JAN, FEB, MAY, JUN, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
 class Jamaica(HolidayBase):
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Jamaica
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Jamaica
+    """
 
     country = "JM"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
 
         # New Year's Day
         name = "New Year's Day"

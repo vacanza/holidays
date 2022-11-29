@@ -10,7 +10,6 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-
 from datetime import date
 
 import holidays
@@ -297,6 +296,9 @@ class TestHongKong(unittest.TestCase):
 
     def test_mid_autumn_festival(self):
         for year, month, day in [
+            (2003, 9, 12),
+            (2004, 9, 29),
+            (2005, 9, 19),
             (2006, 10, 7),
             (2007, 9, 26),
             (2008, 9, 15),
@@ -311,16 +313,29 @@ class TestHongKong(unittest.TestCase):
             (2018, 9, 25),
             (2019, 9, 14),
             (2020, 10, 2),
+            (2021, 9, 22),
+            (2023, 9, 30),
+            (2024, 9, 18),
+            (2025, 10, 7),
+            (2026, 9, 26),
         ]:
             self.assertEqual(
                 self.holidays[date(year, month, day)],
                 "The " + "day following the Chinese Mid-Autumn Festival",
             )
 
-        self.assertEqual(
-            self.holidays[date(2009, 10, 3)],
-            "Chinese " + "Mid-Autumn Festival",
-        )
+        for year, month, day in [(2002, 9, 21), (2009, 10, 3)]:
+            self.assertEqual(
+                self.holidays[date(year, month, day)],
+                "Chinese " + "Mid-Autumn Festival",
+            )
+
+        for year, month, day in [(2022, 9, 12)]:
+            self.assertEqual(
+                self.holidays[date(year, month, day)],
+                "The second day of the "
+                + "Chinese Mid-Autumn Festival (Monday)",
+            )
 
     def test_national_day(self):
         for year in [

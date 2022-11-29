@@ -12,22 +12,23 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, MO
+from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import MO
 
 from holidays.constants import JAN, MAY, JUN, AUG, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
 class Luxembourg(HolidayBase):
-
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Luxembourg
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Luxembourg
+    """
 
     country = "LU"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # Public holidays
         self[date(year, JAN, 1)] = "Neijoerschdag"
         self[easter(year) + rd(weekday=MO)] = "Ouschterméindeg"

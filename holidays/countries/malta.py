@@ -19,14 +19,15 @@ from holidays.holiday_base import HolidayBase
 
 
 class Malta(HolidayBase):
-    # https://www.gov.mt/en/About%20Malta/Pages/Public%20Holidays.aspx
+    """
+    https://www.gov.mt/en/About%20Malta/Pages/Public%20Holidays.aspx
+    """
 
     country = "MT"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         self[date(year, JAN, 1)] = "New Year"
         self[date(year, FEB, 10)] = "Feast of St. Paul's Shipwreck"
         self[date(year, MAR, 19)] = "Feast of St. Joseph"

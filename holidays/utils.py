@@ -13,12 +13,12 @@
 
 import inspect
 import warnings
+from datetime import date, timedelta
 from functools import lru_cache
 from typing import Dict, Iterable, List, Optional, Union
 
-from datetime import date, timedelta
-
 from hijri_converter import convert
+from hijri_converter.ummalqura import GREGORIAN_RANGE
 
 import holidays.countries
 import holidays.financial
@@ -290,11 +290,11 @@ def list_supported_countries() -> Dict[str, List[str]]:
         the value is a list of supported subdivision codes.
     """
     return {
-        obj.country: obj.subdivisions
-        for name, obj in inspect.getmembers(
+        cls.country: cls.subdivisions
+        for name, cls in inspect.getmembers(
             holidays.countries, inspect.isclass
         )
-        if obj.__base__ == HolidayBase
+        if len(name) == 2 and issubclass(cls, HolidayBase)
     }
 
 
@@ -307,11 +307,9 @@ def list_supported_financial() -> Dict[str, List[str]]:
         the value is a list of supported subdivision codes.
     """
     return {
-        obj.market: obj.subdivisions
-        for name, obj in inspect.getmembers(
-            holidays.financial, inspect.isclass
-        )
-        if obj.__base__ == HolidayBase
+        cls.market: cls.subdivisions
+        for _, cls in inspect.getmembers(holidays.financial, inspect.isclass)
+        if issubclass(cls, HolidayBase)
     }
 
 
@@ -338,12 +336,23 @@ def _islamic_to_gre(Gyear: int, Hmonth: int, Hday: int) -> List[date]:
         List of Gregorian dates within the Gregorian year specified that
         matches the Islamic (Lunar Hijrī) calendar day and month specified.
     """
+    gre_dates: List[date] = []
+
+    # To avoid hijri_converter check range OverflowError.
+    dt = (Gyear, Hmonth, Hday)
+    dt_min, dt_max = GREGORIAN_RANGE
+    if dt < dt_min or dt > dt_max:
+        return gre_dates
+
     Hyear = convert.Gregorian(Gyear, 1, 1).to_hijri().datetuple()[0]
     gres = [
         convert.Hijri(y, Hmonth, Hday).to_gregorian()
         for y in range(Hyear - 1, Hyear + 2)
     ]
-    gre_dates = [date(*gre.datetuple()) for gre in gres if gre.year == Gyear]
+    gre_dates.extend(
+        (date(*gre.datetuple()) for gre in gres if gre.year == Gyear)
+    )
+
     return gre_dates
 
 

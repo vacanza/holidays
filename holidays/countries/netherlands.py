@@ -12,21 +12,23 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, FR
+from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import FR
 
-from holidays.constants import JAN, APR, MAY, AUG, DEC
-from holidays.constants import SUN
+from holidays.constants import SUN, JAN, APR, MAY, AUG, DEC
 from holidays.holiday_base import HolidayBase
 
 
 class Netherlands(HolidayBase):
+    """
+    http://www.iamsterdam.com/en/plan-your-trip/practical-info/public-holidays
+    """
+
     country = "NL"
 
-    def __init__(self, **kwargs):
-        # http://www.iamsterdam.com/en/plan-your-trip/practical-info/public-holidays
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # New years
         self[date(year, JAN, 1)] = "Nieuwjaarsdag"
 

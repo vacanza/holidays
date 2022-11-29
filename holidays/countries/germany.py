@@ -12,7 +12,8 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, WE
+from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import WE
 
 from holidays.constants import JAN, MAR, MAY, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
@@ -74,10 +75,9 @@ class Germany(HolidayBase):
         "TH",
     ]
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         if year <= 1989:
             return
 
@@ -124,27 +124,19 @@ class Germany(HolidayBase):
 
         self[date(year, OCT, 3)] = "Tag der Deutschen Einheit"
 
-        if self.subdiv in ("BB", "MV", "SN", "ST", "TH"):
-            self[date(year, OCT, 31)] = "Reformationstag"
-
-        if self.subdiv in ("HB", "SH", "NI", "HH") and year >= 2018:
-            self[date(year, OCT, 31)] = "Reformationstag"
-
-        # in 2017 all states got the Reformationstag (500th anniversary of
-        # Luther's thesis)
-        if year == 2017:
+        if (
+            self.subdiv in ("BB", "MV", "SN", "ST", "TH")
+            or (self.subdiv in ("HB", "SH", "NI", "HH") and year >= 2018)
+            or year == 2017
+        ):
             self[date(year, OCT, 31)] = "Reformationstag"
 
         if self.subdiv in ("BW", "BY", "BYP", "NW", "RP", "SL"):
             self[date(year, NOV, 1)] = "Allerheiligen"
 
         if year <= 1994 or self.subdiv == "SN":
-            # can be calculated as "last wednesday before year-11-23" which is
-            # why we need to go back two wednesdays if year-11-23 happens to be
-            # a wednesday
-            base_data = date(year, NOV, 23)
-            weekday_delta = WE(-2) if base_data.weekday() == 2 else WE(-1)
-            self[base_data + rd(weekday=weekday_delta)] = "Buß- und Bettag"
+            # last wednesday before year-11-23
+            self[date(year, NOV, 22) + rd(weekday=WE(-1))] = "Buß- und Bettag"
 
         if year >= 2019:
             if self.subdiv == "TH":

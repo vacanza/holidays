@@ -11,23 +11,23 @@
 
 from datetime import date
 
-from dateutil.easter import easter, EASTER_ORTHODOX
+from dateutil.easter import EASTER_ORTHODOX, easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, FEB, MAY, NOV
-from holidays.constants import SUN, WEEKEND
+from holidays.constants import SUN, WEEKEND, JAN, FEB, MAY, NOV
 from holidays.holiday_base import HolidayBase
 
 
 class Serbia(HolidayBase):
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Serbia
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Serbia
+    """
 
     country = "RS"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
         name = "Нова година"
         self[date(year, JAN, 1)] = name

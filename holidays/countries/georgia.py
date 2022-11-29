@@ -11,7 +11,7 @@
 
 from datetime import date
 
-from dateutil.easter import easter, EASTER_ORTHODOX
+from dateutil.easter import EASTER_ORTHODOX, easter
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAR, APR, MAY, AUG, OCT, NOV
@@ -25,10 +25,8 @@ class Georgia(HolidayBase):
 
     country = "GE"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
 
         # New Year's Day
         name = "ახალი წელი"

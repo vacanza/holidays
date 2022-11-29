@@ -10,7 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from dateutil.relativedelta import relativedelta as rd
+
 from holidays.constants import JAN, MAR, MAY, JUL, AUG, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
@@ -23,10 +23,9 @@ class Kazakhstan(HolidayBase):
 
     country = "KZ"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         """Populate the holidays for a given year
 
         All holidays get observed on weekdays if they fall on weekends, but

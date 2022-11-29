@@ -11,22 +11,22 @@
 
 from datetime import date, datetime, timedelta
 
-from dateutil.relativedelta import relativedelta as rd, FR, SA, MO
-
-from holidays.constants import JAN, APR, MAY, SEP
-from holidays.constants import SAT, SUN
-from holidays.holiday_base import HolidayBase
+from dateutil.relativedelta import relativedelta as rd
 
 # Installation: pip install korean_lunar_calendar
 # URL: https://github.com/usingsky/korean_lunar_calendar_py/
 from korean_lunar_calendar import KoreanLunarCalendar
 
+from holidays.constants import JAN, APR, MAY, SEP, SAT, SUN
+from holidays.holiday_base import HolidayBase
+
 
 class Vietnam(HolidayBase):
-
-    # https://publicholidays.vn/
-    # http://vbpl.vn/TW/Pages/vbpqen-toanvan.aspx?ItemID=11013 Article.115
-    # https://www.timeanddate.com/holidays/vietnam/
+    """
+    https://publicholidays.vn/
+    http://vbpl.vn/TW/Pages/vbpqen-toanvan.aspx?ItemID=11013 Article.115
+    https://www.timeanddate.com/holidays/vietnam/
+    """
 
     country = "VN"
 
@@ -35,6 +35,7 @@ class Vietnam(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
 
         # New Year's Day
         name = "International New Year's Day"
