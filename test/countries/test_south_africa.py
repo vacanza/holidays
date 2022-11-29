@@ -37,11 +37,20 @@ class TestSouthAfrica(unittest.TestCase):
         self.assertNotIn("2016-12-28", self.holidays)
         self.assertNotIn("2015-03-02", self.holidays)
 
-    def test_onceoff(self):
+    def test_special_holidays(self):
+        self.assertIn("1999-06-02", self.holidays)
         self.assertIn("1999-12-31", self.holidays)  # Y2K
-        self.assertIn("2008-05-02", self.holidays)  # Y2K
         self.assertIn("2000-01-02", self.holidays)  # Y2K
-        self.assertNotIn("2017-08-03", self.holidays)
+        self.assertIn("2004-04-14", self.holidays)
+        self.assertIn("2006-03-01", self.holidays)
+        self.assertIn("2008-05-02", self.holidays)
+        self.assertIn("2009-04-22", self.holidays)
+        self.assertIn("2011-05-18", self.holidays)
+        self.assertIn("2011-12-27", self.holidays)
+        self.assertIn("2014-05-07", self.holidays)
+        self.assertIn("2016-08-03", self.holidays)
+        self.assertIn("2019-05-08", self.holidays)
+        self.assertIn("2021-11-01", self.holidays)
 
     def test_presidential(self):
         self.assertIn("2008-05-02", self.holidays)

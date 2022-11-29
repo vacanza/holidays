@@ -28,8 +28,6 @@ class TestSingapore(unittest.TestCase):
         self.assertIn(date(1968, 12, 26), self.holidays)
         # latest polling day
         self.assertIn(date(2015, 9, 11), self.holidays)
-        # SG50
-        self.assertIn(date(2015, 8, 7), self.holidays)
         # Year with lunar leap month
         self.assertIn(date(2015, 8, 7), self.holidays)
         # Latest holidays
@@ -100,3 +98,6 @@ class TestSingapore(unittest.TestCase):
         self.assertIsInstance(h, holidays.Singapore)
         h = holidays.SGP()
         self.assertIsInstance(h, holidays.Singapore)
+
+    def test_special_holidays(self):
+        self.assertIn(date(2015, 8, 7), self.holidays)

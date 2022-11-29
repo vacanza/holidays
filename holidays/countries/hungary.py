@@ -68,7 +68,7 @@ class Hungary(HolidayBase):
             # Liberation Day
             self[date(year, APR, 4)] = "A felszabadulás ünnepe"
             # Memorial day of The Great October Soviet Socialist Revolution
-            if year not in (1956, 1989):
+            if year not in {1956, 1989}:
                 self[
                     date(year, NOV, 7)
                 ] = "A nagy októberi szocialista forradalom ünnepe"

@@ -144,7 +144,7 @@ class UnitedStates(HolidayBase):
                 self[date(year, JAN, 19)] = name
 
         # Inauguration Day
-        if self.subdiv in ("DC", "LA", "MD", "VA") and year >= 1789:
+        if self.subdiv in {"DC", "LA", "MD", "VA"} and year >= 1789:
             name = "Inauguration Day"
             if (year - 1789) % 4 == 0 and year >= 1937:
                 self[date(year, JAN, 20)] = name
@@ -167,7 +167,7 @@ class UnitedStates(HolidayBase):
                     "Dr. Martin Luther King Jr. "
                     "and Robert E. Lee's Birthdays"
                 )
-            elif self.subdiv in ("AZ", "NH"):
+            elif self.subdiv in {"AZ", "NH"}:
                 name = "Dr. Martin Luther King Jr./Civil Rights Day"
             elif self.subdiv == "GA" and year < 2012:
                 name = "Robert E. Lee's Birthday"
@@ -178,7 +178,7 @@ class UnitedStates(HolidayBase):
         # Lincoln's Birthday
         name = "Lincoln's Birthday"
         if (
-            self.subdiv in ("CT", "IL", "IA", "NJ", "NY") and year >= 1971
+            self.subdiv in {"CT", "IA", "IL", "NJ", "NY"} and year >= 1971
         ) or (self.subdiv == "CA" and 1971 <= year <= 2009):
             self[date(year, FEB, 12)] = name
             if self.observed and date(year, FEB, 12).weekday() == SAT:
@@ -201,9 +201,9 @@ class UnitedStates(HolidayBase):
             name = "George Washington/Thomas Jefferson Birthday"
         elif self.subdiv == "AR":
             name = "George Washington's Birthday and Daisy Gatson Bates Day"
-        elif self.subdiv in ("PR", "VI"):
+        elif self.subdiv in {"PR", "VI"}:
             name = "Presidents' Day"
-        if self.subdiv not in ("DE", "FL", "GA", "NM", "PR"):
+        if self.subdiv not in {"DE", "FL", "GA", "NM", "PR"}:
             if year > 1970:
                 self[date(year, FEB, 1) + rd(weekday=MO(+3))] = name
             elif year >= 1879:
@@ -213,7 +213,7 @@ class UnitedStates(HolidayBase):
                 self[date(year, DEC, 24)] = name
             else:
                 self[date(year, DEC, 26)] = name
-        elif self.subdiv in ("PR", "VI"):
+        elif self.subdiv in {"PR", "VI"}:
             self[date(year, FEB, 1) + rd(weekday=MO(+3))] = name
 
         # Mardi Gras
@@ -290,9 +290,9 @@ class UnitedStates(HolidayBase):
                 self[date(year, APR, 17)] = name + " (Observed)"
 
         # Patriots' Day
-        if self.subdiv in ("ME", "MA") and year >= 1969:
+        if self.subdiv in {"MA", "ME"} and year >= 1969:
             self[date(year, APR, 1) + rd(weekday=MO(+3))] = "Patriots' Day"
-        elif self.subdiv in ("ME", "MA") and year >= 1894:
+        elif self.subdiv in {"MA", "ME"} and year >= 1894:
             self[date(year, APR, 19)] = "Patriots' Day"
 
         # Holy Thursday
@@ -300,20 +300,20 @@ class UnitedStates(HolidayBase):
             self[easter(year) + rd(weekday=TH(-1))] = "Holy Thursday"
 
         # Good Friday
-        if self.subdiv in (
+        if self.subdiv in {
             "CT",
             "DE",
             "GU",
             "IN",
             "KY",
             "LA",
-            "NJ",
             "NC",
+            "NJ",
             "PR",
             "TN",
             "TX",
             "VI",
-        ):
+        }:
             self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
 
         # Easter Monday
@@ -322,7 +322,7 @@ class UnitedStates(HolidayBase):
 
         # Confederate Memorial Day
         name = "Confederate Memorial Day"
-        if self.subdiv in ("AL", "GA", "MS", "SC") and year >= 1866:
+        if self.subdiv in {"AL", "GA", "MS", "SC"} and year >= 1866:
             if self.subdiv == "GA" and year >= 2016:
                 name = "State Holiday"
             if self.subdiv == "GA" and year == 2020:
@@ -458,7 +458,7 @@ class UnitedStates(HolidayBase):
             self[date(year, SEP, 1) + rd(weekday=MO)] = "Labor Day"
 
         # Columbus Day
-        if self.subdiv not in ("AK", "AR", "DE", "FL", "HI", "NV"):
+        if self.subdiv not in {"AK", "AR", "DE", "FL", "HI", "NV"}:
             if self.subdiv == "SD":
                 name = "Native American Day"
             elif self.subdiv == "VI":
@@ -497,10 +497,10 @@ class UnitedStates(HolidayBase):
         # Election Day
         if (
             self.subdiv
-            in ("DE", "HI", "IL", "IN", "LA", "MT", "NH", "NJ", "NY", "WV")
+            in {"DE", "HI", "IL", "IN", "LA", "MT", "NH", "NJ", "NY", "WV"}
             and year >= 2008
             and year % 2 == 0
-        ) or (self.subdiv in ("IN", "NY") and year >= 2015):
+        ) or (self.subdiv in {"IN", "NY"} and year >= 2015):
             dt = date(year, NOV, 1) + rd(weekday=MO)
             self[dt + rd(days=+1)] = "Election Day"
 
@@ -540,16 +540,16 @@ class UnitedStates(HolidayBase):
         # New Mexico Presidents' Day
         if (
             (
-                self.subdiv in ("CA", "DE", "FL", "NH", "NC", "OK", "TX", "WV")
+                self.subdiv in {"CA", "DE", "FL", "NC", "NH", "OK", "TX", "WV"}
                 and year >= 1975
             )
             or (self.subdiv == "IN" and year >= 2010)
             or (self.subdiv == "MD" and year >= 2008)
-            or self.subdiv in ("NM", "NV", "PA")
+            or self.subdiv in {"NM", "NV", "PA"}
         ):
-            if self.subdiv in ("CA", "DE", "NH", "NC", "OK", "PA", "WV"):
+            if self.subdiv in {"CA", "DE", "NC", "NH", "OK", "PA", "WV"}:
                 name = "Day After Thanksgiving"
-            if self.subdiv in ("FL", "TX"):
+            if self.subdiv in {"FL", "TX"}:
                 name = "Friday After Thanksgiving"
             if self.subdiv == "IN":
                 name = "Lincoln's Birthday"
@@ -577,7 +577,7 @@ class UnitedStates(HolidayBase):
         # Christmas Eve
         if (
             self.subdiv == "AS"
-            or (self.subdiv in ("KS", "MI", "NC") and year >= 2013)
+            or (self.subdiv in {"KS", "MI", "NC"} and year >= 2013)
             or (self.subdiv == "TX" and year >= 1981)
             or (self.subdiv == "WI" and year >= 2012)
         ):
@@ -617,7 +617,7 @@ class UnitedStates(HolidayBase):
             self[date(year, DEC, 26)] = "Christmas Second Day"
 
         # New Year's Eve
-        if (self.subdiv in ("KY", "MI") and year >= 2013) or (
+        if (self.subdiv in {"KY", "MI"} and year >= 2013) or (
             self.subdiv == "WI" and year >= 2012
         ):
             name = "New Year's Eve"

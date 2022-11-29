@@ -8,6 +8,7 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
+
 from datetime import date
 
 from dateutil.easter import easter
@@ -146,7 +147,7 @@ class Canada(HolidayBase):
         # Victoria Day / National Patriots' Day (QC)
         if year >= 1953:
             dt = date(year, MAY, 24) + rd(weekday=MO(-1))
-            if self.subdiv not in ("NB", "NS", "PE", "NL", "QC"):
+            if self.subdiv not in {"NB", "NS", "PE", "NL", "QC"}:
                 self[dt] = self.translate("Victoria Day")
             elif self.subdiv == "QC":
                 self[dt] = self.translate("National Patriots' Day")
@@ -193,18 +194,18 @@ class Canada(HolidayBase):
                 self[date(2000, APR, 1)] = name
 
         # Civic Holiday
-        if self.subdiv in ("ON", "MB", "NT") and year >= 1900:
+        if year >= 1900 and self.subdiv in {"MB", "NT", "ON"}:
             self[date(year, AUG, 1) + rd(weekday=MO)] = self.translate("Civic Holiday")
-        elif self.subdiv == "AB" and year >= 1974:
+        elif year >= 1974 and self.subdiv == "AB":
             # https://en.wikipedia.org/wiki/Civic_Holiday#Alberta
             self[date(year, AUG, 1) + rd(weekday=MO)] = self.translate("Heritage Day")
-        elif self.subdiv == "BC" and year >= 1974:
+        elif year >= 1974 and self.subdiv == "BC":
             # https://en.wikipedia.org/wiki/Civic_Holiday
             self[date(year, AUG, 1) + rd(weekday=MO)] = self.translate("British Columbia Day")
-        elif self.subdiv == "NB" and year >= 1900:
+        elif year >= 1900 and self.subdiv == "NB":
             # https://en.wikipedia.org/wiki/Civic_Holiday
             self[date(year, AUG, 1) + rd(weekday=MO)] = self.translate("New Brunswick Day")
-        elif self.subdiv == "SK" and year >= 1900:
+        elif year >= 1900 and self.subdiv == "SK":
             # https://en.wikipedia.org/wiki/Civic_Holiday
             self[date(year, AUG, 1) + rd(weekday=MO)] = self.translate("Saskatchewan Day")
 
@@ -215,20 +216,26 @@ class Canada(HolidayBase):
         # Funeral of Queen Elizabeth II
         # https://www.narcity.com/provinces-territories-will-have-a-day-off-monday-mourn-queen
         # TODO: the territories holiday status (NT, NU, YT) is still tentative
-        queen_funeral_observers = ("BC", "NB", "NL", "NS", "PE", "YT")
-        if self.subdiv in queen_funeral_observers and year == 2022:
+        if year == 2022 and self.subdiv in {
+            "BC",
+            "NB",
+            "NL",
+            "NS",
+            "PE",
+            "YT",
+        }:
             self[
                 date(2022, SEP, 19)
             ] = self.translate("Funeral of Her Majesty the Queen Elizabeth II")
 
         # National Day for Truth and Reconciliation
-        if self.subdiv in ("MB", "NS") and year >= 2021:
+        if year >= 2021 and self.subdiv in {"MB", "NS"}:
             self[
                 date(year, SEP, 30)
             ] = self.translate("National Day for Truth and Reconciliation")
 
         # Thanksgiving
-        if self.subdiv not in ("NB", "NS", "PE", "NL") and year >= 1931:
+        if year >= 1931 and self.subdiv not in {"NB", "NL", "NS", "PE"}:
             if year == 1935:
                 # in 1935, Canadian Thanksgiving was moved due to the General
                 # Election falling on the second Monday of October
@@ -238,14 +245,14 @@ class Canada(HolidayBase):
                 self[date(year, OCT, 1) + rd(weekday=MO(+2))] = self.translate("Thanksgiving")
 
         # Remembrance Day
-        if self.subdiv not in ("ON", "QC") and year >= 1931:
+        if year >= 1931 and self.subdiv not in {"ON", "QC"}:
             name = self.translate("Remembrance Day")
             dt = date(year, NOV, 11)
             self[dt] = name
             if (
                 self.observed
-                and self.subdiv in ("NS", "NL", "NT", "PE", "SK")
                 and dt.weekday() == SUN
+                and self.subdiv in {"NS", "NL", "NT", "PE", "SK"}
             ):
                 self[dt + rd(weekday=MO)] = f"{name} {self.translate('(Observed)')}"
 

@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, datetime, timedelta
+from datetime import date
 
 from dateutil.relativedelta import relativedelta as rd
 
@@ -17,7 +17,7 @@ from dateutil.relativedelta import relativedelta as rd
 # URL: https://github.com/usingsky/korean_lunar_calendar_py/
 from korean_lunar_calendar import KoreanLunarCalendar
 
-from holidays.constants import JAN, APR, MAY, SEP, SAT, SUN
+from holidays.constants import JAN, APR, MAY, SEP, WEEKEND
 from holidays.holiday_base import HolidayBase
 
 
@@ -34,60 +34,51 @@ class Vietnam(HolidayBase):
         self.korean_cal = KoreanLunarCalendar()
         HolidayBase.__init__(self, **kwargs)
 
+    def _add_observed(self, holiday: date) -> None:
+        if holiday.weekday() in WEEKEND:
+            next_workday = holiday + rd(days=+1)
+            while next_workday.weekday() in WEEKEND or self.get(next_workday):
+                next_workday += rd(days=+1)
+            self[next_workday] = self[holiday] + " observed"
+
     def _populate(self, year):
         super()._populate(year)
 
         # New Year's Day
-        name = "International New Year's Day"
-        first_date = date(year, JAN, 1)
-        self[first_date] = name
-        if self.observed:
-            self[first_date] = name
-            if first_date.weekday() == SAT:
-                self[first_date + rd(days=+2)] = name + " observed"
-            elif first_date.weekday() == SUN:
-                self[first_date + rd(days=+1)] = name + " observed"
-
-        # Lunar New Year
-        name = [
-            "Vietnamese New Year",  # index: 0
-            "The second day of Tet Holiday",  # index: 1
-            "The third day of Tet Holiday",  # index: 2
-            "The forth day of Tet Holiday",  # index: 3
-            "The fifth day of Tet Holiday",  # index: 4
-            "Vietnamese New Year's Eve",  # index: -1
-        ]
-        dt = self.get_solar_date(year, 1, 1)
-        new_year_date = date(dt.year, dt.month, dt.day)
-        if self.observed:
-            for i in range(-1, 5, 1):
-                tet_day = new_year_date + rd(days=+i)
-                self[tet_day] = name[i]
+        self[date(year, JAN, 1)] = "International New Year's Day"
 
         # Vietnamese Kings' Commemoration Day
         # https://en.wikipedia.org/wiki/H%C3%B9ng_Kings%27_Festival
         if year >= 2007:
-            name = "Hung Kings Commemoration Day"
-            dt = self.get_solar_date(year, 3, 10)
-            king_hung_date = date(dt.year, dt.month, dt.day)
-            self[king_hung_date] = name
-        else:
-            pass
+            hol_date = self.get_solar_date(year, 3, 10)
+            self[hol_date] = "Hung Kings Commemoration Day"
 
         # Liberation Day/Reunification Day
-        name = "Liberation Day/Reunification Day"
-        libration_date = date(year, APR, 30)
-        self[libration_date] = name
+        self[date(year, APR, 30)] = "Liberation Day/Reunification Day"
 
         # International Labor Day
-        name = "International Labor Day"
-        labor_date = date(year, MAY, 1)
-        self[labor_date] = name
+        self[date(year, MAY, 1)] = "International Labor Day"
 
         # Independence Day
-        name = "Independence Day"
-        independence_date = date(year, SEP, 2)
-        self[independence_date] = name
+        self[date(year, SEP, 2)] = "Independence Day"
+
+        if self.observed:
+            for dt in sorted(list(self.keys())):
+                if dt.year == year:
+                    self._add_observed(dt)
+
+        # Lunar New Year
+        names = (
+            (-1, "Vietnamese New Year's Eve"),
+            (0, "Vietnamese New Year"),
+            (1, "The second day of Tet Holiday"),
+            (2, "The third day of Tet Holiday"),
+            (3, "The forth day of Tet Holiday"),
+            (4, "The fifth day of Tet Holiday"),
+        )
+        hol_date = self.get_solar_date(year, 1, 1)
+        for d, name in names:
+            self[(hol_date + rd(days=+d))] = name
 
     # convert lunar calendar date to solar
     def get_solar_date(self, year, month, day):
