@@ -17,6 +17,7 @@ from dateutil.relativedelta import MO, FR, SU
 
 from holidays.constants import (
     FRI,
+    SAT,
     SUN,
     WEEKEND,
     JAN,
