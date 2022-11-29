@@ -8,14 +8,16 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
-
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, MO, SU, FR
+from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import MO, FR, SU
 
-from holidays.constants import FRI, SUN, WEEKEND
 from holidays.constants import (
+    FRI,
+    SUN,
+    WEEKEND,
     JAN,
     FEB,
     MAR,
@@ -30,7 +32,6 @@ from holidays.constants import (
     DEC,
 )
 from holidays.holiday_base import HolidayBase
-from holidays.utils import translate
 
 
 class Canada(HolidayBase):
@@ -55,220 +56,176 @@ class Canada(HolidayBase):
         # Default subdivision to ON; prov for backwards compatibility
         if not kwargs.get("subdiv", kwargs.get("prov")):
             kwargs["subdiv"] = "ON"
-        HolidayBase.__init__(self, **kwargs)
+        HolidayBase.__init__(self, locale_filename="canada", **kwargs)
 
-    def _(self, key):
-        return translate("canada", key, self.language)
+    @staticmethod
+    def _get_nearest_monday(d: date) -> date:
+        if d.weekday() < FRI:
+            return d + rd(weekday=MO(-1))
+        else:
+            return d + rd(weekday=MO)
 
     def _populate(self, year):
+        super()._populate(year)
+
+        if year < 1867:
+            return
+
         # New Year's Day
-        if year >= 1867:
-            self[date(year, JAN, 1)] = self._("new_years_day")
-            if self.observed and date(year, JAN, 1).weekday() == SUN:
-                self[date(year, JAN, 1) + rd(days=+1)] = self._(
-                    "new_years_day_observed"
-                )
-            # The following year's observed New Year's Day can be in this year
-            # when it falls on a Friday (Jan 1st is a Saturday).
-            if self.observed and date(year, DEC, 31).weekday() == FRI:
-                self[date(year, DEC, 31)] = self._("new_years_day_observed")
+        name = self.translate("New Year's Day")
+        self[date(year, JAN, 1)] = name
+        if self.observed and date(year, JAN, 1).weekday() == SUN:
+            self[date(year, JAN, 1) + rd(days=+1)] = f"{name} {self.translate('(Observed)')}"
+        # The following year's observed New Year's Day can be in this year
+        # when it falls on a Friday (Jan 1st is a Saturday).
+        if self.observed and date(year, DEC, 31).weekday() == FRI:
+            self[date(year, DEC, 31)] = f"{name} {self.translate('(Observed)')}"
 
         # Family Day / Louis Riel Day (MB) / Islander Day (PE)
         # / Heritage Day (NS, YT)
-        if self.subdiv in ("AB", "SK", "ON") and year >= 2008:
-            self[date(year, FEB, 1) + rd(weekday=MO(+3))] = self._(
-                "family_day"
-            )
-        elif self.subdiv in ("AB", "SK") and year >= 2007:
-            self[date(year, FEB, 1) + rd(weekday=MO(+3))] = self._(
-                "family_day"
-            )
-        elif self.subdiv == "AB" and year >= 1990:
-            self[date(year, FEB, 1) + rd(weekday=MO(+3))] = self._(
-                "family_day"
-            )
-        elif self.subdiv == "NB" and year >= 2018:
-            self[date(year, FEB, 1) + rd(weekday=MO(+3))] = self._(
-                "family_day"
-            )
+        if (
+            (self.subdiv == "AB" and year >= 1990)
+            or (self.subdiv == "SK" and year >= 2007)
+            or (self.subdiv == "ON" and year >= 2008)
+            or (self.subdiv == "NB" and year >= 2018)
+        ):
+            self[date(year, FEB, 1) + rd(weekday=MO(+3))] = self.translate("Family Day")
         elif self.subdiv == "BC":
             if 2013 <= year <= 2018:
-                self[date(year, FEB, 1) + rd(weekday=MO(+2))] = self._(
-                    "family_day"
-                )
+                self[date(year, FEB, 1) + rd(weekday=MO(+2))] = self.translate("Family Day")
             elif year > 2018:
-                self[date(year, FEB, 1) + rd(weekday=MO(+3))] = self._(
-                    "family_day"
-                )
+                self[date(year, FEB, 1) + rd(weekday=MO(+3))] = self.translate("Family Day")
         elif self.subdiv == "MB" and year >= 2008:
-            self[date(year, FEB, 1) + rd(weekday=MO(+3))] = self._(
-                "louis_riel_day"
-            )
+            self[date(year, FEB, 1) + rd(weekday=MO(+3))] = self.translate("Louis Riel Day")
         elif self.subdiv == "PE" and year >= 2010:
-            self[date(year, FEB, 1) + rd(weekday=MO(+3))] = self._(
-                "islander_day"
-            )
+            self[date(year, FEB, 1) + rd(weekday=MO(+3))] = self.translate("Islander Day")
         elif self.subdiv == "PE" and year == 2009:
-            self[date(year, FEB, 1) + rd(weekday=MO(+2))] = self._(
-                "islander_day"
-            )
+            self[date(year, FEB, 1) + rd(weekday=MO(+2))] = self.translate("Islander Day")
         elif self.subdiv == "NS" and year >= 2015:
             # http://novascotia.ca/lae/employmentrights/NovaScotiaHeritageDay.asp
-            self[date(year, FEB, 1) + rd(weekday=MO(+3))] = self._(
-                "heritage_day"
-            )
-        elif self.subdiv == "YT":
+            self[date(year, FEB, 1) + rd(weekday=MO(+3))] = self.translate("Heritage Day")
+        elif self.subdiv == "YT" and year >= 1974:
             # start date?
+            # https://www.britannica.com/topic/Heritage-Day-Canadian-holiday
+            # Heritage Day was created in 1973
+            # by the Heritage Canada Foundation
+            # therefore, start date is not earlier than 1974
             # http://heritageyukon.ca/programs/heritage-day
             # https://en.wikipedia.org/wiki/Family_Day_(Canada)#Yukon_Heritage_Day
             # Friday before the last Sunday in February
-            dt = date(year, MAR, 1) + rd(weekday=SU(-1)) + rd(weekday=FR(-1))
-            self[dt] = self._("heritage_day")
+            dt = (
+                date(year, MAR, 1)
+                + rd(days=-1)
+                + rd(weekday=SU(-1))
+                + rd(days=-2)
+            )
+            self[dt] = self.translate("Heritage Day")
 
         # St. Patrick's Day
         if self.subdiv == "NL" and year >= 1900:
-            dt = date(year, MAR, 17)
             # Nearest Monday to March 17
-            dt1 = date(year, MAR, 17) + rd(weekday=MO(-1))
-            dt2 = date(year, MAR, 17) + rd(weekday=MO(+1))
-            if dt2 - dt <= dt - dt1:
-                self[dt2] = self._("st_patricks_day")
-            else:
-                self[dt1] = self._("st_patricks_day")
+            dt = self._get_nearest_monday(date(year, MAR, 17))
+            self[dt] = self.translate("St. Patrick's Day")
 
-        if year >= 1867:
-            # Good Friday
-            self[easter(year) + rd(weekday=FR(-1))] = self._("good_friday")
-            # Easter Monday
-            self[easter(year) + rd(weekday=MO)] = self._("easter_monday")
+        # Good Friday
+        self[easter(year) + rd(weekday=FR(-1))] = self.translate("Good Friday")
+        # Easter Monday
+        self[easter(year) + rd(weekday=MO)] = self.translate("Easter Monday")
 
         # St. George's Day
-        if self.subdiv == "NL" and year == 2010:
-            # 4/26 is the Monday closer to 4/23 in 2010
-            # but the holiday was observed on 4/19? Crazy Newfies!
-            self[date(2010, 4, 19)] = self._("st_georges_day")
-        elif self.subdiv == "NL" and year >= 1990:
-            dt = date(year, APR, 23)
-            # Nearest Monday to April 23
-            dt1 = dt + rd(weekday=MO(-1))
-            dt2 = dt + rd(weekday=MO(+1))
-            if dt2 - dt < dt - dt1:
-                self[dt2] = self._("st_georges_day")
+        if self.subdiv == "NL" and year >= 1990:
+            if year == 2010:
+                # 4/26 is the Monday closer to 4/23 in 2010
+                # but the holiday was observed on 4/19? Crazy Newfies!
+                dt = date(2010, APR, 19)
             else:
-                self[dt1] = self._("st_georges_day")
+                # Nearest Monday to April 23
+                dt = self._get_nearest_monday(date(year, APR, 23))
+            self[dt] = self.translate("St. George's Day")
 
         # Victoria Day / National Patriots' Day (QC)
-        if self.subdiv not in ("NB", "NS", "PE", "NL", "QC") and year >= 1953:
-            self[date(year, MAY, 24) + rd(weekday=MO(-1))] = self._(
-                "victoria_day"
-            )
-        elif self.subdiv == "QC" and year >= 1953:
-            name = self._("national_patriots_day")
-            self[date(year, MAY, 24) + rd(weekday=MO(-1))] = name
+        if year >= 1953:
+            dt = date(year, MAY, 24) + rd(weekday=MO(-1))
+            if self.subdiv not in ("NB", "NS", "PE", "NL", "QC"):
+                self[dt] = self.translate("Victoria Day")
+            elif self.subdiv == "QC":
+                self[dt] = self.translate("National Patriots' Day")
 
         # National Aboriginal Day
         if self.subdiv == "NT" and year >= 1996:
-            self[date(year, JUN, 21)] = self._("national_aboriginal_day")
+            self[date(year, JUN, 21)] = self.translate("National Aboriginal Day")
 
         # St. Jean Baptiste Day
         if self.subdiv == "QC" and year >= 1925:
-            self[date(year, JUN, 24)] = self._("st_jean_baptiste_day")
-            if self.observed and date(year, JUN, 24).weekday() == SUN:
-                self[date(year, JUN, 25)] = self._(
-                    "st_jean_baptiste_day_observed"
-                )
+            name = self.translate("St. Jean Baptiste Day")
+            dt = date(year, JUN, 24)
+            self[dt] = name
+            if self.observed and dt.weekday() == SUN:
+                self[dt + rd(days=1)] = f"{name} {self.translate('(Observed)')}"
 
         # Discovery Day
         if self.subdiv == "NL" and year >= 1997:
-            dt = date(year, JUN, 24)
             # Nearest Monday to June 24
-            dt1 = dt + rd(weekday=MO(-1))
-            dt2 = dt + rd(weekday=MO(+1))
-            if dt2 - dt <= dt - dt1:
-                self[dt2] = self._("discovery_day")
-            else:
-                self[dt1] = self._("discovery_day")
+            dt = self._get_nearest_monday(date(year, JUN, 24))
+            self[dt] = self.translate("Discovery Day")
         elif self.subdiv == "YT" and year >= 1912:
-            self[date(year, AUG, 1) + rd(weekday=MO(+3))] = self._(
-                "discovery_day"
-            )
+            self[date(year, AUG, 1) + rd(weekday=MO(+3))] = self.translate("Discovery Day")
 
         # Canada Day / Memorial Day (NL)
-        if self.subdiv != "NL" and year >= 1867:
-            if year >= 1983:
-                i18n_name = "canada_day"
-            else:
-                i18n_name = "dominion_day"
-            self[date(year, JUL, 1)] = self._(i18n_name)
-            if (
-                year >= 1879
-                and self.observed
-                and date(year, JUL, 1).weekday() in WEEKEND
-            ):
-                self[date(year, JUL, 1) + rd(weekday=MO)] = self._(
-                    i18n_name + "_observed"
-                )
-        elif year >= 1867:
-            if year >= 1983:
-                i18n_name = "memorial_day"
-            else:
-                i18n_name = "dominion_day"
-            self[date(year, JUL, 1)] = self._(i18n_name)
-            if (
-                year >= 1879
-                and self.observed
-                and date(year, JUL, 1).weekday() in WEEKEND
-            ):
-                self[date(year, JUL, 1) + rd(weekday=MO)] = self._(
-                    i18n_name + "_observed"
-                )
+        if year >= 1983:
+            name = self.translate("Memorial Day") if self.subdiv == "NL" else self.translate("Canada Day")
+        else:
+            name = self.translate("Dominion Day")
+        dt = date(year, JUL, 1)
+        self[dt] = name
+        if year >= 1879 and self.observed and dt.weekday() in WEEKEND:
+            self[dt + rd(weekday=MO)] = f"{name} {self.translate('(Observed)')}"
 
         # Nunavut Day
-        if self.subdiv == "NU" and year >= 2001:
-            self[date(year, JUL, 9)] = self._("nunavut_day")
-            if self.observed and date(year, JUL, 9).weekday() == SUN:
-                self[date(year, JUL, 10)] = self._("nunavut_day_observed")
-        elif self.subdiv == "NU" and year == 2000:
-            self[date(2000, 4, 1)] = self._("nunavut_day")
+        if self.subdiv == "NU":
+            name = self.translate("Nunavut Day")
+            if year >= 2001:
+                dt = date(year, JUL, 9)
+                self[dt] = name
+                if self.observed and dt.weekday() == SUN:
+                    self[dt + rd(days=1)] = f"{name} {self.translate('(Observed)')}"
+            elif year == 2000:
+                self[date(2000, APR, 1)] = name
 
         # Civic Holiday
         if self.subdiv in ("ON", "MB", "NT") and year >= 1900:
-            self[date(year, AUG, 1) + rd(weekday=MO)] = self._("civic_holiday")
+            self[date(year, AUG, 1) + rd(weekday=MO)] = self.translate("Civic Holiday")
         elif self.subdiv == "AB" and year >= 1974:
             # https://en.wikipedia.org/wiki/Civic_Holiday#Alberta
-            self[date(year, AUG, 1) + rd(weekday=MO)] = self._("heritage_day")
+            self[date(year, AUG, 1) + rd(weekday=MO)] = self.translate("Heritage Day")
         elif self.subdiv == "BC" and year >= 1974:
             # https://en.wikipedia.org/wiki/Civic_Holiday
-            self[date(year, AUG, 1) + rd(weekday=MO)] = self._(
-                "british_columbia_day"
-            )
+            self[date(year, AUG, 1) + rd(weekday=MO)] = self.translate("British Columbia Day")
         elif self.subdiv == "NB" and year >= 1900:
             # https://en.wikipedia.org/wiki/Civic_Holiday
-            self[date(year, AUG, 1) + rd(weekday=MO)] = self._(
-                "new_brunswick_day"
-            )
+            self[date(year, AUG, 1) + rd(weekday=MO)] = self.translate("New Brunswick Day")
         elif self.subdiv == "SK" and year >= 1900:
             # https://en.wikipedia.org/wiki/Civic_Holiday
-            self[date(year, AUG, 1) + rd(weekday=MO)] = self._(
-                "saskatchewan_day"
-            )
+            self[date(year, AUG, 1) + rd(weekday=MO)] = self.translate("Saskatchewan Day")
 
         # Labour Day
         if year >= 1894:
-            self[date(year, SEP, 1) + rd(weekday=MO)] = self._("labour_day")
+            self[date(year, SEP, 1) + rd(weekday=MO)] = self.translate("Labour Day")
 
         # Funeral of Queen Elizabeth II
         # https://www.narcity.com/provinces-territories-will-have-a-day-off-monday-mourn-queen
         # TODO: the territories holiday status (NT, NU, YT) is still tentative
         queen_funeral_observers = ("BC", "NB", "NL", "NS", "PE", "YT")
         if self.subdiv in queen_funeral_observers and year == 2022:
-            self[date(year, SEP, 19)] = self._("queen_funeral")
+            self[
+                date(2022, SEP, 19)
+            ] = self.translate("Funeral of Her Majesty the Queen Elizabeth II")
 
         # National Day for Truth and Reconciliation
         if self.subdiv in ("MB", "NS") and year >= 2021:
-            self[date(year, SEP, 30)] = self._(
-                "national_day_for_truth_and_reconciliation"
-            )
+            self[
+                date(year, SEP, 30)
+            ] = self.translate("National Day for Truth and Reconciliation")
 
         # Thanksgiving
         if self.subdiv not in ("NB", "NS", "PE", "NL") and year >= 1931:
@@ -276,35 +233,35 @@ class Canada(HolidayBase):
                 # in 1935, Canadian Thanksgiving was moved due to the General
                 # Election falling on the second Monday of October
                 # https://books.google.ca/books?id=KcwlQsmheG4C&pg=RA1-PA1940&lpg=RA1-PA1940&dq=canada+thanksgiving+1935&source=bl&ots=j4qYrcfGuY&sig=gxXeAQfXVsOF9fOwjSMswPHJPpM&hl=en&sa=X&ved=0ahUKEwjO0f3J2PjOAhVS4mMKHRzKBLAQ6AEIRDAG#v=onepage&q=canada%20thanksgiving%201935&f=false
-                self[date(1935, 10, 25)] = self._("thanksgiving")
+                self[date(1935, OCT, 25)] = self.translate("Thanksgiving")
             else:
-                self[date(year, OCT, 1) + rd(weekday=MO(+2))] = self._(
-                    "thanksgiving"
-                )
+                self[date(year, OCT, 1) + rd(weekday=MO(+2))] = self.translate("Thanksgiving")
 
         # Remembrance Day
-        if (
-            self.subdiv not in ("ON", "QC", "NS", "NL", "NT", "PE", "SK")
-            and year >= 1931
-        ):
-            self[date(year, NOV, 11)] = self._("remembrance_day")
-        elif self.subdiv in ("NS", "NL", "NT", "PE", "SK") and year >= 1931:
-            self[date(year, NOV, 11)] = self._("remembrance_day")
-            if self.observed and date(year, NOV, 11).weekday() == SUN:
-                name = self._("remembrance_day_observed")
-                self[date(year, NOV, 11) + rd(weekday=MO)] = name
+        if self.subdiv not in ("ON", "QC") and year >= 1931:
+            name = self.translate("Remembrance Day")
+            dt = date(year, NOV, 11)
+            self[dt] = name
+            if (
+                self.observed
+                and self.subdiv in ("NS", "NL", "NT", "PE", "SK")
+                and dt.weekday() == SUN
+            ):
+                self[dt + rd(weekday=MO)] = f"{name} {self.translate('(Observed)')}"
 
         # Christmas Day
-        if year >= 1867:
-            self[date(year, DEC, 25)] = self._("christmas_day")
-            if self.observed and date(year, DEC, 25).weekday() in WEEKEND:
-                self[date(year, DEC, 27)] = self._("christmas_day_observed")
+        name = self.translate("Christmas Day")
+        dt = date(year, DEC, 25)
+        self[dt] = name
+        if self.observed and dt.weekday() in WEEKEND:
+            self[dt + rd(days=2)] = f"{name} {self.translate('(Observed)')}"
 
         # Boxing Day
-        if year >= 1867:
-            self[date(year, DEC, 26)] = self._("boxing_day")
-            if self.observed and date(year, DEC, 26).weekday() in WEEKEND:
-                self[date(year, DEC, 28)] = self._("boxing_day_observed")
+        name = self.translate("Boxing Day")
+        dt = date(year, DEC, 26)
+        self[dt] = name
+        if self.observed and dt.weekday() in WEEKEND:
+            self[dt + rd(days=2)] = f"{name} {self.translate('(Observed)')}"
 
 
 class CA(Canada):

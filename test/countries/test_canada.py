@@ -403,6 +403,6 @@ class TestCA(unittest.TestCase):
 
     def test_translate_french_results_in_french(self):
         dt = date(2011, 1, 1)
-        self.holidays.language = "fr"
-        self.assertIn(dt, self.holidays)
-        self.assertEqual(self.holidays[dt], "Jour de l'an")
+        fr_holidays = holidays.CA(observed=False, language="fr")
+        self.assertIn(dt, fr_holidays)
+        self.assertEqual(fr_holidays[dt], "Jour de l'an")

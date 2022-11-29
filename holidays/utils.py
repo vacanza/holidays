@@ -24,15 +24,6 @@ import holidays.countries
 import holidays.financial
 from holidays.holiday_base import HolidayBase
 
-import i18n
-
-i18n.load_path.append("translations")
-i18n.set("fallback", "en")
-
-
-def translate(country, key, locale):
-    return i18n.t(country + "." + key, locale=locale)
-
 
 def country_holidays(
     country: str,

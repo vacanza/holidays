@@ -8,9 +8,8 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
-
 # from __future__ import annotations  # add in Python 3.7
-
+import gettext
 import warnings
 from datetime import timedelta, datetime, date
 from typing import (
@@ -194,6 +193,7 @@ class HolidayBase(Dict[date, str]):
         prov: Optional[str] = None,  # deprecated
         state: Optional[str] = None,  # deprecated
         language: str = "en",
+        locale_filename: Optional[str] = None
     ) -> None:
         """
         :param years:
@@ -230,7 +230,10 @@ class HolidayBase(Dict[date, str]):
         self.observed = observed
         self.expand = expand
         self.subdiv = subdiv or prov or state
-        self.language = language
+        if locale_filename is not None:
+            translation = gettext.translation(locale_filename, localedir='locales', languages=[language])
+            translation.install()
+            self.translate = translation.gettext
         if prov or state:
             warnings.warn(
                 "Arguments prov and state are deprecated, use subdiv="
