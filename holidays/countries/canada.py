@@ -17,7 +17,6 @@ from dateutil.relativedelta import MO, FR, SU
 
 from holidays.constants import (
     FRI,
-    SAT,
     SUN,
     WEEKEND,
     JAN,
@@ -76,10 +75,8 @@ class Canada(HolidayBase):
         # New Year's Day
         name = "New Year's Day"
         self[date(year, JAN, 1)] = name
-        if self.observed and date(year, JAN, 1).weekday() == SUN:
-            self[date(year, JAN, 1) + rd(days=+1)] = name + " (Observed)"
-        elif self.observed and date(year, JAN, 1).weekday() == SAT:
-            self[date(year, JAN, 1) + rd(days=+2)] = name + " (Observed)"
+        if self.observed and date(year, JAN, 1).weekday() in WEEKEND:
+            self[date(year, JAN, 1) + rd(weekday=MO)] = name + " (Observed)"
 
         # Family Day / Louis Riel Day (MB) / Islander Day (PE)
         # / Heritage Day (NS, YT)
