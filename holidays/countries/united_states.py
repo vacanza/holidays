@@ -240,7 +240,7 @@ class UnitedStates(HolidayBase):
         if self.subdiv == "MA" and year >= 1901:
             name = "Evacuation Day"
             self[date(year, MAR, 17)] = name
-            if date(year, MAR, 17).weekday() in WEEKEND:
+            if self.observed and date(year, MAR, 17).weekday() in WEEKEND:
                 self[date(year, MAR, 17) + rd(weekday=MO)] = (
                     name + " (Observed)"
                 )

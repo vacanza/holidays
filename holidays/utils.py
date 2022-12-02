@@ -169,13 +169,7 @@ def country_holidays(
     See documentation for examples.
     """
     try:
-        country_classes = inspect.getmembers(
-            holidays.countries, inspect.isclass
-        )
-        country_class = next(
-            obj for name, obj in country_classes if name == country
-        )
-        country_holiday: HolidayBase = country_class(
+        return getattr(holidays.countries, country)(
             years=years,
             subdiv=subdiv,
             expand=expand,
@@ -183,9 +177,8 @@ def country_holidays(
             prov=prov,
             state=state,
         )
-    except StopIteration:
+    except AttributeError:
         raise NotImplementedError(f"Country {country} not available")
-    return country_holiday
 
 
 def financial_holidays(
@@ -230,21 +223,14 @@ def financial_holidays(
     examples.
     """
     try:
-        financial_classes = inspect.getmembers(
-            holidays.financial, inspect.isclass
-        )
-        financial_class = next(
-            obj for name, obj in financial_classes if name == market
-        )
-        financial_holiday: HolidayBase = financial_class(
+        return getattr(holidays.financial, market)(
             years=years,
             subdiv=subdiv,
             expand=expand,
             observed=observed,
         )
-    except StopIteration:
+    except AttributeError:
         raise NotImplementedError(f"Financial market {market} not available")
-    return financial_holiday
 
 
 def CountryHoliday(
@@ -303,7 +289,7 @@ def list_supported_financial() -> Dict[str, List[str]]:
     }
 
 
-def _islamic_to_gre(Gyear: int, Hmonth: int, Hday: int) -> List[date]:
+def _islamic_to_gre(g_year: int, h_month: int, h_day: int) -> List[date]:
     """
     Find the Gregorian dates of all instances of Islamic (Lunar Hijrī) calendar
     month and day falling within the Gregorian year. There could be up to two
@@ -313,13 +299,13 @@ def _islamic_to_gre(Gyear: int, Hmonth: int, Hday: int) -> List[date]:
     Relies on package `hijri_converter
     <https://www.pypy.org/package/hijri_converter>`__.
 
-    :param Gyear:
+    :param g_year:
         The Gregorian year.
 
-    :param Hmonth:
+    :param h_month:
         The Lunar Hijrī (Islamic) month.
 
-    :param Hday:
+    :param h_day:
         The Lunar Hijrī (Islamic) day.
 
     :return:
@@ -329,21 +315,18 @@ def _islamic_to_gre(Gyear: int, Hmonth: int, Hday: int) -> List[date]:
     gre_dates: List[date] = []
 
     # To avoid hijri_converter check range OverflowError.
-    dt = (Gyear, Hmonth, Hday)
+    dt = (g_year, h_month, h_day)
     dt_min, dt_max = GREGORIAN_RANGE
     if dt < dt_min or dt > dt_max:
         return gre_dates
 
-    Hyear = convert.Gregorian(Gyear, 1, 1).to_hijri().datetuple()[0]
-    gres = [
-        convert.Hijri(y, Hmonth, Hday).to_gregorian()
-        for y in range(Hyear - 1, Hyear + 2)
+    h_year = convert.Gregorian(g_year, 1, 1).to_hijri().year
+    gre_dates = [
+        convert.Hijri(year, h_month, h_day).to_gregorian()
+        for year in range(h_year - 1, h_year + 2)
     ]
-    gre_dates.extend(
-        (date(*gre.datetuple()) for gre in gres if gre.year == Gyear)
-    )
 
-    return gre_dates
+    return [gre_date for gre_date in gre_dates if gre_date.year == g_year]
 
 
 class _ChineseLuniSolar:

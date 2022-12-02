@@ -142,7 +142,7 @@ class TestBasics(unittest.TestCase):
         self.holidays = holidays.US()
         self.assertEqual(
             str(self.holidays),
-            "{'observed': True, 'expand': True, 'subdiv': None, "
+            "{'expand': True, 'observed': True, 'subdiv': None, "
             "'years': set()}",
         )
 
@@ -168,6 +168,15 @@ class TestBasics(unittest.TestCase):
         )
         self.assertIn("2015-01-01", h)
         self.assertIn(date(2015, 12, 25), h)
+
+    def test_add_observed_holiday(self):
+        h = holidays.HolidayBase()
+
+        h._add_observed_holiday("1111-11-11", "Test holiday")
+        self.assertEqual(h["1111-11-11"], "Test holiday (Observed)")
+
+        h._add_observed_holiday("2222-11-11", "Test holiday", "(Day Off)")
+        self.assertEqual(h["2222-11-11"], "Test holiday (Day Off)")
 
     def test_append(self):
         h = holidays.HolidayBase()
@@ -208,7 +217,7 @@ class TestBasics(unittest.TestCase):
         self.assertNotEqual(us3, ca3)
         self.assertNotEqual(us1, us3)
 
-    def test_add(self):
+    def test_add_counties(self):
         ca = holidays.CA()
         us = holidays.US()
         mx = holidays.MX()
@@ -285,6 +294,7 @@ class TestBasics(unittest.TestCase):
             na.get(date(1969, 12, 25)), "Christmas Day, Navidad [Christmas]"
         )
 
+    def test_add_financial(self):
         ecb = holidays.ECB()
         nyse = holidays.NYSE()
         ecb_nyse = ecb + nyse
@@ -411,8 +421,10 @@ class TestBasics(unittest.TestCase):
 
     def test_get_named(self):
         us = holidays.UnitedStates(years=[2020])
+        holidays_count = len(us.keys())
         # check for "New Year's Day" presence in get_named("new")
         self.assertIn(date(2020, 1, 1), us.get_named("new"))
+        self.assertEqual(holidays_count, len(us.keys()))
 
         # check for searching holiday in US when the observed holiday is on
         # a different year than input one
