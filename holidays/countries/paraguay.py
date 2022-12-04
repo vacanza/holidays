@@ -13,7 +13,7 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, TH, FR
+from dateutil.relativedelta import MO
 
 from holidays.constants import WED, WEEKEND, JAN, MAR, MAY, JUN, AUG, SEP, DEC
 from holidays.holiday_base import HolidayBase
@@ -51,14 +51,14 @@ class Paraguay(HolidayBase):
         name_thu = "Semana Santa (Jueves Santo) [Holy day (Holy Thursday)]"
         name_fri = "Semana Santa (Viernes Santo) [Holy day (Holy Friday)]"
         name_easter = "Día de Pascuas [Easter Day]"
+        easter_date = easter(year)
+        self[easter_date + rd(days=-3)] = name_thu
+        self[easter_date + rd(days=-2)] = name_fri
 
-        self[easter(year) + rd(weekday=TH(-1))] = name_thu
-        self[easter(year) + rd(weekday=FR(-1))] = name_fri
-
-        if not self.observed and easter(year).weekday() in WEEKEND:
+        if not self.observed and easter_date.weekday() in WEEKEND:
             pass
         else:
-            self[easter(year)] = name_easter
+            self[easter_date] = name_easter
 
         # Labor Day
         name = "Día de los Trabajadores [Labour Day]"

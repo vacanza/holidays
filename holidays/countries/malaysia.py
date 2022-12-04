@@ -470,7 +470,7 @@ class Malaysia(HolidayBase):
 
         # Good Friday.
         if self.subdiv in {"SBH", "SWK"}:
-            self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
+            self[easter(year) + rd(days=-2)] = "Good Friday"
 
         # Thaipusam.
         # An annual Hindu festival observed on the day of the first full moon
