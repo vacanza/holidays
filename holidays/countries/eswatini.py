@@ -40,13 +40,10 @@ class Eswatini(HolidayBase):
         if year > 1938:
             self[date(year, JAN, 1)] = "New Year's Day"
 
-            e = easter(year)
-            good_friday = e - rd(days=2)
-            easter_monday = e + rd(days=1)
-            ascension_day = e + rd(days=39)
-            self[good_friday] = "Good Friday"
-            self[easter_monday] = "Easter Monday"
-            self[ascension_day] = "Ascension Day"
+            easter_date = easter(year)
+            self[easter_date + rd(days=-2)] = "Good Friday"
+            self[easter_date + rd(days=+1)] = "Easter Monday"
+            self[easter_date + rd(days=+39)] = "Ascension Day"
 
             if year > 1968:
                 self[date(year, APR, 25)] = "National Flag Day"

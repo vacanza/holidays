@@ -103,8 +103,9 @@ class NewZealand(HolidayBase):
                 self[feb6 + rd(weekday=MO)] = name + " (Observed)"
 
         # Easter
-        self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
-        self[easter(year) + rd(weekday=MO)] = "Easter Monday"
+        easter_date = easter(year)
+        self[easter_date + rd(days=-2)] = "Good Friday"
+        self[easter_date + rd(days=+1)] = "Easter Monday"
 
         # Anzac Day
         if year > 1920:
@@ -291,7 +292,7 @@ class NewZealand(HolidayBase):
                 dt = mar23 + rd(weekday=MO(-1))
             else:
                 dt = mar23 + rd(weekday=MO)
-            if dt == easter(year) + rd(weekday=MO):  # Avoid Easter Monday
+            if dt == easter_date + rd(days=+1):  # Avoid Easter Monday
                 dt += rd(days=1)
             self[dt] = name
 
@@ -299,7 +300,7 @@ class NewZealand(HolidayBase):
             name = "Southland Anniversary Day"
             jan17 = date(year, JAN, 17)
             if year > 2011:
-                self[easter(year) + rd(weekday=TU)] = name
+                self[easter_date + rd(days=+2)] = name
             else:
                 if jan17.weekday() in {TU.weekday, WE.weekday, TH.weekday}:
                     self[jan17 + rd(weekday=MO(-1))] = name

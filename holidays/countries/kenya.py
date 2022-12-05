@@ -13,7 +13,7 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, FR, SU
+from dateutil.relativedelta import SU
 
 from holidays.constants import JAN, MAY, JUN, OCT, DEC
 from holidays.holiday_base import HolidayBase
@@ -44,8 +44,9 @@ class Kenya(HolidayBase):
             if self.observed and k.weekday() == SU.weekday:
                 self[k + rd(days=1)] = v + " (Observed)"
 
-        self[easter(year) - rd(weekday=FR(-1))] = "Good Friday"
-        self[easter(year) + rd(weekday=MO(+1))] = "Easter Monday"
+        easter_date = easter(year)
+        self[easter_date + rd(days=-2)] = "Good Friday"
+        self[easter_date + rd(days=+1)] = "Easter Monday"
 
 
 class KE(Kenya):

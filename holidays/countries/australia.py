@@ -92,12 +92,13 @@ class Australia(HolidayBase):
                 self[date(year, MAR, 12)] = name
 
         # Easter
-        self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
+        easter_date = easter(year)
+        self[easter_date + rd(days=-2)] = "Good Friday"
         if self.subdiv in {"ACT", "NSW", "NT", "QLD", "SA", "VIC"}:
-            self[easter(year) + rd(weekday=SA(-1))] = "Easter Saturday"
+            self[easter_date + rd(days=-1)] = "Easter Saturday"
         if self.subdiv in {"ACT", "NSW", "QLD", "VIC"}:
-            self[easter(year)] = "Easter Sunday"
-        self[easter(year) + rd(weekday=MO)] = "Easter Monday"
+            self[easter_date] = "Easter Sunday"
+        self[easter_date + rd(days=+1)] = "Easter Monday"
 
         # Anzac Day
         if year > 1920:

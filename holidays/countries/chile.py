@@ -62,9 +62,10 @@ class Chile(HolidayBase):
         name_sat = "Semana Santa (Sábado Santo) [Good Saturday)]"
         name_easter = "Día de Pascuas [Easter Day]"
 
-        self[easter(year) + rd(weekday=FR(-1))] = name_fri
-        self[easter(year) + rd(weekday=SA(-1))] = name_sat
-        self[easter(year)] = name_easter
+        easter_date = easter(year)
+        self[easter_date + rd(days=-2)] = name_fri
+        self[easter_date + rd(days=-1)] = name_sat
+        self[easter_date] = name_easter
 
         # Labor Day (Law 2.200, renamed with Law 18.018)
         name = "Día Nacional del Trabajo [Labour Day]"

@@ -57,14 +57,13 @@ class SouthAfrica(HolidayBase):
         if year > 1909:
             self[date(year, JAN, 1)] = "New Year's Day"
 
-            e = easter(year)
-            good_friday = e - rd(days=2)
-            easter_monday = e + rd(days=1)
-            self[good_friday] = "Good Friday"
+            easter_date = easter(year)
+            self[easter_date + rd(days=-2)] = "Good Friday"
             if year > 1979:
-                self[easter_monday] = "Family Day"
+                name = "Family Day"
             else:
-                self[easter_monday] = "Easter Monday"
+                name = "Easter Monday"
+            self[easter_date + rd(days=+1)] = name
 
             if 1909 < year < 1952:
                 dec_16_name = "Dingaan's Day"
@@ -117,8 +116,7 @@ class SouthAfrica(HolidayBase):
             self[historic_workers_day] = "Workers' Day"
 
         if 1909 < year < 1994:
-            ascension_day = e + rd(days=40)
-            self[ascension_day] = "Ascension Day"
+            self[easter_date + rd(days=+40)] = "Ascension Day"
 
         if 1909 < year < 1952:
             self[date(year, MAY, 24)] = "Empire Day"

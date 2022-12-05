@@ -51,7 +51,7 @@ class Ireland(HolidayBase):
             self[dt + rd(weekday=MO)] = name + " (Observed)"
 
         # Easter Monday
-        self[easter(year) + rd(weekday=MO)] = "Easter Monday"
+        self[easter(year) + rd(days=+1)] = "Easter Monday"
 
         # May bank holiday (first Monday in May)
         if year >= 1978:

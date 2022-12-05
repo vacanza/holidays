@@ -38,18 +38,13 @@ class Botswana(HolidayBase):
             self[date(year, JAN, 2)] = "New Year's Day Holiday"
 
             # Easter and easter related calculations
-            e = easter(year)
-            good_friday = e - rd(days=2)
-            easter_saturday = e - rd(days=1)
-            easter_monday = e + rd(days=1)
-
-            self[good_friday] = "Good Friday"
-            self[easter_saturday] = "Holy Saturday"
-            self[easter_monday] = "Easter Monday"
+            easter_date = easter(year)
+            self[easter_date + rd(days=-2)] = "Good Friday"
+            self[easter_date + rd(days=-1)] = "Holy Saturday"
+            self[easter_date + rd(days=+1)] = "Easter Monday"
 
             self[date(year, MAY, 1)] = "Labour Day"
-            ascension_day = e + rd(days=39)
-            self[ascension_day] = "Ascension Day"
+            self[easter_date + rd(days=+39)] = "Ascension Day"
 
             self[date(year, JUL, 1)] = "Sir Seretse Khama Day"
 

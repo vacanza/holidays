@@ -12,7 +12,7 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import FR, MO, TH, TU, WE
+from dateutil.relativedelta import MO, TU, WE, TH, FR
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, OCT, NOV, DEC
@@ -21,7 +21,6 @@ from holidays.holiday_base import HolidayBase
 
 class Uruguay(HolidayBase):
     """
-    https://www.ute.com.uy/clientes/tramites-y-servicios/potencia-contratada
     https://en.wikipedia.org/wiki/Public_holidays_in_Uruguay
     """
 
@@ -36,10 +35,14 @@ class Uruguay(HolidayBase):
         self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
 
         # Día de los Trabajadores.
-        self[date(year, MAY, 1)] = "Día del Trabajo [Labour Day]"
+        self[
+            date(year, MAY, 1)
+        ] = "Día de los Trabajadores [International Workers' Day]"
 
         # Jura de la Constitución.
-        self[date(year, JUL, 18)] = "Jura de la constitución"
+        self[
+            date(year, JUL, 18)
+        ] = "Jura de la Constitución [Constitution Day]"
 
         # Declaratoria de la Independencia.
         self[
@@ -47,49 +50,48 @@ class Uruguay(HolidayBase):
         ] = "Día de la Independencia [Independence Day]"
 
         # Christmas.
-        self[date(year, DEC, 25)] = "Navidad [Christmas]"
+        self[date(year, DEC, 25)] = "Día de la Familia [Day of the Family]"
 
         # Partially paid holidays:
 
-        # Día de Reyes - Feriado en el cual se conmemora la llegada de
-        # los reyes magos a Jesus.
-        self[date(year, JAN, 6)] = "Día de Reyes"
+        # Día de los Niños.
+        self[date(year, JAN, 6)] = "Día de los Niños [Children's Day]"
 
-        # Natalicio de José Gervacio Artigas.
-        self[date(year, JUN, 19)] = "Natalicio de José Gervacio Artigas"
+        # Natalicio de José Gervasio Artigas.
+        self[date(year, JUN, 19)] = (
+            "Natalicio de José Gervasio Artigas "
+            "[Birthday of José Gervasio Artigas]"
+        )
 
         # Día de los difuntos.
-        self[date(year, NOV, 2)] = "Día de los difuntos"
+        self[date(year, NOV, 2)] = "Día de los Difuntos [All Souls' Day]"
 
         # Moveable holidays:
+
+        easter_date = easter(year)
 
         # Carnival days
         # revisar este día para futuros casos
         name = "Día de Carnaval [Carnival's Day]"
-        self[easter(year) - rd(days=48)] = name
-        self[easter(year) - rd(days=47)] = name
+        self[easter_date + rd(days=-48)] = name
+        self[easter_date + rd(days=-47)] = name
 
         # Holy Week.
-        self[
-            easter(year) + rd(weekday=TH(-1))
-        ] = "Semana Santa (Jueves Santo)  [Holy day (Holy Thursday)]"
-        self[
-            easter(year) + rd(weekday=FR(-1))
-        ] = "Semana Santa (Viernes Santo)  [Holy day (Holy Friday)]"
+        self[easter_date + rd(days=-3)] = "Jueves Santo [Holy Thursday]"
+        self[easter_date + rd(days=-2)] = "Viernes Santo [Holy Friday]"
 
-        self[easter(year)] = "Día de Pascuas [Easter Day]"
+        self[easter_date] = "Día de Pascuas [Easter Day]"
 
         holiday_pairs = (
             (
                 # Desembarco de los 33 Orientales en la playa de la Agraciada.
                 date(year, APR, 19),
-                "Desembarco de los 33 Orientales Landing of the 33 Orientals "
-                "Aterrissagem dos 33 Orientais Sbarco dei 33 orientali",
+                "Desembarco de los 33 Orientales [Landing of the 33 Patriots]",
             ),
             (
-                # Batalla de las Piedras [Battle of the stones].
+                # Batalla de Las Piedras [Battle of Las Piedras].
                 date(year, MAY, 18),
-                "Batalla de las Piedras [Battle of the stones]",
+                "Batalla de Las Piedras [Battle of Las Piedras]",
             ),
             (
                 # "Día del Respeto a la Diversidad Cultural

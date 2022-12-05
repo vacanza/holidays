@@ -84,22 +84,23 @@ class Switzerland(HolidayBase):
         if self.subdiv in {"NW", "SZ", "TI", "UR", "VS"}:
             self[date(year, MAR, 19)] = "Josefstag"
 
+        easter_date = easter(year)
         # Näfelser Fahrt (first Thursday in April but not in Holy Week)
         if self.subdiv == "GL" and year >= 1835:
             if (date(year, APR, 1) + rd(weekday=FR)) != (
-                easter(year) - rd(days=2)
+                easter_date + rd(days=-2)
             ):
                 self[date(year, APR, 1) + rd(weekday=TH)] = "Näfelser Fahrt"
             else:
                 self[date(year, APR, 8) + rd(weekday=TH)] = "Näfelser Fahrt"
 
         # it's a Holiday on a Sunday
-        self[easter(year)] = "Ostern"
+        self[easter_date] = "Ostern"
 
         # VS don't have easter
         if self.subdiv != "VS":
-            self[easter(year) - rd(days=2)] = "Karfreitag"
-            self[easter(year) + rd(weekday=MO)] = "Ostermontag"
+            self[easter_date + rd(days=-2)] = "Karfreitag"
+            self[easter_date + rd(days=+1)] = "Ostermontag"
 
         if self.subdiv in {
             "BL",
@@ -114,12 +115,12 @@ class Switzerland(HolidayBase):
         }:
             self[date(year, MAY, 1)] = "Tag der Arbeit"
 
-        self[easter(year) + rd(days=39)] = "Auffahrt"
+        self[easter_date + rd(days=+39)] = "Auffahrt"
 
         # it's a Holiday on a Sunday
-        self[easter(year) + rd(days=49)] = "Pfingsten"
+        self[easter_date + rd(days=+49)] = "Pfingsten"
 
-        self[easter(year) + rd(days=50)] = "Pfingstmontag"
+        self[easter_date + rd(days=+50)] = "Pfingstmontag"
 
         if self.subdiv in {
             "AI",
@@ -133,7 +134,7 @@ class Switzerland(HolidayBase):
             "VS",
             "ZG",
         }:
-            self[easter(year) + rd(days=60)] = "Fronleichnam"
+            self[easter_date + rd(days=+60)] = "Fronleichnam"
 
         if self.subdiv == "JU":
             self[date(year, JUN, 23)] = "Fest der Unabhängigkeit"

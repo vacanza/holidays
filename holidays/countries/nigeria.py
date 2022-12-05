@@ -45,13 +45,9 @@ class Nigeria(HolidayBase):
 
             # Calculate Easter for given year
             # followed by easter related holidays
-            e = easter(year)
-
-            good_friday = e - rd(days=2)
-            self[good_friday] = "Good Friday"
-
-            easter_monday = e + rd(days=1)
-            self[easter_monday] = "Easter Monday"
+            easter_date = easter(year)
+            self[easter_date + rd(days=-2)] = "Good Friday"
+            self[easter_date + rd(days=+1)] = "Easter Monday"
 
             # Worker's day
             self[date(year, MAY, 1)] = "Workers' day"

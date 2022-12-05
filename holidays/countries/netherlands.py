@@ -13,7 +13,7 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import FR, SU
+from dateutil.relativedelta import SU
 
 from holidays.constants import JAN, APR, MAY, AUG, DEC
 from holidays.holiday_base import HolidayBase
@@ -38,19 +38,19 @@ class Netherlands(HolidayBase):
         self[easter_date] = "Eerste paasdag"
 
         # Good friday
-        self[easter_date + rd(weekday=FR(-1))] = "Goede Vrijdag"
+        self[easter_date + rd(days=-2)] = "Goede Vrijdag"
 
         # Second easter day
-        self[easter_date + rd(days=1)] = "Tweede paasdag"
+        self[easter_date + rd(days=+1)] = "Tweede paasdag"
 
         # Ascension day
-        self[easter_date + rd(days=39)] = "Hemelvaart"
+        self[easter_date + rd(days=+39)] = "Hemelvaart"
 
         # Pentecost
-        self[easter_date + rd(days=49)] = "Eerste Pinksterdag"
+        self[easter_date + rd(days=+49)] = "Eerste Pinksterdag"
 
         # Pentecost monday
-        self[easter_date + rd(days=50)] = "Tweede Pinksterdag"
+        self[easter_date + rd(days=+50)] = "Tweede Pinksterdag"
 
         # First christmas
         self[date(year, DEC, 25)] = "Eerste Kerstdag"

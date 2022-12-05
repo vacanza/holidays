@@ -13,7 +13,7 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import FR, SU
+from dateutil.relativedelta import SU
 
 from holidays.constants import JAN, APR, MAY, JUL, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
@@ -32,17 +32,18 @@ class Curacao(HolidayBase):
         # New Year's Day
         self[date(year, JAN, 1)] = "Nieuwjaarsdag [New Year's Day]"
 
+        easter_date = easter(year)
         # Carnaval Monday
         self[
-            easter(year) + rd(days=-48)
+            easter_date + rd(days=-48)
         ] = "Maandag na de Grote Karnaval [Carnaval Monday]"
 
         # Good Friday
-        self[easter(year) + rd(weekday=FR(-1))] = "Goede Vrijdag [Good Friday]"
+        self[easter_date + rd(days=-2)] = "Goede Vrijdag [Good Friday]"
 
         # Easter Monday
         self[
-            easter(year) + rd(days=1)
+            easter_date + rd(days=+1)
         ] = "Di Dos Dia di Pasku di Resureccion [Easter Monday]"
 
         # King's Day
@@ -74,7 +75,7 @@ class Curacao(HolidayBase):
         self[labour_day] = "Dia di Obrero [Labour Day]"
 
         # Ascension Day
-        self[easter(year) + rd(days=39)] = "Hemelvaartsdag [Ascension Day]"
+        self[easter_date + rd(days=+39)] = "Hemelvaartsdag [Ascension Day]"
 
         # Dia di Himno y Bandera
         self[

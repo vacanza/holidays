@@ -13,7 +13,7 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, WE, FR, SU
+from dateutil.relativedelta import MO, SU
 
 from holidays.constants import JAN, FEB, MAY, JUN, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
@@ -83,18 +83,19 @@ class Jamaica(HolidayBase):
         # self[date(year, DEC, 31)] = "New Year Eve"
 
         # Holidays based on Easter
+        easter_date = easter(year)
 
         # Ash Wednesday
-        self[easter(year) + rd(days=-40, weekday=WE(-1))] = "Ash Wednesday"
+        self[easter_date + rd(days=-46)] = "Ash Wednesday"
 
         # Good Friday
-        self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
+        self[easter_date + rd(days=-2)] = "Good Friday"
 
         # Easter
-        self[easter(year)] = "Easter"
+        self[easter_date] = "Easter"
 
         # Easter
-        self[easter(year) + rd(weekday=MO(+1))] = "Easter Monday"
+        self[easter_date + rd(days=+1)] = "Easter Monday"
 
 
 class JM(Jamaica):

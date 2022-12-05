@@ -13,7 +13,7 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, TH, FR, SU
+from dateutil.relativedelta import SU
 
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC
@@ -56,6 +56,8 @@ class Spain(HolidayBase):
 
         self._is_observed(date(year, JAN, 1), "Año nuevo")
         self._is_observed(date(year, JAN, 6), "Epifanía del Señor")
+
+        easter_date = easter(year)
 
         if (
             year < 2015
@@ -105,16 +107,16 @@ class Spain(HolidayBase):
         elif year >= 2022 and self.subdiv and self.subdiv == "VC":
             self._is_observed(date(year, MAR, 19), "San José")
         if year != 2022 and self.subdiv not in {"CT", "VC"}:
-            self[easter(year) + rd(weeks=-1, weekday=TH)] = "Jueves Santo"
+            self[easter_date + rd(days=-3)] = "Jueves Santo"
         elif year == 2022 and self.subdiv and self.subdiv not in {"CT"}:
-            self[easter(year) + rd(weeks=-1, weekday=TH)] = "Jueves Santo"
-        self[easter(year) + rd(weeks=-1, weekday=FR)] = "Viernes Santo"
+            self[easter_date + rd(days=-3)] = "Jueves Santo"
+        self[easter_date + rd(days=-2)] = "Viernes Santo"
         if (
             2022 == year
             and self.subdiv
             and self.subdiv in {"CT", "IB", "NC", "PV", "RI", "VC"}
         ):
-            self[easter(year) + rd(weekday=MO)] = "Lunes de Pascua"
+            self[easter_date + rd(days=+1)] = "Lunes de Pascua"
         elif 2022 > year and self.subdiv in {
             "CM",
             "CT",
@@ -123,7 +125,7 @@ class Spain(HolidayBase):
             "PV",
             "VC",
         }:
-            self[easter(year) + rd(weekday=MO)] = "Lunes de Pascua"
+            self[easter(year) + rd(days=+1)] = "Lunes de Pascua"
 
         if 2022 != year:
             self._is_observed(date(year, MAY, 1), "Día del Trabajador")

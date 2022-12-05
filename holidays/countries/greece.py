@@ -11,7 +11,7 @@
 
 from datetime import date
 
-from dateutil.easter import EASTER_ORTHODOX, easter
+from dateutil.easter import easter, EASTER_ORTHODOX
 from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, TU
 
@@ -29,7 +29,7 @@ class Greece(HolidayBase):
     def _populate(self, year):
         super()._populate(year)
 
-        eday = easter(year, method=EASTER_ORTHODOX)
+        easter_date = easter(year, method=EASTER_ORTHODOX)
 
         # New Years
         self[date(year, JAN, 1)] = "Πρωτοχρονιά [New Year's Day]"
@@ -37,17 +37,17 @@ class Greece(HolidayBase):
         self[date(year, JAN, 6)] = "Θεοφάνεια [Epiphany]"
 
         # Clean Monday
-        self[eday - rd(days=48)] = "Καθαρά Δευτέρα [Clean Monday]"
+        self[easter_date + rd(days=-48)] = "Καθαρά Δευτέρα [Clean Monday]"
 
         # Independence Day
         self[date(year, MAR, 25)] = "Εικοστή Πέμπτη Μαρτίου [Independence Day]"
 
         # Easter Monday
-        self[eday + rd(days=1)] = "Δευτέρα του Πάσχα [Easter Monday]"
+        self[easter_date + rd(days=+1)] = "Δευτέρα του Πάσχα [Easter Monday]"
 
         # Monday of the Holy Spirit
         self[
-            eday + rd(days=50)
+            easter_date + rd(days=+50)
         ] = "Δευτέρα του Αγίου Πνεύματος [Monday of the Holy Spirit]"
 
         # Labour Day

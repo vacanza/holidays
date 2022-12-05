@@ -27,14 +27,12 @@ class Mozambique(HolidayBase):
 
         if year > 1974:
             self[date(year, 1, 1)] = "Ano novo"
-            e = easter(year)
-            good_friday = e - rd(days=2)
-            self[good_friday] = "Sexta-feira Santa"
+            easter_date = easter(year)
+            self[easter_date + rd(days=-2)] = "Sexta-feira Santa"
 
             # carnival is the Tuesday before Ash Wednesday
             # which is 40 days before easter excluding sundays
-            carnival = e + rd(days=-47)
-            self[carnival] = "Carnaval"
+            self[easter_date + rd(days=-47)] = "Carnaval"
 
             self[date(year, FEB, 3)] = "Dia dos Heróis Moçambicanos"
             self[date(year, APR, 7)] = "Dia da Mulher Moçambicana"

@@ -198,9 +198,10 @@ class UnitedStates(HolidayBase):
         elif self.subdiv in {"PR", "VI"}:
             self[date(year, FEB, 1) + rd(weekday=MO(+3))] = name
 
+        easter_date = easter(year)
         # Mardi Gras
         if self.subdiv == "LA" and year >= 1857:
-            self[easter(year) + rd(days=-47)] = "Mardi Gras"
+            self[easter_date + rd(days=-47)] = "Mardi Gras"
 
         # Guam Discovery Day
         if self.subdiv == "GU" and year >= 1970:
@@ -279,7 +280,7 @@ class UnitedStates(HolidayBase):
 
         # Holy Thursday
         if self.subdiv == "VI":
-            self[easter(year) + rd(weekday=TH(-1))] = "Holy Thursday"
+            self[easter_date + rd(days=-3)] = "Holy Thursday"
 
         # Good Friday
         if self.subdiv in {
@@ -296,11 +297,11 @@ class UnitedStates(HolidayBase):
             "TX",
             "VI",
         }:
-            self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
+            self[easter_date + rd(days=-2)] = "Good Friday"
 
         # Easter Monday
         if self.subdiv == "VI":
-            self[easter(year) + rd(weekday=MO)] = "Easter Monday"
+            self[easter_date + rd(days=+1)] = "Easter Monday"
 
         # Confederate Memorial Day
         name = "Confederate Memorial Day"

@@ -47,7 +47,10 @@ class TestUY(unittest.TestCase):
             self.assertIn(dt, self.holidays)
             self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
-            self.assertEqual(self.holidays[dt], "Día del Trabajo [Labour Day]")
+            self.assertEqual(
+                self.holidays[dt],
+                "Día de los Trabajadores [International Workers' Day]",
+            )
 
     def test_jura_de_la_constitucion_day(self):
         for year in range(1900, 2100):
@@ -55,7 +58,9 @@ class TestUY(unittest.TestCase):
             self.assertIn(dt, self.holidays)
             self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
-            self.assertEqual(self.holidays[dt], "Jura de la constitución")
+            self.assertEqual(
+                self.holidays[dt], "Jura de la Constitución [Constitution Day]"
+            )
 
     def test_declaratoria_de_la_independencia_day(self):
         for year in range(1900, 2100):
@@ -73,7 +78,9 @@ class TestUY(unittest.TestCase):
             self.assertIn(dt, self.holidays)
             self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
-            self.assertEqual(self.holidays[dt], "Navidad [Christmas]")
+            self.assertEqual(
+                self.holidays[dt], "Día de la Familia [Day of the Family]"
+            )
 
     # Partially paid holidays.
 
@@ -82,7 +89,9 @@ class TestUY(unittest.TestCase):
         for year in range(1900, 2100):
             dt = date(year, 1, 6)
             self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Día de Reyes")
+            self.assertEqual(
+                self.holidays[dt], "Día de los Niños [Children's Day]"
+            )
 
     def test_natalicio_artigas_day(self):
         for year in range(1900, 2100):
@@ -92,7 +101,8 @@ class TestUY(unittest.TestCase):
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
             self.assertEqual(
                 self.holidays[dt],
-                "Natalicio de José Gervacio Artigas",
+                "Natalicio de José Gervasio Artigas "
+                "[Birthday of José Gervasio Artigas]",
             )
 
     def test_dia_de_los_difuntos_day(self):
@@ -101,7 +111,9 @@ class TestUY(unittest.TestCase):
             self.assertIn(dt, self.holidays)
             self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
             self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
-            self.assertEqual(self.holidays[dt], "Día de los difuntos")
+            self.assertEqual(
+                self.holidays[dt], "Día de los Difuntos [All Souls' Day]"
+            )
 
     # Moveable holidays.
 
@@ -122,19 +134,19 @@ class TestUY(unittest.TestCase):
             )
 
     def test_holy_week_day(self):
-        for dt in (
+        for dt, name in (
             (
                 date(2021, 4, 1),
-                "Semana Santa (Jueves Santo)  [Holy day (Holy Thursday)]",
+                "Jueves Santo [Holy Thursday]",
             ),
             (
                 date(2021, 4, 2),
-                "Semana Santa (Viernes Santo)  [Holy day (Holy Friday)]",
+                "Viernes Santo [Holy Friday]",
             ),
             (date(2021, 4, 4), "Día de Pascuas [Easter Day]"),
         ):
-            self.assertIn(dt[0], self.holidays)
-            self.assertEqual(self.holidays[dt[0]], dt[1])
+            self.assertIn(dt, self.holidays)
+            self.assertEqual(self.holidays[dt], name)
 
     def test_desembarco_de_los_33_orientales(self):
         for dt in (
@@ -147,8 +159,7 @@ class TestUY(unittest.TestCase):
             self.assertIn(dt, self.holidays)
             self.assertEqual(
                 self.holidays[dt],
-                "Desembarco de los 33 Orientales Landing of the 33 Orientals "
-                "Aterrissagem dos 33 Orientais Sbarco dei 33 orientali",
+                "Desembarco de los 33 Orientales [Landing of the 33 Patriots]",
             )
 
     def test_batalla_de_las_piedras_day(self):
@@ -162,7 +173,7 @@ class TestUY(unittest.TestCase):
             self.assertIn(dt, self.holidays)
             self.assertEqual(
                 self.holidays[dt],
-                "Batalla de las Piedras [Battle of the stones]",
+                "Batalla de Las Piedras [Battle of Las Piedras]",
             )
 
     def test_dia_del_respeto_a_la_diversidad_cultural(self):
