@@ -26,6 +26,9 @@ class Ireland(HolidayBase):
     """
 
     country = "IE"
+    special_holidays = {
+        2022: ((MAR, 18, "Day of Remembrance and Recognition"),)
+    }
 
     def _populate(self, year):
         super()._populate(year)
@@ -39,10 +42,6 @@ class Ireland(HolidayBase):
             self[dt] = name
             if self.observed and dt.weekday() != FR.weekday:
                 self[dt + rd(weekday=MO)] = name + " (Observed)"
-
-        # One-off day of rememberance and recognition
-        if year == 2022:
-            self[date(year, MAR, 18)] = "Day of Rememberance and Recognition"
 
         # St. Patrick's Day
         name = "St. Patrick's Day"

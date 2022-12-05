@@ -93,9 +93,9 @@ class Australia(HolidayBase):
 
         # Easter
         self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
-        if self.subdiv in ("ACT", "NSW", "NT", "QLD", "SA", "VIC"):
+        if self.subdiv in {"ACT", "NSW", "NT", "QLD", "SA", "VIC"}:
             self[easter(year) + rd(weekday=SA(-1))] = "Easter Saturday"
-        if self.subdiv in ("ACT", "NSW", "QLD", "VIC"):
+        if self.subdiv in {"ACT", "NSW", "QLD", "VIC"}:
             self[easter(year)] = "Easter Sunday"
         self[easter(year) + rd(weekday=MO)] = "Easter Monday"
 
@@ -105,18 +105,18 @@ class Australia(HolidayBase):
             apr25 = date(year, APR, 25)
             self[apr25] = name
             if self.observed:
-                if apr25.weekday() == SA.weekday and self.subdiv in (
+                if apr25.weekday() == SA.weekday and self.subdiv in {
                     "WA",
                     "NT",
-                ):
+                }:
                     self[apr25 + rd(weekday=MO)] = name + " (Observed)"
-                elif apr25.weekday() == SU.weekday and self.subdiv in (
+                elif apr25.weekday() == SU.weekday and self.subdiv in {
                     "ACT",
+                    "NT",
                     "QLD",
                     "SA",
                     "WA",
-                    "NT",
-                ):
+                }:
                     self[apr25 + rd(weekday=MO)] = name + " (Observed)"
 
         # Western Australia Day
@@ -145,7 +145,7 @@ class Australia(HolidayBase):
             elif self.subdiv == "WA":
                 # by proclamation ?!?!
                 self[date(year, OCT, 1) + rd(weekday=MO(-1))] = name
-            elif self.subdiv in ("NSW", "VIC", "ACT", "SA", "NT", "TAS"):
+            elif self.subdiv in {"ACT", "NSW", "NT", "SA", "TAS", "VIC"}:
                 dt = date(year, JUN, 1) + rd(weekday=MO(+2))
                 self[dt] = name
         elif year > 1911:
@@ -166,7 +166,7 @@ class Australia(HolidayBase):
 
         # Labour Day
         name = "Labour Day"
-        if self.subdiv in ("NSW", "ACT", "SA"):
+        if self.subdiv in {"ACT", "NSW", "SA"}:
             self[date(year, OCT, 1) + rd(weekday=MO)] = name
         elif self.subdiv == "WA":
             self[date(year, MAR, 1) + rd(weekday=MO)] = name

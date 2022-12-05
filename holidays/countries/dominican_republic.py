@@ -31,7 +31,7 @@ class DominicanRepublic(HolidayBase):
     def __change_day_by_law(holiday, latest_days=(TH.weekday, FR.weekday)):
         # Law No. 139-97 - Holidays Dominican Republic - Jun 27, 1997
         if holiday >= date(1997, 6, 27):
-            if holiday.weekday() in (TU.weekday, WE.weekday):
+            if holiday.weekday() in {TU.weekday, WE.weekday}:
                 holiday -= rd(weekday=MO(-1))
             elif holiday.weekday() in latest_days:
                 holiday += rd(weekday=MO(1))

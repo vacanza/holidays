@@ -692,12 +692,10 @@ class TestAllInSameYear(unittest.TestCase):
         failure = list2reason(result.failures)
         text = error if error else failure
         if text:
-            print(
+            warnings.warn(
                 f"{text.splitlines()[-1]} in country {self.country}: "
                 f"holiday {self.hol} returned for year {self.year}"
-            )
-            print(
-                holidays.country_holidays(
+                + holidays.country_holidays(
                     self.country, subdiv=None, years=[self.year]
                 ).get_list(self.hol)
             )

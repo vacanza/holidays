@@ -60,7 +60,7 @@ class UnitedKingdom(HolidayBase):
                 self[dt + rd(weekday=MO)] = name + " (Observed)"
 
         # New Year Holiday
-        if self.subdiv in ("UK", "Scotland"):
+        if self.subdiv in {"Scotland", "UK"}:
             name = "New Year Holiday"
             dt = date(year, JAN, 2)
             if self.subdiv == "UK":
@@ -72,7 +72,7 @@ class UnitedKingdom(HolidayBase):
                 self[dt + rd(days=+1)] = name + " (Observed)"
 
         # St. Patrick's Day
-        if self.subdiv in ("UK", "Northern Ireland"):
+        if self.subdiv in {"Northern Ireland", "UK"}:
             name = "St. Patrick's Day"
             dt = date(year, MAR, 17)
             if self.subdiv == "UK":
@@ -82,21 +82,21 @@ class UnitedKingdom(HolidayBase):
                 self[dt + rd(weekday=MO)] = name + " (Observed)"
 
         # Battle of the Boyne
-        if self.subdiv in ("UK", "Northern Ireland"):
+        if self.subdiv in {"Northern Ireland", "UK"}:
             name = "Battle of the Boyne"
             if self.subdiv == "UK":
                 name += " [Northern Ireland]"
             self[date(year, JUL, 12)] = name
 
         # Summer bank holiday (first Monday in August)
-        if self.subdiv in ("UK", "Scotland"):
+        if self.subdiv in {"Scotland", "UK"}:
             name = "Summer Bank Holiday"
             if self.subdiv == "UK":
                 name += " [Scotland]"
             self[date(year, AUG, 1) + rd(weekday=MO)] = name
 
         # St. Andrew's Day
-        if self.subdiv in ("UK", "Scotland"):
+        if self.subdiv in {"Scotland", "UK"}:
             name = "St. Andrew's Day"
             if self.subdiv == "UK":
                 name += " [Scotland]"
