@@ -12,7 +12,7 @@
 from datetime import date, timedelta
 
 from dateutil.easter import easter
-from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
+from dateutil.relativedelta import MO, TU, WE, TH, FR
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
@@ -181,7 +181,7 @@ class NewYorkStockExchange(HolidayBase):
                 begin + timedelta(days=n)
                 for n in range((end - begin).days + 1)
             ):
-                if d.weekday() in {SA.weekday, SU.weekday}:
+                if self._is_weekend(d):
                     continue
                 self[d] = "World War I"
         elif year == 1917:
@@ -213,7 +213,7 @@ class NewYorkStockExchange(HolidayBase):
                 begin + timedelta(days=n)
                 for n in range((end - begin).days + 1)
             ):
-                if d.weekday() in {SA.weekday, SU.weekday}:
+                if self._is_weekend(d):
                     continue
                 self[d] = "Special Bank Holiday"
         elif year == 1945:

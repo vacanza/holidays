@@ -595,10 +595,7 @@ class HolidayBase(Dict[date, str]):
         Returns True if date's week day is a weekend day.
         Returns False otherwise.
         """
-        if len(args) == 1:
-            dt = args[0]
-        else:
-            dt = date(*args)
+        dt = args[0] if len(args) == 1 else date(*args)
 
         return dt.weekday() in self.weekend
 
