@@ -33,43 +33,44 @@ class Eswatini(HolidayBase):
     }
 
     def _populate(self, year):
+        # Observed since 1939
+        if year <= 1938:
+            return
         super()._populate(year)
 
-        # Observed since 1938
-        if year > 1938:
-            self[date(year, JAN, 1)] = "New Year's Day"
+        self[date(year, JAN, 1)] = "New Year's Day"
 
-            easter_date = easter(year)
-            self[easter_date + rd(days=-2)] = "Good Friday"
-            self[easter_date + rd(days=+1)] = "Easter Monday"
-            self[easter_date + rd(days=+39)] = "Ascension Day"
+        easter_date = easter(year)
+        self[easter_date + rd(days=-2)] = "Good Friday"
+        self[easter_date + rd(days=+1)] = "Easter Monday"
+        self[easter_date + rd(days=+39)] = "Ascension Day"
 
-            if year > 1968:
-                self[date(year, APR, 25)] = "National Flag Day"
+        if year >= 1969:
+            self[date(year, APR, 25)] = "National Flag Day"
 
-            if year > 1982:
-                # https://www.officeholidays.com/holidays/swaziland/birthday-of-late-king-sobhuza
-                self[date(year, JUL, 22)] = "Birthday of Late King Sobhuza"
+        if year >= 1983:
+            # https://www.officeholidays.com/holidays/swaziland/birthday-of-late-king-sobhuza
+            self[date(year, JUL, 22)] = "Birthday of Late King Sobhuza"
 
-            if year > 1986:
-                # https://www.officeholidays.com/holidays/swaziland/birthday-of-king-mswati-iii
-                self[date(year, APR, 19)] = "King's Birthday"
+        if year >= 1987:
+            # https://www.officeholidays.com/holidays/swaziland/birthday-of-king-mswati-iii
+            self[date(year, APR, 19)] = "King's Birthday"
 
-            self[date(year, MAY, 1)] = "Worker's Day"
-            self[date(year, SEP, 6)] = "Independence Day"
-            self[date(year, DEC, 25)] = "Christmas Day"
-            self[date(year, DEC, 26)] = "Boxing Day"
+        self[date(year, MAY, 1)] = "Worker's Day"
+        self[date(year, SEP, 6)] = "Independence Day"
+        self[date(year, DEC, 25)] = "Christmas Day"
+        self[date(year, DEC, 26)] = "Boxing Day"
 
-            # As of 2021/1/1, whenever a public holiday falls on a
-            # Sunday
-            # it rolls over to the following Monday
+        # As of 2021/1/1, whenever a public holiday falls on a
+        # Sunday
+        # it rolls over to the following Monday
+        if self.observed and year >= 2021:
             for k, v in list(self.items()):
-
-                if self.observed and k.weekday() == SUN and k.year == year:
-                    add_days = 1
-                    while self.get(k + rd(days=add_days)) is not None:
-                        add_days += 1
-                    self[k + rd(days=add_days)] = v + " (Day Off)"
+                if k.weekday() == SUN and k.year == year:
+                    dt = k + rd(days=+1)
+                    while self.get(dt):
+                        dt += rd(days=+1)
+                    self[dt] = v + " (Observed)"
 
 
 class Swaziland(Eswatini):

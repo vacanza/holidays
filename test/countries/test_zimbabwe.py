@@ -53,3 +53,11 @@ class TestZimbabwe(unittest.TestCase):
     def test_youth_day(self):
         self.assertIn(date(2019, 2, 21), self.holidays)
         self.assertNotIn(date(2015, 2, 21), self.holidays)
+
+    def test_not_observed(self):
+        self.holidays = holidays.ZW(observed=False)
+        self.assertNotIn(date(2017, 1, 2), self.holidays)
+        self.assertNotIn(date(2019, 12, 23), self.holidays)
+        self.assertNotIn(date(2021, 2, 22), self.holidays)
+        self.assertNotIn(date(2022, 5, 2), self.holidays)
+        self.assertNotIn(date(2022, 12, 27), self.holidays)
