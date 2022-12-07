@@ -289,7 +289,7 @@ def list_supported_financial() -> Dict[str, List[str]]:
     }
 
 
-def _islamic_to_gre(g_year: int, h_month: int, h_day: int) -> List[date]:
+def _islamic_to_gre(g_year: int, h_month: int, h_day: int) -> Iterable[date]:
     """
     Find the Gregorian dates of all instances of Islamic (Lunar Hijrī) calendar
     month and day falling within the Gregorian year. There could be up to two
@@ -312,21 +312,20 @@ def _islamic_to_gre(g_year: int, h_month: int, h_day: int) -> List[date]:
         List of Gregorian dates within the Gregorian year specified that
         matches the Islamic (Lunar Hijrī) calendar day and month specified.
     """
-    gre_dates: List[date] = []
 
     # To avoid hijri_converter check range OverflowError.
     dt = (g_year, h_month, h_day)
     dt_min, dt_max = GREGORIAN_RANGE
     if dt < dt_min or dt > dt_max:
-        return gre_dates
+        return ()
 
     h_year = convert.Gregorian(g_year, 1, 1).to_hijri().year
-    gre_dates = [
+    gre_dates = (
         convert.Hijri(year, h_month, h_day).to_gregorian()
         for year in range(h_year - 1, h_year + 2)
-    ]
+    )
 
-    return [gre_date for gre_date in gre_dates if gre_date.year == g_year]
+    return (gre_date for gre_date in gre_dates if gre_date.year == g_year)
 
 
 class _ChineseLuniSolar:

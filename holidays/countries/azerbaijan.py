@@ -13,7 +13,7 @@ from datetime import date
 
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import SAT, SUN, JAN, MAR, MAY, JUN, OCT, NOV, DEC
+from holidays.constants import SAT, SUN, JAN, MAR, MAY, JUN, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
 
@@ -102,17 +102,17 @@ class Azerbaijan(HolidayBase):
 
         # Ramadan
         # Date of observance is announced yearly, This is an estimate.
-        hol_date = _islamic_to_gre(year, OCT, 1)[0]
-        self[hol_date] = "Ramadan"
-        self[hol_date + rd(days=1)] = "Ramadan"
-        self._add_observed(hol_date + rd(days=1))
+        for hol_date in _islamic_to_gre(year, 10, 1):
+            self[hol_date] = "Ramadan"
+            self[hol_date + rd(days=1)] = "Ramadan"
+            self._add_observed(hol_date + rd(days=1))
 
         # Festival of the Sacrifice
         # Date of observance is announced yearly, This is an estimate.
-        hol_date = _islamic_to_gre(year, DEC, 10)[0]
-        self[hol_date] = "Festival of the Sacrifice"
-        self[hol_date + rd(days=1)] = "Festival of the Sacrifice"
-        self._add_observed(hol_date + rd(days=1))
+        for hol_date in _islamic_to_gre(year, 12, 10):
+            self[hol_date] = "Festival of the Sacrifice"
+            self[hol_date + rd(days=1)] = "Festival of the Sacrifice"
+            self._add_observed(hol_date + rd(days=1))
 
 
 class AZ(Azerbaijan):
