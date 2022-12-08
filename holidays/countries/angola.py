@@ -45,7 +45,7 @@ class Angola(HolidayBase):
         # Observed since 1975
         # TODO do more research on history of Angolan holidays
 
-        if year < 1975:
+        if year <= 1974:
             return
 
         self[date(year, JAN, 1)] = "Ano novo"
@@ -55,25 +55,23 @@ class Angola(HolidayBase):
             if self.observed and date(year, DEC, 31).weekday() == MON:
                 self[date(year, DEC, 31)] = "Ano novo (Day off)"
 
-        e = easter(year)
-        good_friday = e - rd(days=2)
-        self[good_friday] = "Sexta-feira Santa"
+        easter_date = easter(year)
+        self[(easter_date + rd(days=-2))] = "Sexta-feira Santa"
 
         # carnival is the Tuesday before Ash Wednesday
         # which is 40 days before easter excluding sundays
-        carnival = e + rd(days=-47)
-        self[carnival] = "Carnaval"
+        self[(easter_date + rd(days=-47))] = "Carnaval"
 
         self[date(year, FEB, 4)] = "Dia do Início da Luta Armada"
         self[date(year, MAR, 8)] = "Dia Internacional da Mulher"
 
-        if year > 2018:
+        if year >= 2019:
             self[date(year, MAR, 23)] = "Dia da Libertação da África Austral"
 
         self[date(year, APR, 4)] = "Dia da Paz e Reconciliação"
         self[date(year, MAY, 1)] = "Dia Mundial do Trabalho"
 
-        if year > 1979:
+        if year >= 1980:
             self[date(year, SEP, 17)] = "Dia do Herói Nacional"
 
         self[date(year, NOV, 2)] = "Dia dos Finados"
@@ -84,20 +82,17 @@ class Angola(HolidayBase):
         # it rolls over to the following Monday
         # Since 2018 when a public holiday falls on the Tuesday or Thursday
         # the Monday or Friday is also a holiday
-        for k, v in list(self.items()):
-            if self.observed and year > 1974:
-                if k.weekday() == SUN:
-                    self[k + rd(days=1)] = v + " (Observed)"
-            if self.observed and year > 2017:
-                if k.weekday() == SUN:
-                    pass
-            if self.observed and year > 2017:
-                if k.weekday() == TUE and k != date(year, JAN, 1):
-                    self[k - rd(days=1)] = v + " (Day off)"
-                elif k.weekday() == THU:
-                    self[k + rd(days=1)] = v + " (Day off)"
-            if self.observed and year > 1994 and k.weekday() == SUN:
-                self[k + rd(days=1)] = v + " (Observed)"
+        if self.observed and year >= 1995:
+            for k, v in list(self.items()):
+                if k.year == year:
+                    if year <= 2017:
+                        if k.weekday() == SUN:
+                            self[k + rd(days=+1)] = v + " (Observed)"
+                    else:
+                        if k.weekday() == TUE and k != date(year, JAN, 1):
+                            self[k + rd(days=-1)] = v + " (Day off)"
+                        elif k.weekday() == THU:
+                            self[k + rd(days=+1)] = v + " (Day off)"
 
 
 class AO(Angola):
