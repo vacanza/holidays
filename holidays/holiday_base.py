@@ -243,7 +243,7 @@ class HolidayBase(Dict[date, str]):
 
         :param language:
             The language which the returned holiday names will be translated
-            into. It must be an ISO 2-digit language code. If the language
+            into. It must be an ISO 639-1 (2-letter) language code. If the language
             translation is not supported the original holiday names will be
             used.
 
