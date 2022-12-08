@@ -44,13 +44,10 @@ class Hungary(HolidayBase):
     def _populate(self, year: int) -> None:
         super()._populate(year)
 
-        # New years
-        self._add_with_observed_day_off(date(year, JAN, 1), "Újév", since=2014)
-        # Since 2014, the last day of the year is an observed day off if New
-        # Year's Day falls on a Tuesday.
-        if year >= 2014:
-            if self.observed and date(year, DEC, 31).weekday() == MON:
-                self[date(year, DEC, 31)] = "Újév előtti pihenőnap"
+        # New year
+        self._add_with_observed_day_off(
+            date(year, JAN, 1), "Újév", before=False, since=2014
+        )
 
         # National Day
         if 1945 <= year <= 1950 or 1989 <= year:
@@ -101,7 +98,7 @@ class Hungary(HolidayBase):
             self[date(year, MAY, 2)] = "A Munka ünnepe"
 
         # State Foundation Day (1771-????, 1891-)
-        if 1950 <= year < 1990:
+        if 1950 <= year <= 1989:
             self[date(year, AUG, 20)] = "A kenyér ünnepe"
         else:
             self._add_with_observed_day_off(
@@ -139,10 +136,11 @@ class Hungary(HolidayBase):
                 "Karácsony másnapja",
                 since=2013,
                 before=False,
-                after=True,
             )
 
         # New Year's Eve
+        # Since 2014, the last day of the year is an observed day off if New
+        # Year's Day falls on a Tuesday.
         if (
             self.observed
             and 2014 <= year
@@ -163,14 +161,10 @@ class Hungary(HolidayBase):
         self[day] = desc
         # TODO: should it be a separate flag?
         if self.observed and since <= day.year:
-            if (
-                day.weekday() == TUE
-                and before
-                and not (day.month == JAN and day.day == 1)
-            ):
-                self[day - rd(days=1)] = desc + " előtti pihenőnap"
+            if day.weekday() == TUE and before:
+                self[day + rd(days=-1)] = desc + " előtti pihenőnap"
             elif day.weekday() == THU and after:
-                self[day + rd(days=1)] = desc + " utáni pihenőnap"
+                self[day + rd(days=+1)] = desc + " utáni pihenőnap"
 
 
 class HU(Hungary):
