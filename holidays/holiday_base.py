@@ -283,9 +283,7 @@ class HolidayBase(Dict[date, str]):
                         f"'{subdiv}'"
                     )
 
-            name = getattr(self, "country", None) or getattr(
-                self, "market", None
-            )
+            name = getattr(self, "country", getattr(self, "market", None))
             if language and name:
                 # Load translation.
                 try:
