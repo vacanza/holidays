@@ -39,9 +39,11 @@ class Kenya(HolidayBase):
         self[date(year, DEC, 12)] = "Jamhuri (Independence) Day"
         self[date(year, DEC, 25)] = "Christmas Day"
         self[date(year, DEC, 26)] = "Utamaduni Day"
-        for k, v in list(self.items()):
-            if self.observed and k.weekday() == SUN:
-                self[k + rd(days=1)] = v + " (Observed)"
+
+        if self.observed:
+            for k, v in list(self.items()):
+                if k.weekday() == SUN and k.year == year:
+                    self[k + rd(days=+1)] = v + " (Observed)"
 
         easter_date = easter(year)
         self[easter_date + rd(days=-2)] = "Good Friday"

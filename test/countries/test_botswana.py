@@ -54,3 +54,11 @@ class TestBotswana(unittest.TestCase):
 
     def test_saturday_and_monday(self):
         self.assertIn(date(2020, 12, 26), self.holidays)
+
+    def test_not_observed(self):
+        self.holidays = holidays.BW(observed=False)
+        self.assertNotIn(date(2018, 7, 2), self.holidays)
+        self.assertNotIn(date(2018, 10, 2), self.holidays)
+        self.assertNotIn(date(2021, 12, 27), self.holidays)
+        self.assertNotIn(date(2022, 5, 2), self.holidays)
+        self.assertNotIn(date(2022, 12, 27), self.holidays)
