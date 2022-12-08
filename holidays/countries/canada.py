@@ -13,7 +13,7 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, FR, SU
+from dateutil.relativedelta import MO, SU
 
 from holidays.constants import (
     FRI,
@@ -75,12 +75,8 @@ class Canada(HolidayBase):
         # New Year's Day
         name = self.translate("New Year's Day")
         self[date(year, JAN, 1)] = name
-        if self.observed and date(year, JAN, 1).weekday() == SUN:
+        if self.observed and date(year, JAN, 1).weekday() in WEEKEND:
             self[date(year, JAN, 1) + rd(days=+1)] = f"{name} {self.translate('(Observed)')}"
-        # The following year's observed New Year's Day can be in this year
-        # when it falls on a Friday (Jan 1st is a Saturday).
-        if self.observed and date(year, DEC, 31).weekday() == FRI:
-            self[date(year, DEC, 31)] = f"{name} {self.translate('(Observed)')}"
 
         # Family Day / Louis Riel Day (MB) / Islander Day (PE)
         # / Heritage Day (NS, YT)
@@ -128,6 +124,7 @@ class Canada(HolidayBase):
             dt = self._get_nearest_monday(date(year, MAR, 17))
             self[dt] = self.translate("St. Patrick's Day")
 
+        easter_date = easter(year)
         # Good Friday
         self[easter(year) + rd(weekday=FR(-1))] = self.translate("Good Friday")
         # Easter Monday

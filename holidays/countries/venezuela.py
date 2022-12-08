@@ -41,17 +41,18 @@ class Venezuela(HolidayBase):
 
         self[date(year, JAN, 1)] = "Año Nuevo [New Year's]"
 
+        easter_date = easter(year)
         self[
-            easter(year) - rd(days=48)
+            easter_date + rd(days=-48)
         ] = "Lunes de Carnaval [Monday of Carnival]"
 
         self[
-            easter(year) - rd(days=47)
+            easter_date + rd(days=-47)
         ] = "Martes de Carnaval [Tuesday of Carnival]"
 
-        self[easter(year) - rd(days=3)] = "Jueves Santo [Maundy Thursday]"
+        self[easter_date + rd(days=-3)] = "Jueves Santo [Maundy Thursday]"
 
-        self[easter(year) - rd(days=2)] = "Viernes Santo [Good Friday]"
+        self[easter_date + rd(days=-2)] = "Viernes Santo [Good Friday]"
 
         # Note: not sure about the start year, but this event happened in 1811
         if year >= 1811:

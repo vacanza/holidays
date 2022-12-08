@@ -41,9 +41,9 @@ class Slovakia(HolidayBase):
             " kresťanov)"
         )
 
-        e = easter(year)
-        self[e - rd(days=2)] = "Veľký piatok"
-        self[e + rd(days=1)] = "Veľkonočný pondelok"
+        easter_date = easter(year)
+        self[easter_date + rd(days=-2)] = "Veľký piatok"
+        self[easter_date + rd(days=+1)] = "Veľkonočný pondelok"
 
         self[date(year, MAY, 1)] = "Sviatok práce"
 

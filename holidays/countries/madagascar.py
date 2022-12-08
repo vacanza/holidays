@@ -38,17 +38,18 @@ class Madagascar(HolidayBase):
         self[date(year, 3, 29)] = "Fetin'ny mahery fo"
         self[date(year, 11, 1)] = "Fetin'ny olo-masina"
         self[date(year, 12, 25)] = "Fetin'ny noely"
-        self[easter(year)] = "fetin'ny paska"
-        self[easter(year) + rd(days=1)] = "Alatsinain'ny paska"
-        self[easter(year) + rd(days=49)] = "Pentekosta"
-        self[easter(year) + rd(days=50)] = "Alatsinain'ny pentekosta"
+        easter_date = easter(year)
+        self[easter_date] = "fetin'ny paska"
+        self[easter_date + rd(days=+1)] = "Alatsinain'ny paska"
+        self[easter_date + rd(days=+49)] = "Pentekosta"
+        self[easter_date + rd(days=+50)] = "Alatsinain'ny pentekosta"
         self[date(year, 6, 1) + rd(day=1, weekday=SU(3))] = "Fetin'ny ray"
         self[
-            easter(year) + rd(days=39)
+            easter_date + rd(days=+39)
         ] = "Fiakaran'ny Jesosy kristy tany an-danitra"
         self[date(year, 8, 15)] = "Fiakaran'ny Masina Maria tany an-danitra"
 
-        if easter(year) + rd(days=49) == date(year, 5, 1) + rd(
+        if easter_date + rd(days=+49) == date(year, 5, 1) + rd(
             day=31, weekday=SU(-1)
         ):
             self[

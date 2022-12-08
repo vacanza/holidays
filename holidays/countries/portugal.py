@@ -66,17 +66,17 @@ class Portugal(HolidayBase):
 
         self[date(year, JAN, 1)] = "Ano Novo"
 
-        e = easter(year)
+        easter_date = easter(year)
 
         # carnival is no longer a holiday, but some companies let workers off.
         # @todo recollect the years in which it was a public holiday
         # self[e - rd(days=47)] = "Carnaval"
-        self[e - rd(days=2)] = "Sexta-feira Santa"
-        self[e] = "Páscoa"
+        self[easter_date + rd(days=-2)] = "Sexta-feira Santa"
+        self[easter_date] = "Páscoa"
 
         # Revoked holidays in 2013–2015
         if year < 2013 or year > 2015:
-            self[e + rd(days=60)] = "Corpo de Deus"
+            self[easter_date + rd(days=+60)] = "Corpo de Deus"
             self[date(year, OCT, 5)] = "Implantação da República"
             self[date(year, NOV, 1)] = "Dia de Todos os Santos"
             self[date(year, DEC, 1)] = "Restauração da Independência"
@@ -99,8 +99,7 @@ class Portugal(HolidayBase):
             - Lisbon's city holiday
             """
 
-            e = easter(year)
-            self[e - rd(days=47)] = "Carnaval"
+            self[easter_date + rd(days=-47)] = "Carnaval"
             self[date(year, DEC, 24)] = "Véspera de Natal"
             self[date(year, DEC, 26)] = "26 de Dezembro"
             self[date(year, DEC, 31)] = "Véspera de Ano Novo"
@@ -114,14 +113,14 @@ class Portugal(HolidayBase):
         if self.subdiv == "01":
             self[date(year, MAY, 12)] = "Dia de Santa Joana"
         if self.subdiv == "02":
-            self[e + rd(days=4) + rd(weeks=5)] = "Quinta-feira da Ascensão"
+            self[easter_date + rd(days=+39)] = "Quinta-feira da Ascensão"
         if self.subdiv in {"03", "13"}:
             self[date(year, JUN, 24)] = "Dia de São João"
         if self.subdiv == "04":
             self[date(year, AUG, 22)] = "Dia de Nossa Senhora das Graças"
         if self.subdiv == "05":
             self[
-                e + rd(days=2) + rd(weeks=2)
+                easter_date + rd(days=+16)
             ] = "Dia de Nossa Senhora de Mércoles"
         if self.subdiv == "06":
             self[date(year, JUL, 4)] = "Dia de Santa Isabel"

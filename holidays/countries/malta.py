@@ -34,9 +34,7 @@ class Malta(HolidayBase):
         self[date(year, MAR, 31)] = "Freedom Day"
 
         # Easter and easter related calculations
-        e = easter(year)
-        good_friday = e - rd(days=2)
-
+        good_friday = easter(year) + rd(days=-2)
         self[good_friday] = "Good Friday"
 
         self[date(year, MAY, 1)] = "Worker's Day"

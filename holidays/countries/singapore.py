@@ -14,7 +14,6 @@ from typing import Dict, Iterable, Optional, Tuple, Union
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, FR, SA
 
 from holidays.constants import (
     SUN,
@@ -197,16 +196,16 @@ class Singapore(HolidayBase):
                 hol_date = date_obs
                 self[hol_date] = "Hari Raya Haji* (*estimated)"
 
-        # Holy Saturday (up to and including 1968)
-        if year <= 1968:
-            self[easter(year) + rd(weekday=SA(-1))] = "Holy Saturday"
-
+        easter_date = easter(year)
         # Good Friday
-        self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
+        self[easter_date + rd(days=-2)] = "Good Friday"
 
-        # Easter Monday
         if year <= 1968:
-            self[easter(year) + rd(weekday=MO(1))] = "Easter Monday"
+            # Holy Saturday
+            self[easter_date + rd(days=-1)] = "Holy Saturday"
+
+            # Easter Monday
+            self[easter_date + rd(days=+1)] = "Easter Monday"
 
         # Labour Day
         self[date(year, MAY, 1)] = "Labour Day"
