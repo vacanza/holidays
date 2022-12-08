@@ -420,6 +420,9 @@ class TestNewYorkStockExchange(unittest.TestCase):
                 2004, JUN, 11
             ),  # Day of Mourning for President Ronald W. Reagan
             date(2007, JAN, 2),  # Day of Mourning for President Gerald R. Ford
+            date(
+                2018, DEC, 5
+            ),  # Day of Mourning for President George H.W. Bush
         ]
 
         def _make_special_holiday_list(begin, end, days=None, weekends=False):
