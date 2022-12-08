@@ -13,7 +13,6 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, TH, FR, SU
 
 from holidays.constants import JAN, DEC
 from holidays.holiday_base import HolidayBase
@@ -29,17 +28,18 @@ class Denmark(HolidayBase):
     def _populate(self, year):
         super()._populate(year)
 
+        easter_date = easter(year)
         # Public holidays
         self[date(year, JAN, 1)] = "Nytårsdag"
-        self[easter(year) + rd(weekday=SU(-2))] = "Palmesøndag"
-        self[easter(year) + rd(weekday=TH(-1))] = "Skærtorsdag"
-        self[easter(year) + rd(weekday=FR(-1))] = "Langfredag"
-        self[easter(year)] = "Påskedag"
-        self[easter(year) + rd(weekday=MO)] = "Anden påskedag"
-        self[easter(year) + rd(weekday=FR(+4))] = "Store bededag"
-        self[easter(year) + rd(days=39)] = "Kristi himmelfartsdag"
-        self[easter(year) + rd(days=49)] = "Pinsedag"
-        self[easter(year) + rd(days=50)] = "Anden pinsedag"
+        self[easter_date + rd(days=-7)] = "Palmesøndag"
+        self[easter_date + rd(days=-3)] = "Skærtorsdag"
+        self[easter_date + rd(days=-2)] = "Langfredag"
+        self[easter_date] = "Påskedag"
+        self[easter_date + rd(days=+1)] = "Anden påskedag"
+        self[easter_date + rd(days=+26)] = "Store bededag"
+        self[easter_date + rd(days=+39)] = "Kristi himmelfartsdag"
+        self[easter_date + rd(days=+49)] = "Pinsedag"
+        self[easter_date + rd(days=+50)] = "Anden pinsedag"
         self[date(year, DEC, 25)] = "Juledag"
         self[date(year, DEC, 26)] = "Anden juledag"
 

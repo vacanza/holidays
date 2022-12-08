@@ -13,7 +13,7 @@ from typing import Any
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, FR
+from dateutil.relativedelta import MO
 
 from holidays.constants import (
     MON,
@@ -130,15 +130,16 @@ class UnitedKingdom(HolidayBase):
 
         # UnitedKingdom exclusive holidays
 
+        easter_date = easter(year)
         # Good Friday
-        self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
+        self[easter_date + rd(days=-2)] = "Good Friday"
 
         # Easter Monday
         if self.subdiv != "Scotland":
             name = "Easter Monday"
             if self.subdiv == "UK":
                 name += " [England/Wales/Northern Ireland]"
-            self[easter(year) + rd(weekday=MO)] = name
+            self[easter_date + rd(days=+1)] = name
 
         # May Day bank holiday (first Monday in May)
         if year >= 1978:

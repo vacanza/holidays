@@ -13,7 +13,6 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO
 
 from holidays.constants import JAN, MAY, JUN, AUG, NOV, DEC
 from holidays.holiday_base import HolidayBase
@@ -31,13 +30,14 @@ class Luxembourg(HolidayBase):
 
         # Public holidays
         self[date(year, JAN, 1)] = "Neijoerschdag"
-        self[easter(year) + rd(weekday=MO)] = "Ouschterméindeg"
+        easter_date = easter(year)
+        self[easter_date + rd(days=+1)] = "Ouschterméindeg"
         self[date(year, MAY, 1)] = "Dag vun der Aarbecht"
         if year >= 2019:
             # Europe Day: not in legislation yet, but introduced starting 2019
             self[date(year, MAY, 9)] = "Europadag"
-        self[easter(year) + rd(days=39)] = "Christi Himmelfaart"
-        self[easter(year) + rd(days=50)] = "Péngschtméindeg"
+        self[easter_date + rd(days=+39)] = "Christi Himmelfaart"
+        self[easter_date + rd(days=+50)] = "Péngschtméindeg"
         self[date(year, JUN, 23)] = "Nationalfeierdag"
         self[date(year, AUG, 15)] = "Léiffrawëschdag"
         self[date(year, NOV, 1)] = "Allerhellgen"

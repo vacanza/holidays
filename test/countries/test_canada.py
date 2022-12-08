@@ -24,9 +24,11 @@ class TestCA(unittest.TestCase):
     def test_new_years(self):
         self.assertNotIn(date(1866, 12, 31), self.holidays)
         self.assertNotIn(date(2010, 12, 31), self.holidays)
+        self.assertNotIn(date(2011, 1, 3), self.holidays)
         self.assertNotIn(date(2017, 1, 2), self.holidays)
         self.holidays.observed = True
-        self.assertIn(date(2010, 12, 31), self.holidays)
+        self.assertNotIn(date(2010, 12, 31), self.holidays)
+        self.assertIn(date(2011, 1, 3), self.holidays)
         self.assertIn(date(2017, 1, 2), self.holidays)
         self.holidays.observed = False
         for year in range(1900, 2100):

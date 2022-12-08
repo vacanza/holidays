@@ -41,35 +41,36 @@ class Liechtenstein(HolidayBase):
         # Candlemas.
         self[date(year, FEB, 2)] = "Mariä Lichtmess"
 
+        easter_date = easter(year)
         # Shrove Tuesday.
-        self[easter(year) + rd(days=-47)] = "Fasnachtsdienstag"
+        self[easter_date + rd(days=-47)] = "Fasnachtsdienstag"
 
         # Saint Joseph's Day.
         self[date(year, MAR, 19)] = "Josefstag"
 
         # Good Friday.
-        self[easter(year) + rd(days=-2)] = "Karfreitag"
+        self[easter_date + rd(days=-2)] = "Karfreitag"
 
         # Easter.
-        self[easter(year)] = "Ostersonntag"
+        self[easter_date] = "Ostersonntag"
 
         # Easter Monday.
-        self[easter(year) + rd(days=+1)] = "Ostermontag"
+        self[easter_date + rd(days=+1)] = "Ostermontag"
 
         # Labor Day.
         self[date(year, MAY, 1)] = "Tag der Arbeit"
 
         # Ascension Day.
-        self[easter(year) + rd(days=+39)] = "Auffahrt"
+        self[easter_date + rd(days=+39)] = "Auffahrt"
 
         # Pentecost.
-        self[easter(year) + rd(weeks=+7)] = "Pfingstsonntag"
+        self[easter_date + rd(days=+49)] = "Pfingstsonntag"
 
         # Whit Monday.
-        self[easter(year) + rd(days=+50)] = "Pfingstmontag"
+        self[easter_date + rd(days=+50)] = "Pfingstmontag"
 
         # Corpus Christi.
-        self[easter(year) + rd(days=+60)] = "Fronleichnam"
+        self[easter_date + rd(days=+60)] = "Fronleichnam"
 
         # National Day.
         self[date(year, AUG, 15)] = "Staatsfeiertag"

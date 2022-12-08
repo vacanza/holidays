@@ -70,7 +70,7 @@ class Zambia(HolidayBase):
         easter_date = easter(year)
         self[easter_date + rd(days=-2)] = "Good Friday"
         self[easter_date + rd(days=-1)] = "Holy Saturday"
-        self[easter_date + rd(days=1)] = "Easter Monday"
+        self[easter_date + rd(days=+1)] = "Easter Monday"
 
         if year >= 2022:
             self[date(year, APR, 28)] = "Kenneth Kaunda Day"

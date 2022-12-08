@@ -40,14 +40,10 @@ class Namibia(HolidayBase):
             self[date(year, MAR, 21)] = "Independence Day"
 
             # Easter Calculation
-            e = easter(year)
-            good_friday = e - rd(days=2)
-            easter_monday = e + rd(days=1)
-            ascension_day = e + rd(days=39)
-
-            self[easter_monday] = "Easter Monday"
-            self[good_friday] = "Good Friday"
-            self[ascension_day] = "Ascension Day"
+            easter_date = easter(year)
+            self[easter_date + rd(days=-2)] = "Good Friday"
+            self[easter_date + rd(days=+1)] = "Easter Monday"
+            self[easter_date + rd(days=+39)] = "Ascension Day"
             # --------END OF EASTER------------#
 
             self[date(year, MAY, 1)] = "Workers' Day"

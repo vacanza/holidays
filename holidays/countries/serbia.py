@@ -11,7 +11,7 @@
 
 from datetime import date
 
-from dateutil.easter import EASTER_ORTHODOX, easter
+from dateutil.easter import easter, EASTER_ORTHODOX
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import SUN, WEEKEND, JAN, FEB, MAY, NOV
@@ -47,8 +47,9 @@ class Serbia(HolidayBase):
         name = "Празник рада"
         self[date(year, MAY, 1)] = name
         self[date(year, MAY, 2)] = name
+        easter_date = easter(year, method=EASTER_ORTHODOX)
         if self.observed and date(year, MAY, 1).weekday() in WEEKEND:
-            if date(year, MAY, 2) == easter(year, method=EASTER_ORTHODOX):
+            if date(year, MAY, 2) == easter_date:
                 self[date(year, MAY, 4)] = name + " (Observed)"
             else:
                 self[date(year, MAY, 3)] = name + " (Observed)"
@@ -58,16 +59,10 @@ class Serbia(HolidayBase):
         if self.observed and date(year, NOV, 11).weekday() == SUN:
             self[date(year, NOV, 12)] = name + " (Observed)"
         # Easter
-        self[
-            easter(year, method=EASTER_ORTHODOX) - rd(days=2)
-        ] = "Велики петак"
-        self[
-            easter(year, method=EASTER_ORTHODOX) - rd(days=1)
-        ] = "Велика субота"
-        self[easter(year, method=EASTER_ORTHODOX)] = "Васкрс"
-        self[
-            easter(year, method=EASTER_ORTHODOX) + rd(days=1)
-        ] = "Други дан Васкрса"
+        self[easter_date + rd(days=-2)] = "Велики петак"
+        self[easter_date + rd(days=-1)] = "Велика субота"
+        self[easter_date] = "Васкрс"
+        self[easter_date + rd(days=+1)] = "Други дан Васкрса"
 
 
 class RS(Serbia):

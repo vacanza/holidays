@@ -11,7 +11,7 @@
 
 from datetime import date
 
-from dateutil.easter import EASTER_ORTHODOX, easter
+from dateutil.easter import easter, EASTER_ORTHODOX
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAY, JUN, AUG, NOV, DEC
@@ -28,18 +28,18 @@ class Romania(HolidayBase):
     def _populate(self, year):
         super()._populate(year)
 
-        eday = easter(year, method=EASTER_ORTHODOX)
+        easter_date = easter(year, method=EASTER_ORTHODOX)
 
         # New Year
-        for day in [1, 2]:
+        for day in (1, 2):
             self[date(year, JAN, day)] = "Anul Nou"
 
         # Anniversary of the formation of the United Principalities
         self[date(year, JAN, 24)] = "Unirea Principatelor Române"
 
         # Easter (Friday, Sunday and Monday)
-        for day_after_easter in [-2, 0, 1]:
-            self[eday + rd(days=day_after_easter)] = "Paștele"
+        for day_after_easter in (-2, 0, 1):
+            self[easter_date + rd(days=day_after_easter)] = "Paștele"
 
         # Labour Day
         self[date(year, MAY, 1)] = "Ziua Muncii"
@@ -49,8 +49,8 @@ class Romania(HolidayBase):
             self[date(year, JUN, 1)] = "Ziua Copilului"
 
         # Whit Monday
-        for day_after_easter in [49, 50]:
-            self[eday + rd(days=day_after_easter)] = "Rusaliile"
+        for day_after_easter in (49, 50):
+            self[easter_date + rd(days=day_after_easter)] = "Rusaliile"
 
         # Assumption of Mary
         self[date(year, AUG, 15)] = "Adormirea Maicii Domnului"
