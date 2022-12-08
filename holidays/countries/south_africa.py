@@ -39,6 +39,28 @@ class SouthAfrica(HolidayBase):
     """
 
     country = "ZA"
+    special_holidays = {
+        1999: (
+            (JUN, 2, "National and provincial government elections"),
+            (DEC, 31, "Y2K changeover"),
+        ),
+        2000: ((JAN, 2, "Y2K changeover"),),
+        2004: ((APR, 14, "National and provincial government elections"),),
+        2006: ((MAR, 1, "Local government elections"),),
+        2008: ((MAY, 2, "By presidential decree"),),
+        2009: ((APR, 22, "National and provincial government elections"),),
+        2011: (
+            (MAY, 18, "Local government elections"),
+            (DEC, 27, "By presidential decree"),
+        ),
+        2014: ((MAY, 7, "National and provincial government elections"),),
+        2016: (
+            (AUG, 3, "Local government elections"),
+            (DEC, 27, "By presidential decree"),
+        ),
+        2019: ((MAY, 8, "National and provincial government elections"),),
+        2021: ((NOV, 1, "Municipal elections"),),
+    }
 
     def _populate(self, year):
         super()._populate(year)
@@ -47,14 +69,13 @@ class SouthAfrica(HolidayBase):
         if year > 1909:
             self[date(year, JAN, 1)] = "New Year's Day"
 
-            e = easter(year)
-            good_friday = e - rd(days=2)
-            easter_monday = e + rd(days=1)
-            self[good_friday] = "Good Friday"
+            easter_date = easter(year)
+            self[easter_date + rd(days=-2)] = "Good Friday"
             if year > 1979:
-                self[easter_monday] = "Family Day"
+                name = "Family Day"
             else:
-                self[easter_monday] = "Easter Monday"
+                name = "Easter Monday"
+            self[easter_date + rd(days=+1)] = name
 
             if 1909 < year < 1952:
                 dec_16_name = "Dingaan's Day"
@@ -83,38 +104,6 @@ class SouthAfrica(HolidayBase):
             self[date(year, AUG, 9)] = "National Women's Day"
             self[date(year, SEP, 24)] = "Heritage Day"
 
-        # Once-off public holidays
-        national_election = "National and provincial government elections"
-        y2k = "Y2K changeover"
-        local_election = "Local government elections"
-        presidential = "By presidential decree"
-        municipal_election = "Municipal elections"
-        if year == 1999:
-            self[date(1999, JUN, 2)] = national_election
-            self[date(1999, DEC, 31)] = y2k
-        if year == 2000:
-            self[date(2000, JAN, 2)] = y2k
-        if year == 2004:
-            self[date(2004, APR, 14)] = national_election
-        if year == 2006:
-            self[date(2006, MAR, 1)] = local_election
-        if year == 2008:
-            self[date(2008, MAY, 2)] = presidential
-        if year == 2009:
-            self[date(2009, APR, 22)] = national_election
-        if year == 2011:
-            self[date(2011, MAY, 18)] = local_election
-            self[date(2011, DEC, 27)] = presidential
-        if year == 2014:
-            self[date(2014, MAY, 7)] = national_election
-        if year == 2016:
-            self[date(2016, AUG, 3)] = local_election
-            self[date(2016, DEC, 27)] = presidential
-        if year == 2019:
-            self[date(2019, MAY, 8)] = national_election
-        if year == 2021:
-            self[date(2021, NOV, 1)] = municipal_election
-
         # As of 1995/1/1, whenever a public holiday falls on a Sunday,
         # it rolls over to the following Monday
         for k, v in list(self.items()):
@@ -139,8 +128,7 @@ class SouthAfrica(HolidayBase):
             self[historic_workers_day] = "Workers' Day"
 
         if 1909 < year < 1994:
-            ascension_day = e + rd(days=40)
-            self[ascension_day] = "Ascension Day"
+            self[easter_date + rd(days=+40)] = "Ascension Day"
 
         if 1909 < year < 1952:
             self[date(year, MAY, 24)] = "Empire Day"

@@ -33,10 +33,9 @@ class TestNamibia(unittest.TestCase):
         self.assertIn(date(2017, 5, 25), self.holidays)
         self.assertIn(date(1994, 4, 1), self.holidays)
 
-    def test_onceoff(self):
+    def test_special_holidays(self):
         self.assertIn(date(1999, 12, 31), self.holidays)  # Y2K
         self.assertIn(date(2000, 1, 3), self.holidays)  # Y2K
-        self.assertNotIn(date(2010, 1, 10), self.holidays)  # notinY2k
 
     def test_namibian_women_int_rights(self):
         self.assertIn(date(2004, 9, 10), self.holidays)

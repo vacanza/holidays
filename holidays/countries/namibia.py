@@ -26,6 +26,11 @@ class Namibia(HolidayBase):
     """
 
     country = "NA"
+    special_holidays = {
+        # https://gazettes.africa/archive/na/1999/na-government-gazette-dated-1999-11-22-no-2234.pdf
+        1999: ((DEC, 31, "Y2K changeover"),),
+        2000: ((JAN, 3, "Y2K changeover"),),
+    }
 
     def _populate(self, year):
         super()._populate(year)
@@ -35,28 +40,16 @@ class Namibia(HolidayBase):
             self[date(year, MAR, 21)] = "Independence Day"
 
             # Easter Calculation
-            e = easter(year)
-            good_friday = e - rd(days=2)
-            easter_monday = e + rd(days=1)
-            ascension_day = e + rd(days=39)
-
-            self[easter_monday] = "Easter Monday"
-            self[good_friday] = "Good Friday"
-            self[ascension_day] = "Ascension Day"
+            easter_date = easter(year)
+            self[easter_date + rd(days=-2)] = "Good Friday"
+            self[easter_date + rd(days=+1)] = "Easter Monday"
+            self[easter_date + rd(days=+39)] = "Ascension Day"
             # --------END OF EASTER------------#
 
             self[date(year, MAY, 1)] = "Workers' Day"
             self[date(year, MAY, 4)] = "Cassinga Day"
             self[date(year, MAY, 25)] = "Africa Day"
             self[date(year, AUG, 26)] = "Heroes' Day"
-
-            # Once-off public holidays
-            y2k = "Y2K changeover"
-            if year == 1999:
-                # https://gazettes.africa/archive/na/1999/na-government-gazette-dated-1999-11-22-no-2234.pdf
-                self[date(1999, DEC, 31)] = y2k
-            if year == 2000:
-                self[date(2000, JAN, 3)] = y2k
 
             if year > 2004:
                 # http://www.lac.org.na/laws/2004/3348.pdf

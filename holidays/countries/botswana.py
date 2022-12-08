@@ -28,6 +28,7 @@ class Botswana(HolidayBase):
     """
 
     country = "BW"
+    special_holidays = {2019: ((JUL, 2, "Public Holiday"),)}
 
     def _populate(self, year: int):
         super()._populate(year)
@@ -37,18 +38,13 @@ class Botswana(HolidayBase):
             self[date(year, JAN, 2)] = "New Year's Day Holiday"
 
             # Easter and easter related calculations
-            e = easter(year)
-            good_friday = e - rd(days=2)
-            easter_saturday = e - rd(days=1)
-            easter_monday = e + rd(days=1)
-
-            self[good_friday] = "Good Friday"
-            self[easter_saturday] = "Holy Saturday"
-            self[easter_monday] = "Easter Monday"
+            easter_date = easter(year)
+            self[easter_date + rd(days=-2)] = "Good Friday"
+            self[easter_date + rd(days=-1)] = "Holy Saturday"
+            self[easter_date + rd(days=+1)] = "Easter Monday"
 
             self[date(year, MAY, 1)] = "Labour Day"
-            ascension_day = e + rd(days=39)
-            self[ascension_day] = "Ascension Day"
+            self[easter_date + rd(days=+39)] = "Ascension Day"
 
             self[date(year, JUL, 1)] = "Sir Seretse Khama Day"
 
@@ -71,7 +67,7 @@ class Botswana(HolidayBase):
                 and year > 2015
                 and k.weekday() == SAT
                 and k.year == year
-                and v.upper() in ("BOXING DAY", "LABOUR DAY")
+                and v.upper() in {"BOXING DAY", "LABOUR DAY"}
             ):
                 # Add the (Observed) holiday
                 self[k + rd(days=2)] = v + " Holiday"
@@ -96,10 +92,6 @@ class Botswana(HolidayBase):
                 for i in self.get(k).split(","):
                     if " (Observed)" not in i:
                         self[k + rd(days=1)] = i.lstrip() + " (Observed)"
-
-        # Once off ad-hoc holiday.
-        if year == 2019:
-            self[date(year, JUL, 2)] = "Public Holiday"
 
 
 class BW(Botswana):

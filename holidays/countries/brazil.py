@@ -12,7 +12,7 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import SU, TU
+from dateutil.relativedelta import SU
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import (
@@ -89,16 +89,17 @@ class Brazil(HolidayBase):
         # Christmas Day
         self[date(year, DEC, 25)] = "Natal"
 
-        self[easter(year) - rd(days=2)] = "Sexta-feira Santa"
+        easter_date = easter(year)
+        self[easter_date + rd(days=-2)] = "Sexta-feira Santa"
 
-        self[easter(year)] = "Páscoa"
+        self[easter_date] = "Páscoa"
 
-        self[easter(year) + rd(days=60)] = "Corpus Christi"
+        self[easter_date + rd(days=+60)] = "Corpus Christi"
 
-        quaresma = easter(year) - rd(days=46)
+        quaresma = easter_date + rd(days=-46)
         self[quaresma] = "Quarta-feira de cinzas (Início da Quaresma)"
 
-        self[quaresma - rd(weekday=TU(-1))] = "Carnaval"
+        self[quaresma + rd(days=-1)] = "Carnaval"
 
         if self.subdiv == "AC":
             self[date(year, JAN, 23)] = "Dia do evangélico"

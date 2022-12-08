@@ -14,7 +14,7 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, TU, TH, SU
+from dateutil.relativedelta import TU, TH, SU
 
 from holidays.constants import (
     JAN,
@@ -166,8 +166,9 @@ class Italy(HolidayBase):
 
         self[date(year, JAN, 1)] = "Capodanno"
         self[date(year, JAN, 6)] = "Epifania del Signore"
-        self[easter(year)] = "Pasqua di Resurrezione"
-        self[easter(year) + rd(weekday=MO)] = "Lunedì dell'Angelo"
+        easter_date = easter(year)
+        self[easter_date] = "Pasqua di Resurrezione"
+        self[easter_date + rd(days=+1)] = "Lunedì dell'Angelo"
         if year >= 1946:
             self[date(year, APR, 25)] = "Festa della Liberazione"
         self[date(year, MAY, 1)] = "Festa dei Lavoratori"
@@ -223,16 +224,16 @@ class Italy(HolidayBase):
                 ] = "San Teodoro d'Amasea e San Lorenzo da Brindisi"
             elif self.subdiv == "BS":
                 self[date(year, FEB, 15)] = "Santi Faustino e Giovita"
-            elif self.subdiv in ("BT", "Barletta"):
+            elif self.subdiv in {"BT", "Barletta"}:
                 self[date(year, DEC, 30)] = "San Ruggero"
-            if self.subdiv in ("BT", "Andria"):
+            if self.subdiv in {"BT", "Andria"}:
                 self[
                     date(year, SEP, 1) + rd(weekday=SU(+3))
                 ] = "San Riccardo di Andria"  # <--- Third sunday in September
-            if self.subdiv in ("BT", "Trani"):
+            if self.subdiv in {"BT", "Trani"}:
                 self[date(year, MAY, 3)] = "San Nicola Pellegrino"
             elif self.subdiv == "BZ":
-                self[easter(year) + rd(days=50)] = "Lunedì di Pentecoste"
+                self[easter_date + rd(days=+50)] = "Lunedì di Pentecoste"
                 self[date(year, AUG, 15)] = "Maria Santissima Assunta"
             elif self.subdiv == "CA":
                 self[date(year, OCT, 30)] = "San Saturnino di Cagliari"
@@ -258,9 +259,9 @@ class Italy(HolidayBase):
                 self[date(year, JUL, 16)] = "San Vitaliano"
             elif self.subdiv == "EN":
                 self[date(year, JUL, 2)] = "Madonna della Visitazione"
-            elif self.subdiv in ("FC", "Cesena"):
+            elif self.subdiv in {"FC", "Cesena"}:
                 self[date(year, JUN, 24)] = "San Giovanni Battista"
-            if self.subdiv in ("FC", "Forlì"):
+            if self.subdiv in {"FC", "Forlì"}:
                 self[date(year, FEB, 4)] = "Madonna del Fuoco"
             elif self.subdiv == "FE":
                 self[date(year, APR, 23)] = "San Giorgio"
@@ -342,9 +343,9 @@ class Italy(HolidayBase):
                 self[date(year, JAN, 13)] = "Sant'Ilario di Poitiers"
             elif self.subdiv == "PT":
                 self[date(year, JUL, 25)] = "San Jacopo"
-            elif self.subdiv in ("PU", "Pesaro"):
+            elif self.subdiv in {"PU", "Pesaro"}:
                 self[date(year, SEP, 24)] = "San Terenzio di Pesaro"
-            if self.subdiv in ("PU", "Urbino"):
+            if self.subdiv in {"PU", "Urbino"}:
                 self[date(year, JUN, 1)] = "San Crescentino"
             elif self.subdiv == "PV":
                 self[date(year, DEC, 9)] = "San Siro"

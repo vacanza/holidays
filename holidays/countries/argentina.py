@@ -13,7 +13,6 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import TH, FR
 
 from holidays.constants import (
     WEEKEND,
@@ -50,10 +49,11 @@ class Argentina(HolidayBase):
         else:
             self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
 
+        easter_date = easter(year)
         # Carnival days
         name = "Día de Carnaval [Carnival's Day]"
-        self[easter(year) - rd(days=48)] = name
-        self[easter(year) - rd(days=47)] = name
+        self[easter_date + rd(days=-48)] = name
+        self[easter_date + rd(days=-47)] = name
 
         # Memory's National Day for the Truth and Justice
         name = (
@@ -71,13 +71,13 @@ class Argentina(HolidayBase):
         name_fri = "Semana Santa (Viernes Santo) [Holy day (Holy Friday)]"
         name_easter = "Día de Pascuas [Easter Day]"
 
-        self[easter(year) + rd(weekday=TH(-1))] = name_thu
-        self[easter(year) + rd(weekday=FR(-1))] = name_fri
+        self[easter_date + rd(days=-3)] = name_thu
+        self[easter_date + rd(days=-2)] = name_fri
 
-        if not self.observed and easter(year).weekday() in WEEKEND:
+        if not self.observed and easter_date.weekday() in WEEKEND:
             pass
         else:
-            self[easter(year)] = name_easter
+            self[easter_date] = name_easter
 
         # Veterans Day and the Fallen in the Malvinas War
         if not self.observed and date(year, APR, 2).weekday() in WEEKEND:

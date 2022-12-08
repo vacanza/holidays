@@ -13,7 +13,6 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import FR
 
 from holidays.constants import (
     MON,
@@ -68,7 +67,7 @@ class Hungary(HolidayBase):
             # Liberation Day
             self[date(year, APR, 4)] = "A felszabadulás ünnepe"
             # Memorial day of The Great October Soviet Socialist Revolution
-            if year not in (1956, 1989):
+            if year not in {1956, 1989}:
                 self[
                     date(year, NOV, 7)
                 ] = "A nagy októberi szocialista forradalom ünnepe"
@@ -77,21 +76,21 @@ class Hungary(HolidayBase):
 
         # Good Friday
         if 2017 <= year:
-            self[easter_date + rd(weekday=FR(-1))] = "Nagypéntek"
+            self[easter_date + rd(days=-2)] = "Nagypéntek"
 
         # Easter
         self[easter_date] = "Húsvét"
 
         # Second easter day
         if 1955 != year:
-            self[easter_date + rd(days=1)] = "Húsvét Hétfő"
+            self[easter_date + rd(days=+1)] = "Húsvét Hétfő"
 
         # Pentecost
-        self[easter_date + rd(days=49)] = "Pünkösd"
+        self[easter_date + rd(days=+49)] = "Pünkösd"
 
         # Pentecost monday
         if year <= 1952 or 1992 <= year:
-            self[easter_date + rd(days=50)] = "Pünkösdhétfő"
+            self[easter_date + rd(days=+50)] = "Pünkösdhétfő"
 
         # International Workers' Day
         if 1946 <= year:

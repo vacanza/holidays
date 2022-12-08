@@ -78,14 +78,14 @@ class Sweden(HolidayBase):
         self[date(year, DEC, 31)] = "Nyårsafton"
 
         # ========= Moving holidays =========
-        easter_day = easter(year)
-        self[easter_day + rd(days=-2)] = "Långfredagen"
-        self[easter_day] = "Påskdagen"
-        self[easter_day + rd(days=+1)] = "Annandag påsk"
-        self[easter_day + rd(days=+39)] = "Kristi himmelsfärdsdag"
-        self[easter_day + rd(days=+49)] = "Pingstdagen"
+        easter_date = easter(year)
+        self[easter_date + rd(days=-2)] = "Långfredagen"
+        self[easter_date] = "Påskdagen"
+        self[easter_date + rd(days=+1)] = "Annandag påsk"
+        self[easter_date + rd(days=+39)] = "Kristi himmelsfärdsdag"
+        self[easter_date + rd(days=+49)] = "Pingstdagen"
         if year <= 2004:
-            self[easter_day + rd(days=+50)] = "Annandag pingst"
+            self[easter_date + rd(days=+50)] = "Annandag pingst"
 
         # Source:
         # https://sv.wikipedia.org/wiki/Midsommarafton

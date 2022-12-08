@@ -13,7 +13,7 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, TU, WE, FR, SA
+from dateutil.relativedelta import MO, TU, WE, FR
 
 from holidays.constants import (
     SAT,
@@ -106,12 +106,13 @@ class Australia(HolidayBase):
                 self[date(year, MAR, 12)] = name
 
         # Easter
-        self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
-        if self.subdiv in ("ACT", "NSW", "NT", "QLD", "SA", "VIC"):
-            self[easter(year) + rd(weekday=SA(-1))] = "Easter Saturday"
-        if self.subdiv in ("ACT", "NSW", "QLD", "VIC"):
-            self[easter(year)] = "Easter Sunday"
-        self[easter(year) + rd(weekday=MO)] = "Easter Monday"
+        easter_date = easter(year)
+        self[easter_date + rd(days=-2)] = "Good Friday"
+        if self.subdiv in {"ACT", "NSW", "NT", "QLD", "SA", "VIC"}:
+            self[easter_date + rd(days=-1)] = "Easter Saturday"
+        if self.subdiv in {"ACT", "NSW", "QLD", "VIC"}:
+            self[easter_date] = "Easter Sunday"
+        self[easter_date + rd(days=+1)] = "Easter Monday"
 
         # Anzac Day
         if year > 1920:
@@ -119,15 +120,15 @@ class Australia(HolidayBase):
             apr25 = date(year, APR, 25)
             self[apr25] = name
             if self.observed:
-                if apr25.weekday() == SAT and self.subdiv in ("WA", "NT"):
+                if apr25.weekday() == SAT and self.subdiv in {"WA", "NT"}:
                     self[apr25 + rd(weekday=MO)] = name + " (Observed)"
-                elif apr25.weekday() == SUN and self.subdiv in (
+                elif apr25.weekday() == SUN and self.subdiv in {
                     "ACT",
+                    "NT",
                     "QLD",
                     "SA",
                     "WA",
-                    "NT",
-                ):
+                }:
                     self[apr25 + rd(weekday=MO)] = name + " (Observed)"
 
         # Western Australia Day
@@ -156,7 +157,7 @@ class Australia(HolidayBase):
             elif self.subdiv == "WA":
                 # by proclamation ?!?!
                 self[date(year, OCT, 1) + rd(weekday=MO(-1))] = name
-            elif self.subdiv in ("NSW", "VIC", "ACT", "SA", "NT", "TAS"):
+            elif self.subdiv in {"ACT", "NSW", "NT", "SA", "TAS", "VIC"}:
                 dt = date(year, JUN, 1) + rd(weekday=MO(+2))
                 self[dt] = name
         elif year > 1911:
@@ -177,7 +178,7 @@ class Australia(HolidayBase):
 
         # Labour Day
         name = "Labour Day"
-        if self.subdiv in ("NSW", "ACT", "SA"):
+        if self.subdiv in {"ACT", "NSW", "SA"}:
             self[date(year, OCT, 1) + rd(weekday=MO)] = name
         elif self.subdiv == "WA":
             self[date(year, MAR, 1) + rd(weekday=MO)] = name

@@ -10,11 +10,10 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Dict, Iterable, List, Optional, Tuple, Union
+from typing import Dict, Iterable, Optional, Tuple, Union
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, FR, SA
 
 from holidays.constants import (
     SUN,
@@ -37,6 +36,19 @@ from holidays.utils import _ChineseLuniSolar, _islamic_to_gre
 
 class Singapore(HolidayBase):
     country = "SG"
+    special_holidays = {
+        2001: ((NOV, 3, "Polling Day"),),
+        2006: ((MAY, 6, "Polling Day"),),
+        2011: ((MAY, 7, "Polling Day"),),
+        2015: (
+            # SG50 Public holiday
+            # Announced on 14 March 2015
+            # https://www.mom.gov.sg/newsroom/press-releases/2015/sg50-public-holiday-on-7-august-2015
+            (AUG, 7, "SG50 Public Holiday"),
+            (SEP, 11, "Polling Day"),
+        ),
+        2020: ((JUL, 10, "Polling Day"),),
+    }
 
     def __init__(
         self,
@@ -183,16 +195,16 @@ class Singapore(HolidayBase):
                 hol_date = date_obs
                 self[hol_date] = "Hari Raya Haji* (*estimated)"
 
-        # Holy Saturday (up to and including 1968)
-        if year <= 1968:
-            self[easter(year) + rd(weekday=SA(-1))] = "Holy Saturday"
-
+        easter_date = easter(year)
         # Good Friday
-        self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
+        self[easter_date + rd(days=-2)] = "Good Friday"
 
-        # Easter Monday
         if year <= 1968:
-            self[easter(year) + rd(weekday=MO(1))] = "Easter Monday"
+            # Holy Saturday
+            self[easter_date + rd(days=-1)] = "Holy Saturday"
+
+            # Easter Monday
+            self[easter_date + rd(days=+1)] = "Easter Monday"
 
         # Labour Day
         self[date(year, MAY, 1)] = "Labour Day"
@@ -278,23 +290,6 @@ class Singapore(HolidayBase):
         # Boxing day (up to and including 1968)
         if year <= 1968:
             self[date(year, DEC, 26)] = "Boxing Day"
-
-        # Polling Day
-        dates_fixed_obs = {
-            2001: (NOV, 3),
-            2006: (MAY, 6),
-            2011: (MAY, 7),
-            2015: (SEP, 11),
-            2020: (JUL, 10),
-        }
-        if year in dates_fixed_obs:
-            self[date(year, *dates_fixed_obs[year])] = "Polling Day"
-
-        # SG50 Public holiday
-        # Announced on 14 March 2015
-        # https://www.mom.gov.sg/newsroom/press-releases/2015/sg50-public-holiday-on-7-august-2015
-        if year == 2015:
-            self[date(2015, AUG, 7)] = "SG50 Public Holiday"
 
         # Check for holidays that fall on a Sunday and implement Section 4(2)
         # of the Holidays Act: "if any day specified in the Schedule falls on

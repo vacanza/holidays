@@ -13,7 +13,6 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import FR
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import (
@@ -69,7 +68,8 @@ class Bolivia(HolidayBase):
             ] = "Nacimiento del Estado Plurinacional de Bolivia"
 
         # Good Friday.
-        self[easter(year) + rd(weekday=FR(-1))] = "Viernes Santo"
+        easter_date = easter(year)
+        self[easter_date + rd(days=-2)] = "Viernes Santo"
 
         # La Tablada.
         if self.subdiv == "T":
@@ -77,12 +77,12 @@ class Bolivia(HolidayBase):
 
         # Carnival in Oruro.
         if self.subdiv == "O":
-            self[easter(year) + rd(days=-51)] = "Carnaval de Oruro"
+            self[easter_date + rd(days=-51)] = "Carnaval de Oruro"
 
         # Carnival Monday (Observed on Tuesday).
         name = "Feriado por Carnaval"
-        self[easter(year) + rd(days=-48)] = name
-        self[easter(year) + rd(days=-47)] = f"{name} (Observed)"
+        self[easter_date + rd(days=-48)] = name
+        self[easter_date + rd(days=-47)] = f"{name} (Observed)"
 
         # Labor Day.
         name = "Dia del trabajo"
@@ -96,7 +96,7 @@ class Bolivia(HolidayBase):
             self[date(year, MAY, 25)] = "Día del departamento de Chuquisaca"
 
         # Corpus Christi.
-        self[easter(year) + rd(days=+60)] = "Corpus Christi"
+        self[easter_date + rd(days=+60)] = "Corpus Christi"
 
         # Andean New Year.
         name = "Año Nuevo Andino"

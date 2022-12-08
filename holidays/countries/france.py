@@ -78,24 +78,26 @@ class France(HolidayBase):
             self[date(year, NOV, 11)] = "Armistice 1918"
 
         # Religious holidays
-        if self.subdiv in [
+        easter_date = easter(year)
+
+        if self.subdiv in {
             "Alsace-Moselle",
             "Guadeloupe",
             "Guyane",
             "Martinique",
             "Polynésie Française",
-        ]:
-            self[easter(year) - rd(days=2)] = "Vendredi saint"
+        }:
+            self[easter_date + rd(days=-2)] = "Vendredi saint"
 
         if self.subdiv == "Alsace-Moselle":
             self[date(year, DEC, 26)] = "Deuxième jour de Noël"
 
         if year >= 1886:
-            self[easter(year) + rd(days=1)] = "Lundi de Pâques"
-            self[easter(year) + rd(days=50)] = "Lundi de Pentecôte"
+            self[easter_date + rd(days=+1)] = "Lundi de Pâques"
+            self[easter_date + rd(days=+50)] = "Lundi de Pentecôte"
 
         if year >= 1802:
-            self[easter(year) + rd(days=39)] = "Ascension"
+            self[easter_date + rd(days=+39)] = "Ascension"
             self[date(year, AUG, 15)] = "Assomption"
             self[date(year, NOV, 1)] = "Toussaint"
 
@@ -114,7 +116,7 @@ class France(HolidayBase):
         if self.subdiv == "Martinique":
             self[date(year, MAY, 22)] = "Abolition de l'esclavage"
 
-        if self.subdiv in ["Guadeloupe", "Saint-Martin"]:
+        if self.subdiv in {"Guadeloupe", "Saint-Martin"}:
             self[date(year, MAY, 27)] = "Abolition de l'esclavage"
 
         if self.subdiv == "Guyane":
@@ -123,7 +125,7 @@ class France(HolidayBase):
         if self.subdiv == "Polynésie Française":
             self[date(year, JUN, 29)] = "Fête de l'autonomie"
 
-        if self.subdiv in ["Guadeloupe", "Martinique"]:
+        if self.subdiv in {"Guadeloupe", "Martinique"}:
             self[date(year, JUL, 21)] = "Fête Victor Schoelcher"
 
         if self.subdiv == "Wallis-et-Futuna":
