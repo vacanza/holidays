@@ -9,9 +9,11 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 # from __future__ import annotations  # add in Python 3.7
-import gettext
+
+import copy
 import warnings
 from datetime import date, datetime, timedelta
+from gettext import gettext, translation
 from typing import (
     Any,
     Dict,
@@ -214,12 +216,20 @@ class HolidayBase(Dict[date, str]):
         subdiv: Optional[str] = None,
         prov: Optional[str] = None,  # deprecated
         state: Optional[str] = None,  # deprecated
-        language: str = "en",
-        locale_filename: Optional[str] = None
+        language: Optional[str] = None,
     ) -> None:
         """
         :param years:
             The year(s) to pre-calculate public holidays for at instantiation.
+
+        :param expand:
+            Whether the entire year is calculated when one date from that year
+            is requested.
+
+        :param observed:
+            Whether to include the dates when public holiday are observed
+            (e.g. a holiday falling on a Sunday being observed the
+            following Monday). This doesn't work for all countries.
 
         :param subdiv:
             The subdivision (e.g. state or province); not implemented for all
@@ -231,37 +241,31 @@ class HolidayBase(Dict[date, str]):
         :param state:
             *deprecated* use subdiv instead.
 
-        :param expand:
-            Whether the entire year is calculated when one date from that year
-            is requested.
-
-        :param observed:
-            Whether to include the dates when public holiday are observed
-            (e.g. a holiday falling on a Sunday being observed the
-            following Monday). This doesn't work for all countries.
-
         :param language:
-            The language which the returned holidays shall be translated to.
-            Must be an ISO 2-digit language code. Default is English if the
-            language does not exist or is not supported.
+            The language which the returned holiday names will be translated
+            into. It must be an ISO 2-digit language code. If the language
+            translation is not supported the original holiday names will be
+            used.
 
         :return:
             A :class:`HolidayBase` object matching the **country**.
         """
         super().__init__()
-        self.observed = observed
+
         self.expand = expand
+        self.language = language
+        self.observed = observed
         self.subdiv = subdiv or prov or state
-        if locale_filename is not None:
-            translation = gettext.translation(locale_filename, localedir='locales', languages=[language])
-            translation.install()
-            self.translate = translation.gettext
+
+        self.tr = gettext  # Default translation method.
+
         if prov or state:
             warnings.warn(
                 "Arguments prov and state are deprecated, use subdiv="
                 f"'{prov or state}' instead.",
                 DeprecationWarning,
             )
+
         if not isinstance(self, HolidaySum):
             if (
                 subdiv
@@ -278,6 +282,22 @@ class HolidayBase(Dict[date, str]):
                         f"Country {self.country} does not have subdivision "
                         f"'{subdiv}'"
                     )
+
+            name = getattr(self, "country", None) or getattr(
+                self, "market", None
+            )
+            if language and name:
+                # Load translation.
+                try:
+                    translator = translation(
+                        name,
+                        languages=[language],
+                        localedir="locales",
+                    )
+                    self.tr = translator.gettext  # Replace `self.tr()`.
+                except FileNotFoundError:  # No translation found.
+                    pass
+
         if isinstance(years, int):
             self.years = {years}
         else:
@@ -313,6 +333,7 @@ class HolidayBase(Dict[date, str]):
         * or a :class:`float` or :class:`int` representing a POSIX timestamp
 
         to :class:`datetime.date`, which is how it's stored by the class."""
+
         if isinstance(key, datetime):
             out_key = key.date()
         elif isinstance(key, date):
@@ -555,10 +576,24 @@ class HolidayBase(Dict[date, str]):
         return to_pop
 
     def __eq__(self, other: object) -> bool:
-        return dict.__eq__(self, other) and self.__dict__ == other.__dict__
+        that = copy.deepcopy(other)
+        this = copy.deepcopy(self)
+
+        # The gettext translation objects must be excluded.
+        for obj in (that, this):
+            delattr(obj, "tr")
+
+        return dict.__eq__(this, that) and this.__dict__ == that.__dict__
 
     def __ne__(self, other: object) -> bool:
-        return dict.__ne__(self, other) or self.__dict__ != other.__dict__
+        that = copy.deepcopy(other)
+        this = copy.deepcopy(self)
+
+        # The gettext translation objects must be excluded.
+        for obj in (that, this):
+            delattr(obj, "tr")
+
+        return dict.__ne__(this, that) or this.__dict__ != that.__dict__
 
     def __add__(
         self, other: Union[int, "HolidayBase", "HolidaySum"]
@@ -605,7 +640,7 @@ class HolidayBase(Dict[date, str]):
 
         # Special holidays list.
         for month, day, name in self.special_holidays.get(year, ()):
-            self[date(year, month, day)] = name
+            self[date(year, month, day)] = self.tr(name)
 
     def __reduce__(self) -> Union[str, Tuple[Any, ...]]:
         return super().__reduce__()
@@ -630,7 +665,9 @@ class HolidayBase(Dict[date, str]):
 
     def __str__(self) -> str:
         if len(self) == 0:
-            return str(self.__dict__)
+            obj = copy.deepcopy(self)
+            delattr(obj, "tr")
+            return str(obj.__dict__)
         return super().__str__()
 
 

@@ -142,8 +142,8 @@ class TestBasics(unittest.TestCase):
         self.holidays = holidays.US()
         self.assertEqual(
             str(self.holidays),
-            "{'observed': True, 'expand': True, 'subdiv': None, "
-            "'years': set()}",
+            "{'expand': True, 'language': None, "
+            "'observed': True, 'subdiv': None, 'years': set()}",
         )
 
         self.holidays = holidays.US(years=1900)
@@ -199,14 +199,18 @@ class TestBasics(unittest.TestCase):
         ca2 = holidays.CA()
         ca3 = holidays.Canada(years=[2014])
         ca4 = holidays.CA(years=[2014])
+        ca5 = holidays.Canada(language="fr")
+        ca6 = holidays.CA(language="fr")
         self.assertEqual(us1, us2)
         self.assertEqual(us3, us4)
         self.assertEqual(ca1, ca2)
         self.assertEqual(ca3, ca4)
+        self.assertEqual(ca5, ca6)
         self.assertNotEqual(us1, us3)
         self.assertNotEqual(us1, ca1)
         self.assertNotEqual(us3, ca3)
         self.assertNotEqual(us1, us3)
+        self.assertNotEqual(ca1, ca5)
 
     def test_add(self):
         ca = holidays.CA()
@@ -730,3 +734,9 @@ class TestCountrySpecialHolidays(unittest.TestCase):
         self.assertIn("1111-01-01", self.holidays)
         self.assertIn("2222-02-02", self.holidays)
         self.assertEqual(13, len(self.holidays))
+
+
+class TestHolidaysTranslation(unittest.TestCase):
+    def test_language_unavailable(self):
+        self.holidays = holidays.country_holidays("US", language="xx")
+        self.assertEqual(self.holidays["2022-01-01"], "New Year's Day")

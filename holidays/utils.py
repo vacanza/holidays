@@ -33,7 +33,7 @@ def country_holidays(
     observed: bool = True,
     prov: Optional[str] = None,
     state: Optional[str] = None,
-    language: str = "en",
+    language: Optional[str] = None,
 ) -> HolidayBase:
     """
     Returns a new dictionary-like :py:class:`HolidayBase` object for the public
@@ -65,12 +65,10 @@ def country_holidays(
         *deprecated* use subdiv instead.
 
     :param language:
-        The language which the returned holidays shall be translated to.
-        Must be an ISO 2-digit language code. Default is English if the
-        language does not exist or is not supported. This feature is
-        still being worked on and thus not all countries support it. The
-        goal is to have translations for all of a countries official
-        languages and English.
+        The language which the returned holiday names will be translated
+        into. It must be an ISO 2-digit language code. If the language
+        translation is not supported the original holiday names will be
+        used.
 
     :return:
         A :py:class:`HolidayBase` object matching the **country**.
@@ -204,6 +202,7 @@ def financial_holidays(
     years: Optional[Union[int, Iterable[int]]] = None,
     expand: bool = True,
     observed: bool = True,
+    language: Optional[str] = None,
 ) -> HolidayBase:
     """
     Returns a new dictionary-like :py:class:`HolidayBase` object for the public
@@ -228,6 +227,12 @@ def financial_holidays(
         (e.g. a holiday falling on a Sunday being observed the following
         Monday). False may not work for all countries.
 
+    :param language:
+        The language which the returned holiday names will be translated
+        into. It must be an ISO 2-digit language code. If the language
+        translation is not supported the original holiday names will be
+        used.
+
     :return:
         A :py:class:`HolidayBase` object matching the **market**.
 
@@ -251,6 +256,7 @@ def financial_holidays(
             subdiv=subdiv,
             expand=expand,
             observed=observed,
+            language=language,
         )
     except StopIteration:
         raise NotImplementedError(f"Financial market {market} not available")

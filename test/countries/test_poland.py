@@ -66,3 +66,13 @@ class TestPL(unittest.TestCase):
         )
         self.holidays = holidays.Poland(years=[1918])
         self.assertNotIn(date(1918, 5, 3), self.holidays)
+
+    def test_i18n_en(self):
+        pl_en = holidays.Poland(language="en")
+
+        self.assertEqual(
+            pl_en["2018-11-12"],
+            "National Independence Day - 100th anniversary",
+        )
+        self.assertEqual(pl_en["2022-12-25"], "Christmas (Day 1)")
+        self.assertEqual(pl_en["2022-12-26"], "Christmas (Day 2)")

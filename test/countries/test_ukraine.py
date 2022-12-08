@@ -261,3 +261,11 @@ class TestUkraine(unittest.TestCase):
         ]:
             self.assertIn(dt, self.holidays_full)
             self.assertEqual(self.holidays_full.get(dt)[:11], "Вихідний за")
+
+    def test_i18n_en(self):
+        ua_en = holidays.Ukraine(language="en")
+
+        self.assertEqual(ua_en["2022-01-01"], "New Year’s Day")
+        self.assertEqual(ua_en["2022-01-07"], "Christmas (Julian calendar)")
+        self.assertEqual(ua_en["2022-12-25"], "Christmas (Gregorian calendar)")
+        self.assertEqual(ua_en["2023-01-02"], "New Year’s Day (Observed)")
