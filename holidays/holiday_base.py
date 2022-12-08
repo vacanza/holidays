@@ -14,6 +14,7 @@ import copy
 import warnings
 from datetime import date, datetime, timedelta
 from gettext import gettext, translation
+from pathlib import Path
 from typing import (
     Any,
     Dict,
@@ -243,9 +244,9 @@ class HolidayBase(Dict[date, str]):
 
         :param language:
             The language which the returned holiday names will be translated
-            into. It must be an ISO 639-1 (2-letter) language code. If the language
-            translation is not supported the original holiday names will be
-            used.
+            into. It must be an ISO 639-1 (2-letter) language code. If the
+            language translation is not supported the original holiday names
+            will be used.
 
         :return:
             A :class:`HolidayBase` object matching the **country**.
@@ -285,8 +286,7 @@ class HolidayBase(Dict[date, str]):
 
             name = getattr(self, "country", getattr(self, "market", None))
             if language and name:
-                # Load translation.
-                try:
+                try:  # Load translation.
                     translator = translation(
                         name,
                         languages=[language],
@@ -294,7 +294,19 @@ class HolidayBase(Dict[date, str]):
                     )
                     self.tr = translator.gettext  # Replace `self.tr()`.
                 except FileNotFoundError:  # No translation found.
-                    pass
+                    languages = sorted(
+                        [
+                            str(translation).split("/")[1]
+                            for translation in Path("locales").rglob(
+                                f"{name}.mo"
+                            )
+                        ]
+                    )
+                    raise ValueError(
+                        f"Couldn't load `{language}` translation for "
+                        f"`{name}`. Available translations: "
+                        f"{languages or None}"
+                    )
 
         if isinstance(years, int):
             self.years = {years}
@@ -574,8 +586,8 @@ class HolidayBase(Dict[date, str]):
         return to_pop
 
     def __eq__(self, other: object) -> bool:
-        that = copy.deepcopy(other)
-        this = copy.deepcopy(self)
+        that = copy.copy(other)
+        this = copy.copy(self)
 
         # The gettext translation objects must be excluded.
         for obj in (that, this):
@@ -584,8 +596,8 @@ class HolidayBase(Dict[date, str]):
         return dict.__eq__(this, that) and this.__dict__ == that.__dict__
 
     def __ne__(self, other: object) -> bool:
-        that = copy.deepcopy(other)
-        this = copy.deepcopy(self)
+        that = copy.copy(other)
+        this = copy.copy(self)
 
         # The gettext translation objects must be excluded.
         for obj in (that, this):
@@ -663,7 +675,7 @@ class HolidayBase(Dict[date, str]):
 
     def __str__(self) -> str:
         if len(self) == 0:
-            obj = copy.deepcopy(self)
+            obj = copy.copy(self)
             delattr(obj, "tr")
             return str(obj.__dict__)
         return super().__str__()

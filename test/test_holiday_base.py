@@ -738,5 +738,14 @@ class TestCountrySpecialHolidays(unittest.TestCase):
 
 class TestHolidaysTranslation(unittest.TestCase):
     def test_language_unavailable(self):
-        self.holidays = holidays.country_holidays("US", language="xx")
-        self.assertEqual(self.holidays["2022-01-01"], "New Year's Day")
+        with self.assertRaises(ValueError):
+            holidays.country_holidays("US", language="xx")
+
+        with self.assertRaises(ValueError) as error:
+            holidays.country_holidays("PL", language="xx")
+        error_message = str(error.exception)
+        self.assertIn(
+            "Couldn't load `xx` translation for `PL`. Available translations",
+            error_message,
+        )
+        self.assertIn("'en'", error_message)
