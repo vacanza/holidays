@@ -294,18 +294,18 @@ class HolidayBase(Dict[date, str]):
                     )
                     self.tr = translator.gettext  # Replace `self.tr()`.
                 except FileNotFoundError:  # No translation found.
-                    languages = sorted(
-                        [
+                    translations = sorted(
+                        (
                             str(translation).split("/")[1]
                             for translation in Path("locales").rglob(
                                 f"{name}.mo"
                             )
-                        ]
+                        )
                     )
-                    raise ValueError(
+                    warnings.warn(
                         f"Couldn't load `{language}` translation for "
                         f"`{name}`. Available translations: "
-                        f"{languages or None}"
+                        f"{translations or None}"
                     )
 
         if isinstance(years, int):

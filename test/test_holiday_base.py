@@ -738,14 +738,14 @@ class TestCountrySpecialHolidays(unittest.TestCase):
 
 class TestHolidaysTranslation(unittest.TestCase):
     def test_language_unavailable(self):
-        with self.assertRaises(ValueError):
+        with self.assertWarns(Warning):
             holidays.country_holidays("US", language="xx")
 
-        with self.assertRaises(ValueError) as error:
+        with self.assertWarns(Warning) as warning:
             holidays.country_holidays("PL", language="xx")
-        error_message = str(error.exception)
+        warning_message = str(warning.warning)
         self.assertIn(
             "Couldn't load `xx` translation for `PL`. Available translations",
-            error_message,
+            warning_message,
         )
-        self.assertIn("'en'", error_message)
+        self.assertIn("'en'", warning_message)
