@@ -291,6 +291,10 @@ class NewYorkStockExchange(HolidayBase):
             self[
                 date(year, JAN, 2)
             ] = "Day of Mourning for President Gerald R. Ford"
+        elif year == 2018:
+            self[
+                date(year, DEC, 5)
+            ] = "Day of Mourning for President George H.W. Bush"
 
 
 class XNYS(NewYorkStockExchange):

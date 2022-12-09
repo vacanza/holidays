@@ -12,7 +12,7 @@
 import warnings
 from datetime import date
 
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, AUG, OCT, NOV, DEC
+from holidays.constants import JAN, MAR, APR, MAY, JUN, AUG, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -169,80 +169,86 @@ class India(HolidayBase):
         # https://github.com/facebook/prophet/blob/main/python/prophet/hdays.py
         # Warnings kept in place so that users are aware
 
-        if year < 2010 or year > 2030:
+        if year < 2001 or year > 2030:
             warning_msg = (
-                "Diwali and Holi holidays available from 2010 to 2030 only"
+                "Diwali and Holi holidays available from 2001 to 2030 only"
             )
             warnings.warn(warning_msg, Warning)
 
-        name1 = "Diwali"
-        name2 = "Holi"
+        # https://www.timeanddate.com/holidays/india/diwali
+        diwali_dates = {
+            2001: (NOV, 14),
+            2002: (NOV, 4),
+            2003: (OCT, 25),
+            2004: (NOV, 12),
+            2005: (NOV, 1),
+            2006: (OCT, 21),
+            2007: (NOV, 9),
+            2008: (OCT, 28),
+            2009: (OCT, 17),
+            2010: (NOV, 5),
+            2011: (OCT, 26),
+            2012: (NOV, 13),
+            2013: (NOV, 3),
+            2014: (OCT, 23),
+            2015: (NOV, 11),
+            2016: (OCT, 30),
+            2017: (OCT, 19),
+            2018: (NOV, 7),
+            2019: (OCT, 27),
+            2020: (NOV, 14),
+            2021: (NOV, 4),
+            2022: (OCT, 24),
+            2023: (NOV, 12),
+            2024: (NOV, 1),
+            2025: (OCT, 20),
+            2026: (NOV, 8),
+            2027: (OCT, 29),
+            2028: (OCT, 17),
+            2029: (NOV, 5),
+            2030: (OCT, 26),
+        }
 
-        if year == 2010:
-            self[date(year, DEC, 5)] = name1
-            self[date(year, FEB, 28)] = name2
-        elif year == 2011:
-            self[date(year, OCT, 26)] = name1
-            self[date(year, MAR, 19)] = name2
-        elif year == 2012:
-            self[date(year, NOV, 13)] = name1
-            self[date(year, MAR, 8)] = name2
-        elif year == 2013:
-            self[date(year, NOV, 3)] = name1
-            self[date(year, MAR, 26)] = name2
-        elif year == 2014:
-            self[date(year, OCT, 23)] = name1
-            self[date(year, MAR, 17)] = name2
-        elif year == 2015:
-            self[date(year, NOV, 11)] = name1
-            self[date(year, MAR, 6)] = name2
-        elif year == 2016:
-            self[date(year, OCT, 30)] = name1
-            self[date(year, MAR, 24)] = name2
-        elif year == 2017:
-            self[date(year, OCT, 19)] = name1
-            self[date(year, MAR, 13)] = name2
-        elif year == 2018:
-            self[date(year, NOV, 7)] = name1
-            self[date(year, MAR, 2)] = name2
-        elif year == 2019:
-            self[date(year, OCT, 27)] = name1
-            self[date(year, MAR, 21)] = name2
-        elif year == 2020:
-            self[date(year, NOV, 14)] = name1
-            self[date(year, MAR, 9)] = name2
-        elif year == 2021:
-            self[date(year, NOV, 4)] = name1
-            self[date(year, MAR, 28)] = name2
-        elif year == 2022:
-            self[date(year, OCT, 24)] = name1
-            self[date(year, MAR, 18)] = name2
-        elif year == 2023:
-            self[date(year, OCT, 12)] = name1
-            self[date(year, MAR, 7)] = name2
-        elif year == 2024:
-            self[date(year, NOV, 1)] = name1
-            self[date(year, MAR, 25)] = name2
-        elif year == 2025:
-            self[date(year, OCT, 21)] = name1
-            self[date(year, MAR, 14)] = name2
-        elif year == 2026:
-            self[date(year, NOV, 8)] = name1
-            self[date(year, MAR, 3)] = name2
-        elif year == 2027:
-            self[date(year, OCT, 29)] = name1
-            self[date(year, MAR, 22)] = name2
-        elif year == 2028:
-            self[date(year, OCT, 17)] = name1
-            self[date(year, MAR, 11)] = name2
-        elif year == 2029:
-            self[date(year, NOV, 5)] = name1
-            self[date(year, FEB, 28)] = name2
-        elif year == 2030:
-            self[date(year, OCT, 26)] = name1
-            self[date(year, MAR, 19)] = name2
-        else:
-            pass
+        # https://www.timeanddate.com/holidays/india/holi
+        holi_dates = {
+            2001: (MAR, 10),
+            2002: (MAR, 29),
+            2003: (MAR, 18),
+            2004: (MAR, 7),
+            2005: (MAR, 26),
+            2006: (MAR, 15),
+            2007: (MAR, 4),
+            2008: (MAR, 22),
+            2009: (MAR, 11),
+            2010: (MAR, 1),
+            2011: (MAR, 20),
+            2012: (MAR, 8),
+            2013: (MAR, 27),
+            2014: (MAR, 17),
+            2015: (MAR, 6),
+            2016: (MAR, 24),
+            2017: (MAR, 13),
+            2018: (MAR, 2),
+            2019: (MAR, 21),
+            2020: (MAR, 10),
+            2021: (MAR, 29),
+            2022: (MAR, 18),
+            2023: (MAR, 8),
+            2024: (MAR, 25),
+            2025: (MAR, 14),
+            2026: (MAR, 4),
+            2027: (MAR, 22),
+            2028: (MAR, 11),
+            2029: (MAR, 1),
+            2030: (MAR, 20),
+        }
+
+        if year in diwali_dates:
+            hol_date = date(year, *diwali_dates[year])
+            self[hol_date] = "Diwali"
+        if year in holi_dates:
+            hol_date = date(year, *holi_dates[year])
+            self[hol_date] = "Holi"
 
 
 class IN(India):
