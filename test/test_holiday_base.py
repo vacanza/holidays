@@ -177,7 +177,7 @@ class TestBasics(unittest.TestCase):
         for dt in (date(2022, 10, 3), date(2022, 10, 4)):
             self.assertTrue(h._is_weekend(dt))
 
-        h.weekend = ()
+        h.weekend = {}
         for dt in (date(2022, 10, 3), date(2022, 10, 4)):
             self.assertFalse(h._is_weekend(dt))
 

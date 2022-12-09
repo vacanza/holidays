@@ -73,12 +73,7 @@ class HongKong(HolidayBase):
         new_year_date = self.cnls.lunar_n_y_date(year)
         if self.observed:
             self[new_year_date] = name
-            if new_year_date.weekday() in {
-                MON,
-                TUE,
-                WED,
-                THU,
-            }:
+            if new_year_date.weekday() in {MON, TUE, WED, THU}:
                 self[new_year_date] = name
                 self[new_year_date + rd(days=+1)] = second_day_lunar
                 self[new_year_date + rd(days=+2)] = third_day_lunar
