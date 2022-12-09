@@ -12,10 +12,11 @@ from datetime import date
 from typing import Any
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO
+from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, NOV, DEC
+from holidays.constants import MON, JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP
+from holidays.constants import NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -68,7 +69,7 @@ class UnitedKingdom(HolidayBase):
             self[dt] = name
             if self.observed and self._is_weekend(dt):
                 self[dt + rd(days=+2)] = name + " (Observed)"
-            elif self.observed and dt.weekday() == MO.weekday:
+            elif self.observed and dt.weekday() == MON:
                 self[dt + rd(days=+1)] = name + " (Observed)"
 
         # St. Patrick's Day

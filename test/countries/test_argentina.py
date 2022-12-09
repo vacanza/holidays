@@ -10,12 +10,12 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from test.common import TestCase
 
 from dateutil.relativedelta import relativedelta
 
 from holidays.constants import MAY, JUN, JUL, AUG, OCT
-from holidays.countries.argentina import Argentina, AR, ARG
+from holidays.countries.argentina import AR, ARG, Argentina
+from test.common import TestCase
 
 
 class TestArgentina(TestCase):

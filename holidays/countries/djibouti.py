@@ -12,9 +12,8 @@
 from datetime import date
 
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import FR, SA
 
-from holidays.constants import JAN, MAY, JUN
+from holidays.constants import JAN, MAY, JUN, FRI, SAT
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
 
@@ -39,7 +38,7 @@ class Djibouti(HolidayBase):
     # is_weekend function is there, however not activated for accuracy.
 
     country = "DJ"
-    weekend = {FR.weekday, SA.weekday}
+    weekend = {FRI, SAT}
 
     def _populate(self, year):
         super()._populate(year)

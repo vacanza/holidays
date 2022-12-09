@@ -12,10 +12,10 @@
 from datetime import date
 
 from dateutil.easter import easter
+from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, WE
 
-from holidays.constants import JAN, MAR, MAY, JUN, AUG, SEP, DEC
+from holidays.constants import JAN, MAR, MAY, JUN, AUG, SEP, DEC, WED
 from holidays.holiday_base import HolidayBase
 
 
@@ -42,7 +42,7 @@ class Paraguay(HolidayBase):
 
         if not self.observed and self._is_weekend(year, MAR, 1):
             pass
-        elif date(year, MAR, 1).weekday() >= WE.weekday:
+        elif date(year, MAR, 1).weekday() >= WED:
             self[date(year, MAR, 1) + rd(weekday=MO(+1))] = name
         else:
             self[date(year, MAR, 1)] = name
@@ -78,7 +78,7 @@ class Paraguay(HolidayBase):
         name = "Día de la Paz del Chaco [Peace in Chaco Day]"
         if not self.observed and self._is_weekend(year, JUN, 12):
             pass
-        elif date(year, JUN, 12).weekday() >= WE.weekday:
+        elif date(year, JUN, 12).weekday() >= WED:
             self[date(year, JUN, 12) + rd(weekday=MO(+1))] = name
         else:
             self[date(year, JUN, 12)] = name

@@ -12,10 +12,10 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO
+from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAR, MAY, JUN, JUL, AUG, OCT, NOV, DEC
+from holidays.constants import JAN, MAR, MAY, JUN, JUL, AUG, OCT, NOV, DEC, MON
 from holidays.holiday_base import HolidayBase
 
 
@@ -46,11 +46,7 @@ class Colombia(HolidayBase):
         1984: https://bit.ly/3B7ogt8
         """
 
-        if (
-            self.observed
-            and _date.weekday() != MO.weekday
-            and _date.year > 1983
-        ):
+        if self.observed and _date.weekday() != MON and _date.year > 1983:
             self[_date + rd(weekday=MO)] = name + " (Observed)"
         else:
             self[_date] = name

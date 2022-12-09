@@ -12,10 +12,11 @@
 from datetime import date
 
 from dateutil.easter import easter
+from dateutil.relativedelta import MO, TU, WE, FR
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, TU, WE, TH, FR
 
-from holidays.constants import JAN, FEB, MAR, APR, JUN, JUL, SEP, OCT, NOV, DEC
+from holidays.constants import JAN, FEB, MAR, APR, JUN, JUL, SEP, OCT, NOV
+from holidays.constants import DEC, TUE, WED, THU
 from holidays.holiday_base import HolidayBase
 
 
@@ -228,7 +229,7 @@ class NewZealand(HolidayBase):
             else:
                 name = "Auckland Anniversary Day"
                 dt = date(year, JAN, 29)
-            if dt.weekday() in {TU.weekday, WE.weekday, TH.weekday}:
+            if dt.weekday() in {TUE, WED, THU}:
                 self[dt + rd(weekday=MO(-1))] = name
             else:
                 self[dt + rd(weekday=MO)] = name
@@ -245,7 +246,7 @@ class NewZealand(HolidayBase):
         elif self.subdiv in {"WGN", "Wellington"}:
             name = "Wellington Anniversary Day"
             jan22 = date(year, JAN, 22)
-            if jan22.weekday() in {TU.weekday, WE.weekday, TH.weekday}:
+            if jan22.weekday() in {TUE, WED, THU}:
                 self[jan22 + rd(weekday=MO(-1))] = name
             else:
                 self[jan22 + rd(weekday=MO)] = name
@@ -258,7 +259,7 @@ class NewZealand(HolidayBase):
         elif self.subdiv in {"Nelson", "NSN"}:
             name = "Nelson Anniversary Day"
             feb1 = date(year, FEB, 1)
-            if feb1.weekday() in {TU.weekday, WE.weekday, TH.weekday}:
+            if feb1.weekday() in {TUE, WED, THU}:
                 self[feb1 + rd(weekday=MO(-1))] = name
             else:
                 self[feb1 + rd(weekday=MO)] = name
@@ -279,7 +280,7 @@ class NewZealand(HolidayBase):
             # Observance varies?!?!
             if year == 2005:  # special case?!?!
                 self[date(year, DEC, 5)] = name
-            elif dec1.weekday() in {TU.weekday, WE.weekday, TH.weekday}:
+            elif dec1.weekday() in {TUE, WED, THU}:
                 self[dec1 + rd(weekday=MO(-1))] = name
             else:
                 self[dec1 + rd(weekday=MO)] = name
@@ -288,7 +289,7 @@ class NewZealand(HolidayBase):
             name = "Otago Anniversary Day"
             mar23 = date(year, MAR, 23)
             # there is no easily determined single day of local observance?!?!
-            if mar23.weekday() in {TU.weekday, WE.weekday, TH.weekday}:
+            if mar23.weekday() in {TUE, WED, THU}:
                 dt = mar23 + rd(weekday=MO(-1))
             else:
                 dt = mar23 + rd(weekday=MO)
@@ -302,7 +303,7 @@ class NewZealand(HolidayBase):
             if year > 2011:
                 self[easter_date + rd(days=+2)] = name
             else:
-                if jan17.weekday() in {TU.weekday, WE.weekday, TH.weekday}:
+                if jan17.weekday() in {TUE, WED, THU}:
                     self[jan17 + rd(weekday=MO(-1))] = name
                 else:
                     self[jan17 + rd(weekday=MO)] = name
@@ -310,7 +311,7 @@ class NewZealand(HolidayBase):
         elif self.subdiv in {"CIT", "Chatham Islands"}:
             name = "Chatham Islands Anniversary Day"
             nov30 = date(year, NOV, 30)
-            if nov30.weekday() in {TU.weekday, WE.weekday, TH.weekday}:
+            if nov30.weekday() in {TUE, WED, THU}:
                 self[nov30 + rd(weekday=MO(-1))] = name
             else:
                 self[nov30 + rd(weekday=MO)] = name

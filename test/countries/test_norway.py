@@ -9,12 +9,11 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from test.common import SundayHolidays
-
 from dateutil.parser import parse
-from dateutil.relativedelta import MO, SU
 
-from holidays.countries.norway import Norway, NO, NOR
+from holidays.constants import MON, SUN
+from holidays.countries.norway import NO, NOR, Norway
+from test.common import SundayHolidays
 
 
 class TestNorway(SundayHolidays):
@@ -82,10 +81,10 @@ class TestNorway(SundayHolidays):
 
         for day1, day2 in pentecost_days:
             self.assertHoliday(day1)
-            self.assertEqual(parse(day1).weekday(), SU.weekday)
+            self.assertEqual(parse(day1).weekday(), SUN)
 
             self.assertHoliday(day2)
-            self.assertEqual(parse(day2).weekday(), MO.weekday)
+            self.assertEqual(parse(day2).weekday(), MON)
 
     def test_christmas(self):
         self.assertHoliday(

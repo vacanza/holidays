@@ -13,9 +13,8 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import SU
 
-from holidays.constants import FEB, APR, MAY, JUN, SEP, OCT, DEC
+from holidays.constants import FEB, APR, MAY, JUN, SEP, OCT, DEC, SUN
 from holidays.holiday_base import HolidayBase
 
 
@@ -47,7 +46,7 @@ class Mozambique(HolidayBase):
             # it rolls over to the following Monday
             for k, v in list(self.items()):
                 if self.observed:
-                    if k.weekday() == SU.weekday:
+                    if k.weekday() == SUN:
                         self[k + rd(days=1)] = v + " (PONTE)"
 
 

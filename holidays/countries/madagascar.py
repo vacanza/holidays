@@ -12,8 +12,8 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import SU
+from dateutil.relativedelta import relativedelta as rd
 
 from holidays.holiday_base import HolidayBase
 

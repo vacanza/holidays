@@ -12,10 +12,10 @@
 from datetime import date
 
 from dateutil.easter import easter
+from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, SU
 
-from holidays.constants import JAN, FEB, APR, MAY, AUG, DEC
+from holidays.constants import JAN, FEB, APR, MAY, AUG, DEC, SUN
 from holidays.holiday_base import HolidayBase
 
 
@@ -62,11 +62,7 @@ class Zimbabwe(HolidayBase):
             self[date(year, DEC, 26)] = "Boxing Day"
 
             for k, v in list(self.items()):
-                if (
-                    self.observed
-                    and k.weekday() == SU.weekday
-                    and k.year == year
-                ):
+                if self.observed and k.weekday() == SUN and k.year == year:
                     add_days = 1
                     while self.get(k + rd(days=add_days)) is not None:
                         add_days += 1

@@ -12,11 +12,11 @@
 from datetime import date
 
 from dateutil.easter import easter
+from dateutil.relativedelta import MO, FR
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, FR, SU
 
 from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT
-from holidays.constants import NOV, DEC
+from holidays.constants import NOV, DEC, SUN
 from holidays.holiday_base import HolidayBase
 
 
@@ -98,7 +98,7 @@ class SouthAfrica(HolidayBase):
             if (
                 self.observed
                 and year > 1994
-                and k.weekday() == SU.weekday
+                and k.weekday() == SUN
                 and k.year == year
             ):
                 if not self.get(k + rd(days=1)):

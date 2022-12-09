@@ -11,10 +11,10 @@
 from datetime import date
 
 from dateutil.easter import easter
+from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, FR
 
-from holidays.constants import JAN, FEB, MAR, MAY, JUN, AUG, OCT, DEC
+from holidays.constants import JAN, FEB, MAR, MAY, JUN, AUG, OCT, DEC, FRI
 from holidays.holiday_base import HolidayBase
 
 
@@ -40,7 +40,7 @@ class Ireland(HolidayBase):
             name = "St. Brigid's Day"
             dt = date(year, FEB, 1)
             self[dt] = name
-            if self.observed and dt.weekday() != FR.weekday:
+            if self.observed and dt.weekday() != FRI:
                 self[dt + rd(weekday=MO)] = name + " (Observed)"
 
         # St. Patrick's Day

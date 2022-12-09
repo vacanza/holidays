@@ -13,9 +13,9 @@
 import unittest
 
 from dateutil.parser import parse
-from dateutil.relativedelta import SU
 
 from holidays import HolidayBase
+from holidays.constants import SUN
 
 
 class TestCase(unittest.TestCase):
@@ -133,18 +133,14 @@ class SundayHolidays(TestCase):
             holidays,
             "1989-12-31",
         )
-        self.assertEqual(
-            53, len([s for s in holidays if s.weekday() == SU.weekday])
-        )
+        self.assertEqual(53, len([s for s in holidays if s.weekday() == SUN]))
 
         holidays = cls(years=2032, include_sundays=True)
         self.assertHoliday(
             holidays,
             "2032-01-04",
         )
-        self.assertEqual(
-            52, len([s for s in holidays if s.weekday() == SU.weekday])
-        )
+        self.assertEqual(52, len([s for s in holidays if s.weekday() == SUN]))
 
         self.assertNoHolidays(cls(include_sundays=True))
 
@@ -154,7 +150,7 @@ class SundayHolidays(TestCase):
             "2017-02-12",
             "2032-02-29",
         ):
-            self.assertEqual(parse(sunday).weekday(), SU.weekday)
+            self.assertEqual(parse(sunday).weekday(), SUN)
             self.assertHoliday(holidays, sunday)
 
         for non_sunday in (
@@ -168,5 +164,5 @@ class SundayHolidays(TestCase):
             "2017-02-09",
             "2017-02-10",
         ):
-            self.assertNotEqual(parse(non_sunday).weekday(), SU.weekday)
+            self.assertNotEqual(parse(non_sunday).weekday(), SUN)
             self.assertNoHoliday(holidays, non_sunday)

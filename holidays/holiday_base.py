@@ -17,7 +17,8 @@ from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Tuple
 from typing import Union, cast
 
 from dateutil.parser import parse
-from dateutil.relativedelta import SA, SU
+
+from holidays.constants import SAT, SUN
 
 DateLike = Union[date, datetime, str, float, int]
 
@@ -197,7 +198,7 @@ class HolidayBase(Dict[date, str]):
     _deprecated_subdivisions: List[str] = []
     """Other subdivisions whose names are deprecated or aliases of the official
     ones."""
-    weekend: Set[int] = {SA.weekday, SU.weekday}
+    weekend: Set[int] = {SAT, SUN}
     """Country weekend days."""
 
     def __init__(

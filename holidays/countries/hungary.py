@@ -13,9 +13,9 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, TU, TH
 
-from holidays.constants import JAN, MAR, APR, MAY, AUG, OCT, NOV, DEC
+from holidays.constants import JAN, MAR, APR, MAY, AUG, OCT, NOV, DEC, MON
+from holidays.constants import TUE, THU
 from holidays.holiday_base import HolidayBase
 
 
@@ -37,7 +37,7 @@ class Hungary(HolidayBase):
         # Since 2014, the last day of the year is an observed day off if New
         # Year's Day falls on a Tuesday.
         if year >= 2014:
-            if self.observed and date(year, DEC, 31).weekday() == MO.weekday:
+            if self.observed and date(year, DEC, 31).weekday() == MON:
                 self[date(year, DEC, 31)] = "Újév előtti pihenőnap"
 
         # National Day
@@ -134,7 +134,7 @@ class Hungary(HolidayBase):
         if (
             self.observed
             and 2014 <= year
-            and date(year, DEC, 31).weekday() == MO.weekday
+            and date(year, DEC, 31).weekday() == MON
         ):
             self[date(year, DEC, 31)] = "Szilveszter"
 
@@ -152,12 +152,12 @@ class Hungary(HolidayBase):
         # TODO: should it be a separate flag?
         if self.observed and since <= day.year:
             if (
-                day.weekday() == TU.weekday
+                day.weekday() == TUE
                 and before
                 and not (day.month == JAN and day.day == 1)
             ):
                 self[day - rd(days=1)] = desc + " előtti pihenőnap"
-            elif day.weekday() == TH.weekday and after:
+            elif day.weekday() == THU and after:
                 self[day + rd(days=1)] = desc + " utáni pihenőnap"
 
 

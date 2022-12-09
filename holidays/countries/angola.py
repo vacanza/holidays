@@ -13,9 +13,9 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, TU, TH, SU
 
-from holidays.constants import JAN, FEB, MAR, APR, MAY, SEP, NOV, DEC
+from holidays.constants import JAN, FEB, MAR, APR, MAY, SEP, NOV, DEC, MON
+from holidays.constants import TUE, THU, SUN
 from holidays.holiday_base import HolidayBase
 
 
@@ -40,7 +40,7 @@ class Angola(HolidayBase):
         # Since 2018, if the following year's New Year's Day falls on a
         # Tuesday, the 31st of the current year is also a holiday.
         if year >= 2018:
-            if self.observed and date(year, DEC, 31).weekday() == MO.weekday:
+            if self.observed and date(year, DEC, 31).weekday() == MON:
                 self[date(year, DEC, 31)] = "Ano novo (Day off)"
 
         e = easter(year)
@@ -74,17 +74,17 @@ class Angola(HolidayBase):
         # the Monday or Friday is also a holiday
         for k, v in list(self.items()):
             if self.observed and year > 1974:
-                if k.weekday() == SU.weekday:
+                if k.weekday() == SUN:
                     self[k + rd(days=1)] = v + " (Observed)"
             if self.observed and year > 2017:
-                if k.weekday() == SU.weekday:
+                if k.weekday() == SUN:
                     pass
             if self.observed and year > 2017:
-                if k.weekday() == TU.weekday and k != date(year, JAN, 1):
+                if k.weekday() == TUE and k != date(year, JAN, 1):
                     self[k - rd(days=1)] = v + " (Day off)"
-                elif k.weekday() == TH.weekday:
+                elif k.weekday() == THU:
                     self[k + rd(days=1)] = v + " (Day off)"
-            if self.observed and year > 1994 and k.weekday() == SU.weekday:
+            if self.observed and year > 1994 and k.weekday() == SUN:
                 self[k + rd(days=1)] = v + " (Observed)"
 
 

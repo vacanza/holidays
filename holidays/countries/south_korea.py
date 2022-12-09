@@ -15,13 +15,13 @@ from datetime import date
 from typing import Tuple
 
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import SA, SU
 
 # Installation: pip install korean_lunar_calendar
 # URL: https://github.com/usingsky/korean_lunar_calendar_py/
 from korean_lunar_calendar import KoreanLunarCalendar
 
 from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, OCT, DEC
+from holidays.constants import SAT, SUN
 from holidays.holiday_base import HolidayBase
 
 
@@ -261,9 +261,9 @@ class SouthKorea(HolidayBase):
         """
 
         start_value = cur
-        target_weekday = [SU.weekday]
+        target_weekday = [SUN]
         if include_sat:
-            target_weekday.append(SA.weekday)
+            target_weekday.append(SAT)
         check_1 = cur.weekday() in target_weekday  # Exclude weekends
         check_2 = (
             cur in self and name != self[cur]

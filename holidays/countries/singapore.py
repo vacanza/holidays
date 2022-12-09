@@ -14,10 +14,9 @@ from typing import Dict, Iterable, Optional, Tuple, Union
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import SU
 
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, SEP, AUG
-from holidays.constants import OCT, NOV, DEC
+from holidays.constants import OCT, NOV, DEC, SUN
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _ChineseLuniSolar, _islamic_to_gre
 
@@ -284,7 +283,7 @@ class Singapore(HolidayBase):
         # a Sunday, the day next following not being itself a public holiday
         # is declared a public holiday in Singapore."
         for (hol_date, hol_name) in list(self.items()):
-            if hol_date.year == year and hol_date.weekday() == SU.weekday:
+            if hol_date.year == year and hol_date.weekday() == SUN:
                 self[hol_date] += " [Sunday]"
                 in_lieu_date = hol_date + rd(days=+1)
                 while in_lieu_date in self:

@@ -11,10 +11,10 @@
 
 from datetime import date
 
+from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, FR, SA, SU
 
-from holidays.constants import JAN, FEB, MAR, MAY, SEP, NOV, DEC
+from holidays.constants import FRI, SAT, SUN, JAN, FEB, MAR, MAY, SEP, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -24,9 +24,9 @@ class Mexico(HolidayBase):
 
     def _add_with_observed(self, holiday: date, name: str):
         self[holiday] = name
-        if self.observed and holiday.weekday() == SA.weekday:
+        if self.observed and holiday.weekday() == SAT:
             self[holiday + rd(days=-1)] = name + " (Observed)"
-        elif self.observed and holiday.weekday() == SU.weekday:
+        elif self.observed and holiday.weekday() == SUN:
             self[holiday + rd(days=+1)] = name + " (Observed)"
 
     def _populate(self, year):
@@ -36,11 +36,11 @@ class Mexico(HolidayBase):
         name = "Año Nuevo [New Year's Day]"
         dt = date(year, JAN, 1)
         self[dt] = name
-        if self.observed and dt.weekday() == SU.weekday:
+        if self.observed and dt.weekday() == SUN:
             self[dt + rd(days=+1)] = name + " (Observed)"
         # The next year's observed New Year's Day can be in this year
         # when it falls on a Friday (Jan 1st is a Saturday)
-        if self.observed and date(year, DEC, 31).weekday() == FR.weekday:
+        if self.observed and date(year, DEC, 31).weekday() == FRI:
             self[date(year, DEC, 31)] = name + " (Observed)"
 
         # Constitution Day

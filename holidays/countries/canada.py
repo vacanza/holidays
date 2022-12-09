@@ -12,11 +12,11 @@
 from datetime import date
 
 from dateutil.easter import easter
+from dateutil.relativedelta import MO, SU
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, FR, SU
 
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC
+from holidays.constants import OCT, NOV, DEC, FRI, SUN
 from holidays.holiday_base import HolidayBase
 
 
@@ -46,7 +46,7 @@ class Canada(HolidayBase):
 
     @staticmethod
     def _get_nearest_monday(d: date) -> date:
-        if d.weekday() < FR.weekday:
+        if d.weekday() < FRI:
             return d + rd(weekday=MO(-1))
         else:
             return d + rd(weekday=MO)
@@ -143,7 +143,7 @@ class Canada(HolidayBase):
             name = "St. Jean Baptiste Day"
             dt = date(year, JUN, 24)
             self[dt] = name
-            if self.observed and dt.weekday() == SU.weekday:
+            if self.observed and dt.weekday() == SUN:
                 self[dt + rd(days=1)] = name + " (Observed)"
 
         # Discovery Day
@@ -170,7 +170,7 @@ class Canada(HolidayBase):
             if year >= 2001:
                 dt = date(year, JUL, 9)
                 self[dt] = name
-                if self.observed and dt.weekday() == SU.weekday:
+                if self.observed and dt.weekday() == SUN:
                     self[dt + rd(days=1)] = name + " (Observed)"
             elif year == 2000:
                 self[date(2000, APR, 1)] = name
@@ -233,7 +233,7 @@ class Canada(HolidayBase):
             self[dt] = name
             if (
                 self.observed
-                and dt.weekday() == SU.weekday
+                and dt.weekday() == SUN
                 and self.subdiv in {"NS", "NL", "NT", "PE", "SK"}
             ):
                 self[dt + rd(weekday=MO)] = name + " (Observed)"

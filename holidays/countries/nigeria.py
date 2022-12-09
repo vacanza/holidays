@@ -13,9 +13,8 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import SA
 
-from holidays.constants import JAN, MAY, JUN, OCT, DEC
+from holidays.constants import JAN, MAY, JUN, OCT, DEC, SAT
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
 
@@ -95,7 +94,7 @@ class Nigeria(HolidayBase):
                 if (
                     self.observed
                     and year > 2015
-                    and k.weekday() == SA.weekday
+                    and k.weekday() == SAT
                     and k.year == year
                     and v.upper() in {"DEMOCRACY DAY", "WORKER'S DAY"}
                 ):

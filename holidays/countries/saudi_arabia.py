@@ -12,10 +12,8 @@
 from datetime import date
 
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import TH, FR
-from dateutil.relativedelta import SA as SAT  # Conflicts with SA Alpha-2 code.
 
-from holidays.constants import FEB, SEP
+from holidays.constants import FEB, SEP, THU, FRI, SAT
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
 
@@ -47,9 +45,9 @@ class SaudiArabia(HolidayBase):
             # Weekend used to be THU, FRI before June 28th, 2013
             # On that year both Eids were after that date, and foudning
             # day holiday started at 2022; so what below works,
-            self.weekend = (TH.weekday, FR.weekday)
+            self.weekend = (THU, FRI)
         else:
-            self.weekend = (FR.weekday, SAT.weekday)
+            self.weekend = (FRI, SAT)
 
         observed_str = " (observed)"
 

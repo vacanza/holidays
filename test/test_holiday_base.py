@@ -15,10 +15,11 @@ import unittest
 import warnings
 from datetime import date, datetime, timedelta
 
-from dateutil.relativedelta import relativedelta, MO, TU, SA, SU
+from dateutil.relativedelta import MO
+from dateutil.relativedelta import relativedelta as rd
 
 import holidays
-from holidays.constants import FEB, JAN
+from holidays.constants import JAN, FEB, MON, TUE, SAT, SUN
 
 
 class TestBasics(unittest.TestCase):
@@ -172,7 +173,7 @@ class TestBasics(unittest.TestCase):
     def test_is_weekend(self):
         h = holidays.HolidayBase()
 
-        h.weekend = {MO.weekday, TU.weekday}
+        h.weekend = {MON, TUE}
         for dt in (date(2022, 10, 3), date(2022, 10, 4)):
             self.assertTrue(h._is_weekend(dt))
 
@@ -180,7 +181,7 @@ class TestBasics(unittest.TestCase):
         for dt in (date(2022, 10, 3), date(2022, 10, 4)):
             self.assertFalse(h._is_weekend(dt))
 
-        h.weekend = {SA.weekday, SU.weekday}
+        h.weekend = {SAT, SUN}
         for dt in (date(2022, 10, 1), date(2022, 10, 2)):
             self.assertTrue(h._is_weekend(dt))
 
@@ -390,7 +391,7 @@ class TestBasics(unittest.TestCase):
         class NoColumbusHolidays(holidays.US):
             def _populate(self, year):
                 holidays.US._populate(self, year)
-                self.pop(date(year, 10, 1) + relativedelta(weekday=MO(+2)))
+                self.pop(date(year, 10, 1) + rd(weekday=MO(+2)))
 
         hdays = NoColumbusHolidays()
         self.assertIn(date(2014, 10, 13), self.holidays)

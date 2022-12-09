@@ -11,11 +11,10 @@
 
 from datetime import date
 
-from dateutil.easter import easter, EASTER_ORTHODOX
+from dateutil.easter import EASTER_ORTHODOX, easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import SU
 
-from holidays.constants import JAN, FEB, MAY, NOV
+from holidays.constants import JAN, FEB, MAY, NOV, SUN
 from holidays.holiday_base import HolidayBase
 
 
@@ -57,7 +56,7 @@ class Serbia(HolidayBase):
         # Armistice day
         name = "Дан примирја у Првом светском рату"
         self[date(year, NOV, 11)] = name
-        if self.observed and date(year, NOV, 11).weekday() == SU.weekday:
+        if self.observed and date(year, NOV, 11).weekday() == SUN:
             self[date(year, NOV, 12)] = name + " (Observed)"
         # Easter
         self[easter_date + rd(days=-2)] = "Велики петак"
