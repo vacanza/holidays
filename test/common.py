@@ -63,12 +63,6 @@ class TestCase(unittest.TestCase):
             "Country holidays object must be a subclass of `HolidayBase`",
         )
 
-        length_error_message = (
-            "This method accepts exactly 3 arguments "
-            "in this specific order: country base class, country alpha-2 "
-            "alias, and country alpha-3 alias. For example: "
-            "`self.assertCountryAliases(UnitedStates, US, USA)`"
-        )
         type_error_message = (
             "Country alias object must be a subclass of the country class."
         )
@@ -77,6 +71,12 @@ class TestCase(unittest.TestCase):
             self.assertTrue(issubclass(alias, cls), type_error_message)
             self.assertEqual(alias(), cls())
 
+        length_error_message = (
+            "This method accepts exactly 3 arguments "
+            "in this specific order: country base class, country alpha-2 "
+            "alias, and country alpha-3 alias. For example: "
+            "`self.assertCountryAliases(UnitedStates, US, USA)`"
+        )
         if len(alpha_2.__name__) != 2:
             raise ValueError(
                 f"{length_error_message}. Alias `{alpha_2.__name__}` doesn't "
