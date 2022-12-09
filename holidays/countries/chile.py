@@ -32,6 +32,7 @@ from holidays.constants import (
     DEC,
 )
 from holidays.holiday_base import HolidayBase
+from holidays.utils import _AstroMeeusAlgorithms
 
 
 class Chile(HolidayBase):
@@ -94,7 +95,13 @@ class Chile(HolidayBase):
         if year == 2021:
             self[date(year, JUN, 21)] = name
         if year > 2021:
-            self[date(year, JUN, 19)] = name
+            astro_alg = _AstroMeeusAlgorithms()
+            equinox = astro_alg.jd2date(astro_alg.summer(year))
+            # Received date for UTC timezone needs to be adjusted
+            # to match Chile's timezone
+            # https://www.feriadoschilenos.cl/#DiaNacionalDeLosPueblosIndigenasII
+            adjusted_date = equinox + rd(hours=-4)
+            self[date(year, JUN, adjusted_date.day)] = name
 
         # Saint Peter and Saint Paul (Law 18.432)
         name = "San Pedro y San Pablo [Saint Peter and Saint Paul]"

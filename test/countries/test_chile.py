@@ -100,9 +100,19 @@ class TestChile(unittest.TestCase):
         self.assertIn(date(2021, 8, 20), self.holidays_NB)
 
     def test_2024(self):
-        self.assertIn(date(2024, 6, 19), self.holidays)
+        self.assertIn(date(2024, 6, 20), self.holidays)
         self.assertIn(date(2024, 10, 12), self.holidays)
 
+    def test_2026(self):
+        self.assertIn(date(2026, 6, 21), self.holidays)
+
     def test_2029(self):
+        self.assertIn(date(2029, 6, 20), self.holidays)
         self.assertIn(date(2029, 7, 2), self.holidays)
         self.assertIn(date(2029, 10, 15), self.holidays)
+
+    def test_2050(self):
+        self.assertIn(date(2050, 6, 20), self.holidays)
+
+    def test_2079(self):
+        self.assertIn(date(2079, 6, 20), self.holidays)
