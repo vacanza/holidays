@@ -212,6 +212,24 @@ class TestBasics(unittest.TestCase):
         self.assertNotEqual(us1, us3)
         self.assertNotEqual(ca1, ca5)
 
+        self.assertNotEqual(us1, None)
+        self.assertNotEqual(us1, {})
+        self.assertFalse(us1 == {})
+
+    def test_copy(self):
+        us = holidays.UnitedStates()
+        self.assertEqual(us, us.copy())
+        self.assertTrue(us == us.copy())
+
+        ca = holidays.Canada()
+        ca_fr = holidays.Canada(language="fr")
+        ca_xx = holidays.Canada(language="xx")
+        self.assertNotEqual(ca, ca_fr)
+        self.assertNotEqual(ca.copy(), ca_fr.copy())
+
+        self.assertNotEqual(ca, ca_xx)
+        self.assertNotEqual(ca.copy(), ca_xx.copy())
+
     def test_add(self):
         ca = holidays.CA()
         us = holidays.US()
@@ -288,12 +306,15 @@ class TestBasics(unittest.TestCase):
         self.assertEqual(
             na.get(date(1969, 12, 25)), "Christmas Day, Navidad [Christmas]"
         )
+        self.assertEqual(na, na.copy())
 
         ecb = holidays.ECB()
         nyse = holidays.NYSE()
         ecb_nyse = ecb + nyse
         self.assertEqual(len(ecb) + len(nyse), len(ecb_nyse))
         self.assertEqual(ecb_nyse.market, ["ECB", "NYSE"])
+        self.assertEqual(ecb_nyse, ecb_nyse.copy())
+        self.assertNotEqual(ecb_nyse, {})
 
     def test_get_list(self):
         westland = holidays.NZ(subdiv="WTL")

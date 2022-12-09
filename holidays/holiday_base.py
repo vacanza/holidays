@@ -586,22 +586,26 @@ class HolidayBase(Dict[date, str]):
             self.pop(key)
         return to_pop
 
-    def __eq__(self, other: object) -> bool:
-        that = copy.copy(other)
-        this = copy.copy(self)
+    def copy(self):
+        """Return a copy of the object."""
+        return copy.copy(self)
 
-        # The gettext translation objects must be excluded.
-        for obj in (that, this):
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, HolidayBase):
+            return False
+
+        that, this = copy.copy(other), self.copy()
+        for obj in (that, this):  # Exclude translation objects.
             delattr(obj, "tr")
 
         return dict.__eq__(this, that) and this.__dict__ == that.__dict__
 
     def __ne__(self, other: object) -> bool:
-        that = copy.copy(other)
-        this = copy.copy(self)
+        if not isinstance(other, HolidayBase):
+            return True
 
-        # The gettext translation objects must be excluded.
-        for obj in (that, this):
+        that, this = copy.copy(other), self.copy()
+        for obj in (that, this):  # Exclude translation objects.
             delattr(obj, "tr")
 
         return dict.__ne__(this, that) or this.__dict__ != that.__dict__
