@@ -11,6 +11,7 @@
 # from __future__ import annotations  # add in Python 3.7
 
 import copy
+import os
 import warnings
 from datetime import date, datetime, timedelta
 from gettext import gettext, translation
@@ -296,7 +297,7 @@ class HolidayBase(Dict[date, str]):
                 except FileNotFoundError:  # No translation found.
                     translations = sorted(
                         (
-                            str(translation).split("/")[1]
+                            str(translation).split(os.sep)[1]
                             for translation in Path("locales").rglob(
                                 f"{name}.mo"
                             )
