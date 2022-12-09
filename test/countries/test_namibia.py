@@ -53,3 +53,11 @@ class TestNamibia(unittest.TestCase):
         self.assertIn(date(2021, 3, 22), self.holidays)
         self.assertIn(date(2021, 12, 27), self.holidays)
         self.assertIn(date(2022, 12, 26), self.holidays)
+
+    def test_not_observed(self):
+        self.holidays = holidays.NA(observed=False)
+        self.assertNotIn(date(2017, 1, 2), self.holidays)
+        self.assertNotIn(date(2017, 9, 11), self.holidays)
+        self.assertNotIn(date(2018, 8, 27), self.holidays)
+        self.assertNotIn(date(2021, 3, 22), self.holidays)
+        self.assertNotIn(date(2021, 12, 27), self.holidays)

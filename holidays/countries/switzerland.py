@@ -12,7 +12,7 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import MO, SU, TH, FR
+from dateutil.relativedelta import TH, SU
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAR, APR, MAY, JUN, AUG, SEP, NOV, DEC
@@ -56,7 +56,7 @@ class Switzerland(HolidayBase):
         # public holidays
         self[date(year, JAN, 1)] = "Neujahrestag"
 
-        if self.subdiv in (
+        if self.subdiv in {
             "AG",
             "BE",
             "FR",
@@ -72,7 +72,7 @@ class Switzerland(HolidayBase):
             "VD",
             "ZG",
             "ZH",
-        ):
+        }:
             self[date(year, JAN, 2)] = "Berchtoldstag"
 
         if self.subdiv in {"SZ", "TI", "UR"}:
@@ -87,12 +87,10 @@ class Switzerland(HolidayBase):
         easter_date = easter(year)
         # Näfelser Fahrt (first Thursday in April but not in Holy Week)
         if self.subdiv == "GL" and year >= 1835:
-            if (date(year, APR, 1) + rd(weekday=FR)) != (
-                easter_date + rd(days=-2)
-            ):
-                self[date(year, APR, 1) + rd(weekday=TH)] = "Näfelser Fahrt"
-            else:
-                self[date(year, APR, 8) + rd(weekday=TH)] = "Näfelser Fahrt"
+            dt = date(year, APR, 1) + rd(weekday=TH)
+            if dt == easter_date + rd(days=-3):
+                dt += rd(days=+7)
+            self[dt] = "Näfelser Fahrt"
 
         # it's a Holiday on a Sunday
         self[easter_date] = "Ostern"
@@ -161,12 +159,12 @@ class Switzerland(HolidayBase):
 
         if self.subdiv == "VD":
             # Monday after the third Sunday of September
-            dt = date(year, SEP, 1) + rd(weekday=SU(+3)) + rd(weekday=MO)
+            dt = date(year, SEP, 1) + rd(weekday=SU(+3)) + rd(days=+1)
             self[dt] = "Lundi du Jeûne"
 
         if self.subdiv == "GE":
             # Thursday after the first Sunday of September
-            dt = date(year, SEP, 1) + rd(weekday=SU) + rd(weekday=TH)
+            dt = date(year, SEP, 1) + rd(weekday=SU) + rd(days=+4)
             self[dt] = "Jeûne genevois"
 
         if self.subdiv == "OW":

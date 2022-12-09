@@ -51,40 +51,41 @@ class SouthAfrica(HolidayBase):
     }
 
     def _populate(self, year):
+        # Observed since 1910, with a few name changes
+        if year <= 1909:
+            return
         super()._populate(year)
 
-        # Observed since 1910, with a few name changes
-        if year > 1909:
-            self[date(year, JAN, 1)] = "New Year's Day"
+        self[date(year, JAN, 1)] = "New Year's Day"
 
-            easter_date = easter(year)
-            self[easter_date + rd(days=-2)] = "Good Friday"
-            if year > 1979:
-                name = "Family Day"
-            else:
-                name = "Easter Monday"
-            self[easter_date + rd(days=+1)] = name
+        easter_date = easter(year)
+        self[easter_date + rd(days=-2)] = "Good Friday"
+        if year >= 1980:
+            name = "Family Day"
+        else:
+            name = "Easter Monday"
+        self[easter_date + rd(days=+1)] = name
 
-            if 1909 < year < 1952:
-                dec_16_name = "Dingaan's Day"
-            elif 1951 < year < 1980:
-                dec_16_name = "Day of the Covenant"
-            elif 1979 < year < 1995:
-                dec_16_name = "Day of the Vow"
-            else:
-                dec_16_name = "Day of Reconciliation"
-            self[date(year, DEC, 16)] = dec_16_name
+        if year <= 1951:
+            name = "Dingaan's Day"
+        elif year <= 1979:
+            name = "Day of the Covenant"
+        elif year <= 1994:
+            name = "Day of the Vow"
+        else:
+            name = "Day of Reconciliation"
+        self[date(year, DEC, 16)] = name
 
-            self[date(year, DEC, 25)] = "Christmas Day"
+        self[date(year, DEC, 25)] = "Christmas Day"
 
-            if year > 1979:
-                dec_26_name = "Day of Goodwill"
-            else:
-                dec_26_name = "Boxing Day"
-            self[date(year, DEC, 26)] = dec_26_name
+        if year >= 1980:
+            name = "Day of Goodwill"
+        else:
+            name = "Boxing Day"
+        self[date(year, DEC, 26)] = name
 
         # Observed since 1995/1/1
-        if year > 1994:
+        if year >= 1995:
             self[date(year, MAR, 21)] = "Human Rights Day"
             self[date(year, APR, 27)] = "Freedom Day"
             self[date(year, MAY, 1)] = "Workers' Day"
@@ -94,57 +95,54 @@ class SouthAfrica(HolidayBase):
 
         # As of 1995/1/1, whenever a public holiday falls on a Sunday,
         # it rolls over to the following Monday
-        for k, v in list(self.items()):
-            if (
-                self.observed
-                and year > 1994
-                and k.weekday() == SUN
-                and k.year == year
-            ):
-                if not self.get(k + rd(days=1)):
-                    self[k + rd(days=1)] = v + " (Observed)"
+        if self.observed and year >= 1995:
+            for k, v in list(self.items()):
+                if k.weekday() != SUN or k.year != year:
+                    continue
+                dt = k + rd(days=+1)
+                if dt in self:
+                    continue
+                self[dt] = v + " (Observed)"
 
         # Historic public holidays no longer observed
-        if 1951 < year < 1974:
+        if 1952 <= year <= 1973:
             self[date(year, APR, 6)] = "Van Riebeeck's Day"
-        elif 1979 < year < 1995:
+        elif 1980 <= year <= 1994:
             self[date(year, APR, 6)] = "Founder's Day"
 
-        if 1986 < year < 1990:
+        if 1987 <= year <= 1989:
             # observed on first Friday in May
-            historic_workers_day = date(year, MAY, 1) + rd(weekday=FR)
-            self[historic_workers_day] = "Workers' Day"
+            self[(date(year, MAY, 1) + rd(weekday=FR))] = "Workers' Day"
 
-        if 1909 < year < 1994:
+        if year <= 1993:
             self[easter_date + rd(days=+40)] = "Ascension Day"
 
-        if 1909 < year < 1952:
+        if year <= 1951:
             self[date(year, MAY, 24)] = "Empire Day"
 
-        if 1909 < year < 1961:
+        if year <= 1960:
             self[date(year, MAY, 31)] = "Union Day"
-        elif 1960 < year < 1994:
+        elif year <= 1993:
             self[date(year, MAY, 31)] = "Republic Day"
 
-        if 1951 < year < 1961:
+        if 1952 <= year <= 1960:
             # observed on second Monday in July
-            queens_birthday = date(year, JUL, 1) + rd(weekday=MO(+2))
-            self[queens_birthday] = "Queen's Birthday"
+            self[
+                (date(year, JUL, 1) + rd(weekday=MO(+2)))
+            ] = "Queen's Birthday"
 
-        if 1960 < year < 1974:
+        if 1961 <= year <= 1973:
             self[date(year, JUL, 10)] = "Family Day"
 
-        if 1909 < year < 1952:
+        if year <= 1951:
             # observed on first Monday in August
-            kings_birthday = date(year, AUG, 1) + rd(weekday=MO)
-            self[kings_birthday] = "King's Birthday"
+            self[(date(year, AUG, 1) + rd(weekday=MO))] = "King's Birthday"
 
-        if 1951 < year < 1980:
+        if 1952 <= year <= 1979:
             # observed on first Monday in September
-            settlers_day = date(year, SEP, 1) + rd(weekday=MO)
-            self[settlers_day] = "Settlers' Day"
+            self[(date(year, SEP, 1) + rd(weekday=MO))] = "Settlers' Day"
 
-        if 1951 < year < 1994:
+        if 1952 <= year <= 1993:
             self[date(year, OCT, 10)] = "Kruger Day"
 
 
