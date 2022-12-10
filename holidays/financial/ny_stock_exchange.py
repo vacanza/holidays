@@ -275,9 +275,7 @@ class NewYorkStockExchange(HolidayBase):
         elif year == 1977:
             self[date(year, JUL, 14)] = "Blackout in New Yor City"
         elif year == 1985:
-            self[
-                date(year, SEP, 27)
-            ] = "Weather related clousre due to the impact of Hurricane Gloria"
+            self[date(year, SEP, 27)] = "Hurricane Gloria"
         elif year == 1994:
             self[
                 date(year, APR, 27)
@@ -296,12 +294,8 @@ class NewYorkStockExchange(HolidayBase):
                 date(year, JAN, 2)
             ] = "Day of Mourning for President Gerald R. Ford"
         elif year == 2012:
-            self[
-                date(year, OCT, 29)
-            ] = "Weather related clousre due to the impact of Hurricane Sandy"
-            self[
-                date(year, OCT, 30)
-            ] = "Weather related clousre due to the impact of Hurricane Sandy"
+            self[date(year, OCT, 29)] = "Hurricane Sandy"
+            self[date(year, OCT, 30)] = "Hurricane Sandy"
         elif year == 2018:
             self[
                 date(year, DEC, 5)
