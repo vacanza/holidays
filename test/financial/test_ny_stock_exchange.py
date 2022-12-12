@@ -422,7 +422,7 @@ class TestNewYorkStockExchange(unittest.TestCase):
             ),  # Day of Mourning for President Ronald W. Reagan
             date(2007, JAN, 2),  # Day of Mourning for President Gerald R. Ford
             date(2012, OCT, 29),  # Hurricane Sandy
-            date(2012, OCT, 29),  # Hurricane Sandy
+            date(2012, OCT, 30),  # Hurricane Sandy
             date(
                 2018, DEC, 5
             ),  # Day of Mourning for President George H.W. Bush
