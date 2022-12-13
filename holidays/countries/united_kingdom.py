@@ -52,6 +52,7 @@ class UnitedKingdom(HolidayBase):
             (JUN, 3, "Platinum Jubilee of Elizabeth II"),
             (SEP, 19, "State Funeral of Queen Elizabeth II"),
         ),
+        2023: ((MAY, 8, "Coronation of Charles III"),),
     }
     subdivisions = ["UK", "England", "Northern Ireland", "Scotland", "Wales"]
 
