@@ -14,7 +14,7 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import SUN, JAN, MAY, JUN, OCT, DEC
+from holidays.constants import JAN, MAY, JUN, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -42,7 +42,7 @@ class Kenya(HolidayBase):
 
         if self.observed:
             for k, v in list(self.items()):
-                if k.weekday() == SUN and k.year == year:
+                if self._is_sunday(k) and k.year == year:
                     self[k + rd(days=+1)] = v + " (Observed)"
 
         easter_date = easter(year)

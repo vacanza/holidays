@@ -16,8 +16,6 @@ from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, TU, WE, FR
 
 from holidays.constants import (
-    SAT,
-    SUN,
     WEEKEND,
     JAN,
     MAR,
@@ -120,9 +118,12 @@ class Australia(HolidayBase):
             apr25 = date(year, APR, 25)
             self[apr25] = name
             if self.observed:
-                if apr25.weekday() == SAT and self.subdiv in {"WA", "NT"}:
+                if self._is_saturday(apr25) and self.subdiv in {
+                    "WA",
+                    "NT",
+                }:
                     self[apr25 + rd(weekday=MO)] = name + " (Observed)"
-                elif apr25.weekday() == SUN and self.subdiv in {
+                elif self._is_sunday(apr25) and self.subdiv in {
                     "ACT",
                     "NT",
                     "QLD",

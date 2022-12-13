@@ -15,7 +15,7 @@ from datetime import date
 from dateutil.easter import easter, EASTER_ORTHODOX
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import DEC, JAN, JUN, MAR, MAY, NOV, SUN
+from holidays.constants import DEC, JAN, JUN, MAR, MAY, NOV
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
 
@@ -40,7 +40,7 @@ class BosniaAndHerzegovina(HolidayBase):
         self[date(year, JAN, 1)] = "Nova Godina"
         self[date(year, JAN, 2)] = "Drugi dan Nove Godine"
 
-        if self.observed and date(year, JAN, 1).weekday() == SUN:
+        if self.observed and self._is_sunday(year, JAN, 1):
             self[date(year, JAN, 1) + rd(days=+2)] = "Treći dan Nove Godine"
 
         # Labor Day.
@@ -48,7 +48,7 @@ class BosniaAndHerzegovina(HolidayBase):
         self[may_1] = "Dan rada"
         self[may_1 + rd(days=+1)] = "Drugi dan Dana rada"
 
-        if self.observed and may_1.weekday() == SUN:
+        if self.observed and self._is_sunday(may_1):
             self[may_1 + rd(days=+2)] = "Treći dan Dana rada"
 
         if self.subdiv == "FBiH":

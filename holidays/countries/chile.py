@@ -15,22 +15,7 @@ from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO
 
-from holidays.constants import (
-    TUE,
-    THU,
-    FRI,
-    SAT,
-    SUN,
-    JAN,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-)
+from holidays.constants import JAN, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC, THU
 from holidays.holiday_base import HolidayBase
 
 
@@ -69,7 +54,7 @@ class Chile(HolidayBase):
         # New Year's Day (Law 2.977)
         self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
         # Day after, if it's a Sunday (Law 20.983)
-        if year > 2016 and date(year, JAN, 1).weekday() == SUN:
+        if year > 2016 and self._is_sunday(year, JAN, 1):
             self[date(year, JAN, 2)] = "Fiestas Patrias [Holiday]"
 
         # Holy Week (Law 2.977)
@@ -107,7 +92,7 @@ class Chile(HolidayBase):
                     date(year, JUN, 29)
                     + rd(date(year, JUN, 29), weekday=MO(-1))
                 ] = name
-            elif date(year, JUN, 29).weekday() == FRI:
+            elif self._is_friday(year, JUN, 29):
                 self[date(year, JUN, 29) + rd(weekday=MO)] = name
             else:
                 self[date(year, JUN, 29)] = name
@@ -122,11 +107,11 @@ class Chile(HolidayBase):
         self[date(year, AUG, 15)] = name
 
         # National Holiday Friday preceding Independence Day (Law 20.983)
-        if year > 2016 and date(year, SEP, 18).weekday() == SAT:
+        if year > 2016 and self._is_saturday(year, SEP, 18):
             self[date(year, SEP, 17)] = "Fiestas Patrias [Holiday]"
 
         # National Holiday Monday preceding Independence Day (Law 20.215)
-        if year > 2007 and date(year, SEP, 18).weekday() == TUE:
+        if year > 2007 and self._is_tuesday(year, SEP, 18):
             self[date(year, SEP, 17)] = "Fiestas Patrias [Holiday]"
 
         # Independence Day (Law 2.977)
@@ -138,7 +123,7 @@ class Chile(HolidayBase):
         self[date(year, SEP, 19)] = name
 
         # National Holiday Friday following Army Day (Law 20.215)
-        if year > 2007 and date(year, SEP, 19).weekday() == THU:
+        if year > 2007 and self._is_thursday(year, SEP, 19):
             self[date(year, SEP, 20)] = "Fiestas Patrias [Holiday]"
 
         # Day of the Meeting of Two Worlds (Law 3.810)
@@ -158,7 +143,7 @@ class Chile(HolidayBase):
                     date(year, OCT, 12)
                     + rd(date(year, OCT, 12), weekday=MO(-1))
                 ] = name
-            elif date(year, OCT, 12).weekday() == FRI:
+            elif self._is_friday(date(year, OCT, 12)):
                 self[date(year, OCT, 12) + rd(weekday=MO)] = name
             else:
                 self[date(year, OCT, 12)] = name

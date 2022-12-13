@@ -16,8 +16,6 @@ from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO
 
 from holidays.constants import (
-    MON,
-    WEEKEND,
     JAN,
     MAR,
     APR,
@@ -28,6 +26,7 @@ from holidays.constants import (
     SEP,
     NOV,
     DEC,
+    WEEKEND,
 )
 from holidays.holiday_base import HolidayBase
 
@@ -81,7 +80,7 @@ class UnitedKingdom(HolidayBase):
             self[dt] = name
             if self.observed and dt.weekday() in WEEKEND:
                 self[dt + rd(days=+2)] = name + " (Observed)"
-            elif self.observed and dt.weekday() == MON:
+            elif self.observed and self._is_monday(dt):
                 self[dt + rd(days=+1)] = name + " (Observed)"
 
         # St. Patrick's Day

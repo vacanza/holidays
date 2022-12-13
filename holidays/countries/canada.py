@@ -17,7 +17,6 @@ from dateutil.relativedelta import MO, SU
 
 from holidays.constants import (
     FRI,
-    SUN,
     WEEKEND,
     JAN,
     FEB,
@@ -158,7 +157,7 @@ class Canada(HolidayBase):
             name = "St. Jean Baptiste Day"
             dt = date(year, JUN, 24)
             self[dt] = name
-            if self.observed and dt.weekday() == SUN:
+            if self.observed and self._is_sunday(dt):
                 self[dt + rd(days=1)] = name + " (Observed)"
 
         # Discovery Day
@@ -185,7 +184,7 @@ class Canada(HolidayBase):
             if year >= 2001:
                 dt = date(year, JUL, 9)
                 self[dt] = name
-                if self.observed and dt.weekday() == SUN:
+                if self.observed and self._is_sunday(dt):
                     self[dt + rd(days=1)] = name + " (Observed)"
             elif year == 2000:
                 self[date(2000, APR, 1)] = name
@@ -248,7 +247,7 @@ class Canada(HolidayBase):
             self[dt] = name
             if (
                 self.observed
-                and dt.weekday() == SUN
+                and self._is_sunday(dt)
                 and self.subdiv in {"NS", "NL", "NT", "PE", "SK"}
             ):
                 self[dt + rd(weekday=MO)] = name + " (Observed)"

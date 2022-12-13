@@ -89,12 +89,12 @@ class Azerbaijan(HolidayBase):
         # If the prior year's International Solidarity Day of Azerbaijanis
         # falls on a Saturday or Monday, the 1st Monday of the current year is
         # also a holiday.
-        if self.observed and date(year - 1, DEC, 31).weekday() == SUN:
+        if self.observed and self._is_sunday(year - 1, DEC, 31):
             self[date(year, JAN, 1)] = (
                 "International Solidarity Day of Azerbaijanis"
                 + OBSERVED_SUFFIX
             )
-        elif self.observed and date(year - 1, DEC, 31).weekday() == SAT:
+        elif self.observed and self._is_saturday(year - 1, DEC, 31):
             self[date(year, JAN, 2)] = (
                 "International Solidarity Day of Azerbaijanis"
                 + OBSERVED_SUFFIX

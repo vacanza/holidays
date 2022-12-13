@@ -15,7 +15,7 @@ from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, SU
 
-from holidays.constants import SUN, WEEKEND, JAN, FEB, MAY, JUN, AUG, OCT, DEC
+from holidays.constants import WEEKEND, JAN, FEB, MAY, JUN, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -32,7 +32,7 @@ class Jamaica(HolidayBase):
         # New Year's Day
         name = "New Year's Day"
         _date = date(year, JAN, 1)
-        if self.observed and _date.weekday() == SUN:
+        if self.observed and self._is_sunday(_date):
             self[_date + rd(weekday=MO(+1))] = name + " (Observed)"
         else:
             self[_date] = name
@@ -46,7 +46,7 @@ class Jamaica(HolidayBase):
         # Labour Day
         name = "Labour Day"
         _date = date(year, MAY, 23)
-        if self.observed and _date.weekday() == SUN:
+        if self.observed and self._is_sunday(_date):
             self[_date + rd(weekday=MO)] = name + " (Observed)"
         else:
             self[_date] = name
@@ -57,7 +57,7 @@ class Jamaica(HolidayBase):
         # Emancipation Day
         name = "Emancipation Day"
         _date = date(year, AUG, 1)
-        if self.observed and _date.weekday() == SUN:
+        if self.observed and self._is_sunday(_date):
             self[_date + rd(weekday=MO)] = name + " (Observed)"
         else:
             self[_date] = name

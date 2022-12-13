@@ -57,7 +57,7 @@ class Aruba(HolidayBase):
         # King's Day
         if year >= 2014:
             kings_day = date(year, APR, 27)
-            if kings_day.weekday() == 6:
+            if self._is_sunday(kings_day):
                 kings_day = kings_day - rd(days=1)
 
             self[kings_day] = "Aña di Rey [King's Day]"
@@ -68,7 +68,7 @@ class Aruba(HolidayBase):
             if year <= 1948:
                 queens_day = date(year, AUG, 31)
 
-            if queens_day.weekday() == 6:
+            if self._is_sunday(queens_day):
                 if year < 1980:
                     queens_day = queens_day + rd(days=1)
                 else:

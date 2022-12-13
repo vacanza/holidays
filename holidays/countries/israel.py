@@ -24,7 +24,6 @@ from convertdate.holidays import (
     yom_kippur,
 )
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import WE, TH
 
 from holidays.holiday_base import HolidayBase
 
@@ -62,9 +61,11 @@ class Israel(HolidayBase):
         observed_delta = 0
         if self.observed:
             day_in_week = memorial_day_dt.weekday()
-            if day_in_week in {WE.weekday, TH.weekday}:
+            if self._is_wednesday(memorial_day_dt) or self._is_thursday(
+                memorial_day_dt
+            ):
                 observed_delta = -(day_in_week - 1)
-            elif 2004 <= year and day_in_week == 5:
+            elif 2004 <= year and self._is_saturday(memorial_day_dt):
                 observed_delta = 1
 
             if observed_delta != 0:

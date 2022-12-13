@@ -15,7 +15,7 @@ from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO
 
-from holidays.constants import SAT, SUN, JAN, MAY, JUL, SEP, OCT, DEC
+from holidays.constants import JAN, MAY, JUL, SEP, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -66,14 +66,14 @@ class Botswana(HolidayBase):
                 # it rolls over to the following Monday
                 if (
                     2016 <= year == k.year
-                    and k.weekday() == SAT
+                    and self._is_saturday(k)
                     and v.upper() in {"BOXING DAY", "LABOUR DAY"}
                 ):
                     # Add the (Observed) holiday
                     self[k + rd(days=+2)] = v + " Holiday"
                 if (
                     1995 <= year == k.year
-                    and k.weekday() == SUN
+                    and self._is_sunday(k)
                     and v.upper() != "NEW YEAR'S DAY HOLIDAY"
                 ):
                     # Add the (Observed) holiday
