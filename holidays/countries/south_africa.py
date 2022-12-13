@@ -114,6 +114,8 @@ class SouthAfrica(HolidayBase):
             self[date(2019, MAY, 8)] = national_election
         if year == 2021:
             self[date(2021, NOV, 1)] = municipal_election
+        if year == 2022:
+            self[date(2022,DEC,27)] = presidential
 
         # As of 1995/1/1, whenever a public holiday falls on a Sunday,
         # it rolls over to the following Monday
