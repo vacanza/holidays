@@ -41,4 +41,4 @@ from holidays.utils import (
     list_supported_financial,
 )
 
-__version__ = "0.17.2"
+__version__ = "0.18"

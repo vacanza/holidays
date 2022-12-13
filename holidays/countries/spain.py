@@ -13,7 +13,6 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import TH, FR, MO
 
 from holidays.constants import (
     SUN,
@@ -70,86 +69,88 @@ class Spain(HolidayBase):
         self._is_observed(date(year, JAN, 1), "Año nuevo")
         self._is_observed(date(year, JAN, 6), "Epifanía del Señor")
 
+        easter_date = easter(year)
+
         if (
             year < 2015
             and self.subdiv
             and self.subdiv
-            in [
+            in {
                 "AR",
                 "CL",
                 "CM",
                 "EX",
                 "GA",
+                "MC",
                 "MD",
                 "ML",
-                "MC",
                 "NC",
                 "PV",
                 "VC",
-            ]
+            }
         ):
             self._is_observed(date(year, MAR, 19), "San José")
         elif (
             year == 2015
             and self.subdiv
-            and self.subdiv in ["CM", "MD", "ML", "MC", "NC", "PV", "VC"]
+            and self.subdiv in {"CM", "MC", "MD", "ML", "NC", "PV", "VC"}
         ):
             self._is_observed(date(year, MAR, 19), "San José")
         elif (
             year == 2016
             and self.subdiv
-            and self.subdiv in ["ML", "MC", "PV", "VC"]
+            and self.subdiv in {"MC", "ML", "PV", "VC"}
         ):
             self._is_observed(date(year, MAR, 19), "San José")
-        elif year == 2017 and self.subdiv in ["PV"]:
+        elif year == 2017 and self.subdiv in {"PV"}:
             self._is_observed(date(year, MAR, 19), "San José")
         elif (
             2018 <= year <= 2019
             and self.subdiv
-            and self.subdiv in ["GA", "MC", "NC", "PV", "VC"]
+            and self.subdiv in {"GA", "MC", "NC", "PV", "VC"}
         ):
             self._is_observed(date(year, MAR, 19), "San José")
         elif (
             2020 <= year <= 2021
             and self.subdiv
-            and self.subdiv in ["CM", "GA", "MC", "NC", "PV", "VC"]
+            and self.subdiv in {"CM", "GA", "MC", "NC", "PV", "VC"}
         ):
             self._is_observed(date(year, MAR, 19), "San José")
         elif year >= 2022 and self.subdiv and self.subdiv == "VC":
             self._is_observed(date(year, MAR, 19), "San José")
-        if year != 2022 and self.subdiv not in ["CT", "VC"]:
-            self[easter(year) + rd(weeks=-1, weekday=TH)] = "Jueves Santo"
-        elif year == 2022 and self.subdiv and self.subdiv not in ["CT"]:
-            self[easter(year) + rd(weeks=-1, weekday=TH)] = "Jueves Santo"
-        self[easter(year) + rd(weeks=-1, weekday=FR)] = "Viernes Santo"
+        if year != 2022 and self.subdiv not in {"CT", "VC"}:
+            self[easter_date + rd(days=-3)] = "Jueves Santo"
+        elif year == 2022 and self.subdiv and self.subdiv not in {"CT"}:
+            self[easter_date + rd(days=-3)] = "Jueves Santo"
+        self[easter_date + rd(days=-2)] = "Viernes Santo"
         if (
             2022 == year
             and self.subdiv
-            and self.subdiv in ["CT", "IB", "PV", "NC", "RI", "VC"]
+            and self.subdiv in {"CT", "IB", "NC", "PV", "RI", "VC"}
         ):
-            self[easter(year) + rd(weekday=MO)] = "Lunes de Pascua"
-        elif 2022 > year and self.subdiv in [
-            "CT",
-            "PV",
-            "NC",
-            "VC",
-            "IB",
+            self[easter_date + rd(days=+1)] = "Lunes de Pascua"
+        elif 2022 > year and self.subdiv in {
             "CM",
-        ]:
-            self[easter(year) + rd(weekday=MO)] = "Lunes de Pascua"
+            "CT",
+            "IB",
+            "NC",
+            "PV",
+            "VC",
+        }:
+            self[easter(year) + rd(days=+1)] = "Lunes de Pascua"
 
         if 2022 != year:
             self._is_observed(date(year, MAY, 1), "Día del Trabajador")
-        elif 2022 == year and self.subdiv in [
+        elif 2022 == year and self.subdiv in {
             "AN",
+            "AR",
             "AS",
             "CL",
             "EX",
             "MC",
-            "AR",
-        ]:
+        }:
             self._is_observed(date(year, MAY, 1), "Día del Trabajador")
-        if self.subdiv in ["CT", "GA", "VC"]:
+        if self.subdiv in {"CT", "GA", "VC"}:
             self._is_observed(date(year, JUN, 24), "San Juan")
         self._is_observed(date(year, AUG, 15), "Asunción de la Virgen")
         self._is_observed(date(year, OCT, 12), "Día de la Hispanidad")
@@ -160,9 +161,9 @@ class Spain(HolidayBase):
         self._is_observed(date(year, DEC, 8), "La Inmaculada Concepción")
         if year != 2022:
             self._is_observed(date(year, DEC, 25), "Navidad")
-        elif year == 2022 and self.subdiv not in ["CE", "GA", "PV", "VC"]:
+        elif year == 2022 and self.subdiv not in {"CE", "GA", "PV", "VC"}:
             self._is_observed(date(year, DEC, 26), "Navidad (Trasladado)")
-        if self.subdiv in ["CT", "IB"]:
+        if self.subdiv in {"CT", "IB"}:
             self._is_observed(date(year, DEC, 26), "San Esteban")
 
         # Provinces festive day

@@ -38,16 +38,16 @@ class Belgium(HolidayBase):
         self[easter_date] = "Pasen"
 
         # Second easter day
-        self[easter_date + rd(days=1)] = "Paasmaandag"
+        self[easter_date + rd(days=+1)] = "Paasmaandag"
 
         # Ascension day
-        self[easter_date + rd(days=39)] = "O.L.H. Hemelvaart"
+        self[easter_date + rd(days=+39)] = "O.L.H. Hemelvaart"
 
         # Pentecost
-        self[easter_date + rd(days=49)] = "Pinksteren"
+        self[easter_date + rd(days=+49)] = "Pinksteren"
 
         # Pentecost monday
-        self[easter_date + rd(days=50)] = "Pinkstermaandag"
+        self[easter_date + rd(days=+50)] = "Pinkstermaandag"
 
         # International Workers' Day
         self[date(year, MAY, 1)] = "Dag van de Arbeid"

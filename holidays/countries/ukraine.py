@@ -11,7 +11,7 @@
 
 from datetime import date
 
-from dateutil.easter import EASTER_ORTHODOX, easter
+from dateutil.easter import easter, EASTER_ORTHODOX
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import (
@@ -39,39 +39,12 @@ class Ukraine(HolidayBase):
 
     country = "UA"
 
-    def _add_observed(self, holiday: date) -> None:
-        """
-        27.01.1995: holiday on weekend move to next workday
-        https://zakon.rada.gov.ua/laws/show/35/95-вр
-
-        10.01.1998: cancelled
-        https://zakon.rada.gov.ua/laws/show/785/97-вр
-
-        23.04.1999: holiday on weekend move to next workday
-        https://zakon.rada.gov.ua/laws/show/576-14
-        """
-        if (
-            self.observed
-            and holiday.weekday() in WEEKEND
-            and (
-                date(1995, JAN, 27) <= holiday <= date(1998, JAN, 9)
-                or holiday >= date(1999, APR, 23)
-            )
-        ):
-            next_workday = holiday + rd(days=1)
-            while next_workday.weekday() in WEEKEND or self.get(
-                next_workday, None
-            ):
-                next_workday += rd(days=1)
-            self[next_workday] = "Вихідний за " + self[holiday]
-
     def _populate(self, year):
-        super()._populate(year)
-
         # The current set of holidays came into force in 1991
         # But most holiday days were implemented in 1918
         if year <= 1917:
             return
+        super()._populate(year)
 
         # New Year's Day
         if year <= 1929 or year >= 1948:
@@ -89,11 +62,11 @@ class Ukraine(HolidayBase):
 
         if year >= 1991:
             # Easter
-            dt = easter(year, method=EASTER_ORTHODOX)
-            self[dt] = "Великдень (Пасха)"
+            easter_date = easter(year, method=EASTER_ORTHODOX)
+            self[easter_date] = "Великдень (Пасха)"
 
             # Holy trinity
-            self[dt + rd(days=49)] = "Трійця"
+            self[easter_date + rd(days=+49)] = "Трійця"
 
         # Labour Day
         name = "День міжнародної солідарності трудящих"
@@ -109,11 +82,11 @@ class Ukraine(HolidayBase):
         name = "День перемоги"
         dt = date(year, MAY, 9)
         if year >= 2016:
-            self[dt] = (
+            name = (
                 "День перемоги над нацизмом у Другій світовій війні "
                 "(День перемоги)"
             )
-        elif 1965 <= year <= 2015:
+        if year >= 1965:
             self[dt] = name
         elif 1945 <= year <= 1946:
             self[dt] = name
@@ -153,9 +126,28 @@ class Ukraine(HolidayBase):
                 date(year, DEC, 25)
             ] = "Різдво Христове (за григоріанським календарем)"
 
-        for dt in sorted(list(self.keys())):
-            if dt.year == year:
-                self._add_observed(dt)
+        # 27.01.1995: holiday on weekend move to next workday
+        # https://zakon.rada.gov.ua/laws/show/35/95-вр
+        # 10.01.1998: cancelled
+        # https://zakon.rada.gov.ua/laws/show/785/97-вр
+        # 23.04.1999: holiday on weekend move to next workday
+        # https://zakon.rada.gov.ua/laws/show/576-14
+        if self.observed:
+            for k, v in list(self.items()):
+                if (
+                    k.weekday() in WEEKEND
+                    and k.year == year
+                    and (
+                        date(1995, JAN, 27) <= k <= date(1998, JAN, 9)
+                        or k >= date(1999, APR, 23)
+                    )
+                ):
+                    next_workday = k + rd(days=+1)
+                    while next_workday.weekday() in WEEKEND or self.get(
+                        next_workday
+                    ):
+                        next_workday += rd(days=+1)
+                    self[next_workday] = "Вихідний за " + v
 
         # USSR holidays
         # Bloody_Sunday_(1905)

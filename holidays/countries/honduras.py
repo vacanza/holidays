@@ -13,7 +13,7 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import WE, TH, FR, SA
+from dateutil.relativedelta import WE
 
 from holidays.constants import JAN, APR, MAY, SEP, OCT, DEC
 from holidays.holiday_base import HolidayBase
@@ -31,18 +31,15 @@ class Honduras(HolidayBase):
         # New Year's Day
         self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
 
+        easter_date = easter(year)
         # Maundy Thursday
-        self[
-            easter(year) + rd(weekday=TH(-1))
-        ] = "Jueves Santo [Maundy Thursday]"
+        self[easter_date + rd(days=-3)] = "Jueves Santo [Maundy Thursday]"
 
         # Good Friday
-        self[easter(year) + rd(weekday=FR(-1))] = "Viernes Santo [Good Friday]"
+        self[easter_date + rd(days=-2)] = "Viernes Santo [Good Friday]"
 
         # Holy Saturday
-        self[
-            easter(year) + rd(weekday=SA(-1))
-        ] = "Sábado de Gloria [Holy Saturday]"
+        self[easter_date + rd(days=-1)] = "Sábado de Gloria [Holy Saturday]"
 
         # Panamerican Day
         self[date(year, APR, 14)] = "Día de las Américas [Panamerican Day]"

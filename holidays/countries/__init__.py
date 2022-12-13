@@ -50,6 +50,7 @@ from .hongkong import HK, HKG, HongKong
 from .hungary import HU, HUN, Hungary
 from .iceland import IS, ISL, Iceland
 from .india import IN, IND, India
+from .indonesia import ID, IDN, Indonesia
 from .ireland import IE, IRL, Ireland
 from .isle_of_man import IM, IMN, IsleOfMan
 from .israel import IL, ISR, Israel
@@ -58,7 +59,6 @@ from .jamaica import JAM, JM, Jamaica
 from .japan import JP, JPN, Japan
 from .kazakhstan import KAZ, KZ, Kazakhstan
 from .kenya import KE, KEN, Kenya
-from .korea import KOR, KR, Korea
 from .latvia import LV, LVA, Latvia
 from .lesotho import LS, LSO, Lesotho
 from .liechtenstein import LI, LIE, Liechtenstein
@@ -91,6 +91,7 @@ from .singapore import SG, SGP, Singapore
 from .slovakia import SK, SVK, Slovakia
 from .slovenia import SI, SVN, Slovenia
 from .south_africa import ZA, ZAF, SouthAfrica
+from .south_korea import KOR, KR, Korea, SouthKorea
 from .spain import ES, ESP, Spain
 from .sweden import SE, SWE, Sweden
 from .switzerland import CH, CHE, Switzerland

@@ -13,7 +13,7 @@ from typing import Any
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, FR
+from dateutil.relativedelta import MO
 
 from holidays.constants import (
     MON,
@@ -73,7 +73,7 @@ class UnitedKingdom(HolidayBase):
                 self[dt + rd(weekday=MO)] = name + " (Observed)"
 
         # New Year Holiday
-        if self.subdiv in ("UK", "Scotland"):
+        if self.subdiv in {"Scotland", "UK"}:
             name = "New Year Holiday"
             dt = date(year, JAN, 2)
             if self.subdiv == "UK":
@@ -85,7 +85,7 @@ class UnitedKingdom(HolidayBase):
                 self[dt + rd(days=+1)] = name + " (Observed)"
 
         # St. Patrick's Day
-        if self.subdiv in ("UK", "Northern Ireland"):
+        if self.subdiv in {"Northern Ireland", "UK"}:
             name = "St. Patrick's Day"
             dt = date(year, MAR, 17)
             if self.subdiv == "UK":
@@ -95,21 +95,21 @@ class UnitedKingdom(HolidayBase):
                 self[dt + rd(weekday=MO)] = name + " (Observed)"
 
         # Battle of the Boyne
-        if self.subdiv in ("UK", "Northern Ireland"):
+        if self.subdiv in {"Northern Ireland", "UK"}:
             name = "Battle of the Boyne"
             if self.subdiv == "UK":
                 name += " [Northern Ireland]"
             self[date(year, JUL, 12)] = name
 
         # Summer bank holiday (first Monday in August)
-        if self.subdiv in ("UK", "Scotland"):
+        if self.subdiv in {"Scotland", "UK"}:
             name = "Summer Bank Holiday"
             if self.subdiv == "UK":
                 name += " [Scotland]"
             self[date(year, AUG, 1) + rd(weekday=MO)] = name
 
         # St. Andrew's Day
-        if self.subdiv in ("UK", "Scotland"):
+        if self.subdiv in {"Scotland", "UK"}:
             name = "St. Andrew's Day"
             if self.subdiv == "UK":
                 name += " [Scotland]"
@@ -130,15 +130,16 @@ class UnitedKingdom(HolidayBase):
 
         # UnitedKingdom exclusive holidays
 
+        easter_date = easter(year)
         # Good Friday
-        self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
+        self[easter_date + rd(days=-2)] = "Good Friday"
 
         # Easter Monday
         if self.subdiv != "Scotland":
             name = "Easter Monday"
             if self.subdiv == "UK":
                 name += " [England/Wales/Northern Ireland]"
-            self[easter(year) + rd(weekday=MO)] = name
+            self[easter_date + rd(days=+1)] = name
 
         # May Day bank holiday (first Monday in May)
         if year >= 1978:
