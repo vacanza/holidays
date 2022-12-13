@@ -4,10 +4,12 @@ Version 0.18
 Released ???????? ??, ????
 
 - Code refactoring #801 (arkid15r)
-- Test refactoring / common functions #800 (arkid15r)
+- Test refactoring / common functions #800, #830 (arkid15r)
 - Pre-commit reviews #786, #795 (KJhellico, arkid15r, dr-p)
 - Import cleanup, flake8 settings review #792 (arkid15r, KJhellico, dr-p)
+- Meeus algorithm for equinox and solstice calculation utils #828 (Nalguedo)
 - Easter holidays refactoring and unification #803 (KJhellico)
+- Observed holidays calc optimizations #824 (KJhellico)
 - Special holidays refactoring for 13 countries #796 (arkid15r, KJhellico)
 - Support for Indonesia #787 (KJhellico)
 - Korea renamed to South Korea #797 (arkid15r)
@@ -16,8 +18,22 @@ Released ???????? ??, ????
 - Zambia: optimizations and refactoring #798 (KJhellico)
 - Vietnam: optimizations and refactoring #799 (KJhellico)
 - Malaysia: optimizations and refactoring #802 (KJhellico)
+- New Zealand: optimizations and refactoring #836 (KJhellico)
 - Uruguay updates #809 (KJhellico)
+- Kazakhstan updates #829 (KJhellico)
 - Canada fixes #811 (jasonjensen)
+- Nigeria updates #823 (KJhellico)
+- NY Stock Exchange update #817 (SnowX65)
+- Madagascar updates #818 (KJhellico)
+- Paraguay updates #819 (KJhellico)
+- United Kingdom updates #840 (KJhellico)
+- South Africa: optimizations #820 (KJhellico)
+- Switzerland: optimizations, fix #821 (KJhellico)
+- Angola: optimizations, fix #822, #835 (KJhellico)
+- India updates #825 (KJhellico)
+- NY Stock Exchange updates #833 (SnowX65, KJhellico)
+- Hungary fixes #826 (KJhellico)
+- Chile fixes #828 (Nalguedo)
 
 Version 0.17.2
 ==============
