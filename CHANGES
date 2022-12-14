@@ -4,7 +4,7 @@ Version 0.18
 Released ???????? ??, ????
 
 - Code refactoring #801 (arkid15r)
-- Test refactoring / common functions #800, #830 (arkid15r)
+- Test refactoring / common functions #800, #830, #844 (arkid15r)
 - Pre-commit reviews #786, #795 (KJhellico, arkid15r, dr-p)
 - Import cleanup, flake8 settings review #792 (arkid15r, KJhellico, dr-p)
 - Meeus algorithm for equinox and solstice calculation utils #828 (Nalguedo)
@@ -19,6 +19,7 @@ Released ???????? ??, ????
 - Vietnam: optimizations and refactoring #799 (KJhellico)
 - Malaysia: optimizations and refactoring #802 (KJhellico)
 - New Zealand: optimizations and refactoring #836 (KJhellico)
+- Chile: optimizations #834 (KJhellico) + fixes #828 (Nalguedo)
 - Uruguay updates #809 (KJhellico)
 - Kazakhstan updates #829 (KJhellico)
 - Canada fixes #811 (jasonjensen)
@@ -33,7 +34,6 @@ Released ???????? ??, ????
 - India updates #825 (KJhellico)
 - NY Stock Exchange updates #833 (SnowX65, KJhellico)
 - Hungary fixes #826 (KJhellico)
-- Chile fixes #828 (Nalguedo)
 
 Version 0.17.2
 ==============
