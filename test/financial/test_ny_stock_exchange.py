@@ -400,6 +400,7 @@ class TestNewYorkStockExchange(unittest.TestCase):
             date(1972, DEC, 28),  # Funeral for President Harry S. Truman
             date(1973, JAN, 25),  # Funeral for President Lyndon B. Johnson
             date(1977, JUL, 14),  # Blackout in New Yor City
+            date(1985, SEP, 27),  # Hurricane Gloria
             date(1994, APR, 27),  # Funeral for President Richard M. Nixon
             date(2001, SEP, 11),  # Closed for Sept 11, 2001 Attacks
             date(2001, SEP, 12),  # Closed for Sept 11, 2001 Attacks
@@ -409,6 +410,8 @@ class TestNewYorkStockExchange(unittest.TestCase):
                 2004, JUN, 11
             ),  # Day of Mourning for President Ronald W. Reagan
             date(2007, JAN, 2),  # Day of Mourning for President Gerald R. Ford
+            date(2012, OCT, 29),  # Hurricane Sandy
+            date(2012, OCT, 30),  # Hurricane Sandy
             date(
                 2018, DEC, 5
             ),  # Day of Mourning for President George H.W. Bush
