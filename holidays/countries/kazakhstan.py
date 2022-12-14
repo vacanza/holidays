@@ -11,9 +11,7 @@
 
 from datetime import date
 
-from dateutil.relativedelta import relativedelta as rd
-
-from holidays.constants import WEEKEND, JAN, MAR, MAY, JUL, AUG, DEC
+from holidays.constants import JAN, MAR, MAY, JUL, AUG, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
 
@@ -33,63 +31,47 @@ class Kazakhstan(HolidayBase):
         All holidays get observed on weekdays if they fall on weekends, but
         this has not been implemented as yet.
         """
-        # New Year's holiday (2 days)
+        # New Year's holiday (3 days)
         self[date(year, JAN, 1)] = "New Year"
         self[date(year, JAN, 2)] = "New Year Holiday"
+        self[date(year, JAN, 3)] = "New Year Holiday"
 
         # Orthodox Christmas
-        if year >= 2007:
-            self[date(year, JAN, 7)] = "Orthodox Christmas"
+        self[date(year, JAN, 7)] = "Orthodox Christmas"
 
         # Women's Day
         self[date(year, MAR, 8)] = "Women's Day"
 
         # Nauryz Holiday (3 days)
-        if year >= 2009:
-            self[date(year, MAR, 21)] = "Nauryz"
-            self[date(year, MAR, 22)] = "Nauryz Holiday"
-            self[date(year, MAR, 23)] = "Nauryz Holiday"
+        self[date(year, MAR, 21)] = "Nauryz"
+        self[date(year, MAR, 22)] = "Nauryz Holiday"
+        self[date(year, MAR, 23)] = "Nauryz Holiday"
 
-        # Unity Day
-        self[date(year, MAY, 1)] = "Unity Day"
+        # People Solidarity Holiday
+        self[date(year, MAY, 1)] = "People's Solidarity Day"
 
         # Defender's Day
-        if year >= 2013:
-            self[date(year, MAY, 7)] = "Defender's Day"
+        self[date(year, MAY, 7)] = "Defender's Day"
 
         # Victory Day
         self[date(year, MAY, 9)] = "Victory Day"
 
         # Capital City Day
-        if year >= 2009:
-            self[date(year, JUL, 6)] = "Capital City Day"
+        self[date(year, JUL, 6)] = "Capital City Day"
+
+        # Kurban Ait
+        for hol_date in _islamic_to_gre(year, 12, 10):
+            self[hol_date] = "Kurban Ait"
 
         # Constitution Day
-        if year >= 1996:
-            self[date(year, AUG, 30)] = "Constitution Day"
+        self[date(year, AUG, 30)] = "Constitution Day"
 
         # First President Day
-        if year >= 2013:
-            self[date(year, DEC, 1)] = "First President Day"
+        self[date(year, DEC, 1)] = "First President Day"
 
         # Independence Day (2 days)
         self[date(year, DEC, 16)] = "Independence Day"
         self[date(year, DEC, 17)] = "Independence Day Holiday"
-
-        if self.observed:
-            for k, v in list(self.items()):
-                if k.weekday() in WEEKEND and k.year == year:
-                    next_workday = k + rd(days=+1)
-                    while next_workday.weekday() in WEEKEND or self.get(
-                        next_workday
-                    ):
-                        next_workday += rd(days=+1)
-                    self[next_workday] = v + " (Observed)"
-
-        # Kurban Ait
-        if year >= 2007:
-            for hol_date in _islamic_to_gre(year, 12, 10):
-                self[hol_date] = "Kurban Ait"
 
 
 class KZ(Kazakhstan):
