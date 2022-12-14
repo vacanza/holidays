@@ -16,7 +16,7 @@ from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.constants import TUE, THU, FRI, SAT, SUN
+from holidays.constants import TUE, WED, THU, FRI, SAT, SUN
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _AstroMeeusAlgorithms
 

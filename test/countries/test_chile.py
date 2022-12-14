@@ -9,9 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from test.common import TestCase
-
 from holidays.countries.chile import Chile, CL, CHL
+from test.common import TestCase
 
 
 class TestChile(TestCase):

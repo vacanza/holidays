@@ -9,9 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from test.common import TestCase
-
 from holidays.countries.kazakhstan import Kazakhstan, KZ, KAZ
+from test.common import TestCase
 
 
 class TestKazakhstan(TestCase):
