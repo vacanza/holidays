@@ -17,7 +17,7 @@ from dateutil.relativedelta import relativedelta as rd
 # URL: https://github.com/usingsky/korean_lunar_calendar_py/
 from korean_lunar_calendar import KoreanLunarCalendar
 
-from holidays.constants import JAN, APR, MAY, SEP, WEEKEND
+from holidays.constants import JAN, APR, MAY, SEP
 from holidays.holiday_base import HolidayBase
 
 
@@ -35,9 +35,9 @@ class Vietnam(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _add_observed(self, holiday: date) -> None:
-        if holiday.weekday() in WEEKEND:
+        if self._is_weekend(holiday):
             next_workday = holiday + rd(days=+1)
-            while next_workday.weekday() in WEEKEND or self.get(next_workday):
+            while self._is_weekend(next_workday) or self.get(next_workday):
                 next_workday += rd(days=+1)
             self[next_workday] = self[holiday] + " observed"
 

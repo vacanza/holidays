@@ -12,10 +12,10 @@
 from datetime import date
 
 from dateutil.easter import EASTER_ORTHODOX, easter
-from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, TU
+from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import WEEKEND, JAN, MAR, MAY, AUG, OCT, DEC
+from holidays.constants import JAN, MAR, MAY, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -29,7 +29,7 @@ class Greece(HolidayBase):
     def _populate(self, year):
         super()._populate(year)
 
-        eday = easter(year, method=EASTER_ORTHODOX)
+        easter_date = easter(year, method=EASTER_ORTHODOX)
 
         # New Years
         self[date(year, JAN, 1)] = "Πρωτοχρονιά [New Year's Day]"
@@ -37,17 +37,17 @@ class Greece(HolidayBase):
         self[date(year, JAN, 6)] = "Θεοφάνεια [Epiphany]"
 
         # Clean Monday
-        self[eday - rd(days=48)] = "Καθαρά Δευτέρα [Clean Monday]"
+        self[easter_date + rd(days=-48)] = "Καθαρά Δευτέρα [Clean Monday]"
 
         # Independence Day
         self[date(year, MAR, 25)] = "Εικοστή Πέμπτη Μαρτίου [Independence Day]"
 
         # Easter Monday
-        self[eday + rd(days=1)] = "Δευτέρα του Πάσχα [Easter Monday]"
+        self[easter_date + rd(days=+1)] = "Δευτέρα του Πάσχα [Easter Monday]"
 
         # Monday of the Holy Spirit
         self[
-            eday + rd(days=50)
+            easter_date + rd(days=+50)
         ] = "Δευτέρα του Αγίου Πνεύματος [Monday of the Holy Spirit]"
 
         # Labour Day
@@ -55,7 +55,7 @@ class Greece(HolidayBase):
         name_observed = name + " (Observed)"
 
         self[date(year, MAY, 1)] = name
-        if self.observed and date(year, MAY, 1).weekday() in WEEKEND:
+        if self.observed and self._is_weekend(year, MAY, 1):
             # https://en.wikipedia.org/wiki/Public_holidays_in_Greece
             labour_day_observed_date = date(year, MAY, 1) + rd(weekday=MO)
             # In 2016 and 2021, Labour Day coincided with other holidays

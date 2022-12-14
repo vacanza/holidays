@@ -12,26 +12,11 @@
 from datetime import date
 
 from dateutil.easter import easter
+from dateutil.relativedelta import MO, SU
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, FR, SU
 
-from holidays.constants import (
-    FRI,
-    SUN,
-    WEEKEND,
-    JAN,
-    FEB,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-)
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
+from holidays.constants import OCT, NOV, DEC, FRI, SUN
 from holidays.holiday_base import HolidayBase
 
 
@@ -75,12 +60,8 @@ class Canada(HolidayBase):
         # New Year's Day
         name = "New Year's Day"
         self[date(year, JAN, 1)] = name
-        if self.observed and date(year, JAN, 1).weekday() == SUN:
-            self[date(year, JAN, 1) + rd(days=+1)] = name + " (Observed)"
-        # The following year's observed New Year's Day can be in this year
-        # when it falls on a Friday (Jan 1st is a Saturday).
-        if self.observed and date(year, DEC, 31).weekday() == FRI:
-            self[date(year, DEC, 31)] = name + " (Observed)"
+        if self.observed and self._is_weekend(date(year, JAN, 1)):
+            self[date(year, JAN, 1) + rd(weekday=MO)] = name + " (Observed)"
 
         # Family Day / Louis Riel Day (MB) / Islander Day (PE)
         # / Heritage Day (NS, YT)
@@ -128,10 +109,11 @@ class Canada(HolidayBase):
             dt = self._get_nearest_monday(date(year, MAR, 17))
             self[dt] = "St. Patrick's Day"
 
+        easter_date = easter(year)
         # Good Friday
-        self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
+        self[easter_date + rd(days=-2)] = "Good Friday"
         # Easter Monday
-        self[easter(year) + rd(weekday=MO)] = "Easter Monday"
+        self[easter_date + rd(days=+1)] = "Easter Monday"
 
         # St. George's Day
         if self.subdiv == "NL" and year >= 1990:
@@ -179,7 +161,7 @@ class Canada(HolidayBase):
             name = "Dominion Day"
         dt = date(year, JUL, 1)
         self[dt] = name
-        if year >= 1879 and self.observed and dt.weekday() in WEEKEND:
+        if year >= 1879 and self.observed and self._is_weekend(dt):
             self[dt + rd(weekday=MO)] = name + " (Observed)"
 
         # Nunavut Day
@@ -260,14 +242,14 @@ class Canada(HolidayBase):
         name = "Christmas Day"
         dt = date(year, DEC, 25)
         self[dt] = name
-        if self.observed and dt.weekday() in WEEKEND:
+        if self.observed and self._is_weekend(dt):
             self[dt + rd(days=2)] = name + " (Observed)"
 
         # Boxing Day
         name = "Boxing Day"
         dt = date(year, DEC, 26)
         self[dt] = name
-        if self.observed and dt.weekday() in WEEKEND:
+        if self.observed and self._is_weekend(dt):
             self[dt + rd(days=2)] = name + " (Observed)"
 
 

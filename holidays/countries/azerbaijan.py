@@ -28,7 +28,7 @@ class Azerbaijan(HolidayBase):
     country = "AZ"
 
     def _add_observed(self, holiday: date) -> None:
-        if self.observed and holiday.weekday() in {SAT, SUN}:
+        if self.observed and self._is_weekend(holiday):
             next_monday = holiday + rd(days=7 - holiday.weekday())
             if next_monday.year == holiday.year and not self.get(
                 next_monday, None

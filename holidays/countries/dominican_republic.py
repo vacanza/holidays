@@ -12,10 +12,11 @@
 from datetime import date
 
 from dateutil.easter import easter
+from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, FR
 
-from holidays.constants import TUE, WED, JAN, FEB, MAY, JUN, AUG, SEP, NOV, DEC
+from holidays.constants import JAN, FEB, MAY, JUN, AUG, SEP, NOV, DEC, TUE
+from holidays.constants import WED, THU, FRI
 from holidays.holiday_base import HolidayBase
 
 
@@ -28,7 +29,7 @@ class DominicanRepublic(HolidayBase):
     country = "DO"
 
     @staticmethod
-    def __change_day_by_law(holiday, latest_days=(3, 4)):
+    def __change_day_by_law(holiday, latest_days=(THU, FRI)):
         # Law No. 139-97 - Holidays Dominican Republic - Jun 27, 1997
         if holiday >= date(1997, 6, 27):
             if holiday.weekday() in {TUE, WED}:
@@ -58,7 +59,7 @@ class DominicanRepublic(HolidayBase):
         self[date(year, FEB, 27)] = "Día de Independencia [Independence Day]"
 
         # Good Friday
-        self[easter(year) + rd(weekday=FR(-1))] = "Viernes Santo [Good Friday]"
+        self[easter(year) + rd(days=-2)] = "Viernes Santo [Good Friday]"
 
         # Labor Day
         labor_day = self.__change_day_by_law(date(year, MAY, 1), (3, 4, 6))

@@ -86,11 +86,11 @@ class Bulgaria(HolidayBase):
         self[date(year, DEC, 26)] = "Рождество Христово"
 
         # Easter
-        dt = easter(year, method=EASTER_ORTHODOX)
-        self[dt - rd(days=2)] = "Велики петък"
-        self[dt - rd(days=1)] = "Велика събота"
-        self[dt] = "Великден"
-        self[dt + rd(days=1)] = " Великден"
+        easter_date = easter(year, method=EASTER_ORTHODOX)
+        self[easter_date + rd(days=-2)] = "Велики петък"
+        self[easter_date + rd(days=-1)] = "Велика събота"
+        self[easter_date] = "Великден"
+        self[easter_date + rd(days=+1)] = "Великден"
 
 
 class BG(Bulgaria):

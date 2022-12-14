@@ -13,11 +13,9 @@ from datetime import date
 
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import FRI, SAT, JAN, MAY, JUN
+from holidays.constants import JAN, MAY, JUN, FRI, SAT
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
-
-WEEKEND = (FRI, SAT)
 
 # Since Djibouti share most of it's holidays with other muslim countries,
 # this class is just a copy of Egypt's.
@@ -40,22 +38,10 @@ class Djibouti(HolidayBase):
     # is_weekend function is there, however not activated for accuracy.
 
     country = "DJ"
+    weekend = {FRI, SAT}
 
     def _populate(self, year):
         super()._populate(year)
-
-        """
-        # Function to store the holiday name in the appropriate
-        # date and to shift the Public holiday in case it happens
-        # on a Saturday(Weekend)
-        # (NOT USED)
-        def is_weekend(self, hol_date, hol_name):
-            if hol_date.weekday() == FRI:
-                self[hol_date] = hol_name + " [Friday]"
-                self[hol_date + rd(days=+2)] = "Sunday following " + hol_name
-            else:
-                self[hol_date] = hol_name
-        """
 
         def _add_holiday(dt: date, hol: str) -> None:
             """Only add if in current year; prevents adding holidays across

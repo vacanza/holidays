@@ -11,22 +11,12 @@
 
 import warnings
 from datetime import date, datetime, timedelta
-from typing import (
-    Any,
-    Dict,
-    Iterable,
-    List,
-    Mapping,
-    Optional,
-    Set,
-    Tuple,
-    Union,
-    cast,
-)
+from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Tuple
+from typing import Union, cast
 
 from dateutil.parser import parse
 
-from holidays.constants import HOLIDAY_NAME_DELIMITER
+from holidays.constants import HOLIDAY_NAME_DELIMITER, SAT, SUN
 
 DateLike = Union[date, datetime, str, float, int]
 
@@ -206,6 +196,8 @@ class HolidayBase(Dict[date, str]):
     _deprecated_subdivisions: List[str] = []
     """Other subdivisions whose names are deprecated or aliases of the official
     ones."""
+    weekend: Set[int] = {SAT, SUN}
+    """Country weekend days."""
 
     def __init__(
         self,
@@ -617,6 +609,15 @@ class HolidayBase(Dict[date, str]):
         # Populate items from the special holidays list.
         for month, day, name in self.special_holidays.get(year, ()):
             self[date(year, month, day)] = name
+
+    def _is_weekend(self, *args):
+        """
+        Returns True if date's week day is a weekend day.
+        Returns False otherwise.
+        """
+        dt = args[0] if len(args) == 1 else date(*args)
+
+        return dt.weekday() in self.weekend
 
     def __reduce__(self) -> Union[str, Tuple[Any, ...]]:
         return super().__reduce__()

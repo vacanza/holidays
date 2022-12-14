@@ -12,10 +12,10 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO
+from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import SUN, JAN, MAR, APR, MAY, JUL, AUG, SEP, OCT, DEC
+from holidays.constants import JAN, MAR, APR, MAY, JUL, AUG, SEP, OCT, DEC, SUN
 from holidays.holiday_base import HolidayBase
 
 
@@ -70,7 +70,7 @@ class Zambia(HolidayBase):
         easter_date = easter(year)
         self[easter_date + rd(days=-2)] = "Good Friday"
         self[easter_date + rd(days=-1)] = "Holy Saturday"
-        self[easter_date + rd(days=1)] = "Easter Monday"
+        self[easter_date + rd(days=+1)] = "Easter Monday"
 
         if year >= 2022:
             self[date(year, APR, 28)] = "Kenneth Kaunda Day"

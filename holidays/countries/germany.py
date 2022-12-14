@@ -12,8 +12,8 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import WE
+from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAR, MAY, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
@@ -88,15 +88,17 @@ class Germany(HolidayBase):
             if self.subdiv in {"BW", "BY", "BYP", "ST"}:
                 self[date(year, JAN, 6)] = "Heilige Drei Könige"
 
-            self[easter(year) - rd(days=2)] = "Karfreitag"
+            easter_date = easter(year)
+
+            self[easter_date + rd(days=-2)] = "Karfreitag"
 
             if self.subdiv == "BB":
                 # will always be a Sunday and we have no "observed" rule so
                 # this is pretty pointless but it's nonetheless an official
                 # holiday by law
-                self[easter(year)] = "Ostersonntag"
+                self[easter_date] = "Ostersonntag"
 
-            self[easter(year) + rd(days=1)] = "Ostermontag"
+            self[easter_date + rd(days=+1)] = "Ostermontag"
 
             self[date(year, MAY, 1)] = "Erster Mai"
 
@@ -106,18 +108,18 @@ class Germany(HolidayBase):
                     "und der Beendigung des Zweiten Weltkriegs in Europa"
                 )
 
-            self[easter(year) + rd(days=39)] = "Christi Himmelfahrt"
+            self[easter_date + rd(days=+39)] = "Christi Himmelfahrt"
 
             if self.subdiv == "BB":
                 # will always be a Sunday and we have no "observed" rule so
                 # this is pretty pointless but it's nonetheless an official
                 # holiday by law
-                self[easter(year) + rd(days=49)] = "Pfingstsonntag"
+                self[easter_date + rd(days=+49)] = "Pfingstsonntag"
 
-            self[easter(year) + rd(days=50)] = "Pfingstmontag"
+            self[easter_date + rd(days=+50)] = "Pfingstmontag"
 
             if self.subdiv in {"BW", "BY", "BYP", "HE", "NW", "RP", "SL"}:
-                self[easter(year) + rd(days=60)] = "Fronleichnam"
+                self[easter_date + rd(days=+60)] = "Fronleichnam"
 
             if self.subdiv in {"BY", "SL"}:
                 self[date(year, AUG, 15)] = "Mariä Himmelfahrt"
