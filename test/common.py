@@ -29,14 +29,19 @@ class TestCase(unittest.TestCase):
         if issubclass(args[0].__class__, HolidayBase):
             instance = args[0]
             date_args = args[1:]
-
-        instance = instance or getattr(self, "holidays", None)
-        if instance is None:
-            raise ValueError(
-                "Either pass a holidays object (`HolidayBase` subclass) "
-                "as a first argument or initialize `self.holidays` in the "
-                "`setUp()` method."
-            )
+        else:
+            try:
+                instance = getattr(self, "holidays")
+                self.assertTrue(
+                    issubclass(instance.__class__, HolidayBase),
+                    "The `self.holidays` must be a `HolidayBase` subclass.",
+                )
+            except AttributeError:
+                raise ValueError(
+                    "Either pass a holidays object (`HolidayBase` subclass) "
+                    "as a first argument or initialize `self.holidays` in the "
+                    "`setUp()` method."
+                )
 
         dates = []
         for date_arg in date_args:
