@@ -7,6 +7,8 @@ MANIFEST
 *.pyc
 *.DS_Store
 coverage.xml
+.mypy_cache
+.pytest_cache
 .tox
 .venv
 docs/_build
