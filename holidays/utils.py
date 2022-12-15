@@ -904,9 +904,10 @@ class _AstroMeeusAlgorithms:
             16859.074,
         ]
 
-        S = 0.0
-        for i in range(len(A)):
-            S += A[i] * math.cos(math.radians(B[i] + C[i] * T))
+        S = sum(
+            a * math.cos(math.radians(b + c * T)) for a, b, c in zip(A, B, C)
+        )
+
         return jd + 0.00001 * S / dl
 
     def summer(self, year: int) -> float:
@@ -948,15 +949,13 @@ class _AstroMeeusAlgorithms:
 
         h = int(f * 24)
         m = int((f - h / 24.0) * 1440)
-        s = round((f - h / 24.0 - m / 1440.0) * 86400.0, 2)
+        s = round((f - h / 24.0 - m / 1440.0) * 86400.0)
         day = b - d - int(30.6001 * e)
+        year = c - 4716
         if e < 14:
             mon = e - 1
         else:
             mon = e - 13
-        if mon > 2:
-            year = c - 4716
-        else:
-            year = c - 4715
+            year += 1
 
-        return datetime(year, mon, day, h, m, int(s))
+        return datetime(year, mon, day, h, m, s)
