@@ -12,7 +12,7 @@
 from datetime import date, timedelta
 
 from dateutil.easter import easter
-from dateutil.relativedelta import MO, TU, TH, FR
+from dateutil.relativedelta import MO, TH, FR
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
@@ -123,12 +123,12 @@ class NewYorkStockExchange(HolidayBase):
             colday = date(year, OCT, 12)
             self._set_observed_date(colday, "Columbus Day")
 
-        # ELECTION DAY: first Tues in NOV
+        # ELECTION DAY: Tuesday after first Monday in November (2 U.S. Code §7)
         # closed until 1969, then closed pres years 1972-80
-        if year <= 1968:
-            self[date(year, NOV, 1) + rd(weekday=TU(1))] = "Election Day"
-        elif year in {1972, 1976, 1980}:
-            self[date(year, NOV, 1) + rd(weekday=TU(1))] = "Election Day"
+        if year <= 1968 or year in {1972, 1976, 1980}:
+            self[
+                date(year, NOV, 1) + rd(weekday=MO) + rd(days=+1)
+            ] = "Election Day"
 
         # VETERAN'S DAY: Nov 11 - closed 1918, 1921, 1934-1953
         if year in {1918, 1921} or (1934 <= year <= 1953):
