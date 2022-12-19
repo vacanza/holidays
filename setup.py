@@ -12,6 +12,7 @@
 
 import os
 import subprocess
+import sys
 from pathlib import Path
 
 from setuptools import setup
@@ -23,6 +24,7 @@ def generate_mo_files():
         mo_path = str(po_path).replace(".po", ".mo")
         subprocess.run(
             (
+                sys.executable,
                 os.path.join("scripts", "build", "msgfmt.py"),
                 "-o",
                 mo_path,

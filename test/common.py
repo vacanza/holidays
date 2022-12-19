@@ -10,6 +10,7 @@
 
 import os
 import subprocess
+import sys
 import unittest
 from pathlib import Path
 from typing import Generator
@@ -45,6 +46,7 @@ class TestCase(unittest.TestCase):
             mo_path = str(po_path).replace(".po", ".mo")
             subprocess.run(
                 (
+                    sys.executable,
                     os.path.join("scripts", "build", "msgfmt.py"),
                     "-o",
                     mo_path,
