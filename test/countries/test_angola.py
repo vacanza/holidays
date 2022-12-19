@@ -9,9 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.countries.angola import AGO, AO, Angola
 from test.common import TestCase
-
-from holidays.countries.angola import Angola, AO, AGO
 
 
 class TestAngola(TestCase):
@@ -49,15 +48,15 @@ class TestAngola(TestCase):
         )
 
     def test_national_hero_day(self):
-        self.assertHoliday(*[f"{year}-09-17" for year in range(1980, 2030)])
+        self.assertHoliday(f"{year}-09-17" for year in range(1980, 2030))
 
-        self.assertNoHoliday(*[f"{year}-09-17" for year in range(1975, 1980)])
+        self.assertNoHoliday(f"{year}-09-17" for year in range(1975, 1980))
 
     def test_national_liberation_day(self):
-        self.assertHoliday(*[f"{year}-03-23" for year in range(2019, 2030)])
+        self.assertHoliday(f"{year}-03-23" for year in range(2019, 2030))
 
         # Not a holiday before 2019.
-        self.assertNoHoliday(*[f"{year}-03-23" for year in range(1990, 2019)])
+        self.assertNoHoliday(f"{year}-03-23" for year in range(1990, 2019))
 
     def test_new_years_day(self):
         self.assertHoliday(

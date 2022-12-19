@@ -66,6 +66,38 @@ To manually run the quality assurance tests on all tracked files:
     $ pre-commit run -a
 
 
+Internationalization
+--------------------------
+.. _ISO 639-1 codes: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+
+In order to add or update existing holiday names translation you'll need to
+generate pygettext .pot file first:
+
+.. code-block:: bash
+
+    $ mkdir locale/pot
+    $ pygettext -k 'tr' -o locale/pot/AR.pot holidays/countries/argentina.py
+
+If the template file is empty make sure that the holiday names are wrapped
+with ``tr``/``self.tr`` helpers. Use `ISO 639-1 codes`_ when adding new
+languages. Copy the generated template to all locale folders you're going to
+translate this country holiday names into (e.g. for Argentina:
+locale/en/LC_MESSAGES/AR.po - note thefile extension difference here).
+Also copy the template to a default country language folder (e.g. for Argentina
+locale/es/LC_MESSAGES) and leave it as is. After copying the .po file open
+them with your favorite .po file editor and translate accordingly. Don't
+forget to fill in the translation file header fields.
+
+If the translation already exists you'll just need to update it with the new
+template entries (your .po file editor may help you to do that with no hassle).
+In case it's a new translation please also add tests (see already translated
+countries tests for examples). Update the list of country supported
+translations in README.rst file.
+
+The .mo files are generated automatically for the tests (don't forget to
+initialize the ``setUpClass`` properly) and the python-holidays package so you
+shouldn't worry about it.
+
 Build sphinx documentation
 --------------------------
 

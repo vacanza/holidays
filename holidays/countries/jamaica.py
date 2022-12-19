@@ -12,10 +12,10 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, SU
+from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import SUN, WEEKEND, JAN, FEB, MAY, JUN, AUG, OCT, DEC
+from holidays.constants import JAN, FEB, MAY, JUN, AUG, OCT, DEC, SUN
 from holidays.holiday_base import HolidayBase
 
 
@@ -65,7 +65,7 @@ class Jamaica(HolidayBase):
         # Independence Day
         name = "Independence Day"
         _date = date(year, AUG, 6)
-        if self.observed and _date.weekday() in WEEKEND:
+        if self.observed and self._is_weekend(_date):
             self[_date + rd(weekday=MO)] = name
         else:
             self[_date] = name

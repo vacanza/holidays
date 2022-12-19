@@ -1,0 +1,100 @@
+# Ukraine holidays.
+# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.19\n"
+"POT-Creation-Date: 2022-12-18 17:26-0800\n"
+"PO-Revision-Date: 2022-12-18 17:34-0800\n"
+"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"Language-Team: Python Holidays Translation Team\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: holidays/countries/ukraine.py:41
+msgid "Новий рік"
+msgstr ""
+
+#: holidays/countries/ukraine.py:45
+msgid "Різдво Христове (за юліанським календарем)"
+msgstr ""
+
+#: holidays/countries/ukraine.py:51
+msgid "Міжнародний жіночий день"
+msgstr ""
+
+#: holidays/countries/ukraine.py:56
+msgid "Великдень (Пасха)"
+msgstr ""
+
+#: holidays/countries/ukraine.py:59
+msgid "Трійця"
+msgstr ""
+
+#: holidays/countries/ukraine.py:62 holidays/countries/ukraine.py:69
+msgid "День міжнародної солідарності трудящих"
+msgstr ""
+
+#: holidays/countries/ukraine.py:64
+msgid "День праці"
+msgstr ""
+
+#: holidays/countries/ukraine.py:74
+msgid "День перемоги"
+msgstr ""
+
+#: holidays/countries/ukraine.py:77
+msgid "День перемоги над нацизмом у Другій світовій війні (День перемоги)"
+msgstr ""
+
+#: holidays/countries/ukraine.py:85
+msgid "День перемоги над Японією"
+msgstr ""
+
+#: holidays/countries/ukraine.py:89
+msgid "День Конституції України"
+msgstr ""
+
+#: holidays/countries/ukraine.py:93
+msgid "День Української Державності"
+msgstr ""
+
+#: holidays/countries/ukraine.py:96
+msgid "День незалежності України"
+msgstr ""
+
+#: holidays/countries/ukraine.py:104
+msgid "День захисника України"
+msgstr ""
+
+#: holidays/countries/ukraine.py:106
+msgid "День захисників і захисниць України"
+msgstr ""
+
+#: holidays/countries/ukraine.py:111
+msgid "Річниця Великої Жовтневої соціалістичної революції"
+msgstr ""
+
+#: holidays/countries/ukraine.py:119
+msgid "Різдво Христове (за григоріанським календарем)"
+msgstr ""
+
+#: holidays/countries/ukraine.py:144
+msgid "Вихідний за %s"
+msgstr ""
+
+#: holidays/countries/ukraine.py:149
+msgid "День пам'яті 9 січня 1905 року"
+msgstr ""
+
+#: holidays/countries/ukraine.py:155
+msgid "День Паризької Комуни"
+msgstr ""
+
+#: holidays/countries/ukraine.py:158
+msgid "День Конституції СРСР"
+msgstr ""

@@ -15,11 +15,9 @@ from datetime import date
 from dateutil.easter import easter, EASTER_ORTHODOX
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import SAT, SUN, JAN, MAR, MAY, SEP
+from holidays.constants import JAN, MAR, MAY, SEP
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
-
-WEEKEND = (SAT, SUN)
 
 # Ethiopian holidays are estimated: it is common for the day to be pushed
 # if falls in a weekend, although not a rule that can be implemented.

@@ -15,7 +15,7 @@ from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO
 
-from holidays.constants import WEEKEND, JAN, MAR, MAY, JUL, OCT, DEC
+from holidays.constants import JAN, MAR, MAY, JUL, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -50,7 +50,7 @@ class Malawi(HolidayBase):
 
         if self.observed:
             for k, v in list(self.items()):
-                if k.weekday() in WEEKEND and k.year == year:
+                if self._is_weekend(k) and k.year == year:
                     self[k + rd(weekday=MO)] = v + " (Observed)"
 
 

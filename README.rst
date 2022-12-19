@@ -106,7 +106,7 @@ Available Countries
 
 .. _ISO 3166-1 alpha-2 code: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
 
-We currently support 96 countries. The standard way to refer to a country is by
+We currently support 100 countries. The standard way to refer to a country is by
 using its `ISO 3166-1 alpha-2 code`_, the same used for domain names. The
 following countries and their subdivisions are available:
 
@@ -325,6 +325,9 @@ following countries and their subdivisions are available:
    * - Norway
      - NO
      - None
+   * - Pakistan
+     - PK
+     - None
    * - Paraguay
      - PY
      - None
@@ -440,6 +443,42 @@ following financial markets are available:
    * - New York Stock Exchange
      - XNYS
      - NYSE market holidays (used by all other US-exchanges, including NASDAQ, etc.)
+
+
+Internationalization
+===========================
+
+.. _ISO 639-1 code: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+
+Some of the available countries support more than one
+language for holiday names output. The default language is defined by
+:py:attr:`default_language` of :py:class:`HolidayBase` and is used as a fallback
+when neither user specified language nor user locale language available. The
+default language code is a `ISO 639-1 code`_.
+
+.. list-table::
+   :widths: 23 4 83
+   :header-rows: 1
+   :class: tight-table
+
+   * - Country
+     - Default Language
+     - Supported languages
+   * - Argentina
+     - es
+     - en, es
+   * - Canada
+     - en
+     - en, fr
+   * - Denmark
+     - da
+     - da, en
+   * - Poland
+     - pl
+     - en, pl
+   * - Ukraine
+     - uk
+     - en, uk
 
 
 Beta Version

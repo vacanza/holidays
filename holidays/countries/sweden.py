@@ -13,8 +13,8 @@ from datetime import date, datetime
 
 from dateutil import rrule
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import FR, SA, SU
+from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAR, MAY, JUN, OCT, DEC
 from holidays.holiday_base import HolidayBase

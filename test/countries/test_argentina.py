@@ -4,23 +4,28 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: Arkadii Yakovets <ark@cho.red>, (c) 2022
+#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from test.common import TestCase
 
 from dateutil.relativedelta import relativedelta
 
 from holidays.constants import MAY, JUN, JUL, AUG, OCT
-from holidays.countries.argentina import Argentina, AR, ARG
+from holidays.countries.argentina import AR, ARG, Argentina
+from test.common import TestCase
 
 
 class TestArgentina(TestCase):
     def setUp(self):
-        self.holidays = Argentina()
+        super().setUp(Argentina)
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Argentina)
 
     def test_country_aliases(self):
         self.assertCountryAliases(Argentina, AR, ARG)
@@ -229,47 +234,63 @@ class TestArgentina(TestCase):
     def test_2022(self):
         self.assertHolidaysEqual(
             Argentina(observed=False, years=2022),
-            ("2022-02-28", "Día de Carnaval [Carnival's Day]"),
-            ("2022-03-01", "Día de Carnaval [Carnival's Day]"),
+            ("2022-02-28", "Día de Carnaval"),
+            ("2022-03-01", "Día de Carnaval"),
             (
                 "2022-03-24",
-                "Día Nacional de la Memoria por la Verdad y la Justicia "
-                "[Memory's National Day for the Truth and Justice]",
+                "Día Nacional de la Memoria por la Verdad y la Justicia",
             ),
             (
                 "2022-04-14",
-                "Semana Santa (Jueves Santo) [Holy day (Holy Thursday)]",
+                "Semana Santa (Jueves Santo)",
             ),
             (
                 "2022-04-15",
-                "Semana Santa (Viernes Santo) [Holy day (Holy Friday)]",
+                "Semana Santa (Viernes Santo)",
             ),
             (
                 "2022-05-25",
-                "Día de la Revolucion de Mayo [May Revolution Day]",
+                "Día de la Revolución de Mayo",
             ),
             (
                 "2022-06-17",
                 "Día Pase a la Inmortalidad del General Martín Miguel de "
-                "Güemes [Day Pass to the Immortality of General Martín Miguel "
-                "de Güemes]",
+                "Güemes",
             ),
             (
                 "2022-06-20",
-                "Día Pase a la Inmortalidad del General D. Manuel Belgrano "
-                "[Day Pass to the Immortality of General D. Manuel Belgrano]",
+                "Día Pase a la Inmortalidad del General D. Manuel Belgrano",
             ),
             (
                 "2022-08-17",
-                "Día Pase a la Inmortalidad del General D. José de San Martin "
-                "[Day Pass to the Immortality of General D. José de San "
-                "Martin]",
+                "Día Pase a la Inmortalidad del General D. José de San Martin",
             ),
-            (
-                "2022-10-12",
-                "Día del Respeto a la Diversidad Cultural "
-                "[Respect for Cultural Diversity Day]",
-            ),
-            ("2022-12-08", "La Inmaculada Concepción [Immaculate Conception]"),
-            ("2022-12-25", "Navidad [Christmas]"),
+            ("2022-10-12", "Día del Respeto a la Diversidad Cultural"),
+            ("2022-12-08", "La Inmaculada Concepción"),
+            ("2022-12-25", "Navidad"),
         )
+
+    def test_i18n_default(self):
+        def run_tests(languages):
+            for language in languages:
+                ar = Argentina(language=language)
+                self.assertEqual(ar["2022-01-01"], "Año Nuevo")
+                self.assertEqual(ar["2022-12-25"], "Navidad")
+
+        run_tests((Argentina.default_language, None, "invalid"))
+
+        self.set_locale("en")
+        run_tests((Argentina.default_language,))
+
+    def test_i18n_en(self):
+        language = "en"
+
+        ar_en = Argentina(language=language)
+        self.assertEqual(ar_en["2018-01-01"], "New Year's Day")
+        self.assertEqual(ar_en["2022-12-25"], "Christmas")
+
+        self.set_locale(language)
+        for language in (None, language, "invalid"):
+            ar_en = Argentina(language=language)
+            self.assertEqual(ar_en["2018-01-01"], "New Year's Day")
+            self.assertEqual(ar_en["2022-12-25"], "Christmas")

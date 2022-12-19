@@ -14,22 +14,10 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import (
-    JAN,
-    FEB,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-)
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
+from holidays.constants import OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.utils import _islamic_to_gre, _ChineseLuniSolar
+from holidays.utils import _ChineseLuniSolar, _islamic_to_gre
 
 
 class Indonesia(HolidayBase):

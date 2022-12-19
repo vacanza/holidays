@@ -14,20 +14,8 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import (
-    MON,
-    TUE,
-    THU,
-    SUN,
-    JAN,
-    FEB,
-    MAR,
-    APR,
-    MAY,
-    SEP,
-    NOV,
-    DEC,
-)
+from holidays.constants import JAN, FEB, MAR, APR, MAY, SEP, NOV, DEC, MON
+from holidays.constants import TUE, THU, SUN
 from holidays.holiday_base import HolidayBase
 
 
@@ -40,13 +28,11 @@ class Angola(HolidayBase):
     country = "AO"
 
     def _populate(self, year: int) -> None:
-        super()._populate(year)
-
         # Observed since 1975
         # TODO do more research on history of Angolan holidays
-
         if year <= 1974:
             return
+        super()._populate(year)
 
         self[date(year, JAN, 1)] = "Ano novo"
         # Since 2018, if the following year's New Year's Day falls on a
@@ -84,15 +70,16 @@ class Angola(HolidayBase):
         # the Monday or Friday is also a holiday
         if self.observed and year >= 1995:
             for k, v in list(self.items()):
-                if k.year == year:
-                    if year <= 2017:
-                        if k.weekday() == SUN:
-                            self[k + rd(days=+1)] = v + " (Observed)"
-                    else:
-                        if k.weekday() == TUE and k != date(year, JAN, 1):
-                            self[k + rd(days=-1)] = v + " (Day off)"
-                        elif k.weekday() == THU:
-                            self[k + rd(days=+1)] = v + " (Day off)"
+                if k.year != year:
+                    continue
+                if year <= 2017:
+                    if k.weekday() == SUN:
+                        self[k + rd(days=+1)] = v + " (Observed)"
+                else:
+                    if k.weekday() == TUE and k != date(year, JAN, 1):
+                        self[k + rd(days=-1)] = v + " (Day off)"
+                    elif k.weekday() == THU:
+                        self[k + rd(days=+1)] = v + " (Day off)"
 
 
 class AO(Angola):

@@ -15,19 +15,8 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import (
-    SUN,
-    JAN,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-)
+from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
+from holidays.constants import DEC, FRI, SUN
 from holidays.holiday_base import HolidayBase
 
 
@@ -119,7 +108,7 @@ class Bolivia(HolidayBase):
         if year >= 1825:
             self[date(year, AUG, 6)] = name
 
-        if self.observed and date(year, AUG, 6).weekday() > 5:
+        if self.observed and date(year, AUG, 6).weekday() > FRI:
             self[date(year, AUG, 6) + rd(days=+1)] = f"{name} (Observed)"
 
         # Cochabamba Day.

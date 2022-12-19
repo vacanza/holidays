@@ -14,20 +14,8 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import (
-    WEEKEND,
-    JAN,
-    FEB,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    DEC,
-)
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
+from holidays.constants import OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -150,7 +138,7 @@ class Paraguay(HolidayBase):
     }
 
     def _add_holiday(self, dt: date, name: str) -> None:
-        if self.observed or dt.weekday() not in WEEKEND:
+        if self.observed or not self._is_weekend(dt):
             self[dt] = name
 
     def _populate(self, year):

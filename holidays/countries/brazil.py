@@ -15,20 +15,8 @@ from dateutil.easter import easter
 from dateutil.relativedelta import SU
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import (
-    APR,
-    AUG,
-    DEC,
-    JAN,
-    JUL,
-    JUN,
-    MAR,
-    MAY,
-    NOV,
-    OCT,
-    SEP,
-    WEEKEND,
-)
+from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT
+from holidays.constants import NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -200,7 +188,7 @@ class Brazil(HolidayBase):
 
         if self.subdiv == "SC":
             dt = date(year, AUG, 11)
-            if year >= 2018 and dt.weekday() not in WEEKEND:
+            if year >= 2018 and not self._is_weekend(dt):
                 dt += rd(weekday=SU)
             self[dt] = "Criação da capitania, separando-se de SP"
 

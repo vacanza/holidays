@@ -10,6 +10,19 @@
 #  License: MIT (see LICENSE file)
 
 
+import subprocess
+from pathlib import Path
+
 from setuptools import setup
 
-setup()
+
+def generate_mo_files():
+    """Looks up for .po files and generates respective .mo files."""
+    for po_path in Path("locale").rglob("*.po"):
+        mo_path = str(po_path).replace(".po", ".mo")
+        subprocess.run(("msgfmt.py", "-o", mo_path, po_path), check=True)
+
+
+if __name__ == "__main__":
+    generate_mo_files()
+    setup()

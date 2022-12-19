@@ -14,7 +14,7 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import WEEKEND, JAN, MAY, JUN, OCT, DEC
+from holidays.constants import JAN, MAY, JUN, OCT, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
 
@@ -93,9 +93,9 @@ class Nigeria(HolidayBase):
         # Observed holidays
         if self.observed and year >= 2016:
             for k, v in list(self.items()):
-                if k.weekday() in WEEKEND and k.year == year:
+                if self._is_weekend(k) and k.year == year:
                     next_workday = k + rd(days=+1)
-                    while next_workday.weekday() in WEEKEND or self.get(
+                    while self._is_weekend(next_workday) or self.get(
                         next_workday
                     ):
                         next_workday += rd(days=+1)

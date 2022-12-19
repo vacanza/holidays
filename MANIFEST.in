@@ -1,5 +1,8 @@
+exclude test/*
 include *.py
 include *.rst
-include LICENSE
 include CHANGES
-include py.typed
+include holidays/py.typed
+include LICENSE
+include locale/*/LC_MESSAGES/*.mo
+include locale/*/LC_MESSAGES/*.po

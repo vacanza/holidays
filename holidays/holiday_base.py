@@ -4,7 +4,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: Arkadii Yakovets <ark@cho.red>, (c) 2022
+#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -14,22 +15,14 @@ import copy
 import os
 import warnings
 from datetime import date, datetime, timedelta
-from gettext import gettext, translation
+from gettext import NullTranslations, gettext, translation
 from pathlib import Path
-from typing import (
-    Any,
-    Dict,
-    Iterable,
-    List,
-    Mapping,
-    Optional,
-    Set,
-    Tuple,
-    Union,
-    cast,
-)
+from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Tuple
+from typing import Union, cast
 
 from dateutil.parser import parse
+
+from holidays.constants import SAT, SUN
 
 DateLike = Union[date, datetime, str, float, int]
 
@@ -209,6 +202,8 @@ class HolidayBase(Dict[date, str]):
     _deprecated_subdivisions: List[str] = []
     """Other subdivisions whose names are deprecated or aliases of the official
     ones."""
+    weekend: Set[int] = {SAT, SUN}
+    """Country weekend days."""
 
     def __init__(
         self,
@@ -255,7 +250,7 @@ class HolidayBase(Dict[date, str]):
         super().__init__()
 
         self.expand = expand
-        self.language = language
+        self.language = language.lower() if language else None
         self.observed = observed
         self.subdiv = subdiv or prov or state
 
@@ -286,28 +281,28 @@ class HolidayBase(Dict[date, str]):
                     )
 
             name = getattr(self, "country", getattr(self, "market", None))
-            if language and name:
-                try:  # Load translation.
+            if name:
+                translator: NullTranslations
+                translations = sorted(
+                    (
+                        str(translation).split(os.sep)[1]
+                        for translation in Path("locale").rglob(f"{name}.mo")
+                    )
+                )
+
+                if language and language in translations:
                     translator = translation(
                         name,
                         languages=[language],
-                        localedir="locales",
+                        localedir="locale",
                     )
-                    self.tr = translator.gettext  # Replace `self.tr()`.
-                except FileNotFoundError:  # No translation found.
-                    translations = sorted(
-                        (
-                            str(translation).split(os.sep)[1]
-                            for translation in Path("locales").rglob(
-                                f"{name}.mo"
-                            )
-                        )
+                else:
+                    translator = translation(
+                        name,
+                        fallback=True,
+                        localedir="locale",
                     )
-                    warnings.warn(
-                        f"Couldn't load `{language}` translation for "
-                        f"`{name}`. Available translations: "
-                        f"{translations or None}"
-                    )
+                self.tr = translator.gettext  # Replace `self.tr()`.
 
         if isinstance(years, int):
             self.years = {years}
@@ -656,6 +651,15 @@ class HolidayBase(Dict[date, str]):
         # Special holidays list.
         for month, day, name in self.special_holidays.get(year, ()):
             self[date(year, month, day)] = self.tr(name)
+
+    def _is_weekend(self, *args):
+        """
+        Returns True if date's week day is a weekend day.
+        Returns False otherwise.
+        """
+        dt = args[0] if len(args) == 1 else date(*args)
+
+        return dt.weekday() in self.weekend
 
     def __reduce__(self) -> Union[str, Tuple[Any, ...]]:
         return super().__reduce__()

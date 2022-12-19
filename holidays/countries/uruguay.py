@@ -12,10 +12,11 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import MO, TU, WE, TH, FR
+from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, OCT, NOV, DEC
+from holidays.constants import TUE, WED, THU, FRI
 from holidays.holiday_base import HolidayBase
 
 
@@ -103,9 +104,9 @@ class Uruguay(HolidayBase):
         )
 
         for dt, name in holiday_pairs:
-            if dt.weekday() in {TU.weekday, WE.weekday}:
+            if dt.weekday() in {TUE, WED}:
                 self[dt + rd(weekday=MO(-1))] = name
-            elif dt.weekday() in {TH.weekday, FR.weekday}:
+            elif dt.weekday() in {THU, FRI}:
                 self[dt + rd(weekday=MO(+1))] = name
             else:
                 self[dt] = name

@@ -4,6 +4,8 @@ venv/
 MANIFEST
 .coverage
 *.egg-info
+*.mo
+*.pot
 *.pyc
 *.DS_Store
 coverage.xml
@@ -11,6 +13,7 @@ coverage.xml
 .venv
 docs/_build
 docs/source/_build
+locale/pot
 
 # IDE Stuff
 .idea

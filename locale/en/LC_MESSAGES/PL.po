@@ -1,13 +1,13 @@
 # Poland holidays English translation.
-# Arkadii Yakovets <ark@cho.red>, 2022.
+# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2022.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays\n"
+"Project-Id-Version: Python Holidays 0.19\n"
 "POT-Creation-Date: 2022-12-07 18:34-0800\n"
 "PO-Revision-Date: 2022-12-07 18:43-0800\n"
 "Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
-"Language-Team: Python Holidays\n"
+"Language-Team: Python Holidays Translation Team\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"

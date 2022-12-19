@@ -14,20 +14,8 @@ from datetime import date
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import (
-    MON,
-    TUE,
-    THU,
-    WEEKEND,
-    JAN,
-    MAR,
-    APR,
-    MAY,
-    AUG,
-    OCT,
-    NOV,
-    DEC,
-)
+from holidays.constants import JAN, MAR, APR, MAY, AUG, OCT, NOV, DEC, MON
+from holidays.constants import TUE, THU
 from holidays.holiday_base import HolidayBase
 
 
@@ -122,7 +110,7 @@ class Hungary(HolidayBase):
         if (
             self.observed
             and 2010 <= year
-            and date(year, DEC, 24).weekday() not in WEEKEND
+            and not self._is_weekend(year, DEC, 24)
         ):
             self[date(year, DEC, 24)] = "Szenteste"
 

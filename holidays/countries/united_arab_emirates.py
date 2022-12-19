@@ -13,23 +13,10 @@ from datetime import date
 
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import (
-    FRI,
-    SAT,
-    JAN,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    NOV,
-    DEC,
-)
+from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, SEP, NOV, DEC
+from holidays.constants import FRI, SAT
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
-
-WEEKEND = (FRI, SAT)
 
 
 class UnitedArabEmirates(HolidayBase):
@@ -57,6 +44,7 @@ class UnitedArabEmirates(HolidayBase):
     #  raised that this holiday is missing. hijri-converter requires
     #  Python >= 3.6
     country = "AE"
+    weekend = {FRI, SAT}
 
     def _populate(self, year):
         super()._populate(year)

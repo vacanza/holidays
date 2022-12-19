@@ -4,7 +4,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: Arkadii Yakovets <ark@cho.red>, (c) 2022
+#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -24,24 +25,25 @@ class Denmark(HolidayBase):
     """
 
     country = "DK"
+    default_language = "da"
 
     def _populate(self, year):
         super()._populate(year)
 
         easter_date = easter(year)
         # Public holidays
-        self[date(year, JAN, 1)] = "Nytårsdag"
-        self[easter_date + rd(days=-7)] = "Palmesøndag"
-        self[easter_date + rd(days=-3)] = "Skærtorsdag"
-        self[easter_date + rd(days=-2)] = "Langfredag"
-        self[easter_date] = "Påskedag"
-        self[easter_date + rd(days=+1)] = "Anden påskedag"
-        self[easter_date + rd(days=+26)] = "Store bededag"
-        self[easter_date + rd(days=+39)] = "Kristi himmelfartsdag"
-        self[easter_date + rd(days=+49)] = "Pinsedag"
-        self[easter_date + rd(days=+50)] = "Anden pinsedag"
-        self[date(year, DEC, 25)] = "Juledag"
-        self[date(year, DEC, 26)] = "Anden juledag"
+        self[date(year, JAN, 1)] = self.tr("Nytårsdag")
+        self[easter_date + rd(days=-7)] = self.tr("Palmesøndag")
+        self[easter_date + rd(days=-3)] = self.tr("Skærtorsdag")
+        self[easter_date + rd(days=-2)] = self.tr("Langfredag")
+        self[easter_date] = self.tr("Påskedag")
+        self[easter_date + rd(days=+1)] = self.tr("Anden påskedag")
+        self[easter_date + rd(days=+26)] = self.tr("Store bededag")
+        self[easter_date + rd(days=+39)] = self.tr("Kristi himmelfartsdag")
+        self[easter_date + rd(days=+49)] = self.tr("Pinsedag")
+        self[easter_date + rd(days=+50)] = self.tr("Anden pinsedag")
+        self[date(year, DEC, 25)] = self.tr("Juledag")
+        self[date(year, DEC, 26)] = self.tr("Anden juledag")
 
 
 class DK(Denmark):

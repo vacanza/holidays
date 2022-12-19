@@ -4,35 +4,87 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
-#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Authors: Arkadii Yakovets <ark@cho.red>, (c) 2022
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
-#  Copyright: Arkadii Yakovets <ark@cho.red>, 2022
 
+import os
+import subprocess
 import unittest
+from pathlib import Path
+from typing import Generator
 
 from dateutil.parser import parse
-from dateutil.relativedelta import SU
 
 from holidays import HolidayBase
+from holidays.constants import SUN
 
 
 class TestCase(unittest.TestCase):
     """Base class for python-holiday test cases."""
 
-    def parse_arguments(self, args):
-        if issubclass(args[0].__class__, HolidayBase):
-            return args[0], args[1:]
+    @classmethod
+    def setUpClass(cls, cls_test=None):
+        super().setUpClass()
 
-        if not hasattr(self, "holidays"):
+        if cls_test is None:
+            return
+
+        if (
+            not hasattr(cls_test, "default_language")
+            or cls_test.default_language is None
+            or len(cls_test.default_language) != 2
+        ):
             raise ValueError(
-                "Either pass country holidays object (`HolidayBase` subclass) "
-                "as a first argument or initialize `self.holidays` in the "
-                "`setUp()` method."
+                f"`{cls_test.__name__}.default_language` value is invalid."
             )
 
-        return self.holidays, args
+        # Generate translation files for a specific entity.
+        name = getattr(cls_test, "country", getattr(cls_test, "market", None))
+        for po_path in Path("locale").rglob(f"{name}.po"):
+            mo_path = str(po_path).replace(".po", ".mo")
+            subprocess.run(("msgfmt.py", "-o", mo_path, po_path), check=True)
+
+    def setUp(self, cls):
+        super().setUp()
+
+        self.set_locale(cls.default_language.lower())
+        self.holidays = cls()
+
+    def set_locale(self, language):
+        os.environ["LANGUAGE"] = language
+
+    def parse_arguments(self, args):
+        date_args = args
+        instance = None
+
+        if issubclass(args[0].__class__, HolidayBase):
+            instance = args[0]
+            date_args = args[1:]
+        else:
+            try:
+                instance = getattr(self, "holidays")
+                self.assertTrue(
+                    issubclass(instance.__class__, HolidayBase),
+                    "The `self.holidays` must be a `HolidayBase` subclass.",
+                )
+            except AttributeError:
+                raise ValueError(
+                    "Either pass a holidays object (`HolidayBase` subclass) "
+                    "as a first argument or initialize `self.holidays` in the "
+                    "`setUp()` method."
+                )
+
+        dates = []
+        for date_arg in date_args:
+            if type(date_arg) in {list, tuple}:
+                dates.extend(date_arg)
+            elif isinstance(date_arg, Generator):
+                dates.extend(tuple(date_arg))
+            else:
+                dates.append(date_arg)
+
+        return instance, dates
 
     def verify_type(self, holidays):
         self.assertTrue(
@@ -40,7 +92,7 @@ class TestCase(unittest.TestCase):
             "`holidays` object must be a subclass of `HolidayBase`",
         )
 
-    def assertCountryAliases(self, cls, *aliases):
+    def assertCountryAliases(self, cls, alpha_2, alpha_3):
         """Asserts country aliases match."""
 
         self.assertTrue(
@@ -48,38 +100,31 @@ class TestCase(unittest.TestCase):
             "Country holidays object must be a subclass of `HolidayBase`",
         )
 
-        has_alpha_2 = False
-        has_alpha_3 = False
-        for alias in aliases:
-            self.assertTrue(
-                issubclass(alias, cls),
-                "Country alias object must be a subclass of the "
-                "main country class.",
-            )
+        type_error_message = (
+            "Country alias object must be a subclass of the country class."
+        )
+        for alias in (alpha_2, alpha_3):
+            self.assertIsNotNone(alias, type_error_message)
+            self.assertTrue(issubclass(alias, cls), type_error_message)
             self.assertEqual(alias(), cls())
 
-            class_name = alias.__name__
-            if len(class_name) == 2:
-                has_alpha_2 = True
-            elif len(class_name) == 3:
-                has_alpha_3 = True
-            else:
-                raise ValueError(
-                    "Alias class name must match either alpha-2 or alpha-3 "
-                    f"country code. Got: `{class_name}`."
-                )
+        length_error_message = (
+            "This method accepts exactly 3 arguments "
+            "in this specific order: country base class, country alpha-2 "
+            "alias, and country alpha-3 alias. For example: "
+            "`self.assertCountryAliases(UnitedStates, US, USA)`"
+        )
+        if len(alpha_2.__name__) != 2:
+            raise ValueError(
+                f"{length_error_message}. Alias `{alpha_2.__name__}` doesn't "
+                "look like alpha-2 country code."
+            )
 
-        self.assertTrue(
-            has_alpha_2, "Country alpha-2 code must also be included."
-        )
-        self.assertTrue(
-            has_alpha_3, "Country alpha-3 code must also be included."
-        )
-        self.assertEqual(
-            2,
-            len(aliases),
-            "Please include alpha-2 and alpha-3 country code aliases.",
-        )
+        if len(alpha_3.__name__) != 3:
+            raise ValueError(
+                f"{length_error_message}. Alias `{alpha_3.__name__}` doesn't "
+                "look like alpha-3 country code."
+            )
 
     def assertNoHolidays(self, holidays):
         """Asserts holidays dict is empty."""
@@ -133,18 +178,14 @@ class SundayHolidays(TestCase):
             holidays,
             "1989-12-31",
         )
-        self.assertEqual(
-            53, len([s for s in holidays if s.weekday() == SU.weekday])
-        )
+        self.assertEqual(53, len([s for s in holidays if s.weekday() == SUN]))
 
         holidays = cls(years=2032, include_sundays=True)
         self.assertHoliday(
             holidays,
             "2032-01-04",
         )
-        self.assertEqual(
-            52, len([s for s in holidays if s.weekday() == SU.weekday])
-        )
+        self.assertEqual(52, len([s for s in holidays if s.weekday() == SUN]))
 
         self.assertNoHolidays(cls(include_sundays=True))
 
@@ -154,7 +195,7 @@ class SundayHolidays(TestCase):
             "2017-02-12",
             "2032-02-29",
         ):
-            self.assertEqual(parse(sunday).weekday(), SU.weekday)
+            self.assertEqual(parse(sunday).weekday(), SUN)
             self.assertHoliday(holidays, sunday)
 
         for non_sunday in (
@@ -168,5 +209,5 @@ class SundayHolidays(TestCase):
             "2017-02-09",
             "2017-02-10",
         ):
-            self.assertNotEqual(parse(non_sunday).weekday(), SU.weekday)
+            self.assertNotEqual(parse(non_sunday).weekday(), SUN)
             self.assertNoHoliday(holidays, non_sunday)

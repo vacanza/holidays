@@ -4,7 +4,8 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: Arkadii Yakovets <ark@cho.red>, (c) 2022
+#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -25,6 +26,7 @@ class Poland(HolidayBase):
     """
 
     country = "PL"
+    default_language = "pl"
     special_holidays = {
         2018: ((NOV, 12, tr("Narodowe Święto Niepodległości - 100-lecie")),)
     }

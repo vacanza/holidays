@@ -4,30 +4,19 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: Arkadii Yakovets <ark@cho.red>, (c) 2022
+#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
 
-from dateutil.easter import easter, EASTER_ORTHODOX
+from dateutil.easter import EASTER_ORTHODOX, easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import (
-    JAN,
-    APR,
-    MAR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-    WEEKEND,
-)
+from holidays.constants import JAN, APR, MAR, MAY, JUN, JUL, AUG, SEP, OCT
+from holidays.constants import NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -38,6 +27,7 @@ class Ukraine(HolidayBase):
     """
 
     country = "UA"
+    default_language = "uk"
 
     def _populate(self, year):
         # The current set of holidays came into force in 1991
@@ -139,7 +129,7 @@ class Ukraine(HolidayBase):
         if self.observed:
             for k, v in list(self.items()):
                 if (
-                    k.weekday() in WEEKEND
+                    self._is_weekend(k)
                     and k.year == year
                     and (
                         date(1995, JAN, 27) <= k <= date(1998, JAN, 9)
@@ -147,7 +137,7 @@ class Ukraine(HolidayBase):
                     )
                 ):
                     next_workday = k + rd(days=+1)
-                    while next_workday.weekday() in WEEKEND or self.get(
+                    while self._is_weekend(next_workday) or self.get(
                         next_workday
                     ):
                         next_workday += rd(days=+1)

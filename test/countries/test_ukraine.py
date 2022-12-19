@@ -4,21 +4,28 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: Arkadii Yakovets <ark@cho.red>, (c) 2022
+#           dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
 from datetime import date
 
-import holidays
+from holidays.countries.ukraine import Ukraine
+from test.common import TestCase
 
 
-class TestUkraine(unittest.TestCase):
+class TestUkraine(TestCase):
     def setUp(self):
-        self.holidays = holidays.UA(observed=False)
-        self.holidays_full = holidays.UA(observed=True)
+        super().setUp(Ukraine)
+
+        self.holidays = Ukraine(observed=False)
+        self.holidays_full = Ukraine(observed=True)
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Ukraine)
 
     def test_before_1918(self):
         self.assertNotIn(date(1917, 12, 31), self.holidays)
@@ -262,10 +269,37 @@ class TestUkraine(unittest.TestCase):
             self.assertIn(dt, self.holidays_full)
             self.assertEqual(self.holidays_full.get(dt)[:11], "Вихідний за")
 
-    def test_i18n_en(self):
-        ua_en = holidays.Ukraine(language="en")
+    def test_i18n_default(self):
+        def run_tests(languages):
+            for language in languages:
+                ua = Ukraine(language=language)
+                self.assertEqual(ua["2022-01-01"], "Новий рік")
+                self.assertEqual(
+                    ua["2022-12-25"],
+                    "Різдво Христове (за григоріанським календарем)",
+                )
 
+        run_tests((Ukraine.default_language, None, "invalid"))
+
+        self.set_locale("en")
+        run_tests((Ukraine.default_language,))
+
+    def test_i18n_en(self):
+        language = "en"
+        ua_en = Ukraine(language=language)
         self.assertEqual(ua_en["2022-01-01"], "New Year's Day")
         self.assertEqual(ua_en["2022-01-07"], "Christmas (Julian calendar)")
         self.assertEqual(ua_en["2022-12-25"], "Christmas (Gregorian calendar)")
         self.assertEqual(ua_en["2023-01-02"], "New Year's Day (Observed)")
+
+        self.set_locale(language)
+        for language in (None, language, "invalid"):
+            ua_en = Ukraine(language=language)
+            self.assertEqual(ua_en["2022-01-01"], "New Year's Day")
+            self.assertEqual(
+                ua_en["2022-01-07"], "Christmas (Julian calendar)"
+            )
+            self.assertEqual(
+                ua_en["2022-12-25"], "Christmas (Gregorian calendar)"
+            )
+            self.assertEqual(ua_en["2023-01-02"], "New Year's Day (Observed)")
