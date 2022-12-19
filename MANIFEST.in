@@ -6,3 +6,4 @@ include holidays/py.typed
 include LICENSE
 include locale/*/LC_MESSAGES/*.mo
 include locale/*/LC_MESSAGES/*.po
+include scripts/build/msgfmt.py

@@ -13,6 +13,7 @@ exclude = '''
   | buck-out
   | build
   | dist
+  | scripts
 )/
 '''
 
@@ -22,10 +23,10 @@ include = [
   'tests.py',
 ]
 omit = [
+  'scripts/*',
   'setup.py',
   'holidays/__init__.py',
   'test/*',
-  'tests.py',
 # comment the above line if you want to see if all tests did run
   ]
 
@@ -54,3 +55,4 @@ line_length = 79
 multi_line_output = 9
 no_inline_sort = true
 profile = "black"
+skip_glob = ["scripts/*"]

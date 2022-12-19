@@ -43,7 +43,15 @@ class TestCase(unittest.TestCase):
         name = getattr(cls_test, "country", getattr(cls_test, "market", None))
         for po_path in Path("locale").rglob(f"{name}.po"):
             mo_path = str(po_path).replace(".po", ".mo")
-            subprocess.run(("msgfmt.py", "-o", mo_path, po_path), check=True)
+            subprocess.run(
+                (
+                    os.path.join("scripts", "build", "msgfmt.py"),
+                    "-o",
+                    mo_path,
+                    po_path,
+                ),
+                check=True,
+            )
 
     def setUp(self, cls):
         super().setUp()

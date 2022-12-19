@@ -1,4 +1,4 @@
-build/
+build/*
 dist/
 venv/
 MANIFEST
@@ -12,6 +12,7 @@ coverage.xml
 .tox
 .venv
 docs/_build
+docs/build
 docs/source/_build
 locale/pot
 
