@@ -7,7 +7,7 @@ hijri_converter
 # test requirements
 pytest
 pytest-cov
-coverage[toml]
+coverage[toml]<7.0.0
 pre-commit
 flake8
 sphinx
