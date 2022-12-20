@@ -43,14 +43,15 @@ class TestCase(unittest.TestCase):
         # Generate translation files for a specific entity.
         name = getattr(cls_test, "country", getattr(cls_test, "market", None))
         for po_path in Path("locale").rglob(f"{name}.po"):
-            mo_path = str(po_path).replace(".po", ".mo")
+            po_file = str(po_path)
+            mo_file = po_file.replace(".po", ".mo")
             subprocess.run(
                 (
                     sys.executable,
                     os.path.join("scripts", "build", "msgfmt.py"),
                     "-o",
-                    mo_path,
-                    po_path,
+                    mo_file,
+                    po_file,
                 ),
                 check=True,
             )

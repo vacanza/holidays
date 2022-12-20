@@ -21,14 +21,15 @@ from setuptools import setup
 def generate_mo_files():
     """Looks up for .po files and generates respective .mo files."""
     for po_path in Path("locale").rglob("*.po"):
-        mo_path = str(po_path).replace(".po", ".mo")
+        po_file = str(po_path)
+        mo_file = po_file.replace(".po", ".mo")
         subprocess.run(
             (
                 sys.executable,
                 os.path.join("scripts", "build", "msgfmt.py"),
                 "-o",
-                mo_path,
-                po_path,
+                mo_file,
+                po_file,
             ),
             check=True,
         )
