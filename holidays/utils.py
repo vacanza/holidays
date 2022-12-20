@@ -910,6 +910,23 @@ class _AstroMeeusAlgorithms:
 
         return jd + 0.00001 * S / dl
 
+    def spring(self, year: int) -> float:
+        """
+        Calculates spring (March) equinox for given year
+
+        :param year: The year for which you want to calculate the equinox
+        :return: The Julian date of the spring equinox.
+        """
+        Y = (year - 2000) / 1000.0
+        jd0 = (
+            2451623.80984
+            + 365242.37404 * Y
+            + 0.05169 * Y**2
+            - 0.00411 * Y**3
+            - 0.00057 * Y**4
+        )
+        return self._corrections(jd0)
+
     def summer(self, year: int) -> float:
         """
         Calculates summer (June) solstice for given year
@@ -924,6 +941,40 @@ class _AstroMeeusAlgorithms:
             + 0.00325 * Y**2
             + 0.00888 * Y**3
             - 0.00030 * Y**4
+        )
+        return self._corrections(jd0)
+
+    def autumn(self, year: int) -> float:
+        """
+        Calculates autumn (September) equinox for given year
+
+        :param year: The year for which you want to calculate the equinox
+        :return: The Julian date of the autumn equinox.
+        """
+        Y = (year - 2000) / 1000.0
+        jd0 = (
+            2451810.21715
+            + 365242.01767 * Y
+            - 0.11575 * Y**2
+            + 0.00337 * Y**3
+            + 0.00078 * Y**4
+        )
+        return self._corrections(jd0)
+
+    def winter(self, year: int) -> float:
+        """
+        Calculates winter (December) solstice for given year
+
+        :param year: The year for which you want to calculate the solstice
+        :return: The Julian date of the winter solstice.
+        """
+        Y = (year - 2000) / 1000.0
+        jd0 = (
+            2451900.05952
+            + 365242.74049 * Y
+            - 0.06223 * Y**2
+            - 0.00823 * Y**3
+            + 0.00032 * Y**4
         )
         return self._corrections(jd0)
 
@@ -949,7 +1000,7 @@ class _AstroMeeusAlgorithms:
 
         h = int(f * 24)
         m = int((f - h / 24.0) * 1440)
-        s = round((f - h / 24.0 - m / 1440.0) * 86400.0)
+        s = round((f - h / 24.0 - m / 1440.0) * 86400.0, 2)
         day = b - d - int(30.6001 * e)
         year = c - 4716
         if e < 14:
@@ -958,4 +1009,4 @@ class _AstroMeeusAlgorithms:
             mon = e - 13
             year += 1
 
-        return datetime(year, mon, day, h, m, s)
+        return datetime(year, mon, day, h, m, int(s))

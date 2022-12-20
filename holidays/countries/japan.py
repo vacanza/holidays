@@ -17,6 +17,7 @@ from dateutil.relativedelta import relativedelta as rd
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
+from holidays.utils import _AstroMeeusAlgorithms
 
 
 class Japan(HolidayBase):
@@ -42,6 +43,8 @@ class Japan(HolidayBase):
 
         super()._populate(year)
 
+        astro_alg = _AstroMeeusAlgorithms()
+
         # New Year's Day
         self[date(year, JAN, 1)] = "元日"
 
@@ -60,7 +63,12 @@ class Japan(HolidayBase):
             self[date(year, FEB, 23)] = "天皇誕生日"
 
         # Vernal Equinox Day
-        self[self._vernal_equinox_day(year)] = "春分の日"
+        equinox = astro_alg.jd2date(astro_alg.spring(year))
+        # Received date for UTC timezone needs to be adjusted
+        # to match Japan's timezone
+        # https://time.is/Japan
+        adjusted_date = equinox + rd(hours=9)
+        self[date(year, MAR, adjusted_date.day)] = "春分の日"
 
         # Showa Emperor's Birthday, Greenery Day or Showa Day
         if year <= 1988:
@@ -105,7 +113,12 @@ class Japan(HolidayBase):
             self[date(year, SEP, 1) + rd(weekday=MO(+3))] = "敬老の日"
 
         # Autumnal Equinox Day
-        self[self._autumnal_equinox_day(year)] = "秋分の日"
+        equinox = astro_alg.jd2date(astro_alg.autumn(year))
+        # Received date for UTC timezone needs to be adjusted
+        # to match Japan's timezone
+        # https://time.is/Japan
+        adjusted_date = equinox + rd(hours=9)
+        self[date(year, SEP, adjusted_date.day)] = "秋分の日"
 
         # Health and Sports Day
         if 1966 <= year <= 1999:
@@ -135,37 +148,6 @@ class Japan(HolidayBase):
 
         # Substitute holidays
         self._add_substitute_holidays(year)
-
-    def _vernal_equinox_day(self, year):
-        day = 20
-        if year % 4 == 0:
-            if year <= 1956:
-                day = 21
-            elif year >= 2092:
-                day = 19
-        elif (
-            (year % 4 == 1 and year <= 1989)
-            or (year % 4 == 2 and year <= 2022)
-            or (year % 4 == 3 and year <= 2055)
-        ):
-            day = 21
-
-        return date(year, MAR, day)
-
-    def _autumnal_equinox_day(self, year):
-        day = 22
-        if (
-            (year % 4 == 0 and year <= 2008)
-            or (year % 4 == 1 and year <= 2041)
-            or (year % 4 == 2 and year <= 2074)
-        ):
-            day = 23
-        elif year % 4 == 3:
-            day = 23
-            if year <= 1979:
-                day = 24
-
-        return date(year, SEP, day)
 
     def _add_national_holidays(self, year):
         if year in {
