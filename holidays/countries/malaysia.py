@@ -679,7 +679,7 @@ class Malaysia(
             for date_obs in dates_obs[year]:
                 self._add_holiday(name, *date_obs)
         else:
-            self._add_chinese_new_years_day(f"{name} {estimated_suffix}")
+            self._add_islamic_new_year_day(f"{name} {estimated_suffix}")
 
         # Special holidays (states)
         if year == 2021 and self.subdiv in {"KUL", "LBN", "PJY"}:
