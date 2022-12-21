@@ -54,7 +54,7 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays):
         )
 
         self._add_all_saints_day("Uroczystość Wszystkich Świętych")
-        
+
         if 1937 <= year <= 1945 or year >= 1989:
             self._add_holiday("Narodowe Święto Niepodległości", NOV, 11)
 
