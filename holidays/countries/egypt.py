@@ -9,17 +9,15 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-
-from dateutil.easter import EASTER_ORTHODOX, easter
-from dateutil.relativedelta import relativedelta as rd
-
-from holidays.constants import JAN, APR, MAY, JUN, JUL, OCT
+from holidays.constants import JAN, APR, JUN, JUL, OCT, JULIAN_CALENDAR
 from holidays.holiday_base import HolidayBase
-from holidays.utils import _islamic_to_gre
+from holidays.holiday_groups import ChristianHolidays, IslamicHolidays
+from holidays.holiday_groups import InternationalHolidays
 
 
-class Egypt(HolidayBase):
+class Egypt(
+    HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolidays
+):
 
     # Holidays here are estimates, it is common for the day to be pushed
     # if falls in a weekend, although not a rule that can be implemented.
@@ -36,87 +34,65 @@ class Egypt(HolidayBase):
 
     country = "EG"
 
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self, JULIAN_CALENDAR)
+        InternationalHolidays.__init__(self)
+        IslamicHolidays.__init__(self)
+
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year):
         super()._populate(year)
 
-        def _add_holiday(dt: date, hol: str) -> None:
-            """Only add if in current year; prevents adding holidays across
-            years (handles multi-day Islamic holidays that straddle Gregorian
-            years).
-            """
-            if dt.year == year:
-                self[dt] = hol
-
         # New Year's Day
-        self[date(year, JAN, 1)] = "New Year's Day - Bank Holiday"
+        self._add_new_years_day("New Year's Day - Bank Holiday")
 
         # Coptic Christmas
-        self[date(year, JAN, 7)] = "Coptic Christmas"
+        self._add_christmas_day("Coptic Christmas")
 
         # 25th of Jan
         if year >= 2012:
-            self[date(year, JAN, 25)] = "Revolution Day - January 25"
+            self._add_holiday("Revolution Day - January 25", JAN, 25)
         elif year >= 2009:
-            self[date(year, JAN, 25)] = "Police Day"
-        else:
-            pass
+            self._add_holiday("Police Day", JAN, 25)
 
         # Coptic Easter - Orthodox Easter
-        easter_date = easter(year, EASTER_ORTHODOX)
-        self[easter_date] = "Coptic Easter Sunday"
-
-        # Sham El Nessim - Spring Festival
-        self[easter_date + rd(days=+1)] = "Sham El Nessim"
+        self._add_easter_sunday("Coptic Easter Sunday")
+        self._add_easter_monday("Sham El Nessim")  # Spring Festival
 
         # Sinai Libration Day
         if year > 1982:
-            self[date(year, APR, 25)] = "Sinai Liberation Day"
+            self._add_holiday("Sinai Liberation Day", APR, 25)
 
         # Labour Day
-        self[date(year, MAY, 1)] = "Labour Day"
+        self._add_labour_day("Labour Day")
 
         # Armed Forces Day
-        self[date(year, OCT, 6)] = "Armed Forces Day"
+        self._add_holiday("Armed Forces Day", OCT, 6)
 
         # 30 June Revolution Day
         if year >= 2014:
-            self[date(year, JUN, 30)] = "30 June Revolution Day"
+            self._add_holiday("30 June Revolution Day", JUN, 30)
 
         # Revolution Day
         if year > 1952:
-            self[date(year, JUL, 23)] = "Revolution Day"
+            self._add_holiday("Revolution Day", JUL, 23)
 
         # Eid al-Fitr - Feast Festive
-        # date of observance is announced yearly, This is an estimate since
-        # having the Holiday on Weekend does change the number of days,
-        # deceided to leave it since marking a Weekend as a holiday
-        # wouldn't do much harm.
-        for yr in (year - 1, year):
-            for date_obs in _islamic_to_gre(yr, 10, 1):
-                hol_date = date_obs
-                _add_holiday(hol_date, "Eid al-Fitr")
-                _add_holiday(hol_date + rd(days=1), "Eid al-Fitr Holiday")
-                _add_holiday(hol_date + rd(days=2), "Eid al-Fitr Holiday")
+        self._add_eid_al_fitr_day("Eid al-Fitr")
+        self._add_eid_al_fitr_day_two("Eid al-Fitr Holiday")
+        self._add_eid_al_fitr_day_three("Eid al-Fitr Holiday")
+
+        self._add_arafah_day("Arafat Day")
 
         # Arafat Day & Eid al-Adha - Scarfice Festive
-        # date of observance is announced yearly
-        for yr in (year - 1, year):
-            for date_obs in _islamic_to_gre(yr, 12, 9):
-                hol_date = date_obs
-                _add_holiday(hol_date, "Arafat Day")
-                _add_holiday(hol_date + rd(days=1), "Eid al-Adha")
-                _add_holiday(hol_date + rd(days=2), "Eid al-Adha Holiday")
-                _add_holiday(hol_date + rd(days=3), "Eid al-Adha Holiday")
+        self._add_eid_al_adha_day("Eid al-Adha")
+        self._add_eid_al_adha_day_two("Eid al-Adha Holiday")
+        self._add_eid_al_adha_day_three("Eid al-Adha Holiday")
 
-        # Islamic New Year - (hijari_year, 1, 1)
-        for date_obs in _islamic_to_gre(year, 1, 1):
-            hol_date = date_obs
-            self[hol_date] = "Islamic New Year"
+        self._add_islamic_new_year_day("Islamic New Year")
 
-        # Prophet Muhammad's Birthday - (hijari_year, 3, 12)
-        for date_obs in _islamic_to_gre(year, 3, 12):
-            hol_date = date_obs
-            self[hol_date] = "Prophet Muhammad's Birthday"
+        self._add_mawlid_day("Prophet Muhammad's Birthday")
 
 
 class EG(Egypt):

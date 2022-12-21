@@ -129,6 +129,11 @@ class TestCase(unittest.TestCase):
         for dt in dates:
             self.assertIn(dt, holidays)
 
+    def assertHolidayCount(self, holidays, count):
+        """Asserts holidays count equals to `count`."""
+
+        self.assertEqual(len(holidays), count)
+
     def assertNoHoliday(self, *args):
         """Asserts each date is not a holiday."""
 

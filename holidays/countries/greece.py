@@ -9,74 +9,79 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-
-from dateutil.easter import EASTER_ORTHODOX, easter
 from dateutil.relativedelta import MO, TU
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAR, MAY, AUG, OCT, DEC
+from holidays.constants import GREGORIAN_CALENDAR, JULIAN_CALENDAR, MAR, MAY
+from holidays.constants import OCT
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Greece(HolidayBase):
+class Greece(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Greece
     """
 
     country = "GR"
 
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self, JULIAN_CALENDAR)
+        InternationalHolidays.__init__(self)
+
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year):
         super()._populate(year)
 
-        easter_date = easter(year, method=EASTER_ORTHODOX)
-
         # New Years
-        self[date(year, JAN, 1)] = "Πρωτοχρονιά [New Year's Day]"
+        self._add_new_years_day("Πρωτοχρονιά [New Year's Day]")
+
         # Epiphany
-        self[date(year, JAN, 6)] = "Θεοφάνεια [Epiphany]"
+        self._add_epiphany_day("Θεοφάνεια [Epiphany]", GREGORIAN_CALENDAR)
 
         # Clean Monday
-        self[easter_date + rd(days=-48)] = "Καθαρά Δευτέρα [Clean Monday]"
+        self._add_ash_monday("Καθαρά Δευτέρα [Clean Monday]")
 
         # Independence Day
-        self[date(year, MAR, 25)] = "Εικοστή Πέμπτη Μαρτίου [Independence Day]"
+        self._add_holiday("Εικοστή Πέμπτη Μαρτίου [Independence Day]", MAR, 25)
 
-        # Easter Monday
-        self[easter_date + rd(days=+1)] = "Δευτέρα του Πάσχα [Easter Monday]"
+        # Easter.
+        self._add_easter_monday("Δευτέρα του Πάσχα [Easter Monday]")
 
-        # Monday of the Holy Spirit
-        self[
-            easter_date + rd(days=+50)
-        ] = "Δευτέρα του Αγίου Πνεύματος [Monday of the Holy Spirit]"
+        # Monday of the Holy Spirit.
+        self._add_whit_monday(
+            "Δευτέρα του Αγίου Πνεύματος [Monday of the Holy Spirit]"
+        )
 
         # Labour Day
         name = "Εργατική Πρωτομαγιά [Labour day]"
         name_observed = name + " (Observed)"
 
-        self[date(year, MAY, 1)] = name
-        if self.observed and self._is_weekend(year, MAY, 1):
+        may_1 = self._add_holiday(name, MAY, 1)
+        if self.observed and self._is_weekend(may_1):
             # https://en.wikipedia.org/wiki/Public_holidays_in_Greece
-            labour_day_observed_date = date(year, MAY, 1) + rd(weekday=MO)
+            labour_day_observed_date = may_1 + rd(weekday=MO)
             # In 2016 and 2021, Labour Day coincided with other holidays
             # https://www.timeanddate.com/holidays/greece/labor-day
             if self.get(labour_day_observed_date):
                 labour_day_observed_date += rd(weekday=TU)
-            self[labour_day_observed_date] = name_observed
+            self._add_holiday(name_observed, labour_day_observed_date)
 
         # Assumption of Mary
-        self[date(year, AUG, 15)] = "Κοίμηση της Θεοτόκου [Assumption of Mary]"
+        self._add_assumption_of_mary_day(
+            "Κοίμηση της Θεοτόκου [Assumption of Mary]"
+        )
 
         # Ochi Day
-        self[date(year, OCT, 28)] = "Ημέρα του Όχι [Ochi Day]"
+        self._add_holiday("Ημέρα του Όχι [Ochi Day]", OCT, 28)
 
         # Christmas
-        self[date(year, DEC, 25)] = "Χριστούγεννα [Christmas]"
-
-        # Day after Christmas
-        self[
-            date(year, DEC, 26)
-        ] = "Επόμενη ημέρα των Χριστουγέννων [Day after Christmas]"
+        self._add_christmas_day("Χριστούγεννα [Christmas]", GREGORIAN_CALENDAR)
+        self._add_christmas_day_two(
+            "Επόμενη ημέρα των Χριστουγέννων [Day after Christmas]",
+            GREGORIAN_CALENDAR,
+        )
 
 
 class GR(Greece):

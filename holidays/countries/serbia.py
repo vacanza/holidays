@@ -32,7 +32,7 @@ class Serbia(HolidayBase):
         name = "Нова година"
         self[date(year, JAN, 1)] = name
         self[date(year, JAN, 2)] = name
-        if self.observed and self._is_weekend(year, JAN, 1):
+        if self.observed and self._is_weekend(JAN, 1):
             self[date(year, JAN, 3)] = name + " (Observed)"
         # Orthodox Christmas
         name = "Божић"
@@ -41,7 +41,7 @@ class Serbia(HolidayBase):
         name = "Дан државности Србије"
         self[date(year, FEB, 15)] = name
         self[date(year, FEB, 16)] = name
-        if self.observed and self._is_weekend(year, FEB, 15):
+        if self.observed and self._is_weekend(FEB, 15):
             self[date(year, FEB, 17)] = name + " (Observed)"
         # International Workers' Day
         name = "Празник рада"

@@ -20,6 +20,7 @@ from dateutil.parser import parse
 
 from holidays.constants import SAT, SUN
 
+DateArg = Union[date, Tuple[int, int]]
 DateLike = Union[date, datetime, str, float, int]
 
 
@@ -570,6 +571,27 @@ class HolidayBase(Dict[date, str]):
     def __radd__(self, other: Any) -> "HolidayBase":
         return self.__add__(other)
 
+    def _add_holiday(self, *args) -> date:
+        """Add a holiday.
+        This method accepts either `holiday_name: str, dt: date` or
+        `holiday_name: str, month: int, day: int` argument sequence.
+        """
+        if len(args) == 2:
+            holiday_name, dt = args
+            if not isinstance(dt, date):
+                raise TypeError(
+                    f"Invalid argument type: expected 'date' got '{type(dt)}'."
+                )
+        elif len(args) == 3:
+            holiday_name, month, day = args
+            dt = date(self._year, month, day)
+        else:
+            raise TypeError("Incorrect number of arguments.")
+
+        self[dt] = holiday_name
+
+        return dt
+
     def _populate(self, year: int) -> None:
         """This is a private class that populates (generates and adds) holidays
         for a given year. To keep things fast, it assumes that no holidays for
@@ -587,16 +609,18 @@ class HolidayBase(Dict[date, str]):
         >>> us_holidays.update(country_holidays('US', years=2021))
         """
 
+        self._year = year
+
         # Special holidays list.
         for month, day, name in self.special_holidays.get(year, ()):
-            self[date(year, month, day)] = name
+            self._add_holiday(name, date(year, month, day))
 
     def _is_weekend(self, *args):
         """
         Returns True if date's week day is a weekend day.
         Returns False otherwise.
         """
-        dt = args[0] if len(args) == 1 else date(*args)
+        dt = args[0] if len(args) == 1 else date(self._year, *args)
 
         return dt.weekday() in self.weekend
 

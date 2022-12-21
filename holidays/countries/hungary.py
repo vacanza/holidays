@@ -107,11 +107,7 @@ class Hungary(HolidayBase):
 
         # Christmas Eve is not endorsed officially
         # but nowadays it is usually a day off work
-        if (
-            self.observed
-            and 2010 <= year
-            and not self._is_weekend(year, DEC, 24)
-        ):
+        if self.observed and 2010 <= year and not self._is_weekend(DEC, 24):
             self[date(year, DEC, 24)] = "Szenteste"
 
         # First christmas

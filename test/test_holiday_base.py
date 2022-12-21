@@ -172,6 +172,7 @@ class TestBasics(unittest.TestCase):
 
     def test_is_weekend(self):
         h = holidays.HolidayBase()
+        h._populate(2022)
 
         h.weekend = {MON, TUE}
         for dt in (date(2022, 10, 3), date(2022, 10, 4)):
@@ -184,9 +185,13 @@ class TestBasics(unittest.TestCase):
         h.weekend = {SAT, SUN}
         for dt in (date(2022, 10, 1), date(2022, 10, 2)):
             self.assertTrue(h._is_weekend(dt))
+        for dt in ((10, 1), (10, 2)):
+            self.assertTrue(h._is_weekend(*dt))
 
         for dt in (date(2022, 10, 3), date(2022, 10, 4)):
             self.assertFalse(h._is_weekend(dt))
+        for dt in ((10, 3), (10, 4)):
+            self.assertFalse(h._is_weekend(*dt))
 
     def test_append(self):
         h = holidays.HolidayBase()
@@ -309,6 +314,21 @@ class TestBasics(unittest.TestCase):
         ecb_nyse = ecb + nyse
         self.assertEqual(len(ecb) + len(nyse), len(ecb_nyse))
         self.assertEqual(ecb_nyse.market, ["ECB", "NYSE"])
+
+    def test_add_holiday(self):
+        us = holidays.UnitedStates()
+        us._add_holiday("Test 1", date(2023, JAN, 5))
+        us._add_holiday("Test 2", JAN, 6)
+
+        self.assertIn("2023-01-05", us)
+        self.assertIn("2023-01-06", us)
+
+        for args in (
+            (date(2020, JAN, 5),),
+            (JAN, 5, "Test 1", True),
+            ("Test", "Test"),
+        ):
+            self.assertRaises(TypeError, lambda: us._add_holiday(*args))
 
     def test_get_list(self):
         westland = holidays.NZ(subdiv="WTL")
