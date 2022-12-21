@@ -137,7 +137,7 @@ class Bahrain(HolidayBase):
                 self[hol_date] = f"{new_hijri_year}* (*estimated)"
 
         # Ashoora
-        # Date is announced each year. Usually the 9th and 10th Day,
+        # Date is announced each year, for the 9th and 10th Day,
         # of the month of Muharam
         ashoora = "Ashoora"
         if year in dates_obs:
