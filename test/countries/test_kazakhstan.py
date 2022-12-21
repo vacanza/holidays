@@ -23,21 +23,51 @@ class TestKazakhstan(unittest.TestCase):
         _holidays = [
             date(2020, 1, 1),
             date(2020, 1, 2),
-            date(2020, 1, 3),
             date(2020, 1, 7),
             date(2020, 3, 8),
+            date(2020, 3, 9),
             date(2020, 3, 21),
             date(2020, 3, 22),
             date(2020, 3, 23),
+            date(2020, 3, 24),
+            date(2020, 3, 25),
             date(2020, 5, 1),
             date(2020, 5, 7),
             date(2020, 5, 9),
+            date(2020, 5, 11),
             date(2020, 7, 6),
             date(2020, 7, 31),
             date(2020, 8, 30),
+            date(2020, 8, 31),
             date(2020, 12, 1),
             date(2020, 12, 16),
             date(2020, 12, 17),
+        ]
+
+        for kaz_hol in _holidays:
+            self.assertIn(kaz_hol, self.holidays)
+
+    def test2022(self):
+        _holidays = [
+            date(2022, 1, 1),
+            date(2022, 1, 2),
+            date(2022, 1, 3),
+            date(2022, 1, 4),
+            date(2022, 1, 7),
+            date(2022, 3, 8),
+            date(2022, 3, 21),
+            date(2022, 3, 22),
+            date(2022, 3, 23),
+            date(2022, 5, 1),
+            date(2022, 5, 2),
+            date(2022, 5, 7),
+            date(2022, 5, 9),
+            date(2022, 5, 10),
+            date(2022, 7, 6),
+            date(2022, 7, 9),
+            date(2022, 8, 30),
+            date(2022, 10, 25),
+            date(2022, 12, 16),
         ]
 
         for kaz_hol in _holidays:
