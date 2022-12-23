@@ -71,3 +71,7 @@ class Moldova(HolidayBase):
 
 class MD(Moldova):
     pass
+
+
+class MDA(Moldova):
+    pass

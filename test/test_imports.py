@@ -9,10 +9,15 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.constants import *
-from holidays.countries import *
-from holidays.financial import *
-from holidays.holiday_base import *
-from holidays.utils import *
 
-__version__ = "0.18"
+class TestHolidayslImports:
+    def test_constants(self):
+        from holidays import MON, TUE, WED, THU, FRI, SAT, SUN
+
+    def test_holidays_base(self):
+        from holidays import DateLike, HolidayBase, HolidaySum
+
+    def test_utils(self):
+        from holidays import CountryHoliday, country_holidays
+        from holidays import financial_holidays, list_supported_countries
+        from holidays import list_supported_financial
