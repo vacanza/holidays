@@ -47,6 +47,7 @@ class TestSouthAfrica(unittest.TestCase):
         self.assertIn("2008-05-02", self.holidays)
         self.assertIn("2011-12-27", self.holidays)
         self.assertIn("2016-12-27", self.holidays)
+        self.assertIn("2022-12-27", self.holidays)
 
     def test_observed(self):
         self.assertIn("1995-01-02", self.holidays)
