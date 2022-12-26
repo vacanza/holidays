@@ -11,6 +11,7 @@
 
 from .angola import AGO, AO, Angola
 from .argentina import AR, ARG, Argentina
+from .armenia import AM, ARM, Armenia
 from .aruba import ABW, AW, Aruba
 from .australia import AU, AUS, Australia
 from .austria import AT, AUT, Austria
