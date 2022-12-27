@@ -9,7 +9,13 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-# from __future__ import annotations  # add in Python 3.7
+__all__ = (
+    "CountryHoliday",
+    "country_holidays",
+    "financial_holidays",
+    "list_supported_countries",
+    "list_supported_financial",
+)
 
 import inspect
 import warnings
@@ -20,8 +26,7 @@ from typing import Dict, Iterable, List, Optional, Union
 from hijri_converter import convert
 from hijri_converter.ummalqura import GREGORIAN_RANGE
 
-import holidays.countries
-import holidays.financial
+from holidays import countries, financial
 from holidays.holiday_base import HolidayBase
 
 
@@ -169,9 +174,7 @@ def country_holidays(
     See documentation for examples.
     """
     try:
-        country_classes = inspect.getmembers(
-            holidays.countries, inspect.isclass
-        )
+        country_classes = inspect.getmembers(countries, inspect.isclass)
         country_class = next(
             obj for name, obj in country_classes if name == country
         )
@@ -230,9 +233,7 @@ def financial_holidays(
     examples.
     """
     try:
-        financial_classes = inspect.getmembers(
-            holidays.financial, inspect.isclass
-        )
+        financial_classes = inspect.getmembers(financial, inspect.isclass)
         financial_class = next(
             obj for name, obj in financial_classes if name == market
         )
@@ -281,9 +282,7 @@ def list_supported_countries() -> Dict[str, List[str]]:
     """
     return {
         cls.country: cls.subdivisions
-        for name, cls in inspect.getmembers(
-            holidays.countries, inspect.isclass
-        )
+        for name, cls in inspect.getmembers(countries, inspect.isclass)
         if len(name) == 2 and issubclass(cls, HolidayBase)
     }
 
@@ -298,7 +297,7 @@ def list_supported_financial() -> Dict[str, List[str]]:
     """
     return {
         cls.market: cls.subdivisions
-        for _, cls in inspect.getmembers(holidays.financial, inspect.isclass)
+        for _, cls in inspect.getmembers(financial, inspect.isclass)
         if issubclass(cls, HolidayBase)
     }
 

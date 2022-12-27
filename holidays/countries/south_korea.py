@@ -9,6 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+
+import warnings
 from datetime import date
 from typing import Tuple
 
@@ -18,23 +20,12 @@ from dateutil.relativedelta import relativedelta as rd
 # URL: https://github.com/usingsky/korean_lunar_calendar_py/
 from korean_lunar_calendar import KoreanLunarCalendar
 
-from holidays.constants import (
-    SAT,
-    SUN,
-    JAN,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    OCT,
-    DEC,
-)
+from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, OCT, DEC
+from holidays.constants import SAT, SUN
 from holidays.holiday_base import HolidayBase
 
 
-class Korea(HolidayBase):
+class SouthKorea(HolidayBase):
     """
     1. https://publicholidays.co.kr/ko/2020-dates/
     2. https://en.wikipedia.org/wiki/Public_holidays_in_South_Korea
@@ -50,6 +41,11 @@ class Korea(HolidayBase):
     """
 
     country = "KR"
+    special_holidays = {
+        # Just for year 2020 - since 2020.08.15 is Sat, the government
+        # decided to make 2020.08.17 holiday, yay
+        2020: ((AUG, 17, "Alternative public holiday"),)
+    }
 
     def __init__(self, **kwargs):
         self.korean_cal = KoreanLunarCalendar()
@@ -103,13 +99,11 @@ class Korea(HolidayBase):
                 self[alt_date] = alt_holiday + name
 
         # Tree Planting Day
+        # removed from holiday since 2006
         name = "Tree Planting Day"
         planting_date = date(year, APR, 5)
-        if self.observed and 1949 <= year <= 2007 and year != 1960:
+        if self.observed and 1949 <= year <= 2005 and year != 1960:
             self[planting_date] = name
-        else:
-            # removed from holiday since 2007
-            pass
 
         # Birthday of the Buddha
         name = "Birthday of the Buddha"
@@ -134,7 +128,10 @@ class Korea(HolidayBase):
 
         # Labour Day
         name = "Labour Day"
-        labour_date = date(year, MAY, 1)
+        if year >= 1994:
+            labour_date = date(year, MAY, 1)
+        else:
+            labour_date = date(year, MAR, 10)
         self[labour_date] = name
 
         # Memorial Day
@@ -143,13 +140,11 @@ class Korea(HolidayBase):
         self[memorial_date] = name
 
         # Constitution Day
+        # removed from holiday since 2008
         name = "Constitution Day"
         constitution_date = date(year, JUL, 17)
         if self.observed and 1948 <= year <= 2007:
             self[constitution_date] = name
-        else:
-            # removed from holiday since 2008
-            pass
 
         # Liberation Day
         name = "Liberation Day"
@@ -204,27 +199,21 @@ class Korea(HolidayBase):
 
         # Hangul Day
         name = "Hangeul Day"
-        hangeul_date = date(year, OCT, 9)
-        self[hangeul_date] = name
+        if year <= 1990 or year >= 2013:
+            hangeul_date = date(year, OCT, 9)
+            self[hangeul_date] = name
 
-        if self.observed and year >= 2021:
-            is_alt, alt_date = self.get_next_first_non_holiday(
-                name, hangeul_date, include_sat=True
-            )
-            if is_alt:
-                self[alt_date] = alt_holiday + name
+            if self.observed and year >= 2021:
+                is_alt, alt_date = self.get_next_first_non_holiday(
+                    name, hangeul_date, include_sat=True
+                )
+                if is_alt:
+                    self[alt_date] = alt_holiday + name
 
         # Christmas Day
         name = "Christmas Day"
         christmas_date = date(year, DEC, 25)
         self[christmas_date] = name
-
-        # Just for year 2020 - since 2020.08.15 is Sat, the government
-        # decided to make 2020.08.17 holiday, yay
-        if year == 2020:
-            name = "Alternative public holiday"
-            alt_date = date(2020, AUG, 17)
-            self[alt_date] = name
 
     # convert lunar calendar date to solar
     def get_solar_date(self, year: int, month: int, day: int) -> date:
@@ -287,9 +276,19 @@ class Korea(HolidayBase):
         return start_value != cur, cur
 
 
-class KR(Korea):
+class Korea(SouthKorea):
+    def __init__(self, *args, **kwargs) -> None:
+        warnings.warn(
+            "Korea is deprecated, use SouthKorea instead.",
+            DeprecationWarning,
+        )
+
+        super().__init__(*args, **kwargs)
+
+
+class KR(SouthKorea):
     pass
 
 
-class KOR(Korea):
+class KOR(SouthKorea):
     pass

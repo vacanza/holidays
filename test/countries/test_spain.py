@@ -14,9 +14,6 @@ from copy import deepcopy
 from datetime import date
 from itertools import product
 
-from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
-
 import holidays
 from holidays.utils import _islamic_to_gre
 
@@ -65,12 +62,12 @@ class TestSpain(unittest.TestCase):
     def test_variable_days_in_2016(self):
         for prov, prov_holidays in self.prov_holidays.items():
             self.assertEqual(
-                date(2016, 3, 24) in prov_holidays, prov not in ["CT", "VC"]
+                date(2016, 3, 24) in prov_holidays, prov not in {"CT", "VC"}
             )
             self.assertIn(date(2016, 3, 25), prov_holidays)
             self.assertEqual(
                 date(2016, 3, 28) in prov_holidays,
-                prov in ["CT", "PV", "NC", "VC", "IB", "CM"],
+                prov in {"CM", "CT", "IB", "NC", "PV", "VC"},
             )
 
     def test_fix_days_in_2022(self):
@@ -89,78 +86,78 @@ class TestSpain(unittest.TestCase):
 
     def test_province_specific_days(self):
         province_days = {
-            (2, 28): ["AN"],
-            (3, 1): ["IB"],
-            (4, 23): ["AR", "CL"],
-            (5, 30): ["CN"],
-            (5, 31): ["CM"],
-            (5, 2): ["MD"],
-            (6, 9): ["MC", "RI"],
-            (7, 25): ["GA"],
-            (7, 28): ["CB"],
-            (8, 5): ["CE"],
-            (9, 2): ["CE"],
-            (9, 8): ["AS", "EX", "ML"],
-            (9, 11): ["CT"],
-            (9, 15): ["CB"],
-            (9, 17): ["ML"],
-            (9, 27): ["NC"],
-            (10, 9): ["VC"],
+            (2, 28): {"AN"},
+            (3, 1): {"IB"},
+            (4, 23): {"AR", "CL"},
+            (5, 30): {"CN"},
+            (5, 31): {"CM"},
+            (5, 2): {"MD"},
+            (6, 9): {"MC", "RI"},
+            (7, 25): {"GA"},
+            (7, 28): {"CB"},
+            (8, 5): {"CE"},
+            (9, 2): {"CE"},
+            (9, 8): {"AS", "EX", "ML"},
+            (9, 11): {"CT"},
+            (9, 15): {"CB"},
+            (9, 17): {"ML"},
+            (9, 27): {"NC"},
+            (10, 9): {"VC"},
         }
         for prov, prov_holidays in self.prov_holidays.items():
             for year in range(2010, 2021):
                 self.assertEqual(
-                    date(year, 12, 26) in prov_holidays, prov in ["CT", "IB"]
+                    date(year, 12, 26) in prov_holidays, prov in {"CT", "IB"}
                 )
                 if year < 2015:
                     self.assertEqual(
                         date(year, 3, 19) in prov_holidays,
                         prov
-                        in [
+                        in {
                             "AR",
                             "CL",
                             "CM",
                             "EX",
                             "GA",
+                            "MC",
                             "MD",
                             "ML",
-                            "MC",
                             "NC",
                             "PV",
                             "VC",
-                        ],
+                        },
                     )
                 elif year == 2015:
                     self.assertEqual(
                         date(year, 3, 19) in prov_holidays,
-                        prov in ["CM", "MD", "ML", "MC", "NC", "PV", "VC"],
+                        prov in {"CM", "MC", "MD", "ML", "NC", "PV", "VC"},
                     )
                 elif year == 2016:
                     self.assertEqual(
                         date(year, 3, 19) in prov_holidays,
-                        prov in ["ML", "MC", "PV", "VC"],
+                        prov in {"MC", "ML", "PV", "VC"},
                     )
                 elif year == 2017:
                     self.assertEqual(
-                        date(year, 3, 19) in prov_holidays, prov in ["PV"]
+                        date(year, 3, 19) in prov_holidays, prov in {"PV"}
                     )
                 elif 2018 <= year <= 2019:
                     self.assertEqual(
                         date(year, 3, 19) in prov_holidays,
-                        prov in ["GA", "MC", "NC", "PV", "VC"],
+                        prov in {"GA", "MC", "NC", "PV", "VC"},
                     )
                 elif year == 2020:
                     self.assertEqual(
                         date(year, 3, 19) in prov_holidays,
-                        prov in ["CM", "GA", "MC", "NC", "PV", "VC"],
+                        prov in {"CM", "GA", "MC", "NC", "PV", "VC"},
                     )
                 self.assertEqual(
                     date(year, 6, 24) in prov_holidays,
-                    prov in ["CT", "GA", "VC"],
+                    prov in {"CT", "GA", "VC"},
                 )
 
                 year_province_days = deepcopy(province_days)
-                if prov in ["ML"]:
+                if prov in {"ML"}:
                     eid_al_fitr_current_year = _islamic_to_gre(year, 10, 1)[0]
                     eid_al_adha_current_year = _islamic_to_gre(year, 12, 10)[0]
                     year_province_days.update(
@@ -168,17 +165,17 @@ class TestSpain(unittest.TestCase):
                             (
                                 eid_al_fitr_current_year.month,
                                 eid_al_fitr_current_year.day,
-                            ): ["ML"],
+                            ): {"ML"},
                             (
                                 eid_al_adha_current_year.month,
                                 eid_al_adha_current_year.day,
-                            ): ["ML"],
+                            ): {"ML"},
                         }
                     )
 
                 if year == 2022:
                     year_province_days.update(
-                        {(7, 25): ["GA", "MD", "NC", "PV"]}
+                        {(7, 25): {"GA", "MD", "NC", "PV"}}
                     )
 
                 for fest_day, fest_prov in year_province_days.items():
@@ -191,9 +188,9 @@ class TestSpain(unittest.TestCase):
 
     def test_variable_days_in_2022(self):
         province_days = {
-            (2, 28): ["AN"],
-            (3, 1): ["IB"],
-            (3, 19): ["VC"],
+            (2, 28): {"AN"},
+            (3, 1): {"IB"},
+            (3, 19): {"VC"},
             (4, 14): [
                 "AN",
                 "AR",
@@ -214,27 +211,27 @@ class TestSpain(unittest.TestCase):
                 "RI",
                 "VC",
             ],
-            (4, 18): ["CT", "IB", "NC", "PV", "RI", "VC"],
-            (4, 23): ["AR", "CL"],
-            (5, 2): ["AN", "AS", "CL", "EX", "MC", "MD", "AR"],
-            (5, 3): ["ML"],
-            (5, 17): ["GA"],
-            (5, 30): ["CN"],
-            (5, 31): ["CM"],
-            (6, 6): ["CT"],
-            (6, 9): ["MC", "RI"],
-            (6, 16): ["CM"],
-            (6, 24): ["CT", "GA", "VC"],
-            (7, 9): ["CE"],
-            (7, 11): ["ML"],
-            (7, 25): ["GA", "NC", "MD", "PV"],
-            (7, 28): ["CB"],
-            (8, 5): ["CE"],
-            (9, 2): ["CE"],
-            (9, 6): ["PV"],
-            (9, 8): ["AS", "EX", "ML"],
-            (9, 15): ["CB"],
-            (9, 17): ["ML"],
+            (4, 18): {"CT", "IB", "NC", "PV", "RI", "VC"},
+            (4, 23): {"AR", "CL"},
+            (5, 2): {"AN", "AS", "CL", "EX", "MC", "MD", "AR"},
+            (5, 3): {"ML"},
+            (5, 17): {"GA"},
+            (5, 30): {"CN"},
+            (5, 31): {"CM"},
+            (6, 6): {"CT"},
+            (6, 9): {"MC", "RI"},
+            (6, 16): {"CM"},
+            (6, 24): {"CT", "GA", "VC"},
+            (7, 9): {"CE"},
+            (7, 11): {"ML"},
+            (7, 25): {"GA", "NC", "MD", "PV"},
+            (7, 28): {"CB"},
+            (8, 5): {"CE"},
+            (9, 2): {"CE"},
+            (9, 6): {"PV"},
+            (9, 8): {"AS", "EX", "ML"},
+            (9, 15): {"CB"},
+            (9, 17): {"ML"},
             (12, 26): [
                 "AN",
                 "AR",

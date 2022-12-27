@@ -13,8 +13,8 @@ from datetime import date, datetime
 
 from dateutil import rrule
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import FR, SA, SU
+from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAR, MAY, JUN, OCT, DEC
 from holidays.holiday_base import HolidayBase
@@ -78,14 +78,14 @@ class Sweden(HolidayBase):
         self[date(year, DEC, 31)] = "Nyårsafton"
 
         # ========= Moving holidays =========
-        easter_day = easter(year)
-        self[easter_day + rd(days=-2)] = "Långfredagen"
-        self[easter_day] = "Påskdagen"
-        self[easter_day + rd(days=+1)] = "Annandag påsk"
-        self[easter_day + rd(days=+39)] = "Kristi himmelsfärdsdag"
-        self[easter_day + rd(days=+49)] = "Pingstdagen"
+        easter_date = easter(year)
+        self[easter_date + rd(days=-2)] = "Långfredagen"
+        self[easter_date] = "Påskdagen"
+        self[easter_date + rd(days=+1)] = "Annandag påsk"
+        self[easter_date + rd(days=+39)] = "Kristi himmelsfärdsdag"
+        self[easter_date + rd(days=+49)] = "Pingstdagen"
         if year <= 2004:
-            self[easter_day + rd(days=+50)] = "Annandag pingst"
+            self[easter_date + rd(days=+50)] = "Annandag pingst"
 
         # Source:
         # https://sv.wikipedia.org/wiki/Midsommarafton

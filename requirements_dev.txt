@@ -1,15 +1,16 @@
 # package runtime requirements
-python-dateutil
 convertdate>=2.3.0
-korean_lunar_calendar
-hijri_converter
+hijri-converter
+korean-lunar-calendar
+python-dateutil
+PyMeeus
 
 # test requirements
+coverage[toml]<7.0.0
+flake8
+pre-commit
 pytest
 pytest-cov
-coverage[toml]
-pre-commit
-flake8
 sphinx
 tox
 

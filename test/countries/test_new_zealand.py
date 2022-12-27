@@ -742,26 +742,24 @@ class TestNZ(unittest.TestCase):
             dt = date(year, 1, day)
             self.assertIn(dt, stl_holidays, dt)
             self.assertEqual(stl_holidays[dt], "Southland Anniversary Day", dt)
-            for year, (month, day) in enumerate(
-                [
-                    (4, 10),
-                    (4, 2),
-                    (4, 22),
-                    (4, 7),
-                    (3, 29),
-                    (4, 18),
-                    (4, 3),
-                    (4, 23),
-                    (4, 14),
-                    (4, 6),
-                ],
-                2012,
-            ):
-                dt = date(year, month, day)
-                self.assertIn(dt, stl_holidays, dt)
-                self.assertEqual(
-                    stl_holidays[dt], "Southland Anniversary Day", dt
-                )
+        for year, (month, day) in enumerate(
+            [
+                (4, 10),
+                (4, 2),
+                (4, 22),
+                (4, 7),
+                (3, 29),
+                (4, 18),
+                (4, 3),
+                (4, 23),
+                (4, 14),
+                (4, 6),
+            ],
+            2012,
+        ):
+            dt = date(year, month, day)
+            self.assertIn(dt, stl_holidays, dt)
+            self.assertEqual(stl_holidays[dt], "Southland Anniversary Day", dt)
 
     def test_chatham_islands_anniversary_day(self):
         cit_holidays = holidays.NZ(subdiv="Chatham Islands")

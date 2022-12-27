@@ -12,8 +12,8 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import SU
+from dateutil.relativedelta import relativedelta as rd
 
 from holidays.holiday_base import HolidayBase
 
@@ -48,7 +48,7 @@ class Lithuania(HolidayBase):
         self[easter_date] = "Velykos"
 
         # Easter 2nd day
-        self[easter_date + rd(days=1)] = "Velykų antroji diena"
+        self[easter_date + rd(days=+1)] = "Velykų antroji diena"
 
         # International Workers' Day
         self[date(year, 5, 1)] = "Tarptautinė darbo diena"

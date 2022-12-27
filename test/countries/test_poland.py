@@ -10,7 +10,6 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-import warnings
 from datetime import date
 
 import holidays
@@ -43,7 +42,7 @@ class TestPL(unittest.TestCase):
 
         self.assertNotIn(date(2017, 11, 12), self.holidays)
 
-    def test_2018(self):
+    def test_special_holidays(self):
         self.assertIn(date(2018, 11, 12), self.holidays)
 
     def test_swieto_trzech_kroli(self):

@@ -52,21 +52,22 @@ class Georgia(HolidayBase):
         name = "ქალთა საერთაშორისო დღე"
         self[date(year, MAR, 8)] = name
 
+        easter_date = easter(year, method=EASTER_ORTHODOX)
         # Orthodox Good Friday
         name = "წითელი პარასკევი"
-        self[easter(year, method=EASTER_ORTHODOX) - rd(days=2)] = name
+        self[easter_date + rd(days=-2)] = name
 
         # Orthodox Holy Saturday
         name = "დიდი შაბათი"
-        self[easter(year, method=EASTER_ORTHODOX) - rd(days=1)] = name
+        self[easter_date + rd(days=-1)] = name
 
         # 	Orthodox Easter Sunday
         name = "აღდგომა"
-        self[easter(year, method=EASTER_ORTHODOX)] = name
+        self[easter_date] = name
 
         # Orthodox Easter Monday
         name = "შავი ორშაბათი"
-        self[easter(year, method=EASTER_ORTHODOX) + rd(days=1)] = name
+        self[easter_date + rd(days=+1)] = name
 
         # National Unity Day
         name = "ეროვნული ერთიანობის დღე"

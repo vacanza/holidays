@@ -28,7 +28,7 @@ class Moldova(HolidayBase):
     def _populate(self, year):
         super()._populate(year)
 
-        eday = easter(year, method=EASTER_ORTHODOX)
+        easter_date = easter(year, method=EASTER_ORTHODOX)
 
         # New Year
         self[date(year, JAN, 1)] = "Anul Nou"
@@ -42,10 +42,10 @@ class Moldova(HolidayBase):
 
         # Orthodox Easter
         for day_after_easter in [-2, 0, 1]:
-            self[eday + rd(days=day_after_easter)] = "Paştele"
+            self[easter_date + rd(days=day_after_easter)] = "Paştele"
 
         # Paştele Blajinilor
-        self[eday + rd(days=9)] = "Paştele Blajinilor"
+        self[easter_date + rd(days=+9)] = "Paştele Blajinilor"
 
         # Labour Day
         self[date(year, MAY, 1)] = "Ziua Internatională a Muncii"
@@ -70,4 +70,8 @@ class Moldova(HolidayBase):
 
 
 class MD(Moldova):
+    pass
+
+
+class MDA(Moldova):
     pass

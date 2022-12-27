@@ -25,7 +25,7 @@ class Estonia(HolidayBase):
     def _populate(self, year):
         super()._populate(year)
 
-        e = easter(year)
+        easter_date = easter(year)
 
         # New Year's Day
         self[date(year, JAN, 1)] = "uusaasta"
@@ -34,16 +34,16 @@ class Estonia(HolidayBase):
         self[date(year, FEB, 24)] = "iseseisvuspäev"
 
         # Good Friday
-        self[e - rd(days=2)] = "suur reede"
+        self[easter_date + rd(days=-2)] = "suur reede"
 
         # Easter Sunday
-        self[e] = "ülestõusmispühade 1. püha"
+        self[easter_date] = "ülestõusmispühade 1. püha"
 
         # Spring Day
         self[date(year, MAY, 1)] = "kevadpüha"
 
         # Pentecost
-        self[e + rd(days=49)] = "nelipühade 1. püha"
+        self[easter_date + rd(days=+49)] = "nelipühade 1. püha"
 
         # Victory Day
         self[date(year, JUN, 23)] = "võidupüha"

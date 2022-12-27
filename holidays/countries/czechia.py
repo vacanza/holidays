@@ -9,7 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import warnings
 from datetime import date
 
 from dateutil.easter import easter
@@ -35,10 +34,10 @@ class Czechia(HolidayBase):
             else "Nový rok"
         )
 
-        e = easter(year)
+        easter_date = easter(year)
         if year <= 1951 or year >= 2016:
-            self[e - rd(days=2)] = "Velký pátek"
-        self[e + rd(days=1)] = "Velikonoční pondělí"
+            self[easter_date + rd(days=-2)] = "Velký pátek"
+        self[easter_date + rd(days=+1)] = "Velikonoční pondělí"
 
         if year >= 1951:
             self[date(year, MAY, 1)] = "Svátek práce"

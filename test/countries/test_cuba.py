@@ -34,7 +34,7 @@ class TestCuba(unittest.TestCase):
 
     def test_1968(self):
         year = 1968
-        expected = [
+        expected = {
             date(year, JAN, 1),
             date(year, MAY, 1),
             date(year, JUL, 25),
@@ -42,48 +42,48 @@ class TestCuba(unittest.TestCase):
             date(year, JUL, 27),
             date(year, OCT, 10),
             date(year, DEC, 25),
-        ]
+        }
         self._check_all_dates(year, expected)
 
     def test_1969(self):
         year = 1969
-        expected = [
+        expected = {
             date(year, JAN, 1),
             date(year, MAY, 1),
             date(year, JUL, 25),
             date(year, JUL, 26),
             date(year, JUL, 27),
             date(year, OCT, 10),
-        ]
+        }
         self._check_all_dates(year, expected)
 
     def test_1970(self):
         year = 1970
-        expected = [
+        expected = {
             date(year, JAN, 1),
             date(year, MAY, 1),
             date(year, JUL, 25),
             date(year, JUL, 26),
             date(year, JUL, 27),
             date(year, OCT, 10),
-        ]
+        }
         self._check_all_dates(year, expected)
 
     def test_1996(self):
         year = 1996
-        expected = [
+        expected = {
             date(year, JAN, 1),
             date(year, MAY, 1),
             date(year, JUL, 25),
             date(year, JUL, 26),
             date(year, JUL, 27),
             date(year, OCT, 10),
-        ]
+        }
         self._check_all_dates(year, expected)
 
     def test_1997(self):
         year = 1997
-        expected = [
+        expected = {
             date(year, JAN, 1),
             date(year, MAY, 1),
             date(year, JUL, 25),
@@ -91,12 +91,12 @@ class TestCuba(unittest.TestCase):
             date(year, JUL, 27),
             date(year, OCT, 10),
             date(year, DEC, 25),
-        ]
+        }
         self._check_all_dates(year, expected)
 
     def test_1998(self):
         year = 1998
-        expected = [
+        expected = {
             date(year, JAN, 1),
             date(year, MAY, 1),
             date(year, JUL, 25),
@@ -104,12 +104,12 @@ class TestCuba(unittest.TestCase):
             date(year, JUL, 27),
             date(year, OCT, 10),
             date(year, DEC, 25),
-        ]
+        }
         self._check_all_dates(year, expected)
 
     def test_2006(self):
         year = 2006
-        expected = [
+        expected = {
             date(year, JAN, 1),
             date(year, JAN, 2),
             date(year, MAY, 1),
@@ -118,12 +118,12 @@ class TestCuba(unittest.TestCase):
             date(year, JUL, 27),
             date(year, OCT, 10),
             date(year, DEC, 25),
-        ]
+        }
         self._check_all_dates(year, expected)
 
     def test_2007(self):
         year = 2007
-        expected = [
+        expected = {
             date(year, JAN, 1),
             date(year, MAY, 1),
             date(year, JUL, 25),
@@ -132,12 +132,12 @@ class TestCuba(unittest.TestCase):
             date(year, OCT, 10),
             date(year, DEC, 25),
             date(year, DEC, 31),
-        ]
+        }
         self._check_all_dates(year, expected)
 
     def test_2008(self):
         year = 2008
-        expected = [
+        expected = {
             date(year, JAN, 1),
             date(year, JAN, 2),
             date(year, MAY, 1),
@@ -147,12 +147,12 @@ class TestCuba(unittest.TestCase):
             date(year, OCT, 10),
             date(year, DEC, 25),
             date(year, DEC, 31),
-        ]
+        }
         self._check_all_dates(year, expected)
 
     def test_2011(self):
         year = 2011
-        expected = [
+        expected = {
             date(year, JAN, 1),
             date(year, JAN, 2),
             date(year, MAY, 1),
@@ -163,12 +163,12 @@ class TestCuba(unittest.TestCase):
             date(year, OCT, 10),
             date(year, DEC, 25),
             date(year, DEC, 31),
-        ]
+        }
         self._check_all_dates(year, expected)
 
     def test_2012(self):
         year = 2012
-        expected = [
+        expected = {
             date(year, JAN, 1),
             date(year, JAN, 2),
             date(year, JAN, 2),
@@ -180,12 +180,12 @@ class TestCuba(unittest.TestCase):
             date(year, OCT, 10),
             date(year, DEC, 25),
             date(year, DEC, 31),
-        ]
+        }
         self._check_all_dates(year, expected)
 
     def test_2013(self):
         year = 2013
-        expected = [
+        expected = {
             date(year, JAN, 1),
             date(year, JAN, 2),
             date(year, MAR, 29),
@@ -196,13 +196,13 @@ class TestCuba(unittest.TestCase):
             date(year, OCT, 10),
             date(year, DEC, 25),
             date(year, DEC, 31),
-        ]
+        }
         self._check_all_dates(year, expected)
 
     def test_2018(self):
         # https://www.officeholidays.com/countries/cuba/2018
         year = 2018
-        expected = [
+        expected = {
             date(year, JAN, 1),
             date(year, JAN, 2),
             date(year, MAR, 30),
@@ -213,13 +213,13 @@ class TestCuba(unittest.TestCase):
             date(year, OCT, 10),
             date(year, DEC, 25),
             date(year, DEC, 31),
-        ]
+        }
         self._check_all_dates(year, expected)
 
     def test_2019(self):
         # https://www.officeholidays.com/countries/cuba/2019
         year = 2019
-        expected = [
+        expected = {
             date(year, JAN, 1),
             date(year, JAN, 2),
             date(year, APR, 19),
@@ -230,13 +230,13 @@ class TestCuba(unittest.TestCase):
             date(year, OCT, 10),
             date(year, DEC, 25),
             date(year, DEC, 31),
-        ]
+        }
         self._check_all_dates(year, expected)
 
     def test_2020(self):
         # https://www.officeholidays.com/countries/cuba/2020
         year = 2020
-        expected = [
+        expected = {
             date(year, JAN, 1),
             date(year, JAN, 2),
             date(year, APR, 10),
@@ -247,13 +247,13 @@ class TestCuba(unittest.TestCase):
             date(year, OCT, 10),
             date(year, DEC, 25),
             date(year, DEC, 31),
-        ]
+        }
         self._check_all_dates(year, expected)
 
     def test_2021(self):
         # https://www.officeholidays.com/countries/cuba/2021
         year = 2021
-        expected = [
+        expected = {
             date(year, JAN, 1),
             date(year, JAN, 2),
             date(year, APR, 2),
@@ -265,13 +265,13 @@ class TestCuba(unittest.TestCase):
             date(year, OCT, 11),
             date(year, DEC, 25),
             date(year, DEC, 31),
-        ]
+        }
         self._check_all_dates(year, expected)
 
     def test_2022(self):
         # https://www.officeholidays.com/countries/cuba/2022
         year = 2022
-        expected = [
+        expected = {
             date(year, JAN, 1),
             date(year, JAN, 2),
             date(year, APR, 15),
@@ -283,13 +283,13 @@ class TestCuba(unittest.TestCase):
             date(year, OCT, 10),
             date(year, DEC, 25),
             date(year, DEC, 31),
-        ]
+        }
         self._check_all_dates(year, expected)
 
     def test_2023(self):
         # https://www.officeholidays.com/countries/cuba/2023
         year = 2023
-        expected = [
+        expected = {
             date(year, JAN, 1),
             date(year, JAN, 2),
             date(year, APR, 7),
@@ -300,5 +300,5 @@ class TestCuba(unittest.TestCase):
             date(year, OCT, 10),
             date(year, DEC, 25),
             date(year, DEC, 31),
-        ]
+        }
         self._check_all_dates(year, expected)

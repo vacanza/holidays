@@ -15,10 +15,11 @@ import unittest
 import warnings
 from datetime import date, datetime, timedelta
 
-from dateutil.relativedelta import relativedelta, MO
+from dateutil.relativedelta import MO
+from dateutil.relativedelta import relativedelta as rd
 
 import holidays
-from holidays.constants import FEB, JAN
+from holidays.constants import JAN, FEB, MON, TUE, SAT, SUN
 
 
 class TestBasics(unittest.TestCase):
@@ -168,6 +169,24 @@ class TestBasics(unittest.TestCase):
         )
         self.assertIn("2015-01-01", h)
         self.assertIn(date(2015, 12, 25), h)
+
+    def test_is_weekend(self):
+        h = holidays.HolidayBase()
+
+        h.weekend = {MON, TUE}
+        for dt in (date(2022, 10, 3), date(2022, 10, 4)):
+            self.assertTrue(h._is_weekend(dt))
+
+        h.weekend = {}
+        for dt in (date(2022, 10, 3), date(2022, 10, 4)):
+            self.assertFalse(h._is_weekend(dt))
+
+        h.weekend = {SAT, SUN}
+        for dt in (date(2022, 10, 1), date(2022, 10, 2)):
+            self.assertTrue(h._is_weekend(dt))
+
+        for dt in (date(2022, 10, 3), date(2022, 10, 4)):
+            self.assertFalse(h._is_weekend(dt))
 
     def test_append(self):
         h = holidays.HolidayBase()
@@ -372,7 +391,7 @@ class TestBasics(unittest.TestCase):
         class NoColumbusHolidays(holidays.US):
             def _populate(self, year):
                 holidays.US._populate(self, year)
-                self.pop(date(year, 10, 1) + relativedelta(weekday=MO(+2)))
+                self.pop(date(year, 10, 1) + rd(weekday=MO(+2)))
 
         hdays = NoColumbusHolidays()
         self.assertIn(date(2014, 10, 13), self.holidays)
@@ -674,12 +693,10 @@ class TestAllInSameYear(unittest.TestCase):
         failure = list2reason(result.failures)
         text = error if error else failure
         if text:
-            print(
+            warnings.warn(
                 f"{text.splitlines()[-1]} in country {self.country}: "
                 f"holiday {self.hol} returned for year {self.year}"
-            )
-            print(
-                holidays.country_holidays(
+                + holidays.country_holidays(
                     self.country, subdiv=None, years=[self.year]
                 ).get_list(self.hol)
             )

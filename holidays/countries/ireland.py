@@ -11,21 +11,10 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO
+from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import (
-    FRI,
-    WEEKEND,
-    JAN,
-    FEB,
-    MAR,
-    MAY,
-    JUN,
-    AUG,
-    OCT,
-    DEC,
-)
+from holidays.constants import JAN, FEB, MAR, MAY, JUN, AUG, OCT, DEC, FRI
 from holidays.holiday_base import HolidayBase
 
 
@@ -37,6 +26,9 @@ class Ireland(HolidayBase):
     """
 
     country = "IE"
+    special_holidays = {
+        2022: ((MAR, 18, "Day of Remembrance and Recognition"),)
+    }
 
     def _populate(self, year):
         super()._populate(year)
@@ -51,19 +43,15 @@ class Ireland(HolidayBase):
             if self.observed and dt.weekday() != FRI:
                 self[dt + rd(weekday=MO)] = name + " (Observed)"
 
-        # One-off day of rememberance and recognition
-        if year == 2022:
-            self[date(year, MAR, 18)] = "Day of Rememberance and Recognition"
-
         # St. Patrick's Day
         name = "St. Patrick's Day"
         dt = date(year, MAR, 17)
         self[dt] = name
-        if self.observed and dt.weekday() in WEEKEND:
+        if self.observed and self._is_weekend(dt):
             self[dt + rd(weekday=MO)] = name + " (Observed)"
 
         # Easter Monday
-        self[easter(year) + rd(weekday=MO)] = "Easter Monday"
+        self[easter(year) + rd(days=+1)] = "Easter Monday"
 
         # May bank holiday (first Monday in May)
         if year >= 1978:
@@ -87,14 +75,14 @@ class Ireland(HolidayBase):
         name = "Christmas Day"
         dt = date(year, DEC, 25)
         self[dt] = name
-        if self.observed and dt.weekday() in WEEKEND:
+        if self.observed and self._is_weekend(dt):
             self[dt + rd(weekday=MO)] = name + " (Observed)"
 
         # St. Stephen's Day
         name = "St. Stephen's Day"
         dt = date(year, DEC, 26)
         self[dt] = name
-        if self.observed and dt.weekday() in WEEKEND:
+        if self.observed and self._is_weekend(dt):
             self[dt + rd(days=2)] = name + " (Observed)"
 
 
