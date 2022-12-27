@@ -71,6 +71,13 @@ class NewZealand(HolidayBase):
         else:
             return d + rd(weekday=MO)
 
+    def _add_observed(self, dt: date) -> None:
+        if self.observed and self._is_weekend(dt):
+            obs_date = dt + rd(weekday=MO)
+            if self.get(obs_date):
+                obs_date += rd(days=+1)
+            self[obs_date] = f"{self[dt]} (Observed)"
+
     def _populate(self, year):
         # Bank Holidays Act 1873
         # The Employment of Females Act 1873
@@ -82,22 +89,19 @@ class NewZealand(HolidayBase):
         # Waitangi Day Act 1960, 1976
         # Sovereign's Birthday Observance Act 1937, 1952
         # Holidays Act 1981, 2003
+
         if year <= 1893:
             return
         super()._populate(year)
 
         # New Year's Day
-        name = "New Year's Day"
         jan1 = date(year, JAN, 1)
-        self[jan1] = name
-        if self.observed and self._is_weekend(jan1):
-            self[date(year, JAN, 3)] = name + " (Observed)"
+        self[jan1] = "New Year's Day"
 
-        name = "Day after New Year's Day"
         jan2 = date(year, JAN, 2)
-        self[jan2] = name
-        if self.observed and self._is_weekend(jan2):
-            self[date(year, JAN, 4)] = name + " (Observed)"
+        self[jan2] = "Day after New Year's Day"
+        self._add_observed(jan1)
+        self._add_observed(jan2)
 
         # Waitangi Day
         if year >= 1974:
@@ -106,40 +110,39 @@ class NewZealand(HolidayBase):
                 name = "Waitangi Day"
             feb6 = date(year, FEB, 6)
             self[feb6] = name
-            if self.observed and year >= 2014 and self._is_weekend(feb6):
-                self[feb6 + rd(weekday=MO)] = name + " (Observed)"
+            if year >= 2014:
+                self._add_observed(feb6)
+
+        # Anzac Day
+        if year >= 1921:
+            apr25 = date(year, APR, 25)
+            self[apr25] = "Anzac Day"
+            if year >= 2014:
+                self._add_observed(apr25)
 
         # Easter
         easter_date = easter(year)
         self[easter_date + rd(days=-2)] = "Good Friday"
         self[easter_date + rd(days=+1)] = "Easter Monday"
 
-        # Anzac Day
-        if year >= 1921:
-            name = "Anzac Day"
-            apr25 = date(year, APR, 25)
-            self[apr25] = name
-            if self.observed and year >= 2014 and self._is_weekend(apr25):
-                self[apr25 + rd(weekday=MO)] = name + " (Observed)"
-
         # Sovereign's Birthday
-        if 1952 <= year <= 2022:
-            name = "Queen's Birthday"
-        elif year >= 1902:
+        if year >= 1902:
             name = "King's Birthday"
-        if year == 1952:
-            self[date(year, JUN, 2)] = name  # Elizabeth II
-        elif year >= 1938:
-            self[date(year, JUN, 1) + rd(weekday=MO)] = name  # EII & GVI
-        elif year == 1937:
-            self[date(year, JUN, 9)] = name  # George VI
-        elif year == 1936:
-            self[date(year, JUN, 23)] = name  # Edward VIII
-        elif year >= 1912:
-            self[date(year, JUN, 3)] = name  # George V
-        elif year >= 1902:
-            # http://paperspast.natlib.govt.nz/cgi-bin/paperspast?a=d&d=NZH19091110.2.67
-            self[date(year, NOV, 9)] = name  # Edward VII
+            if 1952 <= year <= 2022:
+                name = "Queen's Birthday"
+            if year == 1952:
+                self[date(year, JUN, 2)] = name  # Elizabeth II
+            elif year >= 1938:
+                self[date(year, JUN, 1) + rd(weekday=MO)] = name  # EII & GVI
+            elif year == 1937:
+                self[date(year, JUN, 9)] = name  # George VI
+            elif year == 1936:
+                self[date(year, JUN, 23)] = name  # Edward VIII
+            elif year >= 1912:
+                self[date(year, JUN, 3)] = name  # George V
+            else:
+                # http://paperspast.natlib.govt.nz/cgi-bin/paperspast?a=d&d=NZH19091110.2.67
+                self[date(year, NOV, 9)] = name  # Edward VII
 
         # Matariki
         dates_obs = {
@@ -186,18 +189,14 @@ class NewZealand(HolidayBase):
             self[date(year, OCT, 1) + rd(weekday=WE(+2))] = name
 
         # Christmas Day
-        name = "Christmas Day"
         dec25 = date(year, DEC, 25)
-        self[dec25] = name
-        if self.observed and self._is_weekend(dec25):
-            self[date(year, DEC, 27)] = name + " (Observed)"
+        self[dec25] = "Christmas Day"
 
         # Boxing Day
-        name = "Boxing Day"
         dec26 = date(year, DEC, 26)
-        self[dec26] = name
-        if self.observed and self._is_weekend(dec26):
-            self[date(year, DEC, 28)] = name + " (Observed)"
+        self[dec26] = "Boxing Day"
+        self._add_observed(dec25)
+        self._add_observed(dec26)
 
         # Province Anniversary Day
         if self.subdiv in {"Auckland", "AUK", "Northland", "NTL"}:
