@@ -12,8 +12,7 @@
 
 from datetime import date
 
-from dateutil.easter import easter
-from dateutil.relativedelta import FR, MO
+from dateutil.easter import EASTER_ORTHODOX, easter
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import DEC, JAN, JUN, MAR, MAY, NOV, SUN
@@ -56,20 +55,17 @@ class BosniaAndHerzegovina(HolidayBase):
             # Independence Day.
             self[date(year, MAR, 1)] = "Dan nezavisnosti"
 
+            easter_date = easter(year)
             # Catholic Good Friday.
-            self[
-                easter(year) + rd(weekday=FR(-1))
-            ] = "Veliki Petak (Katolički)"
+            self[easter_date + rd(days=-2)] = "Veliki Petak (Katolički)"
 
             # Catholic Easter.
-            self[easter(year)] = "Uskrs (Katolički)"
-            self[
-                easter(year) + rd(weekday=MO(+1))
-            ] = "Uskrsni ponedjeljak (Katolički)"
+            self[easter_date] = "Uskrs (Katolički)"
+            self[easter_date + rd(days=+1)] = "Uskrsni ponedjeljak (Katolički)"
 
             # Corpus Cristi.
             self[
-                easter(year) + rd(days=+60)
+                easter_date + rd(days=+60)
             ] = "Tijelovo (Tijelo i Krv Kristova)"
 
             # Eid al-Fitr.
@@ -118,15 +114,14 @@ class BosniaAndHerzegovina(HolidayBase):
             # Orthodox New Year.
             self[date(year, JAN, 14)] = "Pravoslavna Nova Godina"
 
+            easter_date = easter(year, method=EASTER_ORTHODOX)
             # Orthodox Good Friday.
-            self[
-                easter(year, method=2) + rd(weekday=FR(-1))
-            ] = "Veliki Petak (Pravoslavni)"
+            self[easter_date + rd(days=-2)] = "Veliki Petak (Pravoslavni)"
 
             # Orthodox Easter.
-            self[easter(year, method=2)] = "Vaskrs (Pravoslavni)"
+            self[easter_date] = "Vaskrs (Pravoslavni)"
             self[
-                easter(year, method=2) + rd(weekday=MO(+1))
+                easter_date + rd(days=+1)
             ] = "Uskrsni ponedjeljak (Pravoslavni)"
 
             # Victory Day.

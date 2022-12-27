@@ -12,10 +12,10 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO
+from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import SUN, JAN, MAY, JUL, OCT, DEC
+from holidays.constants import JAN, MAY, JUL, OCT, DEC, SUN
 from holidays.holiday_base import HolidayBase
 
 
@@ -57,7 +57,7 @@ class Cuba(HolidayBase):
         #   https://bit.ly/3v6bM18
         # Permanently granted in 2013 decree for 2014 and onwards.
         if year >= 2012:
-            self[easter(year) - rd(days=2)] = "Viernes Santo [Good Friday]"
+            self[easter(year) + rd(days=-2)] = "Viernes Santo [Good Friday]"
 
         name = "Día Internacional de los Trabajadores [Labour Day]"
         self[date(year, MAY, 1)] = name

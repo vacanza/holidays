@@ -9,7 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import warnings
 from datetime import date
 
 from dateutil.easter import easter
@@ -26,6 +25,11 @@ class Slovakia(HolidayBase):
     """
 
     country = "SK"
+    special_holidays = {
+        2018: (
+            (OCT, 30, "100. výročie prijatia Deklarácie slovenského národa"),
+        )
+    }
 
     def _populate(self, year):
         super()._populate(year)
@@ -37,9 +41,9 @@ class Slovakia(HolidayBase):
             " kresťanov)"
         )
 
-        e = easter(year)
-        self[e - rd(days=2)] = "Veľký piatok"
-        self[e + rd(days=1)] = "Veľkonočný pondelok"
+        easter_date = easter(year)
+        self[easter_date + rd(days=-2)] = "Veľký piatok"
+        self[easter_date + rd(days=+1)] = "Veľkonočný pondelok"
 
         self[date(year, MAY, 1)] = "Sviatok práce"
 
@@ -55,10 +59,7 @@ class Slovakia(HolidayBase):
         self[date(year, SEP, 1)] = "Deň Ústavy Slovenskej republiky"
 
         self[date(year, SEP, 15)] = "Sedembolestná Panna Mária"
-        if year == 2018:
-            self[date(year, OCT, 30)] = (
-                "100. výročie prijatia" " Deklarácie slovenského národa"
-            )
+
         self[date(year, NOV, 1)] = "Sviatok Všetkých svätých"
 
         if year >= 2001:

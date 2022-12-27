@@ -13,7 +13,7 @@ from datetime import date
 
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import SAT, SUN, JAN, MAR, MAY, JUN, OCT, NOV, DEC
+from holidays.constants import JAN, MAR, MAY, JUN, OCT, NOV, DEC, SAT, SUN
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
 
@@ -28,7 +28,7 @@ class Azerbaijan(HolidayBase):
     country = "AZ"
 
     def _add_observed(self, holiday: date) -> None:
-        if self.observed and holiday.weekday() in (SAT, SUN):
+        if self.observed and self._is_weekend(holiday):
             next_monday = holiday + rd(days=7 - holiday.weekday())
             if next_monday.year == holiday.year and not self.get(
                 next_monday, None

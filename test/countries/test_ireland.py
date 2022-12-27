@@ -102,3 +102,6 @@ class TestIreland(unittest.TestCase):
                     "St. Stephen's Day, Christmas Day (Observed)",
                 ],
             )
+
+    def test_special_holidays(self):
+        self.assertIn("2022-03-18", self.holidays)

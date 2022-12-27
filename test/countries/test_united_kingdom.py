@@ -25,6 +25,20 @@ class TestUK(unittest.TestCase):
         self.holidays_scotland = holidays.UK(subdiv="Scotland")
         self.holidays_northernireland = holidays.UK(subdiv="Northern Ireland")
 
+    def test_special_holidays(self):
+        for dt in (
+            "1977-06-07",
+            "1981-07-29",
+            "1999-12-31",
+            "2002-06-03",
+            "2011-04-29",
+            "2012-06-05",
+            "2022-06-03",
+            "2022-09-19",
+            "2023-05-08",
+        ):
+            self.assertIn(dt, self.holidays)
+
     def test_new_years(self):
         for year in range(1974, 2100):
             dt = date(year, 1, 1)

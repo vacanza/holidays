@@ -43,19 +43,6 @@ class Morocco(HolidayBase):
     def _populate(self, year):
         super()._populate(year)
 
-        """
-        # Function to store the holiday name in the appropriate
-        # date and to shift the Public holiday in case it happens
-        # on a Saturday(Weekend)
-        # (NOT USED)
-        def is_weekend(self, hol_date, hol_name):
-            if hol_date.weekday() == FRI:
-                self[hol_date] = hol_name + " [Friday]"
-                self[hol_date + rd(days=+2)] = "Sunday following " + hol_name
-            else:
-                self[hol_date] = hol_name
-        """
-
         def _add_holiday(dt: date, hol: str) -> None:
             """Only add if in current year; prevents adding holidays across
             years (handles multi-day Islamic holidays that straddle Gregorian

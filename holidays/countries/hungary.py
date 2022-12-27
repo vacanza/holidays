@@ -13,22 +13,9 @@ from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import FR
 
-from holidays.constants import (
-    MON,
-    TUE,
-    THU,
-    WEEKEND,
-    JAN,
-    MAR,
-    APR,
-    MAY,
-    AUG,
-    OCT,
-    NOV,
-    DEC,
-)
+from holidays.constants import JAN, MAR, APR, MAY, AUG, OCT, NOV, DEC, MON
+from holidays.constants import TUE, THU
 from holidays.holiday_base import HolidayBase
 
 
@@ -45,13 +32,10 @@ class Hungary(HolidayBase):
     def _populate(self, year: int) -> None:
         super()._populate(year)
 
-        # New years
-        self._add_with_observed_day_off(date(year, JAN, 1), "Újév", since=2014)
-        # Since 2014, the last day of the year is an observed day off if New
-        # Year's Day falls on a Tuesday.
-        if year >= 2014:
-            if self.observed and date(year, DEC, 31).weekday() == MON:
-                self[date(year, DEC, 31)] = "Újév előtti pihenőnap"
+        # New year
+        self._add_with_observed_day_off(
+            date(year, JAN, 1), "Újév", before=False, since=2014
+        )
 
         # National Day
         if 1945 <= year <= 1950 or 1989 <= year:
@@ -68,7 +52,7 @@ class Hungary(HolidayBase):
             # Liberation Day
             self[date(year, APR, 4)] = "A felszabadulás ünnepe"
             # Memorial day of The Great October Soviet Socialist Revolution
-            if year not in (1956, 1989):
+            if year not in {1956, 1989}:
                 self[
                     date(year, NOV, 7)
                 ] = "A nagy októberi szocialista forradalom ünnepe"
@@ -77,21 +61,21 @@ class Hungary(HolidayBase):
 
         # Good Friday
         if 2017 <= year:
-            self[easter_date + rd(weekday=FR(-1))] = "Nagypéntek"
+            self[easter_date + rd(days=-2)] = "Nagypéntek"
 
         # Easter
         self[easter_date] = "Húsvét"
 
         # Second easter day
         if 1955 != year:
-            self[easter_date + rd(days=1)] = "Húsvét Hétfő"
+            self[easter_date + rd(days=+1)] = "Húsvét Hétfő"
 
         # Pentecost
-        self[easter_date + rd(days=49)] = "Pünkösd"
+        self[easter_date + rd(days=+49)] = "Pünkösd"
 
         # Pentecost monday
         if year <= 1952 or 1992 <= year:
-            self[easter_date + rd(days=50)] = "Pünkösdhétfő"
+            self[easter_date + rd(days=+50)] = "Pünkösdhétfő"
 
         # International Workers' Day
         if 1946 <= year:
@@ -102,7 +86,7 @@ class Hungary(HolidayBase):
             self[date(year, MAY, 2)] = "A Munka ünnepe"
 
         # State Foundation Day (1771-????, 1891-)
-        if 1950 <= year < 1990:
+        if 1950 <= year <= 1989:
             self[date(year, AUG, 20)] = "A kenyér ünnepe"
         else:
             self._add_with_observed_day_off(
@@ -126,7 +110,7 @@ class Hungary(HolidayBase):
         if (
             self.observed
             and 2010 <= year
-            and date(year, DEC, 24).weekday() not in WEEKEND
+            and not self._is_weekend(year, DEC, 24)
         ):
             self[date(year, DEC, 24)] = "Szenteste"
 
@@ -140,10 +124,11 @@ class Hungary(HolidayBase):
                 "Karácsony másnapja",
                 since=2013,
                 before=False,
-                after=True,
             )
 
         # New Year's Eve
+        # Since 2014, the last day of the year is an observed day off if New
+        # Year's Day falls on a Tuesday.
         if (
             self.observed
             and 2014 <= year
@@ -164,14 +149,10 @@ class Hungary(HolidayBase):
         self[day] = desc
         # TODO: should it be a separate flag?
         if self.observed and since <= day.year:
-            if (
-                day.weekday() == TUE
-                and before
-                and not (day.month == JAN and day.day == 1)
-            ):
-                self[day - rd(days=1)] = desc + " előtti pihenőnap"
+            if day.weekday() == TUE and before:
+                self[day + rd(days=-1)] = desc + " előtti pihenőnap"
             elif day.weekday() == THU and after:
-                self[day + rd(days=1)] = desc + " utáni pihenőnap"
+                self[day + rd(days=+1)] = desc + " utáni pihenőnap"
 
 
 class HU(Hungary):

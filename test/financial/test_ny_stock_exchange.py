@@ -12,23 +12,12 @@
 import unittest
 from datetime import date, timedelta
 
-from dateutil.relativedelta import relativedelta, WE
+from dateutil.relativedelta import WE
+from dateutil.relativedelta import relativedelta as rd
 
 import holidays
-from holidays.constants import (
-    APR,
-    AUG,
-    DEC,
-    FEB,
-    JAN,
-    JUL,
-    JUN,
-    MAR,
-    MAY,
-    NOV,
-    OCT,
-    SEP,
-)
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
+from holidays.constants import OCT, NOV, DEC, SAT, SUN
 
 
 class TestNewYorkStockExchange(unittest.TestCase):
@@ -51,9 +40,9 @@ class TestNewYorkStockExchange(unittest.TestCase):
             date(2027, DEC, 31),
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+7), self.holidays)
+            self.assertNotIn(dt + rd(days=-1), self.holidays)
+            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + rd(days=+7), self.holidays)
 
     def test_mlk(self):
         for dt in [
@@ -67,10 +56,10 @@ class TestNewYorkStockExchange(unittest.TestCase):
             date(2022, JAN, 17),
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+7), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-7), self.holidays)
+            self.assertNotIn(dt + rd(days=-1), self.holidays)
+            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + rd(days=+7), self.holidays)
+            self.assertNotIn(dt + rd(days=-7), self.holidays)
 
         for dt in [
             date(1997, JAN, 20),
@@ -86,10 +75,10 @@ class TestNewYorkStockExchange(unittest.TestCase):
             date(1968, FEB, 12),
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+7), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-7), self.holidays)
+            self.assertNotIn(dt + rd(days=-1), self.holidays)
+            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + rd(days=+7), self.holidays)
+            self.assertNotIn(dt + rd(days=-7), self.holidays)
 
         for dt in [
             date(1954, FEB, 12),
@@ -121,10 +110,10 @@ class TestNewYorkStockExchange(unittest.TestCase):
             date(2022, FEB, 21),
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+7), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-7), self.holidays)
+            self.assertNotIn(dt + rd(days=-1), self.holidays)
+            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + rd(days=+7), self.holidays)
+            self.assertNotIn(dt + rd(days=-7), self.holidays)
 
     def test_good_friday(self):
         for dt in [
@@ -141,10 +130,10 @@ class TestNewYorkStockExchange(unittest.TestCase):
             date(2022, APR, 15),
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+7), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-7), self.holidays)
+            self.assertNotIn(dt + rd(days=-1), self.holidays)
+            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + rd(days=+7), self.holidays)
+            self.assertNotIn(dt + rd(days=-7), self.holidays)
 
     def test_memday(self):
         for dt in [
@@ -165,10 +154,10 @@ class TestNewYorkStockExchange(unittest.TestCase):
             date(2022, MAY, 30),
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+7), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-7), self.holidays)
+            self.assertNotIn(dt + rd(days=-1), self.holidays)
+            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + rd(days=+7), self.holidays)
+            self.assertNotIn(dt + rd(days=-7), self.holidays)
 
     def test_flagday(self):
         for dt in [
@@ -180,10 +169,10 @@ class TestNewYorkStockExchange(unittest.TestCase):
             date(1953, JUN, 15),
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+7), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-7), self.holidays)
+            self.assertNotIn(dt + rd(days=-1), self.holidays)
+            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + rd(days=+7), self.holidays)
+            self.assertNotIn(dt + rd(days=-7), self.holidays)
 
         for dt in [
             date(1954, JUN, 14),
@@ -198,10 +187,10 @@ class TestNewYorkStockExchange(unittest.TestCase):
             date(2022, JUN, 20),
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+7), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-7), self.holidays)
+            self.assertNotIn(dt + rd(days=-1), self.holidays)
+            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + rd(days=+7), self.holidays)
+            self.assertNotIn(dt + rd(days=-7), self.holidays)
 
         for dt in [
             date(1954, JUN, 18),
@@ -225,10 +214,10 @@ class TestNewYorkStockExchange(unittest.TestCase):
             date(2022, SEP, 5),
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+7), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-7), self.holidays)
+            self.assertNotIn(dt + rd(days=-1), self.holidays)
+            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + rd(days=+7), self.holidays)
+            self.assertNotIn(dt + rd(days=-7), self.holidays)
 
         for dt in [
             date(1886, SEP, 6),
@@ -245,10 +234,10 @@ class TestNewYorkStockExchange(unittest.TestCase):
             date(1953, OCT, 12),
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+7), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-7), self.holidays)
+            self.assertNotIn(dt + rd(days=-1), self.holidays)
+            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + rd(days=+7), self.holidays)
+            self.assertNotIn(dt + rd(days=-7), self.holidays)
 
         for dt in [
             date(1908, OCT, 12),
@@ -259,7 +248,7 @@ class TestNewYorkStockExchange(unittest.TestCase):
 
     def test_electionday(self):
         for dt in [
-            date(1887, NOV, 1),
+            date(1887, NOV, 8),
             date(1901, NOV, 5),
             date(1902, NOV, 4),
             date(1920, NOV, 2),
@@ -271,9 +260,9 @@ class TestNewYorkStockExchange(unittest.TestCase):
             date(1980, NOV, 4),
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+7), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-7), self.holidays)
+            self.assertNotIn(dt + rd(days=-1), self.holidays)
+            self.assertNotIn(dt + rd(days=+7), self.holidays)
+            self.assertNotIn(dt + rd(days=-7), self.holidays)
 
         for dt in [
             date(1969, NOV, 4),
@@ -303,10 +292,10 @@ class TestNewYorkStockExchange(unittest.TestCase):
             date(1953, NOV, 11),
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+7), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-7), self.holidays)
+            self.assertNotIn(dt + rd(days=-1), self.holidays)
+            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + rd(days=+7), self.holidays)
+            self.assertNotIn(dt + rd(days=-7), self.holidays)
 
         for dt in [
             date(1917, NOV, 12),
@@ -335,10 +324,10 @@ class TestNewYorkStockExchange(unittest.TestCase):
             date(2022, NOV, 24),
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+7), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-7), self.holidays)
+            self.assertNotIn(dt + rd(days=-1), self.holidays)
+            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + rd(days=+7), self.holidays)
+            self.assertNotIn(dt + rd(days=-7), self.holidays)
 
     def test_christmas_day(self):
         for dt in [
@@ -355,9 +344,9 @@ class TestNewYorkStockExchange(unittest.TestCase):
             date(2022, DEC, 26),
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-7), self.holidays)
+            self.assertNotIn(dt + rd(days=-1), self.holidays)
+            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + rd(days=-7), self.holidays)
 
     def test_special_holidays(self):
         # add to this list as new historical holidays are added
@@ -411,6 +400,7 @@ class TestNewYorkStockExchange(unittest.TestCase):
             date(1972, DEC, 28),  # Funeral for President Harry S. Truman
             date(1973, JAN, 25),  # Funeral for President Lyndon B. Johnson
             date(1977, JUL, 14),  # Blackout in New Yor City
+            date(1985, SEP, 27),  # Hurricane Gloria
             date(1994, APR, 27),  # Funeral for President Richard M. Nixon
             date(2001, SEP, 11),  # Closed for Sept 11, 2001 Attacks
             date(2001, SEP, 12),  # Closed for Sept 11, 2001 Attacks
@@ -420,6 +410,11 @@ class TestNewYorkStockExchange(unittest.TestCase):
                 2004, JUN, 11
             ),  # Day of Mourning for President Ronald W. Reagan
             date(2007, JAN, 2),  # Day of Mourning for President Gerald R. Ford
+            date(2012, OCT, 29),  # Hurricane Sandy
+            date(2012, OCT, 30),  # Hurricane Sandy
+            date(
+                2018, DEC, 5
+            ),  # Day of Mourning for President George H.W. Bush
         ]
 
         def _make_special_holiday_list(begin, end, days=None, weekends=False):
@@ -428,7 +423,7 @@ class TestNewYorkStockExchange(unittest.TestCase):
                 begin + timedelta(days=n)
                 for n in range((end - begin).days + 1)
             ):
-                if not weekends and d.isoweekday() in [6, 7]:
+                if not weekends and d.weekday() in {SAT, SUN}:
                     continue
                 if days is None or d.isoweekday() in days:
                     _list.append(d)

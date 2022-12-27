@@ -9,161 +9,267 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
 from datetime import date
 
 from dateutil.relativedelta import relativedelta
 
-import holidays
+from holidays.constants import MAY, JUN, JUL, AUG, OCT
+from holidays.countries.argentina import AR, ARG, Argentina
+from test.common import TestCase
 
 
-class TestAR(unittest.TestCase):
+class TestArgentina(TestCase):
     def setUp(self):
-        self.holidays = holidays.AR(observed=True)
+        self.holidays = Argentina()
 
-    def test_new_years(self):
+    def test_country_aliases(self):
+        self.assertCountryAliases(Argentina, AR, ARG)
+
+    def test_new_years_day(self):
         self.holidays.observed = False
-        self.assertNotIn(date(2010, 12, 31), self.holidays)
-        self.assertNotIn(date(2017, 1, 2), self.holidays)
+        self.assertNoHoliday(
+            "2010-12-31",
+            "2017-01-02",
+        )
+
         self.holidays.observed = True
-        self.assertIn(date(2017, 1, 1), self.holidays)
+        self.assertHoliday(
+            "2017-01-01",
+        )
+
         for year in range(1900, 2100):
             dt = date(year, 1, 1)
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+            self.assertHoliday(dt)
+            self.assertNoHoliday(
+                dt + relativedelta(days=-1),
+                dt + relativedelta(days=+1),
+            )
 
     def test_carnival_day(self):
-        for dt in [
-            date(2018, 2, 12),
-            date(2018, 2, 13),
-            date(2017, 2, 27),
-            date(2017, 2, 28),
-            date(2016, 2, 8),
-            date(2016, 2, 9),
-        ]:
-            self.assertIn(dt, self.holidays)
+        self.assertHoliday(
+            "2016-02-08",
+            "2016-02-09",
+            "2017-02-27",
+            "2017-02-28",
+            "2018-02-12",
+            "2018-02-13",
+        )
 
     def test_memory_national_day(self):
         self.holidays.observed = False
-        self.assertNotIn(date(1907, 3, 24), self.holidays)
-        self.assertNotIn(date(2002, 3, 24), self.holidays)
+        self.assertNoHoliday(
+            "1907-03-24",
+            "2002-03-24",
+        )
+
         self.holidays.observed = True
-        for dt in [date(2018, 3, 24), date(2017, 3, 24), date(2016, 3, 24)]:
-            self.assertIn(dt, self.holidays)
+        self.assertHoliday(
+            "2018-03-24",
+            "2017-03-24",
+            "2016-03-24",
+        )
 
     def test_holy_week_day(self):
-        for dt in [
-            date(2018, 3, 29),
-            date(2018, 3, 30),
-            date(2017, 4, 13),
-            date(2017, 4, 14),
-            date(2016, 3, 24),
-            date(2016, 3, 25),
-        ]:
-            self.assertIn(dt, self.holidays)
+        self.assertHoliday(
+            "2016-03-24",
+            "2016-03-25",
+            "2017-04-13",
+            "2017-04-14",
+            "2018-03-29",
+            "2018-03-30",
+        )
 
     def test_malvinas_war_day(self):
-        for year in range(1900, 2100):
-            dt = date(year, 4, 2)
-            self.assertIn(dt, self.holidays)
+        self.assertHoliday(*[f"{year}-04-02" for year in range(1900, 2100)])
 
     def test_labor_day(self):
         self.holidays.observed = False
-        self.assertNotIn(date(2010, 4, 30), self.holidays)
-        self.assertNotIn(date(2011, 5, 2), self.holidays)
+        self.assertNoHoliday(
+            "2010-04-30",
+            "2011-05-02",
+        )
+
         self.holidays.observed = True
-        self.assertIn(date(1922, 5, 1), self.holidays)
+        self.assertHoliday(
+            "1922-05-01",
+        )
+
         for year in range(1900, 2100):
-            dt = date(year, 5, 1)
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+            dt = date(year, MAY, 1)
+            self.assertHoliday(dt)
+            self.assertNoHoliday(
+                dt + relativedelta(days=-1),
+                dt + relativedelta(days=+1),
+            )
 
     def test_may_revolution_day(self):
         self.holidays.observed = False
-        self.assertNotIn(date(1930, 5, 25), self.holidays)
-        self.assertNotIn(date(2014, 5, 25), self.holidays)
+        self.assertNoHoliday(
+            "1930-05-25",
+            "2014-05-25",
+        )
+
         self.holidays.observed = True
         for year in range(1900, 2100):
-            dt = date(year, 5, 1)
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+            dt = date(year, MAY, 25)
+            self.assertHoliday(dt)
+            self.assertNoHoliday(
+                dt + relativedelta(days=-1),
+                dt + relativedelta(days=+1),
+            )
 
     def test_guemes_day(self):
         for year in range(1900, 2100):
-            dt = date(year, 6, 17)
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+            dt = date(year, JUN, 17)
+            self.assertHoliday(dt)
+            self.assertNoHoliday(
+                dt + relativedelta(days=-1),
+                dt + relativedelta(days=+1),
+            )
 
     def test_belgrano_day(self):
         for year in range(1900, 2100):
-            dt = date(year, 6, 20)
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+            dt = date(year, JUN, 20)
+            self.assertHoliday(dt)
+            self.assertNoHoliday(
+                dt + relativedelta(days=-1),
+                dt + relativedelta(days=+1),
+            )
 
     def test_independence_day(self):
         self.holidays.observed = False
-        self.assertNotIn(date(2017, 7, 9), self.holidays)
-        self.assertNotIn(date(2011, 7, 9), self.holidays)
+        self.assertNoHoliday(
+            "2011-07-09",
+            "2017-07-09",
+        )
+
         self.holidays.observed = True
-        self.assertIn(date(2017, 7, 9), self.holidays)
-        self.assertIn(date(2011, 7, 9), self.holidays)
+        self.assertHoliday(
+            "2011-07-09",
+            "2017-07-09",
+        )
+
         for year in range(1900, 2100):
-            dt = date(year, 7, 9)
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+            dt = date(year, JUL, 9)
+            self.assertHoliday(dt)
+            self.assertNoHoliday(
+                dt + relativedelta(days=-1),
+                dt + relativedelta(days=+1),
+            )
 
     def test_san_martin_day(self):
         self.holidays.observed = False
-        self.assertNotIn(date(1930, 8, 10), self.holidays)
-        self.assertNotIn(date(2008, 8, 10), self.holidays)
+        self.assertNoHoliday(
+            "1930-08-10",
+            "2008-08-10",
+        )
+
         self.holidays.observed = True
         for year in range(1900, 2100):
-            dt = date(year, 8, 17)
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+            dt = date(year, AUG, 17)
+            self.assertHoliday(dt)
+            self.assertNoHoliday(
+                dt + relativedelta(days=-1),
+                dt + relativedelta(days=+1),
+            )
 
     def test_cultural_day(self):
         self.holidays.observed = False
-        self.assertNotIn(date(2014, 10, 12), self.holidays)
-        self.assertNotIn(date(1913, 10, 12), self.holidays)
+        self.assertNoHoliday(
+            "1913-10-12",
+            "2014-10-12",
+        )
+
         self.holidays.observed = True
         for year in range(1900, 2100):
-            dt = date(year, 10, 12)
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+            dt = date(year, OCT, 12)
+            self.assertHoliday(dt)
+            self.assertNoHoliday(
+                dt + relativedelta(days=-1),
+                dt + relativedelta(days=+1),
+            )
 
     def test_national_sovereignty_day(self):
         for year in range(1900, 2100):
             dt = date(year, 11, 20)
             if year < 2010:
-                self.assertNotIn(dt, self.holidays)
+                self.assertNoHoliday(dt)
             else:
-                self.assertIn(dt, self.holidays)
-                self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-                self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+                self.assertHoliday(dt)
+                self.assertNoHoliday(
+                    dt + relativedelta(days=-1),
+                    dt + relativedelta(days=+1),
+                )
 
-    def test_inmaculate_conception_day(self):
+    def test_immaculate_conception_day(self):
         self.holidays.observed = False
-        self.assertNotIn(date(1940, 12, 8), self.holidays)
-        self.assertNotIn(date(2013, 12, 8), self.holidays)
+        self.assertNoHoliday(
+            "1940-12-08",
+            "2013-12-08",
+        )
+
         self.holidays.observed = True
         for year in range(1900, 2100):
             dt = date(year, 12, 8)
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+            self.assertHoliday(dt)
+            self.assertNoHoliday(
+                dt + relativedelta(days=-1),
+                dt + relativedelta(days=+1),
+            )
 
     def test_christmas(self):
         for year in range(1900, 2100):
             dt = date(year, 12, 25)
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+            self.assertHoliday(dt)
+            self.assertNoHoliday(
+                dt + relativedelta(days=-1),
+                dt + relativedelta(days=+1),
+            )
+
+    def test_2022(self):
+        self.assertHolidaysEqual(
+            Argentina(observed=False, years=2022),
+            ("2022-02-28", "Día de Carnaval [Carnival's Day]"),
+            ("2022-03-01", "Día de Carnaval [Carnival's Day]"),
+            (
+                "2022-03-24",
+                "Día Nacional de la Memoria por la Verdad y la Justicia "
+                "[Memory's National Day for the Truth and Justice]",
+            ),
+            (
+                "2022-04-14",
+                "Semana Santa (Jueves Santo) [Holy day (Holy Thursday)]",
+            ),
+            (
+                "2022-04-15",
+                "Semana Santa (Viernes Santo) [Holy day (Holy Friday)]",
+            ),
+            (
+                "2022-05-25",
+                "Día de la Revolucion de Mayo [May Revolution Day]",
+            ),
+            (
+                "2022-06-17",
+                "Día Pase a la Inmortalidad del General Martín Miguel de "
+                "Güemes [Day Pass to the Immortality of General Martín Miguel "
+                "de Güemes]",
+            ),
+            (
+                "2022-06-20",
+                "Día Pase a la Inmortalidad del General D. Manuel Belgrano "
+                "[Day Pass to the Immortality of General D. Manuel Belgrano]",
+            ),
+            (
+                "2022-08-17",
+                "Día Pase a la Inmortalidad del General D. José de San Martin "
+                "[Day Pass to the Immortality of General D. José de San "
+                "Martin]",
+            ),
+            (
+                "2022-10-12",
+                "Día del Respeto a la Diversidad Cultural "
+                "[Respect for Cultural Diversity Day]",
+            ),
+            ("2022-12-08", "La Inmaculada Concepción [Immaculate Conception]"),
+            ("2022-12-25", "Navidad [Christmas]"),
+        )
