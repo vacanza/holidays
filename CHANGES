@@ -7,7 +7,7 @@ Released ???????? ??, ????
 - Test refactoring / common functions #800, #830, #844 (arkid15r)
 - Pre-commit reviews #786, #795 (KJhellico, arkid15r, dr-p)
 - Import cleanup, flake8 settings review #792 (arkid15r, KJhellico, dr-p)
-- Meeus algorithm for equinox and solstice calculation utils #828 (Nalguedo)
+- PyMeeus for equinox and solstice calculation #828, #863 (Nalguedo)
 - Easter holidays refactoring and unification #803 (KJhellico)
 - Observed holidays calc optimizations #824 (KJhellico)
 - Special holidays refactoring for 13 countries #796 (arkid15r, KJhellico)
