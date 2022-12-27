@@ -72,8 +72,8 @@ class TestArmenia(TestCase):
         self.assertHoliday(f"{year}-05-01" for year in range(2001, 2100))
         self.assertNoHoliday(f"{year}-05-01" for year in range(1991, 2001))
         may1_old_name = "International Day of Workers' Solidarity"
-        self.assertIn(may1_old_name, self.holidays.get("2001-05-01"))
-        self.assertNotIn(may1_old_name, self.holidays.get("2002-05-01"))
+        self.assertIn(may1_old_name, self.holidays["2001-05-01"])
+        self.assertNotIn(may1_old_name, self.holidays["2002-05-01"])
 
     def test_victory_day(self):
         self.assertHoliday(f"{year}-05-09" for year in range(1995, 2100))
