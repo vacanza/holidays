@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-# from __future__ import annotations  # add in Python 3.7
+__all__ = ("DateLike", "HolidayBase", "HolidaySum")
 
 import warnings
 from datetime import date, datetime, timedelta

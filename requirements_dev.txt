@@ -1,9 +1,9 @@
 # package runtime requirements
 convertdate>=2.3.0
-hijri_converter
-korean_lunar_calendar
-pymeeus
+hijri-converter
+korean-lunar-calendar
 python-dateutil
+PyMeeus
 
 # test requirements
 coverage[toml]<7.0.0
