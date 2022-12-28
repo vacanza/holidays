@@ -219,7 +219,7 @@ following countries and their subdivisions are available:
      - None
    * - France
      - FR
-     - Départements: **Métropole** (default), Alsace-Moselle, Guadeloupe, Guyane, Martinique, Mayotte, Nouvelle-Calédonie, La Réunion, Polynésie Française, Saint-Barthélémy, Saint-Martin, Wallis-et-Futuna
+     - Départements: Alsace-Moselle, Guadeloupe, Guyane, La Réunion, Martinique, Mayotte, **Métropole** (default), Nouvelle-Calédonie, Polynésie Française, Saint-Barthélémy, Saint-Martin, Wallis-et-Futuna
    * - Georgia
      - GE
      - None

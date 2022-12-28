@@ -35,14 +35,14 @@ class France(HolidayBase):
 
     country = "FR"
     subdivisions = [
-        "Métropole",
         "Alsace-Moselle",
         "Guadeloupe",
         "Guyane",
+        "La Réunion",
         "Martinique",
         "Mayotte",
+        "Métropole",
         "Nouvelle-Calédonie",
-        "La Réunion",
         "Polynésie Française",
         "Saint-Barthélémy",
         "Saint-Martin",
