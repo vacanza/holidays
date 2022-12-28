@@ -18,7 +18,7 @@ from test.common import TestCase
 class TestReadme(TestCase):
     @classmethod
     def setUpClass(cls):
-        with open("README.rst", "r") as readme_file:
+        with open("README.rst", encoding="utf-8") as readme_file:
             cls.readme_content = "".join(readme_file.readlines())
 
         super().setUpClass()
