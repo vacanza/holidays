@@ -272,7 +272,7 @@ def CountryHoliday(
     )
 
 
-def list_supported_countries() -> Dict[str, List[str]]:
+def list_supported_countries(unique=False) -> Dict[str, List[str]]:
     """
     Get all supported countries and their subdivisions.
 
@@ -281,13 +281,13 @@ def list_supported_countries() -> Dict[str, List[str]]:
         the value is a list of supported subdivision codes.
     """
     return {
-        cls.country: cls.subdivisions
+        cls.country if unique else name: cls.subdivisions
         for name, cls in inspect.getmembers(countries, inspect.isclass)
         if len(name) == 2 and issubclass(cls, HolidayBase)
     }
 
 
-def list_supported_financial() -> Dict[str, List[str]]:
+def list_supported_financial(unique=False) -> Dict[str, List[str]]:
     """
     Get all supported financial markets and their subdivisions.
 
@@ -296,8 +296,8 @@ def list_supported_financial() -> Dict[str, List[str]]:
         the value is a list of supported subdivision codes.
     """
     return {
-        cls.market: cls.subdivisions
-        for _, cls in inspect.getmembers(financial, inspect.isclass)
+        cls.market if unique else name: cls.subdivisions
+        for name, cls in inspect.getmembers(financial, inspect.isclass)
         if issubclass(cls, HolidayBase)
     }
 

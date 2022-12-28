@@ -351,7 +351,7 @@ class TestBasics(unittest.TestCase):
         self.assertEqual(na.get_list(date(1969, 1, 3)), [])
 
     def test_list_supported_countries(self):
-        supported_countries = holidays.list_supported_countries()
+        supported_countries = holidays.list_supported_countries(unique=True)
 
         countries_files = [
             path
@@ -369,7 +369,7 @@ class TestBasics(unittest.TestCase):
         self.assertIn("ZA", supported_countries)
 
     def test_list_supported_financial(self):
-        supported_financial = holidays.list_supported_financial()
+        supported_financial = holidays.list_supported_financial(unique=True)
 
         financial_files = [
             path

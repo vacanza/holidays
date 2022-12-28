@@ -33,6 +33,7 @@ class Italy(HolidayBase):
     # Patrono defined. If you want one specific you'll have to use
     # the full name of the city like "Andria" instead of "BT".
     subdivisions = [
+        # Provinces.
         "AG",
         "AL",
         "AN",
@@ -51,9 +52,6 @@ class Italy(HolidayBase):
         "BR",
         "BS",
         "BT",
-        "Barletta",
-        "Andria",
-        "Trani",
         "BZ",
         "CA",
         "CB",
@@ -68,8 +66,6 @@ class Italy(HolidayBase):
         "CZ",
         "EN",
         "FC",
-        "Forlì",
-        "Cesena",
         "FE",
         "FG",
         "FI",
@@ -110,8 +106,6 @@ class Italy(HolidayBase):
         "PR",
         "PT",
         "PU",
-        "Pesaro",
-        "Urbino",
         "PV",
         "PZ",
         "RA",
@@ -147,6 +141,14 @@ class Italy(HolidayBase):
         "VR",
         "VT",
         "VV",
+        # Cities.
+        "Andria",
+        "Barletta",
+        "Cesena",
+        "Forlì",
+        "Pesaro",
+        "Trani",
+        "Urbino",
     ]
 
     def _populate(self, year):
