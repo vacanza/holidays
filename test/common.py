@@ -8,7 +8,6 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
-#  Copyright: Arkadii Yakovets <ark@cho.red>, 2022
 
 import unittest
 from typing import Generator
@@ -23,12 +22,12 @@ class TestCase(unittest.TestCase):
     """Base class for python-holiday test cases."""
 
     def parse_arguments(self, args):
-        date_args = args
+        item_args = args
         instance = None
 
         if issubclass(args[0].__class__, HolidayBase):
             instance = args[0]
-            date_args = args[1:]
+            item_args = args[1:]
         else:
             try:
                 instance = getattr(self, "holidays")
@@ -43,16 +42,16 @@ class TestCase(unittest.TestCase):
                     "`setUp()` method."
                 )
 
-        dates = []
-        for date_arg in date_args:
-            if type(date_arg) in {list, tuple}:
-                dates.extend(date_arg)
-            elif isinstance(date_arg, Generator):
-                dates.extend(tuple(date_arg))
+        items = []
+        for item_arg in item_args:
+            if type(item_arg) in {list, tuple}:
+                items.extend(item_arg)
+            elif isinstance(item_arg, Generator):
+                items.extend(tuple(item_arg))
             else:
-                dates.append(date_arg)
+                items.append(item_arg)
 
-        return instance, dates
+        return instance, items
 
     def verify_type(self, holidays):
         self.assertTrue(
@@ -61,7 +60,7 @@ class TestCase(unittest.TestCase):
         )
 
     def assertCountryAliases(self, cls, alpha_2, alpha_3):
-        """Asserts country aliases match."""
+        """Assert country aliases match."""
 
         self.assertTrue(
             issubclass(cls, HolidayBase),
@@ -74,7 +73,6 @@ class TestCase(unittest.TestCase):
         for alias in (alpha_2, alpha_3):
             self.assertIsNotNone(alias, type_error_message)
             self.assertTrue(issubclass(alias, cls), type_error_message)
-            self.assertEqual(alias(), cls())
 
         length_error_message = (
             "This method accepts exactly 3 arguments "
@@ -94,16 +92,38 @@ class TestCase(unittest.TestCase):
                 "look like alpha-3 country code."
             )
 
-    def assertNoHolidays(self, holidays):
-        """Asserts holidays dict is empty."""
+    def assertHoliday(self, *args):
+        """Assert each date is a holiday."""
+
+        holidays, dates = self.parse_arguments(args)
+        for dt in dates:
+            self.assertIn(dt, holidays, f"{dt}")
+
+    def assertHolidayDatesEqual(self, holidays, *dates):
+        """Assert holiday dates exactly match expected dates."""
 
         self.verify_type(holidays)
 
-        self.assertEqual(0, len(holidays))
-        self.assertFalse(holidays)
+        self.assertEqual(len(dates), len(holidays.keys()))
+        for dt in dates:  # Check one by one for descriptive error messages.
+            self.assertIn(dt, holidays, f"{dt}")
+
+    def assertHolidayName(self, *args):
+        """Assert a holiday with a specific name exists."""
+
+        holidays, names = self.parse_arguments(args)
+        for name in names:
+            self.assertTrue(holidays.get_named(name))
+
+    def assertHolidayNames(self, name, *args):
+        """Assert each holiday name matches an expected one."""
+
+        holidays, dates = self.parse_arguments(args)
+        for dt in dates:
+            self.assertEqual(name, holidays.get(dt), f"{dt}")
 
     def assertHolidaysEqual(self, holidays, *expected_holidays):
-        """Asserts holidays exactly match expected holidays."""
+        """Assert holidays exactly match expected holidays."""
 
         self.verify_type(holidays)
 
@@ -111,30 +131,29 @@ class TestCase(unittest.TestCase):
         # Check one by one for descriptive error messages.
         for dt, name in expected_holidays:
             self.assertIn(dt, holidays)
-            self.assertEqual(name, holidays[dt])
+            self.assertEqual(name, holidays[dt], f"{dt}")
 
-    def assertHolidayDatesEqual(self, holidays, *dates):
-        """Asserts holiday dates exactly match expected dates."""
+    def assertNoHoliday(self, *args):
+        """Assert each date is not a holiday."""
+
+        holidays, dates = self.parse_arguments(args)
+        for dt in dates:
+            self.assertNotIn(dt, holidays, f"{dt}")
+
+    def assertNoHolidayName(self, *args):
+        """Assert a holiday with a specific name doesn't exist."""
+
+        holidays, names = self.parse_arguments(args)
+        for name in names:
+            self.assertFalse(holidays.get_named(name))
+
+    def assertNoHolidays(self, holidays):
+        """Assert holidays dict is empty."""
 
         self.verify_type(holidays)
 
-        self.assertEqual(len(dates), len(holidays.keys()))
-        for date in dates:  # Check one by one for descriptive error messages.
-            self.assertIn(date, holidays)
-
-    def assertHoliday(self, *args):
-        """Asserts each date is a holiday."""
-
-        holidays, dates = self.parse_arguments(args)
-        for dt in dates:
-            self.assertIn(dt, holidays)
-
-    def assertNoHoliday(self, *args):
-        """Asserts each date is not a holiday."""
-
-        holidays, dates = self.parse_arguments(args)
-        for dt in dates:
-            self.assertNotIn(dt, holidays)
+        self.assertFalse(holidays)
+        self.assertEqual(0, len(holidays))
 
 
 class SundayHolidays(TestCase):
