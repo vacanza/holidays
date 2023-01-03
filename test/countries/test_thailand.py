@@ -13,7 +13,7 @@ from holidays.countries.thailand import TH, THA, Thailand
 from test.common import TestCase
 
 
-class TestRussia(TestCase):
+class TestThailand(TestCase):
     def setUp(self):
         self.holidays = Thailand()
 
@@ -32,6 +32,7 @@ class TestRussia(TestCase):
             ("2022-04-15", "Songkran Festival"),
             ("2022-05-01", "Labour Day"),
             ("2022-05-02", "Labour Day (in lieu)"),
+            ("2022-05-04", "Coronation Day"),
             ("2022-05-15", "Buddha's Birthday"),
             ("2022-05-16", "Buddha's Birthday (in lieu)"),
             ("2022-06-03", "Queen Suthida's Birthday"),
@@ -76,5 +77,6 @@ class TestRussia(TestCase):
         self.assertFalse(Thailand(years=2005).get_named("Asalha Puja"))
         self.assertFalse(Thailand(years=2005).get_named("Beginning of Vassa"))
 
-    def test_pre_2017(self):
-        self.assertHoliday(Thailand(years=2016), "2016-05-04")
+    def test_coronation_day(self):
+        self.assertHoliday("2016-05-05", "2020-05-04")
+        self.assertNoHoliday("2017-05-04", "2017-05-05")

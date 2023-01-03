@@ -35,7 +35,7 @@ class TestPhilippines(TestCase):
             ("2022-06-12", "Independence Day"),
             ("2022-07-09", "Eid'l Adha"),
             ("2022-08-21", "Ninoy Aquino Day"),
-            ("2022-08-27", "National Heroes Day"),
+            ("2022-08-29", "National Heroes Day"),
             ("2022-11-01", "All Saints' Day"),
             ("2022-11-30", "Bonifacio Day"),
             ("2022-12-08", "Immaculate Conception Day"),
