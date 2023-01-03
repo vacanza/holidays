@@ -82,6 +82,8 @@ class Thailand(HolidayBase):
 
         # Coronation Day.
         if year <= 2016:
+            add_holiday(date(year, MAY, 5), "Coronation Day")
+        elif year >= 2020:
             add_holiday(date(year, MAY, 4), "Coronation Day")
 
         # Queen's Birthday.
