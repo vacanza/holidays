@@ -1,6 +1,6 @@
 #  python-holidays
 #  ---------------
-#  A fast-efficient Python library for generating country-province and state
+#  A fast, efficient Python library for generating country, province and state
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
