@@ -9,7 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from calendar import isleap
 from datetime import date
 
 from dateutil.easter import easter, EASTER_ORTHODOX
@@ -37,6 +36,19 @@ class Ethiopia(HolidayBase):
 
     country = "ET"
 
+    @staticmethod
+    def _is_leap_year(year):
+        """
+        Ethiopian leap years are coincident with leap years in the Gregorian
+        calendar until the end of February 2100. It starts earlier from new
+        year of western calendar.
+        Ethiopian leap year starts on Sep 11, so it has an effect on
+        holidays between Sep 11 and Jan 1. Therefore, here on the following
+        function we intentionally add 1 to the leap year to offset the
+        difference.
+        """
+        return HolidayBase._is_leap_year(year + 1)
+
     def _populate(self, year):
         super()._populate(year)
 
@@ -47,13 +59,13 @@ class Ethiopia(HolidayBase):
         # It occurs on September 11 in the Gregorian Calendar;
         # except for the year preceding a leap year, when it occurs on
         # September 12.
-        if self.ethiopian_isleap(year):
+        if self._is_leap_year(year):
             self[date(year, SEP, 12)] = "አዲስ ዓመት እንቁጣጣሽ/Ethiopian New Year"
         else:
             self[date(year, SEP, 11)] = "አዲስ ዓመት እንቁጣጣሽ/Ethiopian New Year"
 
         # Finding of true cross
-        if self.ethiopian_isleap(year):
+        if self._is_leap_year(year):
             self[date(year, SEP, 28)] = "መስቀል/Finding of True Cross"
         else:
             self[date(year, SEP, 27)] = "መስቀል/Finding of True Cross"
@@ -90,7 +102,7 @@ class Ethiopia(HolidayBase):
 
         # Downfall of King. Hailesilassie
         if year < 1991 and year > 1974:
-            if self.ethiopian_isleap(year):
+            if self._is_leap_year(year):
                 self[date(year, SEP, 13)] = "ደርግ የመጣበት ቀን/Formation of Dergue"
             else:
                 self[date(year, SEP, 12)] = "ደርግ የመጣበት ቀን/Formation of Dergue"
@@ -114,15 +126,6 @@ class Ethiopia(HolidayBase):
         for date_obs in _islamic_to_gre(year, 3, 12):
             hol_date = date_obs
             self[hol_date + rd(days=1)] = "መውሊድ/Prophet Muhammad's Birthday"
-
-    # Ethiopian leap years are coincident with leap years in the Gregorian
-    # calendar until the end of February 2100. It starts earlier from new year
-    # of western calendar.
-    # Ethiopian leap year starts on Sep 11, so it has an effect on
-    # holidays between Sep 11 and Jan 1. Therefore, here on the following
-    # function we intentionally add 1 to the leap year to offset the difference
-    def ethiopian_isleap(self, year):
-        return isleap(year + 1)
 
 
 class ET(Ethiopia):

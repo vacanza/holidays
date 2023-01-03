@@ -170,6 +170,10 @@ class TestBasics(unittest.TestCase):
         self.assertIn("2015-01-01", h)
         self.assertIn(date(2015, 12, 25), h)
 
+    def test_is_leap_year(self):
+        self.assertTrue(holidays.HolidayBase._is_leap_year(2000))
+        self.assertFalse(holidays.HolidayBase._is_leap_year(2100))
+
     def test_is_weekend(self):
         h = holidays.HolidayBase()
 

@@ -109,8 +109,8 @@ class HongKong(HolidayBase):
         easter_monday_date = easter_date + rd(days=+1)
         # Ching Ming Festival
         name = "Ching Ming Festival"
-        if self.is_leap_year(year) or (
-            year > 2008 and self.is_leap_year(year - 1)
+        if self._is_leap_year(year) or (
+            year > 2008 and self._is_leap_year(year - 1)
         ):
             ching_ming_date = date(year, APR, 4)
         else:
@@ -245,10 +245,6 @@ class HongKong(HolidayBase):
             self[
                 dt + rd(days=-1)
             ] = "Anniversary of the victory in the Second Sino-Japanese War"
-
-    @staticmethod
-    def is_leap_year(year):
-        return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
 
 
 class HK(HongKong):
