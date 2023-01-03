@@ -257,7 +257,7 @@ class India(HolidayBase):
         # Islamic holidays
         # Day of Ashura (10th day of 1st Islamic month)
         name = "Day of Ashura"
-        for dt in _islamic_to_gre(year, 10, 1):
+        for dt in _islamic_to_gre(year, 1, 10):
             self[dt] = f"{name}* (*estimated)"
 
         # Mawlid, Birth of the Prophet (12th day of 3rd Islamic month)
