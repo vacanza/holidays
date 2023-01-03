@@ -24,7 +24,7 @@ class Philippines(HolidayBase):
     Philippines holidays.
 
     References:
-      - https://en.wikipedia.org/wiki/Public_holidays_in_Thailand
+      - https://en.wikipedia.org/wiki/Public_holidays_in_the_Philippines
     """
 
     country = "PH"
