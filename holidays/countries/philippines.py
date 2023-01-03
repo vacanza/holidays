@@ -75,7 +75,7 @@ class Philippines(HolidayBase):
         self[date(year, AUG, 21)] = "Ninoy Aquino Day"
 
         # National Heroes Day.
-        self[date(year, AUG, 27)] = "National Heroes Day"
+        self[date(year, AUG, 31) + rd(weekday=MO(-1))] = "National Heroes Day"
 
         # All Saints' Day.
         self[date(year, NOV, 1)] = "All Saints' Day"
