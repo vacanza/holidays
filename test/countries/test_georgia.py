@@ -9,37 +9,44 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
-from datetime import date
-
-import holidays
+from holidays.countries.georgia import GE, GEO, Georgia
+from test.common import TestCase
 
 
-class TestGeorgia(unittest.TestCase):
+class TestGeorgia(TestCase):
     def setUp(self):
-        self.holidays = holidays.GE()
+        self.holidays = Georgia()
+
+    def test_country_aliases(self):
+        self.assertCountryAliases(Georgia, GE, GEO)
 
     def test_easter(self):
-        self.assertIn(date(2020, 4, 19), self.holidays)
-        self.assertIn(date(2019, 4, 28), self.holidays)
-        self.assertIn(date(2018, 4, 8), self.holidays)
+        self.assertHoliday(
+            "2020-04-19",
+            "2019-04-28",
+            "2018-04-08",
+        )
 
     def test_2020(self):
         # https://en.wikipedia.org/wiki/Public_holidays_in_Georgia_(country)
-        self.assertIn(date(2020, 1, 1), self.holidays)
-        self.assertIn(date(2020, 1, 2), self.holidays)
-        self.assertIn(date(2020, 1, 7), self.holidays)
-        self.assertIn(date(2020, 1, 19), self.holidays)
-        self.assertIn(date(2020, 3, 3), self.holidays)
-        self.assertIn(date(2020, 3, 8), self.holidays)
-        self.assertIn(date(2020, 4, 9), self.holidays)
-        self.assertIn(date(2020, 5, 9), self.holidays)
-        self.assertIn(date(2020, 5, 12), self.holidays)
-        self.assertIn(date(2020, 5, 26), self.holidays)
-        self.assertIn(date(2020, 8, 28), self.holidays)
-        self.assertIn(date(2020, 10, 14), self.holidays)
-        self.assertIn(date(2020, 11, 23), self.holidays)
+        self.assertHoliday(
+            "2020-01-01",
+            "2020-01-02",
+            "2020-01-07",
+            "2020-01-19",
+            "2020-03-03",
+            "2020-03-08",
+            "2020-04-09",
+            "2020-05-09",
+            "2020-05-12",
+            "2020-05-26",
+            "2020-08-28",
+            "2020-10-14",
+            "2020-11,-23",
+        )
 
     def test_not_holiday(self):
-        self.assertNotIn("2020-08-16", self.holidays)
-        self.assertNotIn("2008-08-05", self.holidays)
+        self.assertNoHoliday(
+            "2020-08-16",
+            "2008-08-05",
+        )

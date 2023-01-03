@@ -9,16 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
 import warnings
 from datetime import date
 
-import holidays
+from holidays.countries.india import IN, IND, India
+from test.common import TestCase
 
 
-class TestIND(unittest.TestCase):
+class TestIndia(TestCase):
     def setUp(self):
-        self.holidays = holidays.IND()
+        self.holidays = India()
+
+    def test_country_aliases(self):
+        self.assertCountryAliases(India, IN, IND)
 
     def test_2018(self):
         self.assertIn(date(2018, 1, 14), self.holidays)
@@ -31,43 +34,43 @@ class TestIND(unittest.TestCase):
         self.assertIn(date(2018, 11, 7), self.holidays)
         self.assertIn(date(2018, 3, 2), self.holidays)
 
-        ap_holidays = holidays.IND(subdiv="AP")
-        ar_holidays = holidays.IND(subdiv="AR")
-        as_holidays = holidays.IND(subdiv="AS")
-        br_holidays = holidays.IND(subdiv="BR")
-        cg_holidays = holidays.IND(subdiv="CG")
-        ga_holidays = holidays.IND(subdiv="GA")
-        gj_holidays = holidays.IND(subdiv="GJ")
-        hr_holidays = holidays.IND(subdiv="HR")
-        hp_holidays = holidays.IND(subdiv="HP")
-        jk_holidays = holidays.IND(subdiv="JK")
-        jh_holidays = holidays.IND(subdiv="JH")
-        ka_holidays = holidays.IND(subdiv="KA")
-        kl_holidays = holidays.IND(subdiv="KL")
-        mp_holidays = holidays.IND(subdiv="MP")
-        mh_holidays = holidays.IND(subdiv="MH")
-        mn_holidays = holidays.IND(subdiv="MN")
-        ml_holidays = holidays.IND(subdiv="ML")
-        mz_holidays = holidays.IND(subdiv="MZ")
-        nl_holidays = holidays.IND(subdiv="NL")
-        or_holidays = holidays.IND(subdiv="OR")
-        pb_holidays = holidays.IND(subdiv="PB")
-        rj_holidays = holidays.IND(subdiv="RJ")
-        sk_holidays = holidays.IND(subdiv="SK")
-        tn_holidays = holidays.IND(subdiv="TN")
-        tr_holidays = holidays.IND(subdiv="TR")
-        ts_holidays = holidays.IND(subdiv="TS")
-        uk_holidays = holidays.IND(subdiv="UK")
-        up_holidays = holidays.IND(subdiv="UP")
-        wb_holidays = holidays.IND(subdiv="WB")
-        an_holidays = holidays.IND(subdiv="AN")
-        ch_holidays = holidays.IND(subdiv="CH")
-        dh_holidays = holidays.IND(subdiv="DH")
-        dd_holidays = holidays.IND(subdiv="DD")
-        dl_holidays = holidays.IND(subdiv="DL")
-        la_holidays = holidays.IND(subdiv="LA")
-        ld_holidays = holidays.IND(subdiv="LD")
-        py_holidays = holidays.IND(subdiv="PY")
+        ap_holidays = India(subdiv="AP")
+        ar_holidays = India(subdiv="AR")
+        as_holidays = India(subdiv="AS")
+        br_holidays = India(subdiv="BR")
+        cg_holidays = India(subdiv="CG")
+        ga_holidays = India(subdiv="GA")
+        gj_holidays = India(subdiv="GJ")
+        hr_holidays = India(subdiv="HR")
+        hp_holidays = India(subdiv="HP")
+        jk_holidays = India(subdiv="JK")
+        jh_holidays = India(subdiv="JH")
+        ka_holidays = India(subdiv="KA")
+        kl_holidays = India(subdiv="KL")
+        mp_holidays = India(subdiv="MP")
+        mh_holidays = India(subdiv="MH")
+        mn_holidays = India(subdiv="MN")
+        ml_holidays = India(subdiv="ML")
+        mz_holidays = India(subdiv="MZ")
+        nl_holidays = India(subdiv="NL")
+        or_holidays = India(subdiv="OR")
+        pb_holidays = India(subdiv="PB")
+        rj_holidays = India(subdiv="RJ")
+        sk_holidays = India(subdiv="SK")
+        tn_holidays = India(subdiv="TN")
+        tr_holidays = India(subdiv="TR")
+        ts_holidays = India(subdiv="TS")
+        uk_holidays = India(subdiv="UK")
+        up_holidays = India(subdiv="UP")
+        wb_holidays = India(subdiv="WB")
+        an_holidays = India(subdiv="AN")
+        ch_holidays = India(subdiv="CH")
+        dh_holidays = India(subdiv="DH")
+        dd_holidays = India(subdiv="DD")
+        dl_holidays = India(subdiv="DL")
+        la_holidays = India(subdiv="LA")
+        ld_holidays = India(subdiv="LD")
+        py_holidays = India(subdiv="PY")
 
         for dt in [date(2018, 1, 14), date(2018, 5, 1), date(2018, 10, 31)]:
             self.assertIn(dt, gj_holidays)
@@ -128,11 +131,11 @@ class TestIND(unittest.TestCase):
         warnings.simplefilter("always")
         with self.assertWarns(Warning):
             # Diwali and Holi out of range
-            holidays.IN(years=2000)
+            India(years=2000)
 
         with self.assertWarns(Warning):
             # Diwali and Holi out of range
-            holidays.IN(years=2031)
+            India(years=2031)
 
         diwali_name = "Diwali"
         holi_name = "Holi"
@@ -184,3 +187,24 @@ class TestIND(unittest.TestCase):
 
     def test_pre_1950(self):
         self.assertNotIn(date(1949, 1, 26), self.holidays)
+
+    def test_good_friday(self):
+        self.assertHoliday(
+            "1994-04-01",
+            "2017-04-14",
+            "2020-04-10",
+        )
+
+    def test_easter_sunday(self):
+        self.assertHoliday(
+            "1994-04-03",
+            "2017-04-16",
+            "2020-04-12",
+        )
+
+    def test_palm_sunday(self):
+        self.assertHoliday(
+            "1994-03-27",
+            "2017-04-09",
+            "2020-04-05",
+        )

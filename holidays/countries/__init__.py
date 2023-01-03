@@ -83,6 +83,7 @@ from .norway import NO, NOR, Norway
 from .pakistan import PK, PAK, Pakistan
 from .paraguay import PY, PRY, Paraguay
 from .peru import PE, PER, Peru
+from .philippines import PH, PHL, Philippines
 from .poland import PL, POL, Poland
 from .portugal import PT, PRT, Portugal
 from .romania import RO, ROU, Romania
@@ -98,6 +99,7 @@ from .spain import ES, ESP, Spain
 from .sweden import SE, SWE, Sweden
 from .switzerland import CH, CHE, Switzerland
 from .taiwan import TW, TWN, Taiwan
+from .thailand import TH, THA, Thailand
 from .tunisia import TN, TUN, Tunisia
 from .turkey import TR, TUR, Turkey
 from .ukraine import UA, UKR, Ukraine

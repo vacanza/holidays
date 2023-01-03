@@ -61,7 +61,7 @@ class Georgia(HolidayBase):
         name = "დიდი შაბათი"
         self[easter_date + rd(days=-1)] = name
 
-        # 	Orthodox Easter Sunday
+        # Orthodox Easter Sunday
         name = "აღდგომა"
         self[easter_date] = name
 
