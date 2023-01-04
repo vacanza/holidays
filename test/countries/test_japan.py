@@ -201,6 +201,14 @@ class TestJapan(unittest.TestCase):
             (2048, 3, 20),
             (2049, 3, 20),
             (2050, 3, 20),
+            (2051, 3, 21),
+            (2052, 3, 20),
+            (2055, 3, 21),
+            (2056, 3, 20),
+            (2092, 3, 19),
+            (2093, 3, 20),
+            (2096, 3, 19),
+            (2097, 3, 20),
         ):
             self.assertIn(date(*dt), self.holidays)
         self.assertIn(date(2092, 3, 19), self.holidays)
@@ -451,6 +459,13 @@ class TestJapan(unittest.TestCase):
             (1994, 9, 23),
             (1995, 9, 23),
             (1996, 9, 23),
+            (2021, 9, 23),
+            (2024, 9, 22),
+            (2027, 9, 23),
+            (2056, 9, 22),
+            (2068, 9, 22),
+            (2087, 9, 23),
+            (2089, 9, 22),
         ):
             self.assertIn(date(*dt), self.holidays)
             self.assertEqual(self.holidays[date(*dt)], "秋分の日")

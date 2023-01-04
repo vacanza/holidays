@@ -103,6 +103,10 @@ class Malaysia(HolidayBase):
         super().__init__(years, expand, observed, subdiv, prov, state)
 
     def _populate(self, year):
+        def _add_holiday(dt: date, hol: str) -> None:
+            if dt.year == year:
+                self[dt] = hol
+
         super()._populate(year)
 
         estimated_suffix = "* (*estimated)"
@@ -282,18 +286,19 @@ class Malaysia(HolidayBase):
             2022: ((MAY, 2),),
         }
         name = "Hari Raya Puasa"
-        if year in dates_obs:
-            hol_dates = [
-                (date(year, *date_obs), "") for date_obs in dates_obs[year]
-            ]
-        else:
-            hol_dates = [
-                (date_obs, estimated_suffix)
-                for date_obs in _islamic_to_gre(year, 10, 1)
-            ]
+        hol_dates = []
+        for yr in (year - 1, year):
+            if yr in dates_obs:
+                for date_obs in dates_obs[yr]:
+                    hol_dates.append((date(yr, *date_obs), ""))
+            else:
+                for date_obs in _islamic_to_gre(year, 10, 1):
+                    hol_dates.append((date_obs, estimated_suffix))
         for hol_date, hol_suffix in hol_dates:
-            self[hol_date] = name + hol_suffix
-            self[hol_date + rd(days=+1)] = "Second day of " + name + hol_suffix
+            _add_holiday(hol_date, f"{name}{hol_suffix}")
+            _add_holiday(
+                hol_date + rd(days=+1), f"Second day of {name}{hol_suffix}"
+            )
 
         # Hari Raya Haji and Arafat Day.
         # Date of observance is announced yearly.
@@ -325,24 +330,24 @@ class Malaysia(HolidayBase):
             2022: ((JUL, 10),),
         }
         name = "Hari Raya Haji"
-        prev_day_name = "Arafat Day"
-        if year in dates_obs:
-            hol_dates = [
-                (date(year, *date_obs), "") for date_obs in dates_obs[year]
-            ]
-        else:
-            hol_dates = [
-                (date_obs, estimated_suffix)
-                for date_obs in _islamic_to_gre(year, 12, 10)
-            ]
+        hol_dates = []
+        for yr in (year - 1, year):
+            if yr in dates_obs:
+                for date_obs in dates_obs[yr]:
+                    hol_dates.append((date(yr, *date_obs), ""))
+            else:
+                for date_obs in _islamic_to_gre(year, 12, 10):
+                    hol_dates.append((date_obs, estimated_suffix))
         for hol_date, hol_suffix in hol_dates:
-            self[hol_date] = name + hol_suffix
+            _add_holiday(hol_date, f"{name}{hol_suffix}")
             if self.subdiv == "TRG":
                 # Arafat Day is one day before Eid al-Adha
-                self[hol_date + rd(days=-1)] = prev_day_name + hol_suffix
+                _add_holiday(hol_date + rd(days=-1), f"Arafat Day{hol_suffix}")
             if self.subdiv in {"KDH", "KTN", "PLS", "TRG"}:
                 # Second day
-                self[hol_date + rd(days=+1)] = name + " Holiday" + hol_suffix
+                _add_holiday(
+                    hol_date + rd(days=+1), f"{name} Holiday{hol_suffix}"
+                )
 
         # ---------------------------------------------------------#
         # Holidays from the Sarawak Ordinance (not included above) #
@@ -623,9 +628,9 @@ class Malaysia(HolidayBase):
                 in_lieu_date = hol_date + rd(days=+1)
             if not in_lieu_date:
                 continue
-            while in_lieu_date in self:
+            while in_lieu_date.year == year and in_lieu_date in self:
                 in_lieu_date += rd(days=+1)
-            self[in_lieu_date] = hol_name + " [In lieu]"
+            _add_holiday(in_lieu_date, f"{hol_name} [In lieu]")
 
         # The last two days in May (Pesta Kaamatan).
         # (Sarawak Act)
