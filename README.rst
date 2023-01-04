@@ -139,6 +139,9 @@ following countries and their subdivisions are available:
    * - Azerbaijan
      - AZ
      - None
+   * - Bahrain
+     - BH
+     - None
    * - Bangladesh
      - BD
      - None

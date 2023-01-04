@@ -13,160 +13,119 @@ from datetime import date
 
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import (
-    FRI,
-    SAT,
-    JAN,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    NOV,
-    DEC,
-)
+from holidays.constants import FRI, SAT, JAN, MAY, JUL, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
 
-WEEKEND = (FRI, SAT)
 
 class Bahrain(HolidayBase):
     """
-    Bahrain holidays
+    Bahrain holidays.
 
-    # Holidays based on the Islamic Calendar are estimated (and so denoted),
-    # as are announced each year and based on moon sightings:
-    # - Eid Al Fitr*
-    # - Eid Al Adha*
-    # - Al Hijra New Year*
-    # - Ashoora*
-    # - Prophets Birthday*
-    # *only if hijri-converter library is installed, otherwise a warning is
-    #  raised that this holiday is missing. hijri-converter requires
-    #  Python >= 3.6
-    Primary sources:
-    https://www.cbb.gov.bh/official-bank-holidays/
-    https://www.officeholidays.com/countries/bahrain/
+    References:
+      - https://www.cbb.gov.bh/official-bank-holidays/
+      - https://www.officeholidays.com/countries/bahrain/
     """
 
     country = "BH"
+    weekend = {FRI, SAT}
 
     def _populate(self, year):
         super()._populate(year)
 
-        def _add_holiday(dt: date, hol: str) -> None:
-            """Only add if in current year; prevents adding holidays across
-            years (handles multi-day Islamic holidays that straddle Gregorian
-            years).
-            """
-            if dt.year == year:
-                self[dt] = hol
-
-        # New Year's Day
+        # New Year's Day.
         self[date(year, JAN, 1)] = "New Year's Day"
 
-        # Labor day
+        # Labour day.
         self[date(year, MAY, 1)] = "Labour Day"
 
-        # National Day
-        self[date(year, DEC, 16)] = "National Day"
-        self[date(year, DEC, 17)] = "National Day"
-
-        # Eid Al Fitr
-        # Date is announced each year. Usually stretches along 3 or 4 days,
-        # in some instances prepending/appending a day or two
-        # before/after the official holiday.
-        fitr = "Eid Al Fitr"
-        if year in dates_obs:
-            for date_obs in dates_obs[year]:
-                hol_date = date(year, *date_obs)
-                self[hol_date] = fitr
-                self[hol_date + rd(days=1)] = f"{fitr} Holiday"
-                self[hol_date + rd(days=2)] = f"{fitr} Holiday"
+        # Eid Al Fitr.
+        eid_al_fitr = "Eid Al Fitr"
+        eid_al_fitr_mapping = {
+            2022: ((MAY, 2),),
+        }
+        if year in eid_al_fitr_mapping:
+            for dt in eid_al_fitr_mapping[year]:
+                eid_al_fitr_day = date(year, *dt)
+                self[eid_al_fitr_day] = eid_al_fitr
+                self[eid_al_fitr_day + rd(days=+1)] = f"{eid_al_fitr} Holiday"
+                self[eid_al_fitr_day + rd(days=+2)] = f"{eid_al_fitr} Holiday"
         else:
-            for yr in (year - 1, year):
-                for date_obs in _islamic_to_gre(yr, 10, 1):
-                    hol_date = date_obs
-                    _add_holiday(hol_date, f"{fitr}* (*estimated)")
-                    _add_holiday(
-                        hol_date + rd(days=1),
-                        f"{fitr} Holiday* (*estimated)",
-                    )
-                    _add_holiday(
-                        hol_date + rd(days=2),
-                        f"{fitr} Holiday* (*estimated)",
-                    )
+            for eid_al_fitr_day in _islamic_to_gre(year, 10, 1):
+                self[eid_al_fitr_day] = f"{eid_al_fitr}* (*estimated)"
+                self[
+                    eid_al_fitr_day + rd(days=+1)
+                ] = f"{eid_al_fitr} Holiday* (*estimated)"
+                self[
+                    eid_al_fitr_day + rd(days=+2)
+                ] = f"{eid_al_fitr} Holiday* (*estimated)"
 
-        # Eid Al Adha
-        # Date is announced each year. Usually stretches along 3 or 4 days,
-        # in some instances prepending/appending a day or two
-        # before/after the official holiday.
-        adha = "Eid Al Adha"
-        if year in dates_obs:
-            for date_obs in dates_obs[year]:
-                hol_date = date(year, *date_obs)
-                self[hol_date + rd(days=1)] = adha
-                self[hol_date + rd(days=2)] = f"{adha} Holiday"
-                self[hol_date + rd(days=3)] = f"{adha} Holiday"
+        # Eid Al Adha.
+        eid_al_adha = "Eid Al Adha"
+        eid_al_adha_mapping = {
+            2022: ((JUL, 9),),
+        }
+        if year in eid_al_adha_mapping:
+            for dt in eid_al_adha_mapping[year]:
+                eid_al_adha_day = date(year, *dt)
+                self[eid_al_adha_day] = eid_al_adha
+                self[eid_al_adha_day + rd(days=+1)] = f"{eid_al_adha} Holiday"
+                self[eid_al_adha_day + rd(days=+2)] = f"{eid_al_adha} Holiday"
         else:
-            for yr in (year - 1, year):
-                for date_obs in _islamic_to_gre(yr, 12, 9):
-                    hol_date = date_obs
-                    _add_holiday(
-                        hol_date + rd(days=1), f"{adha}* (*estimated)"
-                    )
-                    _add_holiday(
-                        hol_date + rd(days=2),
-                        f"{adha}* Holiday* (*estimated)",
-                    )
-                    _add_holiday(
-                        hol_date + rd(days=3),
-                        f"{adha} Holiday* (*estimated)",
-                    )
+            for eid_al_adha_day in _islamic_to_gre(year, 12, 9):
+                self[
+                    eid_al_adha_day + rd(days=+1)
+                ] = f"{eid_al_adha}* (*estimated)"
+                self[
+                    eid_al_adha_day + rd(days=+2)
+                ] = f"{eid_al_adha}* (*estimated)"
+                self[
+                    eid_al_adha_day + rd(days=+3)
+                ] = f"{eid_al_adha}* (*estimated)"
 
-        # Al Hijra New Year
-        new_hijri_year = "Al Hijra New Year"
-        if year in dates_obs:
-            for date_obs in dates_obs[year]:
-                hol_date = date(year, *date_obs)
-                self[hol_date] = new_hijri_year
+        # Al Hijra New Year.
+        hijri_new_year = "Al Hijra New Year"
+        hijri_new_year_mapping = {
+            2022: ((JUL, 30),),
+        }
+        if year in hijri_new_year_mapping:
+            for dt in hijri_new_year_mapping[year]:
+                self[date(year, *dt)] = hijri_new_year
         else:
-            for date_obs in _islamic_to_gre(year, 1, 1):
-                hol_date = date_obs
-                self[hol_date] = f"{new_hijri_year}* (*estimated)"
+            for dt in _islamic_to_gre(year, 1, 1):
+                self[dt] = f"{hijri_new_year}* (*estimated)"
 
-        # Ashoora
-        # Date is announced each year, for the 9th and 10th Day,
-        # of the month of Muharam
-        ashoora = "Ashoora"
-        if year in dates_obs:
-            for date_obs in dates_obs[year]:
-                hol_date = date(year, *date_obs)
-                self[hol_date + rd(days=9)] = ashoora
-                self[hol_date + rd(days=10)] = f"{ashoora} Holiday"
+        # Ashura.
+        ashura = "Ashura"
+        ashura_mapping = {
+            2022: ((AUG, 7),),
+        }
+        if year in ashura_mapping:
+            for dt in ashura_mapping[year]:
+                ashura_day = date(year, *dt)
+                self[ashura_day] = ashura
+                self[ashura_day + rd(days=+1)] = f"{ashura} Holiday"
         else:
-            for yr in (year - 1, year):
-                for date_obs in _islamic_to_gre(yr, 1, 9):
-                    hol_date = date_obs
-                    _add_holiday(
-                        hol_date + rd(days=9), f"{ashoora}* (*estimated)"
-                    )
-                    _add_holiday(
-                        hol_date + rd(days=10),
-                        f"{ashoora}* Holiday* (*estimated)",
-                    )
+            for ashura_day in _islamic_to_gre(year, 1, 9):
+                self[ashura_day] = f"{ashura}* (*estimated)"
+                self[
+                    ashura_day + rd(days=+1)
+                ] = f"{ashura}* Holiday* (*estimated)"
 
-        # Prophets Birthday
+        # Prophets Birthday.
         mawlud = "Prophets Birthday"
-            if year in dates_obs:
-                for date_obs in dates_obs[year]:
-                    hol_date = date(year, *date_obs)
-                    self[hol_date] = mawlud
-            else:
-                for date_obs in _islamic_to_gre(year, 3, 12):
-                    hol_date = date_obs
-                    self[hol_date] = f"{mawlud}* (*estimated)"
+        mawlud_mapping = {2022: ((OCT, 8),)}
+        if year in mawlud_mapping:
+            for dt in mawlud_mapping[year]:
+                self[date(year, *dt)] = mawlud
+        else:
+            for dt in _islamic_to_gre(year, 3, 12):
+                self[dt] = f"{mawlud}* (*estimated)"
+
+        # National Day.
+        national_day = "National Day"
+        self[date(year, DEC, 16)] = national_day
+        self[date(year, DEC, 17)] = national_day
 
 
 class BH(Bahrain):
