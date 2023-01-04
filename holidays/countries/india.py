@@ -263,7 +263,7 @@ class India(HolidayBase):
         # Mawlid, Birth of the Prophet (12th day of 3rd Islamic month)
         name = "Mawlid"
         for dt in _islamic_to_gre(year, 3, 12):
-            self[dt] = f"f{name}* (*estimated)"
+            self[dt] = f"{name}* (*estimated)"
 
         # Eid ul-Fitr (1st and 2nd day of 10th Islamic month)
         name = "Eid ul-Fitr"

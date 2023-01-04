@@ -10,7 +10,6 @@
 #  License: MIT (see LICENSE file)
 
 import warnings
-from datetime import date
 
 from holidays.countries.india import IN, IND, India
 from test.common import TestCase
@@ -24,169 +23,151 @@ class TestIndia(TestCase):
         self.assertCountryAliases(India, IN, IND)
 
     def test_2018(self):
-        self.assertIn(date(2018, 1, 14), self.holidays)
-        self.assertIn(date(2018, 1, 26), self.holidays)
-        self.assertIn(date(2018, 10, 2), self.holidays)
-        self.assertIn(date(2018, 5, 1), self.holidays)
-        self.assertIn(date(2018, 8, 15), self.holidays)
-        self.assertIn(date(2018, 10, 2), self.holidays)
-        self.assertIn(date(2018, 12, 25), self.holidays)
-        self.assertIn(date(2018, 11, 7), self.holidays)
-        self.assertIn(date(2018, 3, 2), self.holidays)
+        self.assertHoliday(
+            "2018-01-14",
+            "2018-01-26",
+            "2018-03-02",
+            "2018-03-25",
+            "2018-03-30",
+            "2018-04-01",
+            "2018-05-01",
+            "2018-05-20",
+            "2018-06-15",
+            "2018-06-15",
+            "2018-08-15",
+            "2018-08-21",
+            "2018-08-22",
+            "2018-09-20",
+            "2018-10-02",
+            "2018-10-02",
+            "2018-11-07",
+            "2018-11-20",
+            "2018-12-25",
+        )
 
-        ap_holidays = India(subdiv="AP")
-        ar_holidays = India(subdiv="AR")
-        as_holidays = India(subdiv="AS")
-        br_holidays = India(subdiv="BR")
-        cg_holidays = India(subdiv="CG")
-        ga_holidays = India(subdiv="GA")
-        gj_holidays = India(subdiv="GJ")
-        hr_holidays = India(subdiv="HR")
-        hp_holidays = India(subdiv="HP")
-        jk_holidays = India(subdiv="JK")
-        jh_holidays = India(subdiv="JH")
-        ka_holidays = India(subdiv="KA")
-        kl_holidays = India(subdiv="KL")
-        mp_holidays = India(subdiv="MP")
-        mh_holidays = India(subdiv="MH")
-        mn_holidays = India(subdiv="MN")
-        ml_holidays = India(subdiv="ML")
-        mz_holidays = India(subdiv="MZ")
-        nl_holidays = India(subdiv="NL")
-        or_holidays = India(subdiv="OR")
-        pb_holidays = India(subdiv="PB")
-        rj_holidays = India(subdiv="RJ")
-        sk_holidays = India(subdiv="SK")
-        tn_holidays = India(subdiv="TN")
-        tr_holidays = India(subdiv="TR")
-        ts_holidays = India(subdiv="TS")
-        uk_holidays = India(subdiv="UK")
-        up_holidays = India(subdiv="UP")
-        wb_holidays = India(subdiv="WB")
-        an_holidays = India(subdiv="AN")
-        ch_holidays = India(subdiv="CH")
-        dh_holidays = India(subdiv="DH")
-        dd_holidays = India(subdiv="DD")
-        dl_holidays = India(subdiv="DL")
-        la_holidays = India(subdiv="LA")
-        ld_holidays = India(subdiv="LD")
-        py_holidays = India(subdiv="PY")
+        subdiv_holidays_mapping = {
+            "AN": ("2018-08-15",),
+            "AP": ("2018-11-01",),
+            "AR": ("2018-08-15",),
+            "AS": ("2018-04-15",),
+            "BR": (
+                "2018-03-22",
+                "2018-04-14",
+            ),
+            "CG": ("2018-11-01",),
+            "CH": ("2018-08-15",),
+            "DD": ("2018-08-15",),
+            "DH": ("2018-08-15",),
+            "DL": ("2018-08-15",),
+            "GA": ("2018-08-15",),
+            "GJ": (
+                "2018-01-14",
+                "2018-05-01",
+                "2018-08-15",
+                "2018-10-31",
+            ),
+            "HP": ("2018-08-15",),
+            "HR": ("2018-04-14", "2018-11-01"),
+            "JK": ("2018-08-15",),
+            "JH": ("2018-08-15",),
+            "KA": ("2018-11-01",),
+            "KL": (
+                "2018-04-14",
+                "2018-11-01",
+            ),
+            "LA": ("2018-08-15",),
+            "LD": ("2018-08-15",),
+            "MH": (
+                "2018-04-14",
+                "2018-05-01",
+                "2018-10-15",
+            ),
+            "ML": ("2018-08-15",),
+            "MN": ("2018-08-15",),
+            "MP": ("2018-11-01",),
+            "MZ": ("2018-08-15",),
+            "NL": ("2018-08-15",),
+            "OR": ("2018-04-01", "2018-04-14", "2018-08-15"),
+            "PB": ("2018-08-15",),
+            "PY": ("2018-08-15",),
+            "RJ": ("2018-03-30", "2018-06-15"),
+            "SK": ("2018-05-16",),
+            "TN": (
+                "2018-04-14",
+                "2018-04-15",
+                "2018-08-15",
+            ),
+            "TR": ("2018-08-15",),
+            "TS": ("2018-04-06", "2018-10-06"),
+            "UK": ("2018-04-14",),
+            "UP": ("2018-04-14",),
+            "WB": ("2018-04-14", "2018-04-15", "2018-05-09"),
+        }
 
-        for dt in [date(2018, 1, 14), date(2018, 5, 1), date(2018, 10, 31)]:
-            self.assertIn(dt, gj_holidays)
-        for dt in [date(2018, 4, 15), date(2018, 4, 14)]:
-            self.assertIn(dt, tn_holidays)
-            self.assertIn(dt, wb_holidays)
-
-        self.assertIn(date(2018, 3, 22), br_holidays)
-        self.assertIn(date(2018, 3, 30), rj_holidays)
-        self.assertIn(date(2018, 6, 15), rj_holidays)
-        self.assertIn(date(2018, 4, 1), or_holidays)
-        self.assertIn(date(2018, 4, 6), ts_holidays)
-        self.assertIn(date(2018, 4, 15), or_holidays)
-        self.assertIn(date(2018, 4, 14), or_holidays)
-        self.assertIn(date(2018, 4, 14), br_holidays)
-        self.assertIn(date(2018, 4, 14), kl_holidays)
-        self.assertIn(date(2018, 4, 14), up_holidays)
-        self.assertIn(date(2018, 4, 14), uk_holidays)
-        self.assertIn(date(2018, 4, 14), hr_holidays)
-        self.assertIn(date(2018, 4, 14), mh_holidays)
-        self.assertIn(date(2018, 4, 14), wb_holidays)
-        self.assertIn(date(2018, 5, 9), wb_holidays)
-        self.assertIn(date(2018, 4, 15), as_holidays)
-        self.assertIn(date(2018, 5, 1), mh_holidays)
-        self.assertIn(date(2018, 5, 16), sk_holidays)
-        self.assertIn(date(2018, 10, 6), ts_holidays)
-        self.assertIn(date(2018, 11, 1), ka_holidays)
-        self.assertIn(date(2018, 11, 1), ap_holidays)
-        self.assertIn(date(2018, 11, 1), hr_holidays)
-        self.assertIn(date(2018, 11, 1), mp_holidays)
-        self.assertIn(date(2018, 11, 1), kl_holidays)
-        self.assertIn(date(2018, 11, 1), cg_holidays)
-        self.assertIn(date(2018, 8, 15), ar_holidays)
-        self.assertIn(date(2018, 8, 15), ga_holidays)
-        self.assertIn(date(2018, 8, 15), gj_holidays)
-        self.assertIn(date(2018, 8, 15), hp_holidays)
-        self.assertIn(date(2018, 8, 15), jk_holidays)
-        self.assertIn(date(2018, 8, 15), jh_holidays)
-        self.assertIn(date(2018, 8, 15), mn_holidays)
-        self.assertIn(date(2018, 8, 15), ml_holidays)
-        self.assertIn(date(2018, 8, 15), mz_holidays)
-        self.assertIn(date(2018, 8, 15), nl_holidays)
-        self.assertIn(date(2018, 8, 15), or_holidays)
-        self.assertIn(date(2018, 8, 15), pb_holidays)
-        self.assertIn(date(2018, 8, 15), tn_holidays)
-        self.assertIn(date(2018, 8, 15), tr_holidays)
-        self.assertIn(date(2018, 8, 15), an_holidays)
-        self.assertIn(date(2018, 8, 15), ch_holidays)
-        self.assertIn(date(2018, 8, 15), dh_holidays)
-        self.assertIn(date(2018, 8, 15), dd_holidays)
-        self.assertIn(date(2018, 8, 15), dl_holidays)
-        self.assertIn(date(2018, 8, 15), la_holidays)
-        self.assertIn(date(2018, 8, 15), ld_holidays)
-        self.assertIn(date(2018, 8, 15), py_holidays)
-        self.assertIn(date(2018, 10, 15), mh_holidays)
+        for subdiv, holidays in subdiv_holidays_mapping.items():
+            self.assertHoliday(India(subdiv=subdiv), holidays)
 
     def test_diwali_and_holi(self):
         warnings.simplefilter("always")
-        with self.assertWarns(Warning):
-            # Diwali and Holi out of range
-            India(years=2000)
+        for year in (2000, 2031):  # Diwali and Holi out of range.
+            with self.assertWarns(Warning):
+                India(years=year)
 
-        with self.assertWarns(Warning):
-            # Diwali and Holi out of range
-            India(years=2031)
+        for dt in (
+            "2010-11-05",
+            "2011-10-26",
+            "2012-11-13",
+            "2013-11-03",
+            "2014-10-23",
+            "2015-11-11",
+            "2016-10-30",
+            "2017-10-19",
+            "2018-11-07",
+            "2019-10-27",
+            "2020-11-14",
+            "2021-11-04",
+            "2022-10-24",
+            "2023-11-12",
+            "2024-11-01",
+            "2025-10-20",
+            "2026-11-08",
+            "2027-10-29",
+            "2028-10-17",
+            "2029-11-05",
+            "2030-10-26",
+        ):
+            self.assertEqual(self.holidays[dt], "Diwali")
 
-        diwali_name = "Diwali"
-        holi_name = "Holi"
-        self.assertEqual(self.holidays[date(2010, 11, 5)], diwali_name)
-        self.assertEqual(self.holidays[date(2010, 3, 1)], holi_name)
-        self.assertEqual(self.holidays[date(2011, 3, 20)], holi_name)
-        self.assertEqual(self.holidays[date(2011, 10, 26)], diwali_name)
-        self.assertEqual(self.holidays[date(2012, 3, 8)], holi_name)
-        self.assertEqual(self.holidays[date(2012, 11, 13)], diwali_name)
-        self.assertEqual(self.holidays[date(2013, 3, 27)], holi_name)
-        self.assertEqual(self.holidays[date(2013, 11, 3)], diwali_name)
-        self.assertEqual(self.holidays[date(2014, 3, 17)], holi_name)
-        self.assertEqual(self.holidays[date(2014, 10, 23)], diwali_name)
-        self.assertEqual(self.holidays[date(2015, 3, 6)], holi_name)
-        self.assertEqual(self.holidays[date(2015, 11, 11)], diwali_name)
-        self.assertEqual(self.holidays[date(2016, 3, 24)], holi_name)
-        self.assertEqual(self.holidays[date(2016, 10, 30)], diwali_name)
-        self.assertEqual(self.holidays[date(2017, 3, 13)], holi_name)
-        self.assertEqual(self.holidays[date(2017, 10, 19)], diwali_name)
-        self.assertEqual(self.holidays[date(2018, 3, 2)], holi_name)
-        self.assertEqual(self.holidays[date(2018, 11, 7)], diwali_name)
-        self.assertEqual(self.holidays[date(2019, 3, 21)], holi_name)
-        self.assertEqual(self.holidays[date(2019, 10, 27)], diwali_name)
-        self.assertEqual(self.holidays[date(2020, 3, 10)], holi_name)
-        self.assertEqual(self.holidays[date(2020, 11, 14)], diwali_name)
-        self.assertEqual(self.holidays[date(2021, 3, 29)], holi_name)
-        self.assertEqual(self.holidays[date(2021, 11, 4)], diwali_name)
-        self.assertEqual(self.holidays[date(2022, 3, 18)], holi_name)
-        self.assertEqual(self.holidays[date(2022, 10, 24)], diwali_name)
-        self.assertEqual(self.holidays[date(2023, 3, 8)], holi_name)
-        self.assertEqual(self.holidays[date(2023, 11, 12)], diwali_name)
-        self.assertEqual(self.holidays[date(2024, 3, 25)], holi_name)
-        self.assertEqual(self.holidays[date(2024, 11, 1)], diwali_name)
-        self.assertEqual(self.holidays[date(2025, 3, 14)], holi_name)
-        self.assertEqual(self.holidays[date(2025, 10, 20)], diwali_name)
-        self.assertEqual(self.holidays[date(2026, 3, 4)], holi_name)
-        self.assertEqual(self.holidays[date(2026, 11, 8)], diwali_name)
-        self.assertEqual(self.holidays[date(2027, 3, 22)], holi_name)
-        self.assertEqual(self.holidays[date(2027, 10, 29)], diwali_name)
-        self.assertEqual(self.holidays[date(2028, 3, 11)], holi_name)
-        self.assertEqual(self.holidays[date(2028, 10, 17)], diwali_name)
-        self.assertEqual(self.holidays[date(2029, 3, 1)], holi_name)
-        self.assertEqual(self.holidays[date(2029, 11, 5)], diwali_name)
-        self.assertEqual(self.holidays[date(2030, 3, 20)], holi_name)
-        self.assertEqual(self.holidays[date(2030, 10, 26)], diwali_name)
+        for dt in (
+            "2010-03-01",
+            "2011-03-20",
+            "2012-03-08",
+            "2013-03-27",
+            "2014-03-17",
+            "2015-03-06",
+            "2016-03-24",
+            "2017-03-13",
+            "2018-03-02",
+            "2019-03-21",
+            "2020-03-10",
+            "2021-03-29",
+            "2022-03-18",
+            "2023-03-08",
+            "2024-03-25",
+            "2025-03-14",
+            "2026-03-04",
+            "2027-03-22",
+            "2028-03-11",
+            "2029-03-01",
+            "2030-03-20",
+        ):
+            self.assertEqual(self.holidays[dt], "Holi")
 
     def test_pre_1947(self):
-        self.assertNotIn(date(1946, 8, 15), self.holidays)
+        self.assertNoHoliday("1946-08-15")
 
     def test_pre_1950(self):
-        self.assertNotIn(date(1949, 1, 26), self.holidays)
+        self.assertNoHoliday("1949-01-26")
 
     def test_good_friday(self):
         self.assertHoliday(
