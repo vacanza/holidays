@@ -472,6 +472,10 @@ class TestUS(unittest.TestCase):
             self.assertNotIn(date(year, 4, 19), self.holidays)
             self.assertIn(date(year, 4, 19), me_holidays)
             self.assertIn(date(year, 4, 19), ma_holidays)
+        for year in range(1870, 1893):
+            self.assertNotIn(date(year, 4, 19), self.holidays)
+            self.assertNotIn(date(year, 4, 19), me_holidays)
+            self.assertNotIn(date(year, 4, 19), ma_holidays)
         for dt in [
             date(1969, 4, 21),
             date(1974, 4, 15),
@@ -593,6 +597,7 @@ class TestUS(unittest.TestCase):
         ]:
             self.assertNotIn(dt, self.holidays)
             self.assertIn(dt, ne_holidays)
+        self.assertNotIn(date(1874, 4, 22), ne_holidays)
 
     def test_primary_election_day(self):
         in_holidays = holidays.US(subdiv="IN")
@@ -620,10 +625,10 @@ class TestUS(unittest.TestCase):
             self.assertNotIn(dt + relativedelta(days=-1), mo_holidays)
             self.assertNotIn(dt + relativedelta(days=+1), mo_holidays)
         self.assertNotIn(date(2004, 5, 7), mo_holidays)
-        self.assertNotIn(date(2005, 5, 10), mo_holidays)
+        self.assertNotIn(date(2005, 5, 9), mo_holidays)
         mo_holidays.observed = True
         self.assertIn(date(2004, 5, 7), mo_holidays)
-        self.assertIn(date(2005, 5, 10), mo_holidays)
+        self.assertIn(date(2005, 5, 9), mo_holidays)
 
     def test_memorial_day(self):
         for dt in [

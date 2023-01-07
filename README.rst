@@ -106,7 +106,7 @@ Available Countries
 
 .. _ISO 3166-1 alpha-2 code: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
 
-We currently support 96 countries. The standard way to refer to a country is by
+We currently support 101 countries. The standard way to refer to a country is by
 using its `ISO 3166-1 alpha-2 code`_, the same used for domain names. The
 following countries and their subdivisions are available:
 
@@ -123,6 +123,9 @@ following countries and their subdivisions are available:
      - None
    * - Argentina
      - AR
+     - None
+   * - Armenia
+     - AM
      - None
    * - Aruba
      - AW
@@ -324,6 +327,9 @@ following countries and their subdivisions are available:
      - None
    * - Norway
      - NO
+     - None
+   * - Pakistan
+     - PK
      - None
    * - Paraguay
      - PY

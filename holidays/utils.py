@@ -9,20 +9,24 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-# from __future__ import annotations  # add in Python 3.7
+__all__ = (
+    "CountryHoliday",
+    "country_holidays",
+    "financial_holidays",
+    "list_supported_countries",
+    "list_supported_financial",
+)
 
 import inspect
-import math
 import warnings
-from datetime import date, datetime, timedelta
+from datetime import date, timedelta
 from functools import lru_cache
 from typing import Dict, Iterable, List, Optional, Union
 
 from hijri_converter import convert
 from hijri_converter.ummalqura import GREGORIAN_RANGE
 
-import holidays.countries
-import holidays.financial
+from holidays import countries, financial
 from holidays.holiday_base import HolidayBase
 
 
@@ -170,7 +174,7 @@ def country_holidays(
     See documentation for examples.
     """
     try:
-        return getattr(holidays.countries, country)(
+        return getattr(countries, country)(
             years=years,
             subdiv=subdiv,
             expand=expand,
@@ -224,7 +228,7 @@ def financial_holidays(
     examples.
     """
     try:
-        return getattr(holidays.financial, market)(
+        return getattr(financial, market)(
             years=years,
             subdiv=subdiv,
             expand=expand,
@@ -268,9 +272,7 @@ def list_supported_countries() -> Dict[str, List[str]]:
     """
     return {
         cls.country: cls.subdivisions
-        for name, cls in inspect.getmembers(
-            holidays.countries, inspect.isclass
-        )
+        for name, cls in inspect.getmembers(countries, inspect.isclass)
         if len(name) == 2 and issubclass(cls, HolidayBase)
     }
 
@@ -285,7 +287,7 @@ def list_supported_financial() -> Dict[str, List[str]]:
     """
     return {
         cls.market: cls.subdivisions
-        for _, cls in inspect.getmembers(holidays.financial, inspect.isclass)
+        for _, cls in inspect.getmembers(financial, inspect.isclass)
         if issubclass(cls, HolidayBase)
     }
 
@@ -775,170 +777,3 @@ class _ChineseLuniSolar:
             span_days += self._lunar_month_days(year, m)
         span_days -= 15
         return self.SOLAR_START_DATE + timedelta(span_days)
-
-
-class _AstroMeeusAlgorithms:
-    def __init__(self) -> None:
-        """
-        This class provides some of Jean Meeus' algorithms from the book
-        `Astronomical Algorithms` required for equinox and solstice
-        calculations.
-        The complete list of algorithm implementations is available here:
-        https://github.com/pavolgaj/AstroAlgorithms4Python
-
-        Usage example:
-
-        >>> from holidays.utils import _AstroMeeusAlgorithms
-        >>> astro_alg = _AstroMeeusAlgorithms()
-        >>> equinox = astro_alg.jd2date(astro_alg.summer(2026))
-        >>> print(equinox)
-        2026-06-21 05:26:04
-        """
-
-    def _corrections(self, jd: float) -> float:
-        """
-        Corrections to times of equinox/solstice
-
-        :param jd: Julian day
-        :return: The Julian date of the next equinox or solstice.
-        """
-        T = (jd - 2451545) / 36525.0
-
-        W = math.radians(35999.373 * T - 2.47)
-        dl = 1 + 0.0334 * math.cos(W) + 0.0007 * math.cos(2 * W)
-
-        A = [
-            485,
-            203,
-            199,
-            182,
-            156,
-            136,
-            77,
-            74,
-            70,
-            58,
-            52,
-            50,
-            45,
-            44,
-            29,
-            18,
-            17,
-            16,
-            14,
-            12,
-            12,
-            12,
-            9,
-            8,
-        ]
-        B = [
-            324.96,
-            337.23,
-            342.08,
-            27.85,
-            73.14,
-            171.52,
-            222.54,
-            296.72,
-            243.58,
-            119.81,
-            297.17,
-            21.02,
-            247.54,
-            325.15,
-            60.93,
-            155.12,
-            288.79,
-            198.04,
-            199.76,
-            95.39,
-            287.11,
-            320.81,
-            227.73,
-            15.45,
-        ]
-        C = [
-            1934.136,
-            32964.467,
-            20.186,
-            445267.112,
-            45036.886,
-            22518.443,
-            65928.934,
-            3034.906,
-            9037.513,
-            33718.147,
-            150.678,
-            2281.226,
-            29929.562,
-            31555.956,
-            4443.417,
-            67555.328,
-            4562.452,
-            62894.029,
-            31436.921,
-            14577.848,
-            31931.756,
-            34777.259,
-            1222.114,
-            16859.074,
-        ]
-
-        S = 0.0
-        for i in range(len(A)):
-            S += A[i] * math.cos(math.radians(B[i] + C[i] * T))
-        return jd + 0.00001 * S / dl
-
-    def summer(self, year: int) -> float:
-        """
-        Calculates summer (June) solstice for given year
-
-        :param year: The year for which you want to calculate the solstice
-        :return: The Julian date of the summer solstice.
-        """
-        Y = (year - 2000) / 1000.0
-        jd0 = (
-            2451716.56767
-            + 365241.62603 * Y
-            + 0.00325 * Y**2
-            + 0.00888 * Y**3
-            - 0.00030 * Y**4
-        )
-        return self._corrections(jd0)
-
-    def jd2date(self, jd: float) -> datetime:
-        """
-        Convert a Julian date to a Gregorian date.
-
-        :param jd: Julian date
-        :return: The datetime object of the Julian date.
-        """
-        jd += 0.5
-        z = int(jd)
-        f = jd % 1
-        if z < 2299161:
-            a = z
-        else:
-            alp = int((z - 1867216.25) / 36524.25)
-            a = z + 1 + alp - int(alp / 4)
-        b = a + 1524
-        c = int((b - 122.1) / 365.25)
-        d = int(365.25 * c)
-        e = int((b - d) / 30.6001)
-
-        h = int(f * 24)
-        m = int((f - h / 24.0) * 1440)
-        s = round((f - h / 24.0 - m / 1440.0) * 86400.0, 2)
-        day = b - d - int(30.6001 * e)
-        if e < 14:
-            mon = e - 1
-        else:
-            mon = e - 13
-        if mon > 2:
-            year = c - 4716
-        else:
-            year = c - 4715
-
-        return datetime(year, mon, day, h, m, int(s))

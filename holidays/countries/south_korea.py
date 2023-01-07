@@ -286,9 +286,9 @@ class Korea(SouthKorea):
         super().__init__(*args, **kwargs)
 
 
-class KR(Korea):
+class KR(SouthKorea):
     pass
 
 
-class KOR(Korea):
+class KOR(SouthKorea):
     pass

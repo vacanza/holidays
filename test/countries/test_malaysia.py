@@ -1109,6 +1109,7 @@ class TestMalaysia(unittest.TestCase):
         state_holidays = self.kedah_holidays
 
         # Hari Raya Haji
+        self.assertIn(date(2006, 12, 31), state_holidays)
         self.assertIn(date(2018, 8, 22), state_holidays)
         self.assertIn(date(2019, 8, 11), state_holidays)
         self.assertIn(date(2020, 7, 31), state_holidays)
@@ -1116,6 +1117,7 @@ class TestMalaysia(unittest.TestCase):
         self.assertIn(date(2022, 7, 10), state_holidays)
         self.assertIn(date(2023, 6, 28), state_holidays)
         # Hari Raya Haji Holiday
+        self.assertIn(date(2007, 1, 1), state_holidays)
         self.assertIn(date(2018, 8, 23), state_holidays)
         self.assertIn(date(2019, 8, 12), state_holidays)
         self.assertIn(date(2020, 8, 1), state_holidays)
@@ -1152,6 +1154,7 @@ class TestMalaysia(unittest.TestCase):
         self.assertIn(date(2020, 11, 11), state_holidays)
         self.assertNotIn(date(2001, 11, 11), state_holidays)
         # Hari Raya Haji
+        self.assertIn(date(2006, 12, 31), state_holidays)
         self.assertIn(date(2018, 8, 22), state_holidays)
         self.assertIn(date(2019, 8, 11), state_holidays)
         self.assertIn(date(2020, 7, 31), state_holidays)
@@ -1159,6 +1162,7 @@ class TestMalaysia(unittest.TestCase):
         self.assertIn(date(2022, 7, 10), state_holidays)
         self.assertIn(date(2023, 6, 28), state_holidays)
         # Hari Raya Haji Holiday
+        self.assertIn(date(2007, 1, 1), state_holidays)
         self.assertIn(date(2018, 8, 23), state_holidays)
         self.assertIn(date(2019, 8, 12), state_holidays)
         self.assertIn(date(2020, 8, 1), state_holidays)
@@ -1379,6 +1383,7 @@ class TestMalaysia(unittest.TestCase):
         self.assertIn(date(2022, 7, 12), state_holidays)  # In lieu
         self.assertIn(date(2023, 6, 27), state_holidays)
         # Hari Raya Haji
+        self.assertIn(date(2006, 12, 31), state_holidays)
         self.assertIn(date(2018, 8, 22), state_holidays)
         self.assertIn(date(2019, 8, 11), state_holidays)
         self.assertIn(date(2020, 7, 31), state_holidays)
@@ -1386,6 +1391,7 @@ class TestMalaysia(unittest.TestCase):
         self.assertIn(date(2022, 7, 10), state_holidays)
         self.assertIn(date(2023, 6, 28), state_holidays)
         # Hari Raya Haji Holiday
+        self.assertIn(date(2007, 1, 1), state_holidays)
         self.assertIn(date(2018, 8, 23), state_holidays)
         self.assertIn(date(2019, 8, 12), state_holidays)
         self.assertIn(date(2020, 8, 1), state_holidays)
@@ -1534,6 +1540,7 @@ class TestMalaysia(unittest.TestCase):
         state_holidays = self.perlis_holidays
 
         # Hari Raya Haji
+        self.assertIn(date(2006, 12, 31), state_holidays)
         self.assertIn(date(2018, 8, 22), state_holidays)
         self.assertIn(date(2019, 8, 11), state_holidays)
         self.assertIn(date(2020, 7, 31), state_holidays)
@@ -1541,6 +1548,7 @@ class TestMalaysia(unittest.TestCase):
         self.assertIn(date(2022, 7, 10), state_holidays)
         self.assertIn(date(2023, 6, 28), state_holidays)
         # Hari Raya Haji Holiday
+        self.assertIn(date(2007, 1, 1), state_holidays)
         self.assertIn(date(2018, 8, 23), state_holidays)
         self.assertIn(date(2019, 8, 12), state_holidays)
         self.assertIn(date(2019, 8, 13), state_holidays)  # In lieu

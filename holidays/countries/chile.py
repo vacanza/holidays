@@ -9,16 +9,18 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from datetime import date, datetime
 
+from dateutil import tz
 from dateutil.easter import easter
 from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
+from pymeeus.Epoch import Epoch
+from pymeeus.Sun import Sun
 
 from holidays.constants import JAN, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import TUE, WED, THU, FRI, SAT, SUN
 from holidays.holiday_base import HolidayBase
-from holidays.utils import _AstroMeeusAlgorithms
 
 
 class Chile(HolidayBase):
@@ -105,12 +107,14 @@ class Chile(HolidayBase):
         if year == 2021:
             self[date(year, JUN, 21)] = name
         elif year >= 2022:
-            astro_alg = _AstroMeeusAlgorithms()
-            equinox = astro_alg.jd2date(astro_alg.summer(year))
+            epoch = Sun.get_equinox_solstice(year, target="summer")
             # Received date for UTC timezone needs to be adjusted
             # to match Chile's timezone
             # https://www.feriadoschilenos.cl/#DiaNacionalDeLosPueblosIndigenasII
-            adjusted_date = equinox + rd(hours=-4)
+            equinox = map(int, Epoch(epoch).get_full_date())
+            adjusted_date = datetime(*equinox, tzinfo=tz.UTC).astimezone(
+                tz.gettz("America/Santiago")
+            )
             self[date(year, JUN, adjusted_date.day)] = name
 
         # Saint Peter and Saint Paul (Law 16.840, Law 18.432)
