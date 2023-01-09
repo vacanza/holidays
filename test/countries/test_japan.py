@@ -11,6 +11,7 @@
 
 import unittest
 from datetime import date
+from unittest import mock
 
 import holidays
 
@@ -720,3 +721,7 @@ class TestJapan(unittest.TestCase):
             (2050, 3, 21),
         ):
             self.assertIn(date(*dt), self.holidays)
+
+    @mock.patch("importlib.util.find_spec", return_value=None)
+    def test_dependency_pymeeus(self, find_spec):
+        self.assertRaises(ImportError, lambda: holidays.Japan())

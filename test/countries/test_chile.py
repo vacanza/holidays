@@ -9,6 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import mock
+
 from holidays.countries.chile import Chile, CL, CHL
 from test.common import TestCase
 
@@ -382,3 +384,7 @@ class TestChile(TestCase):
 
     def test_2079(self):
         self.assertHoliday("2079-06-20")
+
+    @mock.patch("importlib.util.find_spec", return_value=None)
+    def test_dependency_pymeeus(self, find_spec):
+        self.assertRaises(ImportError, lambda: Chile())

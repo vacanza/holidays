@@ -9,13 +9,12 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+import importlib
 from datetime import date, datetime
 
 from dateutil import tz
 from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
-from pymeeus.Epoch import Epoch
-from pymeeus.Sun import Sun
 
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC
@@ -38,6 +37,25 @@ class Japan(HolidayBase):
             (OCT, 22, "即位礼正殿の儀が行われる日"),  # Enthronement ceremony.
         ),
     }
+
+    def __init__(self, **kwargs):
+        if not importlib.util.find_spec("pymeeus"):
+            raise ImportError(
+                "Could not import 'pymeeus'. "
+                "Use `pip install holidays[astronomic]` to install it."
+            )
+
+        from pymeeus.Epoch import Epoch
+        from pymeeus.Sun import Sun
+
+        attr_module_mapping = {
+            "Epoch": Epoch,
+            "Sun": Sun,
+        }
+        for attr_name, attr in attr_module_mapping.items():
+            globals()[attr_name] = attr
+
+        HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
         if year < 1949 or year > 2099:

@@ -9,14 +9,13 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+import importlib
 from datetime import date, datetime
 
 from dateutil import tz
 from dateutil.easter import easter
 from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
-from pymeeus.Epoch import Epoch
-from pymeeus.Sun import Sun
 
 from holidays.constants import JAN, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import TUE, WED, THU, FRI, SAT, SUN
@@ -53,6 +52,25 @@ class Chile(HolidayBase):
         "TA",
         "VS",
     ]
+
+    def __init__(self, **kwargs):
+        if not importlib.util.find_spec("pymeeus"):
+            raise ImportError(
+                "Could not import 'pymeeus'. "
+                "Use `pip install holidays[astronomic]` to install it."
+            )
+
+        from pymeeus.Epoch import Epoch
+        from pymeeus.Sun import Sun
+
+        attr_module_mapping = {
+            "Epoch": Epoch,
+            "Sun": Sun,
+        }
+        for attr_name, attr in attr_module_mapping.items():
+            globals()[attr_name] = attr
+
+        HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
 
