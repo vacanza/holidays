@@ -190,7 +190,7 @@ following countries and their subdivisions are available:
    * - Chile
      - CL
      - Regions: AI, AN, AP, AR, AT, BI, CO, LI, LL, LR, MA, ML, NB, RM, TA, VS
-     - None
+     - holidays[astronomic]
    * - China
      - CN
      - None
@@ -310,7 +310,7 @@ following countries and their subdivisions are available:
    * - Japan
      - JP
      - None
-     - None
+     - holidays[astronomic]
    * - Kazakhstan
      - KZ
      - None
