@@ -17,6 +17,7 @@ __all__ = (
     "list_supported_financial",
 )
 
+import importlib
 import inspect
 import warnings
 from datetime import date, timedelta
@@ -322,14 +323,14 @@ def _islamic_to_gre(Gyear: int, Hmonth: int, Hday: int) -> List[date]:
         List of Gregorian dates within the Gregorian year specified that
         matches the Islamic (Lunar Hijrī) calendar day and month specified.
     """
-    try:
-        from hijri_converter import convert
-        from hijri_converter.ummalqura import GREGORIAN_RANGE
-    except ImportError:
-        raise Exception(
-            "Could not import hijri-converter. "
-            "Please install using pip install -U holidays[islamic]"
+    if not importlib.util.find_spec("hijri_converter"):
+        raise ImportError(
+            "Could not import 'hijri_converter'. "
+            "Use `pip install holidays[islamic]` to install it."
         )
+
+    from hijri_converter import convert
+    from hijri_converter.ummalqura import GREGORIAN_RANGE
 
     gre_dates: List[date] = []
 

@@ -11,10 +11,12 @@
 
 import unittest
 from datetime import date
+from unittest import mock
 
 from dateutil.relativedelta import relativedelta
 
 import holidays
+from holidays.countries.israel import Israel
 
 
 class TestIsrael(unittest.TestCase):
@@ -118,3 +120,7 @@ class TestIsrael(unittest.TestCase):
 
         for names in il_holidays.values():
             self.assertNotIn(holiday_name + " (Observed)", names)
+
+    @mock.patch("importlib.util.find_spec", return_value=None)
+    def test_dependency_convertdate(self, find_spec):
+        self.assertRaises(ImportError, lambda: Israel())

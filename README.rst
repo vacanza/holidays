@@ -298,7 +298,7 @@ following countries and their subdivisions are available:
    * - Israel
      - IL
      - None
-     - holidays[israel]
+     - holidays[jewish]
    * - Italy
      - IT
      - Provinces: AG, AL, AN, AO, AP, AQ, AR, AT, AV, BA, BG, BI, BL, BN, BO, BR, BS, BT, BZ, CA, CB, CE, CH, CL, CN, CO, CR, CS, CT, CZ, EN, FC, FE, FG, FI, FM, FR, GE, GO, GR, IM, IS, KR, LC, LE, LI, LO, LT, LU, MB, MC, ME, MI, MN, MO, MS, MT, NA, NO, NU, OR, PA, PC, PD, PE, PG, PI, PN, PO, PR, PT, PU, PV, PZ, RA, RC, RE, RG, RI, RM, RN, RO, SA, SI, SO, SP, SR, SS, SU, SV, TA, TE, TN, TO, TP, TR, TS, TV, UD, VA, VB, VC, VE, VI, VR, VT, VV; Cities: Barletta, Andria, Trani, Cesena, Forlì, Pesaro, Urbino
@@ -317,6 +317,7 @@ following countries and their subdivisions are available:
      - holidays[islamic]
    * - Kenya
      - KE
+     - None
      - None
    * - Latvia
      - LV
@@ -397,6 +398,7 @@ following countries and their subdivisions are available:
    * - Norway
      - NO
      - None
+     - None
    * - Pakistan
      - PK
      - None
@@ -448,10 +450,11 @@ following countries and their subdivisions are available:
    * - South Africa
      - ZA
      - None
+     - None
    * - South Korea
      - KR
      - None
-     - None
+     - holidays[korean-lunar]
    * - Spain
      - ES
      - Autonomous communities: AN (Andalucía), AR (Aragón), AS (Asturias), CB (Cantabria), CE (Ceuta), CL (Castilla y León), CM (Castilla La Mancha), CN (Canarias), CT (Cataluña), EX (Extremadura), GA (Galicia), IB (Islas Baleares), MC (Murcia), MD (Madrid), NC (Navarra), PV (País Vasco), RI (La Rioja), VC (Comunidad Valenciana)
@@ -511,7 +514,7 @@ following countries and their subdivisions are available:
    * - Vietnam
      - VN
      - None
-     - holidays[lunar]
+     - holidays[korean-lunar]
    * - Zambia
      - ZM
      - None

@@ -12,6 +12,7 @@
 import unittest
 import warnings
 from datetime import date
+from unittest import mock
 
 import holidays
 
@@ -371,3 +372,7 @@ class TestSouthKorea(unittest.TestCase):
         warnings.simplefilter("error")
         with self.assertRaises(Warning):
             holidays.Korea()
+
+    @mock.patch("importlib.util.find_spec", return_value=None)
+    def test_dependency_korean_lunar_calendar(self, find_spec):
+        self.assertRaises(ImportError, lambda: holidays.SouthKorea())

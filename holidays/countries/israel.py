@@ -10,22 +10,8 @@
 #  License: MIT (see LICENSE file)
 
 
+import importlib
 from datetime import date
-
-try:
-    from convertdate import gregorian, hebrew
-    from convertdate.holidays import (
-        hanukkah,
-        lag_baomer,
-        passover,
-        purim,
-        rosh_hashanah,
-        shavuot,
-        sukkot,
-        yom_kippur,
-    )
-except ImportError:
-    gregorian = hebrew = None
 
 from dateutil.relativedelta import relativedelta as rd
 
@@ -38,11 +24,34 @@ class Israel(HolidayBase):
     country = "IL"
 
     def __init__(self, **kwargs):
-        if not gregorian:
-            raise Exception(
-                "Could not import convertdate. "
-                "Please install using pip install -U holidays[israel]"
+        if not importlib.util.find_spec("convertdate"):
+            raise ImportError(
+                "Could not import 'convertdate'. "
+                "Use `pip install holidays[jewish]` to install it."
             )
+
+        import convertdate
+
+        attr_module_mapping = {
+            convertdate: (
+                "gregorian",
+                "hebrew",
+                "holidays",
+            ),
+            convertdate.holidays: (
+                "hanukkah",
+                "lag_baomer",
+                "passover",
+                "purim",
+                "rosh_hashanah",
+                "shavuot",
+                "sukkot",
+                "yom_kippur",
+            ),
+        }
+        for module, attr_names in attr_module_mapping.items():
+            for attr_name in attr_names:
+                globals()[attr_name] = getattr(module, attr_name)
 
         HolidayBase.__init__(self, **kwargs)
 

@@ -10,25 +10,15 @@
 #  License: MIT (see LICENSE file)
 
 
+import importlib
 import warnings
 from datetime import date
 from typing import Tuple
 
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import (
-    SAT,
-    SUN,
-    JAN,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    OCT,
-    DEC,
-)
+from holidays.constants import SAT, SUN, JAN, MAR, APR, MAY, JUN, JUL, AUG
+from holidays.constants import OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -55,15 +45,14 @@ class SouthKorea(HolidayBase):
     }
 
     def __init__(self, **kwargs):
-        try:
-            # Installation: pip install korean_lunar_calendar
-            # URL: https://github.com/usingsky/korean_lunar_calendar_py/
-            from korean_lunar_calendar import KoreanLunarCalendar
-        except ImportError:
-            raise Exception(
-                "Could not import korean-lunar-calendar. "
-                "Please install using pip install -U holidays[lunar]"
+        if not importlib.util.find_spec("korean_lunar_calendar"):
+            raise ImportError(
+                "Could not import 'korean_lunar_calendar'. "
+                "Use `pip install holidays[korean-lunar]` to install it."
             )
+
+        from korean_lunar_calendar import KoreanLunarCalendar
+
         self.korean_cal = KoreanLunarCalendar()
         HolidayBase.__init__(self, **kwargs)
 

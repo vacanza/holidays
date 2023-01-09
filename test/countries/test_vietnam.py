@@ -11,6 +11,7 @@
 
 import unittest
 from datetime import date
+from unittest import mock
 
 from dateutil.relativedelta import relativedelta
 
@@ -141,3 +142,7 @@ class TestVietnam(unittest.TestCase):
         self.holidays = holidays.VN(observed=False)
         # New Years Day
         self.assertNotIn("2023-01-02", self.holidays)
+
+    @mock.patch("importlib.util.find_spec", return_value=None)
+    def test_dependency_korean_lunar_calendar(self, find_spec):
+        self.assertRaises(ImportError, lambda: holidays.Vietnam())
