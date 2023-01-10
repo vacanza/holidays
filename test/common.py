@@ -43,7 +43,9 @@ class TestCase(unittest.TestCase):
 
         # Generate translation files for a specific entity.
         name = getattr(cls_test, "country", getattr(cls_test, "market", None))
-        for po_path in Path("locale").rglob(f"{name}.po"):
+        for po_path in Path(os.path.join("holidays", "locale")).rglob(
+            f"{name}.po"
+        ):
             po_file = str(po_path)
             mo_file = po_file.replace(".po", ".mo")
             subprocess.run(

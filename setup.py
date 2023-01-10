@@ -20,7 +20,7 @@ from setuptools import setup
 
 def generate_mo_files():
     """Looks up for .po files and generates respective .mo files."""
-    for po_path in Path("locale").rglob("*.po"):
+    for po_path in Path(os.path.join("holidays", "locale")).rglob("*.po"):
         po_file = str(po_path)
         mo_file = po_file.replace(".po", ".mo")
         subprocess.run(

@@ -14,7 +14,7 @@ coverage.xml
 docs/_build
 docs/build
 docs/source/_build
-locale/pot
+holidays/locale/pot
 
 # IDE Stuff
 .idea
