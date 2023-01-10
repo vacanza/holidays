@@ -46,38 +46,61 @@ class TestKazakhstan(TestCase):
             "2020-12-17",
         )
 
-    def test_christmas(self):
-        self.assertHoliday(*[f"{year}-01-07" for year in range(2007, 2100)])
-        self.assertNoHoliday(*[f"{year}-01-07" for year in range(1990, 2007)])
-
     def test_nauryz(self):
-        for year in range(2009, 2100):
+        for year in range(2010, 2100):
             self.assertHoliday(
                 f"{year}-03-21", f"{year}-03-22", f"{year}-03-23"
             )
-        for year in range(1990, 2009):
+        for year in range(1990, 2002):
             self.assertNoHoliday(
                 f"{year}-03-21", f"{year}-03-22", f"{year}-03-23"
             )
+        for year in range(2002, 2010):
+            self.assertNoHoliday(
+                Kazakhstan(observed=False, years=year),
+                f"{year}-03-21",
+                f"{year}-03-23",
+            )
 
     def test_defenders_day(self):
-        self.assertHoliday(*[f"{year}-05-07" for year in range(2013, 2100)])
-        self.assertNoHoliday(*[f"{year}-05-07" for year in range(1990, 2013)])
+        self.assertHoliday(f"{year}-05-07" for year in range(2013, 2100))
+        self.assertNoHoliday(f"{year}-05-07" for year in range(1990, 2013))
 
     def test_capital_city_day(self):
-        self.assertHoliday(*[f"{year}-07-06" for year in range(2009, 2100)])
-        self.assertNoHoliday(*[f"{year}-07-06" for year in range(1990, 2009)])
+        self.assertHoliday(f"{year}-07-06" for year in range(2009, 2100))
+        self.assertNoHoliday(f"{year}-07-06" for year in range(1990, 2009))
 
     def test_constitution_day(self):
-        self.assertHoliday(*[f"{year}-08-30" for year in range(1996, 2100)])
-        self.assertNoHoliday(*[f"{year}-08-30" for year in range(1990, 1996)])
+        self.assertHoliday(f"{year}-08-30" for year in range(1996, 2100))
+        self.assertNoHoliday(f"{year}-08-30" for year in range(1990, 1996))
+
+    def test_republic_day(self):
+        self.assertHoliday(f"{year}-10-25" for year in range(1994, 2009))
+        self.assertHoliday(f"{year}-10-25" for year in range(2022, 2100))
+        self.assertNoHoliday(f"{year}-10-25" for year in range(2009, 2022))
 
     def test_first_president_day(self):
-        self.assertHoliday(*[f"{year}-12-01" for year in range(2013, 2100)])
-        self.assertNoHoliday(*[f"{year}-12-01" for year in range(1990, 2013)])
+        self.assertHoliday(f"{year}-12-01" for year in range(2012, 2022))
+        self.assertNoHoliday(f"{year}-12-01" for year in range(1990, 2012))
+        self.assertNoHoliday(f"{year}-12-01" for year in range(2022, 2100))
+
+    def test_independence_day(self):
+        self.assertHoliday(f"{year}-12-16" for year in range(1990, 2100))
+        self.assertHoliday(f"{year}-12-17" for year in range(2002, 2022))
+        self.assertNoHoliday(f"{year}-12-17" for year in range(1990, 2002))
+        for year in range(2022, 2100):
+            self.assertNoHoliday(
+                Kazakhstan(observed=False, years=year), f"{year}-12-17"
+            )
+
+    def test_christmas(self):
+        self.assertHoliday(f"{year}-01-07" for year in range(2006, 2100))
+        self.assertNoHoliday(f"{year}-01-07" for year in range(1990, 2006))
 
     def test_kurban_ait(self):
         self.assertHoliday(
+            "2006-01-10",
+            "2006-12-31",
             "2007-12-20",
             "2008-12-08",
             "2009-11-27",
@@ -97,16 +120,9 @@ class TestKazakhstan(TestCase):
             "2023-06-28",
         )
 
-        self.assertNoHoliday(
-            "2005-01-21",
-            "2006-01-10",
-            "2006-12-31",
-        )
-
     def test_observed(self):
         observed_holidays = (
             "2012-01-03",
-            "2012-01-09",
             "2012-12-18",
             "2013-03-25",
             "2013-07-08",
@@ -126,11 +142,9 @@ class TestKazakhstan(TestCase):
             "2016-05-10",
             "2016-12-19",
             "2017-01-03",
-            "2017-01-09",
             "2017-05-08",
             "2017-12-18",
             "2017-12-19",
-            "2018-01-08",
             "2018-12-03",
             "2018-12-18",
             "2019-03-25",
@@ -148,7 +162,6 @@ class TestKazakhstan(TestCase):
             "2022-01-04",
             "2022-05-02",
             "2022-05-10",
-            "2022-12-19",
         )
-        self.assertHoliday(Kazakhstan(observed=True), *observed_holidays)
-        self.assertNoHoliday(Kazakhstan(observed=False), *observed_holidays)
+        self.assertHoliday(Kazakhstan(observed=True), observed_holidays)
+        self.assertNoHoliday(Kazakhstan(observed=False), observed_holidays)

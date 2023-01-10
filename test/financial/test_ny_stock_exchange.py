@@ -248,7 +248,7 @@ class TestNewYorkStockExchange(unittest.TestCase):
 
     def test_electionday(self):
         for dt in [
-            date(1887, NOV, 1),
+            date(1887, NOV, 8),
             date(1901, NOV, 5),
             date(1902, NOV, 4),
             date(1920, NOV, 2),
