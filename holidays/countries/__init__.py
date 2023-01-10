@@ -60,6 +60,7 @@ from .jamaica import JM, JAM, Jamaica
 from .japan import JP, JPN, Japan
 from .kazakhstan import KZ, KAZ, Kazakhstan
 from .kenya import KE, KEN, Kenya
+from .kyrgyzstan import KG, KGZ, Kyrgyzstan
 from .latvia import LV, LVA, Latvia
 from .lesotho import LS, LSO, Lesotho
 from .liechtenstein import LI, LIE, Liechtenstein
