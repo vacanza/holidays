@@ -52,7 +52,7 @@ class Botswana(HolidayBase):
         # 3rd Monday of July = "President's Day"
         d = date(year, JUL, 1) + rd(weekday=MO(+3))
         self[d] = "President's Day"
-        self[d + rd(days=1)] = "President's Day Holiday"
+        self[d + rd(days=+1)] = "President's Day Holiday"
 
         self[date(year, SEP, 30)] = "Botswana Day"
         self[date(year, OCT, 1)] = "Botswana Day Holiday"

@@ -32,8 +32,8 @@ class EuropeanCentralBank(HolidayBase):
 
         self[date(year, JAN, 1)] = "New Year's Day"
         e = easter(year)
-        self[e - rd(days=2)] = "Good Friday"
-        self[e + rd(days=1)] = "Easter Monday"
+        self[e + rd(days=-2)] = "Good Friday"
+        self[e + rd(days=+1)] = "Easter Monday"
         self[date(year, MAY, 1)] = "1 May (Labour Day)"
         self[date(year, DEC, 25)] = "Christmas Day"
         self[date(year, DEC, 26)] = "26 December"

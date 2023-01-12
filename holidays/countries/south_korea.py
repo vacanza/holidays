@@ -269,7 +269,7 @@ class SouthKorea(HolidayBase):
             cur in self and name != self[cur]
         )  # Exclude if already a holiday
         while check_1 or check_2:
-            cur = cur + rd(days=1)
+            cur = cur + rd(days=+1)
             check_1 = cur.weekday() in target_weekday
             check_2 = cur in self and name != self[cur]
 

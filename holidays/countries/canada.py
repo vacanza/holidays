@@ -144,7 +144,7 @@ class Canada(HolidayBase):
             dt = date(year, JUN, 24)
             self[dt] = name
             if self.observed and dt.weekday() == SUN:
-                self[dt + rd(days=1)] = name + " (Observed)"
+                self[dt + rd(days=+1)] = name + " (Observed)"
 
         # Discovery Day
         if self.subdiv == "NL" and year >= 1997:
@@ -171,7 +171,7 @@ class Canada(HolidayBase):
                 dt = date(year, JUL, 9)
                 self[dt] = name
                 if self.observed and dt.weekday() == SUN:
-                    self[dt + rd(days=1)] = name + " (Observed)"
+                    self[dt + rd(days=+1)] = name + " (Observed)"
             elif year == 2000:
                 self[date(2000, APR, 1)] = name
 
@@ -243,14 +243,14 @@ class Canada(HolidayBase):
         dt = date(year, DEC, 25)
         self[dt] = name
         if self.observed and self._is_weekend(dt):
-            self[dt + rd(days=2)] = name + " (Observed)"
+            self[dt + rd(days=+2)] = name + " (Observed)"
 
         # Boxing Day
         name = "Boxing Day"
         dt = date(year, DEC, 26)
         self[dt] = name
         if self.observed and self._is_weekend(dt):
-            self[dt + rd(days=2)] = name + " (Observed)"
+            self[dt + rd(days=+2)] = name + " (Observed)"
 
 
 class CA(Canada):

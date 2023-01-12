@@ -82,7 +82,7 @@ class Burundi(HolidayBase):
             for date_obs in _islamic_to_gre(yr, 12, 10):
                 hol_date = date_obs
                 _add_holiday(hol_date, "Eid Al Adha")
-                _add_holiday(hol_date + rd(days=1), "Eid Al Adha")
+                _add_holiday(hol_date + rd(days=+1), "Eid Al Adha")
 
         # Assumption Day
         name = "Assumption Day"

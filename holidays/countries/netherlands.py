@@ -65,7 +65,7 @@ class Netherlands(HolidayBase):
         if year >= 2014:
             kings_day = date(year, APR, 27)
             if kings_day.weekday() == SUN:
-                kings_day = kings_day - rd(days=1)
+                kings_day = kings_day + rd(days=-1)
 
             self[kings_day] = "Koningsdag"
 
@@ -77,9 +77,9 @@ class Netherlands(HolidayBase):
 
             if queens_day.weekday() == SUN:
                 if year < 1980:
-                    queens_day = queens_day + rd(days=1)
+                    queens_day = queens_day + rd(days=+1)
                 else:
-                    queens_day = queens_day - rd(days=1)
+                    queens_day = queens_day + rd(days=-1)
 
             self[queens_day] = "Koninginnedag"
 

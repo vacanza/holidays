@@ -83,7 +83,7 @@ class Ireland(HolidayBase):
         dt = date(year, DEC, 26)
         self[dt] = name
         if self.observed and self._is_weekend(dt):
-            self[dt + rd(days=2)] = name + " (Observed)"
+            self[dt + rd(days=+2)] = name + " (Observed)"
 
 
 class IE(Ireland):
