@@ -12,7 +12,7 @@
 import unittest
 from datetime import date
 
-from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import relativedelta
 
 import holidays
 
@@ -25,7 +25,7 @@ class TestTAR(unittest.TestCase):
         for year in range(1974, 2100):
             dt = date(year, 1, 1)
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + rd(days=-1), self.holidays)
+            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
 
     def test_good_friday(self):
         for dt in [
@@ -40,8 +40,8 @@ class TestTAR(unittest.TestCase):
             date(2020, 4, 10),
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + rd(days=-1), self.holidays)
-            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
+            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
 
     def test_easter_monday(self):
         for dt in [
@@ -56,27 +56,27 @@ class TestTAR(unittest.TestCase):
             date(2020, 4, 13),
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + rd(days=-1), self.holidays)
-            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
+            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
 
     def test_labour_day(self):
         for year in range(1900, 2100):
             dt = date(year, 5, 1)
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + rd(days=-1), self.holidays)
-            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
+            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
 
     def test_christmas_day(self):
         for year in range(1900, 2100):
             dt = date(year, 12, 25)
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + rd(days=-1), self.holidays)
+            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
 
     def test_26_december_day(self):
         for year in range(1900, 2100):
             dt = date(year, 12, 26)
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
 
     def test_all_holidays_present(self):
         tar_2015 = holidays.TAR(years=[2015])

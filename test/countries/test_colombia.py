@@ -10,9 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-from datetime import date
-
-from dateutil.relativedelta import relativedelta as rd
+from datetime import date, timedelta
 
 import holidays
 from holidays.constants import APR, AUG, DEC, JAN, JUL, JUN, MAR, MAY, NOV, OCT
@@ -25,7 +23,7 @@ class TestCO(unittest.TestCase):
     def _check_all_dates(self, year, expected_holidays):
         start_date = date(year, 1, 1)
         end_date = date(year, 12, 31)
-        delta = rd(days=+1)
+        delta = timedelta(days=1)
 
         while start_date <= end_date:
             if start_date in expected_holidays:

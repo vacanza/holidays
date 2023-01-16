@@ -12,7 +12,7 @@
 import unittest
 from datetime import date
 
-from dateutil.relativedelta import relativedelta as rd
+from dateutil.relativedelta import relativedelta
 
 import holidays
 
@@ -42,8 +42,12 @@ class TestIsrael(unittest.TestCase):
 
         # Postponed
         il_holidays = holidays.IL(years=[2017], observed=True)
-        official_memorial_day = date(2017, 4, 30) + rd(days=days_delta)
-        observed_memorial_day = date(2017, 5, 1) + rd(days=days_delta)
+        official_memorial_day = date(2017, 4, 30) + relativedelta(
+            days=days_delta
+        )
+        observed_memorial_day = date(2017, 5, 1) + relativedelta(
+            days=days_delta
+        )
         self.assertIn(official_memorial_day, il_holidays)
         self.assertIn(holiday_name, il_holidays[official_memorial_day])
         self.assertIn(observed_memorial_day, il_holidays)
@@ -53,8 +57,12 @@ class TestIsrael(unittest.TestCase):
 
         # Earlier
         il_holidays = holidays.IL(years=[2018], observed=True)
-        official_memorial_day = date(2018, 4, 19) + rd(days=days_delta)
-        observed_memorial_day = date(2018, 4, 18) + rd(days=days_delta)
+        official_memorial_day = date(2018, 4, 19) + relativedelta(
+            days=days_delta
+        )
+        observed_memorial_day = date(2018, 4, 18) + relativedelta(
+            days=days_delta
+        )
         self.assertIn(official_memorial_day, il_holidays)
         self.assertIn(holiday_name, il_holidays[official_memorial_day])
         self.assertIn(observed_memorial_day, il_holidays)
@@ -64,7 +72,9 @@ class TestIsrael(unittest.TestCase):
 
         # On time
         il_holidays = holidays.IL(years=[2020], observed=True)
-        official_memorial_day = date(2020, 4, 28) + rd(days=days_delta)
+        official_memorial_day = date(2020, 4, 28) + relativedelta(
+            days=days_delta
+        )
         self.assertIn(official_memorial_day, il_holidays)
         self.assertIn(holiday_name, il_holidays[official_memorial_day])
 
@@ -76,23 +86,33 @@ class TestIsrael(unittest.TestCase):
 
         # Postponed
         il_holidays = holidays.IL(years=[2017], observed=False)
-        official_memorial_day = date(2017, 4, 30) + rd(days=days_delta)
-        observed_memorial_day = date(2017, 5, 1) + rd(days=days_delta)
+        official_memorial_day = date(2017, 4, 30) + relativedelta(
+            days=days_delta
+        )
+        observed_memorial_day = date(2017, 5, 1) + relativedelta(
+            days=days_delta
+        )
         self.assertIn(official_memorial_day, il_holidays)
         self.assertIn(holiday_name, il_holidays[official_memorial_day])
         self.assertNotEqual(il_holidays[observed_memorial_day], "Memorial Day")
 
         # Earlier
         il_holidays = holidays.IL(years=[2018], observed=False)
-        official_memorial_day = date(2018, 4, 19) + rd(days=days_delta)
-        observed_memorial_day = date(2018, 4, 18) + rd(days=days_delta)
+        official_memorial_day = date(2018, 4, 19) + relativedelta(
+            days=days_delta
+        )
+        observed_memorial_day = date(2018, 4, 18) + relativedelta(
+            days=days_delta
+        )
         self.assertIn(official_memorial_day, il_holidays)
         self.assertIn(holiday_name, il_holidays[official_memorial_day])
         self.assertNotIn(observed_memorial_day, il_holidays)
 
         # On time
         il_holidays = holidays.IL(years=[2020], observed=False)
-        official_memorial_day = date(2020, 4, 28) + rd(days=days_delta)
+        official_memorial_day = date(2020, 4, 28) + relativedelta(
+            days=days_delta
+        )
         self.assertIn(official_memorial_day, il_holidays)
         self.assertIn(holiday_name, il_holidays[official_memorial_day])
 
