@@ -5,6 +5,9 @@ Released ???????? ??, ????
 
 - Copyright update 2023
 - Added Arkadii Yakovets (arkid15r) to project collaborators / maintainers - welcome!
+- Support for Monaco #877 (KJhellico)
+- Support for Bahrain #888 (arkid15r)
+- Japan: optimizations and refactoring #879 (KJhellico)
 
 Version 0.18
 ============
