@@ -106,7 +106,7 @@ Available Countries
 
 .. _ISO 3166-1 alpha-2 code: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
 
-We currently support 103 countries. The standard way to refer to a country is by
+We currently support 106 countries. The standard way to refer to a country is by
 using its `ISO 3166-1 alpha-2 code`_, the same used for domain names. The
 following countries and their subdivisions are available:
 
@@ -349,6 +349,9 @@ following countries and their subdivisions are available:
    * - Peru
      - PE
      - None
+   * - Philippines
+     - PH
+     - None
    * - Poland
      - PL
      - None
@@ -393,6 +396,9 @@ following countries and their subdivisions are available:
      - Cantons: AG, AR, AI, BL, BS, BE, FR, GE, GL, GR, JU, LU, NE, NW, OW, SG, SH, SZ, SO, TG, TI, UR, VD, VS, ZG, ZH
    * - Taiwan
      - TW
+     - None
+   * - Thailand
+     - TH
      - None
    * - Tunisia
      - TN
