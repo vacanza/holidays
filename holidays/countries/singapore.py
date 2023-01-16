@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -84,6 +84,10 @@ class Singapore(HolidayBase):
         super().__init__(years, expand, observed, subdiv, prov, state)
 
     def _populate(self, year) -> None:
+        def _add_holiday(dt: date, hol: str) -> None:
+            if dt.year == year:
+                self[dt] = hol
+
         super()._populate(year)
 
         # New Year's Day
@@ -120,7 +124,7 @@ class Singapore(HolidayBase):
             2019: ((JUN, 5),),
             2020: ((MAY, 24),),
             2021: ((MAY, 13),),
-            2022: ((MAY, 2),),
+            2022: ((MAY, 3),),
             2023: ((APR, 22),),
         }
         if year in dates_fixed_multiple_obs:
@@ -130,18 +134,14 @@ class Singapore(HolidayBase):
                 # Second day of Hari Raya Puasa (up to and including 1968)
                 # Removed since we don't have Hari Raya Puasa dates for the
                 # the years <= 1968:
-                # if year <= 1968:
-                #     self[hol_date + rd(days=+1),
-                #                  "Second day of Hari Raya Puasa")
         else:
-            for date_obs in _islamic_to_gre(year, 10, 1):
-                hol_date = date_obs
+            for hol_date in _islamic_to_gre(year, 10, 1):
                 self[hol_date] = "Hari Raya Puasa* (*estimated)"
                 # Second day of Hari Raya Puasa (up to and including 1968)
                 if year <= 1968:
-                    hol_date += rd(days=+1)
-                    self[hol_date] = (
-                        "Second day of Hari Raya Puasa*" " (*estimated)"
+                    _add_holiday(
+                        hol_date + rd(days=+1),
+                        "Second day of Hari Raya Puasa* (*estimated)",
                     )
 
         # Hari Raya Haji
@@ -154,7 +154,7 @@ class Singapore(HolidayBase):
             2003: ((FEB, 12),),
             2004: ((FEB, 1),),
             2005: ((JAN, 21),),
-            2006: ((JAN, 10),),
+            2006: ((JAN, 10), (DEC, 31)),
             2007: ((DEC, 20),),
             2008: ((DEC, 8),),
             2009: ((NOV, 27),),
@@ -170,7 +170,7 @@ class Singapore(HolidayBase):
             2019: ((AUG, 11),),
             2020: ((JUL, 31),),
             2021: ((JUL, 20),),
-            2022: ((JUL, 9),),
+            2022: ((JUL, 10),),
             2023: ((JUN, 29),),
         }
         if year in dates_fixed_multiple_obs:
@@ -178,8 +178,7 @@ class Singapore(HolidayBase):
                 hol_date = date(year, *month_day)
                 self[hol_date] = "Hari Raya Haji"
         else:
-            for date_obs in _islamic_to_gre(year, 12, 10):
-                hol_date = date_obs
+            for hol_date in _islamic_to_gre(year, 12, 10):
                 self[hol_date] = "Hari Raya Haji* (*estimated)"
 
         easter_date = easter(year)
@@ -201,10 +200,10 @@ class Singapore(HolidayBase):
         # https://en.wikipedia.org/wiki/Vesak#Dates_of_observance
         dates_fixed_obs: Dict[int, Tuple[int, int]] = {
             2001: (MAY, 7),
-            2002: (MAY, 27),
+            2002: (MAY, 26),
             2003: (MAY, 15),
             2004: (JUN, 2),
-            2005: (MAY, 23),
+            2005: (MAY, 22),
             2006: (MAY, 12),
             2007: (MAY, 31),
             2008: (MAY, 19),
@@ -215,7 +214,7 @@ class Singapore(HolidayBase):
             2013: (MAY, 24),
             2014: (MAY, 13),
             2015: (JUN, 1),
-            2016: (MAY, 20),
+            2016: (MAY, 21),
             2017: (MAY, 10),
             2018: (MAY, 29),
             2019: (MAY, 19),
@@ -231,7 +230,7 @@ class Singapore(HolidayBase):
             self[hol_date] = "Vesak Day"
         else:
             hol_date = self.cnls.vesak_date(year)
-            self[hol_date] = "Vesak Day* (*estimated; ~10% chance +/- 1 day)"
+            self[hol_date] = "Vesak Day* (*estimated)"
 
         # National Day
         self[date(year, AUG, 9)] = "National Day"
@@ -248,7 +247,7 @@ class Singapore(HolidayBase):
             2006: (OCT, 21),
             2007: (NOV, 8),
             2008: (OCT, 27),
-            2009: (OCT, 17),
+            2009: (NOV, 15),
             2010: (NOV, 5),
             2011: (OCT, 26),
             2012: (NOV, 13),
@@ -269,7 +268,7 @@ class Singapore(HolidayBase):
             self[hol_date] = "Deepavali"
         else:
             hol_date = self.cnls.s_diwali_date(year)
-            self[hol_date] = "Deepavali* (*estimated; rarely on day after)"
+            self[hol_date] = "Deepavali* (*estimated)"
 
         # Christmas Day
         self[date(year, DEC, 25)] = "Christmas Day"
@@ -282,13 +281,17 @@ class Singapore(HolidayBase):
         # of the Holidays Act: "if any day specified in the Schedule falls on
         # a Sunday, the day next following not being itself a public holiday
         # is declared a public holiday in Singapore."
-        for (hol_date, hol_name) in list(self.items()):
-            if hol_date.year == year and hol_date.weekday() == SUN:
-                self[hol_date] += " [Sunday]"
-                in_lieu_date = hol_date + rd(days=+1)
-                while in_lieu_date in self:
-                    in_lieu_date += rd(days=+1)
-                self[in_lieu_date] = hol_name + " [In lieu]"
+        if self.observed and year >= 1998:
+            for (hol_date, hol_name) in list(self.items()):
+                if hol_date.year == year and hol_date.weekday() == SUN:
+                    in_lieu_date = hol_date + rd(days=+1)
+                    while in_lieu_date.year == year and in_lieu_date in self:
+                        in_lieu_date += rd(days=+1)
+                    _add_holiday(in_lieu_date, f"{hol_name} (Observed)")
+
+        # special case (observed from previuos year)
+        if self.observed and year == 2007:
+            self[date(2007, JAN, 2)] = "Hari Raya Haji (Observed)"
 
 
 class SG(Singapore):
