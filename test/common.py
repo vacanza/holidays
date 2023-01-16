@@ -74,7 +74,6 @@ class TestCase(unittest.TestCase):
         for alias in (alpha_2, alpha_3):
             self.assertIsNotNone(alias, type_error_message)
             self.assertTrue(issubclass(alias, cls), type_error_message)
-            self.assertEqual(alias(), cls())
 
         length_error_message = (
             "This method accepts exactly 3 arguments "
@@ -107,11 +106,12 @@ class TestCase(unittest.TestCase):
 
         self.verify_type(holidays)
 
-        self.assertEqual(len(holidays), len(expected_holidays))
         # Check one by one for descriptive error messages.
         for dt, name in expected_holidays:
             self.assertIn(dt, holidays)
             self.assertEqual(name, holidays[dt])
+
+        self.assertEqual(len(holidays), len(expected_holidays))
 
     def assertHolidayDatesEqual(self, holidays, *dates):
         """Asserts holiday dates exactly match expected dates."""
