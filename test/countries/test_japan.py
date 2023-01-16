@@ -17,7 +17,7 @@ import holidays
 
 class TestJapan(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.Japan(observed=False)
+        self.holidays = holidays.Japan()
 
     def test_not_implemented(self):
         with self.assertRaises(NotImplementedError):
@@ -573,19 +573,10 @@ class TestJapan(unittest.TestCase):
         self.assertIn(date(2019, 5, 2), self.holidays)
         self.assertIn(date(2019, 10, 22), self.holidays)
 
-    def test_national_holidays(self):
-        self.assertIn(date(2032, 9, 21), self.holidays)
-
-    def test_invalid_years(self):
-        self.assertRaises(
-            NotImplementedError, lambda: date(1948, 1, 1) in self.holidays
-        )
-        self.assertRaises(
-            NotImplementedError, lambda: date(2100, 1, 1) in self.holidays
-        )
-
-    def test_substitute_holidays(self):
-        for dt in (
+    def test_observed_holidays(self):
+        no_observed = holidays.Japan(observed=False)
+        hol_list = (
+            # 振替休日
             (1973, 4, 30),
             (1973, 9, 24),
             (1974, 5, 6),
@@ -718,5 +709,13 @@ class TestJapan(unittest.TestCase):
             (2048, 2, 24),
             (2048, 5, 6),
             (2050, 3, 21),
-        ):
+            # 国民の休日
+            (2019, 4, 30),
+            (2019, 5, 2),
+            (2026, 9, 22),
+            (2032, 9, 21),
+            (2037, 9, 22),
+        )
+        for dt in hol_list:
             self.assertIn(date(*dt), self.holidays)
+            self.assertNotIn(date(*dt), no_observed)
