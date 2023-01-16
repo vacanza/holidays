@@ -56,22 +56,22 @@ class Germany(HolidayBase):
 
     country = "DE"
     subdivisions = [
+        "BB",
+        "BE",
         "BW",
         "BY",
         "BYP",
-        "BE",
-        "BB",
         "HB",
-        "HH",
         "HE",
+        "HH",
         "MV",
         "NI",
         "NW",
         "RP",
+        "SH",
         "SL",
         "SN",
         "ST",
-        "SH",
         "TH",
     ]
 

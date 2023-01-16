@@ -42,7 +42,7 @@ class UnitedKingdom(HolidayBase):
         ),
         2023: ((MAY, 8, "Coronation of Charles III"),),
     }
-    subdivisions = ["UK", "England", "Northern Ireland", "Scotland", "Wales"]
+    subdivisions = ["England", "Northern Ireland", "Scotland", "UK", "Wales"]
 
     def __init__(self, **kwargs: Any) -> None:
         # default subdiv to UK; state for backwards compatibility

@@ -29,7 +29,6 @@ class Portugal(HolidayBase):
     # Only the 18 mainland districts have been included
     # `Ext` represents the national holidays most people have off
     subdivisions = [
-        "Ext",
         "01",
         "02",
         "03",
@@ -48,6 +47,7 @@ class Portugal(HolidayBase):
         "16",
         "17",
         "18",
+        "Ext",
     ]
 
     def _populate(self, year):
