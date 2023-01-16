@@ -307,6 +307,9 @@ following countries and their subdivisions are available:
    * - Moldova
      - MD
      - None
+   * - Monaco
+     - MC
+     - None
    * - Morocco
      - MA
      - None

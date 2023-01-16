@@ -72,6 +72,7 @@ from .malaysia import MY, MYS, Malaysia
 from .malta import MT, MLT, Malta
 from .mexico import MX, MEX, Mexico
 from .moldova import MD, MDA, Moldova
+from .monaco import MC, MCO, Monaco
 from .morocco import MA, MOR, Morocco
 from .mozambique import MZ, MOZ, Mozambique
 from .namibia import NA, NAM, Namibia
