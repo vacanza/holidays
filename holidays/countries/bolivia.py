@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -13,21 +13,10 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import FR
 from dateutil.relativedelta import relativedelta as rd
-from holidays.constants import (
-    APR,
-    AUG,
-    DEC,
-    JAN,
-    JUL,
-    JUN,
-    MAY,
-    NOV,
-    OCT,
-    SEP,
-    SUN,
-)
+
+from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
+from holidays.constants import DEC, FRI, SUN
 from holidays.holiday_base import HolidayBase
 
 
@@ -51,6 +40,8 @@ class Bolivia(HolidayBase):
     ]
 
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day.
         name = "Año Nuevo"
         if year >= 1825:
@@ -66,7 +57,8 @@ class Bolivia(HolidayBase):
             ] = "Nacimiento del Estado Plurinacional de Bolivia"
 
         # Good Friday.
-        self[easter(year) + rd(weekday=FR(-1))] = "Viernes Santo"
+        easter_date = easter(year)
+        self[easter_date + rd(days=-2)] = "Viernes Santo"
 
         # La Tablada.
         if self.subdiv == "T":
@@ -74,12 +66,12 @@ class Bolivia(HolidayBase):
 
         # Carnival in Oruro.
         if self.subdiv == "O":
-            self[easter(year) + rd(days=-51)] = "Carnaval de Oruro"
+            self[easter_date + rd(days=-51)] = "Carnaval de Oruro"
 
         # Carnival Monday (Observed on Tuesday).
         name = "Feriado por Carnaval"
-        self[easter(year) + rd(days=-48)] = name
-        self[easter(year) + rd(days=-47)] = f"{name} (Observed)"
+        self[easter_date + rd(days=-48)] = name
+        self[easter_date + rd(days=-47)] = f"{name} (Observed)"
 
         # Labor Day.
         name = "Dia del trabajo"
@@ -93,7 +85,7 @@ class Bolivia(HolidayBase):
             self[date(year, MAY, 25)] = "Día del departamento de Chuquisaca"
 
         # Corpus Christi.
-        self[easter(year) + rd(days=+60)] = "Corpus Christi"
+        self[easter_date + rd(days=+60)] = "Corpus Christi"
 
         # Andean New Year.
         name = "Año Nuevo Andino"
@@ -116,7 +108,7 @@ class Bolivia(HolidayBase):
         if year >= 1825:
             self[date(year, AUG, 6)] = name
 
-        if self.observed and date(year, AUG, 6).weekday() > 5:
+        if self.observed and date(year, AUG, 6).weekday() > FRI:
             self[date(year, AUG, 6) + rd(days=+1)] = f"{name} (Observed)"
 
         # Cochabamba Day.

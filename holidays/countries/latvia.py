@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -12,35 +12,34 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, SU
+from dateutil.relativedelta import relativedelta as rd
 
 from holidays.holiday_base import HolidayBase
 
 
 class Latvia(HolidayBase):
-
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Latvia
-    # https://information.lv/
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Latvia
+    https://information.lv/
+    """
 
     country = "LV"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
         self[date(year, 1, 1)] = "Jaunais gads"
 
         # Good Friday
         easter_date = easter(year)
-        self[easter_date - rd(days=2)] = "Lielā Piektdiena"
+        self[easter_date + rd(days=-2)] = "Lielā Piektdiena"
 
         # Easter
-        easter_date = easter(year)
         self[easter_date] = "Lieldienas"
 
         # Easter 2nd day
-        self[easter_date + rd(days=1)] = "Otrās Lieldienas"
+        self[easter_date + rd(days=+1)] = "Otrās Lieldienas"
 
         # International Workers' Day
         self[date(year, 5, 1)] = "Darba svētki"
@@ -51,8 +50,7 @@ class Latvia(HolidayBase):
         if year >= 1990:
             self[
                 date(year, 5, 4)
-            ] = "Latvijas Republikas \
-                Neatkarības atjaunošanas diena"
+            ] = "Latvijas Republikas Neatkarības atjaunošanas diena"
 
         # by law
         # https://likumi.lv/ta/id/72608-par-svetku-atceres-un-atzimejamam-dienam

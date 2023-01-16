@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -12,43 +12,43 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, FR
+from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, APR, MAY, JUL, AUG, OCT, DEC
+from holidays.constants import JAN, APR, MAY, JUL, AUG, OCT, DEC, SUN
 from holidays.holiday_base import HolidayBase
 
 
 class Curacao(HolidayBase):
-    # https://loketdigital.gobiernu.cw/Loket/product/571960bbe1e5fe8712b10a1323630e70
+    """
+    https://loketdigital.gobiernu.cw/Loket/product/571960bbe1e5fe8712b10a1323630e70
+    """
 
     country = "CW"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
         self[date(year, JAN, 1)] = "Nieuwjaarsdag [New Year's Day]"
 
+        easter_date = easter(year)
         # Carnaval Monday
         self[
-            easter(year) + rd(days=-48)
-        ] = "Maandag na de Grote Karnaval  \
-            [Carnaval Monday]"
+            easter_date + rd(days=-48)
+        ] = "Maandag na de Grote Karnaval [Carnaval Monday]"
 
         # Good Friday
-        self[easter(year) + rd(weekday=FR(-1))] = "Goede Vrijdag [Good Friday]"
+        self[easter_date + rd(days=-2)] = "Goede Vrijdag [Good Friday]"
 
         # Easter Monday
         self[
-            easter(year) + rd(days=1)
-        ] = "Di Dos Dia di Pasku di Resureccion \
-            [Easter Monday]"
+            easter_date + rd(days=+1)
+        ] = "Di Dos Dia di Pasku di Resureccion [Easter Monday]"
 
         # King's Day
         if year >= 2014:
             kings_day = date(year, APR, 27)
-            if kings_day.weekday() == 6:
+            if kings_day.weekday() == SUN:
                 kings_day = kings_day - rd(days=1)
 
             self[kings_day] = "Koningsdag [King's Day]"
@@ -59,7 +59,7 @@ class Curacao(HolidayBase):
             if year <= 1948:
                 queens_day = date(year, AUG, 31)
 
-            if queens_day.weekday() == 6:
+            if queens_day.weekday() == SUN:
                 if year < 1980:
                     queens_day = queens_day + rd(days=1)
                 else:
@@ -69,24 +69,20 @@ class Curacao(HolidayBase):
 
         # Labour Day
         labour_day = date(year, MAY, 1)
-        if labour_day.weekday() == 6:
+        if labour_day.weekday() == SUN:
             labour_day = labour_day + rd(days=1)
         self[labour_day] = "Dia di Obrero [Labour Day]"
 
         # Ascension Day
-        self[easter(year) + rd(days=39)] = "Hemelvaartsdag [Ascension Day]"
+        self[easter_date + rd(days=+39)] = "Hemelvaartsdag [Ascension Day]"
 
         # Dia di Himno y Bandera
         self[
             date(year, JUL, 2)
-        ] = "Dia di Himno y Bandera \
-            [National Anthem & Flag Day]"
+        ] = "Dia di Himno y Bandera [National Anthem & Flag Day]"
 
         # Dia di Pais Kòrsou
-        self[
-            date(year, OCT, 10)
-        ] = "Dia di Pais Kòrsou \
-            [Curaçao Day]"
+        self[date(year, OCT, 10)] = "Dia di Pais Kòrsou [Curaçao Day]"
 
         # Christmas Day
         self[date(year, DEC, 25)] = "Kerstdag [Christmas]"

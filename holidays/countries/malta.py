@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -19,23 +19,22 @@ from holidays.holiday_base import HolidayBase
 
 
 class Malta(HolidayBase):
-    # https://www.gov.mt/en/About%20Malta/Pages/Public%20Holidays.aspx
+    """
+    https://www.gov.mt/en/About%20Malta/Pages/Public%20Holidays.aspx
+    """
 
     country = "MT"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         self[date(year, JAN, 1)] = "New Year"
         self[date(year, FEB, 10)] = "Feast of St. Paul's Shipwreck"
         self[date(year, MAR, 19)] = "Feast of St. Joseph"
         self[date(year, MAR, 31)] = "Freedom Day"
 
         # Easter and easter related calculations
-        e = easter(year)
-        good_friday = e - rd(days=2)
-
+        good_friday = easter(year) + rd(days=-2)
         self[good_friday] = "Good Friday"
 
         self[date(year, MAY, 1)] = "Worker's Day"

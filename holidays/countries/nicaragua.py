@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -12,7 +12,7 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, TH, FR
+from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAY, JUL, AUG, SEP, DEC
 from holidays.holiday_base import HolidayBase
@@ -29,14 +29,15 @@ class Nicaragua(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         # New Years
         self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
         # Maundy Thursday
-        self[
-            easter(year) + rd(weekday=TH(-1))
-        ] = "Jueves Santo [Maundy Thursday]"
+        easter_date = easter(year)
+        self[easter_date + rd(days=-3)] = "Jueves Santo [Maundy Thursday]"
         # Good Friday
-        self[easter(year) + rd(weekday=FR(-1))] = "Viernes Santo [Good Friday]"
+        self[easter_date + rd(days=-2)] = "Viernes Santo [Good Friday]"
         # Labor Day
         self[date(year, MAY, 1)] = "Día del Trabajo [Labour Day]"
         # Revolution Day
@@ -56,12 +57,10 @@ class Nicaragua(HolidayBase):
         self[date(year, DEC, 25)] = "Navidad [Christmas]"
 
         # Provinces festive day
-        if self.subdiv:
-            if self.subdiv == "MN":
-                # Santo Domingo Day Down
-                self[date(year, AUG, 1)] = "Bajada de Santo Domingo"
-                # Santo Domingo Day Up
-                self[date(year, AUG, 10)] = "Subida de Santo Domingo"
+        # Santo Domingo Day Down
+        self[date(year, AUG, 1)] = "Bajada de Santo Domingo"
+        # Santo Domingo Day Up
+        self[date(year, AUG, 10)] = "Subida de Santo Domingo"
 
 
 class NI(Nicaragua):

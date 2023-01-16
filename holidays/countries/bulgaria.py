@@ -4,17 +4,17 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
 
-from dateutil.easter import easter, EASTER_ORTHODOX
+from dateutil.easter import EASTER_ORTHODOX, easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAR, APR, MAY, SEP, NOV, DEC
+from holidays.constants import JAN, MAR, MAY, SEP, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -41,10 +41,9 @@ class Bulgaria(HolidayBase):
 
     country = "BG"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         if year < 1990:
             return
 
@@ -56,16 +55,10 @@ class Bulgaria(HolidayBase):
             date(year, MAR, 3)
         ] = "Ден на Освобождението на България от османско иго"
 
-        # Friday Holiday
-        self[date(year, APR, 30)] = "Велики петък"
-
         # International Workers' Day
         self[
             date(year, MAY, 1)
         ] = "Ден на труда и на международната работническа солидарност"
-
-        # Resurrection Monday
-        self[date(year, MAY, 3)] = "Возкресенни понеделник"
 
         # Saint George's Day
         self[
@@ -73,9 +66,10 @@ class Bulgaria(HolidayBase):
         ] = "Гергьовден, Ден на храбростта и Българската армия"
 
         # Bulgarian Education and Culture and Slavonic Literature Day
-        self[
-            date(year, MAY, 24)
-        ] = "Ден на българската просвета и култура и на славянската писменост"
+        self[date(year, MAY, 24)] = (
+            "Ден на светите братя Кирил и Методий, на българската азбука, "
+            "просвета и култура и на славянската книжовност"
+        )
 
         # Unification Day
         self[date(year, SEP, 6)] = "Ден на Съединението"
@@ -92,13 +86,11 @@ class Bulgaria(HolidayBase):
         self[date(year, DEC, 26)] = "Рождество Христово"
 
         # Easter
-        self[
-            easter(year, method=EASTER_ORTHODOX) - rd(days=2)
-        ] = "Велики петък"
-        self[
-            easter(year, method=EASTER_ORTHODOX) - rd(days=1)
-        ] = "Велика събота"
-        self[easter(year, method=EASTER_ORTHODOX)] = "Великден"
+        easter_date = easter(year, method=EASTER_ORTHODOX)
+        self[easter_date + rd(days=-2)] = "Велики петък"
+        self[easter_date + rd(days=-1)] = "Велика събота"
+        self[easter_date] = "Великден"
+        self[easter_date + rd(days=+1)] = "Великден"
 
 
 class BG(Bulgaria):

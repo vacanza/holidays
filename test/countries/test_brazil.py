@@ -4,13 +4,12 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 import unittest
-
 from datetime import date
 
 import holidays
@@ -256,11 +255,22 @@ class TestBrazil(unittest.TestCase):
         self.assertEqual(rr_holidays[date(2018, 10, 5)], "Criação de Roraima")
 
     def test_SC_holidays(self):
+        name = "Criação da capitania, separando-se de SP"
         sc_holidays = holidays.BR(subdiv="SC")
         self.assertIn("2018-08-11", sc_holidays)
         self.assertEqual(
             sc_holidays[date(2018, 8, 11)],
-            "Criação da capitania, separando-se de SP",
+            name,
+        )
+        self.assertIn("2017-08-11", sc_holidays)
+        self.assertEqual(
+            sc_holidays[date(2017, 8, 11)],
+            name,
+        )
+        self.assertIn(date(2021, 8, 15), sc_holidays)
+        self.assertEqual(
+            sc_holidays[date(2021, 8, 15)],
+            name,
         )
 
     def test_SP_holidays(self):
@@ -282,7 +292,7 @@ class TestBrazil(unittest.TestCase):
         to_holidays = holidays.BR(subdiv="TO")
         self.assertIn("2018-01-01", to_holidays)
         self.assertEqual(
-            to_holidays[date(2018, 1, 1)], "Instalação de Tocantins, Ano novo"
+            to_holidays[date(2018, 1, 1)], "Ano novo, Instalação de Tocantins"
         )
         self.assertIn("2018-09-08", to_holidays)
         self.assertEqual(

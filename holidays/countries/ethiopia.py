@@ -4,21 +4,20 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from calendar import isleap
-from dateutil.easter import easter
+from datetime import date
+
+from dateutil.easter import easter, EASTER_ORTHODOX
 from dateutil.relativedelta import relativedelta as rd
-from holidays.constants import SAT, SUN
+
 from holidays.constants import JAN, MAR, MAY, SEP
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
-
-WEEKEND = (SAT, SUN)
 
 # Ethiopian holidays are estimated: it is common for the day to be pushed
 # if falls in a weekend, although not a rule that can be implemented.
@@ -35,12 +34,12 @@ WEEKEND = (SAT, SUN)
 
 
 class Ethiopia(HolidayBase):
+
     country = "ET"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
         # The Ethiopian New Year is called Kudus Yohannes in Ge'ez and
         # Tigrinya, while in Amharic,
@@ -66,10 +65,11 @@ class Ethiopia(HolidayBase):
         self[date(year, JAN, 19)] = "ጥምቀት/Ephiphany"
 
         # Ethiopian Good Friday
-        self[easter(year, 2) - rd(days=2)] = "ስቅለት/Ethiopian Good Friday"
+        easter_date = easter(year, EASTER_ORTHODOX)
+        self[easter_date + rd(days=-2)] = "ስቅለት/Ethiopian Good Friday"
 
         # Ethiopian  Easter - Orthodox Easter
-        self[easter(year, 2)] = "ፋሲካ/Ethiopian Easter"
+        self[easter_date] = "ፋሲካ/Ethiopian Easter"
 
         # Adwa Victory Day
         if year > 1896:

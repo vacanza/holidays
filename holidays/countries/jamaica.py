@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -12,21 +12,22 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import FR, MO, SU, WE
+from dateutil.relativedelta import MO, SU
 from dateutil.relativedelta import relativedelta as rd
-from holidays.constants import AUG, DEC, FEB, JAN, JUN, MAY, OCT, SUN, WEEKEND
+
+from holidays.constants import JAN, FEB, MAY, JUN, AUG, OCT, DEC, SUN
 from holidays.holiday_base import HolidayBase
 
 
 class Jamaica(HolidayBase):
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Jamaica
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Jamaica
+    """
 
     country = "JM"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
 
         # New Year's Day
         name = "New Year's Day"
@@ -64,7 +65,7 @@ class Jamaica(HolidayBase):
         # Independence Day
         name = "Independence Day"
         _date = date(year, AUG, 6)
-        if self.observed and _date.weekday() in WEEKEND:
+        if self.observed and self._is_weekend(_date):
             self[_date + rd(weekday=MO)] = name
         else:
             self[_date] = name
@@ -82,18 +83,19 @@ class Jamaica(HolidayBase):
         # self[date(year, DEC, 31)] = "New Year Eve"
 
         # Holidays based on Easter
+        easter_date = easter(year)
 
         # Ash Wednesday
-        self[easter(year) + rd(days=-40, weekday=WE(-1))] = "Ash Wednesday"
+        self[easter_date + rd(days=-46)] = "Ash Wednesday"
 
         # Good Friday
-        self[easter(year) + rd(weekday=FR(-1))] = "Good Friday"
+        self[easter_date + rd(days=-2)] = "Good Friday"
 
         # Easter
-        self[easter(year)] = "Easter"
+        self[easter_date] = "Easter"
 
         # Easter
-        self[easter(year) + rd(weekday=MO(+1))] = "Easter Monday"
+        self[easter_date + rd(days=+1)] = "Easter Monday"
 
 
 class JM(Jamaica):

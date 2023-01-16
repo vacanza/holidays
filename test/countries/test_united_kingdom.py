@@ -4,15 +4,14 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 import unittest
-import warnings
-
 from datetime import date
+
 from dateutil.relativedelta import relativedelta
 
 import holidays
@@ -25,6 +24,20 @@ class TestUK(unittest.TestCase):
         self.holidays_wales = holidays.UK(subdiv="Wales")
         self.holidays_scotland = holidays.UK(subdiv="Scotland")
         self.holidays_northernireland = holidays.UK(subdiv="Northern Ireland")
+
+    def test_special_holidays(self):
+        for dt in (
+            "1977-06-07",
+            "1981-07-29",
+            "1999-12-31",
+            "2002-06-03",
+            "2011-04-29",
+            "2012-06-05",
+            "2022-06-03",
+            "2022-09-19",
+            "2023-05-08",
+        ):
+            self.assertIn(dt, self.holidays)
 
     def test_new_years(self):
         for year in range(1974, 2100):

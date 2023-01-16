@@ -4,12 +4,11 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import warnings
 from datetime import date
 
 from dateutil.easter import easter
@@ -20,24 +19,25 @@ from holidays.holiday_base import HolidayBase
 
 
 class Czechia(HolidayBase):
-    # https://en.wikipedia.org/wiki/Public_holidays_in_the_Czech_Republic
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_the_Czech_Republic
+    """
 
     country = "CZ"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         self[date(year, JAN, 1)] = (
             "Den obnovy samostatného českého" " státu"
             if year >= 2000
             else "Nový rok"
         )
 
-        e = easter(year)
+        easter_date = easter(year)
         if year <= 1951 or year >= 2016:
-            self[e - rd(days=2)] = "Velký pátek"
-        self[e + rd(days=1)] = "Velikonoční pondělí"
+            self[easter_date + rd(days=-2)] = "Velký pátek"
+        self[easter_date + rd(days=+1)] = "Velikonoční pondělí"
 
         if year >= 1951:
             self[date(year, MAY, 1)] = "Svátek práce"

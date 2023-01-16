@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -18,23 +18,24 @@ from holidays.holiday_base import HolidayBase
 
 
 class Lesotho(HolidayBase):
-    country = "LS"
+    """
+    https://tinyurl.com/lesothosmallurl1324251
+    https://www.timeanddate.com/holidays/lesotho/
+    """
 
-    def __init__(self, **kwargs):
-        # https://tinyurl.com/lesothosmallurl1324251
-        # https://www.timeanddate.com/holidays/lesotho/
-        HolidayBase.__init__(self, **kwargs)
+    country = "LS"
+    special_holidays = {
+        # https://tinyurl.com/lesothourl
+        2002: ((APR, 4, "Heroes Day"), (MAY, 25, "Africa Day"))
+    }
 
     def _populate(self, year):
+        super()._populate(year)
+
         if year > 1995:
             # https://www.ilo.org/dyn/travail/docs/2093/Public%20Holidays%20Act%201995.pdf
             self[date(year, JAN, 1)] = "New Year's Day"
             self[date(year, MAR, 11)] = "Moshoeshoe's Day"
-
-            if year == 2002:
-                # https://tinyurl.com/lesothourl
-                self[date(year, APR, 4)] = "Heroes Day"
-                self[date(year, MAY, 25)] = "Africa Day"
 
             if year < 2002:
                 self[date(year, APR, 4)] = "Heroes Day"
@@ -42,14 +43,10 @@ class Lesotho(HolidayBase):
             if year > 2002:
                 self[date(year, MAY, 25)] = "Africa/Heroes Day"
 
-            e = easter(year)
-            good_friday = e - rd(days=2)
-            easter_monday = e + rd(days=1)
-            ascension_day = e + rd(days=39)
-
-            self[good_friday] = "Good Friday"
-            self[easter_monday] = "Easter Monday"
-            self[ascension_day] = "Ascension Day"
+            easter_date = easter(year)
+            self[easter_date + rd(days=-2)] = "Good Friday"
+            self[easter_date + rd(days=+1)] = "Easter Monday"
+            self[easter_date + rd(days=+39)] = "Ascension Day"
             self[date(year, MAY, 1)] = "Workers' Day"
 
             if year > 1997:

@@ -4,18 +4,19 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from datetime import date, datetime
 
+from dateutil import rrule
 from dateutil.easter import easter
+from dateutil.relativedelta import SU
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAY, DEC
-from holidays.constants import MON, THU, FRI, SUN
 from holidays.holiday_base import HolidayBase
 
 
@@ -48,19 +49,18 @@ class Norway(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
-        # Add all the sundays of the year before adding the "real" holidays
-        if self.include_sundays:
-            first_day_of_year = date(year, JAN, 1)
-            first_sunday_of_year = first_day_of_year + rd(
-                days=SUN - first_day_of_year.weekday()
-            )
-            cur_date = first_sunday_of_year
+        super()._populate(year)
 
-            while cur_date < date(year + 1, 1, 1):
-                assert cur_date.weekday() == SUN
+        if self.include_sundays:  # Optionally add all Sundays of the year.
+            year_first_day = datetime(year, JAN, 1)
+            year_last_day = datetime(year, DEC, 31)
 
-                self[cur_date] = "Søndag"
-                cur_date += rd(days=7)
+            # Get all Sundays including first/last day of the year cases.
+            sundays = rrule.rrule(
+                rrule.WEEKLY, byweekday=SU, dtstart=year_first_day
+            ).between(year_first_day, year_last_day, inc=True)
+            for sunday in sundays:
+                self[sunday.date()] = "Søndag"
 
         # ========= Static holidays =========
         self[date(year, JAN, 1)] = "Første nyttårsdag"
@@ -83,30 +83,15 @@ class Norway(HolidayBase):
         # https://www.hf.uio.no/ikos/tjenester/kunnskap/samlinger/norsk-folkeminnesamling/livs-og-arshoytider/paske.html
         # which says
         # "(...) has been celebrated for over 1000 years (...)" (in Norway)
-        e = easter(year)
-        maundy_thursday = e - rd(days=3)
-        good_friday = e - rd(days=2)
-        resurrection_sunday = e
-        easter_monday = e + rd(days=1)
-        ascension_thursday = e + rd(days=39)
-        pentecost = e + rd(days=49)
-        pentecost_day_two = e + rd(days=50)
 
-        assert maundy_thursday.weekday() == THU
-        assert good_friday.weekday() == FRI
-        assert resurrection_sunday.weekday() == SUN
-        assert easter_monday.weekday() == MON
-        assert ascension_thursday.weekday() == THU
-        assert pentecost.weekday() == SUN
-        assert pentecost_day_two.weekday() == MON
-
-        self[maundy_thursday] = "Skjærtorsdag"
-        self[good_friday] = "Langfredag"
-        self[resurrection_sunday] = "Første påskedag"
-        self[easter_monday] = "Andre påskedag"
-        self[ascension_thursday] = "Kristi himmelfartsdag"
-        self[pentecost] = "Første pinsedag"
-        self[pentecost_day_two] = "Andre pinsedag"
+        easter_date = easter(year)
+        self[easter_date + rd(days=-3)] = "Skjærtorsdag"
+        self[easter_date + rd(days=-2)] = "Langfredag"
+        self[easter_date] = "Første påskedag"
+        self[easter_date + rd(days=+1)] = "Andre påskedag"
+        self[easter_date + rd(days=+39)] = "Kristi himmelfartsdag"
+        self[easter_date + rd(days=+49)] = "Første pinsedag"
+        self[easter_date + rd(days=+50)] = "Andre pinsedag"
 
 
 class NO(Norway):

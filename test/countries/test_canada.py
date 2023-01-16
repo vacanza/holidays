@@ -4,14 +4,14 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 import unittest
-
 from datetime import date
+
 from dateutil.relativedelta import relativedelta
 
 import holidays
@@ -24,9 +24,11 @@ class TestCA(unittest.TestCase):
     def test_new_years(self):
         self.assertNotIn(date(1866, 12, 31), self.holidays)
         self.assertNotIn(date(2010, 12, 31), self.holidays)
+        self.assertNotIn(date(2011, 1, 3), self.holidays)
         self.assertNotIn(date(2017, 1, 2), self.holidays)
         self.holidays.observed = True
-        self.assertIn(date(2010, 12, 31), self.holidays)
+        self.assertNotIn(date(2010, 12, 31), self.holidays)
+        self.assertIn(date(2011, 1, 3), self.holidays)
         self.assertIn(date(2017, 1, 2), self.holidays)
         self.holidays.observed = False
         for year in range(1900, 2100):
@@ -55,6 +57,21 @@ class TestCA(unittest.TestCase):
             self.assertIn(dt, pei_holidays)
             self.assertNotIn(dt + relativedelta(days=-1), pei_holidays)
             self.assertNotIn(dt + relativedelta(days=+1), pei_holidays)
+
+    def test_yukon_heritage_day(self):
+        # https://www.timeanddate.com/holidays/canada/heritage-day-yukon
+        yt_holidays = holidays.CA(subdiv="YT")
+        for dt in [
+            date(2017, 2, 24),
+            date(2018, 2, 23),
+            date(2019, 2, 22),
+            date(2020, 2, 21),
+            date(2021, 2, 26),
+            date(2022, 2, 25),
+        ]:
+            self.assertIn(dt, yt_holidays)
+            self.assertNotIn(dt + relativedelta(days=-1), yt_holidays)
+            self.assertNotIn(dt + relativedelta(days=+1), yt_holidays)
 
     def test_family_day(self):
         ab_holidays = holidays.CA(subdiv="AB")
@@ -369,11 +386,17 @@ class TestCA(unittest.TestCase):
         self.assertIn(date(2010, 12, 27), self.holidays)
 
     def test_queens_funeral(self):
-        observers = ("BC", "NB", "NL", "NS", "PE", "YT")
         for subdiv in holidays.CA.subdivisions:
             holidays_canada = holidays.CA(subdiv=subdiv)
             for year in range(1900, 2100):
-                if year == 2022 and subdiv in observers:
+                if year == 2022 and subdiv in {
+                    "BC",
+                    "NB",
+                    "NL",
+                    "NS",
+                    "PE",
+                    "YT",
+                }:
                     self.assertIn(date(year, 9, 19), holidays_canada)
                 else:
                     self.assertNotIn(date(year, 9, 19), holidays_canada)

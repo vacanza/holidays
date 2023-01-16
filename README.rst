@@ -47,7 +47,7 @@ The latest stable version can always be installed or updated via pip:
 
 .. code-block:: bash
 
-    $ pip install --update holidays
+    $ pip install --upgrade holidays
 
 
 Documentation
@@ -95,10 +95,10 @@ Some holidays may be only present in parts of a country:
     '2018-01-06' in us_holidays     # False
     '2018-01-06' in us_pr_holidays  # True
 
-.. _documentation: https://python-holidays.readthedocs.io/
+.. _python-holidays documentation: https://python-holidays.readthedocs.io/
 
-Please see the `documentation`_ for additional examples and detailed
-information.
+Please see the `python-holidays documentation`_ for additional examples and
+detailed information.
 
 
 Available Countries
@@ -106,7 +106,7 @@ Available Countries
 
 .. _ISO 3166-1 alpha-2 code: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
 
-We currently support 86 countries. The standard way to refer to a country is by
+We currently support 101 countries. The standard way to refer to a country is by
 using its `ISO 3166-1 alpha-2 code`_, the same used for domain names. The
 following countries and their subdivisions are available:
 
@@ -123,6 +123,9 @@ following countries and their subdivisions are available:
      - None
    * - Argentina
      - AR
+     - None
+   * - Armenia
+     - AM
      - None
    * - Aruba
      - AW
@@ -148,6 +151,9 @@ following countries and their subdivisions are available:
    * - Bolivia
      - BO
      - Departments: B, C, H, L, N, O, P, S, T
+   * - Bosnia and Herzegovina
+     - BA
+     - Departments: FBiH, RS, BD
    * - Botswana
      - BW
      - None
@@ -162,7 +168,7 @@ following countries and their subdivisions are available:
      - None
    * - Canada
      - CA
-     - Provinces and territories: AB, BC, MB, NB, NL, NS NT, NU, **ON** (default), PE, QC, SK, YU
+     - Provinces and territories: AB, BC, MB, NB, NL, NS NT, NU, **ON** (default), PE, QC, SK, YT
    * - Chile
      - CL
      - Regions: AI, AN, AP, AR, AT, BI, CO, LI, LL, LR, MA, ML, NB, RM, TA, VS
@@ -235,6 +241,9 @@ following countries and their subdivisions are available:
    * - India
      - IN
      - States: AN, AP, AR, AS, BR, CG, CH, DD, DH, DL, GA, GJ, HP, HR, JH, JK, KA, KL, LA, LD, MH, ML, MN, MP, MZ, NL, OR, PB, PY, RJ, SK, TN, TR, TS, UK, UP, WB
+   * - Indonesia
+     - ID
+     - None
    * - Ireland
      - IE
      - None
@@ -259,14 +268,14 @@ following countries and their subdivisions are available:
    * - Kenya
      - KE
      - None
-   * - Korea
-     - KR
-     - None
    * - Latvia
      - LV
      - None
    * - Lesotho
      - LS
+     - None
+   * - Liechtenstein
+     - LI
      - None
    * - Lithuania
      - LT
@@ -319,6 +328,9 @@ following countries and their subdivisions are available:
    * - Norway
      - NO
      - None
+   * - Pakistan
+     - PK
+     - None
    * - Paraguay
      - PY
      - None
@@ -330,7 +342,7 @@ following countries and their subdivisions are available:
      - None
    * - Portugal
      - PT
-     - Use subd='Ext' to include holidays most people have off
+     - Districts: 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18; Use subdiv='Ext' to include holidays most people have off
    * - Romania
      - RO
      - None
@@ -354,6 +366,9 @@ following countries and their subdivisions are available:
      - None
    * - South Africa
      - ZA
+     - None
+   * - South Korea
+     - KR
      - None
    * - Spain
      - ES

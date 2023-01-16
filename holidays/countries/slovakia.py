@@ -4,12 +4,11 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import warnings
 from datetime import date
 
 from dateutil.easter import easter
@@ -20,15 +19,21 @@ from holidays.holiday_base import HolidayBase
 
 
 class Slovakia(HolidayBase):
-    # https://sk.wikipedia.org/wiki/Sviatok
-    # https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1993/241/20181011.html
+    """
+    https://sk.wikipedia.org/wiki/Sviatok
+    https://www.slov-lex.sk/pravne-predpisy/SK/ZZ/1993/241/20181011.html
+    """
 
     country = "SK"
-
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
+    special_holidays = {
+        2018: (
+            (OCT, 30, "100. výročie prijatia Deklarácie slovenského národa"),
+        )
+    }
 
     def _populate(self, year):
+        super()._populate(year)
+
         self[date(year, JAN, 1)] = "Deň vzniku Slovenskej republiky"
         self[date(year, JAN, 6)] = (
             "Zjavenie Pána (Traja králi a"
@@ -36,9 +41,9 @@ class Slovakia(HolidayBase):
             " kresťanov)"
         )
 
-        e = easter(year)
-        self[e - rd(days=2)] = "Veľký piatok"
-        self[e + rd(days=1)] = "Veľkonočný pondelok"
+        easter_date = easter(year)
+        self[easter_date + rd(days=-2)] = "Veľký piatok"
+        self[easter_date + rd(days=+1)] = "Veľkonočný pondelok"
 
         self[date(year, MAY, 1)] = "Sviatok práce"
 
@@ -54,10 +59,7 @@ class Slovakia(HolidayBase):
         self[date(year, SEP, 1)] = "Deň Ústavy Slovenskej republiky"
 
         self[date(year, SEP, 15)] = "Sedembolestná Panna Mária"
-        if year == 2018:
-            self[date(year, OCT, 30)] = (
-                "100. výročie prijatia" " Deklarácie slovenského národa"
-            )
+
         self[date(year, NOV, 1)] = "Sviatok Všetkých svätých"
 
         if year >= 2001:

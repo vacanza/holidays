@@ -4,21 +4,18 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
 
-from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
-from holidays.constants import FRI, SAT
-from holidays.constants import JAN, MAY, JUN
+
+from holidays.constants import JAN, MAY, JUN, FRI, SAT
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
-
-WEEKEND = (FRI, SAT)
 
 # Since Djibouti share most of it's holidays with other muslim countries,
 # this class is just a copy of Egypt's.
@@ -41,24 +38,10 @@ class Djibouti(HolidayBase):
     # is_weekend function is there, however not activated for accuracy.
 
     country = "DJ"
-
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
+    weekend = {FRI, SAT}
 
     def _populate(self, year):
-
-        """
-        # Function to store the holiday name in the appropriate
-        # date and to shift the Public holiday in case it happens
-        # on a Saturday(Weekend)
-        # (NOT USED)
-        def is_weekend(self, hol_date, hol_name):
-            if hol_date.weekday() == FRI:
-                self[hol_date] = hol_name + " [Friday]"
-                self[hol_date + rd(days=+2)] = "Sunday following " + hol_name
-            else:
-                self[hol_date] = hol_name
-        """
+        super()._populate(year)
 
         def _add_holiday(dt: date, hol: str) -> None:
             """Only add if in current year; prevents adding holidays across

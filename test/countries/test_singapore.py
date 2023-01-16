@@ -4,18 +4,17 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 import importlib.util
 import unittest
-
 from datetime import date
 
 import holidays
-from holidays.constants import JAN, APR, MAY, JUN, AUG, NOV, DEC
+from holidays.constants import APR, AUG, DEC, JAN, JUN, MAY, NOV
 
 
 class TestSingapore(unittest.TestCase):
@@ -29,8 +28,6 @@ class TestSingapore(unittest.TestCase):
         self.assertIn(date(1968, 12, 26), self.holidays)
         # latest polling day
         self.assertIn(date(2015, 9, 11), self.holidays)
-        # SG50
-        self.assertIn(date(2015, 8, 7), self.holidays)
         # Year with lunar leap month
         self.assertIn(date(2015, 8, 7), self.holidays)
         # Latest holidays
@@ -61,7 +58,7 @@ class TestSingapore(unittest.TestCase):
         self.assertIn(date(2022, 5, 16), self.holidays)
         self.assertIn(date(2022, 7, 9), self.holidays)
         self.assertIn(date(2022, 8, 9), self.holidays)
-        self.assertIn(date(2022, 11, 24), self.holidays)
+        self.assertIn(date(2022, 10, 24), self.holidays)
         self.assertIn(date(2022, 12, 25), self.holidays)
         self.assertIn(date(2022, 12, 26), self.holidays)
         # 2022: total holidays (11 + 3 falling on a Sunday)
@@ -75,7 +72,7 @@ class TestSingapore(unittest.TestCase):
         self.assertIn(date(2023, APR, 7), self.holidays)
         self.assertIn(date(2023, APR, 22), self.holidays)
         self.assertIn(date(2023, MAY, 1), self.holidays)
-        self.assertIn(date(2023, JUN, 3), self.holidays)
+        self.assertIn(date(2023, JUN, 2), self.holidays)
         self.assertIn(date(2023, JUN, 29), self.holidays)
         self.assertIn(date(2023, AUG, 9), self.holidays)
         self.assertIn(date(2023, NOV, 12), self.holidays)
@@ -101,3 +98,6 @@ class TestSingapore(unittest.TestCase):
         self.assertIsInstance(h, holidays.Singapore)
         h = holidays.SGP()
         self.assertIsInstance(h, holidays.Singapore)
+
+    def test_special_holidays(self):
+        self.assertIn(date(2015, 8, 7), self.holidays)

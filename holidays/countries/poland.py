@@ -4,12 +4,11 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import warnings
 from datetime import date
 
 from dateutil.easter import easter
@@ -20,38 +19,39 @@ from holidays.holiday_base import HolidayBase
 
 
 class Poland(HolidayBase):
-    # https://pl.wikipedia.org/wiki/Dni_wolne_od_pracy_w_Polsce
+    """
+    https://pl.wikipedia.org/wiki/Dni_wolne_od_pracy_w_Polsce
+    """
 
     country = "PL"
-
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
+    special_holidays = {
+        2018: ((NOV, 12, "Narodowe Święto Niepodległości - 100-lecie"),)
+    }
 
     def _populate(self, year):
+        super()._populate(year)
+
         self[date(year, JAN, 1)] = "Nowy Rok"
         if year >= 2011:
             self[date(year, JAN, 6)] = "Święto Trzech Króli"
 
-        e = easter(year)
-        self[e] = "Niedziela Wielkanocna"
-        self[e + rd(days=1)] = "Poniedziałek Wielkanocny"
+        easter_date = easter(year)
+        self[easter_date] = "Niedziela Wielkanocna"
+        self[easter_date + rd(days=+1)] = "Poniedziałek Wielkanocny"
 
         if year >= 1950:
             self[date(year, MAY, 1)] = "Święto Państwowe"
         if year >= 1919:
             self[date(year, MAY, 3)] = "Święto Narodowe Trzeciego Maja"
 
-        self[e + rd(days=49)] = "Zielone Świątki"
-        self[e + rd(days=60)] = "Dzień Bożego Ciała"
+        self[easter_date + rd(days=+49)] = "Zielone Świątki"
+        self[easter_date + rd(days=+60)] = "Dzień Bożego Ciała"
 
         self[date(year, AUG, 15)] = "Wniebowzięcie Najświętszej Marii Panny"
 
         self[date(year, NOV, 1)] = "Uroczystość Wszystkich Świętych"
         if (1937 <= year <= 1945) or year >= 1989:
             self[date(year, NOV, 11)] = "Narodowe Święto Niepodległości"
-        if year == 2018:
-            name = "Narodowe Święto Niepodległości - 100-lecie"
-            self[date(year, NOV, 12)] = name
 
         self[date(year, DEC, 25)] = "Boże Narodzenie (pierwszy dzień)"
         self[date(year, DEC, 26)] = "Boże Narodzenie (drugi dzień)"

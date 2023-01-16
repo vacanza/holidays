@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -12,21 +12,11 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, TU
+from dateutil.relativedelta import SU
+from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import (
-    JAN,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-)
+from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT
+from holidays.constants import NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -66,10 +56,9 @@ class Brazil(HolidayBase):
         "TO",
     ]
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
         self[date(year, JAN, 1)] = "Ano novo"
 
@@ -88,16 +77,17 @@ class Brazil(HolidayBase):
         # Christmas Day
         self[date(year, DEC, 25)] = "Natal"
 
-        self[easter(year) - rd(days=2)] = "Sexta-feira Santa"
+        easter_date = easter(year)
+        self[easter_date + rd(days=-2)] = "Sexta-feira Santa"
 
-        self[easter(year)] = "Páscoa"
+        self[easter_date] = "Páscoa"
 
-        self[easter(year) + rd(days=60)] = "Corpus Christi"
+        self[easter_date + rd(days=+60)] = "Corpus Christi"
 
-        quaresma = easter(year) - rd(days=46)
+        quaresma = easter_date + rd(days=-46)
         self[quaresma] = "Quarta-feira de cinzas (Início da Quaresma)"
 
-        self[quaresma - rd(weekday=TU(-1))] = "Carnaval"
+        self[quaresma + rd(days=-1)] = "Carnaval"
 
         if self.subdiv == "AC":
             self[date(year, JAN, 23)] = "Dia do evangélico"
@@ -197,9 +187,10 @@ class Brazil(HolidayBase):
             self[date(year, OCT, 5)] = "Criação de Roraima"
 
         if self.subdiv == "SC":
-            self[date(year, AUG, 11)] = (
-                "Criação da capitania," " separando-se de SP"
-            )
+            dt = date(year, AUG, 11)
+            if year >= 2018 and not self._is_weekend(dt):
+                dt += rd(weekday=SU)
+            self[dt] = "Criação da capitania, separando-se de SP"
 
         if self.subdiv == "SP":
             self[date(year, JUL, 9)] = "Revolução Constitucionalista de 1932"

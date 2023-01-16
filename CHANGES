@@ -1,3 +1,89 @@
+Version 0.19
+============
+
+Released ???????? ??, ????
+
+- Copyright update 2023
+- Added Arkadii Yakovets (arkid15r) to project collaborators / maintainers - welcome!
+
+Version 0.18
+============
+
+Released December 27, 2022
+
+- Code refactoring #801, #870 (arkid15r)
+- Test refactoring / common functions #800, #830, #844 (arkid15r)
+- Pre-commit reviews #786, #795 (KJhellico, arkid15r, dr-p)
+- Import cleanup, flake8 settings review #792 (arkid15r, KJhellico, dr-p)
+- PyMeeus for equinox and solstice calculation #828, #863 (Nalguedo)
+- Easter holidays refactoring and unification #803 (KJhellico)
+- Observed holidays calc optimizations #824 (KJhellico)
+- Special holidays refactoring for 13 countries #796 (arkid15r, KJhellico)
+- Support for Indonesia #787 (KJhellico)
+- Support for Pakistan #847 (KJhellico)
+- Support for Armenia #875 (KJhellico)
+- Korea renamed to South Korea #797 (arkid15r)
+- Azerbaijan: refactoring #859 (KJhellico)
+- Hong Kong: optimizations #786 (KJhellico)
+- Korea fixes #791 (KJhellico) + test optimizations (dr-p)
+- Zambia: optimizations and refactoring #798 (KJhellico)
+- Vietnam: optimizations and refactoring #799 (KJhellico)
+- Malaysia: optimizations, refactoring and fixes #802, #858 (KJhellico)
+- New Zealand: optimizations and refactoring #836 (KJhellico)
+- Chile: optimizations #834 (KJhellico) + fixes #828 (Nalguedo)
+- Uruguay updates #809 (KJhellico)
+- Kazakhstan updates #829, #867 (KJhellico)
+- Canada fixes #811 (jasonjensen)
+- Nigeria updates #823 (KJhellico)
+- NY Stock Exchange updates #817, #853 (SnowX65, KJHellico)
+- New Zealand optimizazions #872 (KJhellico)
+- Madagascar updates #818 (KJhellico)
+- Paraguay updates #819 (KJhellico)
+- United Kingdom updates #840 (KJhellico)
+- South Africa: optimizations and updates #820, #848 (KJhellico)
+- US updates #857 (KJhellico)
+- Switzerland: optimizations, fix #821 (KJhellico)
+- Angola: optimizations, fix #822, #835 (KJhellico)
+- India updates #825 (KJhellico)
+- NY Stock Exchange updates #833 (SnowX65, KJhellico)
+- Hungary fixes #826 (KJhellico)
+
+Version 0.17.2
+==============
+
+Released November 23, 2022
+- Swaziland deprecation warning fix #794 (arkid15r)
+
+First release (0.17) November 13, 2022
+
+- 100% test coverage, code refactoring #747, #749 (arkid15r)
+- Special holidays (one-off) support #724 (arkid15r, dr-p)
+- Support for Bosnia and Herzegovina #683, #725 (kasya, arkid15r)
+- Support for Liechtenstein #650, #728, #758 (kasya, arkid15r)
+- Added isort to pre-commit #722, #734 (arkid15r, dr-p)
+- Get item multiple return type fix (dr-p) TODO: possible refactor required
+- Sort overlapping holiday names #713 (kasya, arkid15r)
+- Supported country / financial lists fix #764 (arkid15r)
+- Various refactorings #777 (arkid15r)
+- Various refactorings #756, #759, #760, #766, #767, #770, #775, #776, #780 (KJhellico)
+- Portugal improvements #753 (Nalguedo)
+- Brazil improvements #761, #592 (Nalguedo)
+- Uruguay improvements #758 (kasya)
+- Hong Kong improvements #779, #782 (poshingchu)
+- Swaziland deprecation, replaced by Eswatini #721 (bkthomps)
+- Norway, Sweden rework #771 (arkid15r)
+- South Africa rework #773 (KJhellico)
+- Singapore fixes #717, #726, #754, #782 (amas01, mborsetti, kasya, poshingchu)
+- Canada fixes #715, #733 (bkthomps, MichaelThessel)
+- Honduras fixes #720, #744 (bkthomps, arkid15r)
+- Japan upgrades (added substitute holidays) #723 (shohirose)
+- Malaysia fix #736, #782 (shahonseven, poshingchu)
+- Ukraine fixes #743, #746 (KJhellico)
+- Bulgaria fixes #748 (KJhellico)
+- Isle of Man fix #762, #764 (arkid15r)
+- Lithuania fix #781 (Nalguedo)
+- Sweden fix #783 (sander-visser, KJhellico)
+
 Version 0.16
 ============
 

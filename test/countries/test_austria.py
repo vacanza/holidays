@@ -4,14 +4,14 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 import unittest
-
 from datetime import date
+
 from dateutil.relativedelta import relativedelta
 
 import holidays
@@ -83,3 +83,7 @@ class TestAT(unittest.TestCase):
         ]
         for holiday in all_holidays:
             self.assertIn(holiday, at_2015.values())
+
+    def test_subdiv(self):
+        at_holidays = holidays.AT(subdiv=1)
+        self.assertEqual("1", at_holidays.subdiv)

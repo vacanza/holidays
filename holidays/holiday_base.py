@@ -4,33 +4,21 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-# from __future__ import annotations  # add in Python 3.7
+__all__ = ("DateLike", "HolidayBase", "HolidaySum")
 
 import warnings
-from datetime import timedelta, datetime, date
-from typing import (
-    cast,
-    Any,
-    Dict,
-    Iterable,
-    List,
-    Mapping,
-    Optional,
-    Set,
-    TYPE_CHECKING,
-    Tuple,
-    Union,
-)
+from datetime import date, datetime, timedelta
+from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Tuple
+from typing import Union, cast
 
 from dateutil.parser import parse
 
-if TYPE_CHECKING:
-    from holidays.utils import country_holidays  # required by docstring
+from holidays.constants import SAT, SUN
 
 DateLike = Union[date, datetime, str, float, int]
 
@@ -161,6 +149,29 @@ class HolidayBase(Dict[date, str]):
     >>> assert date(2015, 1, 2) not in custom_holidays
     >>> assert '12/25/2015' in custom_holidays
 
+    For special (one-off) country-wide holidays handling use
+    :attr:`special_holidays`:
+
+    .. code-block:: python
+
+        special_holidays = {
+            1977: ((JUN, 7, "Silver Jubilee of Elizabeth II"),),
+            1981: ((JUL, 29, "Wedding of Charles and Diana"),),
+            1999: ((DEC, 31, "Millennium Celebrations"),),
+            2002: ((JUN, 3, "Golden Jubilee of Elizabeth II"),),
+            2011: ((APR, 29, "Wedding of William and Catherine"),),
+            2012: ((JUN, 5, "Diamond Jubilee of Elizabeth II"),),
+            2022: (
+                (JUN, 3, "Platinum Jubilee of Elizabeth II"),
+                (SEP, 19, "State Funeral of Queen Elizabeth II"),
+            ),
+        }
+
+        def _populate(self, year):
+            super()._populate(year)
+
+            ...
+
     For more complex logic, like 4th Monday of January, you can inherit the
     :class:`HolidayBase` class and define your own :meth:`_populate` method.
     See documentation for examples.
@@ -181,9 +192,14 @@ class HolidayBase(Dict[date, str]):
     """Whether dates when public holiday are observed are included."""
     subdiv: Optional[str] = None
     """The subdiv requested."""
+    special_holidays: Dict[int, Tuple[Tuple[int, int, str], ...]] = {}
+    """A list of the country-wide special (as opposite to regular) holidays for
+    a specific year."""
     _deprecated_subdivisions: List[str] = []
     """Other subdivisions whose names are deprecated or aliases of the official
     ones."""
+    weekend: Set[int] = {SAT, SUN}
+    """Country weekend days."""
 
     def __init__(
         self,
@@ -310,15 +326,15 @@ class HolidayBase(Dict[date, str]):
           :func:`dateutil.parser.parse`,
         * or a :class:`float` or :class:`int` representing a POSIX timestamp.
         """
+
         if not isinstance(key, (date, datetime, str, float, int)):
             raise TypeError("Cannot convert type '%s' to date." % type(key))
 
-        contained = dict.__contains__(
+        return dict.__contains__(
             cast("Mapping[Any, Any]", self), self.__keytransform__(key)
         )
-        return contained
 
-    def __getitem__(self, key: DateLike) -> str:
+    def __getitem__(self, key: DateLike) -> Any:
         if isinstance(key, slice):
             if not key.start or not key.stop:
                 raise ValueError("Both start and stop must be given.")
@@ -357,11 +373,14 @@ class HolidayBase(Dict[date, str]):
 
     def __setitem__(self, key: DateLike, value: str) -> None:
         if key in self:
-            if self.get(key).find(value) < 0 and value.find(self.get(key)) < 0:
-                value = f"{value}, {self.get(key)}"
-            else:
-                value = self.get(key)
-        return dict.__setitem__(self, self.__keytransform__(key), value)
+            # If there are multiple holidays on the same date
+            # order their names alphabetically.
+            delimiter = ", "
+            holiday_names = set(self.get(key).split(delimiter))
+            holiday_names.add(value)
+            value = delimiter.join(sorted(holiday_names))
+
+        dict.__setitem__(self, self.__keytransform__(key), value)
 
     def update(  # type: ignore[override]
         self, *args: Union[Dict[DateLike, str], List[DateLike], DateLike]
@@ -551,14 +570,35 @@ class HolidayBase(Dict[date, str]):
     def __radd__(self, other: Any) -> "HolidayBase":
         return self.__add__(other)
 
-    def __pos__(self) -> "HolidayBase":
-        """Enables type checking for the unary operator + (e.g. a + b instead of
-        a.__add__(b))."""
-        pass
-
     def _populate(self, year: int) -> None:
-        """meta: public"""
-        pass
+        """This is a private class that populates (generates and adds) holidays
+        for a given year. To keep things fast, it assumes that no holidays for
+        the year have already been populated. It is required to be called
+        internally by any country populate() method, while should not be called
+        directly from outside.
+        To add holidays to an object, use the update() method:
+
+        :param year:
+            The year to populate with holidays.
+
+        >>> from holidays import country_holidays
+        >>> us_holidays = country_holidays('US', years=2020)
+        # to add new holidays to the object:
+        >>> us_holidays.update(country_holidays('US', years=2021))
+        """
+
+        # Special holidays list.
+        for month, day, name in self.special_holidays.get(year, ()):
+            self[date(year, month, day)] = name
+
+    def _is_weekend(self, *args):
+        """
+        Returns True if date's week day is a weekend day.
+        Returns False otherwise.
+        """
+        dt = args[0] if len(args) == 1 else date(*args)
+
+        return dt.weekday() in self.weekend
 
     def __reduce__(self) -> Union[str, Tuple[Any, ...]]:
         return super().__reduce__()
@@ -685,14 +725,15 @@ country_holidays('CA') + country_holidays('MX')
                 arg = getattr(h1, attr, None) or getattr(h2, attr, None)
                 if arg:
                     kwargs[attr] = arg
-        if kwargs.__contains__("market"):
-            self.market = kwargs.pop("market")
-        if kwargs.__contains__("country"):
+
+        if "country" in kwargs:
             self.country = kwargs.pop("country")
+        if "market" in kwargs:
+            self.market = kwargs.pop("market")
 
         HolidayBase.__init__(self, **kwargs)
 
-    def _populate(self, year: int) -> None:
+    def _populate(self, year):
         for h in self.holidays[::-1]:
             h._populate(year)
             self.update(cast("Dict[DateLike, str]", h))

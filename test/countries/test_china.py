@@ -4,13 +4,12 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 import unittest
-
 from datetime import date
 
 import holidays
@@ -101,3 +100,6 @@ class TestChina(unittest.TestCase):
         self.assertIn(date(2015, 10, 1), self.holidays)  # National Day day 1
         self.assertIn(date(2015, 10, 2), self.holidays)  # National Day day 2
         self.assertIn(date(2015, 10, 3), self.holidays)  # National Day day 3
+
+    def test_pre_1950(self):
+        self.assertNotIn(date(1949, 1, 1), self.holidays)

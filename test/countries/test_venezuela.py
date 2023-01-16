@@ -4,18 +4,16 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 import unittest
+from datetime import date, timedelta
 
-from datetime import date
-from datetime import timedelta
-
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, OCT, DEC
 import holidays
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, OCT, DEC
 
 
 class TestVenezuela(unittest.TestCase):
@@ -37,7 +35,7 @@ class TestVenezuela(unittest.TestCase):
     def test_2016(self):
         # https://www.officeholidays.com/countries/venezuela/2016
         year = 2016
-        expected_holidays = [
+        expected_holidays = {
             date(year, JAN, 1),
             date(year, FEB, 8),
             date(year, FEB, 9),
@@ -52,13 +50,13 @@ class TestVenezuela(unittest.TestCase):
             date(year, DEC, 24),
             date(year, DEC, 25),
             date(year, DEC, 31),
-        ]
+        }
         self._check_all_dates(year, expected_holidays)
 
     def test_2017(self):
         # https://www.officeholidays.com/countries/venezuela/2017
         year = 2017
-        expected_holidays = [
+        expected_holidays = {
             date(year, JAN, 1),
             date(year, FEB, 27),
             date(year, FEB, 28),
@@ -73,13 +71,13 @@ class TestVenezuela(unittest.TestCase):
             date(year, DEC, 24),
             date(year, DEC, 25),
             date(year, DEC, 31),
-        ]
+        }
         self._check_all_dates(year, expected_holidays)
 
     def test_2018(self):
         # https://www.officeholidays.com/countries/venezuela/2018
         year = 2018
-        expected_holidays = [
+        expected_holidays = {
             date(year, JAN, 1),
             date(year, FEB, 12),
             date(year, FEB, 13),
@@ -94,13 +92,13 @@ class TestVenezuela(unittest.TestCase):
             date(year, DEC, 24),
             date(year, DEC, 25),
             date(year, DEC, 31),
-        ]
+        }
         self._check_all_dates(year, expected_holidays)
 
     def test_2019(self):
         # https://www.officeholidays.com/countries/venezuela/2019
         year = 2019
-        expected_holidays = [
+        expected_holidays = {
             date(year, JAN, 1),
             date(year, MAR, 4),
             date(year, MAR, 5),
@@ -115,13 +113,13 @@ class TestVenezuela(unittest.TestCase):
             date(year, DEC, 24),
             date(year, DEC, 25),
             date(year, DEC, 31),
-        ]
+        }
         self._check_all_dates(year, expected_holidays)
 
     def test_2020(self):
         # https://www.officeholidays.com/countries/venezuela/2020
         year = 2020
-        expected_holidays = [
+        expected_holidays = {
             date(year, JAN, 1),
             date(year, FEB, 24),
             date(year, FEB, 25),
@@ -136,13 +134,13 @@ class TestVenezuela(unittest.TestCase):
             date(year, DEC, 24),
             date(year, DEC, 25),
             date(year, DEC, 31),
-        ]
+        }
         self._check_all_dates(year, expected_holidays)
 
     def test_2021(self):
         # https://www.officeholidays.com/countries/venezuela/2021
         year = 2021
-        expected_holidays = [
+        expected_holidays = {
             date(year, JAN, 1),
             date(year, FEB, 15),
             date(year, FEB, 16),
@@ -157,13 +155,13 @@ class TestVenezuela(unittest.TestCase):
             date(year, DEC, 24),
             date(year, DEC, 25),
             date(year, DEC, 31),
-        ]
+        }
         self._check_all_dates(year, expected_holidays)
 
     def test_2022(self):
         # https://www.officeholidays.com/countries/venezuela/2022
         year = 2022
-        expected_holidays = [
+        expected_holidays = {
             date(year, JAN, 1),
             date(year, FEB, 28),
             date(year, MAR, 1),
@@ -178,13 +176,13 @@ class TestVenezuela(unittest.TestCase):
             date(year, DEC, 24),
             date(year, DEC, 25),
             date(year, DEC, 31),
-        ]
+        }
         self._check_all_dates(year, expected_holidays)
 
     def test_2023(self):
         # https://www.officeholidays.com/countries/venezuela/2023
         year = 2023
-        expected_holidays = [
+        expected_holidays = {
             date(year, JAN, 1),
             date(year, FEB, 20),
             date(year, FEB, 21),
@@ -199,7 +197,7 @@ class TestVenezuela(unittest.TestCase):
             date(year, DEC, 24),
             date(year, DEC, 25),
             date(year, DEC, 31),
-        ]
+        }
         self._check_all_dates(year, expected_holidays)
 
     def test_independence(self):

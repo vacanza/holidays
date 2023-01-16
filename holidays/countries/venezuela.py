@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -25,10 +25,9 @@ class Venezuela(HolidayBase):
 
     country = "VE"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         """
         Overview: https://dias-festivos.eu/dias-festivos/venezuela/#
         Various decrees about holidays:
@@ -42,17 +41,18 @@ class Venezuela(HolidayBase):
 
         self[date(year, JAN, 1)] = "Año Nuevo [New Year's]"
 
+        easter_date = easter(year)
         self[
-            easter(year) - rd(days=48)
+            easter_date + rd(days=-48)
         ] = "Lunes de Carnaval [Monday of Carnival]"
 
         self[
-            easter(year) - rd(days=47)
+            easter_date + rd(days=-47)
         ] = "Martes de Carnaval [Tuesday of Carnival]"
 
-        self[easter(year) - rd(days=3)] = "Jueves Santo [Maundy Thursday]"
+        self[easter_date + rd(days=-3)] = "Jueves Santo [Maundy Thursday]"
 
-        self[easter(year) - rd(days=2)] = "Viernes Santo [Good Friday]"
+        self[easter_date + rd(days=-2)] = "Viernes Santo [Good Friday]"
 
         # Note: not sure about the start year, but this event happened in 1811
         if year >= 1811:

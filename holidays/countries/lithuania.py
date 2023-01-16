@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -12,22 +12,23 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, SU
+from dateutil.relativedelta import SU
+from dateutil.relativedelta import relativedelta as rd
 
 from holidays.holiday_base import HolidayBase
 
 
 class Lithuania(HolidayBase):
-
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Lithuania
-    # https://www.kalendorius.today/
+    """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Lithuania
+    https://www.kalendorius.today/
+    """
 
     country = "LT"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
         self[date(year, 1, 1)] = "Naujieji metai"
 
@@ -47,7 +48,7 @@ class Lithuania(HolidayBase):
         self[easter_date] = "Velykos"
 
         # Easter 2nd day
-        self[easter_date + rd(days=1)] = "Velykų antroji diena"
+        self[easter_date + rd(days=+1)] = "Velykų antroji diena"
 
         # International Workers' Day
         self[date(year, 5, 1)] = "Tarptautinė darbo diena"
@@ -78,6 +79,10 @@ class Lithuania(HolidayBase):
 
         # All Saints' Day
         self[date(year, 11, 1)] = "Visų šventųjų diena (Vėlinės)"
+
+        # All Souls' Day
+        if year >= 2020:
+            self[date(year, 11, 2)] = "Mirusiųjų atminimo diena (Vėlinės)"
 
         # Christmas Eve
         self[date(year, 12, 24)] = "Šv. Kūčios"

@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -31,10 +31,9 @@ class Slovenia(HolidayBase):
 
     country = "SI"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         if year <= 1990:
             return
 
@@ -49,8 +48,7 @@ class Slovenia(HolidayBase):
         self[date(year, FEB, 8)] = "Prešernov dan"
 
         # Easter monday is the only easter related work-free day
-        easter_day = easter(year)
-        self[easter_day + rd(days=1)] = "Velikonočni ponedeljek"
+        self[easter(year) + rd(days=+1)] = "Velikonočni ponedeljek"
 
         # Day of uprising against occupation
         self[date(year, APR, 27)] = "dan upora proti okupatorju"

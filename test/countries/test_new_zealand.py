@@ -4,14 +4,14 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 import unittest
-
 from datetime import date
+
 from dateutil.relativedelta import relativedelta
 
 import holidays
@@ -742,26 +742,24 @@ class TestNZ(unittest.TestCase):
             dt = date(year, 1, day)
             self.assertIn(dt, stl_holidays, dt)
             self.assertEqual(stl_holidays[dt], "Southland Anniversary Day", dt)
-            for year, (month, day) in enumerate(
-                [
-                    (4, 10),
-                    (4, 2),
-                    (4, 22),
-                    (4, 7),
-                    (3, 29),
-                    (4, 18),
-                    (4, 3),
-                    (4, 23),
-                    (4, 14),
-                    (4, 6),
-                ],
-                2012,
-            ):
-                dt = date(year, month, day)
-                self.assertIn(dt, stl_holidays, dt)
-                self.assertEqual(
-                    stl_holidays[dt], "Southland Anniversary Day", dt
-                )
+        for year, (month, day) in enumerate(
+            [
+                (4, 10),
+                (4, 2),
+                (4, 22),
+                (4, 7),
+                (3, 29),
+                (4, 18),
+                (4, 3),
+                (4, 23),
+                (4, 14),
+                (4, 6),
+            ],
+            2012,
+        ):
+            dt = date(year, month, day)
+            self.assertIn(dt, stl_holidays, dt)
+            self.assertEqual(stl_holidays[dt], "Southland Anniversary Day", dt)
 
     def test_chatham_islands_anniversary_day(self):
         cit_holidays = holidays.NZ(subdiv="Chatham Islands")

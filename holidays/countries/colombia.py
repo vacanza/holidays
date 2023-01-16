@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -12,10 +12,10 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, MO, TH, FR
+from dateutil.relativedelta import MO
+from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAR, MAY, JUN, JUL, AUG, OCT, NOV, DEC
-from holidays.constants import MON
+from holidays.constants import JAN, MAR, MAY, JUN, JUL, AUG, OCT, NOV, DEC, MON
 from holidays.holiday_base import HolidayBase
 
 
@@ -29,9 +29,6 @@ class Colombia(HolidayBase):
     """
 
     country = "CO"
-
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
 
     def _add_with_bridge(self, _date, name):
         """
@@ -55,6 +52,8 @@ class Colombia(HolidayBase):
             self[_date] = name
 
     def _populate(self, year):
+        super()._populate(year)
+
         self._add_fixed_date_holidays(year)
         self._add_flexible_date_holidays(year)
         self._add_easter_based_holidays(year)
@@ -150,12 +149,10 @@ class Colombia(HolidayBase):
     def _add_fixed_easter_based_holidays(self, _easter):
         if _easter.year > 1950:
             # Maundy Thursday
-            self[
-                _easter + rd(weekday=TH(-1))
-            ] = "Jueves Santo [Maundy Thursday]"
+            self[_easter + rd(days=-3)] = "Jueves Santo [Maundy Thursday]"
 
             # Good Friday
-            self[_easter + rd(weekday=FR(-1))] = "Viernes Santo [Good Friday]"
+            self[_easter + rd(days=-2)] = "Viernes Santo [Good Friday]"
 
     def _add_flexible_easter_based_holidays(self, _easter):
         if _easter.year > 1950:

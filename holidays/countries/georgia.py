@@ -4,14 +4,14 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
 
-from dateutil.easter import easter, EASTER_ORTHODOX
+from dateutil.easter import EASTER_ORTHODOX, easter
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAR, APR, MAY, AUG, OCT, NOV
@@ -25,10 +25,8 @@ class Georgia(HolidayBase):
 
     country = "GE"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
 
         # New Year's Day
         name = "ახალი წელი"
@@ -54,21 +52,22 @@ class Georgia(HolidayBase):
         name = "ქალთა საერთაშორისო დღე"
         self[date(year, MAR, 8)] = name
 
+        easter_date = easter(year, method=EASTER_ORTHODOX)
         # Orthodox Good Friday
         name = "წითელი პარასკევი"
-        self[easter(year, method=EASTER_ORTHODOX) - rd(days=2)] = name
+        self[easter_date + rd(days=-2)] = name
 
         # Orthodox Holy Saturday
         name = "დიდი შაბათი"
-        self[easter(year, method=EASTER_ORTHODOX) - rd(days=1)] = name
+        self[easter_date + rd(days=-1)] = name
 
         # 	Orthodox Easter Sunday
         name = "აღდგომა"
-        self[easter(year, method=EASTER_ORTHODOX)] = name
+        self[easter_date] = name
 
         # Orthodox Easter Monday
         name = "შავი ორშაბათი"
-        self[easter(year, method=EASTER_ORTHODOX) + rd(days=1)] = name
+        self[easter_date + rd(days=+1)] = name
 
         # National Unity Day
         name = "ეროვნული ერთიანობის დღე"

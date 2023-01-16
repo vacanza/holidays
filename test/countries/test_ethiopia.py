@@ -4,14 +4,13 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 import importlib.util
 import unittest
-
 from datetime import date
 
 import holidays
@@ -82,11 +81,16 @@ class TestEthiopia(unittest.TestCase):
         self.assertIn(date(1983, 9, 13), self.holidays)
 
     def test_hijri_based(self):
-        if importlib.util.find_spec("hijri_converter"):
-            self.holidays = holidays.ET(years=[2019])
-            # eid_alfitr
-            self.assertIn(date(2019, 6, 4), self.holidays)
-            # eid_aladha
-            self.assertIn(date(2019, 8, 11), self.holidays)
-            # muhammad's birthday
-            self.assertIn(date(2019, 11, 10), self.holidays)
+        if not importlib.util.find_spec("hijri_converter"):
+            return
+
+        self.holidays = holidays.ET(years=[2019])
+        # eid_alfitr
+        self.assertIn(date(2019, 6, 4), self.holidays)
+        # eid_aladha
+        self.assertIn(date(2019, 8, 11), self.holidays)
+        # muhammad's birthday
+        self.assertIn(date(2019, 11, 10), self.holidays)
+
+    def test_pre_1897(self):
+        self.assertNotIn(date(1896, 3, 2), self.holidays)

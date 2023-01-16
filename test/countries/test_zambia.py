@@ -4,13 +4,12 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 import unittest
-
 from datetime import date
 
 import holidays
@@ -55,9 +54,6 @@ class TestZambia(unittest.TestCase):
         self.assertIn("1969-05-26", self.holidays)
         # Youth Day
         self.assertIn("2004-03-12", self.holidays)
-        # Two holidays declared in 2021
-        self.assertIn("2021-07-02", self.holidays)
-        self.assertIn("2021-07-07", self.holidays)
         # Kenneth Kaunda Day
         self.assertIn("2032-04-28", self.holidays)
 
@@ -71,3 +67,15 @@ class TestZambia(unittest.TestCase):
         self.holidays = holidays.ZM(observed=False)
         # African Freedom Day (on Sunday)
         self.assertNotIn("1969-05-26", self.holidays)
+
+    def test_special_holidays(self):
+        self.assertIn(date(2016, 8, 11), self.holidays)
+        self.assertIn(date(2016, 9, 13), self.holidays)
+        self.assertIn(date(2018, 3, 9), self.holidays)
+        self.assertIn(date(2018, 7, 26), self.holidays)
+        self.assertIn(date(2021, 7, 2), self.holidays)
+        self.assertIn(date(2021, 7, 7), self.holidays)
+        self.assertIn(date(2021, 8, 12), self.holidays)
+        self.assertIn(date(2021, 8, 13), self.holidays)
+        self.assertIn(date(2021, 8, 24), self.holidays)
+        self.assertIn(date(2022, 3, 18), self.holidays)

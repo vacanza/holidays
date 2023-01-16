@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -12,21 +12,22 @@
 from datetime import date
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd, FR
+from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, APR, MAY, AUG, DEC
-from holidays.constants import SUN
+from holidays.constants import JAN, APR, MAY, AUG, DEC, SUN
 from holidays.holiday_base import HolidayBase
 
 
 class Netherlands(HolidayBase):
+    """
+    http://www.iamsterdam.com/en/plan-your-trip/practical-info/public-holidays
+    """
+
     country = "NL"
 
-    def __init__(self, **kwargs):
-        # http://www.iamsterdam.com/en/plan-your-trip/practical-info/public-holidays
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # New years
         self[date(year, JAN, 1)] = "Nieuwjaarsdag"
 
@@ -36,19 +37,19 @@ class Netherlands(HolidayBase):
         self[easter_date] = "Eerste paasdag"
 
         # Good friday
-        self[easter_date + rd(weekday=FR(-1))] = "Goede Vrijdag"
+        self[easter_date + rd(days=-2)] = "Goede Vrijdag"
 
         # Second easter day
-        self[easter_date + rd(days=1)] = "Tweede paasdag"
+        self[easter_date + rd(days=+1)] = "Tweede paasdag"
 
         # Ascension day
-        self[easter_date + rd(days=39)] = "Hemelvaart"
+        self[easter_date + rd(days=+39)] = "Hemelvaart"
 
         # Pentecost
-        self[easter_date + rd(days=49)] = "Eerste Pinksterdag"
+        self[easter_date + rd(days=+49)] = "Eerste Pinksterdag"
 
         # Pentecost monday
-        self[easter_date + rd(days=50)] = "Tweede Pinksterdag"
+        self[easter_date + rd(days=+50)] = "Tweede Pinksterdag"
 
         # First christmas
         self[date(year, DEC, 25)] = "Eerste Kerstdag"

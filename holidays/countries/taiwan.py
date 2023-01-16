@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -12,10 +12,10 @@
 from datetime import date
 
 from dateutil.relativedelta import relativedelta as rd
-from holidays.utils import _ChineseLuniSolar
 
-from holidays.constants import JAN, FEB, APR, MAY, OCT
+from holidays.constants import JAN, FEB, APR, OCT
 from holidays.holiday_base import HolidayBase
+from holidays.utils import _ChineseLuniSolar
 
 
 class Taiwan(HolidayBase):
@@ -30,11 +30,13 @@ class Taiwan(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day
         if year > 1911:
             self[
                 date(year, JAN, 1)
-            ] = "Founding of the Republic of China  (New Year's Day)"
+            ] = "Founding of the Republic of China (New Year's Day)"
             hol_date = self.cnls.lunar_n_y_date(year)
             self[hol_date + rd(days=-1)] = "Chinese New Year's Eve"
             self[hol_date] = "Spring Festival"

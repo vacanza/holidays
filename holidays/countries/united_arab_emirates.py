@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -12,12 +12,11 @@
 from datetime import date
 
 from dateutil.relativedelta import relativedelta as rd
-from holidays.constants import FRI, SAT
+
 from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, SEP, NOV, DEC
+from holidays.constants import FRI, SAT
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
-
-WEEKEND = (FRI, SAT)
 
 
 class UnitedArabEmirates(HolidayBase):
@@ -45,11 +44,11 @@ class UnitedArabEmirates(HolidayBase):
     #  raised that this holiday is missing. hijri-converter requires
     #  Python >= 3.6
     country = "AE"
-
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
+    weekend = {FRI, SAT}
 
     def _populate(self, year):
+        super()._populate(year)
+
         def _add_holiday(dt: date, hol: str) -> None:
             """Only add if in current year; prevents adding holidays across
             years (handles multi-day Islamic holidays that straddle Gregorian

@@ -4,19 +4,19 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 import unittest
-
+import warnings
 from datetime import date
 
 import holidays
 
 
-class TestSwaziland(unittest.TestCase):
+class TestEswatini(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.SZ()
 
@@ -35,7 +35,7 @@ class TestSwaziland(unittest.TestCase):
         self.assertIn(date(2017, 5, 25), self.holidays)
         self.assertNotIn(date(2017, 5, 26), self.holidays)
 
-    def test_once_off(self):
+    def test_special_holidays(self):
         self.assertIn(date(1999, 12, 31), self.holidays)  # y2k
         self.assertIn(date(2000, 1, 3), self.holidays)  # y2k
 
@@ -60,3 +60,12 @@ class TestSwaziland(unittest.TestCase):
         self.assertIn(date(2021, 4, 26), self.holidays)
         self.assertIn(date(2021, 12, 27), self.holidays)
         self.assertIn(date(2023, 1, 2), self.holidays)
+
+    def test_swaziland_deprecation_warning(self):
+        warnings.simplefilter("default")
+        with self.assertWarns(Warning):
+            holidays.Swaziland()
+
+        warnings.simplefilter("error")
+        with self.assertRaises(Warning):
+            holidays.Swaziland()

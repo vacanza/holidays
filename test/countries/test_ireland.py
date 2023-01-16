@@ -4,14 +4,14 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 import unittest
-
 from datetime import date
+
 from dateutil.relativedelta import relativedelta
 
 import holidays
@@ -92,7 +92,6 @@ class TestIreland(unittest.TestCase):
             2001,
         ):
             dt = date(year, 12, day)
-            print(self.holidays[dt])
             self.assertIn(dt, self.holidays, dt)
             self.assertIn(
                 self.holidays[dt],
@@ -103,3 +102,6 @@ class TestIreland(unittest.TestCase):
                     "St. Stephen's Day, Christmas Day (Observed)",
                 ],
             )
+
+    def test_special_holidays(self):
+        self.assertIn("2022-03-18", self.holidays)

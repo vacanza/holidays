@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -19,13 +19,13 @@ from holidays.holiday_base import HolidayBase
 
 
 class Estonia(HolidayBase):
+
     country = "EE"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
-        e = easter(year)
+        super()._populate(year)
+
+        easter_date = easter(year)
 
         # New Year's Day
         self[date(year, JAN, 1)] = "uusaasta"
@@ -34,16 +34,16 @@ class Estonia(HolidayBase):
         self[date(year, FEB, 24)] = "iseseisvuspäev"
 
         # Good Friday
-        self[e - rd(days=2)] = "suur reede"
+        self[easter_date + rd(days=-2)] = "suur reede"
 
         # Easter Sunday
-        self[e] = "ülestõusmispühade 1. püha"
+        self[easter_date] = "ülestõusmispühade 1. püha"
 
         # Spring Day
         self[date(year, MAY, 1)] = "kevadpüha"
 
         # Pentecost
-        self[e + rd(days=49)] = "nelipühade 1. püha"
+        self[easter_date + rd(days=+49)] = "nelipühade 1. püha"
 
         # Victory Day
         self[date(year, JUN, 23)] = "võidupüha"

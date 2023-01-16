@@ -4,37 +4,30 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 
-from convertdate import gregorian, hebrew
-from convertdate.holidays import (
-    hanukkah,
-    lag_baomer,
-    passover,
-    purim,
-    rosh_hashanah,
-    shavuot,
-    sukkot,
-    yom_kippur,
-)
 from datetime import date
+
+from convertdate import gregorian, hebrew
+from convertdate.holidays import hanukkah, lag_baomer, passover, purim
+from convertdate.holidays import rosh_hashanah, shavuot, sukkot, yom_kippur
 from dateutil.relativedelta import relativedelta as rd
 
+from holidays.constants import WED, THU, SAT
 from holidays.holiday_base import HolidayBase
 
 
 class Israel(HolidayBase):
+
     country = "IL"
 
-    def __init__(self, **kwargs):
-
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
+        super()._populate(year)
+
         # Passover
         name = "Passover I"
         passover_start_dt = date(*passover(year, eve=True))
@@ -61,9 +54,9 @@ class Israel(HolidayBase):
         observed_delta = 0
         if self.observed:
             day_in_week = memorial_day_dt.weekday()
-            if day_in_week in (2, 3):
+            if day_in_week in {WED, THU}:
                 observed_delta = -(day_in_week - 1)
-            elif 2004 <= year and day_in_week == 5:
+            elif 2004 <= year and day_in_week == SAT:
                 observed_delta = 1
 
             if observed_delta != 0:

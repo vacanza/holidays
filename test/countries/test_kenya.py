@@ -4,13 +4,12 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 import unittest
-
 from datetime import date
 
 import holidays
@@ -41,3 +40,11 @@ class TestKenya(unittest.TestCase):
         self.assertIn(date(2019, 12, 25), self.holidays)
         # Utamaduni Day
         self.assertIn(date(2018, 12, 26), self.holidays)
+
+    def test_not_observed(self):
+        self.holidays = holidays.Kenya(observed=False)
+        self.assertNotIn(date(2017, 1, 2), self.holidays)
+        self.assertNotIn(date(2019, 10, 21), self.holidays)
+        self.assertNotIn(date(2021, 10, 11), self.holidays)
+        self.assertNotIn(date(2021, 12, 13), self.holidays)
+        self.assertNotIn(date(2022, 5, 2), self.holidays)

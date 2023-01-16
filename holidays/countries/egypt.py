@@ -4,21 +4,19 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
 
-from dateutil.easter import easter
+from dateutil.easter import EASTER_ORTHODOX, easter
 from dateutil.relativedelta import relativedelta as rd
-from holidays.constants import FRI, SAT
+
 from holidays.constants import JAN, APR, MAY, JUN, JUL, OCT
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
-
-WEEKEND = (FRI, SAT)
 
 
 class Egypt(HolidayBase):
@@ -38,23 +36,8 @@ class Egypt(HolidayBase):
 
     country = "EG"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
-
     def _populate(self, year):
-
-        """
-        # Function to store the holiday name in the appropriate
-        # date and to shift the Public holiday in case it happens
-        # on a Saturday(Weekend)
-        # (NOT USED)
-        def is_weekend(self, hol_date, hol_name):
-            if hol_date.weekday() == FRI:
-                self[hol_date] = hol_name + " [Friday]"
-                self[hol_date + rd(days=+2)] = "Sunday following " + hol_name
-            else:
-                self[hol_date] = hol_name
-        """
+        super()._populate(year)
 
         def _add_holiday(dt: date, hol: str) -> None:
             """Only add if in current year; prevents adding holidays across
@@ -79,10 +62,11 @@ class Egypt(HolidayBase):
             pass
 
         # Coptic Easter - Orthodox Easter
-        self[easter(year, 2)] = "Coptic Easter Sunday"
+        easter_date = easter(year, EASTER_ORTHODOX)
+        self[easter_date] = "Coptic Easter Sunday"
 
         # Sham El Nessim - Spring Festival
-        self[easter(year, 2) + rd(days=1)] = "Sham El Nessim"
+        self[easter_date + rd(days=+1)] = "Sham El Nessim"
 
         # Sinai Libration Day
         if year > 1982:
