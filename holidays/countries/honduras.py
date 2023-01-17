@@ -68,8 +68,8 @@ class Honduras(HolidayBase):
             holiday_name = "Semana Morazánica [Morazan Weekend]"
             first_wednesday = date(year, OCT, 1) + rd(weekday=WE(+1))
             self[first_wednesday] = holiday_name
-            self[first_wednesday + rd(days=1)] = holiday_name
-            self[first_wednesday + rd(days=2)] = holiday_name
+            self[first_wednesday + rd(days=+1)] = holiday_name
+            self[first_wednesday + rd(days=+2)] = holiday_name
 
         # Christmas
         self[date(year, DEC, 25)] = "Navidad [Christmas]"

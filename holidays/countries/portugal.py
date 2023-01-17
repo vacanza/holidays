@@ -59,7 +59,7 @@ class Portugal(HolidayBase):
 
         # carnival is no longer a holiday, but some companies let workers off.
         # @todo recollect the years in which it was a public holiday
-        # self[e - rd(days=47)] = "Carnaval"
+        # self[e + rd(days=-47)] = "Carnaval"
         self[easter_date + rd(days=-2)] = "Sexta-feira Santa"
         self[easter_date] = "Páscoa"
 

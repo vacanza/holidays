@@ -81,7 +81,7 @@ class Zambia(HolidayBase):
         # 1st Monday of July = "Heroes' Day"
         dt = date(year, JUL, 1) + rd(weekday=MO)
         self[dt] = "Heroes' Day"
-        self[dt + rd(days=1)] = "Unity Day"
+        self[dt + rd(days=+1)] = "Unity Day"
 
         # 1st Monday of Aug = "Farmers' Day"
         dt = date(year, AUG, 1) + rd(weekday=MO)
@@ -98,7 +98,7 @@ class Zambia(HolidayBase):
         if self.observed:
             for k, v in list(self.items()):
                 if k.year == year and k.weekday() == SUN:
-                    self[k + rd(days=1)] = v + " (Observed)"
+                    self[k + rd(days=+1)] = v + " (Observed)"
 
 
 class ZM(Zambia):
