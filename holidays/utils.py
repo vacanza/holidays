@@ -19,10 +19,11 @@ __all__ = (
 
 import inspect
 import warnings
-from datetime import date, timedelta
+from datetime import date
 from functools import lru_cache
 from typing import Dict, Iterable, List, Optional, Union
 
+from dateutil.relativedelta import relativedelta as rd
 from hijri_converter import convert
 from hijri_converter.ummalqura import GREGORIAN_RANGE
 
@@ -679,7 +680,7 @@ class _ChineseLuniSolar:
         # leap_month = self._get_leap_month(year)
         # for m in range(1, 1 + (1 > leap_month)):
         #     span_days += self._lunar_month_days(year, m)
-        return self.SOLAR_START_DATE + timedelta(span_days)
+        return self.SOLAR_START_DATE + rd(days=span_days)
 
     def lunar_to_gre(
         self, year: int, month: int, day: int, leap: bool = True
@@ -705,7 +706,7 @@ class _ChineseLuniSolar:
         for m in range(1, month + (month > leap_month)):
             span_days += self._lunar_month_days(year, m)
         span_days += day - 1
-        return self.SOLAR_START_DATE + timedelta(span_days)
+        return self.SOLAR_START_DATE + rd(days=span_days)
 
     def vesak_date(self, year: int) -> date:
         """
@@ -726,7 +727,7 @@ class _ChineseLuniSolar:
         for m in range(1, 4 + (4 > leap_month)):
             span_days += self._lunar_month_days(year, m)
         span_days += 14
-        return self.SOLAR_START_DATE + timedelta(span_days)
+        return self.SOLAR_START_DATE + rd(days=span_days)
 
     def vesak_may_date(self, year: int) -> date:
         """
@@ -742,10 +743,10 @@ class _ChineseLuniSolar:
             Estimated Gregorian date of Vesak (first full moon in May).
         """
         span_days = self._span_days(year)
-        vesak_may_date = self.SOLAR_START_DATE + timedelta(span_days + 14)
+        vesak_may_date = self.SOLAR_START_DATE + rd(days=span_days + 14)
         m = 1
         while vesak_may_date.month < 5:
-            vesak_may_date += timedelta(self._lunar_month_days(year, m))
+            vesak_may_date += rd(days=self._lunar_month_days(year, m))
             m += 1
         return vesak_may_date
 
@@ -769,7 +770,7 @@ class _ChineseLuniSolar:
         for m in range(1, 10 + (10 > leap_month)):
             span_days += self._lunar_month_days(year, m)
         span_days -= 2
-        return self.SOLAR_START_DATE + timedelta(span_days)
+        return self.SOLAR_START_DATE + rd(days=span_days)
 
     def thaipusam_date(self, year: int) -> date:
         """
@@ -790,4 +791,4 @@ class _ChineseLuniSolar:
         for m in range(1, 1 + (leap_month <= 6)):
             span_days += self._lunar_month_days(year, m)
         span_days -= 15
-        return self.SOLAR_START_DATE + timedelta(span_days)
+        return self.SOLAR_START_DATE + rd(days=span_days)
