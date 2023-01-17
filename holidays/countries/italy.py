@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Provinces completed by Henrik Sozzi <henrik_sozzi@hotmail.com>
 #  Website: https://github.com/dr-prodigy/python-holidays
@@ -33,6 +33,7 @@ class Italy(HolidayBase):
     # Patrono defined. If you want one specific you'll have to use
     # the full name of the city like "Andria" instead of "BT".
     subdivisions = [
+        # Provinces.
         "AG",
         "AL",
         "AN",
@@ -51,9 +52,6 @@ class Italy(HolidayBase):
         "BR",
         "BS",
         "BT",
-        "Barletta",
-        "Andria",
-        "Trani",
         "BZ",
         "CA",
         "CB",
@@ -68,8 +66,6 @@ class Italy(HolidayBase):
         "CZ",
         "EN",
         "FC",
-        "Forlì",
-        "Cesena",
         "FE",
         "FG",
         "FI",
@@ -110,8 +106,6 @@ class Italy(HolidayBase):
         "PR",
         "PT",
         "PU",
-        "Pesaro",
-        "Urbino",
         "PV",
         "PZ",
         "RA",
@@ -147,6 +141,14 @@ class Italy(HolidayBase):
         "VR",
         "VT",
         "VV",
+        # Cities.
+        "Andria",
+        "Barletta",
+        "Cesena",
+        "Forlì",
+        "Pesaro",
+        "Trani",
+        "Urbino",
     ]
 
     def _populate(self, year):
