@@ -58,7 +58,7 @@ class Nigeria(HolidayBase):
         for yr in (year - 1, year):
             for hol_date in _islamic_to_gre(yr, 10, 1):
                 _add_holiday(hol_date, "Eid al-Fitr")
-                _add_holiday(hol_date + rd(days=1), "Eid al-Fitr Holiday")
+                _add_holiday(hol_date + rd(days=+1), "Eid al-Fitr Holiday")
 
         # Arafat Day & Eid al-Adha - Scarfice Festive
         # This is an estimate
@@ -66,7 +66,7 @@ class Nigeria(HolidayBase):
         for yr in (year - 1, year):
             for hol_date in _islamic_to_gre(yr, 12, 10):
                 _add_holiday(hol_date, "Eid al-Adha")
-                _add_holiday(hol_date + rd(days=1), "Eid al-Adha Holiday")
+                _add_holiday(hol_date + rd(days=+1), "Eid al-Adha Holiday")
 
         # Birthday of Prophet Muhammad
         for hol_date in _islamic_to_gre(year, 3, 12):

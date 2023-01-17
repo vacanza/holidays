@@ -12,7 +12,7 @@
 import unittest
 from datetime import date
 
-from dateutil.relativedelta import relativedelta
+from dateutil.relativedelta import relativedelta as rd
 
 import holidays
 
@@ -125,7 +125,7 @@ class TestAU(unittest.TestCase):
         ]:
             self.assertIn(dt, self.holidays)
             self.assertEqual(self.holidays[dt], "Easter Monday")
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+            self.assertNotIn(dt + rd(days=+1), self.holidays)
 
     def test_bank_holiday(self):
         for dt in [
@@ -328,7 +328,7 @@ class TestAU(unittest.TestCase):
         for year in range(1900, 2100):
             dt = date(year, 12, 25)
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
+            self.assertNotIn(dt + rd(days=-1), self.holidays)
         self.assertNotIn(date(2010, 12, 24), self.holidays)
         self.assertNotEqual(
             self.holidays[date(2011, 12, 26)], "Christmas Day (Observed)"
@@ -372,7 +372,7 @@ class TestAU(unittest.TestCase):
         for year in range(1900, 2100):
             dt = date(year, 12, 26)
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+            self.assertNotIn(dt + rd(days=+1), self.holidays)
         self.assertNotIn(date(2009, 12, 28), self.holidays)
         self.assertNotIn(date(2010, 12, 27), self.holidays)
         self.holidays.observed = True
