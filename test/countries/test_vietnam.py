@@ -25,13 +25,13 @@ class TestVietnam(TestCase):
         self.assertCountryAliases(Vietnam, VN, VNM)
 
     def test_common(self):
-        self.assertHolidayNames(
+        self.assertHolidaysName(
             "International New Year's Day",
             "2020-01-01",
         )
 
     def test_first_day_of_january(self):
-        self.assertHolidayNames(
+        self.assertHolidaysName(
             "International New Year's Day",
             (f"{year}-01-01" for year in range(1979, 2050)),
         )
@@ -54,33 +54,33 @@ class TestVietnam(TestCase):
             (2021, 2, 12),
             (2022, 2, 1),
         ):
-            self.assertHolidayNames(
+            self.assertHolidaysName(
                 "Vietnamese New Year's Eve",
                 date(*dt) + rd(days=-1),
             )
-            self.assertHolidayNames(
+            self.assertHolidaysName(
                 "Vietnamese New Year",
                 date(*dt),
             )
-            self.assertHolidayNames(
+            self.assertHolidaysName(
                 "The second day of Tet Holiday",
                 date(*dt) + rd(days=+1),
             )
-            self.assertHolidayNames(
+            self.assertHolidaysName(
                 "The third day of Tet Holiday",
                 date(*dt) + rd(days=+2),
             )
-            self.assertHolidayNames(
+            self.assertHolidaysName(
                 "The forth day of Tet Holiday",
                 date(*dt) + rd(days=+3),
             )
-            self.assertHolidayNames(
+            self.assertHolidaysName(
                 "The fifth day of Tet Holiday",
                 date(*dt) + rd(days=+4),
             )
 
     def test_king_hung_day(self):
-        self.assertHolidayNames(
+        self.assertHolidaysName(
             "Hung Kings Commemoration Day",
             "2020-04-02",
             "2021-04-21",
@@ -88,19 +88,19 @@ class TestVietnam(TestCase):
         )
 
     def test_liberation_day(self):
-        self.assertHolidayNames(
+        self.assertHolidaysName(
             "Liberation Day/Reunification Day",
             (f"{year}-04-30" for year in range(1979, 2050)),
         )
 
     def test_international_labor_day(self):
-        self.assertHolidayNames(
+        self.assertHolidaysName(
             "International Labor Day",
             (f"{year}-05-01" for year in range(1979, 2050)),
         )
 
     def test_independence_day(self):
-        self.assertHolidayNames(
+        self.assertHolidaysName(
             "Independence Day",
             (f"{year}-09-02" for year in range(1979, 2050)),
         )

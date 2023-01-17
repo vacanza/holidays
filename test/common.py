@@ -115,13 +115,6 @@ class TestCase(unittest.TestCase):
         for name in names:
             self.assertTrue(holidays.get_named(name))
 
-    def assertHolidayNames(self, name, *args):
-        """Assert each holiday name matches an expected one."""
-
-        holidays, dates = self.parse_arguments(args)
-        for dt in dates:
-            self.assertEqual(name, holidays.get(dt), f"{dt}")
-
     def assertHolidaysEqual(self, holidays, *expected_holidays):
         """Assert holidays exactly match expected holidays."""
 
@@ -132,6 +125,13 @@ class TestCase(unittest.TestCase):
         for dt, name in expected_holidays:
             self.assertIn(dt, holidays)
             self.assertEqual(name, holidays[dt], f"{dt}")
+
+    def assertHolidaysName(self, name, *args):
+        """Assert each holiday name matches an expected one."""
+
+        holidays, dates = self.parse_arguments(args)
+        for dt in dates:
+            self.assertEqual(name, holidays.get(dt), f"{dt}")
 
     def assertNoHoliday(self, *args):
         """Assert each date is not a holiday."""
