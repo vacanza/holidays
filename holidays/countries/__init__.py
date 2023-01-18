@@ -9,6 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from .andorra import AD, AND, Andorra
 from .angola import AO, AGO, Angola
 from .argentina import AR, ARG, Argentina
 from .armenia import AM, ARM, Armenia
