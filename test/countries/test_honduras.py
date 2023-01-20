@@ -21,8 +21,7 @@ class TestHonduras(TestCase):
         self.assertCountryAliases(Honduras, HN, HND)
 
     def test_2014(self):
-        self.assertHolidayDatesEqual(
-            Honduras(years=2014),
+        self.assertHolidayDates(
             "2014-01-01",
             "2014-04-14",
             "2014-04-17",
@@ -38,8 +37,7 @@ class TestHonduras(TestCase):
 
     def test_2016(self):
         # https://www.officeholidays.com/countries/honduras/2016
-        self.assertHolidayDatesEqual(
-            Honduras(years=2016),
+        self.assertHolidayDates(
             "2016-01-01",
             "2016-03-24",
             "2016-03-25",
@@ -55,8 +53,7 @@ class TestHonduras(TestCase):
 
     def test_2021(self):
         # https://www.officeholidays.com/countries/honduras/2021
-        self.assertHolidayDatesEqual(
-            Honduras(years=2021),
+        self.assertHolidayDates(
             "2021-01-01",
             "2021-04-01",
             "2021-04-02",
@@ -71,8 +68,7 @@ class TestHonduras(TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidaysEqual(
-            Honduras(observed=False, years=2022),
+        self.assertHolidays(
             ("2022-01-01", "Año Nuevo [New Year's Day]"),
             (
                 "2022-04-14",
@@ -90,8 +86,7 @@ class TestHonduras(TestCase):
         )
 
     def test_2025(self):
-        self.assertHolidayDatesEqual(
-            Honduras(years=2025),
+        self.assertHolidayDates(
             "2025-01-01",
             "2025-04-14",
             "2025-04-17",

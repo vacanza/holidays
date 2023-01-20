@@ -21,8 +21,7 @@ class TestThailand(TestCase):
         self.assertCountryAliases(Thailand, TH, THA)
 
     def test_2022(self):
-        self.assertHolidaysEqual(
-            Thailand(years=2022),
+        self.assertHolidays(
             ("2022-01-01", "New Year's Day"),
             ("2022-01-03", "New Year's Day (in lieu)"),
             ("2022-02-16", "Makha Bucha"),
