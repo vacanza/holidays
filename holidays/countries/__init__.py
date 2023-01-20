@@ -91,6 +91,7 @@ from .poland import PL, POL, Poland
 from .portugal import PT, PRT, Portugal
 from .romania import RO, ROU, Romania
 from .russia import RU, RUS, Russia
+from .san_marino import SM, SMR, SanMarino
 from .saudi_arabia import SA, SAU, SaudiArabia
 from .serbia import RS, SRB, Serbia
 from .singapore import SG, SGP, Singapore
