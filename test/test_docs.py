@@ -44,7 +44,7 @@ class TestReadme(TestCase):
         table_content = [
             line.strip()
             for line in re.findall(
-                r"Subdivisions Available(.*)Available Financial Markets",
+                r"Install extras(.*)Available Financial Markets",
                 self.readme_content,
                 re.DOTALL,
             )[0].split("\n")
@@ -54,7 +54,7 @@ class TestReadme(TestCase):
         country_alpha_2_codes = set()
         country_subdivisions = {}
         subdivisions_re = re.compile(".*: (.*)")
-        for idx in range(0, len(table_content), 3):  # 3 column table.
+        for idx in range(0, len(table_content), 4):  # 4 column table.
             # 1st column.
             name = table_content[idx].strip(" *-").replace(" ", "").lower()
             country_names.append(name)
