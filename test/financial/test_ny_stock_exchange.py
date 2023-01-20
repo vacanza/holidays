@@ -4,13 +4,13 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 import unittest
-from datetime import date, timedelta
+from datetime import date
 
 from dateutil.relativedelta import WE
 from dateutil.relativedelta import relativedelta as rd
@@ -420,8 +420,7 @@ class TestNewYorkStockExchange(unittest.TestCase):
         def _make_special_holiday_list(begin, end, days=None, weekends=False):
             _list = []
             for d in (
-                begin + timedelta(days=n)
-                for n in range((end - begin).days + 1)
+                begin + rd(days=n) for n in range((end - begin).days + 1)
             ):
                 if not weekends and d.weekday() in {SAT, SUN}:
                     continue
@@ -454,14 +453,14 @@ class TestNewYorkStockExchange(unittest.TestCase):
             date(1968, JUN, 12),  # begin paper crisis holidays
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt - timedelta(days=1), self.holidays)
+            self.assertNotIn(dt + rd(days=-1), self.holidays)
 
         for dt in [
             date(1914, NOV, 27),  # end WWI holidays
             date(1933, MAR, 14),  # end oneoff bank holidays
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + timedelta(days=1), self.holidays)
+            self.assertNotIn(dt + rd(days=+1), self.holidays)
 
     def test_all_modern_holidays_present(self):
         nyse_2021 = holidays.NewYorkStockExchange(years=[2021])

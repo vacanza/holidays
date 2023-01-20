@@ -106,7 +106,7 @@ Available Countries
 
 .. _ISO 3166-1 alpha-2 code: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
 
-We currently support 101 countries. The standard way to refer to a country is by
+We currently support 106 countries. The standard way to refer to a country is by
 using its `ISO 3166-1 alpha-2 code`_, the same used for domain names. The
 following countries and their subdivisions are available:
 
@@ -147,6 +147,10 @@ following countries and their subdivisions are available:
      - AZ
      - None
      - holidays[islamic]
+   * - Bahrain
+     - BH
+     - None
+     - holidays[islamic]
    * - Bangladesh
      - BD
      - None
@@ -165,15 +169,15 @@ following countries and their subdivisions are available:
      - None
    * - Bosnia and Herzegovina
      - BA
-     - Departments: FBiH, RS, BD
-     - None
+     - Departments: BD, FBiH, RS
+     - holidays[islamic]
    * - Botswana
      - BW
      - None
      - None
    * - Brazil
      - BR
-     - States: AC, AL, AM, AP, BA, CE, DF, ES, GO, MA, MG, MS, MT, PA, PB, PE, PI, RJ, RN, RO, RR, RS, SC, SE, SP, TO
+     - States: AC, AL, AM, AP, BA, CE, DF, ES, GO, MA, MG, MS, MT, PA, PB, PE, PI, PR, RJ, RN, RO, RR, RS, SC, SE, SP, TO
      - None
    * - Bulgaria
      - BG
@@ -185,7 +189,7 @@ following countries and their subdivisions are available:
      - holidays[islamic]
    * - Canada
      - CA
-     - Provinces and territories: AB, BC, MB, NB, NL, NS NT, NU, **ON** (default), PE, QC, SK, YT
+     - Provinces and territories: AB, BC, MB, NB, NL, NS, NT, NU, **ON** (default), PE, QC, SK, YT
      - None
    * - Chile
      - CL
@@ -207,7 +211,7 @@ following countries and their subdivisions are available:
      - CU
      - None
      - None
-   * - Curaçao
+   * - Curacao
      - CW
      - None
      - None
@@ -239,6 +243,10 @@ following countries and their subdivisions are available:
      - EE
      - None
      - None
+   * - Eswatini
+     - SZ
+     - None
+     - None
    * - Ethiopia
      - ET
      - None
@@ -249,7 +257,7 @@ following countries and their subdivisions are available:
      - None
    * - France
      - FR
-     - Départements: **Métropole** (default), Alsace-Moselle, Guadeloupe, Guyane, Martinique, Mayotte, Nouvelle-Calédonie, La Réunion, Polynésie Française, Saint-Barthélémy, Saint-Martin, Wallis-et-Futuna
+     - Départements: Alsace-Moselle, Guadeloupe, Guyane, La Réunion, Martinique, Mayotte, **Métropole** (default), Nouvelle-Calédonie, Polynésie Française, Saint-Barthélémy, Saint-Martin, Wallis-et-Futuna
      - None
    * - Georgia
      - GE
@@ -301,7 +309,7 @@ following countries and their subdivisions are available:
      - holidays[jewish]
    * - Italy
      - IT
-     - Provinces: AG, AL, AN, AO, AP, AQ, AR, AT, AV, BA, BG, BI, BL, BN, BO, BR, BS, BT, BZ, CA, CB, CE, CH, CL, CN, CO, CR, CS, CT, CZ, EN, FC, FE, FG, FI, FM, FR, GE, GO, GR, IM, IS, KR, LC, LE, LI, LO, LT, LU, MB, MC, ME, MI, MN, MO, MS, MT, NA, NO, NU, OR, PA, PC, PD, PE, PG, PI, PN, PO, PR, PT, PU, PV, PZ, RA, RC, RE, RG, RI, RM, RN, RO, SA, SI, SO, SP, SR, SS, SU, SV, TA, TE, TN, TO, TP, TR, TS, TV, UD, VA, VB, VC, VE, VI, VR, VT, VV; Cities: Barletta, Andria, Trani, Cesena, Forlì, Pesaro, Urbino
+     - Provinces: AG, AL, AN, AO, AP, AQ, AR, AT, AV, BA, BG, BI, BL, BN, BO, BR, BS, BT, BZ, CA, CB, CE, CH, CL, CN, CO, CR, CS, CT, CZ, EN, FC, FE, FG, FI, FM, FR, GE, GO, GR, IM, IS, KR, LC, LE, LI, LO, LT, LU, MB, MC, ME, MI, MN, MO, MS, MT, NA, NO, NU, OR, PA, PC, PD, PE, PG, PI, PN, PO, PR, PT, PU, PV, PZ, RA, RC, RE, RG, RI, RM, RN, RO, SA, SI, SO, SP, SR, SS, SU, SV, TA, TE, TN, TO, TP, TR, TS, TV, UD, VA, VB, VC, VE, VI, VR, VT, VV. Cities: Andria, Barletta, Cesena, Forlì, Pesaro, Trani, Urbino
      - None
    * - Jamaica
      - JM
@@ -319,6 +327,10 @@ following countries and their subdivisions are available:
      - KE
      - None
      - None
+   * - Kyrgyzstan
+     - KG
+     - None
+     - holidays[islamic]
    * - Latvia
      - LV
      - None
@@ -343,13 +355,13 @@ following countries and their subdivisions are available:
      - MG
      - None
      - None
-   * - Malaysia
-     - MY
-     - States: JHR, KDH, KTN, MLK, NSN, PHG, PNG, PRK, PLS, SBH, SWK, SGR, TRG, KUL, LBN, PJY
-     - holidays[islamic]
    * - Malawi
      - MW
      - None
+     - None
+   * - Malaysia
+     - MY
+     - States: JHR, KDH, KTN, KUL, LBN, MLK, NSN, PHG, PJY, PLS, PNG, PRK, SBH, SGR, SWK, TRG
      - None
    * - Malta
      - MT
@@ -363,6 +375,10 @@ following countries and their subdivisions are available:
      - MD
      - None
      - None
+   * - Monaco
+     - MC
+     - None
+     - None
    * - Morocco
      - MA
      - None
@@ -371,17 +387,17 @@ following countries and their subdivisions are available:
      - MZ
      - None
      - None
-   * - Netherlands
-     - NL
-     - None
-     - None
    * - Namibia
      - NA
      - None
      - None
+   * - Netherlands
+     - NL
+     - None
+     - None
    * - New Zealand
      - NZ
-     - Regions: AUK, CAN, HKB, MBH, NSN, NTL, OTA, STL, TKI, WGN, WTC, CIT; Sub-regions: South Canterbury
+     - Regions: AUK, CAN, HKB, MBH, NSN, NTL, OTA, STL, TKI, WGN, WTC, CIT. Sub-regions: South Canterbury
      - None
    * - Nicaragua
      - NI
@@ -411,13 +427,17 @@ following countries and their subdivisions are available:
      - PE
      - None
      - None
+   * - Philippines
+     - PH
+     - None
+     - holidays[islamic]
    * - Poland
      - PL
      - None
      - None
    * - Portugal
      - PT
-     - Districts: 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18; Use subdiv='Ext' to include holidays most people have off
+     - Districts: 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, Ext; Use subdiv='Ext' to include holidays most people have off
      - None
    * - Romania
      - RO
@@ -457,12 +477,8 @@ following countries and their subdivisions are available:
      - holidays[korean-lunar]
    * - Spain
      - ES
-     - Autonomous communities: AN (Andalucía), AR (Aragón), AS (Asturias), CB (Cantabria), CE (Ceuta), CL (Castilla y León), CM (Castilla La Mancha), CN (Canarias), CT (Cataluña), EX (Extremadura), GA (Galicia), IB (Islas Baleares), MC (Murcia), MD (Madrid), NC (Navarra), PV (País Vasco), RI (La Rioja), VC (Comunidad Valenciana)
+     - Autonomous communities: AN, AR, AS, CB, CE, CL, CM, CN, CT, EX, GA, IB, MC, MD, ML, NC, PV, RI, VC
      - holidays[islamic]
-   * - Swaziland
-     - SZ
-     - None
-     - None
    * - Sweden
      - SE
      - None
@@ -475,12 +491,16 @@ following countries and their subdivisions are available:
      - TW
      - None
      - None
-   * - Turkey
-     - TR
+   * - Thailand
+     - TH
      - None
      - holidays[islamic]
    * - Tunisia
      - TN
+     - None
+     - None
+   * - Turkey
+     - TR
      - None
      - holidays[islamic]
    * - Ukraine
@@ -493,7 +513,7 @@ following countries and their subdivisions are available:
      - holidays[islamic]
    * - United Kingdom
      - GB
-     - Subdivisions: **UK** (default), England, Northern Ireland, Scotland, Wales. For Isle of Man use country code IM.
+     - Subdivisions: England, Northern Ireland, Scotland, **UK** (default), Wales; For Isle of Man use country code IM
      - None
    * - United States
      - US

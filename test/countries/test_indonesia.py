@@ -4,20 +4,23 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
 from datetime import date
 
-import holidays
+from holidays.countries.indonesia import ID, IDN, Indonesia
+from test.common import TestCase
 
 
-class TestIndonesia(unittest.TestCase):
+class TestIndonesia(TestCase):
     def setUp(self):
-        self.holidays = holidays.ID()
+        self.holidays = Indonesia()
+
+    def test_country_aliases(self):
+        self.assertCountryAliases(Indonesia, ID, IDN)
 
     def test_lunar_new_year(self):
         for year, month, day in (
@@ -56,6 +59,8 @@ class TestIndonesia(unittest.TestCase):
             self.assertEqual(
                 self.holidays[date(year, month, day)], "Hari Suci Nyepi"
             )
+
+        self.assertFalse(Indonesia(years=1982).get_named("Hari Suci Nyepi"))
 
     def test_islamic_holidays(self):
         for year, month, day in (

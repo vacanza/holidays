@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -12,7 +12,7 @@
 import unittest
 from datetime import date
 
-from dateutil.relativedelta import relativedelta
+from dateutil.relativedelta import relativedelta as rd
 
 import holidays
 
@@ -49,8 +49,8 @@ class TestIreland(unittest.TestCase):
             date(2020, 5, 4),
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+            self.assertNotIn(dt + rd(days=-1), self.holidays)
+            self.assertNotIn(dt + rd(days=+1), self.holidays)
 
     def test_st_stephens_day(self):
         # St. Stephen's Day
@@ -59,7 +59,7 @@ class TestIreland(unittest.TestCase):
         for year in range(1900, 2100):
             dt = date(year, 12, 26)
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+            self.assertNotIn(dt + rd(days=+1), self.holidays)
         self.assertNotIn(date(2009, 12, 28), self.holidays)
         self.assertNotIn(date(2010, 12, 27), self.holidays)
         self.holidays.observed = True

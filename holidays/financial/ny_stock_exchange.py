@@ -4,12 +4,12 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
 
 from dateutil.easter import easter
 from dateutil.relativedelta import MO, TH, FR
@@ -88,7 +88,7 @@ class NewYorkStockExchange(HolidayBase):
         # GOOD FRIDAY - closed every year except 1898, 1906, and 1907
         e = easter(year)
         if year not in {1898, 1906, 1907}:
-            self[e - rd(days=2)] = "Good Friday"
+            self[e + rd(days=-2)] = "Good Friday"
 
         # MEM DAY (May 30) - closed every year since 1873
         # last Mon in May since 1971
@@ -178,8 +178,7 @@ class NewYorkStockExchange(HolidayBase):
             begin = date(year, JUL, 31)
             end = date(year, NOV, 27)
             for d in (
-                begin + timedelta(days=n)
-                for n in range((end - begin).days + 1)
+                begin + rd(days=n) for n in range((end - begin).days + 1)
             ):
                 if self._is_weekend(d):
                     continue
@@ -210,8 +209,7 @@ class NewYorkStockExchange(HolidayBase):
             begin = date(year, MAR, 6)
             end = date(year, MAR, 14)
             for d in (
-                begin + timedelta(days=n)
-                for n in range((end - begin).days + 1)
+                begin + rd(days=n) for n in range((end - begin).days + 1)
             ):
                 if self._is_weekend(d):
                     continue
@@ -240,8 +238,7 @@ class NewYorkStockExchange(HolidayBase):
             begin = date(year, JUN, 12)
             end = date(year, DEC, 31)
             for d in (
-                begin + timedelta(days=n)
-                for n in range((end - begin).days + 1)
+                begin + rd(days=n) for n in range((end - begin).days + 1)
             ):
                 if d.weekday() != WED:  # Wednesday special holiday
                     continue

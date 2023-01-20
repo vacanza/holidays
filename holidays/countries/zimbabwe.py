@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -55,7 +55,7 @@ class Zimbabwe(HolidayBase):
         self[zimbabwe_heroes_day] = "Zimbabwe Heroes' Day"
 
         # Tuesday after 2nd Monday of August
-        defence_forces_day = zimbabwe_heroes_day + rd(days=1)
+        defence_forces_day = zimbabwe_heroes_day + rd(days=+1)
         self[defence_forces_day] = "Defense Forces Day"
 
         self[date(year, DEC, 22)] = "Unity Day"

@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -17,6 +17,7 @@ from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Tuple
 from typing import Union, cast
 
 from dateutil.parser import parse
+from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import SAT, SUN
 
@@ -362,7 +363,7 @@ class HolidayBase(Dict[date, str]):
 
             days_in_range = []
             for delta_days in range(0, date_diff.days, step):
-                day = start + timedelta(days=delta_days)
+                day = start + rd(days=delta_days)
                 try:
                     self.__getitem__(day)
                     days_in_range.append(day)

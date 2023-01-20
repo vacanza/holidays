@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -13,7 +13,7 @@ import unittest
 from datetime import date
 from unittest import mock
 
-from dateutil.relativedelta import relativedelta
+from dateutil.relativedelta import relativedelta as rd
 
 import holidays
 
@@ -52,27 +52,27 @@ class TestVietnam(unittest.TestCase):
             (2022, 2, 1),
         ):
             self.assertEqual(
-                self.holidays[date(year, month, day) + relativedelta(days=-1)],
+                self.holidays[date(year, month, day) + rd(days=-1)],
                 "Vietnamese New Year's Eve",
             )
             self.assertEqual(
-                self.holidays[date(year, month, day) + relativedelta(days=0)],
+                self.holidays[date(year, month, day)],
                 "Vietnamese New Year",
             )
             self.assertEqual(
-                self.holidays[date(year, month, day) + relativedelta(days=+1)],
+                self.holidays[date(year, month, day) + rd(days=+1)],
                 "The second day of Tet Holiday",
             )
             self.assertEqual(
-                self.holidays[date(year, month, day) + relativedelta(days=+2)],
+                self.holidays[date(year, month, day) + rd(days=+2)],
                 "The third day of Tet Holiday",
             )
             self.assertEqual(
-                self.holidays[date(year, month, day) + relativedelta(days=+3)],
+                self.holidays[date(year, month, day) + rd(days=+3)],
                 "The forth day of Tet Holiday",
             )
             self.assertEqual(
-                self.holidays[date(year, month, day) + relativedelta(days=+4)],
+                self.holidays[date(year, month, day) + rd(days=+4)],
                 "The fifth day of Tet Holiday",
             )
 
