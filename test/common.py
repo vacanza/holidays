@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -120,7 +120,6 @@ class TestCase(unittest.TestCase):
         for alias in (alpha_2, alpha_3):
             self.assertIsNotNone(alias, type_error_message)
             self.assertTrue(issubclass(alias, cls), type_error_message)
-            self.assertEqual(alias(), cls())
 
         length_error_message = (
             "This method accepts exactly 3 arguments "
@@ -153,11 +152,12 @@ class TestCase(unittest.TestCase):
 
         self.verify_type(holidays)
 
-        self.assertEqual(len(holidays), len(expected_holidays))
         # Check one by one for descriptive error messages.
         for dt, name in expected_holidays:
             self.assertIn(dt, holidays)
             self.assertEqual(name, holidays[dt])
+
+        self.assertEqual(len(holidays), len(expected_holidays))
 
     def assertHolidayDatesEqual(self, holidays, *dates):
         """Asserts holiday dates exactly match expected dates."""

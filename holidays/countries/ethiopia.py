@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -108,12 +108,12 @@ class Ethiopia(HolidayBase):
         # date of observance is announced yearly
         for date_obs in _islamic_to_gre(year, 12, 9):
             hol_date = date_obs
-            self[hol_date + rd(days=1)] = "አረፋ/Eid-Al-Adha"
+            self[hol_date + rd(days=+1)] = "አረፋ/Eid-Al-Adha"
 
         # Prophet Muhammad's Birthday - (hijari_year, 3, 12)
         for date_obs in _islamic_to_gre(year, 3, 12):
             hol_date = date_obs
-            self[hol_date + rd(days=1)] = "መውሊድ/Prophet Muhammad's Birthday"
+            self[hol_date + rd(days=+1)] = "መውሊድ/Prophet Muhammad's Birthday"
 
     # Ethiopian leap years are coincident with leap years in the Gregorian
     # calendar until the end of February 2100. It starts earlier from new year
