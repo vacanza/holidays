@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -12,7 +12,7 @@
 import unittest
 from datetime import date
 
-from dateutil.relativedelta import relativedelta
+from dateutil.relativedelta import relativedelta as rd
 
 import holidays
 
@@ -25,16 +25,16 @@ class TestAT(unittest.TestCase):
         for year in range(1900, 2100):
             dt = date(year, 1, 1)
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+            self.assertNotIn(dt + rd(days=-1), self.holidays)
+            self.assertNotIn(dt + rd(days=+1), self.holidays)
 
     def test_christmas(self):
         for year in range(1900, 2100):
             dt = date(year, 12, 25)
             self.assertIn(dt, self.holidays)
-            self.assertIn(dt + relativedelta(days=+1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+2), self.holidays)
+            self.assertIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + rd(days=-1), self.holidays)
+            self.assertNotIn(dt + rd(days=+2), self.holidays)
 
     def test_easter_monday(self):
         for dt in [
@@ -49,20 +49,20 @@ class TestAT(unittest.TestCase):
             date(2020, 4, 13),
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+            self.assertNotIn(dt + rd(days=-1), self.holidays)
+            self.assertNotIn(dt + rd(days=+1), self.holidays)
 
     def test_national_day(self):
         for year in range(1919, 1934):
             dt = date(year, 11, 12)
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+            self.assertNotIn(dt + rd(days=-1), self.holidays)
+            self.assertNotIn(dt + rd(days=+1), self.holidays)
         for year in range(1967, 2100):
             dt = date(year, 10, 26)
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + relativedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + relativedelta(days=+1), self.holidays)
+            self.assertNotIn(dt + rd(days=-1), self.holidays)
+            self.assertNotIn(dt + rd(days=+1), self.holidays)
 
     def test_all_holidays_present(self):
         at_2015 = holidays.AT(years=[2015])
