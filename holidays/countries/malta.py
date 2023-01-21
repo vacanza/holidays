@@ -9,10 +9,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from datetime import date, timedelta
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, FEB, MAR, MAY, JUN, AUG, SEP, DEC
 from holidays.holiday_base import HolidayBase
@@ -34,7 +33,7 @@ class Malta(HolidayBase):
         self[date(year, MAR, 31)] = "Freedom Day"
 
         # Easter and easter related calculations
-        good_friday = easter(year) + rd(days=-2)
+        good_friday = easter(year) + timedelta(days=-2)
         self[good_friday] = "Good Friday"
 
         self[date(year, MAY, 1)] = "Worker's Day"

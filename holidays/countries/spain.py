@@ -9,10 +9,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from datetime import date, timedelta
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC, SUN
@@ -46,7 +45,9 @@ class Spain(HolidayBase):
 
     def _is_observed(self, date_holiday, name_holiday):
         if self.observed and date_holiday.weekday() == SUN:
-            self[date_holiday + rd(days=+1)] = name_holiday + " (Trasladado)"
+            self[date_holiday + timedelta(days=+1)] = (
+                name_holiday + " (Trasladado)"
+            )
         else:
             self[date_holiday] = name_holiday
 
@@ -106,16 +107,16 @@ class Spain(HolidayBase):
         elif year >= 2022 and self.subdiv and self.subdiv == "VC":
             self._is_observed(date(year, MAR, 19), "San José")
         if year != 2022 and self.subdiv not in {"CT", "VC"}:
-            self[easter_date + rd(days=-3)] = "Jueves Santo"
+            self[easter_date + timedelta(days=-3)] = "Jueves Santo"
         elif year == 2022 and self.subdiv and self.subdiv not in {"CT"}:
-            self[easter_date + rd(days=-3)] = "Jueves Santo"
-        self[easter_date + rd(days=-2)] = "Viernes Santo"
+            self[easter_date + timedelta(days=-3)] = "Jueves Santo"
+        self[easter_date + timedelta(days=-2)] = "Viernes Santo"
         if (
             2022 == year
             and self.subdiv
             and self.subdiv in {"CT", "IB", "NC", "PV", "RI", "VC"}
         ):
-            self[easter_date + rd(days=+1)] = "Lunes de Pascua"
+            self[easter_date + timedelta(days=+1)] = "Lunes de Pascua"
         elif 2022 > year and self.subdiv in {
             "CM",
             "CT",
@@ -124,7 +125,7 @@ class Spain(HolidayBase):
             "PV",
             "VC",
         }:
-            self[easter(year) + rd(days=+1)] = "Lunes de Pascua"
+            self[easter(year) + timedelta(days=+1)] = "Lunes de Pascua"
 
         if 2022 != year:
             self._is_observed(date(year, MAY, 1), "Día del Trabajador")
@@ -210,11 +211,11 @@ class Spain(HolidayBase):
             self._is_observed(date(year, SEP, 17), "Día de Melilla")
             if year == 2022:
                 self._is_observed(
-                    _islamic_to_gre(year, 10, 1)[0] + rd(days=+1),
+                    _islamic_to_gre(year, 10, 1)[0] + timedelta(days=+1),
                     "Aid Al-Fitr",
                 )
                 self._is_observed(
-                    _islamic_to_gre(year, 12, 10)[0] + rd(days=+2),
+                    _islamic_to_gre(year, 12, 10)[0] + timedelta(days=+2),
                     "Aid Al-Adha",
                 )
             else:

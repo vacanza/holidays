@@ -9,10 +9,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from datetime import date, timedelta
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT
 from holidays.constants import NOV, DEC
@@ -59,13 +58,13 @@ class Portugal(HolidayBase):
 
         # carnival is no longer a holiday, but some companies let workers off.
         # @todo recollect the years in which it was a public holiday
-        # self[e + rd(days=-47)] = "Carnaval"
-        self[easter_date + rd(days=-2)] = "Sexta-feira Santa"
+        # self[e + timedelta(days=-47)] = "Carnaval"
+        self[easter_date + timedelta(days=-2)] = "Sexta-feira Santa"
         self[easter_date] = "Páscoa"
 
         # Revoked holidays in 2013–2015
         if year < 2013 or year > 2015:
-            self[easter_date + rd(days=+60)] = "Corpo de Deus"
+            self[easter_date + timedelta(days=+60)] = "Corpo de Deus"
             self[date(year, OCT, 5)] = "Implantação da República"
             self[date(year, NOV, 1)] = "Dia de Todos os Santos"
             self[date(year, DEC, 1)] = "Restauração da Independência"
@@ -88,7 +87,7 @@ class Portugal(HolidayBase):
             - Lisbon's city holiday
             """
 
-            self[easter_date + rd(days=-47)] = "Carnaval"
+            self[easter_date + timedelta(days=-47)] = "Carnaval"
             self[date(year, DEC, 24)] = "Véspera de Natal"
             self[date(year, DEC, 26)] = "26 de Dezembro"
             self[date(year, DEC, 31)] = "Véspera de Ano Novo"
@@ -102,14 +101,16 @@ class Portugal(HolidayBase):
         if self.subdiv == "01":
             self[date(year, MAY, 12)] = "Dia de Santa Joana"
         if self.subdiv == "02":
-            self[easter_date + rd(days=+39)] = "Quinta-feira da Ascensão"
+            self[
+                easter_date + timedelta(days=+39)
+            ] = "Quinta-feira da Ascensão"
         if self.subdiv in {"03", "13"}:
             self[date(year, JUN, 24)] = "Dia de São João"
         if self.subdiv == "04":
             self[date(year, AUG, 22)] = "Dia de Nossa Senhora das Graças"
         if self.subdiv == "05":
             self[
-                easter_date + rd(days=+16)
+                easter_date + timedelta(days=+16)
             ] = "Dia de Nossa Senhora de Mércoles"
         if self.subdiv == "06":
             self[date(year, JUL, 4)] = "Dia de Santa Isabel"

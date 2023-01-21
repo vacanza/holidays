@@ -9,9 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-
-from dateutil.relativedelta import relativedelta as rd
+from datetime import date, timedelta
 
 from holidays.constants import JAN, APR, MAY, JUL, AUG, OCT
 from holidays.holiday_base import HolidayBase
@@ -67,8 +65,12 @@ class Turkey(HolidayBase):
             for date_obs in _islamic_to_gre(yr, 10, 1):
                 hol_date = date_obs
                 _add_holiday(hol_date, "Ramadan Feast")
-                _add_holiday(hol_date + rd(days=+1), "Ramadan Feast Holiday")
-                _add_holiday(hol_date + rd(days=+2), "Ramadan Feast Holiday")
+                _add_holiday(
+                    hol_date + timedelta(days=+1), "Ramadan Feast Holiday"
+                )
+                _add_holiday(
+                    hol_date + timedelta(days=+2), "Ramadan Feast Holiday"
+                )
 
         # Sacrifice Feast
         # Date of observance is announced yearly, This is an estimate.
@@ -76,9 +78,15 @@ class Turkey(HolidayBase):
             for date_obs in _islamic_to_gre(yr, 12, 10):
                 hol_date = date_obs
                 _add_holiday(hol_date, "Sacrifice Feast")
-                _add_holiday(hol_date + rd(days=+1), "Sacrifice Feast Holiday")
-                _add_holiday(hol_date + rd(days=+2), "Sacrifice Feast Holiday")
-                _add_holiday(hol_date + rd(days=+3), "Sacrifice Feast Holiday")
+                _add_holiday(
+                    hol_date + timedelta(days=+1), "Sacrifice Feast Holiday"
+                )
+                _add_holiday(
+                    hol_date + timedelta(days=+2), "Sacrifice Feast Holiday"
+                )
+                _add_holiday(
+                    hol_date + timedelta(days=+3), "Sacrifice Feast Holiday"
+                )
 
 
 class TR(Turkey):

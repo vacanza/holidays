@@ -17,7 +17,6 @@ from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Tuple
 from typing import Union, cast
 
 from dateutil.parser import parse
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import SAT, SUN
 
@@ -363,7 +362,7 @@ class HolidayBase(Dict[date, str]):
 
             days_in_range = []
             for delta_days in range(0, date_diff.days, step):
-                day = start + rd(days=delta_days)
+                day = start + timedelta(days=delta_days)
                 try:
                     self.__getitem__(day)
                     days_in_range.append(day)

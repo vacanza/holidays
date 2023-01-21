@@ -9,10 +9,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from datetime import date, timedelta
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAY, JUL, AUG, NOV, DEC
 from holidays.holiday_base import HolidayBase
@@ -38,16 +37,16 @@ class Belgium(HolidayBase):
         self[easter_date] = "Pasen"
 
         # Second easter day
-        self[easter_date + rd(days=+1)] = "Paasmaandag"
+        self[easter_date + timedelta(days=+1)] = "Paasmaandag"
 
         # Ascension day
-        self[easter_date + rd(days=+39)] = "O.L.H. Hemelvaart"
+        self[easter_date + timedelta(days=+39)] = "O.L.H. Hemelvaart"
 
         # Pentecost
-        self[easter_date + rd(days=+49)] = "Pinksteren"
+        self[easter_date + timedelta(days=+49)] = "Pinksteren"
 
         # Pentecost monday
-        self[easter_date + rd(days=+50)] = "Pinkstermaandag"
+        self[easter_date + timedelta(days=+50)] = "Pinkstermaandag"
 
         # International Workers' Day
         self[date(year, MAY, 1)] = "Dag van de Arbeid"

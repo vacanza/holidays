@@ -9,10 +9,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from datetime import date, timedelta
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
@@ -42,8 +41,8 @@ class Argentina(HolidayBase):
         easter_date = easter(year)
         # Carnival days
         name = "Día de Carnaval [Carnival's Day]"
-        self[easter_date + rd(days=-48)] = name
-        self[easter_date + rd(days=-47)] = name
+        self[easter_date + timedelta(days=-48)] = name
+        self[easter_date + timedelta(days=-47)] = name
 
         # Memory's National Day for the Truth and Justice
         name = (
@@ -61,8 +60,8 @@ class Argentina(HolidayBase):
         name_fri = "Semana Santa (Viernes Santo) [Holy day (Holy Friday)]"
         name_easter = "Día de Pascuas [Easter Day]"
 
-        self[easter_date + rd(days=-3)] = name_thu
-        self[easter_date + rd(days=-2)] = name_fri
+        self[easter_date + timedelta(days=-3)] = name_thu
+        self[easter_date + timedelta(days=-2)] = name_fri
 
         if not self.observed and self._is_weekend(easter_date):
             pass

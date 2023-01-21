@@ -9,10 +9,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from datetime import date, timedelta
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, DEC
@@ -160,8 +159,10 @@ class Paraguay(HolidayBase):
 
         # Holy Week
         easter_date = easter(year)
-        self[easter_date + rd(days=-3)] = "Jueves Santo [Maundy Thursday]"
-        self[easter_date + rd(days=-2)] = "Viernes Santo [Good Friday]"
+        self[
+            easter_date + timedelta(days=-3)
+        ] = "Jueves Santo [Maundy Thursday]"
+        self[easter_date + timedelta(days=-2)] = "Viernes Santo [Good Friday]"
         self._add_holiday(easter_date, "Día de Pascuas [Easter Day]")
 
         # Labor Day

@@ -9,12 +9,11 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 
 from dateutil import rrule
 from dateutil.easter import easter
 from dateutil.relativedelta import SU
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAY, DEC
 from holidays.holiday_base import HolidayBase
@@ -85,13 +84,13 @@ class Norway(HolidayBase):
         # "(...) has been celebrated for over 1000 years (...)" (in Norway)
 
         easter_date = easter(year)
-        self[easter_date + rd(days=-3)] = "Skjærtorsdag"
-        self[easter_date + rd(days=-2)] = "Langfredag"
+        self[easter_date + timedelta(days=-3)] = "Skjærtorsdag"
+        self[easter_date + timedelta(days=-2)] = "Langfredag"
         self[easter_date] = "Første påskedag"
-        self[easter_date + rd(days=+1)] = "Andre påskedag"
-        self[easter_date + rd(days=+39)] = "Kristi himmelfartsdag"
-        self[easter_date + rd(days=+49)] = "Første pinsedag"
-        self[easter_date + rd(days=+50)] = "Andre pinsedag"
+        self[easter_date + timedelta(days=+1)] = "Andre påskedag"
+        self[easter_date + timedelta(days=+39)] = "Kristi himmelfartsdag"
+        self[easter_date + timedelta(days=+49)] = "Første pinsedag"
+        self[easter_date + timedelta(days=+50)] = "Andre pinsedag"
 
 
 class NO(Norway):

@@ -9,10 +9,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from datetime import date, timedelta
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAY, AUG, NOV, DEC
 from holidays.holiday_base import HolidayBase
@@ -37,15 +36,15 @@ class Poland(HolidayBase):
 
         easter_date = easter(year)
         self[easter_date] = "Niedziela Wielkanocna"
-        self[easter_date + rd(days=+1)] = "Poniedziałek Wielkanocny"
+        self[easter_date + timedelta(days=+1)] = "Poniedziałek Wielkanocny"
 
         if year >= 1950:
             self[date(year, MAY, 1)] = "Święto Państwowe"
         if year >= 1919:
             self[date(year, MAY, 3)] = "Święto Narodowe Trzeciego Maja"
 
-        self[easter_date + rd(days=+49)] = "Zielone Świątki"
-        self[easter_date + rd(days=+60)] = "Dzień Bożego Ciała"
+        self[easter_date + timedelta(days=+49)] = "Zielone Świątki"
+        self[easter_date + timedelta(days=+60)] = "Dzień Bożego Ciała"
 
         self[date(year, AUG, 15)] = "Wniebowzięcie Najświętszej Marii Panny"
 

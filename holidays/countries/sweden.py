@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 
 from dateutil import rrule
 from dateutil.easter import easter
@@ -79,13 +79,13 @@ class Sweden(HolidayBase):
 
         # ========= Moving holidays =========
         easter_date = easter(year)
-        self[easter_date + rd(days=-2)] = "Långfredagen"
+        self[easter_date + timedelta(days=-2)] = "Långfredagen"
         self[easter_date] = "Påskdagen"
-        self[easter_date + rd(days=+1)] = "Annandag påsk"
-        self[easter_date + rd(days=+39)] = "Kristi himmelsfärdsdag"
-        self[easter_date + rd(days=+49)] = "Pingstdagen"
+        self[easter_date + timedelta(days=+1)] = "Annandag påsk"
+        self[easter_date + timedelta(days=+39)] = "Kristi himmelsfärdsdag"
+        self[easter_date + timedelta(days=+49)] = "Pingstdagen"
         if year <= 2004:
-            self[easter_date + rd(days=+50)] = "Annandag pingst"
+            self[easter_date + timedelta(days=+50)] = "Annandag pingst"
 
         # Source:
         # https://sv.wikipedia.org/wiki/Midsommarafton

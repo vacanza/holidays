@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from datetime import date, timedelta
 
 from dateutil.easter import easter
 from dateutil.relativedelta import MO, TU, TH, FR
@@ -95,9 +95,9 @@ class UnitedStates(HolidayBase):
         if not self.observed:
             return
         if dt.weekday() == SAT and before:
-            self[dt + rd(days=-1)] = f"{name} (Observed)"
+            self[dt + timedelta(days=-1)] = f"{name} (Observed)"
         elif dt.weekday() == SUN and after:
-            self[dt + rd(days=+1)] = f"{name} (Observed)"
+            self[dt + timedelta(days=+1)] = f"{name} (Observed)"
 
     def _populate(self, year):
         super()._populate(year)
@@ -123,7 +123,11 @@ class UnitedStates(HolidayBase):
         if self.subdiv == "VA" and year <= 2020:
             name = "Lee Jackson Day"
             if year >= 2000:
-                dt = date(year, JAN, 1) + rd(weekday=MO(+3)) + rd(days=-3)
+                dt = (
+                    date(year, JAN, 1)
+                    + rd(weekday=MO(+3))
+                    + timedelta(days=-3)
+                )
                 self[dt] = name
             elif year >= 1983:
                 self[date(year, JAN, 1) + rd(weekday=MO(+3))] = name
@@ -201,7 +205,7 @@ class UnitedStates(HolidayBase):
         easter_date = easter(year)
         # Mardi Gras
         if self.subdiv == "LA" and year >= 1857:
-            self[easter_date + rd(days=-47)] = "Mardi Gras"
+            self[easter_date + timedelta(days=-47)] = "Mardi Gras"
 
         # Guam Discovery Day
         if self.subdiv == "GU" and year >= 1970:
@@ -273,7 +277,7 @@ class UnitedStates(HolidayBase):
 
         # Holy Thursday
         if self.subdiv == "VI":
-            self[easter_date + rd(days=-3)] = "Holy Thursday"
+            self[easter_date + timedelta(days=-3)] = "Holy Thursday"
 
         # Good Friday
         if self.subdiv in {
@@ -290,11 +294,11 @@ class UnitedStates(HolidayBase):
             "TX",
             "VI",
         }:
-            self[easter_date + rd(days=-2)] = "Good Friday"
+            self[easter_date + timedelta(days=-2)] = "Good Friday"
 
         # Easter Monday
         if self.subdiv == "VI":
-            self[easter_date + rd(days=+1)] = "Easter Monday"
+            self[easter_date + timedelta(days=+1)] = "Easter Monday"
 
         # Confederate Memorial Day
         name = "Confederate Memorial Day"
@@ -325,7 +329,7 @@ class UnitedStates(HolidayBase):
             (year >= 2006 and year % 2 == 0) or year >= 2015
         ):
             self[
-                (date(year, MAY, 1) + rd(weekday=MO) + rd(days=+1))
+                (date(year, MAY, 1) + rd(weekday=MO) + timedelta(days=+1))
             ] = "Primary Election Day"
 
         # Truman Day
@@ -446,7 +450,7 @@ class UnitedStates(HolidayBase):
             and year % 2 == 0
         ) or (self.subdiv in {"IN", "NY"} and year >= 2015):
             self[
-                date(year, NOV, 1) + rd(weekday=MO) + rd(days=+1)
+                date(year, NOV, 1) + rd(weekday=MO) + timedelta(days=+1)
             ] = "Election Day"
 
         # All Souls' Day
@@ -500,7 +504,9 @@ class UnitedStates(HolidayBase):
                 name = "Family Day"
             if self.subdiv == "NM":
                 name = "Presidents' Day"
-            self[date(year, NOV, 1) + rd(weekday=TH(+4)) + rd(days=+1)] = name
+            self[
+                date(year, NOV, 1) + rd(weekday=TH(+4)) + timedelta(days=+1)
+            ] = name
 
         # Robert E. Lee's Birthday
         if self.subdiv == "GA" and year >= 1986:
@@ -526,7 +532,7 @@ class UnitedStates(HolidayBase):
             self[dt] = name
             # If on Friday, observed on Thursday
             if self.observed and dt.weekday() == FRI:
-                self[dt + rd(days=-1)] = f"{name} (Observed)"
+                self[dt + timedelta(days=-1)] = f"{name} (Observed)"
             # If on Saturday or Sunday, observed on Friday
             elif self.observed and self._is_weekend(dt):
                 self[dt + rd(weekday=FR(-1))] = f"{name} (Observed)"
@@ -545,7 +551,7 @@ class UnitedStates(HolidayBase):
                 self[dt + rd(weekday=MO)] = f"{name} (Observed)"
             # If on Monday, observed on Tuesday
             elif self.observed and dt.weekday() == MON:
-                self[dt + rd(days=+1)] = f"{name} (Observed)"
+                self[dt + timedelta(days=+1)] = f"{name} (Observed)"
         elif self.subdiv == "TX" and year >= 1981:
             self[dt] = "Day After Christmas"
         elif self.subdiv == "VI":

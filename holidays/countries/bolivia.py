@@ -10,10 +10,9 @@
 #  License: MIT (see LICENSE file)
 #  Copyright: Kateryna Golovanova <kate@kgthreads.com>, 2022
 
-from datetime import date
+from datetime import date, timedelta
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
 from holidays.constants import DEC, FRI, SUN
@@ -48,7 +47,9 @@ class Bolivia(HolidayBase):
             self[date(year, JAN, 1)] = name
 
         if self.observed and date(year, JAN, 1).weekday() == SUN:
-            self[date(year, JAN, 1) + rd(days=+1)] = f"{name} (Observed)"
+            self[
+                date(year, JAN, 1) + timedelta(days=+1)
+            ] = f"{name} (Observed)"
 
         # Plurinational State Foundation Day.
         if year >= 2010:
@@ -58,7 +59,7 @@ class Bolivia(HolidayBase):
 
         # Good Friday.
         easter_date = easter(year)
-        self[easter_date + rd(days=-2)] = "Viernes Santo"
+        self[easter_date + timedelta(days=-2)] = "Viernes Santo"
 
         # La Tablada.
         if self.subdiv == "T":
@@ -66,26 +67,28 @@ class Bolivia(HolidayBase):
 
         # Carnival in Oruro.
         if self.subdiv == "O":
-            self[easter_date + rd(days=-51)] = "Carnaval de Oruro"
+            self[easter_date + timedelta(days=-51)] = "Carnaval de Oruro"
 
         # Carnival Monday (Observed on Tuesday).
         name = "Feriado por Carnaval"
-        self[easter_date + rd(days=-48)] = name
-        self[easter_date + rd(days=-47)] = f"{name} (Observed)"
+        self[easter_date + timedelta(days=-48)] = name
+        self[easter_date + timedelta(days=-47)] = f"{name} (Observed)"
 
         # Labor Day.
         name = "Dia del trabajo"
         self[date(year, MAY, 1)] = name
 
         if self.observed and date(year, MAY, 1).weekday() == SUN:
-            self[date(year, MAY, 1) + rd(days=+1)] = f"{name} (Observed)"
+            self[
+                date(year, MAY, 1) + timedelta(days=+1)
+            ] = f"{name} (Observed)"
 
         # Chuquisaca Day.
         if self.subdiv == "H":
             self[date(year, MAY, 25)] = "Día del departamento de Chuquisaca"
 
         # Corpus Christi.
-        self[easter_date + rd(days=+60)] = "Corpus Christi"
+        self[easter_date + timedelta(days=+60)] = "Corpus Christi"
 
         # Andean New Year.
         name = "Año Nuevo Andino"
@@ -93,7 +96,9 @@ class Bolivia(HolidayBase):
             self[date(year, JUN, 21)] = name
 
         if self.observed and date(year, JUN, 21).weekday() == SUN:
-            self[date(year, JUN, 21) + rd(days=+1)] = f"{name} (Observed)"
+            self[
+                date(year, JUN, 21) + timedelta(days=+1)
+            ] = f"{name} (Observed)"
 
         # La Paz Day.
         if self.subdiv == "L":
@@ -109,7 +114,9 @@ class Bolivia(HolidayBase):
             self[date(year, AUG, 6)] = name
 
         if self.observed and date(year, AUG, 6).weekday() > FRI:
-            self[date(year, AUG, 6) + rd(days=+1)] = f"{name} (Observed)"
+            self[
+                date(year, AUG, 6) + timedelta(days=+1)
+            ] = f"{name} (Observed)"
 
         # Cochabamba Day.
         if self.subdiv == "C":
@@ -128,7 +135,9 @@ class Bolivia(HolidayBase):
         self[date(year, NOV, 2)] = name
 
         if self.observed and date(year, NOV, 2).weekday() == SUN:
-            self[date(year, NOV, 2) + rd(days=+1)] = f"{name} (Observed)"
+            self[
+                date(year, NOV, 2) + timedelta(days=+1)
+            ] = f"{name} (Observed)"
 
         # Potosí Day.
         if self.subdiv == "P":
@@ -143,7 +152,9 @@ class Bolivia(HolidayBase):
         self[date(year, DEC, 25)] = name
 
         if self.observed and date(year, DEC, 25).weekday() == SUN:
-            self[date(year, DEC, 25) + rd(days=+1)] = f"{name} (Observed)"
+            self[
+                date(year, DEC, 25) + timedelta(days=+1)
+            ] = f"{name} (Observed)"
 
 
 class BO(Bolivia):

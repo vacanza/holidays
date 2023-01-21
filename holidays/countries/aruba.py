@@ -9,10 +9,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from datetime import date, timedelta
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAR, APR, MAY, AUG, DEC, SUN
 from holidays.holiday_base import HolidayBase
@@ -38,7 +37,7 @@ class Aruba(HolidayBase):
         easter_date = easter(year)
         # Carnaval Monday
         self[
-            easter_date + rd(days=-48)
+            easter_date + timedelta(days=-48)
         ] = "Dialuna di Carnaval [Carnaval Monday]"
 
         # Dia di Himno y Bandera
@@ -47,18 +46,18 @@ class Aruba(HolidayBase):
         ] = "Dia di Himno y Bandera [National Anthem & Flag Day]"
 
         # Good Friday
-        self[easter_date + rd(days=-2)] = "Bierna Santo [Good Friday]"
+        self[easter_date + timedelta(days=-2)] = "Bierna Santo [Good Friday]"
 
         # Easter Monday
         self[
-            easter_date + rd(days=+1)
+            easter_date + timedelta(days=+1)
         ] = "Di Dos Dia di Pasco di Resureccion [Easter Monday]"
 
         # King's Day
         if year >= 2014:
             kings_day = date(year, APR, 27)
             if kings_day.weekday() == SUN:
-                kings_day += rd(days=-1)
+                kings_day += timedelta(days=-1)
 
             self[kings_day] = "Aña di Rey [King's Day]"
 
@@ -69,7 +68,9 @@ class Aruba(HolidayBase):
                 queens_day = date(year, AUG, 31)
 
             if queens_day.weekday() == SUN:
-                queens_day += rd(days=+1) if year < 1980 else rd(days=-1)
+                queens_day += (
+                    timedelta(days=+1) if year < 1980 else timedelta(days=-1)
+                )
 
             self[queens_day] = "Aña di La Reina [Queen's Day]"
 
@@ -77,7 +78,9 @@ class Aruba(HolidayBase):
         self[date(year, MAY, 1)] = "Dia di Obrero [Labour Day]"
 
         # Ascension Day
-        self[easter_date + rd(days=+39)] = "Dia di Asuncion [Ascension Day]"
+        self[
+            easter_date + timedelta(days=+39)
+        ] = "Dia di Asuncion [Ascension Day]"
 
         # Christmas Day
         self[date(year, DEC, 25)] = "Pasco di Nacemento [Christmas]"

@@ -9,9 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-
-from dateutil.relativedelta import relativedelta as rd
+from datetime import date, timedelta
 
 from holidays.constants import JAN, MAR, MAY, JUL, AUG, NOV
 from holidays.holiday_base import HolidayBase
@@ -103,7 +101,7 @@ class Morocco(HolidayBase):
             for date_obs in _islamic_to_gre(yr, 10, 1):
                 hol_date = date_obs
                 _add_holiday(hol_date, "Eid al-Fitr")
-                _add_holiday(hol_date + rd(days=+1), "Eid al-Fitr")
+                _add_holiday(hol_date + timedelta(days=+1), "Eid al-Fitr")
 
         # Eid al-Adha - Sacrifice Festive
         # date of observance is announced yearly
@@ -111,7 +109,7 @@ class Morocco(HolidayBase):
             for date_obs in _islamic_to_gre(yr, 12, 10):
                 hol_date = date_obs
                 _add_holiday(hol_date, "Eid al-Adha")
-                _add_holiday(hol_date + rd(days=+1), "Eid al-Adha")
+                _add_holiday(hol_date + timedelta(days=+1), "Eid al-Adha")
 
         # Islamic New Year - (hijari_year, 1, 1)
         for date_obs in _islamic_to_gre(year, 1, 1):
@@ -123,7 +121,9 @@ class Morocco(HolidayBase):
             for date_obs in _islamic_to_gre(yr, 3, 12):
                 hol_date = date_obs
                 _add_holiday(hol_date, "Aid al Mawlid Annabawi")
-                _add_holiday(hol_date + rd(days=+1), "Aid al Mawlid Annabawi")
+                _add_holiday(
+                    hol_date + timedelta(days=+1), "Aid al Mawlid Annabawi"
+                )
 
 
 class MA(Morocco):

@@ -9,10 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from datetime import date, timedelta
 from typing import Dict, Tuple, List
-
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC
@@ -80,8 +78,8 @@ class Pakistan(HolidayBase):
         hol_dates = self._get_islamic_holiday(name, year, 10, 1, dates_obs)
         for hol_date, hol_name in hol_dates:
             _add_holiday(hol_date, hol_name)
-            _add_holiday(hol_date + rd(days=+1), hol_name)
-            _add_holiday(hol_date + rd(days=+2), hol_name)
+            _add_holiday(hol_date + timedelta(days=+1), hol_name)
+            _add_holiday(hol_date + timedelta(days=+2), hol_name)
 
         # Eid-ul-Adha
         # https://www.timeanddate.com/holidays/pakistan/eid-ul-azha
@@ -112,8 +110,8 @@ class Pakistan(HolidayBase):
         hol_dates = self._get_islamic_holiday(name, year, 12, 10, dates_obs)
         for hol_date, hol_name in hol_dates:
             _add_holiday(hol_date, hol_name)
-            _add_holiday(hol_date + rd(days=+1), hol_name)
-            _add_holiday(hol_date + rd(days=+2), hol_name)
+            _add_holiday(hol_date + timedelta(days=+1), hol_name)
+            _add_holiday(hol_date + timedelta(days=+2), hol_name)
 
         # Eid Milad-un-Nabi, Birth of the Prophet
         # https://www.timeanddate.com/holidays/pakistan/eid-milad-un-nabi
@@ -171,7 +169,7 @@ class Pakistan(HolidayBase):
         hol_dates = self._get_islamic_holiday(name, year, 1, 10, dates_obs)
         for hol_date, hol_name in hol_dates:
             _add_holiday(hol_date, hol_name)
-            _add_holiday(hol_date + rd(days=+1), hol_name)
+            _add_holiday(hol_date + timedelta(days=+1), hol_name)
 
     @staticmethod
     def _get_islamic_holiday(

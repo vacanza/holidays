@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from datetime import date, timedelta
 
 from dateutil.easter import easter
 from dateutil.relativedelta import MO, SU
@@ -86,16 +86,16 @@ class Jamaica(HolidayBase):
         easter_date = easter(year)
 
         # Ash Wednesday
-        self[easter_date + rd(days=-46)] = "Ash Wednesday"
+        self[easter_date + timedelta(days=-46)] = "Ash Wednesday"
 
         # Good Friday
-        self[easter_date + rd(days=-2)] = "Good Friday"
+        self[easter_date + timedelta(days=-2)] = "Good Friday"
 
         # Easter
         self[easter_date] = "Easter"
 
         # Easter
-        self[easter_date + rd(days=+1)] = "Easter Monday"
+        self[easter_date + timedelta(days=+1)] = "Easter Monday"
 
 
 class JM(Jamaica):

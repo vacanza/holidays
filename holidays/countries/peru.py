@@ -9,10 +9,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from datetime import date, timedelta
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAY, JUN, JUL, AUG, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
@@ -53,13 +52,17 @@ class Peru(HolidayBase):
 
         easter_date = easter(year)
         # Holy Thursday
-        self[easter_date + rd(days=-3)] = "Jueves Santo [Maundy Thursday]"
+        self[
+            easter_date + timedelta(days=-3)
+        ] = "Jueves Santo [Maundy Thursday]"
 
         # Good Friday
-        self[easter_date + rd(days=-2)] = "Viernes Santo [Good Friday]"
+        self[easter_date + timedelta(days=-2)] = "Viernes Santo [Good Friday]"
 
         # Holy Saturday
-        self[easter_date + rd(days=-1)] = "Sábado de Gloria [Holy Saturday]"
+        self[
+            easter_date + timedelta(days=-1)
+        ] = "Sábado de Gloria [Holy Saturday]"
 
         # Easter Sunday
         self[easter_date] = "Domingo de Resurrección [Easter Sunday]"

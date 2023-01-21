@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from datetime import date, timedelta
 
 from dateutil.easter import easter
 from dateutil.relativedelta import SU
@@ -48,7 +48,7 @@ class Lithuania(HolidayBase):
         self[easter_date] = "Velykos"
 
         # Easter 2nd day
-        self[easter_date + rd(days=+1)] = "Velykų antroji diena"
+        self[easter_date + timedelta(days=+1)] = "Velykų antroji diena"
 
         # International Workers' Day
         self[date(year, 5, 1)] = "Tarptautinė darbo diena"

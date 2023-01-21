@@ -9,9 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-
-from dateutil.relativedelta import relativedelta as rd
+from datetime import date, timedelta
 
 from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT
 from holidays.constants import NOV, DEC
@@ -28,11 +26,11 @@ class Azerbaijan(HolidayBase):
 
     def _populate(self, year: int) -> None:
         def _add_observed(hol_date: date, hol_name: str) -> None:
-            next_workday = hol_date + rd(days=+1)
+            next_workday = hol_date + timedelta(days=+1)
             while next_workday.year == year and (
                 self._is_weekend(next_workday) or self.get(next_workday)
             ):
-                next_workday += rd(days=+1)
+                next_workday += timedelta(days=+1)
             _add_holiday(next_workday, f"{hol_name} (Observed)")
 
         def _add_holiday(hol_date: date, hol_name: str) -> None:
@@ -149,13 +147,14 @@ class Azerbaijan(HolidayBase):
                         for date_obs in dates_obs[yr]:
                             _add_holiday(date(yr, *date_obs), name)
                             _add_holiday(
-                                date(yr, *date_obs) + rd(days=+1), name
+                                date(yr, *date_obs) + timedelta(days=+1), name
                             )
                     else:
                         for dt in _islamic_to_gre(yr, hmonth, hday):
                             _add_holiday(dt, f"{name}* (*estimated)")
                             _add_holiday(
-                                dt + rd(days=+1), f"{name}* (*estimated)"
+                                dt + timedelta(days=+1),
+                                f"{name}* (*estimated)",
                             )
 
         """

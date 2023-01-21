@@ -9,9 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-
-from dateutil.relativedelta import relativedelta as rd
+from datetime import date, timedelta
 
 from holidays.constants import JAN, MAR, APR, MAY, JUL, AUG, OCT
 from holidays.holiday_base import HolidayBase
@@ -78,8 +76,12 @@ class Tunisia(HolidayBase):
             for date_obs in _islamic_to_gre(yr, 10, 1):
                 hol_date = date_obs
                 _add_holiday(hol_date, "Eid al-Fitr")
-                _add_holiday(hol_date + rd(days=+1), "Eid al-Fitr Holiday")
-                _add_holiday(hol_date + rd(days=+2), "Eid al-Fitr Holiday")
+                _add_holiday(
+                    hol_date + timedelta(days=+1), "Eid al-Fitr Holiday"
+                )
+                _add_holiday(
+                    hol_date + timedelta(days=+2), "Eid al-Fitr Holiday"
+                )
 
         # Arafat Day & Eid al-Adha - Scarfice Festive
         # date of observance is announced yearly
@@ -87,9 +89,13 @@ class Tunisia(HolidayBase):
             for date_obs in _islamic_to_gre(yr, 12, 9):
                 hol_date = date_obs
                 _add_holiday(hol_date, "Arafat Day")
-                _add_holiday(hol_date + rd(days=+1), "Eid al-Adha")
-                _add_holiday(hol_date + rd(days=+2), "Eid al-Adha Holiday")
-                _add_holiday(hol_date + rd(days=+3), "Eid al-Adha Holiday")
+                _add_holiday(hol_date + timedelta(days=+1), "Eid al-Adha")
+                _add_holiday(
+                    hol_date + timedelta(days=+2), "Eid al-Adha Holiday"
+                )
+                _add_holiday(
+                    hol_date + timedelta(days=+3), "Eid al-Adha Holiday"
+                )
 
         # Islamic New Year - (hijari_year, 1, 1)
         for date_obs in _islamic_to_gre(year, 1, 1):
