@@ -10,7 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-from datetime import date
+from datetime import date, timedelta
 
 from dateutil.relativedelta import relativedelta as rd
 
@@ -44,9 +44,9 @@ class TestUK(unittest.TestCase):
             dt = date(year, 1, 1)
             self.assertIn(dt, self.holidays)
             if year == 2000:
-                self.assertIn(dt + rd(days=-1), self.holidays)
+                self.assertIn(dt + timedelta(days=-1), self.holidays)
             else:
-                self.assertNotIn(dt + rd(days=-1), self.holidays)
+                self.assertNotIn(dt + timedelta(days=-1), self.holidays)
 
     def test_good_friday(self):
         for dt in [
@@ -61,8 +61,8 @@ class TestUK(unittest.TestCase):
             date(2020, 4, 10),
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + rd(days=-1), self.holidays)
-            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + timedelta(days=-1), self.holidays)
+            self.assertNotIn(dt + timedelta(days=+1), self.holidays)
 
     def test_easter_monday(self):
         for dt in [
@@ -77,8 +77,8 @@ class TestUK(unittest.TestCase):
             date(2020, 4, 13),
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + rd(days=-1), self.holidays)
-            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + timedelta(days=-1), self.holidays)
+            self.assertNotIn(dt + timedelta(days=+1), self.holidays)
 
     def test_royal_weddings(self):
         for dt in [date(1981, 7, 29), date(2011, 4, 29)]:
@@ -119,8 +119,8 @@ class TestUK(unittest.TestCase):
             date(2020, 5, 8),
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + rd(days=-1), self.holidays)
-            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + timedelta(days=-1), self.holidays)
+            self.assertNotIn(dt + timedelta(days=+1), self.holidays)
         self.assertNotIn(date(2020, 5, 4), self.holidays)
 
     def test_spring_bank_holiday(self):
@@ -137,16 +137,16 @@ class TestUK(unittest.TestCase):
             date(2022, 6, 2),
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + rd(days=-1), self.holidays)
+            self.assertNotIn(dt + timedelta(days=-1), self.holidays)
             if dt != date(2022, 6, 2):
-                self.assertNotIn(dt + rd(days=+1), self.holidays)
+                self.assertNotIn(dt + timedelta(days=+1), self.holidays)
 
     def test_christmas_day(self):
         self.holidays.observed = False
         for year in range(1900, 2100):
             dt = date(year, 12, 25)
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + rd(days=-1), self.holidays)
+            self.assertNotIn(dt + timedelta(days=-1), self.holidays)
         self.assertNotIn(date(2010, 12, 24), self.holidays)
         self.assertNotEqual(
             self.holidays[date(2011, 12, 26)], "Christmas Day (Observed)"
@@ -191,7 +191,7 @@ class TestUK(unittest.TestCase):
         for year in range(1900, 2100):
             dt = date(year, 12, 26)
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + timedelta(days=+1), self.holidays)
         self.assertNotIn(date(2009, 12, 28), self.holidays)
         self.assertNotIn(date(2010, 12, 27), self.holidays)
         self.holidays.observed = True

@@ -9,9 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-
-from dateutil.relativedelta import relativedelta as rd
+from datetime import date, timedelta
 
 from holidays.countries.pakistan import Pakistan, PK, PAK
 from test.common import TestCase
@@ -86,8 +84,8 @@ class TestPakistan(TestCase):
             date(2023, 4, 21),
         ):
             self.assertHoliday(dt)
-            self.assertHoliday(dt + rd(days=+1))
-            self.assertHoliday(dt + rd(days=+2))
+            self.assertHoliday(dt + timedelta(days=+1))
+            self.assertHoliday(dt + timedelta(days=+2))
             self.assertIn(name, self.holidays.get(dt))
 
     def test_eid_ul_adha(self):
@@ -109,8 +107,8 @@ class TestPakistan(TestCase):
             date(2023, 6, 28),
         ):
             self.assertHoliday(dt)
-            self.assertHoliday(dt + rd(days=+1))
-            self.assertHoliday(dt + rd(days=+2))
+            self.assertHoliday(dt + timedelta(days=+1))
+            self.assertHoliday(dt + timedelta(days=+2))
             self.assertIn(name, self.holidays.get(dt))
 
     def test_eid_milad_un_nabi(self):
@@ -153,5 +151,5 @@ class TestPakistan(TestCase):
             date(2023, 7, 28),
         ):
             self.assertHoliday(dt)
-            self.assertHoliday(dt + rd(days=+1))
+            self.assertHoliday(dt + timedelta(days=+1))
             self.assertIn(name, self.holidays.get(dt))

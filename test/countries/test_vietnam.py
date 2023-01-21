@@ -10,9 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-from datetime import date
-
-from dateutil.relativedelta import relativedelta as rd
+from datetime import date, timedelta
 
 import holidays
 
@@ -51,7 +49,7 @@ class TestVietnam(unittest.TestCase):
             (2022, 2, 1),
         ):
             self.assertEqual(
-                self.holidays[date(year, month, day) + rd(days=-1)],
+                self.holidays[date(year, month, day) + timedelta(days=-1)],
                 "Vietnamese New Year's Eve",
             )
             self.assertEqual(
@@ -59,19 +57,19 @@ class TestVietnam(unittest.TestCase):
                 "Vietnamese New Year",
             )
             self.assertEqual(
-                self.holidays[date(year, month, day) + rd(days=+1)],
+                self.holidays[date(year, month, day) + timedelta(days=+1)],
                 "The second day of Tet Holiday",
             )
             self.assertEqual(
-                self.holidays[date(year, month, day) + rd(days=+2)],
+                self.holidays[date(year, month, day) + timedelta(days=+2)],
                 "The third day of Tet Holiday",
             )
             self.assertEqual(
-                self.holidays[date(year, month, day) + rd(days=+3)],
+                self.holidays[date(year, month, day) + timedelta(days=+3)],
                 "The forth day of Tet Holiday",
             )
             self.assertEqual(
-                self.holidays[date(year, month, day) + rd(days=+4)],
+                self.holidays[date(year, month, day) + timedelta(days=+4)],
                 "The fifth day of Tet Holiday",
             )
 
