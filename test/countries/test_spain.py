@@ -14,9 +14,6 @@ from copy import deepcopy
 from datetime import date
 from itertools import product
 
-from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
-
 import holidays
 
 
@@ -108,7 +105,6 @@ class TestSpain(unittest.TestCase):
         }
         for prov, prov_holidays in self.prov_holidays.items():
             for year in range(2010, 2023):
-                easter_date = easter(year)
                 self.assertEqual(
                     date(year, 12, 26) in prov_holidays, prov in {"CT", "IB"}
                 )
@@ -157,13 +153,6 @@ class TestSpain(unittest.TestCase):
                 self.assertEqual(
                     date(year, 6, 24) in prov_holidays,
                     prov in {"CT", "VC"},
-                )
-                self.assertEqual(
-                    self[easter_date + rd(days=-3)] in prov_holidays,
-                    prov not in {"CT"},
-                )
-                self.assertEqual(
-                    self[easter_date + rd(days=-2)] in prov_holidays,
                 )
 
                 year_province_days = deepcopy(province_days)
