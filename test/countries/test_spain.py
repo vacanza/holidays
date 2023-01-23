@@ -111,7 +111,7 @@ class TestSpain(unittest.TestCase):
                         date(year, 3, 19) in prov_holidays,
                         prov in {"GA", "MC", "NC", "PV", "VC"},
                     )
-                elif year == 2020:
+                elif 2020 <= year <= 2021:
                     self.assertEqual(
                         date(year, 3, 19) in prov_holidays,
                         prov in {"CM", "GA", "MC", "NC", "PV", "VC"},
