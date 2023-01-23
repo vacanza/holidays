@@ -14,8 +14,10 @@ from copy import deepcopy
 from datetime import date
 from itertools import product
 
+from dateutil.easter import easter
+from dateutil.relativedelta import relativedelta as rd
+
 import holidays
-from holidays.utils import _islamic_to_gre
 
 
 class TestSpain(unittest.TestCase):
@@ -105,7 +107,8 @@ class TestSpain(unittest.TestCase):
             (10, 9): {"VC"},
         }
         for prov, prov_holidays in self.prov_holidays.items():
-            for year in range(2010, 2021):
+            for year in range(2010, 2023):
+                easter_date = easter(year)
                 self.assertEqual(
                     date(year, 12, 26) in prov_holidays, prov in {"CT", "IB"}
                 )
@@ -153,29 +156,26 @@ class TestSpain(unittest.TestCase):
                     )
                 self.assertEqual(
                     date(year, 6, 24) in prov_holidays,
-                    prov in {"CT", "GA", "VC"},
+                    prov in {"CT", "VC"},
+                )
+                self.assertEqual(
+                    self[easter_date + rd(days=-3)] in prov_holidays,
+                    prov not in {"CT"},
+                )
+                self.assertEqual(
+                    self[easter_date + rd(days=-2)] in prov_holidays,
                 )
 
                 year_province_days = deepcopy(province_days)
-                if prov in {"ML"}:
-                    eid_al_fitr_current_year = _islamic_to_gre(year, 10, 1)[0]
-                    eid_al_adha_current_year = _islamic_to_gre(year, 12, 10)[0]
-                    year_province_days.update(
-                        {
-                            (
-                                eid_al_fitr_current_year.month,
-                                eid_al_fitr_current_year.day,
-                            ): {"ML"},
-                            (
-                                eid_al_adha_current_year.month,
-                                eid_al_adha_current_year.day,
-                            ): {"ML"},
-                        }
-                    )
 
                 if year == 2022:
                     year_province_days.update(
                         {(7, 25): {"GA", "MD", "NC", "PV"}}
+                    )
+
+                if year == 2023:
+                    year_province_days.update(
+                        {(7, 25): {"GA", "CL", "NC", "PV"}}
                     )
 
                 for fest_day, fest_prov in year_province_days.items():
