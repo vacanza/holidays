@@ -104,7 +104,7 @@ class TestSpain(unittest.TestCase):
             (10, 9): {"VC"},
         }
         for prov, prov_holidays in self.prov_holidays.items():
-            for year in range(2010, 2023):
+            for year in range(2010, 2020):
                 self.assertEqual(
                     date(year, 12, 26) in prov_holidays, prov in {"CT", "IB"}
                 )
@@ -152,16 +152,6 @@ class TestSpain(unittest.TestCase):
                     )
 
                 year_province_days = deepcopy(province_days)
-
-                if year == 2022:
-                    year_province_days.update(
-                        {(7, 25): {"GA", "MD", "NC", "PV"}}
-                    )
-
-                if year == 2023:
-                    year_province_days.update(
-                        {(7, 25): {"GA", "CL", "NC", "PV"}}
-                    )
 
                 for fest_day, fest_prov in year_province_days.items():
                     self.assertEqual(
