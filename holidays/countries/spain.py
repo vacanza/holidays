@@ -54,6 +54,21 @@ class Spain(HolidayBase):
         super()._populate(year)
 
         self._is_observed(date(year, JAN, 1), "Año nuevo")
+        if (
+            year == 2023
+            and self.subdiv
+            and self.subdiv
+            in {
+                "AN",
+                "AR",
+                "AS",
+                "CL",
+                "MC",
+            }
+        ):
+            self._is_observed(date(year, MAR, 19), "Año nuevo")
+        if year != 2023:
+            self._is_observed(date(year, MAR, 19), "Año nuevo")
         self._is_observed(date(year, JAN, 6), "Epifanía del Señor")
 
         easter_date = easter(year)
