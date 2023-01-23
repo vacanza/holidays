@@ -202,10 +202,8 @@ class Spain(HolidayBase):
                     "Eid al-Adha",
                 )
         elif self.subdiv == "CM":
-            if year == 2022:
-                self._is_observed(date(year, JUN, 16), "Corpus Christi")
-            elif year == 2023:
-                self._is_observed(date(year, JUN, 8), "Corpus Christi")
+            if year >= 2022:
+                self._is_observed(easter_date + rd(days=+60), "Corpus Christi")
             self._is_observed(date(year, MAY, 31), "Día de Castilla La Mancha")
         elif self.subdiv == "CN":
             self._is_observed(date(year, MAY, 30), "Día de Canarias")
