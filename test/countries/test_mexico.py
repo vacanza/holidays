@@ -10,7 +10,8 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 import holidays
 
@@ -29,8 +30,8 @@ class TestMX(unittest.TestCase):
         for year in range(1900, 2100):
             dt = date(year, 1, 1)
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + timedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + timedelta(days=+1), self.holidays)
+            self.assertNotIn(dt + td(days=-1), self.holidays)
+            self.assertNotIn(dt + td(days=+1), self.holidays)
 
     def test_constitution_day(self):
         for dt in [
@@ -46,8 +47,8 @@ class TestMX(unittest.TestCase):
             date(2022, 2, 5),
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + timedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + timedelta(days=+1), self.holidays)
+            self.assertNotIn(dt + td(days=-1), self.holidays)
+            self.assertNotIn(dt + td(days=+1), self.holidays)
         self.holidays.observed = True
         for dt in [
             date(2005, 2, 5),
@@ -87,8 +88,8 @@ class TestMX(unittest.TestCase):
             date(2024, 3, 21),
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + timedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + timedelta(days=+1), self.holidays)
+            self.assertNotIn(dt + td(days=-1), self.holidays)
+            self.assertNotIn(dt + td(days=+1), self.holidays)
         self.holidays.observed = True
         for dt in [
             date(2005, 3, 21),
@@ -128,8 +129,8 @@ class TestMX(unittest.TestCase):
         for year in range(1923, 2100):
             dt = date(year, 5, 1)
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + timedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + timedelta(days=+1), self.holidays)
+            self.assertNotIn(dt + td(days=-1), self.holidays)
+            self.assertNotIn(dt + td(days=+1), self.holidays)
 
     def test_independence_day(self):
         self.assertNotIn(date(2006, 9, 15), self.holidays)
@@ -141,8 +142,8 @@ class TestMX(unittest.TestCase):
         for year in range(1900, 2100):
             dt = date(year, 9, 16)
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + timedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + timedelta(days=+1), self.holidays)
+            self.assertNotIn(dt + td(days=-1), self.holidays)
+            self.assertNotIn(dt + td(days=+1), self.holidays)
 
     def test_revolution_day(self):
         for dt in [
@@ -160,8 +161,8 @@ class TestMX(unittest.TestCase):
             date(2023, 11, 20),
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + timedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + timedelta(days=+1), self.holidays)
+            self.assertNotIn(dt + td(days=-1), self.holidays)
+            self.assertNotIn(dt + td(days=+1), self.holidays)
         self.holidays.observed = True
         for dt in [
             date(2005, 11, 20),
@@ -188,8 +189,8 @@ class TestMX(unittest.TestCase):
             dt = date(year, 12, 1)
             if (year >= 1970) and ((2096 - year) % 6) == 0:
                 self.assertIn(dt, self.holidays)
-                self.assertNotIn(dt + timedelta(days=-1), self.holidays)
-                self.assertNotIn(dt + timedelta(days=+1), self.holidays)
+                self.assertNotIn(dt + td(days=-1), self.holidays)
+                self.assertNotIn(dt + td(days=+1), self.holidays)
             else:
                 self.assertNotIn(dt, self.holidays)
 
@@ -197,8 +198,8 @@ class TestMX(unittest.TestCase):
         for year in range(1900, 2100):
             dt = date(year, 12, 25)
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + timedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + timedelta(days=+1), self.holidays)
+            self.assertNotIn(dt + td(days=-1), self.holidays)
+            self.assertNotIn(dt + td(days=+1), self.holidays)
         self.assertNotIn(date(2010, 12, 24), self.holidays)
         self.assertNotIn(date(2016, 12, 26), self.holidays)
         self.holidays.observed = True

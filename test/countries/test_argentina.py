@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from holidays.constants import MAY, JUN, JUL, AUG, OCT
 from holidays.countries.argentina import AR, ARG, Argentina
@@ -39,8 +40,8 @@ class TestArgentina(TestCase):
             dt = date(year, 1, 1)
             self.assertHoliday(dt)
             self.assertNoHoliday(
-                dt + timedelta(days=-1),
-                dt + timedelta(days=+1),
+                dt + td(days=-1),
+                dt + td(days=+1),
             )
 
     def test_carnival_day(self):
@@ -96,8 +97,8 @@ class TestArgentina(TestCase):
             dt = date(year, MAY, 1)
             self.assertHoliday(dt)
             self.assertNoHoliday(
-                dt + timedelta(days=-1),
-                dt + timedelta(days=+1),
+                dt + td(days=-1),
+                dt + td(days=+1),
             )
 
     def test_may_revolution_day(self):
@@ -112,8 +113,8 @@ class TestArgentina(TestCase):
             dt = date(year, MAY, 25)
             self.assertHoliday(dt)
             self.assertNoHoliday(
-                dt + timedelta(days=-1),
-                dt + timedelta(days=+1),
+                dt + td(days=-1),
+                dt + td(days=+1),
             )
 
     def test_guemes_day(self):
@@ -121,8 +122,8 @@ class TestArgentina(TestCase):
             dt = date(year, JUN, 17)
             self.assertHoliday(dt)
             self.assertNoHoliday(
-                dt + timedelta(days=-1),
-                dt + timedelta(days=+1),
+                dt + td(days=-1),
+                dt + td(days=+1),
             )
 
     def test_belgrano_day(self):
@@ -130,8 +131,8 @@ class TestArgentina(TestCase):
             dt = date(year, JUN, 20)
             self.assertHoliday(dt)
             self.assertNoHoliday(
-                dt + timedelta(days=-1),
-                dt + timedelta(days=+1),
+                dt + td(days=-1),
+                dt + td(days=+1),
             )
 
     def test_independence_day(self):
@@ -151,8 +152,8 @@ class TestArgentina(TestCase):
             dt = date(year, JUL, 9)
             self.assertHoliday(dt)
             self.assertNoHoliday(
-                dt + timedelta(days=-1),
-                dt + timedelta(days=+1),
+                dt + td(days=-1),
+                dt + td(days=+1),
             )
 
     def test_san_martin_day(self):
@@ -167,8 +168,8 @@ class TestArgentina(TestCase):
             dt = date(year, AUG, 17)
             self.assertHoliday(dt)
             self.assertNoHoliday(
-                dt + timedelta(days=-1),
-                dt + timedelta(days=+1),
+                dt + td(days=-1),
+                dt + td(days=+1),
             )
 
     def test_cultural_day(self):
@@ -183,8 +184,8 @@ class TestArgentina(TestCase):
             dt = date(year, OCT, 12)
             self.assertHoliday(dt)
             self.assertNoHoliday(
-                dt + timedelta(days=-1),
-                dt + timedelta(days=+1),
+                dt + td(days=-1),
+                dt + td(days=+1),
             )
 
     def test_national_sovereignty_day(self):
@@ -195,8 +196,8 @@ class TestArgentina(TestCase):
             else:
                 self.assertHoliday(dt)
                 self.assertNoHoliday(
-                    dt + timedelta(days=-1),
-                    dt + timedelta(days=+1),
+                    dt + td(days=-1),
+                    dt + td(days=+1),
                 )
 
     def test_immaculate_conception_day(self):
@@ -211,8 +212,8 @@ class TestArgentina(TestCase):
             dt = date(year, 12, 8)
             self.assertHoliday(dt)
             self.assertNoHoliday(
-                dt + timedelta(days=-1),
-                dt + timedelta(days=+1),
+                dt + td(days=-1),
+                dt + td(days=+1),
             )
 
     def test_christmas(self):
@@ -220,8 +221,8 @@ class TestArgentina(TestCase):
             dt = date(year, 12, 25)
             self.assertHoliday(dt)
             self.assertNoHoliday(
-                dt + timedelta(days=-1),
-                dt + timedelta(days=+1),
+                dt + td(days=-1),
+                dt + td(days=+1),
             )
 
     def test_2022(self):

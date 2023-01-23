@@ -10,7 +10,8 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 import holidays
 
@@ -87,9 +88,9 @@ class TestBulgaria(unittest.TestCase):
             (2022, 4, 24),
         ]:
             easter = date(year, month, day)
-            easter_friday = easter + timedelta(days=-2)
-            easter_saturday = easter + timedelta(days=-1)
-            easter_monday = easter + timedelta(days=+1)
+            easter_friday = easter + td(days=-2)
+            easter_saturday = easter + td(days=-1)
+            easter_monday = easter + td(days=+1)
             for holiday in [
                 easter_friday,
                 easter_saturday,

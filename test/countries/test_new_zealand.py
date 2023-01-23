@@ -10,7 +10,8 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 import holidays
 
@@ -148,8 +149,8 @@ class TestNZ(unittest.TestCase):
             date(2020, 4, 10),
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + timedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + timedelta(days=+1), self.holidays)
+            self.assertNotIn(dt + td(days=-1), self.holidays)
+            self.assertNotIn(dt + td(days=+1), self.holidays)
 
     def test_easter_monday(self):
         for dt in [
@@ -163,8 +164,8 @@ class TestNZ(unittest.TestCase):
             date(2020, 4, 13),
         ]:
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + timedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + timedelta(days=+1), self.holidays)
+            self.assertNotIn(dt + td(days=-1), self.holidays)
+            self.assertNotIn(dt + td(days=+1), self.holidays)
 
     def test_anzac_day(self):
         for year in range(1900, 1921):
@@ -282,8 +283,8 @@ class TestNZ(unittest.TestCase):
         ]:
             self.assertIn(dt, self.holidays)
             self.assertEqual(self.holidays[dt], "Matariki")
-            self.assertNotIn(dt + timedelta(days=-1), self.holidays)
-            self.assertNotIn(dt + timedelta(days=+1), self.holidays)
+            self.assertNotIn(dt + td(days=-1), self.holidays)
+            self.assertNotIn(dt + td(days=+1), self.holidays)
 
     def test_labour_day(self):
         for year, day in enumerate(
@@ -321,7 +322,7 @@ class TestNZ(unittest.TestCase):
         for year in range(1900, 2100):
             dt = date(year, 12, 25)
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + timedelta(days=-1), self.holidays)
+            self.assertNotIn(dt + td(days=-1), self.holidays)
         self.assertNotIn(date(2010, 12, 24), self.holidays)
         self.assertNotEqual(
             self.holidays[date(2011, 12, 26)], "Christmas Day (Observed)"
@@ -365,7 +366,7 @@ class TestNZ(unittest.TestCase):
         for year in range(1900, 2100):
             dt = date(year, 12, 26)
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + timedelta(days=+1), self.holidays)
+            self.assertNotIn(dt + td(days=+1), self.holidays)
         self.assertNotIn(date(2009, 12, 28), self.holidays)
         self.assertNotIn(date(2010, 12, 27), self.holidays)
         self.holidays.observed = True
