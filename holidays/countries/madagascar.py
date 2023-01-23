@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import SU
@@ -57,23 +58,21 @@ class Madagascar(HolidayBase):
 
         easter_date = easter(year)
         self[easter_date] = "Fetin'ny paska / Easter Sunday"
+        self[easter_date + td(days=+1)] = "Alatsinain'ny paska / Easter Monday"
         self[
-            easter_date + timedelta(days=+1)
-        ] = "Alatsinain'ny paska / Easter Monday"
-        self[
-            easter_date + timedelta(days=+39)
+            easter_date + td(days=+39)
         ] = "Fiakaran'ny Jesosy kristy tany an-danitra / Ascension Day"
 
-        whit_sunday = easter_date + timedelta(days=+49)
+        whit_sunday = easter_date + td(days=+49)
         self[whit_sunday] = "Pentekosta / Whit Sunday"
 
         self[
-            easter_date + timedelta(days=+50)
+            easter_date + td(days=+50)
         ] = "Alatsinain'ny pentekosta / Whit Monday"
 
         dt = date(year, MAY, 31) + rd(weekday=SU(-1))
         if dt == whit_sunday:
-            dt += timedelta(days=+7)
+            dt += td(days=+7)
         self[dt] = "Fetin'ny Reny / Mother's Day"
 
 

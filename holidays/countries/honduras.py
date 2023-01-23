@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import WE
@@ -33,17 +34,13 @@ class Honduras(HolidayBase):
 
         easter_date = easter(year)
         # Maundy Thursday
-        self[
-            easter_date + timedelta(days=-3)
-        ] = "Jueves Santo [Maundy Thursday]"
+        self[easter_date + td(days=-3)] = "Jueves Santo [Maundy Thursday]"
 
         # Good Friday
-        self[easter_date + timedelta(days=-2)] = "Viernes Santo [Good Friday]"
+        self[easter_date + td(days=-2)] = "Viernes Santo [Good Friday]"
 
         # Holy Saturday
-        self[
-            easter_date + timedelta(days=-1)
-        ] = "Sábado de Gloria [Holy Saturday]"
+        self[easter_date + td(days=-1)] = "Sábado de Gloria [Holy Saturday]"
 
         # Panamerican Day
         self[date(year, APR, 14)] = "Día de las Américas [Panamerican Day]"
@@ -72,8 +69,8 @@ class Honduras(HolidayBase):
             holiday_name = "Semana Morazánica [Morazan Weekend]"
             first_wednesday = date(year, OCT, 1) + rd(weekday=WE(+1))
             self[first_wednesday] = holiday_name
-            self[first_wednesday + timedelta(days=+1)] = holiday_name
-            self[first_wednesday + timedelta(days=+2)] = holiday_name
+            self[first_wednesday + td(days=+1)] = holiday_name
+            self[first_wednesday + td(days=+2)] = holiday_name
 
         # Christmas
         self[date(year, DEC, 25)] = "Navidad [Christmas]"

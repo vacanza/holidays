@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 
@@ -32,13 +33,13 @@ class Latvia(HolidayBase):
 
         # Good Friday
         easter_date = easter(year)
-        self[easter_date + timedelta(days=-2)] = "Lielā Piektdiena"
+        self[easter_date + td(days=-2)] = "Lielā Piektdiena"
 
         # Easter
         self[easter_date] = "Lieldienas"
 
         # Easter 2nd day
-        self[easter_date + timedelta(days=+1)] = "Otrās Lieldienas"
+        self[easter_date + td(days=+1)] = "Otrās Lieldienas"
 
         # International Workers' Day
         self[date(year, 5, 1)] = "Darba svētki"

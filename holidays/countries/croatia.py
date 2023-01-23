@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 
@@ -39,10 +40,10 @@ class Croatia(HolidayBase):
         # Easter
         self[easter_date] = "Uskrs"
         # Easter Monday
-        self[easter_date + timedelta(days=+1)] = "Uskrsni ponedjeljak"
+        self[easter_date + td(days=+1)] = "Uskrsni ponedjeljak"
 
         # Corpus Christi
-        self[easter_date + timedelta(days=+60)] = "Tijelovo"
+        self[easter_date + td(days=+60)] = "Tijelovo"
 
         # International Workers' Day
         self[date(year, MAY, 1)] = "Međunarodni praznik rada"

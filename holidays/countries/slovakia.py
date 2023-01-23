@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 
@@ -41,8 +42,8 @@ class Slovakia(HolidayBase):
         )
 
         easter_date = easter(year)
-        self[easter_date + timedelta(days=-2)] = "Veľký piatok"
-        self[easter_date + timedelta(days=+1)] = "Veľkonočný pondelok"
+        self[easter_date + td(days=-2)] = "Veľký piatok"
+        self[easter_date + td(days=+1)] = "Veľkonočný pondelok"
 
         self[date(year, MAY, 1)] = "Sviatok práce"
 

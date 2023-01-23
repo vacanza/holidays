@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 
@@ -30,13 +31,13 @@ class Luxembourg(HolidayBase):
         # Public holidays
         self[date(year, JAN, 1)] = "Neijoerschdag"
         easter_date = easter(year)
-        self[easter_date + timedelta(days=+1)] = "Ouschterméindeg"
+        self[easter_date + td(days=+1)] = "Ouschterméindeg"
         self[date(year, MAY, 1)] = "Dag vun der Aarbecht"
         if year >= 2019:
             # Europe Day: not in legislation yet, but introduced starting 2019
             self[date(year, MAY, 9)] = "Europadag"
-        self[easter_date + timedelta(days=+39)] = "Christi Himmelfaart"
-        self[easter_date + timedelta(days=+50)] = "Péngschtméindeg"
+        self[easter_date + td(days=+39)] = "Christi Himmelfaart"
+        self[easter_date + td(days=+50)] = "Péngschtméindeg"
         self[date(year, JUN, 23)] = "Nationalfeierdag"
         self[date(year, AUG, 15)] = "Léiffrawëschdag"
         self[date(year, NOV, 1)] = "Allerhellgen"

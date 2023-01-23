@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 
@@ -47,7 +48,7 @@ class Slovenia(HolidayBase):
         self[date(year, FEB, 8)] = "Prešernov dan"
 
         # Easter monday is the only easter related work-free day
-        self[easter(year) + timedelta(days=+1)] = "Velikonočni ponedeljek"
+        self[easter(year) + td(days=+1)] = "Velikonočni ponedeljek"
 
         # Day of uprising against occupation
         self[date(year, APR, 27)] = "dan upora proti okupatorju"

@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 
@@ -42,11 +43,11 @@ class Kenya(HolidayBase):
         if self.observed:
             for k, v in list(self.items()):
                 if k.weekday() == SUN and k.year == year:
-                    self[k + timedelta(days=+1)] = v + " (Observed)"
+                    self[k + td(days=+1)] = v + " (Observed)"
 
         easter_date = easter(year)
-        self[easter_date + timedelta(days=-2)] = "Good Friday"
-        self[easter_date + timedelta(days=+1)] = "Easter Monday"
+        self[easter_date + td(days=-2)] = "Good Friday"
+        self[easter_date + td(days=+1)] = "Easter Monday"
 
 
 class KE(Kenya):

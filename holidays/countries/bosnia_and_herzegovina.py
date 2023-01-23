@@ -10,7 +10,8 @@
 #  License: MIT (see LICENSE file)
 #  Copyright: Kateryna Golovanova <kate@kgthreads.com>, 2022
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import EASTER_ORTHODOX, easter
 
@@ -40,17 +41,15 @@ class BosniaAndHerzegovina(HolidayBase):
         self[date(year, JAN, 2)] = "Drugi dan Nove Godine"
 
         if self.observed and date(year, JAN, 1).weekday() == SUN:
-            self[
-                date(year, JAN, 1) + timedelta(days=+2)
-            ] = "Treći dan Nove Godine"
+            self[date(year, JAN, 1) + td(days=+2)] = "Treći dan Nove Godine"
 
         # Labor Day.
         may_1 = date(year, MAY, 1)
         self[may_1] = "Dan rada"
-        self[may_1 + timedelta(days=+1)] = "Drugi dan Dana rada"
+        self[may_1 + td(days=+1)] = "Drugi dan Dana rada"
 
         if self.observed and may_1.weekday() == SUN:
-            self[may_1 + timedelta(days=+2)] = "Treći dan Dana rada"
+            self[may_1 + td(days=+2)] = "Treći dan Dana rada"
 
         if self.subdiv == "FBiH":
             # Independence Day.
@@ -58,24 +57,22 @@ class BosniaAndHerzegovina(HolidayBase):
 
             easter_date = easter(year)
             # Catholic Good Friday.
-            self[easter_date + timedelta(days=-2)] = "Veliki Petak (Katolički)"
+            self[easter_date + td(days=-2)] = "Veliki Petak (Katolički)"
 
             # Catholic Easter.
             self[easter_date] = "Uskrs (Katolički)"
-            self[
-                easter_date + timedelta(days=+1)
-            ] = "Uskrsni ponedjeljak (Katolički)"
+            self[easter_date + td(days=+1)] = "Uskrsni ponedjeljak (Katolički)"
 
             # Corpus Cristi.
             self[
-                easter_date + timedelta(days=+60)
+                easter_date + td(days=+60)
             ] = "Tijelovo (Tijelo i Krv Kristova)"
 
             # Eid al-Fitr.
             # Date of observance is announced yearly, this is an estimate.
             for dt in _islamic_to_gre(year, 10, 1):
                 self[dt] = "Ramazanski Bajram"
-                self[dt + timedelta(days=+1)] = "Drugi Dan Ramazanski Bajram"
+                self[dt + td(days=+1)] = "Drugi Dan Ramazanski Bajram"
 
             # Eid ul-Adha.
             # Date of observance is announced yearly, this is an estimate.
@@ -83,7 +80,7 @@ class BosniaAndHerzegovina(HolidayBase):
             for dt in _islamic_to_gre(year, 12, 10):
                 self[dt] = name
                 for d in range(1, 4):
-                    self[dt + timedelta(days=+d)] = name
+                    self[dt + td(days=+d)] = name
 
             # Islamic New Year.
             for dt in _islamic_to_gre(year, 1, 1):
@@ -119,14 +116,12 @@ class BosniaAndHerzegovina(HolidayBase):
 
             easter_date = easter(year, method=EASTER_ORTHODOX)
             # Orthodox Good Friday.
-            self[
-                easter_date + timedelta(days=-2)
-            ] = "Veliki Petak (Pravoslavni)"
+            self[easter_date + td(days=-2)] = "Veliki Petak (Pravoslavni)"
 
             # Orthodox Easter.
             self[easter_date] = "Vaskrs (Pravoslavni)"
             self[
-                easter_date + timedelta(days=+1)
+                easter_date + td(days=+1)
             ] = "Uskrsni ponedjeljak (Pravoslavni)"
 
             # Victory Day.

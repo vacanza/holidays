@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from holidays.constants import JAN, MAR, MAY, JUL, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
@@ -83,11 +84,11 @@ class Kazakhstan(HolidayBase):
         if self.observed and year >= 2002:
             for k, v in list(self.items()):
                 if self._is_weekend(k) and k.year == year:
-                    next_workday = k + timedelta(days=+1)
+                    next_workday = k + td(days=+1)
                     while self._is_weekend(next_workday) or self.get(
                         next_workday
                     ):
-                        next_workday += timedelta(days=+1)
+                        next_workday += td(days=+1)
                     self[next_workday] = v + " (Observed)"
 
         # Nonworking days (without extending)

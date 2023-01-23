@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import MO, TU, WE, FR
@@ -94,12 +95,12 @@ class Australia(HolidayBase):
 
         # Easter
         easter_date = easter(year)
-        self[easter_date + timedelta(days=-2)] = "Good Friday"
+        self[easter_date + td(days=-2)] = "Good Friday"
         if self.subdiv in {"ACT", "NSW", "NT", "QLD", "SA", "VIC"}:
-            self[easter_date + timedelta(days=-1)] = "Easter Saturday"
+            self[easter_date + td(days=-1)] = "Easter Saturday"
         if self.subdiv in {"ACT", "NSW", "QLD", "VIC"}:
             self[easter_date] = "Easter Sunday"
-        self[easter_date + timedelta(days=+1)] = "Easter Monday"
+        self[easter_date + td(days=+1)] = "Easter Monday"
 
         # Anzac Day
         if year > 1920:

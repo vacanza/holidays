@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import MO
@@ -74,12 +75,12 @@ class Uruguay(HolidayBase):
         # Carnival days
         # revisar este día para futuros casos
         name = "Día de Carnaval [Carnival's Day]"
-        self[easter_date + timedelta(days=-48)] = name
-        self[easter_date + timedelta(days=-47)] = name
+        self[easter_date + td(days=-48)] = name
+        self[easter_date + td(days=-47)] = name
 
         # Holy Week.
-        self[easter_date + timedelta(days=-3)] = "Jueves Santo [Holy Thursday]"
-        self[easter_date + timedelta(days=-2)] = "Viernes Santo [Holy Friday]"
+        self[easter_date + td(days=-3)] = "Jueves Santo [Holy Thursday]"
+        self[easter_date + td(days=-2)] = "Viernes Santo [Holy Friday]"
 
         self[easter_date] = "Día de Pascuas [Easter Day]"
 

@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import FR, SA
@@ -33,12 +34,12 @@ class Finland(HolidayBase):
 
         self[date(year, JAN, 1)] = "Uudenvuodenpäivä"
         self[date(year, JAN, 6)] = "Loppiainen"
-        self[easter_date + timedelta(days=-2)] = "Pitkäperjantai"
+        self[easter_date + td(days=-2)] = "Pitkäperjantai"
         self[easter_date] = "Pääsiäispäivä"
-        self[easter_date + timedelta(days=+1)] = "2. pääsiäispäivä"
+        self[easter_date + td(days=+1)] = "2. pääsiäispäivä"
         self[date(year, MAY, 1)] = "Vappu"
-        self[easter_date + timedelta(days=+39)] = "Helatorstai"
-        self[easter_date + timedelta(days=+49)] = "Helluntaipäivä"
+        self[easter_date + td(days=+39)] = "Helatorstai"
+        self[easter_date + td(days=+49)] = "Helluntaipäivä"
         self[date(year, JUN, 20) + rd(weekday=SA)] = "Juhannuspäivä"
         self[date(year, OCT, 31) + rd(weekday=SA)] = "Pyhäinpäivä"
         self[date(year, DEC, 6)] = "Itsenäisyyspäivä"

@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 
@@ -44,9 +45,9 @@ class Lesotho(HolidayBase):
                 self[date(year, MAY, 25)] = "Africa/Heroes Day"
 
             easter_date = easter(year)
-            self[easter_date + timedelta(days=-2)] = "Good Friday"
-            self[easter_date + timedelta(days=+1)] = "Easter Monday"
-            self[easter_date + timedelta(days=+39)] = "Ascension Day"
+            self[easter_date + td(days=-2)] = "Good Friday"
+            self[easter_date + td(days=+1)] = "Easter Monday"
+            self[easter_date + td(days=+39)] = "Ascension Day"
             self[date(year, MAY, 1)] = "Workers' Day"
 
             if year > 1997:

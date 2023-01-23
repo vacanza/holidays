@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import SU
@@ -78,16 +79,16 @@ class Brazil(HolidayBase):
         self[date(year, DEC, 25)] = "Natal"
 
         easter_date = easter(year)
-        self[easter_date + timedelta(days=-2)] = "Sexta-feira Santa"
+        self[easter_date + td(days=-2)] = "Sexta-feira Santa"
 
         self[easter_date] = "Páscoa"
 
-        self[easter_date + timedelta(days=+60)] = "Corpus Christi"
+        self[easter_date + td(days=+60)] = "Corpus Christi"
 
-        quaresma = easter_date + timedelta(days=-46)
+        quaresma = easter_date + td(days=-46)
         self[quaresma] = "Quarta-feira de cinzas (Início da Quaresma)"
 
-        self[quaresma + timedelta(days=-1)] = "Carnaval"
+        self[quaresma + td(days=-1)] = "Carnaval"
 
         if self.subdiv == "AC":
             self[date(year, JAN, 23)] = "Dia do evangélico"

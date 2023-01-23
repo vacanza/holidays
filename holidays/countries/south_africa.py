@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import MO, FR
@@ -60,12 +61,12 @@ class SouthAfrica(HolidayBase):
         self[date(year, JAN, 1)] = "New Year's Day"
 
         easter_date = easter(year)
-        self[easter_date + timedelta(days=-2)] = "Good Friday"
+        self[easter_date + td(days=-2)] = "Good Friday"
         if year >= 1980:
             name = "Family Day"
         else:
             name = "Easter Monday"
-        self[easter_date + timedelta(days=+1)] = name
+        self[easter_date + td(days=+1)] = name
 
         if year <= 1951:
             name = "Dingaan's Day"
@@ -100,7 +101,7 @@ class SouthAfrica(HolidayBase):
             for k, v in list(self.items()):
                 if k.weekday() != SUN or k.year != year:
                     continue
-                dt = k + timedelta(days=+1)
+                dt = k + td(days=+1)
                 if dt in self:
                     continue
                 self[dt] = v + " (Observed)"
@@ -116,7 +117,7 @@ class SouthAfrica(HolidayBase):
             self[(date(year, MAY, 1) + rd(weekday=FR))] = "Workers' Day"
 
         if year <= 1993:
-            self[easter_date + timedelta(days=+40)] = "Ascension Day"
+            self[easter_date + td(days=+40)] = "Ascension Day"
 
         if year <= 1951:
             self[date(year, MAY, 24)] = "Empire Day"

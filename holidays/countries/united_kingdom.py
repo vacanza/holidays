@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 from typing import Any
 
 from dateutil.easter import easter
@@ -70,9 +71,9 @@ class UnitedKingdom(HolidayBase):
                 name += " [Scotland]"
             self[dt] = name
             if self.observed and self._is_weekend(dt):
-                self[dt + timedelta(days=+2)] = name + " (Observed)"
+                self[dt + td(days=+2)] = name + " (Observed)"
             elif self.observed and dt.weekday() == MON:
-                self[dt + timedelta(days=+1)] = name + " (Observed)"
+                self[dt + td(days=+1)] = name + " (Observed)"
 
         # St. Patrick's Day
         if self.subdiv in {"Northern Ireland", "UK"}:
@@ -110,7 +111,7 @@ class UnitedKingdom(HolidayBase):
         dt = date(year, DEC, 25)
         self[dt] = name
         if self.observed and self._is_weekend(dt):
-            self[dt + timedelta(days=+2)] = name + " (Observed)"
+            self[dt + td(days=+2)] = name + " (Observed)"
 
         # Overwrite to modify country specific holidays
         self._country_specific(year)
@@ -122,14 +123,14 @@ class UnitedKingdom(HolidayBase):
 
         easter_date = easter(year)
         # Good Friday
-        self[easter_date + timedelta(days=-2)] = "Good Friday"
+        self[easter_date + td(days=-2)] = "Good Friday"
 
         # Easter Monday
         if self.subdiv != "Scotland":
             name = "Easter Monday"
             if self.subdiv == "UK":
                 name += " [England/Wales/Northern Ireland]"
-            self[easter_date + timedelta(days=+1)] = name
+            self[easter_date + td(days=+1)] = name
 
         # May Day bank holiday (first Monday in May)
         if year >= 1978:
@@ -162,7 +163,7 @@ class UnitedKingdom(HolidayBase):
         dt = date(year, DEC, 26)
         self[dt] = name
         if self.observed and self._is_weekend(dt):
-            self[dt + timedelta(days=+2)] = name + " (Observed)"
+            self[dt + td(days=+2)] = name + " (Observed)"
 
 
 class UK(UnitedKingdom):

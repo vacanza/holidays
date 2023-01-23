@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import EASTER_ORTHODOX, easter
 
@@ -50,9 +51,7 @@ class Belarus(HolidayBase):
         self[date(year, MAR, 8)] = "День женщин"
 
         # Radunitsa ("Day of Rejoicing")
-        self[
-            easter(year, method=EASTER_ORTHODOX) + timedelta(days=+9)
-        ] = "Радуница"
+        self[easter(year, method=EASTER_ORTHODOX) + td(days=+9)] = "Радуница"
 
         # Labour Day
         self[date(year, MAY, 1)] = "Праздник труда"

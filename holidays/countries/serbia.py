@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import EASTER_ORTHODOX, easter
 
@@ -58,10 +59,10 @@ class Serbia(HolidayBase):
         if self.observed and date(year, NOV, 11).weekday() == SUN:
             self[date(year, NOV, 12)] = name + " (Observed)"
         # Easter
-        self[easter_date + timedelta(days=-2)] = "Велики петак"
-        self[easter_date + timedelta(days=-1)] = "Велика субота"
+        self[easter_date + td(days=-2)] = "Велики петак"
+        self[easter_date + td(days=-1)] = "Велика субота"
         self[easter_date] = "Васкрс"
-        self[easter_date + timedelta(days=+1)] = "Други дан Васкрса"
+        self[easter_date + td(days=+1)] = "Други дан Васкрса"
 
 
 class RS(Serbia):

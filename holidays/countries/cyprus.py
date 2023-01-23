@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import EASTER_ORTHODOX, easter
 
@@ -36,9 +37,7 @@ class Cyprus(HolidayBase):
         self[date(year, JAN, 6)] = "Θεοφάνεια [Epiphany]"
 
         # Clean Monday
-        self[
-            easter_date + timedelta(days=-48)
-        ] = "Καθαρά Δευτέρα [Clean Monday]"
+        self[easter_date + td(days=-48)] = "Καθαρά Δευτέρα [Clean Monday]"
 
         # Greek Independence Day
         self[
@@ -49,24 +48,20 @@ class Cyprus(HolidayBase):
         self[date(year, APR, 1)] = "1η Απριλίου [Cyprus National Day]"
 
         # Good Friday
-        self[
-            easter_date + timedelta(days=-2)
-        ] = "Μεγάλη Παρασκευή [Good Friday]"
+        self[easter_date + td(days=-2)] = "Μεγάλη Παρασκευή [Good Friday]"
 
         # Easter Sunday
         self[easter_date] = "Κυριακή του Πάσχα [Easter Sunday]"
 
         # Easter Monday
-        self[
-            easter_date + timedelta(days=+1)
-        ] = "Δευτέρα του Πάσχα [Easter Monday]"
+        self[easter_date + td(days=+1)] = "Δευτέρα του Πάσχα [Easter Monday]"
 
         # Labour Day
         self[date(year, MAY, 1)] = "Εργατική Πρωτομαγιά [Labour day]"
 
         # Monday of the Holy Spirit
         self[
-            easter_date + timedelta(days=+50)
+            easter_date + td(days=+50)
         ] = "Δευτέρα του Αγίου Πνεύματος [Monday of the Holy Spirit]"
 
         # Assumption of Mary

@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 
@@ -33,7 +34,7 @@ class Estonia(HolidayBase):
         self[date(year, FEB, 24)] = "iseseisvuspäev"
 
         # Good Friday
-        self[easter_date + timedelta(days=-2)] = "suur reede"
+        self[easter_date + td(days=-2)] = "suur reede"
 
         # Easter Sunday
         self[easter_date] = "ülestõusmispühade 1. püha"
@@ -42,7 +43,7 @@ class Estonia(HolidayBase):
         self[date(year, MAY, 1)] = "kevadpüha"
 
         # Pentecost
-        self[easter_date + timedelta(days=+49)] = "nelipühade 1. püha"
+        self[easter_date + td(days=+49)] = "nelipühade 1. püha"
 
         # Victory Day
         self[date(year, JUN, 23)] = "võidupüha"

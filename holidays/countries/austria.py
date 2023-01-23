@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 
@@ -36,11 +37,11 @@ class Austria(HolidayBase):
         self[date(year, JAN, 1)] = "Neujahr"
         self[date(year, JAN, 6)] = "Heilige Drei Könige"
         easter_date = easter(year)
-        self[easter_date + timedelta(days=+1)] = "Ostermontag"
+        self[easter_date + td(days=+1)] = "Ostermontag"
         self[date(year, MAY, 1)] = "Staatsfeiertag"
-        self[easter_date + timedelta(days=+39)] = "Christi Himmelfahrt"
-        self[easter_date + timedelta(days=+50)] = "Pfingstmontag"
-        self[easter_date + timedelta(days=+60)] = "Fronleichnam"
+        self[easter_date + td(days=+39)] = "Christi Himmelfahrt"
+        self[easter_date + td(days=+50)] = "Pfingstmontag"
+        self[easter_date + td(days=+60)] = "Fronleichnam"
         self[date(year, AUG, 15)] = "Mariä Himmelfahrt"
         if 1919 <= year <= 1934:
             self[date(year, NOV, 12)] = "Nationalfeiertag"

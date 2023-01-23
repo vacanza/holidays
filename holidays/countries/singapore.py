@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 from typing import Dict, Iterable, Optional, Tuple, Union
 
 from dateutil.easter import easter
@@ -95,7 +96,7 @@ class Singapore(HolidayBase):
         # Chinese New Year (two days)
         hol_date = self.cnls.lunar_n_y_date(year)
         self[hol_date] = "Chinese New Year"
-        self[hol_date + timedelta(days=+1)] = "Chinese New Year"
+        self[hol_date + td(days=+1)] = "Chinese New Year"
 
         # Hari Raya Puasa
         # aka Eid al-Fitr
@@ -139,7 +140,7 @@ class Singapore(HolidayBase):
                 # Second day of Hari Raya Puasa (up to and including 1968)
                 if year <= 1968:
                     _add_holiday(
-                        hol_date + timedelta(days=+1),
+                        hol_date + td(days=+1),
                         "Second day of Hari Raya Puasa* (*estimated)",
                     )
 
@@ -182,14 +183,14 @@ class Singapore(HolidayBase):
 
         easter_date = easter(year)
         # Good Friday
-        self[easter_date + timedelta(days=-2)] = "Good Friday"
+        self[easter_date + td(days=-2)] = "Good Friday"
 
         if year <= 1968:
             # Holy Saturday
-            self[easter_date + timedelta(days=-1)] = "Holy Saturday"
+            self[easter_date + td(days=-1)] = "Holy Saturday"
 
             # Easter Monday
-            self[easter_date + timedelta(days=+1)] = "Easter Monday"
+            self[easter_date + td(days=+1)] = "Easter Monday"
 
         # Labour Day
         self[date(year, MAY, 1)] = "Labour Day"
@@ -283,9 +284,9 @@ class Singapore(HolidayBase):
         if self.observed and year >= 1998:
             for (hol_date, hol_name) in list(self.items()):
                 if hol_date.year == year and hol_date.weekday() == SUN:
-                    in_lieu_date = hol_date + timedelta(days=+1)
+                    in_lieu_date = hol_date + td(days=+1)
                     while in_lieu_date.year == year and in_lieu_date in self:
-                        in_lieu_date += timedelta(days=+1)
+                        in_lieu_date += td(days=+1)
                     _add_holiday(in_lieu_date, f"{hol_name} (Observed)")
 
         # special case (observed from previuos year)

@@ -11,7 +11,8 @@
 
 
 import warnings
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 from typing import Tuple
 
 # Installation: pip install korean_lunar_calendar
@@ -66,9 +67,9 @@ class SouthKorea(HolidayBase):
         dt = self.get_solar_date(year, 1, 1)
         new_year_date = date(dt.year, dt.month, dt.day)
 
-        self[new_year_date + timedelta(days=-1)] = preceding_day_lunar
+        self[new_year_date + td(days=-1)] = preceding_day_lunar
         self[new_year_date] = name
-        self[new_year_date + timedelta(days=+1)] = second_day_lunar
+        self[new_year_date + td(days=+1)] = second_day_lunar
 
         if self.observed and year >= 2015:
             for cur_rd, cur_name in [
@@ -76,7 +77,7 @@ class SouthKorea(HolidayBase):
                 (0, name),
                 (+1, second_day_lunar),
             ]:
-                target_date = new_year_date + timedelta(days=cur_rd)
+                target_date = new_year_date + td(days=cur_rd)
                 is_alt, alt_date = self.get_next_first_non_holiday(
                     cur_name, target_date
                 )
@@ -166,9 +167,9 @@ class SouthKorea(HolidayBase):
         dt = self.get_solar_date(year, 8, 15)
         chuseok_date = date(dt.year, dt.month, dt.day)
 
-        self[chuseok_date + timedelta(days=-1)] = preceding_day_chuseok
+        self[chuseok_date + td(days=-1)] = preceding_day_chuseok
         self[chuseok_date] = name
-        self[chuseok_date + timedelta(days=+1)] = second_day_chuseok
+        self[chuseok_date + td(days=+1)] = second_day_chuseok
 
         if self.observed and year >= 2014:
             for cur_rd, cur_name in [
@@ -176,7 +177,7 @@ class SouthKorea(HolidayBase):
                 (0, name),
                 (+1, second_day_chuseok),
             ]:
-                target_date = chuseok_date + timedelta(days=cur_rd)
+                target_date = chuseok_date + td(days=cur_rd)
                 is_alt, alt_date = self.get_next_first_non_holiday(
                     cur_name, target_date
                 )
@@ -267,7 +268,7 @@ class SouthKorea(HolidayBase):
             cur in self and name != self[cur]
         )  # Exclude if already a holiday
         while check_1 or check_2:
-            cur += timedelta(days=+1)
+            cur += td(days=+1)
             check_1 = cur.weekday() in target_weekday
             check_2 = cur in self and name != self[cur]
 

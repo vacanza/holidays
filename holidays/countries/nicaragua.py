@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 
@@ -34,11 +35,9 @@ class Nicaragua(HolidayBase):
         self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
         # Maundy Thursday
         easter_date = easter(year)
-        self[
-            easter_date + timedelta(days=-3)
-        ] = "Jueves Santo [Maundy Thursday]"
+        self[easter_date + td(days=-3)] = "Jueves Santo [Maundy Thursday]"
         # Good Friday
-        self[easter_date + timedelta(days=-2)] = "Viernes Santo [Good Friday]"
+        self[easter_date + td(days=-2)] = "Viernes Santo [Good Friday]"
         # Labor Day
         self[date(year, MAY, 1)] = "Día del Trabajo [Labour Day]"
         # Revolution Day

@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import EASTER_ORTHODOX, easter
 
@@ -53,7 +54,7 @@ class Ukraine(HolidayBase):
             self[easter_date] = "Великдень (Пасха)"
 
             # Holy trinity
-            self[easter_date + timedelta(days=+49)] = "Трійця"
+            self[easter_date + td(days=+49)] = "Трійця"
 
         # Labour Day
         name = "День міжнародної солідарності трудящих"
@@ -129,11 +130,11 @@ class Ukraine(HolidayBase):
                         or k >= date(1999, APR, 23)
                     )
                 ):
-                    next_workday = k + timedelta(days=+1)
+                    next_workday = k + td(days=+1)
                     while self._is_weekend(next_workday) or self.get(
                         next_workday
                     ):
-                        next_workday += timedelta(days=+1)
+                        next_workday += td(days=+1)
                     self[next_workday] = "Вихідний за " + v
 
         # USSR holidays

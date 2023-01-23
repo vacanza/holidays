@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import MO
@@ -41,9 +42,9 @@ class Zimbabwe(HolidayBase):
             ] = "Robert Gabriel Mugabe National Youth Day"
 
         easter_date = easter(year)
-        self[easter_date + timedelta(days=-2)] = "Good Friday"
-        self[easter_date + timedelta(days=-1)] = "Easter Saturday"
-        self[easter_date + timedelta(days=+1)] = "Easter Monday"
+        self[easter_date + td(days=-2)] = "Good Friday"
+        self[easter_date + td(days=-1)] = "Easter Saturday"
+        self[easter_date + td(days=+1)] = "Easter Monday"
 
         self[date(year, APR, 18)] = "Independence Day"
 
@@ -55,7 +56,7 @@ class Zimbabwe(HolidayBase):
         self[zimbabwe_heroes_day] = "Zimbabwe Heroes' Day"
 
         # Tuesday after 2nd Monday of August
-        defence_forces_day = zimbabwe_heroes_day + timedelta(days=+1)
+        defence_forces_day = zimbabwe_heroes_day + td(days=+1)
         self[defence_forces_day] = "Defense Forces Day"
 
         self[date(year, DEC, 22)] = "Unity Day"
@@ -65,9 +66,9 @@ class Zimbabwe(HolidayBase):
         if self.observed:
             for k, v in list(self.items()):
                 if k.weekday() == SUN and k.year == year:
-                    dt = k + timedelta(days=+1)
+                    dt = k + td(days=+1)
                     while self.get(dt):
-                        dt += timedelta(days=+1)
+                        dt += td(days=+1)
                     self[dt] = v + " (Observed)"
 
 

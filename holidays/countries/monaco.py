@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 
@@ -32,7 +33,7 @@ class Monaco(HolidayBase):
         def _add_with_observed(hol_date: date, hol_name: str) -> None:
             self[hol_date] = hol_name
             if self.observed and hol_date.weekday() == SUN:
-                self[hol_date + timedelta(days=+1)] = f"{hol_name} (Observed)"
+                self[hol_date + td(days=+1)] = f"{hol_name} (Observed)"
 
         super()._populate(year)
 
@@ -47,9 +48,7 @@ class Monaco(HolidayBase):
         easter_date = easter(year)
 
         # Easter Monday
-        self[
-            easter_date + timedelta(days=+1)
-        ] = "Le lundi de Pâques [Easter Monday]"
+        self[easter_date + td(days=+1)] = "Le lundi de Pâques [Easter Monday]"
 
         # Labour Day
         _add_with_observed(
@@ -57,19 +56,15 @@ class Monaco(HolidayBase):
         )
 
         # Ascension's Day
-        self[
-            easter_date + timedelta(days=+39)
-        ] = "L'Ascension [Ascension's Day]"
+        self[easter_date + td(days=+39)] = "L'Ascension [Ascension's Day]"
 
         # Whit Monday
         self[
-            easter_date + timedelta(days=+50)
+            easter_date + td(days=+50)
         ] = "Le lundi de Pentecôte [Whit Monday]"
 
         # Corpus Christi
-        self[
-            easter_date + timedelta(days=+60)
-        ] = "La Fête Dieu [Corpus Christi]"
+        self[easter_date + td(days=+60)] = "La Fête Dieu [Corpus Christi]"
 
         # Assumption's Day
         _add_with_observed(
@@ -89,7 +84,7 @@ class Monaco(HolidayBase):
         # Immaculate Conception's Day
         dt = date(year, DEC, 8)
         if year >= 2019 and dt.weekday() == SUN:
-            dt += timedelta(days=+1)
+            dt += td(days=+1)
         self[dt] = "L'Immaculée Conception [Immaculate Conception's Day]"
 
         # Christmas Day

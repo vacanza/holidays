@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 
@@ -30,15 +31,15 @@ class Denmark(HolidayBase):
         easter_date = easter(year)
         # Public holidays
         self[date(year, JAN, 1)] = "Nytårsdag"
-        self[easter_date + timedelta(days=-7)] = "Palmesøndag"
-        self[easter_date + timedelta(days=-3)] = "Skærtorsdag"
-        self[easter_date + timedelta(days=-2)] = "Langfredag"
+        self[easter_date + td(days=-7)] = "Palmesøndag"
+        self[easter_date + td(days=-3)] = "Skærtorsdag"
+        self[easter_date + td(days=-2)] = "Langfredag"
         self[easter_date] = "Påskedag"
-        self[easter_date + timedelta(days=+1)] = "Anden påskedag"
-        self[easter_date + timedelta(days=+26)] = "Store bededag"
-        self[easter_date + timedelta(days=+39)] = "Kristi himmelfartsdag"
-        self[easter_date + timedelta(days=+49)] = "Pinsedag"
-        self[easter_date + timedelta(days=+50)] = "Anden pinsedag"
+        self[easter_date + td(days=+1)] = "Anden påskedag"
+        self[easter_date + td(days=+26)] = "Store bededag"
+        self[easter_date + td(days=+39)] = "Kristi himmelfartsdag"
+        self[easter_date + td(days=+49)] = "Pinsedag"
+        self[easter_date + td(days=+50)] = "Anden pinsedag"
         self[date(year, DEC, 25)] = "Juledag"
         self[date(year, DEC, 26)] = "Anden juledag"
 

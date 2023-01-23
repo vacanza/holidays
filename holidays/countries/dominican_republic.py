@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import MO
@@ -59,7 +60,7 @@ class DominicanRepublic(HolidayBase):
         self[date(year, FEB, 27)] = "Día de Independencia [Independence Day]"
 
         # Good Friday
-        self[easter(year) + timedelta(days=-2)] = "Viernes Santo [Good Friday]"
+        self[easter(year) + td(days=-2)] = "Viernes Santo [Good Friday]"
 
         # Labor Day
         labor_day = self.__change_day_by_law(date(year, MAY, 1), (3, 4, 6))

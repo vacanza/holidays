@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 
@@ -86,17 +87,17 @@ class France(HolidayBase):
             "Martinique",
             "Polynésie Française",
         }:
-            self[easter_date + timedelta(days=-2)] = "Vendredi saint"
+            self[easter_date + td(days=-2)] = "Vendredi saint"
 
         if self.subdiv == "Alsace-Moselle":
             self[date(year, DEC, 26)] = "Deuxième jour de Noël"
 
         if year >= 1886:
-            self[easter_date + timedelta(days=+1)] = "Lundi de Pâques"
-            self[easter_date + timedelta(days=+50)] = "Lundi de Pentecôte"
+            self[easter_date + td(days=+1)] = "Lundi de Pâques"
+            self[easter_date + td(days=+50)] = "Lundi de Pentecôte"
 
         if year >= 1802:
-            self[easter_date + timedelta(days=+39)] = "Ascension"
+            self[easter_date + td(days=+39)] = "Ascension"
             self[date(year, AUG, 15)] = "Assomption"
             self[date(year, NOV, 1)] = "Toussaint"
 

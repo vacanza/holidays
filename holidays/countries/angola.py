@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 
@@ -41,11 +42,11 @@ class Angola(HolidayBase):
                 self[date(year, DEC, 31)] = "Ano novo (Day off)"
 
         easter_date = easter(year)
-        self[(easter_date + timedelta(days=-2))] = "Sexta-feira Santa"
+        self[(easter_date + td(days=-2))] = "Sexta-feira Santa"
 
         # carnival is the Tuesday before Ash Wednesday
         # which is 40 days before easter excluding sundays
-        self[(easter_date + timedelta(days=-47))] = "Carnaval"
+        self[(easter_date + td(days=-47))] = "Carnaval"
 
         self[date(year, FEB, 4)] = "Dia do Início da Luta Armada"
         self[date(year, MAR, 8)] = "Dia Internacional da Mulher"
@@ -73,12 +74,12 @@ class Angola(HolidayBase):
                     continue
                 if year <= 2017:
                     if k.weekday() == SUN:
-                        self[k + timedelta(days=+1)] = v + " (Observed)"
+                        self[k + td(days=+1)] = v + " (Observed)"
                 else:
                     if k.weekday() == TUE and k != date(year, JAN, 1):
-                        self[k + timedelta(days=-1)] = v + " (Day off)"
+                        self[k + td(days=-1)] = v + " (Day off)"
                     elif k.weekday() == THU:
-                        self[k + timedelta(days=+1)] = v + " (Day off)"
+                        self[k + td(days=+1)] = v + " (Day off)"
 
 
 class AO(Angola):

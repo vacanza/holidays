@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import MO, TH, FR
@@ -63,9 +64,7 @@ class NewYorkStockExchange(HolidayBase):
         # needs to be observed on Friday (Dec 31 of previous year).
         dec_31 = date(year, DEC, 31)
         if dec_31.weekday() == FRI:
-            self._set_observed_date(
-                dec_31 + timedelta(days=+1), "New Year's Day"
-            )
+            self._set_observed_date(dec_31 + td(days=+1), "New Year's Day")
 
         # MLK - observed 1998 - 3rd Monday of Jan
         if year >= 1998:
@@ -90,7 +89,7 @@ class NewYorkStockExchange(HolidayBase):
         # GOOD FRIDAY - closed every year except 1898, 1906, and 1907
         e = easter(year)
         if year not in {1898, 1906, 1907}:
-            self[e + timedelta(days=-2)] = "Good Friday"
+            self[e + td(days=-2)] = "Good Friday"
 
         # MEM DAY (May 30) - closed every year since 1873
         # last Mon in May since 1971
@@ -129,7 +128,7 @@ class NewYorkStockExchange(HolidayBase):
         # closed until 1969, then closed pres years 1972-80
         if year <= 1968 or year in {1972, 1976, 1980}:
             self[
-                date(year, NOV, 1) + rd(weekday=MO) + timedelta(days=+1)
+                date(year, NOV, 1) + rd(weekday=MO) + td(days=+1)
             ] = "Election Day"
 
         # VETERAN'S DAY: Nov 11 - closed 1918, 1921, 1934-1953
@@ -180,8 +179,7 @@ class NewYorkStockExchange(HolidayBase):
             begin = date(year, JUL, 31)
             end = date(year, NOV, 27)
             for d in (
-                begin + timedelta(days=n)
-                for n in range((end - begin).days + 1)
+                begin + td(days=n) for n in range((end - begin).days + 1)
             ):
                 if self._is_weekend(d):
                     continue
@@ -212,8 +210,7 @@ class NewYorkStockExchange(HolidayBase):
             begin = date(year, MAR, 6)
             end = date(year, MAR, 14)
             for d in (
-                begin + timedelta(days=n)
-                for n in range((end - begin).days + 1)
+                begin + td(days=n) for n in range((end - begin).days + 1)
             ):
                 if self._is_weekend(d):
                     continue
@@ -242,8 +239,7 @@ class NewYorkStockExchange(HolidayBase):
             begin = date(year, JUN, 12)
             end = date(year, DEC, 31)
             for d in (
-                begin + timedelta(days=n)
-                for n in range((end - begin).days + 1)
+                begin + td(days=n) for n in range((end - begin).days + 1)
             ):
                 if d.weekday() != WED:  # Wednesday special holiday
                     continue

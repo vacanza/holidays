@@ -10,7 +10,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
@@ -158,7 +159,7 @@ class Italy(HolidayBase):
         self[date(year, JAN, 6)] = "Epifania del Signore"
         easter_date = easter(year)
         self[easter_date] = "Pasqua di Resurrezione"
-        self[easter_date + timedelta(days=+1)] = "Lunedì dell'Angelo"
+        self[easter_date + td(days=+1)] = "Lunedì dell'Angelo"
         if year >= 1946:
             self[date(year, APR, 25)] = "Festa della Liberazione"
         self[date(year, MAY, 1)] = "Festa dei Lavoratori"
@@ -223,9 +224,7 @@ class Italy(HolidayBase):
             if self.subdiv in {"BT", "Trani"}:
                 self[date(year, MAY, 3)] = "San Nicola Pellegrino"
             elif self.subdiv == "BZ":
-                self[
-                    easter_date + timedelta(days=+50)
-                ] = "Lunedì di Pentecoste"
+                self[easter_date + td(days=+50)] = "Lunedì di Pentecoste"
                 self[date(year, AUG, 15)] = "Maria Santissima Assunta"
             elif self.subdiv == "CA":
                 self[date(year, OCT, 30)] = "San Saturnino di Cagliari"

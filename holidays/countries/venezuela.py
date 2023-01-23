@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 
@@ -42,18 +43,16 @@ class Venezuela(HolidayBase):
 
         easter_date = easter(year)
         self[
-            easter_date + timedelta(days=-48)
+            easter_date + td(days=-48)
         ] = "Lunes de Carnaval [Monday of Carnival]"
 
         self[
-            easter_date + timedelta(days=-47)
+            easter_date + td(days=-47)
         ] = "Martes de Carnaval [Tuesday of Carnival]"
 
-        self[
-            easter_date + timedelta(days=-3)
-        ] = "Jueves Santo [Maundy Thursday]"
+        self[easter_date + td(days=-3)] = "Jueves Santo [Maundy Thursday]"
 
-        self[easter_date + timedelta(days=-2)] = "Viernes Santo [Good Friday]"
+        self[easter_date + td(days=-2)] = "Viernes Santo [Good Friday]"
 
         # Note: not sure about the start year, but this event happened in 1811
         if year >= 1811:

@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import relativedelta as rd
@@ -36,8 +37,8 @@ class Malawi(HolidayBase):
         self[date(year, JAN, 1)] = "New Year's Day"
 
         easter_date = easter(year)
-        self[easter_date + timedelta(days=-2)] = "Good Friday"
-        self[easter_date + timedelta(days=+1)] = "Easter Monday"
+        self[easter_date + td(days=-2)] = "Good Friday"
+        self[easter_date + td(days=+1)] = "Easter Monday"
 
         self[date(year, JAN, 15)] = "John Chilembwe Day"
         self[date(year, MAR, 3)] = "Martyrs Day"
