@@ -206,7 +206,7 @@ class TestSpain(unittest.TestCase):
             (6, 6): {"CT"},
             (6, 9): {"MC", "RI"},
             (6, 16): {"CM"},
-            (6, 24): {"CT", "VC"},
+            (6, 24): {"CT", "GA", "VC"},
             (7, 9): {"CE"},
             (7, 11): {"ML"},
             (7, 25): {"GA", "NC", "MD", "PV"},
@@ -248,6 +248,115 @@ class TestSpain(unittest.TestCase):
                     prov in fest_provs,
                     "Failed date `%s`, province `%s`: %s"
                     % (date(2022, *fest_date), prov, ", ".join(fest_provs)),
+                )
+
+    def test_variable_days_in_2023(self):
+        province_days = {
+            (1, 2): [
+                "AN",
+                "AR",
+                "AS",
+                "CL",
+                "MC",
+            ],
+            (1, 6): [
+                "AN",
+                "AR",
+                "AS",
+                "CB",
+                "CE",
+                "CL",
+                "CM",
+                "CN",
+                "CT",
+                "EX",
+                "GA",
+                "IB",
+                "MC",
+                "MD",
+                "ML",
+                "NC",
+                "PV",
+                "RI",
+                "VC",
+            ],
+            (2, 21): {"EX"},
+            (3, 20): {"MD"},
+            (4, 6): [
+                "AN",
+                "AR",
+                "AS",
+                "CB",
+                "CE",
+                "CL",
+                "CM",
+                "CN",
+                "CT",
+                "EX",
+                "GA",
+                "IB",
+                "MC",
+                "MD",
+                "ML",
+                "NC",
+                "PV",
+                "RI",
+                "VC",
+            ],
+            (4, 10): [
+                "IB",
+                "CT",
+                "VC",
+                "CN",
+                "PV",
+                "RI",
+            ],
+            (4, 21): {"ML"},
+            (5, 8): {"CE"},
+            (5, 17): {"GA"},
+            (6, 29): {"CE", "ML"},
+            (6, 24): {"CT", "VC"},
+            (6, 8): {"CM"},
+            (7, 25): {"CN", "PV", "GA"},
+            (9, 15): {"CB"},
+            (12, 25): [
+                "AN",
+                "AR",
+                "AS",
+                "CB",
+                "CE",
+                "CL",
+                "CM",
+                "CN",
+                "CT",
+                "EX",
+                "GA",
+                "IB",
+                "MC",
+                "MD",
+                "ML",
+                "NC",
+                "PV",
+                "RI",
+                "VC",
+            ],
+            (12, 26): [
+                "CT",
+            ],
+        }
+
+        observed_prov_holidays = {
+            prov: holidays.ES(observed=True, subdiv=prov)
+            for prov in holidays.ES.subdivisions
+        }
+
+        for fest_date, fest_provs in province_days.items():
+            for prov, prov_holidays in observed_prov_holidays.items():
+                self.assertEqual(
+                    date(2023, *fest_date) in prov_holidays,
+                    prov in fest_provs,
+                    "Failed date `%s`, province `%s`: %s"
+                    % (date(2023, *fest_date), prov, ", ".join(fest_provs)),
                 )
 
     def test_change_of_province_specific_days(self):
