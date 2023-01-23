@@ -216,6 +216,8 @@ class Spain(HolidayBase):
             self._is_observed(date(year, DEC, 26), "San Esteban")
         elif self.subdiv == "EX":
             self._is_observed(date(year, SEP, 8), "Día de Extremadura")
+            if year == 2023:
+                self._is_observed(date(year, FEB, 21), "Carnaval")
         elif self.subdiv == "GA":
             if year >= 2022:
                 self._is_observed(
@@ -228,7 +230,7 @@ class Spain(HolidayBase):
                 self._is_observed(date(year, DEC, 26), "San Esteban")
         elif self.subdiv == "MD":
             self._is_observed(date(year, MAY, 2), "Día de Comunidad de Madrid")
-            if year >= 2022:
+            if year == 2022:
                 self._is_observed(
                     date(year, JUL, 25), "Día de Santiago Apóstol"
                 )
@@ -256,7 +258,6 @@ class Spain(HolidayBase):
                 self._is_observed(
                     date(year, JUL, 25), "Día de Santiago Apóstol"
                 )
-            self._is_observed(date(year, SEP, 27), "Día de Navarra")
         elif self.subdiv == "PV":
             if year >= 2022:
                 self._is_observed(

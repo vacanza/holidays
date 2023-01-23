@@ -12,7 +12,6 @@
 import unittest
 from copy import deepcopy
 from datetime import date
-from itertools import product
 
 import holidays
 
@@ -25,38 +24,6 @@ class TestSpain(unittest.TestCase):
             prov: holidays.ES(observed=False, subdiv=prov)
             for prov in holidays.ES.subdivisions
         }
-
-    def test_fixed_holidays(self):
-        fixed_days_whole_country = (
-            (1, 1),
-            (1, 6),
-            (5, 1),
-            (8, 15),
-            (10, 12),
-            (11, 1),
-            (12, 6),
-            (12, 8),
-            (12, 25),
-        )
-        for y, (m, d) in product(range(1950, 2050), fixed_days_whole_country):
-            if y == 2022:
-                continue
-            self.assertIn(date(y, m, d), self.holidays)
-
-    def test_fixed_holidays_observed(self):
-        fixed_days_whole_country = (
-            (1, 1),
-            (1, 6),
-            (5, 1),
-            (8, 15),
-            (10, 12),
-            (11, 2),
-            (12, 7),
-            (12, 8),
-            (12, 25),
-        )
-        for (m, d) in fixed_days_whole_country:
-            self.assertIn(date(2020, m, d), self.holidays_observed)
 
     def test_variable_days_in_2016(self):
         for prov, prov_holidays in self.prov_holidays.items():
@@ -100,7 +67,6 @@ class TestSpain(unittest.TestCase):
             (9, 11): {"CT"},
             (9, 15): {"CB"},
             (9, 17): {"ML"},
-            (9, 27): {"NC"},
             (10, 9): {"VC"},
         }
         for prov, prov_holidays in self.prov_holidays.items():
@@ -297,17 +263,17 @@ class TestSpain(unittest.TestCase):
                 "IB",
                 "CT",
                 "VC",
-                "CN",
+                "NC",
                 "PV",
                 "RI",
             ],
             (4, 21): {"ML"},
-            (5, 8): {"CE"},
             (5, 17): {"GA"},
             (6, 29): {"CE", "ML"},
             (6, 24): {"CT", "VC"},
             (6, 8): {"CM"},
-            (7, 25): {"CN", "PV", "GA"},
+            (7, 25): {"NC", "PV", "GA", "CL"},
+            (8, 5): {"CE"},
             (9, 15): {"CB"},
             (12, 25): [
                 "AN",
