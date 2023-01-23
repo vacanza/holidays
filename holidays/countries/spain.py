@@ -53,18 +53,13 @@ class Spain(HolidayBase):
     def _populate(self, year):
         super()._populate(year)
 
-        if (
-            year == 2023
-            and self.subdiv
-            and self.subdiv
-            in {
-                "AN",
-                "AR",
-                "AS",
-                "CL",
-                "MC",
-            }
-        ):
+        if year == 2023 and self.subdiv in {
+            "AN",
+            "AR",
+            "AS",
+            "CL",
+            "MC",
+        }:
             self._is_observed(date(year, JAN, 1), "Año nuevo")
         if year != 2023:
             self._is_observed(date(year, JAN, 1), "Año nuevo")
@@ -72,50 +67,50 @@ class Spain(HolidayBase):
 
         easter_date = easter(year)
 
-        if (
-            year < 2015
-            and self.subdiv
-            and self.subdiv
-            in {
-                "AR",
-                "CL",
-                "CM",
-                "EX",
-                "GA",
-                "MC",
-                "MD",
-                "ML",
-                "NC",
-                "PV",
-                "VC",
-            }
-        ):
+        if year < 2015 and self.subdiv in {
+            "AR",
+            "CL",
+            "CM",
+            "EX",
+            "GA",
+            "MC",
+            "MD",
+            "ML",
+            "NC",
+            "PV",
+            "VC",
+        }:
             self._is_observed(date(year, MAR, 19), "San José")
-        elif (
-            year == 2015
-            and self.subdiv
-            and self.subdiv in {"CM", "MC", "MD", "ML", "NC", "PV", "VC"}
-        ):
+        elif year == 2015 and self.subdiv in {
+            "CM",
+            "MC",
+            "MD",
+            "ML",
+            "NC",
+            "PV",
+            "VC",
+        }:
             self._is_observed(date(year, MAR, 19), "San José")
-        elif (
-            year == 2016
-            and self.subdiv
-            and self.subdiv in {"MC", "ML", "PV", "VC"}
-        ):
+        elif year == 2016 and self.subdiv in {"MC", "ML", "PV", "VC"}:
             self._is_observed(date(year, MAR, 19), "San José")
         elif year == 2017 and self.subdiv in {"PV"}:
             self._is_observed(date(year, MAR, 19), "San José")
-        elif (
-            2018 <= year <= 2019
-            and self.subdiv
-            and self.subdiv in {"GA", "MC", "NC", "PV", "VC"}
-        ):
+        elif 2018 <= year <= 2019 and self.subdiv in {
+            "GA",
+            "MC",
+            "NC",
+            "PV",
+            "VC",
+        }:
             self._is_observed(date(year, MAR, 19), "San José")
-        elif (
-            2020 <= year <= 2021
-            and self.subdiv
-            and self.subdiv in {"CM", "GA", "MC", "NC", "PV", "VC"}
-        ):
+        elif 2020 <= year <= 2021 and self.subdiv in {
+            "CM",
+            "GA",
+            "MC",
+            "NC",
+            "PV",
+            "VC",
+        }:
             self._is_observed(date(year, MAR, 19), "San José")
         elif year == 2022 and self.subdiv and self.subdiv == "VC":
             self._is_observed(date(year, MAR, 19), "San José")
