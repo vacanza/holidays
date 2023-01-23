@@ -150,10 +150,6 @@ class TestSpain(unittest.TestCase):
                         date(year, 3, 19) in prov_holidays,
                         prov in {"CM", "GA", "MC", "NC", "PV", "VC"},
                     )
-                self.assertEqual(
-                    date(year, 6, 24) in prov_holidays,
-                    prov in {"CT", "VC"},
-                )
 
                 year_province_days = deepcopy(province_days)
 
@@ -210,7 +206,7 @@ class TestSpain(unittest.TestCase):
             (6, 6): {"CT"},
             (6, 9): {"MC", "RI"},
             (6, 16): {"CM"},
-            (6, 24): {"CT", "GA", "VC"},
+            (6, 24): {"CT", "VC"},
             (7, 9): {"CE"},
             (7, 11): {"ML"},
             (7, 25): {"GA", "NC", "MD", "PV"},
