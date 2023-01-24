@@ -10,6 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from .albania import AL, ALB, Albania
+from .andorra import AD, AND, Andorra
 from .angola import AO, AGO, Angola
 from .argentina import AR, ARG, Argentina
 from .armenia import AM, ARM, Armenia
