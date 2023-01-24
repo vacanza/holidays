@@ -152,9 +152,9 @@ class Spain(HolidayBase):
             self._is_observed(date(year, MAY, 1), "Día del Trabajador")
         if year != 2022:
             self._is_observed(date(year, MAY, 1), "Día del Trabajador")
-        if year == 2023 and self.subdiv in {"CT", "VC"}:
-            self._is_observed(date(year, JUN, 24), "San Juan")
-        if year != 2023 and self.subdiv in {"CT", "GA", "VC"}:
+        if self.subdiv in {"CT", "VC"} or (
+            year != 2023 and self.subdiv == "GA"
+        ):
             self._is_observed(date(year, JUN, 24), "San Juan")
         self._is_observed(date(year, AUG, 15), "Asunción de la Virgen")
         self._is_observed(date(year, OCT, 12), "Día de la Hispanidad")
