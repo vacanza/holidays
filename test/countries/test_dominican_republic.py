@@ -9,72 +9,87 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
-from datetime import date
-
-import holidays
+from holidays.countries.dominican_republic import DO, DOM, DominicanRepublic
+from test.common import TestCase
 
 
-class TestDominicanRepublic(unittest.TestCase):
+class TestDominicanRepublic(TestCase):
     def setUp(self):
-        self.do_holidays = holidays.DO()
+        self.holidays = DominicanRepublic()
 
-    def test_do_holidays_2020(self):
-        year = 2020
+    def test_country_aliases(self):
+        self.assertCountryAliases(DominicanRepublic, DO, DOM)
 
-        # New Year's Day
-        self.assertIn(date(year, 1, 1), self.do_holidays)
-        # Epiphany
-        self.assertIn(date(year, 1, 6), self.do_holidays)
-        # Lady of Altagracia
-        self.assertIn(date(year, 1, 21), self.do_holidays)
-        # Juan Pablo Duarte Day
-        self.assertIn(date(year, 1, 26), self.do_holidays)
-        # Independence Day
-        self.assertIn(date(year, 2, 27), self.do_holidays)
-        # Good Friday
-        self.assertIn(date(year, 4, 10), self.do_holidays)
-        # Labor Day
-        self.assertIn(date(year, 5, 4), self.do_holidays)
-        # Feast of Corpus Christi
-        self.assertIn(date(year, 6, 11), self.do_holidays)
-        # Restoration Day
-        self.assertIn(date(year, 8, 16), self.do_holidays)
-        # Our Lady of Mercedes Day
-        self.assertIn(date(year, 9, 24), self.do_holidays)
-        # Constitution Day
-        self.assertIn(date(year, 11, 9), self.do_holidays)
-        # Christmas Day
-        self.assertIn(date(year, 12, 25), self.do_holidays)
+    def test_2020(self):
+        self.assertHolidaysEqual(
+            DominicanRepublic(years=2020),
+            ("2020-01-01", "Año Nuevo [New Year's Day]"),
+            ("2020-01-06", "Día de los Santos Reyes [Epiphany]"),
+            ("2020-01-21", "Día de la Altagracia [Lady of Altagracia]"),
+            ("2020-01-26", "Día de Duarte [Juan Pablo Duarte Day]"),
+            ("2020-02-27", "Día de Independencia [Independence Day]"),
+            ("2020-04-10", "Viernes Santo [Good Friday]"),
+            ("2020-05-04", "Día del Trabajo [Labor Day]"),
+            ("2020-06-11", "Corpus Christi [Feast of Corpus Christi]"),
+            ("2020-08-16", "Día de la Restauración [Restoration Day]"),
+            ("2020-09-24", "Día de las Mercedes [Our Lady of Mercedes Day]"),
+            ("2020-11-09", "Día de la Constitución [Constitution Day]"),
+            ("2020-12-25", "Día de Navidad [Christmas Day]"),
+        )
 
-        # Change day by law test
-        # New Year's Day
-        self.assertIn(date(2019, 1, 1), self.do_holidays)
+    def test_2021(self):
+        self.assertHolidaysEqual(
+            DominicanRepublic(years=2021),
+            ("2021-01-01", "Año Nuevo [New Year's Day]"),
+            ("2021-01-04", "Día de los Santos Reyes [Epiphany]"),
+            ("2021-01-21", "Día de la Altagracia [Lady of Altagracia]"),
+            ("2021-01-25", "Día de Duarte [Juan Pablo Duarte Day]"),
+            ("2021-02-27", "Día de Independencia [Independence Day]"),
+            ("2021-04-02", "Viernes Santo [Good Friday]"),
+            ("2021-05-01", "Día del Trabajo [Labor Day]"),
+            ("2021-06-03", "Corpus Christi [Feast of Corpus Christi]"),
+            ("2021-08-16", "Día de la Restauración [Restoration Day]"),
+            ("2021-09-24", "Día de las Mercedes [Our Lady of Mercedes Day]"),
+            ("2021-11-06", "Día de la Constitución [Constitution Day]"),
+            ("2021-12-25", "Día de Navidad [Christmas Day]"),
+        )
+
+    def test_2022(self):
+        self.assertHolidaysEqual(
+            DominicanRepublic(years=2022),
+            ("2022-01-01", "Año Nuevo [New Year's Day]"),
+            ("2022-01-10", "Día de los Santos Reyes [Epiphany]"),
+            ("2022-01-21", "Día de la Altagracia [Lady of Altagracia]"),
+            ("2022-01-24", "Día de Duarte [Juan Pablo Duarte Day]"),
+            ("2022-02-27", "Día de Independencia [Independence Day]"),
+            ("2022-04-15", "Viernes Santo [Good Friday]"),
+            ("2022-05-02", "Día del Trabajo [Labor Day]"),
+            ("2022-06-16", "Corpus Christi [Feast of Corpus Christi]"),
+            ("2022-08-15", "Día de la Restauración [Restoration Day]"),
+            ("2022-09-24", "Día de las Mercedes [Our Lady of Mercedes Day]"),
+            ("2022-11-06", "Día de la Constitución [Constitution Day]"),
+            ("2022-12-25", "Día de Navidad [Christmas Day]"),
+        )
 
     def test_change_day_by_law(self):
-        year = 1996
-        self.do_holidays = holidays.DO(years=[year])
-        # New Year's Day
-        self.assertIn(date(year, 1, 1), self.do_holidays)
-        # Epiphany
-        self.assertIn(date(year, 1, 6), self.do_holidays)
-        # Lady of Altagracia
-        self.assertIn(date(year, 1, 21), self.do_holidays)
-        # Juan Pablo Duarte Day
-        self.assertIn(date(year, 1, 26), self.do_holidays)
-        # Independence Day
-        self.assertIn(date(year, 2, 27), self.do_holidays)
-        # Good Friday
-        self.assertIn(date(year, 4, 5), self.do_holidays)
-        # Labor Day
-        self.assertIn(date(year, 5, 1), self.do_holidays)
-        # Feast of Corpus Christi
-        self.assertIn(date(year, 6, 11), self.do_holidays)
-        # Restoration Day
-        self.assertIn(date(year, 8, 16), self.do_holidays)
-        # Our Lady of Mercedes Day
-        self.assertIn(date(year, 9, 24), self.do_holidays)
-        # Constitution Day
-        self.assertIn(date(year, 11, 6), self.do_holidays)
-        # Christmas Day
-        self.assertIn(date(year, 12, 25), self.do_holidays)
+        self.assertHoliday(
+            "1996-01-06",
+            "1997-01-06",
+            "1998-01-05",
+            "1998-01-26",
+            "1999-01-25",
+            "1996-05-01",
+            "1998-05-04",
+            "1996-11-06",
+            "1997-11-10",
+            "2000-08-16",
+            "2001-08-20",
+        )
+
+        self.assertNoHoliday(
+            "1998-01-06",
+            "1999-01-26",
+            "1998-05-01",
+            "1997-11-06",
+            "2001-08-16",
+        )
