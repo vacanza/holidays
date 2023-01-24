@@ -115,6 +115,7 @@ from .united_kingdom import GB, UK, GBR, UnitedKingdom
 from .united_states import US, USA, UnitedStates
 from .uruguay import UY, URY, Uruguay
 from .uzbekistan import UZ, UZB, Uzbekistan
+from .vatican_city import VA, VAT, VaticanCity
 from .venezuela import VE, VEN, Venezuela
 from .vietnam import VN, VNM, Vietnam
 from .zambia import ZM, ZMB, Zambia
