@@ -21,8 +21,7 @@ class TestAndorra(TestCase):
         self.assertCountryAliases(Andorra, AD, AND)
 
     def test_2022(self):
-        self.assertHolidaysEqual(
-            Andorra(years=2022),
+        self.assertHolidays(
             ("2022-01-01", "New Year's Day"),
             ("2022-01-06", "Epiphany"),
             ("2022-03-01", "Carnival"),
@@ -86,8 +85,7 @@ class TestAndorra(TestCase):
         )
 
     def test_2023(self):
-        self.assertHolidaysEqual(
-            Andorra(years=2023),
+        self.assertHolidays(
             ("2023-01-01", "New Year's Day"),
             ("2023-01-06", "Epiphany"),
             ("2023-02-21", "Carnival"),

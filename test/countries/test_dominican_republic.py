@@ -21,8 +21,7 @@ class TestDominicanRepublic(TestCase):
         self.assertCountryAliases(DominicanRepublic, DO, DOM)
 
     def test_2020(self):
-        self.assertHolidaysEqual(
-            DominicanRepublic(years=2020),
+        self.assertHolidays(
             ("2020-01-01", "Año Nuevo [New Year's Day]"),
             ("2020-01-06", "Día de los Santos Reyes [Epiphany]"),
             ("2020-01-21", "Día de la Altagracia [Lady of Altagracia]"),
@@ -38,8 +37,7 @@ class TestDominicanRepublic(TestCase):
         )
 
     def test_2021(self):
-        self.assertHolidaysEqual(
-            DominicanRepublic(years=2021),
+        self.assertHolidays(
             ("2021-01-01", "Año Nuevo [New Year's Day]"),
             ("2021-01-04", "Día de los Santos Reyes [Epiphany]"),
             ("2021-01-21", "Día de la Altagracia [Lady of Altagracia]"),
@@ -55,8 +53,7 @@ class TestDominicanRepublic(TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidaysEqual(
-            DominicanRepublic(years=2022),
+        self.assertHolidays(
             ("2022-01-01", "Año Nuevo [New Year's Day]"),
             ("2022-01-10", "Día de los Santos Reyes [Epiphany]"),
             ("2022-01-21", "Día de la Altagracia [Lady of Altagracia]"),
