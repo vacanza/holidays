@@ -35,7 +35,7 @@ class DominicanRepublic(HolidayBase):
             if holiday.weekday() in {TUE, WED}:
                 holiday += rd(weekday=MO(-1))
             elif holiday.weekday() in latest_days:
-                holiday += rd(weekday=MO(1))
+                holiday += rd(weekday=MO(+1))
         return holiday
 
     def _populate(self, year):
