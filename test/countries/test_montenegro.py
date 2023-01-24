@@ -21,8 +21,7 @@ class TestMontenegro(TestCase):
         self.assertCountryAliases(Montenegro, ME, MNE)
 
     def test_2021(self):
-        self.assertHolidaysEqual(
-            Montenegro(years=2021),
+        self.assertHolidays(
             ("2021-01-01", "New Year's Day"),
             ("2021-01-02", "New Year's Day"),
             ("2021-01-06", "Orthodox Christmas Eve"),
@@ -38,8 +37,7 @@ class TestMontenegro(TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidaysEqual(
-            Montenegro(years=2022),
+        self.assertHolidays(
             ("2022-01-01", "New Year's Day"),
             ("2022-01-02", "New Year's Day"),
             ("2022-01-03", "New Year's Day (Observed)"),
@@ -59,8 +57,7 @@ class TestMontenegro(TestCase):
         )
 
     def test_2023(self):
-        self.assertHolidaysEqual(
-            Montenegro(years=2023),
+        self.assertHolidays(
             ("2023-01-01", "New Year's Day"),
             ("2023-01-02", "New Year's Day (Observed)"),
             ("2023-01-03", "New Year's Day (Observed)"),

@@ -21,8 +21,7 @@ class TestVaticanCity(TestCase):
         self.assertCountryAliases(VaticanCity, VA, VAT)
 
     def test_2022(self):
-        self.assertHolidaysEqual(
-            VaticanCity(years=2022),
+        self.assertHolidays(
             ("2022-01-01", "Solemnity of Mary Day"),
             ("2022-01-06", "Epiphany"),
             ("2022-02-11", "Lateran Treaty Day"),
@@ -42,8 +41,7 @@ class TestVaticanCity(TestCase):
         )
 
     def test_2023(self):
-        self.assertHolidaysEqual(
-            VaticanCity(years=2023),
+        self.assertHolidays(
             ("2023-01-01", "Solemnity of Mary Day"),
             ("2023-01-06", "Epiphany"),
             ("2023-02-11", "Lateran Treaty Day"),
