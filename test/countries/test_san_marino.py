@@ -21,8 +21,7 @@ class TestSanMarino(TestCase):
         self.assertCountryAliases(SanMarino, SM, SMR)
 
     def test_2022(self):
-        self.assertHolidaysEqual(
-            SanMarino(years=2022),
+        self.assertHolidays(
             ("2022-01-01", "New Year's Day"),
             ("2022-01-06", "Epiphany"),
             ("2022-02-05", "Feast of Saint Agatha"),
@@ -44,8 +43,7 @@ class TestSanMarino(TestCase):
         )
 
     def test_2023(self):
-        self.assertHolidaysEqual(
-            SanMarino(years=2023),
+        self.assertHolidays(
             ("2023-01-01", "New Year's Day"),
             ("2023-01-06", "Epiphany"),
             ("2023-02-05", "Feast of Saint Agatha"),

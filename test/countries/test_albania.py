@@ -21,8 +21,7 @@ class TestAlbania(TestCase):
         self.assertCountryAliases(Albania, AL, ALB)
 
     def test_2022(self):
-        self.assertHolidaysEqual(
-            Albania(years=2022),
+        self.assertHolidays(
             ("2022-01-01", "New Year's Day"),
             ("2022-01-02", "New Year's Day"),
             ("2022-01-03", "New Year's Day (Observed)"),
@@ -46,8 +45,7 @@ class TestAlbania(TestCase):
         )
 
     def test_2023(self):
-        self.assertHolidaysEqual(
-            Albania(years=2023),
+        self.assertHolidays(
             ("2023-01-01", "New Year's Day"),
             ("2023-01-02", "New Year's Day, New Year's Day (Observed)"),
             ("2023-03-14", "Summer Day"),
