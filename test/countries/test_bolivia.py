@@ -10,255 +10,243 @@
 #  License: MIT (see LICENSE file)
 #  Copyright: Kateryna Golovanova <kate@kgthreads.com>, 2022
 
-import unittest
-from datetime import date
-
-import holidays
+from holidays.countries.bolivia import Bolivia, BO, BOL
+from test.common import TestCase
 
 
-class TestBO(unittest.TestCase):
+class TestBO(TestCase):
     def setUp(self):
-        self.holidays = holidays.BO(observed=False)
-        self.holidays_observed = holidays.BO(observed=True)
+        self.holidays = Bolivia()
+        self.holidays_no_observed = Bolivia(observed=False)
+
+    def test_country_aliases(self):
+        self.assertCountryAliases(Bolivia, BO, BOL)
 
     def test_new_years(self):
-        for dt in (date(2010, 12, 31), date(2017, 1, 2)):
-            self.assertNotIn(dt, self.holidays)
-
-        for dt in (date(2022, 1, 1), date(2021, 1, 1)):
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Año Nuevo")
-
-        for dt in (date(2017, 1, 2), date(2023, 1, 2)):
-            self.assertIn(dt, self.holidays_observed)
-            self.assertEqual(
-                self.holidays_observed[dt], "Año Nuevo (Observed)"
-            )
+        self.assertNoHoliday("1824-01-01")
+        self.assertHolidaysName(
+            "Año Nuevo", (f"{year}-01-01" for year in range(2000, 2050))
+        )
+        dt = (
+            "2006-01-02",
+            "2012-01-02",
+            "2017-01-02",
+            "2023-01-02",
+            "2034-01-02",
+        )
+        self.assertHolidaysName("Año Nuevo (Observed)", dt)
+        self.assertNoHoliday(self.holidays_no_observed, dt)
 
     def test_plurinational_state_foundation_day(self):
-        for dt in (date(2009, 1, 22), date(2017, 1, 23)):
-            self.assertNotIn(dt, self.holidays)
-
-        for dt in (date(2010, 1, 22), date(2022, 1, 22)):
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(
-                self.holidays[dt],
-                "Nacimiento del Estado Plurinacional de Bolivia",
-            )
+        name = "Nacimiento del Estado Plurinacional de Bolivia"
+        self.assertHoliday(f"{year}-01-22" for year in range(2010, 2050))
+        self.assertNoHoliday(f"{year}-01-22" for year in range(2000, 2010))
+        for year in range(2000, 2010):
+            self.assertNoHolidayName(Bolivia(years=year), name)
 
     def test_la_tablada(self):
-        self.assertNotIn(date(2010, 4, 15), self.holidays)
+        name = "La Tablada"
+        t_holidays = Bolivia(subdiv="T")
 
-        t_holidays = holidays.BO(subdiv="T")
-        for dt in (date(2010, 4, 16), date(2010, 4, 14)):
-            self.assertNotIn(dt, t_holidays)
-
-        for dt in (date(2015, 4, 15), date(2016, 4, 15)):
-            self.assertIn(dt, t_holidays)
-            self.assertEqual(t_holidays[dt], "La Tablada")
-
-    def test_la_tablada_and_viernes_santo(self):
-        t_holidays = holidays.BO(subdiv="T")
-        dt = date(2022, 4, 15)
-        self.assertIn(dt, t_holidays)
-        self.assertEqual(t_holidays[dt], "La Tablada, Viernes Santo")
+        for year in range(2000, 2050):
+            self.assertNoHolidayName(Bolivia(years=year), name)
+            if year not in {2022, 2033, 2044}:
+                self.assertNoHoliday(f"{year}-04-15")
+                self.assertHolidaysName(name, t_holidays, f"{year}-04-15")
+            else:
+                self.assertHolidaysName(
+                    "La Tablada, Viernes Santo", t_holidays, f"{year}-04-15"
+                )
 
     def test_carnival_in_oruro(self):
-        self.assertNotIn(date(2020, 2, 21), self.holidays)
+        name = "Carnaval de Oruro"
+        for year in range(2000, 2050):
+            self.assertNoHolidayName(Bolivia(years=year), name)
 
-        o_holidays = holidays.BO(subdiv="O")
-        for dt in (date(2020, 2, 22), date(2020, 2, 20)):
-            self.assertNotIn(dt, o_holidays)
+        for dt in (
+            "2015-02-13",
+            "2016-02-05",
+            "2017-02-24",
+            "2018-02-09",
+            "2019-03-01",
+            "2020-02-21",
+            "2021-02-12",
+            "2022-02-25",
+            "2023-02-17",
+            "2024-02-09",
+        ):
+            self.assertNoHoliday(dt)
+            self.assertHolidaysName(name, Bolivia(subdiv="O"), dt)
 
-        for dt in (date(2020, 2, 21), date(2021, 2, 12)):
-            self.assertIn(dt, o_holidays)
-            self.assertEqual(o_holidays[dt], "Carnaval de Oruro")
-
-    def test_carnival_monday(self):
-        for dt in (date(2020, 2, 23), date(2021, 2, 14)):
-            self.assertNotIn(dt, self.holidays)
-
-        for dt in (date(2020, 2, 24), date(2023, 2, 20)):
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Feriado por Carnaval")
-
-        for dt in (date(2020, 2, 25), date(2023, 2, 21)):
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(
-                self.holidays[dt], "Feriado por Carnaval (Observed)"
-            )
+    def test_carnival(self):
+        self.assertHolidaysName(
+            "Feriado por Carnaval",
+            "2010-02-15",
+            "2010-02-16",
+            "2015-02-16",
+            "2015-02-17",
+            "2019-03-04",
+            "2019-03-05",
+            "2020-02-24",
+            "2020-02-25",
+            "2021-02-15",
+            "2021-02-16",
+            "2022-02-28",
+            "2022-03-01",
+            "2023-02-20",
+            "2023-02-21",
+            "2024-02-12",
+            "2024-02-13",
+        )
 
     def test_good_friday(self):
-        for dt in (date(2022, 4, 20), date(2021, 4, 1)):
-            self.assertNotIn(dt, self.holidays)
-
-        for dt in (date(2022, 4, 15), date(2023, 4, 7)):
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Viernes Santo")
+        self.assertHolidaysName(
+            "Viernes Santo",
+            "2015-04-03",
+            "2016-03-25",
+            "2017-04-14",
+            "2018-03-30",
+            "2019-04-19",
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+        )
 
     def test_labor_day(self):
-        for dt in (date(2010, 5, 2), date(2017, 4, 30)):
-            self.assertNotIn(dt, self.holidays)
-
-        for dt in (date(2021, 5, 1), date(2022, 5, 1)):
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Dia del trabajo")
-
-        for dt in (date(2022, 5, 2), date(2016, 5, 2)):
-            self.assertIn(dt, self.holidays_observed)
-            self.assertEqual(
-                self.holidays_observed[dt], "Dia del trabajo (Observed)"
-            )
+        self.assertHolidaysName(
+            "Día del trabajo", (f"{year}-05-01" for year in range(2000, 2050))
+        )
+        name = "Día del trabajo (Observed)"
+        dt = (
+            "2005-05-02",
+            "2011-05-02",
+            "2016-05-02",
+            "2022-05-02",
+            "2033-05-02",
+        )
+        self.assertHolidaysName(name, dt)
+        self.assertNoHoliday(self.holidays_no_observed, dt)
 
     def test_chuquisaca_day(self):
-        self.assertNotIn(date(2020, 5, 25), self.holidays)
-
-        h_holidays = holidays.BO(subdiv="H")
-        for dt in (date(2020, 5, 24), date(2020, 5, 26)):
-            self.assertNotIn(dt, h_holidays)
-
-        for dt in (date(2020, 5, 25), date(2021, 5, 25)):
-            self.assertIn(dt, h_holidays)
-            self.assertEqual(
-                h_holidays[dt], "Día del departamento de Chuquisaca"
-            )
+        name = "Día del departamento de Chuquisaca"
+        for year in range(2000, 2050):
+            self.assertNoHolidayName(Bolivia(years=year), name)
+            self.assertNoHoliday(f"{year}-05-25")
+            self.assertHolidaysName(name, Bolivia(subdiv="H"), f"{year}-05-25")
 
     def test_corpus_christi(self):
-        for dt in (date(2020, 6, 10), date(2020, 6, 12)):
-            self.assertNotIn(dt, self.holidays)
-
-        for dt in (date(2020, 6, 11), date(2021, 6, 3)):
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Corpus Christi")
+        dt = (
+            "2015-06-04",
+            "2016-05-26",
+            "2017-06-15",
+            "2018-05-31",
+            "2019-06-20",
+            "2020-06-11",
+            "2021-06-03",
+            "2022-06-16",
+            "2023-06-08",
+            "2024-05-30",
+        )
+        self.assertHolidaysName("Corpus Christi", dt)
 
     def test_andean_new_year(self):
-        for dt in (date(2009, 6, 21), date(2010, 6, 20)):
-            self.assertNotIn(dt, self.holidays)
-
-        for dt in (date(2010, 6, 21), date(2011, 6, 21)):
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Año Nuevo Andino")
-
-        for dt in (date(2020, 6, 22), date(2015, 6, 22)):
-            self.assertIn(dt, self.holidays_observed)
-            self.assertEqual(
-                self.holidays_observed[dt], "Año Nuevo Andino (Observed)"
-            )
+        self.assertHoliday(f"{year}-06-21" for year in range(2010, 2050))
+        self.assertNoHoliday(f"{year}-06-21" for year in range(2000, 2010))
+        for year in range(2000, 2010):
+            self.assertNoHolidayName(Bolivia(years=year), "Año Nuevo Andino")
+        dt = (
+            "2015-06-22",
+            "2020-06-22",
+            "2026-06-22",
+            "2037-06-22",
+            "2043-06-22",
+        )
+        self.assertHolidaysName("Año Nuevo Andino (Observed)", dt)
+        self.assertNoHoliday(self.holidays_no_observed, dt)
 
     def test_la_paz_day(self):
-        self.assertNotIn(date(2020, 7, 16), self.holidays)
-
-        l_holidays = holidays.BO(subdiv="L")
-        for dt in (date(2020, 7, 15), date(2020, 7, 17)):
-            self.assertNotIn(dt, l_holidays)
-
-        for dt in (date(2020, 7, 16), date(2021, 7, 16)):
-            self.assertIn(dt, l_holidays)
-            self.assertEqual(l_holidays[dt], "Día del departamento de La Paz")
-
-    def test_agrarian_reform_day(self):
-        for dt in (date(1936, 8, 2), date(2020, 8, 1), date(2021, 8, 3)):
-            self.assertNotIn(dt, self.holidays)
-
-        for dt in (date(1937, 8, 2), date(2020, 8, 2), date(2021, 8, 2)):
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Día de la Revolución Agraria")
+        name = "Día del departamento de La Paz"
+        for year in range(2000, 2050):
+            self.assertNoHolidayName(Bolivia(years=year), name)
+            self.assertNoHoliday(f"{year}-07-16")
+            self.assertHolidaysName(name, Bolivia(subdiv="L"), f"{year}-07-16")
 
     def test_independence_day(self):
-        for dt in (date(1824, 8, 6), date(1825, 8, 5), date(2020, 8, 7)):
-            self.assertNotIn(dt, self.holidays)
-
-        for dt in (date(1825, 8, 6), date(2020, 8, 6)):
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Dia de la Patria")
-
-        for dt in (date(2023, 8, 7), date(2017, 8, 7)):
-            self.assertIn(dt, self.holidays_observed)
-            self.assertEqual(
-                self.holidays_observed[dt], "Dia de la Patria (Observed)"
-            )
+        self.assertNoHoliday("1824-08-06")
+        self.assertHolidaysName(
+            "Día de la Patria", (f"{year}-08-06" for year in range(2000, 2050))
+        )
+        dt = (
+            "2000-08-07",
+            "2006-08-07",
+            "2017-08-07",
+            "2023-08-07",
+            "2028-08-07",
+        )
+        self.assertHolidaysName("Día de la Patria (Observed)", dt)
+        self.assertNoHoliday(self.holidays_no_observed, dt)
 
     def test_cochabamba_day(self):
-        self.assertNotIn(date(2020, 9, 14), self.holidays)
-
-        c_holidays = holidays.BO(subdiv="C")
-        for dt in (date(2021, 9, 13), date(2021, 9, 15)):
-            self.assertNotIn(dt, c_holidays)
-
-        for dt in (date(2020, 9, 14), date(2021, 9, 14)):
-            self.assertIn(dt, c_holidays)
-            self.assertEqual(
-                c_holidays[dt], "Día del departamento de Cochabamba"
-            )
+        name = "Día del departamento de Cochabamba"
+        for year in range(2000, 2050):
+            self.assertNoHolidayName(Bolivia(years=year), name)
+            self.assertNoHoliday(f"{year}-09-14")
+            self.assertHolidaysName(name, Bolivia(subdiv="C"), f"{year}-09-14")
 
     def test_santa_cruz_day(self):
-        self.assertNotIn(date(2020, 9, 24), self.holidays)
-
-        s_holidays = holidays.BO(subdiv="S")
-        for dt in (date(2021, 9, 23), date(2021, 9, 25)):
-            self.assertNotIn(dt, s_holidays)
-
-        for dt in (date(2020, 9, 24), date(2021, 9, 24)):
-            self.assertIn(dt, s_holidays)
-            self.assertEqual(
-                s_holidays[dt], "Día del departamento de Santa Cruz"
-            )
+        name = "Día del departamento de Santa Cruz"
+        for year in range(2000, 2050):
+            self.assertNoHolidayName(Bolivia(years=year), name)
+            self.assertNoHoliday(f"{year}-09-24")
+            self.assertHolidaysName(name, Bolivia(subdiv="S"), f"{year}-09-24")
 
     def test_pando_day(self):
-        self.assertNotIn(date(2020, 10, 11), self.holidays)
-
-        n_holidays = holidays.BO(subdiv="N")
-        for dt in (date(2021, 10, 10), date(2021, 9, 12)):
-            self.assertNotIn(dt, n_holidays)
-
-        for dt in (date(2020, 10, 11), date(2021, 10, 11)):
-            self.assertIn(dt, n_holidays)
-            self.assertEqual(n_holidays[dt], "Dia del departamento de Pando")
+        name = "Día del departamento de Pando"
+        for year in range(2000, 2050):
+            self.assertNoHolidayName(Bolivia(years=year), name)
+            self.assertNoHoliday(f"{year}-09-24")
+            self.assertHolidaysName(name, Bolivia(subdiv="N"), f"{year}-09-24")
 
     def test_all_souls_day(self):
-        for dt in (date(2021, 11, 1), date(2021, 11, 3)):
-            self.assertNotIn(dt, self.holidays)
-
-        for dt in (date(2020, 11, 2), date(2021, 11, 2)):
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Todos Santos")
-
-        for dt in (date(2025, 11, 3), date(2014, 11, 3)):
-            self.assertIn(dt, self.holidays_observed)
-            self.assertEqual(
-                self.holidays_observed[dt], "Todos Santos (Observed)"
-            )
+        self.assertHolidaysName(
+            "Todos Santos", (f"{year}-11-02" for year in range(2000, 2050))
+        )
+        dt = (
+            "2008-11-03",
+            "2014-11-03",
+            "2025-11-03",
+            "2031-11-03",
+            "2036-11-03",
+        )
+        self.assertHolidaysName("Todos Santos (Observed)", dt)
+        self.assertNoHoliday(self.holidays_no_observed, dt)
 
     def test_potosi_day(self):
-        self.assertNotIn(date(2020, 11, 10), self.holidays)
-
-        p_holidays = holidays.BO(subdiv="P")
-        for dt in (date(2021, 11, 9), date(2021, 11, 11)):
-            self.assertNotIn(dt, p_holidays)
-
-        for dt in (date(2020, 11, 10), date(2021, 11, 10)):
-            self.assertIn(dt, p_holidays)
-            self.assertEqual(p_holidays[dt], "Dia del departamento de Potosí")
+        name = "Día del departamento de Potosí"
+        for year in range(2000, 2050):
+            self.assertNoHolidayName(Bolivia(years=year), name)
+            self.assertNoHoliday(f"{year}-11-10")
+            self.assertHolidaysName(name, Bolivia(subdiv="P"), f"{year}-11-10")
 
     def test_beni_day(self):
-        self.assertNotIn(date(2020, 11, 18), self.holidays)
-
-        b_holidays = holidays.BO(subdiv="B")
-        for dt in (date(2021, 11, 17), date(2021, 11, 19)):
-            self.assertNotIn(dt, b_holidays)
-
-        for dt in (date(2020, 11, 18), date(2021, 11, 18)):
-            self.assertIn(dt, b_holidays)
-            self.assertEqual(b_holidays[dt], "Dia del departamento de Beni")
+        name = "Día del departamento de Beni"
+        for year in range(2000, 2050):
+            self.assertNoHolidayName(Bolivia(years=year), name)
+            self.assertNoHoliday(f"{year}-11-18")
+            self.assertHolidaysName(name, Bolivia(subdiv="B"), f"{year}-11-18")
 
     def test_christmas_day(self):
-        for dt in (date(2010, 12, 24), date(2017, 12, 26)):
-            self.assertNotIn(dt, self.holidays)
-
-        for dt in (date(2017, 12, 25), date(2022, 12, 25)):
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Navidad")
-
-        for dt in (date(2022, 12, 26), date(2016, 12, 26)):
-            self.assertIn(dt, self.holidays_observed)
-            self.assertEqual(self.holidays_observed[dt], "Navidad (Observed)")
+        self.assertHolidaysName(
+            "Navidad", (f"{year}-12-25" for year in range(2000, 2050))
+        )
+        dt = (
+            "2005-12-26",
+            "2011-12-26",
+            "2016-12-26",
+            "2022-12-26",
+            "2033-12-26",
+        )
+        self.assertHolidaysName("Navidad (Observed)", dt)
+        self.assertNoHoliday(self.holidays_no_observed, dt)
