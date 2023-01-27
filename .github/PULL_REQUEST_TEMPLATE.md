@@ -22,7 +22,7 @@ The PR description goes here.
 - [ ] Supported country holidays update (fixes discrepancy with country official holidays)
 - [ ] New country holidays support (thank you!)
 - [ ] Existing code/tests/processes improvement (best practices, refactoring, optimization)
-- [ ] Dependency upgrade
+- [ ] Dependency upgrade (version update)
 - [ ] Bugfix (non-breaking change which fixes an issue)
 - [ ] Breaking change (a code change causing existing functionality to break)
 - [ ] New feature (adds functionality to python-holidays)
@@ -34,7 +34,7 @@ The PR description goes here.
 -->
 
 - [ ] I've followed the [contributing guidelines][contributing-guidelines]
-- [ ] This PR is being filed against `beta` branch of the repository
+- [ ] This PR is filed against `beta` branch of the repository
 - [ ] This PR doesn't contain any merge conflicts
 - [ ] The code style looks good (`pre-commit run -a`)
 - [ ] I've added tests to verify that the new code works
