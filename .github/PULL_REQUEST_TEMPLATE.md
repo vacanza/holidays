@@ -39,8 +39,8 @@ The PR description goes here.
 - [ ] The code style looks good (`pre-commit run -a`)
 - [ ] I've added tests to verify that the new code works
 - [ ] All tests pass locally (`python -m pytest .`)
-- [ ] The proposed change doesn't decrease existing tests coverage level
-- [ ] The related [documentation][docs] has been added/updated (if needed)
+- [ ] The proposed change doesn't decrease current tests coverage level
+- [ ] The related [documentation][docs] (if any) has been added/updated
 
 <!--
   Thanks again for your contribution!
