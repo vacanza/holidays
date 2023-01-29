@@ -64,7 +64,6 @@ class TestEgypt(unittest.TestCase):
 
     def test_hijri_based(self):
         if importlib.util.find_spec("hijri_converter"):
-            self.holidays = holidays.EG(years=[2010])
             self.assertIn(date(2019, 6, 5), self.holidays)
             self.assertIn(date(2019, 8, 10), self.holidays)
             self.assertIn(date(2019, 8, 11), self.holidays)
@@ -76,6 +75,8 @@ class TestEgypt(unittest.TestCase):
             # eid_aladha
             self.assertIn(date(2019, 8, 11), self.holidays)
             # islamic_new_year
+            self.assertIn(date(2008, 1, 10), self.holidays)
+            self.assertIn(date(2008, 12, 29), self.holidays)
             self.assertIn(date(2019, 8, 31), self.holidays)
             # eid_elfetr_2010
             self.assertIn(date(2010, 9, 10), self.holidays)
