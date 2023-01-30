@@ -227,14 +227,28 @@ class TestArgentina(TestCase):
             )
 
     def test_2022(self):
-        self.assertHolidaysEqual(
-            Argentina(observed=False, years=2022),
-            ("2022-02-28", "Día de Carnaval [Carnival's Day]"),
-            ("2022-03-01", "Día de Carnaval [Carnival's Day]"),
+        self.assertHolidays(
+            (
+                "2022-01-01",
+                "Año Nuevo [New Year's Day]",
+            ),
+            (
+                "2022-02-28",
+                "Día de Carnaval [Carnival's Day]",
+            ),
+            (
+                "2022-03-01",
+                "Día de Carnaval [Carnival's Day]",
+            ),
             (
                 "2022-03-24",
                 "Día Nacional de la Memoria por la Verdad y la Justicia "
                 "[Memory's National Day for the Truth and Justice]",
+            ),
+            (
+                "2022-04-02",
+                "Día del Veterano y de los Caidos en la Guerra de Malvinas "
+                "[Veterans Day and the Fallen in the Malvinas War]",
             ),
             (
                 "2022-04-14",
@@ -243,6 +257,14 @@ class TestArgentina(TestCase):
             (
                 "2022-04-15",
                 "Semana Santa (Viernes Santo) [Holy day (Holy Friday)]",
+            ),
+            (
+                "2022-04-17",
+                "Día de Pascuas [Easter Day]",
+            ),
+            (
+                "2022-05-01",
+                "Día del Trabajo [Labour Day]",
             ),
             (
                 "2022-05-25",
@@ -260,6 +282,10 @@ class TestArgentina(TestCase):
                 "[Day Pass to the Immortality of General D. Manuel Belgrano]",
             ),
             (
+                "2022-07-09",
+                "Día de la Independencia [Independence Day]",
+            ),
+            (
                 "2022-08-17",
                 "Día Pase a la Inmortalidad del General D. José de San Martin "
                 "[Day Pass to the Immortality of General D. José de San "
@@ -270,6 +296,16 @@ class TestArgentina(TestCase):
                 "Día del Respeto a la Diversidad Cultural "
                 "[Respect for Cultural Diversity Day]",
             ),
-            ("2022-12-08", "La Inmaculada Concepción [Immaculate Conception]"),
-            ("2022-12-25", "Navidad [Christmas]"),
+            (
+                "2022-11-20",
+                "Día Nacional de la Soberanía [National Sovereignty Day]",
+            ),
+            (
+                "2022-12-08",
+                "La Inmaculada Concepción [Immaculate Conception]",
+            ),
+            (
+                "2022-12-25",
+                "Navidad [Christmas]",
+            ),
         )
