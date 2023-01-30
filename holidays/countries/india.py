@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -12,8 +12,12 @@
 import warnings
 from datetime import date
 
+from dateutil.easter import easter
+from dateutil.relativedelta import relativedelta as rd
+
 from holidays.constants import JAN, MAR, APR, MAY, JUN, AUG, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
+from holidays.utils import _islamic_to_gre
 
 
 class India(HolidayBase):
@@ -249,6 +253,37 @@ class India(HolidayBase):
         if year in holi_dates:
             hol_date = date(year, *holi_dates[year])
             self[hol_date] = "Holi"
+
+        # Islamic holidays
+        # Day of Ashura (10th day of 1st Islamic month)
+        name = "Day of Ashura"
+        for dt in _islamic_to_gre(year, 1, 10):
+            self[dt] = f"{name}* (*estimated)"
+
+        # Mawlid, Birth of the Prophet (12th day of 3rd Islamic month)
+        name = "Mawlid"
+        for dt in _islamic_to_gre(year, 3, 12):
+            self[dt] = f"{name}* (*estimated)"
+
+        # Eid ul-Fitr (1st and 2nd day of 10th Islamic month)
+        name = "Eid ul-Fitr"
+        for dt in _islamic_to_gre(year, 10, 1):
+            self[dt] = f"{name}* (*estimated)"
+            self[dt + rd(days=+1)] = f"{name}* (*estimated)"
+
+        # Eid al-Adha, i.e., Feast of the Sacrifice
+        name = "Eid al-Adha"
+        for dt in _islamic_to_gre(year, 12, 10):
+            self[dt] = f"{name}* (*estimated)"
+            self[dt + rd(days=+1)] = f"{name}* (*estimated)"
+
+        # Christian holidays
+        easter_date = easter(year)
+        self[easter_date + rd(days=-7)] = "Palm Sunday"
+        self[easter_date + rd(days=-2)] = "Good Friday"
+        self[easter_date] = "Easter Sunday"
+        self[easter_date + rd(days=+49)] = "Feast of Pentecost"
+        self[date(year, DEC, 25)] = "Christmas Day"
 
 
 class IN(India):

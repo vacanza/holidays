@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -68,8 +68,8 @@ class Honduras(HolidayBase):
             holiday_name = "Semana Morazánica [Morazan Weekend]"
             first_wednesday = date(year, OCT, 1) + rd(weekday=WE(+1))
             self[first_wednesday] = holiday_name
-            self[first_wednesday + rd(days=1)] = holiday_name
-            self[first_wednesday + rd(days=2)] = holiday_name
+            self[first_wednesday + rd(days=+1)] = holiday_name
+            self[first_wednesday + rd(days=+2)] = holiday_name
 
         # Christmas
         self[date(year, DEC, 25)] = "Navidad [Christmas]"

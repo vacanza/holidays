@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -29,7 +29,6 @@ class Portugal(HolidayBase):
     # Only the 18 mainland districts have been included
     # `Ext` represents the national holidays most people have off
     subdivisions = [
-        "Ext",
         "01",
         "02",
         "03",
@@ -48,6 +47,7 @@ class Portugal(HolidayBase):
         "16",
         "17",
         "18",
+        "Ext",
     ]
 
     def _populate(self, year):
@@ -59,7 +59,7 @@ class Portugal(HolidayBase):
 
         # carnival is no longer a holiday, but some companies let workers off.
         # @todo recollect the years in which it was a public holiday
-        # self[e - rd(days=47)] = "Carnaval"
+        # self[e + rd(days=-47)] = "Carnaval"
         self[easter_date + rd(days=-2)] = "Sexta-feira Santa"
         self[easter_date] = "Páscoa"
 

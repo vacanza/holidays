@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -77,11 +77,12 @@ class TestAngola(TestCase):
         self.assertNoHolidays(Angola(years=1974))
 
     def test_2022(self):
-        self.assertHolidaysEqual(
-            Angola(observed=False, years=2022),
+        self.assertHolidays(
             ("2022-01-01", "Ano novo"),
             ("2022-02-04", "Dia do Início da Luta Armada"),
+            ("2022-02-28", "Carnaval (Day off)"),
             ("2022-03-01", "Carnaval"),
+            ("2022-03-07", "Dia Internacional da Mulher (Day off)"),
             ("2022-03-08", "Dia Internacional da Mulher"),
             ("2022-03-23", "Dia da Libertação da África Austral"),
             ("2022-04-04", "Dia da Paz e Reconciliação"),

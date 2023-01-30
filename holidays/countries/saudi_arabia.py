@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -69,7 +69,7 @@ class SaudiArabia(HolidayBase):
         holiday_name = "Eid al-Fitr Holiday"
         for yr in (year - 1, year):
             for hijri_date in _islamic_to_gre(yr, 9, 29):
-                hijri_date += rd(days=1)
+                hijri_date += rd(days=+1)
                 for dys in range(4):
                     _add_holiday((hijri_date + rd(days=dys)), holiday_name)
                 if self.observed:
@@ -117,13 +117,13 @@ class SaudiArabia(HolidayBase):
                 self[national_day] = holiday_name
                 # First weekend day(Thursaday before 2013 and Friday otherwise)
                 if self.observed and national_day.weekday() == self.weekend[0]:
-                    national_day -= rd(days=1)
+                    national_day += rd(days=-1)
                     self[national_day] = holiday_name + observed_str
                 # Second weekend day(Friday before 2013 and Saturday otherwise)
                 elif (
                     self.observed and national_day.weekday() == self.weekend[1]
                 ):
-                    national_day += rd(days=1)
+                    national_day += rd(days=+1)
                     self[national_day] = holiday_name + observed_str
 
         # Founding Day holiday (started 2022).
@@ -136,13 +136,13 @@ class SaudiArabia(HolidayBase):
                 self[founding_day] = holiday_name
                 # First weekend day(Thursaday before 2013 and Friday otherwise)
                 if self.observed and founding_day.weekday() == self.weekend[0]:
-                    founding_day -= rd(days=1)
+                    founding_day += rd(days=-1)
                     self[founding_day] = holiday_name + observed_str
                 # Second weekend day(Friday before 2013 and Saturday otherwise)
                 elif (
                     self.observed and founding_day.weekday() == self.weekend[1]
                 ):
-                    founding_day += rd(days=1)
+                    founding_day += rd(days=+1)
                     self[founding_day] = holiday_name + observed_str
 
 

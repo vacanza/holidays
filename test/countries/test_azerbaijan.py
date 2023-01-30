@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -145,8 +145,7 @@ class TestAzerbaijan(TestCase):
         self.assertNoHoliday(Azerbaijan(observed=False), observed_holidays)
 
     def test_2020(self):
-        self.assertHolidayDatesEqual(
-            Azerbaijan(years=2020),
+        self.assertHolidayDates(
             "2020-01-01",
             "2020-01-02",
             "2020-01-20",
@@ -175,8 +174,7 @@ class TestAzerbaijan(TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidayDatesEqual(
-            Azerbaijan(years=2022),
+        self.assertHolidayDates(
             "2022-01-01",
             "2022-01-02",
             "2022-01-03",

@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -47,31 +47,32 @@ class Indonesia(HolidayBase):
             hol_date = self.cnls.lunar_n_y_date(year)
             self[hol_date] = "Tahun Baru Imlek"
 
-        # Day of Silence
-        # https://en.wikipedia.org/wiki/Nyepi
-        dates_obs = {
-            2009: (MAR, 26),
-            2010: (MAR, 16),
-            2011: (MAR, 5),
-            2012: (MAR, 23),
-            2013: (MAR, 12),
-            2014: (MAR, 31),
-            2015: (MAR, 21),
-            2016: (MAR, 9),
-            2017: (MAR, 28),
-            2018: (MAR, 17),
-            2019: (MAR, 7),
-            2020: (MAR, 25),
-            2021: (MAR, 14),
-            2022: (MAR, 3),
-            2023: (MAR, 22),
-            2024: (MAR, 11),
-            2025: (MAR, 29),
-            2026: (MAR, 19),
-        }
-        if year in dates_obs:
-            hol_date = date(year, *dates_obs[year])
-            self[hol_date] = "Hari Suci Nyepi"
+        if year >= 1983:
+            # Day of Silence
+            # https://en.wikipedia.org/wiki/Nyepi
+            dates_obs = {
+                2009: (MAR, 26),
+                2010: (MAR, 16),
+                2011: (MAR, 5),
+                2012: (MAR, 23),
+                2013: (MAR, 12),
+                2014: (MAR, 31),
+                2015: (MAR, 21),
+                2016: (MAR, 9),
+                2017: (MAR, 28),
+                2018: (MAR, 17),
+                2019: (MAR, 7),
+                2020: (MAR, 25),
+                2021: (MAR, 14),
+                2022: (MAR, 3),
+                2023: (MAR, 22),
+                2024: (MAR, 11),
+                2025: (MAR, 29),
+                2026: (MAR, 19),
+            }
+            if year in dates_obs:
+                hol_date = date(year, *dates_obs[year])
+                self[hol_date] = "Hari Suci Nyepi"
 
         # Eid al-Fitr
         dates_obs = {
@@ -288,7 +289,7 @@ class Indonesia(HolidayBase):
         if year >= 2017:
             self[date(year, JUN, 1)] = "Hari Lahir Pancasila"
 
-        # National Day
+        # Independence Day
         self[date(year, AUG, 17)] = "Hari Kemerdekaan Republik Indonesia"
 
         # Christmas Day
