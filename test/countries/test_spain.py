@@ -15,7 +15,7 @@ from datetime import date
 
 import holidays
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC, SUN
+from holidays.constants import OCT, NOV, DEC
 
 
 class TestSpain(unittest.TestCase):
