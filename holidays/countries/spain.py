@@ -21,7 +21,9 @@ from holidays.utils import _islamic_to_gre
 
 
 class Spain(HolidayBase):
-    """https://administracion.gob.es/pag_Home/atencionCiudadana/calendarios.html"""
+    """
+    https://administracion.gob.es/pag_Home/atencionCiudadana/calendarios.html
+    """
     country = "ES"
     subdivisions = [
         "AN",
@@ -242,14 +244,17 @@ class Spain(HolidayBase):
             self._is_observed(date(year, SEP, 17), "Día de Melilla")
             if year == 2022:
                 self._is_observed(
-                    _islamic_to_gre(year, 10, 1)[0] + rd(days=+1), "Eid al-Fitr"
+                    _islamic_to_gre(year, 10, 1)[0] + rd(days=+1),
+                    "Eid al-Fitr",
                 )
                 self._is_observed(
                     _islamic_to_gre(year, 12, 10)[0] + rd(days=+2),
                     "Eid al-Adha",
                 )
             elif year == 2023:
-                self._is_observed(_islamic_to_gre(year, 10, 1)[0], "Eid al-Fitr")
+                self._is_observed(
+                    _islamic_to_gre(year, 10, 1)[0], "Eid al-Fitr"
+                )
                 self._is_observed(
                     _islamic_to_gre(year, 12, 10)[0] + rd(days=+1),
                     "Eid al-Adha",
