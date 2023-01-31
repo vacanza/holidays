@@ -14,7 +14,7 @@ from datetime import date
 from dateutil.easter import EASTER_ORTHODOX, easter
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAY, JUL, SAT, SUN
+from holidays.constants import JAN, MAY, JUL, SUN
 from holidays.holiday_base import HolidayBase
 
 
@@ -31,7 +31,7 @@ class Montenegro(HolidayBase):
 
     def _add_holiday_observed(self, hol_date: date, hol_name: str) -> None:
         self[hol_date] = hol_name
-        if hol_date.weekday() >= SAT:
+        if self._is_weekend(hol_date):
             self[hol_date + rd(days=+2)] = f"{hol_name} (Observed)"
         self[hol_date + rd(days=+1)] = (
             f"{hol_name} (Observed)" if hol_date.weekday() == SUN else hol_name
