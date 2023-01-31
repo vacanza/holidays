@@ -19,9 +19,9 @@ The PR description goes here.
   be split into multiple PRs.
 -->
 
-- [ ] Supported country holidays update (fixes discrepancy with country official holidays)
 - [ ] New country holidays support (thank you!)
-- [ ] Existing code/tests/processes improvement (best practices, refactoring, optimization)
+- [ ] Supported country holidays update (fixes discrepancy with country official holidays)
+- [ ] Existing code/tests/processes improvement (best practice, refactoring, optimization)
 - [ ] Dependency upgrade (version update)
 - [ ] Bugfix (non-breaking change which fixes an issue)
 - [ ] Breaking change (a code change causing existing functionality to break)
@@ -30,7 +30,7 @@ The PR description goes here.
 ## Checklist
 
 <!--
-  Put an `x` in the boxes that apply.
+  Put an `x` in the boxes that apply. You can change them after PR is created.
 -->
 
 - [ ] I've followed the [contributing guidelines][contributing-guidelines]
