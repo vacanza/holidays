@@ -21,9 +21,7 @@ from holidays.utils import _islamic_to_gre
 
 
 class Spain(HolidayBase):
-    """
-    https://administracion.gob.es/pag_Home/atencionCiudadana/calendarios.html
-    """
+    # https://administracion.gob.es/pag_Home/atencionCiudadana/calendarios.html
     country = "ES"
     subdivisions = [
         "AN",
