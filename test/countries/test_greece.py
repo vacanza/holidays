@@ -43,7 +43,7 @@ class TestGreece(unittest.TestCase):
                 ),
             )
 
-        for (d, dstr) in fdays:
+        for d, dstr in fdays:
             self.assertIn(d, self.gr_holidays)
             self.assertIn(dstr, self.gr_holidays[d])
 

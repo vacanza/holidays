@@ -35,7 +35,6 @@ class TestUS(unittest.TestCase):
             self.assertNotIn(dt + td(days=+1), self.holidays)
 
     def test_Juneteenth_day(self):
-
         for year in range(2010, 2020):
             self.assertNotIn(date(year, 6, 19), self.holidays)
         for year in range(2021, 2030):

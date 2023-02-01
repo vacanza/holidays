@@ -138,7 +138,7 @@ class TestBasics(unittest.TestCase):
         self.holidays = holidays.US()
         self.assertEqual(
             str(self.holidays),
-            "{'observed': True, 'expand': True, 'subdiv': None, "
+            "{'expand': True, 'observed': True, 'subdiv': None, "
             "'years': set()}",
         )
 
@@ -164,6 +164,15 @@ class TestBasics(unittest.TestCase):
         )
         self.assertIn("2015-01-01", h)
         self.assertIn(date(2015, 12, 25), h)
+
+    def test_add_observed_holiday(self):
+        h = holidays.HolidayBase()
+
+        h._add_observed_holiday("1111-11-11", "Test holiday")
+        self.assertEqual(h["1111-11-11"], "Test holiday (Observed)")
+
+        h._add_observed_holiday("2222-11-11", "Test holiday", "(Day Off)")
+        self.assertEqual(h["2222-11-11"], "Test holiday (Day Off)")
 
     def test_is_weekend(self):
         h = holidays.HolidayBase()
@@ -222,7 +231,7 @@ class TestBasics(unittest.TestCase):
         self.assertNotEqual(us3, ca3)
         self.assertNotEqual(us1, us3)
 
-    def test_add(self):
+    def test_add_countries(self):
         ca = holidays.CA()
         us = holidays.US()
         mx = holidays.MX()
@@ -299,6 +308,7 @@ class TestBasics(unittest.TestCase):
             na.get(date(1969, 12, 25)), "Christmas Day, Navidad [Christmas]"
         )
 
+    def test_add_financial(self):
         ecb = holidays.ECB()
         nyse = holidays.NYSE()
         ecb_nyse = ecb + nyse
@@ -425,8 +435,10 @@ class TestBasics(unittest.TestCase):
 
     def test_get_named(self):
         us = holidays.UnitedStates(years=[2020])
+        holidays_count = len(us.keys())
         # check for "New Year's Day" presence in get_named("new")
         self.assertIn(date(2020, 1, 1), us.get_named("new"))
+        self.assertEqual(holidays_count, len(us.keys()))
 
         # check for searching holiday in US when the observed holiday is on
         # a different year than input one
@@ -602,121 +614,6 @@ class TestCountryHolidayDeprecation(unittest.TestCase):
             self.assertIsInstance(h, holidays.HolidayBase)
             self.assertEqual(1, len(w))
             self.assertTrue(issubclass(w[-1].category, DeprecationWarning))
-
-
-class TestCountryHolidays(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.country_holidays("US")
-
-    def test_country(self):
-        self.assertEqual(self.holidays.country, "US")
-
-    def test_country_single_year(self):
-        h = holidays.country_holidays("US", years=2021)
-        self.assertEqual(h.years, {2021})
-
-    def test_country_years(self):
-        h = holidays.country_holidays("US", years=[2015, 2016])
-        self.assertEqual(h.years, {2015, 2016})
-
-    def test_country_state(self):
-        h = holidays.country_holidays("US", subdiv="NY")
-        self.assertEqual(h.subdiv, "NY")
-
-    def test_country_province(self):
-        h = holidays.country_holidays("AU", subdiv="NT")
-        self.assertEqual(h.subdiv, "NT")
-
-    def test_exceptions(self):
-        self.assertRaises(
-            NotImplementedError, lambda: holidays.country_holidays("XXXX")
-        )
-        self.assertRaises(
-            NotImplementedError,
-            lambda: holidays.country_holidays("US", subdiv="XXXX"),
-        )
-        self.assertRaises(
-            NotImplementedError, lambda: holidays.US(subdiv="XXXX")
-        )
-
-
-class TestFinancialHolidays(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.financial_holidays("NYSE")
-
-    def test_market(self):
-        self.assertEqual(self.holidays.market, "NYSE")
-
-    def test_market_single_year(self):
-        h = holidays.financial_holidays("NYSE", years=2021)
-        self.assertEqual(h.years, {2021})
-
-    def test_market_years(self):
-        h = holidays.financial_holidays("NYSE", years=[2015, 2016])
-        self.assertEqual(h.years, {2015, 2016})
-
-    def test_exceptions(self):
-        self.assertRaises(
-            NotImplementedError, lambda: holidays.financial_holidays("XXXX")
-        )
-        self.assertRaises(
-            NotImplementedError,
-            lambda: holidays.financial_holidays("NYSE", subdiv="XXXX"),
-        )
-
-
-class TestAllInSameYear(unittest.TestCase):
-    """Test that only holidays in the year(s) requested are returned."""
-
-    country: str
-    hol: datetime
-    year: int
-
-    def setUp(self):
-        self.countries = holidays.list_supported_countries()
-
-    def tearDown(self):
-        """https://stackoverflow.com/questions/4414234/"""
-
-        def list2reason(exc_list):
-            if exc_list and exc_list[-1][0] is self:
-                return exc_list[-1][1]
-
-        result = self.defaultTestResult()
-        self._feedErrorsToResult(result, self._outcome.errors)
-        error = list2reason(result.errors)
-        failure = list2reason(result.failures)
-        text = error if error else failure
-        if text:
-            warnings.warn(
-                f"{text.splitlines()[-1]} in country {self.country}: "
-                f"holiday {self.hol} returned for year {self.year}"
-                + holidays.country_holidays(
-                    self.country, subdiv=None, years=[self.year]
-                ).get_list(self.hol)
-            )
-
-    def test_all_countries(self):
-        """
-        Only holidays in the year(s) requested should be returned. This
-        ensures that we avoid triggering a "RuntimeError: dictionary changed
-        size during iteration" error.
-
-        Here we test all countries for the 12-year period starting ten years
-        ago and ending 2 years from now.
-
-        This is logic test and not a code compatibility test, so for expediency
-        we only run it once on the latest Python version.
-        """
-        for self.country in self.countries:
-            for self.year in range(
-                date.today().year - 10, date.today().year + 3
-            ):
-                hols = holidays.country_holidays(
-                    self.country, years=[self.year]
-                )
-                for self.hol in hols:
-                    self.assertEqual(self.hol.year, self.year)
 
 
 class TestCountrySpecialHolidays(unittest.TestCase):

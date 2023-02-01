@@ -56,7 +56,7 @@ class TestSpain(unittest.TestCase):
             (12, 8),
             (12, 25),
         )
-        for (m, d) in fixed_days_whole_country:
+        for m, d in fixed_days_whole_country:
             self.assertIn(date(2020, m, d), self.holidays_observed)
 
     def test_variable_days_in_2016(self):
@@ -81,7 +81,7 @@ class TestSpain(unittest.TestCase):
             (12, 6),
             (12, 8),
         )
-        for (m, d) in fix_days_whole_country_2022:
+        for m, d in fix_days_whole_country_2022:
             self.assertIn(date(2022, m, d), self.holidays_observed)
 
     def test_province_specific_days(self):
@@ -157,19 +157,17 @@ class TestSpain(unittest.TestCase):
                 )
 
                 year_province_days = deepcopy(province_days)
-                if prov in {"ML"}:
-                    eid_al_fitr_current_year = _islamic_to_gre(year, 10, 1)[0]
-                    eid_al_adha_current_year = _islamic_to_gre(year, 12, 10)[0]
+                if prov == "ML":
                     year_province_days.update(
                         {
-                            (
-                                eid_al_fitr_current_year.month,
-                                eid_al_fitr_current_year.day,
-                            ): {"ML"},
-                            (
-                                eid_al_adha_current_year.month,
-                                eid_al_adha_current_year.day,
-                            ): {"ML"},
+                            (eid_al_fitr.month, eid_al_fitr.day): {prov}
+                            for eid_al_fitr in _islamic_to_gre(year, 10, 1)
+                        }
+                    )
+                    year_province_days.update(
+                        {
+                            (eid_al_adha.month, eid_al_adha.day): {prov}
+                            for eid_al_adha in _islamic_to_gre(year, 12, 10)
                         }
                     )
 
