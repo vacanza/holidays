@@ -172,7 +172,8 @@ class Spain(HolidayBase):
                 date(year, SEP, 2), "Día de la Ciudad Autónoma de Ceuta"
             )
             if year >= 2022:
-                self._is_observed(_islamic_to_gre(year, 12, 10)[0], "Eid Adha")
+                for dt in _islamic_to_gre(year, 12, 10):
+                    self._is_observed(dt, "Eid Adha")
         elif self.subdiv == "CM":
             if year >= 2022:
                 self._is_observed(date(year, JUN, 16), "Corpus Christi")
@@ -209,21 +210,15 @@ class Spain(HolidayBase):
             self._is_observed(date(year, SEP, 8), "Vírgen de la victoria")
             self._is_observed(date(year, SEP, 17), "Día de Melilla")
             if year == 2022:
-                self._is_observed(
-                    _islamic_to_gre(year, 10, 1)[0] + rd(days=+1),
-                    "Aid Al-Fitr",
-                )
-                self._is_observed(
-                    _islamic_to_gre(year, 12, 10)[0] + rd(days=+2),
-                    "Aid Al-Adha",
-                )
+                for dt in _islamic_to_gre(year, 10, 1):
+                    self._is_observed(dt + rd(days=+1), "Aid Al-Fitr")
+                for dt in _islamic_to_gre(year, 12, 10):
+                    self._is_observed(dt + rd(days=+2), "Aid Al-Adha")
             else:
-                self._is_observed(
-                    _islamic_to_gre(year, 10, 1)[0], "Aid Al-Fitr"
-                )
-                self._is_observed(
-                    _islamic_to_gre(year, 12, 10)[0], "Aid Al-Adha"
-                )
+                for dt in _islamic_to_gre(year, 10, 1):
+                    self._is_observed(dt, "Aid Al-Fitr")
+                for dt in _islamic_to_gre(year, 12, 10):
+                    self._is_observed(dt, "Aid Al-Adha")
         elif self.subdiv == "NC":
             if year >= 2022:
                 self._is_observed(
