@@ -56,7 +56,7 @@ class TestSpain(unittest.TestCase):
             (12, 8),
             (12, 25),
         )
-        for (m, d) in fixed_days_whole_country:
+        for m, d in fixed_days_whole_country:
             self.assertIn(date(2020, m, d), self.holidays_observed)
 
     def test_variable_days_in_2016(self):
@@ -81,7 +81,7 @@ class TestSpain(unittest.TestCase):
             (12, 6),
             (12, 8),
         )
-        for (m, d) in fix_days_whole_country_2022:
+        for m, d in fix_days_whole_country_2022:
             self.assertIn(date(2022, m, d), self.holidays_observed)
 
     def test_province_specific_days(self):

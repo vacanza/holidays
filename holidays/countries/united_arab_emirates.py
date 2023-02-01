@@ -20,7 +20,6 @@ from holidays.utils import _islamic_to_gre
 
 
 class UnitedArabEmirates(HolidayBase):
-
     # Holidays are regulated by the Article 74
     # of Federal Law No. 08 for the year 1980:
     # https://www.ilo.org/dyn/natlex/docs/ELECTRONIC/11956/69376/F417089305/ARE11956.pdf
