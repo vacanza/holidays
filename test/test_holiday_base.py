@@ -13,7 +13,8 @@ import pathlib
 import pickle
 import unittest
 import warnings
-from datetime import date, datetime, timedelta
+from datetime import date, datetime
+from datetime import timedelta as td
 
 from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
@@ -76,21 +77,15 @@ class TestBasics(unittest.TestCase):
             self.holidays[date(2013, 12, 31) : date(2014, 1, 2) : -3], []
         )
         self.assertListEqual(
-            self.holidays[
-                date(2014, 1, 1) : date(2013, 12, 24) : timedelta(days=3)
-            ],
+            self.holidays[date(2014, 1, 1) : date(2013, 12, 24) : td(days=3)],
             [date(2014, 1, 1)],
         )
         self.assertListEqual(
-            self.holidays[
-                date(2014, 1, 1) : date(2013, 12, 24) : timedelta(days=7)
-            ],
+            self.holidays[date(2014, 1, 1) : date(2013, 12, 24) : td(days=7)],
             [date(2014, 1, 1), date(2013, 12, 25)],
         )
         self.assertListEqual(
-            self.holidays[
-                date(2013, 12, 31) : date(2014, 1, 2) : timedelta(days=3)
-            ],
+            self.holidays[date(2013, 12, 31) : date(2014, 1, 2) : td(days=3)],
             [],
         )
         self.assertRaises(

@@ -11,8 +11,7 @@
 
 import unittest
 from datetime import date
-
-from dateutil.relativedelta import relativedelta as rd
+from datetime import timedelta as td
 
 import holidays
 
@@ -32,8 +31,8 @@ class TestUY(unittest.TestCase):
         for year in range(1900, 2100):
             dt = date(year, 1, 1)
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + rd(days=-1), self.holidays)
-            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + td(days=-1), self.holidays)
+            self.assertNotIn(dt + td(days=+1), self.holidays)
             self.assertEqual(self.holidays[dt], "Año Nuevo [New Year's Day]")
 
     def test_labor_day(self):
@@ -45,8 +44,8 @@ class TestUY(unittest.TestCase):
         for year in range(1900, 2100):
             dt = date(year, 5, 1)
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + rd(days=-1), self.holidays)
-            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + td(days=-1), self.holidays)
+            self.assertNotIn(dt + td(days=+1), self.holidays)
             self.assertEqual(
                 self.holidays[dt],
                 "Día de los Trabajadores [International Workers' Day]",
@@ -56,8 +55,8 @@ class TestUY(unittest.TestCase):
         for year in range(1900, 2100):
             dt = date(year, 7, 18)
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + rd(days=-1), self.holidays)
-            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + td(days=-1), self.holidays)
+            self.assertNotIn(dt + td(days=+1), self.holidays)
             self.assertEqual(
                 self.holidays[dt], "Jura de la Constitución [Constitution Day]"
             )
@@ -66,8 +65,8 @@ class TestUY(unittest.TestCase):
         for year in range(1900, 2100):
             dt = date(year, 8, 25)
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + rd(days=-1), self.holidays)
-            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + td(days=-1), self.holidays)
+            self.assertNotIn(dt + td(days=+1), self.holidays)
             self.assertEqual(
                 self.holidays[dt], "Día de la Independencia [Independence Day]"
             )
@@ -76,8 +75,8 @@ class TestUY(unittest.TestCase):
         for year in range(1900, 2100):
             dt = date(year, 12, 25)
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + rd(days=-1), self.holidays)
-            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + td(days=-1), self.holidays)
+            self.assertNotIn(dt + td(days=+1), self.holidays)
             self.assertEqual(
                 self.holidays[dt], "Día de la Familia [Day of the Family]"
             )
@@ -97,8 +96,8 @@ class TestUY(unittest.TestCase):
         for year in range(1900, 2100):
             dt = date(year, 6, 19)
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + rd(days=-1), self.holidays)
-            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + td(days=-1), self.holidays)
+            self.assertNotIn(dt + td(days=+1), self.holidays)
             self.assertEqual(
                 self.holidays[dt],
                 "Natalicio de José Gervasio Artigas "
@@ -109,8 +108,8 @@ class TestUY(unittest.TestCase):
         for year in range(1900, 2100):
             dt = date(year, 11, 2)
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + rd(days=-1), self.holidays)
-            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + td(days=-1), self.holidays)
+            self.assertNotIn(dt + td(days=+1), self.holidays)
             self.assertEqual(
                 self.holidays[dt], "Día de los Difuntos [All Souls' Day]"
             )
