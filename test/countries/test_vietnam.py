@@ -10,8 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-
-from dateutil.relativedelta import relativedelta as rd
+from datetime import timedelta as td
 
 from holidays.countries.vietnam import Vietnam, VN, VNM
 from test.common import TestCase
@@ -56,7 +55,7 @@ class TestVietnam(TestCase):
         ):
             self.assertHolidaysName(
                 "Vietnamese New Year's Eve",
-                date(*dt) + rd(days=-1),
+                date(*dt) + td(days=-1),
             )
             self.assertHolidaysName(
                 "Vietnamese New Year",
@@ -64,19 +63,19 @@ class TestVietnam(TestCase):
             )
             self.assertHolidaysName(
                 "The second day of Tet Holiday",
-                date(*dt) + rd(days=+1),
+                date(*dt) + td(days=+1),
             )
             self.assertHolidaysName(
                 "The third day of Tet Holiday",
-                date(*dt) + rd(days=+2),
+                date(*dt) + td(days=+2),
             )
             self.assertHolidaysName(
                 "The forth day of Tet Holiday",
-                date(*dt) + rd(days=+3),
+                date(*dt) + td(days=+3),
             )
             self.assertHolidaysName(
                 "The fifth day of Tet Holiday",
-                date(*dt) + rd(days=+4),
+                date(*dt) + td(days=+4),
             )
 
     def test_king_hung_day(self):
