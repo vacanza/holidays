@@ -10,6 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import MO
@@ -57,7 +58,7 @@ class Cuba(HolidayBase):
         #   https://bit.ly/3v6bM18
         # Permanently granted in 2013 decree for 2014 and onwards.
         if year >= 2012:
-            self[easter(year) + rd(days=-2)] = "Viernes Santo [Good Friday]"
+            self[easter(year) + td(days=-2)] = "Viernes Santo [Good Friday]"
 
         name = "Día Internacional de los Trabajadores [Labour Day]"
         self[date(year, MAY, 1)] = name

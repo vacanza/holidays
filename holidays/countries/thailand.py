@@ -10,8 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-
-from dateutil.relativedelta import relativedelta as rd
+from datetime import timedelta as td
 
 from holidays.constants import FEB, MAR, APR, MAY, JUN, JUL, AUG, OCT, DEC, SAT
 from holidays.holiday_base import HolidayBase
@@ -39,9 +38,9 @@ class Thailand(HolidayBase):
 
             self[dt] = holiday_name
             if self.observed and self._is_weekend(dt):
-                in_lieu = dt + rd(days=2 if dt.weekday() == SAT else 1)
+                in_lieu = dt + td(days=2 if dt.weekday() == SAT else 1)
                 while in_lieu.year == year and in_lieu in self:
-                    in_lieu += rd(days=+1)
+                    in_lieu += td(days=+1)
 
                 add_holiday(in_lieu, f"{holiday_name} (in lieu)")
 

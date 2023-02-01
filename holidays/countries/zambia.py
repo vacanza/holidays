@@ -10,6 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import MO
@@ -67,9 +68,9 @@ class Zambia(HolidayBase):
         self[date(year, MAR, 12)] = "Youth Day"
 
         easter_date = easter(year)
-        self[easter_date + rd(days=-2)] = "Good Friday"
-        self[easter_date + rd(days=-1)] = "Holy Saturday"
-        self[easter_date + rd(days=+1)] = "Easter Monday"
+        self[easter_date + td(days=-2)] = "Good Friday"
+        self[easter_date + td(days=-1)] = "Holy Saturday"
+        self[easter_date + td(days=+1)] = "Easter Monday"
 
         if year >= 2022:
             self[date(year, APR, 28)] = "Kenneth Kaunda Day"
@@ -80,7 +81,7 @@ class Zambia(HolidayBase):
         # 1st Monday of July = "Heroes' Day"
         dt = date(year, JUL, 1) + rd(weekday=MO)
         self[dt] = "Heroes' Day"
-        self[dt + rd(days=+1)] = "Unity Day"
+        self[dt + td(days=+1)] = "Unity Day"
 
         # 1st Monday of Aug = "Farmers' Day"
         dt = date(year, AUG, 1) + rd(weekday=MO)
@@ -97,7 +98,7 @@ class Zambia(HolidayBase):
         if self.observed:
             for k, v in list(self.items()):
                 if k.year == year and k.weekday() == SUN:
-                    self[k + rd(days=+1)] = v + " (Observed)"
+                    self[k + td(days=+1)] = v + " (Observed)"
 
 
 class ZM(Zambia):
