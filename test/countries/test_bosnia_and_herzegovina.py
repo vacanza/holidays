@@ -22,7 +22,6 @@ class TestBA(unittest.TestCase):
         self.holidays_observed = holidays.BA(observed=True)
 
     def test_new_years(self):
-
         for dt in (date(2010, 12, 31), date(2017, 1, 3)):
             self.assertNotIn(dt, self.holidays)
 

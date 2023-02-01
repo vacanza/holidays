@@ -25,7 +25,6 @@ class Armenia(HolidayBase):
     country = "AM"
 
     def _populate(self, year):
-
         if year <= 1990:
             return
         super()._populate(year)
