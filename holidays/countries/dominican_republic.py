@@ -10,6 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import MO
@@ -61,7 +62,7 @@ class DominicanRepublic(HolidayBase):
         easter_date = easter(year)
 
         # Good Friday
-        self[easter_date + rd(days=-2)] = "Viernes Santo [Good Friday]"
+        self[easter_date + td(days=-2)] = "Viernes Santo [Good Friday]"
 
         # Labor Day
         labor_day = self.__change_day_by_law(
