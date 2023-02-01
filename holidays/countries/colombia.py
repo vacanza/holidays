@@ -10,6 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import MO
@@ -149,29 +150,29 @@ class Colombia(HolidayBase):
     def _add_fixed_easter_based_holidays(self, _easter):
         if _easter.year > 1950:
             # Maundy Thursday
-            self[_easter + rd(days=-3)] = "Jueves Santo [Maundy Thursday]"
+            self[_easter + td(days=-3)] = "Jueves Santo [Maundy Thursday]"
 
             # Good Friday
-            self[_easter + rd(days=-2)] = "Viernes Santo [Good Friday]"
+            self[_easter + td(days=-2)] = "Viernes Santo [Good Friday]"
 
     def _add_flexible_easter_based_holidays(self, _easter):
         if _easter.year > 1950:
             # Ascension of Jesus
             self._add_with_bridge(
-                _easter + rd(days=+39),
+                _easter + td(days=+39),
                 "Ascensión del señor [Ascension of Jesus]",
             )
 
             # Corpus Christi
             self._add_with_bridge(
-                _easter + rd(days=+60),
+                _easter + td(days=+60),
                 "Corpus Christi [Corpus Christi]",
             )
 
         if _easter.year > 1983:
             # Sacred Heart
             self._add_with_bridge(
-                _easter + rd(days=+68),
+                _easter + td(days=+68),
                 "Sagrado Corazón [Sacred Heart]",
             )
 

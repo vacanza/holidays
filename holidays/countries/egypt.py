@@ -10,9 +10,9 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import EASTER_ORTHODOX, easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, APR, MAY, JUN, JUL, OCT
 from holidays.holiday_base import HolidayBase
@@ -65,7 +65,7 @@ class Egypt(HolidayBase):
         self[easter_date] = "Coptic Easter Sunday"
 
         # Sham El Nessim - Spring Festival
-        self[easter_date + rd(days=+1)] = "Sham El Nessim"
+        self[easter_date + td(days=+1)] = "Sham El Nessim"
 
         # Sinai Libration Day
         if year > 1982:
@@ -94,8 +94,8 @@ class Egypt(HolidayBase):
             for date_obs in _islamic_to_gre(yr, 10, 1):
                 hol_date = date_obs
                 _add_holiday(hol_date, "Eid al-Fitr")
-                _add_holiday(hol_date + rd(days=+1), "Eid al-Fitr Holiday")
-                _add_holiday(hol_date + rd(days=+2), "Eid al-Fitr Holiday")
+                _add_holiday(hol_date + td(days=+1), "Eid al-Fitr Holiday")
+                _add_holiday(hol_date + td(days=+2), "Eid al-Fitr Holiday")
 
         # Arafat Day & Eid al-Adha - Scarfice Festive
         # date of observance is announced yearly
@@ -103,9 +103,9 @@ class Egypt(HolidayBase):
             for date_obs in _islamic_to_gre(yr, 12, 9):
                 hol_date = date_obs
                 _add_holiday(hol_date, "Arafat Day")
-                _add_holiday(hol_date + rd(days=+1), "Eid al-Adha")
-                _add_holiday(hol_date + rd(days=+2), "Eid al-Adha Holiday")
-                _add_holiday(hol_date + rd(days=+3), "Eid al-Adha Holiday")
+                _add_holiday(hol_date + td(days=+1), "Eid al-Adha")
+                _add_holiday(hol_date + td(days=+2), "Eid al-Adha Holiday")
+                _add_holiday(hol_date + td(days=+3), "Eid al-Adha Holiday")
 
         # Islamic New Year - (hijari_year, 1, 1)
         for date_obs in _islamic_to_gre(year, 1, 1):

@@ -10,8 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-
-from dateutil.relativedelta import relativedelta as rd
+from datetime import timedelta as td
 
 from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, SEP, NOV, DEC
 from holidays.constants import FRI, SAT
@@ -86,19 +85,19 @@ class UnitedArabEmirates(HolidayBase):
             for date_obs in dates_obs[year]:
                 hol_date = date(year, *date_obs)
                 self[hol_date] = fitr
-                self[hol_date + rd(days=+1)] = f"{fitr} Holiday"
-                self[hol_date + rd(days=+2)] = f"{fitr} Holiday"
+                self[hol_date + td(days=+1)] = f"{fitr} Holiday"
+                self[hol_date + td(days=+2)] = f"{fitr} Holiday"
         else:
             for yr in (year - 1, year):
                 for date_obs in _islamic_to_gre(yr, 10, 1):
                     hol_date = date_obs
                     _add_holiday(hol_date, f"{fitr}* (*estimated)")
                     _add_holiday(
-                        hol_date + rd(days=+1),
+                        hol_date + td(days=+1),
                         f"{fitr} Holiday* (*estimated)",
                     )
                     _add_holiday(
-                        hol_date + rd(days=+2),
+                        hol_date + td(days=+2),
                         f"{fitr} Holiday* (*estimated)",
                     )
 
@@ -115,23 +114,23 @@ class UnitedArabEmirates(HolidayBase):
             for date_obs in dates_obs[year]:
                 hol_date = date(year, *date_obs)
                 self[hol_date] = hajj
-                self[hol_date + rd(days=+1)] = adha
-                self[hol_date + rd(days=+2)] = f"{adha} Holiday"
-                self[hol_date + rd(days=+3)] = f"{adha} Holiday"
+                self[hol_date + td(days=+1)] = adha
+                self[hol_date + td(days=+2)] = f"{adha} Holiday"
+                self[hol_date + td(days=+3)] = f"{adha} Holiday"
         else:
             for yr in (year - 1, year):
                 for date_obs in _islamic_to_gre(yr, 12, 9):
                     hol_date = date_obs
                     _add_holiday(hol_date, f"{hajj}* (*estimated)")
                     _add_holiday(
-                        hol_date + rd(days=+1), f"{adha}* (*estimated)"
+                        hol_date + td(days=+1), f"{adha}* (*estimated)"
                     )
                     _add_holiday(
-                        hol_date + rd(days=+2),
+                        hol_date + td(days=+2),
                         f"{adha}* Holiday* (*estimated)",
                     )
                     _add_holiday(
-                        hol_date + rd(days=+3),
+                        hol_date + td(days=+3),
                         f"{adha} Holiday* (*estimated)",
                     )
 

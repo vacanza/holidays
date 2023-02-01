@@ -10,8 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-
-from dateutil.relativedelta import relativedelta as rd
+from datetime import timedelta as td
 
 from holidays.constants import JAN, APR, MAY, OCT
 from holidays.holiday_base import HolidayBase
@@ -41,24 +40,24 @@ class China(HolidayBase):
         dt = date(year, MAY, 1)
         self[dt] = name
         if 2000 <= year <= 2007:
-            self[dt + rd(days=+1)] = name
-            self[dt + rd(days=+2)] = name
+            self[dt + td(days=+1)] = name
+            self[dt + td(days=+2)] = name
 
         name = "Chinese New Year (Spring Festival)"
         dt = self.cnls.lunar_n_y_date(year)
         self[dt] = name
-        self[dt + rd(days=+1)] = name
+        self[dt + td(days=+1)] = name
         if 2008 <= year <= 2013:
-            self[dt + rd(days=-1)] = name
+            self[dt + td(days=-1)] = name
         else:
-            self[dt + rd(days=+2)] = name
+            self[dt + td(days=+2)] = name
 
         name = "National Day"
         dt = date(year, OCT, 1)
         self[dt] = name
-        self[dt + rd(days=+1)] = name
+        self[dt + td(days=+1)] = name
         if year >= 2000:
-            self[dt + rd(days=+2)] = name
+            self[dt + td(days=+2)] = name
 
         if year >= 2008:
             self[date(year, APR, 5)] = "Tomb-Sweeping Day"
