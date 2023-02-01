@@ -82,7 +82,6 @@ class Germany(HolidayBase):
             return
 
         if year > 1990:
-
             self[date(year, JAN, 1)] = "Neujahr"
 
             if self.subdiv in {"BW", "BY", "BYP", "ST"}:

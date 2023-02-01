@@ -20,7 +20,6 @@ from holidays.utils import _islamic_to_gre
 
 
 class Egypt(HolidayBase):
-
     # Holidays here are estimates, it is common for the day to be pushed
     # if falls in a weekend, although not a rule that can be implemented.
     # Holidays after 2020: the following four moving date holidays whose exact

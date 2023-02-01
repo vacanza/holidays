@@ -21,7 +21,6 @@ from holidays.holiday_base import HolidayBase
 
 
 class Australia(HolidayBase):
-
     country = "AU"
     special_holidays = {
         2022: (

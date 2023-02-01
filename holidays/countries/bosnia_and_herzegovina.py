@@ -35,7 +35,6 @@ class BosniaAndHerzegovina(HolidayBase):
     ]
 
     def _populate(self, year):
-
         # New Year's Day.
         self[date(year, JAN, 1)] = "Nova Godina"
         self[date(year, JAN, 2)] = "Drugi dan Nove Godine"
