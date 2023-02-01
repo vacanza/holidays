@@ -18,7 +18,7 @@ from typing import Union, cast
 
 from dateutil.parser import parse
 
-from holidays.constants import SAT, SUN
+from holidays.constants import HOLIDAY_NAME_DELIMITER, SAT, SUN
 
 DateLike = Union[date, datetime, str, float, int]
 
@@ -44,7 +44,7 @@ class HolidayBase(Dict[date, str]):
     To maximize speed, the list of holidays is built as needed on the fly, one
     calendar year at a time. When you instantiate the object, it is empty, but
     the moment a key is accessed it will build that entire year's list of
-    holidays. To prepopulate holidays, instantiate the class with the years
+    holidays. To pre-populate holidays, instantiate the class with the years
     argument:
 
     us_holidays = holidays.US(years=2020)
@@ -80,7 +80,7 @@ class HolidayBase(Dict[date, str]):
     >>> from holidays import country_holidays
     >>> us_holidays = country_holidays('US')
     # For a specific subdivisions (e.g. state or province):
-    >>> calif_holidays = country_holidays('US', subdiv='CA')
+    >>> california_holidays = country_holidays('US', subdiv='CA')
 
     The below will cause 2015 holidays to be calculated on the fly:
 
@@ -207,8 +207,8 @@ class HolidayBase(Dict[date, str]):
         expand: bool = True,
         observed: bool = True,
         subdiv: Optional[str] = None,
-        prov: Optional[str] = None,  # deprecated
-        state: Optional[str] = None,  # deprecated
+        prov: Optional[str] = None,  # Deprecated.
+        state: Optional[str] = None,  # Deprecated.
     ) -> None:
         """
         :param years:
@@ -237,55 +237,49 @@ class HolidayBase(Dict[date, str]):
             A :class:`HolidayBase` object matching the **country**.
         """
         super().__init__()
-        self.observed = observed
+
         self.expand = expand
+        self.observed = observed
         self.subdiv = subdiv or prov or state
+
         if prov or state:
             warnings.warn(
                 "Arguments prov and state are deprecated, use subdiv="
                 f"'{prov or state}' instead.",
                 DeprecationWarning,
             )
-        if not isinstance(self, HolidaySum):
-            if (
-                subdiv
-                and subdiv
-                not in self.subdivisions + self._deprecated_subdivisions
-            ):
-                if hasattr(self, "market"):
-                    raise NotImplementedError(
-                        f"Market {self.market} does not have subdivision "
-                        f"'{subdiv}'"
-                    )
-                else:
-                    raise NotImplementedError(
-                        f"Country {self.country} does not have subdivision "
-                        f"'{subdiv}'"
-                    )
+
+        if not isinstance(self, HolidaySum) and (
+            subdiv
+            and subdiv not in self.subdivisions + self._deprecated_subdivisions
+        ):
+            if hasattr(self, "market"):
+                error = (
+                    f"Market '{self.market}' does not have subdivision "
+                    f"'{subdiv}'"
+                )
+            elif hasattr(self, "country"):
+                error = (
+                    f"Country '{self.country}' does not have subdivision "
+                    f"'{subdiv}'"
+                )
+            raise NotImplementedError(error)
+
         if isinstance(years, int):
             self.years = {years}
         else:
             self.years = set(years) if years is not None else set()
-        for year in self.years.copy():
+
+        for year in self.years:
             self._populate(year)
 
     def __setattr__(self, key: str, value: Any) -> None:
-        if key == "observed" and len(self) > 0:
-            dict.__setattr__(self, key, value)
-            if value is True:
-                # Add (Observed) dates
-                years = list(self.years)
-                self.years = set()
-                self.clear()
-                for year in years:
-                    self._populate(year)
-            else:
-                # Remove (Observed) dates
-                for k, v in list(self.items()):
-                    if v.find("Observed") >= 0:
-                        del self[k]
-        else:
-            return dict.__setattr__(self, key, value)
+        dict.__setattr__(self, key, value)
+
+        if self and key == "observed":
+            self.clear()
+            for year in self.years:  # Re-populate holidays for each year.
+                self._populate(year)
 
     def __keytransform__(self, key: DateLike) -> date:
         """Transforms the date from one of the following types:
@@ -297,24 +291,43 @@ class HolidayBase(Dict[date, str]):
         * or a :class:`float` or :class:`int` representing a POSIX timestamp
 
         to :class:`datetime.date`, which is how it's stored by the class."""
-        if isinstance(key, datetime):
-            out_key = key.date()
-        elif isinstance(key, date):
-            out_key = key
-        elif isinstance(key, int) or isinstance(key, float):
-            out_key = datetime.utcfromtimestamp(key).date()
-        elif isinstance(key, str):
-            try:
-                out_key = parse(key).date()
-            except (ValueError, OverflowError):
-                raise ValueError("Cannot parse date from string '%s'" % key)
-        else:
-            raise TypeError("Cannot convert type '%s' to date." % type(key))
 
-        if self.expand and out_key.year not in self.years:
-            self.years.add(out_key.year)
-            self._populate(out_key.year)
-        return out_key
+        # Try to catch `date` and `str` type keys first.
+        if type(key) == date:  # Key has `date` type.
+            dt = key
+
+        elif type(key) == str:  # Key has `str` type.
+            try:
+                dt = parse(key).date()
+            except (OverflowError, ValueError):
+                raise ValueError(f"Cannot parse date from string '{key}'")
+
+        # Check all other types.
+        elif isinstance(key, datetime):  # Key type is derived from `datetime`.
+            dt = key.date()
+
+        # Must go after the `isinstance(key, datetime)` check
+        # as datetime is derived from `date`.
+        elif isinstance(key, date):  # Key type is derived from `date`.
+            dt = key
+
+        elif isinstance(
+            key, (float, int)
+        ):  # Key type is derived from `float` or `int`.
+            dt = datetime.utcfromtimestamp(key).date()
+
+        else:  # Key type is not supported.
+            raise TypeError(f"Cannot convert type '{type(key)}' to date.")
+
+        # Automatically expand for `expand=True` cases.
+        if self.expand and dt.year not in self.years:
+            self.years.add(dt.year)
+            self._populate(dt.year)
+
+        return dt
+
+    def __bool__(self) -> bool:
+        return len(self) > 0
 
     def __contains__(self, key: object) -> bool:
         """Return true if date is in self, false otherwise. Accepts a date in
@@ -327,8 +340,8 @@ class HolidayBase(Dict[date, str]):
         * or a :class:`float` or :class:`int` representing a POSIX timestamp.
         """
 
-        if not isinstance(key, (date, datetime, str, float, int)):
-            raise TypeError("Cannot convert type '%s' to date." % type(key))
+        if not isinstance(key, (date, datetime, float, int, str)):
+            raise TypeError(f"Cannot convert type '{type(key)}' to date.")
 
         return dict.__contains__(
             cast("Mapping[Any, Any]", self), self.__keytransform__(key)
@@ -350,7 +363,7 @@ class HolidayBase(Dict[date, str]):
                 step = key.step
             else:
                 raise TypeError(
-                    "Cannot convert type '%s' to int." % type(key.step)
+                    f"Cannot convert type '{type(key.step)}' to int."
                 )
 
             if step == 0:
@@ -363,22 +376,20 @@ class HolidayBase(Dict[date, str]):
             days_in_range = []
             for delta_days in range(0, date_diff.days, step):
                 day = start + timedelta(days=delta_days)
-                try:
-                    self.__getitem__(day)
+                if day in self:
                     days_in_range.append(day)
-                except KeyError:
-                    pass
+
             return days_in_range
+
         return dict.__getitem__(self, self.__keytransform__(key))
 
     def __setitem__(self, key: DateLike, value: str) -> None:
         if key in self:
             # If there are multiple holidays on the same date
             # order their names alphabetically.
-            delimiter = ", "
-            holiday_names = set(self.get(key).split(delimiter))
+            holiday_names = set(self[key].split(HOLIDAY_NAME_DELIMITER))
             holiday_names.add(value)
-            value = delimiter.join(sorted(holiday_names))
+            value = HOLIDAY_NAME_DELIMITER.join(sorted(holiday_names))
 
         dict.__setitem__(self, self.__keytransform__(key), value)
 
@@ -402,16 +413,21 @@ class HolidayBase(Dict[date, str]):
             * or a :class:`float` or :class:`int` representing a POSIX
               timestamp.
         """
-        args_list = list(args)
-        for arg in args_list:
+        for arg in args:
             if isinstance(arg, dict):
-                for key, value in list(arg.items()):
+                for key, value in arg.items():
                     self[key] = value
             elif isinstance(arg, list):
                 for item in arg:
                     self[item] = "Holiday"
             else:
                 self[arg] = "Holiday"
+
+    def _add_observed_holiday(
+        self, dt: DateLike, name: str, suffix: str = "(Observed)"
+    ) -> None:
+        """Adds a holiday name with an observance indication."""
+        self[dt] = f"{name} {suffix}"
 
     def append(
         self, *args: Union[Dict[DateLike, str], List[DateLike], DateLike]
@@ -462,7 +478,11 @@ class HolidayBase(Dict[date, str]):
             * or a :class:`float` or :class:`int` representing a POSIX
               timestamp.
         """
-        return [h for h in self.get(key, "").split(", ") if h]
+        return [
+            name
+            for name in self.get(key, "").split(HOLIDAY_NAME_DELIMITER)
+            if name
+        ]
 
     def get_named(self, name: str) -> List[date]:
         """Return a list of all holiday dates matching the provided holiday
@@ -475,13 +495,9 @@ class HolidayBase(Dict[date, str]):
         :return:
             A list of all holiday dates matching the provided holiday name.
         """
-        original_expand = self.expand
-        self.expand = False
-        matches = [
-            key for key in self if name.lower() in str(self[key]).lower()
+        return [
+            key for key, value in self.items() if name.lower() in value.lower()
         ]
-        self.expand = original_expand
-        return matches
 
     def pop(
         self,
@@ -512,6 +528,7 @@ class HolidayBase(Dict[date, str]):
         """
         if default is None:
             return dict.pop(self, self.__keytransform__(key))
+
         return dict.pop(self, self.__keytransform__(key), default)
 
     def pop_named(self, name: str) -> List[date]:
@@ -531,12 +548,14 @@ class HolidayBase(Dict[date, str]):
         :raise:
             KeyError if date is not a holiday and default is not given.
         """
-        to_pop = self.get_named(name)
-        if not to_pop:
+        dates = self.get_named(name)
+        if not dates:
             raise KeyError(name)
-        for key in to_pop:
-            self.pop(key)
-        return to_pop
+
+        for dt in dates:
+            self.pop(dt)
+
+        return dates
 
     def __eq__(self, other: object) -> bool:
         return dict.__eq__(self, other) and self.__dict__ == other.__dict__
@@ -559,12 +578,14 @@ class HolidayBase(Dict[date, str]):
         """
         if isinstance(other, int) and other == 0:
             # Required to sum() list of holidays
-            # sum([h1, h2]) is equivalent to (0 + h1 + h2)
+            # sum([h1, h2]) is equivalent to (0 + h1 + h2).
             return self
-        elif not isinstance(other, (HolidayBase, HolidaySum)):
+
+        if not isinstance(other, (HolidayBase, HolidaySum)):
             raise TypeError(
                 "Holiday objects can only be added with other Holiday objects"
             )
+
         return HolidaySum(self, other)
 
     def __radd__(self, other: Any) -> "HolidayBase":
@@ -587,7 +608,7 @@ class HolidayBase(Dict[date, str]):
         >>> us_holidays.update(country_holidays('US', years=2021))
         """
 
-        # Special holidays list.
+        # Populate items from the special holidays list.
         for month, day, name in self.special_holidays.get(year, ()):
             self[date(year, month, day)] = name
 
@@ -604,27 +625,30 @@ class HolidayBase(Dict[date, str]):
         return super().__reduce__()
 
     def __repr__(self) -> str:
-        _repr = ""
-        if len(self) == 0:
-            if hasattr(self, "market"):
-                _repr = f"holidays.financial_holidays({self.market!r}"
-                if self.subdiv:
-                    _repr += f", subdiv={self.subdiv!r}"
-                _repr += ")"
-            if hasattr(self, "country"):
-                if _repr:
-                    _repr += " + "
-                _repr += f"holidays.country_holidays({self.country!r}"
-                if self.subdiv:
-                    _repr += f", subdiv={self.subdiv!r}"
-                _repr += ")"
-            return _repr
-        return super().__repr__()
+        if self:
+            return super().__repr__()
+
+        repr = []
+        if hasattr(self, "market"):
+            repr.append(f"holidays.financial_holidays({self.market!r}")
+            if self.subdiv:
+                repr.append(f", subdiv={self.subdiv!r}")
+            repr.append(")")
+        elif hasattr(self, "country"):
+            if repr:
+                repr.append(" + ")
+            repr.append(f"holidays.country_holidays({self.country!r}")
+            if self.subdiv:
+                repr.append(f", subdiv={self.subdiv!r}")
+            repr.append(")")
+
+        return "".join(repr)
 
     def __str__(self) -> str:
-        if len(self) == 0:
-            return str(self.__dict__)
-        return super().__str__()
+        if self:
+            return super().__str__()
+
+        return str(self.__dict__)
 
 
 class HolidaySum(HolidayBase):
@@ -683,27 +707,27 @@ country_holidays('CA') + country_holidays('MX')
          (datetime.date(2020, 5, 1), 'Día del Trabajo [Labour Day]'),
          (datetime.date(2020, 5, 18), 'Victoria Day')]
         """
-        # store originals in the holidays attribute
+        # Store originals in the holidays attribute.
         self.holidays = []
         for operand in (h1, h2):
             if isinstance(operand, HolidaySum):
-                for h in operand.holidays:
-                    self.holidays.append(h)
+                self.holidays.extend(operand.holidays)
             else:
                 self.holidays.append(operand)
+
         kwargs: Dict[str, Any] = {}
-        # join years, expand and observed
+        # Join years, expand and observed.
         kwargs["years"] = h1.years | h2.years
         kwargs["expand"] = h1.expand or h2.expand
         kwargs["observed"] = h1.observed or h2.observed
-        # join country and subdivisions data
-        # TODO this way makes no sense: joining Italy Catania (IT, CA) with
+        # Join country and subdivisions data.
+        # TODO: this way makes no sense: joining Italy Catania (IT, CA) with
         # USA Mississippi (US, MS) and USA Michigan (US, MI) yields
         # country=["IT", "US"] and subdiv=["CA", "MS", "MI"], which could very
         # well be California and Messina and Milano, or Catania, Mississippi
         # and Milano, or ... you get the picture.
         # Same goes when countries and markets are being mixed (working, yet
-        # still nonsensical)
+        # still nonsensical).
         for attr in ("country", "market", "subdiv"):
             if (
                 getattr(h1, attr, None)
@@ -720,20 +744,18 @@ country_holidays('CA') + country_holidays('MX')
                     if isinstance(getattr(h2, attr), list)
                     else [getattr(h2, attr)]
                 )
-                kwargs[attr] = a1 + a2
+                value = a1 + a2
             else:
-                arg = getattr(h1, attr, None) or getattr(h2, attr, None)
-                if arg:
-                    kwargs[attr] = arg
+                value = getattr(h1, attr, None) or getattr(h2, attr, None)
 
-        if "country" in kwargs:
-            self.country = kwargs.pop("country")
-        if "market" in kwargs:
-            self.market = kwargs.pop("market")
+            if attr == "subdiv":
+                kwargs[attr] = value
+            else:
+                setattr(self, attr, value)
 
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
-        for h in self.holidays[::-1]:
-            h._populate(year)
-            self.update(cast("Dict[DateLike, str]", h))
+        for operand in self.holidays:
+            operand._populate(year)
+            self.update(cast("Dict[DateLike, str]", operand))
