@@ -17,6 +17,7 @@ from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAY, JUL, SEP, OCT, DEC, SAT, SUN
+from holidays.constants import HOLIDAY_NAME_DELIMITER
 from holidays.holiday_base import HolidayBase
 
 
@@ -82,7 +83,7 @@ class Botswana(HolidayBase):
 
                 # If there is a holiday and an (Observed) holiday
                 # on the same day, add an (Observed) holiday for that holiday
-                hol_names = self.get(k).split(",")
+                hol_names = self.get(k).split(HOLIDAY_NAME_DELIMITER)
                 if len(hol_names) > 1:
                     # self.get(date) returns a string containing holidays as a
                     # comma delimited string split on delimiter to determine if

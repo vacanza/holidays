@@ -61,7 +61,7 @@ class TestBO(unittest.TestCase):
         t_holidays = holidays.BO(subdiv="T")
         dt = date(2022, 4, 15)
         self.assertIn(dt, t_holidays)
-        self.assertEqual(t_holidays[dt], "La Tablada, Viernes Santo")
+        self.assertEqual(t_holidays[dt], "La Tablada; Viernes Santo")
 
     def test_carnival_in_oruro(self):
         self.assertNotIn(date(2020, 2, 21), self.holidays)
