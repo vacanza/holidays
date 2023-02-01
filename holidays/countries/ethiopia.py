@@ -34,7 +34,6 @@ from holidays.utils import _islamic_to_gre
 
 
 class Ethiopia(HolidayBase):
-
     country = "ET"
 
     def _populate(self, year):

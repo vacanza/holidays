@@ -774,7 +774,6 @@ class Malaysia(HolidayBase):
 
 
 class MY(Malaysia):
-
     # __init__ required for IDE typing and inheritance of docstring.
     def __init__(
         self,
@@ -789,7 +788,6 @@ class MY(Malaysia):
 
 
 class MYS(Malaysia):
-
     # __init__ required for IDE typing and inheritance of docstring.
     def __init__(
         self,

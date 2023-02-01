@@ -56,7 +56,6 @@ class Chile(HolidayBase):
     ]
 
     def _populate(self, year):
-
         # Law 2.977 established official holidays for Chile
         # in its current form
         if year <= 1914:

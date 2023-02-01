@@ -282,7 +282,7 @@ class Singapore(HolidayBase):
         # a Sunday, the day next following not being itself a public holiday
         # is declared a public holiday in Singapore."
         if self.observed and year >= 1998:
-            for (hol_date, hol_name) in list(self.items()):
+            for hol_date, hol_name in list(self.items()):
                 if hol_date.year == year and hol_date.weekday() == SUN:
                     in_lieu_date = hol_date + td(days=+1)
                     while in_lieu_date.year == year and in_lieu_date in self:
@@ -295,7 +295,6 @@ class Singapore(HolidayBase):
 
 
 class SG(Singapore):
-
     # __init__ required for IDE typing and inheritance of docstring.
     def __init__(
         self,
@@ -310,7 +309,6 @@ class SG(Singapore):
 
 
 class SGP(Singapore):
-
     # __init__ required for IDE typing and inheritance of docstring.
     def __init__(
         self,

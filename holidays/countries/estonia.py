@@ -19,7 +19,6 @@ from holidays.holiday_base import HolidayBase
 
 
 class Estonia(HolidayBase):
-
     country = "EE"
 
     def _populate(self, year):

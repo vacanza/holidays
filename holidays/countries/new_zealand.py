@@ -22,7 +22,6 @@ from holidays.holiday_base import HolidayBase
 
 
 class NewZealand(HolidayBase):
-
     country = "NZ"
     special_holidays = {2022: ((SEP, 26, "Queen Elizabeth II Memorial Day"),)}
     subdivisions = [

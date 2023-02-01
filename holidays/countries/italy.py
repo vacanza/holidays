@@ -23,7 +23,6 @@ from holidays.holiday_base import HolidayBase
 
 
 class Italy(HolidayBase):
-
     country = "IT"
     # Reference: https://it.wikipedia.org/wiki/Province_d%27Italia
     # Please maintain in alphabetical order for easy updating in the future

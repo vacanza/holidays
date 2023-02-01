@@ -22,7 +22,6 @@ from holidays.holiday_base import HolidayBase
 
 
 class Israel(HolidayBase):
-
     country = "IL"
 
     def _populate(self, year):
