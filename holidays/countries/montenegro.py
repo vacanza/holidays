@@ -10,9 +10,9 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import EASTER_ORTHODOX, easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAY, JUL, SUN
 from holidays.holiday_base import HolidayBase
@@ -32,8 +32,8 @@ class Montenegro(HolidayBase):
     def _add_holiday_observed(self, hol_date: date, hol_name: str) -> None:
         self[hol_date] = hol_name
         if self._is_weekend(hol_date):
-            self[hol_date + rd(days=+2)] = f"{hol_name} (Observed)"
-        self[hol_date + rd(days=+1)] = (
+            self[hol_date + td(days=+2)] = f"{hol_name} (Observed)"
+        self[hol_date + td(days=+1)] = (
             f"{hol_name} (Observed)" if hol_date.weekday() == SUN else hol_name
         )
 
@@ -52,13 +52,13 @@ class Montenegro(HolidayBase):
         easter_sunday = easter(year, method=EASTER_ORTHODOX)
 
         # Good Friday.
-        self[easter_sunday + rd(days=-2)] = "Orthodox Good Friday"
+        self[easter_sunday + td(days=-2)] = "Orthodox Good Friday"
 
         # Easter Sunday.
         self[easter_sunday] = "Orthodox Easter Sunday"
 
         # Easter Monday.
-        self[easter_sunday + rd(days=+1)] = "Orthodox Easter Monday"
+        self[easter_sunday + td(days=+1)] = "Orthodox Easter Monday"
 
         # Labour Day.
         self._add_holiday_observed(date(year, MAY, 1), "Labour Day")

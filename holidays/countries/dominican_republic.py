@@ -72,7 +72,7 @@ class DominicanRepublic(HolidayBase):
 
         # Feast of Corpus Christi
         self[
-            easter_date + rd(days=+60)
+            easter_date + td(days=+60)
         ] = "Corpus Christi [Feast of Corpus Christi]"
 
         # Restoration Day
