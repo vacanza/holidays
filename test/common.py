@@ -117,15 +117,16 @@ class TestCase(unittest.TestCase):
             set(dates).difference(holidays.keys()),
         )
 
-    def assertHolidayName(self, *args):
+    def assertHolidayName(self, name, *args):
         """Assert a holiday with a specific name exists."""
 
-        holidays, names = self._parse_arguments(args)
-        for name in names:
-            self.assertTrue(holidays.get_named(name))
+        holidays, _ = self._parse_arguments(args)
+        self.assertEqual(
+            len(holidays.years), len(holidays.get_named(name)), name
+        )
 
     def assertHolidays(self, *args):
-        """Asserts holidays exactly match expected holidays."""
+        """Assert holidays exactly match expected holidays."""
 
         holidays, expected_holidays = self._parse_arguments(
             args, expand_items=False
@@ -151,7 +152,7 @@ class TestCase(unittest.TestCase):
 
         holidays, dates = self._parse_arguments(args)
         for dt in dates:
-            self.assertEqual(name, holidays.get(dt), dt)
+            self.assertIn(name, holidays.get_list(dt))
 
     def assertNoHoliday(self, *args):
         """Assert each date is not a holiday."""
@@ -160,12 +161,11 @@ class TestCase(unittest.TestCase):
         for dt in dates:
             self.assertNotIn(dt, holidays, dt)
 
-    def assertNoHolidayName(self, *args):
+    def assertNoHolidayName(self, name, *args):
         """Assert a holiday with a specific name doesn't exist."""
 
-        holidays, names = self._parse_arguments(args)
-        for name in names:
-            self.assertFalse(holidays.get_named(name))
+        holidays, _ = self._parse_arguments(args)
+        self.assertFalse(holidays.get_named(name), name)
 
     def assertNoHolidays(self, holidays):
         """Assert holidays dict is empty."""
