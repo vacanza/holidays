@@ -22,6 +22,11 @@ from holidays.holiday_base import HolidayBase
 
 
 class Australia(HolidayBase):
+    """
+    References:
+      - https://www.qld.gov.au/recreation/travel/holidays
+    """
+
     country = "AU"
     special_holidays = {
         2022: (
@@ -239,15 +244,16 @@ class Australia(HolidayBase):
         # not prior to the 5th - in which case it will begin on the second
         # Friday. The Wednesday during the show is a public holiday.
         if self.subdiv == "QLD":
-            name = "The Royal Queensland Show"
-            if year == 2020:
-                self[date(year, AUG, 14)] = name
-            if year == 2021:
-                self[date(year, OCT, 29)] = name
-            else:
-                self[
-                    date(year, AUG, 5) + rd(weekday=FR) + rd(weekday=WE)
-                ] = name
+            ekka_dates = {
+                2020: date(year, AUG, 14),
+                2021: date(year, OCT, 29),
+            }
+            self[
+                ekka_dates.get(
+                    year,
+                    date(year, AUG, 5) + rd(weekday=FR) + rd(weekday=WE),
+                )
+            ] = "The Royal Queensland Show"
 
         # Christmas Day
         name = "Christmas Day"

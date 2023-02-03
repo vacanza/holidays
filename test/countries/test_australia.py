@@ -312,15 +312,21 @@ class TestAU(unittest.TestCase):
             self.assertEqual(self.state_hols["VIC"][dt], "Melbourne Cup")
 
     def test_royal_queensland_show(self):
-        for year, day in enumerate([15, 14, 14, 29, 10, 16], 2018):
-            if year != 2021:
-                dt = date(year, 8, day)
-            else:
-                dt = date(year, 10, day)
-            self.assertIn(dt, self.state_hols["QLD"], dt)
-            self.assertEqual(
-                self.state_hols["QLD"][dt], "The Royal Queensland Show"
-            )
+        holiday_name = "The Royal Queensland Show"
+        qld_holidays = self.state_hols["QLD"]
+        for year, day in enumerate((15, 14, 14, 29, 10, 16), 2018):
+            dt = date(year, 10 if year == 2021 else 8, day)
+            self.assertIn(dt, qld_holidays, dt)
+            self.assertEqual(qld_holidays[dt], holiday_name)
+
+        self.assertEqual(
+            1,
+            len(
+                holidays.Australia(subdiv="QLD", years=2020).get_named(
+                    holiday_name
+                )
+            ),
+        )
 
     def test_christmas_day(self):
         self.holidays.observed = False
