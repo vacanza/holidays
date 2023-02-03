@@ -301,11 +301,11 @@ class TestBasics(unittest.TestCase):
         self.assertEqual(na.get(date(1969, 7, 1)), "Dominion Day")
         self.assertEqual(na.get(date(1983, 7, 1)), "Canada Day")
         self.assertEqual(
-            na.get(date(1969, 12, 25)), "Christmas Day, Navidad [Christmas]"
+            na.get(date(1969, 12, 25)), "Christmas Day; Navidad [Christmas]"
         )
         na = holidays.MX() + holidays.CA() + holidays.US()
         self.assertEqual(
-            na.get(date(1969, 12, 25)), "Christmas Day, Navidad [Christmas]"
+            na.get(date(1969, 12, 25)), "Christmas Day; Navidad [Christmas]"
         )
 
     def test_add_financial(self):
@@ -321,7 +321,7 @@ class TestBasics(unittest.TestCase):
         wild = westland + chathams
         self.assertEqual(
             wild[date(1969, 12, 1)],
-            ("Chatham Islands Anniversary Day, West Coast Anniversary Day"),
+            ("Chatham Islands Anniversary Day; West Coast Anniversary Day"),
         )
 
         self.assertEqual(
