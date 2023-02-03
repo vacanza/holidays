@@ -10,6 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import MO, SU
@@ -114,9 +115,9 @@ class Canada(HolidayBase):
             # Friday before the last Sunday in February
             dt = (
                 date(year, MAR, 1)
-                + rd(days=-1)
+                + td(days=-1)
                 + rd(weekday=SU(-1))
-                + rd(days=-2)
+                + td(days=-2)
             )
             self[dt] = self.tr("Heritage Day")
 
@@ -128,9 +129,9 @@ class Canada(HolidayBase):
 
         easter_date = easter(year)
         # Good Friday
-        self[easter_date + rd(days=-2)] = self.tr("Good Friday")
+        self[easter_date + td(days=-2)] = self.tr("Good Friday")
         # Easter Monday
-        self[easter_date + rd(days=+1)] = self.tr("Easter Monday")
+        self[easter_date + td(days=+1)] = self.tr("Easter Monday")
 
         # St. George's Day
         if self.subdiv == "NL" and year >= 1990:
@@ -161,7 +162,7 @@ class Canada(HolidayBase):
             dt = date(year, JUN, 24)
             self[dt] = name
             if self.observed and dt.weekday() == SUN:
-                self[dt + rd(days=+1)] = f"{name} {self.tr('(Observed)')}"
+                self[dt + td(days=+1)] = f"{name} {self.tr('(Observed)')}"
 
         # Discovery Day
         if self.subdiv == "NL" and year >= 1997:
@@ -194,7 +195,7 @@ class Canada(HolidayBase):
                 dt = date(year, JUL, 9)
                 self[dt] = name
                 if self.observed and dt.weekday() == SUN:
-                    self[dt + rd(days=+1)] = f"{name} {self.tr('(Observed)')}"
+                    self[dt + td(days=+1)] = f"{name} {self.tr('(Observed)')}"
             elif year == 2000:
                 self[date(2000, APR, 1)] = name
 
@@ -276,14 +277,14 @@ class Canada(HolidayBase):
         dt = date(year, DEC, 25)
         self[dt] = name
         if self.observed and self._is_weekend(dt):
-            self[dt + rd(days=+2)] = f"{name} {self.tr('(Observed)')}"
+            self[dt + td(days=+2)] = f"{name} {self.tr('(Observed)')}"
 
         # Boxing Day
         name = self.tr("Boxing Day")
         dt = date(year, DEC, 26)
         self[dt] = name
         if self.observed and self._is_weekend(dt):
-            self[dt + rd(days=+2)] = f"{name} {self.tr('(Observed)')}"
+            self[dt + td(days=+2)] = f"{name} {self.tr('(Observed)')}"
 
 
 class CA(Canada):

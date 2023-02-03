@@ -10,10 +10,10 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 from gettext import gettext as tr
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAY, AUG, NOV, DEC
 from holidays.holiday_base import HolidayBase
@@ -39,7 +39,7 @@ class Poland(HolidayBase):
 
         easter_date = easter(year)
         self[easter_date] = self.tr("Niedziela Wielkanocna")
-        self[easter_date + rd(days=+1)] = self.tr("Poniedziałek Wielkanocny")
+        self[easter_date + td(days=+1)] = self.tr("Poniedziałek Wielkanocny")
 
         if year >= 1950:
             self[date(year, MAY, 1)] = self.tr("Święto Państwowe")
@@ -48,8 +48,8 @@ class Poland(HolidayBase):
                 "Święto Narodowe Trzeciego Maja"
             )
 
-        self[easter_date + rd(days=+49)] = self.tr("Zielone Świątki")
-        self[easter_date + rd(days=+60)] = self.tr("Dzień Bożego Ciała")
+        self[easter_date + td(days=+49)] = self.tr("Zielone Świątki")
+        self[easter_date + td(days=+60)] = self.tr("Dzień Bożego Ciała")
 
         self[date(year, AUG, 15)] = self.tr(
             "Wniebowzięcie Najświętszej Marii Panny"

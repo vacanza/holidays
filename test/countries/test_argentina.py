@@ -10,8 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-
-from dateutil.relativedelta import relativedelta as rd
+from datetime import timedelta as td
 
 from holidays.constants import MAY, JUN, JUL, AUG, OCT
 from holidays.countries.argentina import AR, ARG, Argentina
@@ -45,8 +44,8 @@ class TestArgentina(TestCase):
             dt = date(year, 1, 1)
             self.assertHoliday(dt)
             self.assertNoHoliday(
-                dt + rd(days=-1),
-                dt + rd(days=+1),
+                dt + td(days=-1),
+                dt + td(days=+1),
             )
 
     def test_carnival_day(self):
@@ -102,8 +101,8 @@ class TestArgentina(TestCase):
             dt = date(year, MAY, 1)
             self.assertHoliday(dt)
             self.assertNoHoliday(
-                dt + rd(days=-1),
-                dt + rd(days=+1),
+                dt + td(days=-1),
+                dt + td(days=+1),
             )
 
     def test_may_revolution_day(self):
@@ -118,8 +117,8 @@ class TestArgentina(TestCase):
             dt = date(year, MAY, 25)
             self.assertHoliday(dt)
             self.assertNoHoliday(
-                dt + rd(days=-1),
-                dt + rd(days=+1),
+                dt + td(days=-1),
+                dt + td(days=+1),
             )
 
     def test_guemes_day(self):
@@ -127,8 +126,8 @@ class TestArgentina(TestCase):
             dt = date(year, JUN, 17)
             self.assertHoliday(dt)
             self.assertNoHoliday(
-                dt + rd(days=-1),
-                dt + rd(days=+1),
+                dt + td(days=-1),
+                dt + td(days=+1),
             )
 
     def test_belgrano_day(self):
@@ -136,8 +135,8 @@ class TestArgentina(TestCase):
             dt = date(year, JUN, 20)
             self.assertHoliday(dt)
             self.assertNoHoliday(
-                dt + rd(days=-1),
-                dt + rd(days=+1),
+                dt + td(days=-1),
+                dt + td(days=+1),
             )
 
     def test_independence_day(self):
@@ -157,8 +156,8 @@ class TestArgentina(TestCase):
             dt = date(year, JUL, 9)
             self.assertHoliday(dt)
             self.assertNoHoliday(
-                dt + rd(days=-1),
-                dt + rd(days=+1),
+                dt + td(days=-1),
+                dt + td(days=+1),
             )
 
     def test_san_martin_day(self):
@@ -173,8 +172,8 @@ class TestArgentina(TestCase):
             dt = date(year, AUG, 17)
             self.assertHoliday(dt)
             self.assertNoHoliday(
-                dt + rd(days=-1),
-                dt + rd(days=+1),
+                dt + td(days=-1),
+                dt + td(days=+1),
             )
 
     def test_cultural_day(self):
@@ -189,8 +188,8 @@ class TestArgentina(TestCase):
             dt = date(year, OCT, 12)
             self.assertHoliday(dt)
             self.assertNoHoliday(
-                dt + rd(days=-1),
-                dt + rd(days=+1),
+                dt + td(days=-1),
+                dt + td(days=+1),
             )
 
     def test_national_sovereignty_day(self):
@@ -201,8 +200,8 @@ class TestArgentina(TestCase):
             else:
                 self.assertHoliday(dt)
                 self.assertNoHoliday(
-                    dt + rd(days=-1),
-                    dt + rd(days=+1),
+                    dt + td(days=-1),
+                    dt + td(days=+1),
                 )
 
     def test_immaculate_conception_day(self):
@@ -217,8 +216,8 @@ class TestArgentina(TestCase):
             dt = date(year, 12, 8)
             self.assertHoliday(dt)
             self.assertNoHoliday(
-                dt + rd(days=-1),
-                dt + rd(days=+1),
+                dt + td(days=-1),
+                dt + td(days=+1),
             )
 
     def test_christmas(self):
@@ -226,18 +225,31 @@ class TestArgentina(TestCase):
             dt = date(year, 12, 25)
             self.assertHoliday(dt)
             self.assertNoHoliday(
-                dt + rd(days=-1),
-                dt + rd(days=+1),
+                dt + td(days=-1),
+                dt + td(days=+1),
             )
 
     def test_2022(self):
-        self.assertHolidaysEqual(
-            Argentina(observed=False, years=2022),
-            ("2022-02-28", "Día de Carnaval"),
-            ("2022-03-01", "Día de Carnaval"),
+        self.assertHolidays(
+            (
+                "2022-01-01",
+                "Año Nuevo",
+            ),
+            (
+                "2022-02-28",
+                "Día de Carnaval",
+            ),
+            (
+                "2022-03-01",
+                "Día de Carnaval",
+            ),
             (
                 "2022-03-24",
                 "Día Nacional de la Memoria por la Verdad y la Justicia",
+            ),
+            (
+                "2022-04-02",
+                "Día del Veterano y de los Caidos en la Guerra de Malvinas",
             ),
             (
                 "2022-04-14",
@@ -246,6 +258,14 @@ class TestArgentina(TestCase):
             (
                 "2022-04-15",
                 "Semana Santa (Viernes Santo)",
+            ),
+            (
+                "2022-04-17",
+                "Día de Pascuas",
+            ),
+            (
+                "2022-05-01",
+                "Día del Trabajo",
             ),
             (
                 "2022-05-25",
@@ -261,12 +281,29 @@ class TestArgentina(TestCase):
                 "Día Pase a la Inmortalidad del General D. Manuel Belgrano",
             ),
             (
+                "2022-07-09",
+                "Día de la Independencia",
+            ),
+            (
                 "2022-08-17",
                 "Día Pase a la Inmortalidad del General D. José de San Martin",
             ),
-            ("2022-10-12", "Día del Respeto a la Diversidad Cultural"),
-            ("2022-12-08", "La Inmaculada Concepción"),
-            ("2022-12-25", "Navidad"),
+            (
+                "2022-10-12",
+                "Día del Respeto a la Diversidad Cultural",
+            ),
+            (
+                "2022-11-20",
+                "Día Nacional de la Soberanía",
+            ),
+            (
+                "2022-12-08",
+                "La Inmaculada Concepción",
+            ),
+            (
+                "2022-12-25",
+                "Navidad",
+            ),
         )
 
     def test_i18n_default(self):

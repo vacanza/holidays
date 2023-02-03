@@ -10,9 +10,9 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import EASTER_ORTHODOX, easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAR, APR, MAY, AUG, OCT, NOV
 from holidays.holiday_base import HolidayBase
@@ -55,11 +55,11 @@ class Georgia(HolidayBase):
         easter_date = easter(year, method=EASTER_ORTHODOX)
         # Orthodox Good Friday
         name = "წითელი პარასკევი"
-        self[easter_date + rd(days=-2)] = name
+        self[easter_date + td(days=-2)] = name
 
         # Orthodox Holy Saturday
         name = "დიდი შაბათი"
-        self[easter_date + rd(days=-1)] = name
+        self[easter_date + td(days=-1)] = name
 
         # Orthodox Easter Sunday
         name = "აღდგომა"
@@ -67,7 +67,7 @@ class Georgia(HolidayBase):
 
         # Orthodox Easter Monday
         name = "შავი ორშაბათი"
-        self[easter_date + rd(days=+1)] = name
+        self[easter_date + td(days=+1)] = name
 
         # National Unity Day
         name = "ეროვნული ერთიანობის დღე"

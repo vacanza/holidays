@@ -145,8 +145,7 @@ class TestAzerbaijan(TestCase):
         self.assertNoHoliday(Azerbaijan(observed=False), observed_holidays)
 
     def test_2020(self):
-        self.assertHolidayDatesEqual(
-            Azerbaijan(years=2020),
+        self.assertHolidayDates(
             "2020-01-01",
             "2020-01-02",
             "2020-01-20",
@@ -175,8 +174,7 @@ class TestAzerbaijan(TestCase):
         )
 
     def test_2022(self):
-        self.assertHolidayDatesEqual(
-            Azerbaijan(years=2022),
+        self.assertHolidayDates(
             "2022-01-01",
             "2022-01-02",
             "2022-01-03",

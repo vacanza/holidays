@@ -10,9 +10,9 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import EASTER_ORTHODOX, easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import DEC, JAN, JUL, MAR, MAY, NOV
 from holidays.holiday_base import HolidayBase
@@ -51,7 +51,7 @@ class Belarus(HolidayBase):
         self[date(year, MAR, 8)] = "День женщин"
 
         # Radunitsa ("Day of Rejoicing")
-        self[easter(year, method=EASTER_ORTHODOX) + rd(days=+9)] = "Радуница"
+        self[easter(year, method=EASTER_ORTHODOX) + td(days=+9)] = "Радуница"
 
         # Labour Day
         self[date(year, MAY, 1)] = "Праздник труда"

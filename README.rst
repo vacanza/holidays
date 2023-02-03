@@ -106,7 +106,7 @@ Available Countries
 
 .. _ISO 3166-1 alpha-2 code: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
 
-We currently support 106 countries. The standard way to refer to a country is by
+We currently support 111 countries. The standard way to refer to a country is by
 using its `ISO 3166-1 alpha-2 code`_, the same used for domain names. The
 following countries and their subdivisions are available:
 
@@ -118,6 +118,12 @@ following countries and their subdivisions are available:
    * - Country
      - Code
      - Subdivisions Available
+   * - Albania
+     - AL
+     - None
+   * - Andorra
+     - AD
+     - Parishes: AD-02, AD-03, AD-04, AD-05, AD-06, AD-07, AD-08
    * - Angola
      - AO
      - None
@@ -313,6 +319,9 @@ following countries and their subdivisions are available:
    * - Monaco
      - MC
      - None
+   * - Montenegro
+     - ME
+     - None
    * - Morocco
      - MA
      - None
@@ -363,6 +372,9 @@ following countries and their subdivisions are available:
      - None
    * - Russia
      - RU
+     - None
+   * - San Marino
+     - SM
      - None
    * - Saudi Arabia
      - SA
@@ -423,6 +435,9 @@ following countries and their subdivisions are available:
      - None
    * - Uzbekistan
      - UZ
+     - None
+   * - Vatican City
+     - VA
      - None
    * - Venezuela
      - VE

@@ -10,9 +10,9 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, FEB, APR, MAY, JUL, AUG, OCT, NOV, DEC, SUN
 from holidays.holiday_base import HolidayBase
@@ -67,7 +67,7 @@ class Burundi(HolidayBase):
 
         # Ascension Day
         name = "Ascension Day"
-        self[easter(year) + rd(days=+39)] = name
+        self[easter(year) + td(days=+39)] = name
 
         # Independence Day post 1962
         name = "Independence Day"
@@ -82,7 +82,7 @@ class Burundi(HolidayBase):
             for date_obs in _islamic_to_gre(yr, 12, 10):
                 hol_date = date_obs
                 _add_holiday(hol_date, "Eid Al Adha")
-                _add_holiday(hol_date + rd(days=+1), "Eid Al Adha")
+                _add_holiday(hol_date + td(days=+1), "Eid Al Adha")
 
         # Assumption Day
         name = "Assumption Day"

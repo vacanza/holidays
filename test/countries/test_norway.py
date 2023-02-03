@@ -122,8 +122,7 @@ class TestNorway(SundayHolidays):
         )
 
     def test_2022(self):
-        self.assertHolidaysEqual(
-            Norway(observed=False, years=2022),
+        self.assertHolidays(
             ("2022-01-01", "Første nyttårsdag"),
             ("2022-04-14", "Skjærtorsdag"),
             ("2022-04-15", "Langfredag"),

@@ -10,6 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date, datetime
+from datetime import timedelta as td
 
 from dateutil import tz
 from dateutil.relativedelta import MO
@@ -148,16 +149,16 @@ class Japan(HolidayBase):
             # shall become a public holiday (振替休日) - substitute holidays
             for dt in list(self.keys()):
                 if dt.year == year and dt.weekday() == SUN:
-                    hol_date = dt + rd(days=+1)
+                    hol_date = dt + td(days=+1)
                     while hol_date in self:
-                        hol_date += rd(days=+1)
+                        hol_date += td(days=+1)
                     self[hol_date] = "振替休日"
 
             # A weekday between national holidays becomes
             # a holiday too (国民の休日) - citizens' holidays
             for dt in list(self.keys()):
-                if dt.year == year and dt + rd(days=+2) in self:
-                    hol_date = dt + rd(days=+1)
+                if dt.year == year and dt + td(days=+2) in self:
+                    hol_date = dt + td(days=+1)
                     if hol_date.weekday() != SUN and hol_date not in self:
                         self[hol_date] = "国民の休日"
 

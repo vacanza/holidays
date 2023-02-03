@@ -11,8 +11,7 @@
 
 import unittest
 from datetime import date
-
-from dateutil.relativedelta import relativedelta as rd
+from datetime import timedelta as td
 
 import holidays
 
@@ -154,7 +153,7 @@ class TestParaguay(unittest.TestCase):
             (2022, 4, 17),
         ]:
             easter = date(year, month, day)
-            easter_thursday = easter + rd(days=-3)
-            easter_friday = easter + rd(days=-2)
+            easter_thursday = easter + td(days=-3)
+            easter_friday = easter + td(days=-2)
             for holiday in [easter_thursday, easter_friday, easter]:
                 self.assertIn(holiday, self.holidays)

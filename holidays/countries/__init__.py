@@ -9,6 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from .albania import AL, ALB, Albania
+from .andorra import AD, AND, Andorra
 from .angola import AO, AGO, Angola
 from .argentina import AR, ARG, Argentina
 from .armenia import AM, ARM, Armenia
@@ -74,6 +76,7 @@ from .malta import MT, MLT, Malta
 from .mexico import MX, MEX, Mexico
 from .moldova import MD, MDA, Moldova
 from .monaco import MC, MCO, Monaco
+from .montenegro import ME, MNE, Montenegro
 from .morocco import MA, MOR, Morocco
 from .mozambique import MZ, MOZ, Mozambique
 from .namibia import NA, NAM, Namibia
@@ -91,6 +94,7 @@ from .poland import PL, POL, Poland
 from .portugal import PT, PRT, Portugal
 from .romania import RO, ROU, Romania
 from .russia import RU, RUS, Russia
+from .san_marino import SM, SMR, SanMarino
 from .saudi_arabia import SA, SAU, SaudiArabia
 from .serbia import RS, SRB, Serbia
 from .singapore import SG, SGP, Singapore
@@ -111,6 +115,7 @@ from .united_kingdom import GB, UK, GBR, UnitedKingdom
 from .united_states import US, USA, UnitedStates
 from .uruguay import UY, URY, Uruguay
 from .uzbekistan import UZ, UZB, Uzbekistan
+from .vatican_city import VA, VAT, VaticanCity
 from .venezuela import VE, VEN, Venezuela
 from .vietnam import VN, VNM, Vietnam
 from .zambia import ZM, ZMB, Zambia

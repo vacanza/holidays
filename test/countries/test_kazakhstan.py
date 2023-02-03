@@ -21,8 +21,7 @@ class TestKazakhstan(TestCase):
         self.assertCountryAliases(Kazakhstan, KZ, KAZ)
 
     def test2020(self):
-        self.assertHolidayDatesEqual(
-            Kazakhstan(years=2020),
+        self.assertHolidayDates(
             "2020-01-01",
             "2020-01-02",
             "2020-01-07",

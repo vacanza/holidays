@@ -9,31 +9,34 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
 from datetime import date
+from datetime import timedelta as td
 
-from dateutil.relativedelta import relativedelta as rd
+from holidays.countries.vietnam import Vietnam, VN, VNM
+from test.common import TestCase
 
-import holidays
 
-
-class TestVietnam(unittest.TestCase):
+class TestVietnam(TestCase):
     def setUp(self):
-        self.holidays = holidays.VN()
+        self.holidays = Vietnam()
+
+    def test_country_aliases(self):
+        self.assertCountryAliases(Vietnam, VN, VNM)
 
     def test_common(self):
-        self.assertEqual(
-            self.holidays[date(2020, 1, 1)], "International New Year's Day"
+        self.assertHolidaysName(
+            "International New Year's Day",
+            "2020-01-01",
         )
 
     def test_first_day_of_january(self):
-        for year in range(1979, 2050):
-            self.assertIn(
-                "International New Year's Day", self.holidays[date(year, 1, 1)]
-            )
+        self.assertHolidaysName(
+            "International New Year's Day",
+            (f"{year}-01-01" for year in range(1979, 2050)),
+        )
 
     def test_lunar_new_year(self):
-        for year, month, day in (
+        for dt in (
             (2008, 2, 7),
             (2009, 1, 26),
             (2010, 2, 14),
@@ -50,94 +53,89 @@ class TestVietnam(unittest.TestCase):
             (2021, 2, 12),
             (2022, 2, 1),
         ):
-            self.assertEqual(
-                self.holidays[date(year, month, day) + rd(days=-1)],
+            self.assertHolidaysName(
                 "Vietnamese New Year's Eve",
+                date(*dt) + td(days=-1),
             )
-            self.assertEqual(
-                self.holidays[date(year, month, day)],
+            self.assertHolidaysName(
                 "Vietnamese New Year",
+                date(*dt),
             )
-            self.assertEqual(
-                self.holidays[date(year, month, day) + rd(days=+1)],
+            self.assertHolidaysName(
                 "The second day of Tet Holiday",
+                date(*dt) + td(days=+1),
             )
-            self.assertEqual(
-                self.holidays[date(year, month, day) + rd(days=+2)],
+            self.assertHolidaysName(
                 "The third day of Tet Holiday",
+                date(*dt) + td(days=+2),
             )
-            self.assertEqual(
-                self.holidays[date(year, month, day) + rd(days=+3)],
+            self.assertHolidaysName(
                 "The forth day of Tet Holiday",
+                date(*dt) + td(days=+3),
             )
-            self.assertEqual(
-                self.holidays[date(year, month, day) + rd(days=+4)],
+            self.assertHolidaysName(
                 "The fifth day of Tet Holiday",
+                date(*dt) + td(days=+4),
             )
 
     def test_king_hung_day(self):
-        for year, month, day in ((2020, 4, 2), (2021, 4, 21), (2022, 4, 10)):
-            self.assertEqual(
-                self.holidays[date(year, month, day)],
-                "Hung Kings Commemoration Day",
-            )
+        self.assertHolidaysName(
+            "Hung Kings Commemoration Day",
+            "2020-04-02",
+            "2021-04-21",
+            "2022-04-10",
+        )
 
     def test_liberation_day(self):
-        for year in range(1979, 2050):
-            self.assertIn(
-                "Liberation Day/Reunification Day",
-                self.holidays[date(year, 4, 30)],
-            )
+        self.assertHolidaysName(
+            "Liberation Day/Reunification Day",
+            (f"{year}-04-30" for year in range(1979, 2050)),
+        )
 
     def test_international_labor_day(self):
-        for year in range(1979, 2050):
-            self.assertIn(
-                "International Labor Day", self.holidays[date(year, 5, 1)]
-            )
+        self.assertHolidaysName(
+            "International Labor Day",
+            (f"{year}-05-01" for year in range(1979, 2050)),
+        )
 
     def test_independence_day(self):
-        for year in range(1979, 2050):
-            self.assertIn("Independence Day", self.holidays[date(year, 9, 2)])
-
-    def test_years_range(self):
-        self.holidays = holidays.VN(years=range(1979, 2050))
-        for year in range(1979, 2050):
-            self.assertIn(
-                "International New Year's Day", self.holidays[date(year, 1, 1)]
-            )
+        self.assertHolidaysName(
+            "Independence Day",
+            (f"{year}-09-02" for year in range(1979, 2050)),
+        )
 
     def test_observed(self):
-        for year, month, day in (
-            # International New Year's Day
-            (2012, 1, 2),
-            (2017, 1, 2),
-            (2022, 1, 3),
-            # Hung Kings Commemoration Day
-            (2012, 4, 2),
-            (2016, 4, 18),
-            (2019, 4, 15),
-            (2022, 4, 11),
-            (2023, 5, 2),
-            # Liberation Day/Reunification Day
-            (2011, 5, 2),
-            (2016, 5, 2),
-            (2017, 5, 2),
-            (2022, 5, 2),
-            (2023, 5, 3),
-            # International Labor Day
-            (2011, 5, 3),
-            (2016, 5, 3),
-            (2021, 5, 3),
-            (2022, 5, 3),
-            # Independence Day
-            (2012, 9, 3),
-            (2017, 9, 4),
-            (2018, 9, 3),
-            (2023, 9, 4),
-        ):
-            self.assertIn(date(year, month, day), self.holidays)
+        self.assertHoliday(
+            # International New Year's Day.
+            "2012-01-02",
+            "2017-01-02",
+            "2022-01-03",
+            # Hung Kings Commemoration Day.
+            "2012-04-02",
+            "2016-04-18",
+            "2019-04-15",
+            "2022-04-11",
+            "2023-05-02",
+            # Liberation Day/Reunification Day.
+            "2011-05-02",
+            "2016-05-02",
+            "2017-05-02",
+            "2022-05-02",
+            "2023-05-03",
+            # International Labor Day.
+            "2011-05-03",
+            "2016-05-03",
+            "2021-05-03",
+            "2022-05-03",
+            # Independence Day.
+            "2012-09-03",
+            "2017-09-04",
+            "2018-09-03",
+            "2023-09-04",
+        )
 
     def test_not_observed(self):
-        self.holidays = holidays.VN(observed=False)
-        # New Years Day
-        self.assertNotIn("2023-01-02", self.holidays)
+        self.assertNoHoliday(
+            Vietnam(observed=False),
+            "2023-01-02",
+        )

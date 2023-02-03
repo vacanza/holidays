@@ -10,9 +10,9 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
@@ -43,8 +43,8 @@ class Argentina(HolidayBase):
         easter_date = easter(year)
         # Carnival days
         name = self.tr("Día de Carnaval")
-        self[easter_date + rd(days=-48)] = name
-        self[easter_date + rd(days=-47)] = name
+        self[easter_date + td(days=-48)] = name
+        self[easter_date + td(days=-47)] = name
 
         # Memory's National Day for the Truth and Justice
         name = self.tr(
@@ -61,8 +61,8 @@ class Argentina(HolidayBase):
         name_fri = self.tr("Semana Santa (Viernes Santo)")
         name_easter = self.tr("Día de Pascuas")
 
-        self[easter_date + rd(days=-3)] = name_thu
-        self[easter_date + rd(days=-2)] = name_fri
+        self[easter_date + td(days=-3)] = name_thu
+        self[easter_date + td(days=-2)] = name_fri
 
         if not self.observed and self._is_weekend(easter_date):
             pass
