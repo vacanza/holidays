@@ -23,6 +23,7 @@ from holidays.holiday_base import HolidayBase
 class Jamaica(HolidayBase):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Jamaica
+    https://www.mlss.gov.jm/wp-content/uploads/2017/11/The-Holidays-Public-General-Act.pdf
     """
 
     country = "JM"
@@ -40,7 +41,7 @@ class Jamaica(HolidayBase):
 
         # Labour Day
         dt = date(year, MAY, 23)
-        name = "Labour Day"
+        name = "National Labour Day"
         self[dt] = name
         if self.observed and self._is_weekend(dt):
             self[dt + rd(weekday=MO)] = f"{name} (Observed)"
