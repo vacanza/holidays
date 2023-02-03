@@ -50,10 +50,10 @@ class TestPanama(TestCase):
     def test_national_mourning_day(self):
         self.assertHoliday(f"{year}-12-20" for year in range(2022, 2051))
         self.assertNoHoliday(f"{year}-12-20" for year in range(1950, 2022))
-        for year in range(1950, 2022):
-            self.assertNoHolidayName(
-                Panama(years=year), "National Mourning Day"
-            )
+        self.assertNoHolidayName(
+            "National Mourning Day",
+            Panama(years=range(1950, 2022)),
+        )
 
     def test_christmas_day(self):
         self.assertHoliday(f"{year}-12-25" for year in range(1950, 2051))
