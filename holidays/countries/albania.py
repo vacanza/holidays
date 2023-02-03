@@ -10,6 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import EASTER_ORTHODOX, EASTER_WESTERN, easter
 from dateutil.relativedelta import MO
@@ -35,7 +36,7 @@ class Albania(HolidayBase):
         if self.observed and self._is_weekend(dt):
             dt += rd(weekday=MO(+1))
             while dt.year == holiday_date.year and dt in self:
-                dt += rd(days=+1)
+                dt += td(days=+1)
             self[dt] = f"{holiday_name} (Observed)"
 
         return dt
