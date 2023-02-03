@@ -10,9 +10,9 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import EASTER_ORTHODOX, easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAY, JUL, SUN
 from holidays.holiday_base import HolidayBase
@@ -29,30 +29,19 @@ class Montenegro(HolidayBase):
 
     country = "ME"
 
-    def _add_holiday_observed(
-        self, holiday_name: str, holiday_date_1: date, holiday_date_2: date
-    ) -> None:
-        if holiday_date_1.weekday() == SUN:
-            self[holiday_date_1] = holiday_name
-            self[holiday_date_1 + rd(days=+1)] = f"{holiday_name} (Observed)"
-            self[holiday_date_1 + rd(days=+2)] = f"{holiday_name} (Observed)"
-        elif holiday_date_2.weekday() == SUN:
-            self[holiday_date_1] = holiday_name
-            self[holiday_date_2] = holiday_name
-            self[holiday_date_2 + rd(days=+1)] = f"{holiday_name} (Observed)"
-        else:
-            self[holiday_date_1] = holiday_name
-            self[holiday_date_2] = holiday_name
+    def _add_holiday_observed(self, hol_date: date, hol_name: str) -> None:
+        self[hol_date] = hol_name
+        if self._is_weekend(hol_date):
+            self[hol_date + td(days=+2)] = f"{hol_name} (Observed)"
+        self[hol_date + td(days=+1)] = (
+            f"{hol_name} (Observed)" if hol_date.weekday() == SUN else hol_name
+        )
 
     def _populate(self, year: int) -> None:
         super()._populate(year)
 
         # New Year's Day.
-        self._add_holiday_observed(
-            "New Year's Day",
-            date(year, JAN, 1),
-            date(year, JAN, 2),
-        )
+        self._add_holiday_observed(date(year, JAN, 1), "New Year's Day")
 
         # Orthodox Christmas Eve.
         self[date(year, JAN, 6)] = "Orthodox Christmas Eve"
@@ -63,32 +52,22 @@ class Montenegro(HolidayBase):
         easter_sunday = easter(year, method=EASTER_ORTHODOX)
 
         # Good Friday.
-        self[easter_sunday + rd(days=-2)] = "Orthodox Good Friday"
+        self[easter_sunday + td(days=-2)] = "Orthodox Good Friday"
 
         # Easter Sunday.
         self[easter_sunday] = "Orthodox Easter Sunday"
 
         # Easter Monday.
-        self[easter_sunday + rd(days=+1)] = "Orthodox Easter Monday"
+        self[easter_sunday + td(days=+1)] = "Orthodox Easter Monday"
 
         # Labour Day.
-        self._add_holiday_observed(
-            "Labour Day", date(year, MAY, 1), date(year, MAY, 2)
-        )
+        self._add_holiday_observed(date(year, MAY, 1), "Labour Day")
 
         # Independence Day.
-        self._add_holiday_observed(
-            "Independence Day",
-            date(year, MAY, 21),
-            date(year, MAY, 22),
-        )
+        self._add_holiday_observed(date(year, MAY, 21), "Independence Day")
 
         # Statehood Day.
-        self._add_holiday_observed(
-            "Statehood Day",
-            date(year, JUL, 13),
-            date(year, JUL, 14),
-        )
+        self._add_holiday_observed(date(year, JUL, 13), "Statehood Day")
 
 
 class ME(Montenegro):
