@@ -61,7 +61,7 @@ class TestJamaica(TestCase):
         )
         self.assertHoliday(dt)
         self.assertNoHoliday(self.holidays_no_observed, dt)
-        self.assertNoHolidayName(Jamaica(years=1997), "Emancipation Day")
+        self.assertNoHolidayName("Emancipation Day", Jamaica(years=1997))
 
     def test_independence_day(self):
         self.assertHoliday(f"{year}-08-06" for year in range(1950, 2050))

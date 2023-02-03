@@ -67,17 +67,15 @@ class TestChile(TestCase):
             "1950-05-18",
             "1967-05-04",
         )
-        for year in range(1915, 1968):
-            self.assertHolidayName(
-                Chile(years=year),
-                "Ascensión del Señor [Ascension of Jesus]",
-            )
+        self.assertHolidayName(
+            "Ascensión del Señor [Ascension of Jesus]",
+            Chile(years=range(1915, 1968)),
+        )
 
-        for year in range(1968, 2050):
-            self.assertNoHolidayName(
-                Chile(years=year),
-                "Ascensión del Señor [Ascension of Jesus]",
-            )
+        self.assertNoHolidayName(
+            "Ascensión del Señor [Ascension of Jesus]",
+            Chile(years=range(1968, 2050)),
+        )
 
     def test_corpus_christi(self):
         self.assertHoliday(
@@ -90,21 +88,18 @@ class TestChile(TestCase):
             "2000-06-19",
             "2006-06-12",
         )
-        for year in range(1915, 1968):
-            self.assertHolidayName(
-                Chile(years=year),
-                "Corpus Christi [Corpus Christi]",
-            )
-        for year in range(1968, 1987):
-            self.assertNoHolidayName(
-                Chile(years=year),
-                "Corpus Christi [Corpus Christi]",
-            )
-        for year in range(1987, 2006):
-            self.assertHolidayName(
-                Chile(years=year),
-                "Corpus Christi [Corpus Christi]",
-            )
+        self.assertHolidayName(
+            "Corpus Christi [Corpus Christi]",
+            Chile(years=range(1915, 1968)),
+        )
+        self.assertNoHolidayName(
+            "Corpus Christi [Corpus Christi]",
+            Chile(years=range(1968, 1987)),
+        )
+        self.assertHolidayName(
+            "Corpus Christi [Corpus Christi]",
+            Chile(years=range(1987, 2006)),
+        )
 
     def test_labour_day(self):
         self.assertHoliday(f"{year}-05-01" for year in range(1932, 2050))
@@ -151,11 +146,10 @@ class TestChile(TestCase):
             "2078-06-20",
             "2079-06-20",
         )
-        for year in range(1915, 2021):
-            self.assertNoHolidayName(
-                Chile(years=year),
-                "Día Nacional de los Pueblos Indígenas",
-            )
+        self.assertNoHolidayName(
+            "Día Nacional de los Pueblos Indígenas",
+            Chile(years=range(1915, 2021)),
+        )
 
     def test_saint_peter_and_paul(self):
         self.assertHoliday(f"{year}-06-29" for year in range(1915, 1967))
@@ -188,11 +182,9 @@ class TestChile(TestCase):
             "2024-06-29",
         )
 
-        for year in range(1968, 1986):
-            self.assertNoHolidayName(
-                Chile(years=year),
-                "San Pedro y San Pablo",
-            )
+        self.assertNoHolidayName(
+            "San Pedro y San Pablo", Chile(years=range(1968, 1986))
+        )
 
     def test_virgin_of_carmen(self):
         # Day of Virgin of Carmen started after 2006
@@ -208,16 +200,14 @@ class TestChile(TestCase):
             "1980-09-11",
             "1999-09-11",
         )
-        for year in range(1915, 1981):
-            self.assertNoHolidayName(
-                Chile(years=year),
-                "Día de la Liberación Nacional",
-            )
-        for year in range(1999, 2050):
-            self.assertNoHolidayName(
-                Chile(years=year),
-                "Día de la Liberación Nacional",
-            )
+        self.assertNoHolidayName(
+            "Día de la Liberación Nacional",
+            Chile(years=range(1915, 1981)),
+        )
+        self.assertNoHolidayName(
+            "Día de la Liberación Nacional",
+            Chile(years=range(1999, 2050)),
+        )
 
     def test_national_unity(self):
         self.assertHoliday(
@@ -230,13 +220,10 @@ class TestChile(TestCase):
             "2002-09-02",
         )
 
-        for year in range(1915, 2050):
-            if year in {1999, 2000, 2001}:
-                continue
-            self.assertNoHolidayName(
-                Chile(years=year),
-                "Día de la Unidad Nacional",
-            )
+        self.assertNoHolidayName(
+            "Día de la Unidad Nacional",
+            Chile(years=set(range(1915, 2050)).difference({1999, 2000, 2001})),
+        )
 
     def test_independence_holidays(self):
         self.assertHoliday(f"{year}-09-18" for year in range(1915, 2050))
@@ -257,13 +244,13 @@ class TestChile(TestCase):
             if year != 1973:
                 self.assertHoliday(f"{year}-10-12")
                 self.assertHolidayName(
-                    Chile(years=year),
                     "Día de la Raza [Columbus day]",
+                    Chile(years=year),
                 )
             else:
                 self.assertNoHolidayName(
-                    Chile(years=year),
                     "Día de la Raza [Columbus day]",
+                    Chile(years=year),
                 )
 
         self.assertHoliday(
@@ -278,17 +265,15 @@ class TestChile(TestCase):
             "2023-10-09",
         )
 
-        for year in range(2000, 2020):
-            self.assertHolidayName(
-                Chile(years=year),
-                "Día del Respeto a la Diversidad",
-            )
+        self.assertHolidayName(
+            "Día del Respeto a la Diversidad",
+            Chile(years=range(2000, 2020)),
+        )
 
-        for year in range(2020, 2050):
-            self.assertHolidayName(
-                Chile(years=year),
-                "Día del Descubrimiento de dos Mundos",
-            )
+        self.assertHolidayName(
+            "Día del Descubrimiento de dos Mundos",
+            Chile(years=range(2020, 2050)),
+        )
 
     def test_reformation_day(self):
         self.assertHoliday(
@@ -309,11 +294,10 @@ class TestChile(TestCase):
             "2022-10-31",
             "2023-10-27",
         )
-        for year in range(1915, 2008):
-            self.assertNoHolidayName(
-                Chile(years=year),
-                "Día Nacional de las Iglesias Evangélicas y Protestantes",
-            )
+        self.assertNoHolidayName(
+            "Día Nacional de las Iglesias Evangélicas y Protestantes",
+            Chile(years=range(1915, 2008)),
+        )
 
     def test_all_saints(self):
         self.assertHoliday(f"{year}-11-01" for year in range(1915, 2050))
