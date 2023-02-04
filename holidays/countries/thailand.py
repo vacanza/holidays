@@ -528,7 +528,7 @@ class Thailand(HolidayBase):
 
             if year in athikamat_years_gregorian:
                 add_holiday(thai_lunar_calendar_start_date+td(days=+191), visakha_bucha_en)
-            elif ((thai_lunar_calendar_start_date+td(days=+102)).month == 4:
+            elif (thai_lunar_calendar_start_date+td(days=+102)).month == 4:
                 add_holiday(thai_lunar_calendar_start_date+td(days=+191), visakha_bucha_en)
             else:
                 add_holiday(thai_lunar_calendar_start_date+td(days=+161), visakha_bucha_en)
