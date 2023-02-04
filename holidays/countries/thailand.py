@@ -26,25 +26,25 @@ class Thailand(HolidayBase):
 
     Limitations:
 
-    - This is only 100% accurate for 1997-2023, any future dates are up to Royal Thai Government
-      Gazette update on a year-by-year basis.
+    - This is only 100% accurate for 1997-2023; any future dates are up to Royal Thai Government Gazette
+      updates on a year-by-year basis.
 
-    - Approx. date only goes as far back as 1941 (B.E. 2484) as Thai calendar for B.E. 2483
-      only has 9 months from switching New Year Date (April 1st to January 1st).
+    - Approx. date only goes as far back as 1941 (B.E. 2484) as the Thai calendar for B.E. 2483 as we
+      only have nine months from switching New Year Date (April 1st to January 1st).
 
-    - Thai Lunar Calendar Holidays only works from 1942 (B.E. 2485) onwards until 2957 (B.E. 2600)
-      as we only have Thai year type data for cross-check until then
+    - Thai Lunar Calendar Holidays only work from 1942 (B.E. 2485) onwards until 2957 (B.E. 2600) as we
+      only have Thai year-type data for cross-checking until then.
 
-    - Royal Ploughing Ceremony Day is dated on an annual basis, as such this library cannot predict
-      future dates for future years and need annual code updates.
+    - Royal Ploughing Ceremony Day is date is announced on an annual basis by the Court Astrologers,
+      so this will need an annual update to the library here
 
-    - This doesn't cover Thai regional public holidays yet, to be added as such in the future.
+    - This doesn't cover Thai regional public holidays yet, but this is for the future
 
     References:
 
     - Based on: https://en.wikipedia.org/wiki/Public_holidays_in_Thailand
     - Checked with: https://www.bot.or.th/Thai/FinancialInstitutions/FIholiday/Pages/2023.aspx
-    - For individual date sources in detail, see in-code comment below
+    - For individual data sources in detail, see the in-code comment below
     """
     country = "TH"
 
@@ -150,7 +150,7 @@ class Thailand(HolidayBase):
             self[dt] = holiday_name
 
             ### If Public Holiday falls on weekends, move it to (in lieu) on Monday ###
-            # Latest iteration is in 2001 (B.E. 2554)
+            # Latest iteration was in 2001 (B.E. 2554)
             # Data from 1992-1994 and 1998-2000 are declared discretely in special_holidays
             # Sources: https://www.isranews.org/content-page/item/20544-วันหยุดชดเชย-มาจากไหน-sp-863880667.html
 
@@ -199,7 +199,7 @@ class Thailand(HolidayBase):
         ### New Year's Day ##
         # วันขึ้นปีใหม่
         # Status: In-Use
-        # Starts in present form in 1941 (B.E. 2484)
+        # Starts in the present form in 1941 (B.E. 2484)
         # Sources: https://th.wikisource.org/wiki/ประกาศให้ใช้วันที่_1_มกราคม_เป็นวันขึ้นปีใหม่_ลงวันที่_24_ธันวาคม_2483
         new_years_day_en = "New Year's Day"
 
@@ -231,7 +231,7 @@ class Thailand(HolidayBase):
             add_holiday(date(year, APR, 13), songkran_festival_en)
             add_holiday(date(year, APR, 14), songkran_festival_en)
             add_holiday(date(year, APR, 15), songkran_festival_en)
-        # 1954-1956, abandoned as public holiday
+        # 1954-1956, abandoned as a public holiday
         elif year >= 1954 and year < 1957:
             pass
         # 1957-1988, only celebrated on Apr 13
@@ -252,8 +252,8 @@ class Thailand(HolidayBase):
         ### Labour day ###
         # วันแรงงานแห่งชาติ
         # Status: In-Use
-        # Starts in present form in 1974 (B.E. 2517)
-        # Does exists officially since 1956 (B.E. 2499), but wasn't public holiday until then
+        # Starts in the present form in 1974 (B.E. 2517)
+        # Does existed officially since 1956 (B.E. 2499), but wasn't a public holiday until then
         # *** NOTE: only observed by financial and private sectors
         # Sources: https://www.thairath.co.th/lifestyle/culture/1832869
         national_labour_day_en = "National Labour Day"
@@ -336,7 +336,7 @@ class Thailand(HolidayBase):
         ### Thai Mother's Day ###
         # วันแม่แห่งชาติ
         # Status: In-Use
-        # Started 1950 (B.E 2493) initially as 15 April and cancelled in 1958 (B.E 2501) when the
+        # Started 1950 (B.E 2493) initially as April 15 and cancelled in 1958 (B.E 2501) when the
         #   Min. of Culture was abolished. Restarts again in 1976 (B.E. 2519) on Queen Sirikit's
         #   Birthday (August 12) and stay that way from that point onwards
         # Sources: https://www.brh.go.th/index.php/2019-02-27-04-11-52/542-12-2564
@@ -391,8 +391,8 @@ class Thailand(HolidayBase):
         # วันพ่อแห่งชาติ
         # Status: In-Use
         # Starts in 1980 (B.E 2523)
-        # Technically a replication of HM King Bhumibol Adulyadej's Birthday
-        #   but it's in the official calendar so may as well have this here
+        # Technically, a replication of HM King Bhumibol Adulyadej's Birthday
+        #   but it's in the official calendar, so may as well have this here
         # Sources: https://www.brh.go.th/index.php/2019-02-27-04-12-21/594-5-5
         thai_fathers_day_en = "Thai Father's Day"
 
@@ -404,8 +404,8 @@ class Thailand(HolidayBase):
         # วันรัฐธรรมนูญ
         # Status: In-Use
         # Presumed to starts in 1932 (B.E. 2475) ??? --> Cannot find the Royal Gazette ref for this
-        # Though last known official record is in Bank of Thailand's Data in 1992 (B.E. 2535)
-        #  but another site did pinned it as a thing in 1932 so let's roll with that
+        # Though the last known official record is in Bank of Thailand's Data in 1992 (B.E. 2535)
+        #  but another site did pin it as a thing in 1932, so let's roll with that
         # Sources: https://hilight.kapook.com/view/18208
         #          https://www.bot.or.th/Thai/FinancialInstitutions/FIholiday/Pages/1992.aspx
         #          https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2475.aspx
@@ -418,8 +418,8 @@ class Thailand(HolidayBase):
         ### New Year's Eve ###
         # วันสิ้นปี
         # Status: In-Use
-        # Presumed to starts in present form in 1941 (B.E. 2484) ???  --> Cannot find the Royal Gazette ref for this
-        # Though last known record is in Bank of Thailand's Data in 1992 (B.E. 2535)
+        # Presumed to start in the present form in 1941 (B.E. 2484) ???  --> Cannot find the Royal Gazette ref for this
+        # Though the last known record is in the Bank of Thailand's Data in 1992 (B.E. 2535)
         # Sources: https://www.bot.or.th/Thai/FinancialInstitutions/FIholiday/Pages/1992.aspx
         new_years_eve_en = "New Year's Eve"
 
@@ -435,29 +435,29 @@ class Thailand(HolidayBase):
         ##
         #################################
         """
-        So here's the basics of Thai Lunar Calendar
-            3 year types for calendar intercalation:
-                - Pakatimat (Normal Year): consist of 12 months, totalling 354 days in total.
-                - Athikawan (Extra-Day Year): Add a day to the 7th month of the year, totalling 355 days in total for synodic month correction.
-                - Athikamat (Extra-Month Year): We have the 8th month twice for these years, totalling 384 days in total for siderial year correction.
+        So here are the basics of the Thai Lunar Calendar
+            3-year types for calendar intercalation:
+                - Pakatimat (Normal Year): consist of 12 months, totalling 354 days.
+                - Athikawan (Extra-Day Year): Add a day to the 7th month of the year, totalling 355 days for synodic month correction.
+                - Athikamat (Extra-Month Year): We have the 8th month twice for these years, totalling 384 days for the sidereal year correction.
 
-            Each months either has 30 (Eve-number months) or 29 (Odd-number months)
-                - The waxing phase has 15 days until Full Moon and wanning 14 (Odd Months)/
-                  15 (Even Months/Month 7 of Athikawan years) days for New Moon.
-                - The second "Month 8" for Athikamat years are called "Month 8.8", in which all the holy days
+            Each month either has 30 (Eve-number months) or 29 (Odd-number months)
+                - The waxing phase has 15 days until Full Moon and waning 14 (Odd Months)/
+                  15 (Even Months/Month 7 of Athikawan years) days for the New Moon.
+                - The second "Month 8" for Athikamat years is called "Month 8.8", in which all the holy days
                   got hosted/celebrated on the second "Month 8.8" rather than the first "Month 8" itself.
 
-            Now here's the list of public holidays that's dependent on Thai Lunar Calendar
+            Now here's the list of public holidays that are dependent on the Thai Lunar Calendar
                 - Magha Puja/Makha Bucha: 15th Waxing Day (Full Moon) of Month 3 (On Month 4 for Athikamat Years).
-                - Royal Ploughing Ceremony: Based on this but the auspicious dates are picked by Court Astrologer,
-                  see its own specific section below.
+                - Royal Ploughing Ceremony: Based on this, though Court Astrologer picks the auspicious dates,
+                    which sadly don't fall into a predictable pattern; see its specific section below.
                 - Vesak/Visakha Bucha Bucha: 15th Waxing Day (Full Moon) of Month 6  (On Month 7 for Athikamat Years).
-                - Asalha Puja/Asarnha Bucha: 15th Waxing Day (Full Moon) of Month8  (On Month 8/8 for Athikamat Years).
-                - Buddhist Lent/Wan Khao Phansa: 1st Wanning Day of Month8  (On Month 8/8 for Athikamat Years).
+                - Asalha Puja/Asarnha Bucha: 15th Waxing Day (Full Moon) of Month 8 (On Month 8/8 for Athikamat Years).
+                - Buddhist Lent/Wan Khao Phansa: 1st Waning Day of Month 8 (On Month 8/8 for Athikamat Years).
 
-        The following code is based on Ninenik Narkdee's wonderful PHP implementation and we're thankful for his work.
+        The following code is based on Ninenik Narkdee's PHP implementation, and we're thankful for his work.
 
-        Please avoid touching the Athikawan and Athikamat declaration array at all cost unless you can find sources for them somewhere for 2057++
+        Please avoid touching the Athikawan and Athikamat declaration array at all costs unless you can find sources for them somewhere for 2057++
 
         Sources: https://www.ninenik.com/แนวทางฟังก์ชั่น_php_อย่างง่ายกับการหาวันข้างขึ้นข้างแรม-1021.html
                  https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2560.aspx
@@ -471,20 +471,20 @@ class Thailand(HolidayBase):
 
         ### Athikamat (Extra-Month Year) list goes from 1942-2057 C.E.:
         ##  Copied off from 1757-2057 (B.E. 2300-2600) Thai Lunar Calendar
-        ##  Approx formula as follows should we wanted to cover other dates: (common_era-78)-0.45222)%2.7118886 < 1
+        ##  Approx formula as follows should we want to cover other dates: (common_era-78)-0.45222)%2.7118886 < 1
         athikamat_years_gregorian = {
             1942, 1944, 1947, 1950, 1953, 1956, 1958, 1961, 1964, 1966, 1969, 1972, 1975, 1977, 1980,
             1983, 1985, 1988, 1991, 1994, 1996, 1999, 2002, 2004, 2007, 2010, 2012, 2015, 2018, 2021,
             2023, 2026, 2029, 2031, 2034, 2037, 2040, 2042, 2045, 2048, 2050, 2053, 2056,
         }
 
-        # While Buddhist Holy Days are celebrated as public holiday since the 1900s at the very least
+        # While Buddhist Holy Days have been celebrated as public holidays since the 1900s
         #   Due to the calendar changes in 1941 (B.E. 2484) and that our array only goes up to B.E. 2600
         #   We'll thus only populate the data for 1942-2057 (B.E. 2485-2600)
-        # Earliest found official list by Royal Thai Government is from 1996 (B.E. 2539)
+        # The earliest found official list by Royal Thai Government is from 1996 (B.E. 2539)
         # Sources: หนังสือเวียนกรมการปกครอง กระทรวงมหาดไทย ที่ มท 0310.1/ว4 ออกเมื่อ 5 กุมภาพันธ์ พ.ศ.2539
 
-        ### Start Date for Calculation: Nov 19, 1941 for 1st Wanning Day of Month 1 for Year 1942 Data
+        ### Start Date for Calculation: Nov 19, 1941, for 1st Waning Day of Month 1 for the Year 1942 Data
         thai_lunar_calendar_start_date = date(1941, NOV, 19)
         thai_lunar_calendar_begin_year = 1942
 
@@ -548,9 +548,9 @@ class Thailand(HolidayBase):
 
             ### Buddhist Lent Day ###
             # วันเข้าพรรษา
-            # Athikamat: 1st Wanning Day of Month 8/8 or 177[1-6] + 29[7] + 30[8] + 16[8.8] -1 = 251
-            # Athikawan: 1st Wanning Day of Month 8 or 177[1-6] + 30[7] + 16[8] -1 = 222
-            # Pakatimat: 1st Wanning Day of Month 8 or 177[1-6] + 29[7] + 16[8] -1 = 221
+            # Athikamat: 1st Waning Day of Month 8.8 or 177[1-6] + 29[7] + 30[8] + 16[8.8] -1 = 251
+            # Athikawan: 1st Waning Day of Month 8 or 177[1-6] + 30[7] + 16[8] -1 = 222
+            # Pakatimat: 1st Waning Day of Month 8 or 177[1-6] + 29[7] + 16[8] -1 = 221
             # Status: In-Use
             khao_phansa_en = "Buddhist Lent Day"
 
@@ -599,25 +599,25 @@ class Thailand(HolidayBase):
         ### Eid al-Fitr ###
         # วันตรุษอีดิ้ลฟิตริ (วันรายอปอซอ)
         # Status: In-Use
-        # Observed in Yala, Pattani, Narathiwat, Satun, Songkhla from 1992 (B.E 2535) Onwards
+        # Observed in Yala, Pattani, Narathiwat, Satun, and Songkhla from 1992 (B.E 2535) Onwards
         # The only exception being 2012-2013 (B.E 2555-2556)
-        # *** NOTE: no in lieu dates available
+        # *** NOTE: no in-lieu dates available
         # Sources: https://www.bot.or.th/Thai/FinancialInstitutions/FIholiday/Pages/1992.aspx
 
         ### Eid al-Adha ###
         # วันตรุษอีดิ้ลอัฎฮา (วันรายอฮัจยี)
         # Status: In-Use
-        # Observed in Yala, Pattani, Narathiwat, Satun, Songkhla from 1994 (B.E 2537) Onwards
-        # During 2012-2013 (B.E 2555-2556) the Songkhla's Province was excluded
-        # *** NOTE: no in lieu dates available
+        # Observed in Yala, Pattani, Narathiwat, Satun, and Songkhla from 1994 (B.E 2537) Onwards
+        # During 2012-2013 (B.E 2555-2556) Songkhla was excluded
+        # *** NOTE: no in-lieu dates available
         # Sources: https://www.bot.or.th/Thai/FinancialInstitutions/FIholiday/Pages/1994.aspx
 
         ### Lunar New Year ###
         # วันตรุษจีน
         # Status: In-Use
-        # Observed in Yala, Pattani, Narathiwat, Satun, Songkhla from 1994 (B.E 2537) Onwards
+        # Observed in Yala, Pattani, Narathiwat, Satun, and Songkhla from 1994 (B.E 2537) Onwards
         # The only exception being 2012-2013 (B.E 2555-2556)
-        # *** NOTE: no in lieu dates available
+        # *** NOTE: no in-lieu dates available
         # Sources: https://www.bot.or.th/Thai/FinancialInstitutions/FIholiday/Pages/1994.aspx
 
 
@@ -633,7 +633,7 @@ class Thailand(HolidayBase):
         # วันพืชมงคล
         # Restarts in 1957 (B.E. 2500)
         # Is dated on an annual basis by the Royal Palace
-        # This isn't even fixed even by Thai Lunar Calendar, but instead by Court Astrologers
+        # This isn't even fixed even by the Thai Lunar Calendar, but instead by Court Astrologers
         # All chosen dates are all around May, so we can technically assign it to 13 May
         #   for years prior that we cannot find data for
         # *** NOTE: only observed by government sectors
