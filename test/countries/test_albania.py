@@ -33,7 +33,7 @@ class TestAlbania(TestCase):
             ("2022-04-24", "Orthodox Easter"),
             ("2022-04-25", "Orthodox Easter (Observed)"),
             ("2022-05-01", "May Day"),
-            ("2022-05-02", "Eid al-Fitr* (*estimated), May Day (Observed)"),
+            ("2022-05-02", "Eid al-Fitr* (*estimated); May Day (Observed)"),
             ("2022-07-09", "Eid al-Adha* (*estimated)"),
             ("2022-07-11", "Eid al-Adha* (*estimated) (Observed)"),
             ("2022-09-05", "Mother Teresa Day"),
@@ -47,7 +47,7 @@ class TestAlbania(TestCase):
     def test_2023(self):
         self.assertHolidays(
             ("2023-01-01", "New Year's Day"),
-            ("2023-01-02", "New Year's Day, New Year's Day (Observed)"),
+            ("2023-01-02", "New Year's Day; New Year's Day (Observed)"),
             ("2023-03-14", "Summer Day"),
             ("2023-03-22", "Nevruz"),
             ("2023-04-09", "Catholic Easter"),

@@ -75,7 +75,7 @@ class TestMorocco(unittest.TestCase):
         self.holidays = holidays.Morocco(years=[1957])
         self.assertEqual(
             self.holidays[date(1957, 11, 18)],
-            "Fête de l'indépendance, Fête du Trône",
+            "Fête de l'indépendance; Fête du Trône",
         )
         self.holidays = holidays.Morocco(years=[1956])
         self.assertEqual(self.holidays[date(1956, 11, 18)], "Fête du Trône")
