@@ -87,6 +87,7 @@ from .nigeria import NG, NGA, Nigeria
 from .north_macedonia import MK, MKD, NorthMacedonia
 from .norway import NO, NOR, Norway
 from .pakistan import PK, PAK, Pakistan
+from .panama import PA, PAN, Panama
 from .paraguay import PY, PRY, Paraguay
 from .peru import PE, PER, Peru
 from .philippines import PH, PHL, Philippines
