@@ -191,37 +191,16 @@ class Thailand(HolidayBase):
             # Sources: https://www.isranews.org/content-page/item/20544-วันหยุดชดเชย-มาจากไหน-sp-863880667.html
 
             # Applied Automatically for Monday if observed on Weekends: 1961-1973
-            if year >= 2001 and year < 1974:
-                if self.observed and self._is_weekend(dt):
-                    in_lieu = dt + td(days=2 if dt.weekday() == SAT else 1)
-                    while in_lieu.year == year and in_lieu in self:
-                        in_lieu += td(days=+1)
-
-                    add_holiday(in_lieu, f"{holiday_name} (in lieu)")
             # No In Lieu days available: 1974-1988
-            elif year >= 1974 and year < 1989:
-                pass
             # Case-by-Case application for Monday if observed on Weekends: 1989-1994
-            elif year >= 1989 and year < 1995:
-                pass
             # Applied Automatically for Monday if observed on Weekends: 1995-1997
-            elif year >= 1995 and year < 1998:
-                if self.observed and self._is_weekend(dt):
-                    in_lieu = dt + td(days=2 if dt.weekday() == SAT else 1)
-                    while in_lieu.year == year and in_lieu in self:
-                        in_lieu += td(days=+1)
-
-                    add_holiday(in_lieu, f"{holiday_name} (in lieu)")
             # Case-by-Case application for Monday if observed on Weekends: 1998-2000
-            elif year >= 1998 and year < 2000:
-                pass
             # Applied Automatically for Monday if observed on Weekends: 2001-Present
-            elif year >= 2001:
+            if 1961 <= year <= 1973 or 1995 <= year <= 1997 or year >= 2001:
                 if self.observed and self._is_weekend(dt):
                     in_lieu = dt + td(days=2 if dt.weekday() == SAT else 1)
                     while in_lieu.year == year and in_lieu in self:
                         in_lieu += td(days=+1)
-
                     add_holiday(in_lieu, f"{holiday_name} (in lieu)")
 
         super()._populate(year)
