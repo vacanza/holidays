@@ -45,6 +45,10 @@ class Thailand(HolidayBase):
     - Based on: https://en.wikipedia.org/wiki/Public_holidays_in_Thailand
     - Checked with: https://www.bot.or.th/Thai/FinancialInstitutions/FIholiday/Pages/2023.aspx
     - For individual data sources in detail, see the in-code comment below
+
+    Country created by: `arkid15r <https://github.com/arkid15r>`__
+
+    Country maintained by: `PPsyrius <https://github.com/PPsyrius>`__
     """
     country = "TH"
 
