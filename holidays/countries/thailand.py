@@ -242,18 +242,16 @@ class Thailand(HolidayBase):
         songkran_festival_en = "Songkran Festival"
 
         # 1948-1953, celebrated on Apr 13-15
-        if year >= 1948 and year < 1954:
+        if 1948 <= year <= 1953:
             add_holiday(date(year, APR, 13), songkran_festival_en)
             add_holiday(date(year, APR, 14), songkran_festival_en)
             add_holiday(date(year, APR, 15), songkran_festival_en)
         # 1954-1956, abandoned as a public holiday
-        elif year >= 1954 and year < 1957:
-            pass
         # 1957-1988, only celebrated on Apr 13
-        elif year >= 1957 and year < 1989:
+        elif 1957 <= year <= 1988:
             add_holiday(date(year, APR, 13), songkran_festival_en)
         # 1989-1997, celebrated on Apr 12-14
-        elif year >= 1989 and year < 1998:
+        elif 1989 <= year <= 1997:
             add_holiday(date(year, APR, 12), songkran_festival_en)
             add_holiday(date(year, APR, 13), songkran_festival_en)
             add_holiday(date(year, APR, 14), songkran_festival_en)
@@ -285,7 +283,7 @@ class Thailand(HolidayBase):
         # Sources: https://web.archive.org/web/20091106202525/http://www.culture.go.th/study.php?&YY=2548&MM=11&DD=2
         national_day_khana_ratsadon_en = "National Day"
 
-        if year >= 1939 and year < 1960:
+        if 1939 <= year <= 1959:
             add_holiday(date(year, JUN, 24), national_day_khana_ratsadon_en)
 
 
@@ -300,11 +298,9 @@ class Thailand(HolidayBase):
         coronation_day_en = "Coronation Day"
 
         # Rama IX's Coronation: May 5th
-        if year >= 1958 and year < 2017:
+        if 1958 <= year <= 2016:
             add_holiday(date(year, MAY, 5), coronation_day_en)
         # In-Between Years: No Celebration
-        elif year >= 2017 and year < 2020:
-            pass
         # Rama X's Coronation: May 4th
         elif year >= 2020:
             add_holiday(date(year, MAY, 4), coronation_day_en)
@@ -341,7 +337,7 @@ class Thailand(HolidayBase):
         queen_sirikit_birthday_rama_ten_en = "HM Queen Sirikit The Queen Mother's Birthday"
 
         # Initial celebration as HM Queen Sirikit's Birthday
-        if year >= 1976 and year < 2017:
+        if 1976 <= year <= 2016:
             add_holiday(date(year, APR, 15), queen_sirikit_birthday_rama_nine_en)
         # Now acts as the Queen Mother
         elif year >= 2017:
@@ -358,11 +354,9 @@ class Thailand(HolidayBase):
         thai_mothers_day_en = "Thai Mother's Day"
 
         # Initial Celebration on April 15
-        if year >= 1950 and year < 1958:
+        if 1950 <= year <= 1957:
             add_holiday(date(year, APR, 15), thai_mothers_day_en)
         # In-Between years while Min. of Culture was abolished
-        elif year >= 1958 and year < 1976:
-            pass
         # Restarts in 1976 on Queen Sirikit's Birthday
         elif year >= 1976:
             add_holiday(date(year, AUG, 12), thai_mothers_day_en)
@@ -504,7 +498,7 @@ class Thailand(HolidayBase):
         thai_lunar_calendar_begin_year = 1942
 
         ### Getting the start date of that particular Thai Lunar Calendar Year
-        if year >= 1942 and year < 2058:
+        if 1942 <= year <= 2057:
             while thai_lunar_calendar_begin_year < year:
                 if thai_lunar_calendar_begin_year in athikamat_years_gregorian:
                     thai_lunar_calendar_start_date += td(days=+384)
@@ -691,7 +685,7 @@ class Thailand(HolidayBase):
         if year in raeknakhwan:
             add_holiday(date(year, *raeknakhwan[year]), raeknakhwan_en)
         # Approx. otherwise for 1957-2013
-        elif year >= 1957 and year < 1997:
+        elif 1957 <= year <= 1996:
             add_holiday(date(year, MAY, 13), raeknakhwan_en)
 
 
