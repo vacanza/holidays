@@ -128,7 +128,7 @@ class TestBrazil(unittest.TestCase):
         df_holidays = holidays.BR(subdiv="DF")
         self.assertIn("2018-04-21", df_holidays)
         self.assertEqual(
-            df_holidays[date(2018, 4, 21)], "Fundação de Brasília, Tiradentes"
+            df_holidays[date(2018, 4, 21)], "Fundação de Brasília; Tiradentes"
         )
         self.assertIn("2018-11-30", df_holidays)
         self.assertEqual(df_holidays[date(2018, 11, 30)], "Dia do Evangélico")
@@ -173,7 +173,7 @@ class TestBrazil(unittest.TestCase):
         mg_holidays = holidays.BR(subdiv="MG")
         self.assertIn("2018-04-21", mg_holidays)
         self.assertEqual(
-            mg_holidays[date(2018, 4, 21)], "Data Magna de MG, Tiradentes"
+            mg_holidays[date(2018, 4, 21)], "Data Magna de MG; Tiradentes"
         )
 
     def test_PA_holidays(self):
@@ -292,7 +292,7 @@ class TestBrazil(unittest.TestCase):
         to_holidays = holidays.BR(subdiv="TO")
         self.assertIn("2018-01-01", to_holidays)
         self.assertEqual(
-            to_holidays[date(2018, 1, 1)], "Ano novo, Instalação de Tocantins"
+            to_holidays[date(2018, 1, 1)], "Ano novo; Instalação de Tocantins"
         )
         self.assertIn("2018-09-08", to_holidays)
         self.assertEqual(

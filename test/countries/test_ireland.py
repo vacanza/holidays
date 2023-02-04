@@ -97,8 +97,8 @@ class TestIreland(unittest.TestCase):
                 [
                     "St. Stephen's Day",
                     "St. Stephen's Day (Observed)",
-                    "Christmas Day (Observed), St. Stephen's Day",
-                    "St. Stephen's Day, Christmas Day (Observed)",
+                    "Christmas Day (Observed); St. Stephen's Day",
+                    "St. Stephen's Day; Christmas Day (Observed)",
                 ],
             )
 
