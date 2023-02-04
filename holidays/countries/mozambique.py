@@ -10,9 +10,9 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, FEB, APR, MAY, JUN, SEP, OCT, DEC, SUN
 from holidays.holiday_base import HolidayBase
@@ -28,11 +28,11 @@ class Mozambique(HolidayBase):
 
         self[date(year, JAN, 1)] = "Ano novo"
         easter_date = easter(year)
-        self[easter_date + rd(days=-2)] = "Sexta-feira Santa"
+        self[easter_date + td(days=-2)] = "Sexta-feira Santa"
 
         # carnival is the Tuesday before Ash Wednesday
         # which is 40 days before easter excluding sundays
-        self[easter_date + rd(days=-47)] = "Carnaval"
+        self[easter_date + td(days=-47)] = "Carnaval"
 
         self[date(year, FEB, 3)] = "Dia dos Heróis Moçambicanos"
         self[date(year, APR, 7)] = "Dia da Mulher Moçambicana"
@@ -48,7 +48,7 @@ class Mozambique(HolidayBase):
         if self.observed:
             for k, v in list(self.items()):
                 if k.weekday() == SUN and k.year == year:
-                    self[k + rd(days=+1)] = v + " (PONTE)"
+                    self[k + td(days=+1)] = v + " (PONTE)"
 
 
 class MZ(Mozambique):

@@ -20,10 +20,10 @@ __all__ = (
 import inspect
 import warnings
 from datetime import date
+from datetime import timedelta as td
 from functools import lru_cache
 from typing import Dict, Iterable, List, Optional, Union
 
-from dateutil.relativedelta import relativedelta as rd
 from hijri_converter import convert
 from hijri_converter.ummalqura import GREGORIAN_RANGE
 
@@ -175,11 +175,7 @@ def country_holidays(
     See documentation for examples.
     """
     try:
-        country_classes = inspect.getmembers(countries, inspect.isclass)
-        country_class = next(
-            obj for name, obj in country_classes if name == country
-        )
-        country_holiday: HolidayBase = country_class(
+        return getattr(countries, country)(
             years=years,
             subdiv=subdiv,
             expand=expand,
@@ -187,9 +183,8 @@ def country_holidays(
             prov=prov,
             state=state,
         )
-    except StopIteration:
+    except AttributeError:
         raise NotImplementedError(f"Country {country} not available")
-    return country_holiday
 
 
 def financial_holidays(
@@ -234,19 +229,14 @@ def financial_holidays(
     examples.
     """
     try:
-        financial_classes = inspect.getmembers(financial, inspect.isclass)
-        financial_class = next(
-            obj for name, obj in financial_classes if name == market
-        )
-        financial_holiday: HolidayBase = financial_class(
+        return getattr(financial, market)(
             years=years,
             subdiv=subdiv,
             expand=expand,
             observed=observed,
         )
-    except StopIteration:
+    except AttributeError:
         raise NotImplementedError(f"Financial market {market} not available")
-    return financial_holiday
 
 
 def CountryHoliday(
@@ -303,7 +293,7 @@ def list_supported_financial(unique=False) -> Dict[str, List[str]]:
     }
 
 
-def _islamic_to_gre(Gyear: int, Hmonth: int, Hday: int) -> List[date]:
+def _islamic_to_gre(g_year: int, h_month: int, h_day: int) -> Iterable[date]:
     """
     Find the Gregorian dates of all instances of Islamic (Lunar Hijrī) calendar
     month and day falling within the Gregorian year. There could be up to two
@@ -313,37 +303,33 @@ def _islamic_to_gre(Gyear: int, Hmonth: int, Hday: int) -> List[date]:
     Relies on package `hijri_converter
     <https://www.pypy.org/package/hijri_converter>`__.
 
-    :param Gyear:
+    :param g_year:
         The Gregorian year.
 
-    :param Hmonth:
+    :param h_month:
         The Lunar Hijrī (Islamic) month.
 
-    :param Hday:
+    :param h_day:
         The Lunar Hijrī (Islamic) day.
 
     :return:
         List of Gregorian dates within the Gregorian year specified that
         matches the Islamic (Lunar Hijrī) calendar day and month specified.
     """
-    gre_dates: List[date] = []
 
     # To avoid hijri_converter check range OverflowError.
-    dt = (Gyear, Hmonth, Hday)
+    dt = (g_year, h_month, h_day)
     dt_min, dt_max = GREGORIAN_RANGE
     if dt < dt_min or dt > dt_max:
-        return gre_dates
+        return ()
 
-    Hyear = convert.Gregorian(Gyear, 1, 1).to_hijri().datetuple()[0]
-    gres = [
-        convert.Hijri(y, Hmonth, Hday).to_gregorian()
-        for y in range(Hyear - 1, Hyear + 2)
-    ]
-    gre_dates.extend(
-        (date(*gre.datetuple()) for gre in gres if gre.year == Gyear)
+    h_year = convert.Gregorian(g_year, 1, 1).to_hijri().year
+    gre_dates = (
+        convert.Hijri(year, h_month, h_day).to_gregorian()
+        for year in range(h_year - 1, h_year + 2)
     )
 
-    return gre_dates
+    return (gre_date for gre_date in gre_dates if gre_date.year == g_year)
 
 
 class _ChineseLuniSolar:
@@ -680,7 +666,7 @@ class _ChineseLuniSolar:
         # leap_month = self._get_leap_month(year)
         # for m in range(1, 1 + (1 > leap_month)):
         #     span_days += self._lunar_month_days(year, m)
-        return self.SOLAR_START_DATE + rd(days=span_days)
+        return self.SOLAR_START_DATE + td(days=span_days)
 
     def lunar_to_gre(
         self, year: int, month: int, day: int, leap: bool = True
@@ -706,7 +692,7 @@ class _ChineseLuniSolar:
         for m in range(1, month + (month > leap_month)):
             span_days += self._lunar_month_days(year, m)
         span_days += day - 1
-        return self.SOLAR_START_DATE + rd(days=span_days)
+        return self.SOLAR_START_DATE + td(days=span_days)
 
     def vesak_date(self, year: int) -> date:
         """
@@ -727,7 +713,7 @@ class _ChineseLuniSolar:
         for m in range(1, 4 + (4 > leap_month)):
             span_days += self._lunar_month_days(year, m)
         span_days += 14
-        return self.SOLAR_START_DATE + rd(days=span_days)
+        return self.SOLAR_START_DATE + td(days=span_days)
 
     def vesak_may_date(self, year: int) -> date:
         """
@@ -743,10 +729,10 @@ class _ChineseLuniSolar:
             Estimated Gregorian date of Vesak (first full moon in May).
         """
         span_days = self._span_days(year)
-        vesak_may_date = self.SOLAR_START_DATE + rd(days=span_days + 14)
+        vesak_may_date = self.SOLAR_START_DATE + td(days=span_days + 14)
         m = 1
         while vesak_may_date.month < 5:
-            vesak_may_date += rd(days=self._lunar_month_days(year, m))
+            vesak_may_date += td(days=self._lunar_month_days(year, m))
             m += 1
         return vesak_may_date
 
@@ -770,7 +756,7 @@ class _ChineseLuniSolar:
         for m in range(1, 10 + (10 > leap_month)):
             span_days += self._lunar_month_days(year, m)
         span_days -= 2
-        return self.SOLAR_START_DATE + rd(days=span_days)
+        return self.SOLAR_START_DATE + td(days=span_days)
 
     def thaipusam_date(self, year: int) -> date:
         """
@@ -791,4 +777,4 @@ class _ChineseLuniSolar:
         for m in range(1, 1 + (leap_month <= 6)):
             span_days += self._lunar_month_days(year, m)
         span_days -= 15
-        return self.SOLAR_START_DATE + rd(days=span_days)
+        return self.SOLAR_START_DATE + td(days=span_days)

@@ -10,286 +10,281 @@
 #  License: MIT (see LICENSE file)
 #  Copyright: Kateryna Golovanova <kate@kgthreads.com>, 2022
 
-import unittest
-from datetime import date
+from holidays.countries.bosnia_and_herzegovina import BosniaAndHerzegovina, BA
+from holidays.countries.bosnia_and_herzegovina import BIH
+from test.common import TestCase
 
-import holidays
 
-
-class TestBA(unittest.TestCase):
+class TestBA(TestCase):
     def setUp(self):
-        self.holidays = holidays.BA(observed=False)
-        self.holidays_observed = holidays.BA(observed=True)
+        self.holidays = BosniaAndHerzegovina(observed=False)
+        self.rs_holidays = BosniaAndHerzegovina(subdiv="RS")
+        self.fbih_holidays = BosniaAndHerzegovina(subdiv="FBiH")
+        self.bd_holidays = BosniaAndHerzegovina(subdiv="BD")
+
+    def test_country_aliases(self):
+        self.assertCountryAliases(BosniaAndHerzegovina, BA, BIH)
 
     def test_new_years(self):
+        self.assertHolidaysName(
+            "Nova Godina", (f"{year}-01-01" for year in range(2000, 2030))
+        )
+        self.assertHolidaysName(
+            "Drugi dan Nove Godine",
+            (f"{year}-01-02" for year in range(2000, 2030)),
+        )
 
-        for dt in (date(2010, 12, 31), date(2017, 1, 3)):
-            self.assertNotIn(dt, self.holidays)
-
-        for dt in (date(2020, 1, 1), date(2019, 1, 1)):
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Nova Godina")
-
-        for dt in (date(2020, 1, 2), date(2021, 1, 2)):
-            self.assertIn(dt, self.holidays_observed)
-            self.assertEqual(self.holidays[dt], "Drugi dan Nove Godine")
-
-        for dt in (date(2017, 1, 3), date(2023, 1, 3)):
-            self.assertIn(dt, self.holidays_observed)
-            self.assertEqual(
-                self.holidays_observed[dt], "Treći dan Nove Godine"
-            )
+        name = "Treći dan Nove Godine"
+        dt = (
+            "2006-01-03",
+            "2012-01-03",
+            "2017-01-03",
+            "2023-01-03",
+        )
+        self.assertHolidaysName(name, self.fbih_holidays, dt)
+        self.assertHolidaysName(name, self.bd_holidays, dt)
+        self.assertNoHoliday(dt)
+        self.assertNoHoliday(
+            BosniaAndHerzegovina(subdiv="FBiH", observed=False), dt
+        )
+        self.assertNoHoliday(
+            BosniaAndHerzegovina(subdiv="BD", observed=False), dt
+        )
 
     def test_orthodox_christmas_eve(self):
-        rs_holidays = holidays.BA(subdiv="RS")
-
-        for dt in (date(2022, 1, 5), date(2021, 1, 5)):
-            self.assertNotIn(dt, rs_holidays)
-
-        for dt in (date(2022, 1, 6), date(2021, 1, 6)):
-            self.assertIn(dt, rs_holidays)
-            self.assertEqual(rs_holidays[dt], "Pravoslavno Badnje veče")
+        name = "Pravoslavno Badnje veče"
+        dt = (f"{year}-01-06" for year in range(2000, 2030))
+        self.assertHolidaysName(name, self.fbih_holidays, dt)
+        self.assertHolidaysName(name, self.rs_holidays, dt)
 
     def test_orthodox_christmas(self):
-        rs_holidays = holidays.BA(subdiv="RS")
-
-        for dt in (date(2022, 1, 5), date(2021, 1, 8)):
-            self.assertNotIn(dt, rs_holidays)
-
-        for dt in (date(2022, 1, 7), date(2021, 1, 7)):
-            self.assertIn(dt, rs_holidays)
-            self.assertEqual(rs_holidays[dt], "Božić (Божић)")
-
-    def test_republic_day(self):
-        rs_holidays = holidays.BA(subdiv="RS")
-
-        for dt in (date(2022, 1, 10), date(2021, 1, 8)):
-            self.assertNotIn(dt, rs_holidays)
-
-        for dt in (date(2022, 1, 9), date(2021, 1, 9)):
-            self.assertIn(dt, rs_holidays)
-            self.assertEqual(rs_holidays[dt], "Dan Republike")
+        self.assertHolidaysName(
+            "Božić (Божић)", (f"{year}-01-07" for year in range(2000, 2030))
+        )
 
     def test_orthodox_new_year(self):
-        rs_holidays = holidays.BA(subdiv="RS")
-
-        for dt in (date(2022, 1, 13), date(2021, 1, 15)):
-            self.assertNotIn(dt, rs_holidays)
-
-        for dt in (date(2022, 1, 14), date(2021, 1, 14)):
-            self.assertIn(dt, rs_holidays)
-            self.assertEqual(rs_holidays[dt], "Pravoslavna Nova Godina")
+        self.assertHolidaysName(
+            "Pravoslavna Nova Godina",
+            self.rs_holidays,
+            (f"{year}-01-14" for year in range(2000, 2030)),
+        )
 
     def test_independence_day(self):
-        fbih_holidays = holidays.BA(subdiv="FBiH")
+        self.assertHolidaysName(
+            "Dan nezavisnosti",
+            self.fbih_holidays,
+            (f"{year}-03-01" for year in range(2000, 2030)),
+        )
 
-        for dt in (date(2022, 3, 2), date(2021, 2, 28)):
-            self.assertNotIn(dt, fbih_holidays)
-
-        for dt in (date(2022, 3, 1), date(2021, 3, 1)):
-            self.assertIn(dt, fbih_holidays)
-            self.assertEqual(fbih_holidays[dt], "Dan nezavisnosti")
-
-    def test_catholic_good_friday(self):
-        fbih_holidays = holidays.BA(subdiv="FBiH")
-
-        for dt in (date(2022, 4, 16), date(2021, 4, 14)):
-            self.assertNotIn(dt, fbih_holidays)
-
-        for dt in (date(2022, 4, 15), date(2021, 4, 2)):
-            self.assertIn(dt, fbih_holidays)
-            self.assertEqual(fbih_holidays[dt], "Veliki Petak (Katolički)")
+    def test_establishment_bd_day(self):
+        self.assertHolidaysName(
+            "Dan uspostavljanja Brčko distrikta",
+            self.bd_holidays,
+            (f"{year}-03-08" for year in range(2000, 2030)),
+        )
 
     def test_catholic_easter(self):
-        fbih_holidays = holidays.BA(subdiv="FBiH")
+        name = "Veliki Petak (Katolički)"
+        dt = (
+            "2012-04-06",
+            "2015-04-03",
+            "2018-03-30",
+            "2019-04-19",
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+        )
+        self.assertHolidaysName(name, self.fbih_holidays, dt)
+        self.assertHolidaysName(name, self.rs_holidays, dt)
 
-        for dt in (date(2022, 4, 16), date(2021, 4, 3)):
-            self.assertNotIn(dt, fbih_holidays)
+        name = "Uskrs (Katolički)"
+        dt = (
+            "2012-04-08",
+            "2015-04-05",
+            "2018-04-01",
+            "2019-04-21",
+            "2020-04-12",
+            "2021-04-04",
+            "2022-04-17",
+            "2023-04-09",
+        )
+        self.assertHolidaysName(name, self.fbih_holidays, dt)
+        self.assertHolidaysName(name, self.rs_holidays, dt)
 
-        for dt in (date(2022, 4, 17), date(2021, 4, 4)):
-            self.assertIn(dt, fbih_holidays)
-            self.assertEqual(fbih_holidays[dt], "Uskrs (Katolički)")
-
-        for dt in (date(2022, 4, 18), date(2021, 4, 5)):
-            self.assertIn(dt, fbih_holidays)
-            self.assertEqual(
-                fbih_holidays[dt], "Uskrsni ponedjeljak (Katolički)"
-            )
-
-    def test_orthodox_good_friday(self):
-        rs_holidays = holidays.BA(subdiv="RS")
-
-        for dt in (date(2022, 4, 21), date(2021, 4, 29)):
-            self.assertNotIn(dt, rs_holidays)
-
-        for dt in (date(2022, 4, 22), date(2021, 4, 30)):
-            self.assertIn(dt, rs_holidays)
-            self.assertEqual(rs_holidays[dt], "Veliki Petak (Pravoslavni)")
+        name = "Uskrsni ponedjeljak (Katolički)"
+        dt = (
+            "2012-04-09",
+            "2015-04-06",
+            "2018-04-02",
+            "2019-04-22",
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+        )
+        self.assertHolidaysName(name, self.fbih_holidays, dt)
+        self.assertHolidaysName(name, self.rs_holidays, dt)
+        self.assertHolidaysName(name, self.bd_holidays, dt)
+        self.assertHolidaysName(name, dt)
 
     def test_orthodox_easter(self):
-        rs_holidays = holidays.BA(subdiv="RS")
+        name = "Veliki Petak (Pravoslavni)"
+        dt = (
+            "2012-04-13",
+            "2015-04-10",
+            "2018-04-06",
+            "2019-04-26",
+            "2020-04-17",
+            "2021-04-30",
+            "2022-04-22",
+            "2023-04-14",
+        )
+        self.assertHolidaysName(name, self.fbih_holidays, dt)
+        self.assertHolidaysName(name, self.rs_holidays, dt)
+        self.assertHolidaysName(name, self.bd_holidays, dt)
+        self.assertHolidaysName(name, dt)
 
-        for dt in (date(2022, 4, 23), date(2020, 4, 18)):
-            self.assertNotIn(dt, rs_holidays)
+        name = "Vaskrs (Pravoslavni)"
+        dt = (
+            "2012-04-15",
+            "2015-04-12",
+            "2018-04-08",
+            "2019-04-28",
+            "2020-04-19",
+            "2022-04-24",
+            "2023-04-16",
+        )
+        self.assertHolidaysName(name, self.fbih_holidays, dt)
+        self.assertHolidaysName(name, self.rs_holidays, dt)
 
-        for dt in (date(2022, 4, 24), date(2020, 4, 19)):
-            self.assertIn(dt, rs_holidays)
-            self.assertEqual(rs_holidays[dt], "Vaskrs (Pravoslavni)")
-
-        for dt in (date(2022, 4, 25), date(2020, 4, 20)):
-            self.assertIn(dt, rs_holidays)
-            self.assertEqual(
-                rs_holidays[dt], "Uskrsni ponedjeljak (Pravoslavni)"
-            )
+        name = "Uskrsni ponedjeljak (Pravoslavni)"
+        dt = (
+            "2012-04-16",
+            "2015-04-13",
+            "2018-04-09",
+            "2019-04-29",
+            "2020-04-20",
+            "2021-05-03",
+            "2022-04-25",
+            "2023-04-17",
+        )
+        self.assertHolidaysName(name, self.fbih_holidays, dt)
+        self.assertHolidaysName(name, self.rs_holidays, dt)
 
     def test_labor_day(self):
-        for dt in (date(2022, 5, 4), date(2021, 5, 4)):
-            self.assertNotIn(dt, self.holidays)
+        self.assertHolidaysName(
+            "Dan rada",
+            (f"{year}-05-01" for year in range(2000, 2030)),
+        )
+        name = "Drugi dan Dana rada"
+        self.assertHolidaysName(
+            name,
+            (f"{year}-05-02" for year in range(2000, 2022)),
+        )
+        self.assertIn(name, self.holidays.get("2022-05-02"))
+        self.assertHolidaysName(
+            name,
+            (f"{year}-05-02" for year in range(2023, 2030)),
+        )
 
-        for dt in (date(2020, 5, 1), date(2021, 5, 1)):
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Dan rada")
-
-        for dt in (date(2022, 5, 2), date(2021, 5, 2)):
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Drugi dan Dana rada")
-
-        for dt in (date(2022, 5, 3), date(2016, 5, 3)):
-            self.assertIn(dt, self.holidays_observed)
-            self.assertEqual(self.holidays_observed[dt], "Treći dan Dana rada")
-
-    def test_corpus_cristi(self):
-        fbih_holidays = holidays.BA(subdiv="FBiH")
-
-        for dt in (date(2022, 6, 15), date(2021, 6, 2)):
-            self.assertNotIn(dt, fbih_holidays)
-
-        for dt in (date(2022, 6, 16), date(2021, 6, 3)):
-            self.assertIn(dt, fbih_holidays)
-            self.assertEqual(
-                fbih_holidays[dt], "Tijelovo (Tijelo i Krv Kristova)"
-            )
+        name = "Treći dan Dana rada"
+        dt = (
+            "2011-05-03",
+            "2016-05-03",
+            "2022-05-03",
+        )
+        self.assertHolidaysName(name, BosniaAndHerzegovina(observed=True), dt)
+        self.assertNoHoliday(dt)
 
     def test_victory_day(self):
-        rs_holidays = holidays.BA(subdiv="RS")
-
-        for dt in (date(2022, 5, 8), date(2020, 5, 10)):
-            self.assertNotIn(dt, rs_holidays)
-
-        for dt in (date(2022, 5, 9), date(2020, 5, 9)):
-            self.assertIn(dt, rs_holidays)
-            self.assertEqual(rs_holidays[dt], "Dan pobjede")
+        name = "Dan pobjede nad fašizmom"
+        dt = (f"{year}-05-09" for year in range(2000, 2030))
+        self.assertHolidaysName(name, self.fbih_holidays, dt)
+        self.assertHolidaysName(name, self.rs_holidays, dt)
 
     def test_eid_al_fitr(self):
-        fbih_holidays = holidays.BA(subdiv="FBiH")
+        dt = (
+            "2010-09-10",
+            "2015-07-17",
+            "2018-06-15",
+            "2019-06-04",
+            "2020-05-24",
+            "2021-05-13",
+            "2023-04-21",
+        )
+        self.assertHolidaysName("Ramazanski Bajram", dt)
 
-        for dt in (date(2021, 5, 12), date(2020, 5, 23)):
-            self.assertNotIn(dt, fbih_holidays)
-
-        for dt in (date(2021, 5, 13), date(2020, 5, 24)):
-            self.assertIn(dt, fbih_holidays)
-            self.assertEqual(fbih_holidays[dt], "Ramazanski Bajram")
-
-        for dt in (date(2021, 5, 14), date(2020, 5, 25)):
-            self.assertIn(dt, fbih_holidays)
-            self.assertEqual(fbih_holidays[dt], "Drugi Dan Ramazanski Bajram")
+        name = "Drugi Dan Ramazanski Bajram"
+        dt = (
+            "2010-09-11",
+            "2015-07-18",
+            "2018-06-16",
+            "2019-06-05",
+            "2020-05-25",
+            "2021-05-14",
+            "2023-04-22",
+        )
+        self.assertHolidaysName(name, self.fbih_holidays, dt)
+        self.assertHolidaysName(name, self.rs_holidays, dt)
 
     def test_eid_ul_adha(self):
-        fbih_holidays = holidays.BA(subdiv="FBiH")
+        dt = (
+            "2006-01-10",
+            "2006-12-31",
+            "2010-11-16",
+            "2015-09-23",
+            "2018-08-21",
+            "2019-08-11",
+            "2020-07-31",
+            "2021-07-20",
+            "2022-07-09",
+            "2023-06-28",
+        )
+        self.assertHolidaysName("Kurban Bajram", dt)
 
-        for dt in (date(2021, 7, 8), date(2021, 7, 19)):
-            self.assertNotIn(dt, fbih_holidays)
-
-        for dt in (
-            date(2022, 7, 9),
-            date(2021, 7, 20),
-            date(2022, 7, 10),
-            date(2022, 7, 11),
-            date(2022, 7, 12),
-        ):
-            self.assertIn(dt, fbih_holidays)
-            self.assertEqual(fbih_holidays[dt], "Kurban Bajram")
-
-    def test_st_vitus_day(self):
-        rs_holidays = holidays.BA(subdiv="RS")
-
-        for dt in (date(2022, 6, 27), date(2020, 6, 29)):
-            self.assertNotIn(dt, rs_holidays)
-
-        for dt in (date(2022, 6, 28), date(2020, 6, 28)):
-            self.assertIn(dt, rs_holidays)
-            self.assertEqual(rs_holidays[dt], "Vidovdan")
-
-    def test_islamic_new_year(self):
-        fbih_holidays = holidays.BA(subdiv="FBiH")
-
-        for dt in (date(2022, 7, 28), date(2021, 8, 8)):
-            self.assertNotIn(dt, fbih_holidays)
-
-        for dt in (date(2022, 7, 30), date(2021, 8, 9)):
-            self.assertIn(dt, fbih_holidays)
-            self.assertEqual(fbih_holidays[dt], "Muslimanska Nova Godina")
-
-    def test_all_saints_day(self):
-        fbih_holidays = holidays.BA(subdiv="FBiH")
-
-        for dt in (date(2021, 11, 3), date(2020, 10, 31)):
-            self.assertNotIn(dt, fbih_holidays)
-
-        for dt in (date(2021, 11, 1), date(2020, 11, 1)):
-            self.assertIn(dt, fbih_holidays)
-            self.assertEqual(fbih_holidays[dt], "Svi Sveti")
-
-    def test_all_souls_day(self):
-        fbih_holidays = holidays.BA(subdiv="FBiH")
-
-        for dt in (date(2021, 11, 3), date(2020, 10, 31)):
-            self.assertNotIn(dt, fbih_holidays)
-
-        for dt in (date(2021, 11, 2), date(2020, 11, 2)):
-            self.assertIn(dt, fbih_holidays)
-            self.assertEqual(fbih_holidays[dt], "Dušni dan")
+        name = "Drugi Dan Kurban Bajram"
+        dt = (
+            "2010-11-17",
+            "2015-09-24",
+            "2018-08-22",
+            "2019-08-12",
+            "2020-08-01",
+            "2021-07-21",
+            "2022-07-10",
+            "2023-06-29",
+        )
+        self.assertHolidaysName(name, self.fbih_holidays, dt)
+        self.assertHolidaysName(name, self.rs_holidays, dt)
+        self.assertIn(name, self.fbih_holidays.get("2007-01-01"))
+        self.assertIn(name, self.rs_holidays.get("2007-01-01"))
 
     def test_dayton_agreement_day(self):
-        rs_holidays = holidays.BA(subdiv="RS")
-
-        for dt in (date(2022, 11, 20), date(2020, 11, 22)):
-            self.assertNotIn(dt, rs_holidays)
-
-        for dt in (date(2022, 11, 21), date(2020, 11, 21)):
-            self.assertIn(dt, rs_holidays)
-            self.assertEqual(
-                rs_holidays[dt],
-                "Dan uspostave Opšteg okvirnog sporazuma za mir u "
-                "Bosni i Hercegovini",
-            )
+        self.assertHolidaysName(
+            "Dan uspostave Opšteg okvirnog sporazuma za mir u "
+            "Bosni i Hercegovini",
+            self.rs_holidays,
+            (f"{year}-11-21" for year in range(2000, 2030)),
+        )
 
     def test_statehood_day(self):
-        fbih_holidays = holidays.BA(subdiv="FBiH")
-
-        for dt in (date(2021, 11, 24), date(2020, 10, 26)):
-            self.assertNotIn(dt, fbih_holidays)
-
-        for dt in (date(2021, 11, 25), date(2020, 11, 25)):
-            self.assertIn(dt, fbih_holidays)
-            self.assertEqual(fbih_holidays[dt], "Dan državnosti")
+        self.assertHolidaysName(
+            "Dan državnosti",
+            self.fbih_holidays,
+            (f"{year}-11-25" for year in range(2004, 2030)),
+        )
 
     def test_catholic_christmas(self):
-        fbih_holidays = holidays.BA(subdiv="FBiH")
+        for year in range(2010, 2025):
+            self.assertEqual(
+                self.holidays.get(f"{year}-12-25"), "Božić (Katolički)"
+            )
+        name = "Badnji dan (Katolički)"
+        dt = (f"{year}-12-24" for year in range(2000, 2030))
+        self.assertHolidaysName(name, self.fbih_holidays, dt)
+        self.assertHolidaysName(name, self.rs_holidays, dt)
 
-        for dt in (date(2021, 12, 23), date(2020, 12, 23)):
-            self.assertNotIn(dt, fbih_holidays)
-
-        for dt in (date(2021, 12, 25), date(2020, 12, 25)):
-            self.assertIn(dt, fbih_holidays)
-            self.assertEqual(fbih_holidays[dt], "Božić (Katolički)")
-
-    def test_st_stephens_day(self):
-        fbih_holidays = holidays.BA(subdiv="FBiH")
-
-        for dt in (date(2021, 12, 27), date(2020, 12, 27)):
-            self.assertNotIn(dt, fbih_holidays)
-
-        for dt in (date(2021, 12, 26), date(2020, 12, 26)):
-            self.assertIn(dt, fbih_holidays)
-            self.assertEqual(fbih_holidays[dt], "Stipandan (Stjepandan)")
+        self.assertHolidaysName(
+            "Božić (Katolički)",
+            (f"{year}-12-25" for year in range(2000, 2030)),
+        )

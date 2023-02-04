@@ -11,8 +11,7 @@
 
 import unittest
 from datetime import date
-
-from dateutil.relativedelta import relativedelta as rd
+from datetime import timedelta as td
 
 import holidays
 
@@ -125,7 +124,7 @@ class TestAU(unittest.TestCase):
         ]:
             self.assertIn(dt, self.holidays)
             self.assertEqual(self.holidays[dt], "Easter Monday")
-            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + td(days=+1), self.holidays)
 
     def test_bank_holiday(self):
         for dt in [
@@ -313,22 +312,28 @@ class TestAU(unittest.TestCase):
             self.assertEqual(self.state_hols["VIC"][dt], "Melbourne Cup")
 
     def test_royal_queensland_show(self):
-        for year, day in enumerate([15, 14, 14, 29, 10, 16], 2018):
-            if year != 2021:
-                dt = date(year, 8, day)
-            else:
-                dt = date(year, 10, day)
-            self.assertIn(dt, self.state_hols["QLD"], dt)
-            self.assertEqual(
-                self.state_hols["QLD"][dt], "The Royal Queensland Show"
-            )
+        holiday_name = "The Royal Queensland Show"
+        qld_holidays = self.state_hols["QLD"]
+        for year, day in enumerate((15, 14, 14, 29, 10, 16), 2018):
+            dt = date(year, 10 if year == 2021 else 8, day)
+            self.assertIn(dt, qld_holidays, dt)
+            self.assertEqual(qld_holidays[dt], holiday_name)
+
+        self.assertEqual(
+            1,
+            len(
+                holidays.Australia(subdiv="QLD", years=2020).get_named(
+                    holiday_name
+                )
+            ),
+        )
 
     def test_christmas_day(self):
         self.holidays.observed = False
         for year in range(1900, 2100):
             dt = date(year, 12, 25)
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + rd(days=-1), self.holidays)
+            self.assertNotIn(dt + td(days=-1), self.holidays)
         self.assertNotIn(date(2010, 12, 24), self.holidays)
         self.assertNotEqual(
             self.holidays[date(2011, 12, 26)], "Christmas Day (Observed)"
@@ -372,7 +377,7 @@ class TestAU(unittest.TestCase):
         for year in range(1900, 2100):
             dt = date(year, 12, 26)
             self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + rd(days=+1), self.holidays)
+            self.assertNotIn(dt + td(days=+1), self.holidays)
         self.assertNotIn(date(2009, 12, 28), self.holidays)
         self.assertNotIn(date(2010, 12, 27), self.holidays)
         self.holidays.observed = True

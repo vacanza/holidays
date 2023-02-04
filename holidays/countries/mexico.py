@@ -10,6 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
@@ -19,15 +20,14 @@ from holidays.holiday_base import HolidayBase
 
 
 class Mexico(HolidayBase):
-
     country = "MX"
 
     def _add_with_observed(self, holiday: date, name: str):
         self[holiday] = name
         if self.observed and holiday.weekday() == SAT:
-            self[holiday + rd(days=-1)] = name + " (Observed)"
+            self[holiday + td(days=-1)] = name + " (Observed)"
         elif self.observed and holiday.weekday() == SUN:
-            self[holiday + rd(days=+1)] = name + " (Observed)"
+            self[holiday + td(days=+1)] = name + " (Observed)"
 
     def _populate(self, year):
         super()._populate(year)
@@ -37,7 +37,7 @@ class Mexico(HolidayBase):
         dt = date(year, JAN, 1)
         self[dt] = name
         if self.observed and dt.weekday() == SUN:
-            self[dt + rd(days=+1)] = name + " (Observed)"
+            self[dt + td(days=+1)] = name + " (Observed)"
         # The next year's observed New Year's Day can be in this year
         # when it falls on a Friday (Jan 1st is a Saturday)
         if self.observed and date(year, DEC, 31).weekday() == FRI:

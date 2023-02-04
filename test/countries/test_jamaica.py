@@ -9,79 +9,148 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
-from datetime import date
-
-import holidays
+from holidays.countries.jamaica import Jamaica, JM, JAM
+from test.common import TestCase
 
 
-class TestJamaica(unittest.TestCase):
+class TestJamaica(TestCase):
     def setUp(self):
-        self.holidays = holidays.Jamaica()
+        self.holidays = Jamaica()
+        self.holidays_no_observed = Jamaica(observed=False)
+
+    def test_country_aliases(self):
+        self.assertCountryAliases(Jamaica, JM, JAM)
 
     def test_new_years_day(self):
-        self.assertIn(date(2021, 1, 1), self.holidays)
-        self.assertIn(date(2023, 1, 2), self.holidays)
-        self.assertIn(date(2024, 1, 1), self.holidays)
-
-    def test_valentines_day(self):
-        for year in range(1948, 2050):
-            self.assertIn(date(year, 2, 14), self.holidays)
-
-    def test_mothers_day(self):
-        self.assertIn(date(2021, 5, 9), self.holidays)
-        self.assertIn(date(2023, 5, 14), self.holidays)
-        self.assertIn(date(2024, 5, 12), self.holidays)
+        self.assertHoliday(f"{year}-01-01" for year in range(1950, 2050))
+        dt = (
+            "1995-01-02",
+            "2006-01-02",
+            "2012-01-02",
+            "2017-01-02",
+            "2023-01-02",
+        )
+        self.assertHoliday(dt)
+        self.assertNoHoliday(self.holidays_no_observed, dt)
 
     def test_labour_day(self):
-        self.assertIn(date(2021, 5, 24), self.holidays)
-        self.assertIn(date(2023, 5, 23), self.holidays)
-        self.assertIn(date(2024, 5, 23), self.holidays)
-
-    def test_fathers_day(self):
-        self.assertIn(date(2021, 6, 20), self.holidays)
-        self.assertIn(date(2023, 6, 18), self.holidays)
-        self.assertIn(date(2024, 6, 16), self.holidays)
+        self.assertHoliday(f"{year}-05-23" for year in range(1950, 2050))
+        dt = (
+            "1998-05-25",
+            "1999-05-24",
+            "2004-05-24",
+            "2009-05-25",
+            "2010-05-24",
+            "2015-05-25",
+            "2020-05-25",
+            "2021-05-24",
+            "2026-05-25",
+            "2027-05-24",
+        )
+        self.assertHoliday(dt)
+        self.assertNoHoliday(self.holidays_no_observed, dt)
 
     def test_emancipation_day(self):
-        self.assertIn(date(2021, 8, 2), self.holidays)
-        self.assertIn(date(2023, 8, 1), self.holidays)
-        self.assertIn(date(2024, 8, 1), self.holidays)
+        self.assertHoliday(f"{year}-08-01" for year in range(1998, 2050))
+        dt = (
+            "1999-08-02",
+            "2004-08-02",
+            "2010-08-02",
+            "2021-08-02",
+            "2027-08-02",
+        )
+        self.assertHoliday(dt)
+        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoHolidayName("Emancipation Day", Jamaica(years=1997))
 
     def test_independence_day(self):
-        self.assertIn(date(2021, 8, 6), self.holidays)
-        self.assertIn(date(2023, 8, 7), self.holidays)
-        self.assertIn(date(2024, 8, 6), self.holidays)
+        self.assertHoliday(f"{year}-08-06" for year in range(1950, 2050))
+        dt = (
+            "2000-08-07",
+            "2006-08-07",
+            "2017-08-07",
+            "2023-08-07",
+            "2028-08-07",
+        )
+        self.assertHoliday(dt)
+        self.assertNoHoliday(self.holidays_no_observed, dt)
 
     def test_national_heroes_day(self):
-        self.assertIn(date(2021, 10, 18), self.holidays)
-        self.assertIn(date(2023, 10, 16), self.holidays)
-        self.assertIn(date(2024, 10, 21), self.holidays)
+        self.assertHoliday(
+            "2015-10-19",
+            "2016-10-17",
+            "2017-10-16",
+            "2018-10-15",
+            "2019-10-21",
+            "2020-10-19",
+            "2021-10-18",
+            "2022-10-17",
+            "2023-10-16",
+            "2024-10-21",
+        )
 
     def test_christmas_day(self):
-        for year in range(1948, 2050):
-            self.assertIn(date(year, 12, 25), self.holidays)
+        self.assertHoliday(f"{year}-12-25" for year in range(1950, 2050))
+        dt = (
+            "2005-12-27",
+            "2011-12-27",
+            "2016-12-27",
+            "2022-12-27",
+            "2033-12-27",
+        )
+        self.assertHolidaysName("Christmas Day (Observed)", dt)
+        self.assertNoHoliday(self.holidays_no_observed, dt)
 
     def test_boxing_day(self):
-        for year in range(1948, 2050):
-            self.assertIn(date(year, 12, 26), self.holidays)
+        self.assertHoliday(f"{year}-12-26" for year in range(1950, 2050))
+        dt = (
+            "2004-12-27",
+            "2010-12-27",
+            "2021-12-27",
+            "2027-12-27",
+            "2032-12-27",
+        )
+        self.assertHolidaysName("Boxing Day (Observed)", dt)
+        self.assertNoHoliday(self.holidays_no_observed, dt)
 
     def test_ash_wednesday(self):
-        self.assertIn(date(2021, 2, 17), self.holidays)
-        self.assertIn(date(2022, 3, 2), self.holidays)
-        self.assertIn(date(2024, 2, 14), self.holidays)
+        self.assertHoliday(
+            "2015-02-18",
+            "2016-02-10",
+            "2017-03-01",
+            "2018-02-14",
+            "2019-03-06",
+            "2020-02-26",
+            "2021-02-17",
+            "2022-03-02",
+            "2023-02-22",
+            "2024-02-14",
+        )
 
     def test_good_friday(self):
-        self.assertIn(date(2021, 4, 2), self.holidays)
-        self.assertIn(date(2022, 4, 15), self.holidays)
-        self.assertIn(date(2024, 3, 29), self.holidays)
-
-    def test_easter(self):
-        self.assertIn(date(2021, 4, 4), self.holidays)
-        self.assertIn(date(2022, 4, 17), self.holidays)
-        self.assertIn(date(2024, 3, 31), self.holidays)
+        self.assertHoliday(
+            "2015-04-03",
+            "2016-03-25",
+            "2017-04-14",
+            "2018-03-30",
+            "2019-04-19",
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            "2024-03-29",
+        )
 
     def test_easter_monday(self):
-        self.assertIn(date(2021, 4, 5), self.holidays)
-        self.assertIn(date(2022, 4, 18), self.holidays)
-        self.assertIn(date(2024, 4, 1), self.holidays)
+        self.assertHoliday(
+            "2015-04-06",
+            "2016-03-28",
+            "2017-04-17",
+            "2018-04-02",
+            "2019-04-22",
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            "2024-04-01",
+        )

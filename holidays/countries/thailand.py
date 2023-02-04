@@ -52,7 +52,7 @@ class Thailand(HolidayBase):
     """
     country = "TH"
 
-    ### ​วันหยุดพิเศษ (เพิ่มเติม) - see Bank of Thailand's DB for Cross-Check ###
+    ### วันหยุดพิเศษ (เพิ่มเติม) - see Bank of Thailand's DB for Cross-Check ###
     thai_special_in_lieu_holidays_en = "Special In Lieu Holiday"
     thai_election_en = "Thai Election Day"
     thai_election_in_lieu_en = "Thai Election Day (in lieu)"

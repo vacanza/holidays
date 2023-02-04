@@ -43,7 +43,7 @@ class TestCyprus(unittest.TestCase):
                 ),
             )
 
-        for (d, dstr) in fdays:
+        for d, dstr in fdays:
             self.assertIn(d, self.cy_holidays)
             self.assertIn(dstr, self.cy_holidays[d])
 

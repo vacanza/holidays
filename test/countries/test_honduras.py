@@ -72,7 +72,7 @@ class TestHonduras(TestCase):
             ("2022-01-01", "Año Nuevo [New Year's Day]"),
             (
                 "2022-04-14",
-                "Día de las Américas [Panamerican Day], "
+                "Día de las Américas [Panamerican Day]; "
                 "Jueves Santo [Maundy Thursday]",
             ),
             ("2022-04-15", "Viernes Santo [Good Friday]"),

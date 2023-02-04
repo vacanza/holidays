@@ -10,12 +10,14 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAY, JUL, SEP, OCT, DEC, SAT, SUN
+from holidays.constants import HOLIDAY_NAME_DELIMITER
 from holidays.holiday_base import HolidayBase
 
 
@@ -40,19 +42,19 @@ class Botswana(HolidayBase):
 
         # Easter and easter related calculations
         easter_date = easter(year)
-        self[easter_date + rd(days=-2)] = "Good Friday"
-        self[easter_date + rd(days=-1)] = "Holy Saturday"
-        self[easter_date + rd(days=+1)] = "Easter Monday"
+        self[easter_date + td(days=-2)] = "Good Friday"
+        self[easter_date + td(days=-1)] = "Holy Saturday"
+        self[easter_date + td(days=+1)] = "Easter Monday"
 
         self[date(year, MAY, 1)] = "Labour Day"
-        self[easter_date + rd(days=+39)] = "Ascension Day"
+        self[easter_date + td(days=+39)] = "Ascension Day"
 
         self[date(year, JUL, 1)] = "Sir Seretse Khama Day"
 
         # 3rd Monday of July = "President's Day"
         d = date(year, JUL, 1) + rd(weekday=MO(+3))
         self[d] = "President's Day"
-        self[d + rd(days=+1)] = "President's Day Holiday"
+        self[d + td(days=+1)] = "President's Day Holiday"
 
         self[date(year, SEP, 30)] = "Botswana Day"
         self[date(year, OCT, 1)] = "Botswana Day Holiday"
@@ -70,18 +72,18 @@ class Botswana(HolidayBase):
                     and v.upper() in {"BOXING DAY", "LABOUR DAY"}
                 ):
                     # Add the (Observed) holiday
-                    self[k + rd(days=+2)] = v + " Holiday"
+                    self[k + td(days=+2)] = v + " Holiday"
                 if (
                     1995 <= year == k.year
                     and k.weekday() == SUN
                     and v.upper() != "NEW YEAR'S DAY HOLIDAY"
                 ):
                     # Add the (Observed) holiday
-                    self[k + rd(days=+1)] = v + " (Observed)"
+                    self[k + td(days=+1)] = v + " (Observed)"
 
                 # If there is a holiday and an (Observed) holiday
                 # on the same day, add an (Observed) holiday for that holiday
-                hol_names = self.get(k).split(",")
+                hol_names = self.get(k).split(HOLIDAY_NAME_DELIMITER)
                 if len(hol_names) > 1:
                     # self.get(date) returns a string containing holidays as a
                     # comma delimited string split on delimiter to determine if
@@ -89,7 +91,7 @@ class Botswana(HolidayBase):
                     # Add an (Observed) for the one that is not (Observed)
                     for name in hol_names:
                         if " (Observed)" not in name:
-                            self[k + rd(days=+1)] = (
+                            self[k + td(days=+1)] = (
                                 name.lstrip() + " (Observed)"
                             )
 

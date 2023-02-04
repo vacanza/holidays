@@ -10,9 +10,9 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, FEB, APR, MAY, JUN, AUG, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
@@ -48,7 +48,7 @@ class Slovenia(HolidayBase):
         self[date(year, FEB, 8)] = "Prešernov dan"
 
         # Easter monday is the only easter related work-free day
-        self[easter(year) + rd(days=+1)] = "Velikonočni ponedeljek"
+        self[easter(year) + td(days=+1)] = "Velikonočni ponedeljek"
 
         # Day of uprising against occupation
         self[date(year, APR, 27)] = "dan upora proti okupatorju"
