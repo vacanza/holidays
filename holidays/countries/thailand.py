@@ -123,6 +123,7 @@ class Thailand(HolidayBase):
             (FEB, 21, thai_special_in_lieu_holidays_en),
             (AUG, 14, thai_special_in_lieu_holidays_en),
             (DEC, 11, thai_special_in_lieu_holidays_en),
+            (DEC, 29, thai_election_en),
         ),
         # From 2001 Onwards (Checked /w Bank of Thailand Data)
         2006: (
@@ -201,19 +202,21 @@ class Thailand(HolidayBase):
 
             self[dt] = holiday_name
 
-            # !!! If Public Holiday falls on weekends, (in lieu) on Monday !!!
+            # !!! If Public Holiday falls on weekends, (in lieu) on workday !!!
             # Latest iteration was in 2001 (B.E. 2554)
             # Data from 1992-1994 and 1998-2000 are declared discretely in
             #   special_holidays declarations above.
             # Sources:
             #   (isranews.org 's wbm) http://tiny.cc/wa_isranews_inlieu_hist
+            #   https://resolution.soc.go.th/?prep_id=99159317
+            #   https://resolution.soc.go.th/?prep_id=196007
 
             # Applied Automatically for Monday if on Weekends: 1961-1973
             # No In Lieu days available: 1974-1988
-            # Case-by-Case application for Monday if on Weekends: 1989-1994
-            # Applied Automatically for Monday if on Weekends: 1995-1997
-            # Case-by-Case application for Monday if on Weekends: 1998-2000
-            # Applied Automatically for Monday if on Weekends: 2001-Present
+            # Case-by-Case application for Workday if on Weekends: 1989-1994
+            # Applied Automatically for Workday if on Weekends: 1995-1997
+            # Case-by-Case application for Workday if on Weekends: 1998-2000
+            # Applied Automatically for Workday if on Weekends: 2001-Present
             if 1961 <= year <= 1973 or 1995 <= year <= 1997 or year >= 2001:
                 if self.observed and self._is_weekend(dt):
                     in_lieu = dt + td(days=2 if dt.weekday() == SAT else 1)
@@ -259,6 +262,7 @@ class Thailand(HolidayBase):
         #   public holidays in 1948 (2491 B.E)
         # Sources:
         #   (museumsiam.org 's wbm) http://tiny.cc/wa_museumsiam_songkran
+        #   https://resolution.soc.go.th/?prep_id=123659
         songkran_festival_en = "Songkran Festival"
 
         # 1948-1953, celebrated on Apr 13-15
