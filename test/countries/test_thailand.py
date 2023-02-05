@@ -51,7 +51,7 @@ class TestThailand(TestCase):
             ("2022-10-24", "Chulalongkorn Memorial Day (in lieu)"),
             (
                 "2022-12-05",
-                "HM King Bhumibol Adulyadej's Birthday; Father's Day",
+                "Father's Day; HM King Bhumibol Adulyadej's Birthday",
             ),
             ("2022-12-10", "Constitution Day"),
             ("2022-12-12", "Constitution Day (in lieu)"),
