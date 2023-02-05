@@ -45,8 +45,10 @@ class Thailand(HolidayBase):
     References:
 
     - Based on: https://en.wikipedia.org/wiki/Public_holidays_in_Thailand
-    - Checked with: https://www.bot.or.th/Thai/FinancialInstitutions/FIholiday/Pages/2023.aspx
+    - Checked with: (Bank of Thailand 's wbm) http://tiny.cc/wa_bot_2023
     - For individual data sources in detail, see the in-code comment below
+      with copies available on Internet Archive's Wayback Machine
+      other extra long links are shortened with tiny.cc to Wayback Machine
 
     Country created by: `arkid15r <https://github.com/arkid15r>`__
 
@@ -55,13 +57,13 @@ class Thailand(HolidayBase):
 
     country = "TH"
 
-    # !!! วันหยุดพิเศษ (เพิ่มเติม) - see Bank of Thailand's DB for Cross-Check !!!
+    # วันหยุดพิเศษ (เพิ่มเติม) - see Bank of Thailand's DB for Cross-Check
     thai_special_in_lieu_holidays_en = "Special In Lieu Holiday"
     thai_election_en = "Thai Election Day"
     thai_election_in_lieu_en = "Thai Election Day (in lieu)"
     thai_bridge_public_holiday_en = "Bridge Public Holiday"
 
-    # !!! Special Cases !!!
+    # Special Cases
     rama_ix_golden_jubilee_en = "HM King Bhumibol Adulyadej's Golden Jubilee"
     rama_ix_sixty_accession_en = (
         "HM King Bhumibol Adulyadej's 60th Anniversary of Accession Event"
@@ -203,7 +205,8 @@ class Thailand(HolidayBase):
             # Latest iteration was in 2001 (B.E. 2554)
             # Data from 1992-1994 and 1998-2000 are declared discretely in
             #   special_holidays declarations above.
-            # Sources: https://www.isranews.org/content-page/item/20544-วันหยุดชดเชย-มาจากไหน-sp-863880667.html
+            # Sources:
+            #   (isranews.org 's wbm) http://tiny.cc/wa_isranews_inlieu_hist
 
             # Applied Automatically for Monday if on Weekends: 1961-1973
             # No In Lieu days available: 1974-1988
@@ -230,7 +233,8 @@ class Thailand(HolidayBase):
         # วันขึ้นปีใหม่
         # Status: In-Use
         # Starts in the present form in 1941 (B.E. 2484)
-        # Sources: https://th.wikisource.org/wiki/ประกาศให้ใช้วันที่_1_มกราคม_เป็นวันขึ้นปีใหม่_ลงวันที่_24_ธันวาคม_2483
+        # Sources:
+        #   (wikisource.org 's wbm) http://tiny.cc/wa_wiki_thai_newyear_2483
         new_years_day_en = "New Year's Day"
 
         if year >= 1941:
@@ -240,7 +244,8 @@ class Thailand(HolidayBase):
         # วันจักรี
         # Status: In-Use
         # Starts in present form in 1918 (B.E. 2461)
-        # Sources: https://www.ocac.go.th/news/๖-เมษายน-วันจักรี/
+        # Sources:
+        #   (ocac.got.th 's wbm) http://tiny.cc/wa_ocac_chakri
         chakri_memorial_en = "Chakri Memorial Day"
 
         if year >= 1918:
@@ -252,7 +257,8 @@ class Thailand(HolidayBase):
         # Used to be April 1st as Thai New Year Day
         # Initially abandoned in 1941 (B.E. 2484), declared again as
         #   public holidays in 1948 (2491 B.E)
-        # Sources: https://m.museumsiam.org/s.php?p=ZGEtZGV0YWlsMi5waHB8QHxNSUQ9MyZDSUQ9MTc3JkNPTklEPTQwMzM=
+        # Sources:
+        #   (museumsiam.org 's wbm) http://tiny.cc/wa_museumsiam_songkran
         songkran_festival_en = "Songkran Festival"
 
         # 1948-1953, celebrated on Apr 13-15
@@ -283,7 +289,8 @@ class Thailand(HolidayBase):
         # Does existed officially since 1956 (B.E. 2499),
         #   but wasn't a public holiday until then
         # *** NOTE: only observed by financial and private sectors
-        # Sources: https://www.thairath.co.th/lifestyle/culture/1832869
+        # Sources:
+        #   https://www.thairath.co.th/lifestyle/culture/1832869
         national_labour_day_en = "National Labour Day"
 
         if year >= 1974:
@@ -294,7 +301,8 @@ class Thailand(HolidayBase):
         # Status: Defunct (Historical)
         # Starts in 1939 (B.E. 2482) by Plaek Phibunsongkhram
         # Replaced by Rama IX's birthday in 1960 (B.E. 2503) by Sarit Thanarat
-        # Sources: https://web.archive.org/web/20091106202525/http://www.culture.go.th/study.php?&YY=2548&MM=11&DD=2
+        # Sources:
+        #   (Ministry of Culture 's wbm) http://tiny.cc/wa_mincul_nat_day
         national_day_khana_ratsadon_en = "National Day"
 
         if 1939 <= year <= 1959:
@@ -305,9 +313,9 @@ class Thailand(HolidayBase):
         # Starts in 1958 (B.E. 2501)
         # No celebration in 2017-2019 (B.E 2560-2562)
         # Reestablished with Rama X's Coronation in 2020
-        # Sources: https://www.matichon.co.th/politics/news_526200
-        #          https://www.matichon.co.th/politics/news_526200
-        #          https://workpointtoday.com/news1-5/
+        # Sources:
+        #   https://www.matichon.co.th/politics/news_526200
+        #   https://workpointtoday.com/news1-5/
         coronation_day_en = "Coronation Day"
 
         # Rama IX's Coronation: May 5th
@@ -322,27 +330,31 @@ class Thailand(HolidayBase):
         # วันเฉลิมพระชนมพรรษา พระราชินี
         # Status: In-Use
         # Starts in 2019 (B.E. 2562)
-        # Sources: https://www.thairath.co.th/news/politic/1567418
+        # Sources:
+        #   https://www.thairath.co.th/news/politic/1567418
         queen_suthiday_birthday_en = "HM Queen Suthida's Birthday"
 
         if year >= 2019:
             add_holiday(date(year, JUN, 3), queen_suthiday_birthday_en)
 
         # !!! HM King Maha Vajiralongkorn's Birthday !!!
-        # วันเฉลิมพระชนมพรรษา พระบาทสมเด็จพระปรเมนทรรามาธิบดีศรีสินทรมหาวชิราลงกรณ พระวชิรเกล้าเจ้าอยู่หัว
+        # วันเฉลิมพระชนมพรรษา รัชกาลที่ 10
         # Status: In-Use
         # Started in 2017 (B.E 2560)
-        # Sources: https://www.matichon.co.th/politics/news_526200
+        # Sources:
+        #   https://www.matichon.co.th/politics/news_526200
         rama_x_birthday_en = "HM King Maha Vajiralongkorn's Birthday"
 
         if year >= 2017:
             add_holiday(date(year, JUL, 28), rama_x_birthday_en)
 
         # !!! HM Queen Sirikit the Queen Mother's Birthday !!!
-        # วันเฉลิมพระชนมพรรษา สมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถ ( 1976-2017), วันพระราชสมภพของสมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถ พระบรมราชชนนีพันปีหลวง (2017-Present)
+        # วันเฉลิมพระชนมพรรษา พระบรมราชินีนาถ ( 1976-2017),
+        # วันเฉลิมพระชนมพรรษา พระบรมราชชนนีพันปีหลวง (2017-Present)
         # Status: In-Use
-        # Started in 1976 (B.E. 2519) as both HM Queen Sirikit's Birthday and Thai Mother's Day
-        # Sources: https://hilight.kapook.com/view/14164
+        # Started in 1976 (B.E. 2519) alongside Mother's Day
+        # Sources:
+        #   https://hilight.kapook.com/view/14164
         queen_sirikit_birthday_rama_ix_en = "HM Queen Sirikit's Birthday"
         queen_sirikit_birthday_rama_x_en = (
             "HM Queen Sirikit The Queen Mother's Birthday"
@@ -355,15 +367,16 @@ class Thailand(HolidayBase):
         elif year >= 2017:
             add_holiday(date(year, AUG, 12), queen_sirikit_birthday_rama_x_en)
 
-        # !!! Thai Mother's Day !!!
+        # !!! Mother's Day !!!
         # วันแม่แห่งชาติ
         # Status: In-Use
         # Started 1950 (B.E 2493) initially as April 15 and cancelled in
         #   1958 (B.E 2501) when the Min. of Culture was abolished.
         # Restarts again in 1976 (B.E. 2519) on Queen Sirikit's Birthday
         #   (August 12) and stay that way from that point onwards.
-        # Sources: https://www.brh.go.th/index.php/2019-02-27-04-11-52/542-12-2564
-        thai_mothers_day_en = "Thai Mother's Day"
+        # Sources:
+        #   https://www.brh.go.th/index.php/2019-02-27-04-11-52/542-12-2564
+        thai_mothers_day_en = "Mother's Day"
 
         # Initial Celebration on April 15
         if 1950 <= year <= 1957:
@@ -377,43 +390,47 @@ class Thailand(HolidayBase):
         # วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทร มหาภูมิพลอดุลยเดช บรมนาถบพิตร
         # Status: In-Use
         # Started in 2017 (B.E 2560)
-        # Sources: https://www.matichon.co.th/politics/news_526200
+        # Sources:
+        #   https://www.matichon.co.th/politics/news_526200
         rama_ix_memorial_en = "HM King Bhumibol Adulyadej Memorial Day"
 
         if year >= 2017:
             add_holiday(date(year, OCT, 13), rama_ix_memorial_en)
 
         # !!! Chulalongkorn Memorial Day !!!
-        # วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทร มหาภูมิพลอดุลยเดช บรมนาถบพิตร
+        # วันปิยมหาราช
         # Status: In-Use
         # Started in 1911 (B.E. 2454)
-        # Sources: https://th.wikipedia.org/wiki/วันปิยมหาราช
+        # Sources:
+        #   https://th.wikipedia.org/wiki/วันปิยมหาราช
         rama_five_memorial_en = "Chulalongkorn Memorial Day"
 
         if year >= 1911:
             add_holiday(date(year, OCT, 23), rama_five_memorial_en)
 
         # !!! HM King Bhumibol Adulyadej's Birthday Anniversary !!!
-        # วันเฉลิมพระชนมพรรษา พระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร (1960-2016),
-        # วันคล้ายยวันเฉลิมพระชนมพรรษา พระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร (2017-Present)
+        # วันเฉลิมพระชนมพรรษา รัชกาลที่ 9 (1960-2016),
+        # วันคล้ายยวันเฉลิมพระชนมพรรษา รัชกาลที่ 9 (2017-Present)
         # Status: In-Use
         # Replaced Nataion Day (26 June) in 1960 (B.E. 2503) by Sarit Thanarat
         # Confirmed as still in-use in 2017
-        # Sources: https://web.archive.org/web/20091106202525/http://www.culture.go.th/study.php?&YY=2548&MM=11&DD=2
-        #          https://hilight.kapook.com/view/148862
+        # Sources:
+        #   (Ministry of Culture 's wbm) http://tiny.cc/wa_mincul_nat_day
+        #   https://hilight.kapook.com/view/148862
         rama_ix_birthday_en = "HM King Bhumibol Adulyadej's Birthday"
 
         if year >= 1960:
             add_holiday(date(year, DEC, 5), rama_ix_birthday_en)
 
-        # !!! Thai Father's Day !!!
+        # !!! Father's Day !!!
         # วันพ่อแห่งชาติ
         # Status: In-Use
         # Starts in 1980 (B.E 2523)
         # Technically, a replication of HM King Bhumibol Adulyadej's Birthday
         #   but it's in the official calendar, so may as well have this here
-        # Sources: https://www.brh.go.th/index.php/2019-02-27-04-12-21/594-5-5
-        thai_fathers_day_en = "Thai Father's Day"
+        # Sources:
+        #   https://www.brh.go.th/index.php/2019-02-27-04-12-21/594-5-5
+        thai_fathers_day_en = "Father's Day"
 
         if year >= 1980:
             add_holiday(date(year, DEC, 5), thai_fathers_day_en)
@@ -423,9 +440,10 @@ class Thailand(HolidayBase):
         # Status: In-Use
         # Presumed to starts in 1932 (B.E. 2475) ???
         # Last known official record is Bank of Thailand's in 1992 (B.E. 2535)
-        # Sources: https://hilight.kapook.com/view/18208
-        #          https://www.bot.or.th/Thai/FinancialInstitutions/FIholiday/Pages/1992.aspx
-        #          https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2475.aspx
+        # Sources:
+        #   https://hilight.kapook.com/view/18208
+        #   (Bank of Thailand 's wbm) http://tiny.cc/wa_bot_1992
+        #   https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2475.aspx
         constitution_day_en = "Constitution Day"
 
         if year >= 1932:
@@ -436,7 +454,8 @@ class Thailand(HolidayBase):
         # Status: In-Use
         # Presumed to start in the present form in 1941 (B.E. 2484) ???
         # Last known official record is Bank of Thailand's in 1992 (B.E. 2535)
-        # Sources: https://www.bot.or.th/Thai/FinancialInstitutions/FIholiday/Pages/1992.aspx
+        # Sources:
+        #   (Bank of Thailand 's wbm) http://tiny.cc/wa_bot_1992
         new_years_eve_en = "New Year's Eve"
 
         if year >= 1941:
@@ -491,7 +510,7 @@ class Thailand(HolidayBase):
         Please avoid touching the Athikawan and Athikamat declaration array
         at all costs unless you can find sources for them somewhere for 2057++
 
-        Sources: https://www.ninenik.com/แนวทางฟังก์ชั่น_php_อย่างง่ายกับการหาวันข้างขึ้นข้างแรม-1021.html
+        Sources: (Ninenik.com 's wbm) http://tiny.cc/wa_ninenik_thluncal_php
                  https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2560.aspx
         """
         # Athikawan (Extra-Day Year) list goes from 1942-2057 C.E.
@@ -703,12 +722,13 @@ class Thailand(HolidayBase):
         ###########################
 
         # !!! Thai Agricultural Bank Holiday !!!
-        # วันหยุดเพิ่มเติมสำหรับการปิดบัญชีประจำปีของธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร
+        # วันหยุดเพิ่มเติมสำหรับการปิดบัญชีประจำปีของ ธ.ก.ส.
         # Status: Defunct (Historical)
         # Earliest Record is from 1992 (B.E 2535)
         # Abandoned post-2022 (B.E 2565) by Bank of Thailand
         # *** NOTE: only observed by financial sectors
-        # Sources: https://www.bot.or.th/Thai/FinancialInstitutions/FIholiday/Pages/2023.aspx
+        # Sources:
+        #   (Bank of Thailand 's wbm) http://tiny.cc/wa_bot_2023
 
         # !!! Thai Mid-Year Bank Holiday !!!
         # วันหยุดภาคครึ่งปีของสถาบันการเงิน
@@ -716,7 +736,8 @@ class Thailand(HolidayBase):
         # Earliest Record is from 1992 (B.E 2535)
         # Abandoned post-2019 (B.E 2562) by Bank of Thailand
         # *** NOTE: only observed by financial sectors
-        # Sources: https://www.bot.or.th/Thai/FinancialInstitutions/FIholiday/Pages/2023.aspx
+        # Sources:
+        #   (Bank of Thailand 's wbm) http://tiny.cc/wa_bot_2023
 
         ###########################################
         #
@@ -730,7 +751,8 @@ class Thailand(HolidayBase):
         # Observed in Yala, Pattani, Narathiwat, Satun, and Songkhla from
         # 1992 (B.E 2535)onwards except 2012-2013 (B.E 2555-2556)
         # *** NOTE: no in-lieu dates available
-        # Sources: https://www.bot.or.th/Thai/FinancialInstitutions/FIholiday/Pages/1992.aspx
+        # Sources:
+        #   (Bank of Thailand 's wbm) http://tiny.cc/wa_bot_1992
 
         # !!! Eid al-Adha !!!
         # วันตรุษอีดิ้ลอัฎฮา (วันรายอฮัจยี)
@@ -738,7 +760,8 @@ class Thailand(HolidayBase):
         # Observed in Yala, Pattani, Narathiwat, Satun, and Songkhla from
         # 1994 (B.E 2537) onwards except 2012-2013 (B.E 2555-2556) for Songkhla
         # *** NOTE: no in-lieu dates available
-        # Sources: https://www.bot.or.th/Thai/FinancialInstitutions/FIholiday/Pages/1994.aspx
+        # Sources:
+        #   (Bank of Thailand 's wbm) http://tiny.cc/wa_bot_1994
 
         # !!! Lunar New Year !!!
         # วันตรุษจีน
@@ -746,7 +769,8 @@ class Thailand(HolidayBase):
         # Observed in Yala, Pattani, Narathiwat, Satun, and Songkhla from
         # 1994 (B.E 2537) onwards except 2012-2013 (B.E 2555-2556)
         # *** NOTE: no in-lieu dates available
-        # Sources: https://www.bot.or.th/Thai/FinancialInstitutions/FIholiday/Pages/1994.aspx
+        # Sources:
+        #   (Bank of Thailand 's wbm) http://tiny.cc/wa_bot_1994
 
         #################################
         #
@@ -763,9 +787,10 @@ class Thailand(HolidayBase):
         #   can technically assign it to 13 May for years prior with no data.
         # *** NOTE: only observed by government sectors
         # [TODO]: Update this annually around Dec of each year
-        # Sources: https://en.wikipedia.org/wiki/Royal_Ploughing_Ceremony
-        #          https://www.lib.ru.ac.th/journal/may/may_phauchmongkol.html
-        #          https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2540.aspx
+        # Sources:
+        #   https://en.wikipedia.org/wiki/Royal_Ploughing_Ceremony
+        #   https://www.lib.ru.ac.th/journal/may/may_phauchmongkol.html
+        #   https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2540.aspx
         raeknakhwan_en = "Royal Ploughing Ceremony"
 
         raeknakhwan = {

@@ -43,7 +43,7 @@ class TestThailand(TestCase):
             ("2022-07-29", "Bridge Public Holiday"),
             (
                 "2022-08-12",
-                "HM Queen Sirikit The Queen Mother's Birthday; Thai Mother's Day",
+                "HM Queen Sirikit The Queen Mother's Birthday; Mother's Day",
             ),
             ("2022-10-13", "HM King Bhumibol Adulyadej Memorial Day"),
             ("2022-10-14", "Bridge Public Holiday"),
@@ -51,7 +51,7 @@ class TestThailand(TestCase):
             ("2022-10-24", "Chulalongkorn Memorial Day (in lieu)"),
             (
                 "2022-12-05",
-                "HM King Bhumibol Adulyadej's Birthday; Thai Father's Day",
+                "HM King Bhumibol Adulyadej's Birthday; Father's Day",
             ),
             ("2022-12-10", "Constitution Day"),
             ("2022-12-12", "Constitution Day (in lieu)"),
