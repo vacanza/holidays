@@ -641,16 +641,10 @@ class Thailand(HolidayBase):
             #            or 147[1-5] + 15[6] -1 = 161
             # Pakatimat: 15th Waxing Day of Month 6
             #            or 147[1-5] + 15[6] -1 = 161
-            # ** Should the date be in April, an extra 30 days is added
             # Status: In-Use
             visakha_bucha_en = "Visakha Bucha"
 
             if year in athikamat_years_gregorian:
-                add_holiday(
-                    thai_lun_cal_st_date + td(days=+191),
-                    visakha_bucha_en,
-                )
-            elif (thai_lun_cal_st_date + td(days=+102)).month == 4:
                 add_holiday(
                     thai_lun_cal_st_date + td(days=+191),
                     visakha_bucha_en,
