@@ -300,24 +300,24 @@ class Thailand(HolidayBase):
 
         # 1948-1953, celebrated on Apr 13-15
         if 1948 <= year <= 1953:
-            add_holiday_no_inlieu(date(year, APR, 13), songkran_festival_en)
-            add_holiday_no_inlieu(date(year, APR, 14), songkran_festival_en)
-            add_holiday_no_inlieu(date(year, APR, 15), songkran_festival_en)
+            self[date(year, APR, 13)] = songkran_festival_en
+            self[date(year, APR, 14)] = songkran_festival_en
+            self[date(year, APR, 15)] = songkran_festival_en
         # 1954-1956, abandoned as a public holiday
         # 1957-1988, only celebrated on Apr 13
         elif 1957 <= year <= 1988:
             add_holiday(date(year, APR, 13), songkran_festival_en)
         # 1989-1997, celebrated on Apr 12-14
         elif 1989 <= year <= 1997:
-            add_holiday_no_inlieu(date(year, APR, 12), songkran_festival_en)
-            add_holiday_no_inlieu(date(year, APR, 13), songkran_festival_en)
-            add_holiday_no_inlieu(date(year, APR, 14), songkran_festival_en)
+            self[date(year, APR, 12)] = songkran_festival_en
+            self[date(year, APR, 13)] = songkran_festival_en
+            self[date(year, APR, 14)] = songkran_festival_en
         # 1998-Present, celebrated on Apr 13-15
         # (Except for 2020 due to Covid-19 outbreaks)
         elif year >= 1998 and year != 2020:
-            add_holiday_no_inlieu(date(year, APR, 13), songkran_festival_en)
-            add_holiday_no_inlieu(date(year, APR, 14), songkran_festival_en)
-            add_holiday_no_inlieu(date(year, APR, 15), songkran_festival_en)
+            self[date(year, APR, 13)] = songkran_festival_en
+            self[date(year, APR, 14)] = songkran_festival_en
+            self[date(year, APR, 15)] = songkran_festival_en
 
         # !!! Songkran Festival (in lieu) !!!
         # วันหยุดชดเชยวันสงกรานต์
