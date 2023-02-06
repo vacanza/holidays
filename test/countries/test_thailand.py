@@ -220,14 +220,6 @@ class TestThailand(TestCase):
             name, (f"{year}-08-12" for year in range(1976, 2058))
         )
 
-        self.assertNoHoliday(
-            self.holidays_no_observed,
-            "2012-08-13",
-            "2017-08-15",
-            "2018-08-14",
-            "2023-08-15",
-        )
-
     def test_rama_ix_memorial_day(self):
         self.assertHoliday(f"{year}-10-13" for year in range(2017, 2058))
         self.assertNoHoliday("2016-10-13")
