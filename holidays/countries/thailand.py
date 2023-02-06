@@ -791,22 +791,16 @@ class Thailand(HolidayBase):
             # Applied Automatically for Workday if on Weekends: 1995-1997
             # Case-by-Case application for Workday if on Weekends: 1998-2000
             # Applied Automatically for Workday if on Weekends: 2001-Present
-            if 1961 <= year <= 1973 or 1995 <= year <= 1997 or year >= 2001:
+            if self.observed and (
+                1961 <= year <= 1973 or 1995 <= year <= 1997 or year >= 2001
+            ):
                 # CASE 1: FRI-SAT -> 1 in-lieu on MON
                 if asarnha_date.weekday() == FRI:
-                    add_holiday_no_inlieu(
-                        asarnha_date + td(days=+3), khao_phansa_in_lieu_en
-                    )
+                    self[asarnha_date + td(days=+3)] = khao_phansa_in_lieu_en
                 # CASE 2: SAT-SUN -> 1 in-lieu on MON
-                if asarnha_date.weekday() == SAT:
-                    add_holiday_no_inlieu(
-                        asarnha_date + td(days=+2), asarnha_bucha_in_lieu_en
-                    )
                 # CASE 3: SUN-MON -> 1 in-lieu on TUE
-                if asarnha_date.weekday() == SUN:
-                    add_holiday_no_inlieu(
-                        asarnha_date + td(days=+2), asarnha_bucha_in_lieu_en
-                    )
+                elif self._is_weekend(asarnha_date):
+                    self[asarnha_date + td(days=+2)] = asarnha_bucha_in_lieu_en
 
         ###########################
         #
