@@ -524,7 +524,7 @@ class Thailand(HolidayBase):
         new_years_eve_en = "New Year's Eve"
 
         if year >= 1941:
-            add_holiday_no_inlieu(date(year, DEC, 31), new_years_eve_en)
+            self[date(year, DEC, 31)] = new_years_eve_en
 
         ################################
         #
