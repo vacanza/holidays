@@ -191,16 +191,20 @@ class TestThailand(TestCase):
         )
 
     def test_queen_sirikit_birthday(self):
-        self.assertHoliday(f"{year}-08-12" for year in range(1976, 2017))
+        self.assertHoliday(f"{year}-08-12" for year in range(1976, 2058))
         self.assertNoHoliday("1975-08-12")
-        self.assertHoliday(f"{year}-08-12" for year in range(2017, 2058))
         self.assertNoHolidayName(
             "HM Queen Sirikit The Queen Mother's Birthday",
             Thailand(years=2016),
         )
+        self.assertNoHolidayName(
+            "HM Queen Sirikit's Birthday",
+            Thailand(years=2017),
+        )
 
         self.assertNoHoliday(
             self.holidays_no_observed,
+            "2012-08-13",
             "2017-08-14",
             "2018-08-13",
             "2023-08-14",
