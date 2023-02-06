@@ -44,7 +44,7 @@ class TestThailand(TestCase):
             ("2022-07-29", "Bridge Public Holiday"),
             (
                 "2022-08-12",
-                "HM Queen Sirikit The Queen Mother's Birthday; Mother's Day",
+                "HM Queen Sirikit The Queen Mother's Birthday, Mother's Day",
             ),
             ("2022-10-13", "HM King Bhumibol Adulyadej Memorial Day"),
             ("2022-10-14", "Bridge Public Holiday"),
@@ -52,7 +52,7 @@ class TestThailand(TestCase):
             ("2022-10-24", "Chulalongkorn Memorial Day (in lieu)"),
             (
                 "2022-12-05",
-                "Father's Day; HM King Bhumibol Adulyadej's Birthday",
+                "Father's Day, HM King Bhumibol Adulyadej's Birthday",
             ),
             ("2022-12-10", "Constitution Day"),
             ("2022-12-12", "Constitution Day (in lieu)"),
@@ -191,12 +191,8 @@ class TestThailand(TestCase):
         )
 
     def test_queen_sirikit_birthday(self):
-        self.assertHoliday(f"{year}-04-15" for year in range(1976, 2017))
-        self.assertNoHoliday("1975-04-15")
-        self.assertNoHolidayName(
-            "HM Queen Sirikit's Birthday", Thailand(years=[1975, 2017])
-        )
-
+        self.assertHoliday(f"{year}-08-12" for year in range(1976, 2017))
+        self.assertNoHoliday("1975-08-12")
         self.assertHoliday(f"{year}-08-12" for year in range(2017, 2058))
         self.assertNoHolidayName(
             "HM Queen Sirikit The Queen Mother's Birthday",
@@ -205,9 +201,6 @@ class TestThailand(TestCase):
 
         self.assertNoHoliday(
             self.holidays_no_observed,
-            "2006-04-18",
-            "2007-04-18",
-            "2012-04-18",
             "2017-08-14",
             "2018-08-13",
             "2023-08-14",

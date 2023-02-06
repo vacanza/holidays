@@ -13,7 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC, SAT, SUN
+from holidays.constants import OCT, NOV, DEC, SAT, SUN, MON
 from holidays.holiday_base import HolidayBase
 
 
@@ -288,6 +288,7 @@ class Thailand(HolidayBase):
         # Used to be April 1st as Thai New Year Day
         # Initially abandoned in 1941 (B.E. 2484), declared again as
         #   public holidays in 1948 (2491 B.E)
+        # This has its own in lieu trigger
         # Sources:
         #   (museumsiam.org 's wbm) http://tiny.cc/wa_museumsiam_songkran
         #   https://resolution.soc.go.th/?prep_id=123659
@@ -295,24 +296,50 @@ class Thailand(HolidayBase):
 
         # 1948-1953, celebrated on Apr 13-15
         if 1948 <= year <= 1953:
-            add_holiday(date(year, APR, 13), songkran_festival_en)
-            add_holiday(date(year, APR, 14), songkran_festival_en)
-            add_holiday(date(year, APR, 15), songkran_festival_en)
+            add_holiday_no_inlieu(date(year, APR, 13), songkran_festival_en)
+            add_holiday_no_inlieu(date(year, APR, 14), songkran_festival_en)
+            add_holiday_no_inlieu(date(year, APR, 15), songkran_festival_en)
         # 1954-1956, abandoned as a public holiday
         # 1957-1988, only celebrated on Apr 13
         elif 1957 <= year <= 1988:
             add_holiday(date(year, APR, 13), songkran_festival_en)
         # 1989-1997, celebrated on Apr 12-14
         elif 1989 <= year <= 1997:
-            add_holiday(date(year, APR, 12), songkran_festival_en)
-            add_holiday(date(year, APR, 13), songkran_festival_en)
-            add_holiday(date(year, APR, 14), songkran_festival_en)
+            add_holiday_no_inlieu(date(year, APR, 12), songkran_festival_en)
+            add_holiday_no_inlieu(date(year, APR, 13), songkran_festival_en)
+            add_holiday_no_inlieu(date(year, APR, 14), songkran_festival_en)
         # 1998-Present, celebrated on Apr 13-15
         # (Except for 2020 due to Covid-19 outbreaks)
         elif year >= 1998 and year != 2020:
-            add_holiday(date(year, APR, 13), songkran_festival_en)
-            add_holiday(date(year, APR, 14), songkran_festival_en)
-            add_holiday(date(year, APR, 15), songkran_festival_en)
+            add_holiday_no_inlieu(date(year, APR, 13), songkran_festival_en)
+            add_holiday_no_inlieu(date(year, APR, 14), songkran_festival_en)
+            add_holiday_no_inlieu(date(year, APR, 15), songkran_festival_en)
+
+        # !!! Songkran Festival (in lieu) !!!
+        # วันหยุดชดเชยวันสงกรานต์
+        # If Songkran happened to be held on the weekends, only one in-lieu
+        #   public holiday is added, No in lieus for SUN-MON-TUE case
+        # Status: In Use
+        # Sources:
+        #   https://github.com/dr-prodigy/python-holidays/pull/929
+        songkran_festival_in_lieu_en = "Songkran Festival (in lieu)"
+
+        # Applied Automatically for Monday if on Weekends: 1961-1973
+        # No In Lieu days available: 1974-1988
+        # Case-by-Case application for Workday if on Weekends: 1989-1994
+        # Applied Automatically for Workday if on Weekends: 1995-1997
+        # Case-by-Case application for Workday if on Weekends: 1998-2000
+        # Applied Automatically for Workday if on Weekends: 2001-Present
+        if 1961 <= year <= 1973 or 1995 <= year <= 1997 or year >= 2001:
+            # CASE 1: THU-FRI-SAT -> 1 in-lieu on MON
+            if date(year, APR, 15).weekday() == SAT:
+                add_holiday(date(year, APR, 17), songkran_festival_in_lieu_en)
+            # CASE 2: FRI-SAT-SUN -> 1 in-lieu on MON
+            elif date(year - 1, DEC, 31).weekday() == SUN:
+                add_holiday(date(year, APR, 16), songkran_festival_in_lieu_en)
+            # CASE 3: SAT-SUN-MON -> 1 in-lieu on TUE
+            elif date(year - 1, DEC, 31).weekday() == MON:
+                add_holiday(date(year, APR, 16), songkran_festival_in_lieu_en)
 
         # !!! Labour day !!!
         # วันแรงงานแห่งชาติ
@@ -394,7 +421,7 @@ class Thailand(HolidayBase):
 
         # Initial celebration as HM Queen Sirikit's Birthday
         if 1976 <= year <= 2016:
-            add_holiday(date(year, APR, 15), queen_sirikit_birthday_rama_ix_en)
+            add_holiday(date(year, AUG, 12), queen_sirikit_birthday_rama_ix_en)
         # Now acts as the Queen Mother
         elif year >= 2017:
             add_holiday(date(year, AUG, 12), queen_sirikit_birthday_rama_x_en)
@@ -486,12 +513,13 @@ class Thailand(HolidayBase):
         # Status: In-Use
         # Presumed to start in the present form in 1941 (B.E. 2484) ???
         # Last known official record is Bank of Thailand's in 1992 (B.E. 2535)
+        # This has its own in-lieu trigger
         # Sources:
         #   (Bank of Thailand 's wbm) http://tiny.cc/wa_bot_1992
         new_years_eve_en = "New Year's Eve"
 
         if year >= 1941:
-            add_holiday(date(year, DEC, 31), new_years_eve_en)
+            add_holiday_no_inlieu(date(year, DEC, 31), new_years_eve_en)
 
         ################################
         #
