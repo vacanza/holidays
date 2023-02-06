@@ -221,13 +221,6 @@ class Thailand(HolidayBase):
                     in_lieu = dt + td(days=2 if dt.weekday() == SAT else 1)
                     self[in_lieu] = f"{holiday_name} (in lieu)"
 
-        # REGIONAL/BANK HOLIDAYS/CONSECUTIVE SPECIAL CASES
-        def add_holiday_no_inlieu(dt, holiday_name):
-            if dt.year != year:
-                return
-
-            self[dt] = holiday_name
-
         super()._populate(year)
 
         ########################
