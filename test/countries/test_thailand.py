@@ -44,7 +44,7 @@ class TestThailand(TestCase):
             ("2022-07-29", "Bridge Public Holiday"),
             (
                 "2022-08-12",
-                "HM Queen Sirikit The Queen Mother's Birthday, Mother's Day",
+                "HM Queen Sirikit The Queen Mother's Birthday; Mother's Day",
             ),
             ("2022-10-13", "HM King Bhumibol Adulyadej Memorial Day"),
             ("2022-10-14", "Bridge Public Holiday"),
