@@ -17,8 +17,9 @@ Basics
 When contributing with fixes and new features, please start forking/branching
 from the `beta branch`_ to work on the latest code and reduce merging issues.
 
-Contributed PRs_ are required to include valid test coverage **(95% minimum,
-100% whenever possible)** in order to be merged.
+Contributed PRs_ are required to include valid test coverage **(the goal is
+100% coverage)** in order to be merged. Please don't hesitate to ask for
+help if you'read struggling with tests.
 
 Thanks a lot for your support.
 
@@ -26,44 +27,53 @@ Thanks a lot for your support.
 Running tests
 -------------
 
-First step is installing all the required dependencies with:
+First step is setting up development environment and installing all the required dependencies with:
 
-.. code-block:: bash
+.. code-block:: shell
 
-    $ pip install -r requirements_dev.txt
+    $ virtualenv -p python3 venv
+    $ source venv/bin/activate
 
-The project provides automated tests and coverage checks with tox; just run:
+    $ make install
 
-.. code-block:: bash
+The project provides automated style, tests and coverage checks:
 
-    $ tox
+.. code-block:: shell
 
-Alternatively, you can run pytest to run tests and coverage:
+    $ make check
 
-.. code-block:: bash
+You can run them separately:
 
-    $ python -m pytest .
-    # if you want to retrieve uncovered lines too:
-    $ python -m pytest --cov-report term-missing .
+.. code-block:: shell
 
-In addition to pytest, you need to ensure that all staged files are up to
-standard.
+    $ make pre-commit
+    $ make test
 
-.. _pre-commit: https://github.com/dr-prodigy/python-holidays/issues
+If you want to retrieve uncovered lines too:
 
-Install `pre-commit`_ and its git hook script so that the quality assurance
-tests will run on all staged files before they are committed:
+.. code-block:: shell
 
-.. code-block:: bash
+    $ make coverage
 
-    $ pip install pre-commit
-    $ pre-commit install
+You can specific tests using ``pytest`` command:
 
-To manually run the quality assurance tests on all tracked files:
+.. code-block:: shell
 
-.. code-block:: bash
+    $ pytest tests/countries/test_albania.py
 
-    $ pre-commit run -a
+Or even more granular:
+
+.. code-block:: shell
+
+    $ pytest tests/countries/test_albania.py::TestAlbania::test_country_aliases
+
+Due to how pytest-xdist is implemented, the -s/--capture=no option
+`doesn't work <https://pytest-xdist.readthedocs.io/en/latest/known-limitations.html#output-stdout-and-stderr-from-workers>`_.
+Use pytest directly if you need ``-s`` option:
+
+.. code-block:: shell
+
+    $ pytest -s tests/countries/test_albania.py
 
 
 Build sphinx documentation

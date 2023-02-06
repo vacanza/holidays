@@ -56,3 +56,14 @@ repos:
     rev: v2.2.0
     hooks:
       - id: setup-cfg-fmt
+
+  - repo: local
+    hooks:
+      - id: tests
+        always_run: true
+        entry: make test
+        language: system
+        name: run tests
+        pass_filenames: false
+        stages:
+          - push
