@@ -334,22 +334,17 @@ class Thailand(HolidayBase):
         # Applied Automatically for Workday if on Weekends: 1995-1997
         # Case-by-Case application for Workday if on Weekends: 1998-2000
         # Applied Automatically for Workday if on Weekends: 2001-Present
-        if 1961 <= year <= 1973 or 1995 <= year <= 1997 or year >= 2001:
+        if self.observed and (1995 <= year <= 1997 or year >= 2001):
+            dt = date(year, APR, 15) if year >= 2001 else date(year, APR, 14)
             # CASE 1: THU-FRI-SAT -> 1 in-lieu on MON
-            if date(year, APR, 15).weekday() == SAT:
-                add_holiday_no_inlieu(
-                    date(year, APR, 17), songkran_festival_in_lieu_en
-                )
+            if dt.weekday() == SAT:
+                self[dt + td(days=+2)] = songkran_festival_in_lieu_en
             # CASE 2: FRI-SAT-SUN -> 1 in-lieu on MON
-            elif date(year - 1, DEC, 31).weekday() == SUN:
-                add_holiday_no_inlieu(
-                    date(year, APR, 16), songkran_festival_in_lieu_en
-                )
+            elif dt.weekday() == SUN:
+                self[dt + td(days=+1)] = songkran_festival_in_lieu_en
             # CASE 3: SAT-SUN-MON -> 1 in-lieu on TUE
-            elif date(year - 1, DEC, 31).weekday() == MON:
-                add_holiday_no_inlieu(
-                    date(year, APR, 16), songkran_festival_in_lieu_en
-                )
+            elif dt.weekday() == MON:
+                self[dt + td(days=+1)] = songkran_festival_in_lieu_en
 
         # !!! Labour day !!!
         # วันแรงงานแห่งชาติ
