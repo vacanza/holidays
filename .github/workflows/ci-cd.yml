@@ -42,7 +42,7 @@ jobs:
           python -m pip install -e .
       - name: Run Tests
         run: |
-          pytest -n auto
+          make test
       - name: Upload Coverage
         run: coveralls --service=github
         env:
