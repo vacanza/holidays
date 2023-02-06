@@ -80,32 +80,6 @@ class TestFinancialHolidays(unittest.TestCase):
 class TestAllInSameYear(unittest.TestCase):
     """Test that only holidays in the year(s) requested are returned."""
 
-    def setUp(self):
-        self.countries = utils.list_supported_countries()
-
-    def tearDown(self):
-        """https://stackoverflow.com/questions/4414234/"""
-
-        def list2reason(exc_list):
-            if exc_list and exc_list[-1][0] is self:
-                return exc_list[-1][1]
-
-        result = self.defaultTestResult()
-        self._feedErrorsToResult(result, self._outcome.errors)
-        error = list2reason(result.errors)
-        failure = list2reason(result.failures)
-        text = error if error else failure
-        if text:
-            print(
-                f"{text.splitlines()[-1]} in country {self.country}: "
-                f"holiday {self.hol} returned for year {self.year}"
-            )
-            print(
-                utils.country_holidays(
-                    self.country, subdiv=None, years=[self.year]
-                ).get_list(self.hol)
-            )
-
     def test_all_countries(self):
         """
         Only holidays in the year(s) requested should be returned. This
@@ -118,7 +92,7 @@ class TestAllInSameYear(unittest.TestCase):
         This is logic test and not a code compatibility test, so for expediency
         we only run it once on the latest Python version.
         """
-        for country in self.countries:
+        for country in utils.list_supported_countries():
             for year in range(date.today().year - 10, date.today().year + 3):
                 for holiday in utils.country_holidays(country, years=year):
                     self.assertEqual(holiday.year, year)
