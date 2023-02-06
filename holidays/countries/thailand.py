@@ -13,9 +13,8 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC, SAT
+from holidays.constants import OCT, NOV, DEC, SAT, SUN
 from holidays.holiday_base import HolidayBase
-from holidays.utils import _ChineseLuniSolar
 
 
 class Thailand(HolidayBase):
@@ -152,10 +151,7 @@ class Thailand(HolidayBase):
             (OCT, 28, thai_flood_2011_emergency_lockdown_en),
             (OCT, 31, thai_flood_2011_emergency_lockdown_en),
         ),
-        2012: (
-            (JAN, 3, thai_bridge_public_holiday_en),
-            (APR, 9, thai_bridge_public_holiday_en),
-        ),
+        2012: ((APR, 9, thai_bridge_public_holiday_en),),
         2013: ((DEC, 30, thai_bridge_public_holiday_en),),
         2014: ((AUG, 11, thai_bridge_public_holiday_en),),
         2015: (
@@ -192,10 +188,10 @@ class Thailand(HolidayBase):
     }
 
     def __init__(self, **kwargs):
-        self.cnls = _ChineseLuniSolar()
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        # DEFAULT
         def add_holiday(dt, holiday_name):
             if dt.year != year:
                 return
@@ -203,7 +199,9 @@ class Thailand(HolidayBase):
             self[dt] = holiday_name
 
             # !!! If Public Holiday falls on weekends, (in lieu) on workday !!!
-            # Latest iteration was in 2001 (B.E. 2554)
+            # Despite the wording, this usually only applies to Monday only
+            #   for consecutive holidays, with the sole exception being
+            #   New Year's Eve (in lieu) <-- This is now it's own code instance
             # Data from 1992-1994 and 1998-2000 are declared discretely in
             #   special_holidays declarations above.
             # Sources:
@@ -212,6 +210,7 @@ class Thailand(HolidayBase):
             #   https://resolution.soc.go.th/?prep_id=196007
 
             # Applied Automatically for Monday if on Weekends: 1961-1973
+            #  **NOTE: No New Year's Eve (in lieu) for this period
             # No In Lieu days available: 1974-1988
             # Case-by-Case application for Workday if on Weekends: 1989-1994
             # Applied Automatically for Workday if on Weekends: 1995-1997
@@ -220,9 +219,14 @@ class Thailand(HolidayBase):
             if 1961 <= year <= 1973 or 1995 <= year <= 1997 or year >= 2001:
                 if self.observed and self._is_weekend(dt):
                     in_lieu = dt + td(days=2 if dt.weekday() == SAT else 1)
-                    while in_lieu.year == year and in_lieu in self:
-                        in_lieu += td(days=+1)
                     add_holiday(in_lieu, f"{holiday_name} (in lieu)")
+
+        # REGIONAL/BANK HOLIDAYS
+        def add_holiday_no_inlieu(dt, holiday_name):
+            if dt.year != year:
+                return
+
+            self[dt] = holiday_name
 
         super()._populate(year)
 
@@ -242,6 +246,30 @@ class Thailand(HolidayBase):
 
         if year >= 1941:
             add_holiday(date(year, JAN, 1), new_years_day_en)
+
+        # !!! New Year's Eve (in lieu) !!!
+        # วันหยุดชดเชยวันสิ้นปี
+        # Status: In-Use
+        # Added separately from New Year's Eve itself so that it would't
+        #   go over the next year
+        # Sources:
+        #   https://github.com/dr-prodigy/python-holidays/pull/929
+        #   https://resolution.soc.go.th/?prep_id=205799
+        #   https://resolution.soc.go.th/?prep_id=210744
+        new_years_eve_in_lieu_en = "New Year's Eve (in lieu)"
+
+        # Applied Automatically for Monday if on Weekends: 1961-1973
+        #  **NOTE: No New Year's Eve (in lieu) for this period
+        # No In Lieu days available: 1974-1988
+        # Case-by-Case application for Workday if on Weekends: 1989-1994
+        # Applied Automatically for Workday if on Weekends: 1995-1997
+        # Case-by-Case application for Workday if on Weekends: 1998-2000
+        # Applied Automatically for Workday if on Weekends: 2001-Present
+        if 1995 <= year <= 1997 or year >= 2001:
+            if date(year - 1, DEC, 31).weekday() == SAT:
+                add_holiday(date(year, JAN, 3), new_years_eve_in_lieu_en)
+            elif date(year - 1, DEC, 31).weekday() == SUN:
+                add_holiday(date(year, JAN, 2), new_years_eve_in_lieu_en)
 
         # !!! Chakri Memorial Day !!!
         # วันจักรี
@@ -637,7 +665,7 @@ class Thailand(HolidayBase):
                     makha_bucha_en,
                 )
 
-            # !!! Wisakha Bucha !!!
+            # !!! Visakha Bucha !!!
             # วันวิสาขบูชา
             # Athikamat: 15th Waxing Day of Month 6
             #            or 177[1-6] + 15[7] -1 = 191
