@@ -726,13 +726,12 @@ class Thailand(HolidayBase):
             if self.observed:
                 if year in athikamat_years_gregorian:
                     asarnha_date = thai_lun_cal_st_date + td(days=+250)
-                    self[asarnha_date] = asarnha_bucha_en
                 elif year in athikawan_years_gregorian:
                     asarnha_date = thai_lun_cal_st_date + td(days=+221)
-                    self[asarnha_date] = asarnha_bucha_en
                 else:
                     asarnha_date = thai_lun_cal_st_date + td(days=+220)
-                    self[asarnha_date] = asarnha_bucha_en
+
+                self[asarnha_date] = asarnha_bucha_en
 
             # !!! Buddhist Lent Day !!!
             # วันเข้าพรรษา
