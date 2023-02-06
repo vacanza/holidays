@@ -13,7 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC, SAT, SUN, MON
+from holidays.constants import OCT, NOV, DEC, MON, FRI, SAT, SUN
 from holidays.holiday_base import HolidayBase
 
 
@@ -221,7 +221,7 @@ class Thailand(HolidayBase):
                     in_lieu = dt + td(days=2 if dt.weekday() == SAT else 1)
                     add_holiday(in_lieu, f"{holiday_name} (in lieu)")
 
-        # REGIONAL/BANK HOLIDAYS
+        # REGIONAL/BANK HOLIDAYS/CONSECUTIVE SPECIAL CASES
         def add_holiday_no_inlieu(dt, holiday_name):
             if dt.year != year:
                 return
@@ -267,9 +267,13 @@ class Thailand(HolidayBase):
         # Applied Automatically for Workday if on Weekends: 2001-Present
         if 1995 <= year <= 1997 or year >= 2001:
             if date(year - 1, DEC, 31).weekday() == SAT:
-                add_holiday(date(year, JAN, 3), new_years_eve_in_lieu_en)
+                add_holiday_no_inlieu(
+                    date(year, JAN, 3), new_years_eve_in_lieu_en
+                )
             elif date(year - 1, DEC, 31).weekday() == SUN:
-                add_holiday(date(year, JAN, 2), new_years_eve_in_lieu_en)
+                add_holiday_no_inlieu(
+                    date(year, JAN, 2), new_years_eve_in_lieu_en
+                )
 
         # !!! Chakri Memorial Day !!!
         # วันจักรี
@@ -333,13 +337,19 @@ class Thailand(HolidayBase):
         if 1961 <= year <= 1973 or 1995 <= year <= 1997 or year >= 2001:
             # CASE 1: THU-FRI-SAT -> 1 in-lieu on MON
             if date(year, APR, 15).weekday() == SAT:
-                add_holiday(date(year, APR, 17), songkran_festival_in_lieu_en)
+                add_holiday_no_inlieu(
+                    date(year, APR, 17), songkran_festival_in_lieu_en
+                )
             # CASE 2: FRI-SAT-SUN -> 1 in-lieu on MON
             elif date(year - 1, DEC, 31).weekday() == SUN:
-                add_holiday(date(year, APR, 16), songkran_festival_in_lieu_en)
+                add_holiday_no_inlieu(
+                    date(year, APR, 16), songkran_festival_in_lieu_en
+                )
             # CASE 3: SAT-SUN-MON -> 1 in-lieu on TUE
             elif date(year - 1, DEC, 31).weekday() == MON:
-                add_holiday(date(year, APR, 16), songkran_festival_in_lieu_en)
+                add_holiday_no_inlieu(
+                    date(year, APR, 16), songkran_festival_in_lieu_en
+                )
 
         # !!! Labour day !!!
         # วันแรงงานแห่งชาติ
@@ -727,17 +737,20 @@ class Thailand(HolidayBase):
             asarnha_bucha_en = "Asarnha Bucha"
 
             if year in athikamat_years_gregorian:
-                add_holiday(
+                asarnha_date = thai_lun_cal_st_date + td(days=+250)
+                add_holiday_no_inlieu(
                     thai_lun_cal_st_date + td(days=+250),
                     asarnha_bucha_en,
                 )
             elif year in athikawan_years_gregorian:
-                add_holiday(
+                asarnha_date = thai_lun_cal_st_date + td(days=+221)
+                add_holiday_no_inlieu(
                     thai_lun_cal_st_date + td(days=+221),
                     asarnha_bucha_en,
                 )
             else:
-                add_holiday(
+                asarnha_date = thai_lun_cal_st_date + td(days=+220)
+                add_holiday_no_inlieu(
                     thai_lun_cal_st_date + td(days=+220),
                     asarnha_bucha_en,
                 )
@@ -754,20 +767,51 @@ class Thailand(HolidayBase):
             khao_phansa_en = "Buddhist Lent Day"
 
             if year in athikamat_years_gregorian:
-                add_holiday(
+                add_holiday_no_inlieu(
                     thai_lun_cal_st_date + td(days=+251),
                     khao_phansa_en,
                 )
             elif year in athikawan_years_gregorian:
-                add_holiday(
+                add_holiday_no_inlieu(
                     thai_lun_cal_st_date + td(days=+222),
                     khao_phansa_en,
                 )
             else:
-                add_holiday(
+                add_holiday_no_inlieu(
                     thai_lun_cal_st_date + td(days=+221),
                     khao_phansa_en,
                 )
+
+            # !!! Asarnha Bucha/Buddhist Lent Day (in lieu) !!!
+            # วันหบุดชดเชยวันอาสาฬหบูชา
+            # วันหบุดชดเชยวันเข้าพรรษา
+            # For clearer tooltip
+            # Status: In Use
+            asarnha_bucha_in_lieu_en = "Asarnha Bucha (in lieu)"
+            khao_phansa_in_lieu_en = "Buddhist Lent Day (in lieu)"
+
+            # Applied Automatically for Monday if on Weekends: 1961-1973
+            # No In Lieu days available: 1974-1988
+            # Case-by-Case application for Workday if on Weekends: 1989-1994
+            # Applied Automatically for Workday if on Weekends: 1995-1997
+            # Case-by-Case application for Workday if on Weekends: 1998-2000
+            # Applied Automatically for Workday if on Weekends: 2001-Present
+            if 1961 <= year <= 1973 or 1995 <= year <= 1997 or year >= 2001:
+                # CASE 1: FRI-SAT -> 1 in-lieu on MON
+                if asarnha_date.weekday() == FRI:
+                    add_holiday_no_inlieu(
+                        asarnha_date + td(days=+3), khao_phansa_in_lieu_en
+                    )
+                # CASE 2: SAT-SUN -> 1 in-lieu on MON
+                if asarnha_date.weekday() == SAT:
+                    add_holiday_no_inlieu(
+                        asarnha_date + td(days=+2), asarnha_bucha_in_lieu_en
+                    )
+                # CASE 3: SUN-MON -> 1 in-lieu on TUE
+                if asarnha_date.weekday() == SUN:
+                    add_holiday_no_inlieu(
+                        asarnha_date + td(days=+2), asarnha_bucha_in_lieu_en
+                    )
 
         ###########################
         #
