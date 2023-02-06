@@ -219,7 +219,7 @@ class Thailand(HolidayBase):
             if 1961 <= year <= 1973 or 1995 <= year <= 1997 or year >= 2001:
                 if self.observed and self._is_weekend(dt):
                     in_lieu = dt + td(days=2 if dt.weekday() == SAT else 1)
-                    add_holiday(in_lieu, f"{holiday_name} (in lieu)")
+                    self[in_lieu] = f"{holiday_name} (in lieu)"
 
         # REGIONAL/BANK HOLIDAYS/CONSECUTIVE SPECIAL CASES
         def add_holiday_no_inlieu(dt, holiday_name):
