@@ -17,7 +17,7 @@ from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, SEP, OCT, DEC
-from holidays.constants import MON, TUE, WED, THU, FRI, SAT, SUN
+from holidays.constants import FRI, SAT, SUN
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _ChineseLuniSolar
 
@@ -73,19 +73,6 @@ class HongKong(HolidayBase):
         fourth_day_lunar = "The fourth day of Lunar New Year"
         new_year_date = self.cnls.lunar_n_y_date(year)
         if self.observed:
-            self[new_year_date] = name
-            if new_year_date.weekday() in {MON, TUE, WED, THU}:
-                self[new_year_date] = name
-                self[new_year_date + td(days=+1)] = second_day_lunar
-                self[new_year_date + td(days=+2)] = third_day_lunar
-            if new_year_date.weekday() == FRI:
-                self[new_year_date] = name
-                self[new_year_date + td(days=+1)] = second_day_lunar
-                self[new_year_date + td(days=+3)] = fourth_day_lunar
-            if new_year_date.weekday() == SAT:
-                self[new_year_date] = name
-                self[new_year_date + td(days=+2)] = third_day_lunar
-                self[new_year_date + td(days=+3)] = fourth_day_lunar
             if new_year_date.weekday() == SUN:
                 if year in {2006, 2007, 2010}:
                     self[new_year_date + td(days=-1)] = preceding_day_lunar
@@ -108,6 +95,7 @@ class HongKong(HolidayBase):
 
         easter_date = easter(year)
         easter_monday_date = easter_date + td(days=+1)
+
         # Ching Ming Festival
         name = "Ching Ming Festival"
         if self.is_leap_year(year) or (

@@ -41,7 +41,6 @@ class UnitedArabEmirates(unittest.TestCase):
 
     def test_hijri_based(self):
         if importlib.util.find_spec("hijri_converter"):
-            self.holidays = holidays.AE(years=[2020])
             # Eid Al-Fitr
             self.assertIn(date(2020, 5, 24), self.holidays)
             self.assertIn(date(2020, 5, 25), self.holidays)
@@ -52,6 +51,8 @@ class UnitedArabEmirates(unittest.TestCase):
             self.assertIn(date(2020, 8, 1), self.holidays)
             self.assertIn(date(2020, 8, 2), self.holidays)
             # Islamic New Year
+            self.assertIn(date(2008, 1, 10), self.holidays)
+            self.assertIn(date(2008, 12, 29), self.holidays)
             self.assertIn(date(2020, 8, 23), self.holidays)
             # Leilat Al-Miraj 2018
             self.assertIn(date(2018, 4, 13), self.holidays)
