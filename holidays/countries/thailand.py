@@ -283,33 +283,32 @@ class Thailand(HolidayBase):
         # Used to be April 1st as Thai New Year Day
         # Initially abandoned in 1941 (B.E. 2484), declared again as
         #   public holidays in 1948 (2491 B.E)
-        # This has its own in lieu trigger
+        # This has its own in-lieu trigger
         # Sources:
         #   (museumsiam.org 's wbm) http://tiny.cc/wa_museumsiam_songkran
         #   https://resolution.soc.go.th/?prep_id=123659
         songkran_festival_en = "Songkran Festival"
 
-        if self.observed:
-            # 1948-1953, celebrated on Apr 13-15
-            if 1948 <= year <= 1953:
-                self[date(year, APR, 13)] = songkran_festival_en
-                self[date(year, APR, 14)] = songkran_festival_en
-                self[date(year, APR, 15)] = songkran_festival_en
-            # 1954-1956, abandoned as a public holiday
-            # 1957-1988, only celebrated on Apr 13
-            elif 1957 <= year <= 1988:
-                add_holiday(date(year, APR, 13), songkran_festival_en)
-            # 1989-1997, celebrated on Apr 12-14
-            elif 1989 <= year <= 1997:
-                self[date(year, APR, 12)] = songkran_festival_en
-                self[date(year, APR, 13)] = songkran_festival_en
-                self[date(year, APR, 14)] = songkran_festival_en
-            # 1998-Present, celebrated on Apr 13-15
-            # (Except for 2020 due to Covid-19 outbreaks)
-            elif year >= 1998 and year != 2020:
-                self[date(year, APR, 13)] = songkran_festival_en
-                self[date(year, APR, 14)] = songkran_festival_en
-                self[date(year, APR, 15)] = songkran_festival_en
+        # 1948-1953, celebrated on Apr 13-15
+        if 1948 <= year <= 1953:
+            self[date(year, APR, 13)] = songkran_festival_en
+            self[date(year, APR, 14)] = songkran_festival_en
+            self[date(year, APR, 15)] = songkran_festival_en
+        # 1954-1956, abandoned as a public holiday
+        # 1957-1988, only celebrated on Apr 13
+        elif 1957 <= year <= 1988:
+            add_holiday(date(year, APR, 13), songkran_festival_en)
+        # 1989-1997, celebrated on Apr 12-14
+        elif 1989 <= year <= 1997:
+            self[date(year, APR, 12)] = songkran_festival_en
+            self[date(year, APR, 13)] = songkran_festival_en
+            self[date(year, APR, 14)] = songkran_festival_en
+        # 1998-Present, celebrated on Apr 13-15
+        # (Except for 2020 due to Covid-19 outbreaks)
+        elif year >= 1998 and year != 2020:
+            self[date(year, APR, 13)] = songkran_festival_en
+            self[date(year, APR, 14)] = songkran_festival_en
+            self[date(year, APR, 15)] = songkran_festival_en
 
         # !!! Songkran Festival (in lieu) !!!
         # วันหยุดชดเชยวันสงกรานต์
@@ -515,7 +514,7 @@ class Thailand(HolidayBase):
         #   (Bank of Thailand 's wbm) http://tiny.cc/wa_bot_1992
         new_years_eve_en = "New Year's Eve"
 
-        if self.observed and (year >= 1941):
+        if year >= 1941:
             self[date(year, DEC, 31)] = new_years_eve_en
 
         ################################
@@ -670,13 +669,13 @@ class Thailand(HolidayBase):
 
             # !!! Makha Bucha !!!
             # วันมาฆบูชา
+            # Status: In-Use
             # Athikamat: 15th Waxing Day of Month 4
             #            or 29[1] + 30[2] + 29[3] + 15[4] -1 = 102
             # Athikawan: 15th Waxing Day of Month 3
             #            or 29[1] + 30[2] + 15[3] -1 = 73
             # Pakatimat: 15th Waxing Day of Month 3
             #            or 29[1] + 30[2] + 15[3] -1 = 73
-            # Status: In-Use
             makha_bucha_en = "Makha Bucha"
 
             if year in athikamat_years_gregorian:
@@ -692,13 +691,13 @@ class Thailand(HolidayBase):
 
             # !!! Visakha Bucha !!!
             # วันวิสาขบูชา
+            # Status: In-Use
             # Athikamat: 15th Waxing Day of Month 6
             #            or 177[1-6] + 15[7] -1 = 191
             # Athikawan: 15th Waxing Day of Month 6
             #            or 147[1-5] + 15[6] -1 = 161
             # Pakatimat: 15th Waxing Day of Month 6
             #            or 147[1-5] + 15[6] -1 = 161
-            # Status: In-Use
             visakha_bucha_en = "Visakha Bucha"
 
             if year in athikamat_years_gregorian:
@@ -714,27 +713,28 @@ class Thailand(HolidayBase):
 
             # !!! Asarnha Bucha !!!
             # วันอาสาฬหบูชา
+            # Status: In-Use
             # Athikamat: 15th Waxing Day of Month 8/8
             #            or 177[1-6] + 29[7] + 30[8] + 15[8.8] -1 = 250
             # Athikawan: 15th Waxing Day of Month 8
             #            or 177[1-6] + 30[7] + 15[8] -1 = 221
             # Pakatimat: 15th Waxing Day of Month 8
             #            or 177[1-6] + 29[7] + 15[8] -1 = 220
-            # Status: In-Use
+            # This has its own in-lieu trigger
             asarnha_bucha_en = "Asarnha Bucha"
 
-            if self.observed:
-                if year in athikamat_years_gregorian:
-                    asarnha_date = thai_lun_cal_st_date + td(days=+250)
-                elif year in athikawan_years_gregorian:
-                    asarnha_date = thai_lun_cal_st_date + td(days=+221)
-                else:
-                    asarnha_date = thai_lun_cal_st_date + td(days=+220)
+            if year in athikamat_years_gregorian:
+                asarnha_date = thai_lun_cal_st_date + td(days=+250)
+            elif year in athikawan_years_gregorian:
+                asarnha_date = thai_lun_cal_st_date + td(days=+221)
+            else:
+                asarnha_date = thai_lun_cal_st_date + td(days=+220)
 
-                self[asarnha_date] = asarnha_bucha_en
+            self[asarnha_date] = asarnha_bucha_en
 
             # !!! Buddhist Lent Day !!!
             # วันเข้าพรรษา
+            # Status: In-Use
             # Athikamat: 1st Waning Day of Month 8.8
             #            or 177[1-6] + 29[7] + 30[8] + 16[8.8] -1 = 251
             # Athikawan: 1st Waning Day of Month 8 ]
@@ -742,17 +742,16 @@ class Thailand(HolidayBase):
             # Pakatimat: 1st Waning Day of Month 8
             #            or 177[1-6] + 29[7] + 16[8] -1 = 221
             # Or as in simpler terms: "Asarnha Bucha" +1
-            # Status: In-Use
+            # This has its own in-lieu trigger
             khao_phansa_en = "Buddhist Lent Day"
 
-            if self.observed:
-                self[asarnha_date + td(days=+1)] = khao_phansa_en
+            self[asarnha_date + td(days=+1)] = khao_phansa_en
 
             # !!! Asarnha Bucha/Buddhist Lent Day (in lieu) !!!
-            # วันหบุดชดเชยวันอาสาฬหบูชา
-            # วันหบุดชดเชยวันเข้าพรรษา
-            # For clearer tooltip
+            # วันหยุดชดเชยวันอาสาฬหบูชา
+            # วันหยุดชดเชยวันเข้าพรรษา
             # Status: In Use
+            # For clearer tooltip
             asarnha_bucha_in_lieu_en = "Asarnha Bucha (in lieu)"
             khao_phansa_in_lieu_en = "Buddhist Lent Day (in lieu)"
 
