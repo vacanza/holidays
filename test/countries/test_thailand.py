@@ -349,6 +349,7 @@ class TestThailand(TestCase):
 
         self.assertNoHolidayName(name, Thailand(years=1940))
         dt = (
+            "2010-02-28",
             "2011-02-18",
             "2012-03-07",
             "2013-02-25",
@@ -362,6 +363,13 @@ class TestThailand(TestCase):
             "2021-02-26",
             "2022-02-16",
             "2023-03-06",
+            "2024-02-24",
+            "2025-02-12",
+            "2026-03-03",
+            "2027-02-21",
+            "2028-02-10",
+            "2029-02-27",
+            "2030-02-17",
         )
         self.assertHolidaysName(name, dt)
         self.assertHolidayName(name, Thailand(years=[1941, 2058]))
@@ -381,6 +389,7 @@ class TestThailand(TestCase):
 
         self.assertNoHolidayName(name, Thailand(years=1940))
         dt = (
+            "2010-05-28",
             "2011-05-17",
             "2012-06-04",
             "2013-05-24",
@@ -394,6 +403,13 @@ class TestThailand(TestCase):
             "2021-05-26",
             "2022-05-15",
             "2023-06-03",
+            "2024-05-22",
+            "2025-05-11",
+            "2026-05-31",
+            "2027-05-20",
+            "2028-05-08",
+            "2029-05-27",
+            "2030-05-16",
         )
         self.assertHolidaysName(name, dt)
         self.assertHolidayName(name, Thailand(years=[1941, 2058]))
@@ -413,6 +429,7 @@ class TestThailand(TestCase):
 
         self.assertNoHolidayName(name, Thailand(years=1940))
         dt = (
+            "2010-07-26",
             "2011-07-15",
             "2012-08-02",
             "2013-07-22",
@@ -426,6 +443,13 @@ class TestThailand(TestCase):
             "2021-07-24",
             "2022-07-13",
             "2023-08-01",
+            "2024-07-20",
+            "2025-07-10",
+            "2026-07-29",
+            "2027-07-18",
+            "2028-07-06",
+            "2029-07-25",
+            "2030-07-14",
         )
         self.assertHolidaysName(name, dt)
         self.assertHolidayName(name, Thailand(years=[1941, 2058]))
@@ -445,6 +469,7 @@ class TestThailand(TestCase):
 
         self.assertNoHolidayName(name, Thailand(years=1940))
         dt = (
+            "2010-07-27",
             "2011-07-16",
             "2012-08-03",
             "2013-07-23",
@@ -458,6 +483,13 @@ class TestThailand(TestCase):
             "2021-07-25",
             "2022-07-14",
             "2023-08-02",
+            "2024-07-21",
+            "2025-07-11",
+            "2026-07-30",
+            "2027-07-19",
+            "2028-07-07",
+            "2029-07-26",
+            "2030-07-15",
         )
         self.assertHolidaysName(name, dt)
         self.assertHolidayName(name, Thailand(years=[1941, 2058]))

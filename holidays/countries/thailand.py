@@ -191,13 +191,17 @@ class Thailand(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
+        # Due to Thai Calendar Migration, this is capped off at 1941
+        # But certain holidays were implemented before 1941
+        if year <= 1940:
+            return
+
         # DEFAULT
         def add_holiday(dt, holiday_name) -> None:
             # Only add if current year and year is 1941 (B.E. 2484) or later
             # This is here as a stub for future islamic consecutive holidays
             # Which can stradle across gregorian years in southern region
-            # ** Due to Thai Calendar Migration, this is capped off at 1941
-            if dt.year == year and dt.year >= 1941:
+            if dt.year == year:
                 self[dt] = holiday_name
 
             # !!! If Public Holiday falls on weekends, (in lieu) on workday !!!
@@ -272,12 +276,11 @@ class Thailand(HolidayBase):
         # วันจักรี
         # Status: In-Use
         # Starts in present form in 1918 (B.E. 2461)
-        # ** Due to Thai Calendar Migration, this is capped off at 1941
         # Sources:
         #   (ocac.got.th 's wbm) http://tiny.cc/wa_ocac_chakri
         chakri_memorial_en = "Chakri Memorial Day"
 
-        if year >= 1941:
+        if year >= 1918:
             add_holiday(date(year, APR, 6), chakri_memorial_en)
 
         # !!! Songkran Festival !!!
@@ -359,12 +362,11 @@ class Thailand(HolidayBase):
         # Status: Defunct (Historical)
         # Starts in 1939 (B.E. 2482) by Plaek Phibunsongkhram
         # Replaced by Rama IX's birthday in 1960 (B.E. 2503) by Sarit Thanarat
-        # ** Due to Thai Calendar Migration, this is capped off at 1941
         # Sources:
         #   (Ministry of Culture 's wbm) http://tiny.cc/wa_mincul_nat_day
         national_day_khana_ratsadon_en = "National Day"
 
-        if 1941 <= year <= 1959:
+        if 1939 <= year <= 1959:
             add_holiday(date(year, JUN, 24), national_day_khana_ratsadon_en)
 
         # !!! Coronation Day !!!
@@ -460,12 +462,11 @@ class Thailand(HolidayBase):
         # วันปิยมหาราช
         # Status: In-Use
         # Started in 1911 (B.E. 2454)
-        # ** Due to Thai Calendar Migration, this is capped off at 1941
         # Sources:
         #   https://th.wikipedia.org/wiki/วันปิยมหาราช
         rama_five_memorial_en = "Chulalongkorn Memorial Day"
 
-        if year >= 1941:
+        if year >= 1911:
             add_holiday(date(year, OCT, 23), rama_five_memorial_en)
 
         # !!! HM King Bhumibol Adulyadej's Birthday Anniversary !!!
