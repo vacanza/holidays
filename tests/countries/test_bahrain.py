@@ -78,5 +78,7 @@ class TestBahrain(TestCase):
 
         # Islamic New Year.
         self.assertHoliday(
+            "2008-01-10",
+            "2008-12-29",
             "2020-08-20",
         )
