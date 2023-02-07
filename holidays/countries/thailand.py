@@ -192,11 +192,12 @@ class Thailand(HolidayBase):
 
     def _populate(self, year):
         # DEFAULT
-        def add_holiday(dt, holiday_name):
-            if dt.year != year:
-                return
-
-            self[dt] = holiday_name
+        def add_holiday(dt, holiday_name) -> None:
+            # Only add if current year
+            # This is here as a stub for future islamic consecutive holidays
+            # Which can stradle across gregorian years in southern region
+            if dt.year == year:
+                self[dt] = holiday_name
 
             # !!! If Public Holiday falls on weekends, (in lieu) on workday !!!
             # Despite the wording, this usually only applies to Monday only
