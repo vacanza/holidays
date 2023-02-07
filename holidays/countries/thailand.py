@@ -32,7 +32,7 @@ class Thailand(HolidayBase):
       calendar for B.E. 2483 as we only have nine months from switching
       New Year Date (April 1st to January 1st).
 
-    - Thai Lunar Calendar Holidays only work from 1942 (B.E. 2485) onwards
+    - Thai Lunar Calendar Holidays only work from 1941 (B.E. 2484) onwards
       until 2957 (B.E. 2600) as we only have Thai year-type data for
       cross-checking until then.
 
@@ -193,10 +193,11 @@ class Thailand(HolidayBase):
     def _populate(self, year):
         # DEFAULT
         def add_holiday(dt, holiday_name) -> None:
-            # Only add if current year
+            # Only add if current year and year is 1941 (B.E. 2484) or later
             # This is here as a stub for future islamic consecutive holidays
             # Which can stradle across gregorian years in southern region
-            if dt.year == year:
+            # ** Due to Thai Calendar Migration, this is capped off at 1941
+            if dt.year == year and dt.year >= 1941:
                 self[dt] = holiday_name
 
             # !!! If Public Holiday falls on weekends, (in lieu) on workday !!!
@@ -271,11 +272,12 @@ class Thailand(HolidayBase):
         # วันจักรี
         # Status: In-Use
         # Starts in present form in 1918 (B.E. 2461)
+        # ** Due to Thai Calendar Migration, this is capped off at 1941
         # Sources:
         #   (ocac.got.th 's wbm) http://tiny.cc/wa_ocac_chakri
         chakri_memorial_en = "Chakri Memorial Day"
 
-        if year >= 1918:
+        if year >= 1941:
             add_holiday(date(year, APR, 6), chakri_memorial_en)
 
         # !!! Songkran Festival !!!
@@ -357,11 +359,12 @@ class Thailand(HolidayBase):
         # Status: Defunct (Historical)
         # Starts in 1939 (B.E. 2482) by Plaek Phibunsongkhram
         # Replaced by Rama IX's birthday in 1960 (B.E. 2503) by Sarit Thanarat
+        # ** Due to Thai Calendar Migration, this is capped off at 1941
         # Sources:
         #   (Ministry of Culture 's wbm) http://tiny.cc/wa_mincul_nat_day
         national_day_khana_ratsadon_en = "National Day"
 
-        if 1939 <= year <= 1959:
+        if 1941 <= year <= 1959:
             add_holiday(date(year, JUN, 24), national_day_khana_ratsadon_en)
 
         # !!! Coronation Day !!!
@@ -457,11 +460,12 @@ class Thailand(HolidayBase):
         # วันปิยมหาราช
         # Status: In-Use
         # Started in 1911 (B.E. 2454)
+        # ** Due to Thai Calendar Migration, this is capped off at 1941
         # Sources:
         #   https://th.wikipedia.org/wiki/วันปิยมหาราช
         rama_five_memorial_en = "Chulalongkorn Memorial Day"
 
-        if year >= 1911:
+        if year >= 1941:
             add_holiday(date(year, OCT, 23), rama_five_memorial_en)
 
         # !!! HM King Bhumibol Adulyadej's Birthday Anniversary !!!
@@ -496,13 +500,14 @@ class Thailand(HolidayBase):
         # Status: In-Use
         # Presumed to starts in 1932 (B.E. 2475) ???
         # Last known official record is Bank of Thailand's in 1992 (B.E. 2535)
+        # ** Due to Thai Calendar Migration, this is capped off at 1941
         # Sources:
         #   https://hilight.kapook.com/view/18208
         #   (Bank of Thailand 's wbm) http://tiny.cc/wa_bot_1992
         #   https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2475.aspx
         constitution_day_en = "Constitution Day"
 
-        if year >= 1932:
+        if year >= 1941:
             add_holiday(date(year, DEC, 10), constitution_day_en)
 
         # !!! New Year's Eve !!!
@@ -570,7 +575,7 @@ class Thailand(HolidayBase):
         Sources: (Ninenik.com 's wbm) http://tiny.cc/wa_ninenik_thluncal_php
                  https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2560.aspx
         """
-        # Athikawan (Extra-Day Year) list goes from 1942-2057 C.E.
+        # Athikawan (Extra-Day Year) list goes from 1941-2057 C.E.
         # Copied off from 1757-2057 (B.E. 2300-2600) Thai Lunar Calendar
         athikawan_years_gregorian = {
             1945,
@@ -597,7 +602,7 @@ class Thailand(HolidayBase):
             2052,
         }
 
-        # Athikamat (Extra-Month Year) list goes from 1942-2057 C.E.:
+        # Athikamat (Extra-Month Year) list goes from 1941-2057 C.E.:
         # Copied off from 1757-2057 (B.E. 2300-2600) Thai Lunar Calendar
         # Approx formula as follows: (common_era-78)-0.45222)%2.7118886 < 1
         athikamat_years_gregorian = {
@@ -653,12 +658,11 @@ class Thailand(HolidayBase):
         # Sources: หนังสือเวียนกรมการปกครอง กระทรวงมหาดไทย ที่ มท 0310.1/ว4
         #                          ออกเมื่อ 5 กุมภาพันธ์ พ.ศ.2539
 
-        # Start -> 1st Waxing Day of Month 1, 1942: Nov 19, 1941
-        thai_lun_cal_st_date = date(1941, NOV, 19)
-        thai_lun_cal_st_year = 1942
+        thai_lun_cal_st_date = date(1940, NOV, 30)
+        thai_lun_cal_st_year = 1941
 
         # Getting the start date of that particular Thai Lunar Calendar Year
-        if 1942 <= year <= 2057:
+        if 1941 <= year <= 2057:
             while thai_lun_cal_st_year < year:
                 if thai_lun_cal_st_year in athikamat_years_gregorian:
                     thai_lun_cal_st_date += td(days=+384)
