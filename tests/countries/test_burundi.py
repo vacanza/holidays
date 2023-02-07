@@ -10,7 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.countries.burundi import Burundi, BI, BDI
-from test.common import TestCase
+from tests.common import TestCase
 
 
 class TestBurundi(TestCase):

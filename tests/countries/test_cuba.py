@@ -10,7 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.countries.cuba import Cuba, CU, CUB
-from test.common import TestCase
+from tests.common import TestCase
 
 
 class TestCuba(TestCase):
