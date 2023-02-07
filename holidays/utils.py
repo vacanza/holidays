@@ -301,7 +301,7 @@ def _islamic_to_gre(g_year: int, h_month: int, h_day: int) -> Iterable[date]:
     calendar is about 11 days shorter.
 
     Relies on package `hijri_converter
-    <https://www.pypy.org/package/hijri_converter>`__.
+    <https://www.pypi.org/project/hijri_converter>__.
 
     :param g_year:
         The Gregorian year.
@@ -313,8 +313,13 @@ def _islamic_to_gre(g_year: int, h_month: int, h_day: int) -> Iterable[date]:
         The Lunar Hijrī (Islamic) day.
 
     :return:
-        List of Gregorian dates within the Gregorian year specified that
-        matches the Islamic (Lunar Hijrī) calendar day and month specified.
+        An Iterable of Gregorian dates within the Gregorian year specified
+        that matches the Islamic (Lunar Hijrī) calendar day and month
+        specified. An empty Iterable is returned if the Gregorian year
+        is outside of the covered period, which as of hijri_converter 2.2.4
+        (in January 2023) is Gregorian years 1925 to 2076 inclusive, or
+        equal to the contents of hijri_converter.ummalqura.GREGORIAN_RANGE
+        plus/minus 1 year.
     """
 
     # To avoid hijri_converter check range OverflowError.
