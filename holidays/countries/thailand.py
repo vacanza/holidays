@@ -35,7 +35,7 @@ class Thailand(HolidayBase):
       New Year Date (April 1st to January 1st).
 
     - Thai Lunar Calendar Holidays only work from 1941 (B.E. 2484) onwards
-      until 2957 (B.E. 2600) as we only have Thai year-type data for
+      until 2057 (B.E. 2600) as we only have Thai year-type data for
       cross-checking until then.
 
     - Royal Ploughing Ceremony Day is date is announced on an annual basis
@@ -542,7 +542,10 @@ class Thailand(HolidayBase):
         ################################
 
         """
-        See _ThaiLuniSolar in holidays/utils.py for more details
+        See `_ThaiLuniSolar` in holidays/utils.py for more details.
+
+        Thai Lunar Calendar Holidays only work from 1941 (B.E. 2484) onwards
+        until 2057 (B.E. 2600).
         """
         # !!! Makha Bucha !!!
         # Sources:
@@ -551,7 +554,9 @@ class Thailand(HolidayBase):
         # Status: In-Use
         makha_bucha = "Makha Bucha"
 
-        add_holiday(self.thls.makha_bucha_date(year), makha_bucha)
+        makha_bucha_date = self.thls.makha_bucha_date(year)
+        if makha_bucha_date is not None:
+            add_holiday(makha_bucha_date, makha_bucha)
 
         # !!! Visakha Bucha !!!
         # Sources:
@@ -560,7 +565,9 @@ class Thailand(HolidayBase):
         # Status: In-Use
         visakha_bucha = "Visakha Bucha"
 
-        add_holiday(self.thls.visakha_bucha_date(year), visakha_bucha)
+        visakha_bucha_date = self.thls.visakha_bucha_date(year)
+        if visakha_bucha_date is not None:
+            add_holiday(visakha_bucha_date, visakha_bucha)
 
         # !!! Asarnha Bucha !!!
         # Sources:
@@ -570,7 +577,9 @@ class Thailand(HolidayBase):
         # This has its own in-lieu trigger
         asarnha_bucha = "Asarnha Bucha"
 
-        self[self.thls.asarnha_bucha_date(year)] = asarnha_bucha
+        asarnha_bucha_date = self.thls.asarnha_bucha_date(year)
+        if asarnha_bucha_date is not None:
+            self[asarnha_bucha_date] = asarnha_bucha
 
         # !!! Buddhist Lent Day !!!
         # Sources:
@@ -580,7 +589,9 @@ class Thailand(HolidayBase):
         # This has its own in-lieu trigger
         khao_phansa = "Buddhist Lent Day"
 
-        self[self.thls.khao_phansa_date(year)] = khao_phansa
+        khao_phansa_date = self.thls.khao_phansa_date(year)
+        if khao_phansa_date is not None:
+            self[khao_phansa_date] = khao_phansa
 
         # !!! Asarnha Bucha/Buddhist Lent Day (in lieu) !!!
         # วันหยุดชดเชยวันอาสาฬหบูชา
@@ -596,18 +607,18 @@ class Thailand(HolidayBase):
         # Applied Automatically for Workday if on Weekends: 1995-1997
         # Case-by-Case application for Workday if on Weekends: 1998-2000
         # Applied Automatically for Workday if on Weekends: 2001-Present
-        asarnha_date = self.thls.asarnha_bucha_date(year)
-
-        if self.observed and (
-            1961 <= year <= 1973 or 1995 <= year <= 1997 or year >= 2001
+        if (
+            asarnha_bucha_date is not None
+            and self.observed
+            and (1961 <= year <= 1973 or 1995 <= year <= 1997 or year >= 2001)
         ):
             # CASE 1: FRI-SAT -> 1 in-lieu on MON
-            if asarnha_date.weekday() == FRI:
-                self[asarnha_date + td(days=+3)] = khao_phansa_in_lieu
+            if asarnha_bucha_date.weekday() == FRI:
+                self[asarnha_bucha_date + td(days=+3)] = khao_phansa_in_lieu
             # CASE 2: SAT-SUN -> 1 in-lieu on MON
             # CASE 3: SUN-MON -> 1 in-lieu on TUE
-            elif self._is_weekend(asarnha_date):
-                self[asarnha_date + td(days=+2)] = asarnha_bucha_in_lieu
+            elif self._is_weekend(asarnha_bucha_date):
+                self[asarnha_bucha_date + td(days=+2)] = asarnha_bucha_in_lieu
 
         #################################
         #
