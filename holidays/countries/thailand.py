@@ -77,9 +77,7 @@ class Thailand(HolidayBase):
         "Emergency Lockdown (2011 Thailand Floods)"
     )
     rama_ix_mourning = "Day of Mourning for HM King Bhumibol Adulyadej"
-    rama_ix_cremation = (
-        "HM King Bhumibol Adulyadej's Royal Cremation Ceremony"
-    )
+    rama_ix_cremation = "HM King Bhumibol Adulyadej's Royal Cremation Ceremony"
     rama_x_coronation_celebrations = (
         "HM King Maha Vajiralongkorn's Coronation Celebrations"
     )
@@ -221,7 +219,7 @@ class Thailand(HolidayBase):
             # Applied Automatically for Workday if on Weekends: 2001-Present
             if 1961 <= year <= 1973 or 1995 <= year <= 1997 or year >= 2001:
                 if self.observed and self._is_weekend(dt):
-                    in_lieu = dt + td(days=2 if dt.weekday() == SAT else 1)
+                    in_lieu = dt + td(days=+2 if dt.weekday() == SAT else +1)
                     self[in_lieu] = f"{holiday_name} (in lieu)"
 
         super()._populate(year)
@@ -498,14 +496,13 @@ class Thailand(HolidayBase):
         # Status: In-Use
         # Presumed to starts in 1932 (B.E. 2475) ???
         # Last known official record is Bank of Thailand's in 1992 (B.E. 2535)
-        # ** Due to Thai Calendar Migration, this is capped off at 1941
         # Sources:
         #   https://hilight.kapook.com/view/18208
         #   (Bank of Thailand 's wbm) http://tiny.cc/wa_bot_1992
         #   https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2475.aspx
         constitution_day = "Constitution Day"
 
-        if year >= 1941:
+        if year >= 1932:
             add_holiday(date(year, DEC, 10), constitution_day)
 
         # !!! New Year's Eve !!!
@@ -575,7 +572,7 @@ class Thailand(HolidayBase):
         """
         # Athikawan (Extra-Day Year) list goes from 1941-2057 C.E.
         # Copied off from 1757-2057 (B.E. 2300-2600) Thai Lunar Calendar
-        athikawan_years_gregorian = {
+        athikawan_years_greg = {
             1945,
             1949,
             1952,
@@ -603,7 +600,7 @@ class Thailand(HolidayBase):
         # Athikamat (Extra-Month Year) list goes from 1941-2057 C.E.:
         # Copied off from 1757-2057 (B.E. 2300-2600) Thai Lunar Calendar
         # Approx formula as follows: (common_era-78)-0.45222)%2.7118886 < 1
-        athikamat_years_gregorian = {
+        athikamat_years_greg = {
             1942,
             1944,
             1947,
@@ -662,12 +659,14 @@ class Thailand(HolidayBase):
         # Getting the start date of that particular Thai Lunar Calendar Year
         if 1941 <= year <= 2057:
             while thai_lun_cal_st_year < year:
-                if thai_lun_cal_st_year in athikamat_years_gregorian:
-                    thai_lun_cal_st_date += td(days=+384)
-                elif thai_lun_cal_st_year in athikawan_years_gregorian:
-                    thai_lun_cal_st_date += td(days=+355)
+                if thai_lun_cal_st_year in athikamat_years_greg:
+                    delta_days = 384
+                elif thai_lun_cal_st_year in athikawan_years_greg:
+                    delta_days = 355
                 else:
-                    thai_lun_cal_st_date += td(days=+354)
+                    delta_days = 354
+
+                thai_lun_cal_st_date += td(days=delta_days)
                 thai_lun_cal_st_year += 1
 
             # !!! Makha Bucha !!!
@@ -681,16 +680,11 @@ class Thailand(HolidayBase):
             #            or 29[1] + 30[2] + 15[3] -1 = 73
             makha_bucha = "Makha Bucha"
 
-            if year in athikamat_years_gregorian:
-                add_holiday(
-                    thai_lun_cal_st_date + td(days=+102),
-                    makha_bucha,
-                )
-            else:
-                add_holiday(
-                    thai_lun_cal_st_date + td(days=+73),
-                    makha_bucha,
-                )
+            add_holiday(
+                thai_lun_cal_st_date
+                + td(days=+102 if year in athikamat_years_greg else +73),
+                makha_bucha,
+            )
 
             # !!! Visakha Bucha !!!
             # วันวิสาขบูชา
@@ -703,16 +697,11 @@ class Thailand(HolidayBase):
             #            or 147[1-5] + 15[6] -1 = 161
             visakha_bucha = "Visakha Bucha"
 
-            if year in athikamat_years_gregorian:
-                add_holiday(
-                    thai_lun_cal_st_date + td(days=+191),
-                    visakha_bucha,
-                )
-            else:
-                add_holiday(
-                    thai_lun_cal_st_date + td(days=+161),
-                    visakha_bucha,
-                )
+            add_holiday(
+                thai_lun_cal_st_date
+                + td(days=+191 if year in athikamat_years_greg else +161),
+                visakha_bucha,
+            )
 
             # !!! Asarnha Bucha !!!
             # วันอาสาฬหบูชา
@@ -726,13 +715,14 @@ class Thailand(HolidayBase):
             # This has its own in-lieu trigger
             asarnha_bucha = "Asarnha Bucha"
 
-            if year in athikamat_years_gregorian:
-                asarnha_date = thai_lun_cal_st_date + td(days=+250)
-            elif year in athikawan_years_gregorian:
-                asarnha_date = thai_lun_cal_st_date + td(days=+221)
+            if year in athikamat_years_greg:
+                delta_days = 250
+            elif year in athikawan_years_greg:
+                delta_days = 221
             else:
-                asarnha_date = thai_lun_cal_st_date + td(days=+220)
+                delta_days = 220
 
+            asarnha_date = thai_lun_cal_st_date + td(days=delta_days)
             self[asarnha_date] = asarnha_bucha
 
             # !!! Buddhist Lent Day !!!
