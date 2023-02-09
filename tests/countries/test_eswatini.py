@@ -9,57 +9,111 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
 import warnings
-from datetime import date
 
 import holidays
+from holidays.countries.eswatini import Eswatini, SZ, SZW
+from tests.common import TestCase
 
 
-class TestEswatini(unittest.TestCase):
+class TestEswatini(TestCase):
     def setUp(self):
-        self.holidays = holidays.SZ()
+        self.holidays = Eswatini()
 
-    def test_out_of_range(self):
-        self.assertNotIn(date(1920, 1, 1), self.holidays)
-        self.assertNotIn(date(1938, 1, 1), self.holidays)
+    def test_country_aliases(self):
+        self.assertCountryAliases(Eswatini, SZ, SZW)
 
-    def test_new_years(self):
-        self.assertIn(date(1996, 1, 1), self.holidays)
-        self.assertIn(date(2000, 1, 1), self.holidays)
-        self.assertIn(date(2001, 1, 1), self.holidays)
-
-    def test_easter(self):
-        self.assertIn(date(2017, 4, 14), self.holidays)
-        self.assertIn(date(2017, 4, 17), self.holidays)
-        self.assertIn(date(2017, 5, 25), self.holidays)
-        self.assertNotIn(date(2017, 5, 26), self.holidays)
+    def test_no_holidays(self):
+        self.assertNoHolidays(Eswatini(years=1938))
 
     def test_special_holidays(self):
-        self.assertIn(date(1999, 12, 31), self.holidays)  # y2k
-        self.assertIn(date(2000, 1, 3), self.holidays)  # y2k
-
-    def test_national_flag_day(self):
-        self.assertNotIn(date(1968, 4, 25), self.holidays)
-        self.assertIn(date(2006, 4, 25), self.holidays)
-
-    def test_kings_birthday(self):
-        self.assertNotIn(date(1982, 7, 22), self.holidays)
-        self.assertIn(date(1983, 7, 22), self.holidays)
-        self.assertIn(date(1987, 4, 19), self.holidays)
-        self.assertNotIn(date(1986, 4, 19), self.holidays)
-        self.assertNotIn(date(1985, 4, 19), self.holidays)
+        self.assertHoliday(
+            "1999-12-31",
+            "2000-01-03",
+        )
 
     def test_holidays(self):
-        self.assertIn(date(2020, 5, 1), self.holidays)
-        self.assertIn(date(2020, 9, 6), self.holidays)
-        self.assertIn(date(2020, 12, 25), self.holidays)
-        self.assertIn(date(2020, 12, 26), self.holidays)
+        for year in range(1939, 2050):
+            self.assertHoliday(
+                f"{year}-01-01",
+                f"{year}-05-01",
+                f"{year}-09-06",
+                f"{year}-12-25",
+                f"{year}-12-26",
+            )
+
+    def test_kings_birthday(self):
+        self.assertNoHolidayName(
+            "King's Birthday",
+            Eswatini(years=range(1939, 1987)),
+        )
+        self.assertHoliday(f"{year}-04-19" for year in range(1987, 2050))
+
+    def test_national_flag_day(self):
+        self.assertNoHoliday(f"{year}-04-25" for year in range(1939, 1969))
+        self.assertNoHolidayName(
+            "National Flag Day",
+            Eswatini(years=range(1939, 1969)),
+        )
+        self.assertHoliday(f"{year}-04-25" for year in range(1969, 2050))
+
+    def test_late_king_sobhuza(self):
+        self.assertNoHoliday(f"{year}-07-22" for year in range(1939, 1983))
+        self.assertNoHolidayName(
+            "Birthday of Late King Sobhuza",
+            Eswatini(years=range(1939, 1983)),
+        )
+        self.assertHoliday(f"{year}-07-22" for year in range(1983, 2050))
+
+    def test_easter(self):
+        self.assertHoliday(
+            # Good Friday
+            "2018-03-30",
+            "2019-04-19",
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            # Easter Monday
+            "2018-04-02",
+            "2019-04-22",
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            # Ascension Day
+            "2018-05-10",
+            "2019-05-30",
+            "2020-05-21",
+            "2021-05-13",
+            "2022-05-26",
+        )
 
     def test_observed(self):
-        self.assertIn(date(2021, 4, 26), self.holidays)
-        self.assertIn(date(2021, 12, 27), self.holidays)
-        self.assertIn(date(2023, 1, 2), self.holidays)
+        dt = (
+            # New Year's Day
+            "2023-01-02",
+            # King's Birthday
+            "2026-04-20",
+            "2071-04-21",
+            "2076-04-21",
+            "2082-04-21",
+            # National Flag Day
+            "2021-04-26",
+            "2027-04-26",
+            "2038-04-27",
+            # Worker's Day
+            "2022-05-02",
+            # Birthday of Late King Sobhuza
+            "2029-07-23",
+            # Independence Day
+            "2026-09-07",
+            # Christmas Day
+            "2022-12-27",
+            # Boxing Day
+            "2021-12-27",
+            "2027-12-27",
+        )
+        self.assertHoliday(dt)
+        self.assertNoHoliday(Eswatini(observed=False), dt)
 
     def test_swaziland_deprecation_warning(self):
         warnings.simplefilter("default")
