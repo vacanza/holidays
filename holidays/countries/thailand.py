@@ -57,138 +57,135 @@ class Thailand(HolidayBase):
     country = "TH"
 
     # วันหยุดพิเศษ (เพิ่มเติม) - see Bank of Thailand's DB for Cross-Check
-    thai_special_in_lieu_holidays_en = "Special In Lieu Holiday"
-    thai_election_en = "Thai Election Day"
-    thai_election_in_lieu_en = "Thai Election Day (in lieu)"
-    thai_bridge_public_holiday_en = "Bridge Public Holiday"
+    thai_special_in_lieu_holidays = "Special In Lieu Holiday"
+    thai_election = "Thai Election Day"
+    thai_election_in_lieu = "Thai Election Day (in lieu)"
+    thai_bridge_public_holiday = "Bridge Public Holiday"
 
     # Special Cases
-    rama_ix_golden_jubilee_en = "HM King Bhumibol Adulyadej's Golden Jubilee"
-    rama_ix_sixty_accession_en = (
+    rama_ix_golden_jubilee = "HM King Bhumibol Adulyadej's Golden Jubilee"
+    rama_ix_sixty_accession = (
         "HM King Bhumibol Adulyadej's 60th Anniversary of Accession Event"
     )
-    thai_military_emergency_lockdown_en = (
+    thai_military_emergency_lockdown = (
         "Emergency Lockdown (Thai Military Coup d'état)"
     )
-    thai_political_emergency_lockdown_en = (
+    thai_political_emergency_lockdown = (
         "Emergency Lockdown (Thai Political Unrest)"
     )
-    thai_flood_2011_emergency_lockdown_en = (
+    thai_flood_2011_emergency_lockdown = (
         "Emergency Lockdown (2011 Thailand Floods)"
     )
-    rama_ix_mourning_en = "Day of Mourning for HM King Bhumibol Adulyadej"
-    rama_ix_cremation_en = (
+    rama_ix_mourning = "Day of Mourning for HM King Bhumibol Adulyadej"
+    rama_ix_cremation = (
         "HM King Bhumibol Adulyadej's Royal Cremation Ceremony"
     )
-    rama_x_coronation_celebrations_en = (
+    rama_x_coronation_celebrations = (
         "HM King Maha Vajiralongkorn's Coronation Celebrations"
     )
-    songkran_festival_in_lieu_covid_en = "Songkran Festival (in lieu)"
+    songkran_festival_in_lieu_covid = "Songkran Festival (in lieu)"
 
     special_holidays = {
         # 1992-1994 (include In Lieus, Checked /w Bank of Thailand Data)
         1992: (
-            (MAY, 18, thai_special_in_lieu_holidays_en),
-            (DEC, 7, thai_special_in_lieu_holidays_en),
+            (MAY, 18, thai_special_in_lieu_holidays),
+            (DEC, 7, thai_special_in_lieu_holidays),
         ),
         1993: (
-            (MAR, 8, thai_special_in_lieu_holidays_en),
-            (MAY, 3, thai_special_in_lieu_holidays_en),
-            (OCT, 25, thai_special_in_lieu_holidays_en),
-            (DEC, 6, thai_special_in_lieu_holidays_en),
+            (MAR, 8, thai_special_in_lieu_holidays),
+            (MAY, 3, thai_special_in_lieu_holidays),
+            (OCT, 25, thai_special_in_lieu_holidays),
+            (DEC, 6, thai_special_in_lieu_holidays),
         ),
         1994: (
-            (JAN, 3, thai_special_in_lieu_holidays_en),
-            (MAY, 2, thai_special_in_lieu_holidays_en),
-            (JUL, 25, thai_special_in_lieu_holidays_en),
-            (OCT, 24, thai_special_in_lieu_holidays_en),
-            (DEC, 12, thai_special_in_lieu_holidays_en),
+            (JAN, 3, thai_special_in_lieu_holidays),
+            (MAY, 2, thai_special_in_lieu_holidays),
+            (JUL, 25, thai_special_in_lieu_holidays),
+            (OCT, 24, thai_special_in_lieu_holidays),
+            (DEC, 12, thai_special_in_lieu_holidays),
         ),
         # 1995-1997 (Bank of Thailand Data)
-        1996: ((JUN, 10, rama_ix_golden_jubilee_en),),
+        1996: ((JUN, 10, rama_ix_golden_jubilee),),
         # 1998-2000 (include In Lieus, Checked /w Bank of Thailand Data)
         1998: (
-            (MAY, 11, thai_special_in_lieu_holidays_en),
-            (DEC, 7, thai_special_in_lieu_holidays_en),
+            (MAY, 11, thai_special_in_lieu_holidays),
+            (DEC, 7, thai_special_in_lieu_holidays),
         ),
         1999: (
-            (MAY, 3, thai_special_in_lieu_holidays_en),
-            (MAY, 31, thai_special_in_lieu_holidays_en),
-            (OCT, 25, thai_special_in_lieu_holidays_en),
-            (DEC, 6, thai_special_in_lieu_holidays_en),
+            (MAY, 3, thai_special_in_lieu_holidays),
+            (MAY, 31, thai_special_in_lieu_holidays),
+            (OCT, 25, thai_special_in_lieu_holidays),
+            (DEC, 6, thai_special_in_lieu_holidays),
         ),
         2000: (
-            (JAN, 3, thai_special_in_lieu_holidays_en),
-            (FEB, 21, thai_special_in_lieu_holidays_en),
-            (AUG, 14, thai_special_in_lieu_holidays_en),
-            (DEC, 11, thai_special_in_lieu_holidays_en),
-            (DEC, 29, thai_election_en),
+            (JAN, 3, thai_special_in_lieu_holidays),
+            (FEB, 21, thai_special_in_lieu_holidays),
+            (AUG, 14, thai_special_in_lieu_holidays),
+            (DEC, 11, thai_special_in_lieu_holidays),
+            (DEC, 29, thai_election),
         ),
         # From 2001 Onwards (Checked /w Bank of Thailand Data)
         2006: (
-            (APR, 19, thai_election_en),
-            (JUN, 9, rama_ix_sixty_accession_en),
-            (JUN, 12, rama_ix_sixty_accession_en),
-            (JUN, 13, rama_ix_sixty_accession_en),
-            (SEP, 20, thai_military_emergency_lockdown_en),
+            (APR, 19, thai_election),
+            (JUN, 9, rama_ix_sixty_accession),
+            (JUN, 12, rama_ix_sixty_accession),
+            (JUN, 13, rama_ix_sixty_accession),
+            (SEP, 20, thai_military_emergency_lockdown),
         ),
-        2007: ((DEC, 24, thai_election_in_lieu_en),),
+        2007: ((DEC, 24, thai_election_in_lieu),),
         2009: (
-            (JAN, 2, thai_bridge_public_holiday_en),
-            (APR, 10, thai_political_emergency_lockdown_en),
-            (APR, 16, thai_political_emergency_lockdown_en),
-            (APR, 17, thai_political_emergency_lockdown_en),
-            (JUL, 6, thai_bridge_public_holiday_en),
+            (JAN, 2, thai_bridge_public_holiday),
+            (APR, 10, thai_political_emergency_lockdown),
+            (APR, 16, thai_political_emergency_lockdown),
+            (APR, 17, thai_political_emergency_lockdown),
+            (JUL, 6, thai_bridge_public_holiday),
         ),
         2010: (
-            (MAY, 20, thai_bridge_public_holiday_en),
-            (MAY, 21, thai_bridge_public_holiday_en),
-            (AUG, 13, thai_bridge_public_holiday_en),
+            (MAY, 20, thai_bridge_public_holiday),
+            (MAY, 21, thai_bridge_public_holiday),
+            (AUG, 13, thai_bridge_public_holiday),
         ),
         2011: (
-            (MAY, 16, thai_bridge_public_holiday_en),
-            (OCT, 27, thai_flood_2011_emergency_lockdown_en),
-            (OCT, 28, thai_flood_2011_emergency_lockdown_en),
-            (OCT, 31, thai_flood_2011_emergency_lockdown_en),
+            (MAY, 16, thai_bridge_public_holiday),
+            (OCT, 27, thai_flood_2011_emergency_lockdown),
+            (OCT, 28, thai_flood_2011_emergency_lockdown),
+            (OCT, 31, thai_flood_2011_emergency_lockdown),
         ),
-        2012: ((APR, 9, thai_bridge_public_holiday_en),),
-        2013: ((DEC, 30, thai_bridge_public_holiday_en),),
-        2014: ((AUG, 11, thai_bridge_public_holiday_en),),
+        2012: ((APR, 9, thai_bridge_public_holiday),),
+        2013: ((DEC, 30, thai_bridge_public_holiday),),
+        2014: ((AUG, 11, thai_bridge_public_holiday),),
         2015: (
-            (JAN, 2, thai_bridge_public_holiday_en),
-            (MAY, 4, thai_bridge_public_holiday_en),
+            (JAN, 2, thai_bridge_public_holiday),
+            (MAY, 4, thai_bridge_public_holiday),
         ),
         2016: (
-            (MAY, 6, thai_bridge_public_holiday_en),
-            (JUL, 18, thai_bridge_public_holiday_en),
-            (OCT, 14, rama_ix_mourning_en),
+            (MAY, 6, thai_bridge_public_holiday),
+            (JUL, 18, thai_bridge_public_holiday),
+            (OCT, 14, rama_ix_mourning),
         ),
-        2017: ((OCT, 26, rama_ix_cremation_en),),
-        2019: ((MAY, 6, rama_x_coronation_celebrations_en),),
+        2017: ((OCT, 26, rama_ix_cremation),),
+        2019: ((MAY, 6, rama_x_coronation_celebrations),),
         2020: (
-            (JUL, 27, songkran_festival_in_lieu_covid_en),
-            (SEP, 4, songkran_festival_in_lieu_covid_en),
-            (SEP, 7, songkran_festival_in_lieu_covid_en),
-            (NOV, 19, thai_bridge_public_holiday_en),
-            (NOV, 20, thai_bridge_public_holiday_en),
-            (DEC, 11, thai_bridge_public_holiday_en),
+            (JUL, 27, songkran_festival_in_lieu_covid),
+            (SEP, 4, songkran_festival_in_lieu_covid),
+            (SEP, 7, songkran_festival_in_lieu_covid),
+            (NOV, 19, thai_bridge_public_holiday),
+            (NOV, 20, thai_bridge_public_holiday),
+            (DEC, 11, thai_bridge_public_holiday),
         ),
         2021: (
-            (FEB, 12, thai_bridge_public_holiday_en),
-            (APR, 12, thai_bridge_public_holiday_en),
-            (SEP, 24, thai_bridge_public_holiday_en),
+            (FEB, 12, thai_bridge_public_holiday),
+            (APR, 12, thai_bridge_public_holiday),
+            (SEP, 24, thai_bridge_public_holiday),
         ),
         2022: (
-            (JUL, 15, thai_bridge_public_holiday_en),
-            (JUL, 29, thai_bridge_public_holiday_en),
-            (OCT, 14, thai_bridge_public_holiday_en),
-            (DEC, 30, thai_bridge_public_holiday_en),
+            (JUL, 15, thai_bridge_public_holiday),
+            (JUL, 29, thai_bridge_public_holiday),
+            (OCT, 14, thai_bridge_public_holiday),
+            (DEC, 30, thai_bridge_public_holiday),
         ),
-        2023: ((MAY, 5, thai_bridge_public_holiday_en),),
+        2023: ((MAY, 5, thai_bridge_public_holiday),),
     }
-
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
         # Due to Thai Calendar Migration, this is capped off at 1941
@@ -241,10 +238,10 @@ class Thailand(HolidayBase):
         # Starts in the present form in 1941 (B.E. 2484)
         # Sources:
         #   (wikisource.org 's wbm) http://tiny.cc/wa_wiki_thai_newyear_2483
-        new_years_day_en = "New Year's Day"
+        new_years_day = "New Year's Day"
 
         if year >= 1941:
-            add_holiday(date(year, JAN, 1), new_years_day_en)
+            add_holiday(date(year, JAN, 1), new_years_day)
 
         # !!! New Year's Eve (in lieu) !!!
         # วันหยุดชดเชยวันสิ้นปี
@@ -255,7 +252,7 @@ class Thailand(HolidayBase):
         #   https://github.com/dr-prodigy/python-holidays/pull/929
         #   https://resolution.soc.go.th/?prep_id=205799
         #   https://resolution.soc.go.th/?prep_id=210744
-        new_years_eve_in_lieu_en = "New Year's Eve (in lieu)"
+        new_years_eve_in_lieu = "New Year's Eve (in lieu)"
 
         # Applied Automatically for Monday if on Weekends: 1961-1973
         #  **NOTE: No New Year's Eve (in lieu) for this period
@@ -267,10 +264,10 @@ class Thailand(HolidayBase):
         if self.observed and (1995 <= year <= 1997 or year >= 2001):
             # CASE 1: SAT-SUN -> 1 in-lieu on TUE
             if date(year - 1, DEC, 31).weekday() == SAT:
-                self[date(year, JAN, 3)] = new_years_eve_in_lieu_en
+                self[date(year, JAN, 3)] = new_years_eve_in_lieu
             # CASE 2: SUN-MON -> 1 in-lieu on TUE
             elif date(year - 1, DEC, 31).weekday() == SUN:
-                self[date(year, JAN, 2)] = new_years_eve_in_lieu_en
+                self[date(year, JAN, 2)] = new_years_eve_in_lieu
 
         # !!! Chakri Memorial Day !!!
         # วันจักรี
@@ -278,10 +275,10 @@ class Thailand(HolidayBase):
         # Starts in present form in 1918 (B.E. 2461)
         # Sources:
         #   (ocac.got.th 's wbm) http://tiny.cc/wa_ocac_chakri
-        chakri_memorial_en = "Chakri Memorial Day"
+        chakri_memorial = "Chakri Memorial Day"
 
         if year >= 1918:
-            add_holiday(date(year, APR, 6), chakri_memorial_en)
+            add_holiday(date(year, APR, 6), chakri_memorial)
 
         # !!! Songkran Festival !!!
         # วันสงกรานต์
@@ -293,28 +290,28 @@ class Thailand(HolidayBase):
         # Sources:
         #   (museumsiam.org 's wbm) http://tiny.cc/wa_museumsiam_songkran
         #   https://resolution.soc.go.th/?prep_id=123659
-        songkran_festival_en = "Songkran Festival"
+        songkran_festival = "Songkran Festival"
 
         # 1948-1953, celebrated on Apr 13-15
         if 1948 <= year <= 1953:
-            self[date(year, APR, 13)] = songkran_festival_en
-            self[date(year, APR, 14)] = songkran_festival_en
-            self[date(year, APR, 15)] = songkran_festival_en
+            self[date(year, APR, 13)] = songkran_festival
+            self[date(year, APR, 14)] = songkran_festival
+            self[date(year, APR, 15)] = songkran_festival
         # 1954-1956, abandoned as a public holiday
         # 1957-1988, only celebrated on Apr 13
         elif 1957 <= year <= 1988:
-            add_holiday(date(year, APR, 13), songkran_festival_en)
+            add_holiday(date(year, APR, 13), songkran_festival)
         # 1989-1997, celebrated on Apr 12-14
         elif 1989 <= year <= 1997:
-            self[date(year, APR, 12)] = songkran_festival_en
-            self[date(year, APR, 13)] = songkran_festival_en
-            self[date(year, APR, 14)] = songkran_festival_en
+            self[date(year, APR, 12)] = songkran_festival
+            self[date(year, APR, 13)] = songkran_festival
+            self[date(year, APR, 14)] = songkran_festival
         # 1998-Present, celebrated on Apr 13-15
         # (Except for 2020 due to Covid-19 outbreaks)
         elif year >= 1998 and year != 2020:
-            self[date(year, APR, 13)] = songkran_festival_en
-            self[date(year, APR, 14)] = songkran_festival_en
-            self[date(year, APR, 15)] = songkran_festival_en
+            self[date(year, APR, 13)] = songkran_festival
+            self[date(year, APR, 14)] = songkran_festival
+            self[date(year, APR, 15)] = songkran_festival
 
         # !!! Songkran Festival (in lieu) !!!
         # วันหยุดชดเชยวันสงกรานต์
@@ -323,7 +320,7 @@ class Thailand(HolidayBase):
         # Status: In Use
         # Sources:
         #   https://github.com/dr-prodigy/python-holidays/pull/929
-        songkran_festival_in_lieu_en = "Songkran Festival (in lieu)"
+        songkran_festival_in_lieu = "Songkran Festival (in lieu)"
 
         # Applied Automatically for Monday if on Weekends: 1961-1973
         # No In Lieu days available: 1974-1988
@@ -335,13 +332,13 @@ class Thailand(HolidayBase):
             dt = date(year, APR, 15) if year >= 2001 else date(year, APR, 14)
             # CASE 1: THU-FRI-SAT -> 1 in-lieu on MON
             if dt.weekday() == SAT:
-                self[dt + td(days=+2)] = songkran_festival_in_lieu_en
+                self[dt + td(days=+2)] = songkran_festival_in_lieu
             # CASE 2: FRI-SAT-SUN -> 1 in-lieu on MON
             elif dt.weekday() == SUN:
-                self[dt + td(days=+1)] = songkran_festival_in_lieu_en
+                self[dt + td(days=+1)] = songkran_festival_in_lieu
             # CASE 3: SAT-SUN-MON -> 1 in-lieu on TUE
             elif dt.weekday() == MON:
-                self[dt + td(days=+1)] = songkran_festival_in_lieu_en
+                self[dt + td(days=+1)] = songkran_festival_in_lieu
 
         # !!! Labour day !!!
         # วันแรงงานแห่งชาติ
@@ -352,10 +349,10 @@ class Thailand(HolidayBase):
         # *** NOTE: only observed by financial and private sectors
         # Sources:
         #   https://www.thairath.co.th/lifestyle/culture/1832869
-        national_labour_day_en = "National Labour Day"
+        national_labour_day = "National Labour Day"
 
         if year >= 1974:
-            add_holiday(date(year, MAY, 1), national_labour_day_en)
+            add_holiday(date(year, MAY, 1), national_labour_day)
 
         # !!! National Day (24 June) !!!
         # วันชาติ
@@ -364,10 +361,10 @@ class Thailand(HolidayBase):
         # Replaced by Rama IX's birthday in 1960 (B.E. 2503) by Sarit Thanarat
         # Sources:
         #   (Ministry of Culture 's wbm) http://tiny.cc/wa_mincul_nat_day
-        national_day_khana_ratsadon_en = "National Day"
+        national_day_khana_ratsadon = "National Day"
 
         if 1939 <= year <= 1959:
-            add_holiday(date(year, JUN, 24), national_day_khana_ratsadon_en)
+            add_holiday(date(year, JUN, 24), national_day_khana_ratsadon)
 
         # !!! Coronation Day !!!
         # วันฉัตรมงคล
@@ -377,15 +374,15 @@ class Thailand(HolidayBase):
         # Sources:
         #   https://www.matichon.co.th/politics/news_526200
         #   https://workpointtoday.com/news1-5/
-        coronation_day_en = "Coronation Day"
+        coronation_day = "Coronation Day"
 
         # Rama IX's Coronation: May 5th
         if 1958 <= year <= 2016:
-            add_holiday(date(year, MAY, 5), coronation_day_en)
+            add_holiday(date(year, MAY, 5), coronation_day)
         # In-Between Years: No Celebration
         # Rama X's Coronation: May 4th
         elif year >= 2020:
-            add_holiday(date(year, MAY, 4), coronation_day_en)
+            add_holiday(date(year, MAY, 4), coronation_day)
 
         # !!! HM Queen Suthida's Birthday !!!
         # วันเฉลิมพระชนมพรรษา พระราชินี
@@ -393,10 +390,10 @@ class Thailand(HolidayBase):
         # Starts in 2019 (B.E. 2562)
         # Sources:
         #   https://www.thairath.co.th/news/politic/1567418
-        queen_suthida_birthday_en = "HM Queen Suthida's Birthday"
+        queen_suthida_birthday = "HM Queen Suthida's Birthday"
 
         if year >= 2019:
-            add_holiday(date(year, JUN, 3), queen_suthida_birthday_en)
+            add_holiday(date(year, JUN, 3), queen_suthida_birthday)
 
         # !!! HM King Maha Vajiralongkorn's Birthday !!!
         # วันเฉลิมพระชนมพรรษา รัชกาลที่ 10
@@ -404,10 +401,10 @@ class Thailand(HolidayBase):
         # Started in 2017 (B.E 2560)
         # Sources:
         #   https://www.matichon.co.th/politics/news_526200
-        rama_x_birthday_en = "HM King Maha Vajiralongkorn's Birthday"
+        rama_x_birthday = "HM King Maha Vajiralongkorn's Birthday"
 
         if year >= 2017:
-            add_holiday(date(year, JUL, 28), rama_x_birthday_en)
+            add_holiday(date(year, JUL, 28), rama_x_birthday)
 
         # !!! HM Queen Sirikit the Queen Mother's Birthday !!!
         # วันเฉลิมพระชนมพรรษา พระบรมราชินีนาถ ( 1976-2017),
@@ -416,17 +413,17 @@ class Thailand(HolidayBase):
         # Started in 1976 (B.E. 2519) alongside Mother's Day
         # Sources:
         #   https://hilight.kapook.com/view/14164
-        queen_sirikit_birthday_rama_ix_en = "HM Queen Sirikit's Birthday"
-        queen_sirikit_birthday_rama_x_en = (
+        queen_sirikit_birthday_rama_ix = "HM Queen Sirikit's Birthday"
+        queen_sirikit_birthday_rama_x = (
             "HM Queen Sirikit The Queen Mother's Birthday"
         )
 
         # Initial celebration as HM Queen Sirikit's Birthday
         if 1976 <= year <= 2016:
-            add_holiday(date(year, AUG, 12), queen_sirikit_birthday_rama_ix_en)
+            add_holiday(date(year, AUG, 12), queen_sirikit_birthday_rama_ix)
         # Now acts as the Queen Mother
         elif year >= 2017:
-            add_holiday(date(year, AUG, 12), queen_sirikit_birthday_rama_x_en)
+            add_holiday(date(year, AUG, 12), queen_sirikit_birthday_rama_x)
 
         # !!! Mother's Day !!!
         # วันแม่แห่งชาติ
@@ -437,15 +434,15 @@ class Thailand(HolidayBase):
         #   (August 12) and stay that way from that point onwards.
         # Sources:
         #   https://www.brh.go.th/index.php/2019-02-27-04-11-52/542-12-2564
-        thai_mothers_day_en = "Mother's Day"
+        thai_mothers_day = "Mother's Day"
 
         # Initial Celebration on April 15
         if 1950 <= year <= 1957:
-            add_holiday(date(year, APR, 15), thai_mothers_day_en)
+            add_holiday(date(year, APR, 15), thai_mothers_day)
         # In-Between years while Min. of Culture was abolished
         # Restarts in 1976 on Queen Sirikit's Birthday
         elif year >= 1976:
-            add_holiday(date(year, AUG, 12), thai_mothers_day_en)
+            add_holiday(date(year, AUG, 12), thai_mothers_day)
 
         # !!! Anniversary for the Death of King Bhumibol Adulyadej !!!
         # วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทร มหาภูมิพลอดุลยเดช บรมนาถบพิตร
@@ -453,10 +450,10 @@ class Thailand(HolidayBase):
         # Started in 2017 (B.E 2560)
         # Sources:
         #   https://www.matichon.co.th/politics/news_526200
-        rama_ix_memorial_en = "HM King Bhumibol Adulyadej Memorial Day"
+        rama_ix_memorial = "HM King Bhumibol Adulyadej Memorial Day"
 
         if year >= 2017:
-            add_holiday(date(year, OCT, 13), rama_ix_memorial_en)
+            add_holiday(date(year, OCT, 13), rama_ix_memorial)
 
         # !!! Chulalongkorn Memorial Day !!!
         # วันปิยมหาราช
@@ -464,10 +461,10 @@ class Thailand(HolidayBase):
         # Started in 1911 (B.E. 2454)
         # Sources:
         #   https://th.wikipedia.org/wiki/วันปิยมหาราช
-        rama_five_memorial_en = "Chulalongkorn Memorial Day"
+        rama_five_memorial = "Chulalongkorn Memorial Day"
 
         if year >= 1911:
-            add_holiday(date(year, OCT, 23), rama_five_memorial_en)
+            add_holiday(date(year, OCT, 23), rama_five_memorial)
 
         # !!! HM King Bhumibol Adulyadej's Birthday Anniversary !!!
         # วันเฉลิมพระชนมพรรษา รัชกาลที่ 9 (1960-2016),
@@ -478,10 +475,10 @@ class Thailand(HolidayBase):
         # Sources:
         #   (Ministry of Culture 's wbm) http://tiny.cc/wa_mincul_nat_day
         #   https://hilight.kapook.com/view/148862
-        rama_ix_birthday_en = "HM King Bhumibol Adulyadej's Birthday"
+        rama_ix_birthday = "HM King Bhumibol Adulyadej's Birthday"
 
         if year >= 1960:
-            add_holiday(date(year, DEC, 5), rama_ix_birthday_en)
+            add_holiday(date(year, DEC, 5), rama_ix_birthday)
 
         # !!! Father's Day !!!
         # วันพ่อแห่งชาติ
@@ -491,10 +488,10 @@ class Thailand(HolidayBase):
         #   but it's in the official calendar, so may as well have this here
         # Sources:
         #   https://www.brh.go.th/index.php/2019-02-27-04-12-21/594-5-5
-        thai_fathers_day_en = "Father's Day"
+        thai_fathers_day = "Father's Day"
 
         if year >= 1980:
-            add_holiday(date(year, DEC, 5), thai_fathers_day_en)
+            add_holiday(date(year, DEC, 5), thai_fathers_day)
 
         # !!! Constitution Day !!!
         # วันรัฐธรรมนูญ
@@ -506,10 +503,10 @@ class Thailand(HolidayBase):
         #   https://hilight.kapook.com/view/18208
         #   (Bank of Thailand 's wbm) http://tiny.cc/wa_bot_1992
         #   https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2475.aspx
-        constitution_day_en = "Constitution Day"
+        constitution_day = "Constitution Day"
 
         if year >= 1941:
-            add_holiday(date(year, DEC, 10), constitution_day_en)
+            add_holiday(date(year, DEC, 10), constitution_day)
 
         # !!! New Year's Eve !!!
         # วันสิ้นปี
@@ -519,10 +516,10 @@ class Thailand(HolidayBase):
         # This has its own in-lieu trigger
         # Sources:
         #   (Bank of Thailand 's wbm) http://tiny.cc/wa_bot_1992
-        new_years_eve_en = "New Year's Eve"
+        new_years_eve = "New Year's Eve"
 
         if year >= 1941:
-            self[date(year, DEC, 31)] = new_years_eve_en
+            self[date(year, DEC, 31)] = new_years_eve
 
         ################################
         #
@@ -682,17 +679,17 @@ class Thailand(HolidayBase):
             #            or 29[1] + 30[2] + 15[3] -1 = 73
             # Pakatimat: 15th Waxing Day of Month 3
             #            or 29[1] + 30[2] + 15[3] -1 = 73
-            makha_bucha_en = "Makha Bucha"
+            makha_bucha = "Makha Bucha"
 
             if year in athikamat_years_gregorian:
                 add_holiday(
                     thai_lun_cal_st_date + td(days=+102),
-                    makha_bucha_en,
+                    makha_bucha,
                 )
             else:
                 add_holiday(
                     thai_lun_cal_st_date + td(days=+73),
-                    makha_bucha_en,
+                    makha_bucha,
                 )
 
             # !!! Visakha Bucha !!!
@@ -704,17 +701,17 @@ class Thailand(HolidayBase):
             #            or 147[1-5] + 15[6] -1 = 161
             # Pakatimat: 15th Waxing Day of Month 6
             #            or 147[1-5] + 15[6] -1 = 161
-            visakha_bucha_en = "Visakha Bucha"
+            visakha_bucha = "Visakha Bucha"
 
             if year in athikamat_years_gregorian:
                 add_holiday(
                     thai_lun_cal_st_date + td(days=+191),
-                    visakha_bucha_en,
+                    visakha_bucha,
                 )
             else:
                 add_holiday(
                     thai_lun_cal_st_date + td(days=+161),
-                    visakha_bucha_en,
+                    visakha_bucha,
                 )
 
             # !!! Asarnha Bucha !!!
@@ -727,7 +724,7 @@ class Thailand(HolidayBase):
             # Pakatimat: 15th Waxing Day of Month 8
             #            or 177[1-6] + 29[7] + 15[8] -1 = 220
             # This has its own in-lieu trigger
-            asarnha_bucha_en = "Asarnha Bucha"
+            asarnha_bucha = "Asarnha Bucha"
 
             if year in athikamat_years_gregorian:
                 asarnha_date = thai_lun_cal_st_date + td(days=+250)
@@ -736,7 +733,7 @@ class Thailand(HolidayBase):
             else:
                 asarnha_date = thai_lun_cal_st_date + td(days=+220)
 
-            self[asarnha_date] = asarnha_bucha_en
+            self[asarnha_date] = asarnha_bucha
 
             # !!! Buddhist Lent Day !!!
             # วันเข้าพรรษา
@@ -749,17 +746,17 @@ class Thailand(HolidayBase):
             #            or 177[1-6] + 29[7] + 16[8] -1 = 221
             # Or as in simpler terms: "Asarnha Bucha" +1
             # This has its own in-lieu trigger
-            khao_phansa_en = "Buddhist Lent Day"
+            khao_phansa = "Buddhist Lent Day"
 
-            self[asarnha_date + td(days=+1)] = khao_phansa_en
+            self[asarnha_date + td(days=+1)] = khao_phansa
 
             # !!! Asarnha Bucha/Buddhist Lent Day (in lieu) !!!
             # วันหยุดชดเชยวันอาสาฬหบูชา
             # วันหยุดชดเชยวันเข้าพรรษา
             # Status: In Use
             # For clearer tooltip
-            asarnha_bucha_in_lieu_en = "Asarnha Bucha (in lieu)"
-            khao_phansa_in_lieu_en = "Buddhist Lent Day (in lieu)"
+            asarnha_bucha_in_lieu = "Asarnha Bucha (in lieu)"
+            khao_phansa_in_lieu = "Buddhist Lent Day (in lieu)"
 
             # Applied Automatically for Monday if on Weekends: 1961-1973
             # No In Lieu days available: 1974-1988
@@ -772,11 +769,11 @@ class Thailand(HolidayBase):
             ):
                 # CASE 1: FRI-SAT -> 1 in-lieu on MON
                 if asarnha_date.weekday() == FRI:
-                    self[asarnha_date + td(days=+3)] = khao_phansa_in_lieu_en
+                    self[asarnha_date + td(days=+3)] = khao_phansa_in_lieu
                 # CASE 2: SAT-SUN -> 1 in-lieu on MON
                 # CASE 3: SUN-MON -> 1 in-lieu on TUE
                 elif self._is_weekend(asarnha_date):
-                    self[asarnha_date + td(days=+2)] = asarnha_bucha_in_lieu_en
+                    self[asarnha_date + td(days=+2)] = asarnha_bucha_in_lieu
 
         ###########################
         #
@@ -854,7 +851,7 @@ class Thailand(HolidayBase):
         #   https://en.wikipedia.org/wiki/Royal_Ploughing_Ceremony
         #   https://www.lib.ru.ac.th/journal/may/may_phauchmongkol.html
         #   https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2540.aspx
-        raeknakhwan_en = "Royal Ploughing Ceremony"
+        raeknakhwan = "Royal Ploughing Ceremony"
 
         raeknakhwan = {
             1997: (MAY, 13),
@@ -887,10 +884,10 @@ class Thailand(HolidayBase):
         }
         # For years with exact date data
         if year in raeknakhwan:
-            add_holiday(date(year, *raeknakhwan[year]), raeknakhwan_en)
+            add_holiday(date(year, *raeknakhwan[year]), raeknakhwan)
         # Approx. otherwise for 1957-2013
         elif 1957 <= year <= 1996:
-            add_holiday(date(year, MAY, 13), raeknakhwan_en)
+            add_holiday(date(year, MAY, 13), raeknakhwan)
 
 
 class TH(Thailand):
