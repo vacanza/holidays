@@ -765,63 +765,6 @@ class Thailand(HolidayBase):
                 elif self._is_weekend(asarnha_date):
                     self[asarnha_date + td(days=+2)] = asarnha_bucha_in_lieu
 
-        ###########################
-        #
-        # THAI BANK HOLIDAYS STUB
-        #
-        ###########################
-
-        # !!! Thai Agricultural Bank Holiday !!!
-        # วันหยุดเพิ่มเติมสำหรับการปิดบัญชีประจำปีของ ธ.ก.ส.
-        # Status: Defunct (Historical)
-        # Earliest Record is from 1992 (B.E 2535)
-        # Abandoned post-2022 (B.E 2565) by Bank of Thailand
-        # *** NOTE: only observed by financial sectors
-        # Sources:
-        #   (Bank of Thailand 's wbm) http://tiny.cc/wa_bot_2023
-
-        # !!! Thai Mid-Year Bank Holiday !!!
-        # วันหยุดภาคครึ่งปีของสถาบันการเงิน
-        # Status: Defunct (Historical)
-        # Earliest Record is from 1992 (B.E 2535)
-        # Abandoned post-2019 (B.E 2562) by Bank of Thailand
-        # *** NOTE: only observed by financial sectors
-        # Sources:
-        #   (Bank of Thailand 's wbm) http://tiny.cc/wa_bot_2023
-
-        ###########################################
-        #
-        # THAI REGIONAL HOLIDAYS PLACEHOLDER STUB
-        #
-        ###########################################
-
-        # !!! Eid al-Fitr !!!
-        # วันตรุษอีดิ้ลฟิตริ (วันรายอปอซอ)
-        # Status: In-Use
-        # Observed in Yala, Pattani, Narathiwat, Satun, and Songkhla from
-        # 1992 (B.E 2535)onwards except 2012-2013 (B.E 2555-2556)
-        # *** NOTE: no in-lieu dates available
-        # Sources:
-        #   (Bank of Thailand 's wbm) http://tiny.cc/wa_bot_1992
-
-        # !!! Eid al-Adha !!!
-        # วันตรุษอีดิ้ลอัฎฮา (วันรายอฮัจยี)
-        # Status: In-Use
-        # Observed in Yala, Pattani, Narathiwat, Satun, and Songkhla from
-        # 1994 (B.E 2537) onwards except 2012-2013 (B.E 2555-2556) for Songkhla
-        # *** NOTE: no in-lieu dates available
-        # Sources:
-        #   (Bank of Thailand 's wbm) http://tiny.cc/wa_bot_1994
-
-        # !!! Lunar New Year !!!
-        # วันตรุษจีน
-        # Status: In-Use
-        # Observed in Yala, Pattani, Narathiwat, Satun, and Songkhla from
-        # 1994 (B.E 2537) onwards except 2012-2013 (B.E 2555-2556)
-        # *** NOTE: no in-lieu dates available
-        # Sources:
-        #   (Bank of Thailand 's wbm) http://tiny.cc/wa_bot_1994
-
         #################################
         #
         # NO FUTURE FIXED DATE HOLIDAYS
