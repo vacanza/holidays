@@ -33,18 +33,19 @@ class Botswana(HolidayBase):
 
     def _populate(self, year: int):
         def _add_with_observed(
-            hol_date: date, hol_name1: str, hol_name2: str = ""
+            hol_date: date, hol_name1: str, hol_name2: str = None
         ) -> None:
             self[hol_date] = hol_name1
             if hol_name2:
                 self[hol_date + td(days=+1)] = hol_name2
+
             if self.observed and year >= 1995:
-                if hol_date.weekday() == SUN:
-                    obs_date = hol_date + td(days=2 if hol_name2 else 1)
-                    self[obs_date] = f"{hol_name1} (Observed)"
-                elif hol_date.weekday() == SAT and hol_name2:
-                    obs_date = hol_date + td(days=+2)
-                    self[obs_date] = f"{hol_name2} (Observed)"
+                if hol_date.weekday() == SAT and hol_name2:
+                    self[hol_date + td(days=+2)] = f"{hol_name2} (Observed)"
+                elif hol_date.weekday() == SUN:
+                    self[
+                        hol_date + td(days=+2 if hol_name2 else +1)
+                    ] = f"{hol_name1} (Observed)"
 
         if year <= 1965:
             return
