@@ -814,7 +814,7 @@ class _ThaiLuniSolar:
                         Based on this, though Court Astrologer picks the
                         auspicious dates, which sadly don't fall into a
                         predictable pattern; see its specific section below.
-                - Vesak/Visakha Bucha Bucha:
+                - Vesak/Visakha Bucha:
                         15th Waxing Day (Full Moon) of Month 6
                         (On Month 7 for Athikamat Years).
                 - Asalha Puja/Asarnha Bucha:
@@ -823,6 +823,13 @@ class _ThaiLuniSolar:
                 - Buddhist Lent Day/Wan Khao Phansa:
                         1st Waning Day of Month 8
                         (On Month 8/8 for Athikamat Years).
+
+            Other Buddhist date on Thai Lunar Calendar:
+                - Buddha's Cremation Day/Atthami Bucha
+                        8th Waning Day of  Month 6
+                        (On Month 7 for Athikamat Years).
+                - End of Buddhist Lent Day/Ok Phansa:
+                        15th Waxing Day (Full Moon) of Month 11
 
         The following code is based on Ninenik Narkdee's PHP implementation,
         and we're thankful for his work.
@@ -984,6 +991,20 @@ class _ThaiLuniSolar:
 
         return start_date + td(days=delta_days)
 
+    def atthami_bucha_date(self, year: int) -> date:
+        # !!! Atthami Bucha !!!
+        # วันอัฏฐมีบูชา
+        # Athikamat: 8th Waning Day of  Month 6
+        #            or 177[1-6] + 23[7] -1 = 199
+        # Athikawan: 8th Waning Day of  Month 6
+        #            or 147[1-5] + 23[6] -1 = 169
+        # Pakatimat: 8th Waning Day of  Month 6
+        #            or 147[1-5] + 23[6] -1 = 169
+        # Or as in simpler terms: "Visakha Bucha" +8
+        visakha_date = self.visakha_bucha_date(year)
+
+        return visakha_date + td(days=+8)
+
     def asarnha_bucha_date(self, year: int) -> date:
         # !!! Asarnha Bucha !!!
         # วันอาสาฬหบูชา
@@ -1018,3 +1039,23 @@ class _ThaiLuniSolar:
         asarnha_date = self.asarnha_bucha_date(year)
 
         return asarnha_date + td(days=+1)
+
+    def ok_phansa_date(self, year: int) -> date:
+        # !!! Ok Phansa Day !!!
+        # วันออกพรรษา
+        # Athikamat: 15th Waxing Day of Month 11
+        #            or 295[1-10] + 30[8.8] + 15[11] -1 = 339
+        # Athikawan: 15th Waxing Day of Month 11
+        #            or 295[1-10] + 1[7] + 15[11] -1 = 310
+        # Pakatimat: 15th Waxing Day of Month 11
+        #            or 295[1-10] + 15[11] -1 = 309
+        start_date = self._get_start_date(year)
+
+        if year in self.ATHIKAMAT_YEARS_GREGORIAN:
+            delta_days = 339
+        elif year in self.ATHIKAWAN_YEARS_GREGORIAN:
+            delta_days = 310
+        else:
+            delta_days = 309
+
+        return start_date + td(days=delta_days)
