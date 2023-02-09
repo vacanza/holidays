@@ -11,10 +11,12 @@
 
 from datetime import date
 from datetime import timedelta as td
+from typing import Iterable, Optional, Union
 
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC, MON, FRI, SAT, SUN
 from holidays.holiday_base import HolidayBase
+from holidays.utils import _ThaiLuniSolar
 
 
 class Thailand(HolidayBase):
@@ -185,6 +187,18 @@ class Thailand(HolidayBase):
         2023: ((MAY, 5, thai_bridge_public_holiday),),
     }
 
+    def __init__(
+        self,
+        years: Optional[Union[int, Iterable[int]]] = None,
+        expand: bool = True,
+        observed: bool = True,
+        subdiv: Optional[str] = None,
+        prov: Optional[str] = None,
+        state: Optional[str] = None,
+    ) -> None:
+        self.thls = _ThaiLuniSolar()
+        super().__init__(years, expand, observed, subdiv, prov, state)
+
     def _populate(self, year):
         # Due to Thai Calendar Migration, this is capped off at 1941
         # But certain holidays were implemented before 1941
@@ -199,17 +213,20 @@ class Thailand(HolidayBase):
             if dt.year == year:
                 self[dt] = holiday_name
 
-            # !!! If Public Holiday falls on weekends, (in lieu) on workday !!!
-            # Despite the wording, this usually only applies to Monday only
-            #   for consecutive holidays, with the sole exception being
-            #   New Year's Eve (in lieu) <-- This is now it's own code instance
-            # Data from 1992-1994 and 1998-2000 are declared discretely in
-            #   special_holidays declarations above.
-            # Sources:
-            #   (isranews.org 's wbm) http://tiny.cc/wa_isranews_inlieu_hist
-            #   https://resolution.soc.go.th/?prep_id=99159317
-            #   https://resolution.soc.go.th/?prep_id=196007
+            """
+            !!! If Public Holiday falls on weekends, (in lieu) on workday !!!
+            Despite the wording, this usually only applies to Monday only for
+            holidays, consecutive holidays all have their own special in lieu
+            declared separately.
 
+            Data from 1992-1994 and 1998-2000 are declared discretely in
+              special_holidays declarations above.
+
+            Sources:
+              (isranews.org 's wbm) http://tiny.cc/wa_isranews_inlieu_hist
+              https://resolution.soc.go.th/?prep_id=99159317
+              https://resolution.soc.go.th/?prep_id=196007
+            """
             # Applied Automatically for Monday if on Weekends: 1961-1973
             #  **NOTE: No New Year's Eve (in lieu) for this period
             # No In Lieu days available: 1974-1988
@@ -231,25 +248,25 @@ class Thailand(HolidayBase):
         ########################
 
         # !!! New Year's Day !!!
+        # Sources:
+        #   (wikisource.org 's wbm) http://tiny.cc/wa_wiki_thai_newyear_2483
         # วันขึ้นปีใหม่
         # Status: In-Use
         # Starts in the present form in 1941 (B.E. 2484)
-        # Sources:
-        #   (wikisource.org 's wbm) http://tiny.cc/wa_wiki_thai_newyear_2483
         new_years_day = "New Year's Day"
 
         if year >= 1941:
             add_holiday(date(year, JAN, 1), new_years_day)
 
         # !!! New Year's Eve (in lieu) !!!
-        # วันหยุดชดเชยวันสิ้นปี
-        # Status: In-Use
-        # Added separately from New Year's Eve itself so that it would't
-        #   go over the next year
         # Sources:
         #   https://github.com/dr-prodigy/python-holidays/pull/929
         #   https://resolution.soc.go.th/?prep_id=205799
         #   https://resolution.soc.go.th/?prep_id=210744
+        # วันหยุดชดเชยวันสิ้นปี
+        # Status: In-Use
+        # Added separately from New Year's Eve itself so that it would't
+        #   go over the next year
         new_years_eve_in_lieu = "New Year's Eve (in lieu)"
 
         # Applied Automatically for Monday if on Weekends: 1961-1973
@@ -279,15 +296,15 @@ class Thailand(HolidayBase):
             add_holiday(date(year, APR, 6), chakri_memorial)
 
         # !!! Songkran Festival !!!
+        # Sources:
+        #   (museumsiam.org 's wbm) http://tiny.cc/wa_museumsiam_songkran
+        #   https://resolution.soc.go.th/?prep_id=123659
         # วันสงกรานต์
         # Status: In-Use
         # Used to be April 1st as Thai New Year Day
         # Initially abandoned in 1941 (B.E. 2484), declared again as
         #   public holidays in 1948 (2491 B.E)
         # This has its own in-lieu trigger
-        # Sources:
-        #   (museumsiam.org 's wbm) http://tiny.cc/wa_museumsiam_songkran
-        #   https://resolution.soc.go.th/?prep_id=123659
         songkran_festival = "Songkran Festival"
 
         # 1948-1953, celebrated on Apr 13-15
@@ -312,12 +329,12 @@ class Thailand(HolidayBase):
             self[date(year, APR, 15)] = songkran_festival
 
         # !!! Songkran Festival (in lieu) !!!
+        # Sources:
+        #   https://github.com/dr-prodigy/python-holidays/pull/929
         # วันหยุดชดเชยวันสงกรานต์
         # If Songkran happened to be held on the weekends, only one in-lieu
         #   public holiday is added, No in lieus for SUN-MON-TUE case
         # Status: In Use
-        # Sources:
-        #   https://github.com/dr-prodigy/python-holidays/pull/929
         songkran_festival_in_lieu = "Songkran Festival (in lieu)"
 
         # Applied Automatically for Monday if on Weekends: 1961-1973
@@ -339,39 +356,39 @@ class Thailand(HolidayBase):
                 self[dt + td(days=+1)] = songkran_festival_in_lieu
 
         # !!! Labour day !!!
+        # Sources:
+        #   https://www.thairath.co.th/lifestyle/culture/1832869
         # วันแรงงานแห่งชาติ
         # Status: In-Use
         # Starts in the present form in 1974 (B.E. 2517)
         # Does existed officially since 1956 (B.E. 2499),
         #   but wasn't a public holiday until then
         # *** NOTE: only observed by financial and private sectors
-        # Sources:
-        #   https://www.thairath.co.th/lifestyle/culture/1832869
         national_labour_day = "National Labour Day"
 
         if year >= 1974:
             add_holiday(date(year, MAY, 1), national_labour_day)
 
         # !!! National Day (24 June) !!!
+        # Sources:
+        #   (Ministry of Culture 's wbm) http://tiny.cc/wa_mincul_nat_day
         # วันชาติ
         # Status: Defunct (Historical)
         # Starts in 1939 (B.E. 2482) by Plaek Phibunsongkhram
         # Replaced by Rama IX's birthday in 1960 (B.E. 2503) by Sarit Thanarat
-        # Sources:
-        #   (Ministry of Culture 's wbm) http://tiny.cc/wa_mincul_nat_day
         national_day_khana_ratsadon = "National Day"
 
         if 1939 <= year <= 1959:
             add_holiday(date(year, JUN, 24), national_day_khana_ratsadon)
 
         # !!! Coronation Day !!!
+        # Sources:
+        #   https://www.matichon.co.th/politics/news_526200
+        #   https://workpointtoday.com/news1-5/
         # วันฉัตรมงคล
         # Starts in 1958 (B.E. 2501)
         # No celebration in 2017-2019 (B.E 2560-2562)
         # Reestablished with Rama X's Coronation in 2020
-        # Sources:
-        #   https://www.matichon.co.th/politics/news_526200
-        #   https://workpointtoday.com/news1-5/
         coronation_day = "Coronation Day"
 
         # Rama IX's Coronation: May 5th
@@ -383,34 +400,34 @@ class Thailand(HolidayBase):
             add_holiday(date(year, MAY, 4), coronation_day)
 
         # !!! HM Queen Suthida's Birthday !!!
+        # Sources:
+        #   https://www.thairath.co.th/news/politic/1567418
         # วันเฉลิมพระชนมพรรษา พระราชินี
         # Status: In-Use
         # Starts in 2019 (B.E. 2562)
-        # Sources:
-        #   https://www.thairath.co.th/news/politic/1567418
         queen_suthida_birthday = "HM Queen Suthida's Birthday"
 
         if year >= 2019:
             add_holiday(date(year, JUN, 3), queen_suthida_birthday)
 
         # !!! HM King Maha Vajiralongkorn's Birthday !!!
+        # Sources:
+        #   https://www.matichon.co.th/politics/news_526200
         # วันเฉลิมพระชนมพรรษา รัชกาลที่ 10
         # Status: In-Use
         # Started in 2017 (B.E 2560)
-        # Sources:
-        #   https://www.matichon.co.th/politics/news_526200
         rama_x_birthday = "HM King Maha Vajiralongkorn's Birthday"
 
         if year >= 2017:
             add_holiday(date(year, JUL, 28), rama_x_birthday)
 
         # !!! HM Queen Sirikit the Queen Mother's Birthday !!!
+        # Sources:
+        #   https://hilight.kapook.com/view/14164
         # วันเฉลิมพระชนมพรรษา พระบรมราชินีนาถ ( 1976-2017),
         # วันเฉลิมพระชนมพรรษา พระบรมราชชนนีพันปีหลวง (2017-Present)
         # Status: In-Use
         # Started in 1976 (B.E. 2519) alongside Mother's Day
-        # Sources:
-        #   https://hilight.kapook.com/view/14164
         queen_sirikit_birthday_rama_ix = "HM Queen Sirikit's Birthday"
         queen_sirikit_birthday_rama_x = (
             "HM Queen Sirikit The Queen Mother's Birthday"
@@ -424,14 +441,14 @@ class Thailand(HolidayBase):
             add_holiday(date(year, AUG, 12), queen_sirikit_birthday_rama_x)
 
         # !!! Mother's Day !!!
+        # Sources:
+        #   https://www.brh.go.th/index.php/2019-02-27-04-11-52/542-12-2564
         # วันแม่แห่งชาติ
         # Status: In-Use
         # Started 1950 (B.E 2493) initially as April 15 and cancelled in
         #   1958 (B.E 2501) when the Min. of Culture was abolished.
         # Restarts again in 1976 (B.E. 2519) on Queen Sirikit's Birthday
         #   (August 12) and stay that way from that point onwards.
-        # Sources:
-        #   https://www.brh.go.th/index.php/2019-02-27-04-11-52/542-12-2564
         thai_mothers_day = "Mother's Day"
 
         # Initial Celebration on April 15
@@ -443,76 +460,76 @@ class Thailand(HolidayBase):
             add_holiday(date(year, AUG, 12), thai_mothers_day)
 
         # !!! Anniversary for the Death of King Bhumibol Adulyadej !!!
+        # Sources:
+        #   https://www.matichon.co.th/politics/news_526200
         # วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทร มหาภูมิพลอดุลยเดช บรมนาถบพิตร
         # Status: In-Use
         # Started in 2017 (B.E 2560)
-        # Sources:
-        #   https://www.matichon.co.th/politics/news_526200
         rama_ix_memorial = "HM King Bhumibol Adulyadej Memorial Day"
 
         if year >= 2017:
             add_holiday(date(year, OCT, 13), rama_ix_memorial)
 
         # !!! Chulalongkorn Memorial Day !!!
+        # Sources:
+        #   https://th.wikipedia.org/wiki/วันปิยมหาราช
         # วันปิยมหาราช
         # Status: In-Use
         # Started in 1911 (B.E. 2454)
-        # Sources:
-        #   https://th.wikipedia.org/wiki/วันปิยมหาราช
         rama_five_memorial = "Chulalongkorn Memorial Day"
 
         if year >= 1911:
             add_holiday(date(year, OCT, 23), rama_five_memorial)
 
         # !!! HM King Bhumibol Adulyadej's Birthday Anniversary !!!
+        # Sources:
+        #   (Ministry of Culture 's wbm) http://tiny.cc/wa_mincul_nat_day
+        #   https://hilight.kapook.com/view/148862
         # วันเฉลิมพระชนมพรรษา รัชกาลที่ 9 (1960-2016),
         # วันคล้ายยวันเฉลิมพระชนมพรรษา รัชกาลที่ 9 (2017-Present)
         # Status: In-Use
         # Replaced Nataion Day (26 June) in 1960 (B.E. 2503) by Sarit Thanarat
         # Confirmed as still in-use in 2017
-        # Sources:
-        #   (Ministry of Culture 's wbm) http://tiny.cc/wa_mincul_nat_day
-        #   https://hilight.kapook.com/view/148862
         rama_ix_birthday = "HM King Bhumibol Adulyadej's Birthday"
 
         if year >= 1960:
             add_holiday(date(year, DEC, 5), rama_ix_birthday)
 
         # !!! Father's Day !!!
+        # Sources:
+        #   https://www.brh.go.th/index.php/2019-02-27-04-12-21/594-5-5
         # วันพ่อแห่งชาติ
         # Status: In-Use
         # Starts in 1980 (B.E 2523)
         # Technically, a replication of HM King Bhumibol Adulyadej's Birthday
         #   but it's in the official calendar, so may as well have this here
-        # Sources:
-        #   https://www.brh.go.th/index.php/2019-02-27-04-12-21/594-5-5
         thai_fathers_day = "Father's Day"
 
         if year >= 1980:
             add_holiday(date(year, DEC, 5), thai_fathers_day)
 
         # !!! Constitution Day !!!
-        # วันรัฐธรรมนูญ
-        # Status: In-Use
-        # Presumed to starts in 1932 (B.E. 2475) ???
-        # Last known official record is Bank of Thailand's in 1992 (B.E. 2535)
         # Sources:
         #   https://hilight.kapook.com/view/18208
         #   (Bank of Thailand 's wbm) http://tiny.cc/wa_bot_1992
         #   https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2475.aspx
+        # วันรัฐธรรมนูญ
+        # Status: In-Use
+        # Presumed to starts in 1932 (B.E. 2475) ???
+        # Last known official record is Bank of Thailand's in 1992 (B.E. 2535)
         constitution_day = "Constitution Day"
 
         if year >= 1932:
             add_holiday(date(year, DEC, 10), constitution_day)
 
         # !!! New Year's Eve !!!
+        # Sources:
+        #   (Bank of Thailand 's wbm) http://tiny.cc/wa_bot_1992
         # วันสิ้นปี
         # Status: In-Use
         # Presumed to start in the present form in 1941 (B.E. 2484) ???
         # Last known official record is Bank of Thailand's in 1992 (B.E. 2535)
         # This has its own in-lieu trigger
-        # Sources:
-        #   (Bank of Thailand 's wbm) http://tiny.cc/wa_bot_1992
         new_years_eve = "New Year's Eve"
 
         if year >= 1941:
@@ -523,247 +540,74 @@ class Thailand(HolidayBase):
         # THAI LUNAR CALENDAR HOLIDAYS
         #
         ################################
+
         """
-        So here are the basics of the Thai Lunar Calendar
-            3-year types for calendar intercalation:
-                - Pakatimat (Normal Year):
-                        consist of 12 months, has 354 days.
-                - Athikawan (Extra-Day Year): a
-                        add a day to the 7th month of the year, has 355 days
-                        for the synodic month correction.
-                - Athikamat (Extra-Month Year):
-                        we have the 8th month twice, has 384 days for the
-                        sidereal year correction.
-
-            Each month either has 30 (Even months) or 29 (Odd months)
-                - The waxing phase has 15 days until Full Moon and waning
-                    phase 14 (Odd Months)/15 (Even Months/
-                    Month 7 of Athikawan years) days for the New Moon.
-                - The second "Month 8" for Athikamat years is called
-                    "Month 8.8", with all observed holy days delayed from
-                    the usual calendar by 1 month.
-
-            List of public holidays dependent on the Thai Lunar Calendar:
-                - Magha Puja/Makha Bucha:
-                        15th Waxing Day (Full Moon) of Month 3
-                        (On Month 4 for Athikamat Years).
-                - Royal Ploughing Ceremony:
-                        Based on this, though Court Astrologer picks the
-                        auspicious dates, which sadly don't fall into a
-                        predictable pattern; see its specific section below.
-                - Vesak/Visakha Bucha Bucha:
-                        15th Waxing Day (Full Moon) of Month 6
-                        (On Month 7 for Athikamat Years).
-                - Asalha Puja/Asarnha Bucha:
-                        15th Waxing Day (Full Moon) of Month 8
-                        (On Month 8/8 for Athikamat Years).
-                - Buddhist Lent/Wan Khao Phansa:
-                        1st Waning Day of Month 8
-                        (On Month 8/8 for Athikamat Years).
-
-        The following code is based on Ninenik Narkdee's PHP implementation,
-        and we're thankful for his work.
-
-        Please avoid touching the Athikawan and Athikamat declaration array
-        at all costs unless you can find sources for them somewhere for 2057++
-
-        Sources: (Ninenik.com 's wbm) http://tiny.cc/wa_ninenik_thluncal_php
-                 https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2560.aspx
+        See _ThaiLuniSolar in holidays/utils.py for more details
         """
-        # Athikawan (Extra-Day Year) list goes from 1941-2057 C.E.
-        # Copied off from 1757-2057 (B.E. 2300-2600) Thai Lunar Calendar
-        athikawan_years_greg = {
-            1945,
-            1949,
-            1952,
-            1957,
-            1963,
-            1970,
-            1973,
-            1979,
-            1987,
-            1990,
-            1997,
-            2000,
-            2006,
-            2009,
-            2016,
-            2020,
-            2025,
-            2032,
-            2035,
-            2043,
-            2046,
-            2052,
-        }
+        # !!! Makha Bucha !!!
+        # Sources:
+        #   https://www.onab.go.th/th/content/category/detail/id/73/iid/3403
+        # วันมาฆบูชา
+        # Status: In-Use
+        makha_bucha = "Makha Bucha"
 
-        # Athikamat (Extra-Month Year) list goes from 1941-2057 C.E.:
-        # Copied off from 1757-2057 (B.E. 2300-2600) Thai Lunar Calendar
-        # Approx formula as follows: (common_era-78)-0.45222)%2.7118886 < 1
-        athikamat_years_greg = {
-            1942,
-            1944,
-            1947,
-            1950,
-            1953,
-            1956,
-            1958,
-            1961,
-            1964,
-            1966,
-            1969,
-            1972,
-            1975,
-            1977,
-            1980,
-            1983,
-            1985,
-            1988,
-            1991,
-            1994,
-            1996,
-            1999,
-            2002,
-            2004,
-            2007,
-            2010,
-            2012,
-            2015,
-            2018,
-            2021,
-            2023,
-            2026,
-            2029,
-            2031,
-            2034,
-            2037,
-            2040,
-            2042,
-            2045,
-            2048,
-            2050,
-            2053,
-            2056,
-        }
+        add_holiday(self.thls.makha_bucha_date(year), makha_bucha)
 
-        # While Buddhist Holy Days have been observed since the 1900s
-        #   Due to the calendar changes in 1941 (B.E. 2484) and that
-        #   our array only goes up to B.E. 2600; We'll thus only populate
-        #   the data for 1942-2057 (B.E. 2485-2600).
-        # Sources: หนังสือเวียนกรมการปกครอง กระทรวงมหาดไทย ที่ มท 0310.1/ว4
-        #                          ออกเมื่อ 5 กุมภาพันธ์ พ.ศ.2539
+        # !!! Visakha Bucha !!!
+        # Sources:
+        #   https://www.onab.go.th/th/content/category/detail/id/73/iid/3401
+        # วันวิสาขบูชา
+        # Status: In-Use
+        visakha_bucha = "Visakha Bucha"
 
-        thai_lun_cal_st_date = date(1940, NOV, 30)
-        thai_lun_cal_st_year = 1941
+        add_holiday(self.thls.visakha_bucha_date(year), visakha_bucha)
 
-        # Getting the start date of that particular Thai Lunar Calendar Year
-        if 1941 <= year <= 2057:
-            while thai_lun_cal_st_year < year:
-                if thai_lun_cal_st_year in athikamat_years_greg:
-                    delta_days = 384
-                elif thai_lun_cal_st_year in athikawan_years_greg:
-                    delta_days = 355
-                else:
-                    delta_days = 354
+        # !!! Asarnha Bucha !!!
+        # Sources:
+        #   https://www.onab.go.th/th/content/category/detail/id/73/iid/3397
+        # วันอาสาฬหบูชา
+        # Status: In-Use
+        # This has its own in-lieu trigger
+        asarnha_bucha = "Asarnha Bucha"
 
-                thai_lun_cal_st_date += td(days=delta_days)
-                thai_lun_cal_st_year += 1
+        self[self.thls.asarnha_bucha_date(year)] = asarnha_bucha
 
-            # !!! Makha Bucha !!!
-            # วันมาฆบูชา
-            # Status: In-Use
-            # Athikamat: 15th Waxing Day of Month 4
-            #            or 29[1] + 30[2] + 29[3] + 15[4] -1 = 102
-            # Athikawan: 15th Waxing Day of Month 3
-            #            or 29[1] + 30[2] + 15[3] -1 = 73
-            # Pakatimat: 15th Waxing Day of Month 3
-            #            or 29[1] + 30[2] + 15[3] -1 = 73
-            makha_bucha = "Makha Bucha"
+        # !!! Buddhist Lent Day !!!
+        # Sources:
+        #   https://www.onab.go.th/th/content/category/detail/id/73/iid/3395
+        # วันเข้าพรรษา
+        # Status: In-Use
+        # This has its own in-lieu trigger
+        khao_phansa = "Buddhist Lent Day"
 
-            add_holiday(
-                thai_lun_cal_st_date
-                + td(days=+102 if year in athikamat_years_greg else +73),
-                makha_bucha,
-            )
+        self[self.thls.khao_phansa_date(year)] = khao_phansa
 
-            # !!! Visakha Bucha !!!
-            # วันวิสาขบูชา
-            # Status: In-Use
-            # Athikamat: 15th Waxing Day of Month 6
-            #            or 177[1-6] + 15[7] -1 = 191
-            # Athikawan: 15th Waxing Day of Month 6
-            #            or 147[1-5] + 15[6] -1 = 161
-            # Pakatimat: 15th Waxing Day of Month 6
-            #            or 147[1-5] + 15[6] -1 = 161
-            visakha_bucha = "Visakha Bucha"
+        # !!! Asarnha Bucha/Buddhist Lent Day (in lieu) !!!
+        # วันหยุดชดเชยวันอาสาฬหบูชา
+        # วันหยุดชดเชยวันเข้าพรรษา
+        # Status: In Use
+        # For clearer tooltip
+        asarnha_bucha_in_lieu = "Asarnha Bucha (in lieu)"
+        khao_phansa_in_lieu = "Buddhist Lent Day (in lieu)"
 
-            add_holiday(
-                thai_lun_cal_st_date
-                + td(days=+191 if year in athikamat_years_greg else +161),
-                visakha_bucha,
-            )
+        # Applied Automatically for Monday if on Weekends: 1961-1973
+        # No In Lieu days available: 1974-1988
+        # Case-by-Case application for Workday if on Weekends: 1989-1994
+        # Applied Automatically for Workday if on Weekends: 1995-1997
+        # Case-by-Case application for Workday if on Weekends: 1998-2000
+        # Applied Automatically for Workday if on Weekends: 2001-Present
+        asarnha_date = self.thls.asarnha_bucha_date(year)
 
-            # !!! Asarnha Bucha !!!
-            # วันอาสาฬหบูชา
-            # Status: In-Use
-            # Athikamat: 15th Waxing Day of Month 8/8
-            #            or 177[1-6] + 29[7] + 30[8] + 15[8.8] -1 = 250
-            # Athikawan: 15th Waxing Day of Month 8
-            #            or 177[1-6] + 30[7] + 15[8] -1 = 221
-            # Pakatimat: 15th Waxing Day of Month 8
-            #            or 177[1-6] + 29[7] + 15[8] -1 = 220
-            # This has its own in-lieu trigger
-            asarnha_bucha = "Asarnha Bucha"
-
-            if year in athikamat_years_greg:
-                delta_days = 250
-            elif year in athikawan_years_greg:
-                delta_days = 221
-            else:
-                delta_days = 220
-
-            asarnha_date = thai_lun_cal_st_date + td(days=delta_days)
-            self[asarnha_date] = asarnha_bucha
-
-            # !!! Buddhist Lent Day !!!
-            # วันเข้าพรรษา
-            # Status: In-Use
-            # Athikamat: 1st Waning Day of Month 8.8
-            #            or 177[1-6] + 29[7] + 30[8] + 16[8.8] -1 = 251
-            # Athikawan: 1st Waning Day of Month 8 ]
-            #            or 177[1-6] + 30[7] + 16[8] -1 = 222
-            # Pakatimat: 1st Waning Day of Month 8
-            #            or 177[1-6] + 29[7] + 16[8] -1 = 221
-            # Or as in simpler terms: "Asarnha Bucha" +1
-            # This has its own in-lieu trigger
-            khao_phansa = "Buddhist Lent Day"
-
-            self[asarnha_date + td(days=+1)] = khao_phansa
-
-            # !!! Asarnha Bucha/Buddhist Lent Day (in lieu) !!!
-            # วันหยุดชดเชยวันอาสาฬหบูชา
-            # วันหยุดชดเชยวันเข้าพรรษา
-            # Status: In Use
-            # For clearer tooltip
-            asarnha_bucha_in_lieu = "Asarnha Bucha (in lieu)"
-            khao_phansa_in_lieu = "Buddhist Lent Day (in lieu)"
-
-            # Applied Automatically for Monday if on Weekends: 1961-1973
-            # No In Lieu days available: 1974-1988
-            # Case-by-Case application for Workday if on Weekends: 1989-1994
-            # Applied Automatically for Workday if on Weekends: 1995-1997
-            # Case-by-Case application for Workday if on Weekends: 1998-2000
-            # Applied Automatically for Workday if on Weekends: 2001-Present
-            if self.observed and (
-                1961 <= year <= 1973 or 1995 <= year <= 1997 or year >= 2001
-            ):
-                # CASE 1: FRI-SAT -> 1 in-lieu on MON
-                if asarnha_date.weekday() == FRI:
-                    self[asarnha_date + td(days=+3)] = khao_phansa_in_lieu
-                # CASE 2: SAT-SUN -> 1 in-lieu on MON
-                # CASE 3: SUN-MON -> 1 in-lieu on TUE
-                elif self._is_weekend(asarnha_date):
-                    self[asarnha_date + td(days=+2)] = asarnha_bucha_in_lieu
+        if self.observed and (
+            1961 <= year <= 1973 or 1995 <= year <= 1997 or year >= 2001
+        ):
+            # CASE 1: FRI-SAT -> 1 in-lieu on MON
+            if asarnha_date.weekday() == FRI:
+                self[asarnha_date + td(days=+3)] = khao_phansa_in_lieu
+            # CASE 2: SAT-SUN -> 1 in-lieu on MON
+            # CASE 3: SUN-MON -> 1 in-lieu on TUE
+            elif self._is_weekend(asarnha_date):
+                self[asarnha_date + td(days=+2)] = asarnha_bucha_in_lieu
 
         #################################
         #
@@ -772,6 +616,10 @@ class Thailand(HolidayBase):
         #################################
 
         # !!! Royal Ploughing Ceremony !!!
+        # Sources:
+        #   https://en.wikipedia.org/wiki/Royal_Ploughing_Ceremony
+        #   https://www.lib.ru.ac.th/journal/may/may_phauchmongkol.html
+        #   https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2540.aspx
         # วันพืชมงคล
         # Restarts in 1957 (B.E. 2500)
         # Is dated on an annual basis by the Royal Palace
@@ -780,10 +628,6 @@ class Thailand(HolidayBase):
         #   can technically assign it to 13 May for years prior with no data.
         # *** NOTE: only observed by government sectors
         # [TODO]: Update this annually around Dec of each year
-        # Sources:
-        #   https://en.wikipedia.org/wiki/Royal_Ploughing_Ceremony
-        #   https://www.lib.ru.ac.th/journal/may/may_phauchmongkol.html
-        #   https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2540.aspx
         raeknakhwan = "Royal Ploughing Ceremony"
 
         raeknakhwan = {
