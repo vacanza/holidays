@@ -630,7 +630,7 @@ class Thailand(HolidayBase):
         # [TODO]: Update this annually around Dec of each year
         raeknakhwan = "Royal Ploughing Ceremony"
 
-        raeknakhwan = {
+        raeknakhwan_dates = {
             1997: (MAY, 13),
             1998: (MAY, 13),
             # Not held in 1999 date
@@ -660,8 +660,8 @@ class Thailand(HolidayBase):
             2023: (MAY, 11),
         }
         # For years with exact date data
-        if year in raeknakhwan:
-            add_holiday(date(year, *raeknakhwan[year]), raeknakhwan)
+        if year in raeknakhwan_dates:
+            add_holiday(date(year, *raeknakhwan_dates[year]), raeknakhwan)
         # Approx. otherwise for 1957-2013
         elif 1957 <= year <= 1996:
             add_holiday(date(year, MAY, 13), raeknakhwan)
