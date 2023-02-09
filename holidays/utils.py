@@ -942,18 +942,18 @@ class _ThaiLuniSolar:
         iter_start_date = self.THAI_LUNAR_CALENDAR_START_DATE
         iter_start_year = self.THAI_LUNAR_CALENDAR_START_YEAR
 
-        if self.START_YEAR <= year <= self.END_YEAR:
-            while iter_start_year < year:
-                if iter_start_year in self.ATHIKAMAT_YEARS_GREGORIAN:
-                    delta_days = 384
-                elif iter_start_year in self.ATHIKAWAN_YEARS_GREGORIAN:
-                    delta_days = 355
-                else:
-                    delta_days = 354
-                iter_start_date += td(days=delta_days)
-                iter_start_year += 1
-            return iter_start_date
-        return None
+        if year < self.START_YEAR or year > self.END_YEAR:
+            return None
+        while iter_start_year < year:
+            if iter_start_year in self.ATHIKAMAT_YEARS_GREGORIAN:
+                delta_days = 384
+            elif iter_start_year in self.ATHIKAWAN_YEARS_GREGORIAN:
+                delta_days = 355
+            else:
+                delta_days = 354
+            iter_start_date += td(days=delta_days)
+            iter_start_year += 1
+        return iter_start_date
 
     def makha_bucha_date(self, year: int) -> Optional[date]:
         # !!! Makha Bucha !!!
@@ -965,13 +965,13 @@ class _ThaiLuniSolar:
         # Pakatimat: 15th Waxing Day of Month 3
         #            or 29[1] + 30[2] + 15[3] -1 = 73
         start_date = self._get_start_date(year)
-        if start_date is not None:
-            if year in self.ATHIKAMAT_YEARS_GREGORIAN:
-                delta_days = 102
-            else:
-                delta_days = 73
-            return start_date + td(days=delta_days)
-        return None
+        if not start_date:
+            return None
+        if year in self.ATHIKAMAT_YEARS_GREGORIAN:
+            delta_days = 102
+        else:
+            delta_days = 73
+        return start_date + td(days=delta_days)
 
     def visakha_bucha_date(self, year: int) -> Optional[date]:
         # !!! Visakha Bucha !!!
@@ -983,13 +983,13 @@ class _ThaiLuniSolar:
         # Pakatimat: 15th Waxing Day of Month 6
         #            or 147[1-5] + 15[6] -1 = 161
         start_date = self._get_start_date(year)
-        if start_date is not None:
-            if year in self.ATHIKAMAT_YEARS_GREGORIAN:
-                delta_days = 191
-            else:
-                delta_days = 161
-            return start_date + td(days=delta_days)
-        return None
+        if not start_date:
+            return None
+        if year in self.ATHIKAMAT_YEARS_GREGORIAN:
+            delta_days = 191
+        else:
+            delta_days = 161
+        return start_date + td(days=delta_days)
 
     def atthami_bucha_date(self, year: int) -> Optional[date]:
         # !!! Atthami Bucha !!!
@@ -1002,13 +1002,13 @@ class _ThaiLuniSolar:
         #            or 147[1-5] + 23[6] -1 = 169
         # Or as in simpler terms: "Visakha Bucha" +8
         start_date = self._get_start_date(year)
-        if start_date is not None:
-            if year in self.ATHIKAMAT_YEARS_GREGORIAN:
-                delta_days = 199
-            else:
-                delta_days = 169
-            return start_date + td(days=delta_days)
-        return None
+        if not start_date:
+            return None
+        if year in self.ATHIKAMAT_YEARS_GREGORIAN:
+            delta_days = 199
+        else:
+            delta_days = 169
+        return start_date + td(days=delta_days)
 
     def asarnha_bucha_date(self, year: int) -> Optional[date]:
         # !!! Asarnha Bucha !!!
@@ -1020,15 +1020,15 @@ class _ThaiLuniSolar:
         # Pakatimat: 15th Waxing Day of Month 8
         #            or 177[1-6] + 29[7] + 15[8] -1 = 220
         start_date = self._get_start_date(year)
-        if start_date is not None:
-            if year in self.ATHIKAMAT_YEARS_GREGORIAN:
-                delta_days = 250
-            elif year in self.ATHIKAWAN_YEARS_GREGORIAN:
-                delta_days = 221
-            else:
-                delta_days = 220
-            return start_date + td(days=delta_days)
-        return None
+        if not start_date:
+            return None
+        if year in self.ATHIKAMAT_YEARS_GREGORIAN:
+            delta_days = 250
+        elif year in self.ATHIKAWAN_YEARS_GREGORIAN:
+            delta_days = 221
+        else:
+            delta_days = 220
+        return start_date + td(days=delta_days)
 
     def khao_phansa_date(self, year: int) -> Optional[date]:
         # !!! Khao Phansa Day !!!
@@ -1042,15 +1042,15 @@ class _ThaiLuniSolar:
         #            or 177[1-6] + 29[7] + 16[8] -1 = 221
         # Or as in simpler terms: "Asarnha Bucha" +1
         start_date = self._get_start_date(year)
-        if start_date is not None:
-            if year in self.ATHIKAMAT_YEARS_GREGORIAN:
-                delta_days = 251
-            elif year in self.ATHIKAWAN_YEARS_GREGORIAN:
-                delta_days = 222
-            else:
-                delta_days = 221
-            return start_date + td(days=delta_days)
-        return None
+        if not start_date:
+            return None
+        if year in self.ATHIKAMAT_YEARS_GREGORIAN:
+            delta_days = 251
+        elif year in self.ATHIKAWAN_YEARS_GREGORIAN:
+            delta_days = 222
+        else:
+            delta_days = 221
+        return start_date + td(days=delta_days)
 
     def ok_phansa_date(self, year: int) -> Optional[date]:
         # !!! Ok Phansa Day !!!
@@ -1062,12 +1062,12 @@ class _ThaiLuniSolar:
         # Pakatimat: 15th Waxing Day of Month 11
         #            or 295[1-10] + 15[11] -1 = 309
         start_date = self._get_start_date(year)
-        if start_date is not None:
-            if year in self.ATHIKAMAT_YEARS_GREGORIAN:
-                delta_days = 339
-            elif year in self.ATHIKAWAN_YEARS_GREGORIAN:
-                delta_days = 310
-            else:
-                delta_days = 309
-            return start_date + td(days=delta_days)
-        return None
+        if not start_date:
+            return None
+        if year in self.ATHIKAMAT_YEARS_GREGORIAN:
+            delta_days = 339
+        elif year in self.ATHIKAWAN_YEARS_GREGORIAN:
+            delta_days = 310
+        else:
+            delta_days = 309
+        return start_date + td(days=delta_days)

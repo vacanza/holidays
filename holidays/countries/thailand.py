@@ -545,7 +545,7 @@ class Thailand(HolidayBase):
         makha_bucha = "Makha Bucha"
 
         makha_bucha_date = self.thls.makha_bucha_date(year)
-        if makha_bucha_date is not None:
+        if makha_bucha_date:
             _add_with_observed(makha_bucha_date, makha_bucha)
 
         # !!! Visakha Bucha !!!
@@ -556,7 +556,7 @@ class Thailand(HolidayBase):
         visakha_bucha = "Visakha Bucha"
 
         visakha_bucha_date = self.thls.visakha_bucha_date(year)
-        if visakha_bucha_date is not None:
+        if visakha_bucha_date:
             _add_with_observed(visakha_bucha_date, visakha_bucha)
 
         # !!! Asarnha Bucha !!!
@@ -568,7 +568,7 @@ class Thailand(HolidayBase):
         asarnha_bucha = "Asarnha Bucha"
 
         asarnha_bucha_date = self.thls.asarnha_bucha_date(year)
-        if asarnha_bucha_date is not None:
+        if asarnha_bucha_date:
             self[asarnha_bucha_date] = asarnha_bucha
 
         # !!! Buddhist Lent Day !!!
@@ -580,7 +580,7 @@ class Thailand(HolidayBase):
         khao_phansa = "Buddhist Lent Day"
 
         khao_phansa_date = self.thls.khao_phansa_date(year)
-        if khao_phansa_date is not None:
+        if khao_phansa_date:
             self[khao_phansa_date] = khao_phansa
 
         # !!! Asarnha Bucha/Buddhist Lent Day (in lieu) !!!
