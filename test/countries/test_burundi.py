@@ -9,84 +9,195 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import importlib.util
-import unittest
-from datetime import date
-
-import holidays
+from holidays.countries.burundi import Burundi, BI, BDI
+from test.common import TestCase
 
 
-class TestBurundi(unittest.TestCase):
+class TestBurundi(TestCase):
     def setUp(self):
-        self.holidays = holidays.BI()
+        self.holidays = Burundi()
+
+    def test_country_aliases(self):
+        self.assertCountryAliases(Burundi, BI, BDI)
+
+    def test_no_holidays(self):
+        self.assertNoHolidays(Burundi(years=1961))
 
     def test_new_year_day(self):
-        for year in range(1979, 2050):
-            self.assertIn("New Year's Day", self.holidays[date(year, 1, 1)])
+        self.assertHolidaysName(
+            "New Year's Day", (f"{year}-01-01" for year in range(1962, 2050))
+        )
 
     def test_unity_day(self):
-        self.assertIn("Unity Day", self.holidays[date(2017, 2, 5)])
-        self.assertIn("Unity Day (Observed)", self.holidays[date(2017, 2, 6)])
-
-    def test_labour_day(self):
-        self.assertIn("Labour Day", self.holidays[date(2017, 5, 1)])
-        self.assertIn("Labour Day (Observed)", self.holidays[date(2022, 5, 2)])
-
-    def test_rwagasore_day(self):
-        self.assertIn(
-            "Prince Louis Rwagasore Day", self.holidays[date(2017, 10, 13)]
-        )
-        self.assertIn(
-            "Prince Louis Rwagasore Day (Observed)",
-            self.holidays[date(2024, 10, 14)],
+        name = "Unity Day"
+        self.assertNoHolidayName(name, Burundi(years=range(1962, 1992)))
+        self.assertHolidaysName(
+            name, (f"{year}-02-05" for year in range(1992, 2050))
         )
 
     def test_ntaryamira_day(self):
-        self.assertIn(
-            "President Ntaryamira Day", self.holidays[date(2017, 4, 6)]
+        name = "President Ntaryamira Day"
+        self.assertNoHolidayName(name, Burundi(years=range(1962, 1995)))
+        self.assertHolidaysName(
+            name, (f"{year}-04-06" for year in range(1995, 2050))
         )
 
-    def test_ndadaye_day(self):
-        self.assertIn(
-            "President Ndadaye's Day", self.holidays[date(2017, 10, 21)]
-        )
-        self.assertIn(
-            "President Ndadaye's Day (Observed)",
-            self.holidays[date(2018, 10, 22)],
-        )
-
-    def test_independence_day(self):
-        for year in range(1962, 2050):
-            self.assertIn(date(year, 7, 1), self.holidays)
-
-        for year in range(1930, 1962):
-            if year != 1958:
-                # in 1958 it's Eid Al Adha (as estimated by convertdate)
-                self.assertNotIn(date(year, 7, 1), self.holidays)
-
-        self.assertIn(
-            "Independence Day (Observed)", self.holidays[date(2018, 7, 2)]
+    def test_labour_day(self):
+        self.assertHolidaysName(
+            "Labour Day", (f"{year}-05-01" for year in range(1962, 2050))
         )
 
     def test_ascension_day(self):
-        self.assertIn("Ascension Day", self.holidays[date(2020, 5, 21)])
+        self.assertHolidaysName(
+            "Ascension Day",
+            "2010-05-13",
+            "2011-06-02",
+            "2012-05-17",
+            "2013-05-09",
+            "2014-05-29",
+            "2015-05-14",
+            "2016-05-05",
+            "2017-05-25",
+            "2018-05-10",
+            "2019-05-30",
+            "2020-05-21",
+            "2021-05-13",
+            "2022-05-26",
+            "2023-05-18",
+        )
+
+    def test_nkurunziza_day(self):
+        name = "President Nkurunziza Day"
+        self.assertNoHolidayName(name, Burundi(years=range(1962, 2022)))
+        self.assertHolidaysName(
+            name, (f"{year}-06-08" for year in range(2022, 2050))
+        )
+
+    def test_independence_day(self):
+        self.assertHolidaysName(
+            "Independence Day", (f"{year}-07-01" for year in range(1962, 2050))
+        )
 
     def test_assumption_Day(self):
-        self.assertIn("Assumption Day", self.holidays[date(2020, 8, 15)])
+        self.assertHolidaysName(
+            "Assumption Day", (f"{year}-08-15" for year in range(1962, 2050))
+        )
+
+    def test_rwagasore_day(self):
+        self.assertHolidaysName(
+            "Prince Louis Rwagasore Day",
+            (f"{year}-10-13" for year in range(1962, 2050)),
+        )
+
+    def test_ndadaye_day(self):
+        name = "President Ndadaye's Day"
+        self.assertNoHolidayName(name, Burundi(years=range(1962, 1994)))
+        self.assertHolidaysName(
+            name, (f"{year}-10-21" for year in range(1994, 2050))
+        )
 
     def test_all_saints_Day(self):
-        self.assertIn("All Saints' Day", self.holidays[date(2020, 11, 1)])
-        self.assertIn(
-            "All Saints' Day (Observed)", self.holidays[date(2020, 11, 2)]
+        self.assertHolidaysName(
+            "All Saints' Day", (f"{year}-11-01" for year in range(1962, 2050))
         )
 
     def test_christmas_Day(self):
-        self.assertIn("Christmas Day", self.holidays[date(2020, 12, 25)])
+        self.assertHolidaysName(
+            "Christmas Day", (f"{year}-12-25" for year in range(1962, 2050))
+        )
+
+    def test_eid_ul_fitr(self):
+        self.assertHolidaysName(
+            "Eid ul Fitr",
+            "2010-09-10",
+            "2011-08-30",
+            "2012-08-19",
+            "2013-08-08",
+            "2014-07-28",
+            "2015-07-17",
+            "2016-07-06",
+            "2017-06-25",
+            "2018-06-15",
+            "2019-06-04",
+            "2020-05-24",
+            "2021-05-13",
+            "2022-05-02",
+            "2023-04-21",
+        )
 
     def test_eid_al_adha(self):
-        if importlib.util.find_spec("hijri_converter"):
-            self.holidays = holidays.Burundi(years=[2019, 1999])
+        self.assertHolidaysName(
+            "Eid al Adha",
+            "2010-11-16",
+            "2011-11-06",
+            "2012-10-26",
+            "2013-10-15",
+            "2014-10-04",
+            "2015-09-23",
+            "2016-09-11",
+            "2017-09-01",
+            "2018-08-21",
+            "2019-08-11",
+            "2020-07-31",
+            "2021-07-20",
+            "2022-07-09",
+            "2023-06-28",
+        )
 
-            # eid Al Adha
-            self.assertIn(date(2020, 7, 31), self.holidays)
-            self.assertIn(date(2020, 7, 31), self.holidays)
+    def test_observed(self):
+        observed_holidays = (
+            # New Year's Day
+            "2012-01-02",
+            "2017-01-02",
+            "2023-01-02",
+            # Unity Day
+            "2012-02-06",
+            "2017-02-06",
+            "2023-02-06",
+            # President Ntaryamira Day
+            "2008-04-07",
+            "2014-04-07",
+            "2025-04-07",
+            # Labour Day
+            "2011-05-02",
+            "2016-05-02",
+            "2033-05-02",
+            # President Nkurunziza Day
+            "2025-06-09",
+            "2031-06-09",
+            "2036-06-09",
+            # Independence Day
+            "2012-07-02",
+            "2018-07-02",
+            "2029-07-02",
+            # Assumption Day
+            "2010-08-16",
+            "2021-08-16",
+            "2027-08-16",
+            # Prince Louis Rwagasore Day
+            "2013-10-14",
+            "2019-10-14",
+            "2024-10-14",
+            # President Ndadaye's Day
+            "2012-10-22",
+            "2018-10-22",
+            "2029-10-22",
+            # All Saints' Day
+            "2015-11-02",
+            "2020-11-02",
+            "2026-11-02",
+            # Christmas Day
+            "2016-12-26",
+            "2022-12-26",
+            "2033-12-26",
+            # Eid ul Fitr
+            "2012-08-20",
+            "2017-06-26",
+            "2020-05-25",
+            # Eid al Adha
+            "2016-09-12",
+            "2019-08-12",
+            "2024-06-17",
+        )
+        self.assertHoliday(observed_holidays)
+        self.assertNoHoliday(Burundi(observed=False), observed_holidays)

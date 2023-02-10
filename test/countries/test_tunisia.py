@@ -36,13 +36,13 @@ class TestTunisia(unittest.TestCase):
 
     def test_hijri_based(self):
         if importlib.util.find_spec("hijri_converter"):
-            self.holidays = holidays.TN(years=[2015])
-
             # eid_alfitr
             self.assertIn(date(2015, 7, 17), self.holidays)
             # eid_aladha
             self.assertIn(date(2015, 9, 24), self.holidays)
             # islamic_new_year
+            self.assertIn(date(2008, 1, 10), self.holidays)
+            self.assertIn(date(2008, 12, 29), self.holidays)
             self.assertIn(date(2015, 10, 14), self.holidays)
 
             # eid_elfetr_2019

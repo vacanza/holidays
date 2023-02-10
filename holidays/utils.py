@@ -25,7 +25,7 @@ from functools import lru_cache
 from typing import Dict, Iterable, List, Optional, Union
 
 from hijri_converter import convert
-from hijri_converter.ummalqura import GREGORIAN_RANGE
+from hijri_converter.ummalqura import GREGORIAN_RANGE, HIJRI_RANGE
 
 from holidays import countries, financial
 from holidays.holiday_base import HolidayBase
@@ -317,7 +317,7 @@ def _islamic_to_gre(g_year: int, h_month: int, h_day: int) -> Iterable[date]:
     calendar is about 11 days shorter.
 
     Relies on package `hijri_converter
-    <https://www.pypy.org/package/hijri_converter>`__.
+    <https://www.pypi.org/project/hijri_converter>__.
 
     :param g_year:
         The Gregorian year.
@@ -329,22 +329,28 @@ def _islamic_to_gre(g_year: int, h_month: int, h_day: int) -> Iterable[date]:
         The Lunar Hijrī (Islamic) day.
 
     :return:
-        List of Gregorian dates within the Gregorian year specified that
-        matches the Islamic (Lunar Hijrī) calendar day and month specified.
+        An Iterable of Gregorian dates within the Gregorian year specified
+        that matches the Islamic (Lunar Hijrī) calendar day and month
+        specified. An empty Iterable is returned if the Gregorian year
+        is outside of the covered period, which as of hijri_converter 2.2.4
+        (in January 2023) is Gregorian years 1925 to 2076 inclusive, or
+        equal to the contents of hijri_converter.ummalqura.GREGORIAN_RANGE
+        plus/minus 1 year.
     """
 
     # To avoid hijri_converter check range OverflowError.
-    dt = (g_year, h_month, h_day)
-    dt_min, dt_max = GREGORIAN_RANGE
-    if dt < dt_min or dt > dt_max:
+    g_year_min, g_year_max = (d[0] for d in GREGORIAN_RANGE)
+    h_year_min, h_year_max = (d[0] for d in HIJRI_RANGE)
+    if g_year <= g_year_min or g_year > g_year_max:
         return ()
 
     h_year = convert.Gregorian(g_year, 1, 1).to_hijri().year
-    gre_dates = (
-        convert.Hijri(year, h_month, h_day).to_gregorian()
-        for year in range(h_year - 1, h_year + 2)
+    h_years = (
+        y for y in range(h_year, h_year + 3) if h_year_min <= y <= h_year_max
     )
-
+    gre_dates = (
+        convert.Hijri(y, h_month, h_day).to_gregorian() for y in h_years
+    )
     return (gre_date for gre_date in gre_dates if gre_date.year == g_year)
 
 

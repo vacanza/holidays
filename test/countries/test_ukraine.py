@@ -9,9 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-
-from holidays.countries.ukraine import Ukraine
+from holidays.countries.ukraine import Ukraine, UA, UKR
 from test.common import TestCase
 
 
@@ -19,269 +17,435 @@ class TestUkraine(TestCase):
     def setUp(self):
         super().setUp(Ukraine)
 
-        self.holidays = Ukraine(observed=False)
-        self.holidays_full = Ukraine(observed=True)
+        self.holidays_no_observed = Ukraine(observed=False)
 
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Ukraine)
 
-    def test_before_1918(self):
-        self.assertNotIn(date(1917, 12, 31), self.holidays)
+    def test_country_aliases(self):
+        self.assertCountryAliases(Ukraine, UA, UKR)
 
-    def test_1950(self):
-        self.assertEqual(
-            self.holidays[date(1950, 5, 1)],
-            "День міжнародної солідарності трудящих",
+    def test_no_holidays(self):
+        self.assertNoHolidays(Ukraine(years=1917))
+
+    def test_new_year_day(self):
+        self.assertHoliday(f"{year}-01-01" for year in range(1918, 1930))
+        self.assertNoHoliday(f"{year}-01-01" for year in range(1930, 1948))
+        self.assertNoHolidayName("Новий рік", Ukraine(years=range(1930, 1948)))
+        self.assertHoliday(f"{year}-01-01" for year in range(1948, 2050))
+
+        dt = (
+            "2011-01-03",
+            "2012-01-02",
+            "2017-01-02",
+            "2022-01-03",
+            "2023-01-02",
+        )
+        self.assertHoliday(dt)
+        self.assertNoHoliday(self.holidays_no_observed, dt)
+
+    def test_christmas_julian_day(self):
+        self.assertNoHoliday(f"{year}-01-07" for year in range(1918, 1991))
+        self.assertNoHolidayName(
+            "Різдво Христове (за юліанським календарем)",
+            Ukraine(years=range(1918, 1991)),
+        )
+        self.assertHoliday(f"{year}-01-07" for year in range(1991, 2050))
+
+        dt = (
+            "2012-01-09",
+            "2017-01-09",
+            "2018-01-08",
+            "2023-01-09",
+            "2024-01-08",
+        )
+        self.assertHoliday(dt)
+        self.assertNoHoliday(self.holidays_no_observed, dt)
+
+    def test_womens_day(self):
+        self.assertNoHoliday(f"{year}-03-08" for year in range(1918, 1966))
+        self.assertNoHolidayName(
+            "Міжнародний жіночий день", Ukraine(years=range(1918, 1966))
+        )
+        self.assertHoliday(f"{year}-03-08" for year in range(1966, 2050))
+
+        dt = (
+            "2014-03-10",
+            "2015-03-09",
+            "2020-03-09",
+            "2025-03-10",
+        )
+        self.assertHoliday(dt)
+        self.assertNoHoliday(self.holidays_no_observed, dt)
+
+    def test_easter(self):
+        name = "Великдень (Пасха)"
+        self.assertNoHolidayName(name, Ukraine(years=range(1918, 1991)))
+
+        self.assertHolidaysName(
+            name,
+            "2010-04-04",
+            "2011-04-24",
+            "2012-04-15",
+            "2013-05-05",
+            "2014-04-20",
+            "2015-04-12",
+            "2016-05-01",
+            "2017-04-16",
+            "2018-04-08",
+            "2019-04-28",
+            "2020-04-19",
+            "2021-05-02",
+            "2022-04-24",
+            "2023-04-16",
+        )
+
+        dt = (
+            "2010-04-05",
+            "2011-04-25",
+            "2012-04-16",
+            "2013-05-06",
+            "2014-04-21",
+            "2015-04-13",
+            "2016-05-03",
+            "2017-04-17",
+            "2018-04-09",
+            "2019-04-29",
+            "2020-04-20",
+            "2021-05-04",
+            "2022-04-25",
+            "2023-04-17",
+            # special cases
+            "2000-05-03",
+            "2005-05-03",
+            "2027-05-04",
+            "2032-05-04",
+            "2062-05-02",
+            "2073-05-02",
+            "2078-05-10",
+            "2084-05-02",
+        )
+        self.assertHoliday(dt)
+        self.assertNoHoliday(self.holidays_no_observed, dt)
+
+    def test_trinity(self):
+        name = "Трійця"
+        self.assertNoHolidayName(name, Ukraine(years=range(1918, 1991)))
+
+        self.assertHolidaysName(
+            name,
+            "2010-05-23",
+            "2011-06-12",
+            "2012-06-03",
+            "2013-06-23",
+            "2014-06-08",
+            "2015-05-31",
+            "2016-06-19",
+            "2017-06-04",
+            "2018-05-27",
+            "2019-06-16",
+            "2020-06-07",
+            "2021-06-20",
+            "2022-06-12",
+            "2023-06-04",
+        )
+
+        dt = (
+            "2010-05-24",
+            "2011-06-13",
+            "2012-06-04",
+            "2013-06-24",
+            "2014-06-09",
+            "2015-06-01",
+            "2016-06-20",
+            "2017-06-05",
+            "2018-05-28",
+            "2019-06-17",
+            "2020-06-08",
+            "2021-06-21",
+            "2022-06-13",
+            "2023-06-05",
+        )
+        self.assertHoliday(dt)
+        self.assertNoHoliday(self.holidays_no_observed, dt)
+
+    def test_labour_day(self):
+        name_before = "День міжнародної солідарності трудящих"
+        name_after = "День праці"
+        self.assertHoliday(f"{year}-05-01" for year in range(1918, 2050))
+        self.assertHoliday(f"{year}-05-02" for year in range(1929, 2018))
+        self.assertNoHoliday("1928-05-02", "2018-05-02")
+        self.assertNoHolidayName(name_after, Ukraine(years=range(1918, 2018)))
+        self.assertNoHolidayName(name_before, Ukraine(years=range(2018, 2050)))
+
+        dt = (
+            "2010-05-03",
+            "2010-05-04",
+            "2011-05-03",
+            "2015-05-04",
+            "2016-05-03",
+            "2021-05-03",
+            "2022-05-02",
+        )
+        self.assertHoliday(dt)
+        self.assertNoHoliday(self.holidays_no_observed, dt)
+
+    def test_victory_day(self):
+        name = (
+            "День перемоги над нацизмом у Другій світовій війні "
+            "(День перемоги)"
+        )
+        self.assertHoliday(f"{year}-05-09" for year in range(1965, 2050))
+        self.assertNoHoliday("1944-05-09", "1947-05-09", "1964-05-09")
+        self.assertNoHolidayName(name, Ukraine(years=range(1918, 2016)))
+        self.assertHoliday(
+            "1945-05-09", "1945-09-03", "1946-05-09", "1946-09-03"
+        )
+
+        dt = (
+            "2010-05-10",
+            "2015-05-11",
+            "2020-05-11",
+            "2021-05-10",
+        )
+        self.assertHoliday(dt)
+        self.assertNoHoliday(self.holidays_no_observed, dt)
+
+    def test_constitution_day(self):
+        self.assertNoHoliday(f"{year}-06-28" for year in range(1918, 1997))
+        self.assertNoHolidayName(
+            "День Конституції України", Ukraine(years=range(1918, 1997))
+        )
+        self.assertHoliday(f"{year}-06-28" for year in range(1997, 2050))
+
+        dt = (
+            "2014-06-30",
+            "2015-06-29",
+            "2020-06-29",
+            "2025-06-30",
+        )
+        self.assertHoliday(dt)
+        self.assertNoHoliday(self.holidays_no_observed, dt)
+
+    def test_statehood_day(self):
+        self.assertNoHoliday(f"{year}-07-28" for year in range(1918, 2022))
+        self.assertNoHolidayName(
+            "День Української Державності", Ukraine(years=range(1918, 2022))
+        )
+        self.assertHoliday(f"{year}-07-28" for year in range(2022, 2050))
+
+        dt = ("2024-07-29",)
+        self.assertHoliday(dt)
+        self.assertNoHoliday(self.holidays_no_observed, dt)
+
+    def test_independence_day(self):
+        self.assertNoHoliday(f"{year}-08-24" for year in range(1918, 1992))
+        self.assertNoHolidayName(
+            "День незалежності України", Ukraine(years=range(1918, 1991))
+        )
+        self.assertHoliday("1991-07-16")
+        self.assertNoHoliday("1990-07-16", "1992-07-16")
+        self.assertHoliday(f"{year}-08-24" for year in range(1992, 2050))
+
+        dt = (
+            "2013-08-26",
+            "2014-08-25",
+            "2019-08-26",
+        )
+        self.assertHoliday(dt)
+        self.assertNoHoliday(self.holidays_no_observed, dt)
+
+    def test_defenders_day(self):
+        name_before = "День захисника України"
+        name_after = "День захисників і захисниць України"
+        self.assertNoHoliday(f"{year}-10-14" for year in range(1918, 2015))
+        self.assertHoliday(f"{year}-10-14" for year in range(2015, 2050))
+        self.assertNoHolidayName(name_before, Ukraine(years=range(1918, 2015)))
+        self.assertNoHolidayName(name_before, Ukraine(years=range(2021, 2050)))
+        self.assertNoHolidayName(name_after, Ukraine(years=range(1918, 2021)))
+
+        dt = (
+            "2017-10-16",
+            "2018-10-15",
+            "2023-10-16",
+        )
+        self.assertHoliday(dt)
+        self.assertNoHoliday(self.holidays_no_observed, dt)
+
+    def test_october_revolution_day(self):
+        self.assertHoliday(f"{year}-11-07" for year in range(1918, 2000))
+        self.assertHoliday(f"{year}-11-08" for year in range(1918, 2000))
+        self.assertNoHoliday(f"{year}-11-07" for year in range(2000, 2050))
+        self.assertNoHoliday(f"{year}-11-08" for year in range(2000, 2050))
+        self.assertNoHolidayName(
+            "Річниця Великої Жовтневої соціалістичної революції",
+            Ukraine(years=range(2000, 2050)),
+        )
+
+        dt = (
+            "1997-11-10",
+            "1999-11-09",
+        )
+        self.assertHoliday(dt)
+        self.assertNoHoliday(self.holidays_no_observed, dt)
+
+    def test_christmas_gregorian_day(self):
+        self.assertNoHoliday(f"{year}-12-25" for year in range(1918, 2017))
+        self.assertNoHolidayName(
+            "Різдво Христове (за григоріанським календарем)",
+            Ukraine(years=range(1918, 2017)),
+        )
+        self.assertHoliday(f"{year}-12-25" for year in range(2017, 2050))
+
+        dt = (
+            "2021-12-27",
+            "2022-12-26",
+        )
+        self.assertHoliday(dt)
+        self.assertNoHoliday(self.holidays_no_observed, dt)
+
+    def test_old_holidays(self):
+        self.assertHoliday(f"{year}-01-22" for year in range(1918, 1951))
+        self.assertNoHoliday(f"{year}-01-22" for year in range(1951, 2050))
+        self.assertNoHolidayName(
+            "День пам’яті 9 січня 1905 року", Ukraine(years=range(1951, 2050))
+        )
+
+        self.assertHoliday(f"{year}-03-18" for year in range(1918, 1929))
+        self.assertNoHoliday(f"{year}-03-18" for year in range(1929, 2050))
+        self.assertNoHolidayName(
+            "День Паризької Комуни", Ukraine(years=range(1929, 2050))
+        )
+
+        self.assertHoliday(f"{year}-12-05" for year in range(1937, 1981))
+        self.assertNoHoliday(f"{year}-12-05" for year in range(1981, 2050))
+        self.assertHoliday(f"{year}-10-07" for year in range(1981, 1991))
+        self.assertNoHoliday(f"{year}-10-07" for year in range(1991, 2050))
+        self.assertNoHolidayName(
+            "День Конституції СРСР", Ukraine(years=range(1918, 1937))
+        )
+        self.assertNoHolidayName(
+            "День Конституції СРСР", Ukraine(years=range(1991, 2050))
         )
 
     def test_2018(self):
         # https://www.buhoblik.org.ua/kadry-zarplata/vremya/3678-3678-normi-trivalosti-robochogo-chasu.html
-        self.assertIn(date(2018, 1, 1), self.holidays)
-        self.assertIn(date(2018, 1, 7), self.holidays)
-        self.assertIn(date(2018, 3, 8), self.holidays)
-        self.assertIn(date(2018, 4, 8), self.holidays)
-        self.assertIn(date(2018, 5, 1), self.holidays)
-        self.assertIn(date(2018, 5, 9), self.holidays)
-        self.assertIn(date(2018, 5, 27), self.holidays)
-        self.assertIn(date(2018, 6, 28), self.holidays)
-        self.assertIn(date(2018, 8, 24), self.holidays)
-        self.assertIn(date(2018, 10, 14), self.holidays)
-        self.assertIn(date(2018, 12, 25), self.holidays)
-        self.assertIn(date(2018, 1, 8), self.holidays_full)
-        self.assertIn(date(2018, 4, 9), self.holidays_full)
-        self.assertIn(date(2018, 5, 28), self.holidays_full)
-        self.assertIn(date(2018, 10, 15), self.holidays_full)
+        self.assertHolidayDates(
+            "2018-01-01",
+            "2018-01-07",
+            "2018-01-08",
+            "2018-03-08",
+            "2018-04-08",
+            "2018-04-09",
+            "2018-05-01",
+            "2018-05-09",
+            "2018-05-27",
+            "2018-05-28",
+            "2018-06-28",
+            "2018-08-24",
+            "2018-10-14",
+            "2018-10-15",
+            "2018-12-25",
+        )
 
     def test_2019(self):
         # https://www.buhoblik.org.ua/kadry-zarplata/vremya/3946-3946-normi-trivalosti-robochogo-chasu.html
-        self.assertIn(date(2019, 1, 1), self.holidays)
-        self.assertIn(date(2019, 1, 7), self.holidays)
-        self.assertIn(date(2019, 3, 8), self.holidays)
-        self.assertIn(date(2019, 4, 28), self.holidays)
-        self.assertIn(date(2019, 5, 1), self.holidays)
-        self.assertIn(date(2019, 5, 9), self.holidays)
-        self.assertIn(date(2019, 6, 16), self.holidays)
-        self.assertIn(date(2019, 6, 28), self.holidays)
-        self.assertIn(date(2019, 8, 24), self.holidays)
-        self.assertIn(date(2019, 10, 14), self.holidays)
-        self.assertIn(date(2019, 12, 25), self.holidays)
-        self.assertIn(date(2019, 4, 29), self.holidays_full)
-        self.assertIn(date(2019, 6, 17), self.holidays_full)
-        self.assertIn(date(2019, 8, 26), self.holidays_full)
+        self.assertHolidayDates(
+            "2019-01-01",
+            "2019-01-07",
+            "2019-03-08",
+            "2019-04-28",
+            "2019-04-29",
+            "2019-05-01",
+            "2019-05-09",
+            "2019-06-16",
+            "2019-06-17",
+            "2019-06-28",
+            "2019-08-24",
+            "2019-08-26",
+            "2019-10-14",
+            "2019-12-25",
+        )
 
     def test_2020(self):
         # https://www.buhoblik.org.ua/kadry-zarplata/vremya/4058-4058-normi-trivalosti-robochogo-chasu.html
-        self.assertIn(date(2020, 1, 1), self.holidays)
-        self.assertIn(date(2020, 1, 7), self.holidays)
-        self.assertIn(date(2020, 3, 8), self.holidays)
-        self.assertIn(date(2020, 4, 19), self.holidays)
-        self.assertIn(date(2020, 5, 1), self.holidays)
-        self.assertIn(date(2020, 5, 9), self.holidays)
-        self.assertIn(date(2020, 6, 7), self.holidays)
-        self.assertIn(date(2020, 6, 28), self.holidays)
-        self.assertIn(date(2020, 8, 24), self.holidays)
-        self.assertIn(date(2020, 10, 14), self.holidays)
-        self.assertIn(date(2020, 12, 25), self.holidays)
-        self.assertIn(date(2020, 3, 9), self.holidays_full)
-        self.assertIn(date(2020, 4, 20), self.holidays_full)
-        self.assertIn(date(2020, 5, 11), self.holidays_full)
-        self.assertIn(date(2020, 6, 8), self.holidays_full)
-        self.assertIn(date(2020, 6, 29), self.holidays_full)
+        self.assertHolidayDates(
+            "2020-01-01",
+            "2020-01-07",
+            "2020-03-08",
+            "2020-03-09",
+            "2020-04-19",
+            "2020-04-20",
+            "2020-05-01",
+            "2020-05-09",
+            "2020-05-11",
+            "2020-06-07",
+            "2020-06-08",
+            "2020-06-28",
+            "2020-06-29",
+            "2020-08-24",
+            "2020-10-14",
+            "2020-12-25",
+        )
 
     def test_2021(self):
         # https://www.buhoblik.org.ua/kadry-zarplata/vremya/4221-4221-norma-trivalosti-robochogo-chasu.html
-        self.assertIn(date(2021, 1, 1), self.holidays)
-        self.assertIn(date(2021, 1, 7), self.holidays)
-        self.assertIn(date(2021, 3, 8), self.holidays)
-        self.assertIn(date(2021, 5, 1), self.holidays)
-        self.assertIn(date(2021, 5, 2), self.holidays)
-        self.assertIn(date(2021, 5, 9), self.holidays)
-        self.assertIn(date(2021, 6, 20), self.holidays)
-        self.assertIn(date(2021, 6, 28), self.holidays)
-        self.assertIn(date(2021, 8, 24), self.holidays)
-        self.assertIn(date(2021, 10, 14), self.holidays)
-        self.assertIn(date(2021, 12, 25), self.holidays)
-        self.assertIn(date(2021, 5, 3), self.holidays_full)
-        self.assertIn(date(2021, 5, 4), self.holidays_full)
-        self.assertIn(date(2021, 5, 10), self.holidays_full)
-        self.assertIn(date(2021, 6, 21), self.holidays_full)
-        self.assertIn(date(2021, 12, 27), self.holidays_full)
+        self.assertHolidayDates(
+            "2021-01-01",
+            "2021-01-07",
+            "2021-03-08",
+            "2021-05-01",
+            "2021-05-02",
+            "2021-05-03",
+            "2021-05-04",
+            "2021-05-09",
+            "2021-05-10",
+            "2021-06-20",
+            "2021-06-21",
+            "2021-06-28",
+            "2021-08-24",
+            "2021-10-14",
+            "2021-12-25",
+            "2021-12-27",
+        )
 
     def test_2022(self):
         # https://www.buhoblik.org.ua/kadry-zarplata/vremya/4246-norma-trivalosti-robochogo-chasu-2022.html
-        self.assertIn(date(2022, 1, 1), self.holidays)
-        self.assertIn(date(2022, 1, 7), self.holidays)
-        self.assertIn(date(2022, 3, 8), self.holidays)
-        self.assertIn(date(2022, 4, 24), self.holidays)
-        self.assertIn(date(2022, 5, 1), self.holidays)
-        self.assertIn(date(2022, 5, 9), self.holidays)
-        self.assertIn(date(2022, 6, 12), self.holidays)
-        self.assertIn(date(2022, 6, 28), self.holidays)
-        self.assertIn(date(2022, 7, 28), self.holidays)
-        self.assertIn(date(2022, 8, 24), self.holidays)
-        self.assertIn(date(2022, 10, 14), self.holidays)
-        self.assertIn(date(2022, 12, 25), self.holidays)
+        self.assertHolidayDates(
+            "2022-01-01",
+            "2022-01-03",
+            "2022-01-07",
+            "2022-03-08",
+            "2022-04-24",
+            "2022-04-25",
+            "2022-05-01",
+            "2022-05-02",
+            "2022-05-09",
+            "2022-06-12",
+            "2022-06-13",
+            "2022-06-28",
+            "2022-07-28",
+            "2022-08-24",
+            "2022-10-14",
+            "2022-12-25",
+            "2022-12-26",
+        )
 
-    def test_old_holidays(self):
-        self.assertIn(date(2018, 5, 1), self.holidays)
-        self.assertIn(date(2016, 5, 2), self.holidays)
-        self.assertIn(date(1991, 7, 16), self.holidays)
-        self.assertIn(date(1950, 1, 22), self.holidays)
-        self.assertIn(date(1999, 11, 7), self.holidays)
-        self.assertIn(date(1999, 11, 8), self.holidays)
-        self.assertIn(date(1945, 5, 9), self.holidays)
-        self.assertIn(date(1945, 9, 3), self.holidays)
-        self.assertIn(date(1981, 10, 7), self.holidays)
-        self.assertIn(date(1937, 12, 5), self.holidays)
-        self.assertIn(date(1918, 3, 18), self.holidays)
+        def test_i18n_default(self):
+            def run_tests(languages):
+                for language in languages:
+                    ua = Ukraine(language=language)
+                    self.assertEqual(ua["2022-01-01"], "Новий рік")
+                    self.assertEqual(
+                        ua["2022-12-25"],
+                        "Різдво Христове (за григоріанським календарем)",
+                    )
 
-    def test_observed(self):
-        for dt in [
-            # New Year's Day
-            date(2000, 1, 3),
-            date(2005, 1, 3),
-            date(2006, 1, 2),
-            date(2011, 1, 3),
-            date(2012, 1, 2),
-            date(2017, 1, 2),
-            date(2022, 1, 3),
-            # Christmas Day (Julian calendar)
-            date(1996, 1, 8),
-            date(2001, 1, 8),
-            date(2006, 1, 9),
-            date(2007, 1, 8),
-            date(2012, 1, 9),
-            date(2017, 1, 9),
-            date(2018, 1, 8),
-            # Women's Day
-            date(1997, 3, 10),
-            date(2003, 3, 10),
-            date(2008, 3, 10),
-            date(2009, 3, 9),
-            date(2014, 3, 10),
-            date(2015, 3, 9),
-            date(2020, 3, 9),
-            # Easter
-            date(1995, 4, 24),
-            date(1996, 4, 15),
-            date(1997, 4, 28),
-            date(2000, 5, 3),
-            date(2001, 4, 16),
-            date(2002, 5, 6),
-            date(2003, 4, 28),
-            date(2004, 4, 12),
-            date(2005, 5, 3),
-            date(2006, 4, 24),
-            date(2007, 4, 9),
-            date(2008, 4, 28),
-            date(2009, 4, 20),
-            date(2010, 4, 5),
-            date(2011, 4, 25),
-            date(2012, 4, 16),
-            date(2013, 5, 6),
-            date(2014, 4, 21),
-            date(2015, 4, 13),
-            date(2016, 5, 3),
-            date(2017, 4, 17),
-            date(2018, 4, 9),
-            date(2019, 4, 29),
-            date(2020, 4, 20),
-            date(2021, 5, 4),
-            date(2022, 4, 25),
-            date(2062, 5, 2),  # rare case
-            # Holy trinity
-            date(1995, 6, 12),
-            date(1996, 6, 3),
-            date(1997, 6, 16),
-            date(1999, 5, 31),
-            date(2000, 6, 19),
-            date(2001, 6, 4),
-            date(2002, 6, 24),
-            date(2003, 6, 16),
-            date(2004, 5, 31),
-            date(2005, 6, 20),
-            date(2006, 6, 12),
-            date(2007, 5, 28),
-            date(2008, 6, 16),
-            date(2009, 6, 8),
-            date(2010, 5, 24),
-            date(2011, 6, 13),
-            date(2012, 6, 4),
-            date(2013, 6, 24),
-            date(2014, 6, 9),
-            date(2015, 6, 1),
-            date(2016, 6, 20),
-            date(2017, 6, 5),
-            date(2018, 5, 28),
-            date(2019, 6, 17),
-            date(2020, 6, 8),
-            date(2021, 6, 21),
-            date(2022, 6, 13),
-            # Labour Day
-            date(1999, 5, 3),
-            date(1999, 5, 4),
-            date(2004, 5, 3),
-            date(2004, 5, 4),
-            date(2009, 5, 4),
-            date(2010, 5, 3),
-            date(2010, 5, 4),
-            date(2011, 5, 3),
-            date(2015, 5, 4),
-            date(2021, 5, 3),
-            date(2022, 5, 2),
-            # Victory Day
-            date(1999, 5, 10),
-            date(2004, 5, 10),
-            date(2009, 5, 11),
-            date(2010, 5, 10),
-            date(2015, 5, 11),
-            date(2020, 5, 11),
-            date(2021, 5, 10),
-            # Constitution Day
-            date(1997, 6, 30),
-            date(2003, 6, 30),
-            date(2008, 6, 30),
-            date(2009, 6, 29),
-            date(2014, 6, 30),
-            date(2015, 6, 29),
-            date(2020, 6, 29),
-            # Independence Day
-            date(1996, 8, 26),
-            date(1997, 8, 25),
-            date(2002, 8, 26),
-            date(2003, 8, 25),
-            date(2008, 8, 25),
-            date(2013, 8, 26),
-            date(2014, 8, 25),
-            date(2019, 8, 26),
-            # Day of the defender of Ukraine
-            date(2017, 10, 16),
-            date(2018, 10, 15),
-            # October Revolution
-            date(1997, 11, 10),
-            date(1999, 11, 9),
-            # Christmas Day (Gregorian calendar)
-            date(2021, 12, 27),
-            date(2022, 12, 26),
-        ]:
-            self.assertIn(dt, self.holidays_full)
-            self.assertEqual(self.holidays_full.get(dt)[:11], "Вихідний за")
+            run_tests((Ukraine.default_language, None, "invalid"))
 
-    def test_i18n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                ua = Ukraine(language=language)
-                self.assertEqual(ua["2022-01-01"], "Новий рік")
-                self.assertEqual(
-                    ua["2022-12-25"],
-                    "Різдво Христове (за григоріанським календарем)",
-                )
-
-        run_tests((Ukraine.default_language, None, "invalid"))
-
-        self.set_locale("en")
-        run_tests((Ukraine.default_language,))
+            self.set_locale("en")
+            run_tests((Ukraine.default_language,))
 
     def test_i18n_en(self):
         language = "en"
