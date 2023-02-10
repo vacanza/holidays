@@ -140,7 +140,7 @@ class Thailand(HolidayBase):
     songkran_festival_in_lieu_covid = "Songkran Festival (in lieu)"
 
     special_holidays = {
-        # 1992-1994 (include In Lieus, Checked /w Bank of Thailand Data)
+        # 1992-1994 (include In Lieus, Checked with Bank of Thailand Data)
         1992: (
             (MAY, 18, thai_special_in_lieu_holidays),
             (DEC, 7, thai_special_in_lieu_holidays),
@@ -160,7 +160,7 @@ class Thailand(HolidayBase):
         ),
         # 1995-1997 (Bank of Thailand Data)
         1996: ((JUN, 10, rama_ix_golden_jubilee),),
-        # 1998-2000 (include In Lieus, Checked /w Bank of Thailand Data)
+        # 1998-2000 (include In Lieus, Checked with Bank of Thailand Data)
         1998: (
             (MAY, 11, thai_special_in_lieu_holidays),
             (DEC, 7, thai_special_in_lieu_holidays),
@@ -178,7 +178,7 @@ class Thailand(HolidayBase):
             (DEC, 11, thai_special_in_lieu_holidays),
             (DEC, 29, thai_election),
         ),
-        # From 2001 Onwards (Checked /w Bank of Thailand Data)
+        # From 2001 Onwards (Checked with Bank of Thailand Data)
         2006: (
             (APR, 19, thai_election),
             (JUN, 9, rama_ix_sixty_accession),
@@ -572,7 +572,7 @@ class Thailand(HolidayBase):
         # See in lieu logic in `_add_with_observed(dt, holiday_name)`
 
         if (
-            asarnha_bucha_date is not None
+            asarnha_bucha_date
             and self.observed
             and (1961 <= year <= 1973 or 1995 <= year <= 1997 or year >= 2001)
         ):

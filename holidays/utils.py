@@ -926,13 +926,10 @@ class _ThaiLuniSolar:
     # While Buddhist Holy Days have been observed since the 1900s
     #   Due to the calendar changes in 1941 (B.E. 2484) and that
     #   our array only goes up to B.E. 2600; We'll thus only populate
-    #   the data for 1942-2057 (B.E. 2485-2600).
+    #   the data for 1941-2057 (B.E. 2484-2600).
     # Sources: หนังสือเวียนกรมการปกครอง กระทรวงมหาดไทย ที่ มท 0310.1/ว4
     #          ออกเมื่อ 5 กุมภาพันธ์ พ.ศ.2539
-    THAI_LUNAR_CALENDAR_START_DATE = date(1940, 11, 30)
-    THAI_LUNAR_CALENDAR_START_YEAR = 1941
-
-    # Define range of years covered
+    START_DATE = date(1940, 11, 30)
     START_YEAR = 1941
     END_YEAR = 2057
 
@@ -953,8 +950,8 @@ class _ThaiLuniSolar:
         if year < _ThaiLuniSolar.START_YEAR or year > _ThaiLuniSolar.END_YEAR:
             return None
 
-        iter_start_date = _ThaiLuniSolar.THAI_LUNAR_CALENDAR_START_DATE
-        iter_start_year = _ThaiLuniSolar.THAI_LUNAR_CALENDAR_START_YEAR
+        iter_start_date = _ThaiLuniSolar.START_DATE
+        iter_start_year = _ThaiLuniSolar.START_YEAR
 
         while iter_start_year < year:
             if iter_start_year in _ThaiLuniSolar.ATHIKAMAT_YEARS_GREGORIAN:
