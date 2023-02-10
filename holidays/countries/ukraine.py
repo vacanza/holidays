@@ -54,7 +54,8 @@ class Ukraine(HolidayBase):
         # The current set of holidays came into force in 1991
         # But most holiday days were implemented in 1918
         if year <= 1917:
-            return
+            return None
+
         super()._populate(year)
 
         # New Year's Day

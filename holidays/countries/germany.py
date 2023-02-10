@@ -77,10 +77,10 @@ class Germany(HolidayBase):
     ]
 
     def _populate(self, year):
-        super()._populate(year)
-
         if year <= 1989:
-            return
+            return None
+
+        super()._populate(year)
 
         if year > 1990:
             self[date(year, JAN, 1)] = "Neujahr"

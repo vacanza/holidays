@@ -82,7 +82,7 @@ class TestEthiopia(unittest.TestCase):
 
     def test_hijri_based(self):
         if not importlib.util.find_spec("hijri_converter"):
-            return
+            return None
 
         self.holidays = holidays.ET(years=[2019])
         # eid_alfitr

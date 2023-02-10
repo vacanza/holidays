@@ -48,7 +48,8 @@ class Botswana(HolidayBase):
                     ] = f"{hol_name1} (Observed)"
 
         if year <= 1965:
-            return
+            return None
+
         super()._populate(year)
 
         _add_with_observed(

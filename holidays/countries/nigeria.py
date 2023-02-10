@@ -36,7 +36,8 @@ class Nigeria(HolidayBase):
                 self[dt] = hol
 
         if year <= 1978:
-            return
+            return None
+
         super()._populate(year)
 
         # New Year's Day

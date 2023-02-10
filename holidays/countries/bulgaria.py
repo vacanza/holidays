@@ -42,10 +42,10 @@ class Bulgaria(HolidayBase):
     country = "BG"
 
     def _populate(self, year):
-        super()._populate(year)
-
         if year < 1990:
-            return
+            return None
+
+        super()._populate(year)
 
         # New Year's Day
         self[date(year, JAN, 1)] = "Нова година"
