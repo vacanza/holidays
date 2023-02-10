@@ -10,7 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.countries.botswana import Botswana, BW, BWA
-from test.common import TestCase
+from tests.common import TestCase
 
 
 class TestBotswana(TestCase):

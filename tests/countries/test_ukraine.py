@@ -10,7 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.countries.ukraine import Ukraine, UA, UKR
-from test.common import TestCase
+from tests.common import TestCase
 
 
 class TestUkraine(TestCase):
