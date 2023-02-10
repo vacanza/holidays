@@ -292,7 +292,7 @@ class Thailand(HolidayBase):
         # วันขึ้นปีใหม่
         # Status: In-Use
         # Starts in the present form in 1941 (B.E. 2484)
-        # [TODO] Add check for 1941 if we support earlier dates.
+        # TODO: Add check for 1941 if we support earlier dates.
 
         _add_with_observed(date(year, JAN, 1), "New Year's Day")
 
@@ -316,7 +316,7 @@ class Thailand(HolidayBase):
         # วันจักรี
         # Status: In-Use
         # Starts in present form in 1918 (B.E. 2461)
-        # [TODO] Add check for 1918 if we support earlier dates.
+        # TODO: Add check for 1918 if we support earlier dates.
 
         _add_with_observed(date(year, APR, 6), "Chakri Memorial Day")
 
@@ -388,7 +388,7 @@ class Thailand(HolidayBase):
         # Status: Defunct (Historical)
         # Starts in 1939 (B.E. 2482) by Plaek Phibunsongkhram
         # Replaced by Rama IX's birthday in 1960 (B.E. 2503) by Sarit Thanarat
-        # [TODO] Add check for 1939 if we support earlier dates.
+        # TODO: Add check for 1939 if we support earlier dates.
 
         if year <= 1959:
             _add_with_observed(date(year, JUN, 24), "National Day")
@@ -471,7 +471,7 @@ class Thailand(HolidayBase):
         # วันปิยมหาราช
         # Status: In-Use
         # Started in 1911 (B.E. 2454)
-        # [TODO] Add check for 1911 if we support earlier dates.
+        # TODO: Add check for 1911 if we support earlier dates.
 
         _add_with_observed(date(year, OCT, 23), "Chulalongkorn Memorial Day")
 
@@ -502,7 +502,7 @@ class Thailand(HolidayBase):
         # Status: In-Use
         # Presumed to starts in 1932 (B.E. 2475) ???
         # Last known official record is Bank of Thailand's in 1992 (B.E. 2535)
-        # [TODO] Add check for 1932 if we support earlier dates.
+        # TODO: Add check for 1932 if we support earlier dates.
 
         _add_with_observed(date(year, DEC, 10), "Constitution Day")
 
@@ -511,7 +511,7 @@ class Thailand(HolidayBase):
         # Status: In-Use
         # Presumed to start in the present form in 1941 (B.E. 2484) ???
         # Last known official record is Bank of Thailand's in 1992 (B.E. 2535)
-        # [TODO] Add check for 1941 if we support earlier dates.
+        # TODO: Add check for 1941 if we support earlier dates.
         # This has its own in-lieu trigger
 
         self[date(year, DEC, 31)] = "New Year's Eve"
@@ -599,7 +599,7 @@ class Thailand(HolidayBase):
         #   by Court Astrologers; All chosen dates are all around May, so we
         #   can technically assign it to 13 May for years prior with no data.
         # *** NOTE: only observed by government sectors
-        # [TODO]: Update this annually around Dec of each year
+        # TODO: Update this annually around Dec of each year
         raeknakhwan = "Royal Ploughing Ceremony"
 
         raeknakhwan_dates = {

@@ -927,8 +927,7 @@ class _ThaiLuniSolar:
     #   Due to the calendar changes in 1941 (B.E. 2484) and that
     #   our array only goes up to B.E. 2600; We'll thus only populate
     #   the data for 1941-2057 (B.E. 2484-2600).
-    # Sources: หนังสือเวียนกรมการปกครอง กระทรวงมหาดไทย ที่ มท 0310.1/ว4
-    #          ออกเมื่อ 5 กุมภาพันธ์ พ.ศ.2539
+    # Sources: หนังสือเวียนกรมการปกครอง กระทรวงมหาดไทย มท 0310.1/ว4 5 ก.พ. 2539
     START_DATE = date(1940, 11, 30)
     START_YEAR = 1941
     END_YEAR = 2057
