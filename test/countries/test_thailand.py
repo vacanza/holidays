@@ -48,7 +48,7 @@ class TestThailand(TestCase):
             ("2022-07-29", "Bridge Public Holiday"),
             (
                 "2022-08-12",
-                "HM Queen Sirikit The Queen Mother's Birthday; Mother's Day",
+                "HM Queen Sirikit The Queen Mother's Birthday; National Mother's Day",  # noqa: E501
             ),
             ("2022-10-13", "HM King Bhumibol Adulyadej Memorial Day"),
             ("2022-10-14", "Bridge Public Holiday"),
@@ -56,7 +56,7 @@ class TestThailand(TestCase):
             ("2022-10-24", "Chulalongkorn Memorial Day (in lieu)"),
             (
                 "2022-12-05",
-                "Father's Day; HM King Bhumibol Adulyadej's Birthday",
+                "National Father's Day; HM King Bhumibol Adulyadej's Birthday",
             ),
             ("2022-12-10", "Constitution Day"),
             ("2022-12-12", "Constitution Day (in lieu)"),
@@ -230,8 +230,8 @@ class TestThailand(TestCase):
             "2029-08-13",
         )
 
-    def test_mothers_day(self):
-        name = "Mother's Day"
+    def test_national_mothers_day(self):
+        name = "National Mother's Day"
 
         self.assertNoHolidayName(name, Thailand(years=1949))
         self.assertHolidaysName(
@@ -276,7 +276,7 @@ class TestThailand(TestCase):
             "2027-10-25",
         )
 
-    def test_ix_birthday(self):
+    def test_rama_ix_birthday(self):
         name = "HM King Bhumibol Adulyadej's Birthday"
 
         self.assertNoHoliday("1959-12-05")
@@ -293,8 +293,8 @@ class TestThailand(TestCase):
             "2027-12-06",
         )
 
-    def test_fathers_day(self):
-        name = "Father's Day"
+    def test_national_fathers_day(self):
+        name = "National Father's Day"
 
         # This concides with HM King Bhumibol Adulyadej's Birthday
         self.assertNoHolidayName(name, Thailand(years=1979))
