@@ -932,7 +932,7 @@ class _ThaiLuniSolar:
     START_YEAR = 1941
     END_YEAR = 2057
 
-    @lru_cache
+    @lru_cache()
     def _get_start_date(self, year: int) -> Optional[date]:
         """
         Calculate the start date of that particular Thai Lunar Calendar Year.
