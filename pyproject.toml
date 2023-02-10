@@ -19,16 +19,11 @@ exclude = '''
 
 [tool.coverage.run]
 branch = true
-include = [
-  'tests.py',
-]
 omit = [
-  'scripts/*',
-  'setup.py',
   'holidays/__init__.py',
-  'test/*',
-# comment the above line if you want to see if all tests did run
-  ]
+  'setup.py',
+  'tests/*',
+]
 
 [tool.coverage.report]
 # Regexes for lines to exclude from consideration
@@ -50,7 +45,7 @@ exclude_lines = [
 ]
 
 [tool.isort]
-known_first_party = ["holidays", "test"]
+known_first_party = ["holidays", "tests"]
 line_length = 79
 multi_line_output = 9
 no_inline_sort = true
