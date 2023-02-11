@@ -10,6 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import MO, TU, WE
@@ -21,7 +22,6 @@ from holidays.holiday_base import HolidayBase
 
 
 class NewZealand(HolidayBase):
-
     country = "NZ"
     special_holidays = {2022: ((SEP, 26, "Queen Elizabeth II Memorial Day"),)}
     subdivisions = [
@@ -75,7 +75,7 @@ class NewZealand(HolidayBase):
         if self.observed and self._is_weekend(dt):
             obs_date = dt + rd(weekday=MO)
             if self.get(obs_date):
-                obs_date += rd(days=+1)
+                obs_date += td(days=+1)
             self[obs_date] = f"{self[dt]} (Observed)"
 
     def _populate(self, year):
@@ -122,8 +122,8 @@ class NewZealand(HolidayBase):
 
         # Easter
         easter_date = easter(year)
-        self[easter_date + rd(days=-2)] = "Good Friday"
-        self[easter_date + rd(days=+1)] = "Easter Monday"
+        self[easter_date + td(days=-2)] = "Good Friday"
+        self[easter_date + td(days=+1)] = "Easter Monday"
 
         # Sovereign's Birthday
         if year >= 1902:
@@ -215,7 +215,7 @@ class NewZealand(HolidayBase):
 
         elif self.subdiv in {"Hawke's Bay", "HKB"}:
             self[
-                (date(year, OCT, 1) + rd(weekday=MO(+4)) + rd(days=-3))
+                (date(year, OCT, 1) + rd(weekday=MO(+4)) + td(days=-3))
             ] = "Hawke's Bay Anniversary Day"
 
         elif self.subdiv in {"WGN", "Wellington"}:
@@ -225,7 +225,7 @@ class NewZealand(HolidayBase):
 
         elif self.subdiv in {"Marlborough", "MBH"}:
             self[
-                (date(year, OCT, 1) + rd(weekday=MO(+4)) + rd(days=+7))
+                (date(year, OCT, 1) + rd(weekday=MO(+4)) + td(days=+7))
             ] = "Marlborough Anniversary Day"
 
         elif self.subdiv in {"Nelson", "NSN"}:
@@ -235,7 +235,7 @@ class NewZealand(HolidayBase):
 
         elif self.subdiv in {"CAN", "Canterbury"}:
             self[
-                (date(year, NOV, 1) + rd(weekday=TU) + rd(days=+10))
+                (date(year, NOV, 1) + rd(weekday=TU) + td(days=+10))
             ] = "Canterbury Anniversary Day"
 
         elif self.subdiv in {"South Canterbury", "STC"}:
@@ -254,14 +254,14 @@ class NewZealand(HolidayBase):
         elif self.subdiv in {"OTA", "Otago"}:
             # there is no easily determined single day of local observance?!?!
             dt = self._get_nearest_monday(date(year, MAR, 23))
-            if dt == easter_date + rd(days=+1):  # Avoid Easter Monday
-                dt += rd(days=+1)
+            if dt == easter_date + td(days=+1):  # Avoid Easter Monday
+                dt += td(days=+1)
             self[dt] = "Otago Anniversary Day"
 
         elif self.subdiv in {"STL", "Southland"}:
             name = "Southland Anniversary Day"
             if year >= 2012:
-                self[easter_date + rd(days=+2)] = name
+                self[easter_date + td(days=+2)] = name
             else:
                 self[self._get_nearest_monday(date(year, JAN, 17))] = name
 

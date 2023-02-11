@@ -10,6 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import MO, TU, WE, FR
@@ -21,6 +22,10 @@ from holidays.holiday_base import HolidayBase
 
 
 class Australia(HolidayBase):
+    """
+    References:
+      - https://www.qld.gov.au/recreation/travel/holidays
+    """
 
     country = "AU"
     special_holidays = {
@@ -94,12 +99,12 @@ class Australia(HolidayBase):
 
         # Easter
         easter_date = easter(year)
-        self[easter_date + rd(days=-2)] = "Good Friday"
+        self[easter_date + td(days=-2)] = "Good Friday"
         if self.subdiv in {"ACT", "NSW", "NT", "QLD", "SA", "VIC"}:
-            self[easter_date + rd(days=-1)] = "Easter Saturday"
+            self[easter_date + td(days=-1)] = "Easter Saturday"
         if self.subdiv in {"ACT", "NSW", "QLD", "VIC"}:
             self[easter_date] = "Easter Sunday"
-        self[easter_date + rd(days=+1)] = "Easter Monday"
+        self[easter_date + td(days=+1)] = "Easter Monday"
 
         # Anzac Day
         if year > 1920:
@@ -239,15 +244,16 @@ class Australia(HolidayBase):
         # not prior to the 5th - in which case it will begin on the second
         # Friday. The Wednesday during the show is a public holiday.
         if self.subdiv == "QLD":
-            name = "The Royal Queensland Show"
-            if year == 2020:
-                self[date(year, AUG, 14)] = name
-            if year == 2021:
-                self[date(year, OCT, 29)] = name
-            else:
-                self[
-                    date(year, AUG, 5) + rd(weekday=FR) + rd(weekday=WE)
-                ] = name
+            ekka_dates = {
+                2020: date(year, AUG, 14),
+                2021: date(year, OCT, 29),
+            }
+            self[
+                ekka_dates.get(
+                    year,
+                    date(year, AUG, 5) + rd(weekday=FR) + rd(weekday=WE),
+                )
+            ] = "The Royal Queensland Show"
 
         # Christmas Day
         name = "Christmas Day"

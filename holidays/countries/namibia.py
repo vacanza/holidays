@@ -10,9 +10,9 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAR, MAY, AUG, SEP, DEC, SUN
 from holidays.holiday_base import HolidayBase
@@ -42,9 +42,9 @@ class Namibia(HolidayBase):
 
         # Easter Calculation
         easter_date = easter(year)
-        self[easter_date + rd(days=-2)] = "Good Friday"
-        self[easter_date + rd(days=+1)] = "Easter Monday"
-        self[easter_date + rd(days=+39)] = "Ascension Day"
+        self[easter_date + td(days=-2)] = "Good Friday"
+        self[easter_date + td(days=+1)] = "Easter Monday"
+        self[easter_date + td(days=+39)] = "Ascension Day"
         # --------END OF EASTER------------#
 
         self[date(year, MAY, 1)] = "Workers' Day"
@@ -69,7 +69,7 @@ class Namibia(HolidayBase):
         if self.observed:
             for k, v in list(self.items()):
                 if k.weekday() == SUN and k.year == year:
-                    self[k + rd(days=+1)] = v + " (Observed)"
+                    self[k + td(days=+1)] = v + " (Observed)"
 
 
 class NA(Namibia):
