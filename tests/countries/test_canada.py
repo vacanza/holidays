@@ -18,8 +18,7 @@ from tests.common import TestCase
 
 class TestCA(TestCase):
     def setUp(self):
-        super().setUp(Canada)
-
+        super().setUp()
         self.holidays = Canada(observed=False)
 
     @classmethod

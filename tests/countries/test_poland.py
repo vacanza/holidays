@@ -16,9 +16,6 @@ from tests.common import TestCase
 
 
 class TestPL(TestCase):
-    def setUp(self):
-        super().setUp(Poland)
-
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Poland)

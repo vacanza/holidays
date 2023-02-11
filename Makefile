@@ -21,6 +21,7 @@ install:
 	pip install --requirement requirements/docs.txt
 	pre-commit install --hook-type pre-commit
 	pre-commit install --hook-type pre-push
+	mkdir -p holidays/locale/pot
 
 pre-commit:
 	pre-commit run --all-files

@@ -21,6 +21,7 @@ exclude = '''
 branch = true
 omit = [
   'holidays/__init__.py',
+  'scripts/*',
   'setup.py',
   'tests/*',
 ]

@@ -26,23 +26,27 @@ class TestCase(unittest.TestCase):
     """Base class for python-holiday test cases."""
 
     @classmethod
-    def setUpClass(cls, cls_test=None):
+    def setUpClass(cls, test_class=None):
         super().setUpClass()
 
-        if cls_test is None:
+        if test_class is None:
             return
 
+        cls.test_class = test_class
+
         if (
-            not hasattr(cls_test, "default_language")
-            or cls_test.default_language is None
-            or len(cls_test.default_language) != 2
+            not hasattr(test_class, "default_language")
+            or test_class.default_language is None
+            or len(test_class.default_language) != 2
         ):
             raise ValueError(
-                f"`{cls_test.__name__}.default_language` value is invalid."
+                f"`{test_class.__name__}.default_language` value is invalid."
             )
 
         # Generate translation files for a specific entity.
-        name = getattr(cls_test, "country", getattr(cls_test, "market", None))
+        name = getattr(
+            test_class, "country", getattr(test_class, "market", None)
+        )
         for po_path in Path(os.path.join("holidays", "locale")).rglob(
             f"{name}.po"
         ):
@@ -59,11 +63,11 @@ class TestCase(unittest.TestCase):
                 check=True,
             )
 
-    def setUp(self, cls):
+    def setUp(self):
         super().setUp()
 
-        self.set_locale(cls.default_language.lower())
-        self.holidays = cls()
+        self.set_locale(self.test_class.default_language.lower())
+        self.holidays = self.test_class()
 
     def set_locale(self, language):
         os.environ["LANGUAGE"] = language

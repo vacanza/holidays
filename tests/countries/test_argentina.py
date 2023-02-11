@@ -18,9 +18,6 @@ from tests.common import TestCase
 
 
 class TestArgentina(TestCase):
-    def setUp(self):
-        super().setUp(Argentina)
-
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Argentina)

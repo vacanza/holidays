@@ -15,8 +15,7 @@ from tests.common import TestCase
 
 class TestUkraine(TestCase):
     def setUp(self):
-        super().setUp(Ukraine)
-
+        super().setUp()
         self.holidays_no_observed = Ukraine(observed=False)
 
     @classmethod

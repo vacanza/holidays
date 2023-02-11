@@ -16,9 +16,6 @@ from tests.common import TestCase
 
 
 class TestDK(TestCase):
-    def setUp(self):
-        super().setUp(Denmark)
-
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Denmark)
