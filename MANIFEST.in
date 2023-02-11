@@ -1,3 +1,4 @@
+exclude tests/*
 include *.py
 include *.rst
 include CHANGES
