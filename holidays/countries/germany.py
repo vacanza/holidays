@@ -146,7 +146,7 @@ class Germany(HolidayBase):
 
             if self.subdiv == "BE":
                 self[date(year, MAR, 8)] = "Internationaler Frauentag"
-        
+
         if year >= 2023:
             if self.subdiv == "MV":
                 self[date(year, MAR, 8)] = "Internationaler Frauentag"
