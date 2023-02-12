@@ -54,6 +54,9 @@ class TestMH(unittest.TestCase):
         # 2023: total holidays (10 + 1 falling on a Sunday)
         self.assertEqual(10 + 1, len(holidays.MH(years=[year])))
 
+    def test_not_observed(self):
+        self.assertNotIn(date(2023, JAN, 2), holidays.MH(observed=False))
+
     def test_aliases(self):
         """For coverage purposes"""
         for h in [holidays.MH(), holidays.MHL(), holidays.MarshallIslands()]:
