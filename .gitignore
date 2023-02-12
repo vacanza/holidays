@@ -17,3 +17,4 @@ docs/source/_build
 .vscode/
 *.code-workspace
 Pipfile
+.gitpod.yml
