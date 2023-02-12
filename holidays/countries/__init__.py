@@ -73,6 +73,7 @@ from .madagascar import MG, MDG, Madagascar
 from .malawi import MW, MWI, Malawi
 from .malaysia import MY, MYS, Malaysia
 from .malta import MT, MLT, Malta
+from .marshall_islands import MH, MHL, MarshallIslands, HolidaysMH
 from .mexico import MX, MEX, Mexico
 from .moldova import MD, MDA, Moldova
 from .monaco import MC, MCO, Monaco
