@@ -99,7 +99,8 @@ class UnitedStates(HolidayBase):
     ) -> None:
         self[dt] = name
         if not self.observed:
-            return
+            return None
+
         if dt.weekday() == SAT and before:
             self[dt + td(days=-1)] = f"{name} (Observed)"
         elif dt.weekday() == SUN and after:

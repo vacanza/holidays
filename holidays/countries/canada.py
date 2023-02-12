@@ -53,10 +53,10 @@ class Canada(HolidayBase):
             return d + rd(weekday=MO)
 
     def _populate(self, year):
-        super()._populate(year)
-
         if year < 1867:
-            return
+            return None
+
+        super()._populate(year)
 
         # New Year's Day
         name = "New Year's Day"

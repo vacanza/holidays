@@ -26,7 +26,8 @@ class Armenia(HolidayBase):
 
     def _populate(self, year):
         if year <= 1990:
-            return
+            return None
+
         super()._populate(year)
 
         # New Year's Day

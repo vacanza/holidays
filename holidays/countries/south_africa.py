@@ -55,7 +55,8 @@ class SouthAfrica(HolidayBase):
     def _populate(self, year):
         # Observed since 1910, with a few name changes
         if year <= 1909:
-            return
+            return None
+
         super()._populate(year)
 
         self[date(year, JAN, 1)] = "New Year's Day"

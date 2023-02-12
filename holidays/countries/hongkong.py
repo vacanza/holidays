@@ -51,7 +51,8 @@ class HongKong(HolidayBase):
     def _populate(self, year):
         # Current set of holidays actually valid since 1946
         if year <= 1945:
-            return
+            return None
+
         super()._populate(year)
 
         day_following = "The day following "
