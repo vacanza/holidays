@@ -438,9 +438,9 @@ class UnitedStates(HolidayBase):
 
         # Commonwealth Cultural Day in Northern Mariana Islands
         if self.subdiv == "MP":
-            self._add_with_observed(
-                date(year, MAR, 24), "Commonwealth Cultural Day"
-            )
+            self[
+                date(year, OCT, 1) + rd(weekday=MO(+2))
+            ] = "Commonwealth Cultural Day"
 
         # Alaska Day
         if self.subdiv == "AK" and year >= 1867:
