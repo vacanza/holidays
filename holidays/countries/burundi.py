@@ -43,7 +43,8 @@ class Burundi(HolidayBase):
                     self[obs_date] = f"{hol_name} (Observed)"
 
         if year <= 1961:
-            return
+            return None
+
         super()._populate(year)
 
         # New Year's Day

@@ -31,7 +31,8 @@ class Angola(HolidayBase):
         # Observed since 1975
         # TODO do more research on history of Angolan holidays
         if year <= 1974:
-            return
+            return None
+
         super()._populate(year)
 
         self[date(year, JAN, 1)] = "Ano novo"

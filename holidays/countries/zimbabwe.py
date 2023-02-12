@@ -30,7 +30,8 @@ class Zimbabwe(HolidayBase):
 
     def _populate(self, year):
         if year <= 1987:
-            return
+            return None
+
         super()._populate(year)
 
         self[date(year, JAN, 1)] = "New Year's Day"

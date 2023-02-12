@@ -28,7 +28,8 @@ class Pakistan(HolidayBase):
                 self[dt] = hol
 
         if year <= 1947:
-            return
+            return None
+
         super()._populate(year)
 
         # Kashmir Solidarity Day
