@@ -83,6 +83,7 @@ class UnitedStates(HolidayBase):
         "SD",
         "TN",
         "TX",
+        "UM",
         "UT",
         "VT",
         "VA",
