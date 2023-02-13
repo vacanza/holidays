@@ -55,7 +55,7 @@ class TestCase(unittest.TestCase):
             subprocess.run(
                 (
                     sys.executable,
-                    os.path.join("scripts", "i18n", "msgfmt.py"),
+                    os.path.join("scripts", "l10n", "msgfmt.py"),
                     "-o",
                     mo_file,
                     po_file,

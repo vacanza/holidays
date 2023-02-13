@@ -24,21 +24,21 @@ class POTGenerator:
     Generates .pot files for supported country/market entities.
     """
 
-    def process_directory(self, directory):
-        """Runs the POT files generation process."""
-
+    def process_countries(self):
+        """Processes entities in specified directory."""
         country_code_path_mapping = {}
         module_name_path_mapping = {
             str(path).split("/")[-1].replace(".py", ""): str(path)
-            for path in Path(f"holidays/{directory}").glob("*.py")
+            for path in Path("holidays/countries").glob("*.py")
             if not str(path).endswith("__init__.py")
         }
 
+        # Make holidays visible.
         sys.path.insert(0, os.getcwd())
         from holidays.holiday_base import HolidayBase
 
         for module_name, module_path in module_name_path_mapping.items():
-            module = f"holidays.{directory}.{module_name}"
+            module = f"holidays.countries.{module_name}"
             country_code_path_mapping.update(
                 {
                     name.upper(): module_path
@@ -66,8 +66,8 @@ class POTGenerator:
             )
 
     def run(self):
-        self.process_directory("countries")
-        self.process_directory("markets")
+        """Runs the POT files generation process."""
+        self.process_countries()
 
 
 if __name__ == "__main__":

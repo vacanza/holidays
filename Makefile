@@ -25,7 +25,7 @@ install:
 	mkdir -p holidays/locale/pot
 
 pot:
-	scripts/i18n/generate_po_templates.py
+	scripts/l10n/generate_pot_files.py
 
 pre-commit:
 	pre-commit run --all-files

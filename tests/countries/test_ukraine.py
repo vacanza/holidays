@@ -431,7 +431,7 @@ class TestUkraine(TestCase):
             "2022-12-26",
         )
 
-        def test_i18n_default(self):
+        def test_l10n_default(self):
             def run_tests(languages):
                 for language in languages:
                     ua = Ukraine(language=language)
@@ -446,8 +446,9 @@ class TestUkraine(TestCase):
             self.set_locale("en")
             run_tests((Ukraine.default_language,))
 
-    def test_i18n_en(self):
+    def test_l10n_en(self):
         language = "en"
+
         ua_en = Ukraine(language=language)
         self.assertEqual(ua_en["2022-01-01"], "New Year's Day")
         self.assertEqual(ua_en["2022-01-07"], "Christmas (Julian calendar)")

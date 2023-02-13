@@ -303,7 +303,7 @@ class TestArgentina(TestCase):
             ),
         )
 
-    def test_i18n_default(self):
+    def test_l10n_default(self):
         def run_tests(languages):
             for language in languages:
                 ar = Argentina(language=language)
@@ -315,7 +315,7 @@ class TestArgentina(TestCase):
         self.set_locale("en")
         run_tests((Argentina.default_language,))
 
-    def test_i18n_en(self):
+    def test_l10n_en(self):
         language = "en"
 
         ar_en = Argentina(language=language)

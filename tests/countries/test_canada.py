@@ -405,7 +405,7 @@ class TestCA(TestCase):
                 else:
                     self.assertNotIn(date(year, 9, 19), holidays_canada)
 
-    def test_i18n_default(self):
+    def test_l10n_default(self):
         def run_tests(languages):
             for language in languages:
                 ca = Canada(language=language)
@@ -417,8 +417,9 @@ class TestCA(TestCase):
             self.set_locale("fr")
             run_tests((Canada.default_language,))
 
-    def test_i18n_fr(self):
+    def test_l10n_fr(self):
         language = "fr"
+
         ca_fr = Canada(language=language)
         self.assertEqual(ca_fr["2018-01-01"], "Jour de l'an")
         self.assertEqual(ca_fr["2022-12-25"], "Jour de Noël")

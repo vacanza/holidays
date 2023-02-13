@@ -68,7 +68,7 @@ class TestPL(TestCase):
         self.holidays = Poland(years=[1918])
         self.assertNotIn(date(1918, 5, 3), self.holidays)
 
-    def test_i18n_default(self):
+    def test_l10n_default(self):
         def run_tests(languages):
             for language in languages:
                 pl = Poland(language=language)
@@ -82,7 +82,7 @@ class TestPL(TestCase):
         self.set_locale("en")
         run_tests((Poland.default_language,))
 
-    def test_i18n_en(self):
+    def test_l10n_en(self):
         language = "en"
 
         pl_en = Poland(language=language)

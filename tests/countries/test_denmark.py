@@ -31,7 +31,7 @@ class TestDK(TestCase):
         self.assertIn(date(2016, 5, 16), self.holidays)
         self.assertIn(date(2016, 12, 25), self.holidays)
 
-    def test_i18n_default(self):
+    def test_l10n_default(self):
         def run_tests(languages):
             for language in languages:
                 dk = Denmark(language=language)
@@ -43,7 +43,7 @@ class TestDK(TestCase):
         self.set_locale("en")
         run_tests((Denmark.default_language,))
 
-    def test_i18n_en(self):
+    def test_l10n_en(self):
         language = "en"
 
         dk_en = Denmark(language=language)
