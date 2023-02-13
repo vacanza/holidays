@@ -35,11 +35,6 @@ def generate_mo_files():
         )
 
 
-def main():
-    """Setup entry point."""
+if __name__ == "__main__":
     generate_mo_files()
     setup()
-
-
-if __name__ == "__main__":
-    main()

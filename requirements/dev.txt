@@ -15,7 +15,7 @@ pytest-xdist
 sphinx
 tox
 
-# Translation.
+# Localization.
 chameleon
 lingua
 

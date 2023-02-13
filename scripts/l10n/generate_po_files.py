@@ -20,9 +20,7 @@ from pathlib import Path
 
 
 class POTGenerator:
-    """
-    Generates .pot files for supported country/market entities.
-    """
+    """Generates .pot files for supported country/market entities."""
 
     def process_countries(self):
         """Processes entities in specified directory."""
@@ -33,8 +31,7 @@ class POTGenerator:
             if not str(path).endswith("__init__.py")
         }
 
-        # Make holidays visible.
-        sys.path.insert(0, os.getcwd())
+        sys.path.append(os.getcwd())  # Make holidays visible.
         from holidays.holiday_base import HolidayBase
 
         for module_name, module_path in module_name_path_mapping.items():

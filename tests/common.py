@@ -30,7 +30,7 @@ class TestCase(unittest.TestCase):
         super().setUpClass()
 
         if test_class is None:
-            return
+            return None
 
         cls.test_class = test_class
 
