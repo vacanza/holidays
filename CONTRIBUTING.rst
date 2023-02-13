@@ -76,7 +76,7 @@ Use pytest directly if you need ``-s`` option:
     $ pytest -s tests/countries/test_argentina.py
 
 
-Internationalization
+Localization
 --------------------------
 .. _ISO 639-1 codes: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 
@@ -85,9 +85,10 @@ generate pygettext .pot file first:
 
 .. code-block:: shell
 
-    $ pygettext -k 'tr' -o holidays/locale/pot/AR.pot holidays/countries/argentina.py
+    $ make pot
 
-If the template file is empty make sure that the holiday names are wrapped
+If the template file is empty make sure that the country/market entity has the
+:py:attr:`default_language` attribute set and all holiday names are wrapped
 with ``tr``/``self.tr`` helpers. Use `ISO 639-1 codes`_ when adding new
 languages. Copy the generated template to all locale folders you're going to
 translate this country holiday names into (e.g., for Argentina:

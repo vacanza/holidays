@@ -114,12 +114,15 @@ class Ukraine(HolidayBase):
 
         # Victory Day
         dt = date(year, MAY, 9)
-        name = self.tr(
-            "День перемоги над нацизмом у Другій світовій війні "
-            "(День перемоги)"
+        name = (
+            self.tr(
+                "День перемоги над нацизмом у Другій світовій війні "
+                "(День перемоги)"
+            )
             if year >= 2016
-            else "День перемоги"
+            else self.tr("День перемоги")
         )
+
         if year >= 1965:
             _add_with_observed(dt, name)
         elif 1945 <= year <= 1946:
@@ -145,10 +148,10 @@ class Ukraine(HolidayBase):
 
         # Day of the defender of Ukraine
         if year >= 2015:
-            name = self.tr(
-                "День захисників і захисниць України"
+            name = (
+                self.tr("День захисників і захисниць України")
                 if year >= 2021
-                else "День захисника України"
+                else self.tr("День захисника України")
             )
             _add_with_observed(date(year, OCT, 14), name)
 

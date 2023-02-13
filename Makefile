@@ -4,6 +4,7 @@ help:
 	@echo "    coverage      identify code not covered with tests"
 	@echo "    help          show summary of available commands"
 	@echo "    install       install and setup development environment"
+	@echo "    pot           create or update holidays/locale/pot/*.pot files"
 	@echo "    pre-commit    run pre-commit against all files"
 	@echo "    test          run tests (in parallel)"
 	@echo "    tox           run tox (in parallel)"
@@ -22,6 +23,9 @@ install:
 	pre-commit install --hook-type pre-commit
 	pre-commit install --hook-type pre-push
 	mkdir -p holidays/locale/pot
+
+pot:
+	scripts/i18n/generate_po_templates.py
 
 pre-commit:
 	pre-commit run --all-files

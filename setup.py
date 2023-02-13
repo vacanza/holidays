@@ -26,7 +26,7 @@ def generate_mo_files():
         subprocess.run(
             (
                 sys.executable,
-                os.path.join("scripts", "build", "msgfmt.py"),
+                os.path.join("scripts", "i18n", "msgfmt.py"),
                 "-o",
                 mo_file,
                 po_file,

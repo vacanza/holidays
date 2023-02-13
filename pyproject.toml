@@ -13,7 +13,7 @@ exclude = '''
   | buck-out
   | build
   | dist
-  | scripts
+  | scripts/i18n/msgfmt.py
 )/
 '''
 
@@ -51,4 +51,4 @@ line_length = 79
 multi_line_output = 9
 no_inline_sort = true
 profile = "black"
-skip_glob = ["scripts/*"]
+skip = ["scripts/i18n/msgfmt.py"]
