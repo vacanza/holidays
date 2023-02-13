@@ -1,6 +1,6 @@
 #  python-holidays
 #  ---------------
-#  A fast, efficient Python library for generating country and subdivision
+#  A fast, efficient Python library for generating country, province and state
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
@@ -39,6 +39,7 @@ def country_holidays(
     observed: bool = True,
     prov: Optional[str] = None,
     state: Optional[str] = None,
+    language: Optional[str] = None,
 ) -> HolidayBase:
     """
     Returns a new dictionary-like :py:class:`HolidayBase` object for the public
@@ -68,6 +69,12 @@ def country_holidays(
 
     :param state:
         *deprecated* use subdiv instead.
+
+    :param language:
+        The language which the returned holiday names will be translated
+        into. It must be an ISO 639-1 (2-letter) language code. If the
+        language translation is not supported the original holiday names
+        will be used.
 
     :return:
         A :py:class:`HolidayBase` object matching the **country**.
@@ -182,6 +189,7 @@ def country_holidays(
             observed=observed,
             prov=prov,
             state=state,
+            language=language,
         )
     except AttributeError:
         raise NotImplementedError(f"Country {country} not available")
@@ -193,6 +201,7 @@ def financial_holidays(
     years: Optional[Union[int, Iterable[int]]] = None,
     expand: bool = True,
     observed: bool = True,
+    language: Optional[str] = None,
 ) -> HolidayBase:
     """
     Returns a new dictionary-like :py:class:`HolidayBase` object for the public
@@ -217,6 +226,12 @@ def financial_holidays(
         (e.g. a holiday falling on a Sunday being observed the following
         Monday). False may not work for all countries.
 
+    :param language:
+        The language which the returned holiday names will be translated
+        into. It must be an ISO 639-1 (2-letter) language code. If the
+        language translation is not supported the original holiday names
+        will be used.
+
     :return:
         A :py:class:`HolidayBase` object matching the **market**.
 
@@ -234,6 +249,7 @@ def financial_holidays(
             subdiv=subdiv,
             expand=expand,
             observed=observed,
+            language=language,
         )
     except AttributeError:
         raise NotImplementedError(f"Financial market {market} not available")

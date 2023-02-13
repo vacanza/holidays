@@ -15,6 +15,10 @@ pytest-xdist
 sphinx
 tox
 
+# Localization.
+chameleon
+lingua
+
 # Deployment.
 pip>=19.2.3
 wheel>=0.33.6

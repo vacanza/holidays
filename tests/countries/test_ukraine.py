@@ -15,8 +15,12 @@ from tests.common import TestCase
 
 class TestUkraine(TestCase):
     def setUp(self):
-        self.holidays = Ukraine()
+        super().setUp()
         self.holidays_no_observed = Ukraine(observed=False)
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Ukraine)
 
     def test_country_aliases(self):
         self.assertCountryAliases(Ukraine, UA, UKR)
@@ -426,3 +430,39 @@ class TestUkraine(TestCase):
             "2022-12-25",
             "2022-12-26",
         )
+
+        def test_l10n_default(self):
+            def run_tests(languages):
+                for language in languages:
+                    ua = Ukraine(language=language)
+                    self.assertEqual(ua["2022-01-01"], "Новий рік")
+                    self.assertEqual(
+                        ua["2022-12-25"],
+                        "Різдво Христове (за григоріанським календарем)",
+                    )
+
+            run_tests((Ukraine.default_language, None, "invalid"))
+
+            self.set_locale("en")
+            run_tests((Ukraine.default_language,))
+
+    def test_l10n_en(self):
+        language = "en"
+
+        ua_en = Ukraine(language=language)
+        self.assertEqual(ua_en["2022-01-01"], "New Year's Day")
+        self.assertEqual(ua_en["2022-01-07"], "Christmas (Julian calendar)")
+        self.assertEqual(ua_en["2022-12-25"], "Christmas (Gregorian calendar)")
+        self.assertEqual(ua_en["2023-01-02"], "New Year's Day (Observed)")
+
+        self.set_locale(language)
+        for language in (None, language, "invalid"):
+            ua_en = Ukraine(language=language)
+            self.assertEqual(ua_en["2022-01-01"], "New Year's Day")
+            self.assertEqual(
+                ua_en["2022-01-07"], "Christmas (Julian calendar)"
+            )
+            self.assertEqual(
+                ua_en["2022-12-25"], "Christmas (Gregorian calendar)"
+            )
+            self.assertEqual(ua_en["2023-01-02"], "New Year's Day (Observed)")

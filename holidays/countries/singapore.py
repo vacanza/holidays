@@ -45,6 +45,7 @@ class Singapore(HolidayBase):
         subdiv: Optional[str] = None,
         prov: Optional[str] = None,
         state: Optional[str] = None,
+        language: Optional[str] = None,
     ) -> None:
         """
         A subclass of :py:class:`HolidayBase` representing public holidays in
@@ -81,7 +82,9 @@ class Singapore(HolidayBase):
         """
 
         self.cnls = _ChineseLuniSolar()
-        super().__init__(years, expand, observed, subdiv, prov, state)
+        super().__init__(
+            years, expand, observed, subdiv, prov, state, language
+        )
 
     def _populate(self, year) -> None:
         def _add_holiday(dt: date, hol: str) -> None:
@@ -304,8 +307,11 @@ class SG(Singapore):
         subdiv: Optional[str] = None,
         prov: Optional[str] = None,
         state: Optional[str] = None,
+        language: Optional[str] = None,
     ) -> None:
-        super().__init__(years, expand, observed, subdiv, prov, state)
+        super().__init__(
+            years, expand, observed, subdiv, prov, state, language
+        )
 
 
 class SGP(Singapore):
@@ -318,5 +324,8 @@ class SGP(Singapore):
         subdiv: Optional[str] = None,
         prov: Optional[str] = None,
         state: Optional[str] = None,
+        language: Optional[str] = None,
     ) -> None:
-        super().__init__(years, expand, observed, subdiv, prov, state)
+        super().__init__(
+            years, expand, observed, subdiv, prov, state, language
+        )

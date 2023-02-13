@@ -507,6 +507,42 @@ following financial markets are available:
      - NYSE market holidays (used by all other US-exchanges, including NASDAQ, etc.)
 
 
+Internationalization
+===========================
+
+.. _ISO 639-1 code: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+
+Some of the available countries support more than one
+language for holiday names output. The default language is defined by
+:py:attr:`default_language` of :py:class:`HolidayBase` and is used as a fallback
+when neither user specified language nor user locale language available. The
+default language code is a `ISO 639-1 code`_.
+
+.. list-table::
+   :widths: 23 4 83
+   :header-rows: 1
+   :class: tight-table
+
+   * - Country
+     - Default Language
+     - Supported languages
+   * - Argentina
+     - es
+     - en, es
+   * - Canada
+     - en
+     - en, fr
+   * - Denmark
+     - da
+     - da, en
+   * - Poland
+     - pl
+     - en, pl
+   * - Ukraine
+     - uk
+     - en, uk
+
+
 Beta Version
 ------------
 

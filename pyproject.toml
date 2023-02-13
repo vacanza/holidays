@@ -13,6 +13,7 @@ exclude = '''
   | buck-out
   | build
   | dist
+  | scripts/l10n/msgfmt.py
 )/
 '''
 
@@ -20,6 +21,7 @@ exclude = '''
 branch = true
 omit = [
   'holidays/__init__.py',
+  'scripts/*',
   'setup.py',
   'tests/*',
 ]
@@ -49,3 +51,4 @@ line_length = 79
 multi_line_output = 9
 no_inline_sort = true
 profile = "black"
+skip = ["docs", "scripts/l10n/msgfmt.py"]

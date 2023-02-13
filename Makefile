@@ -4,6 +4,7 @@ help:
 	@echo "    coverage      identify code not covered with tests"
 	@echo "    help          show summary of available commands"
 	@echo "    install       install and setup development environment"
+	@echo "    l10n          update .pot and .po files"
 	@echo "    pre-commit    run pre-commit against all files"
 	@echo "    test          run tests (in parallel)"
 	@echo "    tox           run tox (in parallel)"
@@ -21,6 +22,10 @@ install:
 	pip install --requirement requirements/docs.txt
 	pre-commit install --hook-type pre-commit
 	pre-commit install --hook-type pre-push
+	mkdir -p holidays/locale/pot
+
+l10n:
+	scripts/l10n/generate_po_files.py
 
 pre-commit:
 	pre-commit run --all-files

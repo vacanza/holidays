@@ -60,6 +60,7 @@ class Malaysia(HolidayBase):
         subdiv: Optional[str] = None,
         prov: Optional[str] = None,
         state: Optional[str] = None,
+        language: Optional[str] = None,
     ) -> None:
         """
         An subclass of :py:class:`HolidayBase` representing public holidays in
@@ -101,7 +102,9 @@ class Malaysia(HolidayBase):
         See parameters and usage in :py:class:`HolidayBase`.
         """
         self.cnls = _ChineseLuniSolar()
-        super().__init__(years, expand, observed, subdiv, prov, state)
+        super().__init__(
+            years, expand, observed, subdiv, prov, state, language
+        )
 
     def _populate(self, year):
         def _add_holiday(dt: date, hol: str) -> None:
@@ -783,8 +786,11 @@ class MY(Malaysia):
         subdiv: Optional[str] = None,
         prov: Optional[str] = None,
         state: Optional[str] = None,
+        language: Optional[str] = None,
     ) -> None:
-        super().__init__(years, expand, observed, subdiv, prov, state)
+        super().__init__(
+            years, expand, observed, subdiv, prov, state, language
+        )
 
 
 class MYS(Malaysia):
@@ -797,5 +803,8 @@ class MYS(Malaysia):
         subdiv: Optional[str] = None,
         prov: Optional[str] = None,
         state: Optional[str] = None,
+        language: Optional[str] = None,
     ) -> None:
-        super().__init__(years, expand, observed, subdiv, prov, state)
+        super().__init__(
+            years, expand, observed, subdiv, prov, state, language
+        )

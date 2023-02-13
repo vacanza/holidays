@@ -9,8 +9,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from unittest import TestCase
+
 import holidays
-from tests.common import TestCase
 
 
 class TestHolidaysImports(TestCase):
