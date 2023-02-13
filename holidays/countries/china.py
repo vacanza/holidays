@@ -4,14 +4,13 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-
-from dateutil.relativedelta import relativedelta as rd
+from datetime import timedelta as td
 
 from holidays.constants import JAN, APR, MAY, OCT
 from holidays.holiday_base import HolidayBase
@@ -30,10 +29,10 @@ class China(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
-        super()._populate(year)
-
         if year <= 1949:
-            return
+            return None
+
+        super()._populate(year)
 
         self[date(year, JAN, 1)] = "New Year's Day"
 
@@ -41,24 +40,24 @@ class China(HolidayBase):
         dt = date(year, MAY, 1)
         self[dt] = name
         if 2000 <= year <= 2007:
-            self[dt + rd(days=+1)] = name
-            self[dt + rd(days=+2)] = name
+            self[dt + td(days=+1)] = name
+            self[dt + td(days=+2)] = name
 
         name = "Chinese New Year (Spring Festival)"
         dt = self.cnls.lunar_n_y_date(year)
         self[dt] = name
-        self[dt + rd(days=+1)] = name
+        self[dt + td(days=+1)] = name
         if 2008 <= year <= 2013:
-            self[dt + rd(days=-1)] = name
+            self[dt + td(days=-1)] = name
         else:
-            self[dt + rd(days=+2)] = name
+            self[dt + td(days=+2)] = name
 
         name = "National Day"
         dt = date(year, OCT, 1)
         self[dt] = name
-        self[dt + rd(days=+1)] = name
+        self[dt + td(days=+1)] = name
         if year >= 2000:
-            self[dt + rd(days=+2)] = name
+            self[dt + td(days=+2)] = name
 
         if year >= 2008:
             self[date(year, APR, 5)] = "Tomb-Sweeping Day"

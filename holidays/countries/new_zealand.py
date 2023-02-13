@@ -4,38 +4,24 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
+from dateutil.relativedelta import MO, TU, WE
 from dateutil.relativedelta import relativedelta as rd
-from dateutil.relativedelta import MO, TU, WE, FR
 
-from holidays.constants import (
-    TUE,
-    WED,
-    THU,
-    WEEKEND,
-    JAN,
-    FEB,
-    MAR,
-    APR,
-    JUN,
-    JUL,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-)
+from holidays.constants import JAN, FEB, MAR, APR, JUN, JUL, SEP, OCT, NOV
+from holidays.constants import DEC, FRI
 from holidays.holiday_base import HolidayBase
 
 
 class NewZealand(HolidayBase):
-
     country = "NZ"
     special_holidays = {2022: ((SEP, 26, "Queen Elizabeth II Memorial Day"),)}
     subdivisions = [
@@ -78,9 +64,21 @@ class NewZealand(HolidayBase):
         "WTL",  # Correct code is WTC
     ]
 
-    def _populate(self, year):
-        super()._populate(year)
+    @staticmethod
+    def _get_nearest_monday(d: date) -> date:
+        if d.weekday() < FRI:
+            return d + rd(weekday=MO(-1))
+        else:
+            return d + rd(weekday=MO)
 
+    def _add_observed(self, dt: date) -> None:
+        if self.observed and self._is_weekend(dt):
+            obs_date = dt + rd(weekday=MO)
+            if self.get(obs_date):
+                obs_date += td(days=+1)
+            self[obs_date] = f"{self[dt]} (Observed)"
+
+    def _populate(self, year):
         # Bank Holidays Act 1873
         # The Employment of Females Act 1873
         # Factories Act 1894
@@ -91,244 +89,187 @@ class NewZealand(HolidayBase):
         # Waitangi Day Act 1960, 1976
         # Sovereign's Birthday Observance Act 1937, 1952
         # Holidays Act 1981, 2003
-        if year < 1894:
-            return
+
+        if year <= 1893:
+            return None
+
+        super()._populate(year)
 
         # New Year's Day
-        name = "New Year's Day"
         jan1 = date(year, JAN, 1)
-        self[jan1] = name
-        if self.observed and jan1.weekday() in WEEKEND:
-            self[date(year, JAN, 3)] = name + " (Observed)"
+        self[jan1] = "New Year's Day"
 
-        name = "Day after New Year's Day"
         jan2 = date(year, JAN, 2)
-        self[jan2] = name
-        if self.observed and jan2.weekday() in WEEKEND:
-            self[date(year, JAN, 4)] = name + " (Observed)"
+        self[jan2] = "Day after New Year's Day"
+        self._add_observed(jan1)
+        self._add_observed(jan2)
 
         # Waitangi Day
-        if year > 1973:
+        if year >= 1974:
             name = "New Zealand Day"
-            if year > 1976:
+            if year >= 1977:
                 name = "Waitangi Day"
             feb6 = date(year, FEB, 6)
             self[feb6] = name
-            if self.observed and year >= 2014 and feb6.weekday() in WEEKEND:
-                self[feb6 + rd(weekday=MO)] = name + " (Observed)"
+            if year >= 2014:
+                self._add_observed(feb6)
+
+        # Anzac Day
+        if year >= 1921:
+            apr25 = date(year, APR, 25)
+            self[apr25] = "Anzac Day"
+            if year >= 2014:
+                self._add_observed(apr25)
 
         # Easter
         easter_date = easter(year)
-        self[easter_date + rd(days=-2)] = "Good Friday"
-        self[easter_date + rd(days=+1)] = "Easter Monday"
-
-        # Anzac Day
-        if year > 1920:
-            name = "Anzac Day"
-            apr25 = date(year, APR, 25)
-            self[apr25] = name
-            if self.observed and year >= 2014 and apr25.weekday() in WEEKEND:
-                self[apr25 + rd(weekday=MO)] = name + " (Observed)"
+        self[easter_date + td(days=-2)] = "Good Friday"
+        self[easter_date + td(days=+1)] = "Easter Monday"
 
         # Sovereign's Birthday
-        if 1952 <= year <= 2022:
-            name = "Queen's Birthday"
-        elif year > 1901:
+        if year >= 1902:
             name = "King's Birthday"
-        if year == 1952:
-            self[date(year, JUN, 2)] = name  # Elizabeth II
-        elif year > 1937:
-            self[date(year, JUN, 1) + rd(weekday=MO(+1))] = name  # EII & GVI
-        elif year == 1937:
-            self[date(year, JUN, 9)] = name  # George VI
-        elif year == 1936:
-            self[date(year, JUN, 23)] = name  # Edward VIII
-        elif year > 1911:
-            self[date(year, JUN, 3)] = name  # George V
-        elif year > 1901:
-            # http://paperspast.natlib.govt.nz/cgi-bin/paperspast?a=d&d=NZH19091110.2.67
-            self[date(year, NOV, 9)] = name  # Edward VII
+            if 1952 <= year <= 2022:
+                name = "Queen's Birthday"
+            if year == 1952:
+                self[date(year, JUN, 2)] = name  # Elizabeth II
+            elif year >= 1938:
+                self[date(year, JUN, 1) + rd(weekday=MO)] = name  # EII & GVI
+            elif year == 1937:
+                self[date(year, JUN, 9)] = name  # George VI
+            elif year == 1936:
+                self[date(year, JUN, 23)] = name  # Edward VIII
+            elif year >= 1912:
+                self[date(year, JUN, 3)] = name  # George V
+            else:
+                # http://paperspast.natlib.govt.nz/cgi-bin/paperspast?a=d&d=NZH19091110.2.67
+                self[date(year, NOV, 9)] = name  # Edward VII
 
         # Matariki
-        name = "Matariki"
-        if year == 2022:
-            self[date(year, JUN, 24)] = name
-        elif year == 2023:
-            self[date(year, JUL, 14)] = name
-        elif year == 2024:
-            self[date(year, JUN, 28)] = name
-        elif year == 2025:
-            self[date(year, JUN, 20)] = name
-        elif year == 2026:
-            self[date(year, JUL, 10)] = name
-        elif year == 2027:
-            self[date(year, JUN, 25)] = name
-        elif year == 2028:
-            self[date(year, JUL, 14)] = name
-        elif year == 2029:
-            self[date(year, JUL, 6)] = name
-        elif year == 2030:
-            self[date(year, JUN, 21)] = name
-        elif year == 2031:
-            self[date(year, JUL, 11)] = name
-        elif year == 2032:
-            self[date(year, JUL, 2)] = name
-        elif year == 2033:
-            self[date(year, JUN, 24)] = name
-        elif year == 2034:
-            self[date(year, JUL, 7)] = name
-        elif year == 2035:
-            self[date(year, JUN, 29)] = name
-        elif year == 2036:
-            self[date(year, JUL, 18)] = name
-        elif year == 2037:
-            self[date(year, JUL, 10)] = name
-        elif year == 2038:
-            self[date(year, JUN, 25)] = name
-        elif year == 2039:
-            self[date(year, JUL, 15)] = name
-        elif year == 2040:
-            self[date(year, JUL, 6)] = name
-        elif year == 2041:
-            self[date(year, JUL, 19)] = name
-        elif year == 2042:
-            self[date(year, JUL, 11)] = name
-        elif year == 2043:
-            self[date(year, JUL, 3)] = name
-        elif year == 2044:
-            self[date(year, JUN, 24)] = name
-        elif year == 2045:
-            self[date(year, JUL, 7)] = name
-        elif year == 2046:
-            self[date(year, JUN, 29)] = name
-        elif year == 2047:
-            self[date(year, JUL, 19)] = name
-        elif year == 2048:
-            self[date(year, JUL, 3)] = name
-        elif year == 2049:
-            self[date(year, JUN, 25)] = name
-        elif year == 2050:
-            self[date(year, JUL, 15)] = name
-        elif year == 2051:
-            self[date(year, JUN, 30)] = name
-        elif year == 2052:
-            self[date(year, JUN, 21)] = name
+        dates_obs = {
+            2022: (JUN, 24),
+            2023: (JUL, 14),
+            2024: (JUN, 28),
+            2025: (JUN, 20),
+            2026: (JUL, 10),
+            2027: (JUN, 25),
+            2028: (JUL, 14),
+            2029: (JUL, 6),
+            2030: (JUN, 21),
+            2031: (JUL, 11),
+            2032: (JUL, 2),
+            2033: (JUN, 24),
+            2034: (JUL, 7),
+            2035: (JUN, 29),
+            2036: (JUL, 18),
+            2037: (JUL, 10),
+            2038: (JUN, 25),
+            2039: (JUL, 15),
+            2040: (JUL, 6),
+            2041: (JUL, 19),
+            2042: (JUL, 11),
+            2043: (JUL, 3),
+            2044: (JUN, 24),
+            2045: (JUL, 7),
+            2046: (JUN, 29),
+            2047: (JUL, 19),
+            2048: (JUL, 3),
+            2049: (JUN, 25),
+            2050: (JUL, 15),
+            2051: (JUN, 30),
+            2052: (JUN, 21),
+        }
+        if year in dates_obs:
+            self[date(year, *dates_obs[year])] = "Matariki"
 
         # Labour Day
         name = "Labour Day"
         if year >= 1910:
             self[date(year, OCT, 1) + rd(weekday=MO(+4))] = name
-        elif year > 1899:
+        elif year >= 1900:
             self[date(year, OCT, 1) + rd(weekday=WE(+2))] = name
 
         # Christmas Day
-        name = "Christmas Day"
         dec25 = date(year, DEC, 25)
-        self[dec25] = name
-        if self.observed and dec25.weekday() in WEEKEND:
-            self[date(year, DEC, 27)] = name + " (Observed)"
+        self[dec25] = "Christmas Day"
 
         # Boxing Day
-        name = "Boxing Day"
         dec26 = date(year, DEC, 26)
-        self[dec26] = name
-        if self.observed and dec26.weekday() in WEEKEND:
-            self[date(year, DEC, 28)] = name + " (Observed)"
+        self[dec26] = "Boxing Day"
+        self._add_observed(dec25)
+        self._add_observed(dec26)
 
         # Province Anniversary Day
         if self.subdiv in {"Auckland", "AUK", "Northland", "NTL"}:
-            if 1963 < year <= 1973 and self.subdiv in {"Northland", "NTL"}:
+            if 1964 <= year <= 1973 and self.subdiv in {"Northland", "NTL"}:
                 name = "Waitangi Day"
                 dt = date(year, FEB, 6)
             else:
                 name = "Auckland Anniversary Day"
                 dt = date(year, JAN, 29)
-            if dt.weekday() in {TUE, WED, THU}:
-                self[dt + rd(weekday=MO(-1))] = name
-            else:
-                self[dt + rd(weekday=MO)] = name
+            self[self._get_nearest_monday(dt)] = name
 
         elif self.subdiv in {"New Plymouth", "Taranaki", "TKI"}:
-            name = "Taranaki Anniversary Day"
-            self[date(year, MAR, 1) + rd(weekday=MO(+2))] = name
+            self[
+                date(year, MAR, 1) + rd(weekday=MO(+2))
+            ] = "Taranaki Anniversary Day"
 
         elif self.subdiv in {"Hawke's Bay", "HKB"}:
-            name = "Hawke's Bay Anniversary Day"
-            labour_day = date(year, OCT, 1) + rd(weekday=MO(+4))
-            self[labour_day + rd(weekday=FR(-1))] = name
+            self[
+                (date(year, OCT, 1) + rd(weekday=MO(+4)) + td(days=-3))
+            ] = "Hawke's Bay Anniversary Day"
 
         elif self.subdiv in {"WGN", "Wellington"}:
-            name = "Wellington Anniversary Day"
-            jan22 = date(year, JAN, 22)
-            if jan22.weekday() in {TUE, WED, THU}:
-                self[jan22 + rd(weekday=MO(-1))] = name
-            else:
-                self[jan22 + rd(weekday=MO)] = name
+            self[
+                self._get_nearest_monday(date(year, JAN, 22))
+            ] = "Wellington Anniversary Day"
 
         elif self.subdiv in {"Marlborough", "MBH"}:
-            name = "Marlborough Anniversary Day"
-            labour_day = date(year, OCT, 1) + rd(weekday=MO(+4))
-            self[labour_day + rd(weeks=1)] = name
+            self[
+                (date(year, OCT, 1) + rd(weekday=MO(+4)) + td(days=+7))
+            ] = "Marlborough Anniversary Day"
 
         elif self.subdiv in {"Nelson", "NSN"}:
-            name = "Nelson Anniversary Day"
-            feb1 = date(year, FEB, 1)
-            if feb1.weekday() in {TUE, WED, THU}:
-                self[feb1 + rd(weekday=MO(-1))] = name
-            else:
-                self[feb1 + rd(weekday=MO)] = name
+            self[
+                self._get_nearest_monday(date(year, FEB, 1))
+            ] = "Nelson Anniversary Day"
 
         elif self.subdiv in {"CAN", "Canterbury"}:
-            name = "Canterbury Anniversary Day"
-            showday = date(year, NOV, 1) + rd(weekday=TU) + rd(weekday=FR(+2))
-            self[showday] = name
+            self[
+                (date(year, NOV, 1) + rd(weekday=TU) + td(days=+10))
+            ] = "Canterbury Anniversary Day"
 
         elif self.subdiv in {"South Canterbury", "STC"}:
-            name = "South Canterbury Anniversary Day"
-            dominion_day = date(year, SEP, 1) + rd(weekday=MO(4))
-            self[dominion_day] = name
+            self[
+                (date(year, SEP, 1) + rd(weekday=MO(+4)))
+            ] = "South Canterbury Anniversary Day"
 
         elif self.subdiv in {"WTC", "West Coast", "WTL", "Westland"}:
             name = "West Coast Anniversary Day"
-            dec1 = date(year, DEC, 1)
             # Observance varies?!?!
             if year == 2005:  # special case?!?!
                 self[date(year, DEC, 5)] = name
-            elif dec1.weekday() in {TUE, WED, THU}:
-                self[dec1 + rd(weekday=MO(-1))] = name
             else:
-                self[dec1 + rd(weekday=MO)] = name
+                self[self._get_nearest_monday(date(year, DEC, 1))] = name
 
         elif self.subdiv in {"OTA", "Otago"}:
-            name = "Otago Anniversary Day"
-            mar23 = date(year, MAR, 23)
             # there is no easily determined single day of local observance?!?!
-            if mar23.weekday() in {TUE, WED, THU}:
-                dt = mar23 + rd(weekday=MO(-1))
-            else:
-                dt = mar23 + rd(weekday=MO)
-            if dt == easter_date + rd(days=+1):  # Avoid Easter Monday
-                dt += rd(days=1)
-            self[dt] = name
+            dt = self._get_nearest_monday(date(year, MAR, 23))
+            if dt == easter_date + td(days=+1):  # Avoid Easter Monday
+                dt += td(days=+1)
+            self[dt] = "Otago Anniversary Day"
 
         elif self.subdiv in {"STL", "Southland"}:
             name = "Southland Anniversary Day"
-            jan17 = date(year, JAN, 17)
-            if year > 2011:
-                self[easter_date + rd(days=+2)] = name
+            if year >= 2012:
+                self[easter_date + td(days=+2)] = name
             else:
-                if jan17.weekday() in {TUE, WED, THU}:
-                    self[jan17 + rd(weekday=MO(-1))] = name
-                else:
-                    self[jan17 + rd(weekday=MO)] = name
+                self[self._get_nearest_monday(date(year, JAN, 17))] = name
 
         elif self.subdiv in {"CIT", "Chatham Islands"}:
-            name = "Chatham Islands Anniversary Day"
-            nov30 = date(year, NOV, 30)
-            if nov30.weekday() in {TUE, WED, THU}:
-                self[nov30 + rd(weekday=MO(-1))] = name
-            else:
-                self[nov30 + rd(weekday=MO)] = name
+            self[
+                self._get_nearest_monday(date(year, NOV, 30))
+            ] = "Chatham Islands Anniversary Day"
 
 
 class NZ(NewZealand):

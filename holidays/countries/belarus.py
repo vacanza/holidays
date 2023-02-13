@@ -4,17 +4,17 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import EASTER_ORTHODOX, easter
-from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAR, MAY, JUL, NOV, DEC
+from holidays.constants import DEC, JAN, JUL, MAR, MAY, NOV
 from holidays.holiday_base import HolidayBase
 
 
@@ -27,12 +27,12 @@ class Belarus(HolidayBase):
     country = "BY"
 
     def _populate(self, year):
-        super()._populate(year)
-
         # The current set of holidays came into force in 1998
         # http://laws.newsby.org/documents/ukazp/pos05/ukaz05806.htm
         if year <= 1998:
-            return
+            return None
+
+        super()._populate(year)
 
         # New Year's Day
         self[date(year, JAN, 1)] = "Новый год"
@@ -40,19 +40,18 @@ class Belarus(HolidayBase):
         # Jan 2nd is the national holiday (New Year) from 2020
         # http://president.gov.by/uploads/documents/2019/464uk.pdf
         if year >= 2020:
-            # New Year's Day
             self[date(year, JAN, 2)] = "Новый год"
 
         # Christmas Day (Orthodox)
-        self[date(year, JAN, 7)] = (
-            "Рождество Христово " "(православное Рождество)"
-        )
+        self[
+            date(year, JAN, 7)
+        ] = "Рождество Христово (православное Рождество)"
 
         # Women's Day
         self[date(year, MAR, 8)] = "День женщин"
 
         # Radunitsa ("Day of Rejoicing")
-        self[easter(year, method=EASTER_ORTHODOX) + rd(days=9)] = "Радуница"
+        self[easter(year, method=EASTER_ORTHODOX) + td(days=+9)] = "Радуница"
 
         # Labour Day
         self[date(year, MAY, 1)] = "Праздник труда"
@@ -61,17 +60,17 @@ class Belarus(HolidayBase):
         self[date(year, MAY, 9)] = "День Победы"
 
         # Independence Day
-        self[date(year, JUL, 3)] = (
-            "День Независимости Республики Беларусь " "(День Республики)"
-        )
+        self[
+            date(year, JUL, 3)
+        ] = "День Независимости Республики Беларусь (День Республики)"
 
         # October Revolution Day
         self[date(year, NOV, 7)] = "День Октябрьской революции"
 
         # Christmas Day (Catholic)
-        self[date(year, DEC, 25)] = (
-            "Рождество Христово " "(католическое Рождество)"
-        )
+        self[
+            date(year, DEC, 25)
+        ] = "Рождество Христово (католическое Рождество)"
 
 
 class BY(Belarus):

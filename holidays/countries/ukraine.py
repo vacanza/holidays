@@ -4,30 +4,18 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
-from dateutil.easter import easter, EASTER_ORTHODOX
-from dateutil.relativedelta import relativedelta as rd
+from dateutil.easter import EASTER_ORTHODOX, easter
 
-from holidays.constants import (
-    JAN,
-    APR,
-    MAR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-    WEEKEND,
-)
+from holidays.constants import JAN, APR, MAR, MAY, JUN, JUL, AUG, SEP, OCT
+from holidays.constants import NOV, DEC, SAT
 from holidays.holiday_base import HolidayBase
 
 
@@ -38,128 +26,166 @@ class Ukraine(HolidayBase):
     """
 
     country = "UA"
+    default_language = "uk"
 
     def _populate(self, year):
+        def _add_with_observed(
+            hol_date: date, hol_name: str, days: int = 1
+        ) -> None:
+            self[hol_date] = hol_name
+            # 27.01.1995: holiday on weekend move to next workday
+            # https://zakon.rada.gov.ua/laws/show/35/95-вр
+            # 10.01.1998: cancelled
+            # https://zakon.rada.gov.ua/laws/show/785/97-вр
+            # 23.04.1999: holiday on weekend move to next workday
+            # https://zakon.rada.gov.ua/laws/show/576-14
+            if (
+                self.observed
+                and self._is_weekend(hol_date)
+                and (
+                    date(1995, JAN, 27) <= hol_date <= date(1998, JAN, 9)
+                    or hol_date >= date(1999, APR, 23)
+                )
+            ):
+                obs_date = hol_date + td(
+                    days=2 if hol_date.weekday() == SAT else days
+                )
+                self[obs_date] = self.tr("Вихідний за %s") % hol_name
+
         # The current set of holidays came into force in 1991
         # But most holiday days were implemented in 1918
         if year <= 1917:
-            return
+            return None
+
         super()._populate(year)
 
         # New Year's Day
         if year <= 1929 or year >= 1948:
-            self[date(year, JAN, 1)] = "Новий рік"
+            _add_with_observed(date(year, JAN, 1), self.tr("Новий рік"))
 
         # Christmas Day (Julian calendar)
         if year >= 1991:
-            self[
-                date(year, JAN, 7)
-            ] = "Різдво Христове (за юліанським календарем)"
+            _add_with_observed(
+                date(year, JAN, 7),
+                self.tr("Різдво Христове (за юліанським календарем)"),
+            )
 
         # Women's Day
         if year >= 1966:
-            self[date(year, MAR, 8)] = "Міжнародний жіночий день"
+            _add_with_observed(
+                date(year, MAR, 8), self.tr("Міжнародний жіночий день")
+            )
 
         if year >= 1991:
             # Easter
             easter_date = easter(year, method=EASTER_ORTHODOX)
-            self[easter_date] = "Великдень (Пасха)"
+            name = self.tr("Великдень (Пасха)")
+            if year == 2000:
+                _add_with_observed(easter_date, name, days=3)
+            elif year in {
+                2005,
+                2016,
+                2021,
+                2027,
+                2032,
+                2062,
+                2073,
+                2078,
+                2084,
+            }:
+                _add_with_observed(easter_date, name, days=2)
+            else:
+                _add_with_observed(easter_date, name)
 
             # Holy trinity
-            self[easter_date + rd(days=+49)] = "Трійця"
+            _add_with_observed(easter_date + td(days=+49), self.tr("Трійця"))
 
         # Labour Day
-        name = "День міжнародної солідарності трудящих"
+        dt = date(year, MAY, 1)
         if year >= 2018:
-            name = "День праці"
-        self[date(year, MAY, 1)] = name
-
-        # Labour Day in past
-        if 1929 <= year <= 2017:
-            self[date(year, MAY, 2)] = "День міжнародної солідарності трудящих"
+            name = self.tr("День праці")
+            _add_with_observed(dt, name)
+        else:
+            name = self.tr("День міжнародної солідарності трудящих")
+            if year >= 1929:
+                _add_with_observed(dt, name, days=2)
+                _add_with_observed(dt + td(days=+1), name, days=2)
+            else:
+                self[dt] = name
 
         # Victory Day
-        name = "День перемоги"
         dt = date(year, MAY, 9)
-        if year >= 2016:
-            name = (
+        name = (
+            self.tr(
                 "День перемоги над нацизмом у Другій світовій війні "
                 "(День перемоги)"
             )
+            if year >= 2016
+            else self.tr("День перемоги")
+        )
+
         if year >= 1965:
-            self[dt] = name
+            _add_with_observed(dt, name)
         elif 1945 <= year <= 1946:
             self[dt] = name
-            self[date(year, SEP, 3)] = "День перемоги над Японією"
+            self[date(year, SEP, 3)] = self.tr("День перемоги над Японією")
 
         # Constitution Day
         if year >= 1997:
-            self[date(year, JUN, 28)] = "День Конституції України"
+            _add_with_observed(
+                date(year, JUN, 28), self.tr("День Конституції України")
+            )
 
         # Day of Ukrainian Statehood
         if year >= 2022:
-            self[date(year, JUL, 28)] = "День Української Державності"
+            _add_with_observed(
+                date(year, JUL, 28), self.tr("День Української Державності")
+            )
 
         # Independence Day
-        name = "День незалежності України"
+        name = self.tr("День незалежності України")
         if year >= 1992:
-            self[date(year, AUG, 24)] = name
+            _add_with_observed(date(year, AUG, 24), name)
         elif year == 1991:
             self[date(year, JUL, 16)] = name
 
         # Day of the defender of Ukraine
         if year >= 2015:
-            name = "День захисника України"
-            if year >= 2021:
-                name = "День захисників і захисниць України"
-            self[date(year, OCT, 14)] = name
+            name = (
+                self.tr("День захисників і захисниць України")
+                if year >= 2021
+                else self.tr("День захисника України")
+            )
+            _add_with_observed(date(year, OCT, 14), name)
 
         # October Revolution
         if year <= 1999:
-            name = "Річниця Великої Жовтневої соціалістичної революції"
-            self[date(year, NOV, 7)] = name
-            self[date(year, NOV, 8)] = name
+            name = self.tr(
+                "Річниця Великої Жовтневої соціалістичної революції"
+            )
+            _add_with_observed(date(year, NOV, 7), name, days=2)
+            _add_with_observed(date(year, NOV, 8), name, days=2)
 
         # Christmas Day (Gregorian calendar)
         if year >= 2017:
-            self[
-                date(year, DEC, 25)
-            ] = "Різдво Христове (за григоріанським календарем)"
-
-        # 27.01.1995: holiday on weekend move to next workday
-        # https://zakon.rada.gov.ua/laws/show/35/95-вр
-        # 10.01.1998: cancelled
-        # https://zakon.rada.gov.ua/laws/show/785/97-вр
-        # 23.04.1999: holiday on weekend move to next workday
-        # https://zakon.rada.gov.ua/laws/show/576-14
-        if self.observed:
-            for k, v in list(self.items()):
-                if (
-                    k.weekday() in WEEKEND
-                    and k.year == year
-                    and (
-                        date(1995, JAN, 27) <= k <= date(1998, JAN, 9)
-                        or k >= date(1999, APR, 23)
-                    )
-                ):
-                    next_workday = k + rd(days=+1)
-                    while next_workday.weekday() in WEEKEND or self.get(
-                        next_workday
-                    ):
-                        next_workday += rd(days=+1)
-                    self[next_workday] = "Вихідний за " + v
+            _add_with_observed(
+                date(year, DEC, 25),
+                self.tr("Різдво Христове (за григоріанським календарем)"),
+            )
 
         # USSR holidays
         # Bloody_Sunday_(1905)
         if year <= 1950:
-            self[date(year, JAN, 22)] = "День пам’яті 9 січня 1905 року"
+            self[date(year, JAN, 22)] = self.tr(
+                "День пам'яті 9 січня 1905 року"
+            )
 
         # Paris_Commune
         if year <= 1928:
-            self[date(year, MAR, 18)] = "День Паризької Комуни"
+            self[date(year, MAR, 18)] = self.tr("День Паризької Комуни")
 
         # USSR Constitution day
-        name = "День Конституції СРСР"
+        name = self.tr("День Конституції СРСР")
         if 1981 <= year <= 1990:
             self[date(year, OCT, 7)] = name
         elif 1937 <= year <= 1980:

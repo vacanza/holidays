@@ -4,16 +4,17 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO
+from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAR, APR, MAY, JUL, AUG, SEP, OCT, DEC
 from holidays.holiday_base import HolidayBase
@@ -53,10 +54,9 @@ class Zambia(HolidayBase):
     }
 
     def _populate(self, year):
-
         # Observed since 1965
         if year <= 1964:
-            return
+            return None
 
         super()._populate(year)
 
@@ -68,9 +68,9 @@ class Zambia(HolidayBase):
         self[date(year, MAR, 12)] = "Youth Day"
 
         easter_date = easter(year)
-        self[easter_date + rd(days=-2)] = "Good Friday"
-        self[easter_date + rd(days=-1)] = "Holy Saturday"
-        self[easter_date + rd(days=+1)] = "Easter Monday"
+        self[easter_date + td(days=-2)] = "Good Friday"
+        self[easter_date + td(days=-1)] = "Holy Saturday"
+        self[easter_date + td(days=+1)] = "Easter Monday"
 
         if year >= 2022:
             self[date(year, APR, 28)] = "Kenneth Kaunda Day"
@@ -81,7 +81,7 @@ class Zambia(HolidayBase):
         # 1st Monday of July = "Heroes' Day"
         dt = date(year, JUL, 1) + rd(weekday=MO)
         self[dt] = "Heroes' Day"
-        self[dt + rd(days=1)] = "Unity Day"
+        self[dt + td(days=+1)] = "Unity Day"
 
         # 1st Monday of Aug = "Farmers' Day"
         dt = date(year, AUG, 1) + rd(weekday=MO)
@@ -98,7 +98,7 @@ class Zambia(HolidayBase):
         if self.observed:
             for k, v in list(self.items()):
                 if k.year == year and self._is_sunday(k):
-                    self[k + rd(days=1)] = v + " (Observed)"
+                    self[k + td(days=+1)] = v + " (Observed)"
 
 
 class ZM(Zambia):

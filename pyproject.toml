@@ -13,21 +13,18 @@ exclude = '''
   | buck-out
   | build
   | dist
+  | scripts/l10n/msgfmt.py
 )/
 '''
 
 [tool.coverage.run]
 branch = true
-include = [
-  'tests.py',
-]
 omit = [
-  'setup.py',
   'holidays/__init__.py',
-  'test/*',
-  'tests.py',
-# comment the above line if you want to see if all tests did run
-  ]
+  'scripts/*',
+  'setup.py',
+  'tests/*',
+]
 
 [tool.coverage.report]
 # Regexes for lines to exclude from consideration
@@ -49,6 +46,9 @@ exclude_lines = [
 ]
 
 [tool.isort]
+known_first_party = ["holidays", "tests"]
 line_length = 79
+multi_line_output = 9
 no_inline_sort = true
 profile = "black"
+skip = ["docs", "scripts/l10n/msgfmt.py"]

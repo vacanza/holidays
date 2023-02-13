@@ -4,17 +4,18 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date, datetime
+from datetime import timedelta as td
 
 from dateutil import rrule
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import FR, SA, SU
+from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAR, MAY, JUN, OCT, DEC
 from holidays.holiday_base import HolidayBase
@@ -79,13 +80,13 @@ class Sweden(HolidayBase):
 
         # ========= Moving holidays =========
         easter_date = easter(year)
-        self[easter_date + rd(days=-2)] = "Långfredagen"
+        self[easter_date + td(days=-2)] = "Långfredagen"
         self[easter_date] = "Påskdagen"
-        self[easter_date + rd(days=+1)] = "Annandag påsk"
-        self[easter_date + rd(days=+39)] = "Kristi himmelsfärdsdag"
-        self[easter_date + rd(days=+49)] = "Pingstdagen"
+        self[easter_date + td(days=+1)] = "Annandag påsk"
+        self[easter_date + td(days=+39)] = "Kristi himmelsfärdsdag"
+        self[easter_date + td(days=+49)] = "Pingstdagen"
         if year <= 2004:
-            self[easter_date + rd(days=+50)] = "Annandag pingst"
+            self[easter_date + td(days=+50)] = "Annandag pingst"
 
         # Source:
         # https://sv.wikipedia.org/wiki/Midsommarafton

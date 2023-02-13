@@ -4,34 +4,27 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, TU, WE, FR
+from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import (
-    WEEKEND,
-    JAN,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-)
+from holidays.constants import JAN, MAR, APR, MAY, JUN, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
 class Australia(HolidayBase):
+    """
+    References:
+      - https://www.qld.gov.au/recreation/travel/holidays
+    """
 
     country = "AU"
     special_holidays = {
@@ -63,7 +56,7 @@ class Australia(HolidayBase):
         name = "New Year's Day"
         jan1 = date(year, JAN, 1)
         self[jan1] = name
-        if self.observed and jan1.weekday() in WEEKEND:
+        if self.observed and self._is_weekend(jan1):
             self[jan1 + rd(weekday=MO)] = name + " (Observed)"
 
         # Australia Day
@@ -74,7 +67,7 @@ class Australia(HolidayBase):
             else:
                 name = "Australia Day"
             self[jan26] = name
-            if self.observed and year >= 1946 and jan26.weekday() in WEEKEND:
+            if self.observed and year >= 1946 and self._is_weekend(jan26):
                 self[jan26 + rd(weekday=MO)] = name + " (Observed)"
         elif year >= 1888 and self.subdiv != "SA":
             name = "Anniversary Day"
@@ -105,12 +98,12 @@ class Australia(HolidayBase):
 
         # Easter
         easter_date = easter(year)
-        self[easter_date + rd(days=-2)] = "Good Friday"
+        self[easter_date + td(days=-2)] = "Good Friday"
         if self.subdiv in {"ACT", "NSW", "NT", "QLD", "SA", "VIC"}:
-            self[easter_date + rd(days=-1)] = "Easter Saturday"
+            self[easter_date + td(days=-1)] = "Easter Saturday"
         if self.subdiv in {"ACT", "NSW", "QLD", "VIC"}:
             self[easter_date] = "Easter Sunday"
-        self[easter_date + rd(days=+1)] = "Easter Monday"
+        self[easter_date + td(days=+1)] = "Easter Monday"
 
         # Anzac Day
         if year > 1920:
@@ -250,21 +243,22 @@ class Australia(HolidayBase):
         # not prior to the 5th - in which case it will begin on the second
         # Friday. The Wednesday during the show is a public holiday.
         if self.subdiv == "QLD":
-            name = "The Royal Queensland Show"
-            if year == 2020:
-                self[date(year, AUG, 14)] = name
-            if year == 2021:
-                self[date(year, OCT, 29)] = name
-            else:
-                self[
-                    date(year, AUG, 5) + rd(weekday=FR) + rd(weekday=WE)
-                ] = name
+            ekka_dates = {
+                2020: date(year, AUG, 14),
+                2021: date(year, OCT, 29),
+            }
+            self[
+                ekka_dates.get(
+                    year,
+                    date(year, AUG, 5) + rd(weekday=FR) + rd(weekday=WE),
+                )
+            ] = "The Royal Queensland Show"
 
         # Christmas Day
         name = "Christmas Day"
         dec25 = date(year, DEC, 25)
         self[dec25] = name
-        if self.observed and dec25.weekday() in WEEKEND:
+        if self.observed and self._is_weekend(dec25):
             self[date(year, DEC, 27)] = name + " (Observed)"
 
         # Boxing Day
@@ -274,7 +268,7 @@ class Australia(HolidayBase):
             name = "Boxing Day"
         dec26 = date(year, DEC, 26)
         self[dec26] = name
-        if self.observed and dec26.weekday() in WEEKEND:
+        if self.observed and self._is_weekend(dec26):
             self[date(year, DEC, 28)] = name + " (Observed)"
 
 

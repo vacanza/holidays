@@ -4,15 +4,15 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAY, JUN, AUG, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
@@ -40,10 +40,10 @@ class Croatia(HolidayBase):
         # Easter
         self[easter_date] = "Uskrs"
         # Easter Monday
-        self[easter_date + rd(days=+1)] = "Uskrsni ponedjeljak"
+        self[easter_date + td(days=+1)] = "Uskrsni ponedjeljak"
 
         # Corpus Christi
-        self[easter_date + rd(days=+60)] = "Tijelovo"
+        self[easter_date + td(days=+60)] = "Tijelovo"
 
         # International Workers' Day
         self[date(year, MAY, 1)] = "Međunarodni praznik rada"

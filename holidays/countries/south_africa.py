@@ -4,31 +4,20 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO, FR
+from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import (
-    SUN,
-    JAN,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-)
+from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT
+from holidays.constants import NOV, DEC, SUN
 from holidays.holiday_base import HolidayBase
 
 
@@ -47,36 +36,38 @@ class SouthAfrica(HolidayBase):
         2000: ((JAN, 2, "Y2K changeover"),),
         2004: ((APR, 14, "National and provincial government elections"),),
         2006: ((MAR, 1, "Local government elections"),),
-        2008: ((MAY, 2, "By presidential decree"),),
+        2008: ((MAY, 2, "Public holiday by presidential decree"),),
         2009: ((APR, 22, "National and provincial government elections"),),
         2011: (
             (MAY, 18, "Local government elections"),
-            (DEC, 27, "By presidential decree"),
+            (DEC, 27, "Public holiday by presidential decree"),
         ),
         2014: ((MAY, 7, "National and provincial government elections"),),
         2016: (
             (AUG, 3, "Local government elections"),
-            (DEC, 27, "By presidential decree"),
+            (DEC, 27, "Public holiday by presidential decree"),
         ),
         2019: ((MAY, 8, "National and provincial government elections"),),
         2021: ((NOV, 1, "Municipal elections"),),
+        2022: ((DEC, 27, "Public holiday by presidential decree"),),
     }
 
     def _populate(self, year):
         # Observed since 1910, with a few name changes
         if year <= 1909:
-            return
+            return None
+
         super()._populate(year)
 
         self[date(year, JAN, 1)] = "New Year's Day"
 
         easter_date = easter(year)
-        self[easter_date + rd(days=-2)] = "Good Friday"
+        self[easter_date + td(days=-2)] = "Good Friday"
         if year >= 1980:
             name = "Family Day"
         else:
             name = "Easter Monday"
-        self[easter_date + rd(days=+1)] = name
+        self[easter_date + td(days=+1)] = name
 
         if year <= 1951:
             name = "Dingaan's Day"
@@ -111,7 +102,7 @@ class SouthAfrica(HolidayBase):
             for k, v in list(self.items()):
                 if k.weekday() != SUN or k.year != year:
                     continue
-                dt = k + rd(days=+1)
+                dt = k + td(days=+1)
                 if dt in self:
                     continue
                 self[dt] = v + " (Observed)"
@@ -127,7 +118,7 @@ class SouthAfrica(HolidayBase):
             self[(date(year, MAY, 1) + rd(weekday=FR))] = "Workers' Day"
 
         if year <= 1993:
-            self[easter_date + rd(days=+40)] = "Ascension Day"
+            self[easter_date + td(days=+40)] = "Ascension Day"
 
         if year <= 1951:
             self[date(year, MAY, 24)] = "Empire Day"

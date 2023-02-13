@@ -4,20 +4,19 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-
-from dateutil.relativedelta import relativedelta as rd
+from datetime import timedelta as td
 
 # Installation: pip install korean_lunar_calendar
 # URL: https://github.com/usingsky/korean_lunar_calendar_py/
 from korean_lunar_calendar import KoreanLunarCalendar
 
-from holidays.constants import JAN, APR, MAY, SEP, WEEKEND
+from holidays.constants import JAN, APR, MAY, SEP
 from holidays.holiday_base import HolidayBase
 
 
@@ -35,10 +34,10 @@ class Vietnam(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _add_observed(self, holiday: date) -> None:
-        if holiday.weekday() in WEEKEND:
-            next_workday = holiday + rd(days=+1)
-            while next_workday.weekday() in WEEKEND or self.get(next_workday):
-                next_workday += rd(days=+1)
+        if self._is_weekend(holiday):
+            next_workday = holiday + td(days=+1)
+            while self._is_weekend(next_workday) or self.get(next_workday):
+                next_workday += td(days=+1)
             self[next_workday] = self[holiday] + " observed"
 
     def _populate(self, year):
@@ -78,7 +77,7 @@ class Vietnam(HolidayBase):
         )
         hol_date = self.get_solar_date(year, 1, 1)
         for d, name in names:
-            self[(hol_date + rd(days=+d))] = name
+            self[(hol_date + td(days=+d))] = name
 
     # convert lunar calendar date to solar
     def get_solar_date(self, year, month, day):

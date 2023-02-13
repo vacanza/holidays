@@ -4,17 +4,17 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import WEEKEND, JAN, MAR, APR, MAY, AUG, OCT, NOV, DEC
+from holidays.constants import JAN, MAR, APR, MAY, AUG, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -60,21 +60,21 @@ class Hungary(HolidayBase):
 
         # Good Friday
         if 2017 <= year:
-            self[easter_date + rd(days=-2)] = "Nagypéntek"
+            self[easter_date + td(days=-2)] = "Nagypéntek"
 
         # Easter
         self[easter_date] = "Húsvét"
 
         # Second easter day
         if 1955 != year:
-            self[easter_date + rd(days=+1)] = "Húsvét Hétfő"
+            self[easter_date + td(days=+1)] = "Húsvét Hétfő"
 
         # Pentecost
-        self[easter_date + rd(days=+49)] = "Pünkösd"
+        self[easter_date + td(days=+49)] = "Pünkösd"
 
         # Pentecost monday
         if year <= 1952 or 1992 <= year:
-            self[easter_date + rd(days=+50)] = "Pünkösdhétfő"
+            self[easter_date + td(days=+50)] = "Pünkösdhétfő"
 
         # International Workers' Day
         if 1946 <= year:
@@ -109,7 +109,7 @@ class Hungary(HolidayBase):
         if (
             self.observed
             and 2010 <= year
-            and date(year, DEC, 24).weekday() not in WEEKEND
+            and not self._is_weekend(year, DEC, 24)
         ):
             self[date(year, DEC, 24)] = "Szenteste"
 
@@ -146,9 +146,9 @@ class Hungary(HolidayBase):
         # TODO: should it be a separate flag?
         if self.observed and since <= day.year:
             if self._is_tuesday(day) and before:
-                self[day + rd(days=-1)] = desc + " előtti pihenőnap"
+                self[day + td(days=-1)] = desc + " előtti pihenőnap"
             elif self._is_thursday(day) and after:
-                self[day + rd(days=+1)] = desc + " utáni pihenőnap"
+                self[day + td(days=+1)] = desc + " utáni pihenőnap"
 
 
 class HU(Hungary):

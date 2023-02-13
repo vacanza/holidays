@@ -4,30 +4,30 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
-from dateutil.relativedelta import relativedelta as rd
 from dateutil.relativedelta import MO
+from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, FEB, MAR, MAY, SEP, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
 class Mexico(HolidayBase):
-
     country = "MX"
 
     def _add_with_observed(self, holiday: date, name: str):
         self[holiday] = name
         if self.observed and self._is_saturday(holiday):
-            self[holiday + rd(days=-1)] = name + " (Observed)"
+            self[holiday + td(days=-1)] = name + " (Observed)"
         elif self.observed and self._is_sunday(holiday):
-            self[holiday + rd(days=+1)] = name + " (Observed)"
+            self[holiday + td(days=+1)] = name + " (Observed)"
 
     def _populate(self, year):
         super()._populate(year)
@@ -37,7 +37,7 @@ class Mexico(HolidayBase):
         dt = date(year, JAN, 1)
         self[dt] = name
         if self.observed and self._is_sunday(dt):
-            self[dt + rd(days=+1)] = name + " (Observed)"
+            self[dt + td(days=+1)] = name + " (Observed)"
         # The next year's observed New Year's Day can be in this year
         # when it falls on a Friday (Jan 1st is a Saturday)
         if self.observed and self._is_friday(year, DEC, 31):

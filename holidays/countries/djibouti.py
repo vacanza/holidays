@@ -4,27 +4,23 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
-from dateutil.relativedelta import relativedelta as rd
-
-from holidays.constants import FRI, SAT, JAN, MAY, JUN
+from holidays.constants import JAN, MAY, JUN, FRI, SAT
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
-
-WEEKEND = (FRI, SAT)
 
 # Since Djibouti share most of it's holidays with other muslim countries,
 # this class is just a copy of Egypt's.
 
 
 class Djibouti(HolidayBase):
-
     # Holidays here are estimates, it is common for the day to be pushed
     # if falls in a weekend, although not a rule that can be implemented.
     # Holidays after 2020: the following four moving date holidays whose exact
@@ -40,22 +36,10 @@ class Djibouti(HolidayBase):
     # is_weekend function is there, however not activated for accuracy.
 
     country = "DJ"
+    weekend = {FRI, SAT}
 
     def _populate(self, year):
         super()._populate(year)
-
-        """
-        # Function to store the holiday name in the appropriate
-        # date and to shift the Public holiday in case it happens
-        # on a Saturday(Weekend)
-        # (NOT USED)
-        def is_weekend(self, hol_date, hol_name):
-            if hol_date.weekday() == FRI:
-                self[hol_date] = hol_name + " [Friday]"
-                self[hol_date + rd(days=+2)] = "Sunday following " + hol_name
-            else:
-                self[hol_date] = hol_name
-        """
 
         def _add_holiday(dt: date, hol: str) -> None:
             """Only add if in current year; prevents adding holidays across
@@ -91,7 +75,7 @@ class Djibouti(HolidayBase):
                 hol_date = date_obs
                 _add_holiday(hol_date, "Eid al-Fitr")
                 _add_holiday(
-                    hol_date + rd(days=1), "Eid al-Fitr deuxième jour"
+                    hol_date + td(days=+1), "Eid al-Fitr deuxième jour"
                 )
 
         # Arafat & Eid al-Adha - Scarfice Festive
@@ -100,9 +84,9 @@ class Djibouti(HolidayBase):
             for date_obs in _islamic_to_gre(yr, 12, 9):
                 hol_date = date_obs
                 _add_holiday(hol_date, "Arafat")
-                _add_holiday(hol_date + rd(days=1), "Eid al-Adha")
+                _add_holiday(hol_date + td(days=+1), "Eid al-Adha")
                 _add_holiday(
-                    hol_date + rd(days=2), "Eid al-Adha deuxième jour"
+                    hol_date + td(days=+2), "Eid al-Adha deuxième jour"
                 )
 
         # Islamic New Year - (hijari_year, 1, 1)

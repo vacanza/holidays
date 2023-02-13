@@ -4,31 +4,20 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import MO, TU, TH, FR, SA, SU
+from dateutil.relativedelta import MO, TH, FR
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import (
-    JAN,
-    FEB,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-)
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
+from holidays.constants import OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -75,7 +64,7 @@ class NewYorkStockExchange(HolidayBase):
         # needs to be observed on Friday (Dec 31 of previous year).
         dec_31 = date(year, DEC, 31)
         if self._is_friday(dec_31):
-            self._set_observed_date(dec_31 + rd(days=+1), "New Year's Day")
+            self._set_observed_date(dec_31 + td(days=+1), "New Year's Day")
 
         # MLK - observed 1998 - 3rd Monday of Jan
         if year >= 1998:
@@ -100,7 +89,7 @@ class NewYorkStockExchange(HolidayBase):
         # GOOD FRIDAY - closed every year except 1898, 1906, and 1907
         e = easter(year)
         if year not in {1898, 1906, 1907}:
-            self[e - rd(days=2)] = "Good Friday"
+            self[e + td(days=-2)] = "Good Friday"
 
         # MEM DAY (May 30) - closed every year since 1873
         # last Mon in May since 1971
@@ -135,12 +124,12 @@ class NewYorkStockExchange(HolidayBase):
             colday = date(year, OCT, 12)
             self._set_observed_date(colday, "Columbus Day")
 
-        # ELECTION DAY: first Tues in NOV
+        # ELECTION DAY: Tuesday after first Monday in November (2 U.S. Code §7)
         # closed until 1969, then closed pres years 1972-80
-        if year <= 1968:
-            self[date(year, NOV, 1) + rd(weekday=TU(1))] = "Election Day"
-        elif year in {1972, 1976, 1980}:
-            self[date(year, NOV, 1) + rd(weekday=TU(1))] = "Election Day"
+        if year <= 1968 or year in {1972, 1976, 1980}:
+            self[
+                date(year, NOV, 1) + rd(weekday=MO) + td(days=+1)
+            ] = "Election Day"
 
         # VETERAN'S DAY: Nov 11 - closed 1918, 1921, 1934-1953
         if year in {1918, 1921} or (1934 <= year <= 1953):
@@ -190,10 +179,9 @@ class NewYorkStockExchange(HolidayBase):
             begin = date(year, JUL, 31)
             end = date(year, NOV, 27)
             for d in (
-                begin + timedelta(days=n)
-                for n in range((end - begin).days + 1)
+                begin + td(days=n) for n in range((end - begin).days + 1)
             ):
-                if d.weekday() in {SA.weekday, SU.weekday}:
+                if self._is_weekend(d):
                     continue
                 self[d] = "World War I"
         elif year == 1917:
@@ -222,10 +210,9 @@ class NewYorkStockExchange(HolidayBase):
             begin = date(year, MAR, 6)
             end = date(year, MAR, 14)
             for d in (
-                begin + timedelta(days=n)
-                for n in range((end - begin).days + 1)
+                begin + td(days=n) for n in range((end - begin).days + 1)
             ):
-                if d.weekday() in {SA.weekday, SU.weekday}:
+                if self._is_weekend(d):
                     continue
                 self[d] = "Special Bank Holiday"
         elif year == 1945:
@@ -252,10 +239,9 @@ class NewYorkStockExchange(HolidayBase):
             begin = date(year, JUN, 12)
             end = date(year, DEC, 31)
             for d in (
-                begin + timedelta(days=n)
-                for n in range((end - begin).days + 1)
+                begin + td(days=n) for n in range((end - begin).days + 1)
             ):
-                if d.isoweekday() != 3:  # Wednesday special holiday
+                if not self._is_wednesday(d):  # Wednesday special holiday
                     continue
                 self[d] = "Paper Crisis"
         elif year == 1969:
@@ -274,6 +260,8 @@ class NewYorkStockExchange(HolidayBase):
             ] = "Funeral for President Lyndon B. Johnson"
         elif year == 1977:
             self[date(year, JUL, 14)] = "Blackout in New Yor City"
+        elif year == 1985:
+            self[date(year, SEP, 27)] = "Hurricane Gloria"
         elif year == 1994:
             self[
                 date(year, APR, 27)
@@ -291,6 +279,9 @@ class NewYorkStockExchange(HolidayBase):
             self[
                 date(year, JAN, 2)
             ] = "Day of Mourning for President Gerald R. Ford"
+        elif year == 2012:
+            self[date(year, OCT, 29)] = "Hurricane Sandy"
+            self[date(year, OCT, 30)] = "Hurricane Sandy"
         elif year == 2018:
             self[
                 date(year, DEC, 5)
