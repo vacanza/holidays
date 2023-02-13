@@ -51,4 +51,4 @@ line_length = 79
 multi_line_output = 9
 no_inline_sort = true
 profile = "black"
-skip = ["scripts/i18n/msgfmt.py"]
+skip = ["docs", "scripts/i18n/msgfmt.py"]
