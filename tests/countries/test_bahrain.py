@@ -60,7 +60,7 @@ class TestBahrain(TestCase):
 
     def test_hijri_based(self):
         if not importlib.util.find_spec("hijri_converter"):
-            return
+            return None
 
         # Eid Al-Fitr.
         self.assertHoliday(

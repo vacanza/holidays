@@ -14,7 +14,8 @@ from datetime import date
 from datetime import timedelta as td
 
 import holidays
-from holidays.constants import SAT, SUN
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, SEP, OCT
+from holidays.constants import NOV, DEC, SAT, SUN
 
 
 class TestUS(unittest.TestCase):
@@ -506,6 +507,7 @@ class TestUS(unittest.TestCase):
         in_holidays = holidays.US(subdiv="IN")
         ky_holidays = holidays.US(subdiv="IN")
         la_holidays = holidays.US(subdiv="LA")
+        mp_holidays = holidays.US(subdiv="MP")
         nj_holidays = holidays.US(subdiv="NJ")
         nc_holidays = holidays.US(subdiv="NC")
         tn_holidays = holidays.US(subdiv="TN")
@@ -529,6 +531,7 @@ class TestUS(unittest.TestCase):
             self.assertIn(dt, in_holidays)
             self.assertIn(dt, ky_holidays)
             self.assertIn(dt, la_holidays)
+            self.assertIn(dt, mp_holidays)
             self.assertIn(dt, nj_holidays)
             self.assertIn(dt, nc_holidays)
             self.assertIn(dt, tn_holidays)
@@ -1235,3 +1238,34 @@ class TestUS(unittest.TestCase):
             self.assertIn(dt, ky_holidays)
             self.assertIn(dt, mi_holidays)
             self.assertIn(dt, wi_holidays)
+
+    def test_northern_mariana_islands_2022(self):
+        """Sources:
+        https://governor.gov.mp/archived-news/executive-actions-archive/memorandum-2022-legal-holidays/
+        https://webcache.googleusercontent.com/search?q=cache:C17_7FBgPtQJ:https://governor.gov.mp/archived-news/executive-actions-archive/memorandum-2022-legal-holidays/&hl=en&gl=sg&strip=1&vwsrc=0
+        """
+        mp_holidays = holidays.US(subdiv="MP")
+
+        self.assertIn(date(2022, JAN, 1), mp_holidays)
+        self.assertIn(date(2022, JAN, 17), mp_holidays)
+        self.assertIn(date(2022, FEB, 21), mp_holidays)
+        self.assertIn(date(2022, MAR, 24), mp_holidays)
+        self.assertIn(date(2022, APR, 15), mp_holidays)
+        self.assertIn(date(2022, MAY, 30), mp_holidays)
+        self.assertIn(date(2022, JUN, 19), mp_holidays)
+        self.assertIn(date(2022, JUN, 20), mp_holidays)
+        self.assertIn(date(2022, JUL, 4), mp_holidays)
+        self.assertIn(date(2022, SEP, 5), mp_holidays)
+        self.assertIn(date(2022, OCT, 10), mp_holidays)
+        self.assertIn(date(2022, NOV, 4), mp_holidays)
+        self.assertIn(date(2022, NOV, 8), mp_holidays)
+        self.assertIn(date(2022, NOV, 11), mp_holidays)
+        self.assertIn(date(2022, NOV, 24), mp_holidays)
+        self.assertIn(date(2022, DEC, 8), mp_holidays)
+        self.assertIn(date(2022, DEC, 25), mp_holidays)
+        self.assertIn(date(2022, DEC, 26), mp_holidays)
+        # 2022: total holidays (16 + 2 falling on a Sunday)
+        self.assertEqual(
+            16 + 2,
+            len(holidays.US(subdiv="MP", years=[2022])),
+        )

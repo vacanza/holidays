@@ -24,6 +24,10 @@ from holidays.holiday_base import HolidayBase
 class UnitedStates(HolidayBase):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_the_United_States
+
+    For Northern Mariana Islands (subdivision MP):
+    https://governor.gov.mp/archived-news/executive-actions-archive/memorandum-2022-legal-holidays/
+    https://webcache.googleusercontent.com/search?q=cache:C17_7FBgPtQJ:https://governor.gov.mp/archived-news/executive-actions-archive/memorandum-2022-legal-holidays/&hl=en&gl=sg&strip=1&vwsrc=0
     """
 
     country = "US"
@@ -79,6 +83,7 @@ class UnitedStates(HolidayBase):
         "SD",
         "TN",
         "TX",
+        "UM",
         "UT",
         "VT",
         "VA",
@@ -94,7 +99,8 @@ class UnitedStates(HolidayBase):
     ) -> None:
         self[dt] = name
         if not self.observed:
-            return
+            return None
+
         if dt.weekday() == SAT and before:
             self[dt + td(days=-1)] = f"{name} (Observed)"
         elif dt.weekday() == SUN and after:
@@ -234,6 +240,12 @@ class UnitedStates(HolidayBase):
                 date(year, MAR, 22), "Emancipation Day", before=False
             )
 
+        # Commonwealth Covenant Day in Northern Mariana Islands
+        if self.subdiv == "MP":
+            self._add_with_observed(
+                date(year, MAR, 24), "Commonwealth Covenant Day"
+            )
+
         # Prince Jonah Kuhio Kalanianaole Day
         if self.subdiv == "HI" and year >= 1949:
             self._add_with_observed(
@@ -284,6 +296,7 @@ class UnitedStates(HolidayBase):
             "IN",
             "KY",
             "LA",
+            "MP",
             "NC",
             "NJ",
             "PR",
@@ -424,6 +437,12 @@ class UnitedStates(HolidayBase):
             elif year >= 1937:
                 self[date(year, OCT, 12)] = name
 
+        # Commonwealth Cultural Day in Northern Mariana Islands
+        if self.subdiv == "MP":
+            self[
+                date(year, OCT, 1) + rd(weekday=MO(+2))
+            ] = "Commonwealth Cultural Day"
+
         # Alaska Day
         if self.subdiv == "AK" and year >= 1867:
             self._add_with_observed(date(year, OCT, 18), "Alaska Day")
@@ -442,7 +461,19 @@ class UnitedStates(HolidayBase):
         # Election Day
         if (
             self.subdiv
-            in {"DE", "HI", "IL", "IN", "LA", "MT", "NH", "NJ", "NY", "WV"}
+            in {
+                "DE",
+                "HI",
+                "IL",
+                "IN",
+                "LA",
+                "MP",
+                "MT",
+                "NH",
+                "NJ",
+                "NY",
+                "WV",
+            }
             and year >= 2008
             and year % 2 == 0
         ) or (self.subdiv in {"IN", "NY"} and year >= 2015):
@@ -453,6 +484,10 @@ class UnitedStates(HolidayBase):
         # All Souls' Day
         if self.subdiv == "GU":
             self[date(year, NOV, 2)] = "All Souls' Day"
+
+        # Citizenship Day in Northern Mariana Islands
+        if self.subdiv == "MP":
+            self._add_with_observed(date(year, NOV, 4), "Citizenship Day")
 
         # Veterans Day
         if year >= 1954:
@@ -514,6 +549,10 @@ class UnitedStates(HolidayBase):
         # Lady of Camarin Day
         if self.subdiv == "GU":
             self[date(year, DEC, 8)] = "Lady of Camarin Day"
+
+        # Constitution Day in Northern Mariana Islands
+        if self.subdiv == "MP":
+            self._add_with_observed(date(year, DEC, 8), "Constitution Day")
 
         # Christmas Eve
         if (

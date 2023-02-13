@@ -23,7 +23,8 @@ class Mozambique(HolidayBase):
 
     def _populate(self, year):
         if year <= 1974:
-            return
+            return None
+
         super()._populate(year)
 
         self[date(year, JAN, 1)] = "Ano novo"

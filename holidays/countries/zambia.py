@@ -56,7 +56,7 @@ class Zambia(HolidayBase):
     def _populate(self, year):
         # Observed since 1965
         if year <= 1964:
-            return
+            return None
 
         super()._populate(year)
 

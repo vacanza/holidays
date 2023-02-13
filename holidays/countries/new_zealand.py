@@ -91,7 +91,8 @@ class NewZealand(HolidayBase):
         # Holidays Act 1981, 2003
 
         if year <= 1893:
-            return
+            return None
+
         super()._populate(year)
 
         # New Year's Day

@@ -249,7 +249,7 @@ class Thailand(HolidayBase):
         # Due to Thai Calendar Migration, this is capped off at 1941
         # But certain holidays were implemented before 1941
         if year <= 1940:
-            return
+            return None
 
         def _add_with_observed(dt, holiday_name) -> None:
             # Only add if current year and year is 1941 (B.E. 2484) or later

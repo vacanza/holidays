@@ -31,7 +31,8 @@ class Malawi(HolidayBase):
     def _populate(self, year):
         # Observed since 2000
         if year <= 1999:
-            return
+            return None
+
         super()._populate(year)
 
         self[date(year, JAN, 1)] = "New Year's Day"

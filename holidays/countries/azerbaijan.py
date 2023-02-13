@@ -39,7 +39,8 @@ class Azerbaijan(HolidayBase):
                 self[hol_date] = hol_name
 
         if year <= 1989:
-            return
+            return None
+
         super()._populate(year)
 
         # New Year

@@ -32,10 +32,10 @@ class Slovenia(HolidayBase):
     country = "SI"
 
     def _populate(self, year):
-        super()._populate(year)
-
         if year <= 1990:
-            return
+            return None
+
+        super()._populate(year)
 
         self[date(year, JAN, 1)] = "novo leto"
 

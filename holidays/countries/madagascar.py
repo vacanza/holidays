@@ -31,7 +31,8 @@ class Madagascar(HolidayBase):
     def _populate(self, year):
         # Observed since 1947
         if year <= 1946:
-            return
+            return None
+
         super()._populate(year)
 
         self[date(year, JAN, 1)] = "Taom-baovao / New Year's Day"
