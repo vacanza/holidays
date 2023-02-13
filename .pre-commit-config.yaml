@@ -15,6 +15,7 @@ repos:
     rev: 23.1.0
     hooks:
       - id: black
+        exclude: ^(docs|scripts/l10n/msgfmt.py)
         language_version: python3
 
   - repo: https://github.com/pycqa/flake8
@@ -24,6 +25,7 @@ repos:
         additional_dependencies:
           - flake8-print
         args: [--max-line-length=79]
+        exclude: ^(docs|scripts/l10n/msgfmt.py)
 
   - repo: https://github.com/pre-commit/mirrors-isort
     rev: v5.10.1
@@ -32,7 +34,7 @@ repos:
         # holidays/countries/__init__.py is excluded due to a bug whereby
         # black and isort don't agree and enter into an infinite fix loop.
         # TODO remove this exclusion when isort and black play nice again.
-        exclude: ^docs/|^holidays/countries/__init__.py
+        exclude: ^(docs|holidays/countries/__init__.py|scripts/l10n/msgfmt.py)
 
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v1.0.0

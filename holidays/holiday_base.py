@@ -1,6 +1,6 @@
 #  python-holidays
 #  ---------------
-#  A fast, efficient Python library for generating country and subdivision
+#  A fast, efficient Python library for generating country, province and state
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
@@ -11,8 +11,12 @@
 
 __all__ = ("DateLike", "HolidayBase", "HolidaySum")
 
+import copy
+import os
 import warnings
 from datetime import date, datetime, timedelta
+from gettext import NullTranslations, gettext, translation
+from pathlib import Path
 from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Tuple
 from typing import Union, cast
 
@@ -209,10 +213,20 @@ class HolidayBase(Dict[date, str]):
         subdiv: Optional[str] = None,
         prov: Optional[str] = None,  # Deprecated.
         state: Optional[str] = None,  # Deprecated.
+        language: Optional[str] = None,
     ) -> None:
         """
         :param years:
             The year(s) to pre-calculate public holidays for at instantiation.
+
+        :param expand:
+            Whether the entire year is calculated when one date from that year
+            is requested.
+
+        :param observed:
+            Whether to include the dates when public holiday are observed
+            (e.g. a holiday falling on a Sunday being observed the
+            following Monday). This doesn't work for all countries.
 
         :param subdiv:
             The subdivision (e.g. state or province); not implemented for all
@@ -224,14 +238,11 @@ class HolidayBase(Dict[date, str]):
         :param state:
             *deprecated* use subdiv instead.
 
-        :param expand:
-            Whether the entire year is calculated when one date from that year
-            is requested.
-
-        :param observed:
-            Whether to include the dates when public holiday are observed
-            (e.g. a holiday falling on a Sunday being observed the
-            following Monday). This doesn't work for all countries.
+        :param language:
+            The language which the returned holiday names will be translated
+            into. It must be an ISO 639-1 (2-letter) language code. If the
+            language translation is not supported the original holiday names
+            will be used.
 
         :return:
             A :class:`HolidayBase` object matching the **country**.
@@ -239,8 +250,11 @@ class HolidayBase(Dict[date, str]):
         super().__init__()
 
         self.expand = expand
+        self.language = language.lower() if language else None
         self.observed = observed
         self.subdiv = subdiv or prov or state
+
+        self.tr = gettext  # Default translation method.
 
         if prov or state:
             warnings.warn(
@@ -249,21 +263,49 @@ class HolidayBase(Dict[date, str]):
                 DeprecationWarning,
             )
 
-        if not isinstance(self, HolidaySum) and (
-            subdiv
-            and subdiv not in self.subdivisions + self._deprecated_subdivisions
-        ):
-            if hasattr(self, "market"):
-                error = (
-                    f"Market '{self.market}' does not have subdivision "
-                    f"'{subdiv}'"
+        if not isinstance(self, HolidaySum):
+            if (
+                subdiv
+                and subdiv
+                not in self.subdivisions + self._deprecated_subdivisions
+            ):
+                if hasattr(self, "market"):
+                    error = (
+                        f"Market '{self.market}' does not have subdivision "
+                        f"'{subdiv}'"
+                    )
+                else:
+                    error = (
+                        f"Country '{self.country}' does not have subdivision "
+                        f"'{subdiv}'"
+                    )
+                raise NotImplementedError(error)
+
+            name = getattr(self, "country", getattr(self, "market", None))
+            if name:
+                locale_dir = os.path.join("holidays", "locale")
+                translator: NullTranslations
+                translations = sorted(
+                    (
+                        # Collect `language_code` part from
+                        # holidays/locale/<language_code>/LC_MESSAGES/...
+                        str(translation).split(os.sep)[2]
+                        for translation in Path(locale_dir).rglob(f"{name}.mo")
+                    )
                 )
-            elif hasattr(self, "country"):
-                error = (
-                    f"Country '{self.country}' does not have subdivision "
-                    f"'{subdiv}'"
-                )
-            raise NotImplementedError(error)
+                if language and language in translations:
+                    translator = translation(
+                        name,
+                        languages=[language],
+                        localedir=locale_dir,
+                    )
+                else:
+                    translator = translation(
+                        name,
+                        fallback=True,
+                        localedir=locale_dir,
+                    )
+                self.tr = translator.gettext  # Replace `self.tr()`.
 
         if isinstance(years, int):
             self.years = {years}
@@ -557,11 +599,29 @@ class HolidayBase(Dict[date, str]):
 
         return dates
 
+    def copy(self):
+        """Return a copy of the object."""
+        return copy.copy(self)
+
     def __eq__(self, other: object) -> bool:
-        return dict.__eq__(self, other) and self.__dict__ == other.__dict__
+        if not isinstance(other, HolidayBase):
+            return False
+
+        that, this = copy.copy(other), self.copy()
+        for obj in (that, this):  # Exclude translation objects.
+            delattr(obj, "tr")
+
+        return dict.__eq__(this, that) and this.__dict__ == that.__dict__
 
     def __ne__(self, other: object) -> bool:
-        return dict.__ne__(self, other) or self.__dict__ != other.__dict__
+        if not isinstance(other, HolidayBase):
+            return True
+
+        that, this = copy.copy(other), self.copy()
+        for obj in (that, this):  # Exclude translation objects.
+            delattr(obj, "tr")
+
+        return dict.__ne__(this, that) or this.__dict__ != that.__dict__
 
     def __add__(
         self, other: Union[int, "HolidayBase", "HolidaySum"]
@@ -610,7 +670,7 @@ class HolidayBase(Dict[date, str]):
 
         # Populate items from the special holidays list.
         for month, day, name in self.special_holidays.get(year, ()):
-            self[date(year, month, day)] = name
+            self[date(year, month, day)] = self.tr(name)
 
     def _is_weekend(self, *args):
         """
@@ -648,7 +708,9 @@ class HolidayBase(Dict[date, str]):
         if self:
             return super().__str__()
 
-        return str(self.__dict__)
+        obj = copy.copy(self)
+        delattr(obj, "tr")
+        return str(obj.__dict__)
 
 
 class HolidaySum(HolidayBase):

@@ -9,15 +9,16 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
 from datetime import date
 
-import holidays
+from holidays.countries.poland import Poland
+from tests.common import TestCase
 
 
-class TestPL(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.PL()
+class TestPL(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Poland)
 
     def test_1910(self):
         self.assertNotIn(date(1910, 5, 1), self.holidays)
@@ -46,23 +47,54 @@ class TestPL(unittest.TestCase):
         self.assertIn(date(2018, 11, 12), self.holidays)
 
     def test_swieto_trzech_kroli(self):
-        self.holidays = holidays.Poland(years=[2011])
+        self.holidays = Poland(years=[2011])
         self.assertEqual(
             self.holidays[date(2011, 1, 6)], "Święto Trzech Króli"
         )
-        self.holidays = holidays.Poland(years=[2010])
+        self.holidays = Poland(years=[2010])
         self.assertNotIn(date(2010, 1, 6), self.holidays)
 
     def test_swieto_panstwowe(self):
-        self.holidays = holidays.Poland(years=[1950])
+        self.holidays = Poland(years=[1950])
         self.assertEqual(self.holidays[date(1950, 5, 1)], "Święto Państwowe")
-        self.holidays = holidays.Poland(years=[1949])
+        self.holidays = Poland(years=[1949])
         self.assertNotIn(date(1949, 5, 1), self.holidays)
 
     def test_swieto_narodowe_trzeciego_maja(self):
-        self.holidays = holidays.Poland(years=[1919])
+        self.holidays = Poland(years=[1919])
         self.assertEqual(
             self.holidays[date(1919, 5, 3)], "Święto Narodowe Trzeciego Maja"
         )
-        self.holidays = holidays.Poland(years=[1918])
+        self.holidays = Poland(years=[1918])
         self.assertNotIn(date(1918, 5, 3), self.holidays)
+
+    def test_l10n_default(self):
+        def run_tests(languages):
+            for language in languages:
+                pl = Poland(language=language)
+                self.assertEqual(pl["2022-01-01"], "Nowy Rok")
+                self.assertEqual(
+                    pl["2022-12-25"], "Boże Narodzenie (pierwszy dzień)"
+                )
+
+        run_tests((Poland.default_language, None, "invalid"))
+
+        self.set_locale("en")
+        run_tests((Poland.default_language,))
+
+    def test_l10n_en(self):
+        language = "en"
+
+        pl_en = Poland(language=language)
+        self.assertEqual(
+            pl_en["2018-11-12"],
+            "National Independence Day - 100th anniversary",
+        )
+        self.assertEqual(pl_en["2022-01-01"], "New Year's Day")
+        self.assertEqual(pl_en["2022-12-25"], "Christmas (Day 1)")
+
+        self.set_locale(language)
+        for language in (None, language, "invalid"):
+            pl_en = Poland(language=language)
+            self.assertEqual(pl_en["2022-01-01"], "New Year's Day")
+            self.assertEqual(pl_en["2022-12-25"], "Christmas (Day 1)")

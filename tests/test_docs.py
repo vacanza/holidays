@@ -10,9 +10,9 @@
 #  License: MIT (see LICENSE file)
 
 import re
+from unittest import TestCase
 
 from holidays import country_holidays, list_supported_countries
-from tests.common import TestCase
 
 
 class TestReadme(TestCase):

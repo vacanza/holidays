@@ -18,8 +18,9 @@ from tests.common import TestCase
 
 
 class TestArgentina(TestCase):
-    def setUp(self):
-        self.holidays = Argentina()
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Argentina)
 
     def test_country_aliases(self):
         self.assertCountryAliases(Argentina, AR, ARG)
@@ -229,82 +230,100 @@ class TestArgentina(TestCase):
         self.assertHolidays(
             (
                 "2022-01-01",
-                "Año Nuevo [New Year's Day]",
+                "Año Nuevo",
             ),
             (
                 "2022-02-28",
-                "Día de Carnaval [Carnival's Day]",
+                "Día de Carnaval",
             ),
             (
                 "2022-03-01",
-                "Día de Carnaval [Carnival's Day]",
+                "Día de Carnaval",
             ),
             (
                 "2022-03-24",
-                "Día Nacional de la Memoria por la Verdad y la Justicia "
-                "[Memory's National Day for the Truth and Justice]",
+                "Día Nacional de la Memoria por la Verdad y la Justicia",
             ),
             (
                 "2022-04-02",
-                "Día del Veterano y de los Caidos en la Guerra de Malvinas "
-                "[Veterans Day and the Fallen in the Malvinas War]",
+                "Día del Veterano y de los Caidos en la Guerra de Malvinas",
             ),
             (
                 "2022-04-14",
-                "Semana Santa (Jueves Santo) [Holy day (Holy Thursday)]",
+                "Semana Santa (Jueves Santo)",
             ),
             (
                 "2022-04-15",
-                "Semana Santa (Viernes Santo) [Holy day (Holy Friday)]",
+                "Semana Santa (Viernes Santo)",
             ),
             (
                 "2022-04-17",
-                "Día de Pascuas [Easter Day]",
+                "Día de Pascuas",
             ),
             (
                 "2022-05-01",
-                "Día del Trabajo [Labour Day]",
+                "Día del Trabajo",
             ),
             (
                 "2022-05-25",
-                "Día de la Revolucion de Mayo [May Revolution Day]",
+                "Día de la Revolución de Mayo",
             ),
             (
                 "2022-06-17",
                 "Día Pase a la Inmortalidad del General Martín Miguel de "
-                "Güemes [Day Pass to the Immortality of General Martín Miguel "
-                "de Güemes]",
+                "Güemes",
             ),
             (
                 "2022-06-20",
-                "Día Pase a la Inmortalidad del General D. Manuel Belgrano "
-                "[Day Pass to the Immortality of General D. Manuel Belgrano]",
+                "Día Pase a la Inmortalidad del General D. Manuel Belgrano",
             ),
             (
                 "2022-07-09",
-                "Día de la Independencia [Independence Day]",
+                "Día de la Independencia",
             ),
             (
                 "2022-08-17",
-                "Día Pase a la Inmortalidad del General D. José de San Martin "
-                "[Day Pass to the Immortality of General D. José de San "
-                "Martin]",
+                "Día Pase a la Inmortalidad del General D. José de San Martin",
             ),
             (
                 "2022-10-12",
-                "Día del Respeto a la Diversidad Cultural "
-                "[Respect for Cultural Diversity Day]",
+                "Día del Respeto a la Diversidad Cultural",
             ),
             (
                 "2022-11-20",
-                "Día Nacional de la Soberanía [National Sovereignty Day]",
+                "Día Nacional de la Soberanía",
             ),
             (
                 "2022-12-08",
-                "La Inmaculada Concepción [Immaculate Conception]",
+                "La Inmaculada Concepción",
             ),
             (
                 "2022-12-25",
-                "Navidad [Christmas]",
+                "Navidad",
             ),
         )
+
+    def test_l10n_default(self):
+        def run_tests(languages):
+            for language in languages:
+                ar = Argentina(language=language)
+                self.assertEqual(ar["2022-01-01"], "Año Nuevo")
+                self.assertEqual(ar["2022-12-25"], "Navidad")
+
+        run_tests((Argentina.default_language, None, "invalid"))
+
+        self.set_locale("en")
+        run_tests((Argentina.default_language,))
+
+    def test_l10n_en(self):
+        language = "en"
+
+        ar_en = Argentina(language=language)
+        self.assertEqual(ar_en["2018-01-01"], "New Year's Day")
+        self.assertEqual(ar_en["2022-12-25"], "Christmas")
+
+        self.set_locale(language)
+        for language in (None, language, "invalid"):
+            ar_en = Argentina(language=language)
+            self.assertEqual(ar_en["2018-01-01"], "New Year's Day")
+            self.assertEqual(ar_en["2022-12-25"], "Christmas")

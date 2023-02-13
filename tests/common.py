@@ -9,7 +9,11 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+import os
+import subprocess
+import sys
 import unittest
+from pathlib import Path
 from typing import Generator
 
 from dateutil.parser import parse
@@ -20,6 +24,53 @@ from holidays.constants import SUN
 
 class TestCase(unittest.TestCase):
     """Base class for python-holiday test cases."""
+
+    @classmethod
+    def setUpClass(cls, test_class=None):
+        super().setUpClass()
+
+        if test_class is None:
+            return None
+
+        cls.test_class = test_class
+
+        if (
+            not hasattr(test_class, "default_language")
+            or test_class.default_language is None
+            or len(test_class.default_language) != 2
+        ):
+            raise ValueError(
+                f"`{test_class.__name__}.default_language` value is invalid."
+            )
+
+        # Generate translation files for a specific entity.
+        name = getattr(
+            test_class, "country", getattr(test_class, "market", None)
+        )
+        for po_path in Path(os.path.join("holidays", "locale")).rglob(
+            f"{name}.po"
+        ):
+            po_file = str(po_path)
+            mo_file = po_file.replace(".po", ".mo")
+            subprocess.run(
+                (
+                    sys.executable,
+                    os.path.join("scripts", "l10n", "msgfmt.py"),
+                    "-o",
+                    mo_file,
+                    po_file,
+                ),
+                check=True,
+            )
+
+    def setUp(self):
+        super().setUp()
+
+        self.set_locale(self.test_class.default_language.lower())
+        self.holidays = self.test_class()
+
+    def set_locale(self, language):
+        os.environ["LANGUAGE"] = language
 
     def _parse_arguments(self, args, expand_items=True):
         item_args = args

@@ -9,6 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+import os
 import pathlib
 import pickle
 import unittest
@@ -138,8 +139,8 @@ class TestBasics(unittest.TestCase):
         self.holidays = holidays.US()
         self.assertEqual(
             str(self.holidays),
-            "{'expand': True, 'observed': True, 'subdiv': None, "
-            "'years': set()}",
+            "{'expand': True, 'language': None, "
+            "'observed': True, 'subdiv': None, 'years': set()}",
         )
 
         self.holidays = holidays.US(years=1900)
@@ -222,14 +223,36 @@ class TestBasics(unittest.TestCase):
         ca2 = holidays.CA()
         ca3 = holidays.Canada(years=[2014])
         ca4 = holidays.CA(years=[2014])
+        ca5 = holidays.Canada(language="fr")
+        ca6 = holidays.CA(language="fr")
         self.assertEqual(us1, us2)
         self.assertEqual(us3, us4)
         self.assertEqual(ca1, ca2)
         self.assertEqual(ca3, ca4)
+        self.assertEqual(ca5, ca6)
         self.assertNotEqual(us1, us3)
         self.assertNotEqual(us1, ca1)
         self.assertNotEqual(us3, ca3)
         self.assertNotEqual(us1, us3)
+        self.assertNotEqual(ca1, ca5)
+
+        self.assertNotEqual(us1, None)
+        self.assertNotEqual(us1, {})
+        self.assertFalse(us1 == {})
+
+    def test_copy(self):
+        us = holidays.UnitedStates()
+        self.assertEqual(us, us.copy())
+        self.assertTrue(us == us.copy())
+
+        ca = holidays.Canada()
+        ca_fr = holidays.Canada(language="fr")
+        ca_xx = holidays.Canada(language="xx")
+        self.assertNotEqual(ca, ca_fr)
+        self.assertNotEqual(ca.copy(), ca_fr.copy())
+
+        self.assertNotEqual(ca, ca_xx)
+        self.assertNotEqual(ca.copy(), ca_xx.copy())
 
     def test_add_countries(self):
         ca = holidays.CA()
@@ -307,6 +330,7 @@ class TestBasics(unittest.TestCase):
         self.assertEqual(
             na.get(date(1969, 12, 25)), "Christmas Day; Navidad [Christmas]"
         )
+        self.assertEqual(na, na.copy())
 
     def test_add_financial(self):
         ecb = holidays.ECB()
@@ -314,6 +338,8 @@ class TestBasics(unittest.TestCase):
         ecb_nyse = ecb + nyse
         self.assertEqual(len(ecb) + len(nyse), len(ecb_nyse))
         self.assertEqual(ecb_nyse.market, ["ECB", "NYSE"])
+        self.assertEqual(ecb_nyse, ecb_nyse.copy())
+        self.assertNotEqual(ecb_nyse, {})
 
     def test_get_list(self):
         westland = holidays.NZ(subdiv="WTL")
@@ -641,3 +667,14 @@ class TestCountrySpecialHolidays(unittest.TestCase):
         self.assertIn("1111-01-01", self.holidays)
         self.assertIn("2222-02-02", self.holidays)
         self.assertEqual(13, len(self.holidays))
+
+
+class TestHolidaysTranslation(unittest.TestCase):
+    def test_language_unavailable(self):
+        os.environ["LANGUAGE"] = "en"
+        us_xx = holidays.country_holidays("CA", language="xx")
+        self.assertEqual(us_xx["2022-01-01"], "New Year's Day")
+
+        os.environ["LANGUAGE"] = "pl"
+        pl_xx = holidays.country_holidays("PL", language="xx")
+        self.assertEqual(pl_xx["2022-01-01"], "Nowy Rok")
