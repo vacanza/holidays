@@ -59,15 +59,13 @@ class Canada(HolidayBase):
 
         super()._populate(year)
 
-        super()._populate(year)
-
         # New Year's Day
         name = self.tr("New Year's Day")
         self[date(year, JAN, 1)] = name
         if self.observed and self._is_weekend(year, JAN, 1):
-            self[
-                date(year, JAN, 1) + rd(weekday=MO)
-            ] = f"{name} {self.tr('(Observed)')}"
+            self[date(year, JAN, 1) + rd(weekday=MO)] = (
+                self.tr("%s (Observed)") % name
+            )
 
         # Family Day / Louis Riel Day (MB) / Islander Day (PE)
         # / Heritage Day (NS, YT)
@@ -164,7 +162,7 @@ class Canada(HolidayBase):
             dt = date(year, JUN, 24)
             self[dt] = name
             if self.observed and dt.weekday() == SUN:
-                self[dt + td(days=+1)] = f"{name} {self.tr('(Observed)')}"
+                self[dt + td(days=+1)] = self.tr("%s (Observed)") % name
 
         # Discovery Day
         if self.subdiv == "NL" and year >= 1997:
@@ -188,7 +186,7 @@ class Canada(HolidayBase):
         dt = date(year, JUL, 1)
         self[dt] = name
         if year >= 1879 and self.observed and self._is_weekend(dt):
-            self[dt + rd(weekday=MO)] = f"{name} {self.tr('(Observed)')}"
+            self[dt + rd(weekday=MO)] = self.tr("%s (Observed)") % name
 
         # Nunavut Day
         if self.subdiv == "NU":
@@ -197,7 +195,7 @@ class Canada(HolidayBase):
                 dt = date(year, JUL, 9)
                 self[dt] = name
                 if self.observed and dt.weekday() == SUN:
-                    self[dt + td(days=+1)] = f"{name} {self.tr('(Observed)')}"
+                    self[dt + td(days=+1)] = self.tr("%s (Observed)") % name
             elif year == 2000:
                 self[date(2000, APR, 1)] = name
 
@@ -272,21 +270,21 @@ class Canada(HolidayBase):
                 and dt.weekday() == SUN
                 and self.subdiv in {"NS", "NL", "NT", "PE", "SK"}
             ):
-                self[dt + rd(weekday=MO)] = f"{name} {self.tr('(Observed)')}"
+                self[dt + rd(weekday=MO)] = self.tr("%s (Observed)") % name
 
         # Christmas Day
         name = self.tr("Christmas Day")
         dt = date(year, DEC, 25)
         self[dt] = name
         if self.observed and self._is_weekend(dt):
-            self[dt + td(days=+2)] = f"{name} {self.tr('(Observed)')}"
+            self[dt + td(days=+2)] = self.tr("%s (Observed)") % name
 
         # Boxing Day
         name = self.tr("Boxing Day")
         dt = date(year, DEC, 26)
         self[dt] = name
         if self.observed and self._is_weekend(dt):
-            self[dt + td(days=+2)] = f"{name} {self.tr('(Observed)')}"
+            self[dt + td(days=+2)] = self.tr("%s (Observed)") % name
 
 
 class CA(Canada):

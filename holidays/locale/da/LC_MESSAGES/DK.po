@@ -3,8 +3,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.19\n"
-"POT-Creation-Date: 2022-12-19 10:04-0800\n"
+"Project-Id-Version: Python Holidays 0.20\n"
+"POT-Creation-Date: 2023-02-13 10:06-0800\n"
 "PO-Revision-Date: 2022-12-19 10:05-0800\n"
 "Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
 "Language-Team: Python Holidays Translation Team\n"
@@ -15,50 +15,50 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: holidays/countries/denmark.py:35
+#: holidays/countries/denmark.py:36
 msgid "Nytårsdag"
 msgstr ""
 
-#: holidays/countries/denmark.py:36
+#: holidays/countries/denmark.py:37
 msgid "Palmesøndag"
 msgstr ""
 
-#: holidays/countries/denmark.py:37
+#: holidays/countries/denmark.py:38
 msgid "Skærtorsdag"
 msgstr ""
 
-#: holidays/countries/denmark.py:38
+#: holidays/countries/denmark.py:39
 msgid "Langfredag"
 msgstr ""
 
-#: holidays/countries/denmark.py:39
+#: holidays/countries/denmark.py:40
 msgid "Påskedag"
 msgstr ""
 
-#: holidays/countries/denmark.py:40
+#: holidays/countries/denmark.py:41
 msgid "Anden påskedag"
 msgstr ""
 
-#: holidays/countries/denmark.py:41
+#: holidays/countries/denmark.py:42
 msgid "Store bededag"
 msgstr ""
 
-#: holidays/countries/denmark.py:42
+#: holidays/countries/denmark.py:43
 msgid "Kristi himmelfartsdag"
 msgstr ""
 
-#: holidays/countries/denmark.py:43
+#: holidays/countries/denmark.py:44
 msgid "Pinsedag"
 msgstr ""
 
-#: holidays/countries/denmark.py:44
+#: holidays/countries/denmark.py:45
 msgid "Anden pinsedag"
 msgstr ""
 
-#: holidays/countries/denmark.py:45
+#: holidays/countries/denmark.py:46
 msgid "Juledag"
 msgstr ""
 
-#: holidays/countries/denmark.py:46
+#: holidays/countries/denmark.py:47
 msgid "Anden juledag"
 msgstr ""

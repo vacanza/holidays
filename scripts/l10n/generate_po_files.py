@@ -52,18 +52,36 @@ class POTGenerator:
                 }
             )
 
-        for country_code, file_path in country_code_path_mapping.items():
+        for country_code, class_file_path in country_code_path_mapping.items():
+            pot_file_path = f"holidays/locale/pot/{country_code}.pot"
+            # Create .pot files.
             subprocess.run(
                 (
                     "pot-create",
-                    file_path,
+                    class_file_path,
                     "-k",
                     "tr",
                     "-o",
-                    f"holidays/locale/pot/{country_code}.pot",
+                    pot_file_path,
                 ),
                 check=True,
             )
+
+            # Update .po files.
+            for po_file_path in Path("holidays/locale").rglob(
+                f"{country_code}.po"
+            ):
+                subprocess.run(
+                    (
+                        "msgmerge",
+                        po_file_path,
+                        pot_file_path,
+                        "-o",
+                        po_file_path,
+                        "--force-po",
+                    ),
+                    check=True,
+                )
 
     def run(self):
         """Runs the POT files generation process."""

@@ -132,7 +132,9 @@ class Ukraine(HolidayBase):
 
         # Constitution Day
         if year >= 1997:
-            _add_with_observed(date(year, JUN, 28), "День Конституції України")
+            _add_with_observed(
+                date(year, JUN, 28), self.tr("День Конституції України")
+            )
 
         # Day of Ukrainian Statehood
         if year >= 2022:

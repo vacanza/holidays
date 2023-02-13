@@ -20,7 +20,10 @@ from holidays.holiday_base import HolidayBase
 
 class Denmark(HolidayBase):
     """
-    https://en.wikipedia.org/wiki/Public_holidays_in_Denmark
+    Denmark holidays.
+
+    References:
+     - https://en.wikipedia.org/wiki/Public_holidays_in_Denmark
     """
 
     country = "DK"
@@ -30,7 +33,6 @@ class Denmark(HolidayBase):
         super()._populate(year)
 
         easter_date = easter(year)
-        # Public holidays
         self[date(year, JAN, 1)] = self.tr("Nytårsdag")
         self[easter_date + td(days=-7)] = self.tr("Palmesøndag")
         self[easter_date + td(days=-3)] = self.tr("Skærtorsdag")

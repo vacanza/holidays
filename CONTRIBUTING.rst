@@ -85,7 +85,7 @@ generate pygettext .pot file first:
 
 .. code-block:: shell
 
-    $ make pot
+    $ make l10n
 
 If the template file is empty make sure that the country/market entity has the
 :py:attr:`default_language` attribute set and all holiday names are wrapped
