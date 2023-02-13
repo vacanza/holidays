@@ -59,7 +59,8 @@ class Chile(HolidayBase):
         # Law 2.977 established official holidays for Chile
         # in its current form
         if year <= 1914:
-            return
+            return None
+
         super()._populate(year)
 
         # New Year's Day (Law 2.977)

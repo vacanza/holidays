@@ -34,7 +34,8 @@ class Namibia(HolidayBase):
 
     def _populate(self, year):
         if year <= 1989:
-            return
+            return None
+
         super()._populate(year)
 
         self[date(year, JAN, 1)] = "New Year's Day"

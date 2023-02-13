@@ -55,7 +55,9 @@ class Canada(HolidayBase):
 
     def _populate(self, year):
         if year < 1867:
-            return
+            return None
+
+        super()._populate(year)
 
         super()._populate(year)
 

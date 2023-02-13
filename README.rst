@@ -105,10 +105,12 @@ Available Countries
 -------------------
 
 .. _ISO 3166-1 alpha-2 code: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
+.. _ISO 3166-2 code: https://en.wikipedia.org/wiki/ISO_3166-2
 
-We currently support 112 countries. The standard way to refer to a country is by
-using its `ISO 3166-1 alpha-2 code`_, the same used for domain names. The
-following countries and their subdivisions are available:
+We currently support 119 country codes. The standard way to refer to a country
+is by using its `ISO 3166-1 alpha-2 code`_, the same used for domain names, and
+for a subdivision its `ISO 3166-2 code`_. The following countries and
+subdivisions are available:
 
 .. list-table::
    :widths: 23 4 83
@@ -121,6 +123,9 @@ following countries and their subdivisions are available:
    * - Albania
      - AL
      - None
+   * - American Samoa
+     - AS
+     - None; Can also be loaded as country US, subdivision AS
    * - Andorra
      - AD
      - Parishes: AD-02, AD-03, AD-04, AD-05, AD-06, AD-07, AD-08
@@ -238,6 +243,9 @@ following countries and their subdivisions are available:
    * - Greece
      - GR
      - None
+   * - Guam
+     - GU
+     - None; Can also be loaded as country US, subdivision GU
    * - Honduras
      - HN
      - None
@@ -310,6 +318,9 @@ following countries and their subdivisions are available:
    * - Malta
      - MT
      - None
+   * - Marshall Islands (the)
+     - MH
+     - None
    * - Mexico
      - MX
      - None
@@ -343,6 +354,9 @@ following countries and their subdivisions are available:
    * - Nigeria
      - NG
      - None
+   * - Northern Mariana Islands (the)
+     - MP
+     - None; Can also be loaded as country US, subdivision MP
    * - North Macedonia
      - MK
      - None
@@ -370,6 +384,9 @@ following countries and their subdivisions are available:
    * - Portugal
      - PT
      - Districts: 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, Ext; Use subdiv='Ext' to include holidays most people have off
+   * - Puerto Rico
+     - PR
+     - None; Can also be loaded as country US, subdivision PR
    * - Romania
      - RO
      - None
@@ -430,9 +447,15 @@ following countries and their subdivisions are available:
    * - United Kingdom
      - GB
      - Subdivisions: England, Northern Ireland, Scotland, **UK** (default), Wales; For Isle of Man use country code IM
-   * - United States
+   * - United States Minor Outlying Islands
+     - UM
+     - None; Can also be loaded as country US, subdivision UM
+   * - United States of America (the)
      - US
-     - States and territories: AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL, GA, GU, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MH, MA, MI, FM, MN, MS, MO, MT, NE, NV, NH, NJ, NM, NY, NC, ND, MP, OH, OK, OR, PW, PA, PR, RI, SC, SD, TN, TX, UT, VT, VA, VI, WA, WV, WI, WY
+     - States and territories: AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL, GA, GU, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MH, MA, MI, FM, MN, MS, MO, MT, NE, NV, NH, NJ, NM, NY, NC, ND, MP, OH, OK, OR, PW, PA, PR, RI, SC, SD, TN, TX, UM, UT, VT, VA, VI, WA, WV, WI, WY
+   * - United States Virgin Islands (the)
+     -
+     - See Virgin Islands (U.S.)
    * - Uruguay
      - UY
      - None
@@ -448,6 +471,9 @@ following countries and their subdivisions are available:
    * - Vietnam
      - VN
      - None
+   * - Virgin Islands (U.S.)
+     - VI
+     - None; Can also be loaded as country US, subdivision VI
    * - Zambia
      - ZM
      - None

@@ -77,10 +77,10 @@ class Germany(HolidayBase):
     ]
 
     def _populate(self, year):
-        super()._populate(year)
-
         if year <= 1989:
-            return
+            return None
+
+        super()._populate(year)
 
         if year > 1990:
             self[date(year, JAN, 1)] = "Neujahr"
@@ -145,6 +145,10 @@ class Germany(HolidayBase):
                 self[date(year, SEP, 20)] = "Weltkindertag"
 
             if self.subdiv == "BE":
+                self[date(year, MAR, 8)] = "Internationaler Frauentag"
+
+        if year >= 2023:
+            if self.subdiv == "MV":
                 self[date(year, MAR, 8)] = "Internationaler Frauentag"
 
         self[date(year, DEC, 25)] = "Erster Weihnachtstag"

@@ -29,10 +29,10 @@ class China(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
-        super()._populate(year)
-
         if year <= 1949:
-            return
+            return None
+
+        super()._populate(year)
 
         self[date(year, JAN, 1)] = "New Year's Day"
 
