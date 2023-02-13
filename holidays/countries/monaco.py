@@ -14,7 +14,7 @@ from datetime import timedelta as td
 
 from dateutil.easter import easter
 
-from holidays.constants import SUN, JAN, MAY, AUG, NOV, DEC
+from holidays.constants import JAN, MAY, AUG, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -32,7 +32,7 @@ class Monaco(HolidayBase):
     def _populate(self, year):
         def _add_with_observed(hol_date: date, hol_name: str) -> None:
             self[hol_date] = hol_name
-            if self.observed and hol_date.weekday() == SUN:
+            if self.observed and self._is_sunday(hol_date):
                 self[hol_date + td(days=+1)] = f"{hol_name} (Observed)"
 
         super()._populate(year)
@@ -83,7 +83,7 @@ class Monaco(HolidayBase):
 
         # Immaculate Conception's Day
         dt = date(year, DEC, 8)
-        if year >= 2019 and dt.weekday() == SUN:
+        if year >= 2019 and self._is_sunday(dt):
             dt += td(days=+1)
         self[dt] = "L'Immaculée Conception [Immaculate Conception's Day]"
 

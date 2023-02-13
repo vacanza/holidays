@@ -185,7 +185,7 @@ class Chile(HolidayBase):
                 # floating Monday holiday (Law 19.668)
                 if dt.weekday() < FRI:
                     dt += rd(weekday=MO(-1))
-                elif dt.weekday() == FRI:
+                elif self._is_friday(dt):
                     dt += rd(weekday=MO)
                 if year <= 2019:
                     # Day of the Meeting of Two Worlds (Law 3.810)

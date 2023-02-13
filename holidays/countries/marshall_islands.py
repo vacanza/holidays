@@ -16,7 +16,7 @@ from dateutil.easter import easter
 from dateutil.relativedelta import FR
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAR, MAY, JUL, SEP, NOV, DEC, SAT, SUN
+from holidays.constants import JAN, MAR, MAY, JUL, SEP, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -46,10 +46,10 @@ class HolidaysMH(HolidayBase):
         self[dt] = name
         if not self.observed:
             return
-        if dt.weekday() == SAT:
+        if self._is_saturday(dt):
             if after_sat:
                 self[dt + td(days=+2)] = f"{name} (Holiday)"
-        elif dt.weekday() == SUN:
+        elif self._is_sunday(dt):
             self[dt + td(days=+1)] = f"{name} (Holiday)"
 
     def _populate(self, year):

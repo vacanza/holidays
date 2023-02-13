@@ -14,7 +14,7 @@ from datetime import timedelta as td
 
 from dateutil.easter import EASTER_ORTHODOX, easter
 
-from holidays.constants import JAN, MAY, JUL, SUN
+from holidays.constants import JAN, MAY, JUL
 from holidays.holiday_base import HolidayBase
 
 
@@ -34,7 +34,7 @@ class Montenegro(HolidayBase):
         if self._is_weekend(hol_date):
             self[hol_date + td(days=+2)] = f"{hol_name} (Observed)"
         self[hol_date + td(days=+1)] = (
-            f"{hol_name} (Observed)" if hol_date.weekday() == SUN else hol_name
+            f"{hol_name} (Observed)" if self._is_sunday(hol_date) else hol_name
         )
 
     def _populate(self, year: int) -> None:
