@@ -4,12 +4,13 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import TH, SU
@@ -88,8 +89,8 @@ class Switzerland(HolidayBase):
         # Näfelser Fahrt (first Thursday in April but not in Holy Week)
         if self.subdiv == "GL" and year >= 1835:
             dt = date(year, APR, 1) + rd(weekday=TH)
-            if dt == easter_date + rd(days=-3):
-                dt += rd(days=+7)
+            if dt == easter_date + td(days=-3):
+                dt += td(days=+7)
             self[dt] = "Näfelser Fahrt"
 
         # it's a Holiday on a Sunday
@@ -97,8 +98,8 @@ class Switzerland(HolidayBase):
 
         # VS don't have easter
         if self.subdiv != "VS":
-            self[easter_date + rd(days=-2)] = "Karfreitag"
-            self[easter_date + rd(days=+1)] = "Ostermontag"
+            self[easter_date + td(days=-2)] = "Karfreitag"
+            self[easter_date + td(days=+1)] = "Ostermontag"
 
         if self.subdiv in {
             "BL",
@@ -113,12 +114,12 @@ class Switzerland(HolidayBase):
         }:
             self[date(year, MAY, 1)] = "Tag der Arbeit"
 
-        self[easter_date + rd(days=+39)] = "Auffahrt"
+        self[easter_date + td(days=+39)] = "Auffahrt"
 
         # it's a Holiday on a Sunday
-        self[easter_date + rd(days=+49)] = "Pfingsten"
+        self[easter_date + td(days=+49)] = "Pfingsten"
 
-        self[easter_date + rd(days=+50)] = "Pfingstmontag"
+        self[easter_date + td(days=+50)] = "Pfingstmontag"
 
         if self.subdiv in {
             "AI",
@@ -132,7 +133,7 @@ class Switzerland(HolidayBase):
             "VS",
             "ZG",
         }:
-            self[easter_date + rd(days=+60)] = "Fronleichnam"
+            self[easter_date + td(days=+60)] = "Fronleichnam"
 
         if self.subdiv == "JU":
             self[date(year, JUN, 23)] = "Fest der Unabhängigkeit"
@@ -159,12 +160,12 @@ class Switzerland(HolidayBase):
 
         if self.subdiv == "VD":
             # Monday after the third Sunday of September
-            dt = date(year, SEP, 1) + rd(weekday=SU(+3)) + rd(days=+1)
+            dt = date(year, SEP, 1) + rd(weekday=SU(+3)) + td(days=+1)
             self[dt] = "Lundi du Jeûne"
 
         if self.subdiv == "GE":
             # Thursday after the first Sunday of September
-            dt = date(year, SEP, 1) + rd(weekday=SU) + rd(days=+4)
+            dt = date(year, SEP, 1) + rd(weekday=SU) + td(days=+4)
             self[dt] = "Jeûne genevois"
 
         if self.subdiv == "OW":

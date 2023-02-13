@@ -4,12 +4,13 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import EASTER_ORTHODOX, easter
 from dateutil.relativedelta import MO, TU
@@ -37,17 +38,17 @@ class Greece(HolidayBase):
         self[date(year, JAN, 6)] = "Θεοφάνεια [Epiphany]"
 
         # Clean Monday
-        self[easter_date + rd(days=-48)] = "Καθαρά Δευτέρα [Clean Monday]"
+        self[easter_date + td(days=-48)] = "Καθαρά Δευτέρα [Clean Monday]"
 
         # Independence Day
         self[date(year, MAR, 25)] = "Εικοστή Πέμπτη Μαρτίου [Independence Day]"
 
         # Easter Monday
-        self[easter_date + rd(days=+1)] = "Δευτέρα του Πάσχα [Easter Monday]"
+        self[easter_date + td(days=+1)] = "Δευτέρα του Πάσχα [Easter Monday]"
 
         # Monday of the Holy Spirit
         self[
-            easter_date + rd(days=+50)
+            easter_date + td(days=+50)
         ] = "Δευτέρα του Αγίου Πνεύματος [Monday of the Holy Spirit]"
 
         # Labour Day

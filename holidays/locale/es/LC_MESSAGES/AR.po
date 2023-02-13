@@ -1,0 +1,100 @@
+# Argentina holidays.
+# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.20\n"
+"POT-Creation-Date: 2023-02-13 08:58-0800\n"
+"PO-Revision-Date: 2022-12-18 18:03-0800\n"
+"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"Language-Team: Python Holidays Translation Team\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: holidays/countries/argentina.py:41
+msgid "Año Nuevo"
+msgstr ""
+
+#. Carnival days
+#: holidays/countries/argentina.py:45
+msgid "Día de Carnaval"
+msgstr ""
+
+#. Memory's National Day for the Truth and Justice
+#: holidays/countries/argentina.py:50
+msgid "Día Nacional de la Memoria por la Verdad y la Justicia"
+msgstr ""
+
+#. Holy Week
+#: holidays/countries/argentina.py:60
+msgid "Semana Santa (Jueves Santo)"
+msgstr ""
+
+#: holidays/countries/argentina.py:61
+msgid "Semana Santa (Viernes Santo)"
+msgstr ""
+
+#: holidays/countries/argentina.py:62
+msgid "Día de Pascuas"
+msgstr ""
+
+#: holidays/countries/argentina.py:76
+msgid "Día del Veterano y de los Caidos en la Guerra de Malvinas"
+msgstr ""
+
+#. Labor Day
+#: holidays/countries/argentina.py:81
+msgid "Día del Trabajo"
+msgstr ""
+
+#. May Revolution Day
+#: holidays/countries/argentina.py:88
+msgid "Día de la Revolución de Mayo"
+msgstr ""
+
+#. Day Pass to the Immortality of General Martín Miguel de Güemes.
+#: holidays/countries/argentina.py:95
+msgid "Día Pase a la Inmortalidad del General Martín Miguel de Güemes"
+msgstr ""
+
+#. Day Pass to the Immortality of General D. Manuel Belgrano.
+#: holidays/countries/argentina.py:104
+msgid "Día Pase a la Inmortalidad del General D. Manuel Belgrano"
+msgstr ""
+
+#. Independence Day
+#: holidays/countries/argentina.py:113
+msgid "Día de la Independencia"
+msgstr ""
+
+#. Day Pass to the Immortality of General D. José de San Martin
+#: holidays/countries/argentina.py:120
+msgid "Día Pase a la Inmortalidad del General D. José de San Martin"
+msgstr ""
+
+#: holidays/countries/argentina.py:132
+msgid "Día de la Raza"
+msgstr ""
+
+#: holidays/countries/argentina.py:134
+msgid "Día del Respeto a la Diversidad Cultural"
+msgstr ""
+
+#. National Sovereignty Day
+#: holidays/countries/argentina.py:138
+msgid "Día Nacional de la Soberanía"
+msgstr ""
+
+#: holidays/countries/argentina.py:148
+msgid "La Inmaculada Concepción"
+msgstr ""
+
+#. Christmas
+#: holidays/countries/argentina.py:151
+msgid "Navidad"
+msgstr ""

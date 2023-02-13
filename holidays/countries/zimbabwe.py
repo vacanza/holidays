@@ -4,12 +4,13 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import MO
@@ -29,7 +30,8 @@ class Zimbabwe(HolidayBase):
 
     def _populate(self, year):
         if year <= 1987:
-            return
+            return None
+
         super()._populate(year)
 
         self[date(year, JAN, 1)] = "New Year's Day"
@@ -41,9 +43,9 @@ class Zimbabwe(HolidayBase):
             ] = "Robert Gabriel Mugabe National Youth Day"
 
         easter_date = easter(year)
-        self[easter_date + rd(days=-2)] = "Good Friday"
-        self[easter_date + rd(days=-1)] = "Easter Saturday"
-        self[easter_date + rd(days=+1)] = "Easter Monday"
+        self[easter_date + td(days=-2)] = "Good Friday"
+        self[easter_date + td(days=-1)] = "Easter Saturday"
+        self[easter_date + td(days=+1)] = "Easter Monday"
 
         self[date(year, APR, 18)] = "Independence Day"
 
@@ -55,7 +57,7 @@ class Zimbabwe(HolidayBase):
         self[zimbabwe_heroes_day] = "Zimbabwe Heroes' Day"
 
         # Tuesday after 2nd Monday of August
-        defence_forces_day = zimbabwe_heroes_day + rd(days=1)
+        defence_forces_day = zimbabwe_heroes_day + td(days=+1)
         self[defence_forces_day] = "Defense Forces Day"
 
         self[date(year, DEC, 22)] = "Unity Day"
@@ -65,9 +67,9 @@ class Zimbabwe(HolidayBase):
         if self.observed:
             for k, v in list(self.items()):
                 if k.weekday() == SUN and k.year == year:
-                    dt = k + rd(days=+1)
+                    dt = k + td(days=+1)
                     while self.get(dt):
-                        dt += rd(days=+1)
+                        dt += td(days=+1)
                     self[dt] = v + " (Observed)"
 
 

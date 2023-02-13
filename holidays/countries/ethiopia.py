@@ -4,15 +4,15 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter, EASTER_ORTHODOX
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAR, MAY, SEP
 from holidays.holiday_base import HolidayBase
@@ -33,7 +33,6 @@ from holidays.utils import _islamic_to_gre
 
 
 class Ethiopia(HolidayBase):
-
     country = "ET"
 
     @staticmethod
@@ -78,7 +77,7 @@ class Ethiopia(HolidayBase):
 
         # Ethiopian Good Friday
         easter_date = easter(year, EASTER_ORTHODOX)
-        self[easter_date + rd(days=-2)] = "ስቅለት/Ethiopian Good Friday"
+        self[easter_date + td(days=-2)] = "ስቅለት/Ethiopian Good Friday"
 
         # Ethiopian  Easter - Orthodox Easter
         self[easter_date] = "ፋሲካ/Ethiopian Easter"
@@ -120,12 +119,12 @@ class Ethiopia(HolidayBase):
         # date of observance is announced yearly
         for date_obs in _islamic_to_gre(year, 12, 9):
             hol_date = date_obs
-            self[hol_date + rd(days=1)] = "አረፋ/Eid-Al-Adha"
+            self[hol_date + td(days=+1)] = "አረፋ/Eid-Al-Adha"
 
         # Prophet Muhammad's Birthday - (hijari_year, 3, 12)
         for date_obs in _islamic_to_gre(year, 3, 12):
             hol_date = date_obs
-            self[hol_date + rd(days=1)] = "መውሊድ/Prophet Muhammad's Birthday"
+            self[hol_date + td(days=+1)] = "መውሊድ/Prophet Muhammad's Birthday"
 
 
 class ET(Ethiopia):

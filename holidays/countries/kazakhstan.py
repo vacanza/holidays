@@ -4,14 +4,13 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-
-from dateutil.relativedelta import relativedelta as rd
+from datetime import timedelta as td
 
 from holidays.constants import JAN, MAR, MAY, JUL, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
@@ -85,11 +84,11 @@ class Kazakhstan(HolidayBase):
         if self.observed and year >= 2002:
             for k, v in list(self.items()):
                 if self._is_weekend(k) and k.year == year:
-                    next_workday = k + rd(days=+1)
+                    next_workday = k + td(days=+1)
                     while self._is_weekend(next_workday) or self.get(
                         next_workday
                     ):
-                        next_workday += rd(days=+1)
+                        next_workday += td(days=+1)
                     self[next_workday] = v + " (Observed)"
 
         # Nonworking days (without extending)

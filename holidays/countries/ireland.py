@@ -4,11 +4,13 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
+
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import MO
@@ -51,7 +53,7 @@ class Ireland(HolidayBase):
             self[dt + rd(weekday=MO)] = name + " (Observed)"
 
         # Easter Monday
-        self[easter(year) + rd(days=+1)] = "Easter Monday"
+        self[easter(year) + td(days=+1)] = "Easter Monday"
 
         # May bank holiday (first Monday in May)
         if year >= 1978:
@@ -83,7 +85,7 @@ class Ireland(HolidayBase):
         dt = date(year, DEC, 26)
         self[dt] = name
         if self.observed and self._is_weekend(dt):
-            self[dt + rd(days=2)] = name + " (Observed)"
+            self[dt + td(days=+2)] = name + " (Observed)"
 
 
 class IE(Ireland):

@@ -4,15 +4,15 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import EASTER_ORTHODOX, easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, FEB, MAY, NOV, SUN
 from holidays.holiday_base import HolidayBase
@@ -59,10 +59,10 @@ class Serbia(HolidayBase):
         if self.observed and date(year, NOV, 11).weekday() == SUN:
             self[date(year, NOV, 12)] = name + " (Observed)"
         # Easter
-        self[easter_date + rd(days=-2)] = "Велики петак"
-        self[easter_date + rd(days=-1)] = "Велика субота"
+        self[easter_date + td(days=-2)] = "Велики петак"
+        self[easter_date + td(days=-1)] = "Велика субота"
         self[easter_date] = "Васкрс"
-        self[easter_date + rd(days=+1)] = "Други дан Васкрса"
+        self[easter_date + td(days=+1)] = "Други дан Васкрса"
 
 
 class RS(Serbia):

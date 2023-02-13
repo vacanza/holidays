@@ -4,14 +4,13 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-
-from dateutil.relativedelta import relativedelta as rd
+from datetime import timedelta as td
 
 from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, SEP, NOV, DEC
 from holidays.constants import FRI, SAT
@@ -20,7 +19,6 @@ from holidays.utils import _islamic_to_gre
 
 
 class UnitedArabEmirates(HolidayBase):
-
     # Holidays are regulated by the Article 74
     # of Federal Law No. 08 for the year 1980:
     # https://www.ilo.org/dyn/natlex/docs/ELECTRONIC/11956/69376/F417089305/ARE11956.pdf
@@ -87,19 +85,19 @@ class UnitedArabEmirates(HolidayBase):
             for date_obs in dates_obs[year]:
                 hol_date = date(year, *date_obs)
                 self[hol_date] = fitr
-                self[hol_date + rd(days=1)] = f"{fitr} Holiday"
-                self[hol_date + rd(days=2)] = f"{fitr} Holiday"
+                self[hol_date + td(days=+1)] = f"{fitr} Holiday"
+                self[hol_date + td(days=+2)] = f"{fitr} Holiday"
         else:
             for yr in (year - 1, year):
                 for date_obs in _islamic_to_gre(yr, 10, 1):
                     hol_date = date_obs
                     _add_holiday(hol_date, f"{fitr}* (*estimated)")
                     _add_holiday(
-                        hol_date + rd(days=1),
+                        hol_date + td(days=+1),
                         f"{fitr} Holiday* (*estimated)",
                     )
                     _add_holiday(
-                        hol_date + rd(days=2),
+                        hol_date + td(days=+2),
                         f"{fitr} Holiday* (*estimated)",
                     )
 
@@ -116,23 +114,23 @@ class UnitedArabEmirates(HolidayBase):
             for date_obs in dates_obs[year]:
                 hol_date = date(year, *date_obs)
                 self[hol_date] = hajj
-                self[hol_date + rd(days=1)] = adha
-                self[hol_date + rd(days=2)] = f"{adha} Holiday"
-                self[hol_date + rd(days=3)] = f"{adha} Holiday"
+                self[hol_date + td(days=+1)] = adha
+                self[hol_date + td(days=+2)] = f"{adha} Holiday"
+                self[hol_date + td(days=+3)] = f"{adha} Holiday"
         else:
             for yr in (year - 1, year):
                 for date_obs in _islamic_to_gre(yr, 12, 9):
                     hol_date = date_obs
                     _add_holiday(hol_date, f"{hajj}* (*estimated)")
                     _add_holiday(
-                        hol_date + rd(days=1), f"{adha}* (*estimated)"
+                        hol_date + td(days=+1), f"{adha}* (*estimated)"
                     )
                     _add_holiday(
-                        hol_date + rd(days=2),
+                        hol_date + td(days=+2),
                         f"{adha}* Holiday* (*estimated)",
                     )
                     _add_holiday(
-                        hol_date + rd(days=3),
+                        hol_date + td(days=+3),
                         f"{adha} Holiday* (*estimated)",
                     )
 

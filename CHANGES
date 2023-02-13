@@ -1,3 +1,35 @@
+Version 0.20
+============
+
+Released ???????? ??, ????
+
+- Code refactoring #935 (@arkid15r)
+- US improvements (ISO 3166-1 support for subdivisions) and fixes #939, #940, #941 (@mborsetti)
+- Germany update #936 (@alexanderschulze)
+
+Version 0.19
+============
+
+Released January 30, 2023
+
+- Copyright update 2023
+- Added Arkadii Yakovets (@arkid15r) to project collaborators / maintainers - welcome!
+- Add supported countries tests #878 (@arkid15r)
+- Update tox configuration #881 (@arkid15r)
+- Use augmented assignment statements #890 (@arkid15r)
+- Clean up timedelta/relativedelta usage #892, #894 (@arkid15r)
+- Add Albania initial support #895 (@arkid15r)
+- Add Andorra initial support #896 (@arkid15r)
+- Add Bahrain initial support #888 (@arkid15r)
+- Add Montenegro initial support #897 (@arkid15r)
+- Add San Marino initial support #898 (@arkid15r)
+- Add Vatican City initial support #904 (@arkid15r)
+- Add Monaco holidays #877 (@KJhellico)
+- Migrate prophet.hdays countries #887 (@arkid15r)
+- Dominican Republic fix Corpus Christi holiday, tests refactoring #906 (@KJhellico)
+- Japan: substitute holidays and citizens' holidays calculation #879 (@KJhellico)
+- Singapore holidays update #880 (@KJhellico)
+
 Version 0.18
 ============
 

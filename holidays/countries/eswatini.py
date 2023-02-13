@@ -4,16 +4,16 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 import warnings
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, APR, MAY, JUL, SEP, DEC, SUN
 from holidays.holiday_base import HolidayBase
@@ -35,15 +35,16 @@ class Eswatini(HolidayBase):
     def _populate(self, year):
         # Observed since 1939
         if year <= 1938:
-            return
+            return None
+
         super()._populate(year)
 
         self[date(year, JAN, 1)] = "New Year's Day"
 
         easter_date = easter(year)
-        self[easter_date + rd(days=-2)] = "Good Friday"
-        self[easter_date + rd(days=+1)] = "Easter Monday"
-        self[easter_date + rd(days=+39)] = "Ascension Day"
+        self[easter_date + td(days=-2)] = "Good Friday"
+        self[easter_date + td(days=+1)] = "Easter Monday"
+        self[easter_date + td(days=+39)] = "Ascension Day"
 
         if year >= 1969:
             self[date(year, APR, 25)] = "National Flag Day"
@@ -67,9 +68,9 @@ class Eswatini(HolidayBase):
         if self.observed and year >= 2021:
             for k, v in list(self.items()):
                 if k.weekday() == SUN and k.year == year:
-                    dt = k + rd(days=+1)
+                    dt = k + td(days=+1)
                     while self.get(dt):
-                        dt += rd(days=+1)
+                        dt += td(days=+1)
                     self[dt] = v + " (Observed)"
 
 

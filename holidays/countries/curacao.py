@@ -4,15 +4,15 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, APR, MAY, JUL, AUG, OCT, DEC, SUN
 from holidays.holiday_base import HolidayBase
@@ -34,22 +34,22 @@ class Curacao(HolidayBase):
         easter_date = easter(year)
         # Carnaval Monday
         self[
-            easter_date + rd(days=-48)
+            easter_date + td(days=-48)
         ] = "Maandag na de Grote Karnaval [Carnaval Monday]"
 
         # Good Friday
-        self[easter_date + rd(days=-2)] = "Goede Vrijdag [Good Friday]"
+        self[easter_date + td(days=-2)] = "Goede Vrijdag [Good Friday]"
 
         # Easter Monday
         self[
-            easter_date + rd(days=+1)
+            easter_date + td(days=+1)
         ] = "Di Dos Dia di Pasku di Resureccion [Easter Monday]"
 
         # King's Day
         if year >= 2014:
             kings_day = date(year, APR, 27)
             if kings_day.weekday() == SUN:
-                kings_day = kings_day - rd(days=1)
+                kings_day += td(days=-1)
 
             self[kings_day] = "Koningsdag [King's Day]"
 
@@ -60,21 +60,18 @@ class Curacao(HolidayBase):
                 queens_day = date(year, AUG, 31)
 
             if queens_day.weekday() == SUN:
-                if year < 1980:
-                    queens_day = queens_day + rd(days=1)
-                else:
-                    queens_day = queens_day - rd(days=1)
+                queens_day += td(days=1) if year < 1980 else td(days=-1)
 
             self[queens_day] = "Anja di La Reina [Queen's Day]"
 
         # Labour Day
         labour_day = date(year, MAY, 1)
         if labour_day.weekday() == SUN:
-            labour_day = labour_day + rd(days=1)
+            labour_day += td(days=+1)
         self[labour_day] = "Dia di Obrero [Labour Day]"
 
         # Ascension Day
-        self[easter_date + rd(days=+39)] = "Hemelvaartsdag [Ascension Day]"
+        self[easter_date + td(days=+39)] = "Hemelvaartsdag [Ascension Day]"
 
         # Dia di Himno y Bandera
         self[

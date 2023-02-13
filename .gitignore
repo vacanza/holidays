@@ -1,19 +1,24 @@
-build/
+build/*
 dist/
 venv/
 MANIFEST
 .coverage
 *.egg-info
+*.mo
+*.pot
 *.pyc
 *.DS_Store
 coverage.xml
 .tox
 .venv
 docs/_build
+docs/build
 docs/source/_build
+holidays/locale/pot
 
 # IDE Stuff
 .idea
 .vscode/
 *.code-workspace
 Pipfile
+.gitpod.yml

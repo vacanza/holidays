@@ -4,12 +4,13 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date, datetime
+from datetime import timedelta as td
 
 from dateutil import tz
 from dateutil.easter import easter
@@ -55,11 +56,11 @@ class Chile(HolidayBase):
     ]
 
     def _populate(self, year):
-
         # Law 2.977 established official holidays for Chile
         # in its current form
         if year <= 1914:
-            return
+            return None
+
         super()._populate(year)
 
         # New Year's Day (Law 2.977)
@@ -71,25 +72,25 @@ class Chile(HolidayBase):
         # Holy Week (Law 2.977)
         easter_date = easter(year)
         self[
-            easter_date + rd(days=-2)
+            easter_date + td(days=-2)
         ] = "Semana Santa (Viernes Santo) [Good Friday)]"
         self[
-            easter_date + rd(days=-1)
+            easter_date + td(days=-1)
         ] = "Semana Santa (Sábado Santo) [Good Saturday)]"
 
         # Ascension
         if year <= 1967:
             self[
-                easter_date + rd(days=+39)
+                easter_date + td(days=+39)
             ] = "Ascensión del Señor [Ascension of Jesus]"
 
         # Corpus Christi
         if year <= 1967 or 1987 <= year <= 2006:
             # Law 19.668
             if year <= 1999:
-                dt = easter_date + rd(days=+60)
+                dt = easter_date + td(days=+60)
             else:
-                dt = easter_date + rd(days=+57)
+                dt = easter_date + td(days=+57)
             self[dt] = "Corpus Christi [Corpus Christi]"
 
         # Labour Day (Law 2.200, renamed with Law 18.018)
@@ -207,9 +208,9 @@ class Chile(HolidayBase):
             # if it falls on a Tuesday, or to the following Friday
             # if it falls on a Wednesday (Law 20.299)
             if dt.weekday() == WED:
-                dt += rd(days=+2)
+                dt += td(days=+2)
             elif dt.weekday() == TUE:
-                dt += rd(days=-4)
+                dt += td(days=-4)
             self[dt] = (
                 "Día Nacional de las Iglesias Evangélicas y Protestantes"
                 " [Reformation Day]"

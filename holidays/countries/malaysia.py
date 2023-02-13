@@ -4,12 +4,13 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 from typing import Iterable, Optional, Union
 
 from dateutil.easter import easter
@@ -36,19 +37,19 @@ class Malaysia(HolidayBase):
         "JHR",
         "KDH",
         "KTN",
+        "KUL",
+        "LBN",
         "MLK",
         "NSN",
         "PHG",
-        "PRK",
+        "PJY",
         "PLS",
         "PNG",
+        "PRK",
         "SBH",
-        "SWK",
         "SGR",
+        "SWK",
         "TRG",
-        "KUL",
-        "LBN",
-        "PJY",
     ]
 
     def __init__(
@@ -59,6 +60,7 @@ class Malaysia(HolidayBase):
         subdiv: Optional[str] = None,
         prov: Optional[str] = None,
         state: Optional[str] = None,
+        language: Optional[str] = None,
     ) -> None:
         """
         An subclass of :py:class:`HolidayBase` representing public holidays in
@@ -100,7 +102,9 @@ class Malaysia(HolidayBase):
         See parameters and usage in :py:class:`HolidayBase`.
         """
         self.cnls = _ChineseLuniSolar()
-        super().__init__(years, expand, observed, subdiv, prov, state)
+        super().__init__(
+            years, expand, observed, subdiv, prov, state, language
+        )
 
     def _populate(self, year):
         def _add_holiday(dt: date, hol: str) -> None:
@@ -118,7 +122,7 @@ class Malaysia(HolidayBase):
         # The second day of Chinese New Year is not a federal holiday in
         # Kelantan and Terengganu. However, it is gazetted as a state holiday
         # in both states, effectively making it a nationwide holiday.
-        self[hol_date + rd(days=+1)] = "Chinese New Year Holiday"
+        self[hol_date + td(days=+1)] = "Chinese New Year Holiday"
 
         # Wesak Day.
         # Date of observance is announced yearly
@@ -297,7 +301,8 @@ class Malaysia(HolidayBase):
         for hol_date, hol_suffix in hol_dates:
             _add_holiday(hol_date, f"{name}{hol_suffix}")
             _add_holiday(
-                hol_date + rd(days=+1), f"Second day of {name}{hol_suffix}"
+                hol_date + td(days=+1),
+                f"Second day of {name}{hol_suffix}",
             )
 
         # Hari Raya Haji and Arafat Day.
@@ -342,11 +347,12 @@ class Malaysia(HolidayBase):
             _add_holiday(hol_date, f"{name}{hol_suffix}")
             if self.subdiv == "TRG":
                 # Arafat Day is one day before Eid al-Adha
-                _add_holiday(hol_date + rd(days=-1), f"Arafat Day{hol_suffix}")
+                _add_holiday(hol_date + td(days=-1), f"Arafat Day{hol_suffix}")
             if self.subdiv in {"KDH", "KTN", "PLS", "TRG"}:
                 # Second day
                 _add_holiday(
-                    hol_date + rd(days=+1), f"{name} Holiday{hol_suffix}"
+                    hol_date + td(days=+1),
+                    f"{name} Holiday{hol_suffix}",
                 )
 
         # ---------------------------------------------------------#
@@ -613,23 +619,23 @@ class Malaysia(HolidayBase):
                 continue
             in_lieu_date = None
             if hol_date.weekday() == FRI and self.subdiv in {"JHR", "KDH"}:
-                in_lieu_date = hol_date + rd(days=+2)
+                in_lieu_date = hol_date + td(days=+2)
             elif hol_date.weekday() == SAT and self.subdiv in {
                 "KTN",
                 "TRG",
             }:
-                in_lieu_date = hol_date + rd(days=+1)
+                in_lieu_date = hol_date + td(days=+1)
             elif hol_date.weekday() == SUN and self.subdiv not in {
                 "JHR",
                 "KDH",
                 "KTN",
                 "TRG",
             }:
-                in_lieu_date = hol_date + rd(days=+1)
+                in_lieu_date = hol_date + td(days=+1)
             if not in_lieu_date:
                 continue
             while in_lieu_date.year == year and in_lieu_date in self:
-                in_lieu_date += rd(days=+1)
+                in_lieu_date += td(days=+1)
             _add_holiday(in_lieu_date, f"{hol_name} [In lieu]")
 
         # The last two days in May (Pesta Kaamatan).
@@ -705,7 +711,7 @@ class Malaysia(HolidayBase):
 
         # Good Friday.
         if self.subdiv in {"SBH", "SWK"}:
-            self[easter(year) + rd(days=-2)] = "Good Friday"
+            self[easter(year) + td(days=-2)] = "Good Friday"
 
         # -----------------------------
         # State holidays (single state)
@@ -771,7 +777,6 @@ class Malaysia(HolidayBase):
 
 
 class MY(Malaysia):
-
     # __init__ required for IDE typing and inheritance of docstring.
     def __init__(
         self,
@@ -781,12 +786,14 @@ class MY(Malaysia):
         subdiv: Optional[str] = None,
         prov: Optional[str] = None,
         state: Optional[str] = None,
+        language: Optional[str] = None,
     ) -> None:
-        super().__init__(years, expand, observed, subdiv, prov, state)
+        super().__init__(
+            years, expand, observed, subdiv, prov, state, language
+        )
 
 
 class MYS(Malaysia):
-
     # __init__ required for IDE typing and inheritance of docstring.
     def __init__(
         self,
@@ -796,5 +803,8 @@ class MYS(Malaysia):
         subdiv: Optional[str] = None,
         prov: Optional[str] = None,
         state: Optional[str] = None,
+        language: Optional[str] = None,
     ) -> None:
-        super().__init__(years, expand, observed, subdiv, prov, state)
+        super().__init__(
+            years, expand, observed, subdiv, prov, state, language
+        )

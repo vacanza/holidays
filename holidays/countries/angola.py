@@ -4,15 +4,15 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, FEB, MAR, APR, MAY, SEP, NOV, DEC, MON
 from holidays.constants import TUE, THU, SUN
@@ -31,7 +31,8 @@ class Angola(HolidayBase):
         # Observed since 1975
         # TODO do more research on history of Angolan holidays
         if year <= 1974:
-            return
+            return None
+
         super()._populate(year)
 
         self[date(year, JAN, 1)] = "Ano novo"
@@ -42,11 +43,11 @@ class Angola(HolidayBase):
                 self[date(year, DEC, 31)] = "Ano novo (Day off)"
 
         easter_date = easter(year)
-        self[(easter_date + rd(days=-2))] = "Sexta-feira Santa"
+        self[(easter_date + td(days=-2))] = "Sexta-feira Santa"
 
         # carnival is the Tuesday before Ash Wednesday
         # which is 40 days before easter excluding sundays
-        self[(easter_date + rd(days=-47))] = "Carnaval"
+        self[(easter_date + td(days=-47))] = "Carnaval"
 
         self[date(year, FEB, 4)] = "Dia do Início da Luta Armada"
         self[date(year, MAR, 8)] = "Dia Internacional da Mulher"
@@ -74,12 +75,12 @@ class Angola(HolidayBase):
                     continue
                 if year <= 2017:
                     if k.weekday() == SUN:
-                        self[k + rd(days=+1)] = v + " (Observed)"
+                        self[k + td(days=+1)] = v + " (Observed)"
                 else:
                     if k.weekday() == TUE and k != date(year, JAN, 1):
-                        self[k + rd(days=-1)] = v + " (Day off)"
+                        self[k + td(days=-1)] = v + " (Day off)"
                     elif k.weekday() == THU:
-                        self[k + rd(days=+1)] = v + " (Day off)"
+                        self[k + td(days=+1)] = v + " (Day off)"
 
 
 class AO(Angola):
