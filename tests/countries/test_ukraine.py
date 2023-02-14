@@ -431,20 +431,20 @@ class TestUkraine(TestCase):
             "2022-12-26",
         )
 
-        def test_l10n_default(self):
-            def run_tests(languages):
-                for language in languages:
-                    ua = Ukraine(language=language)
-                    self.assertEqual(ua["2022-01-01"], "Новий рік")
-                    self.assertEqual(
-                        ua["2022-12-25"],
-                        "Різдво Христове (за григоріанським календарем)",
-                    )
+    def test_l10n_default(self):
+        def run_tests(languages):
+            for language in languages:
+                ua = Ukraine(language=language)
+                self.assertEqual(ua["2022-01-01"], "Новий рік")
+                self.assertEqual(
+                    ua["2022-12-25"],
+                    "Різдво Христове (за григоріанським календарем)",
+                )
 
-            run_tests((Ukraine.default_language, None, "invalid"))
+        run_tests((Ukraine.default_language, None, "invalid"))
 
-            self.set_locale("en")
-            run_tests((Ukraine.default_language,))
+        self.set_locale("en")
+        run_tests((Ukraine.default_language,))
 
     def test_l10n_en(self):
         language = "en"
