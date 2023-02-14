@@ -14,6 +14,7 @@ __all__ = ("DateLike", "HolidayBase", "HolidaySum")
 import copy
 import os
 import warnings
+from calendar import isleap
 from datetime import date, datetime, timedelta
 from gettext import NullTranslations, gettext, translation
 from pathlib import Path
@@ -672,6 +673,13 @@ class HolidayBase(Dict[date, str]):
         # Populate items from the special holidays list.
         for month, day, name in self.special_holidays.get(year, ()):
             self[date(year, month, day)] = self.tr(name)
+
+    @staticmethod
+    def _is_leap_year(year: int) -> bool:
+        """
+        Returns True if the year is leap. Returns False otherwise.
+        """
+        return isleap(year)
 
     def _is_weekend(self, *args):
         """
