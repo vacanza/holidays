@@ -10,6 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
+import warnings
 from datetime import date
 
 import holidays
@@ -19,6 +20,7 @@ from holidays.constants import JAN, MAR, APR, MAY, JUL, SEP, NOV, DEC
 class TestMH(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.MH()
+        warnings.simplefilter("ignore")
 
     def test_2022(self):
         # https://www.register-iri.com/info-center/the-marshall-islands/
