@@ -34,7 +34,7 @@ First step is setting up development environment and installing all the required
     $ virtualenv -p python3 venv
     $ source venv/bin/activate
 
-    $ make install
+    $ make setup
 
 The project provides automated style, tests and coverage checks:
 
