@@ -260,9 +260,9 @@ class SouthKorea(HolidayBase):
         """
 
         start_value = cur
-        target_weekday = [SUN]
+        target_weekday = {SUN}
         if include_sat:
-            target_weekday.append(SAT)
+            target_weekday.add(SAT)
         check_1 = cur.weekday() in target_weekday  # Exclude weekends
         check_2 = (
             cur in self and name != self[cur]

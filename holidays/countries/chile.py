@@ -19,7 +19,7 @@ from dateutil.relativedelta import relativedelta as rd
 from pymeeus.Epoch import Epoch
 from pymeeus.Sun import Sun
 
-from holidays.constants import JAN, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC, FRI
+from holidays.constants import JAN, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -122,7 +122,7 @@ class Chile(HolidayBase):
             dt = date(year, JUN, 29)
             if year >= 2000:
                 # floating Monday holiday (Law 19.668)
-                if dt.weekday() < FRI:
+                if not self._is_friday(dt) and not self._is_weekend(dt):
                     dt += rd(weekday=MO(-1))
                 elif self._is_friday(dt):
                     dt += rd(weekday=MO)
@@ -183,7 +183,7 @@ class Chile(HolidayBase):
             name = "Día de la Raza [Columbus day]"
             if year >= 2000:
                 # floating Monday holiday (Law 19.668)
-                if dt.weekday() < FRI:
+                if not self._is_friday(dt) and not self._is_weekend(dt):
                     dt += rd(weekday=MO(-1))
                 elif self._is_friday(dt):
                     dt += rd(weekday=MO)

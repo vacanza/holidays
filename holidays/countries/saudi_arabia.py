@@ -40,13 +40,11 @@ class SaudiArabia(HolidayBase):
     def _populate(self, year):
         super()._populate(year)
 
-        if year < 2013:
-            # Weekend used to be THU, FRI before June 28th, 2013
-            # On that year both Eids were after that date, and foudning
-            # day holiday started at 2022; so what below works,
-            self.weekend = (THU, FRI)
-        else:
-            self.weekend = (FRI, SAT)
+        # Weekend used to be THU, FRI before June 28th, 2013.
+        # On that year both Eids were after that date, and founding
+        # day holiday started at 2022; so what below works.
+        # It has to be a tuple (subscriptable) due to a business logic below.
+        self.weekend = (THU, FRI) if year < 2013 else (FRI, SAT)
 
         observed_str = " (observed)"
 
