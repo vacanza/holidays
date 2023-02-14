@@ -252,11 +252,9 @@ class Thailand(HolidayBase):
             return None
 
         def _add_with_observed(dt, holiday_name) -> None:
-            # Only add if current year and year is 1941 (B.E. 2484) or later
-            # This is here as a stub for future islamic consecutive holidays
-            # Which can stradle across gregorian years in southern region
-            if dt.year == year:
-                self[dt] = holiday_name
+            # TODO: add `if dt.year == year` check for Islamic holidays
+            # which can straddle across gregorian years in southern region.
+            self[dt] = holiday_name
 
             """
             !!! If Public Holiday falls on weekends, (in lieu) on workday !!!
