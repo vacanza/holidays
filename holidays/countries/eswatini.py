@@ -15,7 +15,7 @@ from datetime import timedelta as td
 
 from dateutil.easter import easter
 
-from holidays.constants import JAN, APR, MAY, JUL, SEP, DEC, SUN
+from holidays.constants import JAN, APR, MAY, JUL, SEP, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -67,7 +67,7 @@ class Eswatini(HolidayBase):
         # it rolls over to the following Monday
         if self.observed and year >= 2021:
             for k, v in list(self.items()):
-                if k.weekday() == SUN and k.year == year:
+                if self._is_sunday(k) and k.year == year:
                     dt = k + td(days=+1)
                     while self.get(dt):
                         dt += td(days=+1)

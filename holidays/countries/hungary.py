@@ -14,8 +14,7 @@ from datetime import timedelta as td
 
 from dateutil.easter import easter
 
-from holidays.constants import JAN, MAR, APR, MAY, AUG, OCT, NOV, DEC, MON
-from holidays.constants import TUE, THU
+from holidays.constants import JAN, MAR, APR, MAY, AUG, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -129,12 +128,9 @@ class Hungary(HolidayBase):
         # New Year's Eve
         # Since 2014, the last day of the year is an observed day off if New
         # Year's Day falls on a Tuesday.
-        if (
-            self.observed
-            and 2014 <= year
-            and date(year, DEC, 31).weekday() == MON
-        ):
-            self[date(year, DEC, 31)] = "Szilveszter"
+        dec_31 = date(year, DEC, 31)
+        if self.observed and 2014 <= year and self._is_monday(dec_31):
+            self[dec_31] = "Szilveszter"
 
     def _add_with_observed_day_off(
         self,
@@ -149,9 +145,9 @@ class Hungary(HolidayBase):
         self[day] = desc
         # TODO: should it be a separate flag?
         if self.observed and since <= day.year:
-            if day.weekday() == TUE and before:
+            if self._is_tuesday(day) and before:
                 self[day + td(days=-1)] = desc + " előtti pihenőnap"
-            elif day.weekday() == THU and after:
+            elif self._is_thursday(day) and after:
                 self[day + td(days=+1)] = desc + " utáni pihenőnap"
 
 

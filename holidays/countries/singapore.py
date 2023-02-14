@@ -16,7 +16,7 @@ from typing import Dict, Iterable, Optional, Tuple, Union
 from dateutil.easter import easter
 
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, SEP, AUG
-from holidays.constants import OCT, NOV, DEC, SUN
+from holidays.constants import OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _ChineseLuniSolar, _islamic_to_gre
 
@@ -286,7 +286,7 @@ class Singapore(HolidayBase):
         # is declared a public holiday in Singapore."
         if self.observed and year >= 1998:
             for hol_date, hol_name in list(self.items()):
-                if hol_date.year == year and hol_date.weekday() == SUN:
+                if hol_date.year == year and self._is_sunday(hol_date):
                     in_lieu_date = hol_date + td(days=+1)
                     while in_lieu_date.year == year and in_lieu_date in self:
                         in_lieu_date += td(days=+1)

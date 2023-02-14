@@ -18,8 +18,8 @@ from dateutil.relativedelta import relativedelta as rd
 from pymeeus.Epoch import Epoch
 from pymeeus.Sun import Sun
 
-from holidays.constants import SUN, JAN, FEB, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC
+from holidays.constants import JAN, FEB, APR, MAY, JUN, JUL, AUG, SEP, OCT
+from holidays.constants import NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -148,7 +148,7 @@ class Japan(HolidayBase):
             # When a national holiday falls on Sunday, next working day
             # shall become a public holiday (振替休日) - substitute holidays
             for dt in list(self.keys()):
-                if dt.year == year and dt.weekday() == SUN:
+                if dt.year == year and self._is_sunday(dt):
                     hol_date = dt + td(days=+1)
                     while hol_date in self:
                         hol_date += td(days=+1)
@@ -159,7 +159,7 @@ class Japan(HolidayBase):
             for dt in list(self.keys()):
                 if dt.year == year and dt + td(days=+2) in self:
                     hol_date = dt + td(days=+1)
-                    if hol_date.weekday() != SUN and hol_date not in self:
+                    if not self._is_sunday(hol_date) and hol_date not in self:
                         self[hol_date] = "国民の休日"
 
 

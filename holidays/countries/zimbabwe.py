@@ -16,7 +16,7 @@ from dateutil.easter import easter
 from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, FEB, APR, MAY, AUG, DEC, SUN
+from holidays.constants import JAN, FEB, APR, MAY, AUG, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -66,7 +66,7 @@ class Zimbabwe(HolidayBase):
 
         if self.observed:
             for k, v in list(self.items()):
-                if k.weekday() == SUN and k.year == year:
+                if self._is_sunday(k) and k.year == year:
                     dt = k + td(days=+1)
                     while self.get(dt):
                         dt += td(days=+1)

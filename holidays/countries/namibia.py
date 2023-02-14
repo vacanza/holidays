@@ -14,7 +14,7 @@ from datetime import timedelta as td
 
 from dateutil.easter import easter
 
-from holidays.constants import JAN, MAR, MAY, AUG, SEP, DEC, SUN
+from holidays.constants import JAN, MAR, MAY, AUG, SEP, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -69,7 +69,7 @@ class Namibia(HolidayBase):
         # a public holiday.
         if self.observed:
             for k, v in list(self.items()):
-                if k.weekday() == SUN and k.year == year:
+                if self._is_sunday(k) and k.year == year:
                     self[k + td(days=+1)] = v + " (Observed)"
 
 

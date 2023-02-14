@@ -17,7 +17,6 @@ from convertdate import gregorian, hebrew
 from convertdate.holidays import hanukkah, lag_baomer, passover, purim
 from convertdate.holidays import rosh_hashanah, shavuot, sukkot, yom_kippur
 
-from holidays.constants import WED, THU, SAT
 from holidays.holiday_base import HolidayBase
 
 
@@ -53,9 +52,11 @@ class Israel(HolidayBase):
         observed_delta = 0
         if self.observed:
             day_in_week = memorial_day_dt.weekday()
-            if day_in_week in {WED, THU}:
+            if self._is_wednesday(memorial_day_dt) or self._is_thursday(
+                memorial_day_dt
+            ):
                 observed_delta = -(day_in_week - 1)
-            elif 2004 <= year and day_in_week == SAT:
+            elif 2004 <= year and self._is_saturday(memorial_day_dt):
                 observed_delta = 1
 
             if observed_delta != 0:

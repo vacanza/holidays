@@ -22,7 +22,8 @@ from typing import Union, cast
 
 from dateutil.parser import parse
 
-from holidays.constants import HOLIDAY_NAME_DELIMITER, SAT, SUN
+from holidays.constants import HOLIDAY_NAME_DELIMITER, MON, TUE, WED, THU, FRI
+from holidays.constants import SAT, SUN
 
 DateLike = Union[date, datetime, str, float, int]
 
@@ -680,6 +681,44 @@ class HolidayBase(Dict[date, str]):
         dt = args[0] if len(args) == 1 else date(*args)
 
         return dt.weekday() in self.weekend
+
+    @staticmethod
+    def __is_weekday(weekday, *args):
+        """
+        Returns True if `weekday` equals to the date's week day.
+        Returns False otherwise.
+        """
+        dt = args[0] if len(args) == 1 else date(*args)
+
+        return dt.weekday() == weekday
+
+    @staticmethod
+    def _is_monday(*args) -> bool:
+        return HolidayBase.__is_weekday(MON, *args)
+
+    @staticmethod
+    def _is_tuesday(*args) -> bool:
+        return HolidayBase.__is_weekday(TUE, *args)
+
+    @staticmethod
+    def _is_wednesday(*args) -> bool:
+        return HolidayBase.__is_weekday(WED, *args)
+
+    @staticmethod
+    def _is_thursday(*args) -> bool:
+        return HolidayBase.__is_weekday(THU, *args)
+
+    @staticmethod
+    def _is_friday(*args) -> bool:
+        return HolidayBase.__is_weekday(FRI, *args)
+
+    @staticmethod
+    def _is_saturday(*args) -> bool:
+        return HolidayBase.__is_weekday(SAT, *args)
+
+    @staticmethod
+    def _is_sunday(*args) -> bool:
+        return HolidayBase.__is_weekday(SUN, *args)
 
     def __reduce__(self) -> Union[str, Tuple[Any, ...]]:
         return super().__reduce__()

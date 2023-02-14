@@ -14,7 +14,7 @@ from datetime import timedelta as td
 
 from dateutil.easter import easter
 
-from holidays.constants import JAN, MAY, NOV, DEC, SUN
+from holidays.constants import JAN, MAY, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -30,7 +30,7 @@ class Panama(HolidayBase):
     def _populate(self, year: int) -> None:
         def _add_with_observed(hol_date: date, hol_name: str) -> None:
             self[hol_date] = hol_name
-            if self.observed and hol_date.weekday() == SUN:
+            if self.observed and self._is_sunday(hol_date):
                 self[hol_date + td(days=+1)] = f"{hol_name} (Observed)"
 
         super()._populate(year)

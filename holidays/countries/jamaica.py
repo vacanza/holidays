@@ -16,7 +16,7 @@ from dateutil.easter import easter
 from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAY, AUG, OCT, DEC, SUN
+from holidays.constants import JAN, MAY, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -31,7 +31,7 @@ class Jamaica(HolidayBase):
     def _populate(self, year):
         def _add_with_observed(hol_date: date, hol_name: str) -> None:
             self[hol_date] = hol_name
-            if self.observed and hol_date.weekday() == SUN:
+            if self.observed and self._is_sunday(hol_date):
                 self[hol_date + td(days=+1)] = f"{hol_name} (Observed)"
 
         super()._populate(year)
@@ -60,7 +60,7 @@ class Jamaica(HolidayBase):
         dt = date(year, DEC, 25)
         name = "Christmas Day"
         self[dt] = name
-        if self.observed and dt.weekday() == SUN:
+        if self.observed and self._is_sunday(dt):
             self[dt + td(days=+2)] = f"{name} (Observed)"
 
         # Boxing Day

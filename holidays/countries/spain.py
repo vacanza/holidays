@@ -15,7 +15,7 @@ from datetime import timedelta as td
 from dateutil.easter import easter
 
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC, SUN
+from holidays.constants import OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
 
@@ -50,7 +50,7 @@ class Spain(HolidayBase):
     ]
 
     def _is_observed(self, date_holiday, name_holiday):
-        if self.observed and date_holiday.weekday() == SUN:
+        if self.observed and self._is_sunday(date_holiday):
             self[date_holiday + td(days=+1)] = name_holiday + " (Trasladado)"
         else:
             self[date_holiday] = name_holiday

@@ -17,7 +17,7 @@ from dateutil.relativedelta import MO, FR
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT
-from holidays.constants import NOV, DEC, SUN
+from holidays.constants import NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -100,7 +100,7 @@ class SouthAfrica(HolidayBase):
         # it rolls over to the following Monday
         if self.observed and year >= 1995:
             for k, v in list(self.items()):
-                if k.weekday() != SUN or k.year != year:
+                if not self._is_sunday(k) or k.year != year:
                     continue
                 dt = k + td(days=+1)
                 if dt in self:

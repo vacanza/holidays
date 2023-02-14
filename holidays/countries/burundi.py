@@ -14,8 +14,7 @@ from datetime import timedelta as td
 
 from dateutil.easter import easter
 
-from holidays.constants import JAN, FEB, APR, MAY, JUN, JUL, AUG, OCT, NOV
-from holidays.constants import DEC, SUN
+from holidays.constants import JAN, FEB, APR, MAY, JUN, JUL, AUG, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
 
@@ -37,7 +36,7 @@ class Burundi(HolidayBase):
     def _populate(self, year):
         def _add_with_observed(hol_date: date, hol_name: str) -> None:
             self[hol_date] = hol_name
-            if self.observed and hol_date.weekday() == SUN:
+            if self.observed and self._is_sunday(hol_date):
                 obs_date = hol_date + td(days=+1)
                 if obs_date.year == year:
                     self[obs_date] = f"{hol_name} (Observed)"

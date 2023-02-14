@@ -17,7 +17,7 @@ from dateutil.relativedelta import MO, TH, FR
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC, WED, FRI
+from holidays.constants import OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -63,7 +63,7 @@ class NewYorkStockExchange(HolidayBase):
         # As per Rule 7.2.: check if next year's NYD falls on Saturday and
         # needs to be observed on Friday (Dec 31 of previous year).
         dec_31 = date(year, DEC, 31)
-        if dec_31.weekday() == FRI:
+        if self._is_friday(dec_31):
             self._set_observed_date(dec_31 + td(days=+1), "New Year's Day")
 
         # MLK - observed 1998 - 3rd Monday of Jan
@@ -241,7 +241,7 @@ class NewYorkStockExchange(HolidayBase):
             for d in (
                 begin + td(days=n) for n in range((end - begin).days + 1)
             ):
-                if d.weekday() != WED:  # Wednesday special holiday
+                if not self._is_wednesday(d):  # Wednesday special holiday
                     continue
                 self[d] = "Paper Crisis"
         elif year == 1969:

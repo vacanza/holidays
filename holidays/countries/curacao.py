@@ -14,7 +14,7 @@ from datetime import timedelta as td
 
 from dateutil.easter import easter
 
-from holidays.constants import JAN, APR, MAY, JUL, AUG, OCT, DEC, SUN
+from holidays.constants import JAN, APR, MAY, JUL, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -48,7 +48,7 @@ class Curacao(HolidayBase):
         # King's Day
         if year >= 2014:
             kings_day = date(year, APR, 27)
-            if kings_day.weekday() == SUN:
+            if self._is_sunday(kings_day):
                 kings_day += td(days=-1)
 
             self[kings_day] = "Koningsdag [King's Day]"
@@ -59,14 +59,14 @@ class Curacao(HolidayBase):
             if year <= 1948:
                 queens_day = date(year, AUG, 31)
 
-            if queens_day.weekday() == SUN:
+            if self._is_sunday(queens_day):
                 queens_day += td(days=1) if year < 1980 else td(days=-1)
 
             self[queens_day] = "Anja di La Reina [Queen's Day]"
 
         # Labour Day
         labour_day = date(year, MAY, 1)
-        if labour_day.weekday() == SUN:
+        if self._is_sunday(labour_day):
             labour_day += td(days=+1)
         self[labour_day] = "Dia di Obrero [Labour Day]"
 

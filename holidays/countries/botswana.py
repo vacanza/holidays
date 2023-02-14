@@ -16,7 +16,7 @@ from dateutil.easter import easter
 from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAY, JUL, SEP, DEC, SAT, SUN
+from holidays.constants import JAN, MAY, JUL, SEP, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -40,9 +40,9 @@ class Botswana(HolidayBase):
                 self[hol_date + td(days=+1)] = hol_name2
 
             if self.observed and year >= 1995:
-                if hol_date.weekday() == SAT and hol_name2:
+                if self._is_saturday(hol_date) and hol_name2:
                     self[hol_date + td(days=+2)] = f"{hol_name2} (Observed)"
-                elif hol_date.weekday() == SUN:
+                elif self._is_sunday(hol_date):
                     self[
                         hol_date + td(days=+2 if hol_name2 else +1)
                     ] = f"{hol_name1} (Observed)"
@@ -67,7 +67,7 @@ class Botswana(HolidayBase):
         if (
             self.observed
             and year >= 2016
-            and date(year, MAY, 1).weekday() == SAT
+            and self._is_saturday(date(year, MAY, 1))
         ):
             self[date(year, MAY, 1) + td(days=+2)] = "Labour Day Holiday"
 
@@ -87,7 +87,7 @@ class Botswana(HolidayBase):
         if (
             self.observed
             and year >= 2016
-            and date(year, DEC, 26).weekday() == SAT
+            and self._is_saturday(date(year, DEC, 26))
         ):
             self[date(year, DEC, 26) + td(days=+2)] = "Boxing Day Holiday"
 

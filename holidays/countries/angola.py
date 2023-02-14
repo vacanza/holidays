@@ -14,8 +14,7 @@ from datetime import timedelta as td
 
 from dateutil.easter import easter
 
-from holidays.constants import JAN, FEB, MAR, APR, MAY, SEP, NOV, DEC, MON
-from holidays.constants import TUE, THU, SUN
+from holidays.constants import JAN, FEB, MAR, APR, MAY, SEP, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -39,8 +38,9 @@ class Angola(HolidayBase):
         # Since 2018, if the following year's New Year's Day falls on a
         # Tuesday, the 31st of the current year is also a holiday.
         if year >= 2018:
-            if self.observed and date(year, DEC, 31).weekday() == MON:
-                self[date(year, DEC, 31)] = "Ano novo (Day off)"
+            dec_31 = date(year, DEC, 31)
+            if self.observed and self._is_monday(dec_31):
+                self[dec_31] = "Ano novo (Day off)"
 
         easter_date = easter(year)
         self[(easter_date + td(days=-2))] = "Sexta-feira Santa"
@@ -74,12 +74,12 @@ class Angola(HolidayBase):
                 if k.year != year:
                     continue
                 if year <= 2017:
-                    if k.weekday() == SUN:
+                    if self._is_sunday(k):
                         self[k + td(days=+1)] = v + " (Observed)"
                 else:
-                    if k.weekday() == TUE and k != date(year, JAN, 1):
+                    if self._is_tuesday(k) and k != date(year, JAN, 1):
                         self[k + td(days=-1)] = v + " (Day off)"
-                    elif k.weekday() == THU:
+                    elif self._is_thursday(k):
                         self[k + td(days=+1)] = v + " (Day off)"
 
 

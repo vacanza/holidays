@@ -17,7 +17,7 @@ from dateutil.relativedelta import MO, TU, TH, FR
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC, MON, WED, FRI, SAT, SUN
+from holidays.constants import OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -101,9 +101,9 @@ class UnitedStates(HolidayBase):
         if not self.observed:
             return None
 
-        if dt.weekday() == SAT and before:
+        if self._is_saturday(dt) and before:
             self[dt + td(days=-1)] = f"{name} (Observed)"
-        elif dt.weekday() == SUN and after:
+        elif self._is_sunday(dt) and after:
             self[dt + td(days=+1)] = f"{name} (Observed)"
 
     def _populate(self, year):
@@ -115,7 +115,7 @@ class UnitedStates(HolidayBase):
             self._add_with_observed(date(year, JAN, 1), name, before=False)
             # The following year's observed New Year's Day can be in this year
             # when it falls on a Friday (Jan 1st is a Saturday).
-            if self.observed and date(year, DEC, 31).weekday() == FRI:
+            if self.observed and self._is_friday(date(year, DEC, 31)):
                 self[date(year, DEC, 31)] = f"{name} (Observed)"
 
         # Epiphany
@@ -198,7 +198,7 @@ class UnitedStates(HolidayBase):
             elif year >= 1879:
                 self[date(year, FEB, 22)] = name
         elif self.subdiv == "GA":
-            if date(year, DEC, 24).weekday() != WED:
+            if not self._is_wednesday(year, DEC, 24):
                 self[date(year, DEC, 24)] = name
             else:
                 self[date(year, DEC, 26)] = name
@@ -565,7 +565,7 @@ class UnitedStates(HolidayBase):
             dt = date(year, DEC, 24)
             self[dt] = name
             # If on Friday, observed on Thursday
-            if self.observed and dt.weekday() == FRI:
+            if self.observed and self._is_friday(dt):
                 self[dt + td(days=-1)] = f"{name} (Observed)"
             # If on Saturday or Sunday, observed on Friday
             elif self.observed and self._is_weekend(dt):
@@ -584,7 +584,7 @@ class UnitedStates(HolidayBase):
             if self.observed and self._is_weekend(dt):
                 self[dt + rd(weekday=MO)] = f"{name} (Observed)"
             # If on Monday, observed on Tuesday
-            elif self.observed and dt.weekday() == MON:
+            elif self.observed and self._is_monday(dt):
                 self[dt + td(days=+1)] = f"{name} (Observed)"
         elif self.subdiv == "TX" and year >= 1981:
             self[dt] = "Day After Christmas"

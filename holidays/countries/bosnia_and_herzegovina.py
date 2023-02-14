@@ -15,7 +15,7 @@ from datetime import timedelta as td
 
 from dateutil.easter import EASTER_ORTHODOX, easter
 
-from holidays.constants import DEC, JAN, MAR, MAY, NOV, SUN
+from holidays.constants import JAN, MAR, MAY, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
 
@@ -48,7 +48,7 @@ class BosniaAndHerzegovina(HolidayBase):
         if (
             self.subdiv in {"FBiH", "BD"}
             and self.observed
-            and new_year.weekday() == SUN
+            and self._is_sunday(new_year)
         ):
             self[new_year + td(days=+2)] = "Treći dan Nove Godine"
 
@@ -103,7 +103,7 @@ class BosniaAndHerzegovina(HolidayBase):
         self[may_1] = "Dan rada"
         self[may_1 + td(days=+1)] = "Drugi dan Dana rada"
 
-        if self.observed and may_1.weekday() == SUN:
+        if self.observed and self._is_sunday(may_1):
             self[may_1 + td(days=+2)] = "Treći dan Dana rada"
 
         # Victory Day

@@ -17,7 +17,7 @@ from dateutil.relativedelta import MO, SU
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC, FRI, SUN
+from holidays.constants import OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -46,12 +46,12 @@ class Canada(HolidayBase):
             kwargs["subdiv"] = "ON"
         HolidayBase.__init__(self, **kwargs)
 
-    @staticmethod
-    def _get_nearest_monday(d: date) -> date:
-        if d.weekday() < FRI:
-            return d + rd(weekday=MO(-1))
-        else:
-            return d + rd(weekday=MO)
+    def _get_nearest_monday(self, dt: date) -> date:
+        return (
+            dt + rd(weekday=MO(-1))
+            if not self._is_friday(dt) and not self._is_weekend(dt)
+            else dt + rd(weekday=MO)
+        )
 
     def _populate(self, year):
         if year < 1867:
@@ -161,7 +161,7 @@ class Canada(HolidayBase):
             name = self.tr("St. Jean Baptiste Day")
             dt = date(year, JUN, 24)
             self[dt] = name
-            if self.observed and dt.weekday() == SUN:
+            if self.observed and self._is_sunday(dt):
                 self[dt + td(days=+1)] = self.tr("%s (Observed)") % name
 
         # Discovery Day
@@ -194,7 +194,7 @@ class Canada(HolidayBase):
             if year >= 2001:
                 dt = date(year, JUL, 9)
                 self[dt] = name
-                if self.observed and dt.weekday() == SUN:
+                if self.observed and self._is_sunday(dt):
                     self[dt + td(days=+1)] = self.tr("%s (Observed)") % name
             elif year == 2000:
                 self[date(2000, APR, 1)] = name
@@ -267,7 +267,7 @@ class Canada(HolidayBase):
             self[dt] = name
             if (
                 self.observed
-                and dt.weekday() == SUN
+                and self._is_sunday(dt)
                 and self.subdiv in {"NS", "NL", "NT", "PE", "SK"}
             ):
                 self[dt + rd(weekday=MO)] = self.tr("%s (Observed)") % name

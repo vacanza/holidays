@@ -20,7 +20,6 @@ from pymeeus.Epoch import Epoch
 from pymeeus.Sun import Sun
 
 from holidays.constants import JAN, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.constants import TUE, WED, THU, FRI, SAT, SUN
 from holidays.holiday_base import HolidayBase
 
 
@@ -66,7 +65,7 @@ class Chile(HolidayBase):
         # New Year's Day (Law 2.977)
         self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
         # Day after, if it's a Sunday (Law 20.983)
-        if year >= 2017 and date(year, JAN, 1).weekday() == SUN:
+        if year >= 2017 and self._is_sunday(date(year, JAN, 1)):
             self[date(year, JAN, 2)] = "Fiestas Patrias [Holiday]"
 
         # Holy Week (Law 2.977)
@@ -123,9 +122,9 @@ class Chile(HolidayBase):
             dt = date(year, JUN, 29)
             if year >= 2000:
                 # floating Monday holiday (Law 19.668)
-                if dt.weekday() < FRI:
+                if not self._is_friday(dt) and not self._is_weekend(dt):
                     dt += rd(weekday=MO(-1))
-                elif dt.weekday() == FRI:
+                elif self._is_friday(dt):
                     dt += rd(weekday=MO)
             self[dt] = "San Pedro y San Pablo [Saint Peter and Saint Paul]"
 
@@ -153,11 +152,11 @@ class Chile(HolidayBase):
 
         # National Holiday Friday preceding Independence Day (Law 20.983)
         # Monday, September 17, 2007, is declared a holiday.
-        if year >= 2017 and date(year, SEP, 18).weekday() == SAT:
+        if year >= 2017 and self._is_saturday(date(year, SEP, 18)):
             self[date(year, SEP, 17)] = "Fiestas Patrias [Holiday]"
 
         # National Holiday Monday preceding Independence Day (Law 20.215)
-        if year >= 2007 and date(year, SEP, 18).weekday() == TUE:
+        if year >= 2007 and self._is_tuesday(date(year, SEP, 18)):
             self[date(year, SEP, 17)] = "Fiestas Patrias [Holiday]"
 
         # Independence Day (Law 2.977)
@@ -171,7 +170,7 @@ class Chile(HolidayBase):
         ] = "Día de las Glorias del Ejército [Army Day]"
 
         # National Holiday Friday following Army Day (Law 20.215)
-        if year >= 2008 and date(year, SEP, 19).weekday() == THU:
+        if year >= 2008 and self._is_thursday(date(year, SEP, 19)):
             self[date(year, SEP, 20)] = "Fiestas Patrias [Holiday]"
 
         # Decree-law 636, Law 8.223
@@ -184,9 +183,9 @@ class Chile(HolidayBase):
             name = "Día de la Raza [Columbus day]"
             if year >= 2000:
                 # floating Monday holiday (Law 19.668)
-                if dt.weekday() < FRI:
+                if not self._is_friday(dt) and not self._is_weekend(dt):
                     dt += rd(weekday=MO(-1))
-                elif dt.weekday() == FRI:
+                elif self._is_friday(dt):
                     dt += rd(weekday=MO)
                 if year <= 2019:
                     # Day of the Meeting of Two Worlds (Law 3.810)
@@ -207,9 +206,9 @@ class Chile(HolidayBase):
             # This holiday is moved to the preceding Friday
             # if it falls on a Tuesday, or to the following Friday
             # if it falls on a Wednesday (Law 20.299)
-            if dt.weekday() == WED:
+            if self._is_wednesday(dt):
                 dt += td(days=+2)
-            elif dt.weekday() == TUE:
+            elif self._is_tuesday(dt):
                 dt += td(days=-4)
             self[dt] = (
                 "Día Nacional de las Iglesias Evangélicas y Protestantes"

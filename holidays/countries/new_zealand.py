@@ -16,8 +16,7 @@ from dateutil.easter import easter
 from dateutil.relativedelta import MO, TU, WE
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, FEB, MAR, APR, JUN, JUL, SEP, OCT, NOV
-from holidays.constants import DEC, FRI
+from holidays.constants import JAN, FEB, MAR, APR, JUN, JUL, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -64,12 +63,12 @@ class NewZealand(HolidayBase):
         "WTL",  # Correct code is WTC
     ]
 
-    @staticmethod
-    def _get_nearest_monday(d: date) -> date:
-        if d.weekday() < FRI:
-            return d + rd(weekday=MO(-1))
-        else:
-            return d + rd(weekday=MO)
+    def _get_nearest_monday(self, dt: date) -> date:
+        return (
+            dt + rd(weekday=MO(-1))
+            if not self._is_friday(dt) and not self._is_weekend(dt)
+            else dt + rd(weekday=MO)
+        )
 
     def _add_observed(self, dt: date) -> None:
         if self.observed and self._is_weekend(dt):

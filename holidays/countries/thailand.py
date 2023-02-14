@@ -13,7 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC, MON, FRI, SAT, SUN
+from holidays.constants import OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _ThaiLuniSolar
 
@@ -275,7 +275,7 @@ class Thailand(HolidayBase):
             """
             if 1961 <= year <= 1973 or 1995 <= year <= 1997 or year >= 2001:
                 if self.observed and self._is_weekend(dt):
-                    in_lieu = dt + td(days=+2 if dt.weekday() == SAT else +1)
+                    in_lieu = dt + td(days=+2 if self._is_saturday(dt) else +1)
                     self[in_lieu] = f"{holiday_name} (in lieu)"
 
         super()._populate(year)
@@ -305,9 +305,9 @@ class Thailand(HolidayBase):
         new_years_eve_in_lieu = "New Year's Eve (in lieu)"
 
         if self.observed and (1995 <= year <= 1997 or year >= 2001):
-            if date(year - 1, DEC, 31).weekday() == SAT:
+            if self._is_saturday(date(year - 1, DEC, 31)):
                 self[date(year, JAN, 3)] = new_years_eve_in_lieu
-            elif date(year - 1, DEC, 31).weekday() == SUN:
+            elif self._is_sunday(date(year - 1, DEC, 31)):
                 self[date(year, JAN, 2)] = new_years_eve_in_lieu
 
         # !!! Chakri Memorial Day !!!
@@ -363,11 +363,11 @@ class Thailand(HolidayBase):
         if self.observed and (1995 <= year <= 1997 or year >= 2001):
             dt = date(year, APR, 15) if year >= 2001 else date(year, APR, 14)
 
-            if dt.weekday() == SAT:
+            if self._is_saturday(dt):
                 self[dt + td(days=+2)] = songkran_festival_in_lieu
-            elif dt.weekday() == SUN:
+            elif self._is_sunday(dt):
                 self[dt + td(days=+1)] = songkran_festival_in_lieu
-            elif dt.weekday() == MON:
+            elif self._is_monday(dt):
                 self[dt + td(days=+1)] = songkran_festival_in_lieu
 
         # !!! National Labour day !!!
@@ -574,7 +574,7 @@ class Thailand(HolidayBase):
             and self.observed
             and (1961 <= year <= 1973 or 1995 <= year <= 1997 or year >= 2001)
         ):
-            if asarnha_bucha_date.weekday() == FRI:
+            if self._is_friday(asarnha_bucha_date):
                 self[
                     asarnha_bucha_date + td(days=+3)
                 ] = "Buddhist Lent Day (in lieu)"

@@ -18,7 +18,7 @@ from dateutil.relativedelta import FR, MO, SA, SU
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC, FRI, SAT, SUN
+from holidays.constants import OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _ChineseLuniSolar, _islamic_to_gre
 
@@ -618,14 +618,14 @@ class Malaysia(HolidayBase):
             if hol_date.year != year:
                 continue
             in_lieu_date = None
-            if hol_date.weekday() == FRI and self.subdiv in {"JHR", "KDH"}:
+            if self._is_friday(hol_date) and self.subdiv in {"JHR", "KDH"}:
                 in_lieu_date = hol_date + td(days=+2)
-            elif hol_date.weekday() == SAT and self.subdiv in {
+            elif self._is_saturday(hol_date) and self.subdiv in {
                 "KTN",
                 "TRG",
             }:
                 in_lieu_date = hol_date + td(days=+1)
-            elif hol_date.weekday() == SUN and self.subdiv not in {
+            elif self._is_sunday(hol_date) and self.subdiv not in {
                 "JHR",
                 "KDH",
                 "KTN",

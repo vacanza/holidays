@@ -15,7 +15,7 @@ from datetime import timedelta as td
 from dateutil.easter import EASTER_ORTHODOX, easter
 
 from holidays.constants import JAN, APR, MAR, MAY, JUN, JUL, AUG, SEP, OCT
-from holidays.constants import NOV, DEC, SAT
+from holidays.constants import NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -48,7 +48,7 @@ class Ukraine(HolidayBase):
                 )
             ):
                 obs_date = hol_date + td(
-                    days=2 if hol_date.weekday() == SAT else days
+                    days=2 if self._is_saturday(hol_date) else days
                 )
                 self[obs_date] = self.tr("Вихідний за %s") % hol_name
 
