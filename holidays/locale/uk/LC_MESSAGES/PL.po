@@ -1,5 +1,5 @@
-# Poland holidays English translation.
-# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2022.
+# Poland holidays Ukrainian translation.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
 #
 msgid ""
 msgstr ""
