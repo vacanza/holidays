@@ -264,3 +264,20 @@ class TestPoland(TestCase):
             pl_en = Poland(language=language)
             self.assertEqual(pl_en["2022-01-01"], "New Year's Day")
             self.assertEqual(pl_en["2022-12-25"], "Christmas (Day 1)")
+
+    def test_l10n_uk(self):
+        language = "uk"
+
+        pl_uk = Poland(language=language)
+        self.assertEqual(
+            pl_uk["2018-11-12"],
+            "100-а річниця Дня Незалежності",
+        )
+        self.assertEqual(pl_uk["2022-01-01"], "Новий рік")
+        self.assertEqual(pl_uk["2022-12-25"], "Перший день Різдва")
+
+        self.set_locale(language)
+        for language in (None, language, "invalid"):
+            pl_uk = Poland(language=language)
+            self.assertEqual(pl_uk["2022-01-01"], "Новий рік")
+            self.assertEqual(pl_uk["2022-12-25"], "Перший день Різдва")
