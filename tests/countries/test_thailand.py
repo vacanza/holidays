@@ -15,9 +15,13 @@ from tests.common import TestCase
 
 class TestThailand(TestCase):
     def setUp(self):
-        self.holidays = Thailand()
+        super().setUp()
         # Checks in lieu not observed until 2030
         self.holidays_no_observed = Thailand(observed=False)
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Thailand)
 
     def test_country_aliases(self):
         self.assertCountryAliases(Thailand, TH, THA)
@@ -508,3 +512,36 @@ class TestThailand(TestCase):
         )
 
         # No Royal Ploughing Ceremony on weekend for 1997-2023
+
+    def test_l10n_default(self):
+        def run_tests(languages):
+            for language in languages:
+                th_en = Thailand(language=language)
+                self.assertEqual(th_en["2022-01-01"], "New Year's Day")
+                self.assertEqual(th_en["2022-04-13"], "Songkran Festival")
+                self.assertEqual(
+                    th_en["2022-05-02"], "National Labour Day (in lieu)"
+                )
+                self.assertEqual(th_en["2022-12-10"], "Constitution Day")
+
+        run_tests((Thailand.default_language, None, "invalid"))
+
+        self.set_locale("th")
+        run_tests((Thailand.default_language,))
+
+    def test_l10n_th(self):
+        language = "th"
+
+        th_th = Thailand(language=language)
+        self.assertEqual(th_th["2022-01-01"], "วันขึ้นปีใหม่")
+        self.assertEqual(th_th["2022-04-13"], "วันสงกรานต์")
+        self.assertEqual(th_th["2022-05-02"], "ชดเชยวันแรงงานแห่งชาติ")
+        self.assertEqual(th_th["2022-12-10"], "วันรัฐธรรมนูญ")
+
+        self.set_locale(language)
+        for language in (None, language, "invalid"):
+            th_th = Thailand(language=language)
+            self.assertEqual(th_th["2022-01-01"], "วันขึ้นปีใหม่")
+            self.assertEqual(th_th["2022-04-13"], "วันสงกรานต์")
+            self.assertEqual(th_th["2022-05-02"], "ชดเชยวันแรงงานแห่งชาติ")
+            self.assertEqual(th_th["2022-12-10"], "วันรัฐธรรมนูญ")

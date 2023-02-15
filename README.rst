@@ -538,6 +538,9 @@ default language code is a `ISO 639-1 code`_.
    * - Poland
      - pl
      - en, pl
+   * - Thailand
+     - th
+     - en, th
    * - Ukraine
      - uk
      - en, uk
