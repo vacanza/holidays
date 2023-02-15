@@ -10,6 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 import unittest
+import warnings
 from datetime import date
 
 from holidays import utils
@@ -93,6 +94,7 @@ class TestAllInSameYear(unittest.TestCase):
         This is logic test and not a code compatibility test, so for expediency
         we only run it once on the latest Python version.
         """
+        warnings.simplefilter("ignore")
         for country in utils.list_supported_countries():
             for year in range(date.today().year - 10, date.today().year + 3):
                 for holiday in utils.country_holidays(country, years=year):
