@@ -54,7 +54,8 @@ class TestCase(unittest.TestCase):
             po_file = str(po_path)
             mo_file = po_file.replace(".po", ".mo")
 
-            Path(mo_file).unlink(missing_ok=True)
+            if os.path.exists(mo_file):
+                os.unlink(mo_file)
             subprocess.run(
                 (
                     sys.executable,
