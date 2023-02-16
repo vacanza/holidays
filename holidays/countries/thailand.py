@@ -126,7 +126,7 @@ class Thailand(HolidayBase):
         "HM King Bhumibol Adulyadej's 60th Anniversary of Accession Event"
     )
     thai_military_emergency_lockdown = tr(
-        "Emergency Lockdown (Thai Military Coup d'état)"
+        "Emergency Lockdown (Thai Military Coup d'etat)"
     )
     thai_political_emergency_lockdown = tr(
         "Emergency Lockdown (Thai Political Unrest)"
