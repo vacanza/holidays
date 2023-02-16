@@ -313,9 +313,10 @@ class TestCA(TestCase):
             self.assertNotIn(dt + td(days=+1), self.holidays)
 
     def test_national_day_for_truth_and_reconciliation(self):
+        bc_holidays = Canada(subdiv="BC")
         mb_holidays = Canada(subdiv="MB")
         ns_holidays = Canada(subdiv="NS")
-        bc_holidays = Canada(subdiv="BC")
+
         for dt in [
             date(1991, 9, 30),
             date(2020, 9, 30),
