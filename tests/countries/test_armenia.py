@@ -9,13 +9,14 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.countries.armenia import AM, ARM, Armenia
+from holidays.countries.armenia import Armenia, AM, ARM
 from tests.common import TestCase
 
 
 class TestArmenia(TestCase):
-    def setUp(self):
-        self.holidays = Armenia()
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Armenia)
 
     def test_country_aliases(self):
         self.assertCountryAliases(Armenia, AM, ARM)
@@ -71,7 +72,7 @@ class TestArmenia(TestCase):
     def test_labour_day(self):
         self.assertHoliday(f"{year}-05-01" for year in range(2001, 2100))
         self.assertNoHoliday(f"{year}-05-01" for year in range(1991, 2001))
-        may1_old_name = "International Day of Workers' Solidarity"
+        may1_old_name = "Աշխատավորների համերաշխության միջազգային օր"
         self.assertIn(may1_old_name, self.holidays["2001-05-01"])
         self.assertNotIn(may1_old_name, self.holidays["2002-05-01"])
 
@@ -89,3 +90,28 @@ class TestArmenia(TestCase):
     def test_independence_day(self):
         self.assertHoliday(f"{year}-09-21" for year in range(1992, 2100))
         self.assertNoHoliday(f"{year}-09-21" for year in range(1991, 1992))
+
+    def test_l10n_default(self):
+        def run_tests(languages):
+            for language in languages:
+                am = Armenia(language=language)
+                self.assertEqual(am["2022-01-01"], "Նոր տարվա օր")
+                self.assertEqual(am["2022-12-31"], "Նոր տարվա գիշեր")
+
+        run_tests((Armenia.default_language, None, "invalid"))
+
+        self.set_language("en_US")
+        run_tests((Armenia.default_language,))
+
+    def test_l10n_en_us(self):
+        en_us = "en_US"
+
+        am = Armenia(language=en_us)
+        self.assertEqual(am["2022-01-01"], "New Year's Day")
+        self.assertEqual(am["2022-12-31"], "New Year's Eve")
+
+        self.set_language(en_us)
+        for language in (None, en_us, "invalid"):
+            am = Armenia(language=language)
+            self.assertEqual(am["2022-01-01"], "New Year's Day")
+            self.assertEqual(am["2022-12-31"], "New Year's Eve")

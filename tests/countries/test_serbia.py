@@ -9,15 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
 from datetime import date
 
-import holidays
+from holidays.countries.serbia import Serbia, RS, SRB
+from tests.common import TestCase
 
 
-class TestSerbia(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.Serbia(observed=True)
+class TestSerbia(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Serbia)
+
+    def test_country_aliases(self):
+        self.assertCountryAliases(Serbia, RS, SRB)
 
     def test_new_year(self):
         # If January 1st is in Weekend, test oberved
@@ -67,3 +71,28 @@ class TestSerbia(unittest.TestCase):
         self.assertIn(date(2020, 4, 19), self.holidays)
         self.assertIn(date(2020, 4, 20), self.holidays)
         self.assertNotIn(date(2020, 4, 21), self.holidays)
+
+    def test_l10n_default(self):
+        def run_tests(languages):
+            for language in languages:
+                rs = Serbia(language=language)
+                self.assertEqual(rs["2022-01-01"], "Нова година")
+                self.assertEqual(rs["2022-01-07"], "Божић")
+
+        run_tests((Serbia.default_language, None, "invalid"))
+
+        self.set_language("en_US")
+        run_tests((Serbia.default_language,))
+
+    def test_l10n_en_us(self):
+        en_us = "en_US"
+
+        rs = Serbia(language=en_us)
+        self.assertEqual(rs["2022-01-01"], "New Year's Day")
+        self.assertEqual(rs["2022-01-07"], "Orthodox Christmas Day")
+
+        self.set_language(en_us)
+        for language in (None, en_us, "invalid"):
+            rs = Serbia(language=language)
+            self.assertEqual(rs["2022-01-01"], "New Year's Day")
+            self.assertEqual(rs["2022-01-07"], "Orthodox Christmas Day")

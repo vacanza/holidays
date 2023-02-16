@@ -443,26 +443,24 @@ class TestUkraine(TestCase):
 
         run_tests((Ukraine.default_language, None, "invalid"))
 
-        self.set_locale("en")
+        self.set_language("en_US")
         run_tests((Ukraine.default_language,))
 
-    def test_l10n_en(self):
-        language = "en"
+    def test_l10n_en_us(self):
+        en_us = "en_US"
+        ua = Ukraine(language=en_us)
 
-        ua_en = Ukraine(language=language)
-        self.assertEqual(ua_en["2022-01-01"], "New Year's Day")
-        self.assertEqual(ua_en["2022-01-07"], "Christmas (Julian calendar)")
-        self.assertEqual(ua_en["2022-12-25"], "Christmas (Gregorian calendar)")
-        self.assertEqual(ua_en["2023-01-02"], "New Year's Day (Observed)")
+        self.assertEqual(ua["2022-01-01"], "New Year's Day")
+        self.assertEqual(ua["2022-01-07"], "Christmas (Julian calendar)")
+        self.assertEqual(ua["2022-12-25"], "Christmas (Gregorian calendar)")
+        self.assertEqual(ua["2023-01-02"], "New Year's Day (Observed)")
 
-        self.set_locale(language)
-        for language in (None, language, "invalid"):
-            ua_en = Ukraine(language=language)
-            self.assertEqual(ua_en["2022-01-01"], "New Year's Day")
+        self.set_language(en_us)
+        for language in (None, en_us, "invalid"):
+            ua = Ukraine(language=language)
+            self.assertEqual(ua["2022-01-01"], "New Year's Day")
+            self.assertEqual(ua["2022-01-07"], "Christmas (Julian calendar)")
             self.assertEqual(
-                ua_en["2022-01-07"], "Christmas (Julian calendar)"
+                ua["2022-12-25"], "Christmas (Gregorian calendar)"
             )
-            self.assertEqual(
-                ua_en["2022-12-25"], "Christmas (Gregorian calendar)"
-            )
-            self.assertEqual(ua_en["2023-01-02"], "New Year's Day (Observed)")
+            self.assertEqual(ua["2023-01-02"], "New Year's Day (Observed)")

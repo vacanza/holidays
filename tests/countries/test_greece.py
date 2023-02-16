@@ -9,43 +9,37 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
 from datetime import date
 
-import holidays
+from holidays.countries.greece import Greece, GR, GRC
+from tests.common import TestCase
 
 
-class TestGreece(unittest.TestCase):
-    def setUp(self):
-        self.gr_holidays = holidays.GR()
+class TestGreece(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Greece)
+
+    def test_country_aliases(self):
+        self.assertCountryAliases(Greece, GR, GRC)
 
     def test_fixed_holidays(self):
         years = range(2000, 2025)
         for y in years:
             fdays = (
-                (date(y, 1, 1), "Πρωτοχρονιά [New Year's Day]"),
-                (date(y, 1, 6), "Θεοφάνεια [Epiphany]"),
-                (
-                    date(y, 3, 25),
-                    "Εικοστή Πέμπτη Μαρτίου " + "[Independence Day]",
-                ),
-                (date(y, 5, 1), "Εργατική Πρωτομαγιά [Labour day]"),
-                (
-                    date(y, 8, 15),
-                    "Κοίμηση της Θεοτόκου " + "[Assumption of Mary]",
-                ),
-                (date(y, 10, 28), "Ημέρα του Όχι [Ochi Day]"),
-                (date(y, 12, 25), "Χριστούγεννα [Christmas]"),
-                (
-                    date(y, 12, 26),
-                    "Επόμενη ημέρα των Χριστουγέννων "
-                    + "[Day after Christmas]",
-                ),
+                (date(y, 1, 1), "Πρωτοχρονιά"),
+                (date(y, 1, 6), "Θεοφάνεια"),
+                (date(y, 3, 25), "Εικοστή Πέμπτη Μαρτίου"),
+                (date(y, 5, 1), "Εργατική Πρωτομαγιά"),
+                (date(y, 8, 15), "Κοίμηση της Θεοτόκου"),
+                (date(y, 10, 28), "Ημέρα του Όχι"),
+                (date(y, 12, 25), "Χριστούγεννα"),
+                (date(y, 12, 26), "Επόμενη ημέρα των Χριστουγέννων"),
             )
 
         for d, dstr in fdays:
-            self.assertIn(d, self.gr_holidays)
-            self.assertIn(dstr, self.gr_holidays[d])
+            self.assertIn(d, self.holidays)
+            self.assertIn(dstr, self.holidays[d])
 
     def test_gr_clean_monday(self):
         checkdates = (
@@ -59,8 +53,8 @@ class TestGreece(unittest.TestCase):
         )
 
         for d in checkdates:
-            self.assertIn(d, self.gr_holidays)
-            self.assertIn("Καθαρά Δευτέρα [Clean Monday]", self.gr_holidays[d])
+            self.assertIn(d, self.holidays)
+            self.assertIn("Καθαρά Δευτέρα", self.holidays[d])
 
     def test_gr_easter_monday(self):
         checkdates = (
@@ -74,10 +68,8 @@ class TestGreece(unittest.TestCase):
         )
 
         for d in checkdates:
-            self.assertIn(d, self.gr_holidays)
-            self.assertIn(
-                "Δευτέρα του Πάσχα [Easter Monday]", self.gr_holidays[d]
-            )
+            self.assertIn(d, self.holidays)
+            self.assertIn("Δευτέρα του Πάσχα", self.holidays[d])
 
     def test_gr_monday_of_the_holy_spirit(self):
         checkdates = (
@@ -91,11 +83,8 @@ class TestGreece(unittest.TestCase):
         )
 
         for d in checkdates:
-            self.assertIn(d, self.gr_holidays)
-            self.assertIn(
-                "Δευτέρα του Αγίου Πνεύματος " + "[Monday of the Holy Spirit]",
-                self.gr_holidays[d],
-            )
+            self.assertIn(d, self.holidays)
+            self.assertIn("Δευτέρα του Αγίου Πνεύματος", self.holidays[d])
 
     def test_gr_labour_day_observed(self):
         # Dates when labour day was observed on a different date
@@ -109,19 +98,13 @@ class TestGreece(unittest.TestCase):
         checkyears = (2017, 2018, 2019, 2020, 2023)
 
         for d in checkdates:
-            self.assertIn(d, self.gr_holidays)
-            self.assertIn(
-                "Εργατική Πρωτομαγιά [Labour day] (Observed)",
-                self.gr_holidays[d],
-            )
+            self.assertIn(d, self.holidays)
+            self.assertIn("Εργατική Πρωτομαγιά", self.holidays[d])
 
         # Check that there is no observed day created for years
         # when Labour Day was on May 1st
         for year in checkyears:
             for day in (2, 3, 4):
                 d = date(year, 5, day)
-                if d in self.gr_holidays:
-                    self.assertNotIn(
-                        "Εργατική Πρωτομαγιά [Labour day] (Observed)",
-                        self.gr_holidays[d],
-                    )
+                if d in self.holidays:
+                    self.assertNotIn("Εργατική Πρωτομαγιά", self.holidays[d])

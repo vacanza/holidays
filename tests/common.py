@@ -37,7 +37,8 @@ class TestCase(unittest.TestCase):
         if (
             not hasattr(test_class, "default_language")
             or test_class.default_language is None
-            or len(test_class.default_language) != 2
+            # Can be either 2 (e.g., en, fr, uk) or 5 (e.g., en_US, en_GB).
+            or len(test_class.default_language) not in {2, 5}
         ):
             raise ValueError(
                 f"`{test_class.__name__}.default_language` value is invalid."
@@ -66,10 +67,10 @@ class TestCase(unittest.TestCase):
     def setUp(self):
         super().setUp()
 
-        self.set_locale(self.test_class.default_language.lower())
+        self.set_language(self.test_class.default_language.lower())
         self.holidays = self.test_class()
 
-    def set_locale(self, language):
+    def set_language(self, language):
         os.environ["LANGUAGE"] = language
 
     def _parse_arguments(self, args, expand_items=True):

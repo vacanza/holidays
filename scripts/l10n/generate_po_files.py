@@ -14,6 +14,7 @@
 import importlib
 import inspect
 import os
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -24,21 +25,24 @@ class POTGenerator:
 
     def process_countries(self):
         """Processes entities in specified directory."""
-        country_code_path_mapping = {}
+        country_code_info_mapping = {}
         module_name_path_mapping = {
-            str(path).split("/")[-1].replace(".py", ""): str(path)
-            for path in Path("holidays/countries").glob("*.py")
+            str(path).split(os.sep)[-1].replace(".py", ""): str(path)
+            for path in Path(os.path.join("holidays", "countries")).glob(
+                "*.py"
+            )
             if not str(path).endswith("__init__.py")
         }
 
         sys.path.append(os.getcwd())  # Make holidays visible.
+        from holidays import __version__ as package_version
         from holidays.holiday_base import HolidayBase
 
         for module_name, module_path in module_name_path_mapping.items():
             module = f"holidays.countries.{module_name}"
-            country_code_path_mapping.update(
+            country_code_info_mapping.update(
                 {
-                    name.upper(): module_path
+                    name.upper(): (cls.default_language, module_path)
                     for name, cls in inspect.getmembers(
                         importlib.import_module(module), inspect.isclass
                     )
@@ -49,8 +53,13 @@ class POTGenerator:
                 }
             )
 
-        for country_code, class_file_path in country_code_path_mapping.items():
-            pot_file_path = f"holidays/locale/pot/{country_code}.pot"
+        for country_code in sorted(country_code_info_mapping.keys()):
+            default_language, class_file_path = country_code_info_mapping[
+                country_code
+            ]
+            pot_file_path = os.path.join(
+                "holidays", "locale", "pot", f"{country_code}.pot"
+            )
             # Create .pot files.
             subprocess.run(
                 (
@@ -60,12 +69,28 @@ class POTGenerator:
                     "tr",
                     "-o",
                     pot_file_path,
+                    "--package-name",
+                    "Python Holidays",
+                    "--package-version",
+                    package_version,
+                    "--width",
+                    "80",
+                    # "--add-location",
+                    # "--linenumbers",
                 ),
                 check=True,
             )
 
+            # Update default country .po file.
+            po_directory = os.path.join(
+                "holidays", "locale", default_language, "LC_MESSAGES"
+            )
+            po_file_path = os.path.join(po_directory, f"{country_code}.po")
+            os.makedirs(po_directory, exist_ok=True)
+            shutil.copyfile(pot_file_path, po_file_path)
+
             # Update .po files.
-            for po_file_path in Path("holidays/locale").rglob(
+            for po_file_path in Path(os.path.join("holidays", "locale")).rglob(
                 f"{country_code}.po"
             ):
                 subprocess.run(
@@ -75,7 +100,7 @@ class POTGenerator:
                         pot_file_path,
                         "-o",
                         po_file_path,
-                        "--force-po",
+                        # "--force-po",
                     ),
                     check=True,
                 )

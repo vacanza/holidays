@@ -9,43 +9,38 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
 from datetime import date
 
-import holidays
+from holidays.countries.cyprus import Cyprus, CY, CYP
+from tests.common import TestCase
 
 
-class TestCyprus(unittest.TestCase):
-    def setUp(self):
-        self.cy_holidays = holidays.CY()
+class TestCyprus(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Cyprus)
+
+    def test_country_aliases(self):
+        self.assertCountryAliases(Cyprus, CY, CYP)
 
     def test_fixed_holidays(self):
         years = range(2000, 2025)
         for y in years:
             fdays = (
-                (date(y, 1, 1), "Πρωτοχρονιά [New Year's Day]"),
-                (date(y, 1, 6), "Θεοφάνεια [Epiphany]"),
-                (
-                    date(y, 3, 25),
-                    "Εικοστή Πέμπτη Μαρτίου [Greek Independence Day]",
-                ),
-                (date(y, 4, 1), "1η Απριλίου [Cyprus National Day]"),
-                (date(y, 5, 1), "Εργατική Πρωτομαγιά [Labour day]"),
-                (
-                    date(y, 8, 15),
-                    "Κοίμηση της Θεοτόκου [Assumption of Mary]",
-                ),
-                (date(y, 10, 28), "Ημέρα του Όχι [Ochi Day]"),
-                (date(y, 12, 25), "Χριστούγεννα [Christmas]"),
-                (
-                    date(y, 12, 26),
-                    "Δεύτερη μέρα Χριστουγέννων [Day after Christmas]",
-                ),
+                (date(y, 1, 1), "Πρωτοχρονιά"),
+                (date(y, 1, 6), "Θεοφάνεια"),
+                (date(y, 3, 25), "Εικοστή Πέμπτη Μαρτίου"),
+                (date(y, 4, 1), "1η Απριλίου"),
+                (date(y, 5, 1), "Εργατική Πρωτομαγιά"),
+                (date(y, 8, 15), "Κοίμηση της Θεοτόκου"),
+                (date(y, 10, 28), "Ημέρα του Όχι"),
+                (date(y, 12, 25), "Χριστούγεννα"),
+                (date(y, 12, 26), "Δεύτερη μέρα Χριστουγέννων"),
             )
 
         for d, dstr in fdays:
-            self.assertIn(d, self.cy_holidays)
-            self.assertIn(dstr, self.cy_holidays[d])
+            self.assertIn(d, self.holidays)
+            self.assertIn(dstr, self.holidays[d])
 
     def test_cy_clean_monday(self):
         checkdates = (
@@ -59,8 +54,8 @@ class TestCyprus(unittest.TestCase):
         )
 
         for d in checkdates:
-            self.assertIn(d, self.cy_holidays)
-            self.assertIn("Καθαρά Δευτέρα [Clean Monday]", self.cy_holidays[d])
+            self.assertIn(d, self.holidays)
+            self.assertIn("Καθαρά Δευτέρα", self.holidays[d])
 
     def test_cy_good_friday(self):
         checkdates = (
@@ -74,10 +69,8 @@ class TestCyprus(unittest.TestCase):
         )
 
         for d in checkdates:
-            self.assertIn(d, self.cy_holidays)
-            self.assertIn(
-                "Μεγάλη Παρασκευή [Good Friday]", self.cy_holidays[d]
-            )
+            self.assertIn(d, self.holidays)
+            self.assertIn("Μεγάλη Παρασκευή", self.holidays[d])
 
     def test_cy_easter_sunday(self):
         checkdates = (
@@ -91,10 +84,8 @@ class TestCyprus(unittest.TestCase):
         )
 
         for d in checkdates:
-            self.assertIn(d, self.cy_holidays)
-            self.assertIn(
-                "Κυριακή του Πάσχα [Easter Sunday]", self.cy_holidays[d]
-            )
+            self.assertIn(d, self.holidays)
+            self.assertIn("Κυριακή του Πάσχα", self.holidays[d])
 
     def test_cy_easter_monday(self):
         checkdates = (
@@ -108,10 +99,8 @@ class TestCyprus(unittest.TestCase):
         )
 
         for d in checkdates:
-            self.assertIn(d, self.cy_holidays)
-            self.assertIn(
-                "Δευτέρα του Πάσχα [Easter Monday]", self.cy_holidays[d]
-            )
+            self.assertIn(d, self.holidays)
+            self.assertIn("Δευτέρα του Πάσχα", self.holidays[d])
 
     def test_cy_monday_of_the_holy_spirit(self):
         checkdates = (
@@ -125,8 +114,30 @@ class TestCyprus(unittest.TestCase):
         )
 
         for d in checkdates:
-            self.assertIn(d, self.cy_holidays)
-            self.assertIn(
-                "Δευτέρα του Αγίου Πνεύματος " + "[Monday of the Holy Spirit]",
-                self.cy_holidays[d],
-            )
+            self.assertIn(d, self.holidays)
+            self.assertIn("Δευτέρα του Αγίου Πνεύματος", self.holidays[d])
+
+    def test_l10n_default(self):
+        def run_tests(languages):
+            for language in languages:
+                cy = Cyprus(language=language)
+                self.assertEqual(cy["2022-01-01"], "Πρωτοχρονιά")
+                self.assertEqual(cy["2022-12-25"], "Χριστούγεννα")
+
+        run_tests((Cyprus.default_language, None, "invalid"))
+
+        self.set_language("en_US")
+        run_tests((Cyprus.default_language,))
+
+    def test_l10n_en_us(self):
+        en_us = "en_US"
+
+        cy = Cyprus(language=en_us)
+        self.assertEqual(cy["2022-01-01"], "New Year's Day")
+        self.assertEqual(cy["2022-12-25"], "Christmas Day")
+
+        self.set_language(en_us)
+        for language in (None, en_us, "invalid"):
+            cy = Cyprus(language=language)
+            self.assertEqual(cy["2022-01-01"], "New Year's Day")
+            self.assertEqual(cy["2022-12-25"], "Christmas Day")

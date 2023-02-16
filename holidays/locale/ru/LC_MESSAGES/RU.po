@@ -1,0 +1,63 @@
+#
+# SOME DESCRIPTIVE TITLE
+# This file is distributed under the same license as the Python Holidays
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.20\n"
+"POT-Creation-Date: 2023-02-15 08:13-0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingua 4.15.0\n"
+
+#. New Year Holidays.
+#: holidays/countries/russia.py:30
+msgid "Новогодние каникулы"
+msgstr ""
+
+#. Orthodox Christmas Day.
+#: holidays/countries/russia.py:36
+msgid "Рождество Христово"
+msgstr ""
+
+#. Defender of the Fatherland Day.
+#: holidays/countries/russia.py:39
+msgid "День защитника Отечества"
+msgstr ""
+
+#. International Women's Day.
+#: holidays/countries/russia.py:42
+msgid "Международный женский день"
+msgstr ""
+
+#. Labour Day.
+#: holidays/countries/russia.py:45
+msgid "Праздник Весны и Труда"
+msgstr ""
+
+#. Victory Day.
+#: holidays/countries/russia.py:48
+msgid "День Победы"
+msgstr ""
+
+#. Russia's Day.
+#: holidays/countries/russia.py:51
+msgid "День России"
+msgstr ""
+
+#. Unity Day.
+#: holidays/countries/russia.py:55
+msgid "День народного единства"
+msgstr ""
+
+#. October Revolution Day.
+#: holidays/countries/russia.py:58
+msgid "День Октябрьской революции"
+msgstr ""

@@ -9,7 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-
 import os
 import subprocess
 import sys
@@ -23,6 +22,8 @@ def generate_mo_files():
     for po_path in Path(os.path.join("holidays", "locale")).rglob("*.po"):
         po_file = str(po_path)
         mo_file = po_file.replace(".po", ".mo")
+
+        os.unlink(mo_file)
         subprocess.run(
             (
                 sys.executable,

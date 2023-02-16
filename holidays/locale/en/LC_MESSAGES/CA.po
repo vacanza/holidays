@@ -1,30 +1,31 @@
-# Canada holidays.
-# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2022.
 #
+# SOME DESCRIPTIVE TITLE
+# This file is distributed under the same license as the Python Holidays
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.20\n"
-"POT-Creation-Date: 2023-02-13 14:18-0800\n"
-"PO-Revision-Date: 2022-12-18 17:55-0800\n"
-"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
-"Language-Team: Python Holidays Translation Team\n"
-"Language: en\n"
+"POT-Creation-Date: 2023-02-15 08:30-0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.2.2\n"
+"Generated-By: Lingua 4.15.0\n"
 
-#. New Year's Day
+#. New Year's Day.
 #: holidays/countries/canada.py:63
 msgid "New Year's Day"
 msgstr ""
 
-#: holidays/countries/canada.py:67 holidays/countries/canada.py:165
-#: holidays/countries/canada.py:189 holidays/countries/canada.py:198
-#: holidays/countries/canada.py:273 holidays/countries/canada.py:280
-#: holidays/countries/canada.py:287
+#: holidays/countries/canada.py:67 holidays/countries/canada.py:168
+#: holidays/countries/canada.py:192 holidays/countries/canada.py:201
+#: holidays/countries/canada.py:278 holidays/countries/canada.py:285
+#: holidays/countries/canada.py:292
 #, c-format
 msgid "%s (Observed)"
 msgstr ""
@@ -42,117 +43,110 @@ msgstr ""
 msgid "Islander Day"
 msgstr ""
 
-#. http://novascotia.ca/lae/employmentrights/NovaScotiaHeritageDay.asp
-#.
-#. https://en.wikipedia.org/wiki/Civic_Holiday#Alberta
-#: holidays/countries/canada.py:104 holidays/countries/canada.py:122
-#: holidays/countries/canada.py:209
+#. Heritage Day.
+#: holidays/countries/canada.py:105 holidays/countries/canada.py:124
+#: holidays/countries/canada.py:213
 msgid "Heritage Day"
 msgstr ""
 
-#: holidays/countries/canada.py:128
+#. St. Patrick's Day.
+#: holidays/countries/canada.py:131
 msgid "St. Patrick's Day"
 msgstr ""
 
-#. Good Friday
-#: holidays/countries/canada.py:132
+#. Good Friday.
+#: holidays/countries/canada.py:135
 msgid "Good Friday"
 msgstr ""
 
-#. Easter Monday
-#: holidays/countries/canada.py:134
+#. Easter Monday.
+#: holidays/countries/canada.py:137
 msgid "Easter Monday"
 msgstr ""
 
-#: holidays/countries/canada.py:145
+#: holidays/countries/canada.py:148
 msgid "St. George's Day"
 msgstr ""
 
-#: holidays/countries/canada.py:151
+#: holidays/countries/canada.py:154
 msgid "Victoria Day"
 msgstr ""
 
-#: holidays/countries/canada.py:153
+#: holidays/countries/canada.py:156
 msgid "National Patriots' Day"
 msgstr ""
 
-#: holidays/countries/canada.py:157
+#: holidays/countries/canada.py:160
 msgid "National Aboriginal Day"
 msgstr ""
 
-#: holidays/countries/canada.py:161
+#: holidays/countries/canada.py:164
 msgid "St. Jean Baptiste Day"
 msgstr ""
 
-#: holidays/countries/canada.py:171 holidays/countries/canada.py:173
+#: holidays/countries/canada.py:174 holidays/countries/canada.py:176
 msgid "Discovery Day"
 msgstr ""
 
-#: holidays/countries/canada.py:180
+#: holidays/countries/canada.py:183
 msgid "Memorial Day"
 msgstr ""
 
-#: holidays/countries/canada.py:182
+#: holidays/countries/canada.py:185
 msgid "Canada Day"
 msgstr ""
 
-#: holidays/countries/canada.py:185
+#: holidays/countries/canada.py:188
 msgid "Dominion Day"
 msgstr ""
 
-#: holidays/countries/canada.py:193
+#: holidays/countries/canada.py:196
 msgid "Nunavut Day"
 msgstr ""
 
-#: holidays/countries/canada.py:204
+#: holidays/countries/canada.py:207
 msgid "Civic Holiday"
 msgstr ""
 
-#. https://en.wikipedia.org/wiki/Civic_Holiday
-#: holidays/countries/canada.py:212
+#. British Columbia Day.
+#: holidays/countries/canada.py:217
 msgid "British Columbia Day"
 msgstr ""
 
-#. https://en.wikipedia.org/wiki/Civic_Holiday
-#: holidays/countries/canada.py:217
+#: holidays/countries/canada.py:222
 msgid "New Brunswick Day"
 msgstr ""
 
-#. https://en.wikipedia.org/wiki/Civic_Holiday
-#: holidays/countries/canada.py:222
+#: holidays/countries/canada.py:227
 msgid "Saskatchewan Day"
 msgstr ""
 
-#: holidays/countries/canada.py:228
+#: holidays/countries/canada.py:233
 msgid "Labour Day"
 msgstr ""
 
-#: holidays/countries/canada.py:241
+#: holidays/countries/canada.py:246
 msgid "Funeral of Her Majesty the Queen Elizabeth II"
 msgstr ""
 
-#: holidays/countries/canada.py:247
+#: holidays/countries/canada.py:252
 msgid "National Day for Truth and Reconciliation"
 msgstr ""
 
-#. in 1935, Canadian Thanksgiving was moved due to the General Election falling
-#. on the second Monday of October
-#. https://books.google.ca/books?id=KcwlQsmheG4C&pg=RA1-PA1940&lpg=RA1-PA1940&dq=canada+thanksgiving+1935&source=bl&ots=j4qYrcfGuY&sig=gxXeAQfXVsOF9fOwjSMswPHJPpM&hl=en&sa=X&ved=0ahUKEwjO0f3J2PjOAhVS4mMKHRzKBLAQ6AEIRDAG#v=onepage&q=canada%20thanksgiving%201935&f=false
-#.
-#: holidays/countries/canada.py:257 holidays/countries/canada.py:259
+#: holidays/countries/canada.py:262 holidays/countries/canada.py:264
 msgid "Thanksgiving"
 msgstr ""
 
-#: holidays/countries/canada.py:265
+#: holidays/countries/canada.py:270
 msgid "Remembrance Day"
 msgstr ""
 
-#. Christmas Day
-#: holidays/countries/canada.py:276
+#. Christmas Day,
+#: holidays/countries/canada.py:281
 msgid "Christmas Day"
 msgstr ""
 
-#. Boxing Day
-#: holidays/countries/canada.py:283
+#. Boxing Day.
+#: holidays/countries/canada.py:288
 msgid "Boxing Day"
 msgstr ""
