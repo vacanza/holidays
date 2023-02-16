@@ -59,7 +59,7 @@ class HolidaysMH(HolidayBase):
             warnings.warn(
                 "Years before 2022 are not available for the Marshall Islands "
                 "(MH).",
-                DeprecationWarning,
+                Warning,
             )
 
         # New Year's Day
