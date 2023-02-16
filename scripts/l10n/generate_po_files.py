@@ -14,7 +14,6 @@
 import importlib
 import inspect
 import os
-import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -85,9 +84,18 @@ class POTGenerator:
             po_directory = os.path.join(
                 "holidays", "locale", default_language, "LC_MESSAGES"
             )
-            po_file_path = os.path.join(po_directory, f"{country_code}.po")
             os.makedirs(po_directory, exist_ok=True)
-            shutil.copyfile(pot_file_path, po_file_path)
+            po_file_path = os.path.join(po_directory, f"{country_code}.po")
+            subprocess.run(
+                (
+                    "msgmerge",
+                    po_file_path,
+                    pot_file_path,
+                    "-o",
+                    po_file_path,
+                ),
+                check=True,
+            )
 
             # Update .po files.
             for po_file_path in Path(os.path.join("holidays", "locale")).rglob(
@@ -100,7 +108,6 @@ class POTGenerator:
                         pot_file_path,
                         "-o",
                         po_file_path,
-                        # "--force-po",
                     ),
                     check=True,
                 )

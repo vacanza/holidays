@@ -53,9 +53,6 @@ class TestCase(unittest.TestCase):
         ):
             po_file = str(po_path)
             mo_file = po_file.replace(".po", ".mo")
-
-            if os.path.exists(mo_file):
-                os.unlink(mo_file)
             subprocess.run(
                 (
                     sys.executable,
@@ -70,7 +67,7 @@ class TestCase(unittest.TestCase):
     def setUp(self):
         super().setUp()
 
-        self.set_language(self.test_class.default_language.lower())
+        self.set_language(self.test_class.default_language)
         self.holidays = self.test_class()
 
     def set_language(self, language):
