@@ -304,7 +304,7 @@ class HolidayBase(Dict[date, str]):
                 else:
                     translator = translation(
                         name,
-                        fallback=language is None,
+                        fallback=True,
                         localedir=locale_dir,
                     )
                 self.tr = translator.gettext  # Replace `self.tr()`.
