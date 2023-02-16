@@ -209,6 +209,8 @@ class Thailand(HolidayBase):
             (MAY, 16, thai_bridge_public_holiday),
             (OCT, 27, thai_flood_2011_emergency_lockdown),
             (OCT, 28, thai_flood_2011_emergency_lockdown),
+            (OCT, 29, thai_flood_2011_emergency_lockdown),
+            (OCT, 30, thai_flood_2011_emergency_lockdown),
             (OCT, 31, thai_flood_2011_emergency_lockdown),
         ),
         2012: ((APR, 9, thai_bridge_public_holiday),),
