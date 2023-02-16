@@ -27,7 +27,7 @@ class Kenya(HolidayBase):
 
     country = "KE"
     special_holidays = {
-        2020: ((FEB, 11, "President Moi Celebration of Life Day	"),),
+        2020: ((FEB, 11, "President Moi Celebration of Life Day"),),
         2022: (
             (APR, 29, "State Funeral for Former President Mwai Kibaki"),
             (AUG, 9, "Election Day"),
