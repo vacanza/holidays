@@ -1,21 +1,19 @@
+# Greece holidays.
+# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
 #
-# SOME DESCRIPTIVE TITLE
-# This file is distributed under the same license as the Python Holidays
-# package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.20\n"
 "POT-Creation-Date: 2023-02-15 14:53-0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2023-02-16 08:50-0800\n"
+"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
 #: holidays/countries/greece.py:40

@@ -1,4 +1,4 @@
-# Belarus holidays English translation.
+# Belarus holidays en_US localization.
 # Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
 #
 msgid ""

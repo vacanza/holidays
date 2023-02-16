@@ -1,4 +1,4 @@
-# Greece holidays English translation.
+# Greece holidays en_US localization.
 # Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
 #
 msgid ""

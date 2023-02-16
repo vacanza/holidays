@@ -1,4 +1,4 @@
-# Argentina holidays English translation.
+# Argentina holidays en_US localization.
 # Authors: Arkadii Yakovets <ark@cho.red>, (c) 2022.
 #
 msgid ""

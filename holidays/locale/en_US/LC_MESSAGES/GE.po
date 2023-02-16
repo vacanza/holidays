@@ -1,4 +1,4 @@
-# Georgia holidays English translation.
+# Georgia holidays en_US localization.
 # Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
 #
 msgid ""

@@ -1,4 +1,4 @@
-# Japan holidays English translation.
+# Japan holidays en_US localization.
 # Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
 #
 msgid ""
