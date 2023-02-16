@@ -19,8 +19,8 @@ import sys
 from pathlib import Path
 
 
-class POTGenerator:
-    """Generates .pot files for supported country/market entities."""
+class POGenerator:
+    """Generates .po files for supported country/market entities."""
 
     def process_countries(self):
         """Processes entities in specified directory."""
@@ -74,8 +74,6 @@ class POTGenerator:
                     package_version,
                     "--width",
                     "80",
-                    # "--add-location",
-                    # "--linenumbers",
                 ),
                 check=True,
             )
@@ -113,10 +111,9 @@ class POTGenerator:
                 )
 
     def run(self):
-        """Runs the POT files generation process."""
+        """Runs the .po files generation process."""
         self.process_countries()
 
 
 if __name__ == "__main__":
-    pot_generator = POTGenerator()
-    pot_generator.run()
+    POGenerator().run()

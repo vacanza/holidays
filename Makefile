@@ -18,6 +18,7 @@ coverage:
 
 l10n:
 	scripts/l10n/generate_po_files.py
+	scripts/l10n/generate_mo_files.py
 
 pre-commit:
 	pre-commit run --all-files
@@ -31,6 +32,7 @@ setup:
 	mkdir -p holidays/locale/pot
 
 test:
+	scripts/l10n/generate_mo_files.py
 	pytest --cov=. --cov-config=pyproject.toml --cov-report term --cov-report xml --durations 10 --durations-min=0.75 --no-cov-on-fail --numprocesses auto
 
 tox:

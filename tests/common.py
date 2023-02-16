@@ -10,10 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 import os
-import subprocess
-import sys
 import unittest
-from pathlib import Path
 from typing import Generator
 
 from dateutil.parser import parse
@@ -42,26 +39,6 @@ class TestCase(unittest.TestCase):
         ):
             raise ValueError(
                 f"`{test_class.__name__}.default_language` value is invalid."
-            )
-
-        # Generate translation files for a specific entity.
-        name = getattr(
-            test_class, "country", getattr(test_class, "market", None)
-        )
-        for po_path in Path(os.path.join("holidays", "locale")).rglob(
-            f"{name}.po"
-        ):
-            po_file = str(po_path)
-            mo_file = po_file.replace(".po", ".mo")
-            subprocess.run(
-                (
-                    sys.executable,
-                    os.path.join("scripts", "l10n", "msgfmt.py"),
-                    "-o",
-                    mo_file,
-                    po_file,
-                ),
-                check=True,
             )
 
     def setUp(self):
