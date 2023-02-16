@@ -23,7 +23,7 @@ def generate_mo_files():
         po_file = str(po_path)
         mo_file = po_file.replace(".po", ".mo")
 
-        os.unlink(mo_file)
+        Path(mo_file).unlink(missing_ok=True)
         subprocess.run(
             (
                 sys.executable,
