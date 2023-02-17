@@ -261,9 +261,9 @@ class TestPoland(TestCase):
 
         self.set_language(en_us)
         for language in (None, en_us, "invalid"):
-            pl_en = Poland(language=language)
-            self.assertEqual(pl_en["2022-01-01"], "New Year's Day")
-            self.assertEqual(pl_en["2022-12-25"], "Christmas (Day 1)")
+            pl = Poland(language=language)
+            self.assertEqual(pl["2022-01-01"], "New Year's Day")
+            self.assertEqual(pl["2022-12-25"], "Christmas (Day 1)")
 
     def test_l10n_uk(self):
         uk = "uk"

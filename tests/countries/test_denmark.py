@@ -43,7 +43,7 @@ class TestDenmark(TestCase):
 
         run_tests((Denmark.default_language, None, "invalid"))
 
-        self.set_language("en")
+        self.set_language("en_US")
         run_tests((Denmark.default_language,))
 
     def test_l10n_en_us(self):
