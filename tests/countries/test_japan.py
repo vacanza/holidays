@@ -9,21 +9,25 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
 from datetime import date
 
-import holidays
+from holidays.countries.japan import Japan, JP, JPN
+from tests.common import TestCase
 
 
-class TestJapan(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.Japan()
+class TestJapan(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Japan)
+
+    def test_country_aliases(self):
+        self.assertCountryAliases(Japan, JP, JPN)
 
     def test_not_implemented(self):
         with self.assertRaises(NotImplementedError):
-            holidays.Japan(years=[1945])
+            Japan(years=[1945])
         with self.assertRaises(NotImplementedError):
-            holidays.Japan(years=[2100])
+            Japan(years=[2100])
 
     def test_new_years_day(self):
         for year in range(1949, 2050):
@@ -574,7 +578,7 @@ class TestJapan(unittest.TestCase):
         self.assertIn(date(2019, 10, 22), self.holidays)
 
     def test_observed_holidays(self):
-        no_observed = holidays.Japan(observed=False)
+        no_observed = Japan(observed=False)
         hol_list = (
             # 振替休日
             (1973, 4, 30),
@@ -719,3 +723,32 @@ class TestJapan(unittest.TestCase):
         for dt in hol_list:
             self.assertIn(date(*dt), self.holidays)
             self.assertNotIn(date(*dt), no_observed)
+
+    def test_l10n_default(self):
+        def run_tests(languages):
+            for language in languages:
+                jp = Japan(language=language)
+                self.assertEqual(jp["2022-01-01"], "元日")
+                self.assertEqual(jp["2022-11-23"], "勤労感謝の日")
+
+        run_tests((Japan.default_language, None, "invalid"))
+
+        self.set_language("en_US")
+        run_tests((Japan.default_language,))
+
+    # def test_l10n_en_us(self):
+    #     en_us = "en_US"
+
+    #     pl = Poland(language=en_us)
+    #     self.assertEqual(
+    #         pl["2018-11-12"],
+    #         "National Independence Day - 100th anniversary",
+    #     )
+    #     self.assertEqual(pl["2022-01-01"], "New Year's Day")
+    #     self.assertEqual(pl["2022-12-25"], "Christmas (Day 1)")
+
+    #     self.set_language(en_us)
+    #     for language in (None, en_us, "invalid"):
+    #         pl = Poland(language=language)
+    #         self.assertEqual(pl["2022-01-01"], "New Year's Day")
+    #         self.assertEqual(pl["2022-12-25"], "Christmas (Day 1)")

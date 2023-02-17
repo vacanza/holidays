@@ -1,0 +1,127 @@
+# Japan holidays.
+# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.20\n"
+"POT-Creation-Date: 2023-02-15 08:36-0800\n"
+"PO-Revision-Date: 2023-02-16 08:58-0800\n"
+"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. The Crown Prince marriage ceremony.
+#: holidays/countries/japan.py:35 holidays/countries/japan.py:38
+msgid "結婚の儀"
+msgstr ""
+
+#. State Funeral of Emperor Shōwa.
+#: holidays/countries/japan.py:36
+msgid "大喪の礼"
+msgstr ""
+
+#. Enthronement ceremony.
+#: holidays/countries/japan.py:37
+msgid "即位礼正殿の儀"
+msgstr ""
+
+#. Enthronement day.
+#: holidays/countries/japan.py:40
+msgid "天皇の即位の日"
+msgstr ""
+
+#. Enthronement ceremony.
+#: holidays/countries/japan.py:41
+msgid "即位礼正殿の儀が行われる日"
+msgstr ""
+
+#. New Year's Day.
+#: holidays/countries/japan.py:52
+msgid "元日"
+msgstr ""
+
+#. Coming of Age Day.
+#: holidays/countries/japan.py:60
+msgid "成人の日"
+msgstr ""
+
+#: holidays/countries/japan.py:64
+msgid "建国記念の日"
+msgstr ""
+
+#: holidays/countries/japan.py:68 holidays/countries/japan.py:80
+#: holidays/countries/japan.py:148
+msgid "天皇誕生日"
+msgstr ""
+
+#: holidays/countries/japan.py:76
+msgid "春分の日"
+msgstr ""
+
+#: holidays/countries/japan.py:82 holidays/countries/japan.py:91
+msgid "みどりの日"
+msgstr ""
+
+#: holidays/countries/japan.py:84
+msgid "昭和の日"
+msgstr ""
+
+#. Constitution Memorial Day.
+#: holidays/countries/japan.py:87
+msgid "憲法記念日"
+msgstr ""
+
+#. Children's Day.
+#: holidays/countries/japan.py:94
+msgid "こどもの日"
+msgstr ""
+
+#: holidays/countries/japan.py:98 holidays/countries/japan.py:100
+#: holidays/countries/japan.py:102 holidays/countries/japan.py:104
+msgid "海の日"
+msgstr ""
+
+#: holidays/countries/japan.py:108 holidays/countries/japan.py:110
+#: holidays/countries/japan.py:112
+msgid "山の日"
+msgstr ""
+
+#: holidays/countries/japan.py:116 holidays/countries/japan.py:118
+msgid "敬老の日"
+msgstr ""
+
+#: holidays/countries/japan.py:126
+msgid "秋分の日"
+msgstr ""
+
+#: holidays/countries/japan.py:130 holidays/countries/japan.py:132
+msgid "体育の日"
+msgstr ""
+
+#: holidays/countries/japan.py:134 holidays/countries/japan.py:136
+#: holidays/countries/japan.py:138
+msgid "スポーツの日"
+msgstr ""
+
+#. Culture Day.
+#: holidays/countries/japan.py:141
+msgid "文化の日"
+msgstr ""
+
+#. Labour Thanksgiving Day.
+#: holidays/countries/japan.py:144
+msgid "勤労感謝の日"
+msgstr ""
+
+#: holidays/countries/japan.py:158
+msgid "振替休日"
+msgstr ""
+
+#: holidays/countries/japan.py:166
+msgid "国民の休日"
+msgstr ""

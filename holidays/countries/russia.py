@@ -21,40 +21,41 @@ class Russia(HolidayBase):
     """
 
     country = "RU"
+    default_language = "ru"
 
     def _populate(self, year):
         super()._populate(year)
 
-        # New Year Holidays
-        name = "Новогодние каникулы"
+        # New Year Holidays.
+        name = self.tr("Новогодние каникулы")
         for day in range(1, 7):
             self[date(year, JAN, day)] = name
         self[date(year, JAN, 8)] = name
 
-        # Christmas Day (Orthodox)
-        self[date(year, JAN, 7)] = "Рождество Христово"
+        # Orthodox Christmas Day.
+        self[date(year, JAN, 7)] = self.tr("Рождество Христово")
 
-        # Defender of the Fatherland Day
-        self[date(year, FEB, 23)] = "День защитника Отечества"
+        # Defender of the Fatherland Day.
+        self[date(year, FEB, 23)] = self.tr("День защитника Отечества")
 
-        # International Women's Day
-        self[date(year, MAR, 8)] = "Международный женский день"
+        # International Women's Day.
+        self[date(year, MAR, 8)] = self.tr("Международный женский день")
 
-        # Labour Day
-        self[date(year, MAY, 1)] = "Праздник Весны и Труда"
+        # Labour Day.
+        self[date(year, MAY, 1)] = self.tr("Праздник Весны и Труда")
 
-        # Victory Day
-        self[date(year, MAY, 9)] = "День Победы"
+        # Victory Day.
+        self[date(year, MAY, 9)] = self.tr("День Победы")
 
-        # Russia's Day
-        self[date(year, JUN, 12)] = "День России"
+        # Russia's Day.
+        self[date(year, JUN, 12)] = self.tr("День России")
 
         if year >= 2005:
-            # Unity Day
-            self[date(year, NOV, 4)] = "День народного единства"
+            # Unity Day.
+            self[date(year, NOV, 4)] = self.tr("День народного единства")
         else:
-            # October Revolution Day
-            self[date(year, NOV, 7)] = "День Октябрьской революции"
+            # October Revolution Day.
+            self[date(year, NOV, 7)] = self.tr("День Октябрьской революции")
 
 
 class RU(Russia):

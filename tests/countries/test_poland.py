@@ -245,39 +245,39 @@ class TestPoland(TestCase):
 
         run_tests((Poland.default_language, None, "invalid"))
 
-        self.set_locale("en")
+        self.set_language("en_US")
         run_tests((Poland.default_language,))
 
-    def test_l10n_en(self):
-        language = "en"
+    def test_l10n_en_us(self):
+        en_us = "en_US"
 
-        pl_en = Poland(language=language)
+        pl = Poland(language=en_us)
         self.assertEqual(
-            pl_en["2018-11-12"],
+            pl["2018-11-12"],
             "National Independence Day - 100th anniversary",
         )
-        self.assertEqual(pl_en["2022-01-01"], "New Year's Day")
-        self.assertEqual(pl_en["2022-12-25"], "Christmas (Day 1)")
+        self.assertEqual(pl["2022-01-01"], "New Year's Day")
+        self.assertEqual(pl["2022-12-25"], "Christmas (Day 1)")
 
-        self.set_locale(language)
-        for language in (None, language, "invalid"):
-            pl_en = Poland(language=language)
-            self.assertEqual(pl_en["2022-01-01"], "New Year's Day")
-            self.assertEqual(pl_en["2022-12-25"], "Christmas (Day 1)")
+        self.set_language(en_us)
+        for language in (None, en_us, "invalid"):
+            pl = Poland(language=language)
+            self.assertEqual(pl["2022-01-01"], "New Year's Day")
+            self.assertEqual(pl["2022-12-25"], "Christmas (Day 1)")
 
     def test_l10n_uk(self):
-        language = "uk"
+        uk = "uk"
 
-        pl_uk = Poland(language=language)
+        pl = Poland(language=uk)
         self.assertEqual(
-            pl_uk["2018-11-12"],
+            pl["2018-11-12"],
             "100-а річниця Дня Незалежності",
         )
-        self.assertEqual(pl_uk["2022-01-01"], "Новий рік")
-        self.assertEqual(pl_uk["2022-12-25"], "Перший день Різдва")
+        self.assertEqual(pl["2022-01-01"], "Новий рік")
+        self.assertEqual(pl["2022-12-25"], "Перший день Різдва")
 
-        self.set_locale(language)
-        for language in (None, language, "invalid"):
-            pl_uk = Poland(language=language)
-            self.assertEqual(pl_uk["2022-01-01"], "Новий рік")
-            self.assertEqual(pl_uk["2022-12-25"], "Перший день Різдва")
+        self.set_language(uk)
+        for language in (None, uk, "invalid"):
+            pl = Poland(language=language)
+            self.assertEqual(pl["2022-01-01"], "Новий рік")
+            self.assertEqual(pl["2022-12-25"], "Перший день Різдва")

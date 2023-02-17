@@ -40,6 +40,7 @@ class Bulgaria(HolidayBase):
     """
 
     country = "BG"
+    default_language = "bg"
 
     def _populate(self, year):
         if year < 1990:
@@ -47,50 +48,58 @@ class Bulgaria(HolidayBase):
 
         super()._populate(year)
 
-        # New Year's Day
-        self[date(year, JAN, 1)] = "Нова година"
+        # New Year's Day.
+        self[date(year, JAN, 1)] = self.tr("Нова година")
 
-        # Liberation Day
-        self[
-            date(year, MAR, 3)
-        ] = "Ден на Освобождението на България от османско иго"
+        # Liberation Day.
+        self[date(year, MAR, 3)] = self.tr(
+            "Ден на Освобождението на България от османско иго"
+        )
 
-        # International Workers' Day
-        self[
-            date(year, MAY, 1)
-        ] = "Ден на труда и на международната работническа солидарност"
+        # International Workers' Day.
+        self[date(year, MAY, 1)] = self.tr(
+            "Ден на труда и на международната работническа солидарност"
+        )
 
-        # Saint George's Day
-        self[
-            date(year, MAY, 6)
-        ] = "Гергьовден, Ден на храбростта и Българската армия"
+        # Saint George's Day.
+        self[date(year, MAY, 6)] = self.tr(
+            "Гергьовден, Ден на храбростта и Българската армия"
+        )
 
-        # Bulgarian Education and Culture and Slavonic Literature Day
-        self[date(year, MAY, 24)] = (
+        # Bulgarian Education and Culture and Slavonic Literature Day.
+        self[date(year, MAY, 24)] = self.tr(
             "Ден на светите братя Кирил и Методий, на българската азбука, "
             "просвета и култура и на славянската книжовност"
         )
 
-        # Unification Day
-        self[date(year, SEP, 6)] = "Ден на Съединението"
+        # Unification Day.
+        self[date(year, SEP, 6)] = self.tr("Ден на Съединението")
 
-        # Independence Day
-        self[date(year, SEP, 22)] = "Ден на Независимостта на България"
+        # Independence Day.
+        self[date(year, SEP, 22)] = self.tr(
+            "Ден на Независимостта на България"
+        )
 
-        # National Awakening Day
-        self[date(year, NOV, 1)] = "Ден на народните будители"
+        # National Awakening Day.
+        self[date(year, NOV, 1)] = self.tr("Ден на народните будители")
 
-        # Christmas
-        self[date(year, DEC, 24)] = "Бъдни вечер"
-        self[date(year, DEC, 25)] = "Рождество Христово"
-        self[date(year, DEC, 26)] = "Рождество Христово"
+        # Christmas Eve.
+        self[date(year, DEC, 24)] = self.tr("Бъдни вечер")
+        # Christmas Day 1.
+        self[date(year, DEC, 25)] = self.tr("Рождество Христово")
+        # Christmas Day 2.
+        self[date(year, DEC, 26)] = self.tr("Рождество Христово")
 
-        # Easter
+        # Easter.
         easter_date = easter(year, method=EASTER_ORTHODOX)
-        self[easter_date + td(days=-2)] = "Велики петък"
-        self[easter_date + td(days=-1)] = "Велика събота"
-        self[easter_date] = "Великден"
-        self[easter_date + td(days=+1)] = "Великден"
+        # Good Friday.
+        self[easter_date + td(days=-2)] = self.tr("Велики петък")
+        # Easter Saturday.
+        self[easter_date + td(days=-1)] = self.tr("Велика събота")
+        # Easter Sunday.
+        self[easter_date] = self.tr("Великден")
+        # Easter Monday.
+        self[easter_date + td(days=+1)] = self.tr("Великден")
 
 
 class BG(Bulgaria):

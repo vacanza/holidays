@@ -1,9 +1,9 @@
 exclude tests/*
+include *.mo
 include *.py
+include *.po
 include *.rst
 include CHANGES
-include holidays/locale/*/LC_MESSAGES/*.mo
-include holidays/locale/*/LC_MESSAGES/*.po
 include holidays/py.typed
 include LICENSE
 include scripts/l10n/msgfmt.py

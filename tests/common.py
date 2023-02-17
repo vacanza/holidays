@@ -10,10 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 import os
-import subprocess
-import sys
 import unittest
-from pathlib import Path
 from typing import Generator
 
 from dateutil.parser import parse
@@ -37,39 +34,20 @@ class TestCase(unittest.TestCase):
         if (
             not hasattr(test_class, "default_language")
             or test_class.default_language is None
-            or len(test_class.default_language) != 2
+            # Can be either 2 (e.g., en, fr, uk) or 5 (e.g., en_US, en_GB).
+            or len(test_class.default_language) not in {2, 5}
         ):
             raise ValueError(
                 f"`{test_class.__name__}.default_language` value is invalid."
             )
 
-        # Generate translation files for a specific entity.
-        name = getattr(
-            test_class, "country", getattr(test_class, "market", None)
-        )
-        for po_path in Path(os.path.join("holidays", "locale")).rglob(
-            f"{name}.po"
-        ):
-            po_file = str(po_path)
-            mo_file = po_file.replace(".po", ".mo")
-            subprocess.run(
-                (
-                    sys.executable,
-                    os.path.join("scripts", "l10n", "msgfmt.py"),
-                    "-o",
-                    mo_file,
-                    po_file,
-                ),
-                check=True,
-            )
-
     def setUp(self):
         super().setUp()
 
-        self.set_locale(self.test_class.default_language.lower())
+        self.set_language(self.test_class.default_language)
         self.holidays = self.test_class()
 
-    def set_locale(self, language):
+    def set_language(self, language):
         os.environ["LANGUAGE"] = language
 
     def _parse_arguments(self, args, expand_items=True):
