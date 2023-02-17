@@ -9,55 +9,111 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
-from datetime import date
-
-import holidays
+from holidays.countries.zimbabwe import Zimbabwe, ZW, ZWE
+from tests.common import TestCase
 
 
-class TestZimbabwe(unittest.TestCase):
+class TestZimbabwe(TestCase):
     def setUp(self):
-        self.holidays = holidays.ZW()
+        self.holidays = Zimbabwe()
+        self.holidays_no_observed = Zimbabwe(observed=False)
 
-    def test_new_years(self):
-        self.assertIn(date(2010, 1, 1), self.holidays)
-        self.assertIn(date(2020, 1, 1), self.holidays)
-        self.assertNotIn(date(1986, 1, 2), self.holidays)  # sunday
+    def test_country_aliases(self):
+        self.assertCountryAliases(Zimbabwe, ZW, ZWE)
 
-    def test_observed(self):
-        self.assertIn(date(2017, 1, 2), self.holidays)  # sunday
+    def test_no_holidays(self):
+        self.assertNoHolidays(Zimbabwe(years=1987))
+
+    def test_holidays(self):
+        for year in range(1988, 2050):
+            self.assertHoliday(
+                f"{year}-01-01",
+                f"{year}-04-18",
+                f"{year}-05-01",
+                f"{year}-05-25",
+                f"{year}-12-22",
+                f"{year}-12-25",
+                f"{year}-12-26",
+            )
+
+        self.assertNoHoliday(f"{year}-02-21" for year in range(1988, 2018))
+        self.assertNoHolidayName(
+            "Robert Gabriel Mugabe National Youth Day",
+            Zimbabwe(years=range(1988, 2018)),
+        )
+        self.assertHoliday(f"{year}-02-21" for year in range(2018, 2050))
 
     def test_easter(self):
-        self.assertIn(date(2017, 4, 14), self.holidays)  # Good friday
-        self.assertIn(date(2017, 4, 15), self.holidays)  # Easter Saturday
-        self.assertIn(date(2017, 4, 17), self.holidays)  # Easter Monday
+        self.assertHoliday(
+            # Good Friday
+            "2018-03-30",
+            "2019-04-19",
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            # Holy Saturday
+            "2018-03-31",
+            "2019-04-20",
+            "2020-04-11",
+            "2021-04-03",
+            "2022-04-16",
+            # Easter Monday
+            "2018-04-02",
+            "2019-04-22",
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+        )
 
-    def test_heroes_day(self):
-        self.assertIn(date(1988, 8, 8), self.holidays)
-        self.assertIn(date(1988, 8, 9), self.holidays)
-        self.assertIn(date(1996, 8, 12), self.holidays)
-        self.assertIn(date(1996, 8, 13), self.holidays)
-        self.assertIn(date(2000, 8, 14), self.holidays)
-        self.assertIn(date(2000, 8, 15), self.holidays)
-        self.assertIn(date(2020, 8, 10), self.holidays)
-        self.assertIn(date(2020, 8, 11), self.holidays)
-        self.assertIn(date(2021, 8, 9), self.holidays)
-        self.assertIn(date(2021, 8, 10), self.holidays)
-        self.assertIn(date(2022, 8, 8), self.holidays)
-        self.assertIn(date(2022, 8, 9), self.holidays)
+    def test_moving_holidays(self):
+        self.assertHoliday(
+            # Zimbabwe Heroes' Day
+            "2018-08-13",
+            "2019-08-12",
+            "2020-08-10",
+            "2021-08-09",
+            "2022-08-08",
+            # Defense Forces Day
+            "2018-08-14",
+            "2019-08-13",
+            "2020-08-11",
+            "2021-08-10",
+            "2022-08-09",
+        )
 
-    def test_not_holiday(self):
-        self.assertNotIn(date(2016, 1, 12), self.holidays)
-        self.assertNotIn(date(1999, 2, 3), self.holidays)
-
-    def test_youth_day(self):
-        self.assertIn(date(2019, 2, 21), self.holidays)
-        self.assertNotIn(date(2015, 2, 21), self.holidays)
-
-    def test_not_observed(self):
-        self.holidays = holidays.ZW(observed=False)
-        self.assertNotIn(date(2017, 1, 2), self.holidays)
-        self.assertNotIn(date(2019, 12, 23), self.holidays)
-        self.assertNotIn(date(2021, 2, 22), self.holidays)
-        self.assertNotIn(date(2022, 5, 2), self.holidays)
-        self.assertNotIn(date(2022, 12, 27), self.holidays)
+    def test_observed(self):
+        dt = (
+            "2002-12-23",
+            "2003-05-26",
+            "2004-04-19",
+            "2004-12-27",
+            "2005-05-02",
+            "2005-12-27",
+            "2006-01-02",
+            "2008-05-26",
+            "2010-04-19",
+            "2010-12-27",
+            "2011-05-02",
+            "2011-12-27",
+            "2012-01-02",
+            "2013-12-23",
+            "2014-05-26",
+            "2016-05-02",
+            "2016-12-27",
+            "2017-01-02",
+            "2019-12-23",
+            "2021-02-22",
+            "2021-04-19",
+            "2021-12-27",
+            "2022-05-02",
+            "2022-12-27",
+            "2023-01-02",
+            "2024-12-23",
+            "2027-02-22",
+            # special cases
+            "2049-04-20",
+            "2055-04-20",
+            "2060-04-20",
+        )
+        self.assertHoliday(dt)
+        self.assertNoHoliday(Zimbabwe(observed=False), dt)

@@ -243,7 +243,9 @@ class Canada(HolidayBase):
             )
 
         # National Day for Truth and Reconciliation
-        if year >= 2021 and self.subdiv in {"MB", "NS"}:
+        if (year >= 2021 and self.subdiv in {"MB", "NS"}) or (
+            year >= 2023 and self.subdiv == "BC"
+        ):
             self[date(year, SEP, 30)] = self.tr(
                 "National Day for Truth and Reconciliation"
             )

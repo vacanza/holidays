@@ -537,7 +537,7 @@ default language code is a `ISO 639-1 code`_.
      - da, en
    * - Poland
      - pl
-     - en, pl
+     - en, pl, uk
    * - Ukraine
      - uk
      - en, uk

@@ -8,56 +8,89 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
-import unittest
-from datetime import date
 
-import holidays
+from holidays.countries.namibia import Namibia, NA, NAM
+from tests.common import TestCase
 
 
-class TestNamibia(unittest.TestCase):
+class TestNamibia(TestCase):
     def setUp(self):
-        self.holidays = holidays.NA()
+        self.holidays = Namibia()
 
-    def test_out_of_range_year(self):
-        self.assertNotIn(date(1970, 1, 1), self.holidays)
+    def test_country_aliases(self):
+        self.assertCountryAliases(Namibia, NA, NAM)
 
-    def test_new_years(self):
-        self.assertIn(date(1991, 1, 1), self.holidays)
-        self.assertIn(date(1999, 1, 1), self.holidays)
-        self.assertIn(date(2000, 1, 1), self.holidays)
-        self.assertIn(date(2017, 1, 2), self.holidays)  # observed holiday
-
-    def test_easter(self):
-        self.assertIn(date(2017, 4, 14), self.holidays)
-        self.assertIn(date(2017, 4, 17), self.holidays)
-        self.assertIn(date(2017, 5, 25), self.holidays)
-        self.assertIn(date(1994, 4, 1), self.holidays)
+    def test_no_holidays(self):
+        self.assertNoHolidays(Namibia(years=1989))
 
     def test_special_holidays(self):
-        self.assertIn(date(1999, 12, 31), self.holidays)  # Y2K
-        self.assertIn(date(2000, 1, 3), self.holidays)  # Y2K
-
-    def test_namibian_women_int_rights(self):
-        self.assertIn(date(2004, 9, 10), self.holidays)
-        self.assertIn(
-            date(2005, 9, 10), self.holidays
-        )  # test namib women and int. human rights day
+        self.assertHoliday(
+            "1999-12-31",
+            "2000-01-03",
+        )
 
     def test_holidays(self):
-        self.assertIn(date(2020, 5, 1), self.holidays)
-        self.assertIn(date(2020, 5, 4), self.holidays)
-        self.assertIn(date(2020, 5, 25), self.holidays)
-        self.assertIn(date(2020, 8, 26), self.holidays)
+        for year in range(1990, 2050):
+            self.assertHoliday(
+                f"{year}-01-01",
+                f"{year}-03-21",
+                f"{year}-05-01",
+                f"{year}-05-04",
+                f"{year}-05-25",
+                f"{year}-08-26",
+                f"{year}-09-10",
+                f"{year}-12-25",
+                f"{year}-12-26",
+            )
+        self.assertNoHolidayName(
+            "Day of the Namibian Women and International Human Rights Day",
+            Namibia(years=range(1990, 2005)),
+        )
+        self.assertHolidaysName(
+            "International Human Rights Day",
+            (f"{year}-09-10" for year in range(1990, 2005)),
+        )
+
+    def test_easter(self):
+        self.assertHoliday(
+            # Good Friday
+            "2018-03-30",
+            "2019-04-19",
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            # Easter Monday
+            "2018-04-02",
+            "2019-04-22",
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            # Ascension Day
+            "2018-05-10",
+            "2019-05-30",
+            "2020-05-21",
+            "2021-05-13",
+            "2022-05-26",
+        )
 
     def test_observed(self):
-        self.assertIn(date(2021, 3, 22), self.holidays)
-        self.assertIn(date(2021, 12, 27), self.holidays)
-        self.assertIn(date(2022, 12, 26), self.holidays)
-
-    def test_not_observed(self):
-        self.holidays = holidays.NA(observed=False)
-        self.assertNotIn(date(2017, 1, 2), self.holidays)
-        self.assertNotIn(date(2017, 9, 11), self.holidays)
-        self.assertNotIn(date(2018, 8, 27), self.holidays)
-        self.assertNotIn(date(2021, 3, 22), self.holidays)
-        self.assertNotIn(date(2021, 12, 27), self.holidays)
+        dt = (
+            "2010-03-22",
+            "2010-12-27",
+            "2011-05-02",
+            "2012-01-02",
+            "2012-08-27",
+            "2014-05-05",
+            "2014-05-26",
+            "2016-05-02",
+            "2017-01-02",
+            "2017-09-11",
+            "2018-08-27",
+            "2021-03-22",
+            "2021-12-27",
+            "2022-05-02",
+            "2023-01-02",
+            "2023-09-11",
+        )
+        self.assertHoliday(dt)
+        self.assertNoHoliday(Namibia(observed=False), dt)
