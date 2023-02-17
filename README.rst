@@ -561,7 +561,7 @@ default language code is a `ISO 639-1 code`_.
      - en_US, ja
    * - Poland
      - pl
-     - en_US, pl
+     - en_US, pl, uk
    * - Russia
      - ru
      - en_US, ru
