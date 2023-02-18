@@ -9,19 +9,24 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
+
 from datetime import date
 from datetime import timedelta as td
 
-import holidays
+from holidays.countries.bulgaria import Bulgaria, BG, BLG
+from tests.common import TestCase
 
 
-class TestBulgaria(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.Bulgaria()
+class TestBulgaria(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Bulgaria)
+
+    def test_country_aliases(self):
+        self.assertCountryAliases(Bulgaria, BG, BLG)
 
     def test_before_1990(self):
-        self.assertEqual(len(holidays.Bulgaria(years=[1989])), 0)
+        self.assertEqual(len(Bulgaria(years=[1989])), 0)
 
     def test_new_years_day(self):
         for year in range(1990, 2020):
@@ -98,3 +103,28 @@ class TestBulgaria(unittest.TestCase):
                 easter_monday,
             ]:
                 self.assertIn(holiday, self.holidays)
+
+    def test_l10n_default(self):
+        def run_tests(languages):
+            for language in languages:
+                bg = Bulgaria(language=language)
+                self.assertEqual(bg["2022-01-01"], "Нова година")
+                self.assertEqual(bg["2022-12-25"], "Рождество Христово")
+
+        run_tests((Bulgaria.default_language, None, "invalid"))
+
+        self.set_language("en_US")
+        run_tests((Bulgaria.default_language,))
+
+    def test_l10n_en_us(self):
+        en_us = "en_US"
+
+        bg = Bulgaria(language=en_us)
+        self.assertEqual(bg["2018-01-01"], "New Year's Day")
+        self.assertEqual(bg["2022-12-25"], "Christmas Day")
+
+        self.set_language(en_us)
+        for language in (None, en_us, "invalid"):
+            bg = Bulgaria(language=language)
+            self.assertEqual(bg["2018-01-01"], "New Year's Day")
+            self.assertEqual(bg["2022-12-25"], "Christmas Day")

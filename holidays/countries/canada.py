@@ -59,7 +59,7 @@ class Canada(HolidayBase):
 
         super()._populate(year)
 
-        # New Year's Day
+        # New Year's Day.
         name = self.tr("New Year's Day")
         self[date(year, JAN, 1)] = name
         if self.observed and self._is_weekend(year, JAN, 1):
@@ -99,8 +99,9 @@ class Canada(HolidayBase):
             self[date(year, FEB, 1) + rd(weekday=MO(+2))] = self.tr(
                 "Islander Day"
             )
+        # http://novascotia.ca/lae/employmentrights/NovaScotiaHeritageDay.asp
         elif self.subdiv == "NS" and year >= 2015:
-            # http://novascotia.ca/lae/employmentrights/NovaScotiaHeritageDay.asp
+            # Heritage Day.
             self[date(year, FEB, 1) + rd(weekday=MO(+3))] = self.tr(
                 "Heritage Day"
             )
@@ -119,18 +120,20 @@ class Canada(HolidayBase):
                 + rd(weekday=SU(-1))
                 + td(days=-2)
             )
+            # Heritage Day.
             self[dt] = self.tr("Heritage Day")
 
-        # St. Patrick's Day
+        # St. Patrick's Day.
         if self.subdiv == "NL" and year >= 1900:
-            # Nearest Monday to March 17
+            # Nearest Monday to March 17.
             dt = self._get_nearest_monday(date(year, MAR, 17))
+            # St. Patrick's Day.
             self[dt] = self.tr("St. Patrick's Day")
 
         easter_date = easter(year)
-        # Good Friday
+        # Good Friday.
         self[easter_date + td(days=-2)] = self.tr("Good Friday")
-        # Easter Monday
+        # Easter Monday.
         self[easter_date + td(days=+1)] = self.tr("Easter Monday")
 
         # St. George's Day
@@ -204,21 +207,23 @@ class Canada(HolidayBase):
             self[date(year, AUG, 1) + rd(weekday=MO)] = self.tr(
                 "Civic Holiday"
             )
+        # https://en.wikipedia.org/wiki/Civic_Holiday#Alberta
         elif year >= 1974 and self.subdiv == "AB":
-            # https://en.wikipedia.org/wiki/Civic_Holiday#Alberta
+            # Heritage Day.
             self[date(year, AUG, 1) + rd(weekday=MO)] = self.tr("Heritage Day")
+        # https://en.wikipedia.org/wiki/Civic_Holiday
         elif year >= 1974 and self.subdiv == "BC":
-            # https://en.wikipedia.org/wiki/Civic_Holiday
+            # British Columbia Day.
             self[date(year, AUG, 1) + rd(weekday=MO)] = self.tr(
                 "British Columbia Day"
             )
+        # https://en.wikipedia.org/wiki/Civic_Holiday
         elif year >= 1900 and self.subdiv == "NB":
-            # https://en.wikipedia.org/wiki/Civic_Holiday
             self[date(year, AUG, 1) + rd(weekday=MO)] = self.tr(
                 "New Brunswick Day"
             )
+        # https://en.wikipedia.org/wiki/Civic_Holiday
         elif year >= 1900 and self.subdiv == "SK":
-            # https://en.wikipedia.org/wiki/Civic_Holiday
             self[date(year, AUG, 1) + rd(weekday=MO)] = self.tr(
                 "Saskatchewan Day"
             )
@@ -243,24 +248,26 @@ class Canada(HolidayBase):
             )
 
         # National Day for Truth and Reconciliation
-        if year >= 2021 and self.subdiv in {"MB", "NS"}:
+        if (year >= 2021 and self.subdiv in {"MB", "NS"}) or (
+            year >= 2023 and self.subdiv == "BC"
+        ):
             self[date(year, SEP, 30)] = self.tr(
                 "National Day for Truth and Reconciliation"
             )
 
         # Thanksgiving
         if year >= 1931 and self.subdiv not in {"NB", "NL", "NS", "PE"}:
+            # in 1935, Canadian Thanksgiving was moved due to the General
+            # Election falling on the second Monday of October
+            # https://books.google.ca/books?id=KcwlQsmheG4C&pg=RA1-PA1940&lpg=RA1-PA1940&dq=canada+thanksgiving+1935&source=bl&ots=j4qYrcfGuY&sig=gxXeAQfXVsOF9fOwjSMswPHJPpM&hl=en&sa=X&ved=0ahUKEwjO0f3J2PjOAhVS4mMKHRzKBLAQ6AEIRDAG#v=onepage&q=canada%20thanksgiving%201935&f=false
             if year == 1935:
-                # in 1935, Canadian Thanksgiving was moved due to the General
-                # Election falling on the second Monday of October
-                # https://books.google.ca/books?id=KcwlQsmheG4C&pg=RA1-PA1940&lpg=RA1-PA1940&dq=canada+thanksgiving+1935&source=bl&ots=j4qYrcfGuY&sig=gxXeAQfXVsOF9fOwjSMswPHJPpM&hl=en&sa=X&ved=0ahUKEwjO0f3J2PjOAhVS4mMKHRzKBLAQ6AEIRDAG#v=onepage&q=canada%20thanksgiving%201935&f=false
                 self[date(1935, OCT, 25)] = self.tr("Thanksgiving")
             else:
                 self[date(year, OCT, 1) + rd(weekday=MO(+2))] = self.tr(
                     "Thanksgiving"
                 )
 
-        # Remembrance Day
+        # Remembrance Day,
         if year >= 1931 and self.subdiv not in {"ON", "QC"}:
             name = self.tr("Remembrance Day")
             dt = date(year, NOV, 11)
@@ -272,14 +279,14 @@ class Canada(HolidayBase):
             ):
                 self[dt + rd(weekday=MO)] = self.tr("%s (Observed)") % name
 
-        # Christmas Day
+        # Christmas Day,
         name = self.tr("Christmas Day")
         dt = date(year, DEC, 25)
         self[dt] = name
         if self.observed and self._is_weekend(dt):
             self[dt + td(days=+2)] = self.tr("%s (Observed)") % name
 
-        # Boxing Day
+        # Boxing Day.
         name = self.tr("Boxing Day")
         dt = date(year, DEC, 26)
         self[dt] = name

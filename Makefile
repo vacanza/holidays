@@ -17,7 +17,9 @@ coverage:
 	pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --no-cov-on-fail --numprocesses auto
 
 l10n:
+	mkdir -p holidays/locale/pot
 	scripts/l10n/generate_po_files.py
+	scripts/l10n/generate_mo_files.py
 
 pre-commit:
 	pre-commit run --all-files
@@ -28,9 +30,10 @@ setup:
 	pip install --requirement requirements/docs.txt
 	pre-commit install --hook-type pre-commit
 	pre-commit install --hook-type pre-push
-	mkdir -p holidays/locale/pot
+	make l10n
 
 test:
+	scripts/l10n/generate_mo_files.py
 	pytest --cov=. --cov-config=pyproject.toml --cov-report term --cov-report xml --durations 10 --durations-min=0.75 --no-cov-on-fail --numprocesses auto
 
 tox:

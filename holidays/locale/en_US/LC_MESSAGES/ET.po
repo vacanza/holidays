@@ -1,0 +1,87 @@
+# Ethiopia holidays en_US localization.
+# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.20\n"
+"POT-Creation-Date: 2023-02-15 14:15-0800\n"
+"PO-Revision-Date: 2023-02-15 12:42-0800\n"
+"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. Ethiopian New Year.
+#: holidays/countries/ethiopia.py:64 holidays/countries/ethiopia.py:67
+msgid "አዲስ ዓመት እንቁጣጣሽ"
+msgstr "Ethiopian New Year's Day"
+
+#. Finding of True Cross.
+#: holidays/countries/ethiopia.py:72 holidays/countries/ethiopia.py:75
+msgid "መስቀል"
+msgstr "Finding of True Cross"
+
+#. Orthodox Christmas.
+#: holidays/countries/ethiopia.py:78
+msgid "ገና"
+msgstr "Orthodox Christmas Day"
+
+#. Orthodox Epiphany.
+#: holidays/countries/ethiopia.py:81
+msgid "ጥምቀት"
+msgstr "Orthodox Epiphany Day"
+
+#. Orthodox Good Friday.
+#: holidays/countries/ethiopia.py:85
+msgid "ስቅለት"
+msgstr "Orthodox Good Friday"
+
+#. Orthodox Easter Sunday.
+#: holidays/countries/ethiopia.py:88
+msgid "ፋሲካ"
+msgstr "Orthodox Easter Sunday"
+
+#. Adwa Victory Day.
+#: holidays/countries/ethiopia.py:92
+msgid "አድዋ"
+msgstr "Adwa Victory Day"
+
+#. Labour Day.
+#: holidays/countries/ethiopia.py:95
+msgid "የሰራተኞች ቀን"
+msgstr "Labor Day"
+
+#. Patriots Day.
+#: holidays/countries/ethiopia.py:99
+msgid "የአርበኞች ቀን"
+msgstr "Patriots Day"
+
+#. Downfall of Dergue Regime Day.
+#: holidays/countries/ethiopia.py:103
+msgid "ደርግ የወደቀበት ቀን"
+msgstr "Downfall of Dergue Regime Day"
+
+#. Downfall of King Haile Selassie.
+#: holidays/countries/ethiopia.py:107
+msgid "ደርግ የመጣበት ቀን"
+msgstr "Downfall of King Haile Selassie Day"
+
+#. Eid al-Fitr.
+#: holidays/countries/ethiopia.py:121
+msgid "ኢድ አልፈጥር"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Adha.
+#: holidays/countries/ethiopia.py:128
+msgid "አረፋ"
+msgstr "Eid al-Adha"
+
+#. Prophet Muhammad's Birthday.
+#: holidays/countries/ethiopia.py:134
+msgid "መውሊድ"
+msgstr "Prophet Muhammad's Birthday"

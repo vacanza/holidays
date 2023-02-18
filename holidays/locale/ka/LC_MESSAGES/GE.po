@@ -1,0 +1,101 @@
+# Georgia holidays.
+# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.20\n"
+"POT-Creation-Date: 2023-02-15 14:15-0800\n"
+"PO-Revision-Date: 2023-02-16 08:59-0800\n"
+"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: ka\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: holidays/countries/georgia.py:36
+msgid "ახალი წელი"
+msgstr ""
+
+#. New Year's Day.
+#: holidays/countries/georgia.py:39
+msgid "ბედობა"
+msgstr ""
+
+#. Orthodox Christmas Day.
+#: holidays/countries/georgia.py:42
+msgid "ქრისტეშობა"
+msgstr ""
+
+#. Baptism Day of our Lord Jesus Christ.
+#: holidays/countries/georgia.py:45
+msgid "ნათლისღება"
+msgstr ""
+
+#. Mother's Day.
+#: holidays/countries/georgia.py:48
+msgid "დედის დღე"
+msgstr ""
+
+#. Women's Day.
+#: holidays/countries/georgia.py:51
+msgid "ქალთა საერთაშორისო დღე"
+msgstr ""
+
+#. Orthodox Good Friday.
+#: holidays/countries/georgia.py:55
+msgid "წითელი პარასკევი"
+msgstr ""
+
+#. Orthodox Holy Saturday.
+#: holidays/countries/georgia.py:58
+msgid "დიდი შაბათი"
+msgstr ""
+
+#. Orthodox Easter Sunday.
+#: holidays/countries/georgia.py:61
+msgid "აღდგომა"
+msgstr ""
+
+#. Orthodox Easter Monday.
+#: holidays/countries/georgia.py:64
+msgid "შავი ორშაბათი"
+msgstr ""
+
+#. National Unity Day.
+#: holidays/countries/georgia.py:67
+msgid "ეროვნული ერთიანობის დღე"
+msgstr ""
+
+#. Day of Victory.
+#: holidays/countries/georgia.py:70
+msgid "ფაშიზმზე გამარჯვების დღე"
+msgstr ""
+
+#. Saint Andrew the First-Called Day.
+#: holidays/countries/georgia.py:73
+msgid "წმინდა ანდრია პირველწოდებულის დღე"
+msgstr ""
+
+#. Independence Day.
+#: holidays/countries/georgia.py:78
+msgid "დამოუკიდებლობის დღე"
+msgstr ""
+
+#. Saint Mary's Day.
+#: holidays/countries/georgia.py:81
+msgid "მარიამობა"
+msgstr ""
+
+#. Day of Svetitskhoveli Cathedral.
+#: holidays/countries/georgia.py:84
+msgid "სვეტიცხოვლობა"
+msgstr ""
+
+#. Saint George's Day.
+#: holidays/countries/georgia.py:87
+msgid "გიორგობა"
+msgstr ""

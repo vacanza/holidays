@@ -34,6 +34,7 @@ from holidays.utils import _islamic_to_gre
 
 class Ethiopia(HolidayBase):
     country = "ET"
+    default_language = "am"
 
     @staticmethod
     def _is_leap_year(year):
@@ -59,72 +60,78 @@ class Ethiopia(HolidayBase):
         # except for the year preceding a leap year, when it occurs on
         # September 12.
         if self._is_leap_year(year):
-            self[date(year, SEP, 12)] = "አዲስ ዓመት እንቁጣጣሽ/Ethiopian New Year"
+            # Ethiopian New Year.
+            self[date(year, SEP, 12)] = self.tr("አዲስ ዓመት እንቁጣጣሽ")
         else:
-            self[date(year, SEP, 11)] = "አዲስ ዓመት እንቁጣጣሽ/Ethiopian New Year"
+            # Ethiopian New Year.
+            self[date(year, SEP, 11)] = self.tr("አዲስ ዓመት እንቁጣጣሽ")
 
-        # Finding of true cross
+        # Finding of true cross.
         if self._is_leap_year(year):
-            self[date(year, SEP, 28)] = "መስቀል/Finding of True Cross"
+            # Finding of True Cross.
+            self[date(year, SEP, 28)] = self.tr("መስቀል")
         else:
-            self[date(year, SEP, 27)] = "መስቀል/Finding of True Cross"
+            # Finding of True Cross.
+            self[date(year, SEP, 27)] = self.tr("መስቀል")
 
-        # Ethiopian Christmas
-        self[date(year, JAN, 7)] = "ገና/Ethiopian X-Mas"
+        # Orthodox Christmas.
+        self[date(year, JAN, 7)] = self.tr("ገና")
 
-        # Ethiopian Ephiphany
-        self[date(year, JAN, 19)] = "ጥምቀት/Ephiphany"
+        # Orthodox Epiphany.
+        self[date(year, JAN, 19)] = self.tr("ጥምቀት")
 
-        # Ethiopian Good Friday
         easter_date = easter(year, EASTER_ORTHODOX)
-        self[easter_date + td(days=-2)] = "ስቅለት/Ethiopian Good Friday"
+        # Orthodox Good Friday.
+        self[easter_date + td(days=-2)] = self.tr("ስቅለት")
 
-        # Ethiopian  Easter - Orthodox Easter
-        self[easter_date] = "ፋሲካ/Ethiopian Easter"
+        # Orthodox Easter Sunday.
+        self[easter_date] = self.tr("ፋሲካ")
 
-        # Adwa Victory Day
         if year > 1896:
-            self[date(year, MAR, 2)] = "አድዋ/Victory of Adwa"
+            # Adwa Victory Day.
+            self[date(year, MAR, 2)] = self.tr("አድዋ")
 
-        # Labour Day
-        self[date(year, MAY, 1)] = "የሰራተኞች ቀን/Labor Day"
+        # Labour Day.
+        self[date(year, MAY, 1)] = self.tr("የሰራተኞች ቀን")
 
-        # Patriots Day
         if year > 1941:
-            self[date(year, MAY, 5)] = "የአርበኞች ቀን/Patriots Day"
+            # Patriots Day.
+            self[date(year, MAY, 5)] = self.tr("የአርበኞች ቀን")
 
-        # Derg Downfall Day
         if year > 1991:
-            self[
-                date(year, MAY, 28)
-            ] = "ደርግ የወደቀበት ቀን/Downfall of Dergue regime"
+            # Downfall of Dergue Regime Day.
+            self[date(year, MAY, 28)] = self.tr("ደርግ የወደቀበት ቀን")
 
-        # Downfall of King. Hailesilassie
         if year < 1991 and year > 1974:
+            # Downfall of King Haile Selassie.
+            name = self.tr("ደርግ የመጣበት ቀን")
             if self._is_leap_year(year):
-                self[date(year, SEP, 13)] = "ደርግ የመጣበት ቀን/Formation of Dergue"
+                self[date(year, SEP, 13)] = name
             else:
-                self[date(year, SEP, 12)] = "ደርግ የመጣበት ቀን/Formation of Dergue"
+                self[date(year, SEP, 12)] = name
 
         # Eid al-Fitr - Feast Festive
         # date of observance is announced yearly, This is an estimate since
         # having the Holiday on Weekend does change the number of days,
-        # deceided to leave it since marking a Weekend as a holiday
+        # decided to leave it since marking a Weekend as a holiday
         # wouldn't do much harm.
         for date_obs in _islamic_to_gre(year, 10, 1):
             hol_date = date_obs
-            self[hol_date] = "ኢድ አልፈጥር/Eid-Al-Fitr"
+            # Eid al-Fitr.
+            self[hol_date] = self.tr("ኢድ አልፈጥር")
 
-        # Eid al-Adha - Scarfice Festive
+        # Eid al-Adha - Sacrifice Festive
         # date of observance is announced yearly
         for date_obs in _islamic_to_gre(year, 12, 9):
             hol_date = date_obs
-            self[hol_date + td(days=+1)] = "አረፋ/Eid-Al-Adha"
+            # Eid al-Adha.
+            self[hol_date + td(days=+1)] = self.tr("አረፋ")
 
         # Prophet Muhammad's Birthday - (hijari_year, 3, 12)
         for date_obs in _islamic_to_gre(year, 3, 12):
             hol_date = date_obs
-            self[hol_date + td(days=+1)] = "መውሊድ/Prophet Muhammad's Birthday"
+            # Prophet Muhammad's Birthday.
+            self[hol_date + td(days=+1)] = self.tr("መውሊድ")
 
 
 class ET(Ethiopia):

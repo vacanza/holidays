@@ -10,15 +10,19 @@
 #  License: MIT (see LICENSE file)
 
 import importlib.util
-import unittest
 from datetime import date
 
-import holidays
+from holidays.countries.ethiopia import Ethiopia, ET, ETH
+from tests.common import TestCase
 
 
-class TestEthiopia(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.ET()
+class TestEthiopia(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Ethiopia)
+
+    def test_country_aliases(self):
+        self.assertCountryAliases(Ethiopia, ET, ETH)
 
     # Check isleap loops
     def test_not_holiday(self):
@@ -84,7 +88,7 @@ class TestEthiopia(unittest.TestCase):
         if not importlib.util.find_spec("hijri_converter"):
             return None
 
-        self.holidays = holidays.ET(years=[2019])
+        self.holidays = Ethiopia(years=[2019])
         # eid_alfitr
         self.assertIn(date(2019, 6, 4), self.holidays)
         # eid_aladha
@@ -94,3 +98,28 @@ class TestEthiopia(unittest.TestCase):
 
     def test_pre_1897(self):
         self.assertNotIn(date(1896, 3, 2), self.holidays)
+
+    def test_l10n_default(self):
+        def run_tests(languages):
+            for language in languages:
+                et = Ethiopia(language=language)
+                self.assertEqual(et["2022-01-07"], "ገና")
+                self.assertEqual(et["2022-09-11"], "አዲስ ዓመት እንቁጣጣሽ")
+
+        run_tests((Ethiopia.default_language, None, "invalid"))
+
+        self.set_language("en_US")
+        run_tests((Ethiopia.default_language,))
+
+    def test_l10n_en_us(self):
+        en_us = "en_US"
+
+        et = Ethiopia(language=en_us)
+        self.assertEqual(et["2022-01-07"], "Orthodox Christmas Day")
+        self.assertEqual(et["2022-09-11"], "Ethiopian New Year's Day")
+
+        self.set_language(en_us)
+        for language in (None, en_us, "invalid"):
+            et = Ethiopia(language=language)
+            self.assertEqual(et["2022-01-07"], "Orthodox Christmas Day")
+            self.assertEqual(et["2022-09-11"], "Ethiopian New Year's Day")

@@ -9,13 +9,14 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.countries.russia import RU, RUS, Russia
+from holidays.countries.russia import Russia, RU, RUS
 from tests.common import TestCase
 
 
 class TestRussia(TestCase):
-    def setUp(self):
-        self.holidays = Russia()
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Russia)
 
     def test_country_aliases(self):
         self.assertCountryAliases(Russia, RU, RUS)
@@ -46,3 +47,28 @@ class TestRussia(TestCase):
             "2018-11-07",
             "2018-12-31",
         )
+
+    def test_l10n_default(self):
+        def run_tests(languages):
+            for language in languages:
+                ru = Russia(language=language)
+                self.assertEqual(ru["2022-01-01"], "Новогодние каникулы")
+                self.assertEqual(ru["2022-01-07"], "Рождество Христово")
+
+        run_tests((Russia.default_language, None, "invalid"))
+
+        self.set_language("en_US")
+        run_tests((Russia.default_language,))
+
+    def test_l10n_en_us(self):
+        en_us = "en_US"
+
+        ru = Russia(language=en_us)
+        self.assertEqual(ru["2022-01-01"], "New Year Holidays")
+        self.assertEqual(ru["2022-01-07"], "Orthodox Christmas Day")
+
+        self.set_language(en_us)
+        for language in (None, en_us, "invalid"):
+            ru = Russia(language=language)
+            self.assertEqual(ru["2022-01-01"], "New Year Holidays")
+            self.assertEqual(ru["2022-01-07"], "Orthodox Christmas Day")
