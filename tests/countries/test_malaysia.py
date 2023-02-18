@@ -9,55 +9,42 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
 from datetime import date
 
-import holidays
 from holidays.constants import APR, AUG, DEC, FEB, JAN, JUL, JUN, MAR, MAY
 from holidays.constants import NOV, OCT, SEP
+from holidays.countries.malaysia import Malaysia, MY, MYS
+from tests.common import TestCase
 
 
-class TestMalaysia(unittest.TestCase):
+class TestMalaysia(TestCase):
     def setUp(self):
-        self.holidays = holidays.Malaysia()
-        years = (
-            1970,
-            1985,
-            1990,
-            2001,
-            2010,
-            2014,
-            2015,
-            2018,
-            2019,
-            2020,
-            2021,
-            2022,
-            2023,
-        )
-        self.johor_holidays = holidays.Malaysia(years=years, subdiv="JHR")
-        self.kedah_holidays = holidays.Malaysia(years=years, subdiv="KDH")
-        self.kelantan_holidays = holidays.Malaysia(years=years, subdiv="KTN")
-        self.malacca_holidays = holidays.Malaysia(years=years, subdiv="MLK")
-        self.negeri_sembilan_holidays = holidays.Malaysia(
-            years=years,
-            subdiv="NSN",
-        )
-        self.pahang_holidays = holidays.Malaysia(years=years, subdiv="PHG")
-        self.perak_holidays = holidays.Malaysia(years=years, subdiv="PRK")
-        self.perlis_holidays = holidays.Malaysia(years=years, subdiv="PLS")
-        self.penang_holidays = holidays.Malaysia(years=years, subdiv="PNG")
-        self.sabah_holidays = holidays.Malaysia(years=years, subdiv="SBH")
-        self.sarawak_holidays = holidays.Malaysia(years=years, subdiv="SWK")
-        self.selangor_holidays = holidays.Malaysia(years=years, subdiv="SGR")
-        self.terengganu_holidays = holidays.Malaysia(years=years, subdiv="TRG")
-        self.kuala_lumpur_holidays = holidays.Malaysia(
-            years=years, subdiv="KUL"
-        )
-        self.labuan_holidays = holidays.Malaysia(years=years, subdiv="LBN")
-        self.putrajaya_holidays = holidays.Malaysia(years=years, subdiv="PJY")
+        self.holidays = Malaysia()
+        years = range(2012, 2023)
+        self.jhr_holidays = Malaysia(years=years, subdiv="JHR")
+        self.kdh_holidays = Malaysia(years=years, subdiv="KDH")
+        self.ktn_holidays = Malaysia(years=years, subdiv="KTN")
+        self.mlk_holidays = Malaysia(years=years, subdiv="MLK")
+        self.nsn_holidays = Malaysia(years=years, subdiv="NSN")
+        self.phg_holidays = Malaysia(years=years, subdiv="PHG")
+        self.prk_holidays = Malaysia(years=years, subdiv="PRK")
+        self.pls_holidays = Malaysia(years=years, subdiv="PLS")
+        self.png_holidays = Malaysia(years=years, subdiv="PNG")
+        self.sbh_holidays = Malaysia(years=years, subdiv="SBH")
+        self.swk_holidays = Malaysia(years=years, subdiv="SWK")
+        self.sgr_holidays = Malaysia(years=years, subdiv="SGR")
+        self.trg_holidays = Malaysia(years=years, subdiv="TRG")
+        self.kul_holidays = Malaysia(years=years, subdiv="KUL")
+        self.lbn_holidays = Malaysia(years=years, subdiv="LBN")
+        self.pjy_holidays = Malaysia(years=years, subdiv="PJY")
 
-    def test_Malaysia_Wikipedia(self):
+    def test_country_aliases(self):
+        self.assertCountryAliases(Malaysia, MY, MYS)
+        holidays1 = MY()
+        holidays2 = MYS()
+        self.assertEqual(list(holidays1), list(holidays2))
+
+    def test_malaysia_wikipedia(self):
         # reproduce table at
         # https://en.wikipedia.org/wiki/Public_holidays_in_Malaysia
         # as of 19-Sep-21
@@ -1037,7 +1024,7 @@ class TestMalaysia(unittest.TestCase):
         }
 
         for col, state in enumerate(columns):
-            my_holidays = holidays.Malaysia(years=2021, subdiv=state)
+            my_holidays = Malaysia(years=2021, subdiv=state)
             # check if all holidays are in here
             for hol_date, is_holiday in rows.items():
                 if is_holiday[col]:
@@ -1045,575 +1032,993 @@ class TestMalaysia(unittest.TestCase):
                 else:
                     self.assertNotIn(hol_date, my_holidays)
 
-    def test_Malaysia(self):
+    def test_malaysia(self):
         # Federal Public Holidays
-
         # https://www.timeanddate.com/holidays/malaysia/2001
-        self.assertIn(date(2001, 1, 24), self.holidays)
-        self.assertIn(date(2001, 1, 25), self.holidays)
-        self.assertIn(date(2001, 3, 6), self.holidays)
-        self.assertIn(date(2001, 3, 26), self.holidays)
-        self.assertIn(date(2001, 5, 1), self.holidays)
-        self.assertIn(date(2001, 5, 7), self.holidays)
-        self.assertIn(date(2001, 6, 2), self.holidays)
-        self.assertIn(date(2001, 6, 4), self.holidays)
-        self.assertIn(date(2001, 8, 31), self.holidays)
-        self.assertIn(date(2001, 11, 14), self.holidays)
-        self.assertIn(date(2001, 12, 17), self.holidays)
-        self.assertIn(date(2001, 12, 18), self.holidays)
-        self.assertIn(date(2001, 12, 25), self.holidays)
-
-    def test_special_holidays(self):
-        self.assertIn(date(1999, 11, 29), self.holidays)
-        self.assertIn(date(2018, 5, 9), self.holidays)
-        self.assertIn(date(2019, 7, 30), self.holidays)
-
-    def test_JHR_holidays(self):
-        state_holidays = self.johor_holidays
-
-        # Birthday of the Sultan of Johor
-        self.assertIn(date(2015, 3, 23), state_holidays)
-        self.assertIn(date(2018, 3, 23), state_holidays)
-        self.assertIn(date(2020, 3, 23), state_holidays)
-        self.assertIn(date(2022, 3, 23), state_holidays)
-        self.assertNotIn(date(2014, 3, 23), state_holidays)
-        # Hari Hol of Sultan Iskandar of Johor
-        self.assertIn(date(2018, 10, 15), state_holidays)
-        self.assertIn(date(2019, 10, 5), state_holidays)
-        self.assertIn(date(2020, 9, 24), state_holidays)
-        self.assertIn(date(2021, 9, 13), state_holidays)
-        self.assertIn(date(2022, 9, 3), state_holidays)
-        self.assertIn(date(2023, 8, 22), state_holidays)
-        self.assertNotIn(date(2010, 1, 21), state_holidays)
-        # Thaipusam
-        self.assertIn(date(2018, 1, 31), state_holidays)
-        self.assertIn(date(2019, 1, 21), state_holidays)
-        self.assertIn(date(2020, 2, 8), state_holidays)
-        self.assertIn(date(2021, 1, 28), state_holidays)
-        self.assertIn(date(2022, 1, 18), state_holidays)
-        self.assertIn(date(2023, 2, 5), state_holidays)
-        # Beginning of Ramadan
-        self.assertIn(date(2018, 5, 17), state_holidays)
-        self.assertIn(date(2019, 5, 6), state_holidays)
-        self.assertIn(date(2020, 4, 24), state_holidays)
-        self.assertIn(date(2020, 4, 26), state_holidays)  # In lieu
-        self.assertIn(date(2021, 4, 13), state_holidays)
-        self.assertIn(date(2022, 4, 3), state_holidays)
-        self.assertIn(date(2023, 3, 23), state_holidays)
-        # Labour Day Holiday
-        self.assertIn(date(2022, 5, 4), state_holidays)
-        # Malaysia Day [In lieu]
-        self.assertNotIn(date(2018, 9, 17), state_holidays)
-
-    def test_KDH_holidays(self):
-        state_holidays = self.kedah_holidays
-
-        # Hari Raya Haji
-        self.assertIn(date(2006, 12, 31), state_holidays)
-        self.assertIn(date(2018, 8, 22), state_holidays)
-        self.assertIn(date(2019, 8, 11), state_holidays)
-        self.assertIn(date(2020, 7, 31), state_holidays)
-        self.assertIn(date(2021, 7, 20), state_holidays)
-        self.assertIn(date(2022, 7, 10), state_holidays)
-        self.assertIn(date(2023, 6, 28), state_holidays)
-        # Hari Raya Haji Holiday
-        self.assertIn(date(2007, 1, 1), state_holidays)
-        self.assertIn(date(2018, 8, 23), state_holidays)
-        self.assertIn(date(2019, 8, 12), state_holidays)
-        self.assertIn(date(2020, 8, 1), state_holidays)
-        self.assertIn(date(2020, 8, 2), state_holidays)  # In lieu
-        self.assertIn(date(2021, 7, 21), state_holidays)
-        self.assertIn(date(2022, 7, 11), state_holidays)
-        self.assertIn(date(2023, 6, 29), state_holidays)
-        # Isra and Mi'raj
-        self.assertIn(date(2018, 4, 14), state_holidays)
-        self.assertIn(date(2019, 4, 3), state_holidays)
-        self.assertIn(date(2020, 3, 22), state_holidays)
-        self.assertIn(date(2021, 3, 11), state_holidays)
-        self.assertIn(date(2022, 3, 1), state_holidays)
-        self.assertIn(date(2023, 2, 18), state_holidays)
-        # Beginning of Ramadan
-        self.assertIn(date(2018, 5, 17), state_holidays)
-        self.assertIn(date(2019, 5, 6), state_holidays)
-        self.assertIn(date(2020, 4, 24), state_holidays)
-        self.assertIn(date(2020, 4, 26), state_holidays)  # In lieu
-        self.assertIn(date(2021, 4, 13), state_holidays)
-        self.assertIn(date(2022, 4, 3), state_holidays)
-        self.assertIn(date(2023, 3, 23), state_holidays)
-        # Thaipusam in 2022
-        self.assertIn(date(2022, 1, 18), state_holidays)
-        # Malaysia Day [In lieu]
-        self.assertNotIn(date(2018, 9, 17), state_holidays)
-
-    def test_KTN_holidays(self):
-        state_holidays = self.kelantan_holidays
-
-        # Birthday of the Sultan of Kelantan
-        self.assertIn(date(2018, 11, 11), state_holidays)
-        self.assertIn(date(2019, 11, 12), state_holidays)
-        self.assertIn(date(2020, 11, 11), state_holidays)
-        self.assertNotIn(date(2001, 11, 11), state_holidays)
-        # Hari Raya Haji
-        self.assertIn(date(2006, 12, 31), state_holidays)
-        self.assertIn(date(2018, 8, 22), state_holidays)
-        self.assertIn(date(2019, 8, 11), state_holidays)
-        self.assertIn(date(2020, 7, 31), state_holidays)
-        self.assertIn(date(2021, 7, 20), state_holidays)
-        self.assertIn(date(2022, 7, 10), state_holidays)
-        self.assertIn(date(2023, 6, 28), state_holidays)
-        # Hari Raya Haji Holiday
-        self.assertIn(date(2007, 1, 1), state_holidays)
-        self.assertIn(date(2018, 8, 23), state_holidays)
-        self.assertIn(date(2019, 8, 12), state_holidays)
-        self.assertIn(date(2020, 8, 1), state_holidays)
-        self.assertIn(date(2020, 8, 2), state_holidays)  # In lieu
-        self.assertIn(date(2021, 7, 21), state_holidays)
-        self.assertIn(date(2022, 7, 11), state_holidays)
-        self.assertIn(date(2023, 6, 29), state_holidays)
-        # Nuzul Al-Quran Day
-        self.assertIn(date(2018, 6, 2), state_holidays)
-        self.assertIn(date(2018, 6, 3), state_holidays)  # In lieu
-        self.assertIn(date(2019, 5, 22), state_holidays)
-        self.assertIn(date(2020, 5, 10), state_holidays)
-        self.assertIn(date(2021, 4, 29), state_holidays)
-        self.assertIn(date(2022, 4, 19), state_holidays)
-        self.assertIn(date(2023, 4, 8), state_holidays)
-        self.assertIn(date(2023, 4, 9), state_holidays)  # In lieu
-        # Labour Day Holiday
-        self.assertIn(date(2022, 5, 4), state_holidays)
-        # Malaysia Day [In lieu]
-        self.assertNotIn(date(2018, 9, 17), state_holidays)
-
-    def test_NSN_holidays(self):
-        state_holidays = self.negeri_sembilan_holidays
-
-        # New Year's Day
-        self.assertIn(date(2018, 1, 1), state_holidays)
-        self.assertIn(date(2020, 1, 1), state_holidays)
-        self.assertIn(date(2022, 1, 1), state_holidays)
-        self.assertIn(date(2023, 1, 2), state_holidays)  # In lieu
-        # Isra and Mi'raj
-        self.assertIn(date(2018, 4, 14), state_holidays)
-        self.assertIn(date(2019, 4, 3), state_holidays)
-        self.assertIn(date(2020, 3, 22), state_holidays)
-        self.assertIn(date(2021, 3, 11), state_holidays)
-        self.assertIn(date(2022, 3, 1), state_holidays)
-        self.assertIn(date(2023, 2, 18), state_holidays)
-        # Birthday of the Sultan of Negeri Sembilan
-        self.assertIn(date(2018, 1, 14), state_holidays)
-        self.assertIn(date(2023, 1, 14), state_holidays)
-        self.assertNotIn(date(2008, 1, 14), state_holidays)
-        # Thaipusam
-        self.assertIn(date(2018, 1, 31), state_holidays)
-        self.assertIn(date(2019, 1, 21), state_holidays)
-        self.assertIn(date(2020, 2, 8), state_holidays)
-        self.assertIn(date(2021, 1, 28), state_holidays)
-        self.assertIn(date(2022, 1, 18), state_holidays)
-        self.assertIn(date(2023, 2, 5), state_holidays)
-
-    def test_PNG_holidays(self):
-        state_holidays = self.penang_holidays
-
-        # New Year's Day
-        self.assertIn(date(2018, 1, 1), state_holidays)
-        self.assertIn(date(2020, 1, 1), state_holidays)
-        self.assertIn(date(2022, 1, 1), state_holidays)
-        self.assertIn(date(2023, 1, 2), state_holidays)  # In lieu
-        # Nuzul Al-Quran Day
-        self.assertIn(date(2018, 6, 2), state_holidays)
-        self.assertIn(date(2019, 5, 22), state_holidays)
-        self.assertIn(date(2020, 5, 10), state_holidays)
-        self.assertIn(date(2020, 5, 11), state_holidays)  # In lieu
-        self.assertIn(date(2021, 4, 29), state_holidays)
-        self.assertIn(date(2022, 4, 19), state_holidays)
-        self.assertIn(date(2023, 4, 8), state_holidays)
-        # Thaipusam
-        self.assertIn(date(2018, 1, 31), state_holidays)
-        self.assertIn(date(2019, 1, 21), state_holidays)
-        self.assertIn(date(2020, 2, 8), state_holidays)
-        self.assertIn(date(2021, 1, 28), state_holidays)
-        self.assertIn(date(2022, 1, 18), state_holidays)
-        self.assertIn(date(2023, 2, 5), state_holidays)
-        self.assertIn(date(2023, 2, 6), state_holidays)  # In lieu
-        # George Town Heritage Day
-        self.assertIn(date(2009, 7, 7), state_holidays)
-        self.assertIn(date(2020, 7, 7), state_holidays)
-        self.assertNotIn(date(2008, 7, 7), state_holidays)
-        # Birthday of the Governor of Penang
-        self.assertIn(date(2017, 7, 8), state_holidays)
-        self.assertIn(date(2019, 7, 13), state_holidays)
-        self.assertIn(date(2020, 7, 11), state_holidays)
-        self.assertIn(date(2022, 7, 9), state_holidays)
-        self.assertIn(date(2023, 7, 8), state_holidays)
-
-    def test_PRK_holidays(self):
-        state_holidays = self.perak_holidays
-
-        # New Year's Day
-        self.assertIn(date(2018, 1, 1), state_holidays)
-        self.assertIn(date(2020, 1, 1), state_holidays)
-        self.assertIn(date(2022, 1, 1), state_holidays)
-        self.assertIn(date(2023, 1, 2), state_holidays)  # In lieu
-        # Nuzul Al-Quran Day
-        self.assertIn(date(2018, 6, 2), state_holidays)
-        self.assertIn(date(2019, 5, 22), state_holidays)
-        self.assertIn(date(2020, 5, 10), state_holidays)
-        self.assertIn(date(2020, 5, 11), state_holidays)  # In lieu
-        self.assertIn(date(2021, 4, 29), state_holidays)
-        self.assertIn(date(2022, 4, 19), state_holidays)
-        self.assertIn(date(2023, 4, 8), state_holidays)
-        # Thaipusam
-        self.assertIn(date(2018, 1, 31), state_holidays)
-        self.assertIn(date(2019, 1, 21), state_holidays)
-        self.assertIn(date(2020, 2, 8), state_holidays)
-        self.assertIn(date(2021, 1, 28), state_holidays)
-        self.assertIn(date(2022, 1, 18), state_holidays)
-        self.assertIn(date(2023, 2, 5), state_holidays)
-        self.assertIn(date(2023, 2, 6), state_holidays)  # In lieu
-        # Birthday of the Sultan of Perak
-        self.assertIn(date(2009, 11, 27), state_holidays)
-        self.assertIn(date(2017, 11, 27), state_holidays)
-        self.assertIn(date(2018, 11, 2), state_holidays)
-        self.assertIn(date(2019, 11, 1), state_holidays)
-        self.assertIn(date(2020, 11, 6), state_holidays)
-        self.assertIn(date(2021, 11, 5), state_holidays)
-        self.assertIn(date(2022, 11, 4), state_holidays)
-        self.assertNotIn(date(2018, 11, 27), state_holidays)
-
-    def test_SBH_holidays(self):
-        state_holidays = self.sabah_holidays
-
-        # New Year's Day
-        self.assertIn(date(2018, 1, 1), state_holidays)
-        self.assertIn(date(2020, 1, 1), state_holidays)
-        self.assertIn(date(2022, 1, 1), state_holidays)
-        self.assertIn(date(2023, 1, 2), state_holidays)  # In lieu
-        # Pesta Kaamatan
-        self.assertIn(date(2018, 5, 30), state_holidays)
-        self.assertIn(date(2019, 5, 31), state_holidays)
-        # Good Friday
-        self.assertIn(date(2018, 3, 30), state_holidays)
-        self.assertIn(date(2020, 4, 10), state_holidays)
-        self.assertIn(date(2021, 4, 2), state_holidays)
-        self.assertIn(date(2022, 4, 15), state_holidays)
-        self.assertIn(date(2023, 4, 7), state_holidays)
-        # Birthday of the Governor of Sabah
-        self.assertIn(date(2017, 10, 7), state_holidays)
-        self.assertIn(date(2018, 10, 6), state_holidays)
-        self.assertIn(date(2019, 10, 5), state_holidays)
-        self.assertIn(date(2020, 10, 3), state_holidays)
-        # Christmas Eve
-        self.assertIn(date(2019, 12, 24), state_holidays)
-        self.assertIn(date(2020, 12, 24), state_holidays)
-        self.assertNotIn(date(2018, 12, 24), state_holidays)
-
-    def test_SWK_holidays(self):
-        state_holidays = self.sarawak_holidays
-
-        # New Year's Day
-        self.assertIn(date(2018, 1, 1), state_holidays)
-        self.assertIn(date(2020, 1, 1), state_holidays)
-        self.assertIn(date(2022, 1, 1), state_holidays)
-        self.assertIn(date(2023, 1, 2), state_holidays)  # In lieu
-        # Good Friday
-        self.assertIn(date(2018, 3, 30), state_holidays)
-        self.assertIn(date(2020, 4, 10), state_holidays)
-        self.assertIn(date(2021, 4, 2), state_holidays)
-        self.assertIn(date(2022, 4, 15), state_holidays)
-        self.assertIn(date(2023, 4, 7), state_holidays)
-        # Gawai Dayak
-        self.assertIn(date(2018, 6, 1), state_holidays)
-        self.assertIn(date(2018, 6, 2), state_holidays)
-        self.assertIn(date(2020, 6, 2), state_holidays)
-        self.assertIn(date(2020, 6, 2), state_holidays)
-        # Birthday of the Governor of Sarawak
-        self.assertIn(date(2018, 10, 13), state_holidays)
-        self.assertIn(date(2019, 10, 12), state_holidays)
-        self.assertIn(date(2020, 10, 10), state_holidays)
-        self.assertIn(date(2021, 10, 9), state_holidays)
-        self.assertIn(date(2022, 10, 8), state_holidays)
-        # Sarawak Day
-        self.assertIn(date(2017, 7, 22), state_holidays)
-        self.assertIn(date(2018, 7, 22), state_holidays)
-        self.assertIn(date(2018, 7, 23), state_holidays)  # In lieu
-        self.assertIn(date(2022, 7, 22), state_holidays)
-        self.assertNotIn(date(2014, 7, 22), state_holidays)
-        # Deepavali
-        self.assertNotIn(date(2018, 11, 6), state_holidays)
-        self.assertNotIn(date(2022, 10, 24), state_holidays)
-
-    def test_SGR_holidays(self):
-        state_holidays = self.selangor_holidays
-
-        # New Year's Day
-        self.assertIn(date(2018, 1, 1), state_holidays)
-        self.assertIn(date(2020, 1, 1), state_holidays)
-        self.assertIn(date(2022, 1, 1), state_holidays)
-        self.assertIn(date(2023, 1, 2), state_holidays)  # In lieu
-        # Nuzul Al-Quran Day
-        self.assertIn(date(2018, 6, 2), state_holidays)
-        self.assertIn(date(2019, 5, 22), state_holidays)
-        self.assertIn(date(2020, 5, 10), state_holidays)
-        self.assertIn(date(2020, 5, 11), state_holidays)  # In lieu
-        self.assertIn(date(2021, 4, 29), state_holidays)
-        self.assertIn(date(2022, 4, 19), state_holidays)
-        self.assertIn(date(2023, 4, 8), state_holidays)
-        # Thaipusam
-        self.assertIn(date(2018, 1, 31), state_holidays)
-        self.assertIn(date(2019, 1, 21), state_holidays)
-        self.assertIn(date(2020, 2, 8), state_holidays)
-        self.assertIn(date(2021, 1, 28), state_holidays)
-        self.assertIn(date(2022, 1, 18), state_holidays)
-        self.assertIn(date(2023, 2, 5), state_holidays)
-        self.assertIn(date(2023, 2, 6), state_holidays)  # In lieu
-        # Birthday of The Sultan of Selangor
-        self.assertIn(date(2018, 12, 11), state_holidays)
-        self.assertIn(date(2019, 12, 11), state_holidays)
-
-    def test_TRG_holidays(self):
-        state_holidays = self.terengganu_holidays
-
-        # Arafat Day
-        self.assertIn(date(2018, 8, 21), state_holidays)
-        self.assertIn(date(2019, 8, 10), state_holidays)
-        self.assertIn(date(2019, 8, 13), state_holidays)  # In lieu
-        self.assertIn(date(2020, 7, 30), state_holidays)
-        self.assertIn(date(2021, 7, 19), state_holidays)
-        self.assertIn(date(2022, 7, 9), state_holidays)
-        self.assertIn(date(2022, 7, 12), state_holidays)  # In lieu
-        self.assertIn(date(2023, 6, 27), state_holidays)
-        # Hari Raya Haji
-        self.assertIn(date(2006, 12, 31), state_holidays)
-        self.assertIn(date(2018, 8, 22), state_holidays)
-        self.assertIn(date(2019, 8, 11), state_holidays)
-        self.assertIn(date(2020, 7, 31), state_holidays)
-        self.assertIn(date(2021, 7, 20), state_holidays)
-        self.assertIn(date(2022, 7, 10), state_holidays)
-        self.assertIn(date(2023, 6, 28), state_holidays)
-        # Hari Raya Haji Holiday
-        self.assertIn(date(2007, 1, 1), state_holidays)
-        self.assertIn(date(2018, 8, 23), state_holidays)
-        self.assertIn(date(2019, 8, 12), state_holidays)
-        self.assertIn(date(2020, 8, 1), state_holidays)
-        self.assertIn(date(2020, 8, 2), state_holidays)  # In lieu
-        self.assertIn(date(2021, 7, 21), state_holidays)
-        self.assertIn(date(2022, 7, 11), state_holidays)
-        self.assertIn(date(2023, 6, 29), state_holidays)
-        # Isra and Mi'raj
-        self.assertIn(date(2020, 3, 22), state_holidays)
-        self.assertIn(date(2021, 3, 11), state_holidays)
-        self.assertIn(date(2022, 3, 1), state_holidays)
-        self.assertIn(date(2023, 2, 18), state_holidays)
-        self.assertIn(date(2023, 2, 19), state_holidays)  # In lieu
-        self.assertNotIn(date(2018, 4, 14), state_holidays)
-        self.assertNotIn(date(2019, 4, 3), state_holidays)
-        # Nuzul Al-Quran Day
-        self.assertIn(date(2018, 6, 2), state_holidays)
-        self.assertIn(date(2018, 6, 3), state_holidays)  # In lieu
-        self.assertIn(date(2019, 5, 22), state_holidays)
-        self.assertIn(date(2020, 5, 10), state_holidays)
-        self.assertIn(date(2021, 4, 29), state_holidays)
-        self.assertIn(date(2022, 4, 19), state_holidays)
-        self.assertIn(date(2023, 4, 8), state_holidays)
-        self.assertIn(date(2023, 4, 9), state_holidays)  # In lieu
-        # Anniversary of the Installation of the Sultan of Terengganu
-        self.assertIn(date(2000, 3, 4), state_holidays)
-        self.assertIn(date(2018, 3, 4), state_holidays)
-        self.assertIn(date(2019, 3, 4), state_holidays)
-        self.assertNotIn(date(1999, 3, 4), state_holidays)
-        # Birthday of the Sultan of Terengganu
-        self.assertIn(date(2020, 4, 26), state_holidays)
-        self.assertIn(date(2022, 4, 26), state_holidays)
-        self.assertNotIn(date(1999, 4, 26), state_holidays)
-        # Labour Day Holiday
-        self.assertIn(date(2022, 5, 4), state_holidays)
-        # Malaysia Day [In lieu]
-        self.assertNotIn(date(2018, 9, 17), state_holidays)
-
-    def test_KUL_holidays(self):
-        state_holidays = self.kuala_lumpur_holidays
-
-        # New Year's Day
-        self.assertIn(date(2018, 1, 1), state_holidays)
-        self.assertIn(date(2020, 1, 1), state_holidays)
-        self.assertIn(date(2022, 1, 1), state_holidays)
-        self.assertIn(date(2023, 1, 2), state_holidays)  # In lieu
-        # Federal Territory Day
-        self.assertIn(date(2018, 2, 1), state_holidays)
-        self.assertIn(date(2019, 2, 1), state_holidays)
-        self.assertNotIn(date(1970, 2, 1), state_holidays)
-        # Thaipusam
-        self.assertIn(date(2018, 1, 31), state_holidays)
-        self.assertIn(date(2019, 1, 21), state_holidays)
-        self.assertIn(date(2020, 2, 8), state_holidays)
-        self.assertIn(date(2021, 1, 28), state_holidays)
-        self.assertIn(date(2022, 1, 18), state_holidays)
-        self.assertIn(date(2023, 2, 5), state_holidays)
-        # Malaysia Cup Holiday
-        self.assertIn(date(2021, 12, 3), state_holidays)
-
-    def test_MLK_holidays(self):
-        state_holidays = self.malacca_holidays
-
-        # New Year's Day
-        self.assertIn(date(2018, 1, 1), state_holidays)
-        self.assertIn(date(2020, 1, 1), state_holidays)
-        self.assertIn(date(2022, 1, 1), state_holidays)
-        self.assertIn(date(2023, 1, 2), state_holidays)  # In lieu
-        # Beginning of Ramadan
-        self.assertIn(date(2018, 5, 17), state_holidays)
-        self.assertIn(date(2019, 5, 6), state_holidays)
-        self.assertIn(date(2020, 4, 24), state_holidays)
-        self.assertIn(date(2021, 4, 13), state_holidays)
-        self.assertIn(date(2022, 4, 3), state_holidays)
-        self.assertIn(date(2022, 4, 4), state_holidays)  # In lieu
-        self.assertIn(date(2023, 3, 23), state_holidays)
-        # Declaration of Malacca as a Historical City
-        self.assertIn(date(2018, 4, 15), state_holidays)
-        self.assertIn(date(2019, 4, 15), state_holidays)
-        self.assertNotIn(date(1985, 4, 15), state_holidays)
-        # Birthday of the Governor of Malacca
-        self.assertIn(date(2018, 10, 12), state_holidays)
-        self.assertIn(date(2019, 10, 11), state_holidays)
-        self.assertIn(date(2020, 8, 24), state_holidays)
-        self.assertIn(date(2021, 8, 24), state_holidays)
-        self.assertIn(date(2022, 8, 24), state_holidays)
-        self.assertNotIn(date(2019, 8, 24), state_holidays)
-        self.assertNotIn(date(2020, 10, 9), state_holidays)
-
-    def test_LBN_holidays(self):
-        state_holidays = self.labuan_holidays
-
-        # New Year's Day
-        self.assertIn(date(2018, 1, 1), state_holidays)
-        self.assertIn(date(2020, 1, 1), state_holidays)
-        self.assertIn(date(2022, 1, 1), state_holidays)
-        self.assertIn(date(2023, 1, 2), state_holidays)  # In lieu
-        # Federal Territory Day
-        self.assertIn(date(2020, 2, 1), state_holidays)
-        self.assertIn(date(2022, 2, 1), state_holidays)
-        self.assertNotIn(date(1970, 2, 1), state_holidays)
-        # Pesta Kaamatan
-        self.assertIn(date(2018, 5, 30), state_holidays)
-        self.assertIn(date(2019, 5, 31), state_holidays)
-        # Nuzul Al-Quran Day
-        self.assertIn(date(2018, 6, 2), state_holidays)
-        self.assertIn(date(2019, 5, 22), state_holidays)
-        self.assertIn(date(2020, 5, 10), state_holidays)
-        self.assertIn(date(2020, 5, 11), state_holidays)  # In lieu
-        self.assertIn(date(2021, 4, 29), state_holidays)
-        self.assertIn(date(2022, 4, 19), state_holidays)
-        self.assertIn(date(2023, 4, 8), state_holidays)
-        # Malaysia Cup Holiday
-        self.assertIn(date(2021, 12, 3), state_holidays)
-
-    def test_PHG_holidays(self):
-        state_holidays = self.pahang_holidays
-
-        # New Year's Day
-        self.assertIn(date(2018, 1, 1), state_holidays)
-        self.assertIn(date(2020, 1, 1), state_holidays)
-        self.assertIn(date(2022, 1, 1), state_holidays)
-        self.assertIn(date(2023, 1, 2), state_holidays)  # In lieu
-        # Nuzul Al-Quran Day
-        self.assertIn(date(2018, 6, 2), state_holidays)
-        self.assertIn(date(2019, 5, 22), state_holidays)
-        self.assertIn(date(2020, 5, 10), state_holidays)
-        self.assertIn(date(2020, 5, 11), state_holidays)  # In lieu
-        self.assertIn(date(2021, 4, 29), state_holidays)
-        self.assertIn(date(2022, 4, 19), state_holidays)
-        self.assertIn(date(2023, 4, 8), state_holidays)
-        # Hari Hol of Pahang
-        self.assertIn(date(2001, 5, 7), state_holidays)
-        self.assertIn(date(2018, 5, 7), state_holidays)
-        self.assertIn(date(2019, 5, 7), state_holidays)
-        self.assertIn(date(2020, 5, 22), state_holidays)
-        self.assertIn(date(2021, 5, 22), state_holidays)
-        self.assertIn(date(2022, 5, 22), state_holidays)
-        self.assertNotIn(date(2010, 5, 22), state_holidays)
-        self.assertNotIn(date(2021, 5, 7), state_holidays)
-        self.assertNotEqual(
-            state_holidays[date(2020, 5, 7)], "Hari Hol of Pahang"
+        self.assertHolidayDates(
+            "2001-01-24",
+            "2001-01-25",
+            "2001-03-06",
+            "2001-03-26",
+            "2001-05-01",
+            "2001-05-07",
+            "2001-06-02",
+            "2001-06-04",
+            "2001-08-31",
+            "2001-11-14",
+            "2001-12-17",
+            "2001-12-18",
+            "2001-12-25",
         )
 
-    def test_PLS_holidays(self):
-        state_holidays = self.perlis_holidays
+    def test_special_holidays(self):
+        self.assertHoliday(
+            "1999-11-29",
+            "2018-05-09",
+            "2019-07-30",
+        )
 
-        # Hari Raya Haji
-        self.assertIn(date(2006, 12, 31), state_holidays)
-        self.assertIn(date(2018, 8, 22), state_holidays)
-        self.assertIn(date(2019, 8, 11), state_holidays)
-        self.assertIn(date(2020, 7, 31), state_holidays)
-        self.assertIn(date(2021, 7, 20), state_holidays)
-        self.assertIn(date(2022, 7, 10), state_holidays)
-        self.assertIn(date(2023, 6, 28), state_holidays)
-        # Hari Raya Haji Holiday
-        self.assertIn(date(2007, 1, 1), state_holidays)
-        self.assertIn(date(2018, 8, 23), state_holidays)
-        self.assertIn(date(2019, 8, 12), state_holidays)
-        self.assertIn(date(2019, 8, 13), state_holidays)  # In lieu
-        self.assertIn(date(2020, 8, 1), state_holidays)
-        self.assertIn(date(2021, 7, 21), state_holidays)
-        self.assertIn(date(2022, 7, 11), state_holidays)
-        self.assertIn(date(2022, 7, 12), state_holidays)  # In lieu
-        self.assertIn(date(2023, 6, 29), state_holidays)
-        # Isra and Mi'raj
-        self.assertIn(date(2018, 4, 14), state_holidays)
-        self.assertIn(date(2019, 4, 3), state_holidays)
-        self.assertIn(date(2020, 3, 22), state_holidays)
-        self.assertIn(date(2020, 3, 23), state_holidays)  # In lieu
-        self.assertIn(date(2021, 3, 11), state_holidays)
-        self.assertIn(date(2022, 3, 1), state_holidays)
-        self.assertIn(date(2023, 2, 18), state_holidays)
-        # Nuzul Al-Quran Day
-        self.assertIn(date(2018, 6, 2), state_holidays)
-        self.assertIn(date(2019, 5, 22), state_holidays)
-        self.assertIn(date(2020, 5, 10), state_holidays)
-        self.assertIn(date(2020, 5, 11), state_holidays)  # In lieu
-        self.assertIn(date(2021, 4, 29), state_holidays)
-        self.assertIn(date(2022, 4, 19), state_holidays)
-        self.assertIn(date(2023, 4, 8), state_holidays)
-        # Birthday of The Raja of Perlis
-        self.assertIn(date(2000, 5, 17), state_holidays)
-        self.assertIn(date(2010, 5, 17), state_holidays)
-        self.assertIn(date(2017, 5, 17), state_holidays)
-        self.assertIn(date(2018, 7, 17), state_holidays)
-        self.assertIn(date(2022, 7, 17), state_holidays)
-        self.assertNotIn(date(2017, 7, 17), state_holidays)
-        self.assertNotIn(date(2018, 5, 17), state_holidays)
+    def test_observed(self):
+        dt = (
+            "2012-02-06",
+            "2012-08-21",
+            "2012-09-17",
+            "2013-02-12",
+            "2014-09-01",
+            "2014-10-06",
+            "2015-05-04",
+            "2016-05-02",
+            "2016-12-26",
+            "2017-01-30",
+            "2017-06-27",
+            "2018-09-10",
+            "2018-09-17",
+            "2019-05-20",
+            "2019-08-12",
+            "2019-10-28",
+            "2020-01-27",
+            "2020-05-26",
+            "2022-05-04",
+            "2022-05-16",
+            "2022-07-11",
+            "2022-12-26",
+        )
+        self.assertHoliday(dt)
+        self.assertNoHoliday(Malaysia(observed=False), dt)
+
+    def test_JHR_holidays(self):
+        state_holidays = self.jhr_holidays
+        self.assertHoliday(
+            state_holidays,
+            # Birthday of the Sultan of Johor
+            "2015-03-23",
+            "2018-03-23",
+            "2020-03-23",
+            "2022-03-23",
+            # Hari Hol of Sultan Iskandar of Johor
+            "2018-10-15",
+            "2019-10-05",
+            "2020-09-24",
+            "2021-09-13",
+            "2022-09-03",
+            "2023-08-22",
+            # Thaipusam
+            "2018-01-31",
+            "2019-01-21",
+            "2020-02-08",
+            "2021-01-28",
+            "2022-01-18",
+            "2023-02-05",
+            # Beginning of Ramadan
+            "2018-05-17",
+            "2019-05-06",
+            "2020-04-24",
+            "2021-04-13",
+            "2022-04-03",
+            "2023-03-23",
+            # Labour Day Holiday
+            "2022-05-04",
+        )
+        self.assertNoHoliday(
+            state_holidays,
+            # Birthday of the Sultan of Johor
+            "2014-03-23",
+            # Hari Hol of Sultan Iskandar of Johor
+            "2010-01-21",
+            # Malaysia Day [In lieu]
+            "2018-09-17",
+        )
+        dt = (
+            "2017-09-03",
+            "2017-12-03",
+            "2018-02-18",
+            "2018-06-17",
+            "2018-09-02",
+            "2020-04-26",
+            "2020-05-03",
+            "2020-08-02",
+            "2020-12-27",
+            "2021-02-14",
+            "2021-05-16",
+            "2022-09-18",
+        )
+        self.assertHoliday(state_holidays, dt)
+        state_holidays.observed = False
+        self.assertNoHoliday(state_holidays, dt)
+
+    def test_KDH_holidays(self):
+        state_holidays = self.kdh_holidays
+        self.assertHoliday(
+            state_holidays,
+            # Hari Raya Haji
+            "2006-12-31",
+            "2018-08-22",
+            "2019-08-11",
+            "2020-07-31",
+            "2021-07-20",
+            "2022-07-10",
+            "2023-06-28",
+            # Hari Raya Haji Holiday
+            "2007-01-01",
+            "2018-08-23",
+            "2019-08-12",
+            "2020-08-01",
+            "2021-07-21",
+            "2022-07-11",
+            "2023-06-29",
+            # Isra and Mi'raj
+            "2018-04-14",
+            "2019-04-03",
+            "2020-03-22",
+            "2021-03-11",
+            "2022-03-01",
+            "2023-02-18",
+            # Beginning of Ramadan
+            "2018-05-17",
+            "2019-05-06",
+            "2020-04-24",
+            "2021-04-13",
+            "2022-04-03",
+            "2023-03-23",
+            # Thaipusam in 2022
+            "2022-01-18",
+        )
+        self.assertNoHoliday(
+            state_holidays,
+            # Malaysia Day [In lieu]
+            "2018-09-17",
+        )
+        dt = (
+            "2017-09-03",
+            "2017-12-03",
+            "2018-02-18",
+            "2018-06-17",
+            "2018-09-02",
+            "2020-04-26",
+            "2020-05-03",
+            "2020-08-02",
+            "2020-12-27",
+            "2021-02-14",
+            "2021-05-16",
+            "2022-09-18",
+        )
+        self.assertHoliday(state_holidays, dt)
+        state_holidays.observed = False
+        self.assertNoHoliday(state_holidays, dt)
+
+    def test_KTN_holidays(self):
+        state_holidays = self.ktn_holidays
+        self.assertHoliday(
+            state_holidays,
+            # Birthday of the Sultan of Kelantan
+            "2018-11-11",
+            "2019-11-12",
+            "2020-11-11",
+            # Hari Raya Haji
+            "2006-12-31",
+            "2018-08-22",
+            "2019-08-11",
+            "2020-07-31",
+            "2021-07-20",
+            "2022-07-10",
+            "2023-06-28",
+            # Hari Raya Haji Holiday
+            "2007-01-01",
+            "2018-08-23",
+            "2019-08-12",
+            "2020-08-01",
+            "2021-07-21",
+            "2022-07-11",
+            "2023-06-29",
+            # Nuzul Al-Quran Day
+            "2018-06-02",
+            "2019-05-22",
+            "2020-05-10",
+            "2021-04-29",
+            "2022-04-19",
+            "2023-04-08",
+            "2023-04-09",  # In lieu
+            # Labour Day Holiday
+            "2022-05-04",
+        )
+        self.assertNoHoliday(
+            state_holidays,
+            # Birthday of the Sultan of Kelantan
+            "2001-11-11",
+            # Malaysia Day [In lieu]
+            "2018-09-17",
+        )
+        dt = (
+            "2017-01-30",
+            "2017-06-04",
+            "2017-09-03",
+            "2017-09-17",
+            "2018-02-18",
+            "2018-06-03",
+            "2018-06-17",
+            "2019-11-10",
+            "2020-01-27",
+            "2020-08-02",
+            "2020-11-15",
+            "2021-02-14",
+            "2021-05-02",
+            "2021-12-26",
+        )
+        self.assertHoliday(state_holidays, dt)
+        state_holidays.observed = False
+        self.assertNoHoliday(state_holidays, dt)
+
+    def test_NSN_holidays(self):
+        state_holidays = self.nsn_holidays
+        self.assertHoliday(
+            state_holidays,
+            # New Year's Day
+            "2018-01-01",
+            "2020-01-01",
+            "2022-01-01",
+            "2023-01-02",  # In lieu
+            # Isra and Mi'raj
+            "2018-04-14",
+            "2019-04-03",
+            "2020-03-22",
+            "2021-03-11",
+            "2022-03-01",
+            "2023-02-18",
+            # Birthday of the Sultan of Negeri Sembilan
+            "2018-01-14",
+            "2023-01-14",
+            # Thaipusam
+            "2018-01-31",
+            "2019-01-21",
+            "2020-02-08",
+            "2021-01-28",
+            "2022-01-18",
+            "2023-02-05",
+        )
+        self.assertNoHoliday(
+            state_holidays,
+            # Birthday of the Sultan of Negeri Sembilan
+            "2008-01-14",
+        )
+        dt = (
+            "2017-01-02",
+            "2017-01-30",
+            "2017-06-27",
+            "2018-01-15",
+            "2018-09-10",
+            "2018-09-17",
+            "2019-05-20",
+            "2019-08-12",
+            "2019-10-28",
+            "2020-01-27",
+            "2020-03-23",
+            "2020-05-26",
+            "2022-05-04",
+            "2022-05-16",
+            "2022-07-11",
+            "2022-12-26",
+        )
+        self.assertHoliday(state_holidays, dt)
+        state_holidays.observed = False
+        self.assertNoHoliday(state_holidays, dt)
+
+    def test_PNG_holidays(self):
+        state_holidays = self.png_holidays
+        self.assertHoliday(
+            state_holidays,
+            # New Year's Day
+            "2018-01-01",
+            "2020-01-01",
+            "2022-01-01",
+            "2023-01-02",  # In lieu
+            # Nuzul Al-Quran Day
+            "2018-06-02",
+            "2019-05-22",
+            "2020-05-10",
+            "2021-04-29",
+            "2022-04-19",
+            "2023-04-08",
+            # Thaipusam
+            "2018-01-31",
+            "2019-01-21",
+            "2020-02-08",
+            "2021-01-28",
+            "2022-01-18",
+            "2023-02-05",
+            "2023-02-06",  # In lieu
+            # George Town Heritage Day
+            "2009-07-07",
+            "2020-07-07",
+            # Birthday of the Governor of Penang
+            "2017-07-08",
+            "2019-07-13",
+            "2020-07-11",
+            "2022-07-09",
+            "2023-07-08",
+        )
+        self.assertNoHoliday(
+            state_holidays,
+            # George Town Heritage Day
+            "2008-07-07",
+        )
+        dt = (
+            "2017-01-02",
+            "2017-01-30",
+            "2017-06-27",
+            "2018-09-10",
+            "2018-09-17",
+            "2019-05-20",
+            "2019-07-08",
+            "2019-08-12",
+            "2019-10-28",
+            "2020-01-27",
+            "2020-05-11",
+            "2020-05-26",
+            "2022-05-04",
+            "2022-05-16",
+            "2022-07-11",
+            "2022-12-26",
+        )
+        self.assertHoliday(state_holidays, dt)
+        state_holidays.observed = False
+        self.assertNoHoliday(state_holidays, dt)
+
+    def test_PRK_holidays(self):
+        state_holidays = self.prk_holidays
+        self.assertHoliday(
+            state_holidays,
+            # New Year's Day
+            "2018-01-01",
+            "2020-01-01",
+            "2022-01-01",
+            "2023-01-02",  # In lieu
+            # Nuzul Al-Quran Day
+            "2018-06-02",
+            "2019-05-22",
+            "2020-05-10",
+            "2021-04-29",
+            "2022-04-19",
+            "2023-04-08",
+            # Thaipusam
+            "2018-01-31",
+            "2019-01-21",
+            "2020-02-08",
+            "2021-01-28",
+            "2022-01-18",
+            "2023-02-05",
+            "2023-02-06",  # In lieu
+            # Birthday of the Sultan of Perak
+            "2009-11-27",
+            "2017-11-27",
+            "2018-11-02",
+            "2019-11-01",
+            "2020-11-06",
+            "2021-11-05",
+            "2022-11-04",
+        )
+        self.assertNoHoliday(
+            state_holidays,
+            # Birthday of the Sultan of Perak
+            "2018-11-27",
+        )
+        dt = (
+            "2017-01-02",
+            "2017-01-30",
+            "2017-06-27",
+            "2018-09-10",
+            "2018-09-17",
+            "2019-05-20",
+            "2019-08-12",
+            "2019-10-28",
+            "2020-01-27",
+            "2020-05-11",
+            "2020-05-26",
+            "2022-05-04",
+            "2022-05-16",
+            "2022-07-11",
+            "2022-12-26",
+        )
+        self.assertHoliday(state_holidays, dt)
+        state_holidays.observed = False
+        self.assertNoHoliday(state_holidays, dt)
+
+    def test_SBH_holidays(self):
+        state_holidays = self.sbh_holidays
+        self.assertHoliday(
+            state_holidays,
+            # New Year's Day
+            "2018-01-01",
+            "2020-01-01",
+            "2022-01-01",
+            "2023-01-02",  # In lieu
+            # Pesta Kaamatan
+            "2018-05-30",
+            "2019-05-31",
+            # Good Friday
+            "2018-03-30",
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            # Birthday of the Governor of Sabah
+            "2017-10-07",
+            "2018-10-06",
+            "2019-10-05",
+            "2020-10-03",
+            # Christmas Eve
+            "2019-12-24",
+            "2020-12-24",
+        )
+        self.assertNoHoliday(
+            state_holidays,
+            # Christmas Eve
+            "2018-12-24",
+        )
+        dt = (
+            "2017-01-02",
+            "2017-01-30",
+            "2017-06-27",
+            "2018-09-10",
+            "2018-09-17",
+            "2019-05-20",
+            "2019-08-12",
+            "2019-10-28",
+            "2020-01-27",
+            "2020-05-26",
+            "2022-05-04",
+            "2022-05-16",
+            "2022-07-11",
+            "2022-12-26",
+        )
+        self.assertHoliday(state_holidays, dt)
+        state_holidays.observed = False
+        self.assertNoHoliday(state_holidays, dt)
+
+    def test_SWK_holidays(self):
+        state_holidays = self.swk_holidays
+        self.assertHoliday(
+            state_holidays,
+            # New Year's Day
+            "2018-01-01",
+            "2020-01-01",
+            "2022-01-01",
+            "2023-01-02",  # In lieu
+            # Good Friday
+            "2018-03-30",
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            # Gawai Dayak
+            "2018-06-01",
+            "2018-06-02",
+            "2020-06-02",
+            "2020-06-02",
+            # Birthday of the Governor of Sarawak
+            "2018-10-13",
+            "2019-10-12",
+            "2020-10-10",
+            "2021-10-09",
+            "2022-10-08",
+            # Sarawak Day
+            "2017-07-22",
+            "2018-07-22",
+            "2022-07-22",
+        )
+        self.assertNoHoliday(
+            state_holidays,
+            # Sarawak Day
+            "2014-07-22",
+            # Deepavali
+            "2018-11-06",
+            "2022-10-24",
+        )
+        dt = (
+            "2017-01-02",
+            "2017-01-30",
+            "2017-06-27",
+            "2018-07-23",
+            "2018-09-10",
+            "2018-09-17",
+            "2019-05-20",
+            "2019-06-04",
+            "2019-08-12",
+            "2020-01-27",
+            "2020-05-26",
+            "2022-05-04",
+            "2022-05-16",
+            "2022-07-11",
+            "2022-12-26",
+        )
+        self.assertHoliday(state_holidays, dt)
+        state_holidays.observed = False
+        self.assertNoHoliday(state_holidays, dt)
+
+    def test_SGR_holidays(self):
+        state_holidays = self.sgr_holidays
+        self.assertHoliday(
+            state_holidays,
+            # New Year's Day
+            "2018-01-01",
+            "2020-01-01",
+            "2022-01-01",
+            "2023-01-02",  # In lieu
+            # Nuzul Al-Quran Day
+            "2018-06-02",
+            "2019-05-22",
+            "2020-05-10",
+            "2021-04-29",
+            "2022-04-19",
+            "2023-04-08",
+            # Thaipusam
+            "2018-01-31",
+            "2019-01-21",
+            "2020-02-08",
+            "2021-01-28",
+            "2022-01-18",
+            "2023-02-05",
+            "2023-02-06",  # In lieu
+            # Birthday of The Sultan of Selangor
+            "2018-12-11",
+            "2019-12-11",
+        )
+        dt = (
+            "2017-01-02",
+            "2017-01-30",
+            "2017-06-27",
+            "2018-09-10",
+            "2018-09-17",
+            "2019-05-20",
+            "2019-08-12",
+            "2019-10-28",
+            "2020-01-27",
+            "2020-05-11",
+            "2020-05-26",
+            "2022-05-04",
+            "2022-05-16",
+            "2022-07-11",
+            "2022-12-12",
+            "2022-12-26",
+        )
+        self.assertHoliday(state_holidays, dt)
+        state_holidays.observed = False
+        self.assertNoHoliday(state_holidays, dt)
+
+    def test_TRG_holidays(self):
+        state_holidays = self.trg_holidays
+        self.assertHoliday(
+            state_holidays,
+            # Arafat Day
+            "2018-08-21",
+            "2019-08-10",
+            "2020-07-30",
+            "2021-07-19",
+            "2022-07-09",
+            "2023-06-27",
+            # Hari Raya Haji
+            "2006-12-31",
+            "2018-08-22",
+            "2019-08-11",
+            "2020-07-31",
+            "2021-07-20",
+            "2022-07-10",
+            "2023-06-28",
+            # Hari Raya Haji Holiday
+            "2007-01-01",
+            "2018-08-23",
+            "2019-08-12",
+            "2020-08-01",
+            "2021-07-21",
+            "2022-07-11",
+            "2023-06-29",
+            # Isra and Mi'raj
+            "2020-03-22",
+            "2021-03-11",
+            "2022-03-01",
+            "2023-02-18",
+            "2023-02-19",  # In lieu
+            # Nuzul Al-Quran Day
+            "2018-06-02",
+            "2019-05-22",
+            "2020-05-10",
+            "2021-04-29",
+            "2022-04-19",
+            "2023-04-08",
+            "2023-04-09",  # In lieu
+            # Anniversary of the Installation of the Sultan of Terengganu
+            "2000-03-04",
+            "2018-03-04",
+            "2019-03-04",
+            # Birthday of the Sultan of Terengganu
+            "2020-04-26",
+            "2022-04-26",
+            # Labour Day Holiday
+            "2022-05-04",
+        )
+        self.assertNoHoliday(
+            state_holidays,
+            # Isra and Mi'raj
+            "2018-04-14",
+            "2019-04-03",
+            # Anniversary of the Installation of the Sultan of Terengganu
+            "1999-03-04",
+            # Birthday of the Sultan of Terengganu
+            "1999-04-26",
+            # Malaysia Day [In lieu]
+            "2018-09-17",
+        )
+        dt = (
+            "2017-01-30",
+            "2017-03-05",
+            "2017-06-04",
+            "2017-09-03",
+            "2017-09-17",
+            "2018-02-18",
+            "2018-06-03",
+            "2018-06-17",
+            "2019-08-13",
+            "2019-11-10",
+            "2020-01-27",
+            "2020-08-02",
+            "2020-11-15",
+            "2021-02-14",
+            "2021-05-02",
+            "2021-12-26",
+            "2022-07-12",
+        )
+        self.assertHoliday(state_holidays, dt)
+        state_holidays.observed = False
+        self.assertNoHoliday(state_holidays, dt)
+
+    def test_KUL_holidays(self):
+        state_holidays = self.kul_holidays
+        self.assertHoliday(
+            state_holidays,
+            # New Year's Day
+            "2018-01-01",
+            "2020-01-01",
+            "2022-01-01",
+            "2023-01-02",  # In lieu
+            # Federal Territory Day
+            "2018-02-01",
+            "2019-02-01",
+            # Thaipusam
+            "2018-01-31",
+            "2019-01-21",
+            "2020-02-08",
+            "2021-01-28",
+            "2022-01-18",
+            "2023-02-05",
+            # Malaysia Cup Holiday
+            "2021-12-03",
+        )
+        self.assertNoHoliday(
+            state_holidays,
+            # Federal Territory Day
+            "1970-02-01",
+        )
+        dt = (
+            "2017-01-02",
+            "2017-01-30",
+            "2017-06-27",
+            "2018-09-10",
+            "2018-09-17",
+            "2019-05-20",
+            "2019-08-12",
+            "2019-10-28",
+            "2020-01-27",
+            "2020-05-11",
+            "2020-05-26",
+            "2022-05-04",
+            "2022-05-16",
+            "2022-07-11",
+            "2022-12-26",
+        )
+        self.assertHoliday(state_holidays, dt)
+        state_holidays.observed = False
+        self.assertNoHoliday(state_holidays, dt)
+
+    def test_MLK_holidays(self):
+        state_holidays = self.mlk_holidays
+        self.assertHoliday(
+            state_holidays,
+            # New Year's Day
+            "2018-01-01",
+            "2020-01-01",
+            "2022-01-01",
+            "2023-01-02",  # In lieu
+            # Beginning of Ramadan
+            "2018-05-17",
+            "2019-05-06",
+            "2020-04-24",
+            "2021-04-13",
+            "2022-04-03",
+            "2023-03-23",
+            # Declaration of Malacca as a Historical City
+            "2018-04-15",
+            "2019-04-15",
+            # Birthday of the Governor of Malacca
+            "2018-10-12",
+            "2019-10-11",
+            "2020-08-24",
+            "2021-08-24",
+            "2022-08-24",
+        )
+        self.assertNoHoliday(
+            state_holidays,
+            # Declaration of Malacca as a Historical City
+            "1985-04-15",
+            # Birthday of the Governor of Malacca
+            "2019-08-24",
+            "2020-10-09",
+        )
+        dt = (
+            "2017-01-02",
+            "2017-01-30",
+            "2017-06-27",
+            "2018-04-16",
+            "2018-09-10",
+            "2018-09-17",
+            "2019-05-20",
+            "2019-08-12",
+            "2019-10-28",
+            "2020-01-27",
+            "2020-05-26",
+            "2022-04-04",
+            "2022-05-04",
+            "2022-05-16",
+            "2022-07-11",
+            "2022-12-26",
+        )
+        self.assertHoliday(state_holidays, dt)
+        state_holidays.observed = False
+        self.assertNoHoliday(state_holidays, dt)
+
+    def test_LBN_holidays(self):
+        state_holidays = self.lbn_holidays
+        self.assertHoliday(
+            state_holidays,
+            # New Year's Day
+            "2018-01-01",
+            "2020-01-01",
+            "2022-01-01",
+            "2023-01-02",  # In lieu
+            # Federal Territory Day
+            "2020-02-01",
+            "2022-02-01",
+            # Pesta Kaamatan
+            "2018-05-30",
+            "2019-05-31",
+            # Nuzul Al-Quran Day
+            "2018-06-02",
+            "2019-05-22",
+            "2020-05-10",
+            "2021-04-29",
+            "2022-04-19",
+            "2023-04-08",
+            # Malaysia Cup Holiday
+            "2021-12-03",
+        )
+        self.assertNoHoliday(
+            state_holidays,
+            # Federal Territory Day
+            "1970-02-01",
+        )
+        dt = (
+            "2017-01-02",
+            "2017-01-30",
+            "2017-06-27",
+            "2018-09-10",
+            "2018-09-17",
+            "2019-05-20",
+            "2019-08-12",
+            "2019-10-28",
+            "2020-01-27",
+            "2020-05-11",
+            "2020-05-26",
+            "2022-05-04",
+            "2022-05-16",
+            "2022-07-11",
+            "2022-12-26",
+        )
+        self.assertHoliday(state_holidays, dt)
+        state_holidays.observed = False
+        self.assertNoHoliday(state_holidays, dt)
+
+    def test_PHG_holidays(self):
+        state_holidays = self.phg_holidays
+        self.assertHoliday(
+            state_holidays,
+            # New Year's Day
+            "2018-01-01",
+            "2020-01-01",
+            "2022-01-01",
+            "2023-01-02",  # In lieu
+            # Nuzul Al-Quran Day
+            "2018-06-02",
+            "2019-05-22",
+            "2020-05-10",
+            "2021-04-29",
+            "2022-04-19",
+            "2023-04-08",
+            # Hari Hol of Pahang
+            "2001-05-07",
+            "2018-05-07",
+            "2019-05-07",
+            "2020-05-07",
+            "2021-05-22",
+            "2022-05-22",
+        )
+        self.assertNoHoliday(
+            state_holidays,
+            # Hari Hol of Pahang
+            "2010-05-22",
+            "2021-05-07",
+        )
+        dt = (
+            "2017-01-02",
+            "2017-01-30",
+            "2017-05-08",
+            "2017-06-27",
+            "2018-09-10",
+            "2018-09-17",
+            "2019-05-20",
+            "2019-08-12",
+            "2019-10-28",
+            "2020-01-27",
+            "2020-05-11",
+            "2020-05-26",
+            "2022-05-04",
+            "2022-05-16",
+            "2022-05-23",
+            "2022-07-11",
+            "2022-12-26",
+        )
+        self.assertHoliday(state_holidays, dt)
+        state_holidays.observed = False
+        self.assertNoHoliday(state_holidays, dt)
+
+    def test_PLS_holidays(self):
+        state_holidays = self.pls_holidays
+        self.assertHoliday(
+            state_holidays,
+            # Hari Raya Haji
+            "2006-12-31",
+            "2018-08-22",
+            "2019-08-11",
+            "2020-07-31",
+            "2021-07-20",
+            "2022-07-10",
+            "2023-06-28",
+            # Hari Raya Haji Holiday
+            "2007-01-01",
+            "2018-08-23",
+            "2019-08-12",
+            "2020-08-01",
+            "2021-07-21",
+            "2022-07-11",
+            "2023-06-29",
+            # Isra and Mi'raj
+            "2018-04-14",
+            "2019-04-03",
+            "2020-03-22",
+            "2021-03-11",
+            "2022-03-01",
+            "2023-02-18",
+            # Nuzul Al-Quran Day
+            "2018-06-02",
+            "2019-05-22",
+            "2020-05-10",
+            "2021-04-29",
+            "2022-04-19",
+            "2023-04-08",
+            # Birthday of The Raja of Perlis
+            "2000-05-17",
+            "2010-05-17",
+            "2017-05-17",
+            "2018-07-17",
+            "2022-07-17",
+        )
+        self.assertNoHoliday(
+            state_holidays,
+            # Birthday of The Raja of Perlis
+            "2017-07-17",
+            "2018-05-17",
+        )
+        dt = (
+            "2017-01-30",
+            "2017-06-27",
+            "2018-09-10",
+            "2018-09-17",
+            "2019-05-20",
+            "2019-08-13",
+            "2019-10-28",
+            "2020-01-27",
+            "2020-03-23",
+            "2020-05-11",
+            "2020-05-26",
+            "2022-05-04",
+            "2022-05-16",
+            "2022-07-12",
+            "2022-07-18",
+            "2022-12-26",
+        )
+        self.assertHoliday(state_holidays, dt)
+        state_holidays.observed = False
+        self.assertNoHoliday(state_holidays, dt)
 
     def test_PJY_holidays(self):
-        state_holidays = self.putrajaya_holidays
-
-        # New Year's Day
-        self.assertIn(date(2018, 1, 1), state_holidays)
-        self.assertIn(date(2020, 1, 1), state_holidays)
-        self.assertIn(date(2022, 1, 1), state_holidays)
-        self.assertIn(date(2023, 1, 2), state_holidays)  # In lieu
-        # Nuzul Al-Quran Day
-        self.assertIn(date(2018, 6, 2), state_holidays)
-        self.assertIn(date(2019, 5, 22), state_holidays)
-        self.assertIn(date(2020, 5, 10), state_holidays)
-        self.assertIn(date(2020, 5, 11), state_holidays)  # In lieu
-        self.assertIn(date(2021, 4, 29), state_holidays)
-        self.assertIn(date(2022, 4, 19), state_holidays)
-        self.assertIn(date(2023, 4, 8), state_holidays)
-        # Thaipusam
-        self.assertIn(date(2018, 1, 31), state_holidays)
-        self.assertIn(date(2019, 1, 21), state_holidays)
-        self.assertIn(date(2020, 2, 8), state_holidays)
-        self.assertIn(date(2021, 1, 28), state_holidays)
-        self.assertIn(date(2022, 1, 18), state_holidays)
-        self.assertIn(date(2023, 2, 5), state_holidays)
-        self.assertIn(date(2023, 2, 6), state_holidays)  # In lieu
-        # Federal Territory Day
-        self.assertIn(date(2018, 2, 1), state_holidays)
-        self.assertIn(date(2019, 2, 1), state_holidays)
-        self.assertNotIn(date(1970, 2, 1), state_holidays)
-        # Malaysia Cup Holiday
-        self.assertIn(date(2021, 12, 3), state_holidays)
-
-    def test_aliases(self):
-        holidays1 = holidays.MY()
-        holidays2 = holidays.MYS()
-        self.assertEqual(list(holidays1), list(holidays2))
+        state_holidays = self.pjy_holidays
+        self.assertHoliday(
+            state_holidays,
+            # New Year's Day
+            "2018-01-01",
+            "2020-01-01",
+            "2022-01-01",
+            "2023-01-02",  # In lieu
+            # Nuzul Al-Quran Day
+            "2018-06-02",
+            "2019-05-22",
+            "2020-05-10",
+            "2021-04-29",
+            "2022-04-19",
+            "2023-04-08",
+            # Thaipusam
+            "2018-01-31",
+            "2019-01-21",
+            "2020-02-08",
+            "2021-01-28",
+            "2022-01-18",
+            "2023-02-05",
+            "2023-02-06",  # In lieu
+            # Federal Territory Day
+            "2018-02-01",
+            "2019-02-01",
+            # Malaysia Cup Holiday
+            "2021-12-03",
+        )
+        self.assertNoHoliday(
+            state_holidays,
+            # Federal Territory Day
+            "1970-02-01",
+        )
+        dt = (
+            "2017-01-02",
+            "2017-01-30",
+            "2017-06-27",
+            "2018-09-10",
+            "2018-09-17",
+            "2019-05-20",
+            "2019-08-12",
+            "2019-10-28",
+            "2020-01-27",
+            "2020-05-11",
+            "2020-05-26",
+            "2022-05-04",
+            "2022-05-16",
+            "2022-07-11",
+            "2022-12-26",
+        )
+        self.assertHoliday(state_holidays, dt)
+        state_holidays.observed = False
+        self.assertNoHoliday(state_holidays, dt)
