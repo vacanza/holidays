@@ -312,18 +312,18 @@ class TestArgentina(TestCase):
 
         run_tests((Argentina.default_language, None, "invalid"))
 
-        self.set_locale("en")
+        self.set_language("en_US")
         run_tests((Argentina.default_language,))
 
-    def test_l10n_en(self):
-        language = "en"
+    def test_l10n_en_us(self):
+        en_us = "en_US"
 
-        ar_en = Argentina(language=language)
-        self.assertEqual(ar_en["2018-01-01"], "New Year's Day")
-        self.assertEqual(ar_en["2022-12-25"], "Christmas")
+        ar = Argentina(language=en_us)
+        self.assertEqual(ar["2018-01-01"], "New Year's Day")
+        self.assertEqual(ar["2022-12-25"], "Christmas")
 
-        self.set_locale(language)
-        for language in (None, language, "invalid"):
-            ar_en = Argentina(language=language)
-            self.assertEqual(ar_en["2018-01-01"], "New Year's Day")
-            self.assertEqual(ar_en["2022-12-25"], "Christmas")
+        self.set_language(en_us)
+        for language in (None, en_us, "invalid"):
+            ar = Argentina(language=language)
+            self.assertEqual(ar["2018-01-01"], "New Year's Day")
+            self.assertEqual(ar["2022-12-25"], "Christmas")

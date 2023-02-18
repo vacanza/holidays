@@ -9,46 +9,79 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
+from holidays.countries.mozambique import Mozambique, MZ, MOZ
+from tests.common import TestCase
 
-import holidays
 
-
-class TestMozambique(unittest.TestCase):
+class TestMozambique(TestCase):
     def setUp(self):
-        self.holidays = holidays.MZ()
+        self.holidays = Mozambique()
 
-    def test_new_years(self):
-        self.assertIn("1975-01-01", self.holidays)
-        self.assertIn("2017-01-01", self.holidays)
-        self.assertIn("2999-01-01", self.holidays)
-        self.assertIn("2017-01-02", self.holidays)  # sunday
+    def test_country_aliases(self):
+        self.assertCountryAliases(Mozambique, MZ, MOZ)
 
-    def test_carnival(self):
-        self.assertIn("1994-02-15", self.holidays)
-        self.assertIn("2002-02-12", self.holidays)
-        self.assertIn("2010-02-16", self.holidays)
-        self.assertIn("2017-02-28", self.holidays)
-        self.assertIn("2018-02-13", self.holidays)
-        self.assertIn("2019-03-05", self.holidays)
-        self.assertIn("2020-02-25", self.holidays)
-        self.assertIn("2021-02-16", self.holidays)
-        self.assertIn("2022-03-01", self.holidays)
+    def test_no_holidays(self):
+        self.assertNoHolidays(Mozambique(years=1974))
+
+    def test_holidays(self):
+        for year in range(1975, 2050):
+            self.assertHoliday(
+                f"{year}-01-01",
+                f"{year}-02-03",
+                f"{year}-04-07",
+                f"{year}-05-01",
+                f"{year}-06-25",
+                f"{year}-09-07",
+                f"{year}-09-25",
+                f"{year}-12-25",
+            )
+
+        self.assertNoHoliday(f"{year}-10-04" for year in range(1975, 1993))
+        self.assertNoHolidayName(
+            "Dia da Paz e Reconciliação",
+            Mozambique(years=range(1975, 1993)),
+        )
+        self.assertHoliday(f"{year}-10-04" for year in range(1993, 2050))
 
     def test_easter(self):
-        self.assertIn("2017-04-14", self.holidays)
-        self.assertIn("2020-04-10", self.holidays)
-        self.assertIn("1994-04-01", self.holidays)
-
-    def test_not_holiday(self):
-        self.assertNotIn("2018-02-04", self.holidays)
-        self.assertNotIn("2015-04-13", self.holidays)
-        self.assertNotIn("2018-03-23", self.holidays)
-
-    def test_pre1974(self):
-        # Holidays not defined since 1975
-        self.assertEqual(len(holidays.Mozambique(years=[1974])), 0)
+        self.assertHoliday(
+            # Good Friday
+            "2018-03-30",
+            "2019-04-19",
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            # Carnival
+            "2018-02-13",
+            "2019-03-05",
+            "2020-02-25",
+            "2021-02-16",
+            "2022-03-01",
+        )
 
     def test_observed(self):
-        not_observed = holidays.MZ(observed=False)
-        self.assertNotIn("2017-01-02", not_observed)
+        dt = (
+            "2011-05-02",
+            "2011-09-26",
+            "2011-12-26",
+            "2012-01-02",
+            "2013-02-04",
+            "2013-04-08",
+            "2014-09-08",
+            "2015-10-05",
+            "2016-05-02",
+            "2016-09-26",
+            "2016-12-26",
+            "2017-01-02",
+            "2017-06-26",
+            "2019-02-04",
+            "2019-04-08",
+            "2020-10-05",
+            "2022-05-02",
+            "2022-09-26",
+            "2022-12-26",
+            "2023-01-02",
+            "2023-06-26",
+        )
+        self.assertHoliday(dt)
+        self.assertNoHoliday(Mozambique(observed=False), dt)

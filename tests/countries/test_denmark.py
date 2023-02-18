@@ -11,14 +11,17 @@
 
 from datetime import date
 
-from holidays.countries.denmark import Denmark
+from holidays.countries.denmark import Denmark, DK, DNK
 from tests.common import TestCase
 
 
-class TestDK(TestCase):
+class TestDenmark(TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Denmark)
+
+    def test_country_aliases(self):
+        self.assertCountryAliases(Denmark, DK, DNK)
 
     def test_2016(self):
         # http://www.officeholidays.com/countries/denmark/2016.php
@@ -40,18 +43,18 @@ class TestDK(TestCase):
 
         run_tests((Denmark.default_language, None, "invalid"))
 
-        self.set_locale("en")
+        self.set_language("en_US")
         run_tests((Denmark.default_language,))
 
-    def test_l10n_en(self):
-        language = "en"
+    def test_l10n_en_us(self):
+        en_us = "en_US"
 
-        dk_en = Denmark(language=language)
-        self.assertEqual(dk_en["2022-01-01"], "New Year's Day")
-        self.assertEqual(dk_en["2022-12-25"], "Christmas Day")
+        dk = Denmark(language=en_us)
+        self.assertEqual(dk["2022-01-01"], "New Year's Day")
+        self.assertEqual(dk["2022-12-25"], "Christmas Day")
 
-        self.set_locale(language)
-        for language in (None, language, "invalid"):
-            dk_en = Denmark(language=language)
-            self.assertEqual(dk_en["2022-01-01"], "New Year's Day")
-            self.assertEqual(dk_en["2022-12-25"], "Christmas Day")
+        self.set_language(en_us)
+        for language in (None, en_us, "invalid"):
+            dk = Denmark(language=language)
+            self.assertEqual(dk["2022-01-01"], "New Year's Day")
+            self.assertEqual(dk["2022-12-25"], "Christmas Day")

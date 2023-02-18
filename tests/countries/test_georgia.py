@@ -14,8 +14,9 @@ from tests.common import TestCase
 
 
 class TestGeorgia(TestCase):
-    def setUp(self):
-        self.holidays = Georgia()
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Georgia)
 
     def test_country_aliases(self):
         self.assertCountryAliases(Georgia, GE, GEO)
@@ -50,3 +51,28 @@ class TestGeorgia(TestCase):
             "2020-08-16",
             "2008-08-05",
         )
+
+    def test_l10n_default(self):
+        def run_tests(languages):
+            for language in languages:
+                ge = Georgia(language=language)
+                self.assertEqual(ge["2022-01-01"], "ახალი წელი")
+                self.assertEqual(ge["2022-01-07"], "ქრისტეშობა")
+
+        run_tests((Georgia.default_language, None, "invalid"))
+
+        self.set_language("en_US")
+        run_tests((Georgia.default_language,))
+
+    def test_l10n_en_us(self):
+        en_us = "en_US"
+
+        ge = Georgia(language=en_us)
+        self.assertEqual(ge["2022-01-01"], "New Year's Day")
+        self.assertEqual(ge["2022-01-07"], "Orthodox Christmas Day")
+
+        self.set_language(en_us)
+        for language in (None, en_us, "invalid"):
+            ge = Georgia(language=language)
+            self.assertEqual(ge["2022-01-01"], "New Year's Day")
+            self.assertEqual(ge["2022-01-07"], "Orthodox Christmas Day")

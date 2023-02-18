@@ -285,13 +285,13 @@ class HolidayBase(Dict[date, str]):
 
             name = getattr(self, "country", getattr(self, "market", None))
             if name:
-                locale_dir = os.path.join("holidays", "locale")
+                locale_dir = os.path.join(os.path.dirname(__file__), "locale")
                 translator: NullTranslations
                 translations = sorted(
                     (
-                        # Collect `language_code` part from
-                        # holidays/locale/<language_code>/LC_MESSAGES/...
-                        str(translation).split(os.sep)[2]
+                        # Collect `language` part from
+                        # holidays/locale/<language>/LC_MESSAGES/country.po
+                        str(translation).split(os.sep)[-3]
                         for translation in Path(locale_dir).rglob(f"{name}.mo")
                     )
                 )

@@ -12,11 +12,11 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.countries.canada import Canada
+from holidays.countries.canada import Canada, CA, CAN
 from tests.common import TestCase
 
 
-class TestCA(TestCase):
+class TestCanada(TestCase):
     def setUp(self):
         super().setUp()
         self.holidays = Canada(observed=False)
@@ -24,6 +24,9 @@ class TestCA(TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Canada)
+
+    def test_country_aliases(self):
+        self.assertCountryAliases(Canada, CA, CAN)
 
     def test_new_years(self):
         self.assertNotIn(date(1866, 12, 31), self.holidays)
@@ -313,19 +316,38 @@ class TestCA(TestCase):
             self.assertNotIn(dt + td(days=+1), self.holidays)
 
     def test_national_day_for_truth_and_reconciliation(self):
+        bc_holidays = Canada(subdiv="BC")
+        mb_holidays = Canada(subdiv="MB")
+        ns_holidays = Canada(subdiv="NS")
+
         for dt in [
             date(1991, 9, 30),
             date(2020, 9, 30),
         ]:
             self.assertNotIn(dt, self.holidays)
             self.assertNotIn(dt + td(days=-1), self.holidays)
-        mb_holidays = Canada(subdiv="MB")
+            self.assertNotIn(dt, mb_holidays)
+            self.assertNotIn(dt, ns_holidays)
         for dt in [
             date(2021, 9, 30),
+            date(2022, 9, 30),
+        ]:
+            self.assertIn(dt, mb_holidays)
+            self.assertIn(dt, ns_holidays)
+            self.assertNotIn(dt + td(days=-1), mb_holidays)
+            self.assertNotIn(dt + td(days=-1), ns_holidays)
+            self.assertNotIn(dt, self.holidays)
+        for dt in [
+            date(2023, 9, 30),
+            date(2024, 9, 30),
             date(2030, 9, 30),
         ]:
             self.assertIn(dt, mb_holidays)
+            self.assertIn(dt, ns_holidays)
+            self.assertIn(dt, bc_holidays)
             self.assertNotIn(dt + td(days=-1), mb_holidays)
+            self.assertNotIn(dt + td(days=-1), ns_holidays)
+            self.assertNotIn(dt + td(days=-1), bc_holidays)
             self.assertNotIn(dt, self.holidays)
 
     def test_thanksgiving(self):
@@ -414,18 +436,18 @@ class TestCA(TestCase):
 
             run_tests((Canada.default_language, None, "invalid"))
 
-            self.set_locale("fr")
+            self.set_language("fr")
             run_tests((Canada.default_language,))
 
     def test_l10n_fr(self):
-        language = "fr"
+        fr = "fr"
 
-        ca_fr = Canada(language=language)
-        self.assertEqual(ca_fr["2018-01-01"], "Jour de l'an")
-        self.assertEqual(ca_fr["2022-12-25"], "Jour de Noël")
+        ca = Canada(language=fr)
+        self.assertEqual(ca["2018-01-01"], "Jour de l'an")
+        self.assertEqual(ca["2022-12-25"], "Jour de Noël")
 
-        self.set_locale(language)
-        for language in (None, language, "invalid"):
-            ca_fr = Canada(language=language)
-            self.assertEqual(ca_fr["2018-01-01"], "Jour de l'an")
-            self.assertEqual(ca_fr["2022-12-25"], "Jour de Noël")
+        self.set_language(fr)
+        for language in (None, fr, "invalid"):
+            ca = Canada(language=language)
+            self.assertEqual(ca["2018-01-01"], "Jour de l'an")
+            self.assertEqual(ca["2022-12-25"], "Jour de Noël")

@@ -22,38 +22,43 @@ from holidays.holiday_base import HolidayBase
 
 class Greece(HolidayBase):
     """
-    https://en.wikipedia.org/wiki/Public_holidays_in_Greece
+    Greece holidays.
+
+    References:
+     - https://en.wikipedia.org/wiki/Public_holidays_in_Greece
     """
 
     country = "GR"
+    default_language = "el"
 
     def _populate(self, year):
         super()._populate(year)
 
         easter_date = easter(year, method=EASTER_ORTHODOX)
 
-        # New Years
-        self[date(year, JAN, 1)] = "Πρωτοχρονιά [New Year's Day]"
-        # Epiphany
-        self[date(year, JAN, 6)] = "Θεοφάνεια [Epiphany]"
+        # New Year's Day.
+        self[date(year, JAN, 1)] = self.tr("Πρωτοχρονιά")
 
-        # Clean Monday
-        self[easter_date + td(days=-48)] = "Καθαρά Δευτέρα [Clean Monday]"
+        # Epiphany.
+        self[date(year, JAN, 6)] = self.tr("Θεοφάνεια")
 
-        # Independence Day
-        self[date(year, MAR, 25)] = "Εικοστή Πέμπτη Μαρτίου [Independence Day]"
+        # Clean Monday.
+        self[easter_date + td(days=-48)] = self.tr("Καθαρά Δευτέρα")
 
-        # Easter Monday
-        self[easter_date + td(days=+1)] = "Δευτέρα του Πάσχα [Easter Monday]"
+        # Independence Day.
+        self[date(year, MAR, 25)] = self.tr("Εικοστή Πέμπτη Μαρτίου")
 
-        # Monday of the Holy Spirit
-        self[
-            easter_date + td(days=+50)
-        ] = "Δευτέρα του Αγίου Πνεύματος [Monday of the Holy Spirit]"
+        # Easter Monday.
+        self[easter_date + td(days=+1)] = self.tr("Δευτέρα του Πάσχα")
 
-        # Labour Day
-        name = "Εργατική Πρωτομαγιά [Labour day]"
-        name_observed = name + " (Observed)"
+        # Monday of the Holy Spirit.
+        self[easter_date + td(days=+50)] = self.tr(
+            "Δευτέρα του Αγίου Πνεύματος"
+        )
+
+        # Labour Day.
+        name = self.tr("Εργατική Πρωτομαγιά")
+        name_observed = self.tr("%s (παρατηρήθηκε)")
 
         self[date(year, MAY, 1)] = name
         if self.observed and self._is_weekend(year, MAY, 1):
@@ -63,21 +68,19 @@ class Greece(HolidayBase):
             # https://www.timeanddate.com/holidays/greece/labor-day
             if self.get(labour_day_observed_date):
                 labour_day_observed_date += rd(weekday=TU)
-            self[labour_day_observed_date] = name_observed
+            self[labour_day_observed_date] = name_observed % name
 
-        # Assumption of Mary
-        self[date(year, AUG, 15)] = "Κοίμηση της Θεοτόκου [Assumption of Mary]"
+        # Assumption of Mary.
+        self[date(year, AUG, 15)] = self.tr("Κοίμηση της Θεοτόκου")
 
-        # Ochi Day
-        self[date(year, OCT, 28)] = "Ημέρα του Όχι [Ochi Day]"
+        # Ochi Day.
+        self[date(year, OCT, 28)] = self.tr("Ημέρα του Όχι")
 
-        # Christmas
-        self[date(year, DEC, 25)] = "Χριστούγεννα [Christmas]"
+        # Christmas Day.
+        self[date(year, DEC, 25)] = self.tr("Χριστούγεννα")
 
-        # Day after Christmas
-        self[
-            date(year, DEC, 26)
-        ] = "Επόμενη ημέρα των Χριστουγέννων [Day after Christmas]"
+        # Day after Christmas.
+        self[date(year, DEC, 26)] = self.tr("Επόμενη ημέρα των Χριστουγέννων")
 
 
 class GR(Greece):
