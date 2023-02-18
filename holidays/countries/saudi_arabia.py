@@ -12,7 +12,7 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.constants import FEB, SEP, THU, FRI, SAT
+from holidays.constants import FEB, SEP, NOV, THU, FRI, SAT
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
 
@@ -28,25 +28,40 @@ class SaudiArabia(HolidayBase):
     Islamic Calendar, and they are estimates as they announced each
     year and based on moon sightings;
     they are:
-        - Eid al-Fitr*
-        - Eid al-Adha*
-    * only if hijri-converter library is installed, otherwise a warning is
-    raised that this holiday is missing. hijri-converter requires
-    Python >= 3.6
+        - Eid al-Fitr
+        - Eid al-Adha
     """
 
     country = "SA"
+    special_holidays = {
+        # celebrate the country's win against Argentina in the World Cup
+        2022: ((NOV, 23, "National Holiday"),),
+    }
 
     def _populate(self, year):
-        super()._populate(year)
+        def _add_with_observed(hol_date: date, hol_name: str) -> None:
+            if hol_date in self:
+                return None
+            self[hol_date] = hol_name
+            if self.observed:
+                weekend = (THU, FRI) if year <= 2012 else (FRI, SAT)
+                # 1st weekend day (Thursday before 2013 and Friday otherwise)
+                if hol_date.weekday() == weekend[0]:
+                    self[hol_date + td(days=-1)] = f"{hol_name}{observed_str}"
+                # 2nd weekend day (Friday before 2013 and Saturday otherwise)
+                elif hol_date.weekday() == weekend[1]:
+                    self[hol_date + td(days=+1)] = f"{hol_name}{observed_str}"
 
-        # Weekend used to be THU, FRI before June 28th, 2013.
-        # On that year both Eids were after that date, and founding
-        # day holiday started at 2022; so what below works.
-        # It has to be a tuple (subscriptable) due to a business logic below.
-        self.weekend = (THU, FRI) if year < 2013 else (FRI, SAT)
-
-        observed_str = " (observed)"
+        def _add_islamic_observed(hol_date: date, hol_name: str) -> None:
+            if self.observed:
+                weekend_days = sum(
+                    self._is_weekend(hol_date + td(days=i)) for i in range(4)
+                )
+                for i in range(weekend_days):
+                    _add_holiday(
+                        hol_date + td(days=+4 + i),
+                        f"{hol_name}{observed_str}",
+                    )
 
         def _add_holiday(dt: date, hol: str) -> None:
             """Only add if in current year; prevents adding holidays across
@@ -55,6 +70,15 @@ class SaudiArabia(HolidayBase):
             """
             if dt.year == year:
                 self[dt] = hol
+
+        super()._populate(year)
+
+        # Weekend used to be THU, FRI before June 28th, 2013.
+        # On that year both Eids were after that date, and Founding day
+        # holiday started at 2022; so what below works.
+        self.weekend = {THU, FRI} if year <= 2012 else {FRI, SAT}
+
+        observed_str = " (observed)"
 
         # Eid al-Fitr Holiday
         # The holiday is a 4-day holiday starting on the day following the
@@ -65,20 +89,10 @@ class SaudiArabia(HolidayBase):
         # Date of observance is announced yearly.
         holiday_name = "Eid al-Fitr Holiday"
         for yr in (year - 1, year):
-            for hijri_date in _islamic_to_gre(yr, 9, 29):
-                hijri_date += td(days=+1)
+            for hijri_date in _islamic_to_gre(yr, 10, 1):
                 for dys in range(4):
-                    _add_holiday((hijri_date + td(days=dys)), holiday_name)
-                if self.observed:
-                    weekend_days = sum(
-                        (hijri_date + td(days=dys)).weekday() in self.weekend
-                        for dys in range(4)
-                    )
-                    for dys in range(weekend_days):
-                        _add_holiday(
-                            hijri_date + td(days=4 + dys),
-                            holiday_name + observed_str,
-                        )
+                    _add_holiday(hijri_date + td(days=dys), holiday_name)
+                _add_islamic_observed(hijri_date, holiday_name)
 
         # Arafat Day & Eid al-Adha
         # The holiday is a 4-day holiday starting on Arafat Day, the 10th of
@@ -92,55 +106,20 @@ class SaudiArabia(HolidayBase):
             for hijri_date in _islamic_to_gre(yr, 12, 9):
                 _add_holiday(hijri_date, "Arafat Day Holiday")
                 for dys in range(1, 4):
-                    _add_holiday((hijri_date + td(days=dys)), holiday_name)
-                if self.observed:
-                    weekend_days = sum(
-                        (hijri_date + td(days=dys)).weekday() in self.weekend
-                        for dys in range(4)
-                    )
-                    for dys in range(weekend_days):
-                        _add_holiday(
-                            hijri_date + td(days=4 + dys),
-                            holiday_name + observed_str,
-                        )
+                    _add_holiday(hijri_date + td(days=dys), holiday_name)
+                _add_islamic_observed(hijri_date, holiday_name)
 
         # National Day holiday (started at the year 2005).
         # Note: if national day happens within the Eid al-Fitr Holiday or
         # within Eid al-Fitr Holiday, there is no extra holidays given for it.
-        holiday_name = "National Day Holiday"
         if year >= 2005:
-            national_day = date(year, SEP, 23)
-            if national_day not in self:
-                self[national_day] = holiday_name
-                # First weekend day(Thursaday before 2013 and Friday otherwise)
-                if self.observed and national_day.weekday() == self.weekend[0]:
-                    national_day += td(days=-1)
-                    self[national_day] = holiday_name + observed_str
-                # Second weekend day(Friday before 2013 and Saturday otherwise)
-                elif (
-                    self.observed and national_day.weekday() == self.weekend[1]
-                ):
-                    national_day += td(days=+1)
-                    self[national_day] = holiday_name + observed_str
+            _add_with_observed(date(year, SEP, 23), "National Day Holiday")
 
         # Founding Day holiday (started 2022).
         # Note: if founding day happens within the Eid al-Fitr Holiday or
         # within Eid al-Fitr Holiday, there is no extra holidays given for it.
-        holiday_name = "Founding Day Holiday"
         if year >= 2022:
-            founding_day = date(year, FEB, 22)
-            if founding_day not in self:
-                self[founding_day] = holiday_name
-                # First weekend day(Thursaday before 2013 and Friday otherwise)
-                if self.observed and founding_day.weekday() == self.weekend[0]:
-                    founding_day += td(days=-1)
-                    self[founding_day] = holiday_name + observed_str
-                # Second weekend day(Friday before 2013 and Saturday otherwise)
-                elif (
-                    self.observed and founding_day.weekday() == self.weekend[1]
-                ):
-                    founding_day += td(days=+1)
-                    self[founding_day] = holiday_name + observed_str
+            _add_with_observed(date(year, FEB, 22), "Founding Day Holiday")
 
 
 class SA(SaudiArabia):
