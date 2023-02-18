@@ -546,7 +546,7 @@ class TestThailand(TestCase):
 
         run_tests((Thailand.default_language, None, "invalid"))
 
-        self.set_locale("th")
+        self.set_language("th")
         run_tests((Thailand.default_language,))
 
     def test_l10n_th(self):
@@ -558,7 +558,7 @@ class TestThailand(TestCase):
         self.assertEqual(th_th["2022-05-02"], "ชดเชยวันแรงงานแห่งชาติ")
         self.assertEqual(th_th["2022-12-10"], "วันรัฐธรรมนูญ")
 
-        self.set_locale(language)
+        self.set_language(language)
         for language in (None, language, "invalid"):
             th_th = Thailand(language=language)
             self.assertEqual(th_th["2022-01-01"], "วันขึ้นปีใหม่")

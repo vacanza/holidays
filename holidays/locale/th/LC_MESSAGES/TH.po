@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.20\n"
-"POT-Creation-Date: 2023-02-16 15:17+0700\n"
+"POT-Creation-Date: 2023-02-18 23:31+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Python Holidays Translation Team\n"
@@ -111,8 +111,8 @@ msgid "National Day"
 msgstr "วันชาติ"
 
 #. !!! Coronation Day !!! วันฉัตรมงคล Starts in 1958 (B.E. 2501) for Rama IX's
-#. Coronation: May 5th No celebration in 2017-2019 (B.E 2560-2562)
-#. Reestablished with Rama X's Coronation in 2020: May 4th
+#. Coronation: May 5th No celebration in 2017-2019 (B.E 2560-2562) Reestablished
+#. with Rama X's Coronation in 2020: May 4th
 #: holidays/countries/thailand.py:411
 msgid "Coronation Day"
 msgstr "วันฉัตรมงคล"
@@ -133,10 +133,10 @@ msgstr "วันเฉลิมพระชนมพรรษาสมเด็
 msgid "HM Queen Sirikit The Queen Mother's Birthday"
 msgstr "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถ พระบรมราชชนนีพันปีหลวง"
 
-#. !!! National Mother's Day !!! วันแม่แห่งชาติ Status: In-Use Started 1950
-#. (B.E 2493) initially as April 15 and cancelled in 1958 (B.E 2501) when the
-#. Min. of Culture was abolished. Restarts again in 1976 (B.E. 2519) on Queen
-#. Sirikit's Birthday (August 12) and stay that way from that point onwards.
+#. !!! National Mother's Day !!! วันแม่แห่งชาติ Status: In-Use Started 1950 (B.E
+#. 2493) initially as April 15 and cancelled in 1958 (B.E 2501) when the Min. of
+#. Culture was abolished. Restarts again in 1976 (B.E. 2519) on Queen Sirikit's
+#. Birthday (August 12) and stay that way from that point onwards.
 #: holidays/countries/thailand.py:464
 msgid "National Mother's Day"
 msgstr "วันแม่แห่งชาติ"
@@ -191,9 +191,9 @@ msgstr "วันเข้าพรรษา"
 #. !!! Royal Ploughing Ceremony !!! วันพืชมงคล Restarts in 1957 (B.E. 2500) Is
 #. dated on an annual basis by the Royal Palace This isn't even fixed even by
 #. the Thai Lunar Calendar, but instead by Court Astrologers; All chosen dates
-#. are all around May, so we can technically assign it to 13 May for years
-#. prior with no data. *** NOTE: only observed by government sectors TODO:
-#. Update this annually around Dec of each year
+#. are all around May, so we can technically assign it to 13 May for years prior
+#. with no data. *** NOTE: only observed by government sectors TODO: Update this
+#. annually around Dec of each year
 #: holidays/countries/thailand.py:632
 msgid "Royal Ploughing Ceremony"
 msgstr "วันพืชมงคล"
