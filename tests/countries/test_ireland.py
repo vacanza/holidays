@@ -35,7 +35,7 @@ class TestIreland(unittest.TestCase):
 
     def test_st_brigids_day(self):
         # St. Brigid's Day
-        for dt in [
+        for dt in (
             date(2023, 2, 6),
             date(2024, 2, 5),
             date(2025, 2, 3),
@@ -46,7 +46,7 @@ class TestIreland(unittest.TestCase):
             date(2030, 2, 1),
             date(2031, 2, 3),
             date(2032, 2, 2),
-        ]:
+        ):
             self.assertIn(dt, self.holidays)
             self.assertNotIn(dt + td(days=-1), self.holidays)
             self.assertNotIn(dt + td(days=+1), self.holidays)
