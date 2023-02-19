@@ -112,38 +112,34 @@ class Thailand(HolidayBase):
     """
 
     country = "TH"
-    default_language = "en"
+    default_language = "th"
 
     # วันหยุดพิเศษ (เพิ่มเติม) - see Bank of Thailand's DB for Cross-Check
-    thai_special_in_lieu_holidays = tr("Special In Lieu Holiday")
-    thai_election = tr("Thai Election Day")
-    thai_election_in_lieu = tr("%s (in lieu)") % thai_election
-    thai_bridge_public_holiday = tr("Bridge Public Holiday")
+    thai_special_in_lieu_holidays = tr("วันหยุดชดเชย")
+    thai_election = tr("วันเลือกตั้ง")
+    thai_election_in_lieu = tr("ชดเชย%s") % thai_election
+    thai_bridge_public_holiday = tr("วันหยุดพิเศษ (เพิ่มเติม)")
 
     # Special Cases
-    rama_ix_golden_jubilee = tr("HM King Bhumibol Adulyadej's Golden Jubilee")
+    rama_ix_golden_jubilee = tr("พระราชพิธีกาญจนาภิเษก พ.ศ. 2539")
     rama_ix_sixty_accession = tr(
-        "HM King Bhumibol Adulyadej's 60th Anniversary of Accession Event"
+        "พระราชพิธีฉลองสิริราชสมบัติครบ 60 ปี พ.ศ. 2549"
     )
-    thai_military_emergency_lockdown = tr(
-        "Emergency Lockdown (Thai Military Coup d'etat)"
-    )
-    thai_political_emergency_lockdown = tr(
-        "Emergency Lockdown (Thai Political Unrest)"
-    )
+    thai_military_emergency_lockdown = tr("วันหยุดพิเศษ (คมช.)")
+    thai_political_emergency_lockdown = tr("วันหยุดพิเศษ (การเมือง)")
     thai_flood_2011_emergency_lockdown = tr(
-        "Emergency Lockdown (2011 Thailand Floods)"
+        "วันหยุดพิเศษ (มหาอุทกภัย พ.ศ. 2554)"
     )
-    rama_ix_mourning = tr("Day of Mourning for HM King Bhumibol Adulyadej")
+    rama_ix_mourning = tr(
+        "วันหยุดพิเศษ (ร่วมถวายอาลัย ส่งดวงพระวิญญาณพระบรมศพ)"
+    )
     rama_ix_cremation = tr(
-        "HM King Bhumibol Adulyadej's Royal Cremation Ceremony"
+        "วันพระราชพิธีถวายพระเพลิงพระบรมศพพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช"  # noqa: E501
     )
     rama_x_coronation_celebrations = tr(
-        "HM King Maha Vajiralongkorn's Coronation Celebrations"
+        "พระราชพิธีบรมราชาภิเษก พระบาทสมเด็จพระวชิรเกล้าเจ้าอยู่หัว"
     )
-    songkran_festival_in_lieu_covid = tr("%s (in lieu)") % tr(
-        "Songkran Festival"
-    )
+    songkran_festival_in_lieu_covid = tr("ชดเชย%s") % tr("วันสงกรานต์")
 
     special_holidays = {
         # 1992-1994 (include In Lieus, Checked with Bank of Thailand Data)
@@ -284,7 +280,7 @@ class Thailand(HolidayBase):
             if 1961 <= year <= 1973 or 1995 <= year <= 1997 or year >= 2001:
                 if self.observed and self._is_weekend(dt):
                     in_lieu = dt + td(days=+2 if self._is_saturday(dt) else +1)
-                    self[in_lieu] = self.tr("%s (in lieu)") % holiday_name
+                    self[in_lieu] = self.tr("ชดเชย%s") % holiday_name
 
         super()._populate(year)
 
@@ -300,7 +296,7 @@ class Thailand(HolidayBase):
         # Starts in the present form in 1941 (B.E. 2484)
         # TODO: Add check for 1941 if we support earlier dates.
 
-        _add_with_observed(date(year, JAN, 1), self.tr("New Year's Day"))
+        _add_with_observed(date(year, JAN, 1), self.tr("วันขึ้นปีใหม่"))
 
         # !!! New Year's Eve (in lieu) !!!
         # วันหยุดชดเชยวันสิ้นปี
@@ -310,9 +306,7 @@ class Thailand(HolidayBase):
         #   - CASE 1: SAT-SUN -> 1 in-lieu on TUE
         #   - CASE 2: SUN-MON -> 1 in-lieu on TUE
         # See in lieu logic in `_add_with_observed(dt, holiday_name)`
-        new_years_eve_in_lieu = self.tr("%s (in lieu)") % self.tr(
-            "New Year's Eve"
-        )
+        new_years_eve_in_lieu = self.tr("ชดเชย%s") % self.tr("วันสิ้นปี")
 
         if self.observed and (1995 <= year <= 1997 or year >= 2001):
             if self._is_saturday(date(year - 1, DEC, 31)):
@@ -326,7 +320,7 @@ class Thailand(HolidayBase):
         # Starts in present form in 1918 (B.E. 2461)
         # TODO: Add check for 1918 if we support earlier dates.
 
-        _add_with_observed(date(year, APR, 6), self.tr("Chakri Memorial Day"))
+        _add_with_observed(date(year, APR, 6), self.tr("วันจักรี"))
 
         # !!! Songkran Festival !!!
         # วันสงกรานต์
@@ -341,7 +335,7 @@ class Thailand(HolidayBase):
         #  - 1998-Present, celebrated on Apr 13-15
         #    (Except for 2020 due to Covid-19 outbreaks)
         # This has its own in-lieu trigger
-        songkran_festival = self.tr("Songkran Festival")
+        songkran_festival = self.tr("วันสงกรานต์")
 
         if 1948 <= year <= 1953:
             self[date(year, APR, 13)] = songkran_festival
@@ -368,7 +362,7 @@ class Thailand(HolidayBase):
         # See in lieu logic in `_add_with_observed(dt, holiday_name)`
         # Status: In Use
 
-        songkran_festival_in_lieu = self.tr("%s (in lieu)") % songkran_festival
+        songkran_festival_in_lieu = self.tr("ชดเชย%s") % songkran_festival
 
         if self.observed and (1995 <= year <= 1997 or year >= 2001):
             dt = date(year, APR, 15) if year >= 2001 else date(year, APR, 14)
@@ -390,7 +384,7 @@ class Thailand(HolidayBase):
 
         if year >= 1974:
             _add_with_observed(
-                date(year, MAY, 1), self.tr("National Labour Day")
+                date(year, MAY, 1), self.tr("วันแรงงานแห่งชาติ")
             )
 
         # !!! National Day (24 June) !!!
@@ -399,16 +393,19 @@ class Thailand(HolidayBase):
         # Starts in 1939 (B.E. 2482) by Plaek Phibunsongkhram
         # Replaced by Rama IX's birthday in 1960 (B.E. 2503) by Sarit Thanarat
         # TODO: Add check for 1939 if we support earlier dates.
+        national_day = self.tr("วันชาติ")
 
         if year <= 1959:
-            _add_with_observed(date(year, JUN, 24), self.tr("National Day"))
+            _add_with_observed(date(year, JUN, 24), national_day)
+        elif year >= 1960:
+            _add_with_observed(date(year, DEC, 5), national_day)
 
         # !!! Coronation Day !!!
         # วันฉัตรมงคล
         # Starts in 1958 (B.E. 2501) for Rama IX's Coronation: May 5th
         # No celebration in 2017-2019 (B.E 2560-2562)
         # Reestablished with Rama X's Coronation in 2020: May 4th
-        coronation_day = self.tr("Coronation Day")
+        coronation_day = self.tr("วันฉัตรมงคล")
 
         if 1958 <= year <= 2016:
             _add_with_observed(date(year, MAY, 5), coronation_day)
@@ -422,7 +419,10 @@ class Thailand(HolidayBase):
 
         if year >= 2019:
             _add_with_observed(
-                date(year, JUN, 3), self.tr("HM Queen Suthida's Birthday")
+                date(year, JUN, 3),
+                self.tr(
+                    "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสุทิดา พัชรสุธาพิมลลักษณ พระบรมราชินี"  # noqa: E501
+                ),
             )
 
         # !!! HM King Maha Vajiralongkorn's Birthday !!!
@@ -433,7 +433,9 @@ class Thailand(HolidayBase):
         if year >= 2017:
             _add_with_observed(
                 date(year, JUL, 28),
-                self.tr("HM King Maha Vajiralongkorn's Birthday"),
+                self.tr(
+                    "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรเมนทรรามาธิบดีศรีสินทรมหาวชิราลงกรณ พระวชิรเกล้าเจ้าอยู่หัว"  # noqa: E501
+                ),
             )
 
         # !!! HM Queen Sirikit the Queen Mother's Birthday !!!
@@ -446,12 +448,15 @@ class Thailand(HolidayBase):
 
         if 1976 <= year <= 2016:
             _add_with_observed(
-                date(year, AUG, 12), self.tr("HM Queen Sirikit's Birthday")
+                date(year, AUG, 12),
+                self.tr(
+                    "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถ"  # noqa: E501
+                ),
             )
         elif year >= 2017:
             _add_with_observed(
                 date(year, AUG, 12),
-                self.tr("HM Queen Sirikit The Queen Mother's Birthday"),
+                self.tr("วันเฉลิมพระชนมพรรษาสมเด็จพระบรมราชชนนีพันปีหลวง"),
             )
 
         # !!! National Mother's Day !!!
@@ -461,7 +466,7 @@ class Thailand(HolidayBase):
         #   1958 (B.E 2501) when the Min. of Culture was abolished.
         # Restarts again in 1976 (B.E. 2519) on Queen Sirikit's Birthday
         #   (August 12) and stay that way from that point onwards.
-        thai_mothers_day = self.tr("National Mother's Day")
+        thai_mothers_day = self.tr("วันแม่แห่งชาติ")
 
         if 1950 <= year <= 1957:
             _add_with_observed(date(year, APR, 15), thai_mothers_day)
@@ -477,12 +482,16 @@ class Thailand(HolidayBase):
         if 2017 <= year <= 2018:
             _add_with_observed(
                 date(year, OCT, 13),
-                self.tr("HM King Bhumibol Adulyadej Memorial Day"),
+                self.tr(
+                    "วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"  # noqa: E501
+                ),
             )
         elif year >= 2019:
             _add_with_observed(
                 date(year, OCT, 13),
-                self.tr("HM King Bhumibol Adulyadej the Great Memorial Day"),
+                self.tr(
+                    "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"  # noqa: E501
+                ),
             )
 
         # !!! HM King Chulalongkorn Memorial Day !!!
@@ -491,9 +500,7 @@ class Thailand(HolidayBase):
         # Started in 1911 (B.E. 2454)
         # TODO: Add check for 1911 if we support earlier dates.
 
-        _add_with_observed(
-            date(year, OCT, 23), self.tr("HM King Chulalongkorn Memorial Day")
-        )
+        _add_with_observed(date(year, OCT, 23), self.tr("วันปิยมหาราช"))
 
         # !!! HM King Bhumibol Adulyadej's Birthday Anniversary !!!
         # วันเฉลิมพระชนมพรรษา รัชกาลที่ 9 (1960-2016),
@@ -503,15 +510,26 @@ class Thailand(HolidayBase):
         # Confirmed as still in-use in 2017
         # Got conferred with 'the Great' title in 2019 (B.E. 2562)
 
-        if 1960 <= year <= 2018:
+        if 1960 <= year <= 2015:
             _add_with_observed(
                 date(year, DEC, 5),
-                self.tr("HM King Bhumibol Adulyadej's Birthday"),
+                self.tr(
+                    "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"  # noqa: E501
+                ),
+            )
+        elif 2016 <= year <= 2018:
+            _add_with_observed(
+                date(year, DEC, 5),
+                self.tr(
+                    "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"  # noqa: E501
+                ),
             )
         elif year >= 2019:
             _add_with_observed(
                 date(year, DEC, 5),
-                self.tr("HM King Bhumibol Adulyadej the Great's Birthday"),
+                self.tr(
+                    "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"  # noqa: E501
+                ),
             )
 
         # !!! National Father's Day !!!
@@ -522,9 +540,7 @@ class Thailand(HolidayBase):
         #   but it's in the official calendar, so may as well have this here
 
         if year >= 1980:
-            _add_with_observed(
-                date(year, DEC, 5), self.tr("National Father's Day")
-            )
+            _add_with_observed(date(year, DEC, 5), self.tr("วันพ่อแห่งชาติ"))
 
         # !!! Constitution Day !!!
         # วันรัฐธรรมนูญ
@@ -533,7 +549,7 @@ class Thailand(HolidayBase):
         # Last known official record is Bank of Thailand's in 1992 (B.E. 2535)
         # TODO: Add check for 1932 if we support earlier dates.
 
-        _add_with_observed(date(year, DEC, 10), self.tr("Constitution Day"))
+        _add_with_observed(date(year, DEC, 10), self.tr("วันรัฐธรรมนูญ"))
 
         # !!! New Year's Eve !!!
         # วันสิ้นปี
@@ -543,7 +559,7 @@ class Thailand(HolidayBase):
         # TODO: Add check for 1941 if we support earlier dates.
         # This has its own in-lieu trigger
 
-        self[date(year, DEC, 31)] = self.tr("New Year's Eve")
+        self[date(year, DEC, 31)] = self.tr("วันสิ้นปี")
 
         ################################
         #
@@ -563,7 +579,7 @@ class Thailand(HolidayBase):
 
         makha_bucha_date = self.thls.makha_bucha_date(year)
         if makha_bucha_date:
-            _add_with_observed(makha_bucha_date, self.tr("Makha Bucha"))
+            _add_with_observed(makha_bucha_date, self.tr("วันมาฆบูชา"))
 
         # !!! Visakha Bucha !!!
         # วันวิสาขบูชา
@@ -571,7 +587,7 @@ class Thailand(HolidayBase):
 
         visakha_bucha_date = self.thls.visakha_bucha_date(year)
         if visakha_bucha_date:
-            _add_with_observed(visakha_bucha_date, self.tr("Visakha Bucha"))
+            _add_with_observed(visakha_bucha_date, self.tr("วันวิสาขบูชา"))
 
         # !!! Asarnha Bucha !!!
         # วันอาสาฬหบูชา
@@ -580,7 +596,7 @@ class Thailand(HolidayBase):
 
         asarnha_bucha_date = self.thls.asarnha_bucha_date(year)
         if asarnha_bucha_date:
-            self[asarnha_bucha_date] = self.tr("Asarnha Bucha")
+            self[asarnha_bucha_date] = self.tr("วันอาสาฬหบูชา")
 
         # !!! Buddhist Lent Day !!!
         # วันเข้าพรรษา
@@ -589,7 +605,7 @@ class Thailand(HolidayBase):
 
         khao_phansa_date = self.thls.khao_phansa_date(year)
         if khao_phansa_date:
-            self[khao_phansa_date] = self.tr("Buddhist Lent Day")
+            self[khao_phansa_date] = self.tr("วันเข้าพรรษา")
 
         # !!! Asarnha Bucha/Buddhist Lent Day (in lieu) !!!
         # วันหยุดชดเชยวันอาสาฬหบูชา
@@ -607,12 +623,12 @@ class Thailand(HolidayBase):
         ):
             if self._is_friday(asarnha_bucha_date):
                 self[asarnha_bucha_date + td(days=+3)] = self.tr(
-                    "%s (in lieu)"
-                ) % self.tr("Buddhist Lent Day")
+                    "ชดเชย%s"
+                ) % self.tr("วันเข้าพรรษา")
             elif self._is_weekend(asarnha_bucha_date):
                 self[asarnha_bucha_date + td(days=+2)] = self.tr(
-                    "%s (in lieu)"
-                ) % self.tr("Asarnha Bucha")
+                    "ชดเชย%s"
+                ) % self.tr("วันอาสาฬหบูชา")
 
         #################################
         #
@@ -629,7 +645,7 @@ class Thailand(HolidayBase):
         #   can technically assign it to 13 May for years prior with no data.
         # *** NOTE: only observed by government sectors
         # TODO: Update this annually around Dec of each year
-        raeknakhwan = self.tr("Royal Ploughing Ceremony")
+        raeknakhwan = self.tr("วันพืชมงคล")
 
         raeknakhwan_dates = {
             1997: (MAY, 13),

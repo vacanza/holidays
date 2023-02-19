@@ -1,4 +1,4 @@
-# Thailand holidays Thai translation.
+# Thailand holidays English translation.
 # Authors: PPsyrius <ppsyrius@ppsyrius.dev>, (c) 2023.
 #
 msgid ""
@@ -8,7 +8,7 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Python Holidays Translation Team\n"
-"Language: th\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,11 +17,11 @@ msgstr ""
 #. วันหยุดพิเศษ (เพิ่มเติม) - see Bank of Thailand's DB for Cross-Check
 #: holidays/countries/thailand.py:118
 msgid "วันหยุดชดเชย"
-msgstr ""
+msgstr "Special In Lieu Holiday"
 
 #: holidays/countries/thailand.py:119
 msgid "วันเลือกตั้ง"
-msgstr ""
+msgstr "Thai Election Day"
 
 #.
 #. !!! New Year's Eve (in lieu) !!! วันหยุดชดเชยวันสิ้นปี Status: In-Use Added
@@ -34,45 +34,45 @@ msgstr ""
 #: holidays/countries/thailand.py:629
 #, c-format
 msgid "ชดเชย%s"
-msgstr ""
+msgstr "%s (in lieu)"
 
 #: holidays/countries/thailand.py:121
 msgid "วันหยุดพิเศษ (เพิ่มเติม)"
-msgstr ""
+msgstr "Bridge Public Holiday"
 
 #. Special Cases
 #: holidays/countries/thailand.py:124
 msgid "พระราชพิธีกาญจนาภิเษก พ.ศ. 2539"
-msgstr ""
+msgstr "HM King Bhumibol Adulyadej's Golden Jubilee"
 
 #: holidays/countries/thailand.py:125
 msgid "พระราชพิธีฉลองสิริราชสมบัติครบ 60 ปี พ.ศ. 2549"
-msgstr ""
+msgstr "HM King Bhumibol Adulyadej's 60th Anniversary of Accession Event"
 
 #: holidays/countries/thailand.py:128
 msgid "วันหยุดพิเศษ (คมช.)"
-msgstr ""
+msgstr "Emergency Lockdown (Thai Military Coup d'état)"
 
 #: holidays/countries/thailand.py:129
 msgid "วันหยุดพิเศษ (การเมือง)"
-msgstr ""
+msgstr "Emergency Lockdown (Thai Political Unrest)"
 
 #: holidays/countries/thailand.py:130
 msgid "วันหยุดพิเศษ (มหาอุทกภัย พ.ศ. 2554)"
-msgstr ""
+msgstr "Emergency Lockdown (2011 Thailand Floods)"
 
 #: holidays/countries/thailand.py:133
 msgid "วันหยุดพิเศษ (ร่วมถวายอาลัย ส่งดวงพระวิญญาณพระบรมศพ)"
-msgstr ""
+msgstr "Day of Mourning for HM King Bhumibol Adulyadej"
 
 #. noqa: E501
 #: holidays/countries/thailand.py:136
 msgid "วันพระราชพิธีถวายพระเพลิงพระบรมศพพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช"
-msgstr ""
+msgstr "HM King Bhumibol Adulyadej's Royal Cremation Ceremony"
 
 #: holidays/countries/thailand.py:139
 msgid "พระราชพิธีบรมราชาภิเษก พระบาทสมเด็จพระวชิรเกล้าเจ้าอยู่หัว"
-msgstr ""
+msgstr "HM King Maha Vajiralongkorn's Coronation Celebrations"
 
 #.
 #. !!! Songkran Festival !!! วันสงกรานต์ Status: In-Use Used to be April 1st as
@@ -84,11 +84,11 @@ msgstr ""
 #. trigger
 #: holidays/countries/thailand.py:142 holidays/countries/thailand.py:338
 msgid "วันสงกรานต์"
-msgstr ""
+msgstr "Songkran Festival"
 
 #: holidays/countries/thailand.py:299
 msgid "วันขึ้นปีใหม่"
-msgstr ""
+msgstr "New Year's Day"
 
 #. !!! New Year's Eve (in lieu) !!! วันหยุดชดเชยวันสิ้นปี Status: In-Use Added
 #. separately from New Year's Eve itself so that it would't go over the next
@@ -97,15 +97,15 @@ msgstr ""
 #.
 #: holidays/countries/thailand.py:309 holidays/countries/thailand.py:562
 msgid "วันสิ้นปี"
-msgstr ""
+msgstr "New Year's Eve"
 
 #: holidays/countries/thailand.py:323
 msgid "วันจักรี"
-msgstr ""
+msgstr "Chakri Memorial Day"
 
 #: holidays/countries/thailand.py:387
 msgid "วันแรงงานแห่งชาติ"
-msgstr ""
+msgstr "National Labour Day"
 
 #. !!! National Day (24 June) !!! วันชาติ Status: Defunct (Historical) Starts in
 #. 1939 (B.E. 2482) by Plaek Phibunsongkhram Replaced by Rama IX's birthday in
@@ -113,33 +113,33 @@ msgstr ""
 #. earlier dates.
 #: holidays/countries/thailand.py:396
 msgid "วันชาติ"
-msgstr ""
+msgstr "National Day"
 
 #. !!! Coronation Day !!! วันฉัตรมงคล Starts in 1958 (B.E. 2501) for Rama IX's
 #. Coronation: May 5th No celebration in 2017-2019 (B.E 2560-2562) Reestablished
 #. with Rama X's Coronation in 2020: May 4th
 #: holidays/countries/thailand.py:408
 msgid "วันฉัตรมงคล"
-msgstr ""
+msgstr "Coronation Day"
 
 #. noqa: E501
 #: holidays/countries/thailand.py:423
 msgid "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสุทิดา พัชรสุธาพิมลลักษณ พระบรมราชินี"
-msgstr ""
+msgstr "HM Queen Suthida's Birthday"
 
 #. noqa: E501
 #: holidays/countries/thailand.py:436
 msgid "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรเมนทรรามาธิบดีศรีสินทรมหาวชิราลงกรณ พระวชิรเกล้าเจ้าอยู่หัว"
-msgstr ""
+msgstr "HM King Maha Vajiralongkorn's Birthday"
 
 #. noqa: E501
 #: holidays/countries/thailand.py:452
 msgid "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถ"
-msgstr ""
+msgstr "HM Queen Sirikit's Birthday"
 
 #: holidays/countries/thailand.py:459
 msgid "วันเฉลิมพระชนมพรรษาสมเด็จพระบรมราชชนนีพันปีหลวง"
-msgstr ""
+msgstr "HM Queen Sirikit The Queen Mother's Birthday"
 
 #. !!! National Mother's Day !!! วันแม่แห่งชาติ Status: In-Use Started 1950 (B.E
 #. 2493) initially as April 15 and cancelled in 1958 (B.E 2501) when the Min. of
@@ -147,60 +147,61 @@ msgstr ""
 #. Birthday (August 12) and stay that way from that point onwards.
 #: holidays/countries/thailand.py:469
 msgid "วันแม่แห่งชาติ"
-msgstr ""
+msgstr "National Mother's Day"
 
 #. noqa: E501
 #: holidays/countries/thailand.py:485
 msgid "วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
-msgstr ""
+msgstr "HM King Bhumibol Adulyadej Memorial Day"
 
 #. noqa: E501
 #: holidays/countries/thailand.py:492
 msgid "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
-msgstr ""
+msgstr "HM King Bhumibol Adulyadej the Great Memorial Day"
 
 #: holidays/countries/thailand.py:503
 msgid "วันปิยมหาราช"
-msgstr ""
+msgstr "HM King Chulalongkorn Memorial Day"
 
 #. noqa: E501
 #: holidays/countries/thailand.py:516
+#, fuzzy
 msgid "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
-msgstr ""
+msgstr "HM King Bhumibol Adulyadej's Birthday"
 
 #. noqa: E501
 #: holidays/countries/thailand.py:523
 msgid "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
-msgstr ""
+msgstr "HM King Bhumibol Adulyadej's Birthday"
 
 #. noqa: E501
 #: holidays/countries/thailand.py:530
 msgid "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
-msgstr ""
+msgstr "HM King Bhumibol Adulyadej the Great's Birthday"
 
 #: holidays/countries/thailand.py:543
 msgid "วันพ่อแห่งชาติ"
-msgstr ""
+msgstr "National Father's Day"
 
 #: holidays/countries/thailand.py:552
 msgid "วันรัฐธรรมนูญ"
-msgstr ""
+msgstr "Constitution Day"
 
 #: holidays/countries/thailand.py:582
 msgid "วันมาฆบูชา"
-msgstr ""
+msgstr "Makha Bucha"
 
 #: holidays/countries/thailand.py:590
 msgid "วันวิสาขบูชา"
-msgstr ""
+msgstr "Visakha Bucha"
 
 #: holidays/countries/thailand.py:599 holidays/countries/thailand.py:631
 msgid "วันอาสาฬหบูชา"
-msgstr ""
+msgstr "Asarnha Bucha"
 
 #: holidays/countries/thailand.py:608 holidays/countries/thailand.py:627
 msgid "วันเข้าพรรษา"
-msgstr ""
+msgstr "Buddhist Lent Day"
 
 #. !!! Royal Ploughing Ceremony !!! วันพืชมงคล Restarts in 1957 (B.E. 2500) Is
 #. dated on an annual basis by the Royal Palace This isn't even fixed even by
@@ -210,4 +211,4 @@ msgstr ""
 #. annually around Dec of each year
 #: holidays/countries/thailand.py:648
 msgid "วันพืชมงคล"
-msgstr ""
+msgstr "Royal Ploughing Ceremony"

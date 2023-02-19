@@ -569,8 +569,8 @@ default language code is a `ISO 639-1 code`_.
      - sr
      - en_US, sr
    * - Thailand
-     - en
-     - en, th
+     - th
+     - en_US, th
    * - Ukraine
      - uk
      - en_US, uk
