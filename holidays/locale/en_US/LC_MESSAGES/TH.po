@@ -1,4 +1,4 @@
-# Thailand holidays English translation.
+# Thailand holidays en_US localization.
 # Authors: PPsyrius <ppsyrius@ppsyrius.dev>, (c) 2023.
 #
 msgid ""
