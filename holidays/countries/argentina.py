@@ -11,13 +11,15 @@
 
 from datetime import date
 from datetime import timedelta as td
+from gettext import gettext as tr
 
 from dateutil.easter import easter
+from dateutil.relativedelta import MO
+from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, OCT, NOV, DEC
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
+from holidays.constants import OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
-
-# from dateutil.rrule import weekday
 
 
 class Argentina(HolidayBase):
@@ -29,16 +31,51 @@ class Argentina(HolidayBase):
     """
 
     country = "AR"
+    special_holidays = {
+        2012: (
+            (
+                FEB,
+                27,
+                tr(
+                    "Bicentenario de la creación y primera jura "
+                    "de la bandera nacional"
+                ),
+            ),
+            (SEP, 24, tr("Bicentenario de la Batalla de Tucumán")),
+        ),
+        2013: (
+            (
+                JAN,
+                31,
+                tr(
+                    "Bicentenario de la sesión inaugural de la Asamblea "
+                    "Nacional Constituyente del año 1813"
+                ),
+            ),
+            (FEB, 20, tr("Bicentenario de la Batalla de Salta")),
+        ),
+    }
     default_language = "es"
 
     def _populate(self, year):
+        # The "movable holidays" whose dates coincide with Tuesdays and
+        # Wednesdays will be moved to the previous Monday. Those that
+        # coincide with Thursday, Friday, Saturday and Sunday will be
+        # moved to the following Monday.
+        def _add_movable(hol_date: date, hol_name: str) -> None:
+            if self.observed:
+                if self._is_tuesday(hol_date) or self._is_wednesday(hol_date):
+                    hol_date += rd(weekday=MO(-1))
+                    hol_name = self.tr("%s (Observado)") % hol_name
+                elif not self._is_monday(hol_date):
+                    hol_date += rd(weekday=MO)
+                    hol_name = self.tr("%s (Observado)") % hol_name
+            self[hol_date] = hol_name
+
         super()._populate(year)
 
         # New Year's Day
-        if not self.observed and self._is_weekend(year, JAN, 1):
-            pass
-        else:
-            self[date(year, JAN, 1)] = self.tr("Año Nuevo")
+        self[date(year, JAN, 1)] = self.tr("Año Nuevo")
 
         easter_date = easter(year)
         # Carnival days
@@ -47,105 +84,83 @@ class Argentina(HolidayBase):
         self[easter_date + td(days=-47)] = name
 
         # Memory's National Day for the Truth and Justice
-        name = self.tr(
-            "Día Nacional de la Memoria por la Verdad y la Justicia"
-        )
+        if year >= 2006:
+            self[date(year, MAR, 24)] = self.tr(
+                "Día Nacional de la Memoria por la Verdad y la Justicia"
+            )
 
-        if not self.observed and self._is_weekend(year, MAR, 24):
-            pass
-        else:
-            self[date(year, MAR, 24)] = name
-
-        # Holy Week
-        name_thu = self.tr("Semana Santa (Jueves Santo)")
-        name_fri = self.tr("Semana Santa (Viernes Santo)")
-        name_easter = self.tr("Día de Pascuas")
-
-        self[easter_date + td(days=-3)] = name_thu
-        self[easter_date + td(days=-2)] = name_fri
-
-        if not self.observed and self._is_weekend(easter_date):
-            pass
-        else:
-            self[easter_date] = name_easter
+        # Good Friday
+        self[easter_date + td(days=-2)] = self.tr("Viernes Santo")
 
         # Veterans Day and the Fallen in the Malvinas War
-        if not self.observed and self._is_weekend(year, APR, 2):
-            pass
-        else:
+        if year >= 2001:
             self[date(year, APR, 2)] = self.tr(
                 "Día del Veterano y de los Caidos en la Guerra de Malvinas"
             )
 
         # Labor Day
-        name = self.tr("Día del Trabajo")
-        if not self.observed and self._is_weekend(year, MAY, 1):
-            pass
-        else:
-            self[date(year, MAY, 1)] = name
+        self[date(year, MAY, 1)] = self.tr("Día del Trabajo")
 
         # May Revolution Day
-        name = self.tr("Día de la Revolución de Mayo")
-        if not self.observed and self._is_weekend(year, MAY, 25):
-            pass
-        else:
-            self[date(year, MAY, 25)] = name
+        self[date(year, MAY, 25)] = self.tr("Día de la Revolución de Mayo")
 
-        # Day Pass to the Immortality of General Martín Miguel de Güemes.
-        name = self.tr(
-            "Día Pase a la Inmortalidad del General Martín Miguel de Güemes"
-        )
-        if not self.observed and self._is_weekend(year, JUN, 17):
-            pass
-        else:
-            self[date(year, JUN, 17)] = name
+        # Day of Argentine Sovereignty over the Malvinas
+        if year <= 2000:
+            self[date(year, JUN, 10)] = self.tr(
+                "Día de los Derechos Argentinos sobre las Islas Malvinas, "
+                "Sandwich y del Atlántico Sur"
+            )
 
-        # Day Pass to the Immortality of General D. Manuel Belgrano.
-        name = self.tr(
-            "Día Pase a la Inmortalidad del General D. Manuel Belgrano"
-        )
-        if not self.observed and self._is_weekend(year, JUN, 20):
-            pass
+        # Day Pass to the Immortality of General Don Martín Miguel de Güemes.
+        if year >= 2016:
+            dt = date(year, JUN, 17)
+            name = self.tr(
+                "Paso a la Inmortalidad del General Don Martín Miguel "
+                "de Güemes"
+            )
+            # If Jun 17 is Friday, then it should move to Mon, Jun 20
+            # but Jun 20 is Gen. Belgrano holiday
+            if self._is_friday(dt):
+                self[dt] = name
+            else:
+                _add_movable(dt, name)
+
+        # Day Pass to the Immortality of General Don Manuel Belgrano.
+        if year >= 2011:
+            dt = date(year, JUN, 20)
         else:
-            self[date(year, JUN, 20)] = name
+            dt = date(year, JUN, 1) + rd(weekday=MO(+3))
+        self[dt] = self.tr(
+            "Paso a la Inmortalidad del General Don Manuel Belgrano"
+        )
 
         # Independence Day
-        name = self.tr("Día de la Independencia")
-        if not self.observed and self._is_weekend(year, JUL, 9):
-            pass
-        else:
-            self[date(year, JUL, 9)] = name
+        self[date(year, JUL, 9)] = self.tr("Día de la Independencia")
 
-        # Day Pass to the Immortality of General D. José de San Martin
-        name = self.tr(
-            "Día Pase a la Inmortalidad del General D. José de San Martin"
+        # Day Pass to the Immortality of General José de San Martin
+        _add_movable(
+            date(year, AUG, 17),
+            self.tr(
+                "Paso a la Inmortalidad del General Don José de San Martin"
+            ),
         )
-        if not self.observed and self._is_weekend(year, AUG, 17):
-            pass
-        else:
-            self[date(year, AUG, 17)] = name
 
         # Respect for Cultural Diversity Day or Columbus day
-        if not self.observed and self._is_weekend(year, OCT, 12):
-            pass
-        elif year < 2010:
-            self[date(year, OCT, 12)] = self.tr("Día de la Raza")
-        else:
-            self[date(year, OCT, 12)] = self.tr(
-                "Día del Respeto a la Diversidad Cultural"
-            )
+        name = (
+            self.tr("Día del Respeto a la Diversidad Cultural")
+            if year >= 2010
+            else self.tr("Día de la Raza")
+        )
+        _add_movable(date(year, OCT, 12), name)
+
         # National Sovereignty Day
-        name = self.tr("Día Nacional de la Soberanía")
-        if not self.observed and self._is_weekend(year, NOV, 20):
-            pass
-        elif year >= 2010:
-            self[date(year, NOV, 20)] = name
+        if year >= 2010:
+            _add_movable(
+                date(year, NOV, 20), self.tr("Día de la Soberanía Nacional")
+            )
 
         # Immaculate Conception
-        if not self.observed and self._is_weekend(year, DEC, 8):
-            pass
-        else:
-            self[date(year, DEC, 8)] = self.tr("La Inmaculada Concepción")
+        self[date(year, DEC, 8)] = self.tr("Inmaculada Concepción de María")
 
         # Christmas
         self[date(year, DEC, 25)] = self.tr("Navidad")
