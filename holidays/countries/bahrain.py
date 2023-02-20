@@ -12,9 +12,9 @@
 from datetime import date
 from datetime import timedelta as td
 
+from holidays.calendars import _islamic_to_gre
 from holidays.constants import FRI, SAT, JAN, MAY, JUL, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.utils import _islamic_to_gre
 
 
 class Bahrain(HolidayBase):

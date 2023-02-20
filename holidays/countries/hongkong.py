@@ -16,9 +16,9 @@ from dateutil.easter import easter
 from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
 
+from holidays.calendars import _ChineseLuniSolar
 from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, SEP, OCT, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.utils import _ChineseLuniSolar
 
 
 class HongKong(HolidayBase):

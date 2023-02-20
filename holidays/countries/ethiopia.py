@@ -14,9 +14,9 @@ from datetime import timedelta as td
 
 from dateutil.easter import easter, EASTER_ORTHODOX
 
+from holidays.calendars import _islamic_to_gre
 from holidays.constants import JAN, MAR, MAY, SEP
 from holidays.holiday_base import HolidayBase
-from holidays.utils import _islamic_to_gre
 
 # Ethiopian holidays are estimated: it is common for the day to be pushed
 # if falls in a weekend, although not a rule that can be implemented.
