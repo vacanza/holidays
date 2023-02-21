@@ -8,15 +8,13 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
-
 from datetime import date
-from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, FEB, MAR, MAY, JUN, AUG, OCT, DEC
+from holidays.constants import JAN, FEB, MAR, MAY, JUN, AUG, OCT, DEC, FRI
 from holidays.holiday_base import HolidayBase
 
 
@@ -42,7 +40,7 @@ class Ireland(HolidayBase):
             name = "St. Brigid's Day"
             dt = date(year, FEB, 1)
             self[dt] = name
-            if self.observed and not self._is_friday(dt):
+            if self.observed and dt.weekday() != FRI:
                 self[dt + rd(weekday=MO)] = name + " (Observed)"
 
         # St. Patrick's Day
@@ -53,7 +51,7 @@ class Ireland(HolidayBase):
             self[dt + rd(weekday=MO)] = name + " (Observed)"
 
         # Easter Monday
-        self[easter(year) + td(days=+1)] = "Easter Monday"
+        self[easter(year) + rd(days=+1)] = "Easter Monday"
 
         # May bank holiday (first Monday in May)
         if year >= 1978:
@@ -85,7 +83,7 @@ class Ireland(HolidayBase):
         dt = date(year, DEC, 26)
         self[dt] = name
         if self.observed and self._is_weekend(dt):
-            self[dt + td(days=+2)] = name + " (Observed)"
+            self[dt + rd(days=+2)] = name + " (Observed)"
 
 
 class IE(Ireland):

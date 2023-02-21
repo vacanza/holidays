@@ -1,4 +1,4 @@
-name: Tests
+name: "Tests"
 on: [push, pull_request, workflow_dispatch]
 
 env:
@@ -9,40 +9,38 @@ jobs:
     name: Run Quality Assurance
     runs-on: ubuntu-latest
     steps:
-      - name: Check Out Repository
+      - name: Check out repo
         uses: actions/checkout@v3
-      - name: Set Up Python
+      - name: Set up Python
         uses: actions/setup-python@v4.5.0
-        with:
-          python-version: '3.11'
       - name: Run pre-commit
         uses: pre-commit/action@v3.0.0
 
   test:
-    name: 'Test: Python=${{ matrix.python-version }} on ${{ matrix.os }}'
+    name: "Test: python=${{ matrix.python-version }} on ${{ matrix.os }}"
     runs-on: ${{ matrix.os }}
     needs: [pre-commit]
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macOS-latest]
-        python-version: ['3.7', '3.8', '3.9', '3.10', '3.11', 'pypy-3.7']
+        python-version: ["3.7", "3.8", "3.9", "3.10", "pypy-3.7"]
 
     steps:
       - uses: actions/checkout@v3
-      - name: Set Up Python ${{ matrix.python-version }}
+      - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4.5.0
         with:
           python-version: ${{ matrix.python-version }}
           cache: pip
-          cache-dependency-path: requirements/dev.txt
-      - name: Install Dependencies
+          cache-dependency-path: requirements_dev.txt
+      - name: Install dependencies
         run: |
           python -m pip install -U pip wheel 'coveralls>=3'
-          python -m pip install -U -r requirements/dev.txt
+          python -m pip install -U -r requirements_dev.txt
           python -m pip install -e .
-      - name: Run Tests
+      - name: Run tests
         run: |
-          make test
+          pytest
       - name: Upload Coverage
         run: coveralls --service=github
         env:
@@ -56,12 +54,12 @@ jobs:
     runs-on: ubuntu-latest
     container: python:3-slim
     steps:
-      - name: Finished
-        run: |
-          pip3 install -U 'coveralls>=3'
-          coveralls --finish --service=github
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Finished
+      run: |
+        pip3 install -U 'coveralls>=3'
+        coveralls --finish --service=github
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   deploy:
     runs-on: ubuntu-latest
@@ -69,19 +67,19 @@ jobs:
     needs: [test]
     steps:
       - uses: actions/checkout@v3
-      - name: Set Up Python
+      - name: Set up Python 3.9
         uses: actions/setup-python@v4.5.0
         with:
-          python-version: '3.11'
-      - name: Install Dependencies
+          python-version: "3.10"
+      - name: Install dependencies
         run: |
           python -m pip install -U pip wheel
           pip install -U .
-      - name: Build Distribution
+      - name: Build dist
         run: |
           python setup.py sdist bdist_wheel
 
-      - name: Publish Package
+      - name: Publish package
         uses: pypa/gh-action-pypi-publish@v1.6.4
         with:
           user: __token__

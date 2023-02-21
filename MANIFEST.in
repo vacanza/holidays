@@ -1,9 +1,5 @@
-exclude tests/*
-include *.mo
 include *.py
-include *.po
 include *.rst
-include CHANGES
-include holidays/py.typed
 include LICENSE
-include scripts/l10n/msgfmt.py
+include CHANGES
+include py.typed

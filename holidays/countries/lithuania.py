@@ -10,7 +10,6 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import SU
@@ -49,7 +48,7 @@ class Lithuania(HolidayBase):
         self[easter_date] = "Velykos"
 
         # Easter 2nd day
-        self[easter_date + td(days=+1)] = "Velykų antroji diena"
+        self[easter_date + rd(days=+1)] = "Velykų antroji diena"
 
         # International Workers' Day
         self[date(year, 5, 1)] = "Tarptautinė darbo diena"
