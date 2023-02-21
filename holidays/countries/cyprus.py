@@ -10,9 +10,9 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 
 from dateutil.easter import EASTER_ORTHODOX, easter
+from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAR, APR, MAY, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
@@ -20,69 +20,71 @@ from holidays.holiday_base import HolidayBase
 
 class Cyprus(HolidayBase):
     """
-    Cyprus holidays.
-
-    References:
-     - https://en.wikipedia.org/wiki/Public_holidays_in_Cyprus
+    https://en.wikipedia.org/wiki/Public_holidays_in_Cyprus
     """
 
     country = "CY"
-    default_language = "el"
 
     def _populate(self, year):
         super()._populate(year)
 
         easter_date = easter(year, method=EASTER_ORTHODOX)
 
-        # New Years Day.
-        self[date(year, JAN, 1)] = self.tr("Πρωτοχρονιά")
+        # New Years
+        self[date(year, JAN, 1)] = "Πρωτοχρονιά [New Year's Day]"
 
-        # Epiphany.
-        self[date(year, JAN, 6)] = self.tr("Θεοφάνεια")
+        # Epiphany
+        self[date(year, JAN, 6)] = "Θεοφάνεια [Epiphany]"
 
-        # Clean Monday.
-        self[easter_date + td(days=-48)] = self.tr("Καθαρά Δευτέρα")
+        # Clean Monday
+        self[easter_date + rd(days=-48)] = "Καθαρά Δευτέρα [Clean Monday]"
 
-        # Greek Independence Day.
-        self[date(year, MAR, 25)] = self.tr("Εικοστή Πέμπτη Μαρτίου")
+        # Greek Independence Day
+        self[
+            date(year, MAR, 25)
+        ] = "Εικοστή Πέμπτη Μαρτίου [Greek Independence Day]"
 
-        # Cyprus National Day.
-        self[date(year, APR, 1)] = self.tr("1η Απριλίου")
+        # Cyprus National Day
+        self[date(year, APR, 1)] = "1η Απριλίου [Cyprus National Day]"
 
-        # Good Friday.
-        self[easter_date + td(days=-2)] = self.tr("Μεγάλη Παρασκευή")
+        # Good Friday
+        self[easter_date + rd(days=-2)] = "Μεγάλη Παρασκευή [Good Friday]"
 
-        # Easter Sunday.
-        self[easter_date] = self.tr("Κυριακή του Πάσχα")
+        # Easter Sunday
+        self[easter_date] = "Κυριακή του Πάσχα [Easter Sunday]"
 
-        # Easter Monday.
-        self[easter_date + td(days=+1)] = self.tr("Δευτέρα του Πάσχα")
+        # Easter Monday
+        self[easter_date + rd(days=+1)] = "Δευτέρα του Πάσχα [Easter Monday]"
 
-        # Labour Day.
-        self[date(year, MAY, 1)] = self.tr("Εργατική Πρωτομαγιά")
+        # Labour Day
+        self[date(year, MAY, 1)] = "Εργατική Πρωτομαγιά [Labour day]"
 
-        # Monday of the Holy Spirit.
-        self[easter_date + td(days=+50)] = self.tr(
-            "Δευτέρα του Αγίου Πνεύματος"
-        )
+        # Monday of the Holy Spirit
+        self[
+            easter_date + rd(days=+50)
+        ] = "Δευτέρα του Αγίου Πνεύματος [Monday of the Holy Spirit]"
 
-        # Assumption of Mary.
-        self[date(year, AUG, 15)] = self.tr("Κοίμηση της Θεοτόκου")
+        # Assumption of Mary
+        self[date(year, AUG, 15)] = "Κοίμηση της Θεοτόκου [Assumption of Mary]"
 
-        # Cyprus Independence Day.
-        self[date(year, OCT, 1)] = self.tr("Ημέρα Ανεξαρτησίας της Κύπρου")
+        # Cyprus Independence Day
+        self[
+            date(year, OCT, 1)
+        ] = "Ημέρα Ανεξαρτησίας της Κύπρου [Cyprus Independence Day]"
 
-        # Ochi Day.
-        self[date(year, OCT, 28)] = self.tr("Ημέρα του Όχι")
+        # Ochi Day
+        self[date(year, OCT, 28)] = "Ημέρα του Όχι [Ochi Day]"
 
-        # Christmas Eve.
-        self[date(year, DEC, 24)] = self.tr("Παραμονή Χριστουγέννων")
+        # Christmas Eve
+        self[date(year, DEC, 24)] = "Παραμονή Χριστουγέννων [Christmas Eve]"
 
-        # Christmas Day.
-        self[date(year, DEC, 25)] = self.tr("Χριστούγεννα")
+        # Christmas
+        self[date(year, DEC, 25)] = "Χριστούγεννα [Christmas]"
 
-        # Day After Christmas.
-        self[date(year, DEC, 26)] = self.tr("Δεύτερη μέρα Χριστουγέννων")
+        # Day after Christmas
+        self[
+            date(year, DEC, 26)
+        ] = "Δεύτερη μέρα Χριστουγέννων [Day after Christmas]"
 
 
 class CY(Cyprus):

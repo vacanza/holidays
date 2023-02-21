@@ -10,13 +10,13 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 from typing import Dict, Iterable, Optional, Tuple, Union
 
 from dateutil.easter import easter
+from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, SEP, AUG
+from holidays.constants import OCT, NOV, DEC, SUN
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _ChineseLuniSolar, _islamic_to_gre
 
@@ -45,7 +45,6 @@ class Singapore(HolidayBase):
         subdiv: Optional[str] = None,
         prov: Optional[str] = None,
         state: Optional[str] = None,
-        language: Optional[str] = None,
     ) -> None:
         """
         A subclass of :py:class:`HolidayBase` representing public holidays in
@@ -82,31 +81,22 @@ class Singapore(HolidayBase):
         """
 
         self.cnls = _ChineseLuniSolar()
-        super().__init__(
-            years, expand, observed, subdiv, prov, state, language
-        )
+        super().__init__(years, expand, observed, subdiv, prov, state)
 
     def _populate(self, year) -> None:
-        # Implement Section 4(2) of the Holidays Act:
-        # "if any day specified in the Schedule falls on a Sunday,
-        # the day next following not being itself a public holiday
-        # is declared a public holiday in Singapore."
-        def _add_with_observed(
-            hol_date: date, hol_name: str, days: int = +1
-        ) -> None:
-            self[hol_date] = hol_name
-            if self.observed and self._is_sunday(hol_date) and year >= 1998:
-                self[hol_date + td(days=days)] = f"{hol_name} (Observed)"
+        def _add_holiday(dt: date, hol: str) -> None:
+            if dt.year == year:
+                self[dt] = hol
 
         super()._populate(year)
 
         # New Year's Day
-        _add_with_observed(date(year, JAN, 1), "New Year's Day")
+        self[date(year, JAN, 1)] = "New Year's Day"
 
         # Chinese New Year (two days)
         hol_date = self.cnls.lunar_n_y_date(year)
-        _add_with_observed(hol_date, "Chinese New Year", days=+2)
-        _add_with_observed(hol_date + td(days=+1), "Chinese New Year")
+        self[hol_date] = "Chinese New Year"
+        self[hol_date + rd(days=+1)] = "Chinese New Year"
 
         # Hari Raya Puasa
         # aka Eid al-Fitr
@@ -140,18 +130,19 @@ class Singapore(HolidayBase):
         if year in dates_fixed_multiple_obs:
             for month_day in dates_fixed_multiple_obs[year]:
                 hol_date = date(year, *month_day)
-                _add_with_observed(hol_date, "Hari Raya Puasa")
+                self[hol_date] = "Hari Raya Puasa"
                 # Second day of Hari Raya Puasa (up to and including 1968)
                 # Removed since we don't have Hari Raya Puasa dates for the
-                # the years <= 1968.
+                # the years <= 1968:
         else:
             for hol_date in _islamic_to_gre(year, 10, 1):
-                _add_with_observed(hol_date, "Hari Raya Puasa* (*estimated)")
+                self[hol_date] = "Hari Raya Puasa* (*estimated)"
                 # Second day of Hari Raya Puasa (up to and including 1968)
                 if year <= 1968:
-                    self[
-                        hol_date + td(days=+1)
-                    ] = "Second day of Hari Raya Puasa* (*estimated)"
+                    _add_holiday(
+                        hol_date + rd(days=+1),
+                        "Second day of Hari Raya Puasa* (*estimated)",
+                    )
 
         # Hari Raya Haji
         # aka Eid al-Adha
@@ -185,27 +176,24 @@ class Singapore(HolidayBase):
         if year in dates_fixed_multiple_obs:
             for month_day in dates_fixed_multiple_obs[year]:
                 hol_date = date(year, *month_day)
-                if year == 2006:
-                    self[hol_date] = "Hari Raya Haji"
-                else:
-                    _add_with_observed(hol_date, "Hari Raya Haji")
+                self[hol_date] = "Hari Raya Haji"
         else:
             for hol_date in _islamic_to_gre(year, 12, 10):
-                _add_with_observed(hol_date, "Hari Raya Haji* (*estimated)")
+                self[hol_date] = "Hari Raya Haji* (*estimated)"
 
         easter_date = easter(year)
         # Good Friday
-        self[easter_date + td(days=-2)] = "Good Friday"
+        self[easter_date + rd(days=-2)] = "Good Friday"
 
         if year <= 1968:
             # Holy Saturday
-            self[easter_date + td(days=-1)] = "Holy Saturday"
+            self[easter_date + rd(days=-1)] = "Holy Saturday"
 
             # Easter Monday
-            self[easter_date + td(days=+1)] = "Easter Monday"
+            self[easter_date + rd(days=+1)] = "Easter Monday"
 
         # Labour Day
-        _add_with_observed(date(year, MAY, 1), "Labour Day")
+        self[date(year, MAY, 1)] = "Labour Day"
 
         # Vesak Day
         # date of observance is announced yearly
@@ -239,13 +227,13 @@ class Singapore(HolidayBase):
         }
         if year in dates_fixed_obs:
             hol_date = date(year, *dates_fixed_obs[year])
-            _add_with_observed(hol_date, "Vesak Day")
+            self[hol_date] = "Vesak Day"
         else:
             hol_date = self.cnls.vesak_date(year)
-            _add_with_observed(hol_date, "Vesak Day* (*estimated)")
+            self[hol_date] = "Vesak Day* (*estimated)"
 
         # National Day
-        _add_with_observed(date(year, AUG, 9), "National Day")
+        self[date(year, AUG, 9)] = "National Day"
 
         # Deepavali
         # aka Diwali
@@ -277,19 +265,29 @@ class Singapore(HolidayBase):
         }
         if year in dates_fixed_obs:
             hol_date = date(year, *dates_fixed_obs[year])
-            _add_with_observed(hol_date, "Deepavali")
+            self[hol_date] = "Deepavali"
         else:
             hol_date = self.cnls.s_diwali_date(year)
-            _add_with_observed(hol_date, "Deepavali* (*estimated)")
+            self[hol_date] = "Deepavali* (*estimated)"
 
         # Christmas Day
-        _add_with_observed(
-            date(year, DEC, 25), "Christmas Day", +2 if year == 2039 else +1
-        )
+        self[date(year, DEC, 25)] = "Christmas Day"
 
         # Boxing day (up to and including 1968)
         if year <= 1968:
             self[date(year, DEC, 26)] = "Boxing Day"
+
+        # Check for holidays that fall on a Sunday and implement Section 4(2)
+        # of the Holidays Act: "if any day specified in the Schedule falls on
+        # a Sunday, the day next following not being itself a public holiday
+        # is declared a public holiday in Singapore."
+        if self.observed and year >= 1998:
+            for (hol_date, hol_name) in list(self.items()):
+                if hol_date.year == year and hol_date.weekday() == SUN:
+                    in_lieu_date = hol_date + rd(days=+1)
+                    while in_lieu_date.year == year and in_lieu_date in self:
+                        in_lieu_date += rd(days=+1)
+                    _add_holiday(in_lieu_date, f"{hol_name} (Observed)")
 
         # special case (observed from previuos year)
         if self.observed and year == 2007:
@@ -297,6 +295,7 @@ class Singapore(HolidayBase):
 
 
 class SG(Singapore):
+
     # __init__ required for IDE typing and inheritance of docstring.
     def __init__(
         self,
@@ -306,14 +305,12 @@ class SG(Singapore):
         subdiv: Optional[str] = None,
         prov: Optional[str] = None,
         state: Optional[str] = None,
-        language: Optional[str] = None,
     ) -> None:
-        super().__init__(
-            years, expand, observed, subdiv, prov, state, language
-        )
+        super().__init__(years, expand, observed, subdiv, prov, state)
 
 
 class SGP(Singapore):
+
     # __init__ required for IDE typing and inheritance of docstring.
     def __init__(
         self,
@@ -323,8 +320,5 @@ class SGP(Singapore):
         subdiv: Optional[str] = None,
         prov: Optional[str] = None,
         state: Optional[str] = None,
-        language: Optional[str] = None,
     ) -> None:
-        super().__init__(
-            years, expand, observed, subdiv, prov, state, language
-        )
+        super().__init__(years, expand, observed, subdiv, prov, state)
