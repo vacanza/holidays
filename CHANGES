@@ -1,7 +1,7 @@
 Version 0.20
 ============
 
-Released February 20, 2023
+Released February 21, 2023
 
 - Add localization support, #827 (@arkid15r, @bkthomps, @dragoon)
 - Introduce `HolidayBase::_is_leap_year()`, #886 (@arkid15r)
