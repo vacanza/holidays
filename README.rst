@@ -559,6 +559,9 @@ default language code is a `ISO 639-1 code`_.
    * - Japan
      - ja
      - en_US, ja
+   * - Peru
+     - es
+     - en_US, es, uk
    * - Poland
      - pl
      - en_US, pl, uk
