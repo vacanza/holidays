@@ -17,8 +17,9 @@ Basics
 When contributing with fixes and new features, please start forking/branching
 from the `beta branch`_ to work on the latest code and reduce merging issues.
 
-Contributed PRs_ are required to include valid test coverage **(95% minimum,
-100% whenever possible)** in order to be merged.
+Contributed PRs_ are required to include valid test coverage **(the goal is
+100% coverage)** in order to be merged. Please don't hesitate to ask for
+help if you'read struggling with tests.
 
 Thanks a lot for your support.
 
@@ -26,45 +27,91 @@ Thanks a lot for your support.
 Running tests
 -------------
 
-First step is installing all the required dependencies with:
+First step is setting up development environment and installing all the required dependencies with:
 
-.. code-block:: bash
+.. code-block:: shell
 
-    $ pip install -r requirements_dev.txt
+    $ virtualenv -p python3 venv
+    $ source venv/bin/activate
 
-The project provides automated tests and coverage checks with tox; just run:
+    $ make setup
 
-.. code-block:: bash
+The project provides automated style, tests and coverage checks:
 
-    $ tox
+.. code-block:: shell
 
-Alternatively, you can run pytest to run tests and coverage:
+    $ make check
 
-.. code-block:: bash
+You can run them separately:
 
-    $ python -m pytest .
-    # if you want to retrieve uncovered lines too:
-    $ python -m pytest --cov-report term-missing .
+.. code-block:: shell
 
-In addition to pytest, you need to ensure that all staged files are up to
-standard.
+    $ make pre-commit
+    $ make test
 
-.. _pre-commit: https://github.com/dr-prodigy/python-holidays/issues
+If you want to retrieve uncovered lines too:
 
-Install `pre-commit`_ and its git hook script so that the quality assurance
-tests will run on all staged files before they are committed:
+.. code-block:: shell
 
-.. code-block:: bash
+    $ make coverage
 
-    $ pip install pre-commit
-    $ pre-commit install
+You can specific tests using ``pytest`` command:
 
-To manually run the quality assurance tests on all tracked files:
+.. code-block:: shell
 
-.. code-block:: bash
+    $ pytest tests/countries/test_argentina.py
 
-    $ pre-commit run -a
+Or even more granular:
 
+.. code-block:: shell
+
+    $ pytest tests/countries/test_argentina.py::TestArgentina::test_country_aliases
+
+Due to how pytest-xdist is implemented, the -s/--capture=no option
+`doesn't work <https://pytest-xdist.readthedocs.io/en/latest/known-limitations.html#output-stdout-and-stderr-from-workers>`_.
+Use pytest directly if you need ``-s`` option:
+
+.. code-block:: shell
+
+    $ pytest -s tests/countries/test_argentina.py
+
+
+Localization
+--------------------------
+.. _ISO 639-1 codes: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+
+In order to add or update existing holiday names translation you'll need to
+generate pygettext .pot file first:
+
+.. code-block:: shell
+
+    $ make l10n
+
+If the template file is empty make sure that the country/market entity has the
+:py:attr:`default_language` attribute set and all holiday names are wrapped
+with ``tr``/``self.tr`` helpers. Use `ISO 639-1 codes`_ when adding new
+languages. Copy the generated template to all locale folders you're going to
+translate this country holiday names into (e.g., for Argentina:
+holidays/locale/en/LC_MESSAGES/AR.po - note the file extension difference here).
+Also copy the template to a default country language folder (e.g., for Argentina
+holidays/locale/es/LC_MESSAGES) and leave it as is. After copying the .po files
+open them with your favorite .po file editor and translate accordingly. Don't
+forget to fill in the translation file headers. Finally, update the list of
+supported translations for the country in the README.rst.
+
+If the translation already exists you'll just need to update it with the new
+template entries (your .po file editor may help you to do that with no hassle).
+
+Please also add tests (see already translated countries tests for examples).
+The .mo files are generated automatically for the tests and the python-holidays
+package so you shouldn't worry about it. Just don't forget to
+initialize the ``setUpClass`` properly:
+
+.. code-block:: python
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Argentina)
 
 Build sphinx documentation
 --------------------------

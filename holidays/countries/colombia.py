@@ -10,12 +10,13 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAR, MAY, JUN, JUL, AUG, OCT, NOV, DEC, MON
+from holidays.constants import JAN, MAR, MAY, JUN, JUL, AUG, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -30,7 +31,7 @@ class Colombia(HolidayBase):
 
     country = "CO"
 
-    def _add_with_bridge(self, _date, name):
+    def _add_with_bridge(self, dt, name):
         """
         On the 6th of December 1983, the government of Colombia declared which
         holidays are to take effect, and also clarified that a subset of them
@@ -46,10 +47,10 @@ class Colombia(HolidayBase):
         1984: https://bit.ly/3B7ogt8
         """
 
-        if self.observed and _date.weekday() != MON and _date.year > 1983:
-            self[_date + rd(weekday=MO)] = name + " (Observed)"
+        if self.observed and not self._is_monday(dt) and dt.year > 1983:
+            self[dt + rd(weekday=MO)] = name + " (Observed)"
         else:
-            self[_date] = name
+            self[dt] = name
 
     def _populate(self, year):
         super()._populate(year)
@@ -149,29 +150,29 @@ class Colombia(HolidayBase):
     def _add_fixed_easter_based_holidays(self, _easter):
         if _easter.year > 1950:
             # Maundy Thursday
-            self[_easter + rd(days=-3)] = "Jueves Santo [Maundy Thursday]"
+            self[_easter + td(days=-3)] = "Jueves Santo [Maundy Thursday]"
 
             # Good Friday
-            self[_easter + rd(days=-2)] = "Viernes Santo [Good Friday]"
+            self[_easter + td(days=-2)] = "Viernes Santo [Good Friday]"
 
     def _add_flexible_easter_based_holidays(self, _easter):
         if _easter.year > 1950:
             # Ascension of Jesus
             self._add_with_bridge(
-                _easter + rd(days=+39),
+                _easter + td(days=+39),
                 "Ascensión del señor [Ascension of Jesus]",
             )
 
             # Corpus Christi
             self._add_with_bridge(
-                _easter + rd(days=+60),
+                _easter + td(days=+60),
                 "Corpus Christi [Corpus Christi]",
             )
 
         if _easter.year > 1983:
             # Sacred Heart
             self._add_with_bridge(
-                _easter + rd(days=+68),
+                _easter + td(days=+68),
                 "Sagrado Corazón [Sacred Heart]",
             )
 

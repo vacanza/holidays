@@ -1,0 +1,100 @@
+# Poland holidays.
+# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.20\n"
+"POT-Creation-Date: 2023-02-15 08:13-0800\n"
+"PO-Revision-Date: 2023-02-16 09:00-0800\n"
+"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: holidays/countries/poland.py:30
+msgid "Narodowe Święto Niepodległości - 100-lecie"
+msgstr ""
+
+#: holidays/countries/poland.py:39
+msgid "Nowy Rok"
+msgstr ""
+
+#: holidays/countries/poland.py:42
+msgid "Święto Trzech Króli"
+msgstr ""
+
+#: holidays/countries/poland.py:45
+msgid "Oczyszczenie Najświętszej Marii Panny"
+msgstr ""
+
+#: holidays/countries/poland.py:50
+msgid "Niedziela Wielkanocna"
+msgstr ""
+
+#: holidays/countries/poland.py:52
+msgid "Poniedziałek Wielkanocny"
+msgstr ""
+
+#: holidays/countries/poland.py:55
+msgid "Święto Państwowe"
+msgstr ""
+
+#: holidays/countries/poland.py:58
+msgid "Święto Narodowe Trzeciego Maja"
+msgstr ""
+
+#: holidays/countries/poland.py:63
+msgid "Narodowe Święto Zwycięstwa i Wolności"
+msgstr ""
+
+#: holidays/countries/poland.py:68
+msgid "Wniebowstąpienie Pańskie"
+msgstr ""
+
+#: holidays/countries/poland.py:72
+msgid "Zielone Świątki"
+msgstr ""
+
+#: holidays/countries/poland.py:75
+msgid "Drugi dzień Zielonych Świątek"
+msgstr ""
+
+#: holidays/countries/poland.py:79
+msgid "Dzień Bożego Ciała"
+msgstr ""
+
+#: holidays/countries/poland.py:82
+msgid "Uroczystość Świętych Apostołów Piotra i Pawła"
+msgstr ""
+
+#: holidays/countries/poland.py:87
+msgid "Narodowe Święto Odrodzenia Polski"
+msgstr ""
+
+#: holidays/countries/poland.py:92
+msgid "Wniebowzięcie Najświętszej Marii Panny"
+msgstr ""
+
+#: holidays/countries/poland.py:96
+msgid "Uroczystość Wszystkich Świętych"
+msgstr ""
+
+#: holidays/countries/poland.py:99
+msgid "Narodowe Święto Niepodległości"
+msgstr ""
+
+#: holidays/countries/poland.py:104
+msgid "Niepokalane Poczęcie Najświętszej Marii Panny"
+msgstr ""
+
+#: holidays/countries/poland.py:108
+msgid "Boże Narodzenie (pierwszy dzień)"
+msgstr ""
+
+#: holidays/countries/poland.py:109
+msgid "Boże Narodzenie (drugi dzień)"
+msgstr ""

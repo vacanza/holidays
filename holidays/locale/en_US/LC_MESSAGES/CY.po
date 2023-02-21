@@ -1,0 +1,97 @@
+# Cyprus holidays en_US localization.
+# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.20\n"
+"POT-Creation-Date: 2023-02-15 11:50-0800\n"
+"PO-Revision-Date: 2023-02-15 11:58-0800\n"
+"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Years Day.
+#: holidays/countries/cyprus.py:38
+msgid "Πρωτοχρονιά"
+msgstr "New Year's Day"
+
+#. Epiphany.
+#: holidays/countries/cyprus.py:41
+msgid "Θεοφάνεια"
+msgstr "Epiphany"
+
+#. Clean Monday.
+#: holidays/countries/cyprus.py:44
+msgid "Καθαρά Δευτέρα"
+msgstr "Clean Monday"
+
+#. Greek Independence Day.
+#: holidays/countries/cyprus.py:47
+msgid "Εικοστή Πέμπτη Μαρτίου"
+msgstr "Greek Independence Day"
+
+#. Cyprus National Day.
+#: holidays/countries/cyprus.py:50
+msgid "1η Απριλίου"
+msgstr "Cyprus National Day"
+
+#. Good Friday.
+#: holidays/countries/cyprus.py:53
+msgid "Μεγάλη Παρασκευή"
+msgstr "Good Friday"
+
+#. Easter Sunday.
+#: holidays/countries/cyprus.py:56
+msgid "Κυριακή του Πάσχα"
+msgstr "Easter Sunday"
+
+#. Easter Monday.
+#: holidays/countries/cyprus.py:59
+msgid "Δευτέρα του Πάσχα"
+msgstr "Easter Monday"
+
+#. Labour Day.
+#: holidays/countries/cyprus.py:62
+msgid "Εργατική Πρωτομαγιά"
+msgstr "Labor Day"
+
+#. Monday of the Holy Spirit.
+#: holidays/countries/cyprus.py:65
+msgid "Δευτέρα του Αγίου Πνεύματος"
+msgstr "Monday of the Holy Spirit"
+
+#. Assumption of Mary.
+#: holidays/countries/cyprus.py:70
+msgid "Κοίμηση της Θεοτόκου"
+msgstr "Assumption of Mary"
+
+#. Cyprus Independence Day.
+#: holidays/countries/cyprus.py:73
+msgid "Ημέρα Ανεξαρτησίας της Κύπρου"
+msgstr "Cyprus Independence Day"
+
+#. Ochi Day.
+#: holidays/countries/cyprus.py:76
+msgid "Ημέρα του Όχι"
+msgstr "Ochi Day"
+
+#. Christmas Eve.
+#: holidays/countries/cyprus.py:79
+msgid "Παραμονή Χριστουγέννων"
+msgstr "Christmas Eve"
+
+#. Christmas Day.
+#: holidays/countries/cyprus.py:82
+msgid "Χριστούγεννα"
+msgstr "Christmas Day"
+
+#. Day After Christmas.
+#: holidays/countries/cyprus.py:85
+msgid "Δεύτερη μέρα Χριστουγέννων"
+msgstr "Day After Christmas"

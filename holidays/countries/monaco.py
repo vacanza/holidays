@@ -10,11 +10,11 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import SUN, JAN, MAY, AUG, NOV, DEC
+from holidays.constants import JAN, MAY, AUG, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -32,8 +32,8 @@ class Monaco(HolidayBase):
     def _populate(self, year):
         def _add_with_observed(hol_date: date, hol_name: str) -> None:
             self[hol_date] = hol_name
-            if self.observed and hol_date.weekday() == SUN:
-                self[hol_date + rd(days=+1)] = f"{hol_name} (Observed)"
+            if self.observed and self._is_sunday(hol_date):
+                self[hol_date + td(days=+1)] = f"{hol_name} (Observed)"
 
         super()._populate(year)
 
@@ -48,7 +48,7 @@ class Monaco(HolidayBase):
         easter_date = easter(year)
 
         # Easter Monday
-        self[easter_date + rd(days=+1)] = "Le lundi de Pâques [Easter Monday]"
+        self[easter_date + td(days=+1)] = "Le lundi de Pâques [Easter Monday]"
 
         # Labour Day
         _add_with_observed(
@@ -56,15 +56,15 @@ class Monaco(HolidayBase):
         )
 
         # Ascension's Day
-        self[easter_date + rd(days=+39)] = "L'Ascension [Ascension's Day]"
+        self[easter_date + td(days=+39)] = "L'Ascension [Ascension's Day]"
 
         # Whit Monday
         self[
-            easter_date + rd(days=+50)
+            easter_date + td(days=+50)
         ] = "Le lundi de Pentecôte [Whit Monday]"
 
         # Corpus Christi
-        self[easter_date + rd(days=+60)] = "La Fête Dieu [Corpus Christi]"
+        self[easter_date + td(days=+60)] = "La Fête Dieu [Corpus Christi]"
 
         # Assumption's Day
         _add_with_observed(
@@ -83,8 +83,8 @@ class Monaco(HolidayBase):
 
         # Immaculate Conception's Day
         dt = date(year, DEC, 8)
-        if year >= 2019 and dt.weekday() == SUN:
-            dt += rd(days=+1)
+        if year >= 2019 and self._is_sunday(dt):
+            dt += td(days=+1)
         self[dt] = "L'Immaculée Conception [Immaculate Conception's Day]"
 
         # Christmas Day

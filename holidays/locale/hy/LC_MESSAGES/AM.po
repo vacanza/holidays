@@ -1,0 +1,91 @@
+# Armenia holidays.
+# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.20\n"
+"POT-Creation-Date: 2023-02-15 20:06-0800\n"
+"PO-Revision-Date: 2023-02-16 08:57-0800\n"
+"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: hy\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: holidays/countries/armenia.py:38
+msgid "Նոր տարվա օր"
+msgstr ""
+
+#. Christmas and Epiphany Day.
+#: holidays/countries/armenia.py:43
+msgid "Սուրբ Ծնունդ եւ Հայտնություն"
+msgstr ""
+
+#. Christmas Eve.
+#: holidays/countries/armenia.py:50
+msgid "Սուրբ Ծննդյան տոներ"
+msgstr ""
+
+#. The Day of Remembrance of the Dead.
+#: holidays/countries/armenia.py:53
+msgid "Մեռելոց հիշատակի օր"
+msgstr ""
+
+#. Army Day.
+#: holidays/countries/armenia.py:57
+msgid "Բանակի օր"
+msgstr ""
+
+#. Women's Day.
+#: holidays/countries/armenia.py:60
+msgid "Կանանց տոն"
+msgstr ""
+
+#. Motherhood and Beauty Day.
+#: holidays/countries/armenia.py:64
+msgid "Մայրության և գեղեցկության տոն"
+msgstr ""
+
+#. Armenian Genocide Remembrance Day,
+#: holidays/countries/armenia.py:67
+msgid "Եղեռնի զոհերի հիշատակի օր"
+msgstr ""
+
+#. International Day of Workers' Solidarity.
+#: holidays/countries/armenia.py:71
+msgid "Աշխատավորների համերաշխության միջազգային օր"
+msgstr ""
+
+#. Labor Day.
+#: holidays/countries/armenia.py:74
+msgid "Աշխատանքի օր"
+msgstr ""
+
+#. Victory and Peace Day.
+#: holidays/countries/armenia.py:79
+msgid "Հաղթանակի և Խաղաղության տոն"
+msgstr ""
+
+#. Republic Day.
+#: holidays/countries/armenia.py:82
+msgid "Հանրապետության օր"
+msgstr ""
+
+#. Constitution Day.
+#: holidays/countries/armenia.py:86
+msgid "Սահմանադրության օր"
+msgstr ""
+
+#. Independence Day.
+#: holidays/countries/armenia.py:90
+msgid "Անկախության օր"
+msgstr ""
+
+#. New Year's Eve.
+#: holidays/countries/armenia.py:93
+msgid "Նոր տարվա գիշեր"
+msgstr ""

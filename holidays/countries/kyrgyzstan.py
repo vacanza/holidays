@@ -10,8 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-
-from dateutil.relativedelta import relativedelta as rd
+from datetime import timedelta as td
 
 from holidays.constants import JAN, FEB, MAR, APR, MAY, AUG, NOV, DEC
 from holidays.holiday_base import HolidayBase
@@ -75,7 +74,7 @@ class Kyrgyzstan(HolidayBase):
         name = "Orozo Ait"
         for dt in _islamic_to_gre(year, 10, 1):
             self[dt] = name
-            self[dt + rd(days=+1)] = name
+            self[dt + td(days=+1)] = name
 
         # Kurman Ait.
         for dt in _islamic_to_gre(year, 12, 10):
