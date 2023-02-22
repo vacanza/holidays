@@ -1,7 +1,7 @@
 Version 0.20
 ============
 
-Released February 21, 2023
+Released February 22, 2023
 
 - Add localization support, #827 (@arkid15r, @bkthomps, @dragoon)
 - Introduce `HolidayBase::_is_leap_year()`, #886 (@arkid15r)
@@ -15,11 +15,13 @@ Released February 21, 2023
 - Refactor days offset calculation: replace `relativedelta` with `timedelta`, #900 (@arkid15r)
 - Refactor implicit returns, #935 (@arkid15r)
 - Add Panama holidays, #916 (@KJhellico)
+- Localize ascii incompatible countries, #955 (@arkid15r)
 - Change holiday name separator from ", " to "; ", #922 (@arkid15r)
 - Fix Hong Kong, #928 (@KJhellico)
 - Fix Islamic holidays calculation, #914 (@KJhellico)
 - Fix Thailand related changes coverage decrease, #942 (@arkid15r, @PPsyrius)
 - Fix Ukraine tests, #943 (@KJhellico)
+- Fix readthedocs.io build, #973 (@arkid15r)
 - Improve Thailand holidays, #929 (@PPsyrius, @arkid15r, @KJhellico)
 - Optimize Botswana observed holidays, #932 (@KJhellico)
 - Optimize Burundi observed holidays, #933 (@KJhellico)
@@ -33,19 +35,19 @@ Released February 21, 2023
 - Update Bosnia and Herzegovina holidays, #909 (@KJhellico)
 - Update Canada holidays (add National Day for Truth and Reconciliation in British Columbia), #951 (@KJhellico)
 - Update Jamaica holidays, #913 (@KJhellico)
+- Update PR template, #960 (@arkid15r)
 - Update Poland holidays, add uk localization, #947 (@KJhellico)
+- Update dev/test environments, #930 (@arkid15r)
+- Upgrade dependency: change black version from 22.12.0 to 23.1.0, #921 (@arkid15r)
+- Upgrade pre-commit config: mypy v1.0.1, #970 (@arkid15r)
 - Add GitHub pull request template, #911 (@arkid15r)
 - Add International Women's Day for DE-MV, #936 (@alexanderschulze)
 - Add Marshall Islands (ISO-3666-1 code MH), #937 (@mborsetti)
 - Add Northern Mariana Islands (ISO-3666-2 code US-MP), #939 (@mborsetti)
 - Add United States Minor Outlying Islands (ISO-3666-2 code US-UM), #940 (@mborsetti)
 - ISO 3166-1 for US subdivisions, #941 (@mborsetti, @dr-prodigy)
-- Localize ascii incompatible countries, #955 (@arkid15r)
 - Rename dev env setup target, #944 (@arkid15r)
 - Suppress warnings for tests, #945 (@arkid15r)
-- Update PR template, #960 (@arkid15r)
-- Update dev/test environments, #930 (@arkid15r)
-- Upgrade dependency: change black version from 22.12.0 to 23.1.0, #921 (@arkid15r)
 
 Version 0.19
 ============
