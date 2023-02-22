@@ -34,14 +34,7 @@ class Mexico(HolidayBase):
 
         # New Year's Day
         name = "Año Nuevo [New Year's Day]"
-        dt = date(year, JAN, 1)
-        self[dt] = name
-        if self.observed and dt.weekday() == SUN:
-            self[dt + rd(days=+1)] = name + " (Observed)"
-        # The next year's observed New Year's Day can be in this year
-        # when it falls on a Friday (Jan 1st is a Saturday)
-        if self.observed and date(year, DEC, 31).weekday() == FRI:
-            self[date(year, DEC, 31)] = name + " (Observed)"
+        self[date(year, JAN, 1)] = name
 
         # Constitution Day
         name = "Día de la Constitución [Constitution Day]"
@@ -71,8 +64,7 @@ class Mexico(HolidayBase):
 
         # Independence Day
         name = "Día de la Independencia [Independence Day]"
-        dt = date(year, SEP, 16)
-        self._add_with_observed(dt, name)
+        self[date(year, SEP, 16)] = name
 
         # Revolution Day
         name = "Día de la Revolución [Revolution Day]"
