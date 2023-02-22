@@ -101,7 +101,7 @@ msgstr "Autumnal Equinox"
 
 #: holidays/countries/japan.py:130 holidays/countries/japan.py:132
 msgid "体育の日"
-msgstr "Health and Sports Day"
+msgstr "Physical Education Day"
 
 #: holidays/countries/japan.py:134 holidays/countries/japan.py:136
 #: holidays/countries/japan.py:138
