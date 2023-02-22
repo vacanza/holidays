@@ -4,12 +4,13 @@ repos:
     hooks:
       - id: check-ast
       - id: check-builtin-literals
+      - id: check-yaml
       - id: end-of-file-fixer
-      - id: trailing-whitespace
       - id: fix-encoding-pragma
         args: [--remove]
       - id: mixed-line-ending
         args: [--fix=lf]
+      - id: trailing-whitespace
 
   - repo: https://github.com/python/black
     rev: 23.1.0
@@ -37,7 +38,7 @@ repos:
         exclude: ^(docs|holidays/countries/__init__.py|scripts/l10n/msgfmt.py)
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.0.0
+    rev: v1.0.1
     hooks:
       - id: mypy
         additional_dependencies: [types-all]
