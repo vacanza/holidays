@@ -11,10 +11,14 @@ help:
 
 check:
 	make pre-commit
+	make doc
 	make test
 
 coverage:
 	pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --no-cov-on-fail --numprocesses auto
+
+doc:
+	sphinx-build -E -T -W -b html -D language=en -j auto -q docs/source docs/build
 
 l10n:
 	mkdir -p holidays/locale/pot
@@ -25,7 +29,7 @@ pre-commit:
 	pre-commit run --all-files
 
 setup:
-	pip install -U pip
+	pip install --upgrade pip
 	pip install --requirement requirements/dev.txt
 	pip install --requirement requirements/docs.txt
 	pre-commit install --hook-type pre-commit
