@@ -10,11 +10,11 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 
 from dateutil.easter import easter
+from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, FEB, APR, MAY, JUN, JUL, AUG, OCT, NOV, DEC
+from holidays.constants import JAN, FEB, APR, MAY, JUL, AUG, OCT, NOV, DEC, SUN
 from holidays.holiday_base import HolidayBase
 from holidays.utils import _islamic_to_gre
 
@@ -34,67 +34,80 @@ class Burundi(HolidayBase):
     country = "BI"
 
     def _populate(self, year):
-        def _add_with_observed(hol_date: date, hol_name: str) -> None:
-            self[hol_date] = hol_name
-            if self.observed and self._is_sunday(hol_date):
-                obs_date = hol_date + td(days=+1)
-                if obs_date.year == year:
-                    self[obs_date] = f"{hol_name} (Observed)"
-
-        if year <= 1961:
-            return None
-
         super()._populate(year)
 
+        def _add_holiday(dt: date, hol: str) -> None:
+            """Only add if in current year; prevents adding holidays across
+            years (handles multi-day Islamic holidays that straddle Gregorian
+            years).
+            """
+            if dt.year == year:
+                self[dt] = hol
+
         # New Year's Day
-        _add_with_observed(date(year, JAN, 1), "New Year's Day")
+        self[date(year, JAN, 1)] = "New Year's Day"
 
         # Unity Day
-        if year >= 1992:
-            _add_with_observed(date(year, FEB, 5), "Unity Day")
+        name = "Unity Day"
+        self[date(year, FEB, 5)] = name
+        if date(year, FEB, 5).weekday() == SUN:
+            self[date(year, FEB, 6)] = name + " (Observed)"
 
         # President Ntaryamira Day
-        if year >= 1995:
-            _add_with_observed(date(year, APR, 6), "President Ntaryamira Day")
+        name = "President Ntaryamira Day"
+        self[date(year, APR, 6)] = "President Ntaryamira Day"
+        if date(year, APR, 6).weekday() == SUN:
+            self[date(year, APR, 7)] = name + " (Observed)"
 
         # Labour Day
-        _add_with_observed(date(year, MAY, 1), "Labour Day")
+        name = "Labour Day"
+        self[date(year, MAY, 1)] = name
+        if date(year, MAY, 1).weekday() == SUN:
+            self[date(year, MAY, 2)] = name + " (Observed)"
 
         # Ascension Day
-        self[easter(year) + td(days=+39)] = "Ascension Day"
+        name = "Ascension Day"
+        self[easter(year) + rd(days=+39)] = name
 
-        # President Nkurunziza Day
-        if year >= 2022:
-            _add_with_observed(date(year, JUN, 8), "President Nkurunziza Day")
+        # Independence Day post 1962
+        name = "Independence Day"
+        if year > 1961:
+            self[date(year, JUL, 1)] = name
+            if date(year, JUL, 1).weekday() == SUN:
+                self[date(year, JUL, 2)] = name + " (Observed)"
 
-        # Independence Day
-        _add_with_observed(date(year, JUL, 1), "Independence Day")
+        # Eid Al Adha- Feast of the Sacrifice
+        # date of observance is announced yearly
+        for yr in (year - 1, year):
+            for date_obs in _islamic_to_gre(yr, 12, 10):
+                hol_date = date_obs
+                _add_holiday(hol_date, "Eid Al Adha")
+                _add_holiday(hol_date + rd(days=+1), "Eid Al Adha")
 
         # Assumption Day
-        _add_with_observed(date(year, AUG, 15), "Assumption Day")
+        name = "Assumption Day"
+        self[date(year, AUG, 15)] = name
 
         # Prince Louis Rwagasore Day
-        _add_with_observed(date(year, OCT, 13), "Prince Louis Rwagasore Day")
+        name = "Prince Louis Rwagasore Day"
+        self[date(year, OCT, 13)] = name
+        if date(year, OCT, 13).weekday() == SUN:
+            self[date(year, OCT, 14)] = name + " (Observed)"
 
         # President Ndadaye's Day
-        if year >= 1994:
-            _add_with_observed(date(year, OCT, 21), "President Ndadaye's Day")
+        name = "President Ndadaye's Day"
+        self[date(year, OCT, 21)] = name
+        if date(year, OCT, 21).weekday() == SUN:
+            self[date(year, OCT, 22)] = name + " (Observed)"
 
         # All Saints' Day
-        _add_with_observed(date(year, NOV, 1), "All Saints' Day")
+        name = "All Saints' Day"
+        self[date(year, NOV, 1)] = name
+        if date(year, NOV, 1).weekday() == SUN:
+            self[date(year, NOV, 2)] = name + " (Observed)"
 
         # Christmas Day
-        _add_with_observed(date(year, DEC, 25), "Christmas Day")
-
-        # Eid ul Fitr
-        # date of observance is announced yearly
-        for dt in _islamic_to_gre(year, 10, 1):
-            _add_with_observed(dt, "Eid ul Fitr")
-
-        # Eid al Adha
-        # date of observance is announced yearly
-        for dt in _islamic_to_gre(year, 12, 10):
-            _add_with_observed(dt, "Eid al Adha")
+        self[date(year, DEC, 25)] = "Christmas Day"
 
 
 class BI(Burundi):

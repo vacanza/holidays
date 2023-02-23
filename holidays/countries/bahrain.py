@@ -10,7 +10,8 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
+
+from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import FRI, SAT, JAN, MAY, JUL, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
@@ -47,16 +48,16 @@ class Bahrain(HolidayBase):
             for dt in eid_al_fitr_mapping[year]:
                 eid_al_fitr_day = date(year, *dt)
                 self[eid_al_fitr_day] = eid_al_fitr
-                self[eid_al_fitr_day + td(days=+1)] = f"{eid_al_fitr} Holiday"
-                self[eid_al_fitr_day + td(days=+2)] = f"{eid_al_fitr} Holiday"
+                self[eid_al_fitr_day + rd(days=+1)] = f"{eid_al_fitr} Holiday"
+                self[eid_al_fitr_day + rd(days=+2)] = f"{eid_al_fitr} Holiday"
         else:
             for eid_al_fitr_day in _islamic_to_gre(year, 10, 1):
                 self[eid_al_fitr_day] = f"{eid_al_fitr}* (*estimated)"
                 self[
-                    eid_al_fitr_day + td(days=+1)
+                    eid_al_fitr_day + rd(days=+1)
                 ] = f"{eid_al_fitr} Holiday* (*estimated)"
                 self[
-                    eid_al_fitr_day + td(days=+2)
+                    eid_al_fitr_day + rd(days=+2)
                 ] = f"{eid_al_fitr} Holiday* (*estimated)"
 
         # Eid Al Adha.
@@ -68,18 +69,18 @@ class Bahrain(HolidayBase):
             for dt in eid_al_adha_mapping[year]:
                 eid_al_adha_day = date(year, *dt)
                 self[eid_al_adha_day] = eid_al_adha
-                self[eid_al_adha_day + td(days=+1)] = f"{eid_al_adha} Holiday"
-                self[eid_al_adha_day + td(days=+2)] = f"{eid_al_adha} Holiday"
+                self[eid_al_adha_day + rd(days=+1)] = f"{eid_al_adha} Holiday"
+                self[eid_al_adha_day + rd(days=+2)] = f"{eid_al_adha} Holiday"
         else:
             for eid_al_adha_day in _islamic_to_gre(year, 12, 9):
                 self[
-                    eid_al_adha_day + td(days=+1)
+                    eid_al_adha_day + rd(days=+1)
                 ] = f"{eid_al_adha}* (*estimated)"
                 self[
-                    eid_al_adha_day + td(days=+2)
+                    eid_al_adha_day + rd(days=+2)
                 ] = f"{eid_al_adha}* (*estimated)"
                 self[
-                    eid_al_adha_day + td(days=+3)
+                    eid_al_adha_day + rd(days=+3)
                 ] = f"{eid_al_adha}* (*estimated)"
 
         # Al Hijra New Year.
@@ -103,12 +104,12 @@ class Bahrain(HolidayBase):
             for dt in ashura_mapping[year]:
                 ashura_day = date(year, *dt)
                 self[ashura_day] = ashura
-                self[ashura_day + td(days=+1)] = f"{ashura} Holiday"
+                self[ashura_day + rd(days=+1)] = f"{ashura} Holiday"
         else:
             for ashura_day in _islamic_to_gre(year, 1, 9):
                 self[ashura_day] = f"{ashura}* (*estimated)"
                 self[
-                    ashura_day + td(days=+1)
+                    ashura_day + rd(days=+1)
                 ] = f"{ashura}* Holiday* (*estimated)"
 
         # Prophets Birthday.

@@ -10,7 +10,6 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import MO
@@ -52,11 +51,11 @@ class Philippines(HolidayBase):
 
         easter_date = easter(year)
         # Maundy Thursday.
-        self[easter_date + td(days=-3)] = "Maundy Thursday"
+        self[easter_date + rd(days=-3)] = "Maundy Thursday"
         # Good Friday.
-        self[easter_date + td(days=-2)] = "Good Friday"
+        self[easter_date + rd(days=-2)] = "Good Friday"
         # Black Saturday.
-        self[easter_date + td(days=-1)] = "Black Saturday"
+        self[easter_date + rd(days=-1)] = "Black Saturday"
 
         # Labour Day.
         self[date(year, MAY, 1)] = "Labour Day"

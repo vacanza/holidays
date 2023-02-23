@@ -10,9 +10,9 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 
 from dateutil.easter import easter
+from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAY, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
@@ -42,8 +42,8 @@ class Slovakia(HolidayBase):
         )
 
         easter_date = easter(year)
-        self[easter_date + td(days=-2)] = "Veľký piatok"
-        self[easter_date + td(days=+1)] = "Veľkonočný pondelok"
+        self[easter_date + rd(days=-2)] = "Veľký piatok"
+        self[easter_date + rd(days=+1)] = "Veľkonočný pondelok"
 
         self[date(year, MAY, 1)] = "Sviatok práce"
 

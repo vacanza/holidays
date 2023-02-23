@@ -10,15 +10,16 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 
 from dateutil.easter import easter
+from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, FEB, MAY, JUN, AUG, DEC
 from holidays.holiday_base import HolidayBase
 
 
 class Estonia(HolidayBase):
+
     country = "EE"
 
     def _populate(self, year):
@@ -33,7 +34,7 @@ class Estonia(HolidayBase):
         self[date(year, FEB, 24)] = "iseseisvuspäev"
 
         # Good Friday
-        self[easter_date + td(days=-2)] = "suur reede"
+        self[easter_date + rd(days=-2)] = "suur reede"
 
         # Easter Sunday
         self[easter_date] = "ülestõusmispühade 1. püha"
@@ -42,7 +43,7 @@ class Estonia(HolidayBase):
         self[date(year, MAY, 1)] = "kevadpüha"
 
         # Pentecost
-        self[easter_date + td(days=+49)] = "nelipühade 1. püha"
+        self[easter_date + rd(days=+49)] = "nelipühade 1. püha"
 
         # Victory Day
         self[date(year, JUN, 23)] = "võidupüha"
