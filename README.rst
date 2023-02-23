@@ -514,7 +514,7 @@ Localization
 
 Some of the supported entities (country/market) provide more than one
 language for holiday names output. The default language is defined by
-:py:attr:`default_language` of :py:class:`HolidayBase` and is used as a fallback
+``default_language`` (optional) attribute for each entity and is used as a fallback
 when neither user specified language nor user locale language available. The
 default language code is a `ISO 639-1 code`_.
 
