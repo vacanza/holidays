@@ -394,12 +394,11 @@ class Thailand(HolidayBase):
         # Starts in 1939 (B.E. 2482) by Plaek Phibunsongkhram
         # Replaced by Rama IX's birthday in 1960 (B.E. 2503) by Sarit Thanarat
         # TODO: Add check for 1939 if we support earlier dates.
-        national_day = self.tr("วันชาติ")
 
-        if year <= 1959:
-            _add_with_observed(date(year, JUN, 24), national_day)
-        elif year >= 1960:
-            _add_with_observed(date(year, DEC, 5), national_day)
+        _add_with_observed(
+            date(year, JUN, 24) if year <= 1959 else date(year, DEC, 5),
+            self.tr("วันชาติ"),
+        )
 
         # !!! Coronation Day !!!
         # วันฉัตรมงคล
