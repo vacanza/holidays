@@ -1,0 +1,92 @@
+# Armenia holidays en_US localization.
+# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.20\n"
+"POT-Creation-Date: 2023-02-15 20:06-0800\n"
+"PO-Revision-Date: 2023-02-15 11:03-0800\n"
+"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: holidays/countries/armenia.py:38
+msgid "Նոր տարվա օր"
+msgstr "New Year's Day"
+
+#. Christmas and Epiphany Day.
+#: holidays/countries/armenia.py:43
+msgid "Սուրբ Ծնունդ եւ Հայտնություն"
+msgstr "Christmas and Epiphany Day"
+
+#. Christmas Eve.
+#: holidays/countries/armenia.py:50
+msgid "Սուրբ Ծննդյան տոներ"
+msgstr "Christmas Holidays"
+
+#. The Day of Remembrance of the Dead.
+#: holidays/countries/armenia.py:53
+msgid "Մեռելոց հիշատակի օր"
+msgstr "Memorial Day"
+
+#. Army Day.
+#: holidays/countries/armenia.py:57
+msgid "Բանակի օր"
+msgstr "Army Day"
+
+#. Women's Day.
+#: holidays/countries/armenia.py:60
+msgid "Կանանց տոն"
+msgstr "Women’s Day"
+
+#. Motherhood and Beauty Day.
+#: holidays/countries/armenia.py:64
+msgid "Մայրության և գեղեցկության տոն"
+msgstr "A Holiday of Motherhood and Beauty"
+
+#. Armenian Genocide Remembrance Day,
+#: holidays/countries/armenia.py:67
+msgid "Եղեռնի զոհերի հիշատակի օր"
+msgstr "Genocide Memorial Day"
+
+#. International Day of Workers' Solidarity.
+#: holidays/countries/armenia.py:71
+msgid "Աշխատավորների համերաշխության միջազգային օր"
+msgstr "International Day of Workers' Solidarity"
+
+#. Labor Day.
+#: holidays/countries/armenia.py:74
+msgid "Աշխատանքի օր"
+msgstr "Labor day"
+
+#. Victory and Peace Day.
+#: holidays/countries/armenia.py:79
+msgid "Հաղթանակի և Խաղաղության տոն"
+msgstr "Victory and Peace Day"
+
+#. Republic Day.
+#: holidays/countries/armenia.py:82
+msgid "Հանրապետության օր"
+msgstr "Republic Day"
+
+#. Constitution Day.
+#: holidays/countries/armenia.py:86
+msgid "Սահմանադրության օր"
+msgstr "Constitution Day"
+
+#. Independence Day.
+#: holidays/countries/armenia.py:90
+msgid "Անկախության օր"
+msgstr "Independence Day"
+
+#. New Year's Eve.
+#: holidays/countries/armenia.py:93
+msgid "Նոր տարվա գիշեր"
+msgstr "New Year's Eve"

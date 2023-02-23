@@ -10,9 +10,9 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import EASTER_ORTHODOX, easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAY, SEP, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
@@ -33,7 +33,7 @@ class NorthMacedonia(HolidayBase):
 
         self[date(year, JAN, 7)] = "Christmas Day (Orthodox)"
         easter_date = easter(year, method=EASTER_ORTHODOX)
-        self[easter_date + rd(days=+1)] = "Easter Monday(Orthodox)"
+        self[easter_date + td(days=+1)] = "Easter Monday(Orthodox)"
         self[date(year, MAY, 1)] = "Labour Day"
         self[date(year, MAY, 24)] = "Saints Cyril and Methodius Day"
         self[date(year, AUG, 2)] = "Republic Day"

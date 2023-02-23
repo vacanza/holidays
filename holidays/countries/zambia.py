@@ -10,12 +10,13 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAR, APR, MAY, JUL, AUG, SEP, OCT, DEC, SUN
+from holidays.constants import JAN, MAR, APR, MAY, JUL, AUG, SEP, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -53,52 +54,50 @@ class Zambia(HolidayBase):
     }
 
     def _populate(self, year):
+        def _add_with_observed(hol_date: date, hol_name: str) -> None:
+            # whenever a public holiday falls on a Sunday,
+            # it rolls over to the following Monday
+            self[hol_date] = hol_name
+            if self.observed and self._is_sunday(hol_date):
+                self[hol_date + td(days=+1)] = f"{hol_name} (Observed)"
 
         # Observed since 1965
         if year <= 1964:
-            return
+            return None
 
         super()._populate(year)
 
-        self[date(year, JAN, 1)] = "New Year's Day"
+        _add_with_observed(date(year, JAN, 1), "New Year's Day")
 
         if year >= 1991:
-            self[date(year, MAR, 8)] = "International Women's Day"
+            _add_with_observed(date(year, MAR, 8), "International Women's Day")
 
-        self[date(year, MAR, 12)] = "Youth Day"
+        _add_with_observed(date(year, MAR, 12), "Youth Day")
 
         easter_date = easter(year)
-        self[easter_date + rd(days=-2)] = "Good Friday"
-        self[easter_date + rd(days=-1)] = "Holy Saturday"
-        self[easter_date + rd(days=+1)] = "Easter Monday"
+        self[easter_date + td(days=-2)] = "Good Friday"
+        self[easter_date + td(days=-1)] = "Holy Saturday"
+        self[easter_date + td(days=+1)] = "Easter Monday"
 
         if year >= 2022:
-            self[date(year, APR, 28)] = "Kenneth Kaunda Day"
+            _add_with_observed(date(year, APR, 28), "Kenneth Kaunda Day")
 
-        self[date(year, MAY, 1)] = "Labour Day"
-        self[date(year, MAY, 25)] = "Africa Freedom Day"
+        _add_with_observed(date(year, MAY, 1), "Labour Day")
+        _add_with_observed(date(year, MAY, 25), "Africa Freedom Day")
 
         # 1st Monday of July = "Heroes' Day"
         dt = date(year, JUL, 1) + rd(weekday=MO)
         self[dt] = "Heroes' Day"
-        self[dt + rd(days=+1)] = "Unity Day"
+        self[dt + td(days=+1)] = "Unity Day"
 
         # 1st Monday of Aug = "Farmers' Day"
-        dt = date(year, AUG, 1) + rd(weekday=MO)
-        self[dt] = "Farmers' Day"
+        self[date(year, AUG, 1) + rd(weekday=MO)] = "Farmers' Day"
 
         if year >= 2015:
-            self[date(year, OCT, 18)] = "National Prayer Day"
+            _add_with_observed(date(year, OCT, 18), "National Prayer Day")
 
-        self[date(year, OCT, 24)] = "Independence Day"
-        self[date(year, DEC, 25)] = "Christmas Day"
-
-        # whenever a public holiday falls on a Sunday,
-        # it rolls over to the following Monday
-        if self.observed:
-            for k, v in list(self.items()):
-                if k.year == year and k.weekday() == SUN:
-                    self[k + rd(days=+1)] = v + " (Observed)"
+        _add_with_observed(date(year, OCT, 24), "Independence Day")
+        _add_with_observed(date(year, DEC, 25), "Christmas Day")
 
 
 class ZM(Zambia):

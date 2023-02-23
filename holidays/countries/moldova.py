@@ -10,9 +10,9 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import EASTER_ORTHODOX, easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAR, MAY, JUN, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
@@ -42,10 +42,10 @@ class Moldova(HolidayBase):
 
         # Orthodox Easter
         for day_after_easter in [-2, 0, 1]:
-            self[easter_date + rd(days=day_after_easter)] = "Paştele"
+            self[easter_date + td(days=day_after_easter)] = "Paştele"
 
         # Paştele Blajinilor
-        self[easter_date + rd(days=+9)] = "Paştele Blajinilor"
+        self[easter_date + td(days=+9)] = "Paştele Blajinilor"
 
         # Labour Day
         self[date(year, MAY, 1)] = "Ziua Internatională a Muncii"
