@@ -10,6 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from .albania import AL, ALB, Albania
+from .american_samoa import AS, ASM, AmericanSamoa, HolidaysAS
 from .andorra import AD, AND, Andorra
 from .angola import AO, AGO, Angola
 from .argentina import AR, ARG, Argentina
@@ -49,6 +50,7 @@ from .france import FR, FRA, France
 from .georgia import GE, GEO, Georgia
 from .germany import DE, DEU, Germany
 from .greece import GR, GRC, Greece
+from .guam import GU, GUM, Guam, HolidaysGU
 from .honduras import HN, HND, Honduras
 from .hongkong import HK, HKG, HongKong
 from .hungary import HU, HUN, Hungary
@@ -73,6 +75,7 @@ from .madagascar import MG, MDG, Madagascar
 from .malawi import MW, MWI, Malawi
 from .malaysia import MY, MYS, Malaysia
 from .malta import MT, MLT, Malta
+from .marshall_islands import MH, MHL, MarshallIslands, HolidaysMH
 from .mexico import MX, MEX, Mexico
 from .moldova import MD, MDA, Moldova
 from .monaco import MC, MCO, Monaco
@@ -85,13 +88,21 @@ from .new_zealand import NZ, NZL, NewZealand
 from .nicaragua import NI, NIC, Nicaragua
 from .nigeria import NG, NGA, Nigeria
 from .north_macedonia import MK, MKD, NorthMacedonia
+from .northern_mariana_islands import (
+    MP,
+    MNP,
+    HolidaysMP,
+    NorthernMarianaIslands,
+)
 from .norway import NO, NOR, Norway
 from .pakistan import PK, PAK, Pakistan
+from .panama import PA, PAN, Panama
 from .paraguay import PY, PRY, Paraguay
 from .peru import PE, PER, Peru
 from .philippines import PH, PHL, Philippines
 from .poland import PL, POL, Poland
 from .portugal import PT, PRT, Portugal
+from .puerto_rico import PR, PRI, PuertoRico, HolidaysPR
 from .romania import RO, ROU, Romania
 from .russia import RU, RUS, Russia
 from .san_marino import SM, SMR, SanMarino
@@ -113,6 +124,18 @@ from .ukraine import UA, UKR, Ukraine
 from .united_arab_emirates import AE, ARE, UnitedArabEmirates
 from .united_kingdom import GB, UK, GBR, UnitedKingdom
 from .united_states import US, USA, UnitedStates
+from .united_states_minor_outlying_islands import (
+    UM,
+    UMI,
+    UnitedStatesMinorOutlyingIslands,
+    HolidaysUM,
+)
+from .united_states_virgin_islands import (
+    VI,
+    VIR,
+    UnitedStatesVirginIslands,
+    HolidaysVI,
+)
 from .uruguay import UY, URY, Uruguay
 from .uzbekistan import UZ, UZB, Uzbekistan
 from .vatican_city import VA, VAT, VaticanCity

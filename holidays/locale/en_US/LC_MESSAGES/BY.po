@@ -1,0 +1,61 @@
+# Belarus holidays en_US localization.
+# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.20\n"
+"POT-Creation-Date: 2023-02-15 20:06-0800\n"
+"PO-Revision-Date: 2023-02-14 17:52-0800\n"
+"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: holidays/countries/belarus.py:42
+msgid "Новы год"
+msgstr "New Year's Day"
+
+#. Christmas Day (Orthodox).
+#: holidays/countries/belarus.py:51
+msgid "Нараджэнне Хрыстова (праваслаўнае Раство)"
+msgstr "Orthodox Christmas Day"
+
+#. Women's Day.
+#: holidays/countries/belarus.py:56
+msgid "Дзень жанчын"
+msgstr "Women's Day"
+
+#. Radunitsa (Day of Rejoicing).
+#: holidays/countries/belarus.py:59
+msgid "Радаўніца"
+msgstr "Radunitsa"
+
+#. Labour Day.
+#: holidays/countries/belarus.py:64
+msgid "Свята працы"
+msgstr "Labor Day"
+
+#. Victory Day
+#: holidays/countries/belarus.py:67
+msgid "Дзень Перамогі"
+msgstr "Victory Day"
+
+#. Independence Day.
+#: holidays/countries/belarus.py:70
+msgid "Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)"
+msgstr "Independence Day (Republic Day)"
+
+#. October Revolution Day.
+#: holidays/countries/belarus.py:75
+msgid "Дзень Кастрычніцкай рэвалюцыі"
+msgstr "October Revolution Day"
+
+#. Christmas Day (Catholic).
+#: holidays/countries/belarus.py:78
+msgid "Нараджэнне Хрыстова (каталіцкае Раство)"
+msgstr "Catholic Christmas Day"

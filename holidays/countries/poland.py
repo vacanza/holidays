@@ -10,11 +10,12 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
+from gettext import gettext as tr
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAY, AUG, NOV, DEC
+from holidays.constants import JAN, FEB, MAY, JUN, JUL, AUG, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -24,37 +25,88 @@ class Poland(HolidayBase):
     """
 
     country = "PL"
+    default_language = "pl"
     special_holidays = {
-        2018: ((NOV, 12, "Narodowe Święto Niepodległości - 100-lecie"),)
+        2018: ((NOV, 12, tr("Narodowe Święto Niepodległości - 100-lecie")),)
     }
 
     def _populate(self, year):
+        if year <= 1924:
+            return None
+
         super()._populate(year)
 
-        self[date(year, JAN, 1)] = "Nowy Rok"
-        if year >= 2011:
-            self[date(year, JAN, 6)] = "Święto Trzech Króli"
+        self[date(year, JAN, 1)] = self.tr("Nowy Rok")
+
+        if year <= 1960 or year >= 2011:
+            self[date(year, JAN, 6)] = self.tr("Święto Trzech Króli")
+
+        if year <= 1950:
+            self[date(year, FEB, 2)] = self.tr(
+                "Oczyszczenie Najświętszej Marii Panny"
+            )
 
         easter_date = easter(year)
-        self[easter_date] = "Niedziela Wielkanocna"
-        self[easter_date + rd(days=+1)] = "Poniedziałek Wielkanocny"
+        self[easter_date] = self.tr("Niedziela Wielkanocna")
+
+        self[easter_date + td(days=+1)] = self.tr("Poniedziałek Wielkanocny")
 
         if year >= 1950:
-            self[date(year, MAY, 1)] = "Święto Państwowe"
-        if year >= 1919:
-            self[date(year, MAY, 3)] = "Święto Narodowe Trzeciego Maja"
+            self[date(year, MAY, 1)] = self.tr("Święto Państwowe")
 
-        self[easter_date + rd(days=+49)] = "Zielone Świątki"
-        self[easter_date + rd(days=+60)] = "Dzień Bożego Ciała"
+        if year <= 1950 or year >= 1990:
+            self[date(year, MAY, 3)] = self.tr(
+                "Święto Narodowe Trzeciego Maja"
+            )
 
-        self[date(year, AUG, 15)] = "Wniebowzięcie Najświętszej Marii Panny"
+        if 1946 <= year <= 1950:
+            self[date(year, MAY, 9)] = self.tr(
+                "Narodowe Święto Zwycięstwa i Wolności"
+            )
 
-        self[date(year, NOV, 1)] = "Uroczystość Wszystkich Świętych"
-        if (1937 <= year <= 1945) or year >= 1989:
-            self[date(year, NOV, 11)] = "Narodowe Święto Niepodległości"
+        if year <= 1950:
+            self[easter_date + td(days=+40)] = self.tr(
+                "Wniebowstąpienie Pańskie"
+            )
 
-        self[date(year, DEC, 25)] = "Boże Narodzenie (pierwszy dzień)"
-        self[date(year, DEC, 26)] = "Boże Narodzenie (drugi dzień)"
+        self[easter_date + td(days=+49)] = self.tr("Zielone Świątki")
+
+        if year <= 1950:
+            self[easter_date + td(days=+50)] = self.tr(
+                "Drugi dzień Zielonych Świątek"
+            )
+
+        self[easter_date + td(days=+60)] = self.tr("Dzień Bożego Ciała")
+
+        if year <= 1950:
+            self[date(year, JUN, 29)] = self.tr(
+                "Uroczystość Świętych Apostołów Piotra i Pawła"
+            )
+
+        if 1945 <= year <= 1989:
+            self[date(year, JUL, 22)] = self.tr(
+                "Narodowe Święto Odrodzenia Polski"
+            )
+
+        if year <= 1960 or year >= 1989:
+            self[date(year, AUG, 15)] = self.tr(
+                "Wniebowzięcie Najświętszej Marii Panny"
+            )
+
+        self[date(year, NOV, 1)] = self.tr("Uroczystość Wszystkich Świętych")
+
+        if 1937 <= year <= 1944 or year >= 1989:
+            self[date(year, NOV, 11)] = self.tr(
+                "Narodowe Święto Niepodległości"
+            )
+
+        if year <= 1950:
+            self[date(year, DEC, 8)] = self.tr(
+                "Niepokalane Poczęcie Najświętszej Marii Panny"
+            )
+
+        self[date(year, DEC, 25)] = self.tr("Boże Narodzenie (pierwszy dzień)")
+        self[date(year, DEC, 26)] = self.tr("Boże Narodzenie (drugi dzień)")
 
 
 class PL(Poland):
