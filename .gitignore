@@ -11,9 +11,7 @@ MANIFEST
 coverage.xml
 .tox
 .venv
-docs/_build
 docs/build
-docs/source/_build
 holidays/locale/pot
 
 # IDE Stuff

@@ -88,7 +88,7 @@ generate pygettext .pot file first:
     $ make l10n
 
 If the template file is empty make sure that the country/market entity has the
-:py:attr:`default_language` attribute set and all holiday names are wrapped
+``default_language`` attribute set and all holiday names are wrapped
 with ``tr``/``self.tr`` helpers. Use `ISO 639-1 codes`_ when adding new
 languages. Copy the generated template to all locale folders you're going to
 translate this country holiday names into (e.g., for Argentina:
