@@ -10,17 +10,18 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import MO, TU, WE
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, FEB, MAR, APR, JUN, JUL, SEP, OCT, NOV, DEC
+from holidays.constants import JAN, FEB, MAR, APR, JUN, JUL, SEP, OCT, NOV
+from holidays.constants import DEC, FRI
 from holidays.holiday_base import HolidayBase
 
 
 class NewZealand(HolidayBase):
+
     country = "NZ"
     special_holidays = {2022: ((SEP, 26, "Queen Elizabeth II Memorial Day"),)}
     subdivisions = [
@@ -63,18 +64,18 @@ class NewZealand(HolidayBase):
         "WTL",  # Correct code is WTC
     ]
 
-    def _get_nearest_monday(self, dt: date) -> date:
-        return (
-            dt + rd(weekday=MO(-1))
-            if not self._is_friday(dt) and not self._is_weekend(dt)
-            else dt + rd(weekday=MO)
-        )
+    @staticmethod
+    def _get_nearest_monday(d: date) -> date:
+        if d.weekday() < FRI:
+            return d + rd(weekday=MO(-1))
+        else:
+            return d + rd(weekday=MO)
 
     def _add_observed(self, dt: date) -> None:
         if self.observed and self._is_weekend(dt):
             obs_date = dt + rd(weekday=MO)
             if self.get(obs_date):
-                obs_date += td(days=+1)
+                obs_date += rd(days=+1)
             self[obs_date] = f"{self[dt]} (Observed)"
 
     def _populate(self, year):
@@ -90,8 +91,7 @@ class NewZealand(HolidayBase):
         # Holidays Act 1981, 2003
 
         if year <= 1893:
-            return None
-
+            return
         super()._populate(year)
 
         # New Year's Day
@@ -122,8 +122,8 @@ class NewZealand(HolidayBase):
 
         # Easter
         easter_date = easter(year)
-        self[easter_date + td(days=-2)] = "Good Friday"
-        self[easter_date + td(days=+1)] = "Easter Monday"
+        self[easter_date + rd(days=-2)] = "Good Friday"
+        self[easter_date + rd(days=+1)] = "Easter Monday"
 
         # Sovereign's Birthday
         if year >= 1902:
@@ -215,7 +215,7 @@ class NewZealand(HolidayBase):
 
         elif self.subdiv in {"Hawke's Bay", "HKB"}:
             self[
-                (date(year, OCT, 1) + rd(weekday=MO(+4)) + td(days=-3))
+                (date(year, OCT, 1) + rd(weekday=MO(+4)) + rd(days=-3))
             ] = "Hawke's Bay Anniversary Day"
 
         elif self.subdiv in {"WGN", "Wellington"}:
@@ -225,7 +225,7 @@ class NewZealand(HolidayBase):
 
         elif self.subdiv in {"Marlborough", "MBH"}:
             self[
-                (date(year, OCT, 1) + rd(weekday=MO(+4)) + td(days=+7))
+                (date(year, OCT, 1) + rd(weekday=MO(+4)) + rd(days=+7))
             ] = "Marlborough Anniversary Day"
 
         elif self.subdiv in {"Nelson", "NSN"}:
@@ -235,7 +235,7 @@ class NewZealand(HolidayBase):
 
         elif self.subdiv in {"CAN", "Canterbury"}:
             self[
-                (date(year, NOV, 1) + rd(weekday=TU) + td(days=+10))
+                (date(year, NOV, 1) + rd(weekday=TU) + rd(days=+10))
             ] = "Canterbury Anniversary Day"
 
         elif self.subdiv in {"South Canterbury", "STC"}:
@@ -254,14 +254,14 @@ class NewZealand(HolidayBase):
         elif self.subdiv in {"OTA", "Otago"}:
             # there is no easily determined single day of local observance?!?!
             dt = self._get_nearest_monday(date(year, MAR, 23))
-            if dt == easter_date + td(days=+1):  # Avoid Easter Monday
-                dt += td(days=+1)
+            if dt == easter_date + rd(days=+1):  # Avoid Easter Monday
+                dt += rd(days=+1)
             self[dt] = "Otago Anniversary Day"
 
         elif self.subdiv in {"STL", "Southland"}:
             name = "Southland Anniversary Day"
             if year >= 2012:
-                self[easter_date + td(days=+2)] = name
+                self[easter_date + rd(days=+2)] = name
             else:
                 self[self._get_nearest_monday(date(year, JAN, 17))] = name
 

@@ -10,7 +10,8 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
+
+from dateutil.relativedelta import relativedelta as rd
 
 # Installation: pip install korean_lunar_calendar
 # URL: https://github.com/usingsky/korean_lunar_calendar_py/
@@ -35,9 +36,9 @@ class Vietnam(HolidayBase):
 
     def _add_observed(self, holiday: date) -> None:
         if self._is_weekend(holiday):
-            next_workday = holiday + td(days=+1)
+            next_workday = holiday + rd(days=+1)
             while self._is_weekend(next_workday) or self.get(next_workday):
-                next_workday += td(days=+1)
+                next_workday += rd(days=+1)
             self[next_workday] = self[holiday] + " observed"
 
     def _populate(self, year):
@@ -77,7 +78,7 @@ class Vietnam(HolidayBase):
         )
         hol_date = self.get_solar_date(year, 1, 1)
         for d, name in names:
-            self[(hol_date + td(days=+d))] = name
+            self[(hol_date + rd(days=+d))] = name
 
     # convert lunar calendar date to solar
     def get_solar_date(self, year, month, day):

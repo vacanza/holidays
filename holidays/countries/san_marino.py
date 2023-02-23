@@ -10,9 +10,9 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 
 from dateutil.easter import easter
+from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, FEB, MAR, MAY, JUL, AUG, SEP, NOV, DEC
 from holidays.holiday_base import HolidayBase
@@ -47,13 +47,13 @@ class SanMarino(HolidayBase):
         self[easter_sunday] = "Easter Sunday"
 
         # Easter Monday.
-        self[easter_sunday + td(days=+1)] = "Easter Monday"
+        self[easter_sunday + rd(days=+1)] = "Easter Monday"
 
         # Labour Day.
         self[date(year, MAY, 1)] = "Labour Day"
 
         # Corpus Cristi.
-        self[easter_sunday + td(days=+60)] = "Corpus Cristi"
+        self[easter_sunday + rd(days=+60)] = "Corpus Cristi"
 
         # Liberation from Fascism Day.
         self[date(year, JUL, 28)] = "Liberation from Fascism Day"

@@ -10,7 +10,6 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date, datetime
-from datetime import timedelta as td
 
 from dateutil import tz
 from dateutil.easter import easter
@@ -20,6 +19,7 @@ from pymeeus.Epoch import Epoch
 from pymeeus.Sun import Sun
 
 from holidays.constants import JAN, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.constants import TUE, WED, THU, FRI, SAT, SUN
 from holidays.holiday_base import HolidayBase
 
 
@@ -55,41 +55,41 @@ class Chile(HolidayBase):
     ]
 
     def _populate(self, year):
+
         # Law 2.977 established official holidays for Chile
         # in its current form
         if year <= 1914:
-            return None
-
+            return
         super()._populate(year)
 
         # New Year's Day (Law 2.977)
         self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
         # Day after, if it's a Sunday (Law 20.983)
-        if year >= 2017 and self._is_sunday(date(year, JAN, 1)):
+        if year >= 2017 and date(year, JAN, 1).weekday() == SUN:
             self[date(year, JAN, 2)] = "Fiestas Patrias [Holiday]"
 
         # Holy Week (Law 2.977)
         easter_date = easter(year)
         self[
-            easter_date + td(days=-2)
+            easter_date + rd(days=-2)
         ] = "Semana Santa (Viernes Santo) [Good Friday)]"
         self[
-            easter_date + td(days=-1)
+            easter_date + rd(days=-1)
         ] = "Semana Santa (Sábado Santo) [Good Saturday)]"
 
         # Ascension
         if year <= 1967:
             self[
-                easter_date + td(days=+39)
+                easter_date + rd(days=+39)
             ] = "Ascensión del Señor [Ascension of Jesus]"
 
         # Corpus Christi
         if year <= 1967 or 1987 <= year <= 2006:
             # Law 19.668
             if year <= 1999:
-                dt = easter_date + td(days=+60)
+                dt = easter_date + rd(days=+60)
             else:
-                dt = easter_date + td(days=+57)
+                dt = easter_date + rd(days=+57)
             self[dt] = "Corpus Christi [Corpus Christi]"
 
         # Labour Day (Law 2.200, renamed with Law 18.018)
@@ -122,9 +122,9 @@ class Chile(HolidayBase):
             dt = date(year, JUN, 29)
             if year >= 2000:
                 # floating Monday holiday (Law 19.668)
-                if not self._is_friday(dt) and not self._is_weekend(dt):
+                if dt.weekday() < FRI:
                     dt += rd(weekday=MO(-1))
-                elif self._is_friday(dt):
+                elif dt.weekday() == FRI:
                     dt += rd(weekday=MO)
             self[dt] = "San Pedro y San Pablo [Saint Peter and Saint Paul]"
 
@@ -152,11 +152,11 @@ class Chile(HolidayBase):
 
         # National Holiday Friday preceding Independence Day (Law 20.983)
         # Monday, September 17, 2007, is declared a holiday.
-        if year >= 2017 and self._is_saturday(date(year, SEP, 18)):
+        if year >= 2017 and date(year, SEP, 18).weekday() == SAT:
             self[date(year, SEP, 17)] = "Fiestas Patrias [Holiday]"
 
         # National Holiday Monday preceding Independence Day (Law 20.215)
-        if year >= 2007 and self._is_tuesday(date(year, SEP, 18)):
+        if year >= 2007 and date(year, SEP, 18).weekday() == TUE:
             self[date(year, SEP, 17)] = "Fiestas Patrias [Holiday]"
 
         # Independence Day (Law 2.977)
@@ -170,7 +170,7 @@ class Chile(HolidayBase):
         ] = "Día de las Glorias del Ejército [Army Day]"
 
         # National Holiday Friday following Army Day (Law 20.215)
-        if year >= 2008 and self._is_thursday(date(year, SEP, 19)):
+        if year >= 2008 and date(year, SEP, 19).weekday() == THU:
             self[date(year, SEP, 20)] = "Fiestas Patrias [Holiday]"
 
         # Decree-law 636, Law 8.223
@@ -183,9 +183,9 @@ class Chile(HolidayBase):
             name = "Día de la Raza [Columbus day]"
             if year >= 2000:
                 # floating Monday holiday (Law 19.668)
-                if not self._is_friday(dt) and not self._is_weekend(dt):
+                if dt.weekday() < FRI:
                     dt += rd(weekday=MO(-1))
-                elif self._is_friday(dt):
+                elif dt.weekday() == FRI:
                     dt += rd(weekday=MO)
                 if year <= 2019:
                     # Day of the Meeting of Two Worlds (Law 3.810)
@@ -206,10 +206,10 @@ class Chile(HolidayBase):
             # This holiday is moved to the preceding Friday
             # if it falls on a Tuesday, or to the following Friday
             # if it falls on a Wednesday (Law 20.299)
-            if self._is_wednesday(dt):
-                dt += td(days=+2)
-            elif self._is_tuesday(dt):
-                dt += td(days=-4)
+            if dt.weekday() == WED:
+                dt += rd(days=+2)
+            elif dt.weekday() == TUE:
+                dt += rd(days=-4)
             self[dt] = (
                 "Día Nacional de las Iglesias Evangélicas y Protestantes"
                 " [Reformation Day]"

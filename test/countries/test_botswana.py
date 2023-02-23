@@ -1,0 +1,64 @@
+#  python-holidays
+#  ---------------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/dr-prodigy/python-holidays
+#  License: MIT (see LICENSE file)
+
+import unittest
+from datetime import date
+
+import holidays
+
+
+class TestBotswana(unittest.TestCase):
+    def setUp(self):
+        self.holidays = holidays.BW()
+
+    def test_new_years(self):
+        self.assertIn(date(1966, 1, 1), self.holidays)
+        self.assertIn(date(2018, 1, 1), self.holidays)
+        self.assertIn(date(2999, 1, 1), self.holidays)
+        self.assertIn(date(2017, 1, 2), self.holidays)  # sunday
+
+    def test_easter(self):
+        self.assertIn(date(2017, 4, 14), self.holidays)
+        self.assertIn(date(2017, 4, 17), self.holidays)
+        self.assertIn(date(1994, 4, 1), self.holidays)
+
+    def test_presidents_day(self):
+        self.assertIn(date(2000, 7, 17), self.holidays)
+        self.assertIn(date(2000, 7, 18), self.holidays)
+        self.assertIn(date(2020, 7, 20), self.holidays)
+        self.assertIn(date(2020, 7, 21), self.holidays)
+        self.assertIn(date(2021, 7, 19), self.holidays)
+        self.assertIn(date(2021, 7, 20), self.holidays)
+        self.assertIn(date(2022, 7, 18), self.holidays)
+        self.assertIn(date(2022, 7, 19), self.holidays)
+
+    def test_static(self):
+        self.assertIn(date(2004, 7, 1), self.holidays)
+        self.assertIn(date(2022, 12, 26), self.holidays)  # Christmas
+
+    def test_not_holiday(self):
+        self.assertNotIn(date(2016, 12, 28), self.holidays)
+        self.assertNotIn(date(2015, 3, 2), self.holidays)
+        self.assertNotIn(date(1964, 4, 16), self.holidays)
+
+    def test_special_holidays(self):
+        self.assertIn(date(2019, 7, 2), self.holidays)
+
+    def test_saturday_and_monday(self):
+        self.assertIn(date(2020, 12, 26), self.holidays)
+
+    def test_not_observed(self):
+        self.holidays = holidays.BW(observed=False)
+        self.assertNotIn(date(2018, 7, 2), self.holidays)
+        self.assertNotIn(date(2018, 10, 2), self.holidays)
+        self.assertNotIn(date(2021, 12, 27), self.holidays)
+        self.assertNotIn(date(2022, 5, 2), self.holidays)
+        self.assertNotIn(date(2022, 12, 27), self.holidays)
