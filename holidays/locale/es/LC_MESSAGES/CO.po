@@ -1,0 +1,102 @@
+# Colombia holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.20\n"
+"POT-Creation-Date: 2023-02-19 17:09+0200\n"
+"PO-Revision-Date: 2023-02-19 17:16+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: holidays/countries/colombia.py:52
+#, c-format
+msgid "%s (Observado)"
+msgstr ""
+
+#. New Year's Day
+#: holidays/countries/colombia.py:60
+msgid "Año Nuevo"
+msgstr ""
+
+#: holidays/countries/colombia.py:66
+msgid "Día de los Reyes Magos"
+msgstr ""
+
+#: holidays/countries/colombia.py:72
+msgid "Día de San José"
+msgstr ""
+
+#. Labor Day
+#: holidays/countries/colombia.py:76
+msgid "Día del Trabajo"
+msgstr ""
+
+#: holidays/countries/colombia.py:82
+msgid "San Pedro y San Pablo"
+msgstr ""
+
+#. Independence Day
+#: holidays/countries/colombia.py:86
+msgid "Día de la Independencia"
+msgstr ""
+
+#. Battle of Boyaca
+#: holidays/countries/colombia.py:89
+msgid "Batalla de Boyacá"
+msgstr ""
+
+#: holidays/countries/colombia.py:95
+msgid "La Asunción"
+msgstr ""
+
+#: holidays/countries/colombia.py:101
+msgid "Día de la Raza"
+msgstr ""
+
+#: holidays/countries/colombia.py:108
+msgid "Día de Todos los Santos"
+msgstr ""
+
+#: holidays/countries/colombia.py:114
+msgid "Independencia de Cartagena"
+msgstr ""
+
+#. Immaculate Conception
+#: holidays/countries/colombia.py:119
+msgid "La Inmaculada Concepción"
+msgstr ""
+
+#. Christmas
+#: holidays/countries/colombia.py:122
+msgid "Navidad"
+msgstr ""
+
+#. Maundy Thursday
+#: holidays/countries/colombia.py:128
+msgid "Jueves Santo"
+msgstr ""
+
+#. Good Friday
+#: holidays/countries/colombia.py:131
+msgid "Viernes Santo"
+msgstr ""
+
+#: holidays/countries/colombia.py:136
+msgid "Ascensión del señor"
+msgstr ""
+
+#: holidays/countries/colombia.py:142
+msgid "Corpus Christi"
+msgstr ""
+
+#: holidays/countries/colombia.py:149
+msgid "Sagrado Corazón"
+msgstr ""

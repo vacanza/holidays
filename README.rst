@@ -528,7 +528,7 @@ default language code is a `ISO 639-1 code`_.
      - Supported languages
    * - Argentina
      - es
-     - en_US, es
+     - en_US, es, uk
    * - Armenia
      - hy
      - en_US, hy
@@ -541,6 +541,9 @@ default language code is a `ISO 639-1 code`_.
    * - Canada
      - en
      - en, fr
+   * - Colombia
+     - es
+     - en_US, es, uk
    * - Cyprus
      - el
      - el, en
@@ -559,6 +562,9 @@ default language code is a `ISO 639-1 code`_.
    * - Japan
      - ja
      - en_US, ja
+   * - Monaco
+     - fr
+     - en_US, fr, uk
    * - Poland
      - pl
      - en_US, pl, uk
@@ -568,6 +574,9 @@ default language code is a `ISO 639-1 code`_.
    * - Serbia
      - sr
      - en_US, sr
+   * - Thailand
+     - th
+     - en_US, th
    * - Ukraine
      - uk
      - en_US, uk
