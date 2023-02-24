@@ -565,6 +565,9 @@ default language code is a `ISO 639-1 code`_.
    * - Monaco
      - fr
      - en_US, fr, uk
+   * - Peru
+     - es
+     - en_US, es, uk
    * - Poland
      - pl
      - en_US, pl, uk
