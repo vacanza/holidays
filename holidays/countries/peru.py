@@ -25,58 +25,58 @@ class Peru(HolidayBase):
     """
 
     country = "PE"
+    default_language = "es"
 
     def _populate(self, year):
         super()._populate(year)
 
         # New Year's Day
-        self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
-
-        # Feast of Saints Peter and Paul
-        name = "San Pedro y San Pablo [Feast of Saints Peter and Paul]"
-        self[date(year, JUN, 29)] = name
-
-        # Independence Day
-        name = "Día de la Independencia [Independence Day]"
-        self[date(year, JUL, 28)] = name
-
-        name = "Día de las Fuerzas Armadas y la Policía del Perú"
-        self[date(year, JUL, 29)] = name
-
-        # Santa Rosa de Lima
-        name = "Día de Santa Rosa de Lima"
-        self[date(year, AUG, 30)] = name
-
-        # Battle of Angamos
-        name = "Combate Naval de Angamos [Battle of Angamos]"
-        self[date(year, OCT, 8)] = name
+        self[date(year, JAN, 1)] = self.tr("Año Nuevo")
 
         easter_date = easter(year)
         # Holy Thursday
-        self[easter_date + td(days=-3)] = "Jueves Santo [Maundy Thursday]"
+        self[easter_date + td(days=-3)] = self.tr("Jueves Santo")
 
         # Good Friday
-        self[easter_date + td(days=-2)] = "Viernes Santo [Good Friday]"
-
-        # Holy Saturday
-        self[easter_date + td(days=-1)] = "Sábado de Gloria [Holy Saturday]"
+        self[easter_date + td(days=-2)] = self.tr("Viernes Santo")
 
         # Easter Sunday
-        self[easter_date] = "Domingo de Resurrección [Easter Sunday]"
+        self[easter_date] = self.tr("Domingo de Resurrección")
 
         # Labor Day
-        self[date(year, MAY, 1)] = "Día del Trabajo [Labour Day]"
+        self[date(year, MAY, 1)] = self.tr("Día del Trabajo")
+
+        # Feast of Saints Peter and Paul
+        self[date(year, JUN, 29)] = self.tr("San Pedro y San Pablo")
+
+        # Independence Day
+        self[date(year, JUL, 28)] = self.tr("Día de la Independencia")
+
+        # Great Military Parade Day
+        self[date(year, JUL, 29)] = self.tr("Día de la Gran Parada Militar")
+
+        if year >= 2022:
+            # Battle of Junín
+            self[date(year, AUG, 6)] = self.tr("Batalla de Junín")
+
+        # Santa Rosa de Lima
+        self[date(year, AUG, 30)] = self.tr("Santa Rosa de Lima")
+
+        # Battle of Angamos
+        self[date(year, OCT, 8)] = self.tr("Combate de Angamos")
 
         # All Saints Day
-        name = "Día de Todos Los Santos [All Saints Day]"
-        self[date(year, NOV, 1)] = name
+        self[date(year, NOV, 1)] = self.tr("Todos Los Santos")
 
-        # Inmaculada Concepción
-        name = "Inmaculada Concepción [Immaculate Conception]"
-        self[date(year, DEC, 8)] = name
+        # Immaculate Conception
+        self[date(year, DEC, 8)] = self.tr("Inmaculada Concepción")
+
+        if year >= 2022:
+            # Battle of Ayacucho
+            self[date(year, DEC, 9)] = self.tr("Batalla de Ayacucho")
 
         # Christmas
-        self[date(year, DEC, 25)] = "Navidad [Christmas]"
+        self[date(year, DEC, 25)] = self.tr("Navidad del Señor")
 
 
 class PE(Peru):
