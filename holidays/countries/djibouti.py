@@ -12,9 +12,9 @@
 from datetime import date
 from datetime import timedelta as td
 
+from holidays.calendars import _islamic_to_gre
 from holidays.constants import JAN, MAY, JUN, FRI, SAT
 from holidays.holiday_base import HolidayBase
-from holidays.utils import _islamic_to_gre
 
 # Since Djibouti share most of it's holidays with other muslim countries,
 # this class is just a copy of Egypt's.

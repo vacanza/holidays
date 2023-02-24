@@ -13,10 +13,10 @@ from datetime import date
 from datetime import timedelta as td
 from typing import Dict, List
 
+from holidays.calendars import _islamic_to_gre
 from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT
 from holidays.constants import NOV, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.utils import _islamic_to_gre
 
 
 class Azerbaijan(HolidayBase):

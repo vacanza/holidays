@@ -15,9 +15,9 @@ from datetime import timedelta as td
 
 from dateutil.easter import EASTER_ORTHODOX, easter
 
+from holidays.calendars import _islamic_to_gre
 from holidays.constants import JAN, MAR, MAY, NOV, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.utils import _islamic_to_gre
 
 
 class BosniaAndHerzegovina(HolidayBase):

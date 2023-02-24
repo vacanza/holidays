@@ -15,9 +15,9 @@ from datetime import timedelta as td
 
 from dateutil.easter import easter
 
+from holidays.calendars import _islamic_to_gre
 from holidays.constants import JAN, MAR, APR, MAY, JUN, AUG, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.utils import _islamic_to_gre
 
 
 class India(HolidayBase):
