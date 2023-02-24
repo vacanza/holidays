@@ -528,7 +528,7 @@ default language code is a `ISO 639-1 code`_.
      - Supported languages
    * - Argentina
      - es
-     - en_US, es
+     - en_US, es, uk
    * - Armenia
      - hy
      - en_US, hy

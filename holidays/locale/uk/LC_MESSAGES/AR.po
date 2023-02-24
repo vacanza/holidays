@@ -1,122 +1,122 @@
-# Argentina holidays en_US localization.
-# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2022.
+# Argentina holidays Ukrainian translation.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.20\n"
 "POT-Creation-Date: 2023-02-20 19:00+0200\n"
-"PO-Revision-Date: 2023-02-20 19:10+0200\n"
+"PO-Revision-Date: 2023-02-20 19:13+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
-"Language: en_US\n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Generated-By: pygettext.py 1.5\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
 
 #: holidays/countries/argentina.py:51
 msgid "Bicentenario de la creación y primera jura de la bandera nacional"
-msgstr "Bicentenary of the creation and first oath of the national flag"
+msgstr "200-річчя створення та першої присяги державному прапору"
 
 #: holidays/countries/argentina.py:56
 msgid "Bicentenario de la Batalla de Tucumán"
-msgstr "Bicentenary of the Battle of Tucumán"
+msgstr "200-річчя битви при Тукумані"
 
 #: holidays/countries/argentina.py:62
 msgid ""
 "Bicentenario de la sesión inaugural de la Asamblea Nacional Constituyente "
 "del año 1813"
 msgstr ""
-"Bicentenary of the inaugural session of the National Constituent Assembly "
-"of the year 1813"
+"200-річчя інавгураційної сесії Національних установчих зборів 1813 року"
 
 #: holidays/countries/argentina.py:67
 msgid "Bicentenario de la Batalla de Salta"
-msgstr "Bicentenary of the Battle of Salta"
+msgstr "200-річчя битви при Сальті"
 
 #: holidays/countries/argentina.py:81 holidays/countries/argentina.py:84
 #, c-format
 msgid "%s (Observado)"
-msgstr "%s (Observed)"
+msgstr "%s (вихідний)"
 
 #. New Year's Day
 #: holidays/countries/argentina.py:90
 msgid "Año Nuevo"
-msgstr "New Year's Day"
+msgstr "Новий рік"
 
 #. Carnival days
 #: holidays/countries/argentina.py:94
 msgid "Día de Carnaval"
-msgstr "Carnival"
+msgstr "Карнавал"
 
 #: holidays/countries/argentina.py:100
 msgid "Día Nacional de la Memoria por la Verdad y la Justicia"
-msgstr "Memory's National Day for the Truth and Justice"
+msgstr "День пам'яті заради правди та правосуддя"
 
 #. Good Friday
 #: holidays/countries/argentina.py:105
 msgid "Viernes Santo"
-msgstr "Good Friday"
+msgstr "Страсна п'ятниця"
 
 #: holidays/countries/argentina.py:109
 msgid "Día del Veterano y de los Caidos en la Guerra de Malvinas"
-msgstr "Veterans Day and the Fallen in the Malvinas War"
+msgstr "День ветеранів та загиблих на Мальвінській війні"
 
 #. Labor Day
 #: holidays/countries/argentina.py:114
 msgid "Día del Trabajo"
-msgstr "Labor Day"
+msgstr "День праці"
 
 #. May Revolution Day
 #: holidays/countries/argentina.py:117
 msgid "Día de la Revolución de Mayo"
-msgstr "May Revolution Day"
+msgstr "День Травневої революції"
 
 #: holidays/countries/argentina.py:121
 msgid ""
 "Día de los Derechos Argentinos sobre las Islas Malvinas, Sandwich y del "
 "Atlántico Sur"
 msgstr ""
-"Day of Argentine Sovereignty over the Malvinas, Sandwich and South Atlantic "
-"Islands"
+"День суверенітету Аргентини на Мальвінських, Сендвічевих і "
+"Південноатлантичних островах"
 
 #: holidays/countries/argentina.py:129
 msgid "Paso a la Inmortalidad del General Don Martín Miguel de Güemes"
-msgstr "Pass to the Immortality of General Don Martín Miguel de Güemes"
+msgstr "День пам'яті генерала Мартіна Мігеля де Гуемеса"
 
 #: holidays/countries/argentina.py:144
 msgid "Paso a la Inmortalidad del General Don Manuel Belgrano"
-msgstr "Pass to the Immortality of General Don Manuel Belgrano"
+msgstr "День пам’яті генерала Мануеля Бельграно"
 
 #. Independence Day
 #: holidays/countries/argentina.py:149
 msgid "Día de la Independencia"
-msgstr "Independence Day"
+msgstr "День незалежності"
 
 #: holidays/countries/argentina.py:154
 msgid "Paso a la Inmortalidad del General Don José de San Martin"
-msgstr "Pass to the Immortality of General Don José de San Martin"
+msgstr "День пам'яті генерала Хосе де Сан-Мартіна"
 
 #: holidays/countries/argentina.py:161
 msgid "Día del Respeto a la Diversidad Cultural"
-msgstr "Respect for Cultural Diversity Day"
+msgstr "День поваги до культурного різноманіття"
 
 #: holidays/countries/argentina.py:163
 msgid "Día de la Raza"
-msgstr "Columbus day"
+msgstr "День Колумба"
 
 #: holidays/countries/argentina.py:170
 msgid "Día de la Soberanía Nacional"
-msgstr "National Sovereignty Day"
+msgstr "День національного суверенітету"
 
 #. Immaculate Conception
 #: holidays/countries/argentina.py:174
 msgid "Inmaculada Concepción de María"
-msgstr "Immaculate Conception"
+msgstr "Непорочне зачаття Діви Марії"
 
 #. Christmas
 #: holidays/countries/argentina.py:177
 msgid "Navidad"
-msgstr "Christmas"
+msgstr "Різдво Христове"
