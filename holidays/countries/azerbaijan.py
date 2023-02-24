@@ -11,6 +11,7 @@
 
 from datetime import date
 from datetime import timedelta as td
+from typing import Dict, List
 
 from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT
 from holidays.constants import NOV, DEC
@@ -26,54 +27,52 @@ class Azerbaijan(HolidayBase):
     country = "AZ"
 
     def _populate(self, year: int) -> None:
-        def _add_observed(hol_date: date, hol_name: str) -> None:
-            next_workday = hol_date + td(days=+1)
-            while next_workday.year == year and (
-                self._is_weekend(next_workday) or self.get(next_workday)
-            ):
-                next_workday += td(days=+1)
-            _add_holiday(next_workday, f"{hol_name} (Observed)")
-
-        def _add_holiday(hol_date: date, hol_name: str) -> None:
-            if hol_date.year == year:
-                self[hol_date] = hol_name
+        def collect_holiday(hol_date: date, hol_name: str) -> None:
+            if hol_date in holiday_date_names_mapping:
+                holiday_date_names_mapping[hol_date].append(hol_name)
+            else:
+                holiday_date_names_mapping[hol_date] = [hol_name]
 
         if year <= 1989:
             return None
 
         super()._populate(year)
 
+        holiday_date_names_mapping: Dict[date, List[str]] = {}
+
         # New Year
         name = "New Year's Day"
-        self[date(year, JAN, 1)] = name
+        collect_holiday(date(year, JAN, 1), name)
         if year >= 2006:
-            self[date(year, JAN, 2)] = name
+            collect_holiday(date(year, JAN, 2), name)
 
-        # Black January
+        # Black January (without extending)
         if year >= 2000:
             self[date(year, JAN, 20)] = "Black January"
 
         # International Women's Day
-        self[date(year, MAR, 8)] = "International Women's Day"
+        collect_holiday(date(year, MAR, 8), "International Women's Day")
 
         # Novruz
         if year >= 2007:
             for i in range(20, 25):
-                self[date(year, MAR, i)] = "Novruz"
+                collect_holiday(date(year, MAR, i), "Novruz")
 
         # Victory Day
-        self[date(year, MAY, 9)] = "Victory Day over Fascism"
+        collect_holiday(date(year, MAY, 9), "Victory Day over Fascism")
 
         # Republic Day
         if year >= 1992:
-            name = "Independence Day" if year >= 2021 else "Republic Day"
-            self[date(year, MAY, 28)] = name
+            collect_holiday(
+                date(year, MAY, 28),
+                "Independence Day" if year >= 2021 else "Republic Day",
+            )
 
         # National Salvation Day
         if year >= 1997:
-            self[date(year, JUN, 15)] = "National Salvation Day"
+            collect_holiday(date(year, JUN, 15), "National Salvation Day")
 
-        # Memorial Day
+        # Memorial Day (without extending)
         if year >= 2021:
             self[date(year, SEP, 27)] = "Memorial Day"
 
@@ -83,28 +82,25 @@ class Azerbaijan(HolidayBase):
             if year <= 1997:
                 self[date(year, OCT, 9)] = name
             else:
-                self[date(year, JUN, 26)] = name
+                collect_holiday(date(year, JUN, 26), name)
 
         # Independence Day
         if year <= 2005:
-            self[date(year, OCT, 18)] = "Independence Day"
+            collect_holiday(date(year, OCT, 18), "Independence Day")
 
         # Victory Day
         if year >= 2021:
-            self[date(year, NOV, 8)] = "Victory Day"
+            collect_holiday(date(year, NOV, 8), "Victory Day")
 
         # Flag Day
         if year >= 2010:
-            self[date(year, NOV, 9)] = "Flag Day"
+            collect_holiday(date(year, NOV, 9), "Flag Day")
 
         # International Solidarity Day of Azerbaijanis
         if year >= 1993:
             name = "International Solidarity Day of Azerbaijanis"
-            self[date(year, DEC, 31)] = name
-            if self.observed and year >= 2006:
-                dt = date(year - 1, DEC, 31)
-                if self._is_weekend(dt):
-                    _add_observed(dt, name)
+            collect_holiday(date(year, DEC, 31), name)
+            collect_holiday(date(year - 1, DEC, 31), name)
 
         ramazan_dates_obs = {
             2011: ((AUG, 30),),
@@ -147,45 +143,63 @@ class Azerbaijan(HolidayBase):
                 for yr in (year - 1, year):
                     if yr in dates_obs:
                         for date_obs in dates_obs[yr]:
-                            _add_holiday(date(yr, *date_obs), name)
-                            _add_holiday(
+                            collect_holiday(date(yr, *date_obs), name)
+                            collect_holiday(
                                 date(yr, *date_obs) + td(days=+1), name
                             )
                     else:
                         for dt in _islamic_to_gre(yr, hmonth, hday):
-                            _add_holiday(dt, f"{name}* (*estimated)")
-                            _add_holiday(
+                            collect_holiday(dt, f"{name}* (*estimated)")
+                            collect_holiday(
                                 dt + td(days=+1),
                                 f"{name}* (*estimated)",
                             )
 
-        """
-        [2]:
-        Article 105 of the Labor Code of the Republic of Azerbaijan states:
-        5. If interweekly rest days and holidays that are not considered
-        working days overlap, that rest day is immediately transferred to
-        the next working day.
-        6. If the holidays of Qurban and Ramadan coincide with another holiday
-        that is not considered a working day, the next working day is
-         considered a rest day. *(machine translated)*
-        """
+        # Article 105 of the Labor Code of the Republic of Azerbaijan states:
+        # 5. If interweekly rest days and holidays that are not considered
+        # working days overlap, that rest day is immediately transferred to
+        # the next working day.
         if self.observed and year >= 2006:
-            for k, v in list(self.items()):
-                if (
-                    k.year == year
-                    and self._is_weekend(k)
-                    and k
-                    not in (
-                        date(year, JAN, 20),
-                        date(year, SEP, 27),
+            hol_dates = list(holiday_date_names_mapping.keys())
+            hol_dates.append(date(year, JAN, 20))
+            hol_dates.append(date(year, SEP, 27))
+
+            for hol_date, hol_names in sorted(
+                holiday_date_names_mapping.items()
+            ):
+                if self._is_weekend(hol_date):
+                    next_workday = hol_date + td(
+                        days=+2 if self._is_saturday(hol_date) else +1
                     )
-                ):
-                    _add_observed(k, v)
-                hol_names = self.get_list(k)
-                if len(hol_names) > 1 and " (Observed)" not in v:
-                    for name in hol_names:
-                        if name in {hol[0] for hol in religious_holidays}:
-                            _add_observed(k, name)
+                    while next_workday in hol_dates or self._is_weekend(
+                        next_workday
+                    ):
+                        next_workday += td(days=+1)
+                    for hol_name in hol_names:
+                        collect_holiday(next_workday, f"{hol_name} (Observed)")
+                    hol_dates.append(next_workday)
+
+                # 6. If the holidays of Qurban and Ramadan coincide with
+                # another holiday that is not considered a working day,
+                # the next working day is considered a rest day.
+                elif len(hol_names) > 1:
+                    for hol_name in hol_names:
+                        if "Bayrami" in hol_name:
+                            next_workday = hol_date + td(days=+1)
+                            while (
+                                next_workday in hol_dates
+                                or self._is_weekend(next_workday)
+                            ):
+                                next_workday += td(days=+1)
+                            collect_holiday(
+                                next_workday, f"{hol_name} (Observed)"
+                            )
+                            hol_dates.append(next_workday)
+
+        for hol_date, hol_names in holiday_date_names_mapping.items():
+            if hol_date.year == year:
+                for hol_name in hol_names:
+                    self[hol_date] = hol_name
 
 
 class AZ(Azerbaijan):
