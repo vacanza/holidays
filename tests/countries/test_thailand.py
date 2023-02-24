@@ -15,9 +15,13 @@ from tests.common import TestCase
 
 class TestThailand(TestCase):
     def setUp(self):
-        self.holidays = Thailand()
+        super().setUp()
         # Checks in lieu not observed until 2030
         self.holidays_no_observed = Thailand(observed=False)
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Thailand)
 
     def test_country_aliases(self):
         self.assertCountryAliases(Thailand, TH, THA)
@@ -27,41 +31,66 @@ class TestThailand(TestCase):
 
     def test_2022(self):
         self.assertHolidays(
-            ("2022-01-01", "New Year's Day"),
-            ("2022-01-03", "New Year's Day (in lieu)"),
-            ("2022-02-16", "Makha Bucha"),
-            ("2022-04-06", "Chakri Memorial Day"),
-            ("2022-04-13", "Songkran Festival"),
-            ("2022-04-14", "Songkran Festival"),
-            ("2022-04-15", "Songkran Festival"),
-            ("2022-05-01", "National Labour Day"),
-            ("2022-05-02", "National Labour Day (in lieu)"),
-            ("2022-05-04", "Coronation Day"),
-            ("2022-05-15", "Visakha Bucha"),
-            ("2022-05-16", "Visakha Bucha (in lieu)"),
-            ("2022-05-17", "Royal Ploughing Ceremony"),
-            ("2022-06-03", "HM Queen Suthida's Birthday"),
-            ("2022-07-13", "Asarnha Bucha"),
-            ("2022-07-14", "Buddhist Lent Day"),
-            ("2022-07-15", "Bridge Public Holiday"),
-            ("2022-07-28", "HM King Maha Vajiralongkorn's Birthday"),
-            ("2022-07-29", "Bridge Public Holiday"),
+            ("2022-01-01", "วันขึ้นปีใหม่"),
+            ("2022-01-03", "ชดเชยวันขึ้นปีใหม่"),
+            ("2022-02-16", "วันมาฆบูชา"),
+            ("2022-04-06", "วันจักรี"),
+            ("2022-04-13", "วันสงกรานต์"),
+            ("2022-04-14", "วันสงกรานต์"),
+            ("2022-04-15", "วันสงกรานต์"),
+            ("2022-05-01", "วันแรงงานแห่งชาติ"),
+            ("2022-05-02", "ชดเชยวันแรงงานแห่งชาติ"),
+            ("2022-05-04", "วันฉัตรมงคล"),
+            ("2022-05-15", "วันวิสาขบูชา"),
+            ("2022-05-16", "ชดเชยวันวิสาขบูชา"),
+            ("2022-05-17", "วันพืชมงคล"),
+            (
+                "2022-06-03",
+                (
+                    "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสุทิดา "
+                    "พัชรสุธาพิมลลักษณ พระบรมราชินี"
+                ),
+            ),
+            ("2022-07-13", "วันอาสาฬหบูชา"),
+            ("2022-07-14", "วันเข้าพรรษา"),
+            ("2022-07-15", "วันหยุดพิเศษ (เพิ่มเติม)"),
+            (
+                "2022-07-28",
+                (
+                    "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรเมนทร"
+                    "รามาธิบดีศรีสินทรมหาวชิราลงกรณ พระวชิรเกล้าเจ้าอยู่หัว"
+                ),
+            ),
+            ("2022-07-29", "วันหยุดพิเศษ (เพิ่มเติม)"),
             (
                 "2022-08-12",
-                "HM Queen Sirikit The Queen Mother's Birthday; National Mother's Day",  # noqa: E501
+                (
+                    "วันเฉลิมพระชนมพรรษาสมเด็จพระบรมราชชนนีพันปีหลวง; "
+                    "วันแม่แห่งชาติ"
+                ),
             ),
-            ("2022-10-13", "HM King Bhumibol Adulyadej Memorial Day"),
-            ("2022-10-14", "Bridge Public Holiday"),
-            ("2022-10-23", "Chulalongkorn Memorial Day"),
-            ("2022-10-24", "Chulalongkorn Memorial Day (in lieu)"),
+            (
+                "2022-10-13",
+                (
+                    "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร "
+                    "มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
+                ),
+            ),
+            ("2022-10-14", "วันหยุดพิเศษ (เพิ่มเติม)"),
+            ("2022-10-23", "วันปิยมหาราช"),
+            ("2022-10-24", "ชดเชยวันปิยมหาราช"),
             (
                 "2022-12-05",
-                "HM King Bhumibol Adulyadej's Birthday; National Father's Day",
+                (
+                    "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร "
+                    "มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร; "
+                    "วันชาติ; วันพ่อแห่งชาติ"
+                ),
             ),
-            ("2022-12-10", "Constitution Day"),
-            ("2022-12-12", "Constitution Day (in lieu)"),
-            ("2022-12-30", "Bridge Public Holiday"),
-            ("2022-12-31", "New Year's Eve"),
+            ("2022-12-10", "วันรัฐธรรมนูญ"),
+            ("2022-12-12", "ชดเชยวันรัฐธรรมนูญ"),
+            ("2022-12-30", "วันหยุดพิเศษ (เพิ่มเติม)"),
+            ("2022-12-31", "วันสิ้นปี"),
         )
 
     def test_new_years_day(self):
@@ -91,7 +120,7 @@ class TestThailand(TestCase):
         )
 
     def test_songkran_festival(self):
-        name = "Songkran Festival"
+        name = "วันสงกรานต์"
 
         self.assertNoHolidayName(name, Thailand(years=1947))
         for year in range(1948, 1954):
@@ -132,7 +161,7 @@ class TestThailand(TestCase):
         )
 
     def test_national_labour_day(self):
-        name = "National Labour Day"
+        name = "วันแรงงานแห่งชาติ"
 
         self.assertNoHoliday("1973-05-01")
         self.assertNoHolidayName(name, Thailand(years=1973))
@@ -149,7 +178,7 @@ class TestThailand(TestCase):
         )
 
     def test_coronation_day(self):
-        name = "Coronation Day"
+        name = "วันฉัตรมงคล"
 
         self.assertNoHoliday("1957-05-05")
         self.assertNoHolidayName(name, Thailand(years=1957))
@@ -167,7 +196,10 @@ class TestThailand(TestCase):
         )
 
     def test_queen_suthida_birthday(self):
-        name = "HM Queen Suthida's Birthday"
+        name = (
+            "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสุทิดา "
+            "พัชรสุธาพิมลลักษณ พระบรมราชินี"
+        )
 
         self.assertNoHoliday("2018-06-03")
         self.assertNoHolidayName(name, Thailand(years=2018))
@@ -181,16 +213,14 @@ class TestThailand(TestCase):
         )
 
     def test_national_day(self):
-        name = "National Day"
-
         self.assertHoliday(f"{year}-06-24" for year in range(1941, 1960))
-        self.assertNoHoliday("1960-06-24")
-        self.assertNoHolidayName(name, Thailand(years=1960))
+        self.assertHoliday(f"{year}-12-05" for year in range(1960, 2058))
 
-        # No in lieus during its existense
+        # No in lieus during its existense on June 24th
+        # 1960+ In lieus are same as HM King Bhumibol Adulyadej's Birthday
 
     def test_rama_x_birthday(self):
-        name = "HM King Maha Vajiralongkorn's Birthday"
+        name = "วันเฉลิมพระชนมพรรษา พระบาทสมเด็จพระเจ้าอยู่หัว"
 
         self.assertNoHoliday("2016-07-28")
         self.assertNoHolidayName(name, Thailand(years=2016))
@@ -206,8 +236,10 @@ class TestThailand(TestCase):
         )
 
     def test_queen_sirikit_birthday(self):
-        name_ix = "HM Queen Sirikit's Birthday"
-        name_x = "HM Queen Sirikit The Queen Mother's Birthday"
+        name_ix = (
+            "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถ"
+        )
+        name_x = "วันเฉลิมพระชนมพรรษาสมเด็จพระบรมราชชนนีพันปีหลวง"
 
         self.assertNoHoliday("1975-08-12")
         self.assertNoHolidayName(name_ix, Thailand(years=1975))
@@ -231,7 +263,7 @@ class TestThailand(TestCase):
         )
 
     def test_national_mothers_day(self):
-        name = "National Mother's Day"
+        name = "วันแม่แห่งชาติ"
 
         self.assertNoHolidayName(name, Thailand(years=1949))
         self.assertHolidaysName(
@@ -246,10 +278,25 @@ class TestThailand(TestCase):
         # In lieus are same as HM Queen Sirikit's Birthday
 
     def test_rama_ix_memorial_day(self):
-        name = "HM King Bhumibol Adulyadej Memorial Day"
-        self.assertHoliday(f"{year}-10-13" for year in range(2017, 2058))
+        name_ix = (
+            "วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทร"
+            "มหาภูมิพลอดุลยเดช บรมนาถบพิตร"
+        )
+        name_x = (
+            "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร "
+            "มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
+        )
+
         self.assertNoHoliday("2016-10-13")
-        self.assertNoHolidayName(name, Thailand(years=2016))
+        self.assertNoHolidayName(name_ix, Thailand(years=2016))
+        self.assertHolidaysName(
+            name_ix, (f"{year}-10-13" for year in range(2017, 2019))
+        )
+        self.assertNoHolidayName(name_x, Thailand(years=range(1941, 2019)))
+        self.assertHolidaysName(
+            name_x, (f"{year}-10-13" for year in range(2019, 2058))
+        )
+        self.assertNoHolidayName(name_ix, Thailand(years=range(2019, 2058)))
 
         self.assertNoHoliday(
             self.holidays_no_observed,
@@ -261,7 +308,7 @@ class TestThailand(TestCase):
         )
 
     def test_rama_five_memorial_day(self):
-        name = "Chulalongkorn Memorial Day"
+        name = "วันปิยมหาราช"
         self.assertHoliday(f"{year}-10-23" for year in range(1941, 2058))
         self.assertNoHoliday("1910-10-23", "1940-10-23")
         self.assertNoHolidayName(name, Thailand(years=[1910, 1940]))
@@ -277,11 +324,38 @@ class TestThailand(TestCase):
         )
 
     def test_rama_ix_birthday(self):
-        name = "HM King Bhumibol Adulyadej's Birthday"
+        name_reign = (
+            "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทร"
+            "มหาภูมิพลอดุลยเดช บรมนาถบพิตร"
+        )
+        name_dead = (
+            "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทร"
+            "มหาภูมิพลอดุลยเดช บรมนาถบพิตร"
+        )
+        name_great = (
+            "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรม"
+            "ชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
+        )
 
         self.assertNoHoliday("1959-12-05")
-        self.assertNoHolidayName(name, Thailand(years=1959))
-        self.assertHoliday(f"{year}-12-05" for year in range(1960, 2058))
+        self.assertNoHolidayName(name_reign, Thailand(years=1959))
+        self.assertNoHolidayName(name_dead, Thailand(years=1959))
+        self.assertNoHolidayName(name_great, Thailand(years=1959))
+        self.assertHolidaysName(
+            name_reign, (f"{year}-12-05" for year in range(1976, 2016))
+        )
+        self.assertNoHolidayName(name_dead, Thailand(years=range(1941, 2016)))
+        self.assertNoHolidayName(name_great, Thailand(years=range(1941, 2016)))
+        self.assertHolidaysName(
+            name_dead, (f"{year}-12-05" for year in range(2016, 2019))
+        )
+        self.assertNoHolidayName(name_reign, Thailand(years=range(2019, 2058)))
+        self.assertNoHolidayName(name_great, Thailand(years=range(2016, 2019)))
+        self.assertHolidaysName(
+            name_great, (f"{year}-12-05" for year in range(2019, 2058))
+        )
+        self.assertNoHolidayName(name_reign, Thailand(years=range(2019, 2058)))
+        self.assertNoHolidayName(name_dead, Thailand(years=range(2019, 2058)))
 
         self.assertNoHoliday(
             self.holidays_no_observed,
@@ -294,7 +368,7 @@ class TestThailand(TestCase):
         )
 
     def test_national_fathers_day(self):
-        name = "National Father's Day"
+        name = "วันพ่อแห่งชาติ"
 
         # This concides with HM King Bhumibol Adulyadej's Birthday
         self.assertNoHolidayName(name, Thailand(years=1979))
@@ -331,7 +405,7 @@ class TestThailand(TestCase):
         )
 
     def test_makha_bucha(self):
-        name = "Makha Bucha"
+        name = "วันมาฆบูชา"
 
         dt = (
             "2010-02-28",
@@ -370,7 +444,7 @@ class TestThailand(TestCase):
         )
 
     def test_visakha_bucha(self):
-        name = "Visakha Bucha"
+        name = "วันวิสาขบูชา"
 
         dt = (
             "2010-05-28",
@@ -409,7 +483,7 @@ class TestThailand(TestCase):
         )
 
     def test_asarnha_bucha(self):
-        name = "Asarnha Bucha"
+        name = "วันอาสาฬหบูชา"
 
         dt = (
             "2010-07-26",
@@ -448,7 +522,7 @@ class TestThailand(TestCase):
         )
 
     def test_khao_phansa(self):
-        name = "Buddhist Lent Day"
+        name = "วันเข้าพรรษา"
 
         dt = (
             "2010-07-27",
@@ -484,7 +558,7 @@ class TestThailand(TestCase):
         )
 
     def test_raeknakhwan(self):
-        name = "Royal Ploughing Ceremony"
+        name = "วันพืชมงคล"
         dt = (
             "2011-05-13",
             "2012-05-09",
@@ -508,3 +582,36 @@ class TestThailand(TestCase):
         )
 
         # No Royal Ploughing Ceremony on weekend for 1997-2023
+
+    def test_l10n_default(self):
+        def run_tests(languages):
+            for language in languages:
+                th_th = Thailand(language=language)
+                self.assertEqual(th_th["2022-01-01"], "วันขึ้นปีใหม่")
+                self.assertEqual(th_th["2022-04-13"], "วันสงกรานต์")
+                self.assertEqual(th_th["2022-05-02"], "ชดเชยวันแรงงานแห่งชาติ")
+                self.assertEqual(th_th["2022-12-10"], "วันรัฐธรรมนูญ")
+
+        run_tests((Thailand.default_language, None, "invalid"))
+
+        self.set_language("en_US")
+        run_tests((Thailand.default_language,))
+
+    def test_l10n_en(self):
+        language = "en_US"
+
+        th_en = Thailand(language=language)
+        self.assertEqual(th_en["2022-01-01"], "New Year's Day")
+        self.assertEqual(th_en["2022-04-13"], "Songkran Festival")
+        self.assertEqual(th_en["2022-05-02"], "National Labour Day (in lieu)")
+        self.assertEqual(th_en["2022-12-10"], "Constitution Day")
+
+        self.set_language(language)
+        for language in (None, language, "invalid"):
+            th_en = Thailand(language=language)
+            self.assertEqual(th_en["2022-01-01"], "New Year's Day")
+            self.assertEqual(th_en["2022-04-13"], "Songkran Festival")
+            self.assertEqual(
+                th_en["2022-05-02"], "National Labour Day (in lieu)"
+            )
+            self.assertEqual(th_en["2022-12-10"], "Constitution Day")
