@@ -568,6 +568,9 @@ default language code is a `ISO 639-1 code`_.
    * - Serbia
      - sr
      - en_US, sr
+   * - Thailand
+     - th
+     - en_US, th
    * - Ukraine
      - uk
      - en_US, uk
