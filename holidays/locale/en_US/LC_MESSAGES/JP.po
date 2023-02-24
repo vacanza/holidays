@@ -3,10 +3,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE 1.0\n"
+"Project-Id-Version: Python Holidays 0.20\n"
 "POT-Creation-Date: 2023-02-15 08:36-0800\n"
-"PO-Revision-Date: 2023-02-14 19:19-0800\n"
-"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"PO-Revision-Date: 2023-02-19 12:31+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -101,7 +101,7 @@ msgstr "Autumnal Equinox"
 
 #: holidays/countries/japan.py:130 holidays/countries/japan.py:132
 msgid "体育の日"
-msgstr "Sports Day"
+msgstr "Physical Education Day"
 
 #: holidays/countries/japan.py:134 holidays/countries/japan.py:136
 #: holidays/countries/japan.py:138
