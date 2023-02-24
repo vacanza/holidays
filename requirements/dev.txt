@@ -6,7 +6,7 @@ PyMeeus
 python-dateutil
 
 # Test requirements.
-coverage[toml]<7.0.0
+coverage[toml]<8.0.0
 flake8
 pre-commit
 pytest
