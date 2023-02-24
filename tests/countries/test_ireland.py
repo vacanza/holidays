@@ -33,6 +33,24 @@ class TestIreland(unittest.TestCase):
         self.assertIn("2020-12-26", self.holidays)  # Boxing Day
         self.assertIn("2020-12-28", self.holidays)  # Boxing Day (Observed)
 
+    def test_st_brigids_day(self):
+        # St. Brigid's Day
+        for dt in (
+            date(2023, 2, 6),
+            date(2024, 2, 5),
+            date(2025, 2, 3),
+            date(2026, 2, 2),
+            date(2027, 2, 1),
+            date(2028, 2, 7),
+            date(2029, 2, 5),
+            date(2030, 2, 1),
+            date(2031, 2, 3),
+            date(2032, 2, 2),
+        ):
+            self.assertIn(dt, self.holidays)
+            self.assertNotIn(dt + td(days=-1), self.holidays)
+            self.assertNotIn(dt + td(days=+1), self.holidays)
+
     def test_may_day(self):
         # Specific Ireland "May Day"
         for dt in [
