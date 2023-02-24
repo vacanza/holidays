@@ -14,9 +14,9 @@ from datetime import timedelta as td
 
 from dateutil.easter import easter
 
+from holidays.calendars import _islamic_to_gre
 from holidays.constants import JAN, MAY, JUN, OCT, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.utils import _islamic_to_gre
 
 
 class Nigeria(HolidayBase):

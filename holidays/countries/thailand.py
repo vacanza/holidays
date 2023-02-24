@@ -13,10 +13,10 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
+from holidays.calendars import _ThaiLuniSolar
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.utils import _ThaiLuniSolar
 
 
 class Thailand(HolidayBase):
