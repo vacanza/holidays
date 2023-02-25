@@ -1,0 +1,118 @@
+# Argentina holidays.
+# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.20\n"
+"POT-Creation-Date: 2023-02-20 19:00+0200\n"
+"PO-Revision-Date: 2023-02-20 19:02+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: holidays/countries/argentina.py:51
+msgid "Bicentenario de la creación y primera jura de la bandera nacional"
+msgstr ""
+
+#: holidays/countries/argentina.py:56
+msgid "Bicentenario de la Batalla de Tucumán"
+msgstr ""
+
+#: holidays/countries/argentina.py:62
+msgid ""
+"Bicentenario de la sesión inaugural de la Asamblea Nacional Constituyente "
+"del año 1813"
+msgstr ""
+
+#: holidays/countries/argentina.py:67
+msgid "Bicentenario de la Batalla de Salta"
+msgstr ""
+
+#: holidays/countries/argentina.py:81 holidays/countries/argentina.py:84
+#, c-format
+msgid "%s (Observado)"
+msgstr ""
+
+#. New Year's Day
+#: holidays/countries/argentina.py:90
+msgid "Año Nuevo"
+msgstr ""
+
+#. Carnival days
+#: holidays/countries/argentina.py:94
+msgid "Día de Carnaval"
+msgstr ""
+
+#: holidays/countries/argentina.py:100
+msgid "Día Nacional de la Memoria por la Verdad y la Justicia"
+msgstr ""
+
+#. Good Friday
+#: holidays/countries/argentina.py:105
+msgid "Viernes Santo"
+msgstr ""
+
+#: holidays/countries/argentina.py:109
+msgid "Día del Veterano y de los Caidos en la Guerra de Malvinas"
+msgstr ""
+
+#. Labor Day
+#: holidays/countries/argentina.py:114
+msgid "Día del Trabajo"
+msgstr ""
+
+#. May Revolution Day
+#: holidays/countries/argentina.py:117
+msgid "Día de la Revolución de Mayo"
+msgstr ""
+
+#: holidays/countries/argentina.py:121
+msgid ""
+"Día de los Derechos Argentinos sobre las Islas Malvinas, Sandwich y del "
+"Atlántico Sur"
+msgstr ""
+
+#: holidays/countries/argentina.py:129
+msgid "Paso a la Inmortalidad del General Don Martín Miguel de Güemes"
+msgstr ""
+
+#: holidays/countries/argentina.py:144
+msgid "Paso a la Inmortalidad del General Don Manuel Belgrano"
+msgstr ""
+
+#. Independence Day
+#: holidays/countries/argentina.py:149
+msgid "Día de la Independencia"
+msgstr ""
+
+#: holidays/countries/argentina.py:154
+msgid "Paso a la Inmortalidad del General Don José de San Martin"
+msgstr ""
+
+#: holidays/countries/argentina.py:161
+msgid "Día del Respeto a la Diversidad Cultural"
+msgstr ""
+
+#: holidays/countries/argentina.py:163
+msgid "Día de la Raza"
+msgstr ""
+
+#: holidays/countries/argentina.py:170
+msgid "Día de la Soberanía Nacional"
+msgstr ""
+
+#. Immaculate Conception
+#: holidays/countries/argentina.py:174
+msgid "Inmaculada Concepción de María"
+msgstr ""
+
+#. Christmas
+#: holidays/countries/argentina.py:177
+msgid "Navidad"
+msgstr ""

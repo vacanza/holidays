@@ -4,12 +4,10 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
-
-from calendar import isleap
 
 from holidays.constants import MAR, MAY, SEP, JULIAN_CALENDAR
 from holidays.holiday_base import HolidayBase
@@ -33,8 +31,21 @@ from holidays.holiday_groups import IslamicHolidays
 class Ethiopia(
     HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
 ):
-
     country = "ET"
+    default_language = "am"
+
+    @staticmethod
+    def _is_leap_year(year):
+        """
+        Ethiopian leap years are coincident with leap years in the Gregorian
+        calendar until the end of February 2100. It starts earlier from new
+        year of western calendar.
+        Ethiopian leap year starts on Sep 11, so it has an effect on
+        holidays between Sep 11 and Jan 1. Therefore, here on the following
+        function we intentionally add 1 to the leap year to offset the
+        difference.
+        """
+        return HolidayBase._is_leap_year(year + 1)
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
@@ -53,71 +64,72 @@ class Ethiopia(
         # It occurs on September 11 in the Gregorian Calendar;
         # except for the year preceding a leap year, when it occurs on
         # September 12.
-        if self.ethiopian_isleap(year):
-            self._add_holiday("አዲስ ዓመት እንቁጣጣሽ/Ethiopian New Year", SEP, 12)
+        if self._is_leap_year(year):
+            # Ethiopian New Year.
+            self._add_holiday(self.tr("አዲስ ዓመት እንቁጣጣሽ"), SEP, 12)
         else:
-            self._add_holiday("አዲስ ዓመት እንቁጣጣሽ/Ethiopian New Year", SEP, 11)
+            # Ethiopian New Year.
+            self._add_holiday(self.tr("አዲስ ዓመት እንቁጣጣሽ"), SEP, 11)
 
-        # Finding of true cross
-        if self.ethiopian_isleap(year):
-            self._add_holiday("መስቀል/Finding of True Cross", SEP, 28)
+        if self._is_leap_year(year):
+            # Finding of True Cross.
+            self._add_holiday(self.tr("መስቀል"), SEP, 28)
         else:
-            self._add_holiday("መስቀል/Finding of True Cross", SEP, 27)
+            # Finding of True Cross.
+            self._add_holiday(self.tr("መስቀል"), SEP, 27)
 
-        # Ethiopian Christmas
-        self._add_christmas_day("ገና/Ethiopian X-Mas")
+        # Orthodox Christmas.
+        self._add_christmas_day(self.tr("ገና"))
 
-        # Ethiopian Ephiphany
-        self._add_epiphany_day("ጥምቀት/Ephiphany")
+        # Orthodox Epiphany.
+        self._add_epiphany_day(self.tr("ጥምቀት"))
 
-        # Ethiopian Good Friday
-        self._add_good_friday("ስቅለት/Ethiopian Good Friday")
+        # Orthodox Good Friday.
+        self._add_good_friday(self.tr("ስቅለት"))
 
-        # Ethiopian  Easter - Orthodox Easter
-        self._add_easter_sunday("ፋሲካ/Ethiopian Easter")
+        # Orthodox Easter Sunday.
+        self._add_easter_sunday(self.tr("ፋሲካ"))
 
-        # Adwa Victory Day
         if year > 1896:
-            self._add_holiday("አድዋ/Victory of Adwa", MAR, 2)
+            # Adwa Victory Day.
+            self._add_holiday(self.tr("አድዋ"), MAR, 2)
 
-        # Labour Day
-        self._add_labour_day("የሰራተኞች ቀን/Labor Day")
+        # Labour Day.
+        self._add_labour_day(self.tr("የሰራተኞች ቀን"))
 
-        # Patriots Day
         if year > 1941:
-            self._add_holiday("የአርበኞች ቀን/Patriots Day", MAY, 5)
+            # Patriots Day.
+            self._add_holiday(self.tr("የአርበኞች ቀን"), MAY, 5)
 
-        # Derg Downfall Day
         if year > 1991:
-            self._add_holiday(
-                "ደርግ የወደቀበት ቀን/Downfall of Dergue regime", MAY, 28
-            )
+            # Downfall of Dergue Regime Day.
+            self._add_holiday(self.tr("ደርግ የወደቀበት ቀን"), MAY, 28)
 
-        # Downfall of King. Hailesilassie
         if year < 1991 and year > 1974:
-            if self.ethiopian_isleap(year):
-                self._add_holiday("ደርግ የመጣበት ቀን/Formation of Dergue", SEP, 13)
+            # Downfall of King Haile Selassie.
+            name = self.tr("ደርግ የመጣበት ቀን")
+            if self._is_leap_year(year):
+                self._add_holiday(name, SEP, 13)
             else:
-                self._add_holiday("ደርግ የመጣበት ቀን/Formation of Dergue", SEP, 12)
+                self._add_holiday(name, SEP, 12)
 
         # Eid al-Fitr - Feast Festive
-        self._add_eid_al_fitr_day("ኢድ አልፈጥር/Eid-Al-Fitr")
+        # date of observance is announced yearly, This is an estimate since
+        # having the Holiday on Weekend does change the number of days,
+        # decided to leave it since marking a Weekend as a holiday
+        # wouldn't do much harm.
+        self._add_eid_al_fitr_day(self.tr("ኢድ አልፈጥር"))
 
-        # Eid al-Adha - Scarfice Festive
+        # Eid al-Adha - Sacrifice Festive
         # date of observance is announced yearly
-        self._add_eid_al_adha_day("አረፋ/Eid-Al-Adha")
+        self._add_eid_al_adha_day(self.tr("አረፋ"))
+        self._add_eid_al_adha_day_two(self.tr("አረፋ"))
 
+        # Prophet Muhammad's Birthday - (hijari_year, 3, 12)
         # Prophet Muhammad's Birthday.
-        self._add_mawlid_day_two("መውሊድ/Prophet Muhammad's Birthday")
-
-    # Ethiopian leap years are coincident with leap years in the Gregorian
-    # calendar until the end of February 2100. It starts earlier from new year
-    # of western calendar.
-    # Ethiopian leap year starts on Sep 11, so it has an effect on
-    # holidays between Sep 11 and Jan 1. Therefore, here on the following
-    # function we intentionally add 1 to the leap year to offset the difference
-    def ethiopian_isleap(self, year):
-        return isleap(year + 1)
+        name = self.tr("መውሊድ")
+        self._add_mawlid_day(name)
+        self._add_mawlid_day_two(name)
 
 
 class ET(Ethiopia):

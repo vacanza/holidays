@@ -1,0 +1,68 @@
+# Serbia holidays en_US localization.
+# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.20\n"
+"POT-Creation-Date: 2023-02-15 15:18-0800\n"
+"PO-Revision-Date: 2023-02-15 15:21-0800\n"
+"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: holidays/countries/serbia.py:36
+msgid "Нова година"
+msgstr "New Year's Day"
+
+#: holidays/countries/serbia.py:40 holidays/countries/serbia.py:50
+#: holidays/countries/serbia.py:60 holidays/countries/serbia.py:62
+#: holidays/countries/serbia.py:68
+#, c-format
+msgid "%s (Слободан дан)"
+msgstr "%s (Observed)"
+
+#. Orthodox Christmas.
+#: holidays/countries/serbia.py:43
+msgid "Божић"
+msgstr "Orthodox Christmas Day"
+
+#. Statehood Day.
+#: holidays/countries/serbia.py:46
+msgid "Дан државности Србије"
+msgstr "Statehood Day"
+
+#. International Workers' Day.
+#: holidays/countries/serbia.py:55
+msgid "Празник рада"
+msgstr "International Workers' Day"
+
+#. Armistice Day.
+#: holidays/countries/serbia.py:65
+msgid "Дан примирја у Првом светском рату"
+msgstr "Armistice Day"
+
+#. Good Friday.
+#: holidays/countries/serbia.py:71
+msgid "Велики петак"
+msgstr "Good Friday"
+
+#. Easter Saturday.
+#: holidays/countries/serbia.py:73
+msgid "Велика субота"
+msgstr "Easter Saturday"
+
+#. Easter Sunday.
+#: holidays/countries/serbia.py:75
+msgid "Васкрс"
+msgstr "Easter Sunday"
+
+#. Easter Monday.
+#: holidays/countries/serbia.py:77
+msgid "Други дан Васкрса"
+msgstr "Easter Monday"

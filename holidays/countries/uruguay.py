@@ -4,19 +4,19 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, OCT, NOV, DEC
-from holidays.constants import TUE, WED, THU, FRI
 from holidays.holiday_base import HolidayBase
 
 
@@ -74,12 +74,12 @@ class Uruguay(HolidayBase):
         # Carnival days
         # revisar este día para futuros casos
         name = "Día de Carnaval [Carnival's Day]"
-        self[easter_date + rd(days=-48)] = name
-        self[easter_date + rd(days=-47)] = name
+        self[easter_date + td(days=-48)] = name
+        self[easter_date + td(days=-47)] = name
 
         # Holy Week.
-        self[easter_date + rd(days=-3)] = "Jueves Santo [Holy Thursday]"
-        self[easter_date + rd(days=-2)] = "Viernes Santo [Holy Friday]"
+        self[easter_date + td(days=-3)] = "Jueves Santo [Holy Thursday]"
+        self[easter_date + td(days=-2)] = "Viernes Santo [Holy Friday]"
 
         self[easter_date] = "Día de Pascuas [Easter Day]"
 
@@ -104,9 +104,9 @@ class Uruguay(HolidayBase):
         )
 
         for dt, name in holiday_pairs:
-            if dt.weekday() in {TUE, WED}:
+            if self._is_tuesday(dt) or self._is_wednesday(dt):
                 self[dt + rd(weekday=MO(-1))] = name
-            elif dt.weekday() in {THU, FRI}:
+            elif self._is_thursday(dt) or self._is_friday(dt):
                 self[dt + rd(weekday=MO(+1))] = name
             else:
                 self[dt] = name

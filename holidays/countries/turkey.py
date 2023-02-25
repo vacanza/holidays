@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -30,33 +30,33 @@ class Turkey(HolidayBase, IslamicHolidays, InternationalHolidays):
     def _populate(self, year):
         super()._populate(year)
 
-        # 1st of Jan
+        # 1st of Jan.
         self._add_new_years_day("New Year's Day")
 
-        # 23rd of Apr
+        # 23rd of Apr.
         self._add_holiday("National Sovereignty and Children's Day", APR, 23)
 
-        # 1st of May
+        # 1st of May.
         self._add_labour_day("Labour Day")
 
-        # 19th of May
+        # 19th of May.
         self._add_holiday(
             "Commemoration of Ataturk, Youth and Sports Day", MAY, 19
         )
 
-        # 15th of Jul
+        # 15th of Jul.
         # Became a national holiday after 15 Jul 2016 coup d'etat attempt.
         if year > 2016:
             self._add_holiday("Democracy and National Unity Day", JUL, 15)
 
-        # 30th of Aug
+        # 30th of Aug.
         self._add_holiday("Victory Day", AUG, 30)
 
-        # 29th of Oct
+        # 29th of Oct.
         self._add_holiday("Republic Day", OCT, 29)
 
         # Ramadan Feast.
-        # Date of observance is announced yearly, This is an estimate.
+        # Date of observance is announced yearly. This is an estimate.
         self._add_eid_al_fitr_day("Ramadan Feast")
         self._add_eid_al_fitr_day_two("Ramadan Feast Holiday")
         self._add_eid_al_fitr_day_three("Ramadan Feast Holiday")

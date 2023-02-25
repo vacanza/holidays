@@ -4,12 +4,13 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import WE
@@ -56,33 +57,32 @@ class Germany(HolidayBase):
 
     country = "DE"
     subdivisions = [
+        "BB",
+        "BE",
         "BW",
         "BY",
         "BYP",
-        "BE",
-        "BB",
         "HB",
-        "HH",
         "HE",
+        "HH",
         "MV",
         "NI",
         "NW",
         "RP",
+        "SH",
         "SL",
         "SN",
         "ST",
-        "SH",
         "TH",
     ]
 
     def _populate(self, year):
+        if year <= 1989:
+            return None
+
         super()._populate(year)
 
-        if year <= 1989:
-            return
-
         if year > 1990:
-
             self[date(year, JAN, 1)] = "Neujahr"
 
             if self.subdiv in {"BW", "BY", "BYP", "ST"}:
@@ -90,7 +90,7 @@ class Germany(HolidayBase):
 
             easter_date = easter(year)
 
-            self[easter_date + rd(days=-2)] = "Karfreitag"
+            self[easter_date + td(days=-2)] = "Karfreitag"
 
             if self.subdiv == "BB":
                 # will always be a Sunday and we have no "observed" rule so
@@ -98,7 +98,7 @@ class Germany(HolidayBase):
                 # holiday by law
                 self[easter_date] = "Ostersonntag"
 
-            self[easter_date + rd(days=+1)] = "Ostermontag"
+            self[easter_date + td(days=+1)] = "Ostermontag"
 
             self[date(year, MAY, 1)] = "Erster Mai"
 
@@ -108,18 +108,18 @@ class Germany(HolidayBase):
                     "und der Beendigung des Zweiten Weltkriegs in Europa"
                 )
 
-            self[easter_date + rd(days=+39)] = "Christi Himmelfahrt"
+            self[easter_date + td(days=+39)] = "Christi Himmelfahrt"
 
             if self.subdiv == "BB":
                 # will always be a Sunday and we have no "observed" rule so
                 # this is pretty pointless but it's nonetheless an official
                 # holiday by law
-                self[easter_date + rd(days=+49)] = "Pfingstsonntag"
+                self[easter_date + td(days=+49)] = "Pfingstsonntag"
 
-            self[easter_date + rd(days=+50)] = "Pfingstmontag"
+            self[easter_date + td(days=+50)] = "Pfingstmontag"
 
             if self.subdiv in {"BW", "BY", "BYP", "HE", "NW", "RP", "SL"}:
-                self[easter_date + rd(days=+60)] = "Fronleichnam"
+                self[easter_date + td(days=+60)] = "Fronleichnam"
 
             if self.subdiv in {"BY", "SL"}:
                 self[date(year, AUG, 15)] = "Mariä Himmelfahrt"
@@ -145,6 +145,10 @@ class Germany(HolidayBase):
                 self[date(year, SEP, 20)] = "Weltkindertag"
 
             if self.subdiv == "BE":
+                self[date(year, MAR, 8)] = "Internationaler Frauentag"
+
+        if year >= 2023:
+            if self.subdiv == "MV":
                 self[date(year, MAR, 8)] = "Internationaler Frauentag"
 
         self[date(year, DEC, 25)] = "Erster Weihnachtstag"

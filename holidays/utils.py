@@ -1,28 +1,27 @@
 #  python-holidays
 #  ---------------
-#  A fast, efficient Python library for generating country and subdivision
+#  A fast, efficient Python library for generating country, province and state
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-# from __future__ import annotations  # add in Python 3.7
+__all__ = (
+    "CountryHoliday",
+    "country_holidays",
+    "financial_holidays",
+    "list_supported_countries",
+    "list_supported_financial",
+)
 
 import inspect
-import math
 import warnings
-from datetime import date, datetime, timedelta
-from functools import lru_cache
 from typing import Dict, Iterable, List, Optional, Union
 
-from hijri_converter import convert
-from hijri_converter.ummalqura import GREGORIAN_RANGE
-
-import holidays.countries
-import holidays.financial
+from holidays import countries, financial
 from holidays.holiday_base import HolidayBase
 
 
@@ -34,6 +33,7 @@ def country_holidays(
     observed: bool = True,
     prov: Optional[str] = None,
     state: Optional[str] = None,
+    language: Optional[str] = None,
 ) -> HolidayBase:
     """
     Returns a new dictionary-like :py:class:`HolidayBase` object for the public
@@ -63,6 +63,12 @@ def country_holidays(
 
     :param state:
         *deprecated* use subdiv instead.
+
+    :param language:
+        The language which the returned holiday names will be translated
+        into. It must be an ISO 639-1 (2-letter) language code. If the
+        language translation is not supported the original holiday names
+        will be used.
 
     :return:
         A :py:class:`HolidayBase` object matching the **country**.
@@ -170,23 +176,17 @@ def country_holidays(
     See documentation for examples.
     """
     try:
-        country_classes = inspect.getmembers(
-            holidays.countries, inspect.isclass
-        )
-        country_class = next(
-            obj for name, obj in country_classes if name == country
-        )
-        country_holiday: HolidayBase = country_class(
+        return getattr(countries, country)(
             years=years,
             subdiv=subdiv,
             expand=expand,
             observed=observed,
             prov=prov,
             state=state,
+            language=language,
         )
-    except StopIteration:
+    except AttributeError:
         raise NotImplementedError(f"Country {country} not available")
-    return country_holiday
 
 
 def financial_holidays(
@@ -195,6 +195,7 @@ def financial_holidays(
     years: Optional[Union[int, Iterable[int]]] = None,
     expand: bool = True,
     observed: bool = True,
+    language: Optional[str] = None,
 ) -> HolidayBase:
     """
     Returns a new dictionary-like :py:class:`HolidayBase` object for the public
@@ -219,6 +220,12 @@ def financial_holidays(
         (e.g. a holiday falling on a Sunday being observed the following
         Monday). False may not work for all countries.
 
+    :param language:
+        The language which the returned holiday names will be translated
+        into. It must be an ISO 639-1 (2-letter) language code. If the
+        language translation is not supported the original holiday names
+        will be used.
+
     :return:
         A :py:class:`HolidayBase` object matching the **market**.
 
@@ -231,21 +238,15 @@ def financial_holidays(
     examples.
     """
     try:
-        financial_classes = inspect.getmembers(
-            holidays.financial, inspect.isclass
-        )
-        financial_class = next(
-            obj for name, obj in financial_classes if name == market
-        )
-        financial_holiday: HolidayBase = financial_class(
+        return getattr(financial, market)(
             years=years,
             subdiv=subdiv,
             expand=expand,
             observed=observed,
+            language=language,
         )
-    except StopIteration:
+    except AttributeError:
         raise NotImplementedError(f"Financial market {market} not available")
-    return financial_holiday
 
 
 def CountryHoliday(
@@ -272,7 +273,7 @@ def CountryHoliday(
     )
 
 
-def list_supported_countries() -> Dict[str, List[str]]:
+def list_supported_countries(unique=False) -> Dict[str, List[str]]:
     """
     Get all supported countries and their subdivisions.
 
@@ -281,15 +282,13 @@ def list_supported_countries() -> Dict[str, List[str]]:
         the value is a list of supported subdivision codes.
     """
     return {
-        cls.country: cls.subdivisions
-        for name, cls in inspect.getmembers(
-            holidays.countries, inspect.isclass
-        )
+        cls.country if unique else name: cls.subdivisions
+        for name, cls in inspect.getmembers(countries, inspect.isclass)
         if len(name) == 2 and issubclass(cls, HolidayBase)
     }
 
 
-def list_supported_financial() -> Dict[str, List[str]]:
+def list_supported_financial(unique=False) -> Dict[str, List[str]]:
     """
     Get all supported financial markets and their subdivisions.
 
@@ -298,664 +297,7 @@ def list_supported_financial() -> Dict[str, List[str]]:
         the value is a list of supported subdivision codes.
     """
     return {
-        cls.market: cls.subdivisions
-        for _, cls in inspect.getmembers(holidays.financial, inspect.isclass)
+        cls.market if unique else name: cls.subdivisions
+        for name, cls in inspect.getmembers(financial, inspect.isclass)
         if issubclass(cls, HolidayBase)
     }
-
-
-def _islamic_to_gre(Gyear: int, Hmonth: int, Hday: int) -> List[date]:
-    """
-    Find the Gregorian dates of all instances of Islamic (Lunar Hijrī) calendar
-    month and day falling within the Gregorian year. There could be up to two
-    such instances in a single Gregorian year since the Islamic (Lunar Hijrī)
-    calendar is about 11 days shorter.
-
-    Relies on package `hijri_converter
-    <https://www.pypy.org/package/hijri_converter>`__.
-
-    :param Gyear:
-        The Gregorian year.
-
-    :param Hmonth:
-        The Lunar Hijrī (Islamic) month.
-
-    :param Hday:
-        The Lunar Hijrī (Islamic) day.
-
-    :return:
-        List of Gregorian dates within the Gregorian year specified that
-        matches the Islamic (Lunar Hijrī) calendar day and month specified.
-    """
-    gre_dates: List[date] = []
-
-    # To avoid hijri_converter check range OverflowError.
-    dt = (Gyear, Hmonth, Hday)
-    dt_min, dt_max = GREGORIAN_RANGE
-    if dt < dt_min or dt > dt_max:
-        return gre_dates
-
-    Hyear = convert.Gregorian(Gyear, 1, 1).to_hijri().datetuple()[0]
-    gres = [
-        convert.Hijri(y, Hmonth, Hday).to_gregorian()
-        for y in range(Hyear - 1, Hyear + 2)
-    ]
-    gre_dates.extend(
-        (date(*gre.datetuple()) for gre in gres if gre.year == Gyear)
-    )
-
-    return gre_dates
-
-
-class _ChineseLuniSolar:
-    def __init__(self) -> None:
-        """
-        This class has functions that generate Gregorian dates for holidays
-        based on the Chinese lunisolar calendar.
-
-        See `Wikipedia
-        <https://en.wikipedia.org/wiki/Chinese_New_Year#Dates_in_Chinese_\
-        lunisolar_calendar>`__
-
-        Usage example:
-
-        >>> from holidays.utils import _ChineseLuniSolar
-        >>> cnls = _ChineseLuniSolar()
-        >>> print(cnls.lunar_n_y_date(2010))
-        2010-02-14
-        """
-
-        # A binary representation starting from year 1901 of the number of
-        # days per year, and the number of days from the 1st to the 13th to
-        # store the monthly (including the month of the month). 1 means that
-        # the month is 30 days. 0 means the month is 29 days.
-        # The 12th to 15th digits indicate the month of the next month.
-        # If it is 0x0F, it means that there is no leap month.
-        self.G_LUNAR_MONTH_DAYS = [
-            0xF0EA4,  # 1901
-            0xF1D4A,
-            0x52C94,
-            0xF0C96,
-            0xF1536,
-            0x42AAC,
-            0xF0AD4,
-            0xF16B2,
-            0x22EA4,
-            0xF0EA4,  # 1911
-            0x6364A,
-            0xF164A,
-            0xF1496,
-            0x52956,
-            0xF055A,
-            0xF0AD6,
-            0x216D2,
-            0xF1B52,
-            0x73B24,
-            0xF1D24,  # 1921
-            0xF1A4A,
-            0x5349A,
-            0xF14AC,
-            0xF056C,
-            0x42B6A,
-            0xF0DA8,
-            0xF1D52,
-            0x23D24,
-            0xF1D24,
-            0x61A4C,  # 1931
-            0xF0A56,
-            0xF14AE,
-            0x5256C,
-            0xF16B4,
-            0xF0DA8,
-            0x31D92,
-            0xF0E92,
-            0x72D26,
-            0xF1526,
-            0xF0A56,  # 1941
-            0x614B6,
-            0xF155A,
-            0xF0AD4,
-            0x436AA,
-            0xF1748,
-            0xF1692,
-            0x23526,
-            0xF152A,
-            0x72A5A,
-            0xF0A6C,  # 1951
-            0xF155A,
-            0x52B54,
-            0xF0B64,
-            0xF1B4A,
-            0x33A94,
-            0xF1A94,
-            0x8152A,
-            0xF152E,
-            0xF0AAC,
-            0x6156A,  # 1961
-            0xF15AA,
-            0xF0DA4,
-            0x41D4A,
-            0xF1D4A,
-            0xF0C94,
-            0x3192E,
-            0xF1536,
-            0x72AB4,
-            0xF0AD4,
-            0xF16D2,  # 1971
-            0x52EA4,
-            0xF16A4,
-            0xF164A,
-            0x42C96,
-            0xF1496,
-            0x82956,
-            0xF055A,
-            0xF0ADA,
-            0x616D2,
-            0xF1B52,  # 1981
-            0xF1B24,
-            0x43A4A,
-            0xF1A4A,
-            0xA349A,
-            0xF14AC,
-            0xF056C,
-            0x60B6A,
-            0xF0DAA,
-            0xF1D92,
-            0x53D24,  # 1991
-            0xF1D24,
-            0xF1A4C,
-            0x314AC,
-            0xF14AE,
-            0x829AC,
-            0xF06B4,
-            0xF0DAA,
-            0x52D92,
-            0xF0E92,
-            0xF0D26,  # 2001
-            0x42A56,
-            0xF0A56,
-            0xF14B6,
-            0x22AB4,
-            0xF0AD4,
-            0x736AA,
-            0xF1748,
-            0xF1692,
-            0x53526,
-            0xF152A,  # 2011
-            0xF0A5A,
-            0x4155A,
-            0xF156A,
-            0x92B54,
-            0xF0BA4,
-            0xF1B4A,
-            0x63A94,
-            0xF1A94,
-            0xF192A,
-            0x42A5C,  # 2021
-            0xF0AAC,
-            0xF156A,
-            0x22B64,
-            0xF0DA4,
-            0x61D52,
-            0xF0E4A,
-            0xF0C96,
-            0x5192E,
-            0xF1956,
-            0xF0AB4,  # 2031
-            0x315AC,
-            0xF16D2,
-            0xB2EA4,
-            0xF16A4,
-            0xF164A,
-            0x63496,
-            0xF1496,
-            0xF0956,
-            0x50AB6,
-            0xF0B5A,  # 2041
-            0xF16D4,
-            0x236A4,
-            0xF1B24,
-            0x73A4A,
-            0xF1A4A,
-            0xF14AA,
-            0x5295A,
-            0xF096C,
-            0xF0B6A,
-            0x31B54,  # 2051
-            0xF1D92,
-            0x83D24,
-            0xF1D24,
-            0xF1A4C,
-            0x614AC,
-            0xF14AE,
-            0xF09AC,
-            0x40DAA,
-            0xF0EAA,
-            0xF0E92,  # 2061
-            0x31D26,
-            0xF0D26,
-            0x72A56,
-            0xF0A56,
-            0xF14B6,
-            0x52AB4,
-            0xF0AD4,
-            0xF16CA,
-            0x42E94,
-            0xF1694,  # 2071
-            0x8352A,
-            0xF152A,
-            0xF0A5A,
-            0x6155A,
-            0xF156A,
-            0xF0B54,
-            0x4174A,
-            0xF1B4A,
-            0xF1A94,
-            0x3392A,  # 2081
-            0xF192C,
-            0x7329C,
-            0xF0AAC,
-            0xF156A,
-            0x52B64,
-            0xF0DA4,
-            0xF1D4A,
-            0x41C94,
-            0xF0C96,
-            0x8192E,  # 2091
-            0xF0956,
-            0xF0AB6,
-            0x615AC,
-            0xF16D4,
-            0xF0EA4,
-            0x42E4A,
-            0xF164A,
-            0xF1516,
-            0x22936,  # 2100
-        ]
-        # Define range of years covered
-        self.START_YEAR = 1901
-        self.END_YEAR = 2099
-        # The 1st day of the 1st month of the Gregorian calendar is 1901/2/19
-        self.LUNAR_START_DATE = ((1901, 1, 1),)
-        self.SOLAR_START_DATE = date(1901, 2, 19)
-        # The Gregorian date for December 30, 2099 is 2100/2/8
-        self.LUNAR_END_DATE = (2099, 12, 30)
-        self.SOLAR_END_DATE = date(2100, 2, 18)
-
-    @lru_cache()
-    def _get_leap_month(self, lunar_year: int) -> int:
-        """
-        Calculate the leap lunar month in a lunar year.
-
-        :param lunar_year:
-            The lunar year.
-
-        :return:
-            The number of the leap month if one exists in the year, otherwise
-            15.
-        """
-        return (
-            self.G_LUNAR_MONTH_DAYS[lunar_year - self.START_YEAR] >> 16
-        ) & 0x0F
-
-    def _lunar_month_days(self, lunar_year: int, lunar_month: int) -> int:
-        """
-        Calculate the number of days in a lunar month.
-
-        :param lunar_year:
-            The lunar year.
-
-        :param lunar_month:
-            The lunar month of the lunar year.
-
-        :return:
-            The number of days in the lunar month.
-        """
-        return 29 + (
-            (
-                self.G_LUNAR_MONTH_DAYS[lunar_year - self.START_YEAR]
-                >> lunar_month
-            )
-            & 0x01
-        )
-
-    def _lunar_year_days(self, year: int) -> int:
-        """
-        Calculate the number of days in a lunar year.
-
-        :param year:
-            The lunar year.
-
-        :return:
-            The number of days in the lunar year.
-        """
-        days = 0
-        months_day = self.G_LUNAR_MONTH_DAYS[year - self.START_YEAR]
-        for i in range(1, 13 if self._get_leap_month(year) == 0x0F else 14):
-            day = 29 + ((months_day >> i) & 0x01)
-            days += day
-        return days
-
-    @lru_cache()
-    def _span_days(self, year: int) -> int:
-        """
-        Calculate the number of days elapsed since self.SOLAR_START_DATE to the
-        beginning of the year.
-
-        :param year:
-            The year.
-
-        :return:
-             The number of days since self.SOLAR_START_DATE.
-        """
-        span_days = 0
-        for y in range(self.START_YEAR, year):
-            span_days += self._lunar_year_days(y)
-        return span_days
-
-    def lunar_n_y_date(self, year: int) -> date:
-        """
-        Calculate the Gregorian date of Chinese Lunar New Year.
-
-        This is a faster implementation than calling
-        ``lunar_to_gre(year, 1, 1)``.
-
-        :param year:
-            The Gregorian year.
-
-        :return:
-            The Gregorian date of Chinese Lunar New Year.
-        """
-        # The Chinese calendar defines the lunar month containing the winter
-        # solstice as the eleventh month, which means that Chinese New Year
-        # usually falls on the second new moon after the winter solstice
-        # (rarely the third if an intercalary month intervenes). In more
-        # than 96 percent of the years, Chinese New Year's Day is the closest
-        # date to a new moon to lichun (Chinese: 立春; "start of spring") on 4
-        # or 5 February, and the first new moon after dahan (Chinese: 大寒;
-        # "major cold"). In the Gregorian calendar, the Chinese New Year begins
-        # at the new moon that falls between 21 January and 20 February.
-
-        span_days = self._span_days(year)
-        # Always in first month (by definition)
-        # leap_month = self._get_leap_month(year)
-        # for m in range(1, 1 + (1 > leap_month)):
-        #     span_days += self._lunar_month_days(year, m)
-        return self.SOLAR_START_DATE + timedelta(span_days)
-
-    def lunar_to_gre(
-        self, year: int, month: int, day: int, leap: bool = True
-    ) -> date:
-        """
-        Calculate the Gregorian date of a Chinese lunar day and month in a
-        given Gregorian year.
-
-        :param year:
-            The Gregorian year.
-
-        :param year:
-            The Chinese lunar month.
-
-        :param year:
-            The Chinese lunar day.
-
-        :return:
-            The Gregorian date.
-        """
-        span_days = self._span_days(year)
-        leap_month = self._get_leap_month(year) if leap else 15
-        for m in range(1, month + (month > leap_month)):
-            span_days += self._lunar_month_days(year, m)
-        span_days += day - 1
-        return self.SOLAR_START_DATE + timedelta(span_days)
-
-    def vesak_date(self, year: int) -> date:
-        """
-        Calculate the estimated Gregorian date of Vesak for Thailand, Laos,
-        Singapore and Indonesia, corresponding to the fourteenth day of the
-        fourth month in the Chinese lunar calendar. See `Wikipedia
-        <https://en.wikipedia.org/wiki/Vesak#Dates_of_observance>`__.
-
-        :param year:
-            The Gregorian year.
-
-        :return:
-            Estimated Gregorian date of Vesak (14th day of 4th month of the
-            lunar calendar).
-        """
-        span_days = self._span_days(year)
-        leap_month = self._get_leap_month(year)
-        for m in range(1, 4 + (4 > leap_month)):
-            span_days += self._lunar_month_days(year, m)
-        span_days += 14
-        return self.SOLAR_START_DATE + timedelta(span_days)
-
-    def vesak_may_date(self, year: int) -> date:
-        """
-        Calculate the estimated Gregorian date of Vesak for Sri Lanka, Nepal,
-        India, Bangladesh and Malaysia, corresponding to the day of the
-        first full moon in May in the Gregorian calendar. See `Wikipedia
-        <https://en.wikipedia.org/wiki/Vesak#Dates_of_observance>`__.
-
-        :param year:
-            The Gregorian year.
-
-        :return:
-            Estimated Gregorian date of Vesak (first full moon in May).
-        """
-        span_days = self._span_days(year)
-        vesak_may_date = self.SOLAR_START_DATE + timedelta(span_days + 14)
-        m = 1
-        while vesak_may_date.month < 5:
-            vesak_may_date += timedelta(self._lunar_month_days(year, m))
-            m += 1
-        return vesak_may_date
-
-    def s_diwali_date(self, year: int) -> date:
-        """
-        Calculate the estimated Gregorian date of Southern India (Tamil)
-        Diwali.
-
-        Defined as the date of Amāvásyā (new moon) of Kārttikai, which
-        corresponds with the months of November or December in the Gregorian
-        calendar. See `Wikipedia <https://en.wikipedia.org/wiki/Diwali>`__.
-
-        :param year:
-            The Gregorian year.
-
-        :return:
-            Estimated Gregorian date of Southern India (Tamil) Diwali.
-        """
-        span_days = self._span_days(year)
-        leap_month = self._get_leap_month(year)
-        for m in range(1, 10 + (10 > leap_month)):
-            span_days += self._lunar_month_days(year, m)
-        span_days -= 2
-        return self.SOLAR_START_DATE + timedelta(span_days)
-
-    def thaipusam_date(self, year: int) -> date:
-        """
-        Calculate the estimated Gregorian date of Thaipusam (Tamil).
-
-        Defined as the date of the full moon in the Tamil month of Thai, which
-        corresponds with the months of January or February in the Gregorian
-        calendar. See `Wikipedia <https://en.wikipedia.org/wiki/Thaipusam>`__.
-
-        :param year:
-            The Gregorian year.
-
-        :return:
-            Estimated Gregorian date of Thaipusam (Tamil).
-        """
-        span_days = self._span_days(year)
-        leap_month = self._get_leap_month(year)
-        for m in range(1, 1 + (leap_month <= 6)):
-            span_days += self._lunar_month_days(year, m)
-        span_days -= 15
-        return self.SOLAR_START_DATE + timedelta(span_days)
-
-
-class _AstroMeeusAlgorithms:
-    def __init__(self) -> None:
-        """
-        This class provides some of Jean Meeus' algorithms from the book
-        `Astronomical Algorithms` required for equinox and solstice
-        calculations.
-        The complete list of algorithm implementations is available here:
-        https://github.com/pavolgaj/AstroAlgorithms4Python
-
-        Usage example:
-
-        >>> from holidays.utils import _AstroMeeusAlgorithms
-        >>> astro_alg = _AstroMeeusAlgorithms()
-        >>> equinox = astro_alg.jd2date(astro_alg.summer(2026))
-        >>> print(equinox)
-        2026-06-21 05:26:04
-        """
-
-    def _corrections(self, jd: float) -> float:
-        """
-        Corrections to times of equinox/solstice
-
-        :param jd: Julian day
-        :return: The Julian date of the next equinox or solstice.
-        """
-        T = (jd - 2451545) / 36525.0
-
-        W = math.radians(35999.373 * T - 2.47)
-        dl = 1 + 0.0334 * math.cos(W) + 0.0007 * math.cos(2 * W)
-
-        A = [
-            485,
-            203,
-            199,
-            182,
-            156,
-            136,
-            77,
-            74,
-            70,
-            58,
-            52,
-            50,
-            45,
-            44,
-            29,
-            18,
-            17,
-            16,
-            14,
-            12,
-            12,
-            12,
-            9,
-            8,
-        ]
-        B = [
-            324.96,
-            337.23,
-            342.08,
-            27.85,
-            73.14,
-            171.52,
-            222.54,
-            296.72,
-            243.58,
-            119.81,
-            297.17,
-            21.02,
-            247.54,
-            325.15,
-            60.93,
-            155.12,
-            288.79,
-            198.04,
-            199.76,
-            95.39,
-            287.11,
-            320.81,
-            227.73,
-            15.45,
-        ]
-        C = [
-            1934.136,
-            32964.467,
-            20.186,
-            445267.112,
-            45036.886,
-            22518.443,
-            65928.934,
-            3034.906,
-            9037.513,
-            33718.147,
-            150.678,
-            2281.226,
-            29929.562,
-            31555.956,
-            4443.417,
-            67555.328,
-            4562.452,
-            62894.029,
-            31436.921,
-            14577.848,
-            31931.756,
-            34777.259,
-            1222.114,
-            16859.074,
-        ]
-
-        S = sum(
-            a * math.cos(math.radians(b + c * T)) for a, b, c in zip(A, B, C)
-        )
-
-        return jd + 0.00001 * S / dl
-
-    def summer(self, year: int) -> float:
-        """
-        Calculates summer (June) solstice for given year
-
-        :param year: The year for which you want to calculate the solstice
-        :return: The Julian date of the summer solstice.
-        """
-        Y = (year - 2000) / 1000.0
-        jd0 = (
-            2451716.56767
-            + 365241.62603 * Y
-            + 0.00325 * Y**2
-            + 0.00888 * Y**3
-            - 0.00030 * Y**4
-        )
-        return self._corrections(jd0)
-
-    def jd2date(self, jd: float) -> datetime:
-        """
-        Convert a Julian date to a Gregorian date.
-
-        :param jd: Julian date
-        :return: The datetime object of the Julian date.
-        """
-        jd += 0.5
-        z = int(jd)
-        f = jd % 1
-        if z < 2299161:
-            a = z
-        else:
-            alp = int((z - 1867216.25) / 36524.25)
-            a = z + 1 + alp - int(alp / 4)
-        b = a + 1524
-        c = int((b - 122.1) / 365.25)
-        d = int(365.25 * c)
-        e = int((b - d) / 30.6001)
-
-        h = int(f * 24)
-        m = int((f - h / 24.0) * 1440)
-        s = round((f - h / 24.0 - m / 1440.0) * 86400.0)
-        day = b - d - int(30.6001 * e)
-        year = c - 4716
-        if e < 14:
-            mon = e - 1
-        else:
-            mon = e - 13
-            year += 1
-
-        return datetime(year, mon, day, h, m, s)

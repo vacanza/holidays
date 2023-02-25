@@ -4,12 +4,13 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
 from dateutil.relativedelta import SU
@@ -30,7 +31,8 @@ class Madagascar(HolidayBase):
     def _populate(self, year):
         # Observed since 1947
         if year <= 1946:
-            return
+            return None
+
         super()._populate(year)
 
         self[date(year, JAN, 1)] = "Taom-baovao / New Year's Day"
@@ -57,21 +59,21 @@ class Madagascar(HolidayBase):
 
         easter_date = easter(year)
         self[easter_date] = "Fetin'ny paska / Easter Sunday"
-        self[easter_date + rd(days=+1)] = "Alatsinain'ny paska / Easter Monday"
+        self[easter_date + td(days=+1)] = "Alatsinain'ny paska / Easter Monday"
         self[
-            easter_date + rd(days=+39)
+            easter_date + td(days=+39)
         ] = "Fiakaran'ny Jesosy kristy tany an-danitra / Ascension Day"
 
-        whit_sunday = easter_date + rd(days=+49)
+        whit_sunday = easter_date + td(days=+49)
         self[whit_sunday] = "Pentekosta / Whit Sunday"
 
         self[
-            easter_date + rd(days=+50)
+            easter_date + td(days=+50)
         ] = "Alatsinain'ny pentekosta / Whit Monday"
 
         dt = date(year, MAY, 31) + rd(weekday=SU(-1))
         if dt == whit_sunday:
-            dt += rd(days=+7)
+            dt += td(days=+7)
         self[dt] = "Fetin'ny Reny / Mother's Day"
 
 

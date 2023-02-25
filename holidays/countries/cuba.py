@@ -4,18 +4,17 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import MO
-from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAY, JUL, OCT, DEC, SUN
+from holidays.constants import JAN, MAY, JUL, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -23,6 +22,10 @@ class Cuba(HolidayBase):
     country = "CU"
 
     def _populate(self, year):
+        def _add_observed(hol_date: date) -> None:
+            if self.observed and self._is_sunday(hol_date):
+                self[hol_date + td(days=+1)] = f"{self[hol_date]} (Observed)"
+
         super()._populate(year)
 
         """
@@ -39,17 +42,15 @@ class Cuba(HolidayBase):
               go to the next Monday.
         """
 
-        name = "Aniversario de la Revolución [Anniversary of the Revolution]"
-        self[date(year, JAN, 1)] = name
-        if (
-            year <= 2013
-            and self.observed
-            and date(year, JAN, 1).weekday() == SUN
-        ):
-            self[date(year, JAN, 1) + rd(weekday=MO)] = name + " (Observed)"
+        dt = date(year, JAN, 1)
+        self[
+            dt
+        ] = "Aniversario de la Revolución [Anniversary of the Revolution]"
+        if year <= 2013:
+            _add_observed(dt)
 
         # Granted in 2007 decree.
-        if year > 2007:
+        if year >= 2008:
             self[date(year, JAN, 2)] = "Día de la Victoria [Victory Day]"
 
         # Granted temporarily in 2012 and 2013:
@@ -57,12 +58,11 @@ class Cuba(HolidayBase):
         #   https://bit.ly/3v6bM18
         # Permanently granted in 2013 decree for 2014 and onwards.
         if year >= 2012:
-            self[easter(year) + rd(days=-2)] = "Viernes Santo [Good Friday]"
+            self[easter(year) + td(days=-2)] = "Viernes Santo [Good Friday]"
 
-        name = "Día Internacional de los Trabajadores [Labour Day]"
-        self[date(year, MAY, 1)] = name
-        if self.observed and date(year, MAY, 1).weekday() == SUN:
-            self[date(year, MAY, 1) + rd(weekday=MO)] = name + " (Observed)"
+        dt = date(year, MAY, 1)
+        self[dt] = "Día Internacional de los Trabajadores [Labour Day]"
+        _add_observed(dt)
 
         self[date(year, JUL, 25)] = (
             "Conmemoración del asalto a Moncada "
@@ -78,10 +78,9 @@ class Cuba(HolidayBase):
             "[Commemoration of the Assault of the Moncada garrison]"
         )
 
-        name = "Inicio de las Guerras de Independencia [Independence Day]"
-        self[date(year, OCT, 10)] = name
-        if self.observed and date(year, OCT, 10).weekday() == SUN:
-            self[date(year, OCT, 10) + rd(weekday=MO)] = name + " (Observed)"
+        dt = date(year, OCT, 10)
+        self[dt] = "Inicio de las Guerras de Independencia [Independence Day]"
+        _add_observed(dt)
 
         # In 1969, Christmas was cancelled for the sugar harvest but then was
         # cancelled for good:
@@ -91,7 +90,7 @@ class Cuba(HolidayBase):
         # In 1998, Christmas returns for good:
         #   https://bit.ly/3cyXhwz
         #   https://bit.ly/3cyXj7F
-        if year >= 1997 or year < 1969:
+        if year <= 1968 or year >= 1997:
             self[date(year, DEC, 25)] = "Día de Navidad [Christmas Day]"
 
         # Granted in 2007 decree.

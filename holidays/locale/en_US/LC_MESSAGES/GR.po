@@ -1,0 +1,76 @@
+# Greece holidays en_US localization.
+# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.20\n"
+"POT-Creation-Date: 2023-02-15 14:53-0800\n"
+"PO-Revision-Date: 2023-02-15 14:59-0800\n"
+"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: holidays/countries/greece.py:40
+msgid "Πρωτοχρονιά"
+msgstr "New Year’s Day"
+
+#. Epiphany.
+#: holidays/countries/greece.py:43
+msgid "Θεοφάνεια"
+msgstr "Epiphany"
+
+#. Clean Monday.
+#: holidays/countries/greece.py:46
+msgid "Καθαρά Δευτέρα"
+msgstr "Clean Monday"
+
+#. Independence Day.
+#: holidays/countries/greece.py:49
+msgid "Εικοστή Πέμπτη Μαρτίου"
+msgstr "Independence Day"
+
+#. Easter Monday.
+#: holidays/countries/greece.py:52
+msgid "Δευτέρα του Πάσχα"
+msgstr "Easter Monday"
+
+#. Monday of the Holy Spirit.
+#: holidays/countries/greece.py:55
+msgid "Δευτέρα του Αγίου Πνεύματος"
+msgstr "Easter Monday"
+
+#. Labour Day.
+#: holidays/countries/greece.py:60
+msgid "Εργατική Πρωτομαγιά"
+msgstr "Labor Day"
+
+#: holidays/countries/greece.py:61
+#, c-format
+msgid "%s (παρατηρήθηκε)"
+msgstr "%s (Observed)"
+
+#. Assumption of Mary.
+#: holidays/countries/greece.py:74
+msgid "Κοίμηση της Θεοτόκου"
+msgstr "Assumption of Mary Day"
+
+#. Ochi Day.
+#: holidays/countries/greece.py:77
+msgid "Ημέρα του Όχι"
+msgstr "Ochi Day"
+
+#. Christmas Day.
+#: holidays/countries/greece.py:80
+msgid "Χριστούγεννα"
+msgstr "Christmas Day"
+
+#. Day after Christmas.
+#: holidays/countries/greece.py:83
+msgid "Επόμενη ημέρα των Χριστουγέννων"
+msgstr "Day After Christmas"

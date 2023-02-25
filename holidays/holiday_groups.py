@@ -10,16 +10,16 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import List
+from typing import Iterable, List
 
 from dateutil.easter import EASTER_ORTHODOX, EASTER_WESTERN, easter
 from dateutil.parser import parse
 from dateutil.relativedelta import relativedelta as rd
 from korean_lunar_calendar import KoreanLunarCalendar
 
+from holidays.calendars import _ChineseLuniSolar, _islamic_to_gre
 from holidays.constants import JAN, FEB, MAR, MAY, JUN, AUG, SEP, NOV, DEC
 from holidays.constants import GREGORIAN_CALENDAR, JULIAN_CALENDAR
-from holidays.utils import _ChineseLuniSolar, _islamic_to_gre
 
 
 class ChristianHolidays:
@@ -273,7 +273,7 @@ class ChristianHolidays:
             self._easter_sunday + rd(days=+1),
         )
 
-    def _add_feast_of_corpus_christi(self, holiday_name) -> date:
+    def _add_corpus_christi_day(self, holiday_name) -> date:
         """
         Add Feast Of Corpus Christi (60 days after Easter Sunday).
 
@@ -345,12 +345,6 @@ class ChristianHolidays:
 
         return self._add_holiday(holiday_name, epiphany_day)
 
-    def _add_feast_of_saints_peter_and_paul(self, holiday_name) -> date:
-        """
-        https://en.wikipedia.org/wiki/Feast_of_Saints_Peter_and_Paul
-        """
-        return self._add_holiday(holiday_name, JUN, 29)
-
     def _add_good_friday(self, holiday_name) -> date:
         """
         Add Good Friday (2 days before Easter Sunday).
@@ -413,6 +407,16 @@ class ChristianHolidays:
             MAR,
             19,
         )
+
+    def _add_saints_peter_and_paul_day(self, holiday_name) -> date:
+        """
+        Feast of Saints Peter and Paul (June 29th).
+
+        A liturgical feast in honor of the martyrdom in Rome of the apostles
+        Saint Peter and Saint Paul, which is observed on 29 June.
+        https://en.wikipedia.org/wiki/Feast_of_Saints_Peter_and_Paul
+        """
+        return self._add_holiday(holiday_name, JUN, 29)
 
     def _add_whit_monday(self, holiday_name) -> date:
         """
@@ -749,12 +753,13 @@ class IslamicHolidays:
         """
         dates = []
 
-        for dt in self._convert_islamic_to_gre(month, day):
-            if days_delta:
-                dt += rd(days=days_delta)
+        for year in (self._year - 1, self._year):
+            for dt in self._convert_islamic_to_gre(year, month, day):
+                if days_delta:
+                    dt += rd(days=days_delta)
 
-            self._add_holiday(holiday_name, dt)
-            dates.append(dt)
+                self._add_holiday(holiday_name, dt)
+                dates.append(dt)
 
         return dates
 
@@ -800,11 +805,12 @@ class IslamicHolidays:
             holiday_name, 3, 12, days_delta=+1
         )
 
-    def _convert_islamic_to_gre(self, month, day) -> List[date]:
+    @staticmethod
+    def _convert_islamic_to_gre(year, month, day) -> Iterable[date]:
         """
         Convert Islamic calendar date to Gregorian date(s).
         """
-        return _islamic_to_gre(self._year, month, day)
+        return _islamic_to_gre(year, month, day)
 
 
 class KoreanCalendarHolidays:

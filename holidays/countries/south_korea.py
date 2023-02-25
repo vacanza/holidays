@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -12,6 +12,7 @@
 
 import warnings
 from datetime import date
+from datetime import timedelta as td
 from typing import Tuple
 
 from dateutil.relativedelta import relativedelta as rd
@@ -79,7 +80,7 @@ class SouthKorea(
                 (0, name),
                 (+1, second_day_lunar),
             ]:
-                target_date = self._korean_new_year + rd(days=cur_rd)
+                target_date = self._korean_new_year + td(days=cur_rd)
                 is_alt, alt_date = self.get_next_first_non_holiday(
                     cur_name, target_date
                 )
@@ -157,7 +158,7 @@ class SouthKorea(
                 (0, name),
                 (+1, second_day_chuseok),
             ]:
-                target_date = chuseok_date + rd(days=cur_rd)
+                target_date = chuseok_date + td(days=cur_rd)
                 is_alt, alt_date = self.get_next_first_non_holiday(
                     cur_name, target_date
                 )
@@ -212,15 +213,15 @@ class SouthKorea(
         """
 
         start_value = cur
-        target_weekday = [SUN]
+        target_weekday = {SUN}
         if include_sat:
-            target_weekday.append(SAT)
+            target_weekday.add(SAT)
         check_1 = cur.weekday() in target_weekday  # Exclude weekends
         check_2 = (
             cur in self and name != self[cur]
         )  # Exclude if already a holiday
         while check_1 or check_2:
-            cur = cur + rd(days=1)
+            cur += td(days=+1)
             check_1 = cur.weekday() in target_weekday
             check_2 = cur in self and name != self[cur]
 
@@ -237,9 +238,9 @@ class Korea(SouthKorea):
         super().__init__(*args, **kwargs)
 
 
-class KR(Korea):
+class KR(SouthKorea):
     pass
 
 
-class KOR(Korea):
+class KOR(SouthKorea):
     pass

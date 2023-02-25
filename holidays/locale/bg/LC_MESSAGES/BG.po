@@ -1,0 +1,85 @@
+# Bulgaria holidays.
+# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.20\n"
+"POT-Creation-Date: 2023-02-15 08:13-0800\n"
+"PO-Revision-Date: 2023-02-16 08:46-0800\n"
+"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: holidays/countries/bulgaria.py:52
+msgid "Нова година"
+msgstr ""
+
+#. Liberation Day.
+#: holidays/countries/bulgaria.py:55
+msgid "Ден на Освобождението на България от османско иго"
+msgstr ""
+
+#. International Workers' Day.
+#: holidays/countries/bulgaria.py:60
+msgid "Ден на труда и на международната работническа солидарност"
+msgstr ""
+
+#. Saint George's Day.
+#: holidays/countries/bulgaria.py:65
+msgid "Гергьовден, Ден на храбростта и Българската армия"
+msgstr ""
+
+#. Bulgarian Education and Culture and Slavonic Literature Day.
+#: holidays/countries/bulgaria.py:70
+msgid ""
+"Ден на светите братя Кирил и Методий, на българската азбука, просвета и "
+"култура и на славянската книжовност"
+msgstr ""
+
+#. Unification Day.
+#: holidays/countries/bulgaria.py:76
+msgid "Ден на Съединението"
+msgstr ""
+
+#. Independence Day.
+#: holidays/countries/bulgaria.py:79
+msgid "Ден на Независимостта на България"
+msgstr ""
+
+#. National Awakening Day.
+#: holidays/countries/bulgaria.py:84
+msgid "Ден на народните будители"
+msgstr ""
+
+#. Christmas Eve.
+#: holidays/countries/bulgaria.py:87
+msgid "Бъдни вечер"
+msgstr ""
+
+#. Christmas Day 1.
+#. Christmas Day 2.
+#: holidays/countries/bulgaria.py:89 holidays/countries/bulgaria.py:91
+msgid "Рождество Христово"
+msgstr ""
+
+#. Good Friday.
+#: holidays/countries/bulgaria.py:96
+msgid "Велики петък"
+msgstr ""
+
+#. Easter Saturday.
+#: holidays/countries/bulgaria.py:98
+msgid "Велика събота"
+msgstr ""
+
+#. Easter Sunday.
+#. Easter Monday.
+#: holidays/countries/bulgaria.py:100 holidays/countries/bulgaria.py:102
+msgid "Великден"
+msgstr ""
