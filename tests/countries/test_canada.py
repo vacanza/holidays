@@ -451,3 +451,16 @@ class TestCanada(TestCase):
             ca = Canada(language=language)
             self.assertEqual(ca["2018-01-01"], "Jour de l'an")
             self.assertEqual(ca["2022-12-25"], "Jour de Noël")
+
+    def test_l10n_th(self):
+        th = "th"
+
+        ca = Canada(language=th)
+        self.assertEqual(ca["2018-01-01"], "วันขึ้นปีใหม่")
+        self.assertEqual(ca["2022-12-25"], "วันคริสต์มาส")
+
+        self.set_language(th)
+        for language in (None, th, "invalid"):
+            ca = Canada(language=language)
+            self.assertEqual(ca["2018-01-01"], "วันขึ้นปีใหม่")
+            self.assertEqual(ca["2022-12-25"], "วันคริสต์มาส")

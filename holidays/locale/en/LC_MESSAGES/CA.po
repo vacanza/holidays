@@ -1,10 +1,10 @@
-# Canada holidays.
+# Canada holidays en localization.
 # Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.20\n"
-"POT-Creation-Date: 2023-02-15 08:30-0800\n"
+"POT-Creation-Date: 2023-02-24 17:37+0700\n"
 "PO-Revision-Date: 2023-02-16 08:51-0800\n"
 "Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
 "Language-Team: Python Holidays localization team\n"
@@ -22,8 +22,8 @@ msgstr ""
 
 #: holidays/countries/canada.py:67 holidays/countries/canada.py:168
 #: holidays/countries/canada.py:192 holidays/countries/canada.py:201
-#: holidays/countries/canada.py:278 holidays/countries/canada.py:285
-#: holidays/countries/canada.py:292
+#: holidays/countries/canada.py:280 holidays/countries/canada.py:287
+#: holidays/countries/canada.py:294
 #, c-format
 msgid "%s (Observed)"
 msgstr ""
@@ -127,24 +127,24 @@ msgstr ""
 msgid "Funeral of Her Majesty the Queen Elizabeth II"
 msgstr ""
 
-#: holidays/countries/canada.py:252
+#: holidays/countries/canada.py:254
 msgid "National Day for Truth and Reconciliation"
 msgstr ""
 
-#: holidays/countries/canada.py:262 holidays/countries/canada.py:264
+#: holidays/countries/canada.py:264 holidays/countries/canada.py:266
 msgid "Thanksgiving"
 msgstr ""
 
-#: holidays/countries/canada.py:270
+#: holidays/countries/canada.py:272
 msgid "Remembrance Day"
 msgstr ""
 
 #. Christmas Day,
-#: holidays/countries/canada.py:281
+#: holidays/countries/canada.py:283
 msgid "Christmas Day"
 msgstr ""
 
 #. Boxing Day.
-#: holidays/countries/canada.py:288
+#: holidays/countries/canada.py:290
 msgid "Boxing Day"
 msgstr ""

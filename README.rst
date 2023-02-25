@@ -540,7 +540,7 @@ default language code is a `ISO 639-1 code`_.
      - bg, en_US
    * - Canada
      - en
-     - en, fr
+     - en, fr, th
    * - Colombia
      - es
      - en_US, es, uk
