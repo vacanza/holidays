@@ -14,10 +14,6 @@ from tests.common import TestCase
 
 
 class TestUkraine(TestCase):
-    def setUp(self):
-        super().setUp()
-        self.holidays_no_observed = Ukraine(observed=False)
-
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Ukraine)
@@ -42,7 +38,7 @@ class TestUkraine(TestCase):
             "2023-01-02",
         )
         self.assertHoliday(dt)
-        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_christmas_julian_day(self):
         self.assertNoHoliday(f"{year}-01-07" for year in range(1918, 1991))
@@ -60,7 +56,7 @@ class TestUkraine(TestCase):
             "2024-01-08",
         )
         self.assertHoliday(dt)
-        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_womens_day(self):
         self.assertNoHoliday(f"{year}-03-08" for year in range(1918, 1966))
@@ -76,7 +72,7 @@ class TestUkraine(TestCase):
             "2025-03-10",
         )
         self.assertHoliday(dt)
-        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_easter(self):
         name = "Великдень (Пасха)"
@@ -126,7 +122,7 @@ class TestUkraine(TestCase):
             "2084-05-02",
         )
         self.assertHoliday(dt)
-        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_trinity(self):
         name = "Трійця"
@@ -167,7 +163,7 @@ class TestUkraine(TestCase):
             "2023-06-05",
         )
         self.assertHoliday(dt)
-        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_labour_day(self):
         name_before = "День міжнародної солідарності трудящих"
@@ -188,7 +184,7 @@ class TestUkraine(TestCase):
             "2022-05-02",
         )
         self.assertHoliday(dt)
-        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_victory_day(self):
         name = (
@@ -209,7 +205,7 @@ class TestUkraine(TestCase):
             "2021-05-10",
         )
         self.assertHoliday(dt)
-        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_constitution_day(self):
         self.assertNoHoliday(f"{year}-06-28" for year in range(1918, 1997))
@@ -225,7 +221,7 @@ class TestUkraine(TestCase):
             "2025-06-30",
         )
         self.assertHoliday(dt)
-        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_statehood_day(self):
         self.assertNoHoliday(f"{year}-07-28" for year in range(1918, 2022))
@@ -236,7 +232,7 @@ class TestUkraine(TestCase):
 
         dt = ("2024-07-29",)
         self.assertHoliday(dt)
-        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_independence_day(self):
         self.assertNoHoliday(f"{year}-08-24" for year in range(1918, 1992))
@@ -253,7 +249,7 @@ class TestUkraine(TestCase):
             "2019-08-26",
         )
         self.assertHoliday(dt)
-        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_defenders_day(self):
         name_before = "День захисника України"
@@ -270,7 +266,7 @@ class TestUkraine(TestCase):
             "2023-10-16",
         )
         self.assertHoliday(dt)
-        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_october_revolution_day(self):
         self.assertHoliday(f"{year}-11-07" for year in range(1918, 2000))
@@ -287,7 +283,7 @@ class TestUkraine(TestCase):
             "1999-11-09",
         )
         self.assertHoliday(dt)
-        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_christmas_gregorian_day(self):
         self.assertNoHoliday(f"{year}-12-25" for year in range(1918, 2017))
@@ -302,7 +298,7 @@ class TestUkraine(TestCase):
             "2022-12-26",
         )
         self.assertHoliday(dt)
-        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_old_holidays(self):
         self.assertHoliday(f"{year}-01-22" for year in range(1918, 1951))

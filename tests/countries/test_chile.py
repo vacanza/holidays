@@ -14,8 +14,12 @@ from tests.common import TestCase
 
 
 class TestChile(TestCase):
+    @classmethod
+    def setUpClass(self):
+        super().setUpClass(Chile)
+
     def setUp(self):
-        self.holidays = Chile()
+        super().setUp()
         self.holidays_ap = Chile(subdiv="AP")
         self.holidays_nb = Chile(subdiv="NB")
 

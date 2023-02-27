@@ -14,9 +14,9 @@ from tests.common import TestCase
 
 
 class TestBotswana(TestCase):
-    def setUp(self):
-        self.holidays = Botswana()
-        self.holidays_no_observed = Botswana(observed=False)
+    @classmethod
+    def setUpClass(self):
+        super().setUpClass(Botswana)
 
     def test_country_aliases(self):
         self.assertCountryAliases(Botswana, BW, BWA)
@@ -39,7 +39,7 @@ class TestBotswana(TestCase):
             "2023-01-03",
         )
         self.assertHoliday(dt)
-        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_easter(self):
         dt = (
@@ -53,7 +53,7 @@ class TestBotswana(TestCase):
             "2022-05-26",
         )
         self.assertHoliday(dt)
-        self.assertHoliday(self.holidays_no_observed, dt)
+        self.assertNonObservedHoliday(dt)
 
     def test_labour_day(self):
         self.assertHoliday(f"{year}-05-01" for year in range(1966, 2050))
@@ -63,7 +63,7 @@ class TestBotswana(TestCase):
             "2022-05-02",
         )
         self.assertHoliday(dt)
-        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoNonObservedHoliday(dt)
 
         dt = (
             "2021-05-03",
@@ -71,7 +71,7 @@ class TestBotswana(TestCase):
             "2032-05-03",
         )
         self.assertHolidaysName("Labour Day Holiday", dt)
-        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_presidents_day(self):
         self.assertHoliday(
@@ -96,7 +96,7 @@ class TestBotswana(TestCase):
             "2023-10-02",
         )
         self.assertHoliday(dt)
-        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_christmas_day(self):
         for year in range(1966, 2050):
@@ -110,7 +110,7 @@ class TestBotswana(TestCase):
             "2022-12-27",
         )
         self.assertHoliday(dt)
-        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoNonObservedHoliday(dt)
 
         dt = (
             "2020-12-28",
@@ -118,7 +118,7 @@ class TestBotswana(TestCase):
             "2037-12-28",
         )
         self.assertHolidaysName("Boxing Day Holiday", dt)
-        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_2021(self):
         self.assertHolidayDates(

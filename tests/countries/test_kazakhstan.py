@@ -14,8 +14,9 @@ from tests.common import TestCase
 
 
 class TestKazakhstan(TestCase):
-    def setUp(self):
-        self.holidays = Kazakhstan()
+    @classmethod
+    def setUpClass(self):
+        super().setUpClass(Kazakhstan)
 
     def test_country_aliases(self):
         self.assertCountryAliases(Kazakhstan, KZ, KAZ)
@@ -44,7 +45,7 @@ class TestKazakhstan(TestCase):
                 f"{year}-03-21", f"{year}-03-22", f"{year}-03-23"
             )
         for year in range(2002, 2010):
-            self.assertNoHoliday(
+            self.assertNoNonObservedHoliday(
                 Kazakhstan(observed=False, years=year),
                 f"{year}-03-21",
                 f"{year}-03-23",
@@ -84,7 +85,7 @@ class TestKazakhstan(TestCase):
         self.assertHoliday(f"{year}-12-17" for year in range(2002, 2022))
         self.assertNoHoliday(f"{year}-12-17" for year in range(1991, 2002))
         for year in range(2022, 2100):
-            self.assertNoHoliday(
+            self.assertNoNonObservedHoliday(
                 Kazakhstan(observed=False, years=year), f"{year}-12-17"
             )
 
@@ -155,7 +156,7 @@ class TestKazakhstan(TestCase):
             "2022-05-10",
         )
         self.assertHoliday(observed_holidays)
-        self.assertNoHoliday(Kazakhstan(observed=False), observed_holidays)
+        self.assertNoNonObservedHoliday(observed_holidays)
 
     def test2020(self):
         self.assertHolidayDates(

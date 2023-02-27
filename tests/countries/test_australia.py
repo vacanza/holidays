@@ -336,11 +336,13 @@ class TestAU(unittest.TestCase):
             self.assertNotIn(dt + td(days=-1), self.holidays)
         self.assertNotIn(date(2010, 12, 24), self.holidays)
         self.assertNotEqual(
-            self.holidays[date(2011, 12, 26)], "Christmas Day (Observed)"
+            self.holidays[date(2011, 12, 26)],
+            "Christmas Day (Observed)",
         )
         self.holidays.observed = True
         self.assertEqual(
-            self.holidays[date(2011, 12, 27)], "Christmas Day (Observed)"
+            self.holidays[date(2011, 12, 27)],
+            "Christmas Day (Observed)",
         )
         for year, day in enumerate(
             [

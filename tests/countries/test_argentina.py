@@ -9,15 +9,11 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.countries.argentina import AR, ARG, Argentina
+from holidays.countries.argentina import Argentina, AR, ARG
 from tests.common import TestCase
 
 
 class TestArgentina(TestCase):
-    def setUp(self):
-        super().setUp()
-        self.holidays_no_observed = Argentina(observed=False)
-
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Argentina)
@@ -79,8 +75,7 @@ class TestArgentina(TestCase):
         self.assertNoHoliday(f"{year}-06-10" for year in range(2001, 2050))
 
     def test_guemes_day(self):
-        self.assertHoliday(
-            self.holidays_no_observed,
+        self.assertNonObservedHoliday(
             (f"{year}-06-17" for year in range(2016, 2050)),
         )
         self.assertNoHolidayName(
@@ -117,8 +112,7 @@ class TestArgentina(TestCase):
         self.assertHoliday(f"{year}-07-09" for year in range(1950, 2050))
 
     def test_san_martin_day(self):
-        self.assertHoliday(
-            self.holidays_no_observed,
+        self.assertNonObservedHoliday(
             (f"{year}-08-17" for year in range(1950, 2050)),
         )
         self.assertHoliday(
@@ -134,8 +128,7 @@ class TestArgentina(TestCase):
         )
 
     def test_cultural_day(self):
-        self.assertHoliday(
-            self.holidays_no_observed,
+        self.assertNonObservedHoliday(
             (f"{year}-10-12" for year in range(1950, 2050)),
         )
         self.assertHoliday(
@@ -152,8 +145,7 @@ class TestArgentina(TestCase):
 
     def test_national_sovereignty_day(self):
         self.assertNoHoliday(f"{year}-11-20" for year in range(1950, 2010))
-        self.assertHoliday(
-            self.holidays_no_observed,
+        self.assertNonObservedHoliday(
             (f"{year}-11-20" for year in range(2010, 2050)),
         )
         self.assertHoliday(
