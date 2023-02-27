@@ -14,10 +14,6 @@ from tests.common import TestCase
 
 
 class TestColombia(TestCase):
-    def setUp(self):
-        super().setUp()
-        self.holidays_no_observed = Colombia(observed=False)
-
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Colombia)
