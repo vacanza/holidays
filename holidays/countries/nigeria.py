@@ -11,11 +11,12 @@
 
 from datetime import date
 from datetime import timedelta as td
+from typing import Dict, List
 
 from dateutil.easter import easter
 
 from holidays.calendars import _islamic_to_gre
-from holidays.constants import JAN, MAY, JUN, OCT, DEC
+from holidays.constants import JAN, FEB, MAY, JUN, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -25,82 +26,98 @@ class Nigeria(HolidayBase):
     """
 
     country = "NG"
+    special_holidays = {
+        2019: (
+            (FEB, 22, "Public Holiday for Elections"),
+            (MAY, 29, "Presidential Inauguration Day"),
+        ),
+    }
 
     def _populate(self, year):
-        def _add_holiday(dt: date, hol: str) -> None:
-            """Only add if in current year; prevents adding holidays across
-            years (handles multi-day Islamic holidays that straddle
-            Gregorian years).
-            """
-            if dt.year == year:
-                self[dt] = hol
+        def collect_holiday(hol_date: date, hol_name: str) -> None:
+            if hol_date in holiday_date_names_mapping:
+                holiday_date_names_mapping[hol_date].append(hol_name)
+            else:
+                holiday_date_names_mapping[hol_date] = [hol_name]
 
         if year <= 1978:
             return None
 
         super()._populate(year)
 
-        # New Year's Day
-        self[date(year, JAN, 1)] = "New Year's day"
+        holiday_date_names_mapping: Dict[date, List[str]] = {}
 
-        # Calculate Easter for given year
-        # followed by easter related holidays
+        # New Year's Day
+        collect_holiday(date(year, JAN, 1), "New Year's Day")
+
         easter_date = easter(year)
-        self[easter_date + td(days=-2)] = "Good Friday"
-        self[easter_date + td(days=+1)] = "Easter Monday"
+        collect_holiday(easter_date + td(days=-2), "Good Friday")
+        collect_holiday(easter_date + td(days=+1), "Easter Monday")
 
         # Worker's day
         if year >= 1981:
-            self[date(year, MAY, 1)] = "Workers' day"
+            collect_holiday(date(year, MAY, 1), "Workers' Day")
+
+        # Democracy day moved around after its inception in 2000
+        # Initally it fell on May 29th
+        # In 2018 it was announced that the holiday
+        # will move to June 12th from 2019
+        if year >= 2000:
+            collect_holiday(
+                date(year, JUN, 12) if year >= 2019 else date(year, MAY, 29),
+                "Democracy Day",
+            )
+
+        # Independence Day
+        collect_holiday(date(year, OCT, 1), "Independence Day")
+
+        # Christmas day
+        collect_holiday(date(year, DEC, 25), "Christmas Day")
+
+        # Boxing day
+        collect_holiday(date(year, DEC, 26), "Boxing Day")
 
         # Eid al-Fitr - Feast Festive
         # This is an estimate
         # date of observance is announced yearly
         for yr in (year - 1, year):
             for hol_date in _islamic_to_gre(yr, 10, 1):
-                _add_holiday(hol_date, "Eid al-Fitr")
-                _add_holiday(hol_date + td(days=+1), "Eid al-Fitr Holiday")
+                collect_holiday(hol_date, "Eid-el-Fitr")
+                collect_holiday(hol_date + td(days=+1), "Eid-el-Fitr Holiday")
 
-        # Arafat Day & Eid al-Adha - Scarfice Festive
+        # Eid al-Adha - Scarfice Festive
         # This is an estimate
         # date of observance is announced yearly
         for yr in (year - 1, year):
             for hol_date in _islamic_to_gre(yr, 12, 10):
-                _add_holiday(hol_date, "Eid al-Adha")
-                _add_holiday(hol_date + td(days=+1), "Eid al-Adha Holiday")
+                collect_holiday(hol_date, "Eid-el-Kabir")
+                collect_holiday(hol_date + td(days=+1), "Eid-el-Kabir Holiday")
 
         # Birthday of Prophet Muhammad
         for hol_date in _islamic_to_gre(year, 3, 12):
-            _add_holiday(hol_date, "Mawlid")
-
-        # Independence Day
-        self[date(year, OCT, 1)] = "Independence day"
-
-        # Christmas day
-        self[date(year, DEC, 25)] = "Christmas day"
-
-        # Boxing day
-        self[date(year, DEC, 26)] = "Boxing day"
-
-        # Democracy day moved around after its inception in 2000
-        # Initally it fell on May 29th
-        # In 2018 it was announced that the holiday
-        # will move to June 12th from 2019
-        if year >= 2019:
-            self[date(year, JUN, 12)] = "Democracy day"
-        elif year >= 2000:
-            self[date(year, MAY, 29)] = "Democracy day"
+            collect_holiday(hol_date, "Eid-el-Mawlid")
 
         # Observed holidays
         if self.observed and year >= 2016:
-            for k, v in list(self.items()):
-                if self._is_weekend(k) and k.year == year:
-                    next_workday = k + td(days=+1)
-                    while self._is_weekend(next_workday) or self.get(
-                        next_workday
+            hol_dates = list(holiday_date_names_mapping.keys())
+            for hol_date, hol_names in sorted(
+                holiday_date_names_mapping.items()
+            ):
+                if self._is_weekend(hol_date):
+                    next_workday = hol_date + td(days=+1)
+                    while (
+                        self._is_weekend(next_workday)
+                        or next_workday in hol_dates
                     ):
                         next_workday += td(days=+1)
-                    self[next_workday] = v + " (Observed)"
+                    for hol_name in hol_names:
+                        collect_holiday(next_workday, f"{hol_name} (Observed)")
+                    hol_dates.append(next_workday)
+
+        for hol_date, hol_names in holiday_date_names_mapping.items():
+            if hol_date.year == year:
+                for hol_name in hol_names:
+                    self[hol_date] = hol_name
 
 
 class NG(Nigeria):
