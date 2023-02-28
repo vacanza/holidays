@@ -248,14 +248,14 @@ class Argentina(HolidayBase):
         # Started in 1938 via Ley 12361 as Fixed Holiday
         # Set as 3rd MON of JUN via Ley 24455 in Dec 1994
         # Made Fixed Holiday again in 2011
-        name = self.tr(
-            "Paso a la Inmortalidad del General Don Manuel Belgrano"
-        )
-
-        if 1938 <= year <= 1994 or year >= 2011:
-            self[date(year, JUN, 20)] = name
-        elif 1995 <= year <= 2010:
-            self[date(year, JUN, 1) + rd(weekday=MO(+3))] = name
+        if year >= 1938:
+            self[
+                date(year, JUN, 1) + rd(weekday=MO(+3))
+                if 1995 <= year <= 2010
+                else date(year, JUN, 20)
+            ] = self.tr(
+                "Paso a la Inmortalidad del General Don Manuel Belgrano"
+            )
 
         # !!! Independence Day !!!
         # Status: In-Use
