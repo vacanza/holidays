@@ -330,11 +330,13 @@ class TestBasics(unittest.TestCase):
         self.assertEqual(na.get(date(1969, 7, 1)), "Dominion Day")
         self.assertEqual(na.get(date(1983, 7, 1)), "Canada Day")
         self.assertEqual(
-            na.get(date(1969, 12, 25)), "Christmas Day; Navidad [Christmas]"
+            na.get(date(1969, 12, 25)),
+            "Christmas Day; Navidad [Christmas Day]",
         )
         na = holidays.MX() + holidays.CA() + holidays.US()
         self.assertEqual(
-            na.get(date(1969, 12, 25)), "Christmas Day; Navidad [Christmas]"
+            na.get(date(1969, 12, 25)),
+            "Christmas Day; Navidad [Christmas Day]",
         )
         self.assertEqual(na, na.copy())
 
@@ -382,7 +384,7 @@ class TestBasics(unittest.TestCase):
         self.assertIn(date(1969, 12, 25), na)
         self.assertEqual(
             na.get_list(date(1969, 12, 25)),
-            ["Christmas Day", "Navidad [Christmas]"],
+            ["Christmas Day", "Navidad [Christmas Day]"],
         )
         self.assertEqual(na.get_list(date(1969, 7, 1)), ["Dominion Day"])
         self.assertEqual(na.get_list(date(1969, 1, 3)), [])
