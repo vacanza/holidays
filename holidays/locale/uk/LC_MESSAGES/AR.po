@@ -46,7 +46,7 @@ msgstr "200-річчя битви при Сальті"
 
 #: holidays/countries/argentina.py:82
 msgid "Censo nacional 2022"
-msgstr "Національний день перепису 2022"
+msgstr "День національного перепису 2022"
 
 #: holidays/countries/argentina.py:161 holidays/countries/argentina.py:164
 #, c-format
