@@ -77,7 +77,7 @@ msgstr "День ветеранів та загиблих на Мальвінс�
 #: holidays/countries/argentina.py:210
 #, fuzzy
 msgid "Día del Veterano de Guerra"
-msgstr "День ветеранів та загиблих на Мальвінській війні"
+msgstr "День ветеранів війни"
 
 #. !!! Good Friday !!! Status: In-Use
 #: holidays/countries/argentina.py:216
