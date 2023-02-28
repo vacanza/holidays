@@ -58,7 +58,8 @@ class TestUY(unittest.TestCase):
             self.assertNotIn(dt + td(days=-1), self.holidays)
             self.assertNotIn(dt + td(days=+1), self.holidays)
             self.assertEqual(
-                self.holidays[dt], "Jura de la Constitución [Constitution Day]"
+                self.holidays[dt],
+                "Jura de la Constitución [Constitution Day]",
             )
 
     def test_declaratoria_de_la_independencia_day(self):
@@ -68,7 +69,8 @@ class TestUY(unittest.TestCase):
             self.assertNotIn(dt + td(days=-1), self.holidays)
             self.assertNotIn(dt + td(days=+1), self.holidays)
             self.assertEqual(
-                self.holidays[dt], "Día de la Independencia [Independence Day]"
+                self.holidays[dt],
+                "Día de la Independencia [Independence Day]",
             )
 
     def test_christmas(self):
@@ -78,7 +80,8 @@ class TestUY(unittest.TestCase):
             self.assertNotIn(dt + td(days=-1), self.holidays)
             self.assertNotIn(dt + td(days=+1), self.holidays)
             self.assertEqual(
-                self.holidays[dt], "Día de la Familia [Day of the Family]"
+                self.holidays[dt],
+                "Día de la Familia [Day of the Family]",
             )
 
     # Partially paid holidays.
@@ -111,7 +114,8 @@ class TestUY(unittest.TestCase):
             self.assertNotIn(dt + td(days=-1), self.holidays)
             self.assertNotIn(dt + td(days=+1), self.holidays)
             self.assertEqual(
-                self.holidays[dt], "Día de los Difuntos [All Souls' Day]"
+                self.holidays[dt],
+                "Día de los Difuntos [All Souls' Day]",
             )
 
     # Moveable holidays.

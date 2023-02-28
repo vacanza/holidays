@@ -392,12 +392,14 @@ class TestCanada(TestCase):
             self.assertNotIn(dt + td(days=-1), self.holidays)
         self.assertNotIn(date(2010, 12, 27), self.holidays)
         self.assertNotEqual(
-            self.holidays[date(2011, 12, 26)], "Christmas Day (Observed)"
+            self.holidays[date(2011, 12, 26)],
+            "Christmas Day (Observed)",
         )
         self.holidays.observed = True
         self.assertIn(date(2010, 12, 27), self.holidays)
         self.assertEqual(
-            self.holidays[date(2011, 12, 27)], "Christmas Day (Observed)"
+            self.holidays[date(2011, 12, 27)],
+            "Christmas Day (Observed)",
         )
 
     def test_boxing_day(self):

@@ -15,9 +15,9 @@ from tests.common import TestCase
 
 
 class TestBO(TestCase):
-    def setUp(self):
-        self.holidays = Bolivia()
-        self.holidays_no_observed = Bolivia(observed=False)
+    @classmethod
+    def setUpClass(self):
+        super().setUpClass(Bolivia)
 
     def test_country_aliases(self):
         self.assertCountryAliases(Bolivia, BO, BOL)
@@ -35,7 +35,7 @@ class TestBO(TestCase):
             "2034-01-02",
         )
         self.assertHolidaysName("Año Nuevo (Observed)", dt)
-        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_plurinational_state_foundation_day(self):
         name = "Nacimiento del Estado Plurinacional de Bolivia"
@@ -128,7 +128,7 @@ class TestBO(TestCase):
             "2033-05-02",
         )
         self.assertHolidaysName(name, dt)
-        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_chuquisaca_day(self):
         name = "Día del departamento de Chuquisaca"
@@ -170,7 +170,7 @@ class TestBO(TestCase):
             "2043-06-22",
         )
         self.assertHolidaysName("Año Nuevo Andino (Observed)", dt)
-        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_la_paz_day(self):
         name = "Día del departamento de La Paz"
@@ -195,7 +195,7 @@ class TestBO(TestCase):
             "2028-08-07",
         )
         self.assertHolidaysName("Día de la Patria (Observed)", dt)
-        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_cochabamba_day(self):
         name = "Día del departamento de Cochabamba"
@@ -239,7 +239,7 @@ class TestBO(TestCase):
             "2036-11-03",
         )
         self.assertHolidaysName("Todos Santos (Observed)", dt)
-        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_potosi_day(self):
         name = "Día del departamento de Potosí"
@@ -273,4 +273,4 @@ class TestBO(TestCase):
             "2033-12-26",
         )
         self.assertHolidaysName("Navidad (Observed)", dt)
-        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoNonObservedHoliday(dt)

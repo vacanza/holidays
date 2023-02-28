@@ -47,13 +47,15 @@ class TestBrazil(unittest.TestCase):
         )
         self.assertIn("2018-10-12", self.holidays)
         self.assertEqual(
-            self.holidays[date(2018, 10, 12)], "Nossa Senhora Aparecida"
+            self.holidays[date(2018, 10, 12)],
+            "Nossa Senhora Aparecida",
         )
         self.assertIn("2018-11-02", self.holidays)
         self.assertEqual(self.holidays[date(2018, 11, 2)], "Finados")
         self.assertIn("2018-11-15", self.holidays)
         self.assertEqual(
-            self.holidays[date(2018, 11, 15)], "Proclamação da República"
+            self.holidays[date(2018, 11, 15)],
+            "Proclamação da República",
         )
         self.assertIn("2018-12-25", self.holidays)
         self.assertEqual(self.holidays[date(2018, 12, 25)], "Natal")
