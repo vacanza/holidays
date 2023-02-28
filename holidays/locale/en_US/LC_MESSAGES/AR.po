@@ -77,7 +77,7 @@ msgstr "Veterans Day and the Fallen in the Malvinas War"
 #: holidays/countries/argentina.py:210
 #, fuzzy
 msgid "Día del Veterano de Guerra"
-msgstr "Veterans Day and the Fallen in the Malvinas War"
+msgstr "War Veterans Day"
 
 #. !!! Good Friday !!! Status: In-Use
 #: holidays/countries/argentina.py:216
