@@ -22,7 +22,7 @@ msgstr ""
 #. 2017
 #: holidays/countries/argentina.py:70
 msgid "Feriado con fines turísticos"
-msgstr "особливе свято"
+msgstr "Додатковий вихідний"
 
 #. Special Cases
 #: holidays/countries/argentina.py:73
