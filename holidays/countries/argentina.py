@@ -200,16 +200,16 @@ class Argentina(HolidayBase):
         # Merged in 2001, confirmed as Fixed Holiday in 2006
         # Superceded "Day of Argentine Sovereignty over the Malvinas"
         # Got moved temporary in 2020 (Decreto 297/2020)
-        name = self.tr(
-            "Día del Veterano y de los Caidos en la Guerra de Malvinas"
-        )
-
-        if year == 2020:
-            self[date(year, MAR, 31)] = name
-        elif 1993 <= year <= 2000:
-            self[date(year, APR, 2)] = self.tr("Día del Veterano de Guerra")
-        elif year >= 2001:
-            self[date(year, APR, 2)] = name
+        if year >= 1993:
+            self[
+                date(year, MAR, 31) if year == 2020 else date(year, APR, 2)
+            ] = (
+                self.tr("Día del Veterano de Guerra")
+                if year <= 2000
+                else self.tr(
+                    "Día del Veterano y de los Caidos en la Guerra de Malvinas"
+                )
+            )
 
         # !!! Good Friday !!!
         # Status: In-Use
