@@ -333,7 +333,7 @@ class Argentina(HolidayBase):
 
         if year == 2015:
             self[date(year, NOV, 27)] = name
-        if year == 2016:
+        elif year == 2016:
             self[date(year, NOV, 28)] = name
         elif year >= 2010:
             _add_movable(date(year, NOV, 20), name)
