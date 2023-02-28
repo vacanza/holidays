@@ -541,6 +541,9 @@ default language code is a `ISO 639-1 code`_.
    * - Canada
      - en
      - en, fr
+   * - Chile
+     - es
+     - en_US, es, uk
    * - Colombia
      - es
      - en_US, es, uk
