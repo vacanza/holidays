@@ -163,6 +163,7 @@ class TestArgentina(TestCase):
             (f"{year}-08-17" for year in range(1938, 1995)),
         )
         self.assertHoliday(
+            "2011-08-22",
             "2015-08-17",
             "2016-08-15",
             "2017-08-21",
