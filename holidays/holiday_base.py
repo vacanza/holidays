@@ -13,6 +13,7 @@ __all__ = ("DateLike", "HolidayBase", "HolidaySum")
 
 import copy
 import os
+import re
 import warnings
 from calendar import isleap
 from datetime import date, datetime, timedelta
@@ -528,19 +529,45 @@ class HolidayBase(Dict[date, str]):
             if name
         ]
 
-    def get_named(self, name: str) -> List[date]:
+    def get_named(self, holiday_name: str, lookup="icontains") -> List[date]:
         """Return a list of all holiday dates matching the provided holiday
         name. The match will be made case insensitively and partial matches
-        will be included.
+        will be included by default.
 
-        :param name:
+        :param holiday_name:
             The holiday's name to try to match.
+        :param lookup:
+            The holiday name lookup type:
+                contains - case sensitive contains match;
+                exact - case sensitive exact match;
+                icontains - case insensitive contains match;
+                iexact - case insensitive exact match;
 
         :return:
             A list of all holiday dates matching the provided holiday name.
         """
+        holiday_name_escaped = re.escape(holiday_name)
+        if lookup == "contains":
+            lookup_re = re.compile(f".*{holiday_name_escaped}.*")
+        elif lookup == "exact":
+            lookup_re = re.compile(f"^{holiday_name_escaped}$")
+        elif lookup == "icontains":
+            lookup_re = re.compile(
+                f".*{holiday_name_escaped}.*", re.IGNORECASE
+            )
+        elif lookup == "iexact":
+            lookup_re = re.compile(f"^{holiday_name_escaped}$", re.IGNORECASE)
+        else:
+            raise AttributeError(f"Unknown lookup type: {lookup}")
+
+        holiday_date_names_mapping: Dict[date, List[str]] = {
+            key: value.split(HOLIDAY_NAME_DELIMITER)
+            for key, value in self.items()
+        }
         return [
-            key for key, value in self.items() if name.lower() in value.lower()
+            dt
+            for dt, names in holiday_date_names_mapping.items()
+            if any((lookup_re.search(name) for name in names))
         ]
 
     def pop(
