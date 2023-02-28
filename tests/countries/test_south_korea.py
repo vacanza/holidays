@@ -9,22 +9,23 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
 import warnings
 from datetime import date
 
-import holidays
+from holidays.countries.south_korea import SouthKorea, KR, KOR, Korea
+from tests.common import TestCase
 
 
-class TestSouthKorea(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.KR()
+class TestSouthKorea(TestCase):
+    @classmethod
+    def setUpClass(self):
+        super().setUpClass(SouthKorea)
+
+    def test_country_aliases(self):
+        self.assertCountryAliases(SouthKorea, KR, KOR)
 
     def test_common(self):
-        holidaysNoObserved = holidays.KR(observed=False)
-        self.assertEqual(
-            holidaysNoObserved[date(2019, 1, 1)], "New Year's Day"
-        )
+        self.assertNonObservedHolidaysName("New Year's Day", "2019-01-01")
 
         self.assertNotIn(date(1582, 10, 2), self.holidays)
         self.assertNotIn(date(1582, 11, 14), self.holidays)
@@ -68,7 +69,8 @@ class TestSouthKorea(unittest.TestCase):
             (2028, 1, 27),
         ]:
             self.assertEqual(
-                self.holidays[date(year, month, day)], "Lunar New Year's Day"
+                self.holidays[date(year, month, day)],
+                "Lunar New Year's Day",
             )
 
         for year, month, day in [
@@ -122,7 +124,8 @@ class TestSouthKorea(unittest.TestCase):
             (2005, 4, 5),
         ]:
             self.assertEqual(
-                self.holidays[date(year, month, day)], "Tree Planting Day"
+                self.holidays[date(year, month, day)],
+                "Tree Planting Day",
             )
 
         for year, month, day in [
@@ -137,7 +140,8 @@ class TestSouthKorea(unittest.TestCase):
             (2018, 5, 5),
         ]:
             self.assertEqual(
-                self.holidays[date(year, month, day)], "Children's Day"
+                self.holidays[date(year, month, day)],
+                "Children's Day",
             )
 
         for year, month, day in [(2018, 5, 7), (2019, 5, 6)]:
@@ -181,7 +185,8 @@ class TestSouthKorea(unittest.TestCase):
 
         for year, month, day in [(2001, 5, 1)]:
             self.assertIn(
-                "Birthday of the Buddha", self.holidays[date(year, month, day)]
+                "Birthday of the Buddha",
+                self.holidays[date(year, month, day)],
             )
 
     def test_labour_day(self):
@@ -324,7 +329,8 @@ class TestSouthKorea(unittest.TestCase):
     def test_national_foundation_day(self):
         for year in [1951, 2049]:
             self.assertIn(
-                "National Foundation Day", self.holidays[date(year, 10, 3)]
+                "National Foundation Day",
+                self.holidays[date(year, 10, 3)],
             )
 
         for year, month, day in [(2021, 10, 4)]:
@@ -356,7 +362,6 @@ class TestSouthKorea(unittest.TestCase):
             )
 
     def test_years_range(self):
-        self.holidays = holidays.KR(years=[2006, 2021])
         for year in [2006, 2021]:
             self.assertIn(self.holidays[date(year, 1, 1)], "New Year's Day")
 
@@ -366,8 +371,8 @@ class TestSouthKorea(unittest.TestCase):
     def test_korea_deprecation_warning(self):
         warnings.simplefilter("default")
         with self.assertWarns(Warning):
-            holidays.Korea()
+            Korea()
 
         warnings.simplefilter("error")
         with self.assertRaises(Warning):
-            holidays.Korea()
+            Korea()

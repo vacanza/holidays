@@ -14,9 +14,9 @@ from tests.common import TestCase
 
 
 class TestSaudiArabia(TestCase):
-    def setUp(self):
-        self.holidays = SaudiArabia()
-        self.holidays_no_observed = SaudiArabia(observed=False)
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(SaudiArabia)
 
     def test_country_aliases(self):
         self.assertCountryAliases(SaudiArabia, SA, SAU)
@@ -73,7 +73,7 @@ class TestSaudiArabia(TestCase):
             "2023-09-24",
         )
         self.assertHoliday(dt)
-        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_national_day_overlaps_hijri_holiday(self):
         for dt in (
@@ -98,7 +98,7 @@ class TestSaudiArabia(TestCase):
             "2036-02-21",
         )
         self.assertHoliday(dt)
-        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_founding_day_overlaps_hijri_holiday(self):
         self.assertNotIn("National Day Holiday", self.holidays["2061-02-22"])
@@ -146,7 +146,7 @@ class TestSaudiArabia(TestCase):
             "2023-07-01",
         )
         self.assertHoliday(dt)
-        self.assertNoHoliday(self.holidays_no_observed, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_hijri_based_with_two_holidays_in_one_year(self):
         self.assertHoliday(

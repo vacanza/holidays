@@ -15,12 +15,17 @@ from holidays.countries.bosnia_and_herzegovina import BIH
 from tests.common import TestCase
 
 
-class TestBA(TestCase):
+class TestBosniaAndHerzegovina(TestCase):
+    @classmethod
+    def setUpClass(self):
+        super().setUpClass(BosniaAndHerzegovina)
+
     def setUp(self):
-        self.holidays = BosniaAndHerzegovina(observed=False)
+        super().setUp()
+
+        self.bd_holidays = BosniaAndHerzegovina(subdiv="BD")
         self.rs_holidays = BosniaAndHerzegovina(subdiv="RS")
         self.fbih_holidays = BosniaAndHerzegovina(subdiv="FBiH")
-        self.bd_holidays = BosniaAndHerzegovina(subdiv="BD")
 
     def test_country_aliases(self):
         self.assertCountryAliases(BosniaAndHerzegovina, BA, BIH)
@@ -44,10 +49,10 @@ class TestBA(TestCase):
         self.assertHolidaysName(name, self.fbih_holidays, dt)
         self.assertHolidaysName(name, self.bd_holidays, dt)
         self.assertNoHoliday(dt)
-        self.assertNoHoliday(
+        self.assertNoNonObservedHoliday(
             BosniaAndHerzegovina(subdiv="FBiH", observed=False), dt
         )
-        self.assertNoHoliday(
+        self.assertNoNonObservedHoliday(
             BosniaAndHerzegovina(subdiv="BD", observed=False), dt
         )
 
@@ -182,7 +187,7 @@ class TestBA(TestCase):
             name,
             (f"{year}-05-02" for year in range(2000, 2022)),
         )
-        self.assertIn(name, self.holidays.get("2022-05-02"))
+        self.assertIn(name, self.holidays_non_observed.get("2022-05-02"))
         self.assertHolidaysName(
             name,
             (f"{year}-05-02" for year in range(2023, 2030)),
@@ -194,8 +199,8 @@ class TestBA(TestCase):
             "2016-05-03",
             "2022-05-03",
         )
-        self.assertHolidaysName(name, BosniaAndHerzegovina(observed=True), dt)
-        self.assertNoHoliday(dt)
+        self.assertHolidaysName(name, dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_victory_day(self):
         name = "Dan pobjede nad fašizmom"
@@ -277,7 +282,8 @@ class TestBA(TestCase):
     def test_catholic_christmas(self):
         for year in range(2010, 2025):
             self.assertEqual(
-                self.holidays.get(f"{year}-12-25"), "Božić (Katolički)"
+                self.holidays_non_observed.get(f"{year}-12-25"),
+                "Božić (Katolički)",
             )
         name = "Badnji dan (Katolički)"
         dt = (f"{year}-12-24" for year in range(2000, 2030))
