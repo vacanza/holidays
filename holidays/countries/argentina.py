@@ -232,15 +232,13 @@ class Argentina(HolidayBase):
         # Started in 1983 on April 2, moved to June 10 in Decreto 901/1984
         # Abandoned in 2001
         # Superceded by "Veterans Day and the Fallen in the Malvinas War"
-        name = self.tr(
-            "Día de los Derechos Argentinos sobre las Islas Malvinas, "
-            "Sandwich y del Atlántico Sur"
-        )
-
-        if year == 1983:
-            self[date(year, APR, 2)] = name
-        elif 1984 <= year <= 2000:
-            self[date(year, JUN, 10)] = name
+        if 1983 <= year <= 2000:
+            self[
+                date(year, APR, 2) if year == 1983 else date(year, JUN, 10)
+            ] = self.tr(
+                "Día de los Derechos Argentinos sobre las Islas Malvinas, "
+                "Sandwich y del Atlántico Sur"
+            )
 
         # !!! Day Pass to the Immortality of General Don Manuel Belgrano. !!!
         # Also called "National Flag Day" (Día de la Bandera Nacional)
