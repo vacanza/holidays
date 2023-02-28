@@ -14,8 +14,9 @@ from tests.common import TestCase
 
 
 class TestNigeria(TestCase):
-    def setUp(self):
-        self.holidays = Nigeria()
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Nigeria)
 
     def test_country_aliases(self):
         self.assertCountryAliases(Nigeria, NG, NGA)
@@ -163,4 +164,4 @@ class TestNigeria(TestCase):
             "2022-10-10",
         )
         self.assertHoliday(dt)
-        self.assertNoHoliday(Nigeria(observed=False), dt)
+        self.assertNoNonObservedHoliday(dt)

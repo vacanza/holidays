@@ -72,8 +72,8 @@ class TestCase(unittest.TestCase):
             except AttributeError:
                 raise ValueError(
                     "Either pass a holidays object (`HolidayBase` subclass) "
-                    f"as a first argument or initialize `self.{instance_name}`"
-                    " in the `setUp()` method."
+                    "as a first argument or initialize your `TestCase` class "
+                    "properly with `setUpClass()` method."
                 )
 
         items = []
