@@ -108,6 +108,7 @@ class TestArgentina(TestCase):
         )
 
         self.assertNoHolidayName(name, Argentina(years=1982))
+        self.assertNoHolidayName(name, Argentina(years=range(2001, 2050)))
         self.assertHoliday("1983-04-02")
         self.assertHoliday(f"{year}-06-10" for year in range(1984, 2001))
         self.assertNoHoliday(f"{year}-06-10" for year in range(2001, 2050))
