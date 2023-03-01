@@ -188,7 +188,9 @@ class TestCase(unittest.TestCase):
             instance_name=instance_name,
         )
         self.assertEqual(
-            len(holidays.years), len(holidays.get_named(name)), name
+            len(holidays.years),
+            len(holidays.get_named(name, lookup="exact")),
+            name,
         )
 
     def assertHolidayName(self, name, *args):
@@ -274,7 +276,7 @@ class TestCase(unittest.TestCase):
             args,
             instance_name=instance_name,
         )
-        self.assertFalse(holidays.get_named(name), name)
+        self.assertFalse(holidays.get_named(name, lookup="exact"), name)
 
     def assertNoHolidayName(self, name, *args):
         """Assert a holiday with a specific name doesn't exist."""

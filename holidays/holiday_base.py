@@ -13,7 +13,6 @@ __all__ = ("DateLike", "HolidayBase", "HolidaySum")
 
 import copy
 import os
-import re
 import warnings
 from calendar import isleap
 from datetime import date, datetime, timedelta
@@ -546,29 +545,39 @@ class HolidayBase(Dict[date, str]):
         :return:
             A list of all holiday dates matching the provided holiday name.
         """
-        holiday_name_escaped = re.escape(holiday_name)
-        if lookup == "contains":
-            lookup_re = re.compile(f".*{holiday_name_escaped}.*")
-        elif lookup == "exact":
-            lookup_re = re.compile(f"^{holiday_name_escaped}$")
-        elif lookup == "icontains":
-            lookup_re = re.compile(
-                f".*{holiday_name_escaped}.*", re.IGNORECASE
-            )
-        elif lookup == "iexact":
-            lookup_re = re.compile(f"^{holiday_name_escaped}$", re.IGNORECASE)
-        else:
-            raise AttributeError(f"Unknown lookup type: {lookup}")
-
         holiday_date_names_mapping: Dict[date, List[str]] = {
             key: value.split(HOLIDAY_NAME_DELIMITER)
             for key, value in self.items()
         }
-        return [
-            dt
-            for dt, names in holiday_date_names_mapping.items()
-            if any((lookup_re.search(name) for name in names))
-        ]
+
+        if lookup == "icontains":
+            holiday_name_lower = holiday_name.lower()
+            return [
+                dt
+                for dt, names in holiday_date_names_mapping.items()
+                if any((holiday_name_lower in name.lower() for name in names))
+            ]
+        elif lookup == "exact":
+            return [
+                dt
+                for dt, names in holiday_date_names_mapping.items()
+                if any((holiday_name == name for name in names))
+            ]
+        elif lookup == "contains":
+            return [
+                dt
+                for dt, names in holiday_date_names_mapping.items()
+                if any((holiday_name in name for name in names))
+            ]
+        elif lookup == "iexact":
+            holiday_name_lower = holiday_name.lower()
+            return [
+                dt
+                for dt, names in holiday_date_names_mapping.items()
+                if any((holiday_name_lower == name.lower() for name in names))
+            ]
+
+        raise AttributeError(f"Unknown lookup type: {lookup}")
 
     def pop(
         self,

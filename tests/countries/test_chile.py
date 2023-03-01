@@ -270,12 +270,14 @@ class TestChile(TestCase):
         )
 
         self.assertHolidayName(
-            "Día del Respeto a la Diversidad",
+            "Día del Respeto a la Diversidad "
+            "[Day of the Meeting of Two Worlds]",
             Chile(years=range(2000, 2020)),
         )
 
         self.assertHolidayName(
-            "Día del Descubrimiento de dos Mundos",
+            "Día del Descubrimiento de dos Mundos "
+            "[Discovery of Two Worlds' Day]",
             Chile(years=range(2020, 2050)),
         )
 
