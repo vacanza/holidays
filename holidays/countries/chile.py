@@ -9,10 +9,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 from datetime import timedelta as td
 
-from dateutil import tz
 from dateutil.easter import easter
 from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
@@ -22,6 +21,12 @@ from pymeeus.Sun import Sun
 from holidays.constants import JAN, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import TUE, WED, THU, FRI, SAT, SUN
 from holidays.holiday_base import HolidayBase
+
+# use standard library for timezone
+try:
+    from zoneinfo import ZoneInfo
+except ImportError:
+    from backports.zoneinfo import ZoneInfo  # type: ignore[no-redef]
 
 
 class Chile(HolidayBase):
@@ -112,8 +117,8 @@ class Chile(HolidayBase):
             # to match Chile's timezone
             # https://www.feriadoschilenos.cl/#DiaNacionalDeLosPueblosIndigenasII
             equinox = map(int, Epoch(epoch).get_full_date())
-            adjusted_date = datetime(*equinox, tzinfo=tz.UTC).astimezone(
-                tz.gettz("America/Santiago")
+            adjusted_date = datetime(*equinox, tzinfo=timezone.utc).astimezone(
+                ZoneInfo("America/Santiago")
             )
             self[date(year, JUN, adjusted_date.day)] = name
 
