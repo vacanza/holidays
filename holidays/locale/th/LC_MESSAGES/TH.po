@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.20\n"
-"POT-Creation-Date: 2023-02-23 09:43+0700\n"
+"POT-Creation-Date: 2023-03-01 10:36+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Python Holidays Translation Team\n"
@@ -14,192 +14,159 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#. วันหยุดพิเศษ (เพิ่มเติม) - see Bank of Thailand's DB for Cross-Check
-#: holidays/countries/thailand.py:118
+#: holidays/countries/thailand.py:119
 msgid "วันหยุดชดเชย"
 msgstr ""
 
-#: holidays/countries/thailand.py:119
+#: holidays/countries/thailand.py:120
 msgid "วันเลือกตั้ง"
 msgstr ""
 
-#.
-#. !!! New Year's Eve (in lieu) !!! วันหยุดชดเชยวันสิ้นปี Status: In-Use Added
-#. separately from New Year's Eve itself so that it would't go over the next
-#. year - CASE 1: SAT-SUN -> 1 in-lieu on TUE - CASE 2: SUN-MON -> 1 in-lieu on
-#. TUE See in lieu logic in `_add_with_observed(dt, holiday_name)`
-#: holidays/countries/thailand.py:120 holidays/countries/thailand.py:143
-#: holidays/countries/thailand.py:284 holidays/countries/thailand.py:310
-#: holidays/countries/thailand.py:366 holidays/countries/thailand.py:634
-#: holidays/countries/thailand.py:638
+#: holidays/countries/thailand.py:121 holidays/countries/thailand.py:145
+#: holidays/countries/thailand.py:286 holidays/countries/thailand.py:313
+#: holidays/countries/thailand.py:370 holidays/countries/thailand.py:640
+#: holidays/countries/thailand.py:644
 #, c-format
 msgid "ชดเชย%s"
 msgstr ""
 
-#: holidays/countries/thailand.py:121
+#: holidays/countries/thailand.py:122
 msgid "วันหยุดพิเศษ (เพิ่มเติม)"
 msgstr ""
 
-#. Special Cases
-#: holidays/countries/thailand.py:124
+#: holidays/countries/thailand.py:126
 msgid "พระราชพิธีกาญจนาภิเษก พ.ศ. 2539"
 msgstr ""
 
-#: holidays/countries/thailand.py:125
+#: holidays/countries/thailand.py:127
 msgid "พระราชพิธีฉลองสิริราชสมบัติครบ 60 ปี พ.ศ. 2549"
 msgstr ""
 
-#: holidays/countries/thailand.py:128
+#: holidays/countries/thailand.py:130
 msgid "วันหยุดพิเศษ (คมช.)"
 msgstr ""
 
-#: holidays/countries/thailand.py:129
+#: holidays/countries/thailand.py:131
 msgid "วันหยุดพิเศษ (การเมือง)"
 msgstr ""
 
-#: holidays/countries/thailand.py:130
+#: holidays/countries/thailand.py:132
 msgid "วันหยุดพิเศษ (มหาอุทกภัย พ.ศ. 2554)"
 msgstr ""
 
-#: holidays/countries/thailand.py:133
+#: holidays/countries/thailand.py:135
 msgid "วันหยุดพิเศษ (ร่วมถวายอาลัย ส่งดวงพระวิญญาณพระบรมศพ)"
 msgstr ""
 
-#: holidays/countries/thailand.py:136
+#: holidays/countries/thailand.py:138
 msgid "วันพระราชพิธีถวายพระเพลิงพระบรมศพพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช"
 msgstr ""
 
-#: holidays/countries/thailand.py:140
+#: holidays/countries/thailand.py:142
 msgid "พระราชพิธีบรมราชาภิเษก พระบาทสมเด็จพระวชิรเกล้าเจ้าอยู่หัว"
 msgstr ""
 
-#.
-#. !!! Songkran Festival !!! วันสงกรานต์ Status: In-Use Used to be April 1st as
-#. Thai New Year Day Initially abandoned in 1941 (B.E. 2484), declared again as
-#. public holidays in 1948 (2491 B.E) - 1948-1953, celebrated on Apr 13-15 -
-#. 1954-1956, abandoned as a public holiday - 1957-1988, only celebrated on Apr
-#. 13 - 1989-1997, celebrated on Apr 12-14 - 1998-Present, celebrated on Apr
-#. 13-15 (Except for 2020 due to Covid-19 outbreaks) This has its own in-lieu
-#. trigger
-#: holidays/countries/thailand.py:143 holidays/countries/thailand.py:339
+#: holidays/countries/thailand.py:145 holidays/countries/thailand.py:343
 msgid "วันสงกรานต์"
 msgstr ""
 
-#: holidays/countries/thailand.py:300
+#: holidays/countries/thailand.py:302
 msgid "วันขึ้นปีใหม่"
 msgstr ""
 
-#. !!! New Year's Eve (in lieu) !!! วันหยุดชดเชยวันสิ้นปี Status: In-Use Added
-#. separately from New Year's Eve itself so that it would't go over the next
-#. year - CASE 1: SAT-SUN -> 1 in-lieu on TUE - CASE 2: SUN-MON -> 1 in-lieu on
-#. TUE See in lieu logic in `_add_with_observed(dt, holiday_name)`
-#.
-#: holidays/countries/thailand.py:310 holidays/countries/thailand.py:571
+#: holidays/countries/thailand.py:313 holidays/countries/thailand.py:577
 msgid "วันสิ้นปี"
 msgstr ""
 
-#: holidays/countries/thailand.py:324
+#: holidays/countries/thailand.py:327
 msgid "วันจักรี"
 msgstr ""
 
-#: holidays/countries/thailand.py:388
+#: holidays/countries/thailand.py:392
 msgid "วันแรงงานแห่งชาติ"
 msgstr ""
 
-#: holidays/countries/thailand.py:400
+#: holidays/countries/thailand.py:404
 msgid "วันชาติ"
 msgstr ""
 
-#. !!! Coronation Day !!! วันฉัตรมงคล Starts in 1958 (B.E. 2501) for Rama IX's
-#. Coronation: May 5th No celebration in 2017-2019 (B.E 2560-2562) Reestablished
-#. with Rama X's Coronation in 2020: May 4th
-#: holidays/countries/thailand.py:408
+#: holidays/countries/thailand.py:413
 msgid "วันฉัตรมงคล"
 msgstr ""
 
-#: holidays/countries/thailand.py:423
+#: holidays/countries/thailand.py:428
 msgid "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสุทิดา พัชรสุธาพิมลลักษณ พระบรมราชินี"
 msgstr ""
 
-#: holidays/countries/thailand.py:437
+#: holidays/countries/thailand.py:442
 msgid ""
 "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรเมนทรรามาธิบดีศรีสินทรมหาวชิราลงกรณ "
 "พระวชิรเกล้าเจ้าอยู่หัว"
 msgstr ""
 
-#: holidays/countries/thailand.py:455
+#: holidays/countries/thailand.py:460
 msgid "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถ"
 msgstr ""
 
-#: holidays/countries/thailand.py:463
+#: holidays/countries/thailand.py:468
 msgid "วันเฉลิมพระชนมพรรษาสมเด็จพระบรมราชชนนีพันปีหลวง"
 msgstr ""
 
-#. !!! National Mother's Day !!! วันแม่แห่งชาติ Status: In-Use Started 1950 (B.E
-#. 2493) initially as April 15 and cancelled in 1958 (B.E 2501) when the Min. of
-#. Culture was abolished. Restarts again in 1976 (B.E. 2519) on Queen Sirikit's
-#. Birthday (August 12) and stay that way from that point onwards.
-#: holidays/countries/thailand.py:473
+#: holidays/countries/thailand.py:479
 msgid "วันแม่แห่งชาติ"
 msgstr ""
 
-#: holidays/countries/thailand.py:489
+#: holidays/countries/thailand.py:495
 msgid "วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
 msgstr ""
 
-#: holidays/countries/thailand.py:497
+#: holidays/countries/thailand.py:503
 msgid ""
 "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
 msgstr ""
 
-#: holidays/countries/thailand.py:509
+#: holidays/countries/thailand.py:515
 msgid "วันปิยมหาราช"
 msgstr ""
 
-#: holidays/countries/thailand.py:522
+#: holidays/countries/thailand.py:528
 msgid "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
 msgstr ""
 
-#: holidays/countries/thailand.py:530
+#: holidays/countries/thailand.py:536
 msgid "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
 msgstr ""
 
-#: holidays/countries/thailand.py:538
+#: holidays/countries/thailand.py:544
 msgid ""
 "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช "
 "บรมนาถบพิตร"
 msgstr ""
 
-#: holidays/countries/thailand.py:552
+#: holidays/countries/thailand.py:558
 msgid "วันพ่อแห่งชาติ"
 msgstr ""
 
-#: holidays/countries/thailand.py:561
+#: holidays/countries/thailand.py:567
 msgid "วันรัฐธรรมนูญ"
 msgstr ""
 
-#: holidays/countries/thailand.py:591
+#: holidays/countries/thailand.py:597
 msgid "วันมาฆบูชา"
 msgstr ""
 
-#: holidays/countries/thailand.py:599
+#: holidays/countries/thailand.py:605
 msgid "วันวิสาขบูชา"
 msgstr ""
 
-#: holidays/countries/thailand.py:608 holidays/countries/thailand.py:640
+#: holidays/countries/thailand.py:614 holidays/countries/thailand.py:646
 msgid "วันอาสาฬหบูชา"
 msgstr ""
 
-#: holidays/countries/thailand.py:617 holidays/countries/thailand.py:636
+#: holidays/countries/thailand.py:623 holidays/countries/thailand.py:642
 msgid "วันเข้าพรรษา"
 msgstr ""
 
-#. !!! Royal Ploughing Ceremony !!! วันพืชมงคล Restarts in 1957 (B.E. 2500) Is
-#. dated on an annual basis by the Royal Palace This isn't even fixed even by
-#. the Thai Lunar Calendar, but instead by Court Astrologers; All chosen dates
-#. are all around May, so we can technically assign it to 13 May for years prior
-#. with no data. *** NOTE: only observed by government sectors TODO: Update this
-#. annually around Dec of each year
-#: holidays/countries/thailand.py:657
+#: holidays/countries/thailand.py:664
 msgid "วันพืชมงคล"
 msgstr ""
