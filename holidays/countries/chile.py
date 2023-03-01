@@ -25,7 +25,7 @@ from holidays.holiday_base import HolidayBase
 # use standard library for timezone
 try:
     from zoneinfo import ZoneInfo
-except ImportError:
+except ImportError:  # pragma: no cover
     from backports.zoneinfo import ZoneInfo  # type: ignore[no-redef]
 
 
