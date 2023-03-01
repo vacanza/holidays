@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.20\n"
-"POT-Creation-Date: 2023-02-28 15:45+0700\n"
+"POT-Creation-Date: 2023-03-01 10:35+0700\n"
 "PO-Revision-Date: 2023-02-20 19:10+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
@@ -16,23 +16,19 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#. Special Bridge Holidays are given upto 3 days a year as long as it's declared
-#. 50 days before calendar year's end There's no Bridge Holidays declared in
-#. 2017
-#: holidays/countries/argentina.py:70
+#: holidays/countries/argentina.py:71
 msgid "Feriado con fines turísticos"
 msgstr "Bridge Public Holiday"
 
-#. Special Cases
-#: holidays/countries/argentina.py:73
+#: holidays/countries/argentina.py:75
 msgid "Bicentenario de la creación y primera jura de la bandera nacional"
 msgstr "Bicentenary of the creation and first oath of the national flag"
 
-#: holidays/countries/argentina.py:76
+#: holidays/countries/argentina.py:78
 msgid "Bicentenario de la Batalla de Tucumán"
 msgstr "Bicentenary of the Battle of Tucumán"
 
-#: holidays/countries/argentina.py:77
+#: holidays/countries/argentina.py:79
 msgid ""
 "Bicentenario de la sesión inaugural de la Asamblea Nacional Constituyente "
 "del año 1813"
@@ -40,62 +36,52 @@ msgstr ""
 "Bicentenary of the inaugural session of the National Constituent Assembly of "
 "the year 1813"
 
-#: holidays/countries/argentina.py:81
+#: holidays/countries/argentina.py:83
 msgid "Bicentenario de la Batalla de Salta"
 msgstr "Bicentenary of the Battle of Salta"
 
-#: holidays/countries/argentina.py:82
+#: holidays/countries/argentina.py:84
 msgid "Censo nacional 2022"
 msgstr "National Census Day 2022"
 
-#: holidays/countries/argentina.py:161 holidays/countries/argentina.py:164
+#: holidays/countries/argentina.py:162 holidays/countries/argentina.py:165
 #, c-format
 msgid "%s (Observado)"
 msgstr "%s (Observed)"
 
-#. !!! New Year's Day !!! Status: In-Use
-#: holidays/countries/argentina.py:178
+#: holidays/countries/argentina.py:181
 msgid "Año Nuevo"
 msgstr "New Year's Day"
 
-#: holidays/countries/argentina.py:185
+#: holidays/countries/argentina.py:189
 msgid "Día de Carnaval"
 msgstr "Carnival"
 
-#: holidays/countries/argentina.py:193
+#: holidays/countries/argentina.py:198
 msgid "Día Nacional de la Memoria por la Verdad y la Justicia"
 msgstr "Memory's National Day for the Truth and Justice"
 
-#. !!! Veterans Day and the Fallen in the Malvinas War !!! Status: In-Use
-#. Started in 1993 as War Veterans Day via Ley 24160 Merged in 2001, confirmed
-#. as Fixed Holiday in 2006 Superceded "Day of Argentine Sovereignty over the
-#. Malvinas" Got moved temporary in 2020 (Decreto 297/2020)
-#: holidays/countries/argentina.py:203
-msgid "Día del Veterano y de los Caidos en la Guerra de Malvinas"
-msgstr "Veterans Day and the Fallen in the Malvinas War"
-
-#: holidays/countries/argentina.py:210
-#, fuzzy
+#: holidays/countries/argentina.py:213
 msgid "Día del Veterano de Guerra"
 msgstr "War Veterans Day"
 
-#. !!! Good Friday !!! Status: In-Use
-#: holidays/countries/argentina.py:216
+#: holidays/countries/argentina.py:215
+msgid "Día del Veterano y de los Caidos en la Guerra de Malvinas"
+msgstr "Veterans Day and the Fallen in the Malvinas War"
+
+#: holidays/countries/argentina.py:223
 msgid "Viernes Santo"
 msgstr "Good Friday"
 
-#: holidays/countries/argentina.py:222
+#: holidays/countries/argentina.py:230
 msgid "Día del Trabajo"
 msgstr "Labor Day"
 
-#: holidays/countries/argentina.py:228
+#: holidays/countries/argentina.py:237
 msgid "Día de la Revolución de Mayo"
 msgstr "May Revolution Day"
 
-#. !!! Day of Argentine Sovereignty over the Malvinas !!! Status: Defunct
-#. Started in 1983 on April 2, moved to June 10 in Decreto 901/1984 Abandoned in
-#. 2001 Superceded by "Veterans Day and the Fallen in the Malvinas War"
-#: holidays/countries/argentina.py:235
+#: holidays/countries/argentina.py:248
 msgid ""
 "Día de los Derechos Argentinos sobre las Islas Malvinas, Sandwich y del "
 "Atlántico Sur"
@@ -103,51 +89,38 @@ msgstr ""
 "Day of Argentine Sovereignty over the Malvinas, Sandwich and South Atlantic "
 "Islands"
 
-#. !!! Day Pass to the Immortality of General Don Manuel Belgrano. !!! Also
-#. called "National Flag Day" (Día de la Bandera Nacional) Status: In-Use
-#. Started in 1938 via Ley 12361 as Fixed Holiday Set as 3rd MON of JUN via Ley
-#. 24455 in Dec 1994 Made Fixed Holiday again in 2011
-#: holidays/countries/argentina.py:251
+#: holidays/countries/argentina.py:265
 msgid "Paso a la Inmortalidad del General Don Manuel Belgrano"
 msgstr "Pass to the Immortality of General Don Manuel Belgrano"
 
-#: holidays/countries/argentina.py:264
+#: holidays/countries/argentina.py:274
 msgid "Día de la Independencia"
 msgstr "Independence Day"
 
-#. Immaculate Conception Status: In-Use
-#: holidays/countries/argentina.py:268
+#: holidays/countries/argentina.py:279
 msgid "Inmaculada Concepción de María"
 msgstr "Immaculate Conception"
 
-#. Christmas Status: In-Use
-#: holidays/countries/argentina.py:272
+#: holidays/countries/argentina.py:284
 msgid "Navidad"
 msgstr "Christmas"
 
-#: holidays/countries/argentina.py:285
+#: holidays/countries/argentina.py:298
 msgid "Paso a la Inmortalidad del General Don Martín Miguel de Güemes"
 msgstr "Pass to the Immortality of General Don Martín Miguel de Güemes"
 
-#. !!! Day Pass to the Immortality of General José de San Martin !!! Status: In-
-#. Use Started in 1938 via Ley 12387 on Aug 17 Set as 3rd MON of AUG via Ley
-#. 24455 in Dec 1994 Moved to Aug 22 for 2011 (election interfere) via Decreto
-#. 521/2011
-#: holidays/countries/argentina.py:301
+#: holidays/countries/argentina.py:315
 msgid "Paso a la Inmortalidad del General Don José de San Martin"
 msgstr "Pass to the Immortality of General Don José de San Martin"
 
-#: holidays/countries/argentina.py:320
+#: holidays/countries/argentina.py:335
 msgid "Día del Respeto a la Diversidad Cultural"
 msgstr "Respect for Cultural Diversity Day"
 
-#: holidays/countries/argentina.py:322
+#: holidays/countries/argentina.py:337
 msgid "Día de la Raza"
 msgstr "Columbus day"
 
-#. !!! National Sovereignty Day !!! Status: In-Use First observed with no
-#. holiday via Ley 20770 in 1974 Started in 2010 Moved to Nov 27 for 2015
-#. (election interfere) Moved to Nov 28 for 2016 (???)
-#: holidays/countries/argentina.py:332
+#: holidays/countries/argentina.py:348
 msgid "Día de la Soberanía Nacional"
 msgstr "National Sovereignty Day"
