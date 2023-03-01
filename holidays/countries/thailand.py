@@ -287,11 +287,7 @@ class Thailand(HolidayBase):
 
         super()._populate(year)
 
-        ########################
-        #
         # Fixed Date Holidays
-        #
-        ########################
 
         # New Year's Day.
         # วันขึ้นปีใหม่
@@ -576,11 +572,7 @@ class Thailand(HolidayBase):
 
         self[date(year, DEC, 31)] = self.tr("วันสิ้นปี")
 
-        ################################
-        #
         # Thai Lunar Calendar Holidays
-        #
-        ################################
 
         """
         See `_ThaiLuniSolar` in holidays/utils.py for more details.
@@ -645,11 +637,7 @@ class Thailand(HolidayBase):
                     "ชดเชย%s"
                 ) % self.tr("วันอาสาฬหบูชา")
 
-        #################################
-        #
         # No Future Fixed Date Holidays
-        #
-        #################################
 
         # Royal Ploughing Ceremony.
         # วันพืชมงคล

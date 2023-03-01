@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.20\n"
-"POT-Creation-Date: 2023-03-01 10:36+0700\n"
+"POT-Creation-Date: 2023-03-02 00:37+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Python Holidays localization team\n"
@@ -23,9 +23,9 @@ msgid "วันเลือกตั้ง"
 msgstr "Thai Election Day"
 
 #: holidays/countries/thailand.py:121 holidays/countries/thailand.py:145
-#: holidays/countries/thailand.py:286 holidays/countries/thailand.py:313
-#: holidays/countries/thailand.py:370 holidays/countries/thailand.py:640
-#: holidays/countries/thailand.py:644
+#: holidays/countries/thailand.py:286 holidays/countries/thailand.py:309
+#: holidays/countries/thailand.py:366 holidays/countries/thailand.py:632
+#: holidays/countries/thailand.py:636
 #, c-format
 msgid "ชดเชย%s"
 msgstr "%s (in lieu)"
@@ -66,108 +66,108 @@ msgstr "HM King Bhumibol Adulyadej's Royal Cremation Ceremony"
 msgid "พระราชพิธีบรมราชาภิเษก พระบาทสมเด็จพระวชิรเกล้าเจ้าอยู่หัว"
 msgstr "HM King Maha Vajiralongkorn's Coronation Celebrations"
 
-#: holidays/countries/thailand.py:145 holidays/countries/thailand.py:343
+#: holidays/countries/thailand.py:145 holidays/countries/thailand.py:339
 msgid "วันสงกรานต์"
 msgstr "Songkran Festival"
 
-#: holidays/countries/thailand.py:302
+#: holidays/countries/thailand.py:298
 msgid "วันขึ้นปีใหม่"
 msgstr "New Year's Day"
 
-#: holidays/countries/thailand.py:313 holidays/countries/thailand.py:577
+#: holidays/countries/thailand.py:309 holidays/countries/thailand.py:573
 msgid "วันสิ้นปี"
 msgstr "New Year's Eve"
 
-#: holidays/countries/thailand.py:327
+#: holidays/countries/thailand.py:323
 msgid "วันจักรี"
 msgstr "Chakri Memorial Day"
 
-#: holidays/countries/thailand.py:392
+#: holidays/countries/thailand.py:388
 msgid "วันแรงงานแห่งชาติ"
 msgstr "National Labour Day"
 
-#: holidays/countries/thailand.py:404
+#: holidays/countries/thailand.py:400
 msgid "วันชาติ"
 msgstr "National Day"
 
-#: holidays/countries/thailand.py:413
+#: holidays/countries/thailand.py:409
 msgid "วันฉัตรมงคล"
 msgstr "Coronation Day"
 
-#: holidays/countries/thailand.py:428
+#: holidays/countries/thailand.py:424
 msgid "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสุทิดา พัชรสุธาพิมลลักษณ พระบรมราชินี"
 msgstr "HM Queen Suthida's Birthday"
 
-#: holidays/countries/thailand.py:442
+#: holidays/countries/thailand.py:438
 msgid ""
 "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรเมนทรรามาธิบดีศรีสินทรมหาวชิราลงกรณ "
 "พระวชิรเกล้าเจ้าอยู่หัว"
 msgstr "HM King Maha Vajiralongkorn's Birthday"
 
-#: holidays/countries/thailand.py:460
+#: holidays/countries/thailand.py:456
 msgid "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถ"
 msgstr "HM Queen Sirikit's Birthday"
 
-#: holidays/countries/thailand.py:468
+#: holidays/countries/thailand.py:464
 msgid "วันเฉลิมพระชนมพรรษาสมเด็จพระบรมราชชนนีพันปีหลวง"
 msgstr "HM Queen Sirikit The Queen Mother's Birthday"
 
-#: holidays/countries/thailand.py:479
+#: holidays/countries/thailand.py:475
 msgid "วันแม่แห่งชาติ"
 msgstr "National Mother's Day"
 
-#: holidays/countries/thailand.py:495
+#: holidays/countries/thailand.py:491
 msgid "วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
 msgstr "HM King Bhumibol Adulyadej Memorial Day"
 
-#: holidays/countries/thailand.py:503
+#: holidays/countries/thailand.py:499
 msgid ""
 "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
 msgstr "HM King Bhumibol Adulyadej the Great Memorial Day"
 
-#: holidays/countries/thailand.py:515
+#: holidays/countries/thailand.py:511
 msgid "วันปิยมหาราช"
 msgstr "HM King Chulalongkorn Memorial Day"
 
-#: holidays/countries/thailand.py:528
+#: holidays/countries/thailand.py:524
 #, fuzzy
 msgid "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
 msgstr "HM King Bhumibol Adulyadej's Birthday"
 
-#: holidays/countries/thailand.py:536
+#: holidays/countries/thailand.py:532
 msgid "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
 msgstr "HM King Bhumibol Adulyadej's Birthday"
 
-#: holidays/countries/thailand.py:544
+#: holidays/countries/thailand.py:540
 msgid ""
 "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช "
 "บรมนาถบพิตร"
 msgstr "HM King Bhumibol Adulyadej the Great's Birthday"
 
-#: holidays/countries/thailand.py:558
+#: holidays/countries/thailand.py:554
 msgid "วันพ่อแห่งชาติ"
 msgstr "National Father's Day"
 
-#: holidays/countries/thailand.py:567
+#: holidays/countries/thailand.py:563
 msgid "วันรัฐธรรมนูญ"
 msgstr "Constitution Day"
 
-#: holidays/countries/thailand.py:597
+#: holidays/countries/thailand.py:589
 msgid "วันมาฆบูชา"
 msgstr "Makha Bucha"
 
-#: holidays/countries/thailand.py:605
+#: holidays/countries/thailand.py:597
 msgid "วันวิสาขบูชา"
 msgstr "Visakha Bucha"
 
-#: holidays/countries/thailand.py:614 holidays/countries/thailand.py:646
+#: holidays/countries/thailand.py:606 holidays/countries/thailand.py:638
 msgid "วันอาสาฬหบูชา"
 msgstr "Asarnha Bucha"
 
-#: holidays/countries/thailand.py:623 holidays/countries/thailand.py:642
+#: holidays/countries/thailand.py:615 holidays/countries/thailand.py:634
 msgid "วันเข้าพรรษา"
 msgstr "Buddhist Lent Day"
 
-#: holidays/countries/thailand.py:664
+#: holidays/countries/thailand.py:652
 msgid "วันพืชมงคล"
 msgstr "Royal Ploughing Ceremony"
