@@ -167,11 +167,7 @@ class Argentina(HolidayBase):
 
         super()._populate(year)
 
-        ###################
-        #
         # Fixed Holidays
-        #
-        ###################
 
         easter_date = easter(year)
 
@@ -283,11 +279,7 @@ class Argentina(HolidayBase):
 
         self[date(year, DEC, 25)] = self.tr("Navidad")
 
-        ####################
-        #
         # Movable Holidays
-        #
-        ####################
 
         # Day Pass to the Immortality of General Don Martín Miguel de Güemes.
         # Status: In-Use.
