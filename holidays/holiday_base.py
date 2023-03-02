@@ -528,20 +528,56 @@ class HolidayBase(Dict[date, str]):
             if name
         ]
 
-    def get_named(self, name: str) -> List[date]:
+    def get_named(self, holiday_name: str, lookup="icontains") -> List[date]:
         """Return a list of all holiday dates matching the provided holiday
         name. The match will be made case insensitively and partial matches
-        will be included.
+        will be included by default.
 
-        :param name:
+        :param holiday_name:
             The holiday's name to try to match.
+        :param lookup:
+            The holiday name lookup type:
+                contains - case sensitive contains match;
+                exact - case sensitive exact match;
+                icontains - case insensitive contains match;
+                iexact - case insensitive exact match;
 
         :return:
             A list of all holiday dates matching the provided holiday name.
         """
-        return [
-            key for key, value in self.items() if name.lower() in value.lower()
-        ]
+        holiday_date_names_mapping: Dict[date, List[str]] = {
+            key: value.split(HOLIDAY_NAME_DELIMITER)
+            for key, value in self.items()
+        }
+
+        if lookup == "icontains":
+            holiday_name_lower = holiday_name.lower()
+            return [
+                dt
+                for dt, names in holiday_date_names_mapping.items()
+                if any((holiday_name_lower in name.lower() for name in names))
+            ]
+        elif lookup == "exact":
+            return [
+                dt
+                for dt, names in holiday_date_names_mapping.items()
+                if any((holiday_name == name for name in names))
+            ]
+        elif lookup == "contains":
+            return [
+                dt
+                for dt, names in holiday_date_names_mapping.items()
+                if any((holiday_name in name for name in names))
+            ]
+        elif lookup == "iexact":
+            holiday_name_lower = holiday_name.lower()
+            return [
+                dt
+                for dt, names in holiday_date_names_mapping.items()
+                if any((holiday_name_lower == name.lower() for name in names))
+            ]
+
+        raise AttributeError(f"Unknown lookup type: {lookup}")
 
     def pop(
         self,
