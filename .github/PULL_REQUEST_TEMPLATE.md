@@ -21,11 +21,11 @@ Your PR description goes here.
 
 - [ ] New country holidays support (thank you!)
 - [ ] Supported country holidays update (calendar discrepancy fix, localization)
-- [ ] Existing code/tests/processes improvement (best practice, refactoring, optimization)
+- [ ] Existing code/test/process improvement (best practice, cleanup, refactoring, optimization)
 - [ ] Dependency upgrade (version update)
 - [ ] Bugfix (non-breaking change which fixes an issue)
 - [ ] Breaking change (a code change causing existing functionality to break)
-- [ ] New feature (adds functionality to python-holidays in general)
+- [ ] New feature (new python-holidays functionality in general)
 
 ## Checklist
 
@@ -33,12 +33,12 @@ Your PR description goes here.
   Put an `x` in the boxes that apply. You can change them after PR is created.
 -->
 
-- [ ] I've followed the [contributing guidelines][contributing-guidelines]
-- [ ] This PR is filed against `beta` branch of the repository
-- [ ] This PR doesn't contain any merge conflicts
-- [ ] The code style looks good (`make pre-commit`)
-- [ ] I've added tests to verify that the new code works and all tests pass locally (`make test`)
-- [ ] The related [documentation][docs] has been added/updated (check off the box for free if no updates is required)
+- [x ] I've followed the [contributing guidelines][contributing-guidelines]
+- [x ] This PR is filed against `beta` branch of the repository
+- [x ] This PR doesn't contain any merge conflicts and has clean commit history
+- [x ] The code style looks good (`make pre-commit`)
+- [x ] I've added tests to verify that the new code works and all tests pass locally (`make test`, `make tox`)
+- [x ] The related [documentation][docs] has been added/updated (check off the box for free if no updates is required)
 
 <!--
   Thanks again for your contribution!
