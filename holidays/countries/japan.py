@@ -9,11 +9,10 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from dateutil import tz
 from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
 from pymeeus.Epoch import Epoch
@@ -22,6 +21,12 @@ from pymeeus.Sun import Sun
 from holidays.constants import JAN, FEB, APR, MAY, JUN, JUL, AUG, SEP, OCT
 from holidays.constants import NOV, DEC
 from holidays.holiday_base import HolidayBase
+
+# use standard library for timezone
+try:
+    from zoneinfo import ZoneInfo
+except ImportError:  # pragma: no cover
+    from backports.zoneinfo import ZoneInfo  # type: ignore[no-redef]
 
 
 class Japan(HolidayBase):
@@ -70,8 +75,8 @@ class Japan(HolidayBase):
         # Vernal Equinox Day.
         epoch = Sun.get_equinox_solstice(year, target="spring")
         equinox = map(int, Epoch(epoch).get_full_date())
-        adjusted_date = datetime(*equinox, tzinfo=tz.UTC).astimezone(
-            tz.gettz("Asia/Tokyo")
+        adjusted_date = datetime(*equinox, tzinfo=timezone.utc).astimezone(
+            ZoneInfo("Asia/Tokyo")
         )
         self[adjusted_date.date()] = self.tr("春分の日")
 
@@ -120,8 +125,8 @@ class Japan(HolidayBase):
         # Autumnal Equinox Day.
         epoch = Sun.get_equinox_solstice(year, target="autumn")
         equinox = map(int, Epoch(epoch).get_full_date())
-        adjusted_date = datetime(*equinox, tzinfo=tz.UTC).astimezone(
-            tz.gettz("Asia/Tokyo")
+        adjusted_date = datetime(*equinox, tzinfo=timezone.utc).astimezone(
+            ZoneInfo("Asia/Tokyo")
         )
         self[adjusted_date.date()] = self.tr("秋分の日")
 
