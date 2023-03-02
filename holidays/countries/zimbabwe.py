@@ -13,10 +13,9 @@ from datetime import date
 from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import MO
-from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, FEB, APR, MAY, AUG, DEC
+from holidays.calendars import _get_nth_weekday_of_month
+from holidays.constants import JAN, FEB, APR, MAY, AUG, DEC, MON
 from holidays.holiday_base import HolidayBase
 
 
@@ -66,7 +65,7 @@ class Zimbabwe(HolidayBase):
         _add_with_observed(date(year, MAY, 25), "Africa Day")
 
         # 2nd Monday of August
-        zimbabwe_heroes_day = date(year, AUG, 1) + rd(weekday=MO(+2))
+        zimbabwe_heroes_day = _get_nth_weekday_of_month(2, MON, AUG, year)
         self[zimbabwe_heroes_day] = "Zimbabwe Heroes' Day"
 
         # Tuesday after 2nd Monday of August

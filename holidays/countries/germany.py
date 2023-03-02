@@ -13,10 +13,9 @@ from datetime import date
 from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import WE
-from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAR, MAY, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars import _get_nth_weekday_from
+from holidays.constants import JAN, MAR, MAY, AUG, SEP, OCT, NOV, DEC, WED
 from holidays.holiday_base import HolidayBase
 
 
@@ -138,7 +137,9 @@ class Germany(HolidayBase):
 
         if year <= 1994 or self.subdiv == "SN":
             # last wednesday before year-11-23
-            self[date(year, NOV, 22) + rd(weekday=WE(-1))] = "Buß- und Bettag"
+            self[
+                _get_nth_weekday_from(-1, WED, date(year, NOV, 22))
+            ] = "Buß- und Bettag"
 
         if year >= 2019:
             if self.subdiv == "TH":
