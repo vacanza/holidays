@@ -13,6 +13,7 @@ import unittest
 from datetime import date
 
 from holidays import calendars
+from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import FEB, MAR, MAY, JUN, JUL, AUG, OCT
 
 
@@ -110,3 +111,18 @@ class TestThaiLuniSolarCalendar(unittest.TestCase):
                 visakha_bucha_year_date[year],
                 self.calendar.visakha_bucha_date(year),
             )
+
+
+class TestRelativeWeekdays(unittest.TestCase):
+    def test_weekday_of_month(self):
+        # 1st Monday of 2023 months
+        for month, day in enumerate((3, 7, 7, 4, 2, 6, 4, 1, 5, 3, 7, 5), 1):
+            first_monday = _get_nth_weekday_of_month(1, 1, month, 2023)
+            self.assertEqual(first_monday.day, day)
+
+        # Last Saturday of 2023 months
+        for month, day in enumerate(
+            (28, 25, 25, 29, 27, 24, 29, 26, 30, 28, 25, 30), 1
+        ):
+            last_friday = _get_nth_weekday_of_month(-1, 5, month, 2023)
+            self.assertEqual(last_friday.day, day)
