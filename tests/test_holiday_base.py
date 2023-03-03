@@ -325,18 +325,18 @@ class TestBasics(unittest.TestCase):
         self.assertEqual(a.subdiv, holidays.CA.subdivisions)
         self.assertIn("2015-02-09", a)
         self.assertIn("2015-02-16", a)
-        na = holidays.CA() + holidays.US() + holidays.MX()
+        na = holidays.CA() + holidays.US() + holidays.MX(language="es")
         self.assertIn(date(1969, 12, 25), na)
         self.assertEqual(na.get(date(1969, 7, 1)), "Dominion Day")
         self.assertEqual(na.get(date(1983, 7, 1)), "Canada Day")
         self.assertEqual(
             na.get(date(1969, 12, 25)),
-            "Christmas Day; Navidad [Christmas Day]",
+            "Christmas Day; Navidad",
         )
-        na = holidays.MX() + holidays.CA() + holidays.US()
+        na = holidays.MX(language="es") + holidays.CA() + holidays.US()
         self.assertEqual(
             na.get(date(1969, 12, 25)),
-            "Christmas Day; Navidad [Christmas Day]",
+            "Christmas Day; Navidad",
         )
         self.assertEqual(na, na.copy())
 
@@ -379,12 +379,12 @@ class TestBasics(unittest.TestCase):
         )
         ca = holidays.CA()
         us = holidays.US()
-        mx = holidays.MX()
+        mx = holidays.MX(language="es")
         na = ca + us + mx
         self.assertIn(date(1969, 12, 25), na)
         self.assertEqual(
             na.get_list(date(1969, 12, 25)),
-            ["Christmas Day", "Navidad [Christmas Day]"],
+            ["Christmas Day", "Navidad"],
         )
         self.assertEqual(na.get_list(date(1969, 7, 1)), ["Dominion Day"])
         self.assertEqual(na.get_list(date(1969, 1, 3)), [])

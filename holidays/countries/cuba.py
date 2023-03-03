@@ -20,11 +20,14 @@ from holidays.holiday_base import HolidayBase
 
 class Cuba(HolidayBase):
     country = "CU"
+    default_language = "es"
 
     def _populate(self, year):
         def _add_observed(hol_date: date) -> None:
             if self.observed and self._is_sunday(hol_date):
-                self[hol_date + td(days=+1)] = f"{self[hol_date]} (Observed)"
+                self[hol_date + td(days=+1)] = (
+                    self.tr("%s (Observado)") % self[hol_date]
+                )
 
         super()._populate(year)
 
@@ -43,43 +46,45 @@ class Cuba(HolidayBase):
         """
 
         dt = date(year, JAN, 1)
-        self[
-            dt
-        ] = "Aniversario de la Revolución [Anniversary of the Revolution]"
+        # Liberation Day.
+        self[dt] = self.tr("Triunfo de la Revolución")
         if year <= 2013:
             _add_observed(dt)
 
         # Granted in 2007 decree.
         if year >= 2008:
-            self[date(year, JAN, 2)] = "Día de la Victoria [Victory Day]"
+            #  Victory Day.
+            self[date(year, JAN, 2)] = self.tr("Día de la Victoria")
 
         # Granted temporarily in 2012 and 2013:
         #   https://cnn.it/3v5V6GY
         #   https://bit.ly/3v6bM18
         # Permanently granted in 2013 decree for 2014 and onwards.
         if year >= 2012:
-            self[easter(year) + td(days=-2)] = "Viernes Santo [Good Friday]"
+            # Good Friday.
+            self[easter(year) + td(days=-2)] = self.tr("Viernes Santo")
 
         dt = date(year, MAY, 1)
-        self[dt] = "Día Internacional de los Trabajadores [Labour Day]"
+        # Labour Day.
+        self[dt] = self.tr("Día Internacional de los Trabajadores")
         _add_observed(dt)
 
-        self[date(year, JUL, 25)] = (
-            "Conmemoración del asalto a Moncada "
-            "[Commemoration of the Assault of the Moncada garrison]"
+        # Commemoration of the Assault of the Moncada garrison.
+        self[date(year, JUL, 25)] = self.tr(
+            "Conmemoración del asalto a Moncada"
         )
 
-        self[
-            date(year, JUL, 26)
-        ] = "Día de la Rebeldía Nacional [Day of the National Rebellion]"
+        # Day of the National Rebellion.
+        self[date(year, JUL, 26)] = self.tr("Día de la Rebeldía Nacional")
 
-        self[date(year, JUL, 27)] = (
-            "Conmemoración del asalto a Moncada "
-            "[Commemoration of the Assault of the Moncada garrison]"
+        # Commemoration of the Assault of the Moncada garrison.
+        self[date(year, JUL, 27)] = self.tr(
+            "Conmemoración del asalto a Moncada"
         )
 
         dt = date(year, OCT, 10)
-        self[dt] = "Inicio de las Guerras de Independencia [Independence Day]"
+        # Independence Day.
+        self[dt] = self.tr("Inicio de las Guerras de Independencia")
         _add_observed(dt)
 
         # In 1969, Christmas was cancelled for the sugar harvest but then was
@@ -91,11 +96,13 @@ class Cuba(HolidayBase):
         #   https://bit.ly/3cyXhwz
         #   https://bit.ly/3cyXj7F
         if year <= 1968 or year >= 1997:
-            self[date(year, DEC, 25)] = "Día de Navidad [Christmas Day]"
+            # Christmas Day.
+            self[date(year, DEC, 25)] = self.tr("Día de Navidad")
 
         # Granted in 2007 decree.
         if year >= 2007:
-            self[date(year, DEC, 31)] = "Fiesta de Fin de Año [New Year's Eve]"
+            # New Year's Eve.
+            self[date(year, DEC, 31)] = self.tr("Fiesta de Fin de Año")
 
 
 class CU(Cuba):
