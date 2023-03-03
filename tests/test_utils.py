@@ -12,6 +12,7 @@
 import unittest
 import warnings
 from datetime import date
+from unittest import mock
 
 from holidays import utils
 
@@ -81,7 +82,8 @@ class TestFinancialHolidays(unittest.TestCase):
 class TestAllInSameYear(unittest.TestCase):
     """Test that only holidays in the year(s) requested are returned."""
 
-    def test_all_countries(self):
+    @mock.patch("pathlib.Path.rglob", return_value=())
+    def test_all_countries(self, unused_rglob_mock):
         """
         Only holidays in the year(s) requested should be returned. This
         ensures that we avoid triggering a "RuntimeError: dictionary changed
@@ -94,7 +96,8 @@ class TestAllInSameYear(unittest.TestCase):
         we only run it once on the latest Python version.
         """
         warnings.simplefilter("ignore")
+        current_year = date.today().year
         for country in utils.list_supported_countries():
-            for year in range(date.today().year - 10, date.today().year + 3):
+            for year in range(current_year - 10, current_year + 3):
                 for holiday in utils.country_holidays(country, years=year):
                     self.assertEqual(holiday.year, year)
