@@ -13,11 +13,10 @@ from datetime import date
 from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import MO, TU, TH, FR
-from dateutil.relativedelta import relativedelta as rd
 
+from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC
+from holidays.constants import OCT, NOV, DEC, MON, TUE, THU, FRI
 from holidays.holiday_base import HolidayBase
 
 
@@ -130,10 +129,10 @@ class UnitedStates(HolidayBase):
         if self.subdiv == "VA" and year <= 2020:
             name = "Lee Jackson Day"
             if year >= 2000:
-                dt = date(year, JAN, 1) + rd(weekday=MO(+3)) + td(days=-3)
+                dt = _get_nth_weekday_of_month(3, MON, JAN, year) + td(days=-3)
                 self[dt] = name
             elif year >= 1983:
-                self[date(year, JAN, 1) + rd(weekday=MO(+3))] = name
+                self[_get_nth_weekday_of_month(3, MON, JAN, year)] = name
             elif year >= 1889:
                 self[date(year, JAN, 19)] = name
 
@@ -167,7 +166,7 @@ class UnitedStates(HolidayBase):
                 name = "Robert E. Lee's Birthday"
             elif self.subdiv == "ID" and year >= 2006:
                 name = "Martin Luther King Jr. - Idaho Human Rights Day"
-            self[date(year, JAN, 1) + rd(weekday=MO(+3))] = name
+            self[_get_nth_weekday_of_month(3, MON, JAN, year)] = name
 
         # Lincoln's Birthday
         if (
@@ -194,7 +193,7 @@ class UnitedStates(HolidayBase):
             name = "Presidents' Day"
         if self.subdiv not in {"DE", "FL", "GA", "NM", "PR"}:
             if year >= 1971:
-                self[date(year, FEB, 1) + rd(weekday=MO(+3))] = name
+                self[_get_nth_weekday_of_month(3, MON, FEB, year)] = name
             elif year >= 1879:
                 self[date(year, FEB, 22)] = name
         elif self.subdiv == "GA":
@@ -203,7 +202,7 @@ class UnitedStates(HolidayBase):
             else:
                 self[date(year, DEC, 26)] = name
         elif self.subdiv in {"PR", "VI"}:
-            self[date(year, FEB, 1) + rd(weekday=MO(+3))] = name
+            self[_get_nth_weekday_of_month(3, MON, FEB, year)] = name
 
         easter_date = easter(year)
         # Mardi Gras
@@ -212,11 +211,15 @@ class UnitedStates(HolidayBase):
 
         # Guam Discovery Day
         if self.subdiv == "GU" and year >= 1970:
-            self[date(year, MAR, 1) + rd(weekday=MO)] = "Guam Discovery Day"
+            self[
+                _get_nth_weekday_of_month(1, MON, MAR, year)
+            ] = "Guam Discovery Day"
 
         # Casimir Pulaski Day
         if self.subdiv == "IL" and year >= 1978:
-            self[date(year, MAR, 1) + rd(weekday=MO)] = "Casimir Pulaski Day"
+            self[
+                _get_nth_weekday_of_month(1, MON, MAR, year)
+            ] = "Casimir Pulaski Day"
 
         # Texas Independence Day
         if self.subdiv == "TX" and year >= 1874:
@@ -224,14 +227,16 @@ class UnitedStates(HolidayBase):
 
         # Town Meeting Day
         if self.subdiv == "VT" and year >= 1800:
-            self[date(year, MAR, 1) + rd(weekday=TU)] = "Town Meeting Day"
+            self[
+                _get_nth_weekday_of_month(1, TUE, MAR, year)
+            ] = "Town Meeting Day"
 
         # Evacuation Day
         if self.subdiv == "MA" and year >= 1901:
             dt = date(year, MAR, 17)
             self._add_holiday("Evacuation Day", dt)
             if self.observed and self._is_weekend(dt):
-                self._add_holiday(f"{name} (Observed)", dt + rd(weekday=MO))
+                self[_get_nth_weekday_from(1, MON, dt)] = f"{name} (Observed)"
 
         # Emancipation Day
         if self.subdiv == "PR":
@@ -255,7 +260,7 @@ class UnitedStates(HolidayBase):
         if self.subdiv == "AK":
             name = "Seward's Day"
             if year >= 1955:
-                self[date(year, MAR, 31) + rd(weekday=MO(-1))] = name
+                self[_get_nth_weekday_of_month(-1, MON, MAR, year)] = name
             elif year >= 1918:
                 self[date(year, MAR, 30)] = name
 
@@ -279,7 +284,7 @@ class UnitedStates(HolidayBase):
         if self.subdiv in {"MA", "ME"}:
             name = "Patriots' Day"
             if year >= 1969:
-                self[date(year, APR, 1) + rd(weekday=MO(+3))] = name
+                self[_get_nth_weekday_of_month(3, MON, APR, year)] = name
             elif year >= 1894:
                 self[date(year, APR, 19)] = name
 
@@ -317,7 +322,7 @@ class UnitedStates(HolidayBase):
             if self.subdiv == "GA" and year == 2020:
                 self[date(year, APR, 10)] = name
             else:
-                self[date(year, APR, 1) + rd(weekday=MO(+4))] = name
+                self[_get_nth_weekday_of_month(4, MON, APR, year)] = name
         elif self.subdiv == "TX" and year >= 1931:
             self[date(year, JAN, 19)] = name
 
@@ -329,7 +334,7 @@ class UnitedStates(HolidayBase):
         if self.subdiv == "NE":
             name = "Arbor Day"
             if year >= 1989:
-                self[date(year, APR, 30) + rd(weekday=FR(-1))] = name
+                self[_get_nth_weekday_of_month(-1, FRI, APR, year)] = name
             elif year >= 1875:
                 self[date(year, APR, 22)] = name
 
@@ -338,7 +343,7 @@ class UnitedStates(HolidayBase):
             (year >= 2006 and year % 2 == 0) or year >= 2015
         ):
             self[
-                (date(year, MAY, 1) + rd(weekday=MO) + td(days=+1))
+                _get_nth_weekday_of_month(1, MON, MAY, year) + td(days=+1)
             ] = "Primary Election Day"
 
         # Truman Day
@@ -347,7 +352,9 @@ class UnitedStates(HolidayBase):
 
         # Memorial Day
         if year >= 1971:
-            self[date(year, MAY, 31) + rd(weekday=MO(-1))] = "Memorial Day"
+            self[
+                _get_nth_weekday_of_month(-1, MON, MAY, year)
+            ] = "Memorial Day"
         elif year >= 1888:
             self[date(year, MAY, 30)] = "Memorial Day"
 
@@ -360,7 +367,7 @@ class UnitedStates(HolidayBase):
         # Jefferson Davis Birthday
         name = "Jefferson Davis Birthday"
         if self.subdiv == "AL" and year >= 1890:
-            self[date(year, JUN, 1) + rd(weekday=MO)] = name
+            self[_get_nth_weekday_of_month(1, MON, JUN, year)] = name
 
         # Kamehameha Day
         if self.subdiv == "HI" and year >= 1872:
@@ -403,11 +410,13 @@ class UnitedStates(HolidayBase):
 
         # Victory Day
         if self.subdiv == "RI" and year >= 1948:
-            self[date(year, AUG, 1) + rd(weekday=MO(+2))] = "Victory Day"
+            self[_get_nth_weekday_of_month(2, MON, AUG, year)] = "Victory Day"
 
         # Statehood Day (Hawaii)
         if self.subdiv == "HI" and year >= 1959:
-            self[date(year, AUG, 1) + rd(weekday=FR(+3))] = "Statehood Day"
+            self[
+                _get_nth_weekday_of_month(3, FRI, AUG, year)
+            ] = "Statehood Day"
 
         # Bennington Battle Day
         if self.subdiv == "VT" and year >= 1778:
@@ -421,7 +430,7 @@ class UnitedStates(HolidayBase):
 
         # Labor Day
         if year >= 1894:
-            self[date(year, SEP, 1) + rd(weekday=MO)] = "Labor Day"
+            self[_get_nth_weekday_of_month(1, MON, SEP, year)] = "Labor Day"
 
         # Columbus Day
         if self.subdiv not in {"AK", "AR", "DE", "FL", "HI", "NV"}:
@@ -432,14 +441,14 @@ class UnitedStates(HolidayBase):
             else:
                 name = "Columbus Day"
             if year >= 1970:
-                self[date(year, OCT, 1) + rd(weekday=MO(+2))] = name
+                self[_get_nth_weekday_of_month(2, MON, OCT, year)] = name
             elif year >= 1937:
                 self[date(year, OCT, 12)] = name
 
         # Commonwealth Cultural Day in Northern Mariana Islands
         if self.subdiv == "MP":
             self[
-                date(year, OCT, 1) + rd(weekday=MO(+2))
+                _get_nth_weekday_of_month(2, MON, OCT, year)
             ] = "Commonwealth Cultural Day"
 
         # Alaska Day
@@ -450,7 +459,7 @@ class UnitedStates(HolidayBase):
         if self.subdiv == "NV" and year >= 1933:
             dt = date(year, OCT, 31)
             if year >= 2000:
-                dt += rd(weekday=FR(-1))
+                dt = _get_nth_weekday_of_month(-1, FRI, OCT, year)
             self._add_with_observed(dt, "Nevada Day")
 
         # Liberty Day
@@ -477,7 +486,7 @@ class UnitedStates(HolidayBase):
             and year % 2 == 0
         ) or (self.subdiv in {"IN", "NY"} and year >= 2015):
             self[
-                date(year, NOV, 1) + rd(weekday=MO) + td(days=+1)
+                _get_nth_weekday_of_month(1, MON, NOV, year) + td(days=+1)
             ] = "Election Day"
 
         # All Souls' Day
@@ -494,7 +503,7 @@ class UnitedStates(HolidayBase):
         else:
             name = "Armistice Day"
         if 1971 <= year <= 1977:
-            self[date(year, OCT, 1) + rd(weekday=MO(+4))] = name
+            self[_get_nth_weekday_of_month(4, MON, OCT, year)] = name
         elif year >= 1938:
             self._add_with_observed(date(year, NOV, 11), name)
 
@@ -506,7 +515,7 @@ class UnitedStates(HolidayBase):
 
         # Thanksgiving
         if year >= 1871:
-            self[date(year, NOV, 1) + rd(weekday=TH(+4))] = "Thanksgiving"
+            self[_get_nth_weekday_of_month(4, THU, NOV, year)] = "Thanksgiving"
 
         # Day After Thanksgiving
         # Friday After Thanksgiving
@@ -535,7 +544,9 @@ class UnitedStates(HolidayBase):
                 name = "Family Day"
             if self.subdiv == "NM":
                 name = "Presidents' Day"
-            self[date(year, NOV, 1) + rd(weekday=TH(+4)) + td(days=+1)] = name
+            self[
+                _get_nth_weekday_of_month(4, THU, NOV, year) + td(days=+1)
+            ] = name
 
         # Robert E. Lee's Birthday
         if self.subdiv == "GA" and year >= 1986:
@@ -543,7 +554,9 @@ class UnitedStates(HolidayBase):
                 name = "State Holiday"
             else:
                 name = "Robert E. Lee's Birthday"
-            self[date(year, NOV, 29) + rd(weekday=FR(-1))] = name
+            self[
+                _get_nth_weekday_of_month(4, THU, NOV, year) + td(days=+1)
+            ] = name
 
         # Lady of Camarin Day
         if self.subdiv == "GU":
@@ -568,9 +581,7 @@ class UnitedStates(HolidayBase):
                 self[dt + td(days=-1)] = f"{name} (Observed)"
             # If on Saturday or Sunday, observed on Friday
             elif self.observed and self._is_weekend(dt):
-                self._add_holiday(
-                    f"{name} (Observed)", dt + rd(weekday=FR(-1))
-                )
+                self[_get_nth_weekday_from(-1, FRI, dt)] = f"{name} (Observed)"
 
         # Christmas Day
         if year >= 1871:
@@ -583,7 +594,7 @@ class UnitedStates(HolidayBase):
             self._add_holiday(name, dt)
             # If on Saturday or Sunday, observed on Monday
             if self.observed and self._is_weekend(dt):
-                self._add_holiday(f"{name} (Observed)", dt + rd(weekday=MO))
+                self[_get_nth_weekday_from(1, MON, dt)] = f"{name} (Observed)"
             # If on Monday, observed on Tuesday
             elif self.observed and self._is_monday(dt):
                 self._add_holiday(f"{name} (Observed)", dt + td(days=+1))

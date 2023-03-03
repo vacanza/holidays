@@ -20,8 +20,9 @@ from holidays.constants import OCT, NOV, DEC
 
 class TestSpain(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.ES(observed=False)
-        self.holidays_observed = holidays.ES()
+        self.holidays = holidays.ES()
+        self.holidays_non_observed = holidays.ES(observed=False)
+
         self.prov_holidays = {
             prov: holidays.ES(observed=False, subdiv=prov)
             for prov in holidays.ES.subdivisions
@@ -50,7 +51,7 @@ class TestSpain(unittest.TestCase):
             (DEC, 8),
         )
         for m, d in fix_days_whole_country_2022:
-            self.assertIn(date(2022, m, d), self.holidays_observed)
+            self.assertIn(date(2022, m, d), self.holidays)
 
     def test_province_specific_days(self):
         province_days = {

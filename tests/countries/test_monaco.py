@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.countries.monaco import MC, MCO, Monaco
+from holidays.countries.monaco import Monaco, MC, MCO
 from tests.common import TestCase
 
 
@@ -50,8 +50,8 @@ class TestMonaco(TestCase):
             "2023-01-02",
             "2023-11-20",
         )
-        self.assertHoliday(Monaco(observed=True), observed_holidays)
-        self.assertNoHoliday(Monaco(observed=False), observed_holidays)
+        self.assertHoliday(observed_holidays)
+        self.assertNoNonObservedHoliday(observed_holidays)
 
     def test_2020(self):
         self.assertHolidayDates(

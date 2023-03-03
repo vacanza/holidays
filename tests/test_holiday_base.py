@@ -75,7 +75,8 @@ class TestBasics(unittest.TestCase):
             [date(2014, 1, 1), date(2013, 12, 25)],
         )
         self.assertListEqual(
-            self.holidays[date(2013, 12, 31) : date(2014, 1, 2) : -3], []
+            self.holidays[date(2013, 12, 31) : date(2014, 1, 2) : -3],
+            [],
         )
         self.assertListEqual(
             self.holidays[date(2014, 1, 1) : date(2013, 12, 24) : td(days=3)],
@@ -124,7 +125,8 @@ class TestBasics(unittest.TestCase):
         self.holidays.pop_named("New Year's Day")
         self.assertNotIn(date(2014, 1, 1), self.holidays)
         self.assertRaises(
-            KeyError, lambda: self.holidays.pop_named("New Year's Dayz")
+            KeyError,
+            lambda: self.holidays.pop_named("New Year's Dayz"),
         )
 
     def test_setitem(self):
@@ -333,11 +335,13 @@ class TestBasics(unittest.TestCase):
         self.assertEqual(na.get(date(1969, 7, 1)), "Dominion Day")
         self.assertEqual(na.get(date(1983, 7, 1)), "Canada Day")
         self.assertEqual(
-            na.get(date(1969, 12, 25)), "Christmas Day; Navidad [Christmas]"
+            na.get(date(1969, 12, 25)),
+            "Christmas Day; Navidad [Christmas Day]",
         )
         na = holidays.MX() + holidays.CA() + holidays.US()
         self.assertEqual(
-            na.get(date(1969, 12, 25)), "Christmas Day; Navidad [Christmas]"
+            na.get(date(1969, 12, 25)),
+            "Christmas Day; Navidad [Christmas Day]",
         )
         self.assertEqual(na, na.copy())
 
@@ -401,7 +405,7 @@ class TestBasics(unittest.TestCase):
         self.assertIn(date(1969, 12, 25), na)
         self.assertEqual(
             na.get_list(date(1969, 12, 25)),
-            ["Christmas Day", "Navidad [Christmas]"],
+            ["Christmas Day", "Navidad [Christmas Day]"],
         )
         self.assertEqual(na.get_list(date(1969, 7, 1)), ["Dominion Day"])
         self.assertEqual(na.get_list(date(1969, 1, 3)), [])
@@ -484,18 +488,100 @@ class TestBasics(unittest.TestCase):
 
         self.assertIn(date(2014, 12, 31), Dec31Holiday())
 
-    def test_get_named(self):
-        us = holidays.UnitedStates(years=[2020])
+    def test_get_named_contains(self):
+        us = holidays.UnitedStates(years=2020)
+
         holidays_count = len(us.keys())
-        # check for "New Year's Day" presence in get_named("new")
-        self.assertIn(date(2020, 1, 1), us.get_named("new"))
+        for name in ("New", "Year"):
+            self.assertIn(date(2020, 1, 1), us.get_named(name))
+        for name in ("new", "year", "NEW Year"):
+            self.assertNotIn(
+                date(2020, 1, 1), us.get_named(name, lookup="contains")
+            )
         self.assertEqual(holidays_count, len(us.keys()))
 
-        # check for searching holiday in US when the observed holiday is on
-        # a different year than input one
-        us = holidays.US(years=[2022])
-        us.get_named("Thanksgiving")
+        us = holidays.UnitedStates(years=2022)
+        self.assertEqual(
+            1, len(us.get_named("Thanksgiving", lookup="contains"))
+        )
+        self.assertEqual(1, len(us.get_named("Thanksgivi", lookup="contains")))
+        self.assertEqual(0, len(us.get_named("thanks", lookup="contains")))
         self.assertEqual([2022], list(us.years))
+
+        us = holidays.UnitedStates(observed=False, years=2022)
+        self.assertEqual(
+            2, len(us.get_named("Independence Day", lookup="contains"))
+        )
+        self.assertEqual(
+            0, len(us.get_named("independence day", lookup="contains"))
+        )
+
+    def test_get_named_exact(self):
+        us = holidays.UnitedStates(years=2020)
+        holidays_count = len(us.keys())
+        for name in ("New Year's Day", "Christmas Day"):
+            self.assertEqual(1, len(us.get_named(name)))
+        for name in ("New", "Day"):
+            self.assertEqual(0, len(us.get_named(name, lookup="exact")))
+        self.assertEqual(holidays_count, len(us.keys()))
+
+        us = holidays.UnitedStates(years=2022)
+        self.assertEqual(1, len(us.get_named("Thanksgiving", lookup="exact")))
+        self.assertEqual(0, len(us.get_named("thanksgiving", lookup="exact")))
+        self.assertEqual([2022], list(us.years))
+
+        us = holidays.UnitedStates(observed=False, years=2022)
+        self.assertEqual(
+            1, len(us.get_named("Independence Day", lookup="exact"))
+        )
+
+    def test_get_named_icontains(self):
+        us = holidays.UnitedStates(years=2020)
+        holidays_count = len(us.keys())
+        self.assertEqual(holidays_count, len(us.keys()))
+        for name in ("New", "Year", "new", "year", "NEW Year"):
+            self.assertIn(date(2020, 1, 1), us.get_named(name))
+
+        us = holidays.UnitedStates(years=2022)
+        for name in ("Thanksgiving", "thanksgiving", "Thanksgivi"):
+            self.assertEqual(1, len(us.get_named(name, lookup="icontains")))
+        self.assertEqual([2022], list(us.years))
+
+        us = holidays.UnitedStates(observed=False, years=2022)
+        self.assertEqual(
+            2, len(us.get_named("Independence Day", lookup="icontains"))
+        )
+
+    def test_get_named_iexact(self):
+        us = holidays.UnitedStates(years=2020)
+        holidays_count = len(us.keys())
+        self.assertEqual(holidays_count, len(us.keys()))
+
+        for name in ("new year's day", "New Year's Day"):
+            self.assertIn(
+                date(2020, 1, 1), us.get_named(name, lookup="iexact")
+            )
+        for name in ("New Year Day", "New Year", "year", "NEW Year"):
+            self.assertNotIn(
+                date(2020, 1, 1), us.get_named(name, lookup="iexact")
+            )
+
+        us = holidays.UnitedStates(years=2022)
+        self.assertEqual(1, len(us.get_named("thanksgiving", lookup="iexact")))
+        self.assertEqual(0, len(us.get_named("Thanksgivin", lookup="iexact")))
+        self.assertEqual([2022], list(us.years))
+
+        us = holidays.UnitedStates(years=2022)
+        self.assertEqual(
+            1, len(us.get_named("independence day", lookup="iexact"))
+        )
+
+    def test_get_named_lookup_invalid(self):
+        us = holidays.UnitedStates(years=2020)
+        self.assertRaises(
+            AttributeError,
+            lambda: us.get_named("Holiday name", lookup="invalid"),
+        )
 
 
 class TestArgs(unittest.TestCase):
@@ -614,12 +700,14 @@ class TestKeyTransforms(unittest.TestCase):
     def test_datetimes(self):
         self.assertIn(datetime(2014, 1, 1, 13, 45), self.holidays)
         self.assertEqual(
-            self.holidays[datetime(2014, 1, 1, 13, 45)], "New Year's Day"
+            self.holidays[datetime(2014, 1, 1, 13, 45)],
+            "New Year's Day",
         )
         self.holidays[datetime(2014, 1, 3, 1, 1)] = "Fake Holiday"
         self.assertIn(datetime(2014, 1, 3, 2, 2), self.holidays)
         self.assertEqual(
-            self.holidays.pop(datetime(2014, 1, 3, 4, 4)), "Fake Holiday"
+            self.holidays.pop(datetime(2014, 1, 3, 4, 4)),
+            "Fake Holiday",
         )
         self.assertNotIn(datetime(2014, 1, 3, 2, 2), self.holidays)
 
@@ -648,11 +736,15 @@ class TestKeyTransforms(unittest.TestCase):
             (TypeError, ValueError), lambda: "abc" in self.holidays
         )
         self.assertRaises(
-            (TypeError, ValueError), lambda: self.holidays.get("abc123")
+            (TypeError, ValueError),
+            lambda: self.holidays.get("abc123"),
         )
         self.assertRaises(TypeError, lambda: self.holidays.get({"123"}))
         self.assertRaises(
-            (TypeError, ValueError), self.holidays.__setitem__, "abc", "Test"
+            (TypeError, ValueError),
+            self.holidays.__setitem__,
+            "abc",
+            "Test",
         )
         self.assertRaises((TypeError, ValueError), lambda: {} in self.holidays)
 

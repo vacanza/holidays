@@ -18,8 +18,13 @@ from tests.common import TestCase
 
 
 class TestMalaysia(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Malaysia)
+
     def setUp(self):
-        self.holidays = Malaysia()
+        super().setUp()
+
         years = range(2012, 2023)
         self.jhr_holidays = Malaysia(years=years, subdiv="JHR")
         self.kdh_holidays = Malaysia(years=years, subdiv="KDH")
@@ -48,7 +53,7 @@ class TestMalaysia(TestCase):
         # reproduce table at
         # https://en.wikipedia.org/wiki/Public_holidays_in_Malaysia
         # as of 19-Sep-21
-        columns = [
+        columns = (
             "JHR",  # "Johor"
             "KDH",  # "Kedah"
             "KTN",  # "Kelantan"
@@ -65,968 +70,226 @@ class TestMalaysia(TestCase):
             "SWK",  # "Sarawak"
             "SGR",  # "Selangor"
             "TRG",  # "Terengganu"
-        ]
-        rows = {
-            date(2021, JAN, 1): [
-                0,
-                0,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                1,
-                1,
-                1,
-                1,
-                0,
-            ],
-            date(2021, JAN, 14): [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-            ],
-            date(2021, JAN, 28): [
-                1,
-                0,
-                0,
-                1,
-                0,
-                0,
-                1,
-                0,
-                1,
-                1,
-                0,
-                1,
-                0,
-                0,
-                1,
-                0,
-            ],
-            date(2021, FEB, 1): [
-                0,
-                0,
-                0,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-            ],
-            date(2021, FEB, 12): [
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-            ],
-            date(2021, FEB, 13): [
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-            ],
-            date(2021, FEB, 14): [
-                1,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-            ],
-            date(2021, MAR, 4): [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-            ],
-            date(2021, MAR, 11): [
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                1,
-            ],
-            date(2021, MAR, 23): [
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-            ],
-            date(2021, APR, 2): [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                1,
-                0,
-                0,
-            ],
-            date(2021, APR, 13): [
-                1,
-                1,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-            ],
-            date(2021, APR, 15): [
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-            ],
-            date(2021, APR, 26): [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-            ],
-            date(2021, APR, 29): [
-                0,
-                0,
-                1,
-                1,
-                1,
-                0,
-                0,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                0,
-                1,
-                1,
-            ],
-            date(2021, MAY, 1): [
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-            ],
-            date(2021, MAY, 2): [
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-            ],
-            date(2021, MAY, 13): [
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-            ],
-            date(2021, MAY, 14): [
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-            ],
-            date(2021, MAY, 16): [
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-            ],
-            date(2021, MAY, 22): [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-            ],
-            date(2021, MAY, 26): [
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-            ],
-            date(2021, MAY, 30): [
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-            ],
-            date(2021, MAY, 31): [
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-            ],
-            date(2021, JUN, 1): [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-            ],
-            date(2021, JUN, 2): [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-            ],
-            date(2021, JUN, 7): [
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-            ],
-            date(2021, JUN, 20): [
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-            ],
-            date(2021, JUL, 7): [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-            ],
-            date(2021, JUL, 10): [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-            ],
-            date(2021, JUL, 17): [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-            ],
-            date(2021, JUL, 19): [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-            ],
-            date(2021, JUL, 20): [
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-            ],
-            date(2021, JUL, 21): [
-                0,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                1,
-            ],
-            date(2021, JUL, 22): [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-            ],
-            date(2021, JUL, 30): [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-            ],
-            date(2021, AUG, 10): [
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-            ],
-            date(2021, AUG, 24): [
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-            ],
-            date(2021, AUG, 31): [
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-            ],
-            date(2021, SEP, 13): [
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-            ],
-            date(2021, SEP, 16): [
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-            ],
-            date(2021, OCT, 2): [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-            ],
-            date(2021, OCT, 9): [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-            ],
-            date(2021, OCT, 19): [
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-            ],
-            date(2021, NOV, 4): [
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                0,
-                1,
-                1,
-            ],
-            date(2021, NOV, 5): [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-            ],
-            date(2021, NOV, 11): [
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-            ],
-            date(2021, NOV, 12): [
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-            ],
-            date(2021, DEC, 3): [
-                0,
-                0,
-                0,
-                1,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-            ],
-            date(2021, DEC, 11): [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-            ],
-            date(2021, DEC, 24): [
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-            ],
-            date(2021, DEC, 25): [
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-                1,
-            ],
-            date(2021, DEC, 26): [
-                0,
-                0,
-                1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                1,
-            ],
-        }
+        )
+        rows = (
+            (
+                date(2021, JAN, 1),
+                (0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0),
+            ),
+            (
+                date(2021, JAN, 14),
+                (0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+            ),
+            (
+                date(2021, JAN, 28),
+                (1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0),
+            ),
+            (
+                date(2021, FEB, 1),
+                (0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0),
+            ),
+            (
+                date(2021, FEB, 12),
+                (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+            ),
+            (
+                date(2021, FEB, 13),
+                (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+            ),
+            (
+                date(2021, FEB, 14),
+                (1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1),
+            ),
+            (
+                date(2021, MAR, 4),
+                (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1),
+            ),
+            (
+                date(2021, MAR, 11),
+                (0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1),
+            ),
+            (
+                date(2021, MAR, 23),
+                (1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+            ),
+            (
+                date(2021, APR, 2),
+                (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0),
+            ),
+            (
+                date(2021, APR, 13),
+                (1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+            ),
+            (
+                date(2021, APR, 15),
+                (0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+            ),
+            (
+                date(2021, APR, 26),
+                (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1),
+            ),
+            (
+                date(2021, APR, 29),
+                (0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1),
+            ),
+            (
+                date(2021, MAY, 1),
+                (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+            ),
+            (
+                date(2021, MAY, 2),
+                (0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1),
+            ),
+            (
+                date(2021, MAY, 13),
+                (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+            ),
+            (
+                date(2021, MAY, 14),
+                (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+            ),
+            (
+                date(2021, MAY, 16),
+                (1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+            ),
+            (
+                date(2021, MAY, 22),
+                (0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0),
+            ),
+            (
+                date(2021, MAY, 26),
+                (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+            ),
+            (
+                date(2021, MAY, 30),
+                (0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0),
+            ),
+            (
+                date(2021, MAY, 31),
+                (0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0),
+            ),
+            (
+                date(2021, JUN, 1),
+                (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0),
+            ),
+            (
+                date(2021, JUN, 2),
+                (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0),
+            ),
+            (
+                date(2021, JUN, 7),
+                (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+            ),
+            (
+                date(2021, JUN, 20),
+                (0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+            ),
+            (
+                date(2021, JUL, 7),
+                (0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0),
+            ),
+            (
+                date(2021, JUL, 10),
+                (0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0),
+            ),
+            (
+                date(2021, JUL, 17),
+                (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0),
+            ),
+            (
+                date(2021, JUL, 19),
+                (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1),
+            ),
+            (
+                date(2021, JUL, 20),
+                (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+            ),
+            (
+                date(2021, JUL, 21),
+                (0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1),
+            ),
+            (
+                date(2021, JUL, 22),
+                (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0),
+            ),
+            (
+                date(2021, JUL, 30),
+                (0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0),
+            ),
+            (
+                date(2021, AUG, 10),
+                (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+            ),
+            (
+                date(2021, AUG, 24),
+                (0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+            ),
+            (
+                date(2021, AUG, 31),
+                (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+            ),
+            (
+                date(2021, SEP, 13),
+                (1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+            ),
+            (
+                date(2021, SEP, 16),
+                (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+            ),
+            (
+                date(2021, OCT, 2),
+                (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0),
+            ),
+            (
+                date(2021, OCT, 9),
+                (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0),
+            ),
+            (
+                date(2021, OCT, 19),
+                (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+            ),
+            (
+                date(2021, NOV, 4),
+                (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1),
+            ),
+            (
+                date(2021, NOV, 5),
+                (0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0),
+            ),
+            (
+                date(2021, NOV, 11),
+                (0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+            ),
+            (
+                date(2021, NOV, 12),
+                (0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+            ),
+            (
+                date(2021, DEC, 3),
+                (0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0),
+            ),
+            (
+                date(2021, DEC, 11),
+                (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0),
+            ),
+            (
+                date(2021, DEC, 24),
+                (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0),
+            ),
+            (
+                date(2021, DEC, 25),
+                (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+            ),
+            (
+                date(2021, DEC, 26),
+                (0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1),
+            ),
+        )
 
         for col, state in enumerate(columns):
             my_holidays = Malaysia(years=2021, subdiv=state)
             # check if all holidays are in here
-            for hol_date, is_holiday in rows.items():
+            for hol_date, is_holiday in rows:
                 if is_holiday[col]:
                     self.assertIn(hol_date, my_holidays)
                 else:
@@ -1084,7 +347,7 @@ class TestMalaysia(TestCase):
             "2022-12-26",
         )
         self.assertHoliday(dt)
-        self.assertNoHoliday(Malaysia(observed=False), dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_JHR_holidays(self):
         state_holidays = self.jhr_holidays
@@ -1143,8 +406,9 @@ class TestMalaysia(TestCase):
             "2022-09-18",
         )
         self.assertHoliday(state_holidays, dt)
+
         state_holidays.observed = False
-        self.assertNoHoliday(state_holidays, dt)
+        self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_KDH_holidays(self):
         state_holidays = self.kdh_holidays
@@ -1203,8 +467,9 @@ class TestMalaysia(TestCase):
             "2022-09-18",
         )
         self.assertHoliday(state_holidays, dt)
+
         state_holidays.observed = False
-        self.assertNoHoliday(state_holidays, dt)
+        self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_KTN_holidays(self):
         state_holidays = self.ktn_holidays
@@ -1265,8 +530,9 @@ class TestMalaysia(TestCase):
             "2021-12-26",
         )
         self.assertHoliday(state_holidays, dt)
+
         state_holidays.observed = False
-        self.assertNoHoliday(state_holidays, dt)
+        self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_NSN_holidays(self):
         state_holidays = self.nsn_holidays
@@ -1319,8 +585,9 @@ class TestMalaysia(TestCase):
             "2022-12-26",
         )
         self.assertHoliday(state_holidays, dt)
+
         state_holidays.observed = False
-        self.assertNoHoliday(state_holidays, dt)
+        self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_PNG_holidays(self):
         state_holidays = self.png_holidays
@@ -1380,8 +647,9 @@ class TestMalaysia(TestCase):
             "2022-12-26",
         )
         self.assertHoliday(state_holidays, dt)
+
         state_holidays.observed = False
-        self.assertNoHoliday(state_holidays, dt)
+        self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_PRK_holidays(self):
         state_holidays = self.prk_holidays
@@ -1439,8 +707,9 @@ class TestMalaysia(TestCase):
             "2022-12-26",
         )
         self.assertHoliday(state_holidays, dt)
+
         state_holidays.observed = False
-        self.assertNoHoliday(state_holidays, dt)
+        self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_SBH_holidays(self):
         state_holidays = self.sbh_holidays
@@ -1491,8 +760,9 @@ class TestMalaysia(TestCase):
             "2022-12-26",
         )
         self.assertHoliday(state_holidays, dt)
+
         state_holidays.observed = False
-        self.assertNoHoliday(state_holidays, dt)
+        self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_SWK_holidays(self):
         state_holidays = self.swk_holidays
@@ -1551,8 +821,9 @@ class TestMalaysia(TestCase):
             "2022-12-26",
         )
         self.assertHoliday(state_holidays, dt)
+
         state_holidays.observed = False
-        self.assertNoHoliday(state_holidays, dt)
+        self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_SGR_holidays(self):
         state_holidays = self.sgr_holidays
@@ -1601,8 +872,9 @@ class TestMalaysia(TestCase):
             "2022-12-26",
         )
         self.assertHoliday(state_holidays, dt)
+
         state_holidays.observed = False
-        self.assertNoHoliday(state_holidays, dt)
+        self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_TRG_holidays(self):
         state_holidays = self.trg_holidays
@@ -1687,8 +959,9 @@ class TestMalaysia(TestCase):
             "2022-07-12",
         )
         self.assertHoliday(state_holidays, dt)
+
         state_holidays.observed = False
-        self.assertNoHoliday(state_holidays, dt)
+        self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_KUL_holidays(self):
         state_holidays = self.kul_holidays
@@ -1735,8 +1008,9 @@ class TestMalaysia(TestCase):
             "2022-12-26",
         )
         self.assertHoliday(state_holidays, dt)
+
         state_holidays.observed = False
-        self.assertNoHoliday(state_holidays, dt)
+        self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_MLK_holidays(self):
         state_holidays = self.mlk_holidays
@@ -1791,8 +1065,9 @@ class TestMalaysia(TestCase):
             "2022-12-26",
         )
         self.assertHoliday(state_holidays, dt)
+
         state_holidays.observed = False
-        self.assertNoHoliday(state_holidays, dt)
+        self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_LBN_holidays(self):
         state_holidays = self.lbn_holidays
@@ -1842,8 +1117,9 @@ class TestMalaysia(TestCase):
             "2022-12-26",
         )
         self.assertHoliday(state_holidays, dt)
+
         state_holidays.observed = False
-        self.assertNoHoliday(state_holidays, dt)
+        self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_PHG_holidays(self):
         state_holidays = self.phg_holidays
@@ -1895,8 +1171,9 @@ class TestMalaysia(TestCase):
             "2022-12-26",
         )
         self.assertHoliday(state_holidays, dt)
+
         state_holidays.observed = False
-        self.assertNoHoliday(state_holidays, dt)
+        self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_PLS_holidays(self):
         state_holidays = self.pls_holidays
@@ -1964,8 +1241,9 @@ class TestMalaysia(TestCase):
             "2022-12-26",
         )
         self.assertHoliday(state_holidays, dt)
+
         state_holidays.observed = False
-        self.assertNoHoliday(state_holidays, dt)
+        self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_PJY_holidays(self):
         state_holidays = self.pjy_holidays
@@ -2020,5 +1298,6 @@ class TestMalaysia(TestCase):
             "2022-12-26",
         )
         self.assertHoliday(state_holidays, dt)
+
         state_holidays.observed = False
-        self.assertNoHoliday(state_holidays, dt)
+        self.assertNoNonObservedHoliday(state_holidays, dt)

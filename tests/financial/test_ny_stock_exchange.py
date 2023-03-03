@@ -44,6 +44,17 @@ class TestNewYorkStockExchange(unittest.TestCase):
             self.assertNotIn(dt + td(days=+1), self.holidays)
             self.assertNotIn(dt + td(days=+7), self.holidays)
 
+        # observed on previous year Dec 31
+        for dt in (
+            date(1994, JAN, 1),
+            date(2000, JAN, 1),
+            date(2005, JAN, 1),
+            date(2011, JAN, 1),
+            date(2022, JAN, 1),
+        ):
+            self.assertNotIn(dt, self.holidays)
+            self.assertIn(dt + td(days=-1), self.holidays)
+
     def test_mlk(self):
         for dt in [
             date(1999, JAN, 18),

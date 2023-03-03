@@ -578,7 +578,6 @@ class TestJapan(TestCase):
         self.assertIn(date(2019, 10, 22), self.holidays)
 
     def test_observed_holidays(self):
-        no_observed = Japan(observed=False)
         hol_list = (
             # 振替休日
             (1973, 4, 30),
@@ -721,8 +720,8 @@ class TestJapan(TestCase):
             (2037, 9, 22),
         )
         for dt in hol_list:
-            self.assertIn(date(*dt), self.holidays)
-            self.assertNotIn(date(*dt), no_observed)
+            self.assertHoliday(date(*dt))
+            self.assertNoNonObservedHoliday(date(*dt))
 
     def test_l10n_default(self):
         def run_tests(languages):

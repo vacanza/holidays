@@ -1,0 +1,149 @@
+# Canada holidays th localization.
+# Authors: PPsyrius <ppsyrius@ppsyrius.dev>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.21\n"
+"POT-Creation-Date: 2023-02-24 17:37+0700\n"
+"PO-Revision-Date: 2023-02-24 17:37+0700\n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+
+#. New Year's Day.
+#: holidays/countries/canada.py:63
+msgid "New Year's Day"
+msgstr "วันขึ้นปีใหม่"
+
+#: holidays/countries/canada.py:67 holidays/countries/canada.py:168
+#: holidays/countries/canada.py:192 holidays/countries/canada.py:201
+#: holidays/countries/canada.py:280 holidays/countries/canada.py:287
+#: holidays/countries/canada.py:294
+#, c-format
+msgid "%s (Observed)"
+msgstr "ชดเชย%s"
+
+#: holidays/countries/canada.py:78 holidays/countries/canada.py:83
+#: holidays/countries/canada.py:87
+msgid "Family Day"
+msgstr "วันครอบครัว"
+
+#: holidays/countries/canada.py:91
+msgid "Louis Riel Day"
+msgstr "วันหลุยส์เรียล (แมนิโทบา)"
+
+#: holidays/countries/canada.py:95 holidays/countries/canada.py:99
+msgid "Islander Day"
+msgstr "วันชาวเกาะ (พรินซ์เอดเวิร์ดไอแลนด์)"
+
+#. Heritage Day.
+#: holidays/countries/canada.py:105 holidays/countries/canada.py:124
+#: holidays/countries/canada.py:213
+msgid "Heritage Day"
+msgstr "วันมรดก"
+
+#. St. Patrick's Day.
+#: holidays/countries/canada.py:131
+msgid "St. Patrick's Day"
+msgstr "วันเซนต์แพทริก (นิวฟันด์แลนด์และแลบราดอร์)"
+
+#. Good Friday.
+#: holidays/countries/canada.py:135
+msgid "Good Friday"
+msgstr "วันศุกร์ประเสริฐ"
+
+#. Easter Monday.
+#: holidays/countries/canada.py:137
+msgid "Easter Monday"
+msgstr "วันจันทร์อีสเตอร์"
+
+#: holidays/countries/canada.py:148
+msgid "St. George's Day"
+msgstr "วันเซนต์จอร์จ (นิวฟันด์แลนด์และแลบราดอร์)"
+
+#: holidays/countries/canada.py:154
+msgid "Victoria Day"
+msgstr "วันวิคตอเรีย"
+
+#: holidays/countries/canada.py:156
+msgid "National Patriots' Day"
+msgstr "วันรำลึกกลุ่มแปตรีออต (ควิเบก)"
+
+#: holidays/countries/canada.py:160
+msgid "National Aboriginal Day"
+msgstr "วันชนพื้นเมือง (นอร์ทเวสต์เทร์ริทอรีส์)"
+
+#: holidays/countries/canada.py:164
+msgid "St. Jean Baptiste Day"
+msgstr "วันแซงต์-ฌ็อง-บาติสต์ (ควิเบก)"
+
+#: holidays/countries/canada.py:174 holidays/countries/canada.py:176
+msgid "Discovery Day"
+msgstr "วันแห่งการค้นภพ"
+
+#: holidays/countries/canada.py:183
+msgid "Memorial Day"
+msgstr "วันรำลึก (นิวฟันด์แลนด์และแลบราดอร์)"
+
+#: holidays/countries/canada.py:185
+msgid "Canada Day"
+msgstr "วันชาติแคนาดา"
+
+#: holidays/countries/canada.py:188
+msgid "Dominion Day"
+msgstr "วันราชอาณาจักรเครือจักรภพ"
+
+#: holidays/countries/canada.py:196
+msgid "Nunavut Day"
+msgstr "วันนูนาวุต"
+
+#: holidays/countries/canada.py:207
+msgid "Civic Holiday"
+msgstr "วันหยุดราชการ"
+
+#. British Columbia Day.
+#: holidays/countries/canada.py:217
+msgid "British Columbia Day"
+msgstr "วันบริติชโคลัมเบีย"
+
+#: holidays/countries/canada.py:222
+msgid "New Brunswick Day"
+msgstr "วันนิวบรันสวิก"
+
+#: holidays/countries/canada.py:227
+msgid "Saskatchewan Day"
+msgstr "วันซัสแคตเชวัน"
+
+#: holidays/countries/canada.py:233
+msgid "Labour Day"
+msgstr "วันแรงงาน"
+
+#: holidays/countries/canada.py:246
+msgid "Funeral of Her Majesty the Queen Elizabeth II"
+msgstr "พระราชพิธีพระบรมศพของสมเด็จพระราชินีนาถเอลิซาเบธที่ 2"
+
+#: holidays/countries/canada.py:254
+msgid "National Day for Truth and Reconciliation"
+msgstr "วันชาติแห่งความจริงและการปรองดอง"
+
+#: holidays/countries/canada.py:264 holidays/countries/canada.py:266
+msgid "Thanksgiving"
+msgstr "วันขอบคุณพระเจ้า"
+
+#: holidays/countries/canada.py:272
+msgid "Remembrance Day"
+msgstr "วันรำลึก"
+
+#. Christmas Day,
+#: holidays/countries/canada.py:283
+msgid "Christmas Day"
+msgstr "วันคริสต์มาส"
+
+#. Boxing Day.
+#: holidays/countries/canada.py:290
+msgid "Boxing Day"
+msgstr "วันเปิดกล่องของขวัญ"

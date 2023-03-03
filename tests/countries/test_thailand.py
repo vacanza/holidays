@@ -9,16 +9,11 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.countries.thailand import TH, THA, Thailand
+from holidays.countries.thailand import Thailand, TH, THA
 from tests.common import TestCase
 
 
 class TestThailand(TestCase):
-    def setUp(self):
-        super().setUp()
-        # Checks in lieu not observed until 2030
-        self.holidays_no_observed = Thailand(observed=False)
-
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Thailand)
@@ -96,8 +91,7 @@ class TestThailand(TestCase):
     def test_new_years_day(self):
         self.assertHoliday(f"{year}-01-01" for year in range(1941, 2058))
 
-        self.assertNoHoliday(
-            self.holidays_no_observed,
+        self.assertNoNonObservedHoliday(
             "2011-01-03",
             "2012-01-02",
             "2017-01-02",
@@ -109,8 +103,7 @@ class TestThailand(TestCase):
     def test_chakri_memorial_day(self):
         self.assertHoliday(f"{year}-04-06" for year in range(1941, 2058))
 
-        self.assertNoHoliday(
-            self.holidays_no_observed,
+        self.assertNoNonObservedHoliday(
             "2013-04-08",
             "2014-04-07",
             "2019-04-08",
@@ -145,8 +138,7 @@ class TestThailand(TestCase):
                 f"{year}-04-13", f"{year}-04-14", f"{year}-04-15"
             )
 
-        self.assertNoHoliday(
-            self.holidays_no_observed,
+        self.assertNoNonObservedHoliday(
             "2012-04-16",
             "2013-04-16",
             "2017-04-17",
@@ -167,8 +159,7 @@ class TestThailand(TestCase):
         self.assertNoHolidayName(name, Thailand(years=1973))
         self.assertHoliday(f"{year}-05-01" for year in range(1974, 2058))
 
-        self.assertNoHoliday(
-            self.holidays_no_observed,
+        self.assertNoNonObservedHoliday(
             "2010-05-03",
             "2011-05-02",
             "2016-05-02",
@@ -186,8 +177,7 @@ class TestThailand(TestCase):
         self.assertNoHolidayName(name, Thailand(years=range(2017, 2020)))
         self.assertHoliday(f"{year}-05-04" for year in range(2020, 2058))
 
-        self.assertNoHoliday(
-            self.holidays_no_observed,
+        self.assertNoNonObservedHoliday(
             "2012-05-07",
             "2013-05-06",
             "2024-05-06",
@@ -205,8 +195,7 @@ class TestThailand(TestCase):
         self.assertNoHolidayName(name, Thailand(years=2018))
         self.assertHoliday(f"{year}-06-03" for year in range(2019, 2058))
 
-        self.assertNoHoliday(
-            self.holidays_no_observed,
+        self.assertNoNonObservedHoliday(
             "2023-06-05",
             "2028-06-05",
             "2029-06-04",
@@ -226,8 +215,7 @@ class TestThailand(TestCase):
         self.assertNoHolidayName(name, Thailand(years=2016))
         self.assertHoliday(f"{year}-07-28" for year in range(2017, 2058))
 
-        self.assertNoHoliday(
-            self.holidays_no_observed,
+        self.assertNoNonObservedHoliday(
             "2018-07-30",
             "2019-07-29",
             "2024-07-29",
@@ -252,8 +240,7 @@ class TestThailand(TestCase):
         )
         self.assertNoHolidayName(name_ix, Thailand(years=range(2017, 2058)))
 
-        self.assertNoHoliday(
-            self.holidays_no_observed,
+        self.assertNoNonObservedHoliday(
             "2012-08-13",
             "2017-08-14",
             "2018-08-13",
@@ -298,8 +285,7 @@ class TestThailand(TestCase):
         )
         self.assertNoHolidayName(name_ix, Thailand(years=range(2019, 2058)))
 
-        self.assertNoHoliday(
-            self.holidays_no_observed,
+        self.assertNoNonObservedHoliday(
             "2018-10-15",
             "2019-10-14",
             "2024-10-14",
@@ -313,8 +299,7 @@ class TestThailand(TestCase):
         self.assertNoHoliday("1910-10-23", "1940-10-23")
         self.assertNoHolidayName(name, Thailand(years=[1910, 1940]))
 
-        self.assertNoHoliday(
-            self.holidays_no_observed,
+        self.assertNoNonObservedHoliday(
             "2010-10-25",
             "2011-10-24",
             "2016-10-24",
@@ -357,8 +342,7 @@ class TestThailand(TestCase):
         self.assertNoHolidayName(name_reign, Thailand(years=range(2019, 2058)))
         self.assertNoHolidayName(name_dead, Thailand(years=range(2019, 2058)))
 
-        self.assertNoHoliday(
-            self.holidays_no_observed,
+        self.assertNoNonObservedHoliday(
             "2010-12-06",
             "2015-12-07",
             "2020-12-07",
@@ -381,8 +365,7 @@ class TestThailand(TestCase):
     def test_constitution_day(self):
         self.assertHoliday(f"{year}-12-10" for year in range(1941, 2058))
 
-        self.assertNoHoliday(
-            self.holidays_no_observed,
+        self.assertNoNonObservedHoliday(
             "2011-12-12",
             "2016-12-12",
             "2017-12-11",
@@ -394,8 +377,7 @@ class TestThailand(TestCase):
     def test_new_years_eve(self):
         self.assertHoliday(f"{year}-12-31" for year in range(1941, 2058))
 
-        self.assertNoHoliday(
-            self.holidays_no_observed,
+        self.assertNoNonObservedHoliday(
             "2012-01-03",
             "2017-01-03",
             "2018-01-02",
@@ -433,8 +415,7 @@ class TestThailand(TestCase):
         self.assertHolidaysName(name, dt)
         self.assertNoHolidayName(name, Thailand(years=2058))
 
-        self.assertNoHoliday(
-            self.holidays_no_observed,
+        self.assertNoNonObservedHoliday(
             "2010-03-01",
             "2017-02-13",
             "2020-02-10",
@@ -472,8 +453,7 @@ class TestThailand(TestCase):
         self.assertHolidaysName(name, dt)
         self.assertNoHolidayName(name, Thailand(years=2058))
 
-        self.assertNoHoliday(
-            self.holidays_no_observed,
+        self.assertNoNonObservedHoliday(
             "2019-05-20",
             "2022-05-16",
             "2023-06-05",
@@ -511,8 +491,7 @@ class TestThailand(TestCase):
         self.assertHolidaysName(name, dt)
         self.assertNoHolidayName(name, Thailand(years=2058))
 
-        self.assertNoHoliday(
-            self.holidays_no_observed,
+        self.assertNoNonObservedHoliday(
             "2017-07-10",
             "2020-07-07",
             "2021-07-26",
@@ -550,8 +529,7 @@ class TestThailand(TestCase):
         self.assertHolidaysName(name, dt)
         self.assertNoHolidayName(name, Thailand(years=2058))
 
-        self.assertNoHoliday(
-            self.holidays_no_observed,
+        self.assertNoNonObservedHoliday(
             "2011-07-18",
             "2014-07-14",
             "2018-07-30",
