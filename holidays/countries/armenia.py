@@ -35,62 +35,62 @@ class Armenia(HolidayBase):
         super()._populate(year)
 
         # New Year's Day.
-        name = self.tr("Նոր տարվա օր")
+        name = _("Նոր տարվա օր")
         self[date(year, JAN, 1)] = name
         self[date(year, JAN, 2)] = name
 
         # Christmas and Epiphany Day.
-        self[date(year, JAN, 6)] = self.tr("Սուրբ Ծնունդ եւ Հայտնություն")
+        self[date(year, JAN, 6)] = _("Սուրբ Ծնունդ եւ Հայտնություն")
 
         if 2010 <= year <= 2021:
             # New Year's holidays and Christmas Eve.
             self[date(year, JAN, 3)] = name
             self[date(year, JAN, 4)] = name
             # Christmas Eve.
-            self[date(year, JAN, 5)] = self.tr("Սուրբ Ծննդյան տոներ")
+            self[date(year, JAN, 5)] = _("Սուրբ Ծննդյան տոներ")
 
             # The Day of Remembrance of the Dead.
-            self[date(year, JAN, 7)] = self.tr("Մեռելոց հիշատակի օր")
+            self[date(year, JAN, 7)] = _("Մեռելոց հիշատակի օր")
 
         if year >= 2003:
             # Army Day.
-            self[date(year, JAN, 28)] = self.tr("Բանակի օր")
+            self[date(year, JAN, 28)] = _("Բանակի օր")
 
         # Women's Day.
-        self[date(year, MAR, 8)] = self.tr("Կանանց տոն")
+        self[date(year, MAR, 8)] = _("Կանանց տոն")
 
         if 1994 <= year <= 2001:
             # Motherhood and Beauty Day.
-            self[date(year, APR, 7)] = self.tr("Մայրության և գեղեցկության տոն")
+            self[date(year, APR, 7)] = _("Մայրության և գեղեցկության տոն")
 
         # Armenian Genocide Remembrance Day,
-        self[date(year, APR, 24)] = self.tr("Եղեռնի զոհերի հիշատակի օր")
+        self[date(year, APR, 24)] = _("Եղեռնի զոհերի հիշատակի օր")
 
         if year >= 2001:
             # International Day of Workers' Solidarity.
-            name = self.tr("Աշխատավորների համերաշխության միջազգային օր")
+            name = _("Աշխատավորների համերաշխության միջազգային օր")
             if year >= 2002:
                 # Labor Day.
-                name = self.tr("Աշխատանքի օր")
+                name = _("Աշխատանքի օր")
             self[date(year, MAY, 1)] = name
 
         if year >= 1995:
             # Victory and Peace Day.
-            self[date(year, MAY, 9)] = self.tr("Հաղթանակի և Խաղաղության տոն")
+            self[date(year, MAY, 9)] = _("Հաղթանակի և Խաղաղության տոն")
 
         # Republic Day.
-        self[date(year, MAY, 28)] = self.tr("Հանրապետության օր")
+        self[date(year, MAY, 28)] = _("Հանրապետության օր")
 
         if year >= 1996:
             # Constitution Day.
-            self[date(year, JUL, 5)] = self.tr("Սահմանադրության օր")
+            self[date(year, JUL, 5)] = _("Սահմանադրության օր")
 
         if year >= 1992:
             # Independence Day.
-            self[date(year, SEP, 21)] = self.tr("Անկախության օր")
+            self[date(year, SEP, 21)] = _("Անկախության օր")
 
         # New Year's Eve.
-        self[date(year, DEC, 31)] = self.tr("Նոր տարվա գիշեր")
+        self[date(year, DEC, 31)] = _("Նոր տարվա գիշեր")
 
 
 class AM(Armenia):

@@ -38,27 +38,25 @@ class Greece(HolidayBase, ChristianHolidays, InternationalHolidays):
         super()._populate(year)
 
         # New Year's Day.
-        self._add_new_years_day(self.tr("Πρωτοχρονιά"))
+        self._add_new_years_day(_("Πρωτοχρονιά"))
 
         # Epiphany.
-        self._add_epiphany_day(
-            self.tr("Θεοφάνεια"), calendar=GREGORIAN_CALENDAR
-        )
+        self._add_epiphany_day(_("Θεοφάνεια"), calendar=GREGORIAN_CALENDAR)
 
         # Clean Monday.
-        self._add_ash_monday(self.tr("Καθαρά Δευτέρα"))
+        self._add_ash_monday(_("Καθαρά Δευτέρα"))
 
         # Independence Day.
-        self._add_holiday(self.tr("Εικοστή Πέμπτη Μαρτίου"), MAR, 25)
+        self._add_holiday(_("Εικοστή Πέμπτη Μαρτίου"), MAR, 25)
 
         # Easter Monday.
-        self._add_easter_monday(self.tr("Δευτέρα του Πάσχα"))
+        self._add_easter_monday(_("Δευτέρα του Πάσχα"))
 
         # Monday of the Holy Spirit.
-        self._add_whit_monday(self.tr("Δευτέρα του Αγίου Πνεύματος"))
+        self._add_whit_monday(_("Δευτέρα του Αγίου Πνεύματος"))
 
         # Labour Day.
-        name = self.tr("Εργατική Πρωτομαγιά")
+        name = _("Εργατική Πρωτομαγιά")
         may_1 = self._add_labour_day(name)
         if self.observed and self._is_weekend(may_1):
             # https://en.wikipedia.org/wiki/Public_holidays_in_Greece
@@ -68,23 +66,21 @@ class Greece(HolidayBase, ChristianHolidays, InternationalHolidays):
             if self.get(labour_day_observed_date):
                 labour_day_observed_date += rd(weekday=TU)
             self._add_holiday(
-                self.tr("%s (παρατηρήθηκε)") % name, labour_day_observed_date
+                _("%s (παρατηρήθηκε)") % name, labour_day_observed_date
             )
 
         # Assumption of Mary.
-        self._add_assumption_of_mary_day(self.tr("Κοίμηση της Θεοτόκου"))
+        self._add_assumption_of_mary_day(_("Κοίμηση της Θεοτόκου"))
 
         # Ochi Day.
-        self._add_holiday(self.tr("Ημέρα του Όχι"), OCT, 28)
+        self._add_holiday(_("Ημέρα του Όχι"), OCT, 28)
 
         # Christmas Day.
-        self._add_christmas_day(
-            self.tr("Χριστούγεννα"), calendar=GREGORIAN_CALENDAR
-        )
+        self._add_christmas_day(_("Χριστούγεννα"), calendar=GREGORIAN_CALENDAR)
 
         # Day after Christmas.
         self._add_christmas_day_two(
-            self.tr("Επόμενη ημέρα των Χριστουγέννων"),
+            _("Επόμενη ημέρα των Χριστουγέννων"),
             calendar=GREGORIAN_CALENDAR,
         )
 

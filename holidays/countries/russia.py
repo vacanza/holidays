@@ -27,35 +27,35 @@ class Russia(HolidayBase):
         super()._populate(year)
 
         # New Year Holidays.
-        name = self.tr("Новогодние каникулы")
+        name = _("Новогодние каникулы")
         for day in range(1, 7):
             self[date(year, JAN, day)] = name
         self[date(year, JAN, 8)] = name
 
         # Orthodox Christmas Day.
-        self[date(year, JAN, 7)] = self.tr("Рождество Христово")
+        self[date(year, JAN, 7)] = _("Рождество Христово")
 
         # Defender of the Fatherland Day.
-        self[date(year, FEB, 23)] = self.tr("День защитника Отечества")
+        self[date(year, FEB, 23)] = _("День защитника Отечества")
 
         # International Women's Day.
-        self[date(year, MAR, 8)] = self.tr("Международный женский день")
+        self[date(year, MAR, 8)] = _("Международный женский день")
 
         # Labour Day.
-        self[date(year, MAY, 1)] = self.tr("Праздник Весны и Труда")
+        self[date(year, MAY, 1)] = _("Праздник Весны и Труда")
 
         # Victory Day.
-        self[date(year, MAY, 9)] = self.tr("День Победы")
+        self[date(year, MAY, 9)] = _("День Победы")
 
         # Russia's Day.
-        self[date(year, JUN, 12)] = self.tr("День России")
+        self[date(year, JUN, 12)] = _("День России")
 
         if year >= 2005:
             # Unity Day.
-            self[date(year, NOV, 4)] = self.tr("День народного единства")
+            self[date(year, NOV, 4)] = _("День народного единства")
         else:
             # October Revolution Day.
-            self[date(year, NOV, 7)] = self.tr("День Октябрьской революции")
+            self[date(year, NOV, 7)] = _("День Октябрьской революции")
 
 
 class RU(Russia):

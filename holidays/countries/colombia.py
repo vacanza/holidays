@@ -49,7 +49,7 @@ class Colombia(HolidayBase):
         """
 
         if self.observed and not self._is_monday(dt) and dt.year >= 1984:
-            self[dt + rd(weekday=MO)] = self.tr("%s (Observado)") % name
+            self[dt + rd(weekday=MO)] = _("%s (Observado)") % name
         else:
             self[dt] = name
 
@@ -57,96 +57,96 @@ class Colombia(HolidayBase):
         super()._populate(year)
 
         # New Year's Day
-        self[date(year, JAN, 1)] = self.tr("Año Nuevo")
+        self[date(year, JAN, 1)] = _("Año Nuevo")
 
         if year >= 1951:
             # Epiphany
             self._add_with_bridge(
                 date(year, JAN, 6),
-                self.tr("Día de los Reyes Magos"),
+                _("Día de los Reyes Magos"),
             )
 
             # Saint Joseph's Day
             self._add_with_bridge(
                 date(year, MAR, 19),
-                self.tr("Día de San José"),
+                _("Día de San José"),
             )
 
         # Labor Day
-        self[date(year, MAY, 1)] = self.tr("Día del Trabajo")
+        self[date(year, MAY, 1)] = _("Día del Trabajo")
 
         if year >= 1951:
             # Saint Peter and Saint Paul's Day
             self._add_with_bridge(
                 date(year, JUN, 29),
-                self.tr("San Pedro y San Pablo"),
+                _("San Pedro y San Pablo"),
             )
 
         # Independence Day
-        self[date(year, JUL, 20)] = self.tr("Día de la Independencia")
+        self[date(year, JUL, 20)] = _("Día de la Independencia")
 
         # Battle of Boyaca
-        self[date(year, AUG, 7)] = self.tr("Batalla de Boyacá")
+        self[date(year, AUG, 7)] = _("Batalla de Boyacá")
 
         if year >= 1951:
             # Assumption of Mary
             self._add_with_bridge(
                 date(year, AUG, 15),
-                self.tr("La Asunción"),
+                _("La Asunción"),
             )
 
         # Columbus Day
         self._add_with_bridge(
             date(year, OCT, 12),
-            self.tr("Día de la Raza"),
+            _("Día de la Raza"),
         )
 
         if year >= 1951:
             # All Saints’ Day
             self._add_with_bridge(
                 date(year, NOV, 1),
-                self.tr("Día de Todos los Santos"),
+                _("Día de Todos los Santos"),
             )
 
         # Independence of Cartagena
         self._add_with_bridge(
             date(year, NOV, 11),
-            self.tr("Independencia de Cartagena"),
+            _("Independencia de Cartagena"),
         )
 
         if year >= 1951:
             # Immaculate Conception
-            self[date(year, DEC, 8)] = self.tr("La Inmaculada Concepción")
+            self[date(year, DEC, 8)] = _("La Inmaculada Concepción")
 
         # Christmas
-        self[date(year, DEC, 25)] = self.tr("Navidad")
+        self[date(year, DEC, 25)] = _("Navidad")
 
         easter_date = easter(year)
 
         if year >= 1951:
             # Maundy Thursday
-            self[easter_date + td(days=-3)] = self.tr("Jueves Santo")
+            self[easter_date + td(days=-3)] = _("Jueves Santo")
 
             # Good Friday
-            self[easter_date + td(days=-2)] = self.tr("Viernes Santo")
+            self[easter_date + td(days=-2)] = _("Viernes Santo")
 
             # Ascension of Jesus
             self._add_with_bridge(
                 easter_date + td(days=+39),
-                self.tr("Ascensión del señor"),
+                _("Ascensión del señor"),
             )
 
             # Corpus Christi
             self._add_with_bridge(
                 easter_date + td(days=+60),
-                self.tr("Corpus Christi"),
+                _("Corpus Christi"),
             )
 
         if year >= 1984:
             # Sacred Heart
             self._add_with_bridge(
                 easter_date + td(days=+68),
-                self.tr("Sagrado Corazón"),
+                _("Sagrado Corazón"),
             )
 
 

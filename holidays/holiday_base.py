@@ -29,6 +29,8 @@ from holidays.constants import SAT, SUN
 DateArg = Union[date, Tuple[int, int]]
 DateLike = Union[date, datetime, str, float, int]
 
+tr = gettext
+
 
 class HolidayBase(Dict[date, str]):
     """
@@ -257,7 +259,7 @@ class HolidayBase(Dict[date, str]):
         self.observed = observed
         self.subdiv = subdiv or prov or state
 
-        self.tr = gettext  # Default translation method.
+        # self._tr = gettext  # Default translation method.
 
         if prov or state:
             warnings.warn(
@@ -286,6 +288,8 @@ class HolidayBase(Dict[date, str]):
 
             name = getattr(self, "country", getattr(self, "market", None))
             if name:
+                global tr
+
                 locale_dir = os.path.join(os.path.dirname(__file__), "locale")
                 translator: NullTranslations
                 translations = sorted(
@@ -308,7 +312,9 @@ class HolidayBase(Dict[date, str]):
                         fallback=True,
                         localedir=locale_dir,
                     )
-                self.tr = translator.gettext  # Replace `self.tr()`.
+                translator.install()
+                tr = translator.gettext
+                # self._tr = translator.gettext  # Replace `self._tr()`.
 
         if isinstance(years, int):
             self.years = {years}
@@ -646,21 +652,13 @@ class HolidayBase(Dict[date, str]):
         if not isinstance(other, HolidayBase):
             return False
 
-        that, this = copy.copy(other), self.copy()
-        for obj in (that, this):  # Exclude translation objects.
-            delattr(obj, "tr")
-
-        return dict.__eq__(this, that) and this.__dict__ == that.__dict__
+        return dict.__eq__(self, other) and self.__dict__ == other.__dict__
 
     def __ne__(self, other: object) -> bool:
         if not isinstance(other, HolidayBase):
             return True
 
-        that, this = copy.copy(other), self.copy()
-        for obj in (that, this):  # Exclude translation objects.
-            delattr(obj, "tr")
-
-        return dict.__ne__(this, that) or this.__dict__ != that.__dict__
+        return dict.__ne__(self, other) or self.__dict__ != other.__dict__
 
     def __add__(
         self, other: Union[int, "HolidayBase", "HolidaySum"]
@@ -710,7 +708,7 @@ class HolidayBase(Dict[date, str]):
         if dt.year != self._year:
             return None
 
-        self[dt] = holiday_name
+        self[dt] = tr(holiday_name)
         return dt
 
     def _populate(self, year: int) -> None:
@@ -734,7 +732,7 @@ class HolidayBase(Dict[date, str]):
 
         # Populate items from the special holidays list.
         for month, day, name in self.special_holidays.get(year, ()):
-            self._add_holiday(self.tr(name), date(year, month, day))
+            self._add_holiday(tr(name), date(year, month, day))
 
     @staticmethod
     def _is_leap_year(year: int) -> bool:
@@ -817,9 +815,7 @@ class HolidayBase(Dict[date, str]):
         if self:
             return super().__str__()
 
-        obj = copy.copy(self)
-        delattr(obj, "tr")
-        return str(obj.__dict__)
+        return str(self.__dict__)
 
 
 class HolidaySum(HolidayBase):

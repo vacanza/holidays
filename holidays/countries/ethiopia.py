@@ -66,48 +66,48 @@ class Ethiopia(
         # September 12.
         if self._is_leap_year(year):
             # Ethiopian New Year.
-            self._add_holiday(self.tr("አዲስ ዓመት እንቁጣጣሽ"), SEP, 12)
+            self._add_holiday(_("አዲስ ዓመት እንቁጣጣሽ"), SEP, 12)
         else:
             # Ethiopian New Year.
-            self._add_holiday(self.tr("አዲስ ዓመት እንቁጣጣሽ"), SEP, 11)
+            self._add_holiday(_("አዲስ ዓመት እንቁጣጣሽ"), SEP, 11)
 
         if self._is_leap_year(year):
             # Finding of True Cross.
-            self._add_holiday(self.tr("መስቀል"), SEP, 28)
+            self._add_holiday(_("መስቀል"), SEP, 28)
         else:
             # Finding of True Cross.
-            self._add_holiday(self.tr("መስቀል"), SEP, 27)
+            self._add_holiday(_("መስቀል"), SEP, 27)
 
         # Orthodox Christmas.
-        self._add_christmas_day(self.tr("ገና"))
+        self._add_christmas_day(_("ገና"))
 
         # Orthodox Epiphany.
-        self._add_epiphany_day(self.tr("ጥምቀት"))
+        self._add_epiphany_day(_("ጥምቀት"))
 
         # Orthodox Good Friday.
-        self._add_good_friday(self.tr("ስቅለት"))
+        self._add_good_friday(_("ስቅለት"))
 
         # Orthodox Easter Sunday.
-        self._add_easter_sunday(self.tr("ፋሲካ"))
+        self._add_easter_sunday(_("ፋሲካ"))
 
         if year > 1896:
             # Adwa Victory Day.
-            self._add_holiday(self.tr("አድዋ"), MAR, 2)
+            self._add_holiday(_("አድዋ"), MAR, 2)
 
         # Labour Day.
-        self._add_labour_day(self.tr("የሰራተኞች ቀን"))
+        self._add_labour_day(_("የሰራተኞች ቀን"))
 
         if year > 1941:
             # Patriots Day.
-            self._add_holiday(self.tr("የአርበኞች ቀን"), MAY, 5)
+            self._add_holiday(_("የአርበኞች ቀን"), MAY, 5)
 
         if year > 1991:
             # Downfall of Dergue Regime Day.
-            self._add_holiday(self.tr("ደርግ የወደቀበት ቀን"), MAY, 28)
+            self._add_holiday(_("ደርግ የወደቀበት ቀን"), MAY, 28)
 
         if year < 1991 and year > 1974:
             # Downfall of King Haile Selassie.
-            name = self.tr("ደርግ የመጣበት ቀን")
+            name = _("ደርግ የመጣበት ቀን")
             if self._is_leap_year(year):
                 self._add_holiday(name, SEP, 13)
             else:
@@ -118,16 +118,16 @@ class Ethiopia(
         # having the Holiday on Weekend does change the number of days,
         # decided to leave it since marking a Weekend as a holiday
         # wouldn't do much harm.
-        self._add_eid_al_fitr_day(self.tr("ኢድ አልፈጥር"))
+        self._add_eid_al_fitr_day(_("ኢድ አልፈጥር"))
 
         # Eid al-Adha - Sacrifice Festive
         # date of observance is announced yearly
-        self._add_eid_al_adha_day(self.tr("አረፋ"))
-        self._add_eid_al_adha_day_two(self.tr("አረፋ"))
+        self._add_eid_al_adha_day(_("አረፋ"))
+        self._add_eid_al_adha_day_two(_("አረፋ"))
 
         # Prophet Muhammad's Birthday - (hijari_year, 3, 12)
         # Prophet Muhammad's Birthday.
-        name = self.tr("መውሊድ")
+        name = _("መውሊድ")
         self._add_mawlid_day(name)
         self._add_mawlid_day_two(name)
 

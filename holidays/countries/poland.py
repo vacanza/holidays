@@ -10,7 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import timedelta as td
-from gettext import gettext as tr
+from gettext import gettext as _
 
 from holidays.constants import MAY, JUL, NOV
 from holidays.holiday_base import HolidayBase
@@ -25,7 +25,7 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "PL"
     default_language = "pl"
     special_holidays = {
-        2018: ((NOV, 12, tr("Narodowe Święto Niepodległości - 100-lecie")),)
+        2018: ((NOV, 12, _("Narodowe Święto Niepodległości - 100-lecie")),)
     }
 
     def __init__(self, *args, **kwargs):
@@ -41,94 +41,86 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays):
         super()._populate(year)
 
         # New Year's Day.
-        self._add_new_years_day(self.tr("Nowy Rok"))
+        self._add_new_years_day(_("Nowy Rok"))
 
         if year <= 1960 or year >= 2011:
             # Epiphany.
-            self._add_epiphany_day(self.tr("Święto Trzech Króli"))
+            self._add_epiphany_day(_("Święto Trzech Króli"))
 
         if year <= 1950:
             # Candlemas.
-            self._add_candlemas(
-                self.tr("Oczyszczenie Najświętszej Marii Panny")
-            )
+            self._add_candlemas(_("Oczyszczenie Najświętszej Marii Panny"))
 
         # Easter Sunday.
-        self._add_easter_sunday(self.tr("Niedziela Wielkanocna"))
+        self._add_easter_sunday(_("Niedziela Wielkanocna"))
 
         # Easter Monday.
-        self._add_easter_monday(self.tr("Poniedziałek Wielkanocny"))
+        self._add_easter_monday(_("Poniedziałek Wielkanocny"))
 
         if year >= 1950:
             # National Day.
-            self._add_holiday(self.tr("Święto Państwowe"), MAY, 1)
+            self._add_holiday(_("Święto Państwowe"), MAY, 1)
 
         if year <= 1950 or year >= 1990:
             # National Day of the Third of May.
-            self._add_holiday(
-                self.tr("Święto Narodowe Trzeciego Maja"), MAY, 3
-            )
+            self._add_holiday(_("Święto Narodowe Trzeciego Maja"), MAY, 3)
 
         if 1946 <= year <= 1950:
             # National Victory and Freedom Day.
             self._add_holiday(
-                self.tr("Narodowe Święto Zwycięstwa i Wolności"), MAY, 9
+                _("Narodowe Święto Zwycięstwa i Wolności"), MAY, 9
             )
 
         if year <= 1950:
             # Ascension Day.
             self._add_holiday(
-                self.tr("Wniebowstąpienie Pańskie"),
+                _("Wniebowstąpienie Pańskie"),
                 self._easter_sunday + td(days=+40),
             )
 
         # Pentecost.
-        self._add_whit_sunday(self.tr("Zielone Świątki"))
+        self._add_whit_sunday(_("Zielone Świątki"))
 
         if year <= 1950:
             # Pentecost (Day 2).
-            self._add_whit_monday(self.tr("Drugi dzień Zielonych Świątek"))
+            self._add_whit_monday(_("Drugi dzień Zielonych Świątek"))
 
         # Corpus Christi.
-        self._add_corpus_christi_day(self.tr("Dzień Bożego Ciała"))
+        self._add_corpus_christi_day(_("Dzień Bożego Ciała"))
 
         if year <= 1950:
             # Saints Peter and Paul Day.
             self._add_saints_peter_and_paul_day(
-                self.tr("Uroczystość Świętych Apostołów Piotra i Pawła")
+                _("Uroczystość Świętych Apostołów Piotra i Pawła")
             )
 
         if 1945 <= year <= 1989:
             # National Day of Rebirth of Poland.
-            self._add_holiday(
-                self.tr("Narodowe Święto Odrodzenia Polski"), JUL, 22
-            )
+            self._add_holiday(_("Narodowe Święto Odrodzenia Polski"), JUL, 22)
 
         if year <= 1960 or year >= 1989:
             # Assumption of the Virgin Mary.
             self._add_assumption_of_mary_day(
-                self.tr("Wniebowzięcie Najświętszej Marii Panny")
+                _("Wniebowzięcie Najświętszej Marii Panny")
             )
 
         # All Saints' Day.
-        self._add_all_saints_day(self.tr("Uroczystość Wszystkich Świętych"))
+        self._add_all_saints_day(_("Uroczystość Wszystkich Świętych"))
 
         if 1937 <= year <= 1944 or year >= 1989:
             # National Independence Day.
-            self._add_holiday(
-                self.tr("Narodowe Święto Niepodległości"), NOV, 11
-            )
+            self._add_holiday(_("Narodowe Święto Niepodległości"), NOV, 11)
 
         if year <= 1950:
             # Immaculate Conception of the Blessed Virgin Mary.
             self._add_immaculate_conception_day(
-                self.tr("Niepokalane Poczęcie Najświętszej Marii Panny")
+                _("Niepokalane Poczęcie Najświętszej Marii Panny")
             )
 
         # Christmas Day 1.
-        self._add_christmas_day(self.tr("Boże Narodzenie (pierwszy dzień)"))
+        self._add_christmas_day(_("Boże Narodzenie (pierwszy dzień)"))
         # Christmas Day 2.
-        self._add_christmas_day_two(self.tr("Boże Narodzenie (drugi dzień)"))
+        self._add_christmas_day_two(_("Boże Narodzenie (drugi dzień)"))
 
 
 class PL(Poland):

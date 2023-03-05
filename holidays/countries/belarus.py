@@ -39,7 +39,7 @@ class Belarus(HolidayBase):
         super()._populate(year)
 
         # New Year's Day.
-        name = self.tr("Новы год")
+        name = _("Новы год")
         self[date(year, JAN, 1)] = name
 
         # Jan 2nd is the national holiday (New Year) from 2020.
@@ -48,34 +48,34 @@ class Belarus(HolidayBase):
             self[date(year, JAN, 2)] = name
 
         # Christmas Day (Orthodox).
-        self[date(year, JAN, 7)] = self.tr(
+        self[date(year, JAN, 7)] = _(
             "Нараджэнне Хрыстова (праваслаўнае Раство)"
         )
 
         # Women's Day.
-        self[date(year, MAR, 8)] = self.tr("Дзень жанчын")
+        self[date(year, MAR, 8)] = _("Дзень жанчын")
 
         # Radunitsa (Day of Rejoicing).
-        self[easter(year, method=EASTER_ORTHODOX) + td(days=+9)] = self.tr(
+        self[easter(year, method=EASTER_ORTHODOX) + td(days=+9)] = _(
             "Радаўніца"
         )
 
         # Labour Day.
-        self[date(year, MAY, 1)] = self.tr("Свята працы")
+        self[date(year, MAY, 1)] = _("Свята працы")
 
         # Victory Day
-        self[date(year, MAY, 9)] = self.tr("Дзень Перамогі")
+        self[date(year, MAY, 9)] = _("Дзень Перамогі")
 
         # Independence Day.
-        self[date(year, JUL, 3)] = self.tr(
+        self[date(year, JUL, 3)] = _(
             "Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)"
         )
 
         # October Revolution Day.
-        self[date(year, NOV, 7)] = self.tr("Дзень Кастрычніцкай рэвалюцыі")
+        self[date(year, NOV, 7)] = _("Дзень Кастрычніцкай рэвалюцыі")
 
         # Christmas Day (Catholic).
-        self[date(year, DEC, 25)] = self.tr(
+        self[date(year, DEC, 25)] = _(
             "Нараджэнне Хрыстова (каталіцкае Раство)"
         )
 

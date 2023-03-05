@@ -35,55 +35,53 @@ class Monaco(HolidayBase):
         def _add_with_observed(hol_date: date, hol_name: str) -> None:
             self[hol_date] = hol_name
             if self.observed and self._is_sunday(hol_date):
-                self[hol_date + td(days=+1)] = (
-                    self.tr("%s (Observé)") % hol_name
-                )
+                self[hol_date + td(days=+1)] = _("%s (Observé)") % hol_name
 
         super()._populate(year)
 
         # New Year's Day
-        _add_with_observed(date(year, JAN, 1), self.tr("Le jour de l'An"))
+        _add_with_observed(date(year, JAN, 1), _("Le jour de l'An"))
 
         # Saint Dévote's Day
-        self[date(year, JAN, 27)] = self.tr("La Sainte Dévote")
+        self[date(year, JAN, 27)] = _("La Sainte Dévote")
 
         easter_date = easter(year)
 
         # Easter Monday
-        self[easter_date + td(days=+1)] = self.tr("Le lundi de Pâques")
+        self[easter_date + td(days=+1)] = _("Le lundi de Pâques")
 
         # Labour Day
-        _add_with_observed(date(year, MAY, 1), self.tr("Fête de la Travaille"))
+        _add_with_observed(date(year, MAY, 1), _("Fête de la Travaille"))
 
         # Ascension's Day
-        self[easter_date + td(days=+39)] = self.tr("L'Ascension")
+        self[easter_date + td(days=+39)] = _("L'Ascension")
 
         # Whit Monday
-        self[easter_date + td(days=+50)] = self.tr("Le lundi de Pentecôte")
+        self[easter_date + td(days=+50)] = _("Le lundi de Pentecôte")
 
         # Corpus Christi
-        self[easter_date + td(days=+60)] = self.tr("La Fête Dieu")
+        self[easter_date + td(days=+60)] = _("La Fête Dieu")
 
         _add_with_observed(
             date(year, AUG, 15),
             # Assumption's Day
-            self.tr("L'Assomption de Marie"),
+            _("L'Assomption de Marie"),
         )
 
         # All Saints' Day
-        _add_with_observed(date(year, NOV, 1), self.tr("La Toussaint"))
+        _add_with_observed(date(year, NOV, 1), _("La Toussaint"))
 
         # Prince's Day
-        _add_with_observed(date(year, NOV, 19), self.tr("La Fête du Prince"))
+        _add_with_observed(date(year, NOV, 19), _("La Fête du Prince"))
 
         dt = date(year, DEC, 8)
         if year >= 2019 and self._is_sunday(dt):
             dt += td(days=+1)
         # Immaculate Conception's Day
-        self[dt] = self.tr("L'Immaculée Conception")
+        self[dt] = _("L'Immaculée Conception")
 
         # Christmas Day
-        _add_with_observed(date(year, DEC, 25), self.tr("Noël"))
+        _add_with_observed(date(year, DEC, 25), _("Noël"))
 
 
 class MC(Monaco):

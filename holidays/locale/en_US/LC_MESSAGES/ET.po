@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.20\n"
-"POT-Creation-Date: 2023-02-15 14:15-0800\n"
+"POT-Creation-Date: 2023-03-04 10:43-0800\n"
 "PO-Revision-Date: 2023-02-15 12:42-0800\n"
 "Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
 "Language-Team: Python Holidays localization team\n"
@@ -17,71 +17,76 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. Ethiopian New Year.
-#: holidays/countries/ethiopia.py:64 holidays/countries/ethiopia.py:67
+#: holidays/countries/ethiopia.py:69 holidays/countries/ethiopia.py:72
 msgid "አዲስ ዓመት እንቁጣጣሽ"
 msgstr "Ethiopian New Year's Day"
 
 #. Finding of True Cross.
-#: holidays/countries/ethiopia.py:72 holidays/countries/ethiopia.py:75
+#: holidays/countries/ethiopia.py:76 holidays/countries/ethiopia.py:79
 msgid "መስቀል"
 msgstr "Finding of True Cross"
 
 #. Orthodox Christmas.
-#: holidays/countries/ethiopia.py:78
+#: holidays/countries/ethiopia.py:82
 msgid "ገና"
 msgstr "Orthodox Christmas Day"
 
 #. Orthodox Epiphany.
-#: holidays/countries/ethiopia.py:81
+#: holidays/countries/ethiopia.py:85
 msgid "ጥምቀት"
 msgstr "Orthodox Epiphany Day"
 
 #. Orthodox Good Friday.
-#: holidays/countries/ethiopia.py:85
+#: holidays/countries/ethiopia.py:88
 msgid "ስቅለት"
 msgstr "Orthodox Good Friday"
 
 #. Orthodox Easter Sunday.
-#: holidays/countries/ethiopia.py:88
+#: holidays/countries/ethiopia.py:91
 msgid "ፋሲካ"
 msgstr "Orthodox Easter Sunday"
 
 #. Adwa Victory Day.
-#: holidays/countries/ethiopia.py:92
+#: holidays/countries/ethiopia.py:95
 msgid "አድዋ"
 msgstr "Adwa Victory Day"
 
 #. Labour Day.
-#: holidays/countries/ethiopia.py:95
+#: holidays/countries/ethiopia.py:98
 msgid "የሰራተኞች ቀን"
 msgstr "Labor Day"
 
 #. Patriots Day.
-#: holidays/countries/ethiopia.py:99
+#: holidays/countries/ethiopia.py:102
 msgid "የአርበኞች ቀን"
 msgstr "Patriots Day"
 
 #. Downfall of Dergue Regime Day.
-#: holidays/countries/ethiopia.py:103
+#: holidays/countries/ethiopia.py:106
 msgid "ደርግ የወደቀበት ቀን"
 msgstr "Downfall of Dergue Regime Day"
 
 #. Downfall of King Haile Selassie.
-#: holidays/countries/ethiopia.py:107
+#: holidays/countries/ethiopia.py:110
 msgid "ደርግ የመጣበት ቀን"
 msgstr "Downfall of King Haile Selassie Day"
 
-#. Eid al-Fitr.
+#. Eid al-Fitr - Feast Festive date of observance is announced yearly, This is
+#. an estimate since having the Holiday on Weekend does change the number of
+#. days, decided to leave it since marking a Weekend as a holiday wouldn't do
+#. much harm.
 #: holidays/countries/ethiopia.py:121
 msgid "ኢድ አልፈጥር"
 msgstr "Eid al-Fitr"
 
-#. Eid al-Adha.
-#: holidays/countries/ethiopia.py:128
+#. Eid al-Adha - Sacrifice Festive date of observance is announced yearly
+#.
+#: holidays/countries/ethiopia.py:125 holidays/countries/ethiopia.py:126
 msgid "አረፋ"
 msgstr "Eid al-Adha"
 
-#. Prophet Muhammad's Birthday.
-#: holidays/countries/ethiopia.py:134
+#. Prophet Muhammad's Birthday - (hijari_year, 3, 12) Prophet Muhammad's
+#. Birthday.
+#: holidays/countries/ethiopia.py:130
 msgid "መውሊድ"
 msgstr "Prophet Muhammad's Birthday"

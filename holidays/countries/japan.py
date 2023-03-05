@@ -54,7 +54,7 @@ class Japan(HolidayBase):
         super()._populate(year)
 
         # New Year's Day.
-        self[date(year, JAN, 1)] = self.tr("元日")
+        self[date(year, JAN, 1)] = _("元日")
 
         # Coming of Age Day.
         self[
@@ -62,15 +62,15 @@ class Japan(HolidayBase):
             if year <= 1999
             else date(year, JAN, 1) + rd(weekday=MO(+2))
             # Coming of Age Day.
-        ] = self.tr("成人の日")
+        ] = _("成人の日")
 
         # Foundation Day.
         if year >= 1967:
-            self[date(year, FEB, 11)] = self.tr("建国記念の日")
+            self[date(year, FEB, 11)] = _("建国記念の日")
 
         # Reiwa Emperor's Birthday.
         if year >= 2020:
-            self[date(year, FEB, 23)] = self.tr("天皇誕生日")
+            self[date(year, FEB, 23)] = _("天皇誕生日")
 
         # Vernal Equinox Day.
         epoch = Sun.get_equinox_solstice(year, target="spring")
@@ -78,49 +78,49 @@ class Japan(HolidayBase):
         adjusted_date = datetime(*equinox, tzinfo=timezone.utc).astimezone(
             ZoneInfo("Asia/Tokyo")
         )
-        self[adjusted_date.date()] = self.tr("春分の日")
+        self[adjusted_date.date()] = _("春分の日")
 
         # Showa Emperor's Birthday, Greenery Day or Showa Day.
         if year <= 1988:
-            self[date(year, APR, 29)] = self.tr("天皇誕生日")
+            self[date(year, APR, 29)] = _("天皇誕生日")
         elif year <= 2006:
-            self[date(year, APR, 29)] = self.tr("みどりの日")
+            self[date(year, APR, 29)] = _("みどりの日")
         else:
-            self[date(year, APR, 29)] = self.tr("昭和の日")
+            self[date(year, APR, 29)] = _("昭和の日")
 
         # Constitution Memorial Day.
-        self[date(year, MAY, 3)] = self.tr("憲法記念日")
+        self[date(year, MAY, 3)] = _("憲法記念日")
 
         # Greenery Day.
         if year >= 2007:
-            self[date(year, MAY, 4)] = self.tr("みどりの日")
+            self[date(year, MAY, 4)] = _("みどりの日")
 
         # Children's Day.
-        self[date(year, MAY, 5)] = self.tr("こどもの日")
+        self[date(year, MAY, 5)] = _("こどもの日")
 
         # Marine Day.
         if 1996 <= year <= 2002:
-            self[date(year, JUL, 20)] = self.tr("海の日")
+            self[date(year, JUL, 20)] = _("海の日")
         elif year == 2020:
-            self[date(year, JUL, 23)] = self.tr("海の日")
+            self[date(year, JUL, 23)] = _("海の日")
         elif year == 2021:
-            self[date(year, JUL, 22)] = self.tr("海の日")
+            self[date(year, JUL, 22)] = _("海の日")
         elif year >= 2003:
-            self[date(year, JUL, 1) + rd(weekday=MO(+3))] = self.tr("海の日")
+            self[date(year, JUL, 1) + rd(weekday=MO(+3))] = _("海の日")
 
         # Mountain Day.
         if year == 2020:
-            self[date(year, AUG, 10)] = self.tr("山の日")
+            self[date(year, AUG, 10)] = _("山の日")
         elif year == 2021:
-            self[date(year, AUG, 8)] = self.tr("山の日")
+            self[date(year, AUG, 8)] = _("山の日")
         elif year >= 2016:
-            self[date(year, AUG, 11)] = self.tr("山の日")
+            self[date(year, AUG, 11)] = _("山の日")
 
         # Respect for the Aged Day.
         if 1966 <= year <= 2002:
-            self[date(year, SEP, 15)] = self.tr("敬老の日")
+            self[date(year, SEP, 15)] = _("敬老の日")
         elif year >= 2003:
-            self[date(year, SEP, 1) + rd(weekday=MO(+3))] = self.tr("敬老の日")
+            self[date(year, SEP, 1) + rd(weekday=MO(+3))] = _("敬老の日")
 
         # Autumnal Equinox Day.
         epoch = Sun.get_equinox_solstice(year, target="autumn")
@@ -128,29 +128,29 @@ class Japan(HolidayBase):
         adjusted_date = datetime(*equinox, tzinfo=timezone.utc).astimezone(
             ZoneInfo("Asia/Tokyo")
         )
-        self[adjusted_date.date()] = self.tr("秋分の日")
+        self[adjusted_date.date()] = _("秋分の日")
 
         # Health and Sports Day.
         if 1966 <= year <= 1999:
-            self[date(year, OCT, 10)] = self.tr("体育の日")
+            self[date(year, OCT, 10)] = _("体育の日")
         elif 2000 <= year <= 2019:
-            self[date(year, OCT, 1) + rd(weekday=MO(+2))] = self.tr("体育の日")
+            self[date(year, OCT, 1) + rd(weekday=MO(+2))] = _("体育の日")
         elif year == 2020:
-            self[date(year, JUL, 24)] = self.tr("スポーツの日")
+            self[date(year, JUL, 24)] = _("スポーツの日")
         elif year == 2021:
-            self[date(year, JUL, 23)] = self.tr("スポーツの日")
+            self[date(year, JUL, 23)] = _("スポーツの日")
         elif 2022 <= year:
-            self[date(year, OCT, 1) + rd(weekday=MO(+2))] = self.tr("スポーツの日")
+            self[date(year, OCT, 1) + rd(weekday=MO(+2))] = _("スポーツの日")
 
         # Culture Day.
-        self[date(year, NOV, 3)] = self.tr("文化の日")
+        self[date(year, NOV, 3)] = _("文化の日")
 
         # Labour Thanksgiving Day.
-        self[date(year, NOV, 23)] = self.tr("勤労感謝の日")
+        self[date(year, NOV, 23)] = _("勤労感謝の日")
 
         # Regarding the Emperor of Heisei.
         if 1989 <= year <= 2018:
-            self[date(year, DEC, 23)] = self.tr("天皇誕生日")
+            self[date(year, DEC, 23)] = _("天皇誕生日")
 
         if self.observed:
             # When a national holiday falls on Sunday, next working day
@@ -160,7 +160,7 @@ class Japan(HolidayBase):
                     hol_date = dt + td(days=+1)
                     while hol_date in self:
                         hol_date += td(days=+1)
-                    self[hol_date] = self.tr("振替休日")
+                    self[hol_date] = _("振替休日")
 
             # A weekday between national holidays becomes
             # a holiday too (国民の休日) - citizens' holidays.
@@ -168,7 +168,7 @@ class Japan(HolidayBase):
                 if dt.year == year and dt + td(days=+2) in self:
                     hol_date = dt + td(days=+1)
                     if not self._is_sunday(hol_date) and hol_date not in self:
-                        self[hol_date] = self.tr("国民の休日")
+                        self[hol_date] = _("国民の休日")
 
 
 class JP(Japan):
