@@ -9,13 +9,14 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.countries.monaco import MC, MCO, Monaco
+from holidays.countries.monaco import Monaco, MC, MCO
 from tests.common import TestCase
 
 
 class TestMonaco(TestCase):
-    def setUp(self):
-        self.holidays = Monaco()
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Monaco)
 
     def test_country_aliases(self):
         self.assertCountryAliases(Monaco, MC, MCO)
@@ -49,8 +50,8 @@ class TestMonaco(TestCase):
             "2023-01-02",
             "2023-11-20",
         )
-        self.assertHoliday(Monaco(observed=True), observed_holidays)
-        self.assertNoHoliday(Monaco(observed=False), observed_holidays)
+        self.assertHoliday(observed_holidays)
+        self.assertNoNonObservedHoliday(observed_holidays)
 
     def test_2020(self):
         self.assertHolidayDates(
@@ -121,3 +122,43 @@ class TestMonaco(TestCase):
             "2023-12-08",
             "2023-12-25",
         )
+
+    def test_l10n_default(self):
+        def run_tests(languages):
+            for language in languages:
+                mc = Monaco(language=language)
+                self.assertEqual(mc["2022-01-01"], "Le jour de l'An")
+                self.assertEqual(mc["2022-12-25"], "Noël")
+
+        run_tests((Monaco.default_language, None, "invalid"))
+
+        self.set_language("en_US")
+        run_tests((Monaco.default_language,))
+
+    def test_l10n_en_us(self):
+        en_us = "en_US"
+
+        mc = Monaco(language=en_us)
+        self.assertEqual(mc["2015-01-07"], "Public holiday")
+        self.assertEqual(mc["2022-01-01"], "New Year's Day")
+        self.assertEqual(mc["2022-12-25"], "Christmas Day")
+
+        self.set_language(en_us)
+        for language in (None, en_us, "invalid"):
+            mc = Monaco(language=language)
+            self.assertEqual(mc["2022-01-01"], "New Year's Day")
+            self.assertEqual(mc["2022-12-25"], "Christmas Day")
+
+    def test_l10n_uk(self):
+        uk = "uk"
+
+        mc = Monaco(language=uk)
+        self.assertEqual(mc["2015-01-07"], "Державне свято")
+        self.assertEqual(mc["2022-01-01"], "Новий рік")
+        self.assertEqual(mc["2022-12-25"], "Різдво Христове")
+
+        self.set_language(uk)
+        for language in (None, uk, "invalid"):
+            mc = Monaco(language=language)
+            self.assertEqual(mc["2022-01-01"], "Новий рік")
+            self.assertEqual(mc["2022-12-25"], "Різдво Христове")

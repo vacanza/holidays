@@ -13,10 +13,10 @@ from datetime import date
 from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import MO, TU, WE
-from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, FEB, MAR, APR, JUN, JUL, SEP, OCT, NOV, DEC
+from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
+from holidays.constants import JAN, FEB, MAR, APR, JUN, JUL, SEP, OCT, NOV
+from holidays.constants import DEC, MON, TUE, WED
 from holidays.holiday_base import HolidayBase
 
 
@@ -64,15 +64,13 @@ class NewZealand(HolidayBase):
     ]
 
     def _get_nearest_monday(self, dt: date) -> date:
-        return (
-            dt + rd(weekday=MO(-1))
-            if not self._is_friday(dt) and not self._is_weekend(dt)
-            else dt + rd(weekday=MO)
+        return _get_nth_weekday_from(
+            1 if self._is_friday(dt) or self._is_weekend(dt) else -1, MON, dt
         )
 
     def _add_observed(self, dt: date) -> None:
         if self.observed and self._is_weekend(dt):
-            obs_date = dt + rd(weekday=MO)
+            obs_date = _get_nth_weekday_from(1, MON, dt)
             if self.get(obs_date):
                 obs_date += td(days=+1)
             self[obs_date] = f"{self[dt]} (Observed)"
@@ -133,7 +131,9 @@ class NewZealand(HolidayBase):
             if year == 1952:
                 self[date(year, JUN, 2)] = name  # Elizabeth II
             elif year >= 1938:
-                self[date(year, JUN, 1) + rd(weekday=MO)] = name  # EII & GVI
+                self[
+                    _get_nth_weekday_of_month(1, MON, JUN, year)
+                ] = name  # EII & GVI
             elif year == 1937:
                 self[date(year, JUN, 9)] = name  # George VI
             elif year == 1936:
@@ -184,9 +184,9 @@ class NewZealand(HolidayBase):
         # Labour Day
         name = "Labour Day"
         if year >= 1910:
-            self[date(year, OCT, 1) + rd(weekday=MO(+4))] = name
+            self[_get_nth_weekday_of_month(4, MON, OCT, year)] = name
         elif year >= 1900:
-            self[date(year, OCT, 1) + rd(weekday=WE(+2))] = name
+            self[_get_nth_weekday_of_month(2, WED, OCT, year)] = name
 
         # Christmas Day
         dec25 = date(year, DEC, 25)
@@ -210,12 +210,12 @@ class NewZealand(HolidayBase):
 
         elif self.subdiv in {"New Plymouth", "Taranaki", "TKI"}:
             self[
-                date(year, MAR, 1) + rd(weekday=MO(+2))
+                _get_nth_weekday_of_month(2, MON, MAR, year)
             ] = "Taranaki Anniversary Day"
 
         elif self.subdiv in {"Hawke's Bay", "HKB"}:
             self[
-                (date(year, OCT, 1) + rd(weekday=MO(+4)) + td(days=-3))
+                _get_nth_weekday_of_month(4, MON, OCT, year) + td(days=-3)
             ] = "Hawke's Bay Anniversary Day"
 
         elif self.subdiv in {"WGN", "Wellington"}:
@@ -225,7 +225,7 @@ class NewZealand(HolidayBase):
 
         elif self.subdiv in {"Marlborough", "MBH"}:
             self[
-                (date(year, OCT, 1) + rd(weekday=MO(+4)) + td(days=+7))
+                _get_nth_weekday_of_month(4, MON, OCT, year) + td(days=+7)
             ] = "Marlborough Anniversary Day"
 
         elif self.subdiv in {"Nelson", "NSN"}:
@@ -235,12 +235,12 @@ class NewZealand(HolidayBase):
 
         elif self.subdiv in {"CAN", "Canterbury"}:
             self[
-                (date(year, NOV, 1) + rd(weekday=TU) + td(days=+10))
+                _get_nth_weekday_of_month(1, TUE, NOV, year) + td(days=+10)
             ] = "Canterbury Anniversary Day"
 
         elif self.subdiv in {"South Canterbury", "STC"}:
             self[
-                (date(year, SEP, 1) + rd(weekday=MO(+4)))
+                _get_nth_weekday_of_month(4, MON, SEP, year)
             ] = "South Canterbury Anniversary Day"
 
         elif self.subdiv in {"WTC", "West Coast", "WTL", "Westland"}:

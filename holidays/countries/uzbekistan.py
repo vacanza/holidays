@@ -11,9 +11,9 @@
 
 from datetime import date
 
+from holidays.calendars import _islamic_to_gre
 from holidays.constants import JAN, MAR, MAY, SEP, OCT, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.utils import _islamic_to_gre
 
 
 class Uzbekistan(HolidayBase):

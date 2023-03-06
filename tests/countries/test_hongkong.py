@@ -9,27 +9,33 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
 from datetime import date
 
-import holidays
+from holidays.countries.hongkong import HongKong, HK, HKG
+from tests.common import TestCase
 
 
-class TestHongKong(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.HK()
+class TestHongKong(TestCase):
+    @classmethod
+    def setUpClass(self):
+        super().setUpClass(HongKong)
+
+    def test_country_aliases(self):
+        self.assertCountryAliases(HongKong, HK, HKG)
 
     def test_common(self):
-        holidays_no_observed = holidays.HK(observed=False)
-        self.assertEqual(
-            holidays_no_observed[date(2019, 1, 1)], "The first day of January"
+        self.assertNonObservedHoliday("2019-01-01")
+        self.assertNonObservedHolidaysName(
+            "The first day of January",
+            "2019-01-01",
         )
+
         self.assertEqual(
             self.holidays[date(2015, 9, 3)],
             "The 70th anniversary day of the victory of the Chinese "
             "people's war of resistance against Japanese aggression",
         )
-        self.assertEqual(len(holidays.HK(years=1945)), 0)
+        self.assertEqual(len(HongKong(years=1945)), 0)
 
     def test_first_day_of_january(self):
         exception_years = (2006, 2012, 2017, 2023)
@@ -41,7 +47,8 @@ class TestHongKong(unittest.TestCase):
                 )
             else:
                 self.assertEqual(
-                    self.holidays[date(year, 1, 1)], "The first day of January"
+                    self.holidays[date(year, 1, 1)],
+                    "The first day of January",
                 )
 
     def test_lunar_new_year(self):
@@ -67,7 +74,8 @@ class TestHongKong(unittest.TestCase):
             (2022, 2, 1),
         ]:
             self.assertEqual(
-                self.holidays[date(year, month, day)], "Lunar New Year's Day"
+                self.holidays[date(year, month, day)],
+                "Lunar New Year's Day",
             )
 
         for year, month, day in [
@@ -148,7 +156,8 @@ class TestHongKong(unittest.TestCase):
             (2023, 4, 5),
         ]:
             self.assertEqual(
-                self.holidays[date(year, month, day)], "Ching Ming Festival"
+                self.holidays[date(year, month, day)],
+                "Ching Ming Festival",
             )
 
         for year, month, day in [(2010, 4, 6), (2015, 4, 6), (2021, 4, 5)]:
@@ -289,7 +298,8 @@ class TestHongKong(unittest.TestCase):
 
         for year in (2011, 2016, 2022):
             self.assertEqual(
-                self.holidays[date(year, 5, 2)], "The day following Labour Day"
+                self.holidays[date(year, 5, 2)],
+                "The day following Labour Day",
             )
 
         self.assertNotIn(date(1997, 5, 1), self.holidays)
@@ -316,7 +326,8 @@ class TestHongKong(unittest.TestCase):
             (2023, 6, 22),
         ]:
             self.assertEqual(
-                self.holidays[date(year, month, day)], "Tuen Ng Festival"
+                self.holidays[date(year, month, day)],
+                "Tuen Ng Festival",
             )
 
         self.assertEqual(

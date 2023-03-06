@@ -9,13 +9,14 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.countries.panama import PA, PAN, Panama
+from holidays.countries.panama import Panama, PA, PAN
 from tests.common import TestCase
 
 
 class TestPanama(TestCase):
-    def setUp(self):
-        self.holidays = Panama()
+    @classmethod
+    def setUpClass(self):
+        super().setUpClass(Panama)
 
     def test_country_aliases(self):
         self.assertCountryAliases(Panama, PA, PAN)
@@ -76,7 +77,7 @@ class TestPanama(TestCase):
             "2023-01-02",
         )
         self.assertHoliday(observed_holidays)
-        self.assertNoHoliday(Panama(observed=False), observed_holidays)
+        self.assertNoNonObservedHoliday(observed_holidays)
 
     def test_2022(self):
         self.assertHolidays(

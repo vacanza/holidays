@@ -44,7 +44,8 @@ class TestIndonesia(TestCase):
             (2022, 2, 1),
         ):
             self.assertEqual(
-                self.holidays[date(year, month, day)], "Tahun Baru Imlek"
+                self.holidays[date(year, month, day)],
+                "Tahun Baru Imlek",
             )
 
     def test_day_of_silence(self):
@@ -57,7 +58,8 @@ class TestIndonesia(TestCase):
             (2022, 3, 3),
         ):
             self.assertEqual(
-                self.holidays[date(year, month, day)], "Hari Suci Nyepi"
+                self.holidays[date(year, month, day)],
+                "Hari Suci Nyepi",
             )
 
         self.assertFalse(Indonesia(years=1982).get_named("Hari Suci Nyepi"))

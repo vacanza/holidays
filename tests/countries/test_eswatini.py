@@ -17,8 +17,9 @@ from tests.common import TestCase
 
 
 class TestEswatini(TestCase):
-    def setUp(self):
-        self.holidays = Eswatini()
+    @classmethod
+    def setUpClass(self):
+        super().setUpClass(Eswatini)
 
     def test_country_aliases(self):
         self.assertCountryAliases(Eswatini, SZ, SZW)
@@ -113,7 +114,7 @@ class TestEswatini(TestCase):
             "2027-12-27",
         )
         self.assertHoliday(dt)
-        self.assertNoHoliday(Eswatini(observed=False), dt)
+        self.assertNoNonObservedHoliday(dt)
 
     def test_swaziland_deprecation_warning(self):
         warnings.simplefilter("default")

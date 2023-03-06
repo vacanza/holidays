@@ -1,3 +1,36 @@
+Version 0.21
+============
+
+Released March 6, 2023
+
+- Refactor `HolidayBase::get_named`, #991 (@arkid15r)
+- Refactor calendars: extract to a separate module, #969 (@arkid15r)
+- Refactor common.TestCase, #979 (@arkid15r)
+- Refactor relative weekdays calculation: replace relativedelta, #1002 (@KJhellico)
+- Fix NYSE New Year's Day observance calculation, #1000 (@KJhellico)
+- Fix tox.ini typo, #994 (@mborsetti)
+- Improve Argentina holidays, #988 (@PPsyrius)
+- Optimize Azerbaijan observed holidays, #961 (@KJhellico)
+- Optimize Malaysia observed holidays, #963 (@KJhellico)
+- Optimize Nigeria observed holidays, #978 (@KJhellico)
+- Update Argentina holidays. Add holidays localization: uk, #968 (@KJhellico)
+- Update Chile holidays. Add localization: en_US, es, uk, #990 (@KJhellico)
+- Update Ireland holidays: St. Bridget's Day, #953 (@PPsyrius)
+- Update Japan holidays localization: en_US, #964 (@KJhellico)
+- Update Mexico holidays, #980 (@KJhellico)
+- Update PR template, #997 (@arkid15r)
+- Update Saudi Arabia holidays, #962 (@KJhellico)
+- Add Canada holidays localization: th, #986 (@PPsyrius)
+- Add Colombia holidays localization: en_US, es, uk, #965 (@KJhellico)
+- Add Monaco holidays localization: en_US, fr, uk, #966 (@KJhellico)
+- Add Thailand holidays localization: en_US, th, #946 (@PPsyrius)
+- Add functions for relative weekdays calculation, #989 (@KJhellico)
+- Add tox-ini-fmt to .pre-commit-config.yaml, #999 (@arkid15r)
+- Clean up Malaysia tests, #996 (@KJhellico)
+- Clean up Thailand localization and in-line code comments, #995 (@PPsyrius)
+- Clean up tests module loading, #992 (@arkid15r)
+- Use the built-in library for time zone functions, #993 (@mborsetti)
+
 Version 0.20
 ============
 

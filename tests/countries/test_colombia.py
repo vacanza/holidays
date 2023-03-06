@@ -9,309 +9,309 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
-from datetime import date
-from datetime import timedelta as td
-
-import holidays
-from holidays.constants import APR, AUG, DEC, JAN, JUL, JUN, MAR, MAY, NOV, OCT
+from holidays.countries.colombia import Colombia, CO, COL
+from tests.common import TestCase
 
 
-class TestCO(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.CO(observed=True)
+class TestColombia(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Colombia)
 
-    def _check_all_dates(self, year, expected_holidays):
-        start_date = date(year, 1, 1)
-        end_date = date(year, 12, 31)
-        delta = td(days=+1)
-
-        while start_date <= end_date:
-            if start_date in expected_holidays:
-                self.assertIn(start_date, self.holidays)
-            else:
-                self.assertNotIn(start_date, self.holidays)
-            start_date += delta
+    def test_country_aliases(self):
+        self.assertCountryAliases(Colombia, CO, COL)
 
     def test_2016(self):
         # https://www.officeholidays.com/countries/colombia/2016
-        year = 2016
-        expected_holidays = {
-            date(year, JAN, 1),
-            date(year, JAN, 11),
-            date(year, MAR, 21),
-            date(year, MAR, 24),
-            date(year, MAR, 25),
-            date(year, MAY, 1),
-            date(year, MAY, 9),
-            date(year, MAY, 30),
-            date(year, JUN, 6),
-            date(year, JUL, 4),
-            date(year, JUL, 20),
-            date(year, AUG, 7),
-            date(year, AUG, 15),
-            date(year, OCT, 17),
-            date(year, NOV, 7),
-            date(year, NOV, 14),
-            date(year, DEC, 8),
-            date(year, DEC, 25),
-        }
-        self._check_all_dates(year, expected_holidays)
+        self.assertHolidayDates(
+            "2016-01-01",
+            "2016-01-11",
+            "2016-03-21",
+            "2016-03-24",
+            "2016-03-25",
+            "2016-05-01",
+            "2016-05-09",
+            "2016-05-30",
+            "2016-06-06",
+            "2016-07-04",
+            "2016-07-20",
+            "2016-08-07",
+            "2016-08-15",
+            "2016-10-17",
+            "2016-11-07",
+            "2016-11-14",
+            "2016-12-08",
+            "2016-12-25",
+        )
 
     def test_2017(self):
         # https://www.officeholidays.com/countries/colombia/2017
-        year = 2017
-        expected_holidays = {
-            date(year, JAN, 1),
-            date(year, JAN, 9),
-            date(year, MAR, 20),
-            date(year, APR, 13),
-            date(year, APR, 14),
-            date(year, MAY, 1),
-            date(year, MAY, 29),
-            date(year, JUN, 19),
-            date(year, JUN, 26),
-            date(year, JUL, 3),
-            date(year, JUL, 20),
-            date(year, AUG, 7),
-            date(year, AUG, 21),
-            date(year, OCT, 16),
-            date(year, NOV, 6),
-            date(year, NOV, 13),
-            date(year, DEC, 8),
-            date(year, DEC, 25),
-        }
-        self._check_all_dates(year, expected_holidays)
+        self.assertHolidayDates(
+            "2017-01-01",
+            "2017-01-09",
+            "2017-03-20",
+            "2017-04-13",
+            "2017-04-14",
+            "2017-05-01",
+            "2017-05-29",
+            "2017-06-19",
+            "2017-06-26",
+            "2017-07-03",
+            "2017-07-20",
+            "2017-08-07",
+            "2017-08-21",
+            "2017-10-16",
+            "2017-11-06",
+            "2017-11-13",
+            "2017-12-08",
+            "2017-12-25",
+        )
 
     def test_2018(self):
         # https://publicholidays.co/2018-dates/
-        year = 2018
-        expected_holidays = {
-            date(year, JAN, 1),
-            date(year, JAN, 8),
-            date(year, MAR, 19),
-            date(year, MAR, 29),
-            date(year, MAR, 30),
-            date(year, MAY, 1),
-            date(year, MAY, 14),
-            date(year, JUN, 4),
-            date(year, JUN, 11),
-            date(year, JUL, 2),
-            date(year, JUL, 20),
-            date(year, AUG, 7),
-            date(year, AUG, 20),
-            date(year, OCT, 15),
-            date(year, NOV, 5),
-            date(year, NOV, 12),
-            date(year, DEC, 8),
-            date(year, DEC, 25),
-        }
-        self._check_all_dates(year, expected_holidays)
+        self.assertHolidayDates(
+            "2018-01-01",
+            "2018-01-08",
+            "2018-03-19",
+            "2018-03-29",
+            "2018-03-30",
+            "2018-05-01",
+            "2018-05-14",
+            "2018-06-04",
+            "2018-06-11",
+            "2018-07-02",
+            "2018-07-20",
+            "2018-08-07",
+            "2018-08-20",
+            "2018-10-15",
+            "2018-11-05",
+            "2018-11-12",
+            "2018-12-08",
+            "2018-12-25",
+        )
 
     def test_2019(self):
         # https://www.officeholidays.com/countries/colombia/2019
-        year = 2019
-        expected_holidays = {
-            date(year, JAN, 1),
-            date(year, JAN, 7),
-            date(year, MAR, 25),
-            date(year, APR, 18),
-            date(year, APR, 19),
-            date(year, MAY, 1),
-            date(year, JUN, 3),
-            date(year, JUN, 24),
-            date(year, JUL, 1),
-            date(year, JUL, 1),
-            date(year, JUL, 20),
-            date(year, AUG, 7),
-            date(year, AUG, 19),
-            date(year, OCT, 14),
-            date(year, NOV, 4),
-            date(year, NOV, 11),
-            date(year, DEC, 8),
-            date(year, DEC, 25),
-        }
-        self._check_all_dates(year, expected_holidays)
+        self.assertHolidayDates(
+            "2019-01-01",
+            "2019-01-07",
+            "2019-03-25",
+            "2019-04-18",
+            "2019-04-19",
+            "2019-05-01",
+            "2019-06-03",
+            "2019-06-24",
+            "2019-07-01",
+            "2019-07-20",
+            "2019-08-07",
+            "2019-08-19",
+            "2019-10-14",
+            "2019-11-04",
+            "2019-11-11",
+            "2019-12-08",
+            "2019-12-25",
+        )
 
     def test_2020(self):
         # https://www.officeholidays.com/countries/colombia/2020
-        year = 2020
-        expected_holidays = {
-            date(year, JAN, 1),
-            date(year, JAN, 6),
-            date(year, MAR, 23),
-            date(year, APR, 9),
-            date(year, APR, 10),
-            date(year, MAY, 1),
-            date(year, MAY, 25),
-            date(year, JUN, 15),
-            date(year, JUN, 22),
-            date(year, JUN, 29),
-            date(year, JUL, 20),
-            date(year, AUG, 7),
-            date(year, AUG, 17),
-            date(year, OCT, 12),
-            date(year, NOV, 2),
-            date(year, NOV, 16),
-            date(year, DEC, 8),
-            date(year, DEC, 25),
-        }
-        self._check_all_dates(year, expected_holidays)
+        self.assertHolidayDates(
+            "2020-01-01",
+            "2020-01-06",
+            "2020-03-23",
+            "2020-04-09",
+            "2020-04-10",
+            "2020-05-01",
+            "2020-05-25",
+            "2020-06-15",
+            "2020-06-22",
+            "2020-06-29",
+            "2020-07-20",
+            "2020-08-07",
+            "2020-08-17",
+            "2020-10-12",
+            "2020-11-02",
+            "2020-11-16",
+            "2020-12-08",
+            "2020-12-25",
+        )
 
     def test_2021(self):
         # https://www.officeholidays.com/countries/colombia/2021
-        year = 2021
-        expected_holidays = {
-            date(year, JAN, 1),
-            date(year, JAN, 11),
-            date(year, MAR, 22),
-            date(year, APR, 1),
-            date(year, APR, 2),
-            date(year, MAY, 1),
-            date(year, MAY, 17),
-            date(year, JUN, 7),
-            date(year, JUN, 14),
-            date(year, JUL, 5),
-            date(year, JUL, 20),
-            date(year, AUG, 7),
-            date(year, AUG, 16),
-            date(year, OCT, 18),
-            date(year, NOV, 1),
-            date(year, NOV, 15),
-            date(year, DEC, 8),
-            date(year, DEC, 25),
-        }
-        self._check_all_dates(year, expected_holidays)
+        self.assertHolidayDates(
+            "2021-01-01",
+            "2021-01-11",
+            "2021-03-22",
+            "2021-04-01",
+            "2021-04-02",
+            "2021-05-01",
+            "2021-05-17",
+            "2021-06-07",
+            "2021-06-14",
+            "2021-07-05",
+            "2021-07-20",
+            "2021-08-07",
+            "2021-08-16",
+            "2021-10-18",
+            "2021-11-01",
+            "2021-11-15",
+            "2021-12-08",
+            "2021-12-25",
+        )
 
     def test_2022(self):
         # https://www.officeholidays.com/countries/colombia/2022
-        year = 2022
-        expected_holidays = {
-            date(year, JAN, 1),
-            date(year, JAN, 10),
-            date(year, MAR, 21),
-            date(year, APR, 14),
-            date(year, APR, 15),
-            date(year, MAY, 1),
-            date(year, MAY, 30),
-            date(year, JUN, 20),
-            date(year, JUN, 27),
-            date(year, JUL, 4),
-            date(year, JUL, 20),
-            date(year, AUG, 7),
-            date(year, AUG, 15),
-            date(year, OCT, 17),
-            date(year, NOV, 7),
-            date(year, NOV, 14),
-            date(year, DEC, 8),
-            date(year, DEC, 25),
-        }
-        self._check_all_dates(year, expected_holidays)
+        self.assertHolidayDates(
+            "2022-01-01",
+            "2022-01-10",
+            "2022-03-21",
+            "2022-04-14",
+            "2022-04-15",
+            "2022-05-01",
+            "2022-05-30",
+            "2022-06-20",
+            "2022-06-27",
+            "2022-07-04",
+            "2022-07-20",
+            "2022-08-07",
+            "2022-08-15",
+            "2022-10-17",
+            "2022-11-07",
+            "2022-11-14",
+            "2022-12-08",
+            "2022-12-25",
+        )
 
     def test_2023(self):
         # https://publicholidays.co/2023-dates/
-        year = 2023
-        expected_holidays = {
-            date(year, JAN, 1),
-            date(year, JAN, 9),
-            date(year, MAR, 20),
-            date(year, APR, 6),
-            date(year, APR, 7),
-            date(year, MAY, 1),
-            date(year, MAY, 22),
-            date(year, JUN, 12),
-            date(year, JUN, 19),
-            date(year, JUL, 3),
-            date(year, JUL, 20),
-            date(year, AUG, 7),
-            date(year, AUG, 21),
-            date(year, OCT, 16),
-            date(year, NOV, 6),
-            date(year, NOV, 13),
-            date(year, DEC, 8),
-            date(year, DEC, 25),
-        }
-        self._check_all_dates(year, expected_holidays)
+        self.assertHolidayDates(
+            "2023-01-01",
+            "2023-01-09",
+            "2023-03-20",
+            "2023-04-06",
+            "2023-04-07",
+            "2023-05-01",
+            "2023-05-22",
+            "2023-06-12",
+            "2023-06-19",
+            "2023-07-03",
+            "2023-07-20",
+            "2023-08-07",
+            "2023-08-21",
+            "2023-10-16",
+            "2023-11-06",
+            "2023-11-13",
+            "2023-12-08",
+            "2023-12-25",
+        )
 
     def test_1984(self):
-        year = 1984
-        expected_holidays = {
-            date(year, JAN, 1),
-            date(year, JAN, 9),
-            date(year, MAR, 19),
-            date(year, APR, 19),
-            date(year, APR, 20),
-            date(year, MAY, 1),
-            date(year, JUN, 4),
-            date(year, JUN, 25),
-            date(year, JUL, 2),
-            date(year, JUL, 2),
-            date(year, JUL, 20),
-            date(year, AUG, 7),
-            date(year, AUG, 20),
-            date(year, OCT, 15),
-            date(year, NOV, 5),
-            date(year, NOV, 12),
-            date(year, DEC, 8),
-            date(year, DEC, 25),
-        }
-        self._check_all_dates(year, expected_holidays)
+        self.assertHolidayDates(
+            "1984-01-01",
+            "1984-01-09",
+            "1984-03-19",
+            "1984-04-19",
+            "1984-04-20",
+            "1984-05-01",
+            "1984-06-04",
+            "1984-06-25",
+            "1984-07-02",
+            "1984-07-20",
+            "1984-08-07",
+            "1984-08-20",
+            "1984-10-15",
+            "1984-11-05",
+            "1984-11-12",
+            "1984-12-08",
+            "1984-12-25",
+        )
 
     def test_1983(self):
-        year = 1983
-        expected_holidays = {
-            date(year, JAN, 1),
-            date(year, JAN, 6),
-            date(year, MAR, 19),
-            date(year, MAR, 31),
-            date(year, APR, 1),
-            date(year, MAY, 1),
-            date(year, MAY, 12),
-            date(year, JUN, 2),
-            date(year, JUN, 29),
-            date(year, JUL, 20),
-            date(year, AUG, 7),
-            date(year, AUG, 15),
-            date(year, OCT, 12),
-            date(year, NOV, 1),
-            date(year, NOV, 11),
-            date(year, DEC, 8),
-            date(year, DEC, 25),
-        }
-        self._check_all_dates(year, expected_holidays)
+        self.assertHolidayDates(
+            "1983-01-01",
+            "1983-01-06",
+            "1983-03-19",
+            "1983-03-31",
+            "1983-04-01",
+            "1983-05-01",
+            "1983-05-12",
+            "1983-06-02",
+            "1983-06-29",
+            "1983-07-20",
+            "1983-08-07",
+            "1983-08-15",
+            "1983-10-12",
+            "1983-11-01",
+            "1983-11-11",
+            "1983-12-08",
+            "1983-12-25",
+        )
 
     def test_1951(self):
-        year = 1951
-        expected_holidays = {
-            date(year, JAN, 1),
-            date(year, JAN, 6),
-            date(year, MAR, 19),
-            date(year, MAR, 22),
-            date(year, MAR, 23),
-            date(year, MAY, 1),
-            date(year, MAY, 3),
-            date(year, MAY, 24),
-            date(year, JUN, 29),
-            date(year, JUL, 20),
-            date(year, AUG, 7),
-            date(year, AUG, 15),
-            date(year, OCT, 12),
-            date(year, NOV, 1),
-            date(year, NOV, 11),
-            date(year, DEC, 8),
-            date(year, DEC, 25),
-        }
-        self._check_all_dates(year, expected_holidays)
+        self.assertHolidayDates(
+            "1951-01-01",
+            "1951-01-06",
+            "1951-03-19",
+            "1951-03-22",
+            "1951-03-23",
+            "1951-05-01",
+            "1951-05-03",
+            "1951-05-24",
+            "1951-06-29",
+            "1951-07-20",
+            "1951-08-07",
+            "1951-08-15",
+            "1951-10-12",
+            "1951-11-01",
+            "1951-11-11",
+            "1951-12-08",
+            "1951-12-25",
+        )
 
     def test_1950(self):
-        year = 1950
-        expected_holidays = {
-            date(year, JAN, 1),
-            date(year, MAY, 1),
-            date(year, JUL, 20),
-            date(year, AUG, 7),
-            date(year, OCT, 12),
-            date(year, NOV, 11),
-            date(year, DEC, 25),
-        }
-        self._check_all_dates(year, expected_holidays)
+        self.assertHolidayDates(
+            "1950-01-01",
+            "1950-05-01",
+            "1950-07-20",
+            "1950-08-07",
+            "1950-10-12",
+            "1950-11-11",
+            "1950-12-25",
+        )
+
+    def test_l10n_default(self):
+        def run_tests(languages):
+            for language in languages:
+                co = Colombia(language=language)
+                self.assertEqual(co["2022-01-01"], "Año Nuevo")
+                self.assertEqual(co["2022-12-25"], "Navidad")
+
+        run_tests((Colombia.default_language, None, "invalid"))
+
+        self.set_language("en_US")
+        run_tests((Colombia.default_language,))
+
+    def test_l10n_en_us(self):
+        en_us = "en_US"
+
+        co = Colombia(language=en_us)
+        self.assertEqual(co["2018-01-01"], "New Year's Day")
+        self.assertEqual(co["2022-12-25"], "Christmas")
+
+        self.set_language(en_us)
+        for language in (None, en_us, "invalid"):
+            co = Colombia(language=language)
+            self.assertEqual(co["2018-01-01"], "New Year's Day")
+            self.assertEqual(co["2022-12-25"], "Christmas")
+
+    def test_l10n_uk(self):
+        uk = "uk"
+
+        co = Colombia(language=uk)
+        self.assertEqual(co["2022-01-01"], "Новий рік")
+        self.assertEqual(co["2022-12-25"], "Різдво Христове")
+
+        self.set_language(uk)
+        for language in (None, uk, "invalid"):
+            co = Colombia(language=language)
+            self.assertEqual(co["2022-01-01"], "Новий рік")
+            self.assertEqual(co["2022-12-25"], "Різдво Христове")

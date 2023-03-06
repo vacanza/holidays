@@ -20,7 +20,7 @@ from holidays.constants import SUN
 
 
 class TestCase(unittest.TestCase):
-    """Base class for python-holiday test cases."""
+    """Base class for python-holidays test cases."""
 
     @classmethod
     def setUpClass(cls, test_class=None):
@@ -32,10 +32,9 @@ class TestCase(unittest.TestCase):
         cls.test_class = test_class
 
         if (
-            not hasattr(test_class, "default_language")
-            or test_class.default_language is None
+            hasattr(test_class, "default_language")
             # Can be either 2 (e.g., en, fr, uk) or 5 (e.g., en_US, en_GB).
-            or len(test_class.default_language) not in {2, 5}
+            and len(test_class.default_language) not in {2, 5}
         ):
             raise ValueError(
                 f"`{test_class.__name__}.default_language` value is invalid."
@@ -44,31 +43,37 @@ class TestCase(unittest.TestCase):
     def setUp(self):
         super().setUp()
 
-        self.set_language(self.test_class.default_language)
+        if hasattr(self.test_class, "default_language"):
+            self.set_language(self.test_class.default_language)
+
         self.holidays = self.test_class()
+        self.holidays_non_observed = self.test_class(observed=False)
 
     def set_language(self, language):
         os.environ["LANGUAGE"] = language
 
-    def _parse_arguments(self, args, expand_items=True):
+    def _parse_arguments(
+        self, args, expand_items=True, instance_name="holidays"
+    ):
         item_args = args
         instance = None
 
-        if issubclass(args[0].__class__, HolidayBase):
+        if args and issubclass(args[0].__class__, HolidayBase):
             instance = args[0]
             item_args = args[1:]
         else:
             try:
-                instance = getattr(self, "holidays")
+                instance = getattr(self, instance_name)
                 self.assertTrue(
                     issubclass(instance.__class__, HolidayBase),
-                    "The `self.holidays` must be a `HolidayBase` subclass.",
+                    f"The `self.{instance_name}` must be a "
+                    "`HolidayBase` subclass.",
                 )
             except AttributeError:
                 raise ValueError(
                     "Either pass a holidays object (`HolidayBase` subclass) "
-                    "as a first argument or initialize `self.holidays` in the "
-                    "`setUp()` method."
+                    "as a first argument or initialize your `TestCase` class "
+                    "properly with `setUpClass()` method."
                 )
 
         items = []
@@ -83,6 +88,11 @@ class TestCase(unittest.TestCase):
         else:
             items.extend(item_args)
 
+        if instance_name == "holidays":
+            self.assertTrue(instance.observed)
+        else:
+            self.assertFalse(instance.observed)
+
         return instance, items
 
     def _verify_type(self, holidays):
@@ -93,7 +103,6 @@ class TestCase(unittest.TestCase):
 
     def assertCountryAliases(self, cls, alpha_2, alpha_3):
         """Assert country aliases match."""
-
         self.assertTrue(
             issubclass(cls, HolidayBase),
             "Country holidays object must be a subclass of `HolidayBase`",
@@ -124,20 +133,37 @@ class TestCase(unittest.TestCase):
                 "look like alpha-3 country code."
             )
 
-    def assertHoliday(self, *args):
-        """Assert each date is a holiday."""
+    # Holiday.
+    def _assertHoliday(self, instance_name, *args):
+        """Helper: assert each date is a holiday."""
+        holidays, dates = self._parse_arguments(
+            args,
+            instance_name=instance_name,
+        )
+        self._verify_type(holidays)
 
-        holidays, dates = self._parse_arguments(args)
         for dt in dates:
             self.assertIn(dt, holidays, dt)
 
-    def assertHolidayDates(self, *args):
-        """Assert holiday dates exactly match expected dates."""
+    def assertHoliday(self, *args):
+        """Assert each date is a holiday."""
+        self._assertHoliday("holidays", *args)
 
-        holidays, dates = self._parse_arguments(args)
+    def assertNonObservedHoliday(self, *args):
+        """Assert each date is a non-observed holiday."""
+        self._assertHoliday("holidays_non_observed", *args)
+
+    # Holiday dates.
+    def _assertHolidayDates(self, instance_name, *args):
+        """Helper: assert holiday dates exactly match expected dates."""
+        holidays, dates = self._parse_arguments(
+            args,
+            instance_name=instance_name,
+        )
         self._verify_type(holidays)
 
-        for dt in dates:  # Check one by one for descriptive error messages.
+        # Check one by one for descriptive error messages.
+        for dt in dates:
             self.assertIn(dt, holidays, dt)
 
         self.assertEqual(
@@ -146,19 +172,42 @@ class TestCase(unittest.TestCase):
             set(dates).difference(holidays.keys()),
         )
 
-    def assertHolidayName(self, name, *args):
-        """Assert a holiday with a specific name exists."""
+    def assertHolidayDates(self, *args):
+        """Assert holiday dates exactly match expected dates."""
+        self._assertHolidayDates("holidays", *args)
 
-        holidays, _ = self._parse_arguments(args)
+    def assertNonObservedHolidayDates(self, *args):
+        """Assert holiday dates exactly match expected dates."""
+        self._assertHolidayDates("holidays_non_observed", *args)
+
+    # Holiday name.
+    def _assertHolidayName(self, name, instance_name, *args):
+        """Helper: assert a holiday with a specific name exists."""
+        holidays, _ = self._parse_arguments(
+            args,
+            instance_name=instance_name,
+        )
         self.assertEqual(
-            len(holidays.years), len(holidays.get_named(name)), name
+            len(holidays.years),
+            len(holidays.get_named(name, lookup="exact")),
+            name,
         )
 
-    def assertHolidays(self, *args):
-        """Assert holidays exactly match expected holidays."""
+    def assertHolidayName(self, name, *args):
+        """Assert a holiday with a specific name exists."""
+        self._assertHolidayName(name, "holidays", *args)
 
+    def assertNonObservedHolidayName(self, name, *args):
+        """Assert a non-observed holiday with a specific name exists."""
+        self._assertHolidayName(name, "holidays_non_observed", *args)
+
+    # Holidays.
+    def _assertHolidays(self, instance_name, *args):
+        """Helper: assert holidays exactly match expected holidays."""
         holidays, expected_holidays = self._parse_arguments(
-            args, expand_items=False
+            args,
+            expand_items=False,
+            instance_name=instance_name,
         )
         self._verify_type(holidays)
 
@@ -176,33 +225,86 @@ class TestCase(unittest.TestCase):
             ).difference((dt, name) for dt, name in expected_holidays),
         )
 
-    def assertHolidaysName(self, name, *args):
-        """Assert each holiday name matches an expected one."""
+    def assertHolidays(self, *args):
+        """Assert holidays exactly match expected holidays."""
+        self._assertHolidays("holidays", *args)
 
-        holidays, dates = self._parse_arguments(args)
+    def assertNonObservedHolidays(self, *args):
+        """Assert non-observed holidays exactly match expected holidays."""
+        self._assertHolidays("holidays_non_observed", *args)
+
+    # Holidays name.
+    def _assertHolidaysName(self, name, instance_name, *args):
+        """Assert each holiday name matches an expected one."""
+        holidays, dates = self._parse_arguments(
+            args,
+            instance_name=instance_name,
+        )
         for dt in dates:
             self.assertIn(name, holidays.get_list(dt))
 
-    def assertNoHoliday(self, *args):
-        """Assert each date is not a holiday."""
+    def assertHolidaysName(self, name, *args):
+        """Assert each holiday name matches an expected one."""
+        self._assertHolidaysName(name, "holidays", *args)
 
-        holidays, dates = self._parse_arguments(args)
+    def assertNonObservedHolidaysName(self, name, *args):
+        """Assert each non-observed holiday name matches an expected one."""
+        self._assertHolidaysName(name, "holidays_non_observed", *args)
+
+    # No holiday.
+    def _assertNoHoliday(self, instance_name, *args):
+        """Helper: assert each date is not a holiday."""
+        holidays, dates = self._parse_arguments(
+            args,
+            instance_name=instance_name,
+        )
         for dt in dates:
             self.assertNotIn(dt, holidays, dt)
 
+    def assertNoHoliday(self, *args):
+        """Assert each date is not a holiday."""
+        self._assertNoHoliday("holidays", *args)
+
+    def assertNoNonObservedHoliday(self, *args):
+        """Assert each date is not a non-observed holiday."""
+        self._assertNoHoliday("holidays_non_observed", *args)
+
+    # No holiday name.
+    def _assertNoHolidayName(self, name, instance_name, *args):
+        """Helper: assert a holiday with a specific name doesn't exist."""
+        holidays, _ = self._parse_arguments(
+            args,
+            instance_name=instance_name,
+        )
+        self.assertFalse(holidays.get_named(name, lookup="exact"), name)
+
     def assertNoHolidayName(self, name, *args):
         """Assert a holiday with a specific name doesn't exist."""
+        self._assertNoHolidayName(name, "holidays", *args)
 
-        holidays, _ = self._parse_arguments(args)
-        self.assertFalse(holidays.get_named(name), name)
+    def assertNoNonObservedHolidayName(self, name, *args):
+        """Assert a non-observed holiday with a specific name doesn't exist."""
+        self._assertNoHolidayName(name, "holidays_non_observed", *args)
 
-    def assertNoHolidays(self, holidays):
-        """Assert holidays dict is empty."""
-
+    # No holidays.
+    def _assertNoHolidays(self, instance_name, *args):
+        """Helper: assert holidays dict is empty."""
+        holidays, _ = self._parse_arguments(
+            args,
+            instance_name=instance_name,
+        )
         self._verify_type(holidays)
 
         self.assertFalse(holidays)
         self.assertEqual(0, len(holidays))
+
+    def assertNoHolidays(self, *args):
+        """Assert holidays dict is empty."""
+        self._assertNoHolidays("holidays", *args)
+
+    def assertNoNonObservedHolidays(self, *args):
+        """Assert non-observed holidays dict is empty."""
+        self._assertNoHolidays("holidays_non_observed", *args)
 
 
 class SundayHolidays(TestCase):

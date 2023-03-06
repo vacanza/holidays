@@ -14,8 +14,9 @@ from tests.common import TestCase
 
 
 class TestAzerbaijan(TestCase):
-    def setUp(self):
-        self.holidays = Azerbaijan()
+    @classmethod
+    def setUpClass(self):
+        super().setUpClass(Azerbaijan)
 
     def test_country_aliases(self):
         self.assertCountryAliases(Azerbaijan, AZ, AZE)
@@ -31,6 +32,9 @@ class TestAzerbaijan(TestCase):
     def test_black_january(self):
         self.assertHoliday(f"{year}-01-20" for year in range(2000, 2050))
         self.assertNoHoliday(f"{year}-01-20" for year in range(1990, 2000))
+        self.assertNoHolidayName(
+            "Black January", Azerbaijan(years=range(1990, 2000))
+        )
 
     def test_int_women_day(self):
         self.assertHoliday(f"{year}-03-08" for year in range(1990, 2050))
@@ -44,8 +48,7 @@ class TestAzerbaijan(TestCase):
                 f"{year}-03-23",
                 f"{year}-03-24",
             )
-        for year in range(1990, 2007):
-            self.assertEqual(Azerbaijan(years=year).get_named("Novruz"), [])
+        self.assertNoHolidayName("Novruz", Azerbaijan(years=range(1990, 2007)))
 
     def test_victory_day_may(self):
         self.assertHoliday(f"{year}-05-09" for year in range(1990, 2050))
@@ -53,16 +56,12 @@ class TestAzerbaijan(TestCase):
     def test_republic_day(self):
         self.assertHoliday(f"{year}-05-28" for year in range(1992, 2050))
         self.assertNoHoliday(f"{year}-05-28" for year in range(1990, 1992))
-        for year in range(1992, 2021):
-            self.assertIn(
-                "Republic Day",
-                Azerbaijan(years=year).get_list(f"{year}-05-28"),
-            )
-        for year in range(2021, 2050):
-            self.assertIn(
-                "Independence Day",
-                Azerbaijan(years=year).get_list(f"{year}-05-28"),
-            )
+        self.assertHolidaysName(
+            "Republic Day", (f"{year}-05-28" for year in range(1992, 2021))
+        )
+        self.assertHolidaysName(
+            "Independence Day", (f"{year}-05-28" for year in range(2021, 2001))
+        )
 
     def test_salvation_day(self):
         self.assertHoliday(f"{year}-06-15" for year in range(1997, 2050))
@@ -99,16 +98,21 @@ class TestAzerbaijan(TestCase):
 
     def test_hijri_based(self):
         # Ramazan Bayrami
-        self.assertHoliday(
+        for dt in (
             "2020-05-24",
             "2020-05-25",
             "2021-05-13",
             "2021-05-14",
             "2022-05-02",
             "2022-05-03",
-        )
+        ):
+            self.assertIn("Ramazan Bayrami", self.holidays[dt])
+
         # Gurban Bayrami
-        self.assertHoliday(
+        for dt in (
+            "2006-01-10",
+            "2006-01-11",
+            "2006-12-31",
             "2020-07-31",
             "2020-08-01",
             "2020-08-03",
@@ -118,7 +122,8 @@ class TestAzerbaijan(TestCase):
             "2022-07-10",
             "2022-07-11",
             "2022-07-12",
-        )
+        ):
+            self.assertIn("Gurban Bayrami", self.holidays[dt])
 
     def test_observed_days(self):
         observed_holidays = (
@@ -141,8 +146,8 @@ class TestAzerbaijan(TestCase):
             "2022-07-11",
             "2022-07-12",
         )
-        self.assertHoliday(Azerbaijan(observed=True), observed_holidays)
-        self.assertNoHoliday(Azerbaijan(observed=False), observed_holidays)
+        self.assertHoliday(observed_holidays)
+        self.assertNoNonObservedHoliday(observed_holidays)
 
     def test_2020(self):
         self.assertHolidayDates(

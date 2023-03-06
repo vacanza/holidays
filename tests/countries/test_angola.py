@@ -14,14 +14,19 @@ from tests.common import TestCase
 
 
 class TestAngola(TestCase):
-    def setUp(self):
-        self.holidays = Angola()
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Angola)
 
     def test_country_aliases(self):
         self.assertCountryAliases(Angola, AO, AGO)
 
     def test_no_holidays(self):
+        self.assertNoHolidays()
         self.assertNoHolidays(Angola(years=1974))
+
+        self.assertNoNonObservedHolidays()
+        self.assertNoNonObservedHolidays(Angola(observed=False, years=1974))
 
     def test_carnival(self):
         self.assertHoliday(
@@ -159,4 +164,4 @@ class TestAngola(TestCase):
             "2025-12-26",
         )
         self.assertHoliday(dt)
-        self.assertNoHoliday(Angola(observed=False), dt)
+        self.assertNoNonObservedHoliday(dt)

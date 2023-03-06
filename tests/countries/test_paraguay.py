@@ -9,16 +9,20 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
 from datetime import date
 from datetime import timedelta as td
 
-import holidays
+from holidays.countries.paraguay import Paraguay, PY, PRY
+from tests.common import TestCase
 
 
-class TestParaguay(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.PY()
+class TestParaguay(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Paraguay)
+
+    def test_country_aliases(self):
+        self.assertCountryAliases(Paraguay, PY, PRY)
 
     def test_fixed_holidays(self):
         for year, month, day in (
@@ -40,9 +44,8 @@ class TestParaguay(unittest.TestCase):
         ):
             self.assertIn(date(year, month, day), self.holidays)
 
-    def test_no_observed(self):
+    def test_non_observed(self):
         # no observed dates
-        self.holidays.observed = False
         for year, month, day in (
             (2017, 1, 1),
             (2014, 3, 2),
@@ -54,7 +57,7 @@ class TestParaguay(unittest.TestCase):
             (2018, 9, 29),
             (2018, 12, 8),
         ):
-            self.assertNotIn(date(year, month, day), self.holidays)
+            self.assertNoNonObservedHoliday(date(year, month, day))
 
     def test_moveable(self):
         for year, month, day in (
