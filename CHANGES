@@ -1,11 +1,12 @@
 Version 0.21
 ============
 
-Released ???????? ??, ????
+Released March 6, 2023
 
 - Refactor `HolidayBase::get_named`, #991 (@arkid15r)
 - Refactor calendars: extract to a separate module, #969 (@arkid15r)
 - Refactor common.TestCase, #979 (@arkid15r)
+- Refactor relative weekdays calculation: replace relativedelta, #1002 (@KJhellico)
 - Fix NYSE New Year's Day observance calculation, #1000 (@KJhellico)
 - Fix tox.ini typo, #994 (@mborsetti)
 - Improve Argentina holidays, #988 (@PPsyrius)
