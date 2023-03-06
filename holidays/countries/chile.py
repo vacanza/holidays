@@ -14,12 +14,11 @@ from datetime import timedelta as td
 from gettext import gettext as tr
 
 from dateutil.easter import easter
-from dateutil.relativedelta import MO
-from dateutil.relativedelta import relativedelta as rd
 from pymeeus.Epoch import Epoch
 from pymeeus.Sun import Sun
 
-from holidays.constants import JAN, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
+from holidays.constants import JAN, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC, MON
 from holidays.holiday_base import HolidayBase
 
 # use standard library for timezone
@@ -62,14 +61,14 @@ class Chile(HolidayBase):
     ]
 
     def _populate(self, year):
-        def _get_movable(dt: date) -> date:
+        def _get_movable(hol_date: date) -> date:
             if year >= 2000:
                 # floating Monday holiday (Law 19.668)
-                if self._is_friday(dt):
-                    dt += rd(weekday=MO)
-                elif not self._is_weekend(dt):
-                    dt += rd(weekday=MO(-1))
-            return dt
+                if self._is_friday(hol_date):
+                    hol_date = _get_nth_weekday_from(1, MON, hol_date)
+                elif not self._is_weekend(hol_date):
+                    hol_date = _get_nth_weekday_from(-1, MON, hol_date)
+            return hol_date
 
         # Law 2.977 established official holidays for Chile
         # in its current form
@@ -141,7 +140,7 @@ class Chile(HolidayBase):
             )
         # Day of National Unity (Law 19.588, Law 19.793)
         elif 1999 <= year <= 2001:
-            self[date(year, SEP, 1) + rd(weekday=MO)] = self.tr(
+            self[_get_nth_weekday_of_month(1, MON, SEP, year)] = self.tr(
                 "Día de la Unidad Nacional"
             )
 

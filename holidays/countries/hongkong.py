@@ -13,11 +13,9 @@ from datetime import date
 from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import MO
-from dateutil.relativedelta import relativedelta as rd
 
-from holidays.calendars import _ChineseLuniSolar
-from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, SEP, OCT, DEC
+from holidays.calendars import _ChineseLuniSolar, _get_nth_weekday_of_month
+from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, SEP, OCT, DEC, MON
 from holidays.holiday_base import HolidayBase
 
 
@@ -222,12 +220,13 @@ class HongKong(HolidayBase):
         # Previous holidays
         if 1952 <= year <= 1997:
             # Queen's Birthday (June 2nd Monday)
-            dt = date(year, JUN, 1) + rd(weekday=MO(+2))
-            self[dt] = "Queen's Birthday"
+            self[
+                _get_nth_weekday_of_month(2, MON, JUN, year)
+            ] = "Queen's Birthday"
 
         if year <= 1996:
             # Anniversary of the liberation of Hong Kong (August last Monday)
-            dt = date(year, AUG, 31) + rd(weekday=MO(-1))
+            dt = _get_nth_weekday_of_month(-1, MON, AUG, year)
             self[dt] = "Anniversary of the liberation of Hong Kong"
 
             # Anniversary of the victory in the Second Sino-Japanese War
