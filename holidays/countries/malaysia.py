@@ -14,12 +14,11 @@ from datetime import timedelta as td
 from typing import Iterable, Optional, Union, Dict, List
 
 from dateutil.easter import easter
-from dateutil.relativedelta import FR, MO, SA, SU
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.calendars import _ChineseLuniSolar, _islamic_to_gre
+from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC, FRI, SAT, SUN
+from holidays.constants import OCT, NOV, DEC, MON, FRI, SAT, SUN
 from holidays.holiday_base import HolidayBase
 
 
@@ -168,14 +167,14 @@ class Malaysia(HolidayBase):
 
         # Birthday of [His Majesty] the Yang di-Pertuan Agong.
         if year <= 2017:
-            hol_date = date(year, JUN, 1) + rd(weekday=SA)
+            hol_date = _get_nth_weekday_of_month(1, SAT, JUN, year)
         elif year == 2018:
             hol_date = date(2018, SEP, 9)
         elif year == 2020:
             # https://www.nst.com.my/news/nation/2020/03/571660/agongs-birthday-moved-june-6-june-8
             hol_date = date(2020, JUN, 8)
         else:
-            hol_date = date(year, JUN, 1) + rd(weekday=MO)
+            hol_date = _get_nth_weekday_of_month(1, MON, JUN, year)
         collect_holiday(hol_date, "Birthday of SPB Yang di-Pertuan Agong")
 
         # Hari Kebangsaan or National Day.
@@ -372,9 +371,9 @@ class Malaysia(HolidayBase):
             # The first day of May—Worker’s Celebration Day.
 
             # Birthday of Tuan Yang Terutama Yang di-Pertua Negeri Sarawak
-            # (the second Saturday of September).
+            # (the second Saturday of October).
             collect_holiday(
-                date(year, OCT, 1) + rd(weekday=SA(+2)),
+                _get_nth_weekday_of_month(2, SAT, OCT, year),
                 "Birthday of the Governor of Sarawak",
             )
 
@@ -568,7 +567,7 @@ class Malaysia(HolidayBase):
             collect_holiday(
                 date(year, AUG, 24)
                 if year >= 2020
-                else date(year, OCT, 1) + rd(weekday=FR(+2)),
+                else _get_nth_weekday_of_month(2, FRI, OCT, year),
                 "Birthday of the Governor of Malacca",
             )
 
@@ -594,7 +593,7 @@ class Malaysia(HolidayBase):
                 collect_holiday(date(year, JUL, 7), "George Town Heritage Day")
 
             collect_holiday(
-                date(year, JUL, 1) + rd(weekday=SA(+2)),
+                _get_nth_weekday_of_month(2, SAT, JUL, year),
                 "Birthday of the Governor of Penang",
             )
 
@@ -767,7 +766,7 @@ class Malaysia(HolidayBase):
 
         elif self.subdiv == "KDH" and year >= 2020:
             self[
-                (date(year, JUN, 1) + rd(weekday=SU(+3)))
+                _get_nth_weekday_of_month(3, SUN, JUN, year)
             ] = "Birthday of The Sultan of Kedah"
 
         elif self.subdiv == "KTN" and year >= 2010:
@@ -779,14 +778,14 @@ class Malaysia(HolidayBase):
             # This Holiday used to be on 27th until 2017
             # https://www.officeholidays.com/holidays/malaysia/birthday-of-the-sultan-of-perak  # noqa: E501
             self[
-                date(year, NOV, 1) + rd(weekday=FR)
+                _get_nth_weekday_of_month(1, FRI, NOV, year)
                 if year >= 2018
                 else date(year, NOV, 27)
             ] = "Birthday of the Sultan of Perak"
 
         elif self.subdiv == "SBH":
             self[
-                (date(year, OCT, 1) + rd(weekday=SA))
+                _get_nth_weekday_of_month(1, SAT, OCT, year)
             ] = "Birthday of the Governor of Sabah"
 
             if year >= 2019:

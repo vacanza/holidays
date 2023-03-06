@@ -13,10 +13,9 @@ from datetime import date
 from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import MO
-from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, OCT, NOV, DEC
+from holidays.calendars import _get_nth_weekday_from
+from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, OCT, NOV, DEC, MON
 from holidays.holiday_base import HolidayBase
 
 
@@ -105,9 +104,9 @@ class Uruguay(HolidayBase):
 
         for dt, name in holiday_pairs:
             if self._is_tuesday(dt) or self._is_wednesday(dt):
-                self[dt + rd(weekday=MO(-1))] = name
+                self[_get_nth_weekday_from(-1, MON, dt)] = name
             elif self._is_thursday(dt) or self._is_friday(dt):
-                self[dt + rd(weekday=MO(+1))] = name
+                self[_get_nth_weekday_from(1, MON, dt)] = name
             else:
                 self[dt] = name
 

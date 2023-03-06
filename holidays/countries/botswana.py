@@ -13,10 +13,9 @@ from datetime import date
 from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import MO
-from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAY, JUL, SEP, DEC
+from holidays.calendars import _get_nth_weekday_of_month
+from holidays.constants import JAN, MAY, JUL, SEP, DEC, MON
 from holidays.holiday_base import HolidayBase
 
 
@@ -74,7 +73,8 @@ class Botswana(HolidayBase):
         _add_with_observed(date(year, JUL, 1), "Sir Seretse Khama Day")
 
         # 3rd Monday of July = "President's Day"
-        dt = date(year, JUL, 1) + rd(weekday=MO(+3))
+        dt = _get_nth_weekday_of_month(3, MON, JUL, year)
+
         self[dt] = "President's Day"
         self[dt + td(days=+1)] = "President's Day Holiday"
 

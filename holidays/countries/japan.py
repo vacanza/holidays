@@ -13,13 +13,12 @@ from datetime import date, datetime, timezone
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from dateutil.relativedelta import MO
-from dateutil.relativedelta import relativedelta as rd
 from pymeeus.Epoch import Epoch
 from pymeeus.Sun import Sun
 
+from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import JAN, FEB, APR, MAY, JUN, JUL, AUG, SEP, OCT
-from holidays.constants import NOV, DEC
+from holidays.constants import NOV, DEC, MON
 from holidays.holiday_base import HolidayBase
 
 # use standard library for timezone
@@ -60,7 +59,7 @@ class Japan(HolidayBase):
         self[
             date(year, JAN, 15)
             if year <= 1999
-            else date(year, JAN, 1) + rd(weekday=MO(+2))
+            else _get_nth_weekday_of_month(2, MON, JAN, year)
             # Coming of Age Day.
         ] = self.tr("成人の日")
 
@@ -106,7 +105,7 @@ class Japan(HolidayBase):
         elif year == 2021:
             self[date(year, JUL, 22)] = self.tr("海の日")
         elif year >= 2003:
-            self[date(year, JUL, 1) + rd(weekday=MO(+3))] = self.tr("海の日")
+            self[_get_nth_weekday_of_month(3, MON, JUL, year)] = self.tr("海の日")
 
         # Mountain Day.
         if year == 2020:
@@ -120,7 +119,9 @@ class Japan(HolidayBase):
         if 1966 <= year <= 2002:
             self[date(year, SEP, 15)] = self.tr("敬老の日")
         elif year >= 2003:
-            self[date(year, SEP, 1) + rd(weekday=MO(+3))] = self.tr("敬老の日")
+            self[_get_nth_weekday_of_month(3, MON, SEP, year)] = self.tr(
+                "敬老の日"
+            )
 
         # Autumnal Equinox Day.
         epoch = Sun.get_equinox_solstice(year, target="autumn")
@@ -134,13 +135,17 @@ class Japan(HolidayBase):
         if 1966 <= year <= 1999:
             self[date(year, OCT, 10)] = self.tr("体育の日")
         elif 2000 <= year <= 2019:
-            self[date(year, OCT, 1) + rd(weekday=MO(+2))] = self.tr("体育の日")
+            self[_get_nth_weekday_of_month(2, MON, OCT, year)] = self.tr(
+                "体育の日"
+            )
         elif year == 2020:
             self[date(year, JUL, 24)] = self.tr("スポーツの日")
         elif year == 2021:
             self[date(year, JUL, 23)] = self.tr("スポーツの日")
         elif 2022 <= year:
-            self[date(year, OCT, 1) + rd(weekday=MO(+2))] = self.tr("スポーツの日")
+            self[_get_nth_weekday_of_month(2, MON, OCT, year)] = self.tr(
+                "スポーツの日"
+            )
 
         # Culture Day.
         self[date(year, NOV, 3)] = self.tr("文化の日")

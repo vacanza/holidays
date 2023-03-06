@@ -37,9 +37,9 @@ class TestGreece(TestCase):
                 (date(y, 12, 26), "Επόμενη ημέρα των Χριστουγέννων"),
             )
 
-        for d, dstr in fdays:
-            self.assertIn(d, self.holidays)
-            self.assertIn(dstr, self.holidays[d])
+            for d, dstr in fdays:
+                self.assertIn(d, self.holidays)
+                self.assertIn(dstr, self.holidays[d])
 
     def test_gr_clean_monday(self):
         checkdates = (

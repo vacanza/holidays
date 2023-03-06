@@ -13,10 +13,9 @@ from datetime import date
 from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import MO
-from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAR, APR, MAY, JUL, AUG, SEP, OCT, DEC
+from holidays.calendars import _get_nth_weekday_of_month
+from holidays.constants import JAN, MAR, APR, MAY, JUL, AUG, SEP, OCT, DEC, MON
 from holidays.holiday_base import HolidayBase
 
 
@@ -86,12 +85,12 @@ class Zambia(HolidayBase):
         _add_with_observed(date(year, MAY, 25), "Africa Freedom Day")
 
         # 1st Monday of July = "Heroes' Day"
-        dt = date(year, JUL, 1) + rd(weekday=MO)
+        dt = _get_nth_weekday_of_month(1, MON, JUL, year)
         self[dt] = "Heroes' Day"
         self[dt + td(days=+1)] = "Unity Day"
 
         # 1st Monday of Aug = "Farmers' Day"
-        self[date(year, AUG, 1) + rd(weekday=MO)] = "Farmers' Day"
+        self[_get_nth_weekday_of_month(1, MON, AUG, year)] = "Farmers' Day"
 
         if year >= 2015:
             _add_with_observed(date(year, OCT, 18), "National Prayer Day")

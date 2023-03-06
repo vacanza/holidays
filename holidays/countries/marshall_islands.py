@@ -8,15 +8,15 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
+
 import warnings
 from datetime import date
 from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import FR
-from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAR, MAY, JUL, SEP, NOV, DEC
+from holidays.calendars import _get_nth_weekday_of_month
+from holidays.constants import JAN, MAR, MAY, JUL, SEP, NOV, DEC, FRI
 from holidays.holiday_base import HolidayBase
 
 
@@ -72,25 +72,25 @@ class HolidaysMH(HolidayBase):
         )
 
         # Good Friday
-        self[easter(year) + td(days=-2)] = "Good Friday Friday"
+        self[easter(year) + td(days=-2)] = "Good Friday"
 
         # Constitution Day
         self[date(year, MAY, 1)] = "Constitution Day"
 
         # Fisherman's Day
-        self[date(year, JUL, 1) + rd(weekday=FR)] = "Fisherman's Day"
+        self[_get_nth_weekday_of_month(1, FRI, JUL, year)] = "Fisherman's Day"
 
         # Dri-jerbal Day
-        self[date(year, SEP, 1) + rd(weekday=FR)] = "Dri-jerbal Day"
+        self[_get_nth_weekday_of_month(1, FRI, SEP, year)] = "Dri-jerbal Day"
 
         # Manit Day
-        self[date(year, SEP, 30) + rd(weekday=FR(-1))] = "Manit Day"
+        self[_get_nth_weekday_of_month(-1, FRI, SEP, year)] = "Manit Day"
 
         # President's Day
         self._add_with_observed(date(year, NOV, 17), "President's Day")
 
         # Gospel Day
-        self[date(year, DEC, 1) + rd(weekday=FR)] = "Gospel Day"
+        self[_get_nth_weekday_of_month(1, FRI, DEC, year)] = "Gospel Day"
 
         # Christmas Day
         self._add_with_observed(date(year, DEC, 25), "Christmas Day")
