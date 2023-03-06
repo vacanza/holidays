@@ -474,12 +474,6 @@ class HolidayBase(Dict[date, str]):
             else:
                 self[arg] = "Holiday"
 
-    def _add_observed_holiday(
-        self, dt: DateLike, name: str, suffix: str = "(Observed)"
-    ) -> None:
-        """Adds a holiday name with an observance indication."""
-        self[dt] = f"{name} {suffix}"
-
     def append(
         self, *args: Union[Dict[DateLike, str], List[DateLike], DateLike]
     ) -> None:
@@ -688,30 +682,37 @@ class HolidayBase(Dict[date, str]):
     def __radd__(self, other: Any) -> "HolidayBase":
         return self.__add__(other)
 
-    def _add_holiday(self, *args) -> Optional[date]:
-        """Add a holiday.
-        This method accepts either `holiday_name: str, dt: date` or
-        `holiday_name: str, month: int, day: int` argument sequence.
-        """
+    def _parse_holiday(self, *args) -> Tuple[str, date]:
+        """Parse holiday data."""
         if len(args) == 2:
-            holiday_name, dt = args
+            name, dt = args
             if not isinstance(dt, date):
                 raise TypeError(
-                    f"Invalid argument type: expected 'date' got '{type(dt)}'."
+                    "Invalid argument type: expected <class 'date'> "
+                    f"got '{type(dt)}'."
                 )
         elif len(args) == 3:
-            holiday_name, month, day = args
+            name, month, day = args
             dt = date(self._year, month, day)
         else:
             raise TypeError("Incorrect number of arguments.")
 
+        return name, dt
+
+    def _add_holiday(self, *args) -> Optional[date]:
+        """Add a holiday.
+
+        This method accepts either `name: str, dt: date` or
+        `name: str, month: int, day: int` arguments.
+        """
+        name, dt = self._parse_holiday(*args)
         if dt.year != self._year:
             return None
 
-        self[dt] = tr(holiday_name)
+        self[dt] = tr(name)
         return dt
 
-    def _populate(self, year: int) -> None:
+    def _populate(self, year: int) -> Set[Optional[date]]:
         """This is a private class that populates (generates and adds) holidays
         for a given year. To keep things fast, it assumes that no holidays for
         the year have already been populated. It is required to be called
@@ -729,10 +730,13 @@ class HolidayBase(Dict[date, str]):
         """
 
         self._year = year
+        dates = set()
 
         # Populate items from the special holidays list.
         for month, day, name in self.special_holidays.get(year, ()):
-            self._add_holiday(tr(name), date(year, month, day))
+            dates.add(self._add_holiday(tr(name), date(year, month, day)))
+
+        return dates
 
     @staticmethod
     def _is_leap_year(year: int) -> bool:

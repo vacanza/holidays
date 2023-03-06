@@ -9,13 +9,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from datetime import timedelta as td
 
-from dateutil.easter import easter
-
-from holidays.calendars import _islamic_to_gre
-from holidays.constants import JAN, FEB, APR, MAY, JUN, JUL, AUG, OCT, NOV, DEC
+from holidays.constants import FEB, APR, JUN, JUL, OCT
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, IslamicHolidays
 from holidays.holiday_groups import InternationalHolidays
@@ -44,76 +40,64 @@ class Burundi(
 
         super().__init__(*args, **kwargs)
 
-    def _add_holiday_observed(self, hol_date: date, hol_name: str) -> None:
-        self._add_holiday(hol_name, hol_date)
-        if self.observed and self._is_sunday(hol_date):
-            obs_date = hol_date + td(days=+1)
-            if obs_date.year == self._year:
-                self._add_holiday(f"{hol_name} (Observed)", obs_date)
-
     def _populate(self, year):
         if year <= 1961:
             return None
 
-        super()._populate(year)
+        dates = super()._populate(year)
 
-        # New Year's Day
-        self._add_holiday_observed(date(year, JAN, 1), "New Year's Day")
+        # New Year's Day.
+        dates.add(self._add_new_years_day("New Year's Day"))
 
-        # Unity Day
+        # Unity Day.
         if year >= 1992:
-            self._add_holiday_observed(date(year, FEB, 5), "Unity Day")
+            dates.add(self._add_holiday("Unity Day", FEB, 5))
 
-        # President Ntaryamira Day
+        # President Ntaryamira Day.
         if year >= 1995:
-            self._add_holiday_observed(
-                date(year, APR, 6), "President Ntaryamira Day"
-            )
+            dates.add(self._add_holiday("President Ntaryamira Day", APR, 6))
 
-        # Labour Day
-        self._add_holiday_observed(date(year, MAY, 1), "Labour Day")
+        # Labour Day.
+        dates.add(self._add_labour_day("Labour Day"))
 
-        # Ascension Day
-        self[easter(year) + td(days=+39)] = "Ascension Day"
+        # Ascension Day.
+        self._add_ascension_thursday("Ascension Day")
 
-        # President Nkurunziza Day
+        # President Nkurunziza Day.
         if year >= 2022:
-            self._add_holiday_observed(
-                date(year, JUN, 8), "President Nkurunziza Day"
-            )
+            dates.add(self._add_holiday("President Nkurunziza Day", JUN, 8))
 
-        # Independence Day
-        self._add_holiday_observed(date(year, JUL, 1), "Independence Day")
+        # Independence Day.
+        dates.add(self._add_holiday("Independence Day", JUL, 1))
 
-        # Assumption Day
-        self._add_holiday_observed(date(year, AUG, 15), "Assumption Day")
+        # Assumption Day.
+        dates.add(self._add_assumption_of_mary_day("Assumption Day"))
 
-        # Prince Louis Rwagasore Day
-        self._add_holiday_observed(
-            date(year, OCT, 13), "Prince Louis Rwagasore Day"
-        )
+        # Prince Louis Rwagasore Day.
+        dates.add(self._add_holiday("Prince Louis Rwagasore Day", OCT, 13))
 
-        # President Ndadaye's Day
+        # President Ndadaye's Day.
         if year >= 1994:
-            self._add_holiday_observed(
-                date(year, OCT, 21), "President Ndadaye's Day"
-            )
+            dates.add(self._add_holiday("President Ndadaye's Day", OCT, 21))
 
-        # All Saints' Day
-        self._add_holiday_observed(date(year, NOV, 1), "All Saints' Day")
+        # All Saints' Day.
+        dates.add(self._add_all_saints_day("All Saints' Day"))
 
-        # Christmas Day
-        self._add_holiday_observed(date(year, DEC, 25), "Christmas Day")
+        # Christmas Day.
+        dates.add(self._add_christmas_day("Christmas Day"))
 
-        # Eid ul Fitr
-        # date of observance is announced yearly
-        for dt in _islamic_to_gre(year, 10, 1):
-            self._add_holiday_observed(dt, "Eid ul Fitr")
+        # Eid ul Fitr.
+        dates.update(self._add_eid_al_fitr_day("Eid ul Fitr"))
 
-        # Eid al Adha
-        # date of observance is announced yearly
-        for dt in _islamic_to_gre(year, 12, 10):
-            self._add_holiday_observed(dt, "Eid al Adha")
+        # Eid al Adha.
+        dates.update(self._add_eid_al_adha_day("Eid al Adha"))
+
+        # Add observed holidays.
+        if self.observed:
+            for dt in dates:
+                if not self._is_sunday(dt):
+                    continue
+                self._add_holiday(f"{self[dt]} (Observed)", dt + td(days=+1))
 
 
 class BI(Burundi):

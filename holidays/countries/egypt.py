@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.constants import JAN, APR, JUN, JUL, OCT, JULIAN_CALENDAR
+from holidays.calendars import JULIAN_CALENDAR
+from holidays.constants import JAN, APR, JUN, JUL, OCT
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, IslamicHolidays
 from holidays.holiday_groups import InternationalHolidays

@@ -12,7 +12,8 @@
 from dateutil.relativedelta import MO, TU
 from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import GREGORIAN_CALENDAR, JULIAN_CALENDAR, MAR, OCT
+from holidays.calendars import GREGORIAN_CALENDAR, JULIAN_CALENDAR
+from holidays.constants import MAR, OCT
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 

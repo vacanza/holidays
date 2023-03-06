@@ -10,16 +10,16 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from typing import Iterable, List
+from datetime import timedelta as td
+from typing import Iterable, Set
 
 from dateutil.easter import EASTER_ORTHODOX, EASTER_WESTERN, easter
 from dateutil.parser import parse
-from dateutil.relativedelta import relativedelta as rd
 from korean_lunar_calendar import KoreanLunarCalendar
 
 from holidays.calendars import _ChineseLuniSolar, _islamic_to_gre
+from holidays.calendars import GREGORIAN_CALENDAR, JULIAN_CALENDAR
 from holidays.constants import JAN, FEB, MAR, MAY, JUN, AUG, SEP, NOV, DEC
-from holidays.constants import GREGORIAN_CALENDAR, JULIAN_CALENDAR
 
 
 class ChristianHolidays:
@@ -119,7 +119,7 @@ class ChristianHolidays:
         """
         return self._add_holiday(
             holiday_name,
-            self._easter_sunday + rd(days=+39),
+            self._easter_sunday + td(days=+39),
         )
 
     def _add_ash_monday(self, holiday_name) -> date:
@@ -132,7 +132,7 @@ class ChristianHolidays:
         """
         return self._add_holiday(
             holiday_name,
-            self._easter_sunday + rd(days=-48),
+            self._easter_sunday + td(days=-48),
         )
 
     def _add_ash_wednesday(self, holiday_name) -> date:
@@ -144,7 +144,7 @@ class ChristianHolidays:
         """
         return self._add_holiday(
             holiday_name,
-            self._easter_sunday + rd(days=-46),
+            self._easter_sunday + td(days=-46),
         )
 
     def _add_assumption_of_mary_day(self, holiday_name) -> date:
@@ -180,7 +180,7 @@ class ChristianHolidays:
         """
         return self._add_holiday(
             holiday_name,
-            self._easter_sunday + rd(days=-48),
+            self._easter_sunday + td(days=-48),
         )
 
     def _add_carnival_tuesday(self, holiday_name) -> date:
@@ -193,7 +193,7 @@ class ChristianHolidays:
         """
         return self._add_holiday(
             holiday_name,
-            self._easter_sunday + rd(days=-47),
+            self._easter_sunday + td(days=-47),
         )
 
     def _add_christmas_day(self, holiday_name, calendar=None) -> date:
@@ -225,7 +225,7 @@ class ChristianHolidays:
 
         return self._add_holiday(
             holiday_name,
-            self.__get_christmas_day(calendar) + rd(days=+1),
+            self.__get_christmas_day(calendar) + td(days=+1),
         )
 
     def _add_christmas_day_three(self, holiday_name, calendar=None) -> date:
@@ -240,7 +240,7 @@ class ChristianHolidays:
 
         return self._add_holiday(
             holiday_name,
-            self.__get_christmas_day(calendar) + rd(days=+2),
+            self.__get_christmas_day(calendar) + td(days=+2),
         )
 
     def _add_christmas_eve(self, holiday_name, calendar=None) -> date:
@@ -256,7 +256,7 @@ class ChristianHolidays:
 
         return self._add_holiday(
             holiday_name,
-            self.__get_christmas_day(calendar) + rd(days=-1),
+            self.__get_christmas_day(calendar) + td(days=-1),
         )
 
     def _add_easter_monday(self, holiday_name) -> date:
@@ -270,7 +270,7 @@ class ChristianHolidays:
         """
         return self._add_holiday(
             holiday_name,
-            self._easter_sunday + rd(days=+1),
+            self._easter_sunday + td(days=+1),
         )
 
     def _add_corpus_christi_day(self, holiday_name) -> date:
@@ -285,7 +285,7 @@ class ChristianHolidays:
         """
         return self._add_holiday(
             holiday_name,
-            self._easter_sunday + rd(days=+60),
+            self._easter_sunday + td(days=+60),
         )
 
     def _add_holy_saturday(self, holiday_name) -> date:
@@ -297,7 +297,7 @@ class ChristianHolidays:
         """
         return self._add_holiday(
             holiday_name,
-            self._easter_sunday + rd(days=-1),
+            self._easter_sunday + td(days=-1),
         )
 
     def _add_holy_thursday(self, holiday_name) -> date:
@@ -311,7 +311,7 @@ class ChristianHolidays:
         """
         return self._add_holiday(
             holiday_name,
-            self._easter_sunday + rd(days=-3),
+            self._easter_sunday + td(days=-3),
         )
 
     def _add_easter_sunday(self, holiday_name) -> date:
@@ -356,7 +356,7 @@ class ChristianHolidays:
         """
         return self._add_holiday(
             holiday_name,
-            self._easter_sunday + rd(days=-2),
+            self._easter_sunday + td(days=-2),
         )
 
     def _add_immaculate_conception_day(self, holiday_name) -> date:
@@ -378,6 +378,21 @@ class ChristianHolidays:
         """
         return self._add_holiday(holiday_name, SEP, 8)
 
+    def _add_palm_sunday(self, holiday_name) -> date:
+        """
+        Add Palm Sunday (7 days before Easter Sunday).
+
+        Palm Sunday is a Christian moveable feast that falls on the Sunday
+        before Easter. The feast commemorates Christ's triumphal entry into
+        Jerusalem, an event mentioned in each of the four canonical Gospels.
+        Palm Sunday marks the first day of Holy Week.
+        https://en.wikipedia.org/wiki/Palm_Sunday
+        """
+        return self._add_holiday(
+            holiday_name,
+            self._easter_sunday + td(days=-2),
+        )
+
     def _add_rejoicing_day(self, holiday_name) -> date:
         """
         Add Day Of Rejoicing (9 days after Easter Sunday).
@@ -389,8 +404,18 @@ class ChristianHolidays:
         """
         return self._add_holiday(
             holiday_name,
-            self._easter_sunday + rd(days=+9),
+            self._easter_sunday + td(days=+9),
         )
+
+    def _add_saint_johns_day(self, holiday_name) -> date:
+        """
+        Add Saint John's Day (June 24th).
+
+        The Nativity of John the Baptist is a Christian feast day celebrating
+        the birth of John the Baptist.
+        https://en.wikipedia.org/wiki/Nativity_of_John_the_Baptist
+        """
+        return self._add_holiday(holiday_name, JUN, 24)
 
     def _add_saint_josephs_day(self, holiday_name) -> date:
         """
@@ -402,11 +427,7 @@ class ChristianHolidays:
         of Jesus Christ.
         https://en.wikipedia.org/wiki/Saint_Joseph%27s_Day
         """
-        return self._add_holiday(
-            holiday_name,
-            MAR,
-            19,
-        )
+        return self._add_holiday(holiday_name, MAR, 19)
 
     def _add_saints_peter_and_paul_day(self, holiday_name) -> date:
         """
@@ -429,7 +450,7 @@ class ChristianHolidays:
         """
         return self._add_holiday(
             holiday_name,
-            self._easter_sunday + rd(days=+50),
+            self._easter_sunday + td(days=+50),
         )
 
     def _add_whit_sunday(self, holiday_name) -> date:
@@ -444,7 +465,7 @@ class ChristianHolidays:
         """
         return self._add_holiday(
             holiday_name,
-            self._easter_sunday + rd(days=+49),
+            self._easter_sunday + td(days=+49),
         )
 
     def _set_calendar(self, calendar):
@@ -497,7 +518,7 @@ class ChineseCalendarHolidays:
         """
         return self._add_holiday(
             holiday_name,
-            self._chinese_new_year + rd(days=-1),
+            self._chinese_new_year + td(days=-1),
         )
 
     def _add_chinese_new_years_day(self, holiday_name) -> date:
@@ -521,7 +542,7 @@ class ChineseCalendarHolidays:
         """
         return self._add_holiday(
             holiday_name,
-            self._chinese_new_year + rd(days=+1),
+            self._chinese_new_year + td(days=+1),
         )
 
     def _add_chinese_new_years_day_three(self, holiday_name) -> date:
@@ -532,7 +553,7 @@ class ChineseCalendarHolidays:
         """
         return self._add_holiday(
             holiday_name,
-            self._chinese_new_year + rd(days=+2),
+            self._chinese_new_year + td(days=+2),
         )
 
     def _add_chinese_new_years_day_four(self, holiday_name) -> date:
@@ -543,7 +564,7 @@ class ChineseCalendarHolidays:
         """
         return self._add_holiday(
             holiday_name,
-            self._chinese_new_year + rd(days=+3),
+            self._chinese_new_year + td(days=+3),
         )
 
     def _add_chinese_new_years_day_five(self, holiday_name) -> date:
@@ -554,7 +575,7 @@ class ChineseCalendarHolidays:
         """
         return self._add_holiday(
             holiday_name,
-            self._chinese_new_year + rd(days=+4),
+            self._chinese_new_year + td(days=+4),
         )
 
     def _add_mid_autumn_festival(self, holiday_name):
@@ -601,13 +622,23 @@ class InternationalHolidays:
 
     def _add_new_years_day_three(self, holiday_name) -> date:
         """
-        Add New Year's Day Two (January 3nd).
+        Add New Year's Day Three (January 3rd).
 
         New Year's Day is a festival observed in most of the world on
         1 January, the first day of the year in the modern Gregorian calendar.
         https://en.wikipedia.org/wiki/New_Year%27s_Day
         """
         return self._add_holiday(holiday_name, JAN, 3)
+
+    def _add_new_years_day_four(self, holiday_name) -> date:
+        """
+        Add New Year's Day Four (January 4th).
+
+        New Year's Day is a festival observed in most of the world on
+        1 January, the first day of the year in the modern Gregorian calendar.
+        https://en.wikipedia.org/wiki/New_Year%27s_Day
+        """
+        return self._add_holiday(holiday_name, JAN, 4)
 
     def _add_new_years_eve(self, holiday_name) -> date:
         """
@@ -673,7 +704,7 @@ class IslamicHolidays:
         """
         self._add_islamic_calendar_holiday(holiday_name, 12, 9)
 
-    def _add_eid_al_adha_day(self, holiday_name) -> List[date]:
+    def _add_eid_al_adha_day(self, holiday_name) -> Set[date]:
         """
         Add Eid al-Adha Day (10th day of the 12th month of Islamic calendar).
 
@@ -684,7 +715,7 @@ class IslamicHolidays:
         """
         return self._add_islamic_calendar_holiday(holiday_name, 12, 10)
 
-    def _add_eid_al_adha_day_two(self, holiday_name) -> List[date]:
+    def _add_eid_al_adha_day_two(self, holiday_name) -> Set[date]:
         """
         Add Eid al-Adha Day Two.
 
@@ -694,7 +725,7 @@ class IslamicHolidays:
             holiday_name, 12, 10, days_delta=+1
         )
 
-    def _add_eid_al_adha_day_three(self, holiday_name) -> List[date]:
+    def _add_eid_al_adha_day_three(self, holiday_name) -> Set[date]:
         """
         Add Eid al-Adha Day Three.
 
@@ -704,7 +735,7 @@ class IslamicHolidays:
             holiday_name, 12, 10, days_delta=+2
         )
 
-    def _add_eid_al_adha_day_four(self, holiday_name) -> List[date]:
+    def _add_eid_al_adha_day_four(self, holiday_name) -> Set[date]:
         """
         Add Eid al-Adha Day Four.
 
@@ -714,7 +745,7 @@ class IslamicHolidays:
             holiday_name, 12, 10, days_delta=+3
         )
 
-    def _add_eid_al_fitr_day(self, holiday_name) -> List[date]:
+    def _add_eid_al_fitr_day(self, holiday_name) -> Set[date]:
         """
         Add Eid al-Fitr Day (1st day of 10th month of Islamic calendar).
 
@@ -725,7 +756,7 @@ class IslamicHolidays:
         """
         return self._add_islamic_calendar_holiday(holiday_name, 10, 1)
 
-    def _add_eid_al_fitr_day_two(self, holiday_name) -> List[date]:
+    def _add_eid_al_fitr_day_two(self, holiday_name) -> Set[date]:
         """
         Add Eid al-Fitr Day Two.
 
@@ -735,7 +766,7 @@ class IslamicHolidays:
             holiday_name, 10, 1, days_delta=+1
         )
 
-    def _add_eid_al_fitr_day_three(self, holiday_name) -> List[date]:
+    def _add_eid_al_fitr_day_three(self, holiday_name) -> Set[date]:
         """
         Add Eid al-Fitr Day Three.
 
@@ -747,23 +778,20 @@ class IslamicHolidays:
 
     def _add_islamic_calendar_holiday(
         self, holiday_name, month, day, days_delta=None
-    ) -> List[date]:
+    ) -> Set[date]:
         """
         Add lunar calendar holiday.
         """
-        dates = []
-
-        for year in (self._year - 1, self._year):
-            for dt in self._convert_islamic_to_gre(year, month, day):
-                if days_delta:
-                    dt += rd(days=days_delta)
-
-                self._add_holiday(holiday_name, dt)
-                dates.append(dt)
+        dates = set()
+        for dt in self._convert_islamic_to_gre(self._year, month, day):
+            if days_delta:
+                dt += td(days=days_delta)
+            self._add_holiday(holiday_name, dt)
+            dates.add(dt)
 
         return dates
 
-    def _add_islamic_new_year_day(self, holiday_name) -> List[date]:
+    def _add_islamic_new_year_day(self, holiday_name) -> Set[date]:
         """
         Add Islamic New Year Day (last day of Dhu al-Hijjah).
 
@@ -783,7 +811,7 @@ class IslamicHolidays:
         """
         return self._add_islamic_calendar_holiday(holiday_name, 7, 27)
 
-    def _add_mawlid_day(self, holiday_name) -> List[date]:
+    def _add_mawlid_day(self, holiday_name) -> Set[date]:
         """
         Add Mawlid Day (12th day of 3rd month).
 
@@ -793,7 +821,7 @@ class IslamicHolidays:
         """
         return self._add_islamic_calendar_holiday(holiday_name, 3, 12)
 
-    def _add_mawlid_day_two(self, holiday_name) -> List[date]:
+    def _add_mawlid_day_two(self, holiday_name) -> Set[date]:
         """
         Add Mawlid Day Two.
 
@@ -858,7 +886,7 @@ class KoreanCalendarHolidays:
         """
         return self._add_holiday(
             holiday_name,
-            self._korean_new_year + rd(days=+1),
+            self._korean_new_year + td(days=+1),
         )
 
     def _add_korean_new_years_day_three(self, holiday_name) -> date:
@@ -869,7 +897,7 @@ class KoreanCalendarHolidays:
         """
         return self._add_holiday(
             holiday_name,
-            self._korean_new_year + rd(days=+2),
+            self._korean_new_year + td(days=+2),
         )
 
     def _add_korean_new_years_day_four(self, holiday_name) -> date:
@@ -880,7 +908,7 @@ class KoreanCalendarHolidays:
         """
         return self._add_holiday(
             holiday_name,
-            self._korean_new_year + rd(days=+3),
+            self._korean_new_year + td(days=+3),
         )
 
     def _add_korean_new_years_day_five(self, holiday_name) -> date:
@@ -891,7 +919,7 @@ class KoreanCalendarHolidays:
         """
         return self._add_holiday(
             holiday_name,
-            self._korean_new_year + rd(days=+4),
+            self._korean_new_year + td(days=+4),
         )
 
     def _add_korean_new_years_eve(self, holiday_name) -> date:
@@ -902,7 +930,7 @@ class KoreanCalendarHolidays:
         """
         return self._add_holiday(
             holiday_name,
-            self._korean_new_year + rd(days=-1),
+            self._korean_new_year + td(days=-1),
         )
 
     def _convert_korean_to_gre(self, year: int, month: int, day: int) -> date:

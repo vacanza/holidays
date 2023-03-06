@@ -10,89 +10,96 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 
-from dateutil.easter import easter
 from dateutil.relativedelta import SU
 from dateutil.relativedelta import relativedelta as rd
 
+from holidays.constants import FEB, MAR, MAY, JUN, JUL
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Lithuania(HolidayBase):
+class Lithuania(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
-    https://en.wikipedia.org/wiki/Public_holidays_in_Lithuania
-    https://www.kalendorius.today/
+    Lithuania holidays.
+
+    References:
+    - https://en.wikipedia.org/wiki/Public_holidays_in_Lithuania
+    - https://www.kalendorius.today/
     """
 
     country = "LT"
 
-    def _populate(self, year):
+    def __init__(self, *args, **kwargs) -> None:
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
+    def _populate(self, year) -> None:
         super()._populate(year)
 
-        # New Year's Day
-        self[date(year, 1, 1)] = "Naujieji metai"
+        # New Year's Day.
+        self._add_new_years_day("Naujieji metai")
 
-        # Day of Restoration of the State of Lithuania (1918)
+        # Day of Restoration of the State of Lithuania (1918).
         if year >= 1918:
-            self[date(year, 2, 16)] = "Lietuvos valstybės " "atkūrimo diena"
+            self._add_holiday("Lietuvos valstybės atkūrimo diena", FEB, 16)
 
         # Day of Restoration of Independence of Lithuania
-        # (from the Soviet Union, 1990)
+        # (from the Soviet Union, 1990).
         if year >= 1990:
-            self[date(year, 3, 11)] = (
-                "Lietuvos nepriklausomybės " "atkūrimo diena"
+            self._add_holiday(
+                "Lietuvos nepriklausomybės atkūrimo diena", MAR, 11
             )
 
-        # Easter
-        easter_date = easter(year)
-        self[easter_date] = "Velykos"
+        # Easter.
+        self._add_easter_sunday("Velykos")
 
-        # Easter 2nd day
-        self[easter_date + td(days=+1)] = "Velykų antroji diena"
+        # Easter Monday.
+        self._add_easter_monday("Velykų antroji diena")
 
-        # International Workers' Day
-        self[date(year, 5, 1)] = "Tarptautinė darbo diena"
+        # International Workers' Day.
+        self._add_labour_day("Tarptautinė darbo diena")
 
-        # Mother's day. First Sunday in May
-        self[date(year, 5, 1) + rd(weekday=SU)] = "Motinos diena"
+        # Mother's day. First Sunday in May.
+        self._add_holiday("Motinos diena", date(year, MAY, 1) + rd(weekday=SU))
 
-        # Fathers's day. First Sunday in June
-        self[date(year, 6, 1) + rd(weekday=SU)] = "Tėvo diena"
+        # Fathers's day. First Sunday in June.
+        self._add_holiday("Tėvo diena", date(year, JUN, 1) + rd(weekday=SU))
 
-        # St. John's Day [Christian name],
-        # Day of Dew [original pagan name]
+        # St. John's Day (Christian name).
+        # Day of Dew (original pagan name).
         if year >= 2003:
-            self[date(year, 6, 24)] = "Joninės, Rasos"
+            self._add_saint_johns_day("Joninės, Rasos")
 
-        # Statehood Day
+        # Statehood Day.
         if year >= 1991:
-            self[date(year, 7, 6)] = (
-                "Valstybės (Lietuvos "
-                "karaliaus Mindaugo "
-                "karūnavimo) diena"
+            self._add_holiday(
+                "Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) diena",
+                JUL,
+                6,
             )
 
-        # Assumption Day
-        self[date(year, 8, 15)] = (
-            "Žolinė (Švč. Mergelės " "Marijos ėmimo į dangų diena)"
+        # Assumption Day.
+        self._add_assumption_of_mary_day(
+            "Žolinė (Švč. Mergelės Marijos ėmimo į dangų diena)"
         )
 
-        # All Saints' Day
-        self[date(year, 11, 1)] = "Visų šventųjų diena (Vėlinės)"
+        # All Saints' Day,
+        self._add_all_saints_day("Visų šventųjų diena (Vėlinės)")
 
-        # All Souls' Day
+        # All Souls' Day.
         if year >= 2020:
-            self[date(year, 11, 2)] = "Mirusiųjų atminimo diena (Vėlinės)"
+            self._add_all_souls_day("Mirusiųjų atminimo diena (Vėlinės)")
 
-        # Christmas Eve
-        self[date(year, 12, 24)] = "Šv. Kūčios"
+        # Christmas Eve.
+        self._add_christmas_eve("Šv. Kūčios")
 
-        # Christmas 1st day
-        self[date(year, 12, 25)] = "Šv. Kalėdų pirma diena"
+        # Christmas 1st day.
+        self._add_christmas_day("Šv. Kalėdų pirma diena")
 
-        # Christmas 2nd day
-        self[date(year, 12, 26)] = "Šv. Kalėdų antra diena"
+        # Christmas 2nd day.
+        self._add_christmas_day_two("Šv. Kalėdų antra diena")
 
 
 class LT(Lithuania):

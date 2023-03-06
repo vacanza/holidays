@@ -172,15 +172,6 @@ class TestBasics(unittest.TestCase):
         self.assertTrue(holidays.HolidayBase._is_leap_year(2000))
         self.assertFalse(holidays.HolidayBase._is_leap_year(2100))
 
-    def test_add_observed_holiday(self):
-        h = holidays.HolidayBase()
-
-        h._add_observed_holiday("1111-11-11", "Test holiday")
-        self.assertEqual(h["1111-11-11"], "Test holiday (Observed)")
-
-        h._add_observed_holiday("2222-11-11", "Test holiday", "(Day Off)")
-        self.assertEqual(h["2222-11-11"], "Test holiday (Day Off)")
-
     def test_is_weekend(self):
         h = holidays.HolidayBase()
         h._populate(2022)

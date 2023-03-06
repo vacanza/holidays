@@ -9,16 +9,13 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
-
-from dateutil.easter import EASTER_ORTHODOX, easter
-
-from holidays.constants import JAN, MAR, MAY, JUL, NOV, DEC
+from holidays.calendars import GREGORIAN_CALENDAR, JULIAN_CALENDAR
+from holidays.constants import JUL, NOV
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Belarus(HolidayBase):
+class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     Belarus holidays.
 
@@ -30,6 +27,11 @@ class Belarus(HolidayBase):
     country = "BY"
     default_language = "be"
 
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self, calendar=JULIAN_CALENDAR)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year):
         # The current set of holidays came into force in 1998.
         # http://laws.newsby.org/documents/ukazp/pos05/ukaz05806.htm
@@ -39,44 +41,42 @@ class Belarus(HolidayBase):
         super()._populate(year)
 
         # New Year's Day.
-        name = _("Новы год")
-        self[date(year, JAN, 1)] = name
+        self._add_new_years_day(_("Новы год"))
 
         # Jan 2nd is the national holiday (New Year) from 2020.
         # http://president.gov.by/uploads/documents/2019/464uk.pdf
         if year >= 2020:
-            self[date(year, JAN, 2)] = name
+            self._add_new_years_day_two(_("Новы год"))
 
-        # Christmas Day (Orthodox).
-        self[date(year, JAN, 7)] = _(
-            "Нараджэнне Хрыстова (праваслаўнае Раство)"
-        )
+        # Orthodox Christmas Day.
+        self._add_christmas_day(_("Нараджэнне Хрыстова (праваслаўнае Раство)"))
 
         # Women's Day.
-        self[date(year, MAR, 8)] = _("Дзень жанчын")
+        self._add_womens_day(_("Дзень жанчын"))
 
         # Radunitsa (Day of Rejoicing).
-        self[easter(year, method=EASTER_ORTHODOX) + td(days=+9)] = _(
-            "Радаўніца"
-        )
+        self._add_rejoicing_day("Радаўніца")
 
         # Labour Day.
-        self[date(year, MAY, 1)] = _("Свята працы")
+        self._add_labour_day(_("Свята працы"))
 
         # Victory Day
-        self[date(year, MAY, 9)] = _("Дзень Перамогі")
+        self._add_world_war_two_victory_day(_("Дзень Перамогі"))
 
         # Independence Day.
-        self[date(year, JUL, 3)] = _(
-            "Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)"
+        self._add_holiday(
+            _("Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)"),
+            JUL,
+            3,
         )
 
         # October Revolution Day.
-        self[date(year, NOV, 7)] = _("Дзень Кастрычніцкай рэвалюцыі")
+        self._add_holiday(_("Дзень Кастрычніцкай рэвалюцыі"), NOV, 7)
 
-        # Christmas Day (Catholic).
-        self[date(year, DEC, 25)] = _(
-            "Нараджэнне Хрыстова (каталіцкае Раство)"
+        # Catholic Christmas Day.
+        self._add_christmas_day(
+            _("Нараджэнне Хрыстова (каталіцкае Раство)"),
+            calendar=GREGORIAN_CALENDAR,
         )
 
 

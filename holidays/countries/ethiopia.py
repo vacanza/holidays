@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.constants import MAR, MAY, SEP, JULIAN_CALENDAR
+from holidays.calendars import JULIAN_CALENDAR
+from holidays.constants import MAR, MAY, SEP
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_groups import IslamicHolidays
@@ -64,19 +65,16 @@ class Ethiopia(
         # It occurs on September 11 in the Gregorian Calendar;
         # except for the year preceding a leap year, when it occurs on
         # September 12.
-        if self._is_leap_year(year):
-            # Ethiopian New Year.
-            self._add_holiday(_("አዲስ ዓመት እንቁጣጣሽ"), SEP, 12)
-        else:
-            # Ethiopian New Year.
-            self._add_holiday(_("አዲስ ዓመት እንቁጣጣሽ"), SEP, 11)
 
-        if self._is_leap_year(year):
-            # Finding of True Cross.
-            self._add_holiday(_("መስቀል"), SEP, 28)
-        else:
-            # Finding of True Cross.
-            self._add_holiday(_("መስቀል"), SEP, 27)
+        # Ethiopian New Year.
+        self._add_holiday(
+            _("አዲስ ዓመት እንቁጣጣሽ"), SEP, 12 if self._is_leap_year(year) else 11
+        )
+
+        # Finding of True Cross.
+        self._add_holiday(
+            _("መስቀል"), SEP, 28 if self._is_leap_year(year) else 27
+        )
 
         # Orthodox Christmas.
         self._add_christmas_day(_("ገና"))
@@ -107,25 +105,17 @@ class Ethiopia(
 
         if year < 1991 and year > 1974:
             # Downfall of King Haile Selassie.
-            name = _("ደርግ የመጣበት ቀን")
-            if self._is_leap_year(year):
-                self._add_holiday(name, SEP, 13)
-            else:
-                self._add_holiday(name, SEP, 12)
+            self._add_holiday(
+                _("ደርግ የመጣበት ቀን"), SEP, 13 if self._is_leap_year(year) else 12
+            )
 
-        # Eid al-Fitr - Feast Festive
-        # date of observance is announced yearly, This is an estimate since
-        # having the Holiday on Weekend does change the number of days,
-        # decided to leave it since marking a Weekend as a holiday
-        # wouldn't do much harm.
+        # Eid al-Fitr - Feast Festive.
         self._add_eid_al_fitr_day(_("ኢድ አልፈጥር"))
 
-        # Eid al-Adha - Sacrifice Festive
-        # date of observance is announced yearly
+        # Eid al-Adha - Sacrifice Festive.
         self._add_eid_al_adha_day(_("አረፋ"))
         self._add_eid_al_adha_day_two(_("አረፋ"))
 
-        # Prophet Muhammad's Birthday - (hijari_year, 3, 12)
         # Prophet Muhammad's Birthday.
         name = _("መውሊድ")
         self._add_mawlid_day(name)
