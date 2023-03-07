@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.countries.sweden import SE, SWE, Sweden
+from holidays.countries.sweden import Sweden, SE, SWE
 from tests.common import SundayHolidays
 
 

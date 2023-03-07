@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.countries.honduras import HN, HND, Honduras
+from holidays.countries.honduras import Honduras, HN, HND
 from tests.common import TestCase
 
 

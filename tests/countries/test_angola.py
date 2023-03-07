@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.countries.angola import AGO, AO, Angola
+from holidays.countries.angola import Angola, AO, AGO
 from tests.common import TestCase
 
 
