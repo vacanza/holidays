@@ -59,7 +59,7 @@ msgstr "Карнавал"
 
 #: holidays/countries/argentina.py:194
 msgid "Día Nacional de la Memoria por la Verdad y la Justicia"
-msgstr "День пам'яті заради правди та правосуддя"
+msgstr "День памʼяті заради правди та правосуддя"
 
 #: holidays/countries/argentina.py:209
 msgid "Día del Veterano de Guerra"
