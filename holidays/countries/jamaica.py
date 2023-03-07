@@ -13,10 +13,9 @@ from datetime import date
 from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import MO
-from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAY, AUG, OCT, DEC
+from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
+from holidays.constants import JAN, MAY, AUG, OCT, DEC, MON
 from holidays.holiday_base import HolidayBase
 
 
@@ -44,7 +43,7 @@ class Jamaica(HolidayBase):
         name = "National Labour Day"
         self[dt] = name
         if self.observed and self._is_weekend(dt):
-            self[dt + rd(weekday=MO)] = f"{name} (Observed)"
+            self[_get_nth_weekday_from(1, MON, dt)] = f"{name} (Observed)"
 
         # Emancipation Day
         if year >= 1998:
@@ -54,7 +53,9 @@ class Jamaica(HolidayBase):
         _add_with_observed(date(year, AUG, 6), "Independence Day")
 
         # National Heroes Day
-        self[date(year, OCT, 1) + rd(weekday=MO(+3))] = "National Heroes Day"
+        self[
+            _get_nth_weekday_of_month(3, MON, OCT, year)
+        ] = "National Heroes Day"
 
         # Christmas Day
         dt = date(year, DEC, 25)

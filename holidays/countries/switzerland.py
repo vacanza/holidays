@@ -13,10 +13,10 @@ from datetime import date
 from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import TH, SU
-from dateutil.relativedelta import relativedelta as rd
 
+from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import JAN, MAR, APR, MAY, JUN, AUG, SEP, NOV, DEC
+from holidays.constants import THU, SUN
 from holidays.holiday_base import HolidayBase
 
 
@@ -88,7 +88,7 @@ class Switzerland(HolidayBase):
         easter_date = easter(year)
         # Näfelser Fahrt (first Thursday in April but not in Holy Week)
         if self.subdiv == "GL" and year >= 1835:
-            dt = date(year, APR, 1) + rd(weekday=TH)
+            dt = _get_nth_weekday_of_month(1, THU, APR, year)
             if dt == easter_date + td(days=-3):
                 dt += td(days=+7)
             self[dt] = "Näfelser Fahrt"
@@ -160,12 +160,12 @@ class Switzerland(HolidayBase):
 
         if self.subdiv == "VD":
             # Monday after the third Sunday of September
-            dt = date(year, SEP, 1) + rd(weekday=SU(+3)) + td(days=+1)
+            dt = _get_nth_weekday_of_month(3, SUN, SEP, year) + td(days=+1)
             self[dt] = "Lundi du Jeûne"
 
         if self.subdiv == "GE":
             # Thursday after the first Sunday of September
-            dt = date(year, SEP, 1) + rd(weekday=SU) + td(days=+4)
+            dt = _get_nth_weekday_of_month(1, SUN, SEP, year) + td(days=+4)
             self[dt] = "Jeûne genevois"
 
         if self.subdiv == "OW":

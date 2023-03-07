@@ -13,10 +13,9 @@ from datetime import date
 from datetime import timedelta as td
 
 from dateutil.easter import EASTER_ORTHODOX, easter
-from dateutil.relativedelta import MO, TU
-from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAR, MAY, AUG, OCT, DEC
+from holidays.calendars import _get_nth_weekday_from
+from holidays.constants import JAN, MAR, MAY, AUG, OCT, DEC, MON
 from holidays.holiday_base import HolidayBase
 
 
@@ -60,14 +59,15 @@ class Greece(HolidayBase):
         name = self.tr("Εργατική Πρωτομαγιά")
         name_observed = self.tr("%s (παρατηρήθηκε)")
 
-        self[date(year, MAY, 1)] = name
-        if self.observed and self._is_weekend(year, MAY, 1):
+        dt = date(year, MAY, 1)
+        self[dt] = name
+        if self.observed and self._is_weekend(dt):
             # https://en.wikipedia.org/wiki/Public_holidays_in_Greece
-            labour_day_observed_date = date(year, MAY, 1) + rd(weekday=MO)
+            labour_day_observed_date = _get_nth_weekday_from(1, MON, dt)
             # In 2016 and 2021, Labour Day coincided with other holidays
             # https://www.timeanddate.com/holidays/greece/labor-day
             if self.get(labour_day_observed_date):
-                labour_day_observed_date += rd(weekday=TU)
+                labour_day_observed_date += td(days=+1)
             self[labour_day_observed_date] = name_observed % name
 
         # Assumption of Mary.

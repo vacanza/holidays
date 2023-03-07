@@ -14,11 +14,10 @@ from datetime import timedelta as td
 from gettext import gettext as tr
 
 from dateutil.easter import easter
-from dateutil.relativedelta import MO
-from dateutil.relativedelta import relativedelta as rd
 
+from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC
+from holidays.constants import OCT, NOV, DEC, MON
 from holidays.holiday_base import HolidayBase
 
 
@@ -158,10 +157,10 @@ class Argentina(HolidayBase):
             """
             if self.observed:
                 if self._is_tuesday(hol_date) or self._is_wednesday(hol_date):
-                    hol_date += rd(weekday=MO(-1))
+                    hol_date = _get_nth_weekday_from(-1, MON, hol_date)
                     hol_name = self.tr("%s (Observado)") % hol_name
                 elif self._is_thursday(hol_date) or self._is_friday(hol_date):
-                    hol_date += rd(weekday=MO)
+                    hol_date = _get_nth_weekday_from(1, MON, hol_date)
                     hol_name = self.tr("%s (Observado)") % hol_name
             self[hol_date] = hol_name
 
@@ -255,7 +254,7 @@ class Argentina(HolidayBase):
 
         if year >= 1938:
             self[
-                date(year, JUN, 1) + rd(weekday=MO(+3))
+                _get_nth_weekday_of_month(3, MON, JUN, year)
                 if 1995 <= year <= 2010
                 else date(year, JUN, 20)
             ] = self.tr(
@@ -313,7 +312,7 @@ class Argentina(HolidayBase):
         elif 1938 <= year <= 1994:
             self[date(year, AUG, 17)] = name
         elif 1995 <= year <= 2010:
-            self[date(year, AUG, 1) + rd(weekday=MO(+3))] = name
+            self[_get_nth_weekday_of_month(3, MON, AUG, year)] = name
         elif year >= 2012:
             _add_movable(date(year, AUG, 17), name)
 
