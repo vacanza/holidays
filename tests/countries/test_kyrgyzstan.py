@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.countries.kyrgyzstan import KG, KGZ, Kyrgyzstan
+from holidays.countries.kyrgyzstan import Kyrgyzstan, KG, KGZ
 from tests.common import TestCase
 
 

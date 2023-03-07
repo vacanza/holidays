@@ -14,7 +14,7 @@ from datetime import timedelta as td
 
 from dateutil.easter import easter
 
-from holidays.constants import DEC, JAN, MAY
+from holidays.constants import JAN, MAY, DEC
 from holidays.holiday_base import HolidayBase
 
 
