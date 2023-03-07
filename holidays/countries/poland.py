@@ -10,7 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import timedelta as td
-from gettext import gettext as _
+from gettext import gettext as tr
 
 from holidays.constants import MAY, JUL, NOV
 from holidays.holiday_base import HolidayBase
@@ -25,7 +25,7 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "PL"
     default_language = "pl"
     special_holidays = {
-        2018: ((NOV, 12, _("Narodowe Święto Niepodległości - 100-lecie")),)
+        2018: ((NOV, 12, tr("Narodowe Święto Niepodległości - 100-lecie")),)
     }
 
     def __init__(self, *args, **kwargs):
