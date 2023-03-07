@@ -105,7 +105,7 @@ class Japan(HolidayBase):
         elif year == 2021:
             self[date(year, JUL, 22)] = _("海の日")
         elif year >= 2003:
-            self[_get_nth_weekday_of_month(3, MON, JUL, year)] = self.tr("海の日")
+            self[_get_nth_weekday_of_month(3, MON, JUL, year)] = _("海の日")
 
         # Mountain Day.
         if year == 2020:
@@ -119,9 +119,7 @@ class Japan(HolidayBase):
         if 1966 <= year <= 2002:
             self[date(year, SEP, 15)] = _("敬老の日")
         elif year >= 2003:
-            self[_get_nth_weekday_of_month(3, MON, SEP, year)] = self.tr(
-                "敬老の日"
-            )
+            self[_get_nth_weekday_of_month(3, MON, SEP, year)] = _("敬老の日")
 
         # Autumnal Equinox Day.
         epoch = Sun.get_equinox_solstice(year, target="autumn")
@@ -135,17 +133,13 @@ class Japan(HolidayBase):
         if 1966 <= year <= 1999:
             self[date(year, OCT, 10)] = _("体育の日")
         elif 2000 <= year <= 2019:
-            self[_get_nth_weekday_of_month(2, MON, OCT, year)] = self.tr(
-                "体育の日"
-            )
+            self[_get_nth_weekday_of_month(2, MON, OCT, year)] = _("体育の日")
         elif year == 2020:
             self[date(year, JUL, 24)] = _("スポーツの日")
         elif year == 2021:
             self[date(year, JUL, 23)] = _("スポーツの日")
         elif 2022 <= year:
-            self[_get_nth_weekday_of_month(2, MON, OCT, year)] = self.tr(
-                "スポーツの日"
-            )
+            self[_get_nth_weekday_of_month(2, MON, OCT, year)] = _("スポーツの日")
 
         # Culture Day.
         self[date(year, NOV, 3)] = _("文化の日")

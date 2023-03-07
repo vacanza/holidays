@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.20\n"
-"POT-Creation-Date: 2023-02-20 16:03-0800\n"
+"POT-Creation-Date: 2023-02-15 08:13-0800\n"
 "PO-Revision-Date: 2023-02-15 14:25-0800\n"
 "Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
 "Language-Team: Python Holidays localization team\n"

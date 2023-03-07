@@ -12,10 +12,9 @@
 from datetime import date
 from datetime import timedelta as td
 
-from dateutil.easter import EASTER_ORTHODOX, easter
-
-from holidays.calendars import _get_nth_weekday_from
-from holidays.constants import JAN, MAR, MAY, AUG, OCT, DEC, MON
+from holidays.calendars import _get_nth_weekday_from, JULIAN_CALENDAR
+from holidays.calendars import GREGORIAN_CALENDAR
+from holidays.constants import MAR, MAY, OCT, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -59,8 +58,8 @@ class Greece(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_whit_monday(_("Δευτέρα του Αγίου Πνεύματος"))
 
         # Labour Day.
-        name = self.tr("Εργατική Πρωτομαγιά")
-        name_observed = self.tr("%s (παρατηρήθηκε)")
+        name = _("Εργατική Πρωτομαγιά")
+        name_observed = _("%s (παρατηρήθηκε)")
 
         dt = date(year, MAY, 1)
         self[dt] = name

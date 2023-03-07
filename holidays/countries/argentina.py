@@ -10,6 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 from gettext import gettext as tr
 
 from dateutil.easter import easter
@@ -18,10 +19,9 @@ from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC, MON
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Argentina(HolidayBase):
     """
     A subclass of :py:class:`HolidayBase` representing public holidays
     in Argentina.
@@ -158,117 +158,12 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
             if self.observed:
                 if self._is_tuesday(hol_date) or self._is_wednesday(hol_date):
                     hol_date = _get_nth_weekday_from(-1, MON, hol_date)
-                    hol_name = self.tr("%s (Observado)") % hol_name
+                    hol_name = _("%s (Observado)") % hol_name
                 elif self._is_thursday(hol_date) or self._is_friday(hol_date):
                     hol_date = _get_nth_weekday_from(1, MON, hol_date)
-                    hol_name = self.tr("%s (Observado)") % hol_name
+                    hol_name = _("%s (Observado)") % hol_name
             self[hol_date] = hol_name
 
-    arg_bridge_public_holiday = tr("Feriado con fines turísticos")
-
-    # Special Cases
-
-    bicentennial_national_flag = tr(
-        "Bicentenario de la creación y primera jura de la bandera nacional"
-    )
-    bicentennial_battle_tucuman = tr("Bicentenario de la Batalla de Tucumán")
-    bicentennial_assembly_1813 = tr(
-        "Bicentenario de la sesión inaugural "
-        "de la Asamblea Nacional Constituyente del año 1813"
-    )
-    bicentennial_battle_salta = tr("Bicentenario de la Batalla de Salta")
-    national_census_2022 = tr("Censo nacional 2022")
-
-    special_holidays = {
-        2011: (
-            (MAR, 25, arg_bridge_public_holiday),
-            (DEC, 9, arg_bridge_public_holiday),
-        ),
-        2012: (
-            (FEB, 27, bicentennial_national_flag),
-            (APR, 30, arg_bridge_public_holiday),
-            (SEP, 24, bicentennial_battle_tucuman),
-            (DEC, 24, arg_bridge_public_holiday),
-        ),
-        2013: (
-            (JAN, 31, bicentennial_assembly_1813),
-            (FEB, 20, bicentennial_battle_salta),
-            (APR, 1, arg_bridge_public_holiday),
-            (JUN, 21, arg_bridge_public_holiday),
-        ),
-        2014: (
-            (MAY, 2, arg_bridge_public_holiday),
-            (DEC, 26, arg_bridge_public_holiday),
-        ),
-        2015: (
-            (MAR, 23, arg_bridge_public_holiday),
-            (DEC, 7, arg_bridge_public_holiday),
-        ),
-        2016: (
-            (JUL, 8, arg_bridge_public_holiday),
-            (DEC, 9, arg_bridge_public_holiday),
-        ),
-        2018: (
-            (APR, 30, arg_bridge_public_holiday),
-            (DEC, 24, arg_bridge_public_holiday),
-            (DEC, 31, arg_bridge_public_holiday),
-        ),
-        2019: (
-            (JUL, 8, arg_bridge_public_holiday),
-            (AUG, 19, arg_bridge_public_holiday),
-            (OCT, 14, arg_bridge_public_holiday),
-        ),
-        2020: (
-            (MAR, 23, arg_bridge_public_holiday),
-            (JUL, 10, arg_bridge_public_holiday),
-            (DEC, 7, arg_bridge_public_holiday),
-        ),
-        2021: (
-            (MAY, 24, arg_bridge_public_holiday),
-            (OCT, 8, arg_bridge_public_holiday),
-            (NOV, 22, arg_bridge_public_holiday),
-        ),
-        2022: (
-            (MAY, 18, national_census_2022),
-            (OCT, 7, arg_bridge_public_holiday),
-            (NOV, 21, arg_bridge_public_holiday),
-            (DEC, 9, arg_bridge_public_holiday),
-        ),
-        2023: (
-            (MAY, 26, arg_bridge_public_holiday),
-            (JUN, 19, arg_bridge_public_holiday),
-            (OCT, 13, arg_bridge_public_holiday),
-        ),
-    }
-
-    def __init__(self, *args, **kwargs):
-        ChristianHolidays.__init__(self)
-        InternationalHolidays.__init__(self)
-        super().__init__(*args, **kwargs)
-
-    def _add_observed_holiday(self, *args) -> None:
-        """
-        Add observed holiday.
-
-        References:
-        - Decreto 1584/2010: 2010-11-03
-            - AUG 17, OCT 12, NOV 20 Holidays will always be on MON
-        - Decreto 52/2017: 2017-01-23 (Reconfirmed in Ley 27399)
-            - If TUE/WED - observed on previous MON
-            - If THU/FRI - observed on next MON
-        """
-        name, dt = self._parse_holiday(*args)
-
-        if self.observed:
-            if self._is_tuesday(dt) or self._is_wednesday(dt):
-                dt += rd(weekday=MO(-1))
-                name = _("%s (Observado)") % name
-            elif self._is_thursday(dt) or self._is_friday(dt):
-                dt += rd(weekday=MO)
-                name = _("%s (Observado)") % name
-        self._add_holiday(name, dt)
-
-    def _populate(self, year):
         super()._populate(year)
 
         # Fixed Holidays
@@ -278,7 +173,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
         # New Year's Day.
         # Status: In-Use.
 
-        self[date(year, JAN, 1)] = self.tr("Año Nuevo")
+        self[date(year, JAN, 1)] = _("Año Nuevo")
 
         # Carnival days.
         # Status: In-Use.
@@ -286,7 +181,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Restarted in 2011 via Decreto 1584/2010.
 
         if 1956 <= year <= 1975 or year >= 2011:
-            name = self.tr("Día de Carnaval")
+            name = _("Día de Carnaval")
             self[easter_date + td(days=-48)] = name
             self[easter_date + td(days=-47)] = name
 
@@ -295,11 +190,8 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Started in 2006, nearly reclassified as Movable Holidays in 2017
 
         if year >= 2006:
-            # Memory's National Day for the Truth and Justice.
-            self._add_holiday(
-                _("Día Nacional de la Memoria por la Verdad y la Justicia"),
-                MAR,
-                24,
+            self[date(year, MAR, 24)] = _(
+                "Día Nacional de la Memoria por la Verdad y la Justicia"
             )
 
         # Veterans Day and the Fallen in the Malvinas War.
@@ -313,9 +205,9 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
             self[
                 date(year, MAR, 31) if year == 2020 else date(year, APR, 2)
             ] = (
-                self.tr("Día del Veterano de Guerra")
+                _("Día del Veterano de Guerra")
                 if year <= 2000
-                else self.tr(
+                else _(
                     "Día del Veterano y de los Caidos en la Guerra de Malvinas"
                 )
             )
@@ -323,21 +215,21 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Good Friday.
         # Status: In-Use.
 
-        self[easter_date + td(days=-2)] = self.tr("Viernes Santo")
+        self[easter_date + td(days=-2)] = _("Viernes Santo")
 
         # Labor Day.
         # Status: In-Use.
         # First observed as national holiday in Argentina in 1930.
 
         if year >= 1930:
-            self[date(year, MAY, 1)] = self.tr("Día del Trabajo")
+            self[date(year, MAY, 1)] = _("Día del Trabajo")
 
         # May Revolution Day.
         # Status: In-Use.
         # Started in 1813, confirmed as fixed holidays in 1976 via Ley 21329.
 
         if year >= 1813:
-            self[date(year, MAY, 25)] = self.tr("Día de la Revolución de Mayo")
+            self[date(year, MAY, 25)] = _("Día de la Revolución de Mayo")
 
         # Day of Argentine Sovereignty over the Malvinas.
         # Status: Defunct.
@@ -348,7 +240,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
         if 1983 <= year <= 2000:
             self[
                 date(year, APR, 2) if year == 1983 else date(year, JUN, 10)
-            ] = self.tr(
+            ] = _(
                 "Día de los Derechos Argentinos sobre las Islas Malvinas, "
                 "Sandwich y del Atlántico Sur"
             )
@@ -365,26 +257,24 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
                 _get_nth_weekday_of_month(3, MON, JUN, year)
                 if 1995 <= year <= 2010
                 else date(year, JUN, 20)
-            ] = self.tr(
-                "Paso a la Inmortalidad del General Don Manuel Belgrano"
-            )
+            ] = _("Paso a la Inmortalidad del General Don Manuel Belgrano")
 
         # Independence Day.
         # Status: In-Use.
         # Started in 1816.
 
         if year >= 1816:
-            self[date(year, JUL, 9)] = self.tr("Día de la Independencia")
+            self[date(year, JUL, 9)] = _("Día de la Independencia")
 
         # Immaculate Conception.
         # Status: In-Use.
 
-        self[date(year, DEC, 8)] = self.tr("Inmaculada Concepción de María")
+        self[date(year, DEC, 8)] = _("Inmaculada Concepción de María")
 
         # Christmas.
         # Status: In-Use.
 
-        self[date(year, DEC, 25)] = self.tr("Navidad")
+        self[date(year, DEC, 25)] = _("Navidad")
 
         # Movable Holidays
 
@@ -399,10 +289,11 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
                 "de Güemes"
             )
             # If Jun 17 is Friday, then it should move to Mon, Jun 20
-            # but Jun 20 is Gen. Belgrano holiday.
-            self._add_holiday(name, dt) if self._is_friday(
-                dt
-            ) else self._add_observed_holiday(name, dt)
+            # but Jun 20 is Gen. Belgrano holiday
+            if self._is_friday(dt):
+                self[dt] = name
+            else:
+                _add_movable(dt, name)
 
         # Day Pass to the Immortality of General José de San Martin.
         # Status: In-Use.
@@ -410,9 +301,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Set as 3rd MON of AUG via Ley 24455 in Dec 1994.
         # Moved to Aug 22 for 2011 (election interfere) via Decreto 521/2011.
 
-        name = self.tr(
-            "Paso a la Inmortalidad del General Don José de San Martin"
-        )
+        name = _("Paso a la Inmortalidad del General Don José de San Martin")
 
         if year == 2011:
             self[date(year, AUG, 22)] = name
@@ -430,9 +319,9 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 1917:
             name = (
-                self.tr("Día del Respeto a la Diversidad Cultural")
+                _("Día del Respeto a la Diversidad Cultural")
                 if year >= 2010
-                else self.tr("Día de la Raza")
+                else _("Día de la Raza")
             )
             _add_movable(date(year, OCT, 12), name)
 
@@ -443,7 +332,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Moved to Nov 27 for 2015 (election interfere).
         # Moved to Nov 28 again for 2016.
 
-        name = self.tr("Día de la Soberanía Nacional")
+        name = _("Día de la Soberanía Nacional")
 
         if year == 2015:
             self[date(year, NOV, 27)] = name

@@ -259,8 +259,6 @@ class HolidayBase(Dict[date, str]):
         self.observed = observed
         self.subdiv = subdiv or prov or state
 
-        # self._tr = gettext  # Default translation method.
-
         if prov or state:
             warnings.warn(
                 "Arguments prov and state are deprecated, use subdiv="
@@ -288,8 +286,6 @@ class HolidayBase(Dict[date, str]):
 
             name = getattr(self, "country", getattr(self, "market", None))
             if name:
-                global tr
-
                 locale_dir = os.path.join(os.path.dirname(__file__), "locale")
                 translator: NullTranslations
                 translations = sorted(
@@ -313,8 +309,8 @@ class HolidayBase(Dict[date, str]):
                         localedir=locale_dir,
                     )
                 translator.install()
+                global tr
                 tr = translator.gettext
-                # self._tr = translator.gettext  # Replace `self._tr()`.
 
         if isinstance(years, int):
             self.years = {years}

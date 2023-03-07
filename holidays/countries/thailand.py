@@ -306,7 +306,7 @@ class Thailand(HolidayBase):
         #   - CASE 2: SUN-MON -> 1 in-lieu on TUE.
         # See in lieu logic in `_add_with_observed(dt, holiday_name)`.
 
-        new_years_eve_in_lieu = self.tr("ชดเชย%s") % self.tr("วันสิ้นปี")
+        new_years_eve_in_lieu = _("ชดเชย%s") % _("วันสิ้นปี")
 
         if self.observed and (1995 <= year <= 1997 or year >= 2001):
             if self._is_saturday(date(year - 1, DEC, 31)):
@@ -336,7 +336,7 @@ class Thailand(HolidayBase):
         #    (Except for 2020 due to Covid-19 outbreaks)
         # This has its own in-lieu trigger.
 
-        songkran_festival = self.tr("วันสงกรานต์")
+        songkran_festival = _("วันสงกรานต์")
 
         if 1948 <= year <= 1953:
             self[date(year, APR, 13)] = songkran_festival
@@ -404,7 +404,7 @@ class Thailand(HolidayBase):
         # No celebration in 2017-2019 (B.E 2560-2562).
         # Reestablished with Rama X's Coronation in 2020: May 4th.
 
-        coronation_day = self.tr("วันฉัตรมงคล")
+        coronation_day = _("วันฉัตรมงคล")
 
         if 1958 <= year <= 2016:
             _add_with_observed(date(year, MAY, 5), coronation_day)
@@ -470,7 +470,7 @@ class Thailand(HolidayBase):
         # Restarts again in 1976 (B.E. 2519) on Queen Sirikit's Birthday
         #   (August 12) and stay that way from that point onwards.
 
-        thai_mothers_day = self.tr("วันแม่แห่งชาติ")
+        thai_mothers_day = _("วันแม่แห่งชาติ")
 
         if 1950 <= year <= 1957:
             _add_with_observed(date(year, APR, 15), thai_mothers_day)
@@ -647,7 +647,7 @@ class Thailand(HolidayBase):
         # *** NOTE: only observed by government sectors.
         # TODO: Update this annually around Dec of each year.
 
-        raeknakhwan = self.tr("วันพืชมงคล")
+        raeknakhwan = _("วันพืชมงคล")
 
         raeknakhwan_dates = {
             1997: (MAY, 13),

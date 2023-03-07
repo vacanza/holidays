@@ -11,8 +11,6 @@
 
 from datetime import date
 
-from dateutil.easter import easter
-
 from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import JAN, FEB, MAR, MAY, JUN, AUG, DEC, SUN, JUL, NOV
 from holidays.holiday_base import HolidayBase

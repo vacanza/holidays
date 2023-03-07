@@ -139,11 +139,7 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         super().__init__(*args, **kwargs)
 
-    def _add_holiday(  # type: ignore[override]
-        self,
-        name: str,
-        *dt: DateArg,
-    ) -> None:
+    def _add_holiday(self, name: str, *dt: DateArg) -> None:
         if self.observed or not self._is_weekend(*dt):
             super()._add_holiday(name, *dt)
 
