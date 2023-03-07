@@ -3,10 +3,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.21\n"
-"POT-Creation-Date: 2023-03-03 07:59-0800\n"
-"PO-Revision-Date: 2023-03-03 12:36-0800\n"
-"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"Project-Id-Version: Python Holidays 0.20\n"
+"POT-Creation-Date: 2023-03-02 00:39+0700\n"
+"PO-Revision-Date: 2023-02-20 19:13+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -71,7 +71,7 @@ msgstr "День ветеранів та загиблих на Мальвінс�
 
 #: holidays/countries/argentina.py:219
 msgid "Viernes Santo"
-msgstr "Страсна пʼятниця"
+msgstr "Страсна п'ятниця"
 
 #: holidays/countries/argentina.py:226
 msgid "Día del Trabajo"
@@ -107,11 +107,11 @@ msgstr "Різдво Христове"
 
 #: holidays/countries/argentina.py:290
 msgid "Paso a la Inmortalidad del General Don Martín Miguel de Güemes"
-msgstr "День памʼяті генерала Мартіна Мігеля де Гуемеса"
+msgstr "День пам'яті генерала Мартіна Мігеля де Гуемеса"
 
 #: holidays/countries/argentina.py:307
 msgid "Paso a la Inmortalidad del General Don José de San Martin"
-msgstr "День памʼяті генерала Хосе де Сан-Мартіна"
+msgstr "День пам'яті генерала Хосе де Сан-Мартіна"
 
 #: holidays/countries/argentina.py:327
 msgid "Día del Respeto a la Diversidad Cultural"
