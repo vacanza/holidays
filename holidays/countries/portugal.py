@@ -107,7 +107,7 @@ class Portugal(HolidayBase):
             self[date(year, APR, 25)] = self.tr("Dia da Liberdade")
             self[date(year, MAY, 1)] = self.tr("Dia do Trabalhador")
         if year >= 1911:
-            if 1933 >= year >= 1973:
+            if 1933 <= year <= 1973:
                 self[date(year, JUN, 10)] = self.tr(
                     "Dia de Camões, de Portugal e da Raça"
                 )
@@ -164,7 +164,7 @@ class Portugal(HolidayBase):
             if self.subdiv == "06":
                 self[date(year, JUL, 4)] = self.tr("Dia de Santa Isabel")
             if self.subdiv == "07":
-                self[date(year, JUN, 29)] = self.tr("Dia de S. Pedro")
+                self[date(year, JUN, 29)] = self.tr("Dia de São Pedro")
             if self.subdiv == "08":
                 self[date(year, SEP, 7)] = self.tr("Dia do Município de Faro")
             if self.subdiv == "09":
@@ -182,7 +182,7 @@ class Portugal(HolidayBase):
                     "Dia do Município de Portalegre"
                 )
             if self.subdiv == "14":
-                self[date(year, MAR, 19)] = self.tr("Dia de S. José")
+                self[date(year, MAR, 19)] = self.tr("Dia de São José")
             if self.subdiv == "15":
                 self[date(year, SEP, 15)] = self.tr("Dia de Bocage")
             if self.subdiv == "16":
@@ -190,7 +190,7 @@ class Portugal(HolidayBase):
                     "Dia de Nossa Senhora da Agonia"
                 )
             if self.subdiv == "18":
-                self[date(year, SEP, 21)] = self.tr("Dia de S. Mateus")
+                self[date(year, SEP, 21)] = self.tr("Dia de São Mateus")
             if self.subdiv == "20" and year >= 1981:
                 self[easter_date + td(days=+50)] = self.tr(
                     "Dia da Região Autónoma dos Açores"

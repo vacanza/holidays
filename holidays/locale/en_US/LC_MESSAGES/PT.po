@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.20\n"
-"POT-Creation-Date: 2023-03-07 16:27+0700\n"
+"POT-Creation-Date: 2023-03-07 19:38+0700\n"
 "PO-Revision-Date: 2023-02-20 19:10+0200\n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Python Holidays localization team\n"
@@ -114,14 +114,14 @@ msgstr "Feast of Our Lady of Graces"
 
 #: holidays/countries/portugal.py:161
 msgid "Dia de Nossa Senhora de Mércoles"
-msgstr "Feast of Senhora de Mércoles"
+msgstr "Feast of Our Lady of Mércoles"
 
 #: holidays/countries/portugal.py:165
 msgid "Dia de Santa Isabel"
 msgstr "St. Elizabeth's Day"
 
 #: holidays/countries/portugal.py:167
-msgid "Dia de S. Pedro"
+msgid "Dia de São Pedro"
 msgstr "St. Peter's Day"
 
 #: holidays/countries/portugal.py:169
@@ -141,7 +141,7 @@ msgid "Dia do Município de Portalegre"
 msgstr "Municipal Holiday (Portalegre)"
 
 #: holidays/countries/portugal.py:185
-msgid "Dia de S. José"
+msgid "Dia de São José"
 msgstr "St. Joseph's Day"
 
 #: holidays/countries/portugal.py:187
@@ -150,10 +150,10 @@ msgstr "Bocage Day"
 
 #: holidays/countries/portugal.py:189
 msgid "Dia de Nossa Senhora da Agonia"
-msgstr "Feast of Senhora da Agonia"
+msgstr "Feast of Our Lady of Sorrows"
 
 #: holidays/countries/portugal.py:193
-msgid "Dia de S. Mateus"
+msgid "Dia de São Mateus"
 msgstr "St. Matthew's Day"
 
 #: holidays/countries/portugal.py:195

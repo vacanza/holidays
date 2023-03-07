@@ -151,7 +151,7 @@ class TestPortugal(TestCase):
             self.ext,
             "2017-12-24",
             "2017-12-26",
-            "2017-12-26",
+            "2017-12-31",
         )
 
     def test_district_specific_days_2017(self):
