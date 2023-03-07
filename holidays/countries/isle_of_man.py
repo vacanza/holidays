@@ -8,12 +8,11 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
+
 from datetime import date
 
-from dateutil.relativedelta import FR
-from dateutil.relativedelta import relativedelta as rd
-
-from holidays.constants import JUN, JUL
+from holidays.calendars import _get_nth_weekday_of_month
+from holidays.constants import JUN, JUL, FRI
 from holidays.holiday_base import HolidayBase
 
 from .united_kingdom import UnitedKingdom
@@ -33,7 +32,7 @@ class IsleOfMan(UnitedKingdom):
 
         # Isle of Man exclusive holidays
         # TT bank holiday (first Friday in June)
-        self[date(year, JUN, 1) + rd(weekday=FR)] = "TT Bank Holiday"
+        self[_get_nth_weekday_of_month(1, FRI, JUN, year)] = "TT Bank Holiday"
 
         # Tynwald Day
         self[date(year, JUL, 5)] = "Tynwald Day"

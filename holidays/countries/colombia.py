@@ -13,10 +13,9 @@ from datetime import date
 from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import MO
-from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, MAR, MAY, JUN, JUL, AUG, OCT, NOV, DEC
+from holidays.calendars import _get_nth_weekday_from
+from holidays.constants import JAN, MAR, MAY, JUN, JUL, AUG, OCT, NOV, DEC, MON
 from holidays.holiday_base import HolidayBase
 
 
@@ -49,7 +48,9 @@ class Colombia(HolidayBase):
         """
 
         if self.observed and not self._is_monday(dt) and dt.year >= 1984:
-            self[dt + rd(weekday=MO)] = _("%s (Observado)") % name
+            self[_get_nth_weekday_from(1, MON, dt)] = (
+                self.tr("%s (Observado)") % name
+            )
         else:
             self[dt] = name
 

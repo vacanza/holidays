@@ -9,11 +9,13 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from dateutil.relativedelta import MO, TU
-from dateutil.relativedelta import relativedelta as rd
+from datetime import date
+from datetime import timedelta as td
 
-from holidays.calendars import GREGORIAN_CALENDAR, JULIAN_CALENDAR
-from holidays.constants import MAR, OCT
+from dateutil.easter import EASTER_ORTHODOX, easter
+
+from holidays.calendars import _get_nth_weekday_from
+from holidays.constants import JAN, MAR, MAY, AUG, OCT, DEC, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -57,18 +59,19 @@ class Greece(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_whit_monday(_("Δευτέρα του Αγίου Πνεύματος"))
 
         # Labour Day.
-        name = _("Εργατική Πρωτομαγιά")
-        may_1 = self._add_labour_day(name)
-        if self.observed and self._is_weekend(may_1):
+        name = self.tr("Εργατική Πρωτομαγιά")
+        name_observed = self.tr("%s (παρατηρήθηκε)")
+
+        dt = date(year, MAY, 1)
+        self[dt] = name
+        if self.observed and self._is_weekend(dt):
             # https://en.wikipedia.org/wiki/Public_holidays_in_Greece
-            labour_day_observed_date = may_1 + rd(weekday=MO)
+            labour_day_observed_date = _get_nth_weekday_from(1, MON, dt)
             # In 2016 and 2021, Labour Day coincided with other holidays
             # https://www.timeanddate.com/holidays/greece/labor-day
             if self.get(labour_day_observed_date):
-                labour_day_observed_date += rd(weekday=TU)
-            self._add_holiday(
-                _("%s (παρατηρήθηκε)") % name, labour_day_observed_date
-            )
+                labour_day_observed_date += td(days=+1)
+            self[labour_day_observed_date] = name_observed % name
 
         # Assumption of Mary.
         self._add_assumption_of_mary_day(_("Κοίμηση της Θεοτόκου"))

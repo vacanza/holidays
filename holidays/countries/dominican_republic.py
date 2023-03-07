@@ -13,11 +13,10 @@ from datetime import date
 from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import MO
-from dateutil.relativedelta import relativedelta as rd
 
+from holidays.calendars import _get_nth_weekday_from
 from holidays.constants import JAN, FEB, MAY, JUN, AUG, SEP, NOV, DEC, TUE
-from holidays.constants import WED, THU, FRI, SUN
+from holidays.constants import MON, WED, THU, FRI, SUN
 from holidays.holiday_base import HolidayBase
 
 
@@ -34,9 +33,9 @@ class DominicanRepublic(HolidayBase):
         # Law No. 139-97 - Holidays Dominican Republic - Jun 27, 1997
         if holiday >= date(1997, JUN, 27):
             if holiday.weekday() in {TUE, WED}:
-                holiday += rd(weekday=MO(-1))
+                holiday = _get_nth_weekday_from(-1, MON, holiday)
             elif holiday.weekday() in latest_days:
-                holiday += rd(weekday=MO(+1))
+                holiday = _get_nth_weekday_from(1, MON, holiday)
         return holiday
 
     def _populate(self, year):

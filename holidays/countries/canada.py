@@ -59,9 +59,9 @@ class Canada(HolidayBase):
         # New Year's Day.
         name = _("New Year's Day")
         self[date(year, JAN, 1)] = name
-        if self.observed and self._is_weekend(JAN, 1):
+        if self.observed and self._is_weekend(year, JAN, 1):
             self[_get_nth_weekday_of_month(1, MON, JAN, year)] = (
-                _("%s (Observed)") % name
+                self.tr("%s (Observed)") % name
             )
 
         # Family Day / Louis Riel Day (MB) / Islander Day (PE)
@@ -72,34 +72,34 @@ class Canada(HolidayBase):
             or (self.subdiv == "ON" and year >= 2008)
             or (self.subdiv == "NB" and year >= 2018)
         ):
-            self[_get_nth_weekday_of_month(3, MON, FEB, year)] = _(
+            self[_get_nth_weekday_of_month(3, MON, FEB, year)] = self.tr(
                 "Family Day"
             )
         elif self.subdiv == "BC":
             if 2013 <= year <= 2018:
-                self[_get_nth_weekday_of_month(2, MON, FEB, year)] = _(
+                self[_get_nth_weekday_of_month(2, MON, FEB, year)] = self.tr(
                     "Family Day"
                 )
             elif year > 2018:
-                self[_get_nth_weekday_of_month(3, MON, FEB, year)] = _(
+                self[_get_nth_weekday_of_month(3, MON, FEB, year)] = self.tr(
                     "Family Day"
                 )
         elif self.subdiv == "MB" and year >= 2008:
-            self[_get_nth_weekday_of_month(3, MON, FEB, year)] = _(
+            self[_get_nth_weekday_of_month(3, MON, FEB, year)] = self.tr(
                 "Louis Riel Day"
             )
         elif self.subdiv == "PE" and year >= 2010:
-            self[_get_nth_weekday_of_month(3, MON, FEB, year)] = _(
+            self[_get_nth_weekday_of_month(3, MON, FEB, year)] = self.tr(
                 "Islander Day"
             )
         elif self.subdiv == "PE" and year == 2009:
-            self[_get_nth_weekday_of_month(2, MON, FEB, year)] = _(
+            self[_get_nth_weekday_of_month(2, MON, FEB, year)] = self.tr(
                 "Islander Day"
             )
         # http://novascotia.ca/lae/employmentrights/NovaScotiaHeritageDay.asp
         elif self.subdiv == "NS" and year >= 2015:
             # Heritage Day.
-            self[_get_nth_weekday_of_month(3, MON, FEB, year)] = _(
+            self[_get_nth_weekday_of_month(3, MON, FEB, year)] = self.tr(
                 "Heritage Day"
             )
         elif self.subdiv == "YT" and year >= 1974:
@@ -165,7 +165,7 @@ class Canada(HolidayBase):
             dt = self._get_nearest_monday(date(year, JUN, 24))
             self[dt] = _("Discovery Day")
         elif self.subdiv == "YT" and year >= 1912:
-            self[_get_nth_weekday_of_month(3, MON, AUG, year)] = _(
+            self[_get_nth_weekday_of_month(3, MON, AUG, year)] = self.tr(
                 "Discovery Day"
             )
 
@@ -179,7 +179,9 @@ class Canada(HolidayBase):
         dt = date(year, JUL, 1)
         self[dt] = name
         if year >= 1879 and self.observed and self._is_weekend(dt):
-            self[_get_nth_weekday_from(1, MON, dt)] = _("%s (Observed)") % name
+            self[_get_nth_weekday_from(1, MON, dt)] = (
+                self.tr("%s (Observed)") % name
+            )
 
         # Nunavut Day
         if self.subdiv == "NU":
@@ -194,35 +196,35 @@ class Canada(HolidayBase):
 
         # Civic Holiday
         if year >= 1900 and self.subdiv in {"MB", "NT", "ON"}:
-            self[_get_nth_weekday_of_month(1, MON, AUG, year)] = _(
+            self[_get_nth_weekday_of_month(1, MON, AUG, year)] = self.tr(
                 "Civic Holiday"
             )
         # https://en.wikipedia.org/wiki/Civic_Holiday#Alberta
         elif year >= 1974 and self.subdiv == "AB":
             # Heritage Day.
-            self[_get_nth_weekday_of_month(1, MON, AUG, year)] = _(
+            self[_get_nth_weekday_of_month(1, MON, AUG, year)] = self.tr(
                 "Heritage Day"
             )
         # https://en.wikipedia.org/wiki/Civic_Holiday
         elif year >= 1974 and self.subdiv == "BC":
             # British Columbia Day.
-            self[_get_nth_weekday_of_month(1, MON, AUG, year)] = _(
+            self[_get_nth_weekday_of_month(1, MON, AUG, year)] = self.tr(
                 "British Columbia Day"
             )
         # https://en.wikipedia.org/wiki/Civic_Holiday
         elif year >= 1900 and self.subdiv == "NB":
-            self[_get_nth_weekday_of_month(1, MON, AUG, year)] = _(
+            self[_get_nth_weekday_of_month(1, MON, AUG, year)] = self.tr(
                 "New Brunswick Day"
             )
         # https://en.wikipedia.org/wiki/Civic_Holiday
         elif year >= 1900 and self.subdiv == "SK":
-            self[_get_nth_weekday_of_month(1, MON, AUG, year)] = _(
+            self[_get_nth_weekday_of_month(1, MON, AUG, year)] = self.tr(
                 "Saskatchewan Day"
             )
 
         # Labour Day
         if year >= 1894:
-            self[_get_nth_weekday_of_month(1, MON, SEP, year)] = _(
+            self[_get_nth_weekday_of_month(1, MON, SEP, year)] = self.tr(
                 "Labour Day"
             )
 
@@ -257,7 +259,7 @@ class Canada(HolidayBase):
             if year == 1935:
                 self[date(1935, OCT, 25)] = _("Thanksgiving")
             else:
-                self[_get_nth_weekday_of_month(2, MON, OCT, year)] = _(
+                self[_get_nth_weekday_of_month(2, MON, OCT, year)] = self.tr(
                     "Thanksgiving"
                 )
 
@@ -272,7 +274,7 @@ class Canada(HolidayBase):
                 and self.subdiv in {"NS", "NL", "NT", "PE", "SK"}
             ):
                 self[_get_nth_weekday_from(1, MON, dt)] = (
-                    _("%s (Observed)") % name
+                    self.tr("%s (Observed)") % name
                 )
 
         # Christmas Day,

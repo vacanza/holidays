@@ -13,10 +13,9 @@ from datetime import date
 from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import MO, TH
-from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, APR, MAY, JUN, AUG, DEC
+from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
+from holidays.constants import JAN, APR, MAY, JUN, AUG, DEC, MON, THU
 from holidays.holiday_base import HolidayBase
 
 
@@ -38,7 +37,9 @@ class Iceland(HolidayBase):
         self[easter_date + td(days=-2)] = "Föstudagurinn langi"
         self[easter_date] = "Páskadagur"
         self[easter_date + td(days=+1)] = "Annar í páskum"
-        self[date(year, APR, 19) + rd(weekday=TH(+1))] = "Sumardagurinn fyrsti"
+        self[
+            _get_nth_weekday_from(1, THU, date(year, APR, 19))
+        ] = "Sumardagurinn fyrsti"
         self[date(year, MAY, 1)] = "Verkalýðsdagurinn"
         self[easter_date + td(days=+39)] = "Uppstigningardagur"
         self[easter_date + td(days=+49)] = "Hvítasunnudagur"
@@ -46,7 +47,7 @@ class Iceland(HolidayBase):
         self[date(year, JUN, 17)] = "Þjóðhátíðardagurinn"
         # First Monday of August
         self[
-            date(year, AUG, 1) + rd(weekday=MO(+1))
+            _get_nth_weekday_of_month(1, MON, AUG, year)
         ] = "Frídagur verslunarmanna"
         self[date(year, DEC, 24)] = "Aðfangadagur"
         self[date(year, DEC, 25)] = "Jóladagur"

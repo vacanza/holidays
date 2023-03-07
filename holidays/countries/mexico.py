@@ -11,10 +11,8 @@
 
 from datetime import date
 
-from dateutil.relativedelta import MO
-from dateutil.relativedelta import relativedelta as rd
-
-from holidays.constants import JAN, FEB, MAR, MAY, SEP, NOV, DEC
+from holidays.calendars import _get_nth_weekday_of_month
+from holidays.constants import JAN, FEB, MAR, MAY, SEP, NOV, DEC, MON
 from holidays.holiday_base import HolidayBase
 
 
@@ -38,7 +36,7 @@ class Mexico(HolidayBase):
         # Constitution Day
         if year >= 1917:
             self[
-                date(year, FEB, 1) + rd(weekday=MO)
+                _get_nth_weekday_of_month(1, MON, FEB, year)
                 if year >= 2006
                 else date(year, FEB, 5)
             ] = "Día de la Constitución [Constitution Day]"
@@ -46,7 +44,7 @@ class Mexico(HolidayBase):
         # Benito Juárez's birthday
         if year >= 1917:
             self[
-                date(year, MAR, 1) + rd(weekday=MO(+3))
+                _get_nth_weekday_of_month(3, MON, MAR, year)
                 # no 2006 due to celebration of the 200th anniversary
                 # of Benito Juárez in 2006
                 if year >= 2007
@@ -65,7 +63,7 @@ class Mexico(HolidayBase):
         # Revolution Day
         if year >= 1917:
             self[
-                date(year, NOV, 1) + rd(weekday=MO(+3))
+                _get_nth_weekday_of_month(3, MON, NOV, year)
                 if year >= 2006
                 else date(year, NOV, 20)
             ] = "Día de la Revolución [Revolution Day]"
