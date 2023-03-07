@@ -181,7 +181,7 @@ class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays):
         # USSR holidays.
         # Bloody_Sunday_(1905).
         if year <= 1950:
-            self._add_holiday(_("День пам'яті 9 січня 1905 року"), JAN, 22)
+            self[date(year, JAN, 22)] = _("День памʼяті 9 січня 1905 року")
 
         # Paris_Commune.
         if year <= 1928:

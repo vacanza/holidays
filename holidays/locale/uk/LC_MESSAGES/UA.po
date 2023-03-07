@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.20\n"
-"POT-Creation-Date: 2023-02-15 08:13-0800\n"
-"PO-Revision-Date: 2023-02-16 09:02-0800\n"
+"Project-Id-Version: Python Holidays 0.21\n"
+"POT-Creation-Date: 2023-03-03 12:24-0800\n"
+"PO-Revision-Date: 2023-03-03 12:33-0800\n"
 "Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: uk\n"
@@ -91,7 +91,7 @@ msgid "Різдво Христове (за григоріанським кале
 msgstr ""
 
 #: holidays/countries/ukraine.py:179
-msgid "День пам'яті 9 січня 1905 року"
+msgid "День памʼяті 9 січня 1905 року"
 msgstr ""
 
 #: holidays/countries/ukraine.py:185

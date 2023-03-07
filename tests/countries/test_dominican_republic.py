@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.countries.dominican_republic import DO, DOM, DominicanRepublic
+from holidays.countries.dominican_republic import DominicanRepublic, DO, DOM
 from tests.common import TestCase
 
 

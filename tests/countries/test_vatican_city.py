@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.countries.vatican_city import VA, VAT, VaticanCity
+from holidays.countries.vatican_city import VaticanCity, VA, VAT
 from tests.common import TestCase
 
 
