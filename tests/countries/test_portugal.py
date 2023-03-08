@@ -18,32 +18,6 @@ class TestPortugal(TestCase):
     def setUpClass(cls):
         super().setUpClass(Portugal)
 
-    def setUp(self):
-        super().setUp()
-
-        years = range(1910, 2023)
-        self.district_01 = Portugal(years=years, subdiv="01")
-        self.district_02 = Portugal(years=years, subdiv="02")
-        self.district_03 = Portugal(years=years, subdiv="03")
-        self.district_04 = Portugal(years=years, subdiv="04")
-        self.district_05 = Portugal(years=years, subdiv="05")
-        self.district_06 = Portugal(years=years, subdiv="06")
-        self.district_07 = Portugal(years=years, subdiv="07")
-        self.district_08 = Portugal(years=years, subdiv="08")
-        self.district_09 = Portugal(years=years, subdiv="09")
-        self.district_10 = Portugal(years=years, subdiv="10")
-        self.district_11 = Portugal(years=years, subdiv="11")
-        self.district_12 = Portugal(years=years, subdiv="12")
-        self.district_13 = Portugal(years=years, subdiv="13")
-        self.district_14 = Portugal(years=years, subdiv="14")
-        self.district_15 = Portugal(years=years, subdiv="15")
-        self.district_16 = Portugal(years=years, subdiv="16")
-        self.district_17 = Portugal(years=years, subdiv="17")
-        self.district_18 = Portugal(years=years, subdiv="18")
-        self.district_20 = Portugal(years=years, subdiv="20")
-        self.district_30 = Portugal(years=years, subdiv="30")
-        self.ext = Portugal(years=years, subdiv="Ext")
-
     def test_country_aliases(self):
         self.assertCountryAliases(Portugal, PT, PRT)
 
@@ -147,57 +121,57 @@ class TestPortugal(TestCase):
 
     def test_district_specific_days(self):
         # Conselho Holidays only starts in 1911
-        self.assertNotIn("1910-05-12", self.district_01)
-        self.assertNotIn("1910-05-05", self.district_02)
-        self.assertNotIn("1910-06-24", self.district_03)
-        self.assertNotIn("1910-08-22", self.district_04)
-        self.assertNotIn("1910-04-12", self.district_05)
-        self.assertNotIn("1910-07-04", self.district_06)
-        self.assertNotIn("1910-06-29", self.district_07)
-        self.assertNotIn("1910-09-07", self.district_08)
-        self.assertNotIn("1910-11-27", self.district_09)
-        self.assertNotIn("1910-05-22", self.district_10)
-        self.assertNotIn("1910-06-13", self.district_11)
-        self.assertNotIn("1910-05-23", self.district_12)
-        self.assertNotIn("1910-06-24", self.district_13)
-        self.assertNotIn("1910-03-19", self.district_14)
-        self.assertNotIn("1910-09-15", self.district_15)
-        self.assertNotIn("1910-08-20", self.district_16)
-        self.assertNotIn("1910-06-13", self.district_17)
-        self.assertNotIn("1910-09-21", self.district_18)
-        self.assertNotIn("1910-05-16", self.district_20)
-        self.assertNotIn("1910-07-01", self.district_30)
-        self.assertNotIn("1910-12-26", self.district_30)
+        self.assertNotIn("1910-05-12", Portugal(years=1910, subdiv="01"))
+        self.assertNotIn("1910-05-05", Portugal(years=1910, subdiv="02"))
+        self.assertNotIn("1910-06-24", Portugal(years=1910, subdiv="03"))
+        self.assertNotIn("1910-08-22", Portugal(years=1910, subdiv="04"))
+        self.assertNotIn("1910-04-12", Portugal(years=1910, subdiv="05"))
+        self.assertNotIn("1910-07-04", Portugal(years=1910, subdiv="06"))
+        self.assertNotIn("1910-06-29", Portugal(years=1910, subdiv="07"))
+        self.assertNotIn("1910-09-07", Portugal(years=1910, subdiv="08"))
+        self.assertNotIn("1910-11-27", Portugal(years=1910, subdiv="09"))
+        self.assertNotIn("1910-05-22", Portugal(years=1910, subdiv="10"))
+        self.assertNotIn("1910-06-13", Portugal(years=1910, subdiv="11"))
+        self.assertNotIn("1910-05-23", Portugal(years=1910, subdiv="12"))
+        self.assertNotIn("1910-06-24", Portugal(years=1910, subdiv="13"))
+        self.assertNotIn("1910-03-19", Portugal(years=1910, subdiv="14"))
+        self.assertNotIn("1910-09-15", Portugal(years=1910, subdiv="15"))
+        self.assertNotIn("1910-08-20", Portugal(years=1910, subdiv="16"))
+        self.assertNotIn("1910-06-13", Portugal(years=1910, subdiv="17"))
+        self.assertNotIn("1910-09-21", Portugal(years=1910, subdiv="18"))
+        self.assertNotIn("1910-05-16", Portugal(years=1910, subdiv="20"))
+        self.assertNotIn("1910-07-01", Portugal(years=1910, subdiv="30"))
+        self.assertNotIn("1910-12-26", Portugal(years=1910, subdiv="30"))
 
         # 2017 Cases
-        self.assertHoliday(self.district_01, "2017-05-12")
-        self.assertHoliday(self.district_02, "2017-05-25")
-        self.assertHoliday(self.district_03, "2017-06-24")
-        self.assertHoliday(self.district_04, "2017-08-22")
-        self.assertHoliday(self.district_05, "2017-05-02")
-        self.assertHoliday(self.district_06, "2017-07-04")
-        self.assertHoliday(self.district_07, "2017-06-29")
-        self.assertHoliday(self.district_08, "2017-09-07")
-        self.assertHoliday(self.district_09, "2017-11-27")
-        self.assertHoliday(self.district_10, "2017-05-22")
-        self.assertHoliday(self.district_11, "2017-06-13")
-        self.assertHoliday(self.district_12, "2017-05-23")
-        self.assertHoliday(self.district_13, "2017-06-24")
-        self.assertHoliday(self.district_14, "2017-03-19")
-        self.assertHoliday(self.district_15, "2017-09-15")
-        self.assertHoliday(self.district_16, "2017-08-20")
-        self.assertHoliday(self.district_17, "2017-06-13")
-        self.assertHoliday(self.district_18, "2017-09-21")
-        self.assertHoliday(self.district_20, "2017-06-05")
-        self.assertHoliday(self.district_30, "2017-07-01")
-        self.assertHoliday(self.district_30, "2017-12-26")
+        self.assertHoliday(Portugal(years=2017, subdiv="01"), "2017-05-12")
+        self.assertHoliday(Portugal(years=2017, subdiv="02"), "2017-05-25")
+        self.assertHoliday(Portugal(years=2017, subdiv="03"), "2017-06-24")
+        self.assertHoliday(Portugal(years=2017, subdiv="04"), "2017-08-22")
+        self.assertHoliday(Portugal(years=2017, subdiv="05"), "2017-05-02")
+        self.assertHoliday(Portugal(years=2017, subdiv="06"), "2017-07-04")
+        self.assertHoliday(Portugal(years=2017, subdiv="07"), "2017-06-29")
+        self.assertHoliday(Portugal(years=2017, subdiv="08"), "2017-09-07")
+        self.assertHoliday(Portugal(years=2017, subdiv="09"), "2017-11-27")
+        self.assertHoliday(Portugal(years=2017, subdiv="10"), "2017-05-22")
+        self.assertHoliday(Portugal(years=2017, subdiv="11"), "2017-06-13")
+        self.assertHoliday(Portugal(years=2017, subdiv="12"), "2017-05-23")
+        self.assertHoliday(Portugal(years=2017, subdiv="13"), "2017-06-24")
+        self.assertHoliday(Portugal(years=2017, subdiv="14"), "2017-03-19")
+        self.assertHoliday(Portugal(years=2017, subdiv="15"), "2017-09-15")
+        self.assertHoliday(Portugal(years=2017, subdiv="16"), "2017-08-20")
+        self.assertHoliday(Portugal(years=2017, subdiv="17"), "2017-06-13")
+        self.assertHoliday(Portugal(years=2017, subdiv="18"), "2017-09-21")
+        self.assertHoliday(Portugal(years=2017, subdiv="20"), "2017-06-05")
+        self.assertHoliday(Portugal(years=2017, subdiv="30"), "2017-07-01")
+        self.assertHoliday(Portugal(years=2017, subdiv="30"), "2017-12-26")
 
     def test_azores_day(self):
         name = "Dia da Região Autónoma dos Açores"
 
         self.assertNoHolidayName(name, Portugal(years=1980, subdiv="20"))
         self.assertHoliday(
-            self.district_20,
+            Portugal(years=range(2016, 2024), subdiv="20"),
             "2016-05-16",
             "2017-06-05",
             "2018-05-21",
@@ -224,7 +198,7 @@ class TestPortugal(TestCase):
             Portugal(years=range(1989, 2050), subdiv="30"),
         )
         self.assertHoliday(
-            self.district_30,
+            Portugal(years=range(2016, 2024), subdiv="30"),
             "2016-07-01",
             "2017-07-01",
             "2018-07-01",
@@ -240,7 +214,7 @@ class TestPortugal(TestCase):
 
         self.assertNoHolidayName(name, Portugal(years=2001, subdiv="30"))
         self.assertHoliday(
-            self.district_30,
+            Portugal(years=range(2016, 2024), subdiv="30"),
             "2016-12-26",
             "2017-12-26",
             "2018-12-26",
@@ -254,10 +228,7 @@ class TestPortugal(TestCase):
     def test_ext(self):
         # Christmas's Eve, S. Stephen & New Year's Eve
         self.assertHoliday(
-            self.ext,
-            "2017-12-24",
-            "2017-12-26",
-            "2017-12-31",
+            Portugal(years=range(2017, 2020), subdiv="Ext"),
             "2017-12-24",
             "2017-12-26",
             "2017-12-31",
