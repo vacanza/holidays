@@ -9,13 +9,17 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
+from datetime import timedelta as td
+
+from dateutil.easter import easter
+
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, DEC
-from holidays.holiday_base import DateArg, HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
+from holidays.holiday_base import HolidayBase
 
 
-class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Paraguay(HolidayBase):
     """
     https://www.ghp.com.py/news/feriados-nacionales-del-ano-2019-en-paraguay
     https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Paraguay
@@ -133,21 +137,15 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays):
         ),
     }
 
-    def __init__(self, *args, **kwargs):
-        ChristianHolidays.__init__(self)
-        InternationalHolidays.__init__(self)
-
-        super().__init__(*args, **kwargs)
-
-    def _add_holiday(self, name: str, *dt: DateArg) -> None:
-        if self.observed or not self._is_weekend(*dt):
-            super()._add_holiday(name, *dt)
+    def _add_holiday(self, dt: date, name: str) -> None:
+        if self.observed or not self._is_weekend(dt):
+            self[dt] = name
 
     def _populate(self, year):
         super()._populate(year)
 
         # New Year's Day
-        self._add_new_years_day("Año Nuevo [New Year's Day]")
+        self._add_holiday(date(year, JAN, 1), "Año Nuevo [New Year's Day]")
 
         # Patriots day
         dates_obs = {
@@ -156,29 +154,31 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays):
             2018: (FEB, 26),
             2022: (FEB, 28),
         }
-        self._add_holiday(
-            "Día de los Héroes de la Patria [Patriots Day]",
-            *dates_obs.get(year, (MAR, 1)),
-        )
+        self[
+            date(year, *dates_obs.get(year, (MAR, 1)))
+        ] = "Día de los Héroes de la Patria [Patriots Day]"
 
         # Holy Week
-        self._add_holy_thursday("Jueves Santo [Maundy Thursday]")
-        self._add_good_friday("Viernes Santo [Good Friday]")
-        self._add_easter_sunday("Día de Pascuas [Easter Day]")
+        easter_date = easter(year)
+        self[easter_date + td(days=-3)] = "Jueves Santo [Maundy Thursday]"
+        self[easter_date + td(days=-2)] = "Viernes Santo [Good Friday]"
+        self._add_holiday(easter_date, "Día de Pascuas [Easter Day]")
 
         # Labor Day
-        self._add_labour_day("Día del Trabajador [Labour Day]")
+        self._add_holiday(
+            date(year, MAY, 1), "Día del Trabajador [Labour Day]"
+        )
 
         # Independence Day
         name = "Día de la Independencia Nacional [Independence Day]"
         if year == 2021:
-            self._add_holiday(name, MAY, 14)
-            self._add_holiday(name, MAY, 15)
+            self[date(year, MAY, 14)] = name
+            self[date(year, MAY, 15)] = name
         elif year >= 2012:
-            self._add_holiday(name, MAY, 14)
-            self._add_holiday(name, MAY, 15)
+            self._add_holiday(date(year, MAY, 14), name)
+            self._add_holiday(date(year, MAY, 15), name)
         else:
-            self._add_holiday(name, MAY, 15)
+            self._add_holiday(date(year, MAY, 15), name)
 
         # Peace in Chaco Day.
         dates_obs = {
@@ -186,15 +186,14 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays):
             2018: (JUN, 11),
         }
         self._add_holiday(
+            date(year, *dates_obs.get(year, (JUN, 12))),
             "Día de la Paz del Chaco [Chaco Armistice Day]",
-            *dates_obs.get(year, (JUN, 12)),
         )
 
         # Asuncion Fundation's Day
         self._add_holiday(
+            date(year, AUG, 15),
             "Día de la Fundación de Asunción [Asuncion Foundation's Day]",
-            AUG,
-            15,
         )
 
         # Boqueron's Battle
@@ -207,19 +206,18 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays):
                 2022: (OCT, 3),
             }
             self._add_holiday(
+                date(year, *dates_obs.get(year, (SEP, 29))),
                 "Día de la Batalla de Boquerón [Boqueron Battle Day]",
-                *dates_obs.get(year, (SEP, 29)),
             )
 
         # Caacupe Virgin Day
         self._add_holiday(
+            date(year, DEC, 8),
             "Día de la Virgen de Caacupé [Caacupe Virgin Day]",
-            DEC,
-            8,
         )
 
         # Christmas
-        self._add_christmas_day("Navidad [Christmas]")
+        self[date(year, DEC, 25)] = "Navidad [Christmas]"
 
 
 class PY(Paraguay):

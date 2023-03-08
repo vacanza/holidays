@@ -89,8 +89,14 @@ generate pygettext .pot file first:
 
 If the template file is empty make sure that the country/market entity has the
 ``default_language`` attribute set and all holiday names are wrapped
-with ``_`` and ``tr`` helpers. Use ``tr`` (``from gettext import gettext as tr``)
-for special holidays (class level) and ``_`` for regular holidays (all other cases).
+with ``_`` (``from gettext import gettext as _``). Please note that for ``gettext``
+c-format style cases you'll need to override ``_`` in ``__init__`` with
+
+.. code-block:: python
+
+    global _
+    _ = self.gettext
+
 Use `ISO 639-1 codes`_ when adding new languages. Copy the generated template
 to all locale folders you're going to translate this country holiday names into
 (e.g., for Argentina: holidays/locale/en/LC_MESSAGES/AR.po - note the file extension difference here).
