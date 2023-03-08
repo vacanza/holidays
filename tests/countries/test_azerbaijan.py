@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.countries.azerbaijan import AZ, AZE, Azerbaijan
+from holidays.countries.azerbaijan import Azerbaijan, AZ, AZE
 from tests.common import TestCase
 
 

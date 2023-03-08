@@ -177,7 +177,7 @@ class Ukraine(HolidayBase):
         # Bloody_Sunday_(1905)
         if year <= 1950:
             self[date(year, JAN, 22)] = self.tr(
-                "День пам'яті 9 січня 1905 року"
+                "День памʼяті 9 січня 1905 року"
             )
 
         # Paris_Commune
