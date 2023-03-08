@@ -11,7 +11,7 @@
 
 from datetime import date
 from datetime import timedelta as td
-from gettext import gettext as tr
+from gettext import gettext as _
 
 from holidays.calendars import _ThaiLuniSolar
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
@@ -116,33 +116,33 @@ class Thailand(HolidayBase):
 
     # วันหยุดพิเศษ (เพิ่มเติม) - see Bank of Thailand's DB for Cross-Check.
 
-    thai_special_in_lieu_holidays = tr("วันหยุดชดเชย")
-    thai_election = tr("วันเลือกตั้ง")
-    thai_election_in_lieu = tr("ชดเชย%s") % thai_election
-    thai_bridge_public_holiday = tr("วันหยุดพิเศษ (เพิ่มเติม)")
+    thai_special_in_lieu_holidays = _("วันหยุดชดเชย")
+    thai_election = _("วันเลือกตั้ง")
+    thai_election_in_lieu = _("ชดเชย%s") % thai_election
+    thai_bridge_public_holiday = _("วันหยุดพิเศษ (เพิ่มเติม)")
 
     # Special Cases.
 
-    rama_ix_golden_jubilee = tr("พระราชพิธีกาญจนาภิเษก พ.ศ. 2539")
-    rama_ix_sixty_accession = tr(
+    rama_ix_golden_jubilee = _("พระราชพิธีกาญจนาภิเษก พ.ศ. 2539")
+    rama_ix_sixty_accession = _(
         "พระราชพิธีฉลองสิริราชสมบัติครบ 60 ปี พ.ศ. 2549"
     )
-    thai_military_emergency_lockdown = tr("วันหยุดพิเศษ (คมช.)")
-    thai_political_emergency_lockdown = tr("วันหยุดพิเศษ (การเมือง)")
-    thai_flood_2011_emergency_lockdown = tr(
+    thai_military_emergency_lockdown = _("วันหยุดพิเศษ (คมช.)")
+    thai_political_emergency_lockdown = _("วันหยุดพิเศษ (การเมือง)")
+    thai_flood_2011_emergency_lockdown = _(
         "วันหยุดพิเศษ (มหาอุทกภัย พ.ศ. 2554)"
     )
-    rama_ix_mourning = tr(
+    rama_ix_mourning = _(
         "วันหยุดพิเศษ (ร่วมถวายอาลัย ส่งดวงพระวิญญาณพระบรมศพ)"
     )
-    rama_ix_cremation = tr(
+    rama_ix_cremation = _(
         "วันพระราชพิธีถวายพระเพลิงพระบรมศพ"
         "พระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช"
     )
-    rama_x_coronation_celebrations = tr(
+    rama_x_coronation_celebrations = _(
         "พระราชพิธีบรมราชาภิเษก พระบาทสมเด็จพระวชิรเกล้าเจ้าอยู่หัว"
     )
-    songkran_festival_in_lieu_covid = tr("ชดเชย%s") % tr("วันสงกรานต์")
+    songkran_festival_in_lieu_covid = _("ชดเชย%s") % _("วันสงกรานต์")
 
     special_holidays = {
         # 1992-1994 (include In Lieus, Checked with Bank of Thailand Data).
@@ -252,6 +252,10 @@ class Thailand(HolidayBase):
         self.thls = _ThaiLuniSolar()
         super().__init__(**kwargs)
 
+        # Override gettext for `_("ชดเชย%s")` below.
+        global _
+        _ = self.gettext
+
     def _populate(self, year):
         # Due to Thai Calendar Migration, this is capped off at 1941.
         # But certain holidays were implemented before 1941.
@@ -261,7 +265,7 @@ class Thailand(HolidayBase):
         def _add_with_observed(dt, holiday_name) -> None:
             # TODO: add `if dt.year == year` check for Islamic holidays
             # which can straddle across gregorian years in southern region.
-            self[dt] = holiday_name
+            self._add_holiday(holiday_name, dt)
 
             """
             !!! If Public Holiday falls on weekends, (in lieu) on workday !!!
@@ -283,7 +287,7 @@ class Thailand(HolidayBase):
             if 1961 <= year <= 1973 or 1995 <= year <= 1997 or year >= 2001:
                 if self.observed and self._is_weekend(dt):
                     in_lieu = dt + td(days=+2 if self._is_saturday(dt) else +1)
-                    self[in_lieu] = _("ชดเชย%s") % holiday_name
+                    self._add_holiday(_("ชดเชย%s") % holiday_name, in_lieu)
 
         super()._populate(year)
 
@@ -310,9 +314,9 @@ class Thailand(HolidayBase):
 
         if self.observed and (1995 <= year <= 1997 or year >= 2001):
             if self._is_saturday(date(year - 1, DEC, 31)):
-                self[date(year, JAN, 3)] = new_years_eve_in_lieu
+                self._add_holiday(new_years_eve_in_lieu, JAN, 3)
             elif self._is_sunday(date(year - 1, DEC, 31)):
-                self[date(year, JAN, 2)] = new_years_eve_in_lieu
+                self._add_holiday(new_years_eve_in_lieu, JAN, 2)
 
         # Chakri Memorial Day.
         # วันจักรี
@@ -339,19 +343,19 @@ class Thailand(HolidayBase):
         songkran_festival = _("วันสงกรานต์")
 
         if 1948 <= year <= 1953:
-            self[date(year, APR, 13)] = songkran_festival
-            self[date(year, APR, 14)] = songkran_festival
-            self[date(year, APR, 15)] = songkran_festival
+            self._add_holiday(songkran_festival, APR, 13)
+            self._add_holiday(songkran_festival, APR, 14)
+            self._add_holiday(songkran_festival, APR, 15)
         elif 1957 <= year <= 1988:
             _add_with_observed(date(year, APR, 13), songkran_festival)
         elif 1989 <= year <= 1997:
-            self[date(year, APR, 12)] = songkran_festival
-            self[date(year, APR, 13)] = songkran_festival
-            self[date(year, APR, 14)] = songkran_festival
+            self._add_holiday(songkran_festival, APR, 12)
+            self._add_holiday(songkran_festival, APR, 13)
+            self._add_holiday(songkran_festival, APR, 14)
         elif year >= 1998 and year != 2020:
-            self[date(year, APR, 13)] = songkran_festival
-            self[date(year, APR, 14)] = songkran_festival
-            self[date(year, APR, 15)] = songkran_festival
+            self._add_holiday(songkran_festival, APR, 13)
+            self._add_holiday(songkran_festival, APR, 14)
+            self._add_holiday(songkran_festival, APR, 15)
 
         # Songkran Festival (in lieu).
         # วันหยุดชดเชยวันสงกรานต์
@@ -369,11 +373,11 @@ class Thailand(HolidayBase):
             dt = date(year, APR, 15) if year >= 2001 else date(year, APR, 14)
 
             if self._is_saturday(dt):
-                self[dt + td(days=+2)] = songkran_festival_in_lieu
+                self._add_holiday(songkran_festival_in_lieu, dt + td(days=+2))
             elif self._is_sunday(dt):
-                self[dt + td(days=+1)] = songkran_festival_in_lieu
+                self._add_holiday(songkran_festival_in_lieu, dt + td(days=+1))
             elif self._is_monday(dt):
-                self[dt + td(days=+1)] = songkran_festival_in_lieu
+                self._add_holiday(songkran_festival_in_lieu, dt + td(days=+1))
 
         # National Labour day.
         # วันแรงงานแห่งชาติ
@@ -568,7 +572,7 @@ class Thailand(HolidayBase):
         # TODO: Add check for 1941 if we support earlier dates.
         # This has its own in-lieu trigger.
 
-        self[date(year, DEC, 31)] = _("วันสิ้นปี")
+        self._add_holiday(_("วันสิ้นปี"), DEC, 31)
 
         # Thai Lunar Calendar Holidays
 
@@ -601,7 +605,7 @@ class Thailand(HolidayBase):
 
         asarnha_bucha_date = self.thls.asarnha_bucha_date(year)
         if asarnha_bucha_date:
-            self[asarnha_bucha_date] = _("วันอาสาฬหบูชา")
+            self._add_holiday(_("วันอาสาฬหบูชา"), asarnha_bucha_date)
 
         # Buddhist Lent Day.
         # วันเข้าพรรษา
@@ -610,7 +614,7 @@ class Thailand(HolidayBase):
 
         khao_phansa_date = self.thls.khao_phansa_date(year)
         if khao_phansa_date:
-            self[khao_phansa_date] = _("วันเข้าพรรษา")
+            self._add_holiday(_("วันเข้าพรรษา"), khao_phansa_date)
 
         # Asarnha Bucha/Buddhist Lent Day (in lieu).
         # วันหยุดชดเชยวันอาสาฬหบูชา
@@ -627,12 +631,14 @@ class Thailand(HolidayBase):
             and (1961 <= year <= 1973 or 1995 <= year <= 1997 or year >= 2001)
         ):
             if self._is_friday(asarnha_bucha_date):
-                self[asarnha_bucha_date + td(days=+3)] = _("ชดเชย%s") % _(
-                    "วันเข้าพรรษา"
+                self._add_holiday(
+                    _("ชดเชย%s") % _("วันเข้าพรรษา"),
+                    asarnha_bucha_date + td(days=+3),
                 )
             elif self._is_weekend(asarnha_bucha_date):
-                self[asarnha_bucha_date + td(days=+2)] = _("ชดเชย%s") % _(
-                    "วันอาสาฬหบูชา"
+                self._add_holiday(
+                    _("ชดเชย%s") % _("วันอาสาฬหบูชา"),
+                    asarnha_bucha_date + td(days=+2),
                 )
 
         # No Future Fixed Date Holidays

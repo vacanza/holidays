@@ -10,6 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import timedelta as td
+from gettext import gettext as _
 
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays

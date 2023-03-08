@@ -10,6 +10,8 @@
 #  License: MIT (see LICENSE file)
 
 
+from gettext import gettext as _
+
 from holidays.constants import JUL, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays

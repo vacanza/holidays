@@ -11,6 +11,7 @@
 
 from datetime import date
 from datetime import timedelta as td
+from gettext import gettext as _
 
 from dateutil.easter import EASTER_ORTHODOX, easter
 
@@ -28,11 +29,18 @@ class Ukraine(HolidayBase):
     country = "UA"
     default_language = "uk"
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        # Override gettext for `_("Вихідний за %s")` below.
+        global _
+        _ = self.gettext
+
     def _populate(self, year):
         def _add_with_observed(
             hol_date: date, hol_name: str, days: int = 1
         ) -> None:
-            self[hol_date] = hol_name
+            self._add_holiday(hol_name, hol_date)
             # 27.01.1995: holiday on weekend move to next workday
             # https://zakon.rada.gov.ua/laws/show/35/95-вр
             # 10.01.1998: cancelled
@@ -50,7 +58,7 @@ class Ukraine(HolidayBase):
                 obs_date = hol_date + td(
                     days=2 if self._is_saturday(hol_date) else days
                 )
-                self[obs_date] = _("Вихідний за %s") % hol_name
+                self._add_holiday(_("Вихідний за %s") % hol_name, obs_date)
 
         # The current set of holidays came into force in 1991
         # But most holiday days were implemented in 1918

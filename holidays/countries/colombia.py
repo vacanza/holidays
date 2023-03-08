@@ -11,6 +11,7 @@
 
 from datetime import date
 from datetime import timedelta as td
+from gettext import gettext as _
 
 from dateutil.easter import easter
 
@@ -48,17 +49,17 @@ class Colombia(HolidayBase):
         """
 
         if self.observed and not self._is_monday(dt) and dt.year >= 1984:
-            self[_get_nth_weekday_from(1, MON, dt)] = (
-                _("%s (Observado)") % name
+            self._add_holiday(
+                _("%s (Observado)") % name, _get_nth_weekday_from(1, MON, dt)
             )
         else:
-            self[dt] = name
+            self._add_holiday(name, dt)
 
     def _populate(self, year):
         super()._populate(year)
 
         # New Year's Day
-        self[date(year, JAN, 1)] = _("Año Nuevo")
+        self._add_holiday(_("Año Nuevo"), JAN, 1)
 
         if year >= 1951:
             # Epiphany
@@ -84,10 +85,10 @@ class Colombia(HolidayBase):
             )
 
         # Independence Day
-        self[date(year, JUL, 20)] = _("Día de la Independencia")
+        self._add_holiday(_("Día de la Independencia"), JUL, 20)
 
         # Battle of Boyaca
-        self[date(year, AUG, 7)] = _("Batalla de Boyacá")
+        self._add_holiday(_("Batalla de Boyacá"), AUG, 7)
 
         if year >= 1951:
             # Assumption of Mary
@@ -117,19 +118,19 @@ class Colombia(HolidayBase):
 
         if year >= 1951:
             # Immaculate Conception
-            self[date(year, DEC, 8)] = _("La Inmaculada Concepción")
+            self._add_holiday(_("La Inmaculada Concepción"), DEC, 8)
 
         # Christmas
-        self[date(year, DEC, 25)] = _("Navidad")
+        self._add_holiday(_("Navidad"), DEC, 25)
 
         easter_date = easter(year)
 
         if year >= 1951:
             # Maundy Thursday
-            self[easter_date + td(days=-3)] = _("Jueves Santo")
+            self._add_holiday(_("Jueves Santo"), easter_date + td(days=-3))
 
             # Good Friday
-            self[easter_date + td(days=-2)] = _("Viernes Santo")
+            self._add_holiday(_("Viernes Santo"), easter_date + td(days=-2))
 
             # Ascension of Jesus
             self._add_with_bridge(

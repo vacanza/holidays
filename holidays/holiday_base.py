@@ -11,6 +11,7 @@
 
 __all__ = ("DateLike", "HolidayBase", "HolidaySum")
 
+import builtins
 import copy
 import os
 import warnings
@@ -29,7 +30,7 @@ from holidays.constants import SAT, SUN
 DateArg = Union[date, Tuple[int, int]]
 DateLike = Union[date, datetime, str, float, int]
 
-tr = gettext
+gettext = gettext
 
 
 class HolidayBase(Dict[date, str]):
@@ -309,8 +310,8 @@ class HolidayBase(Dict[date, str]):
                         localedir=locale_dir,
                     )
                 translator.install()
-                global tr
-                tr = translator.gettext
+                global gettext
+                gettext = translator.gettext
 
         if isinstance(years, int):
             self.years = {years}
@@ -319,6 +320,10 @@ class HolidayBase(Dict[date, str]):
 
         for year in self.years:
             self._populate(year)
+
+    @property
+    def gettext(self):
+        return builtins.__dict__.get("_")
 
     def __setattr__(self, key: str, value: Any) -> None:
         dict.__setattr__(self, key, value)
@@ -705,7 +710,7 @@ class HolidayBase(Dict[date, str]):
         if dt.year != self._year:
             return None
 
-        self[dt] = tr(name)
+        self[dt] = gettext(name)
         return dt
 
     def _populate(self, year: int) -> Set[Optional[date]]:
@@ -730,7 +735,7 @@ class HolidayBase(Dict[date, str]):
 
         # Populate items from the special holidays list.
         for month, day, name in self.special_holidays.get(year, ()):
-            dates.add(self._add_holiday(tr(name), date(year, month, day)))
+            dates.add(self._add_holiday(gettext(name), date(year, month, day)))
 
         return dates
 

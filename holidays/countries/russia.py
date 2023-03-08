@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from gettext import gettext as _
 
 from holidays.constants import JAN, FEB, MAR, MAY, JUN, NOV
 from holidays.holiday_base import HolidayBase
@@ -29,33 +29,33 @@ class Russia(HolidayBase):
         # New Year Holidays.
         name = _("Новогодние каникулы")
         for day in range(1, 7):
-            self[date(year, JAN, day)] = name
-        self[date(year, JAN, 8)] = name
+            self._add_holiday(name, JAN, day)
+        self._add_holiday(name, JAN, 8)
 
         # Orthodox Christmas Day.
-        self[date(year, JAN, 7)] = _("Рождество Христово")
+        self._add_holiday(_("Рождество Христово"), JAN, 7)
 
         # Defender of the Fatherland Day.
-        self[date(year, FEB, 23)] = _("День защитника Отечества")
+        self._add_holiday(_("День защитника Отечества"), FEB, 23)
 
         # International Women's Day.
-        self[date(year, MAR, 8)] = _("Международный женский день")
+        self._add_holiday(_("Международный женский день"), MAR, 8)
 
         # Labour Day.
-        self[date(year, MAY, 1)] = _("Праздник Весны и Труда")
+        self._add_holiday(_("Праздник Весны и Труда"), MAY, 1)
 
         # Victory Day.
-        self[date(year, MAY, 9)] = _("День Победы")
+        self._add_holiday(_("День Победы"), MAY, 9)
 
         # Russia's Day.
-        self[date(year, JUN, 12)] = _("День России")
+        self._add_holiday(_("День России"), JUN, 12)
 
         if year >= 2005:
             # Unity Day.
-            self[date(year, NOV, 4)] = _("День народного единства")
+            self._add_holiday(_("День народного единства"), NOV, 4)
         else:
             # October Revolution Day.
-            self[date(year, NOV, 7)] = _("День Октябрьской революции")
+            self._add_holiday(_("День Октябрьской революции"), NOV, 7)
 
 
 class RU(Russia):

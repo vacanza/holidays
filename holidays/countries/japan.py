@@ -11,7 +11,7 @@
 
 from datetime import date, datetime, timezone
 from datetime import timedelta as td
-from gettext import gettext as tr
+from gettext import gettext as _
 
 from pymeeus.Epoch import Epoch
 from pymeeus.Sun import Sun
@@ -36,13 +36,13 @@ class Japan(HolidayBase):
     country = "JP"
     default_language = "ja"
     special_holidays = {
-        1959: ((APR, 10, tr("結婚の儀")),),  # The Crown Prince marriage ceremony.
-        1989: ((FEB, 24, tr("大喪の礼")),),  # State Funeral of Emperor Shōwa.
-        1990: ((NOV, 12, tr("即位礼正殿の儀")),),  # Enthronement ceremony.
-        1993: ((JUN, 9, tr("結婚の儀")),),  # The Crown Prince marriage ceremony.
+        1959: ((APR, 10, _("結婚の儀")),),  # The Crown Prince marriage ceremony.
+        1989: ((FEB, 24, _("大喪の礼")),),  # State Funeral of Emperor Shōwa.
+        1990: ((NOV, 12, _("即位礼正殿の儀")),),  # Enthronement ceremony.
+        1993: ((JUN, 9, _("結婚の儀")),),  # The Crown Prince marriage ceremony.
         2019: (
-            (MAY, 1, tr("天皇の即位の日")),  # Enthronement day.
-            (OCT, 22, tr("即位礼正殿の儀が行われる日")),  # Enthronement ceremony.
+            (MAY, 1, _("天皇の即位の日")),  # Enthronement day.
+            (OCT, 22, _("即位礼正殿の儀が行われる日")),  # Enthronement ceremony.
         ),
     }
 

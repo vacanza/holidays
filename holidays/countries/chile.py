@@ -11,15 +11,15 @@
 
 from datetime import date, datetime, timezone
 from datetime import timedelta as td
-from gettext import gettext as tr
+from gettext import gettext as _
 
-from dateutil.easter import easter
 from pymeeus.Epoch import Epoch
 from pymeeus.Sun import Sun
 
 from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
-from holidays.constants import JAN, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC, MON
+from holidays.constants import JAN, MAY, JUN, JUL, AUG, SEP, OCT, MON
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 # use standard library for timezone
 try:
@@ -28,7 +28,7 @@ except ImportError:  # pragma: no cover
     from backports.zoneinfo import ZoneInfo  # type: ignore[no-redef]
 
 
-class Chile(HolidayBase):
+class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://www.feriados.cl
     http://www.feriadoschilenos.cl/ (excellent history)
@@ -37,7 +37,7 @@ class Chile(HolidayBase):
 
     country = "CL"
     special_holidays = {
-        2022: ((SEP, 16, tr("Feriado nacional")),),
+        2022: ((SEP, 16, _("Feriado nacional")),),
     }
     default_language = "es"
     # ISO 3166-2 codes for the principal subdivisions, called regions
@@ -60,6 +60,11 @@ class Chile(HolidayBase):
         "VS",
     ]
 
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year):
         def _get_movable(hol_date: date) -> date:
             if year >= 2000:
@@ -70,45 +75,45 @@ class Chile(HolidayBase):
                     hol_date = _get_nth_weekday_from(-1, MON, hol_date)
             return hol_date
 
-        # Law 2.977 established official holidays for Chile
-        # in its current form
+        # Law 2.977 established official Chile holidays in its current form.
         if year <= 1914:
             return None
 
         super()._populate(year)
 
-        # New Year's Day (Law 2.977)
-        self[date(year, JAN, 1)] = _("Año Nuevo")
+        # New Year's Day (Law 2.977).
+        self._add_new_years_day(_("Año Nuevo"))
         # Day after, if it's a Sunday (Law 20.983)
         if year >= 2017 and self._is_sunday(date(year, JAN, 1)):
-            self[date(year, JAN, 2)] = _("Feriado nacional")
+            self._add_new_years_day_two(_("Feriado nacional"))
 
         # Holy Week (Law 2.977)
-        easter_date = easter(year)
-        self[easter_date + td(days=-2)] = _("Viernes Santo")
-        self[easter_date + td(days=-1)] = _("Sábado Santo")
+        self._add_good_friday(_("Viernes Santo"))
+        self._add_holy_saturday(_("Sábado Santo"))
 
-        # Ascension
+        # Ascension.
         if year <= 1967:
-            self[easter_date + td(days=+39)] = _("Ascensión del Señor")
+            self._add_ascension_thursday(_("Ascensión del Señor"))
 
-        # Corpus Christi
+        # Corpus Christi.
         if year <= 1967 or 1987 <= year <= 2006:
             # Law 19.668
-            delta = +60 if year <= 1999 else +57
-            self[easter_date + td(days=delta)] = _("Corpus Christi")
+            self._add_holiday(
+                _("Corpus Christi"),
+                self._easter_sunday + td(days=+60 if year <= 1999 else +57),
+            )
 
-        # Labour Day (Law 2.200, renamed with Law 18.018)
+        # Labour Day (Law 2.200, renamed with Law 18.018).
         if year >= 1932:
-            self[date(year, MAY, 1)] = _("Día Nacional del Trabajo")
+            self._add_labour_day(_("Día Nacional del Trabajo"))
 
-        # Naval Glories Day (Law 2.977)
-        self[date(year, MAY, 21)] = _("Día de las Glorias Navales")
+        # Naval Glories Day (Law 2.977).
+        self._add_holiday(_("Día de las Glorias Navales"), MAY, 21)
 
-        # National Day of Indigenous Peoples
+        # National Day of Indigenous Peoples.
         name = _("Día Nacional de los Pueblos Indígenas")
         if year == 2021:
-            self[date(year, JUN, 21)] = name
+            self._add_holiday(name, JUN, 21)
         elif year >= 2022:
             epoch = Sun.get_equinox_solstice(year, target="summer")
             # Received date for UTC timezone needs to be adjusted
@@ -118,62 +123,64 @@ class Chile(HolidayBase):
             adjusted_date = datetime(*equinox, tzinfo=timezone.utc).astimezone(
                 ZoneInfo("America/Santiago")
             )
-            self[date(year, JUN, adjusted_date.day)] = name
+            self._add_holiday(name, JUN, adjusted_date.day)
 
         # Saint Peter and Saint Paul (Law 16.840, Law 18.432)
         if year <= 1967 or year >= 1986:
-            self[_get_movable(date(year, JUN, 29))] = _(
-                "San Pedro y San Pablo"
+            self._add_holiday(
+                _("San Pedro y San Pablo"), _get_movable(date(year, JUN, 29))
             )
 
         # Day of Virgin of Carmen (Law 20.148)
         if year >= 2007:
-            self[date(year, JUL, 16)] = _("Virgen del Carmen")
+            self._add_holiday(_("Virgen del Carmen"), JUL, 16)
 
-        # Day of Assumption of the Virgin (Law 2.977)
-        self[date(year, AUG, 15)] = _("Asunción de la Virgen")
+        # Day of Assumption of the Virgin (Law 2.977).
+        self._add_assumption_of_mary_day(_("Asunción de la Virgen"))
 
-        # Day of National Liberation (Law 18.026)
+        # Day of National Liberation (Law 18.026).
         if 1981 <= year <= 1998:
-            self[date(year, SEP, 11)] = _("Día de la Liberación Nacional")
+            self._add_holiday(_("Día de la Liberación Nacional"), SEP, 11)
         # Day of National Unity (Law 19.588, Law 19.793)
         elif 1999 <= year <= 2001:
-            self[_get_nth_weekday_of_month(1, MON, SEP, year)] = _(
-                "Día de la Unidad Nacional"
+            self._add_holiday(
+                _("Día de la Unidad Nacional"),
+                _get_nth_weekday_of_month(1, MON, SEP, year),
             )
 
-        # National Holiday Friday preceding Independence Day (Law 20.983)
+        # National Holiday Friday preceding Independence Day (Law 20.983).
         # Monday, September 17, 2007, is declared a holiday.
-        if year >= 2017 and self._is_saturday(date(year, SEP, 18)):
-            self[date(year, SEP, 17)] = _("Fiestas Patrias")
+        if year >= 2017 and self._is_saturday(year, SEP, 18):
+            self._add_holiday(_("Fiestas Patrias"), SEP, 17)
 
-        # National Holiday Monday preceding Independence Day (Law 20.215)
-        if year >= 2007 and self._is_tuesday(date(year, SEP, 18)):
-            self[date(year, SEP, 17)] = _("Fiestas Patrias")
+        # National Holiday Monday preceding Independence Day (Law 20.215).
+        if year >= 2007 and self._is_tuesday(year, SEP, 18):
+            self._add_holiday(_("Fiestas Patrias"), SEP, 17)
 
-        # Independence Day (Law 2.977)
-        self[date(year, SEP, 18)] = _("Día de la Independencia")
+        # Independence Day (Law 2.977).
+        self._add_holiday(_("Día de la Independencia"), SEP, 18)
 
-        # Day of Glories of the Army of Chile (Law 2.977)
-        self[date(year, SEP, 19)] = _("Día de las Glorias del Ejército")
+        # Day of Glories of the Army of Chile (Law 2.977).
+        self._add_holiday(_("Día de las Glorias del Ejército"), SEP, 19)
 
-        # National Holiday Friday following Army Day (Law 20.215)
-        if year >= 2008 and self._is_thursday(date(year, SEP, 19)):
-            self[date(year, SEP, 20)] = _("Fiestas Patrias")
+        # National Holiday Friday following Army Day (Law 20.215).
+        if year >= 2008 and self._is_thursday(year, SEP, 19):
+            self._add_holiday(_("Fiestas Patrias"), SEP, 20)
 
-        # Decree-law 636, Law 8.223
+        # Decree-law 636, Law 8.223.
         if 1932 <= year <= 1944:
-            self[date(year, SEP, 20)] = _("Fiestas Patrias")
+            self._add_holiday(_("Fiestas Patrias"), SEP, 20)
 
-        # Columbus day (Law 3.810)
+        # Columbus day (Law 3.810).
         if year >= 1922 and year != 1973:
-            self[_get_movable(date(year, OCT, 12))] = (
+            self._add_holiday(
                 _("Día del Encuentro de dos Mundos")
                 if year >= 2000
-                else _("Día de la Raza")
+                else _("Día de la Raza"),
+                _get_movable(date(year, OCT, 12)),
             )
 
-        # National Day of the Evangelical and Protestant Churches (Law 20.299)
+        # National Day of the Evangelical and Protestant Churches (Law 20.299).
         if year >= 2008:
             dt = date(year, OCT, 31)
             # This holiday is moved to the preceding Friday
@@ -183,33 +190,39 @@ class Chile(HolidayBase):
                 dt += td(days=+2)
             elif self._is_tuesday(dt):
                 dt += td(days=-4)
-            self[dt] = _(
-                "Día Nacional de las Iglesias Evangélicas y Protestantes"
+            self._add_holiday(
+                _("Día Nacional de las Iglesias Evangélicas y Protestantes"),
+                dt,
             )
 
-        # All Saints Day (Law 2.977)
-        self[date(year, NOV, 1)] = _("Día de Todos los Santos")
+        # All Saints Day (Law 2.977).
+        self._add_all_saints_day(_("Día de Todos los Santos"))
 
-        # Immaculate Conception (Law 2.977)
-        self[date(year, DEC, 8)] = _("La Inmaculada Concepción")
+        # Immaculate Conception (Law 2.977).
+        self._add_immaculate_conception_day(_("La Inmaculada Concepción"))
 
         if 1944 <= year <= 1988:
-            self[date(year, DEC, 24)] = _("Víspera de Navidad")
+            # Christmas Eve.
+            self._add_christmas_eve(_("Víspera de Navidad"))
 
-        # Christmas (Law 2.977)
-        self[date(year, DEC, 25)] = _("Navidad")
+        # Christmas (Law 2.977).
+        self._add_christmas_day(_("Navidad"))
 
-        # región de Arica y Parinacota
+        # Law 20.663.
         if self.subdiv == "AP" and year >= 2013:
-            # Law 20.663
-            self[date(year, JUN, 7)] = _("Asalto y Toma del Morro de Arica")
+            # Región de Arica y Parinacota.
+            self._add_holiday(_("Asalto y Toma del Morro de Arica"), JUN, 7)
 
-        # región de Ñuble
+        # Law 20.678.
         if self.subdiv == "NB" and year >= 2014:
-            # Law 20.678
-            self[date(year, AUG, 20)] = _(
-                "Nacimiento del Prócer de la Independencia"
-                " (Chillán y Chillán Viejo)"
+            # Región de Ñuble
+            self._add_holiday(
+                _(
+                    "Nacimiento del Prócer de la Independencia "
+                    "(Chillán y Chillán Viejo)"
+                ),
+                AUG,
+                20,
             )
 
 

@@ -19,6 +19,8 @@ from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC, SUN, MON
 from holidays.holiday_base import HolidayBase
 
+# from gettext import gettext as _
+
 
 class Canada(HolidayBase):
     country = "CA"
@@ -58,10 +60,11 @@ class Canada(HolidayBase):
 
         # New Year's Day.
         name = _("New Year's Day")
-        self[date(year, JAN, 1)] = name
+        self._add_holiday(name, JAN, 1)
         if self.observed and self._is_weekend(JAN, 1):
-            self[_get_nth_weekday_of_month(1, MON, JAN, year)] = (
-                _("%s (Observed)") % name
+            self._add_holiday(
+                _("%s (Observed)") % name,
+                _get_nth_weekday_of_month(1, MON, JAN, year),
             )
 
         # Family Day / Louis Riel Day (MB) / Islander Day (PE)
@@ -72,8 +75,8 @@ class Canada(HolidayBase):
             or (self.subdiv == "ON" and year >= 2008)
             or (self.subdiv == "NB" and year >= 2018)
         ):
-            self[_get_nth_weekday_of_month(3, MON, FEB, year)] = _(
-                "Family Day"
+            self._add_holiday(
+                _("Family Day"), _get_nth_weekday_of_month(3, MON, FEB, year)
             )
         elif self.subdiv == "BC":
             if 2013 <= year <= 2018:

@@ -11,6 +11,7 @@
 
 from datetime import date
 from datetime import timedelta as td
+from gettext import gettext as _
 
 from holidays.calendars import _get_nth_weekday_from, JULIAN_CALENDAR
 from holidays.calendars import GREGORIAN_CALENDAR

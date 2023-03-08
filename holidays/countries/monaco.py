@@ -11,15 +11,14 @@
 
 from datetime import date
 from datetime import timedelta as td
-from gettext import gettext as tr
+from gettext import gettext as _
 
-from dateutil.easter import easter
-
-from holidays.constants import JAN, MAY, AUG, NOV, DEC
+from holidays.constants import JAN, NOV, DEC
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Monaco(HolidayBase):
+class Monaco(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Monaco
     https://en.service-public-entreprises.gouv.mc/Employment-and-social-affairs/Employment-regulations/Leave/Public-Holidays  # noqa: E501
@@ -28,60 +27,65 @@ class Monaco(HolidayBase):
     country = "MC"
     default_language = "fr"
     special_holidays = {
-        2015: ((JAN, 7, tr("Jour férié")),),
+        2015: ((JAN, 7, _("Jour férié")),),
     }
 
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year):
-        def _add_with_observed(hol_date: date, hol_name: str) -> None:
-            self[hol_date] = hol_name
-            if self.observed and self._is_sunday(hol_date):
-                self[hol_date + td(days=+1)] = _("%s (Observé)") % hol_name
-
         super()._populate(year)
+        observed_dates = set()
 
-        # New Year's Day
-        _add_with_observed(date(year, JAN, 1), _("Le jour de l'An"))
+        # New Year's Day.
+        observed_dates.add(self._add_new_years_day(_("Le jour de l'An")))
 
-        # Saint Dévote's Day
-        self[date(year, JAN, 27)] = _("La Sainte Dévote")
+        # Saint Dévote's Day.
+        self._add_holiday(_("La Sainte Dévote"), JAN, 27)
 
-        easter_date = easter(year)
+        # Easter Monday.
+        self._add_easter_monday(_("Le lundi de Pâques"))
 
-        # Easter Monday
-        self[easter_date + td(days=+1)] = _("Le lundi de Pâques")
+        # Labour Day.
+        observed_dates.add(self._add_labour_day(_("Fête de la Travaille")))
 
-        # Labour Day
-        _add_with_observed(date(year, MAY, 1), _("Fête de la Travaille"))
+        # Ascension's Day.
+        self._add_ascension_thursday(_("L'Ascension"))
 
-        # Ascension's Day
-        self[easter_date + td(days=+39)] = _("L'Ascension")
+        # Whit Monday.
+        self._add_whit_monday(_("Le lundi de Pentecôte"))
 
-        # Whit Monday
-        self[easter_date + td(days=+50)] = _("Le lundi de Pentecôte")
+        # Corpus Christi.
+        self._add_corpus_christi_day(_("La Fête Dieu"))
 
-        # Corpus Christi
-        self[easter_date + td(days=+60)] = _("La Fête Dieu")
-
-        _add_with_observed(
-            date(year, AUG, 15),
-            # Assumption's Day
-            _("L'Assomption de Marie"),
+        # Assumption's Day.
+        observed_dates.add(
+            self._add_assumption_of_mary_day(_("L'Assomption de Marie"))
         )
 
-        # All Saints' Day
-        _add_with_observed(date(year, NOV, 1), _("La Toussaint"))
+        # All Saints' Day.
+        observed_dates.add(self._add_all_saints_day(_("La Toussaint")))
 
-        # Prince's Day
-        _add_with_observed(date(year, NOV, 19), _("La Fête du Prince"))
+        # Prince's Day.
+        observed_dates.add(self._add_holiday(_("La Fête du Prince"), NOV, 19))
 
         dt = date(year, DEC, 8)
         if year >= 2019 and self._is_sunday(dt):
             dt += td(days=+1)
         # Immaculate Conception's Day
-        self[dt] = _("L'Immaculée Conception")
+        self._add_holiday(_("L'Immaculée Conception"), dt)
 
-        # Christmas Day
-        _add_with_observed(date(year, DEC, 25), _("Noël"))
+        # Christmas Day.
+        observed_dates.add(self._add_christmas_day(_("Noël")))
+
+        if self.observed:
+            for dt in observed_dates:
+                if self._is_sunday(dt):
+                    self._add_holiday(
+                        _("%s (Observé)") % self[dt], dt + td(days=+1)
+                    )
 
 
 class MC(Monaco):

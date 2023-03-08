@@ -9,6 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from gettext import gettext as _
+
 from holidays.calendars import JULIAN_CALENDAR
 from holidays.constants import MAR, MAY, SEP
 from holidays.holiday_base import HolidayBase
@@ -52,7 +54,6 @@ class Ethiopia(
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self)
-
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
