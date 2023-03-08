@@ -137,7 +137,7 @@ class Paraguay(HolidayBase):
         ),
     }
 
-    def _add_holiday(self, dt: date, name: str) -> None:
+    def _add_holiday(self, name: str, dt: date) -> None:
         if self.observed or not self._is_weekend(dt):
             self[dt] = name
 
@@ -145,7 +145,7 @@ class Paraguay(HolidayBase):
         super()._populate(year)
 
         # New Year's Day
-        self._add_holiday(date(year, JAN, 1), "Año Nuevo [New Year's Day]")
+        self._add_holiday("Año Nuevo [New Year's Day]", date(year, JAN, 1))
 
         # Patriots day
         dates_obs = {
@@ -162,11 +162,11 @@ class Paraguay(HolidayBase):
         easter_date = easter(year)
         self[easter_date + td(days=-3)] = "Jueves Santo [Maundy Thursday]"
         self[easter_date + td(days=-2)] = "Viernes Santo [Good Friday]"
-        self._add_holiday(easter_date, "Día de Pascuas [Easter Day]")
+        self._add_holiday("Día de Pascuas [Easter Day]", easter_date)
 
         # Labor Day
         self._add_holiday(
-            date(year, MAY, 1), "Día del Trabajador [Labour Day]"
+            "Día del Trabajador [Labour Day]", date(year, MAY, 1)
         )
 
         # Independence Day
@@ -175,10 +175,10 @@ class Paraguay(HolidayBase):
             self[date(year, MAY, 14)] = name
             self[date(year, MAY, 15)] = name
         elif year >= 2012:
-            self._add_holiday(date(year, MAY, 14), name)
-            self._add_holiday(date(year, MAY, 15), name)
+            self._add_holiday(name, date(year, MAY, 14))
+            self._add_holiday(name, date(year, MAY, 15))
         else:
-            self._add_holiday(date(year, MAY, 15), name)
+            self._add_holiday(name, date(year, MAY, 15))
 
         # Peace in Chaco Day.
         dates_obs = {
@@ -186,17 +186,17 @@ class Paraguay(HolidayBase):
             2018: (JUN, 11),
         }
         self._add_holiday(
-            date(year, *dates_obs.get(year, (JUN, 12))),
             "Día de la Paz del Chaco [Chaco Armistice Day]",
+            date(year, *dates_obs.get(year, (JUN, 12))),
         )
 
-        # Asuncion Fundation's Day
+        # Asuncion Fundation's Day.
         self._add_holiday(
-            date(year, AUG, 15),
             "Día de la Fundación de Asunción [Asuncion Foundation's Day]",
+            date(year, AUG, 15),
         )
 
-        # Boqueron's Battle
+        # Boqueron's Battle.
         if year >= 2000:
             dates_obs = {
                 2015: (SEP, 28),
@@ -206,14 +206,14 @@ class Paraguay(HolidayBase):
                 2022: (OCT, 3),
             }
             self._add_holiday(
-                date(year, *dates_obs.get(year, (SEP, 29))),
                 "Día de la Batalla de Boquerón [Boqueron Battle Day]",
+                date(year, *dates_obs.get(year, (SEP, 29))),
             )
 
         # Caacupe Virgin Day
         self._add_holiday(
-            date(year, DEC, 8),
             "Día de la Virgen de Caacupé [Caacupe Virgin Day]",
+            date(year, DEC, 8),
         )
 
         # Christmas
