@@ -1,7 +1,7 @@
 exclude tests/*
-include *.mo
+recursive-include holidays/locale *.mo
+recursive-include holidays/locale *.po
 include *.py
-include *.po
 include *.rst
 include CHANGES
 include holidays/py.typed
