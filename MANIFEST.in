@@ -1,9 +1,6 @@
-exclude tests/*
-recursive-include holidays/locale *.mo
-recursive-include holidays/locale *.po
-include *.py
-include *.rst
 include CHANGES
 include holidays/py.typed
-include LICENSE
-include scripts/l10n/msgfmt.py
+recursive-include holidays *.py
+recursive-include holidays/locale *.mo
+recursive-include holidays/locale *.po
+recursive-include scripts/l10n *.py
