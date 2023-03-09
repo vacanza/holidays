@@ -1,0 +1,72 @@
+# Nicaragua holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.22\n"
+"POT-Creation-Date: 2023-03-05 12:23+0200\n"
+"PO-Revision-Date: 2023-03-05 12:43+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: holidays/countries/nicaragua.py:54
+msgid "Año Nuevo"
+msgstr ""
+
+#. Maundy Thursday.
+#: holidays/countries/nicaragua.py:58
+msgid "Jueves Santo"
+msgstr ""
+
+#. Good Friday.
+#: holidays/countries/nicaragua.py:60
+msgid "Viernes Santo"
+msgstr ""
+
+#. Labour Day.
+#: holidays/countries/nicaragua.py:62
+msgid "Día del Trabajo"
+msgstr ""
+
+#. Revolution Day.
+#: holidays/countries/nicaragua.py:66
+msgid "Día de la Revolución"
+msgstr ""
+
+#. Battle of San Jacinto Day.
+#: holidays/countries/nicaragua.py:69
+msgid "Batalla de San Jacinto"
+msgstr ""
+
+#. Independence Day.
+#: holidays/countries/nicaragua.py:71
+msgid "Día de la Independencia"
+msgstr ""
+
+#. Virgin's Day.
+#: holidays/countries/nicaragua.py:73
+msgid "Concepción de María"
+msgstr ""
+
+#. Christmas.
+#: holidays/countries/nicaragua.py:75
+msgid "Navidad"
+msgstr ""
+
+#. Descent of Saint Dominic.
+#: holidays/countries/nicaragua.py:80
+msgid "Bajada de Santo Domingo"
+msgstr ""
+
+#. Ascent of Saint Dominic.
+#: holidays/countries/nicaragua.py:82
+msgid "Subida de Santo Domingo"
+msgstr ""
