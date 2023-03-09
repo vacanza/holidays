@@ -93,7 +93,7 @@ class Portugal(HolidayBase):
 
         # Revoked holidays in 2013–2015
 
-        if year < 2013 or year > 2015:
+        if year <= 2012 or year >= 2016:
             self[easter_date + td(days=+60)] = self.tr("Corpo de Deus")
             if year >= 1910:
                 self[date(year, OCT, 5)] = self.tr("Implantação da República")
