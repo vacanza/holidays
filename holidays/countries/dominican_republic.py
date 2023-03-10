@@ -15,8 +15,8 @@ from datetime import timedelta as td
 from dateutil.easter import easter
 
 from holidays.calendars import _get_nth_weekday_from
-from holidays.constants import JAN, FEB, MAY, JUN, AUG, SEP, NOV, DEC, TUE
-from holidays.constants import MON, WED, THU, FRI, SUN
+from holidays.constants import JAN, FEB, MAY, JUN, AUG, SEP, NOV, DEC, MON
+from holidays.constants import TUE, WED, THU, FRI, SUN
 from holidays.holiday_base import HolidayBase
 
 
@@ -27,6 +27,7 @@ class DominicanRepublic(HolidayBase):
     """
 
     country = "DO"
+    default_language = "es"
 
     @staticmethod
     def __change_day_by_law(holiday, latest_days=(THU, FRI)):
@@ -41,59 +42,55 @@ class DominicanRepublic(HolidayBase):
     def _populate(self, year):
         super()._populate(year)
 
-        # New Year's Day
-        self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
+        # New Year's Day.
+        self[date(year, JAN, 1)] = _("Año Nuevo")
 
-        # Epiphany
         epiphany_day = self.__change_day_by_law(date(year, JAN, 6))
-        self[epiphany_day] = "Día de los Santos Reyes [Epiphany]"
+        # Epiphany.
+        self[epiphany_day] = _("Día de los Santos Reyes")
 
-        # Lady of Altagracia
-        self[date(year, JAN, 21)] = "Día de la Altagracia [Lady of Altagracia]"
+        # Lady of Altagracia.
+        self[date(year, JAN, 21)] = _("Día de la Altagracia")
 
-        # Juan Pablo Duarte Day
         duarte_day = self.__change_day_by_law(date(year, JAN, 26))
-        self[duarte_day] = "Día de Duarte [Juan Pablo Duarte Day]"
+        # Juan Pablo Duarte Day.
+        self[duarte_day] = _("Día de Duarte")
 
-        # Independence Day
-        self[date(year, FEB, 27)] = "Día de Independencia [Independence Day]"
+        # Independence Day.
+        self[date(year, FEB, 27)] = _("Día de Independencia")
 
         easter_date = easter(year)
 
-        # Good Friday
-        self[easter_date + td(days=-2)] = "Viernes Santo [Good Friday]"
+        # Good Friday.
+        self[easter_date + td(days=-2)] = _("Viernes Santo")
 
-        # Labor Day
         labor_day = self.__change_day_by_law(
             date(year, MAY, 1), (THU, FRI, SUN)
         )
-        self[labor_day] = "Día del Trabajo [Labor Day]"
+        # Labor Day.
+        self[labor_day] = _("Día del Trabajo")
 
-        # Feast of Corpus Christi
-        self[
-            easter_date + td(days=+60)
-        ] = "Corpus Christi [Feast of Corpus Christi]"
+        # Feast of Corpus Christi.
+        self[easter_date + td(days=+60)] = _("Corpus Christi")
 
-        # Restoration Day
         # Judgment No. 14 of Feb 20, 2008 of the Supreme Court of Justice
         restoration_day = (
             date(year, AUG, 16)
             if year <= 2007 and year % 4 == 0
             else self.__change_day_by_law(date(year, AUG, 16))
         )
-        self[restoration_day] = "Día de la Restauración [Restoration Day]"
+        # Restoration Day.
+        self[restoration_day] = _("Día de la Restauración")
 
-        # Our Lady of Mercedes Day
-        self[
-            date(year, SEP, 24)
-        ] = "Día de las Mercedes [Our Lady of Mercedes Day]"
+        # Our Lady of Mercedes Day.
+        self[date(year, SEP, 24)] = _("Día de las Mercedes")
 
-        # Constitution Day
         constitution_day = self.__change_day_by_law(date(year, NOV, 6))
-        self[constitution_day] = "Día de la Constitución [Constitution Day]"
+        # Constitution Day.
+        self[constitution_day] = _("Día de la Constitución")
 
-        # Christmas Day
-        self[date(year, DEC, 25)] = "Día de Navidad [Christmas Day]"
+        # Christmas Day.
+        self[date(year, DEC, 25)] = _("Día de Navidad")
 
 
 class DO(DominicanRepublic):

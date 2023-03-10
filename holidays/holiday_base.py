@@ -864,19 +864,15 @@ country_holidays('CA') + country_holidays('MX')
         >>> dates = sorted(nafta_holidays.items(), key=lambda x: x[0])
         >>> from pprint import pprint
         >>> pprint(dates[:10], width=72)
-        [(datetime.date(2020, 1, 1), "Año Nuevo [New Year's Day]"),
+        [(datetime.date(2020, 1, 1), "Año Nuevo"),
          (datetime.date(2020, 1, 20), 'Martin Luther King Jr. Day'),
          (datetime.date(2020, 2, 3),
-          'Día de la Constitución [Constitution Day] (Observed)'),
-         (datetime.date(2020, 2, 5),
-          'Día de la Constitución [Constitution Day]'),
+          'Día de la Constitución'),
          (datetime.date(2020, 2, 17), "Washington's Birthday, Family Day"),
          (datetime.date(2020, 3, 16),
-          "Natalicio de Benito Juárez [Benito Juárez's birthday] (Observed)"),
-         (datetime.date(2020, 3, 21),
-          "Natalicio de Benito Juárez [Benito Juárez's birthday]"),
+          "Natalicio de Benito Juárez"),
          (datetime.date(2020, 4, 10), 'Good Friday'),
-         (datetime.date(2020, 5, 1), 'Día del Trabajo [Labour Day]'),
+         (datetime.date(2020, 5, 1), 'Día del Trabajo'),
          (datetime.date(2020, 5, 18), 'Victoria Day')]
         """
         # Store originals in the holidays attribute.

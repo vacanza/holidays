@@ -21,7 +21,8 @@ class Denmark(HolidayBase, ChristianHolidays, InternationalHolidays):
     Denmark holidays.
 
     References:
-     - https://en.wikipedia.org/wiki/Public_holidays_in_Denmark
+    - https://en.wikipedia.org/wiki/Public_holidays_in_Denmark
+    - https://www.ft.dk/samling/20222/lovforslag/l13/index.htm
     """
 
     country = "DK"
@@ -30,7 +31,6 @@ class Denmark(HolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -54,10 +54,12 @@ class Denmark(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Easter Monday.
         self._add_easter_monday(_("Anden påskedag"))
 
-        # Great Day of Prayers.
-        self._add_holiday(
-            _("Store bededag"), self._easter_sunday + td(days=+26)
-        )
+        # See https://www.ft.dk/samling/20222/lovforslag/l13/index.htm
+        if year <= 2023:
+            # Great Day of Prayers.
+            self._add_holiday(
+                _("Store bededag"), self._easter_sunday + td(days=+26)
+            )
 
         # Ascension Day.
         self._add_ascension_thursday(_("Kristi himmelfartsdag"))
