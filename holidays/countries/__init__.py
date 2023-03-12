@@ -33,6 +33,7 @@ from .canada import Canada, CA, CAN
 from .chile import Chile, CL, CHL
 from .china import China, CN, CHN
 from .colombia import Colombia, CO, COL
+from .costa_rica import CostaRica, CR, CRI
 from .croatia import Croatia, HR, HRV
 from .cuba import Cuba, CU, CUB
 from .curacao import Curacao, CW, CUW
