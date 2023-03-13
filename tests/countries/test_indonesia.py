@@ -11,7 +11,7 @@
 
 from datetime import date
 
-from holidays.countries.indonesia import Indonesia, ID, IDN
+from holidays.countries.indonesia import ID, IDN, Indonesia
 from tests.common import TestCase
 
 

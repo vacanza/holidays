@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.21\n"
-"POT-Creation-Date: 2023-03-01 15:30-0800\n"
-"PO-Revision-Date: 2023-03-05 13:24+0200\n"
+"Project-Id-Version: Python Holidays 0.20\n"
+"POT-Creation-Date: 2023-02-21 15:18+0200\n"
+"PO-Revision-Date: 2023-02-21 15:19+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: uk\n"
@@ -30,7 +30,7 @@ msgstr "Великий четвер"
 #. Good Friday
 #: holidays/countries/peru.py:41
 msgid "Viernes Santo"
-msgstr "Страсна пʼятниця"
+msgstr "Страсна п'ятниця"
 
 #. Easter Sunday
 #: holidays/countries/peru.py:44
@@ -80,7 +80,7 @@ msgstr "День усіх святих"
 #. Immaculate Conception
 #: holidays/countries/peru.py:72
 msgid "Inmaculada Concepción"
-msgstr "Непорочне зачаття Діви Марії"
+msgstr "Свято Непорочного зачаття Пресвятої Діви Марії"
 
 #. Battle of Ayacucho
 #: holidays/countries/peru.py:76

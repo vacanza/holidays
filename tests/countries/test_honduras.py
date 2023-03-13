@@ -9,16 +9,15 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.countries.honduras import Honduras, HN, HND
+from holidays.countries.honduras import HN, HND, Honduras
 from tests.common import TestCase
 
 
 class TestHonduras(TestCase):
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass(Honduras)
+    def setUp(self):
+        self.holidays = Honduras()
 
-    def test_country_aliases(self):
+    def test_aliases(self):
         self.assertCountryAliases(Honduras, HN, HND)
 
     def test_2014(self):
@@ -70,16 +69,20 @@ class TestHonduras(TestCase):
 
     def test_2022(self):
         self.assertHolidays(
-            ("2022-01-01", "Año Nuevo"),
-            ("2022-04-14", "Día de las Américas; Jueves Santo"),
-            ("2022-04-15", "Viernes Santo"),
-            ("2022-04-16", "Sábado de Gloria"),
-            ("2022-05-01", "Día del Trabajo"),
-            ("2022-09-15", "Día de la Independencia"),
-            ("2022-10-05", "Semana Morazánica"),
-            ("2022-10-06", "Semana Morazánica"),
-            ("2022-10-07", "Semana Morazánica"),
-            ("2022-12-25", "Navidad"),
+            ("2022-01-01", "Año Nuevo [New Year's Day]"),
+            (
+                "2022-04-14",
+                "Día de las Américas [Panamerican Day]; "
+                "Jueves Santo [Maundy Thursday]",
+            ),
+            ("2022-04-15", "Viernes Santo [Good Friday]"),
+            ("2022-04-16", "Sábado de Gloria [Holy Saturday]"),
+            ("2022-05-01", "Día del Trabajo [Labor Day]"),
+            ("2022-09-15", "Día de la Independencia [Independence Day]"),
+            ("2022-10-05", "Semana Morazánica [Morazan Weekend]"),
+            ("2022-10-06", "Semana Morazánica [Morazan Weekend]"),
+            ("2022-10-07", "Semana Morazánica [Morazan Weekend]"),
+            ("2022-12-25", "Navidad [Christmas]"),
         )
 
     def test_2025(self):
@@ -96,41 +99,3 @@ class TestHonduras(TestCase):
             "2025-10-03",
             "2025-12-25",
         )
-
-    def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                hn = Honduras(language=language)
-                self.assertEqual(hn["2022-01-01"], "Año Nuevo")
-                self.assertEqual(hn["2022-12-25"], "Navidad")
-
-        run_tests((Honduras.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((Honduras.default_language,))
-
-    def test_l10n_en_us(self):
-        en_us = "en_US"
-
-        hn = Honduras(language=en_us)
-        self.assertEqual(hn["2022-01-01"], "New Year's Day")
-        self.assertEqual(hn["2022-12-25"], "Christmas")
-
-        self.set_language(en_us)
-        for language in (None, en_us, "invalid"):
-            hn = Honduras(language=language)
-            self.assertEqual(hn["2022-01-01"], "New Year's Day")
-            self.assertEqual(hn["2022-12-25"], "Christmas")
-
-    def test_l10n_uk(self):
-        uk = "uk"
-
-        hn = Honduras(language=uk)
-        self.assertEqual(hn["2022-01-01"], "Новий рік")
-        self.assertEqual(hn["2022-12-25"], "Різдво Христове")
-
-        self.set_language(uk)
-        for language in (None, uk, "invalid"):
-            hn = Honduras(language=language)
-            self.assertEqual(hn["2022-01-01"], "Новий рік")
-            self.assertEqual(hn["2022-12-25"], "Різдво Христове")

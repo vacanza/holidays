@@ -1,20 +1,15 @@
-# Canada holidays fr localization.
-# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.21\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2023-02-15 08:30-0800\n"
-"PO-Revision-Date: 2023-03-07 18:56+0200\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
-"Language-Team: Python Holidays localization team\n"
-"Language: fr\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
 #: holidays/countries/canada.py:63
@@ -89,7 +84,7 @@ msgstr "Jour de la Découverte"
 
 #: holidays/countries/canada.py:183
 msgid "Memorial Day"
-msgstr "Jour de mémorial"
+msgstr "our de mémorial"
 
 #: holidays/countries/canada.py:185
 msgid "Canada Day"

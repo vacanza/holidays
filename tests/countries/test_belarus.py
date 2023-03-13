@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.countries.belarus import Belarus, BY, BLR
+from holidays.countries.belarus import BY, BLR, Belarus
 from tests.common import TestCase
 
 

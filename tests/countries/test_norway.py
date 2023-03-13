@@ -12,7 +12,7 @@
 from dateutil.parser import parse
 
 from holidays.constants import MON, SUN
-from holidays.countries.norway import Norway, NO, NOR
+from holidays.countries.norway import NO, NOR, Norway
 from tests.common import SundayHolidays
 
 

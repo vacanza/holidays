@@ -22,12 +22,14 @@ class MOGenerator:
 
     def run(self):
         """Runs the .mo files generation process."""
+        # Delete old files.
+        for mo_file in Path(os.path.join("holidays", "locale")).rglob("*.mo"):
+            os.unlink(str(mo_file))
+
+        # Create new files.
         for po_path in Path(os.path.join("holidays", "locale")).rglob("*.po"):
             po_file = str(po_path)
             mo_file = po_file.replace(".po", ".mo")
-
-            if os.path.exists(mo_file):
-                os.unlink(mo_file)
             subprocess.run(
                 (
                     sys.executable,

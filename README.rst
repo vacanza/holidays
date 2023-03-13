@@ -350,7 +350,7 @@ subdivisions are available:
      - Regions: AUK, CAN, HKB, MBH, NSN, NTL, OTA, STL, TKI, WGN, WTC, CIT. Sub-regions: South Canterbury
    * - Nicaragua
      - NI
-     - Departments: AN, AS, BO, CA, CI, CO, ES, GR, JI, LE, MD, **MN** (default), MS, MT, NS, RI, SJ
+     - Departments: **MN** (default)
    * - Nigeria
      - NG
      - None
@@ -383,7 +383,7 @@ subdivisions are available:
      - None
    * - Portugal
      - PT
-     - Districts: 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 30, Ext; Use subdiv='Ext' to include holidays most people have off
+     - Districts: 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, Ext; Use subdiv='Ext' to include holidays most people have off
    * - Puerto Rico
      - PR
      - None; Can also be loaded as country US, subdivision PR
@@ -547,18 +547,12 @@ default language code is a `ISO 639-1 code`_.
    * - Colombia
      - es
      - en_US, es, uk
-   * - Cuba
-     - es
-     - en_US, es, uk
    * - Cyprus
      - el
      - el, en
    * - Denmark
      - da
      - da, en_US
-   * - Dominican Republic
-     - es
-     - en_US, es, uk
    * - Ethiopia
      - am
      - am, en_US
@@ -568,33 +562,18 @@ default language code is a `ISO 639-1 code`_.
    * - Greece
      - el
      - el, en_US
-   * - Honduras
-     - es
-     - en_US, es, uk
    * - Japan
      - ja
      - en_US, ja
-   * - Mexico
-     - es
-     - en_US, es, uk
    * - Monaco
      - fr
      - en_US, fr, uk
-   * - Nicaragua
-     - es
-     - en_US, es, uk
-   * - Paraguay
-     - es
-     - en_US, es, uk
    * - Peru
      - es
      - en_US, es, uk
    * - Poland
      - pl
      - en_US, pl, uk
-   * - Portugal
-     - pt_PT
-     - en_US, pt_PT
    * - Russia
      - ru
      - en_US, ru
@@ -607,12 +586,6 @@ default language code is a `ISO 639-1 code`_.
    * - Ukraine
      - uk
      - en_US, uk
-   * - Uruguay
-     - es
-     - en_US, es, uk
-   * - Venezuela
-     - es
-     - en_US, es, uk
 
 
 Beta Version

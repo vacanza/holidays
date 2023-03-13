@@ -39,9 +39,7 @@ class Denmark(HolidayBase):
         self[easter_date + td(days=-2)] = self.tr("Langfredag")
         self[easter_date] = self.tr("Påskedag")
         self[easter_date + td(days=+1)] = self.tr("Anden påskedag")
-        # See https://www.ft.dk/samling/20222/lovforslag/l13/index.htm
-        if year <= 2023:
-            self[easter_date + td(days=+26)] = self.tr("Store bededag")
+        self[easter_date + td(days=+26)] = self.tr("Store bededag")
         self[easter_date + td(days=+39)] = self.tr("Kristi himmelfartsdag")
         self[easter_date + td(days=+49)] = self.tr("Pinsedag")
         self[easter_date + td(days=+50)] = self.tr("Anden pinsedag")

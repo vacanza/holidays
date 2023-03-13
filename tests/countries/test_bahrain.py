@@ -11,7 +11,7 @@
 
 import importlib.util
 
-from holidays.countries.bahrain import Bahrain, BH, BAH
+from holidays.countries.bahrain import BH, BAH, Bahrain
 from tests.common import TestCase
 
 
