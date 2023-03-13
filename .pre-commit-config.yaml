@@ -53,7 +53,7 @@ repos:
       - id: rst-backticks
 
   - repo: https://github.com/myint/rstcheck
-    rev: v6.1.1
+    rev: v6.1.2
     hooks:
       - id: rstcheck
         additional_dependencies: [rstcheck, sphinx]
