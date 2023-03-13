@@ -1,7 +1,7 @@
-Version 0.22
+Version 0.21.11
 ============
 
-Released ???????? ??, ????
+Released March 13, 2023
 
 - Refactor NYSE holidays, #1018 (@KJhellico)
 - Optimize TestAllInSameYear::test_all_countries test, #1001 (@arkid15r)
