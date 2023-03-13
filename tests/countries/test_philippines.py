@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.countries.philippines import Philippines, PH, PHL
+from holidays.countries.philippines import PH, PHL, Philippines
 from tests.common import TestCase
 
 

@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.countries.albania import Albania, AL, ALB
+from holidays.countries.albania import AL, ALB, Albania
 from tests.common import TestCase
 
 

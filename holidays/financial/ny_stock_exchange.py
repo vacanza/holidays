@@ -28,103 +28,9 @@ class NewYorkStockExchange(HolidayBase):
     # s3.amazonaws.com/armstrongeconomics-wp/2013/07/NYSE-Closings.pdf
 
     market = "NYSE"
-    special_holidays = {
-        1888: (
-            (MAR, 12, "Blizzard of 1888"),
-            (MAR, 13, "Blizzard of 1888"),
-            (NOV, 30, "Thanksgiving Friday 1888"),
-        ),
-        1889: (
-            (APR, 29, "Centennial of Washington Inauguration"),
-            (APR, 30, "Centennial of Washington Inauguration"),
-            (MAY, 1, "Centennial of Washington Inauguration"),
-        ),
-        1892: (
-            (OCT, 12, "Columbian Celebration"),
-            (OCT, 21, "Columbian Celebration"),
-        ),
-        1893: ((APR, 27, "Columbian Celebration"),),
-        1897: ((APR, 27, "Grant's Birthday"),),
-        1898: ((MAY, 4, "Charter Day"),),
-        1899: (
-            (MAY, 29, "Monday before Decoration Day"),
-            (JUL, 3, "Monday before Independence Day"),
-            (SEP, 29, "Admiral Dewey Celebration"),
-        ),
-        1900: ((DEC, 24, "Christmas Eve"),),
-        1901: (
-            (JUL, 5, "Friday after Independence Day"),
-            (SEP, 19, "Funeral of President McKinley"),
-        ),
-        1903: ((APR, 22, "Opening of new NYSE building"),),
-        1917: ((JUN, 5, "Draft Registration Day"),),
-        1918: (
-            (JAN, 28, "Heatless Day"),
-            (FEB, 4, "Heatless Day"),
-            (FEB, 11, "Heatless Day"),
-            (JUN, 14, "Heatless Day"),
-            (SEP, 12, "Draft Registration Day"),
-            (NOV, 11, "Armistice Day"),
-        ),
-        1919: (
-            (MAR, 25, "Homecoming Day for 27th Division"),
-            (MAY, 6, "Parade Day for 77th Division"),
-            (SEP, 10, "Return of General Pershing"),
-        ),
-        1923: (
-            (AUG, 3, "Death of President Warren G. Harding"),
-            (AUG, 10, "Funeral of President Warren G. Harding"),
-        ),
-        1927: ((JUN, 13, "Parade for Colonel Charles Lindbergh"),),
-        1929: ((NOV, 29, "Catch Up Day"),),
-        1933: (
-            (MAR, 6, "Special Bank Holiday"),
-            (MAR, 7, "Special Bank Holiday"),
-            (MAR, 8, "Special Bank Holiday"),
-            (MAR, 9, "Special Bank Holiday"),
-            (MAR, 10, "Special Bank Holiday"),
-            (MAR, 13, "Special Bank Holiday"),
-            (MAR, 14, "Special Bank Holiday"),
-        ),
-        1945: (
-            (AUG, 15, "V-J Day (WWII)"),
-            (AUG, 16, "V-J Day (WWII)"),
-            (DEC, 24, "Christmas Eve"),
-        ),
-        1954: ((DEC, 24, "Christmas Eve"),),
-        1956: ((DEC, 24, "Christmas Eve"),),
-        1958: ((DEC, 26, "Day after Christmas"),),
-        1961: ((MAY, 29, "Day before Decoration Day"),),
-        1963: ((NOV, 25, "Funeral of President John F. Kennedy"),),
-        1965: ((DEC, 24, "Christmas Eve"),),
-        1968: (
-            (APR, 9, "Day of Mourning for Martin Luther King Jr."),
-            (JUL, 5, "Day after Independence Day"),
-        ),
-        1969: (
-            (FEB, 10, "Heavy Snow"),
-            (MAR, 31, "Funeral of President Dwight D. Eisenhower"),
-            (JUL, 21, "National Participation in Lunar Exploration"),
-        ),
-        1972: ((DEC, 28, "Funeral for President Harry S. Truman"),),
-        1973: ((JAN, 25, "Funeral for President Lyndon B. Johnson"),),
-        1977: ((JUL, 14, "Blackout in New Yor City"),),
-        1985: ((SEP, 27, "Hurricane Gloria"),),
-        1994: ((APR, 27, "Funeral for President Richard M. Nixon"),),
-        2001: (
-            (SEP, 11, "Closed for Sept 11, 2001 Attacks"),
-            (SEP, 12, "Closed for Sept 11, 2001 Attacks"),
-            (SEP, 13, "Closed for Sept 11, 2001 Attacks"),
-            (SEP, 14, "Closed for Sept 11, 2001 Attacks"),
-        ),
-        2004: ((JUN, 11, "Day of Mourning for President Ronald W. Reagan"),),
-        2007: ((JAN, 2, "Day of Mourning for President Gerald R. Ford"),),
-        2012: (
-            (OCT, 29, "Hurricane Sandy"),
-            (OCT, 30, "Hurricane Sandy"),
-        ),
-        2018: ((DEC, 5, "Day of Mourning for President George H.W. Bush"),),
-    }
+
+    def __init__(self, **kwargs):
+        HolidayBase.__init__(self, **kwargs)
 
     def _set_observed_date(self, holiday_date: date, name: str) -> None:
         if self._is_saturday(holiday_date):
@@ -161,43 +67,49 @@ class NewYorkStockExchange(HolidayBase):
             ] = "Martin Luther King Jr. Day"
 
         # LINCOLN BIRTHDAY: observed 1896 - 1953 and 1968, Feb 12 (observed)
-        if 1896 <= year <= 1953 or year == 1968:
-            self._set_observed_date(date(year, FEB, 12), "Lincoln's Birthday")
+        if (1896 <= year <= 1953) or year == 1968:
+            lincoln = date(year, FEB, 12)
+            self._set_observed_date(lincoln, "Lincoln's Birthday")
 
         # WASHINGTON'S BIRTHDAY: Feb 22 (obs) until 1971, then 3rd Mon of Feb
-        self._set_observed_date(
-            date(year, FEB, 22)
-            if year <= 1970
-            else _get_nth_weekday_of_month(3, MON, FEB, year),
-            "Washington's Birthday",
-        )
+        if year < 1971:
+            wash = date(year, FEB, 22)
+            self._set_observed_date(wash, "Washington's Birthday")
+        else:
+            self[
+                _get_nth_weekday_of_month(3, MON, FEB, year)
+            ] = "Washington's Birthday"
 
         # GOOD FRIDAY - closed every year except 1898, 1906, and 1907
+        e = easter(year)
         if year not in {1898, 1906, 1907}:
-            self[easter(year) + td(days=-2)] = "Good Friday"
+            self[e + td(days=-2)] = "Good Friday"
 
         # MEM DAY (May 30) - closed every year since 1873
         # last Mon in May since 1971
-        if year >= 1873:
-            self._set_observed_date(
-                date(year, MAY, 30)
-                if year <= 1970
-                else _get_nth_weekday_of_month(-1, MON, MAY, year),
-                "Memorial Day",
-            )
+        if 1873 <= year < 1971:
+            memday = date(year, MAY, 30)
+            self._set_observed_date(memday, "Memorial Day")
+        else:
+            self[
+                _get_nth_weekday_of_month(-1, MON, MAY, year)
+            ] = "Memorial Day"
 
         # FLAG DAY: June 14th 1916 - 1953
         if 1916 <= year <= 1953:
-            self._set_observed_date(date(year, JUN, 14), "Flag Day")
+            flagday = date(year, JUN, 14)
+            self._set_observed_date(flagday, "Flag Day")
 
         # JUNETEENTH: since 2021
         if year >= 2021:
+            juneteenth = date(year, JUN, 19)
             self._set_observed_date(
-                date(year, JUN, 19), "Juneteenth National Independence Day"
+                juneteenth, "Juneteenth National Independence Day"
             )
 
         # INDEPENDENCE DAY (July 4) - history suggests closed every year
-        self._set_observed_date(date(year, JUL, 4), "Independence Day")
+        j4th = date(year, JUL, 4)
+        self._set_observed_date(j4th, "Independence Day")
 
         # LABOR DAY - first mon in Sept, since 1887
         if year >= 1887:
@@ -205,7 +117,8 @@ class NewYorkStockExchange(HolidayBase):
 
         # COLUMBUS DAY/INDIGENOUS PPL DAY: Oct 12 - closed 1909-1953
         if 1909 <= year <= 1953:
-            self._set_observed_date(date(year, OCT, 12), "Columbus Day")
+            colday = date(year, OCT, 12)
+            self._set_observed_date(colday, "Columbus Day")
 
         # ELECTION DAY: Tuesday after first Monday in November (2 U.S. Code §7)
         # closed until 1969, then closed pres years 1972-80
@@ -215,36 +128,160 @@ class NewYorkStockExchange(HolidayBase):
             ] = "Election Day"
 
         # VETERAN'S DAY: Nov 11 - closed 1918, 1921, 1934-1953
-        if year in {1918, 1921} or 1934 <= year <= 1953:
-            self._set_observed_date(date(year, NOV, 11), "Veteran's Day")
+        if year in {1918, 1921} or (1934 <= year <= 1953):
+            vetday = date(year, NOV, 11)
+            self._set_observed_date(vetday, "Veteran's Day")
 
         # THXGIVING DAY: 4th Thurs in Nov - closed every year
         self[_get_nth_weekday_of_month(4, THU, NOV, year)] = "Thanksgiving Day"
 
         # XMAS DAY: Dec 25th - every year
-        self._set_observed_date(date(year, DEC, 25), "Christmas Day")
+        xmas = date(year, DEC, 25)
+        self._set_observed_date(xmas, "Christmas Day")
 
         ##############################################################
         # SPECIAL HOLIDAYS
         ##############################################################
-        if year == 1914:
+        if year == 1888:
+            self[date(year, MAR, 12)] = "Blizzard of 1888"
+            self[date(year, MAR, 13)] = "Blizzard of 1888"
+            self[date(year, NOV, 30)] = "Thanksgiving Friday 1888"
+        elif year == 1889:
+            self[date(year, APR, 29)] = "Centennial of Washington Inauguration"
+            self[date(year, APR, 30)] = "Centennial of Washington Inauguration"
+            self[date(year, MAY, 1)] = "Centennial of Washington Inauguration"
+        elif year == 1892:
+            self[date(year, OCT, 12)] = "Columbian Celebration"
+            self[date(year, OCT, 21)] = "Columbian Celebration"
+        elif year == 1893:
+            self[date(year, APR, 27)] = "Columbian Celebration"
+        elif year == 1897:
+            self[date(year, APR, 27)] = "Grant's Birthday"
+        elif year == 1898:
+            self[date(year, MAY, 4)] = "Charter Day"
+        elif year == 1899:
+            self[date(year, MAY, 29)] = "Monday before Decoration Day"
+            self[date(year, JUL, 3)] = "Monday before Independence Day"
+            self[date(year, SEP, 29)] = "Admiral Dewey Celebration"
+        elif year == 1900:
+            self[date(year, DEC, 24)] = "Christmas Eve"
+        elif year == 1901:
+            self[date(year, JUL, 5)] = "Friday after Independence Day"
+            self[date(year, SEP, 19)] = "Funeral of President McKinley"
+        elif year == 1903:
+            self[date(year, APR, 22)] = "Opening of new NYSE building"
+        elif year == 1914:
             # Beginning of WWI
             begin = date(year, JUL, 31)
             end = date(year, NOV, 27)
-            for dt in (
+            for d in (
                 begin + td(days=n) for n in range((end - begin).days + 1)
             ):
-                if self._is_weekend(dt) or self.get(dt):
+                if self._is_weekend(d):
                     continue
-                self[dt] = "World War I"
-        elif year == 1968:
-            begin = date(year, JUN, 12)
-            end = date(year, DEC, 24)
-            # Wednesday special holiday
-            for dt in (
-                begin + td(days=n) for n in range(0, (end - begin).days + 1, 7)
+                self[d] = "World War I"
+        elif year == 1917:
+            self[date(year, JUN, 5)] = "Draft Registration Day"
+        elif year == 1918:
+            self[date(year, JAN, 28)] = "Heatless Day"
+            self[date(year, FEB, 4)] = "Heatless Day"
+            self[date(year, FEB, 11)] = "Heatless Day"
+            self[date(year, JUN, 14)] = "Heatless Day"
+            self[date(year, SEP, 12)] = "Draft Registration Day"
+            self[date(year, NOV, 11)] = "Armistice Day"
+        elif year == 1919:
+            self[date(year, MAR, 25)] = "Homecoming Day for 27th Division"
+            self[date(year, MAY, 6)] = "Parade Day for 77th Division"
+            self[date(year, SEP, 10)] = "Return of General Pershing"
+        elif year == 1923:
+            self[date(year, AUG, 3)] = "Death of President Warren G. Harding"
+            self[
+                date(year, AUG, 10)
+            ] = "Funeral of President Warren G. Harding"
+        elif year == 1927:
+            self[date(year, JUN, 13)] = "Parade for Colonel Charles Lindbergh"
+        elif year == 1929:
+            self[date(year, NOV, 29)] = "Catch Up Day"
+        elif year == 1933:
+            begin = date(year, MAR, 6)
+            end = date(year, MAR, 14)
+            for d in (
+                begin + td(days=n) for n in range((end - begin).days + 1)
             ):
-                self[dt] = "Paper Crisis"
+                if self._is_weekend(d):
+                    continue
+                self[d] = "Special Bank Holiday"
+        elif year == 1945:
+            self[date(year, AUG, 15)] = "V-J Day (WWII)"
+            self[date(year, AUG, 16)] = "V-J Day (WWII)"
+            self[date(year, DEC, 24)] = "Christmas Eve"
+        elif year == 1954:
+            self[date(year, DEC, 24)] = "Christmas Eve"
+        elif year == 1956:
+            self[date(year, DEC, 24)] = "Christmas Eve"
+        elif year == 1958:
+            self[date(year, DEC, 26)] = "Day after Christmas"
+        elif year == 1961:
+            self[date(year, MAY, 29)] = "Day before Decoration Day"
+        elif year == 1963:
+            self[date(year, NOV, 25)] = "Funeral of President John F. Kennedy"
+        elif year == 1965:
+            self[date(year, DEC, 24)] = "Christmas Eve"
+        elif year == 1968:
+            self[
+                date(year, APR, 9)
+            ] = "Day of Mourning for Martin Luther King Jr."
+            self[date(year, JUL, 5)] = "Day after Independence Day"
+            begin = date(year, JUN, 12)
+            end = date(year, DEC, 31)
+            for d in (
+                begin + td(days=n) for n in range((end - begin).days + 1)
+            ):
+                if not self._is_wednesday(d):  # Wednesday special holiday
+                    continue
+                self[d] = "Paper Crisis"
+        elif year == 1969:
+            self[date(year, FEB, 10)] = "Heavy Snow"
+            self[
+                date(year, MAR, 31)
+            ] = "Funeral of President Dwight D. Eisenhower"
+            self[
+                date(year, JUL, 21)
+            ] = "National Participation in Lunar Exploration"
+        elif year == 1972:
+            self[date(year, DEC, 28)] = "Funeral for President Harry S. Truman"
+        elif year == 1973:
+            self[
+                date(year, JAN, 25)
+            ] = "Funeral for President Lyndon B. Johnson"
+        elif year == 1977:
+            self[date(year, JUL, 14)] = "Blackout in New Yor City"
+        elif year == 1985:
+            self[date(year, SEP, 27)] = "Hurricane Gloria"
+        elif year == 1994:
+            self[
+                date(year, APR, 27)
+            ] = "Funeral for President Richard M. Nixon"
+        elif year == 2001:
+            self[date(year, SEP, 11)] = "Closed for Sept 11, 2001 Attacks"
+            self[date(year, SEP, 12)] = "Closed for Sept 11, 2001 Attacks"
+            self[date(year, SEP, 13)] = "Closed for Sept 11, 2001 Attacks"
+            self[date(year, SEP, 14)] = "Closed for Sept 11, 2001 Attacks"
+        elif year == 2004:
+            self[
+                date(year, JUN, 11)
+            ] = "Day of Mourning for President Ronald W. Reagan"
+        elif year == 2007:
+            self[
+                date(year, JAN, 2)
+            ] = "Day of Mourning for President Gerald R. Ford"
+        elif year == 2012:
+            self[date(year, OCT, 29)] = "Hurricane Sandy"
+            self[date(year, OCT, 30)] = "Hurricane Sandy"
+        elif year == 2018:
+            self[
+                date(year, DEC, 5)
+            ] = "Day of Mourning for President George H.W. Bush"
 
 
 class XNYS(NewYorkStockExchange):

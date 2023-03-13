@@ -26,22 +26,22 @@ class Mexico(HolidayBase):
     """
 
     country = "MX"
-    default_language = "es"
 
     def _populate(self, year):
         super()._populate(year)
 
-        # New Year's Day.
-        self[date(year, JAN, 1)] = self.tr("Año Nuevo")
+        # New Year's Day
+        self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
 
+        # Constitution Day
         if year >= 1917:
             self[
                 _get_nth_weekday_of_month(1, MON, FEB, year)
                 if year >= 2006
                 else date(year, FEB, 5)
-                # Constitution Day.
-            ] = self.tr("Día de la Constitución")
+            ] = "Día de la Constitución [Constitution Day]"
 
+        # Benito Juárez's birthday
         if year >= 1917:
             self[
                 _get_nth_weekday_of_month(3, MON, MAR, year)
@@ -49,32 +49,34 @@ class Mexico(HolidayBase):
                 # of Benito Juárez in 2006
                 if year >= 2007
                 else date(year, MAR, 21)
-                # Benito Juárez's birthday.
-            ] = self.tr("Natalicio de Benito Juárez")
+            ] = "Natalicio de Benito Juárez [Benito Juárez's birthday]"
 
+        # Labour Day
         if year >= 1923:
-            # Labour Day.
-            self[date(year, MAY, 1)] = self.tr("Día del Trabajo")
+            self[date(year, MAY, 1)] = "Día del Trabajo [Labour Day]"
 
-        # Independence Day.
-        self[date(year, SEP, 16)] = self.tr("Día de la Independencia")
+        # Independence Day
+        self[
+            date(year, SEP, 16)
+        ] = "Día de la Independencia [Independence Day]"
 
+        # Revolution Day
         if year >= 1917:
             self[
                 _get_nth_weekday_of_month(3, MON, NOV, year)
                 if year >= 2006
                 else date(year, NOV, 20)
-                # Revolution Day.
-            ] = self.tr("Día de la Revolución")
+            ] = "Día de la Revolución [Revolution Day]"
 
+        # Change of Federal Government, every six years
         if year >= 1970 and (year - 1970) % 6 == 0:
-            # Change of Federal Government.
-            self[date(year, DEC, 1)] = self.tr(
+            self[date(year, DEC, 1)] = (
                 "Transmisión del Poder Ejecutivo Federal"
+                " [Change of Federal Government]"
             )
 
-        # Christmas Day.
-        self[date(year, DEC, 25)] = self.tr("Navidad")
+        # Christmas
+        self[date(year, DEC, 25)] = "Navidad [Christmas Day]"
 
 
 class MX(Mexico):

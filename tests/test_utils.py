@@ -9,12 +9,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import sys
 import unittest
 import warnings
-from unittest import mock
-
-import pytest
+from datetime import date
 
 from holidays import utils
 
@@ -84,23 +81,20 @@ class TestFinancialHolidays(unittest.TestCase):
 class TestAllInSameYear(unittest.TestCase):
     """Test that only holidays in the year(s) requested are returned."""
 
-    @pytest.mark.xfail(reason="'Set changed size during iteration' error")
-    @pytest.mark.skipif(
-        sys.version_info < (3, 11),
-        reason="Run once on the latest Python version only",
-    )
-    @mock.patch("pathlib.Path.rglob", return_value=())
-    def test_all_countries(self, unused_rglob_mock):
+    def test_all_countries(self):
         """
         Only holidays in the year(s) requested should be returned. This
         ensures that we avoid triggering a "RuntimeError: dictionary changed
         size during iteration" error.
+
+        Here we test all countries for the 12-year period starting ten years
+        ago and ending 2 years from now.
 
         This is logic test and not a code compatibility test, so for expediency
         we only run it once on the latest Python version.
         """
         warnings.simplefilter("ignore")
         for country in utils.list_supported_countries():
-            for year in range(1950, 2051):
+            for year in range(date.today().year - 10, date.today().year + 3):
                 for holiday in utils.country_holidays(country, years=year):
                     self.assertEqual(holiday.year, year)

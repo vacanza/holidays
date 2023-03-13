@@ -24,7 +24,6 @@ class Venezuela(HolidayBase):
     """
 
     country = "VE"
-    default_language = "es"
 
     def _populate(self, year):
         super()._populate(year)
@@ -40,72 +39,69 @@ class Venezuela(HolidayBase):
           2012 (MAY 7): https://bit.ly/2MT5x97
         """
 
-        # New Year's Day.
-        self[date(year, JAN, 1)] = self.tr("Año Nuevo")
+        self[date(year, JAN, 1)] = "Año Nuevo [New Year's]"
 
         easter_date = easter(year)
+        self[
+            easter_date + td(days=-48)
+        ] = "Lunes de Carnaval [Monday of Carnival]"
 
-        # Monday of Carnival.
-        self[easter_date + td(days=-48)] = self.tr("Lunes de Carnaval")
+        self[
+            easter_date + td(days=-47)
+        ] = "Martes de Carnaval [Tuesday of Carnival]"
 
-        # Tuesday of Carnival.
-        self[easter_date + td(days=-47)] = self.tr("Martes de Carnaval")
+        self[easter_date + td(days=-3)] = "Jueves Santo [Maundy Thursday]"
 
-        # Maundy Thursday.
-        self[easter_date + td(days=-3)] = self.tr("Jueves Santo")
-
-        # Good Friday.
-        self[easter_date + td(days=-2)] = self.tr("Viernes Santo")
+        self[easter_date + td(days=-2)] = "Viernes Santo [Good Friday]"
 
         # Note: not sure about the start year, but this event happened in 1811
         if year >= 1811:
-            # Declaration of Independence.
-            self[date(year, APR, 19)] = self.tr(
-                "Declaración de la Independencia"
-            )
+            self[
+                date(year, APR, 19)
+            ] = "Declaración de la Independencia [Declaration of Independence]"
 
         # https://bit.ly/3B4Xd1L
         if year >= 1946:
-            # International Worker's Day.
-            self[date(year, MAY, 1)] = self.tr("Dia Mundial del Trabajador")
+            self[
+                date(year, MAY, 1)
+            ] = "Dia Mundial del Trabajador [International Worker's Day]"
 
         # Note: not sure about the start year, but this event happened in 1824
-        if year >= 1971 or 1824 <= year <= 1917:
-            # Battle of Carabobo.
-            self[date(year, JUN, 24)] = self.tr("Batalla de Carabobo")
+        if year >= 1971 or (1918 > year >= 1824):
+            self[
+                date(year, JUN, 24)
+            ] = "Batalla de Carabobo [Battle of Carabobo]"
 
         # Note: not sure about the start year, but this event happened in 1811
         if year >= 1811:
-            # Independence Day.
-            self[date(year, JUL, 5)] = self.tr("Día de la Independencia")
+            self[
+                date(year, JUL, 5)
+            ] = "Día de la Independencia [Independence Day]"
 
         if year >= 1918:
-            # Birthday of Simon Bolivar.
-            self[date(year, JUL, 24)] = self.tr("Natalicio de Simón Bolívar")
+            self[
+                date(year, JUL, 24)
+            ] = "Natalicio de Simón Bolívar [Birth of Simon Bolivar]"
 
         if year >= 2002:
-            # Day of Indigenous Resistance.
-            self[date(year, OCT, 12)] = self.tr(
-                "Día de la Resistencia Indígena"
-            )
+            self[
+                date(year, OCT, 12)
+            ] = "Día de la Resistencia Indígena [Day of Indigenous Resistance]"
         elif year >= 1921:
-            # Columbus Day.
-            self[date(year, OCT, 12)] = self.tr("Día de la Raza")
+            self[date(year, OCT, 12)] = "Día de la Raza [Columbus Day]"
 
         # Note: not sure about the start year nor the reason this was
         # Note: celebrated; the historical records are unclear
-        if 1909 <= year <= 1917:
-            # Unknown Holiday.
-            self[date(year, OCT, 28)] = self.tr("Día Festivo Desconocido")
+        if 1909 <= year < 1918:
+            self[
+                date(year, OCT, 28)
+            ] = "Día Festivo Desconocido [Unknown Holiday]"
 
-        # Christmas Eve.
-        self[date(year, DEC, 24)] = self.tr("Nochebuena")
+        self[date(year, DEC, 24)] = "Nochebuena [Christmas Eve]"
 
-        # Christmas Day.
-        self[date(year, DEC, 25)] = self.tr("Día de Navidad")
+        self[date(year, DEC, 25)] = "Día de Navidad [Christmas Day]"
 
-        # New Year's Eve.
-        self[date(year, DEC, 31)] = self.tr("Fiesta de Fin de Año")
+        self[date(year, DEC, 31)] = "Fiesta de Fin de Año [New Year's Eve]"
 
 
 class VE(Venezuela):

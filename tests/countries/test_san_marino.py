@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.countries.san_marino import SanMarino, SM, SMR
+from holidays.countries.san_marino import SM, SMR, SanMarino
 from tests.common import TestCase
 
 

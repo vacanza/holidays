@@ -11,7 +11,7 @@
 
 import warnings
 
-from holidays.countries.india import India, IN, IND
+from holidays.countries.india import IN, IND, India
 from tests.common import TestCase
 
 

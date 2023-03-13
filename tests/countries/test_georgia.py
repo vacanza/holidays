@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.countries.georgia import Georgia, GE, GEO
+from holidays.countries.georgia import GE, GEO, Georgia
 from tests.common import TestCase
 
 

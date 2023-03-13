@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.countries.montenegro import Montenegro, ME, MNE
+from holidays.countries.montenegro import ME, MNE, Montenegro
 from tests.common import TestCase
 
 
