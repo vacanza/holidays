@@ -9,6 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
+
 from holidays.countries.switzerland import Switzerland, CH, CHE
 from tests.common import TestCase
 
@@ -28,7 +30,7 @@ class TestSwitzerland(TestCase):
     def test_all_holidays_present(self):
         ch_2018 = sum(CH(years=2018, subdiv=p) for p in CH.subdivisions)
         y_2018 = set(ch_2018.values())
-        all_h = {
+        all_h = {  # Holidays names in their chronological order.
             "Neujahrestag",
             "Berchtoldstag",
             "Heilige Drei Könige",
@@ -78,7 +80,6 @@ class TestSwitzerland(TestCase):
             "BE",
             "FR",
             "GL",
-            "GR",
             "JU",
             "LU",
             "NE",
@@ -176,6 +177,8 @@ class TestSwitzerland(TestCase):
             self.assertHoliday(self.prov_hols[province], known_good)
         for province in provinces_that_dont:
             self.assertNoHoliday(self.prov_hols[province], known_good)
+
+        self.assertNoHolidayName("Näfelser Fahrt", CH(subdiv="GL", years=1834))
 
     def test_karfreitag(self):
         known_good = (
@@ -332,8 +335,13 @@ class TestSwitzerland(TestCase):
             "2035-05-14",
         )
 
-        for province in CH.subdivisions:
+        provinces_that_dont = {"VS"}
+        provinces_that_have = set(CH.subdivisions) - provinces_that_dont
+
+        for province in provinces_that_have:
             self.assertHoliday(self.prov_hols[province], known_good)
+        for province in provinces_that_dont:
+            self.assertNoHoliday(self.prov_hols[province], known_good)
 
     def test_fronleichnam(self):
         known_good = (
@@ -526,7 +534,6 @@ class TestSwitzerland(TestCase):
             "GL",
             "GR",
             "LU",
-            "NE",
             "NW",
             "OW",
             "SG",
@@ -539,7 +546,9 @@ class TestSwitzerland(TestCase):
             "ZG",
             "ZH",
         }
-        provinces_that_dont = set(CH.subdivisions) - provinces_that_have
+        provinces_that_dont = (
+            set(CH.subdivisions) - provinces_that_have - {"NE"}
+        )
 
         for province in provinces_that_have:
             self.assertHoliday(
@@ -551,6 +560,9 @@ class TestSwitzerland(TestCase):
                 self.prov_hols[province],
                 (f"{year}-12-26" for year in range(1970, 2050)),
             )
+        for year in range(1970, 2050):
+            dt = date(year, 12, 26)
+            self.assertEqual(dt.weekday() == 0, dt in self.prov_hols["NE"])
 
     def test_wiedererstellung_der_republik(self):
         provinces_that_have = {"GE"}
@@ -570,3 +582,67 @@ class TestSwitzerland(TestCase):
     def test_national_feiertag(self):
         # Before 1291, national fiertag was not celebrated
         self.assertNoHoliday("1290-08-01")
+
+    def test_l10n_default(self):
+        def run_tests(languages):
+            for language in languages:
+                cnt = CH(language=language)
+                self.assertEqual(cnt["2022-01-01"], "Neujahrestag")
+                self.assertEqual(cnt["2022-12-25"], "Weihnachten")
+
+        run_tests((CH.default_language, None, "invalid"))
+
+        self.set_language("en_US")
+        run_tests((CH.default_language,))
+
+    def test_l10n_en_us(self):
+        en_us = "en_US"
+
+        cnt = CH(language=en_us)
+        self.assertEqual(cnt["2022-01-01"], "New Year's Day")
+        self.assertEqual(cnt["2022-12-25"], "Christmas Day")
+
+        self.set_language(en_us)
+        for language in (None, en_us, "invalid"):
+            cnt = CH(language=language)
+            self.assertEqual(cnt["2022-01-01"], "New Year's Day")
+            self.assertEqual(cnt["2022-12-25"], "Christmas Day")
+
+    def test_l10n_fr(self):
+        fr = "fr"
+
+        cnt = CH(language=fr)
+        self.assertEqual(cnt["2022-01-01"], "Nouvel An")
+        self.assertEqual(cnt["2022-12-25"], "Noël")
+
+        self.set_language(fr)
+        for language in (None, fr, "invalid"):
+            cnt = CH(language=language)
+            self.assertEqual(cnt["2022-01-01"], "Nouvel An")
+            self.assertEqual(cnt["2022-12-25"], "Noël")
+
+    def test_l10n_it(self):
+        it = "it"
+
+        cnt = CH(language=it)
+        self.assertEqual(cnt["2022-01-01"], "Capodanno")
+        self.assertEqual(cnt["2022-12-25"], "Natale")
+
+        self.set_language(it)
+        for language in (None, it, "invalid"):
+            cnt = CH(language=language)
+            self.assertEqual(cnt["2022-01-01"], "Capodanno")
+            self.assertEqual(cnt["2022-12-25"], "Natale")
+
+    def test_l10n_uk(self):
+        uk = "uk"
+
+        cnt = CH(language=uk)
+        self.assertEqual(cnt["2022-01-01"], "Новий рік")
+        self.assertEqual(cnt["2022-12-25"], "Різдво Христове")
+
+        self.set_language(uk)
+        for language in (None, uk, "invalid"):
+            cnt = CH(language=language)
+            self.assertEqual(cnt["2022-01-01"], "Новий рік")
+            self.assertEqual(cnt["2022-12-25"], "Різдво Христове")
