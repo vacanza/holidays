@@ -3,6 +3,7 @@ help:
 	@echo "    build         build distribution"
 	@echo "    check         run pre-commit and tests"
 	@echo "    coverage      identify code not covered with tests"
+	@echo "    doc           run documentation build process"
 	@echo "    help          show summary of available commands"
 	@echo "    l10n          update .pot and .po files"
 	@echo "    pre-commit    run pre-commit against all files"
