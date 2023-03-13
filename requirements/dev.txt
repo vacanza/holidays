@@ -20,5 +20,5 @@ chameleon
 lingua
 
 # Deployment.
+build
 pip>=19.2.3
-wheel>=0.33.6

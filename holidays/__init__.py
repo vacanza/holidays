@@ -15,4 +15,4 @@ from holidays.financial import *
 from holidays.holiday_base import *
 from holidays.utils import *
 
-__version__ = "0.21"
+__version__ = "0.21.11"

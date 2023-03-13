@@ -1,0 +1,58 @@
+# Mexico holidays uk localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.22\n"
+"POT-Creation-Date: 2023-03-05 12:33+0200\n"
+"PO-Revision-Date: 2023-03-05 14:07+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: holidays/countries/mexico.py:35
+msgid "Año Nuevo"
+msgstr "Новий рік"
+
+#. Constitution Day.
+#: holidays/countries/mexico.py:43
+msgid "Día de la Constitución"
+msgstr "День Конституції"
+
+#. Benito Juárez's birthday.
+#: holidays/countries/mexico.py:53
+msgid "Natalicio de Benito Juárez"
+msgstr "Річниця Беніто Хуареса"
+
+#. Labour Day.
+#: holidays/countries/mexico.py:57
+msgid "Día del Trabajo"
+msgstr "День праці"
+
+#. Independence Day.
+#: holidays/countries/mexico.py:60
+msgid "Día de la Independencia"
+msgstr "День незалежності"
+
+#. Revolution Day.
+#: holidays/countries/mexico.py:68
+msgid "Día de la Revolución"
+msgstr "День революції"
+
+#. Change of Federal Government.
+#: holidays/countries/mexico.py:72
+msgid "Transmisión del Poder Ejecutivo Federal"
+msgstr "Передача федеральної виконавчої влади"
+
+#. Christmas Day.
+#: holidays/countries/mexico.py:77
+msgid "Navidad"
+msgstr "Різдво Христове"

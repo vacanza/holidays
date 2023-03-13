@@ -9,5 +9,5 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from .european_central_bank import ECB, TAR, EuropeanCentralBank
-from .ny_stock_exchange import NYSE, XNYS, NewYorkStockExchange
+from .european_central_bank import EuropeanCentralBank, ECB, TAR
+from .ny_stock_exchange import NewYorkStockExchange, NYSE, XNYS

@@ -9,137 +9,137 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from .albania import AL, ALB, Albania
-from .american_samoa import AS, ASM, AmericanSamoa, HolidaysAS
-from .andorra import AD, AND, Andorra
-from .angola import AO, AGO, Angola
-from .argentina import AR, ARG, Argentina
-from .armenia import AM, ARM, Armenia
-from .aruba import AW, ABW, Aruba
-from .australia import AU, AUS, Australia
-from .austria import AT, AUT, Austria
-from .azerbaijan import AZ, AZE, Azerbaijan
-from .bahrain import BH, BAH, Bahrain
-from .bangladesh import BD, BGD, Bangladesh
-from .belarus import BY, BLR, Belarus
-from .belgium import BE, BEL, Belgium
-from .bolivia import BO, BOL, Bolivia
-from .bosnia_and_herzegovina import BA, BIH, BosniaAndHerzegovina
-from .botswana import BW, BWA, Botswana
-from .brazil import BR, BRA, Brazil
-from .bulgaria import BG, BLG, Bulgaria
-from .burundi import BI, BDI, Burundi
-from .canada import CA, CAN, Canada
-from .chile import CL, CHL, Chile
-from .china import CN, CHN, China
-from .colombia import CO, COL, Colombia
-from .croatia import HR, HRV, Croatia
-from .cuba import CU, CUB, Cuba
-from .curacao import CW, CUW, Curacao
-from .cyprus import CY, CYP, Cyprus
-from .czechia import CZ, CZE, Czechia
-from .denmark import DK, DNK, Denmark
-from .djibouti import DJ, DJI, Djibouti
-from .dominican_republic import DO, DOM, DominicanRepublic
-from .egypt import EG, EGY, Egypt
-from .estonia import EE, EST, Estonia
-from .eswatini import SZ, SZW, Eswatini, Swaziland
-from .ethiopia import ET, ETH, Ethiopia
-from .finland import FI, FIN, Finland
-from .france import FR, FRA, France
-from .georgia import GE, GEO, Georgia
-from .germany import DE, DEU, Germany
-from .greece import GR, GRC, Greece
-from .guam import GU, GUM, Guam, HolidaysGU
-from .honduras import HN, HND, Honduras
-from .hongkong import HK, HKG, HongKong
-from .hungary import HU, HUN, Hungary
-from .iceland import IS, ISL, Iceland
-from .india import IN, IND, India
-from .indonesia import ID, IDN, Indonesia
-from .ireland import IE, IRL, Ireland
-from .isle_of_man import IM, IMN, IsleOfMan
-from .israel import IL, ISR, Israel
-from .italy import IT, ITA, Italy
-from .jamaica import JM, JAM, Jamaica
-from .japan import JP, JPN, Japan
-from .kazakhstan import KZ, KAZ, Kazakhstan
-from .kenya import KE, KEN, Kenya
-from .kyrgyzstan import KG, KGZ, Kyrgyzstan
-from .latvia import LV, LVA, Latvia
-from .lesotho import LS, LSO, Lesotho
-from .liechtenstein import LI, LIE, Liechtenstein
-from .lithuania import LT, LTU, Lithuania
-from .luxembourg import LU, LUX, Luxembourg
-from .madagascar import MG, MDG, Madagascar
-from .malawi import MW, MWI, Malawi
-from .malaysia import MY, MYS, Malaysia
-from .malta import MT, MLT, Malta
-from .marshall_islands import MH, MHL, MarshallIslands, HolidaysMH
-from .mexico import MX, MEX, Mexico
-from .moldova import MD, MDA, Moldova
-from .monaco import MC, MCO, Monaco
-from .montenegro import ME, MNE, Montenegro
-from .morocco import MA, MOR, Morocco
-from .mozambique import MZ, MOZ, Mozambique
-from .namibia import NA, NAM, Namibia
-from .netherlands import NL, NLD, Netherlands
-from .new_zealand import NZ, NZL, NewZealand
-from .nicaragua import NI, NIC, Nicaragua
-from .nigeria import NG, NGA, Nigeria
-from .north_macedonia import MK, MKD, NorthMacedonia
+from .albania import Albania, AL, ALB
+from .american_samoa import AmericanSamoa, AS, ASM, HolidaysAS
+from .andorra import Andorra, AD, AND
+from .angola import Angola, AO, AGO
+from .argentina import Argentina, AR, ARG
+from .armenia import Armenia, AM, ARM
+from .aruba import Aruba, AW, ABW
+from .australia import Australia, AU, AUS
+from .austria import Austria, AT, AUT
+from .azerbaijan import Azerbaijan, AZ, AZE
+from .bahrain import Bahrain, BH, BAH
+from .bangladesh import Bangladesh, BD, BGD
+from .belarus import Belarus, BY, BLR
+from .belgium import Belgium, BE, BEL
+from .bolivia import Bolivia, BO, BOL
+from .bosnia_and_herzegovina import BosniaAndHerzegovina, BA, BIH
+from .botswana import Botswana, BW, BWA
+from .brazil import Brazil, BR, BRA
+from .bulgaria import Bulgaria, BG, BLG
+from .burundi import Burundi, BI, BDI
+from .canada import Canada, CA, CAN
+from .chile import Chile, CL, CHL
+from .china import China, CN, CHN
+from .colombia import Colombia, CO, COL
+from .croatia import Croatia, HR, HRV
+from .cuba import Cuba, CU, CUB
+from .curacao import Curacao, CW, CUW
+from .cyprus import Cyprus, CY, CYP
+from .czechia import Czechia, CZ, CZE
+from .denmark import Denmark, DK, DNK
+from .djibouti import Djibouti, DJ, DJI
+from .dominican_republic import DominicanRepublic, DO, DOM
+from .egypt import Egypt, EG, EGY
+from .estonia import Estonia, EE, EST
+from .eswatini import Eswatini, SZ, SZW, Swaziland
+from .ethiopia import Ethiopia, ET, ETH
+from .finland import Finland, FI, FIN
+from .france import France, FR, FRA
+from .georgia import Georgia, GE, GEO
+from .germany import Germany, DE, DEU
+from .greece import Greece, GR, GRC
+from .guam import Guam, GU, GUM, HolidaysGU
+from .honduras import Honduras, HN, HND
+from .hongkong import HongKong, HK, HKG
+from .hungary import Hungary, HU, HUN
+from .iceland import Iceland, IS, ISL
+from .india import India, IN, IND
+from .indonesia import Indonesia, ID, IDN
+from .ireland import Ireland, IE, IRL
+from .isle_of_man import IsleOfMan, IM, IMN
+from .israel import Israel, IL, ISR
+from .italy import Italy, IT, ITA
+from .jamaica import Jamaica, JM, JAM
+from .japan import Japan, JP, JPN
+from .kazakhstan import Kazakhstan, KZ, KAZ
+from .kenya import Kenya, KE, KEN
+from .kyrgyzstan import Kyrgyzstan, KG, KGZ
+from .latvia import Latvia, LV, LVA
+from .lesotho import Lesotho, LS, LSO
+from .liechtenstein import Liechtenstein, LI, LIE
+from .lithuania import Lithuania, LT, LTU
+from .luxembourg import Luxembourg, LU, LUX
+from .madagascar import Madagascar, MG, MDG
+from .malawi import Malawi, MW, MWI
+from .malaysia import Malaysia, MY, MYS
+from .malta import Malta, MT, MLT
+from .marshall_islands import MarshallIslands, MH, MHL, HolidaysMH
+from .mexico import Mexico, MX, MEX
+from .moldova import Moldova, MD, MDA
+from .monaco import Monaco, MC, MCO
+from .montenegro import Montenegro, ME, MNE
+from .morocco import Morocco, MA, MOR
+from .mozambique import Mozambique, MZ, MOZ
+from .namibia import Namibia, NA, NAM
+from .netherlands import Netherlands, NL, NLD
+from .new_zealand import NewZealand, NZ, NZL
+from .nicaragua import Nicaragua, NI, NIC
+from .nigeria import Nigeria, NG, NGA
+from .north_macedonia import NorthMacedonia, MK, MKD
 from .northern_mariana_islands import (
+    NorthernMarianaIslands,
     MP,
     MNP,
     HolidaysMP,
-    NorthernMarianaIslands,
 )
-from .norway import NO, NOR, Norway
-from .pakistan import PK, PAK, Pakistan
-from .panama import PA, PAN, Panama
-from .paraguay import PY, PRY, Paraguay
-from .peru import PE, PER, Peru
-from .philippines import PH, PHL, Philippines
-from .poland import PL, POL, Poland
-from .portugal import PT, PRT, Portugal
-from .puerto_rico import PR, PRI, PuertoRico, HolidaysPR
-from .romania import RO, ROU, Romania
-from .russia import RU, RUS, Russia
-from .san_marino import SM, SMR, SanMarino
-from .saudi_arabia import SA, SAU, SaudiArabia
-from .serbia import RS, SRB, Serbia
-from .singapore import SG, SGP, Singapore
-from .slovakia import SK, SVK, Slovakia
-from .slovenia import SI, SVN, Slovenia
-from .south_africa import ZA, ZAF, SouthAfrica
-from .south_korea import KR, KOR, Korea, SouthKorea
-from .spain import ES, ESP, Spain
-from .sweden import SE, SWE, Sweden
-from .switzerland import CH, CHE, Switzerland
-from .taiwan import TW, TWN, Taiwan
-from .thailand import TH, THA, Thailand
-from .tunisia import TN, TUN, Tunisia
-from .turkey import TR, TUR, Turkey
-from .ukraine import UA, UKR, Ukraine
-from .united_arab_emirates import AE, ARE, UnitedArabEmirates
-from .united_kingdom import GB, UK, GBR, UnitedKingdom
-from .united_states import US, USA, UnitedStates
+from .norway import Norway, NO, NOR
+from .pakistan import Pakistan, PK, PAK
+from .panama import Panama, PA, PAN
+from .paraguay import Paraguay, PY, PRY
+from .peru import Peru, PE, PER
+from .philippines import Philippines, PH, PHL
+from .poland import Poland, PL, POL
+from .portugal import Portugal, PT, PRT
+from .puerto_rico import PuertoRico, PR, PRI, HolidaysPR
+from .romania import Romania, RO, ROU
+from .russia import Russia, RU, RUS
+from .san_marino import SanMarino, SM, SMR
+from .saudi_arabia import SaudiArabia, SA, SAU
+from .serbia import Serbia, RS, SRB
+from .singapore import Singapore, SG, SGP
+from .slovakia import Slovakia, SK, SVK
+from .slovenia import Slovenia, SI, SVN
+from .south_africa import SouthAfrica, ZA, ZAF
+from .south_korea import SouthKorea, KR, KOR, Korea
+from .spain import Spain, ES, ESP
+from .sweden import Sweden, SE, SWE
+from .switzerland import Switzerland, CH, CHE
+from .taiwan import Taiwan, TW, TWN
+from .thailand import Thailand, TH, THA
+from .tunisia import Tunisia, TN, TUN
+from .turkey import Turkey, TR, TUR
+from .ukraine import Ukraine, UA, UKR
+from .united_arab_emirates import UnitedArabEmirates, AE, ARE
+from .united_kingdom import UnitedKingdom, GB, GBR, UK
+from .united_states import UnitedStates, US, USA
 from .united_states_minor_outlying_islands import (
+    UnitedStatesMinorOutlyingIslands,
     UM,
     UMI,
-    UnitedStatesMinorOutlyingIslands,
     HolidaysUM,
 )
 from .united_states_virgin_islands import (
+    UnitedStatesVirginIslands,
     VI,
     VIR,
-    UnitedStatesVirginIslands,
     HolidaysVI,
 )
-from .uruguay import UY, URY, Uruguay
-from .uzbekistan import UZ, UZB, Uzbekistan
-from .vatican_city import VA, VAT, VaticanCity
-from .venezuela import VE, VEN, Venezuela
-from .vietnam import VN, VNM, Vietnam
-from .zambia import ZM, ZMB, Zambia
-from .zimbabwe import ZW, ZWE, Zimbabwe
+from .uruguay import Uruguay, UY, URY
+from .uzbekistan import Uzbekistan, UZ, UZB
+from .vatican_city import VaticanCity, VA, VAT
+from .venezuela import Venezuela, VE, VEN
+from .vietnam import Vietnam, VN, VNM
+from .zambia import Zambia, ZM, ZMB
+from .zimbabwe import Zimbabwe, ZW, ZWE

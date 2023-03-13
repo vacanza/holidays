@@ -20,7 +20,26 @@ from holidays.holiday_base import HolidayBase
 
 class Nicaragua(HolidayBase):
     country = "NI"
-    subdivisions = ["MN"]
+    default_language = "es"
+    subdivisions = [
+        "AN",
+        "AS",
+        "BO",
+        "CA",
+        "CI",
+        "CO",
+        "ES",
+        "GR",
+        "JI",
+        "LE",
+        "MD",
+        "MN",
+        "MS",
+        "MT",
+        "NS",
+        "RI",
+        "SJ",
+    ]
 
     def __init__(self, **kwargs):
         # Default subdivision to MN; prov for backwards compatibility
@@ -31,36 +50,36 @@ class Nicaragua(HolidayBase):
     def _populate(self, year):
         super()._populate(year)
 
-        # New Years
-        self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
-        # Maundy Thursday
+        # New Year's Day.
+        self[date(year, JAN, 1)] = self.tr("Año Nuevo")
+
         easter_date = easter(year)
-        self[easter_date + td(days=-3)] = "Jueves Santo [Maundy Thursday]"
-        # Good Friday
-        self[easter_date + td(days=-2)] = "Viernes Santo [Good Friday]"
-        # Labor Day
-        self[date(year, MAY, 1)] = "Día del Trabajo [Labour Day]"
-        # Revolution Day
+        # Maundy Thursday.
+        self[easter_date + td(days=-3)] = self.tr("Jueves Santo")
+        # Good Friday.
+        self[easter_date + td(days=-2)] = self.tr("Viernes Santo")
+        # Labour Day.
+        self[date(year, MAY, 1)] = self.tr("Día del Trabajo")
+
         if year >= 1979:
-            self[date(year, JUL, 19)] = "Día de la Revolución [Revolution Day]"
-        # Battle of San Jacinto Day
-        self[
-            date(year, SEP, 14)
-        ] = "Batalla de San Jacinto [Battle of San Jacinto]"
-        # Independence Day
-        self[
-            date(year, SEP, 15)
-        ] = "Día de la Independencia [Independence Day]"
-        # Virgin's Day
-        self[date(year, DEC, 8)] = "Concepción de María [Virgin's Day]"
-        # Christmas
-        self[date(year, DEC, 25)] = "Navidad [Christmas]"
+            # Revolution Day.
+            self[date(year, JUL, 19)] = self.tr("Día de la Revolución")
+
+        # Battle of San Jacinto Day.
+        self[date(year, SEP, 14)] = self.tr("Batalla de San Jacinto")
+        # Independence Day.
+        self[date(year, SEP, 15)] = self.tr("Día de la Independencia")
+        # Virgin's Day.
+        self[date(year, DEC, 8)] = self.tr("Concepción de María")
+        # Christmas.
+        self[date(year, DEC, 25)] = self.tr("Navidad")
 
         # Provinces festive day
-        # Santo Domingo Day Down
-        self[date(year, AUG, 1)] = "Bajada de Santo Domingo"
-        # Santo Domingo Day Up
-        self[date(year, AUG, 10)] = "Subida de Santo Domingo"
+        if self.subdiv == "MN":
+            # Descent of Saint Dominic.
+            self[date(year, AUG, 1)] = self.tr("Bajada de Santo Domingo")
+            # Ascent of Saint Dominic.
+            self[date(year, AUG, 10)] = self.tr("Subida de Santo Domingo")
 
 
 class NI(Nicaragua):

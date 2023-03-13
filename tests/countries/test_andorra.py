@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.countries.andorra import AD, AND, Andorra
+from holidays.countries.andorra import Andorra, AD, AND
 from tests.common import TestCase
 
 
