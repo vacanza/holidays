@@ -10,7 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import timedelta as td
-from gettext import gettext as _
+from gettext import gettext as tr
 
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -37,44 +37,44 @@ class Denmark(HolidayBase, ChristianHolidays, InternationalHolidays):
         super()._populate(year)
 
         # New Year's Day.
-        self._add_new_years_day(_("Nytårsdag"))
+        self._add_new_years_day(tr("Nytårsdag"))
 
         # Palm Sunday.
-        self._add_palm_sunday(_("Palmesøndag"))
+        self._add_palm_sunday(tr("Palmesøndag"))
 
         # Holy Thursday.
-        self._add_holy_thursday(_("Skærtorsdag"))
+        self._add_holy_thursday(tr("Skærtorsdag"))
 
         # Good Friday.
-        self._add_good_friday(_("Langfredag"))
+        self._add_good_friday(tr("Langfredag"))
 
         # Easter Sunday.
-        self._add_easter_sunday(_("Påskedag"))
+        self._add_easter_sunday(tr("Påskedag"))
 
         # Easter Monday.
-        self._add_easter_monday(_("Anden påskedag"))
+        self._add_easter_monday(tr("Anden påskedag"))
 
         # See https://www.ft.dk/samling/20222/lovforslag/l13/index.htm
         if year <= 2023:
             # Great Day of Prayers.
             self._add_holiday(
-                _("Store bededag"), self._easter_sunday + td(days=+26)
+                tr("Store bededag"), self._easter_sunday + td(days=+26)
             )
 
         # Ascension Day.
-        self._add_ascension_thursday(_("Kristi himmelfartsdag"))
+        self._add_ascension_thursday(tr("Kristi himmelfartsdag"))
 
         # Whit Sunday.
-        self._add_whit_sunday(_("Pinsedag"))
+        self._add_whit_sunday(tr("Pinsedag"))
 
         # Whit Monday.
-        self._add_whit_monday(_("Anden pinsedag"))
+        self._add_whit_monday(tr("Anden pinsedag"))
 
         # Christmas Day.
-        self._add_christmas_day(_("Juledag"))
+        self._add_christmas_day(tr("Juledag"))
 
         # Boxing Day.
-        self._add_christmas_day_two(_("Anden juledag"))
+        self._add_christmas_day_two(tr("Anden juledag"))
 
 
 class DK(Denmark):

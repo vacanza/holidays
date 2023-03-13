@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as _
+from gettext import gettext as tr
 
 from holidays.calendars import GREGORIAN_CALENDAR, JULIAN_CALENDAR
 from holidays.constants import JUL, NOV
@@ -43,41 +43,43 @@ class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays):
         super()._populate(year)
 
         # New Year's Day.
-        self._add_new_years_day(_("Новы год"))
+        self._add_new_years_day(tr("Новы год"))
 
         # Jan 2nd is the national holiday (New Year) from 2020.
         # http://president.gov.by/uploads/documents/2019/464uk.pdf
         if year >= 2020:
-            self._add_new_years_day_two(_("Новы год"))
+            self._add_new_years_day_two(tr("Новы год"))
 
         # Orthodox Christmas Day.
-        self._add_christmas_day(_("Нараджэнне Хрыстова (праваслаўнае Раство)"))
+        self._add_christmas_day(
+            tr("Нараджэнне Хрыстова (праваслаўнае Раство)")
+        )
 
         # Women's Day.
-        self._add_womens_day(_("Дзень жанчын"))
+        self._add_womens_day(tr("Дзень жанчын"))
 
         # Radunitsa (Day of Rejoicing).
-        self._add_rejoicing_day("Радаўніца")
+        self._add_rejoicing_day(tr("Радаўніца"))
 
         # Labour Day.
-        self._add_labour_day(_("Свята працы"))
+        self._add_labour_day(tr("Свята працы"))
 
-        # Victory Day
-        self._add_world_war_two_victory_day(_("Дзень Перамогі"))
+        # Victory Day.
+        self._add_world_war_two_victory_day(tr("Дзень Перамогі"))
 
         # Independence Day.
         self._add_holiday(
-            _("Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)"),
+            tr("Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)"),
             JUL,
             3,
         )
 
         # October Revolution Day.
-        self._add_holiday(_("Дзень Кастрычніцкай рэвалюцыі"), NOV, 7)
+        self._add_holiday(tr("Дзень Кастрычніцкай рэвалюцыі"), NOV, 7)
 
         # Catholic Christmas Day.
         self._add_christmas_day(
-            _("Нараджэнне Хрыстова (каталіцкае Раство)"),
+            tr("Нараджэнне Хрыстова (каталіцкае Раство)"),
             calendar=GREGORIAN_CALENDAR,
         )
 

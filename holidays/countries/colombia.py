@@ -11,7 +11,7 @@
 
 from datetime import date
 from datetime import timedelta as td
-from gettext import gettext as _
+from gettext import gettext as tr
 
 from dateutil.easter import easter
 
@@ -50,7 +50,7 @@ class Colombia(HolidayBase):
 
         if self.observed and not self._is_monday(dt) and dt.year >= 1984:
             self._add_holiday(
-                _("%s (Observado)") % name, _get_nth_weekday_from(1, MON, dt)
+                tr("%s (Observado)") % name, _get_nth_weekday_from(1, MON, dt)
             )
         else:
             self._add_holiday(name, dt)
@@ -59,96 +59,96 @@ class Colombia(HolidayBase):
         super()._populate(year)
 
         # New Year's Day
-        self._add_holiday(_("Año Nuevo"), JAN, 1)
+        self._add_holiday(tr("Año Nuevo"), JAN, 1)
 
         if year >= 1951:
             # Epiphany
             self._add_with_bridge(
                 date(year, JAN, 6),
-                _("Día de los Reyes Magos"),
+                tr("Día de los Reyes Magos"),
             )
 
             # Saint Joseph's Day
             self._add_with_bridge(
                 date(year, MAR, 19),
-                _("Día de San José"),
+                tr("Día de San José"),
             )
 
         # Labor Day
-        self[date(year, MAY, 1)] = _("Día del Trabajo")
+        self[date(year, MAY, 1)] = tr("Día del Trabajo")
 
         if year >= 1951:
             # Saint Peter and Saint Paul's Day
             self._add_with_bridge(
                 date(year, JUN, 29),
-                _("San Pedro y San Pablo"),
+                tr("San Pedro y San Pablo"),
             )
 
         # Independence Day
-        self._add_holiday(_("Día de la Independencia"), JUL, 20)
+        self._add_holiday(tr("Día de la Independencia"), JUL, 20)
 
         # Battle of Boyaca
-        self._add_holiday(_("Batalla de Boyacá"), AUG, 7)
+        self._add_holiday(tr("Batalla de Boyacá"), AUG, 7)
 
         if year >= 1951:
             # Assumption of Mary
             self._add_with_bridge(
                 date(year, AUG, 15),
-                _("La Asunción"),
+                tr("La Asunción"),
             )
 
         # Columbus Day
         self._add_with_bridge(
             date(year, OCT, 12),
-            _("Día de la Raza"),
+            tr("Día de la Raza"),
         )
 
         if year >= 1951:
             # All Saints’ Day
             self._add_with_bridge(
                 date(year, NOV, 1),
-                _("Día de Todos los Santos"),
+                tr("Día de Todos los Santos"),
             )
 
         # Independence of Cartagena
         self._add_with_bridge(
             date(year, NOV, 11),
-            _("Independencia de Cartagena"),
+            tr("Independencia de Cartagena"),
         )
 
         if year >= 1951:
             # Immaculate Conception
-            self._add_holiday(_("La Inmaculada Concepción"), DEC, 8)
+            self._add_holiday(tr("La Inmaculada Concepción"), DEC, 8)
 
         # Christmas
-        self._add_holiday(_("Navidad"), DEC, 25)
+        self._add_holiday(tr("Navidad"), DEC, 25)
 
         easter_date = easter(year)
 
         if year >= 1951:
             # Maundy Thursday
-            self._add_holiday(_("Jueves Santo"), easter_date + td(days=-3))
+            self._add_holiday(tr("Jueves Santo"), easter_date + td(days=-3))
 
             # Good Friday
-            self._add_holiday(_("Viernes Santo"), easter_date + td(days=-2))
+            self._add_holiday(tr("Viernes Santo"), easter_date + td(days=-2))
 
             # Ascension of Jesus
             self._add_with_bridge(
                 easter_date + td(days=+39),
-                _("Ascensión del señor"),
+                tr("Ascensión del señor"),
             )
 
             # Corpus Christi
             self._add_with_bridge(
                 easter_date + td(days=+60),
-                _("Corpus Christi"),
+                tr("Corpus Christi"),
             )
 
         if year >= 1984:
             # Sacred Heart
             self._add_with_bridge(
                 easter_date + td(days=+68),
-                _("Sagrado Corazón"),
+                tr("Sagrado Corazón"),
             )
 
 

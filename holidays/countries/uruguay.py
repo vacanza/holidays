@@ -11,6 +11,7 @@
 
 from datetime import date
 from datetime import timedelta as td
+from gettext import gettext as tr
 
 from dateutil.easter import easter
 
@@ -33,72 +34,72 @@ class Uruguay(HolidayBase):
         # Mandatory paid holidays:
 
         # New Year's Day.
-        self[date(year, JAN, 1)] = _("Año Nuevo")
+        self._add_holiday(tr("Año Nuevo"), JAN, 1)
 
         # International Workers' Day.
-        self[date(year, MAY, 1)] = _("Día de los Trabajadores")
+        self._add_holiday(tr("Día de los Trabajadores"), MAY, 1)
 
         # Constitution Day.
-        self[date(year, JUL, 18)] = _("Jura de la Constitución")
+        self._add_holiday(tr("Jura de la Constitución"), JUL, 18)
 
         # Independence Day.
-        self[date(year, AUG, 25)] = _("Día de la Independencia")
+        self._add_holiday(tr("Día de la Independencia"), AUG, 25)
 
         # Day of the Family.
-        self[date(year, DEC, 25)] = _("Día de la Familia")
+        self._add_holiday(tr("Día de la Familia"), DEC, 25)
 
         # Partially paid holidays:
 
         # Children's Day.
-        self[date(year, JAN, 6)] = _("Día de los Niños")
+        self._add_holiday(tr("Día de los Niños"), JAN, 6)
 
         # Birthday of José Gervasio Artigas.
-        self[date(year, JUN, 19)] = _("Natalicio de José Gervasio Artigas")
+        self._add_holiday(tr("Natalicio de José Gervasio Artigas"), JUN, 19)
 
         # All Souls' Day.
-        self[date(year, NOV, 2)] = _("Día de los Difuntos")
+        self._add_holiday(tr("Día de los Difuntos"), NOV, 2)
 
         # Moveable holidays:
 
         easter_date = easter(year)
 
         # Carnival Day.
-        name = _("Día de Carnaval")
-        self[easter_date + td(days=-48)] = name
-        self[easter_date + td(days=-47)] = name
+        name = tr("Día de Carnaval")
+        self._add_holiday(name, easter_date + td(days=-48))
+        self._add_holiday(name, easter_date + td(days=-47))
 
         # Maundy Thursday.
-        self[easter_date + td(days=-3)] = _("Jueves Santo")
+        self._add_holiday(tr("Jueves Santo"), easter_date + td(days=-3))
         # Good Friday.
-        self[easter_date + td(days=-2)] = _("Viernes Santo")
+        self._add_holiday(tr("Viernes Santo"), easter_date + td(days=-2))
         # Easter Day.
-        self[easter_date] = _("Día de Pascuas")
+        self._add_holiday(tr("Día de Pascuas"), easter_date)
 
         holiday_pairs = (
             (
                 date(year, APR, 19),
                 # Landing of the 33 Patriots.
-                _("Desembarco de los 33 Orientales"),
+                tr("Desembarco de los 33 Orientales"),
             ),
             (
                 date(year, MAY, 18),
                 # Battle of Las Piedras.
-                _("Batalla de Las Piedras"),
+                tr("Batalla de Las Piedras"),
             ),
             (
                 date(year, OCT, 12),
                 # Respect for Cultural Diversity Day.
-                _("Día del Respeto a la Diversidad Cultural"),
+                tr("Día del Respeto a la Diversidad Cultural"),
             ),
         )
 
         for dt, name in holiday_pairs:
             if self._is_tuesday(dt) or self._is_wednesday(dt):
-                self[_get_nth_weekday_from(-1, MON, dt)] = name
+                self._add_holiday(name, _get_nth_weekday_from(-1, MON, dt))
             elif self._is_thursday(dt) or self._is_friday(dt):
-                self[_get_nth_weekday_from(1, MON, dt)] = name
+                self._add_holiday(name, _get_nth_weekday_from(1, MON, dt))
             else:
-                self[dt] = name
+                self._add_holiday(name, dt)
 
 
 class UY(Uruguay):

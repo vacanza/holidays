@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as _
+from gettext import gettext as tr
 
 from holidays.calendars import JULIAN_CALENDAR
 from holidays.constants import MAR, APR, MAY, AUG, OCT, NOV
@@ -38,47 +38,47 @@ class Georgia(HolidayBase, ChristianHolidays, InternationalHolidays):
         super()._populate(year)
 
         # New Year's Day.
-        self._add_new_years_day(_("ახალი წელი"))
-        self._add_new_years_day_two(_("ბედობა"))
+        self._add_new_years_day(tr("ახალი წელი"))
+        self._add_new_years_day_two(tr("ბედობა"))
 
         # Christmas Day (Orthodox).
-        self._add_christmas_day(_("ქრისტეშობა"))
+        self._add_christmas_day(tr("ქრისტეშობა"))
 
         # Baptism Day of our Lord Jesus Christ.
-        self._add_epiphany_day(_("ნათლისღება"))
+        self._add_epiphany_day(tr("ნათლისღება"))
 
         # Mother's Day.
-        self._add_holiday(_("დედის დღე"), MAR, 3)
+        self._add_holiday(tr("დედის დღე"), MAR, 3)
 
         # Women's Day,
-        self._add_womens_day(_("ქალთა საერთაშორისო დღე"))
+        self._add_womens_day(tr("ქალთა საერთაშორისო დღე"))
 
         # Easter.
-        self._add_good_friday(_("წითელი პარასკევი"))
-        self._add_holy_saturday(_("დიდი შაბათი"))
-        self._add_easter_sunday(_("აღდგომა"))
-        self._add_easter_monday(_("შავი ორშაბათი"))
+        self._add_good_friday(tr("წითელი პარასკევი"))
+        self._add_holy_saturday(tr("დიდი შაბათი"))
+        self._add_easter_sunday(tr("აღდგომა"))
+        self._add_easter_monday(tr("შავი ორშაბათი"))
 
         # National Unity Day,
-        self._add_holiday(_("ეროვნული ერთიანობის დღე"), APR, 9)
+        self._add_holiday(tr("ეროვნული ერთიანობის დღე"), APR, 9)
 
         # Day of Victory.
-        self._add_world_war_two_victory_day(_("ფაშიზმზე გამარჯვების დღე"))
+        self._add_world_war_two_victory_day(tr("ფაშიზმზე გამარჯვების დღე"))
 
         # Saint Andrew the First-Called Day.
-        self._add_holiday(_("წმინდა ანდრია პირველწოდებულის დღე"), MAY, 12)
+        self._add_holiday(tr("წმინდა ანდრია პირველწოდებულის დღე"), MAY, 12)
 
         # Independence Day.
-        self._add_holiday(_("დამოუკიდებლობის დღე"), MAY, 26)
+        self._add_holiday(tr("დამოუკიდებლობის დღე"), MAY, 26)
 
         # Saint Mary's Day.
-        self._add_holiday(_("მარიამობა"), AUG, 28)
+        self._add_holiday(tr("მარიამობა"), AUG, 28)
 
         # Day of Svetitskhoveli Cathedral
-        self._add_holiday(_("სვეტიცხოვლობა"), OCT, 14)
+        self._add_holiday(tr("სვეტიცხოვლობა"), OCT, 14)
 
         # Saint George's Day
-        self._add_holiday(_("გიორგობა"), NOV, 23)
+        self._add_holiday(tr("გიორგობა"), NOV, 23)
 
 
 class GE(Georgia):

@@ -11,7 +11,7 @@
 
 from datetime import date
 from datetime import timedelta as td
-from gettext import gettext as _
+from gettext import gettext as tr
 
 from holidays.calendars import _get_nth_weekday_from, JULIAN_CALENDAR
 from holidays.calendars import GREGORIAN_CALENDAR
@@ -34,36 +34,35 @@ class Greece(HolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)
-
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
 
         # New Year's Day.
-        self._add_new_years_day(_("Πρωτοχρονιά"))
+        self._add_new_years_day(tr("Πρωτοχρονιά"))
 
         # Epiphany.
-        self._add_epiphany_day(_("Θεοφάνεια"), calendar=GREGORIAN_CALENDAR)
+        self._add_epiphany_day(tr("Θεοφάνεια"), calendar=GREGORIAN_CALENDAR)
 
         # Clean Monday.
-        self._add_ash_monday(_("Καθαρά Δευτέρα"))
+        self._add_ash_monday(tr("Καθαρά Δευτέρα"))
 
         # Independence Day.
-        self._add_holiday(_("Εικοστή Πέμπτη Μαρτίου"), MAR, 25)
+        self._add_holiday(tr("Εικοστή Πέμπτη Μαρτίου"), MAR, 25)
 
         # Easter Monday.
-        self._add_easter_monday(_("Δευτέρα του Πάσχα"))
+        self._add_easter_monday(tr("Δευτέρα του Πάσχα"))
 
         # Monday of the Holy Spirit.
-        self._add_whit_monday(_("Δευτέρα του Αγίου Πνεύματος"))
+        self._add_whit_monday(tr("Δευτέρα του Αγίου Πνεύματος"))
 
         # Labour Day.
-        name = _("Εργατική Πρωτομαγιά")
-        name_observed = _("%s (παρατηρήθηκε)")
+        name = tr("Εργατική Πρωτομαγιά")
+        name_observed = tr("%s (παρατηρήθηκε)")
 
         dt = date(year, MAY, 1)
-        self[dt] = name
+        self._add_holiday(name, dt)
         if self.observed and self._is_weekend(dt):
             # https://en.wikipedia.org/wiki/Public_holidays_in_Greece
             labour_day_observed_date = _get_nth_weekday_from(1, MON, dt)
@@ -71,20 +70,22 @@ class Greece(HolidayBase, ChristianHolidays, InternationalHolidays):
             # https://www.timeanddate.com/holidays/greece/labor-day
             if self.get(labour_day_observed_date):
                 labour_day_observed_date += td(days=+1)
-            self[labour_day_observed_date] = name_observed % name
+            self._add_holiday(name_observed % name, labour_day_observed_date)
 
         # Assumption of Mary.
-        self._add_assumption_of_mary_day(_("Κοίμηση της Θεοτόκου"))
+        self._add_assumption_of_mary_day(tr("Κοίμηση της Θεοτόκου"))
 
         # Ochi Day.
-        self._add_holiday(_("Ημέρα του Όχι"), OCT, 28)
+        self._add_holiday(tr("Ημέρα του Όχι"), OCT, 28)
 
         # Christmas Day.
-        self._add_christmas_day(_("Χριστούγεννα"), calendar=GREGORIAN_CALENDAR)
+        self._add_christmas_day(
+            tr("Χριστούγεννα"), calendar=GREGORIAN_CALENDAR
+        )
 
         # Day after Christmas.
         self._add_christmas_day_two(
-            _("Επόμενη ημέρα των Χριστουγέννων"),
+            tr("Επόμενη ημέρα των Χριστουγέννων"),
             calendar=GREGORIAN_CALENDAR,
         )
 

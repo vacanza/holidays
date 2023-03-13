@@ -10,7 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 
-from gettext import gettext as _
+from gettext import gettext as tr
 
 from holidays.calendars import JULIAN_CALENDAR, GREGORIAN_CALENDAR
 from holidays.constants import MAR, APR, OCT
@@ -38,55 +38,55 @@ class Cyprus(HolidayBase, ChristianHolidays, InternationalHolidays):
         super()._populate(year)
 
         # New Years Day.
-        self._add_new_years_day(_("Πρωτοχρονιά"))
+        self._add_new_years_day(tr("Πρωτοχρονιά"))
 
         # Epiphany.
-        self._add_epiphany_day(_("Θεοφάνεια"), GREGORIAN_CALENDAR)
+        self._add_epiphany_day(tr("Θεοφάνεια"), GREGORIAN_CALENDAR)
 
         # Clean Monday.
-        self._add_ash_monday(_("Καθαρά Δευτέρα"))
+        self._add_ash_monday(tr("Καθαρά Δευτέρα"))
 
         # Greek Independence Day.
-        self._add_holiday(_("Εικοστή Πέμπτη Μαρτίου"), MAR, 25)
+        self._add_holiday(tr("Εικοστή Πέμπτη Μαρτίου"), MAR, 25)
 
         # Cyprus National Day.
-        self._add_holiday(_("1η Απριλίου"), APR, 1)
+        self._add_holiday(tr("1η Απριλίου"), APR, 1)
 
         # Good Friday.
-        self._add_good_friday(_("Μεγάλη Παρασκευή"))
+        self._add_good_friday(tr("Μεγάλη Παρασκευή"))
 
         # Easter Sunday.
-        self._add_easter_sunday(_("Κυριακή του Πάσχα"))
+        self._add_easter_sunday(tr("Κυριακή του Πάσχα"))
 
         # Easter Monday.
-        self._add_easter_monday(_("Δευτέρα του Πάσχα"))
+        self._add_easter_monday(tr("Δευτέρα του Πάσχα"))
 
         # Labour Day.
-        self._add_labour_day(_("Εργατική Πρωτομαγιά"))
+        self._add_labour_day(tr("Εργατική Πρωτομαγιά"))
 
         # Monday of the Holy Spirit.
-        self._add_whit_monday(_("Δευτέρα του Αγίου Πνεύματος"))
+        self._add_whit_monday(tr("Δευτέρα του Αγίου Πνεύματος"))
 
         # Assumption of Mary.
-        self._add_assumption_of_mary_day(_("Κοίμηση της Θεοτόκου"))
+        self._add_assumption_of_mary_day(tr("Κοίμηση της Θεοτόκου"))
 
         # Cyprus Independence Day.
-        self._add_holiday(_("Ημέρα Ανεξαρτησίας της Κύπρου"), OCT, 1)
+        self._add_holiday(tr("Ημέρα Ανεξαρτησίας της Κύπρου"), OCT, 1)
 
         # Ochi Day.
-        self._add_holiday(_("Ημέρα του Όχι"), OCT, 28)
+        self._add_holiday(tr("Ημέρα του Όχι"), OCT, 28)
 
         # Christmas Eve.
         self._add_christmas_eve(
-            _("Παραμονή Χριστουγέννων"), GREGORIAN_CALENDAR
+            tr("Παραμονή Χριστουγέννων"), GREGORIAN_CALENDAR
         )
 
         # Christmas Day.
-        self._add_christmas_day(_("Χριστούγεννα"), GREGORIAN_CALENDAR)
+        self._add_christmas_day(tr("Χριστούγεννα"), GREGORIAN_CALENDAR)
 
         # Day After Christmas.
         self._add_christmas_day_two(
-            _("Δεύτερη μέρα Χριστουγέννων"), GREGORIAN_CALENDAR
+            tr("Δεύτερη μέρα Χριστουγέννων"), GREGORIAN_CALENDAR
         )
 
 

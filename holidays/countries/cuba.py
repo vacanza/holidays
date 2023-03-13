@@ -11,7 +11,7 @@
 
 from datetime import date
 from datetime import timedelta as td
-from gettext import gettext as _
+from gettext import gettext as tr
 
 from dateutil.easter import easter
 
@@ -26,16 +26,12 @@ class Cuba(HolidayBase):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        # Override gettext for `_("%s (Observado)")` below.
-        global _
-        _ = self.gettext
-
     def _populate(self, year):
         def _add_observed(hol_date: date) -> None:
             if self.observed and self._is_sunday(hol_date):
-                self[hol_date + td(days=+1)] = (
-                    _("%s (Observado)") % self[hol_date]
-                )
+                self[hol_date + td(days=+1)] = self.tr(
+                    "%s (Observado)"
+                ) % self.tr(self[hol_date])
 
         super()._populate(year)
 
@@ -55,14 +51,14 @@ class Cuba(HolidayBase):
 
         dt = date(year, JAN, 1)
         # Liberation Day.
-        self._add_holiday(_("Triunfo de la Revolución"), dt)
+        self._add_holiday(tr("Triunfo de la Revolución"), dt)
         if year <= 2013:
             _add_observed(dt)
 
         # Granted in 2007 decree.
         if year >= 2008:
             #  Victory Day.
-            self._add_holiday(_("Día de la Victoria"), date(year, JAN, 2))
+            self._add_holiday(tr("Día de la Victoria"), date(year, JAN, 2))
 
         # Granted temporarily in 2012 and 2013:
         #   https://cnn.it/3v5V6GY
@@ -70,31 +66,31 @@ class Cuba(HolidayBase):
         # Permanently granted in 2013 decree for 2014 and onwards.
         if year >= 2012:
             # Good Friday.
-            self._add_holiday(_("Viernes Santo"), easter(year) + td(days=-2))
+            self._add_holiday(tr("Viernes Santo"), easter(year) + td(days=-2))
 
         # Labour Day.
         dt = date(year, MAY, 1)
-        self._add_holiday(_("Día Internacional de los Trabajadores"), dt)
+        self._add_holiday(tr("Día Internacional de los Trabajadores"), dt)
         _add_observed(dt)
 
         # Commemoration of the Assault of the Moncada garrison.
         self._add_holiday(
-            _("Conmemoración del asalto a Moncada"), date(year, JUL, 25)
+            tr("Conmemoración del asalto a Moncada"), date(year, JUL, 25)
         )
 
         # Day of the National Rebellion.
         self._add_holiday(
-            _("Día de la Rebeldía Nacional"), date(year, JUL, 26)
+            tr("Día de la Rebeldía Nacional"), date(year, JUL, 26)
         )
 
         # Commemoration of the Assault of the Moncada garrison.
         self._add_holiday(
-            _("Conmemoración del asalto a Moncada"), date(year, JUL, 27)
+            tr("Conmemoración del asalto a Moncada"), date(year, JUL, 27)
         )
 
         dt = date(year, OCT, 10)
         # Independence Day.
-        self._add_holiday(_("Inicio de las Guerras de Independencia"), dt)
+        self._add_holiday(tr("Inicio de las Guerras de Independencia"), dt)
         _add_observed(dt)
 
         # In 1969, Christmas was cancelled for the sugar harvest but then was
@@ -107,12 +103,12 @@ class Cuba(HolidayBase):
         #   https://bit.ly/3cyXj7F
         if year <= 1968 or year >= 1997:
             # Christmas Day.
-            self._add_holiday(_("Día de Navidad"), date(year, DEC, 25))
+            self._add_holiday(tr("Día de Navidad"), date(year, DEC, 25))
 
         # Granted in 2007 decree.
         if year >= 2007:
             # New Year's Eve.
-            self._add_holiday(_("Fiesta de Fin de Año"), date(year, DEC, 31))
+            self._add_holiday(tr("Fiesta de Fin de Año"), date(year, DEC, 31))
 
 
 class CU(Cuba):

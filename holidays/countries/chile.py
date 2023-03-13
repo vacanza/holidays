@@ -11,7 +11,7 @@
 
 from datetime import date, datetime, timezone
 from datetime import timedelta as td
-from gettext import gettext as _
+from gettext import gettext as tr
 
 from pymeeus.Epoch import Epoch
 from pymeeus.Sun import Sun
@@ -37,7 +37,7 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "CL"
     special_holidays = {
-        2022: ((SEP, 16, _("Feriado nacional")),),
+        2022: ((SEP, 16, tr("Feriado nacional")),),
     }
     default_language = "es"
     # ISO 3166-2 codes for the principal subdivisions, called regions
@@ -82,36 +82,36 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
         super()._populate(year)
 
         # New Year's Day (Law 2.977).
-        self._add_new_years_day(_("Año Nuevo"))
+        self._add_new_years_day(tr("Año Nuevo"))
         # Day after, if it's a Sunday (Law 20.983)
         if year >= 2017 and self._is_sunday(date(year, JAN, 1)):
-            self._add_new_years_day_two(_("Feriado nacional"))
+            self._add_new_years_day_two(tr("Feriado nacional"))
 
         # Holy Week (Law 2.977)
-        self._add_good_friday(_("Viernes Santo"))
-        self._add_holy_saturday(_("Sábado Santo"))
+        self._add_good_friday(tr("Viernes Santo"))
+        self._add_holy_saturday(tr("Sábado Santo"))
 
         # Ascension.
         if year <= 1967:
-            self._add_ascension_thursday(_("Ascensión del Señor"))
+            self._add_ascension_thursday(tr("Ascensión del Señor"))
 
         # Corpus Christi.
         if year <= 1967 or 1987 <= year <= 2006:
             # Law 19.668
             self._add_holiday(
-                _("Corpus Christi"),
+                tr("Corpus Christi"),
                 self._easter_sunday + td(days=+60 if year <= 1999 else +57),
             )
 
         # Labour Day (Law 2.200, renamed with Law 18.018).
         if year >= 1932:
-            self._add_labour_day(_("Día Nacional del Trabajo"))
+            self._add_labour_day(tr("Día Nacional del Trabajo"))
 
         # Naval Glories Day (Law 2.977).
-        self._add_holiday(_("Día de las Glorias Navales"), MAY, 21)
+        self._add_holiday(tr("Día de las Glorias Navales"), MAY, 21)
 
         # National Day of Indigenous Peoples.
-        name = _("Día Nacional de los Pueblos Indígenas")
+        name = tr("Día Nacional de los Pueblos Indígenas")
         if year == 2021:
             self._add_holiday(name, JUN, 21)
         elif year >= 2022:
@@ -128,55 +128,55 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Saint Peter and Saint Paul (Law 16.840, Law 18.432)
         if year <= 1967 or year >= 1986:
             self._add_holiday(
-                _("San Pedro y San Pablo"), _get_movable(date(year, JUN, 29))
+                tr("San Pedro y San Pablo"), _get_movable(date(year, JUN, 29))
             )
 
         # Day of Virgin of Carmen (Law 20.148)
         if year >= 2007:
-            self._add_holiday(_("Virgen del Carmen"), JUL, 16)
+            self._add_holiday(tr("Virgen del Carmen"), JUL, 16)
 
         # Day of Assumption of the Virgin (Law 2.977).
-        self._add_assumption_of_mary_day(_("Asunción de la Virgen"))
+        self._add_assumption_of_mary_day(tr("Asunción de la Virgen"))
 
         # Day of National Liberation (Law 18.026).
         if 1981 <= year <= 1998:
-            self._add_holiday(_("Día de la Liberación Nacional"), SEP, 11)
+            self._add_holiday(tr("Día de la Liberación Nacional"), SEP, 11)
         # Day of National Unity (Law 19.588, Law 19.793)
         elif 1999 <= year <= 2001:
             self._add_holiday(
-                _("Día de la Unidad Nacional"),
+                tr("Día de la Unidad Nacional"),
                 _get_nth_weekday_of_month(1, MON, SEP, year),
             )
 
         # National Holiday Friday preceding Independence Day (Law 20.983).
         # Monday, September 17, 2007, is declared a holiday.
         if year >= 2017 and self._is_saturday(year, SEP, 18):
-            self._add_holiday(_("Fiestas Patrias"), SEP, 17)
+            self._add_holiday(tr("Fiestas Patrias"), SEP, 17)
 
         # National Holiday Monday preceding Independence Day (Law 20.215).
         if year >= 2007 and self._is_tuesday(year, SEP, 18):
-            self._add_holiday(_("Fiestas Patrias"), SEP, 17)
+            self._add_holiday(tr("Fiestas Patrias"), SEP, 17)
 
         # Independence Day (Law 2.977).
-        self._add_holiday(_("Día de la Independencia"), SEP, 18)
+        self._add_holiday(tr("Día de la Independencia"), SEP, 18)
 
         # Day of Glories of the Army of Chile (Law 2.977).
-        self._add_holiday(_("Día de las Glorias del Ejército"), SEP, 19)
+        self._add_holiday(tr("Día de las Glorias del Ejército"), SEP, 19)
 
         # National Holiday Friday following Army Day (Law 20.215).
         if year >= 2008 and self._is_thursday(year, SEP, 19):
-            self._add_holiday(_("Fiestas Patrias"), SEP, 20)
+            self._add_holiday(tr("Fiestas Patrias"), SEP, 20)
 
         # Decree-law 636, Law 8.223.
         if 1932 <= year <= 1944:
-            self._add_holiday(_("Fiestas Patrias"), SEP, 20)
+            self._add_holiday(tr("Fiestas Patrias"), SEP, 20)
 
         # Columbus day (Law 3.810).
         if year >= 1922 and year != 1973:
             self._add_holiday(
-                _("Día del Encuentro de dos Mundos")
+                tr("Día del Encuentro de dos Mundos")
                 if year >= 2000
-                else _("Día de la Raza"),
+                else tr("Día de la Raza"),
                 _get_movable(date(year, OCT, 12)),
             )
 
@@ -191,33 +191,33 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
             elif self._is_tuesday(dt):
                 dt += td(days=-4)
             self._add_holiday(
-                _("Día Nacional de las Iglesias Evangélicas y Protestantes"),
+                tr("Día Nacional de las Iglesias Evangélicas y Protestantes"),
                 dt,
             )
 
         # All Saints Day (Law 2.977).
-        self._add_all_saints_day(_("Día de Todos los Santos"))
+        self._add_all_saints_day(tr("Día de Todos los Santos"))
 
         # Immaculate Conception (Law 2.977).
-        self._add_immaculate_conception_day(_("La Inmaculada Concepción"))
+        self._add_immaculate_conception_day(tr("La Inmaculada Concepción"))
 
         if 1944 <= year <= 1988:
             # Christmas Eve.
-            self._add_christmas_eve(_("Víspera de Navidad"))
+            self._add_christmas_eve(tr("Víspera de Navidad"))
 
         # Christmas (Law 2.977).
-        self._add_christmas_day(_("Navidad"))
+        self._add_christmas_day(tr("Navidad"))
 
         # Law 20.663.
         if self.subdiv == "AP" and year >= 2013:
             # Región de Arica y Parinacota.
-            self._add_holiday(_("Asalto y Toma del Morro de Arica"), JUN, 7)
+            self._add_holiday(tr("Asalto y Toma del Morro de Arica"), JUN, 7)
 
         # Law 20.678.
         if self.subdiv == "NB" and year >= 2014:
             # Región de Ñuble
             self._add_holiday(
-                _(
+                tr(
                     "Nacimiento del Prócer de la Independencia "
                     "(Chillán y Chillán Viejo)"
                 ),

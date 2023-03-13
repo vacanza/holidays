@@ -11,7 +11,6 @@
 
 __all__ = ("DateLike", "HolidayBase", "HolidaySum")
 
-import builtins
 import copy
 import os
 import warnings
@@ -260,6 +259,8 @@ class HolidayBase(Dict[date, str]):
         self.observed = observed
         self.subdiv = subdiv or prov or state
 
+        self.tr = gettext  # Default translation method.
+
         if prov or state:
             warnings.warn(
                 "Arguments prov and state are deprecated, use subdiv="
@@ -309,9 +310,7 @@ class HolidayBase(Dict[date, str]):
                         fallback=True,
                         localedir=locale_dir,
                     )
-                translator.install()
-                global gettext
-                gettext = translator.gettext
+                self.tr = translator.gettext
 
         if isinstance(years, int):
             self.years = {years}
@@ -322,8 +321,16 @@ class HolidayBase(Dict[date, str]):
             self._populate(year)
 
     @property
-    def gettext(self):
-        return builtins.__dict__.get("_")
+    def __attribute_names(self):
+        return (
+            "country",
+            "expand",
+            "language",
+            "market",
+            "observed",
+            "subdiv",
+            "years",
+        )
 
     def __setattr__(self, key: str, value: Any) -> None:
         dict.__setattr__(self, key, value)
@@ -647,13 +654,25 @@ class HolidayBase(Dict[date, str]):
         if not isinstance(other, HolidayBase):
             return False
 
-        return dict.__eq__(self, other) and self.__dict__ == other.__dict__
+        for attribute_name in self.__attribute_names:
+            if getattr(self, attribute_name, None) != getattr(
+                other, attribute_name, None
+            ):
+                return False
+
+        return dict.__eq__(self, other)
 
     def __ne__(self, other: object) -> bool:
         if not isinstance(other, HolidayBase):
             return True
 
-        return dict.__ne__(self, other) or self.__dict__ != other.__dict__
+        for attribute_name in self.__attribute_names:
+            if getattr(self, attribute_name, None) != getattr(
+                other, attribute_name, None
+            ):
+                return True
+
+        return dict.__ne__(self, other)
 
     def __add__(
         self, other: Union[int, "HolidayBase", "HolidaySum"]
@@ -710,7 +729,7 @@ class HolidayBase(Dict[date, str]):
         if dt.year != self._year:
             return None
 
-        self[dt] = gettext(name)
+        self[dt] = self.tr(name)
         return dt
 
     def _populate(self, year: int) -> Set[Optional[date]]:
@@ -735,7 +754,7 @@ class HolidayBase(Dict[date, str]):
 
         # Populate items from the special holidays list.
         for month, day, name in self.special_holidays.get(year, ()):
-            dates.add(self._add_holiday(gettext(name), date(year, month, day)))
+            dates.add(self._add_holiday(name, date(year, month, day)))
 
         return dates
 
@@ -800,27 +819,31 @@ class HolidayBase(Dict[date, str]):
         if self:
             return super().__repr__()
 
-        repr = []
+        parts = []
         if hasattr(self, "market"):
-            repr.append(f"holidays.financial_holidays({self.market!r}")
-            if self.subdiv:
-                repr.append(f", subdiv={self.subdiv!r}")
-            repr.append(")")
+            parts.append(f"holidays.financial_holidays({self.market!r}")
         elif hasattr(self, "country"):
-            if repr:
-                repr.append(" + ")
-            repr.append(f"holidays.country_holidays({self.country!r}")
+            if parts:
+                parts.append(" + ")
+            parts.append(f"holidays.country_holidays({self.country!r}")
             if self.subdiv:
-                repr.append(f", subdiv={self.subdiv!r}")
-            repr.append(")")
+                parts.append(f", subdiv={self.subdiv!r}")
+        parts.append(")")
 
-        return "".join(repr)
+        return "".join(parts)
 
     def __str__(self) -> str:
         if self:
             return super().__str__()
 
-        return str(self.__dict__)
+        parts = []
+        for attribute_name in self.__attribute_names:
+            parts.append(
+                "'%s': %s"
+                % (attribute_name, getattr(self, attribute_name, None))
+            )
+
+        return f"{{{', '.join(parts)}}}"
 
 
 class HolidaySum(HolidayBase):

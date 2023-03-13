@@ -10,7 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 
-from gettext import gettext as _
+from gettext import gettext as tr
 
 from holidays.constants import JUL, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
@@ -38,51 +38,51 @@ class Peru(HolidayBase, ChristianHolidays, InternationalHolidays):
         super()._populate(year)
 
         # New Year's Day.
-        self._add_new_years_day(_("Año Nuevo"))
+        self._add_new_years_day(tr("Año Nuevo"))
 
         # Holy Thursday.
-        self._add_holy_thursday(_("Jueves Santo"))
+        self._add_holy_thursday(tr("Jueves Santo"))
 
         # Good Friday.
-        self._add_good_friday(_("Viernes Santo"))
+        self._add_good_friday(tr("Viernes Santo"))
 
         # Easter Sunday.
-        self._add_easter_sunday(_("Domingo de Resurrección"))
+        self._add_easter_sunday(tr("Domingo de Resurrección"))
 
         # Labor Day.
-        self._add_labour_day(_("Día del Trabajo"))
+        self._add_labour_day(tr("Día del Trabajo"))
 
         # Feast of Saints Peter and Paul.
-        self._add_saints_peter_and_paul_day(_("San Pedro y San Pablo"))
+        self._add_saints_peter_and_paul_day(tr("San Pedro y San Pablo"))
 
         # Independence Day.
-        self._add_holiday(_("Día de la Independencia"), JUL, 28)
+        self._add_holiday(tr("Día de la Independencia"), JUL, 28)
 
         # Great Military Parade Day.
-        self._add_holiday(_("Día de la Gran Parada Militar"), JUL, 29)
+        self._add_holiday(tr("Día de la Gran Parada Militar"), JUL, 29)
 
         if year >= 2022:
             # Battle of Junín.
-            self._add_holiday(_("Batalla de Junín"), AUG, 6)
+            self._add_holiday(tr("Batalla de Junín"), AUG, 6)
 
         # Santa Rosa de Lima.
-        self._add_holiday(_("Santa Rosa de Lima"), AUG, 30)
+        self._add_holiday(tr("Santa Rosa de Lima"), AUG, 30)
 
         # Battle of Angamos.
-        self._add_holiday(_("Combate de Angamos"), OCT, 8)
+        self._add_holiday(tr("Combate de Angamos"), OCT, 8)
 
         # All Saints Day.
-        self._add_all_saints_day(_("Todos Los Santos"))
+        self._add_all_saints_day(tr("Todos Los Santos"))
 
         # Immaculate Conception.
-        self._add_immaculate_conception_day(_("Inmaculada Concepción"))
+        self._add_immaculate_conception_day(tr("Inmaculada Concepción"))
 
         if year >= 2022:
             # Battle of Ayacucho.
-            self._add_holiday(_("Batalla de Ayacucho"), DEC, 9)
+            self._add_holiday(tr("Batalla de Ayacucho"), DEC, 9)
 
         # Christmas Day.
-        self._add_christmas_day(_("Navidad del Señor"))
+        self._add_christmas_day(tr("Navidad del Señor"))
 
 
 class PE(Peru):

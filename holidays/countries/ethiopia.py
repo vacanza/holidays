@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as _
+from gettext import gettext as tr
 
 from holidays.calendars import JULIAN_CALENDAR
 from holidays.constants import MAR, MAY, SEP
@@ -69,56 +69,57 @@ class Ethiopia(
 
         # Ethiopian New Year.
         self._add_holiday(
-            _("አዲስ ዓመት እንቁጣጣሽ"), SEP, 12 if self._is_leap_year(year) else 11
+            tr("አዲስ ዓመት እንቁጣጣሽ"), SEP, 12 if self._is_leap_year(year) else 11
         )
 
         # Finding of True Cross.
         self._add_holiday(
-            _("መስቀል"), SEP, 28 if self._is_leap_year(year) else 27
+            tr("መስቀል"), SEP, 28 if self._is_leap_year(year) else 27
         )
 
         # Orthodox Christmas.
-        self._add_christmas_day(_("ገና"))
+        self._add_christmas_day(tr("ገና"))
 
         # Orthodox Epiphany.
-        self._add_epiphany_day(_("ጥምቀት"))
+        self._add_epiphany_day(tr("ጥምቀት"))
 
         # Orthodox Good Friday.
-        self._add_good_friday(_("ስቅለት"))
+        self._add_good_friday(tr("ስቅለት"))
 
         # Orthodox Easter Sunday.
-        self._add_easter_sunday(_("ፋሲካ"))
+        self._add_easter_sunday(tr("ፋሲካ"))
 
         if year > 1896:
             # Adwa Victory Day.
-            self._add_holiday(_("አድዋ"), MAR, 2)
+            self._add_holiday(tr("አድዋ"), MAR, 2)
 
         # Labour Day.
-        self._add_labour_day(_("የሰራተኞች ቀን"))
+        self._add_labour_day(tr("የሰራተኞች ቀን"))
 
         if year > 1941:
             # Patriots Day.
-            self._add_holiday(_("የአርበኞች ቀን"), MAY, 5)
+            self._add_holiday(tr("የአርበኞች ቀን"), MAY, 5)
 
         if year > 1991:
             # Downfall of Dergue Regime Day.
-            self._add_holiday(_("ደርግ የወደቀበት ቀን"), MAY, 28)
+            self._add_holiday(tr("ደርግ የወደቀበት ቀን"), MAY, 28)
 
         if year < 1991 and year > 1974:
             # Downfall of King Haile Selassie.
             self._add_holiday(
-                _("ደርግ የመጣበት ቀን"), SEP, 13 if self._is_leap_year(year) else 12
+                tr("ደርግ የመጣበት ቀን"), SEP, 13 if self._is_leap_year(year) else 12
             )
 
-        # Eid al-Fitr - Feast Festive.
-        self._add_eid_al_fitr_day(_("ኢድ አልፈጥር"))
+        # Eid al-Fitr.
+        self._add_eid_al_fitr_day(tr("ኢድ አልፈጥር"))
 
-        # Eid al-Adha - Sacrifice Festive.
-        self._add_eid_al_adha_day(_("አረፋ"))
-        self._add_eid_al_adha_day_two(_("አረፋ"))
+        # Eid al-Adha.
+        name = tr("አረፋ")
+        self._add_eid_al_adha_day(name)
+        self._add_eid_al_adha_day_two(name)
 
         # Prophet Muhammad's Birthday.
-        name = _("መውሊድ")
+        name = tr("መውሊድ")
         self._add_mawlid_day(name)
         self._add_mawlid_day_two(name)
 

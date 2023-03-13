@@ -10,6 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from gettext import gettext as tr
 
 from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import JAN, FEB, MAR, MAY, SEP, NOV, DEC, MON
@@ -32,49 +33,51 @@ class Mexico(HolidayBase):
         super()._populate(year)
 
         # New Year's Day.
-        self[date(year, JAN, 1)] = _("Año Nuevo")
+        self._add_holiday(tr("Año Nuevo"), JAN, 1)
 
         if year >= 1917:
-            self[
+            # Constitution Day.
+            self._add_holiday(
+                tr("Día de la Constitución"),
                 _get_nth_weekday_of_month(1, MON, FEB, year)
                 if year >= 2006
-                else date(year, FEB, 5)
-                # Constitution Day.
-            ] = _("Día de la Constitución")
+                else date(year, FEB, 5),
+            )
 
         if year >= 1917:
-            self[
+            # Benito Juárez's birthday.
+            self._add_holiday(
+                tr("Natalicio de Benito Juárez"),
                 _get_nth_weekday_of_month(3, MON, MAR, year)
                 # no 2006 due to celebration of the 200th anniversary
                 # of Benito Juárez in 2006
-                if year >= 2007
-                else date(year, MAR, 21)
-                # Benito Juárez's birthday.
-            ] = _("Natalicio de Benito Juárez")
+                if year >= 2007 else date(year, MAR, 21),
+            )
 
         if year >= 1923:
             # Labour Day.
-            self[date(year, MAY, 1)] = _("Día del Trabajo")
+            self._add_holiday(tr("Día del Trabajo"), MAY, 1)
 
         # Independence Day.
-        self[date(year, SEP, 16)] = _("Día de la Independencia")
+        self._add_holiday(tr("Día de la Independencia"), SEP, 16)
 
         if year >= 1917:
-            self[
+            # Revolution Day.
+            self._add_holiday(
+                tr("Día de la Revolución"),
                 _get_nth_weekday_of_month(3, MON, NOV, year)
                 if year >= 2006
-                else date(year, NOV, 20)
-                # Revolution Day.
-            ] = _("Día de la Revolución")
+                else date(year, NOV, 20),
+            )
 
         if year >= 1970 and (year - 1970) % 6 == 0:
             # Change of Federal Government.
-            self[date(year, DEC, 1)] = _(
-                "Transmisión del Poder Ejecutivo Federal"
+            self._add_holiday(
+                tr("Transmisión del Poder Ejecutivo Federal"), DEC, 1
             )
 
         # Christmas Day.
-        self[date(year, DEC, 25)] = _("Navidad")
+        self._add_holiday(tr("Navidad"), DEC, 25)
 
 
 class MX(Mexico):

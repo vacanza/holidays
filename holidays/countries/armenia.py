@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from gettext import gettext as _
+from gettext import gettext as tr
 
 from holidays.calendars import JULIAN_CALENDAR
 from holidays.constants import JAN, APR, MAY, JUL, SEP
@@ -42,63 +42,63 @@ class Armenia(HolidayBase, ChristianHolidays, InternationalHolidays):
         super()._populate(year)
 
         # New Year's Day.
-        name = _("Նոր տարվա օր")
+        name = tr("Նոր տարվա օր")
         self._add_new_years_day(name)
         self._add_new_years_day_two(name)
 
         # Christmas. Epiphany Day.
-        self._add_holiday(_("Սուրբ Ծնունդ եւ Հայտնություն"), JAN, 6)
+        self._add_holiday(tr("Սուրբ Ծնունդ եւ Հայտնություն"), JAN, 6)
 
         if 2010 <= year <= 2021:
             self._add_new_years_day_three(name)
             self._add_new_years_day_four(name)
 
             # Christmas Eve.
-            self._add_holiday(_("Սուրբ Ծննդյան տոներ"), JAN, 5)
+            self._add_holiday(tr("Սուրբ Ծննդյան տոներ"), JAN, 5)
 
             # The Day of Remembrance of the Dead.
-            self._add_holiday(_("Մեռելոց հիշատակի օր"), JAN, 7)
+            self._add_holiday(tr("Մեռելոց հիշատակի օր"), JAN, 7)
 
         if year >= 2003:
             # Army Day.
-            self._add_holiday(_("Բանակի օր"), JAN, 28)
+            self._add_holiday(tr("Բանակի օր"), JAN, 28)
 
         # Women's Day.
-        self._add_womens_day(_("Կանանց տոն"))
+        self._add_womens_day(tr("Կանանց տոն"))
 
         if 1994 <= year <= 2001:
             # Motherhood and Beauty Day.
-            self._add_holiday(_("Մայրության և գեղեցկության տոն"), APR, 7)
+            self._add_holiday(tr("Մայրության և գեղեցկության տոն"), APR, 7)
 
         # Armenian Genocide Remembrance Day,
-        self._add_holiday(_("Եղեռնի զոհերի հիշատակի օր"), APR, 24)
+        self._add_holiday(tr("Եղեռնի զոհերի հիշատակի օր"), APR, 24)
 
         if year >= 2001:
             self._add_labour_day(
                 # Labor Day.
-                _("Աշխատանքի օր")
+                tr("Աշխատանքի օր")
                 if year >= 2002
                 # International Day of Workers' Solidarity.
-                else _("Աշխատավորների համերաշխության միջազգային օր")
+                else tr("Աշխատավորների համերաշխության միջազգային օր")
             )
 
         if year >= 1995:
             # Victory and Peace Day.
-            self._add_holiday(_("Հաղթանակի և Խաղաղության տոն"), MAY, 9)
+            self._add_holiday(tr("Հաղթանակի և Խաղաղության տոն"), MAY, 9)
 
         # Republic Day.
-        self._add_holiday(_("Հանրապետության օր"), MAY, 28)
+        self._add_holiday(tr("Հանրապետության օր"), MAY, 28)
 
         if year >= 1996:
             # Constitution Day.
-            self._add_holiday(_("Սահմանադրության օր"), JUL, 5)
+            self._add_holiday(tr("Սահմանադրության օր"), JUL, 5)
 
         if year >= 1992:
             # Independence Day.
-            self._add_holiday(_("Անկախության օր"), SEP, 21)
+            self._add_holiday(tr("Անկախության օր"), SEP, 21)
 
         # New Year's Eve.
-        self._add_new_years_eve(_("Նոր տարվա գիշեր"))
+        self._add_new_years_eve(tr("Նոր տարվա գիշեր"))
 
 
 class AM(Armenia):

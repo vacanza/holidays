@@ -9,8 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from datetime import timedelta as td
+from gettext import gettext as tr
 
 from dateutil.easter import easter
 
@@ -30,48 +30,48 @@ class Honduras(HolidayBase):
         super()._populate(year)
 
         # New Year's Day.
-        self[date(year, JAN, 1)] = _("Año Nuevo")
+        self._add_holiday(tr("Año Nuevo"), JAN, 1)
 
         easter_date = easter(year)
         # Maundy Thursday.
-        self[easter_date + td(days=-3)] = _("Jueves Santo")
+        self._add_holiday(tr("Jueves Santo"), easter_date + td(days=-3))
 
         # Good Friday.
-        self[easter_date + td(days=-2)] = _("Viernes Santo")
+        self._add_holiday(tr("Viernes Santo"), easter_date + td(days=-2))
 
         # Holy Saturday.
-        self[easter_date + td(days=-1)] = _("Sábado de Gloria")
+        self._add_holiday(tr("Sábado de Gloria"), easter_date + td(days=-1))
 
         # Panamerican Day.
-        self[date(year, APR, 14)] = _("Día de las Américas")
+        self._add_holiday(tr("Día de las Américas"), APR, 14)
 
         # Labor Day.
-        self[date(year, MAY, 1)] = _("Día del Trabajo")
+        self._add_holiday(tr("Día del Trabajo"), MAY, 1)
 
         # Independence Day.
-        self[date(year, SEP, 15)] = _("Día de la Independencia")
+        self._add_holiday(tr("Día de la Independencia"), SEP, 15)
 
         # https://www.tsc.gob.hn/web/leyes/Decreto_78-2015_Traslado_de_Feriados_Octubre.pdf
         if year <= 2014:
             # Morazan's Day.
-            self[date(year, OCT, 3)] = _("Día de Morazán")
+            self._add_holiday(tr("Día de Morazán"), OCT, 3)
 
             # Columbus Day.
-            self[date(year, OCT, 12)] = _("Día de la Raza")
+            self._add_holiday(tr("Día de la Raza"), OCT, 12)
 
             # Army Day.
-            self[date(year, OCT, 21)] = _("Día de las Fuerzas Armadas")
+            self._add_holiday(tr("Día de las Fuerzas Armadas"), OCT, 21)
         else:
             # Morazan Weekend.
-            holiday_name = _("Semana Morazánica")
+            holiday_name = tr("Semana Morazánica")
             # (First Wednesday of October from 12 noon to Saturday 12 noon)
             first_wednesday = _get_nth_weekday_of_month(1, WED, OCT, year)
-            self[first_wednesday] = holiday_name
-            self[first_wednesday + td(days=+1)] = holiday_name
-            self[first_wednesday + td(days=+2)] = holiday_name
+            self._add_holiday(holiday_name, first_wednesday)
+            self._add_holiday(holiday_name, first_wednesday + td(days=+1))
+            self._add_holiday(holiday_name, first_wednesday + td(days=+2))
 
         # Christmas.
-        self[date(year, DEC, 25)] = _("Navidad")
+        self._add_holiday(tr("Navidad"), DEC, 25)
 
 
 class HN(Honduras):

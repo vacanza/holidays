@@ -89,7 +89,7 @@ generate pygettext .pot file first:
 
 If the template file is empty make sure that the country/market entity has the
 ``default_language`` attribute set and all holiday names are wrapped
-with ``_`` (``from gettext import gettext as _``). Please note that for ``gettext``
+with ``_`` (``from gettext import gettext as tr``). Please note that for ``gettext``
 c-format style cases you'll need to override ``_`` in ``__init__`` with
 
 .. code-block:: python
