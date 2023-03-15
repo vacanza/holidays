@@ -34,6 +34,10 @@ class TestDenmark(TestCase):
         self.assertIn(date(2016, 5, 16), self.holidays)
         self.assertIn(date(2016, 12, 25), self.holidays)
 
+    def test_2024(self):
+        # https://www.officeholidays.com/countries/denmark/2024
+        self.assertNotIn(date(2024, 4, 26), self.holidays)
+
     def test_l10n_default(self):
         def run_tests(languages):
             for language in languages:

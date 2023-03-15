@@ -1,0 +1,68 @@
+# Cuba holidays uk localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.22\n"
+"POT-Creation-Date: 2023-03-04 14:20+0200\n"
+"PO-Revision-Date: 2023-03-05 13:11+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: holidays/countries/cuba.py:29
+#, c-format
+msgid "%s (Observado)"
+msgstr "%s (вихідний)"
+
+#. Liberation Day.
+#: holidays/countries/cuba.py:50
+msgid "Triunfo de la Revolución"
+msgstr "Тріумф революції"
+
+#. Victory Day.
+#: holidays/countries/cuba.py:57
+msgid "Día de la Victoria"
+msgstr "День перемоги"
+
+#. Good Friday.
+#: holidays/countries/cuba.py:65
+msgid "Viernes Santo"
+msgstr "Страсна пʼятниця"
+
+#. Labour Day.
+#: holidays/countries/cuba.py:69
+msgid "Día Internacional de los Trabajadores"
+msgstr "Міжнародний день трудящих"
+
+#. Commemoration of the Assault of the Moncada garrison.
+#: holidays/countries/cuba.py:73 holidays/countries/cuba.py:81
+msgid "Conmemoración del asalto a Moncada"
+msgstr "Вшанування памʼяті штурму Монкади"
+
+#. Day of the National Rebellion.
+#: holidays/countries/cuba.py:78
+msgid "Día de la Rebeldía Nacional"
+msgstr "День національного повстання"
+
+#. Independence Day.
+#: holidays/countries/cuba.py:87
+msgid "Inicio de las Guerras de Independencia"
+msgstr "Початок війни за незалежність"
+
+#. Christmas Day.
+#: holidays/countries/cuba.py:100
+msgid "Día de Navidad"
+msgstr "Різдво Христове"
+
+#. New Year's Eve.
+#: holidays/countries/cuba.py:105
+msgid "Fiesta de Fin de Año"
+msgstr "Переддень Нового року"

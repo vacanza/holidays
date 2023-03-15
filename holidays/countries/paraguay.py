@@ -11,6 +11,7 @@
 
 from datetime import date
 from datetime import timedelta as td
+from gettext import gettext as tr
 
 from dateutil.easter import easter
 
@@ -27,113 +28,117 @@ class Paraguay(HolidayBase):
     """
 
     country = "PY"
+    default_language = "es"
+
+    # Public holiday.
+    public_holiday = tr("Asueto adicionale")
+    # Public sector holiday.
+    public_sector_holiday = tr("Asueto de la Administración Pública")
     special_holidays = {
         # public holiday for business purposes, in view of
         # the recently increased risk of Dengue fever
-        2007: ((JAN, 29, "Public Holiday"),),
+        2007: ((JAN, 29, public_holiday),),
         # public sector holiday to celebrate Paraguay's
         # football team's qualification for the 2010 World Cup
-        2009: ((SEP, 10, "Public Holiday"),),
+        2009: ((SEP, 10, public_holiday),),
         2010: (
             # public holiday to coincide with the Paraguay-Italy
             # game of the current World Cup
-            (JUN, 14, "Public Holiday"),
+            (JUN, 14, public_holiday),
             # 2 year-end public sector holidays
-            (DEC, 24, "Public sector Holiday"),
-            (DEC, 31, "Public sector Holiday"),
+            (DEC, 24, public_sector_holiday),
+            (DEC, 31, public_sector_holiday),
         ),
         2011: (
             # public holiday to coincide with the current anti-Dengue drive
-            (APR, 19, "Public Holiday"),
+            (APR, 19, public_holiday),
             # public sector holiday to let civil servants
             # begin their Holy Week earlier
-            (APR, 20, "Public sector Holiday"),
+            (APR, 20, public_sector_holiday),
             # public holidays to commemorate the Bicentennial
             # of Paraguay's independence
-            (MAY, 14, "Public Holiday"),
-            (MAY, 16, "Public Holiday"),
+            (MAY, 14, public_holiday),
+            (MAY, 16, public_holiday),
             # 2 year-end public sector holidays
-            (DEC, 23, "Public sector Holiday"),
-            (DEC, 30, "Public sector Holiday"),
+            (DEC, 23, public_sector_holiday),
+            (DEC, 30, public_sector_holiday),
         ),
         2012: (
             # public sector holiday to let civil servants
             # begin their Holy Week earlier
-            (APR, 4, "Public sector Holiday"),
+            (APR, 4, public_sector_holiday),
             # 2 year-end public sector holidays
-            (DEC, 24, "Public sector Holiday"),
-            (DEC, 31, "Public sector Holiday"),
+            (DEC, 24, public_sector_holiday),
+            (DEC, 31, public_sector_holiday),
         ),
         2013: (
             # public sector holiday to let civil servants
             # begin their Holy Week earlier
-            (MAR, 27, "Public sector Holiday"),
+            (MAR, 27, public_sector_holiday),
             # date of the inauguration of President-elect
             # Horacio Cartes, as a one-off non-working public holiday
-            (AUG, 14, "Public Holiday"),
+            (AUG, 14, public_holiday),
         ),
         2014: (
             # public sector holiday to let civil servants
             # begin their Holy Week earlier
-            (APR, 16, "Public sector Holiday"),
+            (APR, 16, public_sector_holiday),
             # 2 year-end public sector holidays
-            (DEC, 24, "Public sector Holiday"),
-            (DEC, 31, "Public sector Holiday"),
+            (DEC, 24, public_sector_holiday),
+            (DEC, 31, public_sector_holiday),
         ),
         2015: (
             # public sector holiday to let civil servants
             # begin their Holy Week earlier
-            (APR, 1, "Public sector Holiday"),
+            (APR, 1, public_sector_holiday),
             # public holidays in Paraguay on account
             # of the upcoming visit of Pope Francis in Paraguay
-            (JUL, 10, "Public Holiday"),
-            (JUL, 11, "Public Holiday"),
+            (JUL, 10, public_holiday),
+            (JUL, 11, public_holiday),
             # 2 year-end public sector holidays
-            (DEC, 24, "Public sector Holiday"),
-            (DEC, 31, "Public sector Holiday"),
+            (DEC, 24, public_sector_holiday),
+            (DEC, 31, public_sector_holiday),
         ),
         2016: (
             # public sector holiday to let civil servants
             # begin their Holy Week earlier
-            (MAR, 23, "Public sector Holiday"),
-            (DEC, 26, "Public Holiday"),
+            (MAR, 23, public_sector_holiday),
         ),
         2017: (
-            (JAN, 2, "Public Holiday"),
             # public sector holiday to let civil servants
             # begin their Holy Week earlier
-            (MAR, 28, "Public sector Holiday"),
+            (MAR, 28, public_sector_holiday),
         ),
         2018: (
             # 2 year-end public sector holidays
-            (DEC, 24, "Public sector Holiday"),
-            (DEC, 31, "Public sector Holiday"),
+            (DEC, 24, public_sector_holiday),
+            (DEC, 31, public_sector_holiday),
         ),
         2019: (
             # public sector holiday to let civil servants
             # begin their Holy Week earlier
-            (APR, 17, "Public sector Holiday"),
+            (APR, 17, public_sector_holiday),
             # 2 year-end public sector holidays
-            (DEC, 24, "Public sector Holiday"),
-            (DEC, 31, "Public sector Holiday"),
+            (DEC, 24, public_sector_holiday),
+            (DEC, 31, public_sector_holiday),
         ),
         2020: (
             # public sector holiday to let civil servants
             # begin their Holy Week earlier
-            (APR, 8, "Public sector Holiday"),
+            (APR, 8, public_sector_holiday),
         ),
         2021: (
             # 2 year-end public sector holidays
-            (DEC, 24, "Public sector Holiday"),
-            (DEC, 31, "Public sector Holiday"),
+            (DEC, 24, public_sector_holiday),
+            (DEC, 31, public_sector_holiday),
         ),
         2022: (
             # public sector holiday to let civil servants
             # begin their Holy Week earlier
-            (APR, 13, "Public sector Holiday"),
+            (APR, 13, public_sector_holiday),
             # public sector holiday due to the annual May 1st
             # public holiday falling on a Sunday
-            (MAY, 2, "Public Holiday"),
+            (MAY, 2, public_sector_holiday),
         ),
     }
 
@@ -144,33 +149,34 @@ class Paraguay(HolidayBase):
     def _populate(self, year):
         super()._populate(year)
 
-        # New Year's Day
-        self._add_holiday(date(year, JAN, 1), "Año Nuevo [New Year's Day]")
+        # New Year's Day.
+        self._add_holiday(date(year, JAN, 1), self.tr("Año Nuevo"))
 
-        # Patriots day
         dates_obs = {
             2013: (MAR, 4),
             2016: (FEB, 29),
             2018: (FEB, 26),
             2022: (FEB, 28),
         }
-        self[
-            date(year, *dates_obs.get(year, (MAR, 1)))
-        ] = "Día de los Héroes de la Patria [Patriots Day]"
+        # Patriots Day.
+        self[date(year, *dates_obs.get(year, (MAR, 1)))] = self.tr(
+            "Día de los Héroes de la Patria"
+        )
 
         # Holy Week
         easter_date = easter(year)
-        self[easter_date + td(days=-3)] = "Jueves Santo [Maundy Thursday]"
-        self[easter_date + td(days=-2)] = "Viernes Santo [Good Friday]"
-        self._add_holiday(easter_date, "Día de Pascuas [Easter Day]")
+        # Maundy Thursday.
+        self[easter_date + td(days=-3)] = self.tr("Jueves Santo")
+        # Good Friday.
+        self[easter_date + td(days=-2)] = self.tr("Viernes Santo")
+        # Easter Day.
+        self._add_holiday(easter_date, self.tr("Día de Pascuas"))
 
-        # Labor Day
-        self._add_holiday(
-            date(year, MAY, 1), "Día del Trabajador [Labour Day]"
-        )
+        # Labour Day.
+        self._add_holiday(date(year, MAY, 1), self.tr("Día del Trabajador"))
 
-        # Independence Day
-        name = "Día de la Independencia Nacional [Independence Day]"
+        # Independence Day.
+        name = self.tr("Día de la Independencia Nacional")
         if year == 2021:
             self[date(year, MAY, 14)] = name
             self[date(year, MAY, 15)] = name
@@ -180,23 +186,22 @@ class Paraguay(HolidayBase):
         else:
             self._add_holiday(date(year, MAY, 15), name)
 
-        # Peace in Chaco Day.
         dates_obs = {
             2014: (JUN, 16),
             2018: (JUN, 11),
         }
         self._add_holiday(
             date(year, *dates_obs.get(year, (JUN, 12))),
-            "Día de la Paz del Chaco [Chaco Armistice Day]",
+            # Chaco Armistice Day.
+            self.tr("Día de la Paz del Chaco"),
         )
 
-        # Asuncion Fundation's Day
         self._add_holiday(
             date(year, AUG, 15),
-            "Día de la Fundación de Asunción [Asuncion Foundation's Day]",
+            # Asuncion Foundation's Day.
+            self.tr("Día de la Fundación de Asunción"),
         )
 
-        # Boqueron's Battle
         if year >= 2000:
             dates_obs = {
                 2015: (SEP, 28),
@@ -207,17 +212,18 @@ class Paraguay(HolidayBase):
             }
             self._add_holiday(
                 date(year, *dates_obs.get(year, (SEP, 29))),
-                "Día de la Batalla de Boquerón [Boqueron Battle Day]",
+                # Boqueron Battle Day.
+                self.tr("Día de la Batalla de Boquerón"),
             )
 
-        # Caacupe Virgin Day
         self._add_holiday(
             date(year, DEC, 8),
-            "Día de la Virgen de Caacupé [Caacupe Virgin Day]",
+            # Caacupe Virgin Day.
+            self.tr("Día de la Virgen de Caacupé"),
         )
 
-        # Christmas
-        self[date(year, DEC, 25)] = "Navidad [Christmas]"
+        # Christmas.
+        self[date(year, DEC, 25)] = self.tr("Navidad")
 
 
 class PY(Paraguay):

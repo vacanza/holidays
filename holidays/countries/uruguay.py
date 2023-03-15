@@ -25,6 +25,7 @@ class Uruguay(HolidayBase):
     """
 
     country = "UY"
+    default_language = "es"
 
     def _populate(self, year):
         super()._populate(year)
@@ -32,73 +33,64 @@ class Uruguay(HolidayBase):
         # Mandatory paid holidays:
 
         # New Year's Day.
-        self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
+        self[date(year, JAN, 1)] = self.tr("Año Nuevo")
 
-        # Día de los Trabajadores.
-        self[
-            date(year, MAY, 1)
-        ] = "Día de los Trabajadores [International Workers' Day]"
+        # International Workers' Day.
+        self[date(year, MAY, 1)] = self.tr("Día de los Trabajadores")
 
-        # Jura de la Constitución.
-        self[
-            date(year, JUL, 18)
-        ] = "Jura de la Constitución [Constitution Day]"
+        # Constitution Day.
+        self[date(year, JUL, 18)] = self.tr("Jura de la Constitución")
 
-        # Declaratoria de la Independencia.
-        self[
-            date(year, AUG, 25)
-        ] = "Día de la Independencia [Independence Day]"
+        # Independence Day.
+        self[date(year, AUG, 25)] = self.tr("Día de la Independencia")
 
-        # Christmas.
-        self[date(year, DEC, 25)] = "Día de la Familia [Day of the Family]"
+        # Day of the Family.
+        self[date(year, DEC, 25)] = self.tr("Día de la Familia")
 
         # Partially paid holidays:
 
-        # Día de los Niños.
-        self[date(year, JAN, 6)] = "Día de los Niños [Children's Day]"
+        # Children's Day.
+        self[date(year, JAN, 6)] = self.tr("Día de los Niños")
 
-        # Natalicio de José Gervasio Artigas.
-        self[date(year, JUN, 19)] = (
-            "Natalicio de José Gervasio Artigas "
-            "[Birthday of José Gervasio Artigas]"
+        # Birthday of José Gervasio Artigas.
+        self[date(year, JUN, 19)] = self.tr(
+            "Natalicio de José Gervasio Artigas"
         )
 
-        # Día de los difuntos.
-        self[date(year, NOV, 2)] = "Día de los Difuntos [All Souls' Day]"
+        # All Souls' Day.
+        self[date(year, NOV, 2)] = self.tr("Día de los Difuntos")
 
         # Moveable holidays:
 
         easter_date = easter(year)
 
-        # Carnival days
-        # revisar este día para futuros casos
-        name = "Día de Carnaval [Carnival's Day]"
+        # Carnival Day.
+        name = self.tr("Día de Carnaval")
         self[easter_date + td(days=-48)] = name
         self[easter_date + td(days=-47)] = name
 
-        # Holy Week.
-        self[easter_date + td(days=-3)] = "Jueves Santo [Holy Thursday]"
-        self[easter_date + td(days=-2)] = "Viernes Santo [Holy Friday]"
-
-        self[easter_date] = "Día de Pascuas [Easter Day]"
+        # Maundy Thursday.
+        self[easter_date + td(days=-3)] = self.tr("Jueves Santo")
+        # Good Friday.
+        self[easter_date + td(days=-2)] = self.tr("Viernes Santo")
+        # Easter Day.
+        self[easter_date] = self.tr("Día de Pascuas")
 
         holiday_pairs = (
             (
-                # Desembarco de los 33 Orientales en la playa de la Agraciada.
                 date(year, APR, 19),
-                "Desembarco de los 33 Orientales [Landing of the 33 Patriots]",
+                # Landing of the 33 Patriots.
+                self.tr("Desembarco de los 33 Orientales"),
             ),
             (
-                # Batalla de Las Piedras [Battle of Las Piedras].
                 date(year, MAY, 18),
-                "Batalla de Las Piedras [Battle of Las Piedras]",
+                # Battle of Las Piedras.
+                self.tr("Batalla de Las Piedras"),
             ),
             (
-                # "Día del Respeto a la Diversidad Cultural
-                # [Respect for Cultural Diversity Day].
                 date(year, OCT, 12),
-                "Día del Respeto a la Diversidad Cultural "
-                "[Respect for Cultural Diversity Day]",
+                # Respect for Cultural Diversity Day.
+                self.tr("Día del Respeto a la Diversidad Cultural"),
             ),
         )
 

@@ -160,3 +160,41 @@ class TestParaguay(TestCase):
             easter_friday = easter + td(days=-2)
             for holiday in [easter_thursday, easter_friday, easter]:
                 self.assertIn(holiday, self.holidays)
+
+    def test_l10n_default(self):
+        def run_tests(languages):
+            for language in languages:
+                py = Paraguay(language=language)
+                self.assertEqual(py["2022-01-01"], "Año Nuevo")
+                self.assertEqual(py["2022-12-25"], "Navidad")
+
+        run_tests((Paraguay.default_language, None, "invalid"))
+
+        self.set_language("en_US")
+        run_tests((Paraguay.default_language,))
+
+    def test_l10n_en_us(self):
+        en_us = "en_US"
+
+        py = Paraguay(language=en_us)
+        self.assertEqual(py["2022-01-01"], "New Year's Day")
+        self.assertEqual(py["2022-12-25"], "Christmas")
+
+        self.set_language(en_us)
+        for language in (None, en_us, "invalid"):
+            py = Paraguay(language=language)
+            self.assertEqual(py["2022-01-01"], "New Year's Day")
+            self.assertEqual(py["2022-12-25"], "Christmas")
+
+    def test_l10n_uk(self):
+        uk = "uk"
+
+        py = Paraguay(language=uk)
+        self.assertEqual(py["2022-01-01"], "Новий рік")
+        self.assertEqual(py["2022-12-25"], "Різдво Христове")
+
+        self.set_language(uk)
+        for language in (None, uk, "invalid"):
+            py = Paraguay(language=language)
+            self.assertEqual(py["2022-01-01"], "Новий рік")
+            self.assertEqual(py["2022-12-25"], "Різдво Христове")

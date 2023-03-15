@@ -1,0 +1,98 @@
+# Venezuela holidays uk localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.22\n"
+"POT-Creation-Date: 2023-03-05 12:23+0200\n"
+"PO-Revision-Date: 2023-03-05 13:38+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: holidays/countries/venezuela.py:44
+msgid "Año Nuevo"
+msgstr "Новий рік"
+
+#. Monday of Carnival.
+#: holidays/countries/venezuela.py:49
+msgid "Lunes de Carnaval"
+msgstr "Карнавальний понеділок"
+
+#. Tuesday of Carnival.
+#: holidays/countries/venezuela.py:52
+msgid "Martes de Carnaval"
+msgstr "Карнавальний вівторок"
+
+#. Maundy Thursday.
+#: holidays/countries/venezuela.py:55
+msgid "Jueves Santo"
+msgstr "Великий четвер"
+
+#. Good Friday.
+#: holidays/countries/venezuela.py:58
+msgid "Viernes Santo"
+msgstr "Страсна пʼятниця"
+
+#. Declaration of Independence.
+#: holidays/countries/venezuela.py:63
+msgid "Declaración de la Independencia"
+msgstr "День проголошення незалежності"
+
+#. International Worker's Day.
+#: holidays/countries/venezuela.py:70
+msgid "Dia Mundial del Trabajador"
+msgstr "Міжнародний день трудящих"
+
+#. Battle of Carabobo.
+#: holidays/countries/venezuela.py:75
+msgid "Batalla de Carabobo"
+msgstr "День битви при Карабобо"
+
+#. Independence Day.
+#: holidays/countries/venezuela.py:80
+msgid "Día de la Independencia"
+msgstr "День незалежності"
+
+#. Birth of Simon Bolivar.
+#: holidays/countries/venezuela.py:84
+msgid "Natalicio de Simón Bolívar"
+msgstr "Річниця Сімона Болівара"
+
+#. Day of Indigenous Resistance.
+#: holidays/countries/venezuela.py:88
+msgid "Día de la Resistencia Indígena"
+msgstr "День спротиву корінних народів"
+
+#. Columbus Day.
+#: holidays/countries/venezuela.py:93
+msgid "Día de la Raza"
+msgstr "День Колумба"
+
+#. Unknown Holiday.
+#: holidays/countries/venezuela.py:99
+msgid "Día Festivo Desconocido"
+msgstr "Невідоме свято"
+
+#. Christmas Eve.
+#: holidays/countries/venezuela.py:102
+msgid "Nochebuena"
+msgstr "Святий вечір"
+
+#. Christmas Day.
+#: holidays/countries/venezuela.py:105
+msgid "Día de Navidad"
+msgstr "Різдво Христове"
+
+#. New Year's Eve.
+#: holidays/countries/venezuela.py:108
+msgid "Fiesta de Fin de Año"
+msgstr "Переддень Нового року"

@@ -1,0 +1,93 @@
+# Uruguay holidays uk localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.22\n"
+"POT-Creation-Date: 2023-03-05 12:23+0200\n"
+"PO-Revision-Date: 2023-03-05 13:55+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: holidays/countries/uruguay.py:36
+msgid "Año Nuevo"
+msgstr "Новий рік"
+
+#. International Workers' Day.
+#: holidays/countries/uruguay.py:39
+msgid "Día de los Trabajadores"
+msgstr "День трудящих"
+
+#. Constitution Day.
+#: holidays/countries/uruguay.py:42
+msgid "Jura de la Constitución"
+msgstr "День присяги Конституції"
+
+#. Independence Day.
+#: holidays/countries/uruguay.py:45
+msgid "Día de la Independencia"
+msgstr "День незалежності"
+
+#. Day of the Family.
+#: holidays/countries/uruguay.py:48
+msgid "Día de la Familia"
+msgstr "День родини"
+
+#. Children's Day.
+#: holidays/countries/uruguay.py:53
+msgid "Día de los Niños"
+msgstr "День захисту дітей"
+
+#. Birthday of José Gervasio Artigas.
+#: holidays/countries/uruguay.py:56
+msgid "Natalicio de José Gervasio Artigas"
+msgstr "Річниця Хосе Гервасіо Артаіґаса"
+
+#. All Souls' Day.
+#: holidays/countries/uruguay.py:61
+msgid "Día de los Difuntos"
+msgstr "День усіх померлих"
+
+#. Carnival Day.
+#: holidays/countries/uruguay.py:68
+msgid "Día de Carnaval"
+msgstr "Карнавал"
+
+#. Maundy Thursday.
+#: holidays/countries/uruguay.py:73
+msgid "Jueves Santo"
+msgstr "Великий четвер"
+
+#. Good Friday.
+#: holidays/countries/uruguay.py:75
+msgid "Viernes Santo"
+msgstr "Страсна пʼятниця"
+
+#. Easter Day.
+#: holidays/countries/uruguay.py:77
+msgid "Día de Pascuas"
+msgstr "Великдень"
+
+#. Landing of the 33 Patriots.
+#: holidays/countries/uruguay.py:83
+msgid "Desembarco de los 33 Orientales"
+msgstr "День висадки 33 патріотів"
+
+#. Battle of Las Piedras.
+#: holidays/countries/uruguay.py:88
+msgid "Batalla de Las Piedras"
+msgstr "День битви при Лас-Пʼєдрас"
+
+#. Respect for Cultural Diversity Day.
+#: holidays/countries/uruguay.py:93
+msgid "Día del Respeto a la Diversidad Cultural"
+msgstr "День поваги до культурного різноманіття"
