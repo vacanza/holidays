@@ -1,9 +1,10 @@
-Version 0.21.12
+Version 0.21.13
 ===============
 
 Released March 15, 2023
 
 - Refactor NYSE holidays, #1018 (@KJhellico)
+- Fix distribution build, #1028 (@arkid15r)
 - Fix the documentation build warning, #1026 (@arkid15r)
 - Optimize TestAllInSameYear::test_all_countries test, #1001 (@arkid15r)
 - Update Canada localization: fr, #1015 (@KJhellico)
