@@ -79,7 +79,7 @@ jobs:
           pip install --upgrade .
       - name: Build Distribution
         run: |
-          make build
+          make package
 
       - name: Publish Package
         uses: pypa/gh-action-pypi-publish@v1.6.4
