@@ -24,20 +24,11 @@ class MOGenerator:
         """Runs the .mo files generation process."""
         for po_path in Path(os.path.join("holidays", "locale")).rglob("*.po"):
             po_file = str(po_path)
-            mo_file = po_file.replace(".po", ".mo")
+            mo_file = po_file[:-3] + ".mo"
 
             if os.path.exists(mo_file):
                 os.unlink(mo_file)
-            subprocess.run(
-                (
-                    sys.executable,
-                    os.path.join("scripts", "l10n", "msgfmt.py"),
-                    "-o",
-                    mo_file,
-                    po_file,
-                ),
-                check=True,
-            )
+            subprocess.run([sys.executable, "scripts/l10n/msgfmt.py", "-o", mo_file, po_file], check=True)
 
 
 if __name__ == "__main__":
