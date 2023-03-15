@@ -1,7 +1,7 @@
 Version 0.21.12
 ===============
 
-Released March 14, 2023
+Released March 15, 2023
 
 - Refactor NYSE holidays, #1018 (@KJhellico)
 - Fix the documentation build warning, #1026 (@arkid15r)
