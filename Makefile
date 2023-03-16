@@ -1,18 +1,15 @@
 help:
 	@echo "Usage: make <target>"
-	@echo "    build         build distribution"
 	@echo "    check         run pre-commit and tests"
 	@echo "    coverage      identify code not covered with tests"
+	@echo "    doc           run documentation build process"
 	@echo "    help          show summary of available commands"
 	@echo "    l10n          update .pot and .po files"
+	@echo "    package       build package distribution"
 	@echo "    pre-commit    run pre-commit against all files"
 	@echo "    setup         setup development environment"
 	@echo "    test          run tests (in parallel)"
 	@echo "    tox           run tox (in parallel)"
-
-build:
-	scripts/l10n/generate_mo_files.py
-	python -m build
 
 check:
 	make pre-commit
@@ -29,6 +26,10 @@ l10n:
 	mkdir -p holidays/locale/pot
 	scripts/l10n/generate_po_files.py
 	scripts/l10n/generate_mo_files.py
+
+package:
+	scripts/l10n/generate_mo_files.py
+	python -m build
 
 pre-commit:
 	pre-commit run --all-files

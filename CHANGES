@@ -3,11 +3,21 @@ Version 0.22
 
 Released ???????? ??, ????
 
+Version 0.21.13
+===============
+
+Released March 15, 2023
+
+- Refactor NYSE holidays, #1018 (@KJhellico)
+- Fix distribution build, #1028 (@arkid15r)
+- Fix the documentation build warning, #1026 (@arkid15r)
 - Optimize TestAllInSameYear::test_all_countries test, #1001 (@arkid15r)
 - Update Canada localization: fr, #1015 (@KJhellico)
 - Update Denmark holidays: remove "Store bededag" starting 2024, #1013 (@malthe)
+- Update PR template, #1019 (@arkid15r)
 - Update Portugal holidays, #1011 (@PPsyrius)
 - Update Ukraine holidays, #1014 (@KJhellico)
+- Update package build process, #1020 (@arkid15r)
 - Add multiple countries localization: en_US, es, uk, #1012 (@KJhellico)
 - Unify country imports order, #1003 (@arkid15r)
 - Use native apostrophe for uk locale holiday names, #1004 (@arkid15r)
