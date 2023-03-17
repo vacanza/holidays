@@ -397,6 +397,10 @@ class TestArgentina(TestCase):
                 ar = Argentina(language=language)
                 self.assertEqual(ar["2022-01-01"], "Año Nuevo")
                 self.assertEqual(ar["2022-12-25"], "Navidad")
+                self.assertEqual(
+                    ar["2022-10-10"],
+                    "Día del Respeto a la Diversidad Cultural (Observado)",
+                )
 
         run_tests((Argentina.default_language, None, "invalid"))
 
@@ -409,6 +413,10 @@ class TestArgentina(TestCase):
         ar = Argentina(language=en_us)
         self.assertEqual(ar["2022-01-01"], "New Year's Day")
         self.assertEqual(ar["2022-05-18"], "National Census Day 2022")
+        self.assertEqual(
+            ar["2022-10-10"],
+            "Respect for Cultural Diversity Day (Observed)",
+        )
         self.assertEqual(ar["2022-12-25"], "Christmas")
 
         self.set_language(en_us)
@@ -416,6 +424,10 @@ class TestArgentina(TestCase):
             ar = Argentina(language=language)
             self.assertEqual(ar["2022-01-01"], "New Year's Day")
             self.assertEqual(ar["2022-05-18"], "National Census Day 2022")
+            self.assertEqual(
+                ar["2022-10-10"],
+                "Respect for Cultural Diversity Day (Observed)",
+            )
             self.assertEqual(ar["2022-12-25"], "Christmas")
 
     def test_l10n_uk(self):
@@ -424,6 +436,10 @@ class TestArgentina(TestCase):
         ar = Argentina(language=uk)
         self.assertEqual(ar["2022-01-01"], "Новий рік")
         self.assertEqual(ar["2022-05-18"], "День національного перепису 2022")
+        self.assertEqual(
+            ar["2022-10-10"],
+            "День поваги до культурного різноманіття (вихідний)",
+        )
         self.assertEqual(ar["2022-12-25"], "Різдво Христове")
 
         self.set_language(uk)
@@ -432,5 +448,9 @@ class TestArgentina(TestCase):
             self.assertEqual(ar["2022-01-01"], "Новий рік")
             self.assertEqual(
                 ar["2022-05-18"], "День національного перепису 2022"
+            )
+            self.assertEqual(
+                ar["2022-10-10"],
+                "День поваги до культурного різноманіття (вихідний)",
             )
             self.assertEqual(ar["2022-12-25"], "Різдво Христове")

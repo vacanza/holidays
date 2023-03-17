@@ -31,7 +31,6 @@ class Georgia(HolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)
-
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):

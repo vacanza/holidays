@@ -19,7 +19,7 @@ class TestChristianHolidays(TestCase):
     def test_check_calendar(self):
         self.assertRaises(
             ValueError,
-            lambda: ChristianHolidays(calendar="INVALID_CALENDAR"),
+            lambda: ChristianHolidays("INVALID_CALENDAR"),
         )
 
     def test_add_christmas_day_three(self):

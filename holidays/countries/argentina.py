@@ -158,10 +158,10 @@ class Argentina(HolidayBase):
             if self.observed:
                 if self._is_tuesday(hol_date) or self._is_wednesday(hol_date):
                     hol_date = _get_nth_weekday_from(-1, MON, hol_date)
-                    hol_name = tr("%s (Observado)") % hol_name
+                    hol_name = self.tr("%s (Observado)") % self.tr(hol_name)
                 elif self._is_thursday(hol_date) or self._is_friday(hol_date):
                     hol_date = _get_nth_weekday_from(1, MON, hol_date)
-                    hol_name = tr("%s (Observado)") % hol_name
+                    hol_name = self.tr("%s (Observado)") % self.tr(hol_name)
             self._add_holiday(hol_name, hol_date)
 
         super()._populate(year)

@@ -64,7 +64,7 @@ class Honduras(HolidayBase):
         else:
             # Morazan Weekend.
             holiday_name = tr("Semana Morazánica")
-            # (First Wednesday of October from 12 noon to Saturday 12 noon)
+            # First Wednesday of October from 12 noon to Saturday 12 noon.
             first_wednesday = _get_nth_weekday_of_month(1, WED, OCT, year)
             self._add_holiday(holiday_name, first_wednesday)
             self._add_holiday(holiday_name, first_wednesday + td(days=+1))

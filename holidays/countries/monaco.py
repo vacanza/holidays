@@ -74,7 +74,7 @@ class Monaco(HolidayBase, ChristianHolidays, InternationalHolidays):
         dt = date(year, DEC, 8)
         if year >= 2019 and self._is_sunday(dt):
             dt += td(days=+1)
-        # Immaculate Conception's Day
+        # Immaculate Conception's Day.
         self._add_holiday(tr("L'Immaculée Conception"), dt)
 
         # Christmas Day.
@@ -82,10 +82,12 @@ class Monaco(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self.observed:
             for dt in observed_dates:
-                if self._is_sunday(dt):
-                    self._add_holiday(
-                        tr("%s (Observé)") % self[dt], dt + td(days=+1)
-                    )
+                if not self._is_sunday(dt):
+                    continue
+                self._add_holiday(
+                    self.tr("%s (Observé)") % self.tr(self[dt]),
+                    dt + td(days=+1),
+                )
 
 
 class MC(Monaco):

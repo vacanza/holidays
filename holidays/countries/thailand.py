@@ -308,7 +308,7 @@ class Thailand(HolidayBase):
         #   - CASE 2: SUN-MON -> 1 in-lieu on TUE.
         # See in lieu logic in `_add_with_observed(dt, holiday_name)`.
 
-        new_years_eve_in_lieu = tr("ชดเชยวันสิ้นปี")
+        new_years_eve_in_lieu = self.tr("ชดเชย%s") % self.tr("วันสิ้นปี")
 
         if self.observed and (1995 <= year <= 1997 or year >= 2001):
             if self._is_saturday(date(year - 1, DEC, 31)):
@@ -630,12 +630,12 @@ class Thailand(HolidayBase):
         ):
             if self._is_friday(asarnha_bucha_date):
                 self._add_holiday(
-                    tr("ชดเชยวันเข้าพรรษา"),
+                    self.tr("ชดเชย%s") % self.tr("วันเข้าพรรษา"),
                     asarnha_bucha_date + td(days=+3),
                 )
             elif self._is_weekend(asarnha_bucha_date):
                 self._add_holiday(
-                    tr("ชดเชยวันอาสาฬหบูชา"),
+                    self.tr("ชดเชย%s") % self.tr("วันอาสาฬหบูชา"),
                     asarnha_bucha_date + td(days=+2),
                 )
 

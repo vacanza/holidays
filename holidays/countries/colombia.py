@@ -50,7 +50,8 @@ class Colombia(HolidayBase):
 
         if self.observed and not self._is_monday(dt) and dt.year >= 1984:
             self._add_holiday(
-                tr("%s (Observado)") % name, _get_nth_weekday_from(1, MON, dt)
+                self.tr("%s (Observado)") % self.tr(name),
+                _get_nth_weekday_from(1, MON, dt),
             )
         else:
             self._add_holiday(name, dt)

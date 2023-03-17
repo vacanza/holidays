@@ -10,7 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars import _get_nth_weekday_of_month
-from holidays.constants import FEB, MAR, MAY, JUN, SUN, JUL
+from holidays.constants import FEB, MAR, MAY, JUN, JUL, SUN
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -82,7 +82,7 @@ class Lithuania(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Assumption Day.
         self._add_assumption_of_mary_day(
-            "Žolinė (Švč. Mergelės " "Marijos ėmimo į dangų diena)"
+            "Žolinė (Švč. Mergelės Marijos ėmimo į dangų diena)"
         )
 
         # All Saints' Day.

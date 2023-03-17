@@ -161,24 +161,29 @@ class Canada(HolidayBase):
 
         # National Aboriginal Day
         if self.subdiv == "NT" and year >= 1996:
-            self[date(year, JUN, 21)] = tr("National Aboriginal Day")
+            self._add_holiday(tr("National Aboriginal Day"), JUN, 21)
 
         # St. Jean Baptiste Day
         if self.subdiv == "QC" and year >= 1925:
             name = tr("St. Jean Baptiste Day")
-            dt = date(year, JUN, 24)
-            self[dt] = name
-            if self.observed and self._is_sunday(dt):
-                self[dt + td(days=+1)] = tr("%s (Observed)") % name
+            jun_24 = self._add_holiday(name, JUN, 24)
+            if self.observed and self._is_sunday(jun_24):
+                self._add_holiday(
+                    self.tr("%s (Observed)") % self.tr(name),
+                    jun_24 + td(days=+1),
+                )
 
         # Discovery Day
         if self.subdiv == "NL" and year >= 1997:
             # Nearest Monday to June 24
-            dt = self._get_nearest_monday(date(year, JUN, 24))
-            self[dt] = tr("Discovery Day")
+            self._add_holiday(
+                tr("Discovery Day"),
+                self._get_nearest_monday(date(year, JUN, 24)),
+            )
         elif self.subdiv == "YT" and year >= 1912:
-            self[_get_nth_weekday_of_month(3, MON, AUG, year)] = tr(
-                "Discovery Day"
+            self._add_holiday(
+                tr("Discovery Day"),
+                _get_nth_weekday_of_month(3, MON, AUG, year),
             )
 
         # Canada Day / Memorial Day (NL)
@@ -188,22 +193,22 @@ class Canada(HolidayBase):
             )
         else:
             name = tr("Dominion Day")
-        dt = date(year, JUL, 1)
-        self._add_holiday(name, dt)
-        if year >= 1879 and self.observed and self._is_weekend(dt):
+        jul_1 = self._add_holiday(name, JUL, 1)
+        if year >= 1879 and self.observed and self._is_weekend(jul_1):
             self._add_holiday(
-                tr("%s (Observed)") % name, _get_nth_weekday_from(1, MON, dt)
+                tr("%s (Observed)") % self.tr(name),
+                _get_nth_weekday_from(1, MON, jul_1),
             )
 
         # Nunavut Day
         if self.subdiv == "NU":
             name = tr("Nunavut Day")
             if year >= 2001:
-                dt = date(year, JUL, 9)
-                self._add_holiday(name, dt)
-                if self.observed and self._is_sunday(dt):
+                jul_9 = self._add_holiday(name, JUL, 9)
+                if self.observed and self._is_sunday(jul_9):
                     self._add_holiday(
-                        tr("%s (Observed)") % name, dt + td(days=+1)
+                        self.tr("%s (Observed)") % self.tr(name),
+                        jul_9 + td(days=+1),
                     )
             elif year == 2000:
                 self._add_holiday(name, APR, 1)

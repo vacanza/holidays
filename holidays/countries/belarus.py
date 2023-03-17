@@ -30,7 +30,7 @@ class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "be"
 
     def __init__(self, *args, **kwargs):
-        ChristianHolidays.__init__(self, calendar=JULIAN_CALENDAR)
+        ChristianHolidays.__init__(self, JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
@@ -80,7 +80,7 @@ class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Catholic Christmas Day.
         self._add_christmas_day(
             tr("Нараджэнне Хрыстова (каталіцкае Раство)"),
-            calendar=GREGORIAN_CALENDAR,
+            GREGORIAN_CALENDAR,
         )
 
 

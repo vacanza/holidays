@@ -43,7 +43,7 @@ class Greece(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_new_years_day(tr("Πρωτοχρονιά"))
 
         # Epiphany.
-        self._add_epiphany_day(tr("Θεοφάνεια"), calendar=GREGORIAN_CALENDAR)
+        self._add_epiphany_day(tr("Θεοφάνεια"), GREGORIAN_CALENDAR)
 
         # Clean Monday.
         self._add_ash_monday(tr("Καθαρά Δευτέρα"))
@@ -58,8 +58,8 @@ class Greece(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_whit_monday(tr("Δευτέρα του Αγίου Πνεύματος"))
 
         # Labour Day.
-        name = tr("Εργατική Πρωτομαγιά")
-        name_observed = tr("%s (παρατηρήθηκε)")
+        name = self.tr("Εργατική Πρωτομαγιά")
+        name_observed = self.tr("%s (παρατηρήθηκε)")
 
         dt = date(year, MAY, 1)
         self._add_holiday(name, dt)
@@ -79,14 +79,12 @@ class Greece(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday(tr("Ημέρα του Όχι"), OCT, 28)
 
         # Christmas Day.
-        self._add_christmas_day(
-            tr("Χριστούγεννα"), calendar=GREGORIAN_CALENDAR
-        )
+        self._add_christmas_day(tr("Χριστούγεννα"), GREGORIAN_CALENDAR)
 
         # Day after Christmas.
         self._add_christmas_day_two(
             tr("Επόμενη ημέρα των Χριστουγέννων"),
-            calendar=GREGORIAN_CALENDAR,
+            GREGORIAN_CALENDAR,
         )
 
 
