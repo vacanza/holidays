@@ -128,7 +128,7 @@ subdivisions are available:
      - None; Can also be loaded as country US, subdivision AS
    * - Andorra
      - AD
-     - Parishes: AD-02, AD-03, AD-04, AD-05, AD-06, AD-07, AD-08
+     - Parishes: 02, 03, 04, 05, 06, 07, 08
    * - Angola
      - AO
      - None
