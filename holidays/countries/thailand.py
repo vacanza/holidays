@@ -118,7 +118,7 @@ class Thailand(HolidayBase):
 
     thai_special_in_lieu_holidays = tr("วันหยุดชดเชย")
     thai_election = tr("วันเลือกตั้ง")
-    thai_election_in_lieu = tr("ชดเชย%s") % thai_election
+    thai_election_in_lieu = tr("ชดเชยวันเลือกตั้ง")
     thai_bridge_public_holiday = tr("วันหยุดพิเศษ (เพิ่มเติม)")
 
     # Special Cases.
@@ -338,7 +338,7 @@ class Thailand(HolidayBase):
         #    (Except for 2020 due to Covid-19 outbreaks)
         # This has its own in-lieu trigger.
 
-        songkran_festival = tr("วันสงกรานต์")
+        songkran_festival = self.tr("วันสงกรานต์")
 
         if 1948 <= year <= 1953:
             self._add_holiday(songkran_festival, APR, 13)
@@ -365,7 +365,7 @@ class Thailand(HolidayBase):
         # See in lieu logic in `_add_with_observed(dt, holiday_name)`.
         # Status: In Use.
 
-        songkran_festival_in_lieu = tr("ชดเชย%s") % songkran_festival
+        songkran_festival_in_lieu = self.tr("ชดเชย%s") % songkran_festival
 
         if self.observed and (1995 <= year <= 1997 or year >= 2001):
             dt = date(year, APR, 15) if year >= 2001 else date(year, APR, 14)

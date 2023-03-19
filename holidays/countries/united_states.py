@@ -233,8 +233,9 @@ class UnitedStates(HolidayBase):
 
         # Evacuation Day
         if self.subdiv == "MA" and year >= 1901:
+            name = "Evacuation Day"
             dt = date(year, MAR, 17)
-            self._add_holiday("Evacuation Day", dt)
+            self[dt] = name
             if self.observed and self._is_weekend(dt):
                 self[_get_nth_weekday_from(1, MON, dt)] = f"{name} (Observed)"
 
@@ -591,17 +592,17 @@ class UnitedStates(HolidayBase):
         dt = date(year, DEC, 26)
         if self.subdiv == "NC" and year >= 2013:
             name = "Day After Christmas"
-            self._add_holiday(name, dt)
+            self[dt] = name
             # If on Saturday or Sunday, observed on Monday
             if self.observed and self._is_weekend(dt):
                 self[_get_nth_weekday_from(1, MON, dt)] = f"{name} (Observed)"
             # If on Monday, observed on Tuesday
             elif self.observed and self._is_monday(dt):
-                self._add_holiday(f"{name} (Observed)", dt + td(days=+1))
+                self[dt + td(days=+1)] = f"{name} (Observed)"
         elif self.subdiv == "TX" and year >= 1981:
-            self._add_holiday("Day After Christmas", dt)
+            self[dt] = "Day After Christmas"
         elif self.subdiv == "VI":
-            self._add_holiday("Christmas Second Day", dt)
+            self[dt] = "Christmas Second Day"
 
         # New Year's Eve
         if (self.subdiv in {"KY", "MI"} and year >= 2013) or (

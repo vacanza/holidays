@@ -25,7 +25,6 @@ class Taiwan(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):

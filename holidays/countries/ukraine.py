@@ -28,9 +28,6 @@ class Ukraine(HolidayBase):
     country = "UA"
     default_language = "uk"
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
     def _populate(self, year):
         def _add_with_observed(
             hol_date: date, hol_name: str, days: int = 1

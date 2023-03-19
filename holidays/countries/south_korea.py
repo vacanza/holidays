@@ -54,7 +54,6 @@ class SouthKorea(
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         KoreanCalendarHolidays.__init__(self)
-
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -75,13 +74,13 @@ class SouthKorea(
         self._add_korean_new_years_day_two(second_day_lunar)
 
         if self.observed and year >= 2015:
-            for cur_rd, cur_name in [
+            for cur_rd, cur_name in (
                 (-1, preceding_day_lunar),
                 (0, name),
                 (+1, second_day_lunar),
-            ]:
+            ):
                 target_date = self._korean_new_year + td(days=cur_rd)
-                is_alt, alt_date = self.get_next_first_non_holiday(
+                is_alt, alt_date = self.get_next_non_holiday(
                     cur_name, target_date
                 )
                 if is_alt:
@@ -92,7 +91,7 @@ class SouthKorea(
         mar_1 = self._add_holiday(name, MAR, 1)
 
         if self.observed and year >= 2021:
-            is_alt, alt_date = self.get_next_first_non_holiday(
+            is_alt, alt_date = self.get_next_non_holiday(
                 name, mar_1, include_sat=True
             )
             if is_alt:
@@ -111,7 +110,7 @@ class SouthKorea(
             name = "Children's Day"
             childrens_date = self._add_holiday(name, MAY, 5)
             if self.observed and year >= 2015:
-                is_alt, alt_date = self.get_next_first_non_holiday(
+                is_alt, alt_date = self.get_next_non_holiday(
                     name, childrens_date, include_sat=True
                 )
                 if is_alt:
@@ -133,12 +132,11 @@ class SouthKorea(
             self._add_holiday("Constitution Day", JUL, 17)
 
         # Liberation Day
-
         if year >= 1945:
             name = "Liberation Day"
             liberation_date = self._add_holiday(name, AUG, 15)
             if self.observed and year >= 2021:
-                is_alt, alt_date = self.get_next_first_non_holiday(
+                is_alt, alt_date = self.get_next_non_holiday(
                     name, liberation_date, include_sat=True
                 )
                 if is_alt:
@@ -153,13 +151,13 @@ class SouthKorea(
         self._add_holiday(second_day_chuseok, chuseok_date + rd(days=+1))
 
         if self.observed and year >= 2014:
-            for cur_rd, cur_name in [
+            for cur_rd, cur_name in (
                 (-1, preceding_day_chuseok),
                 (0, name),
                 (+1, second_day_chuseok),
-            ]:
+            ):
                 target_date = chuseok_date + td(days=cur_rd)
-                is_alt, alt_date = self.get_next_first_non_holiday(
+                is_alt, alt_date = self.get_next_non_holiday(
                     cur_name, target_date
                 )
                 if is_alt:
@@ -169,7 +167,7 @@ class SouthKorea(
         name = "National Foundation Day"
         foundation_date = self._add_holiday(name, OCT, 3)
         if self.observed and year >= 2021:
-            is_alt, alt_date = self.get_next_first_non_holiday(
+            is_alt, alt_date = self.get_next_non_holiday(
                 name, foundation_date, include_sat=True
             )
             if is_alt:
@@ -181,7 +179,7 @@ class SouthKorea(
             hangeul_date = self._add_holiday(name, OCT, 9)
 
             if self.observed and year >= 2021:
-                is_alt, alt_date = self.get_next_first_non_holiday(
+                is_alt, alt_date = self.get_next_non_holiday(
                     name, hangeul_date, include_sat=True
                 )
                 if is_alt:
@@ -190,7 +188,7 @@ class SouthKorea(
         # Christmas Day
         self._add_christmas_day("Christmas Day")
 
-    def get_next_first_non_holiday(
+    def get_next_non_holiday(
         self, name: str, cur: date, include_sat: bool = False
     ) -> Tuple[bool, date]:
         """Returns the first day from the date provided that's not already a

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.20\n"
-"POT-Creation-Date: 2023-03-17 09:16-0700\n"
+"POT-Creation-Date: 2023-03-18 15:58-0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Python Holidays localization team\n"
@@ -22,12 +22,9 @@ msgstr "Special In Lieu Holiday"
 msgid "วันเลือกตั้ง"
 msgstr "Thai Election Day"
 
-#: holidays/countries/thailand.py:121 holidays/countries/thailand.py:287
-#: holidays/countries/thailand.py:311 holidays/countries/thailand.py:368
-#: holidays/countries/thailand.py:633 holidays/countries/thailand.py:638
-#, c-format
-msgid "ชดเชย%s"
-msgstr "%s (in lieu)"
+#: holidays/countries/thailand.py:121
+msgid "ชดเชยวันเลือกตั้ง"
+msgstr "Thai Election Day (in lieu)"
 
 #: holidays/countries/thailand.py:122
 msgid "วันหยุดพิเศษ (เพิ่มเติม)"
@@ -68,6 +65,13 @@ msgstr "HM King Maha Vajiralongkorn's Coronation Celebrations"
 #: holidays/countries/thailand.py:145
 msgid "ชดเชยวันสงกรานต์"
 msgstr "Songkran Festival (in lieu)"
+
+#: holidays/countries/thailand.py:287 holidays/countries/thailand.py:311
+#: holidays/countries/thailand.py:368 holidays/countries/thailand.py:633
+#: holidays/countries/thailand.py:638
+#, c-format
+msgid "ชดเชย%s"
+msgstr "%s (in lieu)"
 
 #: holidays/countries/thailand.py:300
 msgid "วันขึ้นปีใหม่"
