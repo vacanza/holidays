@@ -15,8 +15,8 @@ from datetime import timedelta as td
 
 from dateutil.easter import easter
 
-from holidays.calendars import _get_nth_weekday_of_month
-from holidays.constants import JAN, MAR, MAY, JUL, SEP, NOV, DEC, FRI
+from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
+from holidays.constants import JAN, MAR, MAY, JUL, SEP, NOV, DEC, MON, FRI
 from holidays.holiday_base import HolidayBase
 
 
@@ -46,11 +46,8 @@ class HolidaysMH(HolidayBase):
         self[dt] = name
         if not self.observed:
             return
-        if self._is_saturday(dt):
-            if after_sat:
-                self[dt + td(days=+2)] = f"{name} (Holiday)"
-        elif self._is_sunday(dt):
-            self[dt + td(days=+1)] = f"{name} (Holiday)"
+        if (self._is_saturday(dt) and after_sat) or self._is_sunday(dt):
+            self[_get_nth_weekday_from(1, MON, dt)] = f"{name} (Holiday)"
 
     def _populate(self, year):
         super()._populate(year)

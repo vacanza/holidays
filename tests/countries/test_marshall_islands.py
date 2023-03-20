@@ -23,8 +23,7 @@ class TestMH(unittest.TestCase):
         warnings.simplefilter("ignore")
 
     def test_2022(self):
-        # https://www.register-iri.com/info-center/the-marshall-islands/
-        # rmi-national-holidays/
+        # https://www.register-iri.com/info-center/the-marshall-islands/rmi-national-holidays/
         year = 2022
         self.assertIn(date(year, JAN, 1), self.holidays)
         self.assertIn(date(year, JAN, 3), self.holidays)

@@ -21,13 +21,8 @@ class TestUM(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.HolidaysUM()
 
-    def test_UM_only(self):
-        """Check for a holiday that is not returned by US unless the
-        subdivision is specified."""
-        # self.assertIn(
-        #     "Christmas Eve (Observed)",
-        #     self.holidays.get_list(date(2017, DEC, 22)),
-        # )
+    def test_common(self):
+        self.assertIn("Christmas Day", self.holidays["2022-12-25"])
 
     def test_aliases(self):
         """For coverage purposes"""
