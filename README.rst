@@ -109,8 +109,8 @@ Available Countries
 
 We currently support 119 country codes. The standard way to refer to a country
 is by using its `ISO 3166-1 alpha-2 code`_, the same used for domain names, and
-for a subdivision its `ISO 3166-2 code`_. The following countries and
-subdivisions are available:
+for a subdivision its `ISO 3166-2 code`_ (second part only). The following 
+countries and subdivisions are available:
 
 .. list-table::
    :widths: 23 4 83
