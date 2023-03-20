@@ -48,10 +48,14 @@ from .eswatini import Eswatini, SZ, SZW, Swaziland
 from .ethiopia import Ethiopia, ET, ETH
 from .finland import Finland, FI, FIN
 from .france import France, FR, FRA
+from .french_polynesia import FrenchPolynesia, PF, PYF
+from .french_southern_territories import FrenchSouthernTerritories, TF, ATF
 from .georgia import Georgia, GE, GEO
 from .germany import Germany, DE, DEU
 from .greece import Greece, GR, GRC
+from .guadeloupe import Guadeloupe, GP, GLP
 from .guam import Guam, GU, GUM, HolidaysGU
+from .guyana import Guyana, GY, GUY
 from .honduras import Honduras, HN, HND
 from .hongkong import HongKong, HK, HKG
 from .hungary import Hungary, HU, HUN
@@ -77,6 +81,8 @@ from .malawi import Malawi, MW, MWI
 from .malaysia import Malaysia, MY, MYS
 from .malta import Malta, MT, MLT
 from .marshall_islands import MarshallIslands, MH, MHL, HolidaysMH
+from .martinique import Martinique, MQ, MTQ
+from .mayotte import Mayotte, YT, MYT
 from .mexico import Mexico, MX, MEX
 from .moldova import Moldova, MD, MDA
 from .monaco import Monaco, MC, MCO
@@ -85,6 +91,7 @@ from .morocco import Morocco, MA, MOR
 from .mozambique import Mozambique, MZ, MOZ
 from .namibia import Namibia, NA, NAM
 from .netherlands import Netherlands, NL, NLD
+from .new_caledonia import NewCaledonia, NC, NCL
 from .new_zealand import NewZealand, NZ, NZL
 from .nicaragua import Nicaragua, NI, NIC
 from .nigeria import Nigeria, NG, NGA
@@ -104,8 +111,12 @@ from .philippines import Philippines, PH, PHL
 from .poland import Poland, PL, POL
 from .portugal import Portugal, PT, PRT
 from .puerto_rico import PuertoRico, PR, PRI, HolidaysPR
+from .reunion import Reunion, RE, REU
 from .romania import Romania, RO, ROU
 from .russia import Russia, RU, RUS
+from .saint_barthelemy import SaintBarthelemy, BL, BLM
+from .saint_martin import SaintMartin, MF, MAF
+from .saint_pierre_and_miquelon import SaintPierreAndMiquelon, PM, SPM
 from .san_marino import SanMarino, SM, SMR
 from .saudi_arabia import SaudiArabia, SA, SAU
 from .serbia import Serbia, RS, SRB
@@ -142,5 +153,6 @@ from .uzbekistan import Uzbekistan, UZ, UZB
 from .vatican_city import VaticanCity, VA, VAT
 from .venezuela import Venezuela, VE, VEN
 from .vietnam import Vietnam, VN, VNM
+from .wallis_and_futuna import WallisAndFutuna, WF, WLF
 from .zambia import Zambia, ZM, ZMB
 from .zimbabwe import Zimbabwe, ZW, ZWE

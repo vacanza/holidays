@@ -107,7 +107,7 @@ Available Countries
 .. _ISO 3166-1 alpha-2 code: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
 .. _ISO 3166-2 code: https://en.wikipedia.org/wiki/ISO_3166-2
 
-We currently support 120 country codes. The standard way to refer to a country
+We currently support 132 country codes. The standard way to refer to a country
 is by using its `ISO 3166-1 alpha-2 code`_, the same used for domain names, and
 for a subdivision its `ISO 3166-2 code`_. The following countries and
 subdivisions are available:
@@ -236,7 +236,13 @@ subdivisions are available:
      - None
    * - France
      - FR
-     - Départements: Alsace-Moselle, Guadeloupe, Guyane, La Réunion, Martinique, Mayotte, Métropole, Nouvelle-Calédonie, Polynésie Française, Saint-Barthélémy, Saint-Martin, Wallis-et-Futuna
+     - Departments: Alsace-Moselle, Guadeloupe, Guyane, La Réunion, Martinique, Mayotte, Métropole, Nouvelle-Calédonie, Polynésie Française, Saint-Barthélémy, Saint-Martin, Wallis-et-Futuna
+   * - French Polynesia
+     - PF
+     - None; Can also be loaded as country FR, subdivision Polynésie Française
+   * - French Southern Territories
+     - TF
+     - None
    * - Georgia
      - GE
      - None
@@ -246,9 +252,15 @@ subdivisions are available:
    * - Greece
      - GR
      - None
+   * - Guadeloupe
+     - GP
+     - None; Can also be loaded as country FR, subdivision Guadeloupe
    * - Guam
      - GU
      - None; Can also be loaded as country US, subdivision GU
+   * - Guyana
+     - GY
+     - None; Can also be loaded as country FR, subdivision Guyane
    * - Honduras
      - HN
      - None
@@ -324,6 +336,12 @@ subdivisions are available:
    * - Marshall Islands (the)
      - MH
      - None
+   * - Martinique
+     - MQ
+     - None; Can also be loaded as country FR, subdivision Martinique
+   * - Mayotte
+     - YT
+     - None; Can also be loaded as country FR, subdivision Mayotte
    * - Mexico
      - MX
      - None
@@ -348,6 +366,9 @@ subdivisions are available:
    * - Netherlands
      - NL
      - None
+   * - New Caledonia
+     - NC
+     - None; Can also be loaded as country FR, subdivision Nouvelle-Calédonie
    * - New Zealand
      - NZ
      - Regions: AUK, CAN, HKB, MBH, NSN, NTL, OTA, STL, TKI, WGN, WTC, CIT. Sub-regions: South Canterbury
@@ -390,11 +411,23 @@ subdivisions are available:
    * - Puerto Rico
      - PR
      - None; Can also be loaded as country US, subdivision PR
+   * - Reunion
+     - RE
+     - None; Can also be loaded as country FR, subdivision La Réunion
    * - Romania
      - RO
      - None
    * - Russia
      - RU
+     - None
+   * - Saint Barthelemy
+     - BL
+     - None; Can also be loaded as country FR, subdivision Saint-Barthélémy
+   * - Saint Martin
+     - MF
+     - None; Can also be loaded as country FR, subdivision Saint-Martin
+   * - Saint Pierre and Miquelon
+     - PM
      - None
    * - San Marino
      - SM
@@ -477,6 +510,9 @@ subdivisions are available:
    * - Virgin Islands (U.S.)
      - VI
      - None; Can also be loaded as country US, subdivision VI
+   * - Wallis and Futuna
+     - WF
+     - None; Can also be loaded as country FR, subdivision Wallis-et-Futuna
    * - Zambia
      - ZM
      - None
