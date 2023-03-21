@@ -20,8 +20,6 @@ from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC, SUN, MON
 from holidays.holiday_base import HolidayBase
 
-# from gettext import gettext as tr
-
 
 class Canada(HolidayBase):
     country = "CA"
