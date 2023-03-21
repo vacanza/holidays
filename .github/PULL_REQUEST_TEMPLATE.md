@@ -21,7 +21,7 @@ Your PR description goes here.
 
 - [ ] New country/market holidays support (thank you!)
 - [ ] Supported country/market holidays update (calendar discrepancy fix, localization)
-- [ ] Existing code/test/process quality improvement (best practice, cleanup, refactoring, optimization)
+- [ ] Existing code/documentation/test/process quality improvement (best practice, cleanup, refactoring, optimization)
 - [ ] Dependency upgrade (version update)
 - [ ] Bugfix (non-breaking change which fixes an issue)
 - [ ] Breaking change (a code change causing existing functionality to break)
