@@ -41,7 +41,7 @@ class Cuba(HolidayBase):
         def _add_observed(hol_date: date) -> None:
             if self.observed and self._is_sunday(hol_date):
                 self._add_holiday(
-                    self.tr("%s (Observado)") % self.tr(self[hol_date]),
+                    self.tr("%s (Observado)") % self[hol_date],
                     hol_date + td(days=+1),
                 )
 

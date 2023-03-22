@@ -277,6 +277,9 @@ class TestCuba(TestCase):
         def run_tests(languages):
             for language in languages:
                 cu = Cuba(language=language)
+                self.assertEqual(
+                    cu["2006-01-02"], "Triunfo de la Revolución (Observado)"
+                )
                 self.assertEqual(cu["2022-01-01"], "Triunfo de la Revolución")
                 self.assertEqual(cu["2022-12-25"], "Día de Navidad")
 
@@ -289,12 +292,14 @@ class TestCuba(TestCase):
         en_us = "en_US"
 
         cu = Cuba(language=en_us)
+        self.assertEqual(cu["2006-01-02"], "Liberation Day (Observed)")
         self.assertEqual(cu["2022-01-01"], "Liberation Day")
         self.assertEqual(cu["2022-12-25"], "Christmas Day")
 
         self.set_language(en_us)
         for language in (None, en_us, "invalid"):
             cu = Cuba(language=language)
+            self.assertEqual(cu["2006-01-02"], "Liberation Day (Observed)")
             self.assertEqual(cu["2022-01-01"], "Liberation Day")
             self.assertEqual(cu["2022-12-25"], "Christmas Day")
 
@@ -302,11 +307,13 @@ class TestCuba(TestCase):
         uk = "uk"
 
         cu = Cuba(language=uk)
+        self.assertEqual(cu["2006-01-02"], "Тріумф революції (вихідний)")
         self.assertEqual(cu["2022-01-01"], "Тріумф революції")
         self.assertEqual(cu["2022-12-25"], "Різдво Христове")
 
         self.set_language(uk)
         for language in (None, uk, "invalid"):
             cu = Cuba(language=language)
+            self.assertEqual(cu["2006-01-02"], "Тріумф революції (вихідний)")
             self.assertEqual(cu["2022-01-01"], "Тріумф революції")
             self.assertEqual(cu["2022-12-25"], "Різдво Христове")

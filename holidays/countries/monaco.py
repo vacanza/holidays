@@ -85,7 +85,7 @@ class Monaco(HolidayBase, ChristianHolidays, InternationalHolidays):
                 if not self._is_sunday(dt):
                     continue
                 self._add_holiday(
-                    self.tr("%s (Observé)") % self.tr(self[dt]),
+                    self.tr("%s (Observé)") % self[dt],
                     dt + td(days=+1),
                 )
 
