@@ -595,6 +595,9 @@ default language code is a `ISO 639-1 code`_.
    * - Portugal
      - pt_PT
      - en_US, pt_PT
+   * - Romania
+     - ro
+     - en_US, ro, uk
    * - Russia
      - ru
      - en_US, ru
