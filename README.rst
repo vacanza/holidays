@@ -577,6 +577,9 @@ default language code is a `ISO 639-1 code`_.
    * - Mexico
      - es
      - en_US, es, uk
+   * - Moldova
+     - ro
+     - en_US, ro, uk
    * - Monaco
      - fr
      - en_US, fr, uk
