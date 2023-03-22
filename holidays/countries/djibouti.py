@@ -9,18 +9,15 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
-
-from holidays.calendars import _islamic_to_gre
-from holidays.constants import JAN, MAY, JUN, FRI, SAT
+from holidays.constants import FRI, SAT, JUN
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import IslamicHolidays, InternationalHolidays
 
 # Since Djibouti share most of it's holidays with other muslim countries,
 # this class is just a copy of Egypt's.
 
 
-class Djibouti(HolidayBase):
+class Djibouti(HolidayBase, IslamicHolidays, InternationalHolidays):
     # Holidays here are estimates, it is common for the day to be pushed
     # if falls in a weekend, although not a rule that can be implemented.
     # Holidays after 2020: the following four moving date holidays whose exact
@@ -38,66 +35,43 @@ class Djibouti(HolidayBase):
     country = "DJ"
     weekend = {FRI, SAT}
 
+    def __init__(self, *args, **kwargs):
+        IslamicHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year):
         super()._populate(year)
 
-        def _add_holiday(dt: date, hol: str) -> None:
-            """Only add if in current year; prevents adding holidays across
-            years (handles multi-day Islamic holidays that straddle Gregorian
-            years).
-            """
-            if dt.year == year:
-                self[dt] = hol
-
         # New Year's Day
-        self[date(year, JAN, 1)] = "Nouvel an"
+        self._add_new_years_day("Nouvel an")
 
         # Labour Day
-        self[date(year, MAY, 1)] = "Fête du travail"
+        self._add_labour_day("Fête du travail")
 
         # Fête de l'indépendance
-        self[date(year, JUN, 27)] = "Fête de l'indépendance"
-        self[date(year, JUN, 28)] = "Fête de l'indépendance"
+        self._add_holiday("Fête de l'indépendance", JUN, 27)
+        self._add_holiday("Fête de l'indépendance", JUN, 28)
 
         # Isra wal Miraj
         # The night journey of the prophet Muhammad
-        for date_obs in _islamic_to_gre(year, 7, 27):
-            hol_date = date_obs
-            self[hol_date] = "Isra wal Miraj"
+        self._add_isra_and_miraj_day("Isra wal Miraj")
 
         # Eid al-Fitr - Feast Festive
-        # date of observance is announced yearly, This is an estimate since
-        # having the Holiday on Weekend does change the number of days,
-        # deceided to leave it since marking a Weekend as a holiday
-        # wouldn't do much harm.
-        for yr in (year - 1, year):
-            for date_obs in _islamic_to_gre(yr, 10, 1):
-                hol_date = date_obs
-                _add_holiday(hol_date, "Eid al-Fitr")
-                _add_holiday(
-                    hol_date + td(days=+1), "Eid al-Fitr deuxième jour"
-                )
+        self._add_eid_al_fitr_day("Eid al-Fitr")
+        self._add_eid_al_fitr_day_two("Eid al-Fitr deuxième jour")
 
         # Arafat & Eid al-Adha - Scarfice Festive
-        # date of observance is announced yearly
-        for yr in (year - 1, year):
-            for date_obs in _islamic_to_gre(yr, 12, 9):
-                hol_date = date_obs
-                _add_holiday(hol_date, "Arafat")
-                _add_holiday(hol_date + td(days=+1), "Eid al-Adha")
-                _add_holiday(
-                    hol_date + td(days=+2), "Eid al-Adha deuxième jour"
-                )
+        self._add_arafah_day("Arafat")
+        self._add_eid_al_adha_day("Eid al-Adha")
+        self._add_eid_al_adha_day_two("Eid al-Adha deuxième jour")
 
         # Islamic New Year - (hijari_year, 1, 1)
-        for date_obs in _islamic_to_gre(year, 1, 1):
-            hol_date = date_obs
-            self[hol_date] = "Nouvel an musulman"
+        self._add_islamic_new_year_day("Nouvel an musulman")
 
         # Prophet Muhammad's Birthday - (hijari_year, 3, 12)
-        for date_obs in _islamic_to_gre(year, 3, 12):
-            hol_date = date_obs
-            self[hol_date] = "Naissance du prophet Muhammad"
+        self._add_mawlid_day("Naissance du prophet Muhammad")
 
 
 class DJ(Djibouti):

@@ -9,8 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from datetime import timedelta as td
+from gettext import gettext as tr
 
 from dateutil.easter import easter
 
@@ -80,7 +80,7 @@ class Portugal(HolidayBase):
     def _populate(self, year):
         super()._populate(year)
 
-        self[date(year, JAN, 1)] = self.tr("Ano Novo")
+        self._add_holiday(tr("Ano Novo"), JAN, 1)
 
         easter_date = easter(year)
 
@@ -88,38 +88,41 @@ class Portugal(HolidayBase):
         # @todo recollect the years in which it was a public holiday
         # self[e + td(days=-47)] = "Carnaval"
 
-        self[easter_date + td(days=-2)] = self.tr("Sexta-feira Santa")
-        self[easter_date] = self.tr("Páscoa")
+        self._add_holiday(tr("Sexta-feira Santa"), easter_date + td(days=-2))
+        self._add_holiday(tr("Páscoa"), easter_date)
 
         # Revoked holidays in 2013–2015
 
         if year <= 2012 or year >= 2016:
-            self[easter_date + td(days=+60)] = self.tr("Corpo de Deus")
+            self._add_holiday(tr("Corpo de Deus"), easter_date + td(days=+60))
             if year >= 1910:
-                self[date(year, OCT, 5)] = self.tr("Implantação da República")
-            self[date(year, NOV, 1)] = self.tr("Dia de Todos os Santos")
+                self._add_holiday(tr("Implantação da República"), OCT, 5)
+            self._add_holiday(tr("Dia de Todos os Santos"), NOV, 1)
             if year >= 1823:
-                self[date(year, DEC, 1)] = self.tr(
-                    "Restauração da Independência"
-                )
+                self._add_holiday(tr("Restauração da Independência"), DEC, 1)
 
         if year >= 1974:
-            self[date(year, APR, 25)] = self.tr("Dia da Liberdade")
-            self[date(year, MAY, 1)] = self.tr("Dia do Trabalhador")
+            self._add_holiday(tr("Dia da Liberdade"), APR, 25)
+            self._add_holiday(tr("Dia do Trabalhador"), MAY, 1)
         if year >= 1911:
             if 1933 <= year <= 1973:
-                self[date(year, JUN, 10)] = self.tr(
-                    "Dia de Camões, de Portugal e da Raça"
+                self._add_holiday(
+                    tr("Dia de Camões, de Portugal e da Raça"), JUN, 10
                 )
             elif year >= 1978:
-                self[date(year, JUN, 10)] = self.tr(
-                    "Dia de Portugal, de Camões e das Comunidades Portuguesas"
+                self._add_holiday(
+                    tr(
+                        "Dia de Portugal, de Camões e das Comunidades "
+                        "Portuguesas"
+                    ),
+                    JUN,
+                    10,
                 )
             else:
-                self[date(year, JUN, 10)] = self.tr("Dia de Portugal")
-        self[date(year, AUG, 15)] = self.tr("Assunção de Nossa Senhora")
-        self[date(year, DEC, 8)] = self.tr("Imaculada Conceição")
-        self[date(year, DEC, 25)] = self.tr("Dia de Natal")
+                self._add_holiday(tr("Dia de Portugal"), JUN, 10)
+        self._add_holiday(tr("Assunção de Nossa Senhora"), AUG, 15)
+        self._add_holiday(tr("Imaculada Conceição"), DEC, 8)
+        self._add_holiday(tr("Dia de Natal"), DEC, 25)
 
         if self.subdiv == "Ext":
             """
@@ -132,11 +135,11 @@ class Portugal(HolidayBase):
             - Lisbon's city holiday
             """
 
-            self[easter_date + td(days=-47)] = self.tr("Carnaval")
-            self[date(year, DEC, 24)] = self.tr("Véspera de Natal")
-            self[date(year, DEC, 26)] = self.tr("26 de Dezembro")
-            self[date(year, DEC, 31)] = self.tr("Véspera de Ano Novo")
-            self[date(year, JUN, 13)] = self.tr("Dia de Santo António")
+            self._add_holiday(tr("Carnaval"), easter_date + td(days=-47))
+            self._add_holiday(tr("Véspera de Natal"), DEC, 24)
+            self._add_holiday(tr("26 de Dezembro"), DEC, 26)
+            self._add_holiday(tr("Véspera de Ano Novo"), DEC, 31)
+            self._add_holiday(tr("Dia de Santo António"), JUN, 13)
 
             # TODO add bridging days
             # - get Holidays that occur on Tuesday  and add Monday (-1 day)
@@ -146,67 +149,69 @@ class Portugal(HolidayBase):
 
         if year >= 1911:
             if self.subdiv == "01":
-                self[date(year, MAY, 12)] = self.tr("Dia de Santa Joana")
+                self._add_holiday(tr("Dia de Santa Joana"), MAY, 12)
             if self.subdiv == "02":
-                self[easter_date + td(days=+39)] = self.tr(
-                    "Quinta-feira da Ascensão"
+                self._add_holiday(
+                    tr("Quinta-feira da Ascensão"), easter_date + td(days=+39)
                 )
             if self.subdiv in {"03", "13"}:
-                self[date(year, JUN, 24)] = self.tr("Dia de São João")
+                self._add_holiday(tr("Dia de São João"), JUN, 24)
             if self.subdiv == "04":
-                self[date(year, AUG, 22)] = self.tr(
-                    "Dia de Nossa Senhora das Graças"
+                self._add_holiday(
+                    tr("Dia de Nossa Senhora das Graças"), AUG, 22
                 )
             if self.subdiv == "05":
-                self[easter_date + td(days=+16)] = self.tr(
-                    "Dia de Nossa Senhora de Mércoles"
+                self._add_holiday(
+                    tr("Dia de Nossa Senhora de Mércoles"),
+                    easter_date + td(days=+16),
                 )
             if self.subdiv == "06":
-                self[date(year, JUL, 4)] = self.tr("Dia de Santa Isabel")
+                self._add_holiday(tr("Dia de Santa Isabel"), JUL, 4)
             if self.subdiv == "07":
-                self[date(year, JUN, 29)] = self.tr("Dia de São Pedro")
+                self._add_holiday(tr("Dia de São Pedro"), JUN, 29)
             if self.subdiv == "08":
-                self[date(year, SEP, 7)] = self.tr("Dia do Município de Faro")
+                self._add_holiday(tr("Dia do Município de Faro"), SEP, 7)
             if self.subdiv == "09":
-                self[date(year, NOV, 27)] = self.tr(
-                    "Dia do Município da Guarda"
-                )
+                self._add_holiday(tr("Dia do Município da Guarda"), NOV, 27)
             if self.subdiv == "10":
-                self[date(year, MAY, 22)] = self.tr(
-                    "Dia do Município de Leiria"
-                )
+                self._add_holiday(tr("Dia do Município de Leiria"), MAY, 22)
             if self.subdiv in {"11", "17"}:
-                self[date(year, JUN, 13)] = self.tr("Dia de Santo António")
+                self._add_holiday(tr("Dia de Santo António"), JUN, 13)
             if self.subdiv == "12":
-                self[date(year, MAY, 23)] = self.tr(
-                    "Dia do Município de Portalegre"
+                self._add_holiday(
+                    tr("Dia do Município de Portalegre"), MAY, 23
                 )
             if self.subdiv == "14":
-                self[date(year, MAR, 19)] = self.tr("Dia de São José")
+                self._add_holiday(tr("Dia de São José"), MAR, 19)
             if self.subdiv == "15":
-                self[date(year, SEP, 15)] = self.tr("Dia de Bocage")
+                self._add_holiday(tr("Dia de Bocage"), SEP, 15)
             if self.subdiv == "16":
-                self[date(year, AUG, 20)] = self.tr(
-                    "Dia de Nossa Senhora da Agonia"
+                self._add_holiday(
+                    tr("Dia de Nossa Senhora da Agonia"), AUG, 20
                 )
             if self.subdiv == "18":
-                self[date(year, SEP, 21)] = self.tr("Dia de São Mateus")
+                self._add_holiday(tr("Dia de São Mateus"), SEP, 21)
             if self.subdiv == "20" and year >= 1981:
-                self[easter_date + td(days=+50)] = self.tr(
-                    "Dia da Região Autónoma dos Açores"
+                self._add_holiday(
+                    tr("Dia da Região Autónoma dos Açores"),
+                    easter_date + td(days=+50),
                 )
             if self.subdiv == "30":
                 if 1979 <= year <= 1988:
-                    self[date(year, JUL, 1)] = self.tr(
-                        "Dia da Região Autónoma da Madeira"
+                    self._add_holiday(
+                        tr("Dia da Região Autónoma da Madeira"), JUL, 1
                     )
                 elif year >= 1989:
-                    self[date(year, JUL, 1)] = self.tr(
-                        "Dia da Região Autónoma da Madeira e "
-                        "das Comunidades Madeirenses"
+                    self._add_holiday(
+                        tr(
+                            "Dia da Região Autónoma da Madeira e "
+                            "das Comunidades Madeirenses"
+                        ),
+                        JUL,
+                        1,
                     )
                 if year >= 2002:
-                    self[date(year, DEC, 26)] = self.tr("Primeira Oitava")
+                    self._add_holiday(tr("Primeira Oitava"), DEC, 26)
 
 
 class PT(Portugal):

@@ -9,75 +9,63 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
-
-from holidays.calendars import _islamic_to_gre
-from holidays.constants import JAN, APR, MAY, JUL, AUG, OCT
+from holidays.constants import APR, MAY, JUL, AUG, OCT
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import IslamicHolidays, InternationalHolidays
 
 
-class Turkey(HolidayBase):
+class Turkey(HolidayBase, IslamicHolidays, InternationalHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Turkey
     """
 
     country = "TR"
 
+    def __init__(self, *args, **kwargs):
+        IslamicHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year):
         super()._populate(year)
 
-        def _add_holiday(dt: date, hol: str) -> None:
-            """Only add if in current year; prevents adding holidays across
-            years (handles multi-day Islamic holidays that straddle Gregorian
-            years).
-            """
-            if dt.year == year:
-                self[dt] = hol
+        # 1st of Jan.
+        self._add_new_years_day("New Year's Day")
 
-        # 1st of Jan
-        self[date(year, JAN, 1)] = "New Year's Day"
+        # 23rd of Apr.
+        self._add_holiday("National Sovereignty and Children's Day", APR, 23)
 
-        # 23rd of Apr
-        self[date(year, APR, 23)] = "National Sovereignty and Children's Day"
+        # 1st of May.
+        self._add_labour_day("Labour Day")
 
-        # 1st of May
-        self[date(year, MAY, 1)] = "Labour Day"
-
-        # 19th of May
-        self[date(year, MAY, 19)] = (
-            "Commemoration of Ataturk, Youth and " "Sports Day"
+        # 19th of May.
+        self._add_holiday(
+            "Commemoration of Ataturk, Youth and Sports Day", MAY, 19
         )
 
-        # 15th of Jul
+        # 15th of Jul.
         # Became a national holiday after 15 Jul 2016 coup d'etat attempt.
         if year > 2016:
-            self[date(year, JUL, 15)] = "Democracy and National Unity Day"
+            self._add_holiday("Democracy and National Unity Day", JUL, 15)
 
-        # 30th of Aug
-        self[date(year, AUG, 30)] = "Victory Day"
+        # 30th of Aug.
+        self._add_holiday("Victory Day", AUG, 30)
 
-        # 29th of Oct
-        self[date(year, OCT, 29)] = "Republic Day"
+        # 29th of Oct.
+        self._add_holiday("Republic Day", OCT, 29)
 
-        # Ramadan Feast
+        # Ramadan Feast.
+        # Date of observance is announced yearly. This is an estimate.
+        self._add_eid_al_fitr_day("Ramadan Feast")
+        self._add_eid_al_fitr_day_two("Ramadan Feast Holiday")
+        self._add_eid_al_fitr_day_three("Ramadan Feast Holiday")
+
+        # Sacrifice Feast.
         # Date of observance is announced yearly, This is an estimate.
-        for yr in (year - 1, year):
-            for date_obs in _islamic_to_gre(yr, 10, 1):
-                hol_date = date_obs
-                _add_holiday(hol_date, "Ramadan Feast")
-                _add_holiday(hol_date + td(days=+1), "Ramadan Feast Holiday")
-                _add_holiday(hol_date + td(days=+2), "Ramadan Feast Holiday")
-
-        # Sacrifice Feast
-        # Date of observance is announced yearly, This is an estimate.
-        for yr in (year - 1, year):
-            for date_obs in _islamic_to_gre(yr, 12, 10):
-                hol_date = date_obs
-                _add_holiday(hol_date, "Sacrifice Feast")
-                _add_holiday(hol_date + td(days=+1), "Sacrifice Feast Holiday")
-                _add_holiday(hol_date + td(days=+2), "Sacrifice Feast Holiday")
-                _add_holiday(hol_date + td(days=+3), "Sacrifice Feast Holiday")
+        self._add_eid_al_adha_day("Sacrifice Feast")
+        self._add_eid_al_adha_day_two("Sacrifice Feast Holiday")
+        self._add_eid_al_adha_day_three("Sacrifice Feast Holiday")
+        self._add_eid_al_adha_day_four("Sacrifice Feast Holiday")
 
 
 class TR(Turkey):

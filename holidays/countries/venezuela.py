@@ -9,8 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from datetime import timedelta as td
+from gettext import gettext as tr
 
 from dateutil.easter import easter
 
@@ -41,71 +41,67 @@ class Venezuela(HolidayBase):
         """
 
         # New Year's Day.
-        self[date(year, JAN, 1)] = self.tr("Año Nuevo")
+        self._add_holiday(tr("Año Nuevo"), JAN, 1)
 
         easter_date = easter(year)
 
         # Monday of Carnival.
-        self[easter_date + td(days=-48)] = self.tr("Lunes de Carnaval")
+        self._add_holiday(tr("Lunes de Carnaval"), easter_date + td(days=-48))
 
         # Tuesday of Carnival.
-        self[easter_date + td(days=-47)] = self.tr("Martes de Carnaval")
+        self._add_holiday(tr("Martes de Carnaval"), easter_date + td(days=-47))
 
         # Maundy Thursday.
-        self[easter_date + td(days=-3)] = self.tr("Jueves Santo")
+        self._add_holiday(tr("Jueves Santo"), easter_date + td(days=-3))
 
         # Good Friday.
-        self[easter_date + td(days=-2)] = self.tr("Viernes Santo")
+        self._add_holiday(tr("Viernes Santo"), easter_date + td(days=-2))
 
         # Note: not sure about the start year, but this event happened in 1811
         if year >= 1811:
             # Declaration of Independence.
-            self[date(year, APR, 19)] = self.tr(
-                "Declaración de la Independencia"
-            )
+            self._add_holiday(tr("Declaración de la Independencia"), APR, 19)
 
         # https://bit.ly/3B4Xd1L
         if year >= 1946:
             # International Worker's Day.
-            self[date(year, MAY, 1)] = self.tr("Dia Mundial del Trabajador")
+            self._add_holiday(tr("Dia Mundial del Trabajador"), MAY, 1)
 
         # Note: not sure about the start year, but this event happened in 1824
         if year >= 1971 or 1824 <= year <= 1917:
             # Battle of Carabobo.
-            self[date(year, JUN, 24)] = self.tr("Batalla de Carabobo")
+            self._add_holiday(tr("Batalla de Carabobo"), JUN, 24)
 
         # Note: not sure about the start year, but this event happened in 1811
         if year >= 1811:
             # Independence Day.
-            self[date(year, JUL, 5)] = self.tr("Día de la Independencia")
+            self._add_holiday(tr("Día de la Independencia"), JUL, 5)
 
         if year >= 1918:
             # Birthday of Simon Bolivar.
-            self[date(year, JUL, 24)] = self.tr("Natalicio de Simón Bolívar")
+            self._add_holiday(tr("Natalicio de Simón Bolívar"), JUL, 24)
 
         if year >= 2002:
             # Day of Indigenous Resistance.
-            self[date(year, OCT, 12)] = self.tr(
-                "Día de la Resistencia Indígena"
-            )
+            self._add_holiday(tr("Día de la Resistencia Indígena"), OCT, 12)
         elif year >= 1921:
             # Columbus Day.
-            self[date(year, OCT, 12)] = self.tr("Día de la Raza")
+            self._add_holiday(tr("Día de la Raza"), OCT, 12)
 
         # Note: not sure about the start year nor the reason this was
         # Note: celebrated; the historical records are unclear
         if 1909 <= year <= 1917:
             # Unknown Holiday.
-            self[date(year, OCT, 28)] = self.tr("Día Festivo Desconocido")
+            self._add_holiday(tr("Día Festivo Desconocido"), OCT, 28)
 
         # Christmas Eve.
-        self[date(year, DEC, 24)] = self.tr("Nochebuena")
+        self._add_holiday(tr("Nochebuena"), DEC, 24)
 
         # Christmas Day.
-        self[date(year, DEC, 25)] = self.tr("Día de Navidad")
+        self._add_holiday(tr("Día de Navidad"), DEC, 25)
 
         # New Year's Eve.
-        self[date(year, DEC, 31)] = self.tr("Fiesta de Fin de Año")
+        self._add_holiday(tr("Fiesta de Fin de Año"), DEC, 31)
 
 
 class VE(Venezuela):
