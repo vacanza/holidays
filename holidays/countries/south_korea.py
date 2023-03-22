@@ -13,11 +13,8 @@
 import warnings
 from datetime import date
 from datetime import timedelta as td
-from typing import Tuple
 
-from dateutil.relativedelta import relativedelta as rd
-
-from holidays.constants import SAT, SUN, MAR, APR, MAY, JUN, JUL, AUG, OCT
+from holidays.constants import MAR, APR, MAY, JUN, JUL, AUG, OCT, SAT, SUN
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_groups import KoreanCalendarHolidays
@@ -56,50 +53,83 @@ class SouthKorea(
         KoreanCalendarHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
+    def _add_with_alt_holiday(
+        self,
+        hol_name: str,
+        hol_date: date,
+        add_hol: bool = True,
+        since: int = 2021,
+        include_sat: bool = True,
+    ) -> None:
+        """Add alternative holiday on first day from the date provided
+        that's not already a another holiday nor a weekend.
+
+        :param hol_name:
+           The name of the holiday.
+
+        :param hol_date:
+           The date of the holiday.
+
+        :param add_hol:
+           Add the holiday itself, not alternative only
+
+        :param since:
+           Year starting from which alt holiday should be added
+
+        :param include_sat:
+           Whether Saturday is to be considered a weekend in addition to
+           Sunday.
+        """
+        if add_hol:
+            self._add_holiday(hol_name, hol_date)
+
+        if not self.observed:
+            return None
+
+        target_weekday = {SUN}
+        if include_sat:
+            target_weekday.add(SAT)
+        if (
+            hol_date.weekday() in target_weekday
+            or len(self.get_list(hol_date)) > 1
+        ) and hol_date.year >= since:
+            hol_date += td(days=+1)
+            while hol_date.weekday() in target_weekday or hol_date in self:
+                hol_date += td(days=+1)
+            self._add_holiday("Alternative holiday of %s" % hol_name, hol_date)
+
     def _populate(self, year):
         super()._populate(year)
-
-        alt_holiday = "Alternative holiday of "
 
         # New Year's Day
         self._add_new_years_day("New Year's Day")
 
+        preceding_day = "The day preceding of %s"
+        second_day = "The second day of %s"
+
         # Lunar New Year
         name = "Lunar New Year's Day"
-        preceding_day_lunar = "The day preceding of " + name
-        second_day_lunar = "The second day of " + name
+        new_year_date = self._add_korean_new_years_day(name)
+        self._add_korean_new_years_eve(preceding_day % name)
+        self._add_korean_new_years_day_two(second_day % name)
 
-        self._add_korean_new_years_eve(preceding_day_lunar)
-        self._add_korean_new_years_day(name)
-        self._add_korean_new_years_day_two(second_day_lunar)
-
-        if self.observed and year >= 2015:
-            for cur_rd, cur_name in (
-                (-1, preceding_day_lunar),
-                (0, name),
-                (+1, second_day_lunar),
-            ):
-                target_date = self._korean_new_year + td(days=cur_rd)
-                is_alt, alt_date = self.get_next_non_holiday(
-                    cur_name, target_date
-                )
-                if is_alt:
-                    self._add_holiday(alt_holiday + name, alt_date)
+        for delta in (-1, 0, +1):
+            self._add_with_alt_holiday(
+                name,
+                new_year_date + td(days=delta),
+                add_hol=False,
+                since=2015,
+                include_sat=False,
+            )
 
         # Independence Movement Day
-        name = "Independence Movement Day"
-        mar_1 = self._add_holiday(name, MAR, 1)
-
-        if self.observed and year >= 2021:
-            is_alt, alt_date = self.get_next_non_holiday(
-                name, mar_1, include_sat=True
-            )
-            if is_alt:
-                self._add_holiday(alt_holiday + name, alt_date)
+        self._add_with_alt_holiday(
+            "Independence Movement Day", date(year, MAR, 1)
+        )
 
         # Tree Planting Day
         # removed from holiday since 2006
-        if self.observed and 1949 <= year <= 2005 and year != 1960:
+        if 1949 <= year <= 2005 and year != 1960:
             self._add_holiday("Tree Planting Day", APR, 5)
 
         # Birthday of the Buddha
@@ -107,14 +137,9 @@ class SouthKorea(
 
         # Children's Day
         if year >= 1975:
-            name = "Children's Day"
-            childrens_date = self._add_holiday(name, MAY, 5)
-            if self.observed and year >= 2015:
-                is_alt, alt_date = self.get_next_non_holiday(
-                    name, childrens_date, include_sat=True
-                )
-                if is_alt:
-                    self._add_holiday(alt_holiday + name, alt_date)
+            self._add_with_alt_holiday(
+                "Children's Day", date(year, MAY, 5), since=2015
+            )
 
         # Labour Day
         name = "Labour Day"
@@ -128,102 +153,39 @@ class SouthKorea(
 
         # Constitution Day
         # removed from holiday since 2008
-        if self.observed and 1948 <= year <= 2007:
+        if 1948 <= year <= 2007:
             self._add_holiday("Constitution Day", JUL, 17)
 
         # Liberation Day
         if year >= 1945:
-            name = "Liberation Day"
-            liberation_date = self._add_holiday(name, AUG, 15)
-            if self.observed and year >= 2021:
-                is_alt, alt_date = self.get_next_non_holiday(
-                    name, liberation_date, include_sat=True
-                )
-                if is_alt:
-                    self._add_holiday(alt_holiday + name, alt_date)
+            self._add_with_alt_holiday("Liberation Day", date(year, AUG, 15))
 
         # Korean Mid Autumn Day
         name = "Chuseok"
-        preceding_day_chuseok = "The day preceding of " + name
-        second_day_chuseok = "The second day of " + name
         chuseok_date = self._add_korean_calendar_holiday(name, 8, 15)
-        self._add_holiday(preceding_day_chuseok, chuseok_date + rd(days=-1))
-        self._add_holiday(second_day_chuseok, chuseok_date + rd(days=+1))
+        self._add_holiday(preceding_day % name, chuseok_date + td(days=-1))
+        self._add_holiday(second_day % name, chuseok_date + td(days=+1))
 
-        if self.observed and year >= 2014:
-            for cur_rd, cur_name in (
-                (-1, preceding_day_chuseok),
-                (0, name),
-                (+1, second_day_chuseok),
-            ):
-                target_date = chuseok_date + td(days=cur_rd)
-                is_alt, alt_date = self.get_next_non_holiday(
-                    cur_name, target_date
-                )
-                if is_alt:
-                    self._add_holiday(alt_holiday + name, alt_date)
+        for delta in (-1, 0, +1):
+            self._add_with_alt_holiday(
+                name,
+                chuseok_date + td(days=delta),
+                add_hol=False,
+                since=2014,
+                include_sat=False,
+            )
 
         # National Foundation Day
-        name = "National Foundation Day"
-        foundation_date = self._add_holiday(name, OCT, 3)
-        if self.observed and year >= 2021:
-            is_alt, alt_date = self.get_next_non_holiday(
-                name, foundation_date, include_sat=True
-            )
-            if is_alt:
-                self._add_holiday(alt_holiday + name, alt_date)
+        self._add_with_alt_holiday(
+            "National Foundation Day", date(year, OCT, 3)
+        )
 
-        # Hangul Day
+        # Hangeul Day
         if year <= 1990 or year >= 2013:
-            name = "Hangeul Day"
-            hangeul_date = self._add_holiday(name, OCT, 9)
-
-            if self.observed and year >= 2021:
-                is_alt, alt_date = self.get_next_non_holiday(
-                    name, hangeul_date, include_sat=True
-                )
-                if is_alt:
-                    self._add_holiday(alt_holiday + name, alt_date)
+            self._add_with_alt_holiday("Hangeul Day", date(year, OCT, 9))
 
         # Christmas Day
         self._add_christmas_day("Christmas Day")
-
-    def get_next_non_holiday(
-        self, name: str, cur: date, include_sat: bool = False
-    ) -> Tuple[bool, date]:
-        """Returns the first day from the date provided that's not already a
-        holiday of a different name nor a weekend.
-
-        :param name:
-           The name of the holiday.
-
-        :param cur:
-           The current date of the holiday.
-
-        :param include_sat:
-           Whether Saturday is to be considered a weekend in addition to
-           Sunday.
-
-        :return:
-           A tuple consisting of a flag set to whether the date is different
-           and the date itself.
-
-        """
-
-        start_value = cur
-        target_weekday = {SUN}
-        if include_sat:
-            target_weekday.add(SAT)
-        check_1 = cur.weekday() in target_weekday  # Exclude weekends
-        check_2 = (
-            cur in self and name != self[cur]
-        )  # Exclude if already a holiday
-        while check_1 or check_2:
-            cur += td(days=+1)
-            check_1 = cur.weekday() in target_weekday
-            check_2 = cur in self and name != self[cur]
-
-        return start_value != cur, cur
 
 
 class Korea(SouthKorea):
