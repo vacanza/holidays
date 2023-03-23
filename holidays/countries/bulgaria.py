@@ -46,7 +46,7 @@ class Bulgaria(HolidayBase):
         if year < 1990:
             return None
 
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # New Year's Day.
         self[date(year, JAN, 1)] = self.tr("Нова година")

@@ -27,7 +27,7 @@ class Venezuela(HolidayBase):
     default_language = "es"
 
     def _populate(self, year):
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         """
         Overview: https://dias-festivos.eu/dias-festivos/venezuela/#

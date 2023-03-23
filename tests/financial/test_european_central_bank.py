@@ -13,12 +13,12 @@ import unittest
 from datetime import date
 from datetime import timedelta as td
 
-import holidays
+from holidays import financial_holidays
 
 
-class TestTAR(unittest.TestCase):
+class TestECB(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.TAR()
+        self.holidays = financial_holidays("ECB")
 
     def test_new_years(self):
         for year in range(1974, 2100):
@@ -78,7 +78,7 @@ class TestTAR(unittest.TestCase):
             self.assertNotIn(dt + td(days=+1), self.holidays)
 
     def test_all_holidays_present(self):
-        tar_2015 = holidays.TAR(years=[2015])
+        tar_2015 = financial_holidays("ECB", years=[2015])
         all_holidays = [
             "New Year's Day",
             "Good Friday",
@@ -91,10 +91,10 @@ class TestTAR(unittest.TestCase):
             self.assertIn(holiday, tar_2015.values())
 
 
-class TestECB(unittest.TestCase):
+class TestTAR(unittest.TestCase):
     def setUp(self):
-        self.holidays_ecb = holidays.ECB()
-        self.holidays_tar = holidays.TAR()
+        self.holidays_ecb = financial_holidays("ECB")
+        self.holidays_tar = financial_holidays("TAR")
 
     def test_new_years(self):
         for year in range(1974, 2100):

@@ -29,7 +29,7 @@ class Cuba(HolidayBase):
                     self.tr("%s (Observado)") % self[hol_date]
                 )
 
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         """
         Overview: https://en.wikipedia.org/wiki/Public_holidays_in_Cuba

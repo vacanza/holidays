@@ -41,7 +41,7 @@ class Vietnam(HolidayBase):
             self[next_workday] = self[holiday] + " observed"
 
     def _populate(self, year):
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # New Year's Day
         self[date(year, JAN, 1)] = "International New Year's Day"

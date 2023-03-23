@@ -24,7 +24,7 @@ class Uzbekistan(HolidayBase):
     country = "UZ"
 
     def _populate(self, year):
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         """Populate the holidays for a given year"""
         # New Year's holiday

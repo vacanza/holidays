@@ -1,6 +1,6 @@
 #  python-holidays
 #  ---------------
-#  A fast, efficient Python library for generating country, province and state
+#  A fast, efficient Python library for generating country, state and state
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
@@ -13,27 +13,29 @@ import unittest
 from datetime import date
 from itertools import product
 
-import holidays
+from holidays import country_holidays
+from holidays.countries import DE
 
 
 class TestDE(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.DE()
-        self.prov_hols = {
-            prov: holidays.DE(subdiv=prov) for prov in holidays.DE.subdivisions
+        self.holidays = country_holidays("DE")
+        self.state_hols = {
+            state: country_holidays("DE", subdiv=state)
+            for state in DE.subdivisions
         }
 
     def test_no_data_before_1990(self):
         de_1989 = sum(
-            holidays.DE(years=[1989], subdiv=p)
-            for p in holidays.DE.subdivisions
+            country_holidays("DE", years=[1989], subdiv=state)
+            for state in DE.subdivisions
         )
         self.assertEqual(len(de_1989), 0)
 
     def test_all_holidays_present(self):
         de_2015 = sum(
-            holidays.DE(years=[2015], subdiv=p)
-            for p in holidays.DE.subdivisions
+            country_holidays("DE", years=[2015], subdiv=state)
+            for state in DE.subdivisions
         )
         in_2015 = sum((de_2015.get_list(key) for key in de_2015), [])
         all_de = [
@@ -77,15 +79,13 @@ class TestDE(unittest.TestCase):
         self.assertIn(date(1990, 10, 3), self.holidays)
 
     def test_heilige_drei_koenige(self):
-        provinces_that_have = {"BW", "BY", "BYP", "ST"}
-        provinces_that_dont = (
-            set(holidays.DE.subdivisions) - provinces_that_have
-        )
+        states_that_have = {"BW", "BY", "BYP", "ST"}
+        states_that_dont = set(DE.subdivisions) - states_that_have
 
-        for province, year in product(provinces_that_have, range(1991, 2050)):
-            self.assertIn(date(year, 1, 6), self.prov_hols[province])
-        for province, year in product(provinces_that_dont, range(1991, 2050)):
-            self.assertNotIn(date(year, 1, 6), self.prov_hols[province])
+        for state, year in product(states_that_have, range(1991, 2050)):
+            self.assertIn(date(year, 1, 6), self.state_hols[state])
+        for state, year in product(states_that_dont, range(1991, 2050)):
+            self.assertNotIn(date(year, 1, 6), self.state_hols[state])
 
     def test_karfreitag(self):
         known_good = [
@@ -102,10 +102,8 @@ class TestDE(unittest.TestCase):
             (2024, 3, 29),
         ]
 
-        for province, (y, m, d) in product(
-            holidays.DE.subdivisions, known_good
-        ):
-            self.assertIn(date(y, m, d), self.prov_hols[province])
+        for state, (y, m, d) in product(DE.subdivisions, known_good):
+            self.assertIn(date(y, m, d), self.state_hols[state])
 
     def test_ostersonntag(self):
         known_good = [
@@ -121,15 +119,13 @@ class TestDE(unittest.TestCase):
             (2023, 4, 9),
             (2024, 3, 31),
         ]
-        provinces_that_have = {"BB"}
-        provinces_that_dont = (
-            set(holidays.DE.subdivisions) - provinces_that_have
-        )
+        states_that_have = {"BB"}
+        states_that_dont = set(DE.subdivisions) - states_that_have
 
-        for province, (y, m, d) in product(provinces_that_have, known_good):
-            self.assertIn(date(y, m, d), self.prov_hols[province])
-        for province, (y, m, d) in product(provinces_that_dont, known_good):
-            self.assertNotIn(date(y, m, d), self.prov_hols[province])
+        for state, (y, m, d) in product(states_that_have, known_good):
+            self.assertIn(date(y, m, d), self.state_hols[state])
+        for state, (y, m, d) in product(states_that_dont, known_good):
+            self.assertNotIn(date(y, m, d), self.state_hols[state])
 
     def test_ostermontag(self):
         known_good = [
@@ -146,22 +142,18 @@ class TestDE(unittest.TestCase):
             (2024, 4, 1),
         ]
 
-        for province, (y, m, d) in product(
-            holidays.DE.subdivisions, known_good
-        ):
-            self.assertIn(date(y, m, d), self.prov_hols[province])
+        for state, (y, m, d) in product(DE.subdivisions, known_good):
+            self.assertIn(date(y, m, d), self.state_hols[state])
 
     def test_75_jahrestag_beendigung_zweiter_weltkrieg(self):
         known_good = [(2020, 5, 8)]
-        provinces_that_have = {"BE"}
-        provinces_that_dont = (
-            set(holidays.DE.subdivisions) - provinces_that_have
-        )
+        states_that_have = {"BE"}
+        states_that_dont = set(DE.subdivisions) - states_that_have
 
-        for province, (y, m, d) in product(provinces_that_have, known_good):
-            self.assertIn(date(y, m, d), self.prov_hols[province])
-        for province, (y, m, d) in product(provinces_that_dont, known_good):
-            self.assertNotIn(date(y, m, d), self.prov_hols[province])
+        for state, (y, m, d) in product(states_that_have, known_good):
+            self.assertIn(date(y, m, d), self.state_hols[state])
+        for state, (y, m, d) in product(states_that_dont, known_good):
+            self.assertNotIn(date(y, m, d), self.state_hols[state])
 
     def test_christi_himmelfahrt(self):
         known_good = [
@@ -178,48 +170,40 @@ class TestDE(unittest.TestCase):
             (2024, 5, 9),
         ]
 
-        for province, (y, m, d) in product(
-            holidays.DE.subdivisions, known_good
-        ):
-            self.assertIn(date(y, m, d), self.prov_hols[province])
+        for state, (y, m, d) in product(DE.subdivisions, known_good):
+            self.assertIn(date(y, m, d), self.state_hols[state])
 
     def test_weltkindertag(self):
         known_good = [(2019, 9, 20), (2021, 9, 20)]
 
-        provinces_that_have = {"TH"}
-        provinces_that_dont = (
-            set(holidays.DE.subdivisions) - provinces_that_have
-        )
-        for province, (y, m, d) in product(provinces_that_have, known_good):
-            self.assertIn(date(y, m, d), self.prov_hols[province])
-        for province, (y, m, d) in product(provinces_that_dont, known_good):
-            self.assertNotIn(date(y, m, d), self.prov_hols[province])
+        states_that_have = {"TH"}
+        states_that_dont = set(DE.subdivisions) - states_that_have
+        for state, (y, m, d) in product(states_that_have, known_good):
+            self.assertIn(date(y, m, d), self.state_hols[state])
+        for state, (y, m, d) in product(states_that_dont, known_good):
+            self.assertNotIn(date(y, m, d), self.state_hols[state])
 
     def test_frauentag(self):
         prov_yes_since_2019 = {"BE"}
         prov_yes_since_2023 = prov_yes_since_2019.union({"MV"})
 
-        prov_not_since_2019 = (
-            set(holidays.DE.subdivisions) - prov_yes_since_2019
-        )
-        prov_not_since_2023 = (
-            set(holidays.DE.subdivisions) - prov_yes_since_2023
-        )
+        prov_not_since_2019 = set(DE.subdivisions) - prov_yes_since_2019
+        prov_not_since_2023 = set(DE.subdivisions) - prov_yes_since_2023
 
         prov_year_yes = list(
             product(prov_yes_since_2019, range(2019, 2023))
         ) + list(product(prov_yes_since_2023, range(2023, 2050)))
         prov_year_not = (
-            list(product(set(holidays.DE.subdivisions), range(1991, 2019)))
+            list(product(set(DE.subdivisions), range(1991, 2019)))
             + list(product(prov_not_since_2019, range(2019, 2023)))
             + list(product(prov_not_since_2023, range(2023, 2050)))
         )
 
-        for province, year in prov_year_yes:
-            self.assertIn(date(year, 3, 8), self.prov_hols[province])
+        for state, year in prov_year_yes:
+            self.assertIn(date(year, 3, 8), self.state_hols[state])
 
-        for province, year in prov_year_not:
-            self.assertNotIn(date(year, 3, 8), self.prov_hols[province])
+        for state, year in prov_year_not:
+            self.assertNotIn(date(year, 3, 8), self.state_hols[state])
 
     def test_pfingstsonntag(self):
         known_good = [
@@ -235,15 +219,13 @@ class TestDE(unittest.TestCase):
             (2023, 5, 28),
             (2024, 5, 19),
         ]
-        provinces_that_have = {"BB"}
-        provinces_that_dont = (
-            set(holidays.DE.subdivisions) - provinces_that_have
-        )
+        states_that_have = {"BB"}
+        states_that_dont = set(DE.subdivisions) - states_that_have
 
-        for province, (y, m, d) in product(provinces_that_have, known_good):
-            self.assertIn(date(y, m, d), self.prov_hols[province])
-        for province, (y, m, d) in product(provinces_that_dont, known_good):
-            self.assertNotIn(date(y, m, d), self.prov_hols[province])
+        for state, (y, m, d) in product(states_that_have, known_good):
+            self.assertIn(date(y, m, d), self.state_hols[state])
+        for state, (y, m, d) in product(states_that_dont, known_good):
+            self.assertNotIn(date(y, m, d), self.state_hols[state])
 
     def test_pfingstmontag(self):
         known_good = [
@@ -260,10 +242,8 @@ class TestDE(unittest.TestCase):
             (2024, 5, 20),
         ]
 
-        for province, (y, m, d) in product(
-            holidays.DE.subdivisions, known_good
-        ):
-            self.assertIn(date(y, m, d), self.prov_hols[province])
+        for state, (y, m, d) in product(DE.subdivisions, known_good):
+            self.assertIn(date(y, m, d), self.state_hols[state])
 
     def test_fronleichnam(self):
         known_good = [
@@ -279,61 +259,53 @@ class TestDE(unittest.TestCase):
             (2023, 6, 8),
             (2024, 5, 30),
         ]
-        provinces_that_have = {"BW", "BY", "BYP", "HE", "NW", "RP", "SL"}
-        provinces_that_dont = (
-            set(holidays.DE.subdivisions) - provinces_that_have
-        )
+        states_that_have = {"BW", "BY", "BYP", "HE", "NW", "RP", "SL"}
+        states_that_dont = set(DE.subdivisions) - states_that_have
 
-        for province, (y, m, d) in product(provinces_that_have, known_good):
-            self.assertIn(date(y, m, d), self.prov_hols[province])
-        for province, (y, m, d) in product(provinces_that_dont, known_good):
-            self.assertNotIn(date(y, m, d), self.prov_hols[province])
+        for state, (y, m, d) in product(states_that_have, known_good):
+            self.assertIn(date(y, m, d), self.state_hols[state])
+        for state, (y, m, d) in product(states_that_dont, known_good):
+            self.assertNotIn(date(y, m, d), self.state_hols[state])
 
     def test_mariae_himmelfahrt(self):
-        provinces_that_have = {"BY", "SL"}
-        provinces_that_dont = (
-            set(holidays.DE.subdivisions) - provinces_that_have
-        )
+        states_that_have = {"BY", "SL"}
+        states_that_dont = set(DE.subdivisions) - states_that_have
 
-        for province, year in product(provinces_that_have, range(1991, 2050)):
-            self.assertIn(date(year, 8, 15), self.prov_hols[province])
-        for province, year in product(provinces_that_dont, range(1991, 2050)):
-            self.assertNotIn(date(year, 8, 15), self.prov_hols[province])
+        for state, year in product(states_that_have, range(1991, 2050)):
+            self.assertIn(date(year, 8, 15), self.state_hols[state])
+        for state, year in product(states_that_dont, range(1991, 2050)):
+            self.assertNotIn(date(year, 8, 15), self.state_hols[state])
 
     def test_reformationstag(self):
         prov_that_have = {"BB", "MV", "SN", "ST", "TH"}
         prov_yes_since_2018 = prov_that_have.union({"HB", "HH", "NI", "SH"})
-        prov_that_dont = set(holidays.DE.subdivisions) - prov_that_have
-        prov_not_since_2018 = (
-            set(holidays.DE.subdivisions) - prov_yes_since_2018
-        )
+        prov_that_dont = set(DE.subdivisions) - prov_that_have
+        prov_not_since_2018 = set(DE.subdivisions) - prov_yes_since_2018
 
-        for province, year in product(prov_that_have, range(1991, 2050)):
+        for state, year in product(prov_that_have, range(1991, 2050)):
             # in 2017 all states got the reformationstag for that year
             if year == 2017:
                 continue
-            self.assertIn(date(year, 10, 31), self.prov_hols[province])
-        # additional provinces got this holiday 2018
-        for province, year in product(prov_yes_since_2018, range(2018, 2050)):
-            self.assertIn(date(year, 10, 31), self.prov_hols[province])
-        for province, year in product(prov_that_dont, range(1991, 2017)):
-            self.assertNotIn(date(year, 10, 31), self.prov_hols[province])
-        for province, year in product(prov_not_since_2018, range(2018, 2050)):
-            self.assertNotIn(date(year, 10, 31), self.prov_hols[province])
+            self.assertIn(date(year, 10, 31), self.state_hols[state])
+        # additional states got this holiday 2018
+        for state, year in product(prov_yes_since_2018, range(2018, 2050)):
+            self.assertIn(date(year, 10, 31), self.state_hols[state])
+        for state, year in product(prov_that_dont, range(1991, 2017)):
+            self.assertNotIn(date(year, 10, 31), self.state_hols[state])
+        for state, year in product(prov_not_since_2018, range(2018, 2050)):
+            self.assertNotIn(date(year, 10, 31), self.state_hols[state])
         # check the 2017 case where all states have the reformationstag
-        for province in holidays.DE.subdivisions:
-            self.assertIn(date(2017, 10, 31), self.prov_hols[province])
+        for state in DE.subdivisions:
+            self.assertIn(date(2017, 10, 31), self.state_hols[state])
 
     def test_allerheiligen(self):
-        provinces_that_have = {"BW", "BY", "BYP", "NW", "RP", "SL"}
-        provinces_that_dont = (
-            set(holidays.DE.subdivisions) - provinces_that_have
-        )
+        states_that_have = {"BW", "BY", "BYP", "NW", "RP", "SL"}
+        states_that_dont = set(DE.subdivisions) - states_that_have
 
-        for province, year in product(provinces_that_have, range(1991, 2050)):
-            self.assertIn(date(year, 11, 1), self.prov_hols[province])
-        for province, year in product(provinces_that_dont, range(1991, 2050)):
-            self.assertNotIn(date(year, 11, 1), self.prov_hols[province])
+        for state, year in product(states_that_have, range(1991, 2050)):
+            self.assertIn(date(year, 11, 1), self.state_hols[state])
+        for state, year in product(states_that_dont, range(1991, 2050)):
+            self.assertNotIn(date(year, 11, 1), self.state_hols[state])
 
     def test_buss_und_bettag(self):
         known_good = [
@@ -349,12 +321,10 @@ class TestDE(unittest.TestCase):
             (2023, 11, 22),
             (2024, 11, 20),
         ]
-        provinces_that_have = {"SN"}
-        provinces_that_dont = (
-            set(holidays.DE.subdivisions) - provinces_that_have
-        )
+        states_that_have = {"SN"}
+        states_that_dont = set(DE.subdivisions) - states_that_have
 
-        for province, (y, m, d) in product(provinces_that_have, known_good):
-            self.assertIn(date(y, m, d), self.prov_hols[province])
-        for province, (y, m, d) in product(provinces_that_dont, known_good):
-            self.assertNotIn(date(y, m, d), self.prov_hols[province])
+        for state, (y, m, d) in product(states_that_have, known_good):
+            self.assertIn(date(y, m, d), self.state_hols[state])
+        for state, (y, m, d) in product(states_that_dont, known_good):
+            self.assertNotIn(date(y, m, d), self.state_hols[state])

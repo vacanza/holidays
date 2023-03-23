@@ -15,8 +15,8 @@ from typing import Generator
 
 from dateutil.parser import parse
 
-from holidays import HolidayBase
 from holidays.constants import SUN
+from holidays.holiday_base import HolidayBase
 
 
 class TestCase(unittest.TestCase):

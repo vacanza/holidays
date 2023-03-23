@@ -56,7 +56,7 @@ class Spain(HolidayBase):
             self[date_holiday] = name_holiday
 
     def _populate(self, year):
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         if year == 2023 and self.subdiv in {
             "AN",

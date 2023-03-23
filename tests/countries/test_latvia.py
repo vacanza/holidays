@@ -12,12 +12,12 @@
 import unittest
 from datetime import date
 
-import holidays
+from holidays import country_holidays
 
 
 class TestLatvia(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.LV()
+        self.holidays = country_holidays("LV")
 
     def test_1990(self):
         year = 1990

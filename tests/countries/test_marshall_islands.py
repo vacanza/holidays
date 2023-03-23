@@ -13,13 +13,14 @@ import unittest
 import warnings
 from datetime import date
 
-import holidays
+from holidays import country_holidays
 from holidays.constants import JAN, MAR, APR, MAY, JUL, SEP, NOV, DEC
+from holidays.countries import HolidaysMH, MH, MHL, MarshallIslands
 
 
 class TestMH(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.MH()
+        self.holidays = country_holidays("MH")
         warnings.simplefilter("ignore")
 
     def test_2022(self):
@@ -38,7 +39,7 @@ class TestMH(unittest.TestCase):
         self.assertIn(date(year, DEC, 25), self.holidays)
         self.assertIn(date(year, DEC, 26), self.holidays)
         # 2023: total holidays (10 + 2 falling on a Sunday)
-        self.assertEqual(10 + 2, len(holidays.MH(years=[year])))
+        self.assertEqual(10 + 2, len(country_holidays("MH", years=[year])))
 
     def test_2023(self):
         year = 2023
@@ -54,12 +55,14 @@ class TestMH(unittest.TestCase):
         self.assertIn(date(year, DEC, 1), self.holidays)
         self.assertIn(date(year, DEC, 25), self.holidays)
         # 2023: total holidays (10 + 1 falling on a Sunday)
-        self.assertEqual(10 + 1, len(holidays.MH(years=[year])))
+        self.assertEqual(10 + 1, len(country_holidays("MH", years=[year])))
 
     def test_not_observed(self):
-        self.assertNotIn(date(2023, JAN, 2), holidays.MH(observed=False))
+        self.assertNotIn(
+            date(2023, JAN, 2), country_holidays("MH", observed=False)
+        )
 
     def test_aliases(self):
         """For coverage purposes"""
-        for h in [holidays.MH(), holidays.MHL(), holidays.MarshallIslands()]:
-            self.assertIsInstance(h, holidays.HolidaysMH)
+        for h in [MH(), MHL(), MarshallIslands()]:
+            self.assertIsInstance(h, HolidaysMH)

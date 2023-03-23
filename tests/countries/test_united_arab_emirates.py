@@ -13,12 +13,12 @@ import importlib.util
 import unittest
 from datetime import date
 
-import holidays
+from holidays import country_holidays
 
 
 class UnitedArabEmirates(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.AE()
+        self.holidays = country_holidays("AE")
 
     def test_2020(self):
         self.assertIn(date(2020, 1, 1), self.holidays)
@@ -28,14 +28,14 @@ class UnitedArabEmirates(unittest.TestCase):
 
     def test_commemoration_day_since_2015(self):
         # Before 2009 Jan 25th wasn't celebrated
-        self.holidays = holidays.AE(years=[2014])
+        self.holidays = country_holidays("AE", years=[2014])
         self.assertNotIn(date(2014, 11, 30), self.holidays)
 
-        self.holidays = holidays.AE(years=[2015])
+        self.holidays = country_holidays("AE", years=[2015])
         self.assertIn(date(2015, 11, 30), self.holidays)
 
         # Since 2019, Commemoration Day celebrated on Dec 1
-        self.holidays = holidays.AE(years=[2019])
+        self.holidays = country_holidays("AE", years=[2019])
         self.assertNotIn(date(2019, 11, 30), self.holidays)
         self.assertIn(date(2019, 12, 1), self.holidays)
 

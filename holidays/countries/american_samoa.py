@@ -8,7 +8,6 @@
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
-
 from holidays.countries.united_states import US
 
 
@@ -22,7 +21,7 @@ class HolidaysAS(US):
 
     def _populate(self, year: int) -> None:
         self.subdiv = "AS"
-        super()._populate(year)
+        US._populate(self, year)
 
 
 class AS(HolidaysAS):

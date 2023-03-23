@@ -12,13 +12,13 @@
 import unittest
 from datetime import date
 
-import holidays
+from holidays import country_holidays
 
 
 class TestChina(unittest.TestCase):
     # https: // en.wikipedia.org / wiki / Public_holidays_in_China
     def setUp(self):
-        self.holidays = holidays.CN()
+        self.holidays = country_holidays("CN")
 
     def test_1950(self):
         self.assertIn(date(1950, 1, 1), self.holidays)  # New Year's Day

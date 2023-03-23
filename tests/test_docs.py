@@ -10,21 +10,28 @@
 #  License: MIT (see LICENSE file)
 
 import re
+from pathlib import Path
 from unittest import TestCase
 
-from holidays import country_holidays, list_supported_countries
+from holidays.utils import country_holidays, country_to_module
+from holidays.utils import list_supported_countries
 
 
 class TestReadme(TestCase):
     @classmethod
     def setUpClass(cls):
-        with open("README.rst", encoding="utf-8") as readme_file:
-            cls.readme_content = "".join(readme_file.readlines())
+        cls.readme_content = (
+            Path(__file__)
+            .parent.parent.joinpath("README.rst")
+            .read_text(encoding="utf-8")
+        )
+        # with open("README.rst", encoding="utf-8") as readme_file:
+        #     cls.readme_content = "".join(readme_file.readlines())
 
         super().setUpClass()
 
     def test_supported_countries_count(self):
-        actual_country_count = len(list_supported_countries(unique=True))
+        actual_country_count = len(list_supported_countries())
         readme_country_count = int(
             re.findall(
                 r"We currently support (\d+) country codes.",
@@ -51,7 +58,7 @@ class TestReadme(TestCase):
             if line
         ]
         country_names = []
-        country_alpha_2_codes = set()
+        country_alpha_2_codes = []
         country_subdivisions = {}
         subdivisions_re = re.compile(".*: (.*)")
         for idx in range(0, len(table_content), 3):  # 3 column table.
@@ -62,7 +69,7 @@ class TestReadme(TestCase):
             # 2nd column.
             alpha_2_code = table_content[idx + 1].strip(" -")
             if alpha_2_code:
-                country_alpha_2_codes.add(alpha_2_code)
+                country_alpha_2_codes.append(alpha_2_code)
 
             # 3rd column.
             country_subdivisions[alpha_2_code] = []
@@ -84,12 +91,38 @@ class TestReadme(TestCase):
                     ]
                 )
 
-        # Check data.
+        # Check no duplicate countries, alpha-2 codes, and sudviv.
+        self.assertEqual(
+            len(country_names),
+            len(set(country_names)),
+            "Duplicate country name in README.rst",
+        )
+        self.assertEqual(
+            len(country_alpha_2_codes),
+            len(set(country_alpha_2_codes)),
+            "Duplicate alpha-2 codes in README.rst",
+        )
+        for country in country_subdivisions:
+            self.assertEqual(
+                len(country_subdivisions[country]),
+                len(set(country_subdivisions[country])),
+                f"Duplicate subdivision(s) in {country} in README.rst",
+            )
+
+        # Check all countries are in README.rst
+        self.assertEqual(
+            set(country_alpha_2_codes) - set(country_to_module),
+            set(),
+            f"Non-matching countries in README.rst: "
+            f"{set(country_alpha_2_codes) - set(country_to_module)}",
+        )
+
+        # Check sorting of README.rst.
         self.assertEqual(
             country_names,
             sorted(country_names),
-            "The supported countries table must be sorted alphabetically by "
-            "country name.\n"
+            "The supported countries table inREADME.rst must be sorted "
+            "alphabetically by country name.\n"
             + "\n".join(
                 (
                     f"{c} != {s}"
@@ -99,29 +132,9 @@ class TestReadme(TestCase):
             ),
         )
 
-        country_names = set(c.split("(the)")[0] for c in country_names)
-        supported_countries = list_supported_countries(unique=True)
+        supported_countries = list_supported_countries()
         for country_alpha_2_code in supported_countries:
             country = country_holidays(country_alpha_2_code)
-            country_name = country.__class__.__base__.__name__
-
-            # Make sure country name is shown correctly.
-            if country_name.startswith("Holiday"):
-                self.assertIn(
-                    country_name[8:],
-                    country_alpha_2_codes,
-                    f"Country class '{country_name}' is not shown correctly "
-                    "in the table.",
-                )
-            else:
-                self.assertIn(
-                    country_name.lower().replace(
-                        "unitedstates", "unitedstatesofamerica"
-                    ),
-                    country_names,
-                    f"Country class '{country_name}' is not shown correctly "
-                    "in the table.",
-                )
 
             # Make sure country alpha-2 code is shown correctly.
             self.assertIn(
@@ -135,7 +148,7 @@ class TestReadme(TestCase):
             self.assertEqual(
                 supported_countries[country_alpha_2_code],
                 country_subdivisions[country_alpha_2_code],
-                f"Country class '{country_name}' subdivisions are not "
+                f"Country '{country_alpha_2_code}' subdivisions are not "
                 "shown correctly in the table.\n"
                 + "\n".join(
                     (

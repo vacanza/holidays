@@ -12,12 +12,12 @@
 import unittest
 from datetime import date
 
-import holidays
+from holidays import country_holidays
 
 
 class TestUzbekistan(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.UZ()
+        self.holidays = country_holidays("UZ")
 
     def test2020(self):
         _holidays = [

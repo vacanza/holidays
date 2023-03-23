@@ -43,7 +43,7 @@ class Nigeria(HolidayBase):
         if year <= 1978:
             return None
 
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         holiday_date_names_mapping: Dict[date, List[str]] = {}
 

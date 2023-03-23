@@ -61,7 +61,7 @@ class Ukraine(HolidayBase):
         if year >= 2023:
             return None
 
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # New Year's Day.
         _add_with_observed(date(year, JAN, 1), self.tr("Новий рік"))

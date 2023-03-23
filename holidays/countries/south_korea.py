@@ -51,7 +51,7 @@ class SouthKorea(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         alt_holiday = "Alternative holiday of "
 

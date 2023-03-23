@@ -40,7 +40,7 @@ class Morocco(HolidayBase):
     country = "MA"
 
     def _populate(self, year):
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         def _add_holiday(dt: date, hol: str) -> None:
             """Only add if in current year; prevents adding holidays across

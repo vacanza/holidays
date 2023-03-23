@@ -64,21 +64,17 @@ Quick Start
 .. code-block:: python
 
     from datetime import date
-    import holidays
+    from holidays import country_holidays, financial_holidays
 
-    us_holidays = holidays.US()  # this is a dict
-    # the below is the same, but takes a string:
     us_holidays = holidays.country_holidays('US')  # this is a dict
 
-    nyse_holidays = holidays.NYSE()  # this is a dict
-    # the below is the same, but takes a string:
     nyse_holidays = holidays.financial_holidays('NYSE')  # this is a dict
 
     date(2015, 1, 1) in us_holidays  # True
     date(2015, 1, 2) in us_holidays  # False
     us_holidays.get('2014-01-01')  # "New Year's Day"
 
-The HolidayBase dict-like class will also recognize date strings and Unix
+The Holiday dict-like class will also recognize date strings and Unix
 timestamps:
 
 .. code-block:: python
@@ -109,7 +105,7 @@ Available Countries
 
 We currently support 119 country codes. The standard way to refer to a country
 is by using its `ISO 3166-1 alpha-2 code`_, the same used for domain names, and
-for a subdivision its `ISO 3166-2 code`_ (second part only). The following 
+for a subdivision its `ISO 3166-2 code`_ (second part only). The following
 countries and subdivisions are available:
 
 .. list-table::

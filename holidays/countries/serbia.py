@@ -30,7 +30,7 @@ class Serbia(HolidayBase):
     default_language = "sr"
 
     def _populate(self, year):
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # New Year's Day.
         name = self.tr("Нова година")

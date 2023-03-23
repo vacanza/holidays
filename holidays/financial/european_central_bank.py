@@ -28,8 +28,6 @@ class EuropeanCentralBank(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
-        super()._populate(year)
-
         self[date(year, JAN, 1)] = "New Year's Day"
         e = easter(year)
         self[e + td(days=-2)] = "Good Friday"

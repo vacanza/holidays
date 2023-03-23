@@ -151,7 +151,7 @@ class Italy(HolidayBase):
     ]
 
     def _populate(self, year):
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         self[date(year, JAN, 1)] = "Capodanno"
         self[date(year, JAN, 6)] = "Epifania del Signore"

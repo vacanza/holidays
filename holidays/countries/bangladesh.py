@@ -25,7 +25,7 @@ class Bangladesh(HolidayBase):
     country = "BD"
 
     def _populate(self, year):
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # 21st Feb
         self[date(year, FEB, 21)] = "International Mother's language Day"

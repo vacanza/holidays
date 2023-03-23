@@ -41,7 +41,7 @@ class Malawi(HolidayBase):
         if year <= 1999:
             return None
 
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         _add_with_observed(date(year, JAN, 1), "New Year's Day")
         _add_with_observed(date(year, JAN, 15), "John Chilembwe Day")

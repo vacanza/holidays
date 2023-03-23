@@ -13,12 +13,12 @@ import importlib.util
 import unittest
 from datetime import date
 
-import holidays
+from holidays import country_holidays
 
 
 class TestTurkey(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.TR()
+        self.holidays = country_holidays("TR")
 
     def test_2015(self):
         self.assertIn(date(2015, 1, 1), self.holidays)
@@ -42,7 +42,7 @@ class TestTurkey(unittest.TestCase):
 
     def test_hijri_based(self):
         if importlib.util.find_spec("hijri_converter"):
-            self.holidays = holidays.TR(years=[2020])
+            self.holidays = country_holidays("TR", years=[2020])
             # Ramadan Feast
             self.assertIn(date(2020, 5, 24), self.holidays)
             self.assertIn(date(2020, 5, 25), self.holidays)

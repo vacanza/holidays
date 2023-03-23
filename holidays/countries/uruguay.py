@@ -28,7 +28,7 @@ class Uruguay(HolidayBase):
     default_language = "es"
 
     def _populate(self, year):
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # Mandatory paid holidays:
 

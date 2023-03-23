@@ -27,7 +27,7 @@ class VaticanCity(HolidayBase):
     country = "VA"
 
     def _populate(self, year: int) -> None:
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # Solemnity of Mary Day.
         self[date(year, JAN, 1)] = "Solemnity of Mary Day"

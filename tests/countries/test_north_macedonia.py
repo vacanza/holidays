@@ -12,12 +12,12 @@
 import unittest
 from datetime import date
 
-import holidays
+from holidays import country_holidays
 
 
 class TestNorthMacedonia(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.MK()
+        self.holidays = country_holidays("MK")
 
     def test_holidays(self):
         # https://en.wikipedia.org/wiki/Public_holidays_in_North_Macedonia

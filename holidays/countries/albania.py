@@ -41,7 +41,7 @@ class Albania(HolidayBase):
                     + td(days=+2 if self._is_saturday(hol_date) else days)
                 ] = f"{hol_name} (Observed)"
 
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # New Year's Day.
         name = "New Year's Day"

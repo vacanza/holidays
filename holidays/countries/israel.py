@@ -24,7 +24,7 @@ class Israel(HolidayBase):
     country = "IL"
 
     def _populate(self, year):
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # Passover
         name = "Passover I"

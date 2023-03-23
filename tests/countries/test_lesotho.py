@@ -12,12 +12,12 @@
 import unittest
 from datetime import date
 
-import holidays
+from holidays import country_holidays
 
 
 class TestLesotho(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.LS()
+        self.holidays = country_holidays("LS")
 
     def test_out_of_range(self):
         self.assertNotIn(date(1995, 1, 1), self.holidays)

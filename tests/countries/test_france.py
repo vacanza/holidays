@@ -12,15 +12,16 @@
 import unittest
 from datetime import date
 
-import holidays
+from holidays import country_holidays
+from holidays.countries import FR
 
 
 class TestFrance(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.France()
+        self.holidays = country_holidays("FR")
         self.prov_holidays = {
-            prov: holidays.FR(subdiv=prov)
-            for prov in holidays.FRA.subdivisions
+            département: country_holidays("FR", subdiv=département)
+            for département in FR.subdivisions
         }
 
     def test_2017(self):

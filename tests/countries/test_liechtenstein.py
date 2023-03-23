@@ -13,12 +13,12 @@
 import unittest
 from datetime import date
 
-import holidays
+from holidays import country_holidays
 
 
 class TestLI(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.LI(observed=False)
+        self.holidays = country_holidays("LI", observed=False)
 
     def test_new_years(self):
         for dt in (date(2010, 12, 30), date(2017, 1, 3)):

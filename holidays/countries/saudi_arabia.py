@@ -71,7 +71,7 @@ class SaudiArabia(HolidayBase):
             if dt.year == year:
                 self[dt] = hol
 
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # Weekend used to be THU, FRI before June 28th, 2013.
         # On that year both Eids were after that date, and Founding day

@@ -13,12 +13,12 @@ import unittest
 from datetime import date
 from datetime import timedelta as td
 
-import holidays
+from holidays import country_holidays
 
 
 class TestIreland(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.Ireland()
+        self.holidays = country_holidays("IE")
 
     def test_2020(self):
         self.assertIn("2020-01-01", self.holidays)  # New Year's Day

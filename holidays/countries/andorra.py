@@ -36,7 +36,7 @@ class Andorra(HolidayBase):
     ]
 
     def _populate(self, year: int) -> None:
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # New Year's Day.
         self[date(year, JAN, 1)] = "New Year's Day"

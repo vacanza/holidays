@@ -26,7 +26,7 @@ class Luxembourg(HolidayBase):
     country = "LU"
 
     def _populate(self, year):
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # Public holidays
         self[date(year, JAN, 1)] = "Neijoerschdag"

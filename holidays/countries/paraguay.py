@@ -147,7 +147,7 @@ class Paraguay(HolidayBase):
             self[dt] = name
 
     def _populate(self, year):
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # New Year's Day.
         self._add_holiday(date(year, JAN, 1), self.tr("Año Nuevo"))

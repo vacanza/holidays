@@ -13,12 +13,13 @@ import unittest
 from datetime import date
 from datetime import timedelta as td
 
-import holidays
+from holidays import country_holidays
+from holidays.countries import NZ
 
 
 class TestNZ(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.NZ(observed=True)
+        self.holidays = country_holidays("NZ", observed=True)
 
     def test_new_years(self):
         for year in range(1900, 2100):
@@ -92,7 +93,7 @@ class TestNZ(unittest.TestCase):
         self.assertNotIn(date(2016, 1, 3), self.holidays)
 
     def test_waitangi_day(self):
-        ntl_holidays = holidays.NZ(subdiv="Northland")
+        ntl_holidays = country_holidays("NZ", subdiv="Northland")
         for year, day in enumerate([3, 8, 7, 6, 5], 1964):
             dt = date(year, 2, day)
             self.assertIn(dt, ntl_holidays, dt)
@@ -405,7 +406,7 @@ class TestNZ(unittest.TestCase):
             self.assertEqual(self.holidays[dt][:6], "Boxing")
 
     def test_auckland_anniversary_day(self):
-        auk_holidays = holidays.NZ(subdiv="Auckland")
+        auk_holidays = country_holidays("NZ", subdiv="Auckland")
         for year, day in enumerate(
             [
                 29,
@@ -437,7 +438,7 @@ class TestNZ(unittest.TestCase):
             self.assertEqual(auk_holidays[dt], "Auckland Anniversary Day")
 
     def test_taranaki_anniversary_day(self):
-        tki_holidays = holidays.NZ(subdiv="Taranaki")
+        tki_holidays = country_holidays("NZ", subdiv="Taranaki")
         for year, day in enumerate(
             [
                 12,
@@ -469,7 +470,7 @@ class TestNZ(unittest.TestCase):
             self.assertEqual(tki_holidays[dt], "Taranaki Anniversary Day")
 
     def test_hawkes_bay_anniversary_day(self):
-        hkb_holidays = holidays.NZ(subdiv="Hawke's Bay")
+        hkb_holidays = country_holidays("NZ", subdiv="Hawke's Bay")
         for year, day in enumerate(
             [
                 19,
@@ -501,7 +502,7 @@ class TestNZ(unittest.TestCase):
             self.assertEqual(hkb_holidays[dt], "Hawke's Bay Anniversary Day")
 
     def test_wellington_anniversary_day(self):
-        wgn_holidays = holidays.NZ(subdiv="Wellington")
+        wgn_holidays = country_holidays("NZ", subdiv="Wellington")
         for year, day in enumerate(
             [
                 22,
@@ -535,7 +536,7 @@ class TestNZ(unittest.TestCase):
             )
 
     def test_marlborough_anniversary_day(self):
-        mbh_holidays = holidays.NZ(subdiv="Marlborough")
+        mbh_holidays = country_holidays("NZ", subdiv="Marlborough")
         for year, day in enumerate(
             [
                 29,
@@ -569,7 +570,7 @@ class TestNZ(unittest.TestCase):
             )
 
     def test_nelson_anniversary_day(self):
-        nsn_holidays = holidays.NZ(subdiv="Nelson")
+        nsn_holidays = country_holidays("NZ", subdiv="Nelson")
         for year, day in enumerate(
             [
                 29,
@@ -601,7 +602,7 @@ class TestNZ(unittest.TestCase):
             self.assertEqual(nsn_holidays[dt], "Nelson Anniversary Day", dt)
 
     def test_canterbury_anniversary_day(self):
-        can_holidays = holidays.NZ(subdiv="Canterbury")
+        can_holidays = country_holidays("NZ", subdiv="Canterbury")
         for year, day in enumerate(
             [
                 16,
@@ -635,7 +636,7 @@ class TestNZ(unittest.TestCase):
             )
 
     def test_south_canterbury_anniversary_day(self):
-        stc_holidays = holidays.NZ(subdiv="South Canterbury")
+        stc_holidays = country_holidays("NZ", subdiv="South Canterbury")
         for year, day in enumerate(
             [
                 24,
@@ -669,7 +670,7 @@ class TestNZ(unittest.TestCase):
             )
 
     def test_westland_anniversary_day(self):
-        wtc_holidays = holidays.NZ(subdiv="Westland")
+        wtc_holidays = country_holidays("NZ", subdiv="Westland")
         for year, day in enumerate(
             [
                 3,
@@ -703,7 +704,7 @@ class TestNZ(unittest.TestCase):
             )
 
     def test_otago_anniversary_day(self):
-        ota_holidays = holidays.NZ(subdiv="Otago")
+        ota_holidays = country_holidays("NZ", subdiv="Otago")
         for year, day in enumerate(
             [
                 26,
@@ -735,7 +736,7 @@ class TestNZ(unittest.TestCase):
             self.assertEqual(ota_holidays[dt], "Otago Anniversary Day", dt)
 
     def test_southland_anniversary_day(self):
-        stl_holidays = holidays.NZ(subdiv="Southland")
+        stl_holidays = country_holidays("NZ", subdiv="Southland")
         for year, day in enumerate(
             [15, 14, 20, 19, 17, 16, 15, 14, 19, 18, 17],
             2001,  # 2001-05  # 2006-11
@@ -763,7 +764,7 @@ class TestNZ(unittest.TestCase):
             self.assertEqual(stl_holidays[dt], "Southland Anniversary Day", dt)
 
     def test_chatham_islands_anniversary_day(self):
-        cit_holidays = holidays.NZ(subdiv="Chatham Islands")
+        cit_holidays = country_holidays("NZ", subdiv="Chatham Islands")
         for year, day in enumerate(
             [
                 3,
@@ -798,18 +799,18 @@ class TestNZ(unittest.TestCase):
 
     def test_all_holidays_present(self):
         nz_1969 = sum(
-            holidays.NZ(years=[1969], subdiv=p)
-            for p in holidays.NZ.subdivisions
+            country_holidays("NZ", years=[1969], subdiv=region)
+            for region in NZ.subdivisions
         )
         holidays_in_1969 = sum((nz_1969.get_list(key) for key in nz_1969), [])
         nz_2015 = sum(
-            holidays.NZ(years=[2015], subdiv=p)
-            for p in holidays.NZ.subdivisions
+            country_holidays("NZ", years=[2015], subdiv=region)
+            for region in NZ.subdivisions
         )
         holidays_in_2015 = sum((nz_2015.get_list(key) for key in nz_2015), [])
         nz_1974 = sum(
-            holidays.NZ(years=[1974], subdiv=p)
-            for p in holidays.NZ.subdivisions
+            country_holidays("NZ", years=[1974], subdiv=region)
+            for region in NZ.subdivisions
         )
         holidays_in_1974 = sum((nz_1974.get_list(key) for key in nz_1974), [])
         all_holidays = [

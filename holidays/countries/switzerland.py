@@ -52,7 +52,7 @@ class Switzerland(HolidayBase):
     ]
 
     def _populate(self, year):
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # public holidays
         self[date(year, JAN, 1)] = "Neujahrestag"

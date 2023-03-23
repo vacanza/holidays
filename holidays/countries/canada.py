@@ -54,7 +54,7 @@ class Canada(HolidayBase):
         if year < 1867:
             return None
 
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # New Year's Day.
         name = self.tr("New Year's Day")

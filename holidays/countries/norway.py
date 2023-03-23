@@ -49,7 +49,7 @@ class Norway(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         if self.include_sundays:  # Optionally add all Sundays of the year.
             year_first_day = datetime(year, JAN, 1)

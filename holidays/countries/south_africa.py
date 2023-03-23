@@ -63,7 +63,7 @@ class SouthAfrica(HolidayBase):
         if year <= 1909:
             return None
 
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         _add_with_observed(date(year, JAN, 1), "New Year's Day")
 

@@ -32,7 +32,7 @@ class Madagascar(HolidayBase):
         if year <= 1946:
             return None
 
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         self[date(year, JAN, 1)] = "Taom-baovao / New Year's Day"
         self[date(year, MAR, 8)] = "Fetin'ny vehivavy / Women's Day"

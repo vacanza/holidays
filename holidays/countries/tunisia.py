@@ -34,7 +34,7 @@ class Tunisia(HolidayBase):
     # is_weekend function is there, however not activated for accuracy.
 
     def _populate(self, year):
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         def _add_holiday(dt: date, hol: str) -> None:
             """Only add if in current year; prevents adding holidays across

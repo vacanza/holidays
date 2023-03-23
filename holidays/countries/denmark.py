@@ -30,7 +30,7 @@ class Denmark(HolidayBase):
     default_language = "da"
 
     def _populate(self, year):
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         easter_date = easter(year)
         self[date(year, JAN, 1)] = self.tr("Nytårsdag")

@@ -250,7 +250,7 @@ class Thailand(HolidayBase):
 
     def __init__(self, **kwargs) -> None:
         self.thls = _ThaiLuniSolar()
-        super().__init__(**kwargs)
+        HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
         # Due to Thai Calendar Migration, this is capped off at 1941.
@@ -285,7 +285,7 @@ class Thailand(HolidayBase):
                     in_lieu = dt + td(days=+2 if self._is_saturday(dt) else +1)
                     self[in_lieu] = self.tr("ชดเชย%s") % holiday_name
 
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # Fixed Date Holidays
 

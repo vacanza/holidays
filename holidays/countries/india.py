@@ -73,7 +73,7 @@ class India(HolidayBase):
     ]
 
     def _populate(self, year):
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # Pongal/ Makar Sankranti
         self[date(year, JAN, 14)] = "Makar Sankranti / Pongal"

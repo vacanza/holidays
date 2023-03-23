@@ -35,7 +35,7 @@ class Slovenia(HolidayBase):
         if year <= 1990:
             return None
 
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         self[date(year, JAN, 1)] = "novo leto"
 

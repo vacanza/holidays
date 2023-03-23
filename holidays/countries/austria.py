@@ -31,7 +31,7 @@ class Austria(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # public holidays
         self[date(year, JAN, 1)] = "Neujahr"

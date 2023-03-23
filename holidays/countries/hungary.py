@@ -29,7 +29,7 @@ class Hungary(HolidayBase):
     country = "HU"
 
     def _populate(self, year: int) -> None:
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # New year
         self._add_with_observed_day_off(

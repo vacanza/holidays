@@ -50,7 +50,7 @@ class Angola(HolidayBase):
         if year <= 1974:
             return None
 
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         _add_with_observed(date(year, JAN, 1), "Ano novo", before=False)
         # Since 2018, if the following year's New Year's Day falls on a

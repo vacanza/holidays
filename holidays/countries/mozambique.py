@@ -32,7 +32,7 @@ class Mozambique(HolidayBase):
         if year <= 1974:
             return None
 
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         _add_with_observed(date(year, JAN, 1), "Ano novo")
         easter_date = easter(year)

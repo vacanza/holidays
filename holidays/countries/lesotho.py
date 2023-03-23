@@ -31,7 +31,7 @@ class Lesotho(HolidayBase):
     }
 
     def _populate(self, year):
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         if year > 1995:
             # https://www.ilo.org/dyn/travail/docs/2093/Public%20Holidays%20Act%201995.pdf

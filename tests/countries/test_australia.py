@@ -13,15 +13,16 @@ import unittest
 from datetime import date
 from datetime import timedelta as td
 
-import holidays
+from holidays import country_holidays
+from holidays.countries import AU
 
 
 class TestAU(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.AU(observed=True)
+        self.holidays = country_holidays("AU", observed=True)
         self.state_hols = {
-            state: holidays.AU(observed=True, subdiv=state)
-            for state in holidays.AU.subdivisions
+            state: country_holidays("AU", observed=True, subdiv=state)
+            for state in AU.subdivisions
         }
 
     def test_new_years(self):
@@ -47,7 +48,7 @@ class TestAU(unittest.TestCase):
             self.assertEqual(self.holidays[jan26], "Australia Day")
             self.assertIn(dt, self.holidays, dt)
             self.assertEqual(self.holidays[dt][:10], "Australia ")
-            for state in holidays.AU.subdivisions:
+            for state in AU.subdivisions:
                 self.assertIn(jan26, self.state_hols[state], (state, dt))
                 self.assertEqual(
                     self.state_hols[state][jan26], "Australia Day"
@@ -322,7 +323,7 @@ class TestAU(unittest.TestCase):
         self.assertEqual(
             1,
             len(
-                holidays.Australia(subdiv="QLD", years=2020).get_named(
+                country_holidays("AU", subdiv="QLD", years=2020).get_named(
                     holiday_name
                 )
             ),
@@ -417,8 +418,8 @@ class TestAU(unittest.TestCase):
 
     def test_all_holidays(self):
         au = sum(
-            holidays.AU(years=[1957, 2012, 2015], subdiv=p)
-            for p in holidays.AU.subdivisions
+            country_holidays("AU", years=[1957, 2012, 2015], subdiv=p)
+            for p in AU.subdivisions
         )
         holidays_found = sum((au.get_list(key) for key in au), [])
         all_holidays = [

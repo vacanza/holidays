@@ -12,12 +12,12 @@
 import unittest
 from datetime import date
 
-import holidays
+from holidays import country_holidays
 
 
 class TestMadagascar(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.MG()
+        self.holidays = country_holidays("MG")
 
     def test_new_years(self):
         self.assertIn(date(2010, 1, 1), self.holidays)
@@ -83,5 +83,5 @@ class TestMadagascar(unittest.TestCase):
         self.assertIn(date(2022, 12, 25), self.holidays)
 
     def test_1946(self):
-        mg_holidays = holidays.MG(years=1946)
+        mg_holidays = country_holidays("MG", years=1946)
         self.assertEqual(0, len(mg_holidays))

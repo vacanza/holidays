@@ -13,12 +13,12 @@ import importlib.util
 import unittest
 from datetime import date
 
-import holidays
+from holidays import country_holidays
 
 
 class TestEgypt(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.EG()
+        self.holidays = country_holidays("EG")
 
     def test_2019(self):
         self.assertIn(date(2019, 1, 7), self.holidays)
@@ -41,25 +41,25 @@ class TestEgypt(unittest.TestCase):
         self.assertIn(date(2019, 5, 1), self.holidays)
 
     def test_siani_liberation_day(self):
-        self.holidays = holidays.EG(years=[1983])
+        self.holidays = country_holidays("EG", years=[1983])
         self.assertEqual(
             self.holidays[date(1983, 4, 25)], "Sinai Liberation Day"
         )
-        self.holidays = holidays.EG(years=[1982])
+        self.holidays = country_holidays("EG", years=[1982])
         self.assertNotIn(date(1982, 4, 25), self.holidays)
 
     def test_revolution_day(self):
-        self.holidays = holidays.EG(years=[1953])
+        self.holidays = country_holidays("EG", years=[1953])
         self.assertEqual(self.holidays[date(1953, 7, 23)], "Revolution Day")
-        self.holidays = holidays.EG(years=[1952])
+        self.holidays = country_holidays("EG", years=[1952])
         self.assertNotIn(date(1952, 7, 23), self.holidays)
 
     def test_25_jan_from_2009(self):
         # Before 2009 Jan 25th wasn't celebrated
-        self.holidays = holidays.EG(years=[2010])
+        self.holidays = country_holidays("EG", years=[2010])
         self.assertIn(date(2010, 1, 25), self.holidays)
 
-        self.holidays = holidays.EG(years=[2008])
+        self.holidays = country_holidays("EG", years=[2008])
         self.assertNotIn(date(2008, 1, 25), self.holidays)
 
     def test_hijri_based(self):

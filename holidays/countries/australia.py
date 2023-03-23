@@ -39,7 +39,7 @@ class Australia(HolidayBase):
     subdivisions = ["ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"]
 
     def _populate(self, year):
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # ACT:  Holidays Act 1958
         # NSW:  Public Holidays Act 2010

@@ -390,12 +390,14 @@ class TestBasics(unittest.TestCase):
         self.assertEqual(na.get_list(date(1969, 1, 3)), [])
 
     def test_list_supported_countries(self):
-        supported_countries = holidays.list_supported_countries(unique=True)
+        supported_countries = holidays.list_supported_countries()
 
         countries_files = [
             path
-            for path in pathlib.Path("holidays/countries").glob("*.py")
-            if not str(path).endswith("__init__.py")
+            for path in pathlib.Path(__file__)
+            .parent.parent.joinpath("holidays", "countries")
+            .glob("*.py")
+            if path.name != "__init__.py"
         ]
         self.assertEqual(
             len(countries_files),
@@ -408,20 +410,25 @@ class TestBasics(unittest.TestCase):
         self.assertIn("ZA", supported_countries)
 
     def test_list_supported_financial(self):
-        supported_financial = holidays.list_supported_financial(unique=True)
+        supported_financial = holidays.list_supported_financial()
+        supported_unique_financials = set(
+            holidays.utils.market_to_module.values()
+        )
 
         financial_files = [
             path
-            for path in pathlib.Path("holidays/financial").glob("*.py")
-            if not str(path).endswith("__init__.py")
+            for path in pathlib.Path(__file__)
+            .parent.parent.joinpath("holidays", "financial")
+            .glob("*.py")
+            if path.name != "__init__.py"
         ]
         self.assertEqual(
             len(financial_files),
-            len(supported_financial),
+            len(supported_unique_financials),
         )
 
         self.assertIn("ECB", supported_financial)
-        self.assertIn("NYSE", supported_financial)
+        self.assertIn("XNYS", supported_financial)
 
     def test_radd(self):
         self.assertRaises(TypeError, lambda: 1 + holidays.US())

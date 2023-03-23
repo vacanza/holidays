@@ -22,7 +22,7 @@ class HolidaysPR(US):
 
     def _populate(self, year: int) -> None:
         self.subdiv = "PR"
-        super()._populate(year)
+        US._populate(self, year)
 
 
 class PR(HolidaysPR):

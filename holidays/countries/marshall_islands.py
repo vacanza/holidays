@@ -53,7 +53,7 @@ class HolidaysMH(HolidayBase):
             self[dt + td(days=+1)] = f"{name} (Holiday)"
 
     def _populate(self, year):
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         if year < 2023:
             warnings.warn(

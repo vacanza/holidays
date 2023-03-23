@@ -31,14 +31,16 @@ DateLike = Union[date, datetime, str, float, int]
 
 class HolidayBase(Dict[date, str]):
     """
-    A dict-like object containing the holidays for a specific country (and
-    province or state if so initiated); inherits the dict class (so behaves
-    similarly to a dict). Dates without a key in the Holiday object are not
-    holidays.
+    A dict-like object containing the public holidays for a specific country
+    (and a subdivision, like a province or state, if so initiated); inherits th
+    e dict class (so behaves similarly to a dict). Dates without a key in the
+    :class:`HolidayBase` object are not holidays.
 
-    The key of the object is the date of the holiday and the value is the name
-    of the holiday itself. When passing the date as a key, the date can be
-    expressed as one of the following formats:
+    The key of the object is the date of the public holiday and the value is
+    the name of the holiday itself.
+
+    When passing the date as a key, the date can be expressed as one of the
+    following formats:
 
     * datetime.datetime type;
     * datetime.date types;
@@ -48,14 +50,17 @@ class HolidayBase(Dict[date, str]):
     The key is always returned as a `datetime.date` object.
 
     To maximize speed, the list of holidays is built as needed on the fly, one
-    calendar year at a time. When you instantiate the object, it is empty, but
-    the moment a key is accessed it will build that entire year's list of
-    holidays. To pre-populate holidays, instantiate the class with the years
-    argument:
+    calendar year at a time. When you instantiate the object, it is empty by
+    default, but the moment a key is accessed it will build that entire year's
+    list of holidays. To pre-populate holidays, instantiate the class with the
+    years argument:
 
-    us_holidays = holidays.US(years=2020)
+    from holidays import country_holidays
+    us_holidays = country_holidays('US', years=2020)
 
-    It is generally instantiated using the :func:`country_holidays` function.
+    Always instantiate it using the :func:`country_holidays` function or the
+    :func:`financial_holidays` one (it's much faster, as only a single country
+    or market is loaded by the function).
 
     The key of the :class:`dict`-like :class:`HolidayBase` object is the
     `date` of the holiday, and the value is the name of the holiday itself.
@@ -72,14 +77,8 @@ class HolidayBase(Dict[date, str]):
 
     The key is always returned as a :class:`datetime.date` object.
 
-    To maximize speed, the list of public holidays is built on the fly as
-    needed, one calendar year at a time. When the object is instantiated
-    without a **years** parameter, it is empty, but, unless **expand** is set
-    to False, as soon as a key is accessed the class will calculate that entire
-    year's list of holidays and set the keys with them.
-
     If you need to list the holidays as opposed to querying individual dates,
-    instantiate the class with the **years** parameter.
+    remmeber to instantiate the class with the **years** parameter.
 
     Example usage:
 
@@ -186,7 +185,7 @@ class HolidayBase(Dict[date, str]):
     country: str
     """The country's ISO 3166-1 alpha-2 code."""
     market: str
-    """The market's ISO 3166-1 alpha-2 code."""
+    """The market's ISO 10383 market identifier code (MIC)."""
     subdivisions: List[str] = []
     """The subdivisions supported for this country (see documentation)."""
     years: Set[int]
@@ -235,10 +234,12 @@ class HolidayBase(Dict[date, str]):
             countries (see documentation).
 
         :param prov:
-            *deprecated* use subdiv instead.
+            *Deprecated*; use ``subdiv`` instead. Usage will raise
+            NotImplementedError.
 
         :param state:
-            *deprecated* use subdiv instead.
+            *Deprecated*; use ``subdiv`` instead. Usage will raise
+            NotImplementedError.
 
         :param language:
             The language which the returned holiday names will be translated
@@ -273,7 +274,7 @@ class HolidayBase(Dict[date, str]):
             ):
                 if hasattr(self, "market"):
                     error = (
-                        f"Market '{self.market}' does not have subdivision "
+                        f"Market '{self.market}' does not have a submarket "
                         f"'{subdiv}'"
                     )
                 else:
@@ -695,14 +696,15 @@ class HolidayBase(Dict[date, str]):
         the year have already been populated. It is required to be called
         internally by any country populate() method, while should not be called
         directly from outside.
-        To add holidays to an object, use the update() method:
+
+        To add holidays from a different year to an object, use the update()
+        method:
 
         :param year:
             The year to populate with holidays.
 
         >>> from holidays import country_holidays
         >>> us_holidays = country_holidays('US', years=2020)
-        # to add new holidays to the object:
         >>> us_holidays.update(country_holidays('US', years=2021))
         """
 

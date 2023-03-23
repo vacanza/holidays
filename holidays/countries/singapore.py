@@ -81,9 +81,8 @@ class Singapore(HolidayBase):
         See parameters and usage in :py:class:`HolidayBase`.
         """
 
-        self.cnls = _ChineseLuniSolar()
-        super().__init__(
-            years, expand, observed, subdiv, prov, state, language
+        HolidayBase.__init__(
+            self, years, expand, observed, subdiv, prov, state, language
         )
 
     def _populate(self, year) -> None:
@@ -91,6 +90,9 @@ class Singapore(HolidayBase):
         # "if any day specified in the Schedule falls on a Sunday,
         # the day next following not being itself a public holiday
         # is declared a public holiday in Singapore."
+
+        cnls = _ChineseLuniSolar()
+
         def _add_with_observed(
             hol_date: date, hol_name: str, days: int = +1
         ) -> None:
@@ -98,13 +100,13 @@ class Singapore(HolidayBase):
             if self.observed and self._is_sunday(hol_date) and year >= 1998:
                 self[hol_date + td(days=days)] = f"{hol_name} (Observed)"
 
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # New Year's Day
         _add_with_observed(date(year, JAN, 1), "New Year's Day")
 
         # Chinese New Year (two days)
-        hol_date = self.cnls.lunar_n_y_date(year)
+        hol_date = cnls.lunar_n_y_date(year)
         _add_with_observed(hol_date, "Chinese New Year", days=+2)
         _add_with_observed(hol_date + td(days=+1), "Chinese New Year")
 
@@ -241,7 +243,7 @@ class Singapore(HolidayBase):
             hol_date = date(year, *dates_fixed_obs[year])
             _add_with_observed(hol_date, "Vesak Day")
         else:
-            hol_date = self.cnls.vesak_date(year)
+            hol_date = cnls.vesak_date(year)
             _add_with_observed(hol_date, "Vesak Day* (*estimated)")
 
         # National Day
@@ -279,7 +281,7 @@ class Singapore(HolidayBase):
             hol_date = date(year, *dates_fixed_obs[year])
             _add_with_observed(hol_date, "Deepavali")
         else:
-            hol_date = self.cnls.s_diwali_date(year)
+            hol_date = cnls.s_diwali_date(year)
             _add_with_observed(hol_date, "Deepavali* (*estimated)")
 
         # Christmas Day

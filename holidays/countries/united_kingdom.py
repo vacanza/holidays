@@ -52,7 +52,7 @@ class UnitedKingdom(HolidayBase):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year: int) -> None:
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # New Year's Day
         if year >= 1974:
@@ -111,14 +111,6 @@ class UnitedKingdom(HolidayBase):
         self[dt] = name
         if self.observed and self._is_weekend(dt):
             self[dt + td(days=+2)] = name + " (Observed)"
-
-        # Overwrite to modify country specific holidays
-        self._country_specific(year)
-
-    def _country_specific(self, year: int) -> None:
-        # This method is replaced by class Ireland
-
-        # UnitedKingdom exclusive holidays
 
         easter_date = easter(year)
         # Good Friday

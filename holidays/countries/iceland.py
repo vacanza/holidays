@@ -28,7 +28,7 @@ class Iceland(HolidayBase):
     country = "IS"
 
     def _populate(self, year):
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # Public holidays
         self[date(year, JAN, 1)] = "Nýársdagur"

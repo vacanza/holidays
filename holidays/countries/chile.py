@@ -75,7 +75,7 @@ class Chile(HolidayBase):
         if year <= 1914:
             return None
 
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # New Year's Day (Law 2.977)
         self[date(year, JAN, 1)] = self.tr("Año Nuevo")

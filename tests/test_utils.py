@@ -16,68 +16,63 @@ from unittest import mock
 
 import pytest
 
-from holidays import utils
+from holidays import country_holidays, financial_holidays
+from holidays import list_supported_countries
 
 
 class TestCountryHolidays(unittest.TestCase):
     def setUp(self):
-        self.holidays = utils.country_holidays("US")
+        self.holidays = country_holidays("US")
 
     def test_country(self):
         self.assertEqual(self.holidays.country, "US")
 
     def test_country_single_year(self):
-        h = utils.country_holidays("US", years=2021)
+        h = country_holidays("US", years=2021)
         self.assertEqual(h.years, {2021})
 
     def test_country_years(self):
-        h = utils.country_holidays("US", years=(2015, 2016))
+        h = country_holidays("US", years=(2015, 2016))
         self.assertEqual(h.years, {2015, 2016})
 
     def test_country_state(self):
-        h = utils.country_holidays("US", subdiv="NY")
+        h = country_holidays("US", subdiv="NY")
         self.assertEqual(h.subdiv, "NY")
 
     def test_country_province(self):
-        h = utils.country_holidays("AU", subdiv="NT")
+        h = country_holidays("AU", subdiv="NT")
         self.assertEqual(h.subdiv, "NT")
 
     def test_exceptions(self):
+        self.assertRaises(ValueError, lambda: country_holidays("XXXX"))
         self.assertRaises(
-            NotImplementedError, lambda: utils.country_holidays("XXXX")
+            NotImplementedError,
+            lambda: country_holidays("US", subdiv="XXXX"),
         )
         self.assertRaises(
             NotImplementedError,
-            lambda: utils.country_holidays("US", subdiv="XXXX"),
-        )
-        self.assertRaises(
-            NotImplementedError,
-            lambda: utils.country_holidays("US", subdiv="XXXX"),
+            lambda: country_holidays("US", subdiv="XXXX"),
         )
 
 
 class TestFinancialHolidays(unittest.TestCase):
     def setUp(self):
-        self.holidays = utils.financial_holidays("NYSE")
+        self.holidays = financial_holidays("NYSE")
 
     def test_market(self):
         self.assertEqual(self.holidays.market, "NYSE")
 
     def test_market_single_year(self):
-        h = utils.financial_holidays("NYSE", years=2021)
+        h = financial_holidays("NYSE", years=2021)
         self.assertEqual(h.years, {2021})
 
     def test_market_years(self):
-        h = utils.financial_holidays("NYSE", years=(2015, 2016))
+        h = financial_holidays("NYSE", years=(2015, 2016))
         self.assertEqual(h.years, {2015, 2016})
 
     def test_exceptions(self):
         self.assertRaises(
-            NotImplementedError, lambda: utils.financial_holidays("XXXX")
-        )
-        self.assertRaises(
-            NotImplementedError,
-            lambda: utils.financial_holidays("NYSE", subdiv="XXXX"),
+            NotImplementedError, lambda: financial_holidays("XXXX")
         )
 
 
@@ -100,7 +95,7 @@ class TestAllInSameYear(unittest.TestCase):
         we only run it once on the latest Python version.
         """
         warnings.simplefilter("ignore")
-        for country in utils.list_supported_countries():
+        for country in list_supported_countries():
             for year in range(1950, 2051):
-                for holiday in utils.country_holidays(country, years=year):
+                for holiday in country_holidays(country, years=year):
                     self.assertEqual(holiday.year, year)

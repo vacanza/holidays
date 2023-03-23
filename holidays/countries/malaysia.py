@@ -101,8 +101,8 @@ class Malaysia(HolidayBase):
         See parameters and usage in :py:class:`HolidayBase`.
         """
         self.cnls = _ChineseLuniSolar()
-        super().__init__(
-            years, expand, observed, subdiv, prov, state, language
+        HolidayBase.__init__(
+            self, years, expand, observed, subdiv, prov, state, language
         )
 
     def _populate(self, year):
@@ -112,7 +112,7 @@ class Malaysia(HolidayBase):
             else:
                 holiday_date_names_mapping[hol_date] = [hol_name]
 
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         holiday_date_names_mapping: Dict[date, List[str]] = {}
 

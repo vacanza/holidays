@@ -12,12 +12,12 @@
 import unittest
 from datetime import date
 
-import holidays
+from holidays import country_holidays
 
 
 class TestSK(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.SK()
+        self.holidays = country_holidays("SK")
 
     def test_2018(self):
         # https://www.officeholidays.com/countries/slovakia/2018.php

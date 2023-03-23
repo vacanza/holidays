@@ -12,12 +12,12 @@
 import unittest
 from datetime import date, datetime
 
-import holidays
+from holidays import country_holidays
 
 
 class TestIceland(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.Iceland()
+        self.holidays = country_holidays("IS")
         self.cur_date = datetime.now()
 
     def test_new_year(self):

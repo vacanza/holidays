@@ -90,7 +90,7 @@ class NewZealand(HolidayBase):
         if year <= 1893:
             return None
 
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # New Year's Day
         jan1 = date(year, JAN, 1)

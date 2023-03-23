@@ -44,7 +44,7 @@ class Bolivia(HolidayBase):
             if self.observed and self._is_sunday(hol_date):
                 self[hol_date + td(days=+1)] = f"{hol_name} (Observed)"
 
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # New Year's Day.
         if year >= 1825:

@@ -50,7 +50,7 @@ class HongKong(HolidayBase):
         if year <= 1945:
             return None
 
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         day_following = "The day following "
 

@@ -11,12 +11,12 @@
 
 import unittest
 
-import holidays
+from holidays import country_holidays
 
 
 class TestIM(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.IsleOfMan()
+        self.holidays = country_holidays("IM")
 
     def test_some_2018(self):
         self.assertIn("2018-06-01", self.holidays)

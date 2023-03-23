@@ -13,19 +13,20 @@ import unittest
 from copy import deepcopy
 from datetime import date
 
-import holidays
+from holidays import country_holidays
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC
+from holidays.countries import ES
 
 
 class TestSpain(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.ES()
-        self.holidays_non_observed = holidays.ES(observed=False)
+        self.holidays = country_holidays("ES")
+        self.holidays_non_observed = country_holidays("ES", observed=False)
 
         self.prov_holidays = {
-            prov: holidays.ES(observed=False, subdiv=prov)
-            for prov in holidays.ES.subdivisions
+            prov: country_holidays("ES", observed=False, subdiv=prov)
+            for prov in ES.subdivisions
         }
 
     def test_variable_days_in_2016(self):
@@ -196,8 +197,8 @@ class TestSpain(unittest.TestCase):
         }
 
         observed_prov_holidays = {
-            prov: holidays.ES(observed=True, subdiv=prov)
-            for prov in holidays.ES.subdivisions
+            prov: country_holidays("ES", observed=True, subdiv=prov)
+            for prov in ES.subdivisions
         }
 
         for fest_date, fest_provs in province_days.items():
@@ -303,8 +304,8 @@ class TestSpain(unittest.TestCase):
         }
 
         observed_prov_holidays = {
-            prov: holidays.ES(observed=True, subdiv=prov)
-            for prov in holidays.ES.subdivisions
+            prov: country_holidays("ES", observed=True, subdiv=prov)
+            for prov in ES.subdivisions
         }
 
         for fest_date, fest_provs in province_days.items():

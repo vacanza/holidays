@@ -15,16 +15,18 @@ from datetime import timedelta as td
 
 from dateutil.relativedelta import relativedelta as rd
 
-import holidays
+from holidays import country_holidays
 
 
 class TestUK(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.UK()
-        self.holidays_england = holidays.UK(subdiv="England")
-        self.holidays_wales = holidays.UK(subdiv="Wales")
-        self.holidays_scotland = holidays.UK(subdiv="Scotland")
-        self.holidays_northernireland = holidays.UK(subdiv="Northern Ireland")
+        self.holidays = country_holidays("GB")
+        self.holidays_england = country_holidays("GB", subdiv="England")
+        self.holidays_wales = country_holidays("GB", subdiv="Wales")
+        self.holidays_scotland = country_holidays("GB", subdiv="Scotland")
+        self.holidays_northernireland = country_holidays(
+            "GB", subdiv="Northern Ireland"
+        )
 
     def test_special_holidays(self):
         for dt in (
@@ -231,7 +233,7 @@ class TestUK(unittest.TestCase):
             self.assertEqual(self.holidays[dt][:6], "Boxing")
 
     def test_all_holidays_present(self):
-        uk_2015 = holidays.UK(years=[2015])
+        uk_2015 = country_holidays("GB", subdiv="UK", years=[2015])
         all_holidays = [
             "New Year's Day",
             "Good Friday",

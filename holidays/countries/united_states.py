@@ -93,25 +93,25 @@ class UnitedStates(HolidayBase):
         "WY",
     ]
 
-    def _add_with_observed(
-        self, dt: date, name: str, before: bool = True, after: bool = True
-    ) -> None:
-        self[dt] = name
-        if not self.observed:
-            return None
-
-        if self._is_saturday(dt) and before:
-            self[dt + td(days=-1)] = f"{name} (Observed)"
-        elif self._is_sunday(dt) and after:
-            self[dt + td(days=+1)] = f"{name} (Observed)"
-
     def _populate(self, year):
-        super()._populate(year)
+        def _add_with_observed(
+            dt: date, name: str, before: bool = True, after: bool = True
+        ) -> None:
+            self[dt] = name
+            if not self.observed:
+                return None
+
+            if self._is_saturday(dt) and before:
+                self[dt + td(days=-1)] = f"{name} (Observed)"
+            elif self._is_sunday(dt) and after:
+                self[dt + td(days=+1)] = f"{name} (Observed)"
+
+        HolidayBase._populate(self, year)
 
         # New Year's Day
         if year >= 1871:
             name = "New Year's Day"
-            self._add_with_observed(date(year, JAN, 1), name, before=False)
+            _add_with_observed(date(year, JAN, 1), name, before=False)
             # The following year's observed New Year's Day can be in this year
             # when it falls on a Friday (Jan 1st is a Saturday).
             if self.observed and self._is_friday(date(year, DEC, 31)):
@@ -146,7 +146,7 @@ class UnitedStates(HolidayBase):
                 dt = date(year, JAN, 20)
             else:
                 dt = date(year, MAR, 4)
-            self._add_with_observed(dt, "Inauguration Day", before=False)
+            _add_with_observed(dt, "Inauguration Day", before=False)
 
         # Martin Luther King Jr. Day
         if year >= 1986:
@@ -172,7 +172,7 @@ class UnitedStates(HolidayBase):
         if (
             self.subdiv in {"CT", "IA", "IL", "NJ", "NY"} and year >= 1971
         ) or (self.subdiv == "CA" and 1971 <= year <= 2009):
-            self._add_with_observed(date(year, FEB, 12), "Lincoln's Birthday")
+            _add_with_observed(date(year, FEB, 12), "Lincoln's Birthday")
 
         # Susan B. Anthony Day
         if (
@@ -241,19 +241,19 @@ class UnitedStates(HolidayBase):
 
         # Emancipation Day
         if self.subdiv == "PR":
-            self._add_with_observed(
+            _add_with_observed(
                 date(year, MAR, 22), "Emancipation Day", before=False
             )
 
         # Commonwealth Covenant Day in Northern Mariana Islands
         if self.subdiv == "MP":
-            self._add_with_observed(
+            _add_with_observed(
                 date(year, MAR, 24), "Commonwealth Covenant Day"
             )
 
         # Prince Jonah Kuhio Kalanianaole Day
         if self.subdiv == "HI" and year >= 1949:
-            self._add_with_observed(
+            _add_with_observed(
                 date(year, MAR, 26), "Prince Jonah Kuhio Kalanianaole Day"
             )
 
@@ -269,7 +269,7 @@ class UnitedStates(HolidayBase):
         name = "César Chávez Day"
         dt = date(year, MAR, 31)
         if self.subdiv == "CA" and year >= 1995:
-            self._add_with_observed(dt, name, before=False)
+            _add_with_observed(dt, name, before=False)
         elif self.subdiv == "TX" and year >= 2000:
             self[dt] = name
 
@@ -279,7 +279,7 @@ class UnitedStates(HolidayBase):
 
         # Emancipation Day
         if self.subdiv == "DC" and year >= 2005:
-            self._add_with_observed(date(year, APR, 16), "Emancipation Day")
+            _add_with_observed(date(year, APR, 16), "Emancipation Day")
 
         # Patriots' Day
         if self.subdiv in {"MA", "ME"}:
@@ -349,7 +349,7 @@ class UnitedStates(HolidayBase):
 
         # Truman Day
         if self.subdiv == "MO" and year >= 1949:
-            self._add_with_observed(date(year, MAY, 8), "Truman Day")
+            _add_with_observed(date(year, MAY, 8), "Truman Day")
 
         # Memorial Day
         if year >= 1971:
@@ -361,7 +361,7 @@ class UnitedStates(HolidayBase):
 
         # Juneteenth Day
         if year >= 2021:
-            self._add_with_observed(
+            _add_with_observed(
                 date(year, JUN, 19), "Juneteenth National Independence Day"
             )
 
@@ -375,7 +375,7 @@ class UnitedStates(HolidayBase):
             name = "Kamehameha Day"
             dt = date(year, JUN, 11)
             if year >= 2011:
-                self._add_with_observed(dt, name)
+                _add_with_observed(dt, name)
             else:
                 self[dt] = name
 
@@ -385,7 +385,7 @@ class UnitedStates(HolidayBase):
 
         # West Virginia Day
         if self.subdiv == "WV" and year >= 1927:
-            self._add_with_observed(date(year, JUN, 20), "West Virginia Day")
+            _add_with_observed(date(year, JUN, 20), "West Virginia Day")
 
         # Emancipation Day in US Virgin Islands
         if self.subdiv == "VI":
@@ -393,7 +393,7 @@ class UnitedStates(HolidayBase):
 
         # Independence Day
         if year >= 1871:
-            self._add_with_observed(date(year, JUL, 4), "Independence Day")
+            _add_with_observed(date(year, JUL, 4), "Independence Day")
 
         # Liberation Day (Guam)
         if self.subdiv == "GU" and year >= 1945:
@@ -401,11 +401,11 @@ class UnitedStates(HolidayBase):
 
         # Pioneer Day
         if self.subdiv == "UT" and year >= 1849:
-            self._add_with_observed(date(year, JUL, 24), "Pioneer Day")
+            _add_with_observed(date(year, JUL, 24), "Pioneer Day")
 
         # Constitution Day
         if self.subdiv == "PR":
-            self._add_with_observed(
+            _add_with_observed(
                 date(year, JUL, 25), "Constitution Day", before=False
             )
 
@@ -421,9 +421,7 @@ class UnitedStates(HolidayBase):
 
         # Bennington Battle Day
         if self.subdiv == "VT" and year >= 1778:
-            self._add_with_observed(
-                date(year, AUG, 16), "Bennington Battle Day"
-            )
+            _add_with_observed(date(year, AUG, 16), "Bennington Battle Day")
 
         # Lyndon Baines Johnson Day
         if self.subdiv == "TX" and year >= 1973:
@@ -454,14 +452,14 @@ class UnitedStates(HolidayBase):
 
         # Alaska Day
         if self.subdiv == "AK" and year >= 1867:
-            self._add_with_observed(date(year, OCT, 18), "Alaska Day")
+            _add_with_observed(date(year, OCT, 18), "Alaska Day")
 
         # Nevada Day
         if self.subdiv == "NV" and year >= 1933:
             dt = date(year, OCT, 31)
             if year >= 2000:
                 dt = _get_nth_weekday_of_month(-1, FRI, OCT, year)
-            self._add_with_observed(dt, "Nevada Day")
+            _add_with_observed(dt, "Nevada Day")
 
         # Liberty Day
         if self.subdiv == "VI":
@@ -496,7 +494,7 @@ class UnitedStates(HolidayBase):
 
         # Citizenship Day in Northern Mariana Islands
         if self.subdiv == "MP":
-            self._add_with_observed(date(year, NOV, 4), "Citizenship Day")
+            _add_with_observed(date(year, NOV, 4), "Citizenship Day")
 
         # Veterans Day
         if year >= 1954:
@@ -506,11 +504,11 @@ class UnitedStates(HolidayBase):
         if 1971 <= year <= 1977:
             self[_get_nth_weekday_of_month(4, MON, OCT, year)] = name
         elif year >= 1938:
-            self._add_with_observed(date(year, NOV, 11), name)
+            _add_with_observed(date(year, NOV, 11), name)
 
         # Discovery Day
         if self.subdiv == "PR":
-            self._add_with_observed(
+            _add_with_observed(
                 date(year, NOV, 19), "Discovery Day", before=False
             )
 
@@ -565,7 +563,7 @@ class UnitedStates(HolidayBase):
 
         # Constitution Day in Northern Mariana Islands
         if self.subdiv == "MP":
-            self._add_with_observed(date(year, DEC, 8), "Constitution Day")
+            _add_with_observed(date(year, DEC, 8), "Constitution Day")
 
         # Christmas Eve
         if (
@@ -586,7 +584,7 @@ class UnitedStates(HolidayBase):
 
         # Christmas Day
         if year >= 1871:
-            self._add_with_observed(date(year, DEC, 25), "Christmas Day")
+            _add_with_observed(date(year, DEC, 25), "Christmas Day")
 
         # Day After Christmas
         dt = date(year, DEC, 26)
@@ -608,7 +606,7 @@ class UnitedStates(HolidayBase):
         if (self.subdiv in {"KY", "MI"} and year >= 2013) or (
             self.subdiv == "WI" and year >= 2012
         ):
-            self._add_with_observed(
+            _add_with_observed(
                 date(year, DEC, 31), "New Year's Eve", before=True, after=False
             )
 

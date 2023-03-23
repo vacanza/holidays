@@ -15,10 +15,10 @@ from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import JUN, JUL, FRI
 from holidays.holiday_base import HolidayBase
 
-from .united_kingdom import UnitedKingdom
+from .united_kingdom import GB
 
 
-class IsleOfMan(UnitedKingdom):
+class IsleOfMan(GB):
     """Using existing code in UnitedKingdom for now."""
 
     country = "IM"
@@ -28,9 +28,9 @@ class IsleOfMan(UnitedKingdom):
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year: int) -> None:
-        super()._populate(year)
+        GB._populate(self, year)
 
-        # Isle of Man exclusive holidays
+        # Isle of Man additional holidays
         # TT bank holiday (first Friday in June)
         self[_get_nth_weekday_of_month(1, FRI, JUN, year)] = "TT Bank Holiday"
 

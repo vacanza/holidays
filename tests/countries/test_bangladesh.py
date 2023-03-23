@@ -12,12 +12,12 @@
 import unittest
 from datetime import date
 
-import holidays
+from holidays import country_holidays
 
 
 class TestBangladesh(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.BD()
+        self.holidays = country_holidays("BD")
 
     def test_2020(self):
         self.assertIn(date(2020, 2, 21), self.holidays)

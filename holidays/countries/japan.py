@@ -50,7 +50,7 @@ class Japan(HolidayBase):
         if year < 1949 or year > 2099:
             raise NotImplementedError
 
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # New Year's Day.
         self[date(year, JAN, 1)] = self.tr("元日")

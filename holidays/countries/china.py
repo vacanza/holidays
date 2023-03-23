@@ -32,7 +32,7 @@ class China(HolidayBase):
         if year <= 1949:
             return None
 
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         self[date(year, JAN, 1)] = "New Year's Day"
 

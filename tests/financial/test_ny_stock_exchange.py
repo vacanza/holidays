@@ -14,14 +14,14 @@ from datetime import timedelta as td
 
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC, WED, SAT, SUN
-from holidays.financial.ny_stock_exchange import NewYorkStockExchange
+from holidays.financial import XNYS
 from tests.common import TestCase
 
 
 class TestNewYorkStockExchange(TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(NewYorkStockExchange)
+        super().setUpClass(XNYS)
 
     def test_new_years(self):
         for dt in (

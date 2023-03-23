@@ -12,12 +12,12 @@
 import unittest
 from datetime import date
 
-import holidays
+from holidays import country_holidays
 
 
 class TestMT(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.MT()
+        self.holidays = country_holidays("MT")
 
     def test_2022(self):
         # https://www.gov.mt/en/About%20Malta/Pages/Public%20Holidays.aspx

@@ -8,10 +8,10 @@ Simplest example possible
 .. code-block:: python
 
    >>> from datetime import date
-   >>> import holidays
-   >>> date(2014, 1, 1) in holidays.US()
+   >>> from holidays import country_holidays
+   >>> date(2014, 1, 1) in country_holidays('US')
    True
-   >>> date(2014, 1, 2) in holidays.US()
+   >>> date(2014, 1, 2) in country_holidays('US')
    False
 
 .. tip::
@@ -23,25 +23,32 @@ It is more efficient to create the object only once:
 
 .. code-block:: python
 
-   >>> us_holidays = holidays.US()
+   >>> us_holidays = country_holidays('US')
    >>> date(2014, 1, 1) in us_holidays
    True
    >>> date(2014, 1, 2) in us_holidays
    False
 
-You can use the :py:func:`country_holidays` or :py:func:`financial_holidays`
-functions to create the object using a string with the country code:
+You should always create the object by importing and then using the
+:py:func:`country_holidays` or :py:func:`financial_holidays` functions because
+they are much faster as they only import the country you specify (due to legacy
+architecture, ``import holidays`` will cause all countries and markets to be
+loaded).
 
 .. code-block:: python
 
-   >>> us_holidays = holidays.country_holidays('US')
-   >>> nyse_holidays = holidays.financial_holidays('NYSE')
+   >>> from holidays import country_holidays
+   >>> us_holidays = country_holidays('US')
+   >>> from holidays import financial_holidays
+   >>> nyse_holidays = financial_holidays('NYSE')
 
 Let's print out the holidays in 2014 specific to California, USA:
 
 .. code-block:: python
 
-   >>> for date, name in sorted(holidays.US(subdiv='CA', years=2014).items()):
+   >>> for date, name in sorted(
+           country_holidays('US', subdiv='CA', years=2014).items()
+       ):
    >>>     print(date, name)
    2014-01-01 New Year's Day
    2014-01-20 Martin Luther King Jr. Day
@@ -65,33 +72,6 @@ object has generated:
    set([2014])
    >>> len(us_holidays)
    10
-
-Expand parameter
-----------------
-
-Because by default the :py:attr:`expand` parameter is ``True`` the Holiday
-object will calculate and add holidays for other years when they are required:
-
-.. code-block:: python
-
-   >>> date(2013, 1, 1) in us_holidays
-   True
-   >>> us_holidays.years
-   set([2013, 2014])
-   >>> len(us_holidays)
-   20
-
-If we change the :py:attr:`expand` parameter to ``False`` the Holiday object
-will no longer add holidays from new years:
-
-.. code-block:: python
-
-   >>> us_holidays.expand = False
-   >>> date(2012, 1, 1) in us_holidays
-   False
-   >>> us.holidays.expand = True
-   >>> date(2012, 1, 1) in us_holidays
-   True
 
 Observed parameter
 ------------------
@@ -133,7 +113,7 @@ with case insensitive check):
 
 .. code-block:: python
 
-   >>> us_holidays = holidays.UnitedStates(years=2020)
+   >>> us_holidays = country_holidays('US', years=2020)
    >>> us_holidays.get_named('day')
    [datetime.date(2020, 1, 1), datetime.date(2020, 1, 20),
    datetime.date(2020, 2, 17), datetime.date(2020, 5, 25),
@@ -150,7 +130,11 @@ the holidays from all of the initial objects:
 
 .. code-block:: python
 
-   >>> north_america = holidays.CA() + holidays.US() + holidays.MX()
+   >>> north_america = (
+           country_holidays('CA')
+           + country_holidays('US')
+           + country_holidays('MX')
+       )
    >>> north_america.get('2014-07-01')
    "Canada Day"
    >>> north_america.get('2014-07-04')
@@ -160,9 +144,9 @@ The other form of addition is also available:
 
 .. code-block:: python
 
-   >>> north_america = holidays.CA()
-   >>> north_america += holidays.US()
-   >>> north_america += holidays.MX()
+   >>> north_america = country_holidays('CA')
+   >>> north_america += country_holidays('US')
+   >>> north_america += country_holidays('MX')
    >>> north_america.country
    ['CA', 'US', 'MX']
 
@@ -171,7 +155,8 @@ holidays using the built-in :py:func:`sum` function:
 
 .. code-block:: python
 
-   >>> a = sum([holidays.CA(subdiv=x) for x in holidays.CA.subdivisions])
+   >>> from holidays.countries.canada import CA
+   >>> a = sum([country_holidays('CA', subdiv=x) for x in CA.subdivisions])
    >>> a.subdiv
    ['AB', 'BC', 'MB', 'NB', 'NL', 'NS', 'NT', 'NU', 'ON', 'PE', 'QC', 'SK',
     'YU']
@@ -264,20 +249,3 @@ holiday object:
    >>> us_holidays = country_holidays('US', years=2020)
    # to add new years of holidays to the object:
    >>> us_holidays.update(country_holidays('US', years=2021))
-
-
-
-Other ways to specify the country
----------------------------------
-
-Each country has two class names that can be called in addition to the alpha-2
-ISO code: its 3-digit ISO code and an internal class name.
-
-.. code-block:: python
-
-    >>> holidays.USA() == holidays.US()
-    True
-    >>> holidays.UnitedStates() == holidays.US()
-    True
-
-.. deprecated:: In the future

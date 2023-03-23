@@ -26,7 +26,7 @@ class Latvia(HolidayBase):
     country = "LV"
 
     def _populate(self, year):
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # New Year's Day
         self[date(year, 1, 1)] = "Jaunais gads"

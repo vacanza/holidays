@@ -39,7 +39,7 @@ class Monaco(HolidayBase):
                     self.tr("%s (Observé)") % hol_name
                 )
 
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # New Year's Day
         _add_with_observed(date(year, JAN, 1), self.tr("Le jour de l'An"))

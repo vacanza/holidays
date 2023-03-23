@@ -135,7 +135,7 @@ class NewYorkStockExchange(HolidayBase):
             self[holiday_date] = name
 
     def _populate(self, year):
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         ##############################################################
         # REGULAR HOLIDAYS

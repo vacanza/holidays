@@ -27,7 +27,7 @@ class Finland(HolidayBase):
     country = "FI"
 
     def _populate(self, year):
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         easter_date = easter(year)
 

@@ -50,7 +50,7 @@ class Ethiopia(HolidayBase):
         return HolidayBase._is_leap_year(year + 1)
 
     def _populate(self, year):
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # New Year's Day
         # The Ethiopian New Year is called Kudus Yohannes in Ge'ez and

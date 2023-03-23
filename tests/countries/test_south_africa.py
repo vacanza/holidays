@@ -11,12 +11,12 @@
 
 import unittest
 
-import holidays
+from holidays import country_holidays
 
 
 class TestSouthAfrica(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.ZA()
+        self.holidays = country_holidays("ZA")
 
     def test_new_years(self):
         self.assertNotIn("1908-01-01", self.holidays)

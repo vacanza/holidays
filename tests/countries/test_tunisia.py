@@ -13,12 +13,12 @@ import importlib.util
 import unittest
 from datetime import date
 
-import holidays
+from holidays import country_holidays
 
 
 class TestTunisia(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.TN()
+        self.holidays = country_holidays("TN")
 
     def test2021(self):
         _holidays = [

@@ -32,7 +32,7 @@ class Armenia(HolidayBase):
         if year <= 1990:
             return None
 
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # New Year's Day.
         name = self.tr("Նոր տարվա օր")

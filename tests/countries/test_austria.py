@@ -13,12 +13,12 @@ import unittest
 from datetime import date
 from datetime import timedelta as td
 
-import holidays
+from holidays import country_holidays
 
 
 class TestAT(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.AT()
+        self.holidays = country_holidays("AT")
 
     def test_new_years(self):
         for year in range(1900, 2100):
@@ -64,7 +64,7 @@ class TestAT(unittest.TestCase):
             self.assertNotIn(dt + td(days=+1), self.holidays)
 
     def test_all_holidays_present(self):
-        at_2015 = holidays.AT(years=[2015])
+        at_2015 = country_holidays("AT", years=[2015])
         all_holidays = [
             "Neujahr",
             "Heilige Drei Könige",
@@ -84,5 +84,5 @@ class TestAT(unittest.TestCase):
             self.assertIn(holiday, at_2015.values())
 
     def test_subdiv(self):
-        at_holidays = holidays.AT(subdiv=1)
+        at_holidays = country_holidays("AT", subdiv="1")
         self.assertEqual("1", at_holidays.subdiv)

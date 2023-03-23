@@ -12,12 +12,12 @@
 import unittest
 from datetime import date
 
-import holidays
+from holidays import country_holidays
 
 
 class TestHungary(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.HU(observed=False)
+        self.holidays = country_holidays("HU", observed=False)
         self.next_year = date.today().year + 1
 
     def test_national_day_was_not_celebrated_during_communism(self):
@@ -40,7 +40,7 @@ class TestHungary(unittest.TestCase):
             )
 
     def test_christian_holidays_2nd_day_was_not_held_in_1955(self):
-        hu_1955 = holidays.Hungary(years=[1955])
+        hu_1955 = country_holidays("HU", years=[1955])
         self.assertNotIn(date(1955, 4, 11), hu_1955)
         self.assertNotIn(date(1955, 12, 26), hu_1955)
 
@@ -71,8 +71,8 @@ class TestHungary(unittest.TestCase):
             self.assertIn(date(year, 11, 1), self.holidays)
 
     def test_additional_day_off(self):
-        observed_days_off = holidays.HU(
-            observed=True, years=range(2010, self.next_year)
+        observed_days_off = country_holidays(
+            "HU", observed=True, years=range(2010, self.next_year)
         )
         for day in [
             date(2010, 12, 24),
@@ -108,7 +108,7 @@ class TestHungary(unittest.TestCase):
             self.assertIn(day, observed_days_off)
 
     def test_monday_new_years_eve_day_off(self):
-        observed_day_off = holidays.HU(observed=True)
+        observed_day_off = country_holidays("HU", observed=True)
         self.assertIn(date(2018, 12, 31), observed_day_off)
 
     def test_2018(self):

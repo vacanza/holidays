@@ -164,7 +164,7 @@ class Argentina(HolidayBase):
                     hol_name = self.tr("%s (Observado)") % hol_name
             self[hol_date] = hol_name
 
-        super()._populate(year)
+        HolidayBase._populate(self, year)
 
         # Fixed Holidays
 
