@@ -735,11 +735,11 @@ class HolidayBase(Dict[date, str]):
     def _add_subdiv_holidays(self):
         """Populate subdivision holidays."""
         if self.subdiv is not None:
-            callable_name = f"_add_subdiv_{self.subdiv.lower()}_holidays"
-            if hasattr(self, callable_name):
-                add_subdiv_holidays = getattr(self, callable_name)
-                if callable(add_subdiv_holidays):
-                    add_subdiv_holidays()
+            add_subdiv_holidays = getattr(
+                self, f"_add_subdiv_{self.subdiv.lower()}_holidays", None
+            )
+            if add_subdiv_holidays and callable(add_subdiv_holidays):
+                add_subdiv_holidays()
 
     def _populate(self, year: int) -> Set[Optional[date]]:
         """This is a private class that populates (generates and adds) holidays
