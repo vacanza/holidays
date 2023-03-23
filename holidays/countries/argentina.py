@@ -10,7 +10,6 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
