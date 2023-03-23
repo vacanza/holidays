@@ -12,14 +12,12 @@
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from dateutil.easter import easter
-
-from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT
-from holidays.constants import NOV, DEC
+from holidays.constants import APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Portugal(HolidayBase):
+class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     A subclass of :py:class:`HolidayBase` representing public holidays
     in Portugal.
@@ -77,27 +75,30 @@ class Portugal(HolidayBase):
         "Ext",
     ]
 
+    def __init__(self, *args, **kwargs) -> None:
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year):
         super()._populate(year)
 
-        self._add_holiday(tr("Ano Novo"), JAN, 1)
-
-        easter_date = easter(year)
+        self._add_new_years_day(tr("Ano Novo"))
 
         # carnival is no longer a holiday, but some companies let workers off.
         # @todo recollect the years in which it was a public holiday
         # self[e + td(days=-47)] = "Carnaval"
 
-        self._add_holiday(tr("Sexta-feira Santa"), easter_date + td(days=-2))
-        self._add_holiday(tr("Páscoa"), easter_date)
+        self._add_good_friday(tr("Sexta-feira Santa"))
+        self._add_easter_sunday(tr("Páscoa"))
 
         # Revoked holidays in 2013–2015
 
         if year <= 2012 or year >= 2016:
-            self._add_holiday(tr("Corpo de Deus"), easter_date + td(days=+60))
+            self._add_corpus_christi_day(tr("Corpo de Deus"))
             if year >= 1910:
                 self._add_holiday(tr("Implantação da República"), OCT, 5)
-            self._add_holiday(tr("Dia de Todos os Santos"), NOV, 1)
+            self._add_all_saints_day(tr("Dia de Todos os Santos"))
             if year >= 1823:
                 self._add_holiday(tr("Restauração da Independência"), DEC, 1)
 
@@ -120,9 +121,9 @@ class Portugal(HolidayBase):
                 )
             else:
                 self._add_holiday(tr("Dia de Portugal"), JUN, 10)
-        self._add_holiday(tr("Assunção de Nossa Senhora"), AUG, 15)
-        self._add_holiday(tr("Imaculada Conceição"), DEC, 8)
-        self._add_holiday(tr("Dia de Natal"), DEC, 25)
+        self._add_assumption_of_mary_day(tr("Assunção de Nossa Senhora"))
+        self._add_immaculate_conception_day(tr("Imaculada Conceição"))
+        self._add_christmas_day(tr("Dia de Natal"))
 
         if self.subdiv == "Ext":
             """
@@ -135,10 +136,10 @@ class Portugal(HolidayBase):
             - Lisbon's city holiday
             """
 
-            self._add_holiday(tr("Carnaval"), easter_date + td(days=-47))
-            self._add_holiday(tr("Véspera de Natal"), DEC, 24)
-            self._add_holiday(tr("26 de Dezembro"), DEC, 26)
-            self._add_holiday(tr("Véspera de Ano Novo"), DEC, 31)
+            self._add_carnival_tuesday(tr("Carnaval"))
+            self._add_christmas_eve(tr("Véspera de Natal"))
+            self._add_christmas_day_two(tr("26 de Dezembro"))
+            self._add_new_years_eve(tr("Véspera de Ano Novo"))
             self._add_holiday(tr("Dia de Santo António"), JUN, 13)
 
             # TODO add bridging days
@@ -151,11 +152,9 @@ class Portugal(HolidayBase):
             if self.subdiv == "01":
                 self._add_holiday(tr("Dia de Santa Joana"), MAY, 12)
             if self.subdiv == "02":
-                self._add_holiday(
-                    tr("Quinta-feira da Ascensão"), easter_date + td(days=+39)
-                )
+                self._add_ascension_thursday(tr("Quinta-feira da Ascensão"))
             if self.subdiv in {"03", "13"}:
-                self._add_holiday(tr("Dia de São João"), JUN, 24)
+                self._add_saint_johns_day(tr("Dia de São João"))
             if self.subdiv == "04":
                 self._add_holiday(
                     tr("Dia de Nossa Senhora das Graças"), AUG, 22
@@ -163,12 +162,12 @@ class Portugal(HolidayBase):
             if self.subdiv == "05":
                 self._add_holiday(
                     tr("Dia de Nossa Senhora de Mércoles"),
-                    easter_date + td(days=+16),
+                    self._easter_sunday + td(days=+16),
                 )
             if self.subdiv == "06":
                 self._add_holiday(tr("Dia de Santa Isabel"), JUL, 4)
             if self.subdiv == "07":
-                self._add_holiday(tr("Dia de São Pedro"), JUN, 29)
+                self._add_saints_peter_and_paul_day(tr("Dia de São Pedro"))
             if self.subdiv == "08":
                 self._add_holiday(tr("Dia do Município de Faro"), SEP, 7)
             if self.subdiv == "09":
@@ -182,7 +181,7 @@ class Portugal(HolidayBase):
                     tr("Dia do Município de Portalegre"), MAY, 23
                 )
             if self.subdiv == "14":
-                self._add_holiday(tr("Dia de São José"), MAR, 19)
+                self._add_saint_josephs_day(tr("Dia de São José"))
             if self.subdiv == "15":
                 self._add_holiday(tr("Dia de Bocage"), SEP, 15)
             if self.subdiv == "16":
@@ -192,10 +191,7 @@ class Portugal(HolidayBase):
             if self.subdiv == "18":
                 self._add_holiday(tr("Dia de São Mateus"), SEP, 21)
             if self.subdiv == "20" and year >= 1981:
-                self._add_holiday(
-                    tr("Dia da Região Autónoma dos Açores"),
-                    easter_date + td(days=+50),
-                )
+                self._add_whit_monday(tr("Dia da Região Autónoma dos Açores"))
             if self.subdiv == "30":
                 if 1979 <= year <= 1988:
                     self._add_holiday(
@@ -211,7 +207,7 @@ class Portugal(HolidayBase):
                         1,
                     )
                 if year >= 2002:
-                    self._add_holiday(tr("Primeira Oitava"), DEC, 26)
+                    self._add_christmas_day_two(tr("Primeira Oitava"))
 
 
 class PT(Portugal):
