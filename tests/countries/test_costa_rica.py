@@ -203,69 +203,82 @@ class TestCostaRica(TestCase):
         self.assertHoliday(f"{year}-12-25" for year in range(1980, 2041))
 
     def test_2022(self):
-        self.assertHolidayDates(
-            CostaRica(years=2022),
-            "2022-01-01",
-            "2022-04-11",
-            "2022-04-14",
-            "2022-04-15",
-            "2022-05-01",
-            "2022-07-25",
-            "2022-08-02",
-            "2022-08-15",
-            "2022-09-04",
-            "2022-09-19",
-            "2022-12-05",
-            "2022-12-25",
+        self.assertHolidays(
+            ("2022-01-01", "Año Nuevo"),
+            ("2022-04-11", "Día de Juan Santamaría"),
+            ("2022-04-14", "Jueves Santo"),
+            ("2022-04-15", "Viernes Santo"),
+            ("2022-05-01", "Día Internacional del Trabajo"),
+            ("2022-07-25", "Anexión del Partido de Nicoya a Costa Rica"),
+            ("2022-08-02", "Fiesta de Nuestra Señora de los Ángeles"),
+            ("2022-08-15", "Día de la Madre"),
+            (
+                "2022-09-04",
+                "Día de la Persona Negra y la Cultura Afrocostarricense "
+                "(Observado)",
+            ),
+            ("2022-09-19", "Día de la Independencia (Observado)"),
+            ("2022-12-05", "Día de la Abolición del Ejército (Observado)"),
+            ("2022-12-25", "Navidad"),
         )
 
-        self.assertNonObservedHolidayDates(
-            CostaRica(observed=False, years=2022),
-            "2022-01-01",
-            "2022-04-11",
-            "2022-04-14",
-            "2022-04-15",
-            "2022-05-01",
-            "2022-07-25",
-            "2022-08-02",
-            "2022-08-15",
-            "2022-08-31",
-            "2022-09-15",
-            "2022-12-01",
-            "2022-12-25",
+        self.assertNonObservedHolidays(
+            ("2022-01-01", "Año Nuevo"),
+            ("2022-04-11", "Día de Juan Santamaría"),
+            ("2022-04-14", "Jueves Santo"),
+            ("2022-04-15", "Viernes Santo"),
+            ("2022-05-01", "Día Internacional del Trabajo"),
+            ("2022-07-25", "Anexión del Partido de Nicoya a Costa Rica"),
+            ("2022-08-02", "Fiesta de Nuestra Señora de los Ángeles"),
+            ("2022-08-15", "Día de la Madre"),
+            (
+                "2022-08-31",
+                "Día de la Persona Negra y la Cultura Afrocostarricense",
+            ),
+            ("2022-09-15", "Día de la Independencia"),
+            ("2022-12-01", "Día de la Abolición del Ejército"),
+            ("2022-12-25", "Navidad"),
         )
 
     def test_2023(self):
-        self.assertHolidayDates(
-            CostaRica(years=2023),
-            "2023-01-01",
-            "2023-04-06",
-            "2023-04-07",
-            "2023-04-10",
-            "2023-05-01",
-            "2023-07-24",
-            "2023-08-02",
-            "2023-08-14",
-            "2023-09-03",
-            "2023-09-15",
-            "2023-12-01",
-            "2023-12-25",
+        self.assertHolidays(
+            ("2023-01-01", "Año Nuevo"),
+            ("2023-04-06", "Jueves Santo"),
+            ("2023-04-07", "Viernes Santo"),
+            ("2023-04-10", "Día de Juan Santamaría (Observado)"),
+            ("2023-05-01", "Día Internacional del Trabajo"),
+            (
+                "2023-07-24",
+                "Anexión del Partido de Nicoya a Costa Rica (Observado)",
+            ),
+            ("2023-08-02", "Fiesta de Nuestra Señora de los Ángeles"),
+            ("2023-08-14", "Día de la Madre (Observado)"),
+            (
+                "2023-09-03",
+                "Día de la Persona Negra y la Cultura Afrocostarricense "
+                "(Observado)",
+            ),
+            ("2023-09-15", "Día de la Independencia"),
+            ("2023-12-01", "Día de la Abolición del Ejército"),
+            ("2023-12-25", "Navidad"),
         )
 
-        self.assertNonObservedHolidayDates(
-            CostaRica(observed=False, years=2023),
-            "2023-01-01",
-            "2023-04-06",
-            "2023-04-07",
-            "2023-04-11",
-            "2023-05-01",
-            "2023-07-25",
-            "2023-08-02",
-            "2023-08-15",
-            "2023-08-31",
-            "2023-09-15",
-            "2023-12-01",
-            "2023-12-25",
+        self.assertNonObservedHolidays(
+            ("2023-01-01", "Año Nuevo"),
+            ("2023-04-06", "Jueves Santo"),
+            ("2023-04-07", "Viernes Santo"),
+            ("2023-04-11", "Día de Juan Santamaría"),
+            ("2023-05-01", "Día Internacional del Trabajo"),
+            ("2023-07-25", "Anexión del Partido de Nicoya a Costa Rica"),
+            ("2023-08-02", "Fiesta de Nuestra Señora de los Ángeles"),
+            ("2023-08-15", "Día de la Madre"),
+            (
+                "2023-08-31",
+                "Día de la Persona Negra y la Cultura Afrocostarricense",
+            ),
+            ("2023-09-15", "Día de la Independencia"),
+            ("2023-12-01", "Día de la Abolición del Ejército"),
+            ("2023-12-25", "Navidad"),
         )
 
     def test_l10n_default(self):

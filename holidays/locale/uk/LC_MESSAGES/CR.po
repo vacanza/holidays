@@ -1,4 +1,4 @@
-# Costa Rica holidays.
+# Costa Rica holidays uk localization.
 # Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
 #
 msgid ""
