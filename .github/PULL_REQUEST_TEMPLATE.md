@@ -36,8 +36,8 @@ Your PR description goes here.
 - [ ] I've followed the [contributing guidelines][contributing-guidelines]
 - [ ] This PR is filed against `beta` branch of the repository
 - [ ] This PR doesn't contain any merge conflicts and has clean commit history
-- [ ] The code style looks good (`make pre-commit`)
-- [ ] I've added tests to verify that the new code works and all tests pass locally (`make test`, `make tox`)
+- [ ] The code style looks good: `make pre-commit`
+- [ ] All tests pass locally: `make test`, `make tox` (we strongly encourage adding tests to your code)
 - [ ] The related [documentation][docs] has been added/updated (check off the box for free if no updates is required)
 
 <!--
