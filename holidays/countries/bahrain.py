@@ -111,9 +111,12 @@ class Bahrain(HolidayBase, InternationalHolidays, IslamicHolidays):
                     f"{ashura} Holiday", ashura_day + td(days=+1)
                 )
         else:
-            name = f"{ashura} Holiday* (*estimated)"
-            for ashura_dt in self._add_ashura_day(name):
-                self._add_holiday(name, ashura_dt + td(days=-1))
+            for ashura_dt in self._add_ashura_day(
+                f"{ashura} Holiday* (*estimated)"
+            ):
+                self._add_holiday(
+                    f"{ashura}* (*estimated)", ashura_dt + td(days=-1)
+                )
 
         # Prophets Birthday.
         mawlud = "Prophets Birthday"
