@@ -84,7 +84,6 @@ class TestFinancialHolidays(unittest.TestCase):
 class TestAllInSameYear(unittest.TestCase):
     """Test that only holidays in the year(s) requested are returned."""
 
-    @pytest.mark.xfail(reason="'Set changed size during iteration' error")
     @pytest.mark.skipif(
         sys.version_info < (3, 11),
         reason="Run once on the latest Python version only",
