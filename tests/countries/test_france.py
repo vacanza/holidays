@@ -101,24 +101,20 @@ class TestFrance(TestCase):
 
     def test_alsace_moselle(self):
         self.assertHoliday(
-            France(subdiv="Alsace-Moselle", years=2017),
-            "2017-04-14",
-            "2017-12-26",
+            France(subdiv="Alsace-Moselle"), "2017-04-14", "2017-12-26"
         )
 
     def test_mayotte(self):
-        self.assertHoliday(France(subdiv="Mayotte", years=2017), "2017-04-27")
+        self.assertHoliday(France(subdiv="Mayotte"), "2017-04-27")
 
     def test_wallis_et_futuna(self):
         self.assertHoliday(
-            France(subdiv="Wallis-et-Futuna", years=2017),
-            "2017-04-28",
-            "2017-07-29",
+            France(subdiv="Wallis-et-Futuna"), "2017-04-28", "2017-07-29"
         )
 
     def test_martinique(self):
         self.assertHoliday(
-            France(subdiv="Martinique", years=2017),
+            France(subdiv="Martinique"),
             "2017-04-14",
             "2017-05-22",
             "2017-07-21",
@@ -126,52 +122,40 @@ class TestFrance(TestCase):
 
     def test_guadeloupe(self):
         self.assertHoliday(
-            France(subdiv="Guadeloupe", years=2017),
+            France(subdiv="Guadeloupe"),
             "2017-04-14",
             "2017-05-27",
             "2017-07-21",
         )
 
     def test_saint_martin(self):
-        self.assertHoliday(
-            France(subdiv="Saint-Martin", years=2018), "2018-05-28"
-        )
-        self.assertNoHoliday(
-            France(subdiv="Saint-Martin", years=2017), "2017-05-28"
-        )
+        self.assertHoliday(France(subdiv="Saint-Martin"), "2018-05-28")
+        self.assertNoHoliday(France(subdiv="Saint-Martin"), "2017-05-28")
         self.assertNoHolidayName(
             "Abolition de l'esclavage",
             France(subdiv="Saint-Martin", years=2017),
         )
 
     def test_guyane(self):
-        self.assertHoliday(France(subdiv="Guyane", years=2017), "2017-06-10")
+        self.assertHoliday(France(subdiv="Guyane"), "2017-06-10")
 
     def test_polynesie_francaise(self):
         self.assertHoliday(
-            France(subdiv="Polynésie Française", years=2017),
+            France(subdiv="Polynésie Française"),
             "2017-03-05",
             "2017-04-14",
             "2017-06-29",
         )
 
     def test_nouvelle_caledonie(self):
-        self.assertHoliday(
-            France(subdiv="Nouvelle-Calédonie", years=2017), "2017-09-24"
-        )
+        self.assertHoliday(France(subdiv="Nouvelle-Calédonie"), "2017-09-24")
 
     def test_saint_barthelemy(self):
-        self.assertHoliday(
-            France(subdiv="Saint-Barthélémy", years=2017), "2017-10-09"
-        )
+        self.assertHoliday(France(subdiv="Saint-Barthélémy"), "2017-10-09")
 
     def test_la_reunion(self):
-        self.assertHoliday(
-            France(subdiv="La Réunion", years=2017), "2017-12-20"
-        )
-        self.assertNoHoliday(
-            France(subdiv="La Réunion", years=1980), "1980-12-20"
-        )
+        self.assertHoliday(France(subdiv="La Réunion"), "2017-12-20")
+        self.assertNoHoliday(France(subdiv="La Réunion"), "1980-12-20")
         self.assertNoHolidayName(
             "Abolition de l'esclavage", France(subdiv="La Réunion", years=1980)
         )
