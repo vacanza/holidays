@@ -684,6 +684,16 @@ class InternationalHolidays:
         """
         return self._add_holiday(holiday_name, MAY, 9)
 
+    def _add_remembrance_day(self, holiday_name):
+        """
+        Add Remembrance Day / Armistice Day (Nov 11th)
+
+        It's a memorial day since the end of the First World War in 1919
+        to honour armed forces members who have died in the line of duty.
+        https://en.wikipedia.org/wiki/Remembrance_Day
+        """
+        return self._add_holiday(holiday_name, NOV, 11)
+
 
 class IslamicHolidays:
     """
