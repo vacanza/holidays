@@ -9,14 +9,13 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
+from gettext import gettext as tr
 
-from dateutil.easter import easter, EASTER_ORTHODOX
-
-from holidays.calendars import _islamic_to_gre
-from holidays.constants import JAN, MAR, MAY, SEP
+from holidays.calendars import JULIAN_CALENDAR
+from holidays.constants import MAR, MAY, SEP
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
+from holidays.holiday_groups import IslamicHolidays
 
 # Ethiopian holidays are estimated: it is common for the day to be pushed
 # if falls in a weekend, although not a rule that can be implemented.
@@ -32,7 +31,9 @@ from holidays.holiday_base import HolidayBase
 # is_weekend function is there, however not activated for accuracy.
 
 
-class Ethiopia(HolidayBase):
+class Ethiopia(
+    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
+):
     country = "ET"
     default_language = "am"
 
@@ -49,6 +50,12 @@ class Ethiopia(HolidayBase):
         """
         return HolidayBase._is_leap_year(year + 1)
 
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self, JULIAN_CALENDAR)
+        InternationalHolidays.__init__(self)
+        IslamicHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year):
         super()._populate(year)
 
@@ -59,79 +66,62 @@ class Ethiopia(HolidayBase):
         # It occurs on September 11 in the Gregorian Calendar;
         # except for the year preceding a leap year, when it occurs on
         # September 12.
-        if self._is_leap_year(year):
-            # Ethiopian New Year.
-            self[date(year, SEP, 12)] = self.tr("አዲስ ዓመት እንቁጣጣሽ")
-        else:
-            # Ethiopian New Year.
-            self[date(year, SEP, 11)] = self.tr("አዲስ ዓመት እንቁጣጣሽ")
 
-        # Finding of true cross.
-        if self._is_leap_year(year):
-            # Finding of True Cross.
-            self[date(year, SEP, 28)] = self.tr("መስቀል")
-        else:
-            # Finding of True Cross.
-            self[date(year, SEP, 27)] = self.tr("መስቀል")
+        # Ethiopian New Year.
+        self._add_holiday(
+            tr("አዲስ ዓመት እንቁጣጣሽ"), SEP, 12 if self._is_leap_year(year) else 11
+        )
+
+        # Finding of True Cross.
+        self._add_holiday(
+            tr("መስቀል"), SEP, 28 if self._is_leap_year(year) else 27
+        )
 
         # Orthodox Christmas.
-        self[date(year, JAN, 7)] = self.tr("ገና")
+        self._add_christmas_day(tr("ገና"))
 
         # Orthodox Epiphany.
-        self[date(year, JAN, 19)] = self.tr("ጥምቀት")
+        self._add_epiphany_day(tr("ጥምቀት"))
 
-        easter_date = easter(year, EASTER_ORTHODOX)
         # Orthodox Good Friday.
-        self[easter_date + td(days=-2)] = self.tr("ስቅለት")
+        self._add_good_friday(tr("ስቅለት"))
 
         # Orthodox Easter Sunday.
-        self[easter_date] = self.tr("ፋሲካ")
+        self._add_easter_sunday(tr("ፋሲካ"))
 
         if year > 1896:
             # Adwa Victory Day.
-            self[date(year, MAR, 2)] = self.tr("አድዋ")
+            self._add_holiday(tr("አድዋ"), MAR, 2)
 
         # Labour Day.
-        self[date(year, MAY, 1)] = self.tr("የሰራተኞች ቀን")
+        self._add_labour_day(tr("የሰራተኞች ቀን"))
 
         if year > 1941:
             # Patriots Day.
-            self[date(year, MAY, 5)] = self.tr("የአርበኞች ቀን")
+            self._add_holiday(tr("የአርበኞች ቀን"), MAY, 5)
 
         if year > 1991:
             # Downfall of Dergue Regime Day.
-            self[date(year, MAY, 28)] = self.tr("ደርግ የወደቀበት ቀን")
+            self._add_holiday(tr("ደርግ የወደቀበት ቀን"), MAY, 28)
 
         if year < 1991 and year > 1974:
             # Downfall of King Haile Selassie.
-            name = self.tr("ደርግ የመጣበት ቀን")
-            if self._is_leap_year(year):
-                self[date(year, SEP, 13)] = name
-            else:
-                self[date(year, SEP, 12)] = name
+            self._add_holiday(
+                tr("ደርግ የመጣበት ቀን"), SEP, 13 if self._is_leap_year(year) else 12
+            )
 
-        # Eid al-Fitr - Feast Festive
-        # date of observance is announced yearly, This is an estimate since
-        # having the Holiday on Weekend does change the number of days,
-        # decided to leave it since marking a Weekend as a holiday
-        # wouldn't do much harm.
-        for date_obs in _islamic_to_gre(year, 10, 1):
-            hol_date = date_obs
-            # Eid al-Fitr.
-            self[hol_date] = self.tr("ኢድ አልፈጥር")
+        # Eid al-Fitr.
+        self._add_eid_al_fitr_day(tr("ኢድ አልፈጥር"))
 
-        # Eid al-Adha - Sacrifice Festive
-        # date of observance is announced yearly
-        for date_obs in _islamic_to_gre(year, 12, 9):
-            hol_date = date_obs
-            # Eid al-Adha.
-            self[hol_date + td(days=+1)] = self.tr("አረፋ")
+        # Eid al-Adha.
+        name = tr("አረፋ")
+        self._add_eid_al_adha_day(name)
+        self._add_eid_al_adha_day_two(name)
 
-        # Prophet Muhammad's Birthday - (hijari_year, 3, 12)
-        for date_obs in _islamic_to_gre(year, 3, 12):
-            hol_date = date_obs
-            # Prophet Muhammad's Birthday.
-            self[hol_date + td(days=+1)] = self.tr("መውሊድ")
+        # Prophet Muhammad's Birthday.
+        name = tr("መውሊድ")
+        self._add_mawlid_day(name)
+        self._add_mawlid_day_two(name)
 
 
 class ET(Ethiopia):

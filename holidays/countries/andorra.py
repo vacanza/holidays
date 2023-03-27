@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -14,7 +14,8 @@ from datetime import timedelta as td
 
 from dateutil.easter import easter
 
-from holidays.constants import JAN, MAR, MAY, JUL, AUG, SEP, NOV, DEC
+from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
+from holidays.constants import JAN, MAR, MAY, JUL, AUG, SEP, NOV, DEC, FRI, SAT
 from holidays.holiday_base import HolidayBase
 
 
@@ -22,17 +23,18 @@ class Andorra(HolidayBase):
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_Andorra
+      - https://www.holsdb.com/public-holidays/ad
     """
 
     country = "AD"
     subdivisions = [
-        "AD-02",  # Canillo.
-        "AD-03",  # Encamp.
-        "AD-04",  # La Massana.
-        "AD-05",  # Ordino.
-        "AD-06",  # Sant Julià de Lòria.
-        "AD-07",  # Andorra la Vella.
-        "AD-08",  # Escaldes-Engordany.
+        "02",  # Canillo.
+        "03",  # Encamp.
+        "04",  # La Massana.
+        "05",  # Ordino.
+        "06",  # Sant Julià de Lòria.
+        "07",  # Andorra la Vella.
+        "08",  # Escaldes-Engordany.
     ]
 
     def _populate(self, year: int) -> None:
@@ -83,46 +85,42 @@ class Andorra(HolidayBase):
         self[date(year, DEC, 26)] = "Saint Stephen's Day"
 
         # Parish local holidays.
+        third_sat_of_july = _get_nth_weekday_of_month(3, SAT, JUL, year)
+        last_fri_of_july = _get_nth_weekday_from(-1, FRI, date(year, JUL, 29))
+        first_sat_of_august = _get_nth_weekday_of_month(1, SAT, AUG, year)
+
         parish_holidays_mapping = {
-            "AD-02": (
-                (date(year, JUL, 21), "Canillo Annual Festival"),
-                (date(year, JUL, 22), "Canillo Annual Festival"),
-                (date(year, JUL, 23), "Canillo Annual Festival"),
+            "02": ((third_sat_of_july, 3, "Canillo Annual Festival"),),
+            "03": ((date(year, AUG, 15), 2, "Encamp Annual Festival"),),
+            "04": ((date(year, AUG, 15), 2, "La Massana Annual Festival"),),
+            "05": ((date(year, AUG, 15), 2, "Ordino Annual Festival"),),
+            "06": (
+                (
+                    last_fri_of_july,
+                    4,
+                    "Sant Julià de Lòria Annual Festival",
+                ),
             ),
-            "AD-03": (
-                (date(year, AUG, 15), "Encamp Annual Festival"),
-                (date(year, AUG, 16), "Encamp Annual Festival"),
+            "07": (
+                (
+                    first_sat_of_august,
+                    3,
+                    "Andorra la Vella Annual Festival",
+                ),
             ),
-            "AD-04": (
-                (date(year, AUG, 15), "La Massana Annual Festival"),
-                (date(year, AUG, 16), "La Massana Annual Festival"),
-            ),
-            "AD-05": (
-                (date(year, AUG, 15), "Ordino Annual Festival"),
-                (date(year, AUG, 16), "Ordino Annual Festival"),
-            ),
-            "AD-06": (
-                (date(year, JUL, 27), "Sant Julià de Lòria Annual Festival"),
-                (date(year, JUL, 28), "Sant Julià de Lòria Annual Festival"),
-                (date(year, JUL, 29), "Sant Julià de Lòria Annual Festival"),
-                (date(year, JUL, 30), "Sant Julià de Lòria Annual Festival"),
-            ),
-            "AD-07": (
-                (date(year, AUG, 4), "Andorra la Vella Annual Festival"),
-                (date(year, AUG, 5), "Andorra la Vella Annual Festival"),
-                (date(year, AUG, 6), "Andorra la Vella Annual Festival"),
-            ),
-            "AD-08": (
-                (date(year, JUL, 25), "Escaldes–Engordany Annual Festival"),
-                (date(year, JUL, 26), "Escaldes–Engordany Annual Festival"),
+            "08": (
+                (date(year, JUL, 25), 2, "Escaldes–Engordany Annual Festival"),
             ),
         }
 
         if self.subdiv:
-            for holiday_date, holiday_name in parish_holidays_mapping[
-                self.subdiv
-            ]:
-                self[holiday_date] = holiday_name
+            for (
+                holiday_date,
+                num_days,
+                holiday_name,
+            ) in parish_holidays_mapping[self.subdiv]:
+                for delta in range(num_days):
+                    self[holiday_date + td(days=delta)] = holiday_name
 
 
 class AD(Andorra):

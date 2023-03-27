@@ -11,6 +11,7 @@
 
 from datetime import date
 from datetime import timedelta as td
+from gettext import gettext as tr
 
 from dateutil.easter import EASTER_ORTHODOX, easter
 
@@ -31,7 +32,7 @@ class Ukraine(HolidayBase):
         def _add_with_observed(
             hol_date: date, hol_name: str, days: int = 1
         ) -> None:
-            self[hol_date] = hol_name
+            self._add_holiday(hol_name, hol_date)
             # 27.01.1995: holiday on weekend move to next workday
             # https://zakon.rada.gov.ua/laws/show/35/95-вр
             # 10.01.1998: cancelled
@@ -49,7 +50,8 @@ class Ukraine(HolidayBase):
                 obs_date = hol_date + td(
                     days=2 if self._is_saturday(hol_date) else days
                 )
-                self[obs_date] = self.tr("%s (вихідний)") % hol_name
+                hol_name = self.tr("%s (вихідний)") % self.tr(hol_name)
+                self._add_holiday(hol_name, obs_date)
 
         # The current set of holidays came into force in 1991
         if year <= 1990:
@@ -64,18 +66,18 @@ class Ukraine(HolidayBase):
         super()._populate(year)
 
         # New Year's Day.
-        _add_with_observed(date(year, JAN, 1), self.tr("Новий рік"))
+        _add_with_observed(date(year, JAN, 1), tr("Новий рік"))
 
         _add_with_observed(
             date(year, JAN, 7),
             # Christmas (Julian calendar).
-            self.tr("Різдво Христове (за юліанським календарем)"),
+            tr("Різдво Христове (за юліанським календарем)"),
         )
 
         _add_with_observed(
             date(year, MAR, 8),
             # International Women's Day.
-            self.tr("Міжнародний жіночий день"),
+            tr("Міжнародний жіночий день"),
         )
 
         # There is no holidays from March 15, 2022
@@ -85,7 +87,7 @@ class Ukraine(HolidayBase):
 
         easter_date = easter(year, method=EASTER_ORTHODOX)
         # Easter Sunday (Pascha).
-        name = self.tr("Великдень (Пасха)")
+        name = tr("Великдень (Пасха)")
         if year == 2000:
             _add_with_observed(easter_date, name, days=3)
         elif year in {
@@ -98,29 +100,29 @@ class Ukraine(HolidayBase):
             _add_with_observed(easter_date, name)
 
         # Holy Trinity Day.
-        _add_with_observed(easter_date + td(days=+49), self.tr("Трійця"))
+        _add_with_observed(easter_date + td(days=+49), tr("Трійця"))
 
         dt = date(year, MAY, 1)
         if year >= 2018:
             # Labour Day.
-            name = self.tr("День праці")
+            name = tr("День праці")
             _add_with_observed(dt, name)
         else:
             # International Workers' Solidarity Day.
-            name = self.tr("День міжнародної солідарності трудящих")
+            name = tr("День міжнародної солідарності трудящих")
             _add_with_observed(dt, name, days=2)
             _add_with_observed(dt + td(days=+1), name, days=2)
 
         dt = date(year, MAY, 9)
         name = (
             # Day of Victory over Nazism in World War II (Victory Day).
-            self.tr(
+            tr(
                 "День перемоги над нацизмом у Другій світовій війні "
                 "(День перемоги)"
             )
             if year >= 2016
             # Victory Day.
-            else self.tr("День перемоги")
+            else tr("День перемоги")
         )
         _add_with_observed(dt, name)
 
@@ -128,31 +130,29 @@ class Ukraine(HolidayBase):
             _add_with_observed(
                 date(year, JUN, 28),
                 # Day of the Constitution of Ukraine.
-                self.tr("День Конституції України"),
+                tr("День Конституції України"),
             )
 
         # Independence Day.
-        name = self.tr("День незалежності України")
+        name = tr("День незалежності України")
         if year >= 1992:
             _add_with_observed(date(year, AUG, 24), name)
         else:
-            self[date(year, JUL, 16)] = name
+            self._add_holiday(name, JUL, 16)
 
         if year >= 2015:
             name = (
                 # Day of the defender of Ukraine.
-                self.tr("День захисників і захисниць України")
+                tr("День захисників і захисниць України")
                 if year >= 2021
                 # Defender of Ukraine Day.
-                else self.tr("День захисника України")
+                else tr("День захисника України")
             )
             _add_with_observed(date(year, OCT, 14), name)
 
         if year <= 1999:
             # Anniversary of the Great October Socialist Revolution.
-            name = self.tr(
-                "Річниця Великої Жовтневої соціалістичної революції"
-            )
+            name = tr("Річниця Великої Жовтневої соціалістичної революції")
             _add_with_observed(date(year, NOV, 7), name, days=2)
             _add_with_observed(date(year, NOV, 8), name, days=2)
 
@@ -160,7 +160,7 @@ class Ukraine(HolidayBase):
             _add_with_observed(
                 date(year, DEC, 25),
                 # Christmas (Gregorian calendar).
-                self.tr("Різдво Христове (за григоріанським календарем)"),
+                tr("Різдво Христове (за григоріанським календарем)"),
             )
 
 

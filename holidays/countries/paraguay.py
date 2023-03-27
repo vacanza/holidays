@@ -142,15 +142,15 @@ class Paraguay(HolidayBase):
         ),
     }
 
-    def _add_holiday(self, dt: date, name: str) -> None:
+    def _add_observed_holiday(self, name: str, dt: date) -> None:
         if self.observed or not self._is_weekend(dt):
-            self[dt] = name
+            super()._add_holiday(name, dt)
 
     def _populate(self, year):
         super()._populate(year)
 
         # New Year's Day.
-        self._add_holiday(date(year, JAN, 1), self.tr("Año Nuevo"))
+        self._add_observed_holiday(tr("Año Nuevo"), date(year, JAN, 1))
 
         dates_obs = {
             2013: (MAR, 4),
@@ -159,47 +159,50 @@ class Paraguay(HolidayBase):
             2022: (FEB, 28),
         }
         # Patriots Day.
-        self[date(year, *dates_obs.get(year, (MAR, 1)))] = self.tr(
-            "Día de los Héroes de la Patria"
+        self._add_holiday(
+            tr("Día de los Héroes de la Patria"),
+            date(year, *dates_obs.get(year, (MAR, 1))),
         )
 
         # Holy Week
         easter_date = easter(year)
         # Maundy Thursday.
-        self[easter_date + td(days=-3)] = self.tr("Jueves Santo")
+        self._add_holiday(tr("Jueves Santo"), easter_date + td(days=-3))
         # Good Friday.
-        self[easter_date + td(days=-2)] = self.tr("Viernes Santo")
+        self._add_holiday(tr("Viernes Santo"), easter_date + td(days=-2))
         # Easter Day.
-        self._add_holiday(easter_date, self.tr("Día de Pascuas"))
+        self._add_observed_holiday(tr("Día de Pascuas"), easter_date)
 
         # Labour Day.
-        self._add_holiday(date(year, MAY, 1), self.tr("Día del Trabajador"))
+        self._add_observed_holiday(
+            tr("Día del Trabajador"), date(year, MAY, 1)
+        )
 
         # Independence Day.
-        name = self.tr("Día de la Independencia Nacional")
+        name = tr("Día de la Independencia Nacional")
         if year == 2021:
-            self[date(year, MAY, 14)] = name
-            self[date(year, MAY, 15)] = name
+            self._add_holiday(name, date(year, MAY, 14))
+            self._add_holiday(name, date(year, MAY, 15))
         elif year >= 2012:
-            self._add_holiday(date(year, MAY, 14), name)
-            self._add_holiday(date(year, MAY, 15), name)
+            self._add_observed_holiday(name, date(year, MAY, 14))
+            self._add_observed_holiday(name, date(year, MAY, 15))
         else:
-            self._add_holiday(date(year, MAY, 15), name)
+            self._add_observed_holiday(name, date(year, MAY, 15))
 
         dates_obs = {
             2014: (JUN, 16),
             2018: (JUN, 11),
         }
-        self._add_holiday(
-            date(year, *dates_obs.get(year, (JUN, 12))),
+        self._add_observed_holiday(
             # Chaco Armistice Day.
-            self.tr("Día de la Paz del Chaco"),
+            tr("Día de la Paz del Chaco"),
+            date(year, *dates_obs.get(year, (JUN, 12))),
         )
 
-        self._add_holiday(
-            date(year, AUG, 15),
+        self._add_observed_holiday(
             # Asuncion Foundation's Day.
-            self.tr("Día de la Fundación de Asunción"),
+            tr("Día de la Fundación de Asunción"),
+            date(year, AUG, 15),
         )
 
         if year >= 2000:
@@ -210,20 +213,20 @@ class Paraguay(HolidayBase):
                 2021: (SEP, 27),
                 2022: (OCT, 3),
             }
-            self._add_holiday(
-                date(year, *dates_obs.get(year, (SEP, 29))),
+            self._add_observed_holiday(
                 # Boqueron Battle Day.
-                self.tr("Día de la Batalla de Boquerón"),
+                tr("Día de la Batalla de Boquerón"),
+                date(year, *dates_obs.get(year, (SEP, 29))),
             )
 
-        self._add_holiday(
-            date(year, DEC, 8),
+        self._add_observed_holiday(
             # Caacupe Virgin Day.
-            self.tr("Día de la Virgen de Caacupé"),
+            tr("Día de la Virgen de Caacupé"),
+            date(year, DEC, 8),
         )
 
         # Christmas.
-        self[date(year, DEC, 25)] = self.tr("Navidad")
+        self._add_holiday(tr("Navidad"), date(year, DEC, 25))
 
 
 class PY(Paraguay):

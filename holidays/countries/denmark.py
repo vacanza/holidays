@@ -9,44 +9,72 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from datetime import timedelta as td
+from gettext import gettext as tr
 
-from dateutil.easter import easter
-
-from holidays.constants import JAN, DEC
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Denmark(HolidayBase):
+class Denmark(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     Denmark holidays.
 
     References:
-     - https://en.wikipedia.org/wiki/Public_holidays_in_Denmark
+    - https://en.wikipedia.org/wiki/Public_holidays_in_Denmark
+    - https://www.ft.dk/samling/20222/lovforslag/l13/index.htm
     """
 
     country = "DK"
     default_language = "da"
 
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year):
         super()._populate(year)
 
-        easter_date = easter(year)
-        self[date(year, JAN, 1)] = self.tr("Nytårsdag")
-        self[easter_date + td(days=-7)] = self.tr("Palmesøndag")
-        self[easter_date + td(days=-3)] = self.tr("Skærtorsdag")
-        self[easter_date + td(days=-2)] = self.tr("Langfredag")
-        self[easter_date] = self.tr("Påskedag")
-        self[easter_date + td(days=+1)] = self.tr("Anden påskedag")
+        # New Year's Day.
+        self._add_new_years_day(tr("Nytårsdag"))
+
+        # Palm Sunday.
+        self._add_palm_sunday(tr("Palmesøndag"))
+
+        # Holy Thursday.
+        self._add_holy_thursday(tr("Skærtorsdag"))
+
+        # Good Friday.
+        self._add_good_friday(tr("Langfredag"))
+
+        # Easter Sunday.
+        self._add_easter_sunday(tr("Påskedag"))
+
+        # Easter Monday.
+        self._add_easter_monday(tr("Anden påskedag"))
+
         # See https://www.ft.dk/samling/20222/lovforslag/l13/index.htm
         if year <= 2023:
-            self[easter_date + td(days=+26)] = self.tr("Store bededag")
-        self[easter_date + td(days=+39)] = self.tr("Kristi himmelfartsdag")
-        self[easter_date + td(days=+49)] = self.tr("Pinsedag")
-        self[easter_date + td(days=+50)] = self.tr("Anden pinsedag")
-        self[date(year, DEC, 25)] = self.tr("Juledag")
-        self[date(year, DEC, 26)] = self.tr("Anden juledag")
+            # Great Day of Prayers.
+            self._add_holiday(
+                tr("Store bededag"), self._easter_sunday + td(days=+26)
+            )
+
+        # Ascension Day.
+        self._add_ascension_thursday(tr("Kristi himmelfartsdag"))
+
+        # Whit Sunday.
+        self._add_whit_sunday(tr("Pinsedag"))
+
+        # Whit Monday.
+        self._add_whit_monday(tr("Anden pinsedag"))
+
+        # Christmas Day.
+        self._add_christmas_day(tr("Juledag"))
+
+        # Boxing Day.
+        self._add_christmas_day_two(tr("Anden juledag"))
 
 
 class DK(Denmark):

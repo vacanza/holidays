@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.22\n"
 "POT-Creation-Date: 2023-03-05 12:23+0200\n"
-"PO-Revision-Date: 2023-03-05 13:55+0200\n"
+"PO-Revision-Date: 2023-03-13 14:31+0200\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: uk\n"
@@ -50,7 +50,7 @@ msgstr "День захисту дітей"
 #. Birthday of José Gervasio Artigas.
 #: holidays/countries/uruguay.py:56
 msgid "Natalicio de José Gervasio Artigas"
-msgstr "Річниця Хосе Гервасіо Артаіґаса"
+msgstr "Річниця Хосе Гервасіо Артіґаса"
 
 #. All Souls' Day.
 #: holidays/countries/uruguay.py:61
