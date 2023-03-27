@@ -94,7 +94,7 @@ msgstr "Feast of Victor Schoelcher"
 #. Abolition of slavery.
 #: holidays/countries/france.py:129
 msgid "Abolition de l'esclavage"
-msgstr "Abolition of slavery"
+msgstr "Abolition of Slavery"
 
 #. Saint Stephen's Day.
 #: holidays/countries/france.py:133
@@ -124,4 +124,4 @@ msgstr "Feast of Saint Peter Chanel"
 #. Festival of the territory
 #: holidays/countries/france.py:170
 msgid "Fête du Territoire"
-msgstr "Festival of the territory"
+msgstr "Festival of the Territory"
