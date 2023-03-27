@@ -12,14 +12,13 @@
 from datetime import date
 from datetime import timedelta as td
 
-from dateutil.easter import easter
-
 from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
-from holidays.constants import JAN, MAY, AUG, OCT, DEC, MON
+from holidays.constants import MAY, AUG, OCT, MON
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Jamaica(HolidayBase):
+class Jamaica(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Jamaica
     https://www.mlss.gov.jm/wp-content/uploads/2017/11/The-Holidays-Public-General-Act.pdf
@@ -27,57 +26,58 @@ class Jamaica(HolidayBase):
 
     country = "JM"
 
+    def __init__(self, *args, **kwargs) -> None:
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year):
-        def _add_with_observed(hol_date: date, hol_name: str) -> None:
-            self[hol_date] = hol_name
+        def _add_observed(hol_date: date) -> None:
             if self.observed and self._is_sunday(hol_date):
-                self[hol_date + td(days=+1)] = f"{hol_name} (Observed)"
+                self[hol_date + td(days=+1)] = f"{self[hol_date]} (Observed)"
 
         super()._populate(year)
 
         # New Year's Day
-        _add_with_observed(date(year, JAN, 1), "New Year's Day")
+        _add_observed(self._add_new_years_day("New Year's Day"))
 
         # Labour Day
-        dt = date(year, MAY, 23)
-        name = "National Labour Day"
-        self[dt] = name
+        dt = self._add_holiday("National Labour Day", MAY, 23)
         if self.observed and self._is_weekend(dt):
-            self[_get_nth_weekday_from(1, MON, dt)] = f"{name} (Observed)"
+            self._add_holiday(
+                f"{self[dt]} (Observed)", _get_nth_weekday_from(1, MON, dt)
+            )
 
         # Emancipation Day
         if year >= 1998:
-            _add_with_observed(date(year, AUG, 1), "Emancipation Day")
+            _add_observed(self._add_holiday("Emancipation Day", AUG, 1))
 
         # Independence Day
-        _add_with_observed(date(year, AUG, 6), "Independence Day")
+        _add_observed(self._add_holiday("Independence Day", AUG, 6))
 
         # National Heroes Day
-        self[
-            _get_nth_weekday_of_month(3, MON, OCT, year)
-        ] = "National Heroes Day"
+        self._add_holiday(
+            "National Heroes Day", _get_nth_weekday_of_month(3, MON, OCT, year)
+        )
 
         # Christmas Day
-        dt = date(year, DEC, 25)
-        name = "Christmas Day"
-        self[dt] = name
+        dt = self._add_christmas_day("Christmas Day")
         if self.observed and self._is_sunday(dt):
-            self[dt + td(days=+2)] = f"{name} (Observed)"
+            self._add_holiday(f"{self[dt]} (Observed)", dt + td(days=+2))
 
         # Boxing Day
-        _add_with_observed(date(year, DEC, 26), "Boxing Day")
+        _add_observed(self._add_christmas_day_two("Boxing Day"))
 
         # Holidays based on Easter
-        easter_date = easter(year)
 
         # Ash Wednesday
-        self[easter_date + td(days=-46)] = "Ash Wednesday"
+        self._add_ash_wednesday("Ash Wednesday")
 
         # Good Friday
-        self[easter_date + td(days=-2)] = "Good Friday"
+        self._add_good_friday("Good Friday")
 
         # Easter Monday
-        self[easter_date + td(days=+1)] = "Easter Monday"
+        self._add_easter_monday("Easter Monday")
 
 
 class JM(Jamaica):
