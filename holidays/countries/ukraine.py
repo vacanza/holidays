@@ -133,7 +133,7 @@ class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays):
                     self._add_christmas_day(
                         # Christmas (Gregorian calendar).
                         tr("Різдво Христове (за григоріанським календарем)"),
-                        calendar=GREGORIAN_CALENDAR,
+                        GREGORIAN_CALENDAR,
                     )
                 )
 
