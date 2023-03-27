@@ -19,8 +19,7 @@ from tests.common import TestCase
 class TestVietnam(TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1979, 2050)
-        super().setUpClass(Vietnam, years=years)
+        super().setUpClass(Vietnam, years=range(1979, 2050))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Vietnam, VN, VNM)
