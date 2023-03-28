@@ -12,7 +12,7 @@
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.constants import MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.constants import APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -74,7 +74,7 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         "Ext",
     ]
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
@@ -85,7 +85,7 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_new_years_day(tr("Ano Novo"))
 
         # Carnival is no longer a holiday, but some companies let workers off.
-        # @TODO: recollect the years in which it was a public holiday
+        # TODO: recollect the years in which it was a public holiday
         # self[e + td(days=-47)] = "Carnaval"
 
         # Good Friday.
@@ -99,14 +99,13 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_corpus_christi_day(tr("Corpo de Deus"))
             if year >= 1910:
                 self._add_holiday(tr("Implantação da República"), OCT, 5)
-            self._add_holiday(tr("Dia de Todos os Santos"), NOV, 1)
+            self._add_all_saints_day(tr("Dia de Todos os Santos"))
             if year >= 1823:
                 self._add_holiday(tr("Restauração da Independência"), DEC, 1)
 
         if year >= 1974:
             self._add_holiday(tr("Dia da Liberdade"), APR, 25)
             self._add_labour_day(tr("Dia do Trabalhador"))
-
         if year >= 1911:
             if 1933 <= year <= 1973:
                 self._add_holiday(
@@ -196,7 +195,7 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday(tr("Dia de São João"), JUN, 24)
 
     def _add_subdiv_14_holidays(self):
-        self._add_holiday(tr("Dia de São José"), MAR, 19)
+        self._add_saint_josephs_day(tr("Dia de São José"))
 
     def _add_subdiv_15_holidays(self):
         self._add_holiday(tr("Dia de Bocage"), SEP, 15)

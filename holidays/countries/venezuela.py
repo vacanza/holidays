@@ -9,22 +9,25 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
 from gettext import gettext as tr
 
-from dateutil.easter import easter
-
-from holidays.constants import JAN, APR, MAY, JUN, JUL, OCT, DEC
+from holidays.constants import APR, JUN, JUL, OCT
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Venezuela(HolidayBase):
+class Venezuela(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://dias-festivos.eu/dias-festivos/venezuela/#
     """
 
     country = "VE"
     default_language = "es"
+
+    def __init__(self, *args, **kwargs) -> None:
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
@@ -41,21 +44,19 @@ class Venezuela(HolidayBase):
         """
 
         # New Year's Day.
-        self._add_holiday(tr("Año Nuevo"), JAN, 1)
-
-        easter_date = easter(year)
+        self._add_new_years_day(tr("Año Nuevo"))
 
         # Monday of Carnival.
-        self._add_holiday(tr("Lunes de Carnaval"), easter_date + td(days=-48))
+        self._add_carnival_monday(tr("Lunes de Carnaval"))
 
         # Tuesday of Carnival.
-        self._add_holiday(tr("Martes de Carnaval"), easter_date + td(days=-47))
+        self._add_carnival_tuesday(tr("Martes de Carnaval"))
 
         # Maundy Thursday.
-        self._add_holiday(tr("Jueves Santo"), easter_date + td(days=-3))
+        self._add_holy_thursday(tr("Jueves Santo"))
 
         # Good Friday.
-        self._add_holiday(tr("Viernes Santo"), easter_date + td(days=-2))
+        self._add_good_friday(tr("Viernes Santo"))
 
         # Note: not sure about the start year, but this event happened in 1811
         if year >= 1811:
@@ -65,7 +66,7 @@ class Venezuela(HolidayBase):
         # https://bit.ly/3B4Xd1L
         if year >= 1946:
             # International Worker's Day.
-            self._add_holiday(tr("Dia Mundial del Trabajador"), MAY, 1)
+            self._add_labour_day(tr("Dia Mundial del Trabajador"))
 
         # Note: not sure about the start year, but this event happened in 1824
         if year >= 1971 or 1824 <= year <= 1917:
@@ -95,13 +96,13 @@ class Venezuela(HolidayBase):
             self._add_holiday(tr("Día Festivo Desconocido"), OCT, 28)
 
         # Christmas Eve.
-        self._add_holiday(tr("Nochebuena"), DEC, 24)
+        self._add_christmas_eve(tr("Nochebuena"))
 
         # Christmas Day.
-        self._add_holiday(tr("Día de Navidad"), DEC, 25)
+        self._add_christmas_day(tr("Día de Navidad"))
 
         # New Year's Eve.
-        self._add_holiday(tr("Fiesta de Fin de Año"), DEC, 31)
+        self._add_new_years_eve(tr("Fiesta de Fin de Año"))
 
 
 class VE(Venezuela):

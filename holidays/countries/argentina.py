@@ -10,18 +10,16 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 from gettext import gettext as tr
-
-from dateutil.easter import easter
 
 from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC, MON
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Argentina(HolidayBase):
+class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     A subclass of :py:class:`HolidayBase` representing public holidays
     in Argentina.
@@ -144,6 +142,11 @@ class Argentina(HolidayBase):
         ),
     }
 
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year):
         def _add_movable(hol_date: date, hol_name: str) -> None:
             """
@@ -168,12 +171,10 @@ class Argentina(HolidayBase):
 
         # Fixed Holidays
 
-        easter_date = easter(year)
-
         # New Year's Day.
         # Status: In-Use.
 
-        self._add_holiday(tr("Año Nuevo"), JAN, 1)
+        self._add_new_years_day(tr("Año Nuevo"))
 
         # Carnival days.
         # Status: In-Use.
@@ -182,8 +183,8 @@ class Argentina(HolidayBase):
 
         if 1956 <= year <= 1975 or year >= 2011:
             name = tr("Día de Carnaval")
-            self._add_holiday(name, easter_date + td(days=-48))
-            self._add_holiday(name, easter_date + td(days=-47))
+            self._add_carnival_monday(name)
+            self._add_carnival_tuesday(name)
 
         # Memory's National Day for the Truth and Justice.
         # Status: In-Use
@@ -214,11 +215,11 @@ class Argentina(HolidayBase):
             )
 
         # Good Friday.
-        self._add_holiday(tr("Viernes Santo"), easter_date + td(days=-2))
+        self._add_good_friday(tr("Viernes Santo"))
 
         # Labor Day.
         if year >= 1930:
-            self._add_holiday(tr("Día del Trabajo"), MAY, 1)
+            self._add_labour_day(tr("Día del Trabajo"))
 
         # May Revolution Day.
         if year >= 1813:
@@ -259,10 +260,12 @@ class Argentina(HolidayBase):
             self._add_holiday(tr("Día de la Independencia"), JUL, 9)
 
         # Immaculate Conception.
-        self._add_holiday(tr("Inmaculada Concepción de María"), DEC, 8)
+        self._add_immaculate_conception_day(
+            tr("Inmaculada Concepción de María")
+        )
 
         # Christmas.
-        self._add_holiday(tr("Navidad"), DEC, 25)
+        self._add_christmas_day(tr("Navidad"))
 
         # Movable Holidays
 

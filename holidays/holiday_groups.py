@@ -390,7 +390,7 @@ class ChristianHolidays:
         """
         return self._add_holiday(
             holiday_name,
-            self._easter_sunday + td(days=-2),
+            self._easter_sunday + td(days=-7),
         )
 
     def _add_rejoicing_day(self, holiday_name) -> date:
@@ -693,7 +693,7 @@ class IslamicHolidays:
     calendar consisting of 12 lunar months in a year of 354 or 355 days.
     """
 
-    def _add_arafah_day(self, holiday_name):
+    def _add_arafah_day(self, holiday_name) -> Set[date]:
         """
         Add Day of Arafah (9th day of 12th month).
 
@@ -702,7 +702,17 @@ class IslamicHolidays:
         Arafat.
         https://en.wikipedia.org/wiki/Day_of_Arafah
         """
-        self._add_islamic_calendar_holiday(holiday_name, 12, 9)
+        return self._add_islamic_calendar_holiday(holiday_name, 12, 9)
+
+    def _add_ashura_day(self, holiday_name) -> Set[date]:
+        """
+        Add Ashura Day (10th day of 1st month).
+
+        Ashura is a day of commemoration in Islam. It occurs annually on the
+        10th of Muharram, the first month of the Islamic calendar.
+        https://en.wikipedia.org/wiki/Ashura
+        """
+        return self._add_islamic_calendar_holiday(holiday_name, 1, 10)
 
     def _add_eid_al_adha_day(self, holiday_name) -> Set[date]:
         """
