@@ -201,7 +201,7 @@ class TestChile(TestCase):
 
         self.assertNoHolidayNameInYears(
             "Día de la Unidad Nacional",
-            tuple(set(range(1915, 2050)).difference({1999, 2000, 2001})),
+            set(range(1915, 2050)).difference({1999, 2000, 2001}),
         )
 
     def test_independence_holidays(self):
@@ -219,7 +219,7 @@ class TestChile(TestCase):
         self.assertHoliday(f"{year}-09-20" for year in range(1932, 1945))
 
     def test_columbus_day(self):
-        years = tuple(set(range(1922, 2000)).difference({1973}))
+        years = set(range(1922, 2000)).difference({1973})
         name = "Día de la Raza"
         self.assertHoliday(f"{year}-10-12" for year in years)
         self.assertHolidayNameInYears(name, years)
