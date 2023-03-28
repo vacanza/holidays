@@ -16,8 +16,7 @@ from tests.common import TestCase
 class TestJapan(TestCase):
     @classmethod
     def setUpClass(cls):
-        years = range(1949, 2051)
-        super().setUpClass(Japan, years=years)
+        super().setUpClass(Japan, years=range(1949, 2051))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Japan, JP, JPN)
