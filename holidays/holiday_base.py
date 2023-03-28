@@ -548,8 +548,10 @@ class HolidayBase(Dict[date, str]):
             The holiday name lookup type:
                 contains - case sensitive contains match;
                 exact - case sensitive exact match;
+                startswith - case sensitive starts with match;
                 icontains - case insensitive contains match;
                 iexact - case insensitive exact match;
+                istartswith - case insensitive starts with match;
 
         :return:
             A list of all holiday dates matching the provided holiday name.
@@ -578,12 +580,35 @@ class HolidayBase(Dict[date, str]):
                 for dt, names in holiday_date_names_mapping.items()
                 if any((holiday_name in name for name in names))
             ]
+        elif lookup == "startswith":
+            return [
+                dt
+                for dt, names in holiday_date_names_mapping.items()
+                if any(
+                    (
+                        holiday_name == name[: len(holiday_name)]
+                        for name in names
+                    )
+                )
+            ]
         elif lookup == "iexact":
             holiday_name_lower = holiday_name.lower()
             return [
                 dt
                 for dt, names in holiday_date_names_mapping.items()
                 if any((holiday_name_lower == name.lower() for name in names))
+            ]
+        elif lookup == "istartswith":
+            holiday_name_lower = holiday_name.lower()
+            return [
+                dt
+                for dt, names in holiday_date_names_mapping.items()
+                if any(
+                    (
+                        holiday_name_lower == name[: len(holiday_name)].lower()
+                        for name in names
+                    )
+                )
             ]
 
         raise AttributeError(f"Unknown lookup type: {lookup}")
