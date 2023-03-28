@@ -10,17 +10,15 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 from gettext import gettext as tr
 
-from dateutil.easter import easter
-
 from holidays.calendars import _get_nth_weekday_from
-from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, OCT, NOV, DEC, MON
+from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, OCT, MON
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Uruguay(HolidayBase):
+class Uruguay(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Uruguay
     """
@@ -28,16 +26,21 @@ class Uruguay(HolidayBase):
     country = "UY"
     default_language = "es"
 
+    def __init__(self, *args, **kwargs) -> None:
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year):
         super()._populate(year)
 
         # Mandatory paid holidays:
 
         # New Year's Day.
-        self._add_holiday(tr("Año Nuevo"), JAN, 1)
+        self._add_new_years_day(tr("Año Nuevo"))
 
         # International Workers' Day.
-        self._add_holiday(tr("Día de los Trabajadores"), MAY, 1)
+        self._add_labour_day(tr("Día de los Trabajadores"))
 
         # Constitution Day.
         self._add_holiday(tr("Jura de la Constitución"), JUL, 18)
@@ -46,7 +49,7 @@ class Uruguay(HolidayBase):
         self._add_holiday(tr("Día de la Independencia"), AUG, 25)
 
         # Day of the Family.
-        self._add_holiday(tr("Día de la Familia"), DEC, 25)
+        self._add_christmas_day(tr("Día de la Familia"))
 
         # Partially paid holidays:
 
@@ -57,23 +60,21 @@ class Uruguay(HolidayBase):
         self._add_holiday(tr("Natalicio de José Gervasio Artigas"), JUN, 19)
 
         # All Souls' Day.
-        self._add_holiday(tr("Día de los Difuntos"), NOV, 2)
+        self._add_all_souls_day(tr("Día de los Difuntos"))
 
         # Moveable holidays:
 
-        easter_date = easter(year)
-
         # Carnival Day.
         name = tr("Día de Carnaval")
-        self._add_holiday(name, easter_date + td(days=-48))
-        self._add_holiday(name, easter_date + td(days=-47))
+        self._add_carnival_monday(name)
+        self._add_carnival_tuesday(name)
 
         # Maundy Thursday.
-        self._add_holiday(tr("Jueves Santo"), easter_date + td(days=-3))
+        self._add_holy_thursday(tr("Jueves Santo"))
         # Good Friday.
-        self._add_holiday(tr("Viernes Santo"), easter_date + td(days=-2))
+        self._add_good_friday(tr("Viernes Santo"))
         # Easter Day.
-        self._add_holiday(tr("Día de Pascuas"), easter_date)
+        self._add_easter_sunday(tr("Día de Pascuas"))
 
         holiday_pairs = (
             (
