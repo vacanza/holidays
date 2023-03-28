@@ -732,6 +732,15 @@ class HolidayBase(Dict[date, str]):
         self[dt] = self.tr(name)
         return dt
 
+    def _add_subdiv_holidays(self):
+        """Populate subdivision holidays."""
+        if self.subdiv is not None:
+            add_subdiv_holidays = getattr(
+                self, f"_add_subdiv_{self.subdiv.lower()}_holidays", None
+            )
+            if add_subdiv_holidays and callable(add_subdiv_holidays):
+                add_subdiv_holidays()
+
     def _populate(self, year: int) -> Set[Optional[date]]:
         """This is a private class that populates (generates and adds) holidays
         for a given year. To keep things fast, it assumes that no holidays for
@@ -755,6 +764,9 @@ class HolidayBase(Dict[date, str]):
         # Populate items from the special holidays list.
         for month, day, name in self.special_holidays.get(year, ()):
             dates.add(self._add_holiday(name, date(year, month, day)))
+
+        # Populate subdivision holidays.
+        self._add_subdiv_holidays()
 
         return dates
 
