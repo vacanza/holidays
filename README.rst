@@ -236,7 +236,7 @@ subdivisions are available:
      - None
    * - France
      - FR
-     - Départements: Alsace-Moselle, Guadeloupe, Guyane, La Réunion, Martinique, Mayotte, **Métropole** (default), Nouvelle-Calédonie, Polynésie Française, Saint-Barthélémy, Saint-Martin, Wallis-et-Futuna
+     - Départements: Alsace-Moselle, Guadeloupe, Guyane, La Réunion, Martinique, Mayotte, Métropole, Nouvelle-Calédonie, Polynésie Française, Saint-Barthélémy, Saint-Martin, Wallis-et-Futuna
    * - Georgia
      - GE
      - None
@@ -568,6 +568,9 @@ default language code is a `ISO 639-1 code`_.
    * - Ethiopia
      - am
      - am, en_US
+   * - France
+     - fr
+     - en_US, fr, uk
    * - Georgia
      - ka
      - en_US, ka
