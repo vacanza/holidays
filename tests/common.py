@@ -92,11 +92,9 @@ class TestCase(unittest.TestCase):
         items = []
         if expand_items:
             for item_arg in item_args:
-                if type(item_arg) in {list, tuple}:
+                if type(item_arg) in {list, set, tuple}:
                     items.extend(item_arg)
-                elif isinstance(item_arg, Generator) or isinstance(
-                    item_arg, range
-                ):
+                elif isinstance(item_arg, (Generator, range)):
                     items.extend(tuple(item_arg))
                 else:
                     items.append(item_arg)

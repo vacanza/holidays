@@ -17,7 +17,7 @@ check:
 	make test
 
 coverage:
-	pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --no-cov-on-fail --dist loadscope --numprocesses auto
+	pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --dist loadscope --no-cov-on-fail --numprocesses auto
 
 doc:
 	sphinx-build -E -T -W -b html -D language=en -j auto -q docs/source docs/build
@@ -44,7 +44,7 @@ setup:
 
 test:
 	scripts/l10n/generate_mo_files.py
-	pytest --cov=. --cov-config=pyproject.toml --cov-report term --cov-report xml --durations 10 --durations-min=0.75 --no-cov-on-fail --dist loadscope --numprocesses auto
+	pytest --cov=. --cov-config=pyproject.toml --cov-report term --cov-report xml --durations 10 --durations-min=0.75 --dist loadscope --no-cov-on-fail --numprocesses auto
 
 tox:
 	tox --parallel auto
