@@ -612,6 +612,57 @@ class TestBasics(unittest.TestCase):
             1, len(us.get_named("independence day", lookup="iexact"))
         )
 
+    def test_get_named_istartswith(self):
+        us = holidays.UnitedStates(years=2020)
+        holidays_count = len(us.keys())
+        self.assertEqual(holidays_count, len(us.keys()))
+
+        for name in ("new year's", "New Year's", "New Year's day"):
+            self.assertIn(
+                date(2020, 1, 1), us.get_named(name, lookup="istartswith")
+            )
+        for name in (
+            "New Year Day",
+            "New Year holiday",
+            "New Year's Day Holiday",
+            "year",
+        ):
+            self.assertNotIn(
+                date(2020, 1, 1), us.get_named(name, lookup="istartswith")
+            )
+
+        us = holidays.UnitedStates(years=2022)
+        self.assertEqual(
+            1, len(us.get_named("independence day", lookup="istartswith"))
+        )
+
+    def test_get_named_startswith(self):
+        us = holidays.UnitedStates(years=2020)
+        holidays_count = len(us.keys())
+        self.assertEqual(holidays_count, len(us.keys()))
+
+        for name in ("New Year's", "New Year"):
+            self.assertIn(
+                date(2020, 1, 1), us.get_named(name, lookup="startswith")
+            )
+        for name in (
+            "New Year Day",
+            "New Year Holiday",
+            "New Year's Day Holiday",
+            "year",
+        ):
+            self.assertNotIn(
+                date(2020, 1, 1), us.get_named(name, lookup="startswith")
+            )
+
+        us = holidays.UnitedStates(years=2022)
+        self.assertEqual(
+            2, len(us.get_named("Christmas", lookup="startswith"))
+        )
+        self.assertEqual(
+            1, len(us.get_named("Independence Day", lookup="startswith"))
+        )
+
     def test_get_named_lookup_invalid(self):
         us = holidays.UnitedStates(years=2020)
         self.assertRaises(
