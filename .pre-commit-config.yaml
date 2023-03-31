@@ -13,7 +13,7 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/python/black
-    rev: 23.1.0
+    rev: 23.3.0
     hooks:
       - id: black
         exclude: ^(docs|scripts/l10n/msgfmt.py)
@@ -59,7 +59,7 @@ repos:
         additional_dependencies: [rstcheck, sphinx]
 
   - repo: https://github.com/tox-dev/tox-ini-fmt
-    rev: "0.6.1"
+    rev: "1.0.0"
     hooks:
       - id: tox-ini-fmt
 
