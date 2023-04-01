@@ -99,13 +99,13 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Christmas Day
         dec25 = self._add_christmas_day("Christmas Day")
-        if self._is_weekend(dec25):
+        if self.observed and self._is_weekend(dec25):
             self._add_holiday("%s (Observed)" % self[dec25], DEC, 27)
 
         # Boxing Day
         name = "Proclamation Day" if self.subdiv == "SA" else "Boxing Day"
         dec26 = self._add_christmas_day_two(name)
-        if self._is_weekend(dec26):
+        if self.observed and self._is_weekend(dec26):
             self._add_holiday("%s (Observed)" % self[dec26], DEC, 28)
 
     # Sovereign's Birthday
