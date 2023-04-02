@@ -9,17 +9,17 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.countries.guyana import Guyana, GY, GUY
+from holidays.countries.french_guiana import FrenchGuiana, GF, GUF
 from tests.common import TestCase
 
 
-class TestGuyana(TestCase):
+class TestFrenchGuiana(TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Guyana)
+        super().setUpClass(FrenchGuiana)
 
     def test_country_aliases(self):
-        self.assertCountryAliases(Guyana, GY, GUY)
+        self.assertCountryAliases(FrenchGuiana, GF, GUF)
 
     def test_2022(self):
         self.assertHolidays(

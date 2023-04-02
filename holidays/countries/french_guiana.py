@@ -12,12 +12,12 @@
 from holidays.countries.france import FR
 
 
-class Guyana(FR):
+class FrenchGuiana(FR):
     # Alias of a FR subdivision that is also officially assigned its own
     # country code in ISO 3166-1. See
     # https://en.wikipedia.org/wiki/ISO_3166-2:FR#Subdivisions_included_in_ISO_3166-1
 
-    country = "GY"
+    country = "GF"
     subdivisions = []
 
     def _populate(self, year: int) -> None:
@@ -25,9 +25,9 @@ class Guyana(FR):
         super()._populate(year)
 
 
-class GY(Guyana):
+class GF(FrenchGuiana):
     pass
 
 
-class GUY(Guyana):
+class GUF(FrenchGuiana):
     pass

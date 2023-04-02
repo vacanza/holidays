@@ -48,6 +48,7 @@ from .eswatini import Eswatini, SZ, SZW, Swaziland
 from .ethiopia import Ethiopia, ET, ETH
 from .finland import Finland, FI, FIN
 from .france import France, FR, FRA
+from .french_guiana import FrenchGuiana, GF, GUF
 from .french_polynesia import FrenchPolynesia, PF, PYF
 from .french_southern_territories import FrenchSouthernTerritories, TF, ATF
 from .georgia import Georgia, GE, GEO
@@ -55,7 +56,6 @@ from .germany import Germany, DE, DEU
 from .greece import Greece, GR, GRC
 from .guadeloupe import Guadeloupe, GP, GLP
 from .guam import Guam, GU, GUM, HolidaysGU
-from .guyana import Guyana, GY, GUY
 from .honduras import Honduras, HN, HND
 from .hongkong import HongKong, HK, HKG
 from .hungary import Hungary, HU, HUN

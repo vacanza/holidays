@@ -237,6 +237,9 @@ subdivisions are available:
    * - France
      - FR
      - Departments: Alsace-Moselle, Guadeloupe, Guyane, La Réunion, Martinique, Mayotte, Métropole, Nouvelle-Calédonie, Polynésie Française, Saint-Barthélémy, Saint-Martin, Wallis-et-Futuna
+   * - French Guiana
+     - GF
+     - None; Can also be loaded as country FR, subdivision Guyane
    * - French Polynesia
      - PF
      - None; Can also be loaded as country FR, subdivision Polynésie Française
@@ -258,9 +261,6 @@ subdivisions are available:
    * - Guam
      - GU
      - None; Can also be loaded as country US, subdivision GU
-   * - Guyana
-     - GY
-     - None; Can also be loaded as country FR, subdivision Guyane
    * - Honduras
      - HN
      - None
