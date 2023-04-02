@@ -34,7 +34,9 @@ class Jamaica(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _populate(self, year):
         def _add_observed(hol_date: date) -> None:
             if self.observed and self._is_sunday(hol_date):
-                self[hol_date + td(days=+1)] = f"{self[hol_date]} (Observed)"
+                self._add_holiday(
+                    "%s (Observed)" % self[hol_date], hol_date + td(days=+1)
+                )
 
         super()._populate(year)
 
@@ -45,7 +47,7 @@ class Jamaica(HolidayBase, ChristianHolidays, InternationalHolidays):
         dt = self._add_holiday("National Labour Day", MAY, 23)
         if self.observed and self._is_weekend(dt):
             self._add_holiday(
-                f"{self[dt]} (Observed)", _get_nth_weekday_from(1, MON, dt)
+                "%s (Observed)" % self[dt], _get_nth_weekday_from(1, MON, dt)
             )
 
         # Emancipation Day
@@ -63,7 +65,7 @@ class Jamaica(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Christmas Day
         dt = self._add_christmas_day("Christmas Day")
         if self.observed and self._is_sunday(dt):
-            self._add_holiday(f"{self[dt]} (Observed)", dt + td(days=+2))
+            self._add_holiday("%s (Observed)" % self[dt], dt + td(days=+2))
 
         # Boxing Day
         _add_observed(self._add_christmas_day_two("Boxing Day"))
