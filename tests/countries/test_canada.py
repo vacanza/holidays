@@ -435,6 +435,7 @@ class TestCanada(TestCase):
                 ca = Canada(language=language)
                 self.assertEqual(ca["2022-01-01"], "New Year's Day")
                 self.assertEqual(ca["2022-12-25"], "Christmas Day")
+                self.assertEqual(ca["2022-12-27"], "Christmas Day (Observed)")
 
             run_tests((Canada.default_language, None, "invalid"))
 
@@ -447,9 +448,11 @@ class TestCanada(TestCase):
         ca = Canada(language=fr)
         self.assertEqual(ca["2018-01-01"], "Jour de l'an")
         self.assertEqual(ca["2022-12-25"], "Jour de Noël")
+        self.assertEqual(ca["2022-12-27"], "Jour de Noël (Observé)")
 
         self.set_language(fr)
         for language in (None, fr, "invalid"):
             ca = Canada(language=language)
             self.assertEqual(ca["2018-01-01"], "Jour de l'an")
             self.assertEqual(ca["2022-12-25"], "Jour de Noël")
+            self.assertEqual(ca["2022-12-27"], "Jour de Noël (Observé)")

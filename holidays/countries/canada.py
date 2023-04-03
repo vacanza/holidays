@@ -62,7 +62,7 @@ class Canada(HolidayBase):
         self._add_holiday(name, JAN, 1)
         if self.observed and self._is_weekend(JAN, 1):
             self._add_holiday(
-                tr("%s (Observed)") % name,
+                self.tr("%s (Observed)") % self.tr(name),
                 _get_nth_weekday_of_month(1, MON, JAN, year),
             )
 
@@ -194,7 +194,7 @@ class Canada(HolidayBase):
         jul_1 = self._add_holiday(name, JUL, 1)
         if year >= 1879 and self.observed and self._is_weekend(jul_1):
             self._add_holiday(
-                tr("%s (Observed)") % self.tr(name),
+                self.tr("%s (Observed)") % self.tr(name),
                 _get_nth_weekday_from(1, MON, jul_1),
             )
 
@@ -297,7 +297,7 @@ class Canada(HolidayBase):
                 and self.subdiv in {"NS", "NL", "NT", "PE", "SK"}
             ):
                 self._add_holiday(
-                    tr("%s (Observed)") % name,
+                    self.tr("%s (Observed)") % self.tr(name),
                     _get_nth_weekday_from(1, MON, dt),
                 )
 
@@ -306,14 +306,18 @@ class Canada(HolidayBase):
         dt = date(year, DEC, 25)
         self._add_holiday(name, dt)
         if self.observed and self._is_weekend(dt):
-            self._add_holiday(tr("%s (Observed)") % name, dt + td(days=+2))
+            self._add_holiday(
+                self.tr("%s (Observed)") % self.tr(name), dt + td(days=+2)
+            )
 
         # Boxing Day.
         name = tr("Boxing Day")
         dt = date(year, DEC, 26)
         self._add_holiday(name, dt)
         if self.observed and self._is_weekend(dt):
-            self._add_holiday(tr("%s (Observed)") % name, dt + td(days=+2))
+            self._add_holiday(
+                self.tr("%s (Observed)") % self.tr(name), dt + td(days=+2)
+            )
 
 
 class CA(Canada):
