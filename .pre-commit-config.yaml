@@ -28,8 +28,8 @@ repos:
         args: [--max-line-length=79]
         exclude: ^(docs|scripts/l10n/msgfmt.py)
 
-  - repo: https://github.com/pre-commit/mirrors-isort
-    rev: v5.10.1
+  - repo: https://github.com/pycqa/isort
+    rev: 5.12.0
     hooks:
       - id: isort
         # holidays/countries/__init__.py is excluded due to a bug whereby
