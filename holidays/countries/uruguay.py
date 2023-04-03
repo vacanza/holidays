@@ -10,16 +10,15 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
-
-from dateutil.easter import easter
+from gettext import gettext as tr
 
 from holidays.calendars import _get_nth_weekday_from
-from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, OCT, NOV, DEC, MON
+from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, OCT, MON
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Uruguay(HolidayBase):
+class Uruguay(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Uruguay
     """
@@ -27,80 +26,81 @@ class Uruguay(HolidayBase):
     country = "UY"
     default_language = "es"
 
+    def __init__(self, *args, **kwargs) -> None:
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year):
         super()._populate(year)
 
         # Mandatory paid holidays:
 
         # New Year's Day.
-        self[date(year, JAN, 1)] = self.tr("Año Nuevo")
+        self._add_new_years_day(tr("Año Nuevo"))
 
         # International Workers' Day.
-        self[date(year, MAY, 1)] = self.tr("Día de los Trabajadores")
+        self._add_labour_day(tr("Día de los Trabajadores"))
 
         # Constitution Day.
-        self[date(year, JUL, 18)] = self.tr("Jura de la Constitución")
+        self._add_holiday(tr("Jura de la Constitución"), JUL, 18)
 
         # Independence Day.
-        self[date(year, AUG, 25)] = self.tr("Día de la Independencia")
+        self._add_holiday(tr("Día de la Independencia"), AUG, 25)
 
         # Day of the Family.
-        self[date(year, DEC, 25)] = self.tr("Día de la Familia")
+        self._add_christmas_day(tr("Día de la Familia"))
 
         # Partially paid holidays:
 
         # Children's Day.
-        self[date(year, JAN, 6)] = self.tr("Día de los Niños")
+        self._add_holiday(tr("Día de los Niños"), JAN, 6)
 
         # Birthday of José Gervasio Artigas.
-        self[date(year, JUN, 19)] = self.tr(
-            "Natalicio de José Gervasio Artigas"
-        )
+        self._add_holiday(tr("Natalicio de José Gervasio Artigas"), JUN, 19)
 
         # All Souls' Day.
-        self[date(year, NOV, 2)] = self.tr("Día de los Difuntos")
+        self._add_all_souls_day(tr("Día de los Difuntos"))
 
         # Moveable holidays:
 
-        easter_date = easter(year)
-
         # Carnival Day.
-        name = self.tr("Día de Carnaval")
-        self[easter_date + td(days=-48)] = name
-        self[easter_date + td(days=-47)] = name
+        name = tr("Día de Carnaval")
+        self._add_carnival_monday(name)
+        self._add_carnival_tuesday(name)
 
         # Maundy Thursday.
-        self[easter_date + td(days=-3)] = self.tr("Jueves Santo")
+        self._add_holy_thursday(tr("Jueves Santo"))
         # Good Friday.
-        self[easter_date + td(days=-2)] = self.tr("Viernes Santo")
+        self._add_good_friday(tr("Viernes Santo"))
         # Easter Day.
-        self[easter_date] = self.tr("Día de Pascuas")
+        self._add_easter_sunday(tr("Día de Pascuas"))
 
         holiday_pairs = (
             (
                 date(year, APR, 19),
                 # Landing of the 33 Patriots.
-                self.tr("Desembarco de los 33 Orientales"),
+                tr("Desembarco de los 33 Orientales"),
             ),
             (
                 date(year, MAY, 18),
                 # Battle of Las Piedras.
-                self.tr("Batalla de Las Piedras"),
+                tr("Batalla de Las Piedras"),
             ),
             (
                 date(year, OCT, 12),
                 # Respect for Cultural Diversity Day.
-                self.tr("Día del Respeto a la Diversidad Cultural"),
+                tr("Día del Respeto a la Diversidad Cultural"),
             ),
         )
 
         for dt, name in holiday_pairs:
             if self._is_tuesday(dt) or self._is_wednesday(dt):
-                self[_get_nth_weekday_from(-1, MON, dt)] = name
+                self._add_holiday(name, _get_nth_weekday_from(-1, MON, dt))
             elif self._is_thursday(dt) or self._is_friday(dt):
-                self[_get_nth_weekday_from(1, MON, dt)] = name
+                self._add_holiday(name, _get_nth_weekday_from(1, MON, dt))
             else:
-                self[dt] = name
+                self._add_holiday(name, dt)
 
 
 class UY(Uruguay):

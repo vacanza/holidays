@@ -107,7 +107,7 @@ Available Countries
 .. _ISO 3166-1 alpha-2 code: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
 .. _ISO 3166-2 code: https://en.wikipedia.org/wiki/ISO_3166-2
 
-We currently support 119 country codes. The standard way to refer to a country
+We currently support 120 country codes. The standard way to refer to a country
 is by using its `ISO 3166-1 alpha-2 code`_, the same used for domain names, and
 for a subdivision its `ISO 3166-2 code`_. The following countries and
 subdivisions are available:
@@ -128,7 +128,7 @@ subdivisions are available:
      - None; Can also be loaded as country US, subdivision AS
    * - Andorra
      - AD
-     - Parishes: AD-02, AD-03, AD-04, AD-05, AD-06, AD-07, AD-08
+     - Parishes: 02, 03, 04, 05, 06, 07, 08
    * - Angola
      - AO
      - None
@@ -192,6 +192,9 @@ subdivisions are available:
    * - Colombia
      - CO
      - None
+   * - Costa Rica
+     - CR
+     - None
    * - Croatia
      - HR
      - None
@@ -233,7 +236,7 @@ subdivisions are available:
      - None
    * - France
      - FR
-     - Départements: Alsace-Moselle, Guadeloupe, Guyane, La Réunion, Martinique, Mayotte, **Métropole** (default), Nouvelle-Calédonie, Polynésie Française, Saint-Barthélémy, Saint-Martin, Wallis-et-Futuna
+     - Départements: Alsace-Moselle, Guadeloupe, Guyane, La Réunion, Martinique, Mayotte, Métropole, Nouvelle-Calédonie, Polynésie Française, Saint-Barthélémy, Saint-Martin, Wallis-et-Futuna
    * - Georgia
      - GE
      - None
@@ -540,11 +543,14 @@ default language code is a `ISO 639-1 code`_.
      - bg, en_US
    * - Canada
      - en
-     - en, fr
+     - en, fr, th
    * - Chile
      - es
      - en_US, es, uk
    * - Colombia
+     - es
+     - en_US, es, uk
+   * - Costa Rica
      - es
      - en_US, es, uk
    * - Cuba
@@ -562,6 +568,9 @@ default language code is a `ISO 639-1 code`_.
    * - Ethiopia
      - am
      - am, en_US
+   * - France
+     - fr
+     - en_US, fr, uk
    * - Georgia
      - ka
      - en_US, ka
@@ -577,6 +586,9 @@ default language code is a `ISO 639-1 code`_.
    * - Mexico
      - es
      - en_US, es, uk
+   * - Moldova
+     - ro
+     - en_US, ro, uk
    * - Monaco
      - fr
      - en_US, fr, uk
@@ -595,6 +607,9 @@ default language code is a `ISO 639-1 code`_.
    * - Portugal
      - pt_PT
      - en_US, pt_PT
+   * - Romania
+     - ro
+     - en_US, ro, uk
    * - Russia
      - ru
      - en_US, ru

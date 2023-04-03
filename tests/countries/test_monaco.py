@@ -129,6 +129,7 @@ class TestMonaco(TestCase):
                 mc = Monaco(language=language)
                 self.assertEqual(mc["2022-01-01"], "Le jour de l'An")
                 self.assertEqual(mc["2022-12-25"], "Noël")
+                self.assertEqual(mc["2022-12-26"], "Noël (Observé)")
 
         run_tests((Monaco.default_language, None, "invalid"))
 
@@ -142,12 +143,14 @@ class TestMonaco(TestCase):
         self.assertEqual(mc["2015-01-07"], "Public holiday")
         self.assertEqual(mc["2022-01-01"], "New Year's Day")
         self.assertEqual(mc["2022-12-25"], "Christmas Day")
+        self.assertEqual(mc["2022-12-26"], "Christmas Day (Observed)")
 
         self.set_language(en_us)
         for language in (None, en_us, "invalid"):
             mc = Monaco(language=language)
             self.assertEqual(mc["2022-01-01"], "New Year's Day")
             self.assertEqual(mc["2022-12-25"], "Christmas Day")
+            self.assertEqual(mc["2022-12-26"], "Christmas Day (Observed)")
 
     def test_l10n_uk(self):
         uk = "uk"
@@ -156,9 +159,11 @@ class TestMonaco(TestCase):
         self.assertEqual(mc["2015-01-07"], "Державне свято")
         self.assertEqual(mc["2022-01-01"], "Новий рік")
         self.assertEqual(mc["2022-12-25"], "Різдво Христове")
+        self.assertEqual(mc["2022-12-26"], "Різдво Христове (вихідний)")
 
         self.set_language(uk)
         for language in (None, uk, "invalid"):
             mc = Monaco(language=language)
             self.assertEqual(mc["2022-01-01"], "Новий рік")
             self.assertEqual(mc["2022-12-25"], "Різдво Христове")
+            self.assertEqual(mc["2022-12-26"], "Різдво Христове (вихідний)")

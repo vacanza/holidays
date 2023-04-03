@@ -113,17 +113,13 @@ class Israel(HolidayBase):
 
         # Hanukkah
         name = "Hanukkah"
-        hk_start_date = date(*hanukkah(year, eve=False))
-        for offset in range(8):
-            hk_date = hk_start_date + td(days=offset)
-            if hk_date.year == year:
-                self[hk_date] = name
         # Some o prior's year Hannukah may fall in current year.
-        hk_start_date = date(*hanukkah(year - 1, eve=False))
-        for offset in range(8):
-            hk_date = hk_start_date + td(days=offset)
-            if hk_date.year == year:
-                self[hk_date] = name
+        for yr in (year - 1, year):
+            hk_start_date = date(*hanukkah(yr, eve=False))
+            for offset in range(8):
+                hk_date = hk_start_date + td(days=offset)
+                if hk_date.year == year:
+                    self[hk_date] = name
 
         # Purim
         name = "Purim"

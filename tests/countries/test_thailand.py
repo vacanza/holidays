@@ -565,6 +565,8 @@ class TestThailand(TestCase):
         def run_tests(languages):
             for language in languages:
                 th_th = Thailand(language=language)
+                self.assertEqual(th_th["2020-07-27"], "ชดเชยวันสงกรานต์")
+
                 self.assertEqual(th_th["2022-01-01"], "วันขึ้นปีใหม่")
                 self.assertEqual(th_th["2022-04-13"], "วันสงกรานต์")
                 self.assertEqual(th_th["2022-05-02"], "ชดเชยวันแรงงานแห่งชาติ")
@@ -579,6 +581,8 @@ class TestThailand(TestCase):
         language = "en_US"
 
         th_en = Thailand(language=language)
+        self.assertEqual(th_en["2020-07-27"], "Songkran Festival (in lieu)")
+
         self.assertEqual(th_en["2022-01-01"], "New Year's Day")
         self.assertEqual(th_en["2022-04-13"], "Songkran Festival")
         self.assertEqual(th_en["2022-05-02"], "National Labour Day (in lieu)")
@@ -587,6 +591,10 @@ class TestThailand(TestCase):
         self.set_language(language)
         for language in (None, language, "invalid"):
             th_en = Thailand(language=language)
+            self.assertEqual(
+                th_en["2020-07-27"], "Songkran Festival (in lieu)"
+            )
+
             self.assertEqual(th_en["2022-01-01"], "New Year's Day")
             self.assertEqual(th_en["2022-04-13"], "Songkran Festival")
             self.assertEqual(

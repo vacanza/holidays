@@ -9,74 +9,80 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
 
-from dateutil.easter import easter
+from gettext import gettext as tr
 
-from holidays.constants import JAN, MAY, JUN, JUL, AUG, OCT, NOV, DEC
+from holidays.constants import JUL, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Peru(HolidayBase):
+class Peru(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
-    https://www.gob.pe/feriados
-    https://es.wikipedia.org/wiki/Anexo:Días_feriados_en_el_Perú
+    Peru holidays.
+
+    References:
+    - https://www.gob.pe/feriados
+    - https://es.wikipedia.org/wiki/Anexo:Días_feriados_en_el_Perú
     """
 
     country = "PE"
     default_language = "es"
 
+    def __init__(self, *args, **kwargs) -> None:
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year):
         super()._populate(year)
 
-        # New Year's Day
-        self[date(year, JAN, 1)] = self.tr("Año Nuevo")
+        # New Year's Day.
+        self._add_new_years_day(tr("Año Nuevo"))
 
-        easter_date = easter(year)
-        # Holy Thursday
-        self[easter_date + td(days=-3)] = self.tr("Jueves Santo")
+        # Holy Thursday.
+        self._add_holy_thursday(tr("Jueves Santo"))
 
-        # Good Friday
-        self[easter_date + td(days=-2)] = self.tr("Viernes Santo")
+        # Good Friday.
+        self._add_good_friday(tr("Viernes Santo"))
 
-        # Easter Sunday
-        self[easter_date] = self.tr("Domingo de Resurrección")
+        # Easter Sunday.
+        self._add_easter_sunday(tr("Domingo de Resurrección"))
 
-        # Labor Day
-        self[date(year, MAY, 1)] = self.tr("Día del Trabajo")
+        # Labor Day.
+        self._add_labour_day(tr("Día del Trabajo"))
 
-        # Feast of Saints Peter and Paul
-        self[date(year, JUN, 29)] = self.tr("San Pedro y San Pablo")
+        # Feast of Saints Peter and Paul.
+        self._add_saints_peter_and_paul_day(tr("San Pedro y San Pablo"))
 
-        # Independence Day
-        self[date(year, JUL, 28)] = self.tr("Día de la Independencia")
+        # Independence Day.
+        self._add_holiday(tr("Día de la Independencia"), JUL, 28)
 
-        # Great Military Parade Day
-        self[date(year, JUL, 29)] = self.tr("Día de la Gran Parada Militar")
-
-        if year >= 2022:
-            # Battle of Junín
-            self[date(year, AUG, 6)] = self.tr("Batalla de Junín")
-
-        # Santa Rosa de Lima
-        self[date(year, AUG, 30)] = self.tr("Santa Rosa de Lima")
-
-        # Battle of Angamos
-        self[date(year, OCT, 8)] = self.tr("Combate de Angamos")
-
-        # All Saints Day
-        self[date(year, NOV, 1)] = self.tr("Todos Los Santos")
-
-        # Immaculate Conception
-        self[date(year, DEC, 8)] = self.tr("Inmaculada Concepción")
+        # Great Military Parade Day.
+        self._add_holiday(tr("Día de la Gran Parada Militar"), JUL, 29)
 
         if year >= 2022:
-            # Battle of Ayacucho
-            self[date(year, DEC, 9)] = self.tr("Batalla de Ayacucho")
+            # Battle of Junín.
+            self._add_holiday(tr("Batalla de Junín"), AUG, 6)
 
-        # Christmas
-        self[date(year, DEC, 25)] = self.tr("Navidad del Señor")
+        # Santa Rosa de Lima.
+        self._add_holiday(tr("Santa Rosa de Lima"), AUG, 30)
+
+        # Battle of Angamos.
+        self._add_holiday(tr("Combate de Angamos"), OCT, 8)
+
+        # All Saints Day.
+        self._add_all_saints_day(tr("Todos Los Santos"))
+
+        # Immaculate Conception.
+        self._add_immaculate_conception_day(tr("Inmaculada Concepción"))
+
+        if year >= 2022:
+            # Battle of Ayacucho.
+            self._add_holiday(tr("Batalla de Ayacucho"), DEC, 9)
+
+        # Christmas Day.
+        self._add_christmas_day(tr("Navidad del Señor"))
 
 
 class PE(Peru):

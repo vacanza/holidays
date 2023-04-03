@@ -1,0 +1,77 @@
+# Romania holidays en_US localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.22\n"
+"POT-Creation-Date: 2023-03-22 18:35+0200\n"
+"PO-Revision-Date: 2023-03-22 21:27+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: holidays/countries/romania.py:40
+msgid "Anul Nou"
+msgstr "New Year's Day"
+
+#. Epiphany.
+#: holidays/countries/romania.py:46
+msgid "Bobotează"
+msgstr "Epiphany"
+
+#. Saint John the Baptist.
+#: holidays/countries/romania.py:49
+msgid "Sfântul Ion"
+msgstr "Saint John the Baptist"
+
+#. Unification of the Romanian Principalities Day.
+#: holidays/countries/romania.py:53
+msgid "Ziua Unirii Principatelor Române"
+msgstr "Unification of the Romanian Principalities Day"
+
+#. Easter.
+#: holidays/countries/romania.py:58
+msgid "Paștele"
+msgstr "Easter"
+
+#. Labour Day.
+#: holidays/countries/romania.py:66
+msgid "Ziua Muncii"
+msgstr "Labour Day"
+
+#. Children's Day.
+#: holidays/countries/romania.py:70
+msgid "Ziua Copilului"
+msgstr "Children's Day"
+
+#. Pentecost.
+#: holidays/countries/romania.py:73
+msgid "Rusaliile"
+msgstr "Pentecost"
+
+#. Dormition of the Mother of God.
+#: holidays/countries/romania.py:80
+msgid "Adormirea Maicii Domnului"
+msgstr "Dormition of the Mother of God"
+
+#. Saint Andrew's Day.
+#: holidays/countries/romania.py:85
+msgid "Sfantul Apostol Andrei cel Intai chemat"
+msgstr "Saint Andrew's Day"
+
+#. National Day.
+#: holidays/countries/romania.py:88
+msgid "Ziua Națională a României"
+msgstr "National Day"
+
+#. Christmas Day.
+#: holidays/countries/romania.py:91
+msgid "Crăciunul"
+msgstr "Christmas Day"

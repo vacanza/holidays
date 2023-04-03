@@ -17,6 +17,9 @@ from typing import Iterable, Optional
 from hijri_converter import convert
 from hijri_converter.ummalqura import GREGORIAN_RANGE, HIJRI_RANGE
 
+GREGORIAN_CALENDAR = "GREGORIAN_CALENDAR"
+JULIAN_CALENDAR = "JULIAN_CALENDAR"
+
 
 def _islamic_to_gre(g_year: int, h_month: int, h_day: int) -> Iterable[date]:
     """

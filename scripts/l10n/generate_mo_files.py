@@ -11,10 +11,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import os
-import subprocess
-import sys
 from pathlib import Path
+
+from polib import pofile
 
 
 class MOGenerator:
@@ -22,22 +21,12 @@ class MOGenerator:
 
     def run(self):
         """Runs the .mo files generation process."""
-        for po_path in Path(os.path.join("holidays", "locale")).rglob("*.po"):
-            po_file = str(po_path)
-            mo_file = po_file.replace(".po", ".mo")
-
-            if os.path.exists(mo_file):
-                os.unlink(mo_file)
-            subprocess.run(
-                (
-                    sys.executable,
-                    os.path.join("scripts", "l10n", "msgfmt.py"),
-                    "-o",
-                    mo_file,
-                    po_file,
-                ),
-                check=True,
-            )
+        for po_path in (Path() / "holidays" / "locale").rglob("*.po"):
+            mo_path = po_path.with_suffix(".mo")
+            if mo_path.exists():
+                mo_path.unlink()
+            po_file = pofile(str(po_path))
+            po_file.save_as_mofile(str(mo_path))
 
 
 if __name__ == "__main__":

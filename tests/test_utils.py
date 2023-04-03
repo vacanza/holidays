@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -17,6 +17,8 @@ from unittest import mock
 import pytest
 
 from holidays import utils
+
+PYTHON_VERSION = (3, 11)
 
 
 class TestCountryHolidays(unittest.TestCase):
@@ -84,9 +86,10 @@ class TestFinancialHolidays(unittest.TestCase):
 class TestAllInSameYear(unittest.TestCase):
     """Test that only holidays in the year(s) requested are returned."""
 
-    @pytest.mark.xfail(reason="'Set changed size during iteration' error")
+    years = set(range(1950, 2051))
+
     @pytest.mark.skipif(
-        sys.version_info < (3, 11),
+        sys.version_info < PYTHON_VERSION,
         reason="Run once on the latest Python version only",
     )
     @mock.patch("pathlib.Path.rglob", return_value=())
@@ -100,7 +103,37 @@ class TestAllInSameYear(unittest.TestCase):
         we only run it once on the latest Python version.
         """
         warnings.simplefilter("ignore")
+
         for country in utils.list_supported_countries():
-            for year in range(1950, 2051):
+            for year in self.years:
                 for holiday in utils.country_holidays(country, years=year):
                     self.assertEqual(holiday.year, year)
+        self.assertEqual(
+            self.years,
+            utils.country_holidays(country, years=self.years).years,
+        )
+
+    @pytest.mark.skipif(
+        sys.version_info < PYTHON_VERSION,
+        reason="Run once on the latest Python version only",
+    )
+    @mock.patch("pathlib.Path.rglob", return_value=())
+    def test_all_financial(self, unused_rglob_mock):
+        """
+        Only holidays in the year(s) requested should be returned. This
+        ensures that we avoid triggering a "RuntimeError: dictionary changed
+        size during iteration" error.
+
+        This is logic test and not a code compatibility test, so for expediency
+        we only run it once on the latest Python version.
+        """
+        warnings.simplefilter("ignore")
+
+        for market in utils.list_supported_financial():
+            for year in self.years:
+                for holiday in utils.financial_holidays(market, years=year):
+                    self.assertEqual(holiday.year, year)
+        self.assertEqual(
+            self.years,
+            utils.financial_holidays(market, years=self.years).years,
+        )

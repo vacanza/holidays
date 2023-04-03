@@ -15,13 +15,8 @@ from tests.common import TestCase
 
 class TestChile(TestCase):
     @classmethod
-    def setUpClass(self):
-        super().setUpClass(Chile)
-
-    def setUp(self):
-        super().setUp()
-        self.holidays_ap = Chile(subdiv="AP")
-        self.holidays_nb = Chile(subdiv="NB")
+    def setUpClass(cls):
+        super().setUpClass(Chile, years=range(1915, 2050))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Chile, CL, CHL)
@@ -72,8 +67,8 @@ class TestChile(TestCase):
             "1967-05-04",
         )
         name = "Ascensión del Señor"
-        self.assertHolidayName(name, Chile(years=range(1915, 1968)))
-        self.assertNoHolidayName(name, Chile(years=range(1968, 2050)))
+        self.assertHolidayNameInYears(name, range(1915, 1968))
+        self.assertNoHolidayNameInYears(name, range(1968, 2050))
 
     def test_corpus_christi(self):
         self.assertHoliday(
@@ -87,9 +82,9 @@ class TestChile(TestCase):
             "2006-06-12",
         )
         name = "Corpus Christi"
-        self.assertHolidayName(name, Chile(years=range(1915, 1968)))
-        self.assertNoHolidayName(name, Chile(years=range(1968, 1987)))
-        self.assertHolidayName(name, Chile(years=range(1987, 2006)))
+        self.assertHolidayNameInYears(name, range(1915, 1968))
+        self.assertNoHolidayNameInYears(name, range(1968, 1987))
+        self.assertHolidayNameInYears(name, range(1987, 2006))
 
     def test_labour_day(self):
         self.assertHoliday(f"{year}-05-01" for year in range(1932, 2050))
@@ -136,9 +131,9 @@ class TestChile(TestCase):
             "2078-06-20",
             "2079-06-20",
         )
-        self.assertNoHolidayName(
+        self.assertNoHolidayNameInYears(
             "Día Nacional de los Pueblos Indígenas",
-            Chile(years=range(1915, 2021)),
+            range(1915, 2021),
         )
 
     def test_saint_peter_and_paul(self):
@@ -172,8 +167,8 @@ class TestChile(TestCase):
             "2024-06-29",
         )
 
-        self.assertNoHolidayName(
-            "San Pedro y San Pablo", Chile(years=range(1968, 1986))
+        self.assertNoHolidayNameInYears(
+            "San Pedro y San Pablo", range(1968, 1986)
         )
 
     def test_virgin_of_carmen(self):
@@ -190,8 +185,8 @@ class TestChile(TestCase):
             "1999-09-11",
         )
         name = "Día de la Liberación Nacional"
-        self.assertNoHolidayName(name, Chile(years=range(1915, 1981)))
-        self.assertNoHolidayName(name, Chile(years=range(1999, 2050)))
+        self.assertNoHolidayNameInYears(name, range(1915, 1981))
+        self.assertNoHolidayNameInYears(name, range(1999, 2050))
 
     def test_national_unity(self):
         self.assertHoliday(
@@ -204,9 +199,9 @@ class TestChile(TestCase):
             "2002-09-02",
         )
 
-        self.assertNoHolidayName(
+        self.assertNoHolidayNameInYears(
             "Día de la Unidad Nacional",
-            Chile(years=set(range(1915, 2050)).difference({1999, 2000, 2001})),
+            set(range(1915, 2050)).difference({1999, 2000, 2001}),
         )
 
     def test_independence_holidays(self):
@@ -226,10 +221,9 @@ class TestChile(TestCase):
     def test_columbus_day(self):
         years = set(range(1922, 2000)).difference({1973})
         name = "Día de la Raza"
-        for year in years:
-            self.assertHoliday(f"{year}-10-12")
-            self.assertHolidayName(name, Chile(years=year))
-        self.assertNoHolidayName(name, Chile(years=1973))
+        self.assertHoliday(f"{year}-10-12" for year in years)
+        self.assertHolidayNameInYears(name, years)
+        self.assertNoHolidayNameInYears(name, 1973)
 
         self.assertHoliday(
             "2000-10-09",
@@ -243,9 +237,9 @@ class TestChile(TestCase):
             "2023-10-09",
         )
 
-        self.assertHolidayName(
+        self.assertHolidayNameInYears(
             "Día del Encuentro de dos Mundos",
-            Chile(years=range(2000, 2050)),
+            range(2000, 2050),
         )
 
     def test_reformation_day(self):
@@ -267,9 +261,9 @@ class TestChile(TestCase):
             "2022-10-31",
             "2023-10-27",
         )
-        self.assertNoHolidayName(
+        self.assertNoHolidayNameInYears(
             "Día Nacional de las Iglesias Evangélicas y Protestantes",
-            Chile(years=range(1915, 2008)),
+            range(1915, 2008),
         )
 
     def test_all_saints(self):
@@ -285,10 +279,11 @@ class TestChile(TestCase):
         self.assertNoHoliday(f"{year}-12-24" for year in range(1989, 2050))
 
     def test_2019(self):
-        # No laborables (sector público) not included
-        self.assertHoliday(
+        self.assertHolidayDates(
+            Chile(years=2019),
             "2019-01-01",
             "2019-04-19",
+            "2019-04-20",
             "2019-05-01",
             "2019-05-21",
             "2019-06-29",
@@ -298,6 +293,7 @@ class TestChile(TestCase):
             "2019-09-19",
             "2019-09-20",
             "2019-10-12",
+            "2019-10-31",
             "2019-11-01",
             "2019-12-08",
             "2019-12-25",
@@ -305,7 +301,8 @@ class TestChile(TestCase):
 
     def test_2020(self):
         # from https://feriados.cl/2020.htm
-        self.assertHoliday(
+        self.assertHolidayDates(
+            Chile(years=2020),
             "2020-01-01",
             "2020-04-10",
             "2020-04-11",
@@ -323,17 +320,18 @@ class TestChile(TestCase):
             "2020-12-25",
         )
         self.assertHoliday(
-            self.holidays_ap,
+            Chile(subdiv="AP"),
             "2020-06-07",
         )
         self.assertHoliday(
-            self.holidays_nb,
+            Chile(subdiv="NB"),
             "2020-08-20",
         )
 
     def test_2021(self):
         # from https://feriados.cl/2021.htm
-        self.assertHoliday(
+        self.assertHolidayDates(
+            Chile(years=2021),
             "2021-01-01",
             "2021-04-02",
             "2021-04-03",
@@ -353,11 +351,11 @@ class TestChile(TestCase):
             "2021-12-25",
         )
         self.assertHoliday(
-            self.holidays_ap,
+            Chile(subdiv="AP"),
             "2021-06-07",
         )
         self.assertHoliday(
-            self.holidays_nb,
+            Chile(subdiv="NB"),
             "2021-08-20",
         )
 
