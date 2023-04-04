@@ -10,205 +10,278 @@
 #  License: MIT (see LICENSE file)
 #  Copyright: Kateryna Golovanova <kate@kgthreads.com>, 2022
 
-import unittest
-from datetime import date
-
-import holidays
+from holidays.countries.liechtenstein import Liechtenstein, LI, LIE
+from tests.common import TestCase
 
 
-class TestLI(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.LI(observed=False)
+class TestLI(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Liechtenstein, years=range(1900, 2100))
+
+    def test_country_aliases(self):
+        self.assertCountryAliases(Liechtenstein, LI, LIE)
 
     def test_new_years(self):
-        for dt in (date(2010, 12, 30), date(2017, 1, 3)):
-            self.assertNotIn(dt, self.holidays)
-
-        for year in (2021, 2022):
-            dt = date(year, 1, 1)
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Neujahr")
+        self.assertHolidaysName(
+            "Neujahr", (f"{year}-01-01" for year in range(1900, 2100))
+        )
 
     def test_saint_berchtolds_day(self):
-        for dt in (date(2010, 12, 30), date(2017, 1, 3)):
-            self.assertNotIn(dt, self.holidays)
-
-        for year in (2021, 2022):
-            dt = date(year, 1, 2)
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Berchtoldstag")
+        self.assertHolidaysName(
+            "Berchtoldstag", (f"{year}-01-02" for year in range(1900, 2100))
+        )
 
     def test_epiphany(self):
-        for dt in (date(2010, 1, 5), date(2017, 1, 7)):
-            self.assertNotIn(dt, self.holidays)
-
-        for year in (2021, 2022):
-            dt = date(year, 1, 6)
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Drei Könige")
+        self.assertHolidaysName(
+            "Heilige Drei Könige",
+            (f"{year}-01-06" for year in range(1900, 2100)),
+        )
 
     def test_candlemas(self):
-        for dt in (date(2010, 2, 1), date(2017, 2, 3)):
-            self.assertNotIn(dt, self.holidays)
-
-        for year in (2021, 2022):
-            dt = date(year, 2, 2)
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Mariä Lichtmess")
+        self.assertHolidaysName(
+            "Mariä Lichtmess", (f"{year}-02-02" for year in range(1900, 2100))
+        )
 
     def test_shrove_tuesday(self):
-        for dt in (date(2022, 3, 2), date(2021, 2, 15)):
-            self.assertNotIn(dt, self.holidays)
-
-        for dt in (date(2022, 3, 1), date(2021, 2, 16)):
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Fasnachtsdienstag")
+        self.assertHolidaysName(
+            "Fasnachtsdienstag",
+            "1900-02-27",
+            "1901-02-19",
+            "1902-02-11",
+            "1999-02-16",
+            "2000-03-07",
+            "2018-02-13",
+            "2019-03-05",
+            "2020-02-25",
+            "2021-02-16",
+            "2022-03-01",
+        )
 
     def test_saint_josephs_day(self):
-        for dt in (date(2022, 3, 18), date(2021, 3, 20)):
-            self.assertNotIn(dt, self.holidays)
-
-        for year in (2021, 2022):
-            dt = date(year, 3, 19)
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Josefstag")
+        self.assertHolidaysName(
+            "Josefstag", (f"{year}-03-19" for year in range(1900, 2100))
+        )
 
     def test_good_friday(self):
-        for dt in (date(2022, 4, 16), date(2021, 4, 1)):
-            self.assertNotIn(dt, self.holidays)
-
-        for dt in (date(2022, 4, 15), date(2021, 4, 2)):
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Karfreitag")
+        self.assertHolidaysName(
+            "Karfreitag",
+            "1900-04-13",
+            "1901-04-05",
+            "1902-03-28",
+            "1999-04-02",
+            "2000-04-21",
+            "2018-03-30",
+            "2019-04-19",
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+        )
 
     def test_easter(self):
-        for dt in (date(2022, 4, 16), date(2021, 4, 3)):
-            self.assertNotIn(dt, self.holidays)
-
-        for dt in (date(2022, 4, 17), date(2021, 4, 4)):
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Ostersonntag")
+        self.assertHolidaysName(
+            "Ostersonntag",
+            "1900-04-15",
+            "1901-04-07",
+            "1902-03-30",
+            "1999-04-04",
+            "2000-04-23",
+            "2018-04-01",
+            "2019-04-21",
+            "2020-04-12",
+            "2021-04-04",
+            "2022-04-17",
+        )
 
     def test_easter_monday(self):
-        for dt in (date(2022, 4, 19), date(2021, 4, 6)):
-            self.assertNotIn(dt, self.holidays)
-
-        for dt in (date(2022, 4, 18), date(2021, 4, 5)):
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Ostermontag")
+        self.assertHolidaysName(
+            "Ostermontag",
+            "1900-04-16",
+            "1901-04-08",
+            "1902-03-31",
+            "1999-04-05",
+            "2000-04-24",
+            "2018-04-02",
+            "2019-04-22",
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+        )
 
     def test_labor_day(self):
-        for dt in (date(2022, 5, 2), date(2021, 4, 30)):
-            self.assertNotIn(dt, self.holidays)
-
-        for year in (2021, 2022):
-            dt = date(year, 5, 1)
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Tag der Arbeit")
+        self.assertHolidaysName(
+            "Tag der Arbeit", (f"{year}-05-01" for year in range(1900, 2100))
+        )
 
     def test_ascension_day(self):
-        for dt in (date(2022, 5, 25), date(2021, 5, 12)):
-            self.assertNotIn(dt, self.holidays)
+        self.assertHolidaysName(
+            "Auffahrt",
+            "1900-05-24",
+            "1901-05-16",
+            "1902-05-08",
+            "1999-05-13",
+            "2000-06-01",
+            "2018-05-10",
+            "2019-05-30",
+            "2020-05-21",
+            "2021-05-13",
+            "2022-05-26",
+        )
 
-        for dt in (date(2022, 5, 26), date(2021, 5, 13)):
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Auffahrt")
-
-    def test_pentecost(self):
-        for dt in (date(2022, 6, 4), date(2021, 5, 22)):
-            self.assertNotIn(dt, self.holidays)
-
-        for dt in (date(2022, 6, 5), date(2021, 5, 23)):
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Pfingstsonntag")
+    def test_whit_sunday(self):
+        self.assertHolidaysName(
+            "Pfingstsonntag",
+            "1900-06-03",
+            "1901-05-26",
+            "1902-05-18",
+            "1999-05-23",
+            "2000-06-11",
+            "2018-05-20",
+            "2019-06-09",
+            "2020-05-31",
+            "2021-05-23",
+            "2022-06-05",
+        )
 
     def test_whit_monday(self):
-        for dt in (date(2022, 6, 7), date(2021, 5, 25)):
-            self.assertNotIn(dt, self.holidays)
-
-        for dt in (date(2022, 6, 6), date(2021, 5, 24)):
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Pfingstmontag")
+        self.assertHolidaysName(
+            "Pfingstmontag",
+            "1900-06-04",
+            "1901-05-27",
+            "1902-05-19",
+            "1999-05-24",
+            "2000-06-12",
+            "2018-05-21",
+            "2019-06-10",
+            "2020-06-01",
+            "2021-05-24",
+            "2022-06-06",
+        )
 
     def test_corpus_christi(self):
-        for dt in (date(2022, 6, 15), date(2021, 6, 2)):
-            self.assertNotIn(dt, self.holidays)
-
-        for dt in (date(2022, 6, 16), date(2021, 6, 3)):
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Fronleichnam")
+        self.assertHolidaysName(
+            "Fronleichnam",
+            "1900-06-14",
+            "1901-06-06",
+            "1902-05-29",
+            "1999-06-03",
+            "2000-06-22",
+            "2018-05-31",
+            "2019-06-20",
+            "2020-06-11",
+            "2021-06-03",
+            "2022-06-16",
+        )
 
     def test_national_day(self):
-        for dt in (date(2022, 5, 14), date(2021, 8, 16)):
-            self.assertNotIn(dt, self.holidays)
-
-        for year in (2021, 2022):
-            dt = date(year, 8, 15)
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Staatsfeiertag")
+        self.assertHolidaysName(
+            "Staatsfeiertag",
+            (f"{year}-08-15" for year in range(1900, 2100)),
+        )
 
     def test_nativity_of_mary(self):
-        for dt in (date(2022, 9, 7), date(2021, 9, 9)):
-            self.assertNotIn(dt, self.holidays)
-
-        for year in (2021, 2022):
-            dt = date(year, 9, 8)
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Maria Geburt")
+        self.assertHolidaysName(
+            "Mariä Geburt",
+            (f"{year}-09-08" for year in range(1900, 2100)),
+        )
 
     def test_all_saints_day(self):
-        for dt in (date(2022, 10, 31), date(2022, 11, 2)):
-            self.assertNotIn(dt, self.holidays)
+        self.assertHolidaysName(
+            "Allerheiligen",
+            (f"{year}-11-01" for year in range(1900, 2100)),
+        )
 
-        for year in (2021, 2022):
-            dt = date(year, 11, 1)
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Allerheiligen")
-
-    def test_feast_of_the_immaculate_conception(self):
-        for dt in (date(2022, 12, 7), date(2022, 12, 9)):
-            self.assertNotIn(dt, self.holidays)
-
-        for year in (2021, 2022):
-            dt = date(year, 12, 8)
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Maria Empfängnis")
+    def test_immaculate_conception(self):
+        self.assertHolidaysName(
+            "Mariä Empfängnis",
+            (f"{year}-12-08" for year in range(1900, 2100)),
+        )
 
     def test_christmas_eve(self):
-        for year in (2021, 2022):
-            dt = date(year, 12, 23)
-            self.assertNotIn(dt, self.holidays)
-
-        for year in (2021, 2022):
-            dt = date(year, 12, 24)
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Heiliger Abend")
+        self.assertHolidaysName(
+            "Heiligabend",
+            (f"{year}-12-24" for year in range(1900, 2100)),
+        )
 
     def test_christmas_day(self):
-        for year in (2021, 2022):
-            dt = date(year, 12, 23)
-            self.assertNotIn(dt, self.holidays)
-
-        for year in (2021, 2022):
-            dt = date(year, 12, 25)
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Weihnachten")
+        self.assertHolidaysName(
+            "Weihnachten",
+            (f"{year}-12-25" for year in range(1900, 2100)),
+        )
 
     def test_st_stephens_day(self):
-        for dt in (date(2022, 12, 23), date(2021, 12, 27)):
-            self.assertNotIn(dt, self.holidays)
-
-        for year in (2021, 2022):
-            dt = date(year, 12, 26)
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Stefanstag")
+        self.assertHolidaysName(
+            "Stefanstag",
+            (f"{year}-12-26" for year in range(1900, 2100)),
+        )
 
     def test_new_years_eve(self):
-        for year in (2021, 2022):
-            dt = date(year, 12, 30)
-            self.assertNotIn(dt, self.holidays)
+        self.assertHolidaysName(
+            "Silvester",
+            (f"{year}-12-31" for year in range(1900, 2100)),
+        )
 
-        for year in (2021, 2022):
-            dt = date(year, 12, 31)
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Silvester")
+    def test_2022(self):
+        self.assertHolidays(
+            Liechtenstein(years=2022),
+            ("2022-01-01", "Neujahr"),
+            ("2022-01-02", "Berchtoldstag"),
+            ("2022-01-06", "Heilige Drei Könige"),
+            ("2022-02-02", "Mariä Lichtmess"),
+            ("2022-03-01", "Fasnachtsdienstag"),
+            ("2022-03-19", "Josefstag"),
+            ("2022-04-15", "Karfreitag"),
+            ("2022-04-17", "Ostersonntag"),
+            ("2022-04-18", "Ostermontag"),
+            ("2022-05-01", "Tag der Arbeit"),
+            ("2022-05-26", "Auffahrt"),
+            ("2022-06-05", "Pfingstsonntag"),
+            ("2022-06-06", "Pfingstmontag"),
+            ("2022-06-16", "Fronleichnam"),
+            ("2022-08-15", "Staatsfeiertag"),
+            ("2022-09-08", "Mariä Geburt"),
+            ("2022-11-01", "Allerheiligen"),
+            ("2022-12-08", "Mariä Empfängnis"),
+            ("2022-12-24", "Heiligabend"),
+            ("2022-12-25", "Weihnachten"),
+            ("2022-12-26", "Stefanstag"),
+            ("2022-12-31", "Silvester"),
+        )
+
+    def test_l10n_default(self):
+        def run_tests(languages):
+            for language in languages:
+                cnt = LI(language=language)
+                self.assertEqual(cnt["2022-01-01"], "Neujahr")
+                self.assertEqual(cnt["2022-12-25"], "Weihnachten")
+
+        run_tests((LI.default_language, None, "invalid"))
+
+        self.set_language("en_US")
+        run_tests((LI.default_language,))
+
+    def test_l10n_en_us(self):
+        en_us = "en_US"
+
+        cnt = LI(language=en_us)
+        self.assertEqual(cnt["2022-01-01"], "New Year's Day")
+        self.assertEqual(cnt["2022-12-25"], "Christmas Day")
+
+        self.set_language(en_us)
+        for language in (None, en_us, "invalid"):
+            cnt = LI(language=language)
+            self.assertEqual(cnt["2022-01-01"], "New Year's Day")
+            self.assertEqual(cnt["2022-12-25"], "Christmas Day")
+
+    def test_l10n_uk(self):
+        uk = "uk"
+
+        cnt = LI(language=uk)
+        self.assertEqual(cnt["2022-01-01"], "Новий рік")
+        self.assertEqual(cnt["2022-12-25"], "Різдво Христове")
+
+        self.set_language(uk)
+        for language in (None, uk, "invalid"):
+            cnt = LI(language=language)
+            self.assertEqual(cnt["2022-01-01"], "Новий рік")
+            self.assertEqual(cnt["2022-12-25"], "Різдво Христове")

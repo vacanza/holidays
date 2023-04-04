@@ -1,0 +1,126 @@
+# Liechtenstein holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.23\n"
+"POT-Creation-Date: 2023-04-01 18:49+0300\n"
+"PO-Revision-Date: 2023-04-01 18:51+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: holidays/countries/liechtenstein.py:38
+msgid "Neujahr"
+msgstr ""
+
+#. Saint Berchtold's Day.
+#: holidays/countries/liechtenstein.py:41
+msgid "Berchtoldstag"
+msgstr ""
+
+#. Epiphany.
+#: holidays/countries/liechtenstein.py:44
+msgid "Heilige Drei Könige"
+msgstr ""
+
+#. Candlemas.
+#: holidays/countries/liechtenstein.py:47
+msgid "Mariä Lichtmess"
+msgstr ""
+
+#. Shrove Tuesday.
+#: holidays/countries/liechtenstein.py:50
+msgid "Fasnachtsdienstag"
+msgstr ""
+
+#. Saint Joseph's Day.
+#: holidays/countries/liechtenstein.py:53
+msgid "Josefstag"
+msgstr ""
+
+#. Good Friday.
+#: holidays/countries/liechtenstein.py:56
+msgid "Karfreitag"
+msgstr ""
+
+#. Easter Sunday.
+#: holidays/countries/liechtenstein.py:59
+msgid "Ostersonntag"
+msgstr ""
+
+#. Easter Monday.
+#: holidays/countries/liechtenstein.py:62
+msgid "Ostermontag"
+msgstr ""
+
+#. Labour Day.
+#: holidays/countries/liechtenstein.py:65
+msgid "Tag der Arbeit"
+msgstr ""
+
+#. Ascension Day.
+#: holidays/countries/liechtenstein.py:68
+msgid "Auffahrt"
+msgstr ""
+
+#. Whit Sunday.
+#: holidays/countries/liechtenstein.py:71
+msgid "Pfingstsonntag"
+msgstr ""
+
+#. Whit Monday.
+#: holidays/countries/liechtenstein.py:74
+msgid "Pfingstmontag"
+msgstr ""
+
+#. Corpus Christi.
+#: holidays/countries/liechtenstein.py:77
+msgid "Fronleichnam"
+msgstr ""
+
+#. National Day.
+#: holidays/countries/liechtenstein.py:80
+msgid "Staatsfeiertag"
+msgstr ""
+
+#. Nativity of Mary.
+#: holidays/countries/liechtenstein.py:83
+msgid "Mariä Geburt"
+msgstr ""
+
+#. All Saints Day.
+#: holidays/countries/liechtenstein.py:86
+msgid "Allerheiligen"
+msgstr ""
+
+#. Immaculate Conception.
+#: holidays/countries/liechtenstein.py:89
+msgid "Mariä Empfängnis"
+msgstr ""
+
+#. Christmas Eve.
+#: holidays/countries/liechtenstein.py:92
+msgid "Heiligabend"
+msgstr ""
+
+#. Christmas Day.
+#: holidays/countries/liechtenstein.py:95
+msgid "Weihnachten"
+msgstr ""
+
+#. St. Stephen's Day.
+#: holidays/countries/liechtenstein.py:98
+msgid "Stefanstag"
+msgstr ""
+
+#. New Year's Eve.
+#: holidays/countries/liechtenstein.py:101
+msgid "Silvester"
+msgstr ""

@@ -10,16 +10,13 @@
 #  License: MIT (see LICENSE file)
 #  Copyright: Kateryna Golovanova <kate@kgthreads.com>, 2022
 
-from datetime import date
-from datetime import timedelta as td
+from gettext import gettext as tr
 
-from dateutil.easter import easter
-
-from holidays.constants import AUG, DEC, FEB, JAN, MAR, MAY, NOV, SEP
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Liechtenstein(HolidayBase):
+class Liechtenstein(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     Liechtenstein holidays.
     See https://en.wikipedia.org/wiki/Public_holidays_in_Liechtenstein
@@ -27,74 +24,81 @@ class Liechtenstein(HolidayBase):
     """
 
     country = "LI"
+    default_language = "de"
+
+    def __init__(self, *args, **kwargs) -> None:
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
+        super()._populate(year)
+
         # New Year's Day.
-        self[date(year, JAN, 1)] = "Neujahr"
+        self._add_new_years_day(tr("Neujahr"))
 
         # Saint Berchtold's Day.
-        self[date(year, JAN, 2)] = "Berchtoldstag"
+        self._add_new_years_day_two(tr("Berchtoldstag"))
 
         # Epiphany.
-        self[date(year, JAN, 6)] = "Drei Könige"
+        self._add_epiphany_day(tr("Heilige Drei Könige"))
 
         # Candlemas.
-        self[date(year, FEB, 2)] = "Mariä Lichtmess"
+        self._add_candlemas(tr("Mariä Lichtmess"))
 
-        easter_date = easter(year)
         # Shrove Tuesday.
-        self[easter_date + td(days=-47)] = "Fasnachtsdienstag"
+        self._add_carnival_tuesday(tr("Fasnachtsdienstag"))
 
         # Saint Joseph's Day.
-        self[date(year, MAR, 19)] = "Josefstag"
+        self._add_saint_josephs_day(tr("Josefstag"))
 
         # Good Friday.
-        self[easter_date + td(days=-2)] = "Karfreitag"
+        self._add_good_friday(tr("Karfreitag"))
 
-        # Easter.
-        self[easter_date] = "Ostersonntag"
+        # Easter Sunday.
+        self._add_easter_sunday(tr("Ostersonntag"))
 
         # Easter Monday.
-        self[easter_date + td(days=+1)] = "Ostermontag"
+        self._add_easter_monday(tr("Ostermontag"))
 
-        # Labor Day.
-        self[date(year, MAY, 1)] = "Tag der Arbeit"
+        # Labour Day.
+        self._add_labour_day(tr("Tag der Arbeit"))
 
         # Ascension Day.
-        self[easter_date + td(days=+39)] = "Auffahrt"
+        self._add_ascension_thursday(tr("Auffahrt"))
 
-        # Pentecost.
-        self[easter_date + td(days=+49)] = "Pfingstsonntag"
+        # Whit Sunday.
+        self._add_whit_sunday(tr("Pfingstsonntag"))
 
         # Whit Monday.
-        self[easter_date + td(days=+50)] = "Pfingstmontag"
+        self._add_whit_monday(tr("Pfingstmontag"))
 
         # Corpus Christi.
-        self[easter_date + td(days=+60)] = "Fronleichnam"
+        self._add_corpus_christi_day(tr("Fronleichnam"))
 
         # National Day.
-        self[date(year, AUG, 15)] = "Staatsfeiertag"
+        self._add_assumption_of_mary_day(tr("Staatsfeiertag"))
 
         # Nativity of Mary.
-        self[date(year, SEP, 8)] = "Maria Geburt"
+        self._add_nativity_of_mary_day(tr("Mariä Geburt"))
 
         # All Saints Day.
-        self[date(year, NOV, 1)] = "Allerheiligen"
+        self._add_all_saints_day(tr("Allerheiligen"))
 
-        # Feast of the Immaculate Conception.
-        self[date(year, DEC, 8)] = "Maria Empfängnis"
+        # Immaculate Conception.
+        self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
 
         # Christmas Eve.
-        self[date(year, DEC, 24)] = "Heiliger Abend"
+        self._add_christmas_eve(tr("Heiligabend"))
 
         # Christmas Day.
-        self[date(year, DEC, 25)] = "Weihnachten"
+        self._add_christmas_day(tr("Weihnachten"))
 
         # St. Stephen's Day.
-        self[date(year, DEC, 26)] = "Stefanstag"
+        self._add_christmas_day_two(tr("Stefanstag"))
 
         # New Year's Eve.
-        self[date(year, DEC, 31)] = "Silvester"
+        self._add_new_years_eve(tr("Silvester"))
 
 
 class LI(Liechtenstein):
