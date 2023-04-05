@@ -18,68 +18,68 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: holidays/countries/moldova.py:42
+#: ./holidays/countries/moldova.py:41
 msgid "Anul Nou"
 msgstr ""
 
 #. Christmas (by old style).
-#: holidays/countries/moldova.py:46
+#: ./holidays/countries/moldova.py:45
 msgid "Naşterea lui Iisus Hristos (Crăciunul pe stil vechi)"
 msgstr ""
 
 #. Christmas.
-#: holidays/countries/moldova.py:49
+#: ./holidays/countries/moldova.py:48
 msgid "Naşterea lui Iisus Hristos (Crăciunul)"
 msgstr ""
 
 #. International Women's Day.
-#: holidays/countries/moldova.py:55
+#: ./holidays/countries/moldova.py:54
 msgid "Ziua internatională a femeii"
 msgstr ""
 
 #. Easter.
-#: holidays/countries/moldova.py:58
+#: ./holidays/countries/moldova.py:57
 msgid "Paştele"
 msgstr ""
 
 #. Day of Rejoicing.
-#: holidays/countries/moldova.py:64
+#: ./holidays/countries/moldova.py:63
 msgid "Paştele blajinilor"
 msgstr ""
 
 #. International Workers' Solidarity Day.
-#: holidays/countries/moldova.py:70
+#: ./holidays/countries/moldova.py:69
 msgid "Ziua internaţională a solidarităţii oamenilor muncii"
 msgstr ""
 
 #. Victory Day and Commemoration of the heroes fallen for Independence of
 #. Fatherland.
-#: holidays/countries/moldova.py:76
+#: ./holidays/countries/moldova.py:75
 msgid ""
 "Ziua Victoriei şi a comemorării eroilor căzuţi pentru Independenţa Patriei"
 msgstr ""
 
 #. Europe Day.
-#: holidays/countries/moldova.py:84
+#: ./holidays/countries/moldova.py:83
 msgid "Ziua Europei"
 msgstr ""
 
 #. International Children's Day
-#: holidays/countries/moldova.py:88
+#: ./holidays/countries/moldova.py:87
 msgid "Ziua Ocrotirii Copilului"
 msgstr ""
 
 #. Republic of Moldova Independence Day
-#: holidays/countries/moldova.py:91
+#: ./holidays/countries/moldova.py:90
 msgid "Ziua independenţei Republicii Moldova"
 msgstr ""
 
 #. National Language Day.
-#: holidays/countries/moldova.py:94
+#: ./holidays/countries/moldova.py:93
 msgid "Limba noastră"
 msgstr ""
 
 #. Christmas (by new style).
-#: holidays/countries/moldova.py:99
+#: ./holidays/countries/moldova.py:98
 msgid "Naşterea lui Iisus Hristos (Crăciunul pe stil nou)"
 msgstr ""

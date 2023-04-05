@@ -18,61 +18,60 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: holidays/countries/romania.py:40
+#: ./holidays/countries/romania.py:38
 msgid "Anul Nou"
 msgstr ""
 
 #. Epiphany.
-#: holidays/countries/romania.py:46
+#: ./holidays/countries/romania.py:44
 msgid "Bobotează"
 msgstr ""
 
 #. Saint John the Baptist.
-#: holidays/countries/romania.py:49
+#: ./holidays/countries/romania.py:47
 msgid "Sfântul Ion"
 msgstr ""
 
 #. Unification of the Romanian Principalities Day.
-#: holidays/countries/romania.py:53
+#: ./holidays/countries/romania.py:51
 msgid "Ziua Unirii Principatelor Române"
 msgstr ""
 
 #. Easter.
-#: holidays/countries/romania.py:58
+#: ./holidays/countries/romania.py:54
 msgid "Paștele"
 msgstr ""
 
 #. Labour Day.
-#: holidays/countries/romania.py:66
+#: ./holidays/countries/romania.py:62
 msgid "Ziua Muncii"
 msgstr ""
 
 #. Children's Day.
-#: holidays/countries/romania.py:70
+#: ./holidays/countries/romania.py:66
 msgid "Ziua Copilului"
 msgstr ""
 
 #. Pentecost.
-#: holidays/countries/romania.py:73
+#: ./holidays/countries/romania.py:69
 msgid "Rusaliile"
 msgstr ""
 
 #. Dormition of the Mother of God.
-#: holidays/countries/romania.py:80
+#: ./holidays/countries/romania.py:76
 msgid "Adormirea Maicii Domnului"
 msgstr ""
 
-#. Saint Andrew's Day.
-#: holidays/countries/romania.py:85
+#: ./holidays/countries/romania.py:82
 msgid "Sfantul Apostol Andrei cel Intai chemat"
 msgstr ""
 
 #. National Day.
-#: holidays/countries/romania.py:88
+#: ./holidays/countries/romania.py:86
 msgid "Ziua Națională a României"
 msgstr ""
 
 #. Christmas Day.
-#: holidays/countries/romania.py:91
+#: ./holidays/countries/romania.py:89
 msgid "Crăciunul"
 msgstr ""

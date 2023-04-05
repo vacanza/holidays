@@ -18,111 +18,111 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: holidays/countries/france.py:64
+#: ./holidays/countries/france.py:64
 msgid "Jour de l'an"
 msgstr "Новий рік"
 
 #. Labor Day.
-#: holidays/countries/france.py:69
+#: ./holidays/countries/france.py:69
 msgid "Fête du Travail"
 msgstr "День Праці"
 
 #. Labor and Social Concord Day.
-#: holidays/countries/france.py:72
+#: ./holidays/countries/france.py:72
 msgid "Fête du Travail et de la Concorde sociale"
 msgstr "День Праці та Суспільної згоди"
 
 #. Victory Day.
-#: holidays/countries/france.py:77
+#: ./holidays/countries/france.py:77
 msgid "Fête de la Victoire"
 msgstr "День Перемоги"
 
 #. National Day.
-#: holidays/countries/france.py:81
+#: ./holidays/countries/france.py:81
 msgid "Fête nationale"
 msgstr "Національне свято"
 
 #. Armistice Day.
-#: holidays/countries/france.py:85
+#: ./holidays/countries/france.py:85
 msgid "Armistice"
 msgstr "День перемирʼя (закінчення Першої світової війни)"
 
 #. Good Friday.
-#: holidays/countries/france.py:96
+#: ./holidays/countries/france.py:96
 msgid "Vendredi saint"
 msgstr "Страсна пʼятниця"
 
 #. Mi-Careme.
-#: holidays/countries/france.py:101
+#: ./holidays/countries/france.py:101
 msgid "Mi-Carême"
 msgstr "Свято Мі-Карем"
 
 #. Easter Monday.
-#: holidays/countries/france.py:106
+#: ./holidays/countries/france.py:107
 msgid "Lundi de Pâques"
 msgstr "Великодній понеділок"
 
 #. Whit Monday.
-#: holidays/countries/france.py:110
+#: ./holidays/countries/france.py:111
 msgid "Lundi de Pentecôte"
 msgstr "День Святого Духа"
 
 #. Ascension Day.
-#: holidays/countries/france.py:114
+#: ./holidays/countries/france.py:115
 msgid "Ascension"
 msgstr "Вознесіння Господнє"
 
 #. Assumption Day.
-#: holidays/countries/france.py:116
+#: ./holidays/countries/france.py:117
 msgid "Assomption"
 msgstr "Внебовзяття Пресвятої Діви Марії"
 
 #. All Saints' Day.
-#: holidays/countries/france.py:118
+#: ./holidays/countries/france.py:119
 msgid "Toussaint"
 msgstr "День усіх святих"
 
 #. Christmas Day.
-#: holidays/countries/france.py:120
+#: ./holidays/countries/france.py:121
 msgid "Noël"
 msgstr "Різдво Христове"
 
 #. Feast of Victor Schoelcher.
-#: holidays/countries/france.py:126
+#: ./holidays/countries/france.py:127
 msgid "Fête de Victor Schoelcher"
 msgstr "День Віктора Шольшера"
 
 #. Abolition of slavery.
-#: holidays/countries/france.py:129
+#: ./holidays/countries/france.py:130
 msgid "Abolition de l'esclavage"
 msgstr "День скасування рабства"
 
 #. Saint Stephen's Day.
-#: holidays/countries/france.py:133
+#: ./holidays/countries/france.py:134
 msgid "Saint Étienne"
 msgstr "День Святого Стефана"
 
 #. Citizenship Day.
-#: holidays/countries/france.py:152
+#: ./holidays/countries/france.py:153
 msgid "Fête de la Citoyenneté"
 msgstr "День громадянства"
 
 #. Missionary Day.
-#: holidays/countries/france.py:156
+#: ./holidays/countries/france.py:157
 msgid "Arrivée de l'Évangile"
 msgstr "День місіонерів"
 
 #. Internal Autonomy Day.
-#: holidays/countries/france.py:158
+#: ./holidays/countries/france.py:159
 msgid "Fête de l'autonomie"
 msgstr "День автономії"
 
 #. Feast of Saint Peter Chanel.
-#: holidays/countries/france.py:168
+#: ./holidays/countries/france.py:169
 msgid "Saint Pierre Chanel"
 msgstr "День Святого Пʼєра Шанеля"
 
 #. Festival of the territory
-#: holidays/countries/france.py:170
+#: ./holidays/countries/france.py:171
 msgid "Fête du Territoire"
 msgstr "День Території"
