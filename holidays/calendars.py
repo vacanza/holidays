@@ -54,8 +54,8 @@ def _islamic_to_gre(g_year: int, h_month: int, h_day: int) -> Iterable[date]:
     if not importlib.util.find_spec("hijri_converter"):
         raise ImportError(
             "Could not import 'hijri_converter'. "
-            "Use `pip install holidays[islamic]` to resolve this. "
-            "Use `pip install holidays[all]` for all countries holidays."
+            "Use 'pip install holidays[islamic]' to resolve this. "
+            "Use 'pip install holidays[all]' for all countries holidays."
         )
 
     from hijri_converter.convert import Gregorian, Hijri
@@ -589,7 +589,7 @@ class _ExtrasRequireHebrew:
         if not importlib.util.find_spec("convertdate"):
             raise ImportError(
                 "Could not import 'convertdate'. "
-                "Use `pip install holidays[hebrew]` to resolve this. "
+                "Use 'pip install holidays[hebrew]' to resolve this. "
                 "Use 'pip install holidays[all]' for all countries holidays."
             )
 
@@ -623,7 +623,7 @@ class _ExtrasRequireIslamic:
         if not importlib.util.find_spec("hijri_converter"):
             raise ImportError(
                 "Could not import 'hijri_converter'. "
-                "Use `pip install holidays[islamic]` to resolve this. "
+                "Use 'pip install holidays[islamic]' to resolve this. "
                 "Use 'pip install holidays[all]' for all countries holidays."
             )
 
@@ -643,7 +643,7 @@ class _ExtrasRequireKoreanLunar:
         if not importlib.util.find_spec("korean_lunar_calendar"):
             raise ImportError(
                 "Could not import 'korean_lunar_calendar'. "
-                "Use `pip install holidays[korean-lunar]` to resolve this. "
+                "Use 'pip install holidays[korean-lunar]' to resolve this. "
                 "Use 'pip install holidays[all]' for all countries holidays."
             )
 
