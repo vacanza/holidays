@@ -1,0 +1,92 @@
+# Uruguay holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.22\n"
+"POT-Creation-Date: 2023-03-05 12:23+0200\n"
+"PO-Revision-Date: 2023-03-05 12:44+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: ./holidays/countries/uruguay.py:40
+msgid "Año Nuevo"
+msgstr ""
+
+#. International Workers' Day.
+#: ./holidays/countries/uruguay.py:43
+msgid "Día de los Trabajadores"
+msgstr ""
+
+#. Constitution Day.
+#: ./holidays/countries/uruguay.py:46
+msgid "Jura de la Constitución"
+msgstr ""
+
+#. Independence Day.
+#: ./holidays/countries/uruguay.py:49
+msgid "Día de la Independencia"
+msgstr ""
+
+#. Day of the Family.
+#: ./holidays/countries/uruguay.py:52
+msgid "Día de la Familia"
+msgstr ""
+
+#. Children's Day.
+#: ./holidays/countries/uruguay.py:57
+msgid "Día de los Niños"
+msgstr ""
+
+#. Birthday of José Gervasio Artigas.
+#: ./holidays/countries/uruguay.py:60
+msgid "Natalicio de José Gervasio Artigas"
+msgstr ""
+
+#. All Souls' Day.
+#: ./holidays/countries/uruguay.py:63
+msgid "Día de los Difuntos"
+msgstr ""
+
+#. Carnival Day.
+#: ./holidays/countries/uruguay.py:68
+msgid "Día de Carnaval"
+msgstr ""
+
+#. Maundy Thursday.
+#: ./holidays/countries/uruguay.py:73
+msgid "Jueves Santo"
+msgstr ""
+
+#. Good Friday.
+#: ./holidays/countries/uruguay.py:75
+msgid "Viernes Santo"
+msgstr ""
+
+#. Easter Day.
+#: ./holidays/countries/uruguay.py:77
+msgid "Día de Pascuas"
+msgstr ""
+
+#. Landing of the 33 Patriots.
+#: ./holidays/countries/uruguay.py:83
+msgid "Desembarco de los 33 Orientales"
+msgstr ""
+
+#. Battle of Las Piedras.
+#: ./holidays/countries/uruguay.py:88
+msgid "Batalla de Las Piedras"
+msgstr ""
+
+#. Respect for Cultural Diversity Day.
+#: ./holidays/countries/uruguay.py:93
+msgid "Día del Respeto a la Diversidad Cultural"
+msgstr ""

@@ -1,0 +1,77 @@
+# Dominican Republic holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.22\n"
+"POT-Creation-Date: 2023-03-05 12:33+0200\n"
+"PO-Revision-Date: 2023-03-05 12:45+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: holidays/countries/dominican_republic.py:46
+msgid "Año Nuevo"
+msgstr ""
+
+#. Epiphany.
+#: holidays/countries/dominican_republic.py:50
+msgid "Día de los Santos Reyes"
+msgstr ""
+
+#. Lady of Altagracia.
+#: holidays/countries/dominican_republic.py:53
+msgid "Día de la Altagracia"
+msgstr ""
+
+#. Juan Pablo Duarte Day.
+#: holidays/countries/dominican_republic.py:57
+msgid "Día de Duarte"
+msgstr ""
+
+#. Independence Day.
+#: holidays/countries/dominican_republic.py:60
+msgid "Día de Independencia"
+msgstr ""
+
+#. Good Friday.
+#: holidays/countries/dominican_republic.py:65
+msgid "Viernes Santo"
+msgstr ""
+
+#. Labor Day.
+#: holidays/countries/dominican_republic.py:71
+msgid "Día del Trabajo"
+msgstr ""
+
+#. Feast of Corpus Christi.
+#: holidays/countries/dominican_republic.py:74
+msgid "Corpus Christi"
+msgstr ""
+
+#. Restoration Day.
+#: holidays/countries/dominican_republic.py:83
+msgid "Día de la Restauración"
+msgstr ""
+
+#. Our Lady of Mercedes Day.
+#: holidays/countries/dominican_republic.py:86
+msgid "Día de las Mercedes"
+msgstr ""
+
+#. Constitution Day.
+#: holidays/countries/dominican_republic.py:90
+msgid "Día de la Constitución"
+msgstr ""
+
+#. Christmas Day.
+#: holidays/countries/dominican_republic.py:93
+msgid "Día de Navidad"
+msgstr ""

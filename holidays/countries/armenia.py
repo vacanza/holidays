@@ -9,95 +9,96 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from gettext import gettext as tr
 
-from holidays.constants import JAN, MAR, APR, MAY, JUL, SEP, DEC
+from holidays.calendars import JULIAN_CALENDAR
+from holidays.constants import JAN, APR, MAY, JUL, SEP
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Armenia(HolidayBase):
+class Armenia(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
-    https://en.wikipedia.org/wiki/Public_holidays_in_Armenia
-    http://www.parliament.am/legislation.php?sel=show&ID=1274&lang=arm&enc=utf8
-    https://www.arlis.am/documentview.aspx?docid=259
+    Armenia holidays.
+
+    References:
+     - https://en.wikipedia.org/wiki/Public_holidays_in_Armenia
+     - http://www.parliament.am/legislation.php?sel=show&ID=1274&lang=arm&enc=utf8  # noqa: E501
+     - https://www.arlis.am/documentview.aspx?docid=259
     """
 
     country = "AM"
+    default_language = "hy"
+
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self, JULIAN_CALENDAR)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
-
         if year <= 1990:
-            return
+            return None
+
         super()._populate(year)
 
-        # New Year's Day
-        name = "Ամանոր [New Year's Day]"
-        self[date(year, JAN, 1)] = name
-        self[date(year, JAN, 2)] = name
+        # New Year's Day.
+        name = tr("Նոր տարվա օր")
+        self._add_new_years_day(name)
+        self._add_new_years_day_two(name)
 
-        # Christmas and Epiphany Day
-        self[
-            date(year, JAN, 6)
-        ] = "Սուրբ Ծնունդ եւ Հայտնություն [Christmas and Epiphany Day]"
+        # Christmas. Epiphany Day.
+        self._add_holiday(tr("Սուրբ Ծնունդ եւ Հայտնություն"), JAN, 6)
 
         if 2010 <= year <= 2021:
-            # New Year's holidays and Christmas Eve
-            self[date(year, JAN, 3)] = name
-            self[date(year, JAN, 4)] = name
-            self[date(year, JAN, 5)] = "նախածննդյան տոներ [Christmas Eve]"
+            self._add_new_years_day_three(name)
+            self._add_new_years_day_four(name)
 
-            # The Day of Remembrance of the Dead
-            self[
-                date(year, JAN, 7)
-            ] = "Մեռելոց հիշատակի օր [The Day of Remembrance of the Dead]"
+            # Christmas Eve.
+            self._add_holiday(tr("Սուրբ Ծննդյան տոներ"), JAN, 5)
 
-        # Army Day
+            # The Day of Remembrance of the Dead.
+            self._add_holiday(tr("Մեռելոց հիշատակի օր"), JAN, 7)
+
         if year >= 2003:
-            self[date(year, JAN, 28)] = "Բանակի օր [Army Day]"
+            # Army Day.
+            self._add_holiday(tr("Բանակի օր"), JAN, 28)
 
-        # Women's Day
-        self[date(year, MAR, 8)] = "Կանանց տոն [Women's Day]"
+        # Women's Day.
+        self._add_womens_day(tr("Կանանց տոն"))
 
-        # Motherhood and Beauty Day
         if 1994 <= year <= 2001:
-            self[
-                date(year, APR, 7)
-            ] = "Մայրության և գեղեցկության տոն [Motherhood and Beauty Day]"
+            # Motherhood and Beauty Day.
+            self._add_holiday(tr("Մայրության և գեղեցկության տոն"), APR, 7)
 
-        # Armenian Genocide Remembrance Day
-        self[
-            date(year, APR, 24)
-        ] = "Եղեռնի զոհերի հիշատակի օր [Armenian Genocide Remembrance Day]"
+        # Armenian Genocide Remembrance Day,
+        self._add_holiday(tr("Եղեռնի զոհերի հիշատակի օր"), APR, 24)
 
-        # Labour Day
         if year >= 2001:
-            name = (
-                "Աշխատավորների համերաշխության միջազգային օր "
-                "[International Day of Workers' Solidarity]"
+            self._add_labour_day(
+                # Labor Day.
+                tr("Աշխատանքի օր")
+                if year >= 2002
+                # International Day of Workers' Solidarity.
+                else tr("Աշխատավորների համերաշխության միջազգային օր")
             )
-            if year >= 2002:
-                name = "Աշխատանքի օր [Labour Day]"
-            self[date(year, MAY, 1)] = name
 
-        # Victory and Peace Day
         if year >= 1995:
-            self[
-                date(year, MAY, 9)
-            ] = "Հաղթանակի և Խաղաղության տոն [Victory and Peace Day]"
+            # Victory and Peace Day.
+            self._add_holiday(tr("Հաղթանակի և Խաղաղության տոն"), MAY, 9)
 
-        # Republic Day
-        self[date(year, MAY, 28)] = "Հանրապետության օր [Republic Day]"
+        # Republic Day.
+        self._add_holiday(tr("Հանրապետության օր"), MAY, 28)
 
-        # Constitution Day
         if year >= 1996:
-            self[date(year, JUL, 5)] = "Սահմանադրության օր [Constitution Day]"
+            # Constitution Day.
+            self._add_holiday(tr("Սահմանադրության օր"), JUL, 5)
 
-        # Independence Day
         if year >= 1992:
-            self[date(year, SEP, 21)] = "Անկախության օր [Independence Day]"
+            # Independence Day.
+            self._add_holiday(tr("Անկախության օր"), SEP, 21)
 
-        # New Year's Eve
-        self[date(year, DEC, 31)] = "Ամանոր [New Year's Eve]"
+        # New Year's Eve.
+        self._add_new_years_eve(tr("Նոր տարվա գիշեր"))
 
 
 class AM(Armenia):

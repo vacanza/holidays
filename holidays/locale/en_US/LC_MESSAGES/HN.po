@@ -1,0 +1,72 @@
+# Honduras holidays en_US localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.22\n"
+"POT-Creation-Date: 2023-03-05 12:23+0200\n"
+"PO-Revision-Date: 2023-03-05 12:55+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: holidays/countries/honduras.py:33
+msgid "Año Nuevo"
+msgstr "New Year's Day"
+
+#. Maundy Thursday.
+#: holidays/countries/honduras.py:37
+msgid "Jueves Santo"
+msgstr "Maundy Thursday"
+
+#. Good Friday.
+#: holidays/countries/honduras.py:40
+msgid "Viernes Santo"
+msgstr "Good Friday"
+
+#. Holy Saturday.
+#: holidays/countries/honduras.py:43
+msgid "Sábado de Gloria"
+msgstr "Holy Saturday"
+
+#. Panamerican Day.
+#: holidays/countries/honduras.py:46
+msgid "Día de las Américas"
+msgstr "Panamerican Day"
+
+#. Labor Day.
+#: holidays/countries/honduras.py:49
+msgid "Día del Trabajo"
+msgstr "Labor Day"
+
+#. Morazan's Day.
+#: holidays/countries/honduras.py:57
+msgid "Día de Morazán"
+msgstr "Morazan's Day"
+
+#. Columbus Day.
+#: holidays/countries/honduras.py:60
+msgid "Día de la Raza"
+msgstr "Columbus Day"
+
+#. Army Day.
+#: holidays/countries/honduras.py:63
+msgid "Día de las Fuerzas Armadas"
+msgstr "Army Day"
+
+#. Morazan Weekend.
+#: holidays/countries/honduras.py:66
+msgid "Semana Morazánica"
+msgstr "Morazan Weekend"
+
+#. Christmas.
+#: holidays/countries/honduras.py:74
+msgid "Navidad"
+msgstr "Christmas"

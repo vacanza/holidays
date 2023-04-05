@@ -9,82 +9,85 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 
-from dateutil.easter import EASTER_ORTHODOX, easter
-from dateutil.relativedelta import relativedelta as rd
+from gettext import gettext as tr
 
-from holidays.constants import JAN, MAR, APR, MAY, AUG, OCT, DEC
+from holidays.calendars import JULIAN_CALENDAR, GREGORIAN_CALENDAR
+from holidays.constants import MAR, APR, OCT
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Cyprus(HolidayBase):
+class Cyprus(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
-    https://en.wikipedia.org/wiki/Public_holidays_in_Cyprus
+    Cyprus holidays.
+
+    References:
+     - https://en.wikipedia.org/wiki/Public_holidays_in_Cyprus
     """
 
     country = "CY"
+    default_language = "el"
+
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self, JULIAN_CALENDAR)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
 
-        easter_date = easter(year, method=EASTER_ORTHODOX)
+        # New Years Day.
+        self._add_new_years_day(tr("Πρωτοχρονιά"))
 
-        # New Years
-        self[date(year, JAN, 1)] = "Πρωτοχρονιά [New Year's Day]"
+        # Epiphany.
+        self._add_epiphany_day(tr("Θεοφάνεια"), GREGORIAN_CALENDAR)
 
-        # Epiphany
-        self[date(year, JAN, 6)] = "Θεοφάνεια [Epiphany]"
+        # Clean Monday.
+        self._add_ash_monday(tr("Καθαρά Δευτέρα"))
 
-        # Clean Monday
-        self[easter_date + rd(days=-48)] = "Καθαρά Δευτέρα [Clean Monday]"
+        # Greek Independence Day.
+        self._add_holiday(tr("Εικοστή Πέμπτη Μαρτίου"), MAR, 25)
 
-        # Greek Independence Day
-        self[
-            date(year, MAR, 25)
-        ] = "Εικοστή Πέμπτη Μαρτίου [Greek Independence Day]"
+        # Cyprus National Day.
+        self._add_holiday(tr("1η Απριλίου"), APR, 1)
 
-        # Cyprus National Day
-        self[date(year, APR, 1)] = "1η Απριλίου [Cyprus National Day]"
+        # Good Friday.
+        self._add_good_friday(tr("Μεγάλη Παρασκευή"))
 
-        # Good Friday
-        self[easter_date + rd(days=-2)] = "Μεγάλη Παρασκευή [Good Friday]"
+        # Easter Sunday.
+        self._add_easter_sunday(tr("Κυριακή του Πάσχα"))
 
-        # Easter Sunday
-        self[easter_date] = "Κυριακή του Πάσχα [Easter Sunday]"
+        # Easter Monday.
+        self._add_easter_monday(tr("Δευτέρα του Πάσχα"))
 
-        # Easter Monday
-        self[easter_date + rd(days=+1)] = "Δευτέρα του Πάσχα [Easter Monday]"
+        # Labour Day.
+        self._add_labour_day(tr("Εργατική Πρωτομαγιά"))
 
-        # Labour Day
-        self[date(year, MAY, 1)] = "Εργατική Πρωτομαγιά [Labour day]"
+        # Monday of the Holy Spirit.
+        self._add_whit_monday(tr("Δευτέρα του Αγίου Πνεύματος"))
 
-        # Monday of the Holy Spirit
-        self[
-            easter_date + rd(days=+50)
-        ] = "Δευτέρα του Αγίου Πνεύματος [Monday of the Holy Spirit]"
+        # Assumption of Mary.
+        self._add_assumption_of_mary_day(tr("Κοίμηση της Θεοτόκου"))
 
-        # Assumption of Mary
-        self[date(year, AUG, 15)] = "Κοίμηση της Θεοτόκου [Assumption of Mary]"
+        # Cyprus Independence Day.
+        self._add_holiday(tr("Ημέρα Ανεξαρτησίας της Κύπρου"), OCT, 1)
 
-        # Cyprus Independence Day
-        self[
-            date(year, OCT, 1)
-        ] = "Ημέρα Ανεξαρτησίας της Κύπρου [Cyprus Independence Day]"
+        # Ochi Day.
+        self._add_holiday(tr("Ημέρα του Όχι"), OCT, 28)
 
-        # Ochi Day
-        self[date(year, OCT, 28)] = "Ημέρα του Όχι [Ochi Day]"
+        # Christmas Eve.
+        self._add_christmas_eve(
+            tr("Παραμονή Χριστουγέννων"), GREGORIAN_CALENDAR
+        )
 
-        # Christmas Eve
-        self[date(year, DEC, 24)] = "Παραμονή Χριστουγέννων [Christmas Eve]"
+        # Christmas Day.
+        self._add_christmas_day(tr("Χριστούγεννα"), GREGORIAN_CALENDAR)
 
-        # Christmas
-        self[date(year, DEC, 25)] = "Χριστούγεννα [Christmas]"
-
-        # Day after Christmas
-        self[
-            date(year, DEC, 26)
-        ] = "Δεύτερη μέρα Χριστουγέννων [Day after Christmas]"
+        # Day After Christmas.
+        self._add_christmas_day_two(
+            tr("Δεύτερη μέρα Χριστουγέννων"), GREGORIAN_CALENDAR
+        )
 
 
 class CY(Cyprus):

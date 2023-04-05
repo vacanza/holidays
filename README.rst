@@ -105,10 +105,12 @@ Available Countries
 -------------------
 
 .. _ISO 3166-1 alpha-2 code: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
+.. _ISO 3166-2 code: https://en.wikipedia.org/wiki/ISO_3166-2
 
-We currently support 106 countries. The standard way to refer to a country is by
-using its `ISO 3166-1 alpha-2 code`_, the same used for domain names. The
-following countries and their subdivisions are available:
+We currently support 120 country codes. The standard way to refer to a country
+is by using its `ISO 3166-1 alpha-2 code`_, the same used for domain names, and
+for a subdivision its `ISO 3166-2 code`_. The following countries and
+subdivisions are available:
 
 .. list-table::
    :widths: 23 4 83 15
@@ -119,6 +121,18 @@ following countries and their subdivisions are available:
      - Code
      - Subdivisions Available
      - Install extras
+   * - Albania
+     - AL
+     - None
+     - holidays[islamic]
+   * - American Samoa
+     - AS; Can also be loaded as country US, subdivision AS
+     - None
+     - None
+   * - Andorra
+     - AD
+     - Parishes: 02, 03, 04, 05, 06, 07, 08
+     - None
    * - Angola
      - AO
      - None
@@ -203,6 +217,10 @@ following countries and their subdivisions are available:
      - CO
      - None
      - None
+   * - Costa Rica
+     - CR
+     - None
+     - None
    * - Croatia
      - HR
      - None
@@ -257,7 +275,7 @@ following countries and their subdivisions are available:
      - None
    * - France
      - FR
-     - Départements: Alsace-Moselle, Guadeloupe, Guyane, La Réunion, Martinique, Mayotte, **Métropole** (default), Nouvelle-Calédonie, Polynésie Française, Saint-Barthélémy, Saint-Martin, Wallis-et-Futuna
+     - Départements: Alsace-Moselle, Guadeloupe, Guyane, La Réunion, Martinique, Mayotte, Métropole, Nouvelle-Calédonie, Polynésie Française, Saint-Barthélémy, Saint-Martin, Wallis-et-Futuna
      - None
    * - Georgia
      - GE
@@ -270,6 +288,10 @@ following countries and their subdivisions are available:
    * - Greece
      - GR
      - None
+     - None
+   * - Guam
+     - GU
+     - None; Can also be loaded as country US, subdivision GU
      - None
    * - Honduras
      - HN
@@ -306,7 +328,7 @@ following countries and their subdivisions are available:
    * - Israel
      - IL
      - None
-     - holidays[jewish]
+     - holidays[hebrew]
    * - Italy
      - IT
      - Provinces: AG, AL, AN, AO, AP, AQ, AR, AT, AV, BA, BG, BI, BL, BN, BO, BR, BS, BT, BZ, CA, CB, CE, CH, CL, CN, CO, CR, CS, CT, CZ, EN, FC, FE, FG, FI, FM, FR, GE, GO, GR, IM, IS, KR, LC, LE, LI, LO, LT, LU, MB, MC, ME, MI, MN, MO, MS, MT, NA, NO, NU, OR, PA, PC, PD, PE, PG, PI, PN, PO, PR, PT, PU, PV, PZ, RA, RC, RE, RG, RI, RM, RN, RO, SA, SI, SO, SP, SR, SS, SU, SV, TA, TE, TN, TO, TP, TR, TS, TV, UD, VA, VB, VC, VE, VI, VR, VT, VV. Cities: Andria, Barletta, Cesena, Forlì, Pesaro, Trani, Urbino
@@ -367,6 +389,10 @@ following countries and their subdivisions are available:
      - MT
      - None
      - None
+   * - Marshall Islands (the)
+     - MH
+     - None
+     - None
    * - Mexico
      - MX
      - None
@@ -377,6 +403,10 @@ following countries and their subdivisions are available:
      - None
    * - Monaco
      - MC
+     - None
+     - None
+   * - Montenegro
+     - ME
      - None
      - None
    * - Morocco
@@ -401,22 +431,30 @@ following countries and their subdivisions are available:
      - None
    * - Nicaragua
      - NI
-     - Departments: **MN** (default)
+     - Departments: AN, AS, BO, CA, CI, CO, ES, GR, JI, LE, MD, **MN** (default), MS, MT, NS, RI, SJ
      - None
    * - Nigeria
      - NG
      - None
-     - holidays[islamic]
+     - None
    * - North Macedonia
      - MK
      - None
      - holidays[islamic]
+   * - Northern Mariana Islands (the)
+     - MP; Can also be loaded as country US, subdivision MP
+     - None
+     - None
    * - Norway
      - NO
      - None
      - None
    * - Pakistan
      - PK
+     - None
+     - None
+   * - Panama
+     - PA
      - None
      - None
    * - Paraguay
@@ -437,7 +475,11 @@ following countries and their subdivisions are available:
      - None
    * - Portugal
      - PT
-     - Districts: 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, Ext; Use subdiv='Ext' to include holidays most people have off
+     - Districts: 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 30, Ext; Use subdiv='Ext' to include holidays most people have off
+     - None
+   * - Puerto Rico
+     - PR
+     - None; Can also be loaded as country US, subdivision PR
      - None
    * - Romania
      - RO
@@ -445,6 +487,10 @@ following countries and their subdivisions are available:
      - None
    * - Russia
      - RU
+     - None
+     - None
+   * - San Marino
+     - SM
      - None
      - None
    * - Saudi Arabia
@@ -515,9 +561,17 @@ following countries and their subdivisions are available:
      - GB
      - Subdivisions: England, Northern Ireland, Scotland, **UK** (default), Wales; For Isle of Man use country code IM
      - None
-   * - United States
+   * - United States Minor Outlying Islands
+     - UM
+     - None; Can also be loaded as country US, subdivision UM
+     - None
+   * - United States Virgin Islands (the)
+     - None
+     - None
+     - None
+   * - United States of America (the)
      - US
-     - States and territories: AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL, GA, GU, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MH, MA, MI, FM, MN, MS, MO, MT, NE, NV, NH, NJ, NM, NY, NC, ND, MP, OH, OK, OR, PW, PA, PR, RI, SC, SD, TN, TX, UT, VT, VA, VI, WA, WV, WI, WY
+     - States and territories: AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL, GA, GU, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MH, MA, MI, FM, MN, MS, MO, MT, NE, NV, NH, NJ, NM, NY, NC, ND, MP, OH, OK, OR, PW, PA, PR, RI, SC, SD, TN, TX, UM, UT, VT, VA, VI, WA, WV, WI, WY
      - None
    * - Uruguay
      - UY
@@ -527,6 +581,10 @@ following countries and their subdivisions are available:
      - UZ
      - None
      - holidays[islamic]
+   * - Vatican City
+     - VA
+     - None
+     - None
    * - Venezuela
      - VE
      - None
@@ -535,6 +593,10 @@ following countries and their subdivisions are available:
      - VN
      - None
      - holidays[korean-lunar]
+   * - Virgin Islands (U.S.)
+     - VI
+     - None; Can also be loaded as country US, subdivision VI
+     - None
    * - Zambia
      - ZM
      - None
@@ -568,6 +630,126 @@ following financial markets are available:
    * - New York Stock Exchange
      - XNYS
      - NYSE market holidays (used by all other US-exchanges, including NASDAQ, etc.)
+
+
+Localization
+===========================
+
+.. _ISO 639-1 code: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+
+Some of the supported entities (country/market) provide more than one
+language for holiday names output. The default language is defined by
+``default_language`` (optional) attribute for each entity and is used as a fallback
+when neither user specified language nor user locale language available. The
+default language code is a `ISO 639-1 code`_.
+
+.. list-table::
+   :widths: 23 4 83
+   :header-rows: 1
+   :class: tight-table
+
+   * - Country
+     - Default Language
+     - Supported languages
+   * - Argentina
+     - es
+     - en_US, es, uk
+   * - Armenia
+     - hy
+     - en_US, hy
+   * - Belarus
+     - be
+     - be, en_US
+   * - Bulgaria
+     - bg
+     - bg, en_US
+   * - Canada
+     - en
+     - en, fr, th
+   * - Chile
+     - es
+     - en_US, es, uk
+   * - Colombia
+     - es
+     - en_US, es, uk
+   * - Costa Rica
+     - es
+     - en_US, es, uk
+   * - Cuba
+     - es
+     - en_US, es, uk
+   * - Cyprus
+     - el
+     - el, en
+   * - Denmark
+     - da
+     - da, en_US
+   * - Dominican Republic
+     - es
+     - en_US, es, uk
+   * - Ethiopia
+     - am
+     - am, en_US
+   * - France
+     - fr
+     - en_US, fr, uk
+   * - Georgia
+     - ka
+     - en_US, ka
+   * - Greece
+     - el
+     - el, en_US
+   * - Honduras
+     - es
+     - en_US, es, uk
+   * - Japan
+     - ja
+     - en_US, ja
+   * - Mexico
+     - es
+     - en_US, es, uk
+   * - Moldova
+     - ro
+     - en_US, ro, uk
+   * - Monaco
+     - fr
+     - en_US, fr, uk
+   * - Nicaragua
+     - es
+     - en_US, es, uk
+   * - Paraguay
+     - es
+     - en_US, es, uk
+   * - Peru
+     - es
+     - en_US, es, uk
+   * - Poland
+     - pl
+     - en_US, pl, uk
+   * - Portugal
+     - pt_PT
+     - en_US, pt_PT
+   * - Romania
+     - ro
+     - en_US, ro, uk
+   * - Russia
+     - ru
+     - en_US, ru
+   * - Serbia
+     - sr
+     - en_US, sr
+   * - Thailand
+     - th
+     - en_US, th
+   * - Ukraine
+     - uk
+     - en_US, uk
+   * - Uruguay
+     - es
+     - en_US, es, uk
+   * - Venezuela
+     - es
+     - en_US, es, uk
 
 
 Beta Version

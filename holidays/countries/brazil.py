@@ -10,13 +10,13 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import SU
-from dateutil.relativedelta import relativedelta as rd
 
+from holidays.calendars import _get_nth_weekday_from
 from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT
-from holidays.constants import NOV, DEC
+from holidays.constants import NOV, DEC, SUN
 from holidays.holiday_base import HolidayBase
 
 
@@ -78,16 +78,16 @@ class Brazil(HolidayBase):
         self[date(year, DEC, 25)] = "Natal"
 
         easter_date = easter(year)
-        self[easter_date + rd(days=-2)] = "Sexta-feira Santa"
+        self[easter_date + td(days=-2)] = "Sexta-feira Santa"
 
         self[easter_date] = "Páscoa"
 
-        self[easter_date + rd(days=+60)] = "Corpus Christi"
+        self[easter_date + td(days=+60)] = "Corpus Christi"
 
-        quaresma = easter_date + rd(days=-46)
+        quaresma = easter_date + td(days=-46)
         self[quaresma] = "Quarta-feira de cinzas (Início da Quaresma)"
 
-        self[quaresma + rd(days=-1)] = "Carnaval"
+        self[quaresma + td(days=-1)] = "Carnaval"
 
         if self.subdiv == "AC":
             self[date(year, JAN, 23)] = "Dia do evangélico"
@@ -189,7 +189,7 @@ class Brazil(HolidayBase):
         if self.subdiv == "SC":
             dt = date(year, AUG, 11)
             if year >= 2018 and not self._is_weekend(dt):
-                dt += rd(weekday=SU)
+                dt = _get_nth_weekday_from(1, SUN, dt)
             self[dt] = "Criação da capitania, separando-se de SP"
 
         if self.subdiv == "SP":

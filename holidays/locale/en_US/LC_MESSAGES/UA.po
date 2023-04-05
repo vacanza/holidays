@@ -1,0 +1,99 @@
+# Ukraine holidays en_US localization.
+# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.20\n"
+"POT-Creation-Date: 2023-03-07 18:51+0200\n"
+"PO-Revision-Date: 2023-03-07 18:53+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.2.2\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: holidays/countries/ukraine.py:53
+#, c-format
+msgid "%s (вихідний)"
+msgstr "%s (Observed)"
+
+#. New Year's Day.
+#: holidays/countries/ukraine.py:68
+msgid "Новий рік"
+msgstr "New Year's Day"
+
+#. Christmas (Julian calendar).
+#: holidays/countries/ukraine.py:73
+msgid "Різдво Христове (за юліанським календарем)"
+msgstr "Christmas (Julian calendar)"
+
+#. International Women's Day.
+#: holidays/countries/ukraine.py:79
+msgid "Міжнародний жіночий день"
+msgstr "International Women's Day"
+
+#. Easter Sunday (Pascha).
+#: holidays/countries/ukraine.py:87
+msgid "Великдень (Пасха)"
+msgstr "Easter Sunday (Pascha)"
+
+#. Holy Trinity Day.
+#: holidays/countries/ukraine.py:100
+msgid "Трійця"
+msgstr "Holy Trinity Day"
+
+#. Labour Day.
+#: holidays/countries/ukraine.py:105
+msgid "День праці"
+msgstr "Labor Day"
+
+#. International Workers' Solidarity Day.
+#: holidays/countries/ukraine.py:109
+msgid "День міжнародної солідарності трудящих"
+msgstr "International Workers' Solidarity Day"
+
+#. Day of Victory over Nazism in World War II (Victory Day).
+#: holidays/countries/ukraine.py:116
+msgid "День перемоги над нацизмом у Другій світовій війні (День перемоги)"
+msgstr "Day of Victory over Nazism in World War II (Victory Day)"
+
+#. Victory Day.
+#: holidays/countries/ukraine.py:122
+msgid "День перемоги"
+msgstr "Victory Day"
+
+#. Day of the Constitution of Ukraine.
+#: holidays/countries/ukraine.py:130
+msgid "День Конституції України"
+msgstr "Day of the Constitution of Ukraine"
+
+#. Independence Day.
+#: holidays/countries/ukraine.py:134
+msgid "День незалежності України"
+msgstr "Independence Day"
+
+#. Day of the defender of Ukraine.
+#: holidays/countries/ukraine.py:143
+msgid "День захисників і захисниць України"
+msgstr "Day of defenders of Ukraine"
+
+#. Defender of Ukraine Day.
+#: holidays/countries/ukraine.py:146
+msgid "День захисника України"
+msgstr "Defender of Ukraine Day"
+
+#. Anniversary of the Great October Socialist Revolution.
+#: holidays/countries/ukraine.py:152
+msgid "Річниця Великої Жовтневої соціалістичної революції"
+msgstr "Anniversary of the Great October Socialist Revolution"
+
+#. Christmas (Gregorian calendar).
+#: holidays/countries/ukraine.py:162
+msgid "Різдво Христове (за григоріанським календарем)"
+msgstr "Christmas (Gregorian calendar)"

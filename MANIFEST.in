@@ -1,5 +1,8 @@
-include *.py
-include *.rst
-include LICENSE
 include CHANGES
-include py.typed
+include holidays/py.typed
+recursive-include docs *
+recursive-include holidays *.py
+recursive-include holidays/locale *.mo
+recursive-include holidays/locale *.po
+recursive-include scripts/l10n *.py
+recursive-include tests *.py

@@ -10,17 +10,16 @@
 #  License: MIT (see LICENSE file)
 
 import warnings
-from datetime import date
 
-from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
-
-from holidays.constants import JAN, MAR, APR, MAY, JUN, AUG, OCT, NOV, DEC
+from holidays.constants import JAN, MAR, APR, MAY, JUN, AUG, OCT, NOV
 from holidays.holiday_base import HolidayBase
-from holidays.utils import _islamic_to_gre
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
+from holidays.holiday_groups import IslamicHolidays
 
 
-class India(HolidayBase):
+class India(
+    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
+):
     """
     https://www.india.gov.in/calendar
     https://www.india.gov.in/state-and-ut-holiday-calendar
@@ -72,47 +71,76 @@ class India(HolidayBase):
         "WB",  # West Bengal
     ]
 
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        IslamicHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year):
         super()._populate(year)
 
-        # Pongal/ Makar Sankranti
-        self[date(year, JAN, 14)] = "Makar Sankranti / Pongal"
+        # Pongal/ Makar Sankranti.
+        self._add_holiday("Makar Sankranti / Pongal", JAN, 14)
 
         if year >= 1950:
-            # Republic Day
-            self[date(year, JAN, 26)] = "Republic Day"
+            # Republic Day.
+            self._add_holiday("Republic Day", JAN, 26)
 
         if year >= 1947:
-            # Independence Day
-            self[date(year, AUG, 15)] = "Independence Day"
+            # Independence Day.
+            self._add_holiday("Independence Day", AUG, 15)
 
-        # Gandhi Jayanti
-        self[date(year, OCT, 2)] = "Gandhi Jayanti"
+        # Gandhi Jayanti.
+        self._add_holiday("Gandhi Jayanti", OCT, 2)
 
-        # Labour Day
-        self[date(year, MAY, 1)] = "Labour Day"
-
-        # Christmas
-        self[date(year, DEC, 25)] = "Christmas"
+        # Labour Day.
+        self._add_labour_day("Labour Day")
 
         # GJ: Gujarat
         if self.subdiv == "GJ":
-            self[date(year, JAN, 14)] = "Uttarayan"
-            self[date(year, MAY, 1)] = "Gujarat Day"
-            self[date(year, OCT, 31)] = "Sardar Patel Jayanti"
-
-        if self.subdiv == "BR":
-            self[date(year, MAR, 22)] = "Bihar Day"
-
-        if self.subdiv == "RJ":
-            self[date(year, MAR, 30)] = "Rajasthan Day"
-            self[date(year, JUN, 15)] = "Maharana Pratap Jayanti"
-
-        if self.subdiv == "OR":
-            self[date(year, APR, 1)] = "Odisha Day (Utkala Dibasa)"
-            self[date(year, APR, 15)] = (
-                "Maha Vishuva Sankranti / Pana" " Sankranti"
+            self._add_holiday("Uttarayan", JAN, 14)
+            self._add_holiday("Gujarat Day", MAY, 1)
+            self._add_holiday("Sardar Patel Jayanti", OCT, 31)
+        elif self.subdiv == "BR":
+            self._add_holiday("Bihar Day", MAR, 22)
+        elif self.subdiv == "RJ":
+            self._add_holiday("Rajasthan Day", MAR, 30)
+            self._add_holiday("Maharana Pratap Jayanti", JUN, 15)
+        elif self.subdiv == "OR":
+            self._add_holiday("Odisha Day (Utkala Dibasa)", APR, 1)
+            self._add_holiday(
+                "Maha Vishuva Sankranti / Pana" " Sankranti", APR, 15
             )
+        elif self.subdiv == "TN":
+            self._add_holiday("Puthandu (Tamil New Year)", APR, 14)
+            self._add_holiday("Puthandu (Tamil New Year)", APR, 15)
+        elif self.subdiv == "WB":
+            self._add_holiday("Pohela Boishakh", APR, 14)
+            self._add_holiday("Pohela Boishakh", APR, 15)
+            self._add_holiday("Rabindra Jayanti", MAY, 9)
+        elif self.subdiv == "AS":
+            self._add_holiday("Bihu (Assamese New Year)", APR, 15)
+        elif self.subdiv == "MH":
+            self._add_holiday("Maharashtra Day", MAY, 1)
+            self._add_holiday("Dussehra", OCT, 15)
+        elif self.subdiv == "SK":
+            self._add_holiday("Annexation Day", MAY, 16)
+        elif self.subdiv == "KA":
+            self._add_holiday("Karnataka Rajyotsava", NOV, 1)
+        elif self.subdiv == "AP":
+            self._add_holiday("Andhra Pradesh Foundation Day", NOV, 1)
+        elif self.subdiv == "HR":
+            self._add_holiday("Haryana Foundation Day", NOV, 1)
+        elif self.subdiv == "MP":
+            self._add_holiday("Madhya Pradesh Foundation Day", NOV, 1)
+        elif self.subdiv == "KL":
+            self._add_holiday("Kerala Foundation Day", NOV, 1)
+        elif self.subdiv == "CG":
+            self._add_holiday("Chhattisgarh Foundation Day", NOV, 1)
+        elif self.subdiv == "TS":
+            self._add_holiday("Eid al-Fitr", APR, 6)
+            self._add_holiday("Bathukamma Festival", OCT, 6)
 
         if self.subdiv in {
             "OR",
@@ -126,53 +154,11 @@ class India(HolidayBase):
             "UK",
             "TN",
         }:
-            self[date(year, APR, 14)] = "Dr. B. R. Ambedkar's Jayanti"
-
-        if self.subdiv == "TN":
-            self[date(year, APR, 14)] = "Puthandu (Tamil New Year)"
-            self[date(year, APR, 15)] = "Puthandu (Tamil New Year)"
-
-        if self.subdiv == "WB":
-            self[date(year, APR, 14)] = "Pohela Boishakh"
-            self[date(year, APR, 15)] = "Pohela Boishakh"
-            self[date(year, MAY, 9)] = "Rabindra Jayanti"
-
-        if self.subdiv == "AS":
-            self[date(year, APR, 15)] = "Bihu (Assamese New Year)"
-
-        if self.subdiv == "MH":
-            self[date(year, MAY, 1)] = "Maharashtra Day"
-            self[date(year, OCT, 15)] = "Dussehra"
-
-        if self.subdiv == "SK":
-            self[date(year, MAY, 16)] = "Annexation Day"
-
-        if self.subdiv == "KA":
-            self[date(year, NOV, 1)] = "Karnataka Rajyotsava"
-
-        if self.subdiv == "AP":
-            self[date(year, NOV, 1)] = "Andhra Pradesh Foundation Day"
-
-        if self.subdiv == "HR":
-            self[date(year, NOV, 1)] = "Haryana Foundation Day"
-
-        if self.subdiv == "MP":
-            self[date(year, NOV, 1)] = "Madhya Pradesh Foundation Day"
-
-        if self.subdiv == "KL":
-            self[date(year, NOV, 1)] = "Kerala Foundation Day"
-
-        if self.subdiv == "CG":
-            self[date(year, NOV, 1)] = "Chhattisgarh Foundation Day"
-
-        if self.subdiv == "TS":
-            self[date(year, OCT, 6)] = "Bathukamma Festival"
-            self[date(year, APR, 6)] = "Eid al-Fitr"
+            self._add_holiday("Dr. B. R. Ambedkar's Jayanti", APR, 14)
 
         # Directly lifted Diwali and Holi dates from FBProphet from:
         # https://github.com/facebook/prophet/blob/main/python/prophet/hdays.py
         # Warnings kept in place so that users are aware
-
         if year < 2001 or year > 2030:
             warning_msg = (
                 "Diwali and Holi holidays available from 2001 to 2030 only"
@@ -248,42 +234,34 @@ class India(HolidayBase):
         }
 
         if year in diwali_dates:
-            hol_date = date(year, *diwali_dates[year])
-            self[hol_date] = "Diwali"
+            self._add_holiday("Diwali", *diwali_dates[year])
+
         if year in holi_dates:
-            hol_date = date(year, *holi_dates[year])
-            self[hol_date] = "Holi"
+            self._add_holiday("Holi", *holi_dates[year])
 
-        # Islamic holidays
-        # Day of Ashura (10th day of 1st Islamic month)
-        name = "Day of Ashura"
-        for dt in _islamic_to_gre(year, 1, 10):
-            self[dt] = f"{name}* (*estimated)"
+        # Islamic holidays.
+        # Day of Ashura.
+        self._add_ashura_day("Day of Ashura* (*estimated)")
 
-        # Mawlid, Birth of the Prophet (12th day of 3rd Islamic month)
-        name = "Mawlid"
-        for dt in _islamic_to_gre(year, 3, 12):
-            self[dt] = f"{name}* (*estimated)"
+        # Birth of the Prophet.
+        self._add_mawlid_day("Mawlid* (*estimated)")
 
-        # Eid ul-Fitr (1st and 2nd day of 10th Islamic month)
-        name = "Eid ul-Fitr"
-        for dt in _islamic_to_gre(year, 10, 1):
-            self[dt] = f"{name}* (*estimated)"
-            self[dt + rd(days=+1)] = f"{name}* (*estimated)"
+        # Eid ul-Fitr.
+        name = "Eid ul-Fitr* (*estimated)"
+        self._add_eid_al_fitr_day(name)
+        self._add_eid_al_fitr_day_two(name)
 
-        # Eid al-Adha, i.e., Feast of the Sacrifice
-        name = "Eid al-Adha"
-        for dt in _islamic_to_gre(year, 12, 10):
-            self[dt] = f"{name}* (*estimated)"
-            self[dt + rd(days=+1)] = f"{name}* (*estimated)"
+        # Eid al-Adha.
+        name = "Eid al-Adha* (*estimated)"
+        self._add_eid_al_adha_day(name)
+        self._add_eid_al_adha_day_two(name)
 
-        # Christian holidays
-        easter_date = easter(year)
-        self[easter_date + rd(days=-7)] = "Palm Sunday"
-        self[easter_date + rd(days=-2)] = "Good Friday"
-        self[easter_date] = "Easter Sunday"
-        self[easter_date + rd(days=+49)] = "Feast of Pentecost"
-        self[date(year, DEC, 25)] = "Christmas Day"
+        # Christian holidays.
+        self._add_palm_sunday("Palm Sunday")
+        self._add_good_friday("Good Friday")
+        self._add_easter_sunday("Easter Sunday")
+        self._add_whit_sunday("Feast of Pentecost")
+        self._add_christmas_day("Christmas Day")
 
 
 class IN(India):

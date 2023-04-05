@@ -1,0 +1,97 @@
+# Venezuela holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.22\n"
+"POT-Creation-Date: 2023-03-05 12:23+0200\n"
+"PO-Revision-Date: 2023-03-05 12:44+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: ./holidays/countries/venezuela.py:47
+msgid "Año Nuevo"
+msgstr ""
+
+#. Monday of Carnival.
+#: ./holidays/countries/venezuela.py:50
+msgid "Lunes de Carnaval"
+msgstr ""
+
+#. Tuesday of Carnival.
+#: ./holidays/countries/venezuela.py:53
+msgid "Martes de Carnaval"
+msgstr ""
+
+#. Maundy Thursday.
+#: ./holidays/countries/venezuela.py:56
+msgid "Jueves Santo"
+msgstr ""
+
+#. Good Friday.
+#: ./holidays/countries/venezuela.py:59
+msgid "Viernes Santo"
+msgstr ""
+
+#. Declaration of Independence.
+#: ./holidays/countries/venezuela.py:64
+msgid "Declaración de la Independencia"
+msgstr ""
+
+#. International Worker's Day.
+#: ./holidays/countries/venezuela.py:69
+msgid "Dia Mundial del Trabajador"
+msgstr ""
+
+#. Battle of Carabobo.
+#: ./holidays/countries/venezuela.py:74
+msgid "Batalla de Carabobo"
+msgstr ""
+
+#. Independence Day.
+#: ./holidays/countries/venezuela.py:79
+msgid "Día de la Independencia"
+msgstr ""
+
+#. Birthday of Simon Bolivar.
+#: ./holidays/countries/venezuela.py:83
+msgid "Natalicio de Simón Bolívar"
+msgstr ""
+
+#. Day of Indigenous Resistance.
+#: ./holidays/countries/venezuela.py:87
+msgid "Día de la Resistencia Indígena"
+msgstr ""
+
+#. Columbus Day.
+#: ./holidays/countries/venezuela.py:90
+msgid "Día de la Raza"
+msgstr ""
+
+#. Unknown Holiday.
+#: ./holidays/countries/venezuela.py:96
+msgid "Día Festivo Desconocido"
+msgstr ""
+
+#. Christmas Eve.
+#: ./holidays/countries/venezuela.py:99
+msgid "Nochebuena"
+msgstr ""
+
+#. Christmas Day.
+#: ./holidays/countries/venezuela.py:102
+msgid "Día de Navidad"
+msgstr ""
+
+#. New Year's Eve.
+#: ./holidays/countries/venezuela.py:105
+msgid "Fiesta de Fin de Año"
+msgstr ""

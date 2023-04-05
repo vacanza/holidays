@@ -1,0 +1,89 @@
+# Costa Rica holidays uk localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.22\n"
+"POT-Creation-Date: 2023-03-22 22:55+0200\n"
+"PO-Revision-Date: 2023-03-22 22:57+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: holidays/countries/costa_rica.py:40 holidays/countries/costa_rica.py:53
+#: holidays/countries/costa_rica.py:124
+#, c-format
+msgid "%s (Observado)"
+msgstr "%s (вихідний)"
+
+#. New Year's Day.
+#: holidays/countries/costa_rica.py:59
+msgid "Año Nuevo"
+msgstr "Новий рік"
+
+#. Maundy Thursday.
+#: holidays/countries/costa_rica.py:62
+msgid "Jueves Santo"
+msgstr "Великий четвер"
+
+#. Good Friday.
+#: holidays/countries/costa_rica.py:65
+msgid "Viernes Santo"
+msgstr "Страсна пʼятниця"
+
+#. Juan Santamaría Day.
+#: holidays/countries/costa_rica.py:71
+msgid "Día de Juan Santamaría"
+msgstr "День Хуана Сантамарії"
+
+#. International Labor Day.
+#: holidays/countries/costa_rica.py:80
+msgid "Día Internacional del Trabajo"
+msgstr "Міжнародний день трудящих"
+
+#. Annexation of the Party of Nicoya to Costa Rica.
+#: holidays/countries/costa_rica.py:90
+msgid "Anexión del Partido de Nicoya a Costa Rica"
+msgstr "День приєднання Нікої"
+
+#. Feast of Our Lady of the Angels.
+#: holidays/countries/costa_rica.py:100
+msgid "Fiesta de Nuestra Señora de los Ángeles"
+msgstr "Свято Богоматері Ангелів"
+
+#. Mother's Day.
+#: holidays/countries/costa_rica.py:107
+msgid "Día de la Madre"
+msgstr "День матері"
+
+#. Day of the Black Person and Afro-Costa Rican Culture.
+#: holidays/countries/costa_rica.py:119
+msgid "Día de la Persona Negra y la Cultura Afrocostarricense"
+msgstr "День чорношкірої людини та афро-костариканської культури"
+
+#. Independence Day.
+#: holidays/countries/costa_rica.py:129
+msgid "Día de la Independencia"
+msgstr "День незалежності"
+
+#. Cultures Day.
+#: holidays/countries/costa_rica.py:138
+msgid "Día de las Culturas"
+msgstr "День культур"
+
+#. Army Abolition Day.
+#: holidays/countries/costa_rica.py:144
+msgid "Día de la Abolición del Ejército"
+msgstr "День ліквідації армії"
+
+#. Christmas Day.
+#: holidays/countries/costa_rica.py:151
+msgid "Navidad"
+msgstr "Різдво Христове"

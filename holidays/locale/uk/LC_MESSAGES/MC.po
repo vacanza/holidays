@@ -1,0 +1,87 @@
+# Monaco holidays uk localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.20\n"
+"POT-Creation-Date: 2023-02-20 11:58+0200\n"
+"PO-Revision-Date: 2023-03-05 13:25+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: holidays/countries/monaco.py:31
+msgid "Jour férié"
+msgstr "Державне свято"
+
+#: holidays/countries/monaco.py:39
+#, c-format
+msgid "%s (Observé)"
+msgstr "%s (вихідний)"
+
+#. New Year's Day
+#: holidays/countries/monaco.py:45
+msgid "Le jour de l'An"
+msgstr "Новий рік"
+
+#. Saint Dévote's Day
+#: holidays/countries/monaco.py:48
+msgid "La Sainte Dévote"
+msgstr "День святої Девоти"
+
+#. Easter Monday
+#: holidays/countries/monaco.py:53
+msgid "Le lundi de Pâques"
+msgstr "Великодній понеділок"
+
+#. Labour Day
+#: holidays/countries/monaco.py:56
+msgid "Fête de la Travaille"
+msgstr "День праці"
+
+#. Ascension's Day
+#: holidays/countries/monaco.py:59
+msgid "L'Ascension"
+msgstr "Вознесіння Господнє"
+
+#. Whit Monday
+#: holidays/countries/monaco.py:62
+msgid "Le lundi de Pentecôte"
+msgstr "День Святого Духа"
+
+#. Corpus Christi
+#: holidays/countries/monaco.py:65
+msgid "La Fête Dieu"
+msgstr "Свято Тіла і Крові Христових"
+
+#. Assumption's Day
+#: holidays/countries/monaco.py:70
+msgid "L'Assomption de Marie"
+msgstr "Успіння Пресвятої Богородиці"
+
+#. All Saints' Day
+#: holidays/countries/monaco.py:74
+msgid "La Toussaint"
+msgstr "День усіх святих"
+
+#. Prince's Day
+#: holidays/countries/monaco.py:77
+msgid "La Fête du Prince"
+msgstr "День Князя"
+
+#. Immaculate Conception's Day
+#: holidays/countries/monaco.py:83
+msgid "L'Immaculée Conception"
+msgstr "Непорочне зачаття Діви Марії"
+
+#. Christmas Day
+#: holidays/countries/monaco.py:86
+msgid "Noël"
+msgstr "Різдво Христове"

@@ -1,0 +1,86 @@
+# Monaco holidays en_US localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.20\n"
+"POT-Creation-Date: 2023-02-20 11:58+0200\n"
+"PO-Revision-Date: 2023-02-20 12:13+0200\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: holidays/countries/monaco.py:31
+msgid "Jour férié"
+msgstr "Public holiday"
+
+#: holidays/countries/monaco.py:39
+#, c-format
+msgid "%s (Observé)"
+msgstr "%s (Observed)"
+
+#. New Year's Day
+#: holidays/countries/monaco.py:45
+msgid "Le jour de l'An"
+msgstr "New Year's Day"
+
+#. Saint Dévote's Day
+#: holidays/countries/monaco.py:48
+msgid "La Sainte Dévote"
+msgstr "Saint Dévote's Day"
+
+#. Easter Monday
+#: holidays/countries/monaco.py:53
+msgid "Le lundi de Pâques"
+msgstr "Easter Monday"
+
+#. Labour Day
+#: holidays/countries/monaco.py:56
+msgid "Fête de la Travaille"
+msgstr "Labour Day"
+
+#. Ascension's Day
+#: holidays/countries/monaco.py:59
+msgid "L'Ascension"
+msgstr "Ascension's Day"
+
+#. Whit Monday
+#: holidays/countries/monaco.py:62
+msgid "Le lundi de Pentecôte"
+msgstr "Whit Monday"
+
+#. Corpus Christi
+#: holidays/countries/monaco.py:65
+msgid "La Fête Dieu"
+msgstr "Corpus Christi"
+
+#. Assumption's Day
+#: holidays/countries/monaco.py:70
+msgid "L'Assomption de Marie"
+msgstr "Assumption's Day"
+
+#. All Saints' Day
+#: holidays/countries/monaco.py:74
+msgid "La Toussaint"
+msgstr "All Saints' Day"
+
+#. Prince's Day
+#: holidays/countries/monaco.py:77
+msgid "La Fête du Prince"
+msgstr "Prince's Day"
+
+#. Immaculate Conception's Day
+#: holidays/countries/monaco.py:83
+msgid "L'Immaculée Conception"
+msgstr "Immaculate Conception's Day"
+
+#. Christmas Day
+#: holidays/countries/monaco.py:86
+msgid "Noël"
+msgstr "Christmas Day"

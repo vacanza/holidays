@@ -9,61 +9,86 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from gettext import gettext as tr
 
-from dateutil.easter import EASTER_ORTHODOX, easter
-from dateutil.relativedelta import relativedelta as rd
-
-from holidays.constants import JAN, MAY, JUN, AUG, NOV, DEC
+from holidays.calendars import GREGORIAN_CALENDAR, JULIAN_CALENDAR
+from holidays.constants import JAN, JUN, NOV, DEC
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Romania(HolidayBase):
+class Romania(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Romania
+    http://www.dreptonline.ro/legislatie/codul_muncii.php
     """
 
     country = "RO"
+    default_language = "ro"
+
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self, JULIAN_CALENDAR)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
 
-        easter_date = easter(year, method=EASTER_ORTHODOX)
+        # New Year's Day.
+        name = tr("Anul Nou")
+        self._add_new_years_day(name)
+        self._add_new_years_day_two(name)
 
-        # New Year
-        for day in (1, 2):
-            self[date(year, JAN, day)] = "Anul Nou"
+        if year >= 2024:
+            # Epiphany.
+            self._add_epiphany_day(tr("Bobotează"), GREGORIAN_CALENDAR)
 
-        # Anniversary of the formation of the United Principalities
-        self[date(year, JAN, 24)] = "Unirea Principatelor Române"
+            # Saint John the Baptist.
+            self._add_holiday(tr("Sfântul Ion"), JAN, 7)
 
-        # Easter (Friday, Sunday and Monday)
-        for day_after_easter in (-2, 0, 1):
-            self[easter_date + rd(days=day_after_easter)] = "Paștele"
+        if year >= 2016:
+            # Unification of the Romanian Principalities Day.
+            self._add_holiday(tr("Ziua Unirii Principatelor Române"), JAN, 24)
 
-        # Labour Day
-        self[date(year, MAY, 1)] = "Ziua Muncii"
+        # Easter.
+        name = tr("Paștele")
+        if year >= 2018:
+            self._add_good_friday(name)
 
-        # Children's Day (since 2017)
+        self._add_easter_sunday(name)
+        self._add_easter_monday(name)
+
+        # Labour Day.
+        self._add_labour_day(tr("Ziua Muncii"))
+
         if year >= 2017:
-            self[date(year, JUN, 1)] = "Ziua Copilului"
+            # Children's Day.
+            self._add_holiday(tr("Ziua Copilului"), JUN, 1)
 
-        # Whit Monday
-        for day_after_easter in (49, 50):
-            self[easter_date + rd(days=day_after_easter)] = "Rusaliile"
+        # Pentecost.
+        name = tr("Rusaliile")
+        self._add_whit_sunday(name)
+        self._add_whit_monday(name)
 
-        # Assumption of Mary
-        self[date(year, AUG, 15)] = "Adormirea Maicii Domnului"
+        # Law #202/2008
+        if year >= 2009:
+            # Dormition of the Mother of God.
+            self._add_assumption_of_mary_day(tr("Adormirea Maicii Domnului"))
 
-        # St. Andrew's Day
-        self[date(year, NOV, 30)] = "Sfântul Andrei"
+        # Law #147/2012
+        if year >= 2012:
+            # Saint Andrew's Day.
+            self._add_holiday(
+                tr("Sfantul Apostol Andrei cel Intai chemat"), NOV, 30
+            )
 
-        # National Day
-        self[date(year, DEC, 1)] = "Ziua Națională a României"
+        # National Day.
+        self._add_holiday(tr("Ziua Națională a României"), DEC, 1)
 
-        # Christmas Day
-        self[date(year, DEC, 25)] = "Crăciunul"
-        self[date(year, DEC, 26)] = "Crăciunul"
+        # Christmas Day.
+        name = tr("Crăciunul")
+        self._add_christmas_day(name, GREGORIAN_CALENDAR)
+        self._add_christmas_day_two(name, GREGORIAN_CALENDAR)
 
 
 class RO(Romania):

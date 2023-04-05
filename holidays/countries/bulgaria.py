@@ -9,10 +9,10 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from datetime import timedelta as td
+from gettext import gettext as tr
 
 from dateutil.easter import EASTER_ORTHODOX, easter
-from dateutil.relativedelta import relativedelta as rd
 
 from holidays.constants import JAN, MAR, MAY, SEP, NOV, DEC
 from holidays.holiday_base import HolidayBase
@@ -40,57 +40,70 @@ class Bulgaria(HolidayBase):
     """
 
     country = "BG"
+    default_language = "bg"
 
     def _populate(self, year):
+        if year < 1990:
+            return None
+
         super()._populate(year)
 
-        if year < 1990:
-            return
+        # New Year's Day.
+        self._add_holiday(tr("Нова година"), JAN, 1)
 
-        # New Year's Day
-        self[date(year, JAN, 1)] = "Нова година"
-
-        # Liberation Day
-        self[
-            date(year, MAR, 3)
-        ] = "Ден на Освобождението на България от османско иго"
-
-        # International Workers' Day
-        self[
-            date(year, MAY, 1)
-        ] = "Ден на труда и на международната работническа солидарност"
-
-        # Saint George's Day
-        self[
-            date(year, MAY, 6)
-        ] = "Гергьовден, Ден на храбростта и Българската армия"
-
-        # Bulgarian Education and Culture and Slavonic Literature Day
-        self[date(year, MAY, 24)] = (
-            "Ден на светите братя Кирил и Методий, на българската азбука, "
-            "просвета и култура и на славянската книжовност"
+        # Liberation Day.
+        self._add_holiday(
+            tr("Ден на Освобождението на България от османско иго"), MAR, 3
         )
 
-        # Unification Day
-        self[date(year, SEP, 6)] = "Ден на Съединението"
+        # International Workers' Day.
+        self._add_holiday(
+            tr("Ден на труда и на международната работническа солидарност"),
+            MAY,
+            1,
+        )
 
-        # Independence Day
-        self[date(year, SEP, 22)] = "Ден на Независимостта на България"
+        # Saint George's Day.
+        self._add_holiday(
+            tr("Гергьовден, Ден на храбростта и Българската армия"), MAY, 6
+        )
 
-        # National Awakening Day
-        self[date(year, NOV, 1)] = "Ден на народните будители"
+        # Bulgarian Education and Culture and Slavonic Literature Day.
+        self._add_holiday(
+            tr(
+                "Ден на светите братя Кирил и Методий, на българската азбука, "
+                "просвета и култура и на славянската книжовност"
+            ),
+            MAY,
+            24,
+        )
 
-        # Christmas
-        self[date(year, DEC, 24)] = "Бъдни вечер"
-        self[date(year, DEC, 25)] = "Рождество Христово"
-        self[date(year, DEC, 26)] = "Рождество Христово"
+        # Unification Day.
+        self._add_holiday(tr("Ден на Съединението"), SEP, 6)
 
-        # Easter
+        # Independence Day.
+        self._add_holiday(tr("Ден на Независимостта на България"), SEP, 22)
+
+        # National Awakening Day.
+        self._add_holiday(tr("Ден на народните будители"), NOV, 1)
+
+        # Christmas Eve.
+        self._add_holiday(tr("Бъдни вечер"), DEC, 24)
+        # Christmas Day 1.
+        self._add_holiday(tr("Рождество Христово"), DEC, 25)
+        # Christmas Day 2.
+        self._add_holiday(tr("Рождество Христово"), DEC, 26)
+
+        # Easter.
         easter_date = easter(year, method=EASTER_ORTHODOX)
-        self[easter_date + rd(days=-2)] = "Велики петък"
-        self[easter_date + rd(days=-1)] = "Велика събота"
-        self[easter_date] = "Великден"
-        self[easter_date + rd(days=+1)] = "Великден"
+        # Good Friday.
+        self._add_holiday(tr("Велики петък"), easter_date + td(days=-2))
+        # Easter Saturday.
+        self._add_holiday(tr("Велика събота"), easter_date + td(days=-1))
+        # Easter Sunday.
+        self._add_holiday(tr("Великден"), easter_date)
+        # Easter Monday.
+        self._add_holiday(tr("Великден"), easter_date + td(days=+1))
 
 
 class BG(Bulgaria):

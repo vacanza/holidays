@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from gettext import gettext as tr
 
 from holidays.constants import JAN, FEB, MAR, MAY, JUN, NOV
 from holidays.holiday_base import HolidayBase
@@ -21,40 +21,41 @@ class Russia(HolidayBase):
     """
 
     country = "RU"
+    default_language = "ru"
 
     def _populate(self, year):
         super()._populate(year)
 
-        # New Year Holidays
-        name = "Новогодние каникулы"
+        # New Year Holidays.
+        name = tr("Новогодние каникулы")
         for day in range(1, 7):
-            self[date(year, JAN, day)] = name
-        self[date(year, JAN, 8)] = name
+            self._add_holiday(name, JAN, day)
+        self._add_holiday(name, JAN, 8)
 
-        # Christmas Day (Orthodox)
-        self[date(year, JAN, 7)] = "Рождество Христово"
+        # Orthodox Christmas Day.
+        self._add_holiday(tr("Рождество Христово"), JAN, 7)
 
-        # Defender of the Fatherland Day
-        self[date(year, FEB, 23)] = "День защитника Отечества"
+        # Defender of the Fatherland Day.
+        self._add_holiday(tr("День защитника Отечества"), FEB, 23)
 
-        # International Women's Day
-        self[date(year, MAR, 8)] = "Международный женский день"
+        # International Women's Day.
+        self._add_holiday(tr("Международный женский день"), MAR, 8)
 
-        # Labour Day
-        self[date(year, MAY, 1)] = "Праздник Весны и Труда"
+        # Labour Day.
+        self._add_holiday(tr("Праздник Весны и Труда"), MAY, 1)
 
-        # Victory Day
-        self[date(year, MAY, 9)] = "День Победы"
+        # Victory Day.
+        self._add_holiday(tr("День Победы"), MAY, 9)
 
-        # Russia's Day
-        self[date(year, JUN, 12)] = "День России"
+        # Russia's Day.
+        self._add_holiday(tr("День России"), JUN, 12)
 
         if year >= 2005:
-            # Unity Day
-            self[date(year, NOV, 4)] = "День народного единства"
+            # Unity Day.
+            self._add_holiday(tr("День народного единства"), NOV, 4)
         else:
-            # October Revolution Day
-            self[date(year, NOV, 7)] = "День Октябрьской революции"
+            # October Revolution Day.
+            self._add_holiday(tr("День Октябрьской революции"), NOV, 7)
 
 
 class RU(Russia):

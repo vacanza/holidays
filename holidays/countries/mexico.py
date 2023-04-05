@@ -10,94 +10,74 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from gettext import gettext as tr
 
-from dateutil.relativedelta import MO
-from dateutil.relativedelta import relativedelta as rd
-
-from holidays.constants import FRI, SAT, SUN, JAN, FEB, MAR, MAY, SEP, NOV, DEC
+from holidays.calendars import _get_nth_weekday_of_month
+from holidays.constants import JAN, FEB, MAR, MAY, SEP, NOV, DEC, MON
 from holidays.holiday_base import HolidayBase
 
 
 class Mexico(HolidayBase):
+    """
+    References:
+    - https://en.wikipedia.org/wiki/Public_holidays_in_Mexico
+    - https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_festivos_en_M%C3%A9xico
+    - https://www.gob.mx/cms/uploads/attachment/file/156203/1044_Ley_Federal_del_Trabajo.pdf  # noqa: E501
+    - http://www.diputados.gob.mx/LeyesBiblio/ref/lft/LFT_orig_01abr70_ima.pdf
+    """
 
     country = "MX"
-
-    def _add_with_observed(self, holiday: date, name: str):
-        self[holiday] = name
-        if self.observed and holiday.weekday() == SAT:
-            self[holiday + rd(days=-1)] = name + " (Observed)"
-        elif self.observed and holiday.weekday() == SUN:
-            self[holiday + rd(days=+1)] = name + " (Observed)"
+    default_language = "es"
 
     def _populate(self, year):
         super()._populate(year)
 
-        # New Year's Day
-        name = "Año Nuevo [New Year's Day]"
-        dt = date(year, JAN, 1)
-        self[dt] = name
-        if self.observed and dt.weekday() == SUN:
-            self[dt + rd(days=+1)] = name + " (Observed)"
-        # The next year's observed New Year's Day can be in this year
-        # when it falls on a Friday (Jan 1st is a Saturday)
-        if self.observed and date(year, DEC, 31).weekday() == FRI:
-            self[date(year, DEC, 31)] = name + " (Observed)"
+        # New Year's Day.
+        self._add_holiday(tr("Año Nuevo"), JAN, 1)
 
-        # Constitution Day
-        name = "Día de la Constitución [Constitution Day]"
-        if self.observed and year >= 2007:
-            self[date(year, FEB, 1) + rd(weekday=MO(+1))] = (
-                name + " (Observed)"
+        if year >= 1917:
+            # Constitution Day.
+            self._add_holiday(
+                tr("Día de la Constitución"),
+                _get_nth_weekday_of_month(1, MON, FEB, year)
+                if year >= 2006
+                else date(year, FEB, 5),
             )
 
         if year >= 1917:
-            self[date(year, FEB, 5)] = name
-
-        # Benito Juárez's birthday
-        name = "Natalicio de Benito Juárez [Benito Juárez's birthday]"
-        if self.observed and year >= 2007:
-            self[date(year, MAR, 1) + rd(weekday=MO(+3))] = (
-                name + " (Observed)"
+            # Benito Juárez's birthday.
+            self._add_holiday(
+                tr("Natalicio de Benito Juárez"),
+                _get_nth_weekday_of_month(3, MON, MAR, year)
+                # no 2006 due to celebration of the 200th anniversary
+                # of Benito Juárez in 2006
+                if year >= 2007 else date(year, MAR, 21),
             )
 
-        if year >= 1917:
-            self[date(year, MAR, 21)] = name
-
-        # Labor Day
         if year >= 1923:
-            name = "Día del Trabajo [Labour Day]"
-            dt = date(year, MAY, 1)
-            self._add_with_observed(dt, name)
+            # Labour Day.
+            self._add_holiday(tr("Día del Trabajo"), MAY, 1)
 
-        # Independence Day
-        name = "Día de la Independencia [Independence Day]"
-        dt = date(year, SEP, 16)
-        self._add_with_observed(dt, name)
-
-        # Revolution Day
-        name = "Día de la Revolución [Revolution Day]"
-        if self.observed and year >= 2007:
-            self[date(year, NOV, 1) + rd(weekday=MO(+3))] = (
-                name + " (Observed)"
-            )
+        # Independence Day.
+        self._add_holiday(tr("Día de la Independencia"), SEP, 16)
 
         if year >= 1917:
-            self[date(year, NOV, 20)] = name
-
-        # Change of Federal Government
-        # Every six years--next observance 2018
-        if year >= 1970 and (2096 - year) % 6 == 0:
-            name = (
-                "Transmisión del Poder Ejecutivo Federal"
-                " [Change of Federal Government]"
+            # Revolution Day.
+            self._add_holiday(
+                tr("Día de la Revolución"),
+                _get_nth_weekday_of_month(3, MON, NOV, year)
+                if year >= 2006
+                else date(year, NOV, 20),
             )
-            dt = date(year, DEC, 1)
-            self._add_with_observed(dt, name)
 
-        # Christmas
-        name = "Navidad [Christmas]"
-        dt = date(year, DEC, 25)
-        self._add_with_observed(dt, name)
+        if year >= 1970 and (year - 1970) % 6 == 0:
+            # Change of Federal Government.
+            self._add_holiday(
+                tr("Transmisión del Poder Ejecutivo Federal"), DEC, 1
+            )
+
+        # Christmas Day.
+        self._add_holiday(tr("Navidad"), DEC, 25)
 
 
 class MX(Mexico):

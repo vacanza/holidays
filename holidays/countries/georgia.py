@@ -9,93 +9,75 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from gettext import gettext as tr
 
-from dateutil.easter import EASTER_ORTHODOX, easter
-from dateutil.relativedelta import relativedelta as rd
-
-from holidays.constants import JAN, MAR, APR, MAY, AUG, OCT, NOV
+from holidays.calendars import JULIAN_CALENDAR
+from holidays.constants import MAR, APR, MAY, AUG, OCT, NOV
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Georgia(HolidayBase):
+class Georgia(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
-    https://en.wikipedia.org/wiki/Public_holidays_in_Georgia_(country)
+    Georgia holidays.
+
+    References:
+     - https://en.wikipedia.org/wiki/Public_holidays_in_Georgia_(country)
     """
 
     country = "GE"
+    default_language = "ka"
+
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self, JULIAN_CALENDAR)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
 
-        # New Year's Day
-        name = "ახალი წელი"
-        self[date(year, JAN, 1)] = name
+        # New Year's Day.
+        self._add_new_years_day(tr("ახალი წელი"))
+        self._add_new_years_day_two(tr("ბედობა"))
 
-        # New Year's Day
-        name = "ბედობა"
-        self[date(year, JAN, 2)] = name
+        # Christmas Day (Orthodox).
+        self._add_christmas_day(tr("ქრისტეშობა"))
 
-        # Christmas Day (Orthodox)
-        name = "ქრისტეშობა"
-        self[date(year, JAN, 7)] = name
+        # Baptism Day of our Lord Jesus Christ.
+        self._add_epiphany_day(tr("ნათლისღება"))
 
-        # Baptism Day of our Lord Jesus Christ
-        name = "ნათლისღება"
-        self[date(year, JAN, 19)] = name
+        # Mother's Day.
+        self._add_holiday(tr("დედის დღე"), MAR, 3)
 
-        # Mother's Day
-        name = "დედის დღე"
-        self[date(year, MAR, 3)] = name
+        # Women's Day,
+        self._add_womens_day(tr("ქალთა საერთაშორისო დღე"))
 
-        # Women's Day
-        name = "ქალთა საერთაშორისო დღე"
-        self[date(year, MAR, 8)] = name
+        # Easter.
+        self._add_good_friday(tr("წითელი პარასკევი"))
+        self._add_holy_saturday(tr("დიდი შაბათი"))
+        self._add_easter_sunday(tr("აღდგომა"))
+        self._add_easter_monday(tr("შავი ორშაბათი"))
 
-        easter_date = easter(year, method=EASTER_ORTHODOX)
-        # Orthodox Good Friday
-        name = "წითელი პარასკევი"
-        self[easter_date + rd(days=-2)] = name
+        # National Unity Day,
+        self._add_holiday(tr("ეროვნული ერთიანობის დღე"), APR, 9)
 
-        # Orthodox Holy Saturday
-        name = "დიდი შაბათი"
-        self[easter_date + rd(days=-1)] = name
+        # Day of Victory.
+        self._add_world_war_two_victory_day(tr("ფაშიზმზე გამარჯვების დღე"))
 
-        # Orthodox Easter Sunday
-        name = "აღდგომა"
-        self[easter_date] = name
+        # Saint Andrew the First-Called Day.
+        self._add_holiday(tr("წმინდა ანდრია პირველწოდებულის დღე"), MAY, 12)
 
-        # Orthodox Easter Monday
-        name = "შავი ორშაბათი"
-        self[easter_date + rd(days=+1)] = name
+        # Independence Day.
+        self._add_holiday(tr("დამოუკიდებლობის დღე"), MAY, 26)
 
-        # National Unity Day
-        name = "ეროვნული ერთიანობის დღე"
-        self[date(year, APR, 9)] = name
-
-        # Day of Victory
-        name = "ფაშიზმზე გამარჯვების დღე"
-        self[date(year, MAY, 9)] = name
-
-        # Saint Andrew the First-Called Day
-        name = "წმინდა ანდრია პირველწოდებულის დღე"
-        self[date(year, MAY, 12)] = name
-
-        # Independence Day
-        name = "დამოუკიდებლობის დღე"
-        self[date(year, MAY, 26)] = name
-
-        # Saint Mary's Day
-        name = "მარიამობა"
-        self[date(year, AUG, 28)] = name
+        # Saint Mary's Day.
+        self._add_holiday(tr("მარიამობა"), AUG, 28)
 
         # Day of Svetitskhoveli Cathedral
-        name = "სვეტიცხოვლობა"
-        self[date(year, OCT, 14)] = name
+        self._add_holiday(tr("სვეტიცხოვლობა"), OCT, 14)
 
         # Saint George's Day
-        name = "გიორგობა"
-        self[date(year, NOV, 23)] = name
+        self._add_holiday(tr("გიორგობა"), NOV, 23)
 
 
 class GE(Georgia):

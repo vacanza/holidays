@@ -10,14 +10,14 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import MO
-from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, FEB, APR, MAY, JUN, AUG, NOV, DEC
+from holidays.calendars import _ChineseLuniSolar, _islamic_to_gre
+from holidays.calendars import _get_nth_weekday_of_month
+from holidays.constants import JAN, FEB, APR, MAY, JUN, AUG, NOV, DEC, MON
 from holidays.holiday_base import HolidayBase
-from holidays.utils import _ChineseLuniSolar, _islamic_to_gre
 
 
 class Philippines(HolidayBase):
@@ -51,11 +51,11 @@ class Philippines(HolidayBase):
 
         easter_date = easter(year)
         # Maundy Thursday.
-        self[easter_date + rd(days=-3)] = "Maundy Thursday"
+        self[easter_date + td(days=-3)] = "Maundy Thursday"
         # Good Friday.
-        self[easter_date + rd(days=-2)] = "Good Friday"
+        self[easter_date + td(days=-2)] = "Good Friday"
         # Black Saturday.
-        self[easter_date + rd(days=-1)] = "Black Saturday"
+        self[easter_date + td(days=-1)] = "Black Saturday"
 
         # Labour Day.
         self[date(year, MAY, 1)] = "Labour Day"
@@ -75,7 +75,9 @@ class Philippines(HolidayBase):
         self[date(year, AUG, 21)] = "Ninoy Aquino Day"
 
         # National Heroes Day.
-        self[date(year, AUG, 31) + rd(weekday=MO(-1))] = "National Heroes Day"
+        self[
+            _get_nth_weekday_of_month(-1, MON, AUG, year)
+        ] = "National Heroes Day"
 
         # All Saints' Day.
         self[date(year, NOV, 1)] = "All Saints' Day"

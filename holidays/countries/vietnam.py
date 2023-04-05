@@ -9,16 +9,18 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import importlib
 from datetime import date
+from datetime import timedelta as td
 
-from dateutil.relativedelta import relativedelta as rd
-
+from holidays.calendars import _ExtrasRequireKoreanLunar
 from holidays.constants import JAN, APR, MAY, SEP
 from holidays.holiday_base import HolidayBase
 
+# _ExtrasRequireKoreanLunar related attributes.
+KoreanLunarCalendar = None
 
-class Vietnam(HolidayBase):
+
+class Vietnam(_ExtrasRequireKoreanLunar, HolidayBase):
     """
     https://publicholidays.vn/
     http://vbpl.vn/TW/Pages/vbpqen-toanvan.aspx?ItemID=11013 Article.115
@@ -28,22 +30,15 @@ class Vietnam(HolidayBase):
     country = "VN"
 
     def __init__(self, **kwargs):
-        if not importlib.util.find_spec("korean_lunar_calendar"):
-            raise ImportError(
-                "Could not import 'korean_lunar_calendar'. "
-                "Use `pip install holidays[korean-lunar]` to install it."
-            )
-
-        from korean_lunar_calendar import KoreanLunarCalendar
-
+        _ExtrasRequireKoreanLunar.__init__(self, globals())
         self.korean_cal = KoreanLunarCalendar()
         HolidayBase.__init__(self, **kwargs)
 
     def _add_observed(self, holiday: date) -> None:
         if self._is_weekend(holiday):
-            next_workday = holiday + rd(days=+1)
+            next_workday = holiday + td(days=+1)
             while self._is_weekend(next_workday) or self.get(next_workday):
-                next_workday += rd(days=+1)
+                next_workday += td(days=+1)
             self[next_workday] = self[holiday] + " observed"
 
     def _populate(self, year):
@@ -83,7 +78,7 @@ class Vietnam(HolidayBase):
         )
         hol_date = self.get_solar_date(year, 1, 1)
         for d, name in names:
-            self[(hol_date + rd(days=+d))] = name
+            self[(hol_date + td(days=+d))] = name
 
     # convert lunar calendar date to solar
     def get_solar_date(self, year, month, day):

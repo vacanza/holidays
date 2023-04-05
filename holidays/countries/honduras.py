@@ -9,13 +9,13 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from datetime import timedelta as td
+from gettext import gettext as tr
 
 from dateutil.easter import easter
-from dateutil.relativedelta import WE
-from dateutil.relativedelta import relativedelta as rd
 
-from holidays.constants import JAN, APR, MAY, SEP, OCT, DEC
+from holidays.calendars import _get_nth_weekday_of_month
+from holidays.constants import JAN, APR, MAY, SEP, OCT, DEC, WED
 from holidays.holiday_base import HolidayBase
 
 
@@ -24,55 +24,54 @@ class Honduras(HolidayBase):
     # https://www.ilo.org/dyn/natlex/docs/WEBTEXT/29076/64849/S59HND01.htm#:~:text=El%20presente%20C%C3%B3digo%20regula%20las,compensaci%C3%B3n%20equitativa%20de%20su%20inversi%C3%B3n.
 
     country = "HN"
+    default_language = "es"
 
     def _populate(self, year):
         super()._populate(year)
 
-        # New Year's Day
-        self[date(year, JAN, 1)] = "Año Nuevo [New Year's Day]"
+        # New Year's Day.
+        self._add_holiday(tr("Año Nuevo"), JAN, 1)
 
         easter_date = easter(year)
-        # Maundy Thursday
-        self[easter_date + rd(days=-3)] = "Jueves Santo [Maundy Thursday]"
+        # Maundy Thursday.
+        self._add_holiday(tr("Jueves Santo"), easter_date + td(days=-3))
 
-        # Good Friday
-        self[easter_date + rd(days=-2)] = "Viernes Santo [Good Friday]"
+        # Good Friday.
+        self._add_holiday(tr("Viernes Santo"), easter_date + td(days=-2))
 
-        # Holy Saturday
-        self[easter_date + rd(days=-1)] = "Sábado de Gloria [Holy Saturday]"
+        # Holy Saturday.
+        self._add_holiday(tr("Sábado de Gloria"), easter_date + td(days=-1))
 
-        # Panamerican Day
-        self[date(year, APR, 14)] = "Día de las Américas [Panamerican Day]"
+        # Panamerican Day.
+        self._add_holiday(tr("Día de las Américas"), APR, 14)
 
-        # Labor Day
-        self[date(year, MAY, 1)] = "Día del Trabajo [Labor Day]"
+        # Labor Day.
+        self._add_holiday(tr("Día del Trabajo"), MAY, 1)
 
-        # Independence Day
-        self[
-            date(year, SEP, 15)
-        ] = "Día de la Independencia [Independence Day]"
+        # Independence Day.
+        self._add_holiday(tr("Día de la Independencia"), SEP, 15)
 
         # https://www.tsc.gob.hn/web/leyes/Decreto_78-2015_Traslado_de_Feriados_Octubre.pdf
         if year <= 2014:
-            # Morazan's Day
-            self[date(year, OCT, 3)] = "Día de Morazán [Morazan's Day]"
+            # Morazan's Day.
+            self._add_holiday(tr("Día de Morazán"), OCT, 3)
 
-            # Columbus Day
-            self[date(year, OCT, 12)] = "Día de la Raza [Columbus Day]"
+            # Columbus Day.
+            self._add_holiday(tr("Día de la Raza"), OCT, 12)
 
-            # Army Day
-            self[date(year, OCT, 21)] = "Día de las Fuerzas Armadas [Army Day]"
+            # Army Day.
+            self._add_holiday(tr("Día de las Fuerzas Armadas"), OCT, 21)
         else:
-            # Morazan Weekend
-            # (First Wednesday of October from 12 noon to Saturday 12 noon)
-            holiday_name = "Semana Morazánica [Morazan Weekend]"
-            first_wednesday = date(year, OCT, 1) + rd(weekday=WE(+1))
-            self[first_wednesday] = holiday_name
-            self[first_wednesday + rd(days=+1)] = holiday_name
-            self[first_wednesday + rd(days=+2)] = holiday_name
+            # Morazan Weekend.
+            holiday_name = tr("Semana Morazánica")
+            # First Wednesday of October from 12 noon to Saturday 12 noon.
+            first_wednesday = _get_nth_weekday_of_month(1, WED, OCT, year)
+            self._add_holiday(holiday_name, first_wednesday)
+            self._add_holiday(holiday_name, first_wednesday + td(days=+1))
+            self._add_holiday(holiday_name, first_wednesday + td(days=+2))
 
-        # Christmas
-        self[date(year, DEC, 25)] = "Navidad [Christmas]"
+        # Christmas.
+        self._add_holiday(tr("Navidad"), DEC, 25)
 
 
 class HN(Honduras):

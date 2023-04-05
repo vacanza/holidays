@@ -10,14 +10,14 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
 from dateutil.easter import easter
-from dateutil.relativedelta import relativedelta as rd
 
+from holidays.calendars import _ChineseLuniSolar, _islamic_to_gre
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.utils import _ChineseLuniSolar, _islamic_to_gre
 
 
 class Indonesia(HolidayBase):
@@ -105,14 +105,14 @@ class Indonesia(HolidayBase):
                 hol_date = date(year, *date_obs)
                 self[hol_date] = "Hari Raya Idul Fitri"
                 self[
-                    hol_date + rd(days=+1)
+                    hol_date + td(days=+1)
                 ] = "Hari kedua dari Hari Raya Idul Fitri"
         else:
             for date_obs in _islamic_to_gre(year, 10, 1):
                 hol_date = date_obs
                 self[hol_date] = "Hari Raya Idul Fitri* (*estimated)"
                 self[
-                    hol_date + rd(days=+1)
+                    hol_date + td(days=+1)
                 ] = "Hari kedua dari Hari Raya Idul Fitri* (*estimated)"
 
         # Eid al-Adha
@@ -248,7 +248,7 @@ class Indonesia(HolidayBase):
                 self[hol_date] = "Isra' Mi'raj Nabi Muhammad* (*estimated)"
 
         # Good Friday
-        self[easter(year) + rd(days=-2)] = "Wafat Yesus Kristus"
+        self[easter(year) + td(days=-2)] = "Wafat Yesus Kristus"
 
         # Buddha's Birthday
         if year >= 1983:
@@ -283,7 +283,7 @@ class Indonesia(HolidayBase):
             self[date(year, MAY, 1)] = "Hari Buruh Internasional"
 
         # Ascension Day
-        self[easter(year) + rd(days=+39)] = "Kenaikan Yesus Kristus"
+        self[easter(year) + td(days=+39)] = "Kenaikan Yesus Kristus"
 
         # Pancasila Day
         if year >= 2017:

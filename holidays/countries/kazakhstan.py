@@ -10,12 +10,11 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 
-from dateutil.relativedelta import relativedelta as rd
-
+from holidays.calendars import _islamic_to_gre
 from holidays.constants import JAN, MAR, MAY, JUL, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.utils import _islamic_to_gre
 
 
 class Kazakhstan(HolidayBase):
@@ -29,78 +28,99 @@ class Kazakhstan(HolidayBase):
     country = "KZ"
 
     def _populate(self, year):
+        def _add_with_observed(
+            hol_date: date,
+            hol_name: str,
+            sat_days: int = +2,
+            sun_days: int = +1,
+        ) -> None:
+            self[hol_date] = hol_name
+            if self.observed and self._is_weekend(hol_date) and year >= 2002:
+                self[
+                    hol_date
+                    + td(
+                        days=sat_days
+                        if self._is_saturday(hol_date)
+                        else sun_days
+                    )
+                ] = f"{hol_name} (Observed)"
+
+        # Kazakhstan declared its sovereignty on 25 October 1990
+        if year <= 1990:
+            return None
+
         super()._populate(year)
 
         # New Year's holiday (2 days)
         name = "New Year"
-        self[date(year, JAN, 1)] = name
-        self[date(year, JAN, 2)] = name
+        _add_with_observed(date(year, JAN, 1), name, sun_days=+2)
+        _add_with_observed(date(year, JAN, 2), name, sun_days=+2)
+
+        # Orthodox Christmas (nonworking day, without extending)
+        if year >= 2006:
+            self[date(year, JAN, 7)] = "Orthodox Christmas"
 
         # International Women's Day
-        self[date(year, MAR, 8)] = "International Women's Day"
+        _add_with_observed(date(year, MAR, 8), "International Women's Day")
 
         # Nauryz holiday
         name = "Nauryz holiday"
         if year >= 2010:
-            self[date(year, MAR, 21)] = name
-            self[date(year, MAR, 22)] = name
-            self[date(year, MAR, 23)] = name
+            _add_with_observed(
+                date(year, MAR, 21), name, sat_days=+3, sun_days=+3
+            )
+            _add_with_observed(date(year, MAR, 22), name, sun_days=+3)
+            _add_with_observed(date(year, MAR, 23), name, sun_days=+2)
         elif year >= 2002:
-            self[date(year, MAR, 22)] = name
+            _add_with_observed(date(year, MAR, 22), name)
 
         # Kazakhstan People Solidarity Holiday
-        self[date(year, MAY, 1)] = "Kazakhstan People Solidarity Holiday"
+        _add_with_observed(
+            date(year, MAY, 1), "Kazakhstan People Solidarity Holiday"
+        )
 
         # Defender of the Fatherland Day
         if year >= 2013:
-            self[date(year, MAY, 7)] = "Defender of the Fatherland Day"
+            _add_with_observed(
+                date(year, MAY, 7),
+                "Defender of the Fatherland Day",
+                sat_days=+3,
+            )
 
         # Victory Day
-        self[date(year, MAY, 9)] = "Victory Day"
+        _add_with_observed(date(year, MAY, 9), "Victory Day")
 
         # Capital Day
         if year >= 2009:
-            self[date(year, JUL, 6)] = "Capital Day"
+            _add_with_observed(date(year, JUL, 6), "Capital Day")
 
         # Constitution Day of the Republic of Kazakhstan
         if year >= 1996:
-            self[
-                date(year, AUG, 30)
-            ] = "Constitution Day of the Republic of Kazakhstan"
+            _add_with_observed(
+                date(year, AUG, 30),
+                "Constitution Day of the Republic of Kazakhstan",
+            )
 
         # Republic Day
         if 1994 <= year <= 2008 or year >= 2022:
-            self[date(year, OCT, 25)] = "Republic Day"
+            _add_with_observed(date(year, OCT, 25), "Republic Day")
 
         # First President Day
         if 2012 <= year <= 2021:
-            self[date(year, DEC, 1)] = "First President Day"
+            _add_with_observed(date(year, DEC, 1), "First President Day")
 
         # Kazakhstan Independence Day
         name = "Kazakhstan Independence Day"
-        self[date(year, DEC, 16)] = name
         if 2002 <= year <= 2021:
-            self[date(year, DEC, 17)] = name
+            _add_with_observed(date(year, DEC, 16), name, sun_days=+2)
+            _add_with_observed(date(year, DEC, 17), name, sun_days=+2)
+        else:
+            _add_with_observed(date(year, DEC, 16), name)
 
-        if self.observed and year >= 2002:
-            for k, v in list(self.items()):
-                if self._is_weekend(k) and k.year == year:
-                    next_workday = k + rd(days=+1)
-                    while self._is_weekend(next_workday) or self.get(
-                        next_workday
-                    ):
-                        next_workday += rd(days=+1)
-                    self[next_workday] = v + " (Observed)"
-
-        # Nonworking days (without extending)
-        # Orthodox Christmas
+        # Kurban Ait (nonworking day, without extending)
         if year >= 2006:
-            self[date(year, JAN, 7)] = "Orthodox Christmas"
-
-        # Kurban Ait
-        if year >= 2006:
-            for hol_date in _islamic_to_gre(year, 12, 10):
-                self[hol_date] = "Kurban Ait"
+            for dt in _islamic_to_gre(year, 12, 10):
+                self[dt] = "Kurban Ait"
 
 
 class KZ(Kazakhstan):

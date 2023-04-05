@@ -9,50 +9,52 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-
-from dateutil.relativedelta import relativedelta as rd
-
-from holidays.constants import JAN, FEB, APR, OCT
+from holidays.constants import FEB, APR, OCT
 from holidays.holiday_base import HolidayBase
-from holidays.utils import _ChineseLuniSolar
+from holidays.holiday_groups import ChineseCalendarHolidays
+from holidays.holiday_groups import InternationalHolidays
 
 
-class Taiwan(HolidayBase):
+class Taiwan(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Taiwan
     """
 
     country = "TW"
 
-    def __init__(self, **kwargs):
-        self.cnls = _ChineseLuniSolar()
-        HolidayBase.__init__(self, **kwargs)
+    def __init__(self, *args, **kwargs):
+        ChineseCalendarHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
 
         # New Year's Day
         if year > 1911:
-            self[
-                date(year, JAN, 1)
-            ] = "Founding of the Republic of China (New Year's Day)"
-            hol_date = self.cnls.lunar_n_y_date(year)
-            self[hol_date + rd(days=-1)] = "Chinese New Year's Eve"
-            self[hol_date] = "Spring Festival"
-            self[hol_date + rd(days=+1)] = "Spring Festival"
-            self[hol_date + rd(days=+2)] = "Spring Festival"
-            self[date(year, APR, 4)] = "Children's Day"
-            self[self.cnls.lunar_to_gre(year, 5, 5)] = "Dragon Boat Festival"
-            self[self.cnls.lunar_to_gre(year, 8, 15)] = "Mid-Autumn Festival"
-            self[date(year, OCT, 10)] = "National Day"
-            self[date(year, OCT, 11)] = "National Day"
+            self._add_new_years_day(
+                "Founding of the Republic of China (New Year's Day)"
+            )
+
+            self._add_chinese_new_years_eve("Chinese New Year's Eve")
+            self._add_chinese_new_years_day("Spring Festival")
+            self._add_chinese_new_years_day_two("Spring Festival")
+            self._add_chinese_new_years_day_three("Spring Festival")
+
+            self._add_holiday("Children's Day", APR, 4)
+
+            self._add_dragon_boat_festival("Dragon Boat Festival")
+            self._add_mid_autumn_festival("Mid-Autumn Festival")
+
+            self._add_holiday("National Day", OCT, 10)
+            self._add_holiday("National Day", OCT, 11)
+
         if year > 1947:
-            self[date(year, FEB, 28)] = "Peace Memorial Day"
+            self._add_holiday("Peace Memorial Day", FEB, 28)
+
         if year == 2021:
-            hol_date = self.cnls.lunar_n_y_date(year)
-            self[hol_date + rd(days=+3)] = "Spring Festival"
-            self[hol_date + rd(days=+4)] = "Spring Festival"
+            self._add_chinese_new_years_day_four("Spring Festival")
+            self._add_chinese_new_years_day_five("Spring Festival")
 
 
 class TW(Taiwan):
