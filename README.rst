@@ -436,7 +436,7 @@ subdivisions are available:
    * - Nigeria
      - NG
      - None
-     - None
+     - holidays[islamic]
    * - North Macedonia
      - MK
      - None
