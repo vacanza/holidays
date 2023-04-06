@@ -316,7 +316,7 @@ subdivisions are available:
    * - Indonesia
      - ID
      - None
-     - None
+     - holidays[islamic]
    * - Ireland
      - IE
      - None
