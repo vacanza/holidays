@@ -59,7 +59,7 @@ repos:
         additional_dependencies: [rstcheck, sphinx]
 
   - repo: https://github.com/tox-dev/tox-ini-fmt
-    rev: "1.0.0"
+    rev: "1.1.0"
     hooks:
       - id: tox-ini-fmt
 
