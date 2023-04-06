@@ -312,11 +312,11 @@ subdivisions are available:
    * - India
      - IN
      - States: AN, AP, AR, AS, BR, CG, CH, DD, DH, DL, GA, GJ, HP, HR, JH, JK, KA, KL, LA, LD, MH, ML, MN, MP, MZ, NL, OR, PB, PY, RJ, SK, TN, TR, TS, UK, UP, WB
-     - None
+     - holidays[islamic]
    * - Indonesia
      - ID
      - None
-     - None
+     - holidays[islamic]
    * - Ireland
      - IE
      - None
@@ -384,7 +384,7 @@ subdivisions are available:
    * - Malaysia
      - MY
      - States: JHR, KDH, KTN, KUL, LBN, MLK, NSN, PHG, PJY, PLS, PNG, PRK, SBH, SGR, SWK, TRG
-     - None
+     - holidays[islamic]
    * - Malta
      - MT
      - None
@@ -436,7 +436,7 @@ subdivisions are available:
    * - Nigeria
      - NG
      - None
-     - None
+     - holidays[islamic]
    * - North Macedonia
      - MK
      - None
@@ -452,7 +452,7 @@ subdivisions are available:
    * - Pakistan
      - PK
      - None
-     - None
+     - holidays[islamic]
    * - Panama
      - PA
      - None
@@ -496,7 +496,7 @@ subdivisions are available:
    * - Saudi Arabia
      - SA
      - None
-     - None
+     - holidays[islamic]
    * - Serbia
      - RS
      - None
@@ -540,11 +540,11 @@ subdivisions are available:
    * - Thailand
      - TH
      - None
-     - holidays[islamic]
+     - None
    * - Tunisia
      - TN
      - None
-     - None
+     - holidays[islamic]
    * - Turkey
      - TR
      - None
