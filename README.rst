@@ -452,7 +452,7 @@ subdivisions are available:
    * - Pakistan
      - PK
      - None
-     - None
+     - holidays[islamic]
    * - Panama
      - PA
      - None
