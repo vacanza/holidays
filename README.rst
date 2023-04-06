@@ -496,7 +496,7 @@ subdivisions are available:
    * - Saudi Arabia
      - SA
      - None
-     - None
+     - holidays[islamic]
    * - Serbia
      - RS
      - None
