@@ -384,7 +384,7 @@ subdivisions are available:
    * - Malaysia
      - MY
      - States: JHR, KDH, KTN, KUL, LBN, MLK, NSN, PHG, PJY, PLS, PNG, PRK, SBH, SGR, SWK, TRG
-     - None
+     - holidays[islamic]
    * - Malta
      - MT
      - None
