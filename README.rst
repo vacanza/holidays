@@ -540,7 +540,7 @@ subdivisions are available:
    * - Thailand
      - TH
      - None
-     - holidays[islamic]
+     - None
    * - Tunisia
      - TN
      - None
