@@ -544,7 +544,7 @@ subdivisions are available:
    * - Tunisia
      - TN
      - None
-     - None
+     - holidays[islamic]
    * - Turkey
      - TR
      - None
