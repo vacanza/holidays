@@ -31,46 +31,22 @@ class Jamaica(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        def _add_observed(hol_date: date) -> None:
-            if self.observed and self._is_sunday(hol_date):
-                self._add_holiday(
-                    "%s (Observed)" % self[hol_date], hol_date + td(days=+1)
-                )
+    def _add_observed(self, hol_date: date, include_sat: bool = False) -> None:
+        if not self.observed:
+            return None
+        if self._is_sunday(hol_date) or (
+            self._is_saturday(hol_date) and include_sat
+        ):
+            obs_date = _get_nth_weekday_from(1, MON, hol_date)
+            if obs_date in self:
+                obs_date += td(days=+1)
+            self._add_holiday("%s (Observed)" % self[hol_date], obs_date)
 
+    def _populate(self, year):
         super()._populate(year)
 
         # New Year's Day
-        _add_observed(self._add_new_years_day("New Year's Day"))
-
-        # Labour Day
-        dt = self._add_holiday("National Labour Day", MAY, 23)
-        if self.observed and self._is_weekend(dt):
-            self._add_holiday(
-                "%s (Observed)" % self[dt], _get_nth_weekday_from(1, MON, dt)
-            )
-
-        # Emancipation Day
-        if year >= 1998:
-            _add_observed(self._add_holiday("Emancipation Day", AUG, 1))
-
-        # Independence Day
-        _add_observed(self._add_holiday("Independence Day", AUG, 6))
-
-        # National Heroes Day
-        self._add_holiday(
-            "National Heroes Day", _get_nth_weekday_of_month(3, MON, OCT, year)
-        )
-
-        # Christmas Day
-        dt = self._add_christmas_day("Christmas Day")
-        if self.observed and self._is_sunday(dt):
-            self._add_holiday("%s (Observed)" % self[dt], dt + td(days=+2))
-
-        # Boxing Day
-        _add_observed(self._add_christmas_day_two("Boxing Day"))
-
-        # Holidays based on Easter
+        self._add_observed(self._add_new_years_day("New Year's Day"))
 
         # Ash Wednesday
         self._add_ash_wednesday("Ash Wednesday")
@@ -80,6 +56,31 @@ class Jamaica(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Easter Monday
         self._add_easter_monday("Easter Monday")
+
+        # National Labour Day
+        self._add_observed(
+            self._add_holiday("National Labour Day", MAY, 23), include_sat=True
+        )
+
+        # Emancipation Day
+        if year >= 1998:
+            self._add_observed(self._add_holiday("Emancipation Day", AUG, 1))
+
+        # Independence Day
+        self._add_observed(self._add_holiday("Independence Day", AUG, 6))
+
+        # National Heroes Day
+        self._add_holiday(
+            "National Heroes Day", _get_nth_weekday_of_month(3, MON, OCT, year)
+        )
+
+        # Christmas Day
+        dt = self._add_christmas_day("Christmas Day")
+
+        # Boxing Day
+        self._add_observed(self._add_christmas_day_two("Boxing Day"))
+
+        self._add_observed(dt)
 
 
 class JM(Jamaica):
