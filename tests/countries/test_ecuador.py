@@ -146,6 +146,46 @@ class TestEcuador(TestCase):
         self.assertHoliday(dt)
         self.assertNoNonObservedHoliday(dt)
 
+    def test_2022(self):
+        self.assertHolidays(
+            Ecuador(years=2022),
+            ("2022-01-01", "Año Nuevo"),
+            ("2022-02-28", "Carnaval"),
+            ("2022-03-01", "Carnaval"),
+            ("2022-04-15", "Viernes Santo"),
+            ("2022-05-01", "Día del Trabajo"),
+            ("2022-05-02", "Día del Trabajo (Observado)"),
+            ("2022-05-23", "Batalla de Pichincha (Observado)"),
+            ("2022-05-24", "Batalla de Pichincha"),
+            ("2022-08-10", "Primer Grito de Independencia"),
+            ("2022-08-12", "Primer Grito de Independencia (Observado)"),
+            ("2022-10-09", "Independencia de Guayaquil"),
+            ("2022-10-10", "Independencia de Guayaquil (Observado)"),
+            ("2022-11-02", "Día de los Difuntos"),
+            ("2022-11-03", "Independencia de Cuenca"),
+            (
+                "2022-11-04",
+                "Día de los Difuntos (Observado); "
+                "Independencia de Cuenca (Observado)",
+            ),
+            ("2022-12-25", "Día de Navidad"),
+            ("2022-12-26", "Día de Navidad (Observado)"),
+        )
+        self.assertNonObservedHolidays(
+            Ecuador(observed=False, years=2022),
+            ("2022-01-01", "Año Nuevo"),
+            ("2022-02-28", "Carnaval"),
+            ("2022-03-01", "Carnaval"),
+            ("2022-04-15", "Viernes Santo"),
+            ("2022-05-01", "Día del Trabajo"),
+            ("2022-05-24", "Batalla de Pichincha"),
+            ("2022-08-10", "Primer Grito de Independencia"),
+            ("2022-10-09", "Independencia de Guayaquil"),
+            ("2022-11-02", "Día de los Difuntos"),
+            ("2022-11-03", "Independencia de Cuenca"),
+            ("2022-12-25", "Día de Navidad"),
+        )
+
     def test_l10n_default(self):
         def run_tests(languages):
             for language in languages:

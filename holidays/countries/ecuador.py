@@ -115,10 +115,10 @@ class Ecuador(HolidayBase, ChristianHolidays, InternationalHolidays):
                         self.tr("%s (Observado)") % self[dt], obs_date
                     )
 
-            dt = date(year, DEC, 31)
-            if self._is_friday(dt):
+            dec_31 = date(year, DEC, 31)
+            if self._is_friday(dec_31):
                 self._add_holiday(
-                    self.tr("%s (Observado)") % self.tr("Año Nuevo"), dt
+                    self.tr("%s (Observado)") % self.tr("Año Nuevo"), dec_31
                 )
 
 
