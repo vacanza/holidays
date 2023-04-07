@@ -73,6 +73,7 @@ class TestEgypt(unittest.TestCase):
             # eid_alfitr
             self.assertIn(date(2019, 6, 4), self.holidays)
             # eid_aladha
+            self.assertIn(date(2007, 1, 2), self.holidays)
             self.assertIn(date(2019, 8, 11), self.holidays)
             # islamic_new_year
             self.assertIn(date(2008, 1, 10), self.holidays)
