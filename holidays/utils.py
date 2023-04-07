@@ -22,7 +22,6 @@ import warnings
 from functools import lru_cache
 from typing import Dict, Iterable, List, Optional, Union
 
-from holidays import countries, financial
 from holidays.holiday_base import HolidayBase
 
 
@@ -176,6 +175,8 @@ def country_holidays(
     :class:`HolidayBase` class and define your own :meth:`_populate` method.
     See documentation for examples.
     """
+    from holidays import countries
+
     try:
         return getattr(countries, country)(
             years=years,
@@ -238,6 +239,8 @@ def financial_holidays(
     See :py:func:`country_holidays` documentation for further details and
     examples.
     """
+    from holidays import financial
+
     try:
         return getattr(financial, market)(
             years=years,
@@ -283,6 +286,8 @@ def list_supported_countries(unique=False) -> Dict[str, List[str]]:
         A dictionary where the key is the ISO 3166-1 Alpha-2 country codes and
         the value is a list of supported subdivision codes.
     """
+    from holidays import countries
+
     return {
         cls.country if unique else name: cls.subdivisions
         for name, cls in inspect.getmembers(countries, inspect.isclass)
@@ -299,6 +304,8 @@ def list_supported_financial(unique=False) -> Dict[str, List[str]]:
         A dictionary where the key is the market codes and
         the value is a list of supported subdivision codes.
     """
+    from holidays import financial
+
     return {
         cls.market if unique else name: cls.subdivisions
         for name, cls in inspect.getmembers(financial, inspect.isclass)
