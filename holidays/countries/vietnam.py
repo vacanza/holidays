@@ -40,6 +40,14 @@ class Vietnam(HolidayBase, InternationalHolidays, KoreanCalendarHolidays):
             self._add_new_years_day("International New Year's Day")
         )
 
+        # Lunar New Year
+        self._add_korean_new_years_eve("Vietnamese New Year's Eve")
+        self._add_korean_new_years_day("Vietnamese New Year")
+        self._add_korean_new_years_day_two("The second day of Tet Holiday")
+        self._add_korean_new_years_day_three("The third day of Tet Holiday")
+        self._add_korean_new_years_day_four("The forth day of Tet Holiday")
+        self._add_korean_new_years_day_five("The fifth day of Tet Holiday")
+
         # Vietnamese Kings' Commemoration Day
         # https://en.wikipedia.org/wiki/H%C3%B9ng_Kings%27_Festival
         if year >= 2007:
@@ -59,6 +67,7 @@ class Vietnam(HolidayBase, InternationalHolidays, KoreanCalendarHolidays):
 
         # Independence Day
         observed_dates.add(self._add_holiday("Independence Day", SEP, 2))
+
         if self.observed:
             for dt in sorted(observed_dates):
                 if not self._is_weekend(dt):
@@ -72,14 +81,6 @@ class Vietnam(HolidayBase, InternationalHolidays, KoreanCalendarHolidays):
                 observed_dates.add(
                     self._add_holiday(f"{self[dt]} (Observed)", next_workday)
                 )
-
-        # Lunar New Year
-        self._add_korean_new_years_eve("Vietnamese New Year's Eve")
-        self._add_korean_new_years_day("Vietnamese New Year")
-        self._add_korean_new_years_day_two("The second day of Tet Holiday")
-        self._add_korean_new_years_day_three("The third day of Tet Holiday")
-        self._add_korean_new_years_day_four("The forth day of Tet Holiday")
-        self._add_korean_new_years_day_five("The fifth day of Tet Holiday")
 
 
 class VN(Vietnam):
