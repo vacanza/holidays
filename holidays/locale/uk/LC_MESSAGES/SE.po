@@ -1,0 +1,113 @@
+# Sweden holidays uk localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.23\n"
+"POT-Creation-Date: 2023-04-08 20:17+0300\n"
+"PO-Revision-Date: 2023-04-08 20:27+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: holidays/countries/sweden.py:54
+msgid "Nyårsdagen"
+msgstr "Новий рік"
+
+#. Epiphany.
+#: holidays/countries/sweden.py:57
+msgid "Trettondedag jul"
+msgstr "Богоявлення"
+
+#. Feast of the Annunciation.
+#: holidays/countries/sweden.py:61
+msgid "Jungfru Marie bebådelsedag"
+msgstr "Благовіщення"
+
+#. Good Friday.
+#: holidays/countries/sweden.py:64
+msgid "Långfredagen"
+msgstr "Страсна пʼятниця"
+
+#. Easter Sunday.
+#: holidays/countries/sweden.py:67
+msgid "Påskdagen"
+msgstr "Великдень"
+
+#. Easter Monday.
+#: holidays/countries/sweden.py:70
+msgid "Annandag påsk"
+msgstr "Великодній понеділок"
+
+#. May Day.
+#: holidays/countries/sweden.py:75
+msgid "Första maj"
+msgstr "Перше травня"
+
+#. Ascension Day.
+#: holidays/countries/sweden.py:78
+msgid "Kristi himmelsfärdsdag"
+msgstr "Вознесіння Господнє"
+
+#. National Day of Sweden.
+#: holidays/countries/sweden.py:83
+msgid "Sveriges nationaldag"
+msgstr "Національний день Швеції"
+
+#. Whit Sunday.
+#: holidays/countries/sweden.py:86
+msgid "Pingstdagen"
+msgstr "Трійця"
+
+#. Whit Monday.
+#: holidays/countries/sweden.py:90
+msgid "Annandag pingst"
+msgstr "День Святого Духа"
+
+#. Midsummer Eve.
+#: holidays/countries/sweden.py:102
+msgid "Midsommarafton"
+msgstr "Переддень літнього сонцестояння"
+
+#. Midsummer Day.
+#: holidays/countries/sweden.py:105
+msgid "Midsommardagen"
+msgstr "День літнього сонцестояння"
+
+#. All Saints' Day.
+#: holidays/countries/sweden.py:109
+msgid "Alla helgons dag"
+msgstr "День усіх святих"
+
+#. Christmas Eve.
+#: holidays/countries/sweden.py:114
+msgid "Julafton"
+msgstr "Святий вечір"
+
+#. Christmas Day.
+#: holidays/countries/sweden.py:117
+msgid "Juldagen"
+msgstr "Різдво Христове"
+
+#. Second Christmas Day.
+#: holidays/countries/sweden.py:120
+msgid "Annandag jul"
+msgstr "Другий день Різдва"
+
+#. New Year's Eve.
+#: holidays/countries/sweden.py:123
+msgid "Nyårsafton"
+msgstr "Переддень Нового року"
+
+#. Sunday.
+#: holidays/countries/sweden.py:134
+msgid "Söndag"
+msgstr "Неділя"

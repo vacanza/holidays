@@ -24,7 +24,19 @@ class TestSweden(SundayHolidays):
         self.assertHoliday(
             "1900-01-01",
             "2017-01-01",
-            "2999-01-01",
+            "2023-01-01",
+        )
+
+    def test_annunciation(self):
+        self.assertHoliday(
+            "1950-03-25",
+            "1951-03-25",
+            "1952-03-25",
+            "1953-03-25",
+        )
+        self.assertNoHoliday("1954-03-25")
+        self.assertNoHolidayName(
+            "Jungfru Marie bebådelsedag", Sweden(years=1954)
         )
 
     def test_easter(self):
@@ -49,16 +61,14 @@ class TestSweden(SundayHolidays):
             "2024-03-28",
         )
 
-    def test_workers_day(self):
+    def test_may_day(self):
         self.assertHoliday(
             "1939-05-01",
             "2017-05-01",
-            "2999-05-01",
+            "2023-05-01",
         )
-        self.assertNoHoliday(
-            "1800-05-01",
-            "1879-05-01",
-        )
+        self.assertNoHoliday("1938-05-01")
+        self.assertNoHolidayName("Första maj", Sweden(years=1938))
 
     def test_constitution_day(self):
         self.assertHoliday(
@@ -66,10 +76,8 @@ class TestSweden(SundayHolidays):
             "2017-06-06",
             "2999-06-06",
         )
-        self.assertNoHoliday(
-            "1900-06-06",
-            "2004-06-06",
-        )
+        self.assertNoHoliday("2004-06-06")
+        self.assertNoHolidayName("Sveriges nationaldag", Sweden(years=2004))
 
     def test_pentecost(self):
         self.assertHoliday(
@@ -85,6 +93,7 @@ class TestSweden(SundayHolidays):
             "2021-05-24",
             "2024-05-20",
         )
+        self.assertNoHolidayName("Annandag pingst", Sweden(years=2005))
 
     def test_midsommar(self):
         self.assertHoliday(
@@ -122,8 +131,6 @@ class TestSweden(SundayHolidays):
             "1901-12-26",
             "2016-12-25",
             "2016-12-26",
-            "2500-12-25",
-            "2500-12-26",
         )
 
     def test_sundays(self):
@@ -163,3 +170,41 @@ class TestSweden(SundayHolidays):
             ("2022-12-26", "Annandag jul"),
             ("2022-12-31", "Nyårsafton"),
         )
+
+    def test_l10n_default(self):
+        def run_tests(languages):
+            for language in languages:
+                cnt = SE(language=language)
+                self.assertEqual(cnt["2022-01-01"], "Nyårsdagen")
+                self.assertEqual(cnt["2022-12-25"], "Juldagen")
+
+        run_tests((SE.default_language, None, "invalid"))
+
+        self.set_language("en_US")
+        run_tests((SE.default_language,))
+
+    def test_l10n_en_us(self):
+        lang = "en_US"
+
+        cnt = SE(language=lang)
+        self.assertEqual(cnt["2022-01-01"], "New Year's Day")
+        self.assertEqual(cnt["2022-12-25"], "Christmas Day")
+
+        self.set_language(lang)
+        for language in (None, lang, "invalid"):
+            cnt = SE(language=language)
+            self.assertEqual(cnt["2022-01-01"], "New Year's Day")
+            self.assertEqual(cnt["2022-12-25"], "Christmas Day")
+
+    def test_l10n_uk(self):
+        lang = "uk"
+
+        cnt = SE(language=lang)
+        self.assertEqual(cnt["2022-01-01"], "Новий рік")
+        self.assertEqual(cnt["2022-12-25"], "Різдво Христове")
+
+        self.set_language(lang)
+        for language in (None, lang, "invalid"):
+            cnt = SE(language=language)
+            self.assertEqual(cnt["2022-01-01"], "Новий рік")
+            self.assertEqual(cnt["2022-12-25"], "Різдво Христове")

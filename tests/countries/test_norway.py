@@ -9,9 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from dateutil.parser import parse
-
-from holidays.constants import MON, SUN
 from holidays.countries.norway import Norway, NO, NOR
 from tests.common import SundayHolidays
 
@@ -24,11 +21,7 @@ class TestNorway(SundayHolidays):
         self.assertCountryAliases(Norway, NO, NOR)
 
     def test_new_years(self):
-        self.assertHoliday(
-            "1900-01-01",
-            "2017-01-01",
-            "2999-01-01",
-        )
+        self.assertHoliday("1900-01-01", "2017-01-01", "2023-01-01")
 
     def test_easter(self):
         self.assertHoliday(
@@ -51,40 +44,24 @@ class TestNorway(SundayHolidays):
         )
 
     def test_workers_day(self):
-        self.assertHoliday(
-            "1947-05-01",
-            "2017-05-01",
-            "2999-05-01",
-        )
-        self.assertNoHoliday(
-            "1900-05-01",
-            "1946-05-01",
-        )
+        self.assertHoliday("1947-05-01", "2017-05-01", "2023-05-01")
+        self.assertNoHoliday("1946-05-01")
+        self.assertNoHolidayName("Arbeidernes dag", Norway(years=1946))
 
     def test_constitution_day(self):
-        self.assertHoliday(
-            "1947-05-17",
-            "2017-05-17",
-            "2999-05-17",
-        )
-        self.assertNoHoliday(
-            "1900-05-17",
-            "1946-05-17",
-        )
+        self.assertHoliday("1947-05-17", "2017-05-17", "2023-05-17")
+        self.assertNoHoliday("1946-05-17")
+        self.assertNoHolidayName("Grunnlovsdag", Norway(years=1946))
 
     def test_pentecost(self):
-        pentecost_days = (
-            ("2000-06-11", "2000-06-12"),
-            ("2010-05-23", "2010-05-24"),
-            ("2024-05-19", "2024-05-20"),
+        self.assertHoliday(
+            "2000-06-11",
+            "2000-06-12",
+            "2010-05-23",
+            "2010-05-24",
+            "2023-05-28",
+            "2023-05-29",
         )
-
-        for day1, day2 in pentecost_days:
-            self.assertHoliday(day1)
-            self.assertEqual(parse(day1).weekday(), SUN)
-
-            self.assertHoliday(day2)
-            self.assertEqual(parse(day2).weekday(), MON)
 
     def test_christmas(self):
         self.assertHoliday(
@@ -92,8 +69,6 @@ class TestNorway(SundayHolidays):
             "1901-12-26",
             "2016-12-25",
             "2016-12-26",
-            "2500-12-25",
-            "2500-12-26",
         )
 
     def test_sundays(self):
@@ -136,3 +111,41 @@ class TestNorway(SundayHolidays):
             ("2022-12-25", "Første juledag"),
             ("2022-12-26", "Andre juledag"),
         )
+
+    def test_l10n_default(self):
+        def run_tests(languages):
+            for language in languages:
+                cnt = NO(language=language)
+                self.assertEqual(cnt["2022-01-01"], "Første nyttårsdag")
+                self.assertEqual(cnt["2022-12-25"], "Første juledag")
+
+        run_tests((NO.default_language, None, "invalid"))
+
+        self.set_language("en_US")
+        run_tests((NO.default_language,))
+
+    def test_l10n_en_us(self):
+        lang = "en_US"
+
+        cnt = NO(language=lang)
+        self.assertEqual(cnt["2022-01-01"], "New Year's Day")
+        self.assertEqual(cnt["2022-12-25"], "Christmas Day")
+
+        self.set_language(lang)
+        for language in (None, lang, "invalid"):
+            cnt = NO(language=language)
+            self.assertEqual(cnt["2022-01-01"], "New Year's Day")
+            self.assertEqual(cnt["2022-12-25"], "Christmas Day")
+
+    def test_l10n_uk(self):
+        lang = "uk"
+
+        cnt = NO(language=lang)
+        self.assertEqual(cnt["2022-01-01"], "Новий рік")
+        self.assertEqual(cnt["2022-12-25"], "Різдво Христове")
+
+        self.set_language(lang)
+        for language in (None, lang, "invalid"):
+            cnt = NO(language=language)
+            self.assertEqual(cnt["2022-01-01"], "Новий рік")
+            self.assertEqual(cnt["2022-12-25"], "Різдво Христове")
