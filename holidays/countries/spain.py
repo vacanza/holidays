@@ -93,8 +93,6 @@ class Spain(
         if year != 2022:
             self._add_christmas_day("Navidad")
 
-    # Provinces festive day
-
     def _add_subdiv_an_holidays(self):
         if self._year == 2023:
             self._add_new_years_day("Año nuevo")
