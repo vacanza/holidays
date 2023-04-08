@@ -186,7 +186,7 @@ class Japan(HolidayBase):
 
             # When a national holiday falls on Sunday, next working day
             # shall become a public holiday (振替休日) - substitute holidays.
-            for dt in set(observed_dates):
+            for dt in observed_dates.copy():
                 if not self._is_sunday(dt):
                     continue
                 hol_date = dt + td(days=+1)
