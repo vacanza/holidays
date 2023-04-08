@@ -17,25 +17,6 @@ import holidays
 
 
 class TestIsrael(unittest.TestCase):
-    def test_purim_day(self):
-        il_holidays = holidays.IL(years=[2017], observed=True)
-        self.assertListEqual(
-            il_holidays.get_list(date(2017, 3, 11)), ["Purim - Eve"]
-        )
-        self.assertListEqual(
-            il_holidays.get_list(date(2017, 3, 12)), ["Purim"]
-        )
-        self.assertListEqual(
-            il_holidays.get_list(date(2017, 3, 13)), ["Shushan Purim"]
-        )
-
-    def test_memorial_day(self):
-        self._test_observed_holidays("Memorial Day")
-        self._test_nonobserved_holidays("Memorial Day")
-
-    def test_independence_day(self):
-        self._test_observed_holidays("Independence Day")
-
     def _test_observed_holidays(self, holiday_name):
         days_delta = 0 if holiday_name == "Memorial Day" else 1
 
@@ -93,3 +74,22 @@ class TestIsrael(unittest.TestCase):
         self.assertIn(holiday_name, il_holidays.get(official_holiday))
         for name in il_holidays.values():
             self.assertNotIn(holiday_name + " (Observed)", name)
+
+    def test_purim_day(self):
+        il_holidays = holidays.IL(years=[2017], observed=True)
+        self.assertListEqual(
+            il_holidays.get_list(date(2017, 3, 11)), ["Purim - Eve"]
+        )
+        self.assertListEqual(
+            il_holidays.get_list(date(2017, 3, 12)), ["Purim"]
+        )
+        self.assertListEqual(
+            il_holidays.get_list(date(2017, 3, 13)), ["Shushan Purim"]
+        )
+
+    def test_memorial_day(self):
+        self._test_observed_holidays("Memorial Day")
+        self._test_nonobserved_holidays("Memorial Day")
+
+    def test_independence_day(self):
+        self._test_observed_holidays("Independence Day")
