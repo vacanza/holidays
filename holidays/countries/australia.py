@@ -42,16 +42,14 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _add_observed(
-        self, dt: date, name: str = None, include_sat: bool = True
-    ) -> None:
+    def _add_observed(self, dt: date, include_sat: bool = True) -> None:
         if not self.observed:
             return None
         if self._is_sunday(dt) or (self._is_saturday(dt) and include_sat):
             obs_date = _get_nth_weekday_from(1, MON, dt)
             if obs_date in self:
                 obs_date += td(days=+1)
-            self._add_holiday("%s (Observed)" % (name or self[dt]), obs_date)
+            self._add_holiday("%s (Observed)" % self[dt], obs_date)
 
     def _populate(self, year):
         super()._populate(year)
@@ -73,10 +71,6 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Easter
         self._add_good_friday("Good Friday")
         self._add_easter_monday("Easter Monday")
-
-        # Anzac Day
-        if year >= 1921:
-            self._add_holiday("Anzac Day", APR, 25)
 
         # Sovereign's Birthday
         if 1902 <= year <= 1935:
@@ -110,6 +104,10 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
         elif self._year >= 1888 and self.subdiv != "SA":
             self._add_holiday("Anniversary Day", JAN, 26)
 
+        # Anzac Day
+        if self._year >= 1921:
+            self._add_holiday("Anzac Day", APR, 25)
+
         # Christmas Day
         dec_25 = self._add_christmas_day("Christmas Day")
 
@@ -140,9 +138,7 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Anzac Day
         if self._year >= 1921:
-            self._add_observed(
-                date(self._year, APR, 25), name="Anzac Day", include_sat=False
-            )
+            self._add_observed(date(self._year, APR, 25), include_sat=False)
 
         # Canberra Day
         # Info from https://www.timeanddate.com/holidays/australia/canberra-day
@@ -224,7 +220,7 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Anzac Day
         if self._year >= 1921:
-            self._add_observed(date(self._year, APR, 25), name="Anzac Day")
+            self._add_observed(date(self._year, APR, 25))
 
         # Picnic Day
         self._add_holiday(
@@ -257,9 +253,7 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Anzac Day
         if self._year >= 1921:
-            self._add_observed(
-                date(self._year, APR, 25), name="Anzac Day", include_sat=False
-            )
+            self._add_observed(date(self._year, APR, 25), include_sat=False)
 
         # The Royal Queensland Show (Ekka)
         # The Show starts on the first Friday of August - providing this is
@@ -292,9 +286,7 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Anzac Day
         if self._year >= 1921:
-            self._add_observed(
-                date(self._year, APR, 25), name="Anzac Day", include_sat=False
-            )
+            self._add_observed(date(self._year, APR, 25), include_sat=False)
 
         # Adelaide Cup
         self._add_holiday(
@@ -366,7 +358,7 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Anzac Day
         if self._year >= 1921:
-            self._add_observed(date(self._year, APR, 25), name="Anzac Day")
+            self._add_observed(date(self._year, APR, 25))
 
         # Western Australia Day
         if self._year >= 1833:
