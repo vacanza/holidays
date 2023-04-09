@@ -11,13 +11,13 @@
 
 from datetime import date
 from datetime import timedelta as td
-from typing import Iterable, Set
+from typing import Set
 
 from dateutil.easter import EASTER_ORTHODOX, EASTER_WESTERN, easter
 from dateutil.parser import parse
 from korean_lunar_calendar import KoreanLunarCalendar
 
-from holidays.calendars import _ChineseLuniSolar, _islamic_to_gre
+from holidays.calendars import _ChineseLuniSolar, _IslamicHolidays
 from holidays.calendars import GREGORIAN_CALENDAR, JULIAN_CALENDAR
 from holidays.constants import JAN, FEB, MAR, MAY, JUN, AUG, SEP, NOV, DEC
 
@@ -702,7 +702,11 @@ class IslamicHolidays:
         Arafat.
         https://en.wikipedia.org/wiki/Day_of_Arafah
         """
-        return self._add_islamic_calendar_holiday(holiday_name, 12, 9)
+        return self._add_islamic_calendar_holiday(
+            holiday_name,
+            _IslamicHolidays.eid_al_adha_date(self._year),
+            days_delta=-1,
+        )
 
     def _add_ashura_day(self, holiday_name) -> Set[date]:
         """
@@ -712,7 +716,9 @@ class IslamicHolidays:
         10th of Muharram, the first month of the Islamic calendar.
         https://en.wikipedia.org/wiki/Ashura
         """
-        return self._add_islamic_calendar_holiday(holiday_name, 1, 10)
+        return self._add_islamic_calendar_holiday(
+            holiday_name, _IslamicHolidays.ashura_date(self._year)
+        )
 
     def _add_eid_al_adha_day(self, holiday_name) -> Set[date]:
         """
@@ -723,7 +729,9 @@ class IslamicHolidays:
         to Allah's command.
         https://en.wikipedia.org/wiki/Eid_al-Adha
         """
-        return self._add_islamic_calendar_holiday(holiday_name, 12, 10)
+        return self._add_islamic_calendar_holiday(
+            holiday_name, _IslamicHolidays.eid_al_adha_date(self._year)
+        )
 
     def _add_eid_al_adha_day_two(self, holiday_name) -> Set[date]:
         """
@@ -732,7 +740,9 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Eid_al-Adha
         """
         return self._add_islamic_calendar_holiday(
-            holiday_name, 12, 10, days_delta=+1
+            holiday_name,
+            _IslamicHolidays.eid_al_adha_date(self._year),
+            days_delta=+1,
         )
 
     def _add_eid_al_adha_day_three(self, holiday_name) -> Set[date]:
@@ -742,7 +752,9 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Eid_al-Adha
         """
         return self._add_islamic_calendar_holiday(
-            holiday_name, 12, 10, days_delta=+2
+            holiday_name,
+            _IslamicHolidays.eid_al_adha_date(self._year),
+            days_delta=+2,
         )
 
     def _add_eid_al_adha_day_four(self, holiday_name) -> Set[date]:
@@ -752,7 +764,9 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Eid_al-Adha
         """
         return self._add_islamic_calendar_holiday(
-            holiday_name, 12, 10, days_delta=+3
+            holiday_name,
+            _IslamicHolidays.eid_al_adha_date(self._year),
+            days_delta=+3,
         )
 
     def _add_eid_al_fitr_day(self, holiday_name) -> Set[date]:
@@ -764,7 +778,9 @@ class IslamicHolidays:
         dawn-to-sunset fasting of Ramadan.
         https://en.wikipedia.org/wiki/Eid_al-Fitr
         """
-        return self._add_islamic_calendar_holiday(holiday_name, 10, 1)
+        return self._add_islamic_calendar_holiday(
+            holiday_name, _IslamicHolidays.eid_al_fitr_date(self._year)
+        )
 
     def _add_eid_al_fitr_day_two(self, holiday_name) -> Set[date]:
         """
@@ -773,7 +789,9 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Eid_al-Fitr
         """
         return self._add_islamic_calendar_holiday(
-            holiday_name, 10, 1, days_delta=+1
+            holiday_name,
+            _IslamicHolidays.eid_al_fitr_date(self._year),
+            days_delta=+1,
         )
 
     def _add_eid_al_fitr_day_three(self, holiday_name) -> Set[date]:
@@ -783,21 +801,23 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Eid_al-Fitr
         """
         return self._add_islamic_calendar_holiday(
-            holiday_name, 10, 1, days_delta=+2
+            holiday_name,
+            _IslamicHolidays.eid_al_fitr_date(self._year),
+            days_delta=+2,
         )
 
     def _add_islamic_calendar_holiday(
-        self, holiday_name, month, day, days_delta=None
+        self, holiday_name, hol_dates: Set[date], days_delta=None
     ) -> Set[date]:
         """
         Add lunar calendar holiday.
         """
         dates = set()
-        for dt in self._convert_islamic_to_gre(self._year, month, day):
+        for dt in hol_dates:
             if days_delta:
                 dt += td(days=days_delta)
-            self._add_holiday(holiday_name, dt)
-            dates.add(dt)
+            if self._add_holiday(holiday_name, dt):
+                dates.add(dt)
 
         return dates
 
@@ -811,7 +831,9 @@ class IslamicHolidays:
         observed by most Muslims on the first day of the month of Muharram.
         https://en.wikipedia.org/wiki/Islamic_New_Year
         """
-        return self._add_islamic_calendar_holiday(holiday_name, 1, 1)
+        return self._add_islamic_calendar_holiday(
+            holiday_name, _IslamicHolidays.islamic_new_year_date(self._year)
+        )
 
     def _add_isra_and_miraj_day(self, holiday_name):
         """
@@ -819,7 +841,9 @@ class IslamicHolidays:
 
         https://en.wikipedia.org/wiki/Isra%27_and_Mi%27raj
         """
-        return self._add_islamic_calendar_holiday(holiday_name, 7, 27)
+        return self._add_islamic_calendar_holiday(
+            holiday_name, _IslamicHolidays.isra_and_miraj_date(self._year)
+        )
 
     def _add_mawlid_day(self, holiday_name) -> Set[date]:
         """
@@ -829,7 +853,9 @@ class IslamicHolidays:
         Muhammad.
         https://en.wikipedia.org/wiki/Mawlid
         """
-        return self._add_islamic_calendar_holiday(holiday_name, 3, 12)
+        return self._add_islamic_calendar_holiday(
+            holiday_name, _IslamicHolidays.mawlid_date(self._year)
+        )
 
     def _add_mawlid_day_two(self, holiday_name) -> Set[date]:
         """
@@ -840,15 +866,10 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Mawlid
         """
         return self._add_islamic_calendar_holiday(
-            holiday_name, 3, 12, days_delta=+1
+            holiday_name,
+            _IslamicHolidays.mawlid_date(self._year),
+            days_delta=+1,
         )
-
-    @staticmethod
-    def _convert_islamic_to_gre(year, month, day) -> Iterable[date]:
-        """
-        Convert Islamic calendar date to Gregorian date(s).
-        """
-        return _islamic_to_gre(year, month, day)
 
 
 class KoreanCalendarHolidays:
