@@ -1,0 +1,78 @@
+# Netherlands holidays uk localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.23\n"
+"POT-Creation-Date: 2023-04-09 18:11+0300\n"
+"PO-Revision-Date: 2023-04-09 18:19+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: holidays/countries/netherlands.py:39
+msgid "Nieuwjaarsdag"
+msgstr "Новий рік"
+
+#. Good Friday.
+#: holidays/countries/netherlands.py:42
+msgid "Goede Vrijdag"
+msgstr "Страсна пʼятниця"
+
+#. Easter Sunday.
+#: holidays/countries/netherlands.py:45
+msgid "Eerste paasdag"
+msgstr "Великдень"
+
+#. Easter Monday.
+#: holidays/countries/netherlands.py:48
+msgid "Tweede paasdag"
+msgstr "Великодній понеділок"
+
+#. King's Day.
+#: holidays/countries/netherlands.py:54
+msgid "Koningsdag"
+msgstr "День короля"
+
+#. Queen's Day.
+#: holidays/countries/netherlands.py:57
+msgid "Koninginnedag"
+msgstr "День королеви"
+
+#. Liberation Day.
+#: holidays/countries/netherlands.py:71
+msgid "Bevrijdingsdag"
+msgstr "День визволення"
+
+#. Ascension Day.
+#: holidays/countries/netherlands.py:74
+msgid "Hemelvaartsdag"
+msgstr "Вознесіння Господнє"
+
+#. Whit Sunday.
+#: holidays/countries/netherlands.py:77
+msgid "Eerste Pinksterdag"
+msgstr "Трійця"
+
+#. Whit Monday.
+#: holidays/countries/netherlands.py:80
+msgid "Tweede Pinksterdag"
+msgstr "День Святого Духа"
+
+#. Christmas Day.
+#: holidays/countries/netherlands.py:83
+msgid "Eerste Kerstdag"
+msgstr "Різдво Христове"
+
+#. Christmas Second Day.
+#: holidays/countries/netherlands.py:86
+msgid "Tweede Kerstdag"
+msgstr "Другий день Різдва"

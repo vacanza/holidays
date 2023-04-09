@@ -11,74 +11,79 @@
 
 from datetime import date
 from datetime import timedelta as td
+from gettext import gettext as tr
 
-from dateutil.easter import easter
-
-from holidays.constants import JAN, APR, MAY, AUG, DEC
+from holidays.constants import APR, MAY, AUG
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Netherlands(HolidayBase):
+class Netherlands(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
+    https://en.wikipedia.org/wiki/Public_holidays_in_the_Netherlands
     http://www.iamsterdam.com/en/plan-your-trip/practical-info/public-holidays
     """
 
     country = "NL"
+    default_language = "nl"
+
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
 
-        # New years
-        self[date(year, JAN, 1)] = "Nieuwjaarsdag"
+        # New Year's Day.
+        self._add_new_years_day(tr("Nieuwjaarsdag"))
 
-        easter_date = easter(year)
+        # Good Friday.
+        self._add_good_friday(tr("Goede Vrijdag"))
 
-        # Easter
-        self[easter_date] = "Eerste paasdag"
+        # Easter Sunday.
+        self._add_easter_sunday(tr("Eerste paasdag"))
 
-        # Good friday
-        self[easter_date + td(days=-2)] = "Goede Vrijdag"
+        # Easter Monday.
+        self._add_easter_monday(tr("Tweede paasdag"))
 
-        # Second easter day
-        self[easter_date + td(days=+1)] = "Tweede paasdag"
+        # King's / Queen's day
+        if year >= 1891:
+            name = (
+                # King's Day.
+                tr("Koningsdag")
+                if year >= 2014
+                # Queen's Day.
+                else tr("Koninginnedag")
+            )
+            if year >= 2014:
+                dt = date(year, APR, 27)
+            elif year >= 1949:
+                dt = date(year, APR, 30)
+            else:
+                dt = date(year, AUG, 31)
+            if self._is_sunday(dt):
+                dt += td(days=-1) if year >= 1980 else td(days=+1)
+            self._add_holiday(name, dt)
 
-        # Ascension day
-        self[easter_date + td(days=+39)] = "Hemelvaart"
-
-        # Pentecost
-        self[easter_date + td(days=+49)] = "Eerste Pinksterdag"
-
-        # Pentecost monday
-        self[easter_date + td(days=+50)] = "Tweede Pinksterdag"
-
-        # First christmas
-        self[date(year, DEC, 25)] = "Eerste Kerstdag"
-
-        # Second christmas
-        self[date(year, DEC, 26)] = "Tweede Kerstdag"
-
-        # Liberation day
         if year >= 1945 and year % 5 == 0:
-            self[date(year, MAY, 5)] = "Bevrijdingsdag"
+            # Liberation Day.
+            self._add_holiday(tr("Bevrijdingsdag"), MAY, 5)
 
-        # Kingsday
-        if year >= 2014:
-            kings_day = date(year, APR, 27)
-            if self._is_sunday(kings_day):
-                kings_day += td(days=-1)
+        # Ascension Day.
+        self._add_ascension_thursday(tr("Hemelvaartsdag"))
 
-            self[kings_day] = "Koningsdag"
+        # Whit Sunday.
+        self._add_whit_sunday(tr("Eerste Pinksterdag"))
 
-        # Queen's day
-        if 1891 <= year <= 2013:
-            queens_day = date(year, APR, 30)
-            if year <= 1948:
-                queens_day = date(year, AUG, 31)
+        # Whit Monday.
+        self._add_whit_monday(tr("Tweede Pinksterdag"))
 
-            if self._is_sunday(queens_day):
-                queens_day += td(days=1) if year < 1980 else td(days=-1)
+        # Christmas Day.
+        self._add_christmas_day(tr("Eerste Kerstdag"))
 
-            self[queens_day] = "Koninginnedag"
+        # Christmas Second Day.
+        self._add_christmas_day_two(tr("Tweede Kerstdag"))
 
 
 class NL(Netherlands):
