@@ -9,23 +9,14 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, datetime, timezone
+from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from pymeeus.Epoch import Epoch
-from pymeeus.Sun import Sun
-
 from holidays.calendars import _get_nth_weekday_of_month
-from holidays.constants import JAN, FEB, APR, MAY, JUN, JUL, AUG, SEP, OCT
-from holidays.constants import NOV, DEC, MON
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
+from holidays.constants import OCT, NOV, DEC, MON
 from holidays.holiday_base import HolidayBase
-
-# use standard library for timezone
-try:
-    from zoneinfo import ZoneInfo
-except ImportError:  # pragma: no cover
-    from backports.zoneinfo import ZoneInfo  # type: ignore[no-redef]
 
 
 class Japan(HolidayBase):
@@ -74,15 +65,10 @@ class Japan(HolidayBase):
             # Emperor's Birthday.
             observed_dates.add(self._add_holiday(tr("天皇誕生日"), FEB, 23))
 
-        epoch = Sun.get_equinox_solstice(year, target="spring")
-        equinox = map(int, Epoch(epoch).get_full_date())
-        adjusted_date = (
-            datetime(*equinox, tzinfo=timezone.utc)
-            .astimezone(ZoneInfo("Asia/Tokyo"))
-            .date()
-        )
         # Vernal Equinox Day.
-        observed_dates.add(self._add_holiday(tr("春分の日"), adjusted_date))
+        observed_dates.add(
+            self._add_holiday(tr("春分の日"), self._vernal_equinox_day(year))
+        )
 
         # Showa Emperor's Birthday, Greenery Day or Showa Day.
         if year <= 1988:
@@ -139,15 +125,10 @@ class Japan(HolidayBase):
                 )
             )
 
-        epoch = Sun.get_equinox_solstice(year, target="autumn")
-        equinox = map(int, Epoch(epoch).get_full_date())
-        adjusted_date = (
-            datetime(*equinox, tzinfo=timezone.utc)
-            .astimezone(ZoneInfo("Asia/Tokyo"))
-            .date()
-        )
         # Autumnal Equinox Day.
-        observed_dates.add(self._add_holiday(tr("秋分の日"), adjusted_date))
+        observed_dates.add(
+            self._add_holiday(tr("秋分の日"), self._autumnal_equinox_day(year))
+        )
 
         # Physical Education and Sports Day.
         if year >= 1966:
@@ -205,6 +186,33 @@ class Japan(HolidayBase):
                     continue
                 # National Holiday.
                 self._add_holiday(tr("国民の休日"), hol_date)
+
+    @staticmethod
+    def _vernal_equinox_day(year) -> date:
+        day = 20
+        if (
+            (year % 4 == 0 and year <= 1956)
+            or (year % 4 == 1 and year <= 1989)
+            or (year % 4 == 2 and year <= 2022)
+            or (year % 4 == 3 and year <= 2055)
+        ):
+            day = 21
+        elif year % 4 == 0 and year >= 2092:
+            day = 19
+        return date(year, MAR, day)
+
+    @staticmethod
+    def _autumnal_equinox_day(year) -> date:
+        day = 23
+        if year % 4 == 3 and year <= 1979:
+            day = 24
+        elif (
+            (year % 4 == 0 and year >= 2012)
+            or (year % 4 == 1 and year >= 2045)
+            or (year % 4 == 2 and year >= 2078)
+        ):
+            day = 22
+        return date(year, SEP, day)
 
 
 class JP(Japan):
