@@ -56,11 +56,13 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
         if not self.observed:
             return None
         if self._is_sunday(hol_date) or (
-            include_sat and self._is_saturday(hol_date)
+            self._is_saturday(hol_date) and include_sat
         ):
-            obs_dt = _get_nth_weekday_from(1, MON, hol_date)
+            obs_date = _get_nth_weekday_from(1, MON, hol_date)
+            if obs_date in self:
+                obs_date += td(days=+1)
             self._add_holiday(
-                self.tr("%s (Observed)") % self[hol_date], obs_dt
+                self.tr("%s (Observed)") % self[hol_date], obs_date
             )
 
     def _populate(self, year):
@@ -77,18 +79,9 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Easter Monday.
         self._add_easter_monday(tr("Easter Monday"))
 
-        if year >= 1983:
-            name = (
-                # Memorial Day.
-                tr("Memorial Day")
-                if self.subdiv == "NL"
-                # Canada Day.
-                else tr("Canada Day")
-            )
-        else:
+        if year <= 1982:
             # Dominion Day.
-            name = tr("Dominion Day")
-        self._add_observed(self._add_holiday(name, JUL, 1))
+            self._add_observed(self._add_holiday(tr("Dominion Day"), JUL, 1))
 
         if self._year >= 1894:
             self._add_holiday(
@@ -98,20 +91,13 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
             )
 
         # Christmas Day.
-        name = tr("Christmas Day")
-        dt = self._add_christmas_day(name)
-        if self.observed and self._is_weekend(dt):
-            self._add_holiday(
-                self.tr("%s (Observed)") % self[dt], dt + td(days=+2)
-            )
+        dec_25 = self._add_christmas_day(tr("Christmas Day"))
 
         # Boxing Day.
-        name = tr("Boxing Day")
-        dt = self._add_christmas_day_two(name)
-        if self.observed and self._is_weekend(dt):
-            self._add_holiday(
-                self.tr("%s (Observed)") % self[dt], dt + td(days=+2)
-            )
+        dec_26 = self._add_christmas_day_two(tr("Boxing Day"))
+
+        self._add_observed(dec_25)
+        self._add_observed(dec_26)
 
     def _add_family_day(self):
         self._add_holiday(
@@ -141,6 +127,24 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
                 SEP,
                 19,
             )
+
+    def _add_subdiv_holidays(self):
+        if self._year >= 1983:
+            self._add_observed(
+                self._add_holiday(
+                    (
+                        # Memorial Day.
+                        tr("Memorial Day")
+                        if self.subdiv == "NL"
+                        # Canada Day.
+                        else tr("Canada Day")
+                    ),
+                    JUL,
+                    1,
+                )
+            )
+
+        super()._add_subdiv_holidays()
 
     def _add_subdiv_ab_holidays(self):
         if self._year >= 1990:
@@ -296,7 +300,8 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1931:
             # Remembrance Day.
             self._add_observed(
-                self._add_remembrance_day(tr("Remembrance Day"))
+                self._add_remembrance_day(tr("Remembrance Day")),
+                include_sat=False,
             )
 
     def _add_subdiv_ns_holidays(self):
@@ -321,7 +326,8 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1931:
             # Remembrance Day.
             self._add_observed(
-                self._add_remembrance_day(tr("Remembrance Day"))
+                self._add_remembrance_day(tr("Remembrance Day")),
+                include_sat=False,
             )
 
     def _add_subdiv_nt_holidays(self):
@@ -346,7 +352,8 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1931:
             self._add_observed(
                 # Remembrance Day.
-                self._add_remembrance_day(tr("Remembrance Day"))
+                self._add_remembrance_day(tr("Remembrance Day")),
+                include_sat=False,
             )
 
     def _add_subdiv_nu_holidays(self):
@@ -400,7 +407,8 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1931:
             self._add_observed(
                 # Remembrance Day.
-                self._add_remembrance_day(tr("Remembrance Day"))
+                self._add_remembrance_day(tr("Remembrance Day")),
+                include_sat=False,
             )
 
     def _add_subdiv_qc_holidays(self):
@@ -440,7 +448,8 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1931:
             self._add_observed(
                 # Remembrance Day.
-                self._add_remembrance_day(tr("Remembrance Day"))
+                self._add_remembrance_day(tr("Remembrance Day")),
+                include_sat=False,
             )
 
     def _add_subdiv_yt_holidays(self):
