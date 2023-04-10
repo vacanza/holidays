@@ -12,6 +12,7 @@
 import sys
 import unittest
 import warnings
+from datetime import date
 from unittest import mock
 
 import pytest
@@ -106,8 +107,9 @@ class TestAllInSameYear(unittest.TestCase):
 
         for country in utils.list_supported_countries():
             for year in self.years:
-                for holiday in utils.country_holidays(country, years=year):
-                    self.assertEqual(holiday.year, year)
+                for dt in utils.country_holidays(country, years=year):
+                    self.assertEqual(dt.year, year)
+                    self.assertEqual(type(dt), date)
         self.assertEqual(
             self.years,
             utils.country_holidays(country, years=self.years).years,
@@ -131,8 +133,9 @@ class TestAllInSameYear(unittest.TestCase):
 
         for market in utils.list_supported_financial():
             for year in self.years:
-                for holiday in utils.financial_holidays(market, years=year):
-                    self.assertEqual(holiday.year, year)
+                for dt in utils.financial_holidays(market, years=year):
+                    self.assertEqual(dt.year, year)
+                    self.assertEqual(type(dt), date)
         self.assertEqual(
             self.years,
             utils.financial_holidays(market, years=self.years).years,
