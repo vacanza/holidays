@@ -44,34 +44,36 @@ class Israel(HolidayBase):
         name = "Memorial Day"
         memorial_day_dt = date(
             *gregorian.from_jd(
-                hebrew.to_jd_gregorianyear(year, hebrew.IYYAR, 3)
+                hebrew.to_jd_gregorianyear(year, hebrew.IYYAR, 4)
             )
         )
-        self[memorial_day_dt + td(days=+1)] = name
 
         observed_delta = 0
         if self.observed:
             day_in_week = memorial_day_dt.weekday()
-            if self._is_wednesday(memorial_day_dt) or self._is_thursday(
+            if self._is_thursday(memorial_day_dt) or self._is_friday(
                 memorial_day_dt
             ):
-                observed_delta = -(day_in_week - 1)
-            elif 2004 <= year and self._is_saturday(memorial_day_dt):
+                observed_delta = -(day_in_week - 2)
+            elif year >= 2004 and self._is_sunday(memorial_day_dt):
                 observed_delta = 1
 
-            if observed_delta != 0:
-                self[memorial_day_dt + td(days=observed_delta + 1)] = (
-                    name + " (Observed)"
-                )
+        if observed_delta != 0:
+            self[memorial_day_dt + td(days=observed_delta)] = (
+                name + " (Observed)"
+            )
+        else:
+            self[memorial_day_dt] = name
 
         # Independence Day
         name = "Independence Day"
-        self[memorial_day_dt + td(days=+2)] = name
 
         if self.observed and observed_delta != 0:
-            self[memorial_day_dt + td(days=observed_delta + 2)] = (
+            self[memorial_day_dt + td(days=observed_delta + 1)] = (
                 name + " (Observed)"
             )
+        else:
+            self[memorial_day_dt + td(days=+1)] = name
 
         # Lag Baomer
         name = "Lag B'Omer"
