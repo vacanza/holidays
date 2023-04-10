@@ -14,7 +14,6 @@ from datetime import timedelta as td
 from typing import Iterable, Set
 
 from dateutil.easter import EASTER_ORTHODOX, EASTER_WESTERN, easter
-from dateutil.parser import parse
 from korean_lunar_calendar import KoreanLunarCalendar
 
 from holidays.calendars import _ChineseLuniSolar, _islamic_to_gre
@@ -948,5 +947,8 @@ class KoreanCalendarHolidays:
         Get solar date.
         """
         self._korean_calendar.setLunarDate(year, month, day, False)
-
-        return parse(self._korean_calendar.SolarIsoFormat())
+        return date(
+            self._korean_calendar.solarYear,
+            self._korean_calendar.solarMonth,
+            self._korean_calendar.solarDay,
+        )
