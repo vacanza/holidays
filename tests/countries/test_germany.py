@@ -33,7 +33,7 @@ class TestDE(TestCase):
     def test_all_holidays_present(self):
         de_2015 = sum(DE(years=2015, subdiv=p) for p in DE.subdivisions)
         y_2015 = set(de_2015.values())
-        all_h = {
+        all_h = {  # Holidays names in their chronological order.
             "Neujahr",
             "Heilige Drei Könige",
             "Karfreitag",
