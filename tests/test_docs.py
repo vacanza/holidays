@@ -24,7 +24,9 @@ class TestReadme(TestCase):
         super().setUpClass()
 
     def test_supported_countries_count(self):
-        actual_country_count = len(list_supported_countries(unique=True))
+        actual_country_count = len(
+            list_supported_countries(include_aliases=False)
+        )
         readme_country_count = int(
             re.findall(
                 r"We currently support (\d+) country codes.",
@@ -100,7 +102,7 @@ class TestReadme(TestCase):
         )
 
         country_names = set(c.split("(the)")[0] for c in country_names)
-        supported_countries = list_supported_countries(unique=True)
+        supported_countries = list_supported_countries(include_aliases=False)
         for country_alpha_2_code in supported_countries:
             country = country_holidays(country_alpha_2_code)
             country_name = country.__class__.__base__.__name__
