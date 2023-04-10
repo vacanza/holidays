@@ -23,7 +23,7 @@ class TestCase(unittest.TestCase):
     """Base class for python-holidays test cases."""
 
     @classmethod
-    def setUpClass(cls, test_class=None):
+    def setUpClass(cls, test_class=None, years=None, years_non_observed=None):
         super().setUpClass()
 
         if test_class is None:
@@ -40,14 +40,27 @@ class TestCase(unittest.TestCase):
                 f"`{test_class.__name__}.default_language` value is invalid."
             )
 
+        if hasattr(test_class, "default_language"):
+            cls.set_language(test_class, test_class.default_language)
+
+        if years:
+            cls.holidays = test_class(years=years)
+        if years_non_observed:
+            cls.holidays_non_observed = test_class(
+                observed=False, years=years_non_observed
+            )
+
     def setUp(self):
         super().setUp()
 
         if hasattr(self.test_class, "default_language"):
             self.set_language(self.test_class.default_language)
 
-        self.holidays = self.test_class()
-        self.holidays_non_observed = self.test_class(observed=False)
+        if not hasattr(self, "holidays"):
+            self.holidays = self.test_class()
+
+        if not hasattr(self, "holidays_non_observed"):
+            self.holidays_non_observed = self.test_class(observed=False)
 
     def set_language(self, language):
         os.environ["LANGUAGE"] = language
@@ -79,9 +92,9 @@ class TestCase(unittest.TestCase):
         items = []
         if expand_items:
             for item_arg in item_args:
-                if type(item_arg) in {list, tuple}:
+                if type(item_arg) in {list, set, tuple}:
                     items.extend(item_arg)
-                elif expand_items and isinstance(item_arg, Generator):
+                elif isinstance(item_arg, (Generator, range)):
                     items.extend(tuple(item_arg))
                 else:
                     items.append(item_arg)
@@ -201,6 +214,30 @@ class TestCase(unittest.TestCase):
         """Assert a non-observed holiday with a specific name exists."""
         self._assertHolidayName(name, "holidays_non_observed", *args)
 
+    def _assertHolidayNameInYears(self, name, instance_name, *args):
+        """
+        Helper: assert a holiday with a specific name exists in specified
+        years.
+        """
+        holidays, years = self._parse_arguments(
+            args,
+            instance_name=instance_name,
+        )
+
+        holiday_years = {
+            dt.year for dt in holidays.get_named(name, lookup="exact")
+        }
+        self.assertTrue(set(years).issubset(holiday_years), name)
+
+    def assertHolidayNameInYears(self, name, *args):
+        """Assert a holiday with a specific name exists in specified years."""
+        self._assertHolidayNameInYears(name, "holidays", *args)
+
+    def assertNonObservedHolidayNameInYears(self, name, *args):
+        """Assert a non-observed holiday with a specific name exists in
+        specified years."""
+        self._assertHolidayNameInYears(name, "holidays_non_observed", *args)
+
     # Holidays.
     def _assertHolidays(self, instance_name, *args):
         """Helper: assert holidays exactly match expected holidays."""
@@ -285,6 +322,28 @@ class TestCase(unittest.TestCase):
     def assertNoNonObservedHolidayName(self, name, *args):
         """Assert a non-observed holiday with a specific name doesn't exist."""
         self._assertNoHolidayName(name, "holidays_non_observed", *args)
+
+    def _assertNoHolidayNameInYears(self, name, instance_name, *args):
+        """Helper: assert a holiday with a specific name doesn't exist in
+        specified years."""
+        holidays, years = self._parse_arguments(
+            args,
+            instance_name=instance_name,
+        )
+        holiday_years = {
+            dt.year for dt in holidays.get_named(name, lookup="exact")
+        }
+        self.assertEqual(0, len(holiday_years.intersection(years)), name)
+
+    def assertNoHolidayNameInYears(self, name, *args):
+        """Assert a holiday with a specific name doesn't exist in
+        specified years."""
+        self._assertNoHolidayNameInYears(name, "holidays", *args)
+
+    def assertNoNonObservedHolidayNameInYears(self, name, *args):
+        """Assert a non-observed holiday with a specific name doesn't exist in
+        specified years."""
+        self._assertNoHolidayNameInYears(name, "holidays_non_observed", *args)
 
     # No holidays.
     def _assertNoHolidays(self, instance_name, *args):

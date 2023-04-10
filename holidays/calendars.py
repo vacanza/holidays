@@ -17,6 +17,9 @@ from typing import Iterable, Optional
 from hijri_converter import convert
 from hijri_converter.ummalqura import GREGORIAN_RANGE, HIJRI_RANGE
 
+GREGORIAN_CALENDAR = "GREGORIAN_CALENDAR"
+JULIAN_CALENDAR = "JULIAN_CALENDAR"
+
 
 def _islamic_to_gre(g_year: int, h_month: int, h_day: int) -> Iterable[date]:
     """
@@ -60,7 +63,12 @@ def _islamic_to_gre(g_year: int, h_month: int, h_day: int) -> Iterable[date]:
     gre_dates = (
         convert.Hijri(y, h_month, h_day).to_gregorian() for y in h_years
     )
-    return (gre_date for gre_date in gre_dates if gre_date.year == g_year)
+
+    return (
+        date(*gre_date.datetuple())
+        for gre_date in gre_dates
+        if gre_date.year == g_year
+    )
 
 
 def _get_nth_weekday_from(n: int, weekday: int, from_dt: date) -> date:

@@ -9,64 +9,95 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from datetime import timedelta as td
+from gettext import gettext as tr
 
-from dateutil.easter import EASTER_ORTHODOX, easter
-
-from holidays.constants import JAN, MAR, MAY, JUN, AUG, OCT, DEC
+from holidays.calendars import GREGORIAN_CALENDAR, JULIAN_CALENDAR
+from holidays.constants import JUN, AUG
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Moldova(HolidayBase):
+class Moldova(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Moldova
+    https://www.legis.md/cautare/getResults?doc_id=133686
     """
 
     country = "MD"
+    default_language = "ro"
+
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self, JULIAN_CALENDAR)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
+        if year <= 1990:
+            return None
         super()._populate(year)
 
-        easter_date = easter(year, method=EASTER_ORTHODOX)
+        # New Year's Day.
+        self._add_new_years_day(tr("Anul Nou"))
 
-        # New Year
-        self[date(year, JAN, 1)] = "Anul Nou"
+        name = (
+            # Christmas (by old style).
+            tr("Naşterea lui Iisus Hristos (Crăciunul pe stil vechi)")
+            if year >= 2014
+            # Christmas.
+            else tr("Naşterea lui Iisus Hristos (Crăciunul)")
+        )
+        self._add_christmas_day(name)
+        self._add_christmas_day_two(name)
 
-        # Orthodox Christmas
-        for day in [7, 8]:
-            self[date(year, JAN, day)] = "Crăciunul"
+        # International Women's Day.
+        self._add_womens_day(tr("Ziua internatională a femeii"))
 
-        # International Women's Day
-        self[date(year, MAR, 8)] = "Ziua Internatională a Femeii"
+        # Easter.
+        name = tr("Paştele")
+        self._add_easter_sunday(name)
+        self._add_easter_monday(name)
 
-        # Orthodox Easter
-        for day_after_easter in [-2, 0, 1]:
-            self[easter_date + td(days=day_after_easter)] = "Paştele"
+        self._add_holiday(
+            # Day of Rejoicing.
+            tr("Paştele blajinilor"),
+            self._easter_sunday + td(days=+8),
+        )
 
-        # Paştele Blajinilor
-        self[easter_date + td(days=+9)] = "Paştele Blajinilor"
+        self._add_labour_day(
+            # International Workers' Solidarity Day.
+            tr("Ziua internaţională a solidarităţii oamenilor muncii")
+        )
 
-        # Labour Day
-        self[date(year, MAY, 1)] = "Ziua Internatională a Muncii"
+        may_9 = self._add_world_war_two_victory_day(
+            # Victory Day and Commemoration of the heroes fallen for
+            # Independence of Fatherland.
+            tr(
+                "Ziua Victoriei şi a comemorării eroilor căzuţi pentru "
+                "Independenţa Patriei"
+            )
+        )
 
-        # Ziua Victoriei
-        self[date(year, MAY, 9)] = "Ziua Victoriei"
+        if year >= 2017:
+            # Europe Day.
+            self._add_holiday(tr("Ziua Europei"), may_9)
 
-        # International Children's Day
-        self[date(year, JUN, 1)] = "Ziua Copilului"
+        if year >= 2016:
+            # International Children's Day
+            self._add_holiday(tr("Ziua Ocrotirii Copilului"), JUN, 1)
 
-        # Ziua Independenţei
-        self[date(year, AUG, 27)] = "Ziua Independenţei"
+        # Republic of Moldova Independence Day
+        self._add_holiday(tr("Ziua independenţei Republicii Moldova"), AUG, 27)
 
-        # Limba noastră
-        self[date(year, AUG, 31)] = "Limba noastră"
+        # National Language Day.
+        self._add_holiday(tr("Limba noastră"), AUG, 31)
 
-        # Ziua Natională a Vinului
-        self[date(year, OCT, 8)] = "Ziua Natională a Vinului"
-
-        # Crăciunul
-        self[date(year, DEC, 25)] = "Crăciunul"
+        if year >= 2013:
+            self._add_christmas_day(
+                # Christmas (by new style).
+                tr("Naşterea lui Iisus Hristos (Crăciunul pe stil nou)"),
+                GREGORIAN_CALENDAR,
+            )
 
 
 class MD(Moldova):

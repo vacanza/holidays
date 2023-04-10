@@ -4,7 +4,7 @@
 #  specific sets of holidays on the fly. It aims to make determining whether a
 #  specific date is a holiday as fast and flexible as possible.
 #
-#  Authors: dr-prodigy <maurizio.montel@gmail.com> (c) 2017-2022
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
 #           ryanss <ryanssdev@icloud.com> (c) 2014-2017
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
@@ -14,8 +14,9 @@ from tests.common import TestCase
 
 
 class TestAndorra(TestCase):
-    def setUp(self):
-        self.holidays = Andorra()
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Andorra)
 
     def test_country_aliases(self):
         self.assertCountryAliases(Andorra, AD, AND)
@@ -40,48 +41,30 @@ class TestAndorra(TestCase):
 
         # AD-02, Canillo.
         self.assertHoliday(
-            Andorra(subdiv="AD-02", years=2022),
-            "2022-07-21",
-            "2022-07-22",
-            "2022-07-23",
+            Andorra(subdiv="02"), "2022-07-16", "2022-07-17", "2022-07-18"
         )
 
         # AD-03, Encamp.
-        self.assertHoliday(
-            Andorra(subdiv="AD-03", years=2022),
-            "2022-08-15",
-            "2022-08-16",
-        )
+        self.assertHoliday(Andorra(subdiv="03"), "2022-08-15", "2022-08-16")
 
         # AD-04, La Massana.
-        self.assertHoliday(
-            Andorra(subdiv="AD-04", years=2022),
-            "2022-08-15",
-            "2022-08-16",
-        )
+        self.assertHoliday(Andorra(subdiv="04"), "2022-08-15", "2022-08-16")
 
         # AD-05, Ordino.
-        self.assertHoliday(
-            Andorra(subdiv="AD-05", years=2022),
-            "2022-08-15",
-            "2022-08-16",
-        )
+        self.assertHoliday(Andorra(subdiv="05"), "2022-08-15", "2022-08-16")
 
         # AD-06, Sant Julià de Lòria.
         self.assertHoliday(
-            Andorra(subdiv="AD-06", years=2022),
-            "2022-07-27",
-            "2022-07-28",
+            Andorra(subdiv="06"),
             "2022-07-29",
             "2022-07-30",
+            "2022-07-31",
+            "2022-08-01",
         )
 
         # AD-07, Andorra la Vella.
         self.assertHoliday(
-            Andorra(subdiv="AD-07", years=2022),
-            "2022-08-04",
-            "2022-08-05",
-            "2022-08-06",
+            Andorra(subdiv="07"), "2022-08-06", "2022-08-07", "2022-08-08"
         )
 
     def test_2023(self):
@@ -104,46 +87,28 @@ class TestAndorra(TestCase):
 
         # AD-02, Canillo.
         self.assertHoliday(
-            Andorra(subdiv="AD-02", years=2023),
-            "2023-07-21",
-            "2023-07-22",
-            "2023-07-23",
+            Andorra(subdiv="02"), "2023-07-15", "2023-07-16", "2023-07-17"
         )
 
         # AD-03, Encamp.
-        self.assertHoliday(
-            Andorra(subdiv="AD-03", years=2023),
-            "2023-08-15",
-            "2023-08-16",
-        )
+        self.assertHoliday(Andorra(subdiv="03"), "2023-08-15", "2023-08-16")
 
         # AD-04, La Massana.
-        self.assertHoliday(
-            Andorra(subdiv="AD-04", years=2023),
-            "2023-08-15",
-            "2023-08-16",
-        )
+        self.assertHoliday(Andorra(subdiv="04"), "2023-08-15", "2023-08-16")
 
         # AD-05, Ordino.
-        self.assertHoliday(
-            Andorra(subdiv="AD-05", years=2023),
-            "2023-08-15",
-            "2023-08-16",
-        )
+        self.assertHoliday(Andorra(subdiv="05"), "2023-08-15", "2023-08-16")
 
         # AD-06, Sant Julià de Lòria.
         self.assertHoliday(
-            Andorra(subdiv="AD-06", years=2023),
-            "2023-07-27",
+            Andorra(subdiv="06"),
             "2023-07-28",
             "2023-07-29",
             "2023-07-30",
+            "2023-07-31",
         )
 
         # AD-07, Andorra la Vella.
         self.assertHoliday(
-            Andorra(subdiv="AD-07", years=2023),
-            "2023-08-04",
-            "2023-08-05",
-            "2023-08-06",
+            Andorra(subdiv="07"), "2023-08-05", "2023-08-06", "2023-08-07"
         )

@@ -9,8 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from datetime import timedelta as td
+from gettext import gettext as tr
 
 from dateutil.easter import easter
 
@@ -51,35 +51,35 @@ class Nicaragua(HolidayBase):
         super()._populate(year)
 
         # New Year's Day.
-        self[date(year, JAN, 1)] = self.tr("Año Nuevo")
+        self._add_holiday(tr("Año Nuevo"), JAN, 1)
 
         easter_date = easter(year)
         # Maundy Thursday.
-        self[easter_date + td(days=-3)] = self.tr("Jueves Santo")
+        self._add_holiday(tr("Jueves Santo"), easter_date + td(days=-3))
         # Good Friday.
-        self[easter_date + td(days=-2)] = self.tr("Viernes Santo")
+        self._add_holiday(tr("Viernes Santo"), easter_date + td(days=-2))
         # Labour Day.
-        self[date(year, MAY, 1)] = self.tr("Día del Trabajo")
+        self._add_holiday(tr("Día del Trabajo"), MAY, 1)
 
         if year >= 1979:
             # Revolution Day.
-            self[date(year, JUL, 19)] = self.tr("Día de la Revolución")
+            self._add_holiday(tr("Día de la Revolución"), JUL, 19)
 
         # Battle of San Jacinto Day.
-        self[date(year, SEP, 14)] = self.tr("Batalla de San Jacinto")
+        self._add_holiday(tr("Batalla de San Jacinto"), SEP, 14)
         # Independence Day.
-        self[date(year, SEP, 15)] = self.tr("Día de la Independencia")
+        self._add_holiday(tr("Día de la Independencia"), SEP, 15)
         # Virgin's Day.
-        self[date(year, DEC, 8)] = self.tr("Concepción de María")
+        self._add_holiday(tr("Concepción de María"), DEC, 8)
         # Christmas.
-        self[date(year, DEC, 25)] = self.tr("Navidad")
+        self._add_holiday(tr("Navidad"), DEC, 25)
 
         # Provinces festive day
         if self.subdiv == "MN":
             # Descent of Saint Dominic.
-            self[date(year, AUG, 1)] = self.tr("Bajada de Santo Domingo")
+            self._add_holiday(tr("Bajada de Santo Domingo"), AUG, 1)
             # Ascent of Saint Dominic.
-            self[date(year, AUG, 10)] = self.tr("Subida de Santo Domingo")
+            self._add_holiday(tr("Subida de Santo Domingo"), AUG, 10)
 
 
 class NI(Nicaragua):

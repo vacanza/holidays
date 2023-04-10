@@ -19,6 +19,7 @@ __all__ = (
 
 import inspect
 import warnings
+from functools import lru_cache
 from typing import Dict, Iterable, List, Optional, Union
 
 from holidays import countries, financial
@@ -273,6 +274,7 @@ def CountryHoliday(
     )
 
 
+@lru_cache()
 def list_supported_countries(include_aliases=True) -> Dict[str, List[str]]:
     """
     Get all supported countries and their subdivisions.
@@ -291,6 +293,7 @@ def list_supported_countries(include_aliases=True) -> Dict[str, List[str]]:
     }
 
 
+@lru_cache()
 def list_supported_financial(include_aliases=True) -> Dict[str, List[str]]:
     """
     Get all supported financial markets and their subdivisions.

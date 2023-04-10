@@ -26,7 +26,10 @@ from dateutil.parser import parse
 from holidays.constants import HOLIDAY_NAME_DELIMITER, MON, TUE, WED, THU, FRI
 from holidays.constants import SAT, SUN
 
+DateArg = Union[date, Tuple[int, int]]
 DateLike = Union[date, datetime, str, float, int]
+
+gettext = gettext
 
 
 class HolidayBase(Dict[date, str]):
@@ -307,7 +310,7 @@ class HolidayBase(Dict[date, str]):
                         fallback=True,
                         localedir=locale_dir,
                     )
-                self.tr = translator.gettext  # Replace `self.tr()`.
+                self.tr = translator.gettext
 
         if isinstance(years, int):
             self.years = {years}
@@ -316,6 +319,18 @@ class HolidayBase(Dict[date, str]):
 
         for year in self.years:
             self._populate(year)
+
+    @property
+    def __attribute_names(self):
+        return (
+            "country",
+            "expand",
+            "language",
+            "market",
+            "observed",
+            "subdiv",
+            "years",
+        )
 
     def __setattr__(self, key: str, value: Any) -> None:
         dict.__setattr__(self, key, value)
@@ -467,12 +482,6 @@ class HolidayBase(Dict[date, str]):
             else:
                 self[arg] = "Holiday"
 
-    def _add_observed_holiday(
-        self, dt: DateLike, name: str, suffix: str = "(Observed)"
-    ) -> None:
-        """Adds a holiday name with an observance indication."""
-        self[dt] = f"{name} {suffix}"
-
     def append(
         self, *args: Union[Dict[DateLike, str], List[DateLike], DateLike]
     ) -> None:
@@ -539,8 +548,10 @@ class HolidayBase(Dict[date, str]):
             The holiday name lookup type:
                 contains - case sensitive contains match;
                 exact - case sensitive exact match;
+                startswith - case sensitive starts with match;
                 icontains - case insensitive contains match;
                 iexact - case insensitive exact match;
+                istartswith - case insensitive starts with match;
 
         :return:
             A list of all holiday dates matching the provided holiday name.
@@ -569,12 +580,35 @@ class HolidayBase(Dict[date, str]):
                 for dt, names in holiday_date_names_mapping.items()
                 if any((holiday_name in name for name in names))
             ]
+        elif lookup == "startswith":
+            return [
+                dt
+                for dt, names in holiday_date_names_mapping.items()
+                if any(
+                    (
+                        holiday_name == name[: len(holiday_name)]
+                        for name in names
+                    )
+                )
+            ]
         elif lookup == "iexact":
             holiday_name_lower = holiday_name.lower()
             return [
                 dt
                 for dt, names in holiday_date_names_mapping.items()
                 if any((holiday_name_lower == name.lower() for name in names))
+            ]
+        elif lookup == "istartswith":
+            holiday_name_lower = holiday_name.lower()
+            return [
+                dt
+                for dt, names in holiday_date_names_mapping.items()
+                if any(
+                    (
+                        holiday_name_lower == name[: len(holiday_name)].lower()
+                        for name in names
+                    )
+                )
             ]
 
         raise AttributeError(f"Unknown lookup type: {lookup}")
@@ -645,21 +679,25 @@ class HolidayBase(Dict[date, str]):
         if not isinstance(other, HolidayBase):
             return False
 
-        that, this = copy.copy(other), self.copy()
-        for obj in (that, this):  # Exclude translation objects.
-            delattr(obj, "tr")
+        for attribute_name in self.__attribute_names:
+            if getattr(self, attribute_name, None) != getattr(
+                other, attribute_name, None
+            ):
+                return False
 
-        return dict.__eq__(this, that) and this.__dict__ == that.__dict__
+        return dict.__eq__(self, other)
 
     def __ne__(self, other: object) -> bool:
         if not isinstance(other, HolidayBase):
             return True
 
-        that, this = copy.copy(other), self.copy()
-        for obj in (that, this):  # Exclude translation objects.
-            delattr(obj, "tr")
+        for attribute_name in self.__attribute_names:
+            if getattr(self, attribute_name, None) != getattr(
+                other, attribute_name, None
+            ):
+                return True
 
-        return dict.__ne__(this, that) or this.__dict__ != that.__dict__
+        return dict.__ne__(self, other)
 
     def __add__(
         self, other: Union[int, "HolidayBase", "HolidaySum"]
@@ -689,7 +727,46 @@ class HolidayBase(Dict[date, str]):
     def __radd__(self, other: Any) -> "HolidayBase":
         return self.__add__(other)
 
-    def _populate(self, year: int) -> None:
+    def _parse_holiday(self, *args) -> Tuple[str, date]:
+        """Parse holiday data."""
+        if len(args) == 2:
+            name, dt = args
+            if not isinstance(dt, date):
+                raise TypeError(
+                    "Invalid argument type: expected <class 'date'> "
+                    f"got '{type(dt)}'."
+                )
+        elif len(args) == 3:
+            name, month, day = args
+            dt = date(self._year, month, day)
+        else:
+            raise TypeError("Incorrect number of arguments.")
+
+        return name, dt
+
+    def _add_holiday(self, *args) -> Optional[date]:
+        """Add a holiday.
+
+        This method accepts either `name: str, dt: date` or
+        `name: str, month: int, day: int` arguments.
+        """
+        name, dt = self._parse_holiday(*args)
+        if dt.year != self._year:
+            return None
+
+        self[dt] = self.tr(name)
+        return dt
+
+    def _add_subdiv_holidays(self):
+        """Populate subdivision holidays."""
+        if self.subdiv is not None:
+            add_subdiv_holidays = getattr(
+                self, f"_add_subdiv_{self.subdiv.lower()}_holidays", None
+            )
+            if add_subdiv_holidays and callable(add_subdiv_holidays):
+                add_subdiv_holidays()
+
+    def _populate(self, year: int) -> Set[Optional[date]]:
         """This is a private class that populates (generates and adds) holidays
         for a given year. To keep things fast, it assumes that no holidays for
         the year have already been populated. It is required to be called
@@ -706,9 +783,17 @@ class HolidayBase(Dict[date, str]):
         >>> us_holidays.update(country_holidays('US', years=2021))
         """
 
+        self._year = year
+        dates = set()
+
         # Populate items from the special holidays list.
         for month, day, name in self.special_holidays.get(year, ()):
-            self[date(year, month, day)] = self.tr(name)
+            dates.add(self._add_holiday(name, date(year, month, day)))
+
+        # Populate subdivision holidays.
+        self._add_subdiv_holidays()
+
+        return dates
 
     @staticmethod
     def _is_leap_year(year: int) -> bool:
@@ -722,7 +807,7 @@ class HolidayBase(Dict[date, str]):
         Returns True if date's week day is a weekend day.
         Returns False otherwise.
         """
-        dt = args[0] if len(args) == 1 else date(*args)
+        dt = args[0] if len(args) == 1 else date(self._year, *args)
 
         return dt.weekday() in self.weekend
 
@@ -771,29 +856,31 @@ class HolidayBase(Dict[date, str]):
         if self:
             return super().__repr__()
 
-        repr = []
+        parts = []
         if hasattr(self, "market"):
-            repr.append(f"holidays.financial_holidays({self.market!r}")
-            if self.subdiv:
-                repr.append(f", subdiv={self.subdiv!r}")
-            repr.append(")")
+            parts.append(f"holidays.financial_holidays({self.market!r}")
         elif hasattr(self, "country"):
-            if repr:
-                repr.append(" + ")
-            repr.append(f"holidays.country_holidays({self.country!r}")
+            if parts:
+                parts.append(" + ")
+            parts.append(f"holidays.country_holidays({self.country!r}")
             if self.subdiv:
-                repr.append(f", subdiv={self.subdiv!r}")
-            repr.append(")")
+                parts.append(f", subdiv={self.subdiv!r}")
+        parts.append(")")
 
-        return "".join(repr)
+        return "".join(parts)
 
     def __str__(self) -> str:
         if self:
             return super().__str__()
 
-        obj = copy.copy(self)
-        delattr(obj, "tr")
-        return str(obj.__dict__)
+        parts = []
+        for attribute_name in self.__attribute_names:
+            parts.append(
+                "'%s': %s"
+                % (attribute_name, getattr(self, attribute_name, None))
+            )
+
+        return f"{{{', '.join(parts)}}}"
 
 
 class HolidaySum(HolidayBase):

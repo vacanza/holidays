@@ -33,6 +33,7 @@ from .canada import Canada, CA, CAN
 from .chile import Chile, CL, CHL
 from .china import China, CN, CHN
 from .colombia import Colombia, CO, COL
+from .costa_rica import CostaRica, CR, CRI
 from .croatia import Croatia, HR, HRV
 from .cuba import Cuba, CU, CUB
 from .curacao import Curacao, CW, CUW
@@ -41,6 +42,7 @@ from .czechia import Czechia, CZ, CZE
 from .denmark import Denmark, DK, DNK
 from .djibouti import Djibouti, DJ, DJI
 from .dominican_republic import DominicanRepublic, DO, DOM
+from .ecuador import Ecuador, EC, ECU
 from .egypt import Egypt, EG, EGY
 from .estonia import Estonia, EE, EST
 from .eswatini import Eswatini, SZ, SZW, Swaziland

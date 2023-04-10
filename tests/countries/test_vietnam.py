@@ -18,8 +18,8 @@ from tests.common import TestCase
 
 class TestVietnam(TestCase):
     @classmethod
-    def setUpClass(self):
-        super().setUpClass(Vietnam)
+    def setUpClass(cls):
+        super().setUpClass(Vietnam, years=range(1979, 2050))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Vietnam, VN, VNM)
@@ -106,7 +106,7 @@ class TestVietnam(TestCase):
         )
 
     def test_observed(self):
-        self.assertHoliday(
+        observed_holidays = (
             # International New Year's Day.
             "2012-01-02",
             "2017-01-02",
@@ -134,8 +134,5 @@ class TestVietnam(TestCase):
             "2018-09-03",
             "2023-09-04",
         )
-
-    def test_not_observed(self):
-        self.assertNoNonObservedHoliday(
-            "2023-01-02",
-        )
+        self.assertHoliday(observed_holidays)
+        self.assertNoNonObservedHoliday(observed_holidays)

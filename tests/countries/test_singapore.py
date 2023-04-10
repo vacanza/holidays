@@ -9,15 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
 from datetime import date
 
-import holidays
+from holidays.countries.singapore import Singapore, SG, SGP
+from tests.common import TestCase
 
 
-class TestSingapore(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.Singapore()
+class TestSingapore(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Singapore)
+
+    def test_country_aliases(self):
+        self.assertCountryAliases(Singapore, SG, SGP)
 
     def test_Singapore(self):
         # <= 1968 holidays
@@ -60,7 +64,7 @@ class TestSingapore(unittest.TestCase):
         self.assertIn(date(2018, 11, 6), self.holidays)
         self.assertIn(date(2018, 12, 25), self.holidays)
         # 2018: total holidays (11 + 0 falling on a Sunday)
-        self.assertEqual(len(holidays.Singapore(years=[2018])), 11 + 0)
+        self.assertEqual(len(Singapore(years=[2018])), 11 + 0)
 
     def test_2019(self):
         self.assertIn(date(2019, 1, 1), self.holidays)
@@ -77,7 +81,7 @@ class TestSingapore(unittest.TestCase):
         self.assertIn(date(2019, 10, 27), self.holidays)
         self.assertIn(date(2019, 10, 28), self.holidays)
         self.assertIn(date(2019, 12, 25), self.holidays)
-        self.assertEqual(len(holidays.Singapore(years=[2019])), 14)
+        self.assertEqual(len(Singapore(years=[2019])), 14)
 
     def test_2020(self):
         self.assertIn(date(2020, 1, 1), self.holidays)
@@ -95,7 +99,7 @@ class TestSingapore(unittest.TestCase):
         self.assertIn(date(2020, 8, 10), self.holidays)
         self.assertIn(date(2020, 11, 14), self.holidays)
         self.assertIn(date(2020, 12, 25), self.holidays)
-        self.assertEqual(len(holidays.Singapore(years=[2020])), 15)
+        self.assertEqual(len(Singapore(years=[2020])), 15)
 
     def test_2021(self):
         self.assertIn(date(2021, 1, 1), self.holidays)
@@ -109,7 +113,7 @@ class TestSingapore(unittest.TestCase):
         self.assertIn(date(2021, 8, 9), self.holidays)
         self.assertIn(date(2021, 11, 4), self.holidays)
         self.assertIn(date(2021, 12, 25), self.holidays)
-        self.assertEqual(len(holidays.Singapore(years=[2021])), 11)
+        self.assertEqual(len(Singapore(years=[2021])), 11)
 
     def test_2022(self):
         self.assertIn(date(2022, 1, 1), self.holidays)
@@ -128,7 +132,7 @@ class TestSingapore(unittest.TestCase):
         self.assertIn(date(2022, 12, 25), self.holidays)
         self.assertIn(date(2022, 12, 26), self.holidays)
         # 2022: total holidays (11 + 4 falling on a Sunday)
-        self.assertEqual(len(holidays.Singapore(years=[2022])), 11 + 4)
+        self.assertEqual(len(Singapore(years=[2022])), 11 + 4)
 
     def test_2023(self):
         self.assertIn(date(2023, 1, 1), self.holidays)
@@ -146,14 +150,7 @@ class TestSingapore(unittest.TestCase):
         self.assertIn(date(2023, 11, 13), self.holidays)
         self.assertIn(date(2023, 12, 25), self.holidays)
         # 2023: total holidays (11 + 3 falling on a Sunday)
-        self.assertEqual(len(holidays.Singapore(years=[2023])), 11 + 3)
-
-    def test_aliases(self):
-        """For coverage purposes"""
-        h = holidays.SG()
-        self.assertIsInstance(h, holidays.Singapore)
-        h = holidays.SGP()
-        self.assertIsInstance(h, holidays.Singapore)
+        self.assertEqual(len(Singapore(years=[2023])), 11 + 3)
 
     def test_special_holidays(self):
         self.assertIn(date(2015, 8, 7), self.holidays)

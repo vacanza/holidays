@@ -9,425 +9,402 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
-
 from holidays.countries.canada import Canada, CA, CAN
 from tests.common import TestCase
 
 
 class TestCanada(TestCase):
-    def setUp(self):
-        super().setUp()
-        self.holidays = Canada(observed=False)
-
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Canada)
+        years = range(1900, 2050)
+        super().setUpClass(Canada, years=years)
+        cls.prov_hols = {
+            prov: CA(subdiv=prov, years=years) for prov in CA.subdivisions
+        }
 
     def test_country_aliases(self):
         self.assertCountryAliases(Canada, CA, CAN)
 
+    def test_no_holidays(self):
+        self.assertNoHolidays(Canada(years=1866))
+
     def test_new_years(self):
-        self.assertNotIn(date(1866, 12, 31), self.holidays)
-        self.assertNotIn(date(2010, 12, 31), self.holidays)
-        self.assertNotIn(date(2011, 1, 3), self.holidays)
-        self.assertNotIn(date(2017, 1, 2), self.holidays)
-        self.holidays.observed = True
-        self.assertNotIn(date(2010, 12, 31), self.holidays)
-        self.assertIn(date(2011, 1, 3), self.holidays)
-        self.assertIn(date(2017, 1, 2), self.holidays)
-        self.holidays.observed = False
-        for year in range(1900, 2100):
-            dt = date(year, 1, 1)
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=-1), self.holidays)
-            self.assertNotIn(dt + td(days=+1), self.holidays)
+        self.assertHoliday(f"{year}-01-01" for year in range(1900, 2050))
+        self.assertHoliday("2011-01-03", "2017-01-02")
+        self.assertNoNonObservedHoliday("2011-01-03", "2017-01-02")
 
     def test_islander_day(self):
-        pei_holidays = Canada(subdiv="PE")
-        for dt in [
-            date(2009, 2, 9),
-            date(2010, 2, 15),
-            date(2011, 2, 21),
-            date(2012, 2, 20),
-            date(2013, 2, 18),
-            date(2014, 2, 17),
-            date(2015, 2, 16),
-            date(2016, 2, 15),
-            date(2020, 2, 17),
-        ]:
-            if dt.year >= 2010:
-                self.assertNotEqual(self.holidays[dt], "Islander Day")
-            elif dt.year == 2009:
-                self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, pei_holidays)
-            self.assertNotIn(dt + td(days=-1), pei_holidays)
-            self.assertNotIn(dt + td(days=+1), pei_holidays)
+        dt = (
+            "2010-02-15",
+            "2011-02-21",
+            "2012-02-20",
+            "2013-02-18",
+            "2014-02-17",
+            "2015-02-16",
+            "2016-02-15",
+            "2020-02-17",
+        )
+        self.assertHoliday(self.prov_hols["PE"], dt, "2009-02-09")
+        for d in dt:
+            self.assertNotEqual(self.holidays[d], "Islander Day")
 
     def test_yukon_heritage_day(self):
         # https://www.timeanddate.com/holidays/canada/heritage-day-yukon
-        yt_holidays = Canada(subdiv="YT")
-        for dt in [
-            date(2017, 2, 24),
-            date(2018, 2, 23),
-            date(2019, 2, 22),
-            date(2020, 2, 21),
-            date(2021, 2, 26),
-            date(2022, 2, 25),
-        ]:
-            self.assertIn(dt, yt_holidays)
-            self.assertNotIn(dt + td(days=-1), yt_holidays)
-            self.assertNotIn(dt + td(days=+1), yt_holidays)
+        dt = (
+            "2017-02-24",
+            "2018-02-23",
+            "2019-02-22",
+            "2020-02-21",
+            "2021-02-26",
+            "2022-02-25",
+        )
+        self.assertHoliday(self.prov_hols["YT"], dt)
 
     def test_family_day(self):
-        ab_holidays = Canada(subdiv="AB")
-        bc_holidays = Canada(subdiv="BC")
-        mb_holidays = Canada(subdiv="MB")
-        sk_holidays = Canada(subdiv="SK")
-        nb_holidays = Canada(subdiv="NB")
-        ns_holidays = Canada(subdiv="NS")
-        for dt in [
-            date(1990, 2, 19),
-            date(1999, 2, 15),
-            date(2000, 2, 21),
-            date(2006, 2, 20),
-        ]:
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, ab_holidays)
-            self.assertNotIn(dt, bc_holidays)
-            self.assertNotIn(dt, mb_holidays)
-            self.assertNotIn(dt, sk_holidays)
-        dt = date(2007, 2, 19)
-        self.assertNotIn(dt, self.holidays)
-        self.assertIn(dt, ab_holidays)
-        self.assertNotIn(dt, bc_holidays)
-        self.assertNotIn(dt, mb_holidays)
-        self.assertIn(dt, sk_holidays)
-        for dt in [
-            date(2008, 2, 18),
-            date(2012, 2, 20),
-            date(2014, 2, 17),
-            date(2018, 2, 19),
-        ]:
-            self.assertIn(dt, self.holidays)
-            self.assertIn(dt, ab_holidays)
-            self.assertNotIn(dt, bc_holidays)
-            self.assertIn(dt, mb_holidays)
-            self.assertIn(dt, sk_holidays)
-        for dt in [date(2018, 2, 19)]:
-            self.assertIn(dt, nb_holidays)
-        for dt in [date(2019, 2, 18), date(2020, 2, 17)]:
-            self.assertIn(dt, self.holidays)
-            self.assertIn(dt, ab_holidays)
-            self.assertIn(dt, bc_holidays)
-            self.assertIn(dt, mb_holidays)
-            self.assertIn(dt, sk_holidays)
-        for dt in [date(2013, 2, 11), date(2016, 2, 8)]:
-            self.assertNotIn(dt, self.holidays)
-            self.assertNotIn(dt, ab_holidays)
-            self.assertIn(dt, bc_holidays)
-            self.assertNotIn(dt, mb_holidays)
-            self.assertNotIn(dt, sk_holidays)
-        self.assertEqual(mb_holidays[date(2014, 2, 17)], "Louis Riel Day")
-        self.assertEqual(ns_holidays[date(2015, 2, 16)], "Heritage Day")
+        ab_holidays = self.prov_hols["AB"]
+        bc_holidays = self.prov_hols["BC"]
+        mb_holidays = self.prov_hols["MB"]
+        sk_holidays = self.prov_hols["SK"]
+        nb_holidays = self.prov_hols["NB"]
+        ns_holidays = self.prov_hols["NS"]
+        dt = (
+            "1990-02-19",
+            "1999-02-15",
+            "2000-02-21",
+            "2006-02-20",
+        )
+        self.assertNoHoliday(dt)
+        self.assertHoliday(ab_holidays, dt)
+        self.assertNoHoliday(bc_holidays, dt)
+        self.assertNoHoliday(mb_holidays, dt)
+        self.assertNoHoliday(sk_holidays, dt)
+        d = "2007-02-19"
+        self.assertNoHoliday(d)
+        self.assertHoliday(ab_holidays, d)
+        self.assertNoHoliday(bc_holidays, d)
+        self.assertNoHoliday(mb_holidays, d)
+        self.assertHoliday(sk_holidays, d)
+        dt = (
+            "2008-02-18",
+            "2012-02-20",
+            "2014-02-17",
+            "2018-02-19",
+        )
+        self.assertHoliday(dt)
+        self.assertHoliday(ab_holidays)
+        self.assertNoHoliday(bc_holidays, dt)
+        self.assertHoliday(mb_holidays, dt)
+        self.assertHoliday(sk_holidays, dt)
+        self.assertHoliday(nb_holidays, "2018-02-19")
+        dt = ("2019-02-18", "2020-02-17")
+        self.assertHoliday(dt)
+        self.assertHoliday(ab_holidays, dt)
+        self.assertHoliday(bc_holidays, dt)
+        self.assertHoliday(mb_holidays, dt)
+        self.assertHoliday(sk_holidays, dt)
+        dt = ("2013-02-11", "2016-02-08")
+        self.assertNoHoliday(dt)
+        self.assertNoHoliday(ab_holidays, dt)
+        self.assertHoliday(bc_holidays, dt)
+        self.assertNoHoliday(mb_holidays, dt)
+        self.assertNoHoliday(sk_holidays, dt)
+        self.assertHolidaysName("Louis Riel Day", mb_holidays, "2014-02-17")
+        self.assertHolidaysName("Heritage Day", ns_holidays, "2015-02-16")
 
     def test_st_patricks_day(self):
-        nl_holidays = Canada(subdiv="NL", observed=False)
-        for dt in [
-            date(1900, 3, 19),
-            date(1999, 3, 15),
-            date(2000, 3, 20),
-            date(2012, 3, 19),
-            date(2013, 3, 18),
-            date(2014, 3, 17),
-            date(2015, 3, 16),
-            date(2016, 3, 14),
-            date(2020, 3, 16),
-        ]:
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, nl_holidays)
-            self.assertNotIn(dt + td(days=-1), nl_holidays)
-            self.assertNotIn(dt + td(days=+1), nl_holidays)
+        nl_holidays = self.prov_hols["NL"]
+        dt = (
+            "1900-03-19",
+            "1999-03-15",
+            "2000-03-20",
+            "2012-03-19",
+            "2013-03-18",
+            "2014-03-17",
+            "2015-03-16",
+            "2016-03-14",
+            "2020-03-16",
+        )
+        self.assertNoHoliday(dt)
+        self.assertHoliday(nl_holidays, dt)
+        self.assertNoHoliday(nl_holidays, "1899-03-20")
 
     def test_good_friday(self):
-        for dt in [
-            date(1900, 4, 13),
-            date(1901, 4, 5),
-            date(1902, 3, 28),
-            date(1999, 4, 2),
-            date(2000, 4, 21),
-            date(2010, 4, 2),
-            date(2018, 3, 30),
-            date(2019, 4, 19),
-            date(2020, 4, 10),
-        ]:
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=-1), self.holidays)
-            self.assertNotIn(dt + td(days=+1), self.holidays)
+        self.assertHoliday(
+            "1900-04-13",
+            "1901-04-05",
+            "1902-03-28",
+            "1999-04-02",
+            "2000-04-21",
+            "2010-04-02",
+            "2018-03-30",
+            "2019-04-19",
+            "2020-04-10",
+        )
 
     def test_easter_monday(self):
-        for dt in [
-            date(1900, 4, 16),
-            date(1901, 4, 8),
-            date(1902, 3, 31),
-            date(1999, 4, 5),
-            date(2000, 4, 24),
-            date(2010, 4, 5),
-            date(2018, 4, 2),
-            date(2019, 4, 22),
-            date(2020, 4, 13),
-        ]:
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=-1), self.holidays)
-            self.assertNotIn(dt + td(days=+1), self.holidays)
+        self.assertHoliday(
+            "1900-04-16",
+            "1901-04-08",
+            "1902-03-31",
+            "1999-04-05",
+            "2000-04-24",
+            "2010-04-05",
+            "2018-04-02",
+            "2019-04-22",
+            "2020-04-13",
+        )
 
     def test_st_georges_day(self):
-        nl_holidays = Canada(subdiv="NL")
-        for dt in [
-            date(1990, 4, 23),
-            date(1999, 4, 26),
-            date(2010, 4, 19),
-            date(2016, 4, 25),
-            date(2020, 4, 20),
-        ]:
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, nl_holidays)
-            self.assertNotIn(dt + td(days=-1), nl_holidays)
-            self.assertNotIn(dt + td(days=+1), nl_holidays)
+        dt = (
+            "1990-04-23",
+            "1999-04-26",
+            "2010-04-19",
+            "2016-04-25",
+            "2020-04-20",
+        )
+        self.assertNoHoliday(dt)
+        self.assertHoliday(self.prov_hols["NL"], dt)
 
     def test_victoria_day(self):
-        for dt in [
-            date(1953, 5, 18),
-            date(1999, 5, 24),
-            date(2000, 5, 22),
-            date(2010, 5, 24),
-            date(2015, 5, 18),
-            date(2020, 5, 18),
-        ]:
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=-1), self.holidays)
-            self.assertNotIn(dt + td(days=+1), self.holidays)
+        dt = ("1953-05-18", "1999-05-24", "2000-05-22")
+        self.assertHoliday(dt)
+        for prov, holidays in self.prov_hols.items():
+            if prov in {"NL", "NS", "PE", "QC"}:
+                self.assertNoHoliday(holidays, dt)
+            else:
+                self.assertHoliday(holidays, dt)
+
+        dt = ("2010-05-24", "2015-05-18", "2020-05-18")
+        self.assertHoliday(dt)
+        for prov, holidays in self.prov_hols.items():
+            if prov in {"NL", "NS", "PE"}:
+                self.assertNoHoliday(holidays, dt)
+            else:
+                self.assertHoliday(holidays, dt)
+
+    def test_national_patriots_day(self):
+        self.assertHolidaysName(
+            "National Patriots' Day",
+            self.prov_hols["QC"],
+            "2010-05-24",
+            "2015-05-18",
+            "2020-05-18",
+            "2021-05-24",
+            "2022-05-23",
+        )
 
     def test_national_aboriginal_day(self):
-        nt_holidays = Canada(subdiv="NT")
-        self.assertNotIn(date(1995, 6, 21), nt_holidays)
-        for year in range(1996, 2100):
-            dt = date(year, 6, 21)
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, nt_holidays)
-            self.assertNotIn(dt + td(days=-1), nt_holidays)
-            self.assertNotIn(dt + td(days=+1), nt_holidays)
+        nt_holidays = self.prov_hols["NT"]
+        self.assertNoHoliday(nt_holidays, "1995-06-21")
+        self.assertNoHoliday(f"{year}-06-21" for year in range(1996, 2050))
+        self.assertHoliday(
+            nt_holidays, (f"{year}-06-21" for year in range(1996, 2050))
+        )
 
     def test_st_jean_baptiste_day(self):
-        qc_holidays = Canada(subdiv="QC", observed=False)
-        self.assertNotIn(date(1924, 6, 24), qc_holidays)
-        for year in range(1925, 2100):
-            dt = date(year, 6, 24)
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, qc_holidays)
-            self.assertNotIn(dt + td(days=-1), qc_holidays)
-            self.assertNotIn(dt + td(days=+1), qc_holidays)
-        self.assertNotIn(date(2001, 6, 25), qc_holidays)
-        qc_holidays.observed = True
-        self.assertIn(date(2001, 6, 25), qc_holidays)
+        qc_holidays = self.prov_hols["QC"]
+        self.assertNoHoliday(qc_holidays, "1924-06-24")
+        self.assertNoHoliday(f"{year}-06-24" for year in range(1925, 2050))
+        self.assertHoliday(
+            qc_holidays, (f"{year}-06-24" for year in range(1925, 2050))
+        )
+        self.assertHoliday(qc_holidays, "2001-06-25")
+        self.assertNoNonObservedHoliday(
+            Canada(subdiv="QC", observed=False), "2001-06-25"
+        )
 
     def test_discovery_day(self):
-        nl_holidays = Canada(subdiv="NL")
-        yt_holidays = Canada(subdiv="YT")
-        for dt in [
-            date(1997, 6, 23),
-            date(1999, 6, 21),
-            date(2000, 6, 26),
-            date(2010, 6, 21),
-            date(2016, 6, 27),
-            date(2020, 6, 22),
-        ]:
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, nl_holidays)
-            self.assertNotIn(dt, yt_holidays)
-        for dt in [
-            date(1912, 8, 19),
-            date(1999, 8, 16),
-            date(2000, 8, 21),
-            date(2006, 8, 21),
-            date(2016, 8, 15),
-            date(2020, 8, 17),
-        ]:
-            self.assertNotIn(dt, self.holidays)
-            self.assertNotIn(dt, nl_holidays)
-            self.assertIn(dt, yt_holidays)
+        nl_holidays = self.prov_hols["NL"]
+        yt_holidays = self.prov_hols["YT"]
+        dt = (
+            "1997-06-23",
+            "1999-06-21",
+            "2000-06-26",
+            "2010-06-21",
+            "2016-06-27",
+            "2020-06-22",
+        )
+        self.assertNoHoliday(dt)
+        self.assertHoliday(nl_holidays, dt)
+        self.assertNoHoliday(yt_holidays, dt)
+
+        dt = (
+            "1912-08-19",
+            "1999-08-16",
+            "2000-08-21",
+            "2006-08-21",
+            "2016-08-15",
+            "2020-08-17",
+        )
+        self.assertNoHoliday(dt)
+        self.assertNoHoliday(nl_holidays, dt)
+        self.assertHoliday(yt_holidays, dt)
 
     def test_canada_day(self):
-        for year in range(1900, 2100):
-            dt = date(year, 7, 1)
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=-1), self.holidays)
-            self.assertNotIn(dt + td(days=+1), self.holidays)
-        self.assertNotIn(date(2006, 7, 3), self.holidays)
-        self.assertNotIn(date(2007, 7, 2), self.holidays)
-        self.holidays.observed = True
-        self.assertIn(date(2006, 7, 3), self.holidays)
-        self.assertIn(date(2007, 7, 2), self.holidays)
+        self.assertHoliday(f"{year}-07-01" for year in range(1900, 2050))
+        self.assertHoliday("2006-07-03", "2007-07-02")
+        self.assertNoNonObservedHoliday("2006-07-03", "2007-07-02")
 
     def test_nunavut_day(self):
-        nu_holidays = Canada(subdiv="NU", observed=False)
-        self.assertNotIn(date(1999, 7, 9), nu_holidays)
-        self.assertNotIn(date(2000, 7, 9), nu_holidays)
-        self.assertIn(date(2000, 4, 1), nu_holidays)
-        for year in range(2001, 2100):
-            dt = date(year, 7, 9)
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, nu_holidays)
-            self.assertNotIn(dt + td(days=-1), nu_holidays)
-            self.assertNotIn(dt + td(days=+1), nu_holidays)
-        self.assertNotIn(date(2017, 7, 10), nu_holidays)
-        nu_holidays.observed = True
-        self.assertIn(date(2017, 7, 10), nu_holidays)
+        nu_holidays = self.prov_hols["NU"]
+        self.assertNoHoliday(nu_holidays, "1999-07-09", "2000-07-09")
+        self.assertHoliday(nu_holidays, "2000-04-01")
+        self.assertNoHoliday(f"{year}-07-09" for year in range(2001, 2050))
+        self.assertHoliday(
+            nu_holidays, (f"{year}-07-09" for year in range(2001, 2050))
+        )
+        self.assertHoliday(nu_holidays, "2017-07-10")
+        self.assertNoNonObservedHoliday(
+            Canada(subdiv="NU", observed=False), "2017-07-10"
+        )
 
-    def test_civic_holiday(self):
-        bc_holidays = Canada(subdiv="BC")
-        for dt in [date(1900, 8, 6), date(1955, 8, 1), date(1973, 8, 6)]:
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt, bc_holidays)
-        for dt in [
-            date(1974, 8, 5),
-            date(1999, 8, 2),
-            date(2000, 8, 7),
-            date(2010, 8, 2),
-            date(2015, 8, 3),
-            date(2020, 8, 3),
-        ]:
-            self.assertIn(dt, self.holidays)
-            self.assertIn(dt, bc_holidays)
+    def test_civic_holiday_bc(self):
+        bc_holidays = self.prov_hols["BC"]
+        dt = (
+            "1974-08-05",
+            "1999-08-02",
+            "2000-08-07",
+            "2010-08-02",
+            "2015-08-03",
+            "2020-08-03",
+        )
+        self.assertHoliday(bc_holidays, dt)
+        self.assertNoHoliday(bc_holidays, "1973-08-06")
+
+    def test_civic_holiday_mb(self):
+        mb_holidays = self.prov_hols["MB"]
+        dt = (
+            "1900-08-06",
+            "1999-08-02",
+            "2000-08-07",
+            "2010-08-02",
+            "2015-08-03",
+            "2020-08-03",
+        )
+        self.assertHoliday(mb_holidays, dt)
+        self.assertNoHoliday(mb_holidays, "1899-08-07")
+        old_name = "Civic Holiday"
+        new_name = "Terry Fox Day"
+        self.assertHolidaysName(old_name, mb_holidays, "2014-08-04")
+        self.assertHolidaysName(new_name, mb_holidays, "2015-08-03")
+        self.assertNoHolidayNameInYears(old_name, mb_holidays, 2015)
+        self.assertNoHolidayNameInYears(new_name, mb_holidays, 2014)
+
+    def test_civic_holiday_nb_nt_sk(self):
+        nb_holidays = self.prov_hols["NB"]
+        nt_holidays = self.prov_hols["NT"]
+        sk_holidays = self.prov_hols["SK"]
+        dt = (
+            "1900-08-06",
+            "1999-08-02",
+            "2000-08-07",
+            "2010-08-02",
+            "2015-08-03",
+            "2020-08-03",
+        )
+        self.assertHoliday(nb_holidays, dt)
+        self.assertHoliday(nt_holidays, dt)
+        self.assertHoliday(sk_holidays, dt)
+        self.assertNoHoliday(nb_holidays, "1899-08-07")
+        self.assertNoHoliday(nt_holidays, "1899-08-07")
+        self.assertNoHoliday(sk_holidays, "1899-08-07")
 
     def test_labour_day(self):
-        self.assertNotIn(date(1893, 9, 4), self.holidays)
-        for dt in [
-            date(1894, 9, 3),
-            date(1900, 9, 3),
-            date(1999, 9, 6),
-            date(2000, 9, 4),
-            date(2014, 9, 1),
-            date(2015, 9, 7),
-        ]:
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=-1), self.holidays)
-            self.assertNotIn(dt + td(days=+1), self.holidays)
+        self.assertNoHoliday("1893-09-04")
+        self.assertHoliday(
+            "1894-09-03",
+            "1900-09-03",
+            "1999-09-06",
+            "2000-09-04",
+            "2014-09-01",
+            "2015-09-07",
+        )
 
     def test_national_day_for_truth_and_reconciliation(self):
-        bc_holidays = Canada(subdiv="BC")
-        mb_holidays = Canada(subdiv="MB")
-        ns_holidays = Canada(subdiv="NS")
+        bc_holidays = self.prov_hols["BC"]
+        mb_holidays = self.prov_hols["MB"]
+        ns_holidays = self.prov_hols["NS"]
 
-        for dt in [
-            date(1991, 9, 30),
-            date(2020, 9, 30),
-        ]:
-            self.assertNotIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=-1), self.holidays)
-            self.assertNotIn(dt, mb_holidays)
-            self.assertNotIn(dt, ns_holidays)
-        for dt in [
-            date(2021, 9, 30),
-            date(2022, 9, 30),
-        ]:
-            self.assertIn(dt, mb_holidays)
-            self.assertIn(dt, ns_holidays)
-            self.assertNotIn(dt + td(days=-1), mb_holidays)
-            self.assertNotIn(dt + td(days=-1), ns_holidays)
-            self.assertNotIn(dt, self.holidays)
-        for dt in [
-            date(2023, 9, 30),
-            date(2024, 9, 30),
-            date(2030, 9, 30),
-        ]:
-            self.assertIn(dt, mb_holidays)
-            self.assertIn(dt, ns_holidays)
-            self.assertIn(dt, bc_holidays)
-            self.assertNotIn(dt + td(days=-1), mb_holidays)
-            self.assertNotIn(dt + td(days=-1), ns_holidays)
-            self.assertNotIn(dt + td(days=-1), bc_holidays)
-            self.assertNotIn(dt, self.holidays)
+        dt = ("1991-09-30", "2020-09-30")
+        self.assertNoHoliday(dt)
+        self.assertNoHoliday(mb_holidays, dt)
+        self.assertNoHoliday(ns_holidays, dt)
+
+        dt = ("2021-09-30", "2022-09-30")
+        self.assertHoliday(mb_holidays, dt)
+        self.assertHoliday(ns_holidays, dt)
+        self.assertNoHoliday(dt)
+
+        dt = ("2023-09-30", "2024-09-30", "2030-09-30")
+        self.assertHoliday(mb_holidays, dt)
+        self.assertHoliday(ns_holidays, dt)
+        self.assertHoliday(bc_holidays, dt)
+        self.assertNoHoliday(dt)
 
     def test_thanksgiving(self):
-        ns_holidays = Canada(subdiv="NB")
-        for dt in [
-            date(1931, 10, 12),
-            date(1990, 10, 8),
-            date(1999, 10, 11),
-            date(2000, 10, 9),
-            date(2013, 10, 14),
-            date(2020, 10, 12),
-        ]:
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=-1), self.holidays)
-            self.assertNotIn(dt + td(days=+1), self.holidays)
-            self.assertNotIn(dt, ns_holidays)
+        nb_holidays = self.prov_hols["NB"]
+        nl_holidays = self.prov_hols["NL"]
+        ns_holidays = self.prov_hols["NS"]
+        pe_holidays = self.prov_hols["PE"]
+
+        dt = (
+            "1931-10-12",
+            "1935-10-25",
+            "1990-10-08",
+            "1999-10-11",
+            "2000-10-09",
+            "2013-10-14",
+            "2020-10-12",
+        )
+        self.assertHoliday(dt)
+        self.assertNoHoliday(nb_holidays, dt)
+        self.assertNoHoliday(nl_holidays, dt)
+        self.assertNoHoliday(ns_holidays, dt)
+        self.assertNoHoliday(pe_holidays, dt)
 
     def test_remembrance_day(self):
-        ab_holidays = Canada(subdiv="AB", observed=False)
-        nl_holidays = Canada(subdiv="NL", observed=False)
-        self.assertNotIn(date(1930, 11, 11), ab_holidays)
-        self.assertNotIn(date(1930, 11, 11), nl_holidays)
-        for year in range(1931, 2100):
-            dt = date(year, 11, 11)
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, ab_holidays)
-            self.assertIn(dt, nl_holidays)
-            self.assertNotIn(dt + td(days=-1), nl_holidays)
-            self.assertNotIn(dt + td(days=+1), nl_holidays)
-        self.assertNotIn(date(2007, 11, 12), ab_holidays)
-        self.assertNotIn(date(2007, 11, 12), nl_holidays)
-        ab_holidays.observed = True
-        nl_holidays.observed = True
-        self.assertNotIn(date(2007, 11, 12), ab_holidays)
-        self.assertIn(date(2007, 11, 12), nl_holidays)
+        ab_holidays = self.prov_hols["AB"]
+        nl_holidays = self.prov_hols["NL"]
+        self.assertNoHoliday(nl_holidays, "1930-11-11")
+        self.assertNoHoliday(ab_holidays, "1930-11-11")
+
+        self.assertNoHoliday(f"{year}-11-11" for year in range(1931, 2050))
+        self.assertHoliday(
+            ab_holidays, (f"{year}-11-11" for year in range(1931, 2050))
+        )
+        self.assertHoliday(
+            nl_holidays, (f"{year}-11-11" for year in range(1931, 2050))
+        )
+
+        self.assertNoHoliday(ab_holidays, "2007-11-12")
+        self.assertHoliday(nl_holidays, "2007-11-12")
+        self.assertNoNonObservedHoliday(
+            Canada(subdiv="AB", observed=False), "2007-11-12"
+        )
+        self.assertNoNonObservedHoliday(
+            Canada(subdiv="NL", observed=False), "2007-11-12"
+        )
 
     def test_christmas_day(self):
-        self.holidays.observed = False
-        for year in range(1900, 2100):
-            dt = date(year, 12, 25)
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=-1), self.holidays)
-        self.assertNotIn(date(2010, 12, 27), self.holidays)
-        self.assertNotEqual(
-            self.holidays[date(2011, 12, 26)],
-            "Christmas Day (Observed)",
+        self.assertHoliday(f"{year}-12-25" for year in range(1900, 2050))
+        self.assertHoliday("2010-12-27", "2011-12-27")
+        self.assertNoNonObservedHoliday("2010-12-27", "2011-12-27")
+        self.assertNotIn(
+            "Christmas Day (Observed)", self.holidays["2011-12-26"]
         )
-        self.holidays.observed = True
-        self.assertIn(date(2010, 12, 27), self.holidays)
-        self.assertEqual(
-            self.holidays[date(2011, 12, 27)],
-            "Christmas Day (Observed)",
-        )
+        self.assertHolidaysName("Christmas Day (Observed)", "2011-12-27")
 
     def test_boxing_day(self):
-        for year in range(1900, 2100):
-            dt = date(year, 12, 26)
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=+1), self.holidays)
-        self.assertNotIn(date(2009, 12, 28), self.holidays)
-        self.assertNotIn(date(2010, 12, 27), self.holidays)
-        self.holidays.observed = True
-        self.assertIn(date(2009, 12, 28), self.holidays)
-        self.assertIn(date(2010, 12, 27), self.holidays)
+        self.assertHoliday(f"{year}-12-26" for year in range(1900, 2050))
+        self.assertHoliday("2009-12-28", "2010-12-27")
+        self.assertNoNonObservedHoliday("2009-12-28", "2010-12-27")
 
     def test_queens_funeral(self):
-        for subdiv in Canada.subdivisions:
-            holidays_canada = Canada(subdiv=subdiv)
-            for year in range(1900, 2100):
-                if year == 2022 and subdiv in {
-                    "BC",
-                    "NB",
-                    "NL",
-                    "NS",
-                    "PE",
-                    "YT",
-                }:
-                    self.assertIn(date(year, 9, 19), holidays_canada)
-                else:
-                    self.assertNotIn(date(year, 9, 19), holidays_canada)
+        for prov, holidays in self.prov_hols.items():
+            if prov in {"BC", "NB", "NL", "NS", "PE", "YT"}:
+                self.assertHoliday(holidays, "2022-09-19")
+            else:
+                self.assertNoHoliday(holidays, "2022-09-19")
 
     def test_l10n_default(self):
         def run_tests(languages):
@@ -435,6 +412,7 @@ class TestCanada(TestCase):
                 ca = Canada(language=language)
                 self.assertEqual(ca["2022-01-01"], "New Year's Day")
                 self.assertEqual(ca["2022-12-25"], "Christmas Day")
+                self.assertEqual(ca["2022-12-27"], "Christmas Day (Observed)")
 
             run_tests((Canada.default_language, None, "invalid"))
 
@@ -447,9 +425,11 @@ class TestCanada(TestCase):
         ca = Canada(language=fr)
         self.assertEqual(ca["2018-01-01"], "Jour de l'an")
         self.assertEqual(ca["2022-12-25"], "Jour de Noël")
+        self.assertEqual(ca["2022-12-27"], "Jour de Noël (Observé)")
 
         self.set_language(fr)
         for language in (None, fr, "invalid"):
             ca = Canada(language=language)
             self.assertEqual(ca["2018-01-01"], "Jour de l'an")
             self.assertEqual(ca["2022-12-25"], "Jour de Noël")
+            self.assertEqual(ca["2022-12-27"], "Jour de Noël (Observé)")

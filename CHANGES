@@ -1,7 +1,40 @@
-Version 0.22
+Version 0.23
 ============
 
 Released ???????? ??, ????
+
+Version 0.22
+============
+
+Released April 3, 2023
+
+- Introduce holiday groups, #865 (@arkid15r, @KJhellico)
+- Introduce subdivision holidays methods, #1057 (@arkid15r)
+- Refactor .po and .mo files generation, #1033 (@KJhellico)
+- Refactor Dominican Republic movable holidays, #1046 (@KJhellico)
+- Refactor South Korea holidays: optimize alternative holidays, #1054 (@KJhellico)
+- Refactor common.TestCase: speed up tests, #1060 (@KJhellico)
+- Fix Canada localization, #1073 (@KJhellico)
+- Update Andorra parish holidays, #1036 (@KJhellico)
+- Update France holidays, localization, #1055 (@KJhellico)
+- Update Moldova holidays, localization, #1045 (@KJhellico)
+- Update PR template: add documentation mentioning, #1041 (@arkid15r)
+- Update PR template: rework tests related action item wording, #1058 (@arkid15r)
+- Update README: add missing th localization for Canada, #1032 (@PPsyrius)
+- Update Romania holidays, localization, #1044 (@KJhellico)
+- Update Uruguay localization: fix uk translation, #1035 (@KJhellico)
+- Update country/financial years tests, #1061 (@arkid15r)
+- Add Costa Rica holidays, #1048 (@KJhellico)
+- Extend `get_named()` lookup types: add `[i]startswith`, #1062 (@arkid15r)
+- Memoize list supported entities methods results, #1042 (@arkid15r)
+- Migrate Argentina holidays to holiday groups, #1051 (@PPsyrius)
+- Migrate Bahrain and India holidays to holiday groups, #1047 (@arkid15r)
+- Migrate Portugal holidays to holiday groups, #1050 (@PPsyrius)
+- Migrate Ukraine holidays to holiday groups, #1056 (@KJhellico)
+- Migrate Uruguay holidays to holiday groups, #1053 (@PPsyrius)
+- Migrate Venezuela holidays to holiday groups, #1052 (@PPsyrius)
+- Restore 100% test coverage, #1038 (@KJhellico)
+- Unify file headers, #1039 (@KJhellico)
 
 Version 0.21.13
 ===============

@@ -9,8 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from datetime import timedelta as td
+from gettext import gettext as tr
 
 from dateutil.easter import EASTER_ORTHODOX, easter
 
@@ -49,57 +49,61 @@ class Bulgaria(HolidayBase):
         super()._populate(year)
 
         # New Year's Day.
-        self[date(year, JAN, 1)] = self.tr("Нова година")
+        self._add_holiday(tr("Нова година"), JAN, 1)
 
         # Liberation Day.
-        self[date(year, MAR, 3)] = self.tr(
-            "Ден на Освобождението на България от османско иго"
+        self._add_holiday(
+            tr("Ден на Освобождението на България от османско иго"), MAR, 3
         )
 
         # International Workers' Day.
-        self[date(year, MAY, 1)] = self.tr(
-            "Ден на труда и на международната работническа солидарност"
+        self._add_holiday(
+            tr("Ден на труда и на международната работническа солидарност"),
+            MAY,
+            1,
         )
 
         # Saint George's Day.
-        self[date(year, MAY, 6)] = self.tr(
-            "Гергьовден, Ден на храбростта и Българската армия"
+        self._add_holiday(
+            tr("Гергьовден, Ден на храбростта и Българската армия"), MAY, 6
         )
 
         # Bulgarian Education and Culture and Slavonic Literature Day.
-        self[date(year, MAY, 24)] = self.tr(
-            "Ден на светите братя Кирил и Методий, на българската азбука, "
-            "просвета и култура и на славянската книжовност"
+        self._add_holiday(
+            tr(
+                "Ден на светите братя Кирил и Методий, на българската азбука, "
+                "просвета и култура и на славянската книжовност"
+            ),
+            MAY,
+            24,
         )
 
         # Unification Day.
-        self[date(year, SEP, 6)] = self.tr("Ден на Съединението")
+        self._add_holiday(tr("Ден на Съединението"), SEP, 6)
 
         # Independence Day.
-        self[date(year, SEP, 22)] = self.tr(
-            "Ден на Независимостта на България"
-        )
+        self._add_holiday(tr("Ден на Независимостта на България"), SEP, 22)
 
         # National Awakening Day.
-        self[date(year, NOV, 1)] = self.tr("Ден на народните будители")
+        self._add_holiday(tr("Ден на народните будители"), NOV, 1)
 
         # Christmas Eve.
-        self[date(year, DEC, 24)] = self.tr("Бъдни вечер")
+        self._add_holiday(tr("Бъдни вечер"), DEC, 24)
         # Christmas Day 1.
-        self[date(year, DEC, 25)] = self.tr("Рождество Христово")
+        self._add_holiday(tr("Рождество Христово"), DEC, 25)
         # Christmas Day 2.
-        self[date(year, DEC, 26)] = self.tr("Рождество Христово")
+        self._add_holiday(tr("Рождество Христово"), DEC, 26)
 
         # Easter.
         easter_date = easter(year, method=EASTER_ORTHODOX)
         # Good Friday.
-        self[easter_date + td(days=-2)] = self.tr("Велики петък")
+        self._add_holiday(tr("Велики петък"), easter_date + td(days=-2))
         # Easter Saturday.
-        self[easter_date + td(days=-1)] = self.tr("Велика събота")
+        self._add_holiday(tr("Велика събота"), easter_date + td(days=-1))
         # Easter Sunday.
-        self[easter_date] = self.tr("Великден")
+        self._add_holiday(tr("Великден"), easter_date)
         # Easter Monday.
-        self[easter_date + td(days=+1)] = self.tr("Великден")
+        self._add_holiday(tr("Великден"), easter_date + td(days=+1))
 
 
 class BG(Bulgaria):

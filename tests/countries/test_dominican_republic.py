@@ -69,7 +69,7 @@ class TestDominicanRepublic(TestCase):
             ("2022-12-25", "Día de Navidad"),
         )
 
-    def test_change_day_by_law(self):
+    def test_movable(self):
         self.assertHoliday(
             "1996-01-06",
             "1997-01-06",

@@ -13,31 +13,37 @@
 
 import importlib
 import inspect
-import os
-import subprocess
 import sys
 from pathlib import Path
+
+from lingua.extract import main as pot_create
+from polib import pofile
 
 
 class POGenerator:
     """Generates .po files for supported country/market entities."""
 
+    def update_po_file(self, po_path: str, pot_path: str) -> None:
+        """Merge .po file with .pot"""
+        po_file = pofile(po_path)
+        pot_file = pofile(pot_path)
+        po_file.merge(pot_file)
+        po_file.save(po_path)
+
     def process_countries(self):
         """Processes entities in specified directory."""
         country_code_info_mapping = {}
-        module_name_path_mapping = {
-            str(path).split(os.sep)[-1].replace(".py", ""): str(path)
-            for path in Path(os.path.join("holidays", "countries")).glob(
-                "*.py"
-            )
-            if not str(path).endswith("__init__.py")
-        }
+        modules = (
+            (path.stem, path)
+            for path in (Path() / "holidays" / "countries").glob("*.py")
+            if path.stem != "__init__"
+        )
 
-        sys.path.append(os.getcwd())  # Make holidays visible.
+        sys.path.append(str(Path.cwd()))  # Make holidays visible.
         from holidays import __version__ as package_version
         from holidays.holiday_base import HolidayBase
 
-        for module_name, module_path in module_name_path_mapping.items():
+        for module_name, module_path in modules:
             module = f"holidays.countries.{module_name}"
             country_code_info_mapping.update(
                 {
@@ -52,18 +58,16 @@ class POGenerator:
                 }
             )
 
+        locale_path = Path() / "holidays" / "locale"
         for country_code in sorted(country_code_info_mapping.keys()):
             default_language, class_file_path = country_code_info_mapping[
                 country_code
             ]
-            pot_file_path = os.path.join(
-                "holidays", "locale", "pot", f"{country_code}.pot"
-            )
+            pot_file_path = str(locale_path / "pot" / f"{country_code}.pot")
             # Create .pot files.
-            subprocess.run(
+            pot_create(
                 (
-                    "pot-create",
-                    class_file_path,
+                    str(class_file_path),
                     "-k",
                     "tr",
                     "-o",
@@ -75,40 +79,19 @@ class POGenerator:
                     "--width",
                     "80",
                 ),
-                check=True,
+                standalone_mode=False,
             )
 
             # Update default country .po file.
-            po_directory = os.path.join(
-                "holidays", "locale", default_language, "LC_MESSAGES"
-            )
-            os.makedirs(po_directory, exist_ok=True)
-            po_file_path = os.path.join(po_directory, f"{country_code}.po")
-            subprocess.run(
-                (
-                    "msgmerge",
-                    po_file_path,
-                    pot_file_path,
-                    "-o",
-                    po_file_path,
-                ),
-                check=True,
-            )
+            po_directory = locale_path / default_language / "LC_MESSAGES"
+            po_directory.mkdir(parents=True, exist_ok=True)
+            po_file_path = po_directory / f"{country_code}.po"
+            if po_file_path.exists():
+                self.update_po_file(str(po_file_path), pot_file_path)
 
             # Update .po files.
-            for po_file_path in Path(os.path.join("holidays", "locale")).rglob(
-                f"{country_code}.po"
-            ):
-                subprocess.run(
-                    (
-                        "msgmerge",
-                        po_file_path,
-                        pot_file_path,
-                        "-o",
-                        po_file_path,
-                    ),
-                    check=True,
-                )
+            for po_file_path in locale_path.rglob(f"{country_code}.po"):
+                self.update_po_file(str(po_file_path), pot_file_path)
 
     def run(self):
         """Runs the .po files generation process."""

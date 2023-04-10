@@ -11,6 +11,7 @@
 
 from datetime import date
 from datetime import timedelta as td
+from gettext import gettext as tr
 
 from dateutil.easter import easter
 
@@ -48,106 +49,107 @@ class Colombia(HolidayBase):
         """
 
         if self.observed and not self._is_monday(dt) and dt.year >= 1984:
-            self[_get_nth_weekday_from(1, MON, dt)] = (
-                self.tr("%s (Observado)") % name
+            self._add_holiday(
+                self.tr("%s (Observado)") % self.tr(name),
+                _get_nth_weekday_from(1, MON, dt),
             )
         else:
-            self[dt] = name
+            self._add_holiday(name, dt)
 
     def _populate(self, year):
         super()._populate(year)
 
         # New Year's Day
-        self[date(year, JAN, 1)] = self.tr("Año Nuevo")
+        self._add_holiday(tr("Año Nuevo"), JAN, 1)
 
         if year >= 1951:
             # Epiphany
             self._add_with_bridge(
                 date(year, JAN, 6),
-                self.tr("Día de los Reyes Magos"),
+                tr("Día de los Reyes Magos"),
             )
 
             # Saint Joseph's Day
             self._add_with_bridge(
                 date(year, MAR, 19),
-                self.tr("Día de San José"),
+                tr("Día de San José"),
             )
 
         # Labor Day
-        self[date(year, MAY, 1)] = self.tr("Día del Trabajo")
+        self[date(year, MAY, 1)] = tr("Día del Trabajo")
 
         if year >= 1951:
             # Saint Peter and Saint Paul's Day
             self._add_with_bridge(
                 date(year, JUN, 29),
-                self.tr("San Pedro y San Pablo"),
+                tr("San Pedro y San Pablo"),
             )
 
         # Independence Day
-        self[date(year, JUL, 20)] = self.tr("Día de la Independencia")
+        self._add_holiday(tr("Día de la Independencia"), JUL, 20)
 
         # Battle of Boyaca
-        self[date(year, AUG, 7)] = self.tr("Batalla de Boyacá")
+        self._add_holiday(tr("Batalla de Boyacá"), AUG, 7)
 
         if year >= 1951:
             # Assumption of Mary
             self._add_with_bridge(
                 date(year, AUG, 15),
-                self.tr("La Asunción"),
+                tr("La Asunción"),
             )
 
         # Columbus Day
         self._add_with_bridge(
             date(year, OCT, 12),
-            self.tr("Día de la Raza"),
+            tr("Día de la Raza"),
         )
 
         if year >= 1951:
             # All Saints’ Day
             self._add_with_bridge(
                 date(year, NOV, 1),
-                self.tr("Día de Todos los Santos"),
+                tr("Día de Todos los Santos"),
             )
 
         # Independence of Cartagena
         self._add_with_bridge(
             date(year, NOV, 11),
-            self.tr("Independencia de Cartagena"),
+            tr("Independencia de Cartagena"),
         )
 
         if year >= 1951:
             # Immaculate Conception
-            self[date(year, DEC, 8)] = self.tr("La Inmaculada Concepción")
+            self._add_holiday(tr("La Inmaculada Concepción"), DEC, 8)
 
         # Christmas
-        self[date(year, DEC, 25)] = self.tr("Navidad")
+        self._add_holiday(tr("Navidad"), DEC, 25)
 
         easter_date = easter(year)
 
         if year >= 1951:
             # Maundy Thursday
-            self[easter_date + td(days=-3)] = self.tr("Jueves Santo")
+            self._add_holiday(tr("Jueves Santo"), easter_date + td(days=-3))
 
             # Good Friday
-            self[easter_date + td(days=-2)] = self.tr("Viernes Santo")
+            self._add_holiday(tr("Viernes Santo"), easter_date + td(days=-2))
 
             # Ascension of Jesus
             self._add_with_bridge(
                 easter_date + td(days=+39),
-                self.tr("Ascensión del señor"),
+                tr("Ascensión del señor"),
             )
 
             # Corpus Christi
             self._add_with_bridge(
                 easter_date + td(days=+60),
-                self.tr("Corpus Christi"),
+                tr("Corpus Christi"),
             )
 
         if year >= 1984:
             # Sacred Heart
             self._add_with_bridge(
                 easter_date + td(days=+68),
-                self.tr("Sagrado Corazón"),
+                tr("Sagrado Corazón"),
             )
 
 

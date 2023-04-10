@@ -22,27 +22,6 @@ class TestMalaysia(TestCase):
     def setUpClass(cls):
         super().setUpClass(Malaysia)
 
-    def setUp(self):
-        super().setUp()
-
-        years = range(2012, 2023)
-        self.jhr_holidays = Malaysia(years=years, subdiv="JHR")
-        self.kdh_holidays = Malaysia(years=years, subdiv="KDH")
-        self.ktn_holidays = Malaysia(years=years, subdiv="KTN")
-        self.mlk_holidays = Malaysia(years=years, subdiv="MLK")
-        self.nsn_holidays = Malaysia(years=years, subdiv="NSN")
-        self.phg_holidays = Malaysia(years=years, subdiv="PHG")
-        self.prk_holidays = Malaysia(years=years, subdiv="PRK")
-        self.pls_holidays = Malaysia(years=years, subdiv="PLS")
-        self.png_holidays = Malaysia(years=years, subdiv="PNG")
-        self.sbh_holidays = Malaysia(years=years, subdiv="SBH")
-        self.swk_holidays = Malaysia(years=years, subdiv="SWK")
-        self.sgr_holidays = Malaysia(years=years, subdiv="SGR")
-        self.trg_holidays = Malaysia(years=years, subdiv="TRG")
-        self.kul_holidays = Malaysia(years=years, subdiv="KUL")
-        self.lbn_holidays = Malaysia(years=years, subdiv="LBN")
-        self.pjy_holidays = Malaysia(years=years, subdiv="PJY")
-
     def test_country_aliases(self):
         self.assertCountryAliases(Malaysia, MY, MYS)
         holidays1 = MY()
@@ -350,7 +329,7 @@ class TestMalaysia(TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_JHR_holidays(self):
-        state_holidays = self.jhr_holidays
+        state_holidays = Malaysia(subdiv="JHR")
         self.assertHoliday(
             state_holidays,
             # Birthday of the Sultan of Johor
@@ -411,7 +390,7 @@ class TestMalaysia(TestCase):
         self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_KDH_holidays(self):
-        state_holidays = self.kdh_holidays
+        state_holidays = Malaysia(subdiv="KDH")
         self.assertHoliday(
             state_holidays,
             # Hari Raya Haji
@@ -472,7 +451,7 @@ class TestMalaysia(TestCase):
         self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_KTN_holidays(self):
-        state_holidays = self.ktn_holidays
+        state_holidays = Malaysia(subdiv="KTN")
         self.assertHoliday(
             state_holidays,
             # Birthday of the Sultan of Kelantan
@@ -535,7 +514,7 @@ class TestMalaysia(TestCase):
         self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_NSN_holidays(self):
-        state_holidays = self.nsn_holidays
+        state_holidays = Malaysia(subdiv="NSN")
         self.assertHoliday(
             state_holidays,
             # New Year's Day
@@ -590,7 +569,7 @@ class TestMalaysia(TestCase):
         self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_PNG_holidays(self):
-        state_holidays = self.png_holidays
+        state_holidays = Malaysia(subdiv="PNG")
         self.assertHoliday(
             state_holidays,
             # New Year's Day
@@ -652,7 +631,7 @@ class TestMalaysia(TestCase):
         self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_PRK_holidays(self):
-        state_holidays = self.prk_holidays
+        state_holidays = Malaysia(subdiv="PRK")
         self.assertHoliday(
             state_holidays,
             # New Year's Day
@@ -712,7 +691,7 @@ class TestMalaysia(TestCase):
         self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_SBH_holidays(self):
-        state_holidays = self.sbh_holidays
+        state_holidays = Malaysia(subdiv="SBH")
         self.assertHoliday(
             state_holidays,
             # New Year's Day
@@ -765,7 +744,7 @@ class TestMalaysia(TestCase):
         self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_SWK_holidays(self):
-        state_holidays = self.swk_holidays
+        state_holidays = Malaysia(subdiv="SWK")
         self.assertHoliday(
             state_holidays,
             # New Year's Day
@@ -826,7 +805,7 @@ class TestMalaysia(TestCase):
         self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_SGR_holidays(self):
-        state_holidays = self.sgr_holidays
+        state_holidays = Malaysia(subdiv="SGR")
         self.assertHoliday(
             state_holidays,
             # New Year's Day
@@ -877,7 +856,7 @@ class TestMalaysia(TestCase):
         self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_TRG_holidays(self):
-        state_holidays = self.trg_holidays
+        state_holidays = Malaysia(subdiv="TRG")
         self.assertHoliday(
             state_holidays,
             # Arafat Day
@@ -964,7 +943,7 @@ class TestMalaysia(TestCase):
         self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_KUL_holidays(self):
-        state_holidays = self.kul_holidays
+        state_holidays = Malaysia(subdiv="KUL")
         self.assertHoliday(
             state_holidays,
             # New Year's Day
@@ -1013,7 +992,7 @@ class TestMalaysia(TestCase):
         self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_MLK_holidays(self):
-        state_holidays = self.mlk_holidays
+        state_holidays = Malaysia(subdiv="MLK")
         self.assertHoliday(
             state_holidays,
             # New Year's Day
@@ -1070,7 +1049,7 @@ class TestMalaysia(TestCase):
         self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_LBN_holidays(self):
-        state_holidays = self.lbn_holidays
+        state_holidays = Malaysia(subdiv="LBN")
         self.assertHoliday(
             state_holidays,
             # New Year's Day
@@ -1122,7 +1101,7 @@ class TestMalaysia(TestCase):
         self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_PHG_holidays(self):
-        state_holidays = self.phg_holidays
+        state_holidays = Malaysia(subdiv="PHG")
         self.assertHoliday(
             state_holidays,
             # New Year's Day
@@ -1176,7 +1155,7 @@ class TestMalaysia(TestCase):
         self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_PLS_holidays(self):
-        state_holidays = self.pls_holidays
+        state_holidays = Malaysia(subdiv="PLS")
         self.assertHoliday(
             state_holidays,
             # Hari Raya Haji
@@ -1246,7 +1225,7 @@ class TestMalaysia(TestCase):
         self.assertNoNonObservedHoliday(state_holidays, dt)
 
     def test_PJY_holidays(self):
-        state_holidays = self.pjy_holidays
+        state_holidays = Malaysia(subdiv="PJY")
         self.assertHoliday(
             state_holidays,
             # New Year's Day
