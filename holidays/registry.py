@@ -10,8 +10,13 @@
 #  License: MIT (see LICENSE file)
 
 import importlib
+from typing import Any, Dict, Iterable, Optional, Tuple, Union
 
-COUNTRIES = {
+from holidays.holiday_base import HolidayBase
+
+RegistryDict = Dict[str, Tuple[str, ...]]
+
+COUNTRIES: RegistryDict = {
     "albania": ("Albania", "AL", "ALB"),
     "american_samoa": ("AmericanSamoa", "AS", "ASM", "HolidaysAS"),
     "andorra": ("Andorra", "AD", "AND"),
@@ -45,6 +50,7 @@ COUNTRIES = {
     "denmark": ("Denmark", "DK", "DNK"),
     "djibouti": ("Djibouti", "DJ", "DJI"),
     "dominican_republic": ("DominicanRepublic", "DO", "DOM"),
+    "ecuador": ("Ecuador", "EC", "ECU"),
     "egypt": ("Egypt", "EG", "EGY"),
     "estonia": ("Estonia", "EE", "EST"),
     "eswatini": ("Eswatini", "SZ", "SZW", "Swaziland"),
@@ -149,7 +155,7 @@ COUNTRIES = {
     "zimbabwe": ("Zimbabwe", "ZW", "ZWE"),
 }
 
-FINANCIAL = {
+FINANCIAL: RegistryDict = {
     "european_central_bank": ("EuropeanCentralBank", "ECB", "TAR"),
     "ny_stock_exchange": ("NewYorkStockExchange", "NYSE", "XNYS"),
 }
@@ -160,7 +166,7 @@ class EntityLoader:
 
     __slots__ = ("entity", "entity_name", "module_name")
 
-    def __init__(self, path, *args, **kwargs) -> None:
+    def __init__(self, path: str, *args, **kwargs) -> None:
         """Set up a lazy loader."""
         self.entity = None
 
@@ -170,15 +176,17 @@ class EntityLoader:
 
         super().__init__(*args, **kwargs)
 
-    def __call__(self, *args, **kwargs):
+    def __call__(self, *args, **kwargs) -> HolidayBase:
         """Create a new instance of a lazy-loaded entity."""
-        return self.get_entity()(*args, **kwargs)
+        cls = self.get_entity()
+        return cls(*args, **kwargs)  # type: ignore[misc, operator]
 
-    def __getattr__(self, name):
+    def __getattr__(self, name: str) -> Optional[Any]:
         """Return attribute of a lazy-loaded entity."""
-        return getattr(self.get_entity(), name)
+        cls = self.get_entity()
+        return getattr(cls, name)
 
-    def __str__(self):
+    def __str__(self) -> str:
         """Return lazy loader object string representation."""
         entity = str(self.get_entity())
         location = "countries" if "countries" in entity else "financial"
@@ -188,7 +196,7 @@ class EntityLoader:
             f"use 'holidays.{location}' entities directly."
         )
 
-    def get_entity(self):
+    def get_entity(self) -> Optional[HolidayBase]:
         """Return lazy-loaded entity."""
         if self.entity is None:
             self.entity = getattr(
@@ -199,7 +207,46 @@ class EntityLoader:
         return self.entity
 
     @staticmethod
-    def load(prefix, scope):
+    def _get_entity_codes(
+        container: RegistryDict,
+        entity_length: Union[int, Iterable[int]],
+        include_aliases: bool = True,
+    ) -> Iterable[str]:
+        entity_length = (
+            {entity_length}
+            if isinstance(entity_length, int)
+            else set(entity_length)
+        )
+        for entities in container.values():
+            for entity in entities:
+                if len(entity) in entity_length:
+                    yield entity
+                    # Assuming that the alpha-2 code goes first.
+                    if not include_aliases:
+                        break
+
+    @staticmethod
+    def get_country_codes(include_aliases: bool = True) -> Iterable[str]:
+        """Get supported country codes.
+
+        :param include_aliases:
+            Whether to include entity aliases (e.g. UK for GB).
+        """
+        return EntityLoader._get_entity_codes(COUNTRIES, 2, include_aliases)
+
+    @staticmethod
+    def get_financial_codes(include_aliases: bool = True) -> Iterable[str]:
+        """Get supported financial codes.
+
+        :param include_aliases:
+            Whether to include entity aliases(e.g. TAR for ECB, XNYS for NYSE).
+        """
+        return EntityLoader._get_entity_codes(
+            FINANCIAL, (3, 4), include_aliases
+        )
+
+    @staticmethod
+    def load(prefix: str, scope: Dict) -> None:
         """Load country or financial entities."""
         entity_mapping = COUNTRIES if prefix == "countries" else FINANCIAL
         for module, entities in entity_mapping.items():

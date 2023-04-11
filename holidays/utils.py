@@ -17,12 +17,12 @@ __all__ = (
     "list_supported_financial",
 )
 
-import inspect
 import warnings
 from functools import lru_cache
 from typing import Dict, Iterable, List, Optional, Union
 
 from holidays.holiday_base import HolidayBase
+from holidays.registry import EntityLoader
 
 
 def country_holidays(
@@ -175,10 +175,10 @@ def country_holidays(
     :class:`HolidayBase` class and define your own :meth:`_populate` method.
     See documentation for examples.
     """
-    from holidays import countries
+    import holidays
 
     try:
-        return getattr(countries, country)(
+        return getattr(holidays, country)(
             years=years,
             subdiv=subdiv,
             expand=expand,
@@ -239,10 +239,10 @@ def financial_holidays(
     See :py:func:`country_holidays` documentation for further details and
     examples.
     """
-    from holidays import financial
+    import holidays
 
     try:
-        return getattr(financial, market)(
+        return getattr(holidays, market)(
             years=years,
             subdiv=subdiv,
             expand=expand,
@@ -289,12 +289,11 @@ def list_supported_countries(include_aliases=True) -> Dict[str, List[str]]:
         A dictionary where the key is the ISO 3166-1 Alpha-2 country codes and
         the value is a list of supported subdivision codes.
     """
-    from holidays import countries
+    import holidays
 
     return {
-        name if include_aliases else cls.country: cls.subdivisions
-        for name, cls in inspect.getmembers(countries, inspect.isclass)
-        if len(name) == 2 and issubclass(cls, HolidayBase)
+        country_code: getattr(holidays, country_code).subdivisions
+        for country_code in EntityLoader.get_country_codes(include_aliases)
     }
 
 
@@ -310,10 +309,9 @@ def list_supported_financial(include_aliases=True) -> Dict[str, List[str]]:
         A dictionary where the key is the market codes and
         the value is a list of supported subdivision codes.
     """
-    from holidays import financial
+    import holidays
 
     return {
-        name if include_aliases else cls.market: cls.subdivisions
-        for name, cls in inspect.getmembers(financial, inspect.isclass)
-        if len(name) in {3, 4} and issubclass(cls, HolidayBase)
+        financial_code: getattr(holidays, financial_code).subdivisions
+        for financial_code in EntityLoader.get_financial_codes(include_aliases)
     }
