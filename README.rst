@@ -107,7 +107,7 @@ Available Countries
 .. _ISO 3166-1 alpha-2 code: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
 .. _ISO 3166-2 code: https://en.wikipedia.org/wiki/ISO_3166-2
 
-We currently support 120 country codes. The standard way to refer to a country
+We currently support 121 country codes. The standard way to refer to a country
 is by using its `ISO 3166-1 alpha-2 code`_, the same used for domain names, and
 for a subdivision its `ISO 3166-2 code`_. The following countries and
 subdivisions are available:
@@ -218,6 +218,9 @@ subdivisions are available:
      - None
    * - Dominican Republic
      - DO
+     - None
+   * - Ecuador
+     - EC
      - None
    * - Egypt
      - EG
@@ -563,6 +566,9 @@ default language code is a `ISO 639-1 code`_.
      - da
      - da, en_US
    * - Dominican Republic
+     - es
+     - en_US, es, uk
+   * - Ecuador
      - es
      - en_US, es, uk
    * - Ethiopia

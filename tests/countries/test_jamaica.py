@@ -16,7 +16,7 @@ from tests.common import TestCase
 class TestJamaica(TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Jamaica)
+        super().setUpClass(Jamaica, years=range(1950, 2050))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Jamaica, JM, JAM)
@@ -61,7 +61,7 @@ class TestJamaica(TestCase):
         )
         self.assertHoliday(dt)
         self.assertNoNonObservedHoliday(dt)
-        self.assertNoHolidayName("Emancipation Day", Jamaica(years=1997))
+        self.assertNoHolidayNameInYears("Emancipation Day", 1997)
 
     def test_independence_day(self):
         self.assertHoliday(f"{year}-08-06" for year in range(1950, 2050))
