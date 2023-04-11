@@ -793,17 +793,17 @@ class IslamicHolidays:
         Add lunar calendar holiday.
         """
         dates = set()
-        years = {self._year}
-        if days_delta > 0:
-            years.add(self._year - 1)
 
+        years = (
+            (self._year - 1, self._year) if days_delta > 0 else (self._year,)
+        )
         for year in years:
             for dt in self._convert_islamic_to_gre(year, month, day):
                 if days_delta != 0:
                     dt += td(days=days_delta)
-                d = self._add_holiday(holiday_name, dt)
-                if d:
-                    dates.add(d)
+                dt = self._add_holiday(holiday_name, dt)
+                if dt:
+                    dates.add(dt)
 
         return dates
 
