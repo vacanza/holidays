@@ -58,6 +58,8 @@ class Spain(
 
     def _add_holiday(self, *args) -> Optional[date]:
         name, dt = self._parse_holiday(*args)
+        if dt.year != self._year:
+            return None
         if self.observed and self._is_sunday(dt):
             dt += td(days=+1)
             name = self.tr("%s (Trasladado)") % self.tr(name)
