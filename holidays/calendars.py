@@ -1259,6 +1259,7 @@ class _IslamicHolidays:
 
     # Birthday of Prophet
     MAWLID_DATES = {
+        1924: ((OCT, 10),),
         1925: ((SEP, 30),),
         1926: ((SEP, 19),),
         1927: ((SEP, 8),),
@@ -1416,6 +1417,7 @@ class _IslamicHolidays:
 
     # Islamic New Year
     ISLAMIC_NEW_YEAR_DATES = {
+        1924: ((AUG, 1),),
         1925: ((JUL, 23),),
         1926: ((JUL, 11),),
         1927: ((JUL, 1),),
@@ -1572,6 +1574,7 @@ class _IslamicHolidays:
 
     # Ashura
     ASHURA_DATES = {
+        1924: ((AUG, 10),),
         1925: ((AUG, 1),),
         1926: ((JUL, 20),),
         1927: ((JUL, 10),),
@@ -2199,6 +2202,7 @@ class _IslamicHolidays:
 
     # Hari Hol of Johor
     HARI_HOL_JOHOR_DATES = {
+        1924: ((SEP, 5),),
         1925: ((AUG, 26),),
         1926: ((AUG, 15),),
         1927: ((AUG, 4),),
