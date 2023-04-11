@@ -15,8 +15,8 @@ from tests.common import TestCase
 
 class TestBotswana(TestCase):
     @classmethod
-    def setUpClass(self):
-        super().setUpClass(Botswana)
+    def setUpClass(cls):
+        super().setUpClass(Botswana, years=range(1966, 2050))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Botswana, BW, BWA)
@@ -57,19 +57,11 @@ class TestBotswana(TestCase):
 
     def test_labour_day(self):
         self.assertHoliday(f"{year}-05-01" for year in range(1966, 2050))
-        dt = (
-            "2011-05-02",
-            "2016-05-02",
-            "2022-05-02",
-        )
+        dt = ("2011-05-02", "2016-05-02", "2022-05-02")
         self.assertHoliday(dt)
         self.assertNoNonObservedHoliday(dt)
 
-        dt = (
-            "2021-05-03",
-            "2027-05-03",
-            "2032-05-03",
-        )
+        dt = ("2021-05-03", "2027-05-03", "2032-05-03")
         self.assertHolidaysName("Labour Day Holiday", dt)
         self.assertNoNonObservedHoliday(dt)
 
@@ -112,16 +104,13 @@ class TestBotswana(TestCase):
         self.assertHoliday(dt)
         self.assertNoNonObservedHoliday(dt)
 
-        dt = (
-            "2020-12-28",
-            "2026-12-28",
-            "2037-12-28",
-        )
+        dt = ("2020-12-28", "2026-12-28", "2037-12-28")
         self.assertHolidaysName("Boxing Day Holiday", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_2021(self):
         self.assertHolidayDates(
+            Botswana(years=2021),
             "2021-01-01",
             "2021-01-02",
             "2021-04-02",
@@ -142,6 +131,7 @@ class TestBotswana(TestCase):
 
     def test_2022(self):
         self.assertHolidayDates(
+            Botswana(years=2022),
             "2022-01-01",
             "2022-01-02",
             "2022-01-03",
@@ -163,6 +153,7 @@ class TestBotswana(TestCase):
 
     def test_2023(self):
         self.assertHolidayDates(
+            Botswana(years=2023),
             "2023-01-01",
             "2023-01-02",
             "2023-01-03",
