@@ -278,9 +278,12 @@ def CountryHoliday(
 
 
 @lru_cache()
-def list_supported_countries(unique=False) -> Dict[str, List[str]]:
+def list_supported_countries(include_aliases=True) -> Dict[str, List[str]]:
     """
     Get all supported countries and their subdivisions.
+
+    :param include_aliases:
+        Whether to include entity aliases (e.g. UK for GB).
 
     :return:
         A dictionary where the key is the ISO 3166-1 Alpha-2 country codes and
@@ -289,16 +292,19 @@ def list_supported_countries(unique=False) -> Dict[str, List[str]]:
     from holidays import countries
 
     return {
-        cls.country if unique else name: cls.subdivisions
+        name if include_aliases else cls.country: cls.subdivisions
         for name, cls in inspect.getmembers(countries, inspect.isclass)
         if len(name) == 2 and issubclass(cls, HolidayBase)
     }
 
 
 @lru_cache()
-def list_supported_financial(unique=False) -> Dict[str, List[str]]:
+def list_supported_financial(include_aliases=True) -> Dict[str, List[str]]:
     """
     Get all supported financial markets and their subdivisions.
+
+    :param include_aliases:
+        Whether to include entity aliases(e.g. TAR for ECB, XNYS for NYSE).
 
     :return:
         A dictionary where the key is the market codes and
@@ -307,7 +313,7 @@ def list_supported_financial(unique=False) -> Dict[str, List[str]]:
     from holidays import financial
 
     return {
-        cls.market if unique else name: cls.subdivisions
+        name if include_aliases else cls.market: cls.subdivisions
         for name, cls in inspect.getmembers(financial, inspect.isclass)
-        if issubclass(cls, HolidayBase)
+        if len(name) in {3, 4} and issubclass(cls, HolidayBase)
     }
