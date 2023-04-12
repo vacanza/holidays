@@ -70,7 +70,7 @@ class Denmark(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Christmas Day.
         self._add_christmas_day(tr("Juledag"))
 
-        # Second Christmas Day.
+        # Second Day of Christmas.
         self._add_christmas_day_two(tr("Anden juledag"))
 
 

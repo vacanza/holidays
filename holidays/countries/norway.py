@@ -91,7 +91,7 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Christmas Day.
         self._add_christmas_day(tr("Første juledag"))
 
-        # Second Christmas Day.
+        # Second Day of Christmas.
         self._add_christmas_day_two(tr("Andre juledag"))
 
         if self.include_sundays:
@@ -101,9 +101,8 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
             for dt in (
                 begin + td(days=n) for n in range(0, (end - begin).days + 1, 7)
             ):
-                if not self.get(dt):
-                    # Sunday.
-                    self._add_holiday(tr("Søndag"), dt)
+                # Sunday.
+                self._add_holiday(tr("Søndag"), dt)
 
 
 class NO(Norway):

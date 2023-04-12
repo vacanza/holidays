@@ -86,7 +86,7 @@ msgstr "Christmas Eve"
 msgid "Joulupäivä"
 msgstr "Christmas Day"
 
-#. Second Christmas Day.
+#. Second Day of Christmas.
 #: holidays/countries/finland.py:100
 msgid "Tapaninpäivä"
-msgstr "Christmas Second Day"
+msgstr "Second Day of Christmas"

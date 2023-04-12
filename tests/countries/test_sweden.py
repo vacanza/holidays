@@ -175,8 +175,8 @@ class TestSweden(SundayHolidays):
         def run_tests(languages):
             for language in languages:
                 cnt = SE(language=language)
-                self.assertEqual(cnt["2022-01-01"], "Nyårsdagen")
-                self.assertEqual(cnt["2022-12-25"], "Juldagen")
+                self.assertEqual(cnt["2021-01-01"], "Nyårsdagen")
+                self.assertEqual(cnt["2021-12-25"], "Juldagen")
 
         run_tests((SE.default_language, None, "invalid"))
 
@@ -187,24 +187,24 @@ class TestSweden(SundayHolidays):
         lang = "en_US"
 
         cnt = SE(language=lang)
-        self.assertEqual(cnt["2022-01-01"], "New Year's Day")
-        self.assertEqual(cnt["2022-12-25"], "Christmas Day")
+        self.assertEqual(cnt["2021-01-01"], "New Year's Day")
+        self.assertEqual(cnt["2021-12-25"], "Christmas Day")
 
         self.set_language(lang)
         for language in (None, lang, "invalid"):
             cnt = SE(language=language)
-            self.assertEqual(cnt["2022-01-01"], "New Year's Day")
-            self.assertEqual(cnt["2022-12-25"], "Christmas Day")
+            self.assertEqual(cnt["2021-01-01"], "New Year's Day")
+            self.assertEqual(cnt["2021-12-25"], "Christmas Day")
 
     def test_l10n_uk(self):
         lang = "uk"
 
         cnt = SE(language=lang)
-        self.assertEqual(cnt["2022-01-01"], "Новий рік")
-        self.assertEqual(cnt["2022-12-25"], "Різдво Христове")
+        self.assertEqual(cnt["2021-01-01"], "Новий рік")
+        self.assertEqual(cnt["2021-12-25"], "Різдво Христове")
 
         self.set_language(lang)
         for language in (None, lang, "invalid"):
             cnt = SE(language=language)
-            self.assertEqual(cnt["2022-01-01"], "Новий рік")
-            self.assertEqual(cnt["2022-12-25"], "Різдво Христове")
+            self.assertEqual(cnt["2021-01-01"], "Новий рік")
+            self.assertEqual(cnt["2021-12-25"], "Різдво Христове")

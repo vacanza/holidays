@@ -86,10 +86,10 @@ msgstr "Christmas Eve"
 msgid "Jóladagur"
 msgstr "Christmas Day"
 
-#. Second Christmas Day.
+#. Second Day of Christmas.
 #: holidays/countries/iceland.py:87
 msgid "Annar í jólum"
-msgstr "Christmas Second Day"
+msgstr "Second Day of Christmas"
 
 #. New Year's Eve.
 #: holidays/countries/iceland.py:90

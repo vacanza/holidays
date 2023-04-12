@@ -83,7 +83,7 @@ class Iceland(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Christmas Day.
         self._add_christmas_day(tr("Jóladagur"))
 
-        # Second Christmas Day.
+        # Second Day of Christmas.
         self._add_christmas_day_two(tr("Annar í jólum"))
 
         # New Year's Eve.

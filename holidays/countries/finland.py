@@ -96,7 +96,7 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Christmas Day.
         self._add_christmas_day(tr("Joulupäivä"))
 
-        # Second Christmas Day.
+        # Second Day of Christmas.
         self._add_christmas_day_two(tr("Tapaninpäivä"))
 
 

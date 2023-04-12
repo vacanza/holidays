@@ -71,10 +71,10 @@ msgstr "Whit Monday"
 msgid "Første juledag"
 msgstr "Christmas Day"
 
-#. Second Christmas Day.
+#. Second Day of Christmas.
 #: holidays/countries/norway.py:95
 msgid "Andre juledag"
-msgstr "Christmas Second Day"
+msgstr "Second Day of Christmas"
 
 #. Sunday.
 #: holidays/countries/norway.py:106

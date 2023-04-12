@@ -116,7 +116,7 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Christmas Day.
         self._add_christmas_day(tr("Juldagen"))
 
-        # Second Christmas Day.
+        # Second Day of Christmas.
         self._add_christmas_day_two(tr("Annandag jul"))
 
         # New Year's Eve.
@@ -129,9 +129,8 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
             for dt in (
                 begin + td(days=n) for n in range(0, (end - begin).days + 1, 7)
             ):
-                if not self.get(dt):
-                    # Sunday.
-                    self._add_holiday(tr("Söndag"), dt)
+                # Sunday.
+                self._add_holiday(tr("Söndag"), dt)
 
 
 class SE(Sweden):

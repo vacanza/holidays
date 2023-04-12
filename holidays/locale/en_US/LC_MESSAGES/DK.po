@@ -65,7 +65,7 @@ msgstr "Whit Monday"
 msgid "Juledag"
 msgstr "Christmas Day"
 
-#. Second Christmas Day.
+#. Second Day of Christmas.
 #: holidays/countries/denmark.py:74
 msgid "Anden juledag"
-msgstr "Christmas Second Day"
+msgstr "Second Day of Christmas"
