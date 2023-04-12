@@ -82,7 +82,7 @@ class Netherlands(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Christmas Day.
         self._add_christmas_day(tr("Eerste Kerstdag"))
 
-        # Christmas Second Day.
+        # Second Day of Christmas.
         self._add_christmas_day_two(tr("Tweede Kerstdag"))
 
 
