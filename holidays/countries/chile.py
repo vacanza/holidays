@@ -12,6 +12,7 @@
 from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
+from typing import Tuple
 
 from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
 from holidays.constants import JAN, MAY, JUN, JUL, AUG, SEP, OCT, MON
@@ -108,7 +109,7 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
             if year == 2021:
                 self._add_holiday(name, JUN, 21)
             else:
-                self._add_holiday(name, self._summer_solstice_date(year))
+                self._add_holiday(name, *self._summer_solstice_date)
 
         # Saint Peter and Saint Paul (Law 16.840, Law 18.432)
         if year <= 1967 or year >= 1986:
@@ -210,12 +211,14 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
                 20,
             )
 
-    @staticmethod
-    def _summer_solstice_date(year) -> date:
+    @property
+    def _summer_solstice_date(self) -> Tuple[int, int]:
         day = 20
-        if (year % 4 > 1 and year <= 2046) or (year % 4 > 2 and year <= 2075):
+        if (self._year % 4 > 1 and self._year <= 2046) or (
+            self._year % 4 > 2 and self._year <= 2075
+        ):
             day = 21
-        return date(year, JUN, day)
+        return JUN, day
 
 
 class CL(Chile):

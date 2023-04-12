@@ -12,6 +12,7 @@
 from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
+from typing import Tuple
 
 from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
@@ -67,7 +68,7 @@ class Japan(HolidayBase):
 
         # Vernal Equinox Day.
         observed_dates.add(
-            self._add_holiday(tr("春分の日"), self._vernal_equinox_day(year))
+            self._add_holiday(tr("春分の日"), *self._vernal_equinox_date)
         )
 
         # Showa Emperor's Birthday, Greenery Day or Showa Day.
@@ -127,7 +128,7 @@ class Japan(HolidayBase):
 
         # Autumnal Equinox Day.
         observed_dates.add(
-            self._add_holiday(tr("秋分の日"), self._autumnal_equinox_day(year))
+            self._add_holiday(tr("秋分の日"), *self._autumnal_equinox_date)
         )
 
         # Physical Education and Sports Day.
@@ -187,32 +188,32 @@ class Japan(HolidayBase):
                 # National Holiday.
                 self._add_holiday(tr("国民の休日"), hol_date)
 
-    @staticmethod
-    def _vernal_equinox_day(year) -> date:
+    @property
+    def _vernal_equinox_date(self) -> Tuple[int, int]:
         day = 20
         if (
-            (year % 4 == 0 and year <= 1956)
-            or (year % 4 == 1 and year <= 1989)
-            or (year % 4 == 2 and year <= 2022)
-            or (year % 4 == 3 and year <= 2055)
+            (self._year % 4 == 0 and self._year <= 1956)
+            or (self._year % 4 == 1 and self._year <= 1989)
+            or (self._year % 4 == 2 and self._year <= 2022)
+            or (self._year % 4 == 3 and self._year <= 2055)
         ):
             day = 21
-        elif year % 4 == 0 and year >= 2092:
+        elif self._year % 4 == 0 and self._year >= 2092:
             day = 19
-        return date(year, MAR, day)
+        return MAR, day
 
-    @staticmethod
-    def _autumnal_equinox_day(year) -> date:
+    @property
+    def _autumnal_equinox_date(self) -> Tuple[int, int]:
         day = 23
-        if year % 4 == 3 and year <= 1979:
+        if self._year % 4 == 3 and self._year <= 1979:
             day = 24
         elif (
-            (year % 4 == 0 and year >= 2012)
-            or (year % 4 == 1 and year >= 2045)
-            or (year % 4 == 2 and year >= 2078)
+            (self._year % 4 == 0 and self._year >= 2012)
+            or (self._year % 4 == 1 and self._year >= 2045)
+            or (self._year % 4 == 2 and self._year >= 2078)
         ):
             day = 22
-        return date(year, SEP, day)
+        return SEP, day
 
 
 class JP(Japan):
