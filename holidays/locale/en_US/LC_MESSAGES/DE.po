@@ -34,7 +34,7 @@ msgstr "Easter Monday"
 #. Labour Day.
 #: holidays/countries/germany.py:100
 msgid "Erster Mai"
-msgstr "Labour Day"
+msgstr "Labor Day"
 
 #. Ascension Day.
 #: holidays/countries/germany.py:103
@@ -73,7 +73,7 @@ msgstr "Christmas Day"
 #. Second Christmas Day.
 #: holidays/countries/germany.py:127
 msgid "Zweiter Weihnachtstag"
-msgstr "Second Christmas Day"
+msgstr "Christmas Second Day"
 
 #. Easter Sunday.
 #: holidays/countries/germany.py:132

@@ -64,7 +64,7 @@ msgstr "Easter Monday"
 #. Labour Day.
 #: holidays/countries/liechtenstein.py:65
 msgid "Tag der Arbeit"
-msgstr "Labour Day"
+msgstr "Labor Day"
 
 #. Ascension Day.
 #: holidays/countries/liechtenstein.py:68
