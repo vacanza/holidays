@@ -43,7 +43,7 @@ msgstr "Easter Monday"
 
 #: holidays/countries/denmark.py:58
 msgid "Store bededag"
-msgstr "General Prayer Day"
+msgstr "Great Prayer Day"
 
 #. Ascension Day.
 #: holidays/countries/denmark.py:62
@@ -68,4 +68,4 @@ msgstr "Christmas Day"
 #. Second Christmas Day.
 #: holidays/countries/denmark.py:74
 msgid "Anden juledag"
-msgstr "Second Christmas Day"
+msgstr "Christmas Second Day"

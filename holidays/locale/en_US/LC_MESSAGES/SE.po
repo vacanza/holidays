@@ -99,7 +99,7 @@ msgstr "Christmas Day"
 #. Second Christmas Day.
 #: holidays/countries/sweden.py:120
 msgid "Annandag jul"
-msgstr "Second Christmas Day"
+msgstr "Christmas Second Day"
 
 #. New Year's Eve.
 #: holidays/countries/sweden.py:123

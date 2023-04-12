@@ -49,7 +49,7 @@ msgstr "First Day of Summer"
 #. Labour Day.
 #: holidays/countries/iceland.py:60
 msgid "Verkalýðsdagurinn"
-msgstr "Labour Day"
+msgstr "Labor Day"
 
 #. Ascension Day.
 #: holidays/countries/iceland.py:63
@@ -89,7 +89,7 @@ msgstr "Christmas Day"
 #. Second Christmas Day.
 #: holidays/countries/iceland.py:87
 msgid "Annar í jólum"
-msgstr "Second Christmas Day"
+msgstr "Christmas Second Day"
 
 #. New Year's Eve.
 #: holidays/countries/iceland.py:90
