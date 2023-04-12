@@ -64,7 +64,7 @@ class Moldova(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._easter_sunday + td(days=+8),
         )
 
-        self._add_labour_day(
+        self._add_labor_day(
             # International Workers' Solidarity Day.
             tr("Ziua internaţională a solidarităţii oamenilor muncii")
         )

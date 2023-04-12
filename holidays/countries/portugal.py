@@ -105,7 +105,7 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 1974:
             self._add_holiday(tr("Dia da Liberdade"), APR, 25)
-            self._add_labour_day(tr("Dia do Trabalhador"))
+            self._add_labor_day(tr("Dia do Trabalhador"))
         if year >= 1911:
             if 1933 <= year <= 1973:
                 self._add_holiday(

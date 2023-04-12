@@ -63,7 +63,7 @@ class Vietnam(HolidayBase, InternationalHolidays, KoreanCalendarHolidays):
         )
 
         # International Labor Day
-        observed_dates.add(self._add_labour_day("International Labor Day"))
+        observed_dates.add(self._add_labor_day("International Labor Day"))
 
         # Independence Day
         observed_dates.add(self._add_holiday("Independence Day", SEP, 2))

@@ -105,7 +105,7 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Labour Day (Law 2.200, renamed with Law 18.018).
         if year >= 1932:
-            self._add_labour_day(tr("Día Nacional del Trabajo"))
+            self._add_labor_day(tr("Día Nacional del Trabajo"))
 
         # Naval Glories Day (Law 2.977).
         self._add_holiday(tr("Día de las Glorias Navales"), MAY, 21)

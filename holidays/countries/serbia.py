@@ -65,7 +65,7 @@ class Serbia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # International Workers' Day.
         name = tr("Празник рада")
-        may_1 = self._add_labour_day(name)
+        may_1 = self._add_labor_day(name)
         may_2 = self._add_holiday(name, may_1 + td(days=+1))
         if self.observed and self._is_weekend(may_1):
             self._add_observed_holiday(
