@@ -22,13 +22,13 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
     subdivisions = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
     def __init__(self, *args, **kwargs) -> None:
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
         if isinstance(kwargs.get("subdiv"), int):
             kwargs["subdiv"] = str(kwargs["subdiv"])
         # Default subdivision to "9"
         if not kwargs.get("subdiv", kwargs.get("state")):
             kwargs["subdiv"] = "9"
-        ChristianHolidays.__init__(self)
-        InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -43,7 +43,7 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Easter Monday.
         self._add_easter_monday(tr("Ostermontag"))
 
-        # Labour Day.
+        # Labor Day.
         self._add_labour_day(tr("Staatsfeiertag"))
 
         # Ascension Day.

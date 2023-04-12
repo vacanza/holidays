@@ -31,10 +31,10 @@ msgstr "Epiphany"
 msgid "Ostermontag"
 msgstr "Easter Monday"
 
-#. Labour Day.
+#. Labor Day.
 #: holidays/countries/austria.py:44
 msgid "Staatsfeiertag"
-msgstr "Labour Day"
+msgstr "Labor Day"
 
 #. Ascension Day.
 #: holidays/countries/austria.py:46

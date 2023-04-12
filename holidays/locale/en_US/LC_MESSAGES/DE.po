@@ -31,7 +31,7 @@ msgstr "Good Friday"
 msgid "Ostermontag"
 msgstr "Easter Monday"
 
-#. Labour Day.
+#. Labor Day.
 #: holidays/countries/germany.py:100
 msgid "Erster Mai"
 msgstr "Labor Day"
