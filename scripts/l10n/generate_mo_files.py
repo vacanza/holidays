@@ -19,7 +19,8 @@ from polib import pofile
 class MOGenerator:
     """Creates .mo files for supported country/market entities."""
 
-    def run(self):
+    @staticmethod
+    def run():
         """Runs the .mo files generation process."""
         for po_path in (Path() / "holidays" / "locale").rglob("*.po"):
             mo_path = po_path.with_suffix(".mo")
@@ -30,4 +31,4 @@ class MOGenerator:
 
 
 if __name__ == "__main__":
-    MOGenerator().run()
+    MOGenerator.run()

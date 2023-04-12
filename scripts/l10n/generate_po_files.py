@@ -23,11 +23,20 @@ from polib import pofile
 class POGenerator:
     """Generates .po files for supported country/market entities."""
 
-    def update_po_file(self, po_path: str, pot_path: str) -> None:
+    def update_po_file(
+        self, po_path: str, pot_path: str, package_version: str
+    ) -> None:
         """Merge .po file with .pot"""
         po_file = pofile(po_path)
+        po_file_initial = po_file.copy()
         pot_file = pofile(pot_path)
+
         po_file.merge(pot_file)
+        if po_file != po_file_initial:
+            po_file.metadata[
+                "Project-Id-Version"
+            ] = f"Python Holidays {package_version}"
+
         po_file.save(po_path)
 
     def process_countries(self):
@@ -87,16 +96,21 @@ class POGenerator:
             po_directory.mkdir(parents=True, exist_ok=True)
             po_file_path = po_directory / f"{country_code}.po"
             if po_file_path.exists():
-                self.update_po_file(str(po_file_path), pot_file_path)
+                self.update_po_file(
+                    str(po_file_path), pot_file_path, package_version
+                )
 
             # Update .po files.
             for po_file_path in locale_path.rglob(f"{country_code}.po"):
-                self.update_po_file(str(po_file_path), pot_file_path)
+                self.update_po_file(
+                    str(po_file_path), pot_file_path, package_version
+                )
 
-    def run(self):
+    @staticmethod
+    def run():
         """Runs the .po files generation process."""
-        self.process_countries()
+        POGenerator().process_countries()
 
 
 if __name__ == "__main__":
-    POGenerator().run()
+    POGenerator.run()
