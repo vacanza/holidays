@@ -70,10 +70,10 @@ msgstr "Repentance and Prayer Day"
 msgid "Erster Weihnachtstag"
 msgstr "Christmas Day"
 
-#. Second Christmas Day.
+#. Second Day of Christmas.
 #: holidays/countries/germany.py:127
 msgid "Zweiter Weihnachtstag"
-msgstr "Christmas Second Day"
+msgstr "Second Day of Christmas"
 
 #. Easter Sunday.
 #: holidays/countries/germany.py:132
