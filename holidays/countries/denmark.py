@@ -39,6 +39,9 @@ class Denmark(HolidayBase, ChristianHolidays, InternationalHolidays):
         # New Year's Day.
         self._add_new_years_day(tr("Nytårsdag"))
 
+        # Palm Sunday.
+        self._add_palm_sunday(tr("Palmesøndag"))
+
         # Holy Thursday.
         self._add_holy_thursday(tr("Skærtorsdag"))
 
@@ -70,7 +73,7 @@ class Denmark(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Christmas Day.
         self._add_christmas_day(tr("Juledag"))
 
-        # Second Day of Christmas.
+        # Boxing Day.
         self._add_christmas_day_two(tr("Anden juledag"))
 
 

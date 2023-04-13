@@ -9,17 +9,19 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from datetime import date, datetime
 from datetime import timedelta as td
-from gettext import gettext as tr
+
+from dateutil import rrule
+from dateutil.easter import easter
+from dateutil.relativedelta import SU
 
 from holidays.calendars import _get_nth_weekday_from
-from holidays.constants import JAN, MAR, JUN, OCT, DEC, FRI, SAT, SUN
+from holidays.constants import JAN, MAR, MAY, JUN, OCT, DEC, FRI, SAT
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Sweden(HolidayBase):
     """
     Swedish holidays.
     Note that holidays falling on a sunday are "lost",
@@ -34,7 +36,6 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "SE"
-    default_language = "sv"
 
     def __init__(self, include_sundays=True, **kwargs):
         """
@@ -43,94 +44,70 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
         :param kwargs:
         """
         self.include_sundays = include_sundays
-        ChristianHolidays.__init__(self)
-        InternationalHolidays.__init__(self)
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
 
-        # New Year's Day.
-        self._add_new_years_day(tr("Nyårsdagen"))
+        if self.include_sundays:  # Optionally add all Sundays of the year.
+            year_first_day = datetime(year, JAN, 1)
+            year_last_day = datetime(year, DEC, 31)
 
-        # Epiphany.
-        self._add_epiphany_day(tr("Trettondedag jul"))
+            # Get all Sundays including first/last day of the year cases.
+            sundays = rrule.rrule(
+                rrule.WEEKLY, byweekday=SU, dtstart=year_first_day
+            ).between(year_first_day, year_last_day, inc=True)
+            for sunday in sundays:
+                self[sunday.date()] = "Söndag"
 
-        if year <= 1953:
-            # Feast of the Annunciation.
-            self._add_holiday(tr("Jungfru Marie bebådelsedag"), MAR, 25)
+        # ========= Static holidays =========
+        self[date(year, JAN, 1)] = "Nyårsdagen"
 
-        # Good Friday.
-        self._add_good_friday(tr("Långfredagen"))
-
-        # Easter Sunday.
-        self._add_easter_sunday(tr("Påskdagen"))
-
-        # Easter Monday.
-        self._add_easter_monday(tr("Annandag påsk"))
+        self[date(year, JAN, 6)] = "Trettondedag jul"
 
         # Source: https://sv.wikipedia.org/wiki/F%C3%B6rsta_maj
         if year >= 1939:
-            # May Day.
-            self._add_labour_day(tr("Första maj"))
-
-        # Ascension Day.
-        self._add_ascension_thursday(tr("Kristi himmelsfärdsdag"))
+            self[date(year, MAY, 1)] = "Första maj"
 
         # Source: https://sv.wikipedia.org/wiki/Sveriges_nationaldag
         if year >= 2005:
-            # National Day of Sweden.
-            self._add_holiday(tr("Sveriges nationaldag"), JUN, 6)
+            self[date(year, JUN, 6)] = "Sveriges nationaldag"
 
-        # Whit Sunday.
-        self._add_whit_sunday(tr("Pingstdagen"))
+        self[date(year, DEC, 24)] = "Julafton"
+        self[date(year, DEC, 25)] = "Juldagen"
+        self[date(year, DEC, 26)] = "Annandag jul"
+        self[date(year, DEC, 31)] = "Nyårsafton"
 
+        # ========= Moving holidays =========
+        easter_date = easter(year)
+        self[easter_date + td(days=-2)] = "Långfredagen"
+        self[easter_date] = "Påskdagen"
+        self[easter_date + td(days=+1)] = "Annandag påsk"
+        self[easter_date + td(days=+39)] = "Kristi himmelsfärdsdag"
+        self[easter_date + td(days=+49)] = "Pingstdagen"
         if year <= 2004:
-            # Whit Monday.
-            self._add_whit_monday(tr("Annandag pingst"))
+            self[easter_date + td(days=+50)] = "Annandag pingst"
 
         # Source:
         # https://sv.wikipedia.org/wiki/Midsommarafton
         # https://www.nordiskamuseet.se/aretsdagar/midsommarafton
-        # Midsummer evening. Friday between June 19th and June 25th
-        dt = (
-            _get_nth_weekday_from(1, FRI, date(year, JUN, 19))
-            if year >= 1953
-            else date(year, JUN, 23)
-        )
-        # Midsummer Eve.
-        self._add_holiday(tr("Midsommarafton"), dt)
+        if year >= 1953:
+            # Midsummer evening. Friday between June 19th and June 25th
+            dt = _get_nth_weekday_from(1, FRI, date(year, JUN, 19))
+            self[dt] = "Midsommarafton"
+            # Midsummer day. Saturday between June 20th and June 26th
+            self[dt + td(days=+1)] = "Midsommardagen"
+        else:
+            self[date(year, JUN, 23)] = "Midsommarafton"
+            self[date(year, JUN, 24)] = "Midsommardagen"
 
-        # Midsummer Day.
-        self._add_holiday(tr("Midsommardagen"), dt + td(days=+1))
+        # All saints day. Saturday between October 31th and November 6th
+        self[
+            _get_nth_weekday_from(1, SAT, date(year, OCT, 31))
+        ] = "Alla helgons dag"
 
-        self._add_holiday(
-            # All Saints' Day.
-            tr("Alla helgons dag"),
-            _get_nth_weekday_from(1, SAT, date(year, OCT, 31)),
-        )
-
-        # Christmas Eve.
-        self._add_christmas_eve(tr("Julafton"))
-
-        # Christmas Day.
-        self._add_christmas_day(tr("Juldagen"))
-
-        # Second Day of Christmas.
-        self._add_christmas_day_two(tr("Annandag jul"))
-
-        # New Year's Eve.
-        self._add_new_years_eve(tr("Nyårsafton"))
-
-        if self.include_sundays:
-            # Optionally add all Sundays of the year.
-            begin = _get_nth_weekday_from(1, SUN, date(year, JAN, 1))
-            end = date(year, DEC, 31)
-            for dt in (
-                begin + td(days=n) for n in range(0, (end - begin).days + 1, 7)
-            ):
-                # Sunday.
-                self._add_holiday(tr("Söndag"), dt)
+        if year <= 1953:
+            self[date(year, MAR, 25)] = "Jungfru Marie bebådelsedag"
 
 
 class SE(Sweden):
