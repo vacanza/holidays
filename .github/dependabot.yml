@@ -4,11 +4,12 @@ updates:
     directory: /
     schedule:
       interval: weekly
-      day: friday
+      day: wednesday
+    target-branch: beta
 
-  # Maintain dependencies for GitHub Actions
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: weekly
-      day: friday
+      day: wednesday
+    target-branch: beta
