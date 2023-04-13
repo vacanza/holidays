@@ -607,6 +607,9 @@ default language code is a `ISO 639-1 code`_.
    * - Monaco
      - fr
      - en_US, fr, uk
+   * - Netherlands
+     - nl
+     - en_US, nl, uk
    * - Nicaragua
      - es
      - en_US, es, uk
