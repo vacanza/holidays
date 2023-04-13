@@ -16,7 +16,7 @@ from tests.common import TestCase
 class TestThailand(TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Thailand)
+        super().setUpClass(Thailand, years=range(1941, 2058))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Thailand, TH, THA)
@@ -26,6 +26,7 @@ class TestThailand(TestCase):
 
     def test_2022(self):
         self.assertHolidays(
+            Thailand(years=2022),
             ("2022-01-01", "วันขึ้นปีใหม่"),
             ("2022-01-03", "ชดเชยวันขึ้นปีใหม่"),
             ("2022-02-16", "วันมาฆบูชา"),
@@ -115,12 +116,12 @@ class TestThailand(TestCase):
     def test_songkran_festival(self):
         name = "วันสงกรานต์"
 
-        self.assertNoHolidayName(name, Thailand(years=1947))
+        self.assertNoHolidayNameInYears(name, 1947)
         for year in range(1948, 1954):
             self.assertHoliday(
                 f"{year}-04-13", f"{year}-04-14", f"{year}-04-15"
             )
-        self.assertNoHolidayName(name, Thailand(years=range(1954, 1957)))
+        self.assertNoHolidayNameInYears(name, range(1954, 1957))
         self.assertHolidaysName(
             name, (f"{year}-04-13" for year in range(1957, 1989))
         )
@@ -156,7 +157,7 @@ class TestThailand(TestCase):
         name = "วันแรงงานแห่งชาติ"
 
         self.assertNoHoliday("1973-05-01")
-        self.assertNoHolidayName(name, Thailand(years=1973))
+        self.assertNoHolidayNameInYears(name, 1973)
         self.assertHoliday(f"{year}-05-01" for year in range(1974, 2058))
 
         self.assertNoNonObservedHoliday(
@@ -172,9 +173,9 @@ class TestThailand(TestCase):
         name = "วันฉัตรมงคล"
 
         self.assertNoHoliday("1957-05-05")
-        self.assertNoHolidayName(name, Thailand(years=1957))
+        self.assertNoHolidayNameInYears(name, 1957)
         self.assertHoliday(f"{year}-05-05" for year in range(1958, 2017))
-        self.assertNoHolidayName(name, Thailand(years=range(2017, 2020)))
+        self.assertNoHolidayNameInYears(name, range(2017, 2020))
         self.assertHoliday(f"{year}-05-04" for year in range(2020, 2058))
 
         self.assertNoNonObservedHoliday(
@@ -192,7 +193,7 @@ class TestThailand(TestCase):
         )
 
         self.assertNoHoliday("2018-06-03")
-        self.assertNoHolidayName(name, Thailand(years=2018))
+        self.assertNoHolidayNameInYears(name, 2018)
         self.assertHoliday(f"{year}-06-03" for year in range(2019, 2058))
 
         self.assertNoNonObservedHoliday(
@@ -212,7 +213,7 @@ class TestThailand(TestCase):
         name = "วันเฉลิมพระชนมพรรษา พระบาทสมเด็จพระเจ้าอยู่หัว"
 
         self.assertNoHoliday("2016-07-28")
-        self.assertNoHolidayName(name, Thailand(years=2016))
+        self.assertNoHolidayNameInYears(name, 2016)
         self.assertHoliday(f"{year}-07-28" for year in range(2017, 2058))
 
         self.assertNoNonObservedHoliday(
@@ -230,15 +231,15 @@ class TestThailand(TestCase):
         name_x = "วันเฉลิมพระชนมพรรษาสมเด็จพระบรมราชชนนีพันปีหลวง"
 
         self.assertNoHoliday("1975-08-12")
-        self.assertNoHolidayName(name_ix, Thailand(years=1975))
+        self.assertNoHolidayNameInYears(name_ix, 1975)
         self.assertHolidaysName(
             name_ix, (f"{year}-08-12" for year in range(1976, 2017))
         )
-        self.assertNoHolidayName(name_x, Thailand(years=range(1941, 2017)))
+        self.assertNoHolidayNameInYears(name_x, range(1941, 2017))
         self.assertHolidaysName(
             name_x, (f"{year}-08-12" for year in range(2017, 2058))
         )
-        self.assertNoHolidayName(name_ix, Thailand(years=range(2017, 2058)))
+        self.assertNoHolidayNameInYears(name_ix, range(2017, 2058))
 
         self.assertNoNonObservedHoliday(
             "2012-08-13",
@@ -252,11 +253,11 @@ class TestThailand(TestCase):
     def test_national_mothers_day(self):
         name = "วันแม่แห่งชาติ"
 
-        self.assertNoHolidayName(name, Thailand(years=1949))
+        self.assertNoHolidayNameInYears(name, 1949)
         self.assertHolidaysName(
             name, (f"{year}-04-15" for year in range(1950, 1958))
         )
-        self.assertNoHolidayName(name, Thailand(years=range(1958, 1976)))
+        self.assertNoHolidayNameInYears(name, range(1958, 1976))
         self.assertHolidaysName(
             name, (f"{year}-08-12" for year in range(1976, 2058))
         )
@@ -275,15 +276,15 @@ class TestThailand(TestCase):
         )
 
         self.assertNoHoliday("2016-10-13")
-        self.assertNoHolidayName(name_ix, Thailand(years=2016))
+        self.assertNoHolidayNameInYears(name_ix, 2016)
         self.assertHolidaysName(
             name_ix, (f"{year}-10-13" for year in range(2017, 2019))
         )
-        self.assertNoHolidayName(name_x, Thailand(years=range(1941, 2019)))
+        self.assertNoHolidayNameInYears(name_x, range(1941, 2019))
         self.assertHolidaysName(
             name_x, (f"{year}-10-13" for year in range(2019, 2058))
         )
-        self.assertNoHolidayName(name_ix, Thailand(years=range(2019, 2058)))
+        self.assertNoHolidayNameInYears(name_ix, range(2019, 2058))
 
         self.assertNoNonObservedHoliday(
             "2018-10-15",
@@ -297,7 +298,7 @@ class TestThailand(TestCase):
         name = "วันปิยมหาราช"
         self.assertHoliday(f"{year}-10-23" for year in range(1941, 2058))
         self.assertNoHoliday("1910-10-23", "1940-10-23")
-        self.assertNoHolidayName(name, Thailand(years=[1910, 1940]))
+        self.assertNoHolidayNameInYears(name, Thailand(years=[1910, 1940]))
 
         self.assertNoNonObservedHoliday(
             "2010-10-25",
@@ -323,24 +324,24 @@ class TestThailand(TestCase):
         )
 
         self.assertNoHoliday("1959-12-05")
-        self.assertNoHolidayName(name_reign, Thailand(years=1959))
-        self.assertNoHolidayName(name_dead, Thailand(years=1959))
-        self.assertNoHolidayName(name_great, Thailand(years=1959))
+        self.assertNoHolidayNameInYears(name_reign, 1959)
+        self.assertNoHolidayNameInYears(name_dead, 1959)
+        self.assertNoHolidayNameInYears(name_great, 1959)
         self.assertHolidaysName(
             name_reign, (f"{year}-12-05" for year in range(1976, 2016))
         )
-        self.assertNoHolidayName(name_dead, Thailand(years=range(1941, 2016)))
-        self.assertNoHolidayName(name_great, Thailand(years=range(1941, 2016)))
+        self.assertNoHolidayNameInYears(name_dead, range(1941, 2016))
+        self.assertNoHolidayNameInYears(name_great, range(1941, 2016))
         self.assertHolidaysName(
             name_dead, (f"{year}-12-05" for year in range(2016, 2019))
         )
-        self.assertNoHolidayName(name_reign, Thailand(years=range(2019, 2058)))
-        self.assertNoHolidayName(name_great, Thailand(years=range(2016, 2019)))
+        self.assertNoHolidayNameInYears(name_reign, range(2019, 2058))
+        self.assertNoHolidayNameInYears(name_great, range(2016, 2019))
         self.assertHolidaysName(
             name_great, (f"{year}-12-05" for year in range(2019, 2058))
         )
-        self.assertNoHolidayName(name_reign, Thailand(years=range(2019, 2058)))
-        self.assertNoHolidayName(name_dead, Thailand(years=range(2019, 2058)))
+        self.assertNoHolidayNameInYears(name_reign, range(2019, 2058))
+        self.assertNoHolidayNameInYears(name_dead, range(2019, 2058))
 
         self.assertNoNonObservedHoliday(
             "2010-12-06",
@@ -355,7 +356,7 @@ class TestThailand(TestCase):
         name = "วันพ่อแห่งชาติ"
 
         # This concides with HM King Bhumibol Adulyadej's Birthday
-        self.assertNoHolidayName(name, Thailand(years=1979))
+        self.assertNoHolidayNameInYears(name, 1979)
         self.assertHolidaysName(
             name, (f"{year}-12-05" for year in range(1980, 2058))
         )
@@ -553,7 +554,7 @@ class TestThailand(TestCase):
             "2023-05-11",
         )
         self.assertHolidaysName(name, dt)
-        self.assertNoHolidayName(name, Thailand(years=[1956, 1999]))
+        self.assertNoHolidayNameInYears(name, 1956, 1999)
 
         self.assertHolidaysName(
             name, (f"{year}-05-13" for year in range(1957, 1997))

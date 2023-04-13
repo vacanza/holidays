@@ -14,7 +14,6 @@ from datetime import timedelta as td
 from typing import Set
 
 from dateutil.easter import EASTER_ORTHODOX, EASTER_WESTERN, easter
-from dateutil.parser import parse
 from korean_lunar_calendar import KoreanLunarCalendar
 
 from holidays.calendars import _ChineseLuniSolar, _IslamicHolidays
@@ -640,6 +639,16 @@ class InternationalHolidays:
         """
         return self._add_holiday(holiday_name, JAN, 4)
 
+    def _add_remembrance_day(self, holiday_name):
+        """
+        Add Remembrance Day / Armistice Day (Nov 11th)
+
+        It's a memorial day since the end of the First World War in 1919
+        to honour armed forces members who have died in the line of duty.
+        https://en.wikipedia.org/wiki/Remembrance_Day
+        """
+        return self._add_holiday(holiday_name, NOV, 11)
+
     def _add_new_years_eve(self, holiday_name) -> date:
         """
         Add New Year's Eve (December 31st).
@@ -951,5 +960,8 @@ class KoreanCalendarHolidays:
         Get solar date.
         """
         self._korean_calendar.setLunarDate(year, month, day, False)
-
-        return parse(self._korean_calendar.SolarIsoFormat())
+        return date(
+            self._korean_calendar.solarYear,
+            self._korean_calendar.solarMonth,
+            self._korean_calendar.solarDay,
+        )

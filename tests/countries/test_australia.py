@@ -191,6 +191,7 @@ class TestAU(unittest.TestCase):
             self.assertEqual(
                 self.state_hols["WA"][dt], "Western Australia Day"
             )
+        self.assertNotIn("1832-06-04", self.state_hols["WA"])
 
     def test_adelaide_cup(self):
         for dt in [date(2015, 3, 9), date(2016, 3, 14), date(2017, 3, 13)]:
