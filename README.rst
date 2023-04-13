@@ -538,6 +538,9 @@ default language code is a `ISO 639-1 code`_.
    * - Armenia
      - hy
      - en_US, hy
+   * - Austria
+     - de
+     - de, en_US, uk
    * - Belarus
      - be
      - be, en_US
@@ -583,6 +586,9 @@ default language code is a `ISO 639-1 code`_.
    * - Georgia
      - ka
      - en_US, ka
+   * - Germany
+     - de
+     - de, en_US, uk
    * - Greece
      - el
      - el, en_US
@@ -595,6 +601,9 @@ default language code is a `ISO 639-1 code`_.
    * - Japan
      - ja
      - en_US, ja
+   * - Liechtenstein
+     - de
+     - de, en_US, uk
    * - Mexico
      - es
      - en_US, es, uk
