@@ -1,0 +1,77 @@
+# Netherlands holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.23\n"
+"POT-Creation-Date: 2023-04-09 18:11+0300\n"
+"PO-Revision-Date: 2023-04-09 18:13+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: holidays/countries/netherlands.py:39
+msgid "Nieuwjaarsdag"
+msgstr ""
+
+#. Good Friday.
+#: holidays/countries/netherlands.py:42
+msgid "Goede Vrijdag"
+msgstr ""
+
+#. Easter Sunday.
+#: holidays/countries/netherlands.py:45
+msgid "Eerste paasdag"
+msgstr ""
+
+#. Easter Monday.
+#: holidays/countries/netherlands.py:48
+msgid "Tweede paasdag"
+msgstr ""
+
+#. King's Day.
+#: holidays/countries/netherlands.py:54
+msgid "Koningsdag"
+msgstr ""
+
+#. Queen's Day.
+#: holidays/countries/netherlands.py:57
+msgid "Koninginnedag"
+msgstr ""
+
+#. Liberation Day.
+#: holidays/countries/netherlands.py:71
+msgid "Bevrijdingsdag"
+msgstr ""
+
+#. Ascension Day.
+#: holidays/countries/netherlands.py:74
+msgid "Hemelvaartsdag"
+msgstr ""
+
+#. Whit Sunday.
+#: holidays/countries/netherlands.py:77
+msgid "Eerste Pinksterdag"
+msgstr ""
+
+#. Whit Monday.
+#: holidays/countries/netherlands.py:80
+msgid "Tweede Pinksterdag"
+msgstr ""
+
+#. Christmas Day.
+#: holidays/countries/netherlands.py:83
+msgid "Eerste Kerstdag"
+msgstr ""
+
+#. Christmas Second Day.
+#: holidays/countries/netherlands.py:86
+msgid "Tweede Kerstdag"
+msgstr ""

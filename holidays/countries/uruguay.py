@@ -40,7 +40,7 @@ class Uruguay(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_new_years_day(tr("Año Nuevo"))
 
         # International Workers' Day.
-        self._add_labour_day(tr("Día de los Trabajadores"))
+        self._add_labor_day(tr("Día de los Trabajadores"))
 
         # Constitution Day.
         self._add_holiday(tr("Jura de la Constitución"), JUL, 18)

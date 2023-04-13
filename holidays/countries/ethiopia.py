@@ -94,7 +94,7 @@ class Ethiopia(
             self._add_holiday(tr("አድዋ"), MAR, 2)
 
         # Labour Day.
-        self._add_labour_day(tr("የሰራተኞች ቀን"))
+        self._add_labor_day(tr("የሰራተኞች ቀን"))
 
         if year > 1941:
             # Patriots Day.

@@ -3,8 +3,11 @@ Version 0.23
 
 Released ???????? ??, ????
 
+- Add Islamic multi-day holidays support to holiday_groups, #1086 (@KJhellico)
 - Refactor Japan observed holidays, #1081 (@KJhellico)
+- Refactor astronomic holidays, #1094 (@KJhellico)
 - Refactor long running countries tests, #1071 (@KJhellico, @arkid15r)
+- Update InternationalHolidays:_add_labour_day method, #1099 (@arkid15r)
 - Update Israel holidays, #1080 (@KJhellico)
 - Update utils list supported entities methods, #1043 (@arkid15r)
 - Add Ecuador holidays, #1070 (@KJhellico)
@@ -12,10 +15,15 @@ Released ???????? ??, ????
 - Add polib as a deploy process dependency, #1077 (@arkid15r)
 - Migrate Australia holidays to holiday groups and subdivision holidays methods, #1069 (@KJhellico)
 - Migrate Canada holidays to holiday groups and subdivision holidays methods, #1078 (@KJhellico)
+- Migrate German language countries holidays to holiday groups, #1096 (@KJhellico)
 - Migrate Jamaica holidays to holiday groups, #1065 (@KJhellico)
+- Migrate Mexico holidays to holiday groups, #1091 (@KJhellico)
+- Migrate Netherlands holidays to holiday groups, localization, #1098 (@KJhellico)
 - Migrate Spain holidays to holiday groups and subdivision holidays methods, #1072 (@KJhellico)
+- Migrate Switzerland holidays to holiday groups, localization, #1097 (@KJhellico)
 - Migrate Vietnam holidays to holiday groups, #1064 (@KJhellico)
 - Normalize holidays dict keys type, #1084 (@arkid15r)
+- Reconfigure dependabot, #1092 (@arkid15r)
 - Standardize country alias tests, #1074 (@arkid15r)
 
 Version 0.22

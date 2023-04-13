@@ -50,7 +50,7 @@ class Peru(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_sunday(tr("Domingo de Resurrección"))
 
         # Labor Day.
-        self._add_labour_day(tr("Día del Trabajo"))
+        self._add_labor_day(tr("Día del Trabajo"))
 
         # Feast of Saints Peter and Paul.
         self._add_saints_peter_and_paul_day(tr("San Pedro y San Pablo"))

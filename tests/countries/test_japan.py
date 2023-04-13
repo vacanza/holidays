@@ -199,6 +199,8 @@ class TestJapan(TestCase):
             "2048-03-20",
             "2049-03-20",
             "2050-03-20",
+            "2091-03-20",
+            "2092-03-19",
         )
 
     def test_showa_day(self):
