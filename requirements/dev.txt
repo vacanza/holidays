@@ -2,7 +2,6 @@
 convertdate>=2.3.0
 hijri-converter
 korean-lunar-calendar
-PyMeeus
 python-dateutil
 
 # Test requirements.
