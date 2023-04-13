@@ -115,7 +115,7 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
 
     def _add_subdiv_bl_holidays(self):
-        # Labour Day.
+        # Labor Day.
         self._add_labour_day(tr("Tag der Arbeit"))
 
     def _add_subdiv_bs_holidays(self):
@@ -130,8 +130,8 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _add_subdiv_ge_holidays(self):
         # Thursday after the first Sunday of September
         self._add_holiday(
-            # Jeûne genevois.
-            tr("Jeûne genevois"),
+            # Genevan Fast.
+            tr("Genfer Bettag"),
             _get_nth_weekday_of_month(1, SUN, SEP, self._year) + td(days=+4),
         )
 
@@ -146,7 +146,7 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
             dt = _get_nth_weekday_of_month(1, THU, APR, self._year)
             if dt == self._easter_sunday + td(days=-3):
                 dt += td(days=+7)
-            # Näfels Ride.
+            # Battle of Naefels Victory Day.
             self._add_holiday(tr("Näfelser Fahrt"), dt)
 
         self._add_all_saints_day(tr("Allerheiligen"))
@@ -249,7 +249,7 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Monday after the third Sunday of September
         self._add_holiday(
             # Prayer Monday.
-            tr("Lundi du Jeûne"),
+            tr("Bettagsmontag"),
             _get_nth_weekday_of_month(3, SUN, SEP, self._year) + td(days=+1),
         )
 

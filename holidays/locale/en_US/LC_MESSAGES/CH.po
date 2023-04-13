@@ -113,29 +113,29 @@ msgstr "All Saints' Day"
 msgid "Mariä Empfängnis"
 msgstr "Immaculate Conception"
 
-#. Labour Day.
+#. Labor Day.
 #: holidays/countries/switzerland.py:119 holidays/countries/switzerland.py:122
 #: holidays/countries/switzerland.py:159 holidays/countries/switzerland.py:179
 #: holidays/countries/switzerland.py:207 holidays/countries/switzerland.py:220
 #: holidays/countries/switzerland.py:224 holidays/countries/switzerland.py:229
 #: holidays/countries/switzerland.py:272
 msgid "Tag der Arbeit"
-msgstr "Labour Day"
+msgstr "Labor Day"
 
-#. Jeûne genevois.
+#. Genevan Fast.
 #: holidays/countries/switzerland.py:134
-msgid "Jeûne genevois"
-msgstr "Jeûne genevois"
+msgid "Genfer Bettag"
+msgstr "Genevan Fast"
 
 #. Restoration Day.
 #: holidays/countries/switzerland.py:139
 msgid "Wiederherstellung der Republik"
 msgstr "Restoration Day"
 
-#. Näfels Ride.
+#. Battle of Naefels Victory Day.
 #: holidays/countries/switzerland.py:150
 msgid "Näfelser Fahrt"
-msgstr "Näfels Ride"
+msgstr "Battle of Naefels Victory Day"
 
 #. Independence Day.
 #: holidays/countries/switzerland.py:163
@@ -172,5 +172,5 @@ msgstr "Saints Peter and Paul"
 
 #. Prayer Monday.
 #: holidays/countries/switzerland.py:252
-msgid "Lundi du Jeûne"
+msgid "Bettagsmontag"
 msgstr "Prayer Monday"
