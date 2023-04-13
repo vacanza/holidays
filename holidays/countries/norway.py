@@ -9,17 +9,18 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
+from datetime import date, datetime
 from datetime import timedelta as td
-from gettext import gettext as tr
 
-from holidays.calendars import _get_nth_weekday_of_month
-from holidays.constants import JAN, MAY, DEC, SUN
+from dateutil import rrule
+from dateutil.easter import easter
+from dateutil.relativedelta import SU
+
+from holidays.constants import JAN, MAY, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Norway(HolidayBase):
     """
     Norwegian holidays.
     Note that holidays falling on a sunday is "lost",
@@ -36,73 +37,61 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "NO"
-    default_language = "no"
 
     def __init__(self, include_sundays=False, **kwargs):
         """
+
         :param include_sundays: Whether to consider sundays as a holiday
         (which they are in Norway)
         :param kwargs:
         """
         self.include_sundays = include_sundays
-        ChristianHolidays.__init__(self)
-        InternationalHolidays.__init__(self)
         HolidayBase.__init__(self, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
 
-        # New Year's Day.
-        self._add_new_years_day(tr("Første nyttårsdag"))
+        if self.include_sundays:  # Optionally add all Sundays of the year.
+            year_first_day = datetime(year, JAN, 1)
+            year_last_day = datetime(year, DEC, 31)
 
-        # Maundy Thursday.
-        self._add_holy_thursday(tr("Skjærtorsdag"))
+            # Get all Sundays including first/last day of the year cases.
+            sundays = rrule.rrule(
+                rrule.WEEKLY, byweekday=SU, dtstart=year_first_day
+            ).between(year_first_day, year_last_day, inc=True)
+            for sunday in sundays:
+                self[sunday.date()] = "Søndag"
 
-        # Good Friday.
-        self._add_good_friday(tr("Langfredag"))
-
-        # Easter Sunday.
-        self._add_easter_sunday(tr("Første påskedag"))
-
-        # Easter Monday.
-        self._add_easter_monday(tr("Andre påskedag"))
+        # ========= Static holidays =========
+        self[date(year, JAN, 1)] = "Første nyttårsdag"
 
         # Source: https://lovdata.no/dokument/NL/lov/1947-04-26-1
         if year >= 1947:
-            # Labour Day.
-            self._add_labour_day(tr("Arbeidernes dag"))
-
-            # Constitution Day.
-            self._add_holiday(tr("Grunnlovsdag"), MAY, 17)
-
-        # Ascension Day.
-        self._add_ascension_thursday(tr("Kristi himmelfartsdag"))
-
-        # Whit Sunday.
-        self._add_whit_sunday(tr("Første pinsedag"))
-
-        # Whit Monday.
-        self._add_whit_monday(tr("Andre pinsedag"))
+            self[date(year, MAY, 1)] = "Arbeidernes dag"
+            self[date(year, MAY, 17)] = "Grunnlovsdag"
 
         # According to https://no.wikipedia.org/wiki/F%C3%B8rste_juledag,
         # these dates are only valid from year > 1700
         # Wikipedia has no source for the statement, so leaving this be for now
+        self[date(year, DEC, 25)] = "Første juledag"
+        self[date(year, DEC, 26)] = "Andre juledag"
 
-        # Christmas Day.
-        self._add_christmas_day(tr("Første juledag"))
+        # ========= Moving holidays =========
+        # NOTE: These are probably subject to the same > 1700
+        # restriction as the above dates. The only source I could find for how
+        # long Easter has been celebrated in Norway was
+        # https://www.hf.uio.no/ikos/tjenester/kunnskap/samlinger/norsk-folkeminnesamling/livs-og-arshoytider/paske.html
+        # which says
+        # "(...) has been celebrated for over 1000 years (...)" (in Norway)
 
-        # Second Day of Christmas.
-        self._add_christmas_day_two(tr("Andre juledag"))
-
-        if self.include_sundays:
-            # Optionally add all Sundays of the year.
-            begin = _get_nth_weekday_of_month(1, SUN, JAN, year)
-            end = date(year, DEC, 31)
-            for dt in (
-                begin + td(days=n) for n in range(0, (end - begin).days + 1, 7)
-            ):
-                # Sunday.
-                self._add_holiday(tr("Søndag"), dt)
+        easter_date = easter(year)
+        self[easter_date + td(days=-3)] = "Skjærtorsdag"
+        self[easter_date + td(days=-2)] = "Langfredag"
+        self[easter_date] = "Første påskedag"
+        self[easter_date + td(days=+1)] = "Andre påskedag"
+        self[easter_date + td(days=+39)] = "Kristi himmelfartsdag"
+        self[easter_date + td(days=+49)] = "Første pinsedag"
+        self[easter_date + td(days=+50)] = "Andre pinsedag"
 
 
 class NO(Norway):
