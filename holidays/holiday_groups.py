@@ -703,9 +703,7 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Day_of_Arafah
         """
         return self._add_islamic_calendar_holiday(
-            holiday_name,
-            _IslamicHolidays.eid_al_adha_date(self._year),
-            days_delta=-1,
+            holiday_name, "eid-al-adha", days_delta=-1
         )
 
     def _add_ashura_day(self, holiday_name) -> Set[date]:
@@ -716,9 +714,7 @@ class IslamicHolidays:
         10th of Muharram, the first month of the Islamic calendar.
         https://en.wikipedia.org/wiki/Ashura
         """
-        return self._add_islamic_calendar_holiday(
-            holiday_name, _IslamicHolidays.ashura_date(self._year)
-        )
+        return self._add_islamic_calendar_holiday(holiday_name, "ashura")
 
     def _add_eid_al_adha_day(self, holiday_name) -> Set[date]:
         """
@@ -729,9 +725,7 @@ class IslamicHolidays:
         to Allah's command.
         https://en.wikipedia.org/wiki/Eid_al-Adha
         """
-        return self._add_islamic_calendar_holiday(
-            holiday_name, _IslamicHolidays.eid_al_adha_date(self._year)
-        )
+        return self._add_islamic_calendar_holiday(holiday_name, "eid-al-adha")
 
     def _add_eid_al_adha_day_two(self, holiday_name) -> Set[date]:
         """
@@ -740,9 +734,7 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Eid_al-Adha
         """
         return self._add_islamic_calendar_holiday(
-            holiday_name,
-            _IslamicHolidays.eid_al_adha_date(self._year),
-            days_delta=+1,
+            holiday_name, "eid-al-adha", days_delta=+1
         )
 
     def _add_eid_al_adha_day_three(self, holiday_name) -> Set[date]:
@@ -752,9 +744,7 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Eid_al-Adha
         """
         return self._add_islamic_calendar_holiday(
-            holiday_name,
-            _IslamicHolidays.eid_al_adha_date(self._year),
-            days_delta=+2,
+            holiday_name, "eid-al-adha", days_delta=+2
         )
 
     def _add_eid_al_adha_day_four(self, holiday_name) -> Set[date]:
@@ -764,9 +754,7 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Eid_al-Adha
         """
         return self._add_islamic_calendar_holiday(
-            holiday_name,
-            _IslamicHolidays.eid_al_adha_date(self._year),
-            days_delta=+3,
+            holiday_name, "eid-al-adha", days_delta=+3
         )
 
     def _add_eid_al_fitr_day(self, holiday_name) -> Set[date]:
@@ -778,9 +766,7 @@ class IslamicHolidays:
         dawn-to-sunset fasting of Ramadan.
         https://en.wikipedia.org/wiki/Eid_al-Fitr
         """
-        return self._add_islamic_calendar_holiday(
-            holiday_name, _IslamicHolidays.eid_al_fitr_date(self._year)
-        )
+        return self._add_islamic_calendar_holiday(holiday_name, "eid-al-fitr")
 
     def _add_eid_al_fitr_day_two(self, holiday_name) -> Set[date]:
         """
@@ -789,9 +775,7 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Eid_al-Fitr
         """
         return self._add_islamic_calendar_holiday(
-            holiday_name,
-            _IslamicHolidays.eid_al_fitr_date(self._year),
-            days_delta=+1,
+            holiday_name, "eid-al-fitr", days_delta=+1
         )
 
     def _add_eid_al_fitr_day_three(self, holiday_name) -> Set[date]:
@@ -801,24 +785,26 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Eid_al-Fitr
         """
         return self._add_islamic_calendar_holiday(
-            holiday_name,
-            _IslamicHolidays.eid_al_fitr_date(self._year),
-            days_delta=+2,
+            holiday_name, "eid-al-fitr", days_delta=+2
         )
 
     def _add_islamic_calendar_holiday(
-        self, holiday_name, hol_dates: Set[date], days_delta=None
+        self, holiday_name, hol_type: str, days_delta: int = 0
     ) -> Set[date]:
         """
         Add lunar calendar holiday.
         """
         dates = set()
-        for dt in hol_dates:
-            if days_delta:
-                dt += td(days=days_delta)
-            if self._add_holiday(holiday_name, dt):
-                dates.add(dt)
-
+        years = (
+            (self._year - 1, self._year) if days_delta > 0 else (self._year,)
+        )
+        for year in years:
+            for dt in _IslamicHolidays.islamic_holiday_date(year, hol_type):
+                if days_delta != 0:
+                    dt += td(days=days_delta)
+                dt = self._add_holiday(holiday_name, dt)
+                if dt:
+                    dates.add(dt)
         return dates
 
     def _add_islamic_new_year_day(self, holiday_name) -> Set[date]:
@@ -832,7 +818,7 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Islamic_New_Year
         """
         return self._add_islamic_calendar_holiday(
-            holiday_name, _IslamicHolidays.islamic_new_year_date(self._year)
+            holiday_name, "islamic-new-year"
         )
 
     def _add_isra_and_miraj_day(self, holiday_name):
@@ -842,7 +828,7 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Isra%27_and_Mi%27raj
         """
         return self._add_islamic_calendar_holiday(
-            holiday_name, _IslamicHolidays.isra_and_miraj_date(self._year)
+            holiday_name, "isra-and-miraj"
         )
 
     def _add_mawlid_day(self, holiday_name) -> Set[date]:
@@ -853,9 +839,7 @@ class IslamicHolidays:
         Muhammad.
         https://en.wikipedia.org/wiki/Mawlid
         """
-        return self._add_islamic_calendar_holiday(
-            holiday_name, _IslamicHolidays.mawlid_date(self._year)
-        )
+        return self._add_islamic_calendar_holiday(holiday_name, "mawlid")
 
     def _add_mawlid_day_two(self, holiday_name) -> Set[date]:
         """
@@ -866,9 +850,7 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Mawlid
         """
         return self._add_islamic_calendar_holiday(
-            holiday_name,
-            _IslamicHolidays.mawlid_date(self._year),
-            days_delta=+1,
+            holiday_name, "mawlid", days_delta=+1
         )
 
 
