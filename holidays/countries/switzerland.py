@@ -78,7 +78,10 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_christmas_day(tr("Weihnachten"))
 
     def _add_subdiv_holidays(self):
-        if self.subdiv and self.subdiv != "VS":
+        if not self.subdiv:
+            return None
+
+        if self.subdiv != "VS":
             # Good Friday.
             self._add_good_friday(tr("Karfreitag"))
 
@@ -88,7 +91,7 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Whit Monday.
             self._add_whit_monday(tr("Pfingstmontag"))
 
-        if self.subdiv and self.subdiv not in {"GE", "JU", "NE", "VD", "VS"}:
+        if self.subdiv not in {"GE", "JU", "NE", "VD", "VS"}:
             # St. Stephen's Day.
             self._add_christmas_day_two(tr("Stephanstag"))
 
