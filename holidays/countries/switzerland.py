@@ -119,10 +119,10 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_bl_holidays(self):
         # Labor Day.
-        self._add_labour_day(tr("Tag der Arbeit"))
+        self._add_labor_day(tr("Tag der Arbeit"))
 
     def _add_subdiv_bs_holidays(self):
-        self._add_labour_day(tr("Tag der Arbeit"))
+        self._add_labor_day(tr("Tag der Arbeit"))
 
     def _add_subdiv_be_holidays(self):
         self._add_new_years_day_two(tr("Berchtoldstag"))
@@ -159,7 +159,7 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_ju_holidays(self):
         self._add_new_years_day_two(tr("Berchtoldstag"))
-        self._add_labour_day(tr("Tag der Arbeit"))
+        self._add_labor_day(tr("Tag der Arbeit"))
         self._add_corpus_christi_day(tr("Fronleichnam"))
 
         # Independence Day.
@@ -179,7 +179,7 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Republic Day.
         self._add_holiday(tr("Jahrestag der Ausrufung der Republik"), MAR, 1)
-        self._add_labour_day(tr("Tag der Arbeit"))
+        self._add_labor_day(tr("Tag der Arbeit"))
 
         if self._is_sunday(self._christmas_day):
             self._add_christmas_day_two(tr("Stephanstag"))
@@ -207,7 +207,7 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_sh_holidays(self):
         self._add_new_years_day_two(tr("Berchtoldstag"))
-        self._add_labour_day(tr("Tag der Arbeit"))
+        self._add_labor_day(tr("Tag der Arbeit"))
 
     def _add_subdiv_sz_holidays(self):
         # Epiphany.
@@ -220,16 +220,16 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_so_holidays(self):
         self._add_new_years_day_two(tr("Berchtoldstag"))
-        self._add_labour_day(tr("Tag der Arbeit"))
+        self._add_labor_day(tr("Tag der Arbeit"))
 
     def _add_subdiv_tg_holidays(self):
         self._add_new_years_day_two(tr("Berchtoldstag"))
-        self._add_labour_day(tr("Tag der Arbeit"))
+        self._add_labor_day(tr("Tag der Arbeit"))
 
     def _add_subdiv_ti_holidays(self):
         self._add_epiphany_day(tr("Heilige Drei Könige"))
         self._add_saint_josephs_day(tr("Josefstag"))
-        self._add_labour_day(tr("Tag der Arbeit"))
+        self._add_labor_day(tr("Tag der Arbeit"))
         self._add_corpus_christi_day(tr("Fronleichnam"))
 
         # Saints Peter and Paul.
@@ -272,7 +272,7 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_zh_holidays(self):
         self._add_new_years_day_two(tr("Berchtoldstag"))
-        self._add_labour_day(tr("Tag der Arbeit"))
+        self._add_labor_day(tr("Tag der Arbeit"))
 
 
 class CH(Switzerland):
