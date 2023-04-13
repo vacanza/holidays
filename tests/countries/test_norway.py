@@ -14,8 +14,9 @@ from tests.common import SundayHolidays
 
 
 class TestNorway(SundayHolidays):
-    def setUp(self):
-        self.holidays = Norway()
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Norway)
 
     def test_country_aliases(self):
         self.assertCountryAliases(Norway, NO, NOR)
