@@ -97,7 +97,7 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_easter_monday(tr("Ostermontag"))
 
             # Labor Day.
-            self._add_labour_day(tr("Erster Mai"))
+            self._add_labor_day(tr("Erster Mai"))
 
             # Ascension Day.
             self._add_ascension_thursday(tr("Christi Himmelfahrt"))

@@ -62,7 +62,7 @@ class Liechtenstein(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_monday(tr("Ostermontag"))
 
         # Labor Day.
-        self._add_labour_day(tr("Tag der Arbeit"))
+        self._add_labor_day(tr("Tag der Arbeit"))
 
         # Ascension Day.
         self._add_ascension_thursday(tr("Auffahrt"))

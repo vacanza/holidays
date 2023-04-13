@@ -61,8 +61,8 @@ class Mexico(HolidayBase, ChristianHolidays, InternationalHolidays):
             )
 
         if year >= 1923:
-            # Labour Day.
-            self._add_labour_day(tr("Día del Trabajo"))
+            # Labor Day.
+            self._add_labor_day(tr("Día del Trabajo"))
 
         # Independence Day.
         self._add_holiday(tr("Día de la Independencia"), SEP, 16)
