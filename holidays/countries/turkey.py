@@ -36,7 +36,7 @@ class Turkey(HolidayBase, IslamicHolidays, InternationalHolidays):
         self._add_holiday("National Sovereignty and Children's Day", APR, 23)
 
         # 1st of May.
-        self._add_labour_day("Labour Day")
+        self._add_labor_day("Labour Day")
 
         # 19th of May.
         self._add_holiday(

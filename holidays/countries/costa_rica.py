@@ -81,7 +81,7 @@ class CostaRica(HolidayBase, ChristianHolidays, InternationalHolidays):
         if year == 2021:
             _add_movable(name, date(year, MAY, 1))
         else:
-            self._add_labour_day(name)
+            self._add_labor_day(name)
 
         # Law #8442 from 19.04.2005
         # Law #8753 from 25.07.2009

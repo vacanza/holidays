@@ -144,7 +144,7 @@ class SouthKorea(
         # Labour Day
         name = "Labour Day"
         if year >= 1994:
-            self._add_labour_day(name)
+            self._add_labor_day(name)
         else:
             self._add_holiday(name, MAR, 10)
 

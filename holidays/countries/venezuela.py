@@ -66,7 +66,7 @@ class Venezuela(HolidayBase, ChristianHolidays, InternationalHolidays):
         # https://bit.ly/3B4Xd1L
         if year >= 1946:
             # International Worker's Day.
-            self._add_labour_day(tr("Dia Mundial del Trabajador"))
+            self._add_labor_day(tr("Dia Mundial del Trabajador"))
 
         # Note: not sure about the start year, but this event happened in 1824
         if year >= 1971 or 1824 <= year <= 1917:

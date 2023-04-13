@@ -74,7 +74,7 @@ class Armenia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday(tr("Եղեռնի զոհերի հիշատակի օր"), APR, 24)
 
         if year >= 2001:
-            self._add_labour_day(
+            self._add_labor_day(
                 # Labor Day.
                 tr("Աշխատանքի օր")
                 if year >= 2002

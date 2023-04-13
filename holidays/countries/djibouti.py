@@ -48,7 +48,7 @@ class Djibouti(HolidayBase, IslamicHolidays, InternationalHolidays):
         self._add_new_years_day("Nouvel an")
 
         # Labour Day
-        self._add_labour_day("Fête du travail")
+        self._add_labor_day("Fête du travail")
 
         # Fête de l'indépendance
         self._add_holiday("Fête de l'indépendance", JUN, 27)
