@@ -370,39 +370,18 @@ class TestChile(TestCase):
         )
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                cl = Chile(language=language)
-                self.assertEqual(cl["2022-01-01"], "Año Nuevo")
-                self.assertEqual(cl["2022-12-25"], "Navidad")
-
-        run_tests((Chile.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((Chile.default_language,))
+        self.assert_l10n_default(
+            (("2022-01-01", "Año Nuevo"), ("2022-12-25", "Navidad"))
+        )
 
     def test_l10n_en_us(self):
-        en_us = "en_US"
-
-        cl = Chile(language=en_us)
-        self.assertEqual(cl["2022-01-01"], "New Year's Day")
-        self.assertEqual(cl["2022-12-25"], "Christmas")
-
-        self.set_language(en_us)
-        for language in (None, en_us, "invalid"):
-            cl = Chile(language=language)
-            self.assertEqual(cl["2022-01-01"], "New Year's Day")
-            self.assertEqual(cl["2022-12-25"], "Christmas")
+        self.assert_l10n_language(
+            "en_US",
+            (("2022-01-01", "New Year's Day"), ("2022-12-25", "Christmas")),
+        )
 
     def test_l10n_uk(self):
-        uk = "uk"
-
-        cl = Chile(language=uk)
-        self.assertEqual(cl["2022-01-01"], "Новий рік")
-        self.assertEqual(cl["2022-12-25"], "Різдво Христове")
-
-        self.set_language(uk)
-        for language in (None, uk, "invalid"):
-            cl = Chile(language=language)
-            self.assertEqual(cl["2022-01-01"], "Новий рік")
-            self.assertEqual(cl["2022-12-25"], "Різдво Христове")
+        self.assert_l10n_language(
+            "uk",
+            (("2022-01-01", "Новий рік"), ("2022-12-25", "Різдво Христове")),
+        )
