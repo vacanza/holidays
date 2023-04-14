@@ -11,50 +11,93 @@
 
 from datetime import date
 from datetime import timedelta as td
-
-from dateutil.easter import easter
+from gettext import gettext as tr
 
 from holidays.calendars import _get_nth_weekday_from
-from holidays.constants import JAN, MAY, JUN, OCT, DEC, FRI, SAT
+from holidays.constants import JAN, MAY, JUN, OCT, NOV, DEC, FRI, SAT
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Finland(HolidayBase):
+class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Finland
     """
 
     country = "FI"
+    default_language = "fi"
+
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
 
-        easter_date = easter(year)
+        # New Year's Day.
+        self._add_new_years_day(tr("Uudenvuodenpäivä"))
 
-        self[date(year, JAN, 1)] = "Uudenvuodenpäivä"
-        self[date(year, JAN, 6)] = "Loppiainen"
-        self[easter_date + td(days=-2)] = "Pitkäperjantai"
-        self[easter_date] = "Pääsiäispäivä"
-        self[easter_date + td(days=+1)] = "2. pääsiäispäivä"
-        self[date(year, MAY, 1)] = "Vappu"
-        self[easter_date + td(days=+39)] = "Helatorstai"
-        self[easter_date + td(days=+49)] = "Helluntaipäivä"
-        self[
-            _get_nth_weekday_from(1, SAT, date(year, JUN, 20))
-        ] = "Juhannuspäivä"
-        self[
-            _get_nth_weekday_from(1, SAT, date(year, OCT, 31))
-        ] = "Pyhäinpäivä"
-        self[date(year, DEC, 6)] = "Itsenäisyyspäivä"
-        self[date(year, DEC, 25)] = "Joulupäivä"
-        self[date(year, DEC, 26)] = "Tapaninpäivä"
+        # Epiphany.
+        name = tr("Loppiainen")
+        if 1973 <= year <= 1990:
+            self._add_holiday(
+                name, _get_nth_weekday_from(1, SAT, date(year, JAN, 6))
+            )
+        else:
+            self._add_epiphany_day(name)
 
-        # Juhannusaatto (Midsummer Eve) and Jouluaatto (Christmas Eve) are not
-        # official holidays, but are de facto.
-        self[
+        # Good Friday.
+        self._add_good_friday(tr("Pitkäperjantai"))
+
+        # Easter Sunday.
+        self._add_easter_sunday(tr("Pääsiäispäivä"))
+
+        # Easter Monday.
+        self._add_easter_monday(tr("2. pääsiäispäivä"))
+
+        # May Day.
+        self._add_holiday(tr("Vappu"), MAY, 1)
+
+        # Ascension Day.
+        name = tr("Helatorstai")
+        if 1973 <= year <= 1990:
+            self._add_holiday(name, self._easter_sunday + td(days=+34))
+        else:
+            self._add_ascension_thursday(name)
+
+        # Whit Sunday.
+        self._add_whit_sunday(tr("Helluntaipäivä"))
+
+        dt = (
             _get_nth_weekday_from(1, FRI, date(year, JUN, 19))
-        ] = "Juhannusaatto"
-        self[date(year, DEC, 24)] = "Jouluaatto"
+            if year >= 1955
+            else date(year, JUN, 23)
+        )
+        # Midsummer Eve.
+        self._add_holiday(tr("Juhannusaatto"), dt)
+        # Midsummer Day.
+        self._add_holiday(tr("Juhannuspäivä"), dt + td(days=+1))
+
+        dt = (
+            _get_nth_weekday_from(1, SAT, date(year, OCT, 31))
+            if year >= 1955
+            else date(year, NOV, 1)
+        )
+        # All Saints' Day.
+        self._add_holiday(tr("Pyhäinpäivä"), dt)
+
+        # Independence Day.
+        self._add_holiday(tr("Itsenäisyyspäivä"), DEC, 6)
+
+        # Christmas Eve.
+        self._add_christmas_eve(tr("Jouluaatto"))
+
+        # Christmas Day.
+        self._add_christmas_day(tr("Joulupäivä"))
+
+        # Second Day of Christmas.
+        self._add_christmas_day_two(tr("Tapaninpäivä"))
 
 
 class FI(Finland):
