@@ -14,8 +14,9 @@ from tests.common import TestCase
 
 
 class TestPhilippines(TestCase):
-    def setUp(self):
-        self.holidays = Philippines()
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Philippines)
 
     def test_country_aliases(self):
         self.assertCountryAliases(Philippines, PH, PHL)

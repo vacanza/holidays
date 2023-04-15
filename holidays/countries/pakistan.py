@@ -11,48 +11,47 @@
 
 from datetime import date
 from datetime import timedelta as td
-from typing import Dict, Tuple, List
 
-from holidays.calendars import _islamic_to_gre
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
 
 
-class Pakistan(HolidayBase):
+class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
     country = "PK"
 
-    def _populate(self, year):
-        def _add_holiday(dt: date, hol: str) -> None:
-            if dt.year == year:
-                self[dt] = hol
+    def __init__(self, *args, **kwargs):
+        InternationalHolidays.__init__(self)
+        IslamicHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
+    def _populate(self, year):
         if year <= 1947:
             return None
-
         super()._populate(year)
 
         # Kashmir Solidarity Day
         if year >= 1990:
-            self[date(year, FEB, 5)] = "Kashmir Solidarity Day"
+            self._add_holiday("Kashmir Solidarity Day", FEB, 5)
 
         # Pakistan Day
         if year >= 1956:
-            self[date(year, MAR, 23)] = "Pakistan Day"
+            self._add_holiday("Pakistan Day", MAR, 23)
 
         # Labour Day
         if year >= 1972:
-            self[date(year, MAY, 1)] = "Labour Day"
+            self._add_labor_day("Labour Day")
 
         # Independence Day
-        self[date(year, AUG, 14)] = "Independence Day"
+        self._add_holiday("Independence Day", AUG, 14)
 
         # Iqbal Day
         if year <= 2014 or year >= 2022:
-            self[date(year, NOV, 9)] = "Iqbal Day"
+            self._add_holiday("Iqbal Day", NOV, 9)
 
         # Quaid-e-Azam Day
-        self[date(year, DEC, 25)] = "Quaid-e-Azam Day"
+        self._add_holiday("Quaid-e-Azam Day", DEC, 25)
 
         # Eid-ul-Fitr
         # https://www.timeanddate.com/holidays/pakistan/eid-ul-fitr-1
@@ -77,20 +76,24 @@ class Pakistan(HolidayBase):
             2022: ((MAY, 3),),
         }
         name = "Eid-ul-Fitr"
-        hol_dates = self._get_islamic_holiday(name, year, 10, 1, dates_obs)
-        for hol_date, hol_name in hol_dates:
-            _add_holiday(hol_date, hol_name)
-            _add_holiday(hol_date + td(days=+1), hol_name)
-            _add_holiday(hol_date + td(days=+2), hol_name)
+        if year in dates_obs:
+            for yr in (year - 1, year):
+                for hol_date in dates_obs.get(yr, ()):
+                    dt = date(yr, *hol_date)
+                    self._add_holiday(name, dt)
+                    self._add_holiday(name, dt + td(days=+1))
+                    self._add_holiday(name, dt + td(days=+2))
+        else:
+            name = f"{name}* (*estimated)"
+            self._add_eid_al_fitr_day(name)
+            self._add_eid_al_fitr_day_two(name)
+            self._add_eid_al_fitr_day_three(name)
 
         # Eid-ul-Adha
         # https://www.timeanddate.com/holidays/pakistan/eid-ul-azha
         dates_obs = {
             2005: ((JAN, 21),),
-            2006: (
-                (JAN, 10),
-                (DEC, 31),
-            ),
+            2006: ((JAN, 10), (DEC, 31)),
             2007: ((DEC, 20),),
             2008: ((DEC, 9),),
             2009: ((NOV, 28),),
@@ -109,11 +112,18 @@ class Pakistan(HolidayBase):
             2022: ((JUL, 10),),
         }
         name = "Eid-ul-Adha"
-        hol_dates = self._get_islamic_holiday(name, year, 12, 10, dates_obs)
-        for hol_date, hol_name in hol_dates:
-            _add_holiday(hol_date, hol_name)
-            _add_holiday(hol_date + td(days=+1), hol_name)
-            _add_holiday(hol_date + td(days=+2), hol_name)
+        if year in dates_obs:
+            for yr in (year - 1, year):
+                for hol_date in dates_obs.get(yr, ()):
+                    dt = date(yr, *hol_date)
+                    self._add_holiday(name, dt)
+                    self._add_holiday(name, dt + td(days=+1))
+                    self._add_holiday(name, dt + td(days=+2))
+        else:
+            name = f"{name}* (*estimated)"
+            self._add_eid_al_adha_day(name)
+            self._add_eid_al_adha_day_two(name)
+            self._add_eid_al_adha_day_three(name)
 
         # Eid Milad-un-Nabi, Birth of the Prophet
         # https://www.timeanddate.com/holidays/pakistan/eid-milad-un-nabi
@@ -138,9 +148,12 @@ class Pakistan(HolidayBase):
             2022: ((OCT, 9),),
         }
         name = "Eid Milad-un-Nabi"
-        hol_dates = self._get_islamic_holiday(name, year, 3, 12, dates_obs)
-        for hol_date, hol_name in hol_dates:
-            _add_holiday(hol_date, hol_name)
+        if year in dates_obs:
+            for hol_date in dates_obs[year]:
+                dt = date(year, *hol_date)
+                self._add_holiday(name, dt)
+        else:
+            self._add_mawlid_day(f"{name}* (*estimated)")
 
         # Ashura
         # https://www.timeanddate.com/holidays/pakistan/first-day-ashura
@@ -149,10 +162,7 @@ class Pakistan(HolidayBase):
             2006: ((FEB, 8),),
             2007: ((JAN, 28),),
             2008: ((JAN, 18),),
-            2009: (
-                (JAN, 6),
-                (DEC, 26),
-            ),
+            2009: ((JAN, 6), (DEC, 26)),
             2010: ((DEC, 16),),
             2011: ((DEC, 5),),
             2012: ((NOV, 23),),
@@ -168,53 +178,16 @@ class Pakistan(HolidayBase):
             2022: ((AUG, 9),),
         }
         name = "Ashura"
-        hol_dates = self._get_islamic_holiday(name, year, 1, 10, dates_obs)
-        for hol_date, hol_name in hol_dates:
-            _add_holiday(hol_date, hol_name)
-            _add_holiday(hol_date + td(days=+1), hol_name)
-
-    @staticmethod
-    def _get_islamic_holiday(
-        name: str,
-        year: int,
-        hmonth: int,
-        hday: int,
-        known_dates: Dict[int, Tuple[Tuple[int, int]]],
-    ) -> List[Tuple[date, str]]:
-        """
-         Return the Gregorian dates of all instances of Islamic holiday
-         falling within specified and previous Gregorian year
-         (used to multi-day Islamic holidays).
-         If specified year is in known dates list, known date used,
-         else calculated date.
-
-        :param name:
-            Holiday name
-
-        :param year:
-            Gregorian year
-
-        :param hmonth:
-            Hijri month of holiday
-
-        :param hday:
-            Hijri day of holiday
-
-        :param known_dates:
-            Known holiday dates list
-
-        :return:
-            List of date-name pairs
-        """
-        hol_dates: List[Tuple[date, str]] = []
-        for yr in (year - 1, year):
-            if yr in known_dates:
-                for date_obs in known_dates[yr]:
-                    hol_dates.append((date(yr, *date_obs), name))
-            else:
-                for dt in _islamic_to_gre(yr, hmonth, hday):
-                    hol_dates.append((dt, f"{name}* (*estimated)"))
-        return hol_dates
+        if year in dates_obs:
+            for yr in (year - 1, year):
+                for hol_date in dates_obs.get(yr, ()):
+                    dt = date(yr, *hol_date)
+                    self._add_holiday(name, dt)
+                    self._add_holiday(name, dt + td(days=+1))
+        else:
+            name = f"{name}* (*estimated)"
+            for dt in self._add_ashura_day(name):
+                self._add_holiday(name, dt + td(days=+1))
 
 
 class PK(Pakistan):

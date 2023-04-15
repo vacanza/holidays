@@ -16,7 +16,7 @@ from tests.common import TestCase
 class TestAlbania(TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Albania)
+        super().setUpClass(Albania, years=range(1990, 2050))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Albania, AL, ALB)
@@ -35,16 +35,14 @@ class TestAlbania(TestCase):
                 f"{year}-12-25",
             )
 
-        self.assertNoHolidayName(
-            "Summer Day", Albania(years=range(1990, 2004))
-        )
+        self.assertNoHolidayNameInYears("Summer Day", range(1990, 2004))
         self.assertHoliday(f"{year}-03-14" for year in range(2004, 2050))
 
-        self.assertNoHolidayName("Nevruz", Albania(years=range(1990, 1996)))
+        self.assertNoHolidayNameInYears("Nevruz", range(1990, 1996))
         self.assertHoliday(f"{year}-03-22" for year in range(1996, 2050))
 
-        self.assertNoHolidayName(
-            "National Youth Day", Albania(years=range(1990, 2009))
+        self.assertNoHolidayNameInYears(
+            "National Youth Day", range(1990, 2009)
         )
         self.assertHoliday(f"{year}-12-08" for year in range(2009, 2050))
 
@@ -78,6 +76,8 @@ class TestAlbania(TestCase):
             "2023-04-21",
             "2024-04-10",
             # Eid al-Adha
+            "2006-01-10",
+            "2006-12-31",
             "2015-09-23",
             "2016-09-11",
             "2017-09-01",
@@ -95,11 +95,12 @@ class TestAlbania(TestCase):
         self.assertHolidaysName(
             name, (f"{year}-10-19" for year in range(2004, 2018))
         )
-        self.assertNoHolidayName(name, Albania(years=range(1990, 2004)))
-        self.assertNoHolidayName(name, Albania(years=range(2018, 2050)))
+        self.assertNoHolidayNameInYears(
+            name, range(1990, 2004), range(2018, 2050)
+        )
 
         name = "Mother Teresa Canonisation Day"
-        self.assertNoHolidayName(name, Albania(years=range(1990, 2018)))
+        self.assertNoHolidayNameInYears(name, range(1990, 2018))
         self.assertHolidaysName(
             name, (f"{year}-09-05" for year in range(2018, 2050))
         )
@@ -159,6 +160,7 @@ class TestAlbania(TestCase):
             "2017-06-26",
             "2020-05-25",
             # Eid al-Adha
+            "2007-01-03",
             "2014-10-06",
             "2016-09-12",
             "2019-08-12",
@@ -172,16 +174,13 @@ class TestAlbania(TestCase):
             "2000-05-02",
             "2021-05-04",
             "2027-05-04",
-            "2032-05-04",
-            "2062-05-02",
-            "2073-05-02",
-            "2084-05-02",
         )
         self.assertHoliday(dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_2022(self):
         self.assertHolidays(
+            Albania(years=2022),
             ("2022-01-01", "New Year's Day"),
             ("2022-01-02", "New Year's Day"),
             ("2022-01-03", "New Year's Day (Observed)"),
@@ -194,7 +193,8 @@ class TestAlbania(TestCase):
             ("2022-04-24", "Orthodox Easter"),
             ("2022-04-25", "Orthodox Easter (Observed)"),
             ("2022-05-01", "May Day"),
-            ("2022-05-02", "Eid al-Fitr* (*estimated); May Day (Observed)"),
+            ("2022-05-02", "Eid al-Fitr* (*estimated)"),
+            ("2022-05-03", "May Day (Observed)"),
             ("2022-07-09", "Eid al-Adha* (*estimated)"),
             ("2022-07-11", "Eid al-Adha* (*estimated) (Observed)"),
             ("2022-09-05", "Mother Teresa Canonisation Day"),
@@ -207,6 +207,7 @@ class TestAlbania(TestCase):
 
     def test_2023(self):
         self.assertHolidays(
+            Albania(years=2023),
             ("2023-01-01", "New Year's Day"),
             ("2023-01-02", "New Year's Day"),
             ("2023-01-03", "New Year's Day (Observed)"),

@@ -16,7 +16,7 @@ from tests.common import TestCase
 class TestNigeria(TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Nigeria)
+        super().setUpClass(Nigeria, years=range(1979, 2050))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Nigeria, NG, NGA)
@@ -36,9 +36,7 @@ class TestNigeria(TestCase):
     def test_workers_day(self):
         self.assertHoliday(f"{year}-05-01" for year in range(1981, 2050))
         self.assertNoHoliday(f"{year}-05-01" for year in range(1979, 1981))
-        self.assertNoHolidayName(
-            "Workers' Day", Nigeria(years=range(1979, 1981))
-        )
+        self.assertNoHolidayNameInYears("Workers' Day", range(1979, 1981))
 
     def test_democracy_day(self):
         self.assertHoliday(f"{year}-05-29" for year in range(2000, 2019))
@@ -46,9 +44,7 @@ class TestNigeria(TestCase):
         # in 2019 May 29 is special holiday, so check from 2020
         self.assertNoHoliday(f"{year}-05-29" for year in range(2020, 2050))
         self.assertNoHoliday(f"{year}-06-12" for year in range(2000, 2019))
-        self.assertNoHolidayName(
-            "Democracy Day", Nigeria(years=range(1979, 2000))
-        )
+        self.assertNoHolidayNameInYears("Democracy Day", range(1979, 2000))
 
     def test_independence_day(self):
         self.assertHoliday(f"{year}-10-01" for year in range(1979, 2050))
@@ -78,51 +74,55 @@ class TestNigeria(TestCase):
         )
 
     def test_hijri_based(self):
-        for dt in (
+        self.assertHolidaysName(
+            "Eid-el-Fitr",
             "2018-06-15",
-            "2018-06-16",
             "2019-06-04",
-            "2019-06-05",
             "2020-05-24",
-            "2020-05-25",
             "2021-05-13",
-            "2021-05-14",
             "2022-05-02",
-            "2022-05-03",
             "2023-04-21",
+        )
+        self.assertHolidaysName(
+            "Eid-el-Fitr Holiday",
+            "2018-06-16",
+            "2019-06-05",
+            "2020-05-25",
+            "2021-05-14",
+            "2022-05-03",
             "2023-04-22",
-        ):
-            self.assertIn("Eid-el-Fitr", self.holidays[dt])
-
-        for dt in (
+        )
+        self.assertHolidaysName(
+            "Eid-el-Kabir",
             "2006-01-10",
-            "2006-01-11",
             "2006-12-31",
-            "2007-01-01",
             "2018-08-21",
-            "2018-08-22",
             "2019-08-11",
-            "2019-08-12",
             "2020-07-31",
-            "2020-08-01",
             "2021-07-20",
-            "2021-07-21",
             "2022-07-09",
-            "2022-07-10",
             "2023-06-28",
+        )
+        self.assertHolidaysName(
+            "Eid-el-Kabir Holiday",
+            "2006-01-11",
+            "2007-01-01",
+            "2018-08-22",
+            "2019-08-12",
+            "2020-08-01",
+            "2021-07-21",
+            "2022-07-10",
             "2023-06-29",
-        ):
-            self.assertIn("Eid-el-Kabir", self.holidays[dt])
-
-        for dt in (
+        )
+        self.assertHolidaysName(
+            "Eid-el-Mawlid",
             "2018-11-20",
             "2019-11-09",
             "2020-10-29",
             "2021-10-18",
             "2022-10-08",
             "2023-09-27",
-        ):
-            self.assertIn("Eid-el-Mawlid", self.holidays[dt])
+        )
 
     def test_observed(self):
         dt = (

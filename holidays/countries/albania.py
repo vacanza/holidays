@@ -9,17 +9,18 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from datetime import timedelta as td
 
-from dateutil.easter import EASTER_ORTHODOX, easter
-
-from holidays.calendars import _islamic_to_gre
-from holidays.constants import JAN, MAR, MAY, SEP, OCT, NOV, DEC
+from holidays.calendars import GREGORIAN_CALENDAR, JULIAN_CALENDAR
+from holidays.constants import JAN, MAR, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, IslamicHolidays
+from holidays.holiday_groups import InternationalHolidays
 
 
-class Albania(HolidayBase):
+class Albania(
+    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
+):
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_Albania
@@ -30,86 +31,86 @@ class Albania(HolidayBase):
         2022: ((MAR, 21, "Public Holiday"),),
     }
 
-    def _populate(self, year: int) -> None:
-        def _add_with_observed(
-            hol_date: date, hol_name: str, days: int = +1
-        ) -> None:
-            self[hol_date] = hol_name
-            if self.observed and self._is_weekend(hol_date):
-                self[
-                    hol_date
-                    + td(days=+2 if self._is_saturday(hol_date) else days)
-                ] = f"{hol_name} (Observed)"
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        IslamicHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
+    def _populate(self, year):
         super()._populate(year)
+        observed_dates = set()
 
         # New Year's Day.
         name = "New Year's Day"
-        _add_with_observed(date(year, JAN, 1), name, days=+2)
-        _add_with_observed(date(year, JAN, 2), name, days=+2)
+        observed_dates.add(self._add_new_years_day(name))
+        observed_dates.add(self._add_new_years_day_two(name))
 
         # Summer Day.
         if year >= 2004:
-            _add_with_observed(date(year, MAR, 14), "Summer Day")
+            observed_dates.add(self._add_holiday("Summer Day", MAR, 14))
 
         # Nevruz.
         if year >= 1996:
-            _add_with_observed(date(year, MAR, 22), "Nevruz")
+            observed_dates.add(self._add_holiday("Nevruz", MAR, 22))
 
         # Easter.
-        _add_with_observed(
-            easter(year),
-            "Catholic Easter",
-            days=+2 if year == 2008 else +1,
-        )
-        _add_with_observed(
-            easter(year, method=EASTER_ORTHODOX),
-            "Orthodox Easter",
-            days=+2
-            if year in {1989, 2000, 2021, 2027, 2032, 2062, 2073, 2084}
-            else +1,
-        )
+        observed_dates.add(self._add_easter_sunday("Catholic Easter"))
+        self._set_calendar(JULIAN_CALENDAR)
+        observed_dates.add(self._add_easter_sunday("Orthodox Easter"))
+        self._set_calendar(GREGORIAN_CALENDAR)
 
         # May Day.
-        _add_with_observed(date(year, MAY, 1), "May Day")
+        observed_dates.add(self._add_labor_day("May Day"))
 
         # Mother Teresa Day.
         if 2004 <= year <= 2017:
-            _add_with_observed(
-                date(year, OCT, 19), "Mother Teresa Beatification Day"
+            observed_dates.add(
+                self._add_holiday("Mother Teresa Beatification Day", OCT, 19)
             )
         elif year >= 2018:
-            _add_with_observed(
-                date(year, SEP, 5), "Mother Teresa Canonisation Day"
+            observed_dates.add(
+                self._add_holiday("Mother Teresa Canonisation Day", SEP, 5)
             )
 
         # Independence Day.
-        _add_with_observed(date(year, NOV, 28), "Independence Day", days=+2)
+        observed_dates.add(self._add_holiday("Independence Day", NOV, 28))
 
         # Liberation Day.
-        _add_with_observed(date(year, NOV, 29), "Liberation Day", days=+2)
+        observed_dates.add(self._add_holiday("Liberation Day", NOV, 29))
 
         # National Youth Day.
         if year >= 2009:
-            _add_with_observed(date(year, DEC, 8), "National Youth Day")
+            observed_dates.add(self._add_holiday("National Youth Day", DEC, 8))
 
         # Christmas Day.
-        _add_with_observed(date(year, DEC, 25), "Christmas Day")
+        observed_dates.add(self._add_christmas_day("Christmas Day"))
 
         # Eid al-Fitr.
-        for dt in _islamic_to_gre(year, 10, 1):
-            _add_with_observed(dt, "Eid al-Fitr* (*estimated)")
+        observed_dates.update(
+            self._add_eid_al_fitr_day("Eid al-Fitr* (*estimated)")
+        )
 
         # Eid al-Adha.
-        for dt in _islamic_to_gre(year, 12, 10):
-            if year == 2006:
-                self[dt] = "Eid al-Adha* (*estimated)"
-            else:
-                _add_with_observed(dt, "Eid al-Adha* (*estimated)")
+        observed_dates.update(
+            self._add_eid_al_adha_day("Eid al-Adha* (*estimated)")
+        )
+
+        if self.observed:
+            for hol_date in sorted(observed_dates):
+                if not self._is_weekend(hol_date):
+                    continue
+                obs_date = hol_date + td(days=+1)
+                while self._is_weekend(obs_date) or obs_date in observed_dates:
+                    obs_date += td(days=+1)
+                for hol_name in self.get_list(hol_date):
+                    observed_dates.add(
+                        self._add_holiday("%s (Observed)" % hol_name, obs_date)
+                    )
 
         # observed holidays special cases
         if self.observed and year == 2007:
-            self[date(2007, JAN, 3)] = "Eid al-Adha* (*estimated) (Observed)"
+            self._add_holiday("Eid al-Adha* (*estimated) (Observed)", JAN, 3)
 
 
 class AL(Albania):
