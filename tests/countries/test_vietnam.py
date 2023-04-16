@@ -38,6 +38,7 @@ class TestVietnam(TestCase):
 
     def test_lunar_new_year(self):
         for dt in (
+            (1997, 2, 7),
             (2008, 2, 7),
             (2009, 1, 26),
             (2010, 2, 14),
