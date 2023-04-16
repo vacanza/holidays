@@ -89,6 +89,48 @@ class TestIsrael(TestCase):
     def test_independence_day(self):
         self._test_observed_holidays("Independence Day")
 
+    def test_2021(self):
+        self.assertHolidays(
+            ("2021-02-25", "Purim - Eve"),
+            ("2021-02-26", "Purim"),
+            ("2021-02-27", "Shushan Purim"),
+            ("2021-03-27", "Passover I - Eve"),
+            ("2021-03-28", "Passover I"),
+            ("2021-03-29", "Passover - Chol HaMoed"),
+            ("2021-03-30", "Passover - Chol HaMoed"),
+            ("2021-03-31", "Passover - Chol HaMoed"),
+            ("2021-04-01", "Passover - Chol HaMoed"),
+            ("2021-04-02", "Passover VII - Eve"),
+            ("2021-04-03", "Passover VII"),
+            ("2021-04-14", "Memorial Day (Observed)"),
+            ("2021-04-15", "Independence Day (Observed)"),
+            ("2021-04-30", "Lag B'Omer"),
+            ("2021-05-16", "Shavuot - Eve"),
+            ("2021-05-17", "Shavuot"),
+            ("2021-09-06", "Rosh Hashanah - Eve"),
+            ("2021-09-07", "Rosh Hashanah"),
+            ("2021-09-08", "Rosh Hashanah"),
+            ("2021-09-15", "Yom Kippur - Eve"),
+            ("2021-09-16", "Yom Kippur"),
+            ("2021-09-20", "Sukkot I - Eve"),
+            ("2021-09-21", "Sukkot I"),
+            ("2021-09-22", "Sukkot - Chol HaMoed"),
+            ("2021-09-23", "Sukkot - Chol HaMoed"),
+            ("2021-09-24", "Sukkot - Chol HaMoed"),
+            ("2021-09-25", "Sukkot - Chol HaMoed"),
+            ("2021-09-26", "Sukkot - Chol HaMoed"),
+            ("2021-09-27", "Sukkot VII - Eve"),
+            ("2021-09-28", "Sukkot VII"),
+            ("2021-11-29", "Hanukkah"),
+            ("2021-11-30", "Hanukkah"),
+            ("2021-12-01", "Hanukkah"),
+            ("2021-12-02", "Hanukkah"),
+            ("2021-12-03", "Hanukkah"),
+            ("2021-12-04", "Hanukkah"),
+            ("2021-12-05", "Hanukkah"),
+            ("2021-12-06", "Hanukkah"),
+        )
+
     def test_2022(self):
         self.assertHolidays(
             ("2022-03-16", "Purim - Eve"),
