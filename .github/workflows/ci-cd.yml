@@ -50,23 +50,10 @@ jobs:
           COVERALLS_FLAG_NAME: tests-${{ matrix.python-version }}-${{ matrix.os }}
           COVERALLS_PARALLEL: true
 
-  coveralls:
-    name: Finish Coveralls
+  build:
+    name: Build Distribution
     needs: [test]
     runs-on: ubuntu-latest
-    container: python:3-slim
-    steps:
-      - name: Finished
-        run: |
-          python -m pip install --upgrade 'coveralls>=3' pip
-          coveralls --finish --service=github
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  deploy:
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
-    needs: [test]
     steps:
       - uses: actions/checkout@v3
       - name: Set Up Python
@@ -81,8 +68,27 @@ jobs:
         run: |
           make package
 
+  coveralls:
+    name: Finish Coveralls
+    needs: [test]
+    runs-on: ubuntu-latest
+    container: python:3-slim
+    steps:
+      - name: Finished
+        run: |
+          python -m pip install --upgrade 'coveralls>=3' pip
+          coveralls --finish --service=github
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
+    needs: [build]
+    steps:
       - name: Publish Package
-        uses: pypa/gh-action-pypi-publish@v1.8.3
+        uses: pypa/gh-action-pypi-publish@v1.8.5
         with:
           user: __token__
           password: ${{ secrets.pypi_password }}

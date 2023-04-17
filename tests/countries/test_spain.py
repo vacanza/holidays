@@ -9,27 +9,27 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
-from copy import deepcopy
 from datetime import date
 
-import holidays
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC
+from holidays.constants import OCT, DEC
+from holidays.countries.spain import Spain, ES, ESP
+from tests.common import TestCase
 
 
-class TestSpain(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.ES()
-        self.holidays_non_observed = holidays.ES(observed=False)
+class TestSpain(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Spain)
 
-        self.prov_holidays = {
-            prov: holidays.ES(observed=False, subdiv=prov)
-            for prov in holidays.ES.subdivisions
-        }
+    def test_country_aliases(self):
+        self.assertCountryAliases(Spain, ES, ESP)
 
     def test_variable_days_in_2016(self):
-        for prov, prov_holidays in self.prov_holidays.items():
+        prov_holidays = {
+            prov: ES(observed=False, subdiv=prov) for prov in ES.subdivisions
+        }
+        for prov, prov_holidays in prov_holidays.items():
             self.assertEqual(
                 date(2016, MAR, 24) in prov_holidays, prov not in {"CT", "VC"}
             )
@@ -40,18 +40,16 @@ class TestSpain(unittest.TestCase):
             )
 
     def test_fix_days_in_2022(self):
-        fix_days_whole_country_2022 = (
-            (JAN, 1),
-            (JAN, 6),
-            (APR, 15),
-            (AUG, 15),
-            (OCT, 12),
-            (NOV, 1),
-            (DEC, 6),
-            (DEC, 8),
+        self.assertNonObservedHoliday(
+            "2022-01-01",
+            "2022-01-06",
+            "2022-04-15",
+            "2022-08-15",
+            "2022-10-12",
+            "2022-11-01",
+            "2022-12-06",
+            "2022-12-08",
         )
-        for m, d in fix_days_whole_country_2022:
-            self.assertIn(date(2022, m, d), self.holidays)
 
     def test_province_specific_days(self):
         province_days = {
@@ -72,62 +70,50 @@ class TestSpain(unittest.TestCase):
             (SEP, 17): {"ML"},
             (OCT, 9): {"VC"},
         }
-        for prov, prov_holidays in self.prov_holidays.items():
+        prov_holidays = {
+            prov: ES(observed=False, subdiv=prov) for prov in ES.subdivisions
+        }
+        for prov, prov_holidays in prov_holidays.items():
             for year in range(2010, 2021):
                 self.assertEqual(
                     date(year, DEC, 26) in prov_holidays, prov in {"CT", "IB"}
                 )
-                if year < 2015:
-                    self.assertEqual(
-                        date(year, MAR, 19) in prov_holidays,
-                        prov
-                        in {
-                            "AR",
-                            "CL",
-                            "CM",
-                            "EX",
-                            "GA",
-                            "MC",
-                            "MD",
-                            "ML",
-                            "NC",
-                            "PV",
-                            "VC",
-                        },
-                    )
-                elif year == 2015:
-                    self.assertEqual(
-                        date(year, MAR, 19) in prov_holidays,
-                        prov in {"CM", "MC", "MD", "ML", "NC", "PV", "VC"},
-                    )
-                elif year == 2016:
-                    self.assertEqual(
-                        date(year, MAR, 19) in prov_holidays,
-                        prov in {"MC", "ML", "PV", "VC"},
-                    )
-                elif year == 2017:
-                    self.assertEqual(
-                        date(year, MAR, 19) in prov_holidays, prov in {"PV"}
-                    )
-                elif 2018 <= year <= 2019:
-                    self.assertEqual(
-                        date(year, MAR, 19) in prov_holidays,
-                        prov in {"GA", "MC", "NC", "PV", "VC"},
-                    )
-                elif 2020 <= year <= 2021:
-                    self.assertEqual(
-                        date(year, MAR, 19) in prov_holidays,
-                        prov in {"CM", "GA", "MC", "NC", "PV", "VC"},
-                    )
 
-                year_province_days = deepcopy(province_days)
+                provs_mapping = {
+                    2015: {"CM", "MC", "MD", "ML", "NC", "PV", "VC"},
+                    2016: {"MC", "ML", "PV", "VC"},
+                    2017: {"PV"},
+                    2018: {"GA", "MC", "NC", "PV", "VC"},
+                    2019: {"GA", "MC", "NC", "PV", "VC"},
+                    2020: {"CM", "GA", "MC", "NC", "PV", "VC"},
+                }
+                if year <= 2014:
+                    provs = {
+                        "AR",
+                        "CL",
+                        "CM",
+                        "EX",
+                        "GA",
+                        "MC",
+                        "MD",
+                        "ML",
+                        "NC",
+                        "PV",
+                        "VC",
+                    }
+                else:
+                    provs = provs_mapping[year]
+                self.assertEqual(
+                    date(year, MAR, 19) in prov_holidays, prov in provs
+                )
 
-                for fest_day, fest_prov in year_province_days.items():
+                for fest_date, fest_provs in province_days.items():
+                    dt = date(year, *fest_date)
                     self.assertEqual(
-                        date(year, *fest_day) in prov_holidays,
-                        prov in fest_prov,
-                        "Failed date `%s`, province `%s`: %s"
-                        % (date(year, *fest_day), prov, fest_prov),
+                        dt in prov_holidays,
+                        prov in fest_provs,
+                        f"Failed date `{dt:%Y-%m-%d}`, "
+                        f"province `{prov}`: {fest_provs}",
                     )
 
     def test_variable_days_in_2022(self):
@@ -196,28 +182,22 @@ class TestSpain(unittest.TestCase):
         }
 
         observed_prov_holidays = {
-            prov: holidays.ES(observed=True, subdiv=prov)
-            for prov in holidays.ES.subdivisions
+            prov: ES(subdiv=prov) for prov in ES.subdivisions
         }
 
         for fest_date, fest_provs in province_days.items():
             for prov, prov_holidays in observed_prov_holidays.items():
+                dt = date(2022, *fest_date)
                 self.assertEqual(
-                    date(2022, *fest_date) in prov_holidays,
+                    dt in prov_holidays,
                     prov in fest_provs,
-                    "Failed date `%s`, province `%s`: %s"
-                    % (date(2022, *fest_date), prov, ", ".join(fest_provs)),
+                    f"Failed date `{dt:%Y-%m-%d}`, "
+                    f"province `{prov}`: {', '.join(fest_provs)}",
                 )
 
     def test_variable_days_in_2023(self):
         province_days = {
-            (JAN, 2): {
-                "AN",
-                "AR",
-                "AS",
-                "CL",
-                "MC",
-            },
+            (JAN, 2): {"AN", "AR", "AS", "CL", "MC"},
             (JAN, 6): {
                 "AN",
                 "AR",
@@ -262,14 +242,7 @@ class TestSpain(unittest.TestCase):
                 "RI",
                 "VC",
             },
-            (APR, 10): {
-                "IB",
-                "CT",
-                "VC",
-                "NC",
-                "PV",
-                "RI",
-            },
+            (APR, 10): {"IB", "CT", "VC", "NC", "PV", "RI"},
             (APR, 21): {"ML"},
             (MAY, 17): {"GA"},
             (JUN, 29): {"CE", "ML"},
@@ -303,23 +276,24 @@ class TestSpain(unittest.TestCase):
         }
 
         observed_prov_holidays = {
-            prov: holidays.ES(observed=True, subdiv=prov)
-            for prov in holidays.ES.subdivisions
+            prov: ES(subdiv=prov) for prov in ES.subdivisions
         }
 
         for fest_date, fest_provs in province_days.items():
             for prov, prov_holidays in observed_prov_holidays.items():
+                dt = date(2023, *fest_date)
                 self.assertEqual(
-                    date(2023, *fest_date) in prov_holidays,
+                    dt in prov_holidays,
                     prov in fest_provs,
-                    "Failed date `%s`, province `%s`: %s"
-                    % (date(2023, *fest_date), prov, ", ".join(fest_provs)),
+                    f"Failed date `{dt:%Y-%m-%d}`, "
+                    f"province `{prov}`: {', '.join(fest_provs)}",
                 )
 
     def test_change_of_province_specific_days(self):
-        prov_holidays = self.prov_holidays["PV"]
-        self.assertNotIn(date(2010, OCT, 25), prov_holidays)
-        self.assertIn(date(2011, OCT, 25), prov_holidays)
-        self.assertIn(date(2012, OCT, 25), prov_holidays)
-        self.assertIn(date(2013, OCT, 25), prov_holidays)
-        self.assertNotIn(date(2014, OCT, 25), prov_holidays)
+        prov_holidays = ES(observed=False, subdiv="PV")
+        self.assertNonObservedHoliday(
+            prov_holidays, "2011-10-25", "2012-10-25", "2013-10-25"
+        )
+        self.assertNoNonObservedHoliday(
+            prov_holidays, "2010-10-25", "2014-10-25"
+        )

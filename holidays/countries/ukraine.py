@@ -80,7 +80,7 @@ class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays):
                 # International Workers' Solidarity Day.
                 else tr("День міжнародної солідарності трудящих")
             )
-            may_1 = self._add_labour_day(name)
+            may_1 = self._add_labor_day(name)
             observed_dates.add(may_1)
             if year <= 2017:
                 observed_dates.add(

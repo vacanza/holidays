@@ -9,23 +9,15 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, datetime, timezone
+from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
-
-from pymeeus.Epoch import Epoch
-from pymeeus.Sun import Sun
+from typing import Tuple
 
 from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
 from holidays.constants import JAN, MAY, JUN, JUL, AUG, SEP, OCT, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
-
-# use standard library for timezone
-try:
-    from zoneinfo import ZoneInfo
-except ImportError:  # pragma: no cover
-    from backports.zoneinfo import ZoneInfo  # type: ignore[no-redef]
 
 
 class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
@@ -105,25 +97,19 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Labour Day (Law 2.200, renamed with Law 18.018).
         if year >= 1932:
-            self._add_labour_day(tr("Día Nacional del Trabajo"))
+            self._add_labor_day(tr("Día Nacional del Trabajo"))
 
         # Naval Glories Day (Law 2.977).
         self._add_holiday(tr("Día de las Glorias Navales"), MAY, 21)
 
-        # National Day of Indigenous Peoples.
-        name = tr("Día Nacional de los Pueblos Indígenas")
-        if year == 2021:
-            self._add_holiday(name, JUN, 21)
-        elif year >= 2022:
-            epoch = Sun.get_equinox_solstice(year, target="summer")
-            # Received date for UTC timezone needs to be adjusted
-            # to match Chile's timezone
+        if year >= 2021:
+            # National Day of Indigenous Peoples.
+            name = tr("Día Nacional de los Pueblos Indígenas")
             # https://www.feriadoschilenos.cl/#DiaNacionalDeLosPueblosIndigenasII
-            equinox = map(int, Epoch(epoch).get_full_date())
-            adjusted_date = datetime(*equinox, tzinfo=timezone.utc).astimezone(
-                ZoneInfo("America/Santiago")
-            )
-            self._add_holiday(name, JUN, adjusted_date.day)
+            if year == 2021:
+                self._add_holiday(name, JUN, 21)
+            else:
+                self._add_holiday(name, *self._summer_solstice_date)
 
         # Saint Peter and Saint Paul (Law 16.840, Law 18.432)
         if year <= 1967 or year >= 1986:
@@ -224,6 +210,15 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
                 AUG,
                 20,
             )
+
+    @property
+    def _summer_solstice_date(self) -> Tuple[int, int]:
+        day = 20
+        if (self._year % 4 > 1 and self._year <= 2046) or (
+            self._year % 4 > 2 and self._year <= 2075
+        ):
+            day = 21
+        return JUN, day
 
 
 class CL(Chile):

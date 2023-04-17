@@ -9,56 +9,244 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
-from datetime import date
-
-import holidays
+from holidays.countries.finland import Finland, FI, FIN
+from tests.common import TestCase
 
 
-class TestFinland(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.FI()
+class TestFinland(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Finland)
+
+    def test_country_aliases(self):
+        self.assertCountryAliases(Finland, FI, FIN)
 
     def test_fixed_holidays(self):
-        self.assertIn(date(2017, 1, 1), self.holidays)
-        self.assertEqual(self.holidays[date(2017, 1, 1)], "Uudenvuodenpäivä")
+        for year in range(2010, 2030):
+            self.assertHoliday(
+                f"{year}-01-01",
+                f"{year}-01-06",
+                f"{year}-05-01",
+                f"{year}-12-06",
+                f"{year}-12-24",
+                f"{year}-12-25",
+                f"{year}-12-26",
+            )
 
-        self.assertIn(date(2017, 1, 6), self.holidays)
-        self.assertEqual(self.holidays[date(2017, 1, 6)], "Loppiainen")
+    def test_epiphany(self):
+        self.assertHolidaysName(
+            "Loppiainen",
+            "1972-01-06",
+            "1973-01-06",
+            "1974-01-12",
+            "1989-01-07",
+            "1990-01-06",
+            "1991-01-06",
+        )
+        self.assertNoHoliday(
+            "1974-01-06",
+            "1975-01-06",
+            "1980-01-06",
+            "1988-01-06",
+            "1989-01-06",
+        )
 
-        self.assertIn(date(2017, 5, 1), self.holidays)
-        self.assertEqual(self.holidays[date(2017, 5, 1)], "Vappu")
+    def test_easter_holidays(self):
+        self.assertHoliday(
+            # Good Friday
+            "2018-03-30",
+            "2019-04-19",
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+            # Easter Sunday
+            "2018-04-01",
+            "2019-04-21",
+            "2020-04-12",
+            "2021-04-04",
+            "2022-04-17",
+            "2023-04-09",
+            # Easter Monday
+            "2018-04-02",
+            "2019-04-22",
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+            # Ascension Day
+            "2018-05-10",
+            "2019-05-30",
+            "2020-05-21",
+            "2021-05-13",
+            "2022-05-26",
+            "2023-05-18",
+            # Whit Sunday
+            "2018-05-20",
+            "2019-06-09",
+            "2020-05-31",
+            "2021-05-23",
+            "2022-06-05",
+            "2023-05-28",
+        )
 
-        self.assertIn(date(2017, 12, 6), self.holidays)
-        self.assertEqual(self.holidays[date(2017, 12, 6)], "Itsenäisyyspäivä")
+    def test_ascension_day(self):
+        self.assertHoliday(
+            "1971-05-20",
+            "1972-05-11",
+            "1973-05-26",
+            "1974-05-18",
+            "1989-04-29",
+            "1990-05-19",
+            "1991-05-09",
+            "1992-05-28",
+            "1993-05-20",
+        )
 
-        self.assertIn(date(2017, 12, 25), self.holidays)
-        self.assertEqual(self.holidays[date(2017, 12, 25)], "Joulupäivä")
+        self.assertNoHoliday(
+            "1973-05-31",
+            "1974-05-23",
+            "1980-05-15",
+            "1988-05-12",
+            "1989-05-04",
+            "1990-05-24",
+        )
 
-        self.assertIn(date(2017, 12, 26), self.holidays)
-        self.assertEqual(self.holidays[date(2017, 12, 26)], "Tapaninpäivä")
+    def test_midsummer_eve(self):
+        name = "Juhannusaatto"
+        self.assertHolidaysName(
+            name,
+            "1953-06-23",
+            "1954-06-23",
+            "1955-06-24",
+            "1956-06-22",
+            "1957-06-21",
+        )
+        for dt in (
+            "1955-06-23",
+            "1956-06-23",
+            "1957-06-23",
+        ):
+            self.assertNotIn(name, self.holidays.get(dt, ""))
 
-    def test_relative_holidays(self):
-        self.assertIn(date(2017, 4, 14), self.holidays)
-        self.assertEqual(self.holidays[date(2017, 4, 14)], "Pitkäperjantai")
+    def test_midsummer_day(self):
+        name = "Juhannuspäivä"
+        self.assertHolidaysName(
+            name,
+            "1953-06-24",
+            "1954-06-24",
+            "1955-06-25",
+            "1956-06-23",
+            "1957-06-22",
+        )
+        for dt in (
+            "1955-06-24",
+            "1956-06-24",
+            "1957-06-24",
+        ):
+            self.assertNotIn(name, self.holidays.get(dt, ""))
 
-        self.assertIn(date(2017, 4, 16), self.holidays)
-        self.assertEqual(self.holidays[date(2017, 4, 16)], "Pääsiäispäivä")
+    def test_all_saints_day(self):
+        self.assertHolidaysName(
+            "Pyhäinpäivä",
+            "1952-11-01",
+            "1953-11-01",
+            "1954-11-01",
+            "1955-11-05",
+            "1956-11-03",
+            "1957-11-02",
+        )
+        self.assertNoHoliday(
+            "1955-11-01",
+            "1956-11-01",
+            "1957-11-01",
+        )
 
-        self.assertIn(date(2017, 4, 17), self.holidays)
-        self.assertEqual(self.holidays[date(2017, 4, 17)], "2. pääsiäispäivä")
+    def test_2018(self):
+        self.assertHolidays(
+            ("2018-01-01", "Uudenvuodenpäivä"),
+            ("2018-01-06", "Loppiainen"),
+            ("2018-03-30", "Pitkäperjantai"),
+            ("2018-04-01", "Pääsiäispäivä"),
+            ("2018-04-02", "2. pääsiäispäivä"),
+            ("2018-05-01", "Vappu"),
+            ("2018-05-10", "Helatorstai"),
+            ("2018-05-20", "Helluntaipäivä"),
+            ("2018-06-22", "Juhannusaatto"),
+            ("2018-06-23", "Juhannuspäivä"),
+            ("2018-11-03", "Pyhäinpäivä"),
+            ("2018-12-06", "Itsenäisyyspäivä"),
+            ("2018-12-24", "Jouluaatto"),
+            ("2018-12-25", "Joulupäivä"),
+            ("2018-12-26", "Tapaninpäivä"),
+        )
 
-        self.assertIn(date(2017, 5, 25), self.holidays)
-        self.assertEqual(self.holidays[date(2017, 5, 25)], "Helatorstai")
+    def test_2022(self):
+        self.assertHolidays(
+            ("2022-01-01", "Uudenvuodenpäivä"),
+            ("2022-01-06", "Loppiainen"),
+            ("2022-04-15", "Pitkäperjantai"),
+            ("2022-04-17", "Pääsiäispäivä"),
+            ("2022-04-18", "2. pääsiäispäivä"),
+            ("2022-05-01", "Vappu"),
+            ("2022-05-26", "Helatorstai"),
+            ("2022-06-05", "Helluntaipäivä"),
+            ("2022-06-24", "Juhannusaatto"),
+            ("2022-06-25", "Juhannuspäivä"),
+            ("2022-11-05", "Pyhäinpäivä"),
+            ("2022-12-06", "Itsenäisyyspäivä"),
+            ("2022-12-24", "Jouluaatto"),
+            ("2022-12-25", "Joulupäivä"),
+            ("2022-12-26", "Tapaninpäivä"),
+        )
 
-        self.assertIn(date(2017, 11, 4), self.holidays)
-        self.assertEqual(self.holidays[date(2017, 11, 4)], "Pyhäinpäivä")
+    def test_l10n_default(self):
+        def run_tests(languages):
+            for language in languages:
+                cnt = FI(language=language)
+                self.assertEqual(cnt["2022-01-01"], "Uudenvuodenpäivä")
+                self.assertEqual(cnt["2022-12-25"], "Joulupäivä")
 
-    def test_Juhannus(self):
-        self.assertIn(date(2017, 6, 24), self.holidays)
-        self.assertNotIn(date(2017, 6, 20), self.holidays)
-        self.assertIn(date(2020, 6, 20), self.holidays)
-        self.assertIn(date(2021, 6, 26), self.holidays)
-        self.assertIn(date(2018, 6, 22), self.holidays)
-        self.assertEqual(self.holidays[date(2018, 6, 22)], "Juhannusaatto")
-        self.assertEqual(self.holidays[date(2018, 6, 23)], "Juhannuspäivä")
+        run_tests((FI.default_language, None, "invalid"))
+
+        self.set_language("en_US")
+        run_tests((FI.default_language,))
+
+    def test_l10n_en_us(self):
+        lang = "en_US"
+
+        cnt = FI(language=lang)
+        self.assertEqual(cnt["2022-01-01"], "New Year's Day")
+        self.assertEqual(cnt["2022-12-25"], "Christmas Day")
+
+        self.set_language(lang)
+        for language in (None, lang, "invalid"):
+            cnt = FI(language=language)
+            self.assertEqual(cnt["2022-01-01"], "New Year's Day")
+            self.assertEqual(cnt["2022-12-25"], "Christmas Day")
+
+    def test_l10n_uk(self):
+        lang = "uk"
+
+        cnt = FI(language=lang)
+        self.assertEqual(cnt["2022-01-01"], "Новий рік")
+        self.assertEqual(cnt["2022-12-25"], "Різдво Христове")
+
+        self.set_language(lang)
+        for language in (None, lang, "invalid"):
+            cnt = FI(language=language)
+            self.assertEqual(cnt["2022-01-01"], "Новий рік")
+            self.assertEqual(cnt["2022-12-25"], "Різдво Христове")
+
+    def test_l10n_sv(self):
+        lang = "sv"
+
+        cnt = FI(language=lang)
+        self.assertEqual(cnt["2022-01-01"], "Nyårsdagen")
+        self.assertEqual(cnt["2022-12-25"], "Juldagen")
+
+        self.set_language(lang)
+        for language in (None, lang, "invalid"):
+            cnt = FI(language=language)
+            self.assertEqual(cnt["2022-01-01"], "Nyårsdagen")
+            self.assertEqual(cnt["2022-12-25"], "Juldagen")

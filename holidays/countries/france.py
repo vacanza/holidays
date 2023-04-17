@@ -64,7 +64,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_new_years_day(tr("Jour de l'an"))
 
         if year >= 1919:
-            self._add_labour_day(
+            self._add_labor_day(
                 # Labor Day.
                 tr("Fête du Travail")
                 if year >= 1948

@@ -10,16 +10,15 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
-
-from dateutil.easter import easter
+from gettext import gettext as tr
 
 from holidays.calendars import _get_nth_weekday_from
-from holidays.constants import JAN, MAR, MAY, AUG, SEP, OCT, NOV, DEC, WED
+from holidays.constants import MAY, SEP, OCT, NOV, WED
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Germany(HolidayBase):
+class Germany(HolidayBase, ChristianHolidays, InternationalHolidays):
     """Official holidays for Germany in its current form.
 
     This class doesn't return any holidays before 1990-10-03.
@@ -55,6 +54,7 @@ class Germany(HolidayBase):
     """
 
     country = "DE"
+    default_language = "de"
     subdivisions = [
         "BB",
         "BE",
@@ -75,85 +75,184 @@ class Germany(HolidayBase):
         "TH",
     ]
 
+    def __init__(self, *args, **kwargs) -> None:
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year):
         if year <= 1989:
             return None
 
         super()._populate(year)
 
-        if year > 1990:
-            self[date(year, JAN, 1)] = "Neujahr"
+        if year >= 1991:
+            # New Year's Day.
+            self._add_new_years_day(tr("Neujahr"))
 
-            if self.subdiv in {"BW", "BY", "BYP", "ST"}:
-                self[date(year, JAN, 6)] = "Heilige Drei Könige"
+            # Good Friday.
+            self._add_good_friday(tr("Karfreitag"))
 
-            easter_date = easter(year)
+            # Easter Monday.
+            self._add_easter_monday(tr("Ostermontag"))
 
-            self[easter_date + td(days=-2)] = "Karfreitag"
+            # Labor Day.
+            self._add_labor_day(tr("Erster Mai"))
 
-            if self.subdiv == "BB":
-                # will always be a Sunday and we have no "observed" rule so
-                # this is pretty pointless but it's nonetheless an official
-                # holiday by law
-                self[easter_date] = "Ostersonntag"
+            # Ascension Day.
+            self._add_ascension_thursday(tr("Christi Himmelfahrt"))
 
-            self[easter_date + td(days=+1)] = "Ostermontag"
+            # Whit Monday.
+            self._add_whit_monday(tr("Pfingstmontag"))
 
-            self[date(year, MAY, 1)] = "Erster Mai"
+        # German Unity Day.
+        self._add_holiday(tr("Tag der Deutschen Einheit"), OCT, 3)
 
-            if self.subdiv == "BE" and year == 2020:
-                self[date(year, MAY, 8)] = (
+        if year == 2017:
+            # Reformation Day.
+            self._add_holiday(tr("Reformationstag"), OCT, 31)
+
+        if year <= 1994:
+            # last wednesday before year-11-23
+            self._add_holiday(
+                # Repentance and Prayer Day.
+                tr("Buß- und Bettag"),
+                _get_nth_weekday_from(-1, WED, date(year, NOV, 22)),
+            )
+
+        # Christmas Day.
+        self._add_christmas_day(tr("Erster Weihnachtstag"))
+
+        # Second Day of Christmas.
+        self._add_christmas_day_two(tr("Zweiter Weihnachtstag"))
+
+    def _add_subdiv_bb_holidays(self):
+        if self._year >= 1991:
+            # Easter Sunday.
+            self._add_easter_sunday(tr("Ostersonntag"))
+
+            # Whit Sunday.
+            self._add_whit_sunday(tr("Pfingstsonntag"))
+
+        if self._year != 2017:
+            self._add_holiday(tr("Reformationstag"), OCT, 31)
+
+    def _add_subdiv_be_holidays(self):
+        if self._year >= 2019:
+            # International Women's Day.
+            self._add_womens_day(tr("Internationaler Frauentag"))
+
+        if self._year == 2020:
+            self._add_holiday(
+                # 75th anniversary of the liberation from Nazism and
+                # the end of the Second World War in Europe.
+                tr(
                     "75. Jahrestag der Befreiung vom Nationalsozialismus "
                     "und der Beendigung des Zweiten Weltkriegs in Europa"
-                )
+                ),
+                MAY,
+                8,
+            )
 
-            self[easter_date + td(days=+39)] = "Christi Himmelfahrt"
+    def _add_subdiv_bw_holidays(self):
+        if self._year >= 1991:
+            # Epiphany.
+            self._add_epiphany_day(tr("Heilige Drei Könige"))
 
-            if self.subdiv == "BB":
-                # will always be a Sunday and we have no "observed" rule so
-                # this is pretty pointless but it's nonetheless an official
-                # holiday by law
-                self[easter_date + td(days=+49)] = "Pfingstsonntag"
+            # Corpus Christi.
+            self._add_corpus_christi_day(tr("Fronleichnam"))
 
-            self[easter_date + td(days=+50)] = "Pfingstmontag"
+        # All Saints' Day.
+        self._add_all_saints_day(tr("Allerheiligen"))
 
-            if self.subdiv in {"BW", "BY", "BYP", "HE", "NW", "RP", "SL"}:
-                self[easter_date + td(days=+60)] = "Fronleichnam"
+    def _add_subdiv_by_holidays(self):
+        if self._year >= 1991:
+            self._add_epiphany_day(tr("Heilige Drei Könige"))
+            self._add_corpus_christi_day(tr("Fronleichnam"))
 
-            if self.subdiv in {"BY", "SL"}:
-                self[date(year, AUG, 15)] = "Mariä Himmelfahrt"
+            # Assumption Day.
+            self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
 
-        self[date(year, OCT, 3)] = "Tag der Deutschen Einheit"
+        self._add_all_saints_day(tr("Allerheiligen"))
 
-        if (
-            self.subdiv in {"BB", "MV", "SN", "ST", "TH"}
-            or (self.subdiv in {"HB", "HH", "NI", "SH"} and year >= 2018)
-            or year == 2017
-        ):
-            self[date(year, OCT, 31)] = "Reformationstag"
+    def _add_subdiv_byp_holidays(self):
+        if self._year >= 1991:
+            self._add_epiphany_day(tr("Heilige Drei Könige"))
+            self._add_corpus_christi_day(tr("Fronleichnam"))
 
-        if self.subdiv in {"BW", "BY", "BYP", "NW", "RP", "SL"}:
-            self[date(year, NOV, 1)] = "Allerheiligen"
+        self._add_all_saints_day(tr("Allerheiligen"))
 
-        if year <= 1994 or self.subdiv == "SN":
+    def _add_subdiv_hb_holidays(self):
+        if self._year >= 2018:
+            self._add_holiday(tr("Reformationstag"), OCT, 31)
+
+    def _add_subdiv_he_holidays(self):
+        if self._year >= 1991:
+            self._add_corpus_christi_day(tr("Fronleichnam"))
+
+    def _add_subdiv_hh_holidays(self):
+        if self._year >= 2018:
+            self._add_holiday(tr("Reformationstag"), OCT, 31)
+
+    def _add_subdiv_mv_holidays(self):
+        if self._year >= 2023:
+            self._add_womens_day(tr("Internationaler Frauentag"))
+
+        if self._year != 2017:
+            self._add_holiday(tr("Reformationstag"), OCT, 31)
+
+    def _add_subdiv_ni_holidays(self):
+        if self._year >= 2018:
+            self._add_holiday(tr("Reformationstag"), OCT, 31)
+
+    def _add_subdiv_nw_holidays(self):
+        if self._year >= 1991:
+            self._add_corpus_christi_day(tr("Fronleichnam"))
+
+        self._add_all_saints_day(tr("Allerheiligen"))
+
+    def _add_subdiv_rp_holidays(self):
+        if self._year >= 1991:
+            self._add_corpus_christi_day(tr("Fronleichnam"))
+
+        self._add_all_saints_day(tr("Allerheiligen"))
+
+    def _add_subdiv_sh_holidays(self):
+        if self._year >= 2018:
+            self._add_holiday(tr("Reformationstag"), OCT, 31)
+
+    def _add_subdiv_sl_holidays(self):
+        if self._year >= 1991:
+            self._add_corpus_christi_day(tr("Fronleichnam"))
+            self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
+
+        self._add_all_saints_day(tr("Allerheiligen"))
+
+    def _add_subdiv_sn_holidays(self):
+        if self._year != 2017:
+            self._add_holiday(tr("Reformationstag"), OCT, 31)
+
+        if self._year >= 1995:
             # last wednesday before year-11-23
-            self[
-                _get_nth_weekday_from(-1, WED, date(year, NOV, 22))
-            ] = "Buß- und Bettag"
+            self._add_holiday(
+                tr("Buß- und Bettag"),
+                _get_nth_weekday_from(-1, WED, date(self._year, NOV, 22)),
+            )
 
-        if year >= 2019:
-            if self.subdiv == "TH":
-                self[date(year, SEP, 20)] = "Weltkindertag"
+    def _add_subdiv_st_holidays(self):
+        if self._year >= 1991:
+            self._add_epiphany_day(tr("Heilige Drei Könige"))
 
-            if self.subdiv == "BE":
-                self[date(year, MAR, 8)] = "Internationaler Frauentag"
+        if self._year != 2017:
+            self._add_holiday(tr("Reformationstag"), OCT, 31)
 
-        if year >= 2023:
-            if self.subdiv == "MV":
-                self[date(year, MAR, 8)] = "Internationaler Frauentag"
+    def _add_subdiv_th_holidays(self):
+        if self._year >= 2019:
+            # World Children's Day.
+            self._add_holiday(tr("Weltkindertag"), SEP, 20)
 
-        self[date(year, DEC, 25)] = "Erster Weihnachtstag"
-        self[date(year, DEC, 26)] = "Zweiter Weihnachtstag"
+        if self._year != 2017:
+            self._add_holiday(tr("Reformationstag"), OCT, 31)
 
 
 class DE(Germany):

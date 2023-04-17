@@ -49,7 +49,7 @@ class Monaco(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_monday(tr("Le lundi de Pâques"))
 
         # Labour Day.
-        observed_dates.add(self._add_labour_day(tr("Fête de la Travaille")))
+        observed_dates.add(self._add_labor_day(tr("Fête de la Travaille")))
 
         # Ascension's Day.
         self._add_ascension_thursday(tr("L'Ascension"))

@@ -1,0 +1,73 @@
+# Ecuador holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.23\n"
+"POT-Creation-Date: 2023-04-02 18:54+0300\n"
+"PO-Revision-Date: 2023-04-02 18:55+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: holidays/countries/ecuador.py:36 holidays/countries/ecuador.py:115
+msgid "Año Nuevo"
+msgstr ""
+
+#. Carnival.
+#: holidays/countries/ecuador.py:39
+msgid "Carnaval"
+msgstr ""
+
+#. Good Friday.
+#: holidays/countries/ecuador.py:44
+msgid "Viernes Santo"
+msgstr ""
+
+#. Labour Day.
+#: holidays/countries/ecuador.py:47
+msgid "Día del Trabajo"
+msgstr ""
+
+#. The Battle of Pichincha.
+#: holidays/countries/ecuador.py:51
+msgid "Batalla de Pichincha"
+msgstr ""
+
+#. Declaration of Independence of Quito.
+#: holidays/countries/ecuador.py:56
+msgid "Primer Grito de Independencia"
+msgstr ""
+
+#. Independence of Guayaquil.
+#: holidays/countries/ecuador.py:61
+msgid "Independencia de Guayaquil"
+msgstr ""
+
+#. All Souls' Day.
+#: holidays/countries/ecuador.py:65
+msgid "Día de los Difuntos"
+msgstr ""
+
+#. Independence of Cuenca.
+#: holidays/countries/ecuador.py:69
+msgid "Independencia de Cuenca"
+msgstr ""
+
+#. Christmas Day.
+#: holidays/countries/ecuador.py:74
+msgid "Día de Navidad"
+msgstr ""
+
+#: holidays/countries/ecuador.py:94 holidays/countries/ecuador.py:109
+#: holidays/countries/ecuador.py:115
+#, c-format
+msgid "%s (Observado)"
+msgstr ""

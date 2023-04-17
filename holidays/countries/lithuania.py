@@ -55,7 +55,7 @@ class Lithuania(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_monday("Velykų antroji diena")
 
         # International Workers' Day.
-        self._add_labour_day("Tarptautinė darbo diena")
+        self._add_labor_day("Tarptautinė darbo diena")
 
         # Mother's day. First Sunday in May.
         self._add_holiday(

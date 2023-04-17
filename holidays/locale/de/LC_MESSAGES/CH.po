@@ -1,0 +1,176 @@
+# Switzerland holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.23\n"
+"POT-Creation-Date: 2023-04-10 15:41+0300\n"
+"PO-Revision-Date: 2023-04-11 17:12+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: holidays/countries/switzerland.py:62
+msgid "Neujahrestag"
+msgstr ""
+
+#. Easter Sunday.
+#: holidays/countries/switzerland.py:65
+msgid "Ostern"
+msgstr ""
+
+#. Ascension Day.
+#: holidays/countries/switzerland.py:68
+msgid "Auffahrt"
+msgstr ""
+
+#. Whit Sunday.
+#: holidays/countries/switzerland.py:71
+msgid "Pfingsten"
+msgstr ""
+
+#. National Day.
+#: holidays/countries/switzerland.py:75
+msgid "Nationalfeiertag"
+msgstr ""
+
+#. Christmas Day.
+#: holidays/countries/switzerland.py:78
+msgid "Weihnachten"
+msgstr ""
+
+#. Good Friday.
+#: holidays/countries/switzerland.py:83
+msgid "Karfreitag"
+msgstr ""
+
+#. Easter Monday.
+#: holidays/countries/switzerland.py:86
+msgid "Ostermontag"
+msgstr ""
+
+#. Whit Monday.
+#: holidays/countries/switzerland.py:89
+msgid "Pfingstmontag"
+msgstr ""
+
+#. St. Stephen's Day.
+#: holidays/countries/switzerland.py:93 holidays/countries/switzerland.py:182
+msgid "Stephanstag"
+msgstr ""
+
+#. Berchtold's Day.
+#: holidays/countries/switzerland.py:99 holidays/countries/switzerland.py:125
+#: holidays/countries/switzerland.py:128 holidays/countries/switzerland.py:142
+#: holidays/countries/switzerland.py:158 holidays/countries/switzerland.py:168
+#: holidays/countries/switzerland.py:175 holidays/countries/switzerland.py:193
+#: holidays/countries/switzerland.py:206 holidays/countries/switzerland.py:219
+#: holidays/countries/switzerland.py:223 holidays/countries/switzerland.py:247
+#: holidays/countries/switzerland.py:264 holidays/countries/switzerland.py:271
+msgid "Berchtoldstag"
+msgstr ""
+
+#. Corpus Christi.
+#: holidays/countries/switzerland.py:106 holidays/countries/switzerland.py:160
+#: holidays/countries/switzerland.py:169 holidays/countries/switzerland.py:187
+#: holidays/countries/switzerland.py:194 holidays/countries/switzerland.py:213
+#: holidays/countries/switzerland.py:230 holidays/countries/switzerland.py:241
+#: holidays/countries/switzerland.py:258 holidays/countries/switzerland.py:265
+msgid "Fronleichnam"
+msgstr ""
+
+#. Assumption of Mary.
+#: holidays/countries/switzerland.py:109 holidays/countries/switzerland.py:164
+#: holidays/countries/switzerland.py:170 holidays/countries/switzerland.py:188
+#: holidays/countries/switzerland.py:195 holidays/countries/switzerland.py:214
+#: holidays/countries/switzerland.py:234 holidays/countries/switzerland.py:242
+#: holidays/countries/switzerland.py:259 holidays/countries/switzerland.py:266
+msgid "Mariä Himmelfahrt"
+msgstr ""
+
+#. All Saints' Day.
+#: holidays/countries/switzerland.py:112 holidays/countries/switzerland.py:152
+#: holidays/countries/switzerland.py:165 holidays/countries/switzerland.py:171
+#: holidays/countries/switzerland.py:189 holidays/countries/switzerland.py:199
+#: holidays/countries/switzerland.py:203 holidays/countries/switzerland.py:215
+#: holidays/countries/switzerland.py:235 holidays/countries/switzerland.py:243
+#: holidays/countries/switzerland.py:260 holidays/countries/switzerland.py:267
+msgid "Allerheiligen"
+msgstr ""
+
+#. Immaculate Conception.
+#: holidays/countries/switzerland.py:115 holidays/countries/switzerland.py:172
+#: holidays/countries/switzerland.py:190 holidays/countries/switzerland.py:200
+#: holidays/countries/switzerland.py:216 holidays/countries/switzerland.py:236
+#: holidays/countries/switzerland.py:244 holidays/countries/switzerland.py:261
+#: holidays/countries/switzerland.py:268
+msgid "Mariä Empfängnis"
+msgstr ""
+
+#. Labor Day.
+#: holidays/countries/switzerland.py:119 holidays/countries/switzerland.py:122
+#: holidays/countries/switzerland.py:159 holidays/countries/switzerland.py:179
+#: holidays/countries/switzerland.py:207 holidays/countries/switzerland.py:220
+#: holidays/countries/switzerland.py:224 holidays/countries/switzerland.py:229
+#: holidays/countries/switzerland.py:272
+msgid "Tag der Arbeit"
+msgstr ""
+
+#. Genevan Fast.
+#: holidays/countries/switzerland.py:134
+msgid "Genfer Bettag"
+msgstr ""
+
+#. Restoration Day.
+#: holidays/countries/switzerland.py:139
+msgid "Wiederherstellung der Republik"
+msgstr ""
+
+#. Battle of Naefels Victory Day.
+#: holidays/countries/switzerland.py:150
+msgid "Näfelser Fahrt"
+msgstr ""
+
+#. Independence Day.
+#: holidays/countries/switzerland.py:163
+msgid "Fest der Unabhängigkeit"
+msgstr ""
+
+#. Republic Day.
+#: holidays/countries/switzerland.py:178
+msgid "Jahrestag der Ausrufung der Republik"
+msgstr ""
+
+#. St. Joseph's Day.
+#: holidays/countries/switzerland.py:186 holidays/countries/switzerland.py:212
+#: holidays/countries/switzerland.py:228 holidays/countries/switzerland.py:240
+#: holidays/countries/switzerland.py:257
+msgid "Josefstag"
+msgstr ""
+
+#. St. Nicholas of Flüe.
+#: holidays/countries/switzerland.py:198
+msgid "Bruder Klaus"
+msgstr ""
+
+#. Epiphany.
+#: holidays/countries/switzerland.py:211 holidays/countries/switzerland.py:227
+#: holidays/countries/switzerland.py:239
+msgid "Heilige Drei Könige"
+msgstr ""
+
+#. Saints Peter and Paul.
+#: holidays/countries/switzerland.py:233
+msgid "Peter und Paul"
+msgstr ""
+
+#. Prayer Monday.
+#: holidays/countries/switzerland.py:252
+msgid "Bettagsmontag"
+msgstr ""

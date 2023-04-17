@@ -14,7 +14,6 @@ from datetime import timedelta as td
 from typing import Iterable, Set
 
 from dateutil.easter import EASTER_ORTHODOX, EASTER_WESTERN, easter
-from dateutil.parser import parse
 from korean_lunar_calendar import KoreanLunarCalendar
 
 from holidays.calendars import _ChineseLuniSolar, _islamic_to_gre
@@ -600,6 +599,17 @@ class InternationalHolidays:
     International holidays.
     """
 
+    def _add_labor_day(self, holiday_name):
+        """
+        Add International Workers' Day (May 1st)
+
+        International Workers' Day, also known as Labour Day, is a celebration
+        of labourers and the working classes that is promoted by the
+        international labour movement.
+        https://en.wikipedia.org/wiki/International_Workers%27_Day
+        """
+        return self._add_holiday(holiday_name, MAY, 1)
+
     def _add_new_years_day(self, holiday_name) -> date:
         """
         Add New Year's Day (January 1st).
@@ -640,6 +650,16 @@ class InternationalHolidays:
         """
         return self._add_holiday(holiday_name, JAN, 4)
 
+    def _add_remembrance_day(self, holiday_name):
+        """
+        Add Remembrance Day / Armistice Day (Nov 11th)
+
+        It's a memorial day since the end of the First World War in 1919
+        to honour armed forces members who have died in the line of duty.
+        https://en.wikipedia.org/wiki/Remembrance_Day
+        """
+        return self._add_holiday(holiday_name, NOV, 11)
+
     def _add_new_years_eve(self, holiday_name) -> date:
         """
         Add New Year's Eve (December 31st).
@@ -662,17 +682,6 @@ class InternationalHolidays:
         https://en.wikipedia.org/wiki/International_Women%27s_Day
         """
         return self._add_holiday(holiday_name, MAR, 8)
-
-    def _add_labour_day(self, holiday_name):
-        """
-        Add International Workers' Day (May 1st)
-
-        International Workers' Day, also known as Labour Day, is a celebration
-        of labourers and the working classes that is promoted by the
-        international labour movement.
-        https://en.wikipedia.org/wiki/International_Workers%27_Day
-        """
-        return self._add_holiday(holiday_name, MAY, 1)
 
     def _add_world_war_two_victory_day(self, holiday_name):
         """
@@ -787,17 +796,23 @@ class IslamicHolidays:
         )
 
     def _add_islamic_calendar_holiday(
-        self, holiday_name, month, day, days_delta=None
+        self, holiday_name, month, day, days_delta=0
     ) -> Set[date]:
         """
         Add lunar calendar holiday.
         """
         dates = set()
-        for dt in self._convert_islamic_to_gre(self._year, month, day):
-            if days_delta:
-                dt += td(days=days_delta)
-            self._add_holiday(holiday_name, dt)
-            dates.add(dt)
+
+        years = (
+            (self._year - 1, self._year) if days_delta > 0 else (self._year,)
+        )
+        for year in years:
+            for dt in self._convert_islamic_to_gre(year, month, day):
+                if days_delta != 0:
+                    dt += td(days=days_delta)
+                dt = self._add_holiday(holiday_name, dt)
+                if dt:
+                    dates.add(dt)
 
         return dates
 
@@ -948,5 +963,8 @@ class KoreanCalendarHolidays:
         Get solar date.
         """
         self._korean_calendar.setLunarDate(year, month, day, False)
-
-        return parse(self._korean_calendar.SolarIsoFormat())
+        return date(
+            self._korean_calendar.solarYear,
+            self._korean_calendar.solarMonth,
+            self._korean_calendar.solarDay,
+        )

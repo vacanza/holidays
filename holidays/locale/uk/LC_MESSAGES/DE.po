@@ -1,0 +1,133 @@
+# Germany holidays uk localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.23\n"
+"POT-Creation-Date: 2023-04-04 16:13+0300\n"
+"PO-Revision-Date: 2023-04-09 18:42+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: holidays/countries/germany.py:91
+msgid "Neujahr"
+msgstr "Новий рік"
+
+#. Good Friday.
+#: holidays/countries/germany.py:94
+msgid "Karfreitag"
+msgstr "Страсна пʼятниця"
+
+#. Easter Monday.
+#: holidays/countries/germany.py:97
+msgid "Ostermontag"
+msgstr "Великодній понеділок"
+
+#. Labour Day.
+#: holidays/countries/germany.py:100
+msgid "Erster Mai"
+msgstr "День праці"
+
+#. Ascension Day.
+#: holidays/countries/germany.py:103
+msgid "Christi Himmelfahrt"
+msgstr "Вознесіння Господнє"
+
+#. Whit Monday.
+#: holidays/countries/germany.py:106
+msgid "Pfingstmontag"
+msgstr "День Святого Духа"
+
+#. German Unity Day.
+#: holidays/countries/germany.py:109
+msgid "Tag der Deutschen Einheit"
+msgstr "День німецької єдності"
+
+#. Reformation Day.
+#: holidays/countries/germany.py:113 holidays/countries/germany.py:138
+#: holidays/countries/germany.py:187 holidays/countries/germany.py:195
+#: holidays/countries/germany.py:202 holidays/countries/germany.py:206
+#: holidays/countries/germany.py:222 holidays/countries/germany.py:233
+#: holidays/countries/germany.py:247 holidays/countries/germany.py:255
+msgid "Reformationstag"
+msgstr "День Реформації"
+
+#. Repentance and Prayer Day.
+#: holidays/countries/germany.py:119 holidays/countries/germany.py:238
+msgid "Buß- und Bettag"
+msgstr "День молитви та покаяння"
+
+#. Christmas Day.
+#: holidays/countries/germany.py:124
+msgid "Erster Weihnachtstag"
+msgstr "Перший день Різдва"
+
+#. Second Christmas Day.
+#: holidays/countries/germany.py:127
+msgid "Zweiter Weihnachtstag"
+msgstr "Другий день Різдва"
+
+#. Easter Sunday.
+#: holidays/countries/germany.py:132
+msgid "Ostersonntag"
+msgstr "Великдень"
+
+#. Whit Sunday.
+#: holidays/countries/germany.py:135
+msgid "Pfingstsonntag"
+msgstr "Трійця"
+
+#. International Women's Day.
+#: holidays/countries/germany.py:143 holidays/countries/germany.py:199
+msgid "Internationaler Frauentag"
+msgstr "Міжнародний жіночий день"
+
+#. 75th anniversary of the liberation from Nazism and the end of the Second
+#. World War in Europe.
+#: holidays/countries/germany.py:149
+msgid ""
+"75. Jahrestag der Befreiung vom Nationalsozialismus und der Beendigung des "
+"Zweiten Weltkriegs in Europa"
+msgstr ""
+"75-та річниця визволення від націонал-соціалізму та завершення Другої "
+"світової війни в Європі"
+
+#. Epiphany.
+#: holidays/countries/germany.py:160 holidays/countries/germany.py:170
+#: holidays/countries/germany.py:180 holidays/countries/germany.py:244
+msgid "Heilige Drei Könige"
+msgstr "Богоявлення"
+
+#. Corpus Christi.
+#: holidays/countries/germany.py:163 holidays/countries/germany.py:171
+#: holidays/countries/germany.py:181 holidays/countries/germany.py:191
+#: holidays/countries/germany.py:210 holidays/countries/germany.py:216
+#: holidays/countries/germany.py:226
+msgid "Fronleichnam"
+msgstr "Свято Тіла і Крові Христових"
+
+#. All Saints' Day.
+#: holidays/countries/germany.py:166 holidays/countries/germany.py:176
+#: holidays/countries/germany.py:183 holidays/countries/germany.py:212
+#: holidays/countries/germany.py:218 holidays/countries/germany.py:229
+msgid "Allerheiligen"
+msgstr "День усіх святих"
+
+#. Assumption Day.
+#: holidays/countries/germany.py:174 holidays/countries/germany.py:227
+msgid "Mariä Himmelfahrt"
+msgstr "Внебовзяття Пресвятої Діви Марії"
+
+#. World Children's Day.
+#: holidays/countries/germany.py:252
+msgid "Weltkindertag"
+msgstr "Всесвітній день дітей"

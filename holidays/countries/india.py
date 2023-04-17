@@ -95,7 +95,7 @@ class India(
         self._add_holiday("Gandhi Jayanti", OCT, 2)
 
         # Labour Day.
-        self._add_labour_day("Labour Day")
+        self._add_labor_day("Labour Day")
 
         # GJ: Gujarat
         if self.subdiv == "GJ":

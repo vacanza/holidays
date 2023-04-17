@@ -62,7 +62,7 @@ class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_rejoicing_day(tr("Радаўніца"))
 
         # Labour Day.
-        self._add_labour_day(tr("Свята працы"))
+        self._add_labor_day(tr("Свята працы"))
 
         # Victory Day.
         self._add_world_war_two_victory_day(tr("Дзень Перамогі"))
