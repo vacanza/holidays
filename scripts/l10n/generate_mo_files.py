@@ -24,7 +24,8 @@ class MOGenerator:
         """Runs the .mo files generation process."""
         for po_path in Path("holidays/locale").rglob("*.po"):
             mo_path = po_path.with_suffix(".mo")
-            mo_path.unlink(missing_ok=True)
+            if mo_path.exists():
+                mo_path.unlink()
             pofile(po_path).save_as_mofile(mo_path)
 
 
