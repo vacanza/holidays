@@ -97,6 +97,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: dist
+          path: dist
       - name: Publish Package
         uses: pypa/gh-action-pypi-publish@v1.8.5
         with:
