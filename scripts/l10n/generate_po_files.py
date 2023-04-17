@@ -16,7 +16,7 @@ import inspect
 import sys
 from pathlib import Path
 
-from lingua.extract import main as pot_create
+from lingua.extract import main as create_pot_file
 from polib import pofile
 
 
@@ -36,7 +36,6 @@ class POGenerator:
             po_file.metadata[
                 "Project-Id-Version"
             ] = f"Python Holidays {package_version}"
-
         po_file.save(po_path)
 
     def process_countries(self):
@@ -68,13 +67,15 @@ class POGenerator:
             )
 
         locale_path = Path("holidays/locale")
+        pot_path = locale_path / "pot"
+        pot_path.mkdir(exist_ok=True)
         for country_code in sorted(country_code_info_mapping.keys()):
             default_language, class_file_path = country_code_info_mapping[
                 country_code
             ]
-            pot_file_path = locale_path / "pot" / f"{country_code}.pot"
-            # Create .pot files.
-            pot_create(
+            pot_file_path = pot_path / f"{country_code}.pot"
+            # Create .pot file.
+            create_pot_file(
                 (
                     f"{class_file_path}",
                     "-k",
@@ -103,7 +104,7 @@ class POGenerator:
             # Update all .po files.
             for po_file_path in locale_path.rglob(f"{country_code}.po"):
                 self.update_po_file(
-                    f"{po_file_path}", pot_file_path, package_version
+                    po_file_path, pot_file_path, package_version
                 )
 
     @staticmethod
