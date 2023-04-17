@@ -70,7 +70,7 @@ jobs:
       - name: Upload Package Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: package
+          name: dist
           path: dist
 
 
@@ -96,7 +96,7 @@ jobs:
       - name: Get Package Artifacts
         uses: actions/download-artifact@v3
         with:
-          name: package
+          name: dist
       - name: Publish Package
         uses: pypa/gh-action-pypi-publish@v1.8.5
         with:
