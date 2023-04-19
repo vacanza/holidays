@@ -1,0 +1,92 @@
+# Finland holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.23\n"
+"POT-Creation-Date: 2023-04-08 19:30+0300\n"
+"PO-Revision-Date: 2023-04-08 19:46+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: holidays/countries/finland.py:39
+msgid "Uudenvuodenpäivä"
+msgstr ""
+
+#. Epiphany.
+#: holidays/countries/finland.py:42
+msgid "Loppiainen"
+msgstr ""
+
+#. Good Friday.
+#: holidays/countries/finland.py:51
+msgid "Pitkäperjantai"
+msgstr ""
+
+#. Easter Sunday.
+#: holidays/countries/finland.py:54
+msgid "Pääsiäispäivä"
+msgstr ""
+
+#. Easter Monday.
+#: holidays/countries/finland.py:57
+msgid "2. pääsiäispäivä"
+msgstr ""
+
+#. May Day.
+#: holidays/countries/finland.py:60
+msgid "Vappu"
+msgstr ""
+
+#. Ascension Day.
+#: holidays/countries/finland.py:63
+msgid "Helatorstai"
+msgstr ""
+
+#. Whit Sunday.
+#: holidays/countries/finland.py:70
+msgid "Helluntaipäivä"
+msgstr ""
+
+#. Midsummer Eve.
+#: holidays/countries/finland.py:78
+msgid "Juhannusaatto"
+msgstr ""
+
+#. Midsummer Day.
+#: holidays/countries/finland.py:80
+msgid "Juhannuspäivä"
+msgstr ""
+
+#. All Saints' Day.
+#: holidays/countries/finland.py:88
+msgid "Pyhäinpäivä"
+msgstr ""
+
+#. Independence Day.
+#: holidays/countries/finland.py:91
+msgid "Itsenäisyyspäivä"
+msgstr ""
+
+#. Christmas Eve.
+#: holidays/countries/finland.py:94
+msgid "Jouluaatto"
+msgstr ""
+
+#. Christmas Day.
+#: holidays/countries/finland.py:97
+msgid "Joulupäivä"
+msgstr ""
+
+#. Second Christmas Day.
+#: holidays/countries/finland.py:100
+msgid "Tapaninpäivä"
+msgstr ""

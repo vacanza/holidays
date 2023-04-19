@@ -58,6 +58,8 @@ class Spain(
 
     def _add_holiday(self, *args) -> Optional[date]:
         name, dt = self._parse_holiday(*args)
+        if dt.year != self._year:
+            return None
         if self.observed and self._is_sunday(dt):
             dt += td(days=+1)
             name = self.tr("%s (Trasladado)") % self.tr(name)
@@ -78,7 +80,7 @@ class Spain(
         self._add_good_friday("Viernes Santo")
 
         if year != 2022:
-            self._add_labour_day("Día del Trabajador")
+            self._add_labor_day("Día del Trabajador")
 
         self._add_assumption_of_mary_day("Asunción de la Virgen")
 
@@ -100,7 +102,7 @@ class Spain(
         if self._year <= 2022:
             self._add_holy_thursday("Jueves Santo")
         if self._year == 2022:
-            self._add_labour_day("Día del Trabajador")
+            self._add_labor_day("Día del Trabajador")
             self._add_christmas_day("Navidad")
 
     def _add_subdiv_ar_holidays(self):
@@ -112,7 +114,7 @@ class Spain(
             self._add_holy_thursday("Jueves Santo")
         self._add_holiday("Día de San Jorge", APR, 23)
         if self._year == 2022:
-            self._add_labour_day("Día del Trabajador")
+            self._add_labor_day("Día del Trabajador")
             self._add_christmas_day("Navidad")
 
     def _add_subdiv_as_holidays(self):
@@ -122,7 +124,7 @@ class Spain(
             self._add_holy_thursday("Jueves Santo")
         self._add_holiday("Día de Asturias", SEP, 8)
         if self._year == 2022:
-            self._add_labour_day("Día del Trabajador")
+            self._add_labor_day("Día del Trabajador")
             self._add_christmas_day("Navidad")
 
     def _add_subdiv_cb_holidays(self):
@@ -153,7 +155,7 @@ class Spain(
             self._add_holy_thursday("Jueves Santo")
         self._add_holiday("Día de Castilla y Leon", APR, 23)
         if self._year == 2022:
-            self._add_labour_day("Día del Trabajador")
+            self._add_labor_day("Día del Trabajador")
             self._add_christmas_day("Navidad")
 
     def _add_subdiv_cm_holidays(self):
@@ -195,7 +197,7 @@ class Spain(
         if self._year == 2023:
             self._add_carnival_tuesday("Carnaval")
         if self._year == 2022:
-            self._add_labour_day("Día del Trabajador")
+            self._add_labor_day("Día del Trabajador")
             self._add_christmas_day("Navidad")
 
     def _add_subdiv_ga_holidays(self):
@@ -227,7 +229,7 @@ class Spain(
         if self._year <= 2022:
             self._add_holy_thursday("Jueves Santo")
         if self._year == 2022:
-            self._add_labour_day("Día del Trabajador")
+            self._add_labor_day("Día del Trabajador")
         self._add_holiday("Día de la Región de Murcia", JUN, 9)
         if self._year == 2022:
             self._add_christmas_day("Navidad")

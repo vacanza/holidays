@@ -41,7 +41,7 @@ class Bahrain(HolidayBase, InternationalHolidays, IslamicHolidays):
         self._add_new_years_day("New Year's Day")
 
         # Labour day.
-        self._add_labour_day("Labour Day")
+        self._add_labor_day("Labour Day")
 
         # Eid Al Fitr.
         eid_al_fitr = "Eid Al Fitr"

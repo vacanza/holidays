@@ -13,11 +13,12 @@ from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars import _get_nth_weekday_of_month
-from holidays.constants import JAN, FEB, MAR, MAY, SEP, NOV, DEC, MON
+from holidays.constants import FEB, MAR, SEP, NOV, DEC, MON
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Mexico(HolidayBase):
+class Mexico(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
     - https://en.wikipedia.org/wiki/Public_holidays_in_Mexico
@@ -29,11 +30,16 @@ class Mexico(HolidayBase):
     country = "MX"
     default_language = "es"
 
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year):
         super()._populate(year)
 
         # New Year's Day.
-        self._add_holiday(tr("Año Nuevo"), JAN, 1)
+        self._add_new_years_day(tr("Año Nuevo"))
 
         if year >= 1917:
             # Constitution Day.
@@ -55,8 +61,8 @@ class Mexico(HolidayBase):
             )
 
         if year >= 1923:
-            # Labour Day.
-            self._add_holiday(tr("Día del Trabajo"), MAY, 1)
+            # Labor Day.
+            self._add_labor_day(tr("Día del Trabajo"))
 
         # Independence Day.
         self._add_holiday(tr("Día de la Independencia"), SEP, 16)
@@ -77,7 +83,7 @@ class Mexico(HolidayBase):
             )
 
         # Christmas Day.
-        self._add_holiday(tr("Navidad"), DEC, 25)
+        self._add_christmas_day(tr("Navidad"))
 
 
 class MX(Mexico):

@@ -30,6 +30,25 @@ class TestDE(TestCase):
         de_1989 = sum(DE(years=1989, subdiv=p) for p in DE.subdivisions)
         self.assertEqual(len(de_1989), 0)
 
+    def test_1990_present(self):
+        de_1990 = sum(DE(years=1990, subdiv=p) for p in DE.subdivisions)
+        y_1990 = set(de_1990.values())
+        all_h = {  # Holidays names in their chronological order.
+            "Tag der Deutschen Einheit",
+            "Reformationstag",
+            "Allerheiligen",
+            "Buß- und Bettag",
+            "Erster Weihnachtstag",
+            "Zweiter Weihnachtstag",
+        }
+
+        self.assertEqual(
+            all_h,
+            y_1990,
+            f"missing: {all_h - y_1990 if len(all_h - y_1990) > 0 else 'no'},"
+            f" extra: {y_1990 - all_h if len(y_1990 - all_h) > 0 else 'no'}",
+        )
+
     def test_all_holidays_present(self):
         de_2015 = sum(DE(years=2015, subdiv=p) for p in DE.subdivisions)
         y_2015 = set(de_2015.values())
@@ -353,3 +372,41 @@ class TestDE(TestCase):
             self.assertHoliday(self.prov_hols[province], known_good)
         for province in provinces_that_dont:
             self.assertNoHoliday(self.prov_hols[province], known_good)
+
+    def test_l10n_default(self):
+        def run_tests(languages):
+            for language in languages:
+                cnt = DE(language=language)
+                self.assertEqual(cnt["2022-01-01"], "Neujahr")
+                self.assertEqual(cnt["2022-12-25"], "Erster Weihnachtstag")
+
+        run_tests((DE.default_language, None, "invalid"))
+
+        self.set_language("en_US")
+        run_tests((DE.default_language,))
+
+    def test_l10n_en_us(self):
+        en_us = "en_US"
+
+        cnt = DE(language=en_us)
+        self.assertEqual(cnt["2022-01-01"], "New Year's Day")
+        self.assertEqual(cnt["2022-12-25"], "Christmas Day")
+
+        self.set_language(en_us)
+        for language in (None, en_us, "invalid"):
+            cnt = DE(language=language)
+            self.assertEqual(cnt["2022-01-01"], "New Year's Day")
+            self.assertEqual(cnt["2022-12-25"], "Christmas Day")
+
+    def test_l10n_uk(self):
+        uk = "uk"
+
+        cnt = DE(language=uk)
+        self.assertEqual(cnt["2022-01-01"], "Новий рік")
+        self.assertEqual(cnt["2022-12-25"], "Перший день Різдва")
+
+        self.set_language(uk)
+        for language in (None, uk, "invalid"):
+            cnt = DE(language=language)
+            self.assertEqual(cnt["2022-01-01"], "Новий рік")
+            self.assertEqual(cnt["2022-12-25"], "Перший день Різдва")

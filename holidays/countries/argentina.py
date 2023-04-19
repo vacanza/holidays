@@ -219,7 +219,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Labor Day.
         if year >= 1930:
-            self._add_labour_day(tr("Día del Trabajo"))
+            self._add_labor_day(tr("Día del Trabajo"))
 
         # May Revolution Day.
         if year >= 1813:

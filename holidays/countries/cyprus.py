@@ -62,7 +62,7 @@ class Cyprus(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_monday(tr("Δευτέρα του Πάσχα"))
 
         # Labour Day.
-        self._add_labour_day(tr("Εργατική Πρωτομαγιά"))
+        self._add_labor_day(tr("Εργατική Πρωτομαγιά"))
 
         # Monday of the Holy Spirit.
         self._add_whit_monday(tr("Δευτέρα του Αγίου Πνεύματος"))

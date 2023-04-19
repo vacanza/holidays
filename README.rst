@@ -538,6 +538,9 @@ default language code is a `ISO 639-1 code`_.
    * - Armenia
      - hy
      - en_US, hy
+   * - Austria
+     - de
+     - de, en_US, uk
    * - Belarus
      - be
      - be, en_US
@@ -564,7 +567,7 @@ default language code is a `ISO 639-1 code`_.
      - el, en
    * - Denmark
      - da
-     - da, en_US
+     - da, en_US, uk
    * - Dominican Republic
      - es
      - en_US, es, uk
@@ -574,21 +577,33 @@ default language code is a `ISO 639-1 code`_.
    * - Ethiopia
      - am
      - am, en_US
+   * - Finland
+     - fi
+     - en_US, fi, sv, uk
    * - France
      - fr
      - en_US, fr, uk
    * - Georgia
      - ka
      - en_US, ka
+   * - Germany
+     - de
+     - de, en_US, uk
    * - Greece
      - el
      - el, en_US
    * - Honduras
      - es
      - en_US, es, uk
+   * - Iceland
+     - is
+     - en_US, is, uk
    * - Japan
      - ja
      - en_US, ja
+   * - Liechtenstein
+     - de
+     - de, en_US, uk
    * - Mexico
      - es
      - en_US, es, uk
@@ -598,9 +613,15 @@ default language code is a `ISO 639-1 code`_.
    * - Monaco
      - fr
      - en_US, fr, uk
+   * - Netherlands
+     - nl
+     - en_US, nl, uk
    * - Nicaragua
      - es
      - en_US, es, uk
+   * - Norway
+     - no
+     - en_US, no, uk
    * - Paraguay
      - es
      - en_US, es, uk
@@ -622,6 +643,9 @@ default language code is a `ISO 639-1 code`_.
    * - Serbia
      - sr
      - en_US, sr
+   * - Sweden
+     - sv
+     - en_US, sv, uk
    * - Thailand
      - th
      - en_US, th

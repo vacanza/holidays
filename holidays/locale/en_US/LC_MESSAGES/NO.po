@@ -1,0 +1,82 @@
+# Norway holidays en_US localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.23\n"
+"POT-Creation-Date: 2023-04-09 13:25+0300\n"
+"PO-Revision-Date: 2023-04-09 13:31+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: holidays/countries/norway.py:56
+msgid "Første nyttårsdag"
+msgstr "New Year's Day"
+
+#. Maundy Thursday.
+#: holidays/countries/norway.py:59
+msgid "Skjærtorsdag"
+msgstr "Maundy Thursday"
+
+#. Good Friday.
+#: holidays/countries/norway.py:62
+msgid "Langfredag"
+msgstr "Good Friday"
+
+#. Easter Sunday.
+#: holidays/countries/norway.py:65
+msgid "Første påskedag"
+msgstr "Easter Sunday"
+
+#. Easter Monday.
+#: holidays/countries/norway.py:68
+msgid "Andre påskedag"
+msgstr "Easter Monday"
+
+#. Labour Day.
+#: holidays/countries/norway.py:73
+msgid "Arbeidernes dag"
+msgstr "Labor Day"
+
+#. Constitution Day.
+#: holidays/countries/norway.py:76
+msgid "Grunnlovsdag"
+msgstr "Constitution Day"
+
+#. Ascension Day.
+#: holidays/countries/norway.py:79
+msgid "Kristi himmelfartsdag"
+msgstr "Ascension Day"
+
+#. Whit Sunday.
+#: holidays/countries/norway.py:82
+msgid "Første pinsedag"
+msgstr "Whit Sunday"
+
+#. Whit Monday.
+#: holidays/countries/norway.py:85
+msgid "Andre pinsedag"
+msgstr "Whit Monday"
+
+#. Christmas Day.
+#: holidays/countries/norway.py:92
+msgid "Første juledag"
+msgstr "Christmas Day"
+
+#. Second Day of Christmas.
+#: holidays/countries/norway.py:95
+msgid "Andre juledag"
+msgstr "Second Day of Christmas"
+
+#. Sunday.
+#: holidays/countries/norway.py:106
+msgid "Søndag"
+msgstr "Sunday"

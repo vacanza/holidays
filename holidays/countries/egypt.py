@@ -65,7 +65,7 @@ class Egypt(
             self._add_holiday("Sinai Liberation Day", APR, 25)
 
         # Labour Day
-        self._add_labour_day("Labour Day")
+        self._add_labor_day("Labour Day")
 
         # Armed Forces Day
         self._add_holiday("Armed Forces Day", OCT, 6)
