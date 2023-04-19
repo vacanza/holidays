@@ -11,6 +11,7 @@
 
 from datetime import date
 from datetime import timedelta as td
+from typing import Tuple, Union
 
 from dateutil.easter import easter
 
@@ -30,53 +31,53 @@ class UnitedStates(HolidayBase):
     """
 
     country = "US"
-    subdivisions = [
-        "AL",
+    subdivisions: Union[Tuple[()], Tuple[str, ...]] = (
         "AK",
+        "AL",
+        "AR",
         "AS",
         "AZ",
-        "AR",
         "CA",
         "CO",
         "CT",
-        "DE",
         "DC",
+        "DE",
         "FL",
+        "FM",
         "GA",
         "GU",
         "HI",
+        "IA",
         "ID",
         "IL",
         "IN",
-        "IA",
         "KS",
         "KY",
         "LA",
-        "ME",
-        "MD",
-        "MH",
         "MA",
+        "MD",
+        "ME",
+        "MH",
         "MI",
-        "FM",
         "MN",
-        "MS",
         "MO",
+        "MP",
+        "MS",
         "MT",
+        "NC",
+        "ND",
         "NE",
-        "NV",
         "NH",
         "NJ",
         "NM",
+        "NV",
         "NY",
-        "NC",
-        "ND",
-        "MP",
         "OH",
         "OK",
         "OR",
-        "PW",
         "PA",
         "PR",
+        "PW",
         "RI",
         "SC",
         "SD",
@@ -84,14 +85,14 @@ class UnitedStates(HolidayBase):
         "TX",
         "UM",
         "UT",
-        "VT",
         "VA",
         "VI",
+        "VT",
         "WA",
-        "WV",
         "WI",
+        "WV",
         "WY",
-    ]
+    )
 
     def _add_with_observed(
         self, dt: date, name: str, before: bool = True, after: bool = True

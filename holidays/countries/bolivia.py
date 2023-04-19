@@ -26,7 +26,7 @@ class Bolivia(HolidayBase):
     """
 
     country = "BO"
-    subdivisions = [
+    subdivisions = (
         "B",
         "C",
         "H",
@@ -36,7 +36,7 @@ class Bolivia(HolidayBase):
         "P",
         "S",
         "T",
-    ]
+    )
 
     def _populate(self, year):
         def _add_with_observed(hol_date: date, hol_name: str) -> None:

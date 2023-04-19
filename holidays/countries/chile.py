@@ -33,7 +33,7 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
     }
     default_language = "es"
     # ISO 3166-2 codes for the principal subdivisions, called regions
-    subdivisions = [
+    subdivisions = (
         "AI",
         "AN",
         "AP",
@@ -50,7 +50,7 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
         "RM",
         "TA",
         "VS",
-    ]
+    )
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

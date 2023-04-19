@@ -29,11 +29,11 @@ class BosniaAndHerzegovina(HolidayBase):
     """
 
     country = "BA"
-    subdivisions = [
+    subdivisions = (
         "BD",
         "FBiH",
         "RS",
-    ]
+    )
 
     def _populate(self, year):
         def _add_holiday(hol_date: date, hol_name: str) -> None:

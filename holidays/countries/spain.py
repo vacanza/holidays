@@ -28,7 +28,7 @@ class Spain(
     """
 
     country = "ES"
-    subdivisions = [
+    subdivisions = (
         "AN",
         "AR",
         "AS",
@@ -48,7 +48,7 @@ class Spain(
         "PV",
         "RI",
         "VC",
-    ]
+    )
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
