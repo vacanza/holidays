@@ -813,8 +813,8 @@ class HolidayBase(Dict[date, str]):
 
     def _check_weekday(self, weekday: int, *args) -> bool:
         """
-        Return True if `weekday` equals to the date's week day.
-        Return False otherwise.
+        Returns True if `weekday` equals to the date's week day.
+        Returns False otherwise.
         """
         dt = args[0] if len(args) == 1 else date(self._year, *args)
         return dt.weekday() == weekday
