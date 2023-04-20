@@ -99,7 +99,7 @@ class TestAlbania(TestCase):
             name, range(1990, 2004), range(2018, 2050)
         )
 
-        name = "Mother Teresa Canonisation Day"
+        name = "Mother Teresa Canonization Day"
         self.assertNoHolidayNameInYears(name, range(1990, 2018))
         self.assertHolidaysName(
             name, (f"{year}-09-05" for year in range(2018, 2050))
@@ -197,7 +197,7 @@ class TestAlbania(TestCase):
             ("2022-05-03", "May Day (Observed)"),
             ("2022-07-09", "Eid al-Adha* (*estimated)"),
             ("2022-07-11", "Eid al-Adha* (*estimated) (Observed)"),
-            ("2022-09-05", "Mother Teresa Canonisation Day"),
+            ("2022-09-05", "Mother Teresa Canonization Day"),
             ("2022-11-28", "Independence Day"),
             ("2022-11-29", "Liberation Day"),
             ("2022-12-08", "National Youth Day"),
@@ -220,7 +220,7 @@ class TestAlbania(TestCase):
             ("2023-04-21", "Eid al-Fitr* (*estimated)"),
             ("2023-05-01", "May Day"),
             ("2023-06-28", "Eid al-Adha* (*estimated)"),
-            ("2023-09-05", "Mother Teresa Canonisation Day"),
+            ("2023-09-05", "Mother Teresa Canonization Day"),
             ("2023-11-28", "Independence Day"),
             ("2023-11-29", "Liberation Day"),
             ("2023-12-08", "National Youth Day"),

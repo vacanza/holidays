@@ -70,7 +70,7 @@ class Albania(
             )
         elif year >= 2018:
             observed_dates.add(
-                self._add_holiday("Mother Teresa Canonisation Day", SEP, 5)
+                self._add_holiday("Mother Teresa Canonization Day", SEP, 5)
             )
 
         # Independence Day.
@@ -108,9 +108,11 @@ class Albania(
                         self._add_holiday("%s (Observed)" % hol_name, obs_date)
                     )
 
-        # observed holidays special cases
-        if self.observed and year == 2007:
-            self._add_holiday("Eid al-Adha* (*estimated) (Observed)", JAN, 3)
+            # observed holidays special cases
+            if year == 2007:
+                self._add_holiday(
+                    "Eid al-Adha* (*estimated) (Observed)", JAN, 3
+                )
 
 
 class AL(Albania):
