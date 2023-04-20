@@ -67,6 +67,12 @@ jobs:
       - name: Build Distribution
         run: |
           make package
+      - name: Upload Package Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist
+
 
   coveralls:
     name: Finish Coveralls
@@ -87,6 +93,11 @@ jobs:
     if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
     needs: [build]
     steps:
+      - name: Get Package Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: dist
+          path: dist
       - name: Publish Package
         uses: pypa/gh-action-pypi-publish@v1.8.5
         with:
