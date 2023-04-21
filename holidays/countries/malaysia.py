@@ -32,7 +32,7 @@ class Malaysia(HolidayBase):
         2018: ((MAY, 9, "Malaysia General Election Holiday"),),
         2019: ((JUL, 30, "Installation of New King"),),
     }
-    subdivisions = [
+    subdivisions = (
         "JHR",
         "KDH",
         "KTN",
@@ -49,7 +49,7 @@ class Malaysia(HolidayBase):
         "SGR",
         "SWK",
         "TRG",
-    ]
+    )
 
     def __init__(
         self,

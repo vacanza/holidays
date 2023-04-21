@@ -55,7 +55,7 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "DE"
     default_language = "de"
-    subdivisions = [
+    subdivisions = (
         "BB",
         "BE",
         "BW",
@@ -73,7 +73,7 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays):
         "SN",
         "ST",
         "TH",
-    ]
+    )
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)

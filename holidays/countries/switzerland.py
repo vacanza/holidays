@@ -21,7 +21,7 @@ from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "CH"
     default_language = "de"
-    subdivisions = [
+    subdivisions = (
         "AG",  # Aargau
         "AR",  # Appenzell Ausserrhoden
         "AI",  # Appenzell Innerrhoden
@@ -48,7 +48,7 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
         "VS",  # Valais
         "ZG",  # Zug
         "ZH",  # Zürich
-    ]
+    )
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

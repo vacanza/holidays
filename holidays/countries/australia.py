@@ -35,7 +35,7 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
             ),
         ),
     }
-    subdivisions = ["ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"]
+    subdivisions = ("ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

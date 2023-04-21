@@ -9,6 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+import pathlib
 import sys
 import unittest
 import warnings
@@ -139,4 +140,51 @@ class TestAllInSameYear(unittest.TestCase):
         self.assertEqual(
             self.years,
             utils.financial_holidays(market, years=self.years).years,
+        )
+
+
+class TestListSupportedEntities(unittest.TestCase):
+    def test_list_supported_countries(self):
+        supported_countries = utils.list_supported_countries(
+            include_aliases=False
+        )
+
+        self.assertIn("AR", supported_countries)
+        self.assertIn("CA", supported_countries["US"])
+        self.assertIn("IM", supported_countries)
+        self.assertIn("ZA", supported_countries)
+
+        us_subdivisions = supported_countries["US"]
+        self.assertIn("CA", us_subdivisions)
+        self.assertTrue(isinstance(us_subdivisions, list))
+
+        countries_files = [
+            path
+            for path in pathlib.Path("holidays/countries").glob("*.py")
+            if not str(path).endswith("__init__.py")
+        ]
+        self.assertEqual(
+            len(countries_files),
+            len(supported_countries),
+        )
+
+    def test_list_supported_financial(self):
+        supported_financial = utils.list_supported_financial(
+            include_aliases=False
+        )
+
+        self.assertIn("ECB", supported_financial)
+        self.assertIn("NYSE", supported_financial)
+
+        nyse = supported_financial["NYSE"]
+        self.assertTrue(isinstance(nyse, list))
+
+        financial_files = [
+            path
+            for path in pathlib.Path("holidays/financial").glob("*.py")
+            if not str(path).endswith("__init__.py")
+        ]
+        self.assertEqual(
+            len(financial_files),
+            len(supported_financial),
         )

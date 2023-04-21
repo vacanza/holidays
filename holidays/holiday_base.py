@@ -190,7 +190,7 @@ class HolidayBase(Dict[date, str]):
     """The country's ISO 3166-1 alpha-2 code."""
     market: str
     """The market's ISO 3166-1 alpha-2 code."""
-    subdivisions: List[str] = []
+    subdivisions: Tuple[str, ...] = ()
     """The subdivisions supported for this country (see documentation)."""
     years: Set[int]
     """The years calculated."""
@@ -204,7 +204,7 @@ class HolidayBase(Dict[date, str]):
     special_holidays: Dict[int, Tuple[Tuple[int, int, str], ...]] = {}
     """A list of the country-wide special (as opposite to regular) holidays for
     a specific year."""
-    _deprecated_subdivisions: List[str] = []
+    _deprecated_subdivisions: Tuple[str, ...] = ()
     """Other subdivisions whose names are deprecated or aliases of the official
     ones."""
     weekend: Set[int] = {SAT, SUN}
@@ -269,10 +269,8 @@ class HolidayBase(Dict[date, str]):
             )
 
         if not isinstance(self, HolidaySum):
-            if (
-                subdiv
-                and subdiv
-                not in self.subdivisions + self._deprecated_subdivisions
+            if subdiv and subdiv not in set(
+                self.subdivisions + self._deprecated_subdivisions
             ):
                 if hasattr(self, "market"):
                     error = (

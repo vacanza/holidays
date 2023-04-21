@@ -287,7 +287,7 @@ def list_supported_countries(include_aliases=True) -> Dict[str, List[str]]:
         the value is a list of supported subdivision codes.
     """
     return {
-        name if include_aliases else cls.country: cls.subdivisions
+        name if include_aliases else cls.country: list(cls.subdivisions)
         for name, cls in inspect.getmembers(countries, inspect.isclass)
         if len(name) == 2 and issubclass(cls, HolidayBase)
     }
@@ -306,7 +306,7 @@ def list_supported_financial(include_aliases=True) -> Dict[str, List[str]]:
         the value is a list of supported subdivision codes.
     """
     return {
-        name if include_aliases else cls.market: cls.subdivisions
+        name if include_aliases else cls.market: list(cls.subdivisions)
         for name, cls in inspect.getmembers(financial, inspect.isclass)
         if len(name) in {3, 4} and issubclass(cls, HolidayBase)
     }

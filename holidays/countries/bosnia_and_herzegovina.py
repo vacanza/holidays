@@ -30,11 +30,11 @@ class BosniaAndHerzegovina(
     """
 
     country = "BA"
-    subdivisions = [
+    subdivisions = (
         "BD",
         "FBiH",
         "RS",
-    ]
+    )
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)

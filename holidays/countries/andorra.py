@@ -27,7 +27,7 @@ class Andorra(HolidayBase):
     """
 
     country = "AD"
-    subdivisions = [
+    subdivisions = (
         "02",  # Canillo.
         "03",  # Encamp.
         "04",  # La Massana.
@@ -35,7 +35,7 @@ class Andorra(HolidayBase):
         "06",  # Sant Julià de Lòria.
         "07",  # Andorra la Vella.
         "08",  # Escaldes-Engordany.
-    ]
+    )
 
     def _populate(self, year: int) -> None:
         super()._populate(year)
