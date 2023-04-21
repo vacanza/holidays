@@ -26,104 +26,97 @@ class Israel(HolidayBase):
     def _populate(self, year):
         if year <= 1947:
             return None
+
+        if year >= 2101:
+            raise NotImplementedError
+
         super()._populate(year)
 
         # Passover
         passover_dt = _HebrewLuniSolar.hebrew_holiday_date(year, "PASSOVER")
-        if passover_dt:
-            self._add_with_eve("Passover I", passover_dt)
-            for offset in range(1, 5):
-                self._add_holiday(
-                    "Passover - Chol HaMoed", passover_dt + td(days=offset)
-                )
-            self._add_with_eve("Passover VII", passover_dt + td(days=+6))
+        self._add_with_eve("Passover I", passover_dt)
+        for offset in range(1, 5):
+            self._add_holiday(
+                "Passover - Chol HaMoed", passover_dt + td(days=offset)
+            )
+        self._add_with_eve("Passover VII", passover_dt + td(days=+6))
 
         # Memorial Day
         memorial_day_dt = _HebrewLuniSolar.hebrew_holiday_date(
             year, "MEMORIAL_DAY"
         )
-        if memorial_day_dt:
-            observed_delta = 0
-            if self.observed:
-                if self._is_thursday(memorial_day_dt):
-                    observed_delta = -1
-                elif self._is_friday(memorial_day_dt):
-                    observed_delta = -2
-                elif year >= 2004 and self._is_sunday(memorial_day_dt):
-                    observed_delta = 1
+        observed_delta = 0
+        if self.observed:
+            if self._is_thursday(memorial_day_dt):
+                observed_delta = -1
+            elif self._is_friday(memorial_day_dt):
+                observed_delta = -2
+            elif year >= 2004 and self._is_sunday(memorial_day_dt):
+                observed_delta = 1
 
-            name = "Memorial Day"
-            if observed_delta != 0:
-                self._add_holiday(
-                    f"{name} (Observed)",
-                    memorial_day_dt + td(days=observed_delta),
-                )
-            else:
-                self._add_holiday(name, memorial_day_dt)
+        name = "Memorial Day"
+        if observed_delta != 0:
+            self._add_holiday(
+                f"{name} (Observed)",
+                memorial_day_dt + td(days=observed_delta),
+            )
+        else:
+            self._add_holiday(name, memorial_day_dt)
 
-            # Independence Day
-            name = "Independence Day"
-            if self.observed and observed_delta != 0:
-                self._add_holiday(
-                    f"{name} (Observed)",
-                    memorial_day_dt + td(days=observed_delta + 1),
-                )
-            else:
-                self._add_holiday(name, memorial_day_dt + td(days=+1))
+        # Independence Day
+        name = "Independence Day"
+        if self.observed and observed_delta != 0:
+            self._add_holiday(
+                f"{name} (Observed)",
+                memorial_day_dt + td(days=observed_delta + 1),
+            )
+        else:
+            self._add_holiday(name, memorial_day_dt + td(days=+1))
 
         # Lag Baomer
         lag_baomer_dt = _HebrewLuniSolar.hebrew_holiday_date(
             year, "LAG_BAOMER"
         )
-        if lag_baomer_dt:
-            self._add_holiday("Lag B'Omer", lag_baomer_dt)
+        self._add_holiday("Lag B'Omer", lag_baomer_dt)
 
         # Shavuot
         shavuot_dt = _HebrewLuniSolar.hebrew_holiday_date(year, "SHAVUOT")
-        if shavuot_dt:
-            self._add_with_eve("Shavuot", shavuot_dt)
+        self._add_with_eve("Shavuot", shavuot_dt)
 
         # Rosh Hashana
         rosh_hashanah_dt = _HebrewLuniSolar.hebrew_holiday_date(
             year, "ROSH_HASHANAH"
         )
-        if rosh_hashanah_dt:
-            name = "Rosh Hashanah"
-            self._add_with_eve(name, rosh_hashanah_dt)
-            self._add_holiday(name, rosh_hashanah_dt + td(days=+1))
+        name = "Rosh Hashanah"
+        self._add_with_eve(name, rosh_hashanah_dt)
+        self._add_holiday(name, rosh_hashanah_dt + td(days=+1))
 
         # Yom Kippur
         yom_kippur_dt = _HebrewLuniSolar.hebrew_holiday_date(
             year, "YOM_KIPPUR"
         )
-        if yom_kippur_dt:
-            self._add_with_eve("Yom Kippur", yom_kippur_dt)
+        self._add_with_eve("Yom Kippur", yom_kippur_dt)
 
         # Sukkot
         sukkot_dt = _HebrewLuniSolar.hebrew_holiday_date(year, "SUKKOT")
-        if sukkot_dt:
-            self._add_with_eve("Sukkot I", sukkot_dt)
-            for offset in range(1, 6):
-                self._add_holiday(
-                    "Sukkot - Chol HaMoed", sukkot_dt + td(days=offset)
-                )
-            self._add_with_eve("Sukkot VII", sukkot_dt + td(days=+7))
+        self._add_with_eve("Sukkot I", sukkot_dt)
+        for offset in range(1, 6):
+            self._add_holiday(
+                "Sukkot - Chol HaMoed", sukkot_dt + td(days=offset)
+            )
+        self._add_with_eve("Sukkot VII", sukkot_dt + td(days=+7))
 
         # Hanukkah
         # Some o prior's year Hannukah may fall in current year.
         for yr in (year - 1, year):
             hanukkah_dt = _HebrewLuniSolar.hebrew_holiday_date(yr, "HANUKKAH")
-            if hanukkah_dt:
-                for offset in range(8):
-                    self._add_holiday(
-                        "Hanukkah", hanukkah_dt + td(days=offset)
-                    )
+            for offset in range(8):
+                self._add_holiday("Hanukkah", hanukkah_dt + td(days=offset))
 
         # Purim
         purim_dt = _HebrewLuniSolar.hebrew_holiday_date(year, "PURIM")
-        if purim_dt:
-            self._add_with_eve("Purim", purim_dt)
-            self._add_holiday("Shushan Purim", purim_dt + td(days=+1))
+        self._add_with_eve("Purim", purim_dt)
+        self._add_holiday("Shushan Purim", purim_dt + td(days=+1))
 
 
 class IL(Israel):

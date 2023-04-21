@@ -2373,6 +2373,7 @@ class _IslamicLunar:
 class _HebrewLuniSolar:
     # Passover
     PASSOVER_DATES = {
+        1947: (APR, 5),
         1948: (APR, 24),
         1949: (APR, 14),
         1950: (APR, 2),
@@ -2530,6 +2531,7 @@ class _HebrewLuniSolar:
 
     # Memorial Day
     MEMORIAL_DAY_DATES = {
+        1947: (APR, 24),
         1948: (MAY, 13),
         1949: (MAY, 3),
         1950: (APR, 21),
@@ -2687,6 +2689,7 @@ class _HebrewLuniSolar:
 
     # Lag B'Omer
     LAG_BAOMER_DATES = {
+        1947: (MAY, 8),
         1948: (MAY, 27),
         1949: (MAY, 17),
         1950: (MAY, 5),
@@ -2844,6 +2847,7 @@ class _HebrewLuniSolar:
 
     # Shavuot
     SHAVUOT_DATES = {
+        1947: (MAY, 25),
         1948: (JUN, 13),
         1949: (JUN, 3),
         1950: (MAY, 22),
@@ -3001,6 +3005,7 @@ class _HebrewLuniSolar:
 
     # Rosh Hashanah
     ROSH_HASHANAH_DATES = {
+        1947: (SEP, 15),
         1948: (OCT, 4),
         1949: (SEP, 24),
         1950: (SEP, 12),
@@ -3158,6 +3163,7 @@ class _HebrewLuniSolar:
 
     # Yom Kippur
     YOM_KIPPUR_DATES = {
+        1947: (SEP, 24),
         1948: (OCT, 13),
         1949: (OCT, 3),
         1950: (SEP, 21),
@@ -3315,6 +3321,7 @@ class _HebrewLuniSolar:
 
     # Sukkot
     SUKKOT_DATES = {
+        1947: (SEP, 29),
         1948: (OCT, 18),
         1949: (OCT, 8),
         1950: (SEP, 26),
@@ -3472,6 +3479,7 @@ class _HebrewLuniSolar:
 
     # Hanukkah
     HANUKKAH_DATES = {
+        1947: (DEC, 8),
         1948: (DEC, 27),
         1949: (DEC, 16),
         1950: (DEC, 4),
@@ -3629,6 +3637,7 @@ class _HebrewLuniSolar:
 
     # Purim
     PURIM_DATES = {
+        1947: (MAR, 6),
         1948: (MAR, 25),
         1949: (MAR, 15),
         1950: (MAR, 3),
