@@ -9,42 +9,54 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
-
-from dateutil.easter import EASTER_ORTHODOX, easter
-
-from holidays.calendars import _islamic_to_gre
-from holidays.constants import JAN, MAY, SEP, AUG, OCT, DEC
+from holidays.calendars import JULIAN_CALENDAR
+from holidays.constants import MAY, SEP, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, IslamicHolidays
+from holidays.holiday_groups import InternationalHolidays
 
 
-class NorthMacedonia(HolidayBase):
+class NorthMacedonia(
+    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
+):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_North_Macedonia
     """
 
     country = "MK"
 
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self, JULIAN_CALENDAR)
+        InternationalHolidays.__init__(self)
+        IslamicHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year):
         super()._populate(year)
 
-        self[date(year, JAN, 1)] = "New Year's Day"
+        self._add_new_years_day("New Year's Day")
 
-        self[date(year, JAN, 7)] = "Christmas Day (Orthodox)"
-        easter_date = easter(year, method=EASTER_ORTHODOX)
-        self[easter_date + td(days=+1)] = "Easter Monday(Orthodox)"
-        self[date(year, MAY, 1)] = "Labour Day"
-        self[date(year, MAY, 24)] = "Saints Cyril and Methodius Day"
-        self[date(year, AUG, 2)] = "Republic Day"
-        self[date(year, SEP, 8)] = "Independence Day"
-        self[date(year, OCT, 11)] = "Day of Macedonian Uprising in 1941"
-        self[
-            date(year, OCT, 23)
-        ] = "Day of the Macedonian Revolutionary Struggle"
-        self[date(year, DEC, 8)] = "Saint Clement of Ohrid Day"
-        for date_obs in _islamic_to_gre(year, 10, 1):
-            self[date_obs] = "Eid al-Fitr"
+        self._add_christmas_day("Christmas Day (Orthodox)")
+
+        self._add_easter_monday("Easter Monday (Orthodox)")
+
+        self._add_labor_day("Labour Day")
+
+        self._add_holiday("Saints Cyril and Methodius Day", MAY, 24)
+
+        self._add_holiday("Republic Day", AUG, 2)
+
+        self._add_holiday("Independence Day", SEP, 8)
+
+        self._add_holiday("Day of Macedonian Uprising in 1941", OCT, 11)
+
+        self._add_holiday(
+            "Day of the Macedonian Revolutionary Struggle", OCT, 23
+        )
+
+        self._add_holiday("Saint Clement of Ohrid Day", DEC, 8)
+
+        self._add_eid_al_fitr_day("Eid al-Fitr")
 
 
 class MK(NorthMacedonia):

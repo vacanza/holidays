@@ -1,7 +1,14 @@
-Version 0.23
+Version 0.24
 ============
 
 Released ???????? ??, ????
+
+- Update Ukraine holidays: fix May 2021 observed holidays, #1113 (@arkid15r)
+
+Version 0.23
+============
+
+Released April 17, 2023
 
 - Add Islamic multi-day holidays support to holiday_groups, #1086 (@KJhellico)
 - Refactor Japan observed holidays, #1081 (@KJhellico)

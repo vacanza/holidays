@@ -190,7 +190,7 @@ class HolidayBase(Dict[date, str]):
     """The country's ISO 3166-1 alpha-2 code."""
     market: str
     """The market's ISO 3166-1 alpha-2 code."""
-    subdivisions: List[str] = []
+    subdivisions: Tuple[str, ...] = ()
     """The subdivisions supported for this country (see documentation)."""
     years: Set[int]
     """The years calculated."""
@@ -204,7 +204,7 @@ class HolidayBase(Dict[date, str]):
     special_holidays: Dict[int, Tuple[Tuple[int, int, str], ...]] = {}
     """A list of the country-wide special (as opposite to regular) holidays for
     a specific year."""
-    _deprecated_subdivisions: List[str] = []
+    _deprecated_subdivisions: Tuple[str, ...] = ()
     """Other subdivisions whose names are deprecated or aliases of the official
     ones."""
     weekend: Set[int] = {SAT, SUN}
@@ -269,10 +269,8 @@ class HolidayBase(Dict[date, str]):
             )
 
         if not isinstance(self, HolidaySum):
-            if (
-                subdiv
-                and subdiv
-                not in self.subdivisions + self._deprecated_subdivisions
+            if subdiv and subdiv not in set(
+                self.subdivisions + self._deprecated_subdivisions
             ):
                 if hasattr(self, "market"):
                     error = (
@@ -811,43 +809,34 @@ class HolidayBase(Dict[date, str]):
 
         return dt.weekday() in self.weekend
 
-    @staticmethod
-    def __is_weekday(weekday, *args):
+    def _check_weekday(self, weekday: int, *args) -> bool:
         """
         Returns True if `weekday` equals to the date's week day.
         Returns False otherwise.
         """
-        dt = args[0] if len(args) == 1 else date(*args)
-
+        dt = args[0] if len(args) == 1 else date(self._year, *args)
         return dt.weekday() == weekday
 
-    @staticmethod
-    def _is_monday(*args) -> bool:
-        return HolidayBase.__is_weekday(MON, *args)
+    def _is_monday(self, *args) -> bool:
+        return self._check_weekday(MON, *args)
 
-    @staticmethod
-    def _is_tuesday(*args) -> bool:
-        return HolidayBase.__is_weekday(TUE, *args)
+    def _is_tuesday(self, *args) -> bool:
+        return self._check_weekday(TUE, *args)
 
-    @staticmethod
-    def _is_wednesday(*args) -> bool:
-        return HolidayBase.__is_weekday(WED, *args)
+    def _is_wednesday(self, *args) -> bool:
+        return self._check_weekday(WED, *args)
 
-    @staticmethod
-    def _is_thursday(*args) -> bool:
-        return HolidayBase.__is_weekday(THU, *args)
+    def _is_thursday(self, *args) -> bool:
+        return self._check_weekday(THU, *args)
 
-    @staticmethod
-    def _is_friday(*args) -> bool:
-        return HolidayBase.__is_weekday(FRI, *args)
+    def _is_friday(self, *args) -> bool:
+        return self._check_weekday(FRI, *args)
 
-    @staticmethod
-    def _is_saturday(*args) -> bool:
-        return HolidayBase.__is_weekday(SAT, *args)
+    def _is_saturday(self, *args) -> bool:
+        return self._check_weekday(SAT, *args)
 
-    @staticmethod
-    def _is_sunday(*args) -> bool:
-        return HolidayBase.__is_weekday(SUN, *args)
+    def _is_sunday(self, *args) -> bool:
+        return self._check_weekday(SUN, *args)
 
     def __reduce__(self) -> Union[str, Tuple[Any, ...]]:
         return super().__reduce__()

@@ -11,7 +11,7 @@
 
 from datetime import date
 from datetime import timedelta as td
-from typing import Any
+from typing import Any, Tuple, Union
 
 from dateutil.easter import easter
 
@@ -43,7 +43,13 @@ class UnitedKingdom(HolidayBase):
         ),
         2023: ((MAY, 8, "Coronation of Charles III"),),
     }
-    subdivisions = ["England", "Northern Ireland", "Scotland", "UK", "Wales"]
+    subdivisions: Union[Tuple[()], Tuple[str, ...]] = (
+        "England",
+        "Northern Ireland",
+        "Scotland",
+        "UK",
+        "Wales",
+    )
 
     def __init__(self, **kwargs: Any) -> None:
         # default subdiv to UK; state for backwards compatibility

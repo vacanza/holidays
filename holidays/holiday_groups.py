@@ -11,12 +11,12 @@
 
 from datetime import date
 from datetime import timedelta as td
-from typing import Iterable, Set
+from typing import Set
 
 from dateutil.easter import EASTER_ORTHODOX, EASTER_WESTERN, easter
 from korean_lunar_calendar import KoreanLunarCalendar
 
-from holidays.calendars import _ChineseLuniSolar, _islamic_to_gre
+from holidays.calendars import _ChineseLuniSolar, _IslamicLunar
 from holidays.calendars import GREGORIAN_CALENDAR, JULIAN_CALENDAR
 from holidays.constants import JAN, FEB, MAR, MAY, JUN, AUG, SEP, NOV, DEC
 
@@ -711,7 +711,9 @@ class IslamicHolidays:
         Arafat.
         https://en.wikipedia.org/wiki/Day_of_Arafah
         """
-        return self._add_islamic_calendar_holiday(holiday_name, 12, 9)
+        return self._add_islamic_calendar_holiday(
+            holiday_name, "EID_AL_ADHA", days_delta=-1
+        )
 
     def _add_ashura_day(self, holiday_name) -> Set[date]:
         """
@@ -721,7 +723,7 @@ class IslamicHolidays:
         10th of Muharram, the first month of the Islamic calendar.
         https://en.wikipedia.org/wiki/Ashura
         """
-        return self._add_islamic_calendar_holiday(holiday_name, 1, 10)
+        return self._add_islamic_calendar_holiday(holiday_name, "ASHURA")
 
     def _add_eid_al_adha_day(self, holiday_name) -> Set[date]:
         """
@@ -732,7 +734,7 @@ class IslamicHolidays:
         to Allah's command.
         https://en.wikipedia.org/wiki/Eid_al-Adha
         """
-        return self._add_islamic_calendar_holiday(holiday_name, 12, 10)
+        return self._add_islamic_calendar_holiday(holiday_name, "EID_AL_ADHA")
 
     def _add_eid_al_adha_day_two(self, holiday_name) -> Set[date]:
         """
@@ -741,7 +743,7 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Eid_al-Adha
         """
         return self._add_islamic_calendar_holiday(
-            holiday_name, 12, 10, days_delta=+1
+            holiday_name, "EID_AL_ADHA", days_delta=+1
         )
 
     def _add_eid_al_adha_day_three(self, holiday_name) -> Set[date]:
@@ -751,7 +753,7 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Eid_al-Adha
         """
         return self._add_islamic_calendar_holiday(
-            holiday_name, 12, 10, days_delta=+2
+            holiday_name, "EID_AL_ADHA", days_delta=+2
         )
 
     def _add_eid_al_adha_day_four(self, holiday_name) -> Set[date]:
@@ -761,7 +763,7 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Eid_al-Adha
         """
         return self._add_islamic_calendar_holiday(
-            holiday_name, 12, 10, days_delta=+3
+            holiday_name, "EID_AL_ADHA", days_delta=+3
         )
 
     def _add_eid_al_fitr_day(self, holiday_name) -> Set[date]:
@@ -773,7 +775,7 @@ class IslamicHolidays:
         dawn-to-sunset fasting of Ramadan.
         https://en.wikipedia.org/wiki/Eid_al-Fitr
         """
-        return self._add_islamic_calendar_holiday(holiday_name, 10, 1)
+        return self._add_islamic_calendar_holiday(holiday_name, "EID_AL_FITR")
 
     def _add_eid_al_fitr_day_two(self, holiday_name) -> Set[date]:
         """
@@ -782,7 +784,7 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Eid_al-Fitr
         """
         return self._add_islamic_calendar_holiday(
-            holiday_name, 10, 1, days_delta=+1
+            holiday_name, "EID_AL_FITR", days_delta=+1
         )
 
     def _add_eid_al_fitr_day_three(self, holiday_name) -> Set[date]:
@@ -792,28 +794,26 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Eid_al-Fitr
         """
         return self._add_islamic_calendar_holiday(
-            holiday_name, 10, 1, days_delta=+2
+            holiday_name, "EID_AL_FITR", days_delta=+2
         )
 
     def _add_islamic_calendar_holiday(
-        self, holiday_name, month, day, days_delta=0
+        self, holiday_name, hol_type: str, days_delta: int = 0
     ) -> Set[date]:
         """
         Add lunar calendar holiday.
         """
         dates = set()
-
         years = (
             (self._year - 1, self._year) if days_delta > 0 else (self._year,)
         )
         for year in years:
-            for dt in self._convert_islamic_to_gre(year, month, day):
+            for dt in _IslamicLunar.islamic_holiday_date(year, hol_type):
                 if days_delta != 0:
                     dt += td(days=days_delta)
                 dt = self._add_holiday(holiday_name, dt)
                 if dt:
                     dates.add(dt)
-
         return dates
 
     def _add_islamic_new_year_day(self, holiday_name) -> Set[date]:
@@ -826,7 +826,9 @@ class IslamicHolidays:
         observed by most Muslims on the first day of the month of Muharram.
         https://en.wikipedia.org/wiki/Islamic_New_Year
         """
-        return self._add_islamic_calendar_holiday(holiday_name, 1, 1)
+        return self._add_islamic_calendar_holiday(
+            holiday_name, "ISLAMIC_NEW_YEAR"
+        )
 
     def _add_isra_and_miraj_day(self, holiday_name):
         """
@@ -834,7 +836,9 @@ class IslamicHolidays:
 
         https://en.wikipedia.org/wiki/Isra%27_and_Mi%27raj
         """
-        return self._add_islamic_calendar_holiday(holiday_name, 7, 27)
+        return self._add_islamic_calendar_holiday(
+            holiday_name, "ISRA_AND_MIRAJ"
+        )
 
     def _add_mawlid_day(self, holiday_name) -> Set[date]:
         """
@@ -844,7 +848,7 @@ class IslamicHolidays:
         Muhammad.
         https://en.wikipedia.org/wiki/Mawlid
         """
-        return self._add_islamic_calendar_holiday(holiday_name, 3, 12)
+        return self._add_islamic_calendar_holiday(holiday_name, "MAWLID")
 
     def _add_mawlid_day_two(self, holiday_name) -> Set[date]:
         """
@@ -855,15 +859,8 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Mawlid
         """
         return self._add_islamic_calendar_holiday(
-            holiday_name, 3, 12, days_delta=+1
+            holiday_name, "MAWLID", days_delta=+1
         )
-
-    @staticmethod
-    def _convert_islamic_to_gre(year, month, day) -> Iterable[date]:
-        """
-        Convert Islamic calendar date to Gregorian date(s).
-        """
-        return _islamic_to_gre(year, month, day)
 
 
 class KoreanCalendarHolidays:

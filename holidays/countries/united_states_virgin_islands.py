@@ -18,7 +18,7 @@ class HolidaysVI(US):
     # https://en.wikipedia.org/wiki/ISO_3166-2:US#Subdivisions_included_in_ISO_3166-1
 
     country = "VI"
-    subdivisions = []  # Override US subdivisions.
+    subdivisions = ()  # Override US subdivisions.
 
     def _populate(self, year: int) -> None:
         self.subdiv = "VI"

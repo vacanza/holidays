@@ -10,7 +10,6 @@
 #  License: MIT (see LICENSE file)
 
 import os
-import pathlib
 import pickle
 import unittest
 import warnings
@@ -363,7 +362,7 @@ class TestBasics(unittest.TestCase):
         self.assertEqual(provs.subdiv, ["ON", "BC"])
         a = sum(holidays.CA(subdiv=x) for x in holidays.CA.subdivisions)
         self.assertEqual(a.country, "CA")
-        self.assertEqual(a.subdiv, holidays.CA.subdivisions)
+        self.assertListEqual(a.subdiv, list(holidays.CA.subdivisions))
         self.assertIn("2015-02-09", a)
         self.assertIn("2015-02-16", a)
         na = holidays.CA() + holidays.US() + holidays.MX(language="es")
@@ -445,44 +444,6 @@ class TestBasics(unittest.TestCase):
         )
         self.assertEqual(na.get_list(date(1969, 7, 1)), ["Dominion Day"])
         self.assertEqual(na.get_list(date(1969, 1, 3)), [])
-
-    def test_list_supported_countries(self):
-        supported_countries = holidays.list_supported_countries(
-            include_aliases=False
-        )
-
-        countries_files = [
-            path
-            for path in pathlib.Path("holidays/countries").glob("*.py")
-            if not str(path).endswith("__init__.py")
-        ]
-        self.assertEqual(
-            len(countries_files),
-            len(supported_countries),
-        )
-
-        self.assertIn("AR", supported_countries)
-        self.assertIn("CA", supported_countries["US"])
-        self.assertIn("IM", supported_countries)
-        self.assertIn("ZA", supported_countries)
-
-    def test_list_supported_financial(self):
-        supported_financial = holidays.list_supported_financial(
-            include_aliases=False
-        )
-
-        financial_files = [
-            path
-            for path in pathlib.Path("holidays/financial").glob("*.py")
-            if not str(path).endswith("__init__.py")
-        ]
-        self.assertEqual(
-            len(financial_files),
-            len(supported_financial),
-        )
-
-        self.assertIn("ECB", supported_financial)
-        self.assertIn("NYSE", supported_financial)
 
     def test_radd(self):
         self.assertRaises(TypeError, lambda: 1 + holidays.US())

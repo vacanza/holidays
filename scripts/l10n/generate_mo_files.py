@@ -19,15 +19,15 @@ from polib import pofile
 class MOGenerator:
     """Creates .mo files for supported country/market entities."""
 
-    def run(self):
+    @staticmethod
+    def run():
         """Runs the .mo files generation process."""
-        for po_path in (Path() / "holidays" / "locale").rglob("*.po"):
+        for po_path in Path("holidays/locale").rglob("*.po"):
             mo_path = po_path.with_suffix(".mo")
             if mo_path.exists():
                 mo_path.unlink()
-            po_file = pofile(str(po_path))
-            po_file.save_as_mofile(str(mo_path))
+            pofile(po_path).save_as_mofile(mo_path)
 
 
 if __name__ == "__main__":
-    MOGenerator().run()
+    MOGenerator.run()

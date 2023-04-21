@@ -21,7 +21,7 @@ from holidays.holiday_base import HolidayBase
 class Nicaragua(HolidayBase):
     country = "NI"
     default_language = "es"
-    subdivisions = [
+    subdivisions = (
         "AN",
         "AS",
         "BO",
@@ -39,7 +39,7 @@ class Nicaragua(HolidayBase):
         "NS",
         "RI",
         "SJ",
-    ]
+    )
 
     def __init__(self, **kwargs):
         # Default subdivision to MN; prov for backwards compatibility
