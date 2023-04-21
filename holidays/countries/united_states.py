@@ -114,7 +114,7 @@ class UnitedStates(HolidayBase):
             self._add_with_observed(date(year, JAN, 1), name, before=False)
             # The following year's observed New Year's Day can be in this year
             # when it falls on a Friday (Jan 1st is a Saturday).
-            if self.observed and self._is_friday(date(year, DEC, 31)):
+            if self.observed and self._is_friday(DEC, 31):
                 self[date(year, DEC, 31)] = f"{name} (Observed)"
 
         # Epiphany
@@ -197,7 +197,7 @@ class UnitedStates(HolidayBase):
             elif year >= 1879:
                 self[date(year, FEB, 22)] = name
         elif self.subdiv == "GA":
-            if not self._is_wednesday(year, DEC, 24):
+            if not self._is_wednesday(DEC, 24):
                 self[date(year, DEC, 24)] = name
             else:
                 self[date(year, DEC, 26)] = name
