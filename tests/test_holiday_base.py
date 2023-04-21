@@ -250,6 +250,18 @@ class TestBasics(unittest.TestCase):
         for dt in ((10, 3), (10, 4)):
             self.assertFalse(h._is_weekend(*dt))
 
+    def test_get_nth_weekday_of_month(self):
+        h = holidays.HolidayBase(years=2023)
+        # 1st Monday of 2023 months
+        for month, day in enumerate((3, 7, 7, 4, 2, 6, 4, 1, 5, 3, 7, 5), 1):
+            first_monday = h._get_nth_weekday_of_month(1, 1, month)
+            self.assertEqual(first_monday.day, day)
+
+        # Last Saturday of 2023 months
+        for month, day in enumerate((28, 25, 25, 29, 27, 24, 29, 26, 30, 28, 25, 30), 1):
+            last_friday = h._get_nth_weekday_of_month(-1, 5, month)
+            self.assertEqual(last_friday.day, day)
+
     def test_append(self):
         h = holidays.HolidayBase()
         h.update(

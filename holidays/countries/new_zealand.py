@@ -12,7 +12,6 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
 from holidays.constants import JAN, FEB, MAR, APR, JUN, JUL, SEP, OCT, NOV, DEC, MON, TUE, WED
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -67,7 +66,7 @@ class NewZealand(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _get_nearest_monday(self, *args) -> date:
         dt = date(self._year, *args)
-        return _get_nth_weekday_from(
+        return self._get_nth_weekday_from(
             1 if self._is_friday(dt) or self._is_weekend(dt) else -1, MON, dt
         )
 
@@ -126,7 +125,7 @@ class NewZealand(HolidayBase, ChristianHolidays, InternationalHolidays):
             if year == 1952:
                 dt = date(year, JUN, 2)  # Elizabeth II
             elif year >= 1938:
-                dt = _get_nth_weekday_of_month(1, MON, JUN, year)  # EII & GVI
+                dt = self._get_nth_weekday_of_month(1, MON, JUN)  # EII & GVI
             elif year == 1937:
                 dt = date(year, JUN, 9)  # George VI
             elif year == 1936:
@@ -178,9 +177,9 @@ class NewZealand(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Labour Day
         if year >= 1900:
             dt = (
-                _get_nth_weekday_of_month(4, MON, OCT, year)
+                self._get_nth_weekday_of_month(4, MON, OCT)
                 if year >= 1910
-                else _get_nth_weekday_of_month(2, WED, OCT, year)
+                else self._get_nth_weekday_of_month(2, WED, OCT)
             )
             self._add_holiday("Labour Day", dt)
 
@@ -223,7 +222,7 @@ class NewZealand(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _add_subdiv_can_holidays(self):
         self._add_holiday(
             "Canterbury Anniversary Day",
-            _get_nth_weekday_of_month(1, TUE, NOV, self._year) + td(days=+10),
+            self._get_nth_weekday_of_month(1, TUE, NOV) + td(days=+10),
         )
 
     def _add_subdiv_cit_holidays(self):
@@ -232,13 +231,13 @@ class NewZealand(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _add_subdiv_hkb_holidays(self):
         self._add_holiday(
             "Hawke's Bay Anniversary Day",
-            _get_nth_weekday_of_month(4, MON, OCT, self._year) + td(days=-3),
+            self._get_nth_weekday_of_month(4, MON, OCT) + td(days=-3),
         )
 
     def _add_subdiv_mbh_holidays(self):
         self._add_holiday(
             "Marlborough Anniversary Day",
-            _get_nth_weekday_of_month(4, MON, OCT, self._year) + td(days=+7),
+            self._get_nth_weekday_of_month(4, MON, OCT) + td(days=+7),
         )
 
     def _add_subdiv_nsn_holidays(self):
@@ -262,7 +261,7 @@ class NewZealand(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_stc_holidays(self):
         self._add_holiday(
-            "South Canterbury Anniversary Day", _get_nth_weekday_of_month(4, MON, SEP, self._year)
+            "South Canterbury Anniversary Day", self._get_nth_weekday_of_month(4, MON, SEP)
         )
 
     def _add_subdiv_stl_holidays(self):
@@ -274,9 +273,7 @@ class NewZealand(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday("Southland Anniversary Day", dt)
 
     def _add_subdiv_tki_holidays(self):
-        self._add_holiday(
-            "Taranaki Anniversary Day", _get_nth_weekday_of_month(2, MON, MAR, self._year)
-        )
+        self._add_holiday("Taranaki Anniversary Day", self._get_nth_weekday_of_month(2, MON, MAR))
 
     def _add_subdiv_wgn_holidays(self):
         self._add_holiday("Wellington Anniversary Day", self._get_nearest_monday(JAN, 22))

@@ -14,7 +14,6 @@ from datetime import timedelta as td
 
 from dateutil.easter import easter
 
-from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import JAN, MAR, MAY, JUN, AUG, NOV, DEC, SUN
 from holidays.holiday_base import HolidayBase
 
@@ -38,7 +37,7 @@ class Madagascar(HolidayBase):
         self[date(year, MAR, 8)] = "Fetin'ny vehivavy / Women's Day"
         self[date(year, MAR, 29)] = "Fetin'ny mahery fo / Martyrs' Day"
         self[date(year, MAY, 1)] = "Labour Day"
-        self[_get_nth_weekday_of_month(3, SUN, JUN, year)] = "Fetin'ny ray / Father's Day"
+        self[self._get_nth_weekday_of_month(3, SUN, JUN)] = "Fetin'ny ray / Father's Day"
 
         if year >= 1960:
             self[date(year, JUN, 26)] = "Independence Day"
@@ -64,7 +63,7 @@ class Madagascar(HolidayBase):
 
         self[easter_date + td(days=+50)] = "Alatsinain'ny pentekosta / Whit Monday"
 
-        dt = _get_nth_weekday_of_month(-1, SUN, MAY, year)
+        dt = self._get_nth_weekday_of_month(-1, SUN, MAY)
         if dt == whit_sunday:
             dt += td(days=+7)
         self[dt] = "Fetin'ny Reny / Mother's Day"

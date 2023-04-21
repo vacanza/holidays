@@ -15,7 +15,6 @@ from datetime import timedelta as td
 
 from dateutil.easter import easter
 
-from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
 from holidays.constants import JAN, MAR, MAY, JUL, SEP, NOV, DEC, MON, FRI
 from holidays.holiday_base import HolidayBase
 
@@ -45,7 +44,7 @@ class HolidaysMH(HolidayBase):
         if not self.observed:
             return
         if (self._is_saturday(dt) and after_sat) or self._is_sunday(dt):
-            self[_get_nth_weekday_from(1, MON, dt)] = f"{name} (Holiday)"
+            self[self._get_nth_weekday_from(1, MON, dt)] = f"{name} (Holiday)"
 
     def _populate(self, year):
         super()._populate(year)
@@ -69,19 +68,19 @@ class HolidaysMH(HolidayBase):
         self[date(year, MAY, 1)] = "Constitution Day"
 
         # Fisherman's Day
-        self[_get_nth_weekday_of_month(1, FRI, JUL, year)] = "Fisherman's Day"
+        self[self._get_nth_weekday_of_month(1, FRI, JUL)] = "Fisherman's Day"
 
         # Dri-jerbal Day
-        self[_get_nth_weekday_of_month(1, FRI, SEP, year)] = "Dri-jerbal Day"
+        self[self._get_nth_weekday_of_month(1, FRI, SEP)] = "Dri-jerbal Day"
 
         # Manit Day
-        self[_get_nth_weekday_of_month(-1, FRI, SEP, year)] = "Manit Day"
+        self[self._get_nth_weekday_of_month(-1, FRI, SEP)] = "Manit Day"
 
         # President's Day
         self._add_with_observed(date(year, NOV, 17), "President's Day")
 
         # Gospel Day
-        self[_get_nth_weekday_of_month(1, FRI, DEC, year)] = "Gospel Day"
+        self[self._get_nth_weekday_of_month(1, FRI, DEC)] = "Gospel Day"
 
         # Christmas Day
         self._add_with_observed(date(year, DEC, 25), "Christmas Day")
