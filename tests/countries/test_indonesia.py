@@ -9,181 +9,200 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-
 from holidays.countries.indonesia import Indonesia, ID, IDN
 from tests.common import TestCase
 
 
 class TestIndonesia(TestCase):
-    def setUp(self):
-        self.holidays = Indonesia()
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Indonesia, years=range(2000, 2050))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Indonesia, ID, IDN)
 
+    def test_new_years_day(self):
+        self.assertHoliday(f"{year}-01-01" for year in range(2000, 2050))
+
     def test_lunar_new_year(self):
-        for year, month, day in (
-            (2005, 2, 9),
-            (2006, 1, 29),
-            (2007, 2, 18),
-            (2008, 2, 7),
-            (2009, 1, 26),
-            (2010, 2, 14),
-            (2011, 2, 3),
-            (2012, 1, 23),
-            (2013, 2, 10),
-            (2014, 1, 31),
-            (2015, 2, 19),
-            (2016, 2, 8),
-            (2017, 1, 28),
-            (2018, 2, 16),
-            (2019, 2, 5),
-            (2020, 1, 25),
-            (2021, 2, 12),
-            (2022, 2, 1),
-        ):
-            self.assertEqual(
-                self.holidays[date(year, month, day)],
-                "Tahun Baru Imlek",
-            )
+        name = "Tahun Baru Imlek"
+        self.assertHolidaysName(
+            name,
+            "2005-02-09",
+            "2006-01-29",
+            "2007-02-18",
+            "2008-02-07",
+            "2009-01-26",
+            "2010-02-14",
+            "2011-02-03",
+            "2012-01-23",
+            "2013-02-10",
+            "2014-01-31",
+            "2015-02-19",
+            "2016-02-08",
+            "2017-01-28",
+            "2018-02-16",
+            "2019-02-05",
+            "2020-01-25",
+            "2021-02-12",
+            "2022-02-01",
+        )
+        self.assertNoHolidayName(name, Indonesia(years=2002))
 
     def test_day_of_silence(self):
-        for year, month, day in (
-            (2009, 3, 26),
-            (2014, 3, 31),
-            (2018, 3, 17),
-            (2020, 3, 25),
-            (2021, 3, 14),
-            (2022, 3, 3),
-        ):
-            self.assertEqual(
-                self.holidays[date(year, month, day)],
-                "Hari Suci Nyepi",
-            )
+        name = "Hari Suci Nyepi"
+        self.assertHolidaysName(
+            name,
+            "2009-03-26",
+            "2014-03-31",
+            "2018-03-17",
+            "2020-03-25",
+            "2021-03-14",
+            "2022-03-03",
+        )
+        self.assertNoHolidayName(name, Indonesia(years=1982))
 
-        self.assertFalse(Indonesia(years=1982).get_named("Hari Suci Nyepi"))
+    def test_labor_day(self):
+        self.assertHoliday(f"{year}-05-01" for year in range(1953, 1969))
+        self.assertHoliday(f"{year}-05-01" for year in range(2014, 2050))
+        self.assertNoHoliday("1952-05-01", "1969-05-01", "2013-05-01")
+        self.assertNoHolidayName(
+            "Hari Buruh Internasional", Indonesia(years=(1952, 1969, 2013))
+        )
+
+    def test_pancasila_day(self):
+        self.assertHoliday(f"{year}-06-01" for year in range(2017, 2050))
+        self.assertNoHoliday("2016-06-01")
+        self.assertNoHolidayNameInYears(
+            "Hari Lahir Pancasila", range(2000, 2017)
+        )
+
+    def test_independence_day(self):
+        self.assertHoliday(f"{year}-08-17" for year in range(2000, 2050))
+
+    def test_christmas_day(self):
+        self.assertHoliday(f"{year}-12-25" for year in range(2000, 2050))
+
+    def test_easter(self):
+        # Good Friday
+        self.assertHoliday(
+            "2000-04-21",
+            "2010-04-02",
+            "2018-03-30",
+            "2019-04-19",
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+        )
+
+        # Ascension Day
+        self.assertHoliday(
+            "2000-06-01",
+            "2010-05-13",
+            "2018-05-10",
+            "2019-05-30",
+            "2020-05-21",
+            "2021-05-13",
+            "2022-05-26",
+            "2023-05-18",
+        )
 
     def test_islamic_holidays(self):
-        for year, month, day in (
+        self.assertHoliday(
             # Eid al-Fitr
-            (2001, 12, 16),
-            (2001, 12, 17),
-            (2011, 8, 30),
-            (2011, 8, 31),
-            (2018, 6, 15),
-            (2018, 6, 16),
-            (1991, 4, 15),
-            (1991, 4, 16),
-            (1996, 2, 19),
-            (1996, 2, 20),
-            (1999, 1, 18),
-            (1999, 1, 19),
+            "2001-12-16",
+            "2001-12-17",
+            "2011-08-30",
+            "2011-08-31",
+            "2018-06-15",
+            "2018-06-16",
+            "1991-04-15",
+            "1991-04-16",
+            "1996-02-19",
+            "1996-02-20",
+            "1999-01-18",
+            "1999-01-19",
             # Eid al-Adha
-            (2001, 3, 6),
-            (2011, 11, 6),
-            (2018, 8, 22),
-            (1991, 6, 22),
-            (1996, 4, 27),
-            (1999, 3, 27),
+            "2001-03-06",
+            "2011-11-06",
+            "2018-08-22",
+            "1991-06-22",
+            "1996-04-27",
+            "1999-03-27",
             # Islamic New Year
-            (2001, 3, 26),
-            (2011, 11, 27),
-            (2018, 9, 11),
-            (1991, 7, 12),
-            (1996, 5, 18),
-            (1999, 4, 17),
+            "2001-03-26",
+            "2011-11-27",
+            "2018-09-11",
+            "1991-07-12",
+            "1996-05-18",
+            "1999-04-17",
             # The Prophet's Birthday
-            (2006, 4, 10),
-            (2011, 2, 15),
-            (2018, 11, 20),
-            (1991, 9, 20),
-            (1996, 7, 27),
-            (1999, 6, 26),
+            "2006-04-10",
+            "2011-02-15",
+            "2018-11-20",
+            "1991-09-20",
+            "1996-07-27",
+            "1999-06-26",
             # The Prophet's Ascension
-            (2001, 10, 15),
-            (2011, 6, 29),
-            (2018, 4, 14),
-            (1991, 2, 11),
-            (1996, 12, 8),
-            (1999, 11, 5),
-        ):
-            self.assertIn(date(year, month, day), self.holidays)
+            "2001-10-15",
+            "2011-06-29",
+            "2018-04-14",
+            "1991-02-11",
+            "1996-12-08",
+            "1999-11-05",
+        )
 
     def test_vesak(self):
-        for year, month, day in (
-            (2007, 6, 1),
-            (2011, 5, 17),
-            (2018, 5, 29),
-            (1991, 5, 28),
-            (1996, 5, 31),
-            (1999, 5, 29),
-        ):
-            self.assertIn(date(year, month, day), self.holidays)
-
-    def test_common(self):
-        self.assertIn(date(2018, 1, 1), self.holidays)  # New Year's Day
-
-        # Labour Day
-        self.assertIn(date(1965, 5, 1), self.holidays)
-        self.assertIn(date(1968, 5, 1), self.holidays)
-        self.assertIn(date(2014, 5, 1), self.holidays)
-        self.assertNotIn(date(1969, 5, 1), self.holidays)
-        self.assertNotIn(date(2013, 5, 1), self.holidays)
-
-        # Pancasila Day
-        self.assertIn(date(2017, 6, 1), self.holidays)
-        self.assertIn(date(2020, 6, 1), self.holidays)
-        self.assertNotIn(date(2016, 6, 1), self.holidays)
-
-        self.assertIn(date(2006, 4, 14), self.holidays)  # Good Friday
-        self.assertIn(date(2013, 5, 9), self.holidays)  # Ascension Day
-
-        self.assertIn(date(2007, 8, 17), self.holidays)  # National Day
-        self.assertIn(date(2014, 12, 25), self.holidays)  # Christmas Day
+        self.assertHoliday(
+            "2007-06-01",
+            "2011-05-17",
+            "2018-05-29",
+            "1991-05-28",
+            "1996-05-31",
+            "1999-05-29",
+        )
 
     def test_special(self):
-        self.assertIn(date(2018, 6, 27), self.holidays)
-        self.assertIn(date(2019, 4, 17), self.holidays)
-        self.assertIn(date(2020, 12, 9), self.holidays)
+        self.assertHoliday("2018-06-27", "2019-04-17", "2020-12-09")
 
     def test_2021(self):
-        for month, day in (
-            (1, 1),
-            (2, 12),
-            (3, 11),
-            (3, 14),
-            (4, 2),
-            (5, 1),
-            (5, 13),
-            (5, 14),
-            (5, 26),
-            (6, 1),
-            (7, 20),
-            (8, 11),
-            (8, 17),
-            (10, 19),
-            (12, 25),
-        ):
-            self.assertIn(date(2021, month, day), self.holidays)
+        self.assertHolidays(
+            Indonesia(years=2021),
+            ("2021-01-01", "Tahun Baru Masehi"),
+            ("2021-02-12", "Tahun Baru Imlek"),
+            ("2021-03-11", "Isra' Mi'raj Nabi Muhammad"),
+            ("2021-03-14", "Hari Suci Nyepi"),
+            ("2021-04-02", "Wafat Yesus Kristus"),
+            ("2021-05-01", "Hari Buruh Internasional"),
+            ("2021-05-13", "Hari Raya Idul Fitri; Kenaikan Yesus Kristus"),
+            ("2021-05-14", "Hari kedua dari Hari Raya Idul Fitri"),
+            ("2021-05-26", "Hari Raya Waisak"),
+            ("2021-06-01", "Hari Lahir Pancasila"),
+            ("2021-07-20", "Hari Raya Idul Adha"),
+            ("2021-08-11", "Tahun Baru Islam"),
+            ("2021-08-17", "Hari Kemerdekaan Republik Indonesia"),
+            ("2021-10-19", "Maulid Nabi Muhammad"),
+            ("2021-12-25", "Hari Raya Natal"),
+        )
 
     def test_2022(self):
-        for month, day in (
-            (1, 1),
-            (2, 1),
-            (2, 28),
-            (3, 3),
-            (4, 15),
-            (5, 1),
-            (5, 2),
-            (5, 3),
-            (5, 16),
-            (5, 26),
-            (6, 1),
-            (7, 10),
-            (7, 30),
-            (8, 17),
-            (10, 8),
-            (12, 25),
-        ):
-            self.assertIn(date(2022, month, day), self.holidays)
+        self.assertHolidays(
+            Indonesia(years=2022),
+            ("2022-01-01", "Tahun Baru Masehi"),
+            ("2022-02-01", "Tahun Baru Imlek"),
+            ("2022-02-28", "Isra' Mi'raj Nabi Muhammad"),
+            ("2022-03-03", "Hari Suci Nyepi"),
+            ("2022-04-15", "Wafat Yesus Kristus"),
+            ("2022-05-01", "Hari Buruh Internasional"),
+            ("2022-05-02", "Hari Raya Idul Fitri"),
+            ("2022-05-03", "Hari kedua dari Hari Raya Idul Fitri"),
+            ("2022-05-16", "Hari Raya Waisak"),
+            ("2022-05-26", "Kenaikan Yesus Kristus"),
+            ("2022-06-01", "Hari Lahir Pancasila"),
+            ("2022-07-10", "Hari Raya Idul Adha"),
+            ("2022-07-30", "Tahun Baru Islam"),
+            ("2022-08-17", "Hari Kemerdekaan Republik Indonesia"),
+            ("2022-10-08", "Maulid Nabi Muhammad"),
+            ("2022-12-25", "Hari Raya Natal"),
+        )
