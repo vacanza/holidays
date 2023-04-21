@@ -333,23 +333,74 @@ class TestUkraine(TestCase):
         )
 
     def test_l10n_default(self):
-        self.assert_l10n_default(
+        self.assertLocalizedHolidays(
             (
                 ("2021-01-01", "Новий рік"),
+                ("2021-01-07", "Різдво Христове (за юліанським календарем)"),
+                ("2021-03-08", "Міжнародний жіночий день"),
+                ("2021-05-01", "День праці"),
+                ("2021-05-02", "Великдень (Пасха)"),
+                ("2021-05-03", "День праці (вихідний)"),
+                ("2021-05-04", "Великдень (Пасха) (вихідний)"),
+                (
+                    "2021-05-09",
+                    "День перемоги над нацизмом у Другій світовій війні "
+                    "(День перемоги)",
+                ),
+                (
+                    "2021-05-10",
+                    "День перемоги над нацизмом у Другій світовій війні "
+                    "(День перемоги) (вихідний)",
+                ),
+                ("2021-06-20", "Трійця"),
+                ("2021-06-21", "Трійця (вихідний)"),
+                ("2021-06-28", "День Конституції України"),
+                ("2021-08-24", "День незалежності України"),
+                ("2021-10-14", "День захисників і захисниць України"),
                 (
                     "2021-12-25",
                     "Різдво Христове (за григоріанським календарем)",
+                ),
+                (
+                    "2021-12-27",
+                    "Різдво Христове (за григоріанським календарем) "
+                    "(вихідний)",
                 ),
             )
         )
 
     def test_l10n_en_us(self):
-        self.assert_l10n_language(
-            "en_US",
+        self.assertLocalizedHolidays(
             (
-                ("2021-01-01", "New Year's Day"),
-                ("2021-01-07", "Christmas (Julian calendar)"),
-                ("2021-12-25", "Christmas (Gregorian calendar)"),
-                ("2022-01-03", "New Year's Day (Observed)"),
+                (
+                    ("2021-01-01", "New Year's Day"),
+                    ("2021-01-07", "Christmas (Julian calendar)"),
+                    ("2021-03-08", "International Women's Day"),
+                    ("2021-05-01", "Labor Day"),
+                    ("2021-05-02", "Easter Sunday (Pascha)"),
+                    ("2021-05-03", "Labor Day (Observed)"),
+                    ("2021-05-04", "Easter Sunday (Pascha) (Observed)"),
+                    (
+                        "2021-05-09",
+                        "Day of Victory over Nazism in World War II "
+                        "(Victory Day)",
+                    ),
+                    (
+                        "2021-05-10",
+                        "Day of Victory over Nazism in World War II "
+                        "(Victory Day) (Observed)",
+                    ),
+                    ("2021-06-20", "Holy Trinity Day"),
+                    ("2021-06-21", "Holy Trinity Day (Observed)"),
+                    ("2021-06-28", "Day of the Constitution of Ukraine"),
+                    ("2021-08-24", "Independence Day"),
+                    ("2021-10-14", "Day of defenders of Ukraine"),
+                    ("2021-12-25", "Christmas (Gregorian calendar)"),
+                    (
+                        "2021-12-27",
+                        "Christmas (Gregorian calendar) (Observed)",
+                    ),
+                )
             ),
+            "en_US",
         )

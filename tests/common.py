@@ -382,6 +382,31 @@ class TestCase(unittest.TestCase):
         for lng in (language, None, "invalid"):
             self._assert_l10n_test(lng, holiday_list)
 
+    def _assertLocalizedHolidays(self, localized_holidays, language=None):
+        """Helper: assert localized holidays match expected names."""
+        instance = self.test_class(language=language)
+        for dt, name in localized_holidays:
+            self.assertEqual(instance[dt], name, dt)
+        actual_holidays = tuple(
+            sorted(
+                (dt.strftime("%Y-%m-%d"), name)
+                for dt, name in instance.items()
+            )
+        )
+        self.assertEqual(
+            len(actual_holidays),
+            len(localized_holidays),
+            "Plese make sure all holiday names are localized: "
+            f"{actual_holidays}",
+        )
+
+    def assertLocalizedHolidays(self, localized_holidays, language=None):
+        """Helper: assert localized holidays match expected names."""
+        if language:
+            self.set_language(language)
+        for language in (language, "invalid", ""):
+            self._assertLocalizedHolidays(localized_holidays, language)
+
 
 class SundayHolidays(TestCase):
     """Common class to test countries with Sundays as a holidays."""
