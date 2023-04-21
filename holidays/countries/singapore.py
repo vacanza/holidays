@@ -9,19 +9,23 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from datetime import timedelta as td
 from typing import Dict, Iterable, Optional, Tuple, Union
 
-from dateutil.easter import easter
-
-from holidays.calendars import _ChineseLuniSolar, _islamic_to_gre
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChineseCalendarHolidays, ChristianHolidays
+from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
 
 
-class Singapore(HolidayBase):
+class Singapore(
+    HolidayBase,
+    ChineseCalendarHolidays,
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+):
     country = "SG"
     special_holidays = {
         2001: ((NOV, 3, "Polling Day"),),
@@ -80,33 +84,25 @@ class Singapore(HolidayBase):
 
         See parameters and usage in :py:class:`HolidayBase`.
         """
-
-        self.cnls = _ChineseLuniSolar()
+        ChineseCalendarHolidays.__init__(self)
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        IslamicHolidays.__init__(self)
         super().__init__(
             years, expand, observed, subdiv, prov, state, language
         )
 
     def _populate(self, year) -> None:
-        # Implement Section 4(2) of the Holidays Act:
-        # "if any day specified in the Schedule falls on a Sunday,
-        # the day next following not being itself a public holiday
-        # is declared a public holiday in Singapore."
-        def _add_with_observed(
-            hol_date: date, hol_name: str, days: int = +1
-        ) -> None:
-            self[hol_date] = hol_name
-            if self.observed and self._is_sunday(hol_date) and year >= 1998:
-                self[hol_date + td(days=days)] = f"{hol_name} (Observed)"
-
         super()._populate(year)
+        observed_dates = set()
 
         # New Year's Day
-        _add_with_observed(date(year, JAN, 1), "New Year's Day")
+        observed_dates.add(self._add_new_years_day("New Year's Day"))
 
         # Chinese New Year (two days)
-        hol_date = self.cnls.lunar_n_y_date(year)
-        _add_with_observed(hol_date, "Chinese New Year", days=+2)
-        _add_with_observed(hol_date + td(days=+1), "Chinese New Year")
+        name = "Chinese New Year"
+        observed_dates.add(self._add_chinese_new_years_day(name))
+        observed_dates.add(self._add_chinese_new_years_day_two(name))
 
         # Hari Raya Puasa
         # aka Eid al-Fitr
@@ -138,20 +134,24 @@ class Singapore(HolidayBase):
             2023: ((APR, 22),),
         }
         if year in dates_fixed_multiple_obs:
-            for month_day in dates_fixed_multiple_obs[year]:
-                hol_date = date(year, *month_day)
-                _add_with_observed(hol_date, "Hari Raya Puasa")
+            for hol_date in dates_fixed_multiple_obs[year]:
+                observed_dates.add(
+                    self._add_holiday(  # type: ignore[arg-type]
+                        "Hari Raya Puasa", *hol_date
+                    )
+                )
                 # Second day of Hari Raya Puasa (up to and including 1968)
                 # Removed since we don't have Hari Raya Puasa dates for the
                 # the years <= 1968.
         else:
-            for hol_date in _islamic_to_gre(year, 10, 1):
-                _add_with_observed(hol_date, "Hari Raya Puasa* (*estimated)")
-                # Second day of Hari Raya Puasa (up to and including 1968)
-                if year <= 1968:
-                    self[
-                        hol_date + td(days=+1)
-                    ] = "Second day of Hari Raya Puasa* (*estimated)"
+            observed_dates.update(
+                self._add_eid_al_fitr_day("Hari Raya Puasa* (*estimated)")
+            )
+            # Second day of Hari Raya Puasa (up to and including 1968)
+            if year <= 1968:
+                self._add_eid_al_fitr_day_two(
+                    "Second day of Hari Raya Puasa* (*estimated)"
+                )
 
         # Hari Raya Haji
         # aka Eid al-Adha
@@ -183,29 +183,29 @@ class Singapore(HolidayBase):
             2023: ((JUN, 29),),
         }
         if year in dates_fixed_multiple_obs:
-            for month_day in dates_fixed_multiple_obs[year]:
-                hol_date = date(year, *month_day)
-                if year == 2006:
-                    self[hol_date] = "Hari Raya Haji"
-                else:
-                    _add_with_observed(hol_date, "Hari Raya Haji")
+            for hol_date in dates_fixed_multiple_obs[year]:
+                observed_dates.add(
+                    self._add_holiday(  # type: ignore[arg-type]
+                        "Hari Raya Haji", *hol_date
+                    )
+                )
         else:
-            for hol_date in _islamic_to_gre(year, 12, 10):
-                _add_with_observed(hol_date, "Hari Raya Haji* (*estimated)")
+            observed_dates.update(
+                self._add_eid_al_adha_day("Hari Raya Haji* (*estimated)")
+            )
 
-        easter_date = easter(year)
         # Good Friday
-        self[easter_date + td(days=-2)] = "Good Friday"
+        self._add_good_friday("Good Friday")
 
         if year <= 1968:
             # Holy Saturday
-            self[easter_date + td(days=-1)] = "Holy Saturday"
+            self._add_holy_saturday("Holy Saturday")
 
             # Easter Monday
-            self[easter_date + td(days=+1)] = "Easter Monday"
+            self._add_easter_monday("Easter Monday")
 
         # Labour Day
-        _add_with_observed(date(year, MAY, 1), "Labour Day")
+        observed_dates.add(self._add_labor_day("Labour Day"))
 
         # Vesak Day
         # date of observance is announced yearly
@@ -238,14 +238,22 @@ class Singapore(HolidayBase):
             2023: (JUN, 2),
         }
         if year in dates_fixed_obs:
-            hol_date = date(year, *dates_fixed_obs[year])
-            _add_with_observed(hol_date, "Vesak Day")
+            observed_dates.add(
+                self._add_holiday(  # type: ignore[arg-type]
+                    "Vesak Day", *dates_fixed_obs[year]
+                )
+            )
         else:
-            hol_date = self.cnls.vesak_date(year)
-            _add_with_observed(hol_date, "Vesak Day* (*estimated)")
+            observed_dates.add(
+                self._add_chinese_calendar_holiday(
+                    "Vesak Day* (*estimated)", 4, 15
+                )
+            )
 
         # National Day
-        _add_with_observed(date(year, AUG, 9), "National Day")
+        observed_dates.add(
+            self._add_holiday("National Day", AUG, 9)  # type: ignore[arg-type]
+        )
 
         # Deepavali
         # aka Diwali
@@ -276,24 +284,42 @@ class Singapore(HolidayBase):
             2023: (NOV, 12),
         }
         if year in dates_fixed_obs:
-            hol_date = date(year, *dates_fixed_obs[year])
-            _add_with_observed(hol_date, "Deepavali")
+            observed_dates.add(
+                self._add_holiday(  # type: ignore[arg-type]
+                    "Deepavali", *dates_fixed_obs[year]
+                )
+            )
         else:
-            hol_date = self.cnls.s_diwali_date(year)
-            _add_with_observed(hol_date, "Deepavali* (*estimated)")
+            observed_dates.add(
+                self._add_holiday(  # type: ignore[arg-type]
+                    "Deepavali* (*estimated)",
+                    self._convert_chinese_to_gre(10, 1) + td(days=-2),
+                )
+            )
 
         # Christmas Day
-        _add_with_observed(
-            date(year, DEC, 25), "Christmas Day", +2 if year == 2039 else +1
-        )
+        observed_dates.add(self._add_christmas_day("Christmas Day"))
 
         # Boxing day (up to and including 1968)
         if year <= 1968:
-            self[date(year, DEC, 26)] = "Boxing Day"
+            self._add_christmas_day_two("Boxing Day")
+
+        # Implement Section 4(2) of the Holidays Act:
+        # "if any day specified in the Schedule falls on a Sunday,
+        # the day next following not being itself a public holiday
+        # is declared a public holiday in Singapore."
+        if self.observed and year >= 1998:
+            for dt in sorted(observed_dates):
+                if not self._is_sunday(dt):
+                    continue
+                obs_date = dt + td(days=+1)
+                if obs_date in observed_dates:
+                    obs_date += td(days=+1)
+                self._add_holiday("%s (Observed)" % self[dt], obs_date)
 
         # special case (observed from previuos year)
         if self.observed and year == 2007:
-            self[date(2007, JAN, 2)] = "Hari Raya Haji (Observed)"
+            self._add_holiday("Hari Raya Haji (Observed)", JAN, 2)
 
 
 class SG(Singapore):
