@@ -9,52 +9,63 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import importlib.util
-import unittest
-from datetime import date
-
-import holidays
+from holidays.countries.united_arab_emirates import UnitedArabEmirates, AE, ARE
+from tests.common import TestCase
 
 
-class UnitedArabEmirates(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.AE()
+class TestUnitedArabEmirates(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(UnitedArabEmirates)
+
+    def test_country_aliases(self):
+        self.assertCountryAliases(UnitedArabEmirates, AE, ARE)
 
     def test_2020(self):
-        self.assertIn(date(2020, 1, 1), self.holidays)
-        self.assertIn(date(2020, 12, 1), self.holidays)
-        self.assertIn(date(2020, 12, 2), self.holidays)
-        self.assertIn(date(2020, 12, 3), self.holidays)
+        self.assertHolidays(
+            UnitedArabEmirates(years=2020),
+            ("2020-01-01", "New Year's Day"),
+            ("2020-05-24", "Eid al-Fitr"),
+            ("2020-05-25", "Eid al-Fitr Holiday"),
+            ("2020-05-26", "Eid al-Fitr Holiday"),
+            ("2020-07-30", "Arafat (Hajj) Day"),
+            ("2020-07-31", "Eid al-Adha"),
+            ("2020-08-01", "Eid al-Adha Holiday"),
+            ("2020-08-02", "Eid al-Adha Holiday"),
+            ("2020-08-23", "Al Hijra - Islamic New Year"),
+            ("2020-12-01", "Commemoration Day"),
+            ("2020-12-02", "National Day"),
+            ("2020-12-03", "National Day Holiday"),
+        )
 
     def test_commemoration_day_since_2015(self):
-        # Before 2009 Jan 25th wasn't celebrated
-        self.holidays = holidays.AE(years=[2014])
-        self.assertNotIn(date(2014, 11, 30), self.holidays)
-
-        self.holidays = holidays.AE(years=[2015])
-        self.assertIn(date(2015, 11, 30), self.holidays)
-
-        # Since 2019, Commemoration Day celebrated on Dec 1
-        self.holidays = holidays.AE(years=[2019])
-        self.assertNotIn(date(2019, 11, 30), self.holidays)
-        self.assertIn(date(2019, 12, 1), self.holidays)
+        self.assertNoHoliday("2014-11-30")
+        self.assertNoHolidayName(
+            "Commemoration Day", UnitedArabEmirates(years=2014)
+        )
+        self.assertHoliday(
+            "2015-11-30", "2016-11-30", "2017-11-30", "2018-11-30"
+        )
+        self.assertNoHoliday("2019-11-30")
+        self.assertHoliday("2019-12-01")
 
     def test_hijri_based(self):
-        if importlib.util.find_spec("hijri_converter"):
+        self.assertHoliday(
             # Eid Al-Fitr
-            self.assertIn(date(2020, 5, 24), self.holidays)
-            self.assertIn(date(2020, 5, 25), self.holidays)
-            self.assertIn(date(2020, 5, 26), self.holidays)
+            "2020-05-24",
+            "2020-05-25",
+            "2020-05-26",
             # Arafat Day & Eid Al-Adha
-            self.assertIn(date(2020, 7, 30), self.holidays)
-            self.assertIn(date(2020, 7, 31), self.holidays)
-            self.assertIn(date(2020, 8, 1), self.holidays)
-            self.assertIn(date(2020, 8, 2), self.holidays)
+            "2020-07-30",
+            "2020-07-31",
+            "2020-08-01",
+            "2020-08-02",
             # Islamic New Year
-            self.assertIn(date(2008, 1, 10), self.holidays)
-            self.assertIn(date(2008, 12, 29), self.holidays)
-            self.assertIn(date(2020, 8, 23), self.holidays)
+            "2008-01-10",
+            "2008-12-29",
+            "2020-08-23",
             # Leilat Al-Miraj 2018
-            self.assertIn(date(2018, 4, 13), self.holidays)
+            "2018-04-13",
             # Prophet's Birthday 2018
-            self.assertIn(date(2018, 11, 19), self.holidays)
+            "2018-11-19",
+        )

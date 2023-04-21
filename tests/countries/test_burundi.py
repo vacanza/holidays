@@ -15,8 +15,8 @@ from tests.common import TestCase
 
 class TestBurundi(TestCase):
     @classmethod
-    def setUpClass(self):
-        super().setUpClass(Burundi)
+    def setUpClass(cls):
+        super().setUpClass(Burundi, years=range(1962, 2050))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Burundi, BI, BDI)
@@ -31,14 +31,14 @@ class TestBurundi(TestCase):
 
     def test_unity_day(self):
         name = "Unity Day"
-        self.assertNoHolidayName(name, Burundi(years=range(1962, 1992)))
+        self.assertNoHolidayNameInYears(name, range(1962, 1992))
         self.assertHolidaysName(
             name, (f"{year}-02-05" for year in range(1992, 2050))
         )
 
     def test_ntaryamira_day(self):
         name = "President Ntaryamira Day"
-        self.assertNoHolidayName(name, Burundi(years=range(1962, 1995)))
+        self.assertNoHolidayNameInYears(name, range(1962, 1995))
         self.assertHolidaysName(
             name, (f"{year}-04-06" for year in range(1995, 2050))
         )
@@ -69,7 +69,7 @@ class TestBurundi(TestCase):
 
     def test_nkurunziza_day(self):
         name = "President Nkurunziza Day"
-        self.assertNoHolidayName(name, Burundi(years=range(1962, 2022)))
+        self.assertNoHolidayNameInYears(name, range(1962, 2022))
         self.assertHolidaysName(
             name, (f"{year}-06-08" for year in range(2022, 2050))
         )
@@ -92,7 +92,7 @@ class TestBurundi(TestCase):
 
     def test_ndadaye_day(self):
         name = "President Ndadaye's Day"
-        self.assertNoHolidayName(name, Burundi(years=range(1962, 1994)))
+        self.assertNoHolidayNameInYears(name, range(1962, 1994))
         self.assertHolidaysName(
             name, (f"{year}-10-21" for year in range(1994, 2050))
         )

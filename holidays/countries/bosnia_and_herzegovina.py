@@ -10,17 +10,18 @@
 #  License: MIT (see LICENSE file)
 #  Copyright: Kateryna Golovanova <kate@kgthreads.com>, 2022
 
-from datetime import date
 from datetime import timedelta as td
 
-from dateutil.easter import EASTER_ORTHODOX, easter
-
-from holidays.calendars import _islamic_to_gre
-from holidays.constants import JAN, MAR, MAY, NOV, DEC
+from holidays.calendars import GREGORIAN_CALENDAR, JULIAN_CALENDAR
+from holidays.constants import JAN, MAR, NOV
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, IslamicHolidays
+from holidays.holiday_groups import InternationalHolidays
 
 
-class BosniaAndHerzegovina(HolidayBase):
+class BosniaAndHerzegovina(
+    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
+):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Bosnia_and_Herzegovina
     https://www.paragraf.ba/neradni-dani-fbih.html
@@ -35,114 +36,143 @@ class BosniaAndHerzegovina(HolidayBase):
         "RS",
     ]
 
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self, JULIAN_CALENDAR)
+        InternationalHolidays.__init__(self)
+        IslamicHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year):
-        def _add_holiday(hol_date: date, hol_name: str) -> None:
-            if hol_date.year == year:
-                self[hol_date] = hol_name
+        super()._populate(year)
 
+        # Orthodox Christmas
+        self._add_christmas_day("Božić (Божић)")
+
+        # Orthodox Good Friday
+        self._add_good_friday("Veliki Petak (Pravoslavni)")
+
+        # Labor Day
+        may_1 = self._add_labor_day("Dan rada")
+        self._add_holiday("Drugi dan Dana rada", may_1 + td(days=+1))
+
+        if self.observed and self._is_sunday(may_1):
+            self._add_holiday("Treći dan Dana rada", may_1 + td(days=+2))
+
+        self._set_calendar(GREGORIAN_CALENDAR)
+
+        # Catholic Easter Monday
+        self._add_easter_monday("Uskrsni ponedjeljak (Katolički)")
+
+        # Catholic Christmas
+        self._add_christmas_day("Božić (Katolički)")
+
+        self._set_calendar(JULIAN_CALENDAR)
+
+        # Eid al-Fitr
+        self._add_eid_al_fitr_day("Ramazanski Bajram")
+
+        # Eid ul-Adha
+        self._add_eid_al_adha_day("Kurban Bajram")
+
+    def _add_subdiv_holidays(self):
         # New Year's Day
-        new_year = date(year, JAN, 1)
-        self[new_year] = "Nova Godina"
-        self[new_year + td(days=+1)] = "Drugi dan Nove Godine"
-
+        jan_1 = self._add_new_years_day("Nova Godina")
+        self._add_new_years_day_two("Drugi dan Nove Godine")
         if (
             self.subdiv in {"FBiH", "BD"}
             and self.observed
-            and self._is_sunday(new_year)
+            and self._is_sunday(jan_1)
         ):
-            self[new_year + td(days=+2)] = "Treći dan Nove Godine"
+            self._add_new_years_day_three("Treći dan Nove Godine")
 
+        super()._add_subdiv_holidays()
+
+    def _add_subdiv_bd_holidays(self):
+        # Day of establishment of Brčko District
+        self._add_holiday("Dan uspostavljanja Brčko distrikta", MAR, 8)
+
+    def _add_subdiv_fbih_holidays(self):
         # Orthodox Christmas Eve
-        if self.subdiv in {"FBiH", "RS"}:
-            self[date(year, JAN, 6)] = "Pravoslavno Badnje veče"
-
-        # Orthodox Christmas
-        self[date(year, JAN, 7)] = "Božić (Божић)"
-
-        # Orthodox New Year
-        if self.subdiv == "RS":
-            self[date(year, JAN, 14)] = "Pravoslavna Nova Godina"
+        self._add_christmas_eve("Pravoslavno Badnje veče")
 
         # Independence Day
-        if self.subdiv == "FBiH":
-            self[date(year, MAR, 1)] = "Dan nezavisnosti"
+        self._add_holiday("Dan nezavisnosti", MAR, 1)
 
-        # Day of establishment of Brčko District
-        if self.subdiv == "BD":
-            self[date(year, MAR, 8)] = "Dan uspostavljanja Brčko distrikta"
+        # Orthodox Easter
+        self._add_easter_sunday("Vaskrs (Pravoslavni)")
 
-        easter_date_catholic = easter(year)
-        easter_date_orthodox = easter(year, method=EASTER_ORTHODOX)
-        if self.subdiv in {"FBiH", "RS"}:
-            # Catholic Good Friday
-            self[
-                easter_date_catholic + td(days=-2)
-            ] = "Veliki Petak (Katolički)"
-
-            # Catholic Easter
-            self[easter_date_catholic] = "Uskrs (Katolički)"
-
-            # Orthodox Easter
-            self[easter_date_orthodox] = "Vaskrs (Pravoslavni)"
-
-            # Orthodox Easter Monday
-            self[
-                easter_date_orthodox + td(days=+1)
-            ] = "Uskrsni ponedjeljak (Pravoslavni)"
-
-        # Catholic Easter Monday
-        self[
-            easter_date_catholic + td(days=+1)
-        ] = "Uskrsni ponedjeljak (Katolički)"
-
-        # Orthodox Good Friday
-        self[easter_date_orthodox + td(days=-2)] = "Veliki Petak (Pravoslavni)"
-
-        # Labor Day
-        may_1 = date(year, MAY, 1)
-        self[may_1] = "Dan rada"
-        self[may_1 + td(days=+1)] = "Drugi dan Dana rada"
-
-        if self.observed and self._is_sunday(may_1):
-            self[may_1 + td(days=+2)] = "Treći dan Dana rada"
+        # Orthodox Easter Monday
+        self._add_easter_monday("Uskrsni ponedjeljak (Pravoslavni)")
 
         # Victory Day
-        if self.subdiv in {"FBiH", "RS"}:
-            self[date(year, MAY, 9)] = "Dan pobjede nad fašizmom"
-
-        for yr in (year - 1, year):
-            # Eid al-Fitr
-            # Date of observance is announced yearly, this is an estimate
-            for dt in _islamic_to_gre(yr, 10, 1):
-                _add_holiday(dt, "Ramazanski Bajram")
-                if self.subdiv in {"FBiH", "RS"}:
-                    _add_holiday(
-                        dt + td(days=+1), "Drugi Dan Ramazanski Bajram"
-                    )
-            # Eid ul-Adha
-            # Date of observance is announced yearly, this is an estimate
-            for dt in _islamic_to_gre(yr, 12, 10):
-                _add_holiday(dt, "Kurban Bajram")
-                if self.subdiv in {"FBiH", "RS"}:
-                    _add_holiday(dt + td(days=+1), "Drugi Dan Kurban Bajram")
-
-        # Dayton Agreement Day
-        if self.subdiv == "RS":
-            self[date(year, NOV, 21)] = (
-                "Dan uspostave Opšteg okvirnog sporazuma za mir u "
-                "Bosni i Hercegovini"
-            )
+        self._add_world_war_two_victory_day("Dan pobjede nad fašizmom")
 
         # Statehood Day
-        if self.subdiv == "FBiH":
-            self[date(year, NOV, 25)] = "Dan državnosti"
+        self._add_holiday("Dan državnosti", NOV, 25)
+
+        self._set_calendar(GREGORIAN_CALENDAR)
+
+        # Catholic Good Friday
+        self._add_good_friday("Veliki Petak (Katolički)")
+
+        # Catholic Easter
+        self._add_easter_sunday("Uskrs (Katolički)")
 
         # Catholic Christmas Eve
-        if self.subdiv in {"FBiH", "RS"}:
-            self[date(year, DEC, 24)] = "Badnji dan (Katolički)"
+        self._add_christmas_eve("Badnji dan (Katolički)")
 
-        # Catholic Christmas
-        self[date(year, DEC, 25)] = "Božić (Katolički)"
+        self._set_calendar(JULIAN_CALENDAR)
+
+        # Eid al-Fitr, day 2
+        self._add_eid_al_fitr_day_two("Drugi Dan Ramazanski Bajram")
+
+        # Eid ul-Adha, day 2
+        self._add_eid_al_adha_day_two("Drugi Dan Kurban Bajram")
+
+    def _add_subdiv_rs_holidays(self):
+        # Orthodox Christmas Eve
+        self._add_christmas_eve("Pravoslavno Badnje veče")
+
+        # Orthodox New Year
+        self._add_holiday("Pravoslavna Nova Godina", JAN, 14)
+
+        # Orthodox Easter
+        self._add_easter_sunday("Vaskrs (Pravoslavni)")
+
+        # Orthodox Easter Monday
+        self._add_easter_monday("Uskrsni ponedjeljak (Pravoslavni)")
+
+        # Victory Day
+        self._add_world_war_two_victory_day("Dan pobjede nad fašizmom")
+
+        # Dayton Agreement Day
+        self._add_holiday(
+            (
+                "Dan uspostave Opšteg okvirnog sporazuma za mir u "
+                "Bosni i Hercegovini"
+            ),
+            NOV,
+            21,
+        )
+
+        self._set_calendar(GREGORIAN_CALENDAR)
+
+        # Catholic Good Friday
+        self._add_good_friday("Veliki Petak (Katolički)")
+
+        # Catholic Easter
+        self._add_easter_sunday("Uskrs (Katolički)")
+
+        # Catholic Christmas Eve
+        self._add_christmas_eve("Badnji dan (Katolički)")
+
+        self._set_calendar(JULIAN_CALENDAR)
+
+        # Eid al-Fitr, day 2
+        self._add_eid_al_fitr_day_two("Drugi Dan Ramazanski Bajram")
+
+        # Eid ul-Adha, day 2
+        self._add_eid_al_adha_day_two("Drugi Dan Kurban Bajram")
 
 
 class BA(BosniaAndHerzegovina):

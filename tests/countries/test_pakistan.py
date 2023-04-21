@@ -17,8 +17,9 @@ from tests.common import TestCase
 
 
 class TestPakistan(TestCase):
-    def setUp(self):
-        self.holidays = Pakistan()
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Pakistan, years=range(1948, 2050))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Pakistan, PK, PAK)
@@ -28,43 +29,44 @@ class TestPakistan(TestCase):
 
     def test_kashmir_day(self):
         name = "Kashmir Solidarity Day"
-        for year in range(1990, 2050):
-            self.assertIn(name, Pakistan(years=year).get(f"{year}-02-05"))
-        for year in range(1948, 1990):
-            self.assertEqual(Pakistan(years=year).get_named(name), [])
+        self.assertHolidaysName(
+            name, (f"{year}-02-05" for year in range(1990, 2050))
+        )
+        self.assertNoHolidayNameInYears(name, range(1948, 1990))
 
     def test_pakistan_day(self):
         name = "Pakistan Day"
-        for year in range(1956, 2050):
-            self.assertIn(name, Pakistan(years=year).get(f"{year}-03-23"))
-        for year in range(1948, 1956):
-            self.assertEqual(Pakistan(years=year).get_named(name), [])
+        self.assertHolidaysName(
+            name, (f"{year}-03-23" for year in range(1956, 2050))
+        )
+        self.assertNoHolidayNameInYears(name, range(1948, 1956))
 
     def test_labour_day(self):
         name = "Labour Day"
-        for year in range(1972, 2050):
-            self.assertIn(name, Pakistan(years=year).get(f"{year}-05-01"))
-        for year in range(1948, 1972):
-            self.assertEqual(Pakistan(years=year).get_named(name), [])
+        self.assertHolidaysName(
+            name, (f"{year}-05-01" for year in range(1972, 2050))
+        )
+        self.assertNoHolidayNameInYears(name, range(1948, 1972))
 
     def test_independence_day(self):
-        name = "Independence Day"
-        for year in range(1948, 2050):
-            self.assertIn(name, Pakistan(years=year).get(f"{year}-08-14"))
+        self.assertHolidaysName(
+            "Independence Day", (f"{year}-08-14" for year in range(1948, 2050))
+        )
 
     def test_iqbal_day(self):
         name = "Iqbal Day"
-        for year in range(1948, 2015):
-            self.assertIn(name, Pakistan(years=year).get(f"{year}-11-09"))
-        for year in range(2022, 2050):
-            self.assertIn(name, Pakistan(years=year).get(f"{year}-11-09"))
-        for year in range(2015, 2022):
-            self.assertEqual(Pakistan(years=year).get_named(name), [])
+        self.assertHolidaysName(
+            name, (f"{year}-11-09" for year in range(1948, 2015))
+        )
+        self.assertHolidaysName(
+            name, (f"{year}-11-09" for year in range(2022, 2050))
+        )
+        self.assertNoHolidayNameInYears(name, range(2015, 2022))
 
     def test_quaid_e_azam_day(self):
-        name = "Quaid-e-Azam Day"
-        for year in range(1948, 2050):
-            self.assertIn(name, Pakistan(years=year).get(f"{year}-12-25"))
+        self.assertHolidaysName(
+            "Quaid-e-Azam Day", (f"{year}-12-25" for year in range(1948, 2050))
+        )
 
     def test_eid_ul_fitr(self):
         name = "Eid-ul-Fitr"

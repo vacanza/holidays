@@ -9,44 +9,30 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
-from datetime import date
-
-import holidays
+from holidays.countries.north_macedonia import NorthMacedonia, MK, MKD
+from tests.common import TestCase
 
 
-class TestNorthMacedonia(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.MK()
+class TestNorthMacedonia(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(NorthMacedonia)
 
-    def test_holidays(self):
+    def test_country_aliases(self):
+        self.assertCountryAliases(NorthMacedonia, MK, MKD)
+
+    def test_2019(self):
         # https://en.wikipedia.org/wiki/Public_holidays_in_North_Macedonia
-        self.assertIn(date(2019, 1, 1), self.holidays)  # New Year's Day
-        self.assertIn(
-            date(2019, 1, 7), self.holidays
-        )  # Christmas Day(Orthodox)
-        self.assertIn(
-            date(2019, 4, 29), self.holidays
-        )  # Easter Monday (Orthodox)
-        self.assertIn(
-            date(2020, 4, 20), self.holidays
-        )  # Easter Monday (Orthodox)
-        self.assertIn(date(2019, 5, 1), self.holidays)  # Labour Day
-        self.assertIn(
-            date(2019, 5, 24), self.holidays
-        )  # Saints Cyril and Methodius Day
-        self.assertIn(
-            date(2019, 8, 2), self.holidays
-        )  # Republic Day (North Macedonia)
-        self.assertIn(date(2019, 9, 8), self.holidays)  # Independence Day
-        self.assertIn(
-            date(2019, 10, 11), self.holidays
-        )  # Day of Macedonian Uprising in 1941
-        self.assertIn(
-            date(2019, 10, 23), self.holidays
-        )  # Day of the Macedonian Revolutionary Struggle
-        self.assertIn(
-            date(2019, 12, 8), self.holidays
-        )  # Saint Clement of Ohrid Day
-        self.assertIn(date(2019, 6, 4), self.holidays)  # Eid al-Fitr
-        self.assertIn(date(2020, 5, 24), self.holidays)  # Eid al-Fitr
+        self.assertHolidays(
+            ("2019-01-01", "New Year's Day"),
+            ("2019-01-07", "Christmas Day (Orthodox)"),
+            ("2019-04-29", "Easter Monday (Orthodox)"),
+            ("2019-05-01", "Labour Day"),
+            ("2019-05-24", "Saints Cyril and Methodius Day"),
+            ("2019-06-04", "Eid al-Fitr"),
+            ("2019-08-02", "Republic Day"),
+            ("2019-09-08", "Independence Day"),
+            ("2019-10-11", "Day of Macedonian Uprising in 1941"),
+            ("2019-10-23", "Day of the Macedonian Revolutionary Struggle"),
+            ("2019-12-08", "Saint Clement of Ohrid Day"),
+        )

@@ -9,43 +9,56 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import importlib.util
-import unittest
-from datetime import date
-
-import holidays
+from holidays.countries.tunisia import Tunisia, TN, TUN
+from tests.common import TestCase
 
 
-class TestTunisia(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.TN()
+class TestTunisia(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Tunisia)
 
-    def test2021(self):
-        _holidays = [
-            date(2021, 1, 1),
-            date(2021, 1, 14),
-            date(2021, 3, 20),
-            date(2021, 4, 9),
-            date(2021, 5, 1),
-            date(2021, 7, 25),
-            date(2021, 8, 13),
-            date(2021, 10, 15),
-        ]
-        for TN_hol in _holidays:
-            self.assertIn(TN_hol, self.holidays)
+    def test_country_aliases(self):
+        self.assertCountryAliases(Tunisia, TN, TUN)
+
+    def test_2021(self):
+        self.assertHolidayDates(
+            "2021-01-01",
+            "2021-01-14",
+            "2021-03-20",
+            "2021-04-09",
+            "2021-05-01",
+            "2021-05-13",
+            "2021-05-14",
+            "2021-05-15",
+            "2021-07-19",
+            "2021-07-20",
+            "2021-07-21",
+            "2021-07-22",
+            "2021-07-25",
+            "2021-08-09",
+            "2021-08-13",
+            "2021-10-15",
+            "2021-10-18",
+        )
 
     def test_hijri_based(self):
-        if importlib.util.find_spec("hijri_converter"):
-            # eid_alfitr
-            self.assertIn(date(2015, 7, 17), self.holidays)
-            # eid_aladha
-            self.assertIn(date(2015, 9, 24), self.holidays)
-            # islamic_new_year
-            self.assertIn(date(2008, 1, 10), self.holidays)
-            self.assertIn(date(2008, 12, 29), self.holidays)
-            self.assertIn(date(2015, 10, 14), self.holidays)
-
-            # eid_elfetr_2019
-            self.assertIn(date(2019, 6, 6), self.holidays)
-            # arafat_2019
-            self.assertIn(date(2019, 8, 11), self.holidays)
+        self.assertHoliday(
+            # Eid al-Fitr
+            "2021-05-13",
+            "2021-05-14",
+            "2021-05-15",
+            # Eid al-Adha
+            "2006-01-10",
+            "2006-12-31",
+            "2021-07-19",
+            "2021-07-20",
+            "2021-07-21",
+            "2021-07-22",
+            # Islamic New Year
+            "2008-01-10",
+            "2008-12-29",
+            "2021-08-09",
+            # Prophet Muhammad's Birthday
+            "2021-10-18",
+        )

@@ -9,54 +9,54 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-
-from holidays.calendars import _islamic_to_gre
-from holidays.constants import JAN, MAR, MAY, SEP, OCT, DEC
+from holidays.constants import MAR, SEP, OCT, DEC
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
 
 
-class Uzbekistan(HolidayBase):
+class Uzbekistan(HolidayBase, InternationalHolidays, IslamicHolidays):
     """
     https://www.officeholidays.com/countries/uzbekistan
     """
 
     country = "UZ"
 
+    def __init__(self, *args, **kwargs):
+        InternationalHolidays.__init__(self)
+        IslamicHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year):
         super()._populate(year)
 
-        """Populate the holidays for a given year"""
-        # New Year's holiday
-        self[date(year, JAN, 1)] = "New Year"
+        # New Year
+        self._add_new_years_day("New Year")
 
         # Women's Day
-        self[date(year, MAR, 8)] = "Women's Day"
+        self._add_womens_day("Women's Day")
 
         # Nauryz Holiday
-        self[date(year, MAR, 21)] = "Nauryz"
+        self._add_holiday("Nauryz", MAR, 21)
 
         # Ramadan Khait
         # Date of observance is announced yearly, This is an estimate.
-        for hol_date in _islamic_to_gre(year, 10, 1):
-            self[hol_date] = "Ramadan Khait"
+        self._add_eid_al_fitr_day("Ramadan Khait")
 
         # Memorial Day
-        self[date(year, MAY, 9)] = "Memorial Day"
+        self._add_world_war_two_victory_day("Memorial Day")
 
         # Kurban Khait
         # Date of observance is announced yearly, This is an estimate.
-        for hol_date in _islamic_to_gre(year, 12, 10):
-            self[hol_date] = "Kurban Khait"
+        self._add_eid_al_adha_day("Kurban Khait")
 
-            # Independence Day
-        self[date(year, SEP, 1)] = "Independence Day"
+        # Independence Day
+        self._add_holiday("Independence Day", SEP, 1)
 
         # Teacher's Day
-        self[date(year, OCT, 1)] = "Teacher's Day"
+        self._add_holiday("Teacher's Day", OCT, 1)
 
         # Constitution Day
-        self[date(year, DEC, 8)] = "Constitution"
+        self._add_holiday("Constitution Day", DEC, 8)
 
 
 class UZ(Uzbekistan):
