@@ -16,7 +16,11 @@ from tests.common import TestCase
 class TestThailand(TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Thailand, years=range(1941, 2058))
+        super().setUpClass(
+            Thailand,
+            years=range(1941, 2058),
+            years_non_observed=range(1941, 2058)
+        )
 
     def test_country_aliases(self):
         self.assertCountryAliases(Thailand, TH, THA)
@@ -53,8 +57,8 @@ class TestThailand(TestCase):
             (
                 "2022-07-28",
                 (
-                    "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรเมนทร"
-                    "รามาธิบดีศรีสินทรมหาวชิราลงกรณ พระวชิรเกล้าเจ้าอยู่หัว"
+                    "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรเมนทรรามาธิบดี"
+                    "ศรีสินทรมหาวชิราลงกรณ พระวชิรเกล้าเจ้าอยู่หัว"
                 ),
             ),
             ("2022-07-29", "วันหยุดพิเศษ (เพิ่มเติม)"),
@@ -563,42 +567,122 @@ class TestThailand(TestCase):
         # No Royal Ploughing Ceremony on weekend for 1997-2023
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                th_th = Thailand(language=language)
-                self.assertEqual(th_th["2020-07-27"], "ชดเชยวันสงกรานต์")
-
-                self.assertEqual(th_th["2022-01-01"], "วันขึ้นปีใหม่")
-                self.assertEqual(th_th["2022-04-13"], "วันสงกรานต์")
-                self.assertEqual(th_th["2022-05-02"], "ชดเชยวันแรงงานแห่งชาติ")
-                self.assertEqual(th_th["2022-12-10"], "วันรัฐธรรมนูญ")
-
-        run_tests((Thailand.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((Thailand.default_language,))
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "วันขึ้นปีใหม่"),
+                ("2022-01-03", "ชดเชยวันขึ้นปีใหม่"),
+                ("2022-02-16", "วันมาฆบูชา"),
+                ("2022-04-06", "วันจักรี"),
+                ("2022-04-13", "วันสงกรานต์"),
+                ("2022-04-14", "วันสงกรานต์"),
+                ("2022-04-15", "วันสงกรานต์"),
+                ("2022-05-01", "วันแรงงานแห่งชาติ"),
+                ("2022-05-02", "ชดเชยวันแรงงานแห่งชาติ"),
+                ("2022-05-04", "วันฉัตรมงคล"),
+                ("2022-05-15", "วันวิสาขบูชา"),
+                ("2022-05-16", "ชดเชยวันวิสาขบูชา"),
+                ("2022-05-17", "วันพืชมงคล"),
+                (
+                    "2022-06-03",
+                    (
+                        "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสุทิดา "
+                        "พัชรสุธาพิมลลักษณ พระบรมราชินี"
+                    ),
+                ),
+                ("2022-07-13", "วันอาสาฬหบูชา"),
+                ("2022-07-14", "วันเข้าพรรษา"),
+                ("2022-07-15", "วันหยุดพิเศษ (เพิ่มเติม)"),
+                (
+                    "2022-07-28",
+                    (
+                        "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรเมนทรรามาธิบดี"
+                        "ศรีสินทรมหาวชิราลงกรณ พระวชิรเกล้าเจ้าอยู่หัว"
+                    ),
+                ),
+                ("2022-07-29", "วันหยุดพิเศษ (เพิ่มเติม)"),
+                (
+                    "2022-08-12",
+                    (
+                        "วันเฉลิมพระชนมพรรษาสมเด็จพระบรมราชชนนีพันปีหลวง; "
+                        "วันแม่แห่งชาติ"
+                    ),
+                ),
+                (
+                    "2022-10-13",
+                    (
+                        "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร "
+                        "มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
+                    ),
+                ),
+                ("2022-10-14", "วันหยุดพิเศษ (เพิ่มเติม)"),
+                ("2022-10-23", "วันปิยมหาราช"),
+                ("2022-10-24", "ชดเชยวันปิยมหาราช"),
+                (
+                    "2022-12-05",
+                    (
+                        "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรม"
+                        "ชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร; "
+                        "วันชาติ; วันพ่อแห่งชาติ"
+                    ),
+                ),
+                ("2022-12-10", "วันรัฐธรรมนูญ"),
+                ("2022-12-12", "ชดเชยวันรัฐธรรมนูญ"),
+                ("2022-12-30", "วันหยุดพิเศษ (เพิ่มเติม)"),
+                ("2022-12-31", "วันสิ้นปี"),
+            ),
+            "th"
+        )
 
     def test_l10n_en(self):
-        language = "en_US"
-
-        th_en = Thailand(language=language)
-        self.assertEqual(th_en["2020-07-27"], "Songkran Festival (in lieu)")
-
-        self.assertEqual(th_en["2022-01-01"], "New Year's Day")
-        self.assertEqual(th_en["2022-04-13"], "Songkran Festival")
-        self.assertEqual(th_en["2022-05-02"], "National Labour Day (in lieu)")
-        self.assertEqual(th_en["2022-12-10"], "Constitution Day")
-
-        self.set_language(language)
-        for language in (None, language, "invalid"):
-            th_en = Thailand(language=language)
-            self.assertEqual(
-                th_en["2020-07-27"], "Songkran Festival (in lieu)"
-            )
-
-            self.assertEqual(th_en["2022-01-01"], "New Year's Day")
-            self.assertEqual(th_en["2022-04-13"], "Songkran Festival")
-            self.assertEqual(
-                th_en["2022-05-02"], "National Labour Day (in lieu)"
-            )
-            self.assertEqual(th_en["2022-12-10"], "Constitution Day")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "New Year's Day"),
+                ("2022-01-03", "New Year's Day (in lieu)"),
+                ("2022-02-16", "Makha Bucha"),
+                ("2022-04-06", "Chakri Memorial Day"),
+                ("2022-04-13", "Songkran Festival"),
+                ("2022-04-14", "Songkran Festival"),
+                ("2022-04-15", "Songkran Festival"),
+                ("2022-05-01", "National Labour Day"),
+                ("2022-05-02", "National Labour Day (in lieu)"),
+                ("2022-05-04", "Coronation Day"),
+                ("2022-05-15", "Visakha Bucha"),
+                ("2022-05-16", "Visakha Bucha (in lieu)"),
+                ("2022-05-17", "Royal Ploughing Ceremony"),
+                ("2022-06-03", "HM Queen Suthida's Birthday"),
+                ("2022-07-13", "Asarnha Bucha"),
+                ("2022-07-14", "Buddhist Lent Day"),
+                ("2022-07-15", "Bridge Public Holiday"),
+                ("2022-07-28", "HM King Maha Vajiralongkorn's Birthday"),
+                ("2022-07-29", "Bridge Public Holiday"),
+                (
+                    "2022-08-12",
+                    (
+                        "HM Queen Sirikit The Queen Mother's Birthday; "
+                        "National Mother's Day"
+                    ),
+                ),
+                (
+                    "2022-10-13",
+                    "HM King Bhumibol Adulyadej the Great Memorial Day",
+                ),
+                ("2022-10-14", "Bridge Public Holiday"),
+                ("2022-10-23", "HM King Chulalongkorn Memorial Day"),
+                (
+                    "2022-10-24",
+                    "HM King Chulalongkorn Memorial Day (in lieu)"
+                ),
+                (
+                    "2022-12-05",
+                    (
+                        "HM King Bhumibol Adulyadej the Great's Birthday; "
+                        "National Day; National Father's Day"
+                    ),
+                ),
+                ("2022-12-10", "Constitution Day"),
+                ("2022-12-12", "Constitution Day (in lieu)"),
+                ("2022-12-30", "Bridge Public Holiday"),
+                ("2022-12-31", "New Year's Eve"),
+            ),
+            "en_US"
+        )
