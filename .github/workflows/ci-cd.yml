@@ -33,12 +33,14 @@ jobs:
         uses: actions/setup-python@v4.5.0
         with:
           cache: pip
-          cache-dependency-path: requirements/dev.txt
+          cache-dependency-path: |
+            requirements/runtime.txt
+            requirements/tests.txt
           python-version: ${{ matrix.python-version }}
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade 'coveralls>=3' pip
-          python -m pip install --upgrade --requirement requirements/dev.txt
+          python -m pip install --upgrade --requirement requirements/tests.txt
           python -m pip install --editable .
       - name: Run Tests
         run: |
@@ -59,6 +61,8 @@ jobs:
       - name: Set Up Python
         uses: actions/setup-python@v4.5.0
         with:
+          cache: pip
+          cache-dependency-path: requirements/runtime.txt
           python-version: '3.11'
       - name: Install Dependencies
         run: |

@@ -1,17 +1,5 @@
-# Package runtime requirements.
-convertdate>=2.3.0
-hijri-converter
-korean-lunar-calendar
-python-dateutil
-
-# Test requirements.
-coverage[toml]<7.0.0
-flake8
+# Test environments.
 pre-commit
-pytest
-pytest-cov
-pytest-xdist
-sphinx
 tox
 
 # Localization.
