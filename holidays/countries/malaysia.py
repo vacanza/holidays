@@ -11,18 +11,24 @@
 
 from datetime import date
 from datetime import timedelta as td
-from typing import Iterable, Optional, Union, Dict, List
+from typing import Iterable, Optional, Union
 
-from dateutil.easter import easter
-
-from holidays.calendars import _ChineseLuniSolar, _islamic_to_gre
+from holidays.calendars import _ChineseLuniSolar, _IslamicLunar
 from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC, MON, FRI, SAT, SUN
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChineseCalendarHolidays, ChristianHolidays
+from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
 
 
-class Malaysia(HolidayBase):
+class Malaysia(
+    HolidayBase,
+    ChineseCalendarHolidays,
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+):
     country = "MY"
     special_holidays = {
         # The years 1955 1959 1995 seems to have the elections
@@ -101,31 +107,29 @@ class Malaysia(HolidayBase):
         See parameters and usage in :py:class:`HolidayBase`.
         """
         self.cnls = _ChineseLuniSolar()
+        ChineseCalendarHolidays.__init__(self)
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        IslamicHolidays.__init__(self)
         super().__init__(
             years, expand, observed, subdiv, prov, state, language
         )
 
     def _populate(self, year):
-        def collect_holiday(hol_date: date, hol_name: str) -> None:
-            if hol_date in holiday_date_names_mapping:
-                holiday_date_names_mapping[hol_date].append(hol_name)
-            else:
-                holiday_date_names_mapping[hol_date] = [hol_name]
-
         super()._populate(year)
-
-        holiday_date_names_mapping: Dict[date, List[str]] = {}
+        observed_dates = set()
 
         estimated_suffix = "* (*estimated)"
 
         # Chinese New Year (one day in the States of Kelantan and Terengganu,
         # two days in the other States).
-        hol_date = self.cnls.lunar_n_y_date(year)
-        collect_holiday(hol_date, "Chinese New Year")
+        observed_dates.add(self._add_chinese_new_years_day("Chinese New Year"))
         # The second day of Chinese New Year is not a federal holiday in
         # Kelantan and Terengganu. However, it is gazetted as a state holiday
         # in both states, effectively making it a nationwide holiday.
-        collect_holiday(hol_date + td(days=+1), "Chinese New Year Holiday")
+        observed_dates.add(
+            self._add_chinese_new_years_day_two("Chinese New Year Holiday")
+        )
 
         # Wesak Day.
         # Date of observance is announced yearly
@@ -156,14 +160,17 @@ class Malaysia(HolidayBase):
         }
         name = "Vesak Day"
         if year in dates_obs:
-            hol_date = date(year, *dates_obs[year])
+            observed_dates.add(self._add_holiday(name, *dates_obs[year]))
         else:
-            hol_date = self.cnls.vesak_may_date(year)
-            name = f"{name}{estimated_suffix}"
-        collect_holiday(hol_date, name)
+            observed_dates.add(
+                self._add_holiday(
+                    f"{name}{estimated_suffix}",
+                    self.cnls.vesak_may_date(year),
+                )
+            )
 
         # Labour Day.
-        collect_holiday(date(year, MAY, 1), "Labour Day")
+        observed_dates.add(self._add_labor_day("Labour Day"))
 
         # Birthday of [His Majesty] the Yang di-Pertuan Agong.
         if year <= 2017:
@@ -175,14 +182,18 @@ class Malaysia(HolidayBase):
             hol_date = date(2020, JUN, 8)
         else:
             hol_date = _get_nth_weekday_of_month(1, MON, JUN, year)
-        collect_holiday(hol_date, "Birthday of SPB Yang di-Pertuan Agong")
+        observed_dates.add(
+            self._add_holiday(
+                "Birthday of SPB Yang di-Pertuan Agong", hol_date
+            )
+        )
 
         # Hari Kebangsaan or National Day.
-        collect_holiday(date(year, AUG, 31), "National Day")
+        observed_dates.add(self._add_holiday("National Day", AUG, 31))
 
         # Malaysia Day.
         if year >= 2010:
-            collect_holiday(date(year, SEP, 16), "Malaysia Day")
+            observed_dates.add(self._add_holiday("Malaysia Day", SEP, 16))
 
         # Deepavali.
         # aka Diwali;
@@ -214,14 +225,17 @@ class Malaysia(HolidayBase):
             }
             name = "Deepavali"
             if year in dates_obs:
-                hol_date = date(year, *dates_obs[year])
+                observed_dates.add(self._add_holiday(name, *dates_obs[year]))
             else:
-                hol_date = self.cnls.s_diwali_date(year)
-                name = f"{name}{estimated_suffix}"
-            collect_holiday(hol_date, name)
+                observed_dates.add(
+                    self._add_holiday(  # type: ignore[arg-type]
+                        f"{name}{estimated_suffix}",
+                        self._convert_chinese_to_gre(10, 1) + td(days=-2),
+                    )
+                )
 
         # Christmas day.
-        collect_holiday(date(year, DEC, 25), "Christmas Day")
+        observed_dates.add(self._add_christmas_day("Christmas Day"))
 
         # Birthday of the Prophet Muhammad (s.a.w.).
         # a.k.a. Hari Keputeraan Nabi Muhammad (Sabah Act)
@@ -240,10 +254,7 @@ class Malaysia(HolidayBase):
             2012: ((FEB, 5),),
             2013: ((JAN, 24),),
             2014: ((JAN, 14),),
-            2015: (
-                (JAN, 3),
-                (DEC, 24),
-            ),
+            2015: ((JAN, 3), (DEC, 24)),
             2016: ((DEC, 12),),
             2017: ((DEC, 1),),
             2018: ((NOV, 20),),
@@ -254,16 +265,12 @@ class Malaysia(HolidayBase):
         }
         name = "Maulidur Rasul (Birthday of the Prophet Muhammad)"
         if year in dates_obs:
-            hol_dates = [
-                (date(year, *date_obs), "") for date_obs in dates_obs[year]
-            ]
+            for hol_date in dates_obs[year]:
+                observed_dates.add(self._add_holiday(name, *hol_date))
         else:
-            hol_dates = [
-                (date_obs, estimated_suffix)
-                for date_obs in _islamic_to_gre(year, 3, 12)
-            ]
-        for hol_date, hol_suffix in hol_dates:
-            collect_holiday(hol_date, f"{name}{hol_suffix}")
+            observed_dates.update(
+                self._add_mawlid_day(f"{name}{estimated_suffix}")
+            )
 
         # Hari Raya Puasa (2 days).
         # aka Eid al-Fitr;
@@ -293,19 +300,24 @@ class Malaysia(HolidayBase):
             2022: ((MAY, 2),),
         }
         name = "Hari Raya Puasa"
-        hol_dates = []
-        for yr in (year - 1, year):
-            if yr in dates_obs:
-                for date_obs in dates_obs[yr]:
-                    hol_dates.append((date(yr, *date_obs), ""))
-            else:
-                for date_obs in _islamic_to_gre(yr, 10, 1):
-                    hol_dates.append((date_obs, estimated_suffix))
-        for hol_date, hol_suffix in hol_dates:
-            collect_holiday(hol_date, f"{name}{hol_suffix}")
-            collect_holiday(
-                hol_date + td(days=+1),
-                f"Second day of {name}{hol_suffix}",
+        if year in dates_obs:
+            for yr in (year - 1, year):
+                for hol_date in dates_obs.get(yr, ()):
+                    dt = date(yr, *hol_date)
+                    observed_dates.add(self._add_holiday(name, dt))
+                    observed_dates.add(
+                        self._add_holiday(
+                            f"Second day of {name}", dt + td(days=+1)
+                        )
+                    )
+        else:
+            observed_dates.update(
+                self._add_eid_al_fitr_day(f"{name}{estimated_suffix}")
+            )
+            observed_dates.update(
+                self._add_eid_al_fitr_day_two(
+                    f"Second day of {name}{estimated_suffix}"
+                )
             )
 
         # Hari Raya Haji and Arafat Day.
@@ -316,10 +328,7 @@ class Malaysia(HolidayBase):
             2003: ((FEB, 12),),
             2004: ((FEB, 2),),
             2005: ((JAN, 21),),
-            2006: (
-                (JAN, 10),
-                (DEC, 31),
-            ),
+            2006: ((JAN, 10), (DEC, 31)),
             2007: ((DEC, 20),),
             2008: ((DEC, 9),),
             2009: ((NOV, 28),),
@@ -338,48 +347,35 @@ class Malaysia(HolidayBase):
             2022: ((JUL, 10),),
         }
         name = "Hari Raya Haji"
-        hol_dates = []
-        for yr in (year - 1, year):
-            if yr in dates_obs:
-                for date_obs in dates_obs[yr]:
-                    hol_dates.append((date(yr, *date_obs), ""))
-            else:
-                for date_obs in _islamic_to_gre(yr, 12, 10):
-                    hol_dates.append((date_obs, estimated_suffix))
-        for hol_date, hol_suffix in hol_dates:
-            collect_holiday(hol_date, f"{name}{hol_suffix}")
+        if year in dates_obs:
+            for yr in (year - 1, year):
+                for hol_date in dates_obs.get(yr, ()):
+                    dt = date(yr, *hol_date)
+                    observed_dates.add(self._add_holiday(name, dt))
+                    if self.subdiv == "TRG":
+                        observed_dates.add(
+                            self._add_holiday("Arafat Day", dt + td(days=-1))
+                        )
+                    if self.subdiv in {"KDH", "KTN", "PLS", "TRG"}:
+                        observed_dates.add(
+                            self._add_holiday(
+                                f"{name} Holiday", dt + td(days=+1)
+                            )
+                        )
+        else:
+            observed_dates.update(
+                self._add_eid_al_adha_day(f"{name}{estimated_suffix}")
+            )
             if self.subdiv == "TRG":
-                # Arafat Day is one day before Eid al-Adha
-                collect_holiday(
-                    hol_date + td(days=-1), f"Arafat Day{hol_suffix}"
+                observed_dates.update(
+                    self._add_arafah_day(f"Arafat Day{estimated_suffix}")
                 )
             if self.subdiv in {"KDH", "KTN", "PLS", "TRG"}:
-                # Second day
-                collect_holiday(
-                    hol_date + td(days=+1),
-                    f"{name} Holiday{hol_suffix}",
+                observed_dates.update(
+                    self._add_eid_al_adha_day_two(
+                        f"{name} Holiday{estimated_suffix}"
+                    )
                 )
-
-        # ---------------------------------------------------------#
-        # Holidays from the Sarawak Ordinance (not included above) #
-        # ---------------------------------------------------------#
-        if self.subdiv == "SWK":
-            # Dayak Festival Day (the first day of June) and the following day.
-            collect_holiday(date(year, JUN, 1), "Gawai Dayak")
-            collect_holiday(date(year, JUN, 2), "Gawai Dayak (Second day)")
-
-            # The first day of May—Worker’s Celebration Day.
-
-            # Birthday of Tuan Yang Terutama Yang di-Pertua Negeri Sarawak
-            # (the second Saturday of October).
-            collect_holiday(
-                _get_nth_weekday_of_month(2, SAT, OCT, year),
-                "Birthday of the Governor of Sarawak",
-            )
-
-            # Sarawak Independence Day
-            if year >= 2017:
-                collect_holiday(date(year, JUL, 22), "Sarawak Day")
 
         # New Year's Day
         if self.subdiv in {
@@ -395,7 +391,7 @@ class Malaysia(HolidayBase):
             "SGR",
             "SWK",
         }:
-            collect_holiday(date(year, JAN, 1), "New Year's Day")
+            observed_dates.add(self._add_new_years_day("New Year's Day"))
 
         # Isra and Mi'raj.
         if self.subdiv in {"KDH", "NSN", "PLS"} or (
@@ -427,16 +423,12 @@ class Malaysia(HolidayBase):
             }
             name = "Isra and Mi'raj"
             if year in dates_obs:
-                hol_dates = [
-                    (date(year, *date_obs), "") for date_obs in dates_obs[year]
-                ]
+                for hol_date in dates_obs[year]:
+                    observed_dates.add(self._add_holiday(name, *hol_date))
             else:
-                hol_dates = [
-                    (date_obs, estimated_suffix)
-                    for date_obs in _islamic_to_gre(year, 7, 27)
-                ]
-            for hol_date, hol_suffix in hol_dates:
-                collect_holiday(hol_date, f"{name}{hol_suffix}")
+                observed_dates.update(
+                    self._add_isra_and_miraj_day(f"{name}{estimated_suffix}")
+                )
 
         # Beginning of Ramadan.
         if self.subdiv in {"JHR", "KDH", "MLK"}:
@@ -466,16 +458,17 @@ class Malaysia(HolidayBase):
             }
             name = "Beginning of Ramadan"
             if year in dates_obs:
-                hol_dates = [
-                    (date(year, *date_obs), "") for date_obs in dates_obs[year]
-                ]
+                for hol_date in dates_obs[year]:
+                    observed_dates.add(self._add_holiday(name, *hol_date))
             else:
-                hol_dates = [
-                    (date_obs, estimated_suffix)
-                    for date_obs in _islamic_to_gre(year, 9, 1)
-                ]
-            for hol_date, hol_suffix in hol_dates:
-                collect_holiday(hol_date, f"{name}{hol_suffix}")
+                for hol_date in _IslamicLunar.islamic_holiday_date(
+                    year, "BEGIN_RAMADAN"
+                ):
+                    observed_dates.add(
+                        self._add_holiday(
+                            f"{name}{estimated_suffix}", hol_date
+                        )
+                    )
 
         # Nuzul Al-Quran Day.
         if self.subdiv in {
@@ -516,16 +509,17 @@ class Malaysia(HolidayBase):
             }
             name = "Nuzul Al-Quran Day"
             if year in dates_obs:
-                hol_dates = [
-                    (date(year, *date_obs), "") for date_obs in dates_obs[year]
-                ]
+                for hol_date in dates_obs[year]:
+                    observed_dates.add(self._add_holiday(name, *hol_date))
             else:
-                hol_dates = [
-                    (date_obs, estimated_suffix)
-                    for date_obs in _islamic_to_gre(year, 9, 17)
-                ]
-            for hol_date, hol_suffix in hol_dates:
-                collect_holiday(hol_date, f"{name}{hol_suffix}")
+                for hol_date in _IslamicLunar.islamic_holiday_date(
+                    year, "NUZUL_AL_QURAN"
+                ):
+                    observed_dates.add(
+                        self._add_holiday(
+                            f"{name}{estimated_suffix}", hol_date
+                        )
+                    )
 
         # Thaipusam.
         # An annual Hindu festival observed on the day of the first full moon
@@ -545,79 +539,121 @@ class Malaysia(HolidayBase):
             }
             name = "Thaipusam"
             if year in dates_obs:
-                hol_date = date(year, *dates_obs[year])
+                observed_dates.add(self._add_holiday(name, *dates_obs[year]))
             else:
-                hol_date = self.cnls.thaipusam_date(year)
-                name = f"{name}{estimated_suffix}"
-            collect_holiday(hol_date, name)
+                observed_dates.add(
+                    self._add_holiday(
+                        f"{name}{estimated_suffix}",
+                        self.cnls.thaipusam_date(year),
+                    )
+                )
 
         # Federal Territory Day.
         if self.subdiv in {"KUL", "LBN", "PJY"} and year >= 1974:
-            collect_holiday(date(year, FEB, 1), "Federal Territory Day")
+            observed_dates.add(
+                self._add_holiday("Federal Territory Day", FEB, 1)
+            )
 
         # State holidays (single state)
 
         if self.subdiv == "MLK":
             if year >= 1989:
-                collect_holiday(
-                    date(year, APR, 15),
-                    "Declaration of Malacca as a Historical City",
+                observed_dates.add(
+                    self._add_holiday(
+                        "Declaration of Malacca as a Historical City", APR, 15
+                    )
                 )
 
-            collect_holiday(
-                date(year, AUG, 24)
-                if year >= 2020
-                else _get_nth_weekday_of_month(2, FRI, OCT, year),
-                "Birthday of the Governor of Malacca",
+            observed_dates.add(
+                self._add_holiday(
+                    "Birthday of the Governor of Malacca",
+                    date(year, AUG, 24)
+                    if year >= 2020
+                    else _get_nth_weekday_of_month(2, FRI, OCT, year),
+                )
             )
 
         elif self.subdiv == "NSN" and year >= 2009:
-            collect_holiday(
-                date(year, JAN, 14),
-                "Birthday of the Sultan of Negeri Sembilan",
+            observed_dates.add(
+                self._add_holiday(
+                    "Birthday of the Sultan of Negeri Sembilan", JAN, 14
+                )
             )
 
         elif self.subdiv == "PHG" and year >= 1975:
-            collect_holiday(
-                date(year, MAY, 22) if year >= 2021 else date(year, MAY, 7),
-                "Hari Hol of Pahang",
+            observed_dates.add(
+                self._add_holiday(
+                    "Hari Hol of Pahang", MAY, 22 if year >= 2021 else 7
+                )
             )
 
-            collect_holiday(
-                date(year, JUL, 30) if year >= 2019 else date(year, OCT, 24),
-                "Birthday of the Sultan of Pahang",
+            hol_date = (JUL, 30) if year >= 2019 else (OCT, 24)
+            observed_dates.add(
+                self._add_holiday(
+                    "Birthday of the Sultan of Pahang", *hol_date
+                )
             )
 
         elif self.subdiv == "PNG":
             if year >= 2009:
-                collect_holiday(date(year, JUL, 7), "George Town Heritage Day")
+                observed_dates.add(
+                    self._add_holiday("George Town Heritage Day", JUL, 7)
+                )
 
-            collect_holiday(
-                _get_nth_weekday_of_month(2, SAT, JUL, year),
-                "Birthday of the Governor of Penang",
+            observed_dates.add(
+                self._add_holiday(
+                    "Birthday of the Governor of Penang",
+                    _get_nth_weekday_of_month(2, SAT, JUL, year),
+                )
             )
 
         elif self.subdiv == "PLS" and year >= 2000:
-            collect_holiday(
-                date(year, JUL, 17) if year >= 2018 else date(year, MAY, 17),
-                "Birthday of The Raja of Perlis",
+            hol_date = (JUL, 17) if year >= 2018 else (MAY, 17)
+            observed_dates.add(
+                self._add_holiday("Birthday of The Raja of Perlis", *hol_date)
             )
 
         elif self.subdiv == "SGR":
-            collect_holiday(
-                date(year, DEC, 11), "Birthday of The Sultan of Selangor"
+            observed_dates.add(
+                self._add_holiday(
+                    "Birthday of The Sultan of Selangor", DEC, 11
+                )
             )
 
-        elif self.subdiv == "TRG" and year >= 2000:
-            collect_holiday(
-                date(year, MAR, 4),
-                (
-                    "Anniversary of the Installation "
-                    "of the Sultan of Terengganu"
-                ),
+        elif self.subdiv == "SWK":
+            # Dayak Festival Day (the first day of June) and the following day.
+            observed_dates.add(self._add_holiday("Gawai Dayak", JUN, 1))
+            observed_dates.add(
+                self._add_holiday("Gawai Dayak (Second day)", JUN, 2)
             )
-            collect_holiday(
-                date(year, APR, 26), "Birthday of the Sultan of Terengganu"
+
+            # Birthday of Tuan Yang Terutama Yang di-Pertua Negeri Sarawak
+            # (the second Saturday of October).
+            observed_dates.add(
+                self._add_holiday(
+                    "Birthday of the Governor of Sarawak",
+                    _get_nth_weekday_of_month(2, SAT, OCT, year),
+                )
+            )
+
+            # Sarawak Independence Day
+            if year >= 2017:
+                observed_dates.add(self._add_holiday("Sarawak Day", JUL, 22))
+
+        elif self.subdiv == "TRG" and year >= 2000:
+            observed_dates.add(
+                self._add_holiday(
+                    "Anniversary of the Installation "
+                    "of the Sultan of Terengganu",
+                    MAR,
+                    4,
+                )
+            )
+
+            observed_dates.add(
+                self._add_holiday(
+                    "Birthday of the Sultan of Terengganu", APR, 26
+                )
             )
 
         # Check for holidays that fall on a Sunday and
@@ -636,29 +672,35 @@ class Malaysia(HolidayBase):
                     (SAT, +1) if self.subdiv in {"KTN", "TRG"} else (SUN, +1)
                 )
             )
-            hol_dates = list(holiday_date_names_mapping.keys())
-            for hol_date, hol_names in sorted(
-                holiday_date_names_mapping.items()
-            ):
-                if hol_date.weekday() == weekday_observed_days[0]:
-                    in_lieu_date = hol_date + td(days=weekday_observed_days[1])
-                    while in_lieu_date in hol_dates:
-                        in_lieu_date += td(days=+1)
-                    for hol_name in hol_names:
-                        collect_holiday(in_lieu_date, f"{hol_name} [In lieu]")
-                    hol_dates.append(in_lieu_date)
+            observed_dates.difference_update({None})
+            for hol_date in sorted(observed_dates):
+                if hol_date.weekday() != weekday_observed_days[0]:
+                    continue
+                in_lieu_date = hol_date + td(days=weekday_observed_days[1])
+                while in_lieu_date in observed_dates:
+                    in_lieu_date += td(days=+1)
+                for hol_name in self.get_list(hol_date):
+                    self._add_holiday(f"{hol_name} [In lieu]", in_lieu_date)
+                observed_dates.add(in_lieu_date)
 
-        for hol_date, hol_names in holiday_date_names_mapping.items():
-            if hol_date.year == year:
-                for hol_name in hol_names:
-                    self[hol_date] = hol_name
+            # special cases (observed from previuos year)
+            if year == 2007 and self.subdiv not in {
+                "JHR",
+                "KDH",
+                "KTN",
+                "TRG",
+            }:
+                self._add_holiday("Hari Raya Haji [In lieu]", JAN, 2)
+
+            if year == 2007 and self.subdiv == "TRG":
+                self._add_holiday("Arafat Day [In lieu]", JAN, 2)
 
         # The last two days in May (Pesta Kaamatan).
         # (Sarawak Act)
         # Day following a Sunday is not a holiday
         if self.subdiv in {"LBN", "SBH"}:
-            self[date(year, MAY, 30)] = "Pesta Kaamatan"
-            self[date(year, MAY, 31)] = "Pesta Kaamatan (Second day)"
+            self._add_holiday("Pesta Kaamatan", MAY, 30)
+            self._add_holiday("Pesta Kaamatan (Second day)", MAY, 31)
 
         # ------------------------------#
         # Other holidays (decrees etc.) #
@@ -673,10 +715,7 @@ class Malaysia(HolidayBase):
             2005: ((FEB, 10),),
             2006: ((JAN, 31),),
             2007: ((JAN, 20),),
-            2008: (
-                (JAN, 10),
-                (DEC, 29),
-            ),
+            2008: ((JAN, 10), (DEC, 29)),
             2009: ((DEC, 18),),
             2010: ((DEC, 8),),
             2011: ((NOV, 27),),
@@ -694,31 +733,20 @@ class Malaysia(HolidayBase):
         }
         name = "Awal Muharram (Hijri New Year)"
         if year in dates_obs:
-            hol_dates = [
-                (date(year, *date_obs), "") for date_obs in dates_obs[year]
-            ]
+            for hol_date in dates_obs[year]:
+                self._add_holiday(name, *hol_date)
         else:
-            hol_dates = [
-                (date_obs, estimated_suffix)
-                for date_obs in _islamic_to_gre(year, 1, 1)
-            ]
-        for hol_date, hol_suffix in hol_dates:
-            self[hol_date] = name + hol_suffix
+            self._add_islamic_new_year_day(f"{name}{estimated_suffix}")
 
         # Special holidays (states)
         if year == 2021 and self.subdiv in {"KUL", "LBN", "PJY"}:
-            self[date(2021, DEC, 3)] = "Malaysia Cup Holiday"
+            self._add_holiday("Malaysia Cup Holiday", DEC, 3)
 
         if year == 2022 and self.subdiv == "KDH":
-            self[date(2022, JAN, 18)] = "Thaipusam"
+            self._add_holiday("Thaipusam", JAN, 18)
 
-        if year == 2022 and self.subdiv in {
-            "JHR",
-            "KDH",
-            "KTN",
-            "TRG",
-        }:
-            self[date(2022, MAY, 4)] = "Labour Day Holiday"
+        if year == 2022 and self.subdiv in {"JHR", "KDH", "KTN", "TRG"}:
+            self._add_holiday("Labour Day Holiday", MAY, 4)
 
         # ---------------------------------#
         # State holidays (multiple states) #
@@ -726,7 +754,7 @@ class Malaysia(HolidayBase):
 
         # Good Friday.
         if self.subdiv in {"SBH", "SWK"}:
-            self[easter(year) + td(days=-2)] = "Good Friday"
+            self._add_good_friday("Good Friday")
 
         # -----------------------------
         # State holidays (single state)
@@ -734,7 +762,8 @@ class Malaysia(HolidayBase):
 
         if self.subdiv == "JHR":
             if year >= 2015:
-                self[date(year, MAR, 23)] = "Birthday of the Sultan of Johor"
+                self._add_holiday("Birthday of the Sultan of Johor", MAR, 23)
+
             if year >= 2011:
                 dates_obs = {
                     2011: ((JAN, 12),),
@@ -752,44 +781,45 @@ class Malaysia(HolidayBase):
                 }
                 name = "Hari Hol of Sultan Iskandar of Johor"
                 if year in dates_obs:
-                    hol_dates = [
-                        (date(year, *date_obs), "")
-                        for date_obs in dates_obs[year]
-                    ]
+                    for hol_date in dates_obs[year]:
+                        self._add_holiday(name, *hol_date)
                 else:
-                    hol_dates = [
-                        (date_obs, estimated_suffix)
-                        for date_obs in _islamic_to_gre(year, 2, 6)
-                    ]
-                for hol_date, hol_suffix in hol_dates:
-                    self[hol_date] = name + hol_suffix
+                    for hol_date in _IslamicLunar.islamic_holiday_date(
+                        year, "HARI_HOL_JOHOR"
+                    ):
+                        self._add_holiday(
+                            f"{name}{estimated_suffix}", hol_date
+                        )
 
         elif self.subdiv == "KDH" and year >= 2020:
-            self[
-                _get_nth_weekday_of_month(3, SUN, JUN, year)
-            ] = "Birthday of The Sultan of Kedah"
+            self._add_holiday(
+                "Birthday of The Sultan of Kedah",
+                _get_nth_weekday_of_month(3, SUN, JUN, year),
+            )
 
         elif self.subdiv == "KTN" and year >= 2010:
             name = "Birthday of the Sultan of Kelantan"
-            self[date(year, NOV, 11)] = name
-            self[date(year, NOV, 12)] = name
+            self._add_holiday(name, NOV, 11)
+            self._add_holiday(name, NOV, 12)
 
         elif self.subdiv == "PRK":
             # This Holiday used to be on 27th until 2017
             # https://www.officeholidays.com/holidays/malaysia/birthday-of-the-sultan-of-perak  # noqa: E501
-            self[
+            self._add_holiday(
+                "Birthday of the Sultan of Perak",
                 _get_nth_weekday_of_month(1, FRI, NOV, year)
                 if year >= 2018
-                else date(year, NOV, 27)
-            ] = "Birthday of the Sultan of Perak"
+                else date(year, NOV, 27),
+            )
 
         elif self.subdiv == "SBH":
-            self[
-                _get_nth_weekday_of_month(1, SAT, OCT, year)
-            ] = "Birthday of the Governor of Sabah"
+            self._add_holiday(
+                "Birthday of the Governor of Sabah",
+                _get_nth_weekday_of_month(1, SAT, OCT, year),
+            )
 
             if year >= 2019:
-                self[date(year, DEC, 24)] = "Christmas Eve"
+                self._add_christmas_eve("Christmas Eve")
 
 
 class MY(Malaysia):
