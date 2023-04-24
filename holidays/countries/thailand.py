@@ -552,7 +552,7 @@ class Thailand(HolidayBase, InternationalHolidays):
                         "วันคล้ายวันเฉลิมพระชนมพรรษา"
                         "พระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
                     ),
-                        DEC,
+                    DEC,
                     5,
                 )
             )
