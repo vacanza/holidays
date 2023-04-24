@@ -19,7 +19,7 @@ class TestThailand(TestCase):
         super().setUpClass(
             Thailand,
             years=range(1941, 2058),
-            years_non_observed=range(1941, 2058)
+            years_non_observed=range(1941, 2058),
         )
 
     def test_country_aliases(self):
@@ -630,7 +630,7 @@ class TestThailand(TestCase):
                 ("2022-12-30", "วันหยุดพิเศษ (เพิ่มเติม)"),
                 ("2022-12-31", "วันสิ้นปี"),
             ),
-            "th"
+            "th",
         )
 
     def test_l10n_en(self):
@@ -668,10 +668,7 @@ class TestThailand(TestCase):
                 ),
                 ("2022-10-14", "Bridge Public Holiday"),
                 ("2022-10-23", "HM King Chulalongkorn Memorial Day"),
-                (
-                    "2022-10-24",
-                    "HM King Chulalongkorn Memorial Day (in lieu)"
-                ),
+                ("2022-10-24", "HM King Chulalongkorn Memorial Day (in lieu)"),
                 (
                     "2022-12-05",
                     (
@@ -684,5 +681,5 @@ class TestThailand(TestCase):
                 ("2022-12-30", "Bridge Public Holiday"),
                 ("2022-12-31", "New Year's Eve"),
             ),
-            "en_US"
+            "en_US",
         )
