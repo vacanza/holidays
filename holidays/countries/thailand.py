@@ -716,7 +716,7 @@ class Thailand(HolidayBase, InternationalHolidays):
             _add_observed(
                 self._add_holiday(
                     raeknakhwan,
-                    date(year, *raeknakhwan_dates[year]),
+                    *raeknakhwan_dates[year],
                 )
             )
         # Approx. otherwise for 1957-2013.
