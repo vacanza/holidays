@@ -9,18 +9,29 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from datetime import timedelta as td
 
-from dateutil.easter import easter
-
-from holidays.calendars import _ChineseLuniSolar, _islamic_to_gre
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChineseCalendarHolidays, ChristianHolidays
+from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
 
 
-class Indonesia(HolidayBase):
+class Indonesia(
+    HolidayBase,
+    ChineseCalendarHolidays,
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+):
+    """
+    References:
+    - https://en.wikipedia.org/wiki/Public_holidays_in_Indonesia
+    - https://www.timeanddate.com/holidays/indonesia
+    - https://www.officeholidays.com/countries/indonesia
+    """
+
     country = "ID"
     special_holidays = {
         # Election Day
@@ -29,23 +40,22 @@ class Indonesia(HolidayBase):
         2020: ((DEC, 9, "Hari Pemilihan"),),
     }
 
-    # https://en.wikipedia.org/wiki/Public_holidays_in_Indonesia
-    # https://www.timeanddate.com/holidays/indonesia
-    # https://www.officeholidays.com/countries/indonesia
-    def __init__(self, **kwargs):
-        self.cnls = _ChineseLuniSolar()
-        HolidayBase.__init__(self, **kwargs)
+    def __init__(self, *args, **kwargs):
+        ChineseCalendarHolidays.__init__(self)
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        IslamicHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
 
         # New Year's Day
-        self[date(year, JAN, 1)] = "Tahun Baru Masehi"
+        self._add_new_years_day("Tahun Baru Masehi")
 
         # Chinese New Year
         if year >= 2003:
-            hol_date = self.cnls.lunar_n_y_date(year)
-            self[hol_date] = "Tahun Baru Imlek"
+            self._add_chinese_new_years_day("Tahun Baru Imlek")
 
         if year >= 1983:
             # Day of Silence
@@ -71,8 +81,7 @@ class Indonesia(HolidayBase):
                 2026: (MAR, 19),
             }
             if year in dates_obs:
-                hol_date = date(year, *dates_obs[year])
-                self[hol_date] = "Hari Suci Nyepi"
+                self._add_holiday("Hari Suci Nyepi", *dates_obs[year])
 
         # Eid al-Fitr
         dates_obs = {
@@ -102,18 +111,15 @@ class Indonesia(HolidayBase):
         }
         if year in dates_obs:
             for date_obs in dates_obs[year]:
-                hol_date = date(year, *date_obs)
-                self[hol_date] = "Hari Raya Idul Fitri"
-                self[
-                    hol_date + td(days=+1)
-                ] = "Hari kedua dari Hari Raya Idul Fitri"
+                dt = self._add_holiday("Hari Raya Idul Fitri", *date_obs)
+                self._add_holiday(
+                    "Hari kedua dari Hari Raya Idul Fitri", dt + td(days=+1)
+                )
         else:
-            for date_obs in _islamic_to_gre(year, 10, 1):
-                hol_date = date_obs
-                self[hol_date] = "Hari Raya Idul Fitri* (*estimated)"
-                self[
-                    hol_date + td(days=+1)
-                ] = "Hari kedua dari Hari Raya Idul Fitri* (*estimated)"
+            self._add_eid_al_fitr_day("Hari Raya Idul Fitri* (*estimated)")
+            self._add_eid_al_fitr_day_two(
+                "Hari kedua dari Hari Raya Idul Fitri* (*estimated)"
+            )
 
         # Eid al-Adha
         dates_obs = {
@@ -143,12 +149,9 @@ class Indonesia(HolidayBase):
         }
         if year in dates_obs:
             for date_obs in dates_obs[year]:
-                hol_date = date(year, *date_obs)
-                self[hol_date] = "Hari Raya Idul Adha"
+                self._add_holiday("Hari Raya Idul Adha", *date_obs)
         else:
-            for date_obs in _islamic_to_gre(year, 12, 10):
-                hol_date = date_obs
-                self[hol_date] = "Hari Raya Idul Adha* (*estimated)"
+            self._add_eid_al_adha_day("Hari Raya Idul Adha* (*estimated)")
 
         # Islamic New Year
         dates_obs = {
@@ -177,12 +180,9 @@ class Indonesia(HolidayBase):
         }
         if year in dates_obs:
             for date_obs in dates_obs[year]:
-                hol_date = date(year, *date_obs)
-                self[hol_date] = "Tahun Baru Islam"
+                self._add_holiday("Tahun Baru Islam", *date_obs)
         else:
-            for date_obs in _islamic_to_gre(year, 1, 1):
-                hol_date = date_obs
-                self[hol_date] = "Tahun Baru Islam* (*estimated)"
+            self._add_islamic_new_year_day("Tahun Baru Islam* (*estimated)")
 
         # The Prophet's Birthday
         dates_obs = {
@@ -206,12 +206,9 @@ class Indonesia(HolidayBase):
         }
         if year in dates_obs:
             for date_obs in dates_obs[year]:
-                hol_date = date(year, *date_obs)
-                self[hol_date] = "Maulid Nabi Muhammad"
+                self._add_holiday("Maulid Nabi Muhammad", *date_obs)
         else:
-            for date_obs in _islamic_to_gre(year, 3, 12):
-                hol_date = date_obs
-                self[hol_date] = "Maulid Nabi Muhammad* (*estimated)"
+            self._add_mawlid_day("Maulid Nabi Muhammad* (*estimated)")
 
         # The Prophet's Ascension
         dates_obs = {
@@ -240,15 +237,14 @@ class Indonesia(HolidayBase):
         }
         if year in dates_obs:
             for date_obs in dates_obs[year]:
-                hol_date = date(year, *date_obs)
-                self[hol_date] = "Isra' Mi'raj Nabi Muhammad"
+                self._add_holiday("Isra' Mi'raj Nabi Muhammad", *date_obs)
         else:
-            for date_obs in _islamic_to_gre(year, 7, 27):
-                hol_date = date_obs
-                self[hol_date] = "Isra' Mi'raj Nabi Muhammad* (*estimated)"
+            self._add_isra_and_miraj_day(
+                "Isra' Mi'raj Nabi Muhammad* (*estimated)"
+            )
 
         # Good Friday
-        self[easter(year) + td(days=-2)] = "Wafat Yesus Kristus"
+        self._add_good_friday("Wafat Yesus Kristus")
 
         # Buddha's Birthday
         if year >= 1983:
@@ -272,28 +268,28 @@ class Indonesia(HolidayBase):
                 2023: (JUN, 4),
             }
             if year in date_obs:
-                buddha_date = date(year, *date_obs[year])
-                self[buddha_date] = "Hari Raya Waisak"
+                self._add_holiday("Hari Raya Waisak", *date_obs[year])
             else:
-                buddha_date = self.cnls.vesak_date(year)
-                self[buddha_date] = "Hari Raya Waisak* (*estimated)"
+                self._add_chinese_calendar_holiday(
+                    "Hari Raya Waisak* (*estimated)", 4, 15
+                )
 
         # Labour Day
         if 1953 <= year <= 1968 or year >= 2014:
-            self[date(year, MAY, 1)] = "Hari Buruh Internasional"
+            self._add_labor_day("Hari Buruh Internasional")
 
         # Ascension Day
-        self[easter(year) + td(days=+39)] = "Kenaikan Yesus Kristus"
+        self._add_ascension_thursday("Kenaikan Yesus Kristus")
 
         # Pancasila Day
         if year >= 2017:
-            self[date(year, JUN, 1)] = "Hari Lahir Pancasila"
+            self._add_holiday("Hari Lahir Pancasila", JUN, 1)
 
         # Independence Day
-        self[date(year, AUG, 17)] = "Hari Kemerdekaan Republik Indonesia"
+        self._add_holiday("Hari Kemerdekaan Republik Indonesia", AUG, 17)
 
         # Christmas Day
-        self[date(year, DEC, 25)] = "Hari Raya Natal"
+        self._add_christmas_day("Hari Raya Natal")
 
 
 class ID(Indonesia):
