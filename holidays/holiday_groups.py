@@ -797,6 +797,16 @@ class IslamicHolidays:
             holiday_name, "EID_AL_FITR", days_delta=+2
         )
 
+    def _add_eid_al_fitr_day_four(self, holiday_name) -> Set[date]:
+        """
+        Add Eid al-Fitr Day Four.
+
+        https://en.wikipedia.org/wiki/Eid_al-Fitr
+        """
+        return self._add_islamic_calendar_holiday(
+            holiday_name, "EID_AL_FITR", days_delta=+3
+        )
+
     def _add_islamic_calendar_holiday(
         self, holiday_name, hol_type: str, days_delta: int = 0
     ) -> Set[date]:
