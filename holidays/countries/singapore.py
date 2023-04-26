@@ -308,17 +308,20 @@ class Singapore(
         # "if any day specified in the Schedule falls on a Sunday,
         # the day next following not being itself a public holiday
         # is declared a public holiday in Singapore."
-        if self.observed and year >= 1998:
+        if not self.observed:
+            return None
+        if year >= 1998:
             for dt in sorted(observed_dates):
                 if not self._is_sunday(dt):
                     continue
-                obs_date = dt + td(days=+1)
-                if obs_date in observed_dates:
-                    obs_date += td(days=+1)
-                self._add_holiday("%s (Observed)" % self[dt], obs_date)
+                self._add_holiday(
+                    "%s (Observed)" % self[dt],
+                    dt
+                    + td(days=2 if dt + td(days=+1) in observed_dates else 1),
+                )
 
-        # special case (observed from previuos year)
-        if self.observed and year == 2007:
+        # special case (observed from previous year)
+        if year == 2007:
             self._add_holiday("Hari Raya Haji (Observed)", JAN, 2)
 
 
