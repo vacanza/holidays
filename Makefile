@@ -37,6 +37,8 @@ setup:
 	pip install --upgrade pip
 	pip install --requirement requirements/dev.txt
 	pip install --requirement requirements/docs.txt
+	pip install --requirement requirements/runtime.txt
+	pip install --requirement requirements/tests.txt
 	pre-commit install --hook-type pre-commit
 	pre-commit install --hook-type pre-push
 	make l10n
