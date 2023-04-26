@@ -13,8 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 from typing import Iterable, Optional, Union
 
-from holidays.calendars import _ChineseLuniSolar, _IslamicLunar
-from holidays.calendars import _get_nth_weekday_of_month
+from holidays.calendars import _IslamicLunar, _get_nth_weekday_of_month
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC, MON, FRI, SAT, SUN
 from holidays.holiday_base import HolidayBase
@@ -106,7 +105,6 @@ class Malaysia(
 
         See parameters and usage in :py:class:`HolidayBase`.
         """
-        self.cnls = _ChineseLuniSolar()
         ChineseCalendarHolidays.__init__(self)
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
@@ -165,7 +163,7 @@ class Malaysia(
             observed_dates.add(
                 self._add_holiday(
                     f"{name}{estimated_suffix}",
-                    self.cnls.vesak_may_date(year),
+                    self._chinese_calendar.vesak_may_date(year),
                 )
             )
 
@@ -544,7 +542,7 @@ class Malaysia(
                 observed_dates.add(
                     self._add_holiday(
                         f"{name}{estimated_suffix}",
-                        self.cnls.thaipusam_date(year),
+                        self._chinese_calendar.thaipusam_date(year),
                     )
                 )
 
