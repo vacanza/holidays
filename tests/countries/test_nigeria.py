@@ -75,7 +75,7 @@ class TestNigeria(TestCase):
 
     def test_hijri_based(self):
         self.assertHolidaysName(
-            "Eid-el-Fitr",
+            "Eid-el-Fitr* (*estimated)",
             "2018-06-15",
             "2019-06-04",
             "2020-05-24",
@@ -84,7 +84,7 @@ class TestNigeria(TestCase):
             "2023-04-21",
         )
         self.assertHolidaysName(
-            "Eid-el-Fitr Holiday",
+            "Eid-el-Fitr Holiday* (*estimated)",
             "2018-06-16",
             "2019-06-05",
             "2020-05-25",
@@ -93,7 +93,7 @@ class TestNigeria(TestCase):
             "2023-04-22",
         )
         self.assertHolidaysName(
-            "Eid-el-Kabir",
+            "Eid-el-Kabir* (*estimated)",
             "2006-01-10",
             "2006-12-31",
             "2018-08-21",
@@ -104,7 +104,7 @@ class TestNigeria(TestCase):
             "2023-06-28",
         )
         self.assertHolidaysName(
-            "Eid-el-Kabir Holiday",
+            "Eid-el-Kabir Holiday* (*estimated)",
             "2006-01-11",
             "2007-01-01",
             "2018-08-22",
@@ -115,7 +115,7 @@ class TestNigeria(TestCase):
             "2023-06-29",
         )
         self.assertHolidaysName(
-            "Eid-el-Mawlid",
+            "Eid-el-Mawlid* (*estimated)",
             "2018-11-20",
             "2019-11-09",
             "2020-10-29",

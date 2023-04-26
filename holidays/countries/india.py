@@ -241,18 +241,18 @@ class India(
 
         # Islamic holidays.
         # Day of Ashura.
-        self._add_ashura_day("Day of Ashura* (*estimated)")
+        self._add_ashura_day("Day of Ashura")
 
         # Birth of the Prophet.
-        self._add_mawlid_day("Mawlid* (*estimated)")
+        self._add_mawlid_day("Mawlid")
 
         # Eid ul-Fitr.
-        name = "Eid ul-Fitr* (*estimated)"
+        name = "Eid ul-Fitr"
         self._add_eid_al_fitr_day(name)
         self._add_eid_al_fitr_day_two(name)
 
         # Eid al-Adha.
-        name = "Eid al-Adha* (*estimated)"
+        name = "Eid al-Adha"
         self._add_eid_al_adha_day(name)
         self._add_eid_al_adha_day_two(name)
 

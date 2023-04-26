@@ -29,7 +29,7 @@ class TestNorthMacedonia(TestCase):
             ("2019-04-29", "Easter Monday (Orthodox)"),
             ("2019-05-01", "Labour Day"),
             ("2019-05-24", "Saints Cyril and Methodius Day"),
-            ("2019-06-04", "Eid al-Fitr"),
+            ("2019-06-04", "Eid al-Fitr* (*estimated)"),
             ("2019-08-02", "Republic Day"),
             ("2019-09-08", "Independence Day"),
             ("2019-10-11", "Day of Macedonian Uprising in 1941"),

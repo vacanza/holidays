@@ -109,7 +109,7 @@ class TestBurundi(TestCase):
 
     def test_eid_ul_fitr(self):
         self.assertHolidaysName(
-            "Eid ul Fitr",
+            "Eid ul Fitr* (*estimated)",
             "2010-09-10",
             "2011-08-30",
             "2012-08-19",
@@ -128,7 +128,7 @@ class TestBurundi(TestCase):
 
     def test_eid_al_adha(self):
         self.assertHolidaysName(
-            "Eid al Adha",
+            "Eid al Adha* (*estimated)",
             "2010-11-16",
             "2011-11-06",
             "2012-10-26",

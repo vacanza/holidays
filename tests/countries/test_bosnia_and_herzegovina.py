@@ -209,9 +209,9 @@ class TestBosniaAndHerzegovina(TestCase):
             "2021-05-13",
             "2023-04-21",
         )
-        self.assertHolidaysName("Ramazanski Bajram", dt)
+        self.assertHolidaysName("Ramazanski Bajram* (*estimated)", dt)
 
-        name = "Drugi Dan Ramazanski Bajram"
+        name = "Drugi Dan Ramazanski Bajram* (*estimated)"
         dt = (
             "2010-09-11",
             "2015-07-18",
@@ -237,9 +237,9 @@ class TestBosniaAndHerzegovina(TestCase):
             "2022-07-09",
             "2023-06-28",
         )
-        self.assertHolidaysName("Kurban Bajram", dt)
+        self.assertHolidaysName("Kurban Bajram* (*estimated)", dt)
 
-        name = "Drugi Dan Kurban Bajram"
+        name = "Drugi Dan Kurban Bajram* (*estimated)"
         dt = (
             "2010-11-17",
             "2015-09-24",

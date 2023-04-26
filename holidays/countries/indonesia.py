@@ -110,10 +110,10 @@ class Indonesia(HolidayBase):
         else:
             for date_obs in _islamic_to_gre(year, 10, 1):
                 hol_date = date_obs
-                self[hol_date] = "Hari Raya Idul Fitri* (*estimated)"
+                self[hol_date] = "Hari Raya Idul Fitri"
                 self[
                     hol_date + td(days=+1)
-                ] = "Hari kedua dari Hari Raya Idul Fitri* (*estimated)"
+                ] = "Hari kedua dari Hari Raya Idul Fitri"
 
         # Eid al-Adha
         dates_obs = {
@@ -182,7 +182,7 @@ class Indonesia(HolidayBase):
         else:
             for date_obs in _islamic_to_gre(year, 1, 1):
                 hol_date = date_obs
-                self[hol_date] = "Tahun Baru Islam* (*estimated)"
+                self[hol_date] = "Tahun Baru Islam"
 
         # The Prophet's Birthday
         dates_obs = {
@@ -245,7 +245,7 @@ class Indonesia(HolidayBase):
         else:
             for date_obs in _islamic_to_gre(year, 7, 27):
                 hol_date = date_obs
-                self[hol_date] = "Isra' Mi'raj Nabi Muhammad* (*estimated)"
+                self[hol_date] = "Isra' Mi'raj Nabi Muhammad"
 
         # Good Friday
         self[easter(year) + td(days=-2)] = "Wafat Yesus Kristus"

@@ -150,9 +150,48 @@ class TestPakistan(TestCase):
             date(2019, 9, 9),
             date(2020, 8, 29),
             date(2021, 8, 18),
-            date(2022, 8, 9),
+            date(2022, 8, 8),
             date(2023, 7, 28),
         ):
             self.assertHoliday(dt)
-            self.assertHoliday(dt + td(days=+1))
+            self.assertHoliday(dt + td(days=-1))
             self.assertIn(name, self.holidays.get(dt))
+
+    def test_2002(self):
+        self.assertHolidays(
+            Pakistan(years=2002),
+            ("2002-02-05", "Kashmir Solidarity Day"),
+            ("2002-02-22", "Eid-ul-Adha* (*estimated)"),
+            ("2002-02-23", "Eid-ul-Adha* (*estimated)"),
+            ("2002-02-24", "Eid-ul-Adha* (*estimated)"),
+            ("2002-03-23", "Ashura* (*estimated); Pakistan Day"),
+            ("2002-03-24", "Ashura* (*estimated)"),
+            ("2002-05-01", "Labour Day"),
+            ("2002-05-24", "Eid Milad-un-Nabi* (*estimated)"),
+            ("2002-08-14", "Independence Day"),
+            ("2002-11-09", "Iqbal Day"),
+            ("2002-12-05", "Eid-ul-Fitr* (*estimated)"),
+            ("2002-12-06", "Eid-ul-Fitr* (*estimated)"),
+            ("2002-12-07", "Eid-ul-Fitr* (*estimated)"),
+            ("2002-12-25", "Quaid-e-Azam Day"),
+        )
+
+    def test_2022(self):
+        self.assertHolidays(
+            Pakistan(years=2022),
+            ("2022-02-05", "Kashmir Solidarity Day"),
+            ("2022-03-23", "Pakistan Day"),
+            ("2022-05-01", "Labour Day"),
+            ("2022-05-03", "Eid-ul-Fitr"),
+            ("2022-05-04", "Eid-ul-Fitr"),
+            ("2022-05-05", "Eid-ul-Fitr"),
+            ("2022-07-10", "Eid-ul-Adha"),
+            ("2022-07-11", "Eid-ul-Adha"),
+            ("2022-07-12", "Eid-ul-Adha"),
+            ("2022-08-07", "Ashura"),
+            ("2022-08-08", "Ashura"),
+            ("2022-08-14", "Independence Day"),
+            ("2022-10-09", "Eid Milad-un-Nabi"),
+            ("2022-11-09", "Iqbal Day"),
+            ("2022-12-25", "Quaid-e-Azam Day"),
+        )
