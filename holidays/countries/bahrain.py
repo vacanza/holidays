@@ -79,7 +79,7 @@ class BAH(Bahrain):
     pass
 
 
-class BahrainIslamicCalendar(_IslamicLunar, _CustomCalendar):
+class BahrainIslamicCalendar(_CustomCalendar, _IslamicLunar):
     ASHURA_DATES = {
         2022: ((AUG, 8),),
     }

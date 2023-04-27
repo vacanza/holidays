@@ -835,6 +835,29 @@ class IslamicHolidays:
             days_delta=+2,
         )
 
+    def _add_eid_al_fitr_day_four(self, holiday_name) -> Set[date]:
+        """
+        Add Eid al-Fitr Day Four.
+
+        https://en.wikipedia.org/wiki/Eid_al-Fitr
+        """
+        return self._add_islamic_calendar_holiday(
+            holiday_name,
+            self._islamic_calendar.eid_al_fitr_dates(self._year),
+            days_delta=+3,
+        )
+
+    def _add_hari_hol_johor(self, holiday_name) -> Set[date]:
+        """
+        Hari Hol Johor.
+
+        https://publicholidays.com.my/hari-hol-almarhum-sultan-iskandar/
+        """
+        return self._add_islamic_calendar_holiday(
+            holiday_name,
+            self._islamic_calendar.hari_hol_johor_dates(self._year),
+        )
+
     def _add_islamic_calendar_holiday(
         self,
         name: str,
@@ -912,6 +935,33 @@ class IslamicHolidays:
             holiday_name,
             self._islamic_calendar.mawlid_dates(self._year),
             days_delta=+1,
+        )
+
+    def _add_nuzul_al_quran_day(self, holiday_name) -> Set[date]:
+        """
+        Add Nuzul Al Quran (17th day of 9th month).
+
+        Nuzul Al Quran is a Muslim festival to remember the day when Prophet
+        Muhammad received his first revelation of Islam's sacred book,
+        the holy Quran.
+        https://zamzam.com/blog/nuzul-al-quran/
+        """
+        return self._add_islamic_calendar_holiday(
+            holiday_name,
+            self._islamic_calendar.nuzul_al_quran_dates(self._year),
+        )
+
+    def _add_ramadan_beginning_day(self, holiday_name) -> Set[date]:
+        """
+        Add First Day of Ramadan (1st day of 9th month).
+
+        Ramadan is the ninth month of the Islamic calendar, observed by Muslims
+        worldwide as a month of fasting, prayer, reflection, and community
+        https://en.wikipedia.org/wiki/Ramadan
+        """
+        return self._add_islamic_calendar_holiday(
+            holiday_name,
+            self._islamic_calendar.ramadan_beginning_dates(self._year),
         )
 
 

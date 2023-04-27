@@ -65,10 +65,10 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays):
         self._add_holiday("National Day Holiday", DEC, 3)
 
         # Eid al-Fitr.
-        eid_al_adha = "Eid al-Fitr"
-        self._add_eid_al_fitr_day(eid_al_adha)
-        self._add_eid_al_fitr_day_two(f"{eid_al_adha} Holiday")
-        self._add_eid_al_fitr_day_three(f"{eid_al_adha} Holiday")
+        eid_al_fitr = "Eid al-Fitr"
+        self._add_eid_al_fitr_day(eid_al_fitr)
+        self._add_eid_al_fitr_day_two(f"{eid_al_fitr} Holiday")
+        self._add_eid_al_fitr_day_three(f"{eid_al_fitr} Holiday")
 
         # Arafat Day & Eid al-Adha.
         self._add_arafah_day("Arafat (Hajj) Day")
@@ -102,7 +102,7 @@ class ARE(UnitedArabEmirates):
     pass
 
 
-class UnitedArabEmiratesIslamicCalendar(_IslamicLunar, _CustomCalendar):
+class UnitedArabEmiratesIslamicCalendar(_CustomCalendar, _IslamicLunar):
     EID_AL_ADHA_DATES = {
         2017: ((SEP, 1),),
         2018: ((AUG, 21),),

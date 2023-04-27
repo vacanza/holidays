@@ -150,7 +150,7 @@ class TestPakistan(TestCase):
             date(2019, 9, 9),
             date(2020, 8, 29),
             date(2021, 8, 18),
-            date(2022, 8, 8),
+            date(2022, 8, 9),
             date(2023, 7, 28),
         ):
             self.assertHoliday(dt)
@@ -188,8 +188,8 @@ class TestPakistan(TestCase):
             ("2022-07-10", "Eid-ul-Adha"),
             ("2022-07-11", "Eid-ul-Adha"),
             ("2022-07-12", "Eid-ul-Adha"),
-            ("2022-08-07", "Ashura"),
             ("2022-08-08", "Ashura"),
+            ("2022-08-09", "Ashura"),
             ("2022-08-14", "Independence Day"),
             ("2022-10-09", "Eid Milad-un-Nabi"),
             ("2022-11-09", "Iqbal Day"),

@@ -16,7 +16,7 @@ from tests.common import TestCase
 class TestSaudiArabia(TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(SaudiArabia)
+        super().setUpClass(SaudiArabia, years=range(1950, 2050))
 
     def test_country_aliases(self):
         self.assertCountryAliases(SaudiArabia, SA, SAU)
@@ -26,6 +26,7 @@ class TestSaudiArabia(TestCase):
 
     def test_2021(self):
         self.assertHolidayDates(
+            SaudiArabia(years=2021),
             "2021-05-13",
             "2021-05-14",
             "2021-05-15",
@@ -58,8 +59,8 @@ class TestSaudiArabia(TestCase):
 
     def test_national_day(self):
         self.assertHoliday(f"{year}-09-23" for year in range(2005, 2050))
-        self.assertNoHolidayName(
-            "National Day Holiday", SaudiArabia(years=range(1950, 2005))
+        self.assertNoHolidayNameInYears(
+            "National Day Holiday", range(1950, 2005)
         )
 
     def test_national_day_observed(self):
@@ -86,8 +87,8 @@ class TestSaudiArabia(TestCase):
 
     def test_founding_day(self):
         self.assertHoliday(f"{year}-02-22" for year in range(2022, 2050))
-        self.assertNoHolidayName(
-            "Founding Day Holiday", SaudiArabia(years=range(1950, 2022))
+        self.assertNoHolidayNameInYears(
+            "Founding Day Holiday", range(1950, 2022)
         )
 
     def test_founding_day_observed(self):
@@ -138,6 +139,7 @@ class TestSaudiArabia(TestCase):
             "2023-04-25",
             "2023-04-26",
             # osbserved eid al-adha
+            "2001-01-01",  # special case
             "2019-08-14",
             "2020-08-03",
             "2020-08-04",

@@ -324,6 +324,8 @@ class TestMalaysia(TestCase):
             "2022-05-16",
             "2022-07-11",
             "2022-12-26",
+            # special case
+            "2007-01-02",
         )
         self.assertHoliday(dt)
         self.assertNoNonObservedHoliday(dt)
@@ -562,6 +564,8 @@ class TestMalaysia(TestCase):
             "2022-05-16",
             "2022-07-11",
             "2022-12-26",
+            # special case
+            "2007-01-02",
         )
         self.assertHoliday(state_holidays, dt)
 
@@ -624,6 +628,8 @@ class TestMalaysia(TestCase):
             "2022-05-16",
             "2022-07-11",
             "2022-12-26",
+            # special case
+            "2007-01-02",
         )
         self.assertHoliday(state_holidays, dt)
 
@@ -684,6 +690,8 @@ class TestMalaysia(TestCase):
             "2022-05-16",
             "2022-07-11",
             "2022-12-26",
+            # special case
+            "2007-01-02",
         )
         self.assertHoliday(state_holidays, dt)
 
@@ -737,6 +745,8 @@ class TestMalaysia(TestCase):
             "2022-05-16",
             "2022-07-11",
             "2022-12-26",
+            # special case
+            "2007-01-02",
         )
         self.assertHoliday(state_holidays, dt)
 
@@ -798,6 +808,8 @@ class TestMalaysia(TestCase):
             "2022-05-16",
             "2022-07-11",
             "2022-12-26",
+            # special case
+            "2007-01-02",
         )
         self.assertHoliday(state_holidays, dt)
 
@@ -849,6 +861,8 @@ class TestMalaysia(TestCase):
             "2022-07-11",
             "2022-12-12",
             "2022-12-26",
+            # special case
+            "2007-01-02",
         )
         self.assertHoliday(state_holidays, dt)
 
@@ -936,6 +950,8 @@ class TestMalaysia(TestCase):
             "2021-05-02",
             "2021-12-26",
             "2022-07-12",
+            # special case
+            "2007-01-02",
         )
         self.assertHoliday(state_holidays, dt)
 
@@ -985,6 +1001,8 @@ class TestMalaysia(TestCase):
             "2022-05-16",
             "2022-07-11",
             "2022-12-26",
+            # special case
+            "2007-01-02",
         )
         self.assertHoliday(state_holidays, dt)
 
@@ -1042,6 +1060,8 @@ class TestMalaysia(TestCase):
             "2022-05-16",
             "2022-07-11",
             "2022-12-26",
+            # special case
+            "2007-01-02",
         )
         self.assertHoliday(state_holidays, dt)
 
@@ -1094,6 +1114,8 @@ class TestMalaysia(TestCase):
             "2022-05-16",
             "2022-07-11",
             "2022-12-26",
+            # special case
+            "2007-01-02",
         )
         self.assertHoliday(state_holidays, dt)
 
@@ -1148,6 +1170,8 @@ class TestMalaysia(TestCase):
             "2022-05-23",
             "2022-07-11",
             "2022-12-26",
+            # special case
+            "2007-01-02",
         )
         self.assertHoliday(state_holidays, dt)
 
@@ -1218,6 +1242,8 @@ class TestMalaysia(TestCase):
             "2022-07-12",
             "2022-07-18",
             "2022-12-26",
+            # special case
+            "2007-01-02",
         )
         self.assertHoliday(state_holidays, dt)
 
@@ -1275,6 +1301,8 @@ class TestMalaysia(TestCase):
             "2022-05-16",
             "2022-07-11",
             "2022-12-26",
+            # special case
+            "2007-01-02",
         )
         self.assertHoliday(state_holidays, dt)
 

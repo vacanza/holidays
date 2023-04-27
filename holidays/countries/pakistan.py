@@ -66,8 +66,8 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
         self._add_mawlid_day("Eid Milad-un-Nabi")
 
         name = "Ashura"
-        self._add_ashura_day(name)
         self._add_ashura_eve(name)
+        self._add_ashura_day(name)
 
 
 class PK(Pakistan):
@@ -78,7 +78,7 @@ class PAK(Pakistan):
     pass
 
 
-class PakistanIslamicCalendar(_IslamicLunar, _CustomCalendar):
+class PakistanIslamicCalendar(_CustomCalendar, _IslamicLunar):
     # https://www.timeanddate.com/holidays/pakistan/first-day-ashura
 
     ASHURA_DATES = {
@@ -99,7 +99,7 @@ class PakistanIslamicCalendar(_IslamicLunar, _CustomCalendar):
         2019: ((SEP, 9),),
         2020: ((AUG, 29),),
         2021: ((AUG, 18),),
-        2022: ((AUG, 8),),
+        2022: ((AUG, 9),),
     }
 
     # https://www.timeanddate.com/holidays/pakistan/eid-ul-azha
