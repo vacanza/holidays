@@ -244,7 +244,7 @@ class ReleaseNotesGenerator:
             today = date.today()
             print(
                 HEADER_TEMPLATE.format(
-                    day=today.strftime("%-d"),
+                    day=today.day,
                     month=today.strftime("%B"),
                     version=self.args.tag,
                     year=today.strftime("%Y"),
