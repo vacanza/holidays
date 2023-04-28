@@ -11,7 +11,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from pathlib import Path
 
 from hijri_converter import convert
@@ -101,14 +100,13 @@ def makelist():
         for h_month, h_day, hol_name in islamic_holidays:
             g_date = convert.Hijri(h_year, h_month, h_day).to_gregorian()
             g_year = g_date.year
-            g_month_day = (g_date.month, g_date.day)
             if g_year in dates_array:
                 if hol_name in dates_array[g_year]:
-                    dates_array[g_year][hol_name].append(g_month_day)
+                    dates_array[g_year][hol_name].append(g_date)
                 else:
-                    dates_array[g_year][hol_name] = [g_month_day]
+                    dates_array[g_year][hol_name] = [g_date]
             else:
-                dates_array[g_year] = {hol_name: [g_month_day]}
+                dates_array[g_year] = {hol_name: [g_date]}
 
     g_year_min = min(dates_array.keys())
     g_year_max = max(dates_array.keys())
@@ -121,12 +119,11 @@ def makelist():
     for hol_name in hol_list:
         year_dates = []
         for year in range(g_year_min, g_year_max + 1):
-            month_days = dates_array[year].get(hol_name)
-            if not month_days:
+            dates = dates_array[year].get(hol_name)
+            if not dates:
                 continue
-            dates = (date(year, *dt) for dt in month_days)
             dt = (f"({d.strftime('%b').upper()}, {d.day})" for d in dates)
-            dates_str = ", ".join(dt) + ("," if len(month_days) < 2 else "")
+            dates_str = ", ".join(dt) + ("," if len(dates) < 2 else "")
             year_dates.append(year_template.format(year=year, dates=dates_str))
         year_dates_str = "\n".join(year_dates)
         holiday_arrays.append(
