@@ -247,7 +247,7 @@ class ReleaseNotesGenerator:
                     day=today.day,
                     month=today.strftime("%B"),
                     version=self.args.tag,
-                    year=today.strftime("%Y"),
+                    year=today.year,
                 )
             )
             print("\n".join((f"- {pr}" for pr in self.sorted_pull_requests)))
