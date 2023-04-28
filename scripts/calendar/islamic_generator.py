@@ -1,3 +1,16 @@
+#!/usr/bin/env python3
+
+#  python-holidays
+#  ---------------
+#  A fast, efficient Python library for generating country, province and state
+#  specific sets of holidays on the fly. It aims to make determining whether a
+#  specific date is a holiday as fast and flexible as possible.
+#
+#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
+#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
+#  Website: https://github.com/dr-prodigy/python-holidays
+#  License: MIT (see LICENSE file)
+
 from datetime import date
 from pathlib import Path
 
@@ -72,7 +85,7 @@ islamic_holidays = (
     # DJ, ID, MY, AE
     (7, 27, "ISRA_AND_MIRAJ"),  # Isra and Mi'raj
     # MY
-    (9, 1, "BEGIN_RAMADAN"),  # Beginning of Ramadan
+    (9, 1, "RAMADAN_BEGINNING"),  # Beginning of Ramadan
     # MY
     (9, 17, "NUZUL_AL_QURAN"),  # Nuzul Al-Quran Day
     # MY
@@ -101,7 +114,7 @@ def makelist():
     g_year_max = max(dates_array.keys())
 
     hol_list = sorted(d[2] for d in islamic_holidays)
-    constants = "\n".join(f'{name} ="{name}"' for name in hol_list)
+    constants = "\n".join(f'{name} = "{name}"' for name in hol_list)
 
     holiday_arrays = []
     holiday_methods = []
