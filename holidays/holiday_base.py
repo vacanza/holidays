@@ -287,7 +287,7 @@ class HolidayBase(Dict[date, str]):
             if subdiv and subdiv in self._deprecated_subdivisions:
                 warnings.warn(
                     "This subdivision is deprecated and will be removed after "
-                    "Dec, 1st 2023. The list of supported subdivisions: "
+                    "Dec, 1 2023. The list of supported subdivisions: "
                     f"{', '.join(sorted(self.subdivisions))}.",
                     DeprecationWarning,
                 )

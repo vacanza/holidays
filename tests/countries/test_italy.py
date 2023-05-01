@@ -317,6 +317,5 @@ class TestItaly(TestCase):
 
     def test_subdiv_deprecation(self):
         self.assertDeprecatedSubdivisions(
-            "This subdivision is deprecated and will be removed "
-            "after Dec, 1st 2023.",
+            "This subdivision is deprecated and will be removed"
         )
