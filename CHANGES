@@ -1,14 +1,21 @@
-Version 0.24
+Version 0.25
 ============
 
 Released ???????? ??, ????
 
+Version 0.24
+============
+
+Released May 1, 2023
+
 - Introduce Islamic holidays pre-calculated data, #1090 (@KJhellico)
 - Introduce Israel holidays pre-calculated data , #1104 (@KJhellico)
+- Refactor calendars, introduce calendar customization, #1122 (@arkid15r)
 - Refactor country subdivisions, #1114 (@arkid15r)
 - Refactor weekday helpers: extend args to accept month/day tuple, #1112 (@arkid15r)
 - Optimize CI/CD stages, #1121 (@KJhellico)
 - Update Ukraine holidays: fix May 2021 observed holidays, #1113 (@arkid15r)
+- Update coverage upload process, #1131 (@arkid15r)
 - Update l10n scripts, #1100 (@arkid15r)
 - Add methods for localization tests, #1106 (@KJhellico)
 - Migrate Azerbaijan holidays to holiday groups, #1115 (@KJhellico)

@@ -13,7 +13,8 @@ from datetime import date
 from datetime import timedelta as td
 from typing import Iterable, Optional, Union
 
-from holidays.calendars import _IslamicLunar, _get_nth_weekday_of_month
+from holidays.calendars import _CustomCalendar, _IslamicLunar
+from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC, MON, FRI, SAT, SUN
 from holidays.holiday_base import HolidayBase
@@ -108,7 +109,7 @@ class Malaysia(
         ChineseCalendarHolidays.__init__(self)
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self)
+        IslamicHolidays.__init__(self, calendar=MalaysiaIslamicCalendar())
         super().__init__(
             years, expand, observed, subdiv, prov, state, language
         )
@@ -237,143 +238,30 @@ class Malaysia(
 
         # Birthday of the Prophet Muhammad (s.a.w.).
         # a.k.a. Hari Keputeraan Nabi Muhammad (Sabah Act)
-        dates_obs = {
-            2001: ((JUN, 4),),
-            2002: ((MAY, 24),),
-            2003: ((MAY, 14),),
-            2004: ((MAY, 2),),
-            2005: ((APR, 21),),
-            2006: ((APR, 11),),
-            2007: ((MAR, 31),),
-            2008: ((MAR, 20),),
-            2009: ((MAR, 9),),
-            2010: ((FEB, 26),),
-            2011: ((FEB, 16),),
-            2012: ((FEB, 5),),
-            2013: ((JAN, 24),),
-            2014: ((JAN, 14),),
-            2015: ((JAN, 3), (DEC, 24)),
-            2016: ((DEC, 12),),
-            2017: ((DEC, 1),),
-            2018: ((NOV, 20),),
-            2019: ((NOV, 9),),
-            2020: ((OCT, 29),),
-            2021: ((OCT, 19),),
-            2022: ((OCT, 10),),
-        }
-        name = "Maulidur Rasul (Birthday of the Prophet Muhammad)"
-        if year in dates_obs:
-            for hol_date in dates_obs[year]:
-                observed_dates.add(self._add_holiday(name, *hol_date))
-        else:
-            observed_dates.update(
-                self._add_mawlid_day(f"{name}{estimated_suffix}")
+        observed_dates.update(
+            self._add_mawlid_day(
+                "Maulidur Rasul (Birthday of the Prophet Muhammad)"
             )
+        )
 
         # Hari Raya Puasa (2 days).
         # aka Eid al-Fitr;
         # exact date of observance is announced yearly
-        dates_obs = {
-            2001: ((DEC, 17),),
-            2002: ((DEC, 6),),
-            2003: ((NOV, 26),),
-            2004: ((NOV, 14),),
-            2005: ((NOV, 3),),
-            2006: ((OCT, 24),),
-            2007: ((OCT, 13),),
-            2008: ((OCT, 1),),
-            2009: ((SEP, 20),),
-            2010: ((SEP, 10),),
-            2011: ((AUG, 31),),
-            2012: ((AUG, 19),),
-            2013: ((AUG, 8),),
-            2014: ((JUL, 28),),
-            2015: ((JUL, 17),),
-            2016: ((JUL, 6),),
-            2017: ((JUN, 25),),
-            2018: ((JUN, 15),),
-            2019: ((JUN, 5),),
-            2020: ((MAY, 24),),
-            2021: ((MAY, 13),),
-            2022: ((MAY, 2),),
-        }
         name = "Hari Raya Puasa"
-        if year in dates_obs:
-            for yr in (year - 1, year):
-                for hol_date in dates_obs.get(yr, ()):
-                    dt = date(yr, *hol_date)
-                    observed_dates.add(self._add_holiday(name, dt))
-                    observed_dates.add(
-                        self._add_holiday(
-                            f"Second day of {name}", dt + td(days=+1)
-                        )
-                    )
-        else:
-            observed_dates.update(
-                self._add_eid_al_fitr_day(f"{name}{estimated_suffix}")
-            )
-            observed_dates.update(
-                self._add_eid_al_fitr_day_two(
-                    f"Second day of {name}{estimated_suffix}"
-                )
-            )
+        observed_dates.update(self._add_eid_al_fitr_day(name))
+        observed_dates.update(
+            self._add_eid_al_fitr_day_two(f"Second day of {name}")
+        )
 
-        # Hari Raya Haji and Arafat Day.
-        # Date of observance is announced yearly.
-        dates_obs = {
-            2001: ((MAR, 6),),
-            2002: ((FEB, 23),),
-            2003: ((FEB, 12),),
-            2004: ((FEB, 2),),
-            2005: ((JAN, 21),),
-            2006: ((JAN, 10), (DEC, 31)),
-            2007: ((DEC, 20),),
-            2008: ((DEC, 9),),
-            2009: ((NOV, 28),),
-            2010: ((NOV, 17),),
-            2011: ((NOV, 7),),
-            2012: ((OCT, 26),),
-            2013: ((OCT, 15),),
-            2014: ((OCT, 5),),
-            2015: ((SEP, 24),),
-            2016: ((SEP, 12),),
-            2017: ((SEP, 1),),
-            2018: ((AUG, 22),),
-            2019: ((AUG, 11),),
-            2020: ((JUL, 31),),
-            2021: ((JUL, 20),),
-            2022: ((JUL, 10),),
-        }
+        # Arafat Day.
+        if self.subdiv == "TRG":
+            observed_dates.update(self._add_arafah_day("Arafat Day"))
+
+        # Hari Raya Haji.
         name = "Hari Raya Haji"
-        if year in dates_obs:
-            for yr in (year - 1, year):
-                for hol_date in dates_obs.get(yr, ()):
-                    dt = date(yr, *hol_date)
-                    observed_dates.add(self._add_holiday(name, dt))
-                    if self.subdiv == "TRG":
-                        observed_dates.add(
-                            self._add_holiday("Arafat Day", dt + td(days=-1))
-                        )
-                    if self.subdiv in {"KDH", "KTN", "PLS", "TRG"}:
-                        observed_dates.add(
-                            self._add_holiday(
-                                f"{name} Holiday", dt + td(days=+1)
-                            )
-                        )
-        else:
-            observed_dates.update(
-                self._add_eid_al_adha_day(f"{name}{estimated_suffix}")
-            )
-            if self.subdiv == "TRG":
-                observed_dates.update(
-                    self._add_arafah_day(f"Arafat Day{estimated_suffix}")
-                )
-            if self.subdiv in {"KDH", "KTN", "PLS", "TRG"}:
-                observed_dates.update(
-                    self._add_eid_al_adha_day_two(
-                        f"{name} Holiday{estimated_suffix}"
-                    )
-                )
+        observed_dates.update(self._add_eid_al_adha_day(name))
+        if self.subdiv in {"KDH", "KTN", "PLS", "TRG"}:
+            observed_dates.update(self._add_eid_al_adha_day_two(name))
 
         # New Year's Day
         if self.subdiv in {
@@ -395,78 +283,15 @@ class Malaysia(
         if self.subdiv in {"KDH", "NSN", "PLS"} or (
             self.subdiv == "TRG" and year >= 2020
         ):
-            dates_obs = {
-                2001: ((OCT, 15),),
-                2002: ((OCT, 4),),
-                2003: ((SEP, 24),),
-                2004: ((SEP, 12),),
-                2005: ((SEP, 1),),
-                2006: ((AUG, 22),),
-                2007: ((AUG, 11),),
-                2008: ((JUL, 31),),
-                2009: ((JUL, 20),),
-                2010: ((JUL, 9),),
-                2011: ((JUN, 29),),
-                2012: ((JUN, 17),),
-                2013: ((JUN, 6),),
-                2014: ((MAY, 27),),
-                2015: ((MAY, 16),),
-                2016: ((MAY, 5),),
-                2017: ((APR, 24),),
-                2018: ((APR, 14),),
-                2019: ((APR, 3),),
-                2020: ((MAR, 22),),
-                2021: ((MAR, 11),),
-                2022: ((MAR, 1),),
-            }
-            name = "Isra and Mi'raj"
-            if year in dates_obs:
-                for hol_date in dates_obs[year]:
-                    observed_dates.add(self._add_holiday(name, *hol_date))
-            else:
-                observed_dates.update(
-                    self._add_isra_and_miraj_day(f"{name}{estimated_suffix}")
-                )
+            observed_dates.update(
+                self._add_isra_and_miraj_day("Isra and Mi'raj")
+            )
 
         # Beginning of Ramadan.
         if self.subdiv in {"JHR", "KDH", "MLK"}:
-            dates_obs = {
-                2001: ((NOV, 17),),
-                2002: ((NOV, 6),),
-                2003: ((OCT, 27),),
-                2004: ((OCT, 16),),
-                2005: ((OCT, 5),),
-                2006: ((SEP, 24),),
-                2007: ((SEP, 13),),
-                2008: ((SEP, 2),),
-                2009: ((AUG, 22),),
-                2010: ((AUG, 11),),
-                2011: ((AUG, 1),),
-                2012: ((JUL, 20),),
-                2013: ((JUL, 9),),
-                2014: ((JUN, 29),),
-                2015: ((JUN, 18),),
-                2016: ((JUN, 7),),
-                2017: ((MAY, 27),),
-                2018: ((MAY, 17),),
-                2019: ((MAY, 6),),
-                2020: ((APR, 24),),
-                2021: ((APR, 13),),
-                2022: ((APR, 3),),
-            }
-            name = "Beginning of Ramadan"
-            if year in dates_obs:
-                for hol_date in dates_obs[year]:
-                    observed_dates.add(self._add_holiday(name, *hol_date))
-            else:
-                for hol_date in _IslamicLunar.islamic_holiday_date(
-                    year, "BEGIN_RAMADAN"
-                ):
-                    observed_dates.add(
-                        self._add_holiday(
-                            f"{name}{estimated_suffix}", hol_date
-                        )
-                    )
+            observed_dates.update(
+                self._add_ramadan_beginning_day("Beginning of Ramadan")
+            )
 
         # Nuzul Al-Quran Day.
         if self.subdiv in {
@@ -474,50 +299,16 @@ class Malaysia(
             "KUL",
             "LBN",
             "PHG",
+            "PJY",
+            "PLS",
             "PNG",
             "PRK",
-            "PLS",
-            "PJY",
             "SGR",
             "TRG",
         }:
-            dates_obs = {
-                2001: ((DEC, 3),),
-                2002: ((NOV, 22),),
-                2003: ((NOV, 12),),
-                2004: ((NOV, 1),),
-                2005: ((OCT, 21),),
-                2006: ((OCT, 10),),
-                2007: ((SEP, 29),),
-                2008: ((SEP, 18),),
-                2009: ((SEP, 7),),
-                2010: ((AUG, 27),),
-                2011: ((AUG, 17),),
-                2012: ((AUG, 5),),
-                2013: ((JUL, 25),),
-                2014: ((JUL, 15),),
-                2015: ((JUL, 4),),
-                2016: ((JUN, 22),),
-                2017: ((JUN, 12),),
-                2018: ((JUN, 2),),
-                2019: ((MAY, 22),),
-                2020: ((MAY, 10),),
-                2021: ((APR, 29),),
-                2022: ((APR, 19),),
-            }
-            name = "Nuzul Al-Quran Day"
-            if year in dates_obs:
-                for hol_date in dates_obs[year]:
-                    observed_dates.add(self._add_holiday(name, *hol_date))
-            else:
-                for hol_date in _IslamicLunar.islamic_holiday_date(
-                    year, "NUZUL_AL_QURAN"
-                ):
-                    observed_dates.add(
-                        self._add_holiday(
-                            f"{name}{estimated_suffix}", hol_date
-                        )
-                    )
+            observed_dates.update(
+                self._add_nuzul_al_quran_day("Nuzul Al-Quran Day")
+            )
 
         # Thaipusam.
         # An annual Hindu festival observed on the day of the first full moon
@@ -700,41 +491,10 @@ class Malaysia(
             self._add_holiday("Pesta Kaamatan", MAY, 30)
             self._add_holiday("Pesta Kaamatan (Second day)", MAY, 31)
 
-        # ------------------------------#
-        # Other holidays (decrees etc.) #
-        # ------------------------------#
+        # Other holidays (decrees etc.)
 
         # Awal Muharram.
-        dates_obs = {
-            2001: ((MAR, 26),),
-            2002: ((MAR, 15),),
-            2003: ((MAR, 5),),
-            2004: ((FEB, 22),),
-            2005: ((FEB, 10),),
-            2006: ((JAN, 31),),
-            2007: ((JAN, 20),),
-            2008: ((JAN, 10), (DEC, 29)),
-            2009: ((DEC, 18),),
-            2010: ((DEC, 8),),
-            2011: ((NOV, 27),),
-            2012: ((NOV, 15),),
-            2013: ((NOV, 5),),
-            2014: ((OCT, 25),),
-            2015: ((OCT, 14),),
-            2016: ((OCT, 2),),
-            2017: ((SEP, 22),),
-            2018: ((SEP, 11),),
-            2019: ((SEP, 1),),
-            2020: ((AUG, 20),),
-            2021: ((AUG, 10),),
-            2022: ((JUL, 30),),
-        }
-        name = "Awal Muharram (Hijri New Year)"
-        if year in dates_obs:
-            for hol_date in dates_obs[year]:
-                self._add_holiday(name, *hol_date)
-        else:
-            self._add_islamic_new_year_day(f"{name}{estimated_suffix}")
+        self._add_islamic_new_year_day("Awal Muharram (Hijri New Year)")
 
         # Special holidays (states)
         if year == 2021 and self.subdiv in {"KUL", "LBN", "PJY"}:
@@ -746,48 +506,20 @@ class Malaysia(
         if year == 2022 and self.subdiv in {"JHR", "KDH", "KTN", "TRG"}:
             self._add_holiday("Labour Day Holiday", MAY, 4)
 
-        # ---------------------------------#
-        # State holidays (multiple states) #
-        # ---------------------------------#
-
+        # Multiple state holidays.
         # Good Friday.
         if self.subdiv in {"SBH", "SWK"}:
             self._add_good_friday("Good Friday")
 
-        # -----------------------------
-        # State holidays (single state)
-        # -----------------------------
-
+        # Single state holidays.
         if self.subdiv == "JHR":
             if year >= 2015:
                 self._add_holiday("Birthday of the Sultan of Johor", MAR, 23)
 
             if year >= 2011:
-                dates_obs = {
-                    2011: ((JAN, 12),),
-                    2012: ((JAN, 1), (DEC, 20)),
-                    2013: ((DEC, 10),),
-                    2014: ((NOV, 29),),
-                    2015: ((NOV, 19),),
-                    2016: ((NOV, 7),),
-                    2017: ((OCT, 27),),
-                    2018: ((OCT, 15),),
-                    2019: ((OCT, 5),),
-                    2020: ((SEP, 24),),
-                    2021: ((SEP, 13),),
-                    2022: ((SEP, 3),),
-                }
-                name = "Hari Hol of Sultan Iskandar of Johor"
-                if year in dates_obs:
-                    for hol_date in dates_obs[year]:
-                        self._add_holiday(name, *hol_date)
-                else:
-                    for hol_date in _IslamicLunar.islamic_holiday_date(
-                        year, "HARI_HOL_JOHOR"
-                    ):
-                        self._add_holiday(
-                            f"{name}{estimated_suffix}", hol_date
-                        )
+                self._add_hari_hol_johor(
+                    "Hari Hol of Sultan Iskandar of Johor"
+                )
 
         elif self.subdiv == "KDH" and year >= 2020:
             self._add_holiday(
@@ -852,3 +584,194 @@ class MYS(Malaysia):
         super().__init__(
             years, expand, observed, subdiv, prov, state, language
         )
+
+
+class MalaysiaIslamicCalendar(_CustomCalendar, _IslamicLunar):
+    EID_AL_ADHA_DATES = {
+        2001: ((MAR, 6),),
+        2002: ((FEB, 23),),
+        2003: ((FEB, 12),),
+        2004: ((FEB, 2),),
+        2005: ((JAN, 21),),
+        2006: ((JAN, 10), (DEC, 31)),
+        2007: ((DEC, 20),),
+        2008: ((DEC, 9),),
+        2009: ((NOV, 28),),
+        2010: ((NOV, 17),),
+        2011: ((NOV, 7),),
+        2012: ((OCT, 26),),
+        2013: ((OCT, 15),),
+        2014: ((OCT, 5),),
+        2015: ((SEP, 24),),
+        2016: ((SEP, 12),),
+        2017: ((SEP, 1),),
+        2018: ((AUG, 22),),
+        2019: ((AUG, 11),),
+        2020: ((JUL, 31),),
+        2021: ((JUL, 20),),
+        2022: ((JUL, 10),),
+    }
+
+    EID_AL_FITR_DATES = {
+        2001: ((DEC, 17),),
+        2002: ((DEC, 6),),
+        2003: ((NOV, 26),),
+        2004: ((NOV, 14),),
+        2005: ((NOV, 3),),
+        2006: ((OCT, 24),),
+        2007: ((OCT, 13),),
+        2008: ((OCT, 1),),
+        2009: ((SEP, 20),),
+        2010: ((SEP, 10),),
+        2011: ((AUG, 31),),
+        2012: ((AUG, 19),),
+        2013: ((AUG, 8),),
+        2014: ((JUL, 28),),
+        2015: ((JUL, 17),),
+        2016: ((JUL, 6),),
+        2017: ((JUN, 25),),
+        2018: ((JUN, 15),),
+        2019: ((JUN, 5),),
+        2020: ((MAY, 24),),
+        2021: ((MAY, 13),),
+        2022: ((MAY, 2),),
+    }
+
+    HARI_HOL_JOHOR_DATES = {
+        2011: ((JAN, 12),),
+        2012: ((JAN, 1), (DEC, 20)),
+        2013: ((DEC, 10),),
+        2014: ((NOV, 29),),
+        2015: ((NOV, 19),),
+        2016: ((NOV, 7),),
+        2017: ((OCT, 27),),
+        2018: ((OCT, 15),),
+        2019: ((OCT, 5),),
+        2020: ((SEP, 24),),
+        2021: ((SEP, 13),),
+        2022: ((SEP, 3),),
+    }
+
+    HIJRI_NEW_YEAR_DATES = {
+        2001: ((MAR, 26),),
+        2002: ((MAR, 15),),
+        2003: ((MAR, 5),),
+        2004: ((FEB, 22),),
+        2005: ((FEB, 10),),
+        2006: ((JAN, 31),),
+        2007: ((JAN, 20),),
+        2008: ((JAN, 10), (DEC, 29)),
+        2009: ((DEC, 18),),
+        2010: ((DEC, 8),),
+        2011: ((NOV, 27),),
+        2012: ((NOV, 15),),
+        2013: ((NOV, 5),),
+        2014: ((OCT, 25),),
+        2015: ((OCT, 14),),
+        2016: ((OCT, 2),),
+        2017: ((SEP, 22),),
+        2018: ((SEP, 11),),
+        2019: ((SEP, 1),),
+        2020: ((AUG, 20),),
+        2021: ((AUG, 10),),
+        2022: ((JUL, 30),),
+    }
+
+    ISRA_AND_MIRAJ_DATES = {
+        2001: ((OCT, 15),),
+        2002: ((OCT, 4),),
+        2003: ((SEP, 24),),
+        2004: ((SEP, 12),),
+        2005: ((SEP, 1),),
+        2006: ((AUG, 22),),
+        2007: ((AUG, 11),),
+        2008: ((JUL, 31),),
+        2009: ((JUL, 20),),
+        2010: ((JUL, 9),),
+        2011: ((JUN, 29),),
+        2012: ((JUN, 17),),
+        2013: ((JUN, 6),),
+        2014: ((MAY, 27),),
+        2015: ((MAY, 16),),
+        2016: ((MAY, 5),),
+        2017: ((APR, 24),),
+        2018: ((APR, 14),),
+        2019: ((APR, 3),),
+        2020: ((MAR, 22),),
+        2021: ((MAR, 11),),
+        2022: ((MAR, 1),),
+    }
+
+    MAWLID_DATES = {
+        2001: ((JUN, 4),),
+        2002: ((MAY, 24),),
+        2003: ((MAY, 14),),
+        2004: ((MAY, 2),),
+        2005: ((APR, 21),),
+        2006: ((APR, 11),),
+        2007: ((MAR, 31),),
+        2008: ((MAR, 20),),
+        2009: ((MAR, 9),),
+        2010: ((FEB, 26),),
+        2011: ((FEB, 16),),
+        2012: ((FEB, 5),),
+        2013: ((JAN, 24),),
+        2014: ((JAN, 14),),
+        2015: ((JAN, 3), (DEC, 24)),
+        2016: ((DEC, 12),),
+        2017: ((DEC, 1),),
+        2018: ((NOV, 20),),
+        2019: ((NOV, 9),),
+        2020: ((OCT, 29),),
+        2021: ((OCT, 19),),
+        2022: ((OCT, 10),),
+    }
+    NUZUL_AL_QURAN_DATES = {
+        2001: ((DEC, 3),),
+        2002: ((NOV, 22),),
+        2003: ((NOV, 12),),
+        2004: ((NOV, 1),),
+        2005: ((OCT, 21),),
+        2006: ((OCT, 10),),
+        2007: ((SEP, 29),),
+        2008: ((SEP, 18),),
+        2009: ((SEP, 7),),
+        2010: ((AUG, 27),),
+        2011: ((AUG, 17),),
+        2012: ((AUG, 5),),
+        2013: ((JUL, 25),),
+        2014: ((JUL, 15),),
+        2015: ((JUL, 4),),
+        2016: ((JUN, 22),),
+        2017: ((JUN, 12),),
+        2018: ((JUN, 2),),
+        2019: ((MAY, 22),),
+        2020: ((MAY, 10),),
+        2021: ((APR, 29),),
+        2022: ((APR, 19),),
+    }
+
+    RAMADAN_BEGINNING_DATES = {
+        2001: ((NOV, 17),),
+        2002: ((NOV, 6),),
+        2003: ((OCT, 27),),
+        2004: ((OCT, 16),),
+        2005: ((OCT, 5),),
+        2006: ((SEP, 24),),
+        2007: ((SEP, 13),),
+        2008: ((SEP, 2),),
+        2009: ((AUG, 22),),
+        2010: ((AUG, 11),),
+        2011: ((AUG, 1),),
+        2012: ((JUL, 20),),
+        2013: ((JUL, 9),),
+        2014: ((JUN, 29),),
+        2015: ((JUN, 18),),
+        2016: ((JUN, 7),),
+        2017: ((MAY, 27),),
+        2018: ((MAY, 17),),
+        2019: ((MAY, 6),),
+        2020: ((APR, 24),),
+        2021: ((APR, 13),),
+        2022: ((APR, 3),),
+    }

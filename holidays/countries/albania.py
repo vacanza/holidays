@@ -87,14 +87,10 @@ class Albania(
         observed_dates.add(self._add_christmas_day("Christmas Day"))
 
         # Eid al-Fitr.
-        observed_dates.update(
-            self._add_eid_al_fitr_day("Eid al-Fitr* (*estimated)")
-        )
+        observed_dates.update(self._add_eid_al_fitr_day("Eid al-Fitr"))
 
         # Eid al-Adha.
-        observed_dates.update(
-            self._add_eid_al_adha_day("Eid al-Adha* (*estimated)")
-        )
+        observed_dates.update(self._add_eid_al_adha_day("Eid al-Adha"))
 
         if self.observed:
             for hol_date in sorted(observed_dates):
@@ -110,9 +106,7 @@ class Albania(
 
             # observed holidays special cases
             if year == 2007:
-                self._add_holiday(
-                    "Eid al-Adha* (*estimated) (Observed)", JAN, 3
-                )
+                self._add_holiday("Eid al-Adha (Observed)", JAN, 3)
 
 
 class AL(Albania):
