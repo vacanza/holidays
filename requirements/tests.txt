@@ -1,5 +1,5 @@
 # Test requirements.
-coverage[toml]<7.0.0
+coverage
 pytest
 pytest-cov
 pytest-xdist
