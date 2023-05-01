@@ -23,7 +23,6 @@ doc:
 	sphinx-build -E -T -W -b html -D language=en -j auto -q docs/source docs/build
 
 l10n:
-	mkdir -p holidays/locale/pot
 	scripts/l10n/generate_po_files.py
 	scripts/l10n/generate_mo_files.py
 
@@ -38,13 +37,15 @@ setup:
 	pip install --upgrade pip
 	pip install --requirement requirements/dev.txt
 	pip install --requirement requirements/docs.txt
+	pip install --requirement requirements/runtime.txt
+	pip install --requirement requirements/tests.txt
 	pre-commit install --hook-type pre-commit
 	pre-commit install --hook-type pre-push
 	make l10n
 
 test:
 	scripts/l10n/generate_mo_files.py
-	pytest --cov=. --cov-config=pyproject.toml --cov-report term --cov-report xml --durations 10 --durations-min=0.75 --dist loadscope --no-cov-on-fail --numprocesses auto
+	pytest --cov=. --cov-config=pyproject.toml --cov-report term --cov-report lcov --durations 10 --durations-min=0.75 --dist loadscope --no-cov-on-fail --numprocesses auto
 
 tox:
 	tox --parallel auto

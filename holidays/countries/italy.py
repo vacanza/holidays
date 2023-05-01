@@ -31,7 +31,7 @@ class Italy(HolidayBase):
     # In that case if you use the 2 char id you'll take the first Santo
     # Patrono defined. If you want one specific you'll have to use
     # the full name of the city like "Andria" instead of "BT".
-    subdivisions = [
+    subdivisions = (
         # Provinces.
         "AG",
         "AL",
@@ -148,7 +148,7 @@ class Italy(HolidayBase):
         "Pesaro",
         "Trani",
         "Urbino",
-    ]
+    )
 
     def _populate(self, year):
         super()._populate(year)

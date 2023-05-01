@@ -26,7 +26,7 @@ class Brazil(HolidayBase):
     """
 
     country = "BR"
-    subdivisions = [
+    subdivisions = (
         "AC",
         "AL",
         "AM",
@@ -54,7 +54,7 @@ class Brazil(HolidayBase):
         "SE",
         "SP",
         "TO",
-    ]
+    )
 
     def _populate(self, year):
         super()._populate(year)

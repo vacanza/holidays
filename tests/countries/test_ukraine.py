@@ -16,7 +16,11 @@ from tests.common import TestCase
 class TestUkraine(TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Ukraine)
+        super().setUpClass(
+            Ukraine,
+            years=range(1991, 2023),
+            years_non_observed=range(1991, 2023),
+        )
 
     def test_country_aliases(self):
         self.assertCountryAliases(Ukraine, UA, UKR)
@@ -48,11 +52,7 @@ class TestUkraine(TestCase):
 
     def test_womens_day(self):
         self.assertHoliday(f"{year}-03-08" for year in range(1991, 2023))
-        dt = (
-            "2014-03-10",
-            "2015-03-09",
-            "2020-03-09",
-        )
+        dt = ("2014-03-10", "2015-03-09", "2020-03-09")
         self.assertHoliday(dt)
         self.assertNoNonObservedHoliday(dt)
 
@@ -133,8 +133,8 @@ class TestUkraine(TestCase):
         self.assertHoliday(f"{year}-05-01" for year in range(1991, 2022))
         self.assertHoliday(f"{year}-05-02" for year in range(1991, 2018))
         self.assertNoHoliday("2018-05-02")
-        self.assertNoHolidayName(name_after, Ukraine(years=range(1919, 2018)))
-        self.assertNoHolidayName(name_before, Ukraine(years=range(2018, 2022)))
+        self.assertNoHolidayNameInYears(name_after, range(1919, 2018))
+        self.assertNoHolidayNameInYears(name_before, range(2018, 2022))
 
         dt = (
             "2010-05-03",
@@ -153,7 +153,7 @@ class TestUkraine(TestCase):
             "(День перемоги)"
         )
         self.assertHoliday(f"{year}-05-09" for year in range(1991, 2022))
-        self.assertNoHolidayName(name, Ukraine(years=range(1991, 2016)))
+        self.assertNoHolidayNameInYears(name, range(1991, 2016))
 
         dt = (
             "2010-05-10",
@@ -166,16 +166,12 @@ class TestUkraine(TestCase):
 
     def test_constitution_day(self):
         self.assertNoHoliday(f"{year}-06-28" for year in range(1991, 1997))
-        self.assertNoHolidayName(
-            "День Конституції України", Ukraine(years=range(1991, 1997))
+        self.assertNoHolidayNameInYears(
+            "День Конституції України", range(1991, 1997)
         )
         self.assertHoliday(f"{year}-06-28" for year in range(1997, 2022))
 
-        dt = (
-            "2014-06-30",
-            "2015-06-29",
-            "2020-06-29",
-        )
+        dt = ("2014-06-30", "2015-06-29", "2020-06-29")
         self.assertHoliday(dt)
         self.assertNoNonObservedHoliday(dt)
 
@@ -184,11 +180,7 @@ class TestUkraine(TestCase):
         self.assertHoliday(f"{year}-08-24" for year in range(1992, 2022))
         self.assertNoHoliday("1991-08-24", "1992-07-16")
 
-        dt = (
-            "2013-08-26",
-            "2014-08-25",
-            "2019-08-26",
-        )
+        dt = ("2013-08-26", "2014-08-25", "2019-08-26")
         self.assertHoliday(dt)
         self.assertNoNonObservedHoliday(dt)
 
@@ -197,14 +189,11 @@ class TestUkraine(TestCase):
         name_after = "День захисників і захисниць України"
         self.assertNoHoliday(f"{year}-10-14" for year in range(1991, 2015))
         self.assertHoliday(f"{year}-10-14" for year in range(2015, 2022))
-        self.assertNoHolidayName(name_before, Ukraine(years=range(1991, 2015)))
-        self.assertNoHolidayName(name_before, Ukraine(years=range(2021, 2022)))
-        self.assertNoHolidayName(name_after, Ukraine(years=range(1991, 2021)))
+        self.assertNoHolidayNameInYears(name_before, range(1991, 2015))
+        self.assertNoHolidayNameInYears(name_before, range(2021, 2022))
+        self.assertNoHolidayNameInYears(name_after, range(1991, 2021))
 
-        dt = (
-            "2017-10-16",
-            "2018-10-15",
-        )
+        dt = ("2017-10-16", "2018-10-15")
         self.assertHoliday(dt)
         self.assertNoNonObservedHoliday(dt)
 
@@ -213,23 +202,20 @@ class TestUkraine(TestCase):
         self.assertHoliday(f"{year}-11-08" for year in range(1991, 2000))
         self.assertNoHoliday(f"{year}-11-07" for year in range(2000, 2022))
         self.assertNoHoliday(f"{year}-11-08" for year in range(2000, 2022))
-        self.assertNoHolidayName(
+        self.assertNoHolidayNameInYears(
             "Річниця Великої Жовтневої соціалістичної революції",
-            Ukraine(years=range(2000, 2022)),
+            range(2000, 2022),
         )
 
-        dt = (
-            "1997-11-10",
-            "1999-11-09",
-        )
+        dt = ("1997-11-10", "1999-11-09")
         self.assertHoliday(dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_christmas_gregorian_day(self):
         self.assertNoHoliday(f"{year}-12-25" for year in range(1991, 2017))
-        self.assertNoHolidayName(
+        self.assertNoHolidayNameInYears(
             "Різдво Христове (за григоріанським календарем)",
-            Ukraine(years=range(1991, 2017)),
+            range(1991, 2017),
         )
         self.assertHoliday(f"{year}-12-25" for year in range(2017, 2022))
 
@@ -240,6 +226,7 @@ class TestUkraine(TestCase):
     def test_2018(self):
         # https://www.buhoblik.org.ua/kadry-zarplata/vremya/3678-3678-normi-trivalosti-robochogo-chasu.html
         self.assertHolidayDates(
+            Ukraine(years=2018),
             "2018-01-01",
             "2018-01-07",
             "2018-01-08",
@@ -260,6 +247,7 @@ class TestUkraine(TestCase):
     def test_2019(self):
         # https://www.buhoblik.org.ua/kadry-zarplata/vremya/3946-3946-normi-trivalosti-robochogo-chasu.html
         self.assertHolidayDates(
+            Ukraine(years=2019),
             "2019-01-01",
             "2019-01-07",
             "2019-03-08",
@@ -279,6 +267,7 @@ class TestUkraine(TestCase):
     def test_2020(self):
         # https://www.buhoblik.org.ua/kadry-zarplata/vremya/4058-4058-normi-trivalosti-robochogo-chasu.html
         self.assertHolidayDates(
+            Ukraine(years=2020),
             "2020-01-01",
             "2020-01-07",
             "2020-03-08",
@@ -299,28 +288,44 @@ class TestUkraine(TestCase):
 
     def test_2021(self):
         # https://www.buhoblik.org.ua/kadry-zarplata/vremya/4221-4221-norma-trivalosti-robochogo-chasu.html
-        self.assertHolidayDates(
-            "2021-01-01",
-            "2021-01-07",
-            "2021-03-08",
-            "2021-05-01",
-            "2021-05-02",
-            "2021-05-03",
-            "2021-05-04",
-            "2021-05-09",
-            "2021-05-10",
-            "2021-06-20",
-            "2021-06-21",
-            "2021-06-28",
-            "2021-08-24",
-            "2021-10-14",
-            "2021-12-25",
-            "2021-12-27",
+        self.assertHolidays(
+            Ukraine(years=2021),
+            ("2021-01-01", "Новий рік"),
+            ("2021-01-07", "Різдво Христове (за юліанським календарем)"),
+            ("2021-03-08", "Міжнародний жіночий день"),
+            ("2021-05-01", "День праці"),
+            ("2021-05-02", "Великдень (Пасха)"),
+            ("2021-05-03", "День праці (вихідний)"),
+            ("2021-05-04", "Великдень (Пасха) (вихідний)"),
+            (
+                "2021-05-09",
+                "День перемоги над нацизмом у Другій світовій війні "
+                "(День перемоги)",
+            ),
+            (
+                "2021-05-10",
+                "День перемоги над нацизмом у Другій світовій війні "
+                "(День перемоги) (вихідний)",
+            ),
+            ("2021-06-20", "Трійця"),
+            ("2021-06-21", "Трійця (вихідний)"),
+            ("2021-06-28", "День Конституції України"),
+            ("2021-08-24", "День незалежності України"),
+            ("2021-10-14", "День захисників і захисниць України"),
+            (
+                "2021-12-25",
+                "Різдво Христове (за григоріанським календарем)",
+            ),
+            (
+                "2021-12-27",
+                "Різдво Христове (за григоріанським календарем) " "(вихідний)",
+            ),
         )
 
     def test_2022(self):
         # https://www.buhoblik.org.ua/kadry-zarplata/vremya/4246-norma-trivalosti-robochogo-chasu-2022.html
         self.assertHolidayDates(
+            Ukraine(years=2022),
             "2022-01-01",
             "2022-01-03",
             "2022-01-07",
@@ -328,35 +333,74 @@ class TestUkraine(TestCase):
         )
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                ua = Ukraine(language=language)
-                self.assertEqual(ua["2021-01-01"], "Новий рік")
-                self.assertEqual(
-                    ua["2021-12-25"],
+        self.assertLocalizedHolidays(
+            (
+                ("2021-01-01", "Новий рік"),
+                ("2021-01-07", "Різдво Христове (за юліанським календарем)"),
+                ("2021-03-08", "Міжнародний жіночий день"),
+                ("2021-05-01", "День праці"),
+                ("2021-05-02", "Великдень (Пасха)"),
+                ("2021-05-03", "День праці (вихідний)"),
+                ("2021-05-04", "Великдень (Пасха) (вихідний)"),
+                (
+                    "2021-05-09",
+                    "День перемоги над нацизмом у Другій світовій війні "
+                    "(День перемоги)",
+                ),
+                (
+                    "2021-05-10",
+                    "День перемоги над нацизмом у Другій світовій війні "
+                    "(День перемоги) (вихідний)",
+                ),
+                ("2021-06-20", "Трійця"),
+                ("2021-06-21", "Трійця (вихідний)"),
+                ("2021-06-28", "День Конституції України"),
+                ("2021-08-24", "День незалежності України"),
+                ("2021-10-14", "День захисників і захисниць України"),
+                (
+                    "2021-12-25",
                     "Різдво Христове (за григоріанським календарем)",
-                )
-
-        run_tests((Ukraine.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((Ukraine.default_language,))
+                ),
+                (
+                    "2021-12-27",
+                    "Різдво Христове (за григоріанським календарем) "
+                    "(вихідний)",
+                ),
+            )
+        )
 
     def test_l10n_en_us(self):
-        en_us = "en_US"
-        ua = Ukraine(language=en_us)
-
-        self.assertEqual(ua["2021-01-01"], "New Year's Day")
-        self.assertEqual(ua["2021-01-07"], "Christmas (Julian calendar)")
-        self.assertEqual(ua["2021-12-25"], "Christmas (Gregorian calendar)")
-        self.assertEqual(ua["2022-01-03"], "New Year's Day (Observed)")
-
-        self.set_language(en_us)
-        for language in (None, en_us, "invalid"):
-            ua = Ukraine(language=language)
-            self.assertEqual(ua["2021-01-01"], "New Year's Day")
-            self.assertEqual(ua["2021-01-07"], "Christmas (Julian calendar)")
-            self.assertEqual(
-                ua["2021-12-25"], "Christmas (Gregorian calendar)"
-            )
-            self.assertEqual(ua["2022-01-03"], "New Year's Day (Observed)")
+        self.assertLocalizedHolidays(
+            (
+                (
+                    ("2021-01-01", "New Year's Day"),
+                    ("2021-01-07", "Christmas (Julian calendar)"),
+                    ("2021-03-08", "International Women's Day"),
+                    ("2021-05-01", "Labor Day"),
+                    ("2021-05-02", "Easter Sunday (Pascha)"),
+                    ("2021-05-03", "Labor Day (Observed)"),
+                    ("2021-05-04", "Easter Sunday (Pascha) (Observed)"),
+                    (
+                        "2021-05-09",
+                        "Day of Victory over Nazism in World War II "
+                        "(Victory Day)",
+                    ),
+                    (
+                        "2021-05-10",
+                        "Day of Victory over Nazism in World War II "
+                        "(Victory Day) (Observed)",
+                    ),
+                    ("2021-06-20", "Holy Trinity Day"),
+                    ("2021-06-21", "Holy Trinity Day (Observed)"),
+                    ("2021-06-28", "Day of the Constitution of Ukraine"),
+                    ("2021-08-24", "Independence Day"),
+                    ("2021-10-14", "Day of defenders of Ukraine"),
+                    ("2021-12-25", "Christmas (Gregorian calendar)"),
+                    (
+                        "2021-12-27",
+                        "Christmas (Gregorian calendar) (Observed)",
+                    ),
+                )
+            ),
+            "en_US",
+        )

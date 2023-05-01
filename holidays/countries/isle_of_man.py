@@ -22,7 +22,7 @@ class IsleOfMan(UnitedKingdom):
     """Using existing code in UnitedKingdom for now."""
 
     country = "IM"
-    subdivisions = []  # Override UnitedKingdom subdivisions.
+    subdivisions = ()  # Override UnitedKingdom subdivisions.
 
     def __init__(self, **kwargs):  # Override UnitedKingdom __init__().
         HolidayBase.__init__(self, **kwargs)

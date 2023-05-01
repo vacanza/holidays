@@ -144,7 +144,7 @@ class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays):
         # 23.04.1999: holiday on weekend move to next workday
         # https://zakon.rada.gov.ua/laws/show/576-14
         if self.observed:
-            for dt in observed_dates:
+            for dt in sorted(observed_dates):
                 if self._is_weekend(dt) and (
                     date(1995, JAN, 27) <= dt <= date(1998, JAN, 9)
                     or dt >= date(1999, APR, 23)

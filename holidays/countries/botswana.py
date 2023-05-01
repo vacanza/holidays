@@ -63,11 +63,7 @@ class Botswana(HolidayBase):
         self[easter_date + td(days=+39)] = "Ascension Day"
 
         _add_with_observed(date(year, MAY, 1), "Labour Day")
-        if (
-            self.observed
-            and year >= 2016
-            and self._is_saturday(date(year, MAY, 1))
-        ):
+        if self.observed and year >= 2016 and self._is_saturday(MAY, 1):
             self[date(year, MAY, 1) + td(days=+2)] = "Labour Day Holiday"
 
         _add_with_observed(date(year, JUL, 1), "Sir Seretse Khama Day")
@@ -84,11 +80,7 @@ class Botswana(HolidayBase):
 
         _add_with_observed(date(year, DEC, 25), "Christmas Day", "Boxing Day")
 
-        if (
-            self.observed
-            and year >= 2016
-            and self._is_saturday(date(year, DEC, 26))
-        ):
+        if self.observed and year >= 2016 and self._is_saturday(DEC, 26):
             self[date(year, DEC, 26) + td(days=+2)] = "Boxing Day Holiday"
 
 

@@ -1,0 +1,4 @@
+# Package runtime requirements.
+hijri-converter
+korean-lunar-calendar
+python-dateutil

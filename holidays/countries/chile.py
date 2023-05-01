@@ -33,7 +33,7 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
     }
     default_language = "es"
     # ISO 3166-2 codes for the principal subdivisions, called regions
-    subdivisions = [
+    subdivisions = (
         "AI",
         "AN",
         "AP",
@@ -50,7 +50,7 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
         "RM",
         "TA",
         "VS",
-    ]
+    )
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -76,7 +76,7 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
         # New Year's Day (Law 2.977).
         self._add_new_years_day(tr("Año Nuevo"))
         # Day after, if it's a Sunday (Law 20.983)
-        if year >= 2017 and self._is_sunday(date(year, JAN, 1)):
+        if year >= 2017 and self._is_sunday(JAN, 1):
             self._add_new_years_day_two(tr("Feriado nacional"))
 
         # Holy Week (Law 2.977)
@@ -136,11 +136,11 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # National Holiday Friday preceding Independence Day (Law 20.983).
         # Monday, September 17, 2007, is declared a holiday.
-        if year >= 2017 and self._is_saturday(year, SEP, 18):
+        if year >= 2017 and self._is_saturday(SEP, 18):
             self._add_holiday(tr("Fiestas Patrias"), SEP, 17)
 
         # National Holiday Monday preceding Independence Day (Law 20.215).
-        if year >= 2007 and self._is_tuesday(year, SEP, 18):
+        if year >= 2007 and self._is_tuesday(SEP, 18):
             self._add_holiday(tr("Fiestas Patrias"), SEP, 17)
 
         # Independence Day (Law 2.977).
@@ -150,7 +150,7 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday(tr("Día de las Glorias del Ejército"), SEP, 19)
 
         # National Holiday Friday following Army Day (Law 20.215).
-        if year >= 2008 and self._is_thursday(year, SEP, 19):
+        if year >= 2008 and self._is_thursday(SEP, 19):
             self._add_holiday(tr("Fiestas Patrias"), SEP, 20)
 
         # Decree-law 636, Law 8.223.

@@ -8,7 +8,7 @@ MANIFEST
 *.pot
 *.pyc
 *.DS_Store
-coverage.xml
+coverage.lcov
 .tox
 .venv
 docs/build

@@ -34,7 +34,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "FR"
     default_language = "fr"
-    subdivisions = [
+    subdivisions = (
         "Alsace-Moselle",
         "Guadeloupe",
         "Guyane",
@@ -47,7 +47,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         "Saint-Barthélémy",
         "Saint-Martin",
         "Wallis-et-Futuna",
-    ]
+    )
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
