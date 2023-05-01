@@ -43,7 +43,7 @@ class Burundi(
 
     def _add_holiday(self, *args) -> Optional[date]:
         dt = super()._add_holiday(*args)
-        if self.observed and self._is_sunday(dt):
+        if self.observed and dt and self._is_sunday(dt):
             super()._add_holiday(
                 "%s (Observed)" % self[dt],  # type: ignore[index]
                 dt + td(days=+1),  # type: ignore[operator]

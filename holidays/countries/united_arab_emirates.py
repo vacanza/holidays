@@ -9,9 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
-
+from holidays.calendars import _CustomCalendar, _IslamicLunar
 from holidays.constants import APR, MAY, JUN, JUL, AUG, SEP, NOV, DEC, FRI, SAT
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
@@ -45,108 +43,55 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self)
+        IslamicHolidays.__init__(
+            self, calendar=UnitedArabEmiratesIslamicCalendar()
+        )
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
 
-        # New Year's Day
+        # New Year's Day.
         self._add_new_years_day("New Year's Day")
 
-        # Commemoration Day
+        # Commemoration Day.
         if year >= 2015:
-            dt = (DEC, 1) if year >= 2019 else (NOV, 30)
-            self._add_holiday("Commemoration Day", *dt)
+            self._add_holiday(
+                "Commemoration Day", *((DEC, 1) if year >= 2019 else (NOV, 30))
+            )
 
-        # National Day
+        # National Day.
         self._add_holiday("National Day", DEC, 2)
         self._add_holiday("National Day Holiday", DEC, 3)
 
-        # Eid al-Fitr
-        # Date is announced each year. Usually stretches along 3 or 4 days,
-        # in some instances prepending/appending a day or two
-        # before/after the official holiday.
-        dates_obs = {
-            2017: ((JUN, 25),),
-            2018: ((JUN, 14),),
-            2019: ((JUN, 3),),
-            2020: ((MAY, 24),),
-        }
-        name = "Eid al-Fitr"
-        if year in dates_obs:
-            for date_obs in dates_obs[year]:
-                hol_date = date(year, *date_obs)
-                self._add_holiday(name, hol_date)
-                self._add_holiday(f"{name} Holiday", hol_date + td(days=+1))
-                self._add_holiday(f"{name} Holiday", hol_date + td(days=+2))
-        else:
-            self._add_eid_al_fitr_day(f"{name}* (*estimated)")
-            self._add_eid_al_fitr_day_two(f"{name}* (*estimated)")
-            self._add_eid_al_fitr_day_three(f"{name}* (*estimated)")
+        # Eid al-Fitr.
+        eid_al_fitr = "Eid al-Fitr"
+        self._add_eid_al_fitr_day(eid_al_fitr)
+        self._add_eid_al_fitr_day_two(f"{eid_al_fitr} Holiday")
+        self._add_eid_al_fitr_day_three(f"{eid_al_fitr} Holiday")
 
-        # Arafat Day & Eid al-Adha
-        dates_obs = {  # Eid al-Adha 1st day
-            2017: ((SEP, 1),),
-            2018: ((AUG, 21),),
-            2019: ((AUG, 11),),
-            2020: ((JUL, 31),),
-        }
-        pre_name = "Arafat (Hajj) Day"
-        name = "Eid al-Adha"
-        if year in dates_obs:
-            for date_obs in dates_obs[year]:
-                hol_date = date(year, *date_obs)
-                self._add_holiday(pre_name, hol_date + td(days=-1))
-                self._add_holiday(name, hol_date)
-                self._add_holiday(f"{name} Holiday", hol_date + td(days=+1))
-                self._add_holiday(f"{name} Holiday", hol_date + td(days=+2))
-        else:
-            self._add_arafah_day(f"{pre_name}* (*estimated)")
-            self._add_eid_al_adha_day(f"{name}* (*estimated)")
-            self._add_eid_al_adha_day_two(f"{name}* Holiday* (*estimated)")
-            self._add_eid_al_adha_day_three(f"{name}* Holiday* (*estimated)")
+        # Arafat Day & Eid al-Adha.
+        self._add_arafah_day("Arafat (Hajj) Day")
 
-        # Islamic New Year - (hijari_year, 1, 1)
-        dates_obs = {
-            2017: ((SEP, 22),),
-            2018: ((SEP, 11),),
-            2019: ((AUG, 31),),
-            2020: ((AUG, 23),),
-        }
-        name = "Al Hijra - Islamic New Year"
-        if year in dates_obs:
-            for date_obs in dates_obs[year]:
-                self._add_holiday(name, *date_obs)
-        else:
-            self._add_islamic_new_year_day(f"{name}* (*estimated)")
+        eid_al_adha = "Eid al-Adha"
+        self._add_eid_al_adha_day(eid_al_adha)
+        self._add_eid_al_adha_day_two(f"{eid_al_adha} Holiday")
+        self._add_eid_al_adha_day_three(f"{eid_al_adha} Holiday")
 
-        # Leilat al-Miraj - The Prophet's ascension (hijari_year, 7, 27)
-        if year <= 2018:  # starting from 2019 the UAE government removed this
-            dates_obs = {
-                2017: ((APR, 23),),
-                2018: ((APR, 13),),
-            }
-            name = "Leilat al-Miraj - The Prophet's ascension"
-            if year in dates_obs:
-                for date_obs in dates_obs[year]:
-                    self._add_holiday(name, *date_obs)
-            else:
-                self._add_isra_and_miraj_day(f"{name}* (*estimated)")
+        # Islamic New Year.
+        self._add_islamic_new_year_day("Al Hijra - Islamic New Year")
 
-        # Prophet Muhammad's Birthday - (hijari_year, 3, 12)
-        if year <= 2019:  # starting from 2020 the UAE government removed this
-            dates_obs = {
-                2017: ((NOV, 30),),
-                2018: ((NOV, 19),),
-                2019: ((NOV, 9),),
-            }
-            name = "Mawlud al-Nabi - Prophet Mohammad's Birthday"
-            if year in dates_obs:
-                for date_obs in dates_obs[year]:
-                    self._add_holiday(name, *date_obs)
-            else:
-                self._add_mawlid_day(f"{name}* (*estimated)")
+        # Leilat al-Miraj.
+        if year <= 2018:  # The UAE government removed this starting 2019.
+            self._add_isra_and_miraj_day(
+                "Leilat al-Miraj - The Prophet's ascension"
+            )
+
+        # Prophet Muhammad's Birthday.
+        if year <= 2019:  # The UAE government removed this starting 2020.
+            self._add_mawlid_day(
+                "Mawlud al-Nabi - Prophet Mohammad's Birthday"
+            )
 
 
 class AE(UnitedArabEmirates):
@@ -155,3 +100,37 @@ class AE(UnitedArabEmirates):
 
 class ARE(UnitedArabEmirates):
     pass
+
+
+class UnitedArabEmiratesIslamicCalendar(_CustomCalendar, _IslamicLunar):
+    EID_AL_ADHA_DATES = {
+        2017: ((SEP, 1),),
+        2018: ((AUG, 21),),
+        2019: ((AUG, 11),),
+        2020: ((JUL, 31),),
+    }
+
+    EID_AL_FITR_DATES = {
+        2017: ((JUN, 25),),
+        2018: ((JUN, 14),),
+        2019: ((JUN, 3),),
+        2020: ((MAY, 24),),
+    }
+
+    HIJRI_NEW_YEAR_DATES = {
+        2017: ((SEP, 22),),
+        2018: ((SEP, 11),),
+        2019: ((AUG, 31),),
+        2020: ((AUG, 23),),
+    }
+
+    ISRA_AND_MIRAJ_DATES = {
+        2017: ((APR, 23),),
+        2018: ((APR, 13),),
+    }
+
+    MAWLID_DATES = {
+        2017: ((NOV, 30),),
+        2018: ((NOV, 19),),
+        2019: ((NOV, 9),),
+    }
