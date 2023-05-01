@@ -10,18 +10,16 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from datetime import timedelta as td
-
-from dateutil.easter import easter
 
 from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC, TUE, SUN
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Italy(HolidayBase):
+class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "IT"
     # Reference: https://it.wikipedia.org/wiki/Province_d%27Italia
     # Please maintain in alphabetical order for easy updating in the future
@@ -144,270 +142,431 @@ class Italy(HolidayBase):
         "Andria",
         "Barletta",
         "Cesena",
-        "Forlì",
+        "Forli",
         "Pesaro",
         "Trani",
         "Urbino",
     )
 
+    _deprecated_subdivisions = ("Forlì",)
+
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year):
         super()._populate(year)
 
-        self[date(year, JAN, 1)] = "Capodanno"
-        self[date(year, JAN, 6)] = "Epifania del Signore"
-        easter_date = easter(year)
-        self[easter_date] = "Pasqua di Resurrezione"
-        self[easter_date + td(days=+1)] = "Lunedì dell'Angelo"
-        if year >= 1946:
-            self[date(year, APR, 25)] = "Festa della Liberazione"
-        self[date(year, MAY, 1)] = "Festa dei Lavoratori"
-        if year >= 1948:
-            self[date(year, JUN, 2)] = "Festa della Repubblica"
-        self[date(year, AUG, 15)] = "Assunzione della Vergine"
-        self[date(year, NOV, 1)] = "Tutti i Santi"
-        self[date(year, DEC, 8)] = "Immacolata Concezione"
-        self[date(year, DEC, 25)] = "Natale"
-        self[date(year, DEC, 26)] = "Santo Stefano"
+        # New Year's Day.
+        self._add_new_years_day("Capodanno")
 
-        # Provinces holidays
-        # Reference from:
-        # https://it.wikipedia.org/wiki/Santi_patroni_cattolici_delle_citt%C3%A0_capoluogo_di_provincia_italiane
-        # Please maintain in alphabetical order for easy updating in the future
-        if self.subdiv:
-            if self.subdiv == "AG":
-                self[date(year, FEB, 25)] = "San Gerlando"
-            elif self.subdiv == "AL":
-                self[date(year, NOV, 10)] = "San Baudolino"
-            elif self.subdiv == "AN":
-                self[date(year, MAY, 4)] = "San Ciriaco"
-            elif self.subdiv == "AO":
-                self[date(year, SEP, 7)] = "San Grato"
-            elif self.subdiv == "AP":
-                self[date(year, AUG, 5)] = "Sant'Emidio"
-            elif self.subdiv == "AQ":
-                self[date(year, JUN, 10)] = "San Massimo D'Aveia"
-            elif self.subdiv == "AR":
-                self[date(year, AUG, 7)] = "San Donato D'Arezzo"
-            elif self.subdiv == "AT":
-                self[
-                    _get_nth_weekday_of_month(1, TUE, MAY, year)
-                ] = "San Secondo di Asti"  # <--- First Tuesday in May
-            elif self.subdiv == "AV":
-                self[date(year, FEB, 14)] = "San Modestino"
-            elif self.subdiv == "BA":
-                self[date(year, DEC, 6)] = "San Nicola"
-            elif self.subdiv == "BG":
-                self[date(year, AUG, 26)] = "Sant'Alessandro di Bergamo"
-            elif self.subdiv == "BI":
-                self[date(year, DEC, 26)] = "Santo Stefano"
-            elif self.subdiv == "BL":
-                self[date(year, NOV, 11)] = "San Martino"
-            elif self.subdiv == "BN":
-                self[date(year, AUG, 24)] = "San Bartolomeo apostolo"
-            elif self.subdiv == "BO":
-                self[date(year, OCT, 4)] = "San Petronio"
-            elif self.subdiv == "BR":
-                # first Sunday of September
-                self[
-                    _get_nth_weekday_of_month(1, SUN, SEP, year)
-                ] = "San Teodoro d'Amasea e San Lorenzo da Brindisi"
-            elif self.subdiv == "BS":
-                self[date(year, FEB, 15)] = "Santi Faustino e Giovita"
-            elif self.subdiv in {"BT", "Barletta"}:
-                self[date(year, DEC, 30)] = "San Ruggero"
-            if self.subdiv in {"BT", "Andria"}:
-                self[
-                    _get_nth_weekday_of_month(3, SUN, SEP, year)
-                ] = "San Riccardo di Andria"  # <--- Third sunday in September
-            if self.subdiv in {"BT", "Trani"}:
-                self[date(year, MAY, 3)] = "San Nicola Pellegrino"
-            elif self.subdiv == "BZ":
-                self[easter_date + td(days=+50)] = "Lunedì di Pentecoste"
-                self[date(year, AUG, 15)] = "Maria Santissima Assunta"
-            elif self.subdiv == "CA":
-                self[date(year, OCT, 30)] = "San Saturnino di Cagliari"
-            elif self.subdiv == "CB":
-                self[date(year, APR, 23)] = "San Giorgio"
-            elif self.subdiv == "CE":
-                self[date(year, JAN, 20)] = "San Sebastiano"
-            elif self.subdiv == "CH":
-                self[date(year, MAY, 11)] = "San Giustino di Chieti"
-            elif self.subdiv == "CL":
-                self[date(year, SEP, 29)] = "San Michele Arcangelo"
-            elif self.subdiv == "CN":
-                self[date(year, SEP, 29)] = "San Michele Arcangelo"
-            elif self.subdiv == "CO":
-                self[date(year, AUG, 31)] = "Sant'Abbondio"
-            elif self.subdiv == "CR":
-                self[date(year, NOV, 13)] = "Sant'Omobono"
-            elif self.subdiv == "CS":
-                self[date(year, FEB, 12)] = "Madonna del Pilerio"
-            elif self.subdiv == "CT":
-                self[date(year, FEB, 5)] = "Sant'Agata"
-            elif self.subdiv == "CZ":
-                self[date(year, JUL, 16)] = "San Vitaliano"
-            elif self.subdiv == "EN":
-                self[date(year, JUL, 2)] = "Madonna della Visitazione"
-            elif self.subdiv in {"FC", "Cesena"}:
-                self[date(year, JUN, 24)] = "San Giovanni Battista"
-            if self.subdiv in {"FC", "Forlì"}:
-                self[date(year, FEB, 4)] = "Madonna del Fuoco"
-            elif self.subdiv == "FE":
-                self[date(year, APR, 23)] = "San Giorgio"
-            elif self.subdiv == "FG":
-                self[date(year, MAR, 22)] = "Madonna dei Sette Veli"
-            elif self.subdiv == "FI":
-                self[date(year, JUN, 24)] = "San Giovanni Battista"
-            elif self.subdiv == "FM":
-                self[date(year, AUG, 15)] = "Maria Santissima Assunta"
-                self[date(year, AUG, 16)] = "Maria Santissima Assunta"
-            elif self.subdiv == "FR":
-                self[date(year, JUN, 20)] = "San Silverio"
-            elif self.subdiv == "GE":
-                self[date(year, JUN, 24)] = "San Giovanni Battista"
-            elif self.subdiv == "GO":
-                self[date(year, MAR, 16)] = "Santi Ilario e Taziano"
-            elif self.subdiv == "GR":
-                self[date(year, AUG, 10)] = "San Lorenzo"
-            elif self.subdiv == "IM":
-                self[date(year, NOV, 26)] = "San Leonardo da Porto Maurizio"
-            elif self.subdiv == "IS":
-                self[date(year, MAY, 19)] = "San Pietro Celestino"
-            elif self.subdiv == "KR":
-                self[date(year, OCT, 9)] = "San Dionigi"
-            elif self.subdiv == "LC":
-                self[date(year, DEC, 6)] = "San Nicola"
-            elif self.subdiv == "LE":
-                self[date(year, AUG, 26)] = "Sant'Oronzo"
-            elif self.subdiv == "LI":
-                self[date(year, MAY, 22)] = "Santa Giulia"
-            elif self.subdiv == "LO":
-                self[date(year, JAN, 19)] = "San Bassiano"
-            elif self.subdiv == "LT":
-                self[date(year, APR, 25)] = "San Marco evangelista"
-            elif self.subdiv == "LU":
-                self[date(year, JUL, 12)] = "San Paolino di Lucca"
-            elif self.subdiv == "MB":
-                self[date(year, JUN, 24)] = "San Giovanni Battista"
-            elif self.subdiv == "MC":
-                self[date(year, AUG, 31)] = "San Giuliano l'ospitaliere"
-            elif self.subdiv == "ME":
-                self[date(year, JUN, 3)] = "Madonna della Lettera"
-            elif self.subdiv == "MI":
-                self[date(year, DEC, 7)] = "Sant'Ambrogio"
-            elif self.subdiv == "MN":
-                self[date(year, MAR, 18)] = "Sant'Anselmo da Baggio"
-            elif self.subdiv == "MO":
-                self[date(year, JAN, 31)] = "San Geminiano"
-            elif self.subdiv == "MS":
-                self[date(year, OCT, 4)] = "San Francesco d'Assisi"
-            elif self.subdiv == "MT":
-                self[date(year, JUL, 2)] = "Madonna della Bruna"
-            elif self.subdiv == "NA":
-                self[date(year, SEP, 19)] = "San Gennaro"
-            elif self.subdiv == "NO":
-                self[date(year, JAN, 22)] = "San Gaudenzio"
-            elif self.subdiv == "NU":
-                self[date(year, AUG, 5)] = "Nostra Signora della Neve"
-            elif self.subdiv == "OR":
-                self[date(year, FEB, 13)] = "Sant'Archelao"
-            elif self.subdiv == "PA":
-                self[date(year, JUL, 15)] = "San Giovanni"
-            elif self.subdiv == "PC":
-                self[date(year, JUL, 4)] = "Sant'Antonino di Piacenza"
-            elif self.subdiv == "PD":
-                self[date(year, JUN, 13)] = "Sant'Antonio di Padova"
-            elif self.subdiv == "PE":
-                self[date(year, OCT, 10)] = "San Cetteo"
-            elif self.subdiv == "PG":
-                self[date(year, JAN, 29)] = "Sant'Ercolano e San Lorenzo"
-            elif self.subdiv == "PI":
-                self[date(year, JUN, 17)] = "San Ranieri"
-            elif self.subdiv == "PN":
-                self[date(year, APR, 25)] = "San Marco Evangelista"
-                self[date(year, SEP, 8)] = "Madonna delle Grazie"
-            elif self.subdiv == "PO":
-                self[date(year, DEC, 26)] = "Santo Stefano"
-            elif self.subdiv == "PR":
-                self[date(year, JAN, 13)] = "Sant'Ilario di Poitiers"
-            elif self.subdiv == "PT":
-                self[date(year, JUL, 25)] = "San Jacopo"
-            elif self.subdiv in {"PU", "Pesaro"}:
-                self[date(year, SEP, 24)] = "San Terenzio di Pesaro"
-            if self.subdiv in {"PU", "Urbino"}:
-                self[date(year, JUN, 1)] = "San Crescentino"
-            elif self.subdiv == "PV":
-                self[date(year, DEC, 9)] = "San Siro"
-            elif self.subdiv == "PZ":
-                self[date(year, MAY, 30)] = "San Gerardo di Potenza"
-            elif self.subdiv == "RA":
-                self[date(year, JUL, 23)] = "Sant'Apollinare"
-            elif self.subdiv == "RC":
-                self[date(year, APR, 23)] = "San Giorgio"
-            elif self.subdiv == "RE":
-                self[date(year, NOV, 24)] = "San Prospero Vescovo"
-            elif self.subdiv == "RG":
-                self[date(year, APR, 23)] = "San Giorgio"
-            elif self.subdiv == "RI":
-                self[date(year, DEC, 4)] = "Santa Barbara"
-            elif self.subdiv == "RM":
-                self[date(year, JUN, 29)] = "Santi Pietro e Paolo"
-            elif self.subdiv == "RN":
-                self[date(year, OCT, 14)] = "San Gaudenzio"
-            elif self.subdiv == "RO":
-                self[date(year, NOV, 26)] = "San Bellino"
-            elif self.subdiv == "SA":
-                self[date(year, SEP, 21)] = "San Matteo Evangelista"
-            elif self.subdiv == "SI":
-                self[date(year, DEC, 1)] = "Sant'Ansano"
-            elif self.subdiv == "SO":
-                self[date(year, JUN, 19)] = "San Gervasio e San Protasio"
-            elif self.subdiv == "SP":
-                self[date(year, MAR, 19)] = "San Giuseppe"
-            elif self.subdiv == "SR":
-                self[date(year, DEC, 13)] = "Santa Lucia"
-            elif self.subdiv == "SS":
-                self[date(year, DEC, 6)] = "San Nicola"
-            elif self.subdiv == "SU":
-                self[
-                    _get_nth_weekday_of_month(2, SUN, MAY, year) + td(days=+4)
-                ] = "San Ponziano"  # <--- Thursday after second sunday in May
-            elif self.subdiv == "SV":
-                self[date(year, MAR, 18)] = "Nostra Signora della Misericordia"
-            elif self.subdiv == "TA":
-                self[date(year, MAY, 10)] = "San Cataldo"
-            elif self.subdiv == "TE":
-                self[date(year, DEC, 19)] = "San Berardo da Pagliara"
-            elif self.subdiv == "TN":
-                self[date(year, JUN, 26)] = "San Vigilio"
-            elif self.subdiv == "TO":
-                self[date(year, JUN, 24)] = "San Giovanni Battista"
-            elif self.subdiv == "TP":
-                self[date(year, AUG, 7)] = "Sant'Alberto degli Abati"
-            elif self.subdiv == "TR":
-                self[date(year, FEB, 14)] = "San Valentino"
-            elif self.subdiv == "TS":
-                self[date(year, NOV, 3)] = "San Giusto"
-            elif self.subdiv == "TV":
-                self[date(year, APR, 27)] = "San Liberale"
-            elif self.subdiv == "UD":
-                self[date(year, JUL, 12)] = "Santi Ermacora e Fortunato"
-            elif self.subdiv == "VA":
-                self[date(year, MAY, 8)] = "San Vittore il Moro"
-            elif self.subdiv == "VB":
-                self[date(year, MAY, 8)] = "San Vittore il Moro"
-            elif self.subdiv == "VC":
-                self[date(year, AUG, 1)] = "Sant'Eusebio di Vercelli"
-            elif self.subdiv == "VE":
-                self[date(year, APR, 25)] = "San Marco Evangelista"
-            elif self.subdiv == "VI":
-                self[date(year, APR, 25)] = "San Marco"
-            elif self.subdiv == "VR":
-                self[date(year, MAY, 21)] = "San Zeno"
-            elif self.subdiv == "VT":
-                self[date(year, SEP, 4)] = "Santa Rosa da Viterbo"
-            elif self.subdiv == "VV":
-                self[date(year, MAR, 1)] = "San Leoluca"
+        # Epiphany.
+        self._add_epiphany_day("Epifania del Signore")
+
+        # Easter Sunday.
+        self._add_easter_sunday("Pasqua di Resurrezione")
+
+        # Easter Monday.
+        self._add_easter_monday("Lunedì dell'Angelo")
+
+        if year >= 1946:
+            # Liberation Day.
+            self._add_holiday("Festa della Liberazione", APR, 25)
+
+        # Labor Day.
+        self._add_labor_day("Festa dei Lavoratori")
+
+        if year >= 1948:
+            # Republic Day.
+            self._add_holiday("Festa della Repubblica", JUN, 2)
+
+        # Assumption Of Mary Day.
+        self._add_assumption_of_mary_day("Assunzione della Vergine")
+
+        # All Saints' Day.
+        self._add_all_saints_day("Tutti i Santi")
+
+        # Immaculate Conception Day.
+        self._add_immaculate_conception_day("Immacolata Concezione")
+
+        # Christmas Day.
+        self._add_christmas_day("Natale")
+
+        self._add_christmas_day_two("Saint Stephen's Day")
+
+        if self.subdiv == "Forlì":
+            self._add_subdiv_forli_holidays()
+
+    # Provinces holidays.
+    # https://it.wikipedia.org/wiki/Santi_patroni_cattolici_delle_citt%C3%A0_capoluogo_di_provincia_italiane
+    # Please maintain in alphabetical order for easy updating in the future.
+
+    def _add_subdiv_ag_holidays(self):
+        self._add_holiday("San Gerlando", FEB, 25)
+
+    def _add_subdiv_al_holidays(self):
+        self._add_holiday("San Baudolino", NOV, 10)
+
+    def _add_subdiv_an_holidays(self):
+        self._add_holiday("San Ciriaco", MAY, 4)
+
+    def _add_subdiv_ao_holidays(self):
+        self._add_holiday("San Grato", SEP, 7)
+
+    def _add_subdiv_ap_holidays(self):
+        self._add_holiday("Sant'Emidio", AUG, 5)
+
+    def _add_subdiv_aq_holidays(self):
+        self._add_holiday("San Massimo D'Aveia", JUN, 10)
+
+    def _add_subdiv_ar_holidays(self):
+        self._add_holiday("San Donato D'Arezzo", AUG, 7)
+
+    def _add_subdiv_at_holidays(self):
+        self._add_holiday(
+            "San Secondo di Asti",
+            _get_nth_weekday_of_month(1, TUE, MAY, self._year),
+        )
+
+    def _add_subdiv_av_holidays(self):
+        self._add_holiday("San Modestino", FEB, 14)
+
+    def _add_subdiv_ba_holidays(self):
+        self._add_holiday("San Nicola", DEC, 6)
+
+    def _add_subdiv_bg_holidays(self):
+        self._add_holiday("Sant'Alessandro di Bergamo", AUG, 26)
+
+    def _add_subdiv_bi_holidays(self):
+        self._add_holiday("Santo Stefano", DEC, 26)
+
+    def _add_subdiv_bl_holidays(self):
+        self._add_holiday("San Martino", NOV, 11)
+
+    def _add_subdiv_bn_holidays(self):
+        self._add_holiday("San Bartolomeo apostolo", AUG, 24)
+
+    def _add_subdiv_bo_holidays(self):
+        self._add_holiday("San Petronio", OCT, 4)
+
+    def _add_subdiv_br_holidays(self):
+        self._add_holiday(
+            "San Teodoro d'Amasea e San Lorenzo da Brindisi",
+            _get_nth_weekday_of_month(1, SUN, SEP, self._year),
+        )
+
+    def _add_subdiv_bs_holidays(self):
+        self._add_holiday("Santi Faustino e Giovita", FEB, 15)
+
+    def _add_subdiv_bt_holidays(self):
+        self._add_holiday("San Nicola Pellegrino", MAY, 3)
+        self._add_holiday(
+            "San Riccardo di Andria",
+            _get_nth_weekday_of_month(3, SUN, SEP, self._year),
+        )
+        self._add_holiday("San Ruggero", DEC, 30)
+
+    def _add_subdiv_bz_holidays(self):
+        self._add_holiday(
+            "Lunedì di Pentecoste", self._easter_sunday + td(days=+50)
+        )
+        self._add_holiday("Maria Santissima Assunta", AUG, 15)
+
+    def _add_subdiv_ca_holidays(self):
+        self._add_holiday("San Saturnino di Cagliari", OCT, 30)
+
+    def _add_subdiv_cb_holidays(self):
+        self._add_holiday("San Giorgio", APR, 23)
+
+    def _add_subdiv_ce_holidays(self):
+        self._add_holiday("San Sebastiano", JAN, 20)
+
+    def _add_subdiv_ch_holidays(self):
+        self._add_holiday("San Giustino di Chieti", MAY, 11)
+
+    def _add_subdiv_cl_holidays(self):
+        self._add_holiday("San Michele Arcangelo", SEP, 29)
+
+    def _add_subdiv_cn_holidays(self):
+        self._add_holiday("San Michele Arcangelo", SEP, 29)
+
+    def _add_subdiv_co_holidays(self):
+        self._add_holiday("Sant'Abbondio", AUG, 31)
+
+    def _add_subdiv_cr_holidays(self):
+        self._add_holiday("Sant'Omobono", NOV, 13)
+
+    def _add_subdiv_cs_holidays(self):
+        self._add_holiday("Madonna del Pilerio", FEB, 12)
+
+    def _add_subdiv_ct_holidays(self):
+        self._add_holiday("Sant'Agata", FEB, 5)
+
+    def _add_subdiv_cz_holidays(self):
+        self._add_holiday("San Vitaliano", JUL, 16)
+
+    def _add_subdiv_en_holidays(self):
+        self._add_holiday("Madonna della Visitazione", JUL, 2)
+
+    def _add_subdiv_fc_holidays(self):
+        self._add_holiday("Madonna del Fuoco", FEB, 4)
+        self._add_holiday("San Giovanni Battista", JUN, 24)
+
+    def _add_subdiv_fe_holidays(self):
+        self._add_holiday("San Giorgio", APR, 23)
+
+    def _add_subdiv_fg_holidays(self):
+        self._add_holiday("Madonna dei Sette Veli", MAR, 22)
+
+    def _add_subdiv_fi_holidays(self):
+        self._add_holiday("San Giovanni Battista", JUN, 24)
+
+    def _add_subdiv_fm_holidays(self):
+        self._add_holiday("Maria Santissima Assunta", AUG, 15)
+        self._add_holiday("Maria Santissima Assunta", AUG, 16)
+
+    def _add_subdiv_fr_holidays(self):
+        self._add_holiday("San Silverio", JUN, 20)
+
+    def _add_subdiv_ge_holidays(self):
+        self._add_holiday("San Giovanni Battista", JUN, 24)
+
+    def _add_subdiv_go_holidays(self):
+        self._add_holiday("Santi Ilario e Taziano", MAR, 16)
+
+    def _add_subdiv_gr_holidays(self):
+        self._add_holiday("San Lorenzo", AUG, 10)
+
+    def _add_subdiv_im_holidays(self):
+        self._add_holiday("San Leonardo da Porto Maurizio", NOV, 26)
+
+    def _add_subdiv_is_holidays(self):
+        self._add_holiday("San Pietro Celestino", MAY, 19)
+
+    def _add_subdiv_kr_holidays(self):
+        self._add_holiday("San Dionigi", OCT, 9)
+
+    def _add_subdiv_lc_holidays(self):
+        self._add_holiday("San Nicola", DEC, 6)
+
+    def _add_subdiv_le_holidays(self):
+        self._add_holiday("Sant'Oronzo", AUG, 26)
+
+    def _add_subdiv_li_holidays(self):
+        self._add_holiday("Santa Giulia", MAY, 22)
+
+    def _add_subdiv_lo_holidays(self):
+        self._add_holiday("San Bassiano", JAN, 19)
+
+    def _add_subdiv_lt_holidays(self):
+        self._add_holiday("San Marco evangelista", APR, 25)
+
+    def _add_subdiv_lu_holidays(self):
+        self._add_holiday("San Paolino di Lucca", JUL, 12)
+
+    def _add_subdiv_mb_holidays(self):
+        self._add_holiday("San Giovanni Battista", JUN, 24)
+
+    def _add_subdiv_mc_holidays(self):
+        self._add_holiday("San Giuliano l'ospitaliere", AUG, 31)
+
+    def _add_subdiv_me_holidays(self):
+        self._add_holiday("Madonna della Lettera", JUN, 3)
+
+    def _add_subdiv_mi_holidays(self):
+        self._add_holiday("Sant'Ambrogio", DEC, 7)
+
+    def _add_subdiv_mn_holidays(self):
+        self._add_holiday("Sant'Anselmo da Baggio", MAR, 18)
+
+    def _add_subdiv_mo_holidays(self):
+        self._add_holiday("San Geminiano", JAN, 31)
+
+    def _add_subdiv_ms_holidays(self):
+        self._add_holiday("San Francesco d'Assisi", OCT, 4)
+
+    def _add_subdiv_mt_holidays(self):
+        self._add_holiday("Madonna della Bruna", JUL, 2)
+
+    def _add_subdiv_na_holidays(self):
+        self._add_holiday("San Gennaro", SEP, 19)
+
+    def _add_subdiv_no_holidays(self):
+        self._add_holiday("San Gaudenzio", JAN, 22)
+
+    def _add_subdiv_nu_holidays(self):
+        self._add_holiday("Nostra Signora della Neve", AUG, 5)
+
+    def _add_subdiv_or_holidays(self):
+        self._add_holiday("Sant'Archelao", FEB, 13)
+
+    def _add_subdiv_pa_holidays(self):
+        self._add_holiday("San Giovanni", JUL, 15)
+
+    def _add_subdiv_pc_holidays(self):
+        self._add_holiday("Sant'Antonino di Piacenza", JUL, 4)
+
+    def _add_subdiv_pd_holidays(self):
+        self._add_holiday("Sant'Antonio di Padova", JUN, 13)
+
+    def _add_subdiv_pe_holidays(self):
+        self._add_holiday("San Cetteo", OCT, 10)
+
+    def _add_subdiv_pg_holidays(self):
+        self._add_holiday("Sant'Ercolano e San Lorenzo", JAN, 29)
+
+    def _add_subdiv_pi_holidays(self):
+        self._add_holiday("San Ranieri", JUN, 17)
+
+    def _add_subdiv_pn_holidays(self):
+        self._add_holiday("San Marco Evangelista", APR, 25)
+        self._add_holiday("Madonna delle Grazie", SEP, 8)
+
+    def _add_subdiv_po_holidays(self):
+        self._add_holiday("Santo Stefano", DEC, 26)
+
+    def _add_subdiv_pr_holidays(self):
+        self._add_holiday("Sant'Ilario di Poitiers", JAN, 13)
+
+    def _add_subdiv_pt_holidays(self):
+        self._add_holiday("San Jacopo", JUL, 25)
+
+    def _add_subdiv_pu_holidays(self):
+        self._add_holiday("San Crescentino", JUN, 1)
+        self._add_holiday("San Terenzio di Pesaro", SEP, 24)
+
+    def _add_subdiv_pv_holidays(self):
+        self._add_holiday("San Siro", DEC, 9)
+
+    def _add_subdiv_pz_holidays(self):
+        self._add_holiday("San Gerardo di Potenza", MAY, 30)
+
+    def _add_subdiv_ra_holidays(self):
+        self._add_holiday("Sant'Apollinare", JUL, 23)
+
+    def _add_subdiv_rc_holidays(self):
+        self._add_holiday("San Giorgio", APR, 23)
+
+    def _add_subdiv_re_holidays(self):
+        self._add_holiday("San Prospero Vescovo", NOV, 24)
+
+    def _add_subdiv_rg_holidays(self):
+        self._add_holiday("San Giorgio", APR, 23)
+
+    def _add_subdiv_ri_holidays(self):
+        self._add_holiday("Santa Barbara", DEC, 4)
+
+    def _add_subdiv_rm_holidays(self):
+        self._add_holiday("Santi Pietro e Paolo", JUN, 29)
+
+    def _add_subdiv_rn_holidays(self):
+        self._add_holiday("San Gaudenzio", OCT, 14)
+
+    def _add_subdiv_ro_holidays(self):
+        self._add_holiday("San Bellino", NOV, 26)
+
+    def _add_subdiv_sa_holidays(self):
+        self._add_holiday("San Matteo Evangelista", SEP, 21)
+
+    def _add_subdiv_si_holidays(self):
+        self._add_holiday("Sant'Ansano", DEC, 1)
+
+    def _add_subdiv_so_holidays(self):
+        self._add_holiday("San Gervasio e San Protasio", JUN, 19)
+
+    def _add_subdiv_sp_holidays(self):
+        self._add_holiday("San Giuseppe", MAR, 19)
+
+    def _add_subdiv_sr_holidays(self):
+        self._add_holiday("Santa Lucia", DEC, 13)
+
+    def _add_subdiv_ss_holidays(self):
+        self._add_holiday("San Nicola", DEC, 6)
+
+    def _add_subdiv_su_holidays(self):
+        self._add_holiday(
+            "San Ponziano",
+            _get_nth_weekday_of_month(2, SUN, MAY, self._year) + td(days=+4),
+        )
+
+    def _add_subdiv_sv_holidays(self):
+        self._add_holiday("Nostra Signora della Misericordia", MAR, 18)
+
+    def _add_subdiv_ta_holidays(self):
+        self._add_holiday("San Cataldo", MAY, 10)
+
+    def _add_subdiv_te_holidays(self):
+        self._add_holiday("San Berardo da Pagliara", DEC, 19)
+
+    def _add_subdiv_tn_holidays(self):
+        self._add_holiday("San Vigilio", JUN, 26)
+
+    def _add_subdiv_to_holidays(self):
+        self._add_holiday("San Giovanni Battista", JUN, 24)
+
+    def _add_subdiv_tp_holidays(self):
+        self._add_holiday("Sant'Alberto degli Abati", AUG, 7)
+
+    def _add_subdiv_tr_holidays(self):
+        self._add_holiday("San Valentino", FEB, 14)
+
+    def _add_subdiv_ts_holidays(self):
+        self._add_holiday("San Giusto", NOV, 3)
+
+    def _add_subdiv_tv_holidays(self):
+        self._add_holiday("San Liberale", APR, 27)
+
+    def _add_subdiv_ud_holidays(self):
+        self._add_holiday("Santi Ermacora e Fortunato", JUL, 12)
+
+    def _add_subdiv_va_holidays(self):
+        self._add_holiday("San Vittore il Moro", MAY, 8)
+
+    def _add_subdiv_vb_holidays(self):
+        self._add_holiday("San Vittore il Moro", MAY, 8)
+
+    def _add_subdiv_vc_holidays(self):
+        self._add_holiday("Sant'Eusebio di Vercelli", AUG, 1)
+
+    def _add_subdiv_ve_holidays(self):
+        self._add_holiday("San Marco Evangelista", APR, 25)
+
+    def _add_subdiv_vi_holidays(self):
+        self._add_holiday("San Marco", APR, 25)
+
+    def _add_subdiv_vr_holidays(self):
+        self._add_holiday("San Zeno", MAY, 21)
+
+    def _add_subdiv_vt_holidays(self):
+        self._add_holiday("Santa Rosa da Viterbo", SEP, 4)
+
+    def _add_subdiv_vv_holidays(self):
+        self._add_holiday("San Leoluca", MAR, 1)
+
+    def _add_subdiv_andria_holidays(self):
+        self._add_holiday(
+            "San Riccardo di Andria",
+            _get_nth_weekday_of_month(3, SUN, SEP, self._year),
+        )
+
+    def _add_subdiv_barletta_holidays(self):
+        self._add_holiday("San Ruggero", DEC, 30)
+
+    def _add_subdiv_cesena_holidays(self):
+        self._add_holiday("San Giovanni Battista", JUN, 24)
+
+    def _add_subdiv_forli_holidays(self):
+        self._add_holiday("Madonna del Fuoco", FEB, 4)
+
+    def _add_subdiv_pesaro_holidays(self):
+        self._add_holiday("San Terenzio di Pesaro", SEP, 24)
+
+    def _add_subdiv_trani_holidays(self):
+        self._add_holiday("San Nicola Pellegrino", MAY, 3)
+
+    def _add_subdiv_urbino_holidays(self):
+        self._add_holiday("San Crescentino", JUN, 1)
 
 
 class IT(Italy):

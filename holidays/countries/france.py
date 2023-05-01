@@ -35,6 +35,20 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "FR"
     default_language = "fr"
     subdivisions = (
+        "BL",  # Saint Barthelemy.
+        "FR-GES",  # Alsace, Champagne-Ardenne, Lorraine(Moselle).
+        "GP",  # Guadeloupe.
+        "GY",  # Guyane.
+        "MF",  # Saint Martin.
+        "MQ",  # Martinique.
+        "NC",  # Nouvelle-Calédonie,
+        "PF",  # Polynésie Française.
+        "RE",  # Reunion.
+        "WF",  # Wallis-et-Futuna.
+        "YT",  # Mayotte.
+    )
+
+    _deprecated_subdivisions = (
         "Alsace-Moselle",
         "Guadeloupe",
         "Guyane",
@@ -57,8 +71,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _populate(self, year):
         super()._populate(year)
 
-        # Civil holidays
-
+        # Civil holidays.
         if year >= 1811:
             # New Year's Day.
             self._add_new_years_day(tr("Jour de l'an"))
@@ -84,23 +97,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Armistice Day.
             self._add_holiday(tr("Armistice"), NOV, 11)
 
-        # Religious holidays
-
-        if self.subdiv in {
-            "Alsace-Moselle",
-            "Guadeloupe",
-            "Martinique",
-            "Polynésie Française",
-        }:
-            # Good Friday.
-            self._add_good_friday(tr("Vendredi saint"))
-
-        if self.subdiv == "Guadeloupe":
-            self._add_holiday(
-                # Mi-Careme.
-                tr("Mi-Carême"),
-                self._easter_sunday + td(days=-24),
-            )
+        # Religious holidays.
 
         if year >= 1886:
             # Easter Monday.
@@ -120,59 +117,120 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Christmas Day.
             self._add_christmas_day(tr("Noël"))
 
-        # Non-metropolitan holidays
+        if self.subdiv == "Alsace-Moselle":
+            self._add_subdiv_fr_ges_holidays()
+        elif self.subdiv == "Guadeloupe":
+            self._add_subdiv_gp_holidays()
+        elif self.subdiv == "Guyane":
+            self._add_subdiv_gy_holidays()
+        elif self.subdiv == "La Réunion":
+            self._add_subdiv_re_holidays()
+        elif self.subdiv == "Martinique":
+            self._add_subdiv_mq_holidays()
+        elif self.subdiv == "Mayotte":
+            self._add_subdiv_yt_holidays()
+        elif self.subdiv == "Nouvelle-Calédonie":
+            self._add_subdiv_nc_holidays()
+        elif self.subdiv == "Polynésie Française":
+            self._add_subdiv_pf_holidays()
+        elif self.subdiv == "Saint-Barthélémy":
+            self._add_subdiv_bl_holidays()
+        elif self.subdiv == "Saint-Martin":
+            self._add_subdiv_mf_holidays()
+        elif self.subdiv == "Wallis-et-Futuna":
+            self._add_subdiv_wf_holidays()
 
-        if self.subdiv in {"Guadeloupe", "Martinique"}:
-            # Feast of Victor Schoelcher.
-            self._add_holiday(tr("Fête de Victor Schoelcher"), JUL, 21)
+    # Saint Barthelemy.
+    def _add_subdiv_bl_holidays(self):
+        # Abolition of slavery.
+        self._add_holiday(tr("Abolition de l'esclavage"), OCT, 9)
+
+    # Alsace, Champagne-Ardenne, Lorraine(Moselle).
+    def _add_subdiv_fr_ges_holidays(self):
+        # Good Friday.
+        self._add_good_friday(tr("Vendredi saint"))
+
+        # Saint Stephen's Day.
+        self._add_christmas_day_two(tr("Saint Étienne"))
+
+    # Guadeloupe.
+    def _add_subdiv_gp_holidays(self):
+        # Good Friday.
+        self._add_good_friday(tr("Vendredi saint"))
+
+        # Mi-Careme.
+        self._add_holiday(
+            tr("Mi-Carême"),
+            self._easter_sunday + td(days=-24),
+        )
 
         # Abolition of slavery.
-        abolition_name = tr("Abolition de l'esclavage")
+        self._add_holiday(tr("Abolition de l'esclavage"), MAY, 27)
 
-        if self.subdiv == "Alsace-Moselle":
-            # Saint Stephen's Day.
-            self._add_christmas_day_two(tr("Saint Étienne"))
+        # Feast of Victor Schoelcher.
+        self._add_holiday(tr("Fête de Victor Schoelcher"), JUL, 21)
 
-        elif self.subdiv == "Guadeloupe":
-            self._add_holiday(abolition_name, MAY, 27)
+    # Guyane.
+    def _add_subdiv_gy_holidays(self):
+        # Abolition of slavery.
+        self._add_holiday(tr("Abolition de l'esclavage"), JUN, 10)
 
-        elif self.subdiv == "Guyane":
-            self._add_holiday(abolition_name, JUN, 10)
+    # Saint Martin.
+    def _add_subdiv_mf_holidays(self):
+        if self._year >= 2018:
+            # Abolition of slavery.
+            self._add_holiday(tr("Abolition de l'esclavage"), MAY, 28)
 
-        elif self.subdiv == "La Réunion" and year >= 1981:
-            self._add_holiday(abolition_name, DEC, 20)
+    # Martinique.
+    def _add_subdiv_mq_holidays(self):
+        # Good Friday.
+        self._add_good_friday(tr("Vendredi saint"))
 
-        elif self.subdiv == "Martinique":
-            self._add_holiday(abolition_name, MAY, 22)
+        # Abolition of slavery.
+        self._add_holiday(tr("Abolition de l'esclavage"), MAY, 22)
 
-        elif self.subdiv == "Mayotte":
-            self._add_holiday(abolition_name, APR, 27)
+        # Feast of Victor Schoelcher.
+        self._add_holiday(tr("Fête de Victor Schoelcher"), JUL, 21)
 
-        elif self.subdiv == "Nouvelle-Calédonie":
-            # Citizenship Day.
-            self._add_holiday(tr("Fête de la Citoyenneté"), SEP, 24)
+    # New Caledonia.
+    def _add_subdiv_nc_holidays(self):
+        # Citizenship Day.
+        self._add_holiday(tr("Fête de la Citoyenneté"), SEP, 24)
 
-        elif self.subdiv == "Polynésie Française":
-            # Missionary Day.
-            self._add_holiday(tr("Arrivée de l'Évangile"), MAR, 5)
-            # Internal Autonomy Day.
-            self._add_holiday(tr("Fête de l'autonomie"), JUN, 29)
+    # French Polynesia.
+    def _add_subdiv_pf_holidays(self):
+        # Good Friday.
+        self._add_good_friday(tr("Vendredi saint"))
 
-        elif self.subdiv == "Saint-Barthélémy":
-            self._add_holiday(abolition_name, OCT, 9)
+        # Missionary Day.
+        self._add_holiday(tr("Arrivée de l'Évangile"), MAR, 5)
 
-        elif self.subdiv == "Saint-Martin" and year >= 2018:
-            self._add_holiday(abolition_name, MAY, 28)
+        # Internal Autonomy Day.
+        self._add_holiday(tr("Fête de l'autonomie"), JUN, 29)
 
-        elif self.subdiv == "Wallis-et-Futuna":
-            # Feast of Saint Peter Chanel.
-            self._add_holiday(tr("Saint Pierre Chanel"), APR, 28)
-            # Festival of the territory
-            self._add_holiday(tr("Fête du Territoire"), JUL, 29)
+    # Reunion.
+    def _add_subdiv_re_holidays(self):
+        if self._year >= 1981:
+            # Abolition of slavery.
+            self._add_holiday(tr("Abolition de l'esclavage"), DEC, 20)
+
+    #  Wallis and Futuna.
+    def _add_subdiv_wf_holidays(self):
+        # Feast of Saint Peter Chanel.
+        self._add_holiday(tr("Saint Pierre Chanel"), APR, 28)
+
+        # Festival of the territory.
+        self._add_holiday(tr("Fête du Territoire"), JUL, 29)
+
+    # Mayotte.
+    def _add_subdiv_yt_holidays(self):
+        # Abolition of slavery.
+        self._add_holiday(tr("Abolition de l'esclavage"), APR, 27)
 
 
-# *Warning* FR is also used by dateutil (Friday), so be careful with its use
 class FR(France):
+    """FR is also used by dateutil (Friday), so be careful with this one."""
+
     pass
 
 

@@ -12,15 +12,14 @@
 from datetime import date
 from datetime import timedelta as td
 
-from dateutil.easter import easter
-
 from holidays.calendars import _get_nth_weekday_from
-from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT
-from holidays.constants import NOV, DEC, SUN
+from holidays.constants import JAN, MAR, APR, JUN, JUL, AUG, SEP, OCT, NOV
+from holidays.constants import DEC, SUN
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Brazil(HolidayBase):
+class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://pt.wikipedia.org/wiki/Feriados_no_Brasil
     """
@@ -56,152 +55,157 @@ class Brazil(HolidayBase):
         "TO",
     )
 
+    def __init__(self, *args, **kwargs) -> None:
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year):
         super()._populate(year)
 
         # New Year's Day
-        self[date(year, JAN, 1)] = "Ano novo"
+        self._add_new_years_day("Ano novo")
 
-        self[date(year, APR, 21)] = "Tiradentes"
+        self._add_holiday("Tiradentes", APR, 21)
 
-        self[date(year, MAY, 1)] = "Dia Mundial do Trabalho"
+        self._add_labor_day("Dia Mundial do Trabalho")
 
-        self[date(year, SEP, 7)] = "Independência do Brasil"
+        self._add_holiday("Independência do Brasil", SEP, 7)
 
-        self[date(year, OCT, 12)] = "Nossa Senhora Aparecida"
+        self._add_holiday("Nossa Senhora Aparecida", OCT, 12)
 
-        self[date(year, NOV, 2)] = "Finados"
+        self._add_all_souls_day("Finados")
 
-        self[date(year, NOV, 15)] = "Proclamação da República"
+        self._add_holiday("Proclamação da República", NOV, 15)
 
         # Christmas Day
-        self[date(year, DEC, 25)] = "Natal"
+        self._add_christmas_day("Natal")
 
-        easter_date = easter(year)
-        self[easter_date + td(days=-2)] = "Sexta-feira Santa"
+        self._add_good_friday("Sexta-feira Santa")
 
-        self[easter_date] = "Páscoa"
+        self._add_easter_sunday("Páscoa")
 
-        self[easter_date + td(days=+60)] = "Corpus Christi"
+        self._add_corpus_christi_day("Corpus Christi")
 
-        quaresma = easter_date + td(days=-46)
-        self[quaresma] = "Quarta-feira de cinzas (Início da Quaresma)"
+        ash_wednesday = self._add_ash_wednesday(
+            "Quarta-feira de cinzas (Início da Quaresma)"
+        )
+        self._add_holiday("Carnaval", ash_wednesday + td(days=-1))
 
-        self[quaresma + td(days=-1)] = "Carnaval"
+    def _add_subdiv_ac_holidays(self):
+        self._add_holiday("Dia do evangélico", JAN, 23)
+        self._add_holiday("Aniversário do Acre", JUN, 15)
+        self._add_holiday("Dia da Amazônia", SEP, 5)
+        self._add_holiday("Assinatura do Tratado de Petrópolis", NOV, 17)
 
-        if self.subdiv == "AC":
-            self[date(year, JAN, 23)] = "Dia do evangélico"
-            self[date(year, JUN, 15)] = "Aniversário do Acre"
-            self[date(year, SEP, 5)] = "Dia da Amazônia"
-            self[date(year, NOV, 17)] = (
-                "Assinatura do Tratado de" " Petrópolis"
-            )
+    def _add_subdiv_al_holidays(self):
+        self._add_holiday("São João", JUN, 24)
+        self._add_holiday("São Pedro", JUN, 29)
+        self._add_holiday("Emancipação política de Alagoas", SEP, 16)
+        self._add_holiday("Consciência Negra", NOV, 20)
 
-        if self.subdiv == "AL":
-            self[date(year, JUN, 24)] = "São João"
-            self[date(year, JUN, 29)] = "São Pedro"
-            self[date(year, SEP, 16)] = "Emancipação política de Alagoas"
-            self[date(year, NOV, 20)] = "Consciência Negra"
+    def _add_subdiv_am_holidays(self):
+        self._add_holiday(
+            "Elevação do Amazonas à categoria de província", SEP, 5
+        )
+        self._add_holiday("Consciência Negra", NOV, 20)
+        self._add_holiday("Dia de Nossa Senhora da Conceição", DEC, 8)
 
-        if self.subdiv == "AP":
-            self[date(year, MAR, 19)] = "Dia de São José"
-            self[date(year, JUL, 25)] = "São Tiago"
-            self[date(year, OCT, 5)] = "Criação do estado"
-            self[date(year, NOV, 20)] = "Consciência Negra"
+    def _add_subdiv_ap_holidays(self):
+        self._add_holiday("Dia de São José", MAR, 19)
+        self._add_holiday("São Tiago", JUL, 25)
+        self._add_holiday("Criação do estado", OCT, 5)
+        self._add_holiday("Consciência Negra", NOV, 20)
 
-        if self.subdiv == "AM":
-            self[date(year, SEP, 5)] = (
-                "Elevação do Amazonas" " à categoria de província"
-            )
-            self[date(year, NOV, 20)] = "Consciência Negra"
-            self[date(year, DEC, 8)] = "Dia de Nossa Senhora da Conceição"
+    def _add_subdiv_ba_holidays(self):
+        self._add_holiday("Independência da Bahia", JUL, 2)
 
-        if self.subdiv == "BA":
-            self[date(year, JUL, 2)] = "Independência da Bahia"
+    def _add_subdiv_ce_holidays(self):
+        self._add_holiday("São José", MAR, 19)
+        self._add_holiday("Data Magna do Ceará", MAR, 25)
 
-        if self.subdiv == "CE":
-            self[date(year, MAR, 19)] = "São José"
-            self[date(year, MAR, 25)] = "Data Magna do Ceará"
+    def _add_subdiv_df_holidays(self):
+        self._add_holiday("Fundação de Brasília", APR, 21)
+        self._add_holiday("Dia do Evangélico", NOV, 30)
 
-        if self.subdiv == "DF":
-            self[date(year, APR, 21)] = "Fundação de Brasília"
-            self[date(year, NOV, 30)] = "Dia do Evangélico"
+    def _add_subdiv_es_holidays(self):
+        self._add_holiday("Dia do Servidor Público", OCT, 28)
 
-        if self.subdiv == "ES":
-            self[date(year, OCT, 28)] = "Dia do Servidor Público"
+    def _add_subdiv_go_holidays(self):
+        self._add_holiday("Dia do Servidor Público", OCT, 28)
 
-        if self.subdiv == "GO":
-            self[date(year, OCT, 28)] = "Dia do Servidor Público"
+    def _add_subdiv_ma_holidays(self):
+        self._add_holiday(
+            "Adesão do Maranhão à independência do Brasil", JUL, 28
+        )
+        self._add_holiday("Dia de Nossa Senhora da Conceição", DEC, 8)
 
-        if self.subdiv == "MA":
-            self[date(year, JUL, 28)] = (
-                "Adesão do Maranhão" " à independência do Brasil"
-            )
-            self[date(year, DEC, 8)] = "Dia de Nossa Senhora da Conceição"
+    def _add_subdiv_mg_holidays(self):
+        self._add_holiday("Data Magna de MG", APR, 21)
 
-        if self.subdiv == "MT":
-            self[date(year, NOV, 20)] = "Consciência Negra"
+    def _add_subdiv_ms_holidays(self):
+        self._add_holiday("Criação do estado", OCT, 11)
 
-        if self.subdiv == "MS":
-            self[date(year, OCT, 11)] = "Criação do estado"
+    def _add_subdiv_mt_holidays(self):
+        self._add_holiday("Consciência Negra", NOV, 20)
 
-        if self.subdiv == "MG":
-            self[date(year, APR, 21)] = "Data Magna de MG"
+    def _add_subdiv_pa_holidays(self):
+        self._add_holiday(
+            "Adesão do Grão-Pará à independência do Brasil", AUG, 15
+        )
 
-        if self.subdiv == "PA":
-            self[date(year, AUG, 15)] = (
-                "Adesão do Grão-Pará" " à independência do Brasil"
-            )
+    def _add_subdiv_pb_holidays(self):
+        self._add_holiday("Fundação do Estado", AUG, 5)
 
-        if self.subdiv == "PB":
-            self[date(year, AUG, 5)] = "Fundação do Estado"
+    def _add_subdiv_pe_holidays(self):
+        self._add_holiday("Revolução Pernambucana (Data Magna)", MAR, 6)
+        self._add_holiday("São João", JUN, 24)
 
-        if self.subdiv == "PE":
-            self[date(year, MAR, 6)] = "Revolução Pernambucana (Data Magna)"
-            self[date(year, JUN, 24)] = "São João"
+    def _add_subdiv_pi_holidays(self):
+        self._add_holiday("Dia da Batalha do Jenipapo", MAR, 13)
+        self._add_holiday("Dia do Piauí", OCT, 19)
 
-        if self.subdiv == "PI":
-            self[date(year, MAR, 13)] = "Dia da Batalha do Jenipapo"
-            self[date(year, OCT, 19)] = "Dia do Piauí"
+    def _add_subdiv_pr_holidays(self):
+        self._add_holiday("Emancipação do Paraná", DEC, 19)
 
-        if self.subdiv == "PR":
-            self[date(year, DEC, 19)] = "Emancipação do Paraná"
+    def _add_subdiv_rj_holidays(self):
+        self._add_holiday("Dia de São Jorge", APR, 23)
+        self._add_holiday("Dia do Funcionário Público", OCT, 28)
+        self._add_holiday("Zumbi dos Palmares", NOV, 20)
 
-        if self.subdiv == "RJ":
-            self[date(year, APR, 23)] = "Dia de São Jorge"
-            self[date(year, OCT, 28)] = "Dia do Funcionário Público"
-            self[date(year, NOV, 20)] = "Zumbi dos Palmares"
+    def _add_subdiv_rn_holidays(self):
+        self._add_holiday("Dia de São Pedro", JUN, 29)
+        self._add_holiday("Mártires de Cunhaú e Uruaçuu", OCT, 3)
 
-        if self.subdiv == "RN":
-            self[date(year, JUN, 29)] = "Dia de São Pedro"
-            self[date(year, OCT, 3)] = "Mártires de Cunhaú e Uruaçuu"
+    def _add_subdiv_ro_holidays(self):
+        self._add_holiday("Criação do estado", JAN, 4)
+        self._add_holiday("Dia do Evangélico", JUN, 18)
 
-        if self.subdiv == "RS":
-            self[date(year, SEP, 20)] = "Revolução Farroupilha"
+    def _add_subdiv_rr_holidays(self):
+        self._add_holiday("Criação de Roraima", OCT, 5)
 
-        if self.subdiv == "RO":
-            self[date(year, JAN, 4)] = "Criação do estado"
-            self[date(year, JUN, 18)] = "Dia do Evangélico"
+    def _add_subdiv_rs_holidays(self):
+        self._add_holiday("Revolução Farroupilha", SEP, 20)
 
-        if self.subdiv == "RR":
-            self[date(year, OCT, 5)] = "Criação de Roraima"
+    def _add_subdiv_sc_holidays(self):
+        dt = date(self._year, AUG, 11)
+        self._add_holiday(
+            "Criação da capitania, separando-se de SP",
+            _get_nth_weekday_from(1, SUN, dt)
+            if self._year >= 2018 and not self._is_weekend(dt)
+            else dt,
+        )
 
-        if self.subdiv == "SC":
-            dt = date(year, AUG, 11)
-            if year >= 2018 and not self._is_weekend(dt):
-                dt = _get_nth_weekday_from(1, SUN, dt)
-            self[dt] = "Criação da capitania, separando-se de SP"
+    def _add_subdiv_se_holidays(self):
+        self._add_holiday("Autonomia política de Sergipe", JUL, 8)
 
-        if self.subdiv == "SP":
-            self[date(year, JUL, 9)] = "Revolução Constitucionalista de 1932"
+    def _add_subdiv_sp_holidays(self):
+        self._add_holiday("Revolução Constitucionalista de 1932", JUL, 9)
 
-        if self.subdiv == "SE":
-            self[date(year, JUL, 8)] = "Autonomia política de Sergipe"
-
-        if self.subdiv == "TO":
-            self[date(year, JAN, 1)] = "Instalação de Tocantins"
-            self[date(year, SEP, 8)] = "Nossa Senhora da Natividade"
-            self[date(year, OCT, 5)] = "Criação de Tocantins"
+    def _add_subdiv_to_holidays(self):
+        self._add_holiday("Instalação de Tocantins", JAN, 1)
+        self._add_holiday("Nossa Senhora da Natividade", SEP, 8)
+        self._add_holiday("Criação de Tocantins", OCT, 5)
 
 
 class BR(Brazil):

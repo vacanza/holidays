@@ -406,6 +406,8 @@ class TestBasics(unittest.TestCase):
             self.assertRaises(TypeError, lambda: us._add_holiday(*args))
 
     def test_get_list(self):
+        warnings.simplefilter("ignore", category=DeprecationWarning)
+
         westland = holidays.NZ(subdiv="WTL")
         chathams = holidays.NZ(subdiv="CIT")
         wild = westland + chathams

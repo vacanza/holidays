@@ -10,16 +10,14 @@
 #  License: MIT (see LICENSE file)
 #  Copyright: Kateryna Golovanova <kate@kgthreads.com>, 2022
 
-from datetime import date
 from datetime import timedelta as td
 
-from dateutil.easter import easter
-
-from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, SEP, NOV, DEC
+from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, SEP, NOV
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Bolivia(HolidayBase):
+class Bolivia(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Bolivia
     https://www.officeholidays.com/countries/bolivia
@@ -38,90 +36,101 @@ class Bolivia(HolidayBase):
         "T",
     )
 
-    def _populate(self, year):
-        def _add_with_observed(hol_date: date, hol_name: str) -> None:
-            self[hol_date] = hol_name
-            if self.observed and self._is_sunday(hol_date):
-                self[hol_date + td(days=+1)] = f"{hol_name} (Observed)"
+    def __init__(self, *args, **kwargs) -> None:
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
+    def _populate(self, year):
         super()._populate(year)
+        observed_dates = set()
 
         # New Year's Day.
         if year >= 1825:
-            _add_with_observed(date(year, JAN, 1), "Año Nuevo")
+            observed_dates.add(self._add_new_years_day("Año Nuevo"))
 
         # Plurinational State Foundation Day.
         if year >= 2010:
-            self[
-                date(year, JAN, 22)
-            ] = "Nacimiento del Estado Plurinacional de Bolivia"
-
-        easter_date = easter(year)
+            self._add_holiday(
+                "Nacimiento del Estado Plurinacional de Bolivia", JAN, 22
+            )
 
         # Carnival.
         name = "Feriado por Carnaval"
-        self[easter_date + td(days=-48)] = name
-        self[easter_date + td(days=-47)] = name
+        self._add_carnival_monday(name)
+        self._add_carnival_tuesday(name)
 
         # Good Friday.
-        self[easter_date + td(days=-2)] = "Viernes Santo"
+        self._add_good_friday("Viernes Santo")
 
         # Labor Day.
-        _add_with_observed(date(year, MAY, 1), "Día del trabajo")
+        name = "Día del trabajo"
+        observed_dates.add(self._add_labor_day(name))
 
         # Corpus Christi.
-        self[easter_date + td(days=+60)] = "Corpus Christi"
+        self._add_corpus_christi_day("Corpus Christi")
 
-        # Andean New Year.
         if year >= 2010:
-            _add_with_observed(date(year, JUN, 21), "Año Nuevo Andino")
+            # Andean New Year.
+            name = "Año Nuevo Andino"
+            observed_dates.add(self._add_holiday(name, JUN, 21))
 
-        # Independence Day.
         if year >= 1825:
-            _add_with_observed(date(year, AUG, 6), "Día de la Patria")
+            # Independence Day.
+            name = "Día de la Patria"
+            observed_dates.add(self._add_holiday(name, AUG, 6))
 
         # All Soul's Day.
-        _add_with_observed(date(year, NOV, 2), "Todos Santos")
+        name = "Todos Santos"
+        observed_dates.add(self._add_all_souls_day(name))
 
         # Christmas Day.
-        _add_with_observed(date(year, DEC, 25), "Navidad")
+        name = "Navidad"
+        observed_dates.add(self._add_christmas_day(name))
 
-        # Regional holidays.
-        # La Tablada.
-        if self.subdiv == "T":
-            self[date(year, APR, 15)] = "La Tablada"
+        if self.observed:
+            for dt in sorted(observed_dates):
+                if not self._is_sunday(dt):
+                    continue
+                self._add_holiday(f"{self[dt]} (Observed)", dt + td(days=+1))
 
-        # Carnival in Oruro.
-        elif self.subdiv == "O":
-            self[easter_date + td(days=-51)] = "Carnaval de Oruro"
-
-        # Chuquisaca Day.
-        elif self.subdiv == "H":
-            self[date(year, MAY, 25)] = "Día del departamento de Chuquisaca"
-
-        # La Paz Day.
-        elif self.subdiv == "L":
-            self[date(year, JUL, 16)] = "Día del departamento de La Paz"
-
-        # Cochabamba Day.
-        elif self.subdiv == "C":
-            self[date(year, SEP, 14)] = "Día del departamento de Cochabamba"
-
-        # Santa Cruz Day.
-        elif self.subdiv == "S":
-            self[date(year, SEP, 24)] = "Día del departamento de Santa Cruz"
-
-        # Pando Day.
-        elif self.subdiv == "N":
-            self[date(year, SEP, 24)] = "Día del departamento de Pando"
-
-        # Potosí Day.
-        elif self.subdiv == "P":
-            self[date(year, NOV, 10)] = "Día del departamento de Potosí"
-
+    def _add_subdiv_b_holidays(self):
         # Beni Day.
-        elif self.subdiv == "B":
-            self[date(year, NOV, 18)] = "Día del departamento de Beni"
+        self._add_holiday("Día del departamento de Beni", NOV, 18)
+
+    def _add_subdiv_c_holidays(self):
+        # Cochabamba Day.
+        self._add_holiday("Día del departamento de Cochabamba", SEP, 14)
+
+    def _add_subdiv_h_holidays(self):
+        # Chuquisaca Day.
+        self._add_holiday("Día del departamento de Chuquisaca", MAY, 25)
+
+    def _add_subdiv_l_holidays(self):
+        # La Paz Day.
+        self._add_holiday("Día del departamento de La Paz", JUL, 16)
+
+    def _add_subdiv_n_holidays(self):
+        # Pando Day.
+        self._add_holiday("Día del departamento de Pando", SEP, 24)
+
+    def _add_subdiv_p_holidays(self):
+        # Potosí Day.
+        self._add_holiday("Día del departamento de Potosí", NOV, 10)
+
+    def _add_subdiv_o_holidays(self):
+        # Carnival in Oruro.
+        self._add_holiday(
+            "Carnaval de Oruro", self._easter_sunday + td(days=-51)
+        )
+
+    def _add_subdiv_s_holidays(self):
+        # Santa Cruz Day.
+        self._add_holiday("Día del departamento de Santa Cruz", SEP, 24)
+
+    def _add_subdiv_t_holidays(self):
+        # La Tablada.
+        self._add_holiday("La Tablada", APR, 15)
 
 
 class BO(Bolivia):

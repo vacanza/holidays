@@ -284,6 +284,14 @@ class HolidayBase(Dict[date, str]):
                     )
                 raise NotImplementedError(error)
 
+            if subdiv and subdiv in self._deprecated_subdivisions:
+                warnings.warn(
+                    "This subdivision is deprecated and will be removed after "
+                    "Dec, 1st 2023. The list of supported subdivisions: "
+                    f"{', '.join(sorted(self.subdivisions))}.",
+                    DeprecationWarning,
+                )
+
             name = getattr(self, "country", getattr(self, "market", None))
             if name:
                 locale_dir = os.path.join(os.path.dirname(__file__), "locale")
@@ -758,8 +766,9 @@ class HolidayBase(Dict[date, str]):
     def _add_subdiv_holidays(self):
         """Populate subdivision holidays."""
         if self.subdiv is not None:
+            subdiv = self.subdiv.replace("-", "_").lower()
             add_subdiv_holidays = getattr(
-                self, f"_add_subdiv_{self.subdiv.lower()}_holidays", None
+                self, f"_add_subdiv_{subdiv}_holidays", None
             )
             if add_subdiv_holidays and callable(add_subdiv_holidays):
                 add_subdiv_holidays()
