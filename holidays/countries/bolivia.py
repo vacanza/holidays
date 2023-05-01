@@ -64,29 +64,24 @@ class Bolivia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_good_friday("Viernes Santo")
 
         # Labor Day.
-        name = "Día del trabajo"
-        observed_dates.add(self._add_labor_day(name))
+        observed_dates.add(self._add_labor_day("Día del trabajo"))
 
         # Corpus Christi.
         self._add_corpus_christi_day("Corpus Christi")
 
         if year >= 2010:
             # Andean New Year.
-            name = "Año Nuevo Andino"
-            observed_dates.add(self._add_holiday(name, JUN, 21))
+            observed_dates.add(self._add_holiday("Año Nuevo Andino", JUN, 21))
 
         if year >= 1825:
             # Independence Day.
-            name = "Día de la Patria"
-            observed_dates.add(self._add_holiday(name, AUG, 6))
+            observed_dates.add(self._add_holiday("Día de la Patria", AUG, 6))
 
         # All Soul's Day.
-        name = "Todos Santos"
-        observed_dates.add(self._add_all_souls_day(name))
+        observed_dates.add(self._add_all_souls_day("Todos Santos"))
 
         # Christmas Day.
-        name = "Navidad"
-        observed_dates.add(self._add_christmas_day(name))
+        observed_dates.add(self._add_christmas_day("Navidad"))
 
         if self.observed:
             for dt in sorted(observed_dates):
