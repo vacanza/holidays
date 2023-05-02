@@ -193,7 +193,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Christmas Day.
         self._add_christmas_day("Natale")
 
-        self._add_christmas_day_two("Saint Stephen's Day")
+        self._add_christmas_day_two("Santo Stefano")
 
         if self.subdiv == "Forlì":
             self._add_subdiv_forli_holidays()
@@ -239,7 +239,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday("Sant'Alessandro di Bergamo", AUG, 26)
 
     def _add_subdiv_bi_holidays(self):
-        self._add_holiday("Santo Stefano", DEC, 26)
+        self._add_christmas_day_two("Santo Stefano")
 
     def _add_subdiv_bl_holidays(self):
         self._add_holiday("San Martino", NOV, 11)
@@ -268,10 +268,8 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday("San Ruggero", DEC, 30)
 
     def _add_subdiv_bz_holidays(self):
-        self._add_holiday(
-            "Lunedì di Pentecoste", self._easter_sunday + td(days=+50)
-        )
-        self._add_holiday("Maria Santissima Assunta", AUG, 15)
+        self._add_whit_monday("Lunedì di Pentecoste")
+        self._add_assumption_of_mary_day("Maria Santissima Assunta")
 
     def _add_subdiv_ca_holidays(self):
         self._add_holiday("San Saturnino di Cagliari", OCT, 30)
@@ -311,7 +309,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_fc_holidays(self):
         self._add_holiday("Madonna del Fuoco", FEB, 4)
-        self._add_holiday("San Giovanni Battista", JUN, 24)
+        self._add_saint_johns_day("San Giovanni Battista")
 
     def _add_subdiv_fe_holidays(self):
         self._add_holiday("San Giorgio", APR, 23)
@@ -320,17 +318,17 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday("Madonna dei Sette Veli", MAR, 22)
 
     def _add_subdiv_fi_holidays(self):
-        self._add_holiday("San Giovanni Battista", JUN, 24)
+        self._add_saint_johns_day("San Giovanni Battista")
 
     def _add_subdiv_fm_holidays(self):
-        self._add_holiday("Maria Santissima Assunta", AUG, 15)
-        self._add_holiday("Maria Santissima Assunta", AUG, 16)
+        aug_15 = self._add_assumption_of_mary_day("Maria Santissima Assunta")
+        self._add_holiday("Maria Santissima Assunta", aug_15 + td(days=+1))
 
     def _add_subdiv_fr_holidays(self):
         self._add_holiday("San Silverio", JUN, 20)
 
     def _add_subdiv_ge_holidays(self):
-        self._add_holiday("San Giovanni Battista", JUN, 24)
+        self._add_saint_johns_day("San Giovanni Battista")
 
     def _add_subdiv_go_holidays(self):
         self._add_holiday("Santi Ilario e Taziano", MAR, 16)
@@ -366,7 +364,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday("San Paolino di Lucca", JUL, 12)
 
     def _add_subdiv_mb_holidays(self):
-        self._add_holiday("San Giovanni Battista", JUN, 24)
+        self._add_saint_johns_day("San Giovanni Battista")
 
     def _add_subdiv_mc_holidays(self):
         self._add_holiday("San Giuliano l'ospitaliere", AUG, 31)
@@ -421,10 +419,10 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_pn_holidays(self):
         self._add_holiday("San Marco Evangelista", APR, 25)
-        self._add_holiday("Madonna delle Grazie", SEP, 8)
+        self._add_nativity_of_mary_day("Madonna delle Grazie")
 
     def _add_subdiv_po_holidays(self):
-        self._add_holiday("Santo Stefano", DEC, 26)
+        self._add_christmas_day_two("Santo Stefano")
 
     def _add_subdiv_pr_holidays(self):
         self._add_holiday("Sant'Ilario di Poitiers", JAN, 13)
@@ -458,7 +456,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday("Santa Barbara", DEC, 4)
 
     def _add_subdiv_rm_holidays(self):
-        self._add_holiday("Santi Pietro e Paolo", JUN, 29)
+        self._add_saints_peter_and_paul_day("Santi Pietro e Paolo")
 
     def _add_subdiv_rn_holidays(self):
         self._add_holiday("San Gaudenzio", OCT, 14)
@@ -476,7 +474,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday("San Gervasio e San Protasio", JUN, 19)
 
     def _add_subdiv_sp_holidays(self):
-        self._add_holiday("San Giuseppe", MAR, 19)
+        self._add_saint_josephs_day("San Giuseppe")
 
     def _add_subdiv_sr_holidays(self):
         self._add_holiday("Santa Lucia", DEC, 13)
@@ -503,7 +501,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday("San Vigilio", JUN, 26)
 
     def _add_subdiv_to_holidays(self):
-        self._add_holiday("San Giovanni Battista", JUN, 24)
+        self._add_saint_johns_day("San Giovanni Battista")
 
     def _add_subdiv_tp_holidays(self):
         self._add_holiday("Sant'Alberto degli Abati", AUG, 7)
@@ -554,7 +552,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday("San Ruggero", DEC, 30)
 
     def _add_subdiv_cesena_holidays(self):
-        self._add_holiday("San Giovanni Battista", JUN, 24)
+        self._add_saint_johns_day("San Giovanni Battista")
 
     def _add_subdiv_forli_holidays(self):
         self._add_holiday("Madonna del Fuoco", FEB, 4)
