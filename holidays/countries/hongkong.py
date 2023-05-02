@@ -11,10 +11,17 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 from typing import Optional
 
-from holidays.calendars.gregorian import JUL, AUG, SEP, MON, SUN, _get_nth_weekday_of_month
+from holidays.calendars.gregorian import (
+    JUL,
+    AUG,
+    SEP,
+    MON,
+    SUN,
+    _delta_days,
+    _get_nth_weekday_of_month,
+)
 from holidays.groups import (
     ChineseCalendarHolidays,
     ChristianHolidays,
@@ -106,11 +113,11 @@ class HongKong(
         # Ching Ming Festival
         name = "Ching Ming Festival"
         dt_qingming = self._qingming_date
-        if self.observed and dt_qingming == self._easter_sunday + td(days=+1):
+        if self.observed and dt_qingming == _delta_days(self._easter_sunday, +1):
             self._add_observed(dt_qingming, name=name, rule=MON_TO_NEXT_TUE)
         elif dt_qingming not in {
-            self._easter_sunday + td(days=-2),
-            self._easter_sunday + td(days=-1),
+            _delta_days(self._easter_sunday, -2),
+            _delta_days(self._easter_sunday, -1),
         }:
             self._add_holiday(name, dt_qingming)
 
@@ -122,8 +129,8 @@ class HongKong(
         self._add_easter_monday(easter_monday)
 
         if dt_qingming in {
-            self._easter_sunday + td(days=-2),
-            self._easter_sunday + td(days=-1),
+            _delta_days(self._easter_sunday, -2),
+            _delta_days(self._easter_sunday, -1),
         }:
             super()._add_holiday(name, dt_qingming)
 
@@ -154,7 +161,7 @@ class HongKong(
                     self._add_mid_autumn_festival(name)
                 else:
                     self._add_holiday(
-                        f"The second day of the {name} (Monday)", mid_autumn_date + td(days=+2)
+                        f"The second day of the {name} (Monday)", _delta_days(mid_autumn_date, +2)
                     )
             else:
                 self._add_mid_autumn_festival_day_two(f"The day following the {name}")
@@ -203,7 +210,7 @@ class HongKong(
             # Anniversary of the victory in the Second Sino-Japanese War
             super()._add_holiday(
                 "Anniversary of the victory in the Second Sino-Japanese War",
-                _get_nth_weekday_of_month(-1, MON, AUG, self._year) + td(days=-1),
+                _delta_days(_get_nth_weekday_of_month(-1, MON, AUG, self._year), -1),
             )
 
 

@@ -31,6 +31,7 @@ from holidays.calendars.gregorian import (
     FRI,
     SAT,
     SUN,
+    _delta_days,
     _get_nth_weekday_from,
     _get_nth_weekday_of_month,
     DAYS,
@@ -479,8 +480,10 @@ class HolidayBase(Dict[date, str]):
                 ):
                     return lambda name: self._add_holiday(
                         name,
-                        self._easter_sunday
-                        + timedelta(days=+int(days) if delta_direction == "past" else -int(days)),
+                        _delta_days(
+                            self._easter_sunday,
+                            +int(days) if delta_direction == "past" else -int(days),
+                        ),
                     )
 
             # Handle <n> day(s) <past/prior> <last/<nth> <weekday> of <month> patterns (e.g.,
@@ -500,13 +503,15 @@ class HolidayBase(Dict[date, str]):
                 ):
                     return lambda name: self._add_holiday(
                         name,
-                        _get_nth_weekday_of_month(
-                            -1 if number == "last" else int(number[0]),
-                            WEEKDAYS[weekday],
-                            MONTHS[month],
-                            self._year,
-                        )
-                        + timedelta(days=+int(days) if delta_direction == "past" else -int(days)),
+                        _delta_days(
+                            _get_nth_weekday_of_month(
+                                -1 if number == "last" else int(number[0]),
+                                WEEKDAYS[weekday],
+                                MONTHS[month],
+                                self._year,
+                            ),
+                            +int(days) if delta_direction == "past" else -int(days),
+                        ),
                     )
 
             # Handle <nth> <weekday> <before/from> <month> <day> patterns (e.g.,
@@ -557,7 +562,7 @@ class HolidayBase(Dict[date, str]):
 
             days_in_range = []
             for delta_days in range(0, date_diff.days, step):
-                day = start + timedelta(days=delta_days)
+                day = _delta_days(start, delta_days)
                 if day in self:
                     days_in_range.append(day)
 
@@ -963,9 +968,9 @@ class HolidayBase(Dict[date, str]):
         direction = +1 if n > 0 else -1
         dt = self.__keytransform__(key)
         for _ in range(abs(n)):
-            dt += timedelta(days=direction)
+            dt = _delta_days(dt, direction)
             while not self.is_workday(dt):
-                dt += timedelta(days=direction)
+                dt = _delta_days(dt, direction)
         return dt
 
     def get_workdays_number(self, key1: DateLike, key2: DateLike) -> int:
@@ -977,9 +982,7 @@ class HolidayBase(Dict[date, str]):
         if dt1 > dt2:
             dt1, dt2 = dt2, dt1
 
-        return sum(
-            self.is_workday(dt1 + timedelta(days=n)) for n in range(1, (dt2 - dt1).days + 1)
-        )
+        return sum(self.is_workday(_delta_days(dt1, n)) for n in range(1, (dt2 - dt1).days + 1))
 
     def is_workday(self, key: DateLike) -> bool:
         """Return True if date is a working day (not a holiday or a weekend)."""

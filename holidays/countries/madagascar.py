@@ -10,10 +10,9 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import MAY, SUN, _get_nth_weekday_of_month
+from holidays.calendars.gregorian import MAY, SUN, _delta_days, _get_nth_weekday_of_month
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -70,7 +69,9 @@ class Madagascar(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday(
             # Mother's Day.
             tr("Fetin'ny reny"),
-            last_sun_of_may + td(days=+7) if last_sun_of_may == whit_sunday else last_sun_of_may,
+            _delta_days(last_sun_of_may, +7)
+            if last_sun_of_may == whit_sunday
+            else last_sun_of_may,
         )
 
         # Father's Day.

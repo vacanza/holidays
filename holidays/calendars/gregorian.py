@@ -11,7 +11,6 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 
 GREGORIAN_CALENDAR = "GREGORIAN_CALENDAR"
 
@@ -30,6 +29,14 @@ MONTHS = {
 WEEKDAYS = {w: i for i, w in enumerate(("mon", "tue", "wed", "thu", "fri", "sat", "sun"))}
 
 
+def _delta_days(dt: date, n: int) -> date:
+    """
+    Return date that is n days after (n > 0) or before (n < 0) specified date.
+    """
+
+    return date.fromordinal(dt.toordinal() + n)
+
+
 def _get_nth_weekday_from(n: int, weekday: int, from_dt: date) -> date:
     """
     Return date of a n-th weekday before a specific date
@@ -39,10 +46,13 @@ def _get_nth_weekday_from(n: int, weekday: int, from_dt: date) -> date:
     Examples: 1st Monday, 2nd Saturday, etc).
     """
 
-    return from_dt + td(
-        days=(n - 1) * 7 + (weekday - from_dt.weekday()) % 7
-        if n > 0
-        else (n + 1) * 7 - (from_dt.weekday() - weekday) % 7
+    return _delta_days(
+        from_dt,
+        (
+            (n - 1) * 7 + (weekday - from_dt.weekday()) % 7
+            if n > 0
+            else (n + 1) * 7 - (from_dt.weekday() - weekday) % 7
+        ),
     )
 
 
@@ -61,7 +71,7 @@ def _get_nth_weekday_of_month(n: int, weekday: int, month: int, year: int) -> da
         if month > 12:
             month = 1
             year += 1
-        start_date = date(year, month, 1) + td(days=-1)
+        start_date = _delta_days(date(year, month, 1), -1)
     else:
         start_date = date(year, month, 1)
 
@@ -77,4 +87,4 @@ def _get_nth_weekday_of_month(n: int, weekday: int, month: int, year: int) -> da
 def _get_all_sundays(year):
     first_sunday = _get_nth_weekday_of_month(1, SUN, JAN, year)
     for n in range(0, (date(year, DEC, 31) - first_sunday).days + 1, 7):
-        yield first_sunday + td(days=n)
+        yield _delta_days(first_sunday, n)

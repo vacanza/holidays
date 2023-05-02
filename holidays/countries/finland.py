@@ -10,9 +10,9 @@
 #  Website: https://github.com/vacanza/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
 from gettext import gettext as tr
 
+from holidays.calendars.gregorian import _delta_days
 from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
 
@@ -72,7 +72,7 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
             dt = self._add_holiday_jun_23(name)
 
         # Midsummer Day.
-        self._add_holiday(tr("Juhannuspäivä"), dt + td(days=+1))
+        self._add_holiday(tr("Juhannuspäivä"), _delta_days(dt, +1))
 
         # All Saints' Day.
         name = tr("Pyhäinpäivä")
