@@ -106,7 +106,7 @@ class TestFrance(TestCase):
         self.assertHoliday("2004-05-31", "2008-05-12")
 
     def test_alsace_moselle(self):
-        for subdiv in ("FR-GES", "Alsace-Moselle"):
+        for subdiv in ("GES", "Alsace-Moselle"):
             self.assertHoliday(
                 France(subdiv=subdiv),
                 "2017-04-14",

@@ -36,7 +36,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "fr"
     subdivisions = (
         "BL",  # Saint Barthelemy.
-        "FR-GES",  # Alsace, Champagne-Ardenne, Lorraine(Moselle).
+        "GES",  # Alsace, Champagne-Ardenne, Lorraine(Moselle).
         "GP",  # Guadeloupe.
         "GY",  # Guyane.
         "MF",  # Saint Martin.
@@ -118,7 +118,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_christmas_day(tr("Noël"))
 
         if self.subdiv == "Alsace-Moselle":
-            self._add_subdiv_fr_ges_holidays()
+            self._add_subdiv_ges_holidays()
         elif self.subdiv == "Guadeloupe":
             self._add_subdiv_gp_holidays()
         elif self.subdiv == "Guyane":
@@ -146,7 +146,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday(tr("Abolition de l'esclavage"), OCT, 9)
 
     # Alsace, Champagne-Ardenne, Lorraine(Moselle).
-    def _add_subdiv_fr_ges_holidays(self):
+    def _add_subdiv_ges_holidays(self):
         # Good Friday.
         self._add_good_friday(tr("Vendredi saint"))
 

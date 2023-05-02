@@ -239,7 +239,7 @@ subdivisions are available:
      - None
    * - France
      - FR
-     - Départements: BL, FR-GES, GP, GY, MF, MQ, NC, PF, RE, WF, YT
+     - Départements: BL, GES, GP, GY, MF, MQ, NC, PF, RE, WF, YT
    * - Georgia
      - GE
      - None
