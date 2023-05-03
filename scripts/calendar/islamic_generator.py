@@ -13,58 +13,19 @@
 
 from pathlib import Path
 
-from hijri_converter import convert
-from hijri_converter.ummalqura import HIJRI_RANGE
+from hijridate import convert
+from hijridate.ummalqura import HIJRI_RANGE
 
 class_name = "_IslamicLunar"
-out_file_name = "islamic.py"
+out_file_name = "islamic_dates.py"
 
-class_template = """#  python-holidays
-#  ---------------
-#  A fast, efficient Python library for generating country, province and state
-#  specific sets of holidays on the fly. It aims to make determining whether a
-#  specific date is a holiday as fast and flexible as possible.
-#
-#  Authors: dr-prodigy <dr.prodigy.github@gmail.com> (c) 2017-2023
-#           ryanss <ryanssdev@icloud.com> (c) 2014-2017
-#  Website: https://github.com/dr-prodigy/python-holidays
-#  License: MIT (see LICENSE file)
-
-from datetime import date
-from typing import Iterable, Tuple
-
-from holidays.calendars.custom import _CustomCalendarType
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC
-
-{constants}
-
-
-class {class_name}:
-{holiday_arrays}
-    def _get_holiday(
-        self, holiday: str, year: int
-    ) -> Iterable[Tuple[date, bool]]:
-        estimated_dates = getattr(self, f"{{holiday}}_DATES", {{}})
-        exact_dates = getattr(
-            self,
-            f"{{holiday}}_DATES_{{_CustomCalendarType.CUSTOM_ATTR_POSTFIX}}",
-            {{}},
-        )
-        for year in (year - 1, year):
-            for dt in exact_dates.get(year, estimated_dates.get(year, ())):
-                yield date(year, *dt), year not in exact_dates
-{holiday_methods}
-"""
+class_template = """class {class_name}:
+{holiday_arrays}"""
 
 holiday_array_template = """    {hol_name}_DATES = {{
 {year_dates}
     }}
 """
-
-holiday_method_template = """
-    def {holiday_lower}_dates(self, year: int) -> Iterable[Tuple[date, bool]]:
-        return self._get_holiday({holiday}, year)"""
 
 year_template = "        {year}: ({dates}),"
 
@@ -112,10 +73,7 @@ def makelist():
     g_year_max = max(dates_array.keys())
 
     hol_list = sorted(d[2] for d in islamic_holidays)
-    constants = "\n".join(f'{name} = "{name}"' for name in hol_list)
-
     holiday_arrays = []
-    holiday_methods = []
     for hol_name in hol_list:
         year_dates = []
         for year in range(g_year_min, g_year_max + 1):
@@ -131,19 +89,10 @@ def makelist():
                 hol_name=hol_name, year_dates=year_dates_str
             )
         )
-        holiday_methods.append(
-            holiday_method_template.format(
-                holiday_lower=hol_name.lower(), holiday=hol_name
-            )
-        )
-
     holiday_arrays_str = "\n".join(holiday_arrays)
-    holiday_methods_str = "\n".join(holiday_methods)
     class_str = class_template.format(
-        constants=constants,
         class_name=class_name,
         holiday_arrays=holiday_arrays_str,
-        holiday_methods=holiday_methods_str,
     )
 
     f_name = Path("holidays/calendars") / out_file_name
