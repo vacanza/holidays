@@ -100,7 +100,7 @@ jobs:
           name: dist
           path: dist
       - name: Publish Package
-        uses: pypa/gh-action-pypi-publish@v1.8.5
+        uses: pypa/gh-action-pypi-publish@v1.8.6
         with:
           user: __token__
           password: ${{ secrets.pypi_password }}
