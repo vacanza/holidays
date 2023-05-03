@@ -147,7 +147,7 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
             super()._add_subdiv_holidays()
 
     def _add_subdiv_ac_holidays(self):
-        def _get_movable_acre(*args) -> date:
+        def get_movable_acre(*args) -> date:
             dt = date(self._year, *args)
             if self._year >= 2009 and (
                 self._is_tuesday(dt)
@@ -159,13 +159,13 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self._year >= 2005:
             # Evangelical Day.
-            self._add_holiday("Dia do Evangélico", _get_movable_acre(JAN, 23))
+            self._add_holiday("Dia do Evangélico", get_movable_acre(JAN, 23))
 
         if self._year >= 2002:
             self._add_holiday(
                 # International Women's Day.
                 "Dia Internacional da Mulher",
-                _get_movable_acre(MAR, 8),
+                get_movable_acre(MAR, 8),
             )
 
         # Founding of Acre.
@@ -173,12 +173,12 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self._year >= 2004:
             # Amazonia Day.
-            self._add_holiday("Dia da Amazônia", _get_movable_acre(SEP, 5))
+            self._add_holiday("Dia da Amazônia", get_movable_acre(SEP, 5))
 
         self._add_holiday(
             # Signing of the Petropolis Treaty.
             "Assinatura do Tratado de Petrópolis",
-            _get_movable_acre(NOV, 17),
+            get_movable_acre(NOV, 17),
         )
 
     def _add_subdiv_al_holidays(self):
