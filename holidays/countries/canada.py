@@ -23,7 +23,7 @@ from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "CA"
     default_language = "en"
-    subdivisions = [
+    subdivisions = (
         "AB",
         "BC",
         "MB",
@@ -37,7 +37,7 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
         "QC",
         "SK",
         "YT",
-    ]
+    )
 
     def __init__(self, *args, **kwargs):
         # Default subdivision to ON; prov for backwards compatibility

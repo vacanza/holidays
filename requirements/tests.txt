@@ -1,0 +1,6 @@
+# Test requirements.
+coverage
+pytest
+pytest-cov
+pytest-xdist
+polib

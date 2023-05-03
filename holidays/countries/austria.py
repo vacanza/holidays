@@ -19,7 +19,7 @@ from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "AT"
     default_language = "de"
-    subdivisions = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    subdivisions = ("1", "2", "3", "4", "5", "6", "7", "8", "9")
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)

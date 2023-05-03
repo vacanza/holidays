@@ -11,15 +11,17 @@
 
 from datetime import date
 from datetime import timedelta as td
+from typing import Optional
 
-from dateutil.easter import easter
-
-from holidays.calendars import _islamic_to_gre
-from holidays.constants import JAN, FEB, APR, MAY, JUN, JUL, AUG, OCT, NOV, DEC
+from holidays.constants import FEB, APR, JUN, JUL, OCT
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, IslamicHolidays
+from holidays.holiday_groups import InternationalHolidays
 
 
-class Burundi(HolidayBase):
+class Burundi(
+    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
+):
     """
     Burundian holidays
     Note that holidays falling on a sunday maybe observed
@@ -33,68 +35,74 @@ class Burundi(HolidayBase):
 
     country = "BI"
 
-    def _populate(self, year):
-        def _add_with_observed(hol_date: date, hol_name: str) -> None:
-            self[hol_date] = hol_name
-            if self.observed and self._is_sunday(hol_date):
-                obs_date = hol_date + td(days=+1)
-                if obs_date.year == year:
-                    self[obs_date] = f"{hol_name} (Observed)"
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        IslamicHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
+    def _add_holiday(self, *args) -> Optional[date]:
+        dt = super()._add_holiday(*args)
+        if self.observed and dt and self._is_sunday(dt):
+            super()._add_holiday(
+                "%s (Observed)" % self[dt],  # type: ignore[index]
+                dt + td(days=+1),  # type: ignore[operator]
+            )
+        return dt
+
+    def _populate(self, year):
         if year <= 1961:
             return None
 
         super()._populate(year)
 
         # New Year's Day
-        _add_with_observed(date(year, JAN, 1), "New Year's Day")
+        self._add_new_years_day("New Year's Day")
 
         # Unity Day
         if year >= 1992:
-            _add_with_observed(date(year, FEB, 5), "Unity Day")
+            self._add_holiday("Unity Day", FEB, 5)
 
         # President Ntaryamira Day
         if year >= 1995:
-            _add_with_observed(date(year, APR, 6), "President Ntaryamira Day")
+            self._add_holiday("President Ntaryamira Day", APR, 6)
 
         # Labour Day
-        _add_with_observed(date(year, MAY, 1), "Labour Day")
+        self._add_labor_day("Labour Day")
 
         # Ascension Day
-        self[easter(year) + td(days=+39)] = "Ascension Day"
+        self._add_ascension_thursday("Ascension Day")
 
         # President Nkurunziza Day
         if year >= 2022:
-            _add_with_observed(date(year, JUN, 8), "President Nkurunziza Day")
+            self._add_holiday("President Nkurunziza Day", JUN, 8)
 
         # Independence Day
-        _add_with_observed(date(year, JUL, 1), "Independence Day")
+        self._add_holiday("Independence Day", JUL, 1)
 
         # Assumption Day
-        _add_with_observed(date(year, AUG, 15), "Assumption Day")
+        self._add_assumption_of_mary_day("Assumption Day")
 
         # Prince Louis Rwagasore Day
-        _add_with_observed(date(year, OCT, 13), "Prince Louis Rwagasore Day")
+        self._add_holiday("Prince Louis Rwagasore Day", OCT, 13)
 
         # President Ndadaye's Day
         if year >= 1994:
-            _add_with_observed(date(year, OCT, 21), "President Ndadaye's Day")
+            self._add_holiday("President Ndadaye's Day", OCT, 21)
 
         # All Saints' Day
-        _add_with_observed(date(year, NOV, 1), "All Saints' Day")
+        self._add_all_saints_day("All Saints' Day")
 
         # Christmas Day
-        _add_with_observed(date(year, DEC, 25), "Christmas Day")
+        self._add_christmas_day("Christmas Day")
 
         # Eid ul Fitr
         # date of observance is announced yearly
-        for dt in _islamic_to_gre(year, 10, 1):
-            _add_with_observed(dt, "Eid ul Fitr")
+        self._add_eid_al_fitr_day("Eid ul Fitr")
 
         # Eid al Adha
         # date of observance is announced yearly
-        for dt in _islamic_to_gre(year, 12, 10):
-            _add_with_observed(dt, "Eid al Adha")
+        self._add_eid_al_adha_day("Eid al Adha")
 
 
 class BI(Burundi):

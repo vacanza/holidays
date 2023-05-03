@@ -353,7 +353,7 @@ subdivisions are available:
      - None
    * - New Zealand
      - NZ
-     - Regions: AUK, CAN, HKB, MBH, NSN, NTL, OTA, STL, TKI, WGN, WTC, CIT. Sub-regions: South Canterbury
+     - Regions: AUK, CAN, CIT, HKB, MBH, NSN, NTL, OTA, STL, TKI, WGN, WTC. Sub-regions: South Canterbury
    * - Nicaragua
      - NI
      - Departments: AN, AS, BO, CA, CI, CO, ES, GR, JI, LE, MD, **MN** (default), MS, MT, NS, RI, SJ
@@ -458,7 +458,7 @@ subdivisions are available:
      - None; Can also be loaded as country US, subdivision UM
    * - United States of America (the)
      - US
-     - States and territories: AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FL, GA, GU, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MH, MA, MI, FM, MN, MS, MO, MT, NE, NV, NH, NJ, NM, NY, NC, ND, MP, OH, OK, OR, PW, PA, PR, RI, SC, SD, TN, TX, UM, UT, VT, VA, VI, WA, WV, WI, WY
+     - States and territories: AK, AL, AR, AS, AZ, CA, CO, CT, DC, DE, FL, FM, GA, GU, HI, IA, ID, IL, IN, KS, KY, LA, MA, MD, ME, MH, MI, MN, MO, MP, MS, MT, NC, ND, NE, NH, NJ, NM, NV, NY, OH, OK, OR, PA, PR, PW, RI, SC, SD, TN, TX, UM, UT, VA, VI, VT, WA, WI, WV, WY
    * - United States Virgin Islands (the)
      -
      - See Virgin Islands (U.S.)

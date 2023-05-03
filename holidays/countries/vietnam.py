@@ -13,11 +13,11 @@ from datetime import timedelta as td
 
 from holidays.constants import APR, SEP
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChineseCalendarHolidays
 from holidays.holiday_groups import InternationalHolidays
-from holidays.holiday_groups import KoreanCalendarHolidays
 
 
-class Vietnam(HolidayBase, InternationalHolidays, KoreanCalendarHolidays):
+class Vietnam(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
     """
     https://publicholidays.vn/
     http://vbpl.vn/TW/Pages/vbpqen-toanvan.aspx?ItemID=11013 Article.115
@@ -27,8 +27,8 @@ class Vietnam(HolidayBase, InternationalHolidays, KoreanCalendarHolidays):
     country = "VN"
 
     def __init__(self, *args, **kwargs):
+        ChineseCalendarHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        KoreanCalendarHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -41,18 +41,18 @@ class Vietnam(HolidayBase, InternationalHolidays, KoreanCalendarHolidays):
         )
 
         # Lunar New Year
-        self._add_korean_new_years_eve("Vietnamese New Year's Eve")
-        self._add_korean_new_years_day("Vietnamese New Year")
-        self._add_korean_new_years_day_two("The second day of Tet Holiday")
-        self._add_korean_new_years_day_three("The third day of Tet Holiday")
-        self._add_korean_new_years_day_four("The forth day of Tet Holiday")
-        self._add_korean_new_years_day_five("The fifth day of Tet Holiday")
+        self._add_chinese_new_years_eve("Vietnamese New Year's Eve")
+        self._add_chinese_new_years_day("Vietnamese New Year")
+        self._add_chinese_new_years_day_two("The second day of Tet Holiday")
+        self._add_chinese_new_years_day_three("The third day of Tet Holiday")
+        self._add_chinese_new_years_day_four("The forth day of Tet Holiday")
+        self._add_chinese_new_years_day_five("The fifth day of Tet Holiday")
 
         # Vietnamese Kings' Commemoration Day
         # https://en.wikipedia.org/wiki/H%C3%B9ng_Kings%27_Festival
         if year >= 2007:
             observed_dates.add(
-                self._add_korean_calendar_holiday(
+                self._add_chinese_calendar_holiday(
                     "Hung Kings Commemoration Day", 3, 10
                 )
             )

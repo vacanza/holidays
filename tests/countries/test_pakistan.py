@@ -17,8 +17,9 @@ from tests.common import TestCase
 
 
 class TestPakistan(TestCase):
-    def setUp(self):
-        self.holidays = Pakistan()
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Pakistan, years=range(1948, 2050))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Pakistan, PK, PAK)
@@ -28,43 +29,44 @@ class TestPakistan(TestCase):
 
     def test_kashmir_day(self):
         name = "Kashmir Solidarity Day"
-        for year in range(1990, 2050):
-            self.assertIn(name, Pakistan(years=year).get(f"{year}-02-05"))
-        for year in range(1948, 1990):
-            self.assertEqual(Pakistan(years=year).get_named(name), [])
+        self.assertHolidaysName(
+            name, (f"{year}-02-05" for year in range(1990, 2050))
+        )
+        self.assertNoHolidayNameInYears(name, range(1948, 1990))
 
     def test_pakistan_day(self):
         name = "Pakistan Day"
-        for year in range(1956, 2050):
-            self.assertIn(name, Pakistan(years=year).get(f"{year}-03-23"))
-        for year in range(1948, 1956):
-            self.assertEqual(Pakistan(years=year).get_named(name), [])
+        self.assertHolidaysName(
+            name, (f"{year}-03-23" for year in range(1956, 2050))
+        )
+        self.assertNoHolidayNameInYears(name, range(1948, 1956))
 
     def test_labour_day(self):
         name = "Labour Day"
-        for year in range(1972, 2050):
-            self.assertIn(name, Pakistan(years=year).get(f"{year}-05-01"))
-        for year in range(1948, 1972):
-            self.assertEqual(Pakistan(years=year).get_named(name), [])
+        self.assertHolidaysName(
+            name, (f"{year}-05-01" for year in range(1972, 2050))
+        )
+        self.assertNoHolidayNameInYears(name, range(1948, 1972))
 
     def test_independence_day(self):
-        name = "Independence Day"
-        for year in range(1948, 2050):
-            self.assertIn(name, Pakistan(years=year).get(f"{year}-08-14"))
+        self.assertHolidaysName(
+            "Independence Day", (f"{year}-08-14" for year in range(1948, 2050))
+        )
 
     def test_iqbal_day(self):
         name = "Iqbal Day"
-        for year in range(1948, 2015):
-            self.assertIn(name, Pakistan(years=year).get(f"{year}-11-09"))
-        for year in range(2022, 2050):
-            self.assertIn(name, Pakistan(years=year).get(f"{year}-11-09"))
-        for year in range(2015, 2022):
-            self.assertEqual(Pakistan(years=year).get_named(name), [])
+        self.assertHolidaysName(
+            name, (f"{year}-11-09" for year in range(1948, 2015))
+        )
+        self.assertHolidaysName(
+            name, (f"{year}-11-09" for year in range(2022, 2050))
+        )
+        self.assertNoHolidayNameInYears(name, range(2015, 2022))
 
     def test_quaid_e_azam_day(self):
-        name = "Quaid-e-Azam Day"
-        for year in range(1948, 2050):
-            self.assertIn(name, Pakistan(years=year).get(f"{year}-12-25"))
+        self.assertHolidaysName(
+            "Quaid-e-Azam Day", (f"{year}-12-25" for year in range(1948, 2050))
+        )
 
     def test_eid_ul_fitr(self):
         name = "Eid-ul-Fitr"
@@ -152,5 +154,44 @@ class TestPakistan(TestCase):
             date(2023, 7, 28),
         ):
             self.assertHoliday(dt)
-            self.assertHoliday(dt + td(days=+1))
+            self.assertHoliday(dt + td(days=-1))
             self.assertIn(name, self.holidays.get(dt))
+
+    def test_2002(self):
+        self.assertHolidays(
+            Pakistan(years=2002),
+            ("2002-02-05", "Kashmir Solidarity Day"),
+            ("2002-02-22", "Eid-ul-Adha* (*estimated)"),
+            ("2002-02-23", "Eid-ul-Adha* (*estimated)"),
+            ("2002-02-24", "Eid-ul-Adha* (*estimated)"),
+            ("2002-03-23", "Ashura* (*estimated); Pakistan Day"),
+            ("2002-03-24", "Ashura* (*estimated)"),
+            ("2002-05-01", "Labour Day"),
+            ("2002-05-24", "Eid Milad-un-Nabi* (*estimated)"),
+            ("2002-08-14", "Independence Day"),
+            ("2002-11-09", "Iqbal Day"),
+            ("2002-12-05", "Eid-ul-Fitr* (*estimated)"),
+            ("2002-12-06", "Eid-ul-Fitr* (*estimated)"),
+            ("2002-12-07", "Eid-ul-Fitr* (*estimated)"),
+            ("2002-12-25", "Quaid-e-Azam Day"),
+        )
+
+    def test_2022(self):
+        self.assertHolidays(
+            Pakistan(years=2022),
+            ("2022-02-05", "Kashmir Solidarity Day"),
+            ("2022-03-23", "Pakistan Day"),
+            ("2022-05-01", "Labour Day"),
+            ("2022-05-03", "Eid-ul-Fitr"),
+            ("2022-05-04", "Eid-ul-Fitr"),
+            ("2022-05-05", "Eid-ul-Fitr"),
+            ("2022-07-10", "Eid-ul-Adha"),
+            ("2022-07-11", "Eid-ul-Adha"),
+            ("2022-07-12", "Eid-ul-Adha"),
+            ("2022-08-08", "Ashura"),
+            ("2022-08-09", "Ashura"),
+            ("2022-08-14", "Independence Day"),
+            ("2022-10-09", "Eid Milad-un-Nabi"),
+            ("2022-11-09", "Iqbal Day"),
+            ("2022-12-25", "Quaid-e-Azam Day"),
+        )

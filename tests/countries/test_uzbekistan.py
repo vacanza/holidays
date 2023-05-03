@@ -9,26 +9,28 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
-from datetime import date
-
-import holidays
+from holidays.countries.uzbekistan import Uzbekistan, UZ, UZB
+from tests.common import TestCase
 
 
-class TestUzbekistan(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.UZ()
+class TestUzbekistan(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Uzbekistan)
+
+    def test_country_aliases(self):
+        self.assertCountryAliases(Uzbekistan, UZ, UZB)
 
     def test2020(self):
-        _holidays = [
-            date(2022, 1, 1),
-            date(2022, 3, 8),
-            date(2022, 3, 21),
-            date(2022, 5, 9),
-            date(2022, 9, 1),
-            date(2022, 10, 1),
-            date(2022, 12, 8),
-        ]
-
-        for uzb_hol in _holidays:
-            self.assertIn(uzb_hol, self.holidays)
+        self.assertHolidays(
+            Uzbekistan(years=2022),
+            ("2022-01-01", "New Year"),
+            ("2022-03-08", "Women's Day"),
+            ("2022-03-21", "Nauryz"),
+            ("2022-05-02", "Ramadan Khait* (*estimated)"),
+            ("2022-05-09", "Memorial Day"),
+            ("2022-07-09", "Kurban Khait* (*estimated)"),
+            ("2022-09-01", "Independence Day"),
+            ("2022-10-01", "Teacher's Day"),
+            ("2022-12-08", "Constitution Day"),
+        )

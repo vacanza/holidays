@@ -55,11 +55,7 @@ class Angola(HolidayBase):
         _add_with_observed(date(year, JAN, 1), "Ano novo", before=False)
         # Since 2018, if the following year's New Year's Day falls on a
         # Tuesday, the 31st of the current year is also a holiday.
-        if (
-            self.observed
-            and self._is_monday(date(year, DEC, 31))
-            and year >= 2018
-        ):
+        if self.observed and self._is_monday(DEC, 31) and year >= 2018:
             self[date(year, DEC, 31)] = "Ano novo (Day off)"
 
         easter_date = easter(year)

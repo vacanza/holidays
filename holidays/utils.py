@@ -292,7 +292,7 @@ def list_supported_countries(include_aliases=True) -> Dict[str, List[str]]:
     import holidays
 
     return {
-        country_code: getattr(holidays, country_code).subdivisions
+        country_code: list(getattr(holidays, country_code).subdivisions)
         for country_code in EntityLoader.get_country_codes(include_aliases)
     }
 
@@ -312,6 +312,6 @@ def list_supported_financial(include_aliases=True) -> Dict[str, List[str]]:
     import holidays
 
     return {
-        financial_code: getattr(holidays, financial_code).subdivisions
+        financial_code: list(getattr(holidays, financial_code).subdivisions)
         for financial_code in EntityLoader.get_financial_codes(include_aliases)
     }

@@ -50,7 +50,7 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     # https://en.wikipedia.org/wiki/ISO_3166-2:PT
     # `Ext` represents the national holidays most people have off
-    subdivisions = [
+    subdivisions = (
         "01",
         "02",
         "03",
@@ -72,7 +72,7 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         "20",
         "30",
         "Ext",
-    ]
+    )
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)

@@ -9,18 +9,20 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
-
-from dateutil.easter import easter
-
-from holidays.calendars import _ChineseLuniSolar, _islamic_to_gre
 from holidays.calendars import _get_nth_weekday_of_month
-from holidays.constants import JAN, FEB, APR, MAY, JUN, AUG, NOV, DEC, MON
+from holidays.constants import FEB, APR, JUN, AUG, NOV, DEC, MON
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChineseCalendarHolidays, ChristianHolidays
+from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
 
 
-class Philippines(HolidayBase):
+class Philippines(
+    HolidayBase,
+    ChineseCalendarHolidays,
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+):
     """
     Philippines holidays.
 
@@ -30,72 +32,73 @@ class Philippines(HolidayBase):
 
     country = "PH"
 
-    def __init__(self, **kwargs):
-        self.cnls = _ChineseLuniSolar()
-        HolidayBase.__init__(self, **kwargs)
+    def __init__(self, *args, **kwargs):
+        ChineseCalendarHolidays.__init__(self)
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        IslamicHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
 
         # New Year's Day.
-        self[date(year, JAN, 1)] = "New Year's Day"
+        self._add_new_years_day("New Year's Day")
 
         # Chinese New Year.
-        self[self.cnls.lunar_n_y_date(year)] = "Chinese New Year"
+        self._add_chinese_new_years_day("Chinese New Year")
 
         # People Power Anniversary.
-        self[date(year, FEB, 25)] = "EDSA Revolution Anniversary"
+        self._add_holiday("EDSA Revolution Anniversary", FEB, 25)
 
         # Day of Valor.
-        self[date(year, APR, 9)] = "Day of Valor"
+        self._add_holiday("Day of Valor", APR, 9)
 
-        easter_date = easter(year)
         # Maundy Thursday.
-        self[easter_date + td(days=-3)] = "Maundy Thursday"
+        self._add_holy_thursday("Maundy Thursday")
         # Good Friday.
-        self[easter_date + td(days=-2)] = "Good Friday"
+        self._add_good_friday("Good Friday")
         # Black Saturday.
-        self[easter_date + td(days=-1)] = "Black Saturday"
+        self._add_holy_saturday("Black Saturday")
 
         # Labour Day.
-        self[date(year, MAY, 1)] = "Labour Day"
+        self._add_labor_day("Labour Day")
 
         # Eid al-Fitr.
-        for dt in _islamic_to_gre(year, 10, 1):
-            self[dt] = "Eid'l Fitr"
+        self._add_eid_al_fitr_day("Eid'l Fitr")
 
         # Independence Day.
-        self[date(year, JUN, 12)] = "Independence Day"
+        self._add_holiday("Independence Day", JUN, 12)
 
         # Eid al-Adha.
-        for dt in _islamic_to_gre(year, 12, 10):
-            self[dt] = "Eid'l Adha"
+        self._add_eid_al_adha_day("Eid'l Adha")
 
         # Ninoy Aquino Day.
-        self[date(year, AUG, 21)] = "Ninoy Aquino Day"
+        self._add_holiday("Ninoy Aquino Day", AUG, 21)
 
         # National Heroes Day.
-        self[
-            _get_nth_weekday_of_month(-1, MON, AUG, year)
-        ] = "National Heroes Day"
+        self._add_holiday(
+            "National Heroes Day",
+            _get_nth_weekday_of_month(-1, MON, AUG, year),
+        )
 
         # All Saints' Day.
-        self[date(year, NOV, 1)] = "All Saints' Day"
+        self._add_all_saints_day("All Saints' Day")
 
         # Bonifacio Day.
-        self[date(year, NOV, 30)] = "Bonifacio Day"
+        self._add_holiday("Bonifacio Day", NOV, 30)
 
         # Immaculate Conception Day.
-        self[date(year, DEC, 8)] = "Immaculate Conception Day"
+        self._add_immaculate_conception_day("Immaculate Conception Day")
 
         # Christmas Day.
-        self[date(year, DEC, 25)] = "Christmas Day"
+        self._add_christmas_day("Christmas Day")
 
         # Rizal Day.
-        self[date(year, DEC, 30)] = "Rizal Day"
+        self._add_holiday("Rizal Day", DEC, 30)
 
         # New Year's Eve.
-        self[date(year, DEC, 31)] = "New Year's Eve"
+        self._add_new_years_eve("New Year's Eve")
 
 
 class PH(Philippines):

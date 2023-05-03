@@ -15,8 +15,8 @@ from tests.common import TestCase
 
 class TestBurundi(TestCase):
     @classmethod
-    def setUpClass(self):
-        super().setUpClass(Burundi)
+    def setUpClass(cls):
+        super().setUpClass(Burundi, years=range(1962, 2050))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Burundi, BI, BDI)
@@ -31,14 +31,14 @@ class TestBurundi(TestCase):
 
     def test_unity_day(self):
         name = "Unity Day"
-        self.assertNoHolidayName(name, Burundi(years=range(1962, 1992)))
+        self.assertNoHolidayNameInYears(name, range(1962, 1992))
         self.assertHolidaysName(
             name, (f"{year}-02-05" for year in range(1992, 2050))
         )
 
     def test_ntaryamira_day(self):
         name = "President Ntaryamira Day"
-        self.assertNoHolidayName(name, Burundi(years=range(1962, 1995)))
+        self.assertNoHolidayNameInYears(name, range(1962, 1995))
         self.assertHolidaysName(
             name, (f"{year}-04-06" for year in range(1995, 2050))
         )
@@ -69,7 +69,7 @@ class TestBurundi(TestCase):
 
     def test_nkurunziza_day(self):
         name = "President Nkurunziza Day"
-        self.assertNoHolidayName(name, Burundi(years=range(1962, 2022)))
+        self.assertNoHolidayNameInYears(name, range(1962, 2022))
         self.assertHolidaysName(
             name, (f"{year}-06-08" for year in range(2022, 2050))
         )
@@ -92,7 +92,7 @@ class TestBurundi(TestCase):
 
     def test_ndadaye_day(self):
         name = "President Ndadaye's Day"
-        self.assertNoHolidayName(name, Burundi(years=range(1962, 1994)))
+        self.assertNoHolidayNameInYears(name, range(1962, 1994))
         self.assertHolidaysName(
             name, (f"{year}-10-21" for year in range(1994, 2050))
         )
@@ -109,7 +109,7 @@ class TestBurundi(TestCase):
 
     def test_eid_ul_fitr(self):
         self.assertHolidaysName(
-            "Eid ul Fitr",
+            "Eid ul Fitr* (*estimated)",
             "2010-09-10",
             "2011-08-30",
             "2012-08-19",
@@ -128,7 +128,7 @@ class TestBurundi(TestCase):
 
     def test_eid_al_adha(self):
         self.assertHolidaysName(
-            "Eid al Adha",
+            "Eid al Adha* (*estimated)",
             "2010-11-16",
             "2011-11-06",
             "2012-10-26",
