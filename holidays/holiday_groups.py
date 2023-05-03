@@ -11,12 +11,11 @@
 
 from datetime import date
 from datetime import timedelta as td
-from typing import Iterable, Set, Tuple
+from typing import Iterable, Set, Tuple, Optional
 
 from dateutil.easter import EASTER_ORTHODOX, EASTER_WESTERN, easter
-from korean_lunar_calendar import KoreanLunarCalendar
 
-from holidays.calendars import _ChineseLuniSolar, _IslamicLunar
+from holidays.calendars import _IslamicLunar, _OrientalLuniSolar
 from holidays.calendars import GREGORIAN_CALENDAR, JULIAN_CALENDAR
 from holidays.constants import JAN, FEB, MAR, MAY, JUN, AUG, SEP, NOV, DEC
 
@@ -469,53 +468,81 @@ class ChristianHolidays:
         )
 
 
-class ChineseCalendarHolidays:
+class OrientalCalendarHolidays:
     """
-    Chinese lunisolar calendar holidays.
+    Oriental lunisolar calendar holidays.
     """
 
-    def __init__(self) -> None:
-        self._chinese_calendar = _ChineseLuniSolar()
+    def __init__(self, calendar=_OrientalLuniSolar()) -> None:
+        self._oriental_calendar = calendar
 
     @property
     def _chinese_new_year(self):
         """
         Return Chinese New Year date.
         """
-        return self._chinese_calendar.lunar_n_y_date(self._year)
+        return self._oriental_calendar.lunar_new_year_date(self._year)[0]
 
-    def _add_dragon_boat_festival(self, name) -> date:
+    @property
+    def _mid_autumn_festival(self):
         """
-        Add Dragon Boat Festival (5th day of 5th lunar month).
+        Return Mid Autumn Festival (15th day of the 8th lunar month) date.
+        """
+        return self._oriental_calendar.mid_autumn_date(self._year)[0]
 
-        The Dragon Boat Festival is a traditional Chinese holiday which occurs
-        on the fifth day of the fifth month of the Chinese calendar.
-        https://en.wikipedia.org/wiki/Dragon_Boat_Festival
+    def _add_oriental_calendar_holiday(
+        self,
+        name: str,
+        hol_date: Tuple[date, bool],
+        days_delta: int = 0,
+    ) -> Optional[date]:
         """
-        return self._add_chinese_calendar_holiday(name, 5, 5)
+        Add Oriental calendar holiday.
 
-    def _add_chinese_calendar_holiday(self, name, month, day) -> date:
+        Appends customizable estimation label at the end of holiday name if
+        holiday date is an estimation.
         """
-        Add Chinese lunar calendar holiday.
-        """
+        estimated_label = getattr(self, "estimated_label", "estimated")
+        show_estimated = getattr(self, "show_estimated", False)
+        dt, is_estimated = hol_date
+        if days_delta != 0:
+            dt += td(days=days_delta)
         return self._add_holiday(
-            name,
-            self._convert_chinese_to_gre(month, day),
+            f"{name}* (*{estimated_label})"
+            if is_estimated and show_estimated
+            else name,
+            dt,
         )
 
-    def _add_chinese_new_years_eve(self, name) -> date:
+    def _add_chinese_buddha_birthday(self, name) -> Optional[date]:
+        """
+        Add Buddha's Birthday by Chinese lunar calendar (8th day of the
+        4th lunar month).
+
+        Buddha's Birthday is a Buddhist festival that is celebrated in most
+        of East Asia and South Asia commemorating the birth of Gautama Buddha,
+        who was the founder of Buddhism.
+        https://en.wikipedia.org/wiki/Buddha%27s_Birthday
+        """
+        return self._add_oriental_calendar_holiday(
+            name,
+            self._oriental_calendar.buddha_birthday_date(self._year),
+        )
+
+    def _add_chinese_new_years_eve(self, name) -> Optional[date]:
         """
         Add Chinese New Year's Eve (last day of 12th lunar month).
 
         Chinese New Year's Eve is the day before the Chinese New Year.
         https://en.wikipedia.org/wiki/Chinese_New_Year%27s_Eve
         """
-        return self._add_holiday(
+        return self._add_oriental_calendar_holiday(
             name,
-            self._chinese_new_year + td(days=-1),
+            self._oriental_calendar.lunar_new_year_date(self._year),
+            days_delta=-1,
         )
 
-    def _add_chinese_new_years_day(self, name) -> date:
+    def _add_chinese_new_years_day(self, name) -> Optional[date]:
         """
         Add Chinese New Year's Day (first day of the first lunar month).
 
@@ -523,56 +550,111 @@ class ChineseCalendarHolidays:
         a new year on the traditional lunisolar and solar Chinese calendar.
         https://en.wikipedia.org/wiki/Chinese_New_Year
         """
-        return self._add_holiday(
+        return self._add_oriental_calendar_holiday(
             name,
-            self._chinese_new_year,
+            self._oriental_calendar.lunar_new_year_date(self._year),
         )
 
-    def _add_chinese_new_years_day_two(self, name) -> date:
+    def _add_chinese_new_years_day_two(self, name) -> Optional[date]:
         """
         Add Chinese New Year's Day Two.
 
         https://en.wikipedia.org/wiki/Chinese_New_Year
         """
-        return self._add_holiday(
+        return self._add_oriental_calendar_holiday(
             name,
-            self._chinese_new_year + td(days=+1),
+            self._oriental_calendar.lunar_new_year_date(self._year),
+            days_delta=+1,
         )
 
-    def _add_chinese_new_years_day_three(self, name) -> date:
+    def _add_chinese_new_years_day_three(self, name) -> Optional[date]:
         """
         Add Chinese New Year's Day Three.
 
         https://en.wikipedia.org/wiki/Chinese_New_Year
         """
-        return self._add_holiday(
+        return self._add_oriental_calendar_holiday(
             name,
-            self._chinese_new_year + td(days=+2),
+            self._oriental_calendar.lunar_new_year_date(self._year),
+            days_delta=+2,
         )
 
-    def _add_chinese_new_years_day_four(self, name) -> date:
+    def _add_chinese_new_years_day_four(self, name) -> Optional[date]:
         """
         Add Chinese New Year's Day Four.
 
         https://en.wikipedia.org/wiki/Chinese_New_Year
         """
-        return self._add_holiday(
+        return self._add_oriental_calendar_holiday(
             name,
-            self._chinese_new_year + td(days=+3),
+            self._oriental_calendar.lunar_new_year_date(self._year),
+            days_delta=+3,
         )
 
-    def _add_chinese_new_years_day_five(self, name) -> date:
+    def _add_chinese_new_years_day_five(self, name) -> Optional[date]:
         """
         Add Chinese New Year's Day Five.
 
         https://en.wikipedia.org/wiki/Chinese_New_Year
         """
-        return self._add_holiday(
+        return self._add_oriental_calendar_holiday(
             name,
-            self._chinese_new_year + td(days=+4),
+            self._oriental_calendar.lunar_new_year_date(self._year),
+            days_delta=+4,
         )
 
-    def _add_mid_autumn_festival(self, name):
+    def _add_diwali(self, name) -> Optional[date]:
+        """
+        Add Diwali Festival.
+
+        Diwali (Deepavali, Festival of Lights) is one of the most important
+        festivals in Indian religions. It is celebrated during the Hindu
+        lunisolar months of Ashvin and Kartika (between mid-October and
+        mid-November).
+        https://en.wikipedia.org/wiki/Diwali
+        """
+        return self._add_oriental_calendar_holiday(
+            name, self._oriental_calendar.diwali_date(self._year)
+        )
+
+    def _add_double_ninth_festival(self, name) -> Optional[date]:
+        """
+        Add Double Ninth Festival (9th day of 9th lunar month).
+
+        The Double Ninth Festival (Chongyang Festival in Mainland China
+        and Taiwan or Chung Yeung Festival in Hong Kong and Macau).
+        https://en.wikipedia.org/wiki/Double_Ninth_Festival
+        """
+        return self._add_oriental_calendar_holiday(
+            name, self._oriental_calendar.double_ninth_date(self._year)
+        )
+
+    def _add_dragon_boat_festival(self, name) -> Optional[date]:
+        """
+        Add Dragon Boat Festival (5th day of 5th lunar month).
+
+        The Dragon Boat Festival is a traditional Chinese holiday which occurs
+        on the fifth day of the fifth month of the Chinese calendar.
+        https://en.wikipedia.org/wiki/Dragon_Boat_Festival
+        """
+        return self._add_oriental_calendar_holiday(
+            name, self._oriental_calendar.dragon_boat_date(self._year)
+        )
+
+    def _add_hung_kings_day(self, name) -> Optional[date]:
+        """
+        Add Hùng Kings' Temple Festival (10th day of the 3rd lunar month).
+
+        Vietnamese festival held annually from the 8th to the 11th day of the
+        3rd lunar month in honour of the Hùng Kings.
+        https://en.wikipedia.org/wiki/H%C3%B9ng_Kings%27_Festival
+        """
+        return self._add_oriental_calendar_holiday(
+            name,
+            self._oriental_calendar.hung_kings_date(self._year),
+        )
+
+    def _add_mid_autumn_festival(self, name) -> Optional[date]:
         """
         Add Mid Autumn Festival (15th day of the 8th lunar month).
 
@@ -580,13 +662,62 @@ class ChineseCalendarHolidays:
         Mooncake Festival.
         https://en.wikipedia.org/wiki/Mid-Autumn_Festival
         """
-        return self._add_chinese_calendar_holiday(name, 8, 15)
+        return self._add_oriental_calendar_holiday(
+            name,
+            self._oriental_calendar.mid_autumn_date(self._year),
+        )
 
-    def _convert_chinese_to_gre(self, month, day):
+    def _add_mid_autumn_festival_day_two(self, name) -> Optional[date]:
         """
-        Convert lunar calendar date to Gregorian calendar date.
+        Add Mid Autumn Festival Day Two (16th day of the 8th lunar month).
+
+        The Mid-Autumn Festival, also known as the Moon Festival or
+        Mooncake Festival.
+        https://en.wikipedia.org/wiki/Mid-Autumn_Festival
         """
-        return self._chinese_calendar.lunar_to_gre(self._year, month, day)
+        return self._add_oriental_calendar_holiday(
+            name,
+            self._oriental_calendar.mid_autumn_date(self._year),
+            days_delta=+1,
+        )
+
+    def _add_thaipusam(self, name) -> Optional[date]:
+        """
+        Add Thaipusam.
+
+        Thaipusam is a Tamil Hindu festival celebrated on the full moon
+        of the Tamil month of Thai (January/February).
+        https://en.wikipedia.org/wiki/Thaipusam
+        """
+        return self._add_oriental_calendar_holiday(
+            name,
+            self._oriental_calendar.thaipusam_date(self._year),
+        )
+
+    def _add_vesak(self, name) -> Optional[date]:
+        """
+        Add Vesak (15th day of the 4th lunar month).
+
+        Vesak for Thailand, Laos, Singapore and Indonesia.
+        https://en.wikipedia.org/wiki/Vesak
+        """
+        return self._add_oriental_calendar_holiday(
+            name,
+            self._oriental_calendar.vesak_date(self._year),
+        )
+
+    def _add_vesak_may(self, name) -> Optional[date]:
+        """
+        Add Vesak (on the day of the first full moon in May
+        in the Gregorian calendar).
+
+        Vesak for Sri Lanka, Nepal, India, Bangladesh and Malaysia.
+        https://en.wikipedia.org/wiki/Vesak
+        """
+        return self._add_oriental_calendar_holiday(
+            name,
+            self._oriental_calendar.vesak_may_date(self._year),
+        )
 
 
 class InternationalHolidays:
@@ -957,108 +1088,4 @@ class IslamicHolidays:
         return self._add_islamic_calendar_holiday(
             name,
             self._islamic_calendar.ramadan_beginning_dates(self._year),
-        )
-
-
-class KoreanCalendarHolidays:
-    """
-    Korean lunisolar calendar holidays.
-    """
-
-    def __init__(self) -> None:
-        self._korean_calendar = KoreanLunarCalendar()
-
-    @property
-    def _korean_new_year(self):
-        """
-        Return Korean Lunisolar calendar New Year date.
-        """
-        return self._convert_korean_to_gre(self._year, 1, 1)
-
-    def _add_korean_calendar_holiday(self, name, month, day) -> date:
-        """
-        Add lunar calendar holiday.
-        """
-        return self._add_holiday(
-            name,
-            self._convert_korean_to_gre(self._year, month, day),
-        )
-
-    def _add_korean_new_years_day(self, name) -> date:
-        """
-        Add Korean New Years Day (second new moon after the winter solstice).
-
-        Korean New Year, Seollal is a festival and national holiday
-        commemorating the first day of the Chinese lunisolar calendar.
-        https://en.wikipedia.org/wiki/Korean_New_Year
-        """
-        return self._add_holiday(
-            name,
-            self._korean_new_year,
-        )
-
-    def _add_korean_new_years_day_two(self, name) -> date:
-        """
-        Add Korean New Years Day Two (1 day after New Years Day).
-
-        https://en.wikipedia.org/wiki/Korean_New_Year
-        """
-        return self._add_holiday(
-            name,
-            self._korean_new_year + td(days=+1),
-        )
-
-    def _add_korean_new_years_day_three(self, name) -> date:
-        """
-        Add Korean New Years Day Three (2 days after New Years Day).
-
-        https://en.wikipedia.org/wiki/Korean_New_Year
-        """
-        return self._add_holiday(
-            name,
-            self._korean_new_year + td(days=+2),
-        )
-
-    def _add_korean_new_years_day_four(self, name) -> date:
-        """
-        Add Korean New Years Day Four (3 days after New Years Day).
-
-        https://en.wikipedia.org/wiki/Korean_New_Year
-        """
-        return self._add_holiday(
-            name,
-            self._korean_new_year + td(days=+3),
-        )
-
-    def _add_korean_new_years_day_five(self, name) -> date:
-        """
-        Add Korean New Years Day Five (4 days after New Years Day).
-
-        https://en.wikipedia.org/wiki/Korean_New_Year
-        """
-        return self._add_holiday(
-            name,
-            self._korean_new_year + td(days=+4),
-        )
-
-    def _add_korean_new_years_eve(self, name) -> date:
-        """
-        Add Korean New Years Eve (1 day before New Years Day).
-
-        https://en.wikipedia.org/wiki/Korean_New_Year
-        """
-        return self._add_holiday(
-            name,
-            self._korean_new_year + td(days=-1),
-        )
-
-    def _convert_korean_to_gre(self, year: int, month: int, day: int) -> date:
-        """
-        Get solar date.
-        """
-        self._korean_calendar.setLunarDate(year, month, day, False)
-        return date(
-            self._korean_calendar.solarYear,
-            self._korean_calendar.solarMonth,
-            self._korean_calendar.solarDay,
         )

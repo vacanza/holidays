@@ -23,6 +23,9 @@ class TestSingapore(TestCase):
     def test_country_aliases(self):
         self.assertCountryAliases(Singapore, SG, SGP)
 
+    def test_common(self):
+        self.assertNonObservedHolidaysName("New Year's Day", "2022-01-01")
+
     def test_Singapore(self):
         # <= 1968 holidays
         self.assertIn(date(1968, 4, 13), self.holidays)
