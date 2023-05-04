@@ -17,76 +17,76 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: holidays/countries/finland.py:39
+#: ./holidays/countries/finland.py:39
 msgid "Uudenvuodenpäivä"
 msgstr "Nyårsdagen"
 
 #. Epiphany.
-#: holidays/countries/finland.py:42
+#: ./holidays/countries/finland.py:42
 msgid "Loppiainen"
 msgstr "Trettondedagen"
 
 #. Good Friday.
-#: holidays/countries/finland.py:51
+#: ./holidays/countries/finland.py:51
 msgid "Pitkäperjantai"
 msgstr "Långfredagen"
 
 #. Easter Sunday.
-#: holidays/countries/finland.py:54
+#: ./holidays/countries/finland.py:54
 msgid "Pääsiäispäivä"
 msgstr "Påskdagen"
 
 #. Easter Monday.
-#: holidays/countries/finland.py:57
+#: ./holidays/countries/finland.py:57
 msgid "2. pääsiäispäivä"
 msgstr "Annandag påsk"
 
 #. May Day.
-#: holidays/countries/finland.py:60
+#: ./holidays/countries/finland.py:60
 msgid "Vappu"
 msgstr "Vappen"
 
 #. Ascension Day.
-#: holidays/countries/finland.py:63
+#: ./holidays/countries/finland.py:63
 msgid "Helatorstai"
 msgstr "Kristi himmelfärdsdag"
 
 #. Whit Sunday.
-#: holidays/countries/finland.py:70
+#: ./holidays/countries/finland.py:70
 msgid "Helluntaipäivä"
 msgstr "Pingst"
 
 #. Midsummer Eve.
-#: holidays/countries/finland.py:78
+#: ./holidays/countries/finland.py:78
 msgid "Juhannusaatto"
 msgstr "Midsommarafton"
 
 #. Midsummer Day.
-#: holidays/countries/finland.py:80
+#: ./holidays/countries/finland.py:80
 msgid "Juhannuspäivä"
 msgstr "Midsommardagen"
 
 #. All Saints' Day.
-#: holidays/countries/finland.py:88
+#: ./holidays/countries/finland.py:88
 msgid "Pyhäinpäivä"
 msgstr "Alla helgons dag"
 
 #. Independence Day.
-#: holidays/countries/finland.py:91
+#: ./holidays/countries/finland.py:91
 msgid "Itsenäisyyspäivä"
 msgstr "Självständighetsdagen"
 
 #. Christmas Eve.
-#: holidays/countries/finland.py:94
+#: ./holidays/countries/finland.py:94
 msgid "Jouluaatto"
 msgstr "Julafton"
 
 #. Christmas Day.
-#: holidays/countries/finland.py:97
+#: ./holidays/countries/finland.py:97
 msgid "Joulupäivä"
 msgstr "Juldagen"
 
-#. Second Christmas Day.
-#: holidays/countries/finland.py:100
+#. Second Day of Christmas.
+#: ./holidays/countries/finland.py:100
 msgid "Tapaninpäivä"
 msgstr "Annandag jul"

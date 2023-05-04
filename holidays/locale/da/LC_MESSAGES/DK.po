@@ -16,55 +16,55 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: holidays/countries/denmark.py:40
+#: ./holidays/countries/denmark.py:40
 msgid "Nytårsdag"
 msgstr ""
 
 #. Holy Thursday.
-#: holidays/countries/denmark.py:43
+#: ./holidays/countries/denmark.py:43
 msgid "Skærtorsdag"
 msgstr ""
 
 #. Good Friday.
-#: holidays/countries/denmark.py:46
+#: ./holidays/countries/denmark.py:46
 msgid "Langfredag"
 msgstr ""
 
 #. Easter Sunday.
-#: holidays/countries/denmark.py:49
+#: ./holidays/countries/denmark.py:49
 msgid "Påskedag"
 msgstr ""
 
 #. Easter Monday.
-#: holidays/countries/denmark.py:52
+#: ./holidays/countries/denmark.py:52
 msgid "Anden påskedag"
 msgstr ""
 
-#: holidays/countries/denmark.py:58
+#: ./holidays/countries/denmark.py:58
 msgid "Store bededag"
 msgstr ""
 
 #. Ascension Day.
-#: holidays/countries/denmark.py:62
+#: ./holidays/countries/denmark.py:62
 msgid "Kristi himmelfartsdag"
 msgstr ""
 
 #. Whit Sunday.
-#: holidays/countries/denmark.py:65
+#: ./holidays/countries/denmark.py:65
 msgid "Pinsedag"
 msgstr ""
 
 #. Whit Monday.
-#: holidays/countries/denmark.py:68
+#: ./holidays/countries/denmark.py:68
 msgid "Anden pinsedag"
 msgstr ""
 
 #. Christmas Day.
-#: holidays/countries/denmark.py:71
+#: ./holidays/countries/denmark.py:71
 msgid "Juledag"
 msgstr ""
 
-#. Second Christmas Day.
-#: holidays/countries/denmark.py:74
+#. Second Day of Christmas.
+#: ./holidays/countries/denmark.py:74
 msgid "Anden juledag"
 msgstr ""

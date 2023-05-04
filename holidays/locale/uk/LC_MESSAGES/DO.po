@@ -12,67 +12,66 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: holidays/countries/dominican_republic.py:46
+#: ./holidays/countries/dominican_republic.py:54
 msgid "Año Nuevo"
 msgstr "Новий рік"
 
 #. Epiphany.
-#: holidays/countries/dominican_republic.py:50
+#: ./holidays/countries/dominican_republic.py:58
 msgid "Día de los Santos Reyes"
 msgstr "Богоявлення"
 
 #. Lady of Altagracia.
-#: holidays/countries/dominican_republic.py:53
+#: ./holidays/countries/dominican_republic.py:63
 msgid "Día de la Altagracia"
 msgstr "День Богоматері Альтаграсія"
 
 #. Juan Pablo Duarte Day.
-#: holidays/countries/dominican_republic.py:57
+#: ./holidays/countries/dominican_republic.py:66
 msgid "Día de Duarte"
 msgstr "День Дуарте"
 
 #. Independence Day.
-#: holidays/countries/dominican_republic.py:60
+#: ./holidays/countries/dominican_republic.py:69
 msgid "Día de Independencia"
 msgstr "День незалежності"
 
 #. Good Friday.
-#: holidays/countries/dominican_republic.py:65
+#: ./holidays/countries/dominican_republic.py:72
 msgid "Viernes Santo"
 msgstr "Страсна пʼятниця"
 
 #. Labor Day.
-#: holidays/countries/dominican_republic.py:71
+#: ./holidays/countries/dominican_republic.py:76
 msgid "Día del Trabajo"
 msgstr "День праці"
 
 #. Feast of Corpus Christi.
-#: holidays/countries/dominican_republic.py:74
+#: ./holidays/countries/dominican_republic.py:82
 msgid "Corpus Christi"
 msgstr "Свято Тіла і Крові Христових"
 
 #. Restoration Day.
-#: holidays/countries/dominican_republic.py:83
+#: ./holidays/countries/dominican_republic.py:85
 msgid "Día de la Restauración"
 msgstr "День реставрації"
 
 #. Our Lady of Mercedes Day.
-#: holidays/countries/dominican_republic.py:86
+#: ./holidays/countries/dominican_republic.py:93
 msgid "Día de las Mercedes"
 msgstr "День Богоматері Милосердя"
 
 #. Constitution Day.
-#: holidays/countries/dominican_republic.py:90
+#: ./holidays/countries/dominican_republic.py:97
 msgid "Día de la Constitución"
 msgstr "День Конституції"
 
 #. Christmas Day.
-#: holidays/countries/dominican_republic.py:93
+#: ./holidays/countries/dominican_republic.py:102
 msgid "Día de Navidad"
 msgstr "Різдво Христове"

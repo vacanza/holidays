@@ -12,67 +12,65 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: holidays/countries/romania.py:40
+#: ./holidays/countries/romania.py:38
 msgid "Anul Nou"
 msgstr "Новий рік"
 
 #. Epiphany.
-#: holidays/countries/romania.py:46
+#: ./holidays/countries/romania.py:44
 msgid "Bobotează"
 msgstr "Богоявлення"
 
 #. Saint John the Baptist.
-#: holidays/countries/romania.py:49
+#: ./holidays/countries/romania.py:47
 msgid "Sfântul Ion"
 msgstr "День Івана Хрестителя"
 
 #. Unification of the Romanian Principalities Day.
-#: holidays/countries/romania.py:53
+#: ./holidays/countries/romania.py:51
 msgid "Ziua Unirii Principatelor Române"
 msgstr "День обʼєднання Дунайських князівств"
 
 #. Easter.
-#: holidays/countries/romania.py:58
+#: ./holidays/countries/romania.py:54
 msgid "Paștele"
 msgstr "Великдень"
 
 #. Labour Day.
-#: holidays/countries/romania.py:66
+#: ./holidays/countries/romania.py:62
 msgid "Ziua Muncii"
 msgstr "День праці"
 
 #. Children's Day.
-#: holidays/countries/romania.py:70
+#: ./holidays/countries/romania.py:66
 msgid "Ziua Copilului"
 msgstr "День захисту дітей"
 
 #. Pentecost.
-#: holidays/countries/romania.py:73
+#: ./holidays/countries/romania.py:69
 msgid "Rusaliile"
 msgstr "Трійця"
 
 #. Dormition of the Mother of God.
-#: holidays/countries/romania.py:80
+#: ./holidays/countries/romania.py:76
 msgid "Adormirea Maicii Domnului"
 msgstr "Успіння Пресвятої Богородиці"
 
-#. Saint Andrew's Day.
-#: holidays/countries/romania.py:85
+#: ./holidays/countries/romania.py:82
 msgid "Sfantul Apostol Andrei cel Intai chemat"
 msgstr "День святого Андрія Первозваного"
 
 #. National Day.
-#: holidays/countries/romania.py:88
+#: ./holidays/countries/romania.py:86
 msgid "Ziua Națională a României"
 msgstr "Національний день Румунії"
 
 #. Christmas Day.
-#: holidays/countries/romania.py:91
+#: ./holidays/countries/romania.py:89
 msgid "Crăciunul"
 msgstr "Різдво Христове"

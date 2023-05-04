@@ -15,72 +15,69 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#. Ethiopian New Year.
-#: holidays/countries/ethiopia.py:64 holidays/countries/ethiopia.py:67
+#: ./holidays/countries/ethiopia.py:72
 msgid "አዲስ ዓመት እንቁጣጣሽ"
 msgstr ""
 
-#. Finding of True Cross.
-#: holidays/countries/ethiopia.py:72 holidays/countries/ethiopia.py:75
+#: ./holidays/countries/ethiopia.py:77
 msgid "መስቀል"
 msgstr ""
 
 #. Orthodox Christmas.
-#: holidays/countries/ethiopia.py:78
+#: ./holidays/countries/ethiopia.py:81
 msgid "ገና"
 msgstr ""
 
 #. Orthodox Epiphany.
-#: holidays/countries/ethiopia.py:81
+#: ./holidays/countries/ethiopia.py:84
 msgid "ጥምቀት"
 msgstr ""
 
 #. Orthodox Good Friday.
-#: holidays/countries/ethiopia.py:85
+#: ./holidays/countries/ethiopia.py:87
 msgid "ስቅለት"
 msgstr ""
 
 #. Orthodox Easter Sunday.
-#: holidays/countries/ethiopia.py:88
+#: ./holidays/countries/ethiopia.py:90
 msgid "ፋሲካ"
 msgstr ""
 
 #. Adwa Victory Day.
-#: holidays/countries/ethiopia.py:92
+#: ./holidays/countries/ethiopia.py:94
 msgid "አድዋ"
 msgstr ""
 
 #. Labour Day.
-#: holidays/countries/ethiopia.py:95
+#: ./holidays/countries/ethiopia.py:97
 msgid "የሰራተኞች ቀን"
 msgstr ""
 
 #. Patriots Day.
-#: holidays/countries/ethiopia.py:99
+#: ./holidays/countries/ethiopia.py:101
 msgid "የአርበኞች ቀን"
 msgstr ""
 
 #. Downfall of Dergue Regime Day.
-#: holidays/countries/ethiopia.py:103
+#: ./holidays/countries/ethiopia.py:105
 msgid "ደርግ የወደቀበት ቀን"
 msgstr ""
 
-#. Downfall of King Haile Selassie.
-#: holidays/countries/ethiopia.py:107
+#: ./holidays/countries/ethiopia.py:110
 msgid "ደርግ የመጣበት ቀን"
 msgstr ""
 
 #. Eid al-Fitr.
-#: holidays/countries/ethiopia.py:121
+#: ./holidays/countries/ethiopia.py:114
 msgid "ኢድ አልፈጥር"
 msgstr ""
 
 #. Eid al-Adha.
-#: holidays/countries/ethiopia.py:128
+#: ./holidays/countries/ethiopia.py:117
 msgid "አረፋ"
 msgstr ""
 
 #. Prophet Muhammad's Birthday.
-#: holidays/countries/ethiopia.py:134
+#: ./holidays/countries/ethiopia.py:122
 msgid "መውሊድ"
 msgstr ""

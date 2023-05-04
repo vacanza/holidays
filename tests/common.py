@@ -365,23 +365,6 @@ class TestCase(unittest.TestCase):
         """Assert non-observed holidays dict is empty."""
         self._assertNoHolidays("holidays_non_observed", *args)
 
-    def _assert_l10n_test(self, language, holiday_list):
-        holidays = self.test_class(language=language)
-        for dt, name in holiday_list:
-            self.assertEqual(holidays[dt], name)
-
-    def assert_l10n_default(self, holiday_list):
-        for lng in (self.test_class.default_language, None, "invalid"):
-            self._assert_l10n_test(lng, holiday_list)
-        self.set_language("en_US")
-        self._assert_l10n_test(self.test_class.default_language, holiday_list)
-
-    def assert_l10n_language(self, language, holiday_list):
-        self._assert_l10n_test(language, holiday_list)
-        self.set_language(language)
-        for lng in (language, None, "invalid"):
-            self._assert_l10n_test(lng, holiday_list)
-
     def _assertLocalizedHolidays(self, localized_holidays, language=None):
         """Helper: assert localized holidays match expected names."""
         instance = self.test_class(language=language)

@@ -3,101 +3,99 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.21\n"
+"Project-Id-Version: Python Holidays 0.25\n"
 "POT-Creation-Date: 2023-03-01 15:30-0800\n"
-"PO-Revision-Date: 2023-03-05 13:25+0200\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2023-05-03 18:38-0700\n"
+"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
-
-#: holidays/countries/colombia.py:52
-#, c-format
-msgid "%s (Observado)"
-msgstr "%s (вихідний)"
+"X-Generator: Poedit 3.3\n"
 
 #. New Year's Day
-#: holidays/countries/colombia.py:60
+#: ./holidays/countries/colombia.py:64
 msgid "Año Nuevo"
 msgstr "Новий рік"
 
-#: holidays/countries/colombia.py:66
+#: ./holidays/countries/colombia.py:70
 msgid "Día de los Reyes Magos"
 msgstr "Богоявлення"
 
-#: holidays/countries/colombia.py:72
+#: ./holidays/countries/colombia.py:76
 msgid "Día de San José"
 msgstr "День Святого Йосипа"
 
 #. Labor Day
-#: holidays/countries/colombia.py:76
+#: ./holidays/countries/colombia.py:80
 msgid "Día del Trabajo"
 msgstr "День праці"
 
-#: holidays/countries/colombia.py:82
+#: ./holidays/countries/colombia.py:86
 msgid "San Pedro y San Pablo"
 msgstr "День Святих Петра і Павла"
 
 #. Independence Day
-#: holidays/countries/colombia.py:86
+#: ./holidays/countries/colombia.py:90
 msgid "Día de la Independencia"
 msgstr "День незалежності"
 
 #. Battle of Boyaca
-#: holidays/countries/colombia.py:89
+#: ./holidays/countries/colombia.py:93
 msgid "Batalla de Boyacá"
 msgstr "Річниця перемоги при Бояка"
 
-#: holidays/countries/colombia.py:95
+#: ./holidays/countries/colombia.py:99
 msgid "La Asunción"
 msgstr "Успіння Пресвятої Богородиці"
 
-#: holidays/countries/colombia.py:101
+#: ./holidays/countries/colombia.py:105
 msgid "Día de la Raza"
 msgstr "День Колумба"
 
-#: holidays/countries/colombia.py:108
+#: ./holidays/countries/colombia.py:112
 msgid "Día de Todos los Santos"
 msgstr "День усіх святих"
 
-#: holidays/countries/colombia.py:114
+#: ./holidays/countries/colombia.py:118
 msgid "Independencia de Cartagena"
 msgstr "День незалежності Картахени"
 
 #. Immaculate Conception
-#: holidays/countries/colombia.py:119
+#: ./holidays/countries/colombia.py:123
 msgid "La Inmaculada Concepción"
 msgstr "Непорочне зачаття Діви Марії"
 
 #. Christmas
-#: holidays/countries/colombia.py:122
+#: ./holidays/countries/colombia.py:126
 msgid "Navidad"
 msgstr "Різдво Христове"
 
 #. Maundy Thursday
-#: holidays/countries/colombia.py:128
+#: ./holidays/countries/colombia.py:132
 msgid "Jueves Santo"
 msgstr "Великий четвер"
 
 #. Good Friday
-#: holidays/countries/colombia.py:131
+#: ./holidays/countries/colombia.py:135
 msgid "Viernes Santo"
 msgstr "Страсна пʼятниця"
 
-#: holidays/countries/colombia.py:136
+#: ./holidays/countries/colombia.py:140
 msgid "Ascensión del señor"
 msgstr "Вознесіння Господнє"
 
-#: holidays/countries/colombia.py:142
+#: ./holidays/countries/colombia.py:146
 msgid "Corpus Christi"
 msgstr "Свято Тіла і Крові Христових"
 
-#: holidays/countries/colombia.py:149
+#: ./holidays/countries/colombia.py:153
 msgid "Sagrado Corazón"
 msgstr "Свято Найсвятішого Серця Ісуса"
+
+#: ./holidays/countries/colombia.py:52
+msgid "(Observado)"
+msgstr "(вихідний)"

@@ -12,6 +12,7 @@ help:
 	@echo "    tox           run tox (in parallel)"
 
 check:
+	make l10n
 	make pre-commit
 	make doc
 	make test

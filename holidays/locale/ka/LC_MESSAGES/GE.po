@@ -16,86 +16,82 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: holidays/countries/georgia.py:36
+#: ./holidays/countries/georgia.py:40
 msgid "ახალი წელი"
 msgstr ""
 
-#. New Year's Day.
-#: holidays/countries/georgia.py:39
+#: ./holidays/countries/georgia.py:41
 msgid "ბედობა"
 msgstr ""
 
-#. Orthodox Christmas Day.
-#: holidays/countries/georgia.py:42
+#. Christmas Day (Orthodox).
+#: ./holidays/countries/georgia.py:44
 msgid "ქრისტეშობა"
 msgstr ""
 
 #. Baptism Day of our Lord Jesus Christ.
-#: holidays/countries/georgia.py:45
+#: ./holidays/countries/georgia.py:47
 msgid "ნათლისღება"
 msgstr ""
 
 #. Mother's Day.
-#: holidays/countries/georgia.py:48
+#: ./holidays/countries/georgia.py:50
 msgid "დედის დღე"
 msgstr ""
 
-#. Women's Day.
-#: holidays/countries/georgia.py:51
+#. Women's Day,
+#: ./holidays/countries/georgia.py:53
 msgid "ქალთა საერთაშორისო დღე"
 msgstr ""
 
-#. Orthodox Good Friday.
-#: holidays/countries/georgia.py:55
+#. Easter.
+#: ./holidays/countries/georgia.py:56
 msgid "წითელი პარასკევი"
 msgstr ""
 
-#. Orthodox Holy Saturday.
-#: holidays/countries/georgia.py:58
+#: ./holidays/countries/georgia.py:57
 msgid "დიდი შაბათი"
 msgstr ""
 
-#. Orthodox Easter Sunday.
-#: holidays/countries/georgia.py:61
+#: ./holidays/countries/georgia.py:58
 msgid "აღდგომა"
 msgstr ""
 
-#. Orthodox Easter Monday.
-#: holidays/countries/georgia.py:64
+#: ./holidays/countries/georgia.py:59
 msgid "შავი ორშაბათი"
 msgstr ""
 
-#. National Unity Day.
-#: holidays/countries/georgia.py:67
+#. National Unity Day,
+#: ./holidays/countries/georgia.py:62
 msgid "ეროვნული ერთიანობის დღე"
 msgstr ""
 
 #. Day of Victory.
-#: holidays/countries/georgia.py:70
+#: ./holidays/countries/georgia.py:65
 msgid "ფაშიზმზე გამარჯვების დღე"
 msgstr ""
 
 #. Saint Andrew the First-Called Day.
-#: holidays/countries/georgia.py:73
+#: ./holidays/countries/georgia.py:68
 msgid "წმინდა ანდრია პირველწოდებულის დღე"
 msgstr ""
 
 #. Independence Day.
-#: holidays/countries/georgia.py:78
+#: ./holidays/countries/georgia.py:71
 msgid "დამოუკიდებლობის დღე"
 msgstr ""
 
 #. Saint Mary's Day.
-#: holidays/countries/georgia.py:81
+#: ./holidays/countries/georgia.py:74
 msgid "მარიამობა"
 msgstr ""
 
-#. Day of Svetitskhoveli Cathedral.
-#: holidays/countries/georgia.py:84
+#. Day of Svetitskhoveli Cathedral
+#: ./holidays/countries/georgia.py:77
 msgid "სვეტიცხოვლობა"
 msgstr ""
 
-#. Saint George's Day.
-#: holidays/countries/georgia.py:87
+#. Saint George's Day
+#: ./holidays/countries/georgia.py:80
 msgid "გიორგობა"
 msgstr ""

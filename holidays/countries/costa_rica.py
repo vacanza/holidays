@@ -33,25 +33,25 @@ class CostaRica(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
-        def _add_movable(hol_name: str, hol_date: date) -> None:
+        def add_movable_holiday(name: str, dt: date) -> None:
             # Law #9875 from 16.07.2020
             if self.observed:
-                if not self._is_monday(hol_date):
-                    hol_name = self.tr("%s (Observado)") % self.tr(hol_name)
-                if self._is_tuesday(hol_date) or self._is_wednesday(hol_date):
-                    hol_date = _get_nth_weekday_from(-1, MON, hol_date)
+                if not self._is_monday(dt):
+                    observed_label = self.tr("(Observado)")
+                    name = f"{self.tr(name)} {observed_label}"
+                if self._is_tuesday(dt) or self._is_wednesday(dt):
+                    dt = _get_nth_weekday_from(-1, MON, dt)
                 else:
-                    hol_date = _get_nth_weekday_from(1, MON, hol_date)
-            self._add_holiday(hol_name, hol_date)
+                    dt = _get_nth_weekday_from(1, MON, dt)
+            self._add_holiday(name, dt)
 
-        def _add_observed(hol_name: str, hol_date: date) -> None:
+        def add_observed_holiday(name: str, dt: date) -> None:
             if self.observed:
-                if not (
-                    self._is_monday(hol_date) or self._is_weekend(hol_date)
-                ):
-                    hol_date = _get_nth_weekday_from(1, MON, hol_date)
-                    hol_name = self.tr("%s (Observado)") % self.tr(hol_name)
-            self._add_holiday(hol_name, hol_date)
+                if not (self._is_monday(dt) or self._is_weekend(dt)):
+                    dt = _get_nth_weekday_from(1, MON, dt)
+                    observed_label = self.tr("(Observado)")
+                    name = f"{self.tr(name)} {observed_label}"
+            self._add_holiday(name, dt)
 
         super()._populate(year)
 
@@ -70,16 +70,16 @@ class CostaRica(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Juan Santamaría Day.
         name = tr("Día de Juan Santamaría")
         if 2006 <= year <= 2010:
-            _add_observed(name, dt)
+            add_observed_holiday(name, dt)
         elif year in {2023, 2024}:
-            _add_movable(name, dt)
+            add_movable_holiday(name, dt)
         else:
             self._add_holiday(name, dt)
 
         # International Labor Day.
         name = tr("Día Internacional del Trabajo")
         if year == 2021:
-            _add_movable(name, date(year, MAY, 1))
+            add_movable_holiday(name, date(year, MAY, 1))
         else:
             self._add_labor_day(name)
 
@@ -89,9 +89,9 @@ class CostaRica(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Annexation of the Party of Nicoya to Costa Rica.
         name = tr("Anexión del Partido de Nicoya a Costa Rica")
         if 2005 <= year <= 2008:
-            _add_observed(name, dt)
+            add_observed_holiday(name, dt)
         elif 2020 <= year <= 2024:
-            _add_movable(name, dt)
+            add_movable_holiday(name, dt)
         else:
             self._add_holiday(name, dt)
 
@@ -108,9 +108,9 @@ class CostaRica(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Mother's Day.
         name = tr("Día de la Madre")
         if 2005 <= year <= 2007:
-            _add_observed(name, dt)
+            add_observed_holiday(name, dt)
         elif year in {2020, 2023, 2024}:
-            _add_movable(name, dt)
+            add_movable_holiday(name, dt)
         else:
             self._add_holiday(name, dt)
 
@@ -130,14 +130,16 @@ class CostaRica(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Independence Day.
         name = tr("Día de la Independencia")
         if year in {2020, 2021, 2022, 2024}:
-            _add_movable(name, dt)
+            add_movable_holiday(name, dt)
         else:
             self._add_holiday(name, dt)
 
         # Law #9803 from 19.05.2020
         if year <= 2019:
             # Cultures Day.
-            _add_observed(tr("Día de las Culturas"), date(year, OCT, 12))
+            add_observed_holiday(
+                tr("Día de las Culturas"), date(year, OCT, 12)
+            )
 
         # Law #9803 from 19.05.2020
         if year >= 2020:
@@ -145,7 +147,7 @@ class CostaRica(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Army Abolition Day.
             name = tr("Día de la Abolición del Ejército")
             if year in {2020, 2021, 2022}:
-                _add_movable(name, dt)
+                add_movable_holiday(name, dt)
             else:
                 self._add_holiday(name, dt)
 

@@ -73,26 +73,40 @@ class TestSerbia(TestCase):
         self.assertNotIn(date(2020, 4, 21), self.holidays)
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                rs = Serbia(language=language)
-                self.assertEqual(rs["2022-01-01"], "Нова година")
-                self.assertEqual(rs["2022-01-07"], "Божић")
-
-        run_tests((Serbia.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((Serbia.default_language,))
+        self.assertLocalizedHolidays(
+            (
+                ("2018-01-01", "Нова година"),
+                ("2018-01-02", "Нова година"),
+                ("2018-01-07", "Божић"),
+                ("2018-02-15", "Дан државности Србије"),
+                ("2018-02-16", "Дан државности Србије"),
+                ("2018-04-06", "Велики петак"),
+                ("2018-04-07", "Велика субота"),
+                ("2018-04-08", "Васкрс"),
+                ("2018-04-09", "Други дан Васкрса"),
+                ("2018-05-01", "Празник рада"),
+                ("2018-05-02", "Празник рада"),
+                ("2018-11-11", "Дан примирја у Првом светском рату"),
+                ("2018-11-12", "Дан примирја у Првом светском рату"),
+            ),
+        )
 
     def test_l10n_en_us(self):
-        en_us = "en_US"
-
-        rs = Serbia(language=en_us)
-        self.assertEqual(rs["2022-01-01"], "New Year's Day")
-        self.assertEqual(rs["2022-01-07"], "Orthodox Christmas Day")
-
-        self.set_language(en_us)
-        for language in (None, en_us, "invalid"):
-            rs = Serbia(language=language)
-            self.assertEqual(rs["2022-01-01"], "New Year's Day")
-            self.assertEqual(rs["2022-01-07"], "Orthodox Christmas Day")
+        self.assertLocalizedHolidays(
+            (
+                ("2018-01-01", "New Year's Day"),
+                ("2018-01-02", "New Year's Day"),
+                ("2018-01-07", "Orthodox Christmas Day"),
+                ("2018-02-15", "Statehood Day"),
+                ("2018-02-16", "Statehood Day"),
+                ("2018-04-06", "Good Friday"),
+                ("2018-04-07", "Easter Saturday"),
+                ("2018-04-08", "Easter Sunday"),
+                ("2018-04-09", "Easter Monday"),
+                ("2018-05-01", "International Workers' Day"),
+                ("2018-05-02", "International Workers' Day"),
+                ("2018-11-11", "Armistice Day"),
+                ("2018-11-12", "Armistice Day"),
+            ),
+            "en_US",
+        )

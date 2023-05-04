@@ -100,26 +100,44 @@ class TestEthiopia(TestCase):
         self.assertNotIn(date(1896, 3, 2), self.holidays)
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                et = Ethiopia(language=language)
-                self.assertEqual(et["2022-01-07"], "ገና")
-                self.assertEqual(et["2022-09-11"], "አዲስ ዓመት እንቁጣጣሽ")
-
-        run_tests((Ethiopia.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((Ethiopia.default_language,))
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-07", "ገና"),
+                ("2022-01-19", "ጥምቀት"),
+                ("2022-03-02", "አድዋ"),
+                ("2022-04-22", "ስቅለት"),
+                ("2022-04-24", "ፋሲካ"),
+                ("2022-05-01", "የሰራተኞች ቀን"),
+                ("2022-05-02", "ኢድ አልፈጥር* (*estimated)"),
+                ("2022-05-05", "የአርበኞች ቀን"),
+                ("2022-05-28", "ደርግ የወደቀበት ቀን"),
+                ("2022-07-09", "አረፋ* (*estimated)"),
+                ("2022-07-10", "አረፋ* (*estimated)"),
+                ("2022-09-11", "አዲስ ዓመት እንቁጣጣሽ"),
+                ("2022-09-27", "መስቀል"),
+                ("2022-10-08", "መውሊድ* (*estimated)"),
+                ("2022-10-09", "መውሊድ* (*estimated)"),
+            )
+        )
 
     def test_l10n_en_us(self):
-        en_us = "en_US"
-
-        et = Ethiopia(language=en_us)
-        self.assertEqual(et["2022-01-07"], "Orthodox Christmas Day")
-        self.assertEqual(et["2022-09-11"], "Ethiopian New Year's Day")
-
-        self.set_language(en_us)
-        for language in (None, en_us, "invalid"):
-            et = Ethiopia(language=language)
-            self.assertEqual(et["2022-01-07"], "Orthodox Christmas Day")
-            self.assertEqual(et["2022-09-11"], "Ethiopian New Year's Day")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-07", "Orthodox Christmas Day"),
+                ("2022-01-19", "Orthodox Epiphany Day"),
+                ("2022-03-02", "Adwa Victory Day"),
+                ("2022-04-22", "Orthodox Good Friday"),
+                ("2022-04-24", "Orthodox Easter Sunday"),
+                ("2022-05-01", "Labor Day"),
+                ("2022-05-02", "ኢድ አልፈጥር* (*estimated)"),
+                ("2022-05-05", "Patriots Day"),
+                ("2022-05-28", "Downfall of Dergue Regime Day"),
+                ("2022-07-09", "አረፋ* (*estimated)"),
+                ("2022-07-10", "አረፋ* (*estimated)"),
+                ("2022-09-11", "Ethiopian New Year's Day"),
+                ("2022-09-27", "Finding of True Cross"),
+                ("2022-10-08", "መውሊድ* (*estimated)"),
+                ("2022-10-09", "መውሊድ* (*estimated)"),
+            ),
+            "en_US",
+        )

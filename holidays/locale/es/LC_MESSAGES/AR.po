@@ -3,10 +3,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.20\n"
+"Project-Id-Version: Python Holidays 0.25\n"
 "POT-Creation-Date: 2023-03-02 00:39+0700\n"
-"PO-Revision-Date: 2023-02-20 19:02+0200\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2023-05-03 18:35-0700\n"
+"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -14,37 +14,32 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3\n"
 
-#: ./holidays/countries/argentina.py:69
+#: ./holidays/countries/argentina.py:68
 msgid "Feriado con fines turísticos"
 msgstr ""
 
-#: ./holidays/countries/argentina.py:73
+#: ./holidays/countries/argentina.py:72
 msgid "Bicentenario de la creación y primera jura de la bandera nacional"
 msgstr ""
 
-#: ./holidays/countries/argentina.py:76
+#: ./holidays/countries/argentina.py:75
 msgid "Bicentenario de la Batalla de Tucumán"
 msgstr ""
 
-#: ./holidays/countries/argentina.py:77
+#: ./holidays/countries/argentina.py:76
 msgid ""
 "Bicentenario de la sesión inaugural de la Asamblea Nacional Constituyente "
 "del año 1813"
 msgstr ""
 
-#: ./holidays/countries/argentina.py:81
+#: ./holidays/countries/argentina.py:80
 msgid "Bicentenario de la Batalla de Salta"
 msgstr ""
 
-#: ./holidays/countries/argentina.py:82
+#: ./holidays/countries/argentina.py:81
 msgid "Censo nacional 2022"
-msgstr ""
-
-#: ./holidays/countries/argentina.py:165 ./holidays/countries/argentina.py:168
-#, c-format
-msgid "%s (Observado)"
 msgstr ""
 
 #: ./holidays/countries/argentina.py:178
@@ -121,4 +116,8 @@ msgstr ""
 
 #: ./holidays/countries/argentina.py:329
 msgid "Día de la Soberanía Nacional"
+msgstr ""
+
+#: ./holidays/countries/argentina.py:162
+msgid "(Observado)"
 msgstr ""
