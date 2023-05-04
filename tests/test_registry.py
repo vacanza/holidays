@@ -18,6 +18,7 @@ from holidays import countries, financial, registry
 
 
 class TestEntityLoader(TestCase):
+    # TODO(ark): consider running this just once for the latest Python version.
     def test_countries_imports(self):
         warnings.simplefilter("ignore")
 
@@ -26,7 +27,6 @@ class TestEntityLoader(TestCase):
         loader_entities = set()
         for module, entities in registry.COUNTRIES.items():
             module = importlib.import_module(f"holidays.countries.{module}")
-
             for entity in entities:
                 countries_cls = getattr(countries, entity)
                 loader_cls = getattr(holidays, entity)
@@ -60,18 +60,18 @@ class TestEntityLoader(TestCase):
                     "holidays.countries.united_states.US",
                 )
             ),
-            "A lazy loader for "
-            "<class 'holidays.countries.united_states.US'>. For class "
-            "inheritance please use 'holidays.countries' entities directly.",
+            "A lazy loader for <class 'holidays.countries.united_states.US'>. "
+            "For inheritance please use the "
+            "'holidays.countries.united_states.US' class directly.",
         )
 
+    # TODO(ark): consider running this just once for the latest Python version.
     def test_financial_imports(self):
         import holidays
 
         loader_entities = set()
         for module, entities in registry.FINANCIAL.items():
             module = importlib.import_module(f"holidays.financial.{module}")
-
             for entity in entities:
                 financial_cls = getattr(financial, entity)
                 loader_cls = getattr(holidays, entity)
@@ -106,6 +106,7 @@ class TestEntityLoader(TestCase):
                 )
             ),
             "A lazy loader for "
-            "<class 'holidays.financial.ny_stock_exchange.NYSE'>. For class "
-            "inheritance please use 'holidays.financial' entities directly.",
+            "<class 'holidays.financial.ny_stock_exchange.NYSE'>. "
+            "For inheritance please use the "
+            "'holidays.financial.ny_stock_exchange.NYSE' class directly.",
         )

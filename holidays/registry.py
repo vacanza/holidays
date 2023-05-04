@@ -188,12 +188,9 @@ class EntityLoader:
 
     def __str__(self) -> str:
         """Return lazy loader object string representation."""
-        entity = str(self.get_entity())
-        location = "countries" if "countries" in entity else "financial"
-
         return (
-            f"A lazy loader for {entity}. For class inheritance please "
-            f"use 'holidays.{location}' entities directly."
+            f"A lazy loader for {self.get_entity()}. For inheritance please "
+            f"use the '{self.module_name}.{self.entity_name}' class directly."
         )
 
     def get_entity(self) -> Optional[HolidayBase]:
