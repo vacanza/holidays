@@ -3,6 +3,14 @@ Version 0.25
 
 Released ???????? ??, ????
 
+- Introduce entity lazy loading, #1087 (@arkid15r)
+- Update holiday groups: extend Easter methods, #1136 (@arkid15r)
+- Add Islamic calendar class code generator, #1128 (@KJhellico)
+- Add release notes generator, #1129 (@arkid15r)
+- Migrate Brazil holidays to holiday groups and subdivision holidays methods, #1137 (@KJhellico)
+- Unify code structure for Malaysia and Singapore, #1134 (@arkid15r)
+- Use a method per subdivision approach for [a-i] countries, #1133 (@arkid15r)
+
 Version 0.24
 ============
 
