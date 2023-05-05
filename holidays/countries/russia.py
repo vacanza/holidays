@@ -26,6 +26,7 @@ class Russia(HolidayBase):
     special_holidays = {
         2023: (
             # Bridge days for 01/Jan & 08/Jan
+            # src: https://www.consultant.ru/document/cons_doc_LAW_425407/
             (FEB, 24, tr("День защитника Отечества")),
             (MAY, 8, tr("День Победы")),
         ),
