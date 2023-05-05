@@ -36,7 +36,7 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _populate(self, year):
         super()._populate(year)
 
-        # Day of the Establishment of the Slovak Republic
+        # Day of the Establishment of the Slovak Republic.
         self._add_holiday("Deň vzniku Slovenskej republiky", JAN, 1)
 
         # Epiphany Day.
@@ -45,47 +45,47 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays):
             "vianočnýsviatok pravoslávnych kresťanov)"
         )
 
-        # Easter
-        # Good Friday
+        # Easter.
+        # Good Friday.
         self._add_good_friday("Veľký piatok")
 
-        # Easter Monday
+        # Easter Monday.
         self._add_easter_monday("Veľkonočný pondelok")
 
-        # Labour Day
+        # Labour Day.
         self._add_labor_day("Sviatok práce")
 
-        # Day of Victory over Fascism
+        # Day of Victory over Fascism.
         if year >= 1997:
             self._add_holiday("Deň víťazstva nad fašizmom", MAY, 8)
 
-        # St. Cyril and Methodius Day
+        # St. Cyril and Methodius Day.
         self._add_holiday("Sviatok svätého Cyrila a svätého Metoda", JUL, 5)
 
-        # Slovak National Uprising Anniversary
+        # Slovak National Uprising Anniversary.
         self._add_holiday("Výročie Slovenského národného povstania", AUG, 29)
 
         if year >= 1992:
-            # Day of the Constitution of the Slovak Republic
+            # Day of the Constitution of the Slovak Republic.
             self._add_holiday("Deň Ústavy Slovenskej republiky", SEP, 1)
 
-        # Day of Our Lady of the Seven Sorrows
+        # Day of Our Lady of the Seven Sorrows.
         self._add_holiday("Sedembolestná Panna Mária", SEP, 15)
 
-        # All Saints Day
+        # All Saints Day.
         self._add_all_saints_day("Sviatok Všetkých svätých")
 
         if year >= 2001:
-            # Day of Freedom and Democracy
+            # Day of Freedom and Democracy.
             self._add_holiday("Deň boja za slobodu a demokraciu", NOV, 17)
 
-        # Christmas Eve
+        # Christmas Eve.
         self._add_christmas_eve("Štedrý deň")
 
-        # Christmas Day
+        # Christmas Day.
         self._add_christmas_day("Prvý sviatok vianočný")
 
-        # Christmas Day 2. St. Stephen's Day
+        # Christmas Day 2. St. Stephen's Day.
         self._add_christmas_day_two("Druhý sviatok vianočný")
 
 
