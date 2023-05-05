@@ -43,6 +43,12 @@ class TestRussia(TestCase):
             "2018-11-04",
         )
 
+    def test_2023(self):
+        self.assertHoliday(
+            "2023-02-24",
+            "2023-05-08",
+        )
+
         self.assertNoHoliday(
             "2018-11-07",
             "2018-12-31",
