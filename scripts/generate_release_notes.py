@@ -91,7 +91,7 @@ class ReleaseNotesGenerator:
     def github_token(self, path=".github_token"):
         """Return GitHub access token."""
         with open(path) as gh_token_file:
-            return gh_token_file.readline()
+            return gh_token_file.readline().strip()
 
     @property
     def is_ready(self):
