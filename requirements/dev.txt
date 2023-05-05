@@ -11,4 +11,6 @@ hijridate
 
 # Deployment.
 build
+gitpython
 pip>=19.2.3
+pygithub
