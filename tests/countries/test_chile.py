@@ -22,24 +22,15 @@ class TestChile(TestCase):
         self.assertCountryAliases(Chile, CL, CHL)
 
     def test_special_holidays(self):
-        self.assertHoliday(
-            "2022-09-16",
-        )
+        self.assertHoliday("2022-09-16")
 
     def test_no_holidays(self):
         self.assertNoHolidays(Chile(years=1914))
 
     def test_new_year(self):
         self.assertHoliday(f"{year}-01-01" for year in range(1915, 2050))
-        self.assertHoliday(
-            "2017-01-02",
-            "2023-01-02",
-        )
-        self.assertNoHoliday(
-            "1995-01-02",
-            "2006-01-02",
-            "2012-01-02",
-        )
+        self.assertHoliday("2017-01-02", "2023-01-02")
+        self.assertNoHoliday("1995-01-02", "2006-01-02", "2012-01-02")
 
     def test_holy_week(self):
         self.assertHoliday(
@@ -132,8 +123,7 @@ class TestChile(TestCase):
             "2079-06-20",
         )
         self.assertNoHolidayNameInYears(
-            "Día Nacional de los Pueblos Indígenas",
-            range(1915, 2021),
+            "Día Nacional de los Pueblos Indígenas", range(1915, 2021)
         )
 
     def test_saint_peter_and_paul(self):
@@ -180,24 +170,14 @@ class TestChile(TestCase):
 
     def test_national_liberation(self):
         self.assertHoliday(f"{year}-09-11" for year in range(1981, 1999))
-        self.assertNoHoliday(
-            "1980-09-11",
-            "1999-09-11",
-        )
+        self.assertNoHoliday("1980-09-11", "1999-09-11")
         name = "Día de la Liberación Nacional"
         self.assertNoHolidayNameInYears(name, range(1915, 1981))
         self.assertNoHolidayNameInYears(name, range(1999, 2050))
 
     def test_national_unity(self):
-        self.assertHoliday(
-            "1999-09-06",
-            "2000-09-04",
-            "2001-09-03",
-        )
-        self.assertNoHoliday(
-            "1998-09-07",
-            "2002-09-02",
-        )
+        self.assertHoliday("1999-09-06", "2000-09-04", "2001-09-03")
+        self.assertNoHoliday("1998-09-07", "2002-09-02")
 
         self.assertNoHolidayNameInYears(
             "Día de la Unidad Nacional",
@@ -238,8 +218,7 @@ class TestChile(TestCase):
         )
 
         self.assertHolidayNameInYears(
-            "Día del Encuentro de dos Mundos",
-            range(2000, 2050),
+            "Día del Encuentro de dos Mundos", range(2000, 2050)
         )
 
     def test_reformation_day(self):
@@ -319,14 +298,6 @@ class TestChile(TestCase):
             "2020-12-08",
             "2020-12-25",
         )
-        self.assertHoliday(
-            Chile(subdiv="AP"),
-            "2020-06-07",
-        )
-        self.assertHoliday(
-            Chile(subdiv="NB"),
-            "2020-08-20",
-        )
 
     def test_2021(self):
         # from https://feriados.cl/2021.htm
@@ -350,24 +321,15 @@ class TestChile(TestCase):
             "2021-12-08",
             "2021-12-25",
         )
-        self.assertHoliday(
-            Chile(subdiv="AP"),
-            "2021-06-07",
-        )
-        self.assertHoliday(
-            Chile(subdiv="NB"),
-            "2021-08-20",
-        )
 
-    def test_2050(self):
-        self.assertHoliday(
-            "2050-06-20",
-        )
+    def test_provinces(self):
+        self.assertHoliday(Chile(subdiv="AP"), "2020-06-07", "2021-06-07")
+        self.assertNoHoliday(Chile(subdiv="AP"), "2012-06-07")
+        self.assertHoliday(Chile(subdiv="NB"), "2020-08-20", "2021-08-20")
+        self.assertNoHoliday(Chile(subdiv="NB"), "2013-08-20")
 
-    def test_2079(self):
-        self.assertHoliday(
-            "2079-06-20",
-        )
+    def test_summer_solstice(self):
+        self.assertHoliday("2050-06-20", "2079-06-20")
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
