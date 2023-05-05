@@ -13,7 +13,7 @@ import warnings
 from datetime import date
 from datetime import timedelta as td
 
-from holidays import NewZealand, NZ, NZL
+from holidays.countries.new_zealand import NewZealand, NZ, NZL
 from tests.common import TestCase
 
 

@@ -12,7 +12,7 @@
 import warnings
 from datetime import date
 
-from holidays import Italy, IT, ITA
+from holidays.countries.italy import Italy, IT, ITA
 from tests.common import TestCase
 
 
