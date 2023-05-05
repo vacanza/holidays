@@ -29,8 +29,15 @@ class TestChile(TestCase):
 
     def test_new_year(self):
         self.assertHoliday(f"{year}-01-01" for year in range(1915, 2050))
-        self.assertHoliday("2017-01-02", "2023-01-02")
-        self.assertNoHoliday("1995-01-02", "2006-01-02", "2012-01-02")
+        self.assertHoliday(
+            "2017-01-02",
+            "2023-01-02",
+        )
+        self.assertNoHoliday(
+            "1995-01-02",
+            "2006-01-02",
+            "2012-01-02",
+        )
 
     def test_holy_week(self):
         self.assertHoliday(
@@ -170,14 +177,24 @@ class TestChile(TestCase):
 
     def test_national_liberation(self):
         self.assertHoliday(f"{year}-09-11" for year in range(1981, 1999))
-        self.assertNoHoliday("1980-09-11", "1999-09-11")
+        self.assertNoHoliday(
+            "1980-09-11",
+            "1999-09-11",
+        )
         name = "Día de la Liberación Nacional"
         self.assertNoHolidayNameInYears(name, range(1915, 1981))
         self.assertNoHolidayNameInYears(name, range(1999, 2050))
 
     def test_national_unity(self):
-        self.assertHoliday("1999-09-06", "2000-09-04", "2001-09-03")
-        self.assertNoHoliday("1998-09-07", "2002-09-02")
+        self.assertHoliday(
+            "1999-09-06",
+            "2000-09-04",
+            "2001-09-03",
+        )
+        self.assertNoHoliday(
+            "1998-09-07",
+            "2002-09-02",
+        )
 
         self.assertNoHolidayNameInYears(
             "Día de la Unidad Nacional",
@@ -323,10 +340,20 @@ class TestChile(TestCase):
         )
 
     def test_provinces(self):
-        self.assertHoliday(Chile(subdiv="AP"), "2020-06-07", "2021-06-07")
-        self.assertNoHoliday(Chile(subdiv="AP"), "2012-06-07")
-        self.assertHoliday(Chile(subdiv="NB"), "2020-08-20", "2021-08-20")
-        self.assertNoHoliday(Chile(subdiv="NB"), "2013-08-20")
+        ap_holidays = Chile(subdiv="AP")
+        nb_holidays = Chile(subdiv="NB")
+        self.assertHoliday(
+            ap_holidays,
+            "2020-06-07",
+            "2021-06-07",
+        )
+        self.assertNoHoliday(ap_holidays, "2012-06-07")
+        self.assertHoliday(
+            nb_holidays,
+            "2020-08-20",
+            "2021-08-20",
+        )
+        self.assertNoHoliday(nb_holidays, "2013-08-20")
 
     def test_summer_solstice(self):
         self.assertHoliday("2050-06-20", "2079-06-20")
