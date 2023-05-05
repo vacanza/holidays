@@ -12,14 +12,13 @@
 from datetime import date
 from datetime import timedelta as td
 
-from dateutil.easter import easter
-
 from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
-from holidays.constants import JAN, MAR, MAY, JUL, AUG, SEP, NOV, DEC, FRI, SAT
+from holidays.constants import MAR, JUL, AUG, SEP, FRI, SAT
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Andorra(HolidayBase):
+class Andorra(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_Andorra
@@ -37,90 +36,108 @@ class Andorra(HolidayBase):
         "08",  # Escaldes-Engordany.
     )
 
+    def __init__(self, *args, **kwargs) -> None:
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year: int) -> None:
         super()._populate(year)
 
         # New Year's Day.
-        self[date(year, JAN, 1)] = "New Year's Day"
+        self._add_new_years_day("New Year's Day")
 
         # Epiphany.
-        self[date(year, JAN, 6)] = "Epiphany"
-
-        easter_sunday = easter(year)
+        self._add_epiphany_day("Epiphany")
 
         # Carnival.
-        self[easter_sunday + td(days=-47)] = "Carnival"
+        self._add_carnival_tuesday("Carnival")
 
         # Constitution Day.
-        self[date(year, MAR, 14)] = "Constitution Day"
+        self._add_holiday("Constitution Day", MAR, 14)
 
         # Good Friday.
-        self[easter_sunday + td(days=-2)] = "Good Friday"
+        self._add_good_friday("Good Friday")
 
         # Easter Sunday.
-        self[easter_sunday + td(days=+1)] = "Easter Monday"
+        self._add_easter_monday("Easter Monday")
 
-        # Labour Day.
-        self[date(year, MAY, 1)] = "Labour Day"
+        # Labor Day.
+        self._add_labor_day("Labor Day")
 
         # Whit Monday.
-        self[easter_sunday + td(days=+50)] = "Whit Monday"
+        self._add_whit_monday("Whit Monday")
 
         # Assumption Day.
-        self[date(year, AUG, 15)] = "Assumption Day"
+        self._add_assumption_of_mary_day("Assumption Day")
 
         # National Day.
-        self[date(year, SEP, 8)] = "National Day"
+        self._add_holiday("National Day", SEP, 8)
 
         # All Saints' Day.
-        self[date(year, NOV, 1)] = "All Saints' Day"
+        self._add_all_saints_day("All Saints' Day")
 
         # Immaculate Conception Day.
-        self[date(year, DEC, 8)] = "Immaculate Conception Day"
+        self._add_immaculate_conception_day("Immaculate Conception Day")
 
         # Christmas Day.
-        self[date(year, DEC, 25)] = "Christmas Day"
+        self._add_christmas_day("Christmas Day")
 
         # Saint Stephen's Day.
-        self[date(year, DEC, 26)] = "Saint Stephen's Day"
+        self._add_christmas_day_two("Saint Stephen's Day")
 
-        # Parish local holidays.
-        third_sat_of_july = _get_nth_weekday_of_month(3, SAT, JUL, year)
-        last_fri_of_july = _get_nth_weekday_from(-1, FRI, date(year, JUL, 29))
-        first_sat_of_august = _get_nth_weekday_of_month(1, SAT, AUG, year)
+    # Canillo.
+    def _add_subdiv_02_holidays(self):
+        name = "Canillo Annual Festival"
+        third_sat_of_july = _get_nth_weekday_of_month(3, SAT, JUL, self._year)
+        self._add_holiday(name, third_sat_of_july)
+        self._add_holiday(name, third_sat_of_july + td(days=+1))
+        self._add_holiday(name, third_sat_of_july + td(days=+2))
 
-        parish_holidays_mapping = {
-            "02": ((third_sat_of_july, 3, "Canillo Annual Festival"),),
-            "03": ((date(year, AUG, 15), 2, "Encamp Annual Festival"),),
-            "04": ((date(year, AUG, 15), 2, "La Massana Annual Festival"),),
-            "05": ((date(year, AUG, 15), 2, "Ordino Annual Festival"),),
-            "06": (
-                (
-                    last_fri_of_july,
-                    4,
-                    "Sant Julià de Lòria Annual Festival",
-                ),
-            ),
-            "07": (
-                (
-                    first_sat_of_august,
-                    3,
-                    "Andorra la Vella Annual Festival",
-                ),
-            ),
-            "08": (
-                (date(year, JUL, 25), 2, "Escaldes–Engordany Annual Festival"),
-            ),
-        }
+    # Encamp.
+    def _add_subdiv_03_holidays(self):
+        name = "Encamp Annual Festival"
+        aug_15 = self._add_holiday(name, AUG, 15)
+        self._add_holiday(name, aug_15 + td(days=+1))
 
-        if self.subdiv:
-            for (
-                holiday_date,
-                num_days,
-                holiday_name,
-            ) in parish_holidays_mapping[self.subdiv]:
-                for delta in range(num_days):
-                    self[holiday_date + td(days=delta)] = holiday_name
+    # La Massana.
+    def _add_subdiv_04_holidays(self):
+        name = "La Massana Annual Festival"
+        aug_15 = self._add_holiday(name, AUG, 15)
+        self._add_holiday(name, aug_15 + td(days=+1))
+
+    # Ordino.
+    def _add_subdiv_05_holidays(self):
+        name = "Ordino Annual Festival"
+        aug_15 = self._add_holiday(name, AUG, 15)
+        self._add_holiday(name, aug_15 + td(days=+1))
+
+    # Sant Julià de Lòria.
+    def _add_subdiv_06_holidays(self):
+        name = "Sant Julià de Lòria Annual Festival"
+        last_fri_of_july = _get_nth_weekday_from(
+            -1, FRI, date(self._year, JUL, 29)
+        )
+        self._add_holiday(name, last_fri_of_july)
+        self._add_holiday(name, last_fri_of_july + td(days=+1))
+        self._add_holiday(name, last_fri_of_july + td(days=+2))
+        self._add_holiday(name, last_fri_of_july + td(days=+3))
+
+    # Andorra la Vella.
+    def _add_subdiv_07_holidays(self):
+        name = "Andorra la Vella Annual Festival"
+        first_sat_of_august = _get_nth_weekday_of_month(
+            1, SAT, AUG, self._year
+        )
+        self._add_holiday(name, first_sat_of_august)
+        self._add_holiday(name, first_sat_of_august + td(days=+1))
+        self._add_holiday(name, first_sat_of_august + td(days=+2))
+
+    # Escaldes-Engordany.
+    def _add_subdiv_08_holidays(self):
+        name = "Escaldes–Engordany Annual Festival"
+        jul_25 = self._add_holiday(name, JUL, 15)
+        self._add_holiday(name, jul_25 + td(days=+1))
 
 
 class AD(Andorra):
