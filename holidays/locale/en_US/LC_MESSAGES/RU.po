@@ -17,46 +17,47 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year Holidays.
-#: holidays/countries/russia.py:30
+#: ./holidays/countries/russia.py:38
 msgid "Новогодние каникулы"
 msgstr "New Year Holidays"
 
 #. Orthodox Christmas Day.
-#: holidays/countries/russia.py:36
+#: ./holidays/countries/russia.py:44
 msgid "Рождество Христово"
 msgstr "Orthodox Christmas Day"
 
+#. Bridge days for 01/Jan & 08/Jan
 #. Defender of the Fatherland Day.
-#: holidays/countries/russia.py:39
+#: ./holidays/countries/russia.py:29 ./holidays/countries/russia.py:47
 msgid "День защитника Отечества"
 msgstr "Fatherland Defender's Day"
 
 #. International Women's Day.
-#: holidays/countries/russia.py:42
+#: ./holidays/countries/russia.py:50
 msgid "Международный женский день"
 msgstr "International Women's Day"
 
 #. Labour Day.
-#: holidays/countries/russia.py:45
+#: ./holidays/countries/russia.py:53
 msgid "Праздник Весны и Труда"
 msgstr "Holiday of Spring and Labor"
 
 #. Victory Day.
-#: holidays/countries/russia.py:48
+#: ./holidays/countries/russia.py:30 ./holidays/countries/russia.py:56
 msgid "День Победы"
 msgstr "Victory Day"
 
 #. Russia's Day.
-#: holidays/countries/russia.py:51
+#: ./holidays/countries/russia.py:59
 msgid "День России"
 msgstr "Russia's Day"
 
 #. Unity Day.
-#: holidays/countries/russia.py:55
+#: ./holidays/countries/russia.py:63
 msgid "День народного единства"
 msgstr "Unity Day"
 
 #. October Revolution Day.
-#: holidays/countries/russia.py:58
+#: ./holidays/countries/russia.py:66
 msgid "День Октябрьской революции"
 msgstr "October Revolution Day"
