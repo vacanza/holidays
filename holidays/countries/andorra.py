@@ -135,8 +135,8 @@ class Andorra(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     # Escaldes-Engordany.
     def _add_subdiv_08_holidays(self):
-        name = "Escaldes–Engordany Annual Festival"
-        jul_25 = self._add_holiday(name, JUL, 15)
+        name = "Escaldes-Engordany Annual Festival"
+        jul_25 = self._add_holiday(name, JUL, 25)
         self._add_holiday(name, jul_25 + td(days=+1))
 
 

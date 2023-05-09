@@ -67,6 +67,9 @@ class TestAndorra(TestCase):
             Andorra(subdiv="07"), "2022-08-06", "2022-08-07", "2022-08-08"
         )
 
+        # AD-08, Escaldes-Engordany.
+        self.assertHoliday(Andorra(subdiv="08"), "2022-07-25", "2022-07-26")
+
     def test_2023(self):
         self.assertHolidays(
             ("2023-01-01", "New Year's Day"),
@@ -112,3 +115,6 @@ class TestAndorra(TestCase):
         self.assertHoliday(
             Andorra(subdiv="07"), "2023-08-05", "2023-08-06", "2023-08-07"
         )
+
+        # AD-08, Escaldes-Engordany.
+        self.assertHoliday(Andorra(subdiv="08"), "2023-07-25", "2023-07-26")
