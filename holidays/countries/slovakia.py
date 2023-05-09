@@ -52,7 +52,7 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Easter Monday.
         self._add_easter_monday("Veľkonočný pondelok")
 
-        # Labour Day.
+        # Labor Day.
         self._add_labor_day("Sviatok práce")
 
         # Day of Victory over Fascism.
