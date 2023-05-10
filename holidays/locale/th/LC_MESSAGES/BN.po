@@ -1,0 +1,81 @@
+# Brunei holidays Thai translation.
+# Authors: PPsyrius <ppsyrius@ppsyrius.dev>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.25\n"
+"POT-Creation-Date: 2023-03-02 00:37+0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Python Holidays Translation Team\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: ./holidays/countries/brunei.py:61
+msgid "Jubli Emas Sultan Hassanal Bolkiah"
+msgstr "พระราชพิธีกาญจนาภิเษกสมเด็จพระราชาธิบดีสุลต่านฮัสซานัล โบลเกียห์"
+
+#: ./holidays/countries/brunei.py:56
+msgid "anggaran"
+msgstr "โดยประมาณ"
+
+#: ./holidays/countries/brunei.py:88 ./holidays/countries/brunei.py:152
+#, c-format
+msgid "%s - Diperhatikan"
+msgstr "ชดเชย%s"
+
+#: ./holidays/countries/brunei.py:97
+msgid "Awal Tahun Masihi"
+msgstr "วันขึ้นปีใหม่"
+
+#: ./holidays/countries/brunei.py:103
+msgid "Tahun Baru Cina"
+msgstr "วันตรุษจีน"
+
+#: ./holidays/countries/brunei.py:109
+msgid "Israk dan Mikraj"
+msgstr "วันเมี๊ยะราจ"
+
+#: ./holidays/countries/brunei.py:116
+msgid "Hari Kebangsaan"
+msgstr "วันชาติบรูไน"
+
+#: ./holidays/countries/brunei.py:123
+msgid "Hari Pertama Berpuasa"
+msgstr "วันแรกการถือศีลอด"
+
+#: ./holidays/countries/brunei.py:130
+msgid "Hari Nuzul Al-Quran"
+msgstr "วันนูซุลอัลกุรอาน"
+
+#: ./holidays/countries/brunei.py:138
+msgid "Hari Raya Aidil Fitri"
+msgstr "วันอีฎิ้ลฟิตริ"
+
+#: ./holidays/countries/brunei.py:174
+msgid "Hari Angkatan Bersenjata Diraja Brunei"
+msgstr "วันกองทัพบรูไน"
+
+#: ./holidays/countries/brunei.py:182
+msgid "Hari Raya Aidil Adha"
+msgstr "วันอีดิ้ลอัฎฮา"
+
+#: ./holidays/countries/brunei.py:191
+msgid "Hari Keputeraan KDYMM Sultan Brunei"
+msgstr "วันเฉลิมพระชนมพรรษาสมเด็จพระราชาธิบดีสุลต่านฮัสซานัล โบลเกียห์"
+
+#: ./holidays/countries/brunei.py:199
+msgid "Awal Tahun Hijrah"
+msgstr "วันขึ้นปีใหม่อิสลาม"
+
+#: ./holidays/countries/brunei.py:205
+msgid "Maulidur Rasul"
+msgstr "วันเมาลิดนบี"
+
+#: ./holidays/countries/brunei.py:211
+msgid "Hari Natal"
+msgstr "วันคริสต์มาส"
