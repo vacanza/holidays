@@ -27,6 +27,7 @@ from .bolivia import Bolivia, BO, BOL
 from .bosnia_and_herzegovina import BosniaAndHerzegovina, BA, BIH
 from .botswana import Botswana, BW, BWA
 from .brazil import Brazil, BR, BRA
+from .brunei import Brunei, BN, BRN
 from .bulgaria import Bulgaria, BG, BLG
 from .burundi import Burundi, BI, BDI
 from .canada import Canada, CA, CAN
