@@ -49,31 +49,16 @@ class Algeria(HolidayBase, IslamicHolidays, InternationalHolidays):
 
         # As of April 30, 2023. Algeria has 3 days of Eid holidays
         # (https://www.horizons.dz/english/archives/amp/12021)
-        if year < 2023:
-            # Eid al-Fitr - Feast Festive
-            self._add_eid_al_fitr_day("Eid al-Fitr")
-            self._add_eid_al_fitr_day_two("Eid al-Fitr Holiday")
-            # Eid al-Adha - Scarfice Festive
-            self._add_eid_al_adha_day("Eid al-Adha")
-            self._add_eid_al_adha_day_two("Eid al-Adha Holiday")
-
-        elif year == 2023:
-            # Eid al-Fitr - Feast Festive
-            self._add_eid_al_fitr_day("Eid al-Fitr")
-            self._add_eid_al_fitr_day_two("Eid al-Fitr Holiday")
-            # Eid al-Adha - Scarfice Festive
-            self._add_eid_al_adha_day("Eid al-Adha")
-            self._add_eid_al_adha_day_two("Eid al-Adha Holiday")
-            self._add_eid_al_adha_day_three("Eid al-Adha Holiday")
-
-        elif year > 2023:
-            # Eid al-Fitr - Feast Festive
-            self._add_eid_al_fitr_day("Eid al-Fitr")
-            self._add_eid_al_fitr_day_two("Eid al-Fitr Holiday")
+        # Eid al-Fitr - Feast Festive
+        self._add_eid_al_fitr_day("Eid al-Fitr")
+        self._add_eid_al_fitr_day_two("Eid al-Fitr Holiday")
+        if year >= 2024:
             self._add_eid_al_fitr_day_three("Eid al-Fitr Holiday")
-            # Eid al-Adha - Scarfice Festive
-            self._add_eid_al_adha_day("Eid al-Adha")
-            self._add_eid_al_adha_day_two("Eid al-Adha Holiday")
+
+        # Eid al-Adha - Scarfice Festive
+        self._add_eid_al_adha_day("Eid al-Adha")
+        self._add_eid_al_adha_day_two("Eid al-Adha Holiday")
+        if year >= 2023:
             self._add_eid_al_adha_day_three("Eid al-Adha Holiday")
 
 
