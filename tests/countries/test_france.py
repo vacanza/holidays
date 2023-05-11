@@ -9,6 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+import warnings
+
 from holidays.countries.france import France, FR, FRA
 from tests.common import TestCase
 
@@ -17,6 +19,10 @@ class TestFrance(TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(France)
+
+    def setUp(self):
+        super().setUp()
+        warnings.simplefilter("ignore", category=DeprecationWarning)
 
     def test_country_aliases(self):
         self.assertCountryAliases(France, FR, FRA)
@@ -100,64 +106,106 @@ class TestFrance(TestCase):
         self.assertHoliday("2004-05-31", "2008-05-12")
 
     def test_alsace_moselle(self):
-        self.assertHoliday(
-            France(subdiv="Alsace-Moselle"), "2017-04-14", "2017-12-26"
-        )
+        for subdiv in ("GES", "Alsace-Moselle"):
+            self.assertHoliday(
+                France(subdiv=subdiv),
+                "2017-04-14",
+                "2017-12-26",
+            )
 
     def test_mayotte(self):
-        self.assertHoliday(France(subdiv="Mayotte"), "2017-04-27")
+        for subdiv in ("YT", "Mayotte"):
+            self.assertHoliday(
+                France(subdiv=subdiv),
+                "2017-04-27",
+            )
 
     def test_wallis_et_futuna(self):
-        self.assertHoliday(
-            France(subdiv="Wallis-et-Futuna"), "2017-04-28", "2017-07-29"
-        )
+        for subdiv in ("WF", "Wallis-et-Futuna"):
+            self.assertHoliday(
+                France(subdiv=subdiv),
+                "2017-04-28",
+                "2017-07-29",
+            )
 
     def test_martinique(self):
-        self.assertHoliday(
-            France(subdiv="Martinique"),
-            "2017-04-14",
-            "2017-05-22",
-            "2017-07-21",
-        )
+        for subdiv in ("MQ", "Martinique"):
+            self.assertHoliday(
+                France(subdiv=subdiv),
+                "2017-04-14",
+                "2017-05-22",
+                "2017-07-21",
+            )
 
     def test_guadeloupe(self):
-        self.assertHoliday(
-            France(subdiv="Guadeloupe"),
-            "2017-04-14",
-            "2017-05-27",
-            "2017-07-21",
-        )
+        for subdiv in ("GP", "Guadeloupe"):
+            self.assertHoliday(
+                France(subdiv=subdiv),
+                "2017-04-14",
+                "2017-05-27",
+                "2017-07-21",
+            )
 
     def test_saint_martin(self):
-        self.assertHoliday(France(subdiv="Saint-Martin"), "2018-05-28")
-        self.assertNoHoliday(France(subdiv="Saint-Martin"), "2017-05-28")
-        self.assertNoHolidayName(
-            "Abolition de l'esclavage",
-            France(subdiv="Saint-Martin", years=2017),
-        )
+        for subdiv in ("MF", "Saint-Martin"):
+            self.assertHoliday(
+                France(subdiv=subdiv),
+                "2018-05-28",
+            )
+            self.assertNoHoliday(
+                France(subdiv=subdiv),
+                "2017-05-28",
+            )
+            self.assertNoHolidayName(
+                "Abolition de l'esclavage",
+                France(subdiv=subdiv, years=2017),
+            )
 
     def test_guyane(self):
-        self.assertHoliday(France(subdiv="Guyane"), "2017-06-10")
+        for subdiv in ("GY", "Guyane"):
+            self.assertHoliday(
+                France(subdiv=subdiv),
+                "2017-06-10",
+            )
 
     def test_polynesie_francaise(self):
-        self.assertHoliday(
-            France(subdiv="Polynésie Française"),
-            "2017-03-05",
-            "2017-04-14",
-            "2017-06-29",
-        )
+        for subdiv in ("PF", "Polynésie Française"):
+            self.assertHoliday(
+                France(subdiv=subdiv),
+                "2017-03-05",
+                "2017-04-14",
+                "2017-06-29",
+            )
 
     def test_nouvelle_caledonie(self):
-        self.assertHoliday(France(subdiv="Nouvelle-Calédonie"), "2017-09-24")
+        for subdiv in ("NC", "Nouvelle-Calédonie"):
+            self.assertHoliday(
+                France(subdiv=subdiv),
+                "2017-09-24",
+            )
 
     def test_saint_barthelemy(self):
-        self.assertHoliday(France(subdiv="Saint-Barthélémy"), "2017-10-09")
+        for subdiv in ("BL", "Saint-Barthélémy"):
+            self.assertHoliday(France(subdiv=subdiv), "2017-10-09")
 
     def test_la_reunion(self):
-        self.assertHoliday(France(subdiv="La Réunion"), "2017-12-20")
-        self.assertNoHoliday(France(subdiv="La Réunion"), "1980-12-20")
-        self.assertNoHolidayName(
-            "Abolition de l'esclavage", France(subdiv="La Réunion", years=1980)
+        for subdiv in ("RE", "La Réunion"):
+            self.assertHoliday(
+                France(subdiv=subdiv),
+                "2017-12-20",
+            )
+            self.assertNoHoliday(
+                France(subdiv=subdiv),
+                "1980-12-20",
+            )
+            self.assertNoHolidayName(
+                "Abolition de l'esclavage",
+                France(subdiv=subdiv, years=1980),
+            )
+
+    def test_subdiv_deprecation(self):
+        self.assertDeprecatedSubdivisions(
+            "This subdivision is deprecated and will be removed"
         )
 
     def test_l10n_default(self):

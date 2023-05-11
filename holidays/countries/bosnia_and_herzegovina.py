@@ -58,15 +58,13 @@ class BosniaAndHerzegovina(
         if self.observed and self._is_sunday(may_1):
             self._add_holiday("Treći dan Dana rada", may_1 + td(days=+2))
 
-        self._set_calendar(GREGORIAN_CALENDAR)
-
         # Catholic Easter Monday
-        self._add_easter_monday("Uskrsni ponedjeljak (Katolički)")
+        self._add_easter_monday(
+            "Uskrsni ponedjeljak (Katolički)", GREGORIAN_CALENDAR
+        )
 
         # Catholic Christmas
-        self._add_christmas_day("Božić (Katolički)")
-
-        self._set_calendar(JULIAN_CALENDAR)
+        self._add_christmas_day("Božić (Katolički)", GREGORIAN_CALENDAR)
 
         # Eid al-Fitr
         self._add_eid_al_fitr_day("Ramazanski Bajram")
@@ -110,18 +108,14 @@ class BosniaAndHerzegovina(
         # Statehood Day
         self._add_holiday("Dan državnosti", NOV, 25)
 
-        self._set_calendar(GREGORIAN_CALENDAR)
-
         # Catholic Good Friday
-        self._add_good_friday("Veliki Petak (Katolički)")
+        self._add_good_friday("Veliki Petak (Katolički)", GREGORIAN_CALENDAR)
 
         # Catholic Easter
-        self._add_easter_sunday("Uskrs (Katolički)")
+        self._add_easter_sunday("Uskrs (Katolički)", GREGORIAN_CALENDAR)
 
         # Catholic Christmas Eve
-        self._add_christmas_eve("Badnji dan (Katolički)")
-
-        self._set_calendar(JULIAN_CALENDAR)
+        self._add_christmas_eve("Badnji dan (Katolički)", GREGORIAN_CALENDAR)
 
         # Eid al-Fitr, day 2
         self._add_eid_al_fitr_day_two("Drugi Dan Ramazanski Bajram")
@@ -155,18 +149,14 @@ class BosniaAndHerzegovina(
             21,
         )
 
-        self._set_calendar(GREGORIAN_CALENDAR)
-
         # Catholic Good Friday
-        self._add_good_friday("Veliki Petak (Katolički)")
+        self._add_good_friday("Veliki Petak (Katolički)", GREGORIAN_CALENDAR)
 
         # Catholic Easter
-        self._add_easter_sunday("Uskrs (Katolički)")
+        self._add_easter_sunday("Uskrs (Katolički)", GREGORIAN_CALENDAR)
 
         # Catholic Christmas Eve
-        self._add_christmas_eve("Badnji dan (Katolički)")
-
-        self._set_calendar(JULIAN_CALENDAR)
+        self._add_christmas_eve("Badnji dan (Katolički)", GREGORIAN_CALENDAR)
 
         # Eid al-Fitr, day 2
         self._add_eid_al_fitr_day_two("Drugi Dan Ramazanski Bajram")

@@ -20,7 +20,7 @@ from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
 
 import holidays
-from holidays.constants import JAN, FEB, MON, TUE, SAT, SUN
+from holidays.constants import JAN, FEB, OCT, MON, TUE, SAT, SUN
 
 
 class TestBasics(unittest.TestCase):
@@ -406,6 +406,8 @@ class TestBasics(unittest.TestCase):
             self.assertRaises(TypeError, lambda: us._add_holiday(*args))
 
     def test_get_list(self):
+        warnings.simplefilter("ignore", category=DeprecationWarning)
+
         westland = holidays.NZ(subdiv="WTL")
         chathams = holidays.NZ(subdiv="CIT")
         wild = westland + chathams
@@ -449,10 +451,10 @@ class TestBasics(unittest.TestCase):
         self.assertRaises(TypeError, lambda: 1 + holidays.US())
 
     def test_inheritance(self):
-        class NoColumbusHolidays(holidays.US):
+        class NoColumbusHolidays(holidays.countries.US):
             def _populate(self, year):
-                holidays.US._populate(self, year)
-                self.pop(date(year, 10, 1) + rd(weekday=MO(+2)))
+                super()._populate(year)
+                self.pop(date(year, OCT, 1) + rd(weekday=MO(+2)))
 
         hdays = NoColumbusHolidays()
         self.assertIn(date(2014, 10, 13), self.holidays)
@@ -462,9 +464,9 @@ class TestBasics(unittest.TestCase):
         self.assertNotIn(date(2020, 10, 12), hdays)
         self.assertIn(date(2020, 1, 1), hdays)
 
-        class NinjaTurtlesHolidays(holidays.US):
+        class NinjaTurtlesHolidays(holidays.countries.US):
             def _populate(self, year):
-                holidays.US._populate(self, year)
+                super()._populate(year)
                 self[date(year, 7, 13)] = "Ninja Turtle's Day"
 
         hdays = NinjaTurtlesHolidays()

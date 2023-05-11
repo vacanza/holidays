@@ -10,7 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import timedelta as td
-from typing import Dict, Iterable, Optional, Tuple, Union
+from typing import Dict, Tuple
 
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC
@@ -41,16 +41,7 @@ class Singapore(
         2020: ((JUL, 10, "Polling Day"),),
     }
 
-    def __init__(
-        self,
-        years: Optional[Union[int, Iterable[int]]] = None,
-        expand: bool = True,
-        observed: bool = True,
-        subdiv: Optional[str] = None,
-        prov: Optional[str] = None,
-        state: Optional[str] = None,
-        language: Optional[str] = None,
-    ) -> None:
+    def __init__(self, *args, **kwargs) -> None:
         """
         A subclass of :py:class:`HolidayBase` representing public holidays in
         Singapore.
@@ -88,9 +79,7 @@ class Singapore(
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self)
-        super().__init__(
-            years, expand, observed, subdiv, prov, state, language
-        )
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year) -> None:
         super()._populate(year)
@@ -326,34 +315,8 @@ class Singapore(
 
 
 class SG(Singapore):
-    # __init__ required for IDE typing and inheritance of docstring.
-    def __init__(
-        self,
-        years: Optional[Union[int, Iterable[int]]] = None,
-        expand: bool = True,
-        observed: bool = True,
-        subdiv: Optional[str] = None,
-        prov: Optional[str] = None,
-        state: Optional[str] = None,
-        language: Optional[str] = None,
-    ) -> None:
-        super().__init__(
-            years, expand, observed, subdiv, prov, state, language
-        )
+    pass
 
 
 class SGP(Singapore):
-    # __init__ required for IDE typing and inheritance of docstring.
-    def __init__(
-        self,
-        years: Optional[Union[int, Iterable[int]]] = None,
-        expand: bool = True,
-        observed: bool = True,
-        subdiv: Optional[str] = None,
-        prov: Optional[str] = None,
-        state: Optional[str] = None,
-        language: Optional[str] = None,
-    ) -> None:
-        super().__init__(
-            years, expand, observed, subdiv, prov, state, language
-        )
+    pass

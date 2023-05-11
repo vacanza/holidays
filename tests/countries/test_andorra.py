@@ -29,7 +29,7 @@ class TestAndorra(TestCase):
             ("2022-03-14", "Constitution Day"),
             ("2022-04-15", "Good Friday"),
             ("2022-04-18", "Easter Monday"),
-            ("2022-05-01", "Labour Day"),
+            ("2022-05-01", "Labor Day"),
             ("2022-06-06", "Whit Monday"),
             ("2022-08-15", "Assumption Day"),
             ("2022-09-08", "National Day"),
@@ -67,6 +67,9 @@ class TestAndorra(TestCase):
             Andorra(subdiv="07"), "2022-08-06", "2022-08-07", "2022-08-08"
         )
 
+        # AD-08, Escaldes-Engordany.
+        self.assertHoliday(Andorra(subdiv="08"), "2022-07-25", "2022-07-26")
+
     def test_2023(self):
         self.assertHolidays(
             ("2023-01-01", "New Year's Day"),
@@ -75,7 +78,7 @@ class TestAndorra(TestCase):
             ("2023-03-14", "Constitution Day"),
             ("2023-04-07", "Good Friday"),
             ("2023-04-10", "Easter Monday"),
-            ("2023-05-01", "Labour Day"),
+            ("2023-05-01", "Labor Day"),
             ("2023-05-29", "Whit Monday"),
             ("2023-08-15", "Assumption Day"),
             ("2023-09-08", "National Day"),
@@ -112,3 +115,6 @@ class TestAndorra(TestCase):
         self.assertHoliday(
             Andorra(subdiv="07"), "2023-08-05", "2023-08-06", "2023-08-07"
         )
+
+        # AD-08, Escaldes-Engordany.
+        self.assertHoliday(Andorra(subdiv="08"), "2023-07-25", "2023-07-26")
