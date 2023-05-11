@@ -37,22 +37,25 @@ class TestBrunei(TestCase):
             ("2022-01-01", "Awal Tahun Masihi"),
             ("2022-02-01", "Tahun Baru Cina"),
             ("2022-02-23", "Hari Kebangsaan"),
-            ("2022-02-28", "Israk dan Mikraj"),
-            ("2022-04-03", "Hari Pertama Berpuasa"),
-            ("2022-04-04", "Hari Pertama Berpuasa - Diperhatikan"),
-            ("2022-04-19", "Hari Nuzul Al-Quran"),
-            ("2022-05-02", "Hari Raya Aidil Fitri"),
-            ("2022-05-03", "Hari Raya Aidil Fitri"),
-            ("2022-05-04", "Hari Raya Aidil Fitri"),
+            ("2022-02-28", "Israk dan Mikraj* (*anggaran)"),
+            ("2022-04-03", "Hari Pertama Berpuasa* (*anggaran)"),
+            (
+                "2022-04-04",
+                "Hari Pertama Berpuasa* (*anggaran) - Diperhatikan",
+            ),
+            ("2022-04-19", "Hari Nuzul Al-Quran* (*anggaran)"),
+            ("2022-05-02", "Hari Raya Aidil Fitri* (*anggaran)"),
+            ("2022-05-03", "Hari Raya Aidil Fitri* (*anggaran)"),
+            ("2022-05-04", "Hari Raya Aidil Fitri* (*anggaran)"),
             ("2022-05-31", "Hari Angkatan Bersenjata Diraja Brunei"),
-            ("2022-07-09", "Hari Raya Aidil Adha"),
+            ("2022-07-09", "Hari Raya Aidil Adha* (*anggaran)"),
             ("2022-07-15", "Hari Keputeraan KDYMM Sultan Brunei"),
             (
                 "2022-07-16",
                 "Hari Keputeraan KDYMM Sultan Brunei - Diperhatikan",
             ),
-            ("2022-07-30", "Awal Tahun Hijrah"),
-            ("2022-10-08", "Maulidur Rasul"),
+            ("2022-07-30", "Awal Tahun Hijrah* (*anggaran)"),
+            ("2022-10-08", "Maulidur Rasul* (*anggaran)"),
             ("2022-12-25", "Hari Natal"),
         )
 
@@ -63,24 +66,26 @@ class TestBrunei(TestCase):
             ("2023-01-02", "Awal Tahun Masihi - Diperhatikan"),
             ("2023-01-22", "Tahun Baru Cina"),
             ("2023-01-23", "Tahun Baru Cina - Diperhatikan"),
-            ("2023-02-18", "Israk dan Mikraj"),
+            ("2023-02-18", "Israk dan Mikraj* (*anggaran)"),
             ("2023-02-23", "Hari Kebangsaan"),
-            ("2023-03-23", "Hari Pertama Berpuasa"),
-            ("2023-04-08", "Hari Nuzul Al-Quran"),
-            ("2023-04-22", "Hari Raya Aidil Fitri - Diperhatikan"),
-            ("2023-04-23", "Hari Raya Aidil Fitri"),
-            ("2023-04-24", "Hari Raya Aidil Fitri"),
-            ("2023-04-25", "Hari Raya Aidil Fitri"),
+            ("2023-03-23", "Hari Pertama Berpuasa* (*anggaran)"),
+            ("2023-04-08", "Hari Nuzul Al-Quran* (*anggaran)"),
+            (
+                "2023-04-22",
+                "Hari Raya Aidil Fitri* (*anggaran) - Diperhatikan",
+            ),
+            ("2023-04-23", "Hari Raya Aidil Fitri* (*anggaran)"),
+            ("2023-04-24", "Hari Raya Aidil Fitri* (*anggaran)"),
+            ("2023-04-25", "Hari Raya Aidil Fitri* (*anggaran)"),
             ("2023-05-31", "Hari Angkatan Bersenjata Diraja Brunei"),
-            ("2023-06-29", "Hari Raya Aidil Adha"),
+            ("2023-06-29", "Hari Raya Aidil Adha* (*anggaran)"),
             ("2023-07-15", "Hari Keputeraan KDYMM Sultan Brunei"),
-            ("2023-07-19", "Awal Tahun Hijrah"),
-            ("2023-09-28", "Maulidur Rasul"),
+            ("2023-07-19", "Awal Tahun Hijrah* (*anggaran)"),
+            ("2023-09-28", "Maulidur Rasul* (*anggaran)"),
             ("2023-12-25", "Hari Natal"),
         )
 
     def test_national_day(self):
-        name = "Hari Kebangsaan"
         self.assertHoliday(f"{year}-02-23" for year in range(1984, 2077))
 
         self.assertNoNonObservedHoliday(
@@ -93,7 +98,6 @@ class TestBrunei(TestCase):
         )
 
     def test_armed_forces_day(self):
-        name = "Hari Angkatan Bersenjata Diraja Brunei"
         self.assertHoliday(f"{year}-05-31" for year in range(1984, 2077))
 
         self.assertNoNonObservedHoliday(
@@ -106,7 +110,6 @@ class TestBrunei(TestCase):
         )
 
     def test_sultan_hassanal_bolkiah_birthday(self):
-        name = "Hari Keputeraan KDYMM Sultan Brunei"
         self.assertHoliday(f"{year}-07-15" for year in range(1984, 2077))
 
         self.assertNoNonObservedHoliday(
