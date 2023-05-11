@@ -9,21 +9,20 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars import _CustomCalendar, _IslamicLunar
-from holidays.calendars import _OrientalLuniSolar
+from holidays.calendars import _AsianLunisolar, _CustomCalendar, _IslamicLunar
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_groups import IslamicHolidays, OrientalCalendarHolidays
+from holidays.holiday_groups import AsianCalendarHolidays, ChristianHolidays
+from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
 
 
 class Indonesia(
     HolidayBase,
+    AsianCalendarHolidays,
     ChristianHolidays,
     InternationalHolidays,
     IslamicHolidays,
-    OrientalCalendarHolidays,
 ):
     """
     References:
@@ -42,12 +41,12 @@ class Indonesia(
     show_estimated = True
 
     def __init__(self, *args, **kwargs):
+        AsianCalendarHolidays.__init__(
+            self, calendar=IndonesiaLunisolarCalendar()
+        )
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, calendar=IndonesiaIslamicCalendar())
-        OrientalCalendarHolidays.__init__(
-            self, calendar=IndonesiaLuniSolarCalendar()
-        )
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -259,7 +258,7 @@ class IndonesiaIslamicCalendar(_CustomCalendar, _IslamicLunar):
     }
 
 
-class IndonesiaLuniSolarCalendar(_CustomCalendar, _OrientalLuniSolar):
+class IndonesiaLunisolarCalendar(_CustomCalendar, _AsianLunisolar):
     LUNAR_NEW_YEAR_DATES = {
         2003: (FEB, 1),
         2004: (JAN, 22),

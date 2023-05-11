@@ -16,15 +16,15 @@ from typing import Optional
 from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import APR, JUN, JUL, AUG, SEP, OCT, MON
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_groups import OrientalCalendarHolidays
+from holidays.holiday_groups import AsianCalendarHolidays, ChristianHolidays
+from holidays.holiday_groups import InternationalHolidays
 
 
 class HongKong(
     HolidayBase,
+    AsianCalendarHolidays,
     ChristianHolidays,
     InternationalHolidays,
-    OrientalCalendarHolidays,
 ):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Hong_Kong
@@ -52,9 +52,9 @@ class HongKong(
     }
 
     def __init__(self, *args, **kwargs):
+        AsianCalendarHolidays.__init__(self)
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        OrientalCalendarHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
     def _add_holiday(self, *args) -> Optional[date]:

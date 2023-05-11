@@ -13,11 +13,11 @@ from datetime import timedelta as td
 
 from holidays.constants import APR, SEP
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import AsianCalendarHolidays
 from holidays.holiday_groups import InternationalHolidays
-from holidays.holiday_groups import OrientalCalendarHolidays
 
 
-class Vietnam(HolidayBase, InternationalHolidays, OrientalCalendarHolidays):
+class Vietnam(HolidayBase, AsianCalendarHolidays, InternationalHolidays):
     """
     https://publicholidays.vn/
     http://vbpl.vn/TW/Pages/vbpqen-toanvan.aspx?ItemID=11013 Article.115
@@ -27,8 +27,8 @@ class Vietnam(HolidayBase, InternationalHolidays, OrientalCalendarHolidays):
     country = "VN"
 
     def __init__(self, *args, **kwargs):
+        AsianCalendarHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        OrientalCalendarHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):

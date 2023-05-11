@@ -11,11 +11,11 @@
 
 from holidays.constants import FEB, APR, OCT
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import AsianCalendarHolidays
 from holidays.holiday_groups import InternationalHolidays
-from holidays.holiday_groups import OrientalCalendarHolidays
 
 
-class Taiwan(HolidayBase, InternationalHolidays, OrientalCalendarHolidays):
+class Taiwan(HolidayBase, AsianCalendarHolidays, InternationalHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Taiwan
     """
@@ -23,8 +23,8 @@ class Taiwan(HolidayBase, InternationalHolidays, OrientalCalendarHolidays):
     country = "TW"
 
     def __init__(self, *args, **kwargs):
+        AsianCalendarHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        OrientalCalendarHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):

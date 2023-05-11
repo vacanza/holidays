@@ -15,7 +15,7 @@ from typing import Iterable, Set, Tuple, Optional
 
 from dateutil.easter import EASTER_ORTHODOX, EASTER_WESTERN, easter
 
-from holidays.calendars import _IslamicLunar, _OrientalLuniSolar
+from holidays.calendars import _AsianLunisolar, _IslamicLunar
 from holidays.calendars import GREGORIAN_CALENDAR, JULIAN_CALENDAR
 from holidays.constants import JAN, FEB, MAR, MAY, JUN, AUG, SEP, NOV, DEC
 
@@ -468,12 +468,12 @@ class ChristianHolidays:
         )
 
 
-class OrientalCalendarHolidays:
+class AsianCalendarHolidays:
     """
-    Oriental lunisolar calendar holidays.
+    Asian lunisolar calendar holidays.
     """
 
-    def __init__(self, calendar=_OrientalLuniSolar()) -> None:
+    def __init__(self, calendar=_AsianLunisolar()) -> None:
         self._oriental_calendar = calendar
 
     @property

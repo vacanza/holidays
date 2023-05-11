@@ -12,21 +12,21 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars import _CustomCalendar, _IslamicLunar
-from holidays.calendars import _OrientalLuniSolar, _get_nth_weekday_of_month
+from holidays.calendars import _AsianLunisolar, _CustomCalendar, _IslamicLunar
+from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC, MON, FRI, SAT, SUN
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_groups import IslamicHolidays, OrientalCalendarHolidays
+from holidays.holiday_groups import AsianCalendarHolidays, ChristianHolidays
+from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
 
 
 class Malaysia(
     HolidayBase,
+    AsianCalendarHolidays,
     ChristianHolidays,
     InternationalHolidays,
     IslamicHolidays,
-    OrientalCalendarHolidays,
 ):
     country = "MY"
     special_holidays = {
@@ -97,12 +97,12 @@ class Malaysia(
 
         See parameters and usage in :py:class:`HolidayBase`.
         """
+        AsianCalendarHolidays.__init__(
+            self, calendar=MalaysiaLunisolarCalendar()
+        )
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, calendar=MalaysiaIslamicCalendar())
-        OrientalCalendarHolidays.__init__(
-            self, calendar=MalaysiaLuniSolarCalendar()
-        )
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -651,7 +651,7 @@ class MalaysiaIslamicCalendar(_CustomCalendar, _IslamicLunar):
     }
 
 
-class MalaysiaLuniSolarCalendar(_CustomCalendar, _OrientalLuniSolar):
+class MalaysiaLunisolarCalendar(_CustomCalendar, _AsianLunisolar):
     DIWALI_DATES = {
         2001: (NOV, 14),
         2002: (NOV, 3),

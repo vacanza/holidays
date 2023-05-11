@@ -13,11 +13,11 @@ from datetime import timedelta as td
 
 from holidays.constants import APR, OCT
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import AsianCalendarHolidays
 from holidays.holiday_groups import InternationalHolidays
-from holidays.holiday_groups import OrientalCalendarHolidays
 
 
-class China(HolidayBase, InternationalHolidays, OrientalCalendarHolidays):
+class China(HolidayBase, AsianCalendarHolidays, InternationalHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_China
     """
@@ -25,8 +25,8 @@ class China(HolidayBase, InternationalHolidays, OrientalCalendarHolidays):
     country = "CN"
 
     def __init__(self, *args, **kwargs):
+        AsianCalendarHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        OrientalCalendarHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):

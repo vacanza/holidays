@@ -14,19 +14,19 @@ import warnings
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars import _CustomCalendar, _OrientalLuniSolar
+from holidays.calendars import _AsianLunisolar, _CustomCalendar
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, SAT, SUN
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_groups import OrientalCalendarHolidays
+from holidays.holiday_groups import AsianCalendarHolidays, ChristianHolidays
+from holidays.holiday_groups import InternationalHolidays
 
 
 class SouthKorea(
     HolidayBase,
+    AsianCalendarHolidays,
     ChristianHolidays,
     InternationalHolidays,
-    OrientalCalendarHolidays,
 ):
     """
     1. https://publicholidays.co.kr/ko/2020-dates/
@@ -50,11 +50,11 @@ class SouthKorea(
     }
 
     def __init__(self, *args, **kwargs):
+        AsianCalendarHolidays.__init__(
+            self, calendar=SouthKoreaLunisolarCalendar()
+        )
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        OrientalCalendarHolidays.__init__(
-            self, calendar=SouthKoreaLuniSolarCalendar()
-        )
         super().__init__(*args, **kwargs)
 
     def _add_with_alt_holiday(
@@ -211,7 +211,7 @@ class KOR(SouthKorea):
     pass
 
 
-class SouthKoreaLuniSolarCalendar(_CustomCalendar, _OrientalLuniSolar):
+class SouthKoreaLunisolarCalendar(_CustomCalendar, _AsianLunisolar):
     BUDDHA_BIRTHDAY_DATES = {
         1931: (MAY, 25),
         1968: (MAY, 5),

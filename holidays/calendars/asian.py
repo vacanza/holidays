@@ -27,7 +27,7 @@ VESAK = "VESAK"
 VESAK_MAY = "VESAK_MAY"
 
 
-class _OrientalLuniSolar:
+class _AsianLunisolar:
     BUDDHA_BIRTHDAY_DATES = {
         1901: (MAY, 25),
         1902: (MAY, 15),
