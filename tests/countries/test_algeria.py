@@ -24,7 +24,7 @@ class TestAlgeria(TestCase):
     def test_new_year_day(self):
         self.assertHoliday("2022-01-01", "2023-01-01")
 
-    def test_independance_day(self):
+    def test_independence_day(self):
         self.assertNoHoliday("1961-07-05")
         self.assertHoliday("1962-07-05")
 

@@ -18,6 +18,7 @@ RegistryDict = Dict[str, Tuple[str, ...]]
 
 COUNTRIES: RegistryDict = {
     "albania": ("Albania", "AL", "ALB"),
+    "algeria": ("Algeria", "DZ", "DZA"),
     "american_samoa": ("AmericanSamoa", "AS", "ASM", "HolidaysAS"),
     "andorra": ("Andorra", "AD", "AND"),
     "angola": ("Angola", "AO", "AGO"),
