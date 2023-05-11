@@ -11,18 +11,23 @@
 
 from datetime import timedelta as td
 
-from holidays.calendars import _AsianLunisolar, _CustomCalendar, _IslamicLunar
+from holidays.calendars import _BuddhistLunisolar, _ChineseLunisolar
+from holidays.calendars import _CustomCalendar, _HinduLunisolar, _IslamicLunar
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import AsianCalendarHolidays, ChristianHolidays
+from holidays.holiday_groups import BuddhistCalendarHolidays
+from holidays.holiday_groups import ChineseCalendarHolidays, ChristianHolidays
+from holidays.holiday_groups import HinduCalendarHolidays
 from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
 
 
 class Singapore(
     HolidayBase,
-    AsianCalendarHolidays,
+    BuddhistCalendarHolidays,
+    ChineseCalendarHolidays,
     ChristianHolidays,
+    HinduCalendarHolidays,
     InternationalHolidays,
     IslamicHolidays,
 ):
@@ -76,10 +81,14 @@ class Singapore(
 
         See parameters and usage in :py:class:`HolidayBase`.
         """
-        AsianCalendarHolidays.__init__(
-            self, calendar=SingaporeLunisolarCalendar()
+        BuddhistCalendarHolidays.__init__(
+            self, calendar=SingaporeBuddhistCalendar()
+        )
+        ChineseCalendarHolidays.__init__(
+            self, calendar=SingaporeChineseCalendar()
         )
         ChristianHolidays.__init__(self)
+        HinduCalendarHolidays.__init__(self, calendar=SingaporeHinduCalendar())
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, calendar=SingaporeIslamicCalendar())
         super().__init__(*args, **kwargs)
@@ -172,6 +181,90 @@ class SGP(Singapore):
     pass
 
 
+class SingaporeBuddhistCalendar(_CustomCalendar, _BuddhistLunisolar):
+    VESAK_DATES = {
+        2001: (MAY, 7),
+        2002: (MAY, 26),
+        2003: (MAY, 15),
+        2004: (JUN, 2),
+        2005: (MAY, 22),
+        2006: (MAY, 12),
+        2007: (MAY, 31),
+        2008: (MAY, 19),
+        2009: (MAY, 9),
+        2010: (MAY, 28),
+        2011: (MAY, 17),
+        2012: (MAY, 5),
+        2013: (MAY, 24),
+        2014: (MAY, 13),
+        2015: (JUN, 1),
+        2016: (MAY, 21),
+        2017: (MAY, 10),
+        2018: (MAY, 29),
+        2019: (MAY, 19),
+        2020: (MAY, 7),
+        2021: (MAY, 26),
+        2022: (MAY, 15),
+        2023: (JUN, 2),
+    }
+
+
+class SingaporeChineseCalendar(_CustomCalendar, _ChineseLunisolar):
+    LUNAR_NEW_YEAR_DATES = {
+        2001: (JAN, 24),
+        2002: (FEB, 12),
+        2003: (FEB, 1),
+        2004: (JAN, 22),
+        2005: (FEB, 9),
+        2006: (JAN, 30),
+        2007: (FEB, 19),
+        2008: (FEB, 7),
+        2009: (JAN, 26),
+        2010: (FEB, 14),
+        2011: (FEB, 3),
+        2012: (JAN, 23),
+        2013: (FEB, 10),
+        2014: (JAN, 31),
+        2015: (FEB, 19),
+        2016: (FEB, 8),
+        2017: (JAN, 28),
+        2018: (FEB, 16),
+        2019: (FEB, 5),
+        2020: (JAN, 25),
+        2021: (FEB, 12),
+        2022: (FEB, 1),
+        2023: (JAN, 22),
+    }
+
+
+class SingaporeHinduCalendar(_CustomCalendar, _HinduLunisolar):
+    DIWALI_DATES = {
+        2001: (NOV, 14),
+        2002: (NOV, 3),
+        2003: (OCT, 23),
+        2004: (NOV, 11),
+        2005: (NOV, 1),
+        2006: (OCT, 21),
+        2007: (NOV, 8),
+        2008: (OCT, 27),
+        2009: (NOV, 15),
+        2010: (NOV, 5),
+        2011: (OCT, 26),
+        2012: (NOV, 13),
+        2013: (NOV, 2),
+        2014: (OCT, 22),
+        2015: (NOV, 10),
+        2016: (OCT, 29),
+        2017: (OCT, 18),
+        2018: (NOV, 6),
+        2019: (OCT, 27),
+        2020: (NOV, 14),
+        2021: (NOV, 4),
+        2022: (OCT, 24),
+        2023: (NOV, 12),
+    }
+
+
 class SingaporeIslamicCalendar(_CustomCalendar, _IslamicLunar):
     EID_AL_ADHA_DATES = {
         2001: ((MAR, 6),),
@@ -223,84 +316,4 @@ class SingaporeIslamicCalendar(_CustomCalendar, _IslamicLunar):
         2021: ((MAY, 13),),
         2022: ((MAY, 3),),
         2023: ((APR, 22),),
-    }
-
-
-class SingaporeLunisolarCalendar(_CustomCalendar, _AsianLunisolar):
-    DIWALI_DATES = {
-        2001: (NOV, 14),
-        2002: (NOV, 3),
-        2003: (OCT, 23),
-        2004: (NOV, 11),
-        2005: (NOV, 1),
-        2006: (OCT, 21),
-        2007: (NOV, 8),
-        2008: (OCT, 27),
-        2009: (NOV, 15),
-        2010: (NOV, 5),
-        2011: (OCT, 26),
-        2012: (NOV, 13),
-        2013: (NOV, 2),
-        2014: (OCT, 22),
-        2015: (NOV, 10),
-        2016: (OCT, 29),
-        2017: (OCT, 18),
-        2018: (NOV, 6),
-        2019: (OCT, 27),
-        2020: (NOV, 14),
-        2021: (NOV, 4),
-        2022: (OCT, 24),
-        2023: (NOV, 12),
-    }
-
-    LUNAR_NEW_YEAR_DATES = {
-        2001: (JAN, 24),
-        2002: (FEB, 12),
-        2003: (FEB, 1),
-        2004: (JAN, 22),
-        2005: (FEB, 9),
-        2006: (JAN, 30),
-        2007: (FEB, 19),
-        2008: (FEB, 7),
-        2009: (JAN, 26),
-        2010: (FEB, 14),
-        2011: (FEB, 3),
-        2012: (JAN, 23),
-        2013: (FEB, 10),
-        2014: (JAN, 31),
-        2015: (FEB, 19),
-        2016: (FEB, 8),
-        2017: (JAN, 28),
-        2018: (FEB, 16),
-        2019: (FEB, 5),
-        2020: (JAN, 25),
-        2021: (FEB, 12),
-        2022: (FEB, 1),
-        2023: (JAN, 22),
-    }
-
-    VESAK_DATES = {
-        2001: (MAY, 7),
-        2002: (MAY, 26),
-        2003: (MAY, 15),
-        2004: (JUN, 2),
-        2005: (MAY, 22),
-        2006: (MAY, 12),
-        2007: (MAY, 31),
-        2008: (MAY, 19),
-        2009: (MAY, 9),
-        2010: (MAY, 28),
-        2011: (MAY, 17),
-        2012: (MAY, 5),
-        2013: (MAY, 24),
-        2014: (MAY, 13),
-        2015: (JUN, 1),
-        2016: (MAY, 21),
-        2017: (MAY, 10),
-        2018: (MAY, 29),
-        2019: (MAY, 19),
-        2020: (MAY, 7),
-        2021: (MAY, 26),
-        2022: (MAY, 15),
-        2023: (JUN, 2),
     }

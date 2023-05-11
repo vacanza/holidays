@@ -12,19 +12,24 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars import _AsianLunisolar, _CustomCalendar, _IslamicLunar
+from holidays.calendars import _BuddhistLunisolar, _ChineseLunisolar
+from holidays.calendars import _CustomCalendar, _HinduLunisolar, _IslamicLunar
 from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC, MON, FRI, SAT, SUN
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import AsianCalendarHolidays, ChristianHolidays
+from holidays.holiday_groups import BuddhistCalendarHolidays
+from holidays.holiday_groups import ChineseCalendarHolidays, ChristianHolidays
+from holidays.holiday_groups import HinduCalendarHolidays
 from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
 
 
 class Malaysia(
     HolidayBase,
-    AsianCalendarHolidays,
+    BuddhistCalendarHolidays,
+    ChineseCalendarHolidays,
     ChristianHolidays,
+    HinduCalendarHolidays,
     InternationalHolidays,
     IslamicHolidays,
 ):
@@ -97,10 +102,14 @@ class Malaysia(
 
         See parameters and usage in :py:class:`HolidayBase`.
         """
-        AsianCalendarHolidays.__init__(
-            self, calendar=MalaysiaLunisolarCalendar()
+        BuddhistCalendarHolidays.__init__(
+            self, calendar=MalaysiaBuddhistCalendar()
+        )
+        ChineseCalendarHolidays.__init__(
+            self, calendar=MalaysiaChineseCalendar()
         )
         ChristianHolidays.__init__(self)
+        HinduCalendarHolidays.__init__(self, calendar=MalaysiaHinduCalendar())
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, calendar=MalaysiaIslamicCalendar())
         super().__init__(*args, **kwargs)
@@ -456,6 +465,103 @@ class MYS(Malaysia):
     pass
 
 
+class MalaysiaBuddhistCalendar(_CustomCalendar, _BuddhistLunisolar):
+    VESAK_MAY_DATES = {
+        2001: (MAY, 7),
+        2002: (MAY, 27),
+        2003: (MAY, 15),
+        2004: (MAY, 3),
+        2005: (MAY, 22),
+        2006: (MAY, 12),
+        2007: (MAY, 1),
+        2008: (MAY, 19),
+        2009: (MAY, 9),
+        2010: (MAY, 28),
+        2011: (MAY, 17),
+        2012: (MAY, 5),
+        2013: (MAY, 24),
+        2014: (MAY, 13),
+        2015: (MAY, 3),
+        2016: (MAY, 21),
+        2017: (MAY, 10),
+        2018: (MAY, 29),
+        2019: (MAY, 19),
+        2020: (MAY, 7),
+        2021: (MAY, 26),
+        2022: (MAY, 15),
+        2023: (MAY, 4),
+    }
+
+
+class MalaysiaChineseCalendar(_CustomCalendar, _ChineseLunisolar):
+    LUNAR_NEW_YEAR_DATES = {
+        2001: (JAN, 24),
+        2002: (FEB, 12),
+        2003: (FEB, 1),
+        2004: (JAN, 22),
+        2005: (FEB, 9),
+        2006: (JAN, 29),
+        2007: (FEB, 18),
+        2008: (FEB, 7),
+        2009: (JAN, 26),
+        2010: (FEB, 14),
+        2011: (FEB, 3),
+        2012: (JAN, 23),
+        2013: (FEB, 10),
+        2014: (JAN, 31),
+        2015: (FEB, 19),
+        2016: (FEB, 8),
+        2017: (JAN, 28),
+        2018: (FEB, 16),
+        2019: (FEB, 5),
+        2020: (JAN, 25),
+        2021: (FEB, 12),
+        2022: (FEB, 1),
+        2023: (JAN, 22),
+    }
+
+
+class MalaysiaHinduCalendar(_CustomCalendar, _HinduLunisolar):
+    DIWALI_DATES = {
+        2001: (NOV, 14),
+        2002: (NOV, 3),
+        2003: (OCT, 23),
+        2004: (NOV, 11),
+        2005: (NOV, 1),
+        2006: (OCT, 21),
+        2007: (NOV, 8),
+        2008: (OCT, 27),
+        2009: (OCT, 17),
+        2010: (NOV, 5),
+        2011: (OCT, 26),
+        2012: (NOV, 13),
+        2013: (NOV, 2),
+        2014: (OCT, 22),
+        2015: (NOV, 10),
+        2016: (OCT, 29),
+        2017: (OCT, 18),
+        2018: (NOV, 6),
+        2019: (OCT, 27),
+        2020: (NOV, 14),
+        2021: (NOV, 4),
+        2022: (OCT, 24),
+        2023: (NOV, 12),
+    }
+
+    THAIPUSAM_DATES = {
+        2018: (JAN, 31),
+        2019: (JAN, 21),
+        2020: (FEB, 8),
+        2021: (JAN, 28),
+        2022: (JAN, 18),
+        2023: (FEB, 5),
+        2024: (JAN, 25),
+        2025: (FEB, 11),
+        2026: (FEB, 1),
+        2027: (JAN, 22),
+    }
+
+
 class MalaysiaIslamicCalendar(_CustomCalendar, _IslamicLunar):
     EID_AL_ADHA_DATES = {
         2001: ((MAR, 6),),
@@ -648,97 +754,4 @@ class MalaysiaIslamicCalendar(_CustomCalendar, _IslamicLunar):
         2021: ((APR, 13),),
         2022: ((APR, 3),),
         2023: ((MAR, 23),),
-    }
-
-
-class MalaysiaLunisolarCalendar(_CustomCalendar, _AsianLunisolar):
-    DIWALI_DATES = {
-        2001: (NOV, 14),
-        2002: (NOV, 3),
-        2003: (OCT, 23),
-        2004: (NOV, 11),
-        2005: (NOV, 1),
-        2006: (OCT, 21),
-        2007: (NOV, 8),
-        2008: (OCT, 27),
-        2009: (OCT, 17),
-        2010: (NOV, 5),
-        2011: (OCT, 26),
-        2012: (NOV, 13),
-        2013: (NOV, 2),
-        2014: (OCT, 22),
-        2015: (NOV, 10),
-        2016: (OCT, 29),
-        2017: (OCT, 18),
-        2018: (NOV, 6),
-        2019: (OCT, 27),
-        2020: (NOV, 14),
-        2021: (NOV, 4),
-        2022: (OCT, 24),
-        2023: (NOV, 12),
-    }
-
-    LUNAR_NEW_YEAR_DATES = {
-        2001: (JAN, 24),
-        2002: (FEB, 12),
-        2003: (FEB, 1),
-        2004: (JAN, 22),
-        2005: (FEB, 9),
-        2006: (JAN, 29),
-        2007: (FEB, 18),
-        2008: (FEB, 7),
-        2009: (JAN, 26),
-        2010: (FEB, 14),
-        2011: (FEB, 3),
-        2012: (JAN, 23),
-        2013: (FEB, 10),
-        2014: (JAN, 31),
-        2015: (FEB, 19),
-        2016: (FEB, 8),
-        2017: (JAN, 28),
-        2018: (FEB, 16),
-        2019: (FEB, 5),
-        2020: (JAN, 25),
-        2021: (FEB, 12),
-        2022: (FEB, 1),
-        2023: (JAN, 22),
-    }
-
-    THAIPUSAM_DATES = {
-        2018: (JAN, 31),
-        2019: (JAN, 21),
-        2020: (FEB, 8),
-        2021: (JAN, 28),
-        2022: (JAN, 18),
-        2023: (FEB, 5),
-        2024: (JAN, 25),
-        2025: (FEB, 11),
-        2026: (FEB, 1),
-        2027: (JAN, 22),
-    }
-
-    VESAK_MAY_DATES = {
-        2001: (MAY, 7),
-        2002: (MAY, 27),
-        2003: (MAY, 15),
-        2004: (MAY, 3),
-        2005: (MAY, 22),
-        2006: (MAY, 12),
-        2007: (MAY, 1),
-        2008: (MAY, 19),
-        2009: (MAY, 9),
-        2010: (MAY, 28),
-        2011: (MAY, 17),
-        2012: (MAY, 5),
-        2013: (MAY, 24),
-        2014: (MAY, 13),
-        2015: (MAY, 3),
-        2016: (MAY, 21),
-        2017: (MAY, 10),
-        2018: (MAY, 29),
-        2019: (MAY, 19),
-        2020: (MAY, 7),
-        2021: (MAY, 26),
-        2022: (MAY, 15),
-        2023: (MAY, 4),
     }

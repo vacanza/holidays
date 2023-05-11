@@ -16,13 +16,13 @@ from typing import Optional
 from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import APR, JUN, JUL, AUG, SEP, OCT, MON
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import AsianCalendarHolidays, ChristianHolidays
+from holidays.holiday_groups import ChineseCalendarHolidays, ChristianHolidays
 from holidays.holiday_groups import InternationalHolidays
 
 
 class HongKong(
     HolidayBase,
-    AsianCalendarHolidays,
+    ChineseCalendarHolidays,
     ChristianHolidays,
     InternationalHolidays,
 ):
@@ -52,7 +52,7 @@ class HongKong(
     }
 
     def __init__(self, *args, **kwargs):
-        AsianCalendarHolidays.__init__(self)
+        ChineseCalendarHolidays.__init__(self)
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)

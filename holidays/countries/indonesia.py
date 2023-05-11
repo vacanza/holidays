@@ -9,17 +9,20 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars import _AsianLunisolar, _CustomCalendar, _IslamicLunar
+from holidays.calendars import _BuddhistLunisolar, _ChineseLunisolar
+from holidays.calendars import _CustomCalendar, _IslamicLunar
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import AsianCalendarHolidays, ChristianHolidays
+from holidays.holiday_groups import BuddhistCalendarHolidays
+from holidays.holiday_groups import ChineseCalendarHolidays, ChristianHolidays
 from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
 
 
 class Indonesia(
     HolidayBase,
-    AsianCalendarHolidays,
+    BuddhistCalendarHolidays,
+    ChineseCalendarHolidays,
     ChristianHolidays,
     InternationalHolidays,
     IslamicHolidays,
@@ -41,8 +44,11 @@ class Indonesia(
     show_estimated = True
 
     def __init__(self, *args, **kwargs):
-        AsianCalendarHolidays.__init__(
-            self, calendar=IndonesiaLunisolarCalendar()
+        BuddhistCalendarHolidays.__init__(
+            self, calendar=IndonesiaBuddhistCalendar()
+        )
+        ChineseCalendarHolidays.__init__(
+            self, calendar=IndonesiaChineseCalendar()
         )
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
@@ -132,6 +138,54 @@ class ID(Indonesia):
 
 class IDN(Indonesia):
     pass
+
+
+class IndonesiaBuddhistCalendar(_CustomCalendar, _BuddhistLunisolar):
+    VESAK_DATES = {
+        2007: (JUN, 1),
+        2008: (MAY, 20),
+        2009: (MAY, 9),
+        2010: (MAY, 28),
+        2011: (MAY, 17),
+        2012: (MAY, 6),
+        2013: (MAY, 25),
+        2014: (MAY, 15),
+        2015: (JUN, 2),
+        2016: (MAY, 22),
+        2017: (MAY, 11),
+        2018: (MAY, 29),
+        2019: (MAY, 19),
+        2020: (MAY, 7),
+        2021: (MAY, 26),
+        2022: (MAY, 16),
+        2023: (JUN, 4),
+    }
+
+
+class IndonesiaChineseCalendar(_CustomCalendar, _ChineseLunisolar):
+    LUNAR_NEW_YEAR_DATES = {
+        2003: (FEB, 1),
+        2004: (JAN, 22),
+        2005: (FEB, 9),
+        2006: (JAN, 30),
+        2007: (FEB, 19),
+        2008: (FEB, 7),
+        2009: (JAN, 26),
+        2010: (FEB, 15),
+        2011: (FEB, 3),
+        2012: (JAN, 23),
+        2013: (FEB, 11),
+        2014: (JAN, 31),
+        2015: (FEB, 19),
+        2016: (FEB, 8),
+        2017: (JAN, 28),
+        2018: (FEB, 16),
+        2019: (FEB, 5),
+        2020: (JAN, 25),
+        2021: (FEB, 12),
+        2022: (FEB, 1),
+        2023: (JAN, 22),
+    }
 
 
 class IndonesiaIslamicCalendar(_CustomCalendar, _IslamicLunar):
@@ -255,50 +309,4 @@ class IndonesiaIslamicCalendar(_CustomCalendar, _IslamicLunar):
         2020: ((OCT, 29),),
         2021: ((OCT, 19),),
         2022: ((OCT, 8),),
-    }
-
-
-class IndonesiaLunisolarCalendar(_CustomCalendar, _AsianLunisolar):
-    LUNAR_NEW_YEAR_DATES = {
-        2003: (FEB, 1),
-        2004: (JAN, 22),
-        2005: (FEB, 9),
-        2006: (JAN, 30),
-        2007: (FEB, 19),
-        2008: (FEB, 7),
-        2009: (JAN, 26),
-        2010: (FEB, 15),
-        2011: (FEB, 3),
-        2012: (JAN, 23),
-        2013: (FEB, 11),
-        2014: (JAN, 31),
-        2015: (FEB, 19),
-        2016: (FEB, 8),
-        2017: (JAN, 28),
-        2018: (FEB, 16),
-        2019: (FEB, 5),
-        2020: (JAN, 25),
-        2021: (FEB, 12),
-        2022: (FEB, 1),
-        2023: (JAN, 22),
-    }
-
-    VESAK_DATES = {
-        2007: (JUN, 1),
-        2008: (MAY, 20),
-        2009: (MAY, 9),
-        2010: (MAY, 28),
-        2011: (MAY, 17),
-        2012: (MAY, 6),
-        2013: (MAY, 25),
-        2014: (MAY, 15),
-        2015: (JUN, 2),
-        2016: (MAY, 22),
-        2017: (MAY, 11),
-        2018: (MAY, 29),
-        2019: (MAY, 19),
-        2020: (MAY, 7),
-        2021: (MAY, 26),
-        2022: (MAY, 16),
-        2023: (JUN, 4),
     }
