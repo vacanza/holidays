@@ -35,7 +35,7 @@ class Algeria(HolidayBase, IslamicHolidays, InternationalHolidays):
             self._add_holiday("Independence Day", JUL, 5)
 
         # Revolution Day
-        if year > 1962:
+        if year >= 1963:
             self._add_holiday("Revolution Day", NOV, 1)
 
         # Islamic New Year
