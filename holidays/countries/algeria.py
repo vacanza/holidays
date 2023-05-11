@@ -30,9 +30,9 @@ class Algeria(HolidayBase, IslamicHolidays, InternationalHolidays):
         # Labour Day
         self._add_labor_day("Labour Day")
 
-        # Independance Day
+        # Independence Day
         if year >= 1962:
-            self._add_holiday("Independance Day", JUL, 5)
+            self._add_holiday("Independence Day", JUL, 5)
 
         # Revolution Day
         if year > 1962:
