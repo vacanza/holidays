@@ -9,34 +9,35 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
-
-from dateutil.easter import easter
-
-from holidays.constants import JAN, MAY, DEC
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class EuropeanCentralBank(HolidayBase):
+class EuropeanCentralBank(
+    HolidayBase, ChristianHolidays, InternationalHolidays
+):
     # https://en.wikipedia.org/wiki/TARGET2
     # http://www.ecb.europa.eu/press/pr/date/2000/html/pr001214_4.en.html
 
     market = "ECB"
 
-    def __init__(self, **kwargs):
-        HolidayBase.__init__(self, **kwargs)
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
 
-        self[date(year, JAN, 1)] = "New Year's Day"
-        e = easter(year)
-        self[e + td(days=-2)] = "Good Friday"
-        self[e + td(days=+1)] = "Easter Monday"
-        self[date(year, MAY, 1)] = "1 May (Labour Day)"
-        self[date(year, DEC, 25)] = "Christmas Day"
-        self[date(year, DEC, 26)] = "26 December"
+        self._add_new_years_day("New Year's Day")
+
+        self._add_good_friday("Good Friday")
+        self._add_easter_monday("Easter Monday")
+
+        self._add_labor_day("1 May (Labour Day)")
+
+        self._add_christmas_day("Christmas Day")
+        self._add_christmas_day_two("26 December")
 
 
 class ECB(EuropeanCentralBank):
