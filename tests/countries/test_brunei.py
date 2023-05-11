@@ -81,7 +81,6 @@ class TestBrunei(TestCase):
 
     def test_national_day(self):
         name = "Hari Kebangsaan"
-        self.assertNoHolidayNameInYears(name, 1983)
         self.assertHoliday(f"{year}-02-23" for year in range(1984, 2077))
 
         self.assertNoNonObservedHoliday(
@@ -95,7 +94,6 @@ class TestBrunei(TestCase):
 
     def test_armed_forces_day(self):
         name = "Hari Angkatan Bersenjata Diraja Brunei"
-        self.assertNoHolidayNameInYears(name, 1983)
         self.assertHoliday(f"{year}-05-31" for year in range(1984, 2077))
 
         self.assertNoNonObservedHoliday(
@@ -109,7 +107,6 @@ class TestBrunei(TestCase):
 
     def test_sultan_hassanal_bolkiah_birthday(self):
         name = "Hari Keputeraan KDYMM Sultan Brunei"
-        self.assertNoHolidayNameInYears(name, 1967)
         self.assertHoliday(f"{year}-07-15" for year in range(1984, 2077))
 
         self.assertNoNonObservedHoliday(

@@ -20,7 +20,7 @@ msgid "Jubli Emas Sultan Hassanal Bolkiah"
 msgstr "Sultan Hassanal Bolkiah's Golden Jubilee"
 
 #: ./holidays/countries/brunei.py:56
-msgid "angarran"
+msgid "anggaran"
 msgstr "estimated"
 
 #: ./holidays/countries/brunei.py:88 ./holidays/countries/brunei.py:152
