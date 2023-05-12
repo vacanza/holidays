@@ -3,7 +3,7 @@ from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import IslamicHolidays, InternationalHolidays
 
 
-class Algeria(HolidayBase, IslamicHolidays, InternationalHolidays):
+class Algeria(HolidayBase, InternationalHolidays, IslamicHolidays):
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_Algeria
