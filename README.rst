@@ -107,7 +107,7 @@ Available Countries
 .. _ISO 3166-1 alpha-2 code: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
 .. _ISO 3166-2 code: https://en.wikipedia.org/wiki/ISO_3166-2
 
-We currently support 121 country codes. The standard way to refer to a country
+We currently support 122 country codes. The standard way to refer to a country
 is by using its `ISO 3166-1 alpha-2 code`_, the same used for domain names, and
 for a subdivision its `ISO 3166-2 code`_. The following countries and
 subdivisions are available:
@@ -122,6 +122,9 @@ subdivisions are available:
      - Subdivisions Available
    * - Albania
      - AL
+     - None
+   * - Algeria
+     - DZ
      - None
    * - American Samoa
      - AS
@@ -239,7 +242,7 @@ subdivisions are available:
      - None
    * - France
      - FR
-     - Départements: Alsace-Moselle, Guadeloupe, Guyane, La Réunion, Martinique, Mayotte, Métropole, Nouvelle-Calédonie, Polynésie Française, Saint-Barthélémy, Saint-Martin, Wallis-et-Futuna
+     - Départements: BL, GES, GP, GY, MF, MQ, NC, PF, RE, WF, YT
    * - Georgia
      - GE
      - None
@@ -281,7 +284,7 @@ subdivisions are available:
      - None
    * - Italy
      - IT
-     - Provinces: AG, AL, AN, AO, AP, AQ, AR, AT, AV, BA, BG, BI, BL, BN, BO, BR, BS, BT, BZ, CA, CB, CE, CH, CL, CN, CO, CR, CS, CT, CZ, EN, FC, FE, FG, FI, FM, FR, GE, GO, GR, IM, IS, KR, LC, LE, LI, LO, LT, LU, MB, MC, ME, MI, MN, MO, MS, MT, NA, NO, NU, OR, PA, PC, PD, PE, PG, PI, PN, PO, PR, PT, PU, PV, PZ, RA, RC, RE, RG, RI, RM, RN, RO, SA, SI, SO, SP, SR, SS, SU, SV, TA, TE, TN, TO, TP, TR, TS, TV, UD, VA, VB, VC, VE, VI, VR, VT, VV. Cities: Andria, Barletta, Cesena, Forlì, Pesaro, Trani, Urbino
+     - Provinces: AG, AL, AN, AO, AP, AQ, AR, AT, AV, BA, BG, BI, BL, BN, BO, BR, BS, BT, BZ, CA, CB, CE, CH, CL, CN, CO, CR, CS, CT, CZ, EN, FC, FE, FG, FI, FM, FR, GE, GO, GR, IM, IS, KR, LC, LE, LI, LO, LT, LU, MB, MC, ME, MI, MN, MO, MS, MT, NA, NO, NU, OR, PA, PC, PD, PE, PG, PI, PN, PO, PR, PT, PU, PV, PZ, RA, RC, RE, RG, RI, RM, RN, RO, SA, SI, SO, SP, SR, SS, SU, SV, TA, TE, TN, TO, TP, TR, TS, TV, UD, VA, VB, VC, VE, VI, VR, VT, VV. Cities: Andria, Barletta, Cesena, Forli, Pesaro, Trani, Urbino
    * - Jamaica
      - JM
      - None
@@ -643,6 +646,9 @@ default language code is a `ISO 639-1 code`_.
    * - Serbia
      - sr
      - en_US, sr
+   * - Slovakia
+     - sk
+     - en_US, sk, uk
    * - Sweden
      - sv
      - en_US, sv, uk

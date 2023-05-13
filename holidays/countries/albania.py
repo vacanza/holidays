@@ -11,7 +11,7 @@
 
 from datetime import timedelta as td
 
-from holidays.calendars import GREGORIAN_CALENDAR, JULIAN_CALENDAR
+from holidays.calendars import JULIAN_CALENDAR
 from holidays.constants import JAN, MAR, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, IslamicHolidays
@@ -56,9 +56,9 @@ class Albania(
 
         # Easter.
         observed_dates.add(self._add_easter_sunday("Catholic Easter"))
-        self._set_calendar(JULIAN_CALENDAR)
-        observed_dates.add(self._add_easter_sunday("Orthodox Easter"))
-        self._set_calendar(GREGORIAN_CALENDAR)
+        observed_dates.add(
+            self._add_easter_sunday("Orthodox Easter", JULIAN_CALENDAR)
+        )
 
         # May Day.
         observed_dates.add(self._add_labor_day("May Day"))

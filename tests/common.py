@@ -11,6 +11,7 @@
 
 import os
 import unittest
+import warnings
 from typing import Generator
 
 from dateutil.parser import parse
@@ -145,6 +146,17 @@ class TestCase(unittest.TestCase):
                 f"{length_error_message}. Alias `{alpha_3.__name__}` doesn't "
                 "look like alpha-3 country code."
             )
+
+    def assertDeprecatedSubdivisions(self, message):
+        warnings.simplefilter("always", category=DeprecationWarning)
+        for subdiv in self.test_class._deprecated_subdivisions:
+            with warnings.catch_warnings(record=True) as ctx:
+                self.test_class(subdiv=subdiv)
+                warning = ctx[0]
+                self.assertTrue(
+                    issubclass(warning.category, DeprecationWarning)
+                )
+                self.assertIn(message, str(warning.message))
 
     # Holiday.
     def _assertHoliday(self, instance_name, *args):

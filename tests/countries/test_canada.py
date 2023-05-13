@@ -426,21 +426,36 @@ class TestCanada(TestCase):
         )
 
     def test_l10n_fr(self):
+        fr = "fr"
+
+        ca = Canada(language=fr)
+        self.assertEqual(ca["2018-01-01"], "Jour de l'an")
+        self.assertEqual(ca["2022-12-25"], "Jour de Noël")
+        self.assertEqual(ca["2022-12-27"], "Jour de Noël (Observé)")
+
+        self.set_language(fr)
+        for language in (None, fr, "invalid"):
+            ca = Canada(language=language)
+            self.assertEqual(ca["2018-01-01"], "Jour de l'an")
+            self.assertEqual(ca["2022-12-25"], "Jour de Noël")
+            self.assertEqual(ca["2022-12-27"], "Jour de Noël (Observé)")
+
+    def test_l10n_th(self):
         self.assertLocalizedHolidays(
             (
-                ("2022-01-01", "Jour de l'an"),
-                ("2022-01-03", "Jour de l'an (Observé)"),
-                ("2022-02-21", "Fête de la famille"),
-                ("2022-04-15", "Vendredi saint"),
-                ("2022-04-18", "Lundi de Pâques"),
-                ("2022-05-23", "Fête de la Reine"),
-                ("2022-07-01", "Fête du Canada"),
-                ("2022-08-01", "Premier lundi d'août"),
-                ("2022-09-05", "Fête du Travail"),
-                ("2022-10-10", "Action de grâce"),
-                ("2022-12-25", "Jour de Noël"),
-                ("2022-12-26", "Boxing Day"),
-                ("2022-12-27", "Jour de Noël (Observé)"),
+                ("2022-01-01", "วันขึ้นปีใหม่"),
+                ("2022-01-03", "ชดเชยวันขึ้นปีใหม่"),
+                ("2022-02-21", "วันครอบครัว"),
+                ("2022-04-15", "วันศุกร์ประเสริฐ"),
+                ("2022-04-18", "วันจันทร์อีสเตอร์"),
+                ("2022-05-23", "วันวิคตอเรีย"),
+                ("2022-07-01", "วันชาติแคนาดา"),
+                ("2022-08-01", "วันหยุดราชการ"),
+                ("2022-09-05", "วันแรงงาน"),
+                ("2022-10-10", "วันขอบคุณพระเจ้า"),
+                ("2022-12-25", "วันคริสต์มาส"),
+                ("2022-12-26", "วันเปิดกล่องของขวัญ"),
+                ("2022-12-27", "ชดเชยวันคริสต์มาส"),
             ),
-            "fr",
+            "th",
         )

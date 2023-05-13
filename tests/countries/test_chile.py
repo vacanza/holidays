@@ -22,9 +22,7 @@ class TestChile(TestCase):
         self.assertCountryAliases(Chile, CL, CHL)
 
     def test_special_holidays(self):
-        self.assertHoliday(
-            "2022-09-16",
-        )
+        self.assertHoliday("2022-09-16")
 
     def test_no_holidays(self):
         self.assertNoHolidays(Chile(years=1914))
@@ -132,8 +130,7 @@ class TestChile(TestCase):
             "2079-06-20",
         )
         self.assertNoHolidayNameInYears(
-            "Día Nacional de los Pueblos Indígenas",
-            range(1915, 2021),
+            "Día Nacional de los Pueblos Indígenas", range(1915, 2021)
         )
 
     def test_saint_peter_and_paul(self):
@@ -238,8 +235,7 @@ class TestChile(TestCase):
         )
 
         self.assertHolidayNameInYears(
-            "Día del Encuentro de dos Mundos",
-            range(2000, 2050),
+            "Día del Encuentro de dos Mundos", range(2000, 2050)
         )
 
     def test_reformation_day(self):
@@ -319,14 +315,6 @@ class TestChile(TestCase):
             "2020-12-08",
             "2020-12-25",
         )
-        self.assertHoliday(
-            Chile(subdiv="AP"),
-            "2020-06-07",
-        )
-        self.assertHoliday(
-            Chile(subdiv="NB"),
-            "2020-08-20",
-        )
 
     def test_2021(self):
         # from https://feriados.cl/2021.htm
@@ -350,24 +338,25 @@ class TestChile(TestCase):
             "2021-12-08",
             "2021-12-25",
         )
+
+    def test_provinces(self):
+        ap_holidays = Chile(subdiv="AP")
+        nb_holidays = Chile(subdiv="NB")
         self.assertHoliday(
-            Chile(subdiv="AP"),
+            ap_holidays,
+            "2020-06-07",
             "2021-06-07",
         )
+        self.assertNoHoliday(ap_holidays, "2012-06-07")
         self.assertHoliday(
-            Chile(subdiv="NB"),
+            nb_holidays,
+            "2020-08-20",
             "2021-08-20",
         )
+        self.assertNoHoliday(nb_holidays, "2013-08-20")
 
-    def test_2050(self):
-        self.assertHoliday(
-            "2050-06-20",
-        )
-
-    def test_2079(self):
-        self.assertHoliday(
-            "2079-06-20",
-        )
+    def test_summer_solstice(self):
+        self.assertHoliday("2050-06-20", "2079-06-20")
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

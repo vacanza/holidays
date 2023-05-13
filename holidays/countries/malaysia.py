@@ -11,7 +11,6 @@
 
 from datetime import date
 from datetime import timedelta as td
-from typing import Iterable, Optional, Union
 
 from holidays.calendars import _CustomCalendar, _IslamicLunar
 from holidays.calendars import _get_nth_weekday_of_month
@@ -57,16 +56,7 @@ class Malaysia(
         "TRG",
     )
 
-    def __init__(
-        self,
-        years: Optional[Union[int, Iterable[int]]] = None,
-        expand: bool = True,
-        observed: bool = True,
-        subdiv: Optional[str] = None,
-        prov: Optional[str] = None,
-        state: Optional[str] = None,
-        language: Optional[str] = None,
-    ) -> None:
+    def __init__(self, *args, **kwargs) -> None:
         """
         An subclass of :py:class:`HolidayBase` representing public holidays in
         Malaysia.
@@ -110,9 +100,7 @@ class Malaysia(
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, calendar=MalaysiaIslamicCalendar())
-        super().__init__(
-            years, expand, observed, subdiv, prov, state, language
-        )
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
@@ -553,37 +541,11 @@ class Malaysia(
 
 
 class MY(Malaysia):
-    # __init__ required for IDE typing and inheritance of docstring.
-    def __init__(
-        self,
-        years: Optional[Union[int, Iterable[int]]] = None,
-        expand: bool = True,
-        observed: bool = True,
-        subdiv: Optional[str] = None,
-        prov: Optional[str] = None,
-        state: Optional[str] = None,
-        language: Optional[str] = None,
-    ) -> None:
-        super().__init__(
-            years, expand, observed, subdiv, prov, state, language
-        )
+    pass
 
 
 class MYS(Malaysia):
-    # __init__ required for IDE typing and inheritance of docstring.
-    def __init__(
-        self,
-        years: Optional[Union[int, Iterable[int]]] = None,
-        expand: bool = True,
-        observed: bool = True,
-        subdiv: Optional[str] = None,
-        prov: Optional[str] = None,
-        state: Optional[str] = None,
-        language: Optional[str] = None,
-    ) -> None:
-        super().__init__(
-            years, expand, observed, subdiv, prov, state, language
-        )
+    pass
 
 
 class MalaysiaIslamicCalendar(_CustomCalendar, _IslamicLunar):

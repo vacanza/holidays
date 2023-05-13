@@ -179,4 +179,4 @@ msgstr "วันเปิดกล่องของขวัญ"
 #. Terry Fox Day.
 #: ./holidays/countries/canada.py:224
 msgid "Terry Fox Day"
-msgstr ""
+msgstr "วันเทร์รี ฟอกซ์"

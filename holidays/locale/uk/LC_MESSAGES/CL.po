@@ -125,10 +125,10 @@ msgid "Navidad"
 msgstr "Різдво Христове"
 
 #. Región de Arica y Parinacota.
-#: ./holidays/countries/chile.py:200
+#: ./holidays/countries/chile.py:201
 msgid "Asalto y Toma del Morro de Arica"
 msgstr "Штурм і захоплення Морро-де-Аріка"
 
-#: ./holidays/countries/chile.py:206
+#: ./holidays/countries/chile.py:208
 msgid "Nacimiento del Prócer de la Independencia (Chillán y Chillán Viejo)"
 msgstr "Річниця Бернардо О'Гіґґінса (свято комун Чіллан і Чіллан В'єхо)"
