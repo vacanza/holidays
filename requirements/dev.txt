@@ -6,6 +6,11 @@ tox
 chameleon
 lingua
 
+# Holidays pre-calculation.
+hijridate
+
 # Deployment.
 build
+gitpython
 pip>=19.2.3
+pygithub

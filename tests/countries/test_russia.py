@@ -48,6 +48,12 @@ class TestRussia(TestCase):
             "2018-12-31",
         )
 
+    def test_2023(self):
+        self.assertHoliday(
+            "2023-02-24",
+            "2023-05-08",
+        )
+
     def test_l10n_default(self):
         def run_tests(languages):
             for language in languages:

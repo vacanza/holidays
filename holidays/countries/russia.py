@@ -23,6 +23,15 @@ class Russia(HolidayBase):
     country = "RU"
     default_language = "ru"
 
+    special_holidays = {
+        2023: (
+            # Bridge days for 01/Jan & 08/Jan
+            # src: https://www.consultant.ru/document/cons_doc_LAW_425407/
+            (FEB, 24, tr("День защитника Отечества")),
+            (MAY, 8, tr("День Победы")),
+        ),
+    }
+
     def _populate(self, year):
         super()._populate(year)
 

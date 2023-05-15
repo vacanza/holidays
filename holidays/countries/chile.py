@@ -194,13 +194,15 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Christmas (Law 2.977).
         self._add_christmas_day(tr("Navidad"))
 
+    def _add_subdiv_ap_holidays(self):
         # Law 20.663.
-        if self.subdiv == "AP" and year >= 2013:
+        if self._year >= 2013:
             # Región de Arica y Parinacota.
             self._add_holiday(tr("Asalto y Toma del Morro de Arica"), JUN, 7)
 
+    def _add_subdiv_nb_holidays(self):
         # Law 20.678.
-        if self.subdiv == "NB" and year >= 2014:
+        if self._year >= 2014:
             # Región de Ñuble
             self._add_holiday(
                 tr(
