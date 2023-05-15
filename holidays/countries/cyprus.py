@@ -28,6 +28,7 @@ class Cyprus(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "CY"
     default_language = "el"
+    supported_languages = ("el", "en_US")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)

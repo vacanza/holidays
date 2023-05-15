@@ -27,6 +27,7 @@ class Georgia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "GE"
     default_language = "ka"
+    supported_languages = ("en_US", "ka")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)

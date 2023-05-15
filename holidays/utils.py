@@ -277,6 +277,90 @@ def CountryHoliday(
     )
 
 
+def _list_localized_entities(
+    entity_codes: Iterable[str],
+) -> Dict[str, List[str]]:
+    """
+    Get all localized entities and languages they support.
+
+    :param entity_codes:
+        A list of entity codes.
+
+    :return:
+        A dictionary where key is an entity code and
+        value is a list of supported languages (either ISO 639-1 or a
+        combination of ISO 639-1 and ISO 3166-1 codes joined with "_").
+    """
+    import holidays
+
+    localized_countries = {}
+    for entity_code in entity_codes:
+        languages = getattr(holidays, entity_code).supported_languages
+        if len(languages) == 0:
+            continue
+        localized_countries[entity_code] = sorted(languages)
+
+    return localized_countries
+
+
+@lru_cache()
+def list_localized_countries(include_aliases=True) -> Dict[str, List[str]]:
+    """
+    Get all localized countries and languages they support.
+
+    :param include_aliases:
+        Whether to include entity aliases (e.g. UK for GB).
+
+    :return:
+        A dictionary where key is an ISO 3166-1 alpha-2 country code and
+        value is a list of supported languages (either ISO 639-1 or a
+        combination of ISO 639-1 and ISO 3166-1 codes joined with "_").
+    """
+
+    return _list_localized_entities(
+        EntityLoader.get_country_codes(include_aliases)
+    )
+
+
+@lru_cache()
+def list_localized_financial(include_aliases=True) -> Dict[str, List[str]]:
+    """
+    Get all localized financial markets and languages they support.
+
+    :param include_aliases:
+        Whether to include entity aliases(e.g. TAR for ECB, XNYS for NYSE).
+
+    :return:
+        A dictionary where key is a market code and value is a list of
+        supported subdivision codes.
+    """
+
+    return _list_localized_entities(
+        EntityLoader.get_financial_codes(include_aliases)
+    )
+
+
+def _list_supported_entities(
+    entity_codes: Iterable[str],
+) -> Dict[str, List[str]]:
+    """
+    Get all supported entities and their subdivisions.
+
+    :param entity_codes:
+        A list of entity codes.
+
+    :return:
+        A dictionary where key is an entity code and value is a list
+        of supported subdivision codes.
+    """
+    import holidays
+
+    return {
+        country_code: list(getattr(holidays, country_code).subdivisions)
+        for country_code in entity_codes
+    }
+
+
 @lru_cache()
 def list_supported_countries(include_aliases=True) -> Dict[str, List[str]]:
     """
@@ -286,15 +370,12 @@ def list_supported_countries(include_aliases=True) -> Dict[str, List[str]]:
         Whether to include entity aliases (e.g. UK for GB).
 
     :return:
-        A dictionary where the key is the ISO 3166-1 Alpha-2 country codes and
-        the value is a list of supported subdivision codes.
+        A dictionary where key is an ISO 3166-1 alpha-2 country code and
+        value is a list of supported subdivision codes.
     """
-    import holidays
-
-    return {
-        country_code: list(getattr(holidays, country_code).subdivisions)
-        for country_code in EntityLoader.get_country_codes(include_aliases)
-    }
+    return _list_supported_entities(
+        EntityLoader.get_country_codes(include_aliases)
+    )
 
 
 @lru_cache()
@@ -306,12 +387,9 @@ def list_supported_financial(include_aliases=True) -> Dict[str, List[str]]:
         Whether to include entity aliases(e.g. TAR for ECB, XNYS for NYSE).
 
     :return:
-        A dictionary where the key is the market codes and
-        the value is a list of supported subdivision codes.
+        A dictionary where key is a market code and value is a list of
+        supported subdivision codes.
     """
-    import holidays
-
-    return {
-        financial_code: list(getattr(holidays, financial_code).subdivisions)
-        for financial_code in EntityLoader.get_financial_codes(include_aliases)
-    }
+    return _list_supported_entities(
+        EntityLoader.get_financial_codes(include_aliases)
+    )

@@ -36,6 +36,7 @@ class Cuba(HolidayBase):
 
     country = "CU"
     default_language = "es"
+    supported_languages = ("en_US", "es", "uk")
 
     def _populate(self, year):
         def _add_observed(hol_date: date) -> None:

@@ -25,6 +25,7 @@ class Honduras(HolidayBase):
 
     country = "HN"
     default_language = "es"
+    supported_languages = ("en_US", "es", "uk")
 
     def _populate(self, year):
         super()._populate(year)

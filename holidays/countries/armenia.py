@@ -29,6 +29,7 @@ class Armenia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "AM"
     default_language = "hy"
+    supported_languages = ("en_US", "hy")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
