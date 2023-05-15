@@ -152,5 +152,10 @@ class TestSingapore(TestCase):
         # 2023: total holidays (11 + 3 falling on a Sunday)
         self.assertEqual(len(Singapore(years=[2023])), 11 + 3)
 
+    def test_non_observed(self):
+        self.assertNotIn(
+            date(2023, 1, 2), Singapore(observed=False, years=2023)
+        )
+
     def test_special_holidays(self):
         self.assertIn(date(2015, 8, 7), self.holidays)
