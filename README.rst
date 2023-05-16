@@ -123,6 +123,9 @@ subdivisions are available:
    * - Albania
      - AL
      - None
+   * - Algeria
+     - DZ
+     - None
    * - American Samoa
      - AS
      - None; Can also be loaded as country US, subdivision AS
@@ -649,6 +652,9 @@ default language code is a `ISO 639-1 code`_.
    * - Serbia
      - sr
      - en_US, sr
+   * - Slovakia
+     - sk
+     - en_US, sk, uk
    * - Sweden
      - sv
      - en_US, sv, uk

@@ -326,25 +326,99 @@ class HolidayBase(Dict[date, str]):
         for year in self.years:
             self._populate(year)
 
-    @property
-    def __attribute_names(self):
-        return (
-            "country",
-            "expand",
-            "language",
-            "market",
-            "observed",
-            "subdiv",
-            "years",
+    def __add__(
+        self, other: Union[int, "HolidayBase", "HolidaySum"]
+    ) -> "HolidayBase":
+        """Add another dictionary of public holidays creating a
+        :class:`HolidaySum` object.
+
+        :param other:
+            The dictionary of public holiday to be added.
+
+        :return:
+            A :class:`HolidaySum` object unless the other object cannot be
+            added, then :class:`self`.
+        """
+        if isinstance(other, int) and other == 0:
+            # Required to sum() list of holidays
+            # sum([h1, h2]) is equivalent to (0 + h1 + h2).
+            return self
+
+        if not isinstance(other, (HolidayBase, HolidaySum)):
+            raise TypeError(
+                "Holiday objects can only be added with other Holiday objects"
+            )
+
+        return HolidaySum(self, other)
+
+    def __bool__(self) -> bool:
+        return len(self) > 0
+
+    def __contains__(self, key: object) -> bool:
+        """Return true if date is in self, false otherwise. Accepts a date in
+        the following types:
+
+        * :class:`datetime.date`,
+        * :class:`datetime.datetime`,
+        * a :class:`str` of any format recognized by
+          :func:`dateutil.parser.parse`,
+        * or a :class:`float` or :class:`int` representing a POSIX timestamp.
+        """
+
+        if not isinstance(key, (date, datetime, float, int, str)):
+            raise TypeError(f"Cannot convert type '{type(key)}' to date.")
+
+        return dict.__contains__(
+            cast("Mapping[Any, Any]", self), self.__keytransform__(key)
         )
 
-    def __setattr__(self, key: str, value: Any) -> None:
-        dict.__setattr__(self, key, value)
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, HolidayBase):
+            return False
 
-        if self and key == "observed":
-            self.clear()
-            for year in self.years:  # Re-populate holidays for each year.
-                self._populate(year)
+        for attribute_name in self.__attribute_names:
+            if getattr(self, attribute_name, None) != getattr(
+                other, attribute_name, None
+            ):
+                return False
+
+        return dict.__eq__(self, other)
+
+    def __getitem__(self, key: DateLike) -> Any:
+        if isinstance(key, slice):
+            if not key.start or not key.stop:
+                raise ValueError("Both start and stop must be given.")
+
+            start = self.__keytransform__(key.start)
+            stop = self.__keytransform__(key.stop)
+
+            if key.step is None:
+                step = 1
+            elif isinstance(key.step, timedelta):
+                step = key.step.days
+            elif isinstance(key.step, int):
+                step = key.step
+            else:
+                raise TypeError(
+                    f"Cannot convert type '{type(key.step)}' to int."
+                )
+
+            if step == 0:
+                raise ValueError("Step value must not be zero.")
+
+            date_diff = stop - start
+            if date_diff.days < 0 <= step or date_diff.days >= 0 > step:
+                step *= -1
+
+            days_in_range = []
+            for delta_days in range(0, date_diff.days, step):
+                day = start + timedelta(days=delta_days)
+                if day in self:
+                    days_in_range.append(day)
+
+            return days_in_range
+
+        return dict.__getitem__(self, self.__keytransform__(key))
 
     def __keytransform__(self, key: DateLike) -> date:
         """Transforms the date from one of the following types:
@@ -391,62 +465,48 @@ class HolidayBase(Dict[date, str]):
 
         return dt
 
-    def __bool__(self) -> bool:
-        return len(self) > 0
+    def __ne__(self, other: object) -> bool:
+        if not isinstance(other, HolidayBase):
+            return True
 
-    def __contains__(self, key: object) -> bool:
-        """Return true if date is in self, false otherwise. Accepts a date in
-        the following types:
+        for attribute_name in self.__attribute_names:
+            if getattr(self, attribute_name, None) != getattr(
+                other, attribute_name, None
+            ):
+                return True
 
-        * :class:`datetime.date`,
-        * :class:`datetime.datetime`,
-        * a :class:`str` of any format recognized by
-          :func:`dateutil.parser.parse`,
-        * or a :class:`float` or :class:`int` representing a POSIX timestamp.
-        """
+        return dict.__ne__(self, other)
 
-        if not isinstance(key, (date, datetime, float, int, str)):
-            raise TypeError(f"Cannot convert type '{type(key)}' to date.")
+    def __radd__(self, other: Any) -> "HolidayBase":
+        return self.__add__(other)
 
-        return dict.__contains__(
-            cast("Mapping[Any, Any]", self), self.__keytransform__(key)
-        )
+    def __reduce__(self) -> Union[str, Tuple[Any, ...]]:
+        return super().__reduce__()
 
-    def __getitem__(self, key: DateLike) -> Any:
-        if isinstance(key, slice):
-            if not key.start or not key.stop:
-                raise ValueError("Both start and stop must be given.")
+    def __repr__(self) -> str:
+        if self:
+            return super().__repr__()
 
-            start = self.__keytransform__(key.start)
-            stop = self.__keytransform__(key.stop)
+        parts = []
+        if hasattr(self, "market"):
+            parts.append(f"holidays.financial_holidays({self.market!r}")
+        elif hasattr(self, "country"):
+            if parts:
+                parts.append(" + ")
+            parts.append(f"holidays.country_holidays({self.country!r}")
+            if self.subdiv:
+                parts.append(f", subdiv={self.subdiv!r}")
+        parts.append(")")
 
-            if key.step is None:
-                step = 1
-            elif isinstance(key.step, timedelta):
-                step = key.step.days
-            elif isinstance(key.step, int):
-                step = key.step
-            else:
-                raise TypeError(
-                    f"Cannot convert type '{type(key.step)}' to int."
-                )
+        return "".join(parts)
 
-            if step == 0:
-                raise ValueError("Step value must not be zero.")
+    def __setattr__(self, key: str, value: Any) -> None:
+        dict.__setattr__(self, key, value)
 
-            date_diff = stop - start
-            if date_diff.days < 0 <= step or date_diff.days >= 0 > step:
-                step *= -1
-
-            days_in_range = []
-            for delta_days in range(0, date_diff.days, step):
-                day = start + timedelta(days=delta_days)
-                if day in self:
-                    days_in_range.append(day)
-
-            return days_in_range
-
-        return dict.__getitem__(self, self.__keytransform__(key))
+        if self and key == "observed":
+            self.clear()
+            for year in self.years:  # Re-populate holidays for each year.
+                self._populate(year)
 
     def __setitem__(self, key: DateLike, value: str) -> None:
         if key in self:
@@ -458,41 +518,154 @@ class HolidayBase(Dict[date, str]):
 
         dict.__setitem__(self, self.__keytransform__(key), value)
 
-    def update(  # type: ignore[override]
-        self, *args: Union[Dict[DateLike, str], List[DateLike], DateLike]
-    ) -> None:
-        # TODO: fix arguments; should not be *args (cannot properly Type hint)
-        """Update the object, overwriting existing dates.
+    def __str__(self) -> str:
+        if self:
+            return super().__str__()
 
-        :param:
-            Either another dictionary object where keys are dates and values
-            are holiday names, or a single date (or a list of dates) for which
-            the value will be set to "Holiday".
+        parts = []
+        for attribute_name in self.__attribute_names:
+            parts.append(
+                "'%s': %s"
+                % (attribute_name, getattr(self, attribute_name, None))
+            )
 
-            Dates can be expressed in one or more of the following types:
+        return f"{{{', '.join(parts)}}}"
 
-            * :class:`datetime.date`,
-            * :class:`datetime.datetime`,
-            * a :class:`str` of any format recognized by
-              :func:`dateutil.parser.parse`,
-            * or a :class:`float` or :class:`int` representing a POSIX
-              timestamp.
+    @property
+    def __attribute_names(self):
+        return (
+            "country",
+            "expand",
+            "language",
+            "market",
+            "observed",
+            "subdiv",
+            "years",
+        )
+
+    @staticmethod
+    def _is_leap_year(year: int) -> bool:
         """
-        for arg in args:
-            if isinstance(arg, dict):
-                for key, value in arg.items():
-                    self[key] = value
-            elif isinstance(arg, list):
-                for item in arg:
-                    self[item] = "Holiday"
-            else:
-                self[arg] = "Holiday"
+        Returns True if the year is leap. Returns False otherwise.
+        """
+        return isleap(year)
+
+    def _add_holiday(self, *args) -> Optional[date]:
+        """Add a holiday.
+
+        This method accepts either `name: str, dt: date` or
+        `name: str, month: int, day: int` arguments.
+        """
+        name, dt = self._parse_holiday(*args)
+        if dt.year != self._year:
+            return None
+
+        self[dt] = self.tr(name)
+        return dt
+
+    def _add_subdiv_holidays(self):
+        """Populate subdivision holidays."""
+        if self.subdiv is not None:
+            subdiv = self.subdiv.replace("-", "_").lower()
+            add_subdiv_holidays = getattr(
+                self, f"_add_subdiv_{subdiv}_holidays", None
+            )
+            if add_subdiv_holidays and callable(add_subdiv_holidays):
+                add_subdiv_holidays()
+
+    def _check_weekday(self, weekday: int, *args) -> bool:
+        """
+        Returns True if `weekday` equals to the date's week day.
+        Returns False otherwise.
+        """
+        dt = args[0] if len(args) == 1 else date(self._year, *args)
+        return dt.weekday() == weekday
+
+    def _is_friday(self, *args) -> bool:
+        return self._check_weekday(FRI, *args)
+
+    def _is_monday(self, *args) -> bool:
+        return self._check_weekday(MON, *args)
+
+    def _is_saturday(self, *args) -> bool:
+        return self._check_weekday(SAT, *args)
+
+    def _is_sunday(self, *args) -> bool:
+        return self._check_weekday(SUN, *args)
+
+    def _is_thursday(self, *args) -> bool:
+        return self._check_weekday(THU, *args)
+
+    def _is_tuesday(self, *args) -> bool:
+        return self._check_weekday(TUE, *args)
+
+    def _is_wednesday(self, *args) -> bool:
+        return self._check_weekday(WED, *args)
+
+    def _is_weekend(self, *args):
+        """
+        Returns True if date's week day is a weekend day.
+        Returns False otherwise.
+        """
+        dt = args[0] if len(args) == 1 else date(self._year, *args)
+
+        return dt.weekday() in self.weekend
+
+    def _parse_holiday(self, *args) -> Tuple[str, date]:
+        """Parse holiday data."""
+        if len(args) == 2:
+            name, dt = args
+            if not isinstance(dt, date):
+                raise TypeError(
+                    "Invalid argument type: expected <class 'date'> "
+                    f"got '{type(dt)}'."
+                )
+        elif len(args) == 3:
+            name, month, day = args
+            dt = date(self._year, month, day)
+        else:
+            raise TypeError("Incorrect number of arguments.")
+
+        return name, dt
+
+    def _populate(self, year: int) -> Set[Optional[date]]:
+        """This is a private class that populates (generates and adds) holidays
+        for a given year. To keep things fast, it assumes that no holidays for
+        the year have already been populated. It is required to be called
+        internally by any country populate() method, while should not be called
+        directly from outside.
+        To add holidays to an object, use the update() method:
+
+        :param year:
+            The year to populate with holidays.
+
+        >>> from holidays import country_holidays
+        >>> us_holidays = country_holidays('US', years=2020)
+        # to add new holidays to the object:
+        >>> us_holidays.update(country_holidays('US', years=2021))
+        """
+
+        self._year = year
+        dates = set()
+
+        # Populate items from the special holidays list.
+        for month, day, name in self.special_holidays.get(year, ()):
+            dates.add(self._add_holiday(name, date(year, month, day)))
+
+        # Populate subdivision holidays.
+        self._add_subdiv_holidays()
+
+        return dates
 
     def append(
         self, *args: Union[Dict[DateLike, str], List[DateLike], DateLike]
     ) -> None:
         """Alias for :meth:`update` to mimic list type."""
         return self.update(*args)
+
+    def copy(self):
+        """Return a copy of the object."""
+        return copy.copy(self)
 
     def get(
         self,
@@ -677,208 +850,35 @@ class HolidayBase(Dict[date, str]):
 
         return dates
 
-    def copy(self):
-        """Return a copy of the object."""
-        return copy.copy(self)
+    def update(  # type: ignore[override]
+        self, *args: Union[Dict[DateLike, str], List[DateLike], DateLike]
+    ) -> None:
+        # TODO: fix arguments; should not be *args (cannot properly Type hint)
+        """Update the object, overwriting existing dates.
 
-    def __eq__(self, other: object) -> bool:
-        if not isinstance(other, HolidayBase):
-            return False
+        :param:
+            Either another dictionary object where keys are dates and values
+            are holiday names, or a single date (or a list of dates) for which
+            the value will be set to "Holiday".
 
-        for attribute_name in self.__attribute_names:
-            if getattr(self, attribute_name, None) != getattr(
-                other, attribute_name, None
-            ):
-                return False
+            Dates can be expressed in one or more of the following types:
 
-        return dict.__eq__(self, other)
-
-    def __ne__(self, other: object) -> bool:
-        if not isinstance(other, HolidayBase):
-            return True
-
-        for attribute_name in self.__attribute_names:
-            if getattr(self, attribute_name, None) != getattr(
-                other, attribute_name, None
-            ):
-                return True
-
-        return dict.__ne__(self, other)
-
-    def __add__(
-        self, other: Union[int, "HolidayBase", "HolidaySum"]
-    ) -> "HolidayBase":
-        """Add another dictionary of public holidays creating a
-        :class:`HolidaySum` object.
-
-        :param other:
-            The dictionary of public holiday to be added.
-
-        :return:
-            A :class:`HolidaySum` object unless the other object cannot be
-            added, then :class:`self`.
+            * :class:`datetime.date`,
+            * :class:`datetime.datetime`,
+            * a :class:`str` of any format recognized by
+              :func:`dateutil.parser.parse`,
+            * or a :class:`float` or :class:`int` representing a POSIX
+              timestamp.
         """
-        if isinstance(other, int) and other == 0:
-            # Required to sum() list of holidays
-            # sum([h1, h2]) is equivalent to (0 + h1 + h2).
-            return self
-
-        if not isinstance(other, (HolidayBase, HolidaySum)):
-            raise TypeError(
-                "Holiday objects can only be added with other Holiday objects"
-            )
-
-        return HolidaySum(self, other)
-
-    def __radd__(self, other: Any) -> "HolidayBase":
-        return self.__add__(other)
-
-    def _parse_holiday(self, *args) -> Tuple[str, date]:
-        """Parse holiday data."""
-        if len(args) == 2:
-            name, dt = args
-            if not isinstance(dt, date):
-                raise TypeError(
-                    "Invalid argument type: expected <class 'date'> "
-                    f"got '{type(dt)}'."
-                )
-        elif len(args) == 3:
-            name, month, day = args
-            dt = date(self._year, month, day)
-        else:
-            raise TypeError("Incorrect number of arguments.")
-
-        return name, dt
-
-    def _add_holiday(self, *args) -> Optional[date]:
-        """Add a holiday.
-
-        This method accepts either `name: str, dt: date` or
-        `name: str, month: int, day: int` arguments.
-        """
-        name, dt = self._parse_holiday(*args)
-        if dt.year != self._year:
-            return None
-
-        self[dt] = self.tr(name)
-        return dt
-
-    def _add_subdiv_holidays(self):
-        """Populate subdivision holidays."""
-        if self.subdiv is not None:
-            subdiv = self.subdiv.replace("-", "_").lower()
-            add_subdiv_holidays = getattr(
-                self, f"_add_subdiv_{subdiv}_holidays", None
-            )
-            if add_subdiv_holidays and callable(add_subdiv_holidays):
-                add_subdiv_holidays()
-
-    def _populate(self, year: int) -> Set[Optional[date]]:
-        """This is a private class that populates (generates and adds) holidays
-        for a given year. To keep things fast, it assumes that no holidays for
-        the year have already been populated. It is required to be called
-        internally by any country populate() method, while should not be called
-        directly from outside.
-        To add holidays to an object, use the update() method:
-
-        :param year:
-            The year to populate with holidays.
-
-        >>> from holidays import country_holidays
-        >>> us_holidays = country_holidays('US', years=2020)
-        # to add new holidays to the object:
-        >>> us_holidays.update(country_holidays('US', years=2021))
-        """
-
-        self._year = year
-        dates = set()
-
-        # Populate items from the special holidays list.
-        for month, day, name in self.special_holidays.get(year, ()):
-            dates.add(self._add_holiday(name, date(year, month, day)))
-
-        # Populate subdivision holidays.
-        self._add_subdiv_holidays()
-
-        return dates
-
-    @staticmethod
-    def _is_leap_year(year: int) -> bool:
-        """
-        Returns True if the year is leap. Returns False otherwise.
-        """
-        return isleap(year)
-
-    def _is_weekend(self, *args):
-        """
-        Returns True if date's week day is a weekend day.
-        Returns False otherwise.
-        """
-        dt = args[0] if len(args) == 1 else date(self._year, *args)
-
-        return dt.weekday() in self.weekend
-
-    def _check_weekday(self, weekday: int, *args) -> bool:
-        """
-        Returns True if `weekday` equals to the date's week day.
-        Returns False otherwise.
-        """
-        dt = args[0] if len(args) == 1 else date(self._year, *args)
-        return dt.weekday() == weekday
-
-    def _is_monday(self, *args) -> bool:
-        return self._check_weekday(MON, *args)
-
-    def _is_tuesday(self, *args) -> bool:
-        return self._check_weekday(TUE, *args)
-
-    def _is_wednesday(self, *args) -> bool:
-        return self._check_weekday(WED, *args)
-
-    def _is_thursday(self, *args) -> bool:
-        return self._check_weekday(THU, *args)
-
-    def _is_friday(self, *args) -> bool:
-        return self._check_weekday(FRI, *args)
-
-    def _is_saturday(self, *args) -> bool:
-        return self._check_weekday(SAT, *args)
-
-    def _is_sunday(self, *args) -> bool:
-        return self._check_weekday(SUN, *args)
-
-    def __reduce__(self) -> Union[str, Tuple[Any, ...]]:
-        return super().__reduce__()
-
-    def __repr__(self) -> str:
-        if self:
-            return super().__repr__()
-
-        parts = []
-        if hasattr(self, "market"):
-            parts.append(f"holidays.financial_holidays({self.market!r}")
-        elif hasattr(self, "country"):
-            if parts:
-                parts.append(" + ")
-            parts.append(f"holidays.country_holidays({self.country!r}")
-            if self.subdiv:
-                parts.append(f", subdiv={self.subdiv!r}")
-        parts.append(")")
-
-        return "".join(parts)
-
-    def __str__(self) -> str:
-        if self:
-            return super().__str__()
-
-        parts = []
-        for attribute_name in self.__attribute_names:
-            parts.append(
-                "'%s': %s"
-                % (attribute_name, getattr(self, attribute_name, None))
-            )
-
-        return f"{{{', '.join(parts)}}}"
+        for arg in args:
+            if isinstance(arg, dict):
+                for key, value in arg.items():
+                    self[key] = value
+            elif isinstance(arg, list):
+                for item in arg:
+                    self[item] = "Holiday"
+            else:
+                self[arg] = "Holiday"
 
 
 class HolidaySum(HolidayBase):
