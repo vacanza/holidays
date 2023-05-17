@@ -175,8 +175,6 @@ class EntityLoader:
         self.entity_name = entity_path[-1]
         self.module_name = ".".join(entity_path[0:-1])
 
-        super().__init__(*args, **kwargs)
-
     def __call__(self, *args, **kwargs) -> HolidayBase:
         """Create a new instance of a lazy-loaded entity."""
         cls = self.get_entity()
