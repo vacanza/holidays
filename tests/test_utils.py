@@ -9,7 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import os
 import sys
 import unittest
 import warnings
@@ -170,8 +169,8 @@ class TestListLocalizedEntities(unittest.TestCase):
             all_languages = sorted(
                 # Collect `<locale>` part from
                 # holidays/locale/<locale>/LC_MESSAGES/<country_code>.po.
-                str(translation).split(os.sep)[-3]
-                for translation in Path(locale_dir).rglob(f"{entity_code}.po")
+                path.parts[-3]
+                for path in Path(locale_dir).rglob(f"{entity_code}.po")
             )
             self.assertEqual(
                 all_languages,
