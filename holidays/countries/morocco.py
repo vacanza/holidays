@@ -44,6 +44,11 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
         # New Year's Day
         self._add_new_years_day("Nouvel an - Premier janvier")
 
+        # Amazigh New Year
+        # In May 2023, Morocco recognised Berber New Year as official holiday
+        if year >= 2024:
+            self._add_holiday("Nouvel An berbère", JAN, 13)
+
         # Independence Manifesto Day post 1944
         if year >= 1945:
             self._add_holiday(
