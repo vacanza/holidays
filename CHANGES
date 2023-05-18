@@ -1,7 +1,12 @@
-Version 0.25
+Version 0.26
 ============
 
 Released ???????? ??, ????
+
+Version 0.25
+============
+
+Released May 15, 2023
 
 - Introduce entity lazy loading, #1087 (@arkid15r)
 - Add Algeria holidays, #1176 (@abh31000)
