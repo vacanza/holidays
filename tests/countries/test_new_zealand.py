@@ -10,8 +10,6 @@
 #  License: MIT (see LICENSE file)
 
 import warnings
-from datetime import date
-from datetime import timedelta as td
 
 from holidays.countries.new_zealand import NewZealand, NZ, NZL
 from tests.common import TestCase
@@ -20,7 +18,11 @@ from tests.common import TestCase
 class TestNZ(TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(NewZealand)
+        super().setUpClass(
+            NewZealand,
+            years=range(1900, 2050),
+            years_non_observed=range(2000, 2024),
+        )
 
     def setUp(self):
         super().setUp()
@@ -29,796 +31,573 @@ class TestNZ(TestCase):
     def test_country_aliases(self):
         self.assertCountryAliases(NewZealand, NZ, NZL)
 
+    def test_no_holidays(self):
+        self.assertNoHolidays(NewZealand(years=1893))
+
     def test_new_years(self):
-        for year in range(1900, 2100):
-            dt = date(year, 1, 1)
-            self.assertIn(dt, self.holidays)
-        for year, day in enumerate(
-            [
-                1,
-                1,
-                1,
-                1,
-                3,  # 2001-05
-                3,
-                1,
-                1,
-                1,
-                1,  # 2006-10
-                3,
-                3,
-                1,
-                1,
-                1,  # 2011-15
-                1,
-                3,
-                1,
-                1,
-                1,
-                1,
-            ],  # 2016-21
-            2001,
-        ):
-            dt = date(year, 1, day)
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt][:10], "New Year's")
-        self.assertNotIn("1893-01-01", self.holidays)
-        self.assertIn("1894-01-01", self.holidays)
+        name = "New Year's Day"
+        self.assertHolidaysName(
+            name, (f"{year}-01-01" for year in range(1900, 2050))
+        )
+        years_observed = (2005, 2006, 2011, 2012, 2017)
+        obs_dt = (f"{year}-01-03" for year in years_observed)
+        self.assertHolidaysName(f"{name} (Observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_day_after_new_years(self):
-        for year in range(1900, 2100):
-            dt = date(year, 1, 2)
-            self.assertIn(dt, self.holidays)
-        for year, day in enumerate(
-            [
-                2,
-                2,
-                2,
-                2,
-                2,  # 2001-05
-                2,
-                2,
-                2,
-                2,
-                4,  # 2006-10
-                4,
-                2,
-                2,
-                2,
-                2,  # 2011-15
-                4,
-                2,
-                2,
-                2,
-                2,
-                4,
-            ],  # 2016-21
-            2001,
-        ):
-            dt = date(year, 1, day)
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt][:10], "Day after ")
-        self.assertNotIn(date(2016, 1, 3), self.holidays)
+        name = "Day after New Year's Day"
+        self.assertHolidaysName(
+            name, (f"{year}-01-02" for year in range(1900, 2050))
+        )
+        years_observed = (2010, 2011, 2016, 2021, 2022)
+        obs_dt = (f"{year}-01-04" for year in years_observed)
+        self.assertHolidaysName(f"{name} (Observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_waitangi_day(self):
-        ntl_holidays = NewZealand(subdiv="Northland")
-        for year, day in enumerate([3, 8, 7, 6, 5], 1964):
-            dt = date(year, 2, day)
-            self.assertIn(dt, ntl_holidays, dt)
-            self.assertEqual(ntl_holidays[dt][:8], "Waitangi")
-        for year in range(1900, 1974):
-            dt = date(year, 2, 6)
-            self.assertNotIn(dt, self.holidays)
-        for year in range(1974, 2100):
-            dt = date(year, 2, 6)
-            self.assertIn(dt, self.holidays)
-        for year, day in enumerate(
-            [
-                6,
-                6,
-                6,
-                6,
-                6,  # 2001-05
-                6,
-                6,
-                6,
-                6,
-                6,  # 2006-10
-                6,
-                6,
-                6,
-                6,
-                6,  # 2011-15
-                8,
-                6,
-                6,
-                6,
-                6,
-                8,
-            ],  # 2016-21
-            2001,
-        ):
-            dt = date(year, 2, day)
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt][:8], "Waitangi")
-        self.assertNotIn(date(2005, 2, 7), self.holidays)
-        self.assertNotIn(date(2010, 2, 8), self.holidays)
-        self.assertNotIn(date(2011, 2, 7), self.holidays)
+        name1 = "New Zealand Day"
+        name2 = "Waitangi Day"
+        self.assertHolidaysName(
+            name2,
+            NewZealand(subdiv="NTL"),
+            "1964-02-03",
+            "1965-02-08",
+            "1966-02-07",
+            "1967-02-06",
+            "1968-02-05",
+        )
+
+        self.assertNoHolidayNameInYears(name1, range(1900, 1974))
+        self.assertNoHolidayNameInYears(name2, range(1900, 1977))
+        self.assertNoHoliday(f"{year}-02-06" for year in range(1900, 1974))
+        self.assertHolidaysName(
+            name1, (f"{year}-02-06" for year in range(1974, 1977))
+        )
+        self.assertHolidaysName(
+            name2, (f"{year}-02-06" for year in range(1977, 2050))
+        )
+        obs_dt = ("2016-02-08", "2021-02-08", "2022-02-07")
+        self.assertHolidaysName(f"{name2} (Observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_good_friday(self):
-        for dt in [
-            date(1900, 4, 13),
-            date(1901, 4, 5),
-            date(1902, 3, 28),
-            date(1999, 4, 2),
-            date(2000, 4, 21),
-            date(2010, 4, 2),
-            date(2018, 3, 30),
-            date(2019, 4, 19),
-            date(2020, 4, 10),
-        ]:
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=-1), self.holidays)
-            self.assertNotIn(dt + td(days=+1), self.holidays)
+        self.assertHoliday(
+            "1999-04-02",
+            "2000-04-21",
+            "2010-04-02",
+            "2018-03-30",
+            "2019-04-19",
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+        )
 
     def test_easter_monday(self):
-        for dt in [
-            date(1900, 4, 16),
-            date(1901, 4, 8),
-            date(1902, 3, 31),
-            date(1999, 4, 5),
-            date(2010, 4, 5),
-            date(2018, 4, 2),
-            date(2019, 4, 22),
-            date(2020, 4, 13),
-        ]:
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=-1), self.holidays)
-            self.assertNotIn(dt + td(days=+1), self.holidays)
+        self.assertHoliday(
+            "1999-04-05",
+            "2000-04-24",
+            "2010-04-05",
+            "2018-04-02",
+            "2019-04-22",
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+        )
 
     def test_anzac_day(self):
-        for year in range(1900, 1921):
-            dt = date(year, 4, 25)
-            self.assertNotIn(dt, self.holidays)
-        for year in range(1921, 2100):
-            dt = date(year, 4, 25)
-            self.assertIn(dt, self.holidays)
-        for year, day in enumerate(
-            [
-                25,
-                25,
-                25,
-                25,
-                25,  # 2001-05
-                25,
-                25,
-                25,
-                25,
-                25,  # 2006-10
-                25,
-                25,
-                25,
-                25,
-                27,  # 2011-15
-                25,
-                25,
-                25,
-                25,
-                27,
-                26,
-            ],  # 2016-21
-            2001,
-        ):
-            dt = date(year, 4, day)
-            self.assertIn(dt, self.holidays, dt)
-            self.assertEqual(self.holidays[dt][:5], "Anzac")
-        self.assertNotIn(date(2009, 4, 27), self.holidays)
-        self.assertNotIn(date(2010, 4, 26), self.holidays)
+        name = "Anzac Day"
+        self.assertHolidaysName(
+            name, (f"{year}-04-25" for year in range(1921, 2050))
+        )
+        obs_dt = ("2015-04-27", "2020-04-27", "2021-04-26")
+        self.assertHolidaysName(f"{name} (Observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertNoHolidayNameInYears(name, range(1900, 1921))
+        self.assertNoHoliday(f"{year}-04-25" for year in range(1900, 1921))
 
     def test_sovereigns_birthday(self):
-        self.assertIn(date(1909, 11, 9), self.holidays)
-        self.assertIn(date(1936, 6, 23), self.holidays)
-        self.assertIn(date(1937, 6, 9), self.holidays)
-        self.assertIn(date(1940, 6, 3), self.holidays)
-        self.assertIn(date(1952, 6, 2), self.holidays)
-        for year in range(1912, 1936):
-            dt = date(year, 6, 3)
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "King's Birthday")
-        for year, day in enumerate(
-            [
-                4,
-                3,
-                2,
-                7,
-                6,  # 2001-05
-                5,
-                4,
-                2,
-                1,
-                7,  # 2006-10
-                6,
-                4,
-                3,
-                2,
-                1,  # 2011-15
-                6,
-                5,
-                4,
-                3,
-                1,
-                7,
-            ],  # 2016-21
-            2001,
-        ):
-            dt = date(year, 6, day)
-            self.assertIn(dt, self.holidays, dt)
-            self.assertEqual(self.holidays[dt], "Queen's Birthday")
-        self.assertEqual(self.holidays[date(2023, 6, 5)], "King's Birthday")
+        name1 = "King's Birthday"
+        name2 = "Queen's Birthday"
+
+        self.assertHoliday(
+            "1909-11-09",
+            "1936-06-23",
+            "1937-06-09",
+            "1940-06-03",
+            "1952-06-02",
+            "2023-06-05",
+        )
+        self.assertHolidaysName(
+            name1, (f"{year}-06-03" for year in range(1912, 1936))
+        )
+
+        self.assertHolidaysName(
+            name2,
+            "2001-06-04",
+            "2002-06-03",
+            "2003-06-02",
+            "2004-06-07",
+            "2005-06-06",
+            "2006-06-05",
+            "2007-06-04",
+            "2008-06-02",
+            "2009-06-01",
+            "2010-06-07",
+            "2011-06-06",
+            "2012-06-04",
+            "2013-06-03",
+            "2014-06-02",
+            "2015-06-01",
+            "2016-06-06",
+            "2017-06-05",
+            "2018-06-04",
+            "2019-06-03",
+            "2020-06-01",
+            "2021-06-07",
+            "2022-06-06",
+        )
+
+        self.assertNoHolidayNameInYears(name1, range(1952, 2023))
+        self.assertNoHolidayNameInYears(
+            name2, range(1900, 1952), range(2023, 2050)
+        )
 
     def test_matariki(self):
-        for dt in [
-            date(2022, 6, 24),
-            date(2023, 7, 14),
-            date(2024, 6, 28),
-            date(2025, 6, 20),
-            date(2026, 7, 10),
-            date(2027, 6, 25),
-            date(2028, 7, 14),
-            date(2029, 7, 6),
-            date(2030, 6, 21),
-            date(2031, 7, 11),
-            date(2032, 7, 2),
-            date(2033, 6, 24),
-            date(2034, 7, 7),
-            date(2035, 6, 29),
-            date(2036, 7, 18),
-            date(2037, 7, 10),
-            date(2038, 6, 25),
-            date(2039, 7, 15),
-            date(2040, 7, 6),
-            date(2041, 7, 19),
-            date(2042, 7, 11),
-            date(2043, 7, 3),
-            date(2044, 6, 24),
-            date(2045, 7, 7),
-            date(2046, 6, 29),
-            date(2047, 7, 19),
-            date(2048, 7, 3),
-            date(2049, 6, 25),
-            date(2050, 7, 15),
-            date(2051, 6, 30),
-            date(2052, 6, 21),
-        ]:
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Matariki")
-            self.assertNotIn(dt + td(days=-1), self.holidays)
-            self.assertNotIn(dt + td(days=+1), self.holidays)
+        self.assertHolidaysName(
+            "Matariki",
+            "2022-06-24",
+            "2023-07-14",
+            "2024-06-28",
+            "2025-06-20",
+            "2026-07-10",
+            "2027-06-25",
+            "2028-07-14",
+            "2029-07-06",
+            "2030-06-21",
+            "2031-07-11",
+            "2032-07-02",
+            "2033-06-24",
+            "2034-07-07",
+            "2035-06-29",
+            "2036-07-18",
+            "2037-07-10",
+            "2038-06-25",
+            "2039-07-15",
+            "2040-07-06",
+            "2041-07-19",
+            "2042-07-11",
+            "2043-07-03",
+            "2044-06-24",
+            "2045-07-07",
+            "2046-06-29",
+            "2047-07-19",
+            "2048-07-03",
+            "2049-06-25",
+            "2050-07-15",
+            "2051-06-30",
+            "2052-06-21",
+        )
 
     def test_labour_day(self):
-        for year, day in enumerate(
-            [
-                22,
-                28,
-                27,
-                25,
-                24,  # 2001-05
-                23,
-                22,
-                27,
-                26,
-                25,  # 2006-10
-                24,
-                22,
-                28,
-                27,
-                26,  # 2011-15
-                24,
-                23,
-                22,
-                28,
-                26,
-                25,
-            ],  # 2016-21
-            2001,
-        ):
-            dt = date(year, 10, day)
-            self.assertIn(dt, self.holidays, dt)
-            self.assertEqual(self.holidays[dt], "Labour Day")
+        name = "Labour Day"
+        self.assertHolidaysName(
+            name,
+            "2001-10-22",
+            "2002-10-28",
+            "2003-10-27",
+            "2004-10-25",
+            "2005-10-24",
+            "2006-10-23",
+            "2007-10-22",
+            "2008-10-27",
+            "2009-10-26",
+            "2010-10-25",
+            "2011-10-24",
+            "2012-10-22",
+            "2013-10-28",
+            "2014-10-27",
+            "2015-10-26",
+            "2016-10-24",
+            "2017-10-23",
+            "2018-10-22",
+            "2019-10-28",
+            "2020-10-26",
+            "2021-10-25",
+            "2022-10-24",
+        )
+        self.assertNoHolidayName(name, NewZealand(years=1899))
 
     def test_christmas_day(self):
-        self.holidays.observed = False
-        for year in range(1900, 2100):
-            dt = date(year, 12, 25)
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=-1), self.holidays)
-        self.assertNotIn(date(2010, 12, 24), self.holidays)
-        self.assertNotEqual(
-            self.holidays[date(2011, 12, 26)],
-            "Christmas Day (Observed)",
+        name = "Christmas Day"
+        self.assertHolidaysName(
+            name, (f"{year}-12-25" for year in range(1900, 2050))
         )
-        self.holidays.observed = True
-        self.assertEqual(
-            self.holidays[date(2011, 12, 27)],
-            "Christmas Day (Observed)",
-        )
-        for year, day in enumerate(
-            [
-                25,
-                25,
-                25,
-                27,
-                27,  # 2001-05
-                25,
-                25,
-                25,
-                25,
-                27,  # 2006-10
-                27,
-                25,
-                25,
-                25,
-                25,  # 2011-15
-                27,
-                25,
-                25,
-                25,
-                25,
-                25,
-            ],  # 2016-21
-            2001,
-        ):
-            dt = date(year, 12, day)
-            self.assertIn(dt, self.holidays, dt)
-            self.assertEqual(self.holidays[dt][:9], "Christmas")
+        years_observed = (2004, 2005, 2010, 2011, 2016, 2021, 2022)
+        obs_dt = (f"{year}-12-27" for year in years_observed)
+        self.assertHolidaysName(f"{name} (Observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_boxing_day(self):
-        self.holidays.observed = False
-        for year in range(1900, 2100):
-            dt = date(year, 12, 26)
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=+1), self.holidays)
-        self.assertNotIn(date(2009, 12, 28), self.holidays)
-        self.assertNotIn(date(2010, 12, 27), self.holidays)
-        self.holidays.observed = True
-        self.assertIn(date(2009, 12, 28), self.holidays)
-        self.assertIn(date(2010, 12, 27), self.holidays)
-        for year, day in enumerate(
-            [
-                26,
-                26,
-                26,
-                28,
-                26,  # 2001-05
-                26,
-                26,
-                26,
-                28,
-                28,  # 2006-10
-                26,
-                26,
-                26,
-                26,
-                28,  # 2011-15
-                26,
-                26,
-                26,
-                26,
-                28,
-                28,
-            ],  # 2016-21
-            2001,
-        ):
-            dt = date(year, 12, day)
-            self.assertIn(dt, self.holidays, dt)
-            self.assertEqual(self.holidays[dt][:6], "Boxing")
+        name = "Boxing Day"
+        self.assertHolidaysName(
+            name, (f"{year}-12-26" for year in range(1900, 2050))
+        )
+        years_observed = (2004, 2009, 2010, 2015, 2020, 2021)
+        obs_dt = (f"{year}-12-28" for year in years_observed)
+        self.assertHolidaysName(f"{name} (Observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_auckland_anniversary_day(self):
-        auk_holidays = NewZealand(subdiv="Auckland")
-        for year, day in enumerate(
-            [
-                29,
-                28,
-                27,
-                26,
-                31,  # 2001-05
-                30,
-                29,
-                28,
-                26,
-                1,  # 2006-10
-                31,
-                30,
-                28,
-                27,
-                26,  # 2011-15
-                1,
-                30,
-                29,
-                28,
-                27,
-                1,
-            ],  # 2016-21
-            2001,
-        ):
-            dt = date(year, 2 if day < 9 else 1, day)
-            self.assertIn(dt, auk_holidays, dt)
-            self.assertEqual(auk_holidays[dt], "Auckland Anniversary Day")
+        self.assertHolidaysName(
+            "Auckland Anniversary Day",
+            NewZealand(subdiv="AUK", years=range(2001, 2023)),
+            "2001-01-29",
+            "2002-01-28",
+            "2003-01-27",
+            "2004-01-26",
+            "2005-01-31",
+            "2006-01-30",
+            "2007-01-29",
+            "2008-01-28",
+            "2009-01-26",
+            "2010-02-01",
+            "2011-01-31",
+            "2012-01-30",
+            "2013-01-28",
+            "2014-01-27",
+            "2015-01-26",
+            "2016-02-01",
+            "2017-01-30",
+            "2018-01-29",
+            "2019-01-28",
+            "2020-01-27",
+            "2021-02-01",
+            "2022-01-31",
+        )
 
     def test_taranaki_anniversary_day(self):
-        tki_holidays = NewZealand(subdiv="Taranaki")
-        for year, day in enumerate(
-            [
-                12,
-                11,
-                10,
-                8,
-                14,  # 2001-05
-                13,
-                12,
-                10,
-                9,
-                8,  # 2006-10
-                14,
-                12,
-                11,
-                10,
-                9,  # 2011-15
-                14,
-                13,
-                12,
-                11,
-                9,
-                8,
-            ],  # 2016-21
-            2001,
-        ):
-            dt = date(year, 3, day)
-            self.assertIn(dt, tki_holidays, dt)
-            self.assertEqual(tki_holidays[dt], "Taranaki Anniversary Day")
+        self.assertHolidaysName(
+            "Taranaki Anniversary Day",
+            NewZealand(subdiv="TKI", years=range(2001, 2023)),
+            "2001-03-12",
+            "2002-03-11",
+            "2003-03-10",
+            "2004-03-08",
+            "2005-03-14",
+            "2006-03-13",
+            "2007-03-12",
+            "2008-03-10",
+            "2009-03-09",
+            "2010-03-08",
+            "2011-03-14",
+            "2012-03-12",
+            "2013-03-11",
+            "2014-03-10",
+            "2015-03-09",
+            "2016-03-14",
+            "2017-03-13",
+            "2018-03-12",
+            "2019-03-11",
+            "2020-03-09",
+            "2021-03-08",
+            "2022-03-14",
+        )
 
     def test_hawkes_bay_anniversary_day(self):
-        hkb_holidays = NewZealand(subdiv="Hawke's Bay")
-        for year, day in enumerate(
-            [
-                19,
-                25,
-                24,
-                22,
-                21,  # 2001-05
-                20,
-                19,
-                24,
-                23,
-                22,  # 2006-10
-                21,
-                19,
-                25,
-                24,
-                23,  # 2011-15
-                21,
-                20,
-                19,
-                25,
-                23,
-                22,
-            ],  # 2016-21
-            2001,
-        ):
-            dt = date(year, 10, day)
-            self.assertIn(dt, hkb_holidays, dt)
-            self.assertEqual(hkb_holidays[dt], "Hawke's Bay Anniversary Day")
+        self.assertHolidaysName(
+            "Hawke's Bay Anniversary Day",
+            NewZealand(subdiv="HKB", years=range(2001, 2023)),
+            "2001-10-19",
+            "2002-10-25",
+            "2003-10-24",
+            "2004-10-22",
+            "2005-10-21",
+            "2006-10-20",
+            "2007-10-19",
+            "2008-10-24",
+            "2009-10-23",
+            "2010-10-22",
+            "2011-10-21",
+            "2012-10-19",
+            "2013-10-25",
+            "2014-10-24",
+            "2015-10-23",
+            "2016-10-21",
+            "2017-10-20",
+            "2018-10-19",
+            "2019-10-25",
+            "2020-10-23",
+            "2021-10-22",
+            "2022-10-21",
+        )
 
     def test_wellington_anniversary_day(self):
-        wgn_holidays = NewZealand(subdiv="Wellington")
-        for year, day in enumerate(
-            [
-                22,
-                21,
-                20,
-                19,
-                24,  # 2001-05
-                23,
-                22,
-                21,
-                19,
-                25,  # 2006-10
-                24,
-                23,
-                21,
-                20,
-                19,  # 2011-15
-                25,
-                23,
-                22,
-                21,
-                20,
-                25,
-            ],  # 2016-21
-            2001,
-        ):
-            dt = date(year, 1, day)
-            self.assertIn(dt, wgn_holidays, dt)
-            self.assertEqual(
-                wgn_holidays[dt], "Wellington Anniversary Day", dt
-            )
+        self.assertHolidaysName(
+            "Wellington Anniversary Day",
+            NewZealand(subdiv="WGN", years=range(2001, 2023)),
+            "2001-01-22",
+            "2002-01-21",
+            "2003-01-20",
+            "2004-01-19",
+            "2005-01-24",
+            "2006-01-23",
+            "2007-01-22",
+            "2008-01-21",
+            "2009-01-19",
+            "2010-01-25",
+            "2011-01-24",
+            "2012-01-23",
+            "2013-01-21",
+            "2014-01-20",
+            "2015-01-19",
+            "2016-01-25",
+            "2017-01-23",
+            "2018-01-22",
+            "2019-01-21",
+            "2020-01-20",
+            "2021-01-25",
+            "2022-01-24",
+        )
 
     def test_marlborough_anniversary_day(self):
-        mbh_holidays = NewZealand(subdiv="Marlborough")
-        for year, day in enumerate(
-            [
-                29,
-                4,
-                3,
-                1,
-                31,  # 2001-05
-                30,
-                29,
-                3,
-                2,
-                1,  # 2006-10
-                31,
-                29,
-                4,
-                3,
-                2,  # 2011-15
-                31,
-                30,
-                29,
-                4,
-                2,
-                1,
-            ],  # 2016-21
-            2001,
-        ):
-            dt = date(year, 11 if day < 9 else 10, day)
-            self.assertIn(dt, mbh_holidays, dt)
-            self.assertEqual(
-                mbh_holidays[dt], "Marlborough Anniversary Day", dt
-            )
+        self.assertHolidaysName(
+            "Marlborough Anniversary Day",
+            NewZealand(subdiv="MBH", years=range(2001, 2023)),
+            "2001-10-29",
+            "2002-11-04",
+            "2003-11-03",
+            "2004-11-01",
+            "2005-10-31",
+            "2006-10-30",
+            "2007-10-29",
+            "2008-11-03",
+            "2009-11-02",
+            "2010-11-01",
+            "2011-10-31",
+            "2012-10-29",
+            "2013-11-04",
+            "2014-11-03",
+            "2015-11-02",
+            "2016-10-31",
+            "2017-10-30",
+            "2018-10-29",
+            "2019-11-04",
+            "2020-11-02",
+            "2021-11-01",
+            "2022-10-31",
+        )
 
     def test_nelson_anniversary_day(self):
-        nsn_holidays = NewZealand(subdiv="Nelson")
-        for year, day in enumerate(
-            [
-                29,
-                4,
-                3,
-                2,
-                31,  # 2001-05
-                30,
-                29,
-                4,
-                2,
-                1,  # 2006-10
-                31,
-                30,
-                4,
-                3,
-                2,  # 2011-15
-                1,
-                30,
-                29,
-                4,
-                3,
-                1,
-            ],  # 2016-21
-            2001,
-        ):
-            dt = date(year, 2 if day < 9 else 1, day)
-            self.assertIn(dt, nsn_holidays, dt)
-            self.assertEqual(nsn_holidays[dt], "Nelson Anniversary Day", dt)
+        self.assertHolidaysName(
+            "Nelson Anniversary Day",
+            NewZealand(subdiv="NSN", years=range(2001, 2023)),
+            "2001-01-29",
+            "2002-02-04",
+            "2003-02-03",
+            "2004-02-02",
+            "2005-01-31",
+            "2006-01-30",
+            "2007-01-29",
+            "2008-02-04",
+            "2009-02-02",
+            "2010-02-01",
+            "2011-01-31",
+            "2012-01-30",
+            "2013-02-04",
+            "2014-02-03",
+            "2015-02-02",
+            "2016-02-01",
+            "2017-01-30",
+            "2018-01-29",
+            "2019-02-04",
+            "2020-02-03",
+            "2021-02-01",
+            "2022-01-31",
+        )
 
     def test_canterbury_anniversary_day(self):
-        can_holidays = NewZealand(subdiv="Canterbury")
-        for year, day in enumerate(
-            [
-                16,
-                15,
-                14,
-                12,
-                11,  # 2001-05
-                17,
-                16,
-                14,
-                13,
-                12,  # 2006-10
-                11,
-                16,
-                15,
-                14,
-                13,  # 2011-15
-                11,
-                17,
-                16,
-                15,
-                13,
-                12,
-            ],  # 2016-21
-            2001,
-        ):
-            dt = date(year, 11, day)
-            self.assertIn(dt, can_holidays, dt)
-            self.assertEqual(
-                can_holidays[dt], "Canterbury Anniversary Day", dt
-            )
+        self.assertHolidaysName(
+            "Canterbury Anniversary Day",
+            NewZealand(subdiv="CAN", years=range(2001, 2023)),
+            "2001-11-16",
+            "2002-11-15",
+            "2003-11-14",
+            "2004-11-12",
+            "2005-11-11",
+            "2006-11-17",
+            "2007-11-16",
+            "2008-11-14",
+            "2009-11-13",
+            "2010-11-12",
+            "2011-11-11",
+            "2012-11-16",
+            "2013-11-15",
+            "2014-11-14",
+            "2015-11-13",
+            "2016-11-11",
+            "2017-11-17",
+            "2018-11-16",
+            "2019-11-15",
+            "2020-11-13",
+            "2021-11-12",
+            "2022-11-11",
+        )
 
     def test_south_canterbury_anniversary_day(self):
-        stc_holidays = NewZealand(subdiv="South Canterbury")
-        for year, day in enumerate(
-            [
-                24,
-                23,
-                22,
-                27,
-                26,  # 2001-05
-                25,
-                24,
-                22,
-                28,
-                27,  # 2006-10
-                26,
-                24,
-                23,
-                22,
-                28,  # 2011-15
-                26,
-                25,
-                24,
-                23,
-                28,
-                27,
-            ],  # 2016-21
-            2001,
-        ):
-            dt = date(year, 9, day)
-            self.assertIn(dt, stc_holidays, dt)
-            self.assertEqual(
-                stc_holidays[dt], "South Canterbury Anniversary Day", dt
-            )
+        self.assertHolidaysName(
+            "South Canterbury Anniversary Day",
+            NewZealand(subdiv="STC", years=range(2001, 2023)),
+            "2001-09-24",
+            "2002-09-23",
+            "2003-09-22",
+            "2004-09-27",
+            "2005-09-26",
+            "2006-09-25",
+            "2007-09-24",
+            "2008-09-22",
+            "2009-09-28",
+            "2010-09-27",
+            "2011-09-26",
+            "2012-09-24",
+            "2013-09-23",
+            "2014-09-22",
+            "2015-09-28",
+            "2016-09-26",
+            "2017-09-25",
+            "2018-09-24",
+            "2019-09-23",
+            "2020-09-28",
+            "2021-09-27",
+            "2022-09-26",
+        )
 
-    def test_westland_anniversary_day(self):
-        wtc_holidays = NewZealand(subdiv="Westland")
-        for year, day in enumerate(
-            [
-                3,
-                2,
-                1,
-                29,
-                5,  # 2001-05
-                4,
-                3,
-                1,
-                30,
-                29,  # 2006-10
-                28,
-                3,
-                2,
-                1,
-                30,  # 2011-15
-                28,
-                4,
-                3,
-                2,
-                30,
-                29,
-            ],  # 2016-21
-            2001,
-        ):
-            dt = date(year, 12 if day < 9 else 11, day)
-            self.assertIn(dt, wtc_holidays, dt)
-            self.assertEqual(
-                wtc_holidays[dt], "West Coast Anniversary Day", dt
-            )
+    def test_west_coast_anniversary_day(self):
+        self.assertHolidaysName(
+            "West Coast Anniversary Day",
+            NewZealand(subdiv="WTC", years=range(2001, 2023)),
+            "2001-12-03",
+            "2002-12-02",
+            "2003-12-01",
+            "2004-11-29",
+            "2005-12-05",
+            "2006-12-04",
+            "2007-12-03",
+            "2008-12-01",
+            "2009-11-30",
+            "2010-11-29",
+            "2011-11-28",
+            "2012-12-03",
+            "2013-12-02",
+            "2014-12-01",
+            "2015-11-30",
+            "2016-11-28",
+            "2017-12-04",
+            "2018-12-03",
+            "2019-12-02",
+            "2020-11-30",
+            "2021-11-29",
+            "2022-11-28",
+        )
 
     def test_otago_anniversary_day(self):
-        ota_holidays = NewZealand(subdiv="Otago")
-        for year, day in enumerate(
-            [
-                26,
-                25,
-                24,
-                22,
-                21,  # 2001-05
-                20,
-                26,
-                25,
-                23,
-                22,  # 2006-10
-                21,
-                26,
-                25,
-                24,
-                23,  # 2011-15
-                21,
-                20,
-                26,
-                25,
-                23,
-                22,
-            ],  # 2016-21
-            2001,
-        ):
-            dt = date(year, 3, day)
-            self.assertIn(dt, ota_holidays, dt)
-            self.assertEqual(ota_holidays[dt], "Otago Anniversary Day", dt)
+        self.assertHolidaysName(
+            "Otago Anniversary Day",
+            NewZealand(subdiv="OTA", years=range(2001, 2023)),
+            "2001-03-26",
+            "2002-03-25",
+            "2003-03-24",
+            "2004-03-22",
+            "2005-03-21",
+            "2006-03-20",
+            "2007-03-26",
+            "2008-03-25",
+            "2009-03-23",
+            "2010-03-22",
+            "2011-03-21",
+            "2012-03-26",
+            "2013-03-25",
+            "2014-03-24",
+            "2015-03-23",
+            "2016-03-21",
+            "2017-03-20",
+            "2018-03-26",
+            "2019-03-25",
+            "2020-03-23",
+            "2021-03-22",
+            "2022-03-21",
+        )
 
     def test_southland_anniversary_day(self):
-        stl_holidays = NewZealand(subdiv="Southland")
-        for year, day in enumerate(
-            [15, 14, 20, 19, 17, 16, 15, 14, 19, 18, 17],
-            2001,  # 2001-05  # 2006-11
-        ):
-            dt = date(year, 1, day)
-            self.assertIn(dt, stl_holidays, dt)
-            self.assertEqual(stl_holidays[dt], "Southland Anniversary Day", dt)
-        for year, (month, day) in enumerate(
-            [
-                (4, 10),
-                (4, 2),
-                (4, 22),
-                (4, 7),
-                (3, 29),
-                (4, 18),
-                (4, 3),
-                (4, 23),
-                (4, 14),
-                (4, 6),
-            ],
-            2012,
-        ):
-            dt = date(year, month, day)
-            self.assertIn(dt, stl_holidays, dt)
-            self.assertEqual(stl_holidays[dt], "Southland Anniversary Day", dt)
+        self.assertHolidaysName(
+            "Southland Anniversary Day",
+            NewZealand(subdiv="STL", years=range(2001, 2023)),
+            "2001-01-15",
+            "2002-01-14",
+            "2003-01-20",
+            "2004-01-19",
+            "2005-01-17",
+            "2006-01-16",
+            "2007-01-15",
+            "2008-01-14",
+            "2009-01-19",
+            "2010-01-18",
+            "2011-01-17",
+            "2012-04-10",
+            "2013-04-02",
+            "2014-04-22",
+            "2015-04-07",
+            "2016-03-29",
+            "2017-04-18",
+            "2018-04-03",
+            "2019-04-23",
+            "2020-04-14",
+            "2021-04-06",
+            "2022-04-19",
+        )
 
     def test_chatham_islands_anniversary_day(self):
-        cit_holidays = NewZealand(subdiv="Chatham Islands")
-        for year, day in enumerate(
-            [
-                3,
-                2,
-                1,
-                29,
-                28,  # 2001-05
-                27,
-                3,
-                1,
-                30,
-                29,  # 2006-10
-                28,
-                3,
-                2,
-                1,
-                30,  # 2011-15
-                28,
-                27,
-                3,
-                2,
-                30,
-                29,
-            ],  # 2016-21
-            2001,
-        ):
-            dt = date(year, 12 if day < 9 else 11, day)
-            self.assertIn(dt, cit_holidays, dt)
-            self.assertEqual(
-                cit_holidays[dt], "Chatham Islands Anniversary Day", dt
-            )
+        self.assertHolidaysName(
+            "Chatham Islands Anniversary Day",
+            NewZealand(subdiv="CIT", years=range(2001, 2023)),
+            "2001-12-03",
+            "2002-12-02",
+            "2003-12-01",
+            "2004-11-29",
+            "2005-11-28",
+            "2006-11-27",
+            "2007-12-03",
+            "2008-12-01",
+            "2009-11-30",
+            "2010-11-29",
+            "2011-11-28",
+            "2012-12-03",
+            "2013-12-02",
+            "2014-12-01",
+            "2015-11-30",
+            "2016-11-28",
+            "2017-11-27",
+            "2018-12-03",
+            "2019-12-02",
+            "2020-11-30",
+            "2021-11-29",
+            "2022-11-28",
+        )
 
     def test_all_holidays_present(self):
+        all_subdivisions = set(NewZealand.subdivisions).union({"STC"})
         nz_1969 = sum(
-            NewZealand(years=[1969], subdiv=p) for p in NewZealand.subdivisions
+            NewZealand(years=1969, subdiv=p) for p in all_subdivisions
         )
         holidays_in_1969 = sum((nz_1969.get_list(key) for key in nz_1969), [])
         nz_2015 = sum(
-            NewZealand(years=[2015], subdiv=p) for p in NewZealand.subdivisions
+            NewZealand(years=2015, subdiv=p) for p in all_subdivisions
         )
         holidays_in_2015 = sum((nz_2015.get_list(key) for key in nz_2015), [])
         nz_1974 = sum(
-            NewZealand(years=[1974], subdiv=p) for p in NewZealand.subdivisions
+            NewZealand(years=1974, subdiv=p) for p in all_subdivisions
         )
         holidays_in_1974 = sum((nz_1974.get_list(key) for key in nz_1974), [])
-        all_holidays = [
+        all_holidays = {
             "New Year's Day",
             "Day after New Year's Day",
             "Waitangi Day",
@@ -845,15 +624,38 @@ class TestNZ(TestCase):
             "Labour Day",
             "Christmas Day",
             "Boxing Day",
-        ]
+        }
         for holiday in all_holidays:
             self.assertIn(holiday, holidays_in_1969, holiday)
             self.assertIn(holiday, holidays_in_2015, holiday)
         all_holidays.remove("Waitangi Day")
-        all_holidays.insert(2, "New Zealand Day")
+        all_holidays.add("New Zealand Day")
         for holiday in all_holidays:
             self.assertIn(holiday, holidays_in_1974, holiday)
         self.assertNotIn("Waitangi Day", holidays_in_1974)
+
+    def test_deprecated(self):
+        for subdiv1, subdiv2 in (
+            ("Auckland", "AUK"),
+            ("Canterbury", "CAN"),
+            ("Chatham Islands", "CIT"),
+            ("Hawke's Bay", "HKB"),
+            ("Marlborough", "MBH"),
+            ("Nelson", "NSN"),
+            ("Northland", "NTL"),
+            ("Otago", "OTA"),
+            ("New Plymouth", "TKI"),
+            ("Taranaki", "TKI"),
+            ("Southland", "STL"),
+            ("Wellington", "WGN"),
+            ("West Coast", "WTC"),
+            ("Westland", "WTC"),
+            ("WTL", "WTC"),
+        ):
+            self.assertEqual(
+                NewZealand(subdiv=subdiv1, years=2022).keys(),
+                NewZealand(subdiv=subdiv2, years=2022).keys(),
+            )
 
     def test_subdiv_deprecation(self):
         self.assertDeprecatedSubdivisions(

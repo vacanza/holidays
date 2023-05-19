@@ -356,7 +356,7 @@ subdivisions are available:
      - None
    * - New Zealand
      - NZ
-     - Regions: AUK, CAN, CIT, HKB, MBH, NSN, NTL, OTA, STL, TKI, WGN, WTC. Sub-regions: South Canterbury
+     - Regions: AUK, BOP, CAN, CIT, GIS, HKB, MBH, MWT, NSN, NTL, OTA, STL, TAS, TKI, WGN, WKO, WTC
    * - Nicaragua
      - NI
      - Departments: AN, AS, BO, CA, CI, CO, ES, GR, JI, LE, MD, **MN** (default), MS, MT, NS, RI, SJ
