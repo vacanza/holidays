@@ -35,7 +35,7 @@ class Botswana(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _add_observed(self, dt: date) -> None:
-        if self.observed and self._is_sunday(dt):
+        if self.observed and self._is_sunday(dt) and self._year >= 1995:
             self._add_holiday(
                 "%s (Observed)" % self[dt],
                 dt + td(days=2 if dt + td(days=+1) in self else 1),
@@ -66,10 +66,12 @@ class Botswana(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         self._add_observed(self._add_holiday("Sir Seretse Khama Day", JUL, 1))
 
-        jul_3_mon = self._add_holiday(
+        july_3rd_monday = self._add_holiday(
             "President's Day", _get_nth_weekday_of_month(3, MON, JUL, year)
         )
-        self._add_holiday("President's Day Holiday", jul_3_mon + td(days=+1))
+        self._add_holiday(
+            "President's Day Holiday", july_3rd_monday + td(days=+1)
+        )
 
         sep_30 = self._add_holiday("Botswana Day", SEP, 30)
         self._add_observed(
