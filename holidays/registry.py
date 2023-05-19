@@ -169,9 +169,18 @@ class EntityLoader:
 
     def __init__(self, path: str, *args, **kwargs) -> None:
         """Set up a lazy loader."""
-        self.entity = None
+        if args:
+            raise TypeError(
+                "This is a python-holidays entity loader class. "
+                "For entity inheritance purposes please import a class you "
+                "want to derive from directly: e.g., "
+                "`from holidays.countries import Entity` or "
+                "`from holidays.financial import Entity`."
+            )
 
         entity_path = path.split(".")
+
+        self.entity = None
         self.entity_name = entity_path[-1]
         self.module_name = ".".join(entity_path[0:-1])
 
