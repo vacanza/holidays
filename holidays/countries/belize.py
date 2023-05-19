@@ -122,6 +122,9 @@ class Belize(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Garifuna Settlement Day.
         self._add_holiday("Garifuna Settlement Day", NOV, 19)
 
+        # Populated before Christmas for right obvserved Christmas calculation
+        # (if Christmas falls on Sunday, there should be no observed Christmas
+        # on Monday)
         # Boxing Day.
         self._add_christmas_day_two("Boxing Day")
 
