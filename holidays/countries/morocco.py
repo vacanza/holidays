@@ -55,6 +55,7 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
 
         # Amazigh New Year
         # In May 2023, Morocco recognised Berber New Year as official holiday
+        # http://www.diplomatie.ma/en/statement-royal-office-12
         if year >= 2024:
             self._add_holiday("Nouvel An berbère", JAN, 13)
 
