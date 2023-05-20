@@ -48,10 +48,9 @@ class Botswana(HolidayBase, ChristianHolidays, InternationalHolidays):
         super()._populate(year)
 
         jan_1 = self._add_new_years_day("New Year's Day")
-        self._add_observed(
-            self._add_new_years_day_two("New Year's Day Holiday")
-        )
+        jan_2 = self._add_new_years_day_two("New Year's Day Holiday")
         self._add_observed(jan_1)
+        self._add_observed(jan_2)
 
         # Easter and easter related calculations
         self._add_good_friday("Good Friday")
@@ -74,10 +73,9 @@ class Botswana(HolidayBase, ChristianHolidays, InternationalHolidays):
         )
 
         sep_30 = self._add_holiday("Botswana Day", SEP, 30)
-        self._add_observed(
-            self._add_holiday("Botswana Day Holiday", sep_30 + td(days=+1))
-        )
+        oct_1 = self._add_holiday("Botswana Day Holiday", sep_30 + td(days=+1))
         self._add_observed(sep_30)
+        self._add_observed(oct_1)
 
         dec_25 = self._add_christmas_day("Christmas Day")
         dec_26 = self._add_christmas_day_two("Boxing Day")
