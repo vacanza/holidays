@@ -573,14 +573,14 @@ class ChineseCalendarHolidays:
             dt,
         )
 
-    def _add_chinese_buddha_birthday(self, name) -> Optional[date]:
+    def _add_chinese_birthday_of_buddha(self, name) -> Optional[date]:
         """
-        Add Buddha's Birthday by Chinese lunar calendar (8th day of the
+        Add Birthday of the Buddha by Chinese lunar calendar (8th day of the
         4th lunar month).
 
-        Buddha's Birthday is a Buddhist festival that is celebrated in most
-        of East Asia and South Asia commemorating the birth of Gautama Buddha,
-        who was the founder of Buddhism.
+        Birthday of the Buddha is a Buddhist festival that is celebrated in
+        most of East Asia and South Asia commemorating the birth of Gautama
+        Buddha, who was the founder of Buddhism.
         https://en.wikipedia.org/wiki/Buddha%27s_Birthday
         """
         return self._add_chinese_calendar_holiday(

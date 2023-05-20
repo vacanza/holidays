@@ -18,7 +18,7 @@ from tests.common import TestCase
 class TestSouthKorea(TestCase):
     @classmethod
     def setUpClass(cls):
-        years = [1948, 1949, 1960, 1974, 1975] + list(range(1981, 2050))
+        years = (1948, 1949, 1960, 1974, 1975) + tuple(range(1981, 2050))
         super().setUpClass(SouthKorea, years=years)
 
     def test_country_aliases(self):

@@ -141,7 +141,7 @@ class HongKong(
 
         if year >= 1999:
             # The Birthday of the Buddha
-            self._add_chinese_buddha_birthday("The Birthday of the Buddha")
+            self._add_chinese_birthday_of_buddha("The Birthday of the Buddha")
 
             # Labour Day
             self._add_labor_day("Labour Day")

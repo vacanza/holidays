@@ -139,7 +139,7 @@ class SouthKorea(
             self._add_holiday("Tree Planting Day", APR, 5)
 
         # Birthday of the Buddha
-        self._add_chinese_buddha_birthday("Birthday of the Buddha")
+        self._add_chinese_birthday_of_buddha("Birthday of the Buddha")
 
         # Children's Day
         if year >= 1975:
