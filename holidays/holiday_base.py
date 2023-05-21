@@ -566,7 +566,7 @@ class HolidayBase(Dict[date, str]):
     def _add_subdiv_holidays(self):
         """Populate subdivision holidays."""
         if self.subdiv is not None:
-            subdiv = self.subdiv.replace("-", "_").lower()
+            subdiv = self.subdiv.replace("-", "_").replace(" ", "_").lower()
             add_subdiv_holidays = getattr(
                 self, f"_add_subdiv_{subdiv}_holidays", None
             )
