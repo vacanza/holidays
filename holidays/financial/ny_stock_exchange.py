@@ -12,20 +12,23 @@
 from datetime import date
 from datetime import timedelta as td
 
-from dateutil.easter import easter
-
 from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC, MON, THU
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class NewYorkStockExchange(HolidayBase):
-    # Official regulations:
-    # https://www.nyse.com/publicdocs/nyse/regulation/nyse/NYSE_Rules.pdf
-    # https://www.nyse.com/markets/hours-calendars
-    # Historical data:
-    # s3.amazonaws.com/armstrongeconomics-wp/2013/07/NYSE-Closings.pdf
+class NewYorkStockExchange(
+    HolidayBase, ChristianHolidays, InternationalHolidays
+):
+    """
+    Official regulations:
+    - https://www.nyse.com/publicdocs/nyse/regulation/nyse/NYSE_Rules.pdf
+    - https://www.nyse.com/markets/hours-calendars
+    Historical data:
+    - s3.amazonaws.com/armstrongeconomics-wp/2013/07/NYSE-Closings.pdf
+    """
 
     market = "NYSE"
     special_holidays = {
@@ -126,125 +129,133 @@ class NewYorkStockExchange(HolidayBase):
         2018: ((DEC, 5, "Day of Mourning for President George H.W. Bush"),),
     }
 
-    def _set_observed_date(self, holiday_date: date, name: str) -> None:
-        if self._is_saturday(holiday_date):
-            self[holiday_date + td(days=-1)] = name + " (Observed)"
-        elif self._is_sunday(holiday_date):
-            self[holiday_date + td(days=+1)] = name + " (Observed)"
-        else:
-            self[holiday_date] = name
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
+    def _add_observed_holiday(self, name: str, dt: date) -> None:
+        if self._is_saturday(dt):
+            dt += td(days=-1)
+            name = f"{name} (Observed)"
+        elif self._is_sunday(dt):
+            dt += td(days=+1)
+            name = f"{name} (Observed)"
+
+        self._add_holiday(name, dt)
 
     def _populate(self, year):
         super()._populate(year)
 
-        ##############################################################
-        # REGULAR HOLIDAYS
-        ##############################################################
-
-        # NYD
-        # This year's New Year Day.
+        # New Year Day.
         jan_1 = date(year, JAN, 1)
         if not self._is_saturday(jan_1):
-            self._set_observed_date(jan_1, "New Year's Day")
+            self._add_observed_holiday("New Year's Day", jan_1)
 
         # https://www.nyse.com/publicdocs/nyse/regulation/nyse/NYSE_Rules.pdf
         # As per Rule 7.2.: check if next year's NYD falls on Saturday and
         # needs to be observed on Friday (Dec 31 of previous year).
         dec_31 = date(year, DEC, 31)
         if self._is_friday(dec_31):
-            self._set_observed_date(dec_31 + td(days=+1), "New Year's Day")
+            self._add_observed_holiday("New Year's Day", dec_31 + td(days=+1))
 
-        # MLK - observed 1998 - 3rd Monday of Jan
+        # MLK, 3rd Monday of January.
         if year >= 1998:
-            self[
-                _get_nth_weekday_of_month(3, MON, JAN, year)
-            ] = "Martin Luther King Jr. Day"
+            self._add_holiday(
+                "Martin Luther King Jr. Day",
+                _get_nth_weekday_of_month(3, MON, JAN, year),
+            )
 
         # LINCOLN BIRTHDAY: observed 1896 - 1953 and 1968, Feb 12 (observed)
         if 1896 <= year <= 1953 or year == 1968:
-            self._set_observed_date(date(year, FEB, 12), "Lincoln's Birthday")
+            self._add_observed_holiday(
+                "Lincoln's Birthday", date(year, FEB, 12)
+            )
 
         # WASHINGTON'S BIRTHDAY: Feb 22 (obs) until 1971, then 3rd Mon of Feb
-        self._set_observed_date(
+        self._add_observed_holiday(
+            "Washington's Birthday",
             date(year, FEB, 22)
             if year <= 1970
             else _get_nth_weekday_of_month(3, MON, FEB, year),
-            "Washington's Birthday",
         )
 
         # GOOD FRIDAY - closed every year except 1898, 1906, and 1907
         if year not in {1898, 1906, 1907}:
-            self[easter(year) + td(days=-2)] = "Good Friday"
+            self._add_good_friday("Good Friday")
 
         # MEM DAY (May 30) - closed every year since 1873
         # last Mon in May since 1971
         if year >= 1873:
-            self._set_observed_date(
+            self._add_observed_holiday(
+                "Memorial Day",
                 date(year, MAY, 30)
                 if year <= 1970
                 else _get_nth_weekday_of_month(-1, MON, MAY, year),
-                "Memorial Day",
             )
 
         # FLAG DAY: June 14th 1916 - 1953
         if 1916 <= year <= 1953:
-            self._set_observed_date(date(year, JUN, 14), "Flag Day")
+            self._add_observed_holiday("Flag Day", date(year, JUN, 14))
 
         # JUNETEENTH: since 2021
         if year >= 2021:
-            self._set_observed_date(
-                date(year, JUN, 19), "Juneteenth National Independence Day"
+            self._add_observed_holiday(
+                "Juneteenth National Independence Day", date(year, JUN, 19)
             )
 
         # INDEPENDENCE DAY (July 4) - history suggests closed every year
-        self._set_observed_date(date(year, JUL, 4), "Independence Day")
+        self._add_observed_holiday("Independence Day", date(year, JUL, 4))
 
         # LABOR DAY - first mon in Sept, since 1887
         if year >= 1887:
-            self[_get_nth_weekday_of_month(1, MON, SEP, year)] = "Labor Day"
+            self._add_holiday(
+                "Labor Day", _get_nth_weekday_of_month(1, MON, SEP, year)
+            )
 
         # COLUMBUS DAY/INDIGENOUS PPL DAY: Oct 12 - closed 1909-1953
         if 1909 <= year <= 1953:
-            self._set_observed_date(date(year, OCT, 12), "Columbus Day")
+            self._add_observed_holiday("Columbus Day", date(year, OCT, 12))
 
         # ELECTION DAY: Tuesday after first Monday in November (2 U.S. Code §7)
         # closed until 1969, then closed pres years 1972-80
         if year <= 1968 or year in {1972, 1976, 1980}:
-            self[
-                _get_nth_weekday_of_month(1, MON, NOV, year) + td(days=+1)
-            ] = "Election Day"
+            self._add_holiday(
+                "Election Day",
+                _get_nth_weekday_of_month(1, MON, NOV, year) + td(days=+1),
+            )
 
         # VETERAN'S DAY: Nov 11 - closed 1918, 1921, 1934-1953
         if year in {1918, 1921} or 1934 <= year <= 1953:
-            self._set_observed_date(date(year, NOV, 11), "Veteran's Day")
+            self._add_observed_holiday("Veteran's Day", date(year, NOV, 11))
 
         # THXGIVING DAY: 4th Thurs in Nov - closed every year
-        self[_get_nth_weekday_of_month(4, THU, NOV, year)] = "Thanksgiving Day"
+        self._add_holiday(
+            "Thanksgiving Day", _get_nth_weekday_of_month(4, THU, NOV, year)
+        )
 
         # XMAS DAY: Dec 25th - every year
-        self._set_observed_date(date(year, DEC, 25), "Christmas Day")
+        self._add_observed_holiday("Christmas Day", date(year, DEC, 25))
 
-        ##############################################################
-        # SPECIAL HOLIDAYS
-        ##############################################################
+        # Special holidays.
         if year == 1914:
-            # Beginning of WWI
+            # Beginning of WWI.
             begin = date(year, JUL, 31)
             end = date(year, NOV, 27)
             for dt in (
                 begin + td(days=n) for n in range((end - begin).days + 1)
             ):
-                if self._is_weekend(dt) or self.get(dt):
+                if self._is_weekend(dt) or dt in self:
                     continue
-                self[dt] = "World War I"
+                self._add_holiday("World War I", dt)
         elif year == 1968:
             begin = date(year, JUN, 12)
             end = date(year, DEC, 24)
-            # Wednesday special holiday
+            # Wednesday special holiday.
             for dt in (
                 begin + td(days=n) for n in range(0, (end - begin).days + 1, 7)
             ):
-                self[dt] = "Paper Crisis"
+                self._add_holiday("Paper Crisis", dt)
 
 
 class XNYS(NewYorkStockExchange):
