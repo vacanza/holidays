@@ -1,8 +1,5 @@
 # pip requirements for building docs.
 # Must include package `install_requires` entries.
-convertdate>=2.3.0
-hijri-converter
-korean-lunar-calendar
 python-dateutil
 sphinx >= 4.3
 sphinx_rtd_theme >= 1.0
