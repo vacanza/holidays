@@ -231,6 +231,9 @@ subdivisions are available:
    * - Egypt
      - EG
      - None
+   * - El Salvador
+     - SV
+     - Departments: AH, CA, CH, CU, LI, MO, PA, SA, SM, SO, SS, SV, UN, US
    * - Estonia
      - EE
      - None
