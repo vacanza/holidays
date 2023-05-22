@@ -14,6 +14,7 @@ import inspect
 import warnings
 from unittest import TestCase
 
+import holidays
 from holidays import countries, financial, registry
 
 
@@ -21,8 +22,6 @@ class TestEntityLoader(TestCase):
     # TODO(ark): consider running this just once for the latest Python version.
     def test_countries_imports(self):
         warnings.simplefilter("ignore")
-
-        import holidays
 
         loader_entities = set()
         for module, entities in registry.COUNTRIES.items():
@@ -67,8 +66,6 @@ class TestEntityLoader(TestCase):
 
     # TODO(ark): consider running this just once for the latest Python version.
     def test_financial_imports(self):
-        import holidays
-
         loader_entities = set()
         for module, entities in registry.FINANCIAL.items():
             module = importlib.import_module(f"holidays.financial.{module}")
@@ -110,3 +107,30 @@ class TestEntityLoader(TestCase):
             "For inheritance please use the "
             "'holidays.financial.ny_stock_exchange.NYSE' class directly.",
         )
+
+    def test_inheritance(self):
+        def create_instance(parent):
+            class SubClass(parent):
+                pass
+
+            return SubClass()
+
+        for cls in (
+            holidays.UnitedStates,
+            holidays.US,
+            holidays.USA,
+        ):
+            self.assertTrue(isinstance(cls, holidays.registry.EntityLoader))
+            with self.assertRaises(TypeError):
+                create_instance(cls)
+
+        for cls in (
+            holidays.countries.UnitedStates,
+            holidays.countries.US,
+            holidays.countries.USA,
+        ):
+            self.assertTrue(
+                isinstance(
+                    create_instance(cls), holidays.countries.UnitedStates
+                )
+            )
