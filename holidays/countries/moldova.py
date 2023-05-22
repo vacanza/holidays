@@ -26,6 +26,7 @@ class Moldova(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "MD"
     default_language = "ro"
+    supported_languages = ("en_US", "ro", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)

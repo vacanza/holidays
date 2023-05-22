@@ -34,6 +34,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "FR"
     default_language = "fr"
+    supported_languages = ("en_US", "fr", "uk")
     subdivisions = (
         "BL",  # Saint Barthelemy.
         "GES",  # Alsace, Champagne-Ardenne, Lorraine(Moselle).

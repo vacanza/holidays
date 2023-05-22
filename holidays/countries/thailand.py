@@ -248,6 +248,7 @@ class Thailand(HolidayBase, InternationalHolidays):
         ),
         2023: ((MAY, 5, thai_bridge_public_holiday),),
     }
+    supported_languages = ("en_US", "th")
 
     def __init__(self, **kwargs) -> None:
         InternationalHolidays.__init__(self)

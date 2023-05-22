@@ -73,6 +73,7 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         "30",
         "Ext",
     )
+    supported_languages = ("en_US", "pt_PT")
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
