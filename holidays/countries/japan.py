@@ -37,6 +37,7 @@ class Japan(HolidayBase):
             (OCT, 22, tr("即位礼正殿の儀が行われる日")),  # Enthronement ceremony.
         ),
     }
+    supported_languages = ("en_US", "ja")
 
     def _populate(self, year):
         if year < 1949 or year > 2099:

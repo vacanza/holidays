@@ -25,6 +25,7 @@ class Liechtenstein(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "LI"
     default_language = "de"
+    supported_languages = ("de", "en_US", "uk")
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)

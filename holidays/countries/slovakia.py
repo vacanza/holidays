@@ -36,6 +36,7 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays):
             ),
         )
     }
+    supported_languages = ("en_US", "sk", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

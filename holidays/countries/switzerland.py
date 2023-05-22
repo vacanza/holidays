@@ -49,6 +49,7 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
         "ZG",  # Zug
         "ZH",  # Zürich
     )
+    supported_languages = ("de", "en_US", "fr", "it", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

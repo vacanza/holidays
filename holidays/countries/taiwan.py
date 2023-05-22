@@ -28,33 +28,36 @@ class Taiwan(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
+        if year <= 1911:
+            return None
         super()._populate(year)
 
         # New Year's Day
-        if year > 1911:
-            self._add_new_years_day(
-                "Founding of the Republic of China (New Year's Day)"
-            )
+        self._add_new_years_day(
+            "Founding of the Republic of China (New Year's Day)"
+        )
 
-            self._add_chinese_new_years_eve("Chinese New Year's Eve")
-            self._add_chinese_new_years_day("Spring Festival")
-            self._add_chinese_new_years_day_two("Spring Festival")
-            self._add_chinese_new_years_day_three("Spring Festival")
+        self._add_chinese_new_years_eve("Chinese New Year's Eve")
 
-            self._add_holiday("Children's Day", APR, 4)
-
-            self._add_dragon_boat_festival("Dragon Boat Festival")
-            self._add_mid_autumn_festival("Mid-Autumn Festival")
-
-            self._add_holiday("National Day", OCT, 10)
-            self._add_holiday("National Day", OCT, 11)
-
-        if year > 1947:
-            self._add_holiday("Peace Memorial Day", FEB, 28)
-
+        name = "Spring Festival"
+        self._add_chinese_new_years_day(name)
+        self._add_chinese_new_years_day_two(name)
+        self._add_chinese_new_years_day_three(name)
         if year == 2021:
-            self._add_chinese_new_years_day_four("Spring Festival")
-            self._add_chinese_new_years_day_five("Spring Festival")
+            self._add_chinese_new_years_day_four(name)
+            self._add_chinese_new_years_day_five(name)
+
+        self._add_holiday("Children's Day", APR, 4)
+
+        self._add_dragon_boat_festival("Dragon Boat Festival")
+        self._add_mid_autumn_festival("Mid-Autumn Festival")
+
+        name = "National Day"
+        self._add_holiday(name, OCT, 10)
+        self._add_holiday(name, OCT, 11)
+
+        if year >= 1948:
+            self._add_holiday("Peace Memorial Day", FEB, 28)
 
 
 class TW(Taiwan):
