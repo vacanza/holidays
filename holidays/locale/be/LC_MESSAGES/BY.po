@@ -16,43 +16,43 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/belarus.py:46 ./holidays/countries/belarus.py:51
+#: ./holidays/countries/belarus.py:47 ./holidays/countries/belarus.py:52
 msgid "Новы год"
 msgstr ""
 
-#: ./holidays/countries/belarus.py:55
+#: ./holidays/countries/belarus.py:56
 msgid "Нараджэнне Хрыстова (праваслаўнае Раство)"
 msgstr ""
 
 #. Women's Day.
-#: ./holidays/countries/belarus.py:59
+#: ./holidays/countries/belarus.py:60
 msgid "Дзень жанчын"
 msgstr ""
 
 #. Radunitsa (Day of Rejoicing).
-#: ./holidays/countries/belarus.py:62
+#: ./holidays/countries/belarus.py:63
 msgid "Радаўніца"
 msgstr ""
 
 #. Labour Day.
-#: ./holidays/countries/belarus.py:65
+#: ./holidays/countries/belarus.py:66
 msgid "Свята працы"
 msgstr ""
 
 #. Victory Day.
-#: ./holidays/countries/belarus.py:68
+#: ./holidays/countries/belarus.py:69
 msgid "Дзень Перамогі"
 msgstr ""
 
-#: ./holidays/countries/belarus.py:72
+#: ./holidays/countries/belarus.py:73
 msgid "Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)"
 msgstr ""
 
 #. October Revolution Day.
-#: ./holidays/countries/belarus.py:78
+#: ./holidays/countries/belarus.py:79
 msgid "Дзень Кастрычніцкай рэвалюцыі"
 msgstr ""
 
-#: ./holidays/countries/belarus.py:82
+#: ./holidays/countries/belarus.py:83
 msgid "Нараджэнне Хрыстова (каталіцкае Раство)"
 msgstr ""

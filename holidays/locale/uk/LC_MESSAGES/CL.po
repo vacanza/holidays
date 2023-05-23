@@ -16,7 +16,7 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: ./holidays/countries/chile.py:32 ./holidays/countries/chile.py:80
+#: ./holidays/countries/chile.py:33 ./holidays/countries/chile.py:80
 msgid "Feriado nacional"
 msgstr "Національне свято"
 

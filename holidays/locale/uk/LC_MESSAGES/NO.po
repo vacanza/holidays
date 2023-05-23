@@ -17,66 +17,66 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/norway.py:56
+#: ./holidays/countries/norway.py:57
 msgid "Første nyttårsdag"
 msgstr "Новий рік"
 
 #. Maundy Thursday.
-#: ./holidays/countries/norway.py:59
+#: ./holidays/countries/norway.py:60
 msgid "Skjærtorsdag"
 msgstr "Великий четвер"
 
 #. Good Friday.
-#: ./holidays/countries/norway.py:62
+#: ./holidays/countries/norway.py:63
 msgid "Langfredag"
 msgstr "Страсна пʼятниця"
 
 #. Easter Sunday.
-#: ./holidays/countries/norway.py:65
+#: ./holidays/countries/norway.py:66
 msgid "Første påskedag"
 msgstr "Великдень"
 
 #. Easter Monday.
-#: ./holidays/countries/norway.py:68
+#: ./holidays/countries/norway.py:69
 msgid "Andre påskedag"
 msgstr "Великодній понеділок"
 
 #. Labour Day.
-#: ./holidays/countries/norway.py:73
+#: ./holidays/countries/norway.py:74
 msgid "Arbeidernes dag"
 msgstr "День праці"
 
 #. Constitution Day.
-#: ./holidays/countries/norway.py:76
+#: ./holidays/countries/norway.py:77
 msgid "Grunnlovsdag"
 msgstr "День Конституції"
 
 #. Ascension Day.
-#: ./holidays/countries/norway.py:79
+#: ./holidays/countries/norway.py:80
 msgid "Kristi himmelfartsdag"
 msgstr "Вознесіння Господнє"
 
 #. Whit Sunday.
-#: ./holidays/countries/norway.py:82
+#: ./holidays/countries/norway.py:83
 msgid "Første pinsedag"
 msgstr "Трійця"
 
 #. Whit Monday.
-#: ./holidays/countries/norway.py:85
+#: ./holidays/countries/norway.py:86
 msgid "Andre pinsedag"
 msgstr "День Святого Духа"
 
 #. Christmas Day.
-#: ./holidays/countries/norway.py:92
+#: ./holidays/countries/norway.py:93
 msgid "Første juledag"
 msgstr "Різдво Христове"
 
 #. Second Day of Christmas.
-#: ./holidays/countries/norway.py:95
+#: ./holidays/countries/norway.py:96
 msgid "Andre juledag"
 msgstr "Другий день Різдва"
 
 #. Sunday.
-#: ./holidays/countries/norway.py:105
+#: ./holidays/countries/norway.py:106
 msgid "Søndag"
 msgstr "Неділя"

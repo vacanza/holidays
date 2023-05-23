@@ -3,7 +3,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.25\n"
+"Project-Id-Version: Python Holidays 0.26\n"
 "POT-Creation-Date: 2023-03-22 22:55+0200\n"
 "PO-Revision-Date: 2023-05-03 18:39-0700\n"
 "Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
@@ -16,6 +16,7 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.3\n"
 
+#: ./holidays/countries/costa_rica.py:41 ./holidays/countries/costa_rica.py:53
 #: ./holidays/countries/costa_rica.py:126
 #, c-format
 msgid "%s (Observado)"
@@ -83,8 +84,4 @@ msgstr ""
 #. Christmas Day.
 #: ./holidays/countries/costa_rica.py:155
 msgid "Navidad"
-msgstr ""
-
-#: ./holidays/countries/costa_rica.py:40 ./holidays/countries/costa_rica.py:52
-msgid "(Observado)"
 msgstr ""

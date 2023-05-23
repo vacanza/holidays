@@ -22,9 +22,9 @@ msgstr ""
 msgid "วันเลือกตั้ง"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:292 ./holidays/countries/thailand.py:316
-#: ./holidays/countries/thailand.py:368 ./holidays/countries/thailand.py:636
-#: ./holidays/countries/thailand.py:641
+#: ./holidays/countries/thailand.py:293 ./holidays/countries/thailand.py:317
+#: ./holidays/countries/thailand.py:369 ./holidays/countries/thailand.py:637
+#: ./holidays/countries/thailand.py:642
 #, c-format
 msgid "ชดเชย%s"
 msgstr ""
@@ -66,112 +66,112 @@ msgstr ""
 msgid "พระราชพิธีบรมราชาภิเษก พระบาทสมเด็จพระวชิรเกล้าเจ้าอยู่หัว"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:347
+#: ./holidays/countries/thailand.py:348
 msgid "วันสงกรานต์"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:304
+#: ./holidays/countries/thailand.py:305
 msgid "วันขึ้นปีใหม่"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:316 ./holidays/countries/thailand.py:572
+#: ./holidays/countries/thailand.py:317 ./holidays/countries/thailand.py:573
 msgid "วันสิ้นปี"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:330
+#: ./holidays/countries/thailand.py:331
 msgid "วันจักรี"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:391
+#: ./holidays/countries/thailand.py:392
 msgid "วันแรงงานแห่งชาติ"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:402
+#: ./holidays/countries/thailand.py:403
 msgid "วันชาติ"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:412
+#: ./holidays/countries/thailand.py:413
 msgid "วันฉัตรมงคล"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:427
+#: ./holidays/countries/thailand.py:428
 msgid ""
 "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสุทิดา พัชรสุธาพิมลลักษณ พระบรมราชินี"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:444
+#: ./holidays/countries/thailand.py:445
 msgid ""
 "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรเมนทรรามาธิบดีศรีสินทรมหาวชิราลงกรณ "
 "พระวชิรเกล้าเจ้าอยู่หัว"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:466
+#: ./holidays/countries/thailand.py:467
 msgid "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถ"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:464
+#: ./holidays/countries/thailand.py:465
 msgid "วันเฉลิมพระชนมพรรษาสมเด็จพระบรมราชชนนีพันปีหลวง"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:481
+#: ./holidays/countries/thailand.py:482
 msgid "วันแม่แห่งชาติ"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:501
+#: ./holidays/countries/thailand.py:502
 msgid "วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:496
+#: ./holidays/countries/thailand.py:497
 msgid ""
 "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช "
 "บรมนาถบพิตร"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:514
+#: ./holidays/countries/thailand.py:515
 msgid "วันปิยมหาราช"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:537
+#: ./holidays/countries/thailand.py:538
 msgid "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:532
+#: ./holidays/countries/thailand.py:533
 msgid ""
 "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช "
 "บรมนาถบพิตร"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:526
+#: ./holidays/countries/thailand.py:527
 msgid ""
 "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร "
 "มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:553
+#: ./holidays/countries/thailand.py:554
 msgid "วันพ่อแห่งชาติ"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:562
+#: ./holidays/countries/thailand.py:563
 msgid "วันรัฐธรรมนูญ"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:589
+#: ./holidays/countries/thailand.py:590
 msgid "วันมาฆบูชา"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:599
+#: ./holidays/countries/thailand.py:600
 msgid "วันวิสาขบูชา"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:609 ./holidays/countries/thailand.py:641
+#: ./holidays/countries/thailand.py:610 ./holidays/countries/thailand.py:642
 msgid "วันอาสาฬหบูชา"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:618 ./holidays/countries/thailand.py:636
+#: ./holidays/countries/thailand.py:619 ./holidays/countries/thailand.py:637
 msgid "วันเข้าพรรษา"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:657
+#: ./holidays/countries/thailand.py:658
 msgid "วันพืชมงคล"
 msgstr ""
 

@@ -40,14 +40,15 @@ class Serbia(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _add_observed_holiday(
         self, name: str, *dt: DateLike
     ) -> Optional[date]:
-        observed_label = self.tr("(Слободан дан)")
-        return self._add_holiday(f"{self.tr(name)} {observed_label} ", *dt)
+        return self._add_holiday(
+            self.tr("%s (слободан дан)") % self.tr(name), *dt
+        )
 
     def _populate(self, year):
         super()._populate(year)
 
         # New Year's Day.
-        name = self.tr("Нова година")
+        name = tr("Нова година")
         self._add_new_years_day(name)
         self._add_new_years_day_two(name)
         if self.observed and self._is_weekend(JAN, 1):
@@ -57,7 +58,7 @@ class Serbia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_christmas_day(tr("Божић"))
 
         # Statehood Day.
-        name = self.tr("Дан државности Србије")
+        name = tr("Дан државности Србије")
         self._add_holiday(name, FEB, 15)
         self._add_holiday(name, FEB, 16)
         if self.observed and self._is_weekend(FEB, 15):

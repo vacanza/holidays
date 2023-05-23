@@ -160,13 +160,12 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
                 - If THU/FRI - observed on next MON
             """
             if self.observed:
-                observed_label = self.tr("(Observado)")
                 if self._is_tuesday(dt) or self._is_wednesday(dt):
                     dt = _get_nth_weekday_from(-1, MON, dt)
-                    name = f"{self.tr(name)} {observed_label}"
+                    name = self.tr("%s (Observado)") % self.tr(name)
                 elif self._is_thursday(dt) or self._is_friday(dt):
                     dt = _get_nth_weekday_from(1, MON, dt)
-                    name = f"{self.tr(name)} {observed_label}"
+                    name = self.tr("%s (Observado)") % self.tr(name)
             self._add_holiday(name, dt)
 
         super()._populate(year)

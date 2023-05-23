@@ -22,96 +22,96 @@ msgid "Narodowe Święto Niepodległości - 100-lecie"
 msgstr "National Independence Day - 100th anniversary"
 
 #. New Year's Day.
-#: ./holidays/countries/poland.py:43
+#: ./holidays/countries/poland.py:44
 msgid "Nowy Rok"
 msgstr "New Year's Day"
 
 #. Epiphany.
-#: ./holidays/countries/poland.py:47
+#: ./holidays/countries/poland.py:48
 msgid "Święto Trzech Króli"
 msgstr "Epiphany"
 
 #. Candlemas.
-#: ./holidays/countries/poland.py:51
+#: ./holidays/countries/poland.py:52
 msgid "Oczyszczenie Najświętszej Marii Panny"
 msgstr "Purification of the Blessed Virgin Mary"
 
 #. Easter Sunday.
-#: ./holidays/countries/poland.py:54
+#: ./holidays/countries/poland.py:55
 msgid "Niedziela Wielkanocna"
 msgstr "Easter Sunday"
 
 #. Easter Monday.
-#: ./holidays/countries/poland.py:57
+#: ./holidays/countries/poland.py:58
 msgid "Poniedziałek Wielkanocny"
 msgstr "Easter Monday"
 
 #. National Day.
-#: ./holidays/countries/poland.py:61
+#: ./holidays/countries/poland.py:62
 msgid "Święto Państwowe"
 msgstr "National Day"
 
 #. National Day of the Third of May.
-#: ./holidays/countries/poland.py:65
+#: ./holidays/countries/poland.py:66
 msgid "Święto Narodowe Trzeciego Maja"
 msgstr "National Day of the Third of May"
 
-#: ./holidays/countries/poland.py:70
+#: ./holidays/countries/poland.py:71
 msgid "Narodowe Święto Zwycięstwa i Wolności"
 msgstr "National Victory and Freedom Day"
 
-#: ./holidays/countries/poland.py:76
+#: ./holidays/countries/poland.py:77
 msgid "Wniebowstąpienie Pańskie"
 msgstr "Ascension Day"
 
 #. Pentecost.
-#: ./holidays/countries/poland.py:81
+#: ./holidays/countries/poland.py:82
 msgid "Zielone Świątki"
 msgstr "Pentecost"
 
 #. Pentecost (Day 2).
-#: ./holidays/countries/poland.py:85
+#: ./holidays/countries/poland.py:86
 msgid "Drugi dzień Zielonych Świątek"
 msgstr "Pentecost (Day 2)"
 
 #. Corpus Christi.
-#: ./holidays/countries/poland.py:88
+#: ./holidays/countries/poland.py:89
 msgid "Dzień Bożego Ciała"
 msgstr "Corpus Christi"
 
-#: ./holidays/countries/poland.py:93
+#: ./holidays/countries/poland.py:94
 msgid "Uroczystość Świętych Apostołów Piotra i Pawła"
 msgstr "Saints Peter and Paul Day"
 
 #. National Day of Rebirth of Poland.
-#: ./holidays/countries/poland.py:98
+#: ./holidays/countries/poland.py:99
 msgid "Narodowe Święto Odrodzenia Polski"
 msgstr "National Day of Rebirth of Poland"
 
-#: ./holidays/countries/poland.py:103
+#: ./holidays/countries/poland.py:104
 msgid "Wniebowzięcie Najświętszej Marii Panny"
 msgstr "Assumption of the Virgin Mary"
 
 #. All Saints' Day.
-#: ./holidays/countries/poland.py:107
+#: ./holidays/countries/poland.py:108
 msgid "Uroczystość Wszystkich Świętych"
 msgstr "All Saints' Day"
 
 #. National Independence Day.
-#: ./holidays/countries/poland.py:111
+#: ./holidays/countries/poland.py:112
 msgid "Narodowe Święto Niepodległości"
 msgstr "National Independence Day"
 
-#: ./holidays/countries/poland.py:116
+#: ./holidays/countries/poland.py:117
 msgid "Niepokalane Poczęcie Najświętszej Marii Panny"
 msgstr "Immaculate Conception of the Blessed Virgin Mary"
 
 #. Christmas Day 1.
-#: ./holidays/countries/poland.py:120
+#: ./holidays/countries/poland.py:121
 msgid "Boże Narodzenie (pierwszy dzień)"
 msgstr "Christmas (Day 1)"
 
 #. Christmas Day 2.
-#: ./holidays/countries/poland.py:122
+#: ./holidays/countries/poland.py:123
 msgid "Boże Narodzenie (drugi dzień)"
 msgstr "Christmas (Day 2)"

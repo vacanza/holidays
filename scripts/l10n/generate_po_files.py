@@ -62,7 +62,7 @@ class POGenerator:
                     if issubclass(cls, HolidayBase)
                     and len(name) == 2
                     and cls.__module__ == module
-                    and hasattr(cls, "default_language")
+                    and getattr(cls, "default_language") is not None
                 }
             )
 

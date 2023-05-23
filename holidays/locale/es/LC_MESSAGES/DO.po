@@ -17,61 +17,61 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/dominican_republic.py:54
+#: ./holidays/countries/dominican_republic.py:55
 msgid "Año Nuevo"
 msgstr ""
 
 #. Epiphany.
-#: ./holidays/countries/dominican_republic.py:58
+#: ./holidays/countries/dominican_republic.py:59
 msgid "Día de los Santos Reyes"
 msgstr ""
 
 #. Lady of Altagracia.
-#: ./holidays/countries/dominican_republic.py:63
+#: ./holidays/countries/dominican_republic.py:64
 msgid "Día de la Altagracia"
 msgstr ""
 
 #. Juan Pablo Duarte Day.
-#: ./holidays/countries/dominican_republic.py:66
+#: ./holidays/countries/dominican_republic.py:67
 msgid "Día de Duarte"
 msgstr ""
 
 #. Independence Day.
-#: ./holidays/countries/dominican_republic.py:69
+#: ./holidays/countries/dominican_republic.py:70
 msgid "Día de Independencia"
 msgstr ""
 
 #. Good Friday.
-#: ./holidays/countries/dominican_republic.py:72
+#: ./holidays/countries/dominican_republic.py:73
 msgid "Viernes Santo"
 msgstr ""
 
 #. Labor Day.
-#: ./holidays/countries/dominican_republic.py:76
+#: ./holidays/countries/dominican_republic.py:77
 msgid "Día del Trabajo"
 msgstr ""
 
 #. Feast of Corpus Christi.
-#: ./holidays/countries/dominican_republic.py:82
+#: ./holidays/countries/dominican_republic.py:83
 msgid "Corpus Christi"
 msgstr ""
 
 #. Restoration Day.
-#: ./holidays/countries/dominican_republic.py:85
+#: ./holidays/countries/dominican_republic.py:86
 msgid "Día de la Restauración"
 msgstr ""
 
 #. Our Lady of Mercedes Day.
-#: ./holidays/countries/dominican_republic.py:93
+#: ./holidays/countries/dominican_republic.py:94
 msgid "Día de las Mercedes"
 msgstr ""
 
 #. Constitution Day.
-#: ./holidays/countries/dominican_republic.py:97
+#: ./holidays/countries/dominican_republic.py:98
 msgid "Día de la Constitución"
 msgstr ""
 
 #. Christmas Day.
-#: ./holidays/countries/dominican_republic.py:102
+#: ./holidays/countries/dominican_republic.py:103
 msgid "Día de Navidad"
 msgstr ""

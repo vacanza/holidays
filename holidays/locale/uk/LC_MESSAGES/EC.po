@@ -17,57 +17,57 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/ecuador.py:42 ./holidays/countries/ecuador.py:121
+#: ./holidays/countries/ecuador.py:43 ./holidays/countries/ecuador.py:122
 msgid "Año Nuevo"
 msgstr "Новий рік"
 
 #. Carnival.
-#: ./holidays/countries/ecuador.py:45
+#: ./holidays/countries/ecuador.py:46
 msgid "Carnaval"
 msgstr "Карнавал"
 
 #. Good Friday.
-#: ./holidays/countries/ecuador.py:50
+#: ./holidays/countries/ecuador.py:51
 msgid "Viernes Santo"
 msgstr "Страсна пʼятниця"
 
 #. Labour Day.
-#: ./holidays/countries/ecuador.py:53
+#: ./holidays/countries/ecuador.py:54
 msgid "Día del Trabajo"
 msgstr "День праці"
 
 #. The Battle of Pichincha.
-#: ./holidays/countries/ecuador.py:57
+#: ./holidays/countries/ecuador.py:58
 msgid "Batalla de Pichincha"
 msgstr "День битви біля Пічинча"
 
 #. Declaration of Independence of Quito.
-#: ./holidays/countries/ecuador.py:62
+#: ./holidays/countries/ecuador.py:63
 msgid "Primer Grito de Independencia"
 msgstr "День незалежності Кіто"
 
 #. Independence of Guayaquil.
-#: ./holidays/countries/ecuador.py:67
+#: ./holidays/countries/ecuador.py:68
 msgid "Independencia de Guayaquil"
 msgstr "День незалежності Гуаякіля"
 
 #. All Souls' Day.
-#: ./holidays/countries/ecuador.py:71
+#: ./holidays/countries/ecuador.py:72
 msgid "Día de los Difuntos"
 msgstr "День усіх померлих"
 
 #. Independence of Cuenca.
-#: ./holidays/countries/ecuador.py:75
+#: ./holidays/countries/ecuador.py:76
 msgid "Independencia de Cuenca"
 msgstr "День незалежності Куенки"
 
 #. Christmas Day.
-#: ./holidays/countries/ecuador.py:80
+#: ./holidays/countries/ecuador.py:81
 msgid "Día de Navidad"
 msgstr "Різдво Христове"
 
-#: ./holidays/countries/ecuador.py:100 ./holidays/countries/ecuador.py:115
-#: ./holidays/countries/ecuador.py:121
+#: ./holidays/countries/ecuador.py:101 ./holidays/countries/ecuador.py:116
+#: ./holidays/countries/ecuador.py:122
 #, c-format
 msgid "%s (Observado)"
 msgstr "%s (вихідний)"

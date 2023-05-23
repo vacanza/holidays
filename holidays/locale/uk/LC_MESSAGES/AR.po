@@ -16,30 +16,30 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.3\n"
 
-#: ./holidays/countries/argentina.py:68
+#: ./holidays/countries/argentina.py:69
 msgid "Feriado con fines turísticos"
 msgstr "Додатковий вихідний"
 
-#: ./holidays/countries/argentina.py:72
+#: ./holidays/countries/argentina.py:73
 msgid "Bicentenario de la creación y primera jura de la bandera nacional"
 msgstr "200-річчя створення та першої присяги державному прапору"
 
-#: ./holidays/countries/argentina.py:75
+#: ./holidays/countries/argentina.py:76
 msgid "Bicentenario de la Batalla de Tucumán"
 msgstr "200-річчя битви при Тукумані"
 
-#: ./holidays/countries/argentina.py:76
+#: ./holidays/countries/argentina.py:77
 msgid ""
 "Bicentenario de la sesión inaugural de la Asamblea Nacional Constituyente "
 "del año 1813"
 msgstr ""
 "200-річчя інавгураційної сесії Національних установчих зборів 1813 року"
 
-#: ./holidays/countries/argentina.py:80
+#: ./holidays/countries/argentina.py:81
 msgid "Bicentenario de la Batalla de Salta"
 msgstr "200-річчя битви при Сальті"
 
-#: ./holidays/countries/argentina.py:81
+#: ./holidays/countries/argentina.py:82
 msgid "Censo nacional 2022"
 msgstr "День національного перепису 2022"
 
@@ -121,6 +121,7 @@ msgstr "День Колумба"
 msgid "Día de la Soberanía Nacional"
 msgstr "День національного суверенітету"
 
-#: ./holidays/countries/argentina.py:162
-msgid "(Observado)"
-msgstr "(вихідний)"
+#: ./holidays/countries/argentina.py:165 ./holidays/countries/argentina.py:168
+#, c-format
+msgid "%s (Observado)"
+msgstr "%s (вихідний)"

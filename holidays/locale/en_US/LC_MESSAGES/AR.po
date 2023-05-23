@@ -16,19 +16,19 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.3\n"
 
-#: ./holidays/countries/argentina.py:68
+#: ./holidays/countries/argentina.py:69
 msgid "Feriado con fines turísticos"
 msgstr "Bridge Public Holiday"
 
-#: ./holidays/countries/argentina.py:72
+#: ./holidays/countries/argentina.py:73
 msgid "Bicentenario de la creación y primera jura de la bandera nacional"
 msgstr "Bicentenary of the creation and first oath of the national flag"
 
-#: ./holidays/countries/argentina.py:75
+#: ./holidays/countries/argentina.py:76
 msgid "Bicentenario de la Batalla de Tucumán"
 msgstr "Bicentenary of the Battle of Tucumán"
 
-#: ./holidays/countries/argentina.py:76
+#: ./holidays/countries/argentina.py:77
 msgid ""
 "Bicentenario de la sesión inaugural de la Asamblea Nacional Constituyente "
 "del año 1813"
@@ -36,11 +36,11 @@ msgstr ""
 "Bicentenary of the inaugural session of the National Constituent Assembly of"
 " the year 1813"
 
-#: ./holidays/countries/argentina.py:80
+#: ./holidays/countries/argentina.py:81
 msgid "Bicentenario de la Batalla de Salta"
 msgstr "Bicentenary of the Battle of Salta"
 
-#: ./holidays/countries/argentina.py:81
+#: ./holidays/countries/argentina.py:82
 msgid "Censo nacional 2022"
 msgstr "National Census Day 2022"
 
@@ -122,6 +122,7 @@ msgstr "Columbus day"
 msgid "Día de la Soberanía Nacional"
 msgstr "National Sovereignty Day"
 
-#: ./holidays/countries/argentina.py:162
-msgid "(Observado)"
-msgstr "(Observed)"
+#: ./holidays/countries/argentina.py:165 ./holidays/countries/argentina.py:168
+#, c-format
+msgid "%s (Observado)"
+msgstr "%s (Observed)"

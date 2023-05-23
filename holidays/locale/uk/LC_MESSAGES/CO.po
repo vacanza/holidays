@@ -96,6 +96,7 @@ msgstr "Свято Тіла і Крові Христових"
 msgid "Sagrado Corazón"
 msgstr "Свято Найсвятішого Серця Ісуса"
 
-#: ./holidays/countries/colombia.py:52
-msgid "(Observado)"
-msgstr "(вихідний)"
+#: ./holidays/countries/colombia.py:54
+#, c-format
+msgid "%s (Observado)"
+msgstr "%s (вихідний)"

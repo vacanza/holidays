@@ -96,6 +96,7 @@ msgstr "Corpus Christi"
 msgid "Sagrado Corazón"
 msgstr "Sacred Heart"
 
-#: ./holidays/countries/colombia.py:52
-msgid "(Observado)"
-msgstr "(Observed)"
+#: ./holidays/countries/colombia.py:54
+#, c-format
+msgid "%s (Observado)"
+msgstr "%s (Observed)"

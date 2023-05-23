@@ -17,96 +17,96 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/sweden.py:54
+#: ./holidays/countries/sweden.py:55
 msgid "Nyårsdagen"
 msgstr "New Year's Day"
 
 #. Epiphany.
-#: ./holidays/countries/sweden.py:57
+#: ./holidays/countries/sweden.py:58
 msgid "Trettondedag jul"
 msgstr "Epiphany"
 
 #. Feast of the Annunciation.
-#: ./holidays/countries/sweden.py:61
+#: ./holidays/countries/sweden.py:62
 msgid "Jungfru Marie bebådelsedag"
 msgstr "Feast of the Annunciation"
 
 #. Good Friday.
-#: ./holidays/countries/sweden.py:64
+#: ./holidays/countries/sweden.py:65
 msgid "Långfredagen"
 msgstr "Good Friday"
 
 #. Easter Sunday.
-#: ./holidays/countries/sweden.py:67
+#: ./holidays/countries/sweden.py:68
 msgid "Påskdagen"
 msgstr "Easter Sunday"
 
 #. Easter Monday.
-#: ./holidays/countries/sweden.py:70
+#: ./holidays/countries/sweden.py:71
 msgid "Annandag påsk"
 msgstr "Easter Monday"
 
 #. May Day.
-#: ./holidays/countries/sweden.py:75
+#: ./holidays/countries/sweden.py:76
 msgid "Första maj"
 msgstr "May Day"
 
 #. Ascension Day.
-#: ./holidays/countries/sweden.py:78
+#: ./holidays/countries/sweden.py:79
 msgid "Kristi himmelsfärdsdag"
 msgstr "Ascension Day"
 
 #. National Day of Sweden.
-#: ./holidays/countries/sweden.py:83
+#: ./holidays/countries/sweden.py:84
 msgid "Sveriges nationaldag"
 msgstr "National Day of Sweden"
 
 #. Whit Sunday.
-#: ./holidays/countries/sweden.py:86
+#: ./holidays/countries/sweden.py:87
 msgid "Pingstdagen"
 msgstr "Whit Sunday"
 
 #. Whit Monday.
-#: ./holidays/countries/sweden.py:90
+#: ./holidays/countries/sweden.py:91
 msgid "Annandag pingst"
 msgstr "Whit Monday"
 
 #. Midsummer Eve.
-#: ./holidays/countries/sweden.py:102
+#: ./holidays/countries/sweden.py:103
 msgid "Midsommarafton"
 msgstr "Midsummer Eve"
 
 #. Midsummer Day.
-#: ./holidays/countries/sweden.py:105
+#: ./holidays/countries/sweden.py:106
 msgid "Midsommardagen"
 msgstr "Midsummer Day"
 
 #. All Saints' Day.
-#: ./holidays/countries/sweden.py:109
+#: ./holidays/countries/sweden.py:110
 msgid "Alla helgons dag"
 msgstr "All Saints' Day"
 
 #. Christmas Eve.
-#: ./holidays/countries/sweden.py:114
+#: ./holidays/countries/sweden.py:115
 msgid "Julafton"
 msgstr "Christmas Eve"
 
 #. Christmas Day.
-#: ./holidays/countries/sweden.py:117
+#: ./holidays/countries/sweden.py:118
 msgid "Juldagen"
 msgstr "Christmas Day"
 
 #. Second Day of Christmas.
-#: ./holidays/countries/sweden.py:120
+#: ./holidays/countries/sweden.py:121
 msgid "Annandag jul"
 msgstr "Second Day of Christmas"
 
 #. New Year's Eve.
-#: ./holidays/countries/sweden.py:123
+#: ./holidays/countries/sweden.py:124
 msgid "Nyårsafton"
 msgstr "New Year's Eve"
 
 #. Sunday.
-#: ./holidays/countries/sweden.py:133
+#: ./holidays/countries/sweden.py:134
 msgid "Söndag"
 msgstr "Sunday"

@@ -38,8 +38,8 @@ class CostaRica(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Law #9875 from 16.07.2020
             if self.observed:
                 if not self._is_monday(dt):
-                    observed_label = self.tr("(Observado)")
-                    name = f"{self.tr(name)} {observed_label}"
+                    name = self.tr("%s (Observado)") % self.tr(name)
+
                 if self._is_tuesday(dt) or self._is_wednesday(dt):
                     dt = _get_nth_weekday_from(-1, MON, dt)
                 else:
@@ -50,8 +50,7 @@ class CostaRica(HolidayBase, ChristianHolidays, InternationalHolidays):
             if self.observed:
                 if not (self._is_monday(dt) or self._is_weekend(dt)):
                     dt = _get_nth_weekday_from(1, MON, dt)
-                    observed_label = self.tr("(Observado)")
-                    name = f"{self.tr(name)} {observed_label}"
+                    name = self.tr("%s (Observado)") % self.tr(name)
             self._add_holiday(name, dt)
 
         super()._populate(year)

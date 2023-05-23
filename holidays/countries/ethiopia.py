@@ -36,7 +36,8 @@ class Ethiopia(
 ):
     country = "ET"
     default_language = "am"
-    supported_languages = ("am", "en_US")
+    estimated_label = tr("%s* (*ግምት)")
+    supported_languages = ("am", "ar", "en_US")
 
     @staticmethod
     def _is_leap_year(year):
