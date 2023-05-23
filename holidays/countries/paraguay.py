@@ -141,6 +141,7 @@ class Paraguay(HolidayBase):
             (MAY, 2, public_sector_holiday),
         ),
     }
+    supported_languages = ("en_US", "es", "uk")
 
     def _add_observed_holiday(self, name: str, dt: date) -> None:
         if self.observed or not self._is_weekend(dt):

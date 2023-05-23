@@ -16,7 +16,7 @@ from tests.common import TestCase
 class TestVenezuela(TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Venezuela)
+        super().setUpClass(Venezuela, years=range(1900, 2050))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Venezuela, VE, VEN)
@@ -209,13 +209,10 @@ class TestVenezuela(TestCase):
     def test_indigenous_resistance(self):
         self.assertHoliday(f"{year}-10-12" for year in range(1921, 2050))
         self.assertNoHoliday(f"{year}-10-12" for year in range(1900, 1921))
-        self.assertNoHolidayName(
-            "Día de la Resistencia Indígena",
-            Venezuela(years=range(1921, 2002)),
+        self.assertNoHolidayNameInYears(
+            "Día de la Resistencia Indígena", range(1921, 2002)
         )
-        self.assertNoHolidayName(
-            "Día de la Raza", Venezuela(years=range(2002, 2050))
-        )
+        self.assertNoHolidayNameInYears("Día de la Raza", range(2002, 2050))
 
     def test_l10n_default(self):
         def run_tests(languages):

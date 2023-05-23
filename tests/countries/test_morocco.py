@@ -61,6 +61,10 @@ class TestMorocco(TestCase):
             "1999-11-18",
         )
 
+    def test_amazigh_new_year(self):
+        self.assertHoliday("2024-01-13")
+        self.assertNoHoliday("2023-01-13")
+
     def test_independence_manifesto_day(self):
         self.assertHoliday("1945-01-11")
         self.assertNoHoliday("1944-01-11")

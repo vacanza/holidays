@@ -52,9 +52,7 @@ class Vietnam(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
         # https://en.wikipedia.org/wiki/H%C3%B9ng_Kings%27_Festival
         if year >= 2007:
             observed_dates.add(
-                self._add_chinese_calendar_holiday(
-                    "Hung Kings Commemoration Day", 3, 10
-                )
+                self._add_hung_kings_day("Hung Kings Commemoration Day")
             )
 
         # Liberation Day/Reunification Day

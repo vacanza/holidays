@@ -209,6 +209,10 @@ class HolidayBase(Dict[date, str]):
     ones."""
     weekend: Set[int] = {SAT, SUN}
     """Country weekend days."""
+    default_language: Optional[str] = None
+    """The entity language used by default."""
+    supported_languages: Tuple[str, ...] = ()
+    """All languages supported by this entity."""
 
     def __init__(
         self,

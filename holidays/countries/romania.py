@@ -25,6 +25,7 @@ class Romania(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "RO"
     default_language = "ro"
+    supported_languages = ("en_US", "ro", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)

@@ -27,6 +27,7 @@ class Denmark(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "DK"
     default_language = "da"
+    supported_languages = ("da", "en_US", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
