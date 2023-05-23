@@ -288,10 +288,9 @@ class _LuniSolar:
         Return the number of days elapsed since self.SOLAR_START_DATE to the
         beginning of the year.
         """
-        span_days = 0
-        for y in range(self.START_YEAR, year):
-            span_days += self._lunar_year_days(y)
-        return span_days
+        return sum(
+            self._lunar_year_days(y) for y in range(self.START_YEAR, year)
+        )
 
     def lunar_to_gre(
         self, year: int, month: int, day: int, leap: bool = True
