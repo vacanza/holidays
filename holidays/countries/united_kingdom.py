@@ -188,7 +188,7 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Easter Monday
         self._add_easter_monday(
-            "Easter Monday [England/Wales/Northern Ireland]"
+            "Easter Monday [England/Wales/Northern Ireland/Isle of Man]"
         )
 
         # Battle of the Boyne
@@ -203,7 +203,8 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Late Summer bank holiday (last Monday in August)
         if self._year >= 1971:
             self._add_holiday(
-                "Late Summer Bank Holiday [England/Wales/Northern Ireland]",
+                "Late Summer Bank Holiday [England/Wales/Northern Ireland/"
+                "Isle of Man]",
                 _get_nth_weekday_of_month(-1, MON, AUG, self._year),
             )
 

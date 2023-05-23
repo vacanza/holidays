@@ -144,7 +144,7 @@ class TestUK(TestCase):
 
     def test_easter_monday(self):
         name = "Easter Monday"
-        name_global = f"{name} [England/Wales/Northern Ireland]"
+        name_global = f"{name} [England/Wales/Northern Ireland/Isle of Man]"
         dt = (
             "2019-04-22",
             "2020-04-13",
@@ -255,7 +255,7 @@ class TestUK(TestCase):
 
     def test_late_summer_bank_holiday(self):
         name = "Late Summer Bank Holiday"
-        name_global = f"{name} [England/Wales/Northern Ireland]"
+        name_global = f"{name} [England/Wales/Northern Ireland/Isle of Man]"
         dt = (
             "2001-08-27",
             "2002-08-26",
@@ -355,10 +355,11 @@ class TestUK(TestCase):
         all_holidays = {
             "New Year's Day",
             "Good Friday",
-            "Easter Monday [England/Wales/Northern Ireland]",
+            "Easter Monday [England/Wales/Northern Ireland/Isle of Man]",
             "May Day",
             "Spring Bank Holiday",
-            "Late Summer Bank Holiday [England/Wales/Northern Ireland]",
+            "Late Summer Bank Holiday [England/Wales/Northern Ireland/"
+            "Isle of Man]",
             "Christmas Day",
             "Boxing Day",
             "St. Patrick's Day [Northern Ireland]",
