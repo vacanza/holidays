@@ -28,11 +28,10 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "CL"
+    default_language = "es"
     special_holidays = {
         2022: ((SEP, 16, tr("Feriado nacional")),),
     }
-    default_language = "es"
-    # ISO 3166-2 codes for the principal subdivisions, called regions
     subdivisions = (
         "AI",
         "AN",
@@ -51,6 +50,7 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
         "TA",
         "VS",
     )
+    supported_languages = ("en_US", "es", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

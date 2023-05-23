@@ -9,60 +9,57 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars import _ChineseLuniSolar
-from holidays.constants import JAN, APR, MAY, OCT
+from holidays.constants import APR, OCT
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChineseCalendarHolidays
+from holidays.holiday_groups import InternationalHolidays
 
 
-class China(HolidayBase):
+class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_China
     """
 
     country = "CN"
 
-    def __init__(self, **kwargs):
-        self.cnls = _ChineseLuniSolar()
-        HolidayBase.__init__(self, **kwargs)
+    def __init__(self, *args, **kwargs):
+        ChineseCalendarHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         if year <= 1949:
             return None
-
         super()._populate(year)
 
-        self[date(year, JAN, 1)] = "New Year's Day"
+        self._add_new_years_day("New Year's Day")
 
         name = "Labour Day"
-        dt = date(year, MAY, 1)
-        self[dt] = name
+        may_1 = self._add_labor_day(name)
         if 2000 <= year <= 2007:
-            self[dt + td(days=+1)] = name
-            self[dt + td(days=+2)] = name
+            self._add_holiday(name, may_1 + td(days=+1))
+            self._add_holiday(name, may_1 + td(days=+2))
 
         name = "Chinese New Year (Spring Festival)"
-        dt = self.cnls.lunar_n_y_date(year)
-        self[dt] = name
-        self[dt + td(days=+1)] = name
+        self._add_chinese_new_years_day(name)
+        self._add_chinese_new_years_day_two(name)
         if 2008 <= year <= 2013:
-            self[dt + td(days=-1)] = name
+            self._add_chinese_new_years_eve(name)
         else:
-            self[dt + td(days=+2)] = name
+            self._add_chinese_new_years_day_three(name)
 
         name = "National Day"
-        dt = date(year, OCT, 1)
-        self[dt] = name
-        self[dt + td(days=+1)] = name
+        self._add_holiday(name, OCT, 1)
+        self._add_holiday(name, OCT, 2)
         if year >= 2000:
-            self[dt + td(days=+2)] = name
+            self._add_holiday(name, OCT, 3)
 
         if year >= 2008:
-            self[date(year, APR, 5)] = "Tomb-Sweeping Day"
-            self[self.cnls.lunar_to_gre(year, 5, 5)] = "Dragon Boat Festival"
-            self[self.cnls.lunar_to_gre(year, 8, 15)] = "Mid-Autumn Festival"
+            self._add_holiday("Tomb-Sweeping Day", APR, 5)
+            self._add_dragon_boat_festival("Dragon Boat Festival")
+            self._add_mid_autumn_festival("Mid-Autumn Festival")
 
 
 class CN(China):

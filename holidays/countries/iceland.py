@@ -26,6 +26,7 @@ class Iceland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "IS"
     default_language = "is"
+    supported_languages = ("en_US", "is", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

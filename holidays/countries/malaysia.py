@@ -12,19 +12,24 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars import _CustomCalendar, _IslamicLunar
+from holidays.calendars import _BuddhistLunisolar, _ChineseLunisolar
+from holidays.calendars import _CustomCalendar, _HinduLunisolar, _IslamicLunar
 from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC, MON, FRI, SAT, SUN
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import BuddhistCalendarHolidays
 from holidays.holiday_groups import ChineseCalendarHolidays, ChristianHolidays
+from holidays.holiday_groups import HinduCalendarHolidays
 from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
 
 
 class Malaysia(
     HolidayBase,
+    BuddhistCalendarHolidays,
     ChineseCalendarHolidays,
     ChristianHolidays,
+    HinduCalendarHolidays,
     InternationalHolidays,
     IslamicHolidays,
 ):
@@ -37,6 +42,7 @@ class Malaysia(
         2018: ((MAY, 9, "Malaysia General Election Holiday"),),
         2019: ((JUL, 30, "Installation of New King"),),
     }
+    show_estimated = True
     subdivisions = (
         "JHR",
         "KDH",
@@ -96,8 +102,14 @@ class Malaysia(
 
         See parameters and usage in :py:class:`HolidayBase`.
         """
-        ChineseCalendarHolidays.__init__(self)
+        BuddhistCalendarHolidays.__init__(
+            self, calendar=MalaysiaBuddhistCalendar()
+        )
+        ChineseCalendarHolidays.__init__(
+            self, calendar=MalaysiaChineseCalendar()
+        )
         ChristianHolidays.__init__(self)
+        HinduCalendarHolidays.__init__(self, calendar=MalaysiaHinduCalendar())
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, calendar=MalaysiaIslamicCalendar())
         super().__init__(*args, **kwargs)
@@ -105,8 +117,6 @@ class Malaysia(
     def _populate(self, year):
         super()._populate(year)
         observed_dates = set()
-
-        estimated_suffix = "* (*estimated)"
 
         # Chinese New Year (one day in the States of Kelantan and Terengganu,
         # two days in the other States).
@@ -118,43 +128,8 @@ class Malaysia(
             self._add_chinese_new_years_day_two("Chinese New Year Holiday")
         )
 
-        # Wesak Day.
-        # Date of observance is announced yearly
-        # https://en.wikipedia.org/wiki/Vesak#Dates_of_observance
-        dates_obs = {
-            2001: (MAY, 7),
-            2002: (MAY, 27),
-            2003: (MAY, 15),
-            2004: (MAY, 3),
-            2005: (MAY, 23),
-            2006: (MAY, 12),
-            2007: (MAY, 1),
-            2008: (MAY, 19),
-            2009: (MAY, 9),
-            2010: (MAY, 28),
-            2011: (MAY, 17),
-            2012: (MAY, 5),
-            2013: (MAY, 24),
-            2014: (MAY, 13),
-            2015: (MAY, 3),
-            2016: (MAY, 21),
-            2017: (MAY, 10),
-            2018: (MAY, 29),
-            2019: (MAY, 19),
-            2020: (MAY, 7),
-            2021: (MAY, 26),
-            2022: (MAY, 15),
-        }
-        name = "Vesak Day"
-        if year in dates_obs:
-            observed_dates.add(self._add_holiday(name, *dates_obs[year]))
-        else:
-            observed_dates.add(
-                self._add_holiday(
-                    f"{name}{estimated_suffix}",
-                    self._chinese_calendar.vesak_may_date(year),
-                )
-            )
+        # Vesak Day.
+        observed_dates.add(self._add_vesak_may("Vesak Day"))
 
         # Labour Day.
         observed_dates.add(self._add_labor_day("Labour Day"))
@@ -182,44 +157,9 @@ class Malaysia(
         if year >= 2010:
             observed_dates.add(self._add_holiday("Malaysia Day", SEP, 16))
 
-        # Deepavali.
-        # aka Diwali;
-        # date of observance is announced yearly
+        # Deepavali (Diwali).
         if self.subdiv != "SWK":
-            dates_obs = {
-                2001: (NOV, 14),
-                2002: (NOV, 3),
-                2003: (OCT, 23),
-                2004: (NOV, 11),
-                2005: (NOV, 1),
-                2006: (OCT, 21),
-                2007: (NOV, 8),
-                2008: (OCT, 27),
-                2009: (OCT, 17),
-                2010: (NOV, 5),
-                2011: (OCT, 26),
-                2012: (NOV, 13),
-                2013: (NOV, 2),
-                2014: (OCT, 22),
-                2015: (NOV, 10),
-                2016: (OCT, 29),
-                2017: (OCT, 18),
-                2018: (NOV, 6),
-                2019: (OCT, 27),
-                2020: (NOV, 14),
-                2021: (NOV, 4),
-                2022: (OCT, 24),
-            }
-            name = "Deepavali"
-            if year in dates_obs:
-                observed_dates.add(self._add_holiday(name, *dates_obs[year]))
-            else:
-                observed_dates.add(
-                    self._add_holiday(  # type: ignore[arg-type]
-                        f"{name}{estimated_suffix}",
-                        self._convert_chinese_to_gre(10, 1) + td(days=-2),
-                    )
-                )
+            observed_dates.add(self._add_diwali("Deepavali"))
 
         # Christmas day.
         observed_dates.add(self._add_christmas_day("Christmas Day"))
@@ -299,31 +239,8 @@ class Malaysia(
             )
 
         # Thaipusam.
-        # An annual Hindu festival observed on the day of the first full moon
-        # during the Tamil month of Thai
         if self.subdiv in {"JHR", "KUL", "NSN", "PJY", "PNG", "PRK", "SGR"}:
-            dates_obs = {
-                2018: (JAN, 31),
-                2019: (JAN, 21),
-                2020: (FEB, 8),
-                2021: (JAN, 28),
-                2022: (JAN, 18),
-                2023: (FEB, 5),
-                2024: (JAN, 25),
-                2025: (FEB, 11),
-                2026: (FEB, 1),
-                2027: (JAN, 22),
-            }
-            name = "Thaipusam"
-            if year in dates_obs:
-                observed_dates.add(self._add_holiday(name, *dates_obs[year]))
-            else:
-                observed_dates.add(
-                    self._add_holiday(
-                        f"{name}{estimated_suffix}",
-                        self._chinese_calendar.thaipusam_date(year),
-                    )
-                )
+            observed_dates.add(self._add_thaipusam("Thaipusam"))
 
         # Federal Territory Day.
         if self.subdiv in {"KUL", "LBN", "PJY"} and year >= 1974:
@@ -548,6 +465,103 @@ class MYS(Malaysia):
     pass
 
 
+class MalaysiaBuddhistCalendar(_CustomCalendar, _BuddhistLunisolar):
+    VESAK_MAY_DATES = {
+        2001: (MAY, 7),
+        2002: (MAY, 27),
+        2003: (MAY, 15),
+        2004: (MAY, 3),
+        2005: (MAY, 22),
+        2006: (MAY, 12),
+        2007: (MAY, 1),
+        2008: (MAY, 19),
+        2009: (MAY, 9),
+        2010: (MAY, 28),
+        2011: (MAY, 17),
+        2012: (MAY, 5),
+        2013: (MAY, 24),
+        2014: (MAY, 13),
+        2015: (MAY, 3),
+        2016: (MAY, 21),
+        2017: (MAY, 10),
+        2018: (MAY, 29),
+        2019: (MAY, 19),
+        2020: (MAY, 7),
+        2021: (MAY, 26),
+        2022: (MAY, 15),
+        2023: (MAY, 4),
+    }
+
+
+class MalaysiaChineseCalendar(_CustomCalendar, _ChineseLunisolar):
+    LUNAR_NEW_YEAR_DATES = {
+        2001: (JAN, 24),
+        2002: (FEB, 12),
+        2003: (FEB, 1),
+        2004: (JAN, 22),
+        2005: (FEB, 9),
+        2006: (JAN, 29),
+        2007: (FEB, 18),
+        2008: (FEB, 7),
+        2009: (JAN, 26),
+        2010: (FEB, 14),
+        2011: (FEB, 3),
+        2012: (JAN, 23),
+        2013: (FEB, 10),
+        2014: (JAN, 31),
+        2015: (FEB, 19),
+        2016: (FEB, 8),
+        2017: (JAN, 28),
+        2018: (FEB, 16),
+        2019: (FEB, 5),
+        2020: (JAN, 25),
+        2021: (FEB, 12),
+        2022: (FEB, 1),
+        2023: (JAN, 22),
+    }
+
+
+class MalaysiaHinduCalendar(_CustomCalendar, _HinduLunisolar):
+    DIWALI_DATES = {
+        2001: (NOV, 14),
+        2002: (NOV, 3),
+        2003: (OCT, 23),
+        2004: (NOV, 11),
+        2005: (NOV, 1),
+        2006: (OCT, 21),
+        2007: (NOV, 8),
+        2008: (OCT, 27),
+        2009: (OCT, 17),
+        2010: (NOV, 5),
+        2011: (OCT, 26),
+        2012: (NOV, 13),
+        2013: (NOV, 2),
+        2014: (OCT, 22),
+        2015: (NOV, 10),
+        2016: (OCT, 29),
+        2017: (OCT, 18),
+        2018: (NOV, 6),
+        2019: (OCT, 27),
+        2020: (NOV, 14),
+        2021: (NOV, 4),
+        2022: (OCT, 24),
+        2023: (NOV, 12),
+    }
+
+    THAIPUSAM_DATES = {
+        2018: (JAN, 31),
+        2019: (JAN, 21),
+        2020: (FEB, 8),
+        2021: (JAN, 28),
+        2022: (JAN, 18),
+        2023: (FEB, 5),
+        2024: (JAN, 25),
+        2025: (FEB, 11),
+        2026: (FEB, 1),
+        2027: (JAN, 22),
+    }
+
+
 class MalaysiaIslamicCalendar(_CustomCalendar, _IslamicLunar):
     EID_AL_ADHA_DATES = {
         2001: ((MAR, 6),),
@@ -597,6 +611,7 @@ class MalaysiaIslamicCalendar(_CustomCalendar, _IslamicLunar):
         2020: ((MAY, 24),),
         2021: ((MAY, 13),),
         2022: ((MAY, 2),),
+        2023: ((APR, 22),),
     }
 
     HARI_HOL_JOHOR_DATES = {
@@ -662,6 +677,7 @@ class MalaysiaIslamicCalendar(_CustomCalendar, _IslamicLunar):
         2020: ((MAR, 22),),
         2021: ((MAR, 11),),
         2022: ((MAR, 1),),
+        2023: ((FEB, 18),),
     }
 
     MAWLID_DATES = {
@@ -711,6 +727,7 @@ class MalaysiaIslamicCalendar(_CustomCalendar, _IslamicLunar):
         2020: ((MAY, 10),),
         2021: ((APR, 29),),
         2022: ((APR, 19),),
+        2023: ((APR, 8),),
     }
 
     RAMADAN_BEGINNING_DATES = {
@@ -736,4 +753,5 @@ class MalaysiaIslamicCalendar(_CustomCalendar, _IslamicLunar):
         2020: ((APR, 24),),
         2021: ((APR, 13),),
         2022: ((APR, 3),),
+        2023: ((MAR, 23),),
     }

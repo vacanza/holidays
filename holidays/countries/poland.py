@@ -27,6 +27,7 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays):
     special_holidays = {
         2018: ((NOV, 12, tr("Narodowe Święto Niepodległości - 100-lecie")),)
     }
+    supported_languages = ("en_US", "pl", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
