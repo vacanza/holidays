@@ -108,7 +108,9 @@ class ReleaseNotesGenerator:
     @property
     def sorted_pull_requests(self):
         def custom_order(pr):
-            if re.findall(r"^Introduce|Refactor", pr) or re.findall(
+            pr = re.findall(r"^(.*) \(#\d+ .*\)$", pr)[0]
+
+            if re.findall(r"^(Introduce|Refactor)", pr) or re.findall(
                 r"Add .* support", pr
             ):
                 weight = 10
@@ -159,8 +161,8 @@ class ReleaseNotesGenerator:
             f"@{c}" for c in [author] + sorted(contributors, key=str.lower)
         )
         self.pull_requests[pull_request.number] = (
-            f"{pull_request.title}, #{pull_request.number} "
-            f"({', '.join(contributors)})"
+            f"{pull_request.title} (#{pull_request.number} by "
+            f"{', '.join(contributors)})"
         )
 
     def generate_release_notes(self):

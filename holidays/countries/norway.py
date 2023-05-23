@@ -37,6 +37,7 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "NO"
     default_language = "no"
+    supported_languages = ("en_US", "no", "uk")
 
     def __init__(self, include_sundays=False, **kwargs):
         """

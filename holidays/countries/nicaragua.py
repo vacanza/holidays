@@ -40,6 +40,7 @@ class Nicaragua(HolidayBase):
         "RI",
         "SJ",
     )
+    supported_languages = ("en_US", "es", "uk")
 
     def __init__(self, **kwargs):
         # Default subdivision to MN; prov for backwards compatibility

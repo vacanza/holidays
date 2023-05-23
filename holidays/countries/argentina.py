@@ -60,6 +60,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "AR"
     default_language = "es"
+    supported_languages = ("en_US", "es", "uk")
 
     # Special Bridge Holidays are given upto 3 days a year
     # as long as it's declared 50 days before calendar year's end

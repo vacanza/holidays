@@ -23,6 +23,7 @@ class Venezuela(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "VE"
     default_language = "es"
+    supported_languages = ("en_US", "es", "uk")
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)

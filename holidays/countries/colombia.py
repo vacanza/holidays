@@ -31,6 +31,7 @@ class Colombia(HolidayBase):
 
     country = "CO"
     default_language = "es"
+    supported_languages = ("en_US", "es", "uk")
 
     def _add_with_bridge(self, dt: date, name: str) -> None:
         """

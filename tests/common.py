@@ -33,7 +33,7 @@ class TestCase(unittest.TestCase):
         cls.test_class = test_class
 
         if (
-            hasattr(test_class, "default_language")
+            getattr(test_class, "default_language") is not None
             # Can be either 2 (e.g., en, fr, uk) or 5 (e.g., en_US, en_GB).
             and len(test_class.default_language) not in {2, 5}
         ):
@@ -41,7 +41,7 @@ class TestCase(unittest.TestCase):
                 f"`{test_class.__name__}.default_language` value is invalid."
             )
 
-        if hasattr(test_class, "default_language"):
+        if getattr(test_class, "default_language") is not None:
             cls.set_language(test_class, test_class.default_language)
 
         if years:
@@ -54,7 +54,7 @@ class TestCase(unittest.TestCase):
     def setUp(self):
         super().setUp()
 
-        if hasattr(self.test_class, "default_language"):
+        if getattr(self.test_class, "default_language") is not None:
             self.set_language(self.test_class.default_language)
 
         if not hasattr(self, "holidays"):

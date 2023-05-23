@@ -1,7 +1,22 @@
+Version 0.26
+============
+
+- Introduce Asian holidays pre-calculated data (#1148 by @KJhellico)
+- Refactor existing utils methods, add list localized entities methods (#1185 by @arkid15r)
+- Refactor long running tests (#1182 by @KJhellico)
+- Add Belize holidays (#1181 by @KJhellico)
+- Add El Salvador holidays (#1198 by @KJhellico)
+- Update Morocco holidays (#1205 by @abh31000)
+- Update Singapore tests: cover non-observed holidays (#1184 by @arkid15r)
+- Update Vatican City holidays (#1206 by @KJhellico)
+- Add EntityLoader inheritance error message (#1208 by @arkid15r)
+- Migrate Botswana holidays to holiday groups (#1207 by @KJhellico, @arkid15r)
+- Migrate financial to holiday groups (#1174 by @arkid15r)
+
 Version 0.25
 ============
 
-Released ???????? ??, ????
+Released May 15, 2023
 
 - Introduce entity lazy loading, #1087 (@arkid15r)
 - Add Algeria holidays, #1176 (@abh31000)

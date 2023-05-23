@@ -30,6 +30,7 @@ class Serbia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "RS"
     default_language = "sr"
+    supported_languages = ("en_US", "sr")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)

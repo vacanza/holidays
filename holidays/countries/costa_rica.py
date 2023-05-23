@@ -26,6 +26,7 @@ class CostaRica(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "CR"
     default_language = "es"
+    supported_languages = ("en_US", "es", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

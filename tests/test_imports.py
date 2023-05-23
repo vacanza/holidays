@@ -40,9 +40,11 @@ class TestHolidaysImports(TestCase):
 
     def test_utils(self):
         for name in (
-            "CountryHoliday",
             "country_holidays",
+            "CountryHoliday",
             "financial_holidays",
+            "list_localized_countries",
+            "list_localized_financial",
             "list_supported_countries",
             "list_supported_financial",
         ):
