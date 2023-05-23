@@ -23,7 +23,7 @@ msgstr "(تقدير*) *%s"
 
 #: ./holidays/countries/ethiopia.py:74
 msgid "አዲስ ዓመት እንቁጣጣሽ"
-msgstr "سنة جديدة سعيدة"
+msgstr "السنة الإثيوبية الجديدة"
 
 #: ./holidays/countries/ethiopia.py:79
 msgid "መስቀል"
@@ -81,9 +81,9 @@ msgstr "عيد الفطر"
 #. Eid al-Adha.
 #: ./holidays/countries/ethiopia.py:119
 msgid "አረፋ"
-msgstr "رغوة"
+msgstr "عيد الأضحى"
 
 #. Prophet Muhammad's Birthday.
 #: ./holidays/countries/ethiopia.py:124
 msgid "መውሊድ"
-msgstr "تولد"
+msgstr "عيد المولد النبوي"

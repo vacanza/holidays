@@ -32,7 +32,7 @@ msgstr "اليوم العالمي للمرأة"
 
 #: ./holidays/countries/ukraine.py:71
 msgid "Великдень (Пасха)"
-msgstr "عيد الفصح (عيد الفصح)"
+msgstr "عيد الفصح"
 
 #. Holy Trinity Day.
 #: ./holidays/countries/ukraine.py:75
