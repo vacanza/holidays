@@ -92,7 +92,7 @@ class TestJapan(TestCase):
     def test_foundation_day(self):
         self.assertHoliday(f"{year}-02-11" for year in range(1967, 2051))
         self.assertNoHoliday("1966-02-11")
-        self.assertNoHolidayNameInYears("建国記念の日", 1966)
+        self.assertNoHolidayName("建国記念の日", 1966)
 
     def test_vernal_equinox_day(self):
         self.assertHolidaysName(
@@ -208,7 +208,7 @@ class TestJapan(TestCase):
         self.assertHolidaysName(
             name, (f"{year}-04-29" for year in range(2007, 2051))
         )
-        self.assertNoHolidayNameInYears(name, 2006)
+        self.assertNoHolidayName(name, 2006)
 
     def test_constitution_memorial_day(self):
         self.assertHolidaysName(
@@ -223,7 +223,7 @@ class TestJapan(TestCase):
         self.assertHolidaysName(
             name, (f"{year}-05-04" for year in range(2007, 2051))
         )
-        self.assertNoHolidayNameInYears(name, 1988)
+        self.assertNoHolidayName(name, 1988)
 
     def test_national_holiday(self):
         name = "国民の休日"
@@ -334,7 +334,7 @@ class TestJapan(TestCase):
         self.assertHolidaysName(name, (f"{year}-08-11" for year in years))
         self.assertHolidaysName(name, "2020-08-10", "2021-08-08")
         self.assertNoHoliday("2015-08-11")
-        self.assertNoHolidayNameInYears(name, 2015)
+        self.assertNoHolidayName(name, 2015)
 
     def test_respect_for_the_aged_day(self):
         name = "敬老の日"
@@ -342,7 +342,7 @@ class TestJapan(TestCase):
             name, (f"{year}-09-15" for year in range(1966, 2003))
         )
         self.assertNoHoliday("1965-09-15")
-        self.assertNoHolidayNameInYears(name, 1965)
+        self.assertNoHolidayName(name, 1965)
 
         self.assertHolidaysName(
             name,
@@ -509,7 +509,7 @@ class TestJapan(TestCase):
             name, (f"{year}-10-10" for year in range(1966, 2000))
         )
         self.assertNoHoliday("1965-10-10", "2000-10-10")
-        self.assertNoHolidayNameInYears(name, 1965, 2020)
+        self.assertNoHolidayName(name, 1965, 2020)
 
         self.assertHolidaysName(
             name,
@@ -570,7 +570,7 @@ class TestJapan(TestCase):
             "2049-10-11",
             "2050-10-10",
         )
-        self.assertNoHolidayNameInYears(name, 2019)
+        self.assertNoHolidayName(name, 2019)
 
     def test_culture_day(self):
         self.assertHolidaysName(

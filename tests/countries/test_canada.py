@@ -287,8 +287,8 @@ class TestCanada(TestCase):
         new_name = "Terry Fox Day"
         self.assertHolidaysName(old_name, mb_holidays, "2014-08-04")
         self.assertHolidaysName(new_name, mb_holidays, "2015-08-03")
-        self.assertNoHolidayNameInYears(old_name, mb_holidays, 2015)
-        self.assertNoHolidayNameInYears(new_name, mb_holidays, 2014)
+        self.assertNoHolidayName(old_name, mb_holidays, 2015)
+        self.assertNoHolidayName(new_name, mb_holidays, 2014)
 
     def test_civic_holiday_nb_nt_sk(self):
         nb_holidays = self.prov_hols["NB"]

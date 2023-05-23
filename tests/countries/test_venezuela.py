@@ -209,10 +209,10 @@ class TestVenezuela(TestCase):
     def test_indigenous_resistance(self):
         self.assertHoliday(f"{year}-10-12" for year in range(1921, 2050))
         self.assertNoHoliday(f"{year}-10-12" for year in range(1900, 1921))
-        self.assertNoHolidayNameInYears(
+        self.assertNoHolidayName(
             "Día de la Resistencia Indígena", range(1921, 2002)
         )
-        self.assertNoHolidayNameInYears("Día de la Raza", range(2002, 2050))
+        self.assertNoHolidayName("Día de la Raza", range(2002, 2050))
 
     def test_l10n_default(self):
         def run_tests(languages):

@@ -53,7 +53,7 @@ class TestVaticanCity(TestCase):
         self.assertHolidaysName(
             name, (f"{year}-03-13" for year in range(2013, 2050))
         )
-        self.assertNoHolidayNameInYears(name, range(1970, 1978))
+        self.assertNoHolidayName(name, range(1970, 1978))
 
     def test_saint_josephs_day(self):
         self.assertHolidaysName(
@@ -86,7 +86,7 @@ class TestVaticanCity(TestCase):
         self.assertHolidaysName(
             name, (f"{year}-04-23" for year in range(2013, 2050))
         )
-        self.assertNoHolidayNameInYears(name, range(1970, 2013))
+        self.assertNoHolidayName(name, range(1970, 2013))
 
     def test_ascension(self):
         name = "Ascension of Christ"
@@ -103,7 +103,7 @@ class TestVaticanCity(TestCase):
             "2008-05-01",
             "2009-05-21",
         )
-        self.assertNoHolidayNameInYears(name, range(2010, 2050))
+        self.assertNoHolidayName(name, range(2010, 2050))
 
     def test_corpus_christi(self):
         name = "Corpus Christi"
@@ -120,7 +120,7 @@ class TestVaticanCity(TestCase):
             "2008-05-22",
             "2009-06-11",
         )
-        self.assertNoHolidayNameInYears(name, range(2010, 2050))
+        self.assertNoHolidayName(name, range(2010, 2050))
 
     def test_saint_joseph_workers_day(self):
         self.assertHolidaysName(
@@ -157,9 +157,7 @@ class TestVaticanCity(TestCase):
         self.assertHolidaysName(
             name, (f"{year}-11-04" for year in range(1978, 2005))
         )
-        self.assertNoHolidayNameInYears(
-            name, range(1970, 1978), range(2005, 2050)
-        )
+        self.assertNoHolidayName(name, range(1970, 1978), range(2005, 2050))
 
     def test_immaculate_conception_day(self):
         self.assertHolidaysName(

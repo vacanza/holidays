@@ -133,8 +133,8 @@ class TestUkraine(TestCase):
         self.assertHoliday(f"{year}-05-01" for year in range(1991, 2022))
         self.assertHoliday(f"{year}-05-02" for year in range(1991, 2018))
         self.assertNoHoliday("2018-05-02")
-        self.assertNoHolidayNameInYears(name_after, range(1919, 2018))
-        self.assertNoHolidayNameInYears(name_before, range(2018, 2022))
+        self.assertNoHolidayName(name_after, range(1919, 2018))
+        self.assertNoHolidayName(name_before, range(2018, 2022))
 
         dt = (
             "2010-05-03",
@@ -153,7 +153,7 @@ class TestUkraine(TestCase):
             "(День перемоги)"
         )
         self.assertHoliday(f"{year}-05-09" for year in range(1991, 2022))
-        self.assertNoHolidayNameInYears(name, range(1991, 2016))
+        self.assertNoHolidayName(name, range(1991, 2016))
 
         dt = (
             "2010-05-10",
@@ -166,9 +166,7 @@ class TestUkraine(TestCase):
 
     def test_constitution_day(self):
         self.assertNoHoliday(f"{year}-06-28" for year in range(1991, 1997))
-        self.assertNoHolidayNameInYears(
-            "День Конституції України", range(1991, 1997)
-        )
+        self.assertNoHolidayName("День Конституції України", range(1991, 1997))
         self.assertHoliday(f"{year}-06-28" for year in range(1997, 2022))
 
         dt = ("2014-06-30", "2015-06-29", "2020-06-29")
@@ -189,9 +187,9 @@ class TestUkraine(TestCase):
         name_after = "День захисників і захисниць України"
         self.assertNoHoliday(f"{year}-10-14" for year in range(1991, 2015))
         self.assertHoliday(f"{year}-10-14" for year in range(2015, 2022))
-        self.assertNoHolidayNameInYears(name_before, range(1991, 2015))
-        self.assertNoHolidayNameInYears(name_before, range(2021, 2022))
-        self.assertNoHolidayNameInYears(name_after, range(1991, 2021))
+        self.assertNoHolidayName(name_before, range(1991, 2015))
+        self.assertNoHolidayName(name_before, range(2021, 2022))
+        self.assertNoHolidayName(name_after, range(1991, 2021))
 
         dt = ("2017-10-16", "2018-10-15")
         self.assertHoliday(dt)
@@ -202,7 +200,7 @@ class TestUkraine(TestCase):
         self.assertHoliday(f"{year}-11-08" for year in range(1991, 2000))
         self.assertNoHoliday(f"{year}-11-07" for year in range(2000, 2022))
         self.assertNoHoliday(f"{year}-11-08" for year in range(2000, 2022))
-        self.assertNoHolidayNameInYears(
+        self.assertNoHolidayName(
             "Річниця Великої Жовтневої соціалістичної революції",
             range(2000, 2022),
         )
@@ -213,7 +211,7 @@ class TestUkraine(TestCase):
 
     def test_christmas_gregorian_day(self):
         self.assertNoHoliday(f"{year}-12-25" for year in range(1991, 2017))
-        self.assertNoHolidayNameInYears(
+        self.assertNoHolidayName(
             "Різдво Христове (за григоріанським календарем)",
             range(1991, 2017),
         )
