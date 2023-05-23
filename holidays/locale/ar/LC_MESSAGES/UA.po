@@ -82,7 +82,7 @@ msgstr "يوم المدافع عن أوكرانيا"
 #. Anniversary of the Great October Socialist Revolution.
 #: ./holidays/countries/ukraine.py:128
 msgid "Річниця Великої Жовтневої соціалістичної революції"
-msgstr "يوم المدافع عن أوكرانيا"
+msgstr "ذكرى ثورة أكتوبر الاشتراكية العظمى"
 
 #. Christmas (Gregorian calendar).
 #: ./holidays/countries/ukraine.py:136
