@@ -14,7 +14,8 @@ from datetime import timedelta as td
 from typing import Tuple, Union
 
 from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
-from holidays.constants import MAR, APR, MAY, JUN, JUL, AUG, SEP, NOV, DEC, MON
+from holidays.constants import MAR, APR, MAY, JUN, JUL, AUG, SEP, NOV, DEC
+from holidays.constants import MON, FRI
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -40,6 +41,7 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
     }
     subdivisions: Union[Tuple[()], Tuple[str, ...]] = (
         "England",
+        "Isle of Man",
         "Northern Ireland",
         "Scotland",
         "UK",
@@ -115,6 +117,27 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
                 "Late Summer Bank Holiday",
                 _get_nth_weekday_of_month(-1, MON, AUG, self._year),
             )
+
+    def _add_subdiv_isle_of_man_holidays(self):
+        # Easter Monday
+        self._add_easter_monday("Easter Monday")
+
+        # Late Summer bank holiday (last Monday in August)
+        if self._year >= 1971:
+            self._add_holiday(
+                "Late Summer Bank Holiday",
+                _get_nth_weekday_of_month(-1, MON, AUG, self._year),
+            )
+
+        # Isle of Man exclusive holidays
+        # TT bank holiday (first Friday in June)
+        self._add_holiday(
+            "TT Bank Holiday",
+            _get_nth_weekday_of_month(1, FRI, JUN, self._year),
+        )
+
+        # Tynwald Day
+        self._add_holiday("Tynwald Day", JUL, 5)
 
     def _add_subdiv_northern_ireland_holidays(self):
         # St. Patrick's Day
