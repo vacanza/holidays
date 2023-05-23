@@ -15,7 +15,7 @@ from typing import Optional
 from holidays.constants import FEB, MAR, APR, MAY, JUN, SEP, OCT, NOV, DEC
 
 
-class _HebrewLuniSolar:
+class _HebrewLunisolar:
     HANUKKAH_DATES = {
         1947: (DEC, 8),
         1948: (DEC, 27),
@@ -1431,6 +1431,6 @@ class _HebrewLuniSolar:
 
     @staticmethod
     def hebrew_holiday_date(year: int, hol_type: str) -> Optional[date]:
-        hol_array = getattr(_HebrewLuniSolar, f"{hol_type}_DATES", {})
+        hol_array = getattr(_HebrewLunisolar, f"{hol_type}_DATES", {})
         dt = hol_array.get(year, ())
         return date(year, *dt) if dt else None
