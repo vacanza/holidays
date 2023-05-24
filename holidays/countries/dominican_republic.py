@@ -26,6 +26,7 @@ class DominicanRepublic(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "DO"
     default_language = "es"
+    supported_languages = ("en_US", "es", "uk")
 
     def _add_movable_holiday(
         self, name: str, dt: date, include_sun: bool = False

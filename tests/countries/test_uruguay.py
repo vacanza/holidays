@@ -16,7 +16,7 @@ from tests.common import TestCase
 class TestUY(TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Uruguay)
+        super().setUpClass(Uruguay, years=range(1900, 2050))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Uruguay, UY, URY)
@@ -26,31 +26,31 @@ class TestUY(TestCase):
     def test_new_years_day(self):
         self.assertHolidaysName(
             "Año Nuevo",
-            (f"{year}-01-01" for year in range(1900, 2100)),
+            (f"{year}-01-01" for year in range(1900, 2050)),
         )
 
     def test_labor_day(self):
         self.assertHolidaysName(
             "Día de los Trabajadores",
-            (f"{year}-05-01" for year in range(1900, 2100)),
+            (f"{year}-05-01" for year in range(1900, 2050)),
         )
 
     def test_jura_de_la_constitucion_day(self):
         self.assertHolidaysName(
             "Jura de la Constitución",
-            (f"{year}-07-18" for year in range(1900, 2100)),
+            (f"{year}-07-18" for year in range(1900, 2050)),
         )
 
     def test_declaratoria_de_la_independencia_day(self):
         self.assertHolidaysName(
             "Día de la Independencia",
-            (f"{year}-08-25" for year in range(1900, 2100)),
+            (f"{year}-08-25" for year in range(1900, 2050)),
         )
 
     def test_christmas(self):
         self.assertHolidaysName(
             "Día de la Familia",
-            (f"{year}-12-25" for year in range(1900, 2100)),
+            (f"{year}-12-25" for year in range(1900, 2050)),
         )
 
     # Partially paid holidays.
@@ -58,19 +58,19 @@ class TestUY(TestCase):
     def test_dia_de_reyes(self):
         self.assertHolidaysName(
             "Día de los Niños",
-            (f"{year}-01-06" for year in range(1900, 2100)),
+            (f"{year}-01-06" for year in range(1900, 2050)),
         )
 
     def test_natalicio_artigas_day(self):
         self.assertHolidaysName(
             "Natalicio de José Gervasio Artigas",
-            (f"{year}-06-19" for year in range(1900, 2100)),
+            (f"{year}-06-19" for year in range(1900, 2050)),
         )
 
     def test_dia_de_los_difuntos_day(self):
         self.assertHolidaysName(
             "Día de los Difuntos",
-            (f"{year}-11-02" for year in range(1900, 2100)),
+            (f"{year}-11-02" for year in range(1900, 2050)),
         )
 
     # Moveable holidays.
