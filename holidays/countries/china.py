@@ -11,7 +11,7 @@
 
 from datetime import timedelta as td
 
-from holidays.constants import APR, OCT
+from holidays.constants import OCT
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChineseCalendarHolidays
 from holidays.holiday_groups import InternationalHolidays
@@ -57,7 +57,7 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
             self._add_holiday(name, OCT, 3)
 
         if year >= 2008:
-            self._add_holiday("Tomb-Sweeping Day", APR, 5)
+            self._add_ching_ming_festival("Tomb-Sweeping Day")
             self._add_dragon_boat_festival("Dragon Boat Festival")
             self._add_mid_autumn_festival("Mid-Autumn Festival")
 
