@@ -92,4 +92,4 @@ msgstr "عيد الميلاد (حسب التقويم الغريغوري)"
 #: ./holidays/countries/ukraine.py:158
 #, c-format
 msgid "%s (вихідний)"
-msgstr "(صادر) %s"
+msgstr "(يوم عطلة) %s"
