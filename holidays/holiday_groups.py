@@ -486,16 +486,16 @@ class BuddhistCalendarHolidays:
         """
         Add Buddhist calendar holiday.
 
-        Appends customizable estimation label at the end of holiday name if
-        holiday date is an estimation.
+        Adds customizable estimation label to holiday name if holiday date
+        is an estimation.
         """
-        estimated_label = getattr(self, "estimated_label", "estimated")
+        estimated_label = getattr(self, "estimated_label", "%s* (*estimated)")
         show_estimated = getattr(self, "show_estimated", False)
         dt, is_estimated = hol_date
         if days_delta != 0:
             dt += td(days=days_delta)
         return self._add_holiday(
-            f"{name}* (*{estimated_label})"
+            f"{self.tr(estimated_label) % self.tr(name)}"
             if is_estimated and show_estimated
             else name,
             dt,
@@ -558,16 +558,16 @@ class ChineseCalendarHolidays:
         """
         Add Chinese calendar holiday.
 
-        Appends customizable estimation label at the end of holiday name if
-        holiday date is an estimation.
+        Adds customizable estimation label to holiday name if holiday date
+        is an estimation.
         """
-        estimated_label = getattr(self, "estimated_label", "estimated")
+        estimated_label = getattr(self, "estimated_label", "%s* (*estimated)")
         show_estimated = getattr(self, "show_estimated", False)
         dt, is_estimated = hol_date
         if days_delta != 0:
             dt += td(days=days_delta)
         return self._add_holiday(
-            f"{name}* (*{estimated_label})"
+            f"{self.tr(estimated_label) % self.tr(name)}"
             if is_estimated and show_estimated
             else name,
             dt,
@@ -744,16 +744,16 @@ class HinduCalendarHolidays:
         """
         Add Hindu calendar holiday.
 
-        Appends customizable estimation label at the end of holiday name if
-        holiday date is an estimation.
+        Adds customizable estimation label to holiday name if holiday date
+        is an estimation.
         """
-        estimated_label = getattr(self, "estimated_label", "estimated")
+        estimated_label = getattr(self, "estimated_label", "%s* (*estimated)")
         show_estimated = getattr(self, "show_estimated", False)
         dt, is_estimated = hol_date
         if days_delta != 0:
             dt += td(days=days_delta)
         return self._add_holiday(
-            f"{name}* (*{estimated_label})"
+            f"{self.tr(estimated_label) % self.tr(name)}"
             if is_estimated and show_estimated
             else name,
             dt,
