@@ -217,21 +217,14 @@ class NewZealand(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_subdiv_ota_holidays()
         elif self.subdiv in {"New Plymouth", "Taranaki"}:
             self._add_subdiv_tki_holidays()
+        elif self.subdiv == "South Canterbury":
+            self._add_subdiv_stc_holidays()
         elif self.subdiv == "Southland":
             self._add_subdiv_stl_holidays()
         elif self.subdiv == "Wellington":
             self._add_subdiv_wgn_holidays()
         elif self.subdiv in {"West Coast", "WTL", "Westland"}:
             self._add_subdiv_wtc_holidays()
-
-    def _add_subdiv_holidays(self):
-        if self.subdiv in {"South Canterbury", "STC"}:
-            self._add_holiday(
-                "South Canterbury Anniversary Day",
-                _get_nth_weekday_of_month(4, MON, SEP, self._year),
-            )
-
-        super()._add_subdiv_holidays()
 
     def _add_subdiv_auk_holidays(self):
         self._add_holiday(
@@ -284,6 +277,12 @@ class NewZealand(HolidayBase, ChristianHolidays, InternationalHolidays):
         if dt == self._easter_sunday + td(days=+1):  # Avoid Easter Monday
             dt += td(days=+1)
         self._add_holiday("Otago Anniversary Day", dt)
+
+    def _add_subdiv_stc_holidays(self):
+        self._add_holiday(
+            "South Canterbury Anniversary Day",
+            _get_nth_weekday_of_month(4, MON, SEP, self._year),
+        )
 
     def _add_subdiv_stl_holidays(self):
         dt = (

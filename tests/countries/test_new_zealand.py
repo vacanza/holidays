@@ -646,6 +646,7 @@ class TestNZ(TestCase):
             ("Otago", "OTA"),
             ("New Plymouth", "TKI"),
             ("Taranaki", "TKI"),
+            ("South Canterbury", "STC"),
             ("Southland", "STL"),
             ("Wellington", "WGN"),
             ("West Coast", "WTC"),
