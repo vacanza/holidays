@@ -18,7 +18,8 @@ from dateutil.easter import EASTER_ORTHODOX, EASTER_WESTERN, easter
 from holidays.calendars import _BuddhistLunisolar, _ChineseLunisolar
 from holidays.calendars import _HinduLunisolar, _IslamicLunar
 from holidays.calendars import GREGORIAN_CALENDAR, JULIAN_CALENDAR
-from holidays.constants import JAN, FEB, MAR, MAY, JUN, AUG, SEP, NOV, DEC
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
+from holidays.constants import NOV, DEC
 
 
 class ChristianHolidays:
@@ -406,6 +407,25 @@ class ChristianHolidays:
             name,
             self._easter_sunday + td(days=+9),
         )
+
+    def _add_saint_georges_day(self, name) -> date:
+        """
+        Add Saint George's Day (April 23th).
+
+        Saint George's Day is celebrated on 23 April, the traditionally
+        accepted date of the saint's death.
+        https://en.wikipedia.org/wiki/Saint_George%27s_Day
+        """
+        return self._add_holiday(name, APR, 23)
+
+    def _add_saint_james_day(self, name) -> date:
+        """
+        Add Saint James' Day (July 25th).
+
+        James the Great was one of the Twelve Apostles of Jesus.
+        https://en.wikipedia.org/wiki/James_the_Great#Feast
+        """
+        return self._add_holiday(name, JUL, 25)
 
     def _add_saint_johns_day(self, name) -> date:
         """
