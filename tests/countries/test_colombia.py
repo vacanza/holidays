@@ -279,39 +279,75 @@ class TestColombia(TestCase):
         )
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                co = Colombia(language=language)
-                self.assertEqual(co["2022-01-01"], "Año Nuevo")
-                self.assertEqual(co["2022-12-25"], "Navidad")
-
-        run_tests((Colombia.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((Colombia.default_language,))
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Año Nuevo"),
+                ("2022-01-10", "Día de los Reyes Magos (Observado)"),
+                ("2022-03-21", "Día de San José (Observado)"),
+                ("2022-04-14", "Jueves Santo"),
+                ("2022-04-15", "Viernes Santo"),
+                ("2022-05-01", "Día del Trabajo"),
+                ("2022-05-30", "Ascensión del señor (Observado)"),
+                ("2022-06-20", "Corpus Christi (Observado)"),
+                ("2022-06-27", "Sagrado Corazón (Observado)"),
+                ("2022-07-04", "San Pedro y San Pablo (Observado)"),
+                ("2022-07-20", "Día de la Independencia"),
+                ("2022-08-07", "Batalla de Boyacá"),
+                ("2022-08-15", "La Asunción"),
+                ("2022-10-17", "Día de la Raza (Observado)"),
+                ("2022-11-07", "Día de Todos los Santos (Observado)"),
+                ("2022-11-14", "Independencia de Cartagena (Observado)"),
+                ("2022-12-08", "La Inmaculada Concepción"),
+                ("2022-12-25", "Navidad"),
+            )
+        )
 
     def test_l10n_en_us(self):
-        en_us = "en_US"
-
-        co = Colombia(language=en_us)
-        self.assertEqual(co["2018-01-01"], "New Year's Day")
-        self.assertEqual(co["2022-12-25"], "Christmas")
-
-        self.set_language(en_us)
-        for language in (None, en_us, "invalid"):
-            co = Colombia(language=language)
-            self.assertEqual(co["2018-01-01"], "New Year's Day")
-            self.assertEqual(co["2022-12-25"], "Christmas")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "New Year's Day"),
+                ("2022-01-10", "Epiphany (Observed)"),
+                ("2022-03-21", "Saint Joseph's Day (Observed)"),
+                ("2022-04-14", "Maundy Thursday"),
+                ("2022-04-15", "Good Friday"),
+                ("2022-05-01", "Día del Trabajo"),
+                ("2022-05-30", "Ascension of Jesus (Observed)"),
+                ("2022-06-20", "Corpus Christi (Observed)"),
+                ("2022-06-27", "Sacred Heart (Observed)"),
+                ("2022-07-04", "Saint Peter and Saint Paul (Observed)"),
+                ("2022-07-20", "Independence Day"),
+                ("2022-08-07", "Battle of Boyacá"),
+                ("2022-08-15", "Assumption of Mary"),
+                ("2022-10-17", "Columbus Day (Observed)"),
+                ("2022-11-07", "All Saints' Day (Observed)"),
+                ("2022-11-14", "Independence of Cartagena (Observed)"),
+                ("2022-12-08", "Immaculate Conception"),
+                ("2022-12-25", "Christmas"),
+            ),
+            "en_US",
+        )
 
     def test_l10n_uk(self):
-        uk = "uk"
-
-        co = Colombia(language=uk)
-        self.assertEqual(co["2022-01-01"], "Новий рік")
-        self.assertEqual(co["2022-12-25"], "Різдво Христове")
-
-        self.set_language(uk)
-        for language in (None, uk, "invalid"):
-            co = Colombia(language=language)
-            self.assertEqual(co["2022-01-01"], "Новий рік")
-            self.assertEqual(co["2022-12-25"], "Різдво Христове")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Новий рік"),
+                ("2022-01-10", "Богоявлення (вихідний)"),
+                ("2022-03-21", "День Святого Йосипа (вихідний)"),
+                ("2022-04-14", "Великий четвер"),
+                ("2022-04-15", "Страсна пʼятниця"),
+                ("2022-05-01", "Día del Trabajo"),
+                ("2022-05-30", "Вознесіння Господнє (вихідний)"),
+                ("2022-06-20", "Свято Тіла і Крові Христових (вихідний)"),
+                ("2022-06-27", "Свято Найсвятішого Серця Ісуса (вихідний)"),
+                ("2022-07-04", "День Святих Петра і Павла (вихідний)"),
+                ("2022-07-20", "День незалежності"),
+                ("2022-08-07", "Річниця перемоги при Бояка"),
+                ("2022-08-15", "Успіння Пресвятої Богородиці"),
+                ("2022-10-17", "День Колумба (вихідний)"),
+                ("2022-11-07", "День усіх святих (вихідний)"),
+                ("2022-11-14", "День незалежності Картахени (вихідний)"),
+                ("2022-12-08", "Непорочне зачаття Діви Марії"),
+                ("2022-12-25", "Різдво Христове"),
+            ),
+            "uk",
+        )

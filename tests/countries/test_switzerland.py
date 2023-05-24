@@ -584,65 +584,65 @@ class TestSwitzerland(TestCase):
         self.assertNoHoliday("1290-08-01")
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                cnt = CH(language=language)
-                self.assertEqual(cnt["2022-01-01"], "Neujahrestag")
-                self.assertEqual(cnt["2022-12-25"], "Weihnachten")
-
-        run_tests((CH.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((CH.default_language,))
+        self.assertLocalizedHolidays(
+            (
+                ("2018-01-01", "Neujahrestag"),
+                ("2018-04-01", "Ostern"),
+                ("2018-05-10", "Auffahrt"),
+                ("2018-05-20", "Pfingsten"),
+                ("2018-08-01", "Nationalfeiertag"),
+                ("2018-12-25", "Weihnachten"),
+            ),
+        )
 
     def test_l10n_en_us(self):
-        en_us = "en_US"
-
-        cnt = CH(language=en_us)
-        self.assertEqual(cnt["2022-01-01"], "New Year's Day")
-        self.assertEqual(cnt["2022-12-25"], "Christmas Day")
-
-        self.set_language(en_us)
-        for language in (None, en_us, "invalid"):
-            cnt = CH(language=language)
-            self.assertEqual(cnt["2022-01-01"], "New Year's Day")
-            self.assertEqual(cnt["2022-12-25"], "Christmas Day")
+        self.assertLocalizedHolidays(
+            (
+                ("2018-01-01", "New Year's Day"),
+                ("2018-04-01", "Easter Sunday"),
+                ("2018-05-10", "Ascension Day"),
+                ("2018-05-20", "Whit Sunday"),
+                ("2018-08-01", "National Day"),
+                ("2018-12-25", "Christmas Day"),
+            ),
+            "en_US",
+        )
 
     def test_l10n_fr(self):
-        fr = "fr"
-
-        cnt = CH(language=fr)
-        self.assertEqual(cnt["2022-01-01"], "Nouvel An")
-        self.assertEqual(cnt["2022-12-25"], "Noël")
-
-        self.set_language(fr)
-        for language in (None, fr, "invalid"):
-            cnt = CH(language=language)
-            self.assertEqual(cnt["2022-01-01"], "Nouvel An")
-            self.assertEqual(cnt["2022-12-25"], "Noël")
+        self.assertLocalizedHolidays(
+            (
+                ("2018-01-01", "Nouvel An"),
+                ("2018-04-01", "Pâques"),
+                ("2018-05-10", "Ascension"),
+                ("2018-05-20", "Pentecôte"),
+                ("2018-08-01", "Fête nationale"),
+                ("2018-12-25", "Noël"),
+            ),
+            "fr",
+        )
 
     def test_l10n_it(self):
-        it = "it"
-
-        cnt = CH(language=it)
-        self.assertEqual(cnt["2022-01-01"], "Capodanno")
-        self.assertEqual(cnt["2022-12-25"], "Natale")
-
-        self.set_language(it)
-        for language in (None, it, "invalid"):
-            cnt = CH(language=language)
-            self.assertEqual(cnt["2022-01-01"], "Capodanno")
-            self.assertEqual(cnt["2022-12-25"], "Natale")
+        self.assertLocalizedHolidays(
+            (
+                ("2018-01-01", "Capodanno"),
+                ("2018-04-01", "Pasqua"),
+                ("2018-05-10", "Ascensione di Gesù"),
+                ("2018-05-20", "Pentecoste"),
+                ("2018-08-01", "Festa nazionale"),
+                ("2018-12-25", "Natale"),
+            ),
+            "it",
+        )
 
     def test_l10n_uk(self):
-        uk = "uk"
-
-        cnt = CH(language=uk)
-        self.assertEqual(cnt["2022-01-01"], "Новий рік")
-        self.assertEqual(cnt["2022-12-25"], "Різдво Христове")
-
-        self.set_language(uk)
-        for language in (None, uk, "invalid"):
-            cnt = CH(language=language)
-            self.assertEqual(cnt["2022-01-01"], "Новий рік")
-            self.assertEqual(cnt["2022-12-25"], "Різдво Христове")
+        self.assertLocalizedHolidays(
+            (
+                ("2018-01-01", "Новий рік"),
+                ("2018-04-01", "Великдень"),
+                ("2018-05-10", "Вознесіння Господнє"),
+                ("2018-05-20", "Трійця"),
+                ("2018-08-01", "Національне свято"),
+                ("2018-12-25", "Різдво Христове"),
+            ),
+            "uk",
+        )

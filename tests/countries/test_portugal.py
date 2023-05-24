@@ -309,26 +309,46 @@ class TestPortugal(TestCase):
         self.assertNoHolidayNameInYears(name_esno, range(1978, 2050))
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                pt = Portugal(language=language)
-                self.assertEqual(pt["2017-01-01"], "Ano Novo")
-                self.assertEqual(pt["2017-12-25"], "Dia de Natal")
-
-        run_tests((Portugal.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((Portugal.default_language,))
+        self.assertLocalizedHolidays(
+            (
+                ("2018-01-01", "Ano Novo"),
+                ("2018-03-30", "Sexta-feira Santa"),
+                ("2018-04-01", "Páscoa"),
+                ("2018-04-25", "Dia da Liberdade"),
+                ("2018-05-01", "Dia do Trabalhador"),
+                ("2018-05-31", "Corpo de Deus"),
+                (
+                    "2018-06-10",
+                    "Dia de Portugal, de Camões e das Comunidades Portuguesas",
+                ),
+                ("2018-08-15", "Assunção de Nossa Senhora"),
+                ("2018-10-05", "Implantação da República"),
+                ("2018-11-01", "Dia de Todos os Santos"),
+                ("2018-12-01", "Restauração da Independência"),
+                ("2018-12-08", "Imaculada Conceição"),
+                ("2018-12-25", "Dia de Natal"),
+            ),
+        )
 
     def test_l10n_en_us(self):
-        en_us = "en_US"
-
-        pt = Portugal(language=en_us)
-        self.assertEqual(pt["2017-01-01"], "New Year's Day")
-        self.assertEqual(pt["2017-12-25"], "Christmas")
-
-        self.set_language(en_us)
-        for language in (None, en_us, "invalid"):
-            pt = Portugal(language=language)
-            self.assertEqual(pt["2017-01-01"], "New Year's Day")
-            self.assertEqual(pt["2017-12-25"], "Christmas")
+        self.assertLocalizedHolidays(
+            (
+                ("2018-01-01", "New Year's Day"),
+                ("2018-03-30", "Good Friday"),
+                ("2018-04-01", "Easter Sunday"),
+                ("2018-04-25", "Freedom Day"),
+                ("2018-05-01", "Labour Day"),
+                ("2018-05-31", "Corpus Christi"),
+                (
+                    "2018-06-10",
+                    "Day of Portugal, Camões, and the Portuguese Communities",
+                ),
+                ("2018-08-15", "Assumption Day"),
+                ("2018-10-05", "Republic Day"),
+                ("2018-11-01", "All Saints Day"),
+                ("2018-12-01", "Restoration of Independence Day"),
+                ("2018-12-08", "Immaculate Conception"),
+                ("2018-12-25", "Christmas"),
+            ),
+            "en_US",
+        )

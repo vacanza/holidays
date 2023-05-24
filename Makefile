@@ -12,6 +12,7 @@ help:
 	@echo "    tox           run tox (in parallel)"
 
 check:
+	make l10n
 	make pre-commit
 	make doc
 	make test
@@ -23,7 +24,7 @@ doc:
 	sphinx-build -E -T -W -b html -D language=en -j auto -q docs/source docs/build
 
 l10n:
-	scripts/l10n/generate_po_files.py
+	scripts/l10n/generate_po_files.py 2>/dev/null
 	scripts/l10n/generate_mo_files.py
 
 package:

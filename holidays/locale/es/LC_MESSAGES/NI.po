@@ -17,56 +17,56 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: holidays/countries/nicaragua.py:54
+#: ./holidays/countries/nicaragua.py:55
 msgid "Año Nuevo"
 msgstr ""
 
 #. Maundy Thursday.
-#: holidays/countries/nicaragua.py:58
+#: ./holidays/countries/nicaragua.py:59
 msgid "Jueves Santo"
 msgstr ""
 
 #. Good Friday.
-#: holidays/countries/nicaragua.py:60
+#: ./holidays/countries/nicaragua.py:61
 msgid "Viernes Santo"
 msgstr ""
 
 #. Labour Day.
-#: holidays/countries/nicaragua.py:62
+#: ./holidays/countries/nicaragua.py:63
 msgid "Día del Trabajo"
 msgstr ""
 
 #. Revolution Day.
-#: holidays/countries/nicaragua.py:66
+#: ./holidays/countries/nicaragua.py:67
 msgid "Día de la Revolución"
 msgstr ""
 
 #. Battle of San Jacinto Day.
-#: holidays/countries/nicaragua.py:69
+#: ./holidays/countries/nicaragua.py:70
 msgid "Batalla de San Jacinto"
 msgstr ""
 
 #. Independence Day.
-#: holidays/countries/nicaragua.py:71
+#: ./holidays/countries/nicaragua.py:72
 msgid "Día de la Independencia"
 msgstr ""
 
 #. Virgin's Day.
-#: holidays/countries/nicaragua.py:73
+#: ./holidays/countries/nicaragua.py:74
 msgid "Concepción de María"
 msgstr ""
 
 #. Christmas.
-#: holidays/countries/nicaragua.py:75
+#: ./holidays/countries/nicaragua.py:76
 msgid "Navidad"
 msgstr ""
 
 #. Descent of Saint Dominic.
-#: holidays/countries/nicaragua.py:80
+#: ./holidays/countries/nicaragua.py:81
 msgid "Bajada de Santo Domingo"
 msgstr ""
 
 #. Ascent of Saint Dominic.
-#: holidays/countries/nicaragua.py:82
+#: ./holidays/countries/nicaragua.py:83
 msgid "Subida de Santo Domingo"
 msgstr ""
