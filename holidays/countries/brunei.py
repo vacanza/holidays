@@ -154,8 +154,8 @@ class Brunei(
         # 5: If Sun-Mon-Tue -> Wed (+3)
 
         aidil_fitri_in_lieu = self.tr("%s - Diperhatikan") % self.tr(
-                                "Hari Raya Aidil Fitri"
-                              )
+            "Hari Raya Aidil Fitri"
+        )
 
         if self.observed:
             for dt in alfitr:
