@@ -53,30 +53,30 @@ msgstr "วันแรกการถือศีลอด"
 msgid "Hari Nuzul Al-Quran"
 msgstr "วันนูซุลอัลกุรอาน"
 
-#: ./holidays/countries/brunei.py:142
+#: ./holidays/countries/brunei.py:142 ./holidays/countries/brunei.py:156
 msgid "Hari Raya Aidil Fitri"
 msgstr "วันอีฎิ้ลฟิตริ"
 
-#: ./holidays/countries/brunei.py:178
+#: ./holidays/countries/brunei.py:180
 msgid "Hari Angkatan Bersenjata Diraja Brunei"
 msgstr "วันกองทัพบรูไน"
 
-#: ./holidays/countries/brunei.py:186
+#: ./holidays/countries/brunei.py:188
 msgid "Hari Raya Aidil Adha"
 msgstr "วันอีดิ้ลอัฎฮา"
 
-#: ./holidays/countries/brunei.py:196
+#: ./holidays/countries/brunei.py:198
 msgid "Hari Keputeraan KDYMM Sultan Brunei"
 msgstr "วันเฉลิมพระชนมพรรษาสมเด็จพระราชาธิบดีสุลต่านฮัสซานัล โบลเกียห์"
 
-#: ./holidays/countries/brunei.py:204
+#: ./holidays/countries/brunei.py:206
 msgid "Awal Tahun Hijrah"
 msgstr "วันขึ้นปีใหม่อิสลาม"
 
-#: ./holidays/countries/brunei.py:211
+#: ./holidays/countries/brunei.py:213
 msgid "Maulidur Rasul"
 msgstr "วันเมาลิดนบี"
 
-#: ./holidays/countries/brunei.py:218
+#: ./holidays/countries/brunei.py:220
 msgid "Hari Natal"
 msgstr "วันคริสต์มาส"

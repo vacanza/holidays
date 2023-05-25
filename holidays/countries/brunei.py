@@ -153,7 +153,9 @@ class Brunei(
         # 4: If Sat-Sun-Mon -> Tue (+3)
         # 5: If Sun-Mon-Tue -> Wed (+3)
 
-        aidil_fitri_in_lieu = self.tr("%s - Diperhatikan") % name
+        aidil_fitri_in_lieu = self.tr("%s - Diperhatikan") % self.tr(
+                                "Hari Raya Aidil Fitri"
+                              )
 
         if self.observed:
             for dt in alfitr:

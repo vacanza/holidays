@@ -78,6 +78,7 @@ class TestBrunei(TestCase):
             ("2023-07-19", "Awal Tahun Hijrah"),
             ("2023-09-28", "Maulidur Rasul"),
             ("2023-12-25", "Hari Natal"),
+            ("2023-12-26", "Hari Natal - Diperhatikan"),
         )
 
     def test_national_day(self):
