@@ -55,6 +55,7 @@ class TestBrunei(TestCase):
             ("2022-07-30", "Awal Tahun Hijrah"),
             ("2022-10-08", "Maulidur Rasul"),
             ("2022-12-25", "Hari Natal"),
+            ("2022-12-26", "Hari Natal - Diperhatikan"),
         )
 
     def test_2023(self):
@@ -78,7 +79,6 @@ class TestBrunei(TestCase):
             ("2023-07-19", "Awal Tahun Hijrah"),
             ("2023-09-28", "Maulidur Rasul"),
             ("2023-12-25", "Hari Natal"),
-            ("2023-12-26", "Hari Natal - Diperhatikan"),
         )
 
     def test_national_day(self):
@@ -160,10 +160,10 @@ class TestBrunei(TestCase):
                 ("2023-04-24", "Eid al-Fitr"),
                 ("2023-04-25", "Eid al-Fitr (Observed)"),
                 ("2023-05-31", "Armed Forces Day"),
-                ("2023-06-28", "Eid al-Adha"),
+                ("2023-06-29", "Eid al-Adha"),
                 ("2023-07-15", "Sultan Hassanal Bolkiah's Birthday"),
                 ("2023-07-19", "Islamic New Year"),
-                ("2023-09-27", "Birth of the Prophet"),
+                ("2023-09-28", "Birth of the Prophet"),
                 ("2023-12-25", "Christmas Day"),
             ),
             "en_US",
@@ -185,7 +185,7 @@ class TestBrunei(TestCase):
                 ("2023-04-24", "วันอีฎิ้ลฟิตริ"),
                 ("2023-04-25", "ชดเชยวันอีฎิ้ลฟิตริ"),
                 ("2023-05-31", "วันกองทัพบรูไน"),
-                ("2023-06-28", "วันอีดิ้ลอัฎฮา* (*โดยประมาณ)"),
+                ("2023-06-29", "วันอีดิ้ลอัฎฮา* (*โดยประมาณ)"),
                 (
                     "2023-07-15",
                     (
@@ -194,7 +194,7 @@ class TestBrunei(TestCase):
                     ),
                 ),
                 ("2023-07-19", "วันขึ้นปีใหม่อิสลาม"),
-                ("2023-09-27", "วันเมาลิดนบี"),
+                ("2023-09-28", "วันเมาลิดนบี"),
                 ("2023-12-25", "วันคริสต์มาส"),
             ),
             "th",
