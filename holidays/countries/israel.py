@@ -12,7 +12,7 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars import _HebrewLuniSolar
+from holidays.calendars import _HebrewLunisolar
 from holidays.holiday_base import HolidayBase
 
 
@@ -33,7 +33,7 @@ class Israel(HolidayBase):
         super()._populate(year)
 
         # Passover
-        passover_dt = _HebrewLuniSolar.hebrew_holiday_date(year, "PASSOVER")
+        passover_dt = _HebrewLunisolar.hebrew_holiday_date(year, "PASSOVER")
         self._add_with_eve("Passover I", passover_dt)
         for offset in range(1, 5):
             self._add_holiday(
@@ -42,7 +42,7 @@ class Israel(HolidayBase):
         self._add_with_eve("Passover VII", passover_dt + td(days=+6))
 
         # Memorial Day
-        memorial_day_dt = _HebrewLuniSolar.hebrew_holiday_date(
+        memorial_day_dt = _HebrewLunisolar.hebrew_holiday_date(
             year, "MEMORIAL_DAY"
         )
         observed_delta = 0
@@ -74,17 +74,17 @@ class Israel(HolidayBase):
             self._add_holiday(name, memorial_day_dt + td(days=+1))
 
         # Lag Baomer
-        lag_baomer_dt = _HebrewLuniSolar.hebrew_holiday_date(
+        lag_baomer_dt = _HebrewLunisolar.hebrew_holiday_date(
             year, "LAG_BAOMER"
         )
         self._add_holiday("Lag B'Omer", lag_baomer_dt)
 
         # Shavuot
-        shavuot_dt = _HebrewLuniSolar.hebrew_holiday_date(year, "SHAVUOT")
+        shavuot_dt = _HebrewLunisolar.hebrew_holiday_date(year, "SHAVUOT")
         self._add_with_eve("Shavuot", shavuot_dt)
 
         # Rosh Hashana
-        rosh_hashanah_dt = _HebrewLuniSolar.hebrew_holiday_date(
+        rosh_hashanah_dt = _HebrewLunisolar.hebrew_holiday_date(
             year, "ROSH_HASHANAH"
         )
         name = "Rosh Hashanah"
@@ -92,13 +92,13 @@ class Israel(HolidayBase):
         self._add_holiday(name, rosh_hashanah_dt + td(days=+1))
 
         # Yom Kippur
-        yom_kippur_dt = _HebrewLuniSolar.hebrew_holiday_date(
+        yom_kippur_dt = _HebrewLunisolar.hebrew_holiday_date(
             year, "YOM_KIPPUR"
         )
         self._add_with_eve("Yom Kippur", yom_kippur_dt)
 
         # Sukkot
-        sukkot_dt = _HebrewLuniSolar.hebrew_holiday_date(year, "SUKKOT")
+        sukkot_dt = _HebrewLunisolar.hebrew_holiday_date(year, "SUKKOT")
         self._add_with_eve("Sukkot I", sukkot_dt)
         for offset in range(1, 6):
             self._add_holiday(
@@ -109,12 +109,12 @@ class Israel(HolidayBase):
         # Hanukkah
         # Some o prior's year Hannukah may fall in current year.
         for yr in (year - 1, year):
-            hanukkah_dt = _HebrewLuniSolar.hebrew_holiday_date(yr, "HANUKKAH")
+            hanukkah_dt = _HebrewLunisolar.hebrew_holiday_date(yr, "HANUKKAH")
             for offset in range(8):
                 self._add_holiday("Hanukkah", hanukkah_dt + td(days=offset))
 
         # Purim
-        purim_dt = _HebrewLuniSolar.hebrew_holiday_date(year, "PURIM")
+        purim_dt = _HebrewLunisolar.hebrew_holiday_date(year, "PURIM")
         self._add_with_eve("Purim", purim_dt)
         self._add_holiday("Shushan Purim", purim_dt + td(days=+1))
 

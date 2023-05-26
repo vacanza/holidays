@@ -15,7 +15,7 @@ from functools import lru_cache
 from typing import Optional
 
 
-class _ThaiLuniSolar:
+class _ThaiLunisolar:
     """
     ** Thai Lunar Calendar Holidays only work from 1941 (B.E. 2484) onwards
        until 2057 (B.E. 2600) as we only have Thai year-type data for
@@ -76,8 +76,8 @@ class _ThaiLuniSolar:
 
     Usage example:
 
-    >>> from holidays.utils import _ThaiLuniSolar
-    >>> thls = _ThaiLuniSolar()
+    >>> from holidays.utils import _ThaiLunisolar
+    >>> thls = _ThaiLunisolar()
     >>> print(thls.visakha_bucha_date(2010))
     2010-05-28
     """
@@ -181,16 +181,16 @@ class _ThaiLuniSolar:
         :return:
              The start date of Thai Lunar Calendar for a Gregorian year.
         """
-        if year < _ThaiLuniSolar.START_YEAR or year > _ThaiLuniSolar.END_YEAR:
+        if year < _ThaiLunisolar.START_YEAR or year > _ThaiLunisolar.END_YEAR:
             return None
 
-        iter_start_date = _ThaiLuniSolar.START_DATE
-        iter_start_year = _ThaiLuniSolar.START_YEAR
+        iter_start_date = _ThaiLunisolar.START_DATE
+        iter_start_year = _ThaiLunisolar.START_YEAR
 
         while iter_start_year < year:
-            if iter_start_year in _ThaiLuniSolar.ATHIKAMAT_YEARS_GREGORIAN:
+            if iter_start_year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN:
                 delta_days = 384
-            elif iter_start_year in _ThaiLuniSolar.ATHIKAWAN_YEARS_GREGORIAN:
+            elif iter_start_year in _ThaiLunisolar.ATHIKAWAN_YEARS_GREGORIAN:
                 delta_days = 355
             else:
                 delta_days = 354
@@ -227,7 +227,7 @@ class _ThaiLuniSolar:
 
         return start_date + td(
             days=+102
-            if year in _ThaiLuniSolar.ATHIKAMAT_YEARS_GREGORIAN
+            if year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN
             else +73
         )
 
@@ -260,7 +260,7 @@ class _ThaiLuniSolar:
 
         return start_date + td(
             days=+191
-            if year in _ThaiLuniSolar.ATHIKAMAT_YEARS_GREGORIAN
+            if year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN
             else +161
         )
 
@@ -294,7 +294,7 @@ class _ThaiLuniSolar:
 
         return start_date + td(
             days=+199
-            if year in _ThaiLuniSolar.ATHIKAMAT_YEARS_GREGORIAN
+            if year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN
             else +169
         )
 
@@ -325,9 +325,9 @@ class _ThaiLuniSolar:
         if not start_date:
             return None
 
-        if year in _ThaiLuniSolar.ATHIKAMAT_YEARS_GREGORIAN:
+        if year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN:
             delta_days = 250
-        elif year in _ThaiLuniSolar.ATHIKAWAN_YEARS_GREGORIAN:
+        elif year in _ThaiLunisolar.ATHIKAWAN_YEARS_GREGORIAN:
             delta_days = 221
         else:
             delta_days = 220
@@ -361,9 +361,9 @@ class _ThaiLuniSolar:
         if not start_date:
             return None
 
-        if year in _ThaiLuniSolar.ATHIKAMAT_YEARS_GREGORIAN:
+        if year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN:
             delta_days = 251
-        elif year in _ThaiLuniSolar.ATHIKAWAN_YEARS_GREGORIAN:
+        elif year in _ThaiLunisolar.ATHIKAWAN_YEARS_GREGORIAN:
             delta_days = 222
         else:
             delta_days = 221
@@ -396,9 +396,9 @@ class _ThaiLuniSolar:
         if not start_date:
             return None
 
-        if year in _ThaiLuniSolar.ATHIKAMAT_YEARS_GREGORIAN:
+        if year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN:
             delta_days = 339
-        elif year in _ThaiLuniSolar.ATHIKAWAN_YEARS_GREGORIAN:
+        elif year in _ThaiLunisolar.ATHIKAWAN_YEARS_GREGORIAN:
             delta_days = 310
         else:
             delta_days = 309
