@@ -106,395 +106,531 @@ Available Countries
 
 .. _ISO 3166-1 alpha-2 code: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
 .. _ISO 3166-2 code: https://en.wikipedia.org/wiki/ISO_3166-2
+.. _ISO 639-1 code: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 
 We currently support 124 country codes. The standard way to refer to a country
 is by using its `ISO 3166-1 alpha-2 code`_, the same used for domain names, and
-for a subdivision its `ISO 3166-2 code`_. The following countries and
-subdivisions are available:
+for a subdivision its `ISO 3166-2 code`_. Some of the countries support more
+than one language for holiday names output.
+A default language is defined by ``default_language`` (optional) attribute
+for each entity and is used as a fallback when neither user specified
+language nor user locale language available. The default language code is
+a `ISO 639-1 code`_. A list of all languages supported by country is defined by
+``supported_languages`` (optional) attribute.
+
+The list of supported countries, their subdivisions and supported languages
+(all default values are hightlighted with bold):
+
 
 .. list-table::
-   :widths: 23 4 83
+   :widths: 23 4 63 20
    :header-rows: 1
    :class: tight-table
 
    * - Country
      - Code
-     - Subdivisions Available
+     - Subdivisions
+     - Supported Languages
    * - Albania
      - AL
-     - None
+     -
+     -
    * - Algeria
      - DZ
-     - None
+     -
+     -
    * - American Samoa
      - AS
-     - None; Can also be loaded as country US, subdivision AS
+     - Can also be loaded as country US, subdivision AS
+     -
    * - Andorra
      - AD
      - Parishes: 02, 03, 04, 05, 06, 07, 08
+     -
    * - Angola
      - AO
-     - None
+     -
+     -
    * - Argentina
      - AR
-     - None
+     -
+     - en_US, **es**, uk
    * - Armenia
      - AM
-     - None
+     -
+     - en_US, **hy**
    * - Aruba
      - AW
-     - None
+     -
+     -
    * - Australia
      - AU
-     - States and territories: **ACT** (default), NSW, NT, QLD, SA, TAS, VIC, WA
+     - States and territories: **ACT**, NSW, NT, QLD, SA, TAS, VIC, WA
+     -
    * - Austria
      - AT
-     - States: 1, 2, 3, 4, 5, 6, 7, 8, **9** (default)
+     - States: 1, 2, 3, 4, 5, 6, 7, 8, **9**
+     - **de**, en_US, uk
    * - Azerbaijan
      - AZ
-     - None
+     -
+     -
    * - Bahrain
      - BH
-     - None
+     -
+     -
    * - Bangladesh
      - BD
-     - None
+     -
+     -
    * - Belarus
      - BY
-     - None
+     -
+     - **be**, en_US
    * - Belgium
      - BE
-     - None
+     -
+     -
    * - Belize
      - BZ
-     - None
+     -
+     -
    * - Bolivia
      - BO
      - Departments: B, C, H, L, N, O, P, S, T
+     -
    * - Bosnia and Herzegovina
      - BA
      - Departments: BD, FBiH, RS
+     -
    * - Botswana
      - BW
-     - None
+     -
+     -
    * - Brazil
      - BR
      - States: AC, AL, AM, AP, BA, CE, DF, ES, GO, MA, MG, MS, MT, PA, PB, PE, PI, PR, RJ, RN, RO, RR, RS, SC, SE, SP, TO
+     -
    * - Bulgaria
      - BG
-     - None
+     -
+     - **bg**, en_US
    * - Burundi
      - BI
-     - None
+     -
+     -
    * - Canada
      - CA
-     - Provinces and territories: AB, BC, MB, NB, NL, NS, NT, NU, **ON** (default), PE, QC, SK, YT
+     - Provinces and territories: AB, BC, MB, NB, NL, NS, NT, NU, **ON**, PE, QC, SK, YT
+     - ar, **en**, en_US, fr, th
    * - Chile
      - CL
      - Regions: AI, AN, AP, AR, AT, BI, CO, LI, LL, LR, MA, ML, NB, RM, TA, VS
+     - en_US, **es**, uk
    * - China
      - CN
-     - None
+     -
+     -
    * - Colombia
      - CO
-     - None
+     -
+     - en_US, **es**, uk
    * - Costa Rica
      - CR
-     - None
+     -
+     - en_US, **es**, uk
    * - Croatia
      - HR
-     - None
+     -
+     -
    * - Cuba
      - CU
-     - None
+     -
+     - en_US, **es**, uk
    * - Curacao
      - CW
-     - None
+     -
+     -
    * - Cyprus
      - CY
-     - None
+     -
+     - **el**, en_US
    * - Czechia
      - CZ
-     - None
+     -
+     -
    * - Denmark
      - DK
-     - None
+     -
+     - **da**, en_US, uk
    * - Djibouti
      - DJ
-     - None
+     -
+     -
    * - Dominican Republic
      - DO
-     - None
+     -
+     - en_US, **es**, uk
    * - Ecuador
      - EC
-     - None
+     -
+     - en_US, **es**, uk
    * - Egypt
      - EG
-     - None
+     -
+     -
    * - El Salvador
      - SV
      - Departments: AH, CA, CH, CU, LI, MO, PA, SA, SM, SO, SS, SV, UN, US
+     -
    * - Estonia
      - EE
-     - None
+     -
+     -
    * - Eswatini
      - SZ
-     - None
+     -
+     -
    * - Ethiopia
      - ET
-     - None
+     -
+     - **am**, ar, en_US
    * - Finland
      - FI
-     - None
+     -
+     - en_US, **fi**, sv, uk
    * - France
      - FR
      - Départements: BL, GES, GP, GY, MF, MQ, NC, PF, RE, WF, YT
+     - en_US, **fr**, uk
    * - Georgia
      - GE
-     - None
+     -
+     - en_US, **ka**
    * - Germany
      - DE
      - States: BB, BE, BW, BY, BYP, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH
+     - **de**, en_US, uk
    * - Greece
      - GR
-     - None
+     -
+     - **el**, en_US
    * - Guam
      - GU
-     - None; Can also be loaded as country US, subdivision GU
+     - Can also be loaded as country US, subdivision GU
+     -
    * - Honduras
      - HN
-     - None
+     -
+     - en_US, **es**, uk
    * - Hong Kong
      - HK
-     - None
+     -
+     -
    * - Hungary
      - HU
-     - None
+     -
+     -
    * - Iceland
      - IS
-     - None
+     -
+     - en_US, **is**, uk
    * - India
      - IN
      - States: AN, AP, AR, AS, BR, CG, CH, DD, DH, DL, GA, GJ, HP, HR, JH, JK, KA, KL, LA, LD, MH, ML, MN, MP, MZ, NL, OR, PB, PY, RJ, SK, TN, TR, TS, UK, UP, WB
+     -
    * - Indonesia
      - ID
-     - None
+     -
+     -
    * - Ireland
      - IE
-     - None
+     -
+     -
    * - Isle of Man
      - IM
-     - None
+     -
+     -
    * - Israel
      - IL
-     - None
+     -
+     -
    * - Italy
      - IT
      - Provinces: AG, AL, AN, AO, AP, AQ, AR, AT, AV, BA, BG, BI, BL, BN, BO, BR, BS, BT, BZ, CA, CB, CE, CH, CL, CN, CO, CR, CS, CT, CZ, EN, FC, FE, FG, FI, FM, FR, GE, GO, GR, IM, IS, KR, LC, LE, LI, LO, LT, LU, MB, MC, ME, MI, MN, MO, MS, MT, NA, NO, NU, OR, PA, PC, PD, PE, PG, PI, PN, PO, PR, PT, PU, PV, PZ, RA, RC, RE, RG, RI, RM, RN, RO, SA, SI, SO, SP, SR, SS, SU, SV, TA, TE, TN, TO, TP, TR, TS, TV, UD, VA, VB, VC, VE, VI, VR, VT, VV. Cities: Andria, Barletta, Cesena, Forli, Pesaro, Trani, Urbino
+     -
    * - Jamaica
      - JM
-     - None
+     -
+     -
    * - Japan
      - JP
-     - None
+     -
+     - en_US, **ja**
    * - Kazakhstan
      - KZ
-     - None
+     -
+     -
    * - Kenya
      - KE
-     - None
+     -
+     -
    * - Kyrgyzstan
      - KG
-     - None
+     -
+     -
    * - Latvia
      - LV
-     - None
+     -
+     -
    * - Lesotho
      - LS
-     - None
+     -
+     -
    * - Liechtenstein
      - LI
-     - None
+     -
+     - **de**, en_US, uk
    * - Lithuania
      - LT
-     - None
+     -
+     -
    * - Luxembourg
      - LU
-     - None
+     -
+     -
    * - Madagascar
      - MG
-     - None
+     -
+     -
    * - Malawi
      - MW
-     - None
+     -
+     -
    * - Malaysia
      - MY
      - States: JHR, KDH, KTN, KUL, LBN, MLK, NSN, PHG, PJY, PLS, PNG, PRK, SBH, SGR, SWK, TRG
+     -
    * - Malta
      - MT
-     - None
+     -
+     -
    * - Marshall Islands (the)
      - MH
-     - None
+     -
+     -
    * - Mexico
      - MX
-     - None
+     -
+     - en_US, **es**, uk
    * - Moldova
      - MD
-     - None
+     -
+     - en_US, **ro**, uk
    * - Monaco
      - MC
-     - None
+     -
+     - en_US, **fr**, uk
    * - Montenegro
      - ME
-     - None
+     -
+     -
    * - Morocco
      - MA
-     - None
+     -
+     -
    * - Mozambique
      - MZ
-     - None
+     -
+     -
    * - Namibia
      - NA
-     - None
+     -
+     -
    * - Netherlands
      - NL
-     - None
+     -
+     - en_US, **nl**, uk
    * - New Zealand
      - NZ
      - Regions: AUK, BOP, CAN, CIT, GIS, HKB, MBH, MWT, NSN, NTL, OTA, STL, TAS, TKI, WGN, WKO, WTC
+     -
    * - Nicaragua
      - NI
-     - Departments: AN, AS, BO, CA, CI, CO, ES, GR, JI, LE, MD, **MN** (default), MS, MT, NS, RI, SJ
+     - Departments: AN, AS, BO, CA, CI, CO, ES, GR, JI, LE, MD, **MN**, MS, MT, NS, RI, SJ
+     - en_US, **es**, uk
    * - Nigeria
      - NG
-     - None
+     -
+     -
    * - Northern Mariana Islands (the)
      - MP
-     - None; Can also be loaded as country US, subdivision MP
+     - Can also be loaded as country US, subdivision MP
+     -
    * - North Macedonia
      - MK
-     - None
+     -
+     -
    * - Norway
      - NO
-     - None
+     -
+     - en_US, **no**, uk
    * - Pakistan
      - PK
-     - None
+     -
+     -
    * - Panama
      - PA
-     - None
+     -
+     -
    * - Paraguay
      - PY
-     - None
+     -
+     - en_US, **es**, uk
    * - Peru
      - PE
-     - None
+     -
+     - en_US, **es**, uk
    * - Philippines
      - PH
-     - None
+     -
+     -
    * - Poland
      - PL
-     - None
+     -
+     - en_US, **pl**, uk
    * - Portugal
      - PT
      - Districts: 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 30, Ext; Use subdiv='Ext' to include holidays most people have off
+     - en_US, **pt_PT**
    * - Puerto Rico
      - PR
-     - None; Can also be loaded as country US, subdivision PR
+     - Can also be loaded as country US, subdivision PR
+     -
    * - Romania
      - RO
-     - None
+     -
+     - en_US, **ro**, uk
    * - Russia
      - RU
-     - None
+     -
+     - en_US, **ru**
    * - San Marino
      - SM
-     - None
+     -
+     -
    * - Saudi Arabia
      - SA
-     - None
+     -
+     -
    * - Serbia
      - RS
-     - None
+     -
+     - en_US, **sr**
    * - Singapore
      - SG
-     - None
+     -
+     -
    * - Slovakia
      - SK
-     - None
+     -
+     - en_US, **sk**, uk
    * - Slovenia
      - SI
-     - None
+     -
+     -
    * - South Africa
      - ZA
-     - None
+     -
+     -
    * - South Korea
      - KR
-     - None
+     -
+     -
    * - Spain
      - ES
      - Autonomous communities: AN, AR, AS, CB, CE, CL, CM, CN, CT, EX, GA, IB, MC, MD, ML, NC, PV, RI, VC
+     -
    * - Sweden
      - SE
-     - None
+     -
+     - en_US, **sv**, uk
    * - Switzerland
      - CH
      - Cantons: AG, AR, AI, BL, BS, BE, FR, GE, GL, GR, JU, LU, NE, NW, OW, SG, SH, SZ, SO, TG, TI, UR, VD, VS, ZG, ZH
+     - **de**, en_US, fr, it, uk
    * - Taiwan
      - TW
-     - None
+     -
+     -
    * - Thailand
      - TH
-     - None
+     -
+     - en_US, **th**
    * - Tunisia
      - TN
-     - None
+     -
+     -
    * - Turkey
      - TR
-     - None
+     -
+     -
    * - Ukraine
      - UA
-     - None
+     -
+     - ar, en_US, **uk**
    * - United Arab Emirates
      - AE
-     - None
+     -
+     -
    * - United Kingdom
      - GB
-     - Subdivisions: England, Northern Ireland, Scotland, **UK** (default), Wales; For Isle of Man use country code IM
+     - Subdivisions: England, Northern Ireland, Scotland, **UK**, Wales; For Isle of Man use country code IM
+     -
    * - United States Minor Outlying Islands
      - UM
-     - None; Can also be loaded as country US, subdivision UM
+     - Can also be loaded as country US, subdivision UM
+     -
    * - United States of America (the)
      - US
      - States and territories: AK, AL, AR, AS, AZ, CA, CO, CT, DC, DE, FL, FM, GA, GU, HI, IA, ID, IL, IN, KS, KY, LA, MA, MD, ME, MH, MI, MN, MO, MP, MS, MT, NC, ND, NE, NH, NJ, NM, NV, NY, OH, OK, OR, PA, PR, PW, RI, SC, SD, TN, TX, UM, UT, VA, VI, VT, WA, WI, WV, WY
+     -
    * - United States Virgin Islands (the)
      -
      - See Virgin Islands (U.S.)
+     -
    * - Uruguay
      - UY
-     - None
+     -
+     - en_US, **es**, uk
    * - Uzbekistan
      - UZ
-     - None
+     -
+     -
    * - Vatican City
      - VA
-     - None
+     -
+     -
    * - Venezuela
      - VE
-     - None
+     -
+     - en_US, **es**, uk
    * - Vietnam
      - VN
-     - None
+     -
+     -
    * - Virgin Islands (U.S.)
      - VI
-     - None; Can also be loaded as country US, subdivision VI
+     - Can also be loaded as country US, subdivision VI
+     -
    * - Zambia
      - ZM
-     - None
+     -
+     -
    * - Zimbabwe
      - ZW
-     - None
+     -
+     -
 
 
 Available Financial Markets
@@ -520,156 +656,6 @@ following financial markets are available:
    * - New York Stock Exchange
      - XNYS
      - NYSE market holidays (used by all other US-exchanges, including NASDAQ, etc.)
-
-
-Localization
-===========================
-
-.. _ISO 639-1 code: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
-
-Some of the supported entities (country/market) provide more than one
-language for holiday names output. The default language is defined by
-``default_language`` (optional) attribute for each entity and is used as a fallback
-when neither user specified language nor user locale language available. The
-default language code is a `ISO 639-1 code`_.
-
-.. list-table::
-   :widths: 23 4 83
-   :header-rows: 1
-   :class: tight-table
-
-   * - Country
-     - Default Language
-     - Supported languages
-   * - Argentina
-     - es
-     - en_US, es, uk
-   * - Armenia
-     - hy
-     - en_US, hy
-   * - Austria
-     - de
-     - de, en_US, uk
-   * - Belarus
-     - be
-     - be, en_US
-   * - Bulgaria
-     - bg
-     - bg, en_US
-   * - Canada
-     - en
-     - en, fr, th
-   * - Chile
-     - es
-     - en_US, es, uk
-   * - Colombia
-     - es
-     - en_US, es, uk
-   * - Costa Rica
-     - es
-     - en_US, es, uk
-   * - Cuba
-     - es
-     - en_US, es, uk
-   * - Cyprus
-     - el
-     - el, en
-   * - Denmark
-     - da
-     - da, en_US, uk
-   * - Dominican Republic
-     - es
-     - en_US, es, uk
-   * - Ecuador
-     - es
-     - en_US, es, uk
-   * - Ethiopia
-     - am
-     - am, en_US
-   * - Finland
-     - fi
-     - en_US, fi, sv, uk
-   * - France
-     - fr
-     - en_US, fr, uk
-   * - Georgia
-     - ka
-     - en_US, ka
-   * - Germany
-     - de
-     - de, en_US, uk
-   * - Greece
-     - el
-     - el, en_US
-   * - Honduras
-     - es
-     - en_US, es, uk
-   * - Iceland
-     - is
-     - en_US, is, uk
-   * - Japan
-     - ja
-     - en_US, ja
-   * - Liechtenstein
-     - de
-     - de, en_US, uk
-   * - Mexico
-     - es
-     - en_US, es, uk
-   * - Moldova
-     - ro
-     - en_US, ro, uk
-   * - Monaco
-     - fr
-     - en_US, fr, uk
-   * - Netherlands
-     - nl
-     - en_US, nl, uk
-   * - Nicaragua
-     - es
-     - en_US, es, uk
-   * - Norway
-     - no
-     - en_US, no, uk
-   * - Paraguay
-     - es
-     - en_US, es, uk
-   * - Peru
-     - es
-     - en_US, es, uk
-   * - Poland
-     - pl
-     - en_US, pl, uk
-   * - Portugal
-     - pt_PT
-     - en_US, pt_PT
-   * - Romania
-     - ro
-     - en_US, ro, uk
-   * - Russia
-     - ru
-     - en_US, ru
-   * - Serbia
-     - sr
-     - en_US, sr
-   * - Slovakia
-     - sk
-     - en_US, sk, uk
-   * - Sweden
-     - sv
-     - en_US, sv, uk
-   * - Thailand
-     - th
-     - en_US, th
-   * - Ukraine
-     - uk
-     - en_US, uk
-   * - Uruguay
-     - es
-     - en_US, es, uk
-   * - Venezuela
-     - es
-     - en_US, es, uk
 
 
 Beta Version
