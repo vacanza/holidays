@@ -495,7 +495,7 @@ class BuddhistCalendarHolidays:
         if days_delta != 0:
             dt += td(days=days_delta)
         return self._add_holiday(
-            f"{self.tr(estimated_label) % self.tr(name)}"
+            self.tr(estimated_label) % self.tr(name)
             if is_estimated and show_estimated
             else name,
             dt,
@@ -567,7 +567,7 @@ class ChineseCalendarHolidays:
         if days_delta != 0:
             dt += td(days=days_delta)
         return self._add_holiday(
-            f"{self.tr(estimated_label) % self.tr(name)}"
+            self.tr(estimated_label) % self.tr(name)
             if is_estimated and show_estimated
             else name,
             dt,
@@ -753,7 +753,7 @@ class HinduCalendarHolidays:
         if days_delta != 0:
             dt += td(days=days_delta)
         return self._add_holiday(
-            f"{self.tr(estimated_label) % self.tr(name)}"
+            self.tr(estimated_label) % self.tr(name)
             if is_estimated and show_estimated
             else name,
             dt,
