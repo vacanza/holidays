@@ -345,7 +345,7 @@ class Thailand(HolidayBase, InternationalHolidays):
         # This has its own in-lieu trigger.
 
         if year >= 1948:
-            songkran_festival = self.tr("วันสงกรานต์")
+            songkran_festival = tr("วันสงกรานต์")
             if year <= 1953 or (1957 <= year != 2020):
                 dt = self._add_holiday(
                     songkran_festival, APR, 12 if 1989 <= year <= 1997 else 13

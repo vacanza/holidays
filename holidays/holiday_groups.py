@@ -1064,12 +1064,15 @@ class IslamicHolidays:
         holiday date is an estimation.
         """
         added_dates = set()
-        estimated_label = getattr(self, "estimated_label", "estimated")
+        estimated_label = getattr(self, "estimated_label", "%s* (*estimated)")
         for dt, is_estimated in dates:
             if days_delta != 0:
                 dt += td(days=days_delta)
+
             dt = self._add_holiday(
-                f"{name}* (*{estimated_label})" if is_estimated else name,
+                self.tr(estimated_label) % self.tr(name)
+                if is_estimated
+                else name,
                 dt,
             )
             if dt:

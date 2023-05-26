@@ -62,39 +62,69 @@ class TestIceland(TestCase):
         )
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                cnt = IS(language=language)
-                self.assertEqual(cnt["2022-01-01"], "Nýársdagur")
-                self.assertEqual(cnt["2022-12-25"], "Jóladagur")
-
-        run_tests((IS.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((IS.default_language,))
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Nýársdagur"),
+                ("2022-04-14", "Skírdagur"),
+                ("2022-04-15", "Föstudagurinn langi"),
+                ("2022-04-17", "Páskadagur"),
+                ("2022-04-18", "Annar í páskum"),
+                ("2022-04-21", "Sumardagurinn fyrsti"),
+                ("2022-05-01", "Verkalýðsdagurinn"),
+                ("2022-05-26", "Uppstigningardagur"),
+                ("2022-06-05", "Hvítasunnudagur"),
+                ("2022-06-06", "Annar í hvítasunnu"),
+                ("2022-06-17", "Þjóðhátíðardagurinn"),
+                ("2022-08-01", "Frídagur verslunarmanna"),
+                ("2022-12-24", "Aðfangadagur"),
+                ("2022-12-25", "Jóladagur"),
+                ("2022-12-26", "Annar í jólum"),
+                ("2022-12-31", "Gamlársdagur"),
+            )
+        )
 
     def test_l10n_en_us(self):
-        lang = "en_US"
-
-        cnt = IS(language=lang)
-        self.assertEqual(cnt["2022-01-01"], "New Year's Day")
-        self.assertEqual(cnt["2022-12-25"], "Christmas Day")
-
-        self.set_language(lang)
-        for language in (None, lang, "invalid"):
-            cnt = IS(language=language)
-            self.assertEqual(cnt["2022-01-01"], "New Year's Day")
-            self.assertEqual(cnt["2022-12-25"], "Christmas Day")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "New Year's Day"),
+                ("2022-04-14", "Maundy Thursday"),
+                ("2022-04-15", "Good Friday"),
+                ("2022-04-17", "Easter Sunday"),
+                ("2022-04-18", "Easter Monday"),
+                ("2022-04-21", "First Day of Summer"),
+                ("2022-05-01", "Labor Day"),
+                ("2022-05-26", "Ascension Day"),
+                ("2022-06-05", "Whit Sunday"),
+                ("2022-06-06", "Whit Monday"),
+                ("2022-06-17", "National Day"),
+                ("2022-08-01", "Commerce Day"),
+                ("2022-12-24", "Christmas Eve"),
+                ("2022-12-25", "Christmas Day"),
+                ("2022-12-26", "Second Day of Christmas"),
+                ("2022-12-31", "New Year's Eve"),
+            ),
+            "en_US",
+        )
 
     def test_l10n_uk(self):
-        lang = "uk"
-
-        cnt = IS(language=lang)
-        self.assertEqual(cnt["2022-01-01"], "Новий рік")
-        self.assertEqual(cnt["2022-12-25"], "Різдво Христове")
-
-        self.set_language(lang)
-        for language in (None, lang, "invalid"):
-            cnt = IS(language=language)
-            self.assertEqual(cnt["2022-01-01"], "Новий рік")
-            self.assertEqual(cnt["2022-12-25"], "Різдво Христове")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Новий рік"),
+                ("2022-04-14", "Великий четвер"),
+                ("2022-04-15", "Страсна пʼятниця"),
+                ("2022-04-17", "Великдень"),
+                ("2022-04-18", "Великодній понеділок"),
+                ("2022-04-21", "Перший день літа"),
+                ("2022-05-01", "День праці"),
+                ("2022-05-26", "Вознесіння Господнє"),
+                ("2022-06-05", "Трійця"),
+                ("2022-06-06", "День Святого Духа"),
+                ("2022-06-17", "Національне свято"),
+                ("2022-08-01", "День торгівлі"),
+                ("2022-12-24", "Святий вечір"),
+                ("2022-12-25", "Різдво Христове"),
+                ("2022-12-26", "Другий день Різдва"),
+                ("2022-12-31", "Переддень Нового року"),
+            ),
+            "uk",
+        )

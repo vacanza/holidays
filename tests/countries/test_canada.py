@@ -407,32 +407,63 @@ class TestCanada(TestCase):
                 self.assertNoHoliday(holidays, "2022-09-19")
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                ca = Canada(language=language)
-                self.assertEqual(ca["2022-01-01"], "New Year's Day")
-                self.assertEqual(ca["2022-12-25"], "Christmas Day")
-                self.assertEqual(ca["2022-12-27"], "Christmas Day (Observed)")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "New Year's Day"),
+                ("2022-01-03", "New Year's Day (Observed)"),
+                ("2022-02-21", "Family Day"),
+                ("2022-04-15", "Good Friday"),
+                ("2022-04-18", "Easter Monday"),
+                ("2022-05-23", "Victoria Day"),
+                ("2022-07-01", "Canada Day"),
+                ("2022-08-01", "Civic Holiday"),
+                ("2022-09-05", "Labour Day"),
+                ("2022-10-10", "Thanksgiving"),
+                ("2022-12-25", "Christmas Day"),
+                ("2022-12-26", "Boxing Day"),
+                ("2022-12-27", "Christmas Day (Observed)"),
+            )
+        )
 
-            run_tests((Canada.default_language, None, "invalid"))
-
-            self.set_language("fr")
-            run_tests((Canada.default_language,))
+    def test_l10n_ar(self):
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "يوم السنة الجديدة"),
+                ("2022-01-03", "(تمت ملاحظته) يوم السنة الجديدة"),
+                ("2022-02-21", "يوم العائلة"),
+                ("2022-04-15", "جمعة جيدة"),
+                ("2022-04-18", "عيد الفصح الاثنين"),
+                ("2022-05-23", "يوم فيكتوريا"),
+                ("2022-07-01", "يوم كندا"),
+                ("2022-08-01", "عطلة المدنية"),
+                ("2022-09-05", "عيد العمال"),
+                ("2022-10-10", "عيد الشكر"),
+                ("2022-12-25", "عيد الميلاد"),
+                ("2022-12-26", "يوم الملاكمة"),
+                ("2022-12-27", "(تمت ملاحظته) عيد الميلاد"),
+            ),
+            "ar",
+        )
 
     def test_l10n_fr(self):
-        fr = "fr"
-
-        ca = Canada(language=fr)
-        self.assertEqual(ca["2018-01-01"], "Jour de l'an")
-        self.assertEqual(ca["2022-12-25"], "Jour de Noël")
-        self.assertEqual(ca["2022-12-27"], "Jour de Noël (Observé)")
-
-        self.set_language(fr)
-        for language in (None, fr, "invalid"):
-            ca = Canada(language=language)
-            self.assertEqual(ca["2018-01-01"], "Jour de l'an")
-            self.assertEqual(ca["2022-12-25"], "Jour de Noël")
-            self.assertEqual(ca["2022-12-27"], "Jour de Noël (Observé)")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Jour de l'an"),
+                ("2022-01-03", "Jour de l'an (Observé)"),
+                ("2022-02-21", "Fête de la famille"),
+                ("2022-04-15", "Vendredi saint"),
+                ("2022-04-18", "Lundi de Pâques"),
+                ("2022-05-23", "Fête de la Reine"),
+                ("2022-07-01", "Fête du Canada"),
+                ("2022-08-01", "Premier lundi d'août"),
+                ("2022-09-05", "Fête du Travail"),
+                ("2022-10-10", "Action de grâce"),
+                ("2022-12-25", "Jour de Noël"),
+                ("2022-12-26", "Boxing Day"),
+                ("2022-12-27", "Jour de Noël (Observé)"),
+            ),
+            "fr",
+        )
 
     def test_l10n_th(self):
         self.assertLocalizedHolidays(

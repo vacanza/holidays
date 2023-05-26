@@ -16,118 +16,119 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: holidays/countries/chile.py:36 holidays/countries/chile.py:80
+#: ./holidays/countries/chile.py:33 ./holidays/countries/chile.py:80
 msgid "Feriado nacional"
 msgstr ""
 
-#. New Year's Day (Law 2.977)
-#: holidays/countries/chile.py:77
+#. New Year's Day (Law 2.977).
+#: ./holidays/countries/chile.py:77
 msgid "Año Nuevo"
 msgstr ""
 
-#: holidays/countries/chile.py:84
+#. Holy Week (Law 2.977)
+#: ./holidays/countries/chile.py:83
 msgid "Viernes Santo"
 msgstr ""
 
-#: holidays/countries/chile.py:85
+#: ./holidays/countries/chile.py:84
 msgid "Sábado Santo"
 msgstr ""
 
-#: holidays/countries/chile.py:89
+#: ./holidays/countries/chile.py:88
 msgid "Ascensión del Señor"
 msgstr ""
 
-#: holidays/countries/chile.py:95
+#: ./holidays/countries/chile.py:94
 msgid "Corpus Christi"
 msgstr ""
 
-#: holidays/countries/chile.py:99
+#: ./holidays/countries/chile.py:100
 msgid "Día Nacional del Trabajo"
 msgstr ""
 
-#. Naval Glories Day (Law 2.977)
-#: holidays/countries/chile.py:102
+#. Naval Glories Day (Law 2.977).
+#: ./holidays/countries/chile.py:103
 msgid "Día de las Glorias Navales"
 msgstr ""
 
-#. National Day of Indigenous Peoples
-#: holidays/countries/chile.py:105
+#. National Day of Indigenous Peoples.
+#: ./holidays/countries/chile.py:107
 msgid "Día Nacional de los Pueblos Indígenas"
 msgstr ""
 
-#: holidays/countries/chile.py:121
+#: ./holidays/countries/chile.py:117
 msgid "San Pedro y San Pablo"
 msgstr ""
 
-#: holidays/countries/chile.py:127
+#: ./holidays/countries/chile.py:122
 msgid "Virgen del Carmen"
 msgstr ""
 
-#. Day of Assumption of the Virgin (Law 2.977)
-#: holidays/countries/chile.py:130
+#. Day of Assumption of the Virgin (Law 2.977).
+#: ./holidays/countries/chile.py:125
 msgid "Asunción de la Virgen"
 msgstr ""
 
-#: holidays/countries/chile.py:134
+#: ./holidays/countries/chile.py:129
 msgid "Día de la Liberación Nacional"
 msgstr ""
 
-#: holidays/countries/chile.py:139
+#: ./holidays/countries/chile.py:133
 msgid "Día de la Unidad Nacional"
 msgstr ""
 
-#: holidays/countries/chile.py:146 holidays/countries/chile.py:150
-#: holidays/countries/chile.py:160 holidays/countries/chile.py:164
+#: ./holidays/countries/chile.py:140 ./holidays/countries/chile.py:144
+#: ./holidays/countries/chile.py:154 ./holidays/countries/chile.py:158
 msgid "Fiestas Patrias"
 msgstr ""
 
-#. Independence Day (Law 2.977)
-#: holidays/countries/chile.py:153
+#. Independence Day (Law 2.977).
+#: ./holidays/countries/chile.py:147
 msgid "Día de la Independencia"
 msgstr ""
 
-#. Day of Glories of the Army of Chile (Law 2.977)
-#: holidays/countries/chile.py:156
+#. Day of Glories of the Army of Chile (Law 2.977).
+#: ./holidays/countries/chile.py:150
 msgid "Día de las Glorias del Ejército"
 msgstr ""
 
-#: holidays/countries/chile.py:169
+#: ./holidays/countries/chile.py:163
 msgid "Día del Encuentro de dos Mundos"
 msgstr ""
 
-#: holidays/countries/chile.py:171
+#: ./holidays/countries/chile.py:165
 msgid "Día de la Raza"
 msgstr ""
 
-#: holidays/countries/chile.py:184
+#: ./holidays/countries/chile.py:180
 msgid "Día Nacional de las Iglesias Evangélicas y Protestantes"
 msgstr ""
 
-#. All Saints Day (Law 2.977)
-#: holidays/countries/chile.py:189
+#. All Saints Day (Law 2.977).
+#: ./holidays/countries/chile.py:185
 msgid "Día de Todos los Santos"
 msgstr ""
 
-#. Immaculate Conception (Law 2.977)
-#: holidays/countries/chile.py:192
+#. Immaculate Conception (Law 2.977).
+#: ./holidays/countries/chile.py:188
 msgid "La Inmaculada Concepción"
 msgstr ""
 
-#: holidays/countries/chile.py:195
+#. Christmas Eve.
+#: ./holidays/countries/chile.py:192
 msgid "Víspera de Navidad"
 msgstr ""
 
-#. Christmas (Law 2.977)
-#: holidays/countries/chile.py:198
+#. Christmas (Law 2.977).
+#: ./holidays/countries/chile.py:195
 msgid "Navidad"
 msgstr ""
 
-#. Law 20.663
-#: holidays/countries/chile.py:203
+#. Región de Arica y Parinacota.
+#: ./holidays/countries/chile.py:201
 msgid "Asalto y Toma del Morro de Arica"
 msgstr ""
 
-#. Law 20.678
-#: holidays/countries/chile.py:210
+#: ./holidays/countries/chile.py:208
 msgid "Nacimiento del Prócer de la Independencia (Chillán y Chillán Viejo)"
 msgstr ""

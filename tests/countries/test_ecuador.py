@@ -187,39 +187,87 @@ class TestEcuador(TestCase):
         )
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                cnt = EC(language=language)
-                self.assertEqual(cnt["2022-01-01"], "Año Nuevo")
-                self.assertEqual(cnt["2022-12-25"], "Día de Navidad")
-
-        run_tests((EC.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((EC.default_language,))
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Año Nuevo"),
+                ("2022-02-28", "Carnaval"),
+                ("2022-03-01", "Carnaval"),
+                ("2022-04-15", "Viernes Santo"),
+                ("2022-05-01", "Día del Trabajo"),
+                ("2022-05-02", "Día del Trabajo (Observado)"),
+                ("2022-05-23", "Batalla de Pichincha (Observado)"),
+                ("2022-05-24", "Batalla de Pichincha"),
+                ("2022-08-10", "Primer Grito de Independencia"),
+                ("2022-08-12", "Primer Grito de Independencia (Observado)"),
+                ("2022-10-09", "Independencia de Guayaquil"),
+                ("2022-10-10", "Independencia de Guayaquil (Observado)"),
+                ("2022-11-02", "Día de los Difuntos"),
+                ("2022-11-03", "Independencia de Cuenca"),
+                (
+                    "2022-11-04",
+                    "Día de los Difuntos (Observado); "
+                    "Independencia de Cuenca (Observado)",
+                ),
+                ("2022-12-25", "Día de Navidad"),
+                ("2022-12-26", "Día de Navidad (Observado)"),
+            )
+        )
 
     def test_l10n_en_us(self):
-        en_us = "en_US"
-
-        cnt = EC(language=en_us)
-        self.assertEqual(cnt["2022-01-01"], "New Year's Day")
-        self.assertEqual(cnt["2022-12-25"], "Christmas Day")
-
-        self.set_language(en_us)
-        for language in (None, en_us, "invalid"):
-            cnt = EC(language=language)
-            self.assertEqual(cnt["2022-01-01"], "New Year's Day")
-            self.assertEqual(cnt["2022-12-25"], "Christmas Day")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "New Year's Day"),
+                ("2022-02-28", "Carnival"),
+                ("2022-03-01", "Carnival"),
+                ("2022-04-15", "Good Friday"),
+                ("2022-05-01", "Labour Day"),
+                ("2022-05-02", "Labour Day (Observed)"),
+                ("2022-05-23", "The Battle of Pichincha (Observed)"),
+                ("2022-05-24", "The Battle of Pichincha"),
+                ("2022-08-10", "Declaration of Independence of Quito"),
+                (
+                    "2022-08-12",
+                    "Declaration of Independence of Quito (Observed)",
+                ),
+                ("2022-10-09", "Independence of Guayaquil"),
+                ("2022-10-10", "Independence of Guayaquil (Observed)"),
+                ("2022-11-02", "All Souls' Day"),
+                ("2022-11-03", "Independence of Cuenca"),
+                (
+                    "2022-11-04",
+                    "All Souls' Day (Observed); "
+                    "Independence of Cuenca (Observed)",
+                ),
+                ("2022-12-25", "Christmas Day"),
+                ("2022-12-26", "Christmas Day (Observed)"),
+            ),
+            "en_US",
+        )
 
     def test_l10n_uk(self):
-        uk = "uk"
-
-        cnt = EC(language=uk)
-        self.assertEqual(cnt["2022-01-01"], "Новий рік")
-        self.assertEqual(cnt["2022-12-25"], "Різдво Христове")
-
-        self.set_language(uk)
-        for language in (None, uk, "invalid"):
-            cnt = EC(language=language)
-            self.assertEqual(cnt["2022-01-01"], "Новий рік")
-            self.assertEqual(cnt["2022-12-25"], "Різдво Христове")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Новий рік"),
+                ("2022-02-28", "Карнавал"),
+                ("2022-03-01", "Карнавал"),
+                ("2022-04-15", "Страсна пʼятниця"),
+                ("2022-05-01", "День праці"),
+                ("2022-05-02", "День праці (вихідний)"),
+                ("2022-05-23", "День битви біля Пічинча (вихідний)"),
+                ("2022-05-24", "День битви біля Пічинча"),
+                ("2022-08-10", "День незалежності Кіто"),
+                ("2022-08-12", "День незалежності Кіто (вихідний)"),
+                ("2022-10-09", "День незалежності Гуаякіля"),
+                ("2022-10-10", "День незалежності Гуаякіля (вихідний)"),
+                ("2022-11-02", "День усіх померлих"),
+                ("2022-11-03", "День незалежності Куенки"),
+                (
+                    "2022-11-04",
+                    "День незалежності Куенки (вихідний); "
+                    "День усіх померлих (вихідний)",
+                ),
+                ("2022-12-25", "Різдво Христове"),
+                ("2022-12-26", "Різдво Христове (вихідний)"),
+            ),
+            "uk",
+        )

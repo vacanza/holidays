@@ -215,39 +215,63 @@ class TestVenezuela(TestCase):
         self.assertNoHolidayNameInYears("Día de la Raza", range(2002, 2050))
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                ve = Venezuela(language=language)
-                self.assertEqual(ve["2022-01-01"], "Año Nuevo")
-                self.assertEqual(ve["2022-12-25"], "Día de Navidad")
-
-        run_tests((Venezuela.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((Venezuela.default_language,))
+        self.assertLocalizedHolidays(
+            (
+                ("2021-01-01", "Año Nuevo"),
+                ("2021-02-15", "Lunes de Carnaval"),
+                ("2021-02-16", "Martes de Carnaval"),
+                ("2021-04-01", "Jueves Santo"),
+                ("2021-04-02", "Viernes Santo"),
+                ("2021-04-19", "Declaración de la Independencia"),
+                ("2021-05-01", "Dia Mundial del Trabajador"),
+                ("2021-06-24", "Batalla de Carabobo"),
+                ("2021-07-05", "Día de la Independencia"),
+                ("2021-07-24", "Natalicio de Simón Bolívar"),
+                ("2021-10-12", "Día de la Resistencia Indígena"),
+                ("2021-12-24", "Nochebuena"),
+                ("2021-12-25", "Día de Navidad"),
+                ("2021-12-31", "Fiesta de Fin de Año"),
+            )
+        )
 
     def test_l10n_en_us(self):
-        en_us = "en_US"
-
-        ve = Venezuela(language=en_us)
-        self.assertEqual(ve["2022-01-01"], "New Year's Day")
-        self.assertEqual(ve["2022-12-25"], "Christmas Day")
-
-        self.set_language(en_us)
-        for language in (None, en_us, "invalid"):
-            ve = Venezuela(language=language)
-            self.assertEqual(ve["2022-01-01"], "New Year's Day")
-            self.assertEqual(ve["2022-12-25"], "Christmas Day")
+        self.assertLocalizedHolidays(
+            (
+                ("2021-01-01", "New Year's Day"),
+                ("2021-02-15", "Monday of Carnival"),
+                ("2021-02-16", "Tuesday of Carnival"),
+                ("2021-04-01", "Maundy Thursday"),
+                ("2021-04-02", "Good Friday"),
+                ("2021-04-19", "Declaration of Independence"),
+                ("2021-05-01", "International Worker's Day"),
+                ("2021-06-24", "Battle of Carabobo"),
+                ("2021-07-05", "Independence Day"),
+                ("2021-07-24", "Birthday of Simon Bolivar"),
+                ("2021-10-12", "Day of Indigenous Resistance"),
+                ("2021-12-24", "Christmas Eve"),
+                ("2021-12-25", "Christmas Day"),
+                ("2021-12-31", "New Year's Eve"),
+            ),
+            "en_US",
+        )
 
     def test_l10n_uk(self):
-        uk = "uk"
-
-        ve = Venezuela(language=uk)
-        self.assertEqual(ve["2022-01-01"], "Новий рік")
-        self.assertEqual(ve["2022-12-25"], "Різдво Христове")
-
-        self.set_language(uk)
-        for language in (None, uk, "invalid"):
-            ve = Venezuela(language=language)
-            self.assertEqual(ve["2022-01-01"], "Новий рік")
-            self.assertEqual(ve["2022-12-25"], "Різдво Христове")
+        self.assertLocalizedHolidays(
+            (
+                ("2021-01-01", "Новий рік"),
+                ("2021-02-15", "Карнавальний понеділок"),
+                ("2021-02-16", "Карнавальний вівторок"),
+                ("2021-04-01", "Великий четвер"),
+                ("2021-04-02", "Страсна пʼятниця"),
+                ("2021-04-19", "День проголошення незалежності"),
+                ("2021-05-01", "Міжнародний день трудящих"),
+                ("2021-06-24", "День битви при Карабобо"),
+                ("2021-07-05", "День незалежності"),
+                ("2021-07-24", "Річниця Сімона Болівара"),
+                ("2021-10-12", "День спротиву корінних народів"),
+                ("2021-12-24", "Святий вечір"),
+                ("2021-12-25", "Різдво Христове"),
+                ("2021-12-31", "Переддень Нового року"),
+            ),
+            "uk",
+        )

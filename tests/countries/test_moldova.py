@@ -93,39 +93,84 @@ class TestMoldova(TestCase):
         )
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                md = Moldova(language=language)
-                self.assertEqual(md["2022-01-01"], "Anul Nou")
-                self.assertEqual(md["2022-08-31"], "Limba noastră")
-
-        run_tests((Moldova.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((Moldova.default_language,))
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Anul Nou"),
+                (
+                    "2022-01-07",
+                    "Naşterea lui Iisus Hristos (Crăciunul pe stil vechi)",
+                ),
+                (
+                    "2022-01-08",
+                    "Naşterea lui Iisus Hristos (Crăciunul pe stil vechi)",
+                ),
+                ("2022-03-08", "Ziua internatională a femeii"),
+                ("2022-04-24", "Paştele"),
+                ("2022-04-25", "Paştele"),
+                (
+                    "2022-05-01",
+                    "Ziua internaţională a solidarităţii oamenilor muncii",
+                ),
+                ("2022-05-02", "Paştele blajinilor"),
+                (
+                    "2022-05-09",
+                    "Ziua Europei; Ziua Victoriei şi a comemorării eroilor "
+                    "căzuţi pentru Independenţa Patriei",
+                ),
+                ("2022-06-01", "Ziua Ocrotirii Copilului"),
+                ("2022-08-27", "Ziua independenţei Republicii Moldova"),
+                ("2022-08-31", "Limba noastră"),
+                (
+                    "2022-12-25",
+                    "Naşterea lui Iisus Hristos (Crăciunul pe stil nou)",
+                ),
+            )
+        )
 
     def test_l10n_en_us(self):
-        en_us = "en_US"
-
-        md = Moldova(language=en_us)
-        self.assertEqual(md["2022-01-01"], "New Year's Day")
-        self.assertEqual(md["2022-08-31"], "National Language Day")
-
-        self.set_language(en_us)
-        for language in (None, en_us, "invalid"):
-            md = Moldova(language=language)
-            self.assertEqual(md["2022-01-01"], "New Year's Day")
-            self.assertEqual(md["2022-08-31"], "National Language Day")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "New Year's Day"),
+                ("2022-01-07", "Christmas (by old style)"),
+                ("2022-01-08", "Christmas (by old style)"),
+                ("2022-03-08", "International Women's Day"),
+                ("2022-04-24", "Easter"),
+                ("2022-04-25", "Easter"),
+                ("2022-05-01", "International Workers' Solidarity Day"),
+                ("2022-05-02", "Day of Rejoicing"),
+                (
+                    "2022-05-09",
+                    "Europe Day; Victory Day and Commemoration of the heroes "
+                    "fallen for Independence of Fatherland",
+                ),
+                ("2022-06-01", "International Children's Day"),
+                ("2022-08-27", "Republic of Moldova Independence Day"),
+                ("2022-08-31", "National Language Day"),
+                ("2022-12-25", "Christmas (by new style)"),
+            ),
+            "en_US",
+        )
 
     def test_l10n_uk(self):
-        uk = "uk"
-
-        do = Moldova(language=uk)
-        self.assertEqual(do["2022-01-01"], "Новий рік")
-        self.assertEqual(do["2022-08-31"], "День рідної мови")
-
-        self.set_language(uk)
-        for language in (None, uk, "invalid"):
-            do = Moldova(language=language)
-            self.assertEqual(do["2022-01-01"], "Новий рік")
-            self.assertEqual(do["2022-08-31"], "День рідної мови")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Новий рік"),
+                ("2022-01-07", "Різдво Христове (за старим стилем)"),
+                ("2022-01-08", "Різдво Христове (за старим стилем)"),
+                ("2022-03-08", "Міжнародний жіночий день"),
+                ("2022-04-24", "Великдень"),
+                ("2022-04-25", "Великдень"),
+                ("2022-05-01", "День міжнародної солідарності трудящих"),
+                ("2022-05-02", "Проводи"),
+                (
+                    "2022-05-09",
+                    "День Європи; День Перемоги та вшанування памʼяті героїв, "
+                    "полеглих за незалежність Батьківщини",
+                ),
+                ("2022-06-01", "День захисту дітей"),
+                ("2022-08-27", "День незалежності Республіки Молдова"),
+                ("2022-08-31", "День рідної мови"),
+                ("2022-12-25", "Різдво Христове (за новим стилем)"),
+            ),
+            "uk",
+        )

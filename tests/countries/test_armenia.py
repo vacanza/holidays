@@ -92,26 +92,40 @@ class TestArmenia(TestCase):
         self.assertNoHoliday(f"{year}-09-21" for year in range(1991, 1992))
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                am = Armenia(language=language)
-                self.assertEqual(am["2022-01-01"], "Նոր տարվա օր")
-                self.assertEqual(am["2022-12-31"], "Նոր տարվա գիշեր")
-
-        run_tests((Armenia.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((Armenia.default_language,))
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Նոր տարվա օր"),
+                ("2022-01-02", "Նոր տարվա օր"),
+                ("2022-01-06", "Սուրբ Ծնունդ եւ Հայտնություն"),
+                ("2022-01-28", "Բանակի օր"),
+                ("2022-03-08", "Կանանց տոն"),
+                ("2022-04-24", "Եղեռնի զոհերի հիշատակի օր"),
+                ("2022-05-01", "Աշխատանքի օր"),
+                ("2022-05-09", "Հաղթանակի և Խաղաղության տոն"),
+                ("2022-05-28", "Հանրապետության օր"),
+                ("2022-07-05", "Սահմանադրության օր"),
+                ("2022-09-21", "Անկախության օր"),
+                ("2022-12-31", "Նոր տարվա գիշեր"),
+            )
+        )
 
     def test_l10n_en_us(self):
-        en_us = "en_US"
-
-        am = Armenia(language=en_us)
-        self.assertEqual(am["2022-01-01"], "New Year's Day")
-        self.assertEqual(am["2022-12-31"], "New Year's Eve")
-
-        self.set_language(en_us)
-        for language in (None, en_us, "invalid"):
-            am = Armenia(language=language)
-            self.assertEqual(am["2022-01-01"], "New Year's Day")
-            self.assertEqual(am["2022-12-31"], "New Year's Eve")
+        self.assertLocalizedHolidays(
+            (
+                (
+                    ("2022-01-01", "New Year's Day"),
+                    ("2022-01-02", "New Year's Day"),
+                    ("2022-01-06", "Christmas and Epiphany Day"),
+                    ("2022-01-28", "Army Day"),
+                    ("2022-03-08", "Women's Day"),
+                    ("2022-04-24", "Genocide Memorial Day"),
+                    ("2022-05-01", "Labor day"),
+                    ("2022-05-09", "Victory and Peace Day"),
+                    ("2022-05-28", "Republic Day"),
+                    ("2022-07-05", "Constitution Day"),
+                    ("2022-09-21", "Independence Day"),
+                    ("2022-12-31", "New Year's Eve"),
+                )
+            ),
+            "en_US",
+        )
