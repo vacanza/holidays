@@ -275,7 +275,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday("San Saturnino di Cagliari", OCT, 30)
 
     def _add_subdiv_cb_holidays(self):
-        self._add_holiday("San Giorgio", APR, 23)
+        self._add_saint_georges_day("San Giorgio")
 
     def _add_subdiv_ce_holidays(self):
         self._add_holiday("San Sebastiano", JAN, 20)
@@ -312,7 +312,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_saint_johns_day("San Giovanni Battista")
 
     def _add_subdiv_fe_holidays(self):
-        self._add_holiday("San Giorgio", APR, 23)
+        self._add_saint_georges_day("San Giorgio")
 
     def _add_subdiv_fg_holidays(self):
         self._add_holiday("Madonna dei Sette Veli", MAR, 22)
@@ -428,7 +428,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday("Sant'Ilario di Poitiers", JAN, 13)
 
     def _add_subdiv_pt_holidays(self):
-        self._add_holiday("San Jacopo", JUL, 25)
+        self._add_saint_james_day("San Jacopo")
 
     def _add_subdiv_pu_holidays(self):
         self._add_holiday("San Crescentino", JUN, 1)
@@ -444,13 +444,13 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday("Sant'Apollinare", JUL, 23)
 
     def _add_subdiv_rc_holidays(self):
-        self._add_holiday("San Giorgio", APR, 23)
+        self._add_saint_georges_day("San Giorgio")
 
     def _add_subdiv_re_holidays(self):
         self._add_holiday("San Prospero Vescovo", NOV, 24)
 
     def _add_subdiv_rg_holidays(self):
-        self._add_holiday("San Giorgio", APR, 23)
+        self._add_saint_georges_day("San Giorgio")
 
     def _add_subdiv_ri_holidays(self):
         self._add_holiday("Santa Barbara", DEC, 4)

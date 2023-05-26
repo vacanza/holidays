@@ -215,7 +215,7 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self._year >= 2012:
             # Saint James' Day.
-            self._add_holiday("São Tiago", JUL, 25)
+            self._add_saint_james_day("São Tiago")
 
         # Creation of the Federal Territory.
         self._add_holiday("Criação do Território Federal", SEP, 13)
@@ -309,7 +309,7 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _add_subdiv_rj_holidays(self):
         if self._year >= 2008:
             # Saint George's Day.
-            self._add_holiday("São Jorge", APR, 23)
+            self._add_saint_georges_day("São Jorge")
 
         if self._year >= 2002:
             self._add_holiday("Consciência Negra", NOV, 20)

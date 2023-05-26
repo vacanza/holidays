@@ -112,7 +112,7 @@ class Spain(
             self._add_saint_josephs_day("San José")
         if self._year <= 2022:
             self._add_holy_thursday("Jueves Santo")
-        self._add_holiday("Día de San Jorge", APR, 23)
+        self._add_saint_georges_day("Día de San Jorge")
         if self._year == 2022:
             self._add_labor_day("Día del Trabajador")
             self._add_christmas_day("Navidad")
@@ -148,7 +148,7 @@ class Spain(
     def _add_subdiv_cl_holidays(self):
         if self._year == 2023:
             self._add_new_years_day("Año nuevo")
-            self._add_holiday("Día de Santiago Apóstol", JUL, 25)
+            self._add_saint_james_day("Día de Santiago Apóstol")
         if self._year <= 2014:
             self._add_saint_josephs_day("San José")
         if self._year <= 2022:
@@ -241,7 +241,7 @@ class Spain(
             self._add_holy_thursday("Jueves Santo")
         self._add_holiday("Día de Comunidad de Madrid", MAY, 2)
         if self._year == 2022:
-            self._add_holiday("Día de Santiago Apóstol", JUL, 25)
+            self._add_saint_james_day("Día de Santiago Apóstol")
             self._add_christmas_day("Navidad")
 
     def _add_subdiv_ml_holidays(self):
@@ -266,7 +266,7 @@ class Spain(
             self._add_holy_thursday("Jueves Santo")
         self._add_easter_monday("Lunes de Pascua")
         if self._year >= 2022:
-            self._add_holiday("Día de Santiago Apóstol", JUL, 25)
+            self._add_saint_james_day("Día de Santiago Apóstol")
         if self._year == 2022:
             self._add_christmas_day("Navidad")
 
@@ -277,7 +277,7 @@ class Spain(
             self._add_holy_thursday("Jueves Santo")
         self._add_easter_monday("Lunes de Pascua")
         if self._year >= 2022:
-            self._add_holiday("Día de Santiago Apóstol", JUL, 25)
+            self._add_saint_james_day("Día de Santiago Apóstol")
         if self._year <= 2022:
             self._add_holiday("Día de Elcano", SEP, 6)
         if 2011 <= self._year <= 2013:
