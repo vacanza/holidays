@@ -67,8 +67,8 @@ class TestNZ(TestCase):
             "1968-02-05",
         )
 
-        self.assertNoHolidayNameInYears(name1, range(1900, 1974))
-        self.assertNoHolidayNameInYears(name2, range(1900, 1977))
+        self.assertNoHolidayName(name1, range(1900, 1974))
+        self.assertNoHolidayName(name2, range(1900, 1977))
         self.assertNoHoliday(f"{year}-02-06" for year in range(1900, 1974))
         self.assertHolidaysName(
             name1, (f"{year}-02-06" for year in range(1974, 1977))
@@ -112,7 +112,7 @@ class TestNZ(TestCase):
         obs_dt = ("2015-04-27", "2020-04-27", "2021-04-26")
         self.assertHolidaysName(f"{name} (Observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
-        self.assertNoHolidayNameInYears(name, range(1900, 1921))
+        self.assertNoHolidayName(name, range(1900, 1921))
         self.assertNoHoliday(f"{year}-04-25" for year in range(1900, 1921))
 
     def test_sovereigns_birthday(self):
@@ -157,10 +157,8 @@ class TestNZ(TestCase):
             "2022-06-06",
         )
 
-        self.assertNoHolidayNameInYears(name1, range(1952, 2023))
-        self.assertNoHolidayNameInYears(
-            name2, range(1900, 1952), range(2023, 2050)
-        )
+        self.assertNoHolidayName(name1, range(1952, 2023))
+        self.assertNoHolidayName(name2, range(1900, 1952), range(2023, 2050))
 
     def test_matariki(self):
         self.assertHolidaysName(
