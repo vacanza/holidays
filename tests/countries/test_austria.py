@@ -115,7 +115,7 @@ class TestAustria(TestCase):
             (f"{year}-10-26" for year in range(1967, 2050)),
         )
         self.assertNoHoliday("1918-11-12", "1935-11-12", "1966-10-26")
-        self.assertNoHolidayNameInYears(
+        self.assertNoHolidayName(
             "Nationalfeiertag", range(1900, 1919), range(1935, 1967)
         )
 

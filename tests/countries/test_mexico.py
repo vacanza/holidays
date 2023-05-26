@@ -27,9 +27,7 @@ class TestMexico(TestCase):
     def test_constitution_day(self):
         self.assertHoliday(f"{year}-02-05" for year in range(1917, 2006))
         self.assertNoHoliday(f"{year}-02-05" for year in range(1900, 1917))
-        self.assertNoHolidayNameInYears(
-            "Día de la Constitución", range(1900, 1917)
-        )
+        self.assertNoHolidayName("Día de la Constitución", range(1900, 1917))
         self.assertHoliday(
             "2006-02-06",
             "2007-02-05",
@@ -54,7 +52,7 @@ class TestMexico(TestCase):
     def test_benito_juarez(self):
         self.assertHoliday(f"{year}-03-21" for year in range(1917, 2007))
         self.assertNoHoliday(f"{year}-03-21" for year in range(1900, 1917))
-        self.assertNoHolidayNameInYears(
+        self.assertNoHolidayName(
             "Natalicio de Benito Juárez", range(1900, 1917)
         )
         self.assertHoliday(
@@ -80,7 +78,7 @@ class TestMexico(TestCase):
     def test_labour_day(self):
         self.assertHoliday(f"{year}-05-01" for year in range(1923, 2050))
         self.assertNoHoliday(f"{year}-05-01" for year in range(1900, 1923))
-        self.assertNoHolidayNameInYears("Día del Trabajo", range(1900, 1923))
+        self.assertNoHolidayName("Día del Trabajo", range(1900, 1923))
 
     def test_independence_day(self):
         self.assertHoliday(f"{year}-09-16" for year in range(1900, 2050))
@@ -88,9 +86,7 @@ class TestMexico(TestCase):
     def test_revolution_day(self):
         self.assertHoliday(f"{year}-11-20" for year in range(1917, 2006))
         self.assertNoHoliday(f"{year}-11-20" for year in range(1900, 1917))
-        self.assertNoHolidayNameInYears(
-            "Día de la Revolución", range(1900, 1917)
-        )
+        self.assertNoHolidayName("Día de la Revolución", range(1900, 1917))
         self.assertHoliday(
             "2006-11-20",
             "2007-11-19",
@@ -131,8 +127,8 @@ class TestMexico(TestCase):
             if (year - 1970) % 6 > 0
         )
         name = "Transmisión del Poder Ejecutivo Federal"
-        self.assertNoHolidayNameInYears(name, range(1900, 1970))
-        self.assertNoHolidayNameInYears(
+        self.assertNoHolidayName(name, range(1900, 1970))
+        self.assertNoHolidayName(
             name, (year for year in range(1970, 2050) if (year - 1970) % 6 > 0)
         )
 

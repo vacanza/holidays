@@ -245,7 +245,7 @@ class TestPortugal(TestCase):
     def test_corpus_christi(self):
         name = "Corpo de Deus"
 
-        self.assertNoHolidayNameInYears(name, range(2013, 2016))
+        self.assertNoHolidayName(name, range(2013, 2016))
         self.assertHolidaysName(
             name,
             "2016-05-26",
@@ -263,14 +263,14 @@ class TestPortugal(TestCase):
 
         self.assertNoHolidayName(name, Portugal(years=1909))
         self.assertHoliday(f"{year}-10-05" for year in range(1910, 2013))
-        self.assertNoHolidayNameInYears(name, range(2013, 2016))
+        self.assertNoHolidayName(name, range(2013, 2016))
         self.assertHoliday(f"{year}-10-05" for year in range(2016, 2050))
 
     def test_all_saints_day(self):
         name = "Dia de Todos os Santos"
 
         self.assertHoliday(f"{year}-11-01" for year in range(1950, 2013))
-        self.assertNoHolidayNameInYears(name, range(2013, 2016))
+        self.assertNoHolidayName(name, range(2013, 2016))
         self.assertHoliday(f"{year}-11-01" for year in range(2016, 2050))
 
     def test_restoration_of_independence_day(self):
@@ -278,19 +278,19 @@ class TestPortugal(TestCase):
 
         self.assertNoHolidayName(name, Portugal(years=1822))
         self.assertHoliday(f"{year}-12-01" for year in range(1823, 2013))
-        self.assertNoHolidayNameInYears(name, range(2013, 2016))
+        self.assertNoHolidayName(name, range(2013, 2016))
         self.assertHoliday(f"{year}-12-01" for year in range(2016, 2050))
 
     def test_freedom_day(self):
         name = "Dia da Liberdade"
 
-        self.assertNoHolidayNameInYears(name, 1973)
+        self.assertNoHolidayName(name, 1973)
         self.assertHoliday(f"{year}-04-25" for year in range(1974, 2050))
 
     def test_labour_day(self):
         name = "Dia do Trabalhador"
 
-        self.assertNoHolidayNameInYears(name, 1973)
+        self.assertNoHolidayName(name, 1973)
         self.assertHoliday(f"{year}-05-01" for year in range(1974, 2050))
 
     def test_portugal_day(self):
@@ -298,15 +298,15 @@ class TestPortugal(TestCase):
         name_esno = "Dia de Camões, de Portugal e da Raça"
         name_carn = "Dia de Portugal, de Camões e das Comunidades Portuguesas"
 
-        self.assertNoHolidayNameInYears(name_def, 1910)
-        self.assertNoHolidayNameInYears(name_esno, 1910)
-        self.assertNoHolidayNameInYears(name_carn, 1910)
+        self.assertNoHolidayName(name_def, 1910)
+        self.assertNoHolidayName(name_esno, 1910)
+        self.assertNoHolidayName(name_carn, 1910)
         self.assertHoliday(f"{year}-06-10" for year in range(1911, 2050))
-        self.assertNoHolidayNameInYears(name_esno, range(1911, 1933))
-        self.assertNoHolidayNameInYears(name_carn, range(1911, 1978))
-        self.assertNoHolidayNameInYears(name_def, range(1933, 1974))
-        self.assertNoHolidayNameInYears(name_def, range(1978, 2050))
-        self.assertNoHolidayNameInYears(name_esno, range(1978, 2050))
+        self.assertNoHolidayName(name_esno, range(1911, 1933))
+        self.assertNoHolidayName(name_carn, range(1911, 1978))
+        self.assertNoHolidayName(name_def, range(1933, 1974))
+        self.assertNoHolidayName(name_def, range(1978, 2050))
+        self.assertNoHolidayName(name_esno, range(1978, 2050))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

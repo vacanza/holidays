@@ -41,17 +41,17 @@ class TestEswatini(TestCase):
             )
 
     def test_kings_birthday(self):
-        self.assertNoHolidayNameInYears("King's Birthday", range(1939, 1987))
+        self.assertNoHolidayName("King's Birthday", range(1939, 1987))
         self.assertHoliday(f"{year}-04-19" for year in range(1987, 2050))
 
     def test_national_flag_day(self):
         self.assertNoHoliday(f"{year}-04-25" for year in range(1939, 1969))
-        self.assertNoHolidayNameInYears("National Flag Day", range(1939, 1969))
+        self.assertNoHolidayName("National Flag Day", range(1939, 1969))
         self.assertHoliday(f"{year}-04-25" for year in range(1969, 2050))
 
     def test_late_king_sobhuza(self):
         self.assertNoHoliday(f"{year}-07-22" for year in range(1939, 1983))
-        self.assertNoHolidayNameInYears(
+        self.assertNoHolidayName(
             "Birthday of Late King Sobhuza", range(1939, 1983)
         )
         self.assertHoliday(f"{year}-07-22" for year in range(1983, 2050))

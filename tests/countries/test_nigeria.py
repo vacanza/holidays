@@ -36,7 +36,7 @@ class TestNigeria(TestCase):
     def test_workers_day(self):
         self.assertHoliday(f"{year}-05-01" for year in range(1981, 2050))
         self.assertNoHoliday(f"{year}-05-01" for year in range(1979, 1981))
-        self.assertNoHolidayNameInYears("Workers' Day", range(1979, 1981))
+        self.assertNoHolidayName("Workers' Day", range(1979, 1981))
 
     def test_democracy_day(self):
         self.assertHoliday(f"{year}-05-29" for year in range(2000, 2019))
@@ -44,7 +44,7 @@ class TestNigeria(TestCase):
         # in 2019 May 29 is special holiday, so check from 2020
         self.assertNoHoliday(f"{year}-05-29" for year in range(2020, 2050))
         self.assertNoHoliday(f"{year}-06-12" for year in range(2000, 2019))
-        self.assertNoHolidayNameInYears("Democracy Day", range(1979, 2000))
+        self.assertNoHolidayName("Democracy Day", range(1979, 2000))
 
     def test_independence_day(self):
         self.assertHoliday(f"{year}-10-01" for year in range(1979, 2050))
