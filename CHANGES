@@ -1,17 +1,23 @@
 Version 0.26
 ============
 
+- Add estimated_label localization support to Asian holiday groups (#1229 by @KJhellico)
 - Introduce Asian holidays pre-calculated data (#1148 by @KJhellico)
+- Refactor common::TestCase (#1221 by @arkid15r)
 - Refactor existing utils methods, add list localized entities methods (#1185 by @arkid15r)
 - Refactor long running tests (#1182 by @KJhellico)
 - Add Belize holidays (#1181 by @KJhellico)
 - Add El Salvador holidays (#1198 by @KJhellico)
+- Update Azerbaijan holidays: use custom Islamic calendar (#1231 by @KJhellico)
 - Update Morocco holidays (#1205 by @abh31000)
 - Update Singapore tests: cover non-observed holidays (#1184 by @arkid15r)
 - Update Vatican City holidays (#1206 by @KJhellico)
+- Update calendar naming: fix grammar (#1220 by @arkid15r)
+- Update l10n related workflows (#1140 by @arkid15r)
 - Add EntityLoader inheritance error message (#1208 by @arkid15r)
+- Add St. James' and St. George's days to ChristianHolidays (#1230 by @KJhellico)
 - Migrate Botswana holidays to holiday groups (#1207 by @KJhellico, @arkid15r)
-- Migrate financial to holiday groups (#1174 by @arkid15r)
+- Migrate New Zealand holidays to holiday groups and subdivision holidays methods (#1212 by @KJhellico)
 
 Version 0.25
 ============
