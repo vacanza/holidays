@@ -53,26 +53,48 @@ class TestGeorgia(TestCase):
         )
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                ge = Georgia(language=language)
-                self.assertEqual(ge["2022-01-01"], "ახალი წელი")
-                self.assertEqual(ge["2022-01-07"], "ქრისტეშობა")
-
-        run_tests((Georgia.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((Georgia.default_language,))
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "ახალი წელი"),
+                ("2022-01-02", "ბედობა"),
+                ("2022-01-07", "ქრისტეშობა"),
+                ("2022-01-19", "ნათლისღება"),
+                ("2022-03-03", "დედის დღე"),
+                ("2022-03-08", "ქალთა საერთაშორისო დღე"),
+                ("2022-04-09", "ეროვნული ერთიანობის დღე"),
+                ("2022-04-22", "წითელი პარასკევი"),
+                ("2022-04-23", "დიდი შაბათი"),
+                ("2022-04-24", "აღდგომა"),
+                ("2022-04-25", "შავი ორშაბათი"),
+                ("2022-05-09", "ფაშიზმზე გამარჯვების დღე"),
+                ("2022-05-12", "წმინდა ანდრია პირველწოდებულის დღე"),
+                ("2022-05-26", "დამოუკიდებლობის დღე"),
+                ("2022-08-28", "მარიამობა"),
+                ("2022-10-14", "სვეტიცხოვლობა"),
+                ("2022-11-23", "გიორგობა"),
+            )
+        )
 
     def test_l10n_en_us(self):
-        en_us = "en_US"
-
-        ge = Georgia(language=en_us)
-        self.assertEqual(ge["2022-01-01"], "New Year's Day")
-        self.assertEqual(ge["2022-01-07"], "Orthodox Christmas Day")
-
-        self.set_language(en_us)
-        for language in (None, en_us, "invalid"):
-            ge = Georgia(language=language)
-            self.assertEqual(ge["2022-01-01"], "New Year's Day")
-            self.assertEqual(ge["2022-01-07"], "Orthodox Christmas Day")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "New Year's Day"),
+                ("2022-01-02", "New Year's Day"),
+                ("2022-01-07", "Orthodox Christmas Day"),
+                ("2022-01-19", "Epiphany Day"),
+                ("2022-03-03", "Mother's Day"),
+                ("2022-03-08", "International Women's ay"),
+                ("2022-04-09", "National Unity Day"),
+                ("2022-04-22", "Orthodox Good Friday"),
+                ("2022-04-23", "Orthodox Holy Saturday"),
+                ("2022-04-24", "Orthodox Easter Sunday"),
+                ("2022-04-25", "Orthodox Easter Monday"),
+                ("2022-05-09", "Day of Victory over Fascism"),
+                ("2022-05-12", "St. Andrew's Day"),
+                ("2022-05-26", "Independence Day"),
+                ("2022-08-28", "Saint Mary's Day"),
+                ("2022-10-14", "Day of Svetitskhoveli Cathedral"),
+                ("2022-11-23", "Saint George's Day"),
+            ),
+            "en_US",
+        )

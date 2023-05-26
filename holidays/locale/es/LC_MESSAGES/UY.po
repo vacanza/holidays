@@ -17,76 +17,76 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/uruguay.py:40
+#: ./holidays/countries/uruguay.py:41
 msgid "Año Nuevo"
 msgstr ""
 
 #. International Workers' Day.
-#: ./holidays/countries/uruguay.py:43
+#: ./holidays/countries/uruguay.py:44
 msgid "Día de los Trabajadores"
 msgstr ""
 
 #. Constitution Day.
-#: ./holidays/countries/uruguay.py:46
+#: ./holidays/countries/uruguay.py:47
 msgid "Jura de la Constitución"
 msgstr ""
 
 #. Independence Day.
-#: ./holidays/countries/uruguay.py:49
+#: ./holidays/countries/uruguay.py:50
 msgid "Día de la Independencia"
 msgstr ""
 
 #. Day of the Family.
-#: ./holidays/countries/uruguay.py:52
+#: ./holidays/countries/uruguay.py:53
 msgid "Día de la Familia"
 msgstr ""
 
 #. Children's Day.
-#: ./holidays/countries/uruguay.py:57
+#: ./holidays/countries/uruguay.py:58
 msgid "Día de los Niños"
 msgstr ""
 
 #. Birthday of José Gervasio Artigas.
-#: ./holidays/countries/uruguay.py:60
+#: ./holidays/countries/uruguay.py:61
 msgid "Natalicio de José Gervasio Artigas"
 msgstr ""
 
 #. All Souls' Day.
-#: ./holidays/countries/uruguay.py:63
+#: ./holidays/countries/uruguay.py:64
 msgid "Día de los Difuntos"
 msgstr ""
 
 #. Carnival Day.
-#: ./holidays/countries/uruguay.py:68
+#: ./holidays/countries/uruguay.py:69
 msgid "Día de Carnaval"
 msgstr ""
 
 #. Maundy Thursday.
-#: ./holidays/countries/uruguay.py:73
+#: ./holidays/countries/uruguay.py:74
 msgid "Jueves Santo"
 msgstr ""
 
 #. Good Friday.
-#: ./holidays/countries/uruguay.py:75
+#: ./holidays/countries/uruguay.py:76
 msgid "Viernes Santo"
 msgstr ""
 
 #. Easter Day.
-#: ./holidays/countries/uruguay.py:77
+#: ./holidays/countries/uruguay.py:78
 msgid "Día de Pascuas"
 msgstr ""
 
 #. Landing of the 33 Patriots.
-#: ./holidays/countries/uruguay.py:83
+#: ./holidays/countries/uruguay.py:84
 msgid "Desembarco de los 33 Orientales"
 msgstr ""
 
 #. Battle of Las Piedras.
-#: ./holidays/countries/uruguay.py:88
+#: ./holidays/countries/uruguay.py:89
 msgid "Batalla de Las Piedras"
 msgstr ""
 
 #. Respect for Cultural Diversity Day.
-#: ./holidays/countries/uruguay.py:93
+#: ./holidays/countries/uruguay.py:94
 msgid "Día del Respeto a la Diversidad Cultural"
 msgstr ""

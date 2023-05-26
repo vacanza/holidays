@@ -748,26 +748,46 @@ class TestJapan(TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                jp = Japan(language=language)
-                self.assertEqual(jp["2022-01-01"], "元日")
-                self.assertEqual(jp["2022-11-23"], "勤労感謝の日")
-
-        run_tests((Japan.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((Japan.default_language,))
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "元日"),
+                ("2022-01-10", "成人の日"),
+                ("2022-02-11", "建国記念の日"),
+                ("2022-02-23", "天皇誕生日"),
+                ("2022-03-21", "春分の日"),
+                ("2022-04-29", "昭和の日"),
+                ("2022-05-03", "憲法記念日"),
+                ("2022-05-04", "みどりの日"),
+                ("2022-05-05", "こどもの日"),
+                ("2022-07-18", "海の日"),
+                ("2022-08-11", "山の日"),
+                ("2022-09-19", "敬老の日"),
+                ("2022-09-23", "秋分の日"),
+                ("2022-10-10", "スポーツの日"),
+                ("2022-11-03", "文化の日"),
+                ("2022-11-23", "勤労感謝の日"),
+            )
+        )
 
     def test_l10n_en_us(self):
-        en_us = "en_US"
-
-        jp = Japan(language=en_us)
-        self.assertEqual(jp["2022-01-01"], "New Year's Day")
-        self.assertEqual(jp["2022-11-23"], "Labor Thanksgiving Day")
-
-        self.set_language(en_us)
-        for language in (None, en_us, "invalid"):
-            jp = Japan(language=language)
-            self.assertEqual(jp["2022-01-01"], "New Year's Day")
-            self.assertEqual(jp["2022-11-23"], "Labor Thanksgiving Day")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "New Year's Day"),
+                ("2022-01-10", "Coming of Age Day"),
+                ("2022-02-11", "Foundation Day"),
+                ("2022-02-23", "Emperor's Birthday"),
+                ("2022-03-21", "Vernal Equinox Day"),
+                ("2022-04-29", "Showa Day"),
+                ("2022-05-03", "Constitution Day"),
+                ("2022-05-04", "Greenery Day"),
+                ("2022-05-05", "Children's Day"),
+                ("2022-07-18", "Marine Day"),
+                ("2022-08-11", "Mountain Day"),
+                ("2022-09-19", "Respect for the Aged Day"),
+                ("2022-09-23", "Autumnal Equinox"),
+                ("2022-10-10", "Sports Day"),
+                ("2022-11-03", "Culture Day"),
+                ("2022-11-23", "Labor Thanksgiving Day"),
+            ),
+            "en_US",
+        )

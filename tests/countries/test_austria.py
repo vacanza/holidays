@@ -13,7 +13,7 @@ from holidays.countries.austria import Austria, AT, AUT
 from tests.common import TestCase
 
 
-class TestAT(TestCase):
+class TestAustria(TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(Austria, years=range(1900, 2050))
@@ -166,39 +166,60 @@ class TestAT(TestCase):
         self.assertEqual("1", at_holidays.subdiv)
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                cnt = AT(language=language)
-                self.assertEqual(cnt["2022-01-01"], "Neujahr")
-                self.assertEqual(cnt["2022-12-25"], "Christtag")
-
-        run_tests((AT.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((AT.default_language,))
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Neujahr"),
+                ("2022-01-06", "Heilige Drei Könige"),
+                ("2022-04-18", "Ostermontag"),
+                ("2022-05-01", "Staatsfeiertag"),
+                ("2022-05-26", "Christi Himmelfahrt"),
+                ("2022-06-06", "Pfingstmontag"),
+                ("2022-06-16", "Fronleichnam"),
+                ("2022-08-15", "Mariä Himmelfahrt"),
+                ("2022-10-26", "Nationalfeiertag"),
+                ("2022-11-01", "Allerheiligen"),
+                ("2022-12-08", "Mariä Empfängnis"),
+                ("2022-12-25", "Christtag"),
+                ("2022-12-26", "Stefanitag"),
+            )
+        )
 
     def test_l10n_en_us(self):
-        en_us = "en_US"
-
-        cnt = AT(language=en_us)
-        self.assertEqual(cnt["2022-01-01"], "New Year's Day")
-        self.assertEqual(cnt["2022-12-25"], "Christmas Day")
-
-        self.set_language(en_us)
-        for language in (None, en_us, "invalid"):
-            cnt = AT(language=language)
-            self.assertEqual(cnt["2022-01-01"], "New Year's Day")
-            self.assertEqual(cnt["2022-12-25"], "Christmas Day")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "New Year's Day"),
+                ("2022-01-06", "Epiphany"),
+                ("2022-04-18", "Easter Monday"),
+                ("2022-05-01", "Labor Day"),
+                ("2022-05-26", "Ascension Day"),
+                ("2022-06-06", "Whit Monday"),
+                ("2022-06-16", "Corpus Christi"),
+                ("2022-08-15", "Assumption Day"),
+                ("2022-10-26", "National Day"),
+                ("2022-11-01", "All Saints' Day"),
+                ("2022-12-08", "Immaculate Conception"),
+                ("2022-12-25", "Christmas Day"),
+                ("2022-12-26", "St. Stephen's Day"),
+            ),
+            "en_US",
+        )
 
     def test_l10n_uk(self):
-        uk = "uk"
-
-        cnt = AT(language=uk)
-        self.assertEqual(cnt["2022-01-01"], "Новий рік")
-        self.assertEqual(cnt["2022-12-25"], "Різдво Христове")
-
-        self.set_language(uk)
-        for language in (None, uk, "invalid"):
-            cnt = AT(language=language)
-            self.assertEqual(cnt["2022-01-01"], "Новий рік")
-            self.assertEqual(cnt["2022-12-25"], "Різдво Христове")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Новий рік"),
+                ("2022-01-06", "Богоявлення"),
+                ("2022-04-18", "Великодній понеділок"),
+                ("2022-05-01", "День праці"),
+                ("2022-05-26", "Вознесіння Господнє"),
+                ("2022-06-06", "День Святого Духа"),
+                ("2022-06-16", "Свято Тіла і Крові Христових"),
+                ("2022-08-15", "Внебовзяття Пресвятої Діви Марії"),
+                ("2022-10-26", "Національне свято"),
+                ("2022-11-01", "День усіх святих"),
+                ("2022-12-08", "Непорочне зачаття Діви Марії"),
+                ("2022-12-25", "Різдво Христове"),
+                ("2022-12-26", "День Святого Стефана"),
+            ),
+            "uk",
+        )

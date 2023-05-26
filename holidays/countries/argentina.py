@@ -149,7 +149,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
-        def _add_movable(hol_date: date, hol_name: str) -> None:
+        def add_movable_holiday(dt: date, name: str) -> None:
             """
             !!! Movable Holidays Law !!!
 
@@ -160,13 +160,13 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
                 - If THU/FRI - observed on next MON
             """
             if self.observed:
-                if self._is_tuesday(hol_date) or self._is_wednesday(hol_date):
-                    hol_date = _get_nth_weekday_from(-1, MON, hol_date)
-                    hol_name = self.tr("%s (Observado)") % self.tr(hol_name)
-                elif self._is_thursday(hol_date) or self._is_friday(hol_date):
-                    hol_date = _get_nth_weekday_from(1, MON, hol_date)
-                    hol_name = self.tr("%s (Observado)") % self.tr(hol_name)
-            self._add_holiday(hol_name, hol_date)
+                if self._is_tuesday(dt) or self._is_wednesday(dt):
+                    dt = _get_nth_weekday_from(-1, MON, dt)
+                    name = self.tr("%s (Observado)") % self.tr(name)
+                elif self._is_thursday(dt) or self._is_friday(dt):
+                    dt = _get_nth_weekday_from(1, MON, dt)
+                    name = self.tr("%s (Observado)") % self.tr(name)
+            self._add_holiday(name, dt)
 
         super()._populate(year)
 
@@ -285,7 +285,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
             if self._is_friday(dt):
                 self._add_holiday(name, dt)
             else:
-                _add_movable(dt, name)
+                add_movable_holiday(dt, name)
 
         # Day Pass to the Immortality of General José de San Martin.
         # Status: In-Use.
@@ -304,7 +304,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
                 name, _get_nth_weekday_of_month(3, MON, AUG, year)
             )
         elif year >= 2012:
-            _add_movable(date(year, AUG, 17), name)
+            add_movable_holiday(date(year, AUG, 17), name)
 
         # Respect for Cultural Diversity Day or Columbus Day.
         # Status: In-Use.
@@ -317,7 +317,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
                 if year >= 2010
                 else tr("Día de la Raza")
             )
-            _add_movable(date(year, OCT, 12), name)
+            add_movable_holiday(date(year, OCT, 12), name)
 
         # National Sovereignty Day.
         # Status: In-Use.
@@ -333,7 +333,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
         elif year == 2016:
             self._add_holiday(name, NOV, 28)
         elif year >= 2010:
-            _add_movable(date(year, NOV, 20), name)
+            add_movable_holiday(date(year, NOV, 20), name)
 
 
 class AR(Argentina):

@@ -17,41 +17,37 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: holidays/countries/mexico.py:35
+#: ./holidays/countries/mexico.py:43
 msgid "Año Nuevo"
 msgstr ""
 
-#. Constitution Day.
-#: holidays/countries/mexico.py:43
+#: ./holidays/countries/mexico.py:48
 msgid "Día de la Constitución"
 msgstr ""
 
-#. Benito Juárez's birthday.
-#: holidays/countries/mexico.py:53
+#: ./holidays/countries/mexico.py:57
 msgid "Natalicio de Benito Juárez"
 msgstr ""
 
-#. Labour Day.
-#: holidays/countries/mexico.py:57
+#. Labor Day.
+#: ./holidays/countries/mexico.py:66
 msgid "Día del Trabajo"
 msgstr ""
 
 #. Independence Day.
-#: holidays/countries/mexico.py:60
+#: ./holidays/countries/mexico.py:69
 msgid "Día de la Independencia"
 msgstr ""
 
-#. Revolution Day.
-#: holidays/countries/mexico.py:68
+#: ./holidays/countries/mexico.py:74
 msgid "Día de la Revolución"
 msgstr ""
 
-#. Change of Federal Government.
-#: holidays/countries/mexico.py:72
+#: ./holidays/countries/mexico.py:83
 msgid "Transmisión del Poder Ejecutivo Federal"
 msgstr ""
 
 #. Christmas Day.
-#: holidays/countries/mexico.py:77
+#: ./holidays/countries/mexico.py:87
 msgid "Navidad"
 msgstr ""

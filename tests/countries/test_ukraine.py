@@ -370,35 +370,67 @@ class TestUkraine(TestCase):
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             (
+                ("2021-01-01", "New Year's Day"),
+                ("2021-01-07", "Christmas (Julian calendar)"),
+                ("2021-03-08", "International Women's Day"),
+                ("2021-05-01", "Labor Day"),
+                ("2021-05-02", "Easter Sunday (Pascha)"),
+                ("2021-05-03", "Labor Day (Observed)"),
+                ("2021-05-04", "Easter Sunday (Pascha) (Observed)"),
                 (
-                    ("2021-01-01", "New Year's Day"),
-                    ("2021-01-07", "Christmas (Julian calendar)"),
-                    ("2021-03-08", "International Women's Day"),
-                    ("2021-05-01", "Labor Day"),
-                    ("2021-05-02", "Easter Sunday (Pascha)"),
-                    ("2021-05-03", "Labor Day (Observed)"),
-                    ("2021-05-04", "Easter Sunday (Pascha) (Observed)"),
-                    (
-                        "2021-05-09",
-                        "Day of Victory over Nazism in World War II "
-                        "(Victory Day)",
-                    ),
-                    (
-                        "2021-05-10",
-                        "Day of Victory over Nazism in World War II "
-                        "(Victory Day) (Observed)",
-                    ),
-                    ("2021-06-20", "Holy Trinity Day"),
-                    ("2021-06-21", "Holy Trinity Day (Observed)"),
-                    ("2021-06-28", "Day of the Constitution of Ukraine"),
-                    ("2021-08-24", "Independence Day"),
-                    ("2021-10-14", "Day of defenders of Ukraine"),
-                    ("2021-12-25", "Christmas (Gregorian calendar)"),
-                    (
-                        "2021-12-27",
-                        "Christmas (Gregorian calendar) (Observed)",
-                    ),
-                )
+                    "2021-05-09",
+                    "Day of Victory over Nazism in World War II "
+                    "(Victory Day)",
+                ),
+                (
+                    "2021-05-10",
+                    "Day of Victory over Nazism in World War II "
+                    "(Victory Day) (Observed)",
+                ),
+                ("2021-06-20", "Holy Trinity Day"),
+                ("2021-06-21", "Holy Trinity Day (Observed)"),
+                ("2021-06-28", "Day of the Constitution of Ukraine"),
+                ("2021-08-24", "Independence Day"),
+                ("2021-10-14", "Day of defenders of Ukraine"),
+                ("2021-12-25", "Christmas (Gregorian calendar)"),
+                (
+                    "2021-12-27",
+                    "Christmas (Gregorian calendar) (Observed)",
+                ),
             ),
             "en_US",
+        )
+
+    def test_l10n_ar(self):
+        self.assertLocalizedHolidays(
+            (
+                ("2021-01-01", "السنة الجديدة"),
+                ("2021-01-07", "عيد الميلاد (حسب التقويم اليولياني)"),
+                ("2021-03-08", "اليوم العالمي للمرأة"),
+                ("2021-05-01", "عيد العمال"),
+                ("2021-05-02", "عيد الفصح"),
+                ("2021-05-03", "(يوم عطلة) عيد العمال"),
+                ("2021-05-04", "(يوم عطلة) عيد الفصح"),
+                (
+                    "2021-05-09",
+                    "يوم النصر على النازية"
+                    " في الحرب العالمية الثانية (يوم النصر)",
+                ),
+                (
+                    "2021-05-10",
+                    "(يوم عطلة) يوم النصر على النازية في الحرب"
+                    " العالمية الثانية (يوم النصر)",
+                ),
+                ("2021-06-20", "الثالوث"),
+                ("2021-06-21", "(يوم عطلة) الثالوث"),
+                ("2021-06-28", "يوم الدستور في أوكرانيا"),
+                ("2021-08-24", "عيد استقلال أوكرانيا"),
+                ("2021-10-14", "يوم المدافعين عن أوكرانيا"),
+                ("2021-12-25", "عيد الميلاد (حسب التقويم الغريغوري)"),
+                (
+                    "2021-12-27",
+                    "(يوم عطلة) عيد الميلاد (حسب التقويم الغريغوري)",
+                ),
+            ),
+            "ar",
         )
