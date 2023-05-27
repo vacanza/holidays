@@ -30,10 +30,8 @@ class TestArgentina(TestCase):
 
     def test_carnival_day(self):
         name = "Día de Carnaval"
-        self.assertNoHolidayNameInYears(name, 1955, range(1976, 2011))
-        self.assertHolidayNameInYears(
-            name, range(1956, 1976), range(2011, 2050)
-        )
+        self.assertNoHolidayName(name, 1955, range(1976, 2011))
+        self.assertHolidayName(name, range(1956, 1976), range(2011, 2050))
 
         self.assertHoliday(
             "2016-02-08",
@@ -56,7 +54,7 @@ class TestArgentina(TestCase):
 
     def test_memory_national_day(self):
         self.assertHoliday(f"{year}-03-24" for year in range(2006, 2050))
-        self.assertNoHolidayNameInYears(
+        self.assertNoHolidayName(
             "Día Nacional de la Memoria por la Verdad y la Justicia",
             range(1950, 2006),
         )
@@ -79,10 +77,10 @@ class TestArgentina(TestCase):
             "Día del Veterano y de los Caidos en la Guerra de Malvinas"
         )
 
-        self.assertNoHolidayNameInYears(name_veterans, 1992)
-        self.assertNoHolidayNameInYears(name_malvinas, range(1950, 2001))
-        self.assertHolidayNameInYears(name_veterans, range(1993, 2001))
-        self.assertHolidayNameInYears(name_malvinas, range(2001, 2050))
+        self.assertNoHolidayName(name_veterans, 1992)
+        self.assertNoHolidayName(name_malvinas, range(1950, 2001))
+        self.assertHolidayName(name_veterans, range(1993, 2001))
+        self.assertHolidayName(name_malvinas, range(2001, 2050))
         self.assertHoliday(f"{year}-04-02" for year in range(1993, 2020))
         self.assertHoliday("2020-03-31")
         self.assertHoliday(f"{year}-04-02" for year in range(2021, 2050))
@@ -103,7 +101,7 @@ class TestArgentina(TestCase):
             "Sandwich y del Atlántico Sur"
         )
 
-        self.assertNoHolidayNameInYears(name, 1982, range(2001, 2050))
+        self.assertNoHolidayName(name, 1982, range(2001, 2050))
         self.assertHoliday("1983-04-02")
         self.assertHoliday(f"{year}-06-10" for year in range(1984, 2001))
         self.assertNoHoliday(f"{year}-06-10" for year in range(2001, 2050))
@@ -112,7 +110,7 @@ class TestArgentina(TestCase):
         self.assertNonObservedHoliday(
             (f"{year}-06-17" for year in range(2016, 2050)),
         )
-        self.assertNoHolidayNameInYears(
+        self.assertNoHolidayName(
             "Paso a la Inmortalidad del General Don Martín Miguel de Güemes",
             range(1950, 2016),
         )
@@ -177,7 +175,7 @@ class TestArgentina(TestCase):
 
         self.assertNoHolidayName(name_raza, Argentina(years=1916))
         self.assertNoHolidayName(name_cultural, Argentina(years=(1917, 2009)))
-        self.assertNoHolidayNameInYears(name_raza, range(2010, 2050))
+        self.assertNoHolidayName(name_raza, range(2010, 2050))
 
         self.assertNonObservedHoliday("1917-10-12")
         self.assertNonObservedHoliday(
@@ -389,65 +387,134 @@ class TestArgentina(TestCase):
         )
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                ar = Argentina(language=language)
-                self.assertEqual(ar["2022-01-01"], "Año Nuevo")
-                self.assertEqual(ar["2022-12-25"], "Navidad")
-                self.assertEqual(
-                    ar["2022-10-10"],
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Año Nuevo"),
+                ("2022-02-28", "Día de Carnaval"),
+                ("2022-03-01", "Día de Carnaval"),
+                (
+                    "2022-03-24",
+                    "Día Nacional de la Memoria por la Verdad y la Justicia",
+                ),
+                (
+                    "2022-04-02",
+                    "Día del Veterano y de los Caidos en la Guerra "
+                    "de Malvinas",
+                ),
+                ("2022-04-15", "Viernes Santo"),
+                ("2022-05-01", "Día del Trabajo"),
+                ("2022-05-18", "Censo nacional 2022"),
+                ("2022-05-25", "Día de la Revolución de Mayo"),
+                (
+                    "2022-06-17",
+                    "Paso a la Inmortalidad del General Don Martín Miguel "
+                    "de Güemes",
+                ),
+                (
+                    "2022-06-20",
+                    "Paso a la Inmortalidad del General Don Manuel Belgrano",
+                ),
+                ("2022-07-09", "Día de la Independencia"),
+                (
+                    "2022-08-15",
+                    "Paso a la Inmortalidad del General Don José "
+                    "de San Martin (Observado)",
+                ),
+                ("2022-10-07", "Feriado con fines turísticos"),
+                (
+                    "2022-10-10",
                     "Día del Respeto a la Diversidad Cultural (Observado)",
-                )
-
-        run_tests((Argentina.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((Argentina.default_language,))
+                ),
+                ("2022-11-20", "Día de la Soberanía Nacional"),
+                ("2022-11-21", "Feriado con fines turísticos"),
+                ("2022-12-08", "Inmaculada Concepción de María"),
+                ("2022-12-09", "Feriado con fines turísticos"),
+                ("2022-12-25", "Navidad"),
+            )
+        )
 
     def test_l10n_en_us(self):
-        en_us = "en_US"
-
-        ar = Argentina(language=en_us)
-        self.assertEqual(ar["2022-01-01"], "New Year's Day")
-        self.assertEqual(ar["2022-05-18"], "National Census Day 2022")
-        self.assertEqual(
-            ar["2022-10-10"],
-            "Respect for Cultural Diversity Day (Observed)",
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "New Year's Day"),
+                ("2022-02-28", "Carnival"),
+                ("2022-03-01", "Carnival"),
+                (
+                    "2022-03-24",
+                    "Memory's National Day for the Truth and Justice",
+                ),
+                (
+                    "2022-04-02",
+                    "Veterans Day and the Fallen in the Malvinas War",
+                ),
+                ("2022-04-15", "Good Friday"),
+                ("2022-05-01", "Labor Day"),
+                ("2022-05-18", "National Census Day 2022"),
+                ("2022-05-25", "May Revolution Day"),
+                (
+                    "2022-06-17",
+                    "Pass to the Immortality of General Don Martín Miguel "
+                    "de Güemes",
+                ),
+                (
+                    "2022-06-20",
+                    "Pass to the Immortality of General Don Manuel Belgrano",
+                ),
+                ("2022-07-09", "Independence Day"),
+                (
+                    "2022-08-15",
+                    "Pass to the Immortality of General Don José "
+                    "de San Martin (Observed)",
+                ),
+                ("2022-10-07", "Bridge Public Holiday"),
+                (
+                    "2022-10-10",
+                    "Respect for Cultural Diversity Day (Observed)",
+                ),
+                ("2022-11-20", "National Sovereignty Day"),
+                ("2022-11-21", "Bridge Public Holiday"),
+                ("2022-12-08", "Immaculate Conception"),
+                ("2022-12-09", "Bridge Public Holiday"),
+                ("2022-12-25", "Christmas"),
+            ),
+            "en_US",
         )
-        self.assertEqual(ar["2022-12-25"], "Christmas")
-
-        self.set_language(en_us)
-        for language in (None, en_us, "invalid"):
-            ar = Argentina(language=language)
-            self.assertEqual(ar["2022-01-01"], "New Year's Day")
-            self.assertEqual(ar["2022-05-18"], "National Census Day 2022")
-            self.assertEqual(
-                ar["2022-10-10"],
-                "Respect for Cultural Diversity Day (Observed)",
-            )
-            self.assertEqual(ar["2022-12-25"], "Christmas")
 
     def test_l10n_uk(self):
-        uk = "uk"
-
-        ar = Argentina(language=uk)
-        self.assertEqual(ar["2022-01-01"], "Новий рік")
-        self.assertEqual(ar["2022-05-18"], "День національного перепису 2022")
-        self.assertEqual(
-            ar["2022-10-10"],
-            "День поваги до культурного різноманіття (вихідний)",
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Новий рік"),
+                ("2022-02-28", "Карнавал"),
+                ("2022-03-01", "Карнавал"),
+                ("2022-03-24", "День памʼяті заради правди та правосуддя"),
+                (
+                    "2022-04-02",
+                    "День ветеранів та загиблих на Мальвінській війні",
+                ),
+                ("2022-04-15", "Страсна п'ятниця"),
+                ("2022-05-01", "День праці"),
+                ("2022-05-18", "День національного перепису 2022"),
+                ("2022-05-25", "День Травневої революції"),
+                (
+                    "2022-06-17",
+                    "День пам'яті генерала Мартіна Мігеля де Гуемеса",
+                ),
+                ("2022-06-20", "День пам’яті генерала Мануеля Бельграно"),
+                ("2022-07-09", "День незалежності"),
+                (
+                    "2022-08-15",
+                    "День пам'яті генерала Хосе де Сан-Мартіна (вихідний)",
+                ),
+                ("2022-10-07", "Додатковий вихідний"),
+                (
+                    "2022-10-10",
+                    "День поваги до культурного різноманіття (вихідний)",
+                ),
+                ("2022-11-20", "День національного суверенітету"),
+                ("2022-11-21", "Додатковий вихідний"),
+                ("2022-12-08", "Непорочне зачаття Діви Марії"),
+                ("2022-12-09", "Додатковий вихідний"),
+                ("2022-12-25", "Різдво Христове"),
+            ),
+            "uk",
         )
-        self.assertEqual(ar["2022-12-25"], "Різдво Христове")
-
-        self.set_language(uk)
-        for language in (None, uk, "invalid"):
-            ar = Argentina(language=language)
-            self.assertEqual(ar["2022-01-01"], "Новий рік")
-            self.assertEqual(
-                ar["2022-05-18"], "День національного перепису 2022"
-            )
-            self.assertEqual(
-                ar["2022-10-10"],
-                "День поваги до культурного різноманіття (вихідний)",
-            )
-            self.assertEqual(ar["2022-12-25"], "Різдво Христове")

@@ -75,7 +75,7 @@ class TestSlovakia(TestCase):
             (f"{year}-05-08" for year in range(1997, 2050)),
         )
         self.assertNoHoliday(f"{year}-05-08" for year in range(1993, 1997))
-        self.assertNoHolidayNameInYears(name, range(1993, 1997))
+        self.assertNoHolidayName(name, range(1993, 1997))
 
     def test_cyril_and_methodius_day(self):
         self.assertHolidaysName(
@@ -107,7 +107,7 @@ class TestSlovakia(TestCase):
             name, (f"{year}-10-28" for year in range(2021, 2050))
         )
         self.assertNoHoliday(f"{year}-10-28" for year in range(1993, 2021))
-        self.assertNoHolidayNameInYears(name, range(1993, 2021))
+        self.assertNoHolidayName(name, range(1993, 2021))
 
     def test_all_saints_day(self):
         self.assertHolidaysName(
@@ -122,7 +122,7 @@ class TestSlovakia(TestCase):
             (f"{year}-11-17" for year in range(2001, 2050)),
         )
         self.assertNoHoliday(f"{year}-11-17" for year in range(1993, 2001))
-        self.assertNoHolidayNameInYears(name, range(1993, 2001))
+        self.assertNoHolidayName(name, range(1993, 2001))
 
     def test_christmas_eve(self):
         self.assertHolidaysName(

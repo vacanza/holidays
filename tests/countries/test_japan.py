@@ -92,7 +92,7 @@ class TestJapan(TestCase):
     def test_foundation_day(self):
         self.assertHoliday(f"{year}-02-11" for year in range(1967, 2051))
         self.assertNoHoliday("1966-02-11")
-        self.assertNoHolidayNameInYears("建国記念の日", 1966)
+        self.assertNoHolidayName("建国記念の日", 1966)
 
     def test_vernal_equinox_day(self):
         self.assertHolidaysName(
@@ -208,7 +208,7 @@ class TestJapan(TestCase):
         self.assertHolidaysName(
             name, (f"{year}-04-29" for year in range(2007, 2051))
         )
-        self.assertNoHolidayNameInYears(name, 2006)
+        self.assertNoHolidayName(name, 2006)
 
     def test_constitution_memorial_day(self):
         self.assertHolidaysName(
@@ -223,7 +223,7 @@ class TestJapan(TestCase):
         self.assertHolidaysName(
             name, (f"{year}-05-04" for year in range(2007, 2051))
         )
-        self.assertNoHolidayNameInYears(name, 1988)
+        self.assertNoHolidayName(name, 1988)
 
     def test_national_holiday(self):
         name = "国民の休日"
@@ -334,7 +334,7 @@ class TestJapan(TestCase):
         self.assertHolidaysName(name, (f"{year}-08-11" for year in years))
         self.assertHolidaysName(name, "2020-08-10", "2021-08-08")
         self.assertNoHoliday("2015-08-11")
-        self.assertNoHolidayNameInYears(name, 2015)
+        self.assertNoHolidayName(name, 2015)
 
     def test_respect_for_the_aged_day(self):
         name = "敬老の日"
@@ -342,7 +342,7 @@ class TestJapan(TestCase):
             name, (f"{year}-09-15" for year in range(1966, 2003))
         )
         self.assertNoHoliday("1965-09-15")
-        self.assertNoHolidayNameInYears(name, 1965)
+        self.assertNoHolidayName(name, 1965)
 
         self.assertHolidaysName(
             name,
@@ -509,7 +509,7 @@ class TestJapan(TestCase):
             name, (f"{year}-10-10" for year in range(1966, 2000))
         )
         self.assertNoHoliday("1965-10-10", "2000-10-10")
-        self.assertNoHolidayNameInYears(name, 1965, 2020)
+        self.assertNoHolidayName(name, 1965, 2020)
 
         self.assertHolidaysName(
             name,
@@ -570,7 +570,7 @@ class TestJapan(TestCase):
             "2049-10-11",
             "2050-10-10",
         )
-        self.assertNoHolidayNameInYears(name, 2019)
+        self.assertNoHolidayName(name, 2019)
 
     def test_culture_day(self):
         self.assertHolidaysName(
@@ -748,26 +748,46 @@ class TestJapan(TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                jp = Japan(language=language)
-                self.assertEqual(jp["2022-01-01"], "元日")
-                self.assertEqual(jp["2022-11-23"], "勤労感謝の日")
-
-        run_tests((Japan.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((Japan.default_language,))
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "元日"),
+                ("2022-01-10", "成人の日"),
+                ("2022-02-11", "建国記念の日"),
+                ("2022-02-23", "天皇誕生日"),
+                ("2022-03-21", "春分の日"),
+                ("2022-04-29", "昭和の日"),
+                ("2022-05-03", "憲法記念日"),
+                ("2022-05-04", "みどりの日"),
+                ("2022-05-05", "こどもの日"),
+                ("2022-07-18", "海の日"),
+                ("2022-08-11", "山の日"),
+                ("2022-09-19", "敬老の日"),
+                ("2022-09-23", "秋分の日"),
+                ("2022-10-10", "スポーツの日"),
+                ("2022-11-03", "文化の日"),
+                ("2022-11-23", "勤労感謝の日"),
+            )
+        )
 
     def test_l10n_en_us(self):
-        en_us = "en_US"
-
-        jp = Japan(language=en_us)
-        self.assertEqual(jp["2022-01-01"], "New Year's Day")
-        self.assertEqual(jp["2022-11-23"], "Labor Thanksgiving Day")
-
-        self.set_language(en_us)
-        for language in (None, en_us, "invalid"):
-            jp = Japan(language=language)
-            self.assertEqual(jp["2022-01-01"], "New Year's Day")
-            self.assertEqual(jp["2022-11-23"], "Labor Thanksgiving Day")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "New Year's Day"),
+                ("2022-01-10", "Coming of Age Day"),
+                ("2022-02-11", "Foundation Day"),
+                ("2022-02-23", "Emperor's Birthday"),
+                ("2022-03-21", "Vernal Equinox Day"),
+                ("2022-04-29", "Showa Day"),
+                ("2022-05-03", "Constitution Day"),
+                ("2022-05-04", "Greenery Day"),
+                ("2022-05-05", "Children's Day"),
+                ("2022-07-18", "Marine Day"),
+                ("2022-08-11", "Mountain Day"),
+                ("2022-09-19", "Respect for the Aged Day"),
+                ("2022-09-23", "Autumnal Equinox"),
+                ("2022-10-10", "Sports Day"),
+                ("2022-11-03", "Culture Day"),
+                ("2022-11-23", "Labor Thanksgiving Day"),
+            ),
+            "en_US",
+        )

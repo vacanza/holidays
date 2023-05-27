@@ -27,9 +27,7 @@ class TestMexico(TestCase):
     def test_constitution_day(self):
         self.assertHoliday(f"{year}-02-05" for year in range(1917, 2006))
         self.assertNoHoliday(f"{year}-02-05" for year in range(1900, 1917))
-        self.assertNoHolidayNameInYears(
-            "Día de la Constitución", range(1900, 1917)
-        )
+        self.assertNoHolidayName("Día de la Constitución", range(1900, 1917))
         self.assertHoliday(
             "2006-02-06",
             "2007-02-05",
@@ -54,7 +52,7 @@ class TestMexico(TestCase):
     def test_benito_juarez(self):
         self.assertHoliday(f"{year}-03-21" for year in range(1917, 2007))
         self.assertNoHoliday(f"{year}-03-21" for year in range(1900, 1917))
-        self.assertNoHolidayNameInYears(
+        self.assertNoHolidayName(
             "Natalicio de Benito Juárez", range(1900, 1917)
         )
         self.assertHoliday(
@@ -80,7 +78,7 @@ class TestMexico(TestCase):
     def test_labour_day(self):
         self.assertHoliday(f"{year}-05-01" for year in range(1923, 2050))
         self.assertNoHoliday(f"{year}-05-01" for year in range(1900, 1923))
-        self.assertNoHolidayNameInYears("Día del Trabajo", range(1900, 1923))
+        self.assertNoHolidayName("Día del Trabajo", range(1900, 1923))
 
     def test_independence_day(self):
         self.assertHoliday(f"{year}-09-16" for year in range(1900, 2050))
@@ -88,9 +86,7 @@ class TestMexico(TestCase):
     def test_revolution_day(self):
         self.assertHoliday(f"{year}-11-20" for year in range(1917, 2006))
         self.assertNoHoliday(f"{year}-11-20" for year in range(1900, 1917))
-        self.assertNoHolidayNameInYears(
-            "Día de la Revolución", range(1900, 1917)
-        )
+        self.assertNoHolidayName("Día de la Revolución", range(1900, 1917))
         self.assertHoliday(
             "2006-11-20",
             "2007-11-19",
@@ -131,8 +127,8 @@ class TestMexico(TestCase):
             if (year - 1970) % 6 > 0
         )
         name = "Transmisión del Poder Ejecutivo Federal"
-        self.assertNoHolidayNameInYears(name, range(1900, 1970))
-        self.assertNoHolidayNameInYears(
+        self.assertNoHolidayName(name, range(1900, 1970))
+        self.assertNoHolidayName(
             name, (year for year in range(1970, 2050) if (year - 1970) % 6 > 0)
         )
 
@@ -140,39 +136,42 @@ class TestMexico(TestCase):
         self.assertHoliday(f"{year}-12-25" for year in range(1900, 2050))
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                mx = Mexico(language=language)
-                self.assertEqual(mx["2022-01-01"], "Año Nuevo")
-                self.assertEqual(mx["2022-12-25"], "Navidad")
-
-        run_tests((Mexico.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((Mexico.default_language,))
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Año Nuevo"),
+                ("2022-02-07", "Día de la Constitución"),
+                ("2022-03-21", "Natalicio de Benito Juárez"),
+                ("2022-05-01", "Día del Trabajo"),
+                ("2022-09-16", "Día de la Independencia"),
+                ("2022-11-21", "Día de la Revolución"),
+                ("2022-12-25", "Navidad"),
+            )
+        )
 
     def test_l10n_en_us(self):
-        en_us = "en_US"
-
-        mx = Mexico(language=en_us)
-        self.assertEqual(mx["2022-01-01"], "New Year's Day")
-        self.assertEqual(mx["2022-12-25"], "Christmas Day")
-
-        self.set_language(en_us)
-        for language in (None, en_us, "invalid"):
-            mx = Mexico(language=language)
-            self.assertEqual(mx["2022-01-01"], "New Year's Day")
-            self.assertEqual(mx["2022-12-25"], "Christmas Day")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "New Year's Day"),
+                ("2022-02-07", "Constitution Day"),
+                ("2022-03-21", "Benito Juárez's birthday"),
+                ("2022-05-01", "Labour Day"),
+                ("2022-09-16", "Independence Day"),
+                ("2022-11-21", "Revolution Day"),
+                ("2022-12-25", "Christmas Day"),
+            ),
+            "en_US",
+        )
 
     def test_l10n_uk(self):
-        uk = "uk"
-
-        mx = Mexico(language=uk)
-        self.assertEqual(mx["2022-01-01"], "Новий рік")
-        self.assertEqual(mx["2022-12-25"], "Різдво Христове")
-
-        self.set_language(uk)
-        for language in (None, uk, "invalid"):
-            mx = Mexico(language=language)
-            self.assertEqual(mx["2022-01-01"], "Новий рік")
-            self.assertEqual(mx["2022-12-25"], "Різдво Христове")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Новий рік"),
+                ("2022-02-07", "День Конституції"),
+                ("2022-03-21", "Річниця Беніто Хуареса"),
+                ("2022-05-01", "День праці"),
+                ("2022-09-16", "День незалежності"),
+                ("2022-11-21", "День революції"),
+                ("2022-12-25", "Різдво Христове"),
+            ),
+            "uk",
+        )

@@ -15,10 +15,10 @@ from datetime import timedelta as td
 from holidays.calendars.buddhist import _BuddhistLunisolar
 from holidays.calendars.chinese import _ChineseLunisolar
 from holidays.calendars.custom import _CustomCalendar
-from holidays.calendars.hebrew import _HebrewLuniSolar
+from holidays.calendars.hebrew import _HebrewLunisolar
 from holidays.calendars.hindu import _HinduLunisolar
 from holidays.calendars.islamic import _IslamicLunar
-from holidays.calendars.thai import _ThaiLuniSolar
+from holidays.calendars.thai import _ThaiLunisolar
 
 GREGORIAN_CALENDAR = "GREGORIAN_CALENDAR"
 JULIAN_CALENDAR = "JULIAN_CALENDAR"

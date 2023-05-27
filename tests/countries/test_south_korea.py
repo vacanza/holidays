@@ -124,7 +124,7 @@ class TestSouthKorea(TestCase):
             name, (f"{year}-04-05" for year in range(2001, 2006))
         )
         self.assertHolidaysName(name, "1949-04-05")
-        self.assertNoHolidayNameInYears(name, 1948, 1960, 2006)
+        self.assertNoHolidayName(name, 1948, 1960, 2006)
         self.assertNoHoliday("1948-04-05", "1960-04-05", "2006-04-05")
 
     def test_childrens_day(self):
@@ -134,7 +134,7 @@ class TestSouthKorea(TestCase):
             (f"{year}-05-05" for year in range(2001, 2050)),
         )
         self.assertHolidaysName(name, "1975-05-05")
-        self.assertNoHolidayNameInYears(name, 1974)
+        self.assertNoHolidayName(name, 1974)
         self.assertNoHoliday("1974-05-05")
 
         self.assertHolidaysName(
@@ -196,7 +196,7 @@ class TestSouthKorea(TestCase):
         )
         self.assertHolidaysName(name, "1948-07-17")
         self.assertNoHoliday("2008-07-17")
-        self.assertNoHolidayNameInYears(name, 2008)
+        self.assertNoHolidayName(name, 2008)
 
     def test_liberation_day(self):
         self.assertHolidaysName(
@@ -298,7 +298,7 @@ class TestSouthKorea(TestCase):
         )
         self.assertHolidaysName(name, "1990-10-09", "2013-10-09")
         self.assertNoHoliday("1991-10-09", "2012-10-09")
-        self.assertNoHolidayNameInYears(name, 1991, 2012)
+        self.assertNoHolidayName(name, 1991, 2012)
 
         self.assertHolidaysName(
             "Alternative holiday of Hangeul Day",

@@ -12,6 +12,7 @@
 from datetime import date
 from datetime import timedelta as td
 
+from holidays.calendars import _CustomCalendar, _IslamicLunar
 from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT
 from holidays.constants import NOV, DEC
 from holidays.holiday_base import HolidayBase
@@ -27,7 +28,7 @@ class Azerbaijan(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self)
+        IslamicHolidays.__init__(self, calendar=AzerbaijanIslamicCalendar())
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -122,67 +123,13 @@ class Azerbaijan(HolidayBase, InternationalHolidays, IslamicHolidays):
             self._add_new_years_eve(solidarity_name)
 
         if year >= 1993:
-            dates_obs = {
-                2011: ((AUG, 30),),
-                2012: ((AUG, 19),),
-                2013: ((AUG, 8),),
-                2014: ((JUL, 28),),
-                2015: ((JUL, 17),),
-                2016: ((JUL, 6),),
-                2017: ((JUN, 26),),
-                2018: ((JUN, 15),),
-                2019: ((JUN, 5),),
-                2020: ((MAY, 24),),
-                2021: ((MAY, 13),),
-                2022: ((MAY, 2),),
-                2023: ((APR, 21),),
-            }
             name = "Ramazan Bayrami"
-            if year in dates_obs:
-                for date_obs in dates_obs[year]:
-                    dt = self._add_holiday(name, *date_obs)
-                    observed_dates.add(dt)
-                    observed_dates.add(
-                        self._add_holiday(name, dt + td(days=+1))
-                    )
-            else:
-                observed_dates.update(
-                    self._add_eid_al_fitr_day(f"{name}* (*estimated)")
-                )
-                observed_dates.update(
-                    self._add_eid_al_fitr_day_two(f"{name}* (*estimated)")
-                )
+            observed_dates.update(self._add_eid_al_fitr_day(name))
+            observed_dates.update(self._add_eid_al_fitr_day_two(name))
 
-            dates_obs = {
-                2011: ((NOV, 6),),
-                2012: ((OCT, 25),),
-                2013: ((OCT, 15),),
-                2014: ((OCT, 4),),
-                2015: ((SEP, 24),),
-                2016: ((SEP, 12),),
-                2017: ((SEP, 1),),
-                2018: ((AUG, 22),),
-                2019: ((AUG, 12),),
-                2020: ((JUL, 31),),
-                2021: ((JUL, 20),),
-                2022: ((JUL, 9),),
-                2023: ((JUN, 28),),
-            }
             name = "Gurban Bayrami"
-            if year in dates_obs:
-                for date_obs in dates_obs[year]:
-                    dt = self._add_holiday(name, *date_obs)
-                    observed_dates.add(dt)
-                    observed_dates.add(
-                        self._add_holiday(name, dt + td(days=+1))
-                    )
-            else:
-                observed_dates.update(
-                    self._add_eid_al_adha_day(f"{name}* (*estimated)")
-                )
-                observed_dates.update(
-                    self._add_eid_al_adha_day_two(f"{name}* (*estimated)")
-                )
+            observed_dates.update(self._add_eid_al_adha_day(name))
+            observed_dates.update(self._add_eid_al_adha_day_two(name))
 
         # Article 105 of the Labor Code of the Republic of Azerbaijan states:
         # 5. If interweekly rest days and holidays that are not considered
@@ -227,3 +174,37 @@ class AZ(Azerbaijan):
 
 class AZE(Azerbaijan):
     pass
+
+
+class AzerbaijanIslamicCalendar(_CustomCalendar, _IslamicLunar):
+    EID_AL_ADHA_DATES = {
+        2011: ((NOV, 6),),
+        2012: ((OCT, 25),),
+        2013: ((OCT, 15),),
+        2014: ((OCT, 4),),
+        2015: ((SEP, 24),),
+        2016: ((SEP, 12),),
+        2017: ((SEP, 1),),
+        2018: ((AUG, 22),),
+        2019: ((AUG, 12),),
+        2020: ((JUL, 31),),
+        2021: ((JUL, 20),),
+        2022: ((JUL, 9),),
+        2023: ((JUN, 28),),
+    }
+
+    EID_AL_FITR_DATES = {
+        2011: ((AUG, 30),),
+        2012: ((AUG, 19),),
+        2013: ((AUG, 8),),
+        2014: ((JUL, 28),),
+        2015: ((JUL, 17),),
+        2016: ((JUL, 6),),
+        2017: ((JUN, 26),),
+        2018: ((JUN, 15),),
+        2019: ((JUN, 5),),
+        2020: ((MAY, 24),),
+        2021: ((MAY, 13),),
+        2022: ((MAY, 2),),
+        2023: ((APR, 21),),
+    }

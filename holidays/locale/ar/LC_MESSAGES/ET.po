@@ -1,0 +1,89 @@
+# Ethiopia holidays ar localization (PoC).
+# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.26\n"
+"POT-Creation-Date: 2023-05-20 18:48-0700\n"
+"PO-Revision-Date: 2023-05-20 18:51-0700\n"
+"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.3.1\n"
+
+#: ./holidays/countries/ethiopia.py:39
+#, c-format
+msgid "%s* (*ግምት)"
+msgstr "(تقدير*) *%s"
+
+#: ./holidays/countries/ethiopia.py:74
+msgid "አዲስ ዓመት እንቁጣጣሽ"
+msgstr "السنة الإثيوبية الجديدة"
+
+#: ./holidays/countries/ethiopia.py:79
+msgid "መስቀል"
+msgstr "العثور على الصليب الحقيقي"
+
+#. Orthodox Christmas.
+#: ./holidays/countries/ethiopia.py:83
+msgid "ገና"
+msgstr "عيد الميلاد"
+
+#. Orthodox Epiphany.
+#: ./holidays/countries/ethiopia.py:86
+msgid "ጥምቀት"
+msgstr "عيد الغطاس"
+
+#. Orthodox Good Friday.
+#: ./holidays/countries/ethiopia.py:89
+msgid "ስቅለት"
+msgstr "جمعة جيدة"
+
+#. Orthodox Easter Sunday.
+#: ./holidays/countries/ethiopia.py:92
+msgid "ፋሲካ"
+msgstr "عيد الفصح"
+
+#. Adwa Victory Day.
+#: ./holidays/countries/ethiopia.py:96
+msgid "አድዋ"
+msgstr "العدوة"
+
+#. Labour Day.
+#: ./holidays/countries/ethiopia.py:99
+msgid "የሰራተኞች ቀን"
+msgstr "يوم العمال"
+
+#. Patriots Day.
+#: ./holidays/countries/ethiopia.py:103
+msgid "የአርበኞች ቀን"
+msgstr "يوم الوطنيين"
+
+#. Downfall of Dergue Regime Day.
+#: ./holidays/countries/ethiopia.py:107
+msgid "ደርግ የወደቀበት ቀን"
+msgstr "يوم سقوط ديرج"
+
+#: ./holidays/countries/ethiopia.py:112
+msgid "ደርግ የመጣበት ቀን"
+msgstr "اليوم الذي جاء فيه ديرج"
+
+#. Eid al-Fitr.
+#: ./holidays/countries/ethiopia.py:116
+msgid "ኢድ አልፈጥር"
+msgstr "عيد الفطر"
+
+#. Eid al-Adha.
+#: ./holidays/countries/ethiopia.py:119
+msgid "አረፋ"
+msgstr "عيد الأضحى"
+
+#. Prophet Muhammad's Birthday.
+#: ./holidays/countries/ethiopia.py:124
+msgid "መውሊድ"
+msgstr "عيد المولد النبوي"

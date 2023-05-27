@@ -18,7 +18,6 @@ from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
 
 class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
     country = "PK"
-    estimated_label = "estimated"
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)

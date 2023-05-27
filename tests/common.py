@@ -208,15 +208,26 @@ class TestCase(unittest.TestCase):
     # Holiday name.
     def _assertHolidayName(self, name, instance_name, *args):
         """Helper: assert a holiday with a specific name exists."""
-        holidays, _ = self._parse_arguments(
+        holidays, items = self._parse_arguments(
             args,
             instance_name=instance_name,
         )
-        self.assertEqual(
-            len(holidays.years),
-            len(holidays.get_named(name, lookup="exact")),
-            name,
+
+        # Check the nature of the passed arguments.
+        arg = (
+            args[1]
+            if len(args) > 1 and issubclass(args[0].__class__, HolidayBase)
+            else args[0]
         )
+        if isinstance(arg, (Generator, int, range, set)):
+            holiday_years = {
+                dt.year for dt in holidays.get_named(name, lookup="exact")
+            }
+            self.assertTrue(set(items).issubset(holiday_years), name)
+        else:
+            self.assertTrue(holidays.get_named(name, lookup="exact"), name)
+            for dt in items:
+                self.assertIn(dt, holidays, dt)
 
     def assertHolidayName(self, name, *args):
         """Assert a holiday with a specific name exists."""
@@ -225,30 +236,6 @@ class TestCase(unittest.TestCase):
     def assertNonObservedHolidayName(self, name, *args):
         """Assert a non-observed holiday with a specific name exists."""
         self._assertHolidayName(name, "holidays_non_observed", *args)
-
-    def _assertHolidayNameInYears(self, name, instance_name, *args):
-        """
-        Helper: assert a holiday with a specific name exists in specified
-        years.
-        """
-        holidays, years = self._parse_arguments(
-            args,
-            instance_name=instance_name,
-        )
-
-        holiday_years = {
-            dt.year for dt in holidays.get_named(name, lookup="exact")
-        }
-        self.assertTrue(set(years).issubset(holiday_years), name)
-
-    def assertHolidayNameInYears(self, name, *args):
-        """Assert a holiday with a specific name exists in specified years."""
-        self._assertHolidayNameInYears(name, "holidays", *args)
-
-    def assertNonObservedHolidayNameInYears(self, name, *args):
-        """Assert a non-observed holiday with a specific name exists in
-        specified years."""
-        self._assertHolidayNameInYears(name, "holidays_non_observed", *args)
 
     # Holidays.
     def _assertHolidays(self, instance_name, *args):
@@ -321,11 +308,26 @@ class TestCase(unittest.TestCase):
     # No holiday name.
     def _assertNoHolidayName(self, name, instance_name, *args):
         """Helper: assert a holiday with a specific name doesn't exist."""
-        holidays, _ = self._parse_arguments(
+        holidays, items = self._parse_arguments(
             args,
             instance_name=instance_name,
         )
-        self.assertFalse(holidays.get_named(name, lookup="exact"), name)
+
+        # Check the nature of the passed arguments.
+        arg = (
+            args[1]
+            if len(args) > 1 and issubclass(args[0].__class__, HolidayBase)
+            else args[0]
+        )
+        if isinstance(arg, (Generator, int, range, set)):
+            holiday_years = {
+                dt.year for dt in holidays.get_named(name, lookup="exact")
+            }
+            self.assertEqual(0, len(holiday_years.intersection(items)), name)
+        else:
+            self.assertFalse(holidays.get_named(name, lookup="exact"), name)
+            for dt in items:
+                self.assertNotIn(dt, holidays, dt)
 
     def assertNoHolidayName(self, name, *args):
         """Assert a holiday with a specific name doesn't exist."""
@@ -334,28 +336,6 @@ class TestCase(unittest.TestCase):
     def assertNoNonObservedHolidayName(self, name, *args):
         """Assert a non-observed holiday with a specific name doesn't exist."""
         self._assertNoHolidayName(name, "holidays_non_observed", *args)
-
-    def _assertNoHolidayNameInYears(self, name, instance_name, *args):
-        """Helper: assert a holiday with a specific name doesn't exist in
-        specified years."""
-        holidays, years = self._parse_arguments(
-            args,
-            instance_name=instance_name,
-        )
-        holiday_years = {
-            dt.year for dt in holidays.get_named(name, lookup="exact")
-        }
-        self.assertEqual(0, len(holiday_years.intersection(years)), name)
-
-    def assertNoHolidayNameInYears(self, name, *args):
-        """Assert a holiday with a specific name doesn't exist in
-        specified years."""
-        self._assertNoHolidayNameInYears(name, "holidays", *args)
-
-    def assertNoNonObservedHolidayNameInYears(self, name, *args):
-        """Assert a non-observed holiday with a specific name doesn't exist in
-        specified years."""
-        self._assertNoHolidayNameInYears(name, "holidays_non_observed", *args)
 
     # No holidays.
     def _assertNoHolidays(self, instance_name, *args):
@@ -376,23 +356,6 @@ class TestCase(unittest.TestCase):
     def assertNoNonObservedHolidays(self, *args):
         """Assert non-observed holidays dict is empty."""
         self._assertNoHolidays("holidays_non_observed", *args)
-
-    def _assert_l10n_test(self, language, holiday_list):
-        holidays = self.test_class(language=language)
-        for dt, name in holiday_list:
-            self.assertEqual(holidays[dt], name)
-
-    def assert_l10n_default(self, holiday_list):
-        for lng in (self.test_class.default_language, None, "invalid"):
-            self._assert_l10n_test(lng, holiday_list)
-        self.set_language("en_US")
-        self._assert_l10n_test(self.test_class.default_language, holiday_list)
-
-    def assert_l10n_language(self, language, holiday_list):
-        self._assert_l10n_test(language, holiday_list)
-        self.set_language(language)
-        for lng in (language, None, "invalid"):
-            self._assert_l10n_test(lng, holiday_list)
 
     def _assertLocalizedHolidays(self, localized_holidays, language=None):
         """Helper: assert localized holidays match expected names."""

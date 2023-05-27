@@ -162,39 +162,66 @@ class TestParaguay(TestCase):
                 self.assertIn(holiday, self.holidays)
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                py = Paraguay(language=language)
-                self.assertEqual(py["2022-01-01"], "Año Nuevo")
-                self.assertEqual(py["2022-12-25"], "Navidad")
-
-        run_tests((Paraguay.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((Paraguay.default_language,))
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Año Nuevo"),
+                ("2022-02-28", "Día de los Héroes de la Patria"),
+                ("2022-04-13", "Asueto de la Administración Pública"),
+                ("2022-04-14", "Jueves Santo"),
+                ("2022-04-15", "Viernes Santo"),
+                ("2022-04-17", "Día de Pascuas"),
+                ("2022-05-01", "Día del Trabajador"),
+                ("2022-05-02", "Asueto de la Administración Pública"),
+                ("2022-05-14", "Día de la Independencia Nacional"),
+                ("2022-05-15", "Día de la Independencia Nacional"),
+                ("2022-06-12", "Día de la Paz del Chaco"),
+                ("2022-08-15", "Día de la Fundación de Asunción"),
+                ("2022-10-03", "Día de la Batalla de Boquerón"),
+                ("2022-12-08", "Día de la Virgen de Caacupé"),
+                ("2022-12-25", "Navidad"),
+            ),
+        )
 
     def test_l10n_en_us(self):
-        en_us = "en_US"
-
-        py = Paraguay(language=en_us)
-        self.assertEqual(py["2022-01-01"], "New Year's Day")
-        self.assertEqual(py["2022-12-25"], "Christmas")
-
-        self.set_language(en_us)
-        for language in (None, en_us, "invalid"):
-            py = Paraguay(language=language)
-            self.assertEqual(py["2022-01-01"], "New Year's Day")
-            self.assertEqual(py["2022-12-25"], "Christmas")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "New Year's Day"),
+                ("2022-02-28", "Patriots Day"),
+                ("2022-04-13", "Public sector holiday"),
+                ("2022-04-14", "Maundy Thursday"),
+                ("2022-04-15", "Good Friday"),
+                ("2022-04-17", "Easter Day"),
+                ("2022-05-01", "Labour Day"),
+                ("2022-05-02", "Public sector holiday"),
+                ("2022-05-14", "Independence Day"),
+                ("2022-05-15", "Independence Day"),
+                ("2022-06-12", "Chaco Armistice Day"),
+                ("2022-08-15", "Asuncion Foundation's Day"),
+                ("2022-10-03", "Boqueron Battle Day"),
+                ("2022-12-08", "Caacupe Virgin Day"),
+                ("2022-12-25", "Christmas"),
+            ),
+            "en_US",
+        )
 
     def test_l10n_uk(self):
-        uk = "uk"
-
-        py = Paraguay(language=uk)
-        self.assertEqual(py["2022-01-01"], "Новий рік")
-        self.assertEqual(py["2022-12-25"], "Різдво Христове")
-
-        self.set_language(uk)
-        for language in (None, uk, "invalid"):
-            py = Paraguay(language=language)
-            self.assertEqual(py["2022-01-01"], "Новий рік")
-            self.assertEqual(py["2022-12-25"], "Різдво Христове")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Новий рік"),
+                ("2022-02-28", "День національних героїв"),
+                ("2022-04-13", "Вихідний державних установ"),
+                ("2022-04-14", "Великий четвер"),
+                ("2022-04-15", "Страсна пʼятниця"),
+                ("2022-04-17", "Великдень"),
+                ("2022-05-01", "День трудящих"),
+                ("2022-05-02", "Вихідний державних установ"),
+                ("2022-05-14", "День незалежності"),
+                ("2022-05-15", "День незалежності"),
+                ("2022-06-12", "День мирного договору в Чако"),
+                ("2022-08-15", "День заснування Асунсьйона"),
+                ("2022-10-03", "День битви за Бокерон"),
+                ("2022-12-08", "Успіння Пресвятої Богородиці"),
+                ("2022-12-25", "Різдво Христове"),
+            ),
+            "uk",
+        )

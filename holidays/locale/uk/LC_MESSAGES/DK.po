@@ -12,61 +12,60 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: holidays/countries/denmark.py:40
+#: ./holidays/countries/denmark.py:41
 msgid "Nytårsdag"
 msgstr "Новий рік"
 
 #. Holy Thursday.
-#: holidays/countries/denmark.py:43
+#: ./holidays/countries/denmark.py:44
 msgid "Skærtorsdag"
 msgstr "Великий четвер"
 
 #. Good Friday.
-#: holidays/countries/denmark.py:46
+#: ./holidays/countries/denmark.py:47
 msgid "Langfredag"
 msgstr "Страсна пʼятниця"
 
 #. Easter Sunday.
-#: holidays/countries/denmark.py:49
+#: ./holidays/countries/denmark.py:50
 msgid "Påskedag"
 msgstr "Великдень"
 
 #. Easter Monday.
-#: holidays/countries/denmark.py:52
+#: ./holidays/countries/denmark.py:53
 msgid "Anden påskedag"
 msgstr "Великодній понеділок"
 
-#: holidays/countries/denmark.py:58
+#: ./holidays/countries/denmark.py:59
 msgid "Store bededag"
 msgstr "День загальної молитви"
 
 #. Ascension Day.
-#: holidays/countries/denmark.py:62
+#: ./holidays/countries/denmark.py:63
 msgid "Kristi himmelfartsdag"
 msgstr "Вознесіння Господнє"
 
 #. Whit Sunday.
-#: holidays/countries/denmark.py:65
+#: ./holidays/countries/denmark.py:66
 msgid "Pinsedag"
 msgstr "Трійця"
 
 #. Whit Monday.
-#: holidays/countries/denmark.py:68
+#: ./holidays/countries/denmark.py:69
 msgid "Anden pinsedag"
 msgstr "День Святого Духа"
 
 #. Christmas Day.
-#: holidays/countries/denmark.py:71
+#: ./holidays/countries/denmark.py:72
 msgid "Juledag"
 msgstr "Різдво Христове"
 
-#. Second Christmas Day.
-#: holidays/countries/denmark.py:74
+#. Second Day of Christmas.
+#: ./holidays/countries/denmark.py:75
 msgid "Anden juledag"
 msgstr "Другий день Різдва"

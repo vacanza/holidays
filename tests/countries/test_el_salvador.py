@@ -27,7 +27,7 @@ class TestElSalvador(TestCase):
             name, (f"{year}-05-10" for year in range(2016, 2050))
         )
         self.assertNoHoliday(f"{year}-05-10" for year in range(2000, 2016))
-        self.assertNoHolidayNameInYears(name, range(2000, 2016))
+        self.assertNoHolidayName(name, range(2000, 2016))
 
     def test_fathers_day(self):
         name = "Fathers' Day"
@@ -35,13 +35,13 @@ class TestElSalvador(TestCase):
             name, (f"{year}-06-17" for year in range(2013, 2050))
         )
         self.assertNoHoliday(f"{year}-06-17" for year in range(2000, 2013))
-        self.assertNoHolidayNameInYears(name, range(2000, 2013))
+        self.assertNoHolidayName(name, range(2000, 2013))
 
     def test_ss_holidays(self):
         name1 = "San Salvador Day 1"
         name2 = "San Salvador Day 2"
-        self.assertNoHolidayNameInYears(name1, range(2000, 2050))
-        self.assertNoHolidayNameInYears(name2, range(2000, 2050))
+        self.assertNoHolidayName(name1, range(2000, 2050))
+        self.assertNoHolidayName(name2, range(2000, 2050))
         ss_holidays = ElSalvador(subdiv="SS", years=range(2000, 2050))
         self.assertHolidaysName(
             name1, ss_holidays, (f"{year}-08-03" for year in range(2016, 2050))

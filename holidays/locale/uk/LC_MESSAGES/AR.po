@@ -3,19 +3,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.20\n"
+"Project-Id-Version: Python Holidays 0.25\n"
 "POT-Creation-Date: 2023-03-02 00:39+0700\n"
-"PO-Revision-Date: 2023-02-20 19:13+0200\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2023-05-03 18:36-0700\n"
+"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3\n"
 
 #: ./holidays/countries/argentina.py:69
 msgid "Feriado con fines turísticos"
@@ -43,11 +42,6 @@ msgstr "200-річчя битви при Сальті"
 #: ./holidays/countries/argentina.py:82
 msgid "Censo nacional 2022"
 msgstr "День національного перепису 2022"
-
-#: ./holidays/countries/argentina.py:165 ./holidays/countries/argentina.py:168
-#, c-format
-msgid "%s (Observado)"
-msgstr "%s (вихідний)"
 
 #: ./holidays/countries/argentina.py:178
 msgid "Año Nuevo"
@@ -126,3 +120,8 @@ msgstr "День Колумба"
 #: ./holidays/countries/argentina.py:329
 msgid "Día de la Soberanía Nacional"
 msgstr "День національного суверенітету"
+
+#: ./holidays/countries/argentina.py:165 ./holidays/countries/argentina.py:168
+#, c-format
+msgid "%s (Observado)"
+msgstr "%s (вихідний)"

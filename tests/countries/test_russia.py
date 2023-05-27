@@ -55,26 +55,42 @@ class TestRussia(TestCase):
         )
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                ru = Russia(language=language)
-                self.assertEqual(ru["2022-01-01"], "Новогодние каникулы")
-                self.assertEqual(ru["2022-01-07"], "Рождество Христово")
-
-        run_tests((Russia.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((Russia.default_language,))
+        self.assertLocalizedHolidays(
+            (
+                ("2018-01-01", "Новогодние каникулы"),
+                ("2018-01-02", "Новогодние каникулы"),
+                ("2018-01-03", "Новогодние каникулы"),
+                ("2018-01-04", "Новогодние каникулы"),
+                ("2018-01-05", "Новогодние каникулы"),
+                ("2018-01-06", "Новогодние каникулы"),
+                ("2018-01-07", "Рождество Христово"),
+                ("2018-01-08", "Новогодние каникулы"),
+                ("2018-02-23", "День защитника Отечества"),
+                ("2018-03-08", "Международный женский день"),
+                ("2018-05-01", "Праздник Весны и Труда"),
+                ("2018-05-09", "День Победы"),
+                ("2018-06-12", "День России"),
+                ("2018-11-04", "День народного единства"),
+            ),
+        )
 
     def test_l10n_en_us(self):
-        en_us = "en_US"
-
-        ru = Russia(language=en_us)
-        self.assertEqual(ru["2022-01-01"], "New Year Holidays")
-        self.assertEqual(ru["2022-01-07"], "Orthodox Christmas Day")
-
-        self.set_language(en_us)
-        for language in (None, en_us, "invalid"):
-            ru = Russia(language=language)
-            self.assertEqual(ru["2022-01-01"], "New Year Holidays")
-            self.assertEqual(ru["2022-01-07"], "Orthodox Christmas Day")
+        self.assertLocalizedHolidays(
+            (
+                ("2018-01-01", "New Year Holidays"),
+                ("2018-01-02", "New Year Holidays"),
+                ("2018-01-03", "New Year Holidays"),
+                ("2018-01-04", "New Year Holidays"),
+                ("2018-01-05", "New Year Holidays"),
+                ("2018-01-06", "New Year Holidays"),
+                ("2018-01-07", "Orthodox Christmas Day"),
+                ("2018-01-08", "New Year Holidays"),
+                ("2018-02-23", "Fatherland Defender's Day"),
+                ("2018-03-08", "International Women's Day"),
+                ("2018-05-01", "Holiday of Spring and Labor"),
+                ("2018-05-09", "Victory Day"),
+                ("2018-06-12", "Russia's Day"),
+                ("2018-11-04", "Unity Day"),
+            ),
+            "en_US",
+        )
