@@ -67,7 +67,7 @@ class TestBelize(TestCase):
             f"{name} (Observed)", (f"{year}-01-16" for year in years_observed)
         )
         self.assertNoHoliday(f"{year}-01-15" for year in range(1982, 2021))
-        self.assertNoHolidayNameInYears(name, range(1982, 2021))
+        self.assertNoHolidayName(name, range(1982, 2021))
 
     def test_national_heroes_and_benefactors_day(self):
         name = "National Heroes and Benefactors Day"
@@ -157,7 +157,7 @@ class TestBelize(TestCase):
         self.assertNonObservedHolidaysName(
             name, (f"{year}-05-24" for year in range(1982, 2022))
         )
-        self.assertNoHolidayNameInYears(name, range(2022, 2050))
+        self.assertNoHolidayName(name, range(2022, 2050))
 
     def test_emancipation_day(self):
         name = "Emancipation Day"
@@ -171,7 +171,7 @@ class TestBelize(TestCase):
         self.assertNonObservedHolidaysName(
             name, (f"{year}-08-01" for year in range(2021, 2050))
         )
-        self.assertNoHolidayNameInYears(name, range(1982, 2021))
+        self.assertNoHolidayName(name, range(1982, 2021))
 
     def test_saint_georges_caye_day(self):
         name = "Saint George's Caye Day"
@@ -247,8 +247,8 @@ class TestBelize(TestCase):
         self.assertNonObservedHolidaysName(
             name2, (f"{year}-10-12" for year in range(2021, 2050))
         )
-        self.assertNoHolidayNameInYears(name1, range(2021, 2050))
-        self.assertNoHolidayNameInYears(name2, range(1982, 2021))
+        self.assertNoHolidayName(name1, range(2021, 2050))
+        self.assertNoHolidayName(name2, range(1982, 2021))
 
     def test_garifuna_settlement_day(self):
         name = "Garifuna Settlement Day"

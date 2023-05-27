@@ -35,15 +35,13 @@ class TestAlbania(TestCase):
                 f"{year}-12-25",
             )
 
-        self.assertNoHolidayNameInYears("Summer Day", range(1990, 2004))
+        self.assertNoHolidayName("Summer Day", range(1990, 2004))
         self.assertHoliday(f"{year}-03-14" for year in range(2004, 2050))
 
-        self.assertNoHolidayNameInYears("Nevruz", range(1990, 1996))
+        self.assertNoHolidayName("Nevruz", range(1990, 1996))
         self.assertHoliday(f"{year}-03-22" for year in range(1996, 2050))
 
-        self.assertNoHolidayNameInYears(
-            "National Youth Day", range(1990, 2009)
-        )
+        self.assertNoHolidayName("National Youth Day", range(1990, 2009))
         self.assertHoliday(f"{year}-12-08" for year in range(2009, 2050))
 
     def test_easter(self):
@@ -95,12 +93,10 @@ class TestAlbania(TestCase):
         self.assertHolidaysName(
             name, (f"{year}-10-19" for year in range(2004, 2018))
         )
-        self.assertNoHolidayNameInYears(
-            name, range(1990, 2004), range(2018, 2050)
-        )
+        self.assertNoHolidayName(name, range(1990, 2004), range(2018, 2050))
 
         name = "Mother Teresa Canonization Day"
-        self.assertNoHolidayNameInYears(name, range(1990, 2018))
+        self.assertNoHolidayName(name, range(1990, 2018))
         self.assertHolidaysName(
             name, (f"{year}-09-05" for year in range(2018, 2050))
         )

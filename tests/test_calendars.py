@@ -17,10 +17,10 @@ from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import FEB, MAR, MAY, JUN, JUL, AUG, OCT
 
 
-class TestThaiLuniSolarCalendar(unittest.TestCase):
+class TestThaiLunisolarCalendar(unittest.TestCase):
     def setUp(self) -> None:
         super().setUpClass()
-        self.calendar = calendars._ThaiLuniSolar()
+        self.calendar = calendars._ThaiLunisolar()
 
     def test_asarnha_bucha_date(self):
         asarnha_bucha_year_date = {

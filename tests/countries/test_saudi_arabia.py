@@ -59,9 +59,7 @@ class TestSaudiArabia(TestCase):
 
     def test_national_day(self):
         self.assertHoliday(f"{year}-09-23" for year in range(2005, 2050))
-        self.assertNoHolidayNameInYears(
-            "National Day Holiday", range(1950, 2005)
-        )
+        self.assertNoHolidayName("National Day Holiday", range(1950, 2005))
 
     def test_national_day_observed(self):
         dt = (
@@ -87,9 +85,7 @@ class TestSaudiArabia(TestCase):
 
     def test_founding_day(self):
         self.assertHoliday(f"{year}-02-22" for year in range(2022, 2050))
-        self.assertNoHolidayNameInYears(
-            "Founding Day Holiday", range(1950, 2022)
-        )
+        self.assertNoHolidayName("Founding Day Holiday", range(1950, 2022))
 
     def test_founding_day_observed(self):
         dt = (

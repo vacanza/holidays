@@ -48,7 +48,7 @@ class TestKenya(TestCase):
 
     def test_madaraka_day(self):
         self.assertNoHoliday(f"{year}-06-01" for year in range(1963, 2010))
-        self.assertNoHolidayNameInYears("Madaraka Day", range(1963, 2010))
+        self.assertNoHolidayName("Madaraka Day", range(1963, 2010))
         self.assertHoliday(f"{year}-06-01" for year in range(2010, 2050))
 
     def test_utamaduni_day(self):
@@ -56,18 +56,14 @@ class TestKenya(TestCase):
         name2 = "Utamaduni Day"
         self.assertNoHoliday(f"{year}-10-10" for year in range(1963, 2002))
         self.assertNoHoliday(f"{year}-10-10" for year in range(2010, 2018))
-        self.assertNoHolidayNameInYears(
-            name1, range(1963, 2002), range(2010, 2018)
-        )
-        self.assertNoHolidayNameInYears(
-            name2, range(1963, 2002), range(2010, 2021)
-        )
+        self.assertNoHolidayName(name1, range(1963, 2002), range(2010, 2018))
+        self.assertNoHolidayName(name2, range(1963, 2002), range(2010, 2021))
         self.assertHoliday(f"{year}-10-10" for year in range(2002, 2010))
         self.assertHoliday(f"{year}-10-10" for year in range(2018, 2050))
 
     def test_mashujaa_day(self):
-        self.assertNoHolidayNameInYears("Mashujaa Day", range(1963, 2010))
-        self.assertNoHolidayNameInYears("Kenyatta Day", range(2010, 2050))
+        self.assertNoHolidayName("Mashujaa Day", range(1963, 2010))
+        self.assertNoHolidayName("Kenyatta Day", range(2010, 2050))
 
     def test_easter(self):
         self.assertHoliday(

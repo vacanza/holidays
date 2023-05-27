@@ -69,7 +69,7 @@ class VaticanCity(HolidayBase, ChristianHolidays):
             # Name day for the civilian name of Pope Francis
             # (Jorge Mario Bergoglio)
             # Saint George's Day.
-            self._add_holiday("Saint George's Day", APR, 23)
+            self._add_saint_georges_day("Saint George's Day")
 
         # Saint Joseph the Worker's Day.
         self._add_holiday("Saint Joseph the Worker's Day", MAY, 1)

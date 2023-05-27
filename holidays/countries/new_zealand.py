@@ -12,38 +12,37 @@
 from datetime import date
 from datetime import timedelta as td
 
-from dateutil.easter import easter
-
 from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
 from holidays.constants import JAN, FEB, MAR, APR, JUN, JUL, SEP, OCT, NOV
 from holidays.constants import DEC, MON, TUE, WED
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class NewZealand(HolidayBase):
+class NewZealand(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "NZ"
     special_holidays = {2022: ((SEP, 26, "Queen Elizabeth II Memorial Day"),)}
     subdivisions = (
         # https://en.wikipedia.org/wiki/ISO_3166-2:NZ
-        "AUK",  # Auckland / Tāmaki-makau-rau
+        "AUK",  # Auckland / Tāmaki-makaurau
+        "BOP",  # Bay of Plenty / Toi Moana
         "CAN",  # Canterbury / Waitaha
         "CIT",  # Chatham Islands Territory / Wharekauri
+        "GIS",  # Gisborne / Te Tairāwhiti
         "HKB",  # Hawke's Bay / Te Matau a Māui
         "MBH",  # Marlborough
+        "MWT",  # Manawatū Whanganui
         "NSN",  # Nelson / Whakatū
         "NTL",  # Northland / Te Tai tokerau
         "OTA",  # Otago / Ō Tākou
-        "STL",  # Southland / Murihiku
+        "STL",  # Southland / Te Taiao Tonga
+        "TAS",  # Tasman / Te tai o Aorere
         "TKI",  # Taranaki
-        "WGN",  # Wellington / Te Whanga-nui-a-Tara
-        "WTC",  # West Coast / Te Taihau ā uru
-        "South Canterbury",
-        # "BOP",  # Bay of Plenty / Te Moana a Toi Te Huatahi
-        # "GIS",  # Gisborne / Tūranga nui a Kiwa
-        # "MWT",  # Manawatu-Wanganui
-        # "TAS",  # Tasman
-        # "WKO",  # Waikato
+        "WGN",  # Greater Wellington / Te Pane Matua Taiao
+        "WKO",  # Waikato
+        "WTC",  # West Coast / Te Tai o Poutini
     )
+
     _deprecated_subdivisions = (
         "Auckland",
         "Canterbury",
@@ -51,9 +50,11 @@ class NewZealand(HolidayBase):
         "Hawke's Bay",
         "Marlborough",
         "Nelson",
+        "New Plymouth",
         "Northland",
         "Otago",
         "South Canterbury",
+        "STC",
         "Southland",
         "Taranaki",
         "Waitangi",
@@ -63,7 +64,8 @@ class NewZealand(HolidayBase):
         "WTL",  # Correct code is WTC
     )
 
-    def _get_nearest_monday(self, dt: date) -> date:
+    def _get_nearest_monday(self, *args) -> date:
+        dt = date(self._year, *args)
         return _get_nth_weekday_from(
             1 if self._is_friday(dt) or self._is_weekend(dt) else -1, MON, dt
         )
@@ -73,7 +75,12 @@ class NewZealand(HolidayBase):
             obs_date = _get_nth_weekday_from(1, MON, dt)
             if self.get(obs_date):
                 obs_date += td(days=+1)
-            self[obs_date] = f"{self[dt]} (Observed)"
+            self._add_holiday("%s (Observed)" % self[dt], obs_date)
+
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         # Bank Holidays Act 1873
@@ -93,56 +100,50 @@ class NewZealand(HolidayBase):
         super()._populate(year)
 
         # New Year's Day
-        jan1 = date(year, JAN, 1)
-        self[jan1] = "New Year's Day"
+        jan_1 = self._add_new_years_day("New Year's Day")
+        jan_2 = self._add_new_years_day_two("Day after New Year's Day")
 
-        jan2 = date(year, JAN, 2)
-        self[jan2] = "Day after New Year's Day"
-        self._add_observed(jan1)
-        self._add_observed(jan2)
+        self._add_observed(jan_1)
+        self._add_observed(jan_2)
 
         # Waitangi Day
         if year >= 1974:
-            name = "New Zealand Day"
-            if year >= 1977:
-                name = "Waitangi Day"
-            feb6 = date(year, FEB, 6)
-            self[feb6] = name
+            name = "Waitangi Day" if year >= 1977 else "New Zealand Day"
+            feb_6 = self._add_holiday(name, FEB, 6)
             if year >= 2014:
-                self._add_observed(feb6)
+                self._add_observed(feb_6)
 
         # Anzac Day
         if year >= 1921:
-            apr25 = date(year, APR, 25)
-            self[apr25] = "Anzac Day"
+            apr_25 = self._add_holiday("Anzac Day", APR, 25)
             if year >= 2014:
-                self._add_observed(apr25)
+                self._add_observed(apr_25)
 
         # Easter
-        easter_date = easter(year)
-        self[easter_date + td(days=-2)] = "Good Friday"
-        self[easter_date + td(days=+1)] = "Easter Monday"
+        self._add_good_friday("Good Friday")
+        self._add_easter_monday("Easter Monday")
 
         # Sovereign's Birthday
         if year >= 1902:
-            name = "King's Birthday"
-            if 1952 <= year <= 2022:
-                name = "Queen's Birthday"
+            name = (
+                "Queen's Birthday"
+                if 1952 <= year <= 2022
+                else "King's Birthday"
+            )
             if year == 1952:
-                self[date(year, JUN, 2)] = name  # Elizabeth II
+                dt = date(year, JUN, 2)  # Elizabeth II
             elif year >= 1938:
-                self[
-                    _get_nth_weekday_of_month(1, MON, JUN, year)
-                ] = name  # EII & GVI
+                dt = _get_nth_weekday_of_month(1, MON, JUN, year)  # EII & GVI
             elif year == 1937:
-                self[date(year, JUN, 9)] = name  # George VI
+                dt = date(year, JUN, 9)  # George VI
             elif year == 1936:
-                self[date(year, JUN, 23)] = name  # Edward VIII
+                dt = date(year, JUN, 23)  # Edward VIII
             elif year >= 1912:
-                self[date(year, JUN, 3)] = name  # George V
+                dt = date(year, JUN, 3)  # George V
             else:
                 # http://paperspast.natlib.govt.nz/cgi-bin/paperspast?a=d&d=NZH19091110.2.67
-                self[date(year, NOV, 9)] = name  # Edward VII
+                dt = date(year, NOV, 9)  # Edward VII
+            self._add_holiday(name, dt)
 
         # Matariki
         dates_obs = {
@@ -179,96 +180,137 @@ class NewZealand(HolidayBase):
             2052: (JUN, 21),
         }
         if year in dates_obs:
-            self[date(year, *dates_obs[year])] = "Matariki"
+            self._add_holiday("Matariki", *dates_obs[year])
 
         # Labour Day
-        name = "Labour Day"
-        if year >= 1910:
-            self[_get_nth_weekday_of_month(4, MON, OCT, year)] = name
-        elif year >= 1900:
-            self[_get_nth_weekday_of_month(2, WED, OCT, year)] = name
+        if year >= 1900:
+            dt = (
+                _get_nth_weekday_of_month(4, MON, OCT, year)
+                if year >= 1910
+                else _get_nth_weekday_of_month(2, WED, OCT, year)
+            )
+            self._add_holiday("Labour Day", dt)
 
         # Christmas Day
-        dec25 = date(year, DEC, 25)
-        self[dec25] = "Christmas Day"
+        dec_25 = self._add_christmas_day("Christmas Day")
 
         # Boxing Day
-        dec26 = date(year, DEC, 26)
-        self[dec26] = "Boxing Day"
-        self._add_observed(dec25)
-        self._add_observed(dec26)
+        dec_26 = self._add_christmas_day_two("Boxing Day")
+        self._add_observed(dec_25)
+        self._add_observed(dec_26)
 
-        # Province Anniversary Day
-        if self.subdiv in {"Auckland", "AUK", "Northland", "NTL"}:
-            if 1964 <= year <= 1973 and self.subdiv in {"Northland", "NTL"}:
-                name = "Waitangi Day"
-                dt = date(year, FEB, 6)
-            else:
-                name = "Auckland Anniversary Day"
-                dt = date(year, JAN, 29)
-            self[self._get_nearest_monday(dt)] = name
+        if self.subdiv == "Auckland":
+            self._add_subdiv_auk_holidays()
+        elif self.subdiv == "Canterbury":
+            self._add_subdiv_can_holidays()
+        elif self.subdiv == "Chatham Islands":
+            self._add_subdiv_cit_holidays()
+        elif self.subdiv == "Hawke's Bay":
+            self._add_subdiv_hkb_holidays()
+        elif self.subdiv == "Marlborough":
+            self._add_subdiv_mbh_holidays()
+        elif self.subdiv == "Nelson":
+            self._add_subdiv_nsn_holidays()
+        elif self.subdiv == "Northland":
+            self._add_subdiv_ntl_holidays()
+        elif self.subdiv == "Otago":
+            self._add_subdiv_ota_holidays()
+        elif self.subdiv in {"New Plymouth", "Taranaki"}:
+            self._add_subdiv_tki_holidays()
+        elif self.subdiv == "South Canterbury":
+            self._add_subdiv_stc_holidays()
+        elif self.subdiv == "Southland":
+            self._add_subdiv_stl_holidays()
+        elif self.subdiv == "Wellington":
+            self._add_subdiv_wgn_holidays()
+        elif self.subdiv in {"West Coast", "WTL", "Westland"}:
+            self._add_subdiv_wtc_holidays()
 
-        elif self.subdiv in {"New Plymouth", "Taranaki", "TKI"}:
-            self[
-                _get_nth_weekday_of_month(2, MON, MAR, year)
-            ] = "Taranaki Anniversary Day"
+    def _add_subdiv_auk_holidays(self):
+        self._add_holiday(
+            "Auckland Anniversary Day",
+            self._get_nearest_monday(JAN, 29),
+        )
 
-        elif self.subdiv in {"Hawke's Bay", "HKB"}:
-            self[
-                _get_nth_weekday_of_month(4, MON, OCT, year) + td(days=-3)
-            ] = "Hawke's Bay Anniversary Day"
+    def _add_subdiv_can_holidays(self):
+        self._add_holiday(
+            "Canterbury Anniversary Day",
+            _get_nth_weekday_of_month(1, TUE, NOV, self._year) + td(days=+10),
+        )
 
-        elif self.subdiv in {"WGN", "Wellington"}:
-            self[
-                self._get_nearest_monday(date(year, JAN, 22))
-            ] = "Wellington Anniversary Day"
+    def _add_subdiv_cit_holidays(self):
+        self._add_holiday(
+            "Chatham Islands Anniversary Day",
+            self._get_nearest_monday(NOV, 30),
+        )
 
-        elif self.subdiv in {"Marlborough", "MBH"}:
-            self[
-                _get_nth_weekday_of_month(4, MON, OCT, year) + td(days=+7)
-            ] = "Marlborough Anniversary Day"
+    def _add_subdiv_hkb_holidays(self):
+        self._add_holiday(
+            "Hawke's Bay Anniversary Day",
+            _get_nth_weekday_of_month(4, MON, OCT, self._year) + td(days=-3),
+        )
 
-        elif self.subdiv in {"Nelson", "NSN"}:
-            self[
-                self._get_nearest_monday(date(year, FEB, 1))
-            ] = "Nelson Anniversary Day"
+    def _add_subdiv_mbh_holidays(self):
+        self._add_holiday(
+            "Marlborough Anniversary Day",
+            _get_nth_weekday_of_month(4, MON, OCT, self._year) + td(days=+7),
+        )
 
-        elif self.subdiv in {"CAN", "Canterbury"}:
-            self[
-                _get_nth_weekday_of_month(1, TUE, NOV, year) + td(days=+10)
-            ] = "Canterbury Anniversary Day"
+    def _add_subdiv_nsn_holidays(self):
+        self._add_holiday(
+            "Nelson Anniversary Day",
+            self._get_nearest_monday(FEB, 1),
+        )
 
-        elif self.subdiv in {"South Canterbury", "STC"}:
-            self[
-                _get_nth_weekday_of_month(4, MON, SEP, year)
-            ] = "South Canterbury Anniversary Day"
+    def _add_subdiv_ntl_holidays(self):
+        if 1964 <= self._year <= 1973:
+            name = "Waitangi Day"
+            dt = (FEB, 6)
+        else:
+            name = "Auckland Anniversary Day"
+            dt = (JAN, 29)
+        self._add_holiday(name, self._get_nearest_monday(*dt))
 
-        elif self.subdiv in {"WTC", "West Coast", "WTL", "Westland"}:
-            name = "West Coast Anniversary Day"
-            # Observance varies?!?!
-            if year == 2005:  # special case?!?!
-                self[date(year, DEC, 5)] = name
-            else:
-                self[self._get_nearest_monday(date(year, DEC, 1))] = name
+    def _add_subdiv_ota_holidays(self):
+        # there is no easily determined single day of local observance?!?!
+        dt = self._get_nearest_monday(MAR, 23)
+        if dt == self._easter_sunday + td(days=+1):  # Avoid Easter Monday
+            dt += td(days=+1)
+        self._add_holiday("Otago Anniversary Day", dt)
 
-        elif self.subdiv in {"OTA", "Otago"}:
-            # there is no easily determined single day of local observance?!?!
-            dt = self._get_nearest_monday(date(year, MAR, 23))
-            if dt == easter_date + td(days=+1):  # Avoid Easter Monday
-                dt += td(days=+1)
-            self[dt] = "Otago Anniversary Day"
+    def _add_subdiv_stc_holidays(self):
+        self._add_holiday(
+            "South Canterbury Anniversary Day",
+            _get_nth_weekday_of_month(4, MON, SEP, self._year),
+        )
 
-        elif self.subdiv in {"STL", "Southland"}:
-            name = "Southland Anniversary Day"
-            if year >= 2012:
-                self[easter_date + td(days=+2)] = name
-            else:
-                self[self._get_nearest_monday(date(year, JAN, 17))] = name
+    def _add_subdiv_stl_holidays(self):
+        dt = (
+            self._easter_sunday + td(days=+2)
+            if self._year >= 2012
+            else self._get_nearest_monday(JAN, 17)
+        )
+        self._add_holiday("Southland Anniversary Day", dt)
 
-        elif self.subdiv in {"CIT", "Chatham Islands"}:
-            self[
-                self._get_nearest_monday(date(year, NOV, 30))
-            ] = "Chatham Islands Anniversary Day"
+    def _add_subdiv_tki_holidays(self):
+        self._add_holiday(
+            "Taranaki Anniversary Day",
+            _get_nth_weekday_of_month(2, MON, MAR, self._year),
+        )
+
+    def _add_subdiv_wgn_holidays(self):
+        self._add_holiday(
+            "Wellington Anniversary Day",
+            self._get_nearest_monday(JAN, 22),
+        )
+
+    def _add_subdiv_wtc_holidays(self):
+        dt = (
+            date(self._year, DEC, 5)
+            if self._year == 2005  # special case?!?!
+            else self._get_nearest_monday(DEC, 1)
+        )
+        self._add_holiday("West Coast Anniversary Day", dt)
 
 
 class NZ(NewZealand):
