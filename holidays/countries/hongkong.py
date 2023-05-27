@@ -110,7 +110,7 @@ class HongKong(
 
         # Ching Ming Festival
         name = "Ching Ming Festival"
-        ching_ming_date = self._ching_ming_date
+        ching_ming_date = self._qingming_date
         if self.observed and ching_ming_date == easter_monday_date:
             self._add_holiday(
                 f"{day_following}{name}", ching_ming_date + td(days=+1)

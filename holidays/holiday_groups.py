@@ -563,7 +563,7 @@ class ChineseCalendarHolidays:
         return self._chinese_calendar.lunar_new_year_date(self._year)[0]
 
     @property
-    def _ching_ming_date(self):
+    def _qingming_date(self):
         day = 5
         if (self._year % 4 < 1) or (self._year % 4 < 2 and self._year >= 2009):
             day = 4
@@ -689,15 +689,15 @@ class ChineseCalendarHolidays:
             days_delta=+4,
         )
 
-    def _add_ching_ming_festival(self, name) -> date:
+    def _add_qingming_festival(self, name) -> date:
         """
-        Add Ching Ming Festival (15th day after the Spring Equinox).
+        Add Qingming Festival (15th day after the Spring Equinox).
 
         The Qingming festival or Ching Ming Festival, also known as
         Tomb-Sweeping Day in English, is a traditional Chinese festival.
         https://en.wikipedia.org/wiki/Qingming_Festival
         """
-        return self._add_holiday(name, self._ching_ming_date)
+        return self._add_holiday(name, self._qingming_date)
 
     def _add_double_ninth_festival(self, name) -> Optional[date]:
         """
