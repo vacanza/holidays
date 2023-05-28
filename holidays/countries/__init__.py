@@ -52,6 +52,7 @@ from .eswatini import Eswatini, SZ, SZW, Swaziland
 from .ethiopia import Ethiopia, ET, ETH
 from .finland import Finland, FI, FIN
 from .france import France, FR, FRA
+from .gabon import Gabon, GA, GAB
 from .georgia import Georgia, GE, GEO
 from .germany import Germany, DE, DEU
 from .greece import Greece, GR, GRC
