@@ -36,20 +36,22 @@ msgstr ""
 msgid "Viernes Santo"
 msgstr ""
 
+#. Labour Day.
 #: ./holidays/countries/cuba.py:79
 msgid "Día Internacional de los Trabajadores"
 msgstr ""
 
 #. Commemoration of the Assault of the Moncada garrison.
-#: ./holidays/countries/cuba.py:84 ./holidays/countries/cuba.py:90
+#: ./holidays/countries/cuba.py:83 ./holidays/countries/cuba.py:89
 msgid "Conmemoración del asalto a Moncada"
 msgstr ""
 
 #. Day of the National Rebellion.
-#: ./holidays/countries/cuba.py:87
+#: ./holidays/countries/cuba.py:86
 msgid "Día de la Rebeldía Nacional"
 msgstr ""
 
+#. Independence Day.
 #: ./holidays/countries/cuba.py:94
 msgid "Inicio de las Guerras de Independencia"
 msgstr ""
