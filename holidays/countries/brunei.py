@@ -105,19 +105,51 @@ class Brunei(
 
         _add_observed(self._add_chinese_new_years_day(tr("Tahun Baru Cina")))
 
-        # Isra Mi'raj
-        # Israk dan Mikraj
-        # Status: In-Use.
-
-        for dt in self._add_isra_and_miraj_day(tr("Israk dan Mikraj")):
-            _add_observed(dt)
-
         # National Day
         # Hari Kebangsaan
         # Status: In-Use.
         # Starts in 1984.
 
         _add_observed(self._add_holiday(tr("Hari Kebangsaan"), FEB, 23))
+
+        # Armed Forces Day
+        # Hari Angkatan Bersenjata Diraja Brunei
+        # Status: In-Use.
+        # Starts in 1984.
+        # Commemorates the formation of Royal Brunei Malay Regiment in 1961.
+
+        _add_observed(
+            self._add_holiday(
+                tr("Hari Angkatan Bersenjata Diraja Brunei"), MAY, 31
+            )
+        )
+
+        # Sultan Hassanal Bolkiah's Birthday
+        # Hari Keputeraan KDYMM Sultan Brunei
+        # Status: In-Use.
+        # Started in 1968.
+
+        _add_observed(
+            self._add_holiday(
+                tr("Hari Keputeraan KDYMM Sultan Brunei"), JUL, 15
+            )
+        )
+
+        # Christmas Day.
+        # Hari Natal
+        # Status: In-Use.
+
+        _add_observed(self._add_christmas_day(tr("Hari Natal")))
+
+        # Islamic Holidays are placed after Gregorian holidays to prevent
+        # the duplication of observed tags. - see #1168
+
+        # Isra Mi'raj
+        # Israk dan Mikraj
+        # Status: In-Use.
+
+        for dt in self._add_isra_and_miraj_day(tr("Israk dan Mikraj")):
+            _add_observed(dt)
 
         # First Day of Ramadan
         # Hari Pertama Berpuasa
@@ -169,35 +201,12 @@ class Brunei(
                 elif self._is_thursday(dt):
                     self._add_holiday(aidil_fitri_in_lieu, dt + td(days=+4))
 
-        # Armed Forces Day
-        # Hari Angkatan Bersenjata Diraja Brunei
-        # Status: In-Use.
-        # Starts in 1984.
-        # Commemorates the formation of Royal Brunei Malay Regiment in 1961.
-
-        _add_observed(
-            self._add_holiday(
-                tr("Hari Angkatan Bersenjata Diraja Brunei"), MAY, 31
-            )
-        )
-
         # Eid al-Adha
         # Hari Raya Aidil Adha
         # Status: In-Use.
 
         for dt in self._add_eid_al_adha_day(tr("Hari Raya Aidil Adha")):
             _add_observed(dt)
-
-        # Sultan Hassanal Bolkiah's Birthday
-        # Hari Keputeraan KDYMM Sultan Brunei
-        # Status: In-Use.
-        # Started in 1968.
-
-        _add_observed(
-            self._add_holiday(
-                tr("Hari Keputeraan KDYMM Sultan Brunei"), JUL, 15
-            )
-        )
 
         # Islamic New Year
         # Awal Tahun Hijrah
@@ -212,12 +221,6 @@ class Brunei(
 
         for dt in self._add_mawlid_day(tr("Maulidur Rasul")):
             _add_observed(dt)
-
-        # Christmas Day.
-        # Hari Natal
-        # Status: In-Use.
-
-        _add_observed(self._add_christmas_day(tr("Hari Natal")))
 
         # Former Holidays
         # This section is here should we extend our calendar coverage later on.
