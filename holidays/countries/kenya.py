@@ -47,40 +47,52 @@ class Kenya(HolidayBase, ChristianHolidays, InternationalHolidays):
             if self.observed and self._is_sunday(dt):
                 in_lieu = dt + td(days=days)
                 for name in self.get_list(dt):
-                    self._add_holiday(self.tr("%s (Observed)") % name, in_lieu)
+                    self._add_holiday("%s (Observed)" % name, in_lieu)
 
         if year <= 1962:
             return None
 
         super()._populate(year)
 
-        # Public holidays
+        # New Year's Day
         jan_1 = self._add_new_years_day("New Year's Day")
         _add_with_observed(jan_1)
 
+        # Good Friday
         self._add_good_friday("Good Friday")
+
+        # Easter Monday
         self._add_easter_monday("Easter Monday")
 
+        # Labour Day
         may_1 = self._add_labor_day("Labour Day")
         _add_with_observed(may_1)
 
         if year >= 2010:
-            _add_with_observed(date(year, JUN, 1), "Madaraka Day")
+            # Mandaraka Day
+            jun_1 = self._add_holiday("Madaraka Day", JUN, 1)
+            _add_with_observed(jun_1)
 
         if 2002 <= year <= 2009 or year >= 2018:
-            _add_with_observed(
-                date(year, OCT, 10),
-                "Utamaduni Day" if year >= 2021 else "Moi Day",
-            )
+            # Utamaduni/Moi Day
+            name = "Utamaduni Day" if year >= 2021 else "Moi Day"
+            oct_10 = self._add_holiday(name, OCT, 10)
+            _add_with_observed(oct_10)
 
-        _add_with_observed(
-            date(year, OCT, 20),
-            "Mashujaa Day" if year >= 2010 else "Kenyatta Day",
-        )
+        # Mashuja/Kenyatta Day
+        name = "Mashujaa Day" if year >= 2010 else "Kenyatta Day"
+        oct_20 = self._add_holiday(name, OCT, 20)
+        _add_with_observed(oct_20)
 
-        _add_with_observed(date(year, DEC, 12), "Jamhuri Day")
+        # Jamhuri Day
+        dec_12 = self._add_holiday("Jamhuri Day", DEC, 12)
+        _add_with_observed(dec_12)
+
+        # Christmas Day
         dec_25 = self._add_christmas_day("Christmas Day")
         _add_with_observed(dec_25, days=+2)
+
+        # Boxing Day
         dec_26 = self._add_christmas_day_two("Boxing Day")
         _add_with_observed(dec_26)
 
