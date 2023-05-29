@@ -43,11 +43,11 @@ class Kenya(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
-        def _add_with_observed(dt: date, days: int = +1) -> None:
+        def _add_observed(dt: date, days: int = +1) -> None:
             if self.observed and self._is_sunday(dt):
-                in_lieu = dt + td(days=days)
-                for name in self.get_list(dt):
-                    self._add_holiday("%s (Observed)" % name, in_lieu)
+                self._add_holiday(
+                    "%s (Observed)" % self[dt], dt + td(days=days)
+                )
 
         if year <= 1962:
             return None
@@ -55,8 +55,7 @@ class Kenya(HolidayBase, ChristianHolidays, InternationalHolidays):
         super()._populate(year)
 
         # New Year's Day
-        jan_1 = self._add_new_years_day("New Year's Day")
-        _add_with_observed(jan_1)
+        _add_observed(self._add_new_years_day("New Year's Day"))
 
         # Good Friday
         self._add_good_friday("Good Friday")
@@ -65,36 +64,39 @@ class Kenya(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_monday("Easter Monday")
 
         # Labour Day
-        may_1 = self._add_labor_day("Labour Day")
-        _add_with_observed(may_1)
+        _add_observed(self._add_labor_day("Labour Day"))
 
         if year >= 2010:
             # Mandaraka Day
-            jun_1 = self._add_holiday("Madaraka Day", JUN, 1)
-            _add_with_observed(jun_1)
+            _add_observed(self._add_holiday("Madaraka Day", JUN, 1))
 
         if 2002 <= year <= 2009 or year >= 2018:
-            # Utamaduni/Moi Day
-            name = "Utamaduni Day" if year >= 2021 else "Moi Day"
-            oct_10 = self._add_holiday(name, OCT, 10)
-            _add_with_observed(oct_10)
+            _add_observed(
+                self._add_holiday(
+                    # Utamaduni/Moi Day
+                    "Utamaduni Day" if year >= 2021 else "Moi Day",
+                    OCT,
+                    10,
+                )
+            )
 
-        # Mashuja/Kenyatta Day
-        name = "Mashujaa Day" if year >= 2010 else "Kenyatta Day"
-        oct_20 = self._add_holiday(name, OCT, 20)
-        _add_with_observed(oct_20)
+        _add_observed(
+            self._add_holiday(
+                # Mashuja/Kenyatta Day
+                "Mashujaa Day" if year >= 2010 else "Kenyatta Day",
+                OCT,
+                20,
+            )
+        )
 
         # Jamhuri Day
-        dec_12 = self._add_holiday("Jamhuri Day", DEC, 12)
-        _add_with_observed(dec_12)
+        _add_observed(self._add_holiday("Jamhuri Day", DEC, 12))
 
         # Christmas Day
-        dec_25 = self._add_christmas_day("Christmas Day")
-        _add_with_observed(dec_25, days=+2)
+        _add_observed(self._add_christmas_day("Christmas Day"), days=+2)
 
         # Boxing Day
-        dec_26 = self._add_christmas_day_two("Boxing Day")
-        _add_with_observed(dec_26)
+        _add_observed(self._add_christmas_day_two("Boxing Day"))
 
 
 class KE(Kenya):
