@@ -12,13 +12,12 @@
 from datetime import date
 from datetime import timedelta as td
 
-from dateutil.easter import easter
-
-from holidays.constants import JAN, FEB, APR, MAY, JUN, AUG, SEP, OCT, DEC
+from holidays.constants import FEB, APR, JUN, AUG, SEP, OCT, DEC
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Kenya(HolidayBase):
+class Kenya(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Kenya
     http://kenyaembassyberlin.de/Public-Holidays-in-Kenya.48.0.html
@@ -38,13 +37,17 @@ class Kenya(HolidayBase):
         ),
     }
 
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year):
-        def _add_with_observed(
-            hol_date: date, hol_name: str, days: int = +1
-        ) -> None:
-            self[hol_date] = hol_name
-            if self.observed and self._is_sunday(hol_date):
-                self[hol_date + td(days=days)] = f"{hol_name} (Observed)"
+        def _add_with_observed(dt: date, days: int = +1) -> None:
+            if self.observed and self._is_sunday(dt):
+                in_lieu = dt + td(days=days)
+                for name in self.get_list(dt):
+                    self._add_holiday(self.tr("%s (Observed)") % name, in_lieu)
 
         if year <= 1962:
             return None
@@ -52,13 +55,14 @@ class Kenya(HolidayBase):
         super()._populate(year)
 
         # Public holidays
-        _add_with_observed(date(year, JAN, 1), "New Year's Day")
+        jan_1 = self._add_new_years_day("New Year's Day")
+        _add_with_observed(jan_1)
 
-        easter_date = easter(year)
-        self[easter_date + td(days=-2)] = "Good Friday"
-        self[easter_date + td(days=+1)] = "Easter Monday"
+        self._add_good_friday("Good Friday")
+        self._add_easter_monday("Easter Monday")
 
-        _add_with_observed(date(year, MAY, 1), "Labour Day")
+        may_1 = self._add_labor_day("Labour Day")
+        _add_with_observed(may_1)
 
         if year >= 2010:
             _add_with_observed(date(year, JUN, 1), "Madaraka Day")
@@ -75,8 +79,10 @@ class Kenya(HolidayBase):
         )
 
         _add_with_observed(date(year, DEC, 12), "Jamhuri Day")
-        _add_with_observed(date(year, DEC, 25), "Christmas Day", days=+2)
-        _add_with_observed(date(year, DEC, 26), "Boxing Day")
+        dec_25 = self._add_christmas_day("Christmas Day")
+        _add_with_observed(dec_25, days=+2)
+        dec_26 = self._add_christmas_day_two("Boxing Day")
+        _add_with_observed(dec_26)
 
 
 class KE(Kenya):
