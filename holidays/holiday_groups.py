@@ -501,7 +501,6 @@ class BuddhistCalendarHolidays:
         self,
         name: str,
         hol_date: Tuple[date, bool],
-        days_delta: int = 0,
     ) -> Optional[date]:
         """
         Add Buddhist calendar holiday.
@@ -512,8 +511,7 @@ class BuddhistCalendarHolidays:
         estimated_label = getattr(self, "estimated_label", "%s* (*estimated)")
         show_estimated = getattr(self, "show_estimated", False)
         dt, is_estimated = hol_date
-        if days_delta != 0:
-            dt += td(days=days_delta)
+
         return self._add_holiday(
             self.tr(estimated_label) % self.tr(name)
             if is_estimated and show_estimated
@@ -759,7 +757,6 @@ class HinduCalendarHolidays:
         self,
         name: str,
         hol_date: Tuple[date, bool],
-        days_delta: int = 0,
     ) -> Optional[date]:
         """
         Add Hindu calendar holiday.
@@ -769,9 +766,8 @@ class HinduCalendarHolidays:
         """
         estimated_label = getattr(self, "estimated_label", "%s* (*estimated)")
         show_estimated = getattr(self, "show_estimated", False)
+
         dt, is_estimated = hol_date
-        if days_delta != 0:
-            dt += td(days=days_delta)
         return self._add_holiday(
             self.tr(estimated_label) % self.tr(name)
             if is_estimated and show_estimated
