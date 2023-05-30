@@ -12,42 +12,45 @@
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from dateutil.easter import easter
-
 from holidays.calendars import _get_nth_weekday_of_month
-from holidays.constants import JAN, APR, MAY, SEP, OCT, DEC, WED
+from holidays.constants import APR, SEP, OCT, WED
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Honduras(HolidayBase):
+class Honduras(HolidayBase, ChristianHolidays, InternationalHolidays):
     # Artículo 339 del Código del Trabajo:
-    # https://www.ilo.org/dyn/natlex/docs/WEBTEXT/29076/64849/S59HND01.htm#:~:text=El%20presente%20C%C3%B3digo%20regula%20las,compensaci%C3%B3n%20equitativa%20de%20su%20inversi%C3%B3n.
+    # https://www.ilo.org/dyn/natlex/docs/WEBTEXT/29076/64849/S59HND01.htm
 
     country = "HN"
     default_language = "es"
     supported_languages = ("en_US", "es", "uk")
 
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year):
         super()._populate(year)
 
         # New Year's Day.
-        self._add_holiday(tr("Año Nuevo"), JAN, 1)
+        self._add_new_years_day(tr("Año Nuevo"))
 
-        easter_date = easter(year)
         # Maundy Thursday.
-        self._add_holiday(tr("Jueves Santo"), easter_date + td(days=-3))
+        self._add_holy_thursday(tr("Jueves Santo"))
 
         # Good Friday.
-        self._add_holiday(tr("Viernes Santo"), easter_date + td(days=-2))
+        self._add_good_friday(tr("Viernes Santo"))
 
         # Holy Saturday.
-        self._add_holiday(tr("Sábado de Gloria"), easter_date + td(days=-1))
+        self._add_holy_saturday(tr("Sábado de Gloria"))
 
         # Panamerican Day.
         self._add_holiday(tr("Día de las Américas"), APR, 14)
 
         # Labor Day.
-        self._add_holiday(tr("Día del Trabajo"), MAY, 1)
+        self._add_labor_day(tr("Día del Trabajo"))
 
         # Independence Day.
         self._add_holiday(tr("Día de la Independencia"), SEP, 15)
@@ -58,7 +61,7 @@ class Honduras(HolidayBase):
             self._add_holiday(tr("Día de Morazán"), OCT, 3)
 
             # Columbus Day.
-            self._add_holiday(tr("Día de la Raza"), OCT, 12)
+            self._add_columbus_day(tr("Día de la Raza"))
 
             # Army Day.
             self._add_holiday(tr("Día de las Fuerzas Armadas"), OCT, 21)
@@ -72,7 +75,7 @@ class Honduras(HolidayBase):
             self._add_holiday(holiday_name, first_wednesday + td(days=+2))
 
         # Christmas.
-        self._add_holiday(tr("Navidad"), DEC, 25)
+        self._add_christmas_day(tr("Navidad"))
 
 
 class HN(Honduras):

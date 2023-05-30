@@ -17,61 +17,61 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/honduras.py:34
+#: ./holidays/countries/honduras.py:38
 msgid "Año Nuevo"
 msgstr "New Year's Day"
 
 #. Maundy Thursday.
-#: ./holidays/countries/honduras.py:38
+#: ./holidays/countries/honduras.py:41
 msgid "Jueves Santo"
 msgstr "Maundy Thursday"
 
 #. Good Friday.
-#: ./holidays/countries/honduras.py:41
+#: ./holidays/countries/honduras.py:44
 msgid "Viernes Santo"
 msgstr "Good Friday"
 
 #. Holy Saturday.
-#: ./holidays/countries/honduras.py:44
+#: ./holidays/countries/honduras.py:47
 msgid "Sábado de Gloria"
 msgstr "Holy Saturday"
 
 #. Panamerican Day.
-#: ./holidays/countries/honduras.py:47
+#: ./holidays/countries/honduras.py:50
 msgid "Día de las Américas"
 msgstr "Panamerican Day"
 
 #. Labor Day.
-#: ./holidays/countries/honduras.py:50
+#: ./holidays/countries/honduras.py:53
 msgid "Día del Trabajo"
 msgstr "Labor Day"
 
 #. Morazan's Day.
-#: ./holidays/countries/honduras.py:58
+#: ./holidays/countries/honduras.py:61
 msgid "Día de Morazán"
 msgstr "Morazan's Day"
 
 #. Columbus Day.
-#: ./holidays/countries/honduras.py:61
+#: ./holidays/countries/honduras.py:64
 msgid "Día de la Raza"
 msgstr "Columbus Day"
 
 #. Army Day.
-#: ./holidays/countries/honduras.py:64
+#: ./holidays/countries/honduras.py:67
 msgid "Día de las Fuerzas Armadas"
 msgstr "Army Day"
 
 #. Morazan Weekend.
-#: ./holidays/countries/honduras.py:67
+#: ./holidays/countries/honduras.py:70
 msgid "Semana Morazánica"
 msgstr "Morazan Weekend"
 
 #. Christmas.
-#: ./holidays/countries/honduras.py:75
+#: ./holidays/countries/honduras.py:78
 msgid "Navidad"
 msgstr "Christmas"
 
 #. Independence Day.
-#: ./holidays/countries/honduras.py:53
+#: ./holidays/countries/honduras.py:56
 msgid "Día de la Independencia"
 msgstr ""
