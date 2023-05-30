@@ -12,7 +12,7 @@
 from datetime import date
 from typing import Optional, Tuple
 
-from holidays.calendars.custom import _CustomCalendarType
+from holidays.calendars.custom import _CustomCalendar
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, SEP, OCT, NOV
 
 BUDDHA_BIRTHDAY = "BUDDHA_BIRTHDAY"
@@ -1242,7 +1242,7 @@ class _ChineseLunisolar:
         estimated_dates = getattr(self, f"{holiday}_DATES", {})
         exact_dates = getattr(
             self,
-            f"{holiday}_DATES_{_CustomCalendarType.CUSTOM_ATTR_POSTFIX}",
+            f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}",
             {},
         )
         dt = exact_dates.get(year, estimated_dates.get(year, ()))
@@ -1265,3 +1265,7 @@ class _ChineseLunisolar:
 
     def mid_autumn_date(self, year: int) -> Tuple[Optional[date], bool]:
         return self._get_holiday(MID_AUTUMN, year)
+
+
+class _CustomChineseCalendar(_CustomCalendar, _ChineseLunisolar):
+    pass

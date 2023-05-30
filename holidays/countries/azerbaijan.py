@@ -12,7 +12,7 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars import _CustomCalendar, _IslamicLunar
+from holidays.calendars import _CustomIslamicCalendar
 from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT
 from holidays.constants import NOV, DEC
 from holidays.holiday_base import HolidayBase
@@ -176,7 +176,7 @@ class AZE(Azerbaijan):
     pass
 
 
-class AzerbaijanIslamicCalendar(_CustomCalendar, _IslamicLunar):
+class AzerbaijanIslamicCalendar(_CustomIslamicCalendar):
     EID_AL_ADHA_DATES = {
         2011: ((NOV, 6),),
         2012: ((OCT, 25),),

@@ -12,8 +12,8 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars import _BuddhistLunisolar, _ChineseLunisolar
-from holidays.calendars import _CustomCalendar, _HinduLunisolar, _IslamicLunar
+from holidays.calendars import _CustomBuddhistCalendar, _CustomChineseCalendar
+from holidays.calendars import _CustomHinducCalendar, _CustomIslamicCalendar
 from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC, MON, FRI, SAT, SUN
@@ -42,7 +42,6 @@ class Malaysia(
         2018: ((MAY, 9, "Malaysia General Election Holiday"),),
         2019: ((JUL, 30, "Installation of New King"),),
     }
-    show_estimated = True
     subdivisions = (
         "JHR",
         "KDH",
@@ -103,10 +102,10 @@ class Malaysia(
         See parameters and usage in :py:class:`HolidayBase`.
         """
         BuddhistCalendarHolidays.__init__(
-            self, calendar=MalaysiaBuddhistCalendar()
+            self, calendar=MalaysiaBuddhistCalendar(), show_estimated=True
         )
         ChineseCalendarHolidays.__init__(
-            self, calendar=MalaysiaChineseCalendar()
+            self, calendar=MalaysiaChineseCalendar(), show_estimated=True
         )
         ChristianHolidays.__init__(self)
         HinduCalendarHolidays.__init__(self, calendar=MalaysiaHinduCalendar())
@@ -465,7 +464,7 @@ class MYS(Malaysia):
     pass
 
 
-class MalaysiaBuddhistCalendar(_CustomCalendar, _BuddhistLunisolar):
+class MalaysiaBuddhistCalendar(_CustomBuddhistCalendar):
     VESAK_MAY_DATES = {
         2001: (MAY, 7),
         2002: (MAY, 27),
@@ -493,7 +492,7 @@ class MalaysiaBuddhistCalendar(_CustomCalendar, _BuddhistLunisolar):
     }
 
 
-class MalaysiaChineseCalendar(_CustomCalendar, _ChineseLunisolar):
+class MalaysiaChineseCalendar(_CustomChineseCalendar):
     LUNAR_NEW_YEAR_DATES = {
         2001: (JAN, 24),
         2002: (FEB, 12),
@@ -521,7 +520,7 @@ class MalaysiaChineseCalendar(_CustomCalendar, _ChineseLunisolar):
     }
 
 
-class MalaysiaHinduCalendar(_CustomCalendar, _HinduLunisolar):
+class MalaysiaHinduCalendar(_CustomHinducCalendar):
     DIWALI_DATES = {
         2001: (NOV, 14),
         2002: (NOV, 3),
@@ -562,7 +561,7 @@ class MalaysiaHinduCalendar(_CustomCalendar, _HinduLunisolar):
     }
 
 
-class MalaysiaIslamicCalendar(_CustomCalendar, _IslamicLunar):
+class MalaysiaIslamicCalendar(_CustomIslamicCalendar):
     EID_AL_ADHA_DATES = {
         2001: ((MAR, 6),),
         2002: ((FEB, 23),),
