@@ -16,7 +16,7 @@ from datetime import timedelta as td
 
 from holidays.calendars import _ChineseLunisolar, _CustomCalendar
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, SAT, SUN
+from holidays.constants import OCT, DEC, SAT, SUN
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChineseCalendarHolidays, ChristianHolidays
 from holidays.holiday_groups import InternationalHolidays
@@ -36,7 +36,7 @@ class SouthKorea(
     According to (3), the alt holidays in Korea are as follows:
     The alt holiday means next first non holiday after the holiday.
     Independence movement day, Liberation day, National Foundation Day,
-    Hangul Day, Children's Day have alt holiday if they fell on saturday or sunday.
+    Hangul Day, Children's Day, Birthday of the Buddha, Christmas Day have alt holiday if they fell on saturday or sunday.
     Lunar New Year's Day, Korean Mid Autumn Day have alt holiday if they fell
     on only sunday.
 
@@ -139,7 +139,11 @@ class SouthKorea(
             self._add_holiday("Tree Planting Day", APR, 5)
 
         # Birthday of the Buddha
-        self._add_chinese_birthday_of_buddha("Birthday of the Buddha")
+        name = "Birthday of the Buddha"
+        buddha_birthday_date = self._add_chinese_birthday_of_buddha(name)
+        self._add_with_alt_holiday(
+            name, buddha_birthday_date, add_hol=False, since=2023
+        )
 
         # Children's Day
         if year >= 1975:
@@ -190,7 +194,9 @@ class SouthKorea(
             self._add_with_alt_holiday("Hangeul Day", date(year, OCT, 9))
 
         # Christmas Day
-        self._add_christmas_day("Christmas Day")
+        self._add_with_alt_holiday(
+            "Christmas Day", date(year, DEC, 25), since=2023
+        )
 
 
 class Korea(SouthKorea):

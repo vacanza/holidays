@@ -168,7 +168,22 @@ class TestSouthKorea(TestCase):
             "2021-05-19",
             "2022-05-08",
             "2023-05-27",
+            "2024-05-15",
+            "2025-05-05",
+            "2026-05-24",
+            "2027-05-13",
+            "2028-05-02",
+            "2029-05-20",
         )
+
+        self.assertHolidaysName(
+            "Alternative holiday of Birthday of the Buddha",
+            "2023-05-29",
+            "2026-05-25",
+            "2029-05-21",
+        )
+
+        self.assertNoHoliday("2022-05-09")
 
     def test_labour_day(self):
         name = "Labour Day"
@@ -312,6 +327,15 @@ class TestSouthKorea(TestCase):
             "Christmas Day",
             (f"{year}-12-25" for year in range(2001, 2050)),
         )
+
+        self.assertHolidaysName(
+            "Alternative holiday of Christmas Day",
+            "2027-12-27",
+            "2032-12-27",
+            "2033-12-26",
+        )
+
+        self.assertNoHoliday("2022-12-26")
 
     def test_special_holidays(self):
         self.assertHoliday("2020-08-17")
