@@ -85,10 +85,10 @@ class Venezuela(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 2002:
             # Day of Indigenous Resistance.
-            self._add_holiday(tr("Día de la Resistencia Indígena"), OCT, 12)
+            self._add_columbus_day(tr("Día de la Resistencia Indígena"))
         elif year >= 1921:
             # Columbus Day.
-            self._add_holiday(tr("Día de la Raza"), OCT, 12)
+            self._add_columbus_day(tr("Día de la Raza"))
 
         # Note: not sure about the start year nor the reason this was
         # Note: celebrated; the historical records are unclear
