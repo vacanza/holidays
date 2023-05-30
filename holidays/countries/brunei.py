@@ -185,21 +185,20 @@ class Brunei(
         # 4: If Sat-Sun-Mon -> Tue (+3)
         # 5: If Sun-Mon-Tue -> Wed (+3)
 
-        aidil_fitri_in_lieu = self.tr("%s - Diperhatikan") % self.tr(
-            "Hari Raya Aidil Fitri"
-        )
-
         if self.observed:
             for dt in alfitr:
-                if (
-                    self._is_wednesday(dt)
-                    or self._is_friday(dt)
-                    or self._is_saturday(dt)
-                    or self._is_sunday(dt)
-                ):
-                    self._add_holiday(aidil_fitri_in_lieu, dt + td(days=+3))
-                elif self._is_thursday(dt):
-                    self._add_holiday(aidil_fitri_in_lieu, dt + td(days=+4))
+                obs_date = None
+                for delta in range(3):
+                    hol_date = dt + td(days=delta)
+                    if self._is_friday(hol_date) or self._is_sunday(hol_date):
+                        obs_date = dt + td(days=+3)
+                        if self._is_sunday(obs_date):
+                            obs_date += td(days=+1)
+                        break
+                if obs_date:
+                    self._add_holiday(
+                        self.tr("%s - Diperhatikan") % self[hol_date], obs_date
+                    )
 
         # Eid al-Adha
         # Hari Raya Aidil Adha
