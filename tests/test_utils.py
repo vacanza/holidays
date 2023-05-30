@@ -148,9 +148,10 @@ class TestAllInSameYear(unittest.TestCase):
 
 class TestListLocalizedEntities(unittest.TestCase):
     def assertLocalizedEntities(self, localized_entities, supported_entities):
+        tests_dir = Path(__file__).parent
+        locale_dir = tests_dir.parent / "holidays" / "locale"
+
         for entity_code in supported_entities.keys():
-            tests_dir = Path(__file__).parent
-            locale_dir = tests_dir.parent / "holidays" / "locale"
             actual_languages = sorted(
                 # Collect `<locale>` part from
                 # holidays/locale/<locale>/LC_MESSAGES/<country_code>.po.
@@ -159,12 +160,26 @@ class TestListLocalizedEntities(unittest.TestCase):
             )
             expected_languages = localized_entities.get(entity_code, [])
 
-            entity = getattr(holidays, entity_code)
             self.assertEqual(
-                len(actual_languages),
-                len(expected_languages),
+                actual_languages,
+                expected_languages,
                 f"The supported languages for {entity_code} don't match "
                 f"its actual languages: "
+                f"{set(actual_languages).difference(set(expected_languages))}",
+            )
+
+            entity = getattr(holidays, entity_code)
+
+            self.assertEqual(
+                list(entity.supported_languages),
+                expected_languages,
+                f"The supported languages for {entity_code} don't match "
+                "its `supported_languages`.",
+            )
+            self.assertEqual(
+                actual_languages,
+                expected_languages,
+                f"Actual and expected locales differ for {entity_code}: "
                 f"{set(actual_languages).difference(set(expected_languages))}",
             )
 
@@ -179,27 +194,6 @@ class TestListLocalizedEntities(unittest.TestCase):
                     "The `default_language` must be listed in "
                     f"`supported_languages` for {entity_code}",
                 )
-            self.assertEqual(
-                list(entity.supported_languages),
-                expected_languages,
-                f"The supported languages for {entity_code} don't match "
-                "its `supported_languages`.",
-            )
-
-            tests_dir = Path(__file__).parent
-            locale_dir = tests_dir.parent / "holidays" / "locale"
-            actual_languages = sorted(
-                # Collect `<locale>` part from
-                # holidays/locale/<locale>/LC_MESSAGES/<country_code>.po.
-                path.parts[-3]
-                for path in Path(locale_dir).rglob(f"{entity_code}.po")
-            )
-            self.assertEqual(
-                actual_languages,
-                expected_languages,
-                f"Actual and expected locales differ for {entity_code}: "
-                f"{set(actual_languages).difference(set(expected_languages))}",
-            )
 
     def test_localized_countries(self):
         self.assertLocalizedEntities(
