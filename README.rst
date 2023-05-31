@@ -252,6 +252,9 @@ subdivisions are available:
    * - France
      - FR
      - Départements: BL, GES, GP, GY, MF, MQ, NC, PF, RE, WF, YT
+   * - Gabon
+     - GA
+     - None
    * - Georgia
      - GE
      - None

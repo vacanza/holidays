@@ -61,6 +61,7 @@ COUNTRIES: RegistryDict = {
     "ethiopia": ("Ethiopia", "ET", "ETH"),
     "finland": ("Finland", "FI", "FIN"),
     "france": ("France", "FR", "FRA"),
+    "gabon": ("Gabon", "GA", "GAB"),
     "georgia": ("Georgia", "GE", "GEO"),
     "germany": ("Germany", "DE", "DEU"),
     "greece": ("Greece", "GR", "GRC"),
