@@ -13,7 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.calendars import _CustomBuddhistCalendar, _CustomChineseCalendar
-from holidays.calendars import _CustomHinducCalendar, _CustomIslamicCalendar
+from holidays.calendars import _CustomHinduCalendar, _CustomIslamicCalendar
 from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC, MON, FRI, SAT, SUN
@@ -520,7 +520,7 @@ class MalaysiaChineseCalendar(_CustomChineseCalendar):
     }
 
 
-class MalaysiaHinduCalendar(_CustomHinducCalendar):
+class MalaysiaHinduCalendar(_CustomHinduCalendar):
     DIWALI_DATES = {
         2001: (NOV, 14),
         2002: (NOV, 3),

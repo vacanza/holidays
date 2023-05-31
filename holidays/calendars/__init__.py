@@ -18,7 +18,7 @@ from holidays.calendars.chinese import _CustomChineseCalendar
 from holidays.calendars.chinese import _ChineseLunisolar
 from holidays.calendars.custom import _CustomCalendar
 from holidays.calendars.hebrew import _HebrewLunisolar
-from holidays.calendars.hindu import _HinduLunisolar, _CustomHinducCalendar
+from holidays.calendars.hindu import _HinduLunisolar, _CustomHinduCalendar
 from holidays.calendars.islamic import _CustomIslamicCalendar, _IslamicLunar
 from holidays.calendars.thai import _ThaiLunisolar
 
