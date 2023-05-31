@@ -83,7 +83,7 @@ class Brunei(
         def _add_observed(dt: date) -> None:
             """
             If Public Holiday falls on either Friday or Sunday, in-lieu
-            observance are given out on the following Saturday or Monday.
+            observance is given out on the following Saturday or Monday.
             """
             if self.observed and (self._is_friday(dt) or self._is_sunday(dt)):
                 for name in self.get_list(dt):
@@ -93,26 +93,25 @@ class Brunei(
 
         super()._populate(year)
 
-        # New Year's Day.
         # Awal Tahun Masihi
         # Status: In-Use.
 
+        # New Year's Day
         _add_observed(self._add_new_years_day(tr("Awal Tahun Masihi")))
 
-        # Lunar New Year
         # Tahun Baru Cina
         # Status: In-Use.
 
+        # Lunar New Year
         _add_observed(self._add_chinese_new_years_day(tr("Tahun Baru Cina")))
 
-        # National Day
         # Hari Kebangsaan
         # Status: In-Use.
         # Starts in 1984.
 
+        # National Day
         _add_observed(self._add_holiday(tr("Hari Kebangsaan"), FEB, 23))
 
-        # Armed Forces Day
         # Hari Angkatan Bersenjata Diraja Brunei
         # Status: In-Use.
         # Starts in 1984.
@@ -120,73 +119,72 @@ class Brunei(
 
         _add_observed(
             self._add_holiday(
+                # Armed Forces Day
                 tr("Hari Angkatan Bersenjata Diraja Brunei"), MAY, 31
             )
         )
 
-        # Sultan Hassanal Bolkiah's Birthday
         # Hari Keputeraan KDYMM Sultan Brunei
         # Status: In-Use.
         # Started in 1968.
 
         _add_observed(
             self._add_holiday(
+                # Sultan Hassanal Bolkiah's Birthday
                 tr("Hari Keputeraan KDYMM Sultan Brunei"), JUL, 15
             )
         )
 
-        # Christmas Day.
         # Hari Natal
         # Status: In-Use.
 
+        # Christmas Day
         _add_observed(self._add_christmas_day(tr("Hari Natal")))
 
         # Islamic Holidays are placed after Gregorian holidays to prevent
         # the duplication of observed tags. - see #1168
 
-        # Isra Mi'raj
         # Israk dan Mikraj
         # Status: In-Use.
 
+        # Isra Mi'raj
         for dt in self._add_isra_and_miraj_day(tr("Israk dan Mikraj")):
             _add_observed(dt)
 
-        # First Day of Ramadan
         # Hari Pertama Berpuasa
         # Status: In-Use.
 
+        # First Day of Ramadan
         for dt in self._add_ramadan_beginning_day(tr("Hari Pertama Berpuasa")):
             _add_observed(dt)
 
-        # Anniversary of the revelation of the Quran
         # Hari Nuzul Al-Quran
         # Status: In-Use.
 
+        # Anniversary of the revelation of the Quran
         for dt in self._add_nuzul_al_quran_day(tr("Hari Nuzul Al-Quran")):
             _add_observed(dt)
 
-        # Eid al-Fitr
         # Hari Raya Aidil Fitri
         # Status: In-Use.
         # This is celebrate for three days in Brunei.
         # Observed as 'Hari Raya Puasa' and only for 2 days at certain point.
-
-        name = tr("Hari Raya Aidil Fitri")
-
-        alfitr = self._add_eid_al_fitr_day(name)
-        self._add_eid_al_fitr_day_two(name)
-        self._add_eid_al_fitr_day_three(name)
-
-        # Eid al-Fitr (Observed)
-        # Hari Raya Aidil Fitri - Diperhatikan
+        # We utilizes a separate in-lieu trigger for this one.
         # 1: If Wed-Thu-Fri -> Sat (+3)
         # 2: If Thu-Fri-Sat -> Mon (+4)
         # 3: If Fri-Sat-Sun -> Mon (+3)
         # 4: If Sat-Sun-Mon -> Tue (+3)
         # 5: If Sun-Mon-Tue -> Wed (+3)
 
+        # Eid al-Fitr
+        name = tr("Hari Raya Aidil Fitri")
+
+        al_fitr_dates = self._add_eid_al_fitr_day(name)
+        self._add_eid_al_fitr_day_two(name)
+        self._add_eid_al_fitr_day_three(name)
+
         if self.observed:
-            for dt in alfitr:
+            for dt in al_fitr_dates:
                 obs_date = None
                 for delta in range(3):
                     hol_date = dt + td(days=delta)
@@ -200,24 +198,24 @@ class Brunei(
                         self.tr("%s - Diperhatikan") % self[hol_date], obs_date
                     )
 
-        # Eid al-Adha
         # Hari Raya Aidil Adha
         # Status: In-Use.
 
+        # Eid al-Adha
         for dt in self._add_eid_al_adha_day(tr("Hari Raya Aidil Adha")):
             _add_observed(dt)
 
-        # Islamic New Year
         # Awal Tahun Hijrah
         # Status: In-Use.
 
+        # Islamic New Year
         for dt in self._add_islamic_new_year_day(tr("Awal Tahun Hijrah")):
             _add_observed(dt)
 
-        # Birth of the Prophet
         # Maulidur Rasul
         # Status: In-Use.
 
+        # Birth of the Prophet
         for dt in self._add_mawlid_day(tr("Maulidur Rasul")):
             _add_observed(dt)
 
@@ -259,85 +257,31 @@ class BRN(Brunei):
 
 
 class BruneiIslamicCalendar(_CustomCalendar, _IslamicLunar):
-    ISRA_AND_MIRAJ_DATES = {
-        2000: ((OCT, 26),),
-        2001: ((OCT, 15),),
-        2002: ((OCT, 4),),
-        2003: ((SEP, 24),),
-        2004: ((SEP, 12),),
-        2005: ((SEP, 1),),
-        2006: ((AUG, 22),),
-        2007: ((AUG, 11),),
-        2008: ((JUL, 31),),
-        2009: ((JUL, 20),),
-        2010: ((JUL, 9),),
-        2011: ((JUN, 29),),
-        2012: ((JUN, 17),),
-        2013: ((JUN, 6),),
-        2014: ((MAY, 27),),
-        2015: ((MAY, 16),),
-        2016: ((MAY, 5),),
-        2017: ((APR, 24),),
-        2018: ((APR, 14),),
-        2019: ((APR, 3),),
-        2020: ((MAR, 22),),
-        2021: ((MAR, 11),),
-        2022: ((MAR, 1),),
-        2023: ((FEB, 18),),
-    }
-
-    RAMADAN_BEGINNING_DATES = {
-        2000: ((NOV, 28),),
-        2001: ((NOV, 17),),
-        2002: ((NOV, 6),),
-        2003: ((OCT, 27),),
-        2004: ((OCT, 16),),
-        2005: ((OCT, 5),),
-        2006: ((SEP, 24),),
-        2007: ((SEP, 13),),
-        2008: ((SEP, 2),),
-        2009: ((AUG, 22),),
-        2010: ((AUG, 11),),
-        2011: ((AUG, 1),),
-        2012: ((JUL, 20),),
-        2013: ((JUL, 9),),
-        2014: ((JUN, 29),),
-        2015: ((JUN, 18),),
-        2016: ((JUN, 7),),
-        2017: ((MAY, 27),),
-        2018: ((MAY, 16),),
-        2019: ((MAY, 6),),
-        2020: ((APR, 25),),
-        2021: ((APR, 13),),
-        2022: ((APR, 3),),
-        2023: ((MAR, 23),),
-    }
-
-    NUZUL_AL_QURAN_DATES = {
-        2000: ((DEC, 14),),
-        2001: ((DEC, 3),),
-        2002: ((NOV, 22),),
-        2003: ((NOV, 12),),
-        2004: ((NOV, 1),),
-        2005: ((OCT, 21),),
-        2006: ((OCT, 10),),
-        2007: ((SEP, 29),),
-        2008: ((SEP, 18),),
-        2009: ((SEP, 7),),
-        2010: ((AUG, 27),),
-        2011: ((AUG, 17),),
-        2012: ((AUG, 5),),
-        2013: ((JUL, 25),),
-        2014: ((JUL, 15),),
-        2015: ((JUL, 4),),
-        2016: ((JUN, 23),),
-        2017: ((JUN, 12),),
-        2018: ((JUN, 2),),
-        2019: ((MAY, 23),),
-        2020: ((MAY, 10),),
-        2021: ((APR, 29),),
-        2022: ((APR, 19),),
-        2023: ((APR, 8),),
+    EID_AL_ADHA_DATES = {
+        2000: ((MAR, 16),),
+        2001: ((MAR, 6),),
+        2002: ((FEB, 23),),
+        2003: ((FEB, 12),),
+        2004: ((FEB, 2),),
+        2005: ((JAN, 21),),
+        2006: ((JAN, 10), (DEC, 31)),
+        2007: ((DEC, 20),),
+        2008: ((DEC, 9),),
+        2009: ((NOV, 28),),
+        2010: ((NOV, 17),),
+        2011: ((NOV, 7),),
+        2012: ((OCT, 26),),
+        2013: ((OCT, 15),),
+        2014: ((OCT, 5),),
+        2015: ((SEP, 24),),
+        2016: ((SEP, 13),),
+        2017: ((SEP, 2),),
+        2018: ((AUG, 22),),
+        2019: ((AUG, 11),),
+        2020: ((AUG, 1),),
+        2021: ((JUL, 20),),
+        2022: ((JUL, 10),),
+        2023: ((JUN, 29),),
     }
 
     EID_AL_FITR_DATES = {
@@ -367,33 +311,6 @@ class BruneiIslamicCalendar(_CustomCalendar, _IslamicLunar):
         2023: ((APR, 22),),
     }
 
-    EID_AL_ADHA_DATES = {
-        2000: ((MAR, 16),),
-        2001: ((MAR, 6),),
-        2002: ((FEB, 23),),
-        2003: ((FEB, 12),),
-        2004: ((FEB, 2),),
-        2005: ((JAN, 21),),
-        2006: ((JAN, 10), (DEC, 31)),
-        2007: ((DEC, 20),),
-        2008: ((DEC, 9),),
-        2009: ((NOV, 28),),
-        2010: ((NOV, 17),),
-        2011: ((NOV, 7),),
-        2012: ((OCT, 26),),
-        2013: ((OCT, 15),),
-        2014: ((OCT, 5),),
-        2015: ((SEP, 24),),
-        2016: ((SEP, 13),),
-        2017: ((SEP, 2),),
-        2018: ((AUG, 22),),
-        2019: ((AUG, 11),),
-        2020: ((AUG, 1),),
-        2021: ((JUL, 20),),
-        2022: ((JUL, 10),),
-        2023: ((JUN, 29),),
-    }
-
     HIJRI_NEW_YEAR_DATES = {
         2000: ((APR, 6),),
         2001: ((MAR, 26),),
@@ -421,6 +338,33 @@ class BruneiIslamicCalendar(_CustomCalendar, _IslamicLunar):
         2023: ((JUL, 19),),
     }
 
+    ISRA_AND_MIRAJ_DATES = {
+        2000: ((OCT, 26),),
+        2001: ((OCT, 15),),
+        2002: ((OCT, 4),),
+        2003: ((SEP, 24),),
+        2004: ((SEP, 12),),
+        2005: ((SEP, 1),),
+        2006: ((AUG, 22),),
+        2007: ((AUG, 11),),
+        2008: ((JUL, 31),),
+        2009: ((JUL, 20),),
+        2010: ((JUL, 9),),
+        2011: ((JUN, 29),),
+        2012: ((JUN, 17),),
+        2013: ((JUN, 6),),
+        2014: ((MAY, 27),),
+        2015: ((MAY, 16),),
+        2016: ((MAY, 5),),
+        2017: ((APR, 24),),
+        2018: ((APR, 14),),
+        2019: ((APR, 3),),
+        2020: ((MAR, 22),),
+        2021: ((MAR, 11),),
+        2022: ((MAR, 1),),
+        2023: ((FEB, 18),),
+    }
+
     MAWLID_DATES = {
         2000: ((JUN, 15),),
         2001: ((JUN, 4),),
@@ -446,4 +390,58 @@ class BruneiIslamicCalendar(_CustomCalendar, _IslamicLunar):
         2021: ((OCT, 19),),
         2022: ((OCT, 8),),
         2023: ((SEP, 28),),
+    }
+
+    NUZUL_AL_QURAN_DATES = {
+        2000: ((DEC, 14),),
+        2001: ((DEC, 3),),
+        2002: ((NOV, 22),),
+        2003: ((NOV, 12),),
+        2004: ((NOV, 1),),
+        2005: ((OCT, 21),),
+        2006: ((OCT, 10),),
+        2007: ((SEP, 29),),
+        2008: ((SEP, 18),),
+        2009: ((SEP, 7),),
+        2010: ((AUG, 27),),
+        2011: ((AUG, 17),),
+        2012: ((AUG, 5),),
+        2013: ((JUL, 25),),
+        2014: ((JUL, 15),),
+        2015: ((JUL, 4),),
+        2016: ((JUN, 23),),
+        2017: ((JUN, 12),),
+        2018: ((JUN, 2),),
+        2019: ((MAY, 23),),
+        2020: ((MAY, 10),),
+        2021: ((APR, 29),),
+        2022: ((APR, 19),),
+        2023: ((APR, 8),),
+    }
+
+    RAMADAN_BEGINNING_DATES = {
+        2000: ((NOV, 28),),
+        2001: ((NOV, 17),),
+        2002: ((NOV, 6),),
+        2003: ((OCT, 27),),
+        2004: ((OCT, 16),),
+        2005: ((OCT, 5),),
+        2006: ((SEP, 24),),
+        2007: ((SEP, 13),),
+        2008: ((SEP, 2),),
+        2009: ((AUG, 22),),
+        2010: ((AUG, 11),),
+        2011: ((AUG, 1),),
+        2012: ((JUL, 20),),
+        2013: ((JUL, 9),),
+        2014: ((JUN, 29),),
+        2015: ((JUN, 18),),
+        2016: ((JUN, 7),),
+        2017: ((MAY, 27),),
+        2018: ((MAY, 16),),
+        2019: ((MAY, 6),),
+        2020: ((APR, 25),),
+        2021: ((APR, 13),),
+        2022: ((APR, 3),),
+        2023: ((MAR, 23),),
     }

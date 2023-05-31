@@ -144,7 +144,7 @@ class TestBrunei(TestCase):
             "ms",
         )
 
-    def test_l10n_en(self):
+    def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             (
                 ("2023-01-01", "New Year's Day"),
