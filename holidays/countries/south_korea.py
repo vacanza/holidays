@@ -16,7 +16,7 @@ from datetime import timedelta as td
 
 from holidays.calendars import _ChineseLunisolar, _CustomCalendar
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, DEC, SAT, SUN
+from holidays.constants import OCT, SAT, SUN
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChineseCalendarHolidays, ChristianHolidays
 from holidays.holiday_groups import InternationalHolidays
@@ -194,9 +194,9 @@ class SouthKorea(
             self._add_with_alt_holiday("Hangeul Day", date(year, OCT, 9))
 
         # Christmas Day
-        self._add_with_alt_holiday(
-            "Christmas Day", date(year, DEC, 25), since=2023
-        )
+        name = "Christmas Day"
+        dec_25 = self._add_christmas_day(name)
+        self._add_with_alt_holiday(name, dec_25, add_hol=False, since=2023)
 
 
 class Korea(SouthKorea):
