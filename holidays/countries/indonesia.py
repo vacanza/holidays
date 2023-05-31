@@ -9,8 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars import _BuddhistLunisolar, _ChineseLunisolar
-from holidays.calendars import _CustomCalendar, _IslamicLunar
+from holidays.calendars import _CustomBuddhistCalendar, _CustomChineseCalendar
+from holidays.calendars import _CustomIslamicCalendar
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
@@ -41,14 +41,13 @@ class Indonesia(
         2019: ((APR, 17, "Hari Pemilihan"),),
         2020: ((DEC, 9, "Hari Pemilihan"),),
     }
-    show_estimated = True
 
     def __init__(self, *args, **kwargs):
         BuddhistCalendarHolidays.__init__(
-            self, calendar=IndonesiaBuddhistCalendar()
+            self, calendar=IndonesiaBuddhistCalendar(), show_estimated=True
         )
         ChineseCalendarHolidays.__init__(
-            self, calendar=IndonesiaChineseCalendar()
+            self, calendar=IndonesiaChineseCalendar(), show_estimated=True
         )
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
@@ -140,7 +139,7 @@ class IDN(Indonesia):
     pass
 
 
-class IndonesiaBuddhistCalendar(_CustomCalendar, _BuddhistLunisolar):
+class IndonesiaBuddhistCalendar(_CustomBuddhistCalendar):
     VESAK_DATES = {
         2007: (JUN, 1),
         2008: (MAY, 20),
@@ -162,7 +161,7 @@ class IndonesiaBuddhistCalendar(_CustomCalendar, _BuddhistLunisolar):
     }
 
 
-class IndonesiaChineseCalendar(_CustomCalendar, _ChineseLunisolar):
+class IndonesiaChineseCalendar(_CustomChineseCalendar):
     LUNAR_NEW_YEAR_DATES = {
         2003: (FEB, 1),
         2004: (JAN, 22),
@@ -188,7 +187,7 @@ class IndonesiaChineseCalendar(_CustomCalendar, _ChineseLunisolar):
     }
 
 
-class IndonesiaIslamicCalendar(_CustomCalendar, _IslamicLunar):
+class IndonesiaIslamicCalendar(_CustomIslamicCalendar):
     EID_AL_ADHA_DATES = {
         2001: ((MAR, 6),),
         2002: ((FEB, 23),),

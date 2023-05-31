@@ -123,9 +123,10 @@ class TestVaticanCity(TestCase):
         self.assertNoHolidayName(name, range(2010, 2050))
 
     def test_saint_joseph_workers_day(self):
+        name = "Saint Joseph the Worker's Day"
+        self.assertNoHolidayName(name, VaticanCity(years=1954))
         self.assertHolidaysName(
-            "Saint Joseph the Worker's Day",
-            (f"{year}-05-01" for year in range(1970, 2050)),
+            name, (f"{year}-05-01" for year in range(1955, 2050))
         )
 
     def test_saints_peter_and_paul_day(self):

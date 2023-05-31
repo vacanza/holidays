@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars import _CustomCalendar, _IslamicLunar
+from holidays.calendars import _CustomIslamicCalendar
 from holidays.constants import APR, MAY, JUN, JUL, AUG, SEP, NOV, DEC, FRI, SAT
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
@@ -102,7 +102,7 @@ class ARE(UnitedArabEmirates):
     pass
 
 
-class UnitedArabEmiratesIslamicCalendar(_CustomCalendar, _IslamicLunar):
+class UnitedArabEmiratesIslamicCalendar(_CustomIslamicCalendar):
     EID_AL_ADHA_DATES = {
         2017: ((SEP, 1),),
         2018: ((AUG, 21),),
