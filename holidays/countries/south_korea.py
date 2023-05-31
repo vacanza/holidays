@@ -36,7 +36,7 @@ class SouthKorea(
     According to (3), the alt holidays in Korea are as follows:
     The alt holiday means next first non holiday after the holiday.
     Independence movement day, Liberation day, National Foundation Day,
-    Hangul Day, Children's Day, Birthday of the Buddha, Christmas Day have alt holiday if they fell on saturday or sunday.
+    Hangul Day, Children's Day, Birthday of the Buddha, Christmas Day have alt holiday if they fell on Saturday or Sunday.
     Lunar New Year's Day, Korean Mid Autumn Day have alt holiday if they fell
     on only sunday.
 
