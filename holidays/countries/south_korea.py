@@ -195,8 +195,9 @@ class SouthKorea(
 
         # Christmas Day
         name = "Christmas Day"
-        dec_25 = self._add_christmas_day(name)
-        self._add_with_alt_holiday(name, dec_25, add_hol=False, since=2023)
+        self._add_with_alt_holiday(
+            name, self._add_christmas_day(name), add_hol=False, since=2023
+        )
 
 
 class Korea(SouthKorea):
