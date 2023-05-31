@@ -18,6 +18,8 @@ class VaticanCity(HolidayBase, ChristianHolidays):
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_Vatican_City
+      - https://www.ewtn.com/catholicism/library/solemnity-of-mary-mother-of-god-5826  # noqa: E501
+      - https://www.franciscanmedia.org/saint-of-the-day/saint-joseph-the-worker/  # noqa: E501
     """
 
     country = "VA"
@@ -32,6 +34,9 @@ class VaticanCity(HolidayBase, ChristianHolidays):
         super()._populate(year)
 
         # Solemnity of Mary Day.
+        # This is supposedly the same as International New Year.
+        # Modern adoption across the entire Latin Church in 1931 though this
+        # was already celebrated in Rome as the Octave day of Christmas.
         self._add_holiday("Solemnity of Mary Day", JAN, 1)
 
         # Epiphany.
@@ -71,8 +76,10 @@ class VaticanCity(HolidayBase, ChristianHolidays):
             # Saint George's Day.
             self._add_saint_georges_day("Saint George's Day")
 
-        # Saint Joseph the Worker's Day.
-        self._add_holiday("Saint Joseph the Worker's Day", MAY, 1)
+        if year >= 1955:
+            # Saint Joseph the Worker's Day.
+            # Created in response to May Day holidays by Pope Pius XII in 1955.
+            self._add_holiday("Saint Joseph the Worker's Day", MAY, 1)
 
         if year <= 2009:
             # Ascension of Christ.
