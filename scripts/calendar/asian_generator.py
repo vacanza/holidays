@@ -17,11 +17,11 @@ from functools import lru_cache
 from pathlib import Path
 
 
-class _LuniSolar:
+class _Lunisolar:
     def __init__(self) -> None:
         """
-        This class has functions that generate Gregorian dates for holidays
-        based on the Chinese lunisolar calendar.
+        This class generates Gregorian dates for Chinese lunisolar calendar
+        based holidays.
 
         See `Wikipedia
         <https://en.wikipedia.org/wiki/Chinese_New_Year#Dates_in_Chinese_\
@@ -395,7 +395,7 @@ ASIAN_HOLIDAYS = (
 
 
 def generate_data():
-    cnls = _LuniSolar()
+    cnls = _Lunisolar()
 
     g_year_min, g_year_max = (1901, 2099)
     dates = {}
@@ -408,9 +408,9 @@ def generate_data():
                 dates[g_year][hol_name] = g_date
             else:
                 dates[g_year] = {hol_name: g_date}
-        dates[g_year]["VESAK_MAY"] = cnls.vesak_may_date(g_year)
         dates[g_year]["DIWALI"] = cnls.s_diwali_date(g_year)
         dates[g_year]["THAIPUSAM"] = cnls.thaipusam_date(g_year)
+        dates[g_year]["VESAK_MAY"] = cnls.vesak_may_date(g_year)
 
     for calendar in CALENDARS:
         holiday_names = sorted(
