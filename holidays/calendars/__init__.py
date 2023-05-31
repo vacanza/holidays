@@ -12,12 +12,14 @@
 from datetime import date
 from datetime import timedelta as td
 
+from holidays.calendars.buddhist import _CustomBuddhistCalendar
 from holidays.calendars.buddhist import _BuddhistLunisolar
+from holidays.calendars.chinese import _CustomChineseCalendar
 from holidays.calendars.chinese import _ChineseLunisolar
 from holidays.calendars.custom import _CustomCalendar
 from holidays.calendars.hebrew import _HebrewLunisolar
-from holidays.calendars.hindu import _HinduLunisolar
-from holidays.calendars.islamic import _IslamicLunar
+from holidays.calendars.hindu import _HinduLunisolar, _CustomHinduCalendar
+from holidays.calendars.islamic import _CustomIslamicCalendar, _IslamicLunar
 from holidays.calendars.thai import _ThaiLunisolar
 
 GREGORIAN_CALENDAR = "GREGORIAN_CALENDAR"

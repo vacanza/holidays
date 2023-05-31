@@ -494,8 +494,11 @@ class BuddhistCalendarHolidays:
     Buddhist lunisolar calendar holidays.
     """
 
-    def __init__(self, calendar=_BuddhistLunisolar()) -> None:
+    def __init__(
+        self, calendar=_BuddhistLunisolar(), show_estimated=False
+    ) -> None:
         self._buddhist_calendar = calendar
+        self._show_estimated = show_estimated
 
     def _add_buddhist_calendar_holiday(
         self,
@@ -509,12 +512,11 @@ class BuddhistCalendarHolidays:
         is an estimation.
         """
         estimated_label = getattr(self, "estimated_label", "%s* (*estimated)")
-        show_estimated = getattr(self, "show_estimated", False)
         dt, is_estimated = hol_date
 
         return self._add_holiday(
             self.tr(estimated_label) % self.tr(name)
-            if is_estimated and show_estimated
+            if is_estimated and self._show_estimated
             else name,
             dt,
         )
@@ -550,8 +552,11 @@ class ChineseCalendarHolidays:
     Chinese lunisolar calendar holidays.
     """
 
-    def __init__(self, calendar=_ChineseLunisolar()) -> None:
+    def __init__(
+        self, calendar=_ChineseLunisolar(), show_estimated=False
+    ) -> None:
         self._chinese_calendar = calendar
+        self._show_estimated = show_estimated
 
     @property
     def _chinese_new_year(self):
@@ -587,13 +592,13 @@ class ChineseCalendarHolidays:
         is an estimation.
         """
         estimated_label = getattr(self, "estimated_label", "%s* (*estimated)")
-        show_estimated = getattr(self, "show_estimated", False)
         dt, is_estimated = hol_date
         if days_delta != 0:
             dt += td(days=days_delta)
+
         return self._add_holiday(
             self.tr(estimated_label) % self.tr(name)
-            if is_estimated and show_estimated
+            if is_estimated and self._show_estimated
             else name,
             dt,
         )
@@ -767,8 +772,11 @@ class HinduCalendarHolidays:
     Hindu lunisolar calendar holidays.
     """
 
-    def __init__(self, calendar=_HinduLunisolar()) -> None:
+    def __init__(
+        self, calendar=_HinduLunisolar(), show_estimated=False
+    ) -> None:
         self._hindu_calendar = calendar
+        self._show_estimated = show_estimated
 
     def _add_hindu_calendar_holiday(
         self,
@@ -782,12 +790,11 @@ class HinduCalendarHolidays:
         is an estimation.
         """
         estimated_label = getattr(self, "estimated_label", "%s* (*estimated)")
-        show_estimated = getattr(self, "show_estimated", False)
 
         dt, is_estimated = hol_date
         return self._add_holiday(
             self.tr(estimated_label) % self.tr(name)
-            if is_estimated and show_estimated
+            if is_estimated and self._show_estimated
             else name,
             dt,
         )

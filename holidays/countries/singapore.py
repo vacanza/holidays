@@ -11,8 +11,8 @@
 
 from datetime import timedelta as td
 
-from holidays.calendars import _BuddhistLunisolar, _ChineseLunisolar
-from holidays.calendars import _CustomCalendar, _HinduLunisolar, _IslamicLunar
+from holidays.calendars import _CustomBuddhistCalendar, _CustomChineseCalendar
+from holidays.calendars import _CustomIslamicCalendar, _CustomHinduCalendar
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
@@ -45,7 +45,6 @@ class Singapore(
         ),
         2020: ((JUL, 10, "Polling Day"),),
     }
-    show_estimated = True
 
     def __init__(self, *args, **kwargs) -> None:
         """
@@ -82,10 +81,10 @@ class Singapore(
         See parameters and usage in :py:class:`HolidayBase`.
         """
         BuddhistCalendarHolidays.__init__(
-            self, calendar=SingaporeBuddhistCalendar()
+            self, calendar=SingaporeBuddhistCalendar(), show_estimated=True
         )
         ChineseCalendarHolidays.__init__(
-            self, calendar=SingaporeChineseCalendar()
+            self, calendar=SingaporeChineseCalendar(), show_estimated=True
         )
         ChristianHolidays.__init__(self)
         HinduCalendarHolidays.__init__(self, calendar=SingaporeHinduCalendar())
@@ -181,7 +180,7 @@ class SGP(Singapore):
     pass
 
 
-class SingaporeBuddhistCalendar(_CustomCalendar, _BuddhistLunisolar):
+class SingaporeBuddhistCalendar(_CustomBuddhistCalendar):
     VESAK_DATES = {
         2001: (MAY, 7),
         2002: (MAY, 26),
@@ -209,7 +208,7 @@ class SingaporeBuddhistCalendar(_CustomCalendar, _BuddhistLunisolar):
     }
 
 
-class SingaporeChineseCalendar(_CustomCalendar, _ChineseLunisolar):
+class SingaporeChineseCalendar(_CustomChineseCalendar):
     LUNAR_NEW_YEAR_DATES = {
         2001: (JAN, 24),
         2002: (FEB, 12),
@@ -237,7 +236,7 @@ class SingaporeChineseCalendar(_CustomCalendar, _ChineseLunisolar):
     }
 
 
-class SingaporeHinduCalendar(_CustomCalendar, _HinduLunisolar):
+class SingaporeHinduCalendar(_CustomHinduCalendar):
     DIWALI_DATES = {
         2001: (NOV, 14),
         2002: (NOV, 3),
@@ -265,7 +264,7 @@ class SingaporeHinduCalendar(_CustomCalendar, _HinduLunisolar):
     }
 
 
-class SingaporeIslamicCalendar(_CustomCalendar, _IslamicLunar):
+class SingaporeIslamicCalendar(_CustomIslamicCalendar):
     EID_AL_ADHA_DATES = {
         2001: ((MAR, 6),),
         2002: ((FEB, 23),),

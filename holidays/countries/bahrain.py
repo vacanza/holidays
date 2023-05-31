@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars import _CustomCalendar, _IslamicLunar
+from holidays.calendars import _CustomIslamicCalendar
 from holidays.constants import FRI, SAT, MAY, JUL, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
@@ -79,7 +79,7 @@ class BAH(Bahrain):
     pass
 
 
-class BahrainIslamicCalendar(_CustomCalendar, _IslamicLunar):
+class BahrainIslamicCalendar(_CustomIslamicCalendar):
     ASHURA_DATES = {
         2022: ((AUG, 8),),
     }
