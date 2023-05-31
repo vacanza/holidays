@@ -140,9 +140,11 @@ class SouthKorea(
 
         # Birthday of the Buddha
         name = "Birthday of the Buddha"
-        buddha_birthday_date = self._add_chinese_birthday_of_buddha(name)
         self._add_with_alt_holiday(
-            name, buddha_birthday_date, add_hol=False, since=2023
+            name,
+            self._add_chinese_birthday_of_buddha(name),
+            add_hol=False,
+            since=2023,
         )
 
         # Children's Day
