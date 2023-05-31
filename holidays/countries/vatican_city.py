@@ -9,12 +9,12 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.constants import FEB, MAR, APR, OCT, NOV
+from holidays.constants import JAN, FEB, MAR, APR, MAY, OCT, NOV
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
+from holidays.holiday_groups import ChristianHolidays
 
 
-class VaticanCity(HolidayBase, ChristianHolidays, InternationalHolidays):
+class VaticanCity(HolidayBase, ChristianHolidays):
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_Vatican_City
@@ -26,7 +26,6 @@ class VaticanCity(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
-        InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year: int) -> None:
@@ -38,7 +37,7 @@ class VaticanCity(HolidayBase, ChristianHolidays, InternationalHolidays):
         # This is supposedly the same as International New Year.
         # Modern adoption across the entire Latin Church in 1931 though this
         # was already celebrated in Rome as the Octave day of Christmas.
-        self._add_new_years_day("Solemnity of Mary Day")
+        self._add_holiday("Solemnity of Mary Day", JAN, 1)
 
         # Epiphany.
         self._add_epiphany_day("Epiphany")
@@ -80,7 +79,7 @@ class VaticanCity(HolidayBase, ChristianHolidays, InternationalHolidays):
         if year >= 1955:
             # Saint Joseph the Worker's Day.
             # Created in response to May Day holidays by Pope Pius XII in 1955.
-            self._add_labor_day("Saint Joseph the Worker's Day")
+            self._add_holiday("Saint Joseph the Worker's Day", MAY, 1)
 
         if year <= 2009:
             # Ascension of Christ.
