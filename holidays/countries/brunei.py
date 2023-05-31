@@ -120,7 +120,9 @@ class Brunei(
         _add_observed(
             self._add_holiday(
                 # Armed Forces Day
-                tr("Hari Angkatan Bersenjata Diraja Brunei"), MAY, 31
+                tr("Hari Angkatan Bersenjata Diraja Brunei"),
+                MAY,
+                31,
             )
         )
 
@@ -131,7 +133,9 @@ class Brunei(
         _add_observed(
             self._add_holiday(
                 # Sultan Hassanal Bolkiah's Birthday
-                tr("Hari Keputeraan KDYMM Sultan Brunei"), JUL, 15
+                tr("Hari Keputeraan KDYMM Sultan Brunei"),
+                JUL,
+                15,
             )
         )
 
