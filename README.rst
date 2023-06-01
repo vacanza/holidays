@@ -284,7 +284,7 @@ subdivisions are available:
      - None
    * - Isle of Man
      - IM
-     - None; can also be loaded as country GB, subdivision Isle of Man
+     - None
    * - Israel
      - IL
      - None
@@ -461,7 +461,7 @@ subdivisions are available:
      - None
    * - United Kingdom
      - GB
-     - Subdivisions: England, Isle of Man, Northern Ireland, Scotland, **UK** (default), Wales
+     - Subdivisions: England, Northern Ireland, Scotland, **UK** (default), Wales; For Isle of Man use country code IM
    * - United States Minor Outlying Islands
      - UM
      - None; Can also be loaded as country US, subdivision UM
