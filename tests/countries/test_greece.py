@@ -9,8 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-
 from holidays.countries.greece import Greece, GR, GRC
 from tests.common import TestCase
 
@@ -18,93 +16,122 @@ from tests.common import TestCase
 class TestGreece(TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Greece)
+        super().setUpClass(Greece, years=range(2000, 2025))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Greece, GR, GRC)
 
     def test_fixed_holidays(self):
         years = range(2000, 2025)
-        for y in years:
-            fdays = (
-                (date(y, 1, 1), "Πρωτοχρονιά"),
-                (date(y, 1, 6), "Θεοφάνεια"),
-                (date(y, 3, 25), "Εικοστή Πέμπτη Μαρτίου"),
-                (date(y, 5, 1), "Εργατική Πρωτομαγιά"),
-                (date(y, 8, 15), "Κοίμηση της Θεοτόκου"),
-                (date(y, 10, 28), "Ημέρα του Όχι"),
-                (date(y, 12, 25), "Χριστούγεννα"),
-                (date(y, 12, 26), "Επόμενη ημέρα των Χριστουγέννων"),
+        for m, d, name in (
+            (1, 1, "Πρωτοχρονιά"),
+            (1, 6, "Θεοφάνεια"),
+            (3, 25, "Εικοστή Πέμπτη Μαρτίου"),
+            (5, 1, "Εργατική Πρωτομαγιά"),
+            (8, 15, "Κοίμηση της Θεοτόκου"),
+            (10, 28, "Ημέρα του Όχι"),
+            (12, 25, "Χριστούγεννα"),
+            (12, 26, "Επόμενη ημέρα των Χριστουγέννων"),
+        ):
+            self.assertHolidaysName(
+                name, (f"{year}-{m}-{d}" for year in years)
             )
 
-            for d, dstr in fdays:
-                self.assertIn(d, self.holidays)
-                self.assertIn(dstr, self.holidays[d])
-
-    def test_gr_clean_monday(self):
-        checkdates = (
-            date(2018, 2, 19),
-            date(2019, 3, 11),
-            date(2020, 3, 2),
-            date(2021, 3, 15),
-            date(2022, 3, 7),
-            date(2023, 2, 27),
-            date(2024, 3, 18),
+    def test_clean_monday(self):
+        self.assertHolidaysName(
+            "Καθαρά Δευτέρα",
+            "2018-02-19",
+            "2019-03-11",
+            "2020-03-02",
+            "2021-03-15",
+            "2022-03-07",
+            "2023-02-27",
+            "2024-03-18",
         )
 
-        for d in checkdates:
-            self.assertIn(d, self.holidays)
-            self.assertIn("Καθαρά Δευτέρα", self.holidays[d])
-
-    def test_gr_easter_monday(self):
-        checkdates = (
-            date(2018, 4, 9),
-            date(2019, 4, 29),
-            date(2020, 4, 20),
-            date(2021, 5, 3),
-            date(2022, 4, 25),
-            date(2023, 4, 17),
-            date(2024, 5, 6),
+    def test_good_friday(self):
+        self.assertHolidaysName(
+            "Μεγάλη Παρασκευή",
+            "2018-04-06",
+            "2019-04-26",
+            "2020-04-17",
+            "2021-04-30",
+            "2022-04-22",
+            "2023-04-14",
+            "2024-05-03",
         )
 
-        for d in checkdates:
-            self.assertIn(d, self.holidays)
-            self.assertIn("Δευτέρα του Πάσχα", self.holidays[d])
-
-    def test_gr_monday_of_the_holy_spirit(self):
-        checkdates = (
-            date(2018, 5, 28),
-            date(2019, 6, 17),
-            date(2020, 6, 8),
-            date(2021, 6, 21),
-            date(2022, 6, 13),
-            date(2023, 6, 5),
-            date(2024, 6, 24),
+    def test_easter_monday(self):
+        self.assertHolidaysName(
+            "Δευτέρα του Πάσχα",
+            "2018-04-09",
+            "2019-04-29",
+            "2020-04-20",
+            "2021-05-03",
+            "2022-04-25",
+            "2023-04-17",
+            "2024-05-06",
         )
 
-        for d in checkdates:
-            self.assertIn(d, self.holidays)
-            self.assertIn("Δευτέρα του Αγίου Πνεύματος", self.holidays[d])
-
-    def test_gr_labour_day_observed(self):
-        # Dates when labour day was observed on a different date
-        checkdates = (
-            date(2016, 5, 3),
-            date(2021, 5, 4),
-            date(2022, 5, 2),
-            date(2033, 5, 2),
+    def test_monday_of_the_holy_spirit(self):
+        self.assertHolidaysName(
+            "Δευτέρα του Αγίου Πνεύματος",
+            "2018-05-28",
+            "2019-06-17",
+            "2020-06-08",
+            "2021-06-21",
+            "2022-06-13",
+            "2023-06-05",
+            "2024-06-24",
         )
-        # Years when labour date was observed on May 1st
-        checkyears = (2017, 2018, 2019, 2020, 2023)
 
-        for d in checkdates:
-            self.assertIn(d, self.holidays)
-            self.assertIn("Εργατική Πρωτομαγιά", self.holidays[d])
+    def test_labour_day_observed(self):
+        name_observed = "Εργατική Πρωτομαγιά (παρατηρήθηκε)"
+        dt = (
+            "2011-05-02",
+            "2016-05-03",
+            "2021-05-04",
+            "2022-05-02",
+        )
+        self.assertHolidaysName(name_observed, dt)
+        self.assertNoNonObservedHoliday(dt)
+        self.assertNoHolidayName(name_observed, 2017, 2018, 2019, 2020, 2023)
 
-        # Check that there is no observed day created for years
-        # when Labour Day was on May 1st
-        for year in checkyears:
-            for day in (2, 3, 4):
-                d = date(year, 5, day)
-                if d in self.holidays:
-                    self.assertNotIn("Εργατική Πρωτομαγιά", self.holidays[d])
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Πρωτοχρονιά"),
+                ("2022-01-06", "Θεοφάνεια"),
+                ("2022-03-07", "Καθαρά Δευτέρα"),
+                ("2022-03-25", "Εικοστή Πέμπτη Μαρτίου"),
+                ("2022-04-22", "Μεγάλη Παρασκευή"),
+                ("2022-04-25", "Δευτέρα του Πάσχα"),
+                ("2022-05-01", "Εργατική Πρωτομαγιά"),
+                ("2022-05-02", "Εργατική Πρωτομαγιά (παρατηρήθηκε)"),
+                ("2022-06-13", "Δευτέρα του Αγίου Πνεύματος"),
+                ("2022-08-15", "Κοίμηση της Θεοτόκου"),
+                ("2022-10-28", "Ημέρα του Όχι"),
+                ("2022-12-25", "Χριστούγεννα"),
+                ("2022-12-26", "Επόμενη ημέρα των Χριστουγέννων"),
+            )
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "New Year’s Day"),
+                ("2022-01-06", "Epiphany"),
+                ("2022-03-07", "Clean Monday"),
+                ("2022-03-25", "Independence Day"),
+                ("2022-04-22", "Good Friday"),
+                ("2022-04-25", "Easter Monday"),
+                ("2022-05-01", "Labor Day"),
+                ("2022-05-02", "Labor Day (Observed)"),
+                ("2022-06-13", "Easter Monday"),
+                ("2022-08-15", "Assumption of Mary Day"),
+                ("2022-10-28", "Ochi Day"),
+                ("2022-12-25", "Christmas Day"),
+                ("2022-12-26", "Day After Christmas"),
+            ),
+            "en_US",
+        )
