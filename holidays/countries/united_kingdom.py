@@ -11,22 +11,17 @@
 
 from datetime import date
 from datetime import timedelta as td
-from typing import Any, Tuple, Union
-
-from dateutil.easter import easter
+from typing import Tuple, Union
 
 from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
-from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, NOV
-from holidays.constants import DEC, MON
+from holidays.constants import MAR, APR, MAY, JUN, JUL, AUG, SEP, NOV, DEC, MON
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class UnitedKingdom(HolidayBase):
+class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_the_United_Kingdom
-    This class is extended by other countries (Ireland, Isle of Man, ...)
-    It must be taken into account when adding or modifying holidays.
-    Look at _country_specific() method for country specific behavior.
     """
 
     country = "GB"
@@ -51,124 +46,157 @@ class UnitedKingdom(HolidayBase):
         "Wales",
     )
 
-    def __init__(self, **kwargs: Any) -> None:
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
         # default subdiv to UK; state for backwards compatibility
         if not kwargs.get("subdiv", kwargs.get("state")):
             kwargs["subdiv"] = "UK"
-        HolidayBase.__init__(self, **kwargs)
+        super().__init__(*args, **kwargs)
+
+    def _add_observed(self, dt: date) -> None:
+        if self.observed and self._is_weekend(dt):
+            obs_date = _get_nth_weekday_from(1, MON, dt)
+            if obs_date in self:
+                obs_date += td(days=+1)
+            self._add_holiday("%s (Observed)" % self[dt], obs_date)
 
     def _populate(self, year: int) -> None:
         super()._populate(year)
 
-        # New Year's Day
-        if year >= 1974:
-            name = "New Year's Day"
-            dt = date(year, JAN, 1)
-            self[dt] = name
-            if self.observed and self._is_weekend(dt):
-                self[_get_nth_weekday_from(1, MON, dt)] = name + " (Observed)"
-
-        # New Year Holiday
-        if self.subdiv in {"Scotland", "UK"}:
-            name = "New Year Holiday"
-            dt = date(year, JAN, 2)
-            if self.subdiv == "UK":
-                name += " [Scotland]"
-            self[dt] = name
-            if self.observed and self._is_weekend(dt):
-                self[dt + td(days=+2)] = name + " (Observed)"
-            elif self.observed and self._is_monday(dt):
-                self[dt + td(days=+1)] = name + " (Observed)"
-
-        # St. Patrick's Day
-        if self.subdiv in {"Northern Ireland", "UK"}:
-            name = "St. Patrick's Day"
-            dt = date(year, MAR, 17)
-            if self.subdiv == "UK":
-                name += " [Northern Ireland]"
-            self[dt] = name
-            if self.observed and self._is_weekend(dt):
-                self[_get_nth_weekday_from(1, MON, dt)] = name + " (Observed)"
-
-        # Battle of the Boyne
-        if self.subdiv in {"Northern Ireland", "UK"}:
-            name = "Battle of the Boyne"
-            if self.subdiv == "UK":
-                name += " [Northern Ireland]"
-            self[date(year, JUL, 12)] = name
-
-        # Summer bank holiday (first Monday in August)
-        if self.subdiv in {"Scotland", "UK"}:
-            name = "Summer Bank Holiday"
-            if self.subdiv == "UK":
-                name += " [Scotland]"
-            self[_get_nth_weekday_of_month(1, MON, AUG, year)] = name
-
-        # St. Andrew's Day
-        if self.subdiv in {"Scotland", "UK"}:
-            name = "St. Andrew's Day"
-            if self.subdiv == "UK":
-                name += " [Scotland]"
-            self[date(year, NOV, 30)] = name
-
-        # Christmas Day
-        name = "Christmas Day"
-        dt = date(year, DEC, 25)
-        self[dt] = name
-        if self.observed and self._is_weekend(dt):
-            self[dt + td(days=+2)] = name + " (Observed)"
-
-        # Overwrite to modify country specific holidays
-        self._country_specific(year)
-
-    def _country_specific(self, year: int) -> None:
-        # This method is replaced by class Ireland
-
-        # UnitedKingdom exclusive holidays
-
-        easter_date = easter(year)
         # Good Friday
-        self[easter_date + td(days=-2)] = "Good Friday"
-
-        # Easter Monday
-        if self.subdiv != "Scotland":
-            name = "Easter Monday"
-            if self.subdiv == "UK":
-                name += " [England/Wales/Northern Ireland]"
-            self[easter_date + td(days=+1)] = name
+        self._add_good_friday("Good Friday")
 
         # May Day bank holiday (first Monday in May)
         if year >= 1978:
-            name = "May Day"
-            if year == 1995 or year == 2020:
+            dt = (
+                date(year, MAY, 8)
                 # In 2020 moved to Friday to mark 75th anniversary of VE Day.
-                dt = date(year, MAY, 8)
-            else:
-                dt = _get_nth_weekday_of_month(1, MON, MAY, year)
-            self[dt] = name
+                if year in {1995, 2020}
+                else _get_nth_weekday_of_month(1, MON, MAY, year)
+            )
+            self._add_holiday("May Day", dt)
 
         # Spring bank holiday (last Monday in May)
-        name = "Spring Bank Holiday"
-        if year == 2012:
-            self[date(year, JUN, 4)] = name
-        elif year == 2022:
-            self[date(year, JUN, 2)] = name
-        elif year >= 1971:
-            self[_get_nth_weekday_of_month(-1, MON, MAY, year)] = name
+        if year >= 1971:
+            spring_bank_dates = {
+                2002: date(year, JUN, 4),
+                2012: date(year, JUN, 4),
+                2022: date(year, JUN, 2),
+            }
+            dt = spring_bank_dates.get(
+                year, _get_nth_weekday_of_month(-1, MON, MAY, year)
+            )
+            self._add_holiday("Spring Bank Holiday", dt)
 
-        # Late Summer bank holiday (last Monday in August)
-        if self.subdiv != "Scotland" and year >= 1971:
-            name = "Late Summer Bank Holiday"
-            if self.subdiv == "UK":
-                name += " [England/Wales/Northern Ireland]"
-            self[_get_nth_weekday_of_month(-1, MON, AUG, year)] = name
+        # Christmas Day
+        dec_25 = self._add_christmas_day("Christmas Day")
 
         # Boxing Day
-        name = "Boxing Day"
-        dt = date(year, DEC, 26)
-        self[dt] = name
-        if self.observed and self._is_weekend(dt):
-            self[dt + td(days=+2)] = name + " (Observed)"
+        dec_26 = self._add_christmas_day_two("Boxing Day")
+
+        self._add_observed(dec_25)
+        self._add_observed(dec_26)
+
+    def _add_subdiv_holidays(self):
+        # New Year's Day
+        if self._year >= 1974:
+            self._add_observed(self._add_new_years_day("New Year's Day"))
+
+        super()._add_subdiv_holidays()
+
+    def _add_subdiv_england_holidays(self):
+        # Easter Monday
+        self._add_easter_monday("Easter Monday")
+
+        # Late Summer bank holiday (last Monday in August)
+        if self._year >= 1971:
+            self._add_holiday(
+                "Late Summer Bank Holiday",
+                _get_nth_weekday_of_month(-1, MON, AUG, self._year),
+            )
+
+    def _add_subdiv_northern_ireland_holidays(self):
+        # St. Patrick's Day
+        self._add_observed(self._add_holiday("St. Patrick's Day", MAR, 17))
+
+        # Easter Monday
+        self._add_easter_monday("Easter Monday")
+
+        # Battle of the Boyne
+        self._add_holiday("Battle of the Boyne", JUL, 12)
+
+        # Late Summer bank holiday (last Monday in August)
+        if self._year >= 1971:
+            self._add_holiday(
+                "Late Summer Bank Holiday",
+                _get_nth_weekday_of_month(-1, MON, AUG, self._year),
+            )
+
+    def _add_subdiv_scotland_holidays(self):
+        # New Year Holiday
+        name = "New Year Holiday"
+        jan_2 = self._add_new_years_day_two(name)
+        self._add_observed(jan_2)
+        if self.observed and self._is_monday(jan_2):
+            self._add_new_years_day_three("%s (Observed)" % name)
+
+        # Summer bank holiday (first Monday in August)
+        self._add_holiday(
+            "Summer Bank Holiday",
+            _get_nth_weekday_of_month(1, MON, AUG, self._year),
+        )
+
+        # St. Andrew's Day
+        self._add_holiday("St. Andrew's Day", NOV, 30)
+
+    def _add_subdiv_uk_holidays(self):
+        # New Year Holiday
+        name = "New Year Holiday [Scotland]"
+        jan_2 = self._add_new_years_day_two(name)
+        self._add_observed(jan_2)
+        if self.observed and self._is_monday(jan_2):
+            self._add_new_years_day_three("%s (Observed)" % name)
+
+        # St. Patrick's Day
+        self._add_observed(
+            self._add_holiday("St. Patrick's Day [Northern Ireland]", MAR, 17)
+        )
+
+        # Easter Monday
+        self._add_easter_monday(
+            "Easter Monday [England/Wales/Northern Ireland]"
+        )
+
+        # Battle of the Boyne
+        self._add_holiday("Battle of the Boyne [Northern Ireland]", JUL, 12)
+
+        # Summer bank holiday (first Monday in August)
+        self._add_holiday(
+            "Summer Bank Holiday [Scotland]",
+            _get_nth_weekday_of_month(1, MON, AUG, self._year),
+        )
+
+        # Late Summer bank holiday (last Monday in August)
+        if self._year >= 1971:
+            self._add_holiday(
+                "Late Summer Bank Holiday [England/Wales/Northern Ireland]",
+                _get_nth_weekday_of_month(-1, MON, AUG, self._year),
+            )
+
+        # St. Andrew's Day
+        self._add_holiday("St. Andrew's Day [Scotland]", NOV, 30)
+
+    def _add_subdiv_wales_holidays(self):
+        # Easter Monday
+        self._add_easter_monday("Easter Monday")
+
+        # Late Summer bank holiday (last Monday in August)
+        if self._year >= 1971:
+            self._add_holiday(
+                "Late Summer Bank Holiday",
+                _get_nth_weekday_of_month(-1, MON, AUG, self._year),
+            )
 
 
 class UK(UnitedKingdom):
