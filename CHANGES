@@ -13,9 +13,11 @@ Version 0.26
 - Add Gabon holidays (#1244 by @KJhellico)
 - Update Azerbaijan holidays: use custom Islamic calendar (#1231 by @KJhellico)
 - Update ChineseCalendarHolidays: add Ching Ming Festival (#1240 by @KJhellico)
+- Update Greece holidays: add Good Friday (#1257 by @KJhellico)
 - Update Morocco holidays (#1205 by @abh31000)
+- Update README supported country table format (#1241 by @arkid15r)
 - Update Singapore tests: cover non-observed holidays (#1184 by @arkid15r)
-- Update South Korea holidays: add alternative holidays fot Birthday of the Buddha and Christmas Day (#1249 by @DiceMono)
+- Update South Korea holidays: add alternative holidays for Birthday of the Buddha and Christmas Day (#1249 by @DiceMono)
 - Update Vatican City holidays (#1206 by @KJhellico)
 - Update Vatican City holidays: add Saint Joseph the Worker's Day introduction year check (#1242 by @PPsyrius)
 - Update calendar naming: fix grammar (#1220 by @arkid15r)
@@ -31,6 +33,7 @@ Version 0.26
 - Migrate Montenegro holidays to holiday groups (#1248 by @kasya)
 - Migrate New Zealand holidays to holiday groups and subdivision holidays methods (#1212 by @KJhellico)
 - Migrate San Marino holidays to holiday groups (#1247 by @kasya)
+- Migrate United Kingdom holidays to holiday groups and subdivision holidays methods (#1213 by @KJhellico)
 - Migrate financial to holiday groups (#1174 by @arkid15r)
 
 Version 0.25
