@@ -30,7 +30,7 @@ class TestUK(TestCase):
         cls.holidays_scotland = UnitedKingdom(
             subdiv="Scotland", years=range(2000, 2024)
         )
-        cls.holidays_northernireland = UnitedKingdom(
+        cls.holidays_northern_ireland = UnitedKingdom(
             subdiv="Northern Ireland", years=range(2000, 2024)
         )
 
@@ -219,10 +219,10 @@ class TestUK(TestCase):
             "2023-08-07",
         )
         self.assertHolidaysName(name_global, dt)
-        self.assertNoHoliday(self.holidays_northernireland, dt)
+        self.assertNoHoliday(self.holidays_northern_ireland, dt)
         self.assertNoHoliday(self.holidays_wales, dt)
         self.assertNoHolidayName(
-            name, self.holidays_northernireland, range(2000, 2024)
+            name, self.holidays_northern_ireland, range(2000, 2024)
         )
         self.assertNoHolidayName(name, self.holidays_wales, range(2000, 2024))
 
@@ -266,7 +266,7 @@ class TestUK(TestCase):
             name_global, (f"{year}-11-30" for year in range(1950, 2050))
         )
         self.assertNoHoliday(
-            self.holidays_northernireland,
+            self.holidays_northern_ireland,
             (f"{year}-11-30" for year in range(2000, 2024)),
         )
         self.assertNoHoliday(
@@ -274,7 +274,7 @@ class TestUK(TestCase):
             (f"{year}-11-30" for year in range(2000, 2024)),
         )
         self.assertNoHolidayName(
-            name, self.holidays_northernireland, range(2000, 2024)
+            name, self.holidays_northern_ireland, range(2000, 2024)
         )
         self.assertNoHolidayName(name, self.holidays_wales, range(2000, 2024))
 
