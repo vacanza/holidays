@@ -106,11 +106,11 @@ msgstr ""
 msgid "Paso a la Inmortalidad del General Don José de San Martin"
 msgstr ""
 
-#: ./holidays/countries/argentina.py:316
+#: ./holidays/countries/argentina.py:319
 msgid "Día del Respeto a la Diversidad Cultural"
 msgstr ""
 
-#: ./holidays/countries/argentina.py:318
+#: ./holidays/countries/argentina.py:315
 msgid "Día de la Raza"
 msgstr ""
 
