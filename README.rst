@@ -108,7 +108,7 @@ Available Countries
 .. _ISO 3166-2 code: https://en.wikipedia.org/wiki/ISO_3166-2
 .. _ISO 639-1 code: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 
-We currently support 126 country codes. The standard way to refer to a country
+We currently support 127 country codes. The standard way to refer to a country
 is by using its `ISO 3166-1 alpha-2 code`_, the same used for domain names, and
 for a subdivision its `ISO 3166-2 code`_. Some of the countries support more
 than one language for holiday names output.
@@ -227,6 +227,10 @@ The list of supported countries, their subdivisions and supported languages
      - CA
      - Provinces and territories: AB, BC, MB, NB, NL, NS, NT, NU, **ON**, PE, QC, SK, YT
      - ar, **en**, en_US, fr, th
+   * - Chad
+     - TD
+     -
+     -
    * - Chile
      - CL
      - Regions: AI, AN, AP, AR, AT, BI, CO, LI, LL, LR, MA, ML, NB, RM, TA, VS
