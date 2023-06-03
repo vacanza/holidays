@@ -11,7 +11,7 @@
 
 from datetime import timedelta as td
 
-from holidays.calendars import _CustomCalendar, _IslamicLunar
+from holidays.calendars import _CustomIslamicCalendar
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
@@ -111,7 +111,7 @@ class CMR(Cameroon):
     pass
 
 
-class CameroonIslamicCalendar(_CustomCalendar, _IslamicLunar):
+class CameroonIslamicCalendar(_CustomIslamicCalendar):
     EID_AL_ADHA_DATES = {
         2001: ((MAR, 6),),
         2002: ((FEB, 23),),
