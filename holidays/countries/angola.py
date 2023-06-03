@@ -109,9 +109,7 @@ class Angola(HolidayBase, ChristianHolidays, InternationalHolidays):
             )
 
         # All Souls' Day.
-        self._add_observed_holiday(
-            self._add_holiday("Dia dos Finados", NOV, 2)
-        )
+        self._add_observed_holiday(self._add_all_souls_day("Dia dos Finados"))
 
         # Independence Day.
         self._add_observed_holiday(
