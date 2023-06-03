@@ -9,16 +9,14 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from datetime import timedelta as td
 
-from dateutil.easter import easter
-
-from holidays.constants import JAN, FEB, MAR, APR, MAY, SEP, NOV, DEC
+from holidays.constants import FEB, MAR, APR, SEP, NOV, DEC
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Angola(HolidayBase):
+class Angola(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://www.officeholidays.com/countries/angola/
     https://www.timeanddate.com/holidays/angola/
@@ -26,25 +24,34 @@ class Angola(HolidayBase):
 
     country = "AO"
 
-    def _populate(self, year: int) -> None:
-        def _add_with_observed(
-            hol_date: date, hol_name: str, before: bool = True
-        ) -> None:
-            # As of 1995/1/1, whenever a public holiday falls on a Sunday,
-            # it rolls over to the following Monday
-            # Since 2018 when a public holiday falls on the Tuesday or Thursday
-            # the Monday or Friday is also a holiday
-            self[hol_date] = hol_name
-            if self.observed and year >= 1995:
-                if year <= 2017:
-                    if self._is_sunday(hol_date):
-                        self[hol_date + td(days=+1)] = f"{hol_name} (Observed)"
-                else:
-                    if self._is_tuesday(hol_date) and before:
-                        self[hol_date + td(days=-1)] = f"{hol_name} (Day off)"
-                    elif self._is_thursday(hol_date):
-                        self[hol_date + td(days=+1)] = f"{hol_name} (Day off)"
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
+    def _add_observed_holiday(self, dt, before: bool = True) -> None:
+        # As of 1995/1/1, whenever a public holiday falls on a Sunday,
+        # it rolls over to the following Monday
+        # Since 2018 when a public holiday falls on the Tuesday or Thursday
+        # the Monday or Friday is also a holiday
+        if self.observed and self._year >= 1995:
+            for name in self.get_list(dt):
+                if self._year <= 2017:
+                    if self._is_sunday(dt):
+                        self._add_holiday(
+                            "%s (Observed)" % name, dt + td(days=+1)
+                        )
+                else:
+                    if self._is_tuesday(dt) and before:
+                        self._add_holiday(
+                            "%s (Day off)" % name, dt + td(days=-1)
+                        )
+                    elif self._is_thursday(dt):
+                        self._add_holiday(
+                            "%s (Day off)" % name, dt + td(days=+1)
+                        )
+
+    def _populate(self, year: int) -> None:
         # Observed since 1975
         # TODO do more research on history of Angolan holidays
         if year <= 1974:
@@ -52,36 +59,69 @@ class Angola(HolidayBase):
 
         super()._populate(year)
 
-        _add_with_observed(date(year, JAN, 1), "Ano novo", before=False)
+        # New Year's Day.
+        self._add_observed_holiday(
+            self._add_new_years_day("Ano novo"), before=False
+        )
         # Since 2018, if the following year's New Year's Day falls on a
         # Tuesday, the 31st of the current year is also a holiday.
         if self.observed and self._is_monday(DEC, 31) and year >= 2018:
-            self[date(year, DEC, 31)] = "Ano novo (Day off)"
+            self._add_holiday("Ano novo (Day off)", DEC, 31)
 
-        easter_date = easter(year)
-        self[easter_date + td(days=-2)] = "Sexta-feira Santa"
+        # Good Friday.
+        self._add_good_friday("Sexta-feira Santa")
 
-        # carnival is the Tuesday before Ash Wednesday
-        # which is 40 days before easter excluding sundays
-        _add_with_observed(easter_date + td(days=-47), "Carnaval")
+        # Carnival.
+        self._add_observed_holiday(self._add_carnival_tuesday("Carnaval"))
 
-        _add_with_observed(date(year, FEB, 4), "Dia do Início da Luta Armada")
-        _add_with_observed(date(year, MAR, 8), "Dia Internacional da Mulher")
+        # Liberation Movement Day.
+        self._add_observed_holiday(
+            self._add_holiday("Dia do Início da Luta Armada", FEB, 4)
+        )
 
+        # Day off for International Woman's Day.
+        self._add_observed_holiday(
+            self._add_womens_day("Dia Internacional da Mulher")
+        )
+
+        # Southern Africa Liberation Day.
         if year >= 2019:
-            _add_with_observed(
-                date(year, MAR, 23), "Dia da Libertação da África Austral"
+            self._add_observed_holiday(
+                self._add_holiday(
+                    "Dia da Libertação da África Austral", MAR, 23
+                )
             )
 
-        _add_with_observed(date(year, APR, 4), "Dia da Paz e Reconciliação")
-        _add_with_observed(date(year, MAY, 1), "Dia Mundial do Trabalho")
+        # Peace Day.
+        self._add_observed_holiday(
+            self._add_holiday("Dia da Paz e Reconciliação", APR, 4)
+        )
 
+        # May Day.
+        self._add_observed_holiday(
+            self._add_labor_day("Dia Mundial do Trabalho")
+        )
+
+        # National Hero Day.
         if year >= 1980:
-            _add_with_observed(date(year, SEP, 17), "Dia do Herói Nacional")
+            self._add_observed_holiday(
+                self._add_holiday("Dia do Herói Nacional", SEP, 17)
+            )
 
-        _add_with_observed(date(year, NOV, 2), "Dia dos Finados")
-        _add_with_observed(date(year, NOV, 11), "Dia da Independência")
-        _add_with_observed(date(year, DEC, 25), "Dia de Natal e da Família")
+        # All Souls' Day.
+        self._add_observed_holiday(
+            self._add_holiday("Dia dos Finados", NOV, 2)
+        )
+
+        # Independence Day.
+        self._add_observed_holiday(
+            self._add_holiday("Dia da Independência", NOV, 11)
+        )
+
+        # Christmas Day.
+        self._add_observed_holiday(
+            self._add_christmas_day("Dia de Natal e da Família")
+        )
 
 
 class AO(Angola):
