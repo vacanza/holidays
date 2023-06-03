@@ -38,6 +38,7 @@ COUNTRIES: RegistryDict = {
     "botswana": ("Botswana", "BW", "BWA"),
     "brazil": ("Brazil", "BR", "BRA"),
     "bulgaria": ("Bulgaria", "BG", "BLG"),
+    "burkina_faso": ("BurkinaFaso", "BF", "BFA"),
     "burundi": ("Burundi", "BI", "BDI"),
     "cameroon": ("Cameroon", "CM", "CMR"),
     "canada": ("Canada", "CA", "CAN"),
