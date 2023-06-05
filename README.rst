@@ -210,11 +210,11 @@ The list of supported countries, their subdivisions and supported languages
    * - Brazil
      - BR
      - States: AC, AL, AM, AP, BA, CE, DF, ES, GO, MA, MG, MS, MT, PA, PB, PE, PI, PR, RJ, RN, RO, RR, RS, SC, SE, SP, TO
-	 -
-   * - Brunei
-     - BN
      -
-     - en_US, **ms**, th
+   * - Brunei
+	 - BN
+	 -
+	 - en_US, **ms**, th
    * - Bulgaria
      - BG
      -
