@@ -9,52 +9,63 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
-from datetime import date
-
-import holidays
+from holidays.countries.lesotho import Lesotho, LS, LSO
+from tests.common import TestCase
 
 
-class TestLesotho(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.LS()
+class TestLesotho(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Lesotho, years=range(1996, 2040))
 
-    def test_out_of_range(self):
-        self.assertNotIn(date(1995, 1, 1), self.holidays)
-        self.assertNotIn(date(1995, 3, 11), self.holidays)
+    def test_country_aliases(self):
+        self.assertCountryAliases(Lesotho, LS, LSO)
 
-    def test_new_years(self):
-        self.assertIn(date(1996, 1, 1), self.holidays)
-        self.assertIn(date(2021, 1, 1), self.holidays)
-
-    def test_easter(self):
-        self.assertIn(date(2017, 4, 14), self.holidays)
-        self.assertIn(date(2017, 4, 17), self.holidays)
-        self.assertIn(date(2017, 5, 25), self.holidays)
-        self.assertIn(date(2021, 5, 13), self.holidays)
+    def test_no_holidays(self):
+        self.assertNoHolidays(Lesotho(years=1995))
 
     def test_special_holidays(self):
-        self.assertIn(date(2002, 4, 4), self.holidays)
-        self.assertIn(date(2002, 5, 25), self.holidays)
+        self.assertHoliday("2002-05-25")
+
+    def test_heroes_day(self):
+        name = "Heroes Day"
+        self.assertHolidaysName(
+            name, (f"{year}-04-04" for year in range(1996, 2003))
+        )
+        self.assertNoHolidayName(name, range(2003, 2040))
+        self.assertNoHoliday(f"{year}-04-04" for year in range(2003, 2040))
 
     def test_africa_heroes_day(self):
-        self.assertIn(date(2002, 4, 4), self.holidays)
-        self.assertIn(date(2002, 5, 25), self.holidays)
-        self.assertIn(date(2001, 4, 4), self.holidays)
-        self.assertIn(date(2003, 5, 25), self.holidays)
-        self.assertIn(date(1998, 4, 4), self.holidays)
-        self.assertNotIn(date(2003, 4, 4), self.holidays)
-        self.assertNotIn(date(2001, 5, 25), self.holidays)
-        self.assertNotIn(date(2003, 4, 4), self.holidays)
+        name = "Africa/Heroes Day"
+        self.assertHolidaysName(
+            name, (f"{year}-05-25" for year in range(2003, 2040))
+        )
+        self.assertNoHolidayName(name, range(1996, 2003))
+        self.assertNoHoliday(f"{year}-05-25" for year in range(1996, 2002))
 
     def test_kings_birthday(self):
-        self.assertIn(date(1997, 5, 2), self.holidays)
-        self.assertIn(date(1996, 5, 2), self.holidays)
-        self.assertIn(date(1998, 7, 17), self.holidays)
+        name = "King's Birthday"
+        self.assertHolidaysName(
+            name, (f"{year}-05-02" for year in range(1996, 1998))
+        )
+        self.assertHolidaysName(
+            name, (f"{year}-07-17" for year in range(1998, 2040))
+        )
+        self.assertNoHoliday(f"{year}-05-02" for year in range(1998, 2040))
+        self.assertNoHoliday(f"{year}-07-17" for year in range(1996, 1998))
 
-    def test_normal_days(self):
-        self.assertIn(date(2001, 3, 11), self.holidays)
-        self.assertIn(date(2021, 5, 1), self.holidays)
-        self.assertIn(date(2018, 10, 4), self.holidays)
-        self.assertIn(date(2005, 12, 25), self.holidays)
-        self.assertIn(date(1997, 12, 26), self.holidays)
+    def test_2022(self):
+        self.assertHolidays(
+            Lesotho(years=2022),
+            ("2022-01-01", "New Year's Day"),
+            ("2022-03-11", "Moshoeshoe's Day"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-04-18", "Easter Monday"),
+            ("2022-05-01", "Workers' Day"),
+            ("2022-05-25", "Africa/Heroes Day"),
+            ("2022-05-26", "Ascension Day"),
+            ("2022-07-17", "King's Birthday"),
+            ("2022-10-04", "Independence Day"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Boxing Day"),
+        )

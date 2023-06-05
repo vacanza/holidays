@@ -12,14 +12,13 @@
 from datetime import date
 from datetime import timedelta as td
 
-from dateutil.easter import easter
-
 from holidays.calendars import _get_nth_weekday_of_month
-from holidays.constants import JAN, MAR, APR, MAY, JUL, AUG, SEP, OCT, DEC, MON
+from holidays.constants import MAR, APR, JUL, AUG, SEP, OCT, MON
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Zambia(HolidayBase):
+class Zambia(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://www.officeholidays.com/countries/zambia/
     https://www.timeanddate.com/holidays/zambia/
@@ -52,51 +51,83 @@ class Zambia(HolidayBase):
         2022: ((MAR, 18, "Funeral of Rupiah Banda"),),
     }
 
-    def _populate(self, year):
-        def _add_with_observed(hol_date: date, hol_name: str) -> None:
-            # whenever a public holiday falls on a Sunday,
-            # it rolls over to the following Monday
-            self[hol_date] = hol_name
-            if self.observed and self._is_sunday(hol_date):
-                self[hol_date + td(days=+1)] = f"{hol_name} (Observed)"
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
+    def _add_observed(self, dt: date) -> None:
+        # whenever a public holiday falls on a Sunday,
+        # it rolls over to the following Monday
+        if self.observed and self._is_sunday(dt):
+            self._add_holiday("%s (Observed)" % self[dt], dt + td(days=+1))
+
+    def _populate(self, year):
         # Observed since 1965
         if year <= 1964:
             return None
 
         super()._populate(year)
 
-        _add_with_observed(date(year, JAN, 1), "New Year's Day")
+        # New Year's Day.
+        self._add_observed(self._add_new_years_day("New Year's Day"))
 
         if year >= 1991:
-            _add_with_observed(date(year, MAR, 8), "International Women's Day")
+            self._add_observed(
+                # International Women's Day.
+                self._add_womens_day("International Women's Day")
+            )
 
-        _add_with_observed(date(year, MAR, 12), "Youth Day")
+        # Youth Day.
+        self._add_observed(self._add_holiday("Youth Day", MAR, 12))
 
-        easter_date = easter(year)
-        self[easter_date + td(days=-2)] = "Good Friday"
-        self[easter_date + td(days=-1)] = "Holy Saturday"
-        self[easter_date + td(days=+1)] = "Easter Monday"
+        # Good Friday.
+        self._add_good_friday("Good Friday")
+
+        # Holy Saturday.
+        self._add_holy_saturday("Holy Saturday")
+
+        # Easter Monday.
+        self._add_easter_monday("Easter Monday")
 
         if year >= 2022:
-            _add_with_observed(date(year, APR, 28), "Kenneth Kaunda Day")
+            self._add_observed(
+                # Kenneth Kaunda Day.
+                self._add_holiday("Kenneth Kaunda Day", APR, 28)
+            )
 
-        _add_with_observed(date(year, MAY, 1), "Labour Day")
-        _add_with_observed(date(year, MAY, 25), "Africa Freedom Day")
+        # Labour Day.
+        self._add_observed(self._add_labor_day("Labour Day"))
 
-        # 1st Monday of July = "Heroes' Day"
-        dt = _get_nth_weekday_of_month(1, MON, JUL, year)
-        self[dt] = "Heroes' Day"
-        self[dt + td(days=+1)] = "Unity Day"
+        # Africa Freedom Day.
+        self._add_observed(self._add_africa_day("Africa Freedom Day"))
 
-        # 1st Monday of Aug = "Farmers' Day"
-        self[_get_nth_weekday_of_month(1, MON, AUG, year)] = "Farmers' Day"
+        first_mon_of_july = self._add_holiday(
+            # Heroes' Day.
+            "Heroes' Day",
+            _get_nth_weekday_of_month(1, MON, JUL, year),
+        )
+
+        # Unity Day.
+        self._add_holiday("Unity Day", first_mon_of_july + td(days=+1))
+
+        self._add_holiday(
+            # Farmers' Day.
+            "Farmers' Day",
+            _get_nth_weekday_of_month(1, MON, AUG, year),
+        )
 
         if year >= 2015:
-            _add_with_observed(date(year, OCT, 18), "National Prayer Day")
+            self._add_observed(
+                # National Prayer Day.
+                self._add_holiday("National Prayer Day", OCT, 18)
+            )
 
-        _add_with_observed(date(year, OCT, 24), "Independence Day")
-        _add_with_observed(date(year, DEC, 25), "Christmas Day")
+        # Independence Day.
+        self._add_observed(self._add_holiday("Independence Day", OCT, 24))
+
+        # Christmas Day.
+        self._add_observed(self._add_christmas_day("Christmas Day"))
 
 
 class ZM(Zambia):
