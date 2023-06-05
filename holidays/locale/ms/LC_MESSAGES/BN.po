@@ -39,14 +39,29 @@ msgstr ""
 msgid "Tahun Baru Cina"
 msgstr ""
 
-#. Isra Mi'raj
-#: ./holidays/countries/brunei.py:155
-msgid "Israk dan Mikraj"
-msgstr ""
-
 #. National Day
 #: ./holidays/countries/brunei.py:113
 msgid "Hari Kebangsaan"
+msgstr ""
+
+#. Armed Forces Day
+#: ./holidays/countries/brunei.py:123
+msgid "Hari Angkatan Bersenjata Diraja Brunei"
+msgstr ""
+
+#. Sultan Hassanal Bolkiah's Birthday
+#: ./holidays/countries/brunei.py:136
+msgid "Hari Keputeraan KDYMM Sultan Brunei"
+msgstr ""
+
+#. Christmas Day
+#: ./holidays/countries/brunei.py:146
+msgid "Hari Natal"
+msgstr ""
+
+#. Isra Mi'raj
+#: ./holidays/countries/brunei.py:155
+msgid "Israk dan Mikraj"
 msgstr ""
 
 #. First Day of Ramadan
@@ -64,32 +79,17 @@ msgstr ""
 msgid "Hari Raya Aidil Fitri"
 msgstr ""
 
-#. Armed Forces Day
-#: ./holidays/countries/brunei.py:123
-msgid "Hari Angkatan Bersenjata Diraja Brunei"
-msgstr ""
-
 #. Eid al-Adha
-#: ./holidays/countries/brunei.py:209
+#: ./holidays/countries/brunei.py:216
 msgid "Hari Raya Aidil Adha"
 msgstr ""
 
-#. Sultan Hassanal Bolkiah's Birthday
-#: ./holidays/countries/brunei.py:136
-msgid "Hari Keputeraan KDYMM Sultan Brunei"
-msgstr ""
-
 #. Islamic New Year
-#: ./holidays/countries/brunei.py:216
+#: ./holidays/countries/brunei.py:223
 msgid "Awal Tahun Hijrah"
 msgstr ""
 
 #. Birth of the Prophet
-#: ./holidays/countries/brunei.py:223
+#: ./holidays/countries/brunei.py:230
 msgid "Maulidur Rasul"
-msgstr ""
-
-#. Christmas Day
-#: ./holidays/countries/brunei.py:146
-msgid "Hari Natal"
 msgstr ""
