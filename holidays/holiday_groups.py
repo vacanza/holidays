@@ -832,6 +832,16 @@ class InternationalHolidays:
     International holidays.
     """
 
+    def _add_columbus_day(self, name):
+        """
+        Add Columbus Day (October 12th)
+
+        Columbus Day is a national holiday which officially celebrates the
+        anniversary of Christopher Columbus's arrival in the Americas.
+        https://en.wikipedia.org/wiki/Columbus_Day
+        """
+        return self._add_holiday(name, OCT, 12)
+
     def _add_labor_day(self, name):
         """
         Add International Workers' Day (May 1st)
@@ -925,16 +935,6 @@ class InternationalHolidays:
         https://en.wikipedia.org/wiki/Victory_Day_(9_May)
         """
         return self._add_holiday(name, MAY, 9)
-
-    def _add_columbus_day(self, name):
-        """
-        Add Columbus Day (October 12th)
-
-        Columbus Day is a national holiday which officially celebrates the
-        anniversary of Christopher Columbus's arrival in the Americas.
-        https://en.wikipedia.org/wiki/Columbus_Day
-        """
-        return self._add_holiday(name, OCT, 12)
 
 
 class IslamicHolidays:
