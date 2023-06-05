@@ -12,7 +12,7 @@
 from datetime import date
 from typing import Iterable, Tuple
 
-from holidays.calendars.custom import _CustomCalendarType
+from holidays.calendars.custom import _CustomCalendar
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC
 
@@ -1440,7 +1440,7 @@ class _IslamicLunar:
         estimated_dates = getattr(self, f"{holiday}_DATES", {})
         exact_dates = getattr(
             self,
-            f"{holiday}_DATES_{_CustomCalendarType.CUSTOM_ATTR_POSTFIX}",
+            f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}",
             {},
         )
         for year in (year - 1, year):
@@ -1475,3 +1475,7 @@ class _IslamicLunar:
         self, year: int
     ) -> Iterable[Tuple[date, bool]]:
         return self._get_holiday(RAMADAN_BEGINNING, year)
+
+
+class _CustomIslamicCalendar(_CustomCalendar, _IslamicLunar):
+    pass

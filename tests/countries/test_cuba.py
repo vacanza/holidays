@@ -16,10 +16,34 @@ from tests.common import TestCase
 class TestCuba(TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Cuba)
+        super().setUpClass(Cuba, years=range(1959, 2050))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Cuba, CU, CUB)
+
+    def test_no_holidays(self):
+        self.assertNoHolidays(Cuba(years=1958))
+
+    def test_assault_moncada_day(self):
+        name = "Conmemoración del asalto a Moncada"
+        self.assertHolidaysName(
+            name, (f"{year}-07-25" for year in range(1959, 2050))
+        )
+        self.assertHolidaysName(
+            name, (f"{year}-07-27" for year in range(1959, 2050))
+        )
+
+    def test_national_rebellion_day(self):
+        self.assertHolidaysName(
+            "Día de la Rebeldía Nacional",
+            (f"{year}-07-26" for year in range(1959, 2050)),
+        )
+
+    def test_independence_day(self):
+        self.assertHolidaysName(
+            "Inicio de las Guerras de Independencia",
+            (f"{year}-10-10" for year in range(1959, 2050)),
+        )
 
     def test_1968(self):
         self.assertHolidayDates(

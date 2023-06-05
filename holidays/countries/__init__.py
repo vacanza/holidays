@@ -32,6 +32,7 @@ from .brazil import Brazil, BR, BRA
 from .brunei import Brunei, BN, BRN
 from .bulgaria import Bulgaria, BG, BLG
 from .burundi import Burundi, BI, BDI
+from .cameroon import Cameroon, CM, CMR
 from .canada import Canada, CA, CAN
 from .chile import Chile, CL, CHL
 from .china import China, CN, CHN
@@ -53,6 +54,7 @@ from .eswatini import Eswatini, SZ, SZW, Swaziland
 from .ethiopia import Ethiopia, ET, ETH
 from .finland import Finland, FI, FIN
 from .france import France, FR, FRA
+from .gabon import Gabon, GA, GAB
 from .georgia import Georgia, GE, GEO
 from .germany import Germany, DE, DEU
 from .greece import Greece, GR, GRC

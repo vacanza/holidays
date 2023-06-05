@@ -14,7 +14,7 @@ from datetime import timedelta as td
 from typing import Optional
 
 from holidays.calendars import _get_nth_weekday_of_month
-from holidays.constants import APR, JUN, JUL, AUG, SEP, OCT, MON
+from holidays.constants import JUN, JUL, AUG, SEP, OCT, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChineseCalendarHolidays, ChristianHolidays
 from holidays.holiday_groups import InternationalHolidays
@@ -110,12 +110,7 @@ class HongKong(
 
         # Ching Ming Festival
         name = "Ching Ming Festival"
-        if self._is_leap_year(year) or (
-            year >= 2009 and self._is_leap_year(year - 1)
-        ):
-            ching_ming_date = date(year, APR, 4)
-        else:
-            ching_ming_date = date(year, APR, 5)
+        ching_ming_date = self._qingming_date
         if self.observed and ching_ming_date == easter_monday_date:
             self._add_holiday(
                 f"{day_following}{name}", ching_ming_date + td(days=+1)

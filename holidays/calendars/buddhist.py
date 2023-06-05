@@ -12,7 +12,7 @@
 from datetime import date
 from typing import Optional, Tuple
 
-from holidays.calendars.custom import _CustomCalendarType
+from holidays.calendars.custom import _CustomCalendar
 from holidays.constants import MAY, JUN
 
 VESAK = "VESAK"
@@ -430,7 +430,7 @@ class _BuddhistLunisolar:
         estimated_dates = getattr(self, f"{holiday}_DATES", {})
         exact_dates = getattr(
             self,
-            f"{holiday}_DATES_{_CustomCalendarType.CUSTOM_ATTR_POSTFIX}",
+            f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}",
             {},
         )
         dt = exact_dates.get(year, estimated_dates.get(year, ()))
@@ -441,3 +441,7 @@ class _BuddhistLunisolar:
 
     def vesak_may_date(self, year: int) -> Tuple[Optional[date], bool]:
         return self._get_holiday(VESAK_MAY, year)
+
+
+class _CustomBuddhistCalendar(_CustomCalendar, _BuddhistLunisolar):
+    pass

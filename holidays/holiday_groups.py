@@ -494,14 +494,16 @@ class BuddhistCalendarHolidays:
     Buddhist lunisolar calendar holidays.
     """
 
-    def __init__(self, calendar=_BuddhistLunisolar()) -> None:
+    def __init__(
+        self, calendar=_BuddhistLunisolar(), show_estimated=False
+    ) -> None:
         self._buddhist_calendar = calendar
+        self._show_estimated = show_estimated
 
     def _add_buddhist_calendar_holiday(
         self,
         name: str,
         hol_date: Tuple[date, bool],
-        days_delta: int = 0,
     ) -> Optional[date]:
         """
         Add Buddhist calendar holiday.
@@ -510,13 +512,11 @@ class BuddhistCalendarHolidays:
         is an estimation.
         """
         estimated_label = getattr(self, "estimated_label", "%s* (*estimated)")
-        show_estimated = getattr(self, "show_estimated", False)
         dt, is_estimated = hol_date
-        if days_delta != 0:
-            dt += td(days=days_delta)
+
         return self._add_holiday(
             self.tr(estimated_label) % self.tr(name)
-            if is_estimated and show_estimated
+            if is_estimated and self._show_estimated
             else name,
             dt,
         )
@@ -552,8 +552,11 @@ class ChineseCalendarHolidays:
     Chinese lunisolar calendar holidays.
     """
 
-    def __init__(self, calendar=_ChineseLunisolar()) -> None:
+    def __init__(
+        self, calendar=_ChineseLunisolar(), show_estimated=False
+    ) -> None:
         self._chinese_calendar = calendar
+        self._show_estimated = show_estimated
 
     @property
     def _chinese_new_year(self):
@@ -561,6 +564,13 @@ class ChineseCalendarHolidays:
         Return Chinese New Year date.
         """
         return self._chinese_calendar.lunar_new_year_date(self._year)[0]
+
+    @property
+    def _qingming_date(self):
+        day = 5
+        if (self._year % 4 < 1) or (self._year % 4 < 2 and self._year >= 2009):
+            day = 4
+        return date(self._year, APR, day)
 
     @property
     def _mid_autumn_festival(self):
@@ -582,13 +592,13 @@ class ChineseCalendarHolidays:
         is an estimation.
         """
         estimated_label = getattr(self, "estimated_label", "%s* (*estimated)")
-        show_estimated = getattr(self, "show_estimated", False)
         dt, is_estimated = hol_date
         if days_delta != 0:
             dt += td(days=days_delta)
+
         return self._add_holiday(
             self.tr(estimated_label) % self.tr(name)
-            if is_estimated and show_estimated
+            if is_estimated and self._show_estimated
             else name,
             dt,
         )
@@ -682,6 +692,16 @@ class ChineseCalendarHolidays:
             days_delta=+4,
         )
 
+    def _add_qingming_festival(self, name) -> date:
+        """
+        Add Qingming Festival (15th day after the Spring Equinox).
+
+        The Qingming festival or Ching Ming Festival, also known as
+        Tomb-Sweeping Day in English, is a traditional Chinese festival.
+        https://en.wikipedia.org/wiki/Qingming_Festival
+        """
+        return self._add_holiday(name, self._qingming_date)
+
     def _add_double_ninth_festival(self, name) -> Optional[date]:
         """
         Add Double Ninth Festival (9th day of 9th lunar month).
@@ -752,14 +772,16 @@ class HinduCalendarHolidays:
     Hindu lunisolar calendar holidays.
     """
 
-    def __init__(self, calendar=_HinduLunisolar()) -> None:
+    def __init__(
+        self, calendar=_HinduLunisolar(), show_estimated=False
+    ) -> None:
         self._hindu_calendar = calendar
+        self._show_estimated = show_estimated
 
     def _add_hindu_calendar_holiday(
         self,
         name: str,
         hol_date: Tuple[date, bool],
-        days_delta: int = 0,
     ) -> Optional[date]:
         """
         Add Hindu calendar holiday.
@@ -768,13 +790,11 @@ class HinduCalendarHolidays:
         is an estimation.
         """
         estimated_label = getattr(self, "estimated_label", "%s* (*estimated)")
-        show_estimated = getattr(self, "show_estimated", False)
+
         dt, is_estimated = hol_date
-        if days_delta != 0:
-            dt += td(days=days_delta)
         return self._add_holiday(
             self.tr(estimated_label) % self.tr(name)
-            if is_estimated and show_estimated
+            if is_estimated and self._show_estimated
             else name,
             dt,
         )

@@ -743,7 +743,7 @@ class TestKeyTransforms(unittest.TestCase):
     def setUp(self):
         self.holidays = holidays.US()
 
-    def test_dates(self):
+    def test_date(self):
         self.assertIn(date(2014, 1, 1), self.holidays)
         self.assertEqual(self.holidays[date(2014, 1, 1)], "New Year's Day")
         self.holidays[date(2014, 1, 3)] = "Fake Holiday"
@@ -751,7 +751,14 @@ class TestKeyTransforms(unittest.TestCase):
         self.assertEqual(self.holidays.pop(date(2014, 1, 3)), "Fake Holiday")
         self.assertNotIn(date(2014, 1, 3), self.holidays)
 
-    def test_datetimes(self):
+    def test_date_derived(self):
+        class CustomDate(date):
+            pass
+
+        self.assertIn(CustomDate(2014, 1, 1), self.holidays)
+        self.assertNotIn(CustomDate(2014, 1, 3), self.holidays)
+
+    def test_datetime(self):
         self.assertIn(datetime(2014, 1, 1, 13, 45), self.holidays)
         self.assertEqual(
             self.holidays[datetime(2014, 1, 1, 13, 45)],
@@ -775,7 +782,7 @@ class TestKeyTransforms(unittest.TestCase):
         self.assertEqual(self.holidays.pop(1388725202), "Fake Holiday")
         self.assertNotIn(1388725201, self.holidays)
 
-    def test_strings(self):
+    def test_string(self):
         self.assertIn("2014-01-01", self.holidays)
         self.assertEqual(self.holidays["2014-01-01"], "New Year's Day")
         self.assertIn("01/01/2014", self.holidays)
@@ -785,7 +792,7 @@ class TestKeyTransforms(unittest.TestCase):
         self.assertEqual(self.holidays.pop("01/03/2014"), "Fake Holiday")
         self.assertNotIn("01/03/2014", self.holidays)
 
-    def test_exceptions(self):
+    def test_exception(self):
         self.assertRaises(
             (TypeError, ValueError), lambda: "abc" in self.holidays
         )
