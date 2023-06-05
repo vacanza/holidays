@@ -9,29 +9,34 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
+from holidays.countries.isle_of_man import IsleOfMan, IM, IMN
+from tests.common import TestCase
 
-import holidays
 
+class TestIM(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(IsleOfMan)
 
-class TestIM(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.IsleOfMan()
-
-    def test_some_2018(self):
-        self.assertIn("2018-06-01", self.holidays)
-        self.assertIn("2018-07-05", self.holidays)
+    def test_country_aliases(self):
+        self.assertCountryAliases(IsleOfMan, IM, IMN)
 
     def test_2022(self):
-        self.assertIn("2022-01-01", self.holidays)  # New Year's Day
-        self.assertIn("2022-01-03", self.holidays)  # New Year's Day (Observed)
-        self.assertIn("2022-04-15", self.holidays)  # Easter Monday
-        self.assertIn("2022-04-18", self.holidays)  # Easter Monday
-        self.assertIn("2022-05-02", self.holidays)  # May Day
-        self.assertIn("2022-06-02", self.holidays)  # Spring Bank Holiday
-        self.assertIn("2022-06-03", self.holidays)  # TT Bank Holiday
-        self.assertIn("2022-07-05", self.holidays)  # Tynwald Day
-        self.assertIn("2022-08-29", self.holidays)  # Late Summer Bank Holiday
-        self.assertIn("2022-12-25", self.holidays)  # Christmas Day
-        self.assertIn("2022-12-26", self.holidays)  # Boxing Day
-        self.assertIn("2022-12-27", self.holidays)  # Boxing Day (Observed)
+        self.assertHolidays(
+            ("2022-01-01", "New Year's Day"),
+            ("2022-01-03", "New Year's Day (Observed)"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-04-18", "Easter Monday"),
+            ("2022-05-02", "May Day"),
+            ("2022-06-02", "Spring Bank Holiday"),
+            (
+                "2022-06-03",
+                "Platinum Jubilee of Elizabeth II; TT Bank Holiday",
+            ),
+            ("2022-07-05", "Tynwald Day"),
+            ("2022-08-29", "Late Summer Bank Holiday"),
+            ("2022-09-19", "State Funeral of Queen Elizabeth II"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Boxing Day"),
+            ("2022-12-27", "Christmas Day (Observed)"),
+        )
