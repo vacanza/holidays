@@ -3,10 +3,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.22\n"
+"Project-Id-Version: Python Holidays 0.26\n"
 "POT-Creation-Date: 2023-03-22 22:55+0200\n"
-"PO-Revision-Date: 2023-03-22 22:56+0200\n"
-"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"PO-Revision-Date: 2023-05-03 18:39-0700\n"
+"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -14,75 +14,74 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: pygettext.py 1.5\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3\n"
 
-#: holidays/countries/costa_rica.py:40 holidays/countries/costa_rica.py:53
-#: holidays/countries/costa_rica.py:124
+#: ./holidays/countries/costa_rica.py:41 ./holidays/countries/costa_rica.py:53
+#: ./holidays/countries/costa_rica.py:126
 #, c-format
 msgid "%s (Observado)"
 msgstr ""
 
 #. New Year's Day.
-#: holidays/countries/costa_rica.py:59
+#: ./holidays/countries/costa_rica.py:59
 msgid "Año Nuevo"
 msgstr ""
 
 #. Maundy Thursday.
-#: holidays/countries/costa_rica.py:62
+#: ./holidays/countries/costa_rica.py:62
 msgid "Jueves Santo"
 msgstr ""
 
 #. Good Friday.
-#: holidays/countries/costa_rica.py:65
+#: ./holidays/countries/costa_rica.py:65
 msgid "Viernes Santo"
 msgstr ""
 
 #. Juan Santamaría Day.
-#: holidays/countries/costa_rica.py:71
+#: ./holidays/countries/costa_rica.py:71
 msgid "Día de Juan Santamaría"
 msgstr ""
 
 #. International Labor Day.
-#: holidays/countries/costa_rica.py:80
+#: ./holidays/countries/costa_rica.py:80
 msgid "Día Internacional del Trabajo"
 msgstr ""
 
 #. Annexation of the Party of Nicoya to Costa Rica.
-#: holidays/countries/costa_rica.py:90
+#: ./holidays/countries/costa_rica.py:90
 msgid "Anexión del Partido de Nicoya a Costa Rica"
 msgstr ""
 
 #. Feast of Our Lady of the Angels.
-#: holidays/countries/costa_rica.py:100
+#: ./holidays/countries/costa_rica.py:100
 msgid "Fiesta de Nuestra Señora de los Ángeles"
 msgstr ""
 
 #. Mother's Day.
-#: holidays/countries/costa_rica.py:107
+#: ./holidays/countries/costa_rica.py:109
 msgid "Día de la Madre"
 msgstr ""
 
 #. Day of the Black Person and Afro-Costa Rican Culture.
-#: holidays/countries/costa_rica.py:119
+#: ./holidays/countries/costa_rica.py:121
 msgid "Día de la Persona Negra y la Cultura Afrocostarricense"
 msgstr ""
 
 #. Independence Day.
-#: holidays/countries/costa_rica.py:129
+#: ./holidays/countries/costa_rica.py:131
 msgid "Día de la Independencia"
 msgstr ""
 
-#. Cultures Day.
-#: holidays/countries/costa_rica.py:138
+#: ./holidays/countries/costa_rica.py:141
 msgid "Día de las Culturas"
 msgstr ""
 
 #. Army Abolition Day.
-#: holidays/countries/costa_rica.py:144
+#: ./holidays/countries/costa_rica.py:148
 msgid "Día de la Abolición del Ejército"
 msgstr ""
 
 #. Christmas Day.
-#: holidays/countries/costa_rica.py:151
+#: ./holidays/countries/costa_rica.py:155
 msgid "Navidad"
 msgstr ""

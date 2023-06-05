@@ -9,77 +9,111 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
-
-from dateutil.easter import easter
-
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, AUG, SEP, NOV, DEC
+from holidays.constants import JAN, FEB, MAR, APR, MAY, OCT, NOV
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays
 
 
-class VaticanCity(HolidayBase):
+class VaticanCity(HolidayBase, ChristianHolidays):
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_Vatican_City
+      - https://www.ewtn.com/catholicism/library/solemnity-of-mary-mother-of-god-5826  # noqa: E501
+      - https://www.franciscanmedia.org/saint-of-the-day/saint-joseph-the-worker/  # noqa: E501
     """
 
     country = "VA"
 
+    def __init__(self, *args, **kwargs) -> None:
+        ChristianHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year: int) -> None:
+        if year <= 1928:
+            return None
         super()._populate(year)
 
         # Solemnity of Mary Day.
-        self[date(year, JAN, 1)] = "Solemnity of Mary Day"
+        # This is supposedly the same as International New Year.
+        # Modern adoption across the entire Latin Church in 1931 though this
+        # was already celebrated in Rome as the Octave day of Christmas.
+        self._add_holiday("Solemnity of Mary Day", JAN, 1)
 
         # Epiphany.
-        self[date(year, JAN, 6)] = "Epiphany"
+        self._add_epiphany_day("Epiphany")
 
         # Lateran Treaty Day.
-        self[date(year, FEB, 11)] = "Lateran Treaty Day"
+        self._add_holiday("Lateran Treaty Day", FEB, 11)
 
-        # Anniversary of the election of Pope Francis.
-        self[
-            date(year, MAR, 13)
-        ] = "Anniversary of the election of Pope Francis"
+        if year >= 1978:
+            if year >= 2013:
+                # Anniversary of the election of Pope Francis.
+                dt = (MAR, 13)
+            elif year >= 2005:
+                # Anniversary of the election of Pope Benedict XVI.
+                dt = (APR, 19)
+            else:
+                # Anniversary of the election of Pope John Paul II.
+                dt = (OCT, 16)
+            self._add_holiday(
+                "Anniversary of the Election of the Holy Father", *dt
+            )
 
+        # In 2005-2013 - also name day for the civilian name of
+        # Pope Benedict XVI (Josef Ratzinger)
         # Saint Joseph's Day.
-        self[date(year, MAR, 19)] = "Saint Joseph's Day"
-
-        easter_sunday = easter(year)
+        self._add_saint_josephs_day("Saint Joseph's Day")
 
         # Easter Sunday.
-        self[easter_sunday] = "Easter Sunday"
+        self._add_easter_sunday("Easter Sunday")
 
         # Easter Monday.
-        self[easter_sunday + td(days=+1)] = "Easter Monday"
+        self._add_easter_monday("Easter Monday")
 
-        # Saint George's Day.
-        self[date(year, APR, 23)] = "Saint George's Day"
+        if year >= 2013:
+            # Name day for the civilian name of Pope Francis
+            # (Jorge Mario Bergoglio)
+            # Saint George's Day.
+            self._add_saint_georges_day("Saint George's Day")
 
-        # Saint Joseph the Worker's Day.
-        self[date(year, MAY, 1)] = "Saint Joseph the Worker's Day"
+        if year >= 1955:
+            # Saint Joseph the Worker's Day.
+            # Created in response to May Day holidays by Pope Pius XII in 1955.
+            self._add_holiday("Saint Joseph the Worker's Day", MAY, 1)
+
+        if year <= 2009:
+            # Ascension of Christ.
+            self._add_ascension_thursday("Ascension of Christ")
+
+            # Corpus Christi.
+            self._add_corpus_christi_day("Corpus Christi")
 
         # Saints Peter and Paul.
-        self[date(year, JUN, 29)] = "Saint Peter and Saint Paul's Day"
+        self._add_saints_peter_and_paul_day("Saint Peter and Saint Paul's Day")
 
         # Assumption of Mary Day.
-        self[date(year, AUG, 15)] = "Assumption Day"
+        self._add_assumption_of_mary_day("Assumption Day")
 
         # Nativity Of Mary Day.
-        self[date(year, SEP, 8)] = "Nativity of Mary Day"
+        self._add_nativity_of_mary_day("Nativity of Mary Day")
 
         # All Saints' Day.
-        self[date(year, NOV, 1)] = "All Saints' Day"
+        self._add_all_saints_day("All Saints' Day")
+
+        if 1978 <= year <= 2004:
+            # Name day for the civilian name of Pope John Paul II
+            # (Karol Józef Wojtyła)
+            # Saint Charles Borromeo Day.
+            self._add_holiday("Saint Charles Borromeo Day", NOV, 4)
 
         # Immaculate Conception.
-        self[date(year, DEC, 8)] = "Immaculate Conception Day"
+        self._add_immaculate_conception_day("Immaculate Conception Day")
 
         # Christmas Day.
-        self[date(year, DEC, 25)] = "Christmas Day"
+        self._add_christmas_day("Christmas Day")
 
         # Saint Stephen's Day.
-        self[date(year, DEC, 26)] = "Saint Stephen's Day"
+        self._add_christmas_day_two("Saint Stephen's Day")
 
 
 class VA(VaticanCity):

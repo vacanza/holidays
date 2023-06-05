@@ -29,14 +29,14 @@ class TestIndonesia(TestCase):
         self.assertHolidaysName(
             name,
             "2005-02-09",
-            "2006-01-29",
-            "2007-02-18",
+            "2006-01-30",
+            "2007-02-19",
             "2008-02-07",
             "2009-01-26",
-            "2010-02-14",
+            "2010-02-15",
             "2011-02-03",
             "2012-01-23",
-            "2013-02-10",
+            "2013-02-11",
             "2014-01-31",
             "2015-02-19",
             "2016-02-08",
@@ -73,9 +73,7 @@ class TestIndonesia(TestCase):
     def test_pancasila_day(self):
         self.assertHoliday(f"{year}-06-01" for year in range(2017, 2050))
         self.assertNoHoliday("2016-06-01")
-        self.assertNoHolidayNameInYears(
-            "Hari Lahir Pancasila", range(2000, 2017)
-        )
+        self.assertNoHolidayName("Hari Lahir Pancasila", range(2000, 2017))
 
     def test_independence_day(self):
         self.assertHoliday(f"{year}-08-17" for year in range(2000, 2050))

@@ -13,7 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars import _ThaiLuniSolar
+from holidays.calendars import _ThaiLunisolar
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
@@ -248,10 +248,11 @@ class Thailand(HolidayBase, InternationalHolidays):
         ),
         2023: ((MAY, 5, thai_bridge_public_holiday),),
     }
+    supported_languages = ("en_US", "th")
 
     def __init__(self, **kwargs) -> None:
         InternationalHolidays.__init__(self)
-        self.thls = _ThaiLuniSolar()
+        self.thls = _ThaiLunisolar()
         super().__init__(**kwargs)
 
     def _populate(self, year):
@@ -344,7 +345,7 @@ class Thailand(HolidayBase, InternationalHolidays):
         # This has its own in-lieu trigger.
 
         if year >= 1948:
-            songkran_festival = self.tr("วันสงกรานต์")
+            songkran_festival = tr("วันสงกรานต์")
             if year <= 1953 or (1957 <= year != 2020):
                 dt = self._add_holiday(
                     songkran_festival, APR, 12 if 1989 <= year <= 1997 else 13
@@ -574,7 +575,7 @@ class Thailand(HolidayBase, InternationalHolidays):
         # Thai Lunar Calendar Holidays
 
         """
-        See `_ThaiLuniSolar` in holidays/utils.py for more details.
+        See `_ThaiLunisolar` in holidays/utils.py for more details.
 
         Thai Lunar Calendar Holidays only work from 1941 (B.E. 2484) onwards
         until 2057 (B.E. 2600).

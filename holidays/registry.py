@@ -32,12 +32,14 @@ COUNTRIES: RegistryDict = {
     "bangladesh": ("Bangladesh", "BD", "BGD"),
     "belarus": ("Belarus", "BY", "BLR"),
     "belgium": ("Belgium", "BE", "BEL"),
+    "belize": ("Belize", "BZ", "BLZ"),
     "bolivia": ("Bolivia", "BO", "BOL"),
     "bosnia_and_herzegovina": ("BosniaAndHerzegovina", "BA", "BIH"),
     "botswana": ("Botswana", "BW", "BWA"),
     "brazil": ("Brazil", "BR", "BRA"),
     "bulgaria": ("Bulgaria", "BG", "BLG"),
     "burundi": ("Burundi", "BI", "BDI"),
+    "cameroon": ("Cameroon", "CM", "CMR"),
     "canada": ("Canada", "CA", "CAN"),
     "chile": ("Chile", "CL", "CHL"),
     "china": ("China", "CN", "CHN"),
@@ -53,11 +55,13 @@ COUNTRIES: RegistryDict = {
     "dominican_republic": ("DominicanRepublic", "DO", "DOM"),
     "ecuador": ("Ecuador", "EC", "ECU"),
     "egypt": ("Egypt", "EG", "EGY"),
+    "el_salvador": ("ElSalvador", "SV", "SLV"),
     "estonia": ("Estonia", "EE", "EST"),
     "eswatini": ("Eswatini", "SZ", "SZW", "Swaziland"),
     "ethiopia": ("Ethiopia", "ET", "ETH"),
     "finland": ("Finland", "FI", "FIN"),
     "france": ("France", "FR", "FRA"),
+    "gabon": ("Gabon", "GA", "GAB"),
     "georgia": ("Georgia", "GE", "GEO"),
     "germany": ("Germany", "DE", "DEU"),
     "greece": ("Greece", "GR", "GRC"),
@@ -169,9 +173,18 @@ class EntityLoader:
 
     def __init__(self, path: str, *args, **kwargs) -> None:
         """Set up a lazy loader."""
-        self.entity = None
+        if args:
+            raise TypeError(
+                "This is a python-holidays entity loader class. "
+                "For entity inheritance purposes please import a class you "
+                "want to derive from directly: e.g., "
+                "`from holidays.countries import Entity` or "
+                "`from holidays.financial import Entity`."
+            )
 
         entity_path = path.split(".")
+
+        self.entity = None
         self.entity_name = entity_path[-1]
         self.module_name = ".".join(entity_path[0:-1])
 

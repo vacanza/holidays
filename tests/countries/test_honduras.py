@@ -98,39 +98,51 @@ class TestHonduras(TestCase):
         )
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                hn = Honduras(language=language)
-                self.assertEqual(hn["2022-01-01"], "Año Nuevo")
-                self.assertEqual(hn["2022-12-25"], "Navidad")
-
-        run_tests((Honduras.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((Honduras.default_language,))
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Año Nuevo"),
+                ("2022-04-14", "Día de las Américas; Jueves Santo"),
+                ("2022-04-15", "Viernes Santo"),
+                ("2022-04-16", "Sábado de Gloria"),
+                ("2022-05-01", "Día del Trabajo"),
+                ("2022-09-15", "Día de la Independencia"),
+                ("2022-10-05", "Semana Morazánica"),
+                ("2022-10-06", "Semana Morazánica"),
+                ("2022-10-07", "Semana Morazánica"),
+                ("2022-12-25", "Navidad"),
+            )
+        )
 
     def test_l10n_en_us(self):
-        en_us = "en_US"
-
-        hn = Honduras(language=en_us)
-        self.assertEqual(hn["2022-01-01"], "New Year's Day")
-        self.assertEqual(hn["2022-12-25"], "Christmas")
-
-        self.set_language(en_us)
-        for language in (None, en_us, "invalid"):
-            hn = Honduras(language=language)
-            self.assertEqual(hn["2022-01-01"], "New Year's Day")
-            self.assertEqual(hn["2022-12-25"], "Christmas")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "New Year's Day"),
+                ("2022-04-14", "Maundy Thursday; Panamerican Day"),
+                ("2022-04-15", "Good Friday"),
+                ("2022-04-16", "Holy Saturday"),
+                ("2022-05-01", "Labor Day"),
+                ("2022-09-15", "Día de la Independencia"),
+                ("2022-10-05", "Morazan Weekend"),
+                ("2022-10-06", "Morazan Weekend"),
+                ("2022-10-07", "Morazan Weekend"),
+                ("2022-12-25", "Christmas"),
+            ),
+            "en_US",
+        )
 
     def test_l10n_uk(self):
-        uk = "uk"
-
-        hn = Honduras(language=uk)
-        self.assertEqual(hn["2022-01-01"], "Новий рік")
-        self.assertEqual(hn["2022-12-25"], "Різдво Христове")
-
-        self.set_language(uk)
-        for language in (None, uk, "invalid"):
-            hn = Honduras(language=language)
-            self.assertEqual(hn["2022-01-01"], "Новий рік")
-            self.assertEqual(hn["2022-12-25"], "Різдво Христове")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Новий рік"),
+                ("2022-04-14", "Великий четвер; День Америки"),
+                ("2022-04-15", "Страсна пʼятниця"),
+                ("2022-04-16", "Велика субота"),
+                ("2022-05-01", "День праці"),
+                ("2022-09-15", "Día de la Independencia"),
+                ("2022-10-05", "Тиждень Морасана"),
+                ("2022-10-06", "Тиждень Морасана"),
+                ("2022-10-07", "Тиждень Морасана"),
+                ("2022-12-25", "Різдво Христове"),
+            ),
+            "uk",
+        )

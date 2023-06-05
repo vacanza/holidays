@@ -42,7 +42,7 @@ class TestIsrael(TestCase):
         official_holiday = date(2020, 4, 28) + td(days=days_delta)
         self.assertHoliday(observed_holiday)
         self.assertHolidaysName(holiday_name, official_holiday)
-        self.assertNoHolidayNameInYears(f"{holiday_name} (Observed)", 2020)
+        self.assertNoHolidayName(f"{holiday_name} (Observed)", 2020)
 
     def _test_nonobserved_holidays(self, holiday_name):
         days_delta = 0 if holiday_name == "Memorial Day" else 1
@@ -67,9 +67,7 @@ class TestIsrael(TestCase):
         official_holiday = date(2020, 4, 28) + td(days=days_delta)
         self.assertNonObservedHoliday(official_holiday)
         self.assertNonObservedHolidayName(holiday_name, official_holiday)
-        self.assertNoNonObservedHolidayNameInYears(
-            f"{holiday_name} (Observed)", 2020
-        )
+        self.assertNoNonObservedHolidayName(f"{holiday_name} (Observed)", 2020)
 
     def test_country_aliases(self):
         self.assertCountryAliases(Israel, IL, ISR)

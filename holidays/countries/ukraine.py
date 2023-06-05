@@ -27,6 +27,7 @@ class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "UA"
     default_language = "uk"
+    supported_languages = ("ar", "en_US", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)

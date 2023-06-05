@@ -22,6 +22,7 @@ class Russia(HolidayBase):
 
     country = "RU"
     default_language = "ru"
+    supported_languages = ("en_US", "ru")
 
     special_holidays = {
         2023: (

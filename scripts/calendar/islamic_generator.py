@@ -19,10 +19,10 @@ from hijridate.ummalqura import HIJRI_RANGE
 CLASS_NAME = "_IslamicLunar"
 OUT_FILE_NAME = "islamic_dates.py"
 
-CLASS_TEMPLATE = """class {CLASS_NAME}:
+CLASS_TEMPLATE = """class {class_name}:
 {holiday_data}"""
 
-HOLIDAY_ARRAY_TEMPLATE = """    {hol_name}_DATES = {{
+HOLIDAY_DATA_TEMPLATE = """    {hol_name}_DATES = {{
 {year_dates}
     }}
 """
@@ -85,7 +85,7 @@ def generate_data():
             year_dates.append(YEAR_TEMPLATE.format(year=year, dates=dates_str))
         year_dates_str = "\n".join(year_dates)
         holiday_data.append(
-            HOLIDAY_ARRAY_TEMPLATE.format(
+            HOLIDAY_DATA_TEMPLATE.format(
                 hol_name=hol_name, year_dates=year_dates_str
             )
         )

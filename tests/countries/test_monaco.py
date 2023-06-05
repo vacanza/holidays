@@ -124,46 +124,63 @@ class TestMonaco(TestCase):
         )
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                mc = Monaco(language=language)
-                self.assertEqual(mc["2022-01-01"], "Le jour de l'An")
-                self.assertEqual(mc["2022-12-25"], "Noël")
-                self.assertEqual(mc["2022-12-26"], "Noël (Observé)")
-
-        run_tests((Monaco.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((Monaco.default_language,))
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Le jour de l'An"),
+                ("2022-01-27", "La Sainte Dévote"),
+                ("2022-04-18", "Le lundi de Pâques"),
+                ("2022-05-01", "Fête de la Travaille"),
+                ("2022-05-02", "Fête de la Travaille (Observé)"),
+                ("2022-05-26", "L'Ascension"),
+                ("2022-06-06", "Le lundi de Pentecôte"),
+                ("2022-06-16", "La Fête Dieu"),
+                ("2022-08-15", "L'Assomption de Marie"),
+                ("2022-11-01", "La Toussaint"),
+                ("2022-11-19", "La Fête du Prince"),
+                ("2022-12-08", "L'Immaculée Conception"),
+                ("2022-12-25", "Noël"),
+                ("2022-12-26", "Noël (Observé)"),
+            ),
+        )
 
     def test_l10n_en_us(self):
-        en_us = "en_US"
-
-        mc = Monaco(language=en_us)
-        self.assertEqual(mc["2015-01-07"], "Public holiday")
-        self.assertEqual(mc["2022-01-01"], "New Year's Day")
-        self.assertEqual(mc["2022-12-25"], "Christmas Day")
-        self.assertEqual(mc["2022-12-26"], "Christmas Day (Observed)")
-
-        self.set_language(en_us)
-        for language in (None, en_us, "invalid"):
-            mc = Monaco(language=language)
-            self.assertEqual(mc["2022-01-01"], "New Year's Day")
-            self.assertEqual(mc["2022-12-25"], "Christmas Day")
-            self.assertEqual(mc["2022-12-26"], "Christmas Day (Observed)")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "New Year's Day"),
+                ("2022-01-27", "Saint Dévote's Day"),
+                ("2022-04-18", "Easter Monday"),
+                ("2022-05-01", "Labour Day"),
+                ("2022-05-02", "Labour Day (Observed)"),
+                ("2022-05-26", "Ascension's Day"),
+                ("2022-06-06", "Whit Monday"),
+                ("2022-06-16", "Corpus Christi"),
+                ("2022-08-15", "Assumption's Day"),
+                ("2022-11-01", "All Saints' Day"),
+                ("2022-11-19", "Prince's Day"),
+                ("2022-12-08", "Immaculate Conception's Day"),
+                ("2022-12-25", "Christmas Day"),
+                ("2022-12-26", "Christmas Day (Observed)"),
+            ),
+            "en_US",
+        )
 
     def test_l10n_uk(self):
-        uk = "uk"
-
-        mc = Monaco(language=uk)
-        self.assertEqual(mc["2015-01-07"], "Державне свято")
-        self.assertEqual(mc["2022-01-01"], "Новий рік")
-        self.assertEqual(mc["2022-12-25"], "Різдво Христове")
-        self.assertEqual(mc["2022-12-26"], "Різдво Христове (вихідний)")
-
-        self.set_language(uk)
-        for language in (None, uk, "invalid"):
-            mc = Monaco(language=language)
-            self.assertEqual(mc["2022-01-01"], "Новий рік")
-            self.assertEqual(mc["2022-12-25"], "Різдво Христове")
-            self.assertEqual(mc["2022-12-26"], "Різдво Христове (вихідний)")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Новий рік"),
+                ("2022-01-27", "День святої Девоти"),
+                ("2022-04-18", "Великодній понеділок"),
+                ("2022-05-01", "День праці"),
+                ("2022-05-02", "День праці (вихідний)"),
+                ("2022-05-26", "Вознесіння Господнє"),
+                ("2022-06-06", "День Святого Духа"),
+                ("2022-06-16", "Свято Тіла і Крові Христових"),
+                ("2022-08-15", "Успіння Пресвятої Богородиці"),
+                ("2022-11-01", "День усіх святих"),
+                ("2022-11-19", "День Князя"),
+                ("2022-12-08", "Непорочне зачаття Діви Марії"),
+                ("2022-12-25", "Різдво Христове"),
+                ("2022-12-26", "Різдво Христове (вихідний)"),
+            ),
+            "uk",
+        )

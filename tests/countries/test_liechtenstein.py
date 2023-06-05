@@ -249,39 +249,87 @@ class TestLI(TestCase):
         )
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                cnt = LI(language=language)
-                self.assertEqual(cnt["2022-01-01"], "Neujahr")
-                self.assertEqual(cnt["2022-12-25"], "Weihnachten")
-
-        run_tests((LI.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((LI.default_language,))
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Neujahr"),
+                ("2022-01-02", "Berchtoldstag"),
+                ("2022-01-06", "Heilige Drei Könige"),
+                ("2022-02-02", "Mariä Lichtmess"),
+                ("2022-03-01", "Fasnachtsdienstag"),
+                ("2022-03-19", "Josefstag"),
+                ("2022-04-15", "Karfreitag"),
+                ("2022-04-17", "Ostersonntag"),
+                ("2022-04-18", "Ostermontag"),
+                ("2022-05-01", "Tag der Arbeit"),
+                ("2022-05-26", "Auffahrt"),
+                ("2022-06-05", "Pfingstsonntag"),
+                ("2022-06-06", "Pfingstmontag"),
+                ("2022-06-16", "Fronleichnam"),
+                ("2022-08-15", "Staatsfeiertag"),
+                ("2022-09-08", "Mariä Geburt"),
+                ("2022-11-01", "Allerheiligen"),
+                ("2022-12-08", "Mariä Empfängnis"),
+                ("2022-12-24", "Heiligabend"),
+                ("2022-12-25", "Weihnachten"),
+                ("2022-12-26", "Stefanstag"),
+                ("2022-12-31", "Silvester"),
+            )
+        )
 
     def test_l10n_en_us(self):
-        en_us = "en_US"
-
-        cnt = LI(language=en_us)
-        self.assertEqual(cnt["2022-01-01"], "New Year's Day")
-        self.assertEqual(cnt["2022-12-25"], "Christmas Day")
-
-        self.set_language(en_us)
-        for language in (None, en_us, "invalid"):
-            cnt = LI(language=language)
-            self.assertEqual(cnt["2022-01-01"], "New Year's Day")
-            self.assertEqual(cnt["2022-12-25"], "Christmas Day")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "New Year's Day"),
+                ("2022-01-02", "Saint Berchtold's Day"),
+                ("2022-01-06", "Epiphany"),
+                ("2022-02-02", "Candlemas"),
+                ("2022-03-01", "Shrove Tuesday"),
+                ("2022-03-19", "Saint Joseph's Day"),
+                ("2022-04-15", "Good Friday"),
+                ("2022-04-17", "Easter Sunday"),
+                ("2022-04-18", "Easter Monday"),
+                ("2022-05-01", "Labor Day"),
+                ("2022-05-26", "Ascension Day"),
+                ("2022-06-05", "Whit Sunday"),
+                ("2022-06-06", "Whit Monday"),
+                ("2022-06-16", "Corpus Christi"),
+                ("2022-08-15", "National Day"),
+                ("2022-09-08", "Nativity of Mary"),
+                ("2022-11-01", "All Saints' Day"),
+                ("2022-12-08", "Immaculate Conception"),
+                ("2022-12-24", "Christmas Eve"),
+                ("2022-12-25", "Christmas Day"),
+                ("2022-12-26", "St. Stephen's Day"),
+                ("2022-12-31", "New Year's Eve"),
+            ),
+            "en_US",
+        )
 
     def test_l10n_uk(self):
-        uk = "uk"
-
-        cnt = LI(language=uk)
-        self.assertEqual(cnt["2022-01-01"], "Новий рік")
-        self.assertEqual(cnt["2022-12-25"], "Різдво Христове")
-
-        self.set_language(uk)
-        for language in (None, uk, "invalid"):
-            cnt = LI(language=language)
-            self.assertEqual(cnt["2022-01-01"], "Новий рік")
-            self.assertEqual(cnt["2022-12-25"], "Різдво Христове")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Новий рік"),
+                ("2022-01-02", "День Святого Бертольда"),
+                ("2022-01-06", "Богоявлення"),
+                ("2022-02-02", "Стрітення"),
+                ("2022-03-01", "Масний вівторок"),
+                ("2022-03-19", "День Святого Йосипа"),
+                ("2022-04-15", "Страсна пʼятниця"),
+                ("2022-04-17", "Великдень"),
+                ("2022-04-18", "Великодній понеділок"),
+                ("2022-05-01", "День праці"),
+                ("2022-05-26", "Вознесіння Господнє"),
+                ("2022-06-05", "Трійця"),
+                ("2022-06-06", "День Святого Духа"),
+                ("2022-06-16", "Свято Тіла і Крові Христових"),
+                ("2022-08-15", "Національне свято"),
+                ("2022-09-08", "Різдво Пресвятої Богородиці"),
+                ("2022-11-01", "День усіх святих"),
+                ("2022-12-08", "Непорочне зачаття Діви Марії"),
+                ("2022-12-24", "Святий вечір"),
+                ("2022-12-25", "Різдво Христове"),
+                ("2022-12-26", "День Святого Стефана"),
+                ("2022-12-31", "Переддень Нового року"),
+            ),
+            "uk",
+        )

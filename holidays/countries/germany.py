@@ -55,6 +55,7 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "DE"
     default_language = "de"
+    supported_languages = ("de", "en_US", "uk")
     subdivisions = (
         "BB",
         "BE",

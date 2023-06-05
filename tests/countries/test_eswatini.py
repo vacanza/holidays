@@ -18,8 +18,8 @@ from tests.common import TestCase
 
 class TestEswatini(TestCase):
     @classmethod
-    def setUpClass(self):
-        super().setUpClass(Eswatini)
+    def setUpClass(cls):
+        super().setUpClass(Eswatini, years=range(1939, 2050))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Eswatini, SZ, SZW)
@@ -28,10 +28,7 @@ class TestEswatini(TestCase):
         self.assertNoHolidays(Eswatini(years=1938))
 
     def test_special_holidays(self):
-        self.assertHoliday(
-            "1999-12-31",
-            "2000-01-03",
-        )
+        self.assertHoliday("1999-12-31", "2000-01-03")
 
     def test_holidays(self):
         for year in range(1939, 2050):
@@ -44,25 +41,18 @@ class TestEswatini(TestCase):
             )
 
     def test_kings_birthday(self):
-        self.assertNoHolidayName(
-            "King's Birthday",
-            Eswatini(years=range(1939, 1987)),
-        )
+        self.assertNoHolidayName("King's Birthday", range(1939, 1987))
         self.assertHoliday(f"{year}-04-19" for year in range(1987, 2050))
 
     def test_national_flag_day(self):
         self.assertNoHoliday(f"{year}-04-25" for year in range(1939, 1969))
-        self.assertNoHolidayName(
-            "National Flag Day",
-            Eswatini(years=range(1939, 1969)),
-        )
+        self.assertNoHolidayName("National Flag Day", range(1939, 1969))
         self.assertHoliday(f"{year}-04-25" for year in range(1969, 2050))
 
     def test_late_king_sobhuza(self):
         self.assertNoHoliday(f"{year}-07-22" for year in range(1939, 1983))
         self.assertNoHolidayName(
-            "Birthday of Late King Sobhuza",
-            Eswatini(years=range(1939, 1983)),
+            "Birthday of Late King Sobhuza", range(1939, 1983)
         )
         self.assertHoliday(f"{year}-07-22" for year in range(1983, 2050))
 

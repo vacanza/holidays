@@ -32,7 +32,7 @@ class TestAzerbaijan(TestCase):
     def test_black_january(self):
         self.assertHoliday(f"{year}-01-20" for year in range(2000, 2050))
         self.assertNoHoliday(f"{year}-01-20" for year in range(1990, 2000))
-        self.assertNoHolidayNameInYears("Black January", range(1990, 2000))
+        self.assertNoHolidayName("Black January", range(1990, 2000))
 
     def test_int_women_day(self):
         self.assertHoliday(f"{year}-03-08" for year in range(1990, 2050))
@@ -46,7 +46,7 @@ class TestAzerbaijan(TestCase):
                 f"{year}-03-23",
                 f"{year}-03-24",
             )
-        self.assertNoHolidayNameInYears("Novruz", range(1990, 2007))
+        self.assertNoHolidayName("Novruz", range(1990, 2007))
 
     def test_victory_day_may(self):
         self.assertHoliday(f"{year}-05-09" for year in range(1990, 2050))

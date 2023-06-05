@@ -73,26 +73,45 @@ class TestSerbia(TestCase):
         self.assertNotIn(date(2020, 4, 21), self.holidays)
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                rs = Serbia(language=language)
-                self.assertEqual(rs["2022-01-01"], "Нова година")
-                self.assertEqual(rs["2022-01-07"], "Божић")
-
-        run_tests((Serbia.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((Serbia.default_language,))
+        self.assertLocalizedHolidays(
+            (
+                ("2012-01-01", "Нова година"),
+                ("2012-01-02", "Нова година"),
+                ("2012-01-03", "Нова година (слободан дан)"),
+                ("2012-01-07", "Божић"),
+                ("2012-02-15", "Дан државности Србије"),
+                ("2012-02-16", "Дан државности Србије"),
+                ("2012-04-13", "Велики петак"),
+                ("2012-04-14", "Велика субота"),
+                ("2012-04-15", "Васкрс"),
+                ("2012-04-16", "Други дан Васкрса"),
+                ("2012-05-01", "Празник рада"),
+                ("2012-05-02", "Празник рада"),
+                ("2012-11-11", "Дан примирја у Првом светском рату"),
+                ("2012-11-12", "Дан примирја у Првом светском рату"),
+            )
+        )
 
     def test_l10n_en_us(self):
-        en_us = "en_US"
-
-        rs = Serbia(language=en_us)
-        self.assertEqual(rs["2022-01-01"], "New Year's Day")
-        self.assertEqual(rs["2022-01-07"], "Orthodox Christmas Day")
-
-        self.set_language(en_us)
-        for language in (None, en_us, "invalid"):
-            rs = Serbia(language=language)
-            self.assertEqual(rs["2022-01-01"], "New Year's Day")
-            self.assertEqual(rs["2022-01-07"], "Orthodox Christmas Day")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "New Year's Day"),
+                ("2022-01-02", "New Year's Day"),
+                ("2022-01-03", "New Year's Day (Observed)"),
+                ("2022-01-07", "Orthodox Christmas Day"),
+                ("2022-02-15", "Statehood Day"),
+                ("2022-02-16", "Statehood Day"),
+                ("2022-04-22", "Good Friday"),
+                ("2022-04-23", "Easter Saturday"),
+                ("2022-04-24", "Easter Sunday"),
+                ("2022-04-25", "Easter Monday"),
+                ("2022-05-01", "International Workers' Day"),
+                ("2022-05-02", "International Workers' Day"),
+                (
+                    "2022-05-03",
+                    "International Workers' Day (Observed)",
+                ),
+                ("2022-11-11", "Armistice Day"),
+            ),
+            "en_US",
+        )

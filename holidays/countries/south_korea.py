@@ -14,17 +14,19 @@ import warnings
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.constants import MAR, APR, MAY, JUN, JUL, AUG, OCT, SAT, SUN
+from holidays.calendars import _ChineseLunisolar, _CustomCalendar
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
+from holidays.constants import OCT, SAT, SUN
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_groups import KoreanCalendarHolidays
+from holidays.holiday_groups import ChineseCalendarHolidays, ChristianHolidays
+from holidays.holiday_groups import InternationalHolidays
 
 
 class SouthKorea(
     HolidayBase,
+    ChineseCalendarHolidays,
     ChristianHolidays,
     InternationalHolidays,
-    KoreanCalendarHolidays,
 ):
     """
     1. https://publicholidays.co.kr/ko/2020-dates/
@@ -34,7 +36,7 @@ class SouthKorea(
     According to (3), the alt holidays in Korea are as follows:
     The alt holiday means next first non holiday after the holiday.
     Independence movement day, Liberation day, National Foundation Day,
-    Hangul Day, Children's Day have alt holiday if they fell on saturday or sunday.
+    Hangul Day, Children's Day, Birthday of the Buddha, Christmas Day have alt holiday if they fell on Saturday or Sunday.
     Lunar New Year's Day, Korean Mid Autumn Day have alt holiday if they fell
     on only sunday.
 
@@ -48,9 +50,11 @@ class SouthKorea(
     }
 
     def __init__(self, *args, **kwargs):
+        ChineseCalendarHolidays.__init__(
+            self, calendar=SouthKoreaLunisolarCalendar()
+        )
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        KoreanCalendarHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
     def _add_with_alt_holiday(
@@ -99,6 +103,8 @@ class SouthKorea(
             self._add_holiday("Alternative holiday of %s" % hol_name, hol_date)
 
     def _populate(self, year):
+        if year <= 1947:
+            return None
         super()._populate(year)
 
         # New Year's Day
@@ -109,9 +115,9 @@ class SouthKorea(
 
         # Lunar New Year
         name = "Lunar New Year's Day"
-        new_year_date = self._add_korean_new_years_day(name)
-        self._add_korean_new_years_eve(preceding_day % name)
-        self._add_korean_new_years_day_two(second_day % name)
+        new_year_date = self._add_chinese_new_years_day(name)
+        self._add_chinese_new_years_eve(preceding_day % name)
+        self._add_chinese_new_years_day_two(second_day % name)
 
         for delta in (-1, 0, +1):
             self._add_with_alt_holiday(
@@ -133,7 +139,13 @@ class SouthKorea(
             self._add_holiday("Tree Planting Day", APR, 5)
 
         # Birthday of the Buddha
-        self._add_korean_calendar_holiday("Birthday of the Buddha", 4, 8)
+        name = "Birthday of the Buddha"
+        self._add_with_alt_holiday(
+            name,
+            self._add_chinese_birthday_of_buddha(name),
+            add_hol=False,
+            since=2023,
+        )
 
         # Children's Day
         if year >= 1975:
@@ -153,16 +165,15 @@ class SouthKorea(
 
         # Constitution Day
         # removed from holiday since 2008
-        if 1948 <= year <= 2007:
+        if year <= 2007:
             self._add_holiday("Constitution Day", JUL, 17)
 
         # Liberation Day
-        if year >= 1945:
-            self._add_with_alt_holiday("Liberation Day", date(year, AUG, 15))
+        self._add_with_alt_holiday("Liberation Day", date(year, AUG, 15))
 
         # Korean Mid Autumn Day
         name = "Chuseok"
-        chuseok_date = self._add_korean_calendar_holiday(name, 8, 15)
+        chuseok_date = self._add_mid_autumn_festival(name)
         self._add_holiday(preceding_day % name, chuseok_date + td(days=-1))
         self._add_holiday(second_day % name, chuseok_date + td(days=+1))
 
@@ -185,7 +196,10 @@ class SouthKorea(
             self._add_with_alt_holiday("Hangeul Day", date(year, OCT, 9))
 
         # Christmas Day
-        self._add_christmas_day("Christmas Day")
+        name = "Christmas Day"
+        self._add_with_alt_holiday(
+            name, self._add_christmas_day(name), add_hol=False, since=2023
+        )
 
 
 class Korea(SouthKorea):
@@ -204,3 +218,31 @@ class KR(SouthKorea):
 
 class KOR(SouthKorea):
     pass
+
+
+class SouthKoreaLunisolarCalendar(_CustomCalendar, _ChineseLunisolar):
+    BUDDHA_BIRTHDAY_DATES = {
+        1931: (MAY, 25),
+        1968: (MAY, 5),
+        2001: (MAY, 1),
+        2012: (MAY, 28),
+        2023: (MAY, 27),
+        2025: (MAY, 5),
+    }
+
+    LUNAR_NEW_YEAR_DATES = {
+        1916: (FEB, 4),
+        1944: (JAN, 26),
+        1954: (FEB, 4),
+        1958: (FEB, 19),
+        1966: (JAN, 22),
+        1988: (FEB, 18),
+        1997: (FEB, 8),
+        2027: (FEB, 7),
+        2028: (JAN, 27),
+    }
+
+    MID_AUTUMN_DATES = {
+        1942: (SEP, 25),
+        2040: (SEP, 21),
+    }

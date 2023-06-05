@@ -41,6 +41,7 @@ class Bulgaria(HolidayBase):
 
     country = "BG"
     default_language = "bg"
+    supported_languages = ("bg", "en_US")
 
     def _populate(self, year):
         if year < 1990:

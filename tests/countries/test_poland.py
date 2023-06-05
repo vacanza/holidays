@@ -72,14 +72,12 @@ class TestPoland(TestCase):
         self.assertHoliday(f"{year}-01-06" for year in range(1925, 1960))
         self.assertHoliday(f"{year}-01-06" for year in range(2011, 2050))
         self.assertNoHoliday(f"{year}-01-06" for year in range(1961, 2011))
-        self.assertNoHolidayNameInYears(
-            "Święto Trzech Króli", range(1961, 2011)
-        )
+        self.assertNoHolidayName("Święto Trzech Króli", range(1961, 2011))
 
     def test_oczyszczenie_nmp(self):
         self.assertHoliday(f"{year}-02-02" for year in range(1925, 1951))
         self.assertNoHoliday(f"{year}-02-02" for year in range(1951, 2050))
-        self.assertNoHolidayNameInYears(
+        self.assertNoHolidayName(
             "Oczyszczenie Najświętszej Marii Panny",
             range(1951, 2050),
         )
@@ -131,13 +129,13 @@ class TestPoland(TestCase):
     def test_swieto_panstwowe(self):
         self.assertHoliday(f"{year}-05-01" for year in range(1950, 2050))
         self.assertNoHoliday(f"{year}-05-01" for year in range(1925, 1950))
-        self.assertNoHolidayNameInYears("Święto Państwowe", range(1925, 1950))
+        self.assertNoHolidayName("Święto Państwowe", range(1925, 1950))
 
     def test_swieto_narodowe_trzeciego_maja(self):
         self.assertHoliday(f"{year}-05-03" for year in range(1925, 1951))
         self.assertHoliday(f"{year}-05-03" for year in range(1990, 2050))
         self.assertNoHoliday(f"{year}-05-03" for year in range(1951, 1990))
-        self.assertNoHolidayNameInYears(
+        self.assertNoHolidayName(
             "Święto Narodowe Trzeciego Maja", range(1951, 1990)
         )
 
@@ -145,11 +143,11 @@ class TestPoland(TestCase):
         self.assertHoliday(f"{year}-05-09" for year in range(1946, 1951))
         self.assertNoHoliday(f"{year}-05-09" for year in range(1925, 1946))
         self.assertNoHoliday(f"{year}-05-09" for year in range(1951, 2050))
-        self.assertNoHolidayNameInYears(
+        self.assertNoHolidayName(
             "Narodowe Święto Zwycięstwa i Wolności",
             range(1925, 1946),
         )
-        self.assertNoHolidayNameInYears(
+        self.assertNoHolidayName(
             "Narodowe Święto Zwycięstwa i Wolności",
             range(1951, 2050),
         )
@@ -162,9 +160,7 @@ class TestPoland(TestCase):
             "1945-05-11",
             "1950-05-19",
         )
-        self.assertNoHolidayNameInYears(
-            "Wniebowstąpienie Pańskie", range(1951, 2050)
-        )
+        self.assertNoHolidayName("Wniebowstąpienie Pańskie", range(1951, 2050))
 
     def test_drugi_dzien_zielonych_swiatek(self):
         self.assertHoliday(
@@ -174,14 +170,14 @@ class TestPoland(TestCase):
             "1945-05-21",
             "1950-05-29",
         )
-        self.assertNoHolidayNameInYears(
+        self.assertNoHolidayName(
             "Drugi dzień Zielonych Świątek", range(1951, 2050)
         )
 
     def test_swietych_apostolow_piotra_i_pawla(self):
         self.assertHoliday(f"{year}-06-29" for year in range(1925, 1951))
         self.assertNoHoliday(f"{year}-06-29" for year in range(1951, 2050))
-        self.assertNoHolidayNameInYears(
+        self.assertNoHolidayName(
             "Uroczystość Świętych Apostołów Piotra i Pawła",
             range(1951, 2050),
         )
@@ -190,11 +186,11 @@ class TestPoland(TestCase):
         self.assertHoliday(f"{year}-07-22" for year in range(1945, 1990))
         self.assertNoHoliday(f"{year}-07-22" for year in range(1925, 1945))
         self.assertNoHoliday(f"{year}-07-22" for year in range(1990, 2050))
-        self.assertNoHolidayNameInYears(
+        self.assertNoHolidayName(
             "Narodowe Święto Odrodzenia Polski",
             range(1925, 1945),
         )
-        self.assertNoHolidayNameInYears(
+        self.assertNoHolidayName(
             "Narodowe Święto Odrodzenia Polski",
             range(1990, 2050),
         )
@@ -203,7 +199,7 @@ class TestPoland(TestCase):
         self.assertHoliday(f"{year}-08-15" for year in range(1925, 1961))
         self.assertHoliday(f"{year}-08-15" for year in range(1989, 2050))
         self.assertNoHoliday(f"{year}-08-15" for year in range(1961, 1989))
-        self.assertNoHolidayNameInYears(
+        self.assertNoHolidayName(
             "Wniebowzięcie Najświętszej Marii Panny",
             range(1961, 1989),
         )
@@ -216,17 +212,17 @@ class TestPoland(TestCase):
         self.assertHoliday(f"{year}-11-11" for year in range(1989, 2050))
         self.assertNoHoliday(f"{year}-11-11" for year in range(1925, 1937))
         self.assertNoHoliday(f"{year}-11-11" for year in range(1945, 1989))
-        self.assertNoHolidayNameInYears(
+        self.assertNoHolidayName(
             "Narodowe Święto Niepodległości", range(1925, 1937)
         )
-        self.assertNoHolidayNameInYears(
+        self.assertNoHolidayName(
             "Narodowe Święto Niepodległości", range(1945, 1989)
         )
 
     def test_niepokalane_poczecie_nmp(self):
         self.assertHoliday(f"{year}-12-08" for year in range(1925, 1951))
         self.assertNoHoliday(f"{year}-12-08" for year in range(1951, 2050))
-        self.assertNoHolidayNameInYears(
+        self.assertNoHolidayName(
             "Niepokalane Poczęcie Najświętszej Marii Panny",
             range(1951, 2050),
         )
@@ -236,49 +232,120 @@ class TestPoland(TestCase):
         self.assertHoliday(f"{year}-12-26" for year in range(1925, 2050))
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                pl = Poland(language=language)
-                self.assertEqual(pl["2022-01-01"], "Nowy Rok")
-                self.assertEqual(
-                    pl["2022-12-25"], "Boże Narodzenie (pierwszy dzień)"
-                )
+        self.assertLocalizedHolidays(
+            (
+                ("2018-01-01", "Nowy Rok"),
+                ("2018-01-06", "Święto Trzech Króli"),
+                ("2018-04-01", "Niedziela Wielkanocna"),
+                ("2018-04-02", "Poniedziałek Wielkanocny"),
+                ("2018-05-01", "Święto Państwowe"),
+                ("2018-05-03", "Święto Narodowe Trzeciego Maja"),
+                ("2018-05-20", "Zielone Świątki"),
+                ("2018-05-31", "Dzień Bożego Ciała"),
+                ("2018-08-15", "Wniebowzięcie Najświętszej Marii Panny"),
+                ("2018-11-01", "Uroczystość Wszystkich Świętych"),
+                ("2018-11-11", "Narodowe Święto Niepodległości"),
+                ("2018-11-12", "Narodowe Święto Niepodległości - 100-lecie"),
+                ("2018-12-25", "Boże Narodzenie (pierwszy dzień)"),
+                ("2018-12-26", "Boże Narodzenie (drugi dzień)"),
+            ),
+        )
 
-        run_tests((Poland.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((Poland.default_language,))
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Nowy Rok"),
+                ("2022-01-06", "Święto Trzech Króli"),
+                ("2022-04-17", "Niedziela Wielkanocna"),
+                ("2022-04-18", "Poniedziałek Wielkanocny"),
+                ("2022-05-01", "Święto Państwowe"),
+                ("2022-05-03", "Święto Narodowe Trzeciego Maja"),
+                ("2022-06-05", "Zielone Świątki"),
+                ("2022-06-16", "Dzień Bożego Ciała"),
+                ("2022-08-15", "Wniebowzięcie Najświętszej Marii Panny"),
+                ("2022-11-01", "Uroczystość Wszystkich Świętych"),
+                ("2022-11-11", "Narodowe Święto Niepodległości"),
+                ("2022-12-25", "Boże Narodzenie (pierwszy dzień)"),
+                ("2022-12-26", "Boże Narodzenie (drugi dzień)"),
+            ),
+        )
 
     def test_l10n_en_us(self):
-        en_us = "en_US"
-
-        pl = Poland(language=en_us)
-        self.assertEqual(
-            pl["2018-11-12"],
-            "National Independence Day - 100th anniversary",
+        self.assertLocalizedHolidays(
+            (
+                ("2018-01-01", "New Year's Day"),
+                ("2018-01-06", "Epiphany"),
+                ("2018-04-01", "Easter Sunday"),
+                ("2018-04-02", "Easter Monday"),
+                ("2018-05-01", "National Day"),
+                ("2018-05-03", "National Day of the Third of May"),
+                ("2018-05-20", "Pentecost"),
+                ("2018-05-31", "Corpus Christi"),
+                ("2018-08-15", "Assumption of the Virgin Mary"),
+                ("2018-11-01", "All Saints' Day"),
+                ("2018-11-11", "National Independence Day"),
+                (
+                    "2018-11-12",
+                    "National Independence Day - 100th anniversary",
+                ),
+                ("2018-12-25", "Christmas (Day 1)"),
+                ("2018-12-26", "Christmas (Day 2)"),
+            ),
+            "en_US",
         )
-        self.assertEqual(pl["2022-01-01"], "New Year's Day")
-        self.assertEqual(pl["2022-12-25"], "Christmas (Day 1)")
-
-        self.set_language(en_us)
-        for language in (None, en_us, "invalid"):
-            pl = Poland(language=language)
-            self.assertEqual(pl["2022-01-01"], "New Year's Day")
-            self.assertEqual(pl["2022-12-25"], "Christmas (Day 1)")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "New Year's Day"),
+                ("2022-01-06", "Epiphany"),
+                ("2022-04-17", "Easter Sunday"),
+                ("2022-04-18", "Easter Monday"),
+                ("2022-05-01", "National Day"),
+                ("2022-05-03", "National Day of the Third of May"),
+                ("2022-06-05", "Pentecost"),
+                ("2022-06-16", "Corpus Christi"),
+                ("2022-08-15", "Assumption of the Virgin Mary"),
+                ("2022-11-01", "All Saints' Day"),
+                ("2022-11-11", "National Independence Day"),
+                ("2022-12-25", "Christmas (Day 1)"),
+                ("2022-12-26", "Christmas (Day 2)"),
+            ),
+            "en_US",
+        )
 
     def test_l10n_uk(self):
-        uk = "uk"
-
-        pl = Poland(language=uk)
-        self.assertEqual(
-            pl["2018-11-12"],
-            "100-а річниця Дня Незалежності",
+        self.assertLocalizedHolidays(
+            (
+                ("2018-01-01", "Новий рік"),
+                ("2018-01-06", "Богоявлення"),
+                ("2018-04-01", "Перший день Великодня"),
+                ("2018-04-02", "Другий день Великодня"),
+                ("2018-05-01", "Національне свято"),
+                ("2018-05-03", "Національне свято Третього Травня"),
+                ("2018-05-20", "День Святої Трійці"),
+                ("2018-05-31", "Свято Тіла і Крові Христових"),
+                ("2018-08-15", "Успіння Пресвятої Богородиці"),
+                ("2018-11-01", "День усіх святих"),
+                ("2018-11-11", "День Незалежності"),
+                ("2018-11-12", "100-а річниця Дня Незалежності"),
+                ("2018-12-25", "Перший день Різдва"),
+                ("2018-12-26", "Другий день Різдва"),
+            ),
+            "uk",
         )
-        self.assertEqual(pl["2022-01-01"], "Новий рік")
-        self.assertEqual(pl["2022-12-25"], "Перший день Різдва")
-
-        self.set_language(uk)
-        for language in (None, uk, "invalid"):
-            pl = Poland(language=language)
-            self.assertEqual(pl["2022-01-01"], "Новий рік")
-            self.assertEqual(pl["2022-12-25"], "Перший день Різдва")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Новий рік"),
+                ("2022-01-06", "Богоявлення"),
+                ("2022-04-17", "Перший день Великодня"),
+                ("2022-04-18", "Другий день Великодня"),
+                ("2022-05-01", "Національне свято"),
+                ("2022-05-03", "Національне свято Третього Травня"),
+                ("2022-06-05", "День Святої Трійці"),
+                ("2022-06-16", "Свято Тіла і Крові Христових"),
+                ("2022-08-15", "Успіння Пресвятої Богородиці"),
+                ("2022-11-01", "День усіх святих"),
+                ("2022-11-11", "День Незалежності"),
+                ("2022-12-25", "Перший день Різдва"),
+                ("2022-12-26", "Другий день Різдва"),
+            ),
+            "uk",
+        )

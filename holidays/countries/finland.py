@@ -26,6 +26,7 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "FI"
     default_language = "fi"
+    supported_languages = ("en_US", "fi", "sv", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

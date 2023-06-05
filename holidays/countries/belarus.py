@@ -28,6 +28,7 @@ class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "BY"
     default_language = "be"
+    supported_languages = ("be", "en_US")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)

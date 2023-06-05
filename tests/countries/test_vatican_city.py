@@ -14,18 +14,177 @@ from tests.common import TestCase
 
 
 class TestVaticanCity(TestCase):
-    def setUp(self):
-        self.holidays = VaticanCity()
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(VaticanCity, years=range(1970, 2050))
 
     def test_country_aliases(self):
         self.assertCountryAliases(VaticanCity, VA, VAT)
 
+    def test_no_holidays(self):
+        self.assertNoHolidays(VaticanCity(years=1928))
+
+    def test_solemnity_of_mary_day(self):
+        self.assertHolidaysName(
+            "Solemnity of Mary Day",
+            (f"{year}-01-01" for year in range(1970, 2050)),
+        )
+
+    def test_epiphany(self):
+        self.assertHolidaysName(
+            "Epiphany",
+            (f"{year}-01-06" for year in range(1970, 2050)),
+        )
+
+    def test_lateran_treaty_day(self):
+        self.assertHolidaysName(
+            "Lateran Treaty Day",
+            (f"{year}-02-11" for year in range(1970, 2050)),
+        )
+
+    def test_anniversary_election_of_holy_father(self):
+        name = "Anniversary of the Election of the Holy Father"
+        self.assertHolidaysName(
+            name, (f"{year}-10-16" for year in range(1978, 2005))
+        )
+        self.assertHolidaysName(
+            name, (f"{year}-04-19" for year in range(2005, 2013))
+        )
+        self.assertHolidaysName(
+            name, (f"{year}-03-13" for year in range(2013, 2050))
+        )
+        self.assertNoHolidayName(name, range(1970, 1978))
+
+    def test_saint_josephs_day(self):
+        self.assertHolidaysName(
+            "Saint Joseph's Day",
+            (f"{year}-03-19" for year in range(1970, 2050)),
+        )
+
+    def test_easter_sunday(self):
+        self.assertHolidaysName(
+            "Easter Sunday",
+            "2019-04-21",
+            "2020-04-12",
+            "2021-04-04",
+            "2022-04-17",
+            "2023-04-09",
+        )
+
+    def test_easter_monday(self):
+        self.assertHolidaysName(
+            "Easter Monday",
+            "2019-04-22",
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+        )
+
+    def test_saint_georges_day(self):
+        name = "Saint George's Day"
+        self.assertHolidaysName(
+            name, (f"{year}-04-23" for year in range(2013, 2050))
+        )
+        self.assertNoHolidayName(name, range(1970, 2013))
+
+    def test_ascension(self):
+        name = "Ascension of Christ"
+        self.assertHolidaysName(
+            name,
+            "2000-06-01",
+            "2001-05-24",
+            "2002-05-09",
+            "2003-05-29",
+            "2004-05-20",
+            "2005-05-05",
+            "2006-05-25",
+            "2007-05-17",
+            "2008-05-01",
+            "2009-05-21",
+        )
+        self.assertNoHolidayName(name, range(2010, 2050))
+
+    def test_corpus_christi(self):
+        name = "Corpus Christi"
+        self.assertHolidaysName(
+            name,
+            "2000-06-22",
+            "2001-06-14",
+            "2002-05-30",
+            "2003-06-19",
+            "2004-06-10",
+            "2005-05-26",
+            "2006-06-15",
+            "2007-06-07",
+            "2008-05-22",
+            "2009-06-11",
+        )
+        self.assertNoHolidayName(name, range(2010, 2050))
+
+    def test_saint_joseph_workers_day(self):
+        name = "Saint Joseph the Worker's Day"
+        self.assertNoHolidayName(name, VaticanCity(years=1954))
+        self.assertHolidaysName(
+            name, (f"{year}-05-01" for year in range(1955, 2050))
+        )
+
+    def test_saints_peter_and_paul_day(self):
+        self.assertHolidaysName(
+            "Saint Peter and Saint Paul's Day",
+            (f"{year}-06-29" for year in range(1970, 2050)),
+        )
+
+    def test_assumption_day(self):
+        self.assertHolidaysName(
+            "Assumption Day",
+            (f"{year}-08-15" for year in range(1970, 2050)),
+        )
+
+    def test_nativity_of_mary_day(self):
+        self.assertHolidaysName(
+            "Nativity of Mary Day",
+            (f"{year}-09-08" for year in range(1970, 2050)),
+        )
+
+    def test_all_saints_day(self):
+        self.assertHolidaysName(
+            "All Saints' Day",
+            (f"{year}-11-01" for year in range(1970, 2050)),
+        )
+
+    def test_saint_charles_borromeo_day(self):
+        name = "Saint Charles Borromeo Day"
+        self.assertHolidaysName(
+            name, (f"{year}-11-04" for year in range(1978, 2005))
+        )
+        self.assertNoHolidayName(name, range(1970, 1978), range(2005, 2050))
+
+    def test_immaculate_conception_day(self):
+        self.assertHolidaysName(
+            "Immaculate Conception Day",
+            (f"{year}-12-08" for year in range(1970, 2050)),
+        )
+
+    def test_christmas_day(self):
+        self.assertHolidaysName(
+            "Christmas Day",
+            (f"{year}-12-25" for year in range(1970, 2050)),
+        )
+
+    def test_saint_stephens_day(self):
+        self.assertHolidaysName(
+            "Saint Stephen's Day",
+            (f"{year}-12-26" for year in range(1970, 2050)),
+        )
+
     def test_2022(self):
         self.assertHolidays(
+            VaticanCity(years=2022),
             ("2022-01-01", "Solemnity of Mary Day"),
             ("2022-01-06", "Epiphany"),
             ("2022-02-11", "Lateran Treaty Day"),
-            ("2022-03-13", "Anniversary of the election of Pope Francis"),
+            ("2022-03-13", "Anniversary of the Election of the Holy Father"),
             ("2022-03-19", "Saint Joseph's Day"),
             ("2022-04-17", "Easter Sunday"),
             ("2022-04-18", "Easter Monday"),
@@ -42,10 +201,11 @@ class TestVaticanCity(TestCase):
 
     def test_2023(self):
         self.assertHolidays(
+            VaticanCity(years=2023),
             ("2023-01-01", "Solemnity of Mary Day"),
             ("2023-01-06", "Epiphany"),
             ("2023-02-11", "Lateran Treaty Day"),
-            ("2023-03-13", "Anniversary of the election of Pope Francis"),
+            ("2023-03-13", "Anniversary of the Election of the Holy Father"),
             ("2023-03-19", "Saint Joseph's Day"),
             ("2023-04-09", "Easter Sunday"),
             ("2023-04-10", "Easter Monday"),

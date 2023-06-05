@@ -15,8 +15,8 @@ from tests.common import TestCase
 
 class TestKenya(TestCase):
     @classmethod
-    def setUpClass(self):
-        super().setUpClass(Kenya)
+    def setUpClass(cls):
+        super().setUpClass(Kenya, years=range(1963, 2050))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Kenya, KE, KEN)
@@ -48,10 +48,7 @@ class TestKenya(TestCase):
 
     def test_madaraka_day(self):
         self.assertNoHoliday(f"{year}-06-01" for year in range(1963, 2010))
-        self.assertNoHolidayName(
-            "Madaraka Day",
-            Kenya(years=range(1963, 2010)),
-        )
+        self.assertNoHolidayName("Madaraka Day", range(1963, 2010))
         self.assertHoliday(f"{year}-06-01" for year in range(2010, 2050))
 
     def test_utamaduni_day(self):
@@ -59,22 +56,14 @@ class TestKenya(TestCase):
         name2 = "Utamaduni Day"
         self.assertNoHoliday(f"{year}-10-10" for year in range(1963, 2002))
         self.assertNoHoliday(f"{year}-10-10" for year in range(2010, 2018))
-        self.assertNoHolidayName(name1, Kenya(years=range(1963, 2002)))
-        self.assertNoHolidayName(name1, Kenya(years=range(2010, 2018)))
-        self.assertNoHolidayName(name2, Kenya(years=range(1963, 2002)))
-        self.assertNoHolidayName(name2, Kenya(years=range(2010, 2021)))
+        self.assertNoHolidayName(name1, range(1963, 2002), range(2010, 2018))
+        self.assertNoHolidayName(name2, range(1963, 2002), range(2010, 2021))
         self.assertHoliday(f"{year}-10-10" for year in range(2002, 2010))
         self.assertHoliday(f"{year}-10-10" for year in range(2018, 2050))
 
     def test_mashujaa_day(self):
-        self.assertNoHolidayName(
-            "Mashujaa Day",
-            Kenya(years=range(1963, 2010)),
-        )
-        self.assertNoHolidayName(
-            "Kenyatta Day",
-            Kenya(years=range(2010, 2050)),
-        )
+        self.assertNoHolidayName("Mashujaa Day", range(1963, 2010))
+        self.assertNoHolidayName("Kenyatta Day", range(2010, 2050))
 
     def test_easter(self):
         self.assertHoliday(
@@ -130,6 +119,7 @@ class TestKenya(TestCase):
 
     def test_2019(self):
         self.assertHolidayDates(
+            Kenya(years=2019),
             "2019-01-01",
             "2019-04-19",
             "2019-04-22",
@@ -145,6 +135,7 @@ class TestKenya(TestCase):
 
     def test_2022(self):
         self.assertHolidayDates(
+            Kenya(years=2022),
             "2022-01-01",
             "2022-04-15",
             "2022-04-18",

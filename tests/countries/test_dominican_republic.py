@@ -93,39 +93,57 @@ class TestDominicanRepublic(TestCase):
         )
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                do = DominicanRepublic(language=language)
-                self.assertEqual(do["2022-01-01"], "Año Nuevo")
-                self.assertEqual(do["2022-12-25"], "Día de Navidad")
-
-        run_tests((DominicanRepublic.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((DominicanRepublic.default_language,))
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Año Nuevo"),
+                ("2022-01-10", "Día de los Santos Reyes"),
+                ("2022-01-21", "Día de la Altagracia"),
+                ("2022-01-24", "Día de Duarte"),
+                ("2022-02-27", "Día de Independencia"),
+                ("2022-04-15", "Viernes Santo"),
+                ("2022-05-02", "Día del Trabajo"),
+                ("2022-06-16", "Corpus Christi"),
+                ("2022-08-15", "Día de la Restauración"),
+                ("2022-09-24", "Día de las Mercedes"),
+                ("2022-11-06", "Día de la Constitución"),
+                ("2022-12-25", "Día de Navidad"),
+            )
+        )
 
     def test_l10n_en_us(self):
-        en_us = "en_US"
-
-        do = DominicanRepublic(language=en_us)
-        self.assertEqual(do["2022-01-01"], "New Year's Day")
-        self.assertEqual(do["2022-12-25"], "Christmas Day")
-
-        self.set_language(en_us)
-        for language in (None, en_us, "invalid"):
-            do = DominicanRepublic(language=language)
-            self.assertEqual(do["2022-01-01"], "New Year's Day")
-            self.assertEqual(do["2022-12-25"], "Christmas Day")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "New Year's Day"),
+                ("2022-01-10", "Epiphany"),
+                ("2022-01-21", "Lady of Altagracia"),
+                ("2022-01-24", "Juan Pablo Duarte Day"),
+                ("2022-02-27", "Independence Day"),
+                ("2022-04-15", "Good Friday"),
+                ("2022-05-02", "Labor Day"),
+                ("2022-06-16", "Feast of Corpus Christi"),
+                ("2022-08-15", "Restoration Day"),
+                ("2022-09-24", "Our Lady of Mercedes Day"),
+                ("2022-11-06", "Constitution Day"),
+                ("2022-12-25", "Christmas Day"),
+            ),
+            "en_US",
+        )
 
     def test_l10n_uk(self):
-        uk = "uk"
-
-        do = DominicanRepublic(language=uk)
-        self.assertEqual(do["2022-01-01"], "Новий рік")
-        self.assertEqual(do["2022-12-25"], "Різдво Христове")
-
-        self.set_language(uk)
-        for language in (None, uk, "invalid"):
-            do = DominicanRepublic(language=language)
-            self.assertEqual(do["2022-01-01"], "Новий рік")
-            self.assertEqual(do["2022-12-25"], "Різдво Христове")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Новий рік"),
+                ("2022-01-10", "Богоявлення"),
+                ("2022-01-21", "День Богоматері Альтаграсія"),
+                ("2022-01-24", "День Дуарте"),
+                ("2022-02-27", "День незалежності"),
+                ("2022-04-15", "Страсна пʼятниця"),
+                ("2022-05-02", "День праці"),
+                ("2022-06-16", "Свято Тіла і Крові Христових"),
+                ("2022-08-15", "День реставрації"),
+                ("2022-09-24", "День Богоматері Милосердя"),
+                ("2022-11-06", "День Конституції"),
+                ("2022-12-25", "Різдво Христове"),
+            ),
+            "uk",
+        )

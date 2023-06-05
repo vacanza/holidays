@@ -9,13 +9,12 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.calendars import _get_nth_weekday_from, JULIAN_CALENDAR
 from holidays.calendars import GREGORIAN_CALENDAR
-from holidays.constants import MAR, MAY, OCT, MON
+from holidays.constants import MAR, OCT, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -30,6 +29,7 @@ class Greece(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "GR"
     default_language = "el"
+    supported_languages = ("el", "en_US")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
@@ -51,6 +51,9 @@ class Greece(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Independence Day.
         self._add_holiday(tr("Εικοστή Πέμπτη Μαρτίου"), MAR, 25)
 
+        # Good Friday.
+        self._add_good_friday(tr("Μεγάλη Παρασκευή"))
+
         # Easter Monday.
         self._add_easter_monday(tr("Δευτέρα του Πάσχα"))
 
@@ -61,8 +64,7 @@ class Greece(HolidayBase, ChristianHolidays, InternationalHolidays):
         name = self.tr("Εργατική Πρωτομαγιά")
         name_observed = self.tr("%s (παρατηρήθηκε)")
 
-        dt = date(year, MAY, 1)
-        self._add_holiday(name, dt)
+        dt = self._add_labor_day(name)
         if self.observed and self._is_weekend(dt):
             # https://en.wikipedia.org/wiki/Public_holidays_in_Greece
             labour_day_observed_date = _get_nth_weekday_from(1, MON, dt)

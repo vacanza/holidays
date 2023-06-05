@@ -1,3 +1,43 @@
+Version 0.26
+============
+
+Released June 5, 2023
+
+- Add estimated_label localization support to Asian holiday groups (#1229 by @KJhellico)
+- Introduce Asian holidays pre-calculated data (#1148 by @KJhellico)
+- Refactor calendars: optimize inheritance and scope (#1251 by @arkid15r)
+- Refactor common::TestCase (#1221 by @arkid15r)
+- Refactor existing utils methods, add list localized entities methods (#1185 by @arkid15r)
+- Refactor long running tests (#1182 by @KJhellico)
+- Add Belize holidays (#1181 by @KJhellico)
+- Add Cameroon holidays (#1243 by @KJhellico)
+- Add El Salvador holidays (#1198 by @KJhellico)
+- Add Gabon holidays (#1244 by @KJhellico)
+- Update Azerbaijan holidays: use custom Islamic calendar (#1231 by @KJhellico)
+- Update ChineseCalendarHolidays: add Ching Ming Festival (#1240 by @KJhellico)
+- Update Greece holidays: add Good Friday (#1257 by @KJhellico)
+- Update Morocco holidays (#1205 by @abh31000)
+- Update README supported country table format (#1241 by @arkid15r)
+- Update Singapore tests: cover non-observed holidays (#1184 by @arkid15r)
+- Update South Korea holidays: add alternative holidays for Birthday of the Buddha and Christmas Day (#1249 by @DiceMono)
+- Update Vatican City holidays (#1206 by @KJhellico)
+- Update Vatican City holidays: add Saint Joseph the Worker's Day introduction year check (#1242 by @PPsyrius)
+- Update calendar naming: fix grammar (#1220 by @arkid15r)
+- Update l10n related workflows (#1140 by @arkid15r)
+- Update test coverage: fix uncovered lines (#1250 by @arkid15r)
+- Add Asian calendars classes code generator (#1219 by @KJhellico)
+- Add EntityLoader inheritance error message (#1208 by @arkid15r)
+- Add Hebrew calendar class code generator (#1222 by @KJhellico)
+- Add St. James' and St. George's days to ChristianHolidays (#1230 by @KJhellico)
+- Migrate Botswana holidays to holiday groups (#1207 by @KJhellico, @arkid15r)
+- Migrate Cuba holidays to holiday groups (#1245 by @PPsyrius)
+- Migrate Kenya holidays to holiday groups (#1246 by @PPsyrius)
+- Migrate Montenegro holidays to holiday groups (#1248 by @kasya)
+- Migrate New Zealand holidays to holiday groups and subdivision holidays methods (#1212 by @KJhellico)
+- Migrate San Marino holidays to holiday groups (#1247 by @kasya)
+- Migrate United Kingdom holidays to holiday groups and subdivision holidays methods (#1213 by @KJhellico)
+- Migrate financial to holiday groups (#1174 by @arkid15r)
+
 Version 0.25
 ============
 

@@ -209,6 +209,10 @@ class HolidayBase(Dict[date, str]):
     ones."""
     weekend: Set[int] = {SAT, SUN}
     """Country weekend days."""
+    default_language: Optional[str] = None
+    """The entity language used by default."""
+    supported_languages: Tuple[str, ...] = ()
+    """All languages supported by this entity."""
 
     def __init__(
         self,
@@ -566,7 +570,7 @@ class HolidayBase(Dict[date, str]):
     def _add_subdiv_holidays(self):
         """Populate subdivision holidays."""
         if self.subdiv is not None:
-            subdiv = self.subdiv.replace("-", "_").lower()
+            subdiv = self.subdiv.replace("-", "_").replace(" ", "_").lower()
             add_subdiv_holidays = getattr(
                 self, f"_add_subdiv_{subdiv}_holidays", None
             )

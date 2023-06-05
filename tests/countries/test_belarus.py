@@ -75,28 +75,38 @@ class TestBelarus(TestCase):
         self.assertNoHoliday("1997-07-03")
 
     def test_l10n_default(self):
-        def run_tests(languages):
-            for language in languages:
-                by = Belarus(language=language)
-                self.assertEqual(by["2022-01-01"], "Новы год")
-                self.assertEqual(
-                    by["2022-12-25"], "Нараджэнне Хрыстова (каталіцкае Раство)"
-                )
-
-        run_tests((Belarus.default_language, None, "invalid"))
-
-        self.set_language("en_US")
-        run_tests((Belarus.default_language,))
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "Новы год"),
+                ("2022-01-02", "Новы год"),
+                ("2022-01-07", "Нараджэнне Хрыстова (праваслаўнае Раство)"),
+                ("2022-03-08", "Дзень жанчын"),
+                ("2022-05-01", "Свята працы"),
+                ("2022-05-03", "Радаўніца"),
+                ("2022-05-09", "Дзень Перамогі"),
+                (
+                    "2022-07-03",
+                    "Дзень Незалежнасці Рэспублікі Беларусь "
+                    "(Дзень Рэспублікі)",
+                ),
+                ("2022-11-07", "Дзень Кастрычніцкай рэвалюцыі"),
+                ("2022-12-25", "Нараджэнне Хрыстова (каталіцкае Раство)"),
+            )
+        )
 
     def test_l10n_en_us(self):
-        en_us = "en_US"
-
-        by = Belarus(language=en_us)
-        self.assertEqual(by["2018-01-01"], "New Year's Day")
-        self.assertEqual(by["2022-12-25"], "Catholic Christmas Day")
-
-        self.set_language(en_us)
-        for language in (None, en_us, "invalid"):
-            by = Belarus(language=language)
-            self.assertEqual(by["2018-01-01"], "New Year's Day")
-            self.assertEqual(by["2022-12-25"], "Catholic Christmas Day")
+        self.assertLocalizedHolidays(
+            (
+                ("2022-01-01", "New Year's Day"),
+                ("2022-01-02", "New Year's Day"),
+                ("2022-01-07", "Orthodox Christmas Day"),
+                ("2022-03-08", "Women's Day"),
+                ("2022-05-01", "Labor Day"),
+                ("2022-05-03", "Radunitsa"),
+                ("2022-05-09", "Victory Day"),
+                ("2022-07-03", "Independence Day (Republic Day)"),
+                ("2022-11-07", "October Revolution Day"),
+                ("2022-12-25", "Catholic Christmas Day"),
+            ),
+            "en_US",
+        )

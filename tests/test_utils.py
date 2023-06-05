@@ -9,79 +9,82 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import pathlib
 import sys
 import unittest
 import warnings
 from datetime import date
+from pathlib import Path
 from unittest import mock
 
 import pytest
 
-from holidays import utils
+import holidays
+from holidays.utils import country_holidays, financial_holidays
+from holidays.utils import list_localized_countries, list_localized_financial
+from holidays.utils import list_supported_countries, list_supported_financial
 
 PYTHON_VERSION = (3, 11)
 
 
 class TestCountryHolidays(unittest.TestCase):
     def setUp(self):
-        self.holidays = utils.country_holidays("US")
+        self.holidays = country_holidays("US")
 
     def test_country(self):
         self.assertEqual(self.holidays.country, "US")
 
     def test_country_single_year(self):
-        h = utils.country_holidays("US", years=2021)
+        h = country_holidays("US", years=2021)
         self.assertEqual(h.years, {2021})
 
     def test_country_years(self):
-        h = utils.country_holidays("US", years=(2015, 2016))
+        h = country_holidays("US", years=(2015, 2016))
         self.assertEqual(h.years, {2015, 2016})
 
     def test_country_state(self):
-        h = utils.country_holidays("US", subdiv="NY")
+        h = country_holidays("US", subdiv="NY")
         self.assertEqual(h.subdiv, "NY")
 
     def test_country_province(self):
-        h = utils.country_holidays("AU", subdiv="NT")
+        h = country_holidays("AU", subdiv="NT")
         self.assertEqual(h.subdiv, "NT")
 
     def test_exceptions(self):
         self.assertRaises(
-            NotImplementedError, lambda: utils.country_holidays("XXXX")
+            NotImplementedError, lambda: country_holidays("XXXX")
         )
         self.assertRaises(
             NotImplementedError,
-            lambda: utils.country_holidays("US", subdiv="XXXX"),
+            lambda: country_holidays("US", subdiv="XXXX"),
         )
         self.assertRaises(
             NotImplementedError,
-            lambda: utils.country_holidays("US", subdiv="XXXX"),
+            lambda: country_holidays("US", subdiv="XXXX"),
         )
 
 
 class TestFinancialHolidays(unittest.TestCase):
     def setUp(self):
-        self.holidays = utils.financial_holidays("NYSE")
+        self.holidays = financial_holidays("NYSE")
 
     def test_market(self):
         self.assertEqual(self.holidays.market, "NYSE")
 
     def test_market_single_year(self):
-        h = utils.financial_holidays("NYSE", years=2021)
+        h = financial_holidays("NYSE", years=2021)
         self.assertEqual(h.years, {2021})
 
     def test_market_years(self):
-        h = utils.financial_holidays("NYSE", years=(2015, 2016))
+        h = financial_holidays("NYSE", years=(2015, 2016))
         self.assertEqual(h.years, {2015, 2016})
 
     def test_exceptions(self):
         self.assertRaises(
-            NotImplementedError, lambda: utils.financial_holidays("XXXX")
+            NotImplementedError, lambda: financial_holidays("XXXX")
         )
         self.assertRaises(
             NotImplementedError,
-            lambda: utils.financial_holidays("NYSE", subdiv="XXXX"),
+            lambda: financial_holidays("NYSE", subdiv="XXXX"),
         )
 
 
@@ -106,14 +109,14 @@ class TestAllInSameYear(unittest.TestCase):
         """
         warnings.simplefilter("ignore")
 
-        for country in utils.list_supported_countries():
+        for country in list_supported_countries():
             for year in self.years:
-                for dt in utils.country_holidays(country, years=year):
+                for dt in country_holidays(country, years=year):
                     self.assertEqual(dt.year, year)
                     self.assertEqual(type(dt), date)
         self.assertEqual(
             self.years,
-            utils.country_holidays(country, years=self.years).years,
+            country_holidays(country, years=self.years).years,
         )
 
     @pytest.mark.skipif(
@@ -132,22 +135,82 @@ class TestAllInSameYear(unittest.TestCase):
         """
         warnings.simplefilter("ignore")
 
-        for market in utils.list_supported_financial():
+        for market in list_supported_financial():
             for year in self.years:
-                for dt in utils.financial_holidays(market, years=year):
+                for dt in financial_holidays(market, years=year):
                     self.assertEqual(dt.year, year)
                     self.assertEqual(type(dt), date)
         self.assertEqual(
             self.years,
-            utils.financial_holidays(market, years=self.years).years,
+            financial_holidays(market, years=self.years).years,
+        )
+
+
+class TestListLocalizedEntities(unittest.TestCase):
+    def assertLocalizedEntities(self, localized_entities, supported_entities):
+        tests_dir = Path(__file__).parent
+        locale_dir = tests_dir.parent / "holidays" / "locale"
+
+        for entity_code in supported_entities.keys():
+            actual_languages = sorted(
+                # Collect `<locale>` part from
+                # holidays/locale/<locale>/LC_MESSAGES/<country_code>.po.
+                path.parts[-3]
+                for path in Path(locale_dir).rglob(f"{entity_code}.po")
+            )
+            expected_languages = localized_entities.get(entity_code, [])
+
+            self.assertEqual(
+                actual_languages,
+                expected_languages,
+                f"The supported languages for {entity_code} don't match "
+                f"its actual languages: "
+                f"{set(actual_languages).difference(set(expected_languages))}",
+            )
+
+            entity = getattr(holidays, entity_code)
+
+            self.assertEqual(
+                list(entity.supported_languages),
+                expected_languages,
+                f"The supported languages for {entity_code} don't match "
+                "its `supported_languages`.",
+            )
+            self.assertEqual(
+                actual_languages,
+                expected_languages,
+                f"Actual and expected locales differ for {entity_code}: "
+                f"{set(actual_languages).difference(set(expected_languages))}",
+            )
+
+            if expected_languages:
+                self.assertTrue(
+                    isinstance(expected_languages, list),
+                    entity_code,
+                )
+                self.assertIn(
+                    entity.default_language,
+                    expected_languages,
+                    "The `default_language` must be listed in "
+                    f"`supported_languages` for {entity_code}",
+                )
+
+    def test_localized_countries(self):
+        self.assertLocalizedEntities(
+            list_localized_countries(),
+            list_supported_countries(include_aliases=False),
+        )
+
+    def test_localized_financial(self):
+        self.assertLocalizedEntities(
+            list_localized_financial(),
+            list_supported_financial(include_aliases=False),
         )
 
 
 class TestListSupportedEntities(unittest.TestCase):
     def test_list_supported_countries(self):
-        supported_countries = utils.list_supported_countries(
-            include_aliases=False
-        )
+        supported_countries = list_supported_countries(include_aliases=False)
 
         self.assertIn("AR", supported_countries)
         self.assertIn("CA", supported_countries["US"])
@@ -160,8 +223,8 @@ class TestListSupportedEntities(unittest.TestCase):
 
         countries_files = [
             path
-            for path in pathlib.Path("holidays/countries").glob("*.py")
-            if not str(path).endswith("__init__.py")
+            for path in Path("holidays/countries").glob("*.py")
+            if path.stem != "__init__"
         ]
         self.assertEqual(
             len(countries_files),
@@ -169,9 +232,7 @@ class TestListSupportedEntities(unittest.TestCase):
         )
 
     def test_list_supported_financial(self):
-        supported_financial = utils.list_supported_financial(
-            include_aliases=False
-        )
+        supported_financial = list_supported_financial(include_aliases=False)
 
         self.assertIn("ECB", supported_financial)
         self.assertIn("NYSE", supported_financial)
@@ -181,8 +242,8 @@ class TestListSupportedEntities(unittest.TestCase):
 
         financial_files = [
             path
-            for path in pathlib.Path("holidays/financial").glob("*.py")
-            if not str(path).endswith("__init__.py")
+            for path in Path("holidays/financial").glob("*.py")
+            if path.stem != "__init__"
         ]
         self.assertEqual(
             len(financial_files),

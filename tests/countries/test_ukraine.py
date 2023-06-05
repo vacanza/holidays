@@ -133,8 +133,8 @@ class TestUkraine(TestCase):
         self.assertHoliday(f"{year}-05-01" for year in range(1991, 2022))
         self.assertHoliday(f"{year}-05-02" for year in range(1991, 2018))
         self.assertNoHoliday("2018-05-02")
-        self.assertNoHolidayNameInYears(name_after, range(1919, 2018))
-        self.assertNoHolidayNameInYears(name_before, range(2018, 2022))
+        self.assertNoHolidayName(name_after, range(1919, 2018))
+        self.assertNoHolidayName(name_before, range(2018, 2022))
 
         dt = (
             "2010-05-03",
@@ -153,7 +153,7 @@ class TestUkraine(TestCase):
             "(День перемоги)"
         )
         self.assertHoliday(f"{year}-05-09" for year in range(1991, 2022))
-        self.assertNoHolidayNameInYears(name, range(1991, 2016))
+        self.assertNoHolidayName(name, range(1991, 2016))
 
         dt = (
             "2010-05-10",
@@ -166,9 +166,7 @@ class TestUkraine(TestCase):
 
     def test_constitution_day(self):
         self.assertNoHoliday(f"{year}-06-28" for year in range(1991, 1997))
-        self.assertNoHolidayNameInYears(
-            "День Конституції України", range(1991, 1997)
-        )
+        self.assertNoHolidayName("День Конституції України", range(1991, 1997))
         self.assertHoliday(f"{year}-06-28" for year in range(1997, 2022))
 
         dt = ("2014-06-30", "2015-06-29", "2020-06-29")
@@ -189,9 +187,9 @@ class TestUkraine(TestCase):
         name_after = "День захисників і захисниць України"
         self.assertNoHoliday(f"{year}-10-14" for year in range(1991, 2015))
         self.assertHoliday(f"{year}-10-14" for year in range(2015, 2022))
-        self.assertNoHolidayNameInYears(name_before, range(1991, 2015))
-        self.assertNoHolidayNameInYears(name_before, range(2021, 2022))
-        self.assertNoHolidayNameInYears(name_after, range(1991, 2021))
+        self.assertNoHolidayName(name_before, range(1991, 2015))
+        self.assertNoHolidayName(name_before, range(2021, 2022))
+        self.assertNoHolidayName(name_after, range(1991, 2021))
 
         dt = ("2017-10-16", "2018-10-15")
         self.assertHoliday(dt)
@@ -202,7 +200,7 @@ class TestUkraine(TestCase):
         self.assertHoliday(f"{year}-11-08" for year in range(1991, 2000))
         self.assertNoHoliday(f"{year}-11-07" for year in range(2000, 2022))
         self.assertNoHoliday(f"{year}-11-08" for year in range(2000, 2022))
-        self.assertNoHolidayNameInYears(
+        self.assertNoHolidayName(
             "Річниця Великої Жовтневої соціалістичної революції",
             range(2000, 2022),
         )
@@ -213,7 +211,7 @@ class TestUkraine(TestCase):
 
     def test_christmas_gregorian_day(self):
         self.assertNoHoliday(f"{year}-12-25" for year in range(1991, 2017))
-        self.assertNoHolidayNameInYears(
+        self.assertNoHolidayName(
             "Різдво Христове (за григоріанським календарем)",
             range(1991, 2017),
         )
@@ -372,35 +370,67 @@ class TestUkraine(TestCase):
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             (
+                ("2021-01-01", "New Year's Day"),
+                ("2021-01-07", "Christmas (Julian calendar)"),
+                ("2021-03-08", "International Women's Day"),
+                ("2021-05-01", "Labor Day"),
+                ("2021-05-02", "Easter Sunday (Pascha)"),
+                ("2021-05-03", "Labor Day (Observed)"),
+                ("2021-05-04", "Easter Sunday (Pascha) (Observed)"),
                 (
-                    ("2021-01-01", "New Year's Day"),
-                    ("2021-01-07", "Christmas (Julian calendar)"),
-                    ("2021-03-08", "International Women's Day"),
-                    ("2021-05-01", "Labor Day"),
-                    ("2021-05-02", "Easter Sunday (Pascha)"),
-                    ("2021-05-03", "Labor Day (Observed)"),
-                    ("2021-05-04", "Easter Sunday (Pascha) (Observed)"),
-                    (
-                        "2021-05-09",
-                        "Day of Victory over Nazism in World War II "
-                        "(Victory Day)",
-                    ),
-                    (
-                        "2021-05-10",
-                        "Day of Victory over Nazism in World War II "
-                        "(Victory Day) (Observed)",
-                    ),
-                    ("2021-06-20", "Holy Trinity Day"),
-                    ("2021-06-21", "Holy Trinity Day (Observed)"),
-                    ("2021-06-28", "Day of the Constitution of Ukraine"),
-                    ("2021-08-24", "Independence Day"),
-                    ("2021-10-14", "Day of defenders of Ukraine"),
-                    ("2021-12-25", "Christmas (Gregorian calendar)"),
-                    (
-                        "2021-12-27",
-                        "Christmas (Gregorian calendar) (Observed)",
-                    ),
-                )
+                    "2021-05-09",
+                    "Day of Victory over Nazism in World War II "
+                    "(Victory Day)",
+                ),
+                (
+                    "2021-05-10",
+                    "Day of Victory over Nazism in World War II "
+                    "(Victory Day) (Observed)",
+                ),
+                ("2021-06-20", "Holy Trinity Day"),
+                ("2021-06-21", "Holy Trinity Day (Observed)"),
+                ("2021-06-28", "Day of the Constitution of Ukraine"),
+                ("2021-08-24", "Independence Day"),
+                ("2021-10-14", "Day of defenders of Ukraine"),
+                ("2021-12-25", "Christmas (Gregorian calendar)"),
+                (
+                    "2021-12-27",
+                    "Christmas (Gregorian calendar) (Observed)",
+                ),
             ),
             "en_US",
+        )
+
+    def test_l10n_ar(self):
+        self.assertLocalizedHolidays(
+            (
+                ("2021-01-01", "السنة الجديدة"),
+                ("2021-01-07", "عيد الميلاد (حسب التقويم اليولياني)"),
+                ("2021-03-08", "اليوم العالمي للمرأة"),
+                ("2021-05-01", "عيد العمال"),
+                ("2021-05-02", "عيد الفصح"),
+                ("2021-05-03", "(يوم عطلة) عيد العمال"),
+                ("2021-05-04", "(يوم عطلة) عيد الفصح"),
+                (
+                    "2021-05-09",
+                    "يوم النصر على النازية"
+                    " في الحرب العالمية الثانية (يوم النصر)",
+                ),
+                (
+                    "2021-05-10",
+                    "(يوم عطلة) يوم النصر على النازية في الحرب"
+                    " العالمية الثانية (يوم النصر)",
+                ),
+                ("2021-06-20", "الثالوث"),
+                ("2021-06-21", "(يوم عطلة) الثالوث"),
+                ("2021-06-28", "يوم الدستور في أوكرانيا"),
+                ("2021-08-24", "عيد استقلال أوكرانيا"),
+                ("2021-10-14", "يوم المدافعين عن أوكرانيا"),
+                ("2021-12-25", "عيد الميلاد (حسب التقويم الغريغوري)"),
+                (
+                    "2021-12-27",
+                    "(يوم عطلة) عيد الميلاد (حسب التقويم الغريغوري)",
+                ),
+            ),
+            "ar",
         )
