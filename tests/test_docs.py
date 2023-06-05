@@ -13,6 +13,7 @@ import re
 from unittest import TestCase
 
 from holidays import country_holidays, list_supported_countries
+from holidays import list_localized_countries
 
 
 class TestReadme(TestCase):
@@ -43,50 +44,71 @@ class TestReadme(TestCase):
 
     def test_supported_countries_table(self):
         # Parse table data.
+        columns_number = 4
+        country_alpha_2_codes = set()
+        country_default_languages = {}
+        country_names = []
+        country_subdivisions = {}
+        country_supported_languages = {}
+        subdivisions_re = re.compile(".*: (.*)")
         table_content = [
             line.strip()
             for line in re.findall(
-                r"Subdivisions Available(.*)Available Financial Markets",
+                r"Supported Languages(.*)Available Financial Markets",
                 self.readme_content,
                 re.DOTALL,
             )[0].split("\n")
             if line
         ]
-        country_names = []
-        country_alpha_2_codes = set()
-        country_subdivisions = {}
-        subdivisions_re = re.compile(".*: (.*)")
-        for idx in range(0, len(table_content), 3):  # 3 column table.
-            # 1st column.
+
+        for idx in range(0, len(table_content), columns_number):
+            # Country: 1st column.
             name = table_content[idx].strip(" *-").replace(" ", "").lower()
             country_names.append(name)
 
-            # 2nd column.
-            alpha_2_code = table_content[idx + 1].strip(" -")
-            if alpha_2_code:
-                country_alpha_2_codes.add(alpha_2_code)
+            # Code: 2nd column.
+            country_code = table_content[idx + 1].strip(" -")
+            if country_code:
+                country_alpha_2_codes.add(country_code)
 
-            # 3rd column.
-            country_subdivisions[alpha_2_code] = []
-            subdivisions = table_content[idx + 2].split(".")
-            for subdivision in subdivisions:
-                subdivision_group = subdivision.split(";")[0].strip(" -")
-                # Exclude empty subdivisions.
-                if subdivision_group.startswith("None") or alpha_2_code == "":
-                    country_subdivisions[alpha_2_code] = []
-                    continue
+            # Subdivisions: 3rd column.
+            country_subdivisions[country_code] = []
+            subdivisions = table_content[idx + 2].strip(" -")
+            if subdivisions:
+                for subdivision in subdivisions.split("."):
+                    subdivision_group = subdivision.split(";")[0]
+                    # Exclude empty subdivisions.
+                    if ":" not in subdivision_group:
+                        country_subdivisions[country_code] = []
+                        continue
 
-                # Combine all subdivision codes.
-                country_subdivisions[alpha_2_code].extend(
-                    [
-                        subdivision_code.replace("(default)", "").strip("* ")
-                        for subdivision_code in subdivisions_re.findall(
-                            subdivision_group
-                        )[0].split(",")
-                    ]
-                )
+                    # Combine all subdivision codes.
+                    country_subdivisions[country_code].extend(
+                        [
+                            subdivision_code.strip("* ")
+                            for subdivision_code in subdivisions_re.findall(
+                                subdivision_group
+                            )[0].split(",")
+                        ]
+                    )
 
-        # Check data.
+            # Supported Languages: 4th column.
+            supported_languages = table_content[idx + 3].strip(" -")
+            if supported_languages:
+                languages = []
+                for supported_language in supported_languages.split(","):
+                    supported_language = supported_language.strip()
+
+                    if "*" in supported_language:
+                        supported_language = supported_language.strip("*")
+                        country_default_languages[
+                            country_code
+                        ] = supported_language
+                    languages.append(supported_language)
+
+                country_supported_languages[country_code] = languages
+
+        # Check the data.
         self.assertEqual(
             country_names,
             sorted(country_names),
@@ -103,17 +125,18 @@ class TestReadme(TestCase):
 
         country_names = set(c.split("(the)")[0] for c in country_names)
         supported_countries = list_supported_countries(include_aliases=False)
-        for country_alpha_2_code in supported_countries:
-            country = country_holidays(country_alpha_2_code)
-            country_name = country.__class__.__base__.__name__
+        localized_countries = list_localized_countries(include_aliases=False)
+        for country_code in supported_countries:
+            instance = country_holidays(country_code)
+            country_name = instance.__class__.__base__.__name__
 
             # Make sure country name is shown correctly.
             if country_name.startswith("Holiday"):
                 self.assertIn(
                     country_name[8:],
                     country_alpha_2_codes,
-                    f"Country class '{country_name}' is not shown correctly "
-                    "in the table.",
+                    f"Country '{country_name}' name is not shown "
+                    "correctly in the table.",
                 )
             else:
                 self.assertIn(
@@ -121,32 +144,53 @@ class TestReadme(TestCase):
                         "unitedstates", "unitedstatesofamerica"
                     ),
                     country_names,
-                    f"Country class '{country_name}' is not shown correctly "
-                    "in the table.",
+                    f"Country '{country_name}' name is not shown "
+                    "correctly in the table.",
                 )
 
             # Make sure country alpha-2 code is shown correctly.
             self.assertIn(
-                country.country,
+                instance.country,
                 country_alpha_2_codes,
-                f"Country alpha-2 code '{country_alpha_2_code}' is not "
-                "shown correctly in the table.",
+                f"Country '{country_name}' alpha-2 code is not shown "
+                "correctly in the table.",
             )
 
             # Make sure country subdivisions are shown correctly.
             self.assertEqual(
-                supported_countries[country_alpha_2_code],
-                country_subdivisions[country_alpha_2_code],
-                f"Country class '{country_name}' subdivisions are not "
-                "shown correctly in the table.\n"
+                supported_countries[country_code],
+                country_subdivisions[country_code],
+                f"Country '{country_name}' subdivisions are not shown "
+                "correctly in the table.\n"
                 + "\n".join(
                     (
                         f"{c} != {s}"
                         for c, s in zip(
-                            supported_countries[country_alpha_2_code],
-                            country_subdivisions[country_alpha_2_code],
+                            supported_countries[country_code],
+                            country_subdivisions[country_code],
                         )
                         if c != s
                     )
                 ),
             )
+
+            # Make sure supported languages are shown correctly.
+            if country_code in localized_countries:
+                supported_languages = localized_countries[country_code]
+                self.assertEqual(
+                    supported_languages,
+                    country_supported_languages.get(country_code),
+                    f"Country {country_name} supported languages are not "
+                    "shown correctly in the table. The column must contain "
+                    "all supported languages: "
+                    f"{', '.join(instance.supported_languages)}",
+                )
+
+                self.assertEqual(
+                    country_default_languages.get(country_code),
+                    instance.default_language,
+                    f"Country {country_name} default language is not shown "
+                    "correctly in the table. Use **language** format "
+                    "to specify the country default language: "
+                    f"**{instance.default_language}**.",
+                )
