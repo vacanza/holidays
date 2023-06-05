@@ -1,6 +1,8 @@
 Version 0.26
 ============
 
+Released June 5, 2023
+
 - Add estimated_label localization support to Asian holiday groups (#1229 by @KJhellico)
 - Introduce Asian holidays pre-calculated data (#1148 by @KJhellico)
 - Refactor calendars: optimize inheritance and scope (#1251 by @arkid15r)
