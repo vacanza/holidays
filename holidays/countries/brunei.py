@@ -59,12 +59,9 @@ class Brunei(
     estimated_label = tr("%s* (*anggaran)")
     supported_languages = ("en_US", "ms", "th")
 
-    # Special Cases.
-
-    golden_jubilee_hassanal_bolkiah = tr("Jubli Emas Sultan Hassanal Bolkiah")
-
     special_holidays = {
-        2017: ((OCT, 5, golden_jubilee_hassanal_bolkiah),),
+        # Sultan Hassanal Bolkiah's Golden Jubilee celebration
+        2017: ((OCT, 5, tr("Jubli Emas Sultan Hassanal Bolkiah")),),
     }
 
     def __init__(self, *args, **kwargs):
@@ -229,34 +226,6 @@ class Brunei(
         # Birth of the Prophet
         for dt in self._add_mawlid_day(tr("Maulidur Rasul")):
             _add_observed(dt)
-
-        # Former Holidays
-        # This section is here should we extend our calendar coverage later on.
-
-        # Good Friday
-        # Good Friday
-        # Status: No longer observed post-Independence.
-
-        # Freedom Day
-        # Hari Kebebasan
-        # Status: No longer observed.
-        # Commemorating the landing of the Allies in Muara to liberate Brunei
-        #   on June 10, 1945. Presumed to be observed from 1946-1983.
-
-        # Queen Elizabeth II's Birthday
-        # Hari Lahir Queen
-        # Status: No longer observed.
-        # Observed on June, 12 from 1952-1983.
-
-        # Sultan Omar Ali Saifuddien III's Birthday
-        # Hari Lahir Duli Yang Maha Mulia
-        # Status: No longer observed.
-        # Observed on September, 23 from 1950-1967.
-
-        # Safar Bath
-        # Mandi Safar
-        # Status: No longer observed.
-        # Observed on last Wednesday on the month of Safar until around 1963.
 
 
 class BN(Brunei):
