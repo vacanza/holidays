@@ -74,4 +74,4 @@ msgstr "Christmas"
 #. Independence Day.
 #: ./holidays/countries/honduras.py:56
 msgid "Día de la Independencia"
-msgstr ""
+msgstr "Independence Day"
