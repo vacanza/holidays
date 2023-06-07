@@ -83,12 +83,14 @@ class Venezuela(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Birthday of Simon Bolivar.
             self._add_holiday(tr("Natalicio de Simón Bolívar"), JUL, 24)
 
-        if year >= 2002:
-            # Day of Indigenous Resistance.
-            self._add_holiday(tr("Día de la Resistencia Indígena"), OCT, 12)
-        elif year >= 1921:
-            # Columbus Day.
-            self._add_holiday(tr("Día de la Raza"), OCT, 12)
+        if year >= 1921:
+            self._add_columbus_day(
+                # Day of Indigenous Resistance.
+                tr("Día de la Resistencia Indígena")
+                if year >= 2002
+                # Columbus Day.
+                else tr("Día de la Raza")
+            )
 
         # Note: not sure about the start year nor the reason this was
         # Note: celebrated; the historical records are unclear

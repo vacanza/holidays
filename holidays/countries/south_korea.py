@@ -14,7 +14,7 @@ import warnings
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars import _ChineseLunisolar, _CustomCalendar
+from holidays.calendars import _CustomChineseCalendar
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
 from holidays.constants import OCT, SAT, SUN
 from holidays.holiday_base import HolidayBase
@@ -220,7 +220,7 @@ class KOR(SouthKorea):
     pass
 
 
-class SouthKoreaLunisolarCalendar(_CustomCalendar, _ChineseLunisolar):
+class SouthKoreaLunisolarCalendar(_CustomChineseCalendar):
     BUDDHA_BIRTHDAY_DATES = {
         1931: (MAY, 25),
         1968: (MAY, 5),
