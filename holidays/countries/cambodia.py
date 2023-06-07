@@ -79,7 +79,7 @@ class Cambodia(HolidayBase, InternationalHolidays):
             (AUG, 21, sangkranta_in_lieu_covid),
         ),
     }
-    # supported_languages = ("en_US", "km", "th")
+    supported_languages = ("en_US", "km", "th")
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
