@@ -19,7 +19,7 @@ from holidays.calendars import _BuddhistLunisolar, _ChineseLunisolar
 from holidays.calendars import _HinduLunisolar, _IslamicLunar
 from holidays.calendars import GREGORIAN_CALENDAR, JULIAN_CALENDAR
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import NOV, DEC
+from holidays.constants import OCT, NOV, DEC
 
 
 class ChristianHolidays:
@@ -831,6 +831,16 @@ class InternationalHolidays:
     """
     International holidays.
     """
+
+    def _add_columbus_day(self, name):
+        """
+        Add Columbus Day (October 12th)
+
+        Columbus Day is a national holiday which officially celebrates the
+        anniversary of Christopher Columbus's arrival in the Americas.
+        https://en.wikipedia.org/wiki/Columbus_Day
+        """
+        return self._add_holiday(name, OCT, 12)
 
     def _add_labor_day(self, name):
         """

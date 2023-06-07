@@ -9,71 +9,83 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
+from datetime import timedelta as td
+
 from holidays.calendars import _CustomIslamicCalendar
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC
+from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_groups import IslamicHolidays
 
 
-class Gabon(
+class BurkinaFaso(
     HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
 ):
     """
     References:
-      - https://en.wikipedia.org/wiki/Public_holidays_in_Gabon
-      - https://www.timeanddate.com/holidays/gabon
-      - https://www.officeholidays.com/countries/gabon
-      - http://www.travail.gouv.ga/402-evenements/489-liste-des-jours-feries/
+      - https://en.wikipedia.org/wiki/Public_holidays_in_Burkina_Faso
     """
 
-    country = "GA"
+    country = "BF"
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(self, calendar=GabonIslamicCalendar())
+        IslamicHolidays.__init__(self, calendar=BurkinaFasoIslamicCalendar())
         super().__init__(*args, **kwargs)
 
+    def _add_observed(self, dt: date) -> None:
+        if self.observed and self._is_sunday(dt):
+            self._add_holiday("%s (Observed)" % self[dt], dt + td(days=+1))
+
     def _populate(self, year):
-        # On 17 August 1960, Gabon gained independence from France.
+        # On 5 August 1960, Burkina Faso (Republic of Upper Volta at that time)
+        # gained independence from France.
         if year <= 1960:
             return None
 
         super()._populate(year)
 
         # New Year's Day.
-        self._add_new_years_day("New Year's Day")
+        self._add_observed(self._add_new_years_day("New Year's Day"))
+
+        if year >= 1967:
+            # Revolution Day.
+            self._add_observed(self._add_holiday("Revolution Day", JAN, 3))
+
+        # International Women's Day.
+        self._add_observed(self._add_womens_day("International Women's Day"))
 
         # Easter Monday.
         self._add_easter_monday("Easter Monday")
 
-        # Women's Rights Day.
-        if year >= 2015:
-            self._add_holiday("Women's Rights Day", APR, 17)
-
         # Labour Day.
-        self._add_labor_day("Labour Day")
+        self._add_observed(self._add_labor_day("Labour Day"))
 
         # Ascension Day.
         self._add_ascension_thursday("Ascension Day")
 
-        # Whit Monday.
-        self._add_whit_monday("Whit Monday")
+        # Independence Day.
+        self._add_observed(self._add_holiday("Independence Day", AUG, 5))
 
         # Assumption Day.
-        self._add_assumption_of_mary_day("Assumption Day")
+        self._add_observed(self._add_assumption_of_mary_day("Assumption Day"))
 
-        # Independence Day.
-        self._add_holiday("Independence Day", AUG, 16)
-        self._add_holiday("Independence Day Holiday", AUG, 17)
+        if year >= 2016:
+            # Martyrs' Day.
+            self._add_observed(self._add_holiday("Martyrs' Day", OCT, 31))
 
         # All Saints' Day.
-        self._add_all_saints_day("All Saints' Day")
+        self._add_observed(self._add_all_saints_day("All Saints' Day"))
+
+        self._add_observed(
+            # Proclamation of Independence Day.
+            self._add_holiday("Proclamation of Independence Day", DEC, 11)
+        )
 
         # Christmas Day.
-        self._add_christmas_day("Christmas Day")
+        self._add_observed(self._add_christmas_day("Christmas Day"))
 
         # Eid al-Fitr.
         self._add_eid_al_fitr_day("Eid al-Fitr")
@@ -81,35 +93,25 @@ class Gabon(
         # Eid al-Adha.
         self._add_eid_al_adha_day("Eid al-Adha")
 
+        # Mawlid.
+        self._add_mawlid_day("Mawlid")
 
-class GA(Gabon):
+
+class BF(BurkinaFaso):
     pass
 
 
-class GAB(Gabon):
+class BFA(BurkinaFaso):
     pass
 
 
-class GabonIslamicCalendar(_CustomIslamicCalendar):
+class BurkinaFasoIslamicCalendar(_CustomIslamicCalendar):
     EID_AL_ADHA_DATES = {
-        2001: ((MAR, 6),),
-        2002: ((FEB, 23),),
-        2003: ((FEB, 12),),
-        2004: ((FEB, 2),),
-        2005: ((JAN, 21),),
-        2006: ((JAN, 10), (DEC, 31)),
-        2007: ((DEC, 20),),
-        2008: ((DEC, 9),),
-        2009: ((NOV, 28),),
-        2010: ((NOV, 17),),
-        2011: ((NOV, 7),),
-        2012: ((OCT, 26),),
-        2013: ((OCT, 15),),
         2014: ((OCT, 5),),
         2015: ((SEP, 24),),
         2016: ((SEP, 13),),
         2017: ((SEP, 2),),
-        2018: ((AUG, 22),),
+        2018: ((AUG, 21),),
         2019: ((AUG, 11),),
         2020: ((JUL, 31),),
         2021: ((JUL, 20),),
@@ -117,19 +119,6 @@ class GabonIslamicCalendar(_CustomIslamicCalendar):
     }
 
     EID_AL_FITR_DATES = {
-        2001: ((DEC, 17),),
-        2002: ((DEC, 6),),
-        2003: ((NOV, 26),),
-        2004: ((NOV, 14),),
-        2005: ((NOV, 4),),
-        2006: ((OCT, 24),),
-        2007: ((OCT, 13),),
-        2008: ((OCT, 2),),
-        2009: ((SEP, 21),),
-        2010: ((SEP, 10),),
-        2011: ((AUG, 31),),
-        2012: ((AUG, 19),),
-        2013: ((AUG, 8),),
         2014: ((JUL, 29),),
         2015: ((JUL, 18),),
         2016: ((JUL, 7),),
@@ -140,4 +129,16 @@ class GabonIslamicCalendar(_CustomIslamicCalendar):
         2021: ((MAY, 13),),
         2022: ((MAY, 2),),
         2023: ((APR, 21),),
+    }
+
+    MAWLID_DATES = {
+        2014: ((JAN, 14),),
+        2015: ((JAN, 3), (DEC, 24)),
+        2016: ((DEC, 12),),
+        2017: ((DEC, 1),),
+        2018: ((NOV, 21),),
+        2019: ((NOV, 10),),
+        2020: ((OCT, 29),),
+        2021: ((OCT, 19),),
+        2022: ((OCT, 9),),
     }

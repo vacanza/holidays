@@ -108,7 +108,7 @@ Available Countries
 .. _ISO 3166-2 code: https://en.wikipedia.org/wiki/ISO_3166-2
 .. _ISO 639-1 code: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 
-We currently support 127 country codes. The standard way to refer to a country
+We currently support 129 country codes. The standard way to refer to a country
 is by using its `ISO 3166-1 alpha-2 code`_, the same used for domain names, and
 for a subdivision its `ISO 3166-2 code`_. Some of the countries support more
 than one language for holiday names output.
@@ -211,10 +211,18 @@ The list of supported countries, their subdivisions and supported languages
      - BR
      - States: AC, AL, AM, AP, BA, CE, DF, ES, GO, MA, MG, MS, MT, PA, PB, PE, PI, PR, RJ, RN, RO, RR, RS, SC, SE, SP, TO
      -
+   * - Brunei
+     - BN
+     -
+     - en_US, **ms**, th
    * - Bulgaria
      - BG
      -
      - **bg**, en_US
+   * - Burkina Faso
+     - BF
+     -
+     -
    * - Burundi
      - BI
      -
