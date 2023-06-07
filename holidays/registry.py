@@ -43,6 +43,7 @@ COUNTRIES: RegistryDict = {
     "burundi": ("Burundi", "BI", "BDI"),
     "cameroon": ("Cameroon", "CM", "CMR"),
     "canada": ("Canada", "CA", "CAN"),
+    "chad": ("Chad", "TD", "TCD"),
     "chile": ("Chile", "CL", "CHL"),
     "china": ("China", "CN", "CHN"),
     "colombia": ("Colombia", "CO", "COL"),
