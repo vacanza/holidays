@@ -83,7 +83,7 @@ class Cambodia(HolidayBase, InternationalHolidays):
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
-        self.thls = _ThaiLunisolar()
+        self.thls = _ThaiLunisolar(KHMER_CALENDAR)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -122,7 +122,7 @@ class Cambodia(HolidayBase, InternationalHolidays):
         if year != 2020:
             # Khmer New Year's Day
             sangkranta = tr("ពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ")
-            sangkranta_years_apr14 = (2017, 2018, 2021, 2022, 2023)
+            sangkranta_years_apr14 = {2017, 2018, 2021, 2022, 2023}
             dt = self._add_holiday(
                 sangkranta, APR, 14 if year in sangkranta_years_apr14 else 13
             )
@@ -276,7 +276,7 @@ class Cambodia(HolidayBase, InternationalHolidays):
         # Defunct from 2020 onwards.
 
         if year <= 2019:
-            meak_bochea_date = self.thls.makha_bucha_date(year, KHMER_CALENDAR)
+            meak_bochea_date = self.thls.makha_bucha_date(year)
             if meak_bochea_date:
                 # Meak Bochea Day
                 self._add_holiday(tr("ពិធីបុណ្យមាឃបូជា"), meak_bochea_date)
@@ -287,7 +287,7 @@ class Cambodia(HolidayBase, InternationalHolidays):
         # This utilizes Thai calendar as a base, though are calculated to
         # always happen in the Traditional Visakhamas month (May).
 
-        visaka_bochea_date = self.thls.visakha_bucha_date(year, KHMER_CALENDAR)
+        visaka_bochea_date = self.thls.visakha_bucha_date(year)
         if visaka_bochea_date:
             # Visaka Bochea Day
             self._add_holiday(tr("ពិធីបុណ្យវិសាខបូជា"), visaka_bochea_date)

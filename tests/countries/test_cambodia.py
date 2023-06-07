@@ -173,7 +173,7 @@ class TestCambodia(TestCase):
         )
 
     def test_sangkranta(self):
-        sangkranta_years_apr14 = (2017, 2018, 2021, 2022, 2023)
+        sangkranta_years_apr14 = {2017, 2018, 2021, 2022, 2023}
         for year in range(1993, 2058):
             if year != 2020:
                 if year in sangkranta_years_apr14:
