@@ -31,9 +31,11 @@ from .botswana import Botswana, BW, BWA
 from .brazil import Brazil, BR, BRA
 from .brunei import Brunei, BN, BRN
 from .bulgaria import Bulgaria, BG, BLG
+from .burkina_faso import BurkinaFaso, BF, BFA
 from .burundi import Burundi, BI, BDI
 from .cameroon import Cameroon, CM, CMR
 from .canada import Canada, CA, CAN
+from .chad import Chad, TD, TCD
 from .chile import Chile, CL, CHL
 from .china import China, CN, CHN
 from .colombia import Colombia, CO, COL
