@@ -30,6 +30,11 @@ class TestCambodia(TestCase):
 
     def test_special_holidays(self):
         self.assertHoliday(
+            "2016-05-02",
+            "2016-05-16",
+            "2018-05-21",
+            "2019-09-30",
+            "2020-05-11",
             "2020-08-17",
             "2020-08-18",
             "2020-08-19",

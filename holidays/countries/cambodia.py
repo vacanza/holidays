@@ -60,9 +60,18 @@ class Cambodia(HolidayBase, InternationalHolidays):
         # Khmer New Year's Replacement Holiday
         "ថ្ងៃឈប់សម្រាកសងជំនួសឲ្យពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ"
     )
+    # Special Public Holiday
+    special_in_lieu_holidays = tr("ថ្ងៃឈប់សម្រាកសងជំនួស")
 
     special_holidays = {
+        2016: (
+            (MAY, 2, special_in_lieu_holidays),
+            (MAY, 16, special_in_lieu_holidays),
+        ),
+        2018: ((MAY, 21, special_in_lieu_holidays),),
+        2019: ((SEP, 30, special_in_lieu_holidays),),
         2020: (
+            (MAY, 11, special_in_lieu_holidays),
             (AUG, 17, sangkranta_in_lieu_covid),
             (AUG, 18, sangkranta_in_lieu_covid),
             (AUG, 19, sangkranta_in_lieu_covid),
