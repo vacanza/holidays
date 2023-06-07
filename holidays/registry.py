@@ -37,6 +37,7 @@ COUNTRIES: RegistryDict = {
     "bosnia_and_herzegovina": ("BosniaAndHerzegovina", "BA", "BIH"),
     "botswana": ("Botswana", "BW", "BWA"),
     "brazil": ("Brazil", "BR", "BRA"),
+    "brunei": ("Brunei", "BN", "BRN"),
     "bulgaria": ("Bulgaria", "BG", "BLG"),
     "burundi": ("Burundi", "BI", "BDI"),
     "cambodia": ("Cambodia", "KH", "KHM"),
