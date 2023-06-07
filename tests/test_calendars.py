@@ -22,6 +22,12 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
         super().setUpClass()
         self.calendar = calendars._ThaiLunisolar()
 
+    def test_check_calendar(self):
+        self.assertRaises(
+            ValueError,
+            lambda: calendars._ThaiLunisolar("INVALID_CALENDAR"),
+        )
+
     def test_asarnha_bucha_date(self):
         # THAI_CALENDAR
         asarnha_bucha_year_date = {
