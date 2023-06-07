@@ -299,6 +299,7 @@ class Cambodia(HolidayBase, InternationalHolidays):
         # ពិធីបុណ្យភ្ផុំបិណ្ឌ
         # Status: In-Use.
         # 14th Waning Day of Month 10 - 1st Waxing Day of Month 11.
+        # The 3rd day is added as a public holiday from 2017 onwards.
 
         # Pchum Ben Day
         pchum_ben = tr("ពិធីបុណ្យភ្ផុំបិណ្ឌ")
@@ -306,7 +307,8 @@ class Cambodia(HolidayBase, InternationalHolidays):
         if pchum_ben_date:
             self._add_holiday(pchum_ben, pchum_ben_date + td(days=-1))
             self._add_holiday(pchum_ben, pchum_ben_date)
-            self._add_holiday(pchum_ben, pchum_ben_date + td(days=+1))
+            if year >= 2017:
+                self._add_holiday(pchum_ben, pchum_ben_date + td(days=+1))
 
         # ព្រះរាជពិធីបុណ្យអុំទូក បណ្តែតប្រទីប និងសំពះព្រះខែអកអំបុក
         # Status: In-Use.
