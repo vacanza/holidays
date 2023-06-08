@@ -95,6 +95,13 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Boxing Day
         self._add_observed(self._add_christmas_day_two("Boxing Day"), days=+2)
 
+    def _add_subdiv_holidays(self):
+        # New Year's Day (for Isle of Man)
+        if self.subdiv is None and self._year >= 1974:
+            self._add_observed(self._add_new_years_day("New Year's Day"))
+
+        super()._add_subdiv_holidays()
+
     def _add_subdiv_england_holidays(self):
         # New Year's Day
         if self._year >= 1974:
