@@ -56,7 +56,6 @@ class TestUK(TestCase):
         self.assertHolidaysName(
             name, (f"{year}-01-01" for year in range(1974, 2050))
         )
-        self.assertNoHoliday(f"{year}-01-01" for year in range(1950, 1974))
         self.assertNoHolidayName(name, range(1950, 1974))
         obs_dt = (
             "2000-01-03",
@@ -75,16 +74,16 @@ class TestUK(TestCase):
             name, (f"{year}-01-02" for year in range(1950, 2050))
         )
         obs_dt = (
-            "2000-01-04",
-            "2005-01-04",
+            "2000-01-03",
+            "2005-01-03",
             "2006-01-03",
             "2010-01-04",
-            "2011-01-04",
+            "2011-01-03",
             "2012-01-03",
             "2016-01-04",
             "2017-01-03",
             "2021-01-04",
-            "2022-01-04",
+            "2022-01-03",
         )
         self.assertHolidaysName(f"{name} (Observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)

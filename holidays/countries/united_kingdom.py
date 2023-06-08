@@ -58,15 +58,11 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self.observed and self._is_weekend(dt):
             self._add_holiday(
                 "%s (Observed)" % self[dt],
-                dt + td(+2 if self._is_saturday(dt) else days),
+                dt + td(days=+2 if self._is_saturday(dt) else days),
             )
 
     def _populate(self, year: int) -> None:
         super()._populate(year)
-
-        # New Year's Day
-        if self._year >= 1974:
-            self._add_observed(self._add_new_years_day("New Year's Day"))
 
         # Good Friday
         self._add_good_friday("Good Friday")
@@ -100,6 +96,10 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_christmas_day_two("Boxing Day"), days=+2)
 
     def _add_subdiv_england_holidays(self):
+        # New Year's Day
+        if self._year >= 1974:
+            self._add_observed(self._add_new_years_day("New Year's Day"))
+
         # Easter Monday
         self._add_easter_monday("Easter Monday")
 
@@ -111,6 +111,10 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
             )
 
     def _add_subdiv_northern_ireland_holidays(self):
+        # New Year's Day
+        if self._year >= 1974:
+            self._add_observed(self._add_new_years_day("New Year's Day"))
+
         # St. Patrick's Day
         self._add_observed(self._add_holiday("St. Patrick's Day", MAR, 17))
 
@@ -128,10 +132,19 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
             )
 
     def _add_subdiv_scotland_holidays(self):
+        # New Year's Day
+        name = "New Year's Day"
+        jan_1 = self._add_new_years_day(name)
+        if self.observed and self._is_weekend(jan_1):
+            self._add_holiday(
+                "%s (Observed)" % name,
+                jan_1 + td(days=+3 if self._is_saturday(jan_1) else +1),
+            )
+
         # New Year Holiday
         name = "New Year Holiday"
         jan_2 = self._add_new_years_day_two(name)
-        self._add_observed(jan_2, days=+2 if self._year >= 1974 else +1)
+        self._add_observed(jan_2)
         if self.observed and self._is_monday(jan_2):
             self._add_new_years_day_three("%s (Observed)" % name)
 
@@ -145,10 +158,29 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday("St. Andrew's Day", NOV, 30)
 
     def _add_subdiv_uk_holidays(self):
+        # New Year's Day
+        if self._year <= 1973:
+            name = "New Year's Day [Scotland]"
+            jan_1 = self._add_new_years_day(name)
+            if self.observed and self._is_weekend(jan_1):
+                self._add_holiday(
+                    "%s (Observed)" % name,
+                    jan_1 + td(days=+3 if self._is_saturday(jan_1) else +1),
+                )
+        else:
+            name = "New Year's Day"
+            jan_1 = self._add_new_years_day(name)
+            self._add_observed(jan_1)
+            if self.observed and self._is_saturday(jan_1):
+                self._add_holiday(
+                    "%s (Observed)" % "New Year's Day [Scotland]",
+                    jan_1 + td(days=+3),
+                )
+
         # New Year Holiday
         name = "New Year Holiday [Scotland]"
         jan_2 = self._add_new_years_day_two(name)
-        self._add_observed(jan_2, days=+2 if self._year >= 1974 else +1)
+        self._add_observed(jan_2)
         if self.observed and self._is_monday(jan_2):
             self._add_new_years_day_three("%s (Observed)" % name)
 
@@ -182,6 +214,10 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday("St. Andrew's Day [Scotland]", NOV, 30)
 
     def _add_subdiv_wales_holidays(self):
+        # New Year's Day
+        if self._year >= 1974:
+            self._add_observed(self._add_new_years_day("New Year's Day"))
+
         # Easter Monday
         self._add_easter_monday("Easter Monday")
 

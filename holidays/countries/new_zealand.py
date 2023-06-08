@@ -74,7 +74,7 @@ class NewZealand(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self.observed and self._is_weekend(dt):
             self._add_holiday(
                 "%s (Observed)" % self[dt],
-                dt + td(+2 if self._is_saturday(dt) else days),
+                dt + td(days=+2 if self._is_saturday(dt) else days),
             )
 
     def __init__(self, *args, **kwargs):

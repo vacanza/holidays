@@ -61,7 +61,7 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._is_sunday(dt) or (self._is_saturday(dt) and include_sat):
             self._add_holiday(
                 self.tr("%s (Observed)") % self[dt],
-                dt + td(+2 if self._is_saturday(dt) else days),
+                dt + td(days=+2 if self._is_saturday(dt) else days),
             )
 
     def _populate(self, year):
