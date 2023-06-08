@@ -12,15 +12,14 @@
 from datetime import date
 from datetime import timedelta as td
 
-from dateutil.easter import easter
-
 from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT
 from holidays.constants import NOV, DEC, MON, FRI
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class SouthAfrica(HolidayBase):
+class SouthAfrica(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     http://www.gov.za/about-sa/public-holidays
     https://en.wikipedia.org/wiki/Public_holidays_in_South_Africa
@@ -51,25 +50,29 @@ class SouthAfrica(HolidayBase):
         2022: ((DEC, 27, "Public holiday by presidential decree"),),
     }
 
-    def _populate(self, year):
-        def _add_with_observed(hol_date: date, hol_name: str) -> None:
-            # As of 1995/1/1, whenever a public holiday falls on a Sunday,
-            # it rolls over to the following Monday
-            self[hol_date] = hol_name
-            if self.observed and self._is_sunday(hol_date) and year >= 1995:
-                self[hol_date + td(days=+1)] = f"{hol_name} (Observed)"
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
+    def _add_observed(self, dt: date) -> None:
+        # As of 1995/1/1, whenever a public holiday falls on a Sunday,
+        # it rolls over to the following Monday
+        if self.observed and self._is_sunday(dt) and self._year >= 1995:
+            self._add_holiday("%s (Observed)" % self[dt], dt + td(days=+1))
+
+    def _populate(self, year):
         # Observed since 1910, with a few name changes
         if year <= 1909:
             return None
 
         super()._populate(year)
 
-        _add_with_observed(date(year, JAN, 1), "New Year's Day")
+        self._add_observed(self._add_new_years_day("New Year's Day"))
 
-        easter_date = easter(year)
-        self[easter_date + td(days=-2)] = "Good Friday"
-        self[easter_date + td(days=+1)] = (
+        self._add_good_friday("Good Friday")
+
+        self._add_easter_monday(
             "Family Day" if year >= 1980 else "Easter Monday"
         )
 
@@ -81,72 +84,78 @@ class SouthAfrica(HolidayBase):
             name = "Day of the Vow"
         else:
             name = "Day of Reconciliation"
-        _add_with_observed(date(year, DEC, 16), name)
+        self._add_observed(self._add_holiday(name, DEC, 16))
 
-        self[date(year, DEC, 25)] = "Christmas Day"
+        self._add_christmas_day("Christmas Day")
 
-        _add_with_observed(
-            date(year, DEC, 26),
-            "Day of Goodwill" if year >= 1980 else "Boxing Day",
+        self._add_observed(
+            self._add_christmas_day_two(
+                "Day of Goodwill" if year >= 1980 else "Boxing Day",
+            )
         )
 
-        # Observed since 1995/1/1
         if year >= 1995:
-            _add_with_observed(date(year, MAR, 21), "Human Rights Day")
-            _add_with_observed(date(year, APR, 27), "Freedom Day")
-            _add_with_observed(date(year, MAY, 1), "Workers' Day")
-            _add_with_observed(date(year, JUN, 16), "Youth Day")
-            _add_with_observed(date(year, AUG, 9), "National Women's Day")
-            _add_with_observed(date(year, SEP, 24), "Heritage Day")
+            self._add_observed(self._add_holiday("Human Rights Day", MAR, 21))
+
+            self._add_observed(self._add_holiday("Freedom Day", APR, 27))
+
+            self._add_observed(self._add_labor_day("Workers' Day"))
+
+            self._add_observed(self._add_holiday("Youth Day", JUN, 16))
+
+            self._add_observed(
+                self._add_holiday("National Women's Day", AUG, 9)
+            )
+
+            self._add_observed(self._add_holiday("Heritage Day", SEP, 24))
 
         # Special holiday http://tiny.cc/za_y2k
         if self.observed and year == 2000:
-            self[date(2000, JAN, 3)] = "Y2K changeover (Observed)"
+            self._add_holiday("Y2K changeover (Observed)", JAN, 3)
 
         # Historic public holidays no longer observed
         if 1952 <= year <= 1973:
-            self[date(year, APR, 6)] = "Van Riebeeck's Day"
+            self._add_holiday("Van Riebeeck's Day", APR, 6)
         elif 1980 <= year <= 1994:
-            self[date(year, APR, 6)] = "Founder's Day"
+            self._add_holiday("Founder's Day", APR, 6)
 
         if 1987 <= year <= 1989:
-            # observed on first Friday in May
-            self[_get_nth_weekday_of_month(1, FRI, MAY, year)] = "Workers' Day"
+            self._add_holiday(
+                "Workers' Day", _get_nth_weekday_of_month(1, FRI, MAY, year)
+            )
 
         if year <= 1993:
-            self[easter_date + td(days=+40)] = "Ascension Day"
+            self._add_ascension_thursday("Ascension Day")
 
         if year <= 1951:
-            self[date(year, MAY, 24)] = "Empire Day"
+            self._add_holiday("Empire Day", MAY, 24)
 
         if year <= 1960:
-            self[date(year, MAY, 31)] = "Union Day"
+            self._add_holiday("Union Day", MAY, 31)
         elif year <= 1993:
-            self[date(year, MAY, 31)] = "Republic Day"
+            self._add_holiday("Republic Day", MAY, 31)
 
         if 1952 <= year <= 1960:
-            # observed on second Monday in July
-            self[
-                _get_nth_weekday_of_month(2, MON, JUL, year)
-            ] = "Queen's Birthday"
+            self._add_holiday(
+                "Queen's Birthday",
+                _get_nth_weekday_of_month(2, MON, JUL, year),
+            )
 
         if 1961 <= year <= 1973:
-            self[date(year, JUL, 10)] = "Family Day"
+            self._add_holiday("Family Day", JUL, 10)
 
         if year <= 1951:
-            # observed on first Monday in August
-            self[
-                _get_nth_weekday_of_month(1, MON, AUG, year)
-            ] = "King's Birthday"
+            self._add_holiday(
+                "King's Birthday", _get_nth_weekday_of_month(1, MON, AUG, year)
+            )
 
         if 1952 <= year <= 1979:
-            # observed on first Monday in September
-            self[
-                _get_nth_weekday_of_month(1, MON, SEP, year)
-            ] = "Settlers' Day"
+            self._add_holiday(
+                "Settlers' Day", _get_nth_weekday_of_month(1, MON, SEP, year)
+            )
 
         if 1952 <= year <= 1993:
-            self[date(year, OCT, 10)] = "Kruger Day"
+            self._add_holiday("Kruger Day", OCT, 10)
 
 
 class ZA(SouthAfrica):
