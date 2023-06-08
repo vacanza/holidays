@@ -67,31 +67,31 @@ msgid "Natalicio de Simón Bolívar"
 msgstr "Birthday of Simon Bolivar"
 
 #. Day of Indigenous Resistance.
-#: ./holidays/countries/venezuela.py:88
+#: ./holidays/countries/venezuela.py:89
 msgid "Día de la Resistencia Indígena"
 msgstr "Day of Indigenous Resistance"
 
 #. Columbus Day.
-#: ./holidays/countries/venezuela.py:91
+#: ./holidays/countries/venezuela.py:92
 msgid "Día de la Raza"
 msgstr "Columbus Day"
 
 #. Unknown Holiday.
-#: ./holidays/countries/venezuela.py:97
+#: ./holidays/countries/venezuela.py:99
 msgid "Día Festivo Desconocido"
 msgstr "Unknown Holiday"
 
 #. Christmas Eve.
-#: ./holidays/countries/venezuela.py:100
+#: ./holidays/countries/venezuela.py:102
 msgid "Nochebuena"
 msgstr "Christmas Eve"
 
 #. Christmas Day.
-#: ./holidays/countries/venezuela.py:103
+#: ./holidays/countries/venezuela.py:105
 msgid "Día de Navidad"
 msgstr "Christmas Day"
 
 #. New Year's Eve.
-#: ./holidays/countries/venezuela.py:106
+#: ./holidays/countries/venezuela.py:108
 msgid "Fiesta de Fin de Año"
 msgstr "New Year's Eve"
