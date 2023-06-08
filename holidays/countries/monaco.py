@@ -26,9 +26,7 @@ class Monaco(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "MC"
     default_language = "fr"
-    special_holidays = {
-        2015: ((JAN, 7, tr("Jour férié")),),
-    }
+    special_holidays = {2015: (JAN, 7, tr("Jour férié"))}
     supported_languages = ("en_US", "fr", "uk")
 
     def __init__(self, *args, **kwargs):
