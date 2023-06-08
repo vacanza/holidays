@@ -50,31 +50,23 @@ class Hungary(HolidayBase):
         super()._populate(year)
 
         # New year's Day.
-        self._add_with_observed_day_off(
-            date(year, JAN, 1), "Újév", before=False, since=2014
-        )
+        self._add_with_observed_day_off(date(year, JAN, 1), "Újév", before=False, since=2014)
 
         # National Day.
         if 1945 <= year <= 1950 or 1989 <= year:
-            self._add_with_observed_day_off(
-                date(year, MAR, 15), "Nemzeti ünnep"
-            )
+            self._add_with_observed_day_off(date(year, MAR, 15), "Nemzeti ünnep")
 
         # Soviet era.
         if 1950 <= year <= 1989:
             # Proclamation of Soviet socialist governing system.
-            self._add_holiday(
-                "A Tanácsköztársaság kikiáltásának ünnepe", MAR, 21
-            )
+            self._add_holiday("A Tanácsköztársaság kikiáltásának ünnepe", MAR, 21)
 
             # Liberation Day.
             self._add_holiday("A felszabadulás ünnepe", APR, 4)
 
             # Memorial day of The Great October Soviet Socialist Revolution.
             if year not in {1956, 1989}:
-                self._add_holiday(
-                    "A nagy októberi szocialista forradalom ünnepe", NOV, 7
-                )
+                self._add_holiday("A nagy októberi szocialista forradalom ünnepe", NOV, 7)
 
         easter_date = easter(year)
 
@@ -98,9 +90,7 @@ class Hungary(HolidayBase):
 
         # International Workers' Day.
         if 1946 <= year:
-            self._add_with_observed_day_off(
-                date(year, MAY, 1), "A Munka ünnepe"
-            )
+            self._add_with_observed_day_off(date(year, MAY, 1), "A Munka ünnepe")
         if 1950 <= year <= 1953:
             self._add_holiday("A Munka ünnepe", MAY, 2)
 
@@ -108,21 +98,15 @@ class Hungary(HolidayBase):
         if 1950 <= year <= 1989:
             self._add_holiday("A kenyér ünnepe", AUG, 20)
         else:
-            self._add_with_observed_day_off(
-                date(year, AUG, 20), "Az államalapítás ünnepe"
-            )
+            self._add_with_observed_day_off(date(year, AUG, 20), "Az államalapítás ünnepe")
 
         # National Day.
         if 1991 <= year:
-            self._add_with_observed_day_off(
-                date(year, OCT, 23), "Nemzeti ünnep"
-            )
+            self._add_with_observed_day_off(date(year, OCT, 23), "Nemzeti ünnep")
 
         # All Saints' Day.
         if 1999 <= year:
-            self._add_with_observed_day_off(
-                date(year, NOV, 1), "Mindenszentek"
-            )
+            self._add_with_observed_day_off(date(year, NOV, 1), "Mindenszentek")
 
         # Christmas Eve is not endorsed officially
         # but nowadays it is usually a day off work

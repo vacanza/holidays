@@ -23,17 +23,13 @@ class TestElSalvador(TestCase):
 
     def test_mothers_day(self):
         name = "Mothers' Day"
-        self.assertHolidaysName(
-            name, (f"{year}-05-10" for year in range(2016, 2050))
-        )
+        self.assertHolidaysName(name, (f"{year}-05-10" for year in range(2016, 2050)))
         self.assertNoHoliday(f"{year}-05-10" for year in range(2000, 2016))
         self.assertNoHolidayName(name, range(2000, 2016))
 
     def test_fathers_day(self):
         name = "Fathers' Day"
-        self.assertHolidaysName(
-            name, (f"{year}-06-17" for year in range(2013, 2050))
-        )
+        self.assertHolidaysName(name, (f"{year}-06-17" for year in range(2013, 2050)))
         self.assertNoHoliday(f"{year}-06-17" for year in range(2000, 2013))
         self.assertNoHolidayName(name, range(2000, 2013))
 

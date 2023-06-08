@@ -50,21 +50,15 @@ class TestZambia(TestCase):
             )
 
         self.assertNoHoliday(f"{year}-03-08" for year in range(1965, 1991))
-        self.assertNoHolidayName(
-            "International Women's Day", Zambia(years=range(1965, 1991))
-        )
+        self.assertNoHolidayName("International Women's Day", Zambia(years=range(1965, 1991)))
         self.assertHoliday(f"{year}-03-08" for year in range(1991, 2050))
 
         self.assertNoHoliday(f"{year}-04-28" for year in range(1965, 2022))
-        self.assertNoHolidayName(
-            "Kenneth Kaunda Day", Zambia(years=range(1965, 2022))
-        )
+        self.assertNoHolidayName("Kenneth Kaunda Day", Zambia(years=range(1965, 2022)))
         self.assertHoliday(f"{year}-04-28" for year in range(2022, 2050))
 
         self.assertNoHoliday(f"{year}-10-18" for year in range(1965, 2015))
-        self.assertNoHolidayName(
-            "National Prayer Day", Zambia(years=range(1965, 2015))
-        )
+        self.assertNoHolidayName("National Prayer Day", Zambia(years=range(1965, 2015)))
         self.assertHoliday(f"{year}-10-18" for year in range(2015, 2050))
 
     def test_easter(self):

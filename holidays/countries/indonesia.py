@@ -9,14 +9,20 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars import _CustomBuddhistCalendar, _CustomChineseCalendar
-from holidays.calendars import _CustomIslamicCalendar
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC
+from holidays.calendars import (
+    _CustomBuddhistCalendar,
+    _CustomChineseCalendar,
+    _CustomIslamicCalendar,
+)
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import BuddhistCalendarHolidays
-from holidays.holiday_groups import ChineseCalendarHolidays, ChristianHolidays
-from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
+from holidays.holiday_groups import (
+    BuddhistCalendarHolidays,
+    ChineseCalendarHolidays,
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+)
 
 
 class Indonesia(

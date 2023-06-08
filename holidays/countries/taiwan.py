@@ -11,8 +11,7 @@
 
 from holidays.constants import FEB, APR, OCT
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChineseCalendarHolidays
-from holidays.holiday_groups import InternationalHolidays
+from holidays.holiday_groups import ChineseCalendarHolidays, InternationalHolidays
 
 
 class Taiwan(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
@@ -33,9 +32,7 @@ class Taiwan(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
         super()._populate(year)
 
         # New Year's Day
-        self._add_new_years_day(
-            "Founding of the Republic of China (New Year's Day)"
-        )
+        self._add_new_years_day("Founding of the Republic of China (New Year's Day)")
 
         self._add_chinese_new_years_eve("Chinese New Year's Eve")
 

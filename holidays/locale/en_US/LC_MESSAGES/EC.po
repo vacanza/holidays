@@ -17,7 +17,7 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/ecuador.py:43 ./holidays/countries/ecuador.py:122
+#: ./holidays/countries/ecuador.py:43 ./holidays/countries/ecuador.py:117
 msgid "Año Nuevo"
 msgstr "New Year's Day"
 
@@ -66,8 +66,8 @@ msgstr "Independence of Cuenca"
 msgid "Día de Navidad"
 msgstr "Christmas Day"
 
-#: ./holidays/countries/ecuador.py:101 ./holidays/countries/ecuador.py:116
-#: ./holidays/countries/ecuador.py:122
+#: ./holidays/countries/ecuador.py:100 ./holidays/countries/ecuador.py:113
+#: ./holidays/countries/ecuador.py:117
 #, c-format
 msgid "%s (Observado)"
 msgstr "%s (Observed)"

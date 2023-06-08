@@ -12,8 +12,7 @@
 import re
 from unittest import TestCase
 
-from holidays import country_holidays, list_supported_countries
-from holidays import list_localized_countries
+from holidays import country_holidays, list_supported_countries, list_localized_countries
 
 
 class TestReadme(TestCase):
@@ -25,9 +24,7 @@ class TestReadme(TestCase):
         super().setUpClass()
 
     def test_supported_countries_count(self):
-        actual_country_count = len(
-            list_supported_countries(include_aliases=False)
-        )
+        actual_country_count = len(list_supported_countries(include_aliases=False))
         readme_country_count = int(
             re.findall(
                 r"We currently support (\d+) country codes.",
@@ -86,9 +83,9 @@ class TestReadme(TestCase):
                     country_subdivisions[country_code].extend(
                         [
                             subdivision_code.strip("* ")
-                            for subdivision_code in subdivisions_re.findall(
-                                subdivision_group
-                            )[0].split(",")
+                            for subdivision_code in subdivisions_re.findall(subdivision_group)[
+                                0
+                            ].split(",")
                         ]
                     )
 
@@ -101,9 +98,7 @@ class TestReadme(TestCase):
 
                     if "*" in supported_language:
                         supported_language = supported_language.strip("*")
-                        country_default_languages[
-                            country_code
-                        ] = supported_language
+                        country_default_languages[country_code] = supported_language
                     languages.append(supported_language)
 
                 country_supported_languages[country_code] = languages
@@ -115,11 +110,7 @@ class TestReadme(TestCase):
             "The supported countries table must be sorted alphabetically by "
             "country name.\n"
             + "\n".join(
-                (
-                    f"{c} != {s}"
-                    for c, s in zip(country_names, sorted(country_names))
-                    if c != s
-                )
+                (f"{c} != {s}" for c, s in zip(country_names, sorted(country_names)) if c != s)
             ),
         )
 
@@ -135,25 +126,20 @@ class TestReadme(TestCase):
                 self.assertIn(
                     country_name[8:],
                     country_alpha_2_codes,
-                    f"Country '{country_name}' name is not shown "
-                    "correctly in the table.",
+                    f"Country '{country_name}' name is not shown " "correctly in the table.",
                 )
             else:
                 self.assertIn(
-                    country_name.lower().replace(
-                        "unitedstates", "unitedstatesofamerica"
-                    ),
+                    country_name.lower().replace("unitedstates", "unitedstatesofamerica"),
                     country_names,
-                    f"Country '{country_name}' name is not shown "
-                    "correctly in the table.",
+                    f"Country '{country_name}' name is not shown " "correctly in the table.",
                 )
 
             # Make sure country alpha-2 code is shown correctly.
             self.assertIn(
                 instance.country,
                 country_alpha_2_codes,
-                f"Country '{country_name}' alpha-2 code is not shown "
-                "correctly in the table.",
+                f"Country '{country_name}' alpha-2 code is not shown " "correctly in the table.",
             )
 
             # Make sure country subdivisions are shown correctly.

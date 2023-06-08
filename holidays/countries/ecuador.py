@@ -97,9 +97,7 @@ class Ecuador(HolidayBase, ChristianHolidays, InternationalHolidays):
                 elif self._is_thursday(dt):
                     obs_date = dt + td(days=+1)
                 if obs_date and obs_date not in observed_dates:
-                    self._add_holiday(
-                        self.tr("%s (Observado)") % self[dt], obs_date
-                    )
+                    self._add_holiday(self.tr("%s (Observado)") % self[dt], obs_date)
 
             # When holidays falls on Saturday or Sunday, the rest shall be
             # transferred, respectively, to the preceding Friday or the
@@ -112,15 +110,11 @@ class Ecuador(HolidayBase, ChristianHolidays, InternationalHolidays):
                 elif self._is_sunday(dt):
                     obs_date = dt + td(days=+1)
                 if obs_date and obs_date not in observed_dates:
-                    self._add_holiday(
-                        self.tr("%s (Observado)") % self[dt], obs_date
-                    )
+                    self._add_holiday(self.tr("%s (Observado)") % self[dt], obs_date)
 
             dec_31 = date(year, DEC, 31)
             if self._is_friday(dec_31):
-                self._add_holiday(
-                    self.tr("%s (Observado)") % self.tr("Año Nuevo"), dec_31
-                )
+                self._add_holiday(self.tr("%s (Observado)") % self.tr("Año Nuevo"), dec_31)
 
 
 class EC(Ecuador):

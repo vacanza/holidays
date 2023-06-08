@@ -20,7 +20,7 @@ msgstr ""
 msgid "Jour férié"
 msgstr "Державне свято"
 
-#: ./holidays/countries/monaco.py:89
+#: ./holidays/countries/monaco.py:87
 #, c-format
 msgid "%s (Observé)"
 msgstr "%s (вихідний)"
@@ -60,26 +60,27 @@ msgstr "День Святого Духа"
 msgid "La Fête Dieu"
 msgstr "Свято Тіла і Крові Христових"
 
-#: ./holidays/countries/monaco.py:66
+#. Assumption's Day.
+#: ./holidays/countries/monaco.py:65
 msgid "L'Assomption de Marie"
 msgstr "Успіння Пресвятої Богородиці"
 
 #. All Saints' Day.
-#: ./holidays/countries/monaco.py:70
+#: ./holidays/countries/monaco.py:68
 msgid "La Toussaint"
 msgstr "День усіх святих"
 
 #. Prince's Day.
-#: ./holidays/countries/monaco.py:73
+#: ./holidays/countries/monaco.py:71
 msgid "La Fête du Prince"
 msgstr "День Князя"
 
 #. Immaculate Conception's Day.
-#: ./holidays/countries/monaco.py:79
+#: ./holidays/countries/monaco.py:77
 msgid "L'Immaculée Conception"
 msgstr "Непорочне зачаття Діви Марії"
 
 #. Christmas Day.
-#: ./holidays/countries/monaco.py:82
+#: ./holidays/countries/monaco.py:80
 msgid "Noël"
 msgstr "Різдво Христове"

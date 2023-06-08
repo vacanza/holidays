@@ -33,17 +33,13 @@ class Curacao(HolidayBase):
 
         easter_date = easter(year)
         # Carnaval Monday
-        self[
-            easter_date + td(days=-48)
-        ] = "Maandag na de Grote Karnaval [Carnaval Monday]"
+        self[easter_date + td(days=-48)] = "Maandag na de Grote Karnaval [Carnaval Monday]"
 
         # Good Friday
         self[easter_date + td(days=-2)] = "Goede Vrijdag [Good Friday]"
 
         # Easter Monday
-        self[
-            easter_date + td(days=+1)
-        ] = "Di Dos Dia di Pasku di Resureccion [Easter Monday]"
+        self[easter_date + td(days=+1)] = "Di Dos Dia di Pasku di Resureccion [Easter Monday]"
 
         # King's Day
         if year >= 2014:
@@ -74,9 +70,7 @@ class Curacao(HolidayBase):
         self[easter_date + td(days=+39)] = "Hemelvaartsdag [Ascension Day]"
 
         # Dia di Himno y Bandera
-        self[
-            date(year, JUL, 2)
-        ] = "Dia di Himno y Bandera [National Anthem & Flag Day]"
+        self[date(year, JUL, 2)] = "Dia di Himno y Bandera [National Anthem & Flag Day]"
 
         # Dia di Pais Kòrsou
         self[date(year, OCT, 10)] = "Dia di Pais Kòrsou [Curaçao Day]"

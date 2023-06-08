@@ -43,9 +43,7 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(
-            self, calendar=UnitedArabEmiratesIslamicCalendar()
-        )
+        IslamicHolidays.__init__(self, calendar=UnitedArabEmiratesIslamicCalendar())
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -56,9 +54,7 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays):
 
         # Commemoration Day.
         if year >= 2015:
-            self._add_holiday(
-                "Commemoration Day", *((DEC, 1) if year >= 2019 else (NOV, 30))
-            )
+            self._add_holiday("Commemoration Day", *((DEC, 1) if year >= 2019 else (NOV, 30)))
 
         # National Day.
         self._add_holiday("National Day", DEC, 2)
@@ -83,15 +79,11 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays):
 
         # Leilat al-Miraj.
         if year <= 2018:  # The UAE government removed this starting 2019.
-            self._add_isra_and_miraj_day(
-                "Leilat al-Miraj - The Prophet's ascension"
-            )
+            self._add_isra_and_miraj_day("Leilat al-Miraj - The Prophet's ascension")
 
         # Prophet Muhammad's Birthday.
         if year <= 2019:  # The UAE government removed this starting 2020.
-            self._add_mawlid_day(
-                "Mawlud al-Nabi - Prophet Mohammad's Birthday"
-            )
+            self._add_mawlid_day("Mawlud al-Nabi - Prophet Mohammad's Birthday")
 
 
 class AE(UnitedArabEmirates):

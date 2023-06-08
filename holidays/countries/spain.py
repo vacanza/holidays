@@ -15,13 +15,10 @@ from typing import Optional
 
 from holidays.constants import FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, IslamicHolidays
-from holidays.holiday_groups import InternationalHolidays
+from holidays.holiday_groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 
 
-class Spain(
-    HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolidays
-):
+class Spain(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolidays):
     """
     References:
      - https://administracion.gob.es/pag_Home/atencionCiudadana/calendarios.html  # noqa: E501

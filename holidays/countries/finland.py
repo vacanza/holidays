@@ -42,9 +42,7 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Epiphany.
         name = tr("Loppiainen")
         if 1973 <= year <= 1990:
-            self._add_holiday(
-                name, _get_nth_weekday_from(1, SAT, date(year, JAN, 6))
-            )
+            self._add_holiday(name, _get_nth_weekday_from(1, SAT, date(year, JAN, 6)))
         else:
             self._add_epiphany_day(name)
 

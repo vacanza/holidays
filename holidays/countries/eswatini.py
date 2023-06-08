@@ -33,9 +33,7 @@ class Eswatini(HolidayBase):
     }
 
     def _populate(self, year):
-        def _add_with_observed(
-            hol_date: date, hol_name: str, days: int = +1
-        ) -> None:
+        def _add_with_observed(hol_date: date, hol_name: str, days: int = +1) -> None:
             # As of 2021/1/1, whenever a public holiday falls on a Sunday
             # it rolls over to the following Monday
             self[hol_date] = hol_name
@@ -78,9 +76,7 @@ class Eswatini(HolidayBase):
 
         if year >= 1983:
             # https://www.officeholidays.com/holidays/swaziland/birthday-of-late-king-sobhuza
-            _add_with_observed(
-                date(year, JUL, 22), "Birthday of Late King Sobhuza"
-            )
+            _add_with_observed(date(year, JUL, 22), "Birthday of Late King Sobhuza")
 
         _add_with_observed(date(year, SEP, 6), "Independence Day")
         _add_with_observed(date(year, DEC, 25), "Christmas Day", days=+2)

@@ -36,15 +36,11 @@ class Israel(HolidayBase):
         passover_dt = _HebrewLunisolar.hebrew_holiday_date(year, "PASSOVER")
         self._add_with_eve("Passover I", passover_dt)
         for offset in range(1, 5):
-            self._add_holiday(
-                "Passover - Chol HaMoed", passover_dt + td(days=offset)
-            )
+            self._add_holiday("Passover - Chol HaMoed", passover_dt + td(days=offset))
         self._add_with_eve("Passover VII", passover_dt + td(days=+6))
 
         # Memorial Day
-        memorial_day_dt = _HebrewLunisolar.hebrew_holiday_date(
-            year, "MEMORIAL_DAY"
-        )
+        memorial_day_dt = _HebrewLunisolar.hebrew_holiday_date(year, "MEMORIAL_DAY")
         observed_delta = 0
         if self.observed:
             if self._is_thursday(memorial_day_dt):
@@ -74,9 +70,7 @@ class Israel(HolidayBase):
             self._add_holiday(name, memorial_day_dt + td(days=+1))
 
         # Lag Baomer
-        lag_baomer_dt = _HebrewLunisolar.hebrew_holiday_date(
-            year, "LAG_BAOMER"
-        )
+        lag_baomer_dt = _HebrewLunisolar.hebrew_holiday_date(year, "LAG_BAOMER")
         self._add_holiday("Lag B'Omer", lag_baomer_dt)
 
         # Shavuot
@@ -84,26 +78,20 @@ class Israel(HolidayBase):
         self._add_with_eve("Shavuot", shavuot_dt)
 
         # Rosh Hashana
-        rosh_hashanah_dt = _HebrewLunisolar.hebrew_holiday_date(
-            year, "ROSH_HASHANAH"
-        )
+        rosh_hashanah_dt = _HebrewLunisolar.hebrew_holiday_date(year, "ROSH_HASHANAH")
         name = "Rosh Hashanah"
         self._add_with_eve(name, rosh_hashanah_dt)
         self._add_holiday(name, rosh_hashanah_dt + td(days=+1))
 
         # Yom Kippur
-        yom_kippur_dt = _HebrewLunisolar.hebrew_holiday_date(
-            year, "YOM_KIPPUR"
-        )
+        yom_kippur_dt = _HebrewLunisolar.hebrew_holiday_date(year, "YOM_KIPPUR")
         self._add_with_eve("Yom Kippur", yom_kippur_dt)
 
         # Sukkot
         sukkot_dt = _HebrewLunisolar.hebrew_holiday_date(year, "SUKKOT")
         self._add_with_eve("Sukkot I", sukkot_dt)
         for offset in range(1, 6):
-            self._add_holiday(
-                "Sukkot - Chol HaMoed", sukkot_dt + td(days=offset)
-            )
+            self._add_holiday("Sukkot - Chol HaMoed", sukkot_dt + td(days=offset))
         self._add_with_eve("Sukkot VII", sukkot_dt + td(days=+7))
 
         # Hanukkah

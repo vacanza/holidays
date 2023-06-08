@@ -126,9 +126,7 @@ class TestNetherlands(TestCase):
             "2020-05-05",
         )
         self.assertNoHoliday("1944-05-05", "1971-05-05", "2022-05-05")
-        self.assertNoHolidayName(
-            "Bevrijdingsdag", Netherlands(years=(1944, 1971, 2022))
-        )
+        self.assertNoHolidayName("Bevrijdingsdag", Netherlands(years=(1944, 1971, 2022)))
 
     def test_2017(self):
         self.assertHolidays(

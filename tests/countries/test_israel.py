@@ -52,9 +52,7 @@ class TestIsrael(TestCase):
         observed_holiday = official_holiday + td(days=+1)
         self.assertNonObservedHoliday(official_holiday)
         self.assertNonObservedHolidaysName(holiday_name, official_holiday)
-        self.assertNotEqual(
-            self.holidays_non_observed.get(observed_holiday), holiday_name
-        )
+        self.assertNotEqual(self.holidays_non_observed.get(observed_holiday), holiday_name)
 
         # Earlier
         official_holiday = date(2018, 4, 19) + td(days=days_delta)

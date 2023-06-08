@@ -28,9 +28,7 @@ class Zimbabwe(HolidayBase):
     country = "ZW"
 
     def _populate(self, year):
-        def _add_with_observed(
-            hol_date: date, hol_name: str, days: int = +1
-        ) -> None:
+        def _add_with_observed(hol_date: date, hol_name: str, days: int = +1) -> None:
             self[hol_date] = hol_name
             if self.observed and self._is_sunday(hol_date):
                 self[hol_date + td(days=days)] = f"{hol_name} (Observed)"
@@ -44,9 +42,7 @@ class Zimbabwe(HolidayBase):
 
         # https://en.wikipedia.org/wiki/Robert_Gabriel_Mugabe_National_Youth_Day
         if year >= 2018:
-            _add_with_observed(
-                date(year, FEB, 21), "Robert Gabriel Mugabe National Youth Day"
-            )
+            _add_with_observed(date(year, FEB, 21), "Robert Gabriel Mugabe National Youth Day")
 
         easter_date = easter(year)
         self[easter_date + td(days=-2)] = "Good Friday"

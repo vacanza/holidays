@@ -135,9 +135,7 @@ class TestPoland(TestCase):
         self.assertHoliday(f"{year}-05-03" for year in range(1925, 1951))
         self.assertHoliday(f"{year}-05-03" for year in range(1990, 2050))
         self.assertNoHoliday(f"{year}-05-03" for year in range(1951, 1990))
-        self.assertNoHolidayName(
-            "Święto Narodowe Trzeciego Maja", range(1951, 1990)
-        )
+        self.assertNoHolidayName("Święto Narodowe Trzeciego Maja", range(1951, 1990))
 
     def test_narodowe_swieto_zwyciestwa_i_wolnosci(self):
         self.assertHoliday(f"{year}-05-09" for year in range(1946, 1951))
@@ -170,9 +168,7 @@ class TestPoland(TestCase):
             "1945-05-21",
             "1950-05-29",
         )
-        self.assertNoHolidayName(
-            "Drugi dzień Zielonych Świątek", range(1951, 2050)
-        )
+        self.assertNoHolidayName("Drugi dzień Zielonych Świątek", range(1951, 2050))
 
     def test_swietych_apostolow_piotra_i_pawla(self):
         self.assertHoliday(f"{year}-06-29" for year in range(1925, 1951))
@@ -212,12 +208,8 @@ class TestPoland(TestCase):
         self.assertHoliday(f"{year}-11-11" for year in range(1989, 2050))
         self.assertNoHoliday(f"{year}-11-11" for year in range(1925, 1937))
         self.assertNoHoliday(f"{year}-11-11" for year in range(1945, 1989))
-        self.assertNoHolidayName(
-            "Narodowe Święto Niepodległości", range(1925, 1937)
-        )
-        self.assertNoHolidayName(
-            "Narodowe Święto Niepodległości", range(1945, 1989)
-        )
+        self.assertNoHolidayName("Narodowe Święto Niepodległości", range(1925, 1937))
+        self.assertNoHolidayName("Narodowe Święto Niepodległości", range(1945, 1989))
 
     def test_niepokalane_poczecie_nmp(self):
         self.assertHoliday(f"{year}-12-08" for year in range(1925, 1951))

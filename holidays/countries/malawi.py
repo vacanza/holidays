@@ -27,14 +27,10 @@ class Malawi(HolidayBase):
     country = "MW"
 
     def _populate(self, year):
-        def _add_with_observed(
-            hol_date: date, hol_name: str, days: int = +1
-        ) -> None:
+        def _add_with_observed(hol_date: date, hol_name: str, days: int = +1) -> None:
             self[hol_date] = hol_name
             if self.observed and self._is_weekend(hol_date):
-                obs_date = hol_date + td(
-                    days=+2 if self._is_saturday(hol_date) else days
-                )
+                obs_date = hol_date + td(days=+2 if self._is_saturday(hol_date) else days)
                 self[obs_date] = f"{hol_name} (Observed)"
 
         # Observed since 2000

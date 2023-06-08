@@ -13,8 +13,7 @@ from datetime import date
 from gettext import gettext as tr
 
 from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC, MON
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -75,8 +74,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
     )
     bicentennial_battle_tucuman = tr("Bicentenario de la Batalla de Tucumán")
     bicentennial_assembly_1813 = tr(
-        "Bicentenario de la sesión inaugural "
-        "de la Asamblea Nacional Constituyente del año 1813"
+        "Bicentenario de la sesión inaugural " "de la Asamblea Nacional Constituyente del año 1813"
     )
     bicentennial_battle_salta = tr("Bicentenario de la Batalla de Salta")
     national_census_2022 = tr("Censo nacional 2022")
@@ -209,9 +207,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday(
                 tr("Día del Veterano de Guerra")
                 if year <= 2000
-                else tr(
-                    "Día del Veterano y de los Caidos en la Guerra de Malvinas"
-                ),
+                else tr("Día del Veterano y de los Caidos en la Guerra de Malvinas"),
                 date(year, MAR, 31) if year == 2020 else date(year, APR, 2),
             )
 
@@ -261,9 +257,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday(tr("Día de la Independencia"), JUL, 9)
 
         # Immaculate Conception.
-        self._add_immaculate_conception_day(
-            tr("Inmaculada Concepción de María")
-        )
+        self._add_immaculate_conception_day(tr("Inmaculada Concepción de María"))
 
         # Christmas.
         self._add_christmas_day(tr("Navidad"))
@@ -276,10 +270,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 2016:
             dt = date(year, JUN, 17)
-            name = tr(
-                "Paso a la Inmortalidad del General Don Martín Miguel "
-                "de Güemes"
-            )
+            name = tr("Paso a la Inmortalidad del General Don Martín Miguel " "de Güemes")
             # If Jun 17 is Friday, then it should move to Mon, Jun 20
             # but Jun 20 is Gen. Belgrano holiday
             if self._is_friday(dt):
@@ -300,9 +291,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
         elif 1938 <= year <= 1994:
             self._add_holiday(name, AUG, 17)
         elif 1995 <= year <= 2010:
-            self._add_holiday(
-                name, _get_nth_weekday_of_month(3, MON, AUG, year)
-            )
+            self._add_holiday(name, _get_nth_weekday_of_month(3, MON, AUG, year))
         elif year >= 2012:
             add_movable_holiday(date(year, AUG, 17), name)
 

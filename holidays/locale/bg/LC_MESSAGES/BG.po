@@ -20,62 +20,64 @@ msgstr ""
 msgid "Нова година"
 msgstr ""
 
-#: ./holidays/countries/bulgaria.py:57
+#. Liberation Day.
+#: ./holidays/countries/bulgaria.py:56
 msgid "Ден на Освобождението на България от османско иго"
 msgstr ""
 
-#: ./holidays/countries/bulgaria.py:62
+#: ./holidays/countries/bulgaria.py:60
 msgid "Ден на труда и на международната работническа солидарност"
 msgstr ""
 
-#: ./holidays/countries/bulgaria.py:69
+#. Saint George's Day.
+#: ./holidays/countries/bulgaria.py:66
 msgid "Гергьовден, Ден на храбростта и Българската армия"
 msgstr ""
 
-#: ./holidays/countries/bulgaria.py:74
+#: ./holidays/countries/bulgaria.py:70
 msgid ""
 "Ден на светите братя Кирил и Методий, на българската азбука, просвета и "
 "култура и на славянската книжовност"
 msgstr ""
 
 #. Unification Day.
-#: ./holidays/countries/bulgaria.py:83
+#: ./holidays/countries/bulgaria.py:79
 msgid "Ден на Съединението"
 msgstr ""
 
 #. Independence Day.
-#: ./holidays/countries/bulgaria.py:86
+#: ./holidays/countries/bulgaria.py:82
 msgid "Ден на Независимостта на България"
 msgstr ""
 
 #. National Awakening Day.
-#: ./holidays/countries/bulgaria.py:89
+#: ./holidays/countries/bulgaria.py:85
 msgid "Ден на народните будители"
 msgstr ""
 
 #. Christmas Eve.
-#: ./holidays/countries/bulgaria.py:92
+#: ./holidays/countries/bulgaria.py:88
 msgid "Бъдни вечер"
 msgstr ""
 
 #. Christmas Day 1.
 #. Christmas Day 2.
-#: ./holidays/countries/bulgaria.py:94 ./holidays/countries/bulgaria.py:96
+#: ./holidays/countries/bulgaria.py:90 ./holidays/countries/bulgaria.py:92
 msgid "Рождество Христово"
 msgstr ""
 
 #. Good Friday.
-#: ./holidays/countries/bulgaria.py:101
+#: ./holidays/countries/bulgaria.py:97
 msgid "Велики петък"
 msgstr ""
 
 #. Easter Saturday.
-#: ./holidays/countries/bulgaria.py:103
+#: ./holidays/countries/bulgaria.py:99
 msgid "Велика събота"
 msgstr ""
 
 #. Easter Sunday.
 #. Easter Monday.
-#: ./holidays/countries/bulgaria.py:105 ./holidays/countries/bulgaria.py:107
+#: ./holidays/countries/bulgaria.py:101 ./holidays/countries/bulgaria.py:103
 msgid "Великден"
 msgstr ""

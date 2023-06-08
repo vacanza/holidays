@@ -42,8 +42,7 @@ class TestEntityLoader(TestCase):
                 loader_entities.add(loader_cls.__name__)
 
         countries_entities = set(
-            entity[0]
-            for entity in inspect.getmembers(countries, inspect.isclass)
+            entity[0] for entity in inspect.getmembers(countries, inspect.isclass)
         )
         self.assertEqual(
             countries_entities,
@@ -85,8 +84,7 @@ class TestEntityLoader(TestCase):
                 loader_entities.add(loader_cls.__name__)
 
         financial_entities = set(
-            entity[0]
-            for entity in inspect.getmembers(financial, inspect.isclass)
+            entity[0] for entity in inspect.getmembers(financial, inspect.isclass)
         )
         self.assertEqual(
             financial_entities,
@@ -97,11 +95,7 @@ class TestEntityLoader(TestCase):
 
     def test_financial_str(self):
         self.assertEqual(
-            str(
-                registry.EntityLoader(
-                    "holidays.financial.ny_stock_exchange.NYSE"
-                )
-            ),
+            str(registry.EntityLoader("holidays.financial.ny_stock_exchange.NYSE")),
             "A lazy loader for "
             "<class 'holidays.financial.ny_stock_exchange.NYSE'>. "
             "For inheritance please use the "
@@ -129,8 +123,4 @@ class TestEntityLoader(TestCase):
             holidays.countries.US,
             holidays.countries.USA,
         ):
-            self.assertTrue(
-                isinstance(
-                    create_instance(cls), holidays.countries.UnitedStates
-                )
-            )
+            self.assertTrue(isinstance(create_instance(cls), holidays.countries.UnitedStates))

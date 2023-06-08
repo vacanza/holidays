@@ -68,9 +68,7 @@ class Botswana(HolidayBase, ChristianHolidays, InternationalHolidays):
         july_3rd_monday = self._add_holiday(
             "President's Day", _get_nth_weekday_of_month(3, MON, JUL, year)
         )
-        self._add_holiday(
-            "President's Day Holiday", july_3rd_monday + td(days=+1)
-        )
+        self._add_holiday("President's Day Holiday", july_3rd_monday + td(days=+1))
 
         sep_30 = self._add_holiday("Botswana Day", SEP, 30)
         oct_1 = self._add_holiday("Botswana Day Holiday", sep_30 + td(days=+1))

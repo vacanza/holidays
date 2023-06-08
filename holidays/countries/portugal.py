@@ -109,15 +109,10 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_labor_day(tr("Dia do Trabalhador"))
         if year >= 1911:
             if 1933 <= year <= 1973:
-                self._add_holiday(
-                    tr("Dia de Camões, de Portugal e da Raça"), JUN, 10
-                )
+                self._add_holiday(tr("Dia de Camões, de Portugal e da Raça"), JUN, 10)
             elif year >= 1978:
                 self._add_holiday(
-                    tr(
-                        "Dia de Portugal, de Camões e das Comunidades "
-                        "Portuguesas"
-                    ),
+                    tr("Dia de Portugal, de Camões e das Comunidades " "Portuguesas"),
                     JUN,
                     10,
                 )
@@ -222,10 +217,7 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday(tr("Dia da Região Autónoma da Madeira"), JUL, 1)
         elif self._year >= 1989:
             self._add_holiday(
-                tr(
-                    "Dia da Região Autónoma da Madeira e "
-                    "das Comunidades Madeirenses"
-                ),
+                tr("Dia da Região Autónoma da Madeira e " "das Comunidades Madeirenses"),
                 JUL,
                 1,
             )

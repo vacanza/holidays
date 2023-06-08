@@ -33,9 +33,7 @@ class TestGreece(TestCase):
             (12, 25, "Χριστούγεννα"),
             (12, 26, "Επόμενη ημέρα των Χριστουγέννων"),
         ):
-            self.assertHolidaysName(
-                name, (f"{year}-{m}-{d}" for year in years)
-            )
+            self.assertHolidaysName(name, (f"{year}-{m}-{d}" for year in years))
 
     def test_clean_monday(self):
         self.assertHolidaysName(

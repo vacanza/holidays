@@ -23,9 +23,7 @@ from polib import pofile
 class POGenerator:
     """Generates .po files for supported country/market entities."""
 
-    def update_po_file(
-        self, po_path: str, pot_path: str, package_version: str
-    ) -> None:
+    def update_po_file(self, po_path: str, pot_path: str, package_version: str) -> None:
         """Merge .po file with .pot"""
         po_file = pofile(po_path)
         po_file_initial = po_file.copy()
@@ -33,9 +31,7 @@ class POGenerator:
 
         po_file.merge(pot_file)
         if po_file != po_file_initial:
-            po_file.metadata[
-                "Project-Id-Version"
-            ] = f"Python Holidays {package_version}"
+            po_file.metadata["Project-Id-Version"] = f"Python Holidays {package_version}"
         po_file.save(po_path)
 
     def process_countries(self):
@@ -70,9 +66,7 @@ class POGenerator:
         pot_path = locale_path / "pot"
         pot_path.mkdir(exist_ok=True)
         for country_code in sorted(country_code_info_mapping.keys()):
-            default_language, class_file_path = country_code_info_mapping[
-                country_code
-            ]
+            default_language, class_file_path = country_code_info_mapping[country_code]
             pot_file_path = pot_path / f"{country_code}.pot"
             # Create .pot file.
             create_pot_file(
@@ -103,9 +97,7 @@ class POGenerator:
 
             # Update all .po files.
             for po_file_path in locale_path.rglob(f"{country_code}.po"):
-                self.update_po_file(
-                    po_file_path, pot_file_path, package_version
-                )
+                self.update_po_file(po_file_path, pot_file_path, package_version)
 
     @staticmethod
     def run():

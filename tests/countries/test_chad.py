@@ -29,14 +29,9 @@ class TestChad(TestCase):
 
     def test_freedom_and_democracy_day(self):
         name = "Freedom and Democracy Day"
-        self.assertHolidaysName(
-            name, (f"{year}-12-01" for year in range(1991, 2050))
-        )
+        self.assertHolidaysName(name, (f"{year}-12-01" for year in range(1991, 2050)))
         self.assertNoHolidayName(name, Chad(years=range(1961, 1991)))
-        self.assertNoHoliday(
-            f"{year}-12-01"
-            for year in set(range(1961, 1991)).difference({1976})
-        )
+        self.assertNoHoliday(f"{year}-12-01" for year in set(range(1961, 1991)).difference({1976}))
 
     def test_observed(self):
         dt = (

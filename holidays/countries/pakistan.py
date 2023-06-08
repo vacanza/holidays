@@ -10,8 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars import _CustomIslamicCalendar
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
 

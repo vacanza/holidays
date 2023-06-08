@@ -79,9 +79,7 @@ class Romania(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Law #147/2012
         if year >= 2012:
             # Saint Andrew's Day.
-            self._add_holiday(
-                tr("Sfantul Apostol Andrei cel Intai chemat"), NOV, 30
-            )
+            self._add_holiday(tr("Sfantul Apostol Andrei cel Intai chemat"), NOV, 30)
 
         # National Day.
         self._add_holiday(tr("Ziua Națională a României"), DEC, 1)

@@ -15,8 +15,7 @@ from gettext import gettext as tr
 
 from dateutil.easter import easter
 
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, DEC
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -175,9 +174,7 @@ class Paraguay(HolidayBase):
         self._add_observed_holiday(tr("Día de Pascuas"), easter_date)
 
         # Labour Day.
-        self._add_observed_holiday(
-            tr("Día del Trabajador"), date(year, MAY, 1)
-        )
+        self._add_observed_holiday(tr("Día del Trabajador"), date(year, MAY, 1))
 
         # Independence Day.
         name = tr("Día de la Independencia Nacional")

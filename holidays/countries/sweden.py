@@ -127,9 +127,7 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Optionally add all Sundays of the year.
             begin = _get_nth_weekday_from(1, SUN, date(year, JAN, 1))
             end = date(year, DEC, 31)
-            for dt in (
-                begin + td(days=n) for n in range(0, (end - begin).days + 1, 7)
-            ):
+            for dt in (begin + td(days=n) for n in range(0, (end - begin).days + 1, 7)):
                 # Sunday.
                 self._add_holiday(tr("Söndag"), dt)
 

@@ -12,10 +12,8 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars.buddhist import _CustomBuddhistCalendar
-from holidays.calendars.buddhist import _BuddhistLunisolar
-from holidays.calendars.chinese import _CustomChineseCalendar
-from holidays.calendars.chinese import _ChineseLunisolar
+from holidays.calendars.buddhist import _CustomBuddhistCalendar, _BuddhistLunisolar
+from holidays.calendars.chinese import _CustomChineseCalendar, _ChineseLunisolar
 from holidays.calendars.custom import _CustomCalendar
 from holidays.calendars.hebrew import _HebrewLunisolar
 from holidays.calendars.hindu import _HinduLunisolar, _CustomHinduCalendar
@@ -40,9 +38,7 @@ def _get_nth_weekday_from(n: int, weekday: int, from_dt: date) -> date:
     return from_dt + td(days=delta)
 
 
-def _get_nth_weekday_of_month(
-    n: int, weekday: int, month: int, year: int
-) -> date:
+def _get_nth_weekday_of_month(n: int, weekday: int, month: int, year: int) -> date:
     """
     Return date of n-th weekday of month for a specific year
     (e.g. 1st Monday of Apr, 2nd Friday of June, etc).

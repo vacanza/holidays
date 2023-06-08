@@ -60,9 +60,7 @@ class TestChina(unittest.TestCase):
         self.assertIn(date(2005, 5, 2), self.holidays)
         # Labour Day day 3
         self.assertIn(date(2005, 5, 3), self.holidays)
-        self.assertNotIn(
-            date(2005, 6, 11), self.holidays
-        )  # NO Dragon Boat Festival
+        self.assertNotIn(date(2005, 6, 11), self.holidays)  # NO Dragon Boat Festival
         # NO Mid-Autumn Festival
         self.assertNotIn(date(2005, 9, 18), self.holidays)
         # National Day day 1
@@ -81,9 +79,7 @@ class TestChina(unittest.TestCase):
         # New Year's Day
         self.assertIn(date(2015, 1, 1), self.holidays)
         # Chinese New Year day 1
-        self.assertIn(
-            date(2015, 2, 19), self.holidays
-        )  # Chinese New Year day 2
+        self.assertIn(date(2015, 2, 19), self.holidays)  # Chinese New Year day 2
         self.assertIn(date(2015, 2, 20), self.holidays)
         # Chinese New Year day 3
         self.assertIn(date(2015, 2, 21), self.holidays)

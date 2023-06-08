@@ -39,11 +39,7 @@ class Namibia(HolidayBase):
             # it rolls over to the monday, unless that monday is already
             # a public holiday.
             self[hol_date] = hol_name
-            if (
-                self.observed
-                and self._is_sunday(hol_date)
-                and hol_date >= date(1991, FEB, 1)
-            ):
+            if self.observed and self._is_sunday(hol_date) and hol_date >= date(1991, FEB, 1):
                 self[hol_date + td(days=+1)] = f"{hol_name} (Observed)"
 
         if year <= 1989:

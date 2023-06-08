@@ -24,9 +24,7 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "PL"
     default_language = "pl"
-    special_holidays = {
-        2018: ((NOV, 12, tr("Narodowe Święto Niepodległości - 100-lecie")),)
-    }
+    special_holidays = {2018: ((NOV, 12, tr("Narodowe Święto Niepodległości - 100-lecie")),)}
     supported_languages = ("en_US", "pl", "uk")
 
     def __init__(self, *args, **kwargs):
@@ -67,9 +65,7 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if 1946 <= year <= 1950:
             # National Victory and Freedom Day.
-            self._add_holiday(
-                tr("Narodowe Święto Zwycięstwa i Wolności"), MAY, 9
-            )
+            self._add_holiday(tr("Narodowe Święto Zwycięstwa i Wolności"), MAY, 9)
 
         if year <= 1950:
             # Ascension Day.
@@ -100,9 +96,7 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year <= 1960 or year >= 1989:
             # Assumption of the Virgin Mary.
-            self._add_assumption_of_mary_day(
-                tr("Wniebowzięcie Najświętszej Marii Panny")
-            )
+            self._add_assumption_of_mary_day(tr("Wniebowzięcie Najświętszej Marii Panny"))
 
         # All Saints' Day.
         self._add_all_saints_day(tr("Uroczystość Wszystkich Świętych"))

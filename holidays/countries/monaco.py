@@ -62,9 +62,7 @@ class Monaco(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_corpus_christi_day(tr("La Fête Dieu"))
 
         # Assumption's Day.
-        observed_dates.add(
-            self._add_assumption_of_mary_day(tr("L'Assomption de Marie"))
-        )
+        observed_dates.add(self._add_assumption_of_mary_day(tr("L'Assomption de Marie")))
 
         # All Saints' Day.
         observed_dates.add(self._add_all_saints_day(tr("La Toussaint")))

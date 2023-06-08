@@ -73,9 +73,7 @@ class TestNorway(SundayHolidays):
         )
 
     def test_sundays(self):
-        self.assertSundays(
-            Norway
-        )  # Sundays are considered holidays in Norway.
+        self.assertSundays(Norway)  # Sundays are considered holidays in Norway.
 
     def test_not_holiday(self):
         # TODO: Add more dates that are often confused for being a holiday.

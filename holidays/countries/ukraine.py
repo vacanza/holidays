@@ -59,17 +59,13 @@ class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays):
         )
 
         # International Women's Day.
-        observed_dates.add(
-            self._add_womens_day(tr("Міжнародний жіночий день"))
-        )
+        observed_dates.add(self._add_womens_day(tr("Міжнародний жіночий день")))
 
         # There is no holidays from March 15, 2022
         # https://zakon.rada.gov.ua/laws/show/2136-20#n26
         if year <= 2021:
             # Easter Sunday (Pascha).
-            observed_dates.add(
-                self._add_easter_sunday(tr("Великдень (Пасха)"))
-            )
+            observed_dates.add(self._add_easter_sunday(tr("Великдень (Пасха)")))
 
             # Holy Trinity Day.
             observed_dates.add(self._add_whit_sunday(tr("Трійця")))
@@ -84,16 +80,11 @@ class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays):
             may_1 = self._add_labor_day(name)
             observed_dates.add(may_1)
             if year <= 2017:
-                observed_dates.add(
-                    self._add_holiday(name, may_1 + td(days=+1))
-                )
+                observed_dates.add(self._add_holiday(name, may_1 + td(days=+1)))
 
             name = (
                 # Day of Victory over Nazism in World War II (Victory Day).
-                tr(
-                    "День перемоги над нацизмом у Другій світовій війні "
-                    "(День перемоги)"
-                )
+                tr("День перемоги над нацизмом у Другій світовій війні " "(День перемоги)")
                 if year >= 2016
                 # Victory Day.
                 else tr("День перемоги")
@@ -147,12 +138,9 @@ class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self.observed:
             for dt in sorted(observed_dates):
                 if self._is_weekend(dt) and (
-                    date(1995, JAN, 27) <= dt <= date(1998, JAN, 9)
-                    or dt >= date(1999, APR, 23)
+                    date(1995, JAN, 27) <= dt <= date(1998, JAN, 9) or dt >= date(1999, APR, 23)
                 ):
-                    obs_date = dt + td(
-                        days=+2 if self._is_saturday(dt) else +1
-                    )
+                    obs_date = dt + td(days=+2 if self._is_saturday(dt) else +1)
                     while obs_date in self:
                         obs_date += td(days=+1)
                     hol_name = self.tr("%s (вихідний)") % self[dt]

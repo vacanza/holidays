@@ -13,8 +13,7 @@ from datetime import date
 from typing import Iterable, Tuple
 
 from holidays.calendars.custom import _CustomCalendar
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 
 ASHURA = "ASHURA"
 EID_AL_ADHA = "EID_AL_ADHA"
@@ -1434,9 +1433,7 @@ class _IslamicLunar:
         2077: ((JUL, 21),),
     }
 
-    def _get_holiday(
-        self, holiday: str, year: int
-    ) -> Iterable[Tuple[date, bool]]:
+    def _get_holiday(self, holiday: str, year: int) -> Iterable[Tuple[date, bool]]:
         estimated_dates = getattr(self, f"{holiday}_DATES", {})
         exact_dates = getattr(
             self,
@@ -1471,9 +1468,7 @@ class _IslamicLunar:
     def nuzul_al_quran_dates(self, year: int) -> Iterable[Tuple[date, bool]]:
         return self._get_holiday(NUZUL_AL_QURAN, year)
 
-    def ramadan_beginning_dates(
-        self, year: int
-    ) -> Iterable[Tuple[date, bool]]:
+    def ramadan_beginning_dates(self, year: int) -> Iterable[Tuple[date, bool]]:
         return self._get_holiday(RAMADAN_BEGINNING, year)
 
 

@@ -205,24 +205,16 @@ class TestJapan(TestCase):
 
     def test_showa_day(self):
         name = "昭和の日"
-        self.assertHolidaysName(
-            name, (f"{year}-04-29" for year in range(2007, 2051))
-        )
+        self.assertHolidaysName(name, (f"{year}-04-29" for year in range(2007, 2051)))
         self.assertNoHolidayName(name, 2006)
 
     def test_constitution_memorial_day(self):
-        self.assertHolidaysName(
-            "憲法記念日", (f"{year}-05-03" for year in range(1949, 2051))
-        )
+        self.assertHolidaysName("憲法記念日", (f"{year}-05-03" for year in range(1949, 2051)))
 
     def test_greenery_day(self):
         name = "みどりの日"
-        self.assertHolidaysName(
-            name, (f"{year}-04-29" for year in range(1989, 2007))
-        )
-        self.assertHolidaysName(
-            name, (f"{year}-05-04" for year in range(2007, 2051))
-        )
+        self.assertHolidaysName(name, (f"{year}-04-29" for year in range(1989, 2007)))
+        self.assertHolidaysName(name, (f"{year}-05-04" for year in range(2007, 2051)))
         self.assertNoHolidayName(name, 1988)
 
     def test_national_holiday(self):
@@ -262,9 +254,7 @@ class TestJapan(TestCase):
             self.assertNoNonObservedHoliday(dt)
 
     def test_childrens_day(self):
-        self.assertHolidaysName(
-            "こどもの日", (f"{year}-05-05" for year in range(1949, 2051))
-        )
+        self.assertHolidaysName("こどもの日", (f"{year}-05-05" for year in range(1949, 2051)))
 
     def test_marine_day(self):
         self.assertHolidaysName(
@@ -338,9 +328,7 @@ class TestJapan(TestCase):
 
     def test_respect_for_the_aged_day(self):
         name = "敬老の日"
-        self.assertHolidaysName(
-            name, (f"{year}-09-15" for year in range(1966, 2003))
-        )
+        self.assertHolidaysName(name, (f"{year}-09-15" for year in range(1966, 2003)))
         self.assertNoHoliday("1965-09-15")
         self.assertNoHolidayName(name, 1965)
 
@@ -505,9 +493,7 @@ class TestJapan(TestCase):
 
     def test_health_and_sports_day(self):
         name = "体育の日"
-        self.assertHolidaysName(
-            name, (f"{year}-10-10" for year in range(1966, 2000))
-        )
+        self.assertHolidaysName(name, (f"{year}-10-10" for year in range(1966, 2000)))
         self.assertNoHoliday("1965-10-10", "2000-10-10")
         self.assertNoHolidayName(name, 1965, 2020)
 
@@ -573,26 +559,16 @@ class TestJapan(TestCase):
         self.assertNoHolidayName(name, 2019)
 
     def test_culture_day(self):
-        self.assertHolidaysName(
-            "文化の日", (f"{year}-11-03" for year in range(1949, 2051))
-        )
+        self.assertHolidaysName("文化の日", (f"{year}-11-03" for year in range(1949, 2051)))
 
     def test_labour_thanks_giving_day(self):
-        self.assertHolidaysName(
-            "勤労感謝の日", (f"{year}-11-23" for year in range(1949, 2051))
-        )
+        self.assertHolidaysName("勤労感謝の日", (f"{year}-11-23" for year in range(1949, 2051)))
 
     def test_emperors_birthday(self):
         name = "天皇誕生日"
-        self.assertHolidaysName(
-            name, (f"{year}-04-29" for year in range(1949, 1989))
-        )
-        self.assertHolidaysName(
-            name, (f"{year}-12-23" for year in range(1989, 2019))
-        )
-        self.assertHolidaysName(
-            name, (f"{year}-02-23" for year in range(2020, 2051))
-        )
+        self.assertHolidaysName(name, (f"{year}-04-29" for year in range(1949, 1989)))
+        self.assertHolidaysName(name, (f"{year}-12-23" for year in range(1989, 2019)))
+        self.assertHolidaysName(name, (f"{year}-02-23" for year in range(2020, 2051)))
         self.assertNoHoliday("2019-12-23")
 
     def test_showa_emperor_holidays(self):

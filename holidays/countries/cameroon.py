@@ -12,16 +12,12 @@
 from datetime import timedelta as td
 
 from holidays.calendars import _CustomIslamicCalendar
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_groups import IslamicHolidays
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 
 
-class Cameroon(
-    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
-):
+class Cameroon(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_Cameroon
@@ -94,9 +90,7 @@ class Cameroon(
                 while obs_date in observed_dates:
                     obs_date += td(days=+1)
                 for hol_name in self.get_list(dt):
-                    observed_dates.add(
-                        self._add_holiday("%s (Observed)" % hol_name, obs_date)
-                    )
+                    observed_dates.add(self._add_holiday("%s (Observed)" % hol_name, obs_date))
 
             # observed holidays special cases
             if year == 2007:

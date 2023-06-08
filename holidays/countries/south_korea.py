@@ -15,11 +15,13 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.calendars import _CustomChineseCalendar
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, SAT, SUN
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, SAT, SUN
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChineseCalendarHolidays, ChristianHolidays
-from holidays.holiday_groups import InternationalHolidays
+from holidays.holiday_groups import (
+    ChineseCalendarHolidays,
+    ChristianHolidays,
+    InternationalHolidays,
+)
 
 
 class SouthKorea(
@@ -50,9 +52,7 @@ class SouthKorea(
     }
 
     def __init__(self, *args, **kwargs):
-        ChineseCalendarHolidays.__init__(
-            self, calendar=SouthKoreaLunisolarCalendar()
-        )
+        ChineseCalendarHolidays.__init__(self, calendar=SouthKoreaLunisolarCalendar())
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
@@ -94,8 +94,7 @@ class SouthKorea(
         if include_sat:
             target_weekday.add(SAT)
         if (
-            hol_date.weekday() in target_weekday
-            or len(self.get_list(hol_date)) > 1
+            hol_date.weekday() in target_weekday or len(self.get_list(hol_date)) > 1
         ) and hol_date.year >= since:
             hol_date += td(days=+1)
             while hol_date.weekday() in target_weekday or hol_date in self:
@@ -129,9 +128,7 @@ class SouthKorea(
             )
 
         # Independence Movement Day
-        self._add_with_alt_holiday(
-            "Independence Movement Day", date(year, MAR, 1)
-        )
+        self._add_with_alt_holiday("Independence Movement Day", date(year, MAR, 1))
 
         # Tree Planting Day
         # removed from holiday since 2006
@@ -149,9 +146,7 @@ class SouthKorea(
 
         # Children's Day
         if year >= 1975:
-            self._add_with_alt_holiday(
-                "Children's Day", date(year, MAY, 5), since=2015
-            )
+            self._add_with_alt_holiday("Children's Day", date(year, MAY, 5), since=2015)
 
         # Labour Day
         name = "Labour Day"
@@ -187,9 +182,7 @@ class SouthKorea(
             )
 
         # National Foundation Day
-        self._add_with_alt_holiday(
-            "National Foundation Day", date(year, OCT, 3)
-        )
+        self._add_with_alt_holiday("National Foundation Day", date(year, OCT, 3))
 
         # Hangeul Day
         if year <= 1990 or year >= 2013:
@@ -197,9 +190,7 @@ class SouthKorea(
 
         # Christmas Day
         name = "Christmas Day"
-        self._add_with_alt_holiday(
-            name, self._add_christmas_day(name), add_hol=False, since=2023
-        )
+        self._add_with_alt_holiday(name, self._add_christmas_day(name), add_hol=False, since=2023)
 
 
 class Korea(SouthKorea):

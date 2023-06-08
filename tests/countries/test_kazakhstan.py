@@ -37,13 +37,9 @@ class TestKazakhstan(TestCase):
 
     def test_nauryz(self):
         for year in range(2010, 2050):
-            self.assertHoliday(
-                f"{year}-03-21", f"{year}-03-22", f"{year}-03-23"
-            )
+            self.assertHoliday(f"{year}-03-21", f"{year}-03-22", f"{year}-03-23")
         for year in range(1991, 2002):
-            self.assertNoHoliday(
-                f"{year}-03-21", f"{year}-03-22", f"{year}-03-23"
-            )
+            self.assertNoHoliday(f"{year}-03-21", f"{year}-03-22", f"{year}-03-23")
         for year in range(2002, 2010):
             self.assertNoNonObservedHoliday(
                 Kazakhstan(observed=False, years=year),

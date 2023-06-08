@@ -22,9 +22,7 @@ class TestAustria(TestCase):
         self.assertCountryAliases(Austria, AT, AUT)
 
     def test_new_years(self):
-        self.assertHolidaysName(
-            "Neujahr", (f"{year}-01-01" for year in range(1900, 2050))
-        )
+        self.assertHolidaysName("Neujahr", (f"{year}-01-01" for year in range(1900, 2050)))
 
     def test_epiphany(self):
         self.assertHolidaysName(
@@ -115,9 +113,7 @@ class TestAustria(TestCase):
             (f"{year}-10-26" for year in range(1967, 2050)),
         )
         self.assertNoHoliday("1918-11-12", "1935-11-12", "1966-10-26")
-        self.assertNoHolidayName(
-            "Nationalfeiertag", range(1900, 1919), range(1935, 1967)
-        )
+        self.assertNoHolidayName("Nationalfeiertag", range(1900, 1919), range(1935, 1967))
 
     def test_all_saints_day(self):
         self.assertHolidaysName(

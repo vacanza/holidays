@@ -45,15 +45,11 @@ class Mozambique(HolidayBase):
         _add_with_observed(date(year, FEB, 3), "Dia dos Heróis Moçambicanos")
         _add_with_observed(date(year, APR, 7), "Dia da Mulher Moçambicana")
         _add_with_observed(date(year, MAY, 1), "Dia Mundial do Trabalho")
-        _add_with_observed(
-            date(year, JUN, 25), "Dia da Independência Nacional"
-        )
+        _add_with_observed(date(year, JUN, 25), "Dia da Independência Nacional")
         _add_with_observed(date(year, SEP, 7), "Dia da Vitória")
         _add_with_observed(date(year, SEP, 25), "Dia das Forças Armadas")
         if year >= 1993:
-            _add_with_observed(
-                date(year, OCT, 4), "Dia da Paz e Reconciliação"
-            )
+            _add_with_observed(date(year, OCT, 4), "Dia da Paz e Reconciliação")
         _add_with_observed(date(year, DEC, 25), "Dia de Natal e da Família")
 
 

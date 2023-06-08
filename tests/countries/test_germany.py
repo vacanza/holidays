@@ -18,9 +18,7 @@ class TestDE(TestCase):
     def setUpClass(cls):
         years = range(1991, 2050)
         super().setUpClass(DE, years=years)
-        cls.prov_hols = {
-            prov: DE(subdiv=prov, years=years) for prov in DE.subdivisions
-        }
+        cls.prov_hols = {prov: DE(subdiv=prov, years=years) for prov in DE.subdivisions}
 
     def test_country_aliases(self):
         self.assertCountryAliases(Germany, DE, DEU)

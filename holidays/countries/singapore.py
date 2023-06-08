@@ -11,15 +11,22 @@
 
 from datetime import timedelta as td
 
-from holidays.calendars import _CustomBuddhistCalendar, _CustomChineseCalendar
-from holidays.calendars import _CustomIslamicCalendar, _CustomHinduCalendar
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC
+from holidays.calendars import (
+    _CustomBuddhistCalendar,
+    _CustomChineseCalendar,
+    _CustomIslamicCalendar,
+    _CustomHinduCalendar,
+)
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import BuddhistCalendarHolidays
-from holidays.holiday_groups import ChineseCalendarHolidays, ChristianHolidays
-from holidays.holiday_groups import HinduCalendarHolidays
-from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
+from holidays.holiday_groups import (
+    BuddhistCalendarHolidays,
+    ChineseCalendarHolidays,
+    ChristianHolidays,
+    HinduCalendarHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+)
 
 
 class Singapore(
@@ -101,12 +108,8 @@ class Singapore(
 
         # Chinese New Year (two days)
         name = "Chinese New Year"
-        observed_dates.add(
-            self._add_chinese_new_years_day(name)  # type: ignore[arg-type]
-        )
-        observed_dates.add(
-            self._add_chinese_new_years_day_two(name)  # type: ignore[arg-type]
-        )
+        observed_dates.add(self._add_chinese_new_years_day(name))  # type: ignore[arg-type]
+        observed_dates.add(self._add_chinese_new_years_day_two(name))  # type: ignore[arg-type]
 
         # Hari Raya Puasa (Eid al-Fitr)
         observed_dates.update(self._add_eid_al_fitr_day("Hari Raya Puasa"))
@@ -130,19 +133,13 @@ class Singapore(
         observed_dates.add(self._add_labor_day("Labour Day"))
 
         # Vesak Day
-        observed_dates.add(
-            self._add_vesak("Vesak Day")  # type: ignore[arg-type]
-        )
+        observed_dates.add(self._add_vesak("Vesak Day"))  # type: ignore[arg-type]
 
         # National Day
-        observed_dates.add(
-            self._add_holiday("National Day", AUG, 9)  # type: ignore[arg-type]
-        )
+        observed_dates.add(self._add_holiday("National Day", AUG, 9))  # type: ignore[arg-type]
 
         # Deepavali (Diwali)
-        observed_dates.add(
-            self._add_diwali("Deepavali")  # type: ignore[arg-type]
-        )
+        observed_dates.add(self._add_diwali("Deepavali"))  # type: ignore[arg-type]
 
         # Christmas Day
         observed_dates.add(self._add_christmas_day("Christmas Day"))
@@ -163,8 +160,7 @@ class Singapore(
                     continue
                 self._add_holiday(
                     "%s (Observed)" % self[dt],
-                    dt
-                    + td(days=2 if dt + td(days=+1) in observed_dates else 1),
+                    dt + td(days=2 if dt + td(days=+1) in observed_dates else 1),
                 )
 
         # special case (observed from previous year)

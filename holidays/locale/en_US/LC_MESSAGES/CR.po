@@ -17,7 +17,7 @@ msgstr ""
 "X-Generator: Poedit 3.3\n"
 
 #: ./holidays/countries/costa_rica.py:41 ./holidays/countries/costa_rica.py:53
-#: ./holidays/countries/costa_rica.py:126
+#: ./holidays/countries/costa_rica.py:124
 #, c-format
 msgid "%s (Observado)"
 msgstr "%s (Observed)"
@@ -68,20 +68,21 @@ msgid "Día de la Persona Negra y la Cultura Afrocostarricense"
 msgstr "Day of the Black Person and Afro-Costa Rican Culture"
 
 #. Independence Day.
-#: ./holidays/countries/costa_rica.py:131
+#: ./holidays/countries/costa_rica.py:129
 msgid "Día de la Independencia"
 msgstr "Independence Day"
 
-#: ./holidays/countries/costa_rica.py:141
+#. Cultures Day.
+#: ./holidays/countries/costa_rica.py:138
 msgid "Día de las Culturas"
 msgstr "Cultures Day"
 
 #. Army Abolition Day.
-#: ./holidays/countries/costa_rica.py:148
+#: ./holidays/countries/costa_rica.py:144
 msgid "Día de la Abolición del Ejército"
 msgstr "Army Abolition Day"
 
 #. Christmas Day.
-#: ./holidays/countries/costa_rica.py:155
+#: ./holidays/countries/costa_rica.py:151
 msgid "Navidad"
 msgstr "Christmas Day"

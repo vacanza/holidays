@@ -60,9 +60,7 @@ class TestCostaRica(TestCase):
         )
         self.assertHoliday(dt)
         self.assertNoNonObservedHoliday(dt)
-        self.assertNonObservedHoliday(
-            f"{year}-04-11" for year in years_with_obs
-        )
+        self.assertNonObservedHoliday(f"{year}-04-11" for year in years_with_obs)
 
     def test_labor_day(self):
         years_with_obs = {2021}
@@ -90,9 +88,7 @@ class TestCostaRica(TestCase):
         )
         self.assertHoliday(dt)
         self.assertNoNonObservedHoliday(dt)
-        self.assertNonObservedHoliday(
-            f"{year}-07-25" for year in years_with_obs
-        )
+        self.assertNonObservedHoliday(f"{year}-07-25" for year in years_with_obs)
 
     def test_feast_our_lady_of_angels(self):
         self.assertHoliday(f"{year}-08-02" for year in range(1980, 2041))
@@ -111,9 +107,7 @@ class TestCostaRica(TestCase):
         )
         self.assertHoliday(dt)
         self.assertNoNonObservedHoliday(dt)
-        self.assertNonObservedHoliday(
-            f"{year}-08-15" for year in years_with_obs
-        )
+        self.assertNonObservedHoliday(f"{year}-08-15" for year in years_with_obs)
 
     def test_black_person_day(self):
         self.assertHoliday(f"{year}-08-31" for year in range(2024, 2041))
@@ -144,9 +138,7 @@ class TestCostaRica(TestCase):
         )
         self.assertHoliday(dt)
         self.assertNoNonObservedHoliday(dt)
-        self.assertNonObservedHoliday(
-            f"{year}-09-15" for year in years_with_obs
-        )
+        self.assertNonObservedHoliday(f"{year}-09-15" for year in years_with_obs)
 
     def test_cultures_day(self):
         self.assertHoliday(
@@ -214,8 +206,7 @@ class TestCostaRica(TestCase):
             ("2022-08-15", "Día de la Madre"),
             (
                 "2022-09-04",
-                "Día de la Persona Negra y la Cultura Afrocostarricense "
-                "(Observado)",
+                "Día de la Persona Negra y la Cultura Afrocostarricense " "(Observado)",
             ),
             ("2022-09-19", "Día de la Independencia (Observado)"),
             ("2022-12-05", "Día de la Abolición del Ejército (Observado)"),
@@ -255,8 +246,7 @@ class TestCostaRica(TestCase):
             ("2023-08-14", "Día de la Madre (Observado)"),
             (
                 "2023-09-03",
-                "Día de la Persona Negra y la Cultura Afrocostarricense "
-                "(Observado)",
+                "Día de la Persona Negra y la Cultura Afrocostarricense " "(Observado)",
             ),
             ("2023-09-15", "Día de la Independencia"),
             ("2023-12-01", "Día de la Abolición del Ejército"),
@@ -276,8 +266,7 @@ class TestCostaRica(TestCase):
                 ("2022-08-15", "Día de la Madre"),
                 (
                     "2022-09-04",
-                    "Día de la Persona Negra y la Cultura Afrocostarricense "
-                    "(Observado)",
+                    "Día de la Persona Negra y la Cultura Afrocostarricense " "(Observado)",
                 ),
                 ("2022-09-19", "Día de la Independencia (Observado)"),
                 ("2022-12-05", "Día de la Abolición del Ejército (Observado)"),
@@ -301,8 +290,7 @@ class TestCostaRica(TestCase):
                 ("2022-08-15", "Mother's Day"),
                 (
                     "2022-09-04",
-                    "Day of the Black Person and Afro-Costa Rican Culture "
-                    "(Observed)",
+                    "Day of the Black Person and Afro-Costa Rican Culture " "(Observed)",
                 ),
                 ("2022-09-19", "Independence Day (Observed)"),
                 ("2022-12-05", "Army Abolition Day (Observed)"),
@@ -324,8 +312,7 @@ class TestCostaRica(TestCase):
                 ("2022-08-15", "День матері"),
                 (
                     "2022-09-04",
-                    "День чорношкірої людини та афро-костариканської культури "
-                    "(вихідний)",
+                    "День чорношкірої людини та афро-костариканської культури " "(вихідний)",
                 ),
                 ("2022-09-19", "День незалежності (вихідний)"),
                 ("2022-12-05", "День ліквідації армії (вихідний)"),

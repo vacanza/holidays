@@ -30,9 +30,7 @@ class TestRomania(TestCase):
     def test_unification_day(self):
         self.assertHoliday("2016-01-24")
         self.assertNoHoliday("2015-01-24")
-        self.assertNoHolidayName(
-            "Ziua Unirii Principatelor Române", Romania(years=2015)
-        )
+        self.assertNoHolidayName("Ziua Unirii Principatelor Române", Romania(years=2015))
 
     def test_easter(self):
         self.assertHoliday(
@@ -52,16 +50,12 @@ class TestRomania(TestCase):
     def test_assumption_day(self):
         self.assertHoliday("2009-08-15")
         self.assertNoHoliday("2008-08-15")
-        self.assertNoHolidayName(
-            "Adormirea Maicii Domnului", Romania(years=2008)
-        )
+        self.assertNoHolidayName("Adormirea Maicii Domnului", Romania(years=2008))
 
     def test_saint_andrews_day(self):
         self.assertHoliday("2012-11-30")
         self.assertNoHoliday("2011-11-30")
-        self.assertNoHolidayName(
-            "Sfantul Apostol Andrei cel Intai chemat", Romania(years=2011)
-        )
+        self.assertNoHolidayName("Sfantul Apostol Andrei cel Intai chemat", Romania(years=2011))
 
     def test_2020(self):
         # https://publicholidays.ro/2020-dates/

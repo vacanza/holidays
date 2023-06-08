@@ -51,9 +51,7 @@ class Bolivia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Plurinational State Foundation Day.
         if year >= 2010:
-            self._add_holiday(
-                "Nacimiento del Estado Plurinacional de Bolivia", JAN, 22
-            )
+            self._add_holiday("Nacimiento del Estado Plurinacional de Bolivia", JAN, 22)
 
         # Carnival.
         name = "Feriado por Carnaval"
@@ -115,9 +113,7 @@ class Bolivia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_o_holidays(self):
         # Carnival in Oruro.
-        self._add_holiday(
-            "Carnaval de Oruro", self._easter_sunday + td(days=-51)
-        )
+        self._add_holiday("Carnaval de Oruro", self._easter_sunday + td(days=-51))
 
     def _add_subdiv_s_holidays(self):
         # Santa Cruz Day.

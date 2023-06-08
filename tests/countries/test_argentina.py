@@ -73,9 +73,7 @@ class TestArgentina(TestCase):
 
     def test_malvinas_war_day(self):
         name_veterans = "Día del Veterano de Guerra"
-        name_malvinas = (
-            "Día del Veterano y de los Caidos en la Guerra de Malvinas"
-        )
+        name_malvinas = "Día del Veterano y de los Caidos en la Guerra de Malvinas"
 
         self.assertNoHolidayName(name_veterans, 1992)
         self.assertNoHolidayName(name_malvinas, range(1950, 2001))
@@ -90,9 +88,7 @@ class TestArgentina(TestCase):
         self.assertHoliday(f"{year}-05-01" for year in range(1930, 2050))
 
     def test_may_revolution_day(self):
-        self.assertNoHolidayName(
-            "Día de la Revolución de Mayo", Argentina(years=1812)
-        )
+        self.assertNoHolidayName("Día de la Revolución de Mayo", Argentina(years=1812))
         self.assertHoliday(f"{year}-05-25" for year in range(1813, 2050))
 
     def test_sovereignty_over_malvinas_day(self):
@@ -142,9 +138,7 @@ class TestArgentina(TestCase):
         )
 
     def test_independence_day(self):
-        self.assertNoHolidayName(
-            "Día de la Independencia", Argentina(years=1815)
-        )
+        self.assertNoHolidayName("Día de la Independencia", Argentina(years=1815))
         self.assertHoliday("1816-07-09")
         self.assertHoliday(f"{year}-07-09" for year in range(1950, 2050))
 
@@ -257,8 +251,7 @@ class TestArgentina(TestCase):
             ),
             (
                 "2022-06-17",
-                "Paso a la Inmortalidad del General Don Martín Miguel de "
-                "Güemes",
+                "Paso a la Inmortalidad del General Don Martín Miguel de " "Güemes",
             ),
             (
                 "2022-06-20",
@@ -270,8 +263,7 @@ class TestArgentina(TestCase):
             ),
             (
                 "2022-08-15",
-                "Paso a la Inmortalidad del General Don José de San Martin "
-                "(Observado)",
+                "Paso a la Inmortalidad del General Don José de San Martin " "(Observado)",
             ),
             (
                 "2022-10-07",
@@ -344,8 +336,7 @@ class TestArgentina(TestCase):
             ),
             (
                 "2023-06-17",
-                "Paso a la Inmortalidad del General Don Martín Miguel de "
-                "Güemes",
+                "Paso a la Inmortalidad del General Don Martín Miguel de " "Güemes",
             ),
             (
                 "2023-06-19",
@@ -361,8 +352,7 @@ class TestArgentina(TestCase):
             ),
             (
                 "2023-08-21",
-                "Paso a la Inmortalidad del General Don José de San Martin "
-                "(Observado)",
+                "Paso a la Inmortalidad del General Don José de San Martin " "(Observado)",
             ),
             (
                 "2023-10-13",
@@ -398,8 +388,7 @@ class TestArgentina(TestCase):
                 ),
                 (
                     "2022-04-02",
-                    "Día del Veterano y de los Caidos en la Guerra "
-                    "de Malvinas",
+                    "Día del Veterano y de los Caidos en la Guerra " "de Malvinas",
                 ),
                 ("2022-04-15", "Viernes Santo"),
                 ("2022-05-01", "Día del Trabajo"),
@@ -407,8 +396,7 @@ class TestArgentina(TestCase):
                 ("2022-05-25", "Día de la Revolución de Mayo"),
                 (
                     "2022-06-17",
-                    "Paso a la Inmortalidad del General Don Martín Miguel "
-                    "de Güemes",
+                    "Paso a la Inmortalidad del General Don Martín Miguel " "de Güemes",
                 ),
                 (
                     "2022-06-20",
@@ -417,8 +405,7 @@ class TestArgentina(TestCase):
                 ("2022-07-09", "Día de la Independencia"),
                 (
                     "2022-08-15",
-                    "Paso a la Inmortalidad del General Don José "
-                    "de San Martin (Observado)",
+                    "Paso a la Inmortalidad del General Don José " "de San Martin (Observado)",
                 ),
                 ("2022-10-07", "Feriado con fines turísticos"),
                 (
@@ -453,8 +440,7 @@ class TestArgentina(TestCase):
                 ("2022-05-25", "May Revolution Day"),
                 (
                     "2022-06-17",
-                    "Pass to the Immortality of General Don Martín Miguel "
-                    "de Güemes",
+                    "Pass to the Immortality of General Don Martín Miguel " "de Güemes",
                 ),
                 (
                     "2022-06-20",
@@ -463,8 +449,7 @@ class TestArgentina(TestCase):
                 ("2022-07-09", "Independence Day"),
                 (
                     "2022-08-15",
-                    "Pass to the Immortality of General Don José "
-                    "de San Martin (Observed)",
+                    "Pass to the Immortality of General Don José " "de San Martin (Observed)",
                 ),
                 ("2022-10-07", "Bridge Public Holiday"),
                 (

@@ -37,12 +37,8 @@ class Serbia(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _add_observed_holiday(
-        self, name: str, *dt: DateLike
-    ) -> Optional[date]:
-        return self._add_holiday(
-            self.tr("%s (слободан дан)") % self.tr(name), *dt
-        )
+    def _add_observed_holiday(self, name: str, *dt: DateLike) -> Optional[date]:
+        return self._add_holiday(self.tr("%s (слободан дан)") % self.tr(name), *dt)
 
     def _populate(self, year):
         super()._populate(year)

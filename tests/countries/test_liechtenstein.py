@@ -23,14 +23,10 @@ class TestLI(TestCase):
         self.assertCountryAliases(Liechtenstein, LI, LIE)
 
     def test_new_years(self):
-        self.assertHolidaysName(
-            "Neujahr", (f"{year}-01-01" for year in range(1900, 2050))
-        )
+        self.assertHolidaysName("Neujahr", (f"{year}-01-01" for year in range(1900, 2050)))
 
     def test_saint_berchtolds_day(self):
-        self.assertHolidaysName(
-            "Berchtoldstag", (f"{year}-01-02" for year in range(1900, 2050))
-        )
+        self.assertHolidaysName("Berchtoldstag", (f"{year}-01-02" for year in range(1900, 2050)))
 
     def test_epiphany(self):
         self.assertHolidaysName(
@@ -39,9 +35,7 @@ class TestLI(TestCase):
         )
 
     def test_candlemas(self):
-        self.assertHolidaysName(
-            "Mariä Lichtmess", (f"{year}-02-02" for year in range(1900, 2050))
-        )
+        self.assertHolidaysName("Mariä Lichtmess", (f"{year}-02-02" for year in range(1900, 2050)))
 
     def test_shrove_tuesday(self):
         self.assertHolidaysName(
@@ -59,9 +53,7 @@ class TestLI(TestCase):
         )
 
     def test_saint_josephs_day(self):
-        self.assertHolidaysName(
-            "Josefstag", (f"{year}-03-19" for year in range(1900, 2050))
-        )
+        self.assertHolidaysName("Josefstag", (f"{year}-03-19" for year in range(1900, 2050)))
 
     def test_good_friday(self):
         self.assertHolidaysName(
@@ -109,9 +101,7 @@ class TestLI(TestCase):
         )
 
     def test_labor_day(self):
-        self.assertHolidaysName(
-            "Tag der Arbeit", (f"{year}-05-01" for year in range(1900, 2050))
-        )
+        self.assertHolidaysName("Tag der Arbeit", (f"{year}-05-01" for year in range(1900, 2050)))
 
     def test_ascension_day(self):
         self.assertHolidaysName(

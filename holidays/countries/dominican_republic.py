@@ -28,9 +28,7 @@ class DominicanRepublic(HolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "es"
     supported_languages = ("en_US", "es", "uk")
 
-    def _add_movable_holiday(
-        self, name: str, dt: date, include_sun: bool = False
-    ) -> None:
+    def _add_movable_holiday(self, name: str, dt: date, include_sun: bool = False) -> None:
         # Law No. 139-97 - Holidays Dominican Republic - Jun 27, 1997
         if dt >= date(1997, JUN, 27):
             if self._is_tuesday(dt) or self._is_wednesday(dt):

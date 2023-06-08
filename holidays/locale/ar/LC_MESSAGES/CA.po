@@ -16,169 +16,169 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.3.1\n"
 
-#: ./holidays/countries/canada.py:66
+#: ./holidays/countries/canada.py:62
 #, c-format
 msgid "%s (Observed)"
 msgstr "(تمت ملاحظته) %s"
 
 #. New Year's Day.
-#: ./holidays/countries/canada.py:76
+#: ./holidays/countries/canada.py:71
 msgid "New Year's Day"
 msgstr "يوم السنة الجديدة"
 
 #. Good Friday.
-#: ./holidays/countries/canada.py:79
+#: ./holidays/countries/canada.py:74
 msgid "Good Friday"
 msgstr "جمعة جيدة"
 
 #. Easter Monday.
-#: ./holidays/countries/canada.py:81
+#: ./holidays/countries/canada.py:76
 msgid "Easter Monday"
 msgstr "عيد الفصح الاثنين"
 
 #. Dominion Day.
-#: ./holidays/countries/canada.py:85
+#: ./holidays/countries/canada.py:80
 msgid "Dominion Day"
 msgstr "يوم دومينيون"
 
 #. Labour Day.
-#: ./holidays/countries/canada.py:90
+#: ./holidays/countries/canada.py:85
 msgid "Labour Day"
 msgstr "عيد العمال"
 
 #. Christmas Day.
-#: ./holidays/countries/canada.py:95
+#: ./holidays/countries/canada.py:90
 msgid "Christmas Day"
 msgstr "عيد الميلاد"
 
 #. Boxing Day.
-#: ./holidays/countries/canada.py:98
+#: ./holidays/countries/canada.py:93
 msgid "Boxing Day"
 msgstr "يوم الملاكمة"
 
 #. Family Day.
-#: ./holidays/countries/canada.py:106 ./holidays/countries/canada.py:178
+#: ./holidays/countries/canada.py:101 ./holidays/countries/canada.py:171
 msgid "Family Day"
 msgstr "يوم العائلة"
 
 #. Thanksgiving.
-#: ./holidays/countries/canada.py:121
+#: ./holidays/countries/canada.py:116
 msgid "Thanksgiving"
 msgstr "عيد الشكر"
 
 #. Funeral of Queen Elizabeth II.
-#: ./holidays/countries/canada.py:127
+#: ./holidays/countries/canada.py:122
 msgid "Funeral of Her Majesty the Queen Elizabeth II"
 msgstr "جنازة جلالة الملكة اليزابيث الثانية"
 
 #. Memorial Day.
-#: ./holidays/countries/canada.py:138
+#: ./holidays/countries/canada.py:133
 msgid "Memorial Day"
 msgstr "يوم الذكرى"
 
 #. Canada Day.
-#: ./holidays/countries/canada.py:141
+#: ./holidays/countries/canada.py:136
 msgid "Canada Day"
 msgstr "يوم كندا"
 
 #. Victoria Day.
-#: ./holidays/countries/canada.py:157 ./holidays/countries/canada.py:183
-#: ./holidays/countries/canada.py:220 ./holidays/countries/canada.py:255
-#: ./holidays/countries/canada.py:338 ./holidays/countries/canada.py:364
-#: ./holidays/countries/canada.py:387 ./holidays/countries/canada.py:437
-#: ./holidays/countries/canada.py:475
+#: ./holidays/countries/canada.py:152 ./holidays/countries/canada.py:176
+#: ./holidays/countries/canada.py:213 ./holidays/countries/canada.py:246
+#: ./holidays/countries/canada.py:329 ./holidays/countries/canada.py:355
+#: ./holidays/countries/canada.py:378 ./holidays/countries/canada.py:426
+#: ./holidays/countries/canada.py:463
 msgid "Victoria Day"
 msgstr "يوم فيكتوريا"
 
 #. Heritage Day.
-#: ./holidays/countries/canada.py:163 ./holidays/countries/canada.py:313
-#: ./holidays/countries/canada.py:467
+#: ./holidays/countries/canada.py:158 ./holidays/countries/canada.py:304
+#: ./holidays/countries/canada.py:456
 msgid "Heritage Day"
 msgstr "يوم التراث"
 
 #. Remembrance Day.
-#: ./holidays/countries/canada.py:171 ./holidays/countries/canada.py:207
-#: ./holidays/countries/canada.py:246 ./holidays/countries/canada.py:269
-#: ./holidays/countries/canada.py:304 ./holidays/countries/canada.py:330
-#: ./holidays/countries/canada.py:356 ./holidays/countries/canada.py:378
-#: ./holidays/countries/canada.py:411 ./holidays/countries/canada.py:452
-#: ./holidays/countries/canada.py:490
+#: ./holidays/countries/canada.py:166 ./holidays/countries/canada.py:200
+#: ./holidays/countries/canada.py:237 ./holidays/countries/canada.py:260
+#: ./holidays/countries/canada.py:295 ./holidays/countries/canada.py:321
+#: ./holidays/countries/canada.py:347 ./holidays/countries/canada.py:369
+#: ./holidays/countries/canada.py:400 ./holidays/countries/canada.py:441
+#: ./holidays/countries/canada.py:478
 msgid "Remembrance Day"
 msgstr "يوم الذكرى"
 
 #. British Columbia Day.
-#: ./holidays/countries/canada.py:189
+#: ./holidays/countries/canada.py:182
 msgid "British Columbia Day"
 msgstr "يوم كولومبيا البريطانية"
 
 #. National Day for Truth and Reconciliation.
-#: ./holidays/countries/canada.py:198 ./holidays/countries/canada.py:237
-#: ./holidays/countries/canada.py:322
+#: ./holidays/countries/canada.py:191 ./holidays/countries/canada.py:228
+#: ./holidays/countries/canada.py:313
 msgid "National Day for Truth and Reconciliation"
 msgstr "اليوم الوطني للحقيقة والمصالحة"
 
 #. Louis Riel Day.
-#: ./holidays/countries/canada.py:213
+#: ./holidays/countries/canada.py:206
 msgid "Louis Riel Day"
 msgstr "يوم لويس رئيل"
 
 #. Terry Fox Day.
-#: ./holidays/countries/canada.py:225
+#: ./holidays/countries/canada.py:218
 msgid "Terry Fox Day"
 msgstr "يوم تيري فوكس"
 
 #. Civic Holiday.
-#: ./holidays/countries/canada.py:228 ./holidays/countries/canada.py:347
-#: ./holidays/countries/canada.py:392
+#: ./holidays/countries/canada.py:221 ./holidays/countries/canada.py:338
+#: ./holidays/countries/canada.py:383
 msgid "Civic Holiday"
 msgstr "عطلة المدنية"
 
 #. New Brunswick Day.
-#: ./holidays/countries/canada.py:261
+#: ./holidays/countries/canada.py:252
 msgid "New Brunswick Day"
 msgstr "يوم نيو برونزويك"
 
 #. St. Patrick's Day.
-#: ./holidays/countries/canada.py:276
+#: ./holidays/countries/canada.py:267
 msgid "St. Patrick's Day"
 msgstr "عيد القديس باتريك"
 
 #. St. George's Day.
-#: ./holidays/countries/canada.py:290
+#: ./holidays/countries/canada.py:281
 msgid "St. George's Day"
 msgstr "عيد القديس جورج"
 
 #. Discovery Day.
-#: ./holidays/countries/canada.py:295 ./holidays/countries/canada.py:480
+#: ./holidays/countries/canada.py:286 ./holidays/countries/canada.py:468
 msgid "Discovery Day"
 msgstr "يوم الاكتشاف"
 
 #. National Aboriginal Day.
-#: ./holidays/countries/canada.py:342
+#: ./holidays/countries/canada.py:333
 msgid "National Aboriginal Day"
 msgstr "اليوم الوطني للسكان الأصليين"
 
 #. Nunavut Day.
-#: ./holidays/countries/canada.py:370
+#: ./holidays/countries/canada.py:361
 msgid "Nunavut Day"
 msgstr "يوم نونافوت"
 
 #. Islander Day.
-#: ./holidays/countries/canada.py:404
+#: ./holidays/countries/canada.py:393
 msgid "Islander Day"
 msgstr "يوم الجزيرة"
 
 #. National Patriots' Day.
-#: ./holidays/countries/canada.py:419
+#: ./holidays/countries/canada.py:408
 msgid "National Patriots' Day"
 msgstr "يوم الوطنيين"
 
 #. St. Jean Baptiste Day.
-#: ./holidays/countries/canada.py:424
+#: ./holidays/countries/canada.py:413
 msgid "St. Jean Baptiste Day"
 msgstr "عيد القديس جان بابتيست"
 
 #. Saskatchewan Day.
-#: ./holidays/countries/canada.py:443
+#: ./holidays/countries/canada.py:432
 msgid "Saskatchewan Day"
 msgstr "يوم ساسكاتشوان"

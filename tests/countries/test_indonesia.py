@@ -66,9 +66,7 @@ class TestIndonesia(TestCase):
         self.assertHoliday(f"{year}-05-01" for year in range(1953, 1969))
         self.assertHoliday(f"{year}-05-01" for year in range(2014, 2050))
         self.assertNoHoliday("1952-05-01", "1969-05-01", "2013-05-01")
-        self.assertNoHolidayName(
-            "Hari Buruh Internasional", Indonesia(years=(1952, 1969, 2013))
-        )
+        self.assertNoHolidayName("Hari Buruh Internasional", Indonesia(years=(1952, 1969, 2013)))
 
     def test_pancasila_day(self):
         self.assertHoliday(f"{year}-06-01" for year in range(2017, 2050))

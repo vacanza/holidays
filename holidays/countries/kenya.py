@@ -45,9 +45,7 @@ class Kenya(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _populate(self, year):
         def _add_observed(dt: date, days: int = +1) -> None:
             if self.observed and self._is_sunday(dt):
-                self._add_holiday(
-                    "%s (Observed)" % self[dt], dt + td(days=days)
-                )
+                self._add_holiday("%s (Observed)" % self[dt], dt + td(days=days))
 
         if year <= 1962:
             return None

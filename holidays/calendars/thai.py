@@ -226,9 +226,7 @@ class _ThaiLunisolar:
             return None
 
         return start_date + td(
-            days=+102
-            if year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN
-            else +73
+            days=+102 if year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN else +73
         )
 
     def visakha_bucha_date(self, year: int) -> Optional[date]:
@@ -259,9 +257,7 @@ class _ThaiLunisolar:
             return None
 
         return start_date + td(
-            days=+191
-            if year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN
-            else +161
+            days=+191 if year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN else +161
         )
 
     def atthami_bucha_date(self, year: int) -> Optional[date]:
@@ -293,9 +289,7 @@ class _ThaiLunisolar:
             return None
 
         return start_date + td(
-            days=+199
-            if year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN
-            else +169
+            days=+199 if year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN else +169
         )
 
     def asarnha_bucha_date(self, year: int) -> Optional[date]:

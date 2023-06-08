@@ -26,22 +26,15 @@ class TestBurkinaFaso(TestCase):
 
     def test_revolution_day(self):
         name = "Revolution Day"
-        self.assertHolidaysName(
-            name, (f"{year}-01-03" for year in range(1967, 2050))
-        )
+        self.assertHolidaysName(name, (f"{year}-01-03" for year in range(1967, 2050)))
         self.assertNoHolidayName(name, BurkinaFaso(years=range(1961, 1967)))
         self.assertNoHoliday(f"{year}-01-03" for year in range(1961, 1967))
 
     def test_martyrs_day(self):
         name = "Martyrs' Day"
-        self.assertHolidaysName(
-            name, (f"{year}-10-31" for year in range(2016, 2050))
-        )
+        self.assertHolidaysName(name, (f"{year}-10-31" for year in range(2016, 2050)))
         self.assertNoHolidayName(name, BurkinaFaso(years=range(1961, 2016)))
-        self.assertNoHoliday(
-            f"{year}-10-31"
-            for year in set(range(1961, 2016)).difference({1979})
-        )
+        self.assertNoHoliday(f"{year}-10-31" for year in set(range(1961, 2016)).difference({1979}))
 
     def test_observed(self):
         dt = (

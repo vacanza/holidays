@@ -83,9 +83,7 @@ class TestFrance(TestCase):
         self.assertHoliday(f"{year}-05-08" for year in range(1953, 1960))
         self.assertHoliday("1982-05-08")
         self.assertNoHoliday("1960-05-08", "1981-05-08")
-        self.assertNoHolidayName(
-            "Fête de la Victoire", France(years=range(1960, 1982))
-        )
+        self.assertNoHolidayName("Fête de la Victoire", France(years=range(1960, 1982)))
 
     def test_fete_nationale(self):
         self.assertHoliday("1880-07-14")
@@ -204,9 +202,7 @@ class TestFrance(TestCase):
             )
 
     def test_subdiv_deprecation(self):
-        self.assertDeprecatedSubdivisions(
-            "This subdivision is deprecated and will be removed"
-        )
+        self.assertDeprecatedSubdivisions("This subdivision is deprecated and will be removed")
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

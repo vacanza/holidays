@@ -19,9 +19,14 @@ from unittest import mock
 import pytest
 
 import holidays
-from holidays.utils import country_holidays, financial_holidays
-from holidays.utils import list_localized_countries, list_localized_financial
-from holidays.utils import list_supported_countries, list_supported_financial
+from holidays.utils import (
+    country_holidays,
+    financial_holidays,
+    list_localized_countries,
+    list_localized_financial,
+    list_supported_countries,
+    list_supported_financial,
+)
 
 PYTHON_VERSION = (3, 11)
 
@@ -50,9 +55,7 @@ class TestCountryHolidays(unittest.TestCase):
         self.assertEqual(h.subdiv, "NT")
 
     def test_exceptions(self):
-        self.assertRaises(
-            NotImplementedError, lambda: country_holidays("XXXX")
-        )
+        self.assertRaises(NotImplementedError, lambda: country_holidays("XXXX"))
         self.assertRaises(
             NotImplementedError,
             lambda: country_holidays("US", subdiv="XXXX"),
@@ -79,9 +82,7 @@ class TestFinancialHolidays(unittest.TestCase):
         self.assertEqual(h.years, {2015, 2016})
 
     def test_exceptions(self):
-        self.assertRaises(
-            NotImplementedError, lambda: financial_holidays("XXXX")
-        )
+        self.assertRaises(NotImplementedError, lambda: financial_holidays("XXXX"))
         self.assertRaises(
             NotImplementedError,
             lambda: financial_holidays("NYSE", subdiv="XXXX"),
@@ -222,9 +223,7 @@ class TestListSupportedEntities(unittest.TestCase):
         self.assertTrue(isinstance(us_subdivisions, list))
 
         countries_files = [
-            path
-            for path in Path("holidays/countries").glob("*.py")
-            if path.stem != "__init__"
+            path for path in Path("holidays/countries").glob("*.py") if path.stem != "__init__"
         ]
         self.assertEqual(
             len(countries_files),
@@ -241,9 +240,7 @@ class TestListSupportedEntities(unittest.TestCase):
         self.assertTrue(isinstance(nyse, list))
 
         financial_files = [
-            path
-            for path in Path("holidays/financial").glob("*.py")
-            if path.stem != "__init__"
+            path for path in Path("holidays/financial").glob("*.py") if path.stem != "__init__"
         ]
         self.assertEqual(
             len(financial_files),

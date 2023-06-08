@@ -15,13 +15,10 @@ from typing import Optional
 
 from holidays.constants import FEB, APR, JUN, JUL, OCT
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, IslamicHolidays
-from holidays.holiday_groups import InternationalHolidays
+from holidays.holiday_groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 
 
-class Burundi(
-    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
-):
+class Burundi(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
     Burundian holidays
     Note that holidays falling on a sunday maybe observed

@@ -51,9 +51,7 @@ class TestEswatini(TestCase):
 
     def test_late_king_sobhuza(self):
         self.assertNoHoliday(f"{year}-07-22" for year in range(1939, 1983))
-        self.assertNoHolidayName(
-            "Birthday of Late King Sobhuza", range(1939, 1983)
-        )
+        self.assertNoHolidayName("Birthday of Late King Sobhuza", range(1939, 1983))
         self.assertHoliday(f"{year}-07-22" for year in range(1983, 2050))
 
     def test_easter(self):

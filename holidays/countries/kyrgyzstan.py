@@ -12,13 +12,10 @@
 from holidays.calendars import JULIAN_CALENDAR
 from holidays.constants import FEB, MAR, APR, MAY, AUG, NOV
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, IslamicHolidays
-from holidays.holiday_groups import InternationalHolidays
+from holidays.holiday_groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 
 
-class Kyrgyzstan(
-    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
-):
+class Kyrgyzstan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
     Kyrgyzstan holidays.
 

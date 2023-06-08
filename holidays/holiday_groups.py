@@ -15,11 +15,15 @@ from typing import Iterable, Set, Tuple, Optional
 
 from dateutil.easter import EASTER_ORTHODOX, EASTER_WESTERN, easter
 
-from holidays.calendars import _BuddhistLunisolar, _ChineseLunisolar
-from holidays.calendars import _HinduLunisolar, _IslamicLunar
-from holidays.calendars import GREGORIAN_CALENDAR, JULIAN_CALENDAR
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC
+from holidays.calendars import (
+    _BuddhistLunisolar,
+    _ChineseLunisolar,
+    _HinduLunisolar,
+    _IslamicLunar,
+    GREGORIAN_CALENDAR,
+    JULIAN_CALENDAR,
+)
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 
 
 class ChristianHolidays:
@@ -53,9 +57,7 @@ class ChristianHolidays:
 
         return easter(
             self._year,
-            method=EASTER_ORTHODOX
-            if calendar == JULIAN_CALENDAR
-            else EASTER_WESTERN,
+            method=EASTER_ORTHODOX if calendar == JULIAN_CALENDAR else EASTER_WESTERN,
         )
 
     @staticmethod
@@ -494,9 +496,7 @@ class BuddhistCalendarHolidays:
     Buddhist lunisolar calendar holidays.
     """
 
-    def __init__(
-        self, calendar=_BuddhistLunisolar(), show_estimated=False
-    ) -> None:
+    def __init__(self, calendar=_BuddhistLunisolar(), show_estimated=False) -> None:
         self._buddhist_calendar = calendar
         self._show_estimated = show_estimated
 
@@ -552,9 +552,7 @@ class ChineseCalendarHolidays:
     Chinese lunisolar calendar holidays.
     """
 
-    def __init__(
-        self, calendar=_ChineseLunisolar(), show_estimated=False
-    ) -> None:
+    def __init__(self, calendar=_ChineseLunisolar(), show_estimated=False) -> None:
         self._chinese_calendar = calendar
         self._show_estimated = show_estimated
 
@@ -772,9 +770,7 @@ class HinduCalendarHolidays:
     Hindu lunisolar calendar holidays.
     """
 
-    def __init__(
-        self, calendar=_HinduLunisolar(), show_estimated=False
-    ) -> None:
+    def __init__(self, calendar=_HinduLunisolar(), show_estimated=False) -> None:
         self._hindu_calendar = calendar
         self._show_estimated = show_estimated
 
@@ -809,9 +805,7 @@ class HinduCalendarHolidays:
         mid-November).
         https://en.wikipedia.org/wiki/Diwali
         """
-        return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.diwali_date(self._year)
-        )
+        return self._add_hindu_calendar_holiday(name, self._hindu_calendar.diwali_date(self._year))
 
     def _add_thaipusam(self, name) -> Optional[date]:
         """
@@ -1120,9 +1114,7 @@ class IslamicHolidays:
                 dt += td(days=days_delta)
 
             dt = self._add_holiday(
-                self.tr(estimated_label) % self.tr(name)
-                if is_estimated
-                else name,
+                self.tr(estimated_label) % self.tr(name) if is_estimated else name,
                 dt,
             )
             if dt:

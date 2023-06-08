@@ -18,9 +18,7 @@ class TestCanada(TestCase):
     def setUpClass(cls):
         years = range(1900, 2050)
         super().setUpClass(Canada, years=years)
-        cls.prov_hols = {
-            prov: CA(subdiv=prov, years=years) for prov in CA.subdivisions
-        }
+        cls.prov_hols = {prov: CA(subdiv=prov, years=years) for prov in CA.subdivisions}
 
     def test_country_aliases(self):
         self.assertCountryAliases(Canada, CA, CAN)
@@ -197,21 +195,15 @@ class TestCanada(TestCase):
         nt_holidays = self.prov_hols["NT"]
         self.assertNoHoliday(nt_holidays, "1995-06-21")
         self.assertNoHoliday(f"{year}-06-21" for year in range(1996, 2050))
-        self.assertHoliday(
-            nt_holidays, (f"{year}-06-21" for year in range(1996, 2050))
-        )
+        self.assertHoliday(nt_holidays, (f"{year}-06-21" for year in range(1996, 2050)))
 
     def test_st_jean_baptiste_day(self):
         qc_holidays = self.prov_hols["QC"]
         self.assertNoHoliday(qc_holidays, "1924-06-24")
         self.assertNoHoliday(f"{year}-06-24" for year in range(1925, 2050))
-        self.assertHoliday(
-            qc_holidays, (f"{year}-06-24" for year in range(1925, 2050))
-        )
+        self.assertHoliday(qc_holidays, (f"{year}-06-24" for year in range(1925, 2050)))
         self.assertHoliday(qc_holidays, "2001-06-25")
-        self.assertNoNonObservedHoliday(
-            Canada(subdiv="QC", observed=False), "2001-06-25"
-        )
+        self.assertNoNonObservedHoliday(Canada(subdiv="QC", observed=False), "2001-06-25")
 
     def test_discovery_day(self):
         nl_holidays = self.prov_hols["NL"]
@@ -250,13 +242,9 @@ class TestCanada(TestCase):
         self.assertNoHoliday(nu_holidays, "1999-07-09", "2000-07-09")
         self.assertHoliday(nu_holidays, "2000-04-01")
         self.assertNoHoliday(f"{year}-07-09" for year in range(2001, 2050))
-        self.assertHoliday(
-            nu_holidays, (f"{year}-07-09" for year in range(2001, 2050))
-        )
+        self.assertHoliday(nu_holidays, (f"{year}-07-09" for year in range(2001, 2050)))
         self.assertHoliday(nu_holidays, "2017-07-10")
-        self.assertNoNonObservedHoliday(
-            Canada(subdiv="NU", observed=False), "2017-07-10"
-        )
+        self.assertNoNonObservedHoliday(Canada(subdiv="NU", observed=False), "2017-07-10")
 
     def test_civic_holiday_bc(self):
         bc_holidays = self.prov_hols["BC"]
@@ -369,29 +357,19 @@ class TestCanada(TestCase):
         self.assertNoHoliday(ab_holidays, "1930-11-11")
 
         self.assertNoHoliday(f"{year}-11-11" for year in range(1931, 2050))
-        self.assertHoliday(
-            ab_holidays, (f"{year}-11-11" for year in range(1931, 2050))
-        )
-        self.assertHoliday(
-            nl_holidays, (f"{year}-11-11" for year in range(1931, 2050))
-        )
+        self.assertHoliday(ab_holidays, (f"{year}-11-11" for year in range(1931, 2050)))
+        self.assertHoliday(nl_holidays, (f"{year}-11-11" for year in range(1931, 2050)))
 
         self.assertNoHoliday(ab_holidays, "2007-11-12")
         self.assertHoliday(nl_holidays, "2007-11-12")
-        self.assertNoNonObservedHoliday(
-            Canada(subdiv="AB", observed=False), "2007-11-12"
-        )
-        self.assertNoNonObservedHoliday(
-            Canada(subdiv="NL", observed=False), "2007-11-12"
-        )
+        self.assertNoNonObservedHoliday(Canada(subdiv="AB", observed=False), "2007-11-12")
+        self.assertNoNonObservedHoliday(Canada(subdiv="NL", observed=False), "2007-11-12")
 
     def test_christmas_day(self):
         self.assertHoliday(f"{year}-12-25" for year in range(1900, 2050))
         self.assertHoliday("2010-12-27", "2011-12-27")
         self.assertNoNonObservedHoliday("2010-12-27", "2011-12-27")
-        self.assertNotIn(
-            "Christmas Day (Observed)", self.holidays["2011-12-26"]
-        )
+        self.assertNotIn("Christmas Day (Observed)", self.holidays["2011-12-26"])
         self.assertHolidaysName("Christmas Day (Observed)", "2011-12-27")
 
     def test_boxing_day(self):

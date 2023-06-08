@@ -13,8 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.calendars import _CustomIslamicCalendar
-from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT
-from holidays.constants import NOV, DEC
+from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
 
@@ -73,9 +72,7 @@ class Azerbaijan(HolidayBase, InternationalHolidays, IslamicHolidays):
                 observed_dates.add(self._add_holiday("Novruz", MAR, d))
 
         # Victory Day
-        observed_dates.add(
-            self._add_world_war_two_victory_day("Victory Day over Fascism")
-        )
+        observed_dates.add(self._add_world_war_two_victory_day("Victory Day over Fascism"))
 
         # Republic Day
         if year >= 1992:
@@ -89,9 +86,7 @@ class Azerbaijan(HolidayBase, InternationalHolidays, IslamicHolidays):
 
         # National Salvation Day
         if year >= 1997:
-            observed_dates.add(
-                self._add_holiday("National Salvation Day", JUN, 15)
-            )
+            observed_dates.add(self._add_holiday("National Salvation Day", JUN, 15))
 
         # Memorial Day (without extending)
         if year >= 2021:
@@ -159,10 +154,7 @@ class Azerbaijan(HolidayBase, InternationalHolidays, IslamicHolidays):
                 # 6. If the holidays of Qurban and Ramadan coincide with
                 # another holiday that is not considered a working day,
                 # the next working day is considered a rest day.
-                elif (
-                    len(self.get_list(hol_date)) > 1
-                    and hol_date not in non_observed_dates
-                ):
+                elif len(self.get_list(hol_date)) > 1 and hol_date not in non_observed_dates:
                     for hol_name in self.get_list(hol_date):
                         if "Bayrami" in hol_name:
                             _add_observed(hol_date, hol_name)

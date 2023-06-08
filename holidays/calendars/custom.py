@@ -23,9 +23,7 @@ class _CustomCalendarType(type):
 
     def __new__(cls, name, bases, namespace):
         for attr in (key for key in tuple(namespace.keys()) if key[0] != "_"):
-            namespace[
-                f"{attr}_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}"
-            ] = namespace[attr]
+            namespace[f"{attr}_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}"] = namespace[attr]
             del namespace[attr]
 
         return super().__new__(cls, name, bases, namespace)

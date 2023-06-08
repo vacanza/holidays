@@ -15,8 +15,7 @@ from datetime import timedelta as td
 from dateutil.easter import easter
 
 from holidays.calendars import _get_nth_weekday_of_month
-from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT
-from holidays.constants import NOV, DEC, MON, FRI
+from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC, MON, FRI
 from holidays.holiday_base import HolidayBase
 
 
@@ -69,9 +68,7 @@ class SouthAfrica(HolidayBase):
 
         easter_date = easter(year)
         self[easter_date + td(days=-2)] = "Good Friday"
-        self[easter_date + td(days=+1)] = (
-            "Family Day" if year >= 1980 else "Easter Monday"
-        )
+        self[easter_date + td(days=+1)] = "Family Day" if year >= 1980 else "Easter Monday"
 
         if year <= 1951:
             name = "Dingaan's Day"
@@ -126,24 +123,18 @@ class SouthAfrica(HolidayBase):
 
         if 1952 <= year <= 1960:
             # observed on second Monday in July
-            self[
-                _get_nth_weekday_of_month(2, MON, JUL, year)
-            ] = "Queen's Birthday"
+            self[_get_nth_weekday_of_month(2, MON, JUL, year)] = "Queen's Birthday"
 
         if 1961 <= year <= 1973:
             self[date(year, JUL, 10)] = "Family Day"
 
         if year <= 1951:
             # observed on first Monday in August
-            self[
-                _get_nth_weekday_of_month(1, MON, AUG, year)
-            ] = "King's Birthday"
+            self[_get_nth_weekday_of_month(1, MON, AUG, year)] = "King's Birthday"
 
         if 1952 <= year <= 1979:
             # observed on first Monday in September
-            self[
-                _get_nth_weekday_of_month(1, MON, SEP, year)
-            ] = "Settlers' Day"
+            self[_get_nth_weekday_of_month(1, MON, SEP, year)] = "Settlers' Day"
 
         if 1952 <= year <= 1993:
             self[date(year, OCT, 10)] = "Kruger Day"

@@ -113,9 +113,7 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Saint Peter and Saint Paul (Law 16.840, Law 18.432)
         if year <= 1967 or year >= 1986:
-            self._add_holiday(
-                tr("San Pedro y San Pablo"), _get_movable(date(year, JUN, 29))
-            )
+            self._add_holiday(tr("San Pedro y San Pablo"), _get_movable(date(year, JUN, 29)))
 
         # Day of Virgin of Carmen (Law 20.148)
         if year >= 2007:
@@ -160,9 +158,7 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Columbus day (Law 3.810).
         if year >= 1922 and year != 1973:
             self._add_holiday(
-                tr("Día del Encuentro de dos Mundos")
-                if year >= 2000
-                else tr("Día de la Raza"),
+                tr("Día del Encuentro de dos Mundos") if year >= 2000 else tr("Día de la Raza"),
                 _get_movable(date(year, OCT, 12)),
             )
 
@@ -205,10 +201,7 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 2014:
             # Región de Ñuble
             self._add_holiday(
-                tr(
-                    "Nacimiento del Prócer de la Independencia "
-                    "(Chillán y Chillán Viejo)"
-                ),
+                tr("Nacimiento del Prócer de la Independencia " "(Chillán y Chillán Viejo)"),
                 AUG,
                 20,
             )

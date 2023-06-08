@@ -81,15 +81,17 @@ msgstr "Cyprus Independence Day"
 msgid "Ημέρα του Όχι"
 msgstr "Ochi Day"
 
-#: ./holidays/countries/cyprus.py:82
+#. Christmas Eve.
+#: ./holidays/countries/cyprus.py:81
 msgid "Παραμονή Χριστουγέννων"
 msgstr "Christmas Eve"
 
 #. Christmas Day.
-#: ./holidays/countries/cyprus.py:86
+#: ./holidays/countries/cyprus.py:84
 msgid "Χριστούγεννα"
 msgstr "Christmas Day"
 
-#: ./holidays/countries/cyprus.py:90
+#. Day After Christmas.
+#: ./holidays/countries/cyprus.py:87
 msgid "Δεύτερη μέρα Χριστουγέννων"
 msgstr "Day After Christmas"

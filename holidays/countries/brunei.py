@@ -14,11 +14,14 @@ from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicCalendar
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChineseCalendarHolidays, ChristianHolidays
-from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
+from holidays.holiday_groups import (
+    ChineseCalendarHolidays,
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+)
 
 
 class Brunei(
@@ -84,9 +87,7 @@ class Brunei(
             """
             if self.observed and (self._is_friday(dt) or self._is_sunday(dt)):
                 for name in self.get_list(dt):
-                    self._add_holiday(
-                        self.tr("%s - Diperhatikan") % name, dt + td(days=+1)
-                    )
+                    self._add_holiday(self.tr("%s - Diperhatikan") % name, dt + td(days=+1))
 
         super()._populate(year)
 
@@ -200,8 +201,7 @@ class Brunei(
                         (
                             (
                                 obs_date,
-                                self._year
-                                not in BruneiIslamicCalendar.EID_AL_FITR_DATES,
+                                self._year not in BruneiIslamicCalendar.EID_AL_FITR_DATES,
                             ),
                         ),
                     )
