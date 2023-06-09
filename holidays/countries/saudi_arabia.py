@@ -36,7 +36,7 @@ class SaudiArabia(HolidayBase, IslamicHolidays):
     country = "SA"
     special_holidays = {
         # celebrate the country's win against Argentina in the World Cup
-        2022: ((NOV, 23, "National Holiday"),),
+        2022: (NOV, 23, "National Holiday"),
     }
 
     def __init__(self, *args, **kwargs):

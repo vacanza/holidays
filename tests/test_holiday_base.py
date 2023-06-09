@@ -822,29 +822,33 @@ class TestCountryHolidayDeprecation(unittest.TestCase):
 
 class TestCountrySpecialHolidays(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.country_holidays("US")
+        self.us_holidays = holidays.country_holidays("US")
 
     def test_populate_special_holidays(self):
-        self.holidays._populate(1111)  # special_holidays is empty.
-        self.assertEqual(0, len(self.holidays))
+        self.us_holidays._populate(1111)  # special_holidays is empty.
+        self.assertEqual(0, len(self.us_holidays))
 
-        self.holidays.special_holidays = {
-            1111: ((JAN, 1, "Test holiday"),),
-            2222: ((FEB, 2, "Test holiday"),),
-            3333: (),
+        self.us_holidays.special_holidays = {
+            1111: (JAN, 1, "Test holiday"),
+            2222: (FEB, 2, "Test holiday"),
+            3333: ((FEB, 2, "Test holiday")),
+            4444: (),
         }
 
-        self.assertNotIn(3333, self.holidays.years)
+        self.assertNotIn(3333, self.us_holidays.years)
 
-        self.assertIn("1111-01-01", self.holidays)
-        self.assertIn("2222-02-02", self.holidays)
-        self.assertEqual(13, len(self.holidays))
+        self.assertIn("1111-01-01", self.us_holidays)
+        self.assertIn("2222-02-02", self.us_holidays)
+        self.assertIn("3333-02-02", self.us_holidays)
+        self.assertEqual(26, len(self.us_holidays))
 
-        self.holidays._populate(1111)
-        self.holidays._populate(2222)
-        self.assertIn("1111-01-01", self.holidays)
-        self.assertIn("2222-02-02", self.holidays)
-        self.assertEqual(13, len(self.holidays))
+        self.us_holidays._populate(1111)
+        self.us_holidays._populate(2222)
+        self.us_holidays._populate(3333)
+        self.assertIn("1111-01-01", self.us_holidays)
+        self.assertIn("2222-02-02", self.us_holidays)
+        self.assertIn("3333-02-02", self.us_holidays)
+        self.assertEqual(26, len(self.us_holidays))
 
 
 class TestHolidaysTranslation(unittest.TestCase):
