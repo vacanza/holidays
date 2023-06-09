@@ -13,7 +13,7 @@ from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.calendars import GREGORIAN_CALENDAR, JULIAN_CALENDAR
-from holidays.constants import JUN, AUG
+from holidays.constants import AUG
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
