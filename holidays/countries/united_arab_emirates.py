@@ -104,33 +104,33 @@ class ARE(UnitedArabEmirates):
 
 class UnitedArabEmiratesIslamicCalendar(_CustomIslamicCalendar):
     EID_AL_ADHA_DATES = {
-        2017: ((SEP, 1),),
-        2018: ((AUG, 21),),
-        2019: ((AUG, 11),),
-        2020: ((JUL, 31),),
+        2017: (SEP, 1),
+        2018: (AUG, 21),
+        2019: (AUG, 11),
+        2020: (JUL, 31),
     }
 
     EID_AL_FITR_DATES = {
-        2017: ((JUN, 25),),
-        2018: ((JUN, 14),),
-        2019: ((JUN, 3),),
-        2020: ((MAY, 24),),
+        2017: (JUN, 25),
+        2018: (JUN, 14),
+        2019: (JUN, 3),
+        2020: (MAY, 24),
     }
 
     HIJRI_NEW_YEAR_DATES = {
-        2017: ((SEP, 22),),
-        2018: ((SEP, 11),),
-        2019: ((AUG, 31),),
-        2020: ((AUG, 23),),
+        2017: (SEP, 22),
+        2018: (SEP, 11),
+        2019: (AUG, 31),
+        2020: (AUG, 23),
     }
 
     ISRA_AND_MIRAJ_DATES = {
-        2017: ((APR, 23),),
-        2018: ((APR, 13),),
+        2017: (APR, 23),
+        2018: (APR, 13),
     }
 
     MAWLID_DATES = {
-        2017: ((NOV, 30),),
-        2018: ((NOV, 19),),
-        2019: ((NOV, 9),),
+        2017: (NOV, 30),
+        2018: (NOV, 19),
+        2019: (NOV, 9),
     }

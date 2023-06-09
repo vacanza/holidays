@@ -32,23 +32,23 @@ class SouthAfrica(HolidayBase):
             (JUN, 2, "National and provincial government elections"),
             (DEC, 31, "Y2K changeover"),
         ),
-        2000: ((JAN, 2, "Y2K changeover"),),
-        2004: ((APR, 14, "National and provincial government elections"),),
-        2006: ((MAR, 1, "Local government elections"),),
-        2008: ((MAY, 2, "Public holiday by presidential decree"),),
-        2009: ((APR, 22, "National and provincial government elections"),),
+        2000: (JAN, 2, "Y2K changeover"),
+        2004: (APR, 14, "National and provincial government elections"),
+        2006: (MAR, 1, "Local government elections"),
+        2008: (MAY, 2, "Public holiday by presidential decree"),
+        2009: (APR, 22, "National and provincial government elections"),
         2011: (
             (MAY, 18, "Local government elections"),
             (DEC, 27, "Public holiday by presidential decree"),
         ),
-        2014: ((MAY, 7, "National and provincial government elections"),),
+        2014: (MAY, 7, "National and provincial government elections"),
         2016: (
             (AUG, 3, "Local government elections"),
             (DEC, 27, "Public holiday by presidential decree"),
         ),
-        2019: ((MAY, 8, "National and provincial government elections"),),
-        2021: ((NOV, 1, "Municipal elections"),),
-        2022: ((DEC, 27, "Public holiday by presidential decree"),),
+        2019: (MAY, 8, "National and provincial government elections"),
+        2021: (NOV, 1, "Municipal elections"),
+        2022: (DEC, 27, "Public holiday by presidential decree"),
     }
 
     def _populate(self, year):

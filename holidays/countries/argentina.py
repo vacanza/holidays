@@ -309,15 +309,15 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Respect for Cultural Diversity Day or Columbus Day.
         # Status: In-Use.
         # First started in 1917 for Argentina.
-        # Have its name changed from 2010 onwards.
+        # In 2010 the holiday became movable and its name was changed.
 
-        if year >= 1917:
-            name = (
-                tr("Día del Respeto a la Diversidad Cultural")
-                if year >= 2010
-                else tr("Día de la Raza")
+        if 1917 <= year <= 2009:
+            self._add_columbus_day(tr("Día de la Raza"))
+        elif year >= 2010:
+            add_movable_holiday(
+                date(year, OCT, 12),
+                tr("Día del Respeto a la Diversidad Cultural"),
             )
-            add_movable_holiday(date(year, OCT, 12), name)
 
         # National Sovereignty Day.
         # Status: In-Use.
