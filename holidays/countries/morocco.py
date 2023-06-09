@@ -47,7 +47,7 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
         # Independence Manifesto Day post 1944
         if year >= 1945:
             self._add_holiday(
-                "Commémoration de la présentation " "du manifeste de l'indépendance",
+                "Commémoration de la présentation du manifeste de l'indépendance",
                 JAN,
                 11,
             )

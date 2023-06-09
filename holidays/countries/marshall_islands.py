@@ -52,7 +52,7 @@ class HolidaysMH(HolidayBase):
 
         if year < 2023:
             warnings.warn(
-                "Years before 2022 are not available for the Marshall Islands " "(MH).",
+                "Years before 2022 are not available for the Marshall Islands (MH).",
                 Warning,
             )
 

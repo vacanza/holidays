@@ -320,7 +320,7 @@ class Malaysia(
         elif self.subdiv == "TRG" and year >= 2000:
             observed_dates.add(
                 self._add_holiday(
-                    "Anniversary of the Installation " "of the Sultan of Terengganu",
+                    "Anniversary of the Installation of the Sultan of Terengganu",
                     MAR,
                     4,
                 )

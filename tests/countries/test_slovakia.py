@@ -37,7 +37,7 @@ class TestSlovakia(TestCase):
 
     def test_epiphany(self):
         self.assertHolidaysName(
-            "Zjavenie Pána (Traja králi a " "vianočnýsviatok pravoslávnych kresťanov)",
+            "Zjavenie Pána (Traja králi a vianočnýsviatok pravoslávnych kresťanov)",
             (f"{year}-01-06" for year in range(1993, 2050)),
         )
 
@@ -145,7 +145,7 @@ class TestSlovakia(TestCase):
             ("2021-01-01", "Deň vzniku Slovenskej republiky"),
             (
                 "2021-01-06",
-                "Zjavenie Pána (Traja králi a vianočnýsviatok pravoslávnych " "kresťanov)",
+                "Zjavenie Pána (Traja králi a vianočnýsviatok pravoslávnych kresťanov)",
             ),
             ("2021-04-02", "Veľký piatok"),
             ("2021-04-05", "Veľkonočný pondelok"),
@@ -169,7 +169,7 @@ class TestSlovakia(TestCase):
                 ("2022-01-01", "Deň vzniku Slovenskej republiky"),
                 (
                     "2022-01-06",
-                    "Zjavenie Pána (Traja králi a vianočnýsviatok " "pravoslávnych kresťanov)",
+                    "Zjavenie Pána (Traja králi a vianočnýsviatok pravoslávnych kresťanov)",
                 ),
                 ("2022-04-15", "Veľký piatok"),
                 ("2022-04-18", "Veľkonočný pondelok"),
@@ -212,7 +212,7 @@ class TestSlovakia(TestCase):
                 ("2022-09-15", "Day of Our Lady of the Seven Sorrows"),
                 (
                     "2022-10-28",
-                    "Day of the Establishment of the Independent Czech-Slovak " "State",
+                    "Day of the Establishment of the Independent Czech-Slovak State",
                 ),
                 ("2022-11-01", "All Saints' Day"),
                 ("2022-11-17", "Struggle for Freedom and Democracy Day"),

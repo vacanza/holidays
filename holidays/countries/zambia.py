@@ -34,7 +34,7 @@ class Zambia(HolidayBase):
             (
                 SEP,
                 13,
-                "Inauguration ceremony of President-elect " "and Vice President-elect",
+                "Inauguration ceremony of President-elect and Vice President-elect",
             ),
         ),
         2018: (

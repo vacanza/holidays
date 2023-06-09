@@ -248,7 +248,7 @@ class TestBosniaAndHerzegovina(TestCase):
 
     def test_dayton_agreement_day(self):
         self.assertHolidaysName(
-            "Dan uspostave Opšteg okvirnog sporazuma za mir u " "Bosni i Hercegovini",
+            "Dan uspostave Opšteg okvirnog sporazuma za mir u Bosni i Hercegovini",
             self.rs_holidays,
             (f"{year}-11-21" for year in range(2000, 2030)),
         )

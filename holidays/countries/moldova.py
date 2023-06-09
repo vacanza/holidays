@@ -73,7 +73,7 @@ class Moldova(HolidayBase, ChristianHolidays, InternationalHolidays):
         may_9 = self._add_world_war_two_victory_day(
             # Victory Day and Commemoration of the heroes fallen for
             # Independence of Fatherland.
-            tr("Ziua Victoriei şi a comemorării eroilor căzuţi pentru " "Independenţa Patriei")
+            tr("Ziua Victoriei şi a comemorării eroilor căzuţi pentru Independenţa Patriei")
         )
 
         if year >= 2017:

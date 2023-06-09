@@ -74,7 +74,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
     )
     bicentennial_battle_tucuman = tr("Bicentenario de la Batalla de Tucumán")
     bicentennial_assembly_1813 = tr(
-        "Bicentenario de la sesión inaugural " "de la Asamblea Nacional Constituyente del año 1813"
+        "Bicentenario de la sesión inaugural de la Asamblea Nacional Constituyente del año 1813"
     )
     bicentennial_battle_salta = tr("Bicentenario de la Batalla de Salta")
     national_census_2022 = tr("Censo nacional 2022")
@@ -270,7 +270,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 2016:
             dt = date(year, JUN, 17)
-            name = tr("Paso a la Inmortalidad del General Don Martín Miguel " "de Güemes")
+            name = tr("Paso a la Inmortalidad del General Don Martín Miguel de Güemes")
             # If Jun 17 is Friday, then it should move to Mon, Jun 20
             # but Jun 20 is Gen. Belgrano holiday
             if self._is_friday(dt):

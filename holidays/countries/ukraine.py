@@ -84,7 +84,7 @@ class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays):
 
             name = (
                 # Day of Victory over Nazism in World War II (Victory Day).
-                tr("День перемоги над нацизмом у Другій світовій війні " "(День перемоги)")
+                tr("День перемоги над нацизмом у Другій світовій війні (День перемоги)")
                 if year >= 2016
                 # Victory Day.
                 else tr("День перемоги")

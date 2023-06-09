@@ -167,7 +167,7 @@ class UnitedStates(HolidayBase):
             if self.subdiv == "AL":
                 name = "Robert E. Lee/Martin Luther King Birthday"
             elif (self.subdiv == "MS") or ((self.subdiv == "AR") and (year <= 2017)):
-                name = "Dr. Martin Luther King Jr. " "and Robert E. Lee's Birthdays"
+                name = "Dr. Martin Luther King Jr. and Robert E. Lee's Birthdays"
             elif self.subdiv in {"AZ", "NH"}:
                 name = "Dr. Martin Luther King Jr./Civil Rights Day"
             elif self.subdiv == "GA" and year <= 2011:

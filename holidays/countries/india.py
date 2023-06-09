@@ -250,7 +250,7 @@ class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
     def _add_subdiv_or_holidays(self):
         self._add_holiday("Odisha Day (Utkala Dibasa)", APR, 1)
         self._add_holiday("Dr. B. R. Ambedkar's Jayanti", APR, 14)
-        self._add_holiday("Maha Vishuva Sankranti / Pana" " Sankranti", APR, 15)
+        self._add_holiday("Maha Vishuva Sankranti / Pana Sankranti", APR, 15)
 
     # Rajasthan.
     def _add_subdiv_rj_holidays(self):

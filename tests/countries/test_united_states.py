@@ -126,11 +126,11 @@ class TestUS(unittest.TestCase):
         )
         self.assertEqual(
             holidays.US(subdiv="AR").get("2015-01-19"),
-            ("Dr. Martin Luther King Jr. " "and Robert E. Lee's Birthdays"),
+            ("Dr. Martin Luther King Jr. and Robert E. Lee's Birthdays"),
         )
         self.assertEqual(
             holidays.US(subdiv="MS").get("2015-01-19"),
-            ("Dr. Martin Luther King Jr. " "and Robert E. Lee's Birthdays"),
+            ("Dr. Martin Luther King Jr. and Robert E. Lee's Birthdays"),
         )
         self.assertEqual(
             holidays.US(subdiv="AZ").get("2015-01-19"),
@@ -295,7 +295,7 @@ class TestUS(unittest.TestCase):
         )
         self.assertEqual(
             holidays.US(subdiv="AR").get("2015-02-16"),
-            ("George Washington's Birthday " "and Daisy Gatson Bates Day"),
+            ("George Washington's Birthday and Daisy Gatson Bates Day"),
         )
         self.assertEqual(holidays.US(subdiv="PR").get("2015-02-16"), "Presidents' Day")
         self.assertEqual(holidays.US(subdiv="VI").get("2015-02-16"), "Presidents' Day")

@@ -201,7 +201,7 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 2014:
             # Región de Ñuble
             self._add_holiday(
-                tr("Nacimiento del Prócer de la Independencia " "(Chillán y Chillán Viejo)"),
+                tr("Nacimiento del Prócer de la Independencia (Chillán y Chillán Viejo)"),
                 AUG,
                 20,
             )
