@@ -27,7 +27,7 @@ class Botswana(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "BW"
-    special_holidays = {2019: ((JUL, 2, "Public Holiday"),)}
+    special_holidays = {2019: (JUL, 2, "Public Holiday")}
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)

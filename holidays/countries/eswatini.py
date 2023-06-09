@@ -28,8 +28,8 @@ class Eswatini(HolidayBase):
     country = "SZ"
     special_holidays = {
         # https://mg.co.za/article/1999-12-09-swaziland-declares-bank-holidays/
-        1999: ((DEC, 31, "Y2K changeover"),),
-        2000: ((JAN, 3, "Y2K changeover"),),
+        1999: (DEC, 31, "Y2K changeover"),
+        2000: (JAN, 3, "Y2K changeover"),
     }
 
     def _populate(self, year):
