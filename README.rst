@@ -605,7 +605,7 @@ The list of supported countries, their subdivisions and supported languages
      -
    * - United Kingdom
      - GB
-     - Subdivisions: England, Northern Ireland, Scotland, **UK**, Wales; For Isle of Man use country code IM
+     - Subdivisions: ENG, NIR, SCT, WLS
      -
    * - United States Minor Outlying Islands
      - UM
