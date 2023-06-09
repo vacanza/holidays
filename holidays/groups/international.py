@@ -19,6 +19,17 @@ class InternationalHolidays:
     International holidays.
     """
 
+    def _add_childrens_day_jun1(self, name):
+        """
+        Add International Children's Day (June 1).
+
+        In 1925, International Children's Day was first proclaimed in Geneva
+        during the World Conference on Child Welfare. Since 1950, it is
+        celebrated on June 1 in many countries.
+        https://en.wikipedia.org/wiki/Children's_Day
+        """
+        return self._add_holiday(name, JUN, 1)
+
     def _add_columbus_day(self, name):
         """
         Add Columbus Day (October 12th)
