@@ -85,7 +85,7 @@ class Moldova(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 2016:
             # International Children's Day
-            self._add_holiday(tr("Ziua Ocrotirii Copilului"), JUN, 1)
+            self._add_childrens_day_jun1(tr("Ziua Ocrotirii Copilului"))
 
         # Republic of Moldova Independence Day
         self._add_holiday(tr("Ziua independenţei Republicii Moldova"), AUG, 27)

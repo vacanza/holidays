@@ -64,7 +64,7 @@ class Romania(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 2017:
             # Children's Day.
-            self._add_holiday(tr("Ziua Copilului"), JUN, 1)
+            self._add_childrens_day_jun1(tr("Ziua Copilului"))
 
         # Pentecost.
         name = tr("Rusaliile")
