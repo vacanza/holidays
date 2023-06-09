@@ -30,7 +30,7 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "CL"
     default_language = "es"
     special_holidays = {
-        2022: ((SEP, 16, tr("Feriado nacional")),),
+        2022: (SEP, 16, tr("Feriado nacional")),
     }
     subdivisions = (
         "AI",
