@@ -25,9 +25,11 @@ from dateutil.parser import parse
 
 from holidays.constants import HOLIDAY_NAME_DELIMITER, MON, TUE, WED, THU, FRI
 from holidays.constants import SAT, SUN
+from holidays.helpers import _normalize_tuple
 
 DateArg = Union[date, Tuple[int, int]]
 DateLike = Union[date, datetime, str, float, int]
+SpecialHoliday = Union[Tuple[int, int, str], Tuple[Tuple[int, int, str], ...]]
 
 gettext = gettext
 
@@ -201,7 +203,7 @@ class HolidayBase(Dict[date, str]):
     """Whether dates when public holiday are observed are included."""
     subdiv: Optional[str] = None
     """The subdiv requested."""
-    special_holidays: Dict[int, Tuple[Tuple[int, int, str], ...]] = {}
+    special_holidays: Dict[int, SpecialHoliday] = {}
     """A list of the country-wide special (as opposite to regular) holidays for
     a specific year."""
     _deprecated_subdivisions: Tuple[str, ...] = ()
@@ -653,7 +655,9 @@ class HolidayBase(Dict[date, str]):
         dates = set()
 
         # Populate items from the special holidays list.
-        for month, day, name in self.special_holidays.get(year, ()):
+        for month, day, name in _normalize_tuple(
+            self.special_holidays.get(year, ())
+        ):
             dates.add(self._add_holiday(name, date(year, month, day)))
 
         # Populate subdivision holidays.

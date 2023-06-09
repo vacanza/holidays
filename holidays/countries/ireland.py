@@ -27,9 +27,7 @@ class Ireland(HolidayBase):
     """
 
     country = "IE"
-    special_holidays = {
-        2022: ((MAR, 18, "Day of Remembrance and Recognition"),)
-    }
+    special_holidays = {2022: (MAR, 18, "Day of Remembrance and Recognition")}
 
     def _populate(self, year):
         super()._populate(year)
