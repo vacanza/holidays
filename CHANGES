@@ -1,11 +1,15 @@
 Version 0.27
 ============
 
+- Refactor holiday groups (#1295 by @arkid15r)
 - Add Brunei Darussalam holidays (#1168 by @PPsyrius, @arkid15r)
 - Add Burkina Faso holidays (#1278 by @KJhellico)
 - Add Chad holidays (#1279 by @KJhellico)
+- Improve calendars and special holidays readability  (#1296 by @arkid15r)
+- Update Argentina holidays: fix movable holidays prior to 2010 (#1258 by @PPsyrius)
 - Add Columbus day to InternationalHolidays (#1256 by @PPsyrius)
 - Migrate Angola holidays to holiday groups (#1276 by @kasya)
+- Migrate Colombia to holiday groups (#1259 by @PPsyrius)
 - Migrate remaining countries to custom calendar types (#1277 by @KJhellico)
 
 Version 0.26
