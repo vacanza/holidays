@@ -303,7 +303,7 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
 
         # Pchum Ben Day
         pchum_ben = tr("ពិធីបុណ្យភ្ផុំបិណ្ឌ")
-        pchum_ben_date = self.add_pchum_ben(pchum_ben)
+        pchum_ben_date = self._add_pchum_ben(pchum_ben)
         if pchum_ben_date:
             self._add_holiday(pchum_ben, pchum_ben_date + td(days=-1))
             if year >= 2017:
