@@ -161,7 +161,7 @@ class TestAruba(TestCase):
         self.assertLocalizedHolidays(
             (
                 ("2023-01-01", "New Year's Day"),
-                ("2023-01-25", "Betico Croes Day"),
+                ("2023-01-25", "Betico Day"),
                 ("2023-02-20", "Monday before Ash Wednesday"),
                 ("2023-03-18", "National Anthem and Flag Day"),
                 ("2023-04-07", "Good Friday"),
@@ -197,7 +197,7 @@ class TestAruba(TestCase):
         self.assertLocalizedHolidays(
             (
                 ("2023-01-01", "Новий рік"),
-                ("2023-01-25", "День Бетіко Крус"),
+                ("2023-01-25", "День Бетіко"),
                 ("2023-02-20", "Понеділок перед Попільною середою"),
                 ("2023-03-18", "День державного гімну та прапора"),
                 ("2023-04-07", "Страсна пʼятниця"),

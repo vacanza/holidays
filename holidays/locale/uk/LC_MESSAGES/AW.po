@@ -24,7 +24,7 @@ msgstr "Новий рік"
 #. Betico Croes Day
 #: ./holidays/countries/aruba.py:61
 msgid "Dia di Betico"
-msgstr "День Бетіко Крус"
+msgstr "День Бетіко"
 
 #. Carnival Monday
 #: ./holidays/countries/aruba.py:72
