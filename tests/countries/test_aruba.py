@@ -170,7 +170,7 @@ class TestAruba(TestCase):
                 ("2023-05-01", "Labor Day"),
                 ("2023-05-18", "Ascension Day"),
                 ("2023-12-25", "Christmas Day"),
-                ("2023-12-26", "Boxing Day"),
+                ("2023-12-26", "Second Day of Christmas"),
             ),
             "en_US",
         )

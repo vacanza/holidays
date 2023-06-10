@@ -84,4 +84,4 @@ msgstr "Christmas Day"
 #. Boxing Day
 #: ./holidays/countries/aruba.py:150
 msgid "Di dos dia di Pasco di Nacemento"
-msgstr "Boxing Day"
+msgstr "Second Day of Christmas"
