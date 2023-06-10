@@ -12,7 +12,7 @@
 from unittest import TestCase
 
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays
+from holidays.holiday_groups import ChristianHolidays, ThaiCalendarHolidays
 
 
 class TestChristianHolidays(TestCase):
@@ -37,3 +37,11 @@ class TestChristianHolidays(TestCase):
         test_holidays._add_christmas_day_three("Third day")
         self.assertIn("2022-12-27", test_holidays)
         self.assertEqual(1, len(test_holidays))
+
+
+class TestThaiCalendarHolidays(TestCase):
+    def test_check_calendar(self):
+        self.assertRaises(
+            ValueError,
+            lambda: ThaiCalendarHolidays("INVALID_CALENDAR"),
+        )
