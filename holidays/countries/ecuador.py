@@ -66,13 +66,12 @@ class Ecuador(HolidayBase, ChristianHolidays, InternationalHolidays):
         super()._populate(year)
 
         # New Year's Day.
-        name = tr("Año Nuevo")
+        name = self.tr("Año Nuevo")
         self._add_observed(self._add_new_years_day(name), weekend_only=True)
 
         if self.observed and year >= 2017:
-            dec_31 = (DEC, 31)
-            if self._is_friday(*dec_31):
-                self._add_holiday(self.tr("%s (Observado)") % self.tr(name), *dec_31)
+            if self._is_friday(DEC, 31):
+                self._add_holiday(self.tr("%s (Observado)") % name, DEC, 31)
 
         # Carnival.
         name = tr("Carnaval")
