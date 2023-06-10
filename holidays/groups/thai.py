@@ -76,6 +76,22 @@ class ThaiCalendarHolidays:
             name, self.__thai_calendar.khao_phansa_date(self._year, calendar)
         )
 
+    def _add_loy_krathong(self, name) -> Optional[date]:
+        """
+        Add Loy Krathong.
+
+        Also known as "Boun That Louang" and "Bon Om Touk".
+        This concides with the 15th Waxing Day (Full Moon) of Month 12
+        in Thai Lunar Calendar.
+
+        https://en.wikipedia.org/wiki/Loy_Krathong
+        https://en.wikipedia.org/wiki/Bon_Om_Touk
+        """
+
+        return self._add_thai_calendar_holiday(
+            name, self.__thai_calendar.loy_krathong_date(self._year)
+        )
+
     def _add_makha_bucha(self, name, calendar=None) -> Optional[date]:
         """
         Add Makha Bucha.
@@ -93,6 +109,35 @@ class ThaiCalendarHolidays:
 
         return self._add_thai_calendar_holiday(
             name, self.__thai_calendar.makha_bucha_date(self._year, calendar)
+        )
+
+    def _add_pchum_ben(self, name) -> Optional[date]:
+        """
+        Add Pchum Ben.
+
+        Also known as "Prachum Bandar".
+        This concides with the 15th Waning Day (New Moon) of Month 10 in
+        Thai Lunar Calendar.
+
+        https://en.wikipedia.org/wiki/Pchum_Ben
+        """
+
+        return self._add_thai_calendar_holiday(
+            name, self.__thai_calendar.pchum_ben_date(self._year)
+        )
+
+    def _add_preah_neangkoal(self, name) -> Optional[date]:
+        """
+        Add Preah Reach Pithi Chrat Preah Neangkoal.
+
+        Also known as "Cambodian Royal Ploughing Ceremony". This always
+        concides with the 4th Waning Day of Month 6 in Khmer Lunar Calendar.
+
+        https://en.wikipedia.org/wiki/Royal_Ploughing_Ceremony
+        """
+
+        return self._add_thai_calendar_holiday(
+            name, self.__thai_calendar.preah_neangkoal_date(self._year)
         )
 
     def _add_thai_calendar_holiday(self, name, dt) -> Optional[date]:

@@ -12,13 +12,13 @@
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars import _ThaiLunisolar, KHMER_CALENDAR
+from holidays.calendars import KHMER_CALENDAR
 from holidays.constants import JAN, APR, MAY, JUN, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import InternationalHolidays
+from holidays.holiday_groups import InternationalHolidays, ThaiCalendarHolidays
 
 
-class Cambodia(HolidayBase, InternationalHolidays):
+class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
     """
     A subclass of :py:class:`HolidayBase` representing public holidays
     in Cambodia.
@@ -83,7 +83,7 @@ class Cambodia(HolidayBase, InternationalHolidays):
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
-        self.thls = _ThaiLunisolar(KHMER_CALENDAR)
+        ThaiCalendarHolidays.__init__(self, KHMER_CALENDAR)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -276,10 +276,8 @@ class Cambodia(HolidayBase, InternationalHolidays):
         # Defunct from 2020 onwards.
 
         if year <= 2019:
-            meak_bochea_date = self.thls.makha_bucha_date(year)
-            if meak_bochea_date:
-                # Meak Bochea Day
-                self._add_holiday(tr("ពិធីបុណ្យមាឃបូជា"), meak_bochea_date)
+            # Meak Bochea Day
+            self._add_makha_bucha(tr("ពិធីបុណ្យមាឃបូជា"))
 
         # ពិធីបុណ្យវិសាខបូជា
         # Status: In-Use.
@@ -287,23 +285,16 @@ class Cambodia(HolidayBase, InternationalHolidays):
         # This utilizes Thai calendar as a base, though are calculated to
         # always happen in the Traditional Visakhamas month (May).
 
-        visaka_bochea_date = self.thls.visakha_bucha_date(year)
-        if visaka_bochea_date:
-            # Visaka Bochea Day
-            self._add_holiday(tr("ពិធីបុណ្យវិសាខបូជា"), visaka_bochea_date)
+        # Visaka Bochea Day
+        self._add_visakha_bucha(tr("ពិធីបុណ្យវិសាខបូជា"))
 
         # ព្រះរាជពិធីច្រត់ព្រះនង្គ័ល
         # Status: In-Use.
         # 4th Waning Day of Month 6.
         # Unlike Thai ones, Cambodian Royal Ploughing Ceremony is always fixed.
 
-        preah_neangkoal_date = self.thls.preah_neangkoal_date(year)
-        if preah_neangkoal_date:
-            self._add_holiday(
-                # Royal Ploughing Ceremony
-                tr("ព្រះរាជពិធីច្រត់ព្រះនង្គ័ល"),
-                preah_neangkoal_date,
-            )
+        # Royal Ploughing Ceremony
+        self._add_preah_neangkoal(tr("ព្រះរាជពិធីច្រត់ព្រះនង្គ័ល"))
 
         # ពិធីបុណ្យភ្ផុំបិណ្ឌ
         # Status: In-Use.
@@ -312,10 +303,9 @@ class Cambodia(HolidayBase, InternationalHolidays):
 
         # Pchum Ben Day
         pchum_ben = tr("ពិធីបុណ្យភ្ផុំបិណ្ឌ")
-        pchum_ben_date = self.thls.pchum_ben_date(year)
+        pchum_ben_date = self.add_pchum_ben(pchum_ben)
         if pchum_ben_date:
             self._add_holiday(pchum_ben, pchum_ben_date + td(days=-1))
-            self._add_holiday(pchum_ben, pchum_ben_date)
             if year >= 2017:
                 self._add_holiday(pchum_ben, pchum_ben_date + td(days=+1))
 
@@ -327,10 +317,9 @@ class Cambodia(HolidayBase, InternationalHolidays):
             # Water Festival
             "ព្រះរាជពិធីបុណ្យអុំទូក បណ្តែតប្រទីប និងសំពះព្រះខែអកអំបុក"
         )
-        bon_om_touk_date = self.thls.loy_krathong_date(year)
+        bon_om_touk_date = self._add_loy_krathong(bon_om_touk)
         if bon_om_touk_date:
             self._add_holiday(bon_om_touk, bon_om_touk_date + td(days=-1))
-            self._add_holiday(bon_om_touk, bon_om_touk_date)
             self._add_holiday(bon_om_touk, bon_om_touk_date + td(days=+1))
 
 

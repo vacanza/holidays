@@ -120,26 +120,26 @@ msgid "ទិវាសិទ្ធិមនុស្សអន្តរជាត�
 msgstr "วันสิทธิมนุษยชนโลก"
 
 #. Meak Bochea Day
-#: ./holidays/countries/cambodia.py:282
+#: ./holidays/countries/cambodia.py:280
 msgid "ពិធីបុណ្យមាឃបូជា"
 msgstr "วันมาฆบูชา"
 
 #. Visaka Bochea Day
-#: ./holidays/countries/cambodia.py:293
+#: ./holidays/countries/cambodia.py:289
 msgid "ពិធីបុណ្យវិសាខបូជា"
 msgstr "วันวิสาขบูชา"
 
 #. Royal Ploughing Ceremony
-#: ./holidays/countries/cambodia.py:304
+#: ./holidays/countries/cambodia.py:297
 msgid "ព្រះរាជពិធីច្រត់ព្រះនង្គ័ល"
 msgstr "พระราชพิธีบุญจรดพระนังคัลแรกนาขวัญ"
 
 #. Pchum Ben Day
-#: ./holidays/countries/cambodia.py:314
+#: ./holidays/countries/cambodia.py:305
 msgid "ពិធីបុណ្យភ្ផុំបិណ្ឌ"
 msgstr "เทศกาลงานวันสาร์ทภจุมบิณฑ์เขมร"
 
 #. Water Festival
-#: ./holidays/countries/cambodia.py:326
+#: ./holidays/countries/cambodia.py:316
 msgid "ព្រះរាជពិធីបុណ្យអុំទូក បណ្តែតប្រទីប និងសំពះព្រះខែអកអំបុក"
 msgstr "พระราชพิธีบุญแข่งเรือลอยกระทงไฟไหว้พระจันทร์และกินข้าวเม่า"
