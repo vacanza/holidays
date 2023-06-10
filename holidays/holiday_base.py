@@ -857,7 +857,7 @@ class HolidayBase(Dict[date, str]):
         """
         use_exact_name = HOLIDAY_NAME_DELIMITER in name
         dts = self.get_named(name, split_multiple_names=not use_exact_name)
-        if not dts:
+        if len(dts) == 0:
             raise KeyError(name)
 
         popped = []
