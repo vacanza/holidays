@@ -24,7 +24,7 @@ class Lesotho(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "LS"
     special_holidays = {
-        2002: ((MAY, 25, "Africa Day"),),
+        2002: (MAY, 25, "Africa Day"),
     }
 
     def __init__(self, *args, **kwargs):

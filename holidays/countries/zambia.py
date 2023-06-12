@@ -48,7 +48,7 @@ class Zambia(HolidayBase, ChristianHolidays, InternationalHolidays):
             (AUG, 13, "Counting in general elections"),
             (AUG, 24, "Presidential inauguration"),
         ),
-        2022: ((MAR, 18, "Funeral of Rupiah Banda"),),
+        2022: (MAR, 18, "Funeral of Rupiah Banda"),
     }
 
     def __init__(self, *args, **kwargs):
