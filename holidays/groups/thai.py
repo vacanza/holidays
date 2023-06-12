@@ -12,7 +12,7 @@
 from datetime import date
 from typing import Optional
 
-from holidays.calendars import _ThaiLunisolar, KHMER_CALENDAR, THAI_CALENDAR
+from holidays.calendars import _ThaiLunisolar, THAI_CALENDAR
 
 
 class ThaiCalendarHolidays:
@@ -20,23 +20,12 @@ class ThaiCalendarHolidays:
     Thai lunisolar calendar holidays.
 
     For more info, see class `_ThaiLunisolar`.
+    Calendar-type checking are done by `_ThaiLunisolar`.
     """
 
     def __init__(self, calendar=THAI_CALENDAR) -> None:
-        self.__verify_calendar(calendar)
         self.__calendar = calendar
-        self.__thai_calendar = _ThaiLunisolar(calendar)
-
-    @staticmethod
-    def __verify_calendar(calendar):
-        """
-        Verify calendar type.
-        """
-        if calendar not in {KHMER_CALENDAR, THAI_CALENDAR}:
-            raise ValueError(
-                f"Unknown calendar name: {calendar}. "
-                "Use `KHMER_CALENDAR` or `THAI_CALENDAR`."
-            )
+        self._thai_calendar = _ThaiLunisolar(calendar)
 
     def _add_asarnha_bucha(self, name, calendar=None) -> Optional[date]:
         """
@@ -51,10 +40,9 @@ class ThaiCalendarHolidays:
         https://en.wikipedia.org/wiki/Asalha_Puja
         """
         calendar = calendar or self.__calendar
-        self.__verify_calendar(calendar)
 
         return self._add_thai_calendar_holiday(
-            name, self.__thai_calendar.asarnha_bucha_date(self._year, calendar)
+            name, self._thai_calendar.asarnha_bucha_date(self._year, calendar)
         )
 
     def _add_khao_phansa(self, name, calendar=None) -> Optional[date]:
@@ -70,10 +58,9 @@ class ThaiCalendarHolidays:
         https://en.wikipedia.org/wiki/Vassa
         """
         calendar = calendar or self.__calendar
-        self.__verify_calendar(calendar)
 
         return self._add_thai_calendar_holiday(
-            name, self.__thai_calendar.khao_phansa_date(self._year, calendar)
+            name, self._thai_calendar.khao_phansa_date(self._year, calendar)
         )
 
     def _add_loy_krathong(self, name) -> Optional[date]:
@@ -89,7 +76,7 @@ class ThaiCalendarHolidays:
         """
 
         return self._add_thai_calendar_holiday(
-            name, self.__thai_calendar.loy_krathong_date(self._year)
+            name, self._thai_calendar.loy_krathong_date(self._year)
         )
 
     def _add_makha_bucha(self, name, calendar=None) -> Optional[date]:
@@ -105,10 +92,9 @@ class ThaiCalendarHolidays:
         https://en.wikipedia.org/wiki/M%C4%81gha_P%C5%ABj%C4%81
         """
         calendar = calendar or self.__calendar
-        self.__verify_calendar(calendar)
 
         return self._add_thai_calendar_holiday(
-            name, self.__thai_calendar.makha_bucha_date(self._year, calendar)
+            name, self._thai_calendar.makha_bucha_date(self._year, calendar)
         )
 
     def _add_pchum_ben(self, name) -> Optional[date]:
@@ -123,7 +109,7 @@ class ThaiCalendarHolidays:
         """
 
         return self._add_thai_calendar_holiday(
-            name, self.__thai_calendar.pchum_ben_date(self._year)
+            name, self._thai_calendar.pchum_ben_date(self._year)
         )
 
     def _add_preah_neangkoal(self, name) -> Optional[date]:
@@ -137,7 +123,7 @@ class ThaiCalendarHolidays:
         """
 
         return self._add_thai_calendar_holiday(
-            name, self.__thai_calendar.preah_neangkoal_date(self._year)
+            name, self._thai_calendar.preah_neangkoal_date(self._year)
         )
 
     def _add_thai_calendar_holiday(self, name, dt) -> Optional[date]:
@@ -165,8 +151,7 @@ class ThaiCalendarHolidays:
         https://en.wikipedia.org/wiki/M%C4%81gha_P%C5%ABj%C4%81
         """
         calendar = calendar or self.__calendar
-        self.__verify_calendar(calendar)
 
         return self._add_thai_calendar_holiday(
-            name, self.__thai_calendar.visakha_bucha_date(self._year, calendar)
+            name, self._thai_calendar.visakha_bucha_date(self._year, calendar)
         )
