@@ -12,13 +12,12 @@
 from datetime import date
 from datetime import timedelta as td
 
-from dateutil.easter import easter
-
-from holidays.constants import JAN, MAR, MAY, JUL, OCT, DEC
+from holidays.constants import JAN, MAR, MAY, JUL, OCT
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Malawi(HolidayBase):
+class Malawi(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://www.officeholidays.com/countries/malawi
     https://www.timeanddate.com/holidays/malawi/
@@ -26,37 +25,46 @@ class Malawi(HolidayBase):
 
     country = "MW"
 
-    def _populate(self, year):
-        def _add_with_observed(
-            hol_date: date, hol_name: str, days: int = +1
-        ) -> None:
-            self[hol_date] = hol_name
-            if self.observed and self._is_weekend(hol_date):
-                obs_date = hol_date + td(
-                    days=+2 if self._is_saturday(hol_date) else days
-                )
-                self[obs_date] = f"{hol_name} (Observed)"
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
+    def _add_observed(self, dt: date, days: int = +1) -> None:
+        if self.observed and self._is_weekend(dt):
+            self._add_holiday(
+                "%s (Observed)" % self[dt],
+                dt + td(+2 if self._is_saturday(dt) else days),
+            )
+
+    def _populate(self, year):
         # Observed since 2000
         if year <= 1999:
             return None
 
         super()._populate(year)
 
-        _add_with_observed(date(year, JAN, 1), "New Year's Day")
-        _add_with_observed(date(year, JAN, 15), "John Chilembwe Day")
-        _add_with_observed(date(year, MAR, 3), "Martyrs Day")
+        self._add_observed(self._add_new_years_day("New Year's Day"))
 
-        easter_date = easter(year)
-        self[easter_date + td(days=-2)] = "Good Friday"
-        self[easter_date + td(days=+1)] = "Easter Monday"
+        self._add_observed(self._add_holiday("John Chilembwe Day", JAN, 15))
 
-        _add_with_observed(date(year, MAY, 1), "Labour Day")
-        _add_with_observed(date(year, MAY, 14), "Kamuzu Day")
-        _add_with_observed(date(year, JUL, 6), "Independence Day")
-        _add_with_observed(date(year, OCT, 15), "Mother's Day")
-        _add_with_observed(date(year, DEC, 25), "Christmas Day", days=+2)
-        _add_with_observed(date(year, DEC, 26), "Boxing Day", days=+2)
+        self._add_observed(self._add_holiday("Martyrs Day", MAR, 3))
+
+        self._add_good_friday("Good Friday")
+
+        self._add_easter_monday("Easter Monday")
+
+        self._add_observed(self._add_labor_day("Labour Day"))
+
+        self._add_observed(self._add_holiday("Kamuzu Day", MAY, 14))
+
+        self._add_observed(self._add_holiday("Independence Day", JUL, 6))
+
+        self._add_observed(self._add_holiday("Mother's Day", OCT, 15))
+
+        self._add_observed(self._add_christmas_day("Christmas Day"), days=+2)
+
+        self._add_observed(self._add_christmas_day_two("Boxing Day"), days=+2)
 
 
 class MW(Malawi):
