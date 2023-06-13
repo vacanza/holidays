@@ -162,7 +162,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Aruba
      - AW
      -
-     - en_US, nl, **pt_AW**, uk
+     - en_US, nl, **pp**, uk
    * - Australia
      - AU
      - States and territories: **ACT**, NSW, NT, QLD, SA, TAS, VIC, WA
