@@ -30,9 +30,9 @@ class Aruba(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "AW"
-    default_language = "pt_AW"
-    # `pt_AW` acts as stands in for the ABC Portuguese-creole Papiamento `pap`
-    supported_languages = ("en_US", "nl", "pt_AW", "uk")
+    default_language = "pp"
+    # `pp` acts as stands in for the ABC Portuguese-creole Papiamento `pap`
+    supported_languages = ("en_US", "nl", "pp", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
