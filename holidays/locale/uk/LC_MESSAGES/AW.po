@@ -21,7 +21,7 @@ msgstr ""
 msgid "Aña Nobo"
 msgstr "Новий рік"
 
-#. Betico Croes Day
+#. Betico Day
 #: ./holidays/countries/aruba.py:61
 msgid "Dia di Betico"
 msgstr "День Бетіко"
@@ -81,7 +81,7 @@ msgstr "Вознесіння Господнє"
 msgid "Pasco di Nacemento"
 msgstr "Різдво Христове"
 
-#. Boxing Day
+#. Second Day of Christmas
 #: ./holidays/countries/aruba.py:150
 msgid "Di dos dia di Pasco di Nacemento"
 msgstr "Другий день Різдва"

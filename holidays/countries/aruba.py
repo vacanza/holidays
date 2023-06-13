@@ -57,7 +57,7 @@ class Aruba(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Started in 1989.
 
         if year >= 1989:
-            # Betico Croes Day
+            # Betico Day
             self._add_holiday(tr("Dia di Betico"), JAN, 25)
 
         # Dialuna prome cu diaranson di shinish.
@@ -146,7 +146,7 @@ class Aruba(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Di dos dia di Pasco di Nacemento.
         # Status: In-Use.
 
-        # Boxing Day
+        # Second Day of Christmas
         self._add_christmas_day_two(tr("Di dos dia di Pasco di Nacemento"))
 
 
