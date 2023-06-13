@@ -19,16 +19,27 @@ class InternationalHolidays:
     International holidays.
     """
 
-    def _add_childrens_day_jun1(self, name):
+    def _add_childrens_day(self, name, variation=JUN):
         """
         Add International Children's Day (June 1).
 
         In 1925, International Children's Day was first proclaimed in Geneva
         during the World Conference on Child Welfare. Since 1950, it is
         celebrated on June 1 in many countries.
+
+        As such, this entry currently defaults to June 1, though this also
+        supports another internationally adopted variant, November 20th.
         https://en.wikipedia.org/wiki/Children's_Day
         """
-        return self._add_holiday(name, JUN, 1)
+        if variation == JUN:
+            return self._add_holiday(name, JUN, 1)
+        elif variation == NOV:
+            return self._add_holiday(name, NOV, 20)
+        else:
+            raise ValueError(
+                f"Unknown variaton name: {variation}. "
+                "This entry currently supports `JUN` and `NOV` variation only."
+            )
 
     def _add_columbus_day(self, name):
         """
