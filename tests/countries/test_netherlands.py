@@ -23,11 +23,11 @@ class TestNetherlands(TestCase):
 
     def test_queens_day_between_1891_and_1948(self):
         name = "Koninginnedag"
-        self.assertHolidaysName(name, "1891-08-31", "1901-08-31", "1948-08-31")
+        self.assertHolidayName(name, "1891-08-31", "1901-08-31", "1948-08-31")
         self.assertNoHolidayName(name, Netherlands(years=1890))
 
     def test_queens_day_between_1891_and_1948_substituted_later(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Koninginnedag",
             "1902-09-01",
             "1913-09-01",
@@ -49,12 +49,12 @@ class TestNetherlands(TestCase):
 
     def test_queens_day_between_1949_and_2013(self):
         name = "Koninginnedag"
-        self.assertHolidaysName(name, "1949-04-30", "1970-04-30", "2013-04-30")
+        self.assertHolidayName(name, "1949-04-30", "1970-04-30", "2013-04-30")
         self.assertNoHoliday("2014-04-30")
         self.assertNoHolidayName(name, Netherlands(years=2014))
 
     def test_queens_day_between_1949_and_1980_substituted_later(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Koninginnedag",
             "1950-05-01",
             "1961-05-01",
@@ -71,7 +71,7 @@ class TestNetherlands(TestCase):
         )
 
     def test_queens_day_between_1980_and_2013_substituted_earlier(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Koninginnedag",
             "1989-04-29",
             "1995-04-29",
@@ -87,12 +87,12 @@ class TestNetherlands(TestCase):
 
     def test_kings_day_after_2014(self):
         name = "Koningsdag"
-        self.assertHolidaysName(name, "2015-04-27", "2020-04-27", "2023-04-27")
+        self.assertHolidayName(name, "2015-04-27", "2020-04-27", "2023-04-27")
         self.assertNoHoliday("2013-04-27")
         self.assertNoHolidayName(name, Netherlands(years=2013))
 
     def test_kings_day_after_2014_substituted_earlier(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Koningsdag",
             "2014-04-26",
             "2025-04-26",

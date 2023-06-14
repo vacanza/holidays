@@ -34,7 +34,7 @@ class TestFinland(TestCase):
             )
 
     def test_epiphany(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Loppiainen",
             "1972-01-06",
             "1973-01-06",
@@ -114,7 +114,7 @@ class TestFinland(TestCase):
 
     def test_midsummer_eve(self):
         name = "Juhannusaatto"
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name,
             "1953-06-23",
             "1954-06-23",
@@ -131,7 +131,7 @@ class TestFinland(TestCase):
 
     def test_midsummer_day(self):
         name = "Juhannuspäivä"
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name,
             "1953-06-24",
             "1954-06-24",
@@ -147,7 +147,7 @@ class TestFinland(TestCase):
             self.assertNotIn(name, self.holidays.get(dt, ""))
 
     def test_all_saints_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Pyhäinpäivä",
             "1952-11-01",
             "1953-11-01",

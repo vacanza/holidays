@@ -91,7 +91,7 @@ class TestCanada(TestCase):
             "2018-02-19",
         )
         self.assertHoliday(dt)
-        self.assertHoliday(ab_holidays)
+        self.assertHoliday(ab_holidays, dt)
         self.assertNoHoliday(bc_holidays, dt)
         self.assertHoliday(mb_holidays, dt)
         self.assertHoliday(sk_holidays, dt)
@@ -108,8 +108,8 @@ class TestCanada(TestCase):
         self.assertHoliday(bc_holidays, dt)
         self.assertNoHoliday(mb_holidays, dt)
         self.assertNoHoliday(sk_holidays, dt)
-        self.assertHolidaysName("Louis Riel Day", mb_holidays, "2014-02-17")
-        self.assertHolidaysName("Heritage Day", ns_holidays, "2015-02-16")
+        self.assertHolidayName("Louis Riel Day", mb_holidays, "2014-02-17")
+        self.assertHolidayName("Heritage Day", ns_holidays, "2015-02-16")
 
     def test_st_patricks_day(self):
         nl_holidays = self.prov_hols["NL"]
@@ -183,7 +183,7 @@ class TestCanada(TestCase):
                 self.assertHoliday(holidays, dt)
 
     def test_national_patriots_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "National Patriots' Day",
             self.prov_hols["QC"],
             "2010-05-24",
@@ -285,8 +285,8 @@ class TestCanada(TestCase):
         self.assertNoHoliday(mb_holidays, "1899-08-07")
         old_name = "Civic Holiday"
         new_name = "Terry Fox Day"
-        self.assertHolidaysName(old_name, mb_holidays, "2014-08-04")
-        self.assertHolidaysName(new_name, mb_holidays, "2015-08-03")
+        self.assertHolidayName(old_name, mb_holidays, "2014-08-04")
+        self.assertHolidayName(new_name, mb_holidays, "2015-08-03")
         self.assertNoHolidayName(old_name, mb_holidays, 2015)
         self.assertNoHolidayName(new_name, mb_holidays, 2014)
 
@@ -392,7 +392,7 @@ class TestCanada(TestCase):
         self.assertNotIn(
             "Christmas Day (Observed)", self.holidays["2011-12-26"]
         )
-        self.assertHolidaysName("Christmas Day (Observed)", "2011-12-27")
+        self.assertHolidayName("Christmas Day (Observed)", "2011-12-27")
 
     def test_boxing_day(self):
         self.assertHoliday(f"{year}-12-26" for year in range(1900, 2050))

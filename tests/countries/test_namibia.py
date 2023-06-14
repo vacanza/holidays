@@ -47,7 +47,7 @@ class TestNamibia(TestCase):
             "Day of the Namibian Women and International Human Rights Day",
             Namibia(years=range(1990, 2005)),
         )
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "International Human Rights Day",
             (f"{year}-09-10" for year in range(1990, 2005)),
         )

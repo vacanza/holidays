@@ -217,7 +217,7 @@ class TestChile(TestCase):
         years = set(range(1922, 2000)).difference({1973})
         name = "Día de la Raza"
         self.assertHoliday(f"{year}-10-12" for year in years)
-        self.assertHolidayName(name, years)
+        self.assertHolidayName(name, (f"{year}-10-12" for year in years))
         self.assertNoHolidayName(name, 1973)
 
         self.assertHoliday(
@@ -232,8 +232,10 @@ class TestChile(TestCase):
             "2023-10-09",
         )
 
+        self.assertHolidayName(name, (f"{year}-10-12" for year in years))
         self.assertHolidayName(
-            "Día del Encuentro de dos Mundos", range(2000, 2050)
+            "Día del Encuentro de dos Mundos",
+            range(2000, 2050),
         )
 
     def test_reformation_day(self):

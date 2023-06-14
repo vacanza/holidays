@@ -54,11 +54,11 @@ class TestAzerbaijan(TestCase):
     def test_republic_day(self):
         self.assertHoliday(f"{year}-05-28" for year in range(1992, 2050))
         self.assertNoHoliday(f"{year}-05-28" for year in range(1990, 1992))
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Republic Day", (f"{year}-05-28" for year in range(1992, 2021))
         )
-        self.assertHolidaysName(
-            "Independence Day", (f"{year}-05-28" for year in range(2021, 2001))
+        self.assertHolidayName(
+            "Independence Day", (f"{year}-05-28" for year in range(2001, 2021))
         )
 
     def test_salvation_day(self):
