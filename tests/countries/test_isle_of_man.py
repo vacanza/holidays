@@ -21,6 +21,17 @@ class TestIM(TestCase):
     def test_country_aliases(self):
         self.assertCountryAliases(IsleOfMan, IM, IMN)
 
+    def test_1970(self):
+        self.assertHolidays(
+            ("1970-03-27", "Good Friday"),
+            ("1970-03-30", "Easter Monday"),
+            ("1970-06-05", "TT Bank Holiday"),
+            ("1970-07-05", "Tynwald Day"),
+            ("1970-12-25", "Christmas Day"),
+            ("1970-12-26", "Boxing Day"),
+            ("1970-12-28", "Boxing Day (Observed)"),
+        )
+
     def test_2022(self):
         self.assertHolidays(
             ("2022-01-01", "New Year's Day"),
