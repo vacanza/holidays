@@ -18,10 +18,6 @@ class TestNicaragua(TestCase):
     def setUpClass(cls):
         super().setUpClass(Nicaragua)
 
-    def setUp(self):
-        super().setUp()
-        self.holidays_an = Nicaragua(subdiv="AN")
-
     def test_country_aliases(self):
         self.assertCountryAliases(Nicaragua, NI, NIC)
 
@@ -39,7 +35,11 @@ class TestNicaragua(TestCase):
             "2020-12-08",
             "2020-12-25",
         )
-        self.assertNoHoliday(self.holidays_an, "2020-08-01", "2020-08-10")
+        self.assertNoHoliday(
+            Nicaragua(subdiv="AN"),
+            "2020-08-01",
+            "2020-08-10",
+        )
 
     def test_ni_holidays_1979(self):
         self.assertHoliday(
@@ -80,7 +80,7 @@ class TestNicaragua(TestCase):
                 ("2022-01-01", "New Year's Day"),
                 ("2022-04-14", "Maundy Thursday"),
                 ("2022-04-15", "Good Friday"),
-                ("2022-05-01", "Labour Day"),
+                ("2022-05-01", "Labor Day"),
                 ("2022-07-19", "Revolution Day"),
                 ("2022-08-01", "Descent of Saint Dominic"),
                 ("2022-08-10", "Ascent of Saint Dominic"),
@@ -103,7 +103,7 @@ class TestNicaragua(TestCase):
                 ("2022-08-01", "Спуск Святого Домініка"),
                 ("2022-08-10", "Підйом Святого Домініка"),
                 ("2022-09-14", "Річниця битви під Сан-Хасінто"),
-                ("2022-09-15", "День Незалежності"),
+                ("2022-09-15", "День незалежності"),
                 ("2022-12-08", "Непорочне зачаття Діви Марії"),
                 ("2022-12-25", "Різдво Христове"),
             ),
