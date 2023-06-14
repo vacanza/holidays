@@ -40,3 +40,21 @@ class TestIM(TestCase):
             ("2022-12-26", "Boxing Day"),
             ("2022-12-27", "Christmas Day (Observed)"),
         )
+
+    def test_tynwald_day(self):
+        self.assertHolidaysName(
+            "Tynwald Day",
+            "2019-07-05",
+            "2020-07-06",
+            "2021-07-05",
+            "2022-07-05",
+            "2023-07-05",
+            "2024-07-05",
+            "2025-07-07",
+            "2026-07-06",
+        )
+        self.assertNoHoliday(
+            "2020-07-05",
+            "2025-07-05",
+            "2026-07-05",
+        )

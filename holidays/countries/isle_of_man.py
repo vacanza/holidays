@@ -9,6 +9,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
+from datetime import timedelta as td
+
 from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import JUN, JUL, AUG, MON, FRI
 from holidays.holiday_base import HolidayBase
@@ -48,7 +51,11 @@ class IsleOfMan(UnitedKingdom):
         )
 
         # Tynwald Day
-        self._add_holiday("Tynwald Day", JUL, 5)
+        # If fall on the weekends, moved to the next Monday.
+        dt = date(year, JUL, 5)
+        if self._is_weekend(dt):
+            dt += td(days=+2 if self._is_saturday(dt) else +1)
+        self._add_holiday("Tynwald Day", dt)
 
 
 class IM(IsleOfMan):
