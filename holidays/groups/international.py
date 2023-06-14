@@ -19,7 +19,7 @@ class InternationalHolidays:
     International holidays.
     """
 
-    def _add_childrens_day(self, name, variation=JUN):
+    def _add_childrens_day(self, name, variation="JUN"):
         """
         Add International Children's Day (June 1).
 
@@ -31,9 +31,9 @@ class InternationalHolidays:
         supports another internationally adopted variant, November 20th.
         https://en.wikipedia.org/wiki/Children's_Day
         """
-        if variation == JUN:
+        if variation == "JUN":
             return self._add_holiday(name, JUN, 1)
-        elif variation == NOV:
+        elif variation == "NOV":
             return self._add_holiday(name, NOV, 20)
         else:
             raise ValueError(

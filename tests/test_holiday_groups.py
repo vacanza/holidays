@@ -11,7 +11,6 @@
 
 from unittest import TestCase
 
-from holidays.constants import NOV
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -47,13 +46,10 @@ class TestInternationalHolidays(TestCase):
                 InternationalHolidays.__init__(self)
                 super().__init__(*args, **kwargs)
 
-            def _populate(self, year):
-                super()._populate(year)
-
         test_holidays = TestHolidays()
 
         test_holidays._populate(2022)
-        test_holidays._add_childrens_day("Children's Day (November 20)", NOV)
+        test_holidays._add_childrens_day("Children's Day (November 20)", "NOV")
         self.assertIn("2022-11-20", test_holidays)
         self.assertEqual(1, len(test_holidays))
         self.assertRaises(
