@@ -22,8 +22,7 @@ import holidays
 from holidays.utils import country_holidays, financial_holidays
 from holidays.utils import list_localized_countries, list_localized_financial
 from holidays.utils import list_supported_countries, list_supported_financial
-
-PYTHON_VERSION = (3, 11)
+from tests.common import PYTHON_VERSION
 
 
 class TestCountryHolidays(unittest.TestCase):

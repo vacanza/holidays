@@ -15,8 +15,8 @@ from tests.common import TestCase
 
 class TestMozambique(TestCase):
     @classmethod
-    def setUpClass(self):
-        super().setUpClass(Mozambique)
+    def setUpClass(cls):
+        super().setUpClass(Mozambique, years=range(1975, 2050))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Mozambique, MZ, MOZ)
@@ -39,8 +39,7 @@ class TestMozambique(TestCase):
 
         self.assertNoHoliday(f"{year}-10-04" for year in range(1975, 1993))
         self.assertNoHolidayName(
-            "Dia da Paz e Reconciliação",
-            Mozambique(years=range(1975, 1993)),
+            "Dia da Paz e Reconciliação", range(1975, 1993)
         )
         self.assertHoliday(f"{year}-10-04" for year in range(1993, 2050))
 
