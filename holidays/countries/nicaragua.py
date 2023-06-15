@@ -41,11 +41,11 @@ class Nicaragua(HolidayBase, ChristianHolidays, InternationalHolidays):
     supported_languages = ("en_US", "es", "uk")
 
     def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
         # Default subdivision to MN; prov for backwards compatibility
         if not kwargs.get("subdiv", kwargs.get("prov")):
             kwargs["subdiv"] = "MN"
-        ChristianHolidays.__init__(self)
-        InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
