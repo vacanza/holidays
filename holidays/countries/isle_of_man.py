@@ -53,7 +53,7 @@ class IsleOfMan(UnitedKingdom):
         # Tynwald Day
         # If fall on the weekends, moved to the next Monday.
         dt = date(year, JUL, 5)
-        if self._is_weekend(dt):
+        if self._is_weekend(dt) and year >= 1992:
             dt += td(days=+2 if self._is_saturday(dt) else +1)
         self._add_holiday("Tynwald Day", dt)
 
