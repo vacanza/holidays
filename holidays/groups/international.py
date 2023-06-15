@@ -19,6 +19,17 @@ class InternationalHolidays:
     International holidays.
     """
 
+    def _add_africa_day(self, name):
+        """
+        Add Africa Day (May 25th)
+
+        Africa Day (formerly African Freedom Day and African Liberation Day)
+        is the annual commemoration of the foundation of the Organisation
+        of African Unity on 25 May 1963.
+        https://en.wikipedia.org/wiki/Africa_Day
+        """
+        return self._add_holiday(name, MAY, 25)
+
     def _add_columbus_day(self, name):
         """
         Add Columbus Day (October 12th)
