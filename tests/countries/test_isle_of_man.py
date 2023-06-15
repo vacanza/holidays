@@ -26,7 +26,7 @@ class TestIM(TestCase):
             ("1970-03-27", "Good Friday"),
             ("1970-03-30", "Easter Monday"),
             ("1970-06-05", "TT Bank Holiday"),
-            ("1970-07-05", "Tynwald Day"),
+            ("1970-07-06", "Tynwald Day"),
             ("1970-12-25", "Christmas Day"),
             ("1970-12-26", "Boxing Day"),
             ("1970-12-28", "Boxing Day (Observed)"),
