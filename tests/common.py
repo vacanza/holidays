@@ -223,10 +223,6 @@ class TestCase(unittest.TestCase):
             instance_name=instance_name,
         )
 
-        if len(items) == 0:  # A holiday name check.
-            self.assertFalse(holidays.get_named(name, lookup="exact"), name)
-            return None
-
         arg = items[0]
         if type(arg) == int:  # A holiday name check for a specific year.
             holiday_years = {
