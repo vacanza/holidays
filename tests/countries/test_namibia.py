@@ -15,8 +15,8 @@ from tests.common import TestCase
 
 class TestNamibia(TestCase):
     @classmethod
-    def setUpClass(self):
-        super().setUpClass(Namibia)
+    def setUpClass(cls):
+        super().setUpClass(Namibia, years=range(1990, 2050))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Namibia, NA, NAM)
@@ -45,7 +45,7 @@ class TestNamibia(TestCase):
             )
         self.assertNoHolidayName(
             "Day of the Namibian Women and International Human Rights Day",
-            Namibia(years=range(1990, 2005)),
+            range(1990, 2005),
         )
         self.assertHolidayName(
             "International Human Rights Day",

@@ -20,6 +20,8 @@ from dateutil.parser import parse
 from holidays import HolidayBase
 from holidays.constants import SUN
 
+PYTHON_VERSION = (3, 11)
+
 
 class TestCase(unittest.TestCase):
     """Base class for python-holidays test cases."""

@@ -21,6 +21,7 @@ from dateutil.relativedelta import relativedelta as rd
 
 import holidays
 from holidays.constants import JAN, FEB, OCT, MON, TUE, SAT, SUN
+from holidays.constants import HOLIDAY_NAME_DELIMITER
 
 
 class TestBasics(unittest.TestCase):
@@ -119,13 +120,58 @@ class TestBasics(unittest.TestCase):
         self.assertNotIn(date(2014, 1, 1), self.holidays)
         self.assertIn(date(2014, 7, 4), self.holidays)
 
-    def test_pop_named(self):
+    def test_pop_named_single(self):
         self.assertIn(date(2014, 1, 1), self.holidays)
-        self.holidays.pop_named("New Year's Day")
-        self.assertNotIn(date(2014, 1, 1), self.holidays)
+        dts = self.holidays.pop_named("New Year's Day")
+        for dt in dts:
+            self.assertNotIn(dt, self.holidays)
+
+    def test_pop_named_multiple(self):
+        dt = date(2022, 2, 22)
+        holiday_name_1 = "Holiday Name 1"
+        holiday_name_2 = "Holiday Name 2"
+        holiday_name_3 = "Holiday Name 3"
+        combined_name = HOLIDAY_NAME_DELIMITER.join(
+            (holiday_name_1, holiday_name_2, holiday_name_3)
+        )
+        self.holidays[dt] = holiday_name_1
+        self.holidays[dt] = holiday_name_2
+        self.holidays[dt] = holiday_name_3
+        self.assertEqual(self.holidays[dt], combined_name)
+
+        # Pop the entire date by multiple holidays exact name.
+        self.holidays.pop_named(combined_name)
+        self.assertNotIn(dt, self.holidays)
+
+        # Pop only one holiday by a single name.
+        self.holidays[dt] = holiday_name_1
+        self.holidays[dt] = holiday_name_2
+        self.holidays[dt] = holiday_name_3
+        self.assertEqual(self.holidays[dt], combined_name)
+
+        self.holidays.pop_named(holiday_name_1)
+        self.assertEqual(
+            self.holidays[dt],
+            HOLIDAY_NAME_DELIMITER.join((holiday_name_2, holiday_name_3)),
+        )
+
+        self.holidays.pop_named(holiday_name_3)
+        self.assertEqual(self.holidays[dt], holiday_name_2)
+
+        self.holidays.pop_named(holiday_name_2)
+        self.assertNotIn(dt, self.holidays)
+
+    def test_pop_named_exception(self):
         self.assertRaises(
             KeyError,
             lambda: self.holidays.pop_named("New Year's Dayz"),
+        )
+
+        self.assertIn(date(2022, 1, 1), self.holidays)
+        self.holidays.pop_named("New Year's Day")
+        self.assertRaises(
+            KeyError,
+            lambda: self.holidays.pop_named("New Year's Day"),
         )
 
     def test_setitem(self):

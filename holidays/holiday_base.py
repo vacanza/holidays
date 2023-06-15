@@ -724,7 +724,12 @@ class HolidayBase(Dict[date, str]):
             if name
         ]
 
-    def get_named(self, holiday_name: str, lookup="icontains") -> List[date]:
+    def get_named(
+        self,
+        holiday_name: str,
+        lookup="icontains",
+        split_multiple_names=True,
+    ) -> List[date]:
         """Return a list of all holiday dates matching the provided holiday
         name. The match will be made case insensitively and partial matches
         will be included by default.
@@ -739,12 +744,17 @@ class HolidayBase(Dict[date, str]):
                 icontains - case insensitive contains match;
                 iexact - case insensitive exact match;
                 istartswith - case insensitive starts with match;
+        :param split_multiple_names:
+            Either use the exact name for each date or split it by holiday
+            name delimiter.
 
         :return:
             A list of all holiday dates matching the provided holiday name.
         """
         holiday_date_names_mapping: Dict[date, List[str]] = {
             key: value.split(HOLIDAY_NAME_DELIMITER)
+            if split_multiple_names
+            else [value]
             for key, value in self.items()
         }
 
@@ -849,14 +859,24 @@ class HolidayBase(Dict[date, str]):
         :raise:
             KeyError if date is not a holiday and default is not given.
         """
-        dates = self.get_named(name)
-        if not dates:
+        use_exact_name = HOLIDAY_NAME_DELIMITER in name
+        dts = self.get_named(name, split_multiple_names=not use_exact_name)
+        if len(dts) == 0:
             raise KeyError(name)
 
-        for dt in dates:
+        popped = []
+        for dt in dts:
+            holiday_names = self[dt].split(HOLIDAY_NAME_DELIMITER)
             self.pop(dt)
+            popped.append(dt)
 
-        return dates
+            # Keep the rest of holidays falling on the same date.
+            if not use_exact_name:
+                holiday_names.remove(name)
+                if len(holiday_names) > 0:
+                    self[dt] = HOLIDAY_NAME_DELIMITER.join(holiday_names)
+
+        return popped
 
     def update(  # type: ignore[override]
         self, *args: Union[Dict[DateLike, str], List[DateLike], DateLike]
