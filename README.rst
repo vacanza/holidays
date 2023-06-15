@@ -268,7 +268,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Curacao
      - CW
      -
-     - en_US, nl, **pp**, uk
+     - en_US, nl, **pap**, uk
    * - Cyprus
      - CY
      -

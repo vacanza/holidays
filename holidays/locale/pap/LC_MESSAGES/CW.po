@@ -8,7 +8,7 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
 "Language-Team: Python Holidays localization team\n"
-"Language: pp\n"
+"Language: pap\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,66 +17,66 @@ msgstr ""
 "X-Generator: Poedit 3.3.1\n"
 
 #. New Year's Day
-#: ./holidays/countries/curacao.py:51
+#: ./holidays/countries/curacao.py:50
 msgid "Aña Nobo"
 msgstr ""
 
 #. Carnival Monday
-#: ./holidays/countries/curacao.py:58
+#: ./holidays/countries/curacao.py:57
 msgid "Dialuna despues di Carnaval Grandi"
 msgstr ""
 
 #. Good Friday
-#: ./holidays/countries/curacao.py:64
+#: ./holidays/countries/curacao.py:63
 msgid "Bièrnèsantu"
 msgstr ""
 
 #. Easter Sunday
-#: ./holidays/countries/curacao.py:70
+#: ./holidays/countries/curacao.py:69
 msgid "Pasku di Resurekshon"
 msgstr ""
 
 #. Easter Monday
-#: ./holidays/countries/curacao.py:76
+#: ./holidays/countries/curacao.py:75
 msgid "Di dos dia di Pasku di Resurekshon"
 msgstr ""
 
 #. King's Day.
-#: ./holidays/countries/curacao.py:88
+#: ./holidays/countries/curacao.py:87
 msgid "Dia di Rey"
 msgstr ""
 
 #. Queen's Day.
-#: ./holidays/countries/curacao.py:91
+#: ./holidays/countries/curacao.py:90
 msgid "Dia di la Reina"
 msgstr ""
 
 #. Labor Day
-#: ./holidays/countries/curacao.py:109
+#: ./holidays/countries/curacao.py:108
 msgid "Dia di Obrero"
 msgstr ""
 
 #. Ascension Day
-#: ./holidays/countries/curacao.py:115
+#: ./holidays/countries/curacao.py:114
 msgid "Dia di Asenshon"
 msgstr ""
 
 #. National Anthem and Flag Day
-#: ./holidays/countries/curacao.py:123
+#: ./holidays/countries/curacao.py:122
 msgid "Dia di Himno i Bandera"
 msgstr ""
 
 #. Curaçao Day
-#: ./holidays/countries/curacao.py:131
+#: ./holidays/countries/curacao.py:130
 msgid "Dia di Pais Kòrsou"
 msgstr ""
 
 #. Christmas Day
-#: ./holidays/countries/curacao.py:137
+#: ./holidays/countries/curacao.py:136
 msgid "Pasku di Nasementu"
 msgstr ""
 
 #. Second Day of Christmas
-#: ./holidays/countries/curacao.py:143
+#: ./holidays/countries/curacao.py:142
 msgid "Di dos dia di Pasku di Nasementu"
 msgstr ""
