@@ -36,8 +36,8 @@ class TestCase(unittest.TestCase):
 
         if (
             getattr(test_class, "default_language") is not None
-            # Can be either 2 (e.g., en, fr, uk) or 5 (e.g., en_US, en_GB).
-            and len(test_class.default_language) not in {2, 5}
+            # Normally 2-6 letters (e.g., en, pap, en_US, pap_AW).
+            and 2 > len(test_class.default_language) > 6
         ):
             raise ValueError(
                 f"`{test_class.__name__}.default_language` value is invalid."
