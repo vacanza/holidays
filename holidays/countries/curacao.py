@@ -103,7 +103,7 @@ class Curacao(HolidayBase, ChristianHolidays, InternationalHolidays):
         # If fall on Sunday, then this will be move to next working day.
 
         dt = date(year, MAY, 1)
-        if self._is_sunday(dt):
+        if self._is_sunday(dt) or (self._is_monday(dt) and year <= 1979):
             dt += td(days=+1)
         # Labor Day
         self._add_holiday(tr("Dia di Obrero"), dt)
