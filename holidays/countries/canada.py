@@ -58,7 +58,7 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
     ) -> None:
         if not self.observed:
             return None
-        if self._is_sunday(dt) or (self._is_saturday(dt) and include_sat):
+        if self._is_sunday(dt) or (include_sat and self._is_saturday(dt)):
             self._add_holiday(
                 self.tr("%s (Observed)") % self[dt],
                 dt + td(days=+2 if self._is_saturday(dt) else days),
