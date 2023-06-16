@@ -20,13 +20,13 @@ msgstr ""
 #: ./holidays/countries/hungary.py:45 ./holidays/countries/hungary.py:72
 #, c-format
 msgid "%s előtti pihenőnap"
-msgstr "%s (вихідний)"
+msgstr "%s (вихідний за день до)"
 
 #. Day off after
 #: ./holidays/countries/hungary.py:51
 #, c-format
 msgid "%s utáni pihenőnap"
-msgstr "%s (вихідний)"
+msgstr "%s (вихідний після)"
 
 #. New Year's Day.
 #: ./holidays/countries/hungary.py:64
