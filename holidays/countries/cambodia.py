@@ -23,7 +23,6 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
     A subclass of :py:class:`HolidayBase` representing public holidays
     in Cambodia.
 
-
     References:
 
     - Based on: https://www.nbc.gov.kh/english/news_and_events/official_holiday.php
@@ -262,13 +261,8 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
             self._add_holiday(tr("ទិវាសិទ្ធិមនុស្សអន្តរជាតិ"), DEC, 10)
 
         # Cambodian Lunar Calendar Holidays
-
-        """
-        See `_ThaiLunisolar` in holidays/utils.py for more details.
-
-        Cambodian Lunar Calendar Holidays only work from 1941 (B.E. 2485)
-        onwards until 2057 (B.E. 2601).
-        """
+        # See `_ThaiLunisolar` in holidays/utils.py for more details.
+        # Cambodian Lunar Calendar Holidays only work from 1941 to 2057.
 
         # ពិធីបុណ្យមាឃបូជា
         # Status: Defunct.

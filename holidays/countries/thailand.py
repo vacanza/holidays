@@ -24,7 +24,6 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
     A subclass of :py:class:`HolidayBase` representing public holidays
     in Thailand. (Based on South Korean and Singaporean Implementation)
 
-
     References:
 
     - Based on: https://en.wikipedia.org/wiki/Public_holidays_in_Thailand
@@ -572,13 +571,9 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         self._add_new_years_eve(tr("วันสิ้นปี"))
 
         # Thai Lunar Calendar Holidays
+        # See `_ThaiLunisolar` in holidays/utils.py for more details.
+        # Thai Lunar Calendar Holidays only work from 1941 to 2057.
 
-        """
-        See `_ThaiLunisolar` in holidays/utils.py for more details.
-
-        Thai Lunar Calendar Holidays only work from 1941 (B.E. 2484) onwards
-        until 2057 (B.E. 2600).
-        """
         # Makha Bucha.
         # วันมาฆบูชา
         # Status: In-Use.
