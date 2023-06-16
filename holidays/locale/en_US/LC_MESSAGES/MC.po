@@ -20,67 +20,66 @@ msgstr ""
 msgid "Jour férié"
 msgstr "Public holiday"
 
-#: ./holidays/countries/monaco.py:39
+#: ./holidays/countries/monaco.py:40
 #, c-format
 msgid "%s (Observé)"
 msgstr "%s (Observed)"
 
 #. New Year's Day.
-#: ./holidays/countries/monaco.py:45
+#: ./holidays/countries/monaco.py:47
 msgid "Le jour de l'An"
 msgstr "New Year's Day"
 
 #. Saint Devote's Day.
-#: ./holidays/countries/monaco.py:48
+#: ./holidays/countries/monaco.py:50
 msgid "La Sainte Dévote"
 msgstr "Saint Devote's Day"
 
 #. Easter Monday.
-#: ./holidays/countries/monaco.py:51
+#: ./holidays/countries/monaco.py:53
 msgid "Le lundi de Pâques"
 msgstr "Easter Monday"
 
 #. Labour Day.
-#: ./holidays/countries/monaco.py:54
+#: ./holidays/countries/monaco.py:56
 msgid "Fête de la Travaille"
 msgstr "Labour Day"
 
 #. Ascension's Day.
-#: ./holidays/countries/monaco.py:57
+#: ./holidays/countries/monaco.py:59
 msgid "L'Ascension"
 msgstr "Ascension's Day"
 
 #. Whit Monday.
-#: ./holidays/countries/monaco.py:60
+#: ./holidays/countries/monaco.py:62
 msgid "Le lundi de Pentecôte"
 msgstr "Whit Monday"
 
 #. Corpus Christi.
-#: ./holidays/countries/monaco.py:63
+#: ./holidays/countries/monaco.py:65
 msgid "La Fête Dieu"
 msgstr "Corpus Christi"
 
-#. Assumption's Day.
-#: ./holidays/countries/monaco.py:66
+#: ./holidays/countries/monaco.py:69
 msgid "L'Assomption de Marie"
 msgstr "Assumption's Day"
 
 #. All Saints' Day.
-#: ./holidays/countries/monaco.py:69
+#: ./holidays/countries/monaco.py:73
 msgid "La Toussaint"
 msgstr "All Saints' Day"
 
 #. Prince's Day.
-#: ./holidays/countries/monaco.py:72
+#: ./holidays/countries/monaco.py:76
 msgid "La Fête du Prince"
 msgstr "Prince's Day"
 
 #. Immaculate Conception's Day.
-#: ./holidays/countries/monaco.py:78
+#: ./holidays/countries/monaco.py:82
 msgid "L'Immaculée Conception"
 msgstr "Immaculate Conception's Day"
 
 #. Christmas Day.
-#: ./holidays/countries/monaco.py:81
+#: ./holidays/countries/monaco.py:85
 msgid "Noël"
 msgstr "Christmas Day"
