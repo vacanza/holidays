@@ -2,6 +2,9 @@ Version 0.27
 ============
 
 - Refactor HolidayBase::pop_named (#1306 by @arkid15r)
+- Refactor _add_observed() methods (#1282 by @KJhellico)
+- Refactor common::TestCase methods (#1308 by @arkid15r)
+- Refactor common::TestCase::assertLocalizedHolidays (#1315 by @arkid15r)
 - Refactor holiday groups (#1295 by @arkid15r)
 - Add Brunei Darussalam holidays (#1168 by @PPsyrius, @arkid15r)
 - Add Burkina Faso holidays (#1278 by @KJhellico)
@@ -10,12 +13,18 @@ Version 0.27
 - Update Argentina holidays: fix movable holidays prior to 2010 (#1258 by @PPsyrius)
 - Add Columbus day to InternationalHolidays (#1256 by @PPsyrius)
 - Add Isle Of Man 1970 test (#1304 by @arkid15r)
+- Add `_add_childrens_day(...)` to `InternationalHolidays` (#1300 by @PPsyrius)
+- Allow using ISO 639-2 (three-letter) language codes (#1313 by @arkid15r)
+- Make Tynwald Day movable from 1992 onwards for Isle of Man (#1310 by @PPsyrius)
 - Migrate Angola holidays to holiday groups (#1276 by @kasya)
 - Migrate Colombia to holiday groups (#1259 by @PPsyrius)
+- Migrate Hungary to holiday groups, add l10n support (#1311 by @KJhellico)
+- Migrate LATAM countries to holiday groups (#1312 by @KJhellico)
 - Migrate South Africa holidays to holiday groups (#1301 by @KJhellico)
 - Migrate remaining countries to custom calendar types (#1277 by @KJhellico)
 - Migrate some African countries to holiday groups (#1302 by @KJhellico)
 - Run entity import tests on latest Python version only (#1305 by @arkid15r)
+- Use aware UTC datetimes internally (#1314 by @scop)
 
 Version 0.26
 ============
