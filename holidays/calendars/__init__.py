@@ -24,6 +24,8 @@ from holidays.calendars.thai import _ThaiLunisolar
 
 GREGORIAN_CALENDAR = "GREGORIAN_CALENDAR"
 JULIAN_CALENDAR = "JULIAN_CALENDAR"
+KHMER_CALENDAR = "KHMER_CALENDAR"
+THAI_CALENDAR = "THAI_CALENDAR"
 
 
 def _get_nth_weekday_from(n: int, weekday: int, from_dt: date) -> date:
