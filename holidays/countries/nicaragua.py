@@ -9,16 +9,14 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
 from gettext import gettext as tr
 
-from dateutil.easter import easter
-
-from holidays.constants import JAN, MAY, JUL, AUG, SEP, DEC
+from holidays.constants import JUL, AUG, SEP
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Nicaragua(HolidayBase):
+class Nicaragua(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "NI"
     default_language = "es"
     subdivisions = (
@@ -42,25 +40,28 @@ class Nicaragua(HolidayBase):
     )
     supported_languages = ("en_US", "es", "uk")
 
-    def __init__(self, **kwargs):
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
         # Default subdivision to MN; prov for backwards compatibility
         if not kwargs.get("subdiv", kwargs.get("prov")):
             kwargs["subdiv"] = "MN"
-        HolidayBase.__init__(self, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
 
         # New Year's Day.
-        self._add_holiday(tr("Año Nuevo"), JAN, 1)
+        self._add_new_years_day(tr("Año Nuevo"))
 
-        easter_date = easter(year)
         # Maundy Thursday.
-        self._add_holiday(tr("Jueves Santo"), easter_date + td(days=-3))
+        self._add_holy_thursday(tr("Jueves Santo"))
+
         # Good Friday.
-        self._add_holiday(tr("Viernes Santo"), easter_date + td(days=-2))
-        # Labour Day.
-        self._add_holiday(tr("Día del Trabajo"), MAY, 1)
+        self._add_good_friday(tr("Viernes Santo"))
+
+        # Labor Day.
+        self._add_labor_day(tr("Día del Trabajo"))
 
         if year >= 1979:
             # Revolution Day.
@@ -68,19 +69,22 @@ class Nicaragua(HolidayBase):
 
         # Battle of San Jacinto Day.
         self._add_holiday(tr("Batalla de San Jacinto"), SEP, 14)
+
         # Independence Day.
         self._add_holiday(tr("Día de la Independencia"), SEP, 15)
-        # Virgin's Day.
-        self._add_holiday(tr("Concepción de María"), DEC, 8)
-        # Christmas.
-        self._add_holiday(tr("Navidad"), DEC, 25)
 
-        # Provinces festive day
-        if self.subdiv == "MN":
-            # Descent of Saint Dominic.
-            self._add_holiday(tr("Bajada de Santo Domingo"), AUG, 1)
-            # Ascent of Saint Dominic.
-            self._add_holiday(tr("Subida de Santo Domingo"), AUG, 10)
+        # Virgin's Day.
+        self._add_immaculate_conception_day(tr("Concepción de María"))
+
+        # Christmas.
+        self._add_christmas_day(tr("Navidad"))
+
+    def _add_subdiv_mn_holidays(self):
+        # Descent of Saint Dominic.
+        self._add_holiday(tr("Bajada de Santo Domingo"), AUG, 1)
+
+        # Ascent of Saint Dominic.
+        self._add_holiday(tr("Subida de Santo Domingo"), AUG, 10)
 
 
 class NI(Nicaragua):

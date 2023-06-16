@@ -12,7 +12,7 @@
 from unittest import TestCase
 
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
 class TestChristianHolidays(TestCase):
@@ -37,3 +37,24 @@ class TestChristianHolidays(TestCase):
         test_holidays._add_christmas_day_three("Third day")
         self.assertIn("2022-12-27", test_holidays)
         self.assertEqual(1, len(test_holidays))
+
+
+class TestInternationalHolidays(TestCase):
+    def test_add_childrens_day(self):
+        class TestHolidays(HolidayBase, InternationalHolidays):
+            def __init__(self, *args, **kwargs):
+                InternationalHolidays.__init__(self)
+                super().__init__(*args, **kwargs)
+
+        test_holidays = TestHolidays()
+
+        test_holidays._populate(2022)
+        test_holidays._add_childrens_day("Children's Day (November 20)", "NOV")
+        self.assertIn("2022-11-20", test_holidays)
+        self.assertEqual(1, len(test_holidays))
+        self.assertRaises(
+            ValueError,
+            lambda: test_holidays._add_childrens_day(
+                "Invalid", "INVALID_TYPE"
+            ),
+        )
