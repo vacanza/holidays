@@ -22,7 +22,7 @@ class TestEcuador(TestCase):
         self.assertCountryAliases(Ecuador, EC, ECU)
 
     def test_new_years_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Año Nuevo", (f"{year}-01-01" for year in range(2000, 2050))
         )
 
@@ -45,7 +45,7 @@ class TestEcuador(TestCase):
             "2023-02-20",
             "2023-02-21",
         )
-        self.assertHolidaysName("Carnaval", dt)
+        self.assertHolidayName("Carnaval", dt)
 
     def test_good_friday(self):
         dt = (
@@ -58,45 +58,45 @@ class TestEcuador(TestCase):
             "2022-04-15",
             "2023-04-07",
         )
-        self.assertHolidaysName("Viernes Santo", dt)
+        self.assertHolidayName("Viernes Santo", dt)
 
     def test_labour_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Día del Trabajo", (f"{year}-05-01" for year in range(2000, 2050))
         )
 
     def test_battle_of_pichincha(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Batalla de Pichincha",
             (f"{year}-05-24" for year in range(2000, 2050)),
         )
 
     def test_independence_of_quito(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Primer Grito de Independencia",
             (f"{year}-08-10" for year in range(2000, 2050)),
         )
 
     def test_independence_of_guayaquil(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Independencia de Guayaquil",
             (f"{year}-10-09" for year in range(2000, 2050)),
         )
 
     def test_all_souls_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Día de los Difuntos",
             (f"{year}-11-02" for year in range(2000, 2050)),
         )
 
     def test_independence_of_cuenca(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Independencia de Cuenca",
             (f"{year}-11-03" for year in range(2000, 2050)),
         )
 
     def test_christmas_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Día de Navidad", (f"{year}-12-25" for year in range(2000, 2050))
         )
 
@@ -188,86 +188,80 @@ class TestEcuador(TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
+            ("2022-01-01", "Año Nuevo"),
+            ("2022-02-28", "Carnaval"),
+            ("2022-03-01", "Carnaval"),
+            ("2022-04-15", "Viernes Santo"),
+            ("2022-05-01", "Día del Trabajo"),
+            ("2022-05-02", "Día del Trabajo (Observado)"),
+            ("2022-05-23", "Batalla de Pichincha (Observado)"),
+            ("2022-05-24", "Batalla de Pichincha"),
+            ("2022-08-10", "Primer Grito de Independencia"),
+            ("2022-08-12", "Primer Grito de Independencia (Observado)"),
+            ("2022-10-09", "Independencia de Guayaquil"),
+            ("2022-10-10", "Independencia de Guayaquil (Observado)"),
+            ("2022-11-02", "Día de los Difuntos"),
+            ("2022-11-03", "Independencia de Cuenca"),
             (
-                ("2022-01-01", "Año Nuevo"),
-                ("2022-02-28", "Carnaval"),
-                ("2022-03-01", "Carnaval"),
-                ("2022-04-15", "Viernes Santo"),
-                ("2022-05-01", "Día del Trabajo"),
-                ("2022-05-02", "Día del Trabajo (Observado)"),
-                ("2022-05-23", "Batalla de Pichincha (Observado)"),
-                ("2022-05-24", "Batalla de Pichincha"),
-                ("2022-08-10", "Primer Grito de Independencia"),
-                ("2022-08-12", "Primer Grito de Independencia (Observado)"),
-                ("2022-10-09", "Independencia de Guayaquil"),
-                ("2022-10-10", "Independencia de Guayaquil (Observado)"),
-                ("2022-11-02", "Día de los Difuntos"),
-                ("2022-11-03", "Independencia de Cuenca"),
-                (
-                    "2022-11-04",
-                    "Día de los Difuntos (Observado); "
-                    "Independencia de Cuenca (Observado)",
-                ),
-                ("2022-12-25", "Día de Navidad"),
-                ("2022-12-26", "Día de Navidad (Observado)"),
-            )
+                "2022-11-04",
+                "Día de los Difuntos (Observado); "
+                "Independencia de Cuenca (Observado)",
+            ),
+            ("2022-12-25", "Día de Navidad"),
+            ("2022-12-26", "Día de Navidad (Observado)"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "New Year's Day"),
-                ("2022-02-28", "Carnival"),
-                ("2022-03-01", "Carnival"),
-                ("2022-04-15", "Good Friday"),
-                ("2022-05-01", "Labour Day"),
-                ("2022-05-02", "Labour Day (Observed)"),
-                ("2022-05-23", "The Battle of Pichincha (Observed)"),
-                ("2022-05-24", "The Battle of Pichincha"),
-                ("2022-08-10", "Declaration of Independence of Quito"),
-                (
-                    "2022-08-12",
-                    "Declaration of Independence of Quito (Observed)",
-                ),
-                ("2022-10-09", "Independence of Guayaquil"),
-                ("2022-10-10", "Independence of Guayaquil (Observed)"),
-                ("2022-11-02", "All Souls' Day"),
-                ("2022-11-03", "Independence of Cuenca"),
-                (
-                    "2022-11-04",
-                    "All Souls' Day (Observed); "
-                    "Independence of Cuenca (Observed)",
-                ),
-                ("2022-12-25", "Christmas Day"),
-                ("2022-12-26", "Christmas Day (Observed)"),
-            ),
             "en_US",
+            ("2022-01-01", "New Year's Day"),
+            ("2022-02-28", "Carnival"),
+            ("2022-03-01", "Carnival"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-05-01", "Labour Day"),
+            ("2022-05-02", "Labour Day (Observed)"),
+            ("2022-05-23", "The Battle of Pichincha (Observed)"),
+            ("2022-05-24", "The Battle of Pichincha"),
+            ("2022-08-10", "Declaration of Independence of Quito"),
+            (
+                "2022-08-12",
+                "Declaration of Independence of Quito (Observed)",
+            ),
+            ("2022-10-09", "Independence of Guayaquil"),
+            ("2022-10-10", "Independence of Guayaquil (Observed)"),
+            ("2022-11-02", "All Souls' Day"),
+            ("2022-11-03", "Independence of Cuenca"),
+            (
+                "2022-11-04",
+                "All Souls' Day (Observed); "
+                "Independence of Cuenca (Observed)",
+            ),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Christmas Day (Observed)"),
         )
 
     def test_l10n_uk(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "Новий рік"),
-                ("2022-02-28", "Карнавал"),
-                ("2022-03-01", "Карнавал"),
-                ("2022-04-15", "Страсна пʼятниця"),
-                ("2022-05-01", "День праці"),
-                ("2022-05-02", "День праці (вихідний)"),
-                ("2022-05-23", "День битви біля Пічинча (вихідний)"),
-                ("2022-05-24", "День битви біля Пічинча"),
-                ("2022-08-10", "День незалежності Кіто"),
-                ("2022-08-12", "День незалежності Кіто (вихідний)"),
-                ("2022-10-09", "День незалежності Гуаякіля"),
-                ("2022-10-10", "День незалежності Гуаякіля (вихідний)"),
-                ("2022-11-02", "День усіх померлих"),
-                ("2022-11-03", "День незалежності Куенки"),
-                (
-                    "2022-11-04",
-                    "День незалежності Куенки (вихідний); "
-                    "День усіх померлих (вихідний)",
-                ),
-                ("2022-12-25", "Різдво Христове"),
-                ("2022-12-26", "Різдво Христове (вихідний)"),
-            ),
             "uk",
+            ("2022-01-01", "Новий рік"),
+            ("2022-02-28", "Карнавал"),
+            ("2022-03-01", "Карнавал"),
+            ("2022-04-15", "Страсна пʼятниця"),
+            ("2022-05-01", "День праці"),
+            ("2022-05-02", "День праці (вихідний)"),
+            ("2022-05-23", "День битви біля Пічинча (вихідний)"),
+            ("2022-05-24", "День битви біля Пічинча"),
+            ("2022-08-10", "День незалежності Кіто"),
+            ("2022-08-12", "День незалежності Кіто (вихідний)"),
+            ("2022-10-09", "День незалежності Гуаякіля"),
+            ("2022-10-10", "День незалежності Гуаякіля (вихідний)"),
+            ("2022-11-02", "День усіх померлих"),
+            ("2022-11-03", "День незалежності Куенки"),
+            (
+                "2022-11-04",
+                "День незалежності Куенки (вихідний); "
+                "День усіх померлих (вихідний)",
+            ),
+            ("2022-12-25", "Різдво Христове"),
+            ("2022-12-26", "Різдво Христове (вихідний)"),
         )

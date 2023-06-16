@@ -41,7 +41,7 @@ class Monaco(HolidayBase, ChristianHolidays, InternationalHolidays):
         # New Year's Day.
         observed_dates.add(self._add_new_years_day(tr("Le jour de l'An")))
 
-        # Saint Dévote's Day.
+        # Saint Devote's Day.
         self._add_holiday(tr("La Sainte Dévote"), JAN, 27)
 
         # Easter Monday.

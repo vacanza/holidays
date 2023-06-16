@@ -15,7 +15,7 @@ import copy
 import os
 import warnings
 from calendar import isleap
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from gettext import NullTranslations, gettext, translation
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Tuple
@@ -459,7 +459,7 @@ class HolidayBase(Dict[date, str]):
         elif isinstance(
             key, (float, int)
         ):  # Key type is derived from `float` or `int`.
-            dt = datetime.utcfromtimestamp(key).date()
+            dt = datetime.fromtimestamp(key, timezone.utc).date()
 
         else:  # Key type is not supported.
             raise TypeError(f"Cannot convert type '{type(key)}' to date.")
