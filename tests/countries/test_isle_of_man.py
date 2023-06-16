@@ -16,13 +16,14 @@ from tests.common import TestCase
 class TestIM(TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(IsleOfMan)
+        super().setUpClass(IsleOfMan, years=range(1970, 2070))
 
     def test_country_aliases(self):
         self.assertCountryAliases(IsleOfMan, IM, IMN)
 
     def test_1970(self):
         self.assertHolidays(
+            IsleOfMan(years=1970),
             ("1970-03-27", "Good Friday"),
             ("1970-03-30", "Easter Monday"),
             ("1970-06-05", "TT Bank Holiday"),
@@ -34,6 +35,7 @@ class TestIM(TestCase):
 
     def test_2022(self):
         self.assertHolidays(
+            IsleOfMan(years=2022),
             ("2022-01-01", "New Year's Day"),
             ("2022-01-03", "New Year's Day (Observed)"),
             ("2022-04-15", "Good Friday"),
@@ -50,4 +52,26 @@ class TestIM(TestCase):
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Boxing Day"),
             ("2022-12-27", "Christmas Day (Observed)"),
+        )
+
+    def test_tynwald_day(self):
+        name = "Tynwald Day"
+        self.assertHoliday(f"{year}-07-05" for year in range(1970, 1992))
+        self.assertHolidaysName(
+            name,
+            "1992-07-06",
+            "2019-07-05",
+            "2020-07-06",
+            "2021-07-05",
+            "2022-07-05",
+            "2023-07-05",
+            "2024-07-05",
+            "2025-07-07",
+            "2026-07-06",
+        )
+        self.assertNoHoliday(
+            "1992-07-05",
+            "2020-07-05",
+            "2025-07-05",
+            "2026-07-05",
         )
