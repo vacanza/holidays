@@ -43,7 +43,7 @@ class TestCuracao(TestCase):
 
     def test_queens_day(self):
         name = "Dia di la Reina"
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name,
             "1961-05-01",
             "1965-04-30",
@@ -71,7 +71,7 @@ class TestCuracao(TestCase):
     def test_king_day(self):
         name = "Dia di Rey"
         self.assertNoHolidayName(name, 2013)
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name,
             "2016-04-27",
             "2017-04-27",
@@ -94,7 +94,7 @@ class TestCuracao(TestCase):
         )
 
     def test_labor_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Dia di Obrero",
             "2016-05-02",
             "2017-05-01",
@@ -114,7 +114,7 @@ class TestCuracao(TestCase):
     def test_anthem_and_flag_day(self):
         name = "Dia di Himno i Bandera"
         self.assertNoHolidayName(name, 1983)
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name,
             (f"{year}-07-02" for year in range(1984, 2077)),
         )
@@ -122,82 +122,74 @@ class TestCuracao(TestCase):
     def test_curacao_day(self):
         name = "Dia di Pais Kòrsou"
         self.assertNoHolidayName(name, 2009)
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name,
             (f"{year}-10-10" for year in range(2010, 2077)),
         )
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            (
-                ("2023-01-01", "Aña Nobo"),
-                ("2023-02-20", "Dialuna despues di Carnaval Grandi"),
-                ("2023-04-07", "Bièrnèsantu"),
-                ("2023-04-09", "Pasku di Resurekshon"),
-                ("2023-04-10", "Di dos dia di Pasku di Resurekshon"),
-                ("2023-04-27", "Dia di Rey"),
-                ("2023-05-01", "Dia di Obrero"),
-                ("2023-05-18", "Dia di Asenshon"),
-                ("2023-07-02", "Dia di Himno i Bandera"),
-                ("2023-10-10", "Dia di Pais Kòrsou"),
-                ("2023-12-25", "Pasku di Nasementu"),
-                ("2023-12-26", "Di dos dia di Pasku di Nasementu"),
-            ),
+            ("2023-01-01", "Aña Nobo"),
+            ("2023-02-20", "Dialuna despues di Carnaval Grandi"),
+            ("2023-04-07", "Bièrnèsantu"),
+            ("2023-04-09", "Pasku di Resurekshon"),
+            ("2023-04-10", "Di dos dia di Pasku di Resurekshon"),
+            ("2023-04-27", "Dia di Rey"),
+            ("2023-05-01", "Dia di Obrero"),
+            ("2023-05-18", "Dia di Asenshon"),
+            ("2023-07-02", "Dia di Himno i Bandera"),
+            ("2023-10-10", "Dia di Pais Kòrsou"),
+            ("2023-12-25", "Pasku di Nasementu"),
+            ("2023-12-26", "Di dos dia di Pasku di Nasementu"),
         )
 
     def test_l10n_en_US(self):
         self.assertLocalizedHolidays(
-            (
-                ("2023-01-01", "New Year's Day"),
-                ("2023-02-20", "Carnival Monday"),
-                ("2023-04-07", "Good Friday"),
-                ("2023-04-09", "Easter Sunday"),
-                ("2023-04-10", "Easter Monday"),
-                ("2023-04-27", "King's Day"),
-                ("2023-05-01", "Labor Day"),
-                ("2023-05-18", "Ascension Day"),
-                ("2023-07-02", "National Anthem and Flag Day"),
-                ("2023-10-10", "Curaçao Day"),
-                ("2023-12-25", "Christmas Day"),
-                ("2023-12-26", "Second Day of Christmas"),
-            ),
             "en_US",
+            ("2023-01-01", "New Year's Day"),
+            ("2023-02-20", "Carnival Monday"),
+            ("2023-04-07", "Good Friday"),
+            ("2023-04-09", "Easter Sunday"),
+            ("2023-04-10", "Easter Monday"),
+            ("2023-04-27", "King's Day"),
+            ("2023-05-01", "Labor Day"),
+            ("2023-05-18", "Ascension Day"),
+            ("2023-07-02", "National Anthem and Flag Day"),
+            ("2023-10-10", "Curaçao Day"),
+            ("2023-12-25", "Christmas Day"),
+            ("2023-12-26", "Second Day of Christmas"),
         )
 
     def test_l10n_nl(self):
         self.assertLocalizedHolidays(
-            (
-                ("2023-01-01", "Nieuwjaarsdag"),
-                ("2023-02-20", "De maandag na de Grote Karnaval"),
-                ("2023-04-07", "Goede Vrijdag"),
-                ("2023-04-09", "Paasdag"),
-                ("2023-04-10", "Tweede paasdag"),
-                ("2023-04-27", "Koningsdag"),
-                ("2023-05-01", "Dag van de Arbeid"),
-                ("2023-05-18", "Hemelvaartsdag"),
-                ("2023-07-02", "Nationale vlag en volkslied"),
-                ("2023-10-10", "Dag van Land Curaçao"),
-                ("2023-12-25", "Kerst"),
-                ("2023-12-26", "Tweede kerstdag"),
-            ),
             "nl",
+            ("2023-01-01", "Nieuwjaarsdag"),
+            ("2023-02-20", "De maandag na de Grote Karnaval"),
+            ("2023-04-07", "Goede Vrijdag"),
+            ("2023-04-09", "Paasdag"),
+            ("2023-04-10", "Tweede paasdag"),
+            ("2023-04-27", "Koningsdag"),
+            ("2023-05-01", "Dag van de Arbeid"),
+            ("2023-05-18", "Hemelvaartsdag"),
+            ("2023-07-02", "Nationale vlag en volkslied"),
+            ("2023-10-10", "Dag van Land Curaçao"),
+            ("2023-12-25", "Kerst"),
+            ("2023-12-26", "Tweede kerstdag"),
         )
 
     def test_l10n_uk(self):
         self.assertLocalizedHolidays(
-            (
-                ("2023-01-01", "Новий рік"),
-                ("2023-02-20", "Карнавальний понеділок"),
-                ("2023-04-07", "Страсна пʼятниця"),
-                ("2023-04-09", "Великдень"),
-                ("2023-04-10", "Великодній понеділок"),
-                ("2023-04-27", "День короля"),
-                ("2023-05-01", "День праці"),
-                ("2023-05-18", "Вознесіння Господнє"),
-                ("2023-07-02", "День державного гімну та прапора"),
-                ("2023-10-10", "День Кюрасао"),
-                ("2023-12-25", "Різдво Христове"),
-                ("2023-12-26", "Другий день Різдва"),
-            ),
             "uk",
+            ("2023-01-01", "Новий рік"),
+            ("2023-02-20", "Карнавальний понеділок"),
+            ("2023-04-07", "Страсна пʼятниця"),
+            ("2023-04-09", "Великдень"),
+            ("2023-04-10", "Великодній понеділок"),
+            ("2023-04-27", "День короля"),
+            ("2023-05-01", "День праці"),
+            ("2023-05-18", "Вознесіння Господнє"),
+            ("2023-07-02", "День державного гімну та прапора"),
+            ("2023-10-10", "День Кюрасао"),
+            ("2023-12-25", "Різдво Христове"),
+            ("2023-12-26", "Другий день Різдва"),
         )
