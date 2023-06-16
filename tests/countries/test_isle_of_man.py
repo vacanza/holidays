@@ -57,7 +57,7 @@ class TestIM(TestCase):
     def test_tynwald_day(self):
         name = "Tynwald Day"
         self.assertHoliday(f"{year}-07-05" for year in range(1970, 1992))
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name,
             "1992-07-06",
             "2019-07-05",
