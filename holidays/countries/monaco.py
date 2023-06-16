@@ -26,9 +26,7 @@ class Monaco(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "MC"
     default_language = "fr"
-    special_holidays = {
-        2015: ((JAN, 7, tr("Jour férié")),),
-    }
+    special_holidays = {2015: (JAN, 7, tr("Jour férié"))}
     supported_languages = ("en_US", "fr", "uk")
 
     def __init__(self, *args, **kwargs):
@@ -48,7 +46,7 @@ class Monaco(HolidayBase, ChristianHolidays, InternationalHolidays):
         # New Year's Day.
         self._add_observed(self._add_new_years_day(tr("Le jour de l'An")))
 
-        # Saint Dévote's Day.
+        # Saint Devote's Day.
         self._add_holiday(tr("La Sainte Dévote"), JAN, 27)
 
         # Easter Monday.

@@ -81,21 +81,21 @@ class BAH(Bahrain):
 
 class BahrainIslamicCalendar(_CustomIslamicCalendar):
     ASHURA_DATES = {
-        2022: ((AUG, 8),),
+        2022: (AUG, 8),
     }
 
     EID_AL_ADHA = {
-        2022: ((JUL, 9),),
+        2022: (JUL, 9),
     }
 
     EID_AL_FITR_DATES = {
-        2022: ((MAY, 2),),
+        2022: (MAY, 2),
     }
 
     HIJRI_NEW_YEAR_DATES = {
-        2022: ((JUL, 30),),
+        2022: (JUL, 30),
     }
 
     MAWLID_DATES = {
-        2022: ((OCT, 8),),
+        2022: (OCT, 8),
     }

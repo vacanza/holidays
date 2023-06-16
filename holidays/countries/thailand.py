@@ -165,7 +165,7 @@ class Thailand(HolidayBase, InternationalHolidays):
             (DEC, 12, thai_special_in_lieu_holidays),
         ),
         # 1995-1997 (Bank of Thailand Data).
-        1996: ((JUN, 10, rama_ix_golden_jubilee),),
+        1996: (JUN, 10, rama_ix_golden_jubilee),
         # 1998-2000 (include In Lieus, Checked with Bank of Thailand Data).
         1998: (
             (MAY, 11, thai_special_in_lieu_holidays),
@@ -192,7 +192,7 @@ class Thailand(HolidayBase, InternationalHolidays):
             (JUN, 13, rama_ix_sixty_accession),
             (SEP, 20, thai_military_emergency_lockdown),
         ),
-        2007: ((DEC, 24, thai_election_in_lieu),),
+        2007: (DEC, 24, thai_election_in_lieu),
         2009: (
             (JAN, 2, thai_bridge_public_holiday),
             (APR, 10, thai_political_emergency_lockdown),
@@ -213,9 +213,9 @@ class Thailand(HolidayBase, InternationalHolidays):
             (OCT, 30, thai_flood_2011_emergency_lockdown),
             (OCT, 31, thai_flood_2011_emergency_lockdown),
         ),
-        2012: ((APR, 9, thai_bridge_public_holiday),),
-        2013: ((DEC, 30, thai_bridge_public_holiday),),
-        2014: ((AUG, 11, thai_bridge_public_holiday),),
+        2012: (APR, 9, thai_bridge_public_holiday),
+        2013: (DEC, 30, thai_bridge_public_holiday),
+        2014: (AUG, 11, thai_bridge_public_holiday),
         2015: (
             (JAN, 2, thai_bridge_public_holiday),
             (MAY, 4, thai_bridge_public_holiday),
@@ -225,8 +225,8 @@ class Thailand(HolidayBase, InternationalHolidays):
             (JUL, 18, thai_bridge_public_holiday),
             (OCT, 14, rama_ix_mourning),
         ),
-        2017: ((OCT, 26, rama_ix_cremation),),
-        2019: ((MAY, 6, rama_x_coronation_celebrations),),
+        2017: (OCT, 26, rama_ix_cremation),
+        2019: (MAY, 6, rama_x_coronation_celebrations),
         2020: (
             (JUL, 27, songkran_festival_in_lieu_covid),
             (SEP, 4, songkran_festival_in_lieu_covid),
@@ -246,7 +246,7 @@ class Thailand(HolidayBase, InternationalHolidays):
             (OCT, 14, thai_bridge_public_holiday),
             (DEC, 30, thai_bridge_public_holiday),
         ),
-        2023: ((MAY, 5, thai_bridge_public_holiday),),
+        2023: (MAY, 5, thai_bridge_public_holiday),
     }
     supported_languages = ("en_US", "th")
 

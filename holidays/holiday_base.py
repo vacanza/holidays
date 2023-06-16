@@ -15,7 +15,7 @@ import copy
 import os
 import warnings
 from calendar import isleap
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from gettext import NullTranslations, gettext, translation
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Tuple
@@ -25,9 +25,11 @@ from dateutil.parser import parse
 
 from holidays.constants import HOLIDAY_NAME_DELIMITER, MON, TUE, WED, THU, FRI
 from holidays.constants import SAT, SUN
+from holidays.helpers import _normalize_tuple
 
 DateArg = Union[date, Tuple[int, int]]
 DateLike = Union[date, datetime, str, float, int]
+SpecialHoliday = Union[Tuple[int, int, str], Tuple[Tuple[int, int, str], ...]]
 
 gettext = gettext
 
@@ -201,7 +203,7 @@ class HolidayBase(Dict[date, str]):
     """Whether dates when public holiday are observed are included."""
     subdiv: Optional[str] = None
     """The subdiv requested."""
-    special_holidays: Dict[int, Tuple[Tuple[int, int, str], ...]] = {}
+    special_holidays: Dict[int, SpecialHoliday] = {}
     """A list of the country-wide special (as opposite to regular) holidays for
     a specific year."""
     _deprecated_subdivisions: Tuple[str, ...] = ()
@@ -457,7 +459,7 @@ class HolidayBase(Dict[date, str]):
         elif isinstance(
             key, (float, int)
         ):  # Key type is derived from `float` or `int`.
-            dt = datetime.utcfromtimestamp(key).date()
+            dt = datetime.fromtimestamp(key, timezone.utc).date()
 
         else:  # Key type is not supported.
             raise TypeError(f"Cannot convert type '{type(key)}' to date.")
@@ -653,7 +655,9 @@ class HolidayBase(Dict[date, str]):
         dates = set()
 
         # Populate items from the special holidays list.
-        for month, day, name in self.special_holidays.get(year, ()):
+        for month, day, name in _normalize_tuple(
+            self.special_holidays.get(year, ())
+        ):
             dates.add(self._add_holiday(name, date(year, month, day)))
 
         # Populate subdivision holidays.
@@ -720,7 +724,12 @@ class HolidayBase(Dict[date, str]):
             if name
         ]
 
-    def get_named(self, holiday_name: str, lookup="icontains") -> List[date]:
+    def get_named(
+        self,
+        holiday_name: str,
+        lookup="icontains",
+        split_multiple_names=True,
+    ) -> List[date]:
         """Return a list of all holiday dates matching the provided holiday
         name. The match will be made case insensitively and partial matches
         will be included by default.
@@ -735,12 +744,17 @@ class HolidayBase(Dict[date, str]):
                 icontains - case insensitive contains match;
                 iexact - case insensitive exact match;
                 istartswith - case insensitive starts with match;
+        :param split_multiple_names:
+            Either use the exact name for each date or split it by holiday
+            name delimiter.
 
         :return:
             A list of all holiday dates matching the provided holiday name.
         """
         holiday_date_names_mapping: Dict[date, List[str]] = {
             key: value.split(HOLIDAY_NAME_DELIMITER)
+            if split_multiple_names
+            else [value]
             for key, value in self.items()
         }
 
@@ -845,14 +859,24 @@ class HolidayBase(Dict[date, str]):
         :raise:
             KeyError if date is not a holiday and default is not given.
         """
-        dates = self.get_named(name)
-        if not dates:
+        use_exact_name = HOLIDAY_NAME_DELIMITER in name
+        dts = self.get_named(name, split_multiple_names=not use_exact_name)
+        if len(dts) == 0:
             raise KeyError(name)
 
-        for dt in dates:
+        popped = []
+        for dt in dts:
+            holiday_names = self[dt].split(HOLIDAY_NAME_DELIMITER)
             self.pop(dt)
+            popped.append(dt)
 
-        return dates
+            # Keep the rest of holidays falling on the same date.
+            if not use_exact_name:
+                holiday_names.remove(name)
+                if len(holiday_names) > 0:
+                    self[dt] = HOLIDAY_NAME_DELIMITER.join(holiday_names)
+
+        return popped
 
     def update(  # type: ignore[override]
         self, *args: Union[Dict[DateLike, str], List[DateLike], DateLike]

@@ -26,7 +26,7 @@ class TestIndonesia(TestCase):
 
     def test_lunar_new_year(self):
         name = "Tahun Baru Imlek"
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name,
             "2005-02-09",
             "2006-01-30",
@@ -51,7 +51,7 @@ class TestIndonesia(TestCase):
 
     def test_day_of_silence(self):
         name = "Hari Suci Nyepi"
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name,
             "2009-03-26",
             "2014-03-31",

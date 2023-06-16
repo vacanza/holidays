@@ -37,10 +37,10 @@ class Paraguay(HolidayBase):
     special_holidays = {
         # public holiday for business purposes, in view of
         # the recently increased risk of Dengue fever
-        2007: ((JAN, 29, public_holiday),),
+        2007: (JAN, 29, public_holiday),
         # public sector holiday to celebrate Paraguay's
         # football team's qualification for the 2010 World Cup
-        2009: ((SEP, 10, public_holiday),),
+        2009: (SEP, 10, public_holiday),
         2010: (
             # public holiday to coincide with the Paraguay-Italy
             # game of the current World Cup
