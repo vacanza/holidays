@@ -42,14 +42,16 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _add_observed(self, dt: date, include_sat: bool = True) -> None:
+    def _add_observed(
+        self, dt: date, include_sat: bool = True, days: int = +1
+    ) -> None:
         if not self.observed:
             return None
-        if self._is_sunday(dt) or (self._is_saturday(dt) and include_sat):
-            obs_date = _get_nth_weekday_from(1, MON, dt)
-            if obs_date in self:
-                obs_date += td(days=+1)
-            self._add_holiday("%s (Observed)" % self[dt], obs_date)
+        if self._is_sunday(dt) or (include_sat and self._is_saturday(dt)):
+            self._add_holiday(
+                "%s (Observed)" % self[dt],
+                dt + td(days=+2 if self._is_saturday(dt) else days),
+            )
 
     def _populate(self, year):
         super()._populate(year)
@@ -109,15 +111,15 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday("Anzac Day", APR, 25)
 
         # Christmas Day
-        dec_25 = self._add_christmas_day("Christmas Day")
+        self._add_observed(self._add_christmas_day("Christmas Day"), days=+2)
 
         # Boxing Day
-        dec_26 = self._add_christmas_day_two(
-            "Proclamation Day" if self.subdiv == "SA" else "Boxing Day"
+        self._add_observed(
+            self._add_christmas_day_two(
+                "Proclamation Day" if self.subdiv == "SA" else "Boxing Day"
+            ),
+            days=+2,
         )
-
-        self._add_observed(dec_25)
-        self._add_observed(dec_26)
 
         super()._add_subdiv_holidays()
 

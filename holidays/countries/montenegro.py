@@ -9,10 +9,11 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from datetime import timedelta as td
 
 from holidays.calendars import JULIAN_CALENDAR
-from holidays.constants import JAN, MAY, JUL
+from holidays.constants import MAY, JUL
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -33,29 +34,29 @@ class Montenegro(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _add_observed_holiday(self, *args) -> None:
-        name, dt = self._parse_holiday(*args)
+    def _add_observed(self, dt: date, days: int = +1) -> None:
+        if self.observed and self._is_sunday(dt):
+            self._add_holiday("%s (Observed)" % self[dt], dt + td(days))
 
-        self._add_holiday(name, dt)
-
-        if self._is_weekend(dt):
-            self._add_holiday("%s (Observed)" % name, dt + td(days=+2))
-        self._add_holiday(
-            "%s (Observed)" % name if self._is_sunday(dt) else name,
-            dt + td(days=+1),
-        )
-
-    def _populate(self, year: int) -> None:
+    def _populate(self, year):
         super()._populate(year)
 
         # New Year's Day.
-        self._add_observed_holiday("New Year's Day", JAN, 1)
+        name = "New Year's Day"
+        self._add_observed(self._add_new_years_day(name), days=+2)
+        self._add_observed(self._add_new_years_day_two(name))
 
         # Orthodox Christmas Eve.
         self._add_christmas_eve("Orthodox Christmas Eve")
 
         # Orthodox Christmas.
         self._add_christmas_day("Orthodox Christmas")
+
+        # Labour Day.
+        name = "Labour Day"
+        may_1 = self._add_labor_day(name)
+        self._add_observed(may_1, days=+2)
+        self._add_observed(self._add_holiday(name, may_1 + td(days=+1)))
 
         # Good Friday.
         self._add_good_friday("Orthodox Good Friday")
@@ -66,14 +67,17 @@ class Montenegro(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Easter Monday.
         self._add_easter_monday("Orthodox Easter Monday")
 
-        # Labour Day.
-        self._add_observed_holiday("Labour Day", MAY, 1)
-
         # Independence Day.
-        self._add_observed_holiday("Independence Day", MAY, 21)
+        name = "Independence Day"
+        may_21 = self._add_holiday(name, MAY, 21)
+        self._add_observed(may_21, days=+2)
+        self._add_observed(self._add_holiday(name, may_21 + td(days=+1)))
 
         # Statehood Day.
-        self._add_observed_holiday("Statehood Day", JUL, 13)
+        name = "Statehood Day"
+        jul_13 = self._add_holiday(name, JUL, 13)
+        self._add_observed(jul_13, days=+2)
+        self._add_observed(self._add_holiday(name, jul_13 + td(days=+1)))
 
 
 class ME(Montenegro):
