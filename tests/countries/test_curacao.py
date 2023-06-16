@@ -143,7 +143,7 @@ class TestCuracao(TestCase):
             ("2023-12-26", "Di dos dia di Pasku di Nasementu"),
         )
 
-    def test_l10n_en_US(self):
+    def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
             ("2023-01-01", "New Year's Day"),
