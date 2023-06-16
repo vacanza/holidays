@@ -57,7 +57,7 @@ class TestUkraine(TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_easter(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Великдень (Пасха)",
             "2010-04-04",
             "2011-04-24",
@@ -94,7 +94,7 @@ class TestUkraine(TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_trinity(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Трійця",
             "2010-05-23",
             "2011-06-12",

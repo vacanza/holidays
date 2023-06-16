@@ -246,7 +246,7 @@ class TestPortugal(TestCase):
         name = "Corpo de Deus"
 
         self.assertNoHolidayName(name, range(2013, 2016))
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name,
             "2016-05-26",
             "2017-06-15",

@@ -22,7 +22,7 @@ class TestEcuador(TestCase):
         self.assertCountryAliases(Ecuador, EC, ECU)
 
     def test_new_years_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Año Nuevo", (f"{year}-01-01" for year in range(2000, 2050))
         )
 
@@ -45,7 +45,7 @@ class TestEcuador(TestCase):
             "2023-02-20",
             "2023-02-21",
         )
-        self.assertHolidaysName("Carnaval", dt)
+        self.assertHolidayName("Carnaval", dt)
 
     def test_good_friday(self):
         dt = (
@@ -58,45 +58,45 @@ class TestEcuador(TestCase):
             "2022-04-15",
             "2023-04-07",
         )
-        self.assertHolidaysName("Viernes Santo", dt)
+        self.assertHolidayName("Viernes Santo", dt)
 
     def test_labour_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Día del Trabajo", (f"{year}-05-01" for year in range(2000, 2050))
         )
 
     def test_battle_of_pichincha(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Batalla de Pichincha",
             (f"{year}-05-24" for year in range(2000, 2050)),
         )
 
     def test_independence_of_quito(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Primer Grito de Independencia",
             (f"{year}-08-10" for year in range(2000, 2050)),
         )
 
     def test_independence_of_guayaquil(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Independencia de Guayaquil",
             (f"{year}-10-09" for year in range(2000, 2050)),
         )
 
     def test_all_souls_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Día de los Difuntos",
             (f"{year}-11-02" for year in range(2000, 2050)),
         )
 
     def test_independence_of_cuenca(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Independencia de Cuenca",
             (f"{year}-11-03" for year in range(2000, 2050)),
         )
 
     def test_christmas_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Día de Navidad", (f"{year}-12-25" for year in range(2000, 2050))
         )
 

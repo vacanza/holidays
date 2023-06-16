@@ -33,12 +33,10 @@ class TestGreece(TestCase):
             (12, 25, "Χριστούγεννα"),
             (12, 26, "Επόμενη ημέρα των Χριστουγέννων"),
         ):
-            self.assertHolidaysName(
-                name, (f"{year}-{m}-{d}" for year in years)
-            )
+            self.assertHolidayName(name, (f"{year}-{m}-{d}" for year in years))
 
     def test_clean_monday(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Καθαρά Δευτέρα",
             "2018-02-19",
             "2019-03-11",
@@ -50,7 +48,7 @@ class TestGreece(TestCase):
         )
 
     def test_good_friday(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Μεγάλη Παρασκευή",
             "2018-04-06",
             "2019-04-26",
@@ -62,7 +60,7 @@ class TestGreece(TestCase):
         )
 
     def test_easter_monday(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Δευτέρα του Πάσχα",
             "2018-04-09",
             "2019-04-29",
@@ -74,7 +72,7 @@ class TestGreece(TestCase):
         )
 
     def test_monday_of_the_holy_spirit(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Δευτέρα του Αγίου Πνεύματος",
             "2018-05-28",
             "2019-06-17",
@@ -93,7 +91,7 @@ class TestGreece(TestCase):
             "2021-05-04",
             "2022-05-02",
         )
-        self.assertHolidaysName(name_observed, dt)
+        self.assertHolidayName(name_observed, dt)
         self.assertNoNonObservedHoliday(dt)
         self.assertNoHolidayName(name_observed, 2017, 2018, 2019, 2020, 2023)
 

@@ -76,8 +76,8 @@ class TestFrance(TestCase):
         self.assertNoHolidayName(name_old, France(years=1918))
         self.assertNoHolidayName(name_new, France(years=range(1919, 1948)))
         self.assertNoHolidayName(name_old, France(years=1948))
-        self.assertHolidaysName(name_old, "1919-05-01", "1947-05-01")
-        self.assertHolidaysName(name_new, "1948-05-01")
+        self.assertHolidayName(name_old, "1919-05-01", "1947-05-01")
+        self.assertHolidayName(name_new, "1948-05-01")
 
     def test_fete_de_la_victoire(self):
         self.assertHoliday(f"{year}-05-08" for year in range(1953, 1960))

@@ -28,30 +28,30 @@ class TestMoldova(TestCase):
         name_old1 = "Naşterea lui Iisus Hristos (Crăciunul)"
         name_old2 = "Naşterea lui Iisus Hristos (Crăciunul pe stil vechi)"
         name_new = "Naşterea lui Iisus Hristos (Crăciunul pe stil nou)"
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name_old1, (f"{year}-01-07" for year in range(1991, 2014))
         )
         self.assertNoHolidayName(name_old1, Moldova(years=2014))
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name_old2, (f"{year}-01-07" for year in range(2014, 2031))
         )
         self.assertNoHolidayName(name_old2, Moldova(years=2013))
 
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name_new, (f"{year}-12-25" for year in range(2013, 2031))
         )
         self.assertNoHolidayName(name_new, Moldova(years=2012))
 
     def test_europe_day(self):
         name = "Ziua Europei"
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name, (f"{year}-05-09" for year in range(2017, 2031))
         )
         self.assertNoHolidayName(name, Moldova(years=2016))
 
     def test_childrens_day(self):
         name = "Ziua Ocrotirii Copilului"
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name, (f"{year}-06-01" for year in range(2016, 2031))
         )
         self.assertNoHolidayName(name, Moldova(years=2015))
