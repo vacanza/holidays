@@ -51,7 +51,7 @@ class IsleOfMan(UnitedKingdom):
         )
 
         # Tynwald Day
-        # If fall on the weekends, moved to the next Monday.
+        # Move to the next Monday if falls on a weekend.
         dt = date(year, JUL, 5)
         if self._is_weekend(dt) and year >= 1992:
             dt += td(days=+2 if self._is_saturday(dt) else +1)
