@@ -11,15 +11,22 @@
 
 import importlib
 import inspect
+import sys
 import warnings
 from unittest import TestCase
 
+import pytest
+
 import holidays
 from holidays import countries, financial, registry
+from tests.common import PYTHON_VERSION
 
 
 class TestEntityLoader(TestCase):
-    # TODO(ark): consider running this just once for the latest Python version.
+    @pytest.mark.skipif(
+        sys.version_info < PYTHON_VERSION,
+        reason="Run once on the latest Python version only",
+    )
     def test_countries_imports(self):
         warnings.simplefilter("ignore")
 
@@ -63,7 +70,10 @@ class TestEntityLoader(TestCase):
             "'holidays.countries.united_states.US' class directly.",
         )
 
-    # TODO(ark): consider running this just once for the latest Python version.
+    @pytest.mark.skipif(
+        sys.version_info < PYTHON_VERSION,
+        reason="Run once on the latest Python version only",
+    )
     def test_financial_imports(self):
         loader_entities = set()
         for module, entities in registry.FINANCIAL.items():

@@ -90,12 +90,12 @@ class TestAlbania(TestCase):
 
     def test_mother_teresa_day(self):
         name = "Mother Teresa Beatification Day"
-        self.assertHolidaysName(name, (f"{year}-10-19" for year in range(2004, 2018)))
+        self.assertHolidayName(name, (f"{year}-10-19" for year in range(2004, 2018)))
         self.assertNoHolidayName(name, range(1990, 2004), range(2018, 2050))
 
         name = "Mother Teresa Canonization Day"
         self.assertNoHolidayName(name, range(1990, 2018))
-        self.assertHolidaysName(name, (f"{year}-09-05" for year in range(2018, 2050)))
+        self.assertHolidayName(name, (f"{year}-09-05" for year in range(2018, 2050)))
 
     def test_observed(self):
         dt = (

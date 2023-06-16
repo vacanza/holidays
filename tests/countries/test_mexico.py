@@ -133,41 +133,35 @@ class TestMexico(TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "Año Nuevo"),
-                ("2022-02-07", "Día de la Constitución"),
-                ("2022-03-21", "Natalicio de Benito Juárez"),
-                ("2022-05-01", "Día del Trabajo"),
-                ("2022-09-16", "Día de la Independencia"),
-                ("2022-11-21", "Día de la Revolución"),
-                ("2022-12-25", "Navidad"),
-            )
+            ("2022-01-01", "Año Nuevo"),
+            ("2022-02-07", "Día de la Constitución"),
+            ("2022-03-21", "Natalicio de Benito Juárez"),
+            ("2022-05-01", "Día del Trabajo"),
+            ("2022-09-16", "Día de la Independencia"),
+            ("2022-11-21", "Día de la Revolución"),
+            ("2022-12-25", "Navidad"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "New Year's Day"),
-                ("2022-02-07", "Constitution Day"),
-                ("2022-03-21", "Benito Juárez's birthday"),
-                ("2022-05-01", "Labour Day"),
-                ("2022-09-16", "Independence Day"),
-                ("2022-11-21", "Revolution Day"),
-                ("2022-12-25", "Christmas Day"),
-            ),
             "en_US",
+            ("2022-01-01", "New Year's Day"),
+            ("2022-02-07", "Constitution Day"),
+            ("2022-03-21", "Benito Juárez's birthday"),
+            ("2022-05-01", "Labour Day"),
+            ("2022-09-16", "Independence Day"),
+            ("2022-11-21", "Revolution Day"),
+            ("2022-12-25", "Christmas Day"),
         )
 
     def test_l10n_uk(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "Новий рік"),
-                ("2022-02-07", "День Конституції"),
-                ("2022-03-21", "Річниця Беніто Хуареса"),
-                ("2022-05-01", "День праці"),
-                ("2022-09-16", "День незалежності"),
-                ("2022-11-21", "День революції"),
-                ("2022-12-25", "Різдво Христове"),
-            ),
             "uk",
+            ("2022-01-01", "Новий рік"),
+            ("2022-02-07", "День Конституції"),
+            ("2022-03-21", "Річниця Беніто Хуареса"),
+            ("2022-05-01", "День праці"),
+            ("2022-09-16", "День незалежності"),
+            ("2022-11-21", "День революції"),
+            ("2022-12-25", "Різдво Христове"),
         )

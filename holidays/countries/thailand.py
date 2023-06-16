@@ -13,17 +13,15 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars import _ThaiLunisolar
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import InternationalHolidays
+from holidays.holiday_groups import InternationalHolidays, ThaiCalendarHolidays
 
 
-class Thailand(HolidayBase, InternationalHolidays):
+class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
     """
     A subclass of :py:class:`HolidayBase` representing public holidays
     in Thailand. (Based on South Korean and Singaporean Implementation)
-
 
     References:
 
@@ -157,7 +155,7 @@ class Thailand(HolidayBase, InternationalHolidays):
             (DEC, 12, thai_special_in_lieu_holidays),
         ),
         # 1995-1997 (Bank of Thailand Data).
-        1996: ((JUN, 10, rama_ix_golden_jubilee),),
+        1996: (JUN, 10, rama_ix_golden_jubilee),
         # 1998-2000 (include In Lieus, Checked with Bank of Thailand Data).
         1998: (
             (MAY, 11, thai_special_in_lieu_holidays),
@@ -184,7 +182,7 @@ class Thailand(HolidayBase, InternationalHolidays):
             (JUN, 13, rama_ix_sixty_accession),
             (SEP, 20, thai_military_emergency_lockdown),
         ),
-        2007: ((DEC, 24, thai_election_in_lieu),),
+        2007: (DEC, 24, thai_election_in_lieu),
         2009: (
             (JAN, 2, thai_bridge_public_holiday),
             (APR, 10, thai_political_emergency_lockdown),
@@ -205,9 +203,9 @@ class Thailand(HolidayBase, InternationalHolidays):
             (OCT, 30, thai_flood_2011_emergency_lockdown),
             (OCT, 31, thai_flood_2011_emergency_lockdown),
         ),
-        2012: ((APR, 9, thai_bridge_public_holiday),),
-        2013: ((DEC, 30, thai_bridge_public_holiday),),
-        2014: ((AUG, 11, thai_bridge_public_holiday),),
+        2012: (APR, 9, thai_bridge_public_holiday),
+        2013: (DEC, 30, thai_bridge_public_holiday),
+        2014: (AUG, 11, thai_bridge_public_holiday),
         2015: (
             (JAN, 2, thai_bridge_public_holiday),
             (MAY, 4, thai_bridge_public_holiday),
@@ -217,8 +215,8 @@ class Thailand(HolidayBase, InternationalHolidays):
             (JUL, 18, thai_bridge_public_holiday),
             (OCT, 14, rama_ix_mourning),
         ),
-        2017: ((OCT, 26, rama_ix_cremation),),
-        2019: ((MAY, 6, rama_x_coronation_celebrations),),
+        2017: (OCT, 26, rama_ix_cremation),
+        2019: (MAY, 6, rama_x_coronation_celebrations),
         2020: (
             (JUL, 27, songkran_festival_in_lieu_covid),
             (SEP, 4, songkran_festival_in_lieu_covid),
@@ -238,13 +236,13 @@ class Thailand(HolidayBase, InternationalHolidays):
             (OCT, 14, thai_bridge_public_holiday),
             (DEC, 30, thai_bridge_public_holiday),
         ),
-        2023: ((MAY, 5, thai_bridge_public_holiday),),
+        2023: (MAY, 5, thai_bridge_public_holiday),
     }
     supported_languages = ("en_US", "th")
 
     def __init__(self, **kwargs) -> None:
         InternationalHolidays.__init__(self)
-        self.thls = _ThaiLunisolar()
+        ThaiCalendarHolidays.__init__(self)
         super().__init__(**kwargs)
 
     def _populate(self, year):
@@ -542,46 +540,38 @@ class Thailand(HolidayBase, InternationalHolidays):
         self._add_new_years_eve(tr("วันสิ้นปี"))
 
         # Thai Lunar Calendar Holidays
+        # See `_ThaiLunisolar` in holidays/utils.py for more details.
+        # Thai Lunar Calendar Holidays only work from 1941 to 2057.
 
-        """
-        See `_ThaiLunisolar` in holidays/utils.py for more details.
-
-        Thai Lunar Calendar Holidays only work from 1941 (B.E. 2484) onwards
-        until 2057 (B.E. 2600).
-        """
         # Makha Bucha.
         # วันมาฆบูชา
         # Status: In-Use.
 
-        makha_bucha_date = self.thls.makha_bucha_date(year)
+        makha_bucha_date = self._add_makha_bucha(tr("วันมาฆบูชา"))
         if makha_bucha_date:
-            _add_observed(self._add_holiday(tr("วันมาฆบูชา"), makha_bucha_date))
+            _add_observed(makha_bucha_date)
 
         # Visakha Bucha.
         # วันวิสาขบูชา
         # Status: In-Use.
 
-        visakha_bucha_date = self.thls.visakha_bucha_date(year)
+        visakha_bucha_date = self._add_visakha_bucha(tr("วันวิสาขบูชา"))
         if visakha_bucha_date:
-            _add_observed(self._add_holiday(tr("วันวิสาขบูชา"), visakha_bucha_date))
+            _add_observed(visakha_bucha_date)
 
         # Asarnha Bucha.
         # วันอาสาฬหบูชา
         # Status: In-Use.
         # This has its own in-lieu trigger.
 
-        asarnha_bucha_date = self.thls.asarnha_bucha_date(year)
-        if asarnha_bucha_date:
-            self._add_holiday(tr("วันอาสาฬหบูชา"), asarnha_bucha_date)
+        asarnha_bucha_date = self._add_asarnha_bucha(tr("วันอาสาฬหบูชา"))
 
         # Buddhist Lent Day.
         # วันเข้าพรรษา
         # Status: In-Use.
         # This has its own in-lieu trigger.
 
-        khao_phansa_date = self.thls.khao_phansa_date(year)
-        if khao_phansa_date:
-            self._add_holiday(tr("วันเข้าพรรษา"), khao_phansa_date)
+        self._add_khao_phansa(tr("วันเข้าพรรษา"))
 
         # Asarnha Bucha/Buddhist Lent Day (in lieu).
         # วันหยุดชดเชยวันอาสาฬหบูชา

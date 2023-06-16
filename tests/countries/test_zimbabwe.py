@@ -16,7 +16,7 @@ from tests.common import TestCase
 class TestZimbabwe(TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Zimbabwe)
+        super().setUpClass(Zimbabwe, years=range(1988, 2050))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Zimbabwe, ZW, ZWE)
@@ -37,10 +37,7 @@ class TestZimbabwe(TestCase):
             )
 
         self.assertNoHoliday(f"{year}-02-21" for year in range(1988, 2018))
-        self.assertNoHolidayName(
-            "Robert Gabriel Mugabe National Youth Day",
-            Zimbabwe(years=range(1988, 2018)),
-        )
+        self.assertNoHolidayName("Robert Gabriel Mugabe National Youth Day", range(1988, 2018))
         self.assertHoliday(f"{year}-02-21" for year in range(2018, 2050))
 
     def test_easter(self):
@@ -117,3 +114,22 @@ class TestZimbabwe(TestCase):
         )
         self.assertHoliday(dt)
         self.assertNoNonObservedHoliday(dt)
+
+    def test_2022(self):
+        self.assertHolidays(
+            Zimbabwe(years=2022),
+            ("2022-01-01", "New Year's Day"),
+            ("2022-02-21", "Robert Gabriel Mugabe National Youth Day"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-04-16", "Easter Saturday"),
+            ("2022-04-18", "Easter Monday; Independence Day"),
+            ("2022-05-01", "Workers' Day"),
+            ("2022-05-02", "Workers' Day (Observed)"),
+            ("2022-05-25", "Africa Day"),
+            ("2022-08-08", "Zimbabwe Heroes' Day"),
+            ("2022-08-09", "Defense Forces Day"),
+            ("2022-12-22", "Unity Day"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Boxing Day"),
+            ("2022-12-27", "Christmas Day (Observed)"),
+        )

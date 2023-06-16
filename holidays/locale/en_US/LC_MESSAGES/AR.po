@@ -111,11 +111,11 @@ msgstr "Pass to the Immortality of General Don Martín Miguel de Güemes"
 msgid "Paso a la Inmortalidad del General Don José de San Martin"
 msgstr "Pass to the Immortality of General Don José de San Martin"
 
-#: ./holidays/countries/argentina.py:305
+#: ./holidays/countries/argentina.py:308
 msgid "Día del Respeto a la Diversidad Cultural"
 msgstr "Respect for Cultural Diversity Day"
 
-#: ./holidays/countries/argentina.py:307
+#: ./holidays/countries/argentina.py:304
 msgid "Día de la Raza"
 msgstr "Columbus day"
 

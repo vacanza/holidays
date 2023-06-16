@@ -27,19 +27,16 @@ class Botswana(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "BW"
-    special_holidays = {2019: ((JUL, 2, "Public Holiday"),)}
+    special_holidays = {2019: (JUL, 2, "Public Holiday")}
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _add_observed(self, dt: date) -> None:
+    def _add_observed(self, dt: date, days: int = +1) -> None:
         if self.observed and self._is_sunday(dt) and self._year >= 1995:
-            self._add_holiday(
-                "%s (Observed)" % self[dt],
-                dt + td(days=2 if dt + td(days=+1) in self else 1),
-            )
+            self._add_holiday("%s (Observed)" % self[dt], dt + td(days=days))
 
     def _populate(self, year):
         if year <= 1965:
@@ -47,10 +44,8 @@ class Botswana(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         super()._populate(year)
 
-        jan_1 = self._add_new_years_day("New Year's Day")
-        jan_2 = self._add_new_years_day_two("New Year's Day Holiday")
-        self._add_observed(jan_1)
-        self._add_observed(jan_2)
+        self._add_observed(self._add_new_years_day("New Year's Day"), days=+2)
+        self._add_observed(self._add_new_years_day_two("New Year's Day Holiday"))
 
         # Easter and easter related calculations
         self._add_good_friday("Good Friday")
@@ -71,13 +66,11 @@ class Botswana(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday("President's Day Holiday", july_3rd_monday + td(days=+1))
 
         sep_30 = self._add_holiday("Botswana Day", SEP, 30)
-        oct_1 = self._add_holiday("Botswana Day Holiday", sep_30 + td(days=+1))
-        self._add_observed(sep_30)
-        self._add_observed(oct_1)
+        self._add_observed(sep_30, days=+2)
+        self._add_observed(self._add_holiday("Botswana Day Holiday", sep_30 + td(days=+1)))
 
-        dec_25 = self._add_christmas_day("Christmas Day")
+        self._add_observed(self._add_christmas_day("Christmas Day"), days=+2)
         dec_26 = self._add_christmas_day_two("Boxing Day")
-        self._add_observed(dec_25)
         self._add_observed(dec_26)
 
         if self.observed and year >= 2016 and self._is_saturday(dec_26):

@@ -20,7 +20,7 @@ from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
 
 import holidays
-from holidays.constants import JAN, FEB, OCT, MON, TUE, SAT, SUN
+from holidays.constants import JAN, FEB, OCT, MON, TUE, SAT, SUN, HOLIDAY_NAME_DELIMITER
 
 
 class TestBasics(unittest.TestCase):
@@ -115,13 +115,58 @@ class TestBasics(unittest.TestCase):
         self.assertNotIn(date(2014, 1, 1), self.holidays)
         self.assertIn(date(2014, 7, 4), self.holidays)
 
-    def test_pop_named(self):
+    def test_pop_named_single(self):
         self.assertIn(date(2014, 1, 1), self.holidays)
-        self.holidays.pop_named("New Year's Day")
-        self.assertNotIn(date(2014, 1, 1), self.holidays)
+        dts = self.holidays.pop_named("New Year's Day")
+        for dt in dts:
+            self.assertNotIn(dt, self.holidays)
+
+    def test_pop_named_multiple(self):
+        dt = date(2022, 2, 22)
+        holiday_name_1 = "Holiday Name 1"
+        holiday_name_2 = "Holiday Name 2"
+        holiday_name_3 = "Holiday Name 3"
+        combined_name = HOLIDAY_NAME_DELIMITER.join(
+            (holiday_name_1, holiday_name_2, holiday_name_3)
+        )
+        self.holidays[dt] = holiday_name_1
+        self.holidays[dt] = holiday_name_2
+        self.holidays[dt] = holiday_name_3
+        self.assertEqual(self.holidays[dt], combined_name)
+
+        # Pop the entire date by multiple holidays exact name.
+        self.holidays.pop_named(combined_name)
+        self.assertNotIn(dt, self.holidays)
+
+        # Pop only one holiday by a single name.
+        self.holidays[dt] = holiday_name_1
+        self.holidays[dt] = holiday_name_2
+        self.holidays[dt] = holiday_name_3
+        self.assertEqual(self.holidays[dt], combined_name)
+
+        self.holidays.pop_named(holiday_name_1)
+        self.assertEqual(
+            self.holidays[dt],
+            HOLIDAY_NAME_DELIMITER.join((holiday_name_2, holiday_name_3)),
+        )
+
+        self.holidays.pop_named(holiday_name_3)
+        self.assertEqual(self.holidays[dt], holiday_name_2)
+
+        self.holidays.pop_named(holiday_name_2)
+        self.assertNotIn(dt, self.holidays)
+
+    def test_pop_named_exception(self):
         self.assertRaises(
             KeyError,
             lambda: self.holidays.pop_named("New Year's Dayz"),
+        )
+
+        self.assertIn(date(2022, 1, 1), self.holidays)
+        self.holidays.pop_named("New Year's Day")
+        self.assertRaises(
+            KeyError,
+            lambda: self.holidays.pop_named("New Year's Day"),
         )
 
     def test_setitem(self):
@@ -770,29 +815,33 @@ class TestCountryHolidayDeprecation(unittest.TestCase):
 
 class TestCountrySpecialHolidays(unittest.TestCase):
     def setUp(self):
-        self.holidays = holidays.country_holidays("US")
+        self.us_holidays = holidays.country_holidays("US")
 
     def test_populate_special_holidays(self):
-        self.holidays._populate(1111)  # special_holidays is empty.
-        self.assertEqual(0, len(self.holidays))
+        self.us_holidays._populate(1111)  # special_holidays is empty.
+        self.assertEqual(0, len(self.us_holidays))
 
-        self.holidays.special_holidays = {
-            1111: ((JAN, 1, "Test holiday"),),
-            2222: ((FEB, 2, "Test holiday"),),
-            3333: (),
+        self.us_holidays.special_holidays = {
+            1111: (JAN, 1, "Test holiday"),
+            2222: (FEB, 2, "Test holiday"),
+            3333: ((FEB, 2, "Test holiday")),
+            4444: (),
         }
 
-        self.assertNotIn(3333, self.holidays.years)
+        self.assertNotIn(3333, self.us_holidays.years)
 
-        self.assertIn("1111-01-01", self.holidays)
-        self.assertIn("2222-02-02", self.holidays)
-        self.assertEqual(13, len(self.holidays))
+        self.assertIn("1111-01-01", self.us_holidays)
+        self.assertIn("2222-02-02", self.us_holidays)
+        self.assertIn("3333-02-02", self.us_holidays)
+        self.assertEqual(26, len(self.us_holidays))
 
-        self.holidays._populate(1111)
-        self.holidays._populate(2222)
-        self.assertIn("1111-01-01", self.holidays)
-        self.assertIn("2222-02-02", self.holidays)
-        self.assertEqual(13, len(self.holidays))
+        self.us_holidays._populate(1111)
+        self.us_holidays._populate(2222)
+        self.us_holidays._populate(3333)
+        self.assertIn("1111-01-01", self.us_holidays)
+        self.assertIn("2222-02-02", self.us_holidays)
+        self.assertIn("3333-02-02", self.us_holidays)
+        self.assertEqual(26, len(self.us_holidays))
 
 
 class TestHolidaysTranslation(unittest.TestCase):

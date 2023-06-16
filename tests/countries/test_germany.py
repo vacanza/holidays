@@ -373,47 +373,41 @@ class TestDE(TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "Neujahr"),
-                ("2022-04-15", "Karfreitag"),
-                ("2022-04-18", "Ostermontag"),
-                ("2022-05-01", "Erster Mai"),
-                ("2022-05-26", "Christi Himmelfahrt"),
-                ("2022-06-06", "Pfingstmontag"),
-                ("2022-10-03", "Tag der Deutschen Einheit"),
-                ("2022-12-25", "Erster Weihnachtstag"),
-                ("2022-12-26", "Zweiter Weihnachtstag"),
-            )
+            ("2022-01-01", "Neujahr"),
+            ("2022-04-15", "Karfreitag"),
+            ("2022-04-18", "Ostermontag"),
+            ("2022-05-01", "Erster Mai"),
+            ("2022-05-26", "Christi Himmelfahrt"),
+            ("2022-06-06", "Pfingstmontag"),
+            ("2022-10-03", "Tag der Deutschen Einheit"),
+            ("2022-12-25", "Erster Weihnachtstag"),
+            ("2022-12-26", "Zweiter Weihnachtstag"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "New Year's Day"),
-                ("2022-04-15", "Good Friday"),
-                ("2022-04-18", "Easter Monday"),
-                ("2022-05-01", "Labor Day"),
-                ("2022-05-26", "Ascension Day"),
-                ("2022-06-06", "Whit Monday"),
-                ("2022-10-03", "German Unity Day"),
-                ("2022-12-25", "Christmas Day"),
-                ("2022-12-26", "Second Day of Christmas"),
-            ),
             "en_US",
+            ("2022-01-01", "New Year's Day"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-04-18", "Easter Monday"),
+            ("2022-05-01", "Labor Day"),
+            ("2022-05-26", "Ascension Day"),
+            ("2022-06-06", "Whit Monday"),
+            ("2022-10-03", "German Unity Day"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Second Day of Christmas"),
         )
 
     def test_l10n_uk(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "Новий рік"),
-                ("2022-04-15", "Страсна пʼятниця"),
-                ("2022-04-18", "Великодній понеділок"),
-                ("2022-05-01", "День праці"),
-                ("2022-05-26", "Вознесіння Господнє"),
-                ("2022-06-06", "День Святого Духа"),
-                ("2022-10-03", "День німецької єдності"),
-                ("2022-12-25", "Перший день Різдва"),
-                ("2022-12-26", "Другий день Різдва"),
-            ),
             "uk",
+            ("2022-01-01", "Новий рік"),
+            ("2022-04-15", "Страсна пʼятниця"),
+            ("2022-04-18", "Великодній понеділок"),
+            ("2022-05-01", "День праці"),
+            ("2022-05-26", "Вознесіння Господнє"),
+            ("2022-06-06", "День Святого Духа"),
+            ("2022-10-03", "День німецької єдності"),
+            ("2022-12-25", "Перший день Різдва"),
+            ("2022-12-26", "Другий день Різдва"),
         )

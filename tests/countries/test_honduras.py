@@ -99,50 +99,44 @@ class TestHonduras(TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "Año Nuevo"),
-                ("2022-04-14", "Día de las Américas; Jueves Santo"),
-                ("2022-04-15", "Viernes Santo"),
-                ("2022-04-16", "Sábado de Gloria"),
-                ("2022-05-01", "Día del Trabajo"),
-                ("2022-09-15", "Día de la Independencia"),
-                ("2022-10-05", "Semana Morazánica"),
-                ("2022-10-06", "Semana Morazánica"),
-                ("2022-10-07", "Semana Morazánica"),
-                ("2022-12-25", "Navidad"),
-            )
+            ("2022-01-01", "Año Nuevo"),
+            ("2022-04-14", "Día de las Américas; Jueves Santo"),
+            ("2022-04-15", "Viernes Santo"),
+            ("2022-04-16", "Sábado de Gloria"),
+            ("2022-05-01", "Día del Trabajo"),
+            ("2022-09-15", "Día de la Independencia"),
+            ("2022-10-05", "Semana Morazánica"),
+            ("2022-10-06", "Semana Morazánica"),
+            ("2022-10-07", "Semana Morazánica"),
+            ("2022-12-25", "Navidad"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "New Year's Day"),
-                ("2022-04-14", "Maundy Thursday; Panamerican Day"),
-                ("2022-04-15", "Good Friday"),
-                ("2022-04-16", "Holy Saturday"),
-                ("2022-05-01", "Labor Day"),
-                ("2022-09-15", "Independence Day"),
-                ("2022-10-05", "Morazan Weekend"),
-                ("2022-10-06", "Morazan Weekend"),
-                ("2022-10-07", "Morazan Weekend"),
-                ("2022-12-25", "Christmas"),
-            ),
             "en_US",
+            ("2022-01-01", "New Year's Day"),
+            ("2022-04-14", "Maundy Thursday; Panamerican Day"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-04-16", "Holy Saturday"),
+            ("2022-05-01", "Labor Day"),
+            ("2022-09-15", "Independence Day"),
+            ("2022-10-05", "Morazan Weekend"),
+            ("2022-10-06", "Morazan Weekend"),
+            ("2022-10-07", "Morazan Weekend"),
+            ("2022-12-25", "Christmas"),
         )
 
     def test_l10n_uk(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "Новий рік"),
-                ("2022-04-14", "Великий четвер; День Америки"),
-                ("2022-04-15", "Страсна пʼятниця"),
-                ("2022-04-16", "Велика субота"),
-                ("2022-05-01", "День праці"),
-                ("2022-09-15", "День незалежності"),
-                ("2022-10-05", "Тиждень Морасана"),
-                ("2022-10-06", "Тиждень Морасана"),
-                ("2022-10-07", "Тиждень Морасана"),
-                ("2022-12-25", "Різдво Христове"),
-            ),
             "uk",
+            ("2022-01-01", "Новий рік"),
+            ("2022-04-14", "Великий четвер; День Америки"),
+            ("2022-04-15", "Страсна пʼятниця"),
+            ("2022-04-16", "Велика субота"),
+            ("2022-05-01", "День праці"),
+            ("2022-09-15", "День незалежності"),
+            ("2022-10-05", "Тиждень Морасана"),
+            ("2022-10-06", "Тиждень Морасана"),
+            ("2022-10-07", "Тиждень Морасана"),
+            ("2022-12-25", "Різдво Христове"),
         )

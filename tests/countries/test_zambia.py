@@ -16,7 +16,7 @@ from tests.common import TestCase
 class TestZambia(TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Zambia)
+        super().setUpClass(Zambia, years=range(1965, 2050))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Zambia, ZM, ZMB)
@@ -39,26 +39,16 @@ class TestZambia(TestCase):
         )
 
     def test_holidays(self):
-        for year in range(1965, 2050):
-            self.assertHoliday(
-                f"{year}-01-01",
-                f"{year}-03-12",
-                f"{year}-05-01",
-                f"{year}-05-25",
-                f"{year}-10-24",
-                f"{year}-12-25",
-            )
-
         self.assertNoHoliday(f"{year}-03-08" for year in range(1965, 1991))
-        self.assertNoHolidayName("International Women's Day", Zambia(years=range(1965, 1991)))
+        self.assertNoHolidayName("International Women's Day", range(1965, 1991))
         self.assertHoliday(f"{year}-03-08" for year in range(1991, 2050))
 
         self.assertNoHoliday(f"{year}-04-28" for year in range(1965, 2022))
-        self.assertNoHolidayName("Kenneth Kaunda Day", Zambia(years=range(1965, 2022)))
+        self.assertNoHolidayName("Kenneth Kaunda Day", range(1965, 2022))
         self.assertHoliday(f"{year}-04-28" for year in range(2022, 2050))
 
         self.assertNoHoliday(f"{year}-10-18" for year in range(1965, 2015))
-        self.assertNoHolidayName("National Prayer Day", Zambia(years=range(1965, 2015)))
+        self.assertNoHolidayName("National Prayer Day", range(1965, 2015))
         self.assertHoliday(f"{year}-10-18" for year in range(2015, 2050))
 
     def test_easter(self):
@@ -139,3 +129,26 @@ class TestZambia(TestCase):
         )
         self.assertHoliday(dt)
         self.assertNoNonObservedHoliday(dt)
+
+    def test_2022(self):
+        self.assertHolidays(
+            Zambia(years=2022),
+            ("2022-01-01", "New Year's Day"),
+            ("2022-03-08", "International Women's Day"),
+            ("2022-03-12", "Youth Day"),
+            ("2022-03-18", "Funeral of Rupiah Banda"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-04-16", "Holy Saturday"),
+            ("2022-04-18", "Easter Monday"),
+            ("2022-04-28", "Kenneth Kaunda Day"),
+            ("2022-05-01", "Labour Day"),
+            ("2022-05-02", "Labour Day (Observed)"),
+            ("2022-05-25", "Africa Freedom Day"),
+            ("2022-07-04", "Heroes' Day"),
+            ("2022-07-05", "Unity Day"),
+            ("2022-08-01", "Farmers' Day"),
+            ("2022-10-18", "National Prayer Day"),
+            ("2022-10-24", "Independence Day"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Christmas Day (Observed)"),
+        )

@@ -110,11 +110,11 @@ msgstr "День пам'яті генерала Мартіна Мігеля де
 msgid "Paso a la Inmortalidad del General Don José de San Martin"
 msgstr "День пам'яті генерала Хосе де Сан-Мартіна"
 
-#: ./holidays/countries/argentina.py:305
+#: ./holidays/countries/argentina.py:308
 msgid "Día del Respeto a la Diversidad Cultural"
 msgstr "День поваги до культурного різноманіття"
 
-#: ./holidays/countries/argentina.py:307
+#: ./holidays/countries/argentina.py:304
 msgid "Día de la Raza"
 msgstr "День Колумба"
 

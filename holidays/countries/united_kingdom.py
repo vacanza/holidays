@@ -26,17 +26,17 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "GB"
     special_holidays = {
-        1977: ((JUN, 7, "Silver Jubilee of Elizabeth II"),),
-        1981: ((JUL, 29, "Wedding of Charles and Diana"),),
-        1999: ((DEC, 31, "Millennium Celebrations"),),
-        2002: ((JUN, 3, "Golden Jubilee of Elizabeth II"),),
-        2011: ((APR, 29, "Wedding of William and Catherine"),),
-        2012: ((JUN, 5, "Diamond Jubilee of Elizabeth II"),),
+        1977: (JUN, 7, "Silver Jubilee of Elizabeth II"),
+        1981: (JUL, 29, "Wedding of Charles and Diana"),
+        1999: (DEC, 31, "Millennium Celebrations"),
+        2002: (JUN, 3, "Golden Jubilee of Elizabeth II"),
+        2011: (APR, 29, "Wedding of William and Catherine"),
+        2012: (JUN, 5, "Diamond Jubilee of Elizabeth II"),
         2022: (
             (JUN, 3, "Platinum Jubilee of Elizabeth II"),
             (SEP, 19, "State Funeral of Queen Elizabeth II"),
         ),
-        2023: ((MAY, 8, "Coronation of Charles III"),),
+        2023: (MAY, 8, "Coronation of Charles III"),
     }
     subdivisions: Union[Tuple[()], Tuple[str, ...]] = (
         "England",

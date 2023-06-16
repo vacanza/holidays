@@ -9,56 +9,76 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
-
-from dateutil.easter import easter
-
-from holidays.constants import JAN, MAR, APR, MAY, JUL, OCT, DEC
+from holidays.constants import MAR, APR, MAY, JUL, OCT
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Lesotho(HolidayBase):
+class Lesotho(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
-    https://tinyurl.com/lesothosmallurl1324251
-    https://www.timeanddate.com/holidays/lesotho/
+    References:
+    - https://en.wikipedia.org/wiki/Public_holidays_in_Lesotho
+    - https://www.ilo.org/dyn/travail/docs/2093/Public%20Holidays%20Act%201995.pdf  # noqa: E501
+    - https://www.timeanddate.com/holidays/lesotho/
     """
 
     country = "LS"
     special_holidays = {
-        # https://tinyurl.com/lesothourl
-        2002: ((APR, 4, "Heroes Day"), (MAY, 25, "Africa Day"))
+        2002: (MAY, 25, "Africa Day"),
     }
 
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year):
+        if year <= 1995:
+            return None
+
         super()._populate(year)
 
-        if year > 1995:
-            # https://www.ilo.org/dyn/travail/docs/2093/Public%20Holidays%20Act%201995.pdf
-            self[date(year, JAN, 1)] = "New Year's Day"
-            self[date(year, MAR, 11)] = "Moshoeshoe's Day"
+        # New Year's Day.
+        self._add_new_years_day("New Year's Day")
 
-            if year < 2002:
-                self[date(year, APR, 4)] = "Heroes Day"
+        # Moshoeshoe's Day.
+        self._add_holiday("Moshoeshoe's Day", MAR, 11)
 
-            if year > 2002:
-                self[date(year, MAY, 25)] = "Africa/Heroes Day"
+        if year <= 2002:
+            # Heroes Day.
+            self._add_holiday("Heroes Day", APR, 4)
 
-            easter_date = easter(year)
-            self[easter_date + td(days=-2)] = "Good Friday"
-            self[easter_date + td(days=+1)] = "Easter Monday"
-            self[easter_date + td(days=+39)] = "Ascension Day"
-            self[date(year, MAY, 1)] = "Workers' Day"
+        if year >= 2003:
+            # Africa/Heroes Day.
+            self._add_africa_day("Africa/Heroes Day")
 
-            if year > 1997:
-                # https://en.wikipedia.org/wiki/Letsie_III
-                self[date(year, JUL, 17)] = "King's Birthday"
-            if year <= 1997:
-                self[date(year, MAY, 2)] = "King's Birthday"
+        # Good Friday.
+        self._add_good_friday("Good Friday")
 
-            self[date(year, OCT, 4)] = "National Independence Day"
-            self[date(year, DEC, 25)] = "Christmas Day"
-            self[date(year, DEC, 26)] = "Boxing Day"
+        # Easter Monday.
+        self._add_easter_monday("Easter Monday")
+
+        # Workers' Day.
+        self._add_labor_day("Workers' Day")
+
+        # Ascension Day.
+        self._add_ascension_thursday("Ascension Day")
+
+        # https://en.wikipedia.org/wiki/Letsie_III
+        self._add_holiday(
+            # King's Birthday.
+            "King's Birthday",
+            *((JUL, 17) if year >= 1998 else (MAY, 2)),
+        )
+
+        # Independence Day.
+        self._add_holiday("Independence Day", OCT, 4)
+
+        # Christmas Day.
+        self._add_christmas_day("Christmas Day")
+
+        # Boxing Day.
+        self._add_christmas_day_two("Boxing Day")
 
 
 class LS(Lesotho):

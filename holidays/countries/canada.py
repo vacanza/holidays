@@ -52,14 +52,14 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
             1 if self._is_friday(dt) or self._is_weekend(dt) else -1, MON, dt
         )
 
-    def _add_observed(self, hol_date: date, include_sat: bool = True) -> None:
+    def _add_observed(self, dt: date, include_sat: bool = True, days: int = +1) -> None:
         if not self.observed:
             return None
-        if self._is_sunday(hol_date) or (self._is_saturday(hol_date) and include_sat):
-            obs_date = _get_nth_weekday_from(1, MON, hol_date)
-            if obs_date in self:
-                obs_date += td(days=+1)
-            self._add_holiday(self.tr("%s (Observed)") % self[hol_date], obs_date)
+        if self._is_sunday(dt) or (include_sat and self._is_saturday(dt)):
+            self._add_holiday(
+                self.tr("%s (Observed)") % self[dt],
+                dt + td(days=+2 if self._is_saturday(dt) else days),
+            )
 
     def _populate(self, year):
         if year <= 1866:
@@ -86,14 +86,17 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
                 _get_nth_weekday_of_month(1, MON, SEP, self._year),
             )
 
-        # Christmas Day.
-        dec_25 = self._add_christmas_day(tr("Christmas Day"))
+        self._add_observed(
+            # Christmas Day.
+            self._add_christmas_day(tr("Christmas Day")),
+            days=+2,
+        )
 
-        # Boxing Day.
-        dec_26 = self._add_christmas_day_two(tr("Boxing Day"))
-
-        self._add_observed(dec_25)
-        self._add_observed(dec_26)
+        self._add_observed(
+            # Boxing Day.
+            self._add_christmas_day_two(tr("Boxing Day")),
+            days=+2,
+        )
 
     def _add_family_day(self):
         self._add_holiday(

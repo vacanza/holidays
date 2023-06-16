@@ -581,64 +581,54 @@ class TestSwitzerland(TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            (
-                ("2018-01-01", "Neujahrestag"),
-                ("2018-04-01", "Ostern"),
-                ("2018-05-10", "Auffahrt"),
-                ("2018-05-20", "Pfingsten"),
-                ("2018-08-01", "Nationalfeiertag"),
-                ("2018-12-25", "Weihnachten"),
-            ),
+            ("2018-01-01", "Neujahrestag"),
+            ("2018-04-01", "Ostern"),
+            ("2018-05-10", "Auffahrt"),
+            ("2018-05-20", "Pfingsten"),
+            ("2018-08-01", "Nationalfeiertag"),
+            ("2018-12-25", "Weihnachten"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
-            (
-                ("2018-01-01", "New Year's Day"),
-                ("2018-04-01", "Easter Sunday"),
-                ("2018-05-10", "Ascension Day"),
-                ("2018-05-20", "Whit Sunday"),
-                ("2018-08-01", "National Day"),
-                ("2018-12-25", "Christmas Day"),
-            ),
             "en_US",
+            ("2018-01-01", "New Year's Day"),
+            ("2018-04-01", "Easter Sunday"),
+            ("2018-05-10", "Ascension Day"),
+            ("2018-05-20", "Whit Sunday"),
+            ("2018-08-01", "National Day"),
+            ("2018-12-25", "Christmas Day"),
         )
 
     def test_l10n_fr(self):
         self.assertLocalizedHolidays(
-            (
-                ("2018-01-01", "Nouvel An"),
-                ("2018-04-01", "Pâques"),
-                ("2018-05-10", "Ascension"),
-                ("2018-05-20", "Pentecôte"),
-                ("2018-08-01", "Fête nationale"),
-                ("2018-12-25", "Noël"),
-            ),
             "fr",
+            ("2018-01-01", "Nouvel An"),
+            ("2018-04-01", "Pâques"),
+            ("2018-05-10", "Ascension"),
+            ("2018-05-20", "Pentecôte"),
+            ("2018-08-01", "Fête nationale"),
+            ("2018-12-25", "Noël"),
         )
 
     def test_l10n_it(self):
         self.assertLocalizedHolidays(
-            (
-                ("2018-01-01", "Capodanno"),
-                ("2018-04-01", "Pasqua"),
-                ("2018-05-10", "Ascensione di Gesù"),
-                ("2018-05-20", "Pentecoste"),
-                ("2018-08-01", "Festa nazionale"),
-                ("2018-12-25", "Natale"),
-            ),
             "it",
+            ("2018-01-01", "Capodanno"),
+            ("2018-04-01", "Pasqua"),
+            ("2018-05-10", "Ascensione di Gesù"),
+            ("2018-05-20", "Pentecoste"),
+            ("2018-08-01", "Festa nazionale"),
+            ("2018-12-25", "Natale"),
         )
 
     def test_l10n_uk(self):
         self.assertLocalizedHolidays(
-            (
-                ("2018-01-01", "Новий рік"),
-                ("2018-04-01", "Великдень"),
-                ("2018-05-10", "Вознесіння Господнє"),
-                ("2018-05-20", "Трійця"),
-                ("2018-08-01", "Національне свято"),
-                ("2018-12-25", "Різдво Христове"),
-            ),
             "uk",
+            ("2018-01-01", "Новий рік"),
+            ("2018-04-01", "Великдень"),
+            ("2018-05-10", "Вознесіння Господнє"),
+            ("2018-05-20", "Трійця"),
+            ("2018-08-01", "Національне свято"),
+            ("2018-12-25", "Різдво Христове"),
         )

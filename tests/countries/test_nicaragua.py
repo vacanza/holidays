@@ -18,10 +18,6 @@ class TestNicaragua(TestCase):
     def setUpClass(cls):
         super().setUpClass(Nicaragua)
 
-    def setUp(self):
-        super().setUp()
-        self.holidays_an = Nicaragua(subdiv="AN")
-
     def test_country_aliases(self):
         self.assertCountryAliases(Nicaragua, NI, NIC)
 
@@ -39,7 +35,11 @@ class TestNicaragua(TestCase):
             "2020-12-08",
             "2020-12-25",
         )
-        self.assertNoHoliday(self.holidays_an, "2020-08-01", "2020-08-10")
+        self.assertNoHoliday(
+            Nicaragua(subdiv="AN"),
+            "2020-08-01",
+            "2020-08-10",
+        )
 
     def test_ni_holidays_1979(self):
         self.assertHoliday(
@@ -59,53 +59,47 @@ class TestNicaragua(TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "Año Nuevo"),
-                ("2022-04-14", "Jueves Santo"),
-                ("2022-04-15", "Viernes Santo"),
-                ("2022-05-01", "Día del Trabajo"),
-                ("2022-07-19", "Día de la Revolución"),
-                ("2022-08-01", "Bajada de Santo Domingo"),
-                ("2022-08-10", "Subida de Santo Domingo"),
-                ("2022-09-14", "Batalla de San Jacinto"),
-                ("2022-09-15", "Día de la Independencia"),
-                ("2022-12-08", "Concepción de María"),
-                ("2022-12-25", "Navidad"),
-            ),
+            ("2022-01-01", "Año Nuevo"),
+            ("2022-04-14", "Jueves Santo"),
+            ("2022-04-15", "Viernes Santo"),
+            ("2022-05-01", "Día del Trabajo"),
+            ("2022-07-19", "Día de la Revolución"),
+            ("2022-08-01", "Bajada de Santo Domingo"),
+            ("2022-08-10", "Subida de Santo Domingo"),
+            ("2022-09-14", "Batalla de San Jacinto"),
+            ("2022-09-15", "Día de la Independencia"),
+            ("2022-12-08", "Concepción de María"),
+            ("2022-12-25", "Navidad"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "New Year's Day"),
-                ("2022-04-14", "Maundy Thursday"),
-                ("2022-04-15", "Good Friday"),
-                ("2022-05-01", "Labour Day"),
-                ("2022-07-19", "Revolution Day"),
-                ("2022-08-01", "Descent of Saint Dominic"),
-                ("2022-08-10", "Ascent of Saint Dominic"),
-                ("2022-09-14", "Battle of San Jacinto Day"),
-                ("2022-09-15", "Independence Day"),
-                ("2022-12-08", "Virgin's Day"),
-                ("2022-12-25", "Christmas"),
-            ),
             "en_US",
+            ("2022-01-01", "New Year's Day"),
+            ("2022-04-14", "Maundy Thursday"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-05-01", "Labor Day"),
+            ("2022-07-19", "Revolution Day"),
+            ("2022-08-01", "Descent of Saint Dominic"),
+            ("2022-08-10", "Ascent of Saint Dominic"),
+            ("2022-09-14", "Battle of San Jacinto Day"),
+            ("2022-09-15", "Independence Day"),
+            ("2022-12-08", "Virgin's Day"),
+            ("2022-12-25", "Christmas"),
         )
 
     def test_l10n_uk(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "Новий рік"),
-                ("2022-04-14", "Великий четвер"),
-                ("2022-04-15", "Страсна пʼятниця"),
-                ("2022-05-01", "День праці"),
-                ("2022-07-19", "День революції"),
-                ("2022-08-01", "Спуск Святого Домініка"),
-                ("2022-08-10", "Підйом Святого Домініка"),
-                ("2022-09-14", "Річниця битви під Сан-Хасінто"),
-                ("2022-09-15", "День Незалежності"),
-                ("2022-12-08", "Непорочне зачаття Діви Марії"),
-                ("2022-12-25", "Різдво Христове"),
-            ),
             "uk",
+            ("2022-01-01", "Новий рік"),
+            ("2022-04-14", "Великий четвер"),
+            ("2022-04-15", "Страсна пʼятниця"),
+            ("2022-05-01", "День праці"),
+            ("2022-07-19", "День революції"),
+            ("2022-08-01", "Спуск Святого Домініка"),
+            ("2022-08-10", "Підйом Святого Домініка"),
+            ("2022-09-14", "Річниця битви під Сан-Хасінто"),
+            ("2022-09-15", "День незалежності"),
+            ("2022-12-08", "Непорочне зачаття Діви Марії"),
+            ("2022-12-25", "Різдво Христове"),
         )

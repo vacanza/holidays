@@ -46,7 +46,7 @@ class TestBrazil(TestCase):
         )
 
     def test_good_friday(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Sexta-feira Santa",
             "2018-03-30",
             "2019-04-19",
@@ -89,7 +89,7 @@ class TestBrazil(TestCase):
         self.assertNoHolidayName("Natal", range(1890, 1922))
 
     def test_optional_holidays(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Carnaval",
             "2018-02-12",
             "2018-02-13",
@@ -103,7 +103,7 @@ class TestBrazil(TestCase):
             "2022-03-01",
         )
 
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Início da Quaresma",
             "2018-02-14",
             "2019-03-06",
@@ -112,7 +112,7 @@ class TestBrazil(TestCase):
             "2022-03-02",
         )
 
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Corpus Christi",
             "2018-05-31",
             "2019-06-20",
@@ -263,7 +263,7 @@ class TestBrazil(TestCase):
         df_holidays = Brazil(subdiv="DF", years=range(1995, 2030))
 
         name = "Fundação de Brasília"
-        self.assertHolidaysName(name, df_holidays, (f"{year}-04-21" for year in range(1996, 2030)))
+        self.assertHolidayName(name, df_holidays, (f"{year}-04-21" for year in range(1996, 2030)))
         self.assertNoHolidayName(name, df_holidays, 1995)
 
         self.assertHoliday(df_holidays, (f"{year}-11-30" for year in range(1996, 2030)))
@@ -300,7 +300,7 @@ class TestBrazil(TestCase):
         mg_holidays = Brazil(subdiv="MG", years=range(1995, 2030))
 
         name = "Execução de Tiradentes"
-        self.assertHolidaysName(name, mg_holidays, (f"{year}-04-21" for year in range(1996, 2030)))
+        self.assertHolidayName(name, mg_holidays, (f"{year}-04-21" for year in range(1996, 2030)))
         self.assertNoHolidayName(name, mg_holidays, 1995)
 
     def test_MS_holidays(self):
@@ -332,7 +332,7 @@ class TestBrazil(TestCase):
         pe_holidays = Brazil(subdiv="PE", years=range(1995, 2030))
 
         name = "Revolução Pernambucana"
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name,
             pe_holidays,
             "2008-03-02",

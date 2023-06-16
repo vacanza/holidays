@@ -27,8 +27,7 @@ from holidays.utils import (
     list_supported_countries,
     list_supported_financial,
 )
-
-PYTHON_VERSION = (3, 11)
+from tests.common import PYTHON_VERSION
 
 
 class TestCountryHolidays(unittest.TestCase):

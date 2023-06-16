@@ -12,7 +12,7 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
+from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import MAY, AUG, OCT, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -31,14 +31,14 @@ class Jamaica(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _add_observed(self, hol_date: date, include_sat: bool = False) -> None:
+    def _add_observed(self, dt: date, include_sat: bool = False, days: int = +1) -> None:
         if not self.observed:
             return None
-        if self._is_sunday(hol_date) or (self._is_saturday(hol_date) and include_sat):
-            obs_date = _get_nth_weekday_from(1, MON, hol_date)
-            if obs_date in self:
-                obs_date += td(days=+1)
-            self._add_holiday("%s (Observed)" % self[hol_date], obs_date)
+        if self._is_sunday(dt) or (include_sat and self._is_saturday(dt)):
+            self._add_holiday(
+                "%s (Observed)" % self[dt],
+                dt + td(days=+2 if self._is_saturday(dt) else days),
+            )
 
     def _populate(self, year):
         super()._populate(year)
@@ -69,12 +69,10 @@ class Jamaica(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday("National Heroes Day", _get_nth_weekday_of_month(3, MON, OCT, year))
 
         # Christmas Day
-        dt = self._add_christmas_day("Christmas Day")
+        self._add_observed(self._add_christmas_day("Christmas Day"), days=+2)
 
         # Boxing Day
         self._add_observed(self._add_christmas_day_two("Boxing Day"))
-
-        self._add_observed(dt)
 
 
 class JM(Jamaica):

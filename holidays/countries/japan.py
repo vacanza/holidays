@@ -16,6 +16,7 @@ from typing import Tuple
 
 from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC, MON
+from holidays.helpers import _normalize_tuple
 from holidays.holiday_base import HolidayBase
 
 
@@ -27,10 +28,10 @@ class Japan(HolidayBase):
     country = "JP"
     default_language = "ja"
     special_holidays = {
-        1959: ((APR, 10, tr("結婚の儀")),),  # The Crown Prince marriage ceremony.
-        1989: ((FEB, 24, tr("大喪の礼")),),  # State Funeral of Emperor Shōwa.
-        1990: ((NOV, 12, tr("即位礼正殿の儀")),),  # Enthronement ceremony.
-        1993: ((JUN, 9, tr("結婚の儀")),),  # The Crown Prince marriage ceremony.
+        1959: (APR, 10, tr("結婚の儀")),  # The Crown Prince marriage ceremony.
+        1989: (FEB, 24, tr("大喪の礼")),  # State Funeral of Emperor Shōwa.
+        1990: (NOV, 12, tr("即位礼正殿の儀")),  # Enthronement ceremony.
+        1993: (JUN, 9, tr("結婚の儀")),  # The Crown Prince marriage ceremony.
         2019: (
             (MAY, 1, tr("天皇の即位の日")),  # Enthronement day.
             (OCT, 22, tr("即位礼正殿の儀が行われる日")),  # Enthronement ceremony.
@@ -157,7 +158,7 @@ class Japan(HolidayBase):
             observed_dates.add(self._add_holiday(tr("天皇誕生日"), DEC, 23))
 
         if self.observed:
-            for month, day, _ in self.special_holidays.get(year, ()):
+            for month, day, _ in _normalize_tuple(self.special_holidays.get(year, ())):
                 observed_dates.add(date(year, month, day))
 
             # When a national holiday falls on Sunday, next working day

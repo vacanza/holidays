@@ -27,7 +27,7 @@ class Chad(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
 
     country = "TD"
     special_holidays = {
-        2021: ((APR, 23, "Funeral of Idriss Déby Itno"),),
+        2021: (APR, 23, "Funeral of Idriss Déby Itno"),
     }
 
     def __init__(self, *args, **kwargs) -> None:
@@ -99,35 +99,35 @@ class TCD(Chad):
 
 class ChadIslamicCalendar(_CustomIslamicCalendar):
     EID_AL_ADHA_DATES = {
-        2015: ((SEP, 24),),
-        2016: ((SEP, 13),),
-        2017: ((SEP, 2),),
-        2018: ((AUG, 22),),
-        2019: ((AUG, 11),),
-        2020: ((JUL, 31),),
-        2021: ((JUL, 20),),
-        2022: ((JUL, 9),),
+        2015: (SEP, 24),
+        2016: (SEP, 13),
+        2017: (SEP, 2),
+        2018: (AUG, 22),
+        2019: (AUG, 11),
+        2020: (JUL, 31),
+        2021: (JUL, 20),
+        2022: (JUL, 9),
     }
 
     EID_AL_FITR_DATES = {
-        2015: ((JUL, 18),),
-        2016: ((JUL, 7),),
-        2017: ((JUN, 26),),
-        2018: ((JUN, 15),),
-        2019: ((JUN, 4),),
-        2020: ((MAY, 24),),
-        2021: ((MAY, 13),),
-        2022: ((MAY, 2),),
-        2023: ((APR, 21),),
+        2015: (JUL, 18),
+        2016: (JUL, 7),
+        2017: (JUN, 26),
+        2018: (JUN, 15),
+        2019: (JUN, 4),
+        2020: (MAY, 24),
+        2021: (MAY, 13),
+        2022: (MAY, 2),
+        2023: (APR, 21),
     }
 
     MAWLID_DATES = {
         2015: ((JAN, 3), (DEC, 24)),
-        2016: ((DEC, 12),),
-        2017: ((DEC, 1),),
-        2018: ((NOV, 21),),
-        2019: ((NOV, 9),),
-        2020: ((OCT, 29),),
-        2021: ((OCT, 18),),
-        2022: ((OCT, 8),),
+        2016: (DEC, 12),
+        2017: (DEC, 1),
+        2018: (NOV, 21),
+        2019: (NOV, 9),
+        2020: (OCT, 29),
+        2021: (OCT, 18),
+        2022: (OCT, 8),
     }

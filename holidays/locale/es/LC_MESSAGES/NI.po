@@ -22,7 +22,7 @@ msgid "Año Nuevo"
 msgstr ""
 
 #. Maundy Thursday.
-#: ./holidays/countries/nicaragua.py:59
+#: ./holidays/countries/nicaragua.py:58
 msgid "Jueves Santo"
 msgstr ""
 
@@ -31,42 +31,42 @@ msgstr ""
 msgid "Viernes Santo"
 msgstr ""
 
-#. Labour Day.
-#: ./holidays/countries/nicaragua.py:63
+#. Labor Day.
+#: ./holidays/countries/nicaragua.py:64
 msgid "Día del Trabajo"
 msgstr ""
 
 #. Revolution Day.
-#: ./holidays/countries/nicaragua.py:67
+#: ./holidays/countries/nicaragua.py:68
 msgid "Día de la Revolución"
 msgstr ""
 
 #. Battle of San Jacinto Day.
-#: ./holidays/countries/nicaragua.py:70
+#: ./holidays/countries/nicaragua.py:71
 msgid "Batalla de San Jacinto"
 msgstr ""
 
 #. Independence Day.
-#: ./holidays/countries/nicaragua.py:72
+#: ./holidays/countries/nicaragua.py:74
 msgid "Día de la Independencia"
 msgstr ""
 
 #. Virgin's Day.
-#: ./holidays/countries/nicaragua.py:74
+#: ./holidays/countries/nicaragua.py:77
 msgid "Concepción de María"
 msgstr ""
 
 #. Christmas.
-#: ./holidays/countries/nicaragua.py:76
+#: ./holidays/countries/nicaragua.py:80
 msgid "Navidad"
 msgstr ""
 
 #. Descent of Saint Dominic.
-#: ./holidays/countries/nicaragua.py:81
+#: ./holidays/countries/nicaragua.py:84
 msgid "Bajada de Santo Domingo"
 msgstr ""
 
 #. Ascent of Saint Dominic.
-#: ./holidays/countries/nicaragua.py:83
+#: ./holidays/countries/nicaragua.py:87
 msgid "Subida de Santo Domingo"
 msgstr ""

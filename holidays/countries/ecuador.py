@@ -34,13 +34,49 @@ class Ecuador(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
+    def _add_observed(
+        self,
+        dt: date,
+        weekend_only: bool = False,
+        before: bool = True,
+        after: bool = True,
+    ) -> None:
+        if self.observed and self._year >= 2017:
+            obs_date = None
+            # Art. 1 of Law #0 from 20.12.2016
+            # When holidays falls on Tuesday, the rest shall be transferred to
+            # preceding Monday, and if they falls on Wednesday or Thursday,
+            # the rest shall be transferred to Friday of the same week.
+            # Exceptions to this provision are January 1, December 25 and
+            # Shrove Tuesday.
+            if not weekend_only:
+                if self._is_tuesday(dt) and before:
+                    obs_date = dt + td(days=-1)
+                elif self._is_wednesday(dt):
+                    obs_date = dt + td(days=+2)
+                elif self._is_thursday(dt) and after:
+                    obs_date = dt + td(days=+1)
+            # When holidays falls on Saturday or Sunday, the rest shall be
+            # transferred, respectively, to the preceding Friday or the
+            # following Monday.
+            if self._is_saturday(dt) and before:
+                obs_date = dt + td(days=-1)
+            elif self._is_sunday(dt) and after:
+                obs_date = dt + td(days=+1)
+            if obs_date:
+                self._add_holiday(self.tr("%s (Observado)") % self[dt], obs_date)
+
     def _populate(self, year):
         super()._populate(year)
-        observed_dates = set()
-        observed_weekend_dates = set()
 
         # New Year's Day.
-        observed_weekend_dates.add(self._add_new_years_day(tr("Año Nuevo")))
+        name = tr("Año Nuevo")
+        self._add_observed(self._add_new_years_day(name), weekend_only=True)
+
+        if self.observed and year >= 2017:
+            dec_31 = (DEC, 31)
+            if self._is_friday(*dec_31):
+                self._add_holiday(self.tr("%s (Observado)") % self.tr(name), *dec_31)
 
         # Carnival.
         name = tr("Carnaval")
@@ -51,70 +87,40 @@ class Ecuador(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_good_friday(tr("Viernes Santo"))
 
         # Labour Day.
-        observed_dates.add(self._add_labor_day(tr("Día del Trabajo")))
+        self._add_observed(self._add_labor_day(tr("Día del Trabajo")))
 
-        observed_dates.add(
+        self._add_observed(
             # The Battle of Pichincha.
             self._add_holiday(tr("Batalla de Pichincha"), MAY, 24)
         )
 
-        observed_dates.add(
+        self._add_observed(
             # Declaration of Independence of Quito.
             self._add_holiday(tr("Primer Grito de Independencia"), AUG, 10)
         )
 
-        observed_dates.add(
+        self._add_observed(
             # Independence of Guayaquil.
             self._add_holiday(tr("Independencia de Guayaquil"), OCT, 9)
         )
 
-        # All Souls' Day.
-        observed_dates.add(self._add_all_souls_day(tr("Día de los Difuntos")))
+        self._add_observed(
+            # All Souls' Day.
+            self._add_all_souls_day(tr("Día de los Difuntos")),
+            after=False,
+        )
 
-        observed_dates.add(
+        self._add_observed(
             # Independence of Cuenca.
-            self._add_holiday(tr("Independencia de Cuenca"), NOV, 3)
+            self._add_holiday(tr("Independencia de Cuenca"), NOV, 3),
+            before=False,
         )
 
-        observed_weekend_dates.add(
+        self._add_observed(
             # Christmas Day.
-            self._add_christmas_day(tr("Día de Navidad"))
+            self._add_christmas_day(tr("Día de Navidad")),
+            weekend_only=True,
         )
-
-        if self.observed and year >= 2017:
-            # Art. 1 of Law #0 from 20.12.2016
-            # When holidays falls on Tuesday, the rest shall be transferred to
-            # preceding Monday, and if they falls on Wednesday or Thursday,
-            # the rest shall be transferred to Friday of the same week.
-            # Exceptions to this provision are January 1, December 25 and
-            # Shrove Tuesday.
-            for dt in observed_dates:
-                obs_date = None
-                if self._is_tuesday(dt):
-                    obs_date = dt + td(days=-1)
-                elif self._is_wednesday(dt):
-                    obs_date = dt + td(days=+2)
-                elif self._is_thursday(dt):
-                    obs_date = dt + td(days=+1)
-                if obs_date and obs_date not in observed_dates:
-                    self._add_holiday(self.tr("%s (Observado)") % self[dt], obs_date)
-
-            # When holidays falls on Saturday or Sunday, the rest shall be
-            # transferred, respectively, to the preceding Friday or the
-            # following Monday.
-            observed_dates = observed_dates.union(observed_weekend_dates)
-            for dt in observed_dates:
-                obs_date = None
-                if self._is_saturday(dt):
-                    obs_date = dt + td(days=-1)
-                elif self._is_sunday(dt):
-                    obs_date = dt + td(days=+1)
-                if obs_date and obs_date not in observed_dates:
-                    self._add_holiday(self.tr("%s (Observado)") % self[dt], obs_date)
-
-            dec_31 = date(year, DEC, 31)
-            if self._is_friday(dec_31):
-                self._add_holiday(self.tr("%s (Observado)") % self.tr("Año Nuevo"), dec_31)
 
 
 class EC(Ecuador):

@@ -126,20 +126,20 @@ class TestReadme(TestCase):
                 self.assertIn(
                     country_name[8:],
                     country_alpha_2_codes,
-                    f"Country '{country_name}' name is not shown " "correctly in the table.",
+                    f"Country '{country_name}' name is not shown correctly in the table.",
                 )
             else:
                 self.assertIn(
                     country_name.lower().replace("unitedstates", "unitedstatesofamerica"),
                     country_names,
-                    f"Country '{country_name}' name is not shown " "correctly in the table.",
+                    f"Country '{country_name}' name is not shown correctly in the table.",
                 )
 
             # Make sure country alpha-2 code is shown correctly.
             self.assertIn(
                 instance.country,
                 country_alpha_2_codes,
-                f"Country '{country_name}' alpha-2 code is not shown " "correctly in the table.",
+                f"Country '{country_name}' alpha-2 code is not shown correctly in the table.",
             )
 
             # Make sure country subdivisions are shown correctly.

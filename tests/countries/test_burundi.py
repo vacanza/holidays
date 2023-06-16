@@ -25,23 +25,23 @@ class TestBurundi(TestCase):
         self.assertNoHolidays(Burundi(years=1961))
 
     def test_new_year_day(self):
-        self.assertHolidaysName("New Year's Day", (f"{year}-01-01" for year in range(1962, 2050)))
+        self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(1962, 2050)))
 
     def test_unity_day(self):
         name = "Unity Day"
         self.assertNoHolidayName(name, range(1962, 1992))
-        self.assertHolidaysName(name, (f"{year}-02-05" for year in range(1992, 2050)))
+        self.assertHolidayName(name, (f"{year}-02-05" for year in range(1992, 2050)))
 
     def test_ntaryamira_day(self):
         name = "President Ntaryamira Day"
         self.assertNoHolidayName(name, range(1962, 1995))
-        self.assertHolidaysName(name, (f"{year}-04-06" for year in range(1995, 2050)))
+        self.assertHolidayName(name, (f"{year}-04-06" for year in range(1995, 2050)))
 
     def test_labour_day(self):
-        self.assertHolidaysName("Labour Day", (f"{year}-05-01" for year in range(1962, 2050)))
+        self.assertHolidayName("Labour Day", (f"{year}-05-01" for year in range(1962, 2050)))
 
     def test_ascension_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Ascension Day",
             "2010-05-13",
             "2011-06-02",
@@ -62,18 +62,16 @@ class TestBurundi(TestCase):
     def test_nkurunziza_day(self):
         name = "President Nkurunziza Day"
         self.assertNoHolidayName(name, range(1962, 2022))
-        self.assertHolidaysName(name, (f"{year}-06-08" for year in range(2022, 2050)))
+        self.assertHolidayName(name, (f"{year}-06-08" for year in range(2022, 2050)))
 
     def test_independence_day(self):
-        self.assertHolidaysName(
-            "Independence Day", (f"{year}-07-01" for year in range(1962, 2050))
-        )
+        self.assertHolidayName("Independence Day", (f"{year}-07-01" for year in range(1962, 2050)))
 
     def test_assumption_Day(self):
-        self.assertHolidaysName("Assumption Day", (f"{year}-08-15" for year in range(1962, 2050)))
+        self.assertHolidayName("Assumption Day", (f"{year}-08-15" for year in range(1962, 2050)))
 
     def test_rwagasore_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Prince Louis Rwagasore Day",
             (f"{year}-10-13" for year in range(1962, 2050)),
         )
@@ -81,16 +79,16 @@ class TestBurundi(TestCase):
     def test_ndadaye_day(self):
         name = "President Ndadaye's Day"
         self.assertNoHolidayName(name, range(1962, 1994))
-        self.assertHolidaysName(name, (f"{year}-10-21" for year in range(1994, 2050)))
+        self.assertHolidayName(name, (f"{year}-10-21" for year in range(1994, 2050)))
 
     def test_all_saints_Day(self):
-        self.assertHolidaysName("All Saints' Day", (f"{year}-11-01" for year in range(1962, 2050)))
+        self.assertHolidayName("All Saints' Day", (f"{year}-11-01" for year in range(1962, 2050)))
 
     def test_christmas_Day(self):
-        self.assertHolidaysName("Christmas Day", (f"{year}-12-25" for year in range(1962, 2050)))
+        self.assertHolidayName("Christmas Day", (f"{year}-12-25" for year in range(1962, 2050)))
 
     def test_eid_ul_fitr(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Eid ul Fitr* (*estimated)",
             "2010-09-10",
             "2011-08-30",
@@ -109,7 +107,7 @@ class TestBurundi(TestCase):
         )
 
     def test_eid_al_adha(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Eid al Adha* (*estimated)",
             "2010-11-16",
             "2011-11-06",

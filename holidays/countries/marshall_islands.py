@@ -28,7 +28,7 @@ class HolidaysMH(HolidayBase):
 
     country = "MH"
     special_holidays = {
-        2019: ((NOV, 18, "General Election Day"),),  # Third Monday in November
+        2019: (NOV, 18, "General Election Day"),  # Third Monday in November
     }
 
     def _add_with_observed(self, dt: date, name: str, after_sat: bool = False) -> None:

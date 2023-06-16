@@ -1,0 +1,82 @@
+# Curacao holidays nl localization.
+# Authors: PPsyrius <ppsyrius@ppsyrius.dev>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.27\n"
+"POT-Creation-Date: 2023-06-13 16:35+0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.3.1\n"
+
+#. New Year's Day
+#: ./holidays/countries/curacao.py:50
+msgid "Aña Nobo"
+msgstr "Nieuwjaarsdag"
+
+#. Carnival Monday
+#: ./holidays/countries/curacao.py:57
+msgid "Dialuna despues di Carnaval Grandi"
+msgstr "De maandag na de Grote Karnaval"
+
+#. Good Friday
+#: ./holidays/countries/curacao.py:63
+msgid "Bièrnèsantu"
+msgstr "Goede Vrijdag"
+
+#. Easter Sunday
+#: ./holidays/countries/curacao.py:69
+msgid "Pasku di Resurekshon"
+msgstr "Paasdag"
+
+#. Easter Monday
+#: ./holidays/countries/curacao.py:75
+msgid "Di dos dia di Pasku di Resurekshon"
+msgstr "Tweede paasdag"
+
+#. King's Day.
+#: ./holidays/countries/curacao.py:87
+msgid "Dia di Rey"
+msgstr "Koningsdag"
+
+#. Queen's Day.
+#: ./holidays/countries/curacao.py:90
+msgid "Dia di la Reina"
+msgstr "Koninginnedag"
+
+#. Labor Day
+#: ./holidays/countries/curacao.py:108
+msgid "Dia di Obrero"
+msgstr "Dag van de Arbeid"
+
+#. Ascension Day
+#: ./holidays/countries/curacao.py:114
+msgid "Dia di Asenshon"
+msgstr "Hemelvaartsdag"
+
+#. National Anthem and Flag Day
+#: ./holidays/countries/curacao.py:122
+msgid "Dia di Himno i Bandera"
+msgstr "Nationale vlag en volkslied"
+
+#. Curaçao Day
+#: ./holidays/countries/curacao.py:130
+msgid "Dia di Pais Kòrsou"
+msgstr "Dag van Land Curaçao"
+
+#. Christmas Day
+#: ./holidays/countries/curacao.py:136
+msgid "Pasku di Nasementu"
+msgstr "Kerst"
+
+#. Second Day of Christmas
+#: ./holidays/countries/curacao.py:142
+msgid "Di dos dia di Pasku di Nasementu"
+msgstr "Tweede kerstdag"

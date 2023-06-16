@@ -33,10 +33,10 @@ class TestGreece(TestCase):
             (12, 25, "Χριστούγεννα"),
             (12, 26, "Επόμενη ημέρα των Χριστουγέννων"),
         ):
-            self.assertHolidaysName(name, (f"{year}-{m}-{d}" for year in years))
+            self.assertHolidayName(name, (f"{year}-{m}-{d}" for year in years))
 
     def test_clean_monday(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Καθαρά Δευτέρα",
             "2018-02-19",
             "2019-03-11",
@@ -48,7 +48,7 @@ class TestGreece(TestCase):
         )
 
     def test_good_friday(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Μεγάλη Παρασκευή",
             "2018-04-06",
             "2019-04-26",
@@ -60,7 +60,7 @@ class TestGreece(TestCase):
         )
 
     def test_easter_monday(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Δευτέρα του Πάσχα",
             "2018-04-09",
             "2019-04-29",
@@ -72,7 +72,7 @@ class TestGreece(TestCase):
         )
 
     def test_monday_of_the_holy_spirit(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Δευτέρα του Αγίου Πνεύματος",
             "2018-05-28",
             "2019-06-17",
@@ -91,45 +91,41 @@ class TestGreece(TestCase):
             "2021-05-04",
             "2022-05-02",
         )
-        self.assertHolidaysName(name_observed, dt)
+        self.assertHolidayName(name_observed, dt)
         self.assertNoNonObservedHoliday(dt)
         self.assertNoHolidayName(name_observed, 2017, 2018, 2019, 2020, 2023)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "Πρωτοχρονιά"),
-                ("2022-01-06", "Θεοφάνεια"),
-                ("2022-03-07", "Καθαρά Δευτέρα"),
-                ("2022-03-25", "Εικοστή Πέμπτη Μαρτίου"),
-                ("2022-04-22", "Μεγάλη Παρασκευή"),
-                ("2022-04-25", "Δευτέρα του Πάσχα"),
-                ("2022-05-01", "Εργατική Πρωτομαγιά"),
-                ("2022-05-02", "Εργατική Πρωτομαγιά (παρατηρήθηκε)"),
-                ("2022-06-13", "Δευτέρα του Αγίου Πνεύματος"),
-                ("2022-08-15", "Κοίμηση της Θεοτόκου"),
-                ("2022-10-28", "Ημέρα του Όχι"),
-                ("2022-12-25", "Χριστούγεννα"),
-                ("2022-12-26", "Επόμενη ημέρα των Χριστουγέννων"),
-            )
+            ("2022-01-01", "Πρωτοχρονιά"),
+            ("2022-01-06", "Θεοφάνεια"),
+            ("2022-03-07", "Καθαρά Δευτέρα"),
+            ("2022-03-25", "Εικοστή Πέμπτη Μαρτίου"),
+            ("2022-04-22", "Μεγάλη Παρασκευή"),
+            ("2022-04-25", "Δευτέρα του Πάσχα"),
+            ("2022-05-01", "Εργατική Πρωτομαγιά"),
+            ("2022-05-02", "Εργατική Πρωτομαγιά (παρατηρήθηκε)"),
+            ("2022-06-13", "Δευτέρα του Αγίου Πνεύματος"),
+            ("2022-08-15", "Κοίμηση της Θεοτόκου"),
+            ("2022-10-28", "Ημέρα του Όχι"),
+            ("2022-12-25", "Χριστούγεννα"),
+            ("2022-12-26", "Επόμενη ημέρα των Χριστουγέννων"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "New Year’s Day"),
-                ("2022-01-06", "Epiphany"),
-                ("2022-03-07", "Clean Monday"),
-                ("2022-03-25", "Independence Day"),
-                ("2022-04-22", "Good Friday"),
-                ("2022-04-25", "Easter Monday"),
-                ("2022-05-01", "Labor Day"),
-                ("2022-05-02", "Labor Day (Observed)"),
-                ("2022-06-13", "Easter Monday"),
-                ("2022-08-15", "Assumption of Mary Day"),
-                ("2022-10-28", "Ochi Day"),
-                ("2022-12-25", "Christmas Day"),
-                ("2022-12-26", "Day After Christmas"),
-            ),
             "en_US",
+            ("2022-01-01", "New Year’s Day"),
+            ("2022-01-06", "Epiphany"),
+            ("2022-03-07", "Clean Monday"),
+            ("2022-03-25", "Independence Day"),
+            ("2022-04-22", "Good Friday"),
+            ("2022-04-25", "Easter Monday"),
+            ("2022-05-01", "Labor Day"),
+            ("2022-05-02", "Labor Day (Observed)"),
+            ("2022-06-13", "Easter Monday"),
+            ("2022-08-15", "Assumption of Mary Day"),
+            ("2022-10-28", "Ochi Day"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Day After Christmas"),
         )
