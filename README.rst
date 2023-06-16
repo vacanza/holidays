@@ -356,7 +356,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Hungary
      - HU
      -
-     -
+     - en_US, **hu**, uk
    * - Iceland
      - IS
      -
