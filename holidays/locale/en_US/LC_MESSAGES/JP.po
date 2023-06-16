@@ -17,42 +17,42 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. The Crown Prince marriage ceremony.
-#: ./holidays/countries/japan.py:31 ./holidays/countries/japan.py:34
+#: ./holidays/countries/japan.py:32 ./holidays/countries/japan.py:35
 msgid "結婚の儀"
 msgstr "The Crown Prince Marriage Ceremony"
 
 #. State Funeral of Emperor Shōwa.
-#: ./holidays/countries/japan.py:32
+#: ./holidays/countries/japan.py:33
 msgid "大喪の礼"
 msgstr "Emperor Shōwa Funeral Ceremony"
 
 #. Enthronement ceremony.
-#: ./holidays/countries/japan.py:33
+#: ./holidays/countries/japan.py:34
 msgid "即位礼正殿の儀"
 msgstr "Enthronement Ceremony"
 
 #. Enthronement day.
-#: ./holidays/countries/japan.py:36
+#: ./holidays/countries/japan.py:37
 msgid "天皇の即位の日"
 msgstr "Emperor's Enthronement Day"
 
 #. Enthronement ceremony.
-#: ./holidays/countries/japan.py:37
+#: ./holidays/countries/japan.py:38
 msgid "即位礼正殿の儀が行われる日"
 msgstr "Emperor's Enthronement Day"
 
 #. New Year's Day.
-#: ./holidays/countries/japan.py:50
+#: ./holidays/countries/japan.py:51
 msgid "元日"
 msgstr "New Year's Day"
 
 #. Coming of Age Day.
-#: ./holidays/countries/japan.py:55
+#: ./holidays/countries/japan.py:56
 msgid "成人の日"
 msgstr "Coming of Age Day"
 
 #. Foundation Day.
-#: ./holidays/countries/japan.py:64
+#: ./holidays/countries/japan.py:65
 msgid "建国記念の日"
 msgstr "Foundation Day"
 
