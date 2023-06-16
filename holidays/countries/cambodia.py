@@ -169,7 +169,7 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
 
         if year <= 2019:
             # International Children Day
-            self._add_holiday(tr("ទិវាកុមារអន្តរជាតិ"), JUN, 1)
+            self._add_childrens_day(tr("ទិវាកុមារអន្តរជាតិ"))
 
         # ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម សម្តេចព្រះមហាក្សត្រី ព្រះវររាជមាតា
         # នរោត្តម មុនិនាថ​ សីហនុ
