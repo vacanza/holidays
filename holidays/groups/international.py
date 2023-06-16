@@ -11,7 +11,7 @@
 
 from datetime import date
 
-from holidays.constants import JAN, MAR, MAY, OCT, NOV, DEC
+from holidays.constants import JAN, MAR, MAY, JUN, OCT, NOV, DEC
 
 
 class InternationalHolidays:
@@ -29,6 +29,28 @@ class InternationalHolidays:
         https://en.wikipedia.org/wiki/Africa_Day
         """
         return self._add_holiday(name, MAY, 25)
+
+    def _add_childrens_day(self, name, variation="JUN"):
+        """
+        Add International Children's Day (June 1).
+
+        In 1925, International Children's Day was first proclaimed in Geneva
+        during the World Conference on Child Welfare. Since 1950, it is
+        celebrated on June 1 in many countries.
+
+        As such, this entry currently defaults to June 1, though this also
+        supports another internationally adopted variant, November 20th.
+        https://en.wikipedia.org/wiki/Children's_Day
+        """
+        if variation == "JUN":
+            return self._add_holiday(name, JUN, 1)
+        elif variation == "NOV":
+            return self._add_holiday(name, NOV, 20)
+        else:
+            raise ValueError(
+                f"Unknown variaton name: {variation}. "
+                "This entry currently supports `JUN` and `NOV` variation only."
+            )
 
     def _add_columbus_day(self, name):
         """

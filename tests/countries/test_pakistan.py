@@ -29,42 +29,42 @@ class TestPakistan(TestCase):
 
     def test_kashmir_day(self):
         name = "Kashmir Solidarity Day"
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name, (f"{year}-02-05" for year in range(1990, 2050))
         )
         self.assertNoHolidayName(name, range(1948, 1990))
 
     def test_pakistan_day(self):
         name = "Pakistan Day"
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name, (f"{year}-03-23" for year in range(1956, 2050))
         )
         self.assertNoHolidayName(name, range(1948, 1956))
 
     def test_labour_day(self):
         name = "Labour Day"
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name, (f"{year}-05-01" for year in range(1972, 2050))
         )
         self.assertNoHolidayName(name, range(1948, 1972))
 
     def test_independence_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Independence Day", (f"{year}-08-14" for year in range(1948, 2050))
         )
 
     def test_iqbal_day(self):
         name = "Iqbal Day"
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name, (f"{year}-11-09" for year in range(1948, 2015))
         )
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name, (f"{year}-11-09" for year in range(2022, 2050))
         )
         self.assertNoHolidayName(name, range(2015, 2022))
 
     def test_quaid_e_azam_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Quaid-e-Azam Day", (f"{year}-12-25" for year in range(1948, 2050))
         )
 

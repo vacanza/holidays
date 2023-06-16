@@ -66,7 +66,7 @@ class TestBotswana(TestCase):
         self.assertNoNonObservedHoliday(dt)
 
         dt = ("2021-05-03", "2027-05-03", "2032-05-03")
-        self.assertHolidaysName("Labour Day Holiday", dt)
+        self.assertHolidayName("Labour Day Holiday", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_presidents_day(self):
@@ -109,7 +109,7 @@ class TestBotswana(TestCase):
         self.assertNoNonObservedHoliday(dt)
 
         dt = ("2020-12-28", "2026-12-28", "2037-12-28")
-        self.assertHolidaysName("Boxing Day Holiday", dt)
+        self.assertHolidayName("Boxing Day Holiday", dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_2021(self):
