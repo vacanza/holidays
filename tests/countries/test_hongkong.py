@@ -29,34 +29,34 @@ class TestHongKong(TestCase):
 
     def test_common(self):
         self.assertNonObservedHoliday("2019-01-01")
-        self.assertNonObservedHolidaysName(
+        self.assertNonObservedHolidayName(
             "The first day of January",
             "2019-01-01",
         )
 
     def test_first_day_of_january(self):
         exception_years = {2006, 2012, 2017, 2023}
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "The first day of January",
             (
                 f"{year}-01-01"
                 for year in set(range(2006, 2024)).difference(exception_years)
             ),
         )
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "The day following The first day of January",
             (f"{year}-01-02" for year in exception_years),
         )
 
     def test_lunar_new_year(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "The day preceding Lunar New Year's Day",
             "2006-01-28",
             "2007-02-17",
             "2010-02-13",
         )
 
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Lunar New Year's Day",
             "2008-02-07",
             "2009-01-26",
@@ -73,7 +73,7 @@ class TestHongKong(TestCase):
             "2022-02-01",
         )
 
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "The second day of Lunar New Year",
             "2006-01-30",
             "2007-02-19",
@@ -93,7 +93,7 @@ class TestHongKong(TestCase):
             "2023-01-23",
         )
 
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "The third day of Lunar New Year",
             "2006-01-31",
             "2007-02-20",
@@ -112,7 +112,7 @@ class TestHongKong(TestCase):
             "2023-01-24",
         )
 
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "The fourth day of Lunar New Year",
             "2013-02-13",
             "2014-02-03",
@@ -124,7 +124,7 @@ class TestHongKong(TestCase):
         )
 
     def test_ching_ming_festival(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Ching Ming Festival",
             "2006-04-05",
             "2007-04-05",
@@ -143,7 +143,7 @@ class TestHongKong(TestCase):
             "2023-04-05",
         )
 
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "The day following Ching Ming Festival",
             "2010-04-06",
             "2015-04-06",
@@ -151,7 +151,7 @@ class TestHongKong(TestCase):
         )
 
     def test_easter(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Good Friday",
             "2006-04-14",
             "2007-04-06",
@@ -173,7 +173,7 @@ class TestHongKong(TestCase):
             "2023-04-07",
         )
 
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "The day following Good Friday",
             "2006-04-15",
             "2007-04-07",
@@ -195,7 +195,7 @@ class TestHongKong(TestCase):
             "2023-04-08",
         )
 
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Easter Monday",
             "2006-04-17",
             "2007-04-09",
@@ -215,7 +215,7 @@ class TestHongKong(TestCase):
             "2023-04-10",
         )
 
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "The day following Easter Monday", "2015-04-07", "2021-04-06"
         )
 
@@ -223,7 +223,7 @@ class TestHongKong(TestCase):
         name = "The Birthday of the Buddha"
         name_following = f"The day following {name}"
 
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name,
             "1999-05-22",
             "2006-05-05",
@@ -244,7 +244,7 @@ class TestHongKong(TestCase):
             "2023-05-26",
         )
 
-        self.assertHolidaysName(name_following, "2019-05-13", "2022-05-09")
+        self.assertHolidayName(name_following, "2019-05-13", "2022-05-09")
 
         self.assertNoHolidayName(name, 1998)
         self.assertNoHolidayName(name_following, 1998)
@@ -253,21 +253,21 @@ class TestHongKong(TestCase):
         exception_years = {2005, 2011, 2016, 2022}
         name = "Labour Day"
         name_following = f"The day following {name}"
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name,
             (
                 f"{year}-05-01"
                 for year in set(range(1999, 2024)).difference(exception_years)
             ),
         )
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name_following, (f"{year}-05-02" for year in exception_years)
         )
         self.assertNoHolidayName(name, 1998)
         self.assertNoHolidayName(name_following, 1998)
 
     def test_tuen_ng_festival(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Tuen Ng Festival",
             "2006-05-31",
             "2007-06-19",
@@ -288,7 +288,7 @@ class TestHongKong(TestCase):
             "2023-06-22",
         )
 
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "The day following Tuen Ng Festival", "2008-06-09"
         )
 
@@ -296,21 +296,21 @@ class TestHongKong(TestCase):
         exception_years = {2001, 2007, 2012, 2018}
         name = "Hong Kong Special Administrative Region Establishment Day"
         name_following = f"The day following {name}"
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name,
             (
                 f"{year}-07-01"
                 for year in set(range(1997, 2024)).difference(exception_years)
             ),
         )
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name_following, (f"{year}-07-02" for year in exception_years)
         )
         self.assertNoHolidayName(name, 1996)
         self.assertNoHolidayName(name_following, 1996)
 
     def test_mid_autumn_festival(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "The day following the Chinese Mid-Autumn Festival",
             "2003-09-12",
             "2004-09-29",
@@ -336,11 +336,11 @@ class TestHongKong(TestCase):
             "2026-09-26",
         )
 
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Chinese Mid-Autumn Festival", "2002-09-21", "2009-10-03"
         )
 
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "The second day of the Chinese Mid-Autumn Festival (Monday)",
             "2022-09-12",
         )
@@ -349,22 +349,22 @@ class TestHongKong(TestCase):
         exception_years = {2000, 2006, 2012, 2017, 2023}
         name = "National Day"
         name_following = f"The day following {name}"
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name,
             (
                 f"{year}-10-01"
                 for year in set(range(1997, 2024)).difference(exception_years)
             ),
         )
-        self.assertHolidaysName(name, "1997-10-02", "1998-10-02")
-        self.assertHolidaysName(
+        self.assertHolidayName(name, "1997-10-02", "1998-10-02")
+        self.assertHolidayName(
             name_following, (f"{year}-10-02" for year in exception_years)
         )
         self.assertNoHolidayName(name, 1996)
         self.assertNoHolidayName(name_following, 1996)
 
     def test_chung_yeung_festival(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Chung Yeung Festival",
             "2006-10-30",
             "2007-10-19",
@@ -383,7 +383,7 @@ class TestHongKong(TestCase):
             "2023-10-23",
         )
 
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "The day following Chung Yeung Festival",
             "2013-10-14",
             "2016-10-10",
@@ -393,7 +393,7 @@ class TestHongKong(TestCase):
     def test_christmas_day(self):
         exception_years = {2011, 2016, 2022}
         name = "Christmas Day"
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name,
             (
                 f"{year}-12-25"
@@ -404,18 +404,18 @@ class TestHongKong(TestCase):
 
         exception_years = {2010, 2021}
         name = "The first weekday after Christmas Day"
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name,
             (
                 f"{year}-12-26"
                 for year in set(range(2006, 2024)).difference(exception_years)
             ),
         )
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name, (f"{year}-12-27" for year in exception_years)
         )
 
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "The second weekday after Christmas Day",
             "2011-12-27",
             "2016-12-27",

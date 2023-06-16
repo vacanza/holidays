@@ -107,6 +107,7 @@ Available Countries
 .. _ISO 3166-1 alpha-2 code: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
 .. _ISO 3166-2 code: https://en.wikipedia.org/wiki/ISO_3166-2
 .. _ISO 639-1 code: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+.. _ISO 639-2 code: https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes
 
 We currently support 130 country codes. The standard way to refer to a country
 is by using its `ISO 3166-1 alpha-2 code`_, the same used for domain names, and
@@ -116,7 +117,8 @@ A default language is defined by ``default_language`` (optional) attribute
 for each entity and is used as a fallback when neither user specified
 language nor user locale language available. The default language code is
 a `ISO 639-1 code`_. A list of all languages supported by country is defined by
-``supported_languages`` (optional) attribute.
+``supported_languages`` (optional) attribute. If there is no designated
+`ISO 639-1 code`_ then `ISO 639-2 code`_ can be used.
 
 The list of supported countries, their subdivisions and supported languages
 (all default values are hightlighted with bold):

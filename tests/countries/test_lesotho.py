@@ -29,7 +29,7 @@ class TestLesotho(TestCase):
 
     def test_heroes_day(self):
         name = "Heroes Day"
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name, (f"{year}-04-04" for year in range(1996, 2003))
         )
         self.assertNoHolidayName(name, range(2003, 2040))
@@ -37,7 +37,7 @@ class TestLesotho(TestCase):
 
     def test_africa_heroes_day(self):
         name = "Africa/Heroes Day"
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name, (f"{year}-05-25" for year in range(2003, 2040))
         )
         self.assertNoHolidayName(name, range(1996, 2003))
@@ -45,10 +45,10 @@ class TestLesotho(TestCase):
 
     def test_kings_birthday(self):
         name = "King's Birthday"
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name, (f"{year}-05-02" for year in range(1996, 1998))
         )
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name, (f"{year}-07-17" for year in range(1998, 2040))
         )
         self.assertNoHoliday(f"{year}-05-02" for year in range(1998, 2040))
