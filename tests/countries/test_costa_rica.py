@@ -265,71 +265,65 @@ class TestCostaRica(TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
+            ("2022-01-01", "Año Nuevo"),
+            ("2022-04-11", "Día de Juan Santamaría"),
+            ("2022-04-14", "Jueves Santo"),
+            ("2022-04-15", "Viernes Santo"),
+            ("2022-05-01", "Día Internacional del Trabajo"),
+            ("2022-07-25", "Anexión del Partido de Nicoya a Costa Rica"),
+            ("2022-08-02", "Fiesta de Nuestra Señora de los Ángeles"),
+            ("2022-08-15", "Día de la Madre"),
             (
-                ("2022-01-01", "Año Nuevo"),
-                ("2022-04-11", "Día de Juan Santamaría"),
-                ("2022-04-14", "Jueves Santo"),
-                ("2022-04-15", "Viernes Santo"),
-                ("2022-05-01", "Día Internacional del Trabajo"),
-                ("2022-07-25", "Anexión del Partido de Nicoya a Costa Rica"),
-                ("2022-08-02", "Fiesta de Nuestra Señora de los Ángeles"),
-                ("2022-08-15", "Día de la Madre"),
-                (
-                    "2022-09-04",
-                    "Día de la Persona Negra y la Cultura Afrocostarricense "
-                    "(Observado)",
-                ),
-                ("2022-09-19", "Día de la Independencia (Observado)"),
-                ("2022-12-05", "Día de la Abolición del Ejército (Observado)"),
-                ("2022-12-25", "Navidad"),
-            )
+                "2022-09-04",
+                "Día de la Persona Negra y la Cultura Afrocostarricense "
+                "(Observado)",
+            ),
+            ("2022-09-19", "Día de la Independencia (Observado)"),
+            ("2022-12-05", "Día de la Abolición del Ejército (Observado)"),
+            ("2022-12-25", "Navidad"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "New Year's Day"),
-                ("2022-04-11", "Juan Santamaría Day"),
-                ("2022-04-14", "Maundy Thursday"),
-                ("2022-04-15", "Good Friday"),
-                ("2022-05-01", "International Workers' Day"),
-                (
-                    "2022-07-25",
-                    "Annexation of the Party of Nicoya to Costa Rica",
-                ),
-                ("2022-08-02", "Feast of Our Lady of the Angels"),
-                ("2022-08-15", "Mother's Day"),
-                (
-                    "2022-09-04",
-                    "Day of the Black Person and Afro-Costa Rican Culture "
-                    "(Observed)",
-                ),
-                ("2022-09-19", "Independence Day (Observed)"),
-                ("2022-12-05", "Army Abolition Day (Observed)"),
-                ("2022-12-25", "Christmas Day"),
-            ),
             "en_US",
+            ("2022-01-01", "New Year's Day"),
+            ("2022-04-11", "Juan Santamaría Day"),
+            ("2022-04-14", "Maundy Thursday"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-05-01", "International Workers' Day"),
+            (
+                "2022-07-25",
+                "Annexation of the Party of Nicoya to Costa Rica",
+            ),
+            ("2022-08-02", "Feast of Our Lady of the Angels"),
+            ("2022-08-15", "Mother's Day"),
+            (
+                "2022-09-04",
+                "Day of the Black Person and Afro-Costa Rican Culture "
+                "(Observed)",
+            ),
+            ("2022-09-19", "Independence Day (Observed)"),
+            ("2022-12-05", "Army Abolition Day (Observed)"),
+            ("2022-12-25", "Christmas Day"),
         )
 
     def test_l10n_uk(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "Новий рік"),
-                ("2022-04-11", "День Хуана Сантамарії"),
-                ("2022-04-14", "Великий четвер"),
-                ("2022-04-15", "Страсна пʼятниця"),
-                ("2022-05-01", "Міжнародний день трудящих"),
-                ("2022-07-25", "День приєднання Нікої"),
-                ("2022-08-02", "Свято Богоматері Ангелів"),
-                ("2022-08-15", "День матері"),
-                (
-                    "2022-09-04",
-                    "День чорношкірої людини та афро-костариканської культури "
-                    "(вихідний)",
-                ),
-                ("2022-09-19", "День незалежності (вихідний)"),
-                ("2022-12-05", "День ліквідації армії (вихідний)"),
-                ("2022-12-25", "Різдво Христове"),
-            ),
             "uk",
+            ("2022-01-01", "Новий рік"),
+            ("2022-04-11", "День Хуана Сантамарії"),
+            ("2022-04-14", "Великий четвер"),
+            ("2022-04-15", "Страсна пʼятниця"),
+            ("2022-05-01", "Міжнародний день трудящих"),
+            ("2022-07-25", "День приєднання Нікої"),
+            ("2022-08-02", "Свято Богоматері Ангелів"),
+            ("2022-08-15", "День матері"),
+            (
+                "2022-09-04",
+                "День чорношкірої людини та афро-костариканської культури "
+                "(вихідний)",
+            ),
+            ("2022-09-19", "День незалежності (вихідний)"),
+            ("2022-12-05", "День ліквідації армії (вихідний)"),
+            ("2022-12-25", "Різдво Христове"),
         )

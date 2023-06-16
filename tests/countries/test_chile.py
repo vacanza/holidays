@@ -217,7 +217,7 @@ class TestChile(TestCase):
         years = set(range(1922, 2000)).difference({1973})
         name = "Día de la Raza"
         self.assertHoliday(f"{year}-10-12" for year in years)
-        self.assertHolidayName(name, years)
+        self.assertHolidayName(name, (f"{year}-10-12" for year in years))
         self.assertNoHolidayName(name, 1973)
 
         self.assertHoliday(
@@ -232,8 +232,10 @@ class TestChile(TestCase):
             "2023-10-09",
         )
 
+        self.assertHolidayName(name, (f"{year}-10-12" for year in years))
         self.assertHolidayName(
-            "Día del Encuentro de dos Mundos", range(2000, 2050)
+            "Día del Encuentro de dos Mundos",
+            range(2000, 2050),
         )
 
     def test_reformation_day(self):
@@ -358,74 +360,68 @@ class TestChile(TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
+            ("2022-01-01", "Año Nuevo"),
+            ("2022-04-15", "Viernes Santo"),
+            ("2022-04-16", "Sábado Santo"),
+            ("2022-05-01", "Día Nacional del Trabajo"),
+            ("2022-05-21", "Día de las Glorias Navales"),
+            ("2022-06-21", "Día Nacional de los Pueblos Indígenas"),
+            ("2022-06-27", "San Pedro y San Pablo"),
+            ("2022-07-16", "Virgen del Carmen"),
+            ("2022-08-15", "Asunción de la Virgen"),
+            ("2022-09-16", "Feriado nacional"),
+            ("2022-09-18", "Día de la Independencia"),
+            ("2022-09-19", "Día de las Glorias del Ejército"),
+            ("2022-10-10", "Día del Encuentro de dos Mundos"),
             (
-                ("2022-01-01", "Año Nuevo"),
-                ("2022-04-15", "Viernes Santo"),
-                ("2022-04-16", "Sábado Santo"),
-                ("2022-05-01", "Día Nacional del Trabajo"),
-                ("2022-05-21", "Día de las Glorias Navales"),
-                ("2022-06-21", "Día Nacional de los Pueblos Indígenas"),
-                ("2022-06-27", "San Pedro y San Pablo"),
-                ("2022-07-16", "Virgen del Carmen"),
-                ("2022-08-15", "Asunción de la Virgen"),
-                ("2022-09-16", "Feriado nacional"),
-                ("2022-09-18", "Día de la Independencia"),
-                ("2022-09-19", "Día de las Glorias del Ejército"),
-                ("2022-10-10", "Día del Encuentro de dos Mundos"),
-                (
-                    "2022-10-31",
-                    "Día Nacional de las Iglesias Evangélicas y Protestantes",
-                ),
-                ("2022-11-01", "Día de Todos los Santos"),
-                ("2022-12-08", "La Inmaculada Concepción"),
-                ("2022-12-25", "Navidad"),
-            )
+                "2022-10-31",
+                "Día Nacional de las Iglesias Evangélicas y Protestantes",
+            ),
+            ("2022-11-01", "Día de Todos los Santos"),
+            ("2022-12-08", "La Inmaculada Concepción"),
+            ("2022-12-25", "Navidad"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "New Year's Day"),
-                ("2022-04-15", "Good Friday"),
-                ("2022-04-16", "Holy Saturday"),
-                ("2022-05-01", "Labour Day"),
-                ("2022-05-21", "Navy Day"),
-                ("2022-06-21", "National Day of Indigenous Peoples"),
-                ("2022-06-27", "Saint Peter and Saint Paul"),
-                ("2022-07-16", "Our Lady of Mount Carmel"),
-                ("2022-08-15", "Assumption of Mary"),
-                ("2022-09-16", "National Holiday"),
-                ("2022-09-18", "Independence Day"),
-                ("2022-09-19", "Army Day"),
-                ("2022-10-10", "Meeting of Two Worlds' Day"),
-                ("2022-10-31", "Reformation Day"),
-                ("2022-11-01", "All Saints' Day"),
-                ("2022-12-08", "Immaculate Conception"),
-                ("2022-12-25", "Christmas"),
-            ),
             "en_US",
+            ("2022-01-01", "New Year's Day"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-04-16", "Holy Saturday"),
+            ("2022-05-01", "Labour Day"),
+            ("2022-05-21", "Navy Day"),
+            ("2022-06-21", "National Day of Indigenous Peoples"),
+            ("2022-06-27", "Saint Peter and Saint Paul"),
+            ("2022-07-16", "Our Lady of Mount Carmel"),
+            ("2022-08-15", "Assumption of Mary"),
+            ("2022-09-16", "National Holiday"),
+            ("2022-09-18", "Independence Day"),
+            ("2022-09-19", "Army Day"),
+            ("2022-10-10", "Meeting of Two Worlds' Day"),
+            ("2022-10-31", "Reformation Day"),
+            ("2022-11-01", "All Saints' Day"),
+            ("2022-12-08", "Immaculate Conception"),
+            ("2022-12-25", "Christmas"),
         )
 
     def test_l10n_uk(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "Новий рік"),
-                ("2022-04-15", "Страсна п'ятниця"),
-                ("2022-04-16", "Велика субота"),
-                ("2022-05-01", "День праці"),
-                ("2022-05-21", "День військово-морської слави"),
-                ("2022-06-21", "Національний день корінних народів"),
-                ("2022-06-27", "День Святих Петра і Павла"),
-                ("2022-07-16", "Матір Божа Кармельська"),
-                ("2022-08-15", "Успіння Пресвятої Богородиці"),
-                ("2022-09-16", "Національне свято"),
-                ("2022-09-18", "День Незалежності"),
-                ("2022-09-19", "День військової слави"),
-                ("2022-10-10", "День зустрічі двох світів"),
-                ("2022-10-31", "День Реформації"),
-                ("2022-11-01", "День усіх святих"),
-                ("2022-12-08", "Непорочне зачаття Діви Марії"),
-                ("2022-12-25", "Різдво Христове"),
-            ),
             "uk",
+            ("2022-01-01", "Новий рік"),
+            ("2022-04-15", "Страсна п'ятниця"),
+            ("2022-04-16", "Велика субота"),
+            ("2022-05-01", "День праці"),
+            ("2022-05-21", "День військово-морської слави"),
+            ("2022-06-21", "Національний день корінних народів"),
+            ("2022-06-27", "День Святих Петра і Павла"),
+            ("2022-07-16", "Матір Божа Кармельська"),
+            ("2022-08-15", "Успіння Пресвятої Богородиці"),
+            ("2022-09-16", "Національне свято"),
+            ("2022-09-18", "День Незалежності"),
+            ("2022-09-19", "День військової слави"),
+            ("2022-10-10", "День зустрічі двох світів"),
+            ("2022-10-31", "День Реформації"),
+            ("2022-11-01", "День усіх святих"),
+            ("2022-12-08", "Непорочне зачаття Діви Марії"),
+            ("2022-12-25", "Різдво Христове"),
         )

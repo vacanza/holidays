@@ -70,8 +70,8 @@ class TestMorocco(TestCase):
         self.assertNoHoliday("1944-01-11")
 
     def test_independence_day(self):
-        self.assertHolidaysName("Fête de l'indépendance", "1957-11-18")
-        self.assertHolidaysName("Fête du Trône", "1956-11-18", "1957-11-18")
+        self.assertHolidayName("Fête de l'indépendance", "1957-11-18")
+        self.assertHolidayName("Fête du Trône", "1956-11-18", "1957-11-18")
 
     def test_hijri_based(self):
         self.assertHoliday(

@@ -15,49 +15,46 @@ from tests.common import TestCase
 
 class TestPanama(TestCase):
     @classmethod
-    def setUpClass(self):
-        super().setUpClass(Panama)
+    def setUpClass(cls):
+        super().setUpClass(Panama, years=range(1950, 2050))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Panama, PA, PAN)
 
     def test_new_year_day(self):
-        self.assertHoliday(f"{year}-01-01" for year in range(1950, 2051))
+        self.assertHoliday(f"{year}-01-01" for year in range(1950, 2050))
 
     def test_martyrs_day(self):
-        self.assertHoliday(f"{year}-01-09" for year in range(1950, 2051))
+        self.assertHoliday(f"{year}-01-09" for year in range(1950, 2050))
 
     def test_labour_day(self):
-        self.assertHoliday(f"{year}-05-01" for year in range(1950, 2051))
+        self.assertHoliday(f"{year}-05-01" for year in range(1950, 2050))
 
     def test_separation_day(self):
-        self.assertHoliday(f"{year}-11-03" for year in range(1950, 2051))
+        self.assertHoliday(f"{year}-11-03" for year in range(1950, 2050))
 
     def test_national_symbols_day(self):
-        self.assertHoliday(f"{year}-11-04" for year in range(1950, 2051))
+        self.assertHoliday(f"{year}-11-04" for year in range(1950, 2050))
 
     def test_colon_day(self):
-        self.assertHoliday(f"{year}-11-05" for year in range(1950, 2051))
+        self.assertHoliday(f"{year}-11-05" for year in range(1950, 2050))
 
     def test_los_santos_uprising_day(self):
-        self.assertHoliday(f"{year}-11-10" for year in range(1950, 2051))
+        self.assertHoliday(f"{year}-11-10" for year in range(1950, 2050))
 
     def test_independence_day(self):
-        self.assertHoliday(f"{year}-11-28" for year in range(1950, 2051))
+        self.assertHoliday(f"{year}-11-28" for year in range(1950, 2050))
 
     def test_mothers_day(self):
-        self.assertHoliday(f"{year}-12-08" for year in range(1950, 2051))
+        self.assertHoliday(f"{year}-12-08" for year in range(1950, 2050))
 
     def test_national_mourning_day(self):
-        self.assertHoliday(f"{year}-12-20" for year in range(2022, 2051))
+        self.assertHoliday(f"{year}-12-20" for year in range(2022, 2050))
         self.assertNoHoliday(f"{year}-12-20" for year in range(1950, 2022))
-        self.assertNoHolidayName(
-            "National Mourning Day",
-            Panama(years=range(1950, 2022)),
-        )
+        self.assertNoHolidayName("National Mourning Day", range(1950, 2022))
 
     def test_christmas_day(self):
-        self.assertHoliday(f"{year}-12-25" for year in range(1950, 2051))
+        self.assertHoliday(f"{year}-12-25" for year in range(1950, 2050))
 
     def test_observed(self):
         observed_holidays = (
@@ -81,6 +78,7 @@ class TestPanama(TestCase):
 
     def test_2022(self):
         self.assertHolidays(
+            Panama(years=2022),
             ("2022-01-01", "New Year's Day"),
             ("2022-01-09", "Martyrs' Day"),
             ("2022-01-10", "Martyrs' Day (Observed)"),
@@ -101,6 +99,7 @@ class TestPanama(TestCase):
 
     def test_2023(self):
         self.assertHolidays(
+            Panama(years=2023),
             ("2023-01-01", "New Year's Day"),
             ("2023-01-02", "New Year's Day (Observed)"),
             ("2023-01-09", "Martyrs' Day"),
