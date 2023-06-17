@@ -9,7 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import importlib.util
 import unittest
 from datetime import date
 
@@ -39,14 +38,13 @@ class TestTurkey(unittest.TestCase):
         self.assertIn(date(2019, 10, 29), self.holidays)
 
     def test_hijri_based(self):
-        if importlib.util.find_spec("hijri_converter"):
-            self.holidays = holidays.TR(years=[2020])
-            # Ramadan Feast
-            self.assertIn(date(2020, 5, 24), self.holidays)
-            self.assertIn(date(2020, 5, 25), self.holidays)
-            self.assertIn(date(2020, 5, 26), self.holidays)
-            # Sacrifice Feast
-            self.assertIn(date(2020, 7, 31), self.holidays)
-            self.assertIn(date(2020, 8, 1), self.holidays)
-            self.assertIn(date(2020, 8, 2), self.holidays)
-            self.assertIn(date(2020, 8, 3), self.holidays)
+        self.holidays = holidays.TR(years=[2020])
+        # Ramadan Feast
+        self.assertIn(date(2020, 5, 24), self.holidays)
+        self.assertIn(date(2020, 5, 25), self.holidays)
+        self.assertIn(date(2020, 5, 26), self.holidays)
+        # Sacrifice Feast
+        self.assertIn(date(2020, 7, 31), self.holidays)
+        self.assertIn(date(2020, 8, 1), self.holidays)
+        self.assertIn(date(2020, 8, 2), self.holidays)
+        self.assertIn(date(2020, 8, 3), self.holidays)

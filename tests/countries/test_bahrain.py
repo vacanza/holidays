@@ -9,8 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import importlib.util
-
 from holidays.countries.bahrain import Bahrain, BH, BAH
 from tests.common import TestCase
 
@@ -60,9 +58,6 @@ class TestBahrain(TestCase):
         )
 
     def test_hijri_based(self):
-        if not importlib.util.find_spec("hijri_converter"):
-            return None
-
         # Eid Al-Fitr.
         self.assertHoliday(
             "2020-05-24",

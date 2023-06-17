@@ -26,8 +26,9 @@ class TestSwitzerland(TestCase):
         self.assertCountryAliases(Switzerland, CH, CHE)
 
     def test_all_holidays_present(self):
-        ch_2018 = sum(CH(years=2018, subdiv=p) for p in CH.subdivisions)
-        y_2018 = set(ch_2018.values())
+        y_2018 = set()
+        for p in CH.subdivisions:
+            y_2018.update(CH(years=2018, subdiv=p).values())
         all_h = {  # Holidays names in their chronological order.
             "Neujahrestag",
             "Berchtoldstag",
