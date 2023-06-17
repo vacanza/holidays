@@ -41,6 +41,7 @@ COUNTRIES: RegistryDict = {
     "bulgaria": ("Bulgaria", "BG", "BLG"),
     "burkina_faso": ("BurkinaFaso", "BF", "BFA"),
     "burundi": ("Burundi", "BI", "BDI"),
+    "cambodia": ("Cambodia", "KH", "KHM"),
     "cameroon": ("Cameroon", "CM", "CMR"),
     "canada": ("Canada", "CA", "CAN"),
     "chad": ("Chad", "TD", "TCD"),

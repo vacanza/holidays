@@ -23,28 +23,28 @@ class TestLI(TestCase):
         self.assertCountryAliases(Liechtenstein, LI, LIE)
 
     def test_new_years(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Neujahr", (f"{year}-01-01" for year in range(1900, 2050))
         )
 
     def test_saint_berchtolds_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Berchtoldstag", (f"{year}-01-02" for year in range(1900, 2050))
         )
 
     def test_epiphany(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Heilige Drei Könige",
             (f"{year}-01-06" for year in range(1900, 2050)),
         )
 
     def test_candlemas(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Mariä Lichtmess", (f"{year}-02-02" for year in range(1900, 2050))
         )
 
     def test_shrove_tuesday(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Fasnachtsdienstag",
             "1900-02-27",
             "1901-02-19",
@@ -59,12 +59,12 @@ class TestLI(TestCase):
         )
 
     def test_saint_josephs_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Josefstag", (f"{year}-03-19" for year in range(1900, 2050))
         )
 
     def test_good_friday(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Karfreitag",
             "1900-04-13",
             "1901-04-05",
@@ -79,7 +79,7 @@ class TestLI(TestCase):
         )
 
     def test_easter(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Ostersonntag",
             "1900-04-15",
             "1901-04-07",
@@ -94,7 +94,7 @@ class TestLI(TestCase):
         )
 
     def test_easter_monday(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Ostermontag",
             "1900-04-16",
             "1901-04-08",
@@ -109,12 +109,12 @@ class TestLI(TestCase):
         )
 
     def test_labor_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Tag der Arbeit", (f"{year}-05-01" for year in range(1900, 2050))
         )
 
     def test_ascension_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Auffahrt",
             "1900-05-24",
             "1901-05-16",
@@ -129,7 +129,7 @@ class TestLI(TestCase):
         )
 
     def test_whit_sunday(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Pfingstsonntag",
             "1900-06-03",
             "1901-05-26",
@@ -144,7 +144,7 @@ class TestLI(TestCase):
         )
 
     def test_whit_monday(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Pfingstmontag",
             "1900-06-04",
             "1901-05-27",
@@ -159,7 +159,7 @@ class TestLI(TestCase):
         )
 
     def test_corpus_christi(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Fronleichnam",
             "1900-06-14",
             "1901-06-06",
@@ -174,49 +174,49 @@ class TestLI(TestCase):
         )
 
     def test_national_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Staatsfeiertag",
             (f"{year}-08-15" for year in range(1900, 2050)),
         )
 
     def test_nativity_of_mary(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Mariä Geburt",
             (f"{year}-09-08" for year in range(1900, 2050)),
         )
 
     def test_all_saints_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Allerheiligen",
             (f"{year}-11-01" for year in range(1900, 2050)),
         )
 
     def test_immaculate_conception(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Mariä Empfängnis",
             (f"{year}-12-08" for year in range(1900, 2050)),
         )
 
     def test_christmas_eve(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Heiligabend",
             (f"{year}-12-24" for year in range(1900, 2050)),
         )
 
     def test_christmas_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Weihnachten",
             (f"{year}-12-25" for year in range(1900, 2050)),
         )
 
     def test_st_stephens_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Stefanstag",
             (f"{year}-12-26" for year in range(1900, 2050)),
         )
 
     def test_new_years_eve(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Silvester",
             (f"{year}-12-31" for year in range(1900, 2050)),
         )
@@ -250,86 +250,80 @@ class TestLI(TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "Neujahr"),
-                ("2022-01-02", "Berchtoldstag"),
-                ("2022-01-06", "Heilige Drei Könige"),
-                ("2022-02-02", "Mariä Lichtmess"),
-                ("2022-03-01", "Fasnachtsdienstag"),
-                ("2022-03-19", "Josefstag"),
-                ("2022-04-15", "Karfreitag"),
-                ("2022-04-17", "Ostersonntag"),
-                ("2022-04-18", "Ostermontag"),
-                ("2022-05-01", "Tag der Arbeit"),
-                ("2022-05-26", "Auffahrt"),
-                ("2022-06-05", "Pfingstsonntag"),
-                ("2022-06-06", "Pfingstmontag"),
-                ("2022-06-16", "Fronleichnam"),
-                ("2022-08-15", "Staatsfeiertag"),
-                ("2022-09-08", "Mariä Geburt"),
-                ("2022-11-01", "Allerheiligen"),
-                ("2022-12-08", "Mariä Empfängnis"),
-                ("2022-12-24", "Heiligabend"),
-                ("2022-12-25", "Weihnachten"),
-                ("2022-12-26", "Stefanstag"),
-                ("2022-12-31", "Silvester"),
-            )
+            ("2022-01-01", "Neujahr"),
+            ("2022-01-02", "Berchtoldstag"),
+            ("2022-01-06", "Heilige Drei Könige"),
+            ("2022-02-02", "Mariä Lichtmess"),
+            ("2022-03-01", "Fasnachtsdienstag"),
+            ("2022-03-19", "Josefstag"),
+            ("2022-04-15", "Karfreitag"),
+            ("2022-04-17", "Ostersonntag"),
+            ("2022-04-18", "Ostermontag"),
+            ("2022-05-01", "Tag der Arbeit"),
+            ("2022-05-26", "Auffahrt"),
+            ("2022-06-05", "Pfingstsonntag"),
+            ("2022-06-06", "Pfingstmontag"),
+            ("2022-06-16", "Fronleichnam"),
+            ("2022-08-15", "Staatsfeiertag"),
+            ("2022-09-08", "Mariä Geburt"),
+            ("2022-11-01", "Allerheiligen"),
+            ("2022-12-08", "Mariä Empfängnis"),
+            ("2022-12-24", "Heiligabend"),
+            ("2022-12-25", "Weihnachten"),
+            ("2022-12-26", "Stefanstag"),
+            ("2022-12-31", "Silvester"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "New Year's Day"),
-                ("2022-01-02", "Saint Berchtold's Day"),
-                ("2022-01-06", "Epiphany"),
-                ("2022-02-02", "Candlemas"),
-                ("2022-03-01", "Shrove Tuesday"),
-                ("2022-03-19", "Saint Joseph's Day"),
-                ("2022-04-15", "Good Friday"),
-                ("2022-04-17", "Easter Sunday"),
-                ("2022-04-18", "Easter Monday"),
-                ("2022-05-01", "Labor Day"),
-                ("2022-05-26", "Ascension Day"),
-                ("2022-06-05", "Whit Sunday"),
-                ("2022-06-06", "Whit Monday"),
-                ("2022-06-16", "Corpus Christi"),
-                ("2022-08-15", "National Day"),
-                ("2022-09-08", "Nativity of Mary"),
-                ("2022-11-01", "All Saints' Day"),
-                ("2022-12-08", "Immaculate Conception"),
-                ("2022-12-24", "Christmas Eve"),
-                ("2022-12-25", "Christmas Day"),
-                ("2022-12-26", "St. Stephen's Day"),
-                ("2022-12-31", "New Year's Eve"),
-            ),
             "en_US",
+            ("2022-01-01", "New Year's Day"),
+            ("2022-01-02", "Saint Berchtold's Day"),
+            ("2022-01-06", "Epiphany"),
+            ("2022-02-02", "Candlemas"),
+            ("2022-03-01", "Shrove Tuesday"),
+            ("2022-03-19", "Saint Joseph's Day"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-04-17", "Easter Sunday"),
+            ("2022-04-18", "Easter Monday"),
+            ("2022-05-01", "Labor Day"),
+            ("2022-05-26", "Ascension Day"),
+            ("2022-06-05", "Whit Sunday"),
+            ("2022-06-06", "Whit Monday"),
+            ("2022-06-16", "Corpus Christi"),
+            ("2022-08-15", "National Day"),
+            ("2022-09-08", "Nativity of Mary"),
+            ("2022-11-01", "All Saints' Day"),
+            ("2022-12-08", "Immaculate Conception"),
+            ("2022-12-24", "Christmas Eve"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "St. Stephen's Day"),
+            ("2022-12-31", "New Year's Eve"),
         )
 
     def test_l10n_uk(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "Новий рік"),
-                ("2022-01-02", "День Святого Бертольда"),
-                ("2022-01-06", "Богоявлення"),
-                ("2022-02-02", "Стрітення"),
-                ("2022-03-01", "Масний вівторок"),
-                ("2022-03-19", "День Святого Йосипа"),
-                ("2022-04-15", "Страсна пʼятниця"),
-                ("2022-04-17", "Великдень"),
-                ("2022-04-18", "Великодній понеділок"),
-                ("2022-05-01", "День праці"),
-                ("2022-05-26", "Вознесіння Господнє"),
-                ("2022-06-05", "Трійця"),
-                ("2022-06-06", "День Святого Духа"),
-                ("2022-06-16", "Свято Тіла і Крові Христових"),
-                ("2022-08-15", "Національне свято"),
-                ("2022-09-08", "Різдво Пресвятої Богородиці"),
-                ("2022-11-01", "День усіх святих"),
-                ("2022-12-08", "Непорочне зачаття Діви Марії"),
-                ("2022-12-24", "Святий вечір"),
-                ("2022-12-25", "Різдво Христове"),
-                ("2022-12-26", "День Святого Стефана"),
-                ("2022-12-31", "Переддень Нового року"),
-            ),
             "uk",
+            ("2022-01-01", "Новий рік"),
+            ("2022-01-02", "День Святого Бертольда"),
+            ("2022-01-06", "Богоявлення"),
+            ("2022-02-02", "Стрітення"),
+            ("2022-03-01", "Масний вівторок"),
+            ("2022-03-19", "День Святого Йосипа"),
+            ("2022-04-15", "Страсна пʼятниця"),
+            ("2022-04-17", "Великдень"),
+            ("2022-04-18", "Великодній понеділок"),
+            ("2022-05-01", "День праці"),
+            ("2022-05-26", "Вознесіння Господнє"),
+            ("2022-06-05", "Трійця"),
+            ("2022-06-06", "День Святого Духа"),
+            ("2022-06-16", "Свято Тіла і Крові Христових"),
+            ("2022-08-15", "Національне свято"),
+            ("2022-09-08", "Різдво Пресвятої Богородиці"),
+            ("2022-11-01", "День усіх святих"),
+            ("2022-12-08", "Непорочне зачаття Діви Марії"),
+            ("2022-12-24", "Святий вечір"),
+            ("2022-12-25", "Різдво Христове"),
+            ("2022-12-26", "День Святого Стефана"),
+            ("2022-12-31", "Переддень Нового року"),
         )

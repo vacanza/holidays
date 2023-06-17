@@ -29,19 +29,19 @@ class TestIsrael(TestCase):
         observed_holiday = official_holiday + td(days=+1)
         self.assertNotIn(holiday_name, self.holidays.get(official_holiday, ""))
         self.assertHoliday(observed_holiday)
-        self.assertHolidaysName(f"{holiday_name} (Observed)", observed_holiday)
+        self.assertHolidayName(f"{holiday_name} (Observed)", observed_holiday)
 
         # Earlier
         official_holiday = date(2018, 4, 19) + td(days=days_delta)
         observed_holiday = official_holiday + td(days=-1)
         self.assertHoliday(observed_holiday)
         self.assertNotIn(holiday_name, self.holidays.get(official_holiday, ""))
-        self.assertHolidaysName(f"{holiday_name} (Observed)", observed_holiday)
+        self.assertHolidayName(f"{holiday_name} (Observed)", observed_holiday)
 
         # On time
         official_holiday = date(2020, 4, 28) + td(days=days_delta)
         self.assertHoliday(observed_holiday)
-        self.assertHolidaysName(holiday_name, official_holiday)
+        self.assertHolidayName(holiday_name, official_holiday)
         self.assertNoHolidayName(f"{holiday_name} (Observed)", 2020)
 
     def _test_nonobserved_holidays(self, holiday_name):
@@ -51,7 +51,7 @@ class TestIsrael(TestCase):
         official_holiday = date(2017, 4, 30) + td(days=days_delta)
         observed_holiday = official_holiday + td(days=+1)
         self.assertNonObservedHoliday(official_holiday)
-        self.assertNonObservedHolidaysName(holiday_name, official_holiday)
+        self.assertNonObservedHolidayName(holiday_name, official_holiday)
         self.assertNotEqual(
             self.holidays_non_observed.get(observed_holiday), holiday_name
         )
@@ -80,9 +80,9 @@ class TestIsrael(TestCase):
         self.assertNoHolidays(Israel(years=1947))
 
     def test_purim_day(self):
-        self.assertHolidaysName("Purim - Eve", "2017-03-11")
-        self.assertHolidaysName("Purim", "2017-03-12")
-        self.assertHolidaysName("Shushan Purim", "2017-03-13")
+        self.assertHolidayName("Purim - Eve", "2017-03-11")
+        self.assertHolidayName("Purim", "2017-03-12")
+        self.assertHolidayName("Shushan Purim", "2017-03-13")
 
     def test_memorial_day(self):
         self._test_observed_holidays("Memorial Day")

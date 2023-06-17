@@ -11,81 +11,142 @@
 
 from datetime import date
 from datetime import timedelta as td
+from gettext import gettext as tr
 
-from dateutil.easter import easter
-
-from holidays.constants import JAN, MAR, APR, MAY, AUG, DEC
+from holidays.constants import JAN, MAR, APR, AUG
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Aruba(HolidayBase):
+class Aruba(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
-    http://www.gobierno.aw/informacion-tocante-servicio/vakantie-y-dia-di-fiesta_43437/item/dia-di-fiesta_14809.html
+    https://www.government.aw/information-public-services/hiring-people_47940/item/holidays_43823.html  # noqa: E501
+    https://www.overheid.aw/informatie-dienstverlening/ondernemen-en-werken-subthemas_46970/item/feestdagen_37375.html  # noqa: E501
+    https://www.gobierno.aw/informacion-tocante-servicio/haci-negoshi-y-traha-sub-topics_47789/item/dia-di-fiesta_41242.html  # noqa: E501
     https://www.visitaruba.com/about-aruba/national-holidays-and-celebrations/
+    https://www.arubatoday.com/we-celebrate-our-national-hero-betico-croes/
+    https://www.caribbeannewsglobal.com/carnival-monday-remains-a-festive-day-in-aruba/  # noqa: E501
+    https://www.aruba.com/us/calendar/national-anthem-and-flag-day
     """
 
     country = "AW"
+    default_language = "pap"
+    supported_languages = ("en_US", "nl", "pap", "uk")
+
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
+        # AUG 1947: Autonomous State status in the Kingdom of the Netherlands.
+        if year <= 1946:
+            return None
+
         super()._populate(year)
 
+        # Aña Nobo.
+        # Status: In-Use.
+
         # New Year's Day
-        self[date(year, JAN, 1)] = "Aña Nobo [New Year's Day]"
+        self._add_new_years_day(tr("Aña Nobo"))
 
-        # Dia di Betico
-        self[date(year, JAN, 25)] = "Dia Di Betico [Betico Day]"
+        # Dia Di Betico.
+        # Status: In-Use.
+        # Started in 1989.
 
-        easter_date = easter(year)
-        # Carnaval Monday
-        self[
-            easter_date + td(days=-48)
-        ] = "Dialuna di Carnaval [Carnaval Monday]"
+        if year >= 1989:
+            # Betico Day
+            self._add_holiday(tr("Dia di Betico"), JAN, 25)
 
-        # Dia di Himno y Bandera
-        self[
-            date(year, MAR, 18)
-        ] = "Dia di Himno y Bandera [National Anthem & Flag Day]"
+        # Dialuna prome cu diaranson di shinish.
+        # Status: In-Use.
+        # Starts as a public holiday from 1956 onwards.
+        # Event cancelled but remain a holiday in 2021.
+        # Have its name changed from 2023 onwards.
+
+        if year >= 1956:
+            self._add_ash_monday(
+                # Carnival Monday
+                tr("Dialuna despues di Carnaval Grandi")
+                if year <= 2022
+                # Monday before Ash Wednesday
+                else tr("Dialuna prome cu diaranson di shinish")
+            )
+
+        # Dia di Himno y Bandera.
+        # Status: In-Use.
+        # Started in 1976.
+
+        if year >= 1976:
+            # National Anthem and Flag Day
+            self._add_holiday(tr("Dia di Himno y Bandera"), MAR, 18)
+
+        # Bierna Santo.
+        # Status: In-Use.
 
         # Good Friday
-        self[easter_date + td(days=-2)] = "Bierna Santo [Good Friday]"
+        self._add_good_friday(tr("Bierna Santo"))
+
+        # Di dos dia di Pasco di Resureccion.
+        # Status: In-Use.
 
         # Easter Monday
-        self[
-            easter_date + td(days=+1)
-        ] = "Di Dos Dia di Pasco di Resureccion [Easter Monday]"
+        self._add_easter_monday(tr("Di dos dia di Pasco di Resureccion"))
 
-        # King's Day
+        # Aña di La Reina/Aña di Rey/Dia di Rey.
+        # Status: In-Use.
+        # Started under Queen Wilhelmina in 1891.
+        # Queen Beatrix kept Queen Juliana's Birthday after her coronation.
+        # Switched to Aña di Rey in 2014 for King Willem-Alexander.
+        # Have its name changed again to Dia di Rey from 2021 onwards.
+
+        # King's / Queen's Day
+        name = (
+            # King's Day.
+            tr("Dia di Rey")
+            if year >= 2021
+            else (
+                # King's Day.
+                tr("Aña di Rey")
+                if year >= 2014
+                # Queen's Day.
+                else tr("Aña di La Reina")
+            )
+        )
         if year >= 2014:
-            kings_day = date(year, APR, 27)
-            if self._is_sunday(kings_day):
-                kings_day += td(days=-1)
+            dt = date(year, APR, 27)
+        elif year >= 1949:
+            dt = date(year, APR, 30)
+        else:
+            dt = date(year, AUG, 31)
+        if self._is_sunday(dt):
+            dt += td(days=-1) if year >= 1980 else td(days=+1)
+        self._add_holiday(name, dt)
 
-            self[kings_day] = "Aña di Rey [King's Day]"
+        # Dia di Labor/Dia di Obrero.
+        # Status: In-Use.
 
-        # Queen's Day
-        if 1891 <= year <= 2013:
-            queens_day = date(year, APR, 30)
-            if year <= 1948:
-                queens_day = date(year, AUG, 31)
+        # Labor Day
+        self._add_labor_day(tr("Dia di Obrero"))
 
-            if self._is_sunday(queens_day):
-                queens_day += td(days=+1) if year < 1980 else td(days=-1)
-
-            self[queens_day] = "Aña di La Reina [Queen's Day]"
-
-        # Labour Day
-        self[date(year, MAY, 1)] = "Dia di Obrero [Labour Day]"
+        # Dia di Asuncion.
+        # Status: In-Use.
 
         # Ascension Day
-        self[easter_date + td(days=+39)] = "Dia di Asuncion [Ascension Day]"
+        self._add_ascension_thursday(tr("Dia di Asuncion"))
+
+        # Pasco di Nacemento.
+        # Status: In-Use.
 
         # Christmas Day
-        self[date(year, DEC, 25)] = "Pasco di Nacemento [Christmas]"
+        self._add_christmas_day(tr("Pasco di Nacemento"))
 
-        # Second Christmas
-        self[
-            date(year, DEC, 26)
-        ] = "Di Dos Dia di Pasco di Nacemento [Second Christmas]"
+        # Di dos dia di Pasco di Nacemento.
+        # Status: In-Use.
+
+        # Second Day of Christmas
+        self._add_christmas_day_two(tr("Di dos dia di Pasco di Nacemento"))
 
 
 class AW(Aruba):

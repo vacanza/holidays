@@ -14,3 +14,4 @@
 from holidays.groups import BuddhistCalendarHolidays, ChineseCalendarHolidays
 from holidays.groups import ChristianHolidays, HinduCalendarHolidays
 from holidays.groups import InternationalHolidays, IslamicHolidays
+from holidays.groups import ThaiCalendarHolidays
