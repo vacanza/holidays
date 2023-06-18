@@ -212,8 +212,8 @@ class TestBasics(unittest.TestCase):
         )
         self.assertEqual(
             str(holidays.US(years=1900)),
-            '{datetime.date(1900, 1, 1): "New Year\'s Day", '
-            'datetime.date(1900, 2, 22): "Washington\'s Birthday", '
+            '{datetime.date(1900, 2, 22): "Washington\'s Birthday", '
+            'datetime.date(1900, 1, 1): "New Year\'s Day", '
             "datetime.date(1900, 5, 30): 'Memorial Day', "
             "datetime.date(1900, 7, 4): 'Independence Day', "
             "datetime.date(1900, 9, 3): 'Labor Day', "
