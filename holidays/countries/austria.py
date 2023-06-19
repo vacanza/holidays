@@ -19,6 +19,7 @@ from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "AT"
     default_language = "de"
+    supported_categories = ("bank", "common")
     supported_languages = ("de", "en_US", "uk")
     subdivisions = ("1", "2", "3", "4", "5", "6", "7", "8", "9")
 
@@ -32,9 +33,7 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
             kwargs["subdiv"] = "9"
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_common_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("Neujahr"))
 
@@ -59,10 +58,10 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
 
-        if 1919 <= year <= 1934:
+        if 1919 <= self._year <= 1934:
             # National Day.
             self._add_holiday(tr("Nationalfeiertag"), NOV, 12)
-        if year >= 1967:
+        if self._year >= 1967:
             self._add_holiday(tr("Nationalfeiertag"), OCT, 26)
 
         # All Saints' Day.
@@ -76,6 +75,16 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # St. Stephen's Day.
         self._add_christmas_day_two(tr("Stefanitag"))
+
+    def _populate_bank_holidays(self):
+        # Good Friday.
+        self._add_good_friday(tr("Karfreitag"))
+
+        # Christmas Eve.
+        self._add_christmas_eve(tr("Weihnachten"))
+
+        # New Year's Eve.
+        self._add_new_years_eve(tr("Silvester"))
 
 
 class AT(Austria):

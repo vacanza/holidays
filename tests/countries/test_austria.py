@@ -157,6 +157,14 @@ class TestAustria(TestCase):
             ("2022-12-26", "Stefanitag"),
         )
 
+    def test_bank_2022(self):
+        self.assertHolidays(
+            Austria(categories=("bank",), years=2022),
+            ("2022-04-15", "Karfreitag"),
+            ("2022-12-24", "Weihnachten"),
+            ("2022-12-31", "Silvester"),
+        )
+
     def test_subdiv(self):
         at_holidays = Austria(subdiv=1)
         self.assertEqual("1", at_holidays.subdiv)

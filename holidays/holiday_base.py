@@ -211,6 +211,10 @@ class HolidayBase(Dict[date, str]):
     """Country weekend days."""
     default_language: Optional[str] = None
     """The entity language used by default."""
+    categories: Optional[Tuple[str]] = None
+    """Requsted holiday categories"""
+    supported_categories: Tuple[str, ...] = ()
+    """All holiday categories supported by this entity"""
     supported_languages: Tuple[str, ...] = ()
     """All languages supported by this entity."""
 
@@ -223,6 +227,7 @@ class HolidayBase(Dict[date, str]):
         prov: Optional[str] = None,  # Deprecated.
         state: Optional[str] = None,  # Deprecated.
         language: Optional[str] = None,
+        categories: Optional[Tuple[str]] = None,
     ) -> None:
         """
         :param years:
@@ -262,6 +267,7 @@ class HolidayBase(Dict[date, str]):
         self.language = language.lower() if language else None
         self.observed = observed
         self.subdiv = subdiv or prov or state
+        self.categories = categories or ("common",)
 
         self.tr = gettext  # Default translation method.
 
@@ -624,6 +630,9 @@ class HolidayBase(Dict[date, str]):
         self._year = year
         dates = set()
 
+        # Populate categories holidays.
+        self._populate_categories()
+
         # Populate items from the special holidays list.
         for month, day, name in _normalize_tuple(self.special_holidays.get(year, ())):
             dates.add(self._add_holiday(name, date(year, month, day)))
@@ -632,6 +641,12 @@ class HolidayBase(Dict[date, str]):
         self._add_subdiv_holidays()
 
         return dates
+
+    def _populate_categories(self):
+        for category in self.categories:
+            populate_category_holidays = getattr(self, f"_populate_{category}_holidays", None)
+            if populate_category_holidays and callable(populate_category_holidays):
+                populate_category_holidays()
 
     def append(self, *args: Union[Dict[DateLike, str], List[DateLike], DateLike]) -> None:
         """Alias for :meth:`update` to mimic list type."""
