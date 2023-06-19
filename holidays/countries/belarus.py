@@ -52,9 +52,7 @@ class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_new_years_day_two(tr("Новы год"))
 
         # Orthodox Christmas Day.
-        self._add_christmas_day(
-            tr("Нараджэнне Хрыстова (праваслаўнае Раство)")
-        )
+        self._add_christmas_day(tr("Нараджэнне Хрыстова (праваслаўнае Раство)"))
 
         # Women's Day.
         self._add_womens_day(tr("Дзень жанчын"))

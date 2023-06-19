@@ -20,8 +20,7 @@ from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
 
 import holidays
-from holidays.constants import JAN, FEB, OCT, MON, TUE, SAT, SUN
-from holidays.constants import HOLIDAY_NAME_DELIMITER
+from holidays.constants import JAN, FEB, OCT, MON, TUE, SAT, SUN, HOLIDAY_NAME_DELIMITER
 
 
 class TestBasics(unittest.TestCase):
@@ -90,12 +89,8 @@ class TestBasics(unittest.TestCase):
             self.holidays[date(2013, 12, 31) : date(2014, 1, 2) : td(days=3)],
             [],
         )
-        self.assertRaises(
-            ValueError, lambda: self.holidays[date(2014, 1, 1) :]
-        )
-        self.assertRaises(
-            ValueError, lambda: self.holidays[: date(2014, 1, 1)]
-        )
+        self.assertRaises(ValueError, lambda: self.holidays[date(2014, 1, 1) :])
+        self.assertRaises(ValueError, lambda: self.holidays[: date(2014, 1, 1)])
         self.assertRaises(
             TypeError,
             lambda: self.holidays[date(2014, 1, 1) : date(2014, 1, 2) : ""],
@@ -301,16 +296,10 @@ class TestBasics(unittest.TestCase):
         canada = holidays.Canada()
         united_states = holidays.UnitedStates()
         self.assertEqual(united_states, holidays.US())
-        self.assertEqual(
-            holidays.UnitedStates(years=2014), holidays.US(years=2014)
-        )
+        self.assertEqual(holidays.UnitedStates(years=2014), holidays.US(years=2014))
         self.assertEqual(canada, holidays.CA())
-        self.assertEqual(
-            holidays.Canada(years=[2014]), holidays.CA(years=[2014])
-        )
-        self.assertEqual(
-            holidays.Canada(language="fr"), holidays.CA(language="fr")
-        )
+        self.assertEqual(holidays.Canada(years=[2014]), holidays.CA(years=[2014]))
+        self.assertEqual(holidays.Canada(language="fr"), holidays.CA(language="fr"))
         self.assertFalse(united_states == {})
         self.assertFalse(united_states == holidays.UnitedStates(subdiv="WA"))
 
@@ -319,9 +308,7 @@ class TestBasics(unittest.TestCase):
         united_states = holidays.UnitedStates()
         self.assertNotEqual(united_states, holidays.UnitedStates(years=2014))
         self.assertNotEqual(united_states, canada)
-        self.assertNotEqual(
-            holidays.UnitedStates(years=2014), holidays.Canada(years=2014)
-        )
+        self.assertNotEqual(holidays.UnitedStates(years=2014), holidays.Canada(years=2014))
         self.assertNotEqual(united_states, holidays.UnitedStates(years=[2014]))
         self.assertNotEqual(canada, holidays.Canada(language="fr"))
 
@@ -400,9 +387,7 @@ class TestBasics(unittest.TestCase):
         self.assertIn("2014-02-10", na)
         self.assertIn("2014-02-17", na)
         self.assertIn("2014-07-04", na)
-        provs = holidays.CA(subdiv="ON", years=[2014]) + holidays.CA(
-            subdiv="BC", years=[2015]
-        )
+        provs = holidays.CA(subdiv="ON", years=[2014]) + holidays.CA(subdiv="BC", years=[2015])
         self.assertIn("2015-02-09", provs)
         self.assertIn("2015-02-16", provs)
         self.assertEqual(provs.subdiv, ["ON", "BC"])
@@ -471,16 +456,12 @@ class TestBasics(unittest.TestCase):
             westland.get_list(date(1969, 12, 1)),
             ["West Coast Anniversary Day"],
         )
-        self.assertEqual(
-            westland.get_list(date(1969, 1, 1)), ["New Year's Day"]
-        )
+        self.assertEqual(westland.get_list(date(1969, 1, 1)), ["New Year's Day"])
         self.assertEqual(
             chathams.get_list(date(1969, 12, 1)),
             ["Chatham Islands Anniversary Day"],
         )
-        self.assertEqual(
-            chathams.get_list(date(1969, 1, 1)), ["New Year's Day"]
-        )
+        self.assertEqual(chathams.get_list(date(1969, 1, 1)), ["New Year's Day"])
         ca = holidays.CA()
         us = holidays.US()
         mx = holidays.MX(language="es")
@@ -544,26 +525,18 @@ class TestBasics(unittest.TestCase):
         for name in ("New", "Year"):
             self.assertIn(date(2020, 1, 1), us.get_named(name))
         for name in ("new", "year", "NEW Year"):
-            self.assertNotIn(
-                date(2020, 1, 1), us.get_named(name, lookup="contains")
-            )
+            self.assertNotIn(date(2020, 1, 1), us.get_named(name, lookup="contains"))
         self.assertEqual(holidays_count, len(us.keys()))
 
         us = holidays.UnitedStates(years=2022)
-        self.assertEqual(
-            1, len(us.get_named("Thanksgiving", lookup="contains"))
-        )
+        self.assertEqual(1, len(us.get_named("Thanksgiving", lookup="contains")))
         self.assertEqual(1, len(us.get_named("Thanksgivi", lookup="contains")))
         self.assertEqual(0, len(us.get_named("thanks", lookup="contains")))
         self.assertEqual([2022], list(us.years))
 
         us = holidays.UnitedStates(observed=False, years=2022)
-        self.assertEqual(
-            2, len(us.get_named("Independence Day", lookup="contains"))
-        )
-        self.assertEqual(
-            0, len(us.get_named("independence day", lookup="contains"))
-        )
+        self.assertEqual(2, len(us.get_named("Independence Day", lookup="contains")))
+        self.assertEqual(0, len(us.get_named("independence day", lookup="contains")))
 
     def test_get_named_exact(self):
         us = holidays.UnitedStates(years=2020)
@@ -580,9 +553,7 @@ class TestBasics(unittest.TestCase):
         self.assertEqual([2022], list(us.years))
 
         us = holidays.UnitedStates(observed=False, years=2022)
-        self.assertEqual(
-            1, len(us.get_named("Independence Day", lookup="exact"))
-        )
+        self.assertEqual(1, len(us.get_named("Independence Day", lookup="exact")))
 
     def test_get_named_icontains(self):
         us = holidays.UnitedStates(years=2020)
@@ -597,9 +568,7 @@ class TestBasics(unittest.TestCase):
         self.assertEqual([2022], list(us.years))
 
         us = holidays.UnitedStates(observed=False, years=2022)
-        self.assertEqual(
-            2, len(us.get_named("Independence Day", lookup="icontains"))
-        )
+        self.assertEqual(2, len(us.get_named("Independence Day", lookup="icontains")))
 
     def test_get_named_iexact(self):
         us = holidays.UnitedStates(years=2020)
@@ -607,13 +576,9 @@ class TestBasics(unittest.TestCase):
         self.assertEqual(holidays_count, len(us.keys()))
 
         for name in ("new year's day", "New Year's Day"):
-            self.assertIn(
-                date(2020, 1, 1), us.get_named(name, lookup="iexact")
-            )
+            self.assertIn(date(2020, 1, 1), us.get_named(name, lookup="iexact"))
         for name in ("New Year Day", "New Year", "year", "NEW Year"):
-            self.assertNotIn(
-                date(2020, 1, 1), us.get_named(name, lookup="iexact")
-            )
+            self.assertNotIn(date(2020, 1, 1), us.get_named(name, lookup="iexact"))
 
         us = holidays.UnitedStates(years=2022)
         self.assertEqual(1, len(us.get_named("thanksgiving", lookup="iexact")))
@@ -621,9 +586,7 @@ class TestBasics(unittest.TestCase):
         self.assertEqual([2022], list(us.years))
 
         us = holidays.UnitedStates(years=2022)
-        self.assertEqual(
-            1, len(us.get_named("independence day", lookup="iexact"))
-        )
+        self.assertEqual(1, len(us.get_named("independence day", lookup="iexact")))
 
     def test_get_named_istartswith(self):
         us = holidays.UnitedStates(years=2020)
@@ -631,23 +594,17 @@ class TestBasics(unittest.TestCase):
         self.assertEqual(holidays_count, len(us.keys()))
 
         for name in ("new year's", "New Year's", "New Year's day"):
-            self.assertIn(
-                date(2020, 1, 1), us.get_named(name, lookup="istartswith")
-            )
+            self.assertIn(date(2020, 1, 1), us.get_named(name, lookup="istartswith"))
         for name in (
             "New Year Day",
             "New Year holiday",
             "New Year's Day Holiday",
             "year",
         ):
-            self.assertNotIn(
-                date(2020, 1, 1), us.get_named(name, lookup="istartswith")
-            )
+            self.assertNotIn(date(2020, 1, 1), us.get_named(name, lookup="istartswith"))
 
         us = holidays.UnitedStates(years=2022)
-        self.assertEqual(
-            1, len(us.get_named("independence day", lookup="istartswith"))
-        )
+        self.assertEqual(1, len(us.get_named("independence day", lookup="istartswith")))
 
     def test_get_named_startswith(self):
         us = holidays.UnitedStates(years=2020)
@@ -655,26 +612,18 @@ class TestBasics(unittest.TestCase):
         self.assertEqual(holidays_count, len(us.keys()))
 
         for name in ("New Year's", "New Year"):
-            self.assertIn(
-                date(2020, 1, 1), us.get_named(name, lookup="startswith")
-            )
+            self.assertIn(date(2020, 1, 1), us.get_named(name, lookup="startswith"))
         for name in (
             "New Year Day",
             "New Year Holiday",
             "New Year's Day Holiday",
             "year",
         ):
-            self.assertNotIn(
-                date(2020, 1, 1), us.get_named(name, lookup="startswith")
-            )
+            self.assertNotIn(date(2020, 1, 1), us.get_named(name, lookup="startswith"))
 
         us = holidays.UnitedStates(years=2022)
-        self.assertEqual(
-            2, len(us.get_named("Christmas", lookup="startswith"))
-        )
-        self.assertEqual(
-            1, len(us.get_named("Independence Day", lookup="startswith"))
-        )
+        self.assertEqual(2, len(us.get_named("Christmas", lookup="startswith")))
+        self.assertEqual(1, len(us.get_named("Independence Day", lookup="startswith")))
 
     def test_get_named_lookup_invalid(self):
         us = holidays.UnitedStates(years=2020)
@@ -839,9 +788,7 @@ class TestKeyTransforms(unittest.TestCase):
         self.assertNotIn("01/03/2014", self.holidays)
 
     def test_exception(self):
-        self.assertRaises(
-            (TypeError, ValueError), lambda: "abc" in self.holidays
-        )
+        self.assertRaises((TypeError, ValueError), lambda: "abc" in self.holidays)
         self.assertRaises(
             (TypeError, ValueError),
             lambda: self.holidays.get("abc123"),

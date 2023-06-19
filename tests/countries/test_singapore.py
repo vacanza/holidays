@@ -156,9 +156,7 @@ class TestSingapore(TestCase):
         self.assertEqual(len(Singapore(years=[2023])), 11 + 3)
 
     def test_non_observed(self):
-        self.assertNotIn(
-            date(2023, 1, 2), Singapore(observed=False, years=2023)
-        )
+        self.assertNotIn(date(2023, 1, 2), Singapore(observed=False, years=2023))
 
     def test_special_holidays(self):
         self.assertIn(date(2015, 8, 7), self.holidays)

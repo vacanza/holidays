@@ -55,9 +55,7 @@ class VaticanCity(HolidayBase, ChristianHolidays):
             else:
                 # Anniversary of the election of Pope John Paul II.
                 dt = (OCT, 16)
-            self._add_holiday(
-                "Anniversary of the Election of the Holy Father", *dt
-            )
+            self._add_holiday("Anniversary of the Election of the Holy Father", *dt)
 
         # In 2005-2013 - also name day for the civilian name of
         # Pope Benedict XVI (Josef Ratzinger)

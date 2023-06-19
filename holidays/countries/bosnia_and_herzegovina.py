@@ -15,13 +15,10 @@ from datetime import timedelta as td
 from holidays.calendars import GREGORIAN_CALENDAR, JULIAN_CALENDAR
 from holidays.constants import JAN, MAR, NOV
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, IslamicHolidays
-from holidays.holiday_groups import InternationalHolidays
+from holidays.holiday_groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 
 
-class BosniaAndHerzegovina(
-    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
-):
+class BosniaAndHerzegovina(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Bosnia_and_Herzegovina
     https://www.paragraf.ba/neradni-dani-fbih.html
@@ -59,9 +56,7 @@ class BosniaAndHerzegovina(
             self._add_holiday("Treći dan Dana rada", may_1 + td(days=+2))
 
         # Catholic Easter Monday
-        self._add_easter_monday(
-            "Uskrsni ponedjeljak (Katolički)", GREGORIAN_CALENDAR
-        )
+        self._add_easter_monday("Uskrsni ponedjeljak (Katolički)", GREGORIAN_CALENDAR)
 
         # Catholic Christmas
         self._add_christmas_day("Božić (Katolički)", GREGORIAN_CALENDAR)
@@ -76,11 +71,7 @@ class BosniaAndHerzegovina(
         # New Year's Day
         jan_1 = self._add_new_years_day("Nova Godina")
         self._add_new_years_day_two("Drugi dan Nove Godine")
-        if (
-            self.subdiv in {"FBiH", "BD"}
-            and self.observed
-            and self._is_sunday(jan_1)
-        ):
+        if self.subdiv in {"FBiH", "BD"} and self.observed and self._is_sunday(jan_1):
             self._add_new_years_day_three("Treći dan Nove Godine")
 
         super()._add_subdiv_holidays()
@@ -141,10 +132,7 @@ class BosniaAndHerzegovina(
 
         # Dayton Agreement Day
         self._add_holiday(
-            (
-                "Dan uspostave Opšteg okvirnog sporazuma za mir u "
-                "Bosni i Hercegovini"
-            ),
+            ("Dan uspostave Opšteg okvirnog sporazuma za mir u Bosni i Hercegovini"),
             NOV,
             21,
         )

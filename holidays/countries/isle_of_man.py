@@ -46,9 +46,7 @@ class IsleOfMan(UnitedKingdom):
 
         # Isle of Man exclusive holidays
         # TT bank holiday (first Friday in June)
-        self._add_holiday(
-            "TT Bank Holiday", _get_nth_weekday_of_month(1, FRI, JUN, year)
-        )
+        self._add_holiday("TT Bank Holiday", _get_nth_weekday_of_month(1, FRI, JUN, year))
 
         # Tynwald Day
         # Move to the next Monday if falls on a weekend.

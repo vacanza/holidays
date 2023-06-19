@@ -25,7 +25,7 @@ repos:
       - id: flake8
         additional_dependencies:
           - flake8-print
-        args: [--max-line-length=79]
+        args: [--max-line-length=99]
         exclude: ^(docs)
 
   - repo: https://github.com/pycqa/isort

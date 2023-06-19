@@ -36,9 +36,7 @@ class Monaco(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_observed(self, dt: date, days: int = +1) -> None:
         if self.observed and self._is_sunday(dt):
-            self._add_holiday(
-                self.tr("%s (Observé)") % self[dt], dt + td(days=days)
-            )
+            self._add_holiday(self.tr("%s (Observé)") % self[dt], dt + td(days=days))
 
     def _populate(self, year):
         super()._populate(year)
@@ -65,9 +63,7 @@ class Monaco(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_corpus_christi_day(tr("La Fête Dieu"))
 
         # Assumption's Day.
-        self._add_observed(
-            self._add_assumption_of_mary_day(tr("L'Assomption de Marie"))
-        )
+        self._add_observed(self._add_assumption_of_mary_day(tr("L'Assomption de Marie")))
 
         # All Saints' Day.
         self._add_observed(self._add_all_saints_day(tr("La Toussaint")))

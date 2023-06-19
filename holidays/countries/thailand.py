@@ -13,8 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import InternationalHolidays, ThaiCalendarHolidays
 
@@ -123,20 +122,13 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
     # Special Cases.
 
     rama_ix_golden_jubilee = tr("พระราชพิธีกาญจนาภิเษก พ.ศ. 2539")
-    rama_ix_sixty_accession = tr(
-        "พระราชพิธีฉลองสิริราชสมบัติครบ 60 ปี พ.ศ. 2549"
-    )
+    rama_ix_sixty_accession = tr("พระราชพิธีฉลองสิริราชสมบัติครบ 60 ปี พ.ศ. 2549")
     thai_military_emergency_lockdown = tr("วันหยุดพิเศษ (คมช.)")
     thai_political_emergency_lockdown = tr("วันหยุดพิเศษ (การเมือง)")
-    thai_flood_2011_emergency_lockdown = tr(
-        "วันหยุดพิเศษ (มหาอุทกภัย พ.ศ. 2554)"
-    )
-    rama_ix_mourning = tr(
-        "วันหยุดพิเศษ (ร่วมถวายอาลัย ส่งดวงพระวิญญาณพระบรมศพ)"
-    )
+    thai_flood_2011_emergency_lockdown = tr("วันหยุดพิเศษ (มหาอุทกภัย พ.ศ. 2554)")
+    rama_ix_mourning = tr("วันหยุดพิเศษ (ร่วมถวายอาลัย ส่งดวงพระวิญญาณพระบรมศพ)")
     rama_ix_cremation = tr(
-        "วันพระราชพิธีถวายพระเพลิงพระบรมศพ"
-        "พระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช"
+        "วันพระราชพิธีถวายพระเพลิงพระบรมศพพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช"
     )
     rama_x_coronation_celebrations = tr(
         "พระราชพิธีบรมราชาภิเษก พระบาทสมเด็จพระวชิรเกล้าเจ้าอยู่หัว"
@@ -280,11 +272,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
             if (
                 self.observed
                 and self._is_weekend(dt)
-                and (
-                    1961 <= year <= 1973
-                    or 1995 <= year <= 1997
-                    or year >= 2001
-                )
+                and (1961 <= year <= 1973 or 1995 <= year <= 1997 or year >= 2001)
             ):
                 in_lieu = dt + td(days=+2 if self._is_saturday(dt) else +1)
                 for name in self.get_list(dt):
@@ -345,9 +333,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         if year >= 1948:
             songkran_festival = tr("วันสงกรานต์")
             if year <= 1953 or (1957 <= year != 2020):
-                dt = self._add_holiday(
-                    songkran_festival, APR, 12 if 1989 <= year <= 1997 else 13
-                )
+                dt = self._add_holiday(songkran_festival, APR, 12 if 1989 <= year <= 1997 else 13)
                 if 1957 <= year <= 1988:
                     _add_observed(dt)
                 else:
@@ -366,17 +352,11 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
 
             songkran_festival_in_lieu = self.tr("ชดเชย%s") % songkran_festival
 
-            if self.observed and (
-                1995 <= year <= 1997 or 2001 <= year != 2020
-            ):
+            if self.observed and (1995 <= year <= 1997 or 2001 <= year != 2020):
                 if self._is_thursday(dt):
-                    self._add_holiday(
-                        songkran_festival_in_lieu, dt + td(days=+4)
-                    )
+                    self._add_holiday(songkran_festival_in_lieu, dt + td(days=+4))
                 elif self._is_friday(dt) or self._is_saturday(dt):
-                    self._add_holiday(
-                        songkran_festival_in_lieu, dt + td(days=+3)
-                    )
+                    self._add_holiday(songkran_festival_in_lieu, dt + td(days=+3))
 
         # National Labour day.
         # วันแรงงานแห่งชาติ
@@ -396,11 +376,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # Replaced by Rama IX's birthday in 1960 (B.E. 2503) by Sarit Thanarat.
         # TODO: Add check for 1939 if we support earlier dates.
 
-        _add_observed(
-            self._add_holiday(
-                tr("วันชาติ"), *((JUN, 24) if year <= 1959 else (DEC, 5))
-            )
-        )
+        _add_observed(self._add_holiday(tr("วันชาติ"), *((JUN, 24) if year <= 1959 else (DEC, 5))))
 
         # Coronation Day.
         # วันฉัตรมงคล
@@ -462,10 +438,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
             name = (
                 tr("วันเฉลิมพระชนมพรรษาสมเด็จพระบรมราชชนนีพันปีหลวง")
                 if year >= 2017
-                else tr(
-                    "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสิริกิติ์ "
-                    "พระบรมราชินีนาถ"
-                )
+                else tr("วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถ")
             )
             _add_observed(self._add_holiday(name, AUG, 12))
 
@@ -497,10 +470,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
                     "มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
                 )
                 if year >= 2019
-                else tr(
-                    "วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทรมหาภูมิพล"
-                    "อดุลยเดช บรมนาถบพิตร"
-                )
+                else tr("วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร")
             )
             _add_observed(self._add_holiday(name, OCT, 13))
 
@@ -534,8 +504,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
                     )
                     if year >= 2016
                     else tr(
-                        "วันเฉลิมพระชนมพรรษา"
-                        "พระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
+                        "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
                     )
                 )
             )
@@ -674,9 +643,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         }
         # For years with exact date data.
         if year in raeknakhwan_dates:
-            _add_observed(
-                self._add_holiday(raeknakhwan, *raeknakhwan_dates[year])
-            )
+            _add_observed(self._add_holiday(raeknakhwan, *raeknakhwan_dates[year]))
         # Approx. otherwise for 1957-2013.
         elif 1957 <= year <= 1996:
             _add_observed(self._add_holiday(raeknakhwan, MAY, 13))

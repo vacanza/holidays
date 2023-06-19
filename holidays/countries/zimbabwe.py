@@ -65,9 +65,7 @@ class Zimbabwe(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Independence Day.
         apr_18 = self._add_holiday("Independence Day", APR, 18)
-        self._add_observed(
-            apr_18, days=+2 if apr_18 == self._easter_sunday else +1
-        )
+        self._add_observed(apr_18, days=+2 if apr_18 == self._easter_sunday else +1)
 
         # Workers' Day.
         self._add_observed(self._add_labor_day("Workers' Day"))

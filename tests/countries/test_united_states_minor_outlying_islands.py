@@ -9,8 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.countries.united_states_minor_outlying_islands import HolidaysUM
-from holidays.countries.united_states_minor_outlying_islands import UM, UMI
+from holidays.countries.united_states_minor_outlying_islands import HolidaysUM, UM, UMI
 from tests.common import TestCase
 
 

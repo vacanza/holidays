@@ -14,8 +14,7 @@ from gettext import gettext as tr
 from holidays.calendars import JULIAN_CALENDAR
 from holidays.constants import MAR, MAY, SEP
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_groups import IslamicHolidays
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 
 # Ethiopian holidays are estimated: it is common for the day to be pushed
 # if falls in a weekend, although not a rule that can be implemented.
@@ -31,9 +30,7 @@ from holidays.holiday_groups import IslamicHolidays
 # is_weekend function is there, however not activated for accuracy.
 
 
-class Ethiopia(
-    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
-):
+class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     country = "ET"
     default_language = "am"
     estimated_label = tr("%s* (*ግምት)")
@@ -70,14 +67,10 @@ class Ethiopia(
         # September 12.
 
         # Ethiopian New Year.
-        self._add_holiday(
-            tr("አዲስ ዓመት እንቁጣጣሽ"), SEP, 12 if self._is_leap_year(year) else 11
-        )
+        self._add_holiday(tr("አዲስ ዓመት እንቁጣጣሽ"), SEP, 12 if self._is_leap_year(year) else 11)
 
         # Finding of True Cross.
-        self._add_holiday(
-            tr("መስቀል"), SEP, 28 if self._is_leap_year(year) else 27
-        )
+        self._add_holiday(tr("መስቀል"), SEP, 28 if self._is_leap_year(year) else 27)
 
         # Orthodox Christmas.
         self._add_christmas_day(tr("ገና"))
@@ -108,9 +101,7 @@ class Ethiopia(
 
         if year < 1991 and year > 1974:
             # Downfall of King Haile Selassie.
-            self._add_holiday(
-                tr("ደርግ የመጣበት ቀን"), SEP, 13 if self._is_leap_year(year) else 12
-            )
+            self._add_holiday(tr("ደርግ የመጣበት ቀን"), SEP, 13 if self._is_leap_year(year) else 12)
 
         # Eid al-Fitr.
         self._add_eid_al_fitr_day(tr("ኢድ አልፈጥር"))

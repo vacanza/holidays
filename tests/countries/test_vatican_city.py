@@ -44,15 +44,9 @@ class TestVaticanCity(TestCase):
 
     def test_anniversary_election_of_holy_father(self):
         name = "Anniversary of the Election of the Holy Father"
-        self.assertHolidayName(
-            name, (f"{year}-10-16" for year in range(1978, 2005))
-        )
-        self.assertHolidayName(
-            name, (f"{year}-04-19" for year in range(2005, 2013))
-        )
-        self.assertHolidayName(
-            name, (f"{year}-03-13" for year in range(2013, 2050))
-        )
+        self.assertHolidayName(name, (f"{year}-10-16" for year in range(1978, 2005)))
+        self.assertHolidayName(name, (f"{year}-04-19" for year in range(2005, 2013)))
+        self.assertHolidayName(name, (f"{year}-03-13" for year in range(2013, 2050)))
         self.assertNoHolidayName(name, range(1970, 1978))
 
     def test_saint_josephs_day(self):
@@ -83,9 +77,7 @@ class TestVaticanCity(TestCase):
 
     def test_saint_georges_day(self):
         name = "Saint George's Day"
-        self.assertHolidayName(
-            name, (f"{year}-04-23" for year in range(2013, 2050))
-        )
+        self.assertHolidayName(name, (f"{year}-04-23" for year in range(2013, 2050)))
         self.assertNoHolidayName(name, range(1970, 2013))
 
     def test_ascension(self):
@@ -125,9 +117,7 @@ class TestVaticanCity(TestCase):
     def test_saint_joseph_workers_day(self):
         name = "Saint Joseph the Worker's Day"
         self.assertNoHolidayName(name, VaticanCity(years=1954))
-        self.assertHolidayName(
-            name, (f"{year}-05-01" for year in range(1955, 2050))
-        )
+        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1955, 2050)))
 
     def test_saints_peter_and_paul_day(self):
         self.assertHolidayName(
@@ -155,9 +145,7 @@ class TestVaticanCity(TestCase):
 
     def test_saint_charles_borromeo_day(self):
         name = "Saint Charles Borromeo Day"
-        self.assertHolidayName(
-            name, (f"{year}-11-04" for year in range(1978, 2005))
-        )
+        self.assertHolidayName(name, (f"{year}-11-04" for year in range(1978, 2005)))
         self.assertNoHolidayName(name, range(1970, 1978), range(2005, 2050))
 
     def test_immaculate_conception_day(self):

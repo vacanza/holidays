@@ -13,8 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.calendars import _get_nth_weekday_of_month
-from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT
-from holidays.constants import NOV, DEC, MON, FRI
+from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC, MON, FRI
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -72,9 +71,7 @@ class SouthAfrica(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         self._add_good_friday("Good Friday")
 
-        self._add_easter_monday(
-            "Family Day" if year >= 1980 else "Easter Monday"
-        )
+        self._add_easter_monday("Family Day" if year >= 1980 else "Easter Monday")
 
         if year <= 1951:
             name = "Dingaan's Day"
@@ -103,9 +100,7 @@ class SouthAfrica(HolidayBase, ChristianHolidays, InternationalHolidays):
 
             self._add_observed(self._add_holiday("Youth Day", JUN, 16))
 
-            self._add_observed(
-                self._add_holiday("National Women's Day", AUG, 9)
-            )
+            self._add_observed(self._add_holiday("National Women's Day", AUG, 9))
 
             self._add_observed(self._add_holiday("Heritage Day", SEP, 24))
 
@@ -120,9 +115,7 @@ class SouthAfrica(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday("Founder's Day", APR, 6)
 
         if 1987 <= year <= 1989:
-            self._add_holiday(
-                "Workers' Day", _get_nth_weekday_of_month(1, FRI, MAY, year)
-            )
+            self._add_holiday("Workers' Day", _get_nth_weekday_of_month(1, FRI, MAY, year))
 
         if year <= 1993:
             self._add_ascension_thursday("Ascension Day")
@@ -145,14 +138,10 @@ class SouthAfrica(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday("Family Day", JUL, 10)
 
         if year <= 1951:
-            self._add_holiday(
-                "King's Birthday", _get_nth_weekday_of_month(1, MON, AUG, year)
-            )
+            self._add_holiday("King's Birthday", _get_nth_weekday_of_month(1, MON, AUG, year))
 
         if 1952 <= year <= 1979:
-            self._add_holiday(
-                "Settlers' Day", _get_nth_weekday_of_month(1, MON, SEP, year)
-            )
+            self._add_holiday("Settlers' Day", _get_nth_weekday_of_month(1, MON, SEP, year))
 
         if 1952 <= year <= 1993:
             self._add_holiday("Kruger Day", OCT, 10)

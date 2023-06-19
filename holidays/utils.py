@@ -274,9 +274,7 @@ def CountryHoliday(
         "CountryHoliday is deprecated, use country_holidays instead.",
         DeprecationWarning,
     )
-    return country_holidays(
-        country, subdiv, years, expand, observed, prov, state
-    )
+    return country_holidays(country, subdiv, years, expand, observed, prov, state)
 
 
 def _list_localized_entities(
@@ -319,9 +317,7 @@ def list_localized_countries(include_aliases=True) -> Dict[str, List[str]]:
         combination of ISO 639-1 and ISO 3166-1 codes joined with "_").
     """
 
-    return _list_localized_entities(
-        EntityLoader.get_country_codes(include_aliases)
-    )
+    return _list_localized_entities(EntityLoader.get_country_codes(include_aliases))
 
 
 @lru_cache()
@@ -337,9 +333,7 @@ def list_localized_financial(include_aliases=True) -> Dict[str, List[str]]:
         supported subdivision codes.
     """
 
-    return _list_localized_entities(
-        EntityLoader.get_financial_codes(include_aliases)
-    )
+    return _list_localized_entities(EntityLoader.get_financial_codes(include_aliases))
 
 
 def _list_supported_entities(
@@ -375,9 +369,7 @@ def list_supported_countries(include_aliases=True) -> Dict[str, List[str]]:
         A dictionary where key is an ISO 3166-1 alpha-2 country code and
         value is a list of supported subdivision codes.
     """
-    return _list_supported_entities(
-        EntityLoader.get_country_codes(include_aliases)
-    )
+    return _list_supported_entities(EntityLoader.get_country_codes(include_aliases))
 
 
 @lru_cache()
@@ -392,6 +384,4 @@ def list_supported_financial(include_aliases=True) -> Dict[str, List[str]]:
         A dictionary where key is a market code and value is a list of
         supported subdivision codes.
     """
-    return _list_supported_entities(
-        EntityLoader.get_financial_codes(include_aliases)
-    )
+    return _list_supported_entities(EntityLoader.get_financial_codes(include_aliases))

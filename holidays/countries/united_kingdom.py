@@ -87,9 +87,7 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
                 2012: date(year, JUN, 4),
                 2022: date(year, JUN, 2),
             }
-            dt = spring_bank_dates.get(
-                year, _get_nth_weekday_of_month(-1, MON, MAY, year)
-            )
+            dt = spring_bank_dates.get(year, _get_nth_weekday_of_month(-1, MON, MAY, year))
             self._add_holiday("Spring Bank Holiday", dt)
 
         # Christmas Day

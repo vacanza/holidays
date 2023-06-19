@@ -118,9 +118,7 @@ class CostaRica(HolidayBase, ChristianHolidays, InternationalHolidays):
         if year >= 2022:
             dt = date(year, AUG, 31)
             # Day of the Black Person and Afro-Costa Rican Culture.
-            name = self.tr(
-                "Día de la Persona Negra y la Cultura Afrocostarricense"
-            )
+            name = self.tr("Día de la Persona Negra y la Cultura Afrocostarricense")
             if self.observed and year in {2022, 2023}:
                 dt = _get_nth_weekday_from(1, SUN, dt)
                 name = self.tr("%s (Observado)") % name
@@ -137,9 +135,7 @@ class CostaRica(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Law #9803 from 19.05.2020
         if year <= 2019:
             # Cultures Day.
-            add_observed_holiday(
-                tr("Día de las Culturas"), date(year, OCT, 12)
-            )
+            add_observed_holiday(tr("Día de las Culturas"), date(year, OCT, 12))
 
         # Law #9803 from 19.05.2020
         if year >= 2020:

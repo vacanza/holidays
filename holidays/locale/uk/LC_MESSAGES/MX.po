@@ -43,11 +43,12 @@ msgstr "День незалежності"
 msgid "Día de la Revolución"
 msgstr "День революції"
 
-#: ./holidays/countries/mexico.py:83
+#. Change of Federal Government.
+#: ./holidays/countries/mexico.py:82
 msgid "Transmisión del Poder Ejecutivo Federal"
 msgstr "Передача федеральної виконавчої влади"
 
 #. Christmas Day.
-#: ./holidays/countries/mexico.py:87
+#: ./holidays/countries/mexico.py:85
 msgid "Navidad"
 msgstr "Різдво Христове"

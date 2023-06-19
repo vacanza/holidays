@@ -20,9 +20,7 @@ class HinduCalendarHolidays:
     Hindu lunisolar calendar holidays.
     """
 
-    def __init__(
-        self, calendar=_HinduLunisolar(), show_estimated=False
-    ) -> None:
+    def __init__(self, calendar=_HinduLunisolar(), show_estimated=False) -> None:
         self._hindu_calendar = calendar
         self._show_estimated = show_estimated
 
@@ -57,9 +55,7 @@ class HinduCalendarHolidays:
         mid-November).
         https://en.wikipedia.org/wiki/Diwali
         """
-        return self._add_hindu_calendar_holiday(
-            name, self._hindu_calendar.diwali_date(self._year)
-        )
+        return self._add_hindu_calendar_holiday(name, self._hindu_calendar.diwali_date(self._year))
 
     def _add_thaipusam(self, name) -> Optional[date]:
         """

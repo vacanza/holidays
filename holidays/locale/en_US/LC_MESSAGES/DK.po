@@ -41,31 +41,32 @@ msgstr "Easter Sunday"
 msgid "Anden påskedag"
 msgstr "Easter Monday"
 
-#: ./holidays/countries/denmark.py:59
+#. Great Day of Prayers.
+#: ./holidays/countries/denmark.py:58
 msgid "Store bededag"
 msgstr "Great Prayer Day"
 
 #. Ascension Day.
-#: ./holidays/countries/denmark.py:63
+#: ./holidays/countries/denmark.py:61
 msgid "Kristi himmelfartsdag"
 msgstr "Ascension Day"
 
 #. Whit Sunday.
-#: ./holidays/countries/denmark.py:66
+#: ./holidays/countries/denmark.py:64
 msgid "Pinsedag"
 msgstr "Whit Sunday"
 
 #. Whit Monday.
-#: ./holidays/countries/denmark.py:69
+#: ./holidays/countries/denmark.py:67
 msgid "Anden pinsedag"
 msgstr "Whit Monday"
 
 #. Christmas Day.
-#: ./holidays/countries/denmark.py:72
+#: ./holidays/countries/denmark.py:70
 msgid "Juledag"
 msgstr "Christmas Day"
 
 #. Second Day of Christmas.
-#: ./holidays/countries/denmark.py:75
+#: ./holidays/countries/denmark.py:73
 msgid "Anden juledag"
 msgstr "Second Day of Christmas"

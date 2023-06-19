@@ -38,9 +38,7 @@ class Ireland(HolidayBase):
         if year >= 2023:
             dt = date(year, FEB, 1)
             self[
-                dt
-                if self._is_friday(dt)
-                else _get_nth_weekday_from(1, MON, dt)
+                dt if self._is_friday(dt) else _get_nth_weekday_from(1, MON, dt)
             ] = "St. Brigid's Day"
 
         # St. Patrick's Day
@@ -63,19 +61,13 @@ class Ireland(HolidayBase):
             self[dt] = name
 
         # June bank holiday (first Monday in June)
-        self[
-            _get_nth_weekday_of_month(1, MON, JUN, year)
-        ] = "June Bank Holiday"
+        self[_get_nth_weekday_of_month(1, MON, JUN, year)] = "June Bank Holiday"
 
         # Summer bank holiday (first Monday in August)
-        self[
-            _get_nth_weekday_of_month(1, MON, AUG, year)
-        ] = "August Bank Holiday"
+        self[_get_nth_weekday_of_month(1, MON, AUG, year)] = "August Bank Holiday"
 
         # October Bank Holiday (last Monday in October)
-        self[
-            _get_nth_weekday_of_month(-1, MON, OCT, year)
-        ] = "October Bank Holiday"
+        self[_get_nth_weekday_of_month(-1, MON, OCT, year)] = "October Bank Holiday"
 
         # Christmas Day
         name = "Christmas Day"

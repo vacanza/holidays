@@ -45,11 +45,7 @@ class Belize(HolidayBase, ChristianHolidays, InternationalHolidays):
             if self._is_friday(dt) or self._is_sunday(dt):
                 dt = _get_nth_weekday_from(1, MON, dt)
                 name = "%s (Observed)" % name
-            elif (
-                self._is_tuesday(dt)
-                or self._is_wednesday(dt)
-                or self._is_thursday(dt)
-            ):
+            elif self._is_tuesday(dt) or self._is_wednesday(dt) or self._is_thursday(dt):
                 dt = _get_nth_weekday_from(-1, MON, dt)
                 name = "%s (Observed)" % name
         self._add_holiday(name, dt)
@@ -58,11 +54,7 @@ class Belize(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Chapter 289 of the laws of Belize states that if the holiday falls
         # on a Sunday, the following Monday is observed as public holiday
         name, dt = self._parse_holiday(*args)
-        if (
-            self.observed
-            and self._is_sunday(dt)
-            and dt + td(days=+1) not in self
-        ):
+        if self.observed and self._is_sunday(dt) and dt + td(days=+1) not in self:
             name = "%s (Observed)" % name
             dt += td(days=+1)
         return super()._add_holiday(name, dt)
@@ -81,9 +73,7 @@ class Belize(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday("George Price Day", JAN, 15)
 
         # National Heroes and Benefactors Day.
-        self._add_movable_holiday(
-            "National Heroes and Benefactors Day", MAR, 9
-        )
+        self._add_movable_holiday("National Heroes and Benefactors Day", MAR, 9)
 
         # Good Friday.
         self._add_good_friday("Good Friday")
@@ -113,9 +103,7 @@ class Belize(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Indigenous Peoples' Resistance Day / Pan American Day.
         self._add_movable_holiday(
-            "Indigenous Peoples' Resistance Day"
-            if year >= 2021
-            else "Pan American Day",
+            "Indigenous Peoples' Resistance Day" if year >= 2021 else "Pan American Day",
             date(year, OCT, 12),
         )
 

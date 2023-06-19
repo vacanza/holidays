@@ -38,16 +38,12 @@ class Madagascar(HolidayBase):
         self[date(year, MAR, 8)] = "Fetin'ny vehivavy / Women's Day"
         self[date(year, MAR, 29)] = "Fetin'ny mahery fo / Martyrs' Day"
         self[date(year, MAY, 1)] = "Labour Day"
-        self[
-            _get_nth_weekday_of_month(3, SUN, JUN, year)
-        ] = "Fetin'ny ray / Father's Day"
+        self[_get_nth_weekday_of_month(3, SUN, JUN, year)] = "Fetin'ny ray / Father's Day"
 
         if year >= 1960:
             self[date(year, JUN, 26)] = "Independence Day"
 
-        self[
-            date(year, AUG, 15)
-        ] = "Fiakaran'ny Masina Maria tany an-danitra / Assumption Day"
+        self[date(year, AUG, 15)] = "Fiakaran'ny Masina Maria tany an-danitra / Assumption Day"
 
         self[date(year, NOV, 1)] = "Fetin'ny olo-masina / All Saints' Day"
 
@@ -66,9 +62,7 @@ class Madagascar(HolidayBase):
         whit_sunday = easter_date + td(days=+49)
         self[whit_sunday] = "Pentekosta / Whit Sunday"
 
-        self[
-            easter_date + td(days=+50)
-        ] = "Alatsinain'ny pentekosta / Whit Monday"
+        self[easter_date + td(days=+50)] = "Alatsinain'ny pentekosta / Whit Monday"
 
         dt = _get_nth_weekday_of_month(-1, SUN, MAY, year)
         if dt == whit_sunday:

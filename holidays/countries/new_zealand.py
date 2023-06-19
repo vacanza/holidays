@@ -13,8 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
-from holidays.constants import JAN, FEB, MAR, APR, JUN, JUL, SEP, OCT, NOV
-from holidays.constants import DEC, MON, TUE, WED
+from holidays.constants import JAN, FEB, MAR, APR, JUN, JUL, SEP, OCT, NOV, DEC, MON, TUE, WED
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -101,9 +100,7 @@ class NewZealand(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # New Year's Day
         self._add_observed(self._add_new_years_day("New Year's Day"), days=+2)
-        self._add_observed(
-            self._add_new_years_day_two("Day after New Year's Day"), days=+2
-        )
+        self._add_observed(self._add_new_years_day_two("Day after New Year's Day"), days=+2)
 
         # Waitangi Day
         if year >= 1974:
@@ -124,11 +121,7 @@ class NewZealand(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Sovereign's Birthday
         if year >= 1902:
-            name = (
-                "Queen's Birthday"
-                if 1952 <= year <= 2022
-                else "King's Birthday"
-            )
+            name = "Queen's Birthday" if 1952 <= year <= 2022 else "King's Birthday"
             if year == 1952:
                 dt = date(year, JUN, 2)  # Elizabeth II
             elif year >= 1938:

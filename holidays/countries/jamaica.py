@@ -31,9 +31,7 @@ class Jamaica(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _add_observed(
-        self, dt: date, include_sat: bool = False, days: int = +1
-    ) -> None:
+    def _add_observed(self, dt: date, include_sat: bool = False, days: int = +1) -> None:
         if not self.observed:
             return None
         if self._is_sunday(dt) or (include_sat and self._is_saturday(dt)):
@@ -58,9 +56,7 @@ class Jamaica(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_monday("Easter Monday")
 
         # National Labour Day
-        self._add_observed(
-            self._add_holiday("National Labour Day", MAY, 23), include_sat=True
-        )
+        self._add_observed(self._add_holiday("National Labour Day", MAY, 23), include_sat=True)
 
         # Emancipation Day
         if year >= 1998:
@@ -70,9 +66,7 @@ class Jamaica(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_holiday("Independence Day", AUG, 6))
 
         # National Heroes Day
-        self._add_holiday(
-            "National Heroes Day", _get_nth_weekday_of_month(3, MON, OCT, year)
-        )
+        self._add_holiday("National Heroes Day", _get_nth_weekday_of_month(3, MON, OCT, year))
 
         # Christmas Day
         self._add_observed(self._add_christmas_day("Christmas Day"), days=+2)

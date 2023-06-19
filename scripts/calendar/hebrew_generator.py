@@ -52,9 +52,7 @@ def generate_data():
         for h_month, h_day, hol_name in HEBREW_HOLIDAYS:
             if h_month == 12 and hebrew.leap(h_year):
                 h_month += 1
-            g_date = date(
-                *gregorian.from_jd(hebrew.to_jd(h_year, h_month, h_day))
-            )
+            g_date = date(*gregorian.from_jd(hebrew.to_jd(h_year, h_month, h_day)))
             g_year = g_date.year
             if g_year < g_year_min or g_year > g_year_max:
                 continue
@@ -78,9 +76,7 @@ def generate_data():
             year_dates.append(YEAR_TEMPLATE.format(year=year, dates=dates_str))
         year_dates_str = "\n".join(year_dates)
         holiday_data.append(
-            HOLIDAY_DATA_TEMPLATE.format(
-                hol_name=hol_name, year_dates=year_dates_str
-            )
+            HOLIDAY_DATA_TEMPLATE.format(hol_name=hol_name, year_dates=year_dates_str)
         )
     holiday_data_str = "\n".join(holiday_data)
     class_str = CLASS_TEMPLATE.format(

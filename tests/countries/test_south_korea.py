@@ -31,9 +31,7 @@ class TestSouthKorea(TestCase):
         self.assertNonObservedHolidayName("New Year's Day", "2019-01-01")
 
     def test_first_day_of_january(self):
-        self.assertHolidayName(
-            "New Year's Day", (f"{year}-01-01" for year in range(2001, 2050))
-        )
+        self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(2001, 2050)))
 
     def test_lunar_new_year(self):
         self.assertHolidayName(
@@ -120,9 +118,7 @@ class TestSouthKorea(TestCase):
 
     def test_tree_planting_day(self):
         name = "Tree Planting Day"
-        self.assertHolidayName(
-            name, (f"{year}-04-05" for year in range(2001, 2006))
-        )
+        self.assertHolidayName(name, (f"{year}-04-05" for year in range(2001, 2006)))
         self.assertHolidayName(name, "1949-04-05")
         self.assertNoHolidayName(name, 1948, 1960, 2006)
         self.assertNoHoliday("1948-04-05", "1960-04-05", "2006-04-05")

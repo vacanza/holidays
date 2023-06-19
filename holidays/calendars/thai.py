@@ -203,8 +203,7 @@ class _ThaiLunisolar:
         """
         if calendar not in {KHMER_CALENDAR, THAI_CALENDAR}:
             raise ValueError(
-                f"Unknown calendar name: {calendar}. "
-                "Use `KHMER_CALENDAR` or `THAI_CALENDAR`."
+                f"Unknown calendar name: {calendar}. Use `KHMER_CALENDAR` or `THAI_CALENDAR`."
             )
 
     @lru_cache()
@@ -435,9 +434,8 @@ class _ThaiLunisolar:
         if not start_date:
             return None
 
-        if (
-            year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN
-            and not self.__is_khmer_calendar(calendar)
+        if year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN and not self.__is_khmer_calendar(
+            calendar
         ):
             delta_days = 250
         elif year in _ThaiLunisolar.ATHIKAWAN_YEARS_GREGORIAN:
@@ -482,9 +480,8 @@ class _ThaiLunisolar:
         if not start_date:
             return None
 
-        if (
-            year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN
-            and not self.__is_khmer_calendar(calendar)
+        if year in _ThaiLunisolar.ATHIKAMAT_YEARS_GREGORIAN and not self.__is_khmer_calendar(
+            calendar
         ):
             delta_days = 251
         elif year in _ThaiLunisolar.ATHIKAWAN_YEARS_GREGORIAN:

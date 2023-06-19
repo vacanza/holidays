@@ -73,9 +73,7 @@ class Panama(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # National Mourning Day
         if year >= 2022:
-            self._add_observed(
-                self._add_holiday("National Mourning Day", DEC, 20)
-            )
+            self._add_observed(self._add_holiday("National Mourning Day", DEC, 20))
 
         # Christmas Day
         self._add_observed(self._add_christmas_day("Christmas Day"))

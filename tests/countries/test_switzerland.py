@@ -20,9 +20,7 @@ class TestSwitzerland(TestCase):
     def setUpClass(cls):
         years = range(1970, 2050)
         super().setUpClass(Switzerland, years=years)
-        cls.prov_hols = {
-            prov: CH(subdiv=prov, years=years) for prov in CH.subdivisions
-        }
+        cls.prov_hols = {prov: CH(subdiv=prov, years=years) for prov in CH.subdivisions}
 
     def test_country_aliases(self):
         self.assertCountryAliases(Switzerland, CH, CHE)
@@ -546,9 +544,7 @@ class TestSwitzerland(TestCase):
             "ZG",
             "ZH",
         }
-        provinces_that_dont = (
-            set(CH.subdivisions) - provinces_that_have - {"NE"}
-        )
+        provinces_that_dont = set(CH.subdivisions) - provinces_that_have - {"NE"}
 
         for province in provinces_that_have:
             self.assertHoliday(

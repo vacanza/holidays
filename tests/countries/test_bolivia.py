@@ -24,9 +24,7 @@ class TestBO(TestCase):
 
     def test_new_years(self):
         self.assertNoHoliday("1824-01-01")
-        self.assertHolidayName(
-            "Año Nuevo", (f"{year}-01-01" for year in range(2000, 2050))
-        )
+        self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in range(2000, 2050)))
         dt = (
             "2006-01-02",
             "2012-01-02",
@@ -53,12 +51,8 @@ class TestBO(TestCase):
                 self.assertNoHoliday(f"{year}-04-15")
                 self.assertHolidayName(name, t_holidays, f"{year}-04-15")
             else:
-                self.assertHolidayName(
-                    "La Tablada", t_holidays, f"{year}-04-15"
-                )
-                self.assertHolidayName(
-                    "Viernes Santo", t_holidays, f"{year}-04-15"
-                )
+                self.assertHolidayName("La Tablada", t_holidays, f"{year}-04-15")
+                self.assertHolidayName("Viernes Santo", t_holidays, f"{year}-04-15")
 
     def test_carnival_in_oruro(self):
         name = "Carnaval de Oruro"
@@ -116,9 +110,7 @@ class TestBO(TestCase):
         )
 
     def test_labor_day(self):
-        self.assertHolidayName(
-            "Día del trabajo", (f"{year}-05-01" for year in range(2000, 2050))
-        )
+        self.assertHolidayName("Día del trabajo", (f"{year}-05-01" for year in range(2000, 2050)))
         name = "Día del trabajo (Observed)"
         dt = (
             "2005-05-02",
@@ -181,9 +173,7 @@ class TestBO(TestCase):
 
     def test_independence_day(self):
         self.assertNoHoliday("1824-08-06")
-        self.assertHolidayName(
-            "Día de la Patria", (f"{year}-08-06" for year in range(2000, 2050))
-        )
+        self.assertHolidayName("Día de la Patria", (f"{year}-08-06" for year in range(2000, 2050)))
         dt = (
             "2000-08-07",
             "2006-08-07",
@@ -225,9 +215,7 @@ class TestBO(TestCase):
         )
 
     def test_all_souls_day(self):
-        self.assertHolidayName(
-            "Todos Santos", (f"{year}-11-02" for year in range(2000, 2050))
-        )
+        self.assertHolidayName("Todos Santos", (f"{year}-11-02" for year in range(2000, 2050)))
         dt = (
             "2008-11-03",
             "2014-11-03",
@@ -259,9 +247,7 @@ class TestBO(TestCase):
         )
 
     def test_christmas_day(self):
-        self.assertHolidayName(
-            "Navidad", (f"{year}-12-25" for year in range(2000, 2050))
-        )
+        self.assertHolidayName("Navidad", (f"{year}-12-25" for year in range(2000, 2050)))
         dt = (
             "2005-12-26",
             "2011-12-26",

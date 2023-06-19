@@ -14,13 +14,10 @@ from datetime import timedelta as td
 from holidays.calendars import JULIAN_CALENDAR
 from holidays.constants import MAR, MAY, JUL, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, IslamicHolidays
-from holidays.holiday_groups import InternationalHolidays
+from holidays.holiday_groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 
 
-class Kazakhstan(
-    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
-):
+class Kazakhstan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
     1. https://www.officeholidays.com/countries/kazakhstan/2020
     2. https://egov.kz/cms/en/articles/holidays-calend
@@ -65,15 +62,11 @@ class Kazakhstan(
                 observed_dates.add(self._add_holiday(name, MAR, 23))
 
         # Kazakhstan People Solidarity Holiday
-        observed_dates.add(
-            self._add_labor_day("Kazakhstan People Solidarity Holiday")
-        )
+        observed_dates.add(self._add_labor_day("Kazakhstan People Solidarity Holiday"))
 
         # Defender of the Fatherland Day
         if year >= 2013:
-            observed_dates.add(
-                self._add_holiday("Defender of the Fatherland Day", MAY, 7)
-            )
+            observed_dates.add(self._add_holiday("Defender of the Fatherland Day", MAY, 7))
 
         # Victory Day
         observed_dates.add(self._add_world_war_two_victory_day("Victory Day"))
@@ -85,9 +78,7 @@ class Kazakhstan(
         # Constitution Day of the Republic of Kazakhstan
         if year >= 1996:
             observed_dates.add(
-                self._add_holiday(
-                    "Constitution Day of the Republic of Kazakhstan", AUG, 30
-                )
+                self._add_holiday("Constitution Day of the Republic of Kazakhstan", AUG, 30)
             )
 
         # Republic Day
@@ -96,9 +87,7 @@ class Kazakhstan(
 
         # First President Day
         if 2012 <= year <= 2021:
-            observed_dates.add(
-                self._add_holiday("First President Day", DEC, 1)
-            )
+            observed_dates.add(self._add_holiday("First President Day", DEC, 1))
 
         # Kazakhstan Independence Day
         name = "Kazakhstan Independence Day"
@@ -117,11 +106,7 @@ class Kazakhstan(
                 obs_date = hol_date + td(days=+1)
                 while self._is_weekend(obs_date) or obs_date in observed_dates:
                     obs_date += td(days=+1)
-                observed_dates.add(
-                    self._add_holiday(
-                        "%s (Observed)" % self[hol_date], obs_date
-                    )
-                )
+                observed_dates.add(self._add_holiday("%s (Observed)" % self[hol_date], obs_date))
 
 
 class KZ(Kazakhstan):

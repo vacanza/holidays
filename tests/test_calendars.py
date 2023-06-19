@@ -247,8 +247,6 @@ class TestRelativeWeekdays(unittest.TestCase):
             self.assertEqual(first_monday.day, day)
 
         # Last Saturday of 2023 months
-        for month, day in enumerate(
-            (28, 25, 25, 29, 27, 24, 29, 26, 30, 28, 25, 30), 1
-        ):
+        for month, day in enumerate((28, 25, 25, 29, 27, 24, 29, 26, 30, 28, 25, 30), 1):
             last_friday = _get_nth_weekday_of_month(-1, 5, month, 2023)
             self.assertEqual(last_friday.day, day)

@@ -55,9 +55,7 @@ class Denmark(HolidayBase, ChristianHolidays, InternationalHolidays):
         # See https://www.ft.dk/samling/20222/lovforslag/l13/index.htm
         if year <= 2023:
             # Great Day of Prayers.
-            self._add_holiday(
-                tr("Store bededag"), self._easter_sunday + td(days=+26)
-            )
+            self._add_holiday(tr("Store bededag"), self._easter_sunday + td(days=+26))
 
         # Ascension Day.
         self._add_ascension_thursday(tr("Kristi himmelfartsdag"))

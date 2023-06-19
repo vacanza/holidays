@@ -117,7 +117,7 @@ class TestBulgaria(TestCase):
             ("2022-04-25", "Великден"),
             (
                 "2022-05-01",
-                "Ден на труда и на международната работническа " "солидарност",
+                "Ден на труда и на международната работническа солидарност",
             ),
             (
                 "2022-05-06",
@@ -156,8 +156,7 @@ class TestBulgaria(TestCase):
             ),
             (
                 "2022-05-24",
-                "Day of Slavonic Alphabet, "
-                "Bulgarian Enlightenment and Culture",
+                "Day of Slavonic Alphabet, Bulgarian Enlightenment and Culture",
             ),
             ("2022-09-06", "Unification Day"),
             ("2022-09-22", "Independence Day"),

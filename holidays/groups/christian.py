@@ -49,9 +49,7 @@ class ChristianHolidays:
 
         return easter(
             self._year,
-            method=EASTER_ORTHODOX
-            if calendar == JULIAN_CALENDAR
-            else EASTER_WESTERN,
+            method=EASTER_ORTHODOX if calendar == JULIAN_CALENDAR else EASTER_WESTERN,
         )
 
     @staticmethod

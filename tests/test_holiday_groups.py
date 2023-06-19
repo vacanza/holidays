@@ -54,7 +54,5 @@ class TestInternationalHolidays(TestCase):
         self.assertEqual(1, len(test_holidays))
         self.assertRaises(
             ValueError,
-            lambda: test_holidays._add_childrens_day(
-                "Invalid", "INVALID_TYPE"
-            ),
+            lambda: test_holidays._add_childrens_day("Invalid", "INVALID_TYPE"),
         )
