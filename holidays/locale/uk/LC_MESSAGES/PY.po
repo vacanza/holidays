@@ -17,21 +17,22 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. Public holiday.
-#: ./holidays/countries/paraguay.py:34
+#: ./holidays/countries/paraguay.py:31
 msgid "Asueto adicionale"
 msgstr "Додатковий вихідний"
 
 #. Public sector holiday.
-#: ./holidays/countries/paraguay.py:36
+#: ./holidays/countries/paraguay.py:33
 msgid "Asueto de la Administración Pública"
 msgstr "Вихідний державних установ"
 
 #. New Year's Day.
-#: ./holidays/countries/paraguay.py:154
+#: ./holidays/countries/paraguay.py:156
 msgid "Año Nuevo"
 msgstr "Новий рік"
 
-#: ./holidays/countries/paraguay.py:164
+#. Patriots Day.
+#: ./holidays/countries/paraguay.py:166
 msgid "Día de los Héroes de la Patria"
 msgstr "День національних героїв"
 
@@ -41,16 +42,17 @@ msgid "Jueves Santo"
 msgstr "Великий четвер"
 
 #. Good Friday.
-#: ./holidays/countries/paraguay.py:173
+#: ./holidays/countries/paraguay.py:174
 msgid "Viernes Santo"
 msgstr "Страсна пʼятниця"
 
 #. Easter Day.
-#: ./holidays/countries/paraguay.py:175
+#: ./holidays/countries/paraguay.py:177
 msgid "Día de Pascuas"
 msgstr "Великдень"
 
-#: ./holidays/countries/paraguay.py:179
+#. Labour Day.
+#: ./holidays/countries/paraguay.py:180
 msgid "Día del Trabajador"
 msgstr "День трудящих"
 
@@ -60,7 +62,7 @@ msgid "Día de la Independencia Nacional"
 msgstr "День незалежності"
 
 #. Chaco Armistice Day.
-#: ./holidays/countries/paraguay.py:199
+#: ./holidays/countries/paraguay.py:197
 msgid "Día de la Paz del Chaco"
 msgstr "День мирного договору в Чако"
 
@@ -70,16 +72,16 @@ msgid "Día de la Fundación de Asunción"
 msgstr "День заснування Асунсьйона"
 
 #. Boqueron Battle Day.
-#: ./holidays/countries/paraguay.py:219
+#: ./holidays/countries/paraguay.py:222
 msgid "Día de la Batalla de Boquerón"
 msgstr "День битви за Бокерон"
 
 #. Caacupe Virgin Day.
-#: ./holidays/countries/paraguay.py:225
+#: ./holidays/countries/paraguay.py:230
 msgid "Día de la Virgen de Caacupé"
 msgstr "Успіння Пресвятої Богородиці"
 
 #. Christmas.
-#: ./holidays/countries/paraguay.py:230
+#: ./holidays/countries/paraguay.py:237
 msgid "Navidad"
 msgstr "Різдво Христове"

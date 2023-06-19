@@ -47,8 +47,7 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
         # Independence Manifesto Day post 1944
         if year >= 1945:
             self._add_holiday(
-                "Commémoration de la présentation "
-                "du manifeste de l'indépendance",
+                "Commémoration de la présentation du manifeste de l'indépendance",
                 JAN,
                 11,
             )
@@ -75,9 +74,7 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
         self._add_holiday("Journée de Oued Ed-Dahab", AUG, 14)
 
         # Revolution Day
-        self._add_holiday(
-            "Commémoration de la révolution du Roi et du peuple", AUG, 20
-        )
+        self._add_holiday("Commémoration de la révolution du Roi et du peuple", AUG, 20)
 
         # Youth day
         if year >= 2001:

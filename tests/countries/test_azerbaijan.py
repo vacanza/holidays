@@ -54,12 +54,8 @@ class TestAzerbaijan(TestCase):
     def test_republic_day(self):
         self.assertHoliday(f"{year}-05-28" for year in range(1992, 2050))
         self.assertNoHoliday(f"{year}-05-28" for year in range(1990, 1992))
-        self.assertHolidaysName(
-            "Republic Day", (f"{year}-05-28" for year in range(1992, 2021))
-        )
-        self.assertHolidaysName(
-            "Independence Day", (f"{year}-05-28" for year in range(2021, 2001))
-        )
+        self.assertHolidayName("Republic Day", (f"{year}-05-28" for year in range(1992, 2021)))
+        self.assertHolidayName("Independence Day", (f"{year}-05-28" for year in range(2001, 2021)))
 
     def test_salvation_day(self):
         self.assertHoliday(f"{year}-06-15" for year in range(1997, 2050))
@@ -78,9 +74,7 @@ class TestAzerbaijan(TestCase):
     def test_victory_day(self):
         self.assertHoliday(f"{year}-11-08" for year in range(2021, 2050))
         for year in range(1990, 2021):
-            self.assertNotIn(
-                "Victory Day", Azerbaijan(years=year).get_list(f"{year}-11-08")
-            )
+            self.assertNotIn("Victory Day", Azerbaijan(years=year).get_list(f"{year}-11-08"))
 
     def test_independence_day(self):
         self.assertHoliday(f"{year}-10-18" for year in range(1990, 2006))

@@ -13,14 +13,13 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from dateutil.easter import easter
-
 from holidays.calendars import _get_nth_weekday_from
-from holidays.constants import JAN, MAR, MAY, JUN, JUL, AUG, OCT, NOV, DEC, MON
+from holidays.constants import JAN, MAR, JUN, JUL, AUG, OCT, NOV, MON
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Colombia(HolidayBase):
+class Colombia(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     Colombia has 18 holidays. The establishing of these are by:
     Ley 35 de 1939 (DEC 4): https://bit.ly/3PJwk7B
@@ -32,6 +31,11 @@ class Colombia(HolidayBase):
     country = "CO"
     default_language = "es"
     supported_languages = ("en_US", "es", "uk")
+
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
     def _add_with_bridge(self, dt: date, name: str) -> None:
         """
@@ -61,7 +65,7 @@ class Colombia(HolidayBase):
         super()._populate(year)
 
         # New Year's Day
-        self._add_holiday(tr("Año Nuevo"), JAN, 1)
+        self._add_new_years_day(tr("Año Nuevo"))
 
         if year >= 1951:
             # Epiphany
@@ -77,7 +81,7 @@ class Colombia(HolidayBase):
             )
 
         # Labor Day
-        self[date(year, MAY, 1)] = tr("Día del Trabajo")
+        self._add_labor_day(tr("Día del Trabajo"))
 
         if year >= 1951:
             # Saint Peter and Saint Paul's Day
@@ -120,36 +124,34 @@ class Colombia(HolidayBase):
 
         if year >= 1951:
             # Immaculate Conception
-            self._add_holiday(tr("La Inmaculada Concepción"), DEC, 8)
+            self._add_immaculate_conception_day(tr("La Inmaculada Concepción"))
 
         # Christmas
-        self._add_holiday(tr("Navidad"), DEC, 25)
-
-        easter_date = easter(year)
+        self._add_christmas_day(tr("Navidad"))
 
         if year >= 1951:
             # Maundy Thursday
-            self._add_holiday(tr("Jueves Santo"), easter_date + td(days=-3))
+            self._add_holy_thursday(tr("Jueves Santo"))
 
             # Good Friday
-            self._add_holiday(tr("Viernes Santo"), easter_date + td(days=-2))
+            self._add_good_friday(tr("Viernes Santo"))
 
             # Ascension of Jesus
             self._add_with_bridge(
-                easter_date + td(days=+39),
+                self._easter_sunday + td(days=+39),
                 tr("Ascensión del señor"),
             )
 
             # Corpus Christi
             self._add_with_bridge(
-                easter_date + td(days=+60),
+                self._easter_sunday + td(days=+60),
                 tr("Corpus Christi"),
             )
 
         if year >= 1984:
             # Sacred Heart
             self._add_with_bridge(
-                easter_date + td(days=+68),
+                self._easter_sunday + td(days=+68),
                 tr("Sagrado Corazón"),
             )
 

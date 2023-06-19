@@ -11,17 +11,13 @@
 
 from datetime import timedelta as td
 
-from holidays.calendars import _CustomCalendar, _IslamicLunar
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC
+from holidays.calendars import _CustomIslamicCalendar
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_groups import IslamicHolidays
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 
 
-class Cameroon(
-    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
-):
+class Cameroon(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_Cameroon
@@ -94,9 +90,7 @@ class Cameroon(
                 while obs_date in observed_dates:
                     obs_date += td(days=+1)
                 for hol_name in self.get_list(dt):
-                    observed_dates.add(
-                        self._add_holiday("%s (Observed)" % hol_name, obs_date)
-                    )
+                    observed_dates.add(self._add_holiday("%s (Observed)" % hol_name, obs_date))
 
             # observed holidays special cases
             if year == 2007:
@@ -111,79 +105,79 @@ class CMR(Cameroon):
     pass
 
 
-class CameroonIslamicCalendar(_CustomCalendar, _IslamicLunar):
+class CameroonIslamicCalendar(_CustomIslamicCalendar):
     EID_AL_ADHA_DATES = {
-        2001: ((MAR, 6),),
-        2002: ((FEB, 23),),
-        2003: ((FEB, 12),),
-        2004: ((FEB, 2),),
-        2005: ((JAN, 21),),
+        2001: (MAR, 6),
+        2002: (FEB, 23),
+        2003: (FEB, 12),
+        2004: (FEB, 2),
+        2005: (JAN, 21),
         2006: ((JAN, 10), (DEC, 31)),
-        2007: ((DEC, 20),),
-        2008: ((DEC, 9),),
-        2009: ((NOV, 28),),
-        2010: ((NOV, 17),),
-        2011: ((NOV, 7),),
-        2012: ((OCT, 26),),
-        2013: ((OCT, 15),),
-        2014: ((OCT, 5),),
-        2015: ((SEP, 24),),
-        2016: ((SEP, 13),),
-        2017: ((SEP, 2),),
-        2018: ((AUG, 21),),
-        2019: ((AUG, 11),),
-        2020: ((JUL, 31),),
-        2021: ((JUL, 20),),
-        2022: ((JUL, 9),),
+        2007: (DEC, 20),
+        2008: (DEC, 9),
+        2009: (NOV, 28),
+        2010: (NOV, 17),
+        2011: (NOV, 7),
+        2012: (OCT, 26),
+        2013: (OCT, 15),
+        2014: (OCT, 5),
+        2015: (SEP, 24),
+        2016: (SEP, 13),
+        2017: (SEP, 2),
+        2018: (AUG, 21),
+        2019: (AUG, 11),
+        2020: (JUL, 31),
+        2021: (JUL, 20),
+        2022: (JUL, 9),
     }
 
     EID_AL_FITR_DATES = {
-        2001: ((DEC, 17),),
-        2002: ((DEC, 6),),
-        2003: ((NOV, 26),),
-        2004: ((NOV, 14),),
-        2005: ((NOV, 4),),
-        2006: ((OCT, 24),),
-        2007: ((OCT, 13),),
-        2008: ((OCT, 2),),
-        2009: ((SEP, 21),),
-        2010: ((SEP, 10),),
-        2011: ((AUG, 31),),
-        2012: ((AUG, 19),),
-        2013: ((AUG, 8),),
-        2014: ((JUL, 28),),
-        2015: ((JUL, 18),),
-        2016: ((JUL, 7),),
-        2017: ((JUN, 26),),
-        2018: ((JUN, 15),),
-        2019: ((JUN, 4),),
-        2020: ((MAY, 24),),
-        2021: ((MAY, 13),),
-        2022: ((MAY, 2),),
-        2023: ((APR, 21),),
+        2001: (DEC, 17),
+        2002: (DEC, 6),
+        2003: (NOV, 26),
+        2004: (NOV, 14),
+        2005: (NOV, 4),
+        2006: (OCT, 24),
+        2007: (OCT, 13),
+        2008: (OCT, 2),
+        2009: (SEP, 21),
+        2010: (SEP, 10),
+        2011: (AUG, 31),
+        2012: (AUG, 19),
+        2013: (AUG, 8),
+        2014: (JUL, 28),
+        2015: (JUL, 18),
+        2016: (JUL, 7),
+        2017: (JUN, 26),
+        2018: (JUN, 15),
+        2019: (JUN, 4),
+        2020: (MAY, 24),
+        2021: (MAY, 13),
+        2022: (MAY, 2),
+        2023: (APR, 21),
     }
 
     MAWLID_DATES = {
-        2001: ((JUN, 4),),
-        2002: ((MAY, 24),),
-        2003: ((MAY, 14),),
-        2004: ((MAY, 2),),
-        2005: ((APR, 21),),
-        2006: ((APR, 11),),
-        2007: ((MAR, 31),),
-        2008: ((MAR, 20),),
-        2009: ((MAR, 9),),
-        2010: ((FEB, 26),),
-        2011: ((FEB, 16),),
-        2012: ((FEB, 5),),
-        2013: ((JAN, 24),),
-        2014: ((JAN, 14),),
+        2001: (JUN, 4),
+        2002: (MAY, 24),
+        2003: (MAY, 14),
+        2004: (MAY, 2),
+        2005: (APR, 21),
+        2006: (APR, 11),
+        2007: (MAR, 31),
+        2008: (MAR, 20),
+        2009: (MAR, 9),
+        2010: (FEB, 26),
+        2011: (FEB, 16),
+        2012: (FEB, 5),
+        2013: (JAN, 24),
+        2014: (JAN, 14),
         2015: ((JAN, 3), (DEC, 24)),
-        2016: ((DEC, 12),),
-        2017: ((DEC, 1),),
-        2018: ((NOV, 21),),
-        2019: ((NOV, 10),),
-        2020: ((OCT, 29),),
-        2021: ((OCT, 19),),
-        2022: ((OCT, 8),),
+        2016: (DEC, 12),
+        2017: (DEC, 1),
+        2018: (NOV, 21),
+        2019: (NOV, 10),
+        2020: (OCT, 29),
+        2021: (OCT, 19),
+        2022: (OCT, 8),
     }

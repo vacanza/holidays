@@ -15,19 +15,19 @@ import copy
 import os
 import warnings
 from calendar import isleap
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from gettext import NullTranslations, gettext, translation
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Tuple
-from typing import Union, cast
+from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Tuple, Union, cast
 
 from dateutil.parser import parse
 
-from holidays.constants import HOLIDAY_NAME_DELIMITER, MON, TUE, WED, THU, FRI
-from holidays.constants import SAT, SUN
+from holidays.constants import HOLIDAY_NAME_DELIMITER, MON, TUE, WED, THU, FRI, SAT, SUN
+from holidays.helpers import _normalize_tuple
 
 DateArg = Union[date, Tuple[int, int]]
 DateLike = Union[date, datetime, str, float, int]
+SpecialHoliday = Union[Tuple[int, int, str], Tuple[Tuple[int, int, str], ...]]
 
 gettext = gettext
 
@@ -201,7 +201,7 @@ class HolidayBase(Dict[date, str]):
     """Whether dates when public holiday are observed are included."""
     subdiv: Optional[str] = None
     """The subdiv requested."""
-    special_holidays: Dict[int, Tuple[Tuple[int, int, str], ...]] = {}
+    special_holidays: Dict[int, SpecialHoliday] = {}
     """A list of the country-wide special (as opposite to regular) holidays for
     a specific year."""
     _deprecated_subdivisions: Tuple[str, ...] = ()
@@ -273,19 +273,11 @@ class HolidayBase(Dict[date, str]):
             )
 
         if not isinstance(self, HolidaySum):
-            if subdiv and subdiv not in set(
-                self.subdivisions + self._deprecated_subdivisions
-            ):
+            if subdiv and subdiv not in set(self.subdivisions + self._deprecated_subdivisions):
                 if hasattr(self, "market"):
-                    error = (
-                        f"Market '{self.market}' does not have subdivision "
-                        f"'{subdiv}'"
-                    )
+                    error = f"Market '{self.market}' does not have subdivision " f"'{subdiv}'"
                 else:
-                    error = (
-                        f"Country '{self.country}' does not have subdivision "
-                        f"'{subdiv}'"
-                    )
+                    error = f"Country '{self.country}' does not have subdivision " f"'{subdiv}'"
                 raise NotImplementedError(error)
 
             if subdiv and subdiv in self._deprecated_subdivisions:
@@ -330,9 +322,7 @@ class HolidayBase(Dict[date, str]):
         for year in self.years:
             self._populate(year)
 
-    def __add__(
-        self, other: Union[int, "HolidayBase", "HolidaySum"]
-    ) -> "HolidayBase":
+    def __add__(self, other: Union[int, "HolidayBase", "HolidaySum"]) -> "HolidayBase":
         """Add another dictionary of public holidays creating a
         :class:`HolidaySum` object.
 
@@ -349,9 +339,7 @@ class HolidayBase(Dict[date, str]):
             return self
 
         if not isinstance(other, (HolidayBase, HolidaySum)):
-            raise TypeError(
-                "Holiday objects can only be added with other Holiday objects"
-            )
+            raise TypeError("Holiday objects can only be added with other Holiday objects")
 
         return HolidaySum(self, other)
 
@@ -372,18 +360,14 @@ class HolidayBase(Dict[date, str]):
         if not isinstance(key, (date, datetime, float, int, str)):
             raise TypeError(f"Cannot convert type '{type(key)}' to date.")
 
-        return dict.__contains__(
-            cast("Mapping[Any, Any]", self), self.__keytransform__(key)
-        )
+        return dict.__contains__(cast("Mapping[Any, Any]", self), self.__keytransform__(key))
 
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, HolidayBase):
             return False
 
         for attribute_name in self.__attribute_names:
-            if getattr(self, attribute_name, None) != getattr(
-                other, attribute_name, None
-            ):
+            if getattr(self, attribute_name, None) != getattr(other, attribute_name, None):
                 return False
 
         return dict.__eq__(self, other)
@@ -403,9 +387,7 @@ class HolidayBase(Dict[date, str]):
             elif isinstance(key.step, int):
                 step = key.step
             else:
-                raise TypeError(
-                    f"Cannot convert type '{type(key.step)}' to int."
-                )
+                raise TypeError(f"Cannot convert type '{type(key.step)}' to int.")
 
             if step == 0:
                 raise ValueError("Step value must not be zero.")
@@ -454,10 +436,8 @@ class HolidayBase(Dict[date, str]):
         elif isinstance(key, date):  # Key type is derived from `date`.
             dt = key
 
-        elif isinstance(
-            key, (float, int)
-        ):  # Key type is derived from `float` or `int`.
-            dt = datetime.utcfromtimestamp(key).date()
+        elif isinstance(key, (float, int)):  # Key type is derived from `float` or `int`.
+            dt = datetime.fromtimestamp(key, timezone.utc).date()
 
         else:  # Key type is not supported.
             raise TypeError(f"Cannot convert type '{type(key)}' to date.")
@@ -474,9 +454,7 @@ class HolidayBase(Dict[date, str]):
             return True
 
         for attribute_name in self.__attribute_names:
-            if getattr(self, attribute_name, None) != getattr(
-                other, attribute_name, None
-            ):
+            if getattr(self, attribute_name, None) != getattr(other, attribute_name, None):
                 return True
 
         return dict.__ne__(self, other)
@@ -528,10 +506,7 @@ class HolidayBase(Dict[date, str]):
 
         parts = []
         for attribute_name in self.__attribute_names:
-            parts.append(
-                "'%s': %s"
-                % (attribute_name, getattr(self, attribute_name, None))
-            )
+            parts.append("'%s': %s" % (attribute_name, getattr(self, attribute_name, None)))
 
         return f"{{{', '.join(parts)}}}"
 
@@ -571,9 +546,7 @@ class HolidayBase(Dict[date, str]):
         """Populate subdivision holidays."""
         if self.subdiv is not None:
             subdiv = self.subdiv.replace("-", "_").replace(" ", "_").lower()
-            add_subdiv_holidays = getattr(
-                self, f"_add_subdiv_{subdiv}_holidays", None
-            )
+            add_subdiv_holidays = getattr(self, f"_add_subdiv_{subdiv}_holidays", None)
             if add_subdiv_holidays and callable(add_subdiv_holidays):
                 add_subdiv_holidays()
 
@@ -621,8 +594,7 @@ class HolidayBase(Dict[date, str]):
             name, dt = args
             if not isinstance(dt, date):
                 raise TypeError(
-                    "Invalid argument type: expected <class 'date'> "
-                    f"got '{type(dt)}'."
+                    "Invalid argument type: expected <class 'date'> " f"got '{type(dt)}'."
                 )
         elif len(args) == 3:
             name, month, day = args
@@ -653,7 +625,7 @@ class HolidayBase(Dict[date, str]):
         dates = set()
 
         # Populate items from the special holidays list.
-        for month, day, name in self.special_holidays.get(year, ()):
+        for month, day, name in _normalize_tuple(self.special_holidays.get(year, ())):
             dates.add(self._add_holiday(name, date(year, month, day)))
 
         # Populate subdivision holidays.
@@ -661,9 +633,7 @@ class HolidayBase(Dict[date, str]):
 
         return dates
 
-    def append(
-        self, *args: Union[Dict[DateLike, str], List[DateLike], DateLike]
-    ) -> None:
+    def append(self, *args: Union[Dict[DateLike, str], List[DateLike], DateLike]) -> None:
         """Alias for :meth:`update` to mimic list type."""
         return self.update(*args)
 
@@ -714,13 +684,14 @@ class HolidayBase(Dict[date, str]):
             * or a :class:`float` or :class:`int` representing a POSIX
               timestamp.
         """
-        return [
-            name
-            for name in self.get(key, "").split(HOLIDAY_NAME_DELIMITER)
-            if name
-        ]
+        return [name for name in self.get(key, "").split(HOLIDAY_NAME_DELIMITER) if name]
 
-    def get_named(self, holiday_name: str, lookup="icontains") -> List[date]:
+    def get_named(
+        self,
+        holiday_name: str,
+        lookup="icontains",
+        split_multiple_names=True,
+    ) -> List[date]:
         """Return a list of all holiday dates matching the provided holiday
         name. The match will be made case insensitively and partial matches
         will be included by default.
@@ -735,12 +706,15 @@ class HolidayBase(Dict[date, str]):
                 icontains - case insensitive contains match;
                 iexact - case insensitive exact match;
                 istartswith - case insensitive starts with match;
+        :param split_multiple_names:
+            Either use the exact name for each date or split it by holiday
+            name delimiter.
 
         :return:
             A list of all holiday dates matching the provided holiday name.
         """
         holiday_date_names_mapping: Dict[date, List[str]] = {
-            key: value.split(HOLIDAY_NAME_DELIMITER)
+            key: value.split(HOLIDAY_NAME_DELIMITER) if split_multiple_names else [value]
             for key, value in self.items()
         }
 
@@ -767,12 +741,7 @@ class HolidayBase(Dict[date, str]):
             return [
                 dt
                 for dt, names in holiday_date_names_mapping.items()
-                if any(
-                    (
-                        holiday_name == name[: len(holiday_name)]
-                        for name in names
-                    )
-                )
+                if any((holiday_name == name[: len(holiday_name)] for name in names))
             ]
         elif lookup == "iexact":
             holiday_name_lower = holiday_name.lower()
@@ -786,12 +755,7 @@ class HolidayBase(Dict[date, str]):
             return [
                 dt
                 for dt, names in holiday_date_names_mapping.items()
-                if any(
-                    (
-                        holiday_name_lower == name[: len(holiday_name)].lower()
-                        for name in names
-                    )
-                )
+                if any((holiday_name_lower == name[: len(holiday_name)].lower() for name in names))
             ]
 
         raise AttributeError(f"Unknown lookup type: {lookup}")
@@ -845,14 +809,24 @@ class HolidayBase(Dict[date, str]):
         :raise:
             KeyError if date is not a holiday and default is not given.
         """
-        dates = self.get_named(name)
-        if not dates:
+        use_exact_name = HOLIDAY_NAME_DELIMITER in name
+        dts = self.get_named(name, split_multiple_names=not use_exact_name)
+        if len(dts) == 0:
             raise KeyError(name)
 
-        for dt in dates:
+        popped = []
+        for dt in dts:
+            holiday_names = self[dt].split(HOLIDAY_NAME_DELIMITER)
             self.pop(dt)
+            popped.append(dt)
 
-        return dates
+            # Keep the rest of holidays falling on the same date.
+            if not use_exact_name:
+                holiday_names.remove(name)
+                if len(holiday_names) > 0:
+                    self[dt] = HOLIDAY_NAME_DELIMITER.join(holiday_names)
+
+        return popped
 
     def update(  # type: ignore[override]
         self, *args: Union[Dict[DateLike, str], List[DateLike], DateLike]

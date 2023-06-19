@@ -54,10 +54,7 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Epiphany.
         self._add_epiphany_day(
-            tr(
-                "Zjavenie Pána (Traja králi a "
-                "vianočnýsviatok pravoslávnych kresťanov)"
-            )
+            tr("Zjavenie Pána (Traja králi a vianočnýsviatok pravoslávnych kresťanov)")
         )
 
         # Good Friday.

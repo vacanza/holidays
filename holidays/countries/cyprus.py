@@ -78,17 +78,13 @@ class Cyprus(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday(tr("Ημέρα του Όχι"), OCT, 28)
 
         # Christmas Eve.
-        self._add_christmas_eve(
-            tr("Παραμονή Χριστουγέννων"), GREGORIAN_CALENDAR
-        )
+        self._add_christmas_eve(tr("Παραμονή Χριστουγέννων"), GREGORIAN_CALENDAR)
 
         # Christmas Day.
         self._add_christmas_day(tr("Χριστούγεννα"), GREGORIAN_CALENDAR)
 
         # Day After Christmas.
-        self._add_christmas_day_two(
-            tr("Δεύτερη μέρα Χριστουγέννων"), GREGORIAN_CALENDAR
-        )
+        self._add_christmas_day_two(tr("Δεύτερη μέρα Χριστουγέννων"), GREGORIAN_CALENDAR)
 
 
 class CY(Cyprus):

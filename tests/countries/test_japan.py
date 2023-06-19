@@ -95,7 +95,7 @@ class TestJapan(TestCase):
         self.assertNoHolidayName("建国記念の日", 1966)
 
     def test_vernal_equinox_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "春分の日",
             "1949-03-21",
             "1950-03-21",
@@ -205,24 +205,16 @@ class TestJapan(TestCase):
 
     def test_showa_day(self):
         name = "昭和の日"
-        self.assertHolidaysName(
-            name, (f"{year}-04-29" for year in range(2007, 2051))
-        )
+        self.assertHolidayName(name, (f"{year}-04-29" for year in range(2007, 2051)))
         self.assertNoHolidayName(name, 2006)
 
     def test_constitution_memorial_day(self):
-        self.assertHolidaysName(
-            "憲法記念日", (f"{year}-05-03" for year in range(1949, 2051))
-        )
+        self.assertHolidayName("憲法記念日", (f"{year}-05-03" for year in range(1949, 2051)))
 
     def test_greenery_day(self):
         name = "みどりの日"
-        self.assertHolidaysName(
-            name, (f"{year}-04-29" for year in range(1989, 2007))
-        )
-        self.assertHolidaysName(
-            name, (f"{year}-05-04" for year in range(2007, 2051))
-        )
+        self.assertHolidayName(name, (f"{year}-04-29" for year in range(1989, 2007)))
+        self.assertHolidayName(name, (f"{year}-05-04" for year in range(2007, 2051)))
         self.assertNoHolidayName(name, 1988)
 
     def test_national_holiday(self):
@@ -244,7 +236,7 @@ class TestJapan(TestCase):
             2005,
             2006,
         ):
-            self.assertHolidaysName(name, f"{year}-05-04")
+            self.assertHolidayName(name, f"{year}-05-04")
             self.assertNoNonObservedHoliday(f"{year}-05-04")
 
         for dt in (
@@ -258,16 +250,14 @@ class TestJapan(TestCase):
             "2043-09-22",
             "2049-09-21",
         ):
-            self.assertHolidaysName(name, dt)
+            self.assertHolidayName(name, dt)
             self.assertNoNonObservedHoliday(dt)
 
     def test_childrens_day(self):
-        self.assertHolidaysName(
-            "こどもの日", (f"{year}-05-05" for year in range(1949, 2051))
-        )
+        self.assertHolidayName("こどもの日", (f"{year}-05-05" for year in range(1949, 2051)))
 
     def test_marine_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "海の日",
             "1996-07-20",
             "1997-07-20",
@@ -331,20 +321,18 @@ class TestJapan(TestCase):
     def test_mountain_day(self):
         years = set(range(2016, 2051)).difference({2020, 2021})
         name = "山の日"
-        self.assertHolidaysName(name, (f"{year}-08-11" for year in years))
-        self.assertHolidaysName(name, "2020-08-10", "2021-08-08")
+        self.assertHolidayName(name, (f"{year}-08-11" for year in years))
+        self.assertHolidayName(name, "2020-08-10", "2021-08-08")
         self.assertNoHoliday("2015-08-11")
         self.assertNoHolidayName(name, 2015)
 
     def test_respect_for_the_aged_day(self):
         name = "敬老の日"
-        self.assertHolidaysName(
-            name, (f"{year}-09-15" for year in range(1966, 2003))
-        )
+        self.assertHolidayName(name, (f"{year}-09-15" for year in range(1966, 2003)))
         self.assertNoHoliday("1965-09-15")
         self.assertNoHolidayName(name, 1965)
 
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name,
             "2003-09-15",
             "2004-09-20",
@@ -397,7 +385,7 @@ class TestJapan(TestCase):
         )
 
     def test_autumnal_equinox_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "秋分の日",
             "1949-09-23",
             "1950-09-23",
@@ -505,13 +493,11 @@ class TestJapan(TestCase):
 
     def test_health_and_sports_day(self):
         name = "体育の日"
-        self.assertHolidaysName(
-            name, (f"{year}-10-10" for year in range(1966, 2000))
-        )
+        self.assertHolidayName(name, (f"{year}-10-10" for year in range(1966, 2000)))
         self.assertNoHoliday("1965-10-10", "2000-10-10")
         self.assertNoHolidayName(name, 1965, 2020)
 
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name,
             "2000-10-09",
             "2001-10-08",
@@ -536,7 +522,7 @@ class TestJapan(TestCase):
         )
 
         name = "スポーツの日"
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name,
             "2020-07-24",
             "2021-07-23",
@@ -573,26 +559,16 @@ class TestJapan(TestCase):
         self.assertNoHolidayName(name, 2019)
 
     def test_culture_day(self):
-        self.assertHolidaysName(
-            "文化の日", (f"{year}-11-03" for year in range(1949, 2051))
-        )
+        self.assertHolidayName("文化の日", (f"{year}-11-03" for year in range(1949, 2051)))
 
     def test_labour_thanks_giving_day(self):
-        self.assertHolidaysName(
-            "勤労感謝の日", (f"{year}-11-23" for year in range(1949, 2051))
-        )
+        self.assertHolidayName("勤労感謝の日", (f"{year}-11-23" for year in range(1949, 2051)))
 
     def test_emperors_birthday(self):
         name = "天皇誕生日"
-        self.assertHolidaysName(
-            name, (f"{year}-04-29" for year in range(1949, 1989))
-        )
-        self.assertHolidaysName(
-            name, (f"{year}-12-23" for year in range(1989, 2019))
-        )
-        self.assertHolidaysName(
-            name, (f"{year}-02-23" for year in range(2020, 2051))
-        )
+        self.assertHolidayName(name, (f"{year}-04-29" for year in range(1949, 1989)))
+        self.assertHolidayName(name, (f"{year}-12-23" for year in range(1989, 2019)))
+        self.assertHolidayName(name, (f"{year}-02-23" for year in range(2020, 2051)))
         self.assertNoHoliday("2019-12-23")
 
     def test_showa_emperor_holidays(self):
@@ -744,50 +720,46 @@ class TestJapan(TestCase):
             "2048-05-06",
             "2050-03-21",
         )
-        self.assertHolidaysName(name, dt)
+        self.assertHolidayName(name, dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "元日"),
-                ("2022-01-10", "成人の日"),
-                ("2022-02-11", "建国記念の日"),
-                ("2022-02-23", "天皇誕生日"),
-                ("2022-03-21", "春分の日"),
-                ("2022-04-29", "昭和の日"),
-                ("2022-05-03", "憲法記念日"),
-                ("2022-05-04", "みどりの日"),
-                ("2022-05-05", "こどもの日"),
-                ("2022-07-18", "海の日"),
-                ("2022-08-11", "山の日"),
-                ("2022-09-19", "敬老の日"),
-                ("2022-09-23", "秋分の日"),
-                ("2022-10-10", "スポーツの日"),
-                ("2022-11-03", "文化の日"),
-                ("2022-11-23", "勤労感謝の日"),
-            )
+            ("2022-01-01", "元日"),
+            ("2022-01-10", "成人の日"),
+            ("2022-02-11", "建国記念の日"),
+            ("2022-02-23", "天皇誕生日"),
+            ("2022-03-21", "春分の日"),
+            ("2022-04-29", "昭和の日"),
+            ("2022-05-03", "憲法記念日"),
+            ("2022-05-04", "みどりの日"),
+            ("2022-05-05", "こどもの日"),
+            ("2022-07-18", "海の日"),
+            ("2022-08-11", "山の日"),
+            ("2022-09-19", "敬老の日"),
+            ("2022-09-23", "秋分の日"),
+            ("2022-10-10", "スポーツの日"),
+            ("2022-11-03", "文化の日"),
+            ("2022-11-23", "勤労感謝の日"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "New Year's Day"),
-                ("2022-01-10", "Coming of Age Day"),
-                ("2022-02-11", "Foundation Day"),
-                ("2022-02-23", "Emperor's Birthday"),
-                ("2022-03-21", "Vernal Equinox Day"),
-                ("2022-04-29", "Showa Day"),
-                ("2022-05-03", "Constitution Day"),
-                ("2022-05-04", "Greenery Day"),
-                ("2022-05-05", "Children's Day"),
-                ("2022-07-18", "Marine Day"),
-                ("2022-08-11", "Mountain Day"),
-                ("2022-09-19", "Respect for the Aged Day"),
-                ("2022-09-23", "Autumnal Equinox"),
-                ("2022-10-10", "Sports Day"),
-                ("2022-11-03", "Culture Day"),
-                ("2022-11-23", "Labor Thanksgiving Day"),
-            ),
             "en_US",
+            ("2022-01-01", "New Year's Day"),
+            ("2022-01-10", "Coming of Age Day"),
+            ("2022-02-11", "Foundation Day"),
+            ("2022-02-23", "Emperor's Birthday"),
+            ("2022-03-21", "Vernal Equinox Day"),
+            ("2022-04-29", "Showa Day"),
+            ("2022-05-03", "Constitution Day"),
+            ("2022-05-04", "Greenery Day"),
+            ("2022-05-05", "Children's Day"),
+            ("2022-07-18", "Marine Day"),
+            ("2022-08-11", "Mountain Day"),
+            ("2022-09-19", "Respect for the Aged Day"),
+            ("2022-09-23", "Autumnal Equinox"),
+            ("2022-10-10", "Sports Day"),
+            ("2022-11-03", "Culture Day"),
+            ("2022-11-23", "Labor Thanksgiving Day"),
         )

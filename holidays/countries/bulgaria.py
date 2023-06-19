@@ -53,9 +53,7 @@ class Bulgaria(HolidayBase):
         self._add_holiday(tr("Нова година"), JAN, 1)
 
         # Liberation Day.
-        self._add_holiday(
-            tr("Ден на Освобождението на България от османско иго"), MAR, 3
-        )
+        self._add_holiday(tr("Ден на Освобождението на България от османско иго"), MAR, 3)
 
         # International Workers' Day.
         self._add_holiday(
@@ -65,9 +63,7 @@ class Bulgaria(HolidayBase):
         )
 
         # Saint George's Day.
-        self._add_holiday(
-            tr("Гергьовден, Ден на храбростта и Българската армия"), MAY, 6
-        )
+        self._add_holiday(tr("Гергьовден, Ден на храбростта и Българската армия"), MAY, 6)
 
         # Bulgarian Education and Culture and Slavonic Literature Day.
         self._add_holiday(

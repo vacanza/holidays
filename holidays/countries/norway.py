@@ -99,9 +99,7 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Optionally add all Sundays of the year.
             begin = _get_nth_weekday_of_month(1, SUN, JAN, year)
             end = date(year, DEC, 31)
-            for dt in (
-                begin + td(days=n) for n in range(0, (end - begin).days + 1, 7)
-            ):
+            for dt in (begin + td(days=n) for n in range(0, (end - begin).days + 1, 7)):
                 # Sunday.
                 self._add_holiday(tr("Søndag"), dt)
 

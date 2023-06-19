@@ -255,21 +255,13 @@ class _Lunisolar:
         Return the number of the leap month if one exists in the year,
         otherwise 15.
         """
-        return (
-            self.G_LUNAR_MONTH_DAYS[lunar_year - self.START_YEAR] >> 16
-        ) & 0x0F
+        return (self.G_LUNAR_MONTH_DAYS[lunar_year - self.START_YEAR] >> 16) & 0x0F
 
     def _lunar_month_days(self, lunar_year: int, lunar_month: int) -> int:
         """
         Return the number of days in a lunar month.
         """
-        return 29 + (
-            (
-                self.G_LUNAR_MONTH_DAYS[lunar_year - self.START_YEAR]
-                >> lunar_month
-            )
-            & 0x01
-        )
+        return 29 + ((self.G_LUNAR_MONTH_DAYS[lunar_year - self.START_YEAR] >> lunar_month) & 0x01)
 
     def _lunar_year_days(self, year: int) -> int:
         """
@@ -288,21 +280,16 @@ class _Lunisolar:
         Return the number of days elapsed since self.SOLAR_START_DATE to the
         beginning of the year.
         """
-        return sum(
-            self._lunar_year_days(y) for y in range(self.START_YEAR, year)
-        )
+        return sum(self._lunar_year_days(y) for y in range(self.START_YEAR, year))
 
-    def lunar_to_gre(
-        self, year: int, month: int, day: int, leap: bool = True
-    ) -> date:
+    def lunar_to_gre(self, year: int, month: int, day: int, leap: bool = True) -> date:
         """
         Return the Gregorian date of a Chinese lunar day and month in a
         given Gregorian year.
         """
         leap_month = self._get_leap_month(year) if leap else 15
         span_days = sum(
-            self._lunar_month_days(year, m)
-            for m in range(1, month + (month > leap_month))
+            self._lunar_month_days(year, m) for m in range(1, month + (month > leap_month))
         )
         span_days += self._span_days(year) + day - 1
         return self.SOLAR_START_DATE + td(days=span_days)
@@ -324,9 +311,7 @@ class _Lunisolar:
         <https://en.wikipedia.org/wiki/Vesak#Dates_of_observance>`__.
         """
         dt = self.lunar_to_gre(year, 3, 15, leap=False)
-        return (
-            dt if dt.month == 5 else self.lunar_to_gre(year, 4, 15, leap=False)
-        )
+        return dt if dt.month == 5 else self.lunar_to_gre(year, 4, 15, leap=False)
 
     def s_diwali_date(self, year: int) -> date:
         """
@@ -345,9 +330,7 @@ class _Lunisolar:
         calendar. See `Wikipedia <https://en.wikipedia.org/wiki/Thaipusam>`__.
         """
         leap_month = self._get_leap_month(year)
-        return self.lunar_to_gre(year, 1 if leap_month <= 6 else 2, 1) + td(
-            days=-15
-        )
+        return self.lunar_to_gre(year, 1 if leap_month <= 6 else 2, 1) + td(days=-15)
 
 
 CLASS_NAME = "_{cal_name}Lunisolar"
@@ -413,23 +396,17 @@ def generate_data():
         dates[g_year]["VESAK_MAY"] = cnls.vesak_may_date(g_year)
 
     for calendar in CALENDARS:
-        holiday_names = sorted(
-            d[2] for d in ASIAN_HOLIDAYS if d[3] == calendar
-        )
+        holiday_names = sorted(d[2] for d in ASIAN_HOLIDAYS if d[3] == calendar)
         holiday_data = []
         for hol_name in holiday_names:
             year_dates = []
             for year in range(g_year_min, g_year_max + 1):
                 d = dates[year].get(hol_name)
                 date_str = f"{d.strftime('%b').upper()}, {d.day}"
-                year_dates.append(
-                    YEAR_TEMPLATE.format(year=year, date=date_str)
-                )
+                year_dates.append(YEAR_TEMPLATE.format(year=year, date=date_str))
             year_dates_str = "\n".join(year_dates)
             holiday_data.append(
-                HOLIDAY_ARRAY_TEMPLATE.format(
-                    hol_name=hol_name, year_dates=year_dates_str
-                )
+                HOLIDAY_ARRAY_TEMPLATE.format(hol_name=hol_name, year_dates=year_dates_str)
             )
         holiday_data_str = "\n".join(holiday_data)
         cal_name = CALENDARS[calendar]
@@ -438,9 +415,7 @@ def generate_data():
             holiday_data=holiday_data_str,
         )
 
-        f_name = Path("holidays/calendars") / OUT_FILE_NAME.format(
-            cal_name=cal_name.lower()
-        )
+        f_name = Path("holidays/calendars") / OUT_FILE_NAME.format(cal_name=cal_name.lower())
         with open(f_name, "w", encoding="UTF-8", newline="\n") as f:
             f.write(class_str)
 

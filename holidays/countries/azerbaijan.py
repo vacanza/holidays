@@ -13,8 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.calendars import _CustomIslamicCalendar
-from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT
-from holidays.constants import NOV, DEC
+from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
 
@@ -73,9 +72,7 @@ class Azerbaijan(HolidayBase, InternationalHolidays, IslamicHolidays):
                 observed_dates.add(self._add_holiday("Novruz", MAR, d))
 
         # Victory Day
-        observed_dates.add(
-            self._add_world_war_two_victory_day("Victory Day over Fascism")
-        )
+        observed_dates.add(self._add_world_war_two_victory_day("Victory Day over Fascism"))
 
         # Republic Day
         if year >= 1992:
@@ -89,9 +86,7 @@ class Azerbaijan(HolidayBase, InternationalHolidays, IslamicHolidays):
 
         # National Salvation Day
         if year >= 1997:
-            observed_dates.add(
-                self._add_holiday("National Salvation Day", JUN, 15)
-            )
+            observed_dates.add(self._add_holiday("National Salvation Day", JUN, 15))
 
         # Memorial Day (without extending)
         if year >= 2021:
@@ -159,10 +154,7 @@ class Azerbaijan(HolidayBase, InternationalHolidays, IslamicHolidays):
                 # 6. If the holidays of Qurban and Ramadan coincide with
                 # another holiday that is not considered a working day,
                 # the next working day is considered a rest day.
-                elif (
-                    len(self.get_list(hol_date)) > 1
-                    and hol_date not in non_observed_dates
-                ):
+                elif len(self.get_list(hol_date)) > 1 and hol_date not in non_observed_dates:
                     for hol_name in self.get_list(hol_date):
                         if "Bayrami" in hol_name:
                             _add_observed(hol_date, hol_name)
@@ -178,33 +170,33 @@ class AZE(Azerbaijan):
 
 class AzerbaijanIslamicCalendar(_CustomIslamicCalendar):
     EID_AL_ADHA_DATES = {
-        2011: ((NOV, 6),),
-        2012: ((OCT, 25),),
-        2013: ((OCT, 15),),
-        2014: ((OCT, 4),),
-        2015: ((SEP, 24),),
-        2016: ((SEP, 12),),
-        2017: ((SEP, 1),),
-        2018: ((AUG, 22),),
-        2019: ((AUG, 12),),
-        2020: ((JUL, 31),),
-        2021: ((JUL, 20),),
-        2022: ((JUL, 9),),
-        2023: ((JUN, 28),),
+        2011: (NOV, 6),
+        2012: (OCT, 25),
+        2013: (OCT, 15),
+        2014: (OCT, 4),
+        2015: (SEP, 24),
+        2016: (SEP, 12),
+        2017: (SEP, 1),
+        2018: (AUG, 22),
+        2019: (AUG, 12),
+        2020: (JUL, 31),
+        2021: (JUL, 20),
+        2022: (JUL, 9),
+        2023: (JUN, 28),
     }
 
     EID_AL_FITR_DATES = {
-        2011: ((AUG, 30),),
-        2012: ((AUG, 19),),
-        2013: ((AUG, 8),),
-        2014: ((JUL, 28),),
-        2015: ((JUL, 17),),
-        2016: ((JUL, 6),),
-        2017: ((JUN, 26),),
-        2018: ((JUN, 15),),
-        2019: ((JUN, 5),),
-        2020: ((MAY, 24),),
-        2021: ((MAY, 13),),
-        2022: ((MAY, 2),),
-        2023: ((APR, 21),),
+        2011: (AUG, 30),
+        2012: (AUG, 19),
+        2013: (AUG, 8),
+        2014: (JUL, 28),
+        2015: (JUL, 17),
+        2016: (JUL, 6),
+        2017: (JUN, 26),
+        2018: (JUN, 15),
+        2019: (JUN, 5),
+        2020: (MAY, 24),
+        2021: (MAY, 13),
+        2022: (MAY, 2),
+        2023: (APR, 21),
     }

@@ -10,8 +10,7 @@
 #  License: MIT (see LICENSE file)
 #  Copyright: Kateryna Golovanova <kate@kgthreads.com>, 2022
 
-from holidays.countries.bosnia_and_herzegovina import BosniaAndHerzegovina, BA
-from holidays.countries.bosnia_and_herzegovina import BIH
+from holidays.countries.bosnia_and_herzegovina import BosniaAndHerzegovina, BA, BIH
 from tests.common import TestCase
 
 
@@ -28,10 +27,8 @@ class TestBosniaAndHerzegovina(TestCase):
         self.assertCountryAliases(BosniaAndHerzegovina, BA, BIH)
 
     def test_new_years(self):
-        self.assertHolidaysName(
-            "Nova Godina", (f"{year}-01-01" for year in range(2000, 2030))
-        )
-        self.assertHolidaysName(
+        self.assertHolidayName("Nova Godina", (f"{year}-01-01" for year in range(2000, 2030)))
+        self.assertHolidayName(
             "Drugi dan Nove Godine",
             (f"{year}-01-02" for year in range(2000, 2030)),
         )
@@ -43,43 +40,44 @@ class TestBosniaAndHerzegovina(TestCase):
             "2017-01-03",
             "2023-01-03",
         )
-        self.assertHolidaysName(name, self.fbih_holidays, dt)
-        self.assertHolidaysName(name, self.bd_holidays, dt)
+        self.assertHolidayName(name, self.fbih_holidays, dt)
+        self.assertHolidayName(name, self.bd_holidays, dt)
         self.assertNoHoliday(dt)
-        self.assertNoNonObservedHoliday(
-            BosniaAndHerzegovina(subdiv="FBiH", observed=False), dt
-        )
-        self.assertNoNonObservedHoliday(
-            BosniaAndHerzegovina(subdiv="BD", observed=False), dt
-        )
+        self.assertNoNonObservedHoliday(BosniaAndHerzegovina(subdiv="FBiH", observed=False), dt)
+        self.assertNoNonObservedHoliday(BosniaAndHerzegovina(subdiv="BD", observed=False), dt)
 
     def test_orthodox_christmas_eve(self):
         name = "Pravoslavno Badnje veče"
-        dt = (f"{year}-01-06" for year in range(2000, 2030))
-        self.assertHolidaysName(name, self.fbih_holidays, dt)
-        self.assertHolidaysName(name, self.rs_holidays, dt)
-
-    def test_orthodox_christmas(self):
-        self.assertHolidaysName(
-            "Božić (Божић)", (f"{year}-01-07" for year in range(2000, 2030))
+        self.assertHolidayName(
+            name,
+            self.fbih_holidays,
+            (f"{year}-01-06" for year in range(2000, 2030)),
+        )
+        self.assertHolidayName(
+            name,
+            self.rs_holidays,
+            (f"{year}-01-06" for year in range(2000, 2030)),
         )
 
+    def test_orthodox_christmas(self):
+        self.assertHolidayName("Božić (Божић)", (f"{year}-01-07" for year in range(2000, 2030)))
+
     def test_orthodox_new_year(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Pravoslavna Nova Godina",
             self.rs_holidays,
             (f"{year}-01-14" for year in range(2000, 2030)),
         )
 
     def test_independence_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Dan nezavisnosti",
             self.fbih_holidays,
             (f"{year}-03-01" for year in range(2000, 2030)),
         )
 
     def test_establishment_bd_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Dan uspostavljanja Brčko distrikta",
             self.bd_holidays,
             (f"{year}-03-08" for year in range(2000, 2030)),
@@ -97,8 +95,8 @@ class TestBosniaAndHerzegovina(TestCase):
             "2022-04-15",
             "2023-04-07",
         )
-        self.assertHolidaysName(name, self.fbih_holidays, dt)
-        self.assertHolidaysName(name, self.rs_holidays, dt)
+        self.assertHolidayName(name, self.fbih_holidays, dt)
+        self.assertHolidayName(name, self.rs_holidays, dt)
 
         name = "Uskrs (Katolički)"
         dt = (
@@ -111,8 +109,8 @@ class TestBosniaAndHerzegovina(TestCase):
             "2022-04-17",
             "2023-04-09",
         )
-        self.assertHolidaysName(name, self.fbih_holidays, dt)
-        self.assertHolidaysName(name, self.rs_holidays, dt)
+        self.assertHolidayName(name, self.fbih_holidays, dt)
+        self.assertHolidayName(name, self.rs_holidays, dt)
 
         name = "Uskrsni ponedjeljak (Katolički)"
         dt = (
@@ -125,10 +123,10 @@ class TestBosniaAndHerzegovina(TestCase):
             "2022-04-18",
             "2023-04-10",
         )
-        self.assertHolidaysName(name, self.fbih_holidays, dt)
-        self.assertHolidaysName(name, self.rs_holidays, dt)
-        self.assertHolidaysName(name, self.bd_holidays, dt)
-        self.assertHolidaysName(name, dt)
+        self.assertHolidayName(name, self.fbih_holidays, dt)
+        self.assertHolidayName(name, self.rs_holidays, dt)
+        self.assertHolidayName(name, self.bd_holidays, dt)
+        self.assertHolidayName(name, dt)
 
     def test_orthodox_easter(self):
         name = "Veliki Petak (Pravoslavni)"
@@ -142,10 +140,10 @@ class TestBosniaAndHerzegovina(TestCase):
             "2022-04-22",
             "2023-04-14",
         )
-        self.assertHolidaysName(name, self.fbih_holidays, dt)
-        self.assertHolidaysName(name, self.rs_holidays, dt)
-        self.assertHolidaysName(name, self.bd_holidays, dt)
-        self.assertHolidaysName(name, dt)
+        self.assertHolidayName(name, self.fbih_holidays, dt)
+        self.assertHolidayName(name, self.rs_holidays, dt)
+        self.assertHolidayName(name, self.bd_holidays, dt)
+        self.assertHolidayName(name, dt)
 
         name = "Vaskrs (Pravoslavni)"
         dt = (
@@ -157,8 +155,8 @@ class TestBosniaAndHerzegovina(TestCase):
             "2022-04-24",
             "2023-04-16",
         )
-        self.assertHolidaysName(name, self.fbih_holidays, dt)
-        self.assertHolidaysName(name, self.rs_holidays, dt)
+        self.assertHolidayName(name, self.fbih_holidays, dt)
+        self.assertHolidayName(name, self.rs_holidays, dt)
 
         name = "Uskrsni ponedjeljak (Pravoslavni)"
         dt = (
@@ -171,15 +169,15 @@ class TestBosniaAndHerzegovina(TestCase):
             "2022-04-25",
             "2023-04-17",
         )
-        self.assertHolidaysName(name, self.fbih_holidays, dt)
-        self.assertHolidaysName(name, self.rs_holidays, dt)
+        self.assertHolidayName(name, self.fbih_holidays, dt)
+        self.assertHolidayName(name, self.rs_holidays, dt)
 
     def test_labor_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Dan rada",
             (f"{year}-05-01" for year in range(2000, 2030)),
         )
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Drugi dan Dana rada",
             (f"{year}-05-02" for year in range(2000, 2030)),
         )
@@ -190,14 +188,21 @@ class TestBosniaAndHerzegovina(TestCase):
             "2016-05-03",
             "2022-05-03",
         )
-        self.assertHolidaysName(name, dt)
+        self.assertHolidayName(name, dt)
         self.assertNoNonObservedHoliday(dt)
 
     def test_victory_day(self):
         name = "Dan pobjede nad fašizmom"
-        dt = (f"{year}-05-09" for year in range(2000, 2030))
-        self.assertHolidaysName(name, self.fbih_holidays, dt)
-        self.assertHolidaysName(name, self.rs_holidays, dt)
+        self.assertHolidayName(
+            name,
+            self.fbih_holidays,
+            (f"{year}-05-09" for year in range(2000, 2030)),
+        )
+        self.assertHolidayName(
+            name,
+            self.rs_holidays,
+            (f"{year}-05-09" for year in range(2000, 2030)),
+        )
 
     def test_eid_al_fitr(self):
         dt = (
@@ -209,7 +214,7 @@ class TestBosniaAndHerzegovina(TestCase):
             "2021-05-13",
             "2023-04-21",
         )
-        self.assertHolidaysName("Ramazanski Bajram* (*estimated)", dt)
+        self.assertHolidayName("Ramazanski Bajram* (*estimated)", dt)
 
         name = "Drugi Dan Ramazanski Bajram* (*estimated)"
         dt = (
@@ -221,8 +226,8 @@ class TestBosniaAndHerzegovina(TestCase):
             "2021-05-14",
             "2023-04-22",
         )
-        self.assertHolidaysName(name, self.fbih_holidays, dt)
-        self.assertHolidaysName(name, self.rs_holidays, dt)
+        self.assertHolidayName(name, self.fbih_holidays, dt)
+        self.assertHolidayName(name, self.rs_holidays, dt)
 
     def test_eid_ul_adha(self):
         dt = (
@@ -237,7 +242,7 @@ class TestBosniaAndHerzegovina(TestCase):
             "2022-07-09",
             "2023-06-28",
         )
-        self.assertHolidaysName("Kurban Bajram* (*estimated)", dt)
+        self.assertHolidayName("Kurban Bajram* (*estimated)", dt)
 
         name = "Drugi Dan Kurban Bajram* (*estimated)"
         dt = (
@@ -250,33 +255,39 @@ class TestBosniaAndHerzegovina(TestCase):
             "2022-07-10",
             "2023-06-29",
         )
-        self.assertHolidaysName(name, self.fbih_holidays, dt)
-        self.assertHolidaysName(name, self.rs_holidays, dt)
+        self.assertHolidayName(name, self.fbih_holidays, dt)
+        self.assertHolidayName(name, self.rs_holidays, dt)
         self.assertIn(name, self.fbih_holidays.get("2007-01-01"))
         self.assertIn(name, self.rs_holidays.get("2007-01-01"))
 
     def test_dayton_agreement_day(self):
-        self.assertHolidaysName(
-            "Dan uspostave Opšteg okvirnog sporazuma za mir u "
-            "Bosni i Hercegovini",
+        self.assertHolidayName(
+            "Dan uspostave Opšteg okvirnog sporazuma za mir u Bosni i Hercegovini",
             self.rs_holidays,
             (f"{year}-11-21" for year in range(2000, 2030)),
         )
 
     def test_statehood_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Dan državnosti",
             self.fbih_holidays,
             (f"{year}-11-25" for year in range(2004, 2030)),
         )
 
     def test_catholic_christmas(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Božić (Katolički)",
             (f"{year}-12-25" for year in range(2000, 2030)),
         )
 
         name = "Badnji dan (Katolički)"
-        dt = (f"{year}-12-24" for year in range(2000, 2030))
-        self.assertHolidaysName(name, self.fbih_holidays, dt)
-        self.assertHolidaysName(name, self.rs_holidays, dt)
+        self.assertHolidayName(
+            name,
+            self.fbih_holidays,
+            (f"{year}-12-24" for year in range(2000, 2030)),
+        )
+        self.assertHolidayName(
+            name,
+            self.rs_holidays,
+            (f"{year}-12-24" for year in range(2000, 2030)),
+        )

@@ -115,9 +115,7 @@ class Andorra(HolidayBase, ChristianHolidays, InternationalHolidays):
     # Sant Julià de Lòria.
     def _add_subdiv_06_holidays(self):
         name = "Sant Julià de Lòria Annual Festival"
-        last_fri_of_july = _get_nth_weekday_from(
-            -1, FRI, date(self._year, JUL, 29)
-        )
+        last_fri_of_july = _get_nth_weekday_from(-1, FRI, date(self._year, JUL, 29))
         self._add_holiday(name, last_fri_of_july)
         self._add_holiday(name, last_fri_of_july + td(days=+1))
         self._add_holiday(name, last_fri_of_july + td(days=+2))
@@ -126,9 +124,7 @@ class Andorra(HolidayBase, ChristianHolidays, InternationalHolidays):
     # Andorra la Vella.
     def _add_subdiv_07_holidays(self):
         name = "Andorra la Vella Annual Festival"
-        first_sat_of_august = _get_nth_weekday_of_month(
-            1, SAT, AUG, self._year
-        )
+        first_sat_of_august = _get_nth_weekday_of_month(1, SAT, AUG, self._year)
         self._add_holiday(name, first_sat_of_august)
         self._add_holiday(name, first_sat_of_august + td(days=+1))
         self._add_holiday(name, first_sat_of_august + td(days=+2))

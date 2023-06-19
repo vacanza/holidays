@@ -13,8 +13,7 @@ from datetime import timedelta as td
 from datetime import date
 
 from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC, FRI, SUN
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC, FRI, SUN
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -150,9 +149,7 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
         def get_movable_acre(*args) -> date:
             dt = date(self._year, *args)
             if self._year >= 2009 and (
-                self._is_tuesday(dt)
-                or self._is_wednesday(dt)
-                or self._is_thursday(dt)
+                self._is_tuesday(dt) or self._is_wednesday(dt) or self._is_thursday(dt)
             ):
                 dt = _get_nth_weekday_from(1, FRI, dt)
             return dt

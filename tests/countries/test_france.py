@@ -76,16 +76,14 @@ class TestFrance(TestCase):
         self.assertNoHolidayName(name_old, France(years=1918))
         self.assertNoHolidayName(name_new, France(years=range(1919, 1948)))
         self.assertNoHolidayName(name_old, France(years=1948))
-        self.assertHolidaysName(name_old, "1919-05-01", "1947-05-01")
-        self.assertHolidaysName(name_new, "1948-05-01")
+        self.assertHolidayName(name_old, "1919-05-01", "1947-05-01")
+        self.assertHolidayName(name_new, "1948-05-01")
 
     def test_fete_de_la_victoire(self):
         self.assertHoliday(f"{year}-05-08" for year in range(1953, 1960))
         self.assertHoliday("1982-05-08")
         self.assertNoHoliday("1960-05-08", "1981-05-08")
-        self.assertNoHolidayName(
-            "Fête de la Victoire", France(years=range(1960, 1982))
-        )
+        self.assertNoHolidayName("Fête de la Victoire", France(years=range(1960, 1982)))
 
     def test_fete_nationale(self):
         self.assertHoliday("1880-07-14")
@@ -204,62 +202,54 @@ class TestFrance(TestCase):
             )
 
     def test_subdiv_deprecation(self):
-        self.assertDeprecatedSubdivisions(
-            "This subdivision is deprecated and will be removed"
-        )
+        self.assertDeprecatedSubdivisions("This subdivision is deprecated and will be removed")
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "Jour de l'an"),
-                ("2022-04-18", "Lundi de Pâques"),
-                ("2022-05-01", "Fête du Travail"),
-                ("2022-05-08", "Fête de la Victoire"),
-                ("2022-05-26", "Ascension"),
-                ("2022-06-06", "Lundi de Pentecôte"),
-                ("2022-07-14", "Fête nationale"),
-                ("2022-08-15", "Assomption"),
-                ("2022-11-01", "Toussaint"),
-                ("2022-11-11", "Armistice"),
-                ("2022-12-25", "Noël"),
-            )
+            ("2022-01-01", "Jour de l'an"),
+            ("2022-04-18", "Lundi de Pâques"),
+            ("2022-05-01", "Fête du Travail"),
+            ("2022-05-08", "Fête de la Victoire"),
+            ("2022-05-26", "Ascension"),
+            ("2022-06-06", "Lundi de Pentecôte"),
+            ("2022-07-14", "Fête nationale"),
+            ("2022-08-15", "Assomption"),
+            ("2022-11-01", "Toussaint"),
+            ("2022-11-11", "Armistice"),
+            ("2022-12-25", "Noël"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "New Year's Day"),
-                ("2022-04-18", "Easter Monday"),
-                ("2022-05-01", "Labor Day"),
-                ("2022-05-08", "Victory Day"),
-                ("2022-05-26", "Ascension Day"),
-                ("2022-06-06", "Whit Monday"),
-                ("2022-07-14", "National Day"),
-                ("2022-08-15", "Assumption Day"),
-                ("2022-11-01", "All Saints' Day"),
-                ("2022-11-11", "Armistice Day"),
-                ("2022-12-25", "Christmas Day"),
-            ),
             "en_US",
+            ("2022-01-01", "New Year's Day"),
+            ("2022-04-18", "Easter Monday"),
+            ("2022-05-01", "Labor Day"),
+            ("2022-05-08", "Victory Day"),
+            ("2022-05-26", "Ascension Day"),
+            ("2022-06-06", "Whit Monday"),
+            ("2022-07-14", "National Day"),
+            ("2022-08-15", "Assumption Day"),
+            ("2022-11-01", "All Saints' Day"),
+            ("2022-11-11", "Armistice Day"),
+            ("2022-12-25", "Christmas Day"),
         )
 
     def test_l10n_uk(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "Новий рік"),
-                ("2022-04-18", "Великодній понеділок"),
-                ("2022-05-01", "День Праці"),
-                ("2022-05-08", "День Перемоги"),
-                ("2022-05-26", "Вознесіння Господнє"),
-                ("2022-06-06", "День Святого Духа"),
-                ("2022-07-14", "Національне свято"),
-                ("2022-08-15", "Внебовзяття Пресвятої Діви Марії"),
-                ("2022-11-01", "День усіх святих"),
-                (
-                    "2022-11-11",
-                    "День перемирʼя (закінчення Першої світової війни)",
-                ),
-                ("2022-12-25", "Різдво Христове"),
-            ),
             "uk",
+            ("2022-01-01", "Новий рік"),
+            ("2022-04-18", "Великодній понеділок"),
+            ("2022-05-01", "День Праці"),
+            ("2022-05-08", "День Перемоги"),
+            ("2022-05-26", "Вознесіння Господнє"),
+            ("2022-06-06", "День Святого Духа"),
+            ("2022-07-14", "Національне свято"),
+            ("2022-08-15", "Внебовзяття Пресвятої Діви Марії"),
+            ("2022-11-01", "День усіх святих"),
+            (
+                "2022-11-11",
+                "День перемирʼя (закінчення Першої світової війни)",
+            ),
+            ("2022-12-25", "Різдво Христове"),
         )

@@ -13,8 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
-from holidays.constants import JAN, FEB, MAR, APR, JUN, JUL, SEP, OCT, NOV
-from holidays.constants import DEC, MON, TUE, WED
+from holidays.constants import JAN, FEB, MAR, APR, JUN, JUL, SEP, OCT, NOV, DEC, MON, TUE, WED
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -70,12 +69,12 @@ class NewZealand(HolidayBase, ChristianHolidays, InternationalHolidays):
             1 if self._is_friday(dt) or self._is_weekend(dt) else -1, MON, dt
         )
 
-    def _add_observed(self, dt: date) -> None:
+    def _add_observed(self, dt: date, days: int = +1) -> None:
         if self.observed and self._is_weekend(dt):
-            obs_date = _get_nth_weekday_from(1, MON, dt)
-            if self.get(obs_date):
-                obs_date += td(days=+1)
-            self._add_holiday("%s (Observed)" % self[dt], obs_date)
+            self._add_holiday(
+                "%s (Observed)" % self[dt],
+                dt + td(days=+2 if self._is_saturday(dt) else days),
+            )
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -100,11 +99,8 @@ class NewZealand(HolidayBase, ChristianHolidays, InternationalHolidays):
         super()._populate(year)
 
         # New Year's Day
-        jan_1 = self._add_new_years_day("New Year's Day")
-        jan_2 = self._add_new_years_day_two("Day after New Year's Day")
-
-        self._add_observed(jan_1)
-        self._add_observed(jan_2)
+        self._add_observed(self._add_new_years_day("New Year's Day"), days=+2)
+        self._add_observed(self._add_new_years_day_two("Day after New Year's Day"), days=+2)
 
         # Waitangi Day
         if year >= 1974:
@@ -125,11 +121,7 @@ class NewZealand(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Sovereign's Birthday
         if year >= 1902:
-            name = (
-                "Queen's Birthday"
-                if 1952 <= year <= 2022
-                else "King's Birthday"
-            )
+            name = "Queen's Birthday" if 1952 <= year <= 2022 else "King's Birthday"
             if year == 1952:
                 dt = date(year, JUN, 2)  # Elizabeth II
             elif year >= 1938:
@@ -192,12 +184,10 @@ class NewZealand(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday("Labour Day", dt)
 
         # Christmas Day
-        dec_25 = self._add_christmas_day("Christmas Day")
+        self._add_observed(self._add_christmas_day("Christmas Day"), days=+2)
 
         # Boxing Day
-        dec_26 = self._add_christmas_day_two("Boxing Day")
-        self._add_observed(dec_25)
-        self._add_observed(dec_26)
+        self._add_observed(self._add_christmas_day_two("Boxing Day"), days=+2)
 
         if self.subdiv == "Auckland":
             self._add_subdiv_auk_holidays()

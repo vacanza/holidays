@@ -57,80 +57,82 @@ msgid "建国記念の日"
 msgstr "Foundation Day"
 
 #. Emperor's Birthday.
-#: ./holidays/countries/japan.py:68 ./holidays/countries/japan.py:77
-#: ./holidays/countries/japan.py:164
+#: ./holidays/countries/japan.py:68 ./holidays/countries/japan.py:75
+#: ./holidays/countries/japan.py:158
 msgid "天皇誕生日"
 msgstr "Emperor's Birthday"
 
-#: ./holidays/countries/japan.py:72
+#. Vernal Equinox Day.
+#: ./holidays/countries/japan.py:71
 msgid "春分の日"
 msgstr "Vernal Equinox Day"
 
 #. Greenery Day.
-#: ./holidays/countries/japan.py:80 ./holidays/countries/japan.py:91
+#: ./holidays/countries/japan.py:78 ./holidays/countries/japan.py:89
 msgid "みどりの日"
 msgstr "Greenery Day"
 
 #. Showa Day.
-#: ./holidays/countries/japan.py:83
+#: ./holidays/countries/japan.py:81
 msgid "昭和の日"
 msgstr "Showa Day"
 
 #. Constitution Day.
-#: ./holidays/countries/japan.py:87
+#: ./holidays/countries/japan.py:85
 msgid "憲法記念日"
 msgstr "Constitution Day"
 
 #. Children's Day.
-#: ./holidays/countries/japan.py:94
+#: ./holidays/countries/japan.py:92
 msgid "こどもの日"
 msgstr "Children's Day"
 
 #. Marine Day.
-#: ./holidays/countries/japan.py:108
+#: ./holidays/countries/japan.py:104
 msgid "海の日"
 msgstr "Marine Day"
 
 #. Mountain Day.
-#: ./holidays/countries/japan.py:117
+#: ./holidays/countries/japan.py:113
 msgid "山の日"
 msgstr "Mountain Day"
 
 #. Respect for the Aged Day.
-#: ./holidays/countries/japan.py:123
+#: ./holidays/countries/japan.py:119
 msgid "敬老の日"
 msgstr "Respect for the Aged Day"
 
-#: ./holidays/countries/japan.py:132
+#. Autumnal Equinox Day.
+#: ./holidays/countries/japan.py:127
 msgid "秋分の日"
 msgstr "Autumnal Equinox"
 
 #. Physical Education Day.
-#: ./holidays/countries/japan.py:142
+#: ./holidays/countries/japan.py:136
 msgid "体育の日"
 msgstr "Physical Education Day"
 
 #. Sports Day.
-#: ./holidays/countries/japan.py:139
+#: ./holidays/countries/japan.py:133
 msgid "スポーツの日"
 msgstr "Sports Day"
 
 #. Culture Day.
-#: ./holidays/countries/japan.py:157
+#: ./holidays/countries/japan.py:151
 msgid "文化の日"
 msgstr "Culture Day"
 
 #. Labor Thanksgiving Day.
-#: ./holidays/countries/japan.py:160
+#: ./holidays/countries/japan.py:154
 msgid "勤労感謝の日"
 msgstr "Labor Thanksgiving Day"
 
 #. Substitute Holiday.
-#: ./holidays/countries/japan.py:179
+#: ./holidays/countries/japan.py:173
 msgid "振替休日"
 msgstr "Substitute Holiday"
 
 #. National Holiday.
-#: ./holidays/countries/japan.py:190
+#: ./holidays/countries/japan.py:184
 msgid "国民の休日"
 msgstr "National Holiday"

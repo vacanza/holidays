@@ -43,9 +43,7 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     def __init__(self, *args, **kwargs):
         InternationalHolidays.__init__(self)
-        IslamicHolidays.__init__(
-            self, calendar=UnitedArabEmiratesIslamicCalendar()
-        )
+        IslamicHolidays.__init__(self, calendar=UnitedArabEmiratesIslamicCalendar())
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -56,9 +54,7 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays):
 
         # Commemoration Day.
         if year >= 2015:
-            self._add_holiday(
-                "Commemoration Day", *((DEC, 1) if year >= 2019 else (NOV, 30))
-            )
+            self._add_holiday("Commemoration Day", *((DEC, 1) if year >= 2019 else (NOV, 30)))
 
         # National Day.
         self._add_holiday("National Day", DEC, 2)
@@ -83,15 +79,11 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays):
 
         # Leilat al-Miraj.
         if year <= 2018:  # The UAE government removed this starting 2019.
-            self._add_isra_and_miraj_day(
-                "Leilat al-Miraj - The Prophet's ascension"
-            )
+            self._add_isra_and_miraj_day("Leilat al-Miraj - The Prophet's ascension")
 
         # Prophet Muhammad's Birthday.
         if year <= 2019:  # The UAE government removed this starting 2020.
-            self._add_mawlid_day(
-                "Mawlud al-Nabi - Prophet Mohammad's Birthday"
-            )
+            self._add_mawlid_day("Mawlud al-Nabi - Prophet Mohammad's Birthday")
 
 
 class AE(UnitedArabEmirates):
@@ -104,33 +96,33 @@ class ARE(UnitedArabEmirates):
 
 class UnitedArabEmiratesIslamicCalendar(_CustomIslamicCalendar):
     EID_AL_ADHA_DATES = {
-        2017: ((SEP, 1),),
-        2018: ((AUG, 21),),
-        2019: ((AUG, 11),),
-        2020: ((JUL, 31),),
+        2017: (SEP, 1),
+        2018: (AUG, 21),
+        2019: (AUG, 11),
+        2020: (JUL, 31),
     }
 
     EID_AL_FITR_DATES = {
-        2017: ((JUN, 25),),
-        2018: ((JUN, 14),),
-        2019: ((JUN, 3),),
-        2020: ((MAY, 24),),
+        2017: (JUN, 25),
+        2018: (JUN, 14),
+        2019: (JUN, 3),
+        2020: (MAY, 24),
     }
 
     HIJRI_NEW_YEAR_DATES = {
-        2017: ((SEP, 22),),
-        2018: ((SEP, 11),),
-        2019: ((AUG, 31),),
-        2020: ((AUG, 23),),
+        2017: (SEP, 22),
+        2018: (SEP, 11),
+        2019: (AUG, 31),
+        2020: (AUG, 23),
     }
 
     ISRA_AND_MIRAJ_DATES = {
-        2017: ((APR, 23),),
-        2018: ((APR, 13),),
+        2017: (APR, 23),
+        2018: (APR, 13),
     }
 
     MAWLID_DATES = {
-        2017: ((NOV, 30),),
-        2018: ((NOV, 19),),
-        2019: ((NOV, 9),),
+        2017: (NOV, 30),
+        2018: (NOV, 19),
+        2019: (NOV, 9),
     }

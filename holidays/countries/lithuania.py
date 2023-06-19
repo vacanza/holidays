@@ -44,9 +44,7 @@ class Lithuania(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Day of Restoration of Independence of Lithuania
         # (from the Soviet Union, 1990).
         if year >= 1990:
-            self._add_holiday(
-                "Lietuvos nepriklausomybės atkūrimo diena", MAR, 11
-            )
+            self._add_holiday("Lietuvos nepriklausomybės atkūrimo diena", MAR, 11)
 
         # Easter.
         self._add_easter_sunday("Velykos")
@@ -58,14 +56,10 @@ class Lithuania(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_labor_day("Tarptautinė darbo diena")
 
         # Mother's day. First Sunday in May.
-        self._add_holiday(
-            "Motinos diena", _get_nth_weekday_of_month(1, SUN, MAY, year)
-        )
+        self._add_holiday("Motinos diena", _get_nth_weekday_of_month(1, SUN, MAY, year))
 
         # Fathers's day. First Sunday in June.
-        self._add_holiday(
-            "Tėvo diena", _get_nth_weekday_of_month(1, SUN, JUN, year)
-        )
+        self._add_holiday("Tėvo diena", _get_nth_weekday_of_month(1, SUN, JUN, year))
 
         # St. John's Day (Christian name).
         # Day of Dew (original pagan name).
@@ -81,9 +75,7 @@ class Lithuania(HolidayBase, ChristianHolidays, InternationalHolidays):
             )
 
         # Assumption Day.
-        self._add_assumption_of_mary_day(
-            "Žolinė (Švč. Mergelės Marijos ėmimo į dangų diena)"
-        )
+        self._add_assumption_of_mary_day("Žolinė (Švč. Mergelės Marijos ėmimo į dangų diena)")
 
         # All Saints' Day.
         self._add_all_saints_day("Visų šventųjų diena (Vėlinės)")

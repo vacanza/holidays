@@ -110,9 +110,7 @@ class ReleaseNotesGenerator:
         def custom_order(pr):
             pr = re.findall(r"^(.*) \(#\d+ .*\)$", pr)[0]
 
-            if re.findall(r"^(Introduce|Refactor)", pr) or re.findall(
-                r"Add .* support", pr
-            ):
+            if re.findall(r"^(Introduce|Refactor)", pr) or re.findall(r"Add .* support", pr):
                 weight = 10
             elif re.findall(r"^Add .* holidays$", pr):
                 weight = 20
@@ -133,12 +131,7 @@ class ReleaseNotesGenerator:
         """Add pull request information to the release notes dict."""
         author = pull_request.user.login if pull_request.user else None
         if author in IGNORED_CONTRIBUTORS:
-            print(
-                (
-                    f"Skipping #{pull_request.number} {pull_request.title}"
-                    f" by {author}"
-                )
-            )
+            print((f"Skipping #{pull_request.number} {pull_request.title}" f" by {author}"))
             return None
 
         # Skip failed release attempt PRs, version upgrades.
@@ -157,12 +150,9 @@ class ReleaseNotesGenerator:
 
         if author in contributors:
             contributors.remove(author)
-        contributors = (
-            f"@{c}" for c in [author] + sorted(contributors, key=str.lower)
-        )
+        contributors = (f"@{c}" for c in [author] + sorted(contributors, key=str.lower))
         self.pull_requests[pull_request.number] = (
-            f"{pull_request.title} (#{pull_request.number} by "
-            f"{', '.join(contributors)})"
+            f"{pull_request.title} (#{pull_request.number} by " f"{', '.join(contributors)})"
         )
 
     def generate_release_notes(self):
@@ -197,9 +187,7 @@ class ReleaseNotesGenerator:
             if self.args.verbose:
                 messages = [f"Fetching PR #{pull_request.number}"]
                 if pull_request.number in self.args.author_only:
-                    messages.append(
-                        "(keeping PR author as a sole contributor)"
-                    )
+                    messages.append("(keeping PR author as a sole contributor)")
                 print(" ".join(messages))
 
             self.add_pull_request(pull_request)
@@ -226,15 +214,11 @@ class ReleaseNotesGenerator:
             if self.args.verbose:
                 messages = [f"Fetching PR #{pull_request_number}"]
                 if pull_request_number in self.args.author_only:
-                    messages.append(
-                        "(keeping PR author as a sole contributor)"
-                    )
+                    messages.append("(keeping PR author as a sole contributor)")
                 print(" ".join(messages))
 
             try:
-                self.add_pull_request(
-                    self.remote_repo.get_pull(pull_request_number)
-                )
+                self.add_pull_request(self.remote_repo.get_pull(pull_request_number))
             # 3rd party contributions to forks.
             except UnknownObjectException:
                 pass

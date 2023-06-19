@@ -1,0 +1,96 @@
+# Brunei holidays en_US localization.
+# Authors: PPsyrius <ppsyrius@ppsyrius.dev>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.27\n"
+"POT-Creation-Date: 2023-03-02 00:37+0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Python Holidays Translation Team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. Sultan Hassanal Bolkiah's Golden Jubilee celebration
+#: ./holidays/countries/brunei.py:67
+msgid "Jubli Emas Sultan Hassanal Bolkiah"
+msgstr "Sultan Hassanal Bolkiah's Golden Jubilee"
+
+#: ./holidays/countries/brunei.py:62
+#, c-format
+msgid "%s* (*anggaran)"
+msgstr "%s* (*estimated)"
+
+#: ./holidays/countries/brunei.py:90 ./holidays/countries/brunei.py:200
+#, c-format
+msgid "%s - Diperhatikan"
+msgstr "%s (Observed)"
+
+#. New Year's Day
+#: ./holidays/countries/brunei.py:98
+msgid "Awal Tahun Masihi"
+msgstr "New Year's Day"
+
+#. Lunar New Year
+#: ./holidays/countries/brunei.py:104
+msgid "Tahun Baru Cina"
+msgstr "Lunar New Year"
+
+#. National Day
+#: ./holidays/countries/brunei.py:111
+msgid "Hari Kebangsaan"
+msgstr "National Day"
+
+#. Armed Forces Day
+#: ./holidays/countries/brunei.py:121
+msgid "Hari Angkatan Bersenjata Diraja Brunei"
+msgstr "Armed Forces Day"
+
+#. Sultan Hassanal Bolkiah's Birthday
+#: ./holidays/countries/brunei.py:134
+msgid "Hari Keputeraan KDYMM Sultan Brunei"
+msgstr "Sultan Hassanal Bolkiah's Birthday"
+
+#. Christmas Day
+#: ./holidays/countries/brunei.py:144
+msgid "Hari Natal"
+msgstr "Christmas Day"
+
+#. Isra Mi'raj
+#: ./holidays/countries/brunei.py:153
+msgid "Israk dan Mikraj"
+msgstr "Isra Mi'raj"
+
+#. First Day of Ramadan
+#: ./holidays/countries/brunei.py:160
+msgid "Hari Pertama Berpuasa"
+msgstr "First Day of Ramadan"
+
+#. Anniversary of the revelation of the Quran
+#: ./holidays/countries/brunei.py:167
+msgid "Hari Nuzul Al-Quran"
+msgstr "Anniversary of the revelation of the Quran"
+
+#. Eid al-Fitr
+#: ./holidays/countries/brunei.py:182
+msgid "Hari Raya Aidil Fitri"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Adha
+#: ./holidays/countries/brunei.py:213
+msgid "Hari Raya Aidil Adha"
+msgstr "Eid al-Adha"
+
+#. Islamic New Year
+#: ./holidays/countries/brunei.py:220
+msgid "Awal Tahun Hijrah"
+msgstr "Islamic New Year"
+
+#. Birth of the Prophet
+#: ./holidays/countries/brunei.py:227
+msgid "Maulidur Rasul"
+msgstr "Birth of the Prophet"

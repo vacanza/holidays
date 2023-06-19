@@ -26,7 +26,7 @@ class TestIndonesia(TestCase):
 
     def test_lunar_new_year(self):
         name = "Tahun Baru Imlek"
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name,
             "2005-02-09",
             "2006-01-30",
@@ -51,7 +51,7 @@ class TestIndonesia(TestCase):
 
     def test_day_of_silence(self):
         name = "Hari Suci Nyepi"
-        self.assertHolidaysName(
+        self.assertHolidayName(
             name,
             "2009-03-26",
             "2014-03-31",
@@ -66,9 +66,7 @@ class TestIndonesia(TestCase):
         self.assertHoliday(f"{year}-05-01" for year in range(1953, 1969))
         self.assertHoliday(f"{year}-05-01" for year in range(2014, 2050))
         self.assertNoHoliday("1952-05-01", "1969-05-01", "2013-05-01")
-        self.assertNoHolidayName(
-            "Hari Buruh Internasional", Indonesia(years=(1952, 1969, 2013))
-        )
+        self.assertNoHolidayName("Hari Buruh Internasional", Indonesia(years=(1952, 1969, 2013)))
 
     def test_pancasila_day(self):
         self.assertHoliday(f"{year}-06-01" for year in range(2017, 2050))

@@ -10,17 +10,14 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 from gettext import gettext as tr
 
-from dateutil.easter import easter
-
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, DEC
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, DEC
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Paraguay(HolidayBase):
+class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://www.ghp.com.py/news/feriados-nacionales-del-ano-2019-en-paraguay
     https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_feriados_en_Paraguay
@@ -37,10 +34,10 @@ class Paraguay(HolidayBase):
     special_holidays = {
         # public holiday for business purposes, in view of
         # the recently increased risk of Dengue fever
-        2007: ((JAN, 29, public_holiday),),
+        2007: (JAN, 29, public_holiday),
         # public sector holiday to celebrate Paraguay's
         # football team's qualification for the 2010 World Cup
-        2009: ((SEP, 10, public_holiday),),
+        2009: (SEP, 10, public_holiday),
         2010: (
             # public holiday to coincide with the Paraguay-Italy
             # game of the current World Cup
@@ -143,15 +140,20 @@ class Paraguay(HolidayBase):
     }
     supported_languages = ("en_US", "es", "uk")
 
-    def _add_observed_holiday(self, name: str, dt: date) -> None:
-        if self.observed or not self._is_weekend(dt):
-            super()._add_holiday(name, dt)
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
+    def _move_holiday(self, dt: date) -> None:
+        if not self.observed and self._is_weekend(dt):
+            self.pop(dt)
 
     def _populate(self, year):
         super()._populate(year)
 
         # New Year's Day.
-        self._add_observed_holiday(tr("Año Nuevo"), date(year, JAN, 1))
+        self._move_holiday(self._add_new_years_day(tr("Año Nuevo")))
 
         dates_obs = {
             2013: (MAR, 4),
@@ -159,51 +161,51 @@ class Paraguay(HolidayBase):
             2018: (FEB, 26),
             2022: (FEB, 28),
         }
-        # Patriots Day.
         self._add_holiday(
+            # Patriots Day.
             tr("Día de los Héroes de la Patria"),
-            date(year, *dates_obs.get(year, (MAR, 1))),
+            *dates_obs.get(year, (MAR, 1)),
         )
 
-        # Holy Week
-        easter_date = easter(year)
         # Maundy Thursday.
-        self._add_holiday(tr("Jueves Santo"), easter_date + td(days=-3))
+        self._add_holy_thursday(tr("Jueves Santo"))
+
         # Good Friday.
-        self._add_holiday(tr("Viernes Santo"), easter_date + td(days=-2))
+        self._add_good_friday(tr("Viernes Santo"))
+
         # Easter Day.
-        self._add_observed_holiday(tr("Día de Pascuas"), easter_date)
+        self._move_holiday(self._add_easter_sunday(tr("Día de Pascuas")))
 
         # Labour Day.
-        self._add_observed_holiday(
-            tr("Día del Trabajador"), date(year, MAY, 1)
-        )
+        self._move_holiday(self._add_labor_day(tr("Día del Trabajador")))
 
         # Independence Day.
         name = tr("Día de la Independencia Nacional")
-        if year == 2021:
-            self._add_holiday(name, date(year, MAY, 14))
-            self._add_holiday(name, date(year, MAY, 15))
-        elif year >= 2012:
-            self._add_observed_holiday(name, date(year, MAY, 14))
-            self._add_observed_holiday(name, date(year, MAY, 15))
-        else:
-            self._add_observed_holiday(name, date(year, MAY, 15))
+        if year >= 2012:
+            self._move_holiday(self._add_holiday(name, MAY, 14))
+        may_15 = self._add_holiday(name, MAY, 15)
+        if year != 2021:
+            self._move_holiday(may_15)
 
         dates_obs = {
             2014: (JUN, 16),
             2018: (JUN, 11),
         }
-        self._add_observed_holiday(
-            # Chaco Armistice Day.
-            tr("Día de la Paz del Chaco"),
-            date(year, *dates_obs.get(year, (JUN, 12))),
+        self._move_holiday(
+            self._add_holiday(
+                # Chaco Armistice Day.
+                tr("Día de la Paz del Chaco"),
+                *dates_obs.get(year, (JUN, 12)),
+            ),
         )
 
-        self._add_observed_holiday(
-            # Asuncion Foundation's Day.
-            tr("Día de la Fundación de Asunción"),
-            date(year, AUG, 15),
+        self._move_holiday(
+            self._add_holiday(
+                # Asuncion Foundation's Day.
+                tr("Día de la Fundación de Asunción"),
+                AUG,
+                15,
+            ),
         )
 
         if year >= 2000:
@@ -214,20 +216,25 @@ class Paraguay(HolidayBase):
                 2021: (SEP, 27),
                 2022: (OCT, 3),
             }
-            self._add_observed_holiday(
-                # Boqueron Battle Day.
-                tr("Día de la Batalla de Boquerón"),
-                date(year, *dates_obs.get(year, (SEP, 29))),
+            self._move_holiday(
+                self._add_holiday(
+                    # Boqueron Battle Day.
+                    tr("Día de la Batalla de Boquerón"),
+                    *dates_obs.get(year, (SEP, 29)),
+                ),
             )
 
-        self._add_observed_holiday(
-            # Caacupe Virgin Day.
-            tr("Día de la Virgen de Caacupé"),
-            date(year, DEC, 8),
+        self._move_holiday(
+            self._add_holiday(
+                # Caacupe Virgin Day.
+                tr("Día de la Virgen de Caacupé"),
+                DEC,
+                8,
+            )
         )
 
         # Christmas.
-        self._add_holiday(tr("Navidad"), date(year, DEC, 25))
+        self._add_christmas_day(tr("Navidad"))
 
 
 class PY(Paraguay):

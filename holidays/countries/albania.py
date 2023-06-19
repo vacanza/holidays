@@ -14,13 +14,10 @@ from datetime import timedelta as td
 from holidays.calendars import JULIAN_CALENDAR
 from holidays.constants import JAN, MAR, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, IslamicHolidays
-from holidays.holiday_groups import InternationalHolidays
+from holidays.holiday_groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 
 
-class Albania(
-    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
-):
+class Albania(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_Albania
@@ -56,22 +53,16 @@ class Albania(
 
         # Easter.
         observed_dates.add(self._add_easter_sunday("Catholic Easter"))
-        observed_dates.add(
-            self._add_easter_sunday("Orthodox Easter", JULIAN_CALENDAR)
-        )
+        observed_dates.add(self._add_easter_sunday("Orthodox Easter", JULIAN_CALENDAR))
 
         # May Day.
         observed_dates.add(self._add_labor_day("May Day"))
 
         # Mother Teresa Day.
         if 2004 <= year <= 2017:
-            observed_dates.add(
-                self._add_holiday("Mother Teresa Beatification Day", OCT, 19)
-            )
+            observed_dates.add(self._add_holiday("Mother Teresa Beatification Day", OCT, 19))
         elif year >= 2018:
-            observed_dates.add(
-                self._add_holiday("Mother Teresa Canonization Day", SEP, 5)
-            )
+            observed_dates.add(self._add_holiday("Mother Teresa Canonization Day", SEP, 5))
 
         # Independence Day.
         observed_dates.add(self._add_holiday("Independence Day", NOV, 28))
@@ -100,9 +91,7 @@ class Albania(
                 while self._is_weekend(obs_date) or obs_date in observed_dates:
                     obs_date += td(days=+1)
                 for hol_name in self.get_list(hol_date):
-                    observed_dates.add(
-                        self._add_holiday("%s (Observed)" % hol_name, obs_date)
-                    )
+                    observed_dates.add(self._add_holiday("%s (Observed)" % hol_name, obs_date))
 
             # observed holidays special cases
             if year == 2007:

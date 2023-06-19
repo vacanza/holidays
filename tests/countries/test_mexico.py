@@ -52,9 +52,7 @@ class TestMexico(TestCase):
     def test_benito_juarez(self):
         self.assertHoliday(f"{year}-03-21" for year in range(1917, 2007))
         self.assertNoHoliday(f"{year}-03-21" for year in range(1900, 1917))
-        self.assertNoHolidayName(
-            "Natalicio de Benito Juárez", range(1900, 1917)
-        )
+        self.assertNoHolidayName("Natalicio de Benito Juárez", range(1900, 1917))
         self.assertHoliday(
             "2007-03-19",
             "2008-03-17",
@@ -122,9 +120,7 @@ class TestMexico(TestCase):
             "2024-12-01",
         )
         self.assertNoHoliday(
-            f"{year}-12-01"
-            for year in range(1970, 2050)
-            if (year - 1970) % 6 > 0
+            f"{year}-12-01" for year in range(1970, 2050) if (year - 1970) % 6 > 0
         )
         name = "Transmisión del Poder Ejecutivo Federal"
         self.assertNoHolidayName(name, range(1900, 1970))
@@ -137,41 +133,35 @@ class TestMexico(TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "Año Nuevo"),
-                ("2022-02-07", "Día de la Constitución"),
-                ("2022-03-21", "Natalicio de Benito Juárez"),
-                ("2022-05-01", "Día del Trabajo"),
-                ("2022-09-16", "Día de la Independencia"),
-                ("2022-11-21", "Día de la Revolución"),
-                ("2022-12-25", "Navidad"),
-            )
+            ("2022-01-01", "Año Nuevo"),
+            ("2022-02-07", "Día de la Constitución"),
+            ("2022-03-21", "Natalicio de Benito Juárez"),
+            ("2022-05-01", "Día del Trabajo"),
+            ("2022-09-16", "Día de la Independencia"),
+            ("2022-11-21", "Día de la Revolución"),
+            ("2022-12-25", "Navidad"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "New Year's Day"),
-                ("2022-02-07", "Constitution Day"),
-                ("2022-03-21", "Benito Juárez's birthday"),
-                ("2022-05-01", "Labour Day"),
-                ("2022-09-16", "Independence Day"),
-                ("2022-11-21", "Revolution Day"),
-                ("2022-12-25", "Christmas Day"),
-            ),
             "en_US",
+            ("2022-01-01", "New Year's Day"),
+            ("2022-02-07", "Constitution Day"),
+            ("2022-03-21", "Benito Juárez's birthday"),
+            ("2022-05-01", "Labour Day"),
+            ("2022-09-16", "Independence Day"),
+            ("2022-11-21", "Revolution Day"),
+            ("2022-12-25", "Christmas Day"),
         )
 
     def test_l10n_uk(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "Новий рік"),
-                ("2022-02-07", "День Конституції"),
-                ("2022-03-21", "Річниця Беніто Хуареса"),
-                ("2022-05-01", "День праці"),
-                ("2022-09-16", "День незалежності"),
-                ("2022-11-21", "День революції"),
-                ("2022-12-25", "Різдво Христове"),
-            ),
             "uk",
+            ("2022-01-01", "Новий рік"),
+            ("2022-02-07", "День Конституції"),
+            ("2022-03-21", "Річниця Беніто Хуареса"),
+            ("2022-05-01", "День праці"),
+            ("2022-09-16", "День незалежності"),
+            ("2022-11-21", "День революції"),
+            ("2022-12-25", "Різдво Христове"),
         )

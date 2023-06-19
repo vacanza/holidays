@@ -13,7 +13,7 @@ from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.calendars import GREGORIAN_CALENDAR, JULIAN_CALENDAR
-from holidays.constants import JUN, AUG
+from holidays.constants import AUG
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -73,10 +73,7 @@ class Moldova(HolidayBase, ChristianHolidays, InternationalHolidays):
         may_9 = self._add_world_war_two_victory_day(
             # Victory Day and Commemoration of the heroes fallen for
             # Independence of Fatherland.
-            tr(
-                "Ziua Victoriei şi a comemorării eroilor căzuţi pentru "
-                "Independenţa Patriei"
-            )
+            tr("Ziua Victoriei şi a comemorării eroilor căzuţi pentru Independenţa Patriei")
         )
 
         if year >= 2017:
@@ -85,7 +82,7 @@ class Moldova(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 2016:
             # International Children's Day
-            self._add_holiday(tr("Ziua Ocrotirii Copilului"), JUN, 1)
+            self._add_childrens_day(tr("Ziua Ocrotirii Copilului"))
 
         # Republic of Moldova Independence Day
         self._add_holiday(tr("Ziua independenţei Republicii Moldova"), AUG, 27)

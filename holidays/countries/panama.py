@@ -12,13 +12,12 @@
 from datetime import date
 from datetime import timedelta as td
 
-from dateutil.easter import easter
-
-from holidays.constants import JAN, MAY, NOV, DEC
+from holidays.constants import JAN, NOV, DEC
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Panama(HolidayBase):
+class Panama(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_Panama
@@ -27,55 +26,57 @@ class Panama(HolidayBase):
 
     country = "PA"
 
-    def _populate(self, year: int) -> None:
-        def _add_with_observed(hol_date: date, hol_name: str) -> None:
-            self[hol_date] = hol_name
-            if self.observed and self._is_sunday(hol_date):
-                self[hol_date + td(days=+1)] = f"{hol_name} (Observed)"
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
+    def _add_observed(self, dt: date) -> None:
+        if self.observed and self._is_sunday(dt):
+            self._add_holiday("%s (Observed)" % self[dt], dt + td(days=+1))
+
+    def _populate(self, year):
         super()._populate(year)
 
         # New Year's Day
-        _add_with_observed(date(year, JAN, 1), "New Year's Day")
+        self._add_observed(self._add_new_years_day("New Year's Day"))
 
         # Martyrs' Day
-        _add_with_observed(date(year, JAN, 9), "Martyrs' Day")
-
-        easter_date = easter(year)
+        self._add_observed(self._add_holiday("Martyrs' Day", JAN, 9))
 
         # Carnival
-        self[easter_date + td(days=-47)] = "Carnival"
+        self._add_carnival_tuesday("Carnival")
 
         # Good Friday
-        self[easter_date + td(days=-2)] = "Good Friday"
+        self._add_good_friday("Good Friday")
 
         # Labour Day
-        _add_with_observed(date(year, MAY, 1), "Labour Day")
+        self._add_observed(self._add_labor_day("Labour Day"))
 
         # Separation Day
-        self[date(year, NOV, 3)] = "Separation Day"
+        self._add_holiday("Separation Day", NOV, 3)
 
         # National Symbols Day
-        self[date(year, NOV, 4)] = "National Symbols Day"
+        self._add_holiday("National Symbols Day", NOV, 4)
 
         # Colon Day
-        self[date(year, NOV, 5)] = "Colon Day"
+        self._add_holiday("Colon Day", NOV, 5)
 
         # Los Santos Uprising Day
-        self[date(year, NOV, 10)] = "Los Santos Uprising Day"
+        self._add_holiday("Los Santos Uprising Day", NOV, 10)
 
         # Independence Day
-        _add_with_observed(date(year, NOV, 28), "Independence Day")
+        self._add_observed(self._add_holiday("Independence Day", NOV, 28))
 
         # Mother's Day
-        _add_with_observed(date(year, DEC, 8), "Mother's Day")
+        self._add_observed(self._add_holiday("Mother's Day", DEC, 8))
 
         # National Mourning Day
         if year >= 2022:
-            _add_with_observed(date(year, DEC, 20), "National Mourning Day")
+            self._add_observed(self._add_holiday("National Mourning Day", DEC, 20))
 
         # Christmas Day
-        _add_with_observed(date(year, DEC, 25), "Christmas Day")
+        self._add_observed(self._add_christmas_day("Christmas Day"))
 
 
 class PA(Panama):

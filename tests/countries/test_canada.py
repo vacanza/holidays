@@ -18,9 +18,7 @@ class TestCanada(TestCase):
     def setUpClass(cls):
         years = range(1900, 2050)
         super().setUpClass(Canada, years=years)
-        cls.prov_hols = {
-            prov: CA(subdiv=prov, years=years) for prov in CA.subdivisions
-        }
+        cls.prov_hols = {prov: CA(subdiv=prov, years=years) for prov in CA.subdivisions}
 
     def test_country_aliases(self):
         self.assertCountryAliases(Canada, CA, CAN)
@@ -91,7 +89,7 @@ class TestCanada(TestCase):
             "2018-02-19",
         )
         self.assertHoliday(dt)
-        self.assertHoliday(ab_holidays)
+        self.assertHoliday(ab_holidays, dt)
         self.assertNoHoliday(bc_holidays, dt)
         self.assertHoliday(mb_holidays, dt)
         self.assertHoliday(sk_holidays, dt)
@@ -108,8 +106,8 @@ class TestCanada(TestCase):
         self.assertHoliday(bc_holidays, dt)
         self.assertNoHoliday(mb_holidays, dt)
         self.assertNoHoliday(sk_holidays, dt)
-        self.assertHolidaysName("Louis Riel Day", mb_holidays, "2014-02-17")
-        self.assertHolidaysName("Heritage Day", ns_holidays, "2015-02-16")
+        self.assertHolidayName("Louis Riel Day", mb_holidays, "2014-02-17")
+        self.assertHolidayName("Heritage Day", ns_holidays, "2015-02-16")
 
     def test_st_patricks_day(self):
         nl_holidays = self.prov_hols["NL"]
@@ -183,7 +181,7 @@ class TestCanada(TestCase):
                 self.assertHoliday(holidays, dt)
 
     def test_national_patriots_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "National Patriots' Day",
             self.prov_hols["QC"],
             "2010-05-24",
@@ -197,21 +195,15 @@ class TestCanada(TestCase):
         nt_holidays = self.prov_hols["NT"]
         self.assertNoHoliday(nt_holidays, "1995-06-21")
         self.assertNoHoliday(f"{year}-06-21" for year in range(1996, 2050))
-        self.assertHoliday(
-            nt_holidays, (f"{year}-06-21" for year in range(1996, 2050))
-        )
+        self.assertHoliday(nt_holidays, (f"{year}-06-21" for year in range(1996, 2050)))
 
     def test_st_jean_baptiste_day(self):
         qc_holidays = self.prov_hols["QC"]
         self.assertNoHoliday(qc_holidays, "1924-06-24")
         self.assertNoHoliday(f"{year}-06-24" for year in range(1925, 2050))
-        self.assertHoliday(
-            qc_holidays, (f"{year}-06-24" for year in range(1925, 2050))
-        )
+        self.assertHoliday(qc_holidays, (f"{year}-06-24" for year in range(1925, 2050)))
         self.assertHoliday(qc_holidays, "2001-06-25")
-        self.assertNoNonObservedHoliday(
-            Canada(subdiv="QC", observed=False), "2001-06-25"
-        )
+        self.assertNoNonObservedHoliday(Canada(subdiv="QC", observed=False), "2001-06-25")
 
     def test_discovery_day(self):
         nl_holidays = self.prov_hols["NL"]
@@ -250,13 +242,9 @@ class TestCanada(TestCase):
         self.assertNoHoliday(nu_holidays, "1999-07-09", "2000-07-09")
         self.assertHoliday(nu_holidays, "2000-04-01")
         self.assertNoHoliday(f"{year}-07-09" for year in range(2001, 2050))
-        self.assertHoliday(
-            nu_holidays, (f"{year}-07-09" for year in range(2001, 2050))
-        )
+        self.assertHoliday(nu_holidays, (f"{year}-07-09" for year in range(2001, 2050)))
         self.assertHoliday(nu_holidays, "2017-07-10")
-        self.assertNoNonObservedHoliday(
-            Canada(subdiv="NU", observed=False), "2017-07-10"
-        )
+        self.assertNoNonObservedHoliday(Canada(subdiv="NU", observed=False), "2017-07-10")
 
     def test_civic_holiday_bc(self):
         bc_holidays = self.prov_hols["BC"]
@@ -285,8 +273,8 @@ class TestCanada(TestCase):
         self.assertNoHoliday(mb_holidays, "1899-08-07")
         old_name = "Civic Holiday"
         new_name = "Terry Fox Day"
-        self.assertHolidaysName(old_name, mb_holidays, "2014-08-04")
-        self.assertHolidaysName(new_name, mb_holidays, "2015-08-03")
+        self.assertHolidayName(old_name, mb_holidays, "2014-08-04")
+        self.assertHolidayName(new_name, mb_holidays, "2015-08-03")
         self.assertNoHolidayName(old_name, mb_holidays, 2015)
         self.assertNoHolidayName(new_name, mb_holidays, 2014)
 
@@ -369,30 +357,20 @@ class TestCanada(TestCase):
         self.assertNoHoliday(ab_holidays, "1930-11-11")
 
         self.assertNoHoliday(f"{year}-11-11" for year in range(1931, 2050))
-        self.assertHoliday(
-            ab_holidays, (f"{year}-11-11" for year in range(1931, 2050))
-        )
-        self.assertHoliday(
-            nl_holidays, (f"{year}-11-11" for year in range(1931, 2050))
-        )
+        self.assertHoliday(ab_holidays, (f"{year}-11-11" for year in range(1931, 2050)))
+        self.assertHoliday(nl_holidays, (f"{year}-11-11" for year in range(1931, 2050)))
 
         self.assertNoHoliday(ab_holidays, "2007-11-12")
         self.assertHoliday(nl_holidays, "2007-11-12")
-        self.assertNoNonObservedHoliday(
-            Canada(subdiv="AB", observed=False), "2007-11-12"
-        )
-        self.assertNoNonObservedHoliday(
-            Canada(subdiv="NL", observed=False), "2007-11-12"
-        )
+        self.assertNoNonObservedHoliday(Canada(subdiv="AB", observed=False), "2007-11-12")
+        self.assertNoNonObservedHoliday(Canada(subdiv="NL", observed=False), "2007-11-12")
 
     def test_christmas_day(self):
         self.assertHoliday(f"{year}-12-25" for year in range(1900, 2050))
         self.assertHoliday("2010-12-27", "2011-12-27")
         self.assertNoNonObservedHoliday("2010-12-27", "2011-12-27")
-        self.assertNotIn(
-            "Christmas Day (Observed)", self.holidays["2011-12-26"]
-        )
-        self.assertHolidaysName("Christmas Day (Observed)", "2011-12-27")
+        self.assertNotIn("Christmas Day (Observed)", self.holidays["2011-12-26"])
+        self.assertHolidayName("Christmas Day (Observed)", "2011-12-27")
 
     def test_boxing_day(self):
         self.assertHoliday(f"{year}-12-26" for year in range(1900, 2050))
@@ -408,79 +386,71 @@ class TestCanada(TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "New Year's Day"),
-                ("2022-01-03", "New Year's Day (Observed)"),
-                ("2022-02-21", "Family Day"),
-                ("2022-04-15", "Good Friday"),
-                ("2022-04-18", "Easter Monday"),
-                ("2022-05-23", "Victoria Day"),
-                ("2022-07-01", "Canada Day"),
-                ("2022-08-01", "Civic Holiday"),
-                ("2022-09-05", "Labour Day"),
-                ("2022-10-10", "Thanksgiving"),
-                ("2022-12-25", "Christmas Day"),
-                ("2022-12-26", "Boxing Day"),
-                ("2022-12-27", "Christmas Day (Observed)"),
-            )
+            ("2022-01-01", "New Year's Day"),
+            ("2022-01-03", "New Year's Day (Observed)"),
+            ("2022-02-21", "Family Day"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-04-18", "Easter Monday"),
+            ("2022-05-23", "Victoria Day"),
+            ("2022-07-01", "Canada Day"),
+            ("2022-08-01", "Civic Holiday"),
+            ("2022-09-05", "Labour Day"),
+            ("2022-10-10", "Thanksgiving"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Boxing Day"),
+            ("2022-12-27", "Christmas Day (Observed)"),
         )
 
     def test_l10n_ar(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "يوم السنة الجديدة"),
-                ("2022-01-03", "(تمت ملاحظته) يوم السنة الجديدة"),
-                ("2022-02-21", "يوم العائلة"),
-                ("2022-04-15", "جمعة جيدة"),
-                ("2022-04-18", "عيد الفصح الاثنين"),
-                ("2022-05-23", "يوم فيكتوريا"),
-                ("2022-07-01", "يوم كندا"),
-                ("2022-08-01", "عطلة المدنية"),
-                ("2022-09-05", "عيد العمال"),
-                ("2022-10-10", "عيد الشكر"),
-                ("2022-12-25", "عيد الميلاد"),
-                ("2022-12-26", "يوم الملاكمة"),
-                ("2022-12-27", "(تمت ملاحظته) عيد الميلاد"),
-            ),
             "ar",
+            ("2022-01-01", "يوم السنة الجديدة"),
+            ("2022-01-03", "(تمت ملاحظته) يوم السنة الجديدة"),
+            ("2022-02-21", "يوم العائلة"),
+            ("2022-04-15", "جمعة جيدة"),
+            ("2022-04-18", "عيد الفصح الاثنين"),
+            ("2022-05-23", "يوم فيكتوريا"),
+            ("2022-07-01", "يوم كندا"),
+            ("2022-08-01", "عطلة المدنية"),
+            ("2022-09-05", "عيد العمال"),
+            ("2022-10-10", "عيد الشكر"),
+            ("2022-12-25", "عيد الميلاد"),
+            ("2022-12-26", "يوم الملاكمة"),
+            ("2022-12-27", "(تمت ملاحظته) عيد الميلاد"),
         )
 
     def test_l10n_fr(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "Jour de l'an"),
-                ("2022-01-03", "Jour de l'an (Observé)"),
-                ("2022-02-21", "Fête de la famille"),
-                ("2022-04-15", "Vendredi saint"),
-                ("2022-04-18", "Lundi de Pâques"),
-                ("2022-05-23", "Fête de la Reine"),
-                ("2022-07-01", "Fête du Canada"),
-                ("2022-08-01", "Premier lundi d'août"),
-                ("2022-09-05", "Fête du Travail"),
-                ("2022-10-10", "Action de grâce"),
-                ("2022-12-25", "Jour de Noël"),
-                ("2022-12-26", "Boxing Day"),
-                ("2022-12-27", "Jour de Noël (Observé)"),
-            ),
             "fr",
+            ("2022-01-01", "Jour de l'an"),
+            ("2022-01-03", "Jour de l'an (Observé)"),
+            ("2022-02-21", "Fête de la famille"),
+            ("2022-04-15", "Vendredi saint"),
+            ("2022-04-18", "Lundi de Pâques"),
+            ("2022-05-23", "Fête de la Reine"),
+            ("2022-07-01", "Fête du Canada"),
+            ("2022-08-01", "Premier lundi d'août"),
+            ("2022-09-05", "Fête du Travail"),
+            ("2022-10-10", "Action de grâce"),
+            ("2022-12-25", "Jour de Noël"),
+            ("2022-12-26", "Boxing Day"),
+            ("2022-12-27", "Jour de Noël (Observé)"),
         )
 
     def test_l10n_th(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "วันขึ้นปีใหม่"),
-                ("2022-01-03", "ชดเชยวันขึ้นปีใหม่"),
-                ("2022-02-21", "วันครอบครัว"),
-                ("2022-04-15", "วันศุกร์ประเสริฐ"),
-                ("2022-04-18", "วันจันทร์อีสเตอร์"),
-                ("2022-05-23", "วันวิคตอเรีย"),
-                ("2022-07-01", "วันชาติแคนาดา"),
-                ("2022-08-01", "วันหยุดราชการ"),
-                ("2022-09-05", "วันแรงงาน"),
-                ("2022-10-10", "วันขอบคุณพระเจ้า"),
-                ("2022-12-25", "วันคริสต์มาส"),
-                ("2022-12-26", "วันเปิดกล่องของขวัญ"),
-                ("2022-12-27", "ชดเชยวันคริสต์มาส"),
-            ),
             "th",
+            ("2022-01-01", "วันขึ้นปีใหม่"),
+            ("2022-01-03", "ชดเชยวันขึ้นปีใหม่"),
+            ("2022-02-21", "วันครอบครัว"),
+            ("2022-04-15", "วันศุกร์ประเสริฐ"),
+            ("2022-04-18", "วันจันทร์อีสเตอร์"),
+            ("2022-05-23", "วันวิคตอเรีย"),
+            ("2022-07-01", "วันชาติแคนาดา"),
+            ("2022-08-01", "วันหยุดราชการ"),
+            ("2022-09-05", "วันแรงงาน"),
+            ("2022-10-10", "วันขอบคุณพระเจ้า"),
+            ("2022-12-25", "วันคริสต์มาส"),
+            ("2022-12-26", "วันเปิดกล่องของขวัญ"),
+            ("2022-12-27", "ชดเชยวันคริสต์มาส"),
         )

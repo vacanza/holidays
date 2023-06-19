@@ -12,7 +12,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import GREGORIAN_CALENDAR, JULIAN_CALENDAR
-from holidays.constants import JAN, JUN, NOV, DEC
+from holidays.constants import JAN, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -64,7 +64,7 @@ class Romania(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 2017:
             # Children's Day.
-            self._add_holiday(tr("Ziua Copilului"), JUN, 1)
+            self._add_childrens_day(tr("Ziua Copilului"))
 
         # Pentecost.
         name = tr("Rusaliile")
@@ -79,9 +79,7 @@ class Romania(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Law #147/2012
         if year >= 2012:
             # Saint Andrew's Day.
-            self._add_holiday(
-                tr("Sfantul Apostol Andrei cel Intai chemat"), NOV, 30
-            )
+            self._add_holiday(tr("Sfantul Apostol Andrei cel Intai chemat"), NOV, 30)
 
         # National Day.
         self._add_holiday(tr("Ziua Națională a României"), DEC, 1)

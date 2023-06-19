@@ -209,69 +209,61 @@ class TestVenezuela(TestCase):
     def test_indigenous_resistance(self):
         self.assertHoliday(f"{year}-10-12" for year in range(1921, 2050))
         self.assertNoHoliday(f"{year}-10-12" for year in range(1900, 1921))
-        self.assertNoHolidayName(
-            "Día de la Resistencia Indígena", range(1921, 2002)
-        )
+        self.assertNoHolidayName("Día de la Resistencia Indígena", range(1921, 2002))
         self.assertNoHolidayName("Día de la Raza", range(2002, 2050))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            (
-                ("2021-01-01", "Año Nuevo"),
-                ("2021-02-15", "Lunes de Carnaval"),
-                ("2021-02-16", "Martes de Carnaval"),
-                ("2021-04-01", "Jueves Santo"),
-                ("2021-04-02", "Viernes Santo"),
-                ("2021-04-19", "Declaración de la Independencia"),
-                ("2021-05-01", "Dia Mundial del Trabajador"),
-                ("2021-06-24", "Batalla de Carabobo"),
-                ("2021-07-05", "Día de la Independencia"),
-                ("2021-07-24", "Natalicio de Simón Bolívar"),
-                ("2021-10-12", "Día de la Resistencia Indígena"),
-                ("2021-12-24", "Nochebuena"),
-                ("2021-12-25", "Día de Navidad"),
-                ("2021-12-31", "Fiesta de Fin de Año"),
-            )
+            ("2021-01-01", "Año Nuevo"),
+            ("2021-02-15", "Lunes de Carnaval"),
+            ("2021-02-16", "Martes de Carnaval"),
+            ("2021-04-01", "Jueves Santo"),
+            ("2021-04-02", "Viernes Santo"),
+            ("2021-04-19", "Declaración de la Independencia"),
+            ("2021-05-01", "Dia Mundial del Trabajador"),
+            ("2021-06-24", "Batalla de Carabobo"),
+            ("2021-07-05", "Día de la Independencia"),
+            ("2021-07-24", "Natalicio de Simón Bolívar"),
+            ("2021-10-12", "Día de la Resistencia Indígena"),
+            ("2021-12-24", "Nochebuena"),
+            ("2021-12-25", "Día de Navidad"),
+            ("2021-12-31", "Fiesta de Fin de Año"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
-            (
-                ("2021-01-01", "New Year's Day"),
-                ("2021-02-15", "Monday of Carnival"),
-                ("2021-02-16", "Tuesday of Carnival"),
-                ("2021-04-01", "Maundy Thursday"),
-                ("2021-04-02", "Good Friday"),
-                ("2021-04-19", "Declaration of Independence"),
-                ("2021-05-01", "International Worker's Day"),
-                ("2021-06-24", "Battle of Carabobo"),
-                ("2021-07-05", "Independence Day"),
-                ("2021-07-24", "Birthday of Simon Bolivar"),
-                ("2021-10-12", "Day of Indigenous Resistance"),
-                ("2021-12-24", "Christmas Eve"),
-                ("2021-12-25", "Christmas Day"),
-                ("2021-12-31", "New Year's Eve"),
-            ),
             "en_US",
+            ("2021-01-01", "New Year's Day"),
+            ("2021-02-15", "Monday of Carnival"),
+            ("2021-02-16", "Tuesday of Carnival"),
+            ("2021-04-01", "Maundy Thursday"),
+            ("2021-04-02", "Good Friday"),
+            ("2021-04-19", "Declaration of Independence"),
+            ("2021-05-01", "International Worker's Day"),
+            ("2021-06-24", "Battle of Carabobo"),
+            ("2021-07-05", "Independence Day"),
+            ("2021-07-24", "Birthday of Simon Bolivar"),
+            ("2021-10-12", "Day of Indigenous Resistance"),
+            ("2021-12-24", "Christmas Eve"),
+            ("2021-12-25", "Christmas Day"),
+            ("2021-12-31", "New Year's Eve"),
         )
 
     def test_l10n_uk(self):
         self.assertLocalizedHolidays(
-            (
-                ("2021-01-01", "Новий рік"),
-                ("2021-02-15", "Карнавальний понеділок"),
-                ("2021-02-16", "Карнавальний вівторок"),
-                ("2021-04-01", "Великий четвер"),
-                ("2021-04-02", "Страсна пʼятниця"),
-                ("2021-04-19", "День проголошення незалежності"),
-                ("2021-05-01", "Міжнародний день трудящих"),
-                ("2021-06-24", "День битви при Карабобо"),
-                ("2021-07-05", "День незалежності"),
-                ("2021-07-24", "Річниця Сімона Болівара"),
-                ("2021-10-12", "День спротиву корінних народів"),
-                ("2021-12-24", "Святий вечір"),
-                ("2021-12-25", "Різдво Христове"),
-                ("2021-12-31", "Переддень Нового року"),
-            ),
             "uk",
+            ("2021-01-01", "Новий рік"),
+            ("2021-02-15", "Карнавальний понеділок"),
+            ("2021-02-16", "Карнавальний вівторок"),
+            ("2021-04-01", "Великий четвер"),
+            ("2021-04-02", "Страсна пʼятниця"),
+            ("2021-04-19", "День проголошення незалежності"),
+            ("2021-05-01", "Міжнародний день трудящих"),
+            ("2021-06-24", "День битви при Карабобо"),
+            ("2021-07-05", "День незалежності"),
+            ("2021-07-24", "Річниця Сімона Болівара"),
+            ("2021-10-12", "День спротиву корінних народів"),
+            ("2021-12-24", "Святий вечір"),
+            ("2021-12-25", "Різдво Христове"),
+            ("2021-12-31", "Переддень Нового року"),
         )

@@ -11,14 +11,14 @@
 
 from datetime import date
 from datetime import timedelta as td
+from gettext import gettext as tr
 
-from dateutil.easter import easter
-
-from holidays.constants import JAN, MAR, APR, MAY, AUG, OCT, NOV, DEC
+from holidays.constants import MAR, APR, AUG, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Hungary(HolidayBase):
+class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Hungary
     Codification dates:
@@ -27,126 +27,127 @@ class Hungary(HolidayBase):
     """
 
     country = "HU"
+    default_language = "hu"
+    supported_languages = ("en_US", "hu", "uk")
 
-    def _add_with_observed_day_off(
+    def _add_observed(
         self,
         dt: date,
-        name: str,
         since: int = 2010,
         before: bool = True,
         after: bool = True,
     ) -> None:
-        # Swapped days off were in place earlier but
-        # I haven't found official record yet.
-        self._add_holiday(name, dt)
-        # TODO: should it be a separate flag?
-        if self.observed and since <= dt.year:
-            if self._is_tuesday(dt) and before:
-                self._add_holiday(f"{name} előtti pihenőnap", dt + td(days=-1))
-            elif self._is_thursday(dt) and after:
-                self._add_holiday(f"{name} utáni pihenőnap", dt + td(days=+1))
+        if not self.observed or dt.year < since:
+            return None
+        if self._is_tuesday(dt) and before:
+            self._add_holiday(
+                # Day off before
+                self.tr("%s előtti pihenőnap") % self[dt],
+                dt + td(days=-1),
+            )
+        elif self._is_thursday(dt) and after:
+            self._add_holiday(
+                # Day off after
+                self.tr("%s utáni pihenőnap") % self[dt],
+                dt + td(days=+1),
+            )
 
-    def _populate(self, year: int) -> None:
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
+    def _populate(self, year):
         super()._populate(year)
 
-        # New year's Day.
-        self._add_with_observed_day_off(
-            date(year, JAN, 1), "Újév", before=False, since=2014
-        )
+        # New Year's Day.
+        name = self.tr("Újév")
+        self._add_observed(self._add_new_years_day(name), before=False, since=2014)
 
-        # National Day.
-        if 1945 <= year <= 1950 or 1989 <= year:
-            self._add_with_observed_day_off(
-                date(year, MAR, 15), "Nemzeti ünnep"
-            )
+        # The last day of the year is an observed day off if New Year's Day
+        # falls on a Tuesday.
+        if self.observed and self._is_monday(DEC, 31) and year >= 2014:
+            self._add_holiday(self.tr("%s előtti pihenőnap") % name, DEC, 31)
 
-        # Soviet era.
-        if 1950 <= year <= 1989:
-            # Proclamation of Soviet socialist governing system.
-            self._add_holiday(
-                "A Tanácsköztársaság kikiáltásának ünnepe", MAR, 21
-            )
+        if 1945 <= year <= 1950 or year >= 1989:
+            # National Day.
+            self._add_observed(self._add_holiday(tr("Nemzeti ünnep"), MAR, 15))
 
-            # Liberation Day.
-            self._add_holiday("A felszabadulás ünnepe", APR, 4)
-
-            # Memorial day of The Great October Soviet Socialist Revolution.
-            if year not in {1956, 1989}:
-                self._add_holiday(
-                    "A nagy októberi szocialista forradalom ünnepe", NOV, 7
-                )
-
-        easter_date = easter(year)
-
-        # Good Friday.
-        if 2017 <= year:
-            self._add_holiday("Nagypéntek", easter_date + td(days=-2))
+        if year >= 2017:
+            # Good Friday.
+            self._add_good_friday(tr("Nagypéntek"))
 
         # Easter.
-        self._add_holiday("Húsvét", easter_date)
+        self._add_easter_sunday(tr("Húsvét"))
 
-        # Second Easter Day.
         if year != 1955:
-            self._add_holiday("Húsvét Hétfő", easter_date + td(days=+1))
+            # Easter Monday.
+            self._add_easter_monday(tr("Húsvét Hétfő"))
 
-        # Pentecost.
-        self._add_holiday("Pünkösd", easter_date + td(days=+49))
+        # Whit Sunday.
+        self._add_whit_sunday(tr("Pünkösd"))
 
-        # Pentecost Monday.
-        if year <= 1952 or 1992 <= year:
-            self._add_holiday("Pünkösdhétfő", easter_date + td(days=+50))
+        if year <= 1952 or year >= 1992:
+            # Whit Monday.
+            self._add_whit_monday(tr("Pünkösdhétfő"))
 
-        # International Workers' Day.
-        if 1946 <= year:
-            self._add_with_observed_day_off(
-                date(year, MAY, 1), "A Munka ünnepe"
+        if year >= 1946:
+            # Labor Day.
+            name = tr("A Munka ünnepe")
+            may_1 = self._add_labor_day(name)
+            self._add_observed(may_1)
+            if 1950 <= year <= 1953:
+                self._add_holiday(name, may_1 + td(days=+1))
+
+        self._add_observed(
+            self._add_holiday(
+                # Bread Day.
+                tr("A kenyér ünnepe") if 1950 <= year <= 1989 else
+                # State Foundation Day.
+                tr("Az államalapítás ünnepe"),
+                AUG,
+                20,
             )
-        if 1950 <= year <= 1953:
-            self._add_holiday("A Munka ünnepe", MAY, 2)
+        )
 
-        # State Foundation Day.
-        if 1950 <= year <= 1989:
-            self._add_holiday("A kenyér ünnepe", AUG, 20)
-        else:
-            self._add_with_observed_day_off(
-                date(year, AUG, 20), "Az államalapítás ünnepe"
-            )
+        if year >= 1991:
+            # National Day.
+            self._add_observed(self._add_holiday(tr("Nemzeti ünnep"), OCT, 23))
 
-        # National Day.
-        if 1991 <= year:
-            self._add_with_observed_day_off(
-                date(year, OCT, 23), "Nemzeti ünnep"
-            )
+        if year >= 1999:
+            # All Saints' Day.
+            self._add_observed(self._add_all_saints_day(tr("Mindenszentek")))
 
-        # All Saints' Day.
-        if 1999 <= year:
-            self._add_with_observed_day_off(
-                date(year, NOV, 1), "Mindenszentek"
-            )
+        # Christmas Day.
+        self._add_christmas_day(tr("Karácsony"))
 
-        # Christmas Eve is not endorsed officially
-        # but nowadays it is usually a day off work
-        if self.observed and 2010 <= year and not self._is_weekend(DEC, 24):
-            self._add_holiday("Szenteste", DEC, 24)
-
-        # Christmas First Day.
-        self._add_holiday("Karácsony", DEC, 25)
-
-        # Christmas Second Day.
         if year != 1955:
-            self._add_with_observed_day_off(
-                date(year, DEC, 26),
-                "Karácsony másnapja",
+            self._add_observed(
+                # Second Day of Christmas.
+                self._add_christmas_day_two(tr("Karácsony másnapja")),
                 since=2013,
                 before=False,
             )
 
-        # New Year's Eve.
-        # Since 2014, the last day of the year is an observed day off if New
-        # Year's Day falls on a Tuesday.
-        dec_31 = date(year, DEC, 31)
-        if self.observed and 2014 <= year and self._is_monday(dec_31):
-            self._add_holiday("Szilveszter", dec_31)
+        # Soviet era.
+        if 1950 <= year <= 1989:
+            self._add_holiday(
+                # Proclamation of Soviet Republic Day.
+                tr("A Tanácsköztársaság kikiáltásának ünnepe"),
+                MAR,
+                21,
+            )
+
+            # Liberation Day.
+            self._add_holiday(tr("A felszabadulás ünnepe"), APR, 4)
+
+            if year not in {1956, 1989}:
+                self._add_holiday(
+                    # Great October Socialist Revolution Day.
+                    tr("A nagy októberi szocialista forradalom ünnepe"),
+                    NOV,
+                    7,
+                )
 
 
 class HU(Hungary):

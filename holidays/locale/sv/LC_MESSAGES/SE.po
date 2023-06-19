@@ -107,6 +107,6 @@ msgid "Nyårsafton"
 msgstr ""
 
 #. Sunday.
-#: ./holidays/countries/sweden.py:134
+#: ./holidays/countries/sweden.py:132
 msgid "Söndag"
 msgstr ""

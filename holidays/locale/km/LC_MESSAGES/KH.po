@@ -1,0 +1,139 @@
+# Cambodia holidays.
+# Authors: PPsyrius <ppsyrius@ppsyrius.dev>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.27\n"
+"POT-Creation-Date: 2023-06-07 20:10+0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: km\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.3.1\n"
+
+#. Khmer New Year's Replacement Holiday
+#: ./holidays/countries/cambodia.py:58
+msgid "ថ្ងៃឈប់សម្រាកសងជំនួសឲ្យពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ"
+msgstr ""
+
+#. Special Public Holiday
+#: ./holidays/countries/cambodia.py:63
+msgid "ថ្ងៃឈប់សម្រាកសងជំនួស"
+msgstr ""
+
+#. International New Year Day.
+#: ./holidays/countries/cambodia.py:101
+msgid "ទិវាចូលឆ្នាំសាកល"
+msgstr ""
+
+#. Day of Victory over the Genocidal Regime.
+#: ./holidays/countries/cambodia.py:108
+msgid "ទិវាជ័យជម្នះលើរបបប្រល័យពូជសាសន៍"
+msgstr ""
+
+#. International Women's Rights Day
+#: ./holidays/countries/cambodia.py:114
+msgid "ទិវាអន្តរជាតិនារី"
+msgstr ""
+
+#. Khmer New Year's Day
+#: ./holidays/countries/cambodia.py:123
+msgid "ពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ"
+msgstr ""
+
+#. International Labor Day
+#: ./holidays/countries/cambodia.py:133
+msgid "ទិវាពលកម្មអន្តរជាតិ"
+msgstr ""
+
+#. Birthday of His Majesty Preah Bat Samdech Preah Boromneath NORODOM
+#. SIHAMONI,
+#. King of Cambodia
+#: ./holidays/countries/cambodia.py:141
+msgid ""
+"ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម ព្រះករុណា ព្រះបាទសម្តេចព្រះបរមនាថ នរោត្តម "
+"សីហមុនី"
+msgstr ""
+
+#. National Day of Remembrance
+#: ./holidays/countries/cambodia.py:161
+msgid "ទិវាជាតិនៃការចងចាំ"
+msgstr ""
+
+#. International Children Day
+#: ./holidays/countries/cambodia.py:169
+msgid "ទិវាកុមារអន្តរជាតិ"
+msgstr ""
+
+#. Birthday of Her Majesty the Queen-Mother NORODOM MONINEATH SIHANOUK of
+#. Cambodia
+#: ./holidays/countries/cambodia.py:180
+msgid ""
+"ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម សម្តេចព្រះមហាក្សត្រី ព្រះវររាជមាតា នរោត្តម "
+"មុនិនាថ​ សីហនុ"
+msgstr ""
+
+#. Constitution Day
+#: ./holidays/countries/cambodia.py:193
+msgid "ទិវាប្រកាសរដ្ឋធម្មនុញ្ញ"
+msgstr ""
+
+#. Mourning Day of the Late King-Father NORODOM SIHANOUK of Cambodia
+#: ./holidays/countries/cambodia.py:205
+msgid ""
+"ទិវាប្រារព្ឋពិធីគោរពព្រះវិញ្ញាណក្ខន្ឋ ព្រះករុណា ព្រះបាទសម្តេចព្រះ នរោត្តម "
+"សីហនុ ព្រះមហាវីរក្សត្រ ព្រះវររាជបិតាឯករាជ្យ បូរណភាពទឹកដី និងឯកភាពជាតិខ្មែរ "
+"ព្រះបរមរតនកោដ្ឋ"
+msgstr ""
+
+#. Paris Peace Agreement's Day
+#: ./holidays/countries/cambodia.py:222
+msgid "ទិវារំលឹកសន្ធិសញ្ញាសន្តិភាពទីក្រុងប៉ារីស"
+msgstr ""
+
+#. Coronation Day of His Majesty Preah Bat Samdech Preah Boromneath NORODOM
+#. SIHAMONI, King of Cambodia
+#: ./holidays/countries/cambodia.py:237
+msgid ""
+"ព្រះរាជពិធីគ្រងព្រះបរមរាជសម្បត្តិ របស់ ព្រះករុណា ព្រះបាទសម្តេចព្រះបរមនាថ "
+"នរោត្តម សីហមុនី ព្រះមហាក្សត្រនៃព្រះរាជាណាចក្រកម្ពុជា"
+msgstr ""
+
+#. National Independence Day
+#: ./holidays/countries/cambodia.py:251
+msgid "ពិធីបុណ្យឯករាជ្យជាតិ"
+msgstr ""
+
+#. International Human Rights Day
+#: ./holidays/countries/cambodia.py:259
+msgid "ទិវាសិទ្ធិមនុស្សអន្តរជាតិ"
+msgstr ""
+
+#. Meak Bochea Day
+#: ./holidays/countries/cambodia.py:272
+msgid "ពិធីបុណ្យមាឃបូជា"
+msgstr ""
+
+#. Visaka Bochea Day
+#: ./holidays/countries/cambodia.py:281
+msgid "ពិធីបុណ្យវិសាខបូជា"
+msgstr ""
+
+#. Royal Ploughing Ceremony
+#: ./holidays/countries/cambodia.py:289
+msgid "ព្រះរាជពិធីច្រត់ព្រះនង្គ័ល"
+msgstr ""
+
+#. Pchum Ben Day
+#: ./holidays/countries/cambodia.py:297
+msgid "ពិធីបុណ្យភ្ផុំបិណ្ឌ"
+msgstr ""
+
+#. Water Festival
+#: ./holidays/countries/cambodia.py:308
+msgid "ព្រះរាជពិធីបុណ្យអុំទូក បណ្តែតប្រទីប និងសំពះព្រះខែអកអំបុក"
+msgstr ""

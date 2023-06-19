@@ -61,16 +61,17 @@ msgstr "Pentecost"
 msgid "Adormirea Maicii Domnului"
 msgstr "Dormition of the Mother of God"
 
-#: ./holidays/countries/romania.py:83
+#. Saint Andrew's Day.
+#: ./holidays/countries/romania.py:82
 msgid "Sfantul Apostol Andrei cel Intai chemat"
 msgstr "Saint Andrew's Day"
 
 #. National Day.
-#: ./holidays/countries/romania.py:87
+#: ./holidays/countries/romania.py:85
 msgid "Ziua Națională a României"
 msgstr "National Day"
 
 #. Christmas Day.
-#: ./holidays/countries/romania.py:90
+#: ./holidays/countries/romania.py:88
 msgid "Crăciunul"
 msgstr "Christmas Day"

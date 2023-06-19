@@ -26,21 +26,17 @@ class TestCuba(TestCase):
 
     def test_assault_moncada_day(self):
         name = "Conmemoración del asalto a Moncada"
-        self.assertHolidaysName(
-            name, (f"{year}-07-25" for year in range(1959, 2050))
-        )
-        self.assertHolidaysName(
-            name, (f"{year}-07-27" for year in range(1959, 2050))
-        )
+        self.assertHolidayName(name, (f"{year}-07-25" for year in range(1959, 2050)))
+        self.assertHolidayName(name, (f"{year}-07-27" for year in range(1959, 2050)))
 
     def test_national_rebellion_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Día de la Rebeldía Nacional",
             (f"{year}-07-26" for year in range(1959, 2050)),
         )
 
     def test_independence_day(self):
-        self.assertHolidaysName(
+        self.assertHolidayName(
             "Inicio de las Guerras de Independencia",
             (f"{year}-10-10" for year in range(1959, 2050)),
         )
@@ -299,62 +295,56 @@ class TestCuba(TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
+            ("2022-01-01", "Triunfo de la Revolución"),
+            ("2022-01-02", "Día de la Victoria"),
+            ("2022-04-15", "Viernes Santo"),
+            ("2022-05-01", "Día Internacional de los Trabajadores"),
             (
-                ("2022-01-01", "Triunfo de la Revolución"),
-                ("2022-01-02", "Día de la Victoria"),
-                ("2022-04-15", "Viernes Santo"),
-                ("2022-05-01", "Día Internacional de los Trabajadores"),
-                (
-                    "2022-05-02",
-                    "Día Internacional de los Trabajadores (Observado)",
-                ),
-                ("2022-07-25", "Conmemoración del asalto a Moncada"),
-                ("2022-07-26", "Día de la Rebeldía Nacional"),
-                ("2022-07-27", "Conmemoración del asalto a Moncada"),
-                ("2022-10-10", "Inicio de las Guerras de Independencia"),
-                ("2022-12-25", "Día de Navidad"),
-                ("2022-12-31", "Fiesta de Fin de Año"),
-            )
+                "2022-05-02",
+                "Día Internacional de los Trabajadores (Observado)",
+            ),
+            ("2022-07-25", "Conmemoración del asalto a Moncada"),
+            ("2022-07-26", "Día de la Rebeldía Nacional"),
+            ("2022-07-27", "Conmemoración del asalto a Moncada"),
+            ("2022-10-10", "Inicio de las Guerras de Independencia"),
+            ("2022-12-25", "Día de Navidad"),
+            ("2022-12-31", "Fiesta de Fin de Año"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "Liberation Day"),
-                ("2022-01-02", "Victory Day"),
-                ("2022-04-15", "Good Friday"),
-                ("2022-05-01", "Labour Day"),
-                ("2022-05-02", "Labour Day (Observed)"),
-                (
-                    "2022-07-25",
-                    "Commemoration of the Assault of the Moncada garrison",
-                ),
-                ("2022-07-26", "Day of the National Rebellion"),
-                (
-                    "2022-07-27",
-                    "Commemoration of the Assault of the Moncada garrison",
-                ),
-                ("2022-10-10", "Independence Day"),
-                ("2022-12-25", "Christmas Day"),
-                ("2022-12-31", "New Year's Eve"),
-            ),
             "en_US",
+            ("2022-01-01", "Liberation Day"),
+            ("2022-01-02", "Victory Day"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-05-01", "Labour Day"),
+            ("2022-05-02", "Labour Day (Observed)"),
+            (
+                "2022-07-25",
+                "Commemoration of the Assault of the Moncada garrison",
+            ),
+            ("2022-07-26", "Day of the National Rebellion"),
+            (
+                "2022-07-27",
+                "Commemoration of the Assault of the Moncada garrison",
+            ),
+            ("2022-10-10", "Independence Day"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-31", "New Year's Eve"),
         )
 
     def test_l10n_uk(self):
         self.assertLocalizedHolidays(
-            (
-                ("2022-01-01", "Тріумф революції"),
-                ("2022-01-02", "День перемоги"),
-                ("2022-04-15", "Страсна пʼятниця"),
-                ("2022-05-01", "Міжнародний день трудящих"),
-                ("2022-05-02", "Міжнародний день трудящих (вихідний)"),
-                ("2022-07-25", "Вшанування памʼяті штурму Монкади"),
-                ("2022-07-26", "День національного повстання"),
-                ("2022-07-27", "Вшанування памʼяті штурму Монкади"),
-                ("2022-10-10", "Початок війни за незалежність"),
-                ("2022-12-25", "Різдво Христове"),
-                ("2022-12-31", "Переддень Нового року"),
-            ),
             "uk",
+            ("2022-01-01", "Тріумф революції"),
+            ("2022-01-02", "День перемоги"),
+            ("2022-04-15", "Страсна пʼятниця"),
+            ("2022-05-01", "Міжнародний день трудящих"),
+            ("2022-05-02", "Міжнародний день трудящих (вихідний)"),
+            ("2022-07-25", "Вшанування памʼяті штурму Монкади"),
+            ("2022-07-26", "День національного повстання"),
+            ("2022-07-27", "Вшанування памʼяті штурму Монкади"),
+            ("2022-10-10", "Початок війни за незалежність"),
+            ("2022-12-25", "Різдво Христове"),
+            ("2022-12-31", "Переддень Нового року"),
         )

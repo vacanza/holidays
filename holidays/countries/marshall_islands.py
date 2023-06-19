@@ -28,12 +28,10 @@ class HolidaysMH(HolidayBase):
 
     country = "MH"
     special_holidays = {
-        2019: ((NOV, 18, "General Election Day"),),  # Third Monday in November
+        2019: (NOV, 18, "General Election Day"),  # Third Monday in November
     }
 
-    def _add_with_observed(
-        self, dt: date, name: str, after_sat: bool = False
-    ) -> None:
+    def _add_with_observed(self, dt: date, name: str, after_sat: bool = False) -> None:
         """
         Adds observed holiday on Monday when the current date falls on a Sunday
         or, if after_sat is True, on a Saturday.
@@ -54,8 +52,7 @@ class HolidaysMH(HolidayBase):
 
         if year < 2023:
             warnings.warn(
-                "Years before 2022 are not available for the Marshall Islands "
-                "(MH).",
+                "Years before 2022 are not available for the Marshall Islands (MH).",
                 Warning,
             )
 
@@ -64,9 +61,7 @@ class HolidaysMH(HolidayBase):
         self._add_with_observed(date(year, JAN, 1), name, after_sat=True)
 
         # Nuclear Victims Remembrance Day
-        self._add_with_observed(
-            date(year, MAR, 1), "Nuclear Victims Remembrance Day"
-        )
+        self._add_with_observed(date(year, MAR, 1), "Nuclear Victims Remembrance Day")
 
         # Good Friday
         self[easter(year) + td(days=-2)] = "Good Friday"

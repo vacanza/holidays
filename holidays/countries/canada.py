@@ -14,8 +14,7 @@ from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
-from holidays.constants import FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT
-from holidays.constants import SUN, MON
+from holidays.constants import FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, SUN, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -53,17 +52,13 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
             1 if self._is_friday(dt) or self._is_weekend(dt) else -1, MON, dt
         )
 
-    def _add_observed(self, hol_date: date, include_sat: bool = True) -> None:
+    def _add_observed(self, dt: date, include_sat: bool = True, days: int = +1) -> None:
         if not self.observed:
             return None
-        if self._is_sunday(hol_date) or (
-            self._is_saturday(hol_date) and include_sat
-        ):
-            obs_date = _get_nth_weekday_from(1, MON, hol_date)
-            if obs_date in self:
-                obs_date += td(days=+1)
+        if self._is_sunday(dt) or (include_sat and self._is_saturday(dt)):
             self._add_holiday(
-                self.tr("%s (Observed)") % self[hol_date], obs_date
+                self.tr("%s (Observed)") % self[dt],
+                dt + td(days=+2 if self._is_saturday(dt) else days),
             )
 
     def _populate(self, year):
@@ -91,14 +86,17 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
                 _get_nth_weekday_of_month(1, MON, SEP, self._year),
             )
 
-        # Christmas Day.
-        dec_25 = self._add_christmas_day(tr("Christmas Day"))
+        self._add_observed(
+            # Christmas Day.
+            self._add_christmas_day(tr("Christmas Day")),
+            days=+2,
+        )
 
-        # Boxing Day.
-        dec_26 = self._add_christmas_day_two(tr("Boxing Day"))
-
-        self._add_observed(dec_25)
-        self._add_observed(dec_26)
+        self._add_observed(
+            # Boxing Day.
+            self._add_christmas_day_two(tr("Boxing Day")),
+            days=+2,
+        )
 
     def _add_family_day(self):
         self._add_holiday(
@@ -172,9 +170,7 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_bc_holidays(self):
         if self._year >= 2013:
-            dt = _get_nth_weekday_of_month(
-                3 if self._year >= 2019 else 2, MON, FEB, self._year
-            )
+            dt = _get_nth_weekday_of_month(3 if self._year >= 2019 else 2, MON, FEB, self._year)
             self._add_holiday(tr("Family Day"), dt)
 
         if self._year >= 1953:
@@ -227,9 +223,7 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
                 # Civic Holiday.
                 else tr("Civic Holiday")
             )
-            self._add_holiday(
-                name, _get_nth_weekday_of_month(1, MON, AUG, self._year)
-            )
+            self._add_holiday(name, _get_nth_weekday_of_month(1, MON, AUG, self._year))
 
         if self._year >= 2021:
             self._add_holiday(
@@ -397,9 +391,7 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_pe_holidays(self):
         if self._year >= 2009:
-            dt = _get_nth_weekday_of_month(
-                3 if self._year >= 2010 else 2, MON, FEB, self._year
-            )
+            dt = _get_nth_weekday_of_month(3 if self._year >= 2010 else 2, MON, FEB, self._year)
             # Islander Day.
             self._add_holiday(tr("Islander Day"), dt)
 
@@ -465,8 +457,7 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1974:
             self._add_holiday(
                 tr("Heritage Day"),
-                _get_nth_weekday_of_month(-1, SUN, FEB, self._year)
-                + td(days=-2),
+                _get_nth_weekday_of_month(-1, SUN, FEB, self._year) + td(days=-2),
             )
 
         if self._year >= 1953:

@@ -1,0 +1,109 @@
+# Hungary holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.27\n"
+"POT-Creation-Date: 2023-06-12 19:06+0300\n"
+"PO-Revision-Date: 2023-06-12 19:19+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. Day off before
+#: ./holidays/countries/hungary.py:45 ./holidays/countries/hungary.py:70
+#, c-format
+msgid "%s előtti pihenőnap"
+msgstr ""
+
+#. Day off after
+#: ./holidays/countries/hungary.py:51
+#, c-format
+msgid "%s utáni pihenőnap"
+msgstr ""
+
+#. New Year's Day.
+#: ./holidays/countries/hungary.py:64
+msgid "Újév"
+msgstr ""
+
+#. National Day.
+#: ./holidays/countries/hungary.py:74 ./holidays/countries/hungary.py:115
+msgid "Nemzeti ünnep"
+msgstr ""
+
+#. Good Friday.
+#: ./holidays/countries/hungary.py:78
+msgid "Nagypéntek"
+msgstr ""
+
+#. Easter.
+#: ./holidays/countries/hungary.py:81
+msgid "Húsvét"
+msgstr ""
+
+#. Easter Monday.
+#: ./holidays/countries/hungary.py:85
+msgid "Húsvét Hétfő"
+msgstr ""
+
+#. Whit Sunday.
+#: ./holidays/countries/hungary.py:88
+msgid "Pünkösd"
+msgstr ""
+
+#. Whit Monday.
+#: ./holidays/countries/hungary.py:92
+msgid "Pünkösdhétfő"
+msgstr ""
+
+#. Labor Day.
+#: ./holidays/countries/hungary.py:96
+msgid "A Munka ünnepe"
+msgstr ""
+
+#. Bread Day.
+#: ./holidays/countries/hungary.py:105
+msgid "A kenyér ünnepe"
+msgstr ""
+
+#. State Foundation Day.
+#: ./holidays/countries/hungary.py:107
+msgid "Az államalapítás ünnepe"
+msgstr ""
+
+#. All Saints' Day.
+#: ./holidays/countries/hungary.py:119
+msgid "Mindenszentek"
+msgstr ""
+
+#. Christmas Day.
+#: ./holidays/countries/hungary.py:122
+msgid "Karácsony"
+msgstr ""
+
+#. Second Day of Christmas.
+#: ./holidays/countries/hungary.py:127
+msgid "Karácsony másnapja"
+msgstr ""
+
+#. Proclamation of Soviet Republic Day.
+#: ./holidays/countries/hungary.py:136
+msgid "A Tanácsköztársaság kikiáltásának ünnepe"
+msgstr ""
+
+#. Liberation Day.
+#: ./holidays/countries/hungary.py:142
+msgid "A felszabadulás ünnepe"
+msgstr ""
+
+#. Great October Socialist Revolution Day.
+#: ./holidays/countries/hungary.py:147
+msgid "A nagy októberi szocialista forradalom ünnepe"
+msgstr ""

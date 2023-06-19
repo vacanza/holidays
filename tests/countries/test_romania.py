@@ -30,9 +30,7 @@ class TestRomania(TestCase):
     def test_unification_day(self):
         self.assertHoliday("2016-01-24")
         self.assertNoHoliday("2015-01-24")
-        self.assertNoHolidayName(
-            "Ziua Unirii Principatelor Române", Romania(years=2015)
-        )
+        self.assertNoHolidayName("Ziua Unirii Principatelor Române", Romania(years=2015))
 
     def test_easter(self):
         self.assertHoliday(
@@ -52,16 +50,12 @@ class TestRomania(TestCase):
     def test_assumption_day(self):
         self.assertHoliday("2009-08-15")
         self.assertNoHoliday("2008-08-15")
-        self.assertNoHolidayName(
-            "Adormirea Maicii Domnului", Romania(years=2008)
-        )
+        self.assertNoHolidayName("Adormirea Maicii Domnului", Romania(years=2008))
 
     def test_saint_andrews_day(self):
         self.assertHoliday("2012-11-30")
         self.assertNoHoliday("2011-11-30")
-        self.assertNoHolidayName(
-            "Sfantul Apostol Andrei cel Intai chemat", Romania(years=2011)
-        )
+        self.assertNoHolidayName("Sfantul Apostol Andrei cel Intai chemat", Romania(years=2011))
 
     def test_2020(self):
         # https://publicholidays.ro/2020-dates/
@@ -128,68 +122,62 @@ class TestRomania(TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            (
-                ("2018-01-01", "Anul Nou"),
-                ("2018-01-02", "Anul Nou"),
-                ("2018-01-24", "Ziua Unirii Principatelor Române"),
-                ("2018-04-06", "Paștele"),
-                ("2018-04-08", "Paștele"),
-                ("2018-04-09", "Paștele"),
-                ("2018-05-01", "Ziua Muncii"),
-                ("2018-05-27", "Rusaliile"),
-                ("2018-05-28", "Rusaliile"),
-                ("2018-06-01", "Ziua Copilului"),
-                ("2018-08-15", "Adormirea Maicii Domnului"),
-                ("2018-11-30", "Sfantul Apostol Andrei cel Intai chemat"),
-                ("2018-12-01", "Ziua Națională a României"),
-                ("2018-12-25", "Crăciunul"),
-                ("2018-12-26", "Crăciunul"),
-            ),
+            ("2018-01-01", "Anul Nou"),
+            ("2018-01-02", "Anul Nou"),
+            ("2018-01-24", "Ziua Unirii Principatelor Române"),
+            ("2018-04-06", "Paștele"),
+            ("2018-04-08", "Paștele"),
+            ("2018-04-09", "Paștele"),
+            ("2018-05-01", "Ziua Muncii"),
+            ("2018-05-27", "Rusaliile"),
+            ("2018-05-28", "Rusaliile"),
+            ("2018-06-01", "Ziua Copilului"),
+            ("2018-08-15", "Adormirea Maicii Domnului"),
+            ("2018-11-30", "Sfantul Apostol Andrei cel Intai chemat"),
+            ("2018-12-01", "Ziua Națională a României"),
+            ("2018-12-25", "Crăciunul"),
+            ("2018-12-26", "Crăciunul"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
-            (
-                ("2018-01-01", "New Year's Day"),
-                ("2018-01-02", "New Year's Day"),
-                (
-                    "2018-01-24",
-                    "Unification of the Romanian Principalities Day",
-                ),
-                ("2018-04-06", "Easter"),
-                ("2018-04-08", "Easter"),
-                ("2018-04-09", "Easter"),
-                ("2018-05-01", "Labour Day"),
-                ("2018-05-27", "Pentecost"),
-                ("2018-05-28", "Pentecost"),
-                ("2018-06-01", "Children's Day"),
-                ("2018-08-15", "Dormition of the Mother of God"),
-                ("2018-11-30", "Saint Andrew's Day"),
-                ("2018-12-01", "National Day"),
-                ("2018-12-25", "Christmas Day"),
-                ("2018-12-26", "Christmas Day"),
-            ),
             "en_US",
+            ("2018-01-01", "New Year's Day"),
+            ("2018-01-02", "New Year's Day"),
+            (
+                "2018-01-24",
+                "Unification of the Romanian Principalities Day",
+            ),
+            ("2018-04-06", "Easter"),
+            ("2018-04-08", "Easter"),
+            ("2018-04-09", "Easter"),
+            ("2018-05-01", "Labour Day"),
+            ("2018-05-27", "Pentecost"),
+            ("2018-05-28", "Pentecost"),
+            ("2018-06-01", "Children's Day"),
+            ("2018-08-15", "Dormition of the Mother of God"),
+            ("2018-11-30", "Saint Andrew's Day"),
+            ("2018-12-01", "National Day"),
+            ("2018-12-25", "Christmas Day"),
+            ("2018-12-26", "Christmas Day"),
         )
 
     def test_l10n_uk(self):
         self.assertLocalizedHolidays(
-            (
-                ("2018-01-01", "Новий рік"),
-                ("2018-01-02", "Новий рік"),
-                ("2018-01-24", "День обʼєднання Дунайських князівств"),
-                ("2018-04-06", "Великдень"),
-                ("2018-04-08", "Великдень"),
-                ("2018-04-09", "Великдень"),
-                ("2018-05-01", "День праці"),
-                ("2018-05-27", "Трійця"),
-                ("2018-05-28", "Трійця"),
-                ("2018-06-01", "День захисту дітей"),
-                ("2018-08-15", "Успіння Пресвятої Богородиці"),
-                ("2018-11-30", "День святого Андрія Первозваного"),
-                ("2018-12-01", "Національний день Румунії"),
-                ("2018-12-25", "Різдво Христове"),
-                ("2018-12-26", "Різдво Христове"),
-            ),
             "uk",
+            ("2018-01-01", "Новий рік"),
+            ("2018-01-02", "Новий рік"),
+            ("2018-01-24", "День обʼєднання Дунайських князівств"),
+            ("2018-04-06", "Великдень"),
+            ("2018-04-08", "Великдень"),
+            ("2018-04-09", "Великдень"),
+            ("2018-05-01", "День праці"),
+            ("2018-05-27", "Трійця"),
+            ("2018-05-28", "Трійця"),
+            ("2018-06-01", "День захисту дітей"),
+            ("2018-08-15", "Успіння Пресвятої Богородиці"),
+            ("2018-11-30", "День святого Андрія Первозваного"),
+            ("2018-12-01", "Національний день Румунії"),
+            ("2018-12-25", "Різдво Христове"),
+            ("2018-12-26", "Різдво Христове"),
         )

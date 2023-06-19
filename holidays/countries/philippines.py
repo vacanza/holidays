@@ -12,8 +12,12 @@
 from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import FEB, APR, JUN, AUG, NOV, DEC, MON
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChineseCalendarHolidays, ChristianHolidays
-from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
+from holidays.holiday_groups import (
+    ChineseCalendarHolidays,
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+)
 
 
 class Philippines(

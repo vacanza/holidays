@@ -11,15 +11,22 @@
 
 from datetime import timedelta as td
 
-from holidays.calendars import _CustomBuddhistCalendar, _CustomChineseCalendar
-from holidays.calendars import _CustomIslamicCalendar, _CustomHinduCalendar
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP
-from holidays.constants import OCT, NOV, DEC
+from holidays.calendars import (
+    _CustomBuddhistCalendar,
+    _CustomChineseCalendar,
+    _CustomIslamicCalendar,
+    _CustomHinduCalendar,
+)
+from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import BuddhistCalendarHolidays
-from holidays.holiday_groups import ChineseCalendarHolidays, ChristianHolidays
-from holidays.holiday_groups import HinduCalendarHolidays
-from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
+from holidays.holiday_groups import (
+    BuddhistCalendarHolidays,
+    ChineseCalendarHolidays,
+    ChristianHolidays,
+    HinduCalendarHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+)
 
 
 class Singapore(
@@ -33,9 +40,9 @@ class Singapore(
 ):
     country = "SG"
     special_holidays = {
-        2001: ((NOV, 3, "Polling Day"),),
-        2006: ((MAY, 6, "Polling Day"),),
-        2011: ((MAY, 7, "Polling Day"),),
+        2001: (NOV, 3, "Polling Day"),
+        2006: (MAY, 6, "Polling Day"),
+        2011: (MAY, 7, "Polling Day"),
         2015: (
             # SG50 Public holiday
             # Announced on 14 March 2015
@@ -43,7 +50,7 @@ class Singapore(
             (AUG, 7, "SG50 Public Holiday"),
             (SEP, 11, "Polling Day"),
         ),
-        2020: ((JUL, 10, "Polling Day"),),
+        2020: (JUL, 10, "Polling Day"),
     }
 
     def __init__(self, *args, **kwargs) -> None:
@@ -101,12 +108,8 @@ class Singapore(
 
         # Chinese New Year (two days)
         name = "Chinese New Year"
-        observed_dates.add(
-            self._add_chinese_new_years_day(name)  # type: ignore[arg-type]
-        )
-        observed_dates.add(
-            self._add_chinese_new_years_day_two(name)  # type: ignore[arg-type]
-        )
+        observed_dates.add(self._add_chinese_new_years_day(name))  # type: ignore[arg-type]
+        observed_dates.add(self._add_chinese_new_years_day_two(name))  # type: ignore[arg-type]
 
         # Hari Raya Puasa (Eid al-Fitr)
         observed_dates.update(self._add_eid_al_fitr_day("Hari Raya Puasa"))
@@ -130,19 +133,13 @@ class Singapore(
         observed_dates.add(self._add_labor_day("Labour Day"))
 
         # Vesak Day
-        observed_dates.add(
-            self._add_vesak("Vesak Day")  # type: ignore[arg-type]
-        )
+        observed_dates.add(self._add_vesak("Vesak Day"))  # type: ignore[arg-type]
 
         # National Day
-        observed_dates.add(
-            self._add_holiday("National Day", AUG, 9)  # type: ignore[arg-type]
-        )
+        observed_dates.add(self._add_holiday("National Day", AUG, 9))  # type: ignore[arg-type]
 
         # Deepavali (Diwali)
-        observed_dates.add(
-            self._add_diwali("Deepavali")  # type: ignore[arg-type]
-        )
+        observed_dates.add(self._add_diwali("Deepavali"))  # type: ignore[arg-type]
 
         # Christmas Day
         observed_dates.add(self._add_christmas_day("Christmas Day"))
@@ -163,8 +160,7 @@ class Singapore(
                     continue
                 self._add_holiday(
                     "%s (Observed)" % self[dt],
-                    dt
-                    + td(days=2 if dt + td(days=+1) in observed_dates else 1),
+                    dt + td(days=2 if dt + td(days=+1) in observed_dates else 1),
                 )
 
         # special case (observed from previous year)
@@ -266,53 +262,53 @@ class SingaporeHinduCalendar(_CustomHinduCalendar):
 
 class SingaporeIslamicCalendar(_CustomIslamicCalendar):
     EID_AL_ADHA_DATES = {
-        2001: ((MAR, 6),),
-        2002: ((FEB, 23),),
-        2003: ((FEB, 12),),
-        2004: ((FEB, 1),),
-        2005: ((JAN, 21),),
+        2001: (MAR, 6),
+        2002: (FEB, 23),
+        2003: (FEB, 12),
+        2004: (FEB, 1),
+        2005: (JAN, 21),
         2006: ((JAN, 10), (DEC, 31)),
-        2007: ((DEC, 20),),
-        2008: ((DEC, 8),),
-        2009: ((NOV, 27),),
-        2010: ((NOV, 17),),
-        2011: ((NOV, 6),),
-        2012: ((OCT, 26),),
-        2013: ((OCT, 15),),
-        2014: ((OCT, 5),),
-        2015: ((SEP, 24),),
-        2016: ((SEP, 12),),
-        2017: ((SEP, 1),),
-        2018: ((AUG, 22),),
-        2019: ((AUG, 11),),
-        2020: ((JUL, 31),),
-        2021: ((JUL, 20),),
-        2022: ((JUL, 10),),
-        2023: ((JUN, 29),),
+        2007: (DEC, 20),
+        2008: (DEC, 8),
+        2009: (NOV, 27),
+        2010: (NOV, 17),
+        2011: (NOV, 6),
+        2012: (OCT, 26),
+        2013: (OCT, 15),
+        2014: (OCT, 5),
+        2015: (SEP, 24),
+        2016: (SEP, 12),
+        2017: (SEP, 1),
+        2018: (AUG, 22),
+        2019: (AUG, 11),
+        2020: (JUL, 31),
+        2021: (JUL, 20),
+        2022: (JUL, 10),
+        2023: (JUN, 29),
     }
 
     EID_AL_FITR_DATES = {
-        2001: ((DEC, 16),),
-        2002: ((DEC, 6),),
-        2003: ((NOV, 25),),
-        2004: ((NOV, 14),),
-        2005: ((NOV, 3),),
-        2006: ((OCT, 24),),
-        2007: ((OCT, 13),),
-        2008: ((OCT, 1),),
-        2009: ((SEP, 20),),
-        2010: ((SEP, 10),),
-        2011: ((AUG, 30),),
-        2012: ((AUG, 19),),
-        2013: ((AUG, 8),),
-        2014: ((JUL, 28),),
-        2015: ((JUL, 17),),
-        2016: ((JUL, 6),),
-        2017: ((JUN, 25),),
-        2018: ((JUN, 15),),
-        2019: ((JUN, 5),),
-        2020: ((MAY, 24),),
-        2021: ((MAY, 13),),
-        2022: ((MAY, 3),),
-        2023: ((APR, 22),),
+        2001: (DEC, 16),
+        2002: (DEC, 6),
+        2003: (NOV, 25),
+        2004: (NOV, 14),
+        2005: (NOV, 3),
+        2006: (OCT, 24),
+        2007: (OCT, 13),
+        2008: (OCT, 1),
+        2009: (SEP, 20),
+        2010: (SEP, 10),
+        2011: (AUG, 30),
+        2012: (AUG, 19),
+        2013: (AUG, 8),
+        2014: (JUL, 28),
+        2015: (JUL, 17),
+        2016: (JUL, 6),
+        2017: (JUN, 25),
+        2018: (JUN, 15),
+        2019: (JUN, 5),
+        2020: (MAY, 24),
+        2021: (MAY, 13),
+        2022: (MAY, 3),
+        2023: (APR, 22),
     }

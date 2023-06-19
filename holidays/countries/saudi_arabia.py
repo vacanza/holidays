@@ -36,40 +36,30 @@ class SaudiArabia(HolidayBase, IslamicHolidays):
     country = "SA"
     special_holidays = {
         # celebrate the country's win against Argentina in the World Cup
-        2022: ((NOV, 23, "National Holiday"),),
+        2022: (NOV, 23, "National Holiday"),
     }
 
     def __init__(self, *args, **kwargs):
         IslamicHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _add_islamic_observed(
-        self, hol_name: str, hol_dates: Set[date]
-    ) -> None:
+    def _add_islamic_observed(self, hol_name: str, hol_dates: Set[date]) -> None:
         if not self.observed:
             return None
         for dt in hol_dates:
-            weekend_days = sum(
-                self._is_weekend(dt + td(days=i)) for i in range(4)
-            )
+            weekend_days = sum(self._is_weekend(dt + td(days=i)) for i in range(4))
             for i in range(weekend_days):
-                self._add_holiday(
-                    f"{hol_name} (Observed)", dt + td(days=+4 + i)
-                )
+                self._add_holiday(f"{hol_name} (Observed)", dt + td(days=+4 + i))
 
     def _add_observed(self, hol_date: date) -> None:
         if self.observed:
             weekend = sorted(self.weekend)
             # 1st weekend day (Thursday before 2013 and Friday otherwise)
             if hol_date.weekday() == weekend[0]:
-                self._add_holiday(
-                    f"{self[hol_date]} (Observed)", hol_date + td(days=-1)
-                )
+                self._add_holiday(f"{self[hol_date]} (Observed)", hol_date + td(days=-1))
             # 2nd weekend day (Friday before 2013 and Saturday otherwise)
             elif hol_date.weekday() == weekend[1]:
-                self._add_holiday(
-                    f"{self[hol_date]} (Observed)", hol_date + td(days=+1)
-                )
+                self._add_holiday(f"{self[hol_date]} (Observed)", hol_date + td(days=+1))
 
     def _populate(self, year):
         super()._populate(year)
@@ -113,9 +103,7 @@ class SaudiArabia(HolidayBase, IslamicHolidays):
         if year >= 2005:
             dt = date(year, SEP, 23)
             if dt not in self:
-                self._add_observed(
-                    self._add_holiday("National Day Holiday", dt)
-                )
+                self._add_observed(self._add_holiday("National Day Holiday", dt))
 
         # Founding Day holiday (started 2022).
         # Note: if founding day happens within the Eid al-Fitr Holiday or
@@ -123,9 +111,7 @@ class SaudiArabia(HolidayBase, IslamicHolidays):
         if year >= 2022:
             dt = date(year, FEB, 22)
             if dt not in self:
-                self._add_observed(
-                    self._add_holiday("Founding Day Holiday", dt)
-                )
+                self._add_observed(self._add_holiday("Founding Day Holiday", dt))
 
         # observed holidays special cases
         if self.observed and year == 2001:

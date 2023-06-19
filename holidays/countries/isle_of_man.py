@@ -9,6 +9,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
+from datetime import timedelta as td
+
 from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import JUN, JUL, AUG, MON, FRI
 from holidays.holiday_base import HolidayBase
@@ -43,12 +46,14 @@ class IsleOfMan(UnitedKingdom):
 
         # Isle of Man exclusive holidays
         # TT bank holiday (first Friday in June)
-        self._add_holiday(
-            "TT Bank Holiday", _get_nth_weekday_of_month(1, FRI, JUN, year)
-        )
+        self._add_holiday("TT Bank Holiday", _get_nth_weekday_of_month(1, FRI, JUN, year))
 
         # Tynwald Day
-        self._add_holiday("Tynwald Day", JUL, 5)
+        # Move to the next Monday if falls on a weekend.
+        dt = date(year, JUL, 5)
+        if self._is_weekend(dt) and year >= 1992:
+            dt += td(days=+2 if self._is_saturday(dt) else +1)
+        self._add_holiday("Tynwald Day", dt)
 
 
 class IM(IsleOfMan):

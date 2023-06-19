@@ -26,9 +26,7 @@ class Monaco(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "MC"
     default_language = "fr"
-    special_holidays = {
-        2015: ((JAN, 7, tr("Jour férié")),),
-    }
+    special_holidays = {2015: (JAN, 7, tr("Jour férié"))}
     supported_languages = ("en_US", "fr", "uk")
 
     def __init__(self, *args, **kwargs):
@@ -36,21 +34,24 @@ class Monaco(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
+    def _add_observed(self, dt: date, days: int = +1) -> None:
+        if self.observed and self._is_sunday(dt):
+            self._add_holiday(self.tr("%s (Observé)") % self[dt], dt + td(days=days))
+
     def _populate(self, year):
         super()._populate(year)
-        observed_dates = set()
 
         # New Year's Day.
-        observed_dates.add(self._add_new_years_day(tr("Le jour de l'An")))
+        self._add_observed(self._add_new_years_day(tr("Le jour de l'An")))
 
-        # Saint Dévote's Day.
+        # Saint Devote's Day.
         self._add_holiday(tr("La Sainte Dévote"), JAN, 27)
 
         # Easter Monday.
         self._add_easter_monday(tr("Le lundi de Pâques"))
 
         # Labour Day.
-        observed_dates.add(self._add_labor_day(tr("Fête de la Travaille")))
+        self._add_observed(self._add_labor_day(tr("Fête de la Travaille")))
 
         # Ascension's Day.
         self._add_ascension_thursday(tr("L'Ascension"))
@@ -62,33 +63,22 @@ class Monaco(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_corpus_christi_day(tr("La Fête Dieu"))
 
         # Assumption's Day.
-        observed_dates.add(
-            self._add_assumption_of_mary_day(tr("L'Assomption de Marie"))
-        )
+        self._add_observed(self._add_assumption_of_mary_day(tr("L'Assomption de Marie")))
 
         # All Saints' Day.
-        observed_dates.add(self._add_all_saints_day(tr("La Toussaint")))
+        self._add_observed(self._add_all_saints_day(tr("La Toussaint")))
 
         # Prince's Day.
-        observed_dates.add(self._add_holiday(tr("La Fête du Prince"), NOV, 19))
+        self._add_observed(self._add_holiday(tr("La Fête du Prince"), NOV, 19))
 
-        dt = date(year, DEC, 8)
-        if year >= 2019 and self._is_sunday(dt):
-            dt += td(days=+1)
+        dt = (DEC, 8)
+        if year >= 2019 and self._is_sunday(*dt):
+            dt = (DEC, 9)
         # Immaculate Conception's Day.
-        self._add_holiday(tr("L'Immaculée Conception"), dt)
+        self._add_holiday(tr("L'Immaculée Conception"), *dt)
 
         # Christmas Day.
-        observed_dates.add(self._add_christmas_day(tr("Noël")))
-
-        if self.observed:
-            for dt in observed_dates:
-                if not self._is_sunday(dt):
-                    continue
-                self._add_holiday(
-                    self.tr("%s (Observé)") % self[dt],
-                    dt + td(days=+1),
-                )
+        self._add_observed(self._add_christmas_day(tr("Noël")))
 
 
 class MC(Monaco):
