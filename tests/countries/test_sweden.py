@@ -40,9 +40,7 @@ class TestSweden(SundayHolidays):
             "1953-03-25",
         )
         self.assertNoHoliday("1954-03-25")
-        self.assertNoHolidayName(
-            "Jungfru Marie bebådelsedag", Sweden(years=1954)
-        )
+        self.assertNoHolidayName("Jungfru Marie bebådelsedag", Sweden(years=1954))
 
     def test_easter(self):
         self.assertHoliday(
@@ -139,9 +137,7 @@ class TestSweden(SundayHolidays):
         )
 
     def test_sundays(self):
-        self.assertSundays(
-            Sweden
-        )  # Sundays are considered holidays in Sweden.
+        self.assertSundays(Sweden)  # Sundays are considered holidays in Sweden.
 
     def test_not_holiday(self):
         # Sundays in Sweden are considered holidays,

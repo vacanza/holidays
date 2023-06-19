@@ -129,9 +129,7 @@ class TestChile(TestCase):
             "2078-06-20",
             "2079-06-20",
         )
-        self.assertNoHolidayName(
-            "Día Nacional de los Pueblos Indígenas", range(1915, 2021)
-        )
+        self.assertNoHolidayName("Día Nacional de los Pueblos Indígenas", range(1915, 2021))
 
     def test_saint_peter_and_paul(self):
         self.assertHoliday(f"{year}-06-29" for year in range(1915, 1967))

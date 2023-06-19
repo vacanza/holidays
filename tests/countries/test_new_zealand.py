@@ -36,29 +36,17 @@ class TestNZ(TestCase):
 
     def test_new_years(self):
         name = "New Year's Day"
-        self.assertHolidayName(
-            name, (f"{year}-01-01" for year in range(1900, 2050))
-        )
+        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1900, 2050)))
         years_observed = (2005, 2006, 2011, 2012, 2017)
-        self.assertHolidayName(
-            f"{name} (Observed)", (f"{year}-01-03" for year in years_observed)
-        )
-        self.assertNoNonObservedHoliday(
-            f"{year}-01-03" for year in years_observed
-        )
+        self.assertHolidayName(f"{name} (Observed)", (f"{year}-01-03" for year in years_observed))
+        self.assertNoNonObservedHoliday(f"{year}-01-03" for year in years_observed)
 
     def test_day_after_new_years(self):
         name = "Day after New Year's Day"
-        self.assertHolidayName(
-            name, (f"{year}-01-02" for year in range(1900, 2050))
-        )
+        self.assertHolidayName(name, (f"{year}-01-02" for year in range(1900, 2050)))
         years_observed = (2010, 2011, 2016, 2021, 2022)
-        self.assertHolidayName(
-            f"{name} (Observed)", (f"{year}-01-04" for year in years_observed)
-        )
-        self.assertNoNonObservedHoliday(
-            (f"{year}-01-04" for year in years_observed)
-        )
+        self.assertHolidayName(f"{name} (Observed)", (f"{year}-01-04" for year in years_observed))
+        self.assertNoNonObservedHoliday((f"{year}-01-04" for year in years_observed))
 
     def test_waitangi_day(self):
         name1 = "New Zealand Day"
@@ -76,12 +64,8 @@ class TestNZ(TestCase):
         self.assertNoHolidayName(name1, range(1900, 1974))
         self.assertNoHolidayName(name2, range(1900, 1977))
         self.assertNoHoliday(f"{year}-02-06" for year in range(1900, 1974))
-        self.assertHolidayName(
-            name1, (f"{year}-02-06" for year in range(1974, 1977))
-        )
-        self.assertHolidayName(
-            name2, (f"{year}-02-06" for year in range(1977, 2050))
-        )
+        self.assertHolidayName(name1, (f"{year}-02-06" for year in range(1974, 1977)))
+        self.assertHolidayName(name2, (f"{year}-02-06" for year in range(1977, 2050)))
         obs_dt = ("2016-02-08", "2021-02-08", "2022-02-07")
         self.assertHolidayName(f"{name2} (Observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
@@ -112,9 +96,7 @@ class TestNZ(TestCase):
 
     def test_anzac_day(self):
         name = "Anzac Day"
-        self.assertHolidayName(
-            name, (f"{year}-04-25" for year in range(1921, 2050))
-        )
+        self.assertHolidayName(name, (f"{year}-04-25" for year in range(1921, 2050)))
         obs_dt = ("2015-04-27", "2020-04-27", "2021-04-26")
         self.assertHolidayName(f"{name} (Observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
@@ -133,9 +115,7 @@ class TestNZ(TestCase):
             "1952-06-02",
             "2023-06-05",
         )
-        self.assertHolidayName(
-            name1, (f"{year}-06-03" for year in range(1912, 1936))
-        )
+        self.assertHolidayName(name1, (f"{year}-06-03" for year in range(1912, 1936)))
 
         self.assertHolidayName(
             name2,
@@ -233,29 +213,17 @@ class TestNZ(TestCase):
 
     def test_christmas_day(self):
         name = "Christmas Day"
-        self.assertHolidayName(
-            name, (f"{year}-12-25" for year in range(1900, 2050))
-        )
+        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1900, 2050)))
         years_observed = (2004, 2005, 2010, 2011, 2016, 2021, 2022)
-        self.assertHolidayName(
-            f"{name} (Observed)", (f"{year}-12-27" for year in years_observed)
-        )
-        self.assertNoNonObservedHoliday(
-            (f"{year}-12-27" for year in years_observed)
-        )
+        self.assertHolidayName(f"{name} (Observed)", (f"{year}-12-27" for year in years_observed))
+        self.assertNoNonObservedHoliday((f"{year}-12-27" for year in years_observed))
 
     def test_boxing_day(self):
         name = "Boxing Day"
-        self.assertHolidayName(
-            name, (f"{year}-12-26" for year in range(1900, 2050))
-        )
+        self.assertHolidayName(name, (f"{year}-12-26" for year in range(1900, 2050)))
         years_observed = (2004, 2009, 2010, 2015, 2020, 2021)
-        self.assertHolidayName(
-            f"{name} (Observed)", (f"{year}-12-28" for year in years_observed)
-        )
-        self.assertNoNonObservedHoliday(
-            (f"{year}-12-28" for year in years_observed)
-        )
+        self.assertHolidayName(f"{name} (Observed)", (f"{year}-12-28" for year in years_observed))
+        self.assertNoNonObservedHoliday((f"{year}-12-28" for year in years_observed))
 
     def test_auckland_anniversary_day(self):
         self.assertHolidayName(
@@ -595,17 +563,11 @@ class TestNZ(TestCase):
 
     def test_all_holidays_present(self):
         all_subdivisions = set(NewZealand.subdivisions).union({"STC"})
-        nz_1969 = sum(
-            NewZealand(years=1969, subdiv=p) for p in all_subdivisions
-        )
+        nz_1969 = sum(NewZealand(years=1969, subdiv=p) for p in all_subdivisions)
         holidays_in_1969 = sum((nz_1969.get_list(key) for key in nz_1969), [])
-        nz_2015 = sum(
-            NewZealand(years=2015, subdiv=p) for p in all_subdivisions
-        )
+        nz_2015 = sum(NewZealand(years=2015, subdiv=p) for p in all_subdivisions)
         holidays_in_2015 = sum((nz_2015.get_list(key) for key in nz_2015), [])
-        nz_1974 = sum(
-            NewZealand(years=1974, subdiv=p) for p in all_subdivisions
-        )
+        nz_1974 = sum(NewZealand(years=1974, subdiv=p) for p in all_subdivisions)
         holidays_in_1974 = sum((nz_1974.get_list(key) for key in nz_1974), [])
         all_holidays = {
             "New Year's Day",
@@ -669,6 +631,4 @@ class TestNZ(TestCase):
             )
 
     def test_subdiv_deprecation(self):
-        self.assertDeprecatedSubdivisions(
-            "This subdivision is deprecated and will be removed"
-        )
+        self.assertDeprecatedSubdivisions("This subdivision is deprecated and will be removed")

@@ -31,9 +31,7 @@ class Bangladesh(HolidayBase):
         self[date(year, FEB, 21)] = "International Mother's language Day"
 
         # 17th March
-        self[date(year, MAR, 17)] = (
-            "Sheikh Mujibur Rahman's Birthday " "and Children's Day"
-        )
+        self[date(year, MAR, 17)] = "Sheikh Mujibur Rahman's Birthday and Children's Day"
 
         # 26th March
         self[date(year, MAR, 26)] = "Independence Day"

@@ -17,7 +17,7 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. Day off before
-#: ./holidays/countries/hungary.py:45 ./holidays/countries/hungary.py:72
+#: ./holidays/countries/hungary.py:45 ./holidays/countries/hungary.py:70
 #, c-format
 msgid "%s előtti pihenőnap"
 msgstr "Day off before %s"
@@ -34,76 +34,76 @@ msgid "Újév"
 msgstr "New Year's Day"
 
 #. National Day.
-#: ./holidays/countries/hungary.py:76 ./holidays/countries/hungary.py:117
+#: ./holidays/countries/hungary.py:74 ./holidays/countries/hungary.py:115
 msgid "Nemzeti ünnep"
 msgstr "National Day"
 
 #. Good Friday.
-#: ./holidays/countries/hungary.py:80
+#: ./holidays/countries/hungary.py:78
 msgid "Nagypéntek"
 msgstr "Good Friday"
 
 #. Easter.
-#: ./holidays/countries/hungary.py:83
+#: ./holidays/countries/hungary.py:81
 msgid "Húsvét"
 msgstr "Easter"
 
 #. Easter Monday.
-#: ./holidays/countries/hungary.py:87
+#: ./holidays/countries/hungary.py:85
 msgid "Húsvét Hétfő"
 msgstr "Easter Monday"
 
 #. Whit Sunday.
-#: ./holidays/countries/hungary.py:90
+#: ./holidays/countries/hungary.py:88
 msgid "Pünkösd"
 msgstr "Whit Sunday"
 
 #. Whit Monday.
-#: ./holidays/countries/hungary.py:94
+#: ./holidays/countries/hungary.py:92
 msgid "Pünkösdhétfő"
 msgstr "Whit Monday"
 
 #. Labor Day.
-#: ./holidays/countries/hungary.py:98
+#: ./holidays/countries/hungary.py:96
 msgid "A Munka ünnepe"
 msgstr "Labor Day"
 
 #. Bread Day.
-#: ./holidays/countries/hungary.py:107
+#: ./holidays/countries/hungary.py:105
 msgid "A kenyér ünnepe"
 msgstr "Bread Day"
 
 #. State Foundation Day.
-#: ./holidays/countries/hungary.py:109
+#: ./holidays/countries/hungary.py:107
 msgid "Az államalapítás ünnepe"
 msgstr "State Foundation Day"
 
 #. All Saints' Day.
-#: ./holidays/countries/hungary.py:121
+#: ./holidays/countries/hungary.py:119
 msgid "Mindenszentek"
 msgstr "All Saints' Day"
 
 #. Christmas Day.
-#: ./holidays/countries/hungary.py:124
+#: ./holidays/countries/hungary.py:122
 msgid "Karácsony"
 msgstr "Christmas Day"
 
 #. Second Day of Christmas.
-#: ./holidays/countries/hungary.py:129
+#: ./holidays/countries/hungary.py:127
 msgid "Karácsony másnapja"
 msgstr "Second Day of Christmas"
 
 #. Proclamation of Soviet Republic Day.
-#: ./holidays/countries/hungary.py:138
+#: ./holidays/countries/hungary.py:136
 msgid "A Tanácsköztársaság kikiáltásának ünnepe"
 msgstr "Proclamation of Soviet Republic Day"
 
 #. Liberation Day.
-#: ./holidays/countries/hungary.py:144
+#: ./holidays/countries/hungary.py:142
 msgid "A felszabadulás ünnepe"
 msgstr "Liberation Day"
 
 #. Great October Socialist Revolution Day.
-#: ./holidays/countries/hungary.py:149
+#: ./holidays/countries/hungary.py:147
 msgid "A nagy októberi szocialista forradalom ünnepe"
 msgstr "Great October Socialist Revolution Day"

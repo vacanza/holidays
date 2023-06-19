@@ -22,19 +22,14 @@ class TestHungary(TestCase):
         self.assertCountryAliases(Hungary, HU, HUN)
 
     def test_new_years_day(self):
-        self.assertHolidayName(
-            "Újév", (f"{year}-01-01" for year in range(1945, 2050))
-        )
+        self.assertHolidayName("Újév", (f"{year}-01-01" for year in range(1945, 2050)))
 
     def test_national_day_march(self):
         name = "Nemzeti ünnep"
         years_absent = set(range(1951, 1989))
         self.assertHolidayName(
             name,
-            (
-                f"{year}-03-15"
-                for year in set(range(1945, 2050)).difference(years_absent)
-            ),
+            (f"{year}-03-15" for year in set(range(1945, 2050)).difference(years_absent)),
         )
         self.assertNoHoliday(f"{year}-03-15" for year in years_absent)
         self.assertNoHolidayName(name, years_absent)
@@ -120,21 +115,15 @@ class TestHungary(TestCase):
             "2022-06-06",
             "2023-05-29",
         )
-        self.assertHolidayName(
-            name, set(range(1945, 2050)).difference(years_absent)
-        )
+        self.assertHolidayName(name, set(range(1945, 2050)).difference(years_absent))
         self.assertNoHolidayName(name, years_absent)
 
     def test_labour_day(self):
         name = "A Munka ünnepe"
-        self.assertHolidayName(
-            name, (f"{year}-05-01" for year in range(1946, 2050))
-        )
+        self.assertHolidayName(name, (f"{year}-05-01" for year in range(1946, 2050)))
         self.assertNoHoliday("1945-05-01")
         self.assertNoHolidayName(name, 1945)
-        self.assertHolidayName(
-            name, (f"{year}-05-02" for year in range(1950, 1954))
-        )
+        self.assertHolidayName(name, (f"{year}-05-02" for year in range(1950, 1954)))
 
     def test_foundation_day(self):
         name_1 = "A kenyér ünnepe"
@@ -148,32 +137,23 @@ class TestHungary(TestCase):
 
     def test_national_day_october(self):
         name = "Nemzeti ünnep"
-        self.assertHolidayName(
-            name, (f"{year}-10-23" for year in range(1991, 2050))
-        )
+        self.assertHolidayName(name, (f"{year}-10-23" for year in range(1991, 2050)))
         self.assertNoHoliday(f"{year}-10-23" for year in range(1945, 1991))
         self.assertNoHolidayName(name, range(1951, 1989))
 
     def test_all_saints_day(self):
         name = "Mindenszentek"
-        self.assertHolidayName(
-            name, (f"{year}-11-01" for year in range(1999, 2050))
-        )
+        self.assertHolidayName(name, (f"{year}-11-01" for year in range(1999, 2050)))
         self.assertNoHoliday(f"{year}-11-01" for year in range(1945, 1999))
         self.assertNoHolidayName(name, range(1945, 1999))
 
     def test_christmas(self):
-        self.assertHolidayName(
-            "Karácsony", (f"{year}-12-25" for year in range(1945, 2050))
-        )
+        self.assertHolidayName("Karácsony", (f"{year}-12-25" for year in range(1945, 2050)))
 
         name = "Karácsony másnapja"
         self.assertHolidayName(
             name,
-            (
-                f"{year}-12-26"
-                for year in set(range(1945, 2050)).difference({1955})
-            ),
+            (f"{year}-12-26" for year in set(range(1945, 2050)).difference({1955})),
         )
         self.assertNoHoliday("1955-12-26")
         self.assertNoHolidayName(name, 1955)
@@ -182,9 +162,7 @@ class TestHungary(TestCase):
         name = "A Tanácsköztársaság kikiáltásának ünnepe"
         years_present = set(range(1950, 1990))
         years_absent = set(range(1945, 2050)).difference(years_present)
-        self.assertHolidayName(
-            name, (f"{year}-03-21" for year in years_present)
-        )
+        self.assertHolidayName(name, (f"{year}-03-21" for year in years_present))
         self.assertNoHoliday(f"{year}-03-21" for year in years_absent)
         self.assertNoHolidayName(name, years_absent)
 
@@ -192,18 +170,14 @@ class TestHungary(TestCase):
         name = "A felszabadulás ünnepe"
         years_present = set(range(1950, 1990))
         years_absent = set(range(1945, 2050)).difference(years_present)
-        self.assertHolidayName(
-            name, (f"{year}-04-04" for year in years_present)
-        )
+        self.assertHolidayName(name, (f"{year}-04-04" for year in years_present))
         self.assertNoHolidayName(name, years_absent)
 
     def test_october_socialist_revolution_day(self):
         name = "A nagy októberi szocialista forradalom ünnepe"
         years_present = set(range(1950, 1989)).difference({1956})
         years_absent = set(range(1945, 2050)).difference(years_present)
-        self.assertHolidayName(
-            name, (f"{year}-11-07" for year in years_present)
-        )
+        self.assertHolidayName(name, (f"{year}-11-07" for year in years_present))
         self.assertNoHoliday(f"{year}-11-07" for year in years_absent)
         self.assertNoHolidayName(name, years_absent)
 

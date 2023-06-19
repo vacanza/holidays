@@ -186,9 +186,7 @@ class TestPortugal(TestCase):
 
     def test_madeira_day(self):
         name_made = "Dia da Região Autónoma da Madeira"
-        name_maco = (
-            "Dia da Região Autónoma da Madeira e das Comunidades Madeirenses"
-        )
+        name_maco = "Dia da Região Autónoma da Madeira e das Comunidades Madeirenses"
 
         self.assertNoHolidayName(name_made, Portugal(years=1978, subdiv="30"))
         self.assertNoHolidayName(

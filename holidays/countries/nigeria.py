@@ -14,13 +14,10 @@ from datetime import timedelta as td
 
 from holidays.constants import FEB, MAY, JUN, OCT
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, IslamicHolidays
-from holidays.holiday_groups import InternationalHolidays
+from holidays.holiday_groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 
 
-class Nigeria(
-    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
-):
+class Nigeria(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Nigeria
     """
@@ -64,9 +61,7 @@ class Nigeria(
             observed_dates.add(
                 self._add_holiday(
                     "Democracy Day",
-                    date(year, JUN, 12)
-                    if year >= 2019
-                    else date(year, MAY, 29),
+                    date(year, JUN, 12) if year >= 2019 else date(year, MAY, 29),
                 )
             )
 
@@ -83,17 +78,13 @@ class Nigeria(
         # This is an estimate
         # date of observance is announced yearly
         observed_dates.update(self._add_eid_al_fitr_day("Eid-el-Fitr"))
-        observed_dates.update(
-            self._add_eid_al_fitr_day_two("Eid-el-Fitr Holiday")
-        )
+        observed_dates.update(self._add_eid_al_fitr_day_two("Eid-el-Fitr Holiday"))
 
         # Eid al-Adha - Scarfice Festive
         # This is an estimate
         # date of observance is announced yearly
         observed_dates.update(self._add_eid_al_adha_day("Eid-el-Kabir"))
-        observed_dates.update(
-            self._add_eid_al_adha_day_two("Eid-el-Kabir Holiday")
-        )
+        observed_dates.update(self._add_eid_al_adha_day_two("Eid-el-Kabir Holiday"))
 
         # Birthday of Prophet Muhammad
         observed_dates.update(self._add_mawlid_day("Eid-el-Mawlid"))
@@ -107,9 +98,7 @@ class Nigeria(
                 while self._is_weekend(obs_date) or obs_date in observed_dates:
                     obs_date += td(days=+1)
                 for hol_name in self.get_list(hol_date):
-                    observed_dates.add(
-                        self._add_holiday("%s (Observed)" % hol_name, obs_date)
-                    )
+                    observed_dates.add(self._add_holiday("%s (Observed)" % hol_name, obs_date))
 
 
 class NG(Nigeria):

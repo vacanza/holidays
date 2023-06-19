@@ -122,9 +122,7 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
             # Khmer New Year's Day
             sangkranta = tr("ពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ")
             sangkranta_years_apr14 = {2017, 2018, 2021, 2022, 2023}
-            dt = self._add_holiday(
-                sangkranta, APR, 14 if year in sangkranta_years_apr14 else 13
-            )
+            dt = self._add_holiday(sangkranta, APR, 14 if year in sangkranta_years_apr14 else 13)
             self._add_holiday(sangkranta, dt + td(days=+1))
             self._add_holiday(sangkranta, dt + td(days=+2))
 

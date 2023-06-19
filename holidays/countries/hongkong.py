@@ -16,8 +16,11 @@ from typing import Optional
 from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import JUN, JUL, AUG, SEP, OCT, MON
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChineseCalendarHolidays, ChristianHolidays
-from holidays.holiday_groups import InternationalHolidays
+from holidays.holiday_groups import (
+    ChineseCalendarHolidays,
+    ChristianHolidays,
+    InternationalHolidays,
+)
 
 
 class HongKong(
@@ -112,9 +115,7 @@ class HongKong(
         name = "Ching Ming Festival"
         ching_ming_date = self._qingming_date
         if self.observed and ching_ming_date == easter_monday_date:
-            self._add_holiday(
-                f"{day_following}{name}", ching_ming_date + td(days=+1)
-            )
+            self._add_holiday(f"{day_following}{name}", ching_ming_date + td(days=+1))
         elif ching_ming_date not in {
             self._easter_sunday + td(days=-2),
             self._easter_sunday + td(days=-1),
@@ -169,9 +170,7 @@ class HongKong(
                         mid_autumn_date + td(days=+2),
                     )
             else:
-                self._add_mid_autumn_festival_day_two(
-                    f"The day following the {name}"
-                )
+                self._add_mid_autumn_festival_day_two(f"The day following the {name}")
         else:
             self._add_mid_autumn_festival_day_two(name)
 

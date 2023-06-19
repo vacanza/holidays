@@ -84,9 +84,7 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
                 2012: date(year, JUN, 4),
                 2022: date(year, JUN, 2),
             }
-            dt = spring_bank_dates.get(
-                year, _get_nth_weekday_of_month(-1, MON, MAY, year)
-            )
+            dt = spring_bank_dates.get(year, _get_nth_weekday_of_month(-1, MON, MAY, year))
             self._add_holiday("Spring Bank Holiday", dt)
 
         # Christmas Day
@@ -159,14 +157,10 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_new_years_day_three("%s (Observed)" % name)
 
         # St. Patrick's Day
-        self._add_observed(
-            self._add_holiday("St. Patrick's Day [Northern Ireland]", MAR, 17)
-        )
+        self._add_observed(self._add_holiday("St. Patrick's Day [Northern Ireland]", MAR, 17))
 
         # Easter Monday
-        self._add_easter_monday(
-            "Easter Monday [England/Wales/Northern Ireland]"
-        )
+        self._add_easter_monday("Easter Monday [England/Wales/Northern Ireland]")
 
         # Battle of the Boyne
         self._add_holiday("Battle of the Boyne [Northern Ireland]", JUL, 12)

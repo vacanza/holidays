@@ -1,5 +1,5 @@
 [tool.black]
-line-length = 79
+line-length = 99
 target-version = ['py37', 'py38', 'py39', 'py310', 'py311']
 exclude = '''
 /(
@@ -46,8 +46,8 @@ exclude_lines = [
 
 [tool.isort]
 known_first_party = ["holidays", "tests"]
-line_length = 79
-multi_line_output = 9
+line_length = 99
+multi_line_output = 3
 no_inline_sort = true
 profile = "black"
 skip = ["docs"]

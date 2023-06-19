@@ -10,8 +10,7 @@
 #  License: MIT (see LICENSE file)
 #  Copyright: Kateryna Golovanova <kate@kgthreads.com>, 2022
 
-from holidays.countries.bosnia_and_herzegovina import BosniaAndHerzegovina, BA
-from holidays.countries.bosnia_and_herzegovina import BIH
+from holidays.countries.bosnia_and_herzegovina import BosniaAndHerzegovina, BA, BIH
 from tests.common import TestCase
 
 
@@ -28,9 +27,7 @@ class TestBosniaAndHerzegovina(TestCase):
         self.assertCountryAliases(BosniaAndHerzegovina, BA, BIH)
 
     def test_new_years(self):
-        self.assertHolidayName(
-            "Nova Godina", (f"{year}-01-01" for year in range(2000, 2030))
-        )
+        self.assertHolidayName("Nova Godina", (f"{year}-01-01" for year in range(2000, 2030)))
         self.assertHolidayName(
             "Drugi dan Nove Godine",
             (f"{year}-01-02" for year in range(2000, 2030)),
@@ -46,12 +43,8 @@ class TestBosniaAndHerzegovina(TestCase):
         self.assertHolidayName(name, self.fbih_holidays, dt)
         self.assertHolidayName(name, self.bd_holidays, dt)
         self.assertNoHoliday(dt)
-        self.assertNoNonObservedHoliday(
-            BosniaAndHerzegovina(subdiv="FBiH", observed=False), dt
-        )
-        self.assertNoNonObservedHoliday(
-            BosniaAndHerzegovina(subdiv="BD", observed=False), dt
-        )
+        self.assertNoNonObservedHoliday(BosniaAndHerzegovina(subdiv="FBiH", observed=False), dt)
+        self.assertNoNonObservedHoliday(BosniaAndHerzegovina(subdiv="BD", observed=False), dt)
 
     def test_orthodox_christmas_eve(self):
         name = "Pravoslavno Badnje veče"
@@ -67,9 +60,7 @@ class TestBosniaAndHerzegovina(TestCase):
         )
 
     def test_orthodox_christmas(self):
-        self.assertHolidayName(
-            "Božić (Божић)", (f"{year}-01-07" for year in range(2000, 2030))
-        )
+        self.assertHolidayName("Božić (Божић)", (f"{year}-01-07" for year in range(2000, 2030)))
 
     def test_orthodox_new_year(self):
         self.assertHolidayName(
@@ -271,8 +262,7 @@ class TestBosniaAndHerzegovina(TestCase):
 
     def test_dayton_agreement_day(self):
         self.assertHolidayName(
-            "Dan uspostave Opšteg okvirnog sporazuma za mir u "
-            "Bosni i Hercegovini",
+            "Dan uspostave Opšteg okvirnog sporazuma za mir u Bosni i Hercegovini",
             self.rs_holidays,
             (f"{year}-11-21" for year in range(2000, 2030)),
         )

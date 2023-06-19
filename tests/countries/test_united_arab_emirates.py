@@ -40,12 +40,8 @@ class TestUnitedArabEmirates(TestCase):
 
     def test_commemoration_day_since_2015(self):
         self.assertNoHoliday("2014-11-30")
-        self.assertNoHolidayName(
-            "Commemoration Day", UnitedArabEmirates(years=2014)
-        )
-        self.assertHoliday(
-            "2015-11-30", "2016-11-30", "2017-11-30", "2018-11-30"
-        )
+        self.assertNoHolidayName("Commemoration Day", UnitedArabEmirates(years=2014))
+        self.assertHoliday("2015-11-30", "2016-11-30", "2017-11-30", "2018-11-30")
         self.assertNoHoliday("2019-11-30")
         self.assertHoliday("2019-12-01")
 

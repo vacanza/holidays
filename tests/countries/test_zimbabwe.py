@@ -37,9 +37,7 @@ class TestZimbabwe(TestCase):
             )
 
         self.assertNoHoliday(f"{year}-02-21" for year in range(1988, 2018))
-        self.assertNoHolidayName(
-            "Robert Gabriel Mugabe National Youth Day", range(1988, 2018)
-        )
+        self.assertNoHolidayName("Robert Gabriel Mugabe National Youth Day", range(1988, 2018))
         self.assertHoliday(f"{year}-02-21" for year in range(2018, 2050))
 
     def test_easter(self):

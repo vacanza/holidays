@@ -62,9 +62,7 @@ class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # New Year's Day.
         name = self.tr("Újév")
-        self._add_observed(
-            self._add_new_years_day(name), before=False, since=2014
-        )
+        self._add_observed(self._add_new_years_day(name), before=False, since=2014)
 
         # The last day of the year is an observed day off if New Year's Day
         # falls on a Tuesday.

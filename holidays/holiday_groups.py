@@ -11,7 +11,12 @@
 
 # flake8: noqa: F401
 
-from holidays.groups import BuddhistCalendarHolidays, ChineseCalendarHolidays
-from holidays.groups import ChristianHolidays, HinduCalendarHolidays
-from holidays.groups import InternationalHolidays, IslamicHolidays
-from holidays.groups import ThaiCalendarHolidays
+from holidays.groups import (
+    BuddhistCalendarHolidays,
+    ChineseCalendarHolidays,
+    ChristianHolidays,
+    HinduCalendarHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    ThaiCalendarHolidays,
+)

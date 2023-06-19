@@ -12,13 +12,10 @@
 from holidays.calendars import JULIAN_CALENDAR
 from holidays.constants import JAN, APR, JUN, JUL, OCT
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, IslamicHolidays
-from holidays.holiday_groups import InternationalHolidays
+from holidays.holiday_groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 
 
-class Egypt(
-    HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolidays
-):
+class Egypt(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolidays):
     # Holidays here are estimates, it is common for the day to be pushed
     # if falls in a weekend, although not a rule that can be implemented.
     # Holidays after 2020: the following four moving date holidays whose exact

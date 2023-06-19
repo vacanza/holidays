@@ -38,9 +38,7 @@ class Serbia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_observed(self, dt: date, days: int = +1) -> None:
         if self.observed and self._is_sunday(dt):
-            self._add_holiday(
-                self.tr("%s (слободан дан)") % self[dt], dt + td(days)
-            )
+            self._add_holiday(self.tr("%s (слободан дан)") % self[dt], dt + td(days))
 
     def _populate(self, year):
         super()._populate(year)

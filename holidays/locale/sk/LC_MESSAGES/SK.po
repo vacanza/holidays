@@ -31,71 +31,71 @@ msgid "Zjavenie Pána (Traja králi a vianočnýsviatok pravoslávnych kresťano
 msgstr ""
 
 #. Good Friday.
-#: ./holidays/countries/slovakia.py:64
+#: ./holidays/countries/slovakia.py:61
 msgid "Veľký piatok"
 msgstr ""
 
 #. Easter Monday.
-#: ./holidays/countries/slovakia.py:67
+#: ./holidays/countries/slovakia.py:64
 msgid "Veľkonočný pondelok"
 msgstr ""
 
 #. Labor Day.
-#: ./holidays/countries/slovakia.py:70
+#: ./holidays/countries/slovakia.py:67
 msgid "Sviatok práce"
 msgstr ""
 
 #. Day of Victory over Fascism.
-#: ./holidays/countries/slovakia.py:75
+#: ./holidays/countries/slovakia.py:72
 msgid "Deň víťazstva nad fašizmom"
 msgstr ""
 
 #. St. Cyril and Methodius Day.
-#: ./holidays/countries/slovakia.py:79
+#: ./holidays/countries/slovakia.py:76
 msgid "Sviatok svätého Cyrila a svätého Metoda"
 msgstr ""
 
 #. Slovak National Uprising Anniversary.
-#: ./holidays/countries/slovakia.py:86
+#: ./holidays/countries/slovakia.py:83
 msgid "Výročie Slovenského národného povstania"
 msgstr ""
 
 #. Constitution Day.
-#: ./holidays/countries/slovakia.py:92
+#: ./holidays/countries/slovakia.py:89
 msgid "Deň Ústavy Slovenskej republiky"
 msgstr ""
 
 #. Day of Our Lady of the Seven Sorrows.
-#: ./holidays/countries/slovakia.py:95
+#: ./holidays/countries/slovakia.py:92
 msgid "Sedembolestná Panna Mária"
 msgstr ""
 
 #. Day of the Establishment of the Independent Czech-Slovak State.
-#: ./holidays/countries/slovakia.py:101
+#: ./holidays/countries/slovakia.py:98
 msgid "Deň vzniku samostatného česko-slovenského štátu"
 msgstr ""
 
 #. All Saints' Day.
-#: ./holidays/countries/slovakia.py:107
+#: ./holidays/countries/slovakia.py:104
 msgid "Sviatok Všetkých svätých"
 msgstr ""
 
 #. Struggle for Freedom and Democracy Day.
-#: ./holidays/countries/slovakia.py:111
+#: ./holidays/countries/slovakia.py:108
 msgid "Deň boja za slobodu a demokraciu"
 msgstr ""
 
 #. Christmas Eve.
-#: ./holidays/countries/slovakia.py:114
+#: ./holidays/countries/slovakia.py:111
 msgid "Štedrý deň"
 msgstr ""
 
 #. Christmas Day.
-#: ./holidays/countries/slovakia.py:117
+#: ./holidays/countries/slovakia.py:114
 msgid "Prvý sviatok vianočný"
 msgstr ""
 
 #. Second Day of Christmas.
-#: ./holidays/countries/slovakia.py:120
+#: ./holidays/countries/slovakia.py:117
 msgid "Druhý sviatok vianočný"
 msgstr ""

@@ -12,13 +12,10 @@
 from holidays.calendars import JULIAN_CALENDAR
 from holidays.constants import MAY, SEP, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, IslamicHolidays
-from holidays.holiday_groups import InternationalHolidays
+from holidays.holiday_groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 
 
-class NorthMacedonia(
-    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
-):
+class NorthMacedonia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_North_Macedonia
     """
@@ -50,9 +47,7 @@ class NorthMacedonia(
 
         self._add_holiday("Day of Macedonian Uprising in 1941", OCT, 11)
 
-        self._add_holiday(
-            "Day of the Macedonian Revolutionary Struggle", OCT, 23
-        )
+        self._add_holiday("Day of the Macedonian Revolutionary Struggle", OCT, 23)
 
         self._add_holiday("Saint Clement of Ohrid Day", DEC, 8)
 

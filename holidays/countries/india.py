@@ -13,13 +13,10 @@ import warnings
 
 from holidays.constants import JAN, MAR, APR, MAY, JUN, AUG, OCT, NOV
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
-from holidays.holiday_groups import IslamicHolidays
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 
 
-class India(
-    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays
-):
+class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
     """
     https://www.india.gov.in/calendar
     https://www.india.gov.in/state-and-ut-holiday-calendar
@@ -100,9 +97,7 @@ class India(
         # https://github.com/facebook/prophet/blob/main/python/prophet/hdays.py
         # Warnings kept in place so that users are aware
         if year < 2001 or year > 2030:
-            warning_msg = (
-                "Diwali and Holi holidays available from 2001 to 2030 only"
-            )
+            warning_msg = "Diwali and Holi holidays available from 2001 to 2030 only"
             warnings.warn(warning_msg, Warning)
 
         # https://www.timeanddate.com/holidays/india/diwali
@@ -255,9 +250,7 @@ class India(
     def _add_subdiv_or_holidays(self):
         self._add_holiday("Odisha Day (Utkala Dibasa)", APR, 1)
         self._add_holiday("Dr. B. R. Ambedkar's Jayanti", APR, 14)
-        self._add_holiday(
-            "Maha Vishuva Sankranti / Pana" " Sankranti", APR, 15
-        )
+        self._add_holiday("Maha Vishuva Sankranti / Pana Sankranti", APR, 15)
 
     # Rajasthan.
     def _add_subdiv_rj_holidays(self):

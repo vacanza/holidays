@@ -40,9 +40,7 @@ class TestZambia(TestCase):
 
     def test_holidays(self):
         self.assertNoHoliday(f"{year}-03-08" for year in range(1965, 1991))
-        self.assertNoHolidayName(
-            "International Women's Day", range(1965, 1991)
-        )
+        self.assertNoHolidayName("International Women's Day", range(1965, 1991))
         self.assertHoliday(f"{year}-03-08" for year in range(1991, 2050))
 
         self.assertNoHoliday(f"{year}-04-28" for year in range(1965, 2022))

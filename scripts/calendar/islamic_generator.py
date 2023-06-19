@@ -85,9 +85,7 @@ def generate_data():
             year_dates.append(YEAR_TEMPLATE.format(year=year, dates=dates_str))
         year_dates_str = "\n".join(year_dates)
         holiday_data.append(
-            HOLIDAY_DATA_TEMPLATE.format(
-                hol_name=hol_name, year_dates=year_dates_str
-            )
+            HOLIDAY_DATA_TEMPLATE.format(hol_name=hol_name, year_dates=year_dates_str)
         )
     holiday_data_str = "\n".join(holiday_data)
     class_str = CLASS_TEMPLATE.format(

@@ -22,9 +22,7 @@ class ChineseCalendarHolidays:
     Chinese lunisolar calendar holidays.
     """
 
-    def __init__(
-        self, calendar=_ChineseLunisolar(), show_estimated=False
-    ) -> None:
+    def __init__(self, calendar=_ChineseLunisolar(), show_estimated=False) -> None:
         self._chinese_calendar = calendar
         self._show_estimated = show_estimated
 

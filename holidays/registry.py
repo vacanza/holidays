@@ -227,11 +227,7 @@ class EntityLoader:
         entity_length: Union[int, Iterable[int]],
         include_aliases: bool = True,
     ) -> Iterable[str]:
-        entity_length = (
-            {entity_length}
-            if isinstance(entity_length, int)
-            else set(entity_length)
-        )
+        entity_length = {entity_length} if isinstance(entity_length, int) else set(entity_length)
         for entities in container.values():
             for entity in entities:
                 if len(entity) in entity_length:
@@ -256,9 +252,7 @@ class EntityLoader:
         :param include_aliases:
             Whether to include entity aliases(e.g. TAR for ECB, XNYS for NYSE).
         """
-        return EntityLoader._get_entity_codes(
-            FINANCIAL, (3, 4), include_aliases
-        )
+        return EntityLoader._get_entity_codes(FINANCIAL, (3, 4), include_aliases)
 
     @staticmethod
     def load(prefix: str, scope: Dict) -> None:
@@ -267,9 +261,7 @@ class EntityLoader:
         for module, entities in entity_mapping.items():
             scope.update(
                 {
-                    entity: EntityLoader(
-                        f"holidays.{prefix}.{module}.{entity}"
-                    )
+                    entity: EntityLoader(f"holidays.{prefix}.{module}.{entity}")
                     for entity in entities
                 }
             )

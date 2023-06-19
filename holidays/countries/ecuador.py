@@ -64,9 +64,7 @@ class Ecuador(HolidayBase, ChristianHolidays, InternationalHolidays):
             elif self._is_sunday(dt) and after:
                 obs_date = dt + td(days=+1)
             if obs_date:
-                self._add_holiday(
-                    self.tr("%s (Observado)") % self[dt], obs_date
-                )
+                self._add_holiday(self.tr("%s (Observado)") % self[dt], obs_date)
 
     def _populate(self, year):
         super()._populate(year)
@@ -78,9 +76,7 @@ class Ecuador(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self.observed and year >= 2017:
             dec_31 = (DEC, 31)
             if self._is_friday(*dec_31):
-                self._add_holiday(
-                    self.tr("%s (Observado)") % self.tr(name), *dec_31
-                )
+                self._add_holiday(self.tr("%s (Observado)") % self.tr(name), *dec_31)
 
         # Carnival.
         name = tr("Carnaval")

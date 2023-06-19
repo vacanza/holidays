@@ -59,26 +59,26 @@ msgid ""
 msgstr ""
 
 #. Europe Day.
-#: ./holidays/countries/moldova.py:84
+#: ./holidays/countries/moldova.py:81
 msgid "Ziua Europei"
 msgstr ""
 
 #. International Children's Day
-#: ./holidays/countries/moldova.py:88
+#: ./holidays/countries/moldova.py:85
 msgid "Ziua Ocrotirii Copilului"
 msgstr ""
 
 #. Republic of Moldova Independence Day
-#: ./holidays/countries/moldova.py:91
+#: ./holidays/countries/moldova.py:88
 msgid "Ziua independenţei Republicii Moldova"
 msgstr ""
 
 #. National Language Day.
-#: ./holidays/countries/moldova.py:94
+#: ./holidays/countries/moldova.py:91
 msgid "Limba noastră"
 msgstr ""
 
 #. Christmas (by new style).
-#: ./holidays/countries/moldova.py:99
+#: ./holidays/countries/moldova.py:96
 msgid "Naşterea lui Iisus Hristos (Crăciunul pe stil nou)"
 msgstr ""

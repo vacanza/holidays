@@ -79,9 +79,7 @@ class Mexico(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 1970 and (year - 1970) % 6 == 0:
             # Change of Federal Government.
-            self._add_holiday(
-                tr("Transmisión del Poder Ejecutivo Federal"), DEC, 1
-            )
+            self._add_holiday(tr("Transmisión del Poder Ejecutivo Federal"), DEC, 1)
 
         # Christmas Day.
         self._add_christmas_day(tr("Navidad"))

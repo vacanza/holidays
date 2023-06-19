@@ -13,9 +13,7 @@ from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class EuropeanCentralBank(
-    HolidayBase, ChristianHolidays, InternationalHolidays
-):
+class EuropeanCentralBank(HolidayBase, ChristianHolidays, InternationalHolidays):
     # https://en.wikipedia.org/wiki/TARGET2
     # http://www.ecb.europa.eu/press/pr/date/2000/html/pr001214_4.en.html
 

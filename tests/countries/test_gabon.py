@@ -26,13 +26,10 @@ class TestGabon(TestCase):
 
     def test_womens_rights_day(self):
         name = "Women's Rights Day"
-        self.assertHolidayName(
-            name, (f"{year}-04-17" for year in range(2015, 2050))
-        )
+        self.assertHolidayName(name, (f"{year}-04-17" for year in range(2015, 2050)))
         self.assertNoHolidayName(name, Gabon(years=range(1961, 2015)))
         self.assertNoHoliday(
-            f"{year}-04-17"
-            for year in set(range(1961, 2015)).difference({1995, 1997, 2006})
+            f"{year}-04-17" for year in set(range(1961, 2015)).difference({1995, 1997, 2006})
         )
 
     def test_2022(self):

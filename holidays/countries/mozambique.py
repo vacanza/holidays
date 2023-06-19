@@ -43,36 +43,22 @@ class Mozambique(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         self._add_carnival_tuesday("Carnaval")
 
-        self._add_observed(
-            self._add_holiday("Dia dos Heróis Moçambicanos", FEB, 3)
-        )
+        self._add_observed(self._add_holiday("Dia dos Heróis Moçambicanos", FEB, 3))
 
-        self._add_observed(
-            self._add_holiday("Dia da Mulher Moçambicana", APR, 7)
-        )
+        self._add_observed(self._add_holiday("Dia da Mulher Moçambicana", APR, 7))
 
-        self._add_observed(
-            self._add_holiday("Dia Mundial do Trabalho", MAY, 1)
-        )
+        self._add_observed(self._add_holiday("Dia Mundial do Trabalho", MAY, 1))
 
-        self._add_observed(
-            self._add_holiday("Dia da Independência Nacional", JUN, 25)
-        )
+        self._add_observed(self._add_holiday("Dia da Independência Nacional", JUN, 25))
 
         self._add_observed(self._add_holiday("Dia da Vitória", SEP, 7))
 
-        self._add_observed(
-            self._add_holiday("Dia das Forças Armadas", SEP, 25)
-        )
+        self._add_observed(self._add_holiday("Dia das Forças Armadas", SEP, 25))
 
         if year >= 1993:
-            self._add_observed(
-                self._add_holiday("Dia da Paz e Reconciliação", OCT, 4)
-            )
+            self._add_observed(self._add_holiday("Dia da Paz e Reconciliação", OCT, 4))
 
-        self._add_observed(
-            self._add_christmas_day("Dia de Natal e da Família")
-        )
+        self._add_observed(self._add_christmas_day("Dia de Natal e da Família"))
 
 
 class MZ(Mozambique):

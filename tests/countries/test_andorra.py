@@ -40,9 +40,7 @@ class TestAndorra(TestCase):
         )
 
         # AD-02, Canillo.
-        self.assertHoliday(
-            Andorra(subdiv="02"), "2022-07-16", "2022-07-17", "2022-07-18"
-        )
+        self.assertHoliday(Andorra(subdiv="02"), "2022-07-16", "2022-07-17", "2022-07-18")
 
         # AD-03, Encamp.
         self.assertHoliday(Andorra(subdiv="03"), "2022-08-15", "2022-08-16")
@@ -63,9 +61,7 @@ class TestAndorra(TestCase):
         )
 
         # AD-07, Andorra la Vella.
-        self.assertHoliday(
-            Andorra(subdiv="07"), "2022-08-06", "2022-08-07", "2022-08-08"
-        )
+        self.assertHoliday(Andorra(subdiv="07"), "2022-08-06", "2022-08-07", "2022-08-08")
 
         # AD-08, Escaldes-Engordany.
         self.assertHoliday(Andorra(subdiv="08"), "2022-07-25", "2022-07-26")
@@ -89,9 +85,7 @@ class TestAndorra(TestCase):
         )
 
         # AD-02, Canillo.
-        self.assertHoliday(
-            Andorra(subdiv="02"), "2023-07-15", "2023-07-16", "2023-07-17"
-        )
+        self.assertHoliday(Andorra(subdiv="02"), "2023-07-15", "2023-07-16", "2023-07-17")
 
         # AD-03, Encamp.
         self.assertHoliday(Andorra(subdiv="03"), "2023-08-15", "2023-08-16")
@@ -112,9 +106,7 @@ class TestAndorra(TestCase):
         )
 
         # AD-07, Andorra la Vella.
-        self.assertHoliday(
-            Andorra(subdiv="07"), "2023-08-05", "2023-08-06", "2023-08-07"
-        )
+        self.assertHoliday(Andorra(subdiv="07"), "2023-08-05", "2023-08-06", "2023-08-07")
 
         # AD-08, Escaldes-Engordany.
         self.assertHoliday(Andorra(subdiv="08"), "2023-07-25", "2023-07-26")

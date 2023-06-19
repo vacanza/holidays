@@ -424,9 +424,7 @@ class _HinduLunisolar:
         2099: (JAN, 6),
     }
 
-    def _get_holiday(
-        self, holiday: str, year: int
-    ) -> Tuple[Optional[date], bool]:
+    def _get_holiday(self, holiday: str, year: int) -> Tuple[Optional[date], bool]:
         estimated_dates = getattr(self, f"{holiday}_DATES", {})
         exact_dates = getattr(
             self,

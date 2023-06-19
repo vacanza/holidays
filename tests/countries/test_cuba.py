@@ -26,12 +26,8 @@ class TestCuba(TestCase):
 
     def test_assault_moncada_day(self):
         name = "Conmemoración del asalto a Moncada"
-        self.assertHolidayName(
-            name, (f"{year}-07-25" for year in range(1959, 2050))
-        )
-        self.assertHolidayName(
-            name, (f"{year}-07-27" for year in range(1959, 2050))
-        )
+        self.assertHolidayName(name, (f"{year}-07-25" for year in range(1959, 2050)))
+        self.assertHolidayName(name, (f"{year}-07-27" for year in range(1959, 2050)))
 
     def test_national_rebellion_day(self):
         self.assertHolidayName(

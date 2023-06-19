@@ -38,9 +38,7 @@ class TestMozambique(TestCase):
             )
 
         self.assertNoHoliday(f"{year}-10-04" for year in range(1975, 1993))
-        self.assertNoHolidayName(
-            "Dia da Paz e Reconciliação", range(1975, 1993)
-        )
+        self.assertNoHolidayName("Dia da Paz e Reconciliação", range(1975, 1993))
         self.assertHoliday(f"{year}-10-04" for year in range(1993, 2050))
 
     def test_easter(self):

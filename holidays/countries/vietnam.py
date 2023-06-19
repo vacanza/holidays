@@ -13,8 +13,7 @@ from datetime import timedelta as td
 
 from holidays.constants import APR, SEP
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChineseCalendarHolidays
-from holidays.holiday_groups import InternationalHolidays
+from holidays.holiday_groups import ChineseCalendarHolidays, InternationalHolidays
 
 
 class Vietnam(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
@@ -36,9 +35,7 @@ class Vietnam(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
         observed_dates = set()
 
         # New Year's Day
-        observed_dates.add(
-            self._add_new_years_day("International New Year's Day")
-        )
+        observed_dates.add(self._add_new_years_day("International New Year's Day"))
 
         # Lunar New Year
         self._add_chinese_new_years_eve("Vietnamese New Year's Eve")
@@ -51,14 +48,10 @@ class Vietnam(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
         # Vietnamese Kings' Commemoration Day
         # https://en.wikipedia.org/wiki/H%C3%B9ng_Kings%27_Festival
         if year >= 2007:
-            observed_dates.add(
-                self._add_hung_kings_day("Hung Kings Commemoration Day")
-            )
+            observed_dates.add(self._add_hung_kings_day("Hung Kings Commemoration Day"))
 
         # Liberation Day/Reunification Day
-        observed_dates.add(
-            self._add_holiday("Liberation Day/Reunification Day", APR, 30)
-        )
+        observed_dates.add(self._add_holiday("Liberation Day/Reunification Day", APR, 30))
 
         # International Labor Day
         observed_dates.add(self._add_labor_day("International Labor Day"))
@@ -71,14 +64,9 @@ class Vietnam(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
                 if not self._is_weekend(dt):
                     continue
                 next_workday = dt + td(days=+1)
-                while (
-                    self._is_weekend(next_workday)
-                    or next_workday in observed_dates
-                ):
+                while self._is_weekend(next_workday) or next_workday in observed_dates:
                     next_workday += td(days=+1)
-                observed_dates.add(
-                    self._add_holiday(f"{self[dt]} (Observed)", next_workday)
-                )
+                observed_dates.add(self._add_holiday(f"{self[dt]} (Observed)", next_workday))
 
 
 class VN(Vietnam):

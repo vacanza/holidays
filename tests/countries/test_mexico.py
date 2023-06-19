@@ -52,9 +52,7 @@ class TestMexico(TestCase):
     def test_benito_juarez(self):
         self.assertHoliday(f"{year}-03-21" for year in range(1917, 2007))
         self.assertNoHoliday(f"{year}-03-21" for year in range(1900, 1917))
-        self.assertNoHolidayName(
-            "Natalicio de Benito Juárez", range(1900, 1917)
-        )
+        self.assertNoHolidayName("Natalicio de Benito Juárez", range(1900, 1917))
         self.assertHoliday(
             "2007-03-19",
             "2008-03-17",
@@ -122,9 +120,7 @@ class TestMexico(TestCase):
             "2024-12-01",
         )
         self.assertNoHoliday(
-            f"{year}-12-01"
-            for year in range(1970, 2050)
-            if (year - 1970) % 6 > 0
+            f"{year}-12-01" for year in range(1970, 2050) if (year - 1970) % 6 > 0
         )
         name = "Transmisión del Poder Ejecutivo Federal"
         self.assertNoHolidayName(name, range(1900, 1970))

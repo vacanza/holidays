@@ -16,67 +16,67 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. Sultan Hassanal Bolkiah's Golden Jubilee celebration
-#: ./holidays/countries/brunei.py:64
+#: ./holidays/countries/brunei.py:67
 msgid "Jubli Emas Sultan Hassanal Bolkiah"
 msgstr ""
 
-#: ./holidays/countries/brunei.py:59
+#: ./holidays/countries/brunei.py:62
 #, c-format
 msgid "%s* (*anggaran)"
 msgstr ""
 
-#: ./holidays/countries/brunei.py:88 ./holidays/countries/brunei.py:199
+#: ./holidays/countries/brunei.py:90 ./holidays/countries/brunei.py:200
 #, c-format
 msgid "%s - Diperhatikan"
 msgstr ""
 
 #. New Year's Day
-#: ./holidays/countries/brunei.py:97
+#: ./holidays/countries/brunei.py:98
 msgid "Awal Tahun Masihi"
 msgstr ""
 
 #. Lunar New Year
-#: ./holidays/countries/brunei.py:103
+#: ./holidays/countries/brunei.py:104
 msgid "Tahun Baru Cina"
 msgstr ""
 
 #. National Day
-#: ./holidays/countries/brunei.py:110
+#: ./holidays/countries/brunei.py:111
 msgid "Hari Kebangsaan"
 msgstr ""
 
 #. Armed Forces Day
-#: ./holidays/countries/brunei.py:120
+#: ./holidays/countries/brunei.py:121
 msgid "Hari Angkatan Bersenjata Diraja Brunei"
 msgstr ""
 
 #. Sultan Hassanal Bolkiah's Birthday
-#: ./holidays/countries/brunei.py:133
+#: ./holidays/countries/brunei.py:134
 msgid "Hari Keputeraan KDYMM Sultan Brunei"
 msgstr ""
 
 #. Christmas Day
-#: ./holidays/countries/brunei.py:143
+#: ./holidays/countries/brunei.py:144
 msgid "Hari Natal"
 msgstr ""
 
 #. Isra Mi'raj
-#: ./holidays/countries/brunei.py:152
+#: ./holidays/countries/brunei.py:153
 msgid "Israk dan Mikraj"
 msgstr ""
 
 #. First Day of Ramadan
-#: ./holidays/countries/brunei.py:159
+#: ./holidays/countries/brunei.py:160
 msgid "Hari Pertama Berpuasa"
 msgstr ""
 
 #. Anniversary of the revelation of the Quran
-#: ./holidays/countries/brunei.py:166
+#: ./holidays/countries/brunei.py:167
 msgid "Hari Nuzul Al-Quran"
 msgstr ""
 
 #. Eid al-Fitr
-#: ./holidays/countries/brunei.py:181
+#: ./holidays/countries/brunei.py:182
 msgid "Hari Raya Aidil Fitri"
 msgstr ""
 

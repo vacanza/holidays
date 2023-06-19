@@ -13,8 +13,7 @@ from datetime import timedelta as td
 
 from holidays.constants import OCT
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChineseCalendarHolidays
-from holidays.holiday_groups import InternationalHolidays
+from holidays.holiday_groups import ChineseCalendarHolidays, InternationalHolidays
 
 
 class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):

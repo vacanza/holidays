@@ -39,9 +39,7 @@ class Turkey(HolidayBase, IslamicHolidays, InternationalHolidays):
         self._add_labor_day("Labour Day")
 
         # 19th of May.
-        self._add_holiday(
-            "Commemoration of Ataturk, Youth and Sports Day", MAY, 19
-        )
+        self._add_holiday("Commemoration of Ataturk, Youth and Sports Day", MAY, 19)
 
         # 15th of Jul.
         # Became a national holiday after 15 Jul 2016 coup d'etat attempt.

@@ -77,6 +77,6 @@ msgid "Andre juledag"
 msgstr "Second Day of Christmas"
 
 #. Sunday.
-#: ./holidays/countries/norway.py:106
+#: ./holidays/countries/norway.py:104
 msgid "Søndag"
 msgstr "Sunday"
