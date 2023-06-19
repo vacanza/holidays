@@ -1,6 +1,8 @@
 Version 0.27
 ============
 
+Released June 19, 2023
+
 - Refactor HolidayBase::pop_named (#1306 by @arkid15r)
 - Refactor _add_observed() methods (#1282 by @KJhellico)
 - Refactor common::TestCase methods (#1308 by @arkid15r)
