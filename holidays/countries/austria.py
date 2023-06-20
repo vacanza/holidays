@@ -81,7 +81,7 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_good_friday(tr("Karfreitag"))
 
         # Christmas Eve.
-        self._add_christmas_eve(tr("Weihnachten"))
+        self._add_christmas_eve(tr("Heiliger Abend"))
 
         # New Year's Eve.
         self._add_new_years_eve(tr("Silvester"))

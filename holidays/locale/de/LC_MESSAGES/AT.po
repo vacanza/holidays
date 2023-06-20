@@ -87,7 +87,7 @@ msgstr ""
 
 #. Christmas Eve.
 #: ./holidays/countries/austria.py:84
-msgid "Weihnachten"
+msgid "Heiliger Abend"
 msgstr ""
 
 #. New Year's Eve.

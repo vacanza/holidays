@@ -212,7 +212,7 @@ class HolidayBase(Dict[date, str]):
     default_language: Optional[str] = None
     """The entity language used by default."""
     categories: Optional[Tuple[str]] = None
-    """Requsted holiday categories"""
+    """Requested holiday categories"""
     supported_categories: Tuple[str, ...] = ()
     """All holiday categories supported by this entity"""
     supported_languages: Tuple[str, ...] = ()
