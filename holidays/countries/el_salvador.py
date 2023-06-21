@@ -17,7 +17,7 @@ from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 class ElSalvador(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
-    - https://www.transparencia.gob.sv/institutions/gd-usulutan/documents/192280/download   # noqa: E501
+    - https://www.transparencia.gob.sv/institutions/gd-usulutan/documents/192280/download
     - https://www.timeanddate.com/holidays/el-salvador
     - https://www.officeholidays.com/countries/el-salvador
     """

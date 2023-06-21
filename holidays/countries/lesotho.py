@@ -18,7 +18,7 @@ class Lesotho(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
     - https://en.wikipedia.org/wiki/Public_holidays_in_Lesotho
-    - https://www.ilo.org/dyn/travail/docs/2093/Public%20Holidays%20Act%201995.pdf  # noqa: E501
+    - https://www.ilo.org/dyn/travail/docs/2093/Public%20Holidays%20Act%201995.pdf
     - https://www.timeanddate.com/holidays/lesotho/
     """
 
