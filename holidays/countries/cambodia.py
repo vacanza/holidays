@@ -20,8 +20,7 @@ from holidays.holiday_groups import InternationalHolidays, ThaiCalendarHolidays
 
 class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
     """
-    A subclass of :py:class:`HolidayBase` representing public holidays
-    in Cambodia.
+    A subclass of :py:class:`HolidayBase` representing public holidays in Cambodia.
 
     References:
 
@@ -29,8 +28,8 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
                 https://www.nbc.gov.kh/news_and_events/official_holiday.php
                 https://en.wikipedia.org/wiki/Public_holidays_in_Cambodia
 
-    - Checked with: https://asean.org/wp-content/uploads/2021/12/ASEAN-National-Holidays-2022.pdf  # noqa: E501
-                    https://asean.org/wp-content/uploads/2022/12/ASEAN-Public-Holidays-2023.pdf  # noqa: E501
+    - Checked with: https://asean.org/wp-content/uploads/2021/12/ASEAN-National-Holidays-2022.pdf
+                    https://asean.org/wp-content/uploads/2022/12/ASEAN-Public-Holidays-2023.pdf
                     https://www.timeanddate.com/holidays/cambodia/
 
     Limitations:
@@ -40,9 +39,8 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
     - Exact Public Holidays as per Cambodia's Official Gazette are only
       available from 2015 onwards.
 
-    - Cambodian Lunar Calendar Holidays only work from 1941 (B.E. 2485) onwards
-      until 2057 (B.E. 2601) as we only have Thai year-type data for
-      cross-checking until then for Cambodian Buddhist Holidays.
+    - Cambodian Lunar Calendar Holidays only work from 1941 (B.E. 2485) onwards until 2057
+      (B.E. 2601) as we only have Thai year-type data for cross-checking until then.
 
 
     Country created by: `PPsyrius <https://github.com/PPsyrius>`__
@@ -115,8 +113,7 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
 
         #  ពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ
         # Status: In-Use.
-        # Usually falls on April 13th except for 2017-2018 and 2021-2023
-        # for years 2001-2050.
+        # Usually falls on April 13th except for 2017-2018 and 2021-2023 for years 2001-2050.
 
         if year != 2020:
             # Khmer New Year's Day
@@ -132,8 +129,7 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # International Labor Day
         self._add_labor_day(tr("ទិវាពលកម្មអន្តរជាតិ"))
 
-        # ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម ព្រះករុណា ព្រះបាទសម្តេចព្រះបរមនាថ
-        # នរោត្តម សីហមុនី
+        # ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម ព្រះករុណា ព្រះបាទសម្តេចព្រះបរមនាថ នរោត្តម សីហមុនី
         # Status: In-Use.
         # Assumed to start in 2005. Was celebrated for 3 days until 2020.
 
@@ -141,8 +137,7 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
             king_sihamoni_bday = tr(
                 # Birthday of His Majesty Preah Bat Samdech Preah Boromneath
                 # NORODOM SIHAMONI, King of Cambodia
-                "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម ព្រះករុណា "
-                "ព្រះបាទសម្តេចព្រះបរមនាថ នរោត្តម សីហមុនី"
+                "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម ព្រះករុណា ព្រះបាទសម្តេចព្រះបរមនាថ នរោត្តម សីហមុនី"
             )
             dt = self._add_holiday(king_sihamoni_bday, MAY, 14)
             if year <= 2019:
@@ -168,18 +163,16 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
             # International Children Day
             self._add_childrens_day(tr("ទិវាកុមារអន្តរជាតិ"))
 
-        # ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម សម្តេចព្រះមហាក្សត្រី ព្រះវររាជមាតា
-        # នរោត្តម មុនិនាថ​ សីហនុ
+        # ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម សម្តេចព្រះមហាក្សត្រី ព្រះវររាជមាតា នរោត្តម មុនិនាថ សីហនុ
         # Status: In-Use.
         # Assumed to start in 1994. A public holiday since 2015 at least.
 
         if year >= 1994:
             self._add_holiday(
-                # Birthday of Her Majesty the Queen-Mother NORODOM MONINEATH
-                # SIHANOUK of Cambodia
+                # Birthday of Her Majesty the Queen-Mother NORODOM MONINEATH SIHANOUK of Cambodia
                 tr(
-                    "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម សម្តេចព្រះមហាក្សត្រី "
-                    "ព្រះវររាជមាតា នរោត្តម មុនិនាថ​ សីហនុ"
+                    "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម សម្តេចព្រះមហាក្សត្រី ព្រះវររាជមាតា នរោត្តម "
+                    "មុនិនាថ សីហនុ"
                 ),
                 JUN,
                 18,
@@ -192,9 +185,8 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # Constitution Day
         self._add_holiday(tr("ទិវាប្រកាសរដ្ឋធម្មនុញ្ញ"), SEP, 24)
 
-        # ទិវាប្រារព្ឋពិធីគោរពព្រះវិញ្ញាណក្ខន្ឋ ព្រះករុណា ព្រះបាទសម្តេចព្រះ
-        # នរោត្តម សីហនុ ព្រះមហាវីរក្សត្រ ព្រះវររាជបិតាឯករាជ្យ បូរណភាពទឹកដី
-        # និងឯកភាពជាតិខ្មែរ ព្រះបរមរតនកោដ្ឋ
+        # ទិវាប្រារព្ឋពិធីគោរពព្រះវិញ្ញាណក្ខន្ឋ ព្រះករុណា ព្រះបាទសម្តេចព្រះ នរោត្តម សីហនុ
+        # ព្រះមហាវីរក្សត្រ ព្រះវររាជបិតាឯករាជ្យ បូរណភាពទឹកដី និងឯកភាពជាតិខ្មែរ ព្រះបរមរតនកោដ្ឋ
         # Status: In-Use.
         # Starts in 2012.
 
@@ -203,9 +195,8 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
                 # Mourning Day of the Late King-Father
                 # NORODOM SIHANOUK of Cambodia
                 tr(
-                    "ទិវាប្រារព្ឋពិធីគោរពព្រះវិញ្ញាណក្ខន្ឋ ព្រះករុណា "
-                    "ព្រះបាទសម្តេចព្រះ នរោត្តម សីហនុ ព្រះមហាវីរក្សត្រ "
-                    "ព្រះវររាជបិតាឯករាជ្យ បូរណភាពទឹកដី និងឯកភាពជាតិខ្មែរ "
+                    "ទិវាប្រារព្ឋពិធីគោរពព្រះវិញ្ញាណក្ខន្ឋ ព្រះករុណា ព្រះបាទសម្តេចព្រះ នរោត្តម "
+                    "សីហនុ ព្រះមហាវីរក្សត្រ ព្រះវររាជបិតាឯករាជ្យ បូរណភាពទឹកដី និងឯកភាពជាតិខ្មែរ "
                     "ព្រះបរមរតនកោដ្ឋ"
                 ),
                 OCT,
@@ -217,12 +208,8 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # Assumed to start in 1993, defunct from 2020 onwards.
 
         if year <= 2019:
-            self._add_holiday(
-                # Paris Peace Agreement's Day
-                tr("ទិវារំលឹកសន្ធិសញ្ញាសន្តិភាពទីក្រុងប៉ារីស"),
-                OCT,
-                23,
-            )
+            # Paris Peace Agreement's Day
+            self._add_holiday(tr("ទិវារំលឹកសន្ធិសញ្ញាសន្តិភាពទីក្រុងប៉ារីស"), OCT, 23)
 
         # ព្រះរាជពិធីគ្រងព្រះបរមរាជសម្បត្តិ របស់ ព្រះករុណា
         # ព្រះបាទសម្តេចព្រះបរមនាថ នរោត្តម សីហមុនី
@@ -274,8 +261,8 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # ពិធីបុណ្យវិសាខបូជា
         # Status: In-Use.
         # 15th Waxing Day of Month 6.
-        # This utilizes Thai calendar as a base, though are calculated to
-        # always happen in the Traditional Visakhamas month (May).
+        # This utilizes Thai calendar as a base, though are calculated to always happen
+        # in the Traditional Visakhamas month (May).
 
         # Visaka Bochea Day
         self._add_visakha_bucha(tr("ពិធីបុណ្យវិសាខបូជា"))
@@ -305,10 +292,8 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # Status: In-Use.
         # 14th Waxing Day of Month 12 - 1st Waning Day of Month 12.
 
-        bon_om_touk = tr(
-            # Water Festival
-            "ព្រះរាជពិធីបុណ្យអុំទូក បណ្តែតប្រទីប និងសំពះព្រះខែអកអំបុក"
-        )
+        # Water Festival
+        bon_om_touk = tr("ព្រះរាជពិធីបុណ្យអុំទូក បណ្តែតប្រទីប និងសំពះព្រះខែអកអំបុក")
         bon_om_touk_date = self._add_loy_krathong(bon_om_touk)
         if bon_om_touk_date:
             self._add_holiday(bon_om_touk, bon_om_touk_date + td(days=-1))
