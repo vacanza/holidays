@@ -156,6 +156,16 @@ class TestBasics(unittest.TestCase):
         self.holidays.pop_named(holiday_name_2)
         self.assertNotIn(dt, self.holidays)
 
+    def test_pop_named_partial(self):
+        self.assertIn(date(2014, 1, 1), self.holidays)
+        dts = self.holidays.pop_named("N")
+        for dt in dts:
+            self.assertNotIn(dt, self.holidays)
+        self.assertRaises(
+            KeyError,
+            lambda: self.holidays.pop_named("New Year"),
+        )
+
     def test_pop_named_exception(self):
         self.assertRaises(
             KeyError,
