@@ -11,6 +11,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+# flake8: noqa: T201
+
 import argparse
 import os
 import re
