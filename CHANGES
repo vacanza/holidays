@@ -3,6 +3,12 @@ Version 0.28
 
 Released ???????? ??, ????
 
+- Fix common::TestCase methods (#1324 by @KJhellico)
+- Update PR template (#1330 by @arkid15r)
+- Update configuration files (#1327 by @arkid15r)
+- Drop Python 3.7 support (#1326 by @arkid15r)
+- Remove redundant `#noqa E501` labels (#1322 by @PPsyrius)
+
 Version 0.27.1
 ==============
 
