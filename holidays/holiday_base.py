@@ -275,15 +275,11 @@ class HolidayBase(Dict[date, str]):
 
         if not isinstance(self, HolidaySum):
             if subdiv and subdiv not in set(self.subdivisions + self._deprecated_subdivisions):
-                if hasattr(self, "market"):
-                    error_message = (
-                        f"Market '{self.market}' does not have subdivision " f"'{subdiv}'"
-                    )
-                else:
-                    error_message = (
-                        f"Country '{self.country}' does not have subdivision " f"'{subdiv}'"
-                    )
-                raise SubdivisionDoesNotExist(error_message)
+                raise SubdivisionDoesNotExist(
+                    f"Market {self.market} does not have subdivision {subdiv}"
+                    if hasattr(self, "market")
+                    else f"Country {self.country} does not have subdivision {subdiv}"
+                )
 
             if subdiv and subdiv in self._deprecated_subdivisions:
                 warnings.warn(
