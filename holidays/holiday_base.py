@@ -494,7 +494,7 @@ class HolidayBase(Dict[date, str]):
     def __setattr__(self, key: str, value: Any) -> None:
         dict.__setattr__(self, key, value)
 
-        if self and key == "observed":
+        if self and key in {"categories", "observed"}:
             self.clear()
             for year in self.years:  # Re-populate holidays for each year.
                 self._populate(year)
