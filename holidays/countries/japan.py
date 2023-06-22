@@ -41,7 +41,7 @@ class Japan(HolidayBase):
     supported_languages = ("en_US", "ja")
 
     def _populate(self, year):
-        if year <= 1948 or year >= 2100:
+        if year < 1949 or year > 2099:
             raise YearOutOfRangeError("Year must be in 1949 - 2099 range.")
 
         super()._populate(year)

@@ -25,7 +25,7 @@ class Israel(HolidayBase):
         self._add_holiday(name, dt)
 
     def _populate(self, year):
-        if year <= 1947 or year >= 2101:
+        if year < 1948 or year > 2100:
             raise YearOutOfRangeError("Year must be in 1948 - 2100 range.")
 
         super()._populate(year)

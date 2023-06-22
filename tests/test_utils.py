@@ -75,11 +75,8 @@ class TestFinancialHolidays(unittest.TestCase):
         self.assertEqual(h.years, {2015, 2016})
 
     def test_exceptions(self):
-        self.assertRaises(FinancialDoesNotExist, lambda: financial_holidays("XXXX"))
-        self.assertRaises(
-            SubdivisionDoesNotExist,
-            lambda: financial_holidays("NYSE", subdiv="XXXX"),
-        )
+        self.assertRaises(FinancialDoesNotExist, lambda: financial_holidays("XX"))
+        self.assertRaises(SubdivisionDoesNotExist, lambda: financial_holidays("NYSE", subdiv="XX"))
 
 
 class TestAllInSameYear(unittest.TestCase):
