@@ -22,7 +22,7 @@ Your PR description goes here.
 - [ ] New country/market holidays support (thank you!)
 - [ ] Supported country/market holidays update (calendar discrepancy fix, localization)
 - [ ] Existing code/documentation/test/process quality improvement (best practice, cleanup, refactoring, optimization)
-- [ ] Dependency upgrade (version update)
+- [ ] Dependency update (version deprecation/upgrade)
 - [ ] Bugfix (non-breaking change which fixes an issue)
 - [ ] Breaking change (a code change causing existing functionality to break)
 - [ ] New feature (new python-holidays functionality in general)
