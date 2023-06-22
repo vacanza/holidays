@@ -23,6 +23,7 @@ import warnings
 from functools import lru_cache
 from typing import Dict, Iterable, List, Optional, Union
 
+from holidays.exceptions import CountryDoesNotExist, FinancialDoesNotExist
 from holidays.holiday_base import HolidayBase
 from holidays.registry import EntityLoader
 
@@ -180,17 +181,19 @@ def country_holidays(
     import holidays
 
     try:
-        return getattr(holidays, country)(
-            years=years,
-            subdiv=subdiv,
-            expand=expand,
-            observed=observed,
-            prov=prov,
-            state=state,
-            language=language,
-        )
+        cls = getattr(holidays, country)
     except AttributeError:
-        raise NotImplementedError(f"Country {country} not available")
+        raise CountryDoesNotExist(f"Country {country} is not available")
+
+    return cls(
+        years=years,
+        subdiv=subdiv,
+        expand=expand,
+        observed=observed,
+        prov=prov,
+        state=state,
+        language=language,
+    )
 
 
 def financial_holidays(
@@ -244,15 +247,17 @@ def financial_holidays(
     import holidays
 
     try:
-        return getattr(holidays, market)(
-            years=years,
-            subdiv=subdiv,
-            expand=expand,
-            observed=observed,
-            language=language,
-        )
+        cls = getattr(holidays, market)
     except AttributeError:
-        raise NotImplementedError(f"Financial market {market} not available")
+        raise FinancialDoesNotExist(f"Financial entity {market} is not available")
+
+    return cls(
+        years=years,
+        subdiv=subdiv,
+        expand=expand,
+        observed=observed,
+        language=language,
+    )
 
 
 def CountryHoliday(

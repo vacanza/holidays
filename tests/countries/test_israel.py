@@ -13,6 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.countries.israel import Israel, IL, ISR
+from holidays.exceptions import YearOutOfRangeError
 from tests.common import TestCase
 
 
@@ -70,12 +71,10 @@ class TestIsrael(TestCase):
     def test_country_aliases(self):
         self.assertCountryAliases(Israel, IL, ISR)
 
-    def test_not_implemented(self):
-        with self.assertRaises(NotImplementedError):
-            Israel(years=2101)
-
-    def test_no_holidays(self):
-        self.assertNoHolidays(Israel(years=1947))
+    def test_year_out_of_range(self):
+        for year in (1947, 2101):
+            with self.assertRaises(YearOutOfRangeError):
+                Israel(years=year)
 
     def test_purim_day(self):
         self.assertHolidayName("Purim - Eve", "2017-03-11")

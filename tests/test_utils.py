@@ -19,6 +19,7 @@ from unittest import mock
 import pytest
 
 import holidays
+from holidays.exceptions import CountryDoesNotExist, SubdivisionDoesNotExist, FinancialDoesNotExist
 from holidays.utils import (
     country_holidays,
     financial_holidays,
@@ -54,15 +55,8 @@ class TestCountryHolidays(unittest.TestCase):
         self.assertEqual(h.subdiv, "NT")
 
     def test_exceptions(self):
-        self.assertRaises(NotImplementedError, lambda: country_holidays("XXXX"))
-        self.assertRaises(
-            NotImplementedError,
-            lambda: country_holidays("US", subdiv="XXXX"),
-        )
-        self.assertRaises(
-            NotImplementedError,
-            lambda: country_holidays("US", subdiv="XXXX"),
-        )
+        self.assertRaises(CountryDoesNotExist, lambda: country_holidays("XXXX"))
+        self.assertRaises(SubdivisionDoesNotExist, lambda: country_holidays("US", subdiv="XXXX"))
 
 
 class TestFinancialHolidays(unittest.TestCase):
@@ -81,9 +75,9 @@ class TestFinancialHolidays(unittest.TestCase):
         self.assertEqual(h.years, {2015, 2016})
 
     def test_exceptions(self):
-        self.assertRaises(NotImplementedError, lambda: financial_holidays("XXXX"))
+        self.assertRaises(FinancialDoesNotExist, lambda: financial_holidays("XXXX"))
         self.assertRaises(
-            NotImplementedError,
+            SubdivisionDoesNotExist,
             lambda: financial_holidays("NYSE", subdiv="XXXX"),
         )
 

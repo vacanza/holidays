@@ -13,6 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.calendars import _HebrewLunisolar
+from holidays.exceptions import YearOutOfRangeError
 from holidays.holiday_base import HolidayBase
 
 
@@ -24,11 +25,8 @@ class Israel(HolidayBase):
         self._add_holiday(name, dt)
 
     def _populate(self, year):
-        if year <= 1947:
-            return None
-
-        if year >= 2101:
-            raise NotImplementedError
+        if year <= 1947 or year >= 2101:
+            raise YearOutOfRangeError("Year must be in 1948 - 2100 range.")
 
         super()._populate(year)
 

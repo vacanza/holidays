@@ -16,6 +16,7 @@ from typing import Tuple
 
 from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC, MON
+from holidays.exceptions import YearOutOfRangeError
 from holidays.helpers import _normalize_tuple
 from holidays.holiday_base import HolidayBase
 
@@ -40,8 +41,8 @@ class Japan(HolidayBase):
     supported_languages = ("en_US", "ja")
 
     def _populate(self, year):
-        if year < 1949 or year > 2099:
-            raise NotImplementedError
+        if year <= 1948 or year >= 2100:
+            raise YearOutOfRangeError("Year must be in 1949 - 2099 range.")
 
         super()._populate(year)
         observed_dates = set()

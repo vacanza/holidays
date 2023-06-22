@@ -48,8 +48,8 @@ class InternationalHolidays:
             return self._add_holiday(name, NOV, 20)
         else:
             raise ValueError(
-                f"Unknown variaton name: {variation}. "
-                "This entry currently supports `JUN` and `NOV` variation only."
+                f"Unknown variation name: {variation}. "
+                "This entry currently supports JUN and NOV variations only."
             )
 
     def _add_columbus_day(self, name):

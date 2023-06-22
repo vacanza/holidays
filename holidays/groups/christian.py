@@ -16,6 +16,7 @@ from dateutil.easter import EASTER_ORTHODOX, EASTER_WESTERN, easter
 
 from holidays.calendars import GREGORIAN_CALENDAR, JULIAN_CALENDAR
 from holidays.constants import JAN, FEB, MAR, APR, JUN, JUL, AUG, SEP, NOV, DEC
+from holidays.exceptions import CalendarError
 
 
 class ChristianHolidays:
@@ -66,9 +67,8 @@ class ChristianHolidays:
         Verify calendar type.
         """
         if calendar not in {GREGORIAN_CALENDAR, JULIAN_CALENDAR}:
-            raise ValueError(
-                f"Unknown calendar name: {calendar}. "
-                "Use `GREGORIAN_CALENDAR` or `JULIAN_CALENDAR`."
+            raise CalendarError(
+                f"Unknown calendar name: {calendar}. Use GREGORIAN_CALENDAR or JULIAN_CALENDAR."
             )
 
     @property

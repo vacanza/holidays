@@ -11,16 +11,14 @@
 
 from unittest import TestCase
 
+from holidays.exceptions import CalendarError
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
 class TestChristianHolidays(TestCase):
     def test_check_calendar(self):
-        self.assertRaises(
-            ValueError,
-            lambda: ChristianHolidays("INVALID_CALENDAR"),
-        )
+        self.assertRaises(CalendarError, lambda: ChristianHolidays("INVALID_CALENDAR"))
 
     def test_add_christmas_day_three(self):
         class TestHolidays(HolidayBase, ChristianHolidays):

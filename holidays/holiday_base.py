@@ -23,6 +23,7 @@ from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Tuple, Uni
 from dateutil.parser import parse
 
 from holidays.constants import HOLIDAY_NAME_DELIMITER, MON, TUE, WED, THU, FRI, SAT, SUN
+from holidays.exceptions import InvalidDateError, SubdivisionDoesNotExist
 from holidays.helpers import _normalize_tuple
 
 DateArg = Union[date, Tuple[int, int]]
@@ -275,10 +276,14 @@ class HolidayBase(Dict[date, str]):
         if not isinstance(self, HolidaySum):
             if subdiv and subdiv not in set(self.subdivisions + self._deprecated_subdivisions):
                 if hasattr(self, "market"):
-                    error = f"Market '{self.market}' does not have subdivision " f"'{subdiv}'"
+                    error_message = (
+                        f"Market '{self.market}' does not have subdivision " f"'{subdiv}'"
+                    )
                 else:
-                    error = f"Country '{self.country}' does not have subdivision " f"'{subdiv}'"
-                raise NotImplementedError(error)
+                    error_message = (
+                        f"Country '{self.country}' does not have subdivision " f"'{subdiv}'"
+                    )
+                raise SubdivisionDoesNotExist(error_message)
 
             if subdiv and subdiv in self._deprecated_subdivisions:
                 warnings.warn(
@@ -358,7 +363,7 @@ class HolidayBase(Dict[date, str]):
         """
 
         if not isinstance(key, (date, datetime, float, int, str)):
-            raise TypeError(f"Cannot convert type '{type(key)}' to date.")
+            raise InvalidDateError(f"Cannot convert type '{type(key)}' to date.")
 
         return dict.__contains__(cast("Mapping[Any, Any]", self), self.__keytransform__(key))
 
@@ -425,7 +430,7 @@ class HolidayBase(Dict[date, str]):
             try:
                 dt = parse(key).date()
             except (OverflowError, ValueError):
-                raise ValueError(f"Cannot parse date from string '{key}'")
+                raise InvalidDateError(f"Cannot parse date from string '{key}'")
 
         # Check all other types.
         elif isinstance(key, datetime):  # Key type is derived from `datetime`.
@@ -440,7 +445,7 @@ class HolidayBase(Dict[date, str]):
             dt = datetime.fromtimestamp(key, timezone.utc).date()
 
         else:  # Key type is not supported.
-            raise TypeError(f"Cannot convert type '{type(key)}' to date.")
+            raise InvalidDateError(f"Cannot convert type '{type(key)}' to date.")
 
         # Automatically expand for `expand=True` cases.
         if self.expand and dt.year not in self.years:
@@ -758,7 +763,7 @@ class HolidayBase(Dict[date, str]):
                 if any((holiday_name_lower == name[: len(holiday_name)].lower() for name in names))
             ]
 
-        raise AttributeError(f"Unknown lookup type: {lookup}")
+        raise ValueError(f"Unknown lookup type: {lookup}")
 
     def pop(
         self,

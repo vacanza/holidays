@@ -15,6 +15,7 @@ from datetime import date
 from holidays import calendars
 from holidays.calendars import _get_nth_weekday_of_month, KHMER_CALENDAR
 from holidays.constants import FEB, MAR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
+from holidays.exceptions import CalendarError
 
 
 class TestThaiLunisolarCalendar(unittest.TestCase):
@@ -23,10 +24,7 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
         self.calendar = calendars._ThaiLunisolar()
 
     def test_check_calendar(self):
-        self.assertRaises(
-            ValueError,
-            lambda: calendars._ThaiLunisolar("INVALID_CALENDAR"),
-        )
+        self.assertRaises(CalendarError, lambda: calendars._ThaiLunisolar("INVALID_CALENDAR"))
 
     def test_asarnha_bucha_date(self):
         # THAI_CALENDAR

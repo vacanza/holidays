@@ -14,6 +14,8 @@ from datetime import timedelta as td
 from functools import lru_cache
 from typing import Optional
 
+from holidays.exceptions import CalendarError
+
 # Manual Assign to avoid circular import
 KHMER_CALENDAR = "KHMER_CALENDAR"
 THAI_CALENDAR = "THAI_CALENDAR"
@@ -202,8 +204,8 @@ class _ThaiLunisolar:
         Verify calendar type.
         """
         if calendar not in {KHMER_CALENDAR, THAI_CALENDAR}:
-            raise ValueError(
-                f"Unknown calendar name: {calendar}. Use `KHMER_CALENDAR` or `THAI_CALENDAR`."
+            raise CalendarError(
+                f"Unknown calendar name: {calendar}. Use KHMER_CALENDAR or THAI_CALENDAR."
             )
 
     @lru_cache()
