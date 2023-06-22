@@ -413,7 +413,7 @@ class Malaysia(
 
         elif self.subdiv == "PRK":
             # This Holiday used to be on 27th until 2017
-            # https://www.officeholidays.com/holidays/malaysia/birthday-of-the-sultan-of-perak  # noqa: E501
+            # https://www.officeholidays.com/holidays/malaysia/birthday-of-the-sultan-of-perak
             self._add_holiday(
                 "Birthday of the Sultan of Perak",
                 _get_nth_weekday_of_month(1, FRI, NOV, year)
