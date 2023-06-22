@@ -23,7 +23,7 @@ class Armenia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
      - https://en.wikipedia.org/wiki/Public_holidays_in_Armenia
-     - http://www.parliament.am/legislation.php?sel=show&ID=1274&lang=arm&enc=utf8  # noqa: E501
+     - http://www.parliament.am/legislation.php?sel=show&ID=1274&lang=arm&enc=utf8
      - https://www.arlis.am/documentview.aspx?docid=259
     """
 

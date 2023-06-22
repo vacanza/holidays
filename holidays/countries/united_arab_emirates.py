@@ -23,7 +23,7 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays):
     However the law is not applied literally,
     and was amended often in the past few years.
     Sources:
-    2017: https://www.khaleejtimes.com/nation/uae-official-public-holidays-list-2017   # noqa: E501
+    2017: https://www.khaleejtimes.com/nation/uae-official-public-holidays-list-2017
     2018: https://www.thenational.ae/uae/government/uae-public-holidays-2018-announced-by-abu-dhabi-government-1.691393  # noqa: E501
     2019: https://www.thenational.ae/uae/government/uae-public-holidays-for-2019-and-2020-announced-by-cabinet-1.833425  # noqa: E501
     2020: https://u.ae/en/information-and-services/public-holidays-and-religious-affairs/public-holidays  # noqa: E501

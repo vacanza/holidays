@@ -840,7 +840,13 @@ class HolidayBase(Dict[date, str]):
 
             # Keep the rest of holidays falling on the same date.
             if not use_exact_name:
-                holiday_names.remove(name)
+                name_lower = name.lower()
+                holiday_names = [
+                    holiday_name
+                    for holiday_name in holiday_names
+                    if name_lower not in holiday_name.lower()
+                ]
+
                 if len(holiday_names) > 0:
                     self[dt] = HOLIDAY_NAME_DELIMITER.join(holiday_names)
 

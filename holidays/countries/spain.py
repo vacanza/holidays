@@ -21,7 +21,7 @@ from holidays.holiday_groups import ChristianHolidays, IslamicHolidays, Internat
 class Spain(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolidays):
     """
     References:
-     - https://administracion.gob.es/pag_Home/atencionCiudadana/calendarios.html  # noqa: E501
+     - https://administracion.gob.es/pag_Home/atencionCiudadana/calendarios.html
     """
 
     country = "ES"

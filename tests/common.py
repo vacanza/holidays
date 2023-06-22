@@ -222,7 +222,7 @@ class TestCase(unittest.TestCase):
             self.assertTrue(set(items).issubset(holiday_years), name)
         elif isinstance(arg, date) or parse(arg):  # Exact date check.
             for dt in items:
-                self.assertIn(dt, holidays, dt)
+                self.assertIn(name, holidays.get_list(dt), dt)
         else:
             raise ValueError(f"The {arg} wasn't caught by `assertHolidayName()`")
 
@@ -307,7 +307,7 @@ class TestCase(unittest.TestCase):
             self.assertEqual(0, len(holiday_years.intersection(items)), name)
         elif isinstance(arg, date) or parse(arg):  # Exact date check.
             for dt in items:
-                self.assertNotIn(dt, holidays, dt)
+                self.assertNotIn(name, holidays.get_list(dt), dt)
         else:
             raise ValueError(f"The {arg} wasn't caught by `assertNoHolidayName()`")
 
