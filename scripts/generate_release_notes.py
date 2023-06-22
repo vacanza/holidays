@@ -53,6 +53,13 @@ class ReleaseNotesGenerator:
             type=int,
         )
         arg_parser.add_argument(
+            "-c",
+            "--cut-off-at",
+            help="Cut off at PR",
+            required=False,
+            type=int,
+        )
+        arg_parser.add_argument(
             "-e",
             "--exclude",
             action="extend",
@@ -169,9 +176,12 @@ class ReleaseNotesGenerator:
 
         This operation also populates a set of previous release commits.
         """
+        cut_off_at = self.args.cut_off_at
+        excluded_pr_numbers = set(self.args.exclude)
         for pull_request in self.remote_repo.get_pulls(state="closed"):
-            # Stop getting pull requests after previous release tag.
-            if pull_request.title == self.latest_tag_name:
+            # Stop getting pull requests after previous release tag or specific PR number.
+            cut_off = cut_off_at and pull_request.number == cut_off_at
+            if cut_off or pull_request.title == self.latest_tag_name:
                 # Get previous release commits SHAs.
                 for commit in pull_request.get_commits():
                     self.previous_commits.add(commit.sha)
@@ -181,9 +191,9 @@ class ReleaseNotesGenerator:
             if not pull_request.merged:
                 continue
 
-            if pull_request.number in self.args.exclude:
+            if pull_request.number in excluded_pr_numbers:
                 if self.args.verbose:
-                    print(f"Excludeing PR #{pull_request.number} as requested")
+                    print(f"Excluding PR #{pull_request.number} as requested")
                 continue
 
             if self.args.verbose:
@@ -212,6 +222,7 @@ class ReleaseNotesGenerator:
 
         # Fetch old PRs metadata only. Skip all known PRs.
         pull_request_numbers -= set(self.pull_requests.keys())
+        pull_request_numbers -= set(self.args.exclude)
         for pull_request_number in pull_request_numbers:
             if self.args.verbose:
                 messages = [f"Fetching PR #{pull_request_number}"]
