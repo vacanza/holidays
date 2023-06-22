@@ -19,7 +19,7 @@ from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "AT"
     default_language = "de"
-    supported_categories = ("bank", "common")
+    supported_categories = ("bank", "public")
     supported_languages = ("de", "en_US", "uk")
     subdivisions = ("1", "2", "3", "4", "5", "6", "7", "8", "9")
 
@@ -33,7 +33,7 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
             kwargs["subdiv"] = "9"
         super().__init__(*args, **kwargs)
 
-    def _populate_common_holidays(self):
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("Neujahr"))
 

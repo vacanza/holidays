@@ -212,9 +212,9 @@ class HolidayBase(Dict[date, str]):
     default_language: Optional[str] = None
     """The entity language used by default."""
     categories: Optional[Tuple[str]] = None
-    """Requested holiday categories"""
+    """Requested holiday categories."""
     supported_categories: Tuple[str, ...] = ()
-    """All holiday categories supported by this entity"""
+    """All holiday categories supported by this entity."""
     supported_languages: Tuple[str, ...] = ()
     """All languages supported by this entity."""
 
@@ -258,6 +258,9 @@ class HolidayBase(Dict[date, str]):
             language translation is not supported the original holiday names
             will be used.
 
+        :param categories:
+            Requested holiday categories.
+
         :return:
             A :class:`HolidayBase` object matching the **country**.
         """
@@ -267,7 +270,7 @@ class HolidayBase(Dict[date, str]):
         self.language = language.lower() if language else None
         self.observed = observed
         self.subdiv = subdiv or prov or state
-        self.categories = categories or ("common",)
+        self.categories = categories or ("public",)
 
         self.tr = gettext  # Default translation method.
 
@@ -630,12 +633,12 @@ class HolidayBase(Dict[date, str]):
         self._year = year
         dates = set()
 
-        # Populate categories holidays.
-        self._populate_categories()
-
         # Populate items from the special holidays list.
         for month, day, name in _normalize_tuple(self.special_holidays.get(year, ())):
             dates.add(self._add_holiday(name, date(year, month, day)))
+
+        # Populate categories holidays.
+        self._populate_categories()
 
         # Populate subdivision holidays.
         self._add_subdiv_holidays()

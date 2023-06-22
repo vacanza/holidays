@@ -74,7 +74,7 @@ def country_holidays(
         will be used.
 
     :param categories:
-        Requsted holiday categories.
+        Requested holiday categories.
 
     :return:
         A :py:class:`HolidayBase` object matching the **country**.
