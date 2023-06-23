@@ -22,6 +22,7 @@ from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Tuple, Uni
 
 from dateutil.parser import parse
 
+from holidays.categories import PUBLIC_HOLIDAYS
 from holidays.constants import HOLIDAY_NAME_DELIMITER, MON, TUE, WED, THU, FRI, SAT, SUN
 from holidays.helpers import _normalize_tuple
 
@@ -270,7 +271,7 @@ class HolidayBase(Dict[date, str]):
         self.language = language.lower() if language else None
         self.observed = observed
         self.subdiv = subdiv or prov or state
-        self.categories = categories or ("public",)
+        self.categories = categories or (PUBLIC_HOLIDAYS,)
 
         self.tr = gettext  # Default translation method.
 
@@ -647,7 +648,9 @@ class HolidayBase(Dict[date, str]):
 
     def _populate_categories(self):
         for category in self.categories:
-            populate_category_holidays = getattr(self, f"_populate_{category}_holidays", None)
+            populate_category_holidays = getattr(
+                self, f"_populate_{category.lower()}_holidays", None
+            )
             if populate_category_holidays and callable(populate_category_holidays):
                 populate_category_holidays()
 
