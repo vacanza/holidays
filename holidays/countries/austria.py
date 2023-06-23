@@ -11,7 +11,7 @@
 
 from gettext import gettext as tr
 
-from holidays.categories import BANK_HOLIDAYS, PUBLIC_HOLIDAYS
+from holidays.categories import BANK, PUBLIC
 from holidays.constants import OCT, NOV
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -20,7 +20,7 @@ from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "AT"
     default_language = "de"
-    supported_categories = (BANK_HOLIDAYS, PUBLIC_HOLIDAYS)
+    supported_categories = (BANK, PUBLIC)
     supported_languages = ("de", "en_US", "uk")
     subdivisions = ("1", "2", "3", "4", "5", "6", "7", "8", "9")
 

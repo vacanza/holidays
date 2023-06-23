@@ -743,6 +743,11 @@ class TestArgs(unittest.TestCase):
         with self.assertWarns(Warning):
             holidays.US(state="WY")
 
+    def test_categories(self):
+        self.assertRaises(
+            NotImplementedError, lambda: holidays.country_holidays("AT", categories=("HOME",))
+        )
+
 
 class TestKeyTransforms(unittest.TestCase):
     def setUp(self):

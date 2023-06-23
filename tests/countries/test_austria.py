@@ -159,7 +159,7 @@ class TestAustria(TestCase):
 
     def test_bank_2022(self):
         self.assertHolidays(
-            Austria(categories=("bank",), years=2022),
+            Austria(categories=("BANK",), years=2022),
             ("2022-04-15", "Karfreitag"),
             ("2022-12-24", "Heiliger Abend"),
             ("2022-12-31", "Silvester"),

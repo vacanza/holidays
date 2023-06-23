@@ -22,7 +22,7 @@ from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Tuple, Uni
 
 from dateutil.parser import parse
 
-from holidays.categories import PUBLIC_HOLIDAYS
+from holidays.categories import ALL_CATEGORIES, PUBLIC
 from holidays.constants import HOLIDAY_NAME_DELIMITER, MON, TUE, WED, THU, FRI, SAT, SUN
 from holidays.helpers import _normalize_tuple
 
@@ -271,7 +271,7 @@ class HolidayBase(Dict[date, str]):
         self.language = language.lower() if language else None
         self.observed = observed
         self.subdiv = subdiv or prov or state
-        self.categories = categories or (PUBLIC_HOLIDAYS,)
+        self.categories = categories or (PUBLIC,)
 
         self.tr = gettext  # Default translation method.
 
@@ -297,6 +297,10 @@ class HolidayBase(Dict[date, str]):
                     f"{', '.join(sorted(self.subdivisions))}.",
                     DeprecationWarning,
                 )
+
+            wrong = set(self.categories).difference(ALL_CATEGORIES)
+            if len(wrong) > 0:
+                raise NotImplementedError(f"Categories does not supported: '{', '.join(wrong)}'.")
 
             name = getattr(self, "country", getattr(self, "market", None))
             if name:
