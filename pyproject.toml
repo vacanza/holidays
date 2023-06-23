@@ -1,53 +1,18 @@
 [tool.black]
 line-length = 99
-target-version = ['py37', 'py38', 'py39', 'py310', 'py311']
-exclude = '''
-/(
-    \.eggs
-  | \.git
-  | \.hg
-  | \.mypy_cache
-  | \.tox
-  | \.venv
-  | _build
-  | buck-out
-  | build
-  | dist
-)/
-'''
+target-version = ['py38', 'py39', 'py310', 'py311']
 
 [tool.coverage.run]
 branch = true
-omit = [
-  'holidays/__init__.py',
-  'scripts/*',
-  'setup.py',
-  'tests/*',
-]
+omit = ['scripts/*', 'setup.py', 'tests/*']
 
 [tool.coverage.report]
-# Regexes for lines to exclude from consideration
-exclude_lines = [
-  # Have to re-enable the standard pragma
-  'pragma: no cover',
-
-  # Don't complain about missing debug-only code:
-  'def __repr__',
-  'if self\.debug',
-
-  # Don't complain if tests don't hit defensive assertion code:
-  'raise AssertionError',
-  'raise NotImplementedError',
-
-  # Don't complain if non-runnable code isn't run:
-  'if 0:',
-  'if __name__ == .__main__.:',
-]
+exclude_lines = ['def __repr__', 'pragma: no cover']
 
 [tool.isort]
-known_first_party = ["holidays", "tests"]
+known_first_party = ['holidays', 'tests']
 line_length = 99
 multi_line_output = 3
 no_inline_sort = true
-profile = "black"
-skip = ["docs"]
+profile = 'black'
+skip = ['docs']

@@ -9,6 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+# flake8: noqa: F401
+
 from .albania import Albania, AL, ALB
 from .algeria import Algeria, DZ, DZA
 from .american_samoa import AmericanSamoa, AS, ASM, HolidaysAS
@@ -99,12 +101,7 @@ from .new_zealand import NewZealand, NZ, NZL
 from .nicaragua import Nicaragua, NI, NIC
 from .nigeria import Nigeria, NG, NGA
 from .north_macedonia import NorthMacedonia, MK, MKD
-from .northern_mariana_islands import (
-    NorthernMarianaIslands,
-    MP,
-    MNP,
-    HolidaysMP,
-)
+from .northern_mariana_islands import NorthernMarianaIslands, MP, MNP, HolidaysMP
 from .norway import Norway, NO, NOR
 from .pakistan import Pakistan, PK, PAK
 from .panama import Panama, PA, PAN
@@ -141,12 +138,7 @@ from .united_states_minor_outlying_islands import (
     UMI,
     HolidaysUM,
 )
-from .united_states_virgin_islands import (
-    UnitedStatesVirginIslands,
-    VI,
-    VIR,
-    HolidaysVI,
-)
+from .united_states_virgin_islands import UnitedStatesVirginIslands, VI, VIR, HolidaysVI
 from .uruguay import Uruguay, UY, URY
 from .uzbekistan import Uzbekistan, UZ, UZB
 from .vatican_city import VaticanCity, VA, VAT

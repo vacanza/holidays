@@ -9,6 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+# flake8: noqa: F401
+
 from holidays.groups.buddhist import BuddhistCalendarHolidays
 from holidays.groups.chinese import ChineseCalendarHolidays
 from holidays.groups.christian import ChristianHolidays

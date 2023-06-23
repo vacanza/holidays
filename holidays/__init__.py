@@ -9,6 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+# flake8: noqa: F403
+
 from holidays.constants import *
 from holidays.holiday_base import *
 from holidays.registry import EntityLoader
