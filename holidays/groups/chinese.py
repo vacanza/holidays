@@ -48,10 +48,7 @@ class ChineseCalendarHolidays:
         return self._chinese_calendar.mid_autumn_date(self._year)[0]
 
     def _add_chinese_calendar_holiday(
-        self,
-        name: str,
-        hol_date: Tuple[date, bool],
-        days_delta: int = 0,
+        self, name: str, hol_date: Tuple[date, bool], days_delta: int = 0
     ) -> Optional[date]:
         """
         Add Chinese calendar holiday.
@@ -82,8 +79,7 @@ class ChineseCalendarHolidays:
         https://en.wikipedia.org/wiki/Buddha%27s_Birthday
         """
         return self._add_chinese_calendar_holiday(
-            name,
-            self._chinese_calendar.buddha_birthday_date(self._year),
+            name, self._chinese_calendar.buddha_birthday_date(self._year)
         )
 
     def _add_chinese_new_years_eve(self, name) -> Optional[date]:
@@ -94,9 +90,7 @@ class ChineseCalendarHolidays:
         https://en.wikipedia.org/wiki/Chinese_New_Year%27s_Eve
         """
         return self._add_chinese_calendar_holiday(
-            name,
-            self._chinese_calendar.lunar_new_year_date(self._year),
-            days_delta=-1,
+            name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=-1
         )
 
     def _add_chinese_new_years_day(self, name) -> Optional[date]:
@@ -108,8 +102,7 @@ class ChineseCalendarHolidays:
         https://en.wikipedia.org/wiki/Chinese_New_Year
         """
         return self._add_chinese_calendar_holiday(
-            name,
-            self._chinese_calendar.lunar_new_year_date(self._year),
+            name, self._chinese_calendar.lunar_new_year_date(self._year)
         )
 
     def _add_chinese_new_years_day_two(self, name) -> Optional[date]:
@@ -119,9 +112,7 @@ class ChineseCalendarHolidays:
         https://en.wikipedia.org/wiki/Chinese_New_Year
         """
         return self._add_chinese_calendar_holiday(
-            name,
-            self._chinese_calendar.lunar_new_year_date(self._year),
-            days_delta=+1,
+            name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=+1
         )
 
     def _add_chinese_new_years_day_three(self, name) -> Optional[date]:
@@ -131,9 +122,7 @@ class ChineseCalendarHolidays:
         https://en.wikipedia.org/wiki/Chinese_New_Year
         """
         return self._add_chinese_calendar_holiday(
-            name,
-            self._chinese_calendar.lunar_new_year_date(self._year),
-            days_delta=+2,
+            name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=+2
         )
 
     def _add_chinese_new_years_day_four(self, name) -> Optional[date]:
@@ -143,9 +132,7 @@ class ChineseCalendarHolidays:
         https://en.wikipedia.org/wiki/Chinese_New_Year
         """
         return self._add_chinese_calendar_holiday(
-            name,
-            self._chinese_calendar.lunar_new_year_date(self._year),
-            days_delta=+3,
+            name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=+3
         )
 
     def _add_chinese_new_years_day_five(self, name) -> Optional[date]:
@@ -155,9 +142,7 @@ class ChineseCalendarHolidays:
         https://en.wikipedia.org/wiki/Chinese_New_Year
         """
         return self._add_chinese_calendar_holiday(
-            name,
-            self._chinese_calendar.lunar_new_year_date(self._year),
-            days_delta=+4,
+            name, self._chinese_calendar.lunar_new_year_date(self._year), days_delta=+4
         )
 
     def _add_qingming_festival(self, name) -> date:
@@ -203,8 +188,7 @@ class ChineseCalendarHolidays:
         https://en.wikipedia.org/wiki/H%C3%B9ng_Kings%27_Festival
         """
         return self._add_chinese_calendar_holiday(
-            name,
-            self._chinese_calendar.hung_kings_date(self._year),
+            name, self._chinese_calendar.hung_kings_date(self._year)
         )
 
     def _add_mid_autumn_festival(self, name) -> Optional[date]:
@@ -216,8 +200,7 @@ class ChineseCalendarHolidays:
         https://en.wikipedia.org/wiki/Mid-Autumn_Festival
         """
         return self._add_chinese_calendar_holiday(
-            name,
-            self._chinese_calendar.mid_autumn_date(self._year),
+            name, self._chinese_calendar.mid_autumn_date(self._year)
         )
 
     def _add_mid_autumn_festival_day_two(self, name) -> Optional[date]:
@@ -229,7 +212,5 @@ class ChineseCalendarHolidays:
         https://en.wikipedia.org/wiki/Mid-Autumn_Festival
         """
         return self._add_chinese_calendar_holiday(
-            name,
-            self._chinese_calendar.mid_autumn_date(self._year),
-            days_delta=+1,
+            name, self._chinese_calendar.mid_autumn_date(self._year), days_delta=+1
         )

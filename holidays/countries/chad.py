@@ -65,16 +65,12 @@ class Chad(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
         # All Saints' Day.
         self._add_all_saints_day("All Saints' Day")
 
-        self._add_observed(
-            # Republic Day.
-            self._add_holiday("Republic Day", NOV, 28)
-        )
+        # Republic Day.
+        self._add_observed(self._add_holiday("Republic Day", NOV, 28))
 
         if year >= 1991:
-            self._add_observed(
-                # Freedom and Democracy Day.
-                self._add_holiday("Freedom and Democracy Day", DEC, 1)
-            )
+            # Freedom and Democracy Day.
+            self._add_observed(self._add_holiday("Freedom and Democracy Day", DEC, 1))
 
         # Christmas Day.
         self._add_christmas_day("Christmas Day")

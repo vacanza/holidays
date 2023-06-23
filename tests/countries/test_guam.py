@@ -27,7 +27,4 @@ class TestGU(TestCase):
     def test_gu_only(self):
         """Check for a holiday that is not returned by US unless the
         subdivision is specified."""
-        self.assertIn(
-            "Guam Discovery Day",
-            self.holidays.get_list(date(2016, MAR, 7)),
-        )
+        self.assertIn("Guam Discovery Day", self.holidays.get_list(date(2016, MAR, 7)))

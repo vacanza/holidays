@@ -55,8 +55,7 @@ class Colombia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self.observed and not self._is_monday(dt) and dt.year >= 1984:
             self._add_holiday(
-                self.tr("%s (Observado)") % self.tr(name),
-                _get_nth_weekday_from(1, MON, dt),
+                self.tr("%s (Observado)") % self.tr(name), _get_nth_weekday_from(1, MON, dt)
             )
         else:
             self._add_holiday(name, dt)
@@ -69,26 +68,17 @@ class Colombia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 1951:
             # Epiphany
-            self._add_with_bridge(
-                date(year, JAN, 6),
-                tr("Día de los Reyes Magos"),
-            )
+            self._add_with_bridge(date(year, JAN, 6), tr("Día de los Reyes Magos"))
 
             # Saint Joseph's Day
-            self._add_with_bridge(
-                date(year, MAR, 19),
-                tr("Día de San José"),
-            )
+            self._add_with_bridge(date(year, MAR, 19), tr("Día de San José"))
 
         # Labor Day
         self._add_labor_day(tr("Día del Trabajo"))
 
         if year >= 1951:
             # Saint Peter and Saint Paul's Day
-            self._add_with_bridge(
-                date(year, JUN, 29),
-                tr("San Pedro y San Pablo"),
-            )
+            self._add_with_bridge(date(year, JUN, 29), tr("San Pedro y San Pablo"))
 
         # Independence Day
         self._add_holiday(tr("Día de la Independencia"), JUL, 20)
@@ -98,29 +88,17 @@ class Colombia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 1951:
             # Assumption of Mary
-            self._add_with_bridge(
-                date(year, AUG, 15),
-                tr("La Asunción"),
-            )
+            self._add_with_bridge(date(year, AUG, 15), tr("La Asunción"))
 
         # Columbus Day
-        self._add_with_bridge(
-            date(year, OCT, 12),
-            tr("Día de la Raza"),
-        )
+        self._add_with_bridge(date(year, OCT, 12), tr("Día de la Raza"))
 
         if year >= 1951:
             # All Saints’ Day
-            self._add_with_bridge(
-                date(year, NOV, 1),
-                tr("Día de Todos los Santos"),
-            )
+            self._add_with_bridge(date(year, NOV, 1), tr("Día de Todos los Santos"))
 
         # Independence of Cartagena
-        self._add_with_bridge(
-            date(year, NOV, 11),
-            tr("Independencia de Cartagena"),
-        )
+        self._add_with_bridge(date(year, NOV, 11), tr("Independencia de Cartagena"))
 
         if year >= 1951:
             # Immaculate Conception
@@ -137,23 +115,14 @@ class Colombia(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_good_friday(tr("Viernes Santo"))
 
             # Ascension of Jesus
-            self._add_with_bridge(
-                self._easter_sunday + td(days=+39),
-                tr("Ascensión del señor"),
-            )
+            self._add_with_bridge(self._easter_sunday + td(days=+39), tr("Ascensión del señor"))
 
             # Corpus Christi
-            self._add_with_bridge(
-                self._easter_sunday + td(days=+60),
-                tr("Corpus Christi"),
-            )
+            self._add_with_bridge(self._easter_sunday + td(days=+60), tr("Corpus Christi"))
 
         if year >= 1984:
             # Sacred Heart
-            self._add_with_bridge(
-                self._easter_sunday + td(days=+68),
-                tr("Sagrado Corazón"),
-            )
+            self._add_with_bridge(self._easter_sunday + td(days=+68), tr("Sagrado Corazón"))
 
 
 class CO(Colombia):

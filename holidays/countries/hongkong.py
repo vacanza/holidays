@@ -37,20 +37,14 @@ class HongKong(
 
     country = "HK"
     special_holidays = {
-        1997: (
-            (
-                JUL,
-                2,
-                "Hong Kong Special Administrative Region Establishment Day",
-            ),
-        ),
+        1997: (JUL, 2, "Hong Kong Special Administrative Region Establishment Day"),
         2015: (
             (
                 SEP,
                 3,
                 "The 70th anniversary day of the victory of the Chinese "
                 "people's war of resistance against Japanese aggression",
-            ),
+            )
         ),
     }
 
@@ -147,11 +141,7 @@ class HongKong(
 
         # Hong Kong Special Administrative Region Establishment Day
         if year >= 1997:
-            self._add_holiday(
-                "Hong Kong Special Administrative Region Establishment Day",
-                JUL,
-                1,
-            )
+            self._add_holiday("Hong Kong Special Administrative Region Establishment Day", JUL, 1)
 
         # Chinese Mid-Autumn Festival
         name = "Chinese Mid-Autumn Festival"
@@ -166,8 +156,7 @@ class HongKong(
                     self._add_mid_autumn_festival(name)
                 else:
                     self._add_holiday(
-                        f"The second day of the {name} (Monday)",
-                        mid_autumn_date + td(days=+2),
+                        f"The second day of the {name} (Monday)", mid_autumn_date + td(days=+2)
                     )
             else:
                 self._add_mid_autumn_festival_day_two(f"The day following the {name}")
@@ -206,10 +195,7 @@ class HongKong(
         # Previous holidays
         if 1952 <= year <= 1997:
             # Queen's Birthday (June 2nd Monday)
-            self._add_holiday(
-                "Queen's Birthday",
-                _get_nth_weekday_of_month(2, MON, JUN, year),
-            )
+            self._add_holiday("Queen's Birthday", _get_nth_weekday_of_month(2, MON, JUN, year))
 
         if year <= 1996:
             # Anniversary of the liberation of Hong Kong (August last Monday)

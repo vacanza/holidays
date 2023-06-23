@@ -188,12 +188,7 @@ class Brunei(
                 if obs_date:
                     self._add_islamic_calendar_holiday(
                         self.tr("%s - Diperhatikan") % self[hol_date],
-                        (
-                            (
-                                obs_date,
-                                self._year not in BruneiIslamicCalendar.EID_AL_FITR_DATES,
-                            ),
-                        ),
+                        ((obs_date, self._year not in BruneiIslamicCalendar.EID_AL_FITR_DATES),),
                     )
 
         # Hari Raya Aidil Adha

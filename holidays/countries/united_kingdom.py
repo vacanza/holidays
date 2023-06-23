@@ -60,8 +60,7 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _add_observed(self, dt: date, days: int = +1) -> None:
         if self.observed and self._is_weekend(dt):
             self._add_holiday(
-                "%s (Observed)" % self[dt],
-                dt + td(days=+2 if self._is_saturday(dt) else days),
+                "%s (Observed)" % self[dt], dt + td(days=+2 if self._is_saturday(dt) else days)
             )
 
     def _populate(self, year: int) -> None:
@@ -120,8 +119,7 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Late Summer bank holiday (last Monday in August)
         if self._year >= 1971:
             self._add_holiday(
-                "Late Summer Bank Holiday",
-                _get_nth_weekday_of_month(-1, MON, AUG, self._year),
+                "Late Summer Bank Holiday", _get_nth_weekday_of_month(-1, MON, AUG, self._year)
             )
 
     def _add_subdiv_nir_holidays(self):
@@ -137,8 +135,7 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Late Summer bank holiday (last Monday in August)
         if self._year >= 1971:
             self._add_holiday(
-                "Late Summer Bank Holiday",
-                _get_nth_weekday_of_month(-1, MON, AUG, self._year),
+                "Late Summer Bank Holiday", _get_nth_weekday_of_month(-1, MON, AUG, self._year)
             )
 
     def _add_subdiv_sct_holidays(self):
@@ -147,8 +144,7 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
         jan_1 = self._add_new_years_day(name)
         if self.observed and self._is_weekend(jan_1):
             self._add_holiday(
-                "%s (Observed)" % name,
-                jan_1 + td(days=+3 if self._is_saturday(jan_1) else +1),
+                "%s (Observed)" % name, jan_1 + td(days=+3 if self._is_saturday(jan_1) else +1)
             )
 
         # New Year Holiday
@@ -160,8 +156,7 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Summer bank holiday (first Monday in August)
         self._add_holiday(
-            "Summer Bank Holiday",
-            _get_nth_weekday_of_month(1, MON, AUG, self._year),
+            "Summer Bank Holiday", _get_nth_weekday_of_month(1, MON, AUG, self._year)
         )
 
         # St. Andrew's Day
@@ -174,8 +169,7 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Late Summer bank holiday (last Monday in August)
         if self._year >= 1971:
             self._add_holiday(
-                "Late Summer Bank Holiday",
-                _get_nth_weekday_of_month(-1, MON, AUG, self._year),
+                "Late Summer Bank Holiday", _get_nth_weekday_of_month(-1, MON, AUG, self._year)
             )
 
 

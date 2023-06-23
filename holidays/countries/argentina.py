@@ -191,9 +191,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 2006:
             self._add_holiday(
-                tr("Día Nacional de la Memoria por la Verdad y la Justicia"),
-                MAR,
-                24,
+                tr("Día Nacional de la Memoria por la Verdad y la Justicia"), MAR, 24
             )
 
         # Veterans Day and the Fallen in the Malvinas War.
@@ -304,8 +302,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_columbus_day(tr("Día de la Raza"))
         elif year >= 2010:
             add_movable_holiday(
-                date(year, OCT, 12),
-                tr("Día del Respeto a la Diversidad Cultural"),
+                date(year, OCT, 12), tr("Día del Respeto a la Diversidad Cultural")
             )
 
         # National Sovereignty Day.

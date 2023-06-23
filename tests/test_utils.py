@@ -55,14 +55,8 @@ class TestCountryHolidays(unittest.TestCase):
 
     def test_exceptions(self):
         self.assertRaises(NotImplementedError, lambda: country_holidays("XXXX"))
-        self.assertRaises(
-            NotImplementedError,
-            lambda: country_holidays("US", subdiv="XXXX"),
-        )
-        self.assertRaises(
-            NotImplementedError,
-            lambda: country_holidays("US", subdiv="XXXX"),
-        )
+        self.assertRaises(NotImplementedError, lambda: country_holidays("US", subdiv="XXXX"))
+        self.assertRaises(NotImplementedError, lambda: country_holidays("US", subdiv="XXXX"))
 
 
 class TestFinancialHolidays(unittest.TestCase):
@@ -82,10 +76,7 @@ class TestFinancialHolidays(unittest.TestCase):
 
     def test_exceptions(self):
         self.assertRaises(NotImplementedError, lambda: financial_holidays("XXXX"))
-        self.assertRaises(
-            NotImplementedError,
-            lambda: financial_holidays("NYSE", subdiv="XXXX"),
-        )
+        self.assertRaises(NotImplementedError, lambda: financial_holidays("NYSE", subdiv="XXXX"))
 
 
 class TestAllInSameYear(unittest.TestCase):
@@ -114,10 +105,7 @@ class TestAllInSameYear(unittest.TestCase):
                 for dt in country_holidays(country, years=year):
                     self.assertEqual(dt.year, year)
                     self.assertEqual(type(dt), date)
-        self.assertEqual(
-            self.years,
-            country_holidays(country, years=self.years).years,
-        )
+        self.assertEqual(self.years, country_holidays(country, years=self.years).years)
 
     @pytest.mark.skipif(
         sys.version_info < PYTHON_VERSION,
@@ -140,10 +128,7 @@ class TestAllInSameYear(unittest.TestCase):
                 for dt in financial_holidays(market, years=year):
                     self.assertEqual(dt.year, year)
                     self.assertEqual(type(dt), date)
-        self.assertEqual(
-            self.years,
-            financial_holidays(market, years=self.years).years,
-        )
+        self.assertEqual(self.years, financial_holidays(market, years=self.years).years)
 
 
 class TestListLocalizedEntities(unittest.TestCase):

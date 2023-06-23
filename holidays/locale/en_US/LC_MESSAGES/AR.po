@@ -56,28 +56,28 @@ msgstr "Carnival"
 msgid "Día Nacional de la Memoria por la Verdad y la Justicia"
 msgstr "Memory's National Day for the Truth and Justice"
 
-#: ./holidays/countries/argentina.py:208
+#: ./holidays/countries/argentina.py:206
 msgid "Día del Veterano de Guerra"
 msgstr "War Veterans Day"
 
-#: ./holidays/countries/argentina.py:210
+#: ./holidays/countries/argentina.py:208
 msgid "Día del Veterano y de los Caidos en la Guerra de Malvinas"
 msgstr "Veterans Day and the Fallen in the Malvinas War"
 
 #. Good Friday.
-#: ./holidays/countries/argentina.py:215
+#: ./holidays/countries/argentina.py:213
 msgid "Viernes Santo"
 msgstr "Good Friday"
 
-#: ./holidays/countries/argentina.py:219
+#: ./holidays/countries/argentina.py:217
 msgid "Día del Trabajo"
 msgstr "Labor Day"
 
-#: ./holidays/countries/argentina.py:223
+#: ./holidays/countries/argentina.py:221
 msgid "Día de la Revolución de Mayo"
 msgstr "May Revolution Day"
 
-#: ./holidays/countries/argentina.py:233
+#: ./holidays/countries/argentina.py:231
 msgid ""
 "Día de los Derechos Argentinos sobre las Islas Malvinas, Sandwich y del "
 "Atlántico Sur"
@@ -85,41 +85,41 @@ msgstr ""
 "Day of Argentine Sovereignty over the Malvinas, Sandwich and South Atlantic "
 "Islands"
 
-#: ./holidays/countries/argentina.py:249
+#: ./holidays/countries/argentina.py:247
 msgid "Paso a la Inmortalidad del General Don Manuel Belgrano"
 msgstr "Pass to the Immortality of General Don Manuel Belgrano"
 
-#: ./holidays/countries/argentina.py:257
+#: ./holidays/countries/argentina.py:255
 msgid "Día de la Independencia"
 msgstr "Independence Day"
 
 #. Immaculate Conception.
-#: ./holidays/countries/argentina.py:260
+#: ./holidays/countries/argentina.py:258
 msgid "Inmaculada Concepción de María"
 msgstr "Immaculate Conception"
 
 #. Christmas.
-#: ./holidays/countries/argentina.py:263
+#: ./holidays/countries/argentina.py:261
 msgid "Navidad"
 msgstr "Christmas"
 
-#: ./holidays/countries/argentina.py:273
+#: ./holidays/countries/argentina.py:271
 msgid "Paso a la Inmortalidad del General Don Martín Miguel de Güemes"
 msgstr "Pass to the Immortality of General Don Martín Miguel de Güemes"
 
-#: ./holidays/countries/argentina.py:287
+#: ./holidays/countries/argentina.py:285
 msgid "Paso a la Inmortalidad del General Don José de San Martin"
 msgstr "Pass to the Immortality of General Don José de San Martin"
 
-#: ./holidays/countries/argentina.py:308
+#: ./holidays/countries/argentina.py:305
 msgid "Día del Respeto a la Diversidad Cultural"
 msgstr "Respect for Cultural Diversity Day"
 
-#: ./holidays/countries/argentina.py:304
+#: ./holidays/countries/argentina.py:302
 msgid "Día de la Raza"
 msgstr "Columbus day"
 
-#: ./holidays/countries/argentina.py:318
+#: ./holidays/countries/argentina.py:315
 msgid "Día de la Soberanía Nacional"
 msgstr "National Sovereignty Day"
 

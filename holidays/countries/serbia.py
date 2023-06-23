@@ -65,10 +65,8 @@ class Serbia(HolidayBase, ChristianHolidays, InternationalHolidays):
             days=+2 if may_1 + td(days=+1) == self._easter_sunday else +1,
         )
 
-        self._add_observed(
-            # Armistice Day.
-            self._add_remembrance_day(tr("Дан примирја у Првом светском рату"))
-        )
+        # Armistice Day.
+        self._add_observed(self._add_remembrance_day(tr("Дан примирја у Првом светском рату")))
 
         # Good Friday.
         self._add_good_friday(tr("Велики петак"))

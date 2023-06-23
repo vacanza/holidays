@@ -79,10 +79,7 @@ class Eswatini(HolidayBase, ChristianHolidays, InternationalHolidays):
 
 class Swaziland(Eswatini):
     def __init__(self, *args, **kwargs) -> None:
-        warnings.warn(
-            "Swaziland is deprecated, use Eswatini instead.",
-            DeprecationWarning,
-        )
+        warnings.warn("Swaziland is deprecated, use Eswatini instead.", DeprecationWarning)
 
         super().__init__(*args, **kwargs)
 

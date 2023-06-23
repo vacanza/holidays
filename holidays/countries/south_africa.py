@@ -86,9 +86,7 @@ class SouthAfrica(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_christmas_day("Christmas Day")
 
         self._add_observed(
-            self._add_christmas_day_two(
-                "Day of Goodwill" if year >= 1980 else "Boxing Day",
-            )
+            self._add_christmas_day_two("Day of Goodwill" if year >= 1980 else "Boxing Day")
         )
 
         if year >= 1995:
@@ -129,10 +127,7 @@ class SouthAfrica(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday("Republic Day", MAY, 31)
 
         if 1952 <= year <= 1960:
-            self._add_holiday(
-                "Queen's Birthday",
-                _get_nth_weekday_of_month(2, MON, JUL, year),
-            )
+            self._add_holiday("Queen's Birthday", _get_nth_weekday_of_month(2, MON, JUL, year))
 
         if 1961 <= year <= 1973:
             self._add_holiday("Family Day", JUL, 10)

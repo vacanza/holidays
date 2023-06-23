@@ -25,7 +25,7 @@ class Albania(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
 
     country = "AL"
     special_holidays = {
-        2022: ((MAR, 21, "Public Holiday"),),
+        2022: (MAR, 21, "Public Holiday"),
     }
 
     def __init__(self, *args, **kwargs):

@@ -112,9 +112,7 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
                 self._add_holiday(tr("Dia de Camões, de Portugal e da Raça"), JUN, 10)
             elif year >= 1978:
                 self._add_holiday(
-                    tr("Dia de Portugal, de Camões e das Comunidades Portuguesas"),
-                    JUN,
-                    10,
+                    tr("Dia de Portugal, de Camões e das Comunidades Portuguesas"), JUN, 10
                 )
             else:
                 self._add_holiday(tr("Dia de Portugal"), JUN, 10)
@@ -162,8 +160,7 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_05_holidays(self):
         self._add_holiday(
-            tr("Dia de Nossa Senhora de Mércoles"),
-            self._easter_sunday + td(days=+16),
+            tr("Dia de Nossa Senhora de Mércoles"), self._easter_sunday + td(days=+16)
         )
 
     def _add_subdiv_06_holidays(self):
@@ -208,8 +205,7 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _add_subdiv_20_holidays(self):
         if self._year >= 1981:
             self._add_holiday(
-                tr("Dia da Região Autónoma dos Açores"),
-                self._easter_sunday + td(days=+50),
+                tr("Dia da Região Autónoma dos Açores"), self._easter_sunday + td(days=+50)
             )
 
     def _add_subdiv_30_holidays(self):
@@ -217,9 +213,7 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday(tr("Dia da Região Autónoma da Madeira"), JUL, 1)
         elif self._year >= 1989:
             self._add_holiday(
-                tr("Dia da Região Autónoma da Madeira e das Comunidades Madeirenses"),
-                JUL,
-                1,
+                tr("Dia da Região Autónoma da Madeira e das Comunidades Madeirenses"), JUL, 1
             )
 
         if self._year >= 2002:

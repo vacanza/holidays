@@ -83,10 +83,7 @@ class Greece(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_christmas_day(tr("Χριστούγεννα"), GREGORIAN_CALENDAR)
 
         # Day after Christmas.
-        self._add_christmas_day_two(
-            tr("Επόμενη ημέρα των Χριστουγέννων"),
-            GREGORIAN_CALENDAR,
-        )
+        self._add_christmas_day_two(tr("Επόμενη ημέρα των Χριστουγέννων"), GREGORIAN_CALENDAR)
 
 
 class GR(Greece):

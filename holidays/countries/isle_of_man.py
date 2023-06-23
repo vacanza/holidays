@@ -40,8 +40,7 @@ class IsleOfMan(UnitedKingdom):
         # Late Summer bank holiday (last Monday in August)
         if year >= 1971:
             self._add_holiday(
-                "Late Summer Bank Holiday",
-                _get_nth_weekday_of_month(-1, MON, AUG, year),
+                "Late Summer Bank Holiday", _get_nth_weekday_of_month(-1, MON, AUG, year)
             )
 
         # Isle of Man exclusive holidays

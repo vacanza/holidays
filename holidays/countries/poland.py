@@ -69,10 +69,7 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year <= 1950:
             # Ascension Day.
-            self._add_holiday(
-                tr("Wniebowstąpienie Pańskie"),
-                self._easter_sunday + td(days=+40),
-            )
+            self._add_holiday(tr("Wniebowstąpienie Pańskie"), self._easter_sunday + td(days=+40))
 
         # Pentecost.
         self._add_whit_sunday(tr("Zielone Świątki"))
@@ -85,8 +82,8 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_corpus_christi_day(tr("Dzień Bożego Ciała"))
 
         if year <= 1950:
-            # Saints Peter and Paul Day.
             self._add_saints_peter_and_paul_day(
+                # Saints Peter and Paul Day.
                 tr("Uroczystość Świętych Apostołów Piotra i Pawła")
             )
 
@@ -106,8 +103,8 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday(tr("Narodowe Święto Niepodległości"), NOV, 11)
 
         if year <= 1950:
-            # Immaculate Conception of the Blessed Virgin Mary.
             self._add_immaculate_conception_day(
+                # Immaculate Conception of the Blessed Virgin Mary.
                 tr("Niepokalane Poczęcie Najświętszej Marii Panny")
             )
 

@@ -77,11 +77,7 @@ class Azerbaijan(HolidayBase, InternationalHolidays, IslamicHolidays):
         # Republic Day
         if year >= 1992:
             observed_dates.add(
-                self._add_holiday(
-                    "Independence Day" if year >= 2021 else "Republic Day",
-                    MAY,
-                    28,
-                )
+                self._add_holiday("Independence Day" if year >= 2021 else "Republic Day", MAY, 28)
             )
 
         # National Salvation Day
@@ -142,8 +138,7 @@ class Azerbaijan(HolidayBase, InternationalHolidays, IslamicHolidays):
             if year in special_dates_obs:
                 hol_dates.add(
                     self._add_holiday(
-                        "Gurban Bayrami* (*estimated) (Observed)",
-                        *special_dates_obs[year],
+                        "Gurban Bayrami* (*estimated) (Observed)", *special_dates_obs[year]
                     )
                 )
 

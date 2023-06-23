@@ -78,21 +78,12 @@ class Uruguay(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_sunday(tr("Día de Pascuas"))
 
         holiday_pairs = (
-            (
-                date(year, APR, 19),
-                # Landing of the 33 Patriots.
-                tr("Desembarco de los 33 Orientales"),
-            ),
-            (
-                date(year, MAY, 18),
-                # Battle of Las Piedras.
-                tr("Batalla de Las Piedras"),
-            ),
-            (
-                date(year, OCT, 12),
-                # Respect for Cultural Diversity Day.
-                tr("Día del Respeto a la Diversidad Cultural"),
-            ),
+            # Landing of the 33 Patriots.
+            (date(year, APR, 19), tr("Desembarco de los 33 Orientales")),
+            # Battle of Las Piedras.
+            (date(year, MAY, 18), tr("Batalla de Las Piedras")),
+            # Respect for Cultural Diversity Day.
+            (date(year, OCT, 12), tr("Día del Respeto a la Diversidad Cultural")),
         )
 
         for dt, name in holiday_pairs:

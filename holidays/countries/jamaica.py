@@ -36,8 +36,7 @@ class Jamaica(HolidayBase, ChristianHolidays, InternationalHolidays):
             return None
         if self._is_sunday(dt) or (include_sat and self._is_saturday(dt)):
             self._add_holiday(
-                "%s (Observed)" % self[dt],
-                dt + td(days=+2 if self._is_saturday(dt) else days),
+                "%s (Observed)" % self[dt], dt + td(days=+2 if self._is_saturday(dt) else days)
             )
 
     def _populate(self, year):

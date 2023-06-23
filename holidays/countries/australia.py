@@ -26,13 +26,7 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "AU"
     special_holidays = {
-        2022: (
-            (
-                SEP,
-                22,
-                "National Day of Mourning for Queen Elizabeth II",
-            ),
-        ),
+        2022: (SEP, 22, "National Day of Mourning for Queen Elizabeth II"),
     }
     subdivisions = ("ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA")
 
@@ -46,8 +40,7 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
             return None
         if self._is_sunday(dt) or (include_sat and self._is_saturday(dt)):
             self._add_holiday(
-                "%s (Observed)" % self[dt],
-                dt + td(days=+2 if self._is_saturday(dt) else days),
+                "%s (Observed)" % self[dt], dt + td(days=+2 if self._is_saturday(dt) else days)
             )
 
     def _populate(self, year):
@@ -167,8 +160,7 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Reconciliation Day
         if self._year >= 2018:
             self._add_holiday(
-                "Reconciliation Day",
-                _get_nth_weekday_from(1, MON, date(self._year, MAY, 27)),
+                "Reconciliation Day", _get_nth_weekday_from(1, MON, date(self._year, MAY, 27))
             )
 
     def _add_subdiv_nsw_holidays(self):
@@ -184,10 +176,7 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Bank Holiday
         if self._year >= 1912:
-            self._add_holiday(
-                "Bank Holiday",
-                _get_nth_weekday_of_month(1, MON, AUG, self._year),
-            )
+            self._add_holiday("Bank Holiday", _get_nth_weekday_of_month(1, MON, AUG, self._year))
 
     def _add_subdiv_nt_holidays(self):
         # Easter
@@ -243,8 +232,7 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
             2021: date(2021, OCT, 29),
         }
         dt = ekka_dates.get(
-            self._year,
-            _get_nth_weekday_from(1, FRI, date(self._year, AUG, 5)) + td(days=+5),
+            self._year, _get_nth_weekday_from(1, FRI, date(self._year, AUG, 5)) + td(days=+5)
         )
         self._add_holiday("The Royal Queensland Show", dt)
 
@@ -270,10 +258,7 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_tas_holidays(self):
         # Labour Day
-        self._add_holiday(
-            "Eight Hours Day",
-            _get_nth_weekday_of_month(2, MON, MAR, self._year),
-        )
+        self._add_holiday("Eight Hours Day", _get_nth_weekday_of_month(2, MON, MAR, self._year))
 
         # Sovereign's Birthday
         self._add_sovereign_birthday(_get_nth_weekday_of_month(2, MON, JUN, self._year))
@@ -284,19 +269,13 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_sunday("Easter Sunday")
 
         # Labour Day
-        self._add_holiday(
-            "Labour Day",
-            _get_nth_weekday_of_month(2, MON, MAR, self._year),
-        )
+        self._add_holiday("Labour Day", _get_nth_weekday_of_month(2, MON, MAR, self._year))
 
         # Sovereign's Birthday
         self._add_sovereign_birthday(_get_nth_weekday_of_month(2, MON, JUN, self._year))
 
         # Melbourne Cup
-        self._add_holiday(
-            "Melbourne Cup",
-            _get_nth_weekday_of_month(1, TUE, NOV, self._year),
-        )
+        self._add_holiday("Melbourne Cup", _get_nth_weekday_of_month(1, TUE, NOV, self._year))
 
         if self._year >= 2015:
             # Grand Final Day
@@ -308,8 +287,7 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
                 2022: date(2022, SEP, 23),
             }
             dt = grand_final_dates.get(
-                self._year,
-                _get_nth_weekday_from(1, FRI, date(self._year, SEP, 24)),
+                self._year, _get_nth_weekday_from(1, FRI, date(self._year, SEP, 24))
             )
             self._add_holiday("Grand Final Day", dt)
 

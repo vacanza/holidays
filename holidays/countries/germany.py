@@ -236,8 +236,7 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1995:
             # last wednesday before year-11-23
             self._add_holiday(
-                tr("Buß- und Bettag"),
-                _get_nth_weekday_from(-1, WED, date(self._year, NOV, 22)),
+                tr("Buß- und Bettag"), _get_nth_weekday_from(-1, WED, date(self._year, NOV, 22))
             )
 
     def _add_subdiv_st_holidays(self):

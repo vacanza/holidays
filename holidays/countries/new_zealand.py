@@ -20,7 +20,9 @@ from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 class NewZealand(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "NZ"
-    special_holidays = {2022: ((SEP, 26, "Queen Elizabeth II Memorial Day"),)}
+    special_holidays = {
+        2022: (SEP, 26, "Queen Elizabeth II Memorial Day"),
+    }
     subdivisions = (
         # https://en.wikipedia.org/wiki/ISO_3166-2:NZ
         "AUK",  # Auckland / Tāmaki-makaurau
@@ -72,8 +74,7 @@ class NewZealand(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _add_observed(self, dt: date, days: int = +1) -> None:
         if self.observed and self._is_weekend(dt):
             self._add_holiday(
-                "%s (Observed)" % self[dt],
-                dt + td(days=+2 if self._is_saturday(dt) else days),
+                "%s (Observed)" % self[dt], dt + td(days=+2 if self._is_saturday(dt) else days)
             )
 
     def __init__(self, *args, **kwargs):
@@ -217,10 +218,7 @@ class NewZealand(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_subdiv_wtc_holidays()
 
     def _add_subdiv_auk_holidays(self):
-        self._add_holiday(
-            "Auckland Anniversary Day",
-            self._get_nearest_monday(JAN, 29),
-        )
+        self._add_holiday("Auckland Anniversary Day", self._get_nearest_monday(JAN, 29))
 
     def _add_subdiv_can_holidays(self):
         self._add_holiday(
@@ -229,10 +227,7 @@ class NewZealand(HolidayBase, ChristianHolidays, InternationalHolidays):
         )
 
     def _add_subdiv_cit_holidays(self):
-        self._add_holiday(
-            "Chatham Islands Anniversary Day",
-            self._get_nearest_monday(NOV, 30),
-        )
+        self._add_holiday("Chatham Islands Anniversary Day", self._get_nearest_monday(NOV, 30))
 
     def _add_subdiv_hkb_holidays(self):
         self._add_holiday(
@@ -247,10 +242,7 @@ class NewZealand(HolidayBase, ChristianHolidays, InternationalHolidays):
         )
 
     def _add_subdiv_nsn_holidays(self):
-        self._add_holiday(
-            "Nelson Anniversary Day",
-            self._get_nearest_monday(FEB, 1),
-        )
+        self._add_holiday("Nelson Anniversary Day", self._get_nearest_monday(FEB, 1))
 
     def _add_subdiv_ntl_holidays(self):
         if 1964 <= self._year <= 1973:
@@ -270,8 +262,7 @@ class NewZealand(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_stc_holidays(self):
         self._add_holiday(
-            "South Canterbury Anniversary Day",
-            _get_nth_weekday_of_month(4, MON, SEP, self._year),
+            "South Canterbury Anniversary Day", _get_nth_weekday_of_month(4, MON, SEP, self._year)
         )
 
     def _add_subdiv_stl_holidays(self):
@@ -284,15 +275,11 @@ class NewZealand(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_tki_holidays(self):
         self._add_holiday(
-            "Taranaki Anniversary Day",
-            _get_nth_weekday_of_month(2, MON, MAR, self._year),
+            "Taranaki Anniversary Day", _get_nth_weekday_of_month(2, MON, MAR, self._year)
         )
 
     def _add_subdiv_wgn_holidays(self):
-        self._add_holiday(
-            "Wellington Anniversary Day",
-            self._get_nearest_monday(JAN, 22),
-        )
+        self._add_holiday("Wellington Anniversary Day", self._get_nearest_monday(JAN, 22))
 
     def _add_subdiv_wtc_holidays(self):
         dt = (

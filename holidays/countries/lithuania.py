@@ -68,11 +68,7 @@ class Lithuania(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Statehood Day.
         if year >= 1991:
-            self._add_holiday(
-                "Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) diena",
-                JUL,
-                6,
-            )
+            self._add_holiday("Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) diena", JUL, 6)
 
         # Assumption Day.
         self._add_assumption_of_mary_day("Žolinė (Švč. Mergelės Marijos ėmimo į dangų diena)")

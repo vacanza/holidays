@@ -81,10 +81,7 @@ class Philippines(
         self._add_holiday("Ninoy Aquino Day", AUG, 21)
 
         # National Heroes Day.
-        self._add_holiday(
-            "National Heroes Day",
-            _get_nth_weekday_of_month(-1, MON, AUG, year),
-        )
+        self._add_holiday("National Heroes Day", _get_nth_weekday_of_month(-1, MON, AUG, year))
 
         # All Saints' Day.
         self._add_all_saints_day("All Saints' Day")

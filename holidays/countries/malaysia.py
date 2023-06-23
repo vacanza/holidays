@@ -320,9 +320,7 @@ class Malaysia(
         elif self.subdiv == "TRG" and year >= 2000:
             observed_dates.add(
                 self._add_holiday(
-                    "Anniversary of the Installation of the Sultan of Terengganu",
-                    MAR,
-                    4,
+                    "Anniversary of the Installation of the Sultan of Terengganu", MAR, 4
                 )
             )
 
@@ -402,8 +400,7 @@ class Malaysia(
 
         elif self.subdiv == "KDH" and year >= 2020:
             self._add_holiday(
-                "Birthday of The Sultan of Kedah",
-                _get_nth_weekday_of_month(3, SUN, JUN, year),
+                "Birthday of The Sultan of Kedah", _get_nth_weekday_of_month(3, SUN, JUN, year)
             )
 
         elif self.subdiv == "KTN" and year >= 2010:
@@ -423,8 +420,7 @@ class Malaysia(
 
         elif self.subdiv == "SBH":
             self._add_holiday(
-                "Birthday of the Governor of Sabah",
-                _get_nth_weekday_of_month(1, SAT, OCT, year),
+                "Birthday of the Governor of Sabah", _get_nth_weekday_of_month(1, SAT, OCT, year)
             )
 
             if year >= 2019:
