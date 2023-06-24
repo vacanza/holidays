@@ -23,12 +23,7 @@ from holidays.holiday_groups import (
 )
 
 
-class HongKong(
-    HolidayBase,
-    ChineseCalendarHolidays,
-    ChristianHolidays,
-    InternationalHolidays,
-):
+class HongKong(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, InternationalHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Hong_Kong
     Holidays for 2007–2023 (government source):

@@ -25,11 +25,7 @@ from holidays.holiday_groups import (
 
 
 class Brunei(
-    HolidayBase,
-    ChineseCalendarHolidays,
-    ChristianHolidays,
-    InternationalHolidays,
-    IslamicHolidays,
+    HolidayBase, ChineseCalendarHolidays, ChristianHolidays, InternationalHolidays, IslamicHolidays
 ):
     """
     A subclass of :py:class:`HolidayBase` representing public holidays in Brunei Darussalam.

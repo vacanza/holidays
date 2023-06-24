@@ -21,11 +21,7 @@ from holidays.holiday_groups import (
 
 
 class Philippines(
-    HolidayBase,
-    ChineseCalendarHolidays,
-    ChristianHolidays,
-    InternationalHolidays,
-    IslamicHolidays,
+    HolidayBase, ChineseCalendarHolidays, ChristianHolidays, InternationalHolidays, IslamicHolidays
 ):
     """
     Philippines holidays.

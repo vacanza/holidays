@@ -24,12 +24,7 @@ from holidays.holiday_groups import (
 )
 
 
-class SouthKorea(
-    HolidayBase,
-    ChineseCalendarHolidays,
-    ChristianHolidays,
-    InternationalHolidays,
-):
+class SouthKorea(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, InternationalHolidays):
     """
     1. https://publicholidays.co.kr/ko/2020-dates/
     2. https://en.wikipedia.org/wiki/Public_holidays_in_South_Korea
