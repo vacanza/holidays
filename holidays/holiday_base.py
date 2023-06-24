@@ -22,8 +22,18 @@ from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Tuple, Uni
 
 from dateutil.parser import parse
 
-from holidays.categories import ALL_CATEGORIES, PUBLIC
-from holidays.constants import HOLIDAY_NAME_DELIMITER, MON, TUE, WED, THU, FRI, SAT, SUN
+from holidays.constants import (
+    HOLIDAY_NAME_DELIMITER,
+    MON,
+    TUE,
+    WED,
+    THU,
+    FRI,
+    SAT,
+    SUN,
+    ALL_CATEGORIES,
+    PUBLIC,
+)
 from holidays.helpers import _normalize_tuple
 
 DateArg = Union[date, Tuple[int, int]]
@@ -212,9 +222,9 @@ class HolidayBase(Dict[date, str]):
     """Country weekend days."""
     default_language: Optional[str] = None
     """The entity language used by default."""
-    categories: Optional[Tuple[str]] = None
+    categories: Optional[Set[str]] = None
     """Requested holiday categories."""
-    supported_categories: Tuple[str, ...] = ()
+    supported_categories: Set[str] = set()
     """All holiday categories supported by this entity."""
     supported_languages: Tuple[str, ...] = ()
     """All languages supported by this entity."""
@@ -228,7 +238,7 @@ class HolidayBase(Dict[date, str]):
         prov: Optional[str] = None,  # Deprecated.
         state: Optional[str] = None,  # Deprecated.
         language: Optional[str] = None,
-        categories: Optional[Tuple[str]] = None,
+        categories: Optional[Set[str]] = None,
     ) -> None:
         """
         :param years:
@@ -271,7 +281,7 @@ class HolidayBase(Dict[date, str]):
         self.language = language.lower() if language else None
         self.observed = observed
         self.subdiv = subdiv or prov or state
-        self.categories = categories or (PUBLIC,)
+        self.categories = categories or {PUBLIC}
 
         self.tr = gettext  # Default translation method.
 
@@ -298,9 +308,11 @@ class HolidayBase(Dict[date, str]):
                     DeprecationWarning,
                 )
 
-            wrong = set(self.categories).difference(ALL_CATEGORIES)
-            if len(wrong) > 0:
-                raise NotImplementedError(f"Categories does not supported: '{', '.join(wrong)}'.")
+            unknown_categories = self.categories.difference(ALL_CATEGORIES)
+            if len(unknown_categories) > 0:
+                raise NotImplementedError(
+                    f"Category is not supported: {', '.join(unknown_categories)}."
+                )
 
             name = getattr(self, "country", getattr(self, "market", None))
             if name:
@@ -652,9 +664,7 @@ class HolidayBase(Dict[date, str]):
 
     def _populate_categories(self):
         for category in self.categories:
-            populate_category_holidays = getattr(
-                self, f"_populate_{category.lower()}_holidays", None
-            )
+            populate_category_holidays = getattr(self, f"_populate_{category}_holidays", None)
             if populate_category_holidays and callable(populate_category_holidays):
                 populate_category_holidays()
 

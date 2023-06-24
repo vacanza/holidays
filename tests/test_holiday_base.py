@@ -745,7 +745,7 @@ class TestArgs(unittest.TestCase):
 
     def test_categories(self):
         self.assertRaises(
-            NotImplementedError, lambda: holidays.country_holidays("AT", categories=("HOME",))
+            NotImplementedError, lambda: holidays.country_holidays("AT", categories={"HOME"})
         )
 
 
