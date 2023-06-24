@@ -43,8 +43,8 @@ class Mexico(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_new_years_day(tr("Año Nuevo"))
 
         if year >= 1917:
-            # Constitution Day.
             self._add_holiday(
+                # Constitution Day.
                 tr("Día de la Constitución"),
                 _get_nth_weekday_of_month(1, MON, FEB, year)
                 if year >= 2006
@@ -52,8 +52,8 @@ class Mexico(HolidayBase, ChristianHolidays, InternationalHolidays):
             )
 
         if year >= 1917:
-            # Benito Juárez's birthday.
             self._add_holiday(
+                # Benito Juárez's birthday.
                 tr("Natalicio de Benito Juárez"),
                 _get_nth_weekday_of_month(3, MON, MAR, year)
                 # no 2006 due to celebration of the 200th anniversary
@@ -69,8 +69,8 @@ class Mexico(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday(tr("Día de la Independencia"), SEP, 16)
 
         if year >= 1917:
-            # Revolution Day.
             self._add_holiday(
+                # Revolution Day.
                 tr("Día de la Revolución"),
                 _get_nth_weekday_of_month(3, MON, NOV, year)
                 if year >= 2006

@@ -52,20 +52,14 @@ class Israel(HolidayBase):
 
         name = "Memorial Day"
         if observed_delta != 0:
-            self._add_holiday(
-                f"{name} (Observed)",
-                memorial_day_dt + td(days=observed_delta),
-            )
+            self._add_holiday(f"{name} (Observed)", memorial_day_dt + td(days=observed_delta))
         else:
             self._add_holiday(name, memorial_day_dt)
 
         # Independence Day
         name = "Independence Day"
         if self.observed and observed_delta != 0:
-            self._add_holiday(
-                f"{name} (Observed)",
-                memorial_day_dt + td(days=observed_delta + 1),
-            )
+            self._add_holiday(f"{name} (Observed)", memorial_day_dt + td(days=observed_delta + 1))
         else:
             self._add_holiday(name, memorial_day_dt + td(days=+1))
 

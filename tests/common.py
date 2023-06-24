@@ -66,11 +66,7 @@ class TestCase(unittest.TestCase):
         os.environ["LANGUAGE"] = language
 
     def _parse_arguments(
-        self,
-        args,
-        expand_items=True,
-        instance_name="holidays",
-        raise_on_empty=True,
+        self, args, expand_items=True, instance_name="holidays", raise_on_empty=True
     ):
         item_args = args
         instance = None
@@ -162,10 +158,7 @@ class TestCase(unittest.TestCase):
     # Holiday.
     def _assertHoliday(self, instance_name, *args):
         """Helper: assert each date is a holiday."""
-        holidays, dates = self._parse_arguments(
-            args,
-            instance_name=instance_name,
-        )
+        holidays, dates = self._parse_arguments(args, instance_name=instance_name)
         self._verify_type(holidays)
 
         for dt in dates:
@@ -182,21 +175,14 @@ class TestCase(unittest.TestCase):
     # Holiday dates.
     def _assertHolidayDates(self, instance_name, *args):
         """Helper: assert holiday dates exactly match expected dates."""
-        holidays, dates = self._parse_arguments(
-            args,
-            instance_name=instance_name,
-        )
+        holidays, dates = self._parse_arguments(args, instance_name=instance_name)
         self._verify_type(holidays)
 
         # Check one by one for descriptive error messages.
         for dt in dates:
             self.assertIn(dt, holidays, dt)
 
-        self.assertEqual(
-            len(dates),
-            len(holidays.keys()),
-            set(dates).difference(holidays.keys()),
-        )
+        self.assertEqual(len(dates), len(holidays.keys()), set(dates).difference(holidays.keys()))
 
     def assertHolidayDates(self, *args):
         """Assert holiday dates exactly match expected dates."""
@@ -211,10 +197,7 @@ class TestCase(unittest.TestCase):
         """Helper: assert either a holiday with a specific name exists or
         each holiday name matches an expected one depending on the args nature.
         """
-        holidays, items = self._parse_arguments(
-            args,
-            instance_name=instance_name,
-        )
+        holidays, items = self._parse_arguments(args, instance_name=instance_name)
 
         arg = items[0]
         if type(arg) == int:  # A holiday name check for a specific year.
@@ -242,9 +225,7 @@ class TestCase(unittest.TestCase):
     def _assertHolidays(self, instance_name, *args):
         """Helper: assert holidays exactly match expected holidays."""
         holidays, expected_holidays = self._parse_arguments(
-            args,
-            expand_items=False,
-            instance_name=instance_name,
+            args, expand_items=False, instance_name=instance_name
         )
         self._verify_type(holidays)
 
@@ -272,10 +253,7 @@ class TestCase(unittest.TestCase):
     # No holiday.
     def _assertNoHoliday(self, instance_name, *args):
         """Helper: assert each date is not a holiday."""
-        holidays, dates = self._parse_arguments(
-            args,
-            instance_name=instance_name,
-        )
+        holidays, dates = self._parse_arguments(args, instance_name=instance_name)
 
         for dt in dates:
             self.assertNotIn(dt, holidays, dt)
@@ -292,9 +270,7 @@ class TestCase(unittest.TestCase):
     def _assertNoHolidayName(self, name, instance_name, *args):
         """Helper: assert a holiday with a specific name doesn't exist."""
         holidays, items = self._parse_arguments(
-            args,
-            instance_name=instance_name,
-            raise_on_empty=False,
+            args, instance_name=instance_name, raise_on_empty=False
         )
 
         if len(items) == 0:  # A holiday name check.
@@ -323,9 +299,7 @@ class TestCase(unittest.TestCase):
     def _assertNoHolidays(self, instance_name, *args):
         """Helper: assert holidays dict is empty."""
         holidays, _ = self._parse_arguments(
-            args,
-            instance_name=instance_name,
-            raise_on_empty=False,
+            args, instance_name=instance_name, raise_on_empty=False
         )
         self._verify_type(holidays)
 
@@ -353,7 +327,7 @@ class TestCase(unittest.TestCase):
         self.assertEqual(
             actual_holidays,
             localized_holidays,
-            "Plese make sure all holiday names are localized: " f"{actual_holidays}",
+            "Please make sure all holiday names are localized: " f"{actual_holidays}",
         )
 
     def assertLocalizedHolidays(self, *args):

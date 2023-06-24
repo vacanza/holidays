@@ -26,15 +26,9 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "SK"
     default_language = "sk"
     special_holidays = {
-        2018: (
-            (
-                OCT,
-                30,
-                # 100th anniversary of the adoption of the Declaration
-                # of the Slovak Nation.
-                tr("100. výročie prijatia Deklarácie slovenského národa"),
-            ),
-        )
+        # 100th anniversary of the adoption of the Declaration
+        # of the Slovak Nation.
+        2018: (OCT, 30, tr("100. výročie prijatia Deklarácie slovenského národa"))
     }
     supported_languages = ("en_US", "sk", "uk")
 
@@ -71,19 +65,11 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Day of Victory over Fascism.
             self._add_holiday(tr("Deň víťazstva nad fašizmom"), MAY, 8)
 
-        self._add_holiday(
-            # St. Cyril and Methodius Day.
-            tr("Sviatok svätého Cyrila a svätého Metoda"),
-            JUL,
-            5,
-        )
+        # St. Cyril and Methodius Day.
+        self._add_holiday(tr("Sviatok svätého Cyrila a svätého Metoda"), JUL, 5)
 
-        self._add_holiday(
-            # Slovak National Uprising Anniversary.
-            tr("Výročie Slovenského národného povstania"),
-            AUG,
-            29,
-        )
+        # Slovak National Uprising Anniversary.
+        self._add_holiday(tr("Výročie Slovenského národného povstania"), AUG, 29)
 
         # Constitution Day.
         self._add_holiday(tr("Deň Ústavy Slovenskej republiky"), SEP, 1)
@@ -92,13 +78,9 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday(tr("Sedembolestná Panna Mária"), SEP, 15)
 
         if year >= 2021:
-            self._add_holiday(
-                # Day of the Establishment of the Independent Czech-Slovak
-                # State.
-                tr("Deň vzniku samostatného česko-slovenského štátu"),
-                OCT,
-                28,
-            )
+            # Day of the Establishment of the Independent Czech-Slovak
+            # State.
+            self._add_holiday(tr("Deň vzniku samostatného česko-slovenského štátu"), OCT, 28)
 
         # All Saints' Day.
         self._add_all_saints_day(tr("Sviatok Všetkých svätých"))

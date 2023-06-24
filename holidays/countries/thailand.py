@@ -598,13 +598,11 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         ):
             if self._is_friday(asarnha_bucha_date):
                 self._add_holiday(
-                    self.tr("ชดเชย%s") % self.tr("วันเข้าพรรษา"),
-                    asarnha_bucha_date + td(days=+3),
+                    self.tr("ชดเชย%s") % self.tr("วันเข้าพรรษา"), asarnha_bucha_date + td(days=+3)
                 )
             elif self._is_weekend(asarnha_bucha_date):
                 self._add_holiday(
-                    self.tr("ชดเชย%s") % self.tr("วันอาสาฬหบูชา"),
-                    asarnha_bucha_date + td(days=+2),
+                    self.tr("ชดเชย%s") % self.tr("วันอาสาฬหบูชา"), asarnha_bucha_date + td(days=+2)
                 )
 
         # No Future Fixed Date Holidays

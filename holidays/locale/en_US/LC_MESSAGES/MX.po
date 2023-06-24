@@ -21,10 +21,12 @@ msgstr ""
 msgid "Año Nuevo"
 msgstr "New Year's Day"
 
+#. Constitution Day.
 #: ./holidays/countries/mexico.py:48
 msgid "Día de la Constitución"
 msgstr "Constitution Day"
 
+#. Benito Juárez's birthday.
 #: ./holidays/countries/mexico.py:57
 msgid "Natalicio de Benito Juárez"
 msgstr "Benito Juárez's birthday"
@@ -39,6 +41,7 @@ msgstr "Labour Day"
 msgid "Día de la Independencia"
 msgstr "Independence Day"
 
+#. Revolution Day.
 #: ./holidays/countries/mexico.py:74
 msgid "Día de la Revolución"
 msgstr "Revolution Day"

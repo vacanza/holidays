@@ -30,11 +30,7 @@ class Zambia(HolidayBase, ChristianHolidays, InternationalHolidays):
     special_holidays = {
         2016: (
             (AUG, 11, "General elections and referendum"),
-            (
-                SEP,
-                13,
-                "Inauguration ceremony of President-elect and Vice President-elect",
-            ),
+            (SEP, 13, "Inauguration ceremony of President-elect and Vice President-elect"),
         ),
         2018: (
             (MAR, 9, "Public holiday"),
@@ -110,17 +106,12 @@ class Zambia(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Unity Day.
         self._add_holiday("Unity Day", first_mon_of_july + td(days=+1))
 
-        self._add_holiday(
-            # Farmers' Day.
-            "Farmers' Day",
-            _get_nth_weekday_of_month(1, MON, AUG, year),
-        )
+        # Farmers' Day.
+        self._add_holiday("Farmers' Day", _get_nth_weekday_of_month(1, MON, AUG, year))
 
         if year >= 2015:
-            self._add_observed(
-                # National Prayer Day.
-                self._add_holiday("National Prayer Day", OCT, 18)
-            )
+            # National Prayer Day.
+            self._add_observed(self._add_holiday("National Prayer Day", OCT, 18))
 
         # Independence Day.
         self._add_observed(self._add_holiday("Independence Day", OCT, 24))

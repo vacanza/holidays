@@ -61,59 +61,62 @@ msgstr "National Day of the Third of May"
 msgid "Narodowe Święto Zwycięstwa i Wolności"
 msgstr "National Victory and Freedom Day"
 
-#: ./holidays/countries/poland.py:73
+#. Ascension Day.
+#: ./holidays/countries/poland.py:72
 msgid "Wniebowstąpienie Pańskie"
 msgstr "Ascension Day"
 
 #. Pentecost.
-#: ./holidays/countries/poland.py:78
+#: ./holidays/countries/poland.py:75
 msgid "Zielone Świątki"
 msgstr "Pentecost"
 
 #. Pentecost (Day 2).
-#: ./holidays/countries/poland.py:82
+#: ./holidays/countries/poland.py:79
 msgid "Drugi dzień Zielonych Świątek"
 msgstr "Pentecost (Day 2)"
 
 #. Corpus Christi.
-#: ./holidays/countries/poland.py:85
+#: ./holidays/countries/poland.py:82
 msgid "Dzień Bożego Ciała"
 msgstr "Corpus Christi"
 
-#: ./holidays/countries/poland.py:90
+#. Saints Peter and Paul Day.
+#: ./holidays/countries/poland.py:87
 msgid "Uroczystość Świętych Apostołów Piotra i Pawła"
 msgstr "Saints Peter and Paul Day"
 
 #. National Day of Rebirth of Poland.
-#: ./holidays/countries/poland.py:95
+#: ./holidays/countries/poland.py:92
 msgid "Narodowe Święto Odrodzenia Polski"
 msgstr "National Day of Rebirth of Poland"
 
 #. Assumption of the Virgin Mary.
-#: ./holidays/countries/poland.py:99
+#: ./holidays/countries/poland.py:96
 msgid "Wniebowzięcie Najświętszej Marii Panny"
 msgstr "Assumption of the Virgin Mary"
 
 #. All Saints' Day.
-#: ./holidays/countries/poland.py:102
+#: ./holidays/countries/poland.py:99
 msgid "Uroczystość Wszystkich Świętych"
 msgstr "All Saints' Day"
 
 #. National Independence Day.
-#: ./holidays/countries/poland.py:106
+#: ./holidays/countries/poland.py:103
 msgid "Narodowe Święto Niepodległości"
 msgstr "National Independence Day"
 
-#: ./holidays/countries/poland.py:111
+#. Immaculate Conception of the Blessed Virgin Mary.
+#: ./holidays/countries/poland.py:108
 msgid "Niepokalane Poczęcie Najświętszej Marii Panny"
 msgstr "Immaculate Conception of the Blessed Virgin Mary"
 
 #. Christmas Day 1.
-#: ./holidays/countries/poland.py:115
+#: ./holidays/countries/poland.py:112
 msgid "Boże Narodzenie (pierwszy dzień)"
 msgstr "Christmas (Day 1)"
 
 #. Christmas Day 2.
-#: ./holidays/countries/poland.py:117
+#: ./holidays/countries/poland.py:114
 msgid "Boże Narodzenie (drugi dzień)"
 msgstr "Christmas (Day 2)"

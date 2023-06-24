@@ -67,20 +67,13 @@ class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_world_war_two_victory_day(tr("Дзень Перамогі"))
 
         # Independence Day.
-        self._add_holiday(
-            tr("Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)"),
-            JUL,
-            3,
-        )
+        self._add_holiday(tr("Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)"), JUL, 3)
 
         # October Revolution Day.
         self._add_holiday(tr("Дзень Кастрычніцкай рэвалюцыі"), NOV, 7)
 
         # Catholic Christmas Day.
-        self._add_christmas_day(
-            tr("Нараджэнне Хрыстова (каталіцкае Раство)"),
-            GREGORIAN_CALENDAR,
-        )
+        self._add_christmas_day(tr("Нараджэнне Хрыстова (каталіцкае Раство)"), GREGORIAN_CALENDAR)
 
 
 class BY(Belarus):

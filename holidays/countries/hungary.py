@@ -31,26 +31,16 @@ class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays):
     supported_languages = ("en_US", "hu", "uk")
 
     def _add_observed(
-        self,
-        dt: date,
-        since: int = 2010,
-        before: bool = True,
-        after: bool = True,
+        self, dt: date, since: int = 2010, before: bool = True, after: bool = True
     ) -> None:
         if not self.observed or dt.year < since:
             return None
         if self._is_tuesday(dt) and before:
-            self._add_holiday(
-                # Day off before
-                self.tr("%s előtti pihenőnap") % self[dt],
-                dt + td(days=-1),
-            )
+            # Day off before
+            self._add_holiday(self.tr("%s előtti pihenőnap") % self[dt], dt + td(days=-1))
         elif self._is_thursday(dt) and after:
-            self._add_holiday(
-                # Day off after
-                self.tr("%s utáni pihenőnap") % self[dt],
-                dt + td(days=+1),
-            )
+            # Day off after
+            self._add_holiday(self.tr("%s utáni pihenőnap") % self[dt], dt + td(days=+1))
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -131,23 +121,15 @@ class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Soviet era.
         if 1950 <= year <= 1989:
-            self._add_holiday(
-                # Proclamation of Soviet Republic Day.
-                tr("A Tanácsköztársaság kikiáltásának ünnepe"),
-                MAR,
-                21,
-            )
+            # Proclamation of Soviet Republic Day.
+            self._add_holiday(tr("A Tanácsköztársaság kikiáltásának ünnepe"), MAR, 21)
 
             # Liberation Day.
             self._add_holiday(tr("A felszabadulás ünnepe"), APR, 4)
 
             if year not in {1956, 1989}:
-                self._add_holiday(
-                    # Great October Socialist Revolution Day.
-                    tr("A nagy októberi szocialista forradalom ünnepe"),
-                    NOV,
-                    7,
-                )
+                # Great October Socialist Revolution Day.
+                self._add_holiday(tr("A nagy októberi szocialista forradalom ünnepe"), NOV, 7)
 
 
 class HU(Hungary):

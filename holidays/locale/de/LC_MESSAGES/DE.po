@@ -55,7 +55,7 @@ msgstr ""
 #: ./holidays/countries/germany.py:188 ./holidays/countries/germany.py:196
 #: ./holidays/countries/germany.py:203 ./holidays/countries/germany.py:207
 #: ./holidays/countries/germany.py:223 ./holidays/countries/germany.py:234
-#: ./holidays/countries/germany.py:248 ./holidays/countries/germany.py:256
+#: ./holidays/countries/germany.py:247 ./holidays/countries/germany.py:255
 msgid "Reformationstag"
 msgstr ""
 
@@ -99,7 +99,7 @@ msgstr ""
 
 #. Epiphany.
 #: ./holidays/countries/germany.py:161 ./holidays/countries/germany.py:171
-#: ./holidays/countries/germany.py:181 ./holidays/countries/germany.py:245
+#: ./holidays/countries/germany.py:181 ./holidays/countries/germany.py:244
 msgid "Heilige Drei Könige"
 msgstr ""
 
@@ -124,6 +124,6 @@ msgid "Mariä Himmelfahrt"
 msgstr ""
 
 #. World Children's Day.
-#: ./holidays/countries/germany.py:253
+#: ./holidays/countries/germany.py:252
 msgid "Weltkindertag"
 msgstr ""

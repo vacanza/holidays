@@ -65,11 +65,8 @@ class Lesotho(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_ascension_thursday("Ascension Day")
 
         # https://en.wikipedia.org/wiki/Letsie_III
-        self._add_holiday(
-            # King's Birthday.
-            "King's Birthday",
-            *((JUL, 17) if year >= 1998 else (MAY, 2)),
-        )
+        # King's Birthday.
+        self._add_holiday("King's Birthday", *((JUL, 17) if year >= 1998 else (MAY, 2)))
 
         # Independence Day.
         self._add_holiday("Independence Day", OCT, 4)

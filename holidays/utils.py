@@ -271,15 +271,12 @@ def CountryHoliday(
     """
 
     warnings.warn(
-        "CountryHoliday is deprecated, use country_holidays instead.",
-        DeprecationWarning,
+        "CountryHoliday is deprecated, use country_holidays instead.", DeprecationWarning
     )
     return country_holidays(country, subdiv, years, expand, observed, prov, state)
 
 
-def _list_localized_entities(
-    entity_codes: Iterable[str],
-) -> Dict[str, List[str]]:
+def _list_localized_entities(entity_codes: Iterable[str]) -> Dict[str, List[str]]:
     """
     Get all localized entities and languages they support.
 
@@ -336,9 +333,7 @@ def list_localized_financial(include_aliases=True) -> Dict[str, List[str]]:
     return _list_localized_entities(EntityLoader.get_financial_codes(include_aliases))
 
 
-def _list_supported_entities(
-    entity_codes: Iterable[str],
-) -> Dict[str, List[str]]:
+def _list_supported_entities(entity_codes: Iterable[str]) -> Dict[str, List[str]]:
     """
     Get all supported entities and their subdivisions.
 

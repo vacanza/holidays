@@ -26,7 +26,7 @@ class Kenya(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "KE"
     special_holidays = {
-        2020: ((FEB, 11, "President Moi Celebration of Life Day"),),
+        2020: (FEB, 11, "President Moi Celebration of Life Day"),
         2022: (
             (APR, 29, "State Funeral for Former President Mwai Kibaki"),
             (AUG, 9, "Election Day"),
@@ -70,21 +70,13 @@ class Kenya(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if 2002 <= year <= 2009 or year >= 2018:
             _add_observed(
-                self._add_holiday(
-                    # Utamaduni/Moi Day
-                    "Utamaduni Day" if year >= 2021 else "Moi Day",
-                    OCT,
-                    10,
-                )
+                # Utamaduni/Moi Day
+                self._add_holiday("Utamaduni Day" if year >= 2021 else "Moi Day", OCT, 10)
             )
 
         _add_observed(
-            self._add_holiday(
-                # Mashuja/Kenyatta Day
-                "Mashujaa Day" if year >= 2010 else "Kenyatta Day",
-                OCT,
-                20,
-            )
+            # Mashuja/Kenyatta Day
+            self._add_holiday("Mashujaa Day" if year >= 2010 else "Kenyatta Day", OCT, 20)
         )
 
         # Jamhuri Day

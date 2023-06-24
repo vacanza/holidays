@@ -81,16 +81,16 @@ msgid "Hari Raya Aidil Fitri"
 msgstr "Eid al-Fitr"
 
 #. Eid al-Adha
-#: ./holidays/countries/brunei.py:203
+#: ./holidays/countries/brunei.py:198
 msgid "Hari Raya Aidil Adha"
 msgstr "Eid al-Adha"
 
 #. Islamic New Year
-#: ./holidays/countries/brunei.py:210
+#: ./holidays/countries/brunei.py:205
 msgid "Awal Tahun Hijrah"
 msgstr "Islamic New Year"
 
 #. Birth of the Prophet
-#: ./holidays/countries/brunei.py:217
+#: ./holidays/countries/brunei.py:212
 msgid "Maulidur Rasul"
 msgstr "Birth of the Prophet"

@@ -132,9 +132,7 @@ class BosniaAndHerzegovina(HolidayBase, ChristianHolidays, InternationalHolidays
 
         # Dayton Agreement Day
         self._add_holiday(
-            ("Dan uspostave Opšteg okvirnog sporazuma za mir u Bosni i Hercegovini"),
-            NOV,
-            21,
+            ("Dan uspostave Opšteg okvirnog sporazuma za mir u Bosni i Hercegovini"), NOV, 21
         )
 
         # Catholic Good Friday

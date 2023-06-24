@@ -9,7 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from datetime import timedelta as td
 
 from holidays.constants import FEB, MAY, JUN, OCT
@@ -59,10 +58,7 @@ class Nigeria(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
         # will move to June 12th from 2019
         if year >= 2000:
             observed_dates.add(
-                self._add_holiday(
-                    "Democracy Day",
-                    date(year, JUN, 12) if year >= 2019 else date(year, MAY, 29),
-                )
+                self._add_holiday("Democracy Day", *((JUN, 12) if year >= 2019 else (MAY, 29)))
             )
 
         # Independence Day

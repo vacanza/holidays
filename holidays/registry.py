@@ -107,12 +107,7 @@ COUNTRIES: RegistryDict = {
     "nicaragua": ("Nicaragua", "NI", "NIC"),
     "nigeria": ("Nigeria", "NG", "NGA"),
     "north_macedonia": ("NorthMacedonia", "MK", "MKD"),
-    "northern_mariana_islands": (
-        "NorthernMarianaIslands",
-        "MP",
-        "MNP",
-        "HolidaysMP",
-    ),
+    "northern_mariana_islands": ("NorthernMarianaIslands", "MP", "MNP", "HolidaysMP"),
     "norway": ("Norway", "NO", "NOR"),
     "pakistan": ("Pakistan", "PK", "PAK"),
     "panama": ("Panama", "PA", "PAN"),
@@ -148,12 +143,7 @@ COUNTRIES: RegistryDict = {
         "UMI",
         "HolidaysUM",
     ),
-    "united_states_virgin_islands": (
-        "UnitedStatesVirginIslands",
-        "VI",
-        "VIR",
-        "HolidaysVI",
-    ),
+    "united_states_virgin_islands": ("UnitedStatesVirginIslands", "VI", "VIR", "HolidaysVI"),
     "united_states": ("UnitedStates", "US", "USA"),
     "uruguay": ("Uruguay", "UY", "URY"),
     "uzbekistan": ("Uzbekistan", "UZ", "UZB"),
@@ -214,10 +204,7 @@ class EntityLoader:
     def get_entity(self) -> Optional[HolidayBase]:
         """Return lazy-loaded entity."""
         if self.entity is None:
-            self.entity = getattr(
-                importlib.import_module(self.module_name),
-                self.entity_name,
-            )
+            self.entity = getattr(importlib.import_module(self.module_name), self.entity_name)
 
         return self.entity
 

@@ -59,16 +59,11 @@ class Moldova(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_sunday(name)
         self._add_easter_monday(name)
 
-        self._add_holiday(
-            # Day of Rejoicing.
-            tr("Paştele blajinilor"),
-            self._easter_sunday + td(days=+8),
-        )
+        # Day of Rejoicing.
+        self._add_holiday(tr("Paştele blajinilor"), self._easter_sunday + td(days=+8))
 
-        self._add_labor_day(
-            # International Workers' Solidarity Day.
-            tr("Ziua internaţională a solidarităţii oamenilor muncii")
-        )
+        # International Workers' Solidarity Day.
+        self._add_labor_day(tr("Ziua internaţională a solidarităţii oamenilor muncii"))
 
         may_9 = self._add_world_war_two_victory_day(
             # Victory Day and Commemoration of the heroes fallen for

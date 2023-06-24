@@ -26,10 +26,7 @@ class TestReadme(TestCase):
     def test_supported_countries_count(self):
         actual_country_count = len(list_supported_countries(include_aliases=False))
         readme_country_count = int(
-            re.findall(
-                r"We currently support (\d+) country codes.",
-                self.readme_content,
-            )[0]
+            re.findall(r"We currently support (\d+) country codes.", self.readme_content)[0]
         )
         self.assertEqual(
             readme_country_count,

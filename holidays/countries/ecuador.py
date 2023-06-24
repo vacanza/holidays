@@ -35,11 +35,7 @@ class Ecuador(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _add_observed(
-        self,
-        dt: date,
-        weekend_only: bool = False,
-        before: bool = True,
-        after: bool = True,
+        self, dt: date, weekend_only: bool = False, before: bool = True, after: bool = True
     ) -> None:
         if self.observed and self._year >= 2017:
             obs_date = None
@@ -89,38 +85,23 @@ class Ecuador(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Labour Day.
         self._add_observed(self._add_labor_day(tr("Día del Trabajo")))
 
-        self._add_observed(
-            # The Battle of Pichincha.
-            self._add_holiday(tr("Batalla de Pichincha"), MAY, 24)
-        )
+        # The Battle of Pichincha.
+        self._add_observed(self._add_holiday(tr("Batalla de Pichincha"), MAY, 24))
 
-        self._add_observed(
-            # Declaration of Independence of Quito.
-            self._add_holiday(tr("Primer Grito de Independencia"), AUG, 10)
-        )
+        # Declaration of Independence of Quito.
+        self._add_observed(self._add_holiday(tr("Primer Grito de Independencia"), AUG, 10))
 
-        self._add_observed(
-            # Independence of Guayaquil.
-            self._add_holiday(tr("Independencia de Guayaquil"), OCT, 9)
-        )
+        # Independence of Guayaquil.
+        self._add_observed(self._add_holiday(tr("Independencia de Guayaquil"), OCT, 9))
 
-        self._add_observed(
-            # All Souls' Day.
-            self._add_all_souls_day(tr("Día de los Difuntos")),
-            after=False,
-        )
+        # All Souls' Day.
+        self._add_observed(self._add_all_souls_day(tr("Día de los Difuntos")), after=False)
 
-        self._add_observed(
-            # Independence of Cuenca.
-            self._add_holiday(tr("Independencia de Cuenca"), NOV, 3),
-            before=False,
-        )
+        # Independence of Cuenca.
+        self._add_observed(self._add_holiday(tr("Independencia de Cuenca"), NOV, 3), before=False)
 
-        self._add_observed(
-            # Christmas Day.
-            self._add_christmas_day(tr("Día de Navidad")),
-            weekend_only=True,
-        )
+        # Christmas Day.
+        self._add_observed(self._add_christmas_day(tr("Día de Navidad")), weekend_only=True)
 
 
 class EC(Ecuador):

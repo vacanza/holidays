@@ -75,6 +75,7 @@ msgstr "Ochi Day"
 msgid "Χριστούγεννα"
 msgstr "Christmas Day"
 
-#: ./holidays/countries/greece.py:87
+#. Day after Christmas.
+#: ./holidays/countries/greece.py:86
 msgid "Επόμενη ημέρα των Χριστουγέννων"
 msgstr "Day After Christmas"

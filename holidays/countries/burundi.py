@@ -42,8 +42,7 @@ class Burundi(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
         dt = super()._add_holiday(*args)
         if self.observed and dt and self._is_sunday(dt):
             super()._add_holiday(
-                "%s (Observed)" % self[dt],  # type: ignore[index]
-                dt + td(days=+1),  # type: ignore[operator]
+                "%s (Observed)" % self[dt], dt + td(days=+1)  # type: ignore[index, operator]
             )
         return dt
 

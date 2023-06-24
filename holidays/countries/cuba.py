@@ -50,8 +50,7 @@ class Cuba(HolidayBase, ChristianHolidays, InternationalHolidays):
         def _add_observed(hol_date: date) -> None:
             if self.observed and self._is_sunday(hol_date):
                 self._add_holiday(
-                    self.tr("%s (Observado)") % self[hol_date],
-                    hol_date + td(days=+1),
+                    self.tr("%s (Observado)") % self[hol_date], hol_date + td(days=+1)
                 )
 
         super()._populate(year)
@@ -74,10 +73,8 @@ class Cuba(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Good Friday.
             self._add_good_friday(tr("Viernes Santo"))
 
-        _add_observed(
-            # Labour Day.
-            self._add_labor_day(tr("Día Internacional de los Trabajadores"))
-        )
+        # Labour Day.
+        _add_observed(self._add_labor_day(tr("Día Internacional de los Trabajadores")))
 
         # Commemoration of the Assault of the Moncada garrison.
         self._add_holiday(tr("Conmemoración del asalto a Moncada"), JUL, 25)
@@ -88,14 +85,8 @@ class Cuba(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Commemoration of the Assault of the Moncada garrison.
         self._add_holiday(tr("Conmemoración del asalto a Moncada"), JUL, 27)
 
-        _add_observed(
-            self._add_holiday(
-                # Independence Day.
-                tr("Inicio de las Guerras de Independencia"),
-                OCT,
-                10,
-            )
-        )
+        # Independence Day.
+        _add_observed(self._add_holiday(tr("Inicio de las Guerras de Independencia"), OCT, 10))
 
         # In 1969, Christmas was cancelled for the sugar harvest but then was
         # cancelled for good:

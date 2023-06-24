@@ -60,11 +60,7 @@ class TestEntityLoader(TestCase):
 
     def test_country_str(self):
         self.assertEqual(
-            str(
-                registry.EntityLoader(
-                    "holidays.countries.united_states.US",
-                )
-            ),
+            str(registry.EntityLoader("holidays.countries.united_states.US")),
             "A lazy loader for <class 'holidays.countries.united_states.US'>. "
             "For inheritance please use the "
             "'holidays.countries.united_states.US' class directly.",
@@ -119,11 +115,7 @@ class TestEntityLoader(TestCase):
 
             return SubClass()
 
-        for cls in (
-            holidays.UnitedStates,
-            holidays.US,
-            holidays.USA,
-        ):
+        for cls in (holidays.UnitedStates, holidays.US, holidays.USA):
             self.assertTrue(isinstance(cls, holidays.registry.EntityLoader))
             with self.assertRaises(TypeError):
                 create_instance(cls)

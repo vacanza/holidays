@@ -267,8 +267,7 @@ class HolidayBase(Dict[date, str]):
 
         if prov or state:
             warnings.warn(
-                "Arguments prov and state are deprecated, use subdiv="
-                f"'{prov or state}' instead.",
+                f"Arguments prov and state are deprecated, use subdiv='{prov or state}' instead.",
                 DeprecationWarning,
             )
 
@@ -301,17 +300,9 @@ class HolidayBase(Dict[date, str]):
                     )
                 )
                 if language and language in translations:
-                    translator = translation(
-                        name,
-                        languages=[language],
-                        localedir=locale_dir,
-                    )
+                    translator = translation(name, languages=[language], localedir=locale_dir)
                 else:
-                    translator = translation(
-                        name,
-                        fallback=True,
-                        localedir=locale_dir,
-                    )
+                    translator = translation(name, fallback=True, localedir=locale_dir)
                 self.tr = translator.gettext
 
         if isinstance(years, int):
@@ -641,11 +632,7 @@ class HolidayBase(Dict[date, str]):
         """Return a copy of the object."""
         return copy.copy(self)
 
-    def get(
-        self,
-        key: DateLike,
-        default: Union[str, Any] = None,
-    ) -> Union[str, Any]:
+    def get(self, key: DateLike, default: Union[str, Any] = None) -> Union[str, Any]:
         """Return the holiday name for a date if date is a holiday, else
         default. If default is not given, it defaults to None, so that this
         method never raises a KeyError. If more than one holiday is present,
@@ -664,11 +651,7 @@ class HolidayBase(Dict[date, str]):
         :param default:
             The default value to return if no value is found.
         """
-        return dict.get(
-            self,
-            self.__keytransform__(key),
-            default,
-        )
+        return dict.get(self, self.__keytransform__(key), default)
 
     def get_list(self, key: DateLike) -> List[str]:
         """Return a list of all holiday names for a date if date is a holiday,
@@ -687,10 +670,7 @@ class HolidayBase(Dict[date, str]):
         return [name for name in self.get(key, "").split(HOLIDAY_NAME_DELIMITER) if name]
 
     def get_named(
-        self,
-        holiday_name: str,
-        lookup="icontains",
-        split_multiple_names=True,
+        self, holiday_name: str, lookup="icontains", split_multiple_names=True
     ) -> List[date]:
         """Return a list of all holiday dates matching the provided holiday
         name. The match will be made case insensitively and partial matches
@@ -760,11 +740,7 @@ class HolidayBase(Dict[date, str]):
 
         raise AttributeError(f"Unknown lookup type: {lookup}")
 
-    def pop(
-        self,
-        key: DateLike,
-        default: Union[str, Any] = None,
-    ) -> Union[str, Any]:
+    def pop(self, key: DateLike, default: Union[str, Any] = None) -> Union[str, Any]:
         """If date is a holiday, remove it and return its date, else return
         default.
 
@@ -887,9 +863,7 @@ class HolidaySum(HolidayBase):
     """The years calculated."""
 
     def __init__(
-        self,
-        h1: Union[HolidayBase, "HolidaySum"],
-        h2: Union[HolidayBase, "HolidaySum"],
+        self, h1: Union[HolidayBase, "HolidaySum"], h2: Union[HolidayBase, "HolidaySum"]
     ) -> None:
         """
         :param h1:

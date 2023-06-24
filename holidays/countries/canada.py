@@ -80,30 +80,18 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_observed(self._add_holiday(tr("Dominion Day"), JUL, 1))
 
         if self._year >= 1894:
-            self._add_holiday(
-                # Labour Day.
-                tr("Labour Day"),
-                _get_nth_weekday_of_month(1, MON, SEP, self._year),
-            )
+            # Labour Day.
+            self._add_holiday(tr("Labour Day"), _get_nth_weekday_of_month(1, MON, SEP, self._year))
 
-        self._add_observed(
-            # Christmas Day.
-            self._add_christmas_day(tr("Christmas Day")),
-            days=+2,
-        )
+        # Christmas Day.
+        self._add_observed(self._add_christmas_day(tr("Christmas Day")), days=+2)
 
-        self._add_observed(
-            # Boxing Day.
-            self._add_christmas_day_two(tr("Boxing Day")),
-            days=+2,
-        )
+        # Boxing Day.
+        self._add_observed(self._add_christmas_day_two(tr("Boxing Day")), days=+2)
 
     def _add_family_day(self):
-        self._add_holiday(
-            # Family Day.
-            tr("Family Day"),
-            _get_nth_weekday_of_month(3, MON, FEB, self._year),
-        )
+        # Family Day.
+        self._add_holiday(tr("Family Day"), _get_nth_weekday_of_month(3, MON, FEB, self._year))
 
     def _add_thanksgiving(self):
         if self._year >= 1931:
@@ -120,12 +108,8 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_queens_funeral(self):
         if self._year == 2022:
-            self._add_holiday(
-                # Funeral of Queen Elizabeth II.
-                tr("Funeral of Her Majesty the Queen Elizabeth II"),
-                SEP,
-                19,
-            )
+            # Funeral of Queen Elizabeth II.
+            self._add_holiday(tr("Funeral of Her Majesty the Queen Elizabeth II"), SEP, 19)
 
     def _add_subdiv_holidays(self):
         if self._year >= 1983:
@@ -189,12 +173,8 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_queens_funeral()
 
         if self._year >= 2023:
-            self._add_holiday(
-                # National Day for Truth and Reconciliation.
-                tr("National Day for Truth and Reconciliation"),
-                SEP,
-                30,
-            )
+            # National Day for Truth and Reconciliation.
+            self._add_holiday(tr("National Day for Truth and Reconciliation"), SEP, 30)
 
         self._add_thanksgiving()
 
@@ -226,12 +206,8 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday(name, _get_nth_weekday_of_month(1, MON, AUG, self._year))
 
         if self._year >= 2021:
-            self._add_holiday(
-                # National Day for Truth and Reconciliation.
-                tr("National Day for Truth and Reconciliation"),
-                SEP,
-                30,
-            )
+            # National Day for Truth and Reconciliation.
+            self._add_holiday(tr("National Day for Truth and Reconciliation"), SEP, 30)
 
         self._add_thanksgiving()
 
@@ -294,10 +270,7 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self._year >= 1931:
             # Remembrance Day.
-            self._add_observed(
-                self._add_remembrance_day(tr("Remembrance Day")),
-                include_sat=False,
-            )
+            self._add_observed(self._add_remembrance_day(tr("Remembrance Day")), include_sat=False)
 
     def _add_subdiv_ns_holidays(self):
         # http://novascotia.ca/lae/employmentrights/NovaScotiaHeritageDay.asp
@@ -311,19 +284,12 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_queens_funeral()
 
         if self._year >= 2021:
-            self._add_holiday(
-                # National Day for Truth and Reconciliation.
-                tr("National Day for Truth and Reconciliation"),
-                SEP,
-                30,
-            )
+            # National Day for Truth and Reconciliation.
+            self._add_holiday(tr("National Day for Truth and Reconciliation"), SEP, 30)
 
         if self._year >= 1931:
             # Remembrance Day.
-            self._add_observed(
-                self._add_remembrance_day(tr("Remembrance Day")),
-                include_sat=False,
-            )
+            self._add_observed(self._add_remembrance_day(tr("Remembrance Day")), include_sat=False)
 
     def _add_subdiv_nt_holidays(self):
         if self._year >= 1953:
@@ -345,11 +311,8 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_thanksgiving()
 
         if self._year >= 1931:
-            self._add_observed(
-                # Remembrance Day.
-                self._add_remembrance_day(tr("Remembrance Day")),
-                include_sat=False,
-            )
+            # Remembrance Day.
+            self._add_observed(self._add_remembrance_day(tr("Remembrance Day")), include_sat=False)
 
     def _add_subdiv_nu_holidays(self):
         if self._year >= 1953:
@@ -359,11 +322,8 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self._year >= 2000:
             dt = (APR, 1) if self._year == 2000 else (JUL, 9)
-            self._add_observed(
-                # Nunavut Day.
-                self._add_holiday(tr("Nunavut Day"), *dt),
-                include_sat=False,
-            )
+            # Nunavut Day.
+            self._add_observed(self._add_holiday(tr("Nunavut Day"), *dt), include_sat=False)
 
         self._add_thanksgiving()
 
@@ -398,11 +358,8 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_queens_funeral()
 
         if self._year >= 1931:
-            self._add_observed(
-                # Remembrance Day.
-                self._add_remembrance_day(tr("Remembrance Day")),
-                include_sat=False,
-            )
+            # Remembrance Day.
+            self._add_observed(self._add_remembrance_day(tr("Remembrance Day")), include_sat=False)
 
     def _add_subdiv_qc_holidays(self):
         if self._year >= 2003:
@@ -439,11 +396,8 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_thanksgiving()
 
         if self._year >= 1931:
-            self._add_observed(
-                # Remembrance Day.
-                self._add_remembrance_day(tr("Remembrance Day")),
-                include_sat=False,
-            )
+            # Remembrance Day.
+            self._add_observed(self._add_remembrance_day(tr("Remembrance Day")), include_sat=False)
 
     def _add_subdiv_yt_holidays(self):
         # start date?

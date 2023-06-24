@@ -426,11 +426,7 @@ class _HinduLunisolar:
 
     def _get_holiday(self, holiday: str, year: int) -> Tuple[Optional[date], bool]:
         estimated_dates = getattr(self, f"{holiday}_DATES", {})
-        exact_dates = getattr(
-            self,
-            f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}",
-            {},
-        )
+        exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
         dt = exact_dates.get(year, estimated_dates.get(year, ()))
         return date(year, *dt) if dt else None, year not in exact_dates
 
