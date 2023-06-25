@@ -1,0 +1,112 @@
+# Latvia holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.28\n"
+"POT-Creation-Date: 2023-06-27 13:17+0300\n"
+"PO-Revision-Date: 2023-06-27 13:39+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: lv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==0 || (n%100>=11 && n%100<=19) ? 0 : "
+"n%10==1 && n%100!=11 ? 1 : 2);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. General Latvian Song and Dance Festival closing day.
+#: ./holidays/countries/latvia.py:33
+msgid "Vispārējo latviešu Dziesmu un deju svētku noslēguma dienu"
+msgstr ""
+
+#. Day of His Holiness Pope Francis' pastoral visit to Latvia.
+#: ./holidays/countries/latvia.py:37
+msgid "Viņa Svētības pāvesta Franciska pastorālās vizītes Latvijā diena"
+msgstr ""
+
+#. Day the Latvian hockey team won the bronze medal at the 2023 World Ice
+#. Hockey
+#. Championship.
+#: ./holidays/countries/latvia.py:41
+msgid ""
+"Diena, kad Latvijas hokeja komanda ieguva bronzas medaļu 2023. gada Pasaules"
+" hokeja čempionātā"
+msgstr ""
+
+#: ./holidays/countries/latvia.py:66
+#, c-format
+msgid "%s (brīvdiena)"
+msgstr ""
+
+#. New Year's Day.
+#: ./holidays/countries/latvia.py:76
+msgid "Jaunais Gads"
+msgstr ""
+
+#. Good Friday.
+#: ./holidays/countries/latvia.py:79
+msgid "Lielā Piektdiena"
+msgstr ""
+
+#. Easter.
+#: ./holidays/countries/latvia.py:82
+msgid "Lieldienas"
+msgstr ""
+
+#. Easter Monday.
+#: ./holidays/countries/latvia.py:85
+msgid "Otrās Lieldienas"
+msgstr ""
+
+#. Labor Day.
+#: ./holidays/countries/latvia.py:88
+msgid "Darba svētki"
+msgstr ""
+
+#. Restoration of Independence Day.
+#: ./holidays/countries/latvia.py:93
+msgid "Latvijas Republikas Neatkarības atjaunošanas diena"
+msgstr ""
+
+#. Mother's Day.
+#: ./holidays/countries/latvia.py:101
+msgid "Mātes diena"
+msgstr ""
+
+#. Midsummer Day.
+#: ./holidays/countries/latvia.py:104
+msgid "Jāņu diena"
+msgstr ""
+
+#. Midsummer Eve.
+#: ./holidays/countries/latvia.py:107
+msgid "Līgo diena"
+msgstr ""
+
+#. Republic of Latvia Proclamation Day.
+#: ./holidays/countries/latvia.py:110
+msgid "Latvijas Republikas proklamēšanas diena"
+msgstr ""
+
+#. Christmas Eve.
+#: ./holidays/countries/latvia.py:116
+msgid "Ziemassvētku vakars"
+msgstr ""
+
+#. Christmas Day.
+#: ./holidays/countries/latvia.py:119
+msgid "Ziemassvētki"
+msgstr ""
+
+#. Second Day of Christmas.
+#: ./holidays/countries/latvia.py:122
+msgid "Otrie Ziemassvētki"
+msgstr ""
+
+#. New Year's Eve.
+#: ./holidays/countries/latvia.py:125
+msgid "Vecgada vakars"
+msgstr ""

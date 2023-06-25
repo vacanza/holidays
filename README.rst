@@ -308,7 +308,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Estonia
      - EE
      -
-     -
+     - en_US, **et**, uk
    * - Eswatini
      - SZ
      -
@@ -408,7 +408,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Latvia
      - LV
      -
-     -
+     - en_US, **lv**, uk
    * - Lesotho
      - LS
      -
@@ -420,7 +420,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Lithuania
      - LT
      -
-     -
+     - en_US, **lt**, uk
    * - Luxembourg
      - LU
      -

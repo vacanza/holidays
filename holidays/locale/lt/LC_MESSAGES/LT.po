@@ -1,0 +1,99 @@
+# Lithuania holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.28\n"
+"POT-Creation-Date: 2023-06-27 13:17+0300\n"
+"PO-Revision-Date: 2023-06-27 13:39+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: lt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && (n%100<11 || n%100>19) ? 0 : "
+"n%10>=2 && n%10<=9 && (n%100<11 || n%100>19) ? 1 : 2);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: ./holidays/countries/lithuania.py:44
+msgid "Naujųjų metų diena"
+msgstr ""
+
+#. Day of Restoration of the State of Lithuania.
+#: ./holidays/countries/lithuania.py:47
+msgid "Lietuvos valstybės atkūrimo diena"
+msgstr ""
+
+#. Day of Restoration of Independence of Lithuania.
+#: ./holidays/countries/lithuania.py:50
+msgid "Lietuvos nepriklausomybės atkūrimo diena"
+msgstr ""
+
+#. Easter.
+#: ./holidays/countries/lithuania.py:53
+msgid "Šv. Velykos"
+msgstr ""
+
+#. Easter Monday.
+#: ./holidays/countries/lithuania.py:56
+msgid "Antroji šv. Velykų diena"
+msgstr ""
+
+#. International Workers' Day.
+#: ./holidays/countries/lithuania.py:59
+msgid "Tarptautinė darbo diena"
+msgstr ""
+
+#. Mother's Day.
+#: ./holidays/countries/lithuania.py:62
+msgid "Motinos diena"
+msgstr ""
+
+#. Father's Day.
+#: ./holidays/countries/lithuania.py:65
+msgid "Tėvo diena"
+msgstr ""
+
+#. Day of Dew and Saint John.
+#: ./holidays/countries/lithuania.py:69
+msgid "Rasos ir Joninių diena"
+msgstr ""
+
+#. Statehood Day.
+#: ./holidays/countries/lithuania.py:74
+msgid ""
+"Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) ir Tautiškos giesmės diena"
+msgstr ""
+
+#. Assumption Day.
+#: ./holidays/countries/lithuania.py:83
+msgid "Žolinė (Švč. Mergelės Marijos ėmimo į dangų diena)"
+msgstr ""
+
+#. All Saints' Day.
+#: ./holidays/countries/lithuania.py:86
+msgid "Visų Šventųjų diena"
+msgstr ""
+
+#. All Souls' Day.
+#: ./holidays/countries/lithuania.py:90
+msgid "Mirusiųjų atminimo (Vėlinių) diena"
+msgstr ""
+
+#. Christmas Eve.
+#: ./holidays/countries/lithuania.py:93
+msgid "Kūčių diena"
+msgstr ""
+
+#. Christmas Day.
+#: ./holidays/countries/lithuania.py:96
+msgid "Šv. Kalėdų pirma diena"
+msgstr ""
+
+#. Second Day of Christmas.
+#: ./holidays/countries/lithuania.py:99
+msgid "Šv. Kalėdų antra diena"
+msgstr ""
