@@ -1,0 +1,98 @@
+# Madagascar holidays uk localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.28\n"
+"POT-Creation-Date: 2023-06-25 17:39+0300\n"
+"PO-Revision-Date: 2023-06-25 17:51+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: holidays/countries/madagascar.py:44
+msgid "Taom-baovao"
+msgstr "Новий рік"
+
+#. Women's Day.
+#: holidays/countries/madagascar.py:47
+msgid "Fetin'ny vehivavy"
+msgstr "Жіночий день"
+
+#. Martyrs' Day.
+#: holidays/countries/madagascar.py:50
+msgid "Fetin'ny mahery fo"
+msgstr "День мучеників"
+
+#. Easter Sunday.
+#: holidays/countries/madagascar.py:53
+msgid "Fetin'ny paska"
+msgstr "Великдень"
+
+#. Easter Monday.
+#: holidays/countries/madagascar.py:56
+msgid "Alatsinain'ny paska"
+msgstr "Великодній понеділок"
+
+#. Labor Day.
+#: holidays/countries/madagascar.py:59
+msgid "Fetin'ny asa"
+msgstr "День праці"
+
+#. Ascension Day.
+#: holidays/countries/madagascar.py:62
+msgid "Fiakaran'ny Jesosy kristy tany an-danitra"
+msgstr "Вознесіння Господнє"
+
+#. Whit Sunday.
+#: holidays/countries/madagascar.py:65
+msgid "Pentekosta"
+msgstr "Трійця"
+
+#. Whit Monday.
+#: holidays/countries/madagascar.py:68
+msgid "Alatsinain'ny pentekosta"
+msgstr "День Святого Духа"
+
+#. Mother's Day.
+#: holidays/countries/madagascar.py:74
+msgid "Fetin'ny reny"
+msgstr "День матері"
+
+#. Father's Day.
+#: holidays/countries/madagascar.py:77
+msgid "Fetin'ny ray"
+msgstr "День батька"
+
+#. Independence Day.
+#: holidays/countries/madagascar.py:81
+msgid "Fetin'ny fahaleovantena"
+msgstr "День незалежності"
+
+#. Assumption Day.
+#: holidays/countries/madagascar.py:84
+msgid "Fiakaran'ny Masina Maria tany an-danitra"
+msgstr "Внебовзяття Пресвятої Діви Марії"
+
+#. All Saints' Day.
+#: holidays/countries/madagascar.py:87
+msgid "Fetin'ny olo-masina"
+msgstr "День усіх святих"
+
+#. Republic Day.
+#: holidays/countries/madagascar.py:91
+msgid "Fetin'ny Repoblika"
+msgstr "День республіки"
+
+#. Christmas Day.
+#: holidays/countries/madagascar.py:94
+msgid "Fetin'ny noely"
+msgstr "Різдво Христове"
