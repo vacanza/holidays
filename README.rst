@@ -192,7 +192,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Belgium
      - BE
      -
-     -
+     - de, en_US, fr, **nl**, uk
    * - Belize
      - BZ
      -
@@ -424,7 +424,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Luxembourg
      - LU
      -
-     -
+     - de, en_US, fr, **lb**, uk
    * - Madagascar
      - MG
      -
