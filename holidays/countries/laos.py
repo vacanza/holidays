@@ -9,10 +9,10 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars import KHMER_CALENDAR
 from holidays.constants import APR, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import InternationalHolidays, ThaiCalendarHolidays
@@ -54,7 +54,7 @@ class Laos(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
     lao_new_year_in_lieu = tr("ພັກຊົດເຊີຍບຸນປີໃໝ່ລາວ")
 
     special_holidays = {
-        2017: (
+        2016: (
             (APR, 12, lao_new_year_in_lieu),
             (APR, 13, lao_new_year_in_lieu),
         ),
@@ -123,6 +123,7 @@ class Laos(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # Status: In-Use.
 
         if self.observed and year >= 2018:
+            lao_new_year_in_lieu = self.tr("ພັກຊົດເຊີຍ%s") % self.tr("ບຸນປີໃໝ່ລາວ")
             if self._is_thursday(dt) or self._is_friday(dt) or self._is_saturday(dt):
                 self._add_holiday(lao_new_year_in_lieu, dt + td(days=+4))
             if self._is_friday(dt) or self._is_saturday(dt) or self._is_sunday(dt):
