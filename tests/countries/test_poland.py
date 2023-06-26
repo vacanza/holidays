@@ -76,10 +76,7 @@ class TestPoland(TestCase):
     def test_oczyszczenie_nmp(self):
         self.assertHoliday(f"{year}-02-02" for year in range(1925, 1951))
         self.assertNoHoliday(f"{year}-02-02" for year in range(1951, 2050))
-        self.assertNoHolidayName(
-            "Oczyszczenie Najświętszej Marii Panny",
-            range(1951, 2050),
-        )
+        self.assertNoHolidayName("Oczyszczenie Najświętszej Marii Panny", range(1951, 2050))
 
     def test_easter_related(self):
         self.assertHoliday(
@@ -141,12 +138,7 @@ class TestPoland(TestCase):
         self.assertNoHoliday(f"{year}-05-09" for year in range(1925, 1946))
         self.assertNoHoliday(f"{year}-05-09" for year in range(1951, 2050))
         self.assertNoHolidayName(
-            "Narodowe Święto Zwycięstwa i Wolności",
-            range(1925, 1946),
-        )
-        self.assertNoHolidayName(
-            "Narodowe Święto Zwycięstwa i Wolności",
-            range(1951, 2050),
+            "Narodowe Święto Zwycięstwa i Wolności", range(1925, 1946), range(1951, 2050)
         )
 
     def test_wniebowstapienie_panskie(self):
@@ -173,8 +165,7 @@ class TestPoland(TestCase):
         self.assertHoliday(f"{year}-06-29" for year in range(1925, 1951))
         self.assertNoHoliday(f"{year}-06-29" for year in range(1951, 2050))
         self.assertNoHolidayName(
-            "Uroczystość Świętych Apostołów Piotra i Pawła",
-            range(1951, 2050),
+            "Uroczystość Świętych Apostołów Piotra i Pawła", range(1951, 2050)
         )
 
     def test_narodowe_swieto_odrodzenia_polski(self):
@@ -182,22 +173,14 @@ class TestPoland(TestCase):
         self.assertNoHoliday(f"{year}-07-22" for year in range(1925, 1945))
         self.assertNoHoliday(f"{year}-07-22" for year in range(1990, 2050))
         self.assertNoHolidayName(
-            "Narodowe Święto Odrodzenia Polski",
-            range(1925, 1945),
-        )
-        self.assertNoHolidayName(
-            "Narodowe Święto Odrodzenia Polski",
-            range(1990, 2050),
+            "Narodowe Święto Odrodzenia Polski", range(1925, 1945), range(1990, 2050)
         )
 
     def test_wniebowziecie_nmp(self):
         self.assertHoliday(f"{year}-08-15" for year in range(1925, 1961))
         self.assertHoliday(f"{year}-08-15" for year in range(1989, 2050))
         self.assertNoHoliday(f"{year}-08-15" for year in range(1961, 1989))
-        self.assertNoHolidayName(
-            "Wniebowzięcie Najświętszej Marii Panny",
-            range(1961, 1989),
-        )
+        self.assertNoHolidayName("Wniebowzięcie Najświętszej Marii Panny", range(1961, 1989))
 
     def test_wszystkich_swietych(self):
         self.assertHoliday(f"{year}-11-01" for year in range(1925, 2050))
@@ -207,15 +190,15 @@ class TestPoland(TestCase):
         self.assertHoliday(f"{year}-11-11" for year in range(1989, 2050))
         self.assertNoHoliday(f"{year}-11-11" for year in range(1925, 1937))
         self.assertNoHoliday(f"{year}-11-11" for year in range(1945, 1989))
-        self.assertNoHolidayName("Narodowe Święto Niepodległości", range(1925, 1937))
-        self.assertNoHolidayName("Narodowe Święto Niepodległości", range(1945, 1989))
+        self.assertNoHolidayName(
+            "Narodowe Święto Niepodległości", range(1925, 1937), range(1945, 1989)
+        )
 
     def test_niepokalane_poczecie_nmp(self):
         self.assertHoliday(f"{year}-12-08" for year in range(1925, 1951))
         self.assertNoHoliday(f"{year}-12-08" for year in range(1951, 2050))
         self.assertNoHolidayName(
-            "Niepokalane Poczęcie Najświętszej Marii Panny",
-            range(1951, 2050),
+            "Niepokalane Poczęcie Najświętszej Marii Panny", range(1951, 2050)
         )
 
     def test_boze_narodzenie(self):

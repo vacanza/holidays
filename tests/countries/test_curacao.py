@@ -114,18 +114,12 @@ class TestCuracao(TestCase):
     def test_anthem_and_flag_day(self):
         name = "Dia di Himno i Bandera"
         self.assertNoHolidayName(name, 1983)
-        self.assertHolidayName(
-            name,
-            (f"{year}-07-02" for year in range(1984, 2077)),
-        )
+        self.assertHolidayName(name, (f"{year}-07-02" for year in range(1984, 2077)))
 
     def test_curacao_day(self):
         name = "Dia di Pais Kòrsou"
         self.assertNoHolidayName(name, 2009)
-        self.assertHolidayName(
-            name,
-            (f"{year}-10-10" for year in range(2010, 2077)),
-        )
+        self.assertHolidayName(name, (f"{year}-10-10" for year in range(2010, 2077)))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

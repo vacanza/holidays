@@ -30,8 +30,7 @@ class TestLI(TestCase):
 
     def test_epiphany(self):
         self.assertHolidayName(
-            "Heilige Drei Könige",
-            (f"{year}-01-06" for year in range(1900, 2050)),
+            "Heilige Drei Könige", (f"{year}-01-06" for year in range(1900, 2050))
         )
 
     def test_candlemas(self):
@@ -164,52 +163,28 @@ class TestLI(TestCase):
         )
 
     def test_national_day(self):
-        self.assertHolidayName(
-            "Staatsfeiertag",
-            (f"{year}-08-15" for year in range(1900, 2050)),
-        )
+        self.assertHolidayName("Staatsfeiertag", (f"{year}-08-15" for year in range(1900, 2050)))
 
     def test_nativity_of_mary(self):
-        self.assertHolidayName(
-            "Mariä Geburt",
-            (f"{year}-09-08" for year in range(1900, 2050)),
-        )
+        self.assertHolidayName("Mariä Geburt", (f"{year}-09-08" for year in range(1900, 2050)))
 
     def test_all_saints_day(self):
-        self.assertHolidayName(
-            "Allerheiligen",
-            (f"{year}-11-01" for year in range(1900, 2050)),
-        )
+        self.assertHolidayName("Allerheiligen", (f"{year}-11-01" for year in range(1900, 2050)))
 
     def test_immaculate_conception(self):
-        self.assertHolidayName(
-            "Mariä Empfängnis",
-            (f"{year}-12-08" for year in range(1900, 2050)),
-        )
+        self.assertHolidayName("Mariä Empfängnis", (f"{year}-12-08" for year in range(1900, 2050)))
 
     def test_christmas_eve(self):
-        self.assertHolidayName(
-            "Heiligabend",
-            (f"{year}-12-24" for year in range(1900, 2050)),
-        )
+        self.assertHolidayName("Heiligabend", (f"{year}-12-24" for year in range(1900, 2050)))
 
     def test_christmas_day(self):
-        self.assertHolidayName(
-            "Weihnachten",
-            (f"{year}-12-25" for year in range(1900, 2050)),
-        )
+        self.assertHolidayName("Weihnachten", (f"{year}-12-25" for year in range(1900, 2050)))
 
     def test_st_stephens_day(self):
-        self.assertHolidayName(
-            "Stefanstag",
-            (f"{year}-12-26" for year in range(1900, 2050)),
-        )
+        self.assertHolidayName("Stefanstag", (f"{year}-12-26" for year in range(1900, 2050)))
 
     def test_new_years_eve(self):
-        self.assertHolidayName(
-            "Silvester",
-            (f"{year}-12-31" for year in range(1900, 2050)),
-        )
+        self.assertHolidayName("Silvester", (f"{year}-12-31" for year in range(1900, 2050)))
 
     def test_2022(self):
         self.assertHolidays(

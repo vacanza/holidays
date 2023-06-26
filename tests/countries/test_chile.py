@@ -193,8 +193,7 @@ class TestChile(TestCase):
         )
 
         self.assertNoHolidayName(
-            "Día de la Unidad Nacional",
-            set(range(1915, 2050)).difference({1999, 2000, 2001}),
+            "Día de la Unidad Nacional", set(range(1915, 2050)).difference({1999, 2000, 2001})
         )
 
     def test_independence_holidays(self):

@@ -16,11 +16,7 @@ from tests.common import TestCase
 class TestUkraine(TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(
-            Ukraine,
-            years=range(1991, 2023),
-            years_non_observed=range(1991, 2023),
-        )
+        super().setUpClass(Ukraine, years=range(1991, 2023), years_non_observed=range(1991, 2023))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Ukraine, UA, UKR)
@@ -198,8 +194,7 @@ class TestUkraine(TestCase):
         self.assertNoHoliday(f"{year}-11-07" for year in range(2000, 2022))
         self.assertNoHoliday(f"{year}-11-08" for year in range(2000, 2022))
         self.assertNoHolidayName(
-            "Річниця Великої Жовтневої соціалістичної революції",
-            range(2000, 2022),
+            "Річниця Великої Жовтневої соціалістичної революції", range(2000, 2022)
         )
 
         dt = ("1997-11-10", "1999-11-09")
@@ -209,8 +204,7 @@ class TestUkraine(TestCase):
     def test_christmas_gregorian_day(self):
         self.assertNoHoliday(f"{year}-12-25" for year in range(1991, 2017))
         self.assertNoHolidayName(
-            "Різдво Христове (за григоріанським календарем)",
-            range(1991, 2017),
+            "Різдво Христове (за григоріанським календарем)", range(1991, 2017)
         )
         self.assertHoliday(f"{year}-12-25" for year in range(2017, 2022))
 

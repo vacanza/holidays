@@ -144,8 +144,7 @@ class TestCambodia(TestCase):
 
     def test_day_of_victory_over_genocidal_regime(self):
         self.assertHolidayName(
-            "ទិវាជ័យជម្នះលើរបបប្រល័យពូជសាសន៍",
-            (f"{year}-01-07" for year in range(1993, 2058)),
+            "ទិវាជ័យជម្នះលើរបបប្រល័យពូជសាសន៍", (f"{year}-01-07" for year in range(1993, 2058))
         )
 
     def test_sangkranta(self):
@@ -184,8 +183,7 @@ class TestCambodia(TestCase):
 
     def test_constitution_day(self):
         self.assertHolidayName(
-            "ទិវាប្រកាសរដ្ឋធម្មនុញ្ញ",
-            (f"{year}-09-24" for year in range(1993, 2058)),
+            "ទិវាប្រកាសរដ្ឋធម្មនុញ្ញ", (f"{year}-09-24" for year in range(1993, 2058))
         )
 
     def test_king_sihanouk_memorial_day(self):
@@ -213,8 +211,7 @@ class TestCambodia(TestCase):
 
     def test_national_independence_day(self):
         self.assertHolidayName(
-            "ពិធីបុណ្យឯករាជ្យជាតិ",
-            (f"{year}-11-09" for year in range(1993, 2058)),
+            "ពិធីបុណ្យឯករាជ្យជាតិ", (f"{year}-11-09" for year in range(1993, 2058))
         )
 
     def test_international_human_rights_day(self):
@@ -435,10 +432,7 @@ class TestCambodia(TestCase):
                     "พระมหากษัตริย์แห่งราชอาณาจักรกัมพูชา"
                 ),
             ),
-            (
-                "2023-06-18",
-                ("พระราชพิธีเฉลิมพระชนมพรรษา สมเด็จพระบรมราชินี นโรดม มนีนาถ สีหนุ"),
-            ),
+            ("2023-06-18", "พระราชพิธีเฉลิมพระชนมพรรษา สมเด็จพระบรมราชินี นโรดม มนีนาถ สีหนุ"),
             ("2023-09-24", "วันรัฐธรรมนูญ"),
             ("2023-10-13", "เทศกาลงานวันสาร์ทภจุมบิณฑ์เขมร"),
             ("2023-10-14", "เทศกาลงานวันสาร์ทภจุมบิณฑ์เขมร"),
