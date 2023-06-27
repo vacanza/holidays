@@ -79,7 +79,7 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Started in 1980 Act X of 1980.
         # Not presented in 1987-1988
 
-        if 1980 <= year <= 1986 or year >= 1989:
+        if year <= 1986 or year >= 1989:
             # Freedom Day
             self._add_holiday(tr("Freedom Day"), MAR, 31)
 
