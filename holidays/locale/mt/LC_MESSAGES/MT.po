@@ -1,0 +1,86 @@
+# Malta holidays mt localization.
+# Authors: PPsyrius <ppsyrius@ppsyrius.dev>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.28\n"
+"POT-Creation-Date: 2023-06-27 19:10+0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: mt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==0 || (n%100>=2 && n%100<=10) ? 1 : n%100>=11 && n%100<=19 ? 2 : 3);\n"
+"X-Generator: Poedit 3.3.2\n"
+
+#. New Year's Day
+#: ./holidays/countries/malta.py:59
+msgid "New Year's Day"
+msgstr "L-Ewwel tas-Sena"
+
+#. Feast of St. Paul's Shipwreck
+#: ./holidays/countries/malta.py:67
+msgid "Feast of St. Paul's Shipwreck"
+msgstr "Il-Festa tan-Nawfraġju ta' San Pawl"
+
+#. Feast of St. Joseph
+#: ./holidays/countries/malta.py:75
+msgid "Feast of St. Joseph"
+msgstr "Il-Festa ta' San Ġużepp"
+
+#. Freedom Day
+#: ./holidays/countries/malta.py:84
+msgid "Freedom Day"
+msgstr "Jum il-Ħelsien"
+
+#. Good Friday
+#: ./holidays/countries/malta.py:90
+msgid "Good Friday"
+msgstr "Il-Ġimgħa l-Kbira"
+
+#. Worker's Day
+#: ./holidays/countries/malta.py:96
+msgid "Worker's Day"
+msgstr "Jum il-Ħaddiem"
+
+#. Sette Giugno
+#: ./holidays/countries/malta.py:104
+msgid "Sette Giugno"
+msgstr "Sette Giugno"
+
+#. Feast of St. Peter and St. Paul
+#: ./holidays/countries/malta.py:112
+msgid "Feast of St. Peter and St. Paul"
+msgstr "Il-Festa ta' San Pietru u San Pawl"
+
+#. Feast of the Assumption
+#: ./holidays/countries/malta.py:118
+msgid "Feast of the Assumption"
+msgstr "Il-Festa ta' Santa Marija"
+
+#. Feast of Our Lady of Victories
+#: ./holidays/countries/malta.py:127
+msgid "Feast of Our Lady of Victories"
+msgstr "Jum il-Vitorja"
+
+#. Independence Day
+#: ./holidays/countries/malta.py:135
+msgid "Independence Day"
+msgstr "Jum l-Indipendenza"
+
+#. Feast of the Immaculate Conception
+#: ./holidays/countries/malta.py:143
+msgid "Feast of the Immaculate Conception"
+msgstr "Il-Festa tal-Immakulata Kunċizzjoni"
+
+#. Republic Day
+#: ./holidays/countries/malta.py:149
+msgid "Republic Day"
+msgstr "Jum ir-Repubblika"
+
+#. Christmas Day
+#: ./holidays/countries/malta.py:155
+msgid "Christmas Day"
+msgstr "Il-Milied"
