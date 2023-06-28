@@ -213,8 +213,7 @@ class TestUS(TestCase):
         )
         self.assertHolidayName(name, dt)
 
-        subdiv_dont = {"AL", "AR", "AZ", "GA", "ID", "MS", "NH"}
-        for subdiv in set(UnitedStates.subdivisions) - subdiv_dont:
+        for subdiv in set(UnitedStates.subdivisions) - {"AL", "AR", "AZ", "GA", "ID", "MS", "NH"}:
             self.assertHolidayName(name, self.state_hols[subdiv], dt)
             self.assertNoHolidayName(name, self.state_hols[subdiv], range(1865, 1986))
 
@@ -238,7 +237,7 @@ class TestUS(TestCase):
         )
 
         self.assertHolidayName(
-            "Robert E. Lee/Martin Luther King Birthday", self.state_hols["AL"], dt
+            "Martin Luther King, Jr & Robert E. Lee's Birthday", self.state_hols["AL"], dt
         )
 
         self.assertHolidayName(
@@ -292,7 +291,7 @@ class TestUS(TestCase):
         )
 
         self.assertHolidayName(
-            "Martin Luther King Jr. - Idaho Human Rights Day",
+            "Martin Luther King Jr. / Idaho Human Rights Day",
             self.state_hols["ID"],
             "2006-01-16",
             "2010-01-18",
@@ -375,7 +374,7 @@ class TestUS(TestCase):
         )
 
         self.assertHolidayName(
-            "George Washington/Thomas Jefferson Birthday", self.state_hols["AL"], dt
+            "George Washington & Thomas Jefferson's Birthday", self.state_hols["AL"], dt
         )
 
         self.assertHolidayName(
@@ -489,7 +488,7 @@ class TestUS(TestCase):
         )
 
     def test_three_kings_day(self):
-        name = "Three King's Day"
+        name = "Three Kings Day"
         self.assertNoHolidayName(name)
         self.assertHolidayName(
             name, self.state_hols["VI"], (f"{year}-01-06" for year in range(1865, 2050))
