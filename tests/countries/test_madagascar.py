@@ -119,24 +119,24 @@ class TestMadagascar(TestCase):
         self.assertHoliday(f"{year}-12-25" for year in range(1947, 2050))
 
     def test_2021(self):
-        self.assertHolidayDates(
+        self.assertHolidays(
             Madagascar(years=2021),
-            "2021-01-01",
-            "2021-03-08",
-            "2021-03-29",
-            "2021-04-04",
-            "2021-04-05",
-            "2021-05-01",
-            "2021-05-13",
-            "2021-05-23",
-            "2021-05-24",
-            "2021-05-30",
-            "2021-06-20",
-            "2021-06-26",
-            "2021-08-15",
-            "2021-11-01",
-            "2021-12-11",
-            "2021-12-25",
+            ("2021-01-01", "Taom-baovao"),
+            ("2021-03-08", "Fetin'ny vehivavy"),
+            ("2021-03-29", "Fetin'ny mahery fo"),
+            ("2021-04-04", "Fetin'ny paska"),
+            ("2021-04-05", "Alatsinain'ny paska"),
+            ("2021-05-01", "Fetin'ny asa"),
+            ("2021-05-13", "Fiakaran'ny Jesosy kristy tany an-danitra"),
+            ("2021-05-23", "Pentekosta"),
+            ("2021-05-24", "Alatsinain'ny pentekosta"),
+            ("2021-05-30", "Fetin'ny reny"),
+            ("2021-06-20", "Fetin'ny ray"),
+            ("2021-06-26", "Fetin'ny fahaleovantena"),
+            ("2021-08-15", "Fiakaran'ny Masina Maria tany an-danitra"),
+            ("2021-11-01", "Fetin'ny olo-masina"),
+            ("2021-12-11", "Fetin'ny Repoblika"),
+            ("2021-12-25", "Fetin'ny noely"),
         )
 
     def test_l10n_default(self):
