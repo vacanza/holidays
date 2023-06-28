@@ -238,7 +238,7 @@ class HolidayBase(Dict[date, str]):
         prov: Optional[str] = None,  # Deprecated.
         state: Optional[str] = None,  # Deprecated.
         language: Optional[str] = None,
-        categories: Optional[Set[str]] = None,
+        categories: Optional[Tuple[str]] = None,
     ) -> None:
         """
         :param years:
@@ -281,7 +281,7 @@ class HolidayBase(Dict[date, str]):
         self.language = language.lower() if language else None
         self.observed = observed
         self.subdiv = subdiv or prov or state
-        self.categories = categories or {PUBLIC}
+        self.categories = set(categories) if categories else {PUBLIC}
 
         self.tr = gettext  # Default translation method.
 
