@@ -1,0 +1,77 @@
+# Estonia holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.28\n"
+"POT-Creation-Date: 2023-06-27 13:17+0300\n"
+"PO-Revision-Date: 2023-06-27 13:39+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: et\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: ./holidays/countries/estonia.py:33
+msgid "uusaasta"
+msgstr ""
+
+#. Independence Day.
+#: ./holidays/countries/estonia.py:36
+msgid "iseseisvuspäev"
+msgstr ""
+
+#. Good Friday.
+#: ./holidays/countries/estonia.py:39
+msgid "suur reede"
+msgstr ""
+
+#. Easter Sunday.
+#: ./holidays/countries/estonia.py:42
+msgid "ülestõusmispühade 1. püha"
+msgstr ""
+
+#. Spring Day.
+#: ./holidays/countries/estonia.py:45
+msgid "kevadpüha"
+msgstr ""
+
+#. Whit Sunday.
+#: ./holidays/countries/estonia.py:48
+msgid "nelipühade 1. püha"
+msgstr ""
+
+#. Victory Day.
+#: ./holidays/countries/estonia.py:51
+msgid "võidupüha"
+msgstr ""
+
+#. Midsummer Day.
+#: ./holidays/countries/estonia.py:54
+msgid "jaanipäev"
+msgstr ""
+
+#. Independence Restoration Day.
+#: ./holidays/countries/estonia.py:58
+msgid "taasiseseisvumispäev"
+msgstr ""
+
+#. Christmas Eve.
+#: ./holidays/countries/estonia.py:62
+msgid "jõululaupäev"
+msgstr ""
+
+#. Christmas Day.
+#: ./holidays/countries/estonia.py:65
+msgid "esimene jõulupüha"
+msgstr ""
+
+#. Second Day of Christmas.
+#: ./holidays/countries/estonia.py:68
+msgid "teine jõulupüha"
+msgstr ""
