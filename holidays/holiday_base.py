@@ -575,6 +575,37 @@ class HolidayBase(Dict[date, str]):
         dt = args[0] if len(args) == 1 else date(self._year, *args)
         return dt.weekday() == weekday
 
+    def _get_nth_weekday_from(self, n: int, weekday: int, *args) -> date:
+        """
+        Return date of a n-th weekday after (n is positive)
+        or before (n is negative) a specific date
+        (e.g. 1st Monday, 2nd Saturday, etc).
+        """
+        from_dt = args[0] if len(args) == 1 else date(self._year, *args)
+        if n > 0:
+            delta = (n - 1) * 7 + (weekday - from_dt.weekday()) % 7
+        else:
+            delta = (n + 1) * 7 - (from_dt.weekday() - weekday) % 7
+        return from_dt + timedelta(days=delta)
+
+    def _get_nth_weekday_of_month(self, n: int, weekday: int, month: int) -> date:
+        """
+        Return date of n-th weekday of month for current year
+        (e.g. 1st Monday of Apr, 2nd Friday of June, etc).
+        If n is negative the countdown starts at the end of month
+        (i.e. -1 is last).
+        """
+        year = self._year
+        if n < 0:
+            month += 1
+            if month > 12:
+                month = 1
+                year += 1
+            start_date = date(year, month, 1) + timedelta(days=-1)
+        else:
+            start_date = date(year, month, 1)
+        return self._get_nth_weekday_from(n, weekday, start_date)
+
     def _is_friday(self, *args) -> bool:
         return self._check_weekday(FRI, *args)
 

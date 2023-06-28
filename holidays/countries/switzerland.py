@@ -12,7 +12,6 @@
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import MAR, APR, JUN, AUG, SEP, DEC, THU, SUN
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -136,7 +135,7 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday(
             # Genevan Fast.
             tr("Genfer Bettag"),
-            _get_nth_weekday_of_month(1, SUN, SEP, self._year) + td(days=+4),
+            self._get_nth_weekday_of_month(1, SUN, SEP) + td(days=+4),
         )
 
         # Restoration Day.
@@ -147,7 +146,7 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Näfelser Fahrt (first Thursday in April but not in Holy Week)
         if self._year >= 1835:
-            dt = _get_nth_weekday_of_month(1, THU, APR, self._year)
+            dt = self._get_nth_weekday_of_month(1, THU, APR)
             if dt == self._easter_sunday + td(days=-3):
                 dt += td(days=+7)
             # Battle of Naefels Victory Day.
@@ -254,7 +253,7 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday(
             # Prayer Monday.
             tr("Bettagsmontag"),
-            _get_nth_weekday_of_month(3, SUN, SEP, self._year) + td(days=+1),
+            self._get_nth_weekday_of_month(3, SUN, SEP) + td(days=+1),
         )
 
     def _add_subdiv_vs_holidays(self):

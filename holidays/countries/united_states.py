@@ -13,7 +13,6 @@ from datetime import date
 from datetime import timedelta as td
 from typing import Tuple, Union
 
-from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
 from holidays.constants import (
     JAN,
     FEB,
@@ -138,7 +137,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         if year >= 1888:
             self._add_holiday(
                 "Memorial Day",
-                _get_nth_weekday_of_month(-1, MON, MAY, year)
+                self._get_nth_weekday_of_month(-1, MON, MAY)
                 if year >= 1971
                 else date(year, MAY, 30),
             )
@@ -153,19 +152,19 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Labor Day
         if year >= 1894:
-            self._add_holiday("Labor Day", _get_nth_weekday_of_month(1, MON, SEP, year))
+            self._add_holiday("Labor Day", self._get_nth_weekday_of_month(1, MON, SEP))
 
         # Veterans Day
         if year >= 1938:
             name = "Veterans Day" if year >= 1954 else "Armistice Day"
             if 1971 <= year <= 1977:
-                self._add_holiday(name, _get_nth_weekday_of_month(4, MON, OCT, year))
+                self._add_holiday(name, self._get_nth_weekday_of_month(4, MON, OCT))
             else:
                 self._add_observed(self._add_remembrance_day(name))
 
         # Thanksgiving
         if year >= 1871:
-            self._add_holiday("Thanksgiving", _get_nth_weekday_of_month(4, THU, NOV, year))
+            self._add_holiday("Thanksgiving", self._get_nth_weekday_of_month(4, THU, NOV))
 
         # Christmas Day
         if year >= 1871:
@@ -181,13 +180,13 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
                 self._add_holiday("%s (Observed)" % name, dt + td(days=-1))
             # If on Saturday or Sunday, observed on Friday
             elif self._is_weekend(dt):
-                self._add_holiday("%s (Observed)" % name, _get_nth_weekday_from(-1, FRI, dt))
+                self._add_holiday("%s (Observed)" % name, self._get_nth_weekday_from(-1, FRI, dt))
 
     def _add_subdiv_holidays(self):
         # Martin Luther King Jr. Day
         if self._year >= 1986 and self.subdiv not in {"AL", "AR", "AZ", "GA", "ID", "MS", "NH"}:
             self._add_holiday(
-                "Martin Luther King Jr. Day", _get_nth_weekday_of_month(3, MON, JAN, self._year)
+                "Martin Luther King Jr. Day", self._get_nth_weekday_of_month(3, MON, JAN)
             )
 
         # Washington's Birthday
@@ -203,7 +202,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         }:
             self._add_holiday(
                 "Washington's Birthday",
-                _get_nth_weekday_of_month(3, MON, FEB, self._year)
+                self._get_nth_weekday_of_month(3, MON, FEB)
                 if self._year >= 1971
                 else date(self._year, FEB, 22),
             )
@@ -221,7 +220,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         }:
             name = "Columbus Day"
             if self._year >= 1970:
-                self._add_holiday(name, _get_nth_weekday_of_month(2, MON, OCT, self._year))
+                self._add_holiday(name, self._get_nth_weekday_of_month(2, MON, OCT))
             else:
                 self._add_columbus_day(name)
 
@@ -232,7 +231,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1918:
             self._add_holiday(
                 "Seward's Day",
-                _get_nth_weekday_of_month(-1, MON, MAR, self._year)
+                self._get_nth_weekday_of_month(-1, MON, MAR)
                 if self._year >= 1955
                 else date(self._year, MAR, 30),
             )
@@ -246,13 +245,13 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1986:
             self._add_holiday(
                 "Martin Luther King, Jr & Robert E. Lee's Birthday",
-                _get_nth_weekday_of_month(3, MON, JAN, self._year),
+                self._get_nth_weekday_of_month(3, MON, JAN),
             )
 
         # Washington's Birthday
         self._add_holiday(
             "George Washington & Thomas Jefferson's Birthday",
-            _get_nth_weekday_of_month(3, MON, FEB, self._year)
+            self._get_nth_weekday_of_month(3, MON, FEB)
             if self._year >= 1971
             else date(self._year, FEB, 22),
         )
@@ -260,13 +259,13 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Confederate Memorial Day
         if self._year >= 1866:
             self._add_holiday(
-                "Confederate Memorial Day", _get_nth_weekday_of_month(4, MON, APR, self._year)
+                "Confederate Memorial Day", self._get_nth_weekday_of_month(4, MON, APR)
             )
 
         # Jefferson Davis Birthday
         if self._year >= 1890:
             self._add_holiday(
-                "Jefferson Davis Birthday", _get_nth_weekday_of_month(1, MON, JUN, self._year)
+                "Jefferson Davis Birthday", self._get_nth_weekday_of_month(1, MON, JUN)
             )
 
     def _add_subdiv_ar_holidays(self):
@@ -276,13 +275,13 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
                 "Martin Luther King Jr. Day"
                 if self._year >= 2018
                 else "Dr. Martin Luther King Jr. " "and Robert E. Lee's Birthdays",
-                _get_nth_weekday_of_month(3, MON, JAN, self._year),
+                self._get_nth_weekday_of_month(3, MON, JAN),
             )
 
         # Washington's Birthday
         self._add_holiday(
             "George Washington's Birthday and Daisy Gatson Bates Day",
-            _get_nth_weekday_of_month(3, MON, FEB, self._year)
+            self._get_nth_weekday_of_month(3, MON, FEB)
             if self._year >= 1971
             else date(self._year, FEB, 22),
         )
@@ -296,7 +295,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1986:
             self._add_holiday(
                 "Dr. Martin Luther King Jr. / Civil Rights Day",
-                _get_nth_weekday_of_month(3, MON, JAN, self._year),
+                self._get_nth_weekday_of_month(3, MON, JAN),
             )
 
     def _add_subdiv_ca_holidays(self):
@@ -316,7 +315,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1975:
             self._add_holiday(
                 "Day After Thanksgiving",
-                _get_nth_weekday_of_month(4, THU, NOV, self._year) + td(days=+1),
+                self._get_nth_weekday_of_month(4, THU, NOV) + td(days=+1),
             )
 
     def _add_subdiv_co_holidays(self):
@@ -347,14 +346,15 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Election Day
         if self._year >= 2008 and self._year % 2 == 0:
             self._add_holiday(
-                "Election Day", _get_nth_weekday_of_month(1, MON, NOV, self._year) + td(days=+1)
+                "Election Day",
+                self._get_nth_weekday_of_month(1, MON, NOV) + td(days=+1),
             )
 
         # Day After Thanksgiving
         if self._year >= 1975:
             self._add_holiday(
                 "Day After Thanksgiving",
-                _get_nth_weekday_of_month(4, THU, NOV, self._year) + td(days=+1),
+                self._get_nth_weekday_of_month(4, THU, NOV) + td(days=+1),
             )
 
     def _add_subdiv_fl_holidays(self):
@@ -366,7 +366,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1975:
             self._add_holiday(
                 "Friday After Thanksgiving",
-                _get_nth_weekday_of_month(4, THU, NOV, self._year) + td(days=+1),
+                self._get_nth_weekday_of_month(4, THU, NOV) + td(days=+1),
             )
 
     def _add_subdiv_fm_holidays(self):
@@ -377,7 +377,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1986:
             self._add_holiday(
                 "Martin Luther King Jr. Day" if self._year >= 2012 else "Robert E. Lee's Birthday",
-                _get_nth_weekday_of_month(3, MON, JAN, self._year),
+                self._get_nth_weekday_of_month(3, MON, JAN),
             )
 
         # Confederate Memorial Day
@@ -386,14 +386,14 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
                 "State Holiday" if self._year >= 2016 else "Confederate Memorial Day",
                 date(self._year, APR, 10)
                 if self._year == 2020
-                else _get_nth_weekday_of_month(4, MON, APR, self._year),
+                else self._get_nth_weekday_of_month(4, MON, APR),
             )
 
         # Robert E. Lee's Birthday
         if self._year >= 1986:
             self._add_holiday(
                 "State Holiday" if self._year >= 2016 else "Robert E. Lee's Birthday",
-                _get_nth_weekday_of_month(4, THU, NOV, self._year) + td(days=+1),
+                self._get_nth_weekday_of_month(4, THU, NOV) + td(days=+1),
             )
 
         # Washington's Birthday
@@ -405,9 +405,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _add_subdiv_gu_holidays(self):
         # Guam Discovery Day
         if self._year >= 1970:
-            self._add_holiday(
-                "Guam Discovery Day", _get_nth_weekday_of_month(1, MON, MAR, self._year)
-            )
+            self._add_holiday("Guam Discovery Day", self._get_nth_weekday_of_month(1, MON, MAR))
 
         # Good Friday
         self._add_good_friday("Good Friday")
@@ -435,12 +433,13 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Statehood Day
         if self._year >= 1959:
-            self._add_holiday("Statehood Day", _get_nth_weekday_of_month(3, FRI, AUG, self._year))
+            self._add_holiday("Statehood Day", self._get_nth_weekday_of_month(3, FRI, AUG))
 
         # Election Day
         if self._year >= 2008 and self._year % 2 == 0:
             self._add_holiday(
-                "Election Day", _get_nth_weekday_of_month(1, MON, NOV, self._year) + td(days=+1)
+                "Election Day",
+                self._get_nth_weekday_of_month(1, MON, NOV) + td(days=+1),
             )
 
     def _add_subdiv_ia_holidays(self):
@@ -455,7 +454,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
                 "Martin Luther King Jr. / Idaho Human Rights Day"
                 if self._year >= 2006
                 else "Martin Luther King Jr. Day",
-                _get_nth_weekday_of_month(3, MON, JAN, self._year),
+                self._get_nth_weekday_of_month(3, MON, JAN),
             )
 
     def _add_subdiv_il_holidays(self):
@@ -465,14 +464,13 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Casimir Pulaski Day
         if self._year >= 1978:
-            self._add_holiday(
-                "Casimir Pulaski Day", _get_nth_weekday_of_month(1, MON, MAR, self._year)
-            )
+            self._add_holiday("Casimir Pulaski Day", self._get_nth_weekday_of_month(1, MON, MAR))
 
         # Election Day
         if self._year >= 2008 and self._year % 2 == 0:
             self._add_holiday(
-                "Election Day", _get_nth_weekday_of_month(1, MON, NOV, self._year) + td(days=+1)
+                "Election Day",
+                self._get_nth_weekday_of_month(1, MON, NOV) + td(days=+1),
             )
 
     def _add_subdiv_in_holidays(self):
@@ -483,20 +481,21 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 2015 or (self._year >= 2006 and self._year % 2 == 0):
             self._add_holiday(
                 "Primary Election Day",
-                _get_nth_weekday_of_month(1, MON, MAY, self._year) + td(days=+1),
+                self._get_nth_weekday_of_month(1, MON, MAY) + td(days=+1),
             )
 
         # Election Day
         if self._year >= 2015 or (self._year >= 2008 and self._year % 2 == 0):
             self._add_holiday(
-                "Election Day", _get_nth_weekday_of_month(1, MON, NOV, self._year) + td(days=+1)
+                "Election Day",
+                self._get_nth_weekday_of_month(1, MON, NOV) + td(days=+1),
             )
 
         # Lincoln's Birthday
         if self._year >= 2010:
             self._add_holiday(
                 "Lincoln's Birthday",
-                _get_nth_weekday_of_month(4, THU, NOV, self._year) + td(days=+1),
+                self._get_nth_weekday_of_month(4, THU, NOV) + td(days=+1),
             )
 
     def _add_subdiv_ks_holidays(self):
@@ -528,7 +527,8 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Election Day
         if self._year >= 2008 and self._year % 2 == 0:
             self._add_holiday(
-                "Election Day", _get_nth_weekday_of_month(1, MON, NOV, self._year) + td(days=+1)
+                "Election Day",
+                self._get_nth_weekday_of_month(1, MON, NOV) + td(days=+1),
             )
 
     def _add_subdiv_ma_holidays(self):
@@ -537,14 +537,14 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
             mar_17 = self._add_holiday("Evacuation Day", MAR, 17)
             if self.observed and self._is_weekend(mar_17):
                 self._add_holiday(
-                    "%s (Observed)" % self[mar_17], _get_nth_weekday_from(1, MON, mar_17)
+                    "%s (Observed)" % self[mar_17], self._get_nth_weekday_from(1, MON, mar_17)
                 )
 
         # Patriots' Day
         if self._year >= 1894:
             self._add_holiday(
                 "Patriots' Day",
-                _get_nth_weekday_of_month(3, MON, APR, self._year)
+                self._get_nth_weekday_of_month(3, MON, APR)
                 if self._year >= 1969
                 else date(self._year, APR, 19),
             )
@@ -559,7 +559,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 2008:
             self._add_holiday(
                 "American Indian Heritage Day",
-                _get_nth_weekday_of_month(4, THU, NOV, self._year) + td(days=+1),
+                self._get_nth_weekday_of_month(4, THU, NOV) + td(days=+1),
             )
 
     def _add_subdiv_me_holidays(self):
@@ -567,7 +567,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1894:
             self._add_holiday(
                 "Patriots' Day",
-                _get_nth_weekday_of_month(3, MON, APR, self._year)
+                self._get_nth_weekday_of_month(3, MON, APR)
                 if self._year >= 1969
                 else date(self._year, APR, 19),
             )
@@ -599,14 +599,13 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_good_friday("Good Friday")
 
         # Commonwealth Cultural Day in Northern Mariana Islands
-        self._add_holiday(
-            "Commonwealth Cultural Day", _get_nth_weekday_of_month(2, MON, OCT, self._year)
-        )
+        self._add_holiday("Commonwealth Cultural Day", self._get_nth_weekday_of_month(2, MON, OCT))
 
         # Election Day
         if self._year >= 2008 and self._year % 2 == 0:
             self._add_holiday(
-                "Election Day", _get_nth_weekday_of_month(1, MON, NOV, self._year) + td(days=+1)
+                "Election Day",
+                self._get_nth_weekday_of_month(1, MON, NOV) + td(days=+1),
             )
 
         # Citizenship Day in Northern Mariana Islands
@@ -620,20 +619,21 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1986:
             self._add_holiday(
                 "Dr. Martin Luther King Jr. and Robert E. Lee's Birthdays",
-                _get_nth_weekday_of_month(3, MON, JAN, self._year),
+                self._get_nth_weekday_of_month(3, MON, JAN),
             )
 
         # Confederate Memorial Day
         if self._year >= 1866:
             self._add_holiday(
-                "Confederate Memorial Day", _get_nth_weekday_of_month(4, MON, APR, self._year)
+                "Confederate Memorial Day", self._get_nth_weekday_of_month(4, MON, APR)
             )
 
     def _add_subdiv_mt_holidays(self):
         # Election Day
         if self._year >= 2008 and self._year % 2 == 0:
             self._add_holiday(
-                "Election Day", _get_nth_weekday_of_month(1, MON, NOV, self._year) + td(days=+1)
+                "Election Day",
+                self._get_nth_weekday_of_month(1, MON, NOV) + td(days=+1),
             )
 
     def _add_subdiv_nc_holidays(self):
@@ -644,7 +644,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1975:
             self._add_holiday(
                 "Day After Thanksgiving",
-                _get_nth_weekday_of_month(4, THU, NOV, self._year) + td(days=+1),
+                self._get_nth_weekday_of_month(4, THU, NOV) + td(days=+1),
             )
 
         # Christmas Eve
@@ -658,7 +658,9 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
             if self.observed:
                 # If on Saturday or Sunday, observed on Monday
                 if self._is_weekend(dt):
-                    self._add_holiday("%s (Observed)" % name, _get_nth_weekday_from(1, MON, dt))
+                    self._add_holiday(
+                        "%s (Observed)" % name, self._get_nth_weekday_from(1, MON, dt)
+                    )
                 # If on Monday, observed on Tuesday
                 elif self._is_monday(dt):
                     self._add_holiday("%s (Observed)" % name, dt + td(days=+1))
@@ -671,7 +673,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1875:
             self._add_holiday(
                 "Arbor Day",
-                _get_nth_weekday_of_month(-1, FRI, APR, self._year)
+                self._get_nth_weekday_of_month(-1, FRI, APR)
                 if self._year >= 1989
                 else date(self._year, APR, 22),
             )
@@ -681,20 +683,21 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1986:
             self._add_holiday(
                 "Dr. Martin Luther King Jr. / Civil Rights Day",
-                _get_nth_weekday_of_month(3, MON, JAN, self._year),
+                self._get_nth_weekday_of_month(3, MON, JAN),
             )
 
         # Election Day
         if self._year >= 2008 and self._year % 2 == 0:
             self._add_holiday(
-                "Election Day", _get_nth_weekday_of_month(1, MON, NOV, self._year) + td(days=+1)
+                "Election Day",
+                self._get_nth_weekday_of_month(1, MON, NOV) + td(days=+1),
             )
 
         # Day After Thanksgiving
         if self._year >= 1975:
             self._add_holiday(
                 "Day After Thanksgiving",
-                _get_nth_weekday_of_month(4, THU, NOV, self._year) + td(days=+1),
+                self._get_nth_weekday_of_month(4, THU, NOV) + td(days=+1),
             )
 
     def _add_subdiv_nj_holidays(self):
@@ -708,13 +711,15 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Election Day
         if self._year >= 2008 and self._year % 2 == 0:
             self._add_holiday(
-                "Election Day", _get_nth_weekday_of_month(1, MON, NOV, self._year) + td(days=+1)
+                "Election Day",
+                self._get_nth_weekday_of_month(1, MON, NOV) + td(days=+1),
             )
 
     def _add_subdiv_nm_holidays(self):
         # Presidents' Day
         self._add_holiday(
-            "Presidents' Day", _get_nth_weekday_of_month(4, THU, NOV, self._year) + td(days=+1)
+            "Presidents' Day",
+            self._get_nth_weekday_of_month(4, THU, NOV) + td(days=+1),
         )
 
     def _add_subdiv_nv_holidays(self):
@@ -723,16 +728,14 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_observed(
                 self._add_holiday(
                     "Nevada Day",
-                    _get_nth_weekday_of_month(-1, FRI, OCT, self._year)
+                    self._get_nth_weekday_of_month(-1, FRI, OCT)
                     if self._year >= 2000
                     else date(self._year, OCT, 31),
                 )
             )
 
         # Family Day
-        self._add_holiday(
-            "Family Day", _get_nth_weekday_of_month(4, THU, NOV, self._year) + td(days=+1)
-        )
+        self._add_holiday("Family Day", self._get_nth_weekday_of_month(4, THU, NOV) + td(days=+1))
 
     def _add_subdiv_ny_holidays(self):
         # Lincoln's Birthday
@@ -746,7 +749,8 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Election Day
         if self._year >= 2015 or (self._year >= 2008 and self._year % 2 == 0):
             self._add_holiday(
-                "Election Day", _get_nth_weekday_of_month(1, MON, NOV, self._year) + td(days=+1)
+                "Election Day",
+                self._get_nth_weekday_of_month(1, MON, NOV) + td(days=+1),
             )
 
     def _add_subdiv_oh_holidays(self):
@@ -757,7 +761,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1975:
             self._add_holiday(
                 "Day After Thanksgiving",
-                _get_nth_weekday_of_month(4, THU, NOV, self._year) + td(days=+1),
+                self._get_nth_weekday_of_month(4, THU, NOV) + td(days=+1),
             )
 
     def _add_subdiv_or_holidays(self):
@@ -767,7 +771,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Day After Thanksgiving
         self._add_holiday(
             "Day After Thanksgiving",
-            _get_nth_weekday_of_month(4, THU, NOV, self._year) + td(days=+1),
+            self._get_nth_weekday_of_month(4, THU, NOV) + td(days=+1),
         )
 
     def _add_subdiv_pr_holidays(self):
@@ -775,7 +779,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_epiphany_day("Epiphany")
 
         # Washington's Birthday
-        self._add_holiday("Presidents' Day", _get_nth_weekday_of_month(3, MON, FEB, self._year))
+        self._add_holiday("Presidents' Day", self._get_nth_weekday_of_month(3, MON, FEB))
 
         # Emancipation Day
         self._add_observed(self._add_holiday("Emancipation Day", MAR, 22), before=False)
@@ -795,13 +799,13 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _add_subdiv_ri_holidays(self):
         # Victory Day
         if self._year >= 1948:
-            self._add_holiday("Victory Day", _get_nth_weekday_of_month(2, MON, AUG, self._year))
+            self._add_holiday("Victory Day", self._get_nth_weekday_of_month(2, MON, AUG))
 
     def _add_subdiv_sc_holidays(self):
         # Confederate Memorial Day
         if self._year >= 1866:
             self._add_holiday(
-                "Confederate Memorial Day", _get_nth_weekday_of_month(4, MON, APR, self._year)
+                "Confederate Memorial Day", self._get_nth_weekday_of_month(4, MON, APR)
             )
 
     def _add_subdiv_sd_holidays(self):
@@ -809,7 +813,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1937:
             name = "Native American Day"
             if self._year >= 1970:
-                self._add_holiday(name, _get_nth_weekday_of_month(2, MON, OCT, self._year))
+                self._add_holiday(name, self._get_nth_weekday_of_month(2, MON, OCT))
             else:
                 self._add_columbus_day(name)
 
@@ -849,7 +853,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1975:
             self._add_holiday(
                 "Friday After Thanksgiving",
-                _get_nth_weekday_of_month(4, THU, NOV, self._year) + td(days=+1),
+                self._get_nth_weekday_of_month(4, THU, NOV) + td(days=+1),
             )
 
         # Christmas Eve
@@ -872,9 +876,9 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Lee Jackson Day
         if 1889 <= self._year <= 2020:
             if self._year >= 2000:
-                dt = _get_nth_weekday_of_month(3, MON, JAN, self._year) + td(days=-3)
+                dt = self._get_nth_weekday_of_month(3, MON, JAN) + td(days=-3)
             elif self._year >= 1983:
-                dt = _get_nth_weekday_of_month(3, MON, JAN, self._year)
+                dt = self._get_nth_weekday_of_month(3, MON, JAN)
             else:
                 dt = date(self._year, JAN, 19)
             self._add_holiday("Lee Jackson Day", dt)
@@ -891,7 +895,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Washington's Birthday
         self._add_holiday(
             "Presidents' Day",
-            _get_nth_weekday_of_month(3, MON, FEB, self._year)
+            self._get_nth_weekday_of_month(3, MON, FEB)
             if self._year >= 1971
             else date(self._year, FEB, 22),
         )
@@ -915,7 +919,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1937:
             name = "Columbus Day and Puerto Rico Friendship Day"
             if self._year >= 1970:
-                self._add_holiday(name, _get_nth_weekday_of_month(2, MON, OCT, self._year))
+                self._add_holiday(name, self._get_nth_weekday_of_month(2, MON, OCT))
             else:
                 self._add_columbus_day(name)
 
@@ -928,9 +932,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _add_subdiv_vt_holidays(self):
         # Town Meeting Day
         if self._year >= 1800:
-            self._add_holiday(
-                "Town Meeting Day", _get_nth_weekday_of_month(1, TUE, MAR, self._year)
-            )
+            self._add_holiday("Town Meeting Day", self._get_nth_weekday_of_month(1, TUE, MAR))
 
         # Bennington Battle Day
         if self._year >= 1778:
@@ -959,14 +961,15 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Election Day
         if self._year >= 2008 and self._year % 2 == 0:
             self._add_holiday(
-                "Election Day", _get_nth_weekday_of_month(1, MON, NOV, self._year) + td(days=+1)
+                "Election Day",
+                self._get_nth_weekday_of_month(1, MON, NOV) + td(days=+1),
             )
 
         # Day After Thanksgiving
         if self._year >= 1975:
             self._add_holiday(
                 "Day After Thanksgiving",
-                _get_nth_weekday_of_month(4, THU, NOV, self._year) + td(days=+1),
+                self._get_nth_weekday_of_month(4, THU, NOV) + td(days=+1),
             )
 
     def _add_subdiv_wy_holidays(self):

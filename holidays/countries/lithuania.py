@@ -9,7 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import FEB, MAR, MAY, JUN, JUL, SUN
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -56,10 +55,10 @@ class Lithuania(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_labor_day("Tarptautinė darbo diena")
 
         # Mother's day. First Sunday in May.
-        self._add_holiday("Motinos diena", _get_nth_weekday_of_month(1, SUN, MAY, year))
+        self._add_holiday("Motinos diena", self._get_nth_weekday_of_month(1, SUN, MAY))
 
         # Fathers's day. First Sunday in June.
-        self._add_holiday("Tėvo diena", _get_nth_weekday_of_month(1, SUN, JUN, year))
+        self._add_holiday("Tėvo diena", self._get_nth_weekday_of_month(1, SUN, JUN))
 
         # St. John's Day (Christian name).
         # Day of Dew (original pagan name).

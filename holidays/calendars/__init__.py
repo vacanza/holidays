@@ -26,36 +26,3 @@ GREGORIAN_CALENDAR = "GREGORIAN_CALENDAR"
 JULIAN_CALENDAR = "JULIAN_CALENDAR"
 KHMER_CALENDAR = "KHMER_CALENDAR"
 THAI_CALENDAR = "THAI_CALENDAR"
-
-
-def _get_nth_weekday_from(n: int, weekday: int, from_dt: date) -> date:
-    """
-    Return date of a n-th weekday after (n is positive)
-    or before (n is negative) a specific date
-    (e.g. 1st Monday, 2nd Saturday, etc).
-    """
-
-    if n > 0:
-        delta = (n - 1) * 7 + (weekday - from_dt.weekday()) % 7
-    else:
-        delta = (n + 1) * 7 - (from_dt.weekday() - weekday) % 7
-    return from_dt + td(days=delta)
-
-
-def _get_nth_weekday_of_month(n: int, weekday: int, month: int, year: int) -> date:
-    """
-    Return date of n-th weekday of month for a specific year
-    (e.g. 1st Monday of Apr, 2nd Friday of June, etc).
-    If n is negative the countdown starts at the end of month
-    (i.e. -1 is last).
-    """
-
-    if n < 0:
-        month += 1
-        if month > 12:
-            month = 1
-            year += 1
-        start_date = date(year, month, 1) + td(days=-1)
-    else:
-        start_date = date(year, month, 1)
-    return _get_nth_weekday_from(n, weekday, start_date)
