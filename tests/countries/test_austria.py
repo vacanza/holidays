@@ -9,6 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.constants import BANK
 from holidays.countries.austria import Austria, AT, AUT
 from tests.common import TestCase
 
@@ -155,6 +156,14 @@ class TestAustria(TestCase):
             ("2022-12-08", "Mariä Empfängnis"),
             ("2022-12-25", "Christtag"),
             ("2022-12-26", "Stefanitag"),
+        )
+
+    def test_bank_2022(self):
+        self.assertHolidays(
+            Austria(categories={BANK}, years=2022),
+            ("2022-04-15", "Karfreitag"),
+            ("2022-12-24", "Heiliger Abend"),
+            ("2022-12-31", "Silvester"),
         )
 
     def test_subdiv(self):
