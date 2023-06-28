@@ -22,10 +22,10 @@ msgstr ""
 msgid "novo leto"
 msgstr "New Year's Day"
 
-#. Prešeren's Day.
+#. Preseren's Day.
 #: ./holidays/countries/slovenia.py:53
 msgid "Prešernov dan"
-msgstr "Prešeren's Day"
+msgstr "Preseren's Day"
 
 #. Easter Monday.
 #: ./holidays/countries/slovenia.py:56

@@ -49,7 +49,7 @@ class Slovenia(HolidayBase, ChristianHolidays, InternationalHolidays):
         if year <= 2012 or year >= 2017:
             self._add_new_years_day_two(name)
 
-        # Prešeren's Day.
+        # Preseren's Day.
         self._add_holiday(tr("Prešernov dan"), FEB, 8)
 
         # Easter Monday.

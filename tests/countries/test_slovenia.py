@@ -102,7 +102,7 @@ class TestSlovenia(TestCase):
             "en_US",
             ("2022-01-01", "New Year's Day"),
             ("2022-01-02", "New Year's Day"),
-            ("2022-02-08", "Prešeren's Day"),
+            ("2022-02-08", "Preseren's Day"),
             ("2022-04-18", "Easter Monday"),
             ("2022-04-27", "Day of Uprising Against Occupation"),
             ("2022-05-01", "Labor Day"),
