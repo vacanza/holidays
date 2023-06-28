@@ -27,7 +27,4 @@ class TestVI(TestCase):
     def test_vi_only(self):
         """Check for a holiday that is not returned by US unless the
         subdivision is specified."""
-        self.assertIn(
-            "Transfer Day",
-            self.holidays.get_list(date(2020, MAR, 31)),
-        )
+        self.assertIn("Transfer Day", self.holidays.get_list(date(2020, MAR, 31)))
