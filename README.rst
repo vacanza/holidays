@@ -428,7 +428,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Madagascar
      - MG
      -
-     -
+     - en_US, **mg**, uk
    * - Malawi
      - MW
      -
