@@ -264,7 +264,7 @@ class TestUS(TestCase):
         )
 
         self.assertHolidayName(
-            "Dr. Martin Luther King Jr./Civil Rights Day", self.state_hols["AZ"], dt
+            "Dr. Martin Luther King Jr. / Civil Rights Day", self.state_hols["AZ"], dt
         )
 
         self.assertHolidayName(
@@ -325,7 +325,7 @@ class TestUS(TestCase):
         )
 
         self.assertHolidayName(
-            "Dr. Martin Luther King Jr./Civil Rights Day", self.state_hols["NH"], dt
+            "Dr. Martin Luther King Jr. / Civil Rights Day", self.state_hols["NH"], dt
         )
 
     def test_washingtons_birthday(self):
@@ -794,7 +794,7 @@ class TestUS(TestCase):
         self.assertHolidayName(name, self.state_hols["AK"], dt)
 
     def test_cesar_chavez_day(self):
-        name = "César Chávez Day"
+        name = "Cesar Chavez Day"
         self.assertNoHolidayName(name)
         self.assertHolidayName(
             name, self.state_hols["CA"], (f"{year}-03-31" for year in range(1995, 2050))

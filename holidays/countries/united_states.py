@@ -295,7 +295,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Martin Luther King Jr. Day
         if self._year >= 1986:
             self._add_holiday(
-                "Dr. Martin Luther King Jr./Civil Rights Day",
+                "Dr. Martin Luther King Jr. / Civil Rights Day",
                 _get_nth_weekday_of_month(3, MON, JAN, self._year),
             )
 
@@ -308,9 +308,9 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 2014:
             self._add_holiday("Susan B. Anthony Day", FEB, 15)
 
-        # César Chávez Day
+        # Cesar Chavez Day
         if self._year >= 1995:
-            self._add_observed(self._add_holiday("César Chávez Day", MAR, 31), before=False)
+            self._add_observed(self._add_holiday("Cesar Chavez Day", MAR, 31), before=False)
 
         # Day After Thanksgiving
         if self._year >= 1975:
@@ -680,7 +680,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Martin Luther King Jr. Day
         if self._year >= 1986:
             self._add_holiday(
-                "Dr. Martin Luther King Jr./Civil Rights Day",
+                "Dr. Martin Luther King Jr. / Civil Rights Day",
                 _get_nth_weekday_of_month(3, MON, JAN, self._year),
             )
 
@@ -826,9 +826,9 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 1874:
             self._add_holiday("Texas Independence Day", MAR, 2)
 
-        # César Chávez Day
+        # Cesar Chavez Day
         if self._year >= 2000:
-            self._add_holiday("César Chávez Day", MAR, 31)
+            self._add_holiday("Cesar Chavez Day", MAR, 31)
 
         # Good Friday
         self._add_good_friday("Good Friday")
