@@ -1,0 +1,98 @@
+# Croatia holidays uk localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.28\n"
+"POT-Creation-Date: 2023-06-27 13:17+0300\n"
+"PO-Revision-Date: 2023-06-27 17:06+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: ./holidays/countries/croatia.py:40
+msgid "Nova Godina"
+msgstr "Новий рік"
+
+#. Epiphany.
+#: ./holidays/countries/croatia.py:44
+msgid "Bogojavljenje ili Sveta tri kralja"
+msgstr "Богоявлення"
+
+#. Easter.
+#: ./holidays/countries/croatia.py:48
+msgid "Uskrs"
+msgstr "Великдень"
+
+#. Easter Monday.
+#: ./holidays/countries/croatia.py:51
+msgid "Uskrsni ponedjeljak"
+msgstr "Великодній понеділок"
+
+#. Corpus Christi.
+#: ./holidays/countries/croatia.py:55
+msgid "Tijelovo"
+msgstr "Свято Тіла і Крові Христових"
+
+#. International Workers' Day.
+#: ./holidays/countries/croatia.py:58
+msgid "Međunarodni praznik rada"
+msgstr "Міжнародний день трудящих"
+
+#. Statehood Day.
+#: ./holidays/countries/croatia.py:63
+msgid "Dan državnosti"
+msgstr "День державності"
+
+#. Anti-Fascist Struggle Day.
+#: ./holidays/countries/croatia.py:66
+msgid "Dan antifašističke borbe"
+msgstr "День антифашистської боротьби"
+
+#. Victory and Homeland Thanksgiving Day and Croatian Veterans Day.
+#: ./holidays/countries/croatia.py:70
+msgid "Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja"
+msgstr "День перемоги і подяки вітчизні та День хорватських захисників"
+
+#. Victory and Homeland Thanksgiving Day.
+#: ./holidays/countries/croatia.py:73
+msgid "Dan pobjede i domovinske zahvalnosti"
+msgstr "День перемоги і подяки вітчизні"
+
+#. Assumption of Mary.
+#: ./holidays/countries/croatia.py:78
+msgid "Velika Gospa"
+msgstr "Внебовзяття Пресвятої Діви Марії"
+
+#. Independence Day.
+#: ./holidays/countries/croatia.py:82
+msgid "Dan neovisnosti"
+msgstr "День незалежності"
+
+#. All Saints' Day.
+#: ./holidays/countries/croatia.py:85
+msgid "Svi sveti"
+msgstr "День усіх святих"
+
+#. Memorial Day.
+#: ./holidays/countries/croatia.py:89
+msgid "Dan sjećanja"
+msgstr "День памʼяті"
+
+#. Christmas Day.
+#: ./holidays/countries/croatia.py:92
+msgid "Božić"
+msgstr "Різдво Христове"
+
+#. St. Stephen's Day.
+#: ./holidays/countries/croatia.py:98
+msgid "Sveti Stjepan"
+msgstr "День Святого Стефана"
