@@ -188,10 +188,10 @@ msgstr "Republic Day"
 msgid "Josefstag"
 msgstr "St. Joseph's Day"
 
-#. St. Nicholas of Flüe.
+#. St. Nicholas of Flue.
 #: ./holidays/countries/switzerland.py:201
 msgid "Bruder Klaus"
-msgstr "St. Nicholas of Flüe"
+msgstr "St. Nicholas of Flue"
 
 #. Epiphany.
 #: ./holidays/countries/switzerland.py:214

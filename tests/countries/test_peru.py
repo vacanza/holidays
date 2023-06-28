@@ -87,7 +87,7 @@ class TestPeru(TestCase):
             ("2022-06-29", "Saint Peter and Saint Paul"),
             ("2022-07-28", "Independence Day"),
             ("2022-07-29", "Great Military Parade Day"),
-            ("2022-08-06", "Battle of Junín Day"),
+            ("2022-08-06", "Battle of Junin Day"),
             ("2022-08-30", "Rose of Lima Day"),
             ("2022-10-08", "Battle of Angamos Day"),
             ("2022-11-01", "All Saints' Day"),

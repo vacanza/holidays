@@ -63,7 +63,7 @@ class Peru(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday(tr("Día de la Gran Parada Militar"), JUL, 29)
 
         if year >= 2022:
-            # Battle of Junín.
+            # Battle of Junin.
             self._add_holiday(tr("Batalla de Junín"), AUG, 6)
 
         # Santa Rosa de Lima.

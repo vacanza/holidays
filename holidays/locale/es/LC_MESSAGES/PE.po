@@ -56,7 +56,7 @@ msgstr ""
 msgid "Día de la Gran Parada Militar"
 msgstr ""
 
-#. Battle of Junín.
+#. Battle of Junin.
 #: ./holidays/countries/peru.py:67
 msgid "Batalla de Junín"
 msgstr ""

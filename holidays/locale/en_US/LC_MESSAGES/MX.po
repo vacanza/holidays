@@ -26,10 +26,10 @@ msgstr "New Year's Day"
 msgid "Día de la Constitución"
 msgstr "Constitution Day"
 
-#. Benito Juárez's birthday.
+#. Benito Juarez's birthday.
 #: ./holidays/countries/mexico.py:56
 msgid "Natalicio de Benito Juárez"
-msgstr "Benito Juárez's birthday"
+msgstr "Benito Juarez's birthday"
 
 #. Labor Day.
 #: ./holidays/countries/mexico.py:65

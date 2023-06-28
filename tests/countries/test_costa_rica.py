@@ -269,7 +269,7 @@ class TestCostaRica(TestCase):
         self.assertLocalizedHolidays(
             "en_US",
             ("2022-01-01", "New Year's Day"),
-            ("2022-04-11", "Juan Santamaría Day"),
+            ("2022-04-11", "Juan Santamaria Day"),
             ("2022-04-14", "Maundy Thursday"),
             ("2022-04-15", "Good Friday"),
             ("2022-05-01", "International Workers' Day"),

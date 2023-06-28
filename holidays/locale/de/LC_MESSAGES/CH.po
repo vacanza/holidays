@@ -188,7 +188,7 @@ msgstr ""
 msgid "Josefstag"
 msgstr ""
 
-#. St. Nicholas of Flüe.
+#. St. Nicholas of Flue.
 #: ./holidays/countries/switzerland.py:201
 msgid "Bruder Klaus"
 msgstr ""

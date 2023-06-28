@@ -21,10 +21,10 @@ msgstr ""
 msgid "結婚の儀"
 msgstr "The Crown Prince Marriage Ceremony"
 
-#. State Funeral of Emperor Shōwa.
+#. State Funeral of Emperor Showa.
 #: ./holidays/countries/japan.py:45
 msgid "大喪の礼"
-msgstr "Emperor Shōwa Funeral Ceremony"
+msgstr "Emperor Showa Funeral Ceremony"
 
 #. Enthronement ceremony.
 #: ./holidays/countries/japan.py:46

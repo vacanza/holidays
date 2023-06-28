@@ -42,7 +42,7 @@ class Japan(HolidayBase):
     default_language = "ja"
     special_holidays = {
         1959: (APR, 10, tr("結婚の儀")),  # The Crown Prince marriage ceremony.
-        1989: (FEB, 24, tr("大喪の礼")),  # State Funeral of Emperor Shōwa.
+        1989: (FEB, 24, tr("大喪の礼")),  # State Funeral of Emperor Showa.
         1990: (NOV, 12, tr("即位礼正殿の儀")),  # Enthronement ceremony.
         1993: (JUN, 9, tr("結婚の儀")),  # The Crown Prince marriage ceremony.
         2019: (

@@ -37,7 +37,7 @@ msgstr ""
 msgid "Viernes Santo"
 msgstr ""
 
-#. Juan Santamaría Day.
+#. Juan Santamaria Day.
 #: ./holidays/countries/costa_rica.py:70
 msgid "Día de Juan Santamaría"
 msgstr ""

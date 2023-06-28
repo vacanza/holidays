@@ -197,7 +197,7 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_corpus_christi_day(tr("Fronleichnam"))
         self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
 
-        # St. Nicholas of Flüe.
+        # St. Nicholas of Flue.
         self._add_holiday(tr("Bruder Klaus"), SEP, 25)
         self._add_all_saints_day(tr("Allerheiligen"))
         self._add_immaculate_conception_day(tr("Mariä Empfängnis"))

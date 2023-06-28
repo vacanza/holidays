@@ -56,10 +56,10 @@ msgstr "Independence Day"
 msgid "Día de la Gran Parada Militar"
 msgstr "Great Military Parade Day"
 
-#. Battle of Junín.
+#. Battle of Junin.
 #: ./holidays/countries/peru.py:67
 msgid "Batalla de Junín"
-msgstr "Battle of Junín Day"
+msgstr "Battle of Junin Day"
 
 #. Santa Rosa de Lima.
 #: ./holidays/countries/peru.py:70

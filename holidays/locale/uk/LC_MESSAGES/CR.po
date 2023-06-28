@@ -37,7 +37,7 @@ msgstr "Великий четвер"
 msgid "Viernes Santo"
 msgstr "Страсна пʼятниця"
 
-#. Juan Santamaría Day.
+#. Juan Santamaria Day.
 #: ./holidays/countries/costa_rica.py:70
 msgid "Día de Juan Santamaría"
 msgstr "День Хуана Сантамарії"

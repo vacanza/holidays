@@ -46,7 +46,7 @@ msgstr "День родини"
 msgid "Día de los Niños"
 msgstr "День захисту дітей"
 
-#. Birthday of José Gervasio Artigas.
+#. Birthday of Jose Gervasio Artigas.
 #: ./holidays/countries/uruguay.py:60
 msgid "Natalicio de José Gervasio Artigas"
 msgstr "Річниця Хосе Гервасіо Артіґаса"

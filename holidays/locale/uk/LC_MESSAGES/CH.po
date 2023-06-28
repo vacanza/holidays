@@ -188,7 +188,7 @@ msgstr "Річниця проголошення Республіки"
 msgid "Josefstag"
 msgstr "День Святого Йосипа"
 
-#. St. Nicholas of Flüe.
+#. St. Nicholas of Flue.
 #: ./holidays/countries/switzerland.py:201
 msgid "Bruder Klaus"
 msgstr "День Святого Ніклауса з Флюе"

@@ -331,7 +331,7 @@ class TestPortugal(TestCase):
             ("2018-05-31", "Corpus Christi"),
             (
                 "2018-06-10",
-                "Day of Portugal, Camões, and the Portuguese Communities",
+                "Day of Portugal, Camoes, and the Portuguese Communities",
             ),
             ("2018-08-15", "Assumption Day"),
             ("2018-10-05", "Republic Day"),

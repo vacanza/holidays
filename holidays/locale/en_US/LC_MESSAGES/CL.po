@@ -131,4 +131,4 @@ msgstr "Assault and Capture of Cape Arica"
 
 #: ./holidays/countries/chile.py:198
 msgid "Nacimiento del Prócer de la Independencia (Chillán y Chillán Viejo)"
-msgstr "Nativity of Bernardo O'Higgins (Chillán and Chillán Viejo communes)"
+msgstr "Nativity of Bernardo O'Higgins (Chillan and Chillan Viejo communes)"

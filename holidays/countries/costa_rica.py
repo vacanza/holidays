@@ -61,7 +61,7 @@ class CostaRica(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Good Friday.
         self._add_good_friday(tr("Viernes Santo"))
 
-        # Juan Santamaría Day.
+        # Juan Santamaria Day.
         dt = self._add_holiday(tr("Día de Juan Santamaría"), APR, 11)
         if 2006 <= year <= 2010:
             self._move_holiday(dt, forward=True)

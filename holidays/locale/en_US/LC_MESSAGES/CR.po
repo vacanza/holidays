@@ -37,10 +37,10 @@ msgstr "Maundy Thursday"
 msgid "Viernes Santo"
 msgstr "Good Friday"
 
-#. Juan Santamaría Day.
+#. Juan Santamaria Day.
 #: ./holidays/countries/costa_rica.py:70
 msgid "Día de Juan Santamaría"
-msgstr "Juan Santamaría Day"
+msgstr "Juan Santamaria Day"
 
 #. International Labor Day.
 #: ./holidays/countries/costa_rica.py:79

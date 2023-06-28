@@ -314,7 +314,7 @@ class TestColombia(TestCase):
             ("2022-06-27", "Sacred Heart (Observed)"),
             ("2022-07-04", "Saint Peter and Saint Paul (Observed)"),
             ("2022-07-20", "Independence Day"),
-            ("2022-08-07", "Battle of Boyacá"),
+            ("2022-08-07", "Battle of Boyaca"),
             ("2022-08-15", "Assumption of Mary"),
             ("2022-10-17", "Columbus Day (Observed)"),
             ("2022-11-07", "All Saints' Day (Observed)"),

@@ -115,7 +115,7 @@ class TestGreece(TestCase):
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
-            ("2022-01-01", "New Year’s Day"),
+            ("2022-01-01", "New Year's Day"),
             ("2022-01-06", "Epiphany"),
             ("2022-03-07", "Clean Monday"),
             ("2022-03-25", "Independence Day"),

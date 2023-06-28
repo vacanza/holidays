@@ -18,7 +18,7 @@ msgstr ""
 #. New Year's Day.
 #: ./holidays/countries/greece.py:42
 msgid "Πρωτοχρονιά"
-msgstr "New Year’s Day"
+msgstr "New Year's Day"
 
 #. Epiphany.
 #: ./holidays/countries/greece.py:45

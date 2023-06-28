@@ -56,11 +56,11 @@ msgstr "Labour Day"
 
 #: ./holidays/countries/portugal.py:112
 msgid "Dia de Camões, de Portugal e da Raça"
-msgstr "Day of Camões, Portugal, and the Portuguese Race"
+msgstr "Day of Camoes, Portugal, and the Portuguese Race"
 
 #: ./holidays/countries/portugal.py:115
 msgid "Dia de Portugal, de Camões e das Comunidades Portuguesas"
-msgstr "Day of Portugal, Camões, and the Portuguese Communities"
+msgstr "Day of Portugal, Camoes, and the Portuguese Communities"
 
 #: ./holidays/countries/portugal.py:118
 msgid "Dia de Portugal"
@@ -117,7 +117,7 @@ msgstr "Feast of Our Lady of Graces"
 
 #: ./holidays/countries/portugal.py:163
 msgid "Dia de Nossa Senhora de Mércoles"
-msgstr "Feast of Our Lady of Mércoles"
+msgstr "Feast of Our Lady of Mercoles"
 
 #: ./holidays/countries/portugal.py:167
 msgid "Dia de Santa Isabel"

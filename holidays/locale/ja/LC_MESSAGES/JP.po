@@ -21,7 +21,7 @@ msgstr ""
 msgid "結婚の儀"
 msgstr ""
 
-#. State Funeral of Emperor Shōwa.
+#. State Funeral of Emperor Showa.
 #: ./holidays/countries/japan.py:45
 msgid "大喪の礼"
 msgstr ""

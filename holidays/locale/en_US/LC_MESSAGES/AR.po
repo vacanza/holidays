@@ -26,7 +26,7 @@ msgstr "Bicentenary of the creation and first oath of the national flag"
 
 #: ./holidays/countries/argentina.py:88
 msgid "Bicentenario de la Batalla de Tucumán"
-msgstr "Bicentenary of the Battle of Tucumán"
+msgstr "Bicentenary of the Battle of Tucuman"
 
 #: ./holidays/countries/argentina.py:89
 msgid ""
@@ -105,11 +105,11 @@ msgstr "Christmas"
 
 #: ./holidays/countries/argentina.py:284
 msgid "Paso a la Inmortalidad del General Don Martín Miguel de Güemes"
-msgstr "Pass to the Immortality of General Don Martín Miguel de Güemes"
+msgstr "Pass to the Immortality of General Don Martin Miguel de Guemes"
 
 #: ./holidays/countries/argentina.py:298
 msgid "Paso a la Inmortalidad del General Don José de San Martin"
-msgstr "Pass to the Immortality of General Don José de San Martin"
+msgstr "Pass to the Immortality of General Don Jose de San Martin"
 
 #: ./holidays/countries/argentina.py:318
 msgid "Día del Respeto a la Diversidad Cultural"

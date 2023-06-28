@@ -49,7 +49,7 @@ msgstr "Independence Day"
 #. Battle of Boyaca
 #: ./holidays/countries/colombia.py:86
 msgid "Batalla de Boyacá"
-msgstr "Battle of Boyacá"
+msgstr "Battle of Boyaca"
 
 #. Assumption of Mary
 #: ./holidays/countries/colombia.py:90

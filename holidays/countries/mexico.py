@@ -52,11 +52,11 @@ class Mexico(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 1917:
             self._add_holiday(
-                # Benito Juárez's birthday.
+                # Benito Juarez's birthday.
                 tr("Natalicio de Benito Juárez"),
                 self._get_nth_weekday_of_month(3, MON, MAR)
                 # no 2006 due to celebration of the 200th anniversary
-                # of Benito Juárez in 2006
+                # of Benito Juarez in 2006
                 if year >= 2007 else date(year, MAR, 21),
             )
 
