@@ -109,7 +109,7 @@ class TestMalta(TestCase):
             ("2023-12-25", "Il-Milied"),
         )
 
-    def test_l10n_en_MT(self):
+    def test_l10n_en_mt(self):
         self.assertLocalizedHolidays(
             "en_MT",
             ("2023-01-01", "New Year's Day"),
