@@ -26,8 +26,21 @@ class HolidaysMH(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "MH"
+
+    # Special Holidays
+
+    # General Election Day
+    election_day = "General Election Day"
+
     special_holidays = {
-        2019: (NOV, 18, "General Election Day"),  # Third Monday in November
+        1995: (NOV, 20, election_day),
+        1999: (NOV, 22, election_day),
+        2003: (NOV, 17, election_day),
+        2007: (NOV, 19, election_day),
+        2011: (NOV, 21, election_day),
+        2015: (NOV, 16, election_day),
+        2019: (NOV, 18, election_day),
+        2023: (NOV, 20, election_day),
     }
 
     def _add_observed(self, dt: date) -> None:

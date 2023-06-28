@@ -10,9 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 import warnings
-from datetime import date
 
-from holidays.constants import JAN
 from holidays.countries.marshall_islands import HolidaysMH, MH, MHL
 from tests.common import TestCase
 
@@ -90,9 +88,29 @@ class TestMH(TestCase):
             ("2023-09-01", "Dri-jerbal Day"),
             ("2023-09-29", "Manit Day"),
             ("2023-11-17", "President's Day"),
+            ("2023-11-20", "General Election Day"),
             ("2023-12-01", "Gospel Day"),
             ("2023-12-25", "Christmas Day"),
         )
 
+    def test_special_holidays(self):
+        self.assertHoliday(
+            # General Election are held on the 3rd Monday of November
+            # see https://en.wikipedia.org/wiki/Elections_in_the_Marshall_Islands
+            "1995-11-20",
+            "1999-11-22",
+            "2003-11-17",
+            "2007-11-19",
+            "2011-11-21",
+            "2015-11-16",
+            "2019-11-18",
+            "2023-11-20",
+        )
+
     def test_not_observed(self):
-        self.assertNotIn(date(2023, JAN, 2), MH(observed=False))
+        self.assertNoNonObservedHoliday(
+            "2020-03-02",
+            "2022-05-02",
+            "2022-12-26",
+            "2023-01-02",
+        )
