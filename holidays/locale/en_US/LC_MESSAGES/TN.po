@@ -1,0 +1,98 @@
+# Tunisia holidays en_US localization.
+# Authors: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.28\n"
+"POT-Creation-Date: 2023-06-28 00:13+0100\n"
+"PO-Revision-Date: 2023-06-28 00:50+0100\n"
+"Last-Translator: \n"
+"Language-Team: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.3.2\n"
+
+#: ./holidays/countries/tunisia.py:33
+#, c-format
+msgid "(تقدير*) *%s"
+msgstr "%s* (*estimated)"
+
+#. New Year's Day
+#: ./holidays/countries/tunisia.py:45
+msgid "رأس السنة الميلادية"
+msgstr "New Year's Day"
+
+#. Revolution and Youth Day - January 14
+#: ./holidays/countries/tunisia.py:48
+msgid "عيد الثورة والشباب"
+msgstr "Revolution and Youth Day"
+
+#. Independence Day
+#: ./holidays/countries/tunisia.py:51
+msgid "عيد الإستقلال"
+msgstr "Independence Day"
+
+#. Martyrs' Day
+#: ./holidays/countries/tunisia.py:54
+msgid "عيد الشهداء"
+msgstr "Martyrs' Day"
+
+#. Labour Day
+#: ./holidays/countries/tunisia.py:57
+msgid "عيد العمال"
+msgstr "Labor Day"
+
+#. Republic Day
+#: ./holidays/countries/tunisia.py:60
+msgid "عيد الجمهورية"
+msgstr "Republic Day"
+
+#. Women's Day
+#: ./holidays/countries/tunisia.py:63
+msgid "عيد المرأة"
+msgstr "Women's Day"
+
+#. Evacuation Day
+#: ./holidays/countries/tunisia.py:66
+msgid "عيد الجلاء"
+msgstr "Evacuation Day"
+
+#. Eid al-Fitr - Feast Festive date of observance is announced yearly, This is
+#. an estimate since having the Holiday on Weekend does change the number of
+#. days, deceided to leave it since marking a Weekend as a holiday wouldn't do
+#. much harm.
+#: ./holidays/countries/tunisia.py:73
+msgid "عيد الفطر"
+msgstr "Eid al-Fitr"
+
+#: ./holidays/countries/tunisia.py:75 ./holidays/countries/tunisia.py:76
+msgid "عطلة عيد الفطر"
+msgstr "Eid al-Fitr Holiday"
+
+#. Arafat Day & Eid al-Adha - Scarfice Festive date of observance is announced
+#. yearly
+#: ./holidays/countries/tunisia.py:80
+msgid "عيد الأضحى"
+msgstr "Eid al-Adha"
+
+#: ./holidays/countries/tunisia.py:81
+msgid "يوم عرفة"
+msgstr "Arafat Day"
+
+#: ./holidays/countries/tunisia.py:83 ./holidays/countries/tunisia.py:84
+msgid "عطلة عيد الأضحى"
+msgstr "Eid al-Adha Holiday"
+
+#. Islamic New Year - (hijari_year, 1, 1)
+#: ./holidays/countries/tunisia.py:87
+msgid "رأس السنة الهجرية"
+msgstr "Islamic New Year"
+
+#. Prophet Muhammad's Birthday - (hijari_year, 3, 12)
+#: ./holidays/countries/tunisia.py:90
+msgid "عيد المولد النبوي"
+msgstr "Prophet's Birthday"

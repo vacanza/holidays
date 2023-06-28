@@ -1,0 +1,101 @@
+# Egypt holidays ar localization.
+# Authors: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.28\n"
+"POT-Creation-Date: 2023-06-28 00:13+0100\n"
+"PO-Revision-Date: 2023-06-28 00:18+0100\n"
+"Last-Translator: \n"
+"Language-Team: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.3.2\n"
+
+#: ./holidays/countries/egypt.py:36
+#, c-format
+msgid "(تقدير*) *%s"
+msgstr ""
+
+#. New Year's Day
+#: ./holidays/countries/egypt.py:50
+msgid "رأس السنة الميلادية - عطلة بنوك"
+msgstr ""
+
+#. Coptic Christmas
+#: ./holidays/countries/egypt.py:53
+msgid "عيد الميلاد المجيد (تقويم قبطي)"
+msgstr ""
+
+#: ./holidays/countries/egypt.py:57
+msgid "عيد ثورة 25 يناير"
+msgstr ""
+
+#: ./holidays/countries/egypt.py:59
+msgid "عيد الشرطة"
+msgstr ""
+
+#. Coptic Easter - Orthodox Easter
+#: ./holidays/countries/egypt.py:62
+msgid "عيد الفصح القبطي"
+msgstr ""
+
+#. Spring Festival
+#: ./holidays/countries/egypt.py:63
+msgid "شم النسيم"
+msgstr ""
+
+#: ./holidays/countries/egypt.py:67
+msgid "عيد تحرير سيناء"
+msgstr ""
+
+#. Labour Day
+#: ./holidays/countries/egypt.py:70
+msgid "عيد العمال"
+msgstr ""
+
+#. Armed Forces Day
+#: ./holidays/countries/egypt.py:73
+msgid "عيد القوات المسلحة"
+msgstr ""
+
+#: ./holidays/countries/egypt.py:77
+msgid "عيد ثورة 30 يونيو"
+msgstr ""
+
+#: ./holidays/countries/egypt.py:81
+msgid "عيد الثورة"
+msgstr ""
+
+#. Eid al-Fitr - Feast Festive
+#: ./holidays/countries/egypt.py:84
+msgid "عيد الفطر"
+msgstr ""
+
+#: ./holidays/countries/egypt.py:85 ./holidays/countries/egypt.py:86
+msgid "عطلة عيد الفطر"
+msgstr ""
+
+#: ./holidays/countries/egypt.py:88
+msgid "يوم عرفة"
+msgstr ""
+
+#. Arafat Day & Eid al-Adha - Scarfice Festive
+#: ./holidays/countries/egypt.py:91
+msgid "عيد الأضحى"
+msgstr ""
+
+#: ./holidays/countries/egypt.py:92 ./holidays/countries/egypt.py:93
+msgid "عطلة عيد الأضحى"
+msgstr ""
+
+#: ./holidays/countries/egypt.py:95
+msgid "رأس السنة الهجرية"
+msgstr ""
+
+#: ./holidays/countries/egypt.py:97
+msgid "عيد المولد النبوي"
+msgstr ""

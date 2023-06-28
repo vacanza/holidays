@@ -1,0 +1,73 @@
+# Bahrain holidays ar localization.
+# Authors: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.28\n"
+"POT-Creation-Date: 2023-06-28 00:13+0100\n"
+"PO-Revision-Date: 2023-06-28 00:18+0100\n"
+"Last-Translator: \n"
+"Language-Team: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.3.2\n"
+
+#: ./holidays/countries/bahrain.py:31
+#, c-format
+msgid "(تقدير*) *%s"
+msgstr ""
+
+#. New Year's Day.
+#: ./holidays/countries/bahrain.py:44
+msgid "رأس السنة الميلادية"
+msgstr ""
+
+#. Labour day.
+#: ./holidays/countries/bahrain.py:47
+msgid "عيد العمال"
+msgstr ""
+
+#. Eid Al Fitr.
+#: ./holidays/countries/bahrain.py:50
+msgid "عيد الفطر"
+msgstr ""
+
+#: ./holidays/countries/bahrain.py:52 ./holidays/countries/bahrain.py:53
+msgid "عطلة عيد الفطر"
+msgstr ""
+
+#. Eid Al Adha.
+#: ./holidays/countries/bahrain.py:56
+msgid "عيد الأضحى"
+msgstr ""
+
+#: ./holidays/countries/bahrain.py:58 ./holidays/countries/bahrain.py:59
+msgid "عطلة عيد الأضحى"
+msgstr ""
+
+#. Al Hijra New Year.
+#: ./holidays/countries/bahrain.py:62
+msgid "رأس السنة الهجرية"
+msgstr ""
+
+#. Ashura.
+#: ./holidays/countries/bahrain.py:66
+msgid "عاشورة"
+msgstr ""
+
+#: ./holidays/countries/bahrain.py:67
+msgid "ليلة عاشورة"
+msgstr ""
+
+#. Prophets Birthday.
+#: ./holidays/countries/bahrain.py:71
+msgid "عيد المولد النبوي"
+msgstr ""
+
+#. National Day.
+#: ./holidays/countries/bahrain.py:74
+msgid "اليوم الوطني"
+msgstr ""

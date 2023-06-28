@@ -9,6 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from gettext import gettext as tr
+
 from holidays.calendars import _CustomIslamicCalendar
 from holidays.constants import FRI, SAT, MAY, JUL, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
@@ -25,6 +27,9 @@ class Bahrain(HolidayBase, InternationalHolidays, IslamicHolidays):
     """
 
     country = "BH"
+    default_language = "ar"
+    estimated_label = tr("(تقدير*) *%s")
+    supported_languages = ("ar", "en_US")
     weekend = {FRI, SAT}
 
     def __init__(self, *args, **kwargs):
@@ -36,37 +41,37 @@ class Bahrain(HolidayBase, InternationalHolidays, IslamicHolidays):
         super()._populate(year)
 
         # New Year's Day.
-        self._add_new_years_day("New Year's Day")
+        self._add_new_years_day(tr("رأس السنة الميلادية"))
 
         # Labour day.
-        self._add_labor_day("Labour Day")
+        self._add_labor_day(tr("عيد العمال"))
 
         # Eid Al Fitr.
-        eid_al_fitr = "Eid Al Fitr"
+        eid_al_fitr = tr("عيد الفطر")
         self._add_eid_al_fitr_day(eid_al_fitr)
-        self._add_eid_al_fitr_day_two(f"{eid_al_fitr} Holiday")
-        self._add_eid_al_fitr_day_three(f"{eid_al_fitr} Holiday")
+        self._add_eid_al_fitr_day_two(tr("عطلة عيد الفطر"))
+        self._add_eid_al_fitr_day_three(tr("عطلة عيد الفطر"))
 
         # Eid Al Adha.
-        eid_al_adha = "Eid Al Adha"
+        eid_al_adha = tr("عيد الأضحى")
         self._add_eid_al_adha_day(eid_al_adha)
-        self._add_eid_al_adha_day_two(f"{eid_al_adha} Holiday")
-        self._add_eid_al_adha_day_three(f"{eid_al_adha} Holiday")
+        self._add_eid_al_adha_day_two(tr("عطلة عيد الأضحى"))
+        self._add_eid_al_adha_day_three(tr("عطلة عيد الأضحى"))
 
         # Al Hijra New Year.
-        hijri_new_year = "Al Hijra New Year"
+        hijri_new_year = tr("رأس السنة الهجرية")
         self._add_islamic_new_year_day(hijri_new_year)
 
         # Ashura.
-        ashura = "Ashura"
-        self._add_ashura_eve(f"{ashura} Holiday")
+        ashura = tr("عاشورة")
+        self._add_ashura_eve(tr("ليلة عاشورة"))
         self._add_ashura_day(ashura)
 
         # Prophets Birthday.
-        self._add_mawlid_day("Prophets Birthday")
+        self._add_mawlid_day(tr("عيد المولد النبوي"))
 
         # National Day.
-        national_day = "National Day"
+        national_day = tr("اليوم الوطني")
         self._add_holiday(national_day, DEC, 16)
         self._add_holiday(national_day, DEC, 17)
 

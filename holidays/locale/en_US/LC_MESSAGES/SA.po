@@ -1,0 +1,70 @@
+# Saudi Arabia holidays en_US localization.
+# Authors: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.28\n"
+"POT-Creation-Date: 2023-06-28 00:13+0100\n"
+"PO-Revision-Date: 2023-06-28 00:51+0100\n"
+"Last-Translator: \n"
+"Language-Team: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.3.2\n"
+
+#: ./holidays/countries/saudi_arabia.py:39
+#, c-format
+msgid "(تقدير*) *%s"
+msgstr "%s* (*estimated)"
+
+#. celebrate the country's win against Argentina in the World Cup
+#: ./holidays/countries/saudi_arabia.py:44
+msgid "يوم وطني"
+msgstr "A National Day"
+
+#: ./holidays/countries/saudi_arabia.py:57
+#: ./holidays/countries/saudi_arabia.py:65
+#: ./holidays/countries/saudi_arabia.py:70
+#, c-format
+msgid "(ملاحظة) %s"
+msgstr "%s (observed)"
+
+#. Eid al-Fitr Holiday The holiday is a 4-day holiday starting on the day
+#. following the 29th day of Ramadan, the 9th month of the Islamic calendar.
+#. Observed days are added to make up for any days falling on a weekend.
+#. Holidays may straddle across Gregorian years, so we go back one year to
+#. pick
+#. up any such occurrence. Date of observance is announced yearly.
+#: ./holidays/countries/saudi_arabia.py:88
+msgid "عطلة عيد الفطر"
+msgstr "Eid al-Fitr Holiday"
+
+#. Arafat Day & Eid al-Adha The holiday is a 4-day holiday starting on Arafat
+#. Day, the 10th of Dhu al-Hijjah, the 12th month of the Islamic calendar.
+#. Observed days are added to make up for any days falling on a weekend.
+#. Holidays may straddle across Gregorian years, so we go back one year to
+#. pick
+#. up any such occurrence. Date of observance is announced yearly.
+#: ./holidays/countries/saudi_arabia.py:102
+msgid "يوم عرفة"
+msgstr "Arafat Day"
+
+#: ./holidays/countries/saudi_arabia.py:103
+msgid "عطلة عيد الأضحى"
+msgstr "Eid al-Adha Holiday"
+
+#: ./holidays/countries/saudi_arabia.py:115
+msgid "اليوم الوطني"
+msgstr "National Day Holiday"
+
+#: ./holidays/countries/saudi_arabia.py:123
+msgid "يوم التأسيسي"
+msgstr "Founding Day Holiday"
+
+#: ./holidays/countries/saudi_arabia.py:127
+msgid "عطلة عيد الفطر (ملاحظة)"
+msgstr "Eid al-Fitr Holiday (Observed)"
