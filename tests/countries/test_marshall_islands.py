@@ -12,7 +12,7 @@
 import warnings
 from datetime import date
 
-from holidays.constants import JAN, MAR, APR, MAY, JUL, SEP, NOV, DEC
+from holidays.constants import JAN
 from holidays.countries.marshall_islands import HolidaysMH, MH, MHL
 from tests.common import TestCase
 
@@ -26,38 +26,73 @@ class TestMH(TestCase):
     def test_country_aliases(self):
         self.assertCountryAliases(HolidaysMH, MH, MHL)
 
+    def test_2020(self):
+        # http://web.archive.org/web/20201125072002/https://www.pscrmi.net/rmi-holiday-memos
+        self.assertHolidays(
+            HolidaysMH(years=2020),
+            ("2020-01-01", "New Year's Day"),
+            ("2020-03-01", "Nuclear Victims Remembrance Day"),
+            ("2020-03-02", "Nuclear Victims Remembrance Day Holiday"),
+            ("2020-04-10", "Good Friday"),
+            ("2020-05-01", "Constitution Day"),
+            ("2020-07-03", "Fisherman's Day"),
+            ("2020-09-04", "Dri-jerbal Day"),
+            ("2020-09-25", "Manit Day"),
+            ("2020-11-17", "President's Day"),
+            ("2020-12-04", "Gospel Day"),
+            ("2020-12-25", "Christmas Day"),
+        )
+
+    def test_2021(self):
+        # http://web.archive.org/web/20210617163816/https://www.pscrmi.net/rmi-holiday-memos
+        self.assertHolidays(
+            HolidaysMH(years=2021),
+            ("2021-01-01", "New Year's Day"),
+            ("2021-03-01", "Nuclear Victims Remembrance Day"),
+            ("2021-04-02", "Good Friday"),
+            ("2021-05-01", "Constitution Day"),
+            ("2021-07-02", "Fisherman's Day"),
+            ("2021-09-03", "Dri-jerbal Day"),
+            ("2021-09-24", "Manit Day"),
+            ("2021-11-17", "President's Day"),
+            ("2021-12-03", "Gospel Day"),
+            ("2021-12-24", "Christmas Day"),
+        )
+
     def test_2022(self):
-        # https://www.register-iri.com/info-center/the-marshall-islands/rmi-national-holidays/
-        year = 2022
-        self.assertIn(date(year, JAN, 1), self.holidays)
-        self.assertIn(date(year, JAN, 3), self.holidays)
-        self.assertIn(date(year, APR, 15), self.holidays)
-        self.assertIn(date(year, MAY, 1), self.holidays)
-        self.assertIn(date(year, JUL, 1), self.holidays)
-        self.assertIn(date(year, SEP, 2), self.holidays)
-        self.assertIn(date(year, SEP, 30), self.holidays)
-        self.assertIn(date(year, NOV, 17), self.holidays)
-        self.assertIn(date(year, DEC, 2), self.holidays)
-        self.assertIn(date(year, DEC, 25), self.holidays)
-        self.assertIn(date(year, DEC, 26), self.holidays)
-        # 2023: total holidays (10 + 2 falling on a Sunday)
-        self.assertEqual(10 + 2, len(MH(years=[year])))
+        # http://web.archive.org/web/20220704021442/https://www.pscrmi.net/rmi-holiday-memos
+        self.assertHolidays(
+            HolidaysMH(years=2022),
+            ("2022-01-01", "New Year's Day"),
+            ("2022-03-01", "Nuclear Victims Remembrance Day"),
+            ("2022-04-15", "Good Friday"),
+            ("2022-05-01", "Constitution Day"),
+            ("2022-05-02", "Constitution Day Holiday"),
+            ("2022-07-01", "Fisherman's Day"),
+            ("2022-09-02", "Dri-jerbal Day"),
+            ("2022-09-30", "Manit Day"),
+            ("2022-11-17", "President's Day"),
+            ("2022-12-02", "Gospel Day"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Christmas Day Holiday"),
+        )
 
     def test_2023(self):
-        year = 2023
-        self.assertIn(date(year, JAN, 1), self.holidays)
-        self.assertIn(date(year, JAN, 2), self.holidays)
-        self.assertIn(date(year, MAR, 1), self.holidays)
-        self.assertIn(date(year, APR, 7), self.holidays)
-        self.assertIn(date(year, MAY, 1), self.holidays)
-        self.assertIn(date(year, JUL, 7), self.holidays)
-        self.assertIn(date(year, SEP, 1), self.holidays)
-        self.assertIn(date(year, SEP, 29), self.holidays)
-        self.assertIn(date(year, NOV, 17), self.holidays)
-        self.assertIn(date(year, DEC, 1), self.holidays)
-        self.assertIn(date(year, DEC, 25), self.holidays)
-        # 2023: total holidays (10 + 1 falling on a Sunday)
-        self.assertEqual(10 + 1, len(MH(years=[year])))
+        # https://web.archive.org/web/20230628074915/https://www.pscrmi.net/rmi-holiday-memos
+        self.assertHolidays(
+            HolidaysMH(years=2023),
+            ("2023-01-01", "New Year's Day"),
+            ("2023-01-02", "New Year's Day Holiday"),
+            ("2023-03-01", "Nuclear Victims Remembrance Day"),
+            ("2023-04-07", "Good Friday"),
+            ("2023-05-01", "Constitution Day"),
+            ("2023-07-07", "Fisherman's Day"),
+            ("2023-09-01", "Dri-jerbal Day"),
+            ("2023-09-29", "Manit Day"),
+            ("2023-11-17", "President's Day"),
+            ("2023-12-01", "Gospel Day"),
+            ("2023-12-25", "Christmas Day"),
+        )
 
     def test_not_observed(self):
         self.assertNotIn(date(2023, JAN, 2), MH(observed=False))

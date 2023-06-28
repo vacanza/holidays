@@ -13,14 +13,13 @@ import warnings
 from datetime import date
 from datetime import timedelta as td
 
-from dateutil.easter import easter
-
-from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
-from holidays.constants import JAN, MAR, MAY, JUL, SEP, NOV, DEC, MON, FRI
+from holidays.calendars import _get_nth_weekday_of_month
+from holidays.constants import MAR, MAY, JUL, SEP, NOV, DEC, FRI
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class HolidaysMH(HolidayBase):
+class HolidaysMH(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://rmiparliament.org/cms/component/content/article/14-pressrelease/49-important-public-holidays.html?Itemid=101
     https://www.rmiembassyus.org/country-profile#:~:text=national%20holidays
@@ -31,60 +30,60 @@ class HolidaysMH(HolidayBase):
         2019: (NOV, 18, "General Election Day"),  # Third Monday in November
     }
 
-    def _add_with_observed(self, dt: date, name: str, after_sat: bool = False) -> None:
+    def _add_observed(self, dt: date) -> None:
         """
-        Adds observed holiday on Monday when the current date falls on a Sunday
-        or, if after_sat is True, on a Saturday.
-        :param dt: The date.
-        :param name: The name of the holiday.
-        :param after_sat: Whether to add a Monday observed holiday when the
-           current date falls on a Saturday.
-        :return: None.
+        If fall on Sunday, an observed holiday marked with suffix " Holiday" will be added.
         """
-        self[dt] = name
-        if not self.observed:
-            return
-        if (self._is_saturday(dt) and after_sat) or self._is_sunday(dt):
-            self[_get_nth_weekday_from(1, MON, dt)] = f"{name} (Holiday)"
+        if self.observed and self._is_sunday(dt):
+            self._add_holiday("%s Holiday" % self[dt], dt + td(days=+1))
+
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
 
-        if year < 2023:
+        if year <= 2019:
             warnings.warn(
-                "Years before 2022 are not available for the Marshall Islands (MH).", Warning
+                "Years before 2020 are not available for the Marshall Islands (MH).", Warning
             )
 
         # New Year's Day
-        name = "New Year's Day"
-        self._add_with_observed(date(year, JAN, 1), name, after_sat=True)
+        self._add_observed(self._add_new_years_day("New Year's Day"))
 
         # Nuclear Victims Remembrance Day
-        self._add_with_observed(date(year, MAR, 1), "Nuclear Victims Remembrance Day")
+        self._add_observed(self._add_holiday("Nuclear Victims Remembrance Day", MAR, 1))
 
         # Good Friday
-        self[easter(year) + td(days=-2)] = "Good Friday"
+        self._add_good_friday("Good Friday")
 
         # Constitution Day
-        self[date(year, MAY, 1)] = "Constitution Day"
+        self._add_observed(self._add_holiday("Constitution Day", MAY, 1))
 
         # Fisherman's Day
-        self[_get_nth_weekday_of_month(1, FRI, JUL, year)] = "Fisherman's Day"
+        self._add_holiday("Fisherman's Day", _get_nth_weekday_of_month(1, FRI, JUL, year))
 
         # Dri-jerbal Day
-        self[_get_nth_weekday_of_month(1, FRI, SEP, year)] = "Dri-jerbal Day"
+        self._add_holiday("Dri-jerbal Day", _get_nth_weekday_of_month(1, FRI, SEP, year))
 
         # Manit Day
-        self[_get_nth_weekday_of_month(-1, FRI, SEP, year)] = "Manit Day"
+        self._add_holiday("Manit Day", _get_nth_weekday_of_month(-1, FRI, SEP, year))
 
         # President's Day
-        self._add_with_observed(date(year, NOV, 17), "President's Day")
+        self._add_observed(self._add_holiday("President's Day", NOV, 17))
 
         # Gospel Day
-        self[_get_nth_weekday_of_month(1, FRI, DEC, year)] = "Gospel Day"
+        self._add_holiday("Gospel Day", _get_nth_weekday_of_month(1, FRI, DEC, year))
 
         # Christmas Day
-        self._add_with_observed(date(year, DEC, 25), "Christmas Day")
+        name = "Christmas Day"
+        if year == 2021:
+            # special case
+            self._add_holiday(name, DEC, 24)
+        else:
+            self._add_observed(self._add_christmas_day(name))
 
 
 class MH(HolidaysMH):
