@@ -203,8 +203,8 @@ The list of supported countries, their subdivisions and supported languages
      -
    * - Bosnia and Herzegovina
      - BA
-     - Departments: BD, FBiH, RS
-     -
+     - Entities and district: BIH, BRC, SRP
+     - **bs**, en_US, sr, uk
    * - Botswana
      - BW
      -
