@@ -42,143 +42,143 @@ msgid "Dominion Day"
 msgstr "Jour du dominion"
 
 #. Labour Day.
-#: ./holidays/countries/canada.py:85
+#: ./holidays/countries/canada.py:84
 msgid "Labour Day"
 msgstr "Fête du Travail"
 
 #. Christmas Day.
-#: ./holidays/countries/canada.py:91
+#: ./holidays/countries/canada.py:87
 msgid "Christmas Day"
 msgstr "Jour de Noël"
 
 #. Boxing Day.
-#: ./holidays/countries/canada.py:97
+#: ./holidays/countries/canada.py:90
 msgid "Boxing Day"
 msgstr "Boxing Day"
 
 #. Family Day.
-#: ./holidays/countries/canada.py:104 ./holidays/countries/canada.py:174
+#: ./holidays/countries/canada.py:94 ./holidays/countries/canada.py:158
 msgid "Family Day"
 msgstr "Fête de la famille"
 
 #. Thanksgiving.
-#: ./holidays/countries/canada.py:119
+#: ./holidays/countries/canada.py:107
 msgid "Thanksgiving"
 msgstr "Action de grâce"
 
 #. Funeral of Queen Elizabeth II.
-#: ./holidays/countries/canada.py:125
+#: ./holidays/countries/canada.py:112
 msgid "Funeral of Her Majesty the Queen Elizabeth II"
 msgstr "Funéraire de sa majesté la reine Elizabeth II"
 
 #. Memorial Day.
-#: ./holidays/countries/canada.py:136
+#: ./holidays/countries/canada.py:120
 msgid "Memorial Day"
 msgstr "Jour de mémorial"
 
 #. Canada Day.
-#: ./holidays/countries/canada.py:139
+#: ./holidays/countries/canada.py:123
 msgid "Canada Day"
 msgstr "Fête du Canada"
 
 #. Victoria Day.
-#: ./holidays/countries/canada.py:155 ./holidays/countries/canada.py:179
-#: ./holidays/countries/canada.py:216 ./holidays/countries/canada.py:249
-#: ./holidays/countries/canada.py:332 ./holidays/countries/canada.py:358
-#: ./holidays/countries/canada.py:381 ./holidays/countries/canada.py:429
-#: ./holidays/countries/canada.py:466
+#: ./holidays/countries/canada.py:139 ./holidays/countries/canada.py:163
+#: ./holidays/countries/canada.py:196 ./holidays/countries/canada.py:225
+#: ./holidays/countries/canada.py:298 ./holidays/countries/canada.py:321
+#: ./holidays/countries/canada.py:341 ./holidays/countries/canada.py:386
+#: ./holidays/countries/canada.py:420
 msgid "Victoria Day"
 msgstr "Fête de la Reine"
 
 #. Heritage Day.
-#: ./holidays/countries/canada.py:161 ./holidays/countries/canada.py:307
-#: ./holidays/countries/canada.py:459
+#: ./holidays/countries/canada.py:145 ./holidays/countries/canada.py:280
+#: ./holidays/countries/canada.py:413
 msgid "Heritage Day"
 msgstr "Fête du Patrimoine"
 
 #. Remembrance Day.
-#: ./holidays/countries/canada.py:169 ./holidays/countries/canada.py:203
-#: ./holidays/countries/canada.py:240 ./holidays/countries/canada.py:263
-#: ./holidays/countries/canada.py:298 ./holidays/countries/canada.py:324
-#: ./holidays/countries/canada.py:350 ./holidays/countries/canada.py:372
-#: ./holidays/countries/canada.py:403 ./holidays/countries/canada.py:444
-#: ./holidays/countries/canada.py:481
+#: ./holidays/countries/canada.py:153 ./holidays/countries/canada.py:183
+#: ./holidays/countries/canada.py:216 ./holidays/countries/canada.py:239
+#: ./holidays/countries/canada.py:273 ./holidays/countries/canada.py:292
+#: ./holidays/countries/canada.py:315 ./holidays/countries/canada.py:332
+#: ./holidays/countries/canada.py:362 ./holidays/countries/canada.py:400
+#: ./holidays/countries/canada.py:435
 msgid "Remembrance Day"
 msgstr "Jour du Souvenir"
 
 #. British Columbia Day.
-#: ./holidays/countries/canada.py:185
+#: ./holidays/countries/canada.py:169
 msgid "British Columbia Day"
 msgstr "Jour de la Colombie Britannique"
 
 #. National Day for Truth and Reconciliation.
-#: ./holidays/countries/canada.py:194 ./holidays/countries/canada.py:231
-#: ./holidays/countries/canada.py:316
+#: ./holidays/countries/canada.py:177 ./holidays/countries/canada.py:210
+#: ./holidays/countries/canada.py:288
 msgid "National Day for Truth and Reconciliation"
 msgstr "Journée nationale de la vérité et de la réconciliation"
 
 #. Louis Riel Day.
-#: ./holidays/countries/canada.py:209
+#: ./holidays/countries/canada.py:189
 msgid "Louis Riel Day"
 msgstr "Journée Louis Riel"
 
 #. Terry Fox Day.
-#: ./holidays/countries/canada.py:221
+#: ./holidays/countries/canada.py:201
 msgid "Terry Fox Day"
 msgstr "Journée Terry Fox"
 
 #. Civic Holiday.
-#: ./holidays/countries/canada.py:224 ./holidays/countries/canada.py:341
-#: ./holidays/countries/canada.py:386
+#: ./holidays/countries/canada.py:204 ./holidays/countries/canada.py:307
+#: ./holidays/countries/canada.py:346
 msgid "Civic Holiday"
 msgstr "Premier lundi d'août"
 
 #. New Brunswick Day.
-#: ./holidays/countries/canada.py:255
+#: ./holidays/countries/canada.py:231
 msgid "New Brunswick Day"
 msgstr "Jour du Nouveau Brunswick"
 
 #. St. Patrick's Day.
-#: ./holidays/countries/canada.py:270
+#: ./holidays/countries/canada.py:246
 msgid "St. Patrick's Day"
 msgstr "Fête de la Saint-Patrick"
 
 #. St. George's Day.
-#: ./holidays/countries/canada.py:284
+#: ./holidays/countries/canada.py:260
 msgid "St. George's Day"
 msgstr "Fête de la Saint-Georges"
 
 #. Discovery Day.
-#: ./holidays/countries/canada.py:289 ./holidays/countries/canada.py:471
+#: ./holidays/countries/canada.py:265 ./holidays/countries/canada.py:425
 msgid "Discovery Day"
 msgstr "Jour de la Découverte"
 
 #. National Aboriginal Day.
-#: ./holidays/countries/canada.py:336
+#: ./holidays/countries/canada.py:302
 msgid "National Aboriginal Day"
 msgstr "Journée nationale des Autochtones"
 
 #. Nunavut Day.
-#: ./holidays/countries/canada.py:364
+#: ./holidays/countries/canada.py:326
 msgid "Nunavut Day"
 msgstr "Jour du Nunavut"
 
 #. Islander Day.
-#: ./holidays/countries/canada.py:396
+#: ./holidays/countries/canada.py:356
 msgid "Islander Day"
 msgstr "Fête des Insulaires"
 
 #. National Patriots' Day.
-#: ./holidays/countries/canada.py:411
+#: ./holidays/countries/canada.py:368
 msgid "National Patriots' Day"
 msgstr "Journée nationale des patriotes"
 
 #. St. Jean Baptiste Day.
-#: ./holidays/countries/canada.py:416
+#: ./holidays/countries/canada.py:373
 msgid "St. Jean Baptiste Day"
 msgstr "Fête nationale du Québec"
 
 #. Saskatchewan Day.
-#: ./holidays/countries/canada.py:435
+#: ./holidays/countries/canada.py:392
 msgid "Saskatchewan Day"
 msgstr "Jour du Saskatchewan"

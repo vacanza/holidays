@@ -42,93 +42,93 @@ msgstr "Вознесіння Господнє"
 msgid "Corpus Christi"
 msgstr "Свято Тіла і Крові Христових"
 
-#: ./holidays/countries/chile.py:100
+#: ./holidays/countries/chile.py:99
 msgid "Día Nacional del Trabajo"
 msgstr "День праці"
 
 #. Naval Glories Day (Law 2.977).
-#: ./holidays/countries/chile.py:103
+#: ./holidays/countries/chile.py:102
 msgid "Día de las Glorias Navales"
 msgstr "День військово-морської слави"
 
 #. National Day of Indigenous Peoples.
-#: ./holidays/countries/chile.py:107
+#: ./holidays/countries/chile.py:106
 msgid "Día Nacional de los Pueblos Indígenas"
 msgstr "Національний день корінних народів"
 
-#: ./holidays/countries/chile.py:116
+#: ./holidays/countries/chile.py:115
 msgid "San Pedro y San Pablo"
 msgstr "День Святих Петра і Павла"
 
-#: ./holidays/countries/chile.py:120
+#: ./holidays/countries/chile.py:119
 msgid "Virgen del Carmen"
 msgstr "Матір Божа Кармельська"
 
 #. Day of Assumption of the Virgin (Law 2.977).
-#: ./holidays/countries/chile.py:123
+#: ./holidays/countries/chile.py:122
 msgid "Asunción de la Virgen"
 msgstr "Успіння Пресвятої Богородиці"
 
-#: ./holidays/countries/chile.py:127
+#: ./holidays/countries/chile.py:126
 msgid "Día de la Liberación Nacional"
 msgstr "День національного визволення"
 
-#: ./holidays/countries/chile.py:131
+#: ./holidays/countries/chile.py:130
 msgid "Día de la Unidad Nacional"
 msgstr "День національної єдності"
 
-#: ./holidays/countries/chile.py:138 ./holidays/countries/chile.py:142
-#: ./holidays/countries/chile.py:152 ./holidays/countries/chile.py:156
+#: ./holidays/countries/chile.py:136 ./holidays/countries/chile.py:140
+#: ./holidays/countries/chile.py:150 ./holidays/countries/chile.py:154
 msgid "Fiestas Patrias"
 msgstr "Національне свято"
 
 #. Independence Day (Law 2.977).
-#: ./holidays/countries/chile.py:145
+#: ./holidays/countries/chile.py:143
 msgid "Día de la Independencia"
 msgstr "День Незалежності"
 
 #. Day of Glories of the Army of Chile (Law 2.977).
-#: ./holidays/countries/chile.py:148
+#: ./holidays/countries/chile.py:146
 msgid "Día de las Glorias del Ejército"
 msgstr "День військової слави"
 
-#: ./holidays/countries/chile.py:161
+#: ./holidays/countries/chile.py:159
 msgid "Día del Encuentro de dos Mundos"
 msgstr "День зустрічі двох світів"
 
-#: ./holidays/countries/chile.py:161
+#: ./holidays/countries/chile.py:159
 msgid "Día de la Raza"
 msgstr "День Колумба"
 
-#: ./holidays/countries/chile.py:176
+#: ./holidays/countries/chile.py:173
 msgid "Día Nacional de las Iglesias Evangélicas y Protestantes"
 msgstr "День Реформації"
 
 #. All Saints Day (Law 2.977).
-#: ./holidays/countries/chile.py:181
+#: ./holidays/countries/chile.py:176
 msgid "Día de Todos los Santos"
 msgstr "День усіх святих"
 
 #. Immaculate Conception (Law 2.977).
-#: ./holidays/countries/chile.py:184
+#: ./holidays/countries/chile.py:179
 msgid "La Inmaculada Concepción"
 msgstr "Непорочне зачаття Діви Марії"
 
 #. Christmas Eve.
-#: ./holidays/countries/chile.py:188
+#: ./holidays/countries/chile.py:183
 msgid "Víspera de Navidad"
 msgstr "Святий вечір"
 
 #. Christmas (Law 2.977).
-#: ./holidays/countries/chile.py:191
+#: ./holidays/countries/chile.py:186
 msgid "Navidad"
 msgstr "Різдво Христове"
 
 #. Región de Arica y Parinacota.
-#: ./holidays/countries/chile.py:197
+#: ./holidays/countries/chile.py:192
 msgid "Asalto y Toma del Morro de Arica"
 msgstr "Штурм і захоплення Морро-де-Аріка"
 
-#: ./holidays/countries/chile.py:204
+#: ./holidays/countries/chile.py:199
 msgid "Nacimiento del Prócer de la Independencia (Chillán y Chillán Viejo)"
 msgstr "Річниця Бернардо О'Гіґґінса (свято комун Чіллан і Чіллан В'єхо)"

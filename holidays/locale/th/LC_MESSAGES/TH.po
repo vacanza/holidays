@@ -83,7 +83,7 @@ msgstr ""
 #. %s (in lieu)
 #: ./holidays/countries/thailand.py:292 ./holidays/countries/thailand.py:315
 #: ./holidays/countries/thailand.py:364 ./holidays/countries/thailand.py:601
-#: ./holidays/countries/thailand.py:606
+#: ./holidays/countries/thailand.py:605
 #, c-format
 msgid "ชดเชย%s"
 msgstr ""
@@ -208,7 +208,7 @@ msgid "วันวิสาขบูชา"
 msgstr ""
 
 #. Asarnha Bucha.
-#: ./holidays/countries/thailand.py:577 ./holidays/countries/thailand.py:606
+#: ./holidays/countries/thailand.py:577 ./holidays/countries/thailand.py:605
 msgid "วันอาสาฬหบูชา"
 msgstr ""
 
@@ -218,6 +218,6 @@ msgid "วันเข้าพรรษา"
 msgstr ""
 
 #. Royal Ploughing Ceremony.
-#: ./holidays/countries/thailand.py:622
+#: ./holidays/countries/thailand.py:620
 msgid "วันพืชมงคล"
 msgstr ""

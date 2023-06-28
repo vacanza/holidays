@@ -54,68 +54,68 @@ msgstr ""
 msgid "Día Nacional de la Memoria por la Verdad y la Justicia"
 msgstr ""
 
-#: ./holidays/countries/argentina.py:208
+#: ./holidays/countries/argentina.py:206
 msgid "Día del Veterano de Guerra"
 msgstr ""
 
-#: ./holidays/countries/argentina.py:210
+#: ./holidays/countries/argentina.py:208
 msgid "Día del Veterano y de los Caidos en la Guerra de Malvinas"
 msgstr ""
 
 #. Good Friday.
-#: ./holidays/countries/argentina.py:215
+#: ./holidays/countries/argentina.py:213
 msgid "Viernes Santo"
 msgstr ""
 
-#: ./holidays/countries/argentina.py:219
+#: ./holidays/countries/argentina.py:217
 msgid "Día del Trabajo"
 msgstr ""
 
-#: ./holidays/countries/argentina.py:223
+#: ./holidays/countries/argentina.py:221
 msgid "Día de la Revolución de Mayo"
 msgstr ""
 
-#: ./holidays/countries/argentina.py:233
+#: ./holidays/countries/argentina.py:231
 msgid ""
 "Día de los Derechos Argentinos sobre las Islas Malvinas, Sandwich y del "
 "Atlántico Sur"
 msgstr ""
 
-#: ./holidays/countries/argentina.py:249
+#: ./holidays/countries/argentina.py:247
 msgid "Paso a la Inmortalidad del General Don Manuel Belgrano"
 msgstr ""
 
-#: ./holidays/countries/argentina.py:257
+#: ./holidays/countries/argentina.py:255
 msgid "Día de la Independencia"
 msgstr ""
 
 #. Immaculate Conception.
-#: ./holidays/countries/argentina.py:260
+#: ./holidays/countries/argentina.py:258
 msgid "Inmaculada Concepción de María"
 msgstr ""
 
 #. Christmas.
-#: ./holidays/countries/argentina.py:263
+#: ./holidays/countries/argentina.py:261
 msgid "Navidad"
 msgstr ""
 
-#: ./holidays/countries/argentina.py:273
+#: ./holidays/countries/argentina.py:271
 msgid "Paso a la Inmortalidad del General Don Martín Miguel de Güemes"
 msgstr ""
 
-#: ./holidays/countries/argentina.py:287
+#: ./holidays/countries/argentina.py:285
 msgid "Paso a la Inmortalidad del General Don José de San Martin"
 msgstr ""
 
-#: ./holidays/countries/argentina.py:308
+#: ./holidays/countries/argentina.py:305
 msgid "Día del Respeto a la Diversidad Cultural"
 msgstr ""
 
-#: ./holidays/countries/argentina.py:304
+#: ./holidays/countries/argentina.py:302
 msgid "Día de la Raza"
 msgstr ""
 
-#: ./holidays/countries/argentina.py:318
+#: ./holidays/countries/argentina.py:315
 msgid "Día de la Soberanía Nacional"
 msgstr ""
 

@@ -77,16 +77,16 @@ msgid "Día de Pascuas"
 msgstr "Великдень"
 
 #. Landing of the 33 Patriots.
-#: ./holidays/countries/uruguay.py:84
+#: ./holidays/countries/uruguay.py:82
 msgid "Desembarco de los 33 Orientales"
 msgstr "День висадки 33 патріотів"
 
 #. Battle of Las Piedras.
-#: ./holidays/countries/uruguay.py:89
+#: ./holidays/countries/uruguay.py:84
 msgid "Batalla de Las Piedras"
 msgstr "День битви при Лас-Пʼєдрас"
 
 #. Respect for Cultural Diversity Day.
-#: ./holidays/countries/uruguay.py:94
+#: ./holidays/countries/uruguay.py:86
 msgid "Día del Respeto a la Diversidad Cultural"
 msgstr "День поваги до культурного різноманіття"
