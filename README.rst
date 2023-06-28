@@ -440,7 +440,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Malta
      - MT
      -
-     - **en_US**, mt
+     - en_MT, **mt**
    * - Marshall Islands (the)
      - MH
      -
