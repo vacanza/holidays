@@ -13,7 +13,6 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars import _get_nth_weekday_from
 from holidays.constants import JAN, MAR, JUN, OCT, DEC, FRI, SAT, SUN
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -94,22 +93,15 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
         # https://sv.wikipedia.org/wiki/Midsommarafton
         # https://www.nordiskamuseet.se/aretsdagar/midsommarafton
         # Midsummer evening. Friday between June 19th and June 25th
-        dt = (
-            _get_nth_weekday_from(1, FRI, date(year, JUN, 19))
-            if year >= 1953
-            else date(year, JUN, 23)
-        )
+        dt = self._get_nth_weekday_from(1, FRI, JUN, 19) if year >= 1953 else date(year, JUN, 23)
         # Midsummer Eve.
         self._add_holiday(tr("Midsommarafton"), dt)
 
         # Midsummer Day.
         self._add_holiday(tr("Midsommardagen"), dt + td(days=+1))
 
-        self._add_holiday(
-            # All Saints' Day.
-            tr("Alla helgons dag"),
-            _get_nth_weekday_from(1, SAT, date(year, OCT, 31)),
-        )
+        # All Saints' Day.
+        self._add_holiday(tr("Alla helgons dag"), self._get_nth_weekday_from(1, SAT, OCT, 31))
 
         # Christmas Eve.
         self._add_christmas_eve(tr("Julafton"))
@@ -125,7 +117,7 @@ class Sweden(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self.include_sundays:
             # Optionally add all Sundays of the year.
-            begin = _get_nth_weekday_from(1, SUN, date(year, JAN, 1))
+            begin = self._get_nth_weekday_of_month(1, SUN, JAN)
             end = date(year, DEC, 31)
             for dt in (begin + td(days=n) for n in range(0, (end - begin).days + 1, 7)):
                 # Sunday.

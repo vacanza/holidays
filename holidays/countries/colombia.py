@@ -13,7 +13,6 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars import _get_nth_weekday_from
 from holidays.constants import JAN, MAR, JUN, JUL, AUG, OCT, NOV, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -55,7 +54,7 @@ class Colombia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self.observed and not self._is_monday(dt) and dt.year >= 1984:
             self._add_holiday(
-                self.tr("%s (Observado)") % self.tr(name), _get_nth_weekday_from(1, MON, dt)
+                self.tr("%s (Observado)") % self.tr(name), self._get_nth_weekday_from(1, MON, dt)
             )
         else:
             self._add_holiday(name, dt)

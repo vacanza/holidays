@@ -13,7 +13,6 @@ from datetime import date
 from datetime import timedelta as td
 from typing import Optional
 
-from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import JUN, JUL, AUG, SEP, OCT, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import (
@@ -190,20 +189,20 @@ class HongKong(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, Internat
         # Previous holidays
         if 1952 <= year <= 1997:
             # Queen's Birthday (June 2nd Monday)
-            self._add_holiday("Queen's Birthday", _get_nth_weekday_of_month(2, MON, JUN, year))
+            self._add_holiday("Queen's Birthday", self._get_nth_weekday_of_month(2, MON, JUN))
 
         if year <= 1996:
             # Anniversary of the liberation of Hong Kong (August last Monday)
             self._add_holiday(
                 "Anniversary of the liberation of Hong Kong",
-                _get_nth_weekday_of_month(-1, MON, AUG, year),
+                self._get_nth_weekday_of_month(-1, MON, AUG),
             )
 
         if year <= 1998:
             # Anniversary of the victory in the Second Sino-Japanese War
             super()._add_holiday(
                 "Anniversary of the victory in the Second Sino-Japanese War",
-                _get_nth_weekday_of_month(-1, MON, AUG, year) + td(days=-1),
+                self._get_nth_weekday_of_month(-1, MON, AUG) + td(days=-1),
             )
 
 

@@ -3,7 +3,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.23\n"
+"Project-Id-Version: Python Holidays 0.28\n"
 "POT-Creation-Date: 2023-04-01 17:13+0300\n"
 "PO-Revision-Date: 2023-04-01 17:27+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
@@ -17,66 +17,81 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/austria.py:39
+#: ./holidays/countries/austria.py:38
 msgid "Neujahr"
 msgstr "Новий рік"
 
 #. Epiphany.
-#: ./holidays/countries/austria.py:42
+#: ./holidays/countries/austria.py:41
 msgid "Heilige Drei Könige"
 msgstr "Богоявлення"
 
 #. Easter Monday.
-#: ./holidays/countries/austria.py:45
+#: ./holidays/countries/austria.py:44
 msgid "Ostermontag"
 msgstr "Великодній понеділок"
 
 #. Labor Day.
-#: ./holidays/countries/austria.py:48
+#: ./holidays/countries/austria.py:47
 msgid "Staatsfeiertag"
 msgstr "День праці"
 
 #. Ascension Day.
-#: ./holidays/countries/austria.py:51
+#: ./holidays/countries/austria.py:50
 msgid "Christi Himmelfahrt"
 msgstr "Вознесіння Господнє"
 
 #. Whit Monday.
-#: ./holidays/countries/austria.py:54
+#: ./holidays/countries/austria.py:53
 msgid "Pfingstmontag"
 msgstr "День Святого Духа"
 
 #. Corpus Christi.
-#: ./holidays/countries/austria.py:57
+#: ./holidays/countries/austria.py:56
 msgid "Fronleichnam"
 msgstr "Свято Тіла і Крові Христових"
 
 #. Assumption Day.
-#: ./holidays/countries/austria.py:60
+#: ./holidays/countries/austria.py:59
 msgid "Mariä Himmelfahrt"
 msgstr "Внебовзяття Пресвятої Діви Марії"
 
 #. National Day.
-#: ./holidays/countries/austria.py:64 ./holidays/countries/austria.py:66
+#: ./holidays/countries/austria.py:63 ./holidays/countries/austria.py:65
 msgid "Nationalfeiertag"
 msgstr "Національне свято"
 
 #. All Saints' Day.
-#: ./holidays/countries/austria.py:69
+#: ./holidays/countries/austria.py:68
 msgid "Allerheiligen"
 msgstr "День усіх святих"
 
 #. Immaculate Conception.
-#: ./holidays/countries/austria.py:72
+#: ./holidays/countries/austria.py:71
 msgid "Mariä Empfängnis"
 msgstr "Непорочне зачаття Діви Марії"
 
 #. Christmas Day.
-#: ./holidays/countries/austria.py:75
+#: ./holidays/countries/austria.py:74
 msgid "Christtag"
 msgstr "Різдво Христове"
 
 #. St. Stephen's Day.
-#: ./holidays/countries/austria.py:78
+#: ./holidays/countries/austria.py:77
 msgid "Stefanitag"
 msgstr "День Святого Стефана"
+
+#. Good Friday.
+#: ./holidays/countries/austria.py:81
+msgid "Karfreitag"
+msgstr "Страсна п'ятниця"
+
+#. Christmas Eve.
+#: ./holidays/countries/austria.py:84
+msgid "Heiliger Abend"
+msgstr "Святий вечір"
+
+#. New Year's Eve.
+#: ./holidays/countries/austria.py:87
+msgid "Silvester"
+msgstr "Переддень Нового року"

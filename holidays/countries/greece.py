@@ -12,7 +12,7 @@
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars import _get_nth_weekday_from, JULIAN_CALENDAR, GREGORIAN_CALENDAR
+from holidays.calendars import GREGORIAN_CALENDAR, JULIAN_CALENDAR
 from holidays.constants import MAR, OCT, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -66,7 +66,7 @@ class Greece(HolidayBase, ChristianHolidays, InternationalHolidays):
         dt = self._add_labor_day(name)
         if self.observed and self._is_weekend(dt):
             # https://en.wikipedia.org/wiki/Public_holidays_in_Greece
-            labour_day_observed_date = _get_nth_weekday_from(1, MON, dt)
+            labour_day_observed_date = self._get_nth_weekday_from(1, MON, dt)
             # In 2016 and 2021, Labour Day coincided with other holidays
             # https://www.timeanddate.com/holidays/greece/labor-day
             if self.get(labour_day_observed_date):

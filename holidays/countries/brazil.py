@@ -12,7 +12,6 @@
 from datetime import timedelta as td
 from datetime import date
 
-from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC, FRI, SUN
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -147,7 +146,7 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
             if self._year >= 2009 and (
                 self._is_tuesday(dt) or self._is_wednesday(dt) or self._is_thursday(dt)
             ):
-                dt = _get_nth_weekday_from(1, FRI, dt)
+                dt = self._get_nth_weekday_from(1, FRI, dt)
             return dt
 
         if self._year >= 2005:
@@ -267,7 +266,7 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday(
                 # Pernambuco Revolution.
                 "Revolução Pernambucana",
-                _get_nth_weekday_of_month(1, SUN, MAR, self._year),
+                self._get_nth_weekday_of_month(1, SUN, MAR),
             )
 
     def _add_subdiv_pi_holidays(self):
@@ -312,13 +311,13 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year >= 2004:
             dt = date(self._year, AUG, 11)
             if self._year >= 2005:
-                dt = _get_nth_weekday_from(1, SUN, dt)
+                dt = self._get_nth_weekday_from(1, SUN, dt)
             # Santa Catarina State Day.
             self._add_holiday("Dia do Estado de Santa Catarina", dt)
 
         dt = date(self._year, NOV, 25)
         if 1999 <= self._year != 2004:
-            dt = _get_nth_weekday_from(1, SUN, dt)
+            dt = self._get_nth_weekday_from(1, SUN, dt)
         # Saint Catherine of Alexandria Day.
         self._add_holiday("Dia de Santa Catarina de Alexandria", dt)
 
