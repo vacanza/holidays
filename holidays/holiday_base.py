@@ -22,18 +22,8 @@ from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Tuple, Uni
 
 from dateutil.parser import parse
 
-from holidays.constants import (
-    HOLIDAY_NAME_DELIMITER,
-    MON,
-    TUE,
-    WED,
-    THU,
-    FRI,
-    SAT,
-    SUN,
-    ALL_CATEGORIES,
-    PUBLIC,
-)
+from holidays.calendars.gregorian import MON, TUE, WED, THU, FRI, SAT, SUN
+from holidays.constants import HOLIDAY_NAME_DELIMITER, ALL_CATEGORIES, PUBLIC
 from holidays.helpers import _normalize_tuple
 
 DateArg = Union[date, Tuple[int, int]]

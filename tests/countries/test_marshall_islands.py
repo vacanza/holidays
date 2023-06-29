@@ -12,7 +12,7 @@
 import warnings
 from datetime import date
 
-from holidays.constants import JAN, MAR, APR, MAY, JUL, SEP, NOV, DEC
+from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUL, SEP, NOV, DEC
 from holidays.countries.marshall_islands import HolidaysMH, MH, MHL
 from tests.common import TestCase
 

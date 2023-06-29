@@ -14,7 +14,7 @@ from datetime import timedelta as td
 from typing import Tuple, Optional
 
 from holidays.calendars import _ChineseLunisolar
-from holidays.constants import APR
+from holidays.calendars.gregorian import APR
 
 
 class ChineseCalendarHolidays:

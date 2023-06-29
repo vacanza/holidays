@@ -12,8 +12,8 @@
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars import KHMER_CALENDAR
-from holidays.constants import JAN, APR, MAY, JUN, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import JAN, APR, MAY, JUN, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.thai import KHMER_CALENDAR
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import InternationalHolidays, ThaiCalendarHolidays
 

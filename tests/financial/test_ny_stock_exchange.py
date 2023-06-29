@@ -12,7 +12,7 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.constants import (
+from holidays.calendars.gregorian import (
     JAN,
     FEB,
     MAR,

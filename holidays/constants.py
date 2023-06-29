@@ -9,12 +9,32 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+# flake8: noqa: F401
+
+from holidays.calendars.gregorian import (
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+    MON,
+    TUE,
+    WED,
+    THU,
+    FRI,
+    SAT,
+    SUN,
+    WEEKEND,
+)
+
 HOLIDAY_NAME_DELIMITER = "; "  # Holiday names separator.
-
-MON, TUE, WED, THU, FRI, SAT, SUN = range(7)
-WEEKEND = (SAT, SUN)
-
-JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC = range(1, 13)
 
 # Supported holiday categories.
 BANK = "bank"
