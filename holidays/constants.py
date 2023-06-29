@@ -15,3 +15,31 @@ MON, TUE, WED, THU, FRI, SAT, SUN = range(7)
 WEEKEND = (SAT, SUN)
 
 JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC = range(1, 13)
+
+# Supported holiday categories.
+BANK = "bank"
+EXTENDED = "extended"
+GOVERNMENT = "government"
+HALF_DAY = "half_day"
+PUBLIC = "public"
+SCHOOL = "school"
+
+CHINESE = "chinese"
+CHRISTIAN = "christian"
+HEBREW = "hebrew"
+HINDU = "hindu"
+ISLAMIC = "islamic"
+
+ALL_CATEGORIES = {
+    BANK,
+    CHINESE,
+    CHRISTIAN,
+    EXTENDED,
+    GOVERNMENT,
+    HALF_DAY,
+    HEBREW,
+    HINDU,
+    ISLAMIC,
+    PUBLIC,
+    SCHOOL,
+}

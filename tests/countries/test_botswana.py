@@ -16,11 +16,7 @@ from tests.common import TestCase
 class TestBotswana(TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(
-            Botswana,
-            years=range(1966, 2050),
-            years_non_observed=range(2010, 2024),
-        )
+        super().setUpClass(Botswana, years=range(1966, 2050), years_non_observed=range(2010, 2024))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Botswana, BW, BWA)

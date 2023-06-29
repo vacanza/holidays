@@ -30,8 +30,7 @@ class TestSpain(TestCase):
             self.assertEqual(date(2016, MAR, 24) in prov_holidays, prov not in {"CT", "VC"})
             self.assertIn(date(2016, MAR, 25), prov_holidays)
             self.assertEqual(
-                date(2016, MAR, 28) in prov_holidays,
-                prov in {"CM", "CT", "IB", "NC", "PV", "VC"},
+                date(2016, MAR, 28) in prov_holidays, prov in {"CM", "CT", "IB", "NC", "PV", "VC"}
             )
 
     def test_fix_days_in_2022(self):

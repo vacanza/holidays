@@ -13,7 +13,6 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import JAN, MAY, DEC, SUN
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -97,7 +96,7 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self.include_sundays:
             # Optionally add all Sundays of the year.
-            begin = _get_nth_weekday_of_month(1, SUN, JAN, year)
+            begin = self._get_nth_weekday_of_month(1, SUN, JAN)
             end = date(year, DEC, 31)
             for dt in (begin + td(days=n) for n in range(0, (end - begin).days + 1, 7)):
                 # Sunday.

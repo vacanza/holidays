@@ -12,7 +12,6 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars import _get_nth_weekday_from
 from holidays.constants import JAN, FEB, MAY, JUN, AUG, SEP, NOV, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -32,13 +31,13 @@ class DominicanRepublic(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Law No. 139-97 - Holidays Dominican Republic - Jun 27, 1997
         if dt >= date(1997, JUN, 27):
             if self._is_tuesday(dt) or self._is_wednesday(dt):
-                dt = _get_nth_weekday_from(-1, MON, dt)
+                dt = self._get_nth_weekday_from(-1, MON, dt)
             elif (
                 self._is_thursday(dt)
                 or self._is_friday(dt)
                 or (include_sun and self._is_sunday(dt))
             ):
-                dt = _get_nth_weekday_from(1, MON, dt)
+                dt = self._get_nth_weekday_from(1, MON, dt)
         self._add_holiday(name, dt)
 
     def __init__(self, *args, **kwargs) -> None:

@@ -9,79 +9,194 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
-from datetime import date
-
-import holidays
+from holidays.countries.madagascar import Madagascar, MG, MDG
+from tests.common import TestCase
 
 
-class TestMadagascar(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.MG()
+class TestMadagascar(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Madagascar, years=range(1947, 2050))
+
+    def test_country_aliases(self):
+        self.assertCountryAliases(Madagascar, MG, MDG)
+
+    def test_no_holidays(self):
+        self.assertNoHolidays(Madagascar(years=1946))
 
     def test_new_years(self):
-        self.assertIn(date(2010, 1, 1), self.holidays)
-        self.assertIn(date(2020, 1, 1), self.holidays)
-
-    def test_mahery_fo(self):
-        self.assertIn(date(2010, 3, 29), self.holidays)
-        self.assertIn(date(2015, 3, 29), self.holidays)
-        self.assertIn(date(2022, 3, 29), self.holidays)
-
-    def test_paska(self):
-        self.assertIn(date(2022, 4, 17), self.holidays)  # Andron'ny paska
-        self.assertIn(date(2022, 4, 18), self.holidays)  # Alatsinain'ny Paska
-        self.assertIn(date(2022, 5, 26), self.holidays)
-        self.assertIn(date(2022, 6, 5), self.holidays)
-        self.assertIn(date(2022, 6, 6), self.holidays)
+        self.assertHoliday(f"{year}-01-01" for year in range(1947, 2050))
 
     def test_womens_day(self):
-        self.assertIn(date(2010, 3, 8), self.holidays)
-        self.assertIn(date(2020, 3, 8), self.holidays)
+        self.assertHoliday(f"{year}-03-08" for year in range(1947, 2050))
 
-    def test_labour_day(self):
-        self.assertIn(date(2010, 5, 1), self.holidays)
-        self.assertIn(date(2020, 5, 1), self.holidays)
+    def test_martyrs_day(self):
+        self.assertHoliday(f"{year}-03-29" for year in range(1947, 2050))
 
-    def test_mother_day(self):
-        self.assertIn(date(2010, 5, 30), self.holidays)
-        self.assertIn(date(2018, 5, 27), self.holidays)
-        self.assertIn(date(2020, 6, 7), self.holidays)
-        self.assertIn(date(2022, 5, 29), self.holidays)
+    def test_easter_sunday(self):
+        self.assertHoliday(
+            "2019-04-21",
+            "2020-04-12",
+            "2021-04-04",
+            "2022-04-17",
+            "2023-04-09",
+        )
+
+    def test_easter_monday(self):
+        self.assertHoliday(
+            "2019-04-22",
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+        )
+
+    def test_labor_day(self):
+        self.assertHoliday(f"{year}-05-01" for year in range(1947, 2050))
+
+    def test_ascension_day(self):
+        self.assertHoliday(
+            "2019-05-30",
+            "2020-05-21",
+            "2021-05-13",
+            "2022-05-26",
+            "2023-05-18",
+        )
+
+    def test_whit_sunday(self):
+        self.assertHoliday(
+            "2019-06-09",
+            "2020-05-31",
+            "2021-05-23",
+            "2022-06-05",
+            "2023-05-28",
+        )
+
+    def test_whit_monday(self):
+        self.assertHoliday(
+            "2019-06-10",
+            "2020-06-01",
+            "2021-05-24",
+            "2022-06-06",
+            "2023-05-29",
+        )
+
+    def test_mothers_day(self):
+        self.assertHoliday(
+            "2019-05-26",
+            "2020-06-07",
+            "2021-05-30",
+            "2022-05-29",
+            "2023-06-04",
+        )
 
     def test_father_day(self):
-        self.assertIn(date(2010, 6, 20), self.holidays)
-        self.assertIn(date(2018, 6, 17), self.holidays)
-        self.assertIn(date(2020, 6, 21), self.holidays)
-        self.assertIn(date(2022, 6, 19), self.holidays)
+        self.assertHoliday(
+            "2019-06-16",
+            "2020-06-21",
+            "2021-06-20",
+            "2022-06-19",
+            "2023-06-18",
+        )
 
     def test_independence_day(self):
-        self.assertIn(date(1960, 6, 26), self.holidays)
-        self.assertIn(date(2010, 6, 26), self.holidays)
-        self.assertIn(date(2020, 6, 26), self.holidays)
-        self.assertNotIn(date(1959, 6, 26), self.holidays)
+        self.assertHoliday(f"{year}-06-26" for year in range(1960, 2050))
+        self.assertNoHoliday(f"{year}-06-26" for year in range(1947, 1960))
+        self.assertNoHolidayName("Fetin'ny fahaleovantena", range(1947, 1960))
 
     def test_assumption_day(self):
-        self.assertIn(date(2010, 8, 15), self.holidays)
-        self.assertIn(date(2020, 8, 15), self.holidays)
-        self.assertIn(date(2022, 8, 15), self.holidays)
+        self.assertHoliday(f"{year}-08-15" for year in range(1947, 2050))
 
     def test_all_saints_day(self):
-        self.assertIn(date(2010, 11, 1), self.holidays)
-        self.assertIn(date(2020, 11, 1), self.holidays)
-        self.assertIn(date(2022, 11, 1), self.holidays)
+        self.assertHoliday(f"{year}-11-01" for year in range(1947, 2050))
 
     def test_republic_day(self):
-        self.assertIn(date(2011, 12, 11), self.holidays)
-        self.assertIn(date(2020, 12, 11), self.holidays)
-        self.assertIn(date(2022, 12, 11), self.holidays)
-        self.assertNotIn(date(2010, 12, 11), self.holidays)
+        self.assertHoliday(f"{year}-12-11" for year in range(2011, 2050))
+        self.assertNoHoliday(f"{year}-12-11" for year in range(1947, 2011))
+        self.assertNoHolidayName("Fetin'ny Repoblika", range(1947, 2011))
 
     def test_christmas_day(self):
-        self.assertIn(date(2010, 12, 25), self.holidays)
-        self.assertIn(date(2020, 12, 25), self.holidays)
-        self.assertIn(date(2022, 12, 25), self.holidays)
+        self.assertHoliday(f"{year}-12-25" for year in range(1947, 2050))
 
-    def test_1946(self):
-        mg_holidays = holidays.MG(years=1946)
-        self.assertEqual(0, len(mg_holidays))
+    def test_2021(self):
+        self.assertHolidays(
+            Madagascar(years=2021),
+            ("2021-01-01", "Taom-baovao"),
+            ("2021-03-08", "Fetin'ny vehivavy"),
+            ("2021-03-29", "Fetin'ny mahery fo"),
+            ("2021-04-04", "Fetin'ny paska"),
+            ("2021-04-05", "Alatsinain'ny paska"),
+            ("2021-05-01", "Fetin'ny asa"),
+            ("2021-05-13", "Fiakaran'ny Jesosy kristy tany an-danitra"),
+            ("2021-05-23", "Pentekosta"),
+            ("2021-05-24", "Alatsinain'ny pentekosta"),
+            ("2021-05-30", "Fetin'ny reny"),
+            ("2021-06-20", "Fetin'ny ray"),
+            ("2021-06-26", "Fetin'ny fahaleovantena"),
+            ("2021-08-15", "Fiakaran'ny Masina Maria tany an-danitra"),
+            ("2021-11-01", "Fetin'ny olo-masina"),
+            ("2021-12-11", "Fetin'ny Repoblika"),
+            ("2021-12-25", "Fetin'ny noely"),
+        )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2022-01-01", "Taom-baovao"),
+            ("2022-03-08", "Fetin'ny vehivavy"),
+            ("2022-03-29", "Fetin'ny mahery fo"),
+            ("2022-04-17", "Fetin'ny paska"),
+            ("2022-04-18", "Alatsinain'ny paska"),
+            ("2022-05-01", "Fetin'ny asa"),
+            ("2022-05-26", "Fiakaran'ny Jesosy kristy tany an-danitra"),
+            ("2022-05-29", "Fetin'ny reny"),
+            ("2022-06-05", "Pentekosta"),
+            ("2022-06-06", "Alatsinain'ny pentekosta"),
+            ("2022-06-19", "Fetin'ny ray"),
+            ("2022-06-26", "Fetin'ny fahaleovantena"),
+            ("2022-08-15", "Fiakaran'ny Masina Maria tany an-danitra"),
+            ("2022-11-01", "Fetin'ny olo-masina"),
+            ("2022-12-11", "Fetin'ny Repoblika"),
+            ("2022-12-25", "Fetin'ny noely"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2022-01-01", "New Year's Day"),
+            ("2022-03-08", "Women's Day"),
+            ("2022-03-29", "Martyrs' Day"),
+            ("2022-04-17", "Easter Sunday"),
+            ("2022-04-18", "Easter Monday"),
+            ("2022-05-01", "Labor Day"),
+            ("2022-05-26", "Ascension Day"),
+            ("2022-05-29", "Mother's Day"),
+            ("2022-06-05", "Whit Sunday"),
+            ("2022-06-06", "Whit Monday"),
+            ("2022-06-19", "Father's Day"),
+            ("2022-06-26", "Independence Day"),
+            ("2022-08-15", "Assumption Day"),
+            ("2022-11-01", "All Saints' Day"),
+            ("2022-12-11", "Republic Day"),
+            ("2022-12-25", "Christmas Day"),
+        )
+
+    def test_l10n_uk(self):
+        self.assertLocalizedHolidays(
+            "uk",
+            ("2022-01-01", "Новий рік"),
+            ("2022-03-08", "Жіночий день"),
+            ("2022-03-29", "День мучеників"),
+            ("2022-04-17", "Великдень"),
+            ("2022-04-18", "Великодній понеділок"),
+            ("2022-05-01", "День праці"),
+            ("2022-05-26", "Вознесіння Господнє"),
+            ("2022-05-29", "День матері"),
+            ("2022-06-05", "Трійця"),
+            ("2022-06-06", "День Святого Духа"),
+            ("2022-06-19", "День батька"),
+            ("2022-06-26", "День незалежності"),
+            ("2022-08-15", "Внебовзяття Пресвятої Діви Марії"),
+            ("2022-11-01", "День усіх святих"),
+            ("2022-12-11", "День республіки"),
+            ("2022-12-25", "Різдво Христове"),
+        )

@@ -12,7 +12,6 @@
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import APR, SEP, OCT, WED
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -69,7 +68,7 @@ class Honduras(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Morazan Weekend.
             holiday_name = tr("Semana Morazánica")
             # First Wednesday of October from 12 noon to Saturday 12 noon.
-            first_wednesday = _get_nth_weekday_of_month(1, WED, OCT, year)
+            first_wednesday = self._get_nth_weekday_of_month(1, WED, OCT)
             self._add_holiday(holiday_name, first_wednesday)
             self._add_holiday(holiday_name, first_wednesday + td(days=+1))
             self._add_holiday(holiday_name, first_wednesday + td(days=+2))

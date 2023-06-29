@@ -63,17 +63,13 @@ class TestAngola(TestCase):
     def test_national_hero_day(self):
         self.assertHoliday(f"{year}-09-17" for year in range(1980, 2030))
         self.assertNoHoliday(f"{year}-09-17" for year in range(1975, 1980))
-        self.assertNoHolidayName(
-            "Dia do Herói Nacional",
-            Angola(years=range(1975, 1980)),
-        )
+        self.assertNoHolidayName("Dia do Herói Nacional", Angola(years=range(1975, 1980)))
 
     def test_national_liberation_day(self):
         self.assertHoliday(f"{year}-03-23" for year in range(2019, 2030))
         self.assertNoHoliday(f"{year}-03-23" for year in range(1990, 2019))
         self.assertNoHolidayName(
-            "Dia da Libertação da África Austral",
-            Angola(years=range(1975, 2019)),
+            "Dia da Libertação da África Austral", Angola(years=range(1975, 2019))
         )
 
     def test_new_years_day(self):

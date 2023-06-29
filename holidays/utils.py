@@ -21,7 +21,7 @@ __all__ = (
 
 import warnings
 from functools import lru_cache
-from typing import Dict, Iterable, List, Optional, Union
+from typing import Dict, Iterable, List, Optional, Tuple, Union
 
 from holidays.holiday_base import HolidayBase
 from holidays.registry import EntityLoader
@@ -36,6 +36,7 @@ def country_holidays(
     prov: Optional[str] = None,
     state: Optional[str] = None,
     language: Optional[str] = None,
+    categories: Optional[Tuple[str]] = None,
 ) -> HolidayBase:
     """
     Returns a new dictionary-like :py:class:`HolidayBase` object for the public
@@ -71,6 +72,9 @@ def country_holidays(
         into. It must be an ISO 639-1 (2-letter) language code. If the
         language translation is not supported the original holiday names
         will be used.
+
+    :param categories:
+        Requested holiday categories.
 
     :return:
         A :py:class:`HolidayBase` object matching the **country**.
@@ -188,6 +192,7 @@ def country_holidays(
             prov=prov,
             state=state,
             language=language,
+            categories=categories,
         )
     except AttributeError:
         raise NotImplementedError(f"Country {country} not available")

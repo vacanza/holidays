@@ -17,7 +17,6 @@ from holidays.calendars import (
     _CustomChineseCalendar,
     _CustomHinduCalendar,
     _CustomIslamicCalendar,
-    _get_nth_weekday_of_month,
 )
 from holidays.constants import (
     JAN,
@@ -157,14 +156,14 @@ class Malaysia(
 
         # Birthday of [His Majesty] the Yang di-Pertuan Agong.
         if year <= 2017:
-            hol_date = _get_nth_weekday_of_month(1, SAT, JUN, year)
+            hol_date = self._get_nth_weekday_of_month(1, SAT, JUN)
         elif year == 2018:
             hol_date = date(2018, SEP, 9)
         elif year == 2020:
             # https://www.nst.com.my/news/nation/2020/03/571660/agongs-birthday-moved-june-6-june-8
             hol_date = date(2020, JUN, 8)
         else:
-            hol_date = _get_nth_weekday_of_month(1, MON, JUN, year)
+            hol_date = self._get_nth_weekday_of_month(1, MON, JUN)
         observed_dates.add(self._add_holiday("Birthday of SPB Yang di-Pertuan Agong", hol_date))
 
         # Hari Kebangsaan or National Day.
@@ -259,14 +258,12 @@ class Malaysia(
                     self._add_holiday("Declaration of Malacca as a Historical City", APR, 15)
                 )
 
-            observed_dates.add(
-                self._add_holiday(
-                    "Birthday of the Governor of Malacca",
-                    date(year, AUG, 24)
-                    if year >= 2020
-                    else _get_nth_weekday_of_month(2, FRI, OCT, year),
-                )
+            dt = (
+                date(year, AUG, 24)
+                if year >= 2020
+                else self._get_nth_weekday_of_month(2, FRI, OCT)
             )
+            observed_dates.add(self._add_holiday("Birthday of the Governor of Malacca", dt))
 
         elif self.subdiv == "NSN" and year >= 2009:
             observed_dates.add(
@@ -288,7 +285,7 @@ class Malaysia(
             observed_dates.add(
                 self._add_holiday(
                     "Birthday of the Governor of Penang",
-                    _get_nth_weekday_of_month(2, SAT, JUL, year),
+                    self._get_nth_weekday_of_month(2, SAT, JUL),
                 )
             )
 
@@ -309,7 +306,7 @@ class Malaysia(
             observed_dates.add(
                 self._add_holiday(
                     "Birthday of the Governor of Sarawak",
-                    _get_nth_weekday_of_month(2, SAT, OCT, year),
+                    self._get_nth_weekday_of_month(2, SAT, OCT),
                 )
             )
 
@@ -400,7 +397,7 @@ class Malaysia(
 
         elif self.subdiv == "KDH" and year >= 2020:
             self._add_holiday(
-                "Birthday of The Sultan of Kedah", _get_nth_weekday_of_month(3, SUN, JUN, year)
+                "Birthday of The Sultan of Kedah", self._get_nth_weekday_of_month(3, SUN, JUN)
             )
 
         elif self.subdiv == "KTN" and year >= 2010:
@@ -411,16 +408,16 @@ class Malaysia(
         elif self.subdiv == "PRK":
             # This Holiday used to be on 27th until 2017
             # https://www.officeholidays.com/holidays/malaysia/birthday-of-the-sultan-of-perak
-            self._add_holiday(
-                "Birthday of the Sultan of Perak",
-                _get_nth_weekday_of_month(1, FRI, NOV, year)
+            dt = (
+                self._get_nth_weekday_of_month(1, FRI, NOV)
                 if year >= 2018
-                else date(year, NOV, 27),
+                else date(year, NOV, 27)
             )
+            self._add_holiday("Birthday of the Sultan of Perak", dt)
 
         elif self.subdiv == "SBH":
             self._add_holiday(
-                "Birthday of the Governor of Sabah", _get_nth_weekday_of_month(1, SAT, OCT, year)
+                "Birthday of the Governor of Sabah", self._get_nth_weekday_of_month(1, SAT, OCT)
             )
 
             if year >= 2019:

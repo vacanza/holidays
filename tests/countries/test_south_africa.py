@@ -57,10 +57,7 @@ class TestSouthAfrica(TestCase):
         )
 
     def test_new_years_day(self):
-        self.assertHolidayName(
-            "New Year's Day",
-            (f"{year}-01-01" for year in range(1940, 2050)),
-        )
+        self.assertHolidayName("New Year's Day", (f"{year}-01-01" for year in range(1940, 2050)))
 
     def test_holidays_from_1995(self):
         for year in range(1995, 2050):
@@ -108,8 +105,7 @@ class TestSouthAfrica(TestCase):
         self.assertNoHolidayName("Day of the Vow", range(1940, 1980), range(1995, 2050))
         self.assertNoHolidayName("Day of Reconciliation", range(1940, 1995))
         self.assertHolidayName(
-            "Day of Reconciliation",
-            (f"{year}-12-16" for year in range(1995, 2005)),
+            "Day of Reconciliation", (f"{year}-12-16" for year in range(1995, 2005))
         )
 
     def test_human_rights_day(self):

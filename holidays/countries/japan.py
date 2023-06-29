@@ -14,7 +14,6 @@ from datetime import timedelta as td
 from gettext import gettext as tr
 from typing import Tuple
 
-from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC, MON
 from holidays.helpers import _normalize_tuple
 from holidays.holiday_base import HolidayBase
@@ -49,15 +48,9 @@ class Japan(HolidayBase):
         # New Year's Day.
         observed_dates.add(self._add_holiday(tr("元日"), JAN, 1))
 
-        observed_dates.add(
-            self._add_holiday(
-                # Coming of Age Day.
-                tr("成人の日"),
-                date(year, JAN, 15)
-                if year <= 1999
-                else _get_nth_weekday_of_month(2, MON, JAN, year),
-            )
-        )
+        dt = date(year, JAN, 15) if year <= 1999 else self._get_nth_weekday_of_month(2, MON, JAN)
+        # Coming of Age Day.
+        observed_dates.add(self._add_holiday(tr("成人の日"), dt))
 
         if year >= 1967:
             # Foundation Day.
@@ -99,7 +92,7 @@ class Japan(HolidayBase):
                     2020: date(2020, JUL, 23),
                     2021: date(2021, JUL, 22),
                 }
-                dt = dates.get(year, _get_nth_weekday_of_month(3, MON, JUL, year))
+                dt = dates.get(year, self._get_nth_weekday_of_month(3, MON, JUL))
             # Marine Day.
             observed_dates.add(self._add_holiday(tr("海の日"), dt))
 
@@ -113,15 +106,13 @@ class Japan(HolidayBase):
             observed_dates.add(self._add_holiday(tr("山の日"), dt))
 
         if year >= 1966:
-            observed_dates.add(
-                self._add_holiday(
-                    # Respect for the Aged Day.
-                    tr("敬老の日"),
-                    _get_nth_weekday_of_month(3, MON, SEP, year)
-                    if year >= 2003
-                    else date(year, SEP, 15),
-                )
+            dt = (
+                self._get_nth_weekday_of_month(3, MON, SEP)
+                if year >= 2003
+                else date(year, SEP, 15)
             )
+            # Respect for the Aged Day.
+            observed_dates.add(self._add_holiday(tr("敬老の日"), dt))
 
         # Autumnal Equinox Day.
         observed_dates.add(self._add_holiday(tr("秋分の日"), *self._autumnal_equinox_date))
@@ -141,7 +132,7 @@ class Japan(HolidayBase):
             }
             dt = dates.get(
                 year,
-                _get_nth_weekday_of_month(2, MON, OCT, year)
+                self._get_nth_weekday_of_month(2, MON, OCT)
                 if year >= 2000
                 else date(year, OCT, 10),
             )

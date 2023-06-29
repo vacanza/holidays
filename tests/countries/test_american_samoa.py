@@ -27,7 +27,4 @@ class TestAS(TestCase):
     def test_as_only(self):
         """Check for a holiday that is not returned by US unless the
         subdivision is specified."""
-        self.assertIn(
-            "Christmas Eve (Observed)",
-            self.holidays.get_list(date(2017, DEC, 22)),
-        )
+        self.assertIn("Christmas Eve (Observed)", self.holidays.get_list(date(2017, DEC, 22)))

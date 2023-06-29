@@ -12,7 +12,6 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC, MON, THU
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -159,8 +158,7 @@ class NewYorkStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays
         # MLK, 3rd Monday of January.
         if year >= 1998:
             self._add_holiday(
-                "Martin Luther King Jr. Day",
-                _get_nth_weekday_of_month(3, MON, JAN, year),
+                "Martin Luther King Jr. Day", self._get_nth_weekday_of_month(3, MON, JAN)
             )
 
         # LINCOLN BIRTHDAY: observed 1896 - 1953 and 1968, Feb 12 (observed)
@@ -170,7 +168,7 @@ class NewYorkStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays
         # WASHINGTON'S BIRTHDAY: Feb 22 (obs) until 1971, then 3rd Mon of Feb
         self._add_observed_holiday(
             "Washington's Birthday",
-            date(year, FEB, 22) if year <= 1970 else _get_nth_weekday_of_month(3, MON, FEB, year),
+            date(year, FEB, 22) if year <= 1970 else self._get_nth_weekday_of_month(3, MON, FEB),
         )
 
         # GOOD FRIDAY - closed every year except 1898, 1906, and 1907
@@ -180,12 +178,12 @@ class NewYorkStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays
         # MEM DAY (May 30) - closed every year since 1873
         # last Mon in May since 1971
         if year >= 1873:
-            self._add_observed_holiday(
-                "Memorial Day",
+            dt = (
                 date(year, MAY, 30)
                 if year <= 1970
-                else _get_nth_weekday_of_month(-1, MON, MAY, year),
+                else self._get_nth_weekday_of_month(-1, MON, MAY)
             )
+            self._add_observed_holiday("Memorial Day", dt)
 
         # FLAG DAY: June 14th 1916 - 1953
         if 1916 <= year <= 1953:
@@ -200,7 +198,7 @@ class NewYorkStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays
 
         # LABOR DAY - first mon in Sept, since 1887
         if year >= 1887:
-            self._add_holiday("Labor Day", _get_nth_weekday_of_month(1, MON, SEP, year))
+            self._add_holiday("Labor Day", self._get_nth_weekday_of_month(1, MON, SEP))
 
         # COLUMBUS DAY/INDIGENOUS PPL DAY: Oct 12 - closed 1909-1953
         if 1909 <= year <= 1953:
@@ -210,8 +208,7 @@ class NewYorkStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays
         # closed until 1969, then closed pres years 1972-80
         if year <= 1968 or year in {1972, 1976, 1980}:
             self._add_holiday(
-                "Election Day",
-                _get_nth_weekday_of_month(1, MON, NOV, year) + td(days=+1),
+                "Election Day", self._get_nth_weekday_of_month(1, MON, NOV) + td(days=+1)
             )
 
         # VETERAN'S DAY: Nov 11 - closed 1918, 1921, 1934-1953
@@ -219,7 +216,7 @@ class NewYorkStockExchange(HolidayBase, ChristianHolidays, InternationalHolidays
             self._add_observed_holiday("Veteran's Day", date(year, NOV, 11))
 
         # THXGIVING DAY: 4th Thurs in Nov - closed every year
-        self._add_holiday("Thanksgiving Day", _get_nth_weekday_of_month(4, THU, NOV, year))
+        self._add_holiday("Thanksgiving Day", self._get_nth_weekday_of_month(4, THU, NOV))
 
         # XMAS DAY: Dec 25th - every year
         self._add_observed_holiday("Christmas Day", date(year, DEC, 25))

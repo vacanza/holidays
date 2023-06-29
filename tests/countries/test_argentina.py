@@ -17,9 +17,7 @@ class TestArgentina(TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(
-            Argentina,
-            years=range(1950, 2050),
-            years_non_observed=range(1950, 2050),
+            Argentina, years=range(1950, 2050), years_non_observed=range(1950, 2050)
         )
 
     def test_country_aliases(self):
@@ -55,8 +53,7 @@ class TestArgentina(TestCase):
     def test_memory_national_day(self):
         self.assertHoliday(f"{year}-03-24" for year in range(2006, 2050))
         self.assertNoHolidayName(
-            "Día Nacional de la Memoria por la Verdad y la Justicia",
-            range(1950, 2006),
+            "Día Nacional de la Memoria por la Verdad y la Justicia", range(1950, 2006)
         )
 
     def test_good_friday(self):
@@ -103,12 +100,9 @@ class TestArgentina(TestCase):
         self.assertNoHoliday(f"{year}-06-10" for year in range(2001, 2050))
 
     def test_guemes_day(self):
-        self.assertNonObservedHoliday(
-            (f"{year}-06-17" for year in range(2016, 2050)),
-        )
+        self.assertNonObservedHoliday(f"{year}-06-17" for year in range(2016, 2050))
         self.assertNoHolidayName(
-            "Paso a la Inmortalidad del General Don Martín Miguel de Güemes",
-            range(1950, 2016),
+            "Paso a la Inmortalidad del General Don Martín Miguel de Güemes", range(1950, 2016)
         )
         self.assertHoliday(
             "2016-06-17",
@@ -144,12 +138,9 @@ class TestArgentina(TestCase):
 
     def test_san_martin_day(self):
         self.assertNoHolidayName(
-            "Paso a la Inmortalidad del General Don José de San Martin",
-            Argentina(years=1937),
+            "Paso a la Inmortalidad del General Don José de San Martin", Argentina(years=1937)
         )
-        self.assertNonObservedHoliday(
-            (f"{year}-08-17" for year in range(1938, 1995)),
-        )
+        self.assertNonObservedHoliday(f"{year}-08-17" for year in range(1938, 1995))
         self.assertHoliday(
             "2011-08-22",
             "2015-08-17",
@@ -172,9 +163,7 @@ class TestArgentina(TestCase):
         self.assertNoHolidayName(name_raza, range(2010, 2050))
 
         self.assertNonObservedHoliday("1917-10-12")
-        self.assertNonObservedHoliday(
-            (f"{year}-10-12" for year in range(1950, 2050)),
-        )
+        self.assertNonObservedHoliday(f"{year}-10-12" for year in range(1950, 2050))
         self.assertHoliday(
             "2015-10-12",
             "2016-10-10",
@@ -189,9 +178,7 @@ class TestArgentina(TestCase):
 
     def test_national_sovereignty_day(self):
         self.assertNoHoliday(f"{year}-11-20" for year in range(1950, 2010))
-        self.assertNonObservedHoliday(
-            (f"{year}-11-20" for year in range(2010, 2015)),
-        )
+        self.assertNonObservedHoliday(f"{year}-11-20" for year in range(2010, 2015))
         self.assertHoliday(
             "2015-11-27",
             "2016-11-28",
