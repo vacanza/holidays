@@ -383,10 +383,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
             songkran_festival = tr("วันสงกรานต์")
             if self._year <= 1953 or (1957 <= self._year != 2020):
                 dt = self._add_holiday(
-                    songkran_festival,
-                    date(self._year, APR, 12)
-                    if 1989 <= self._year <= 1997
-                    else date(self._year, APR, 13),
+                    songkran_festival, *((APR, 12) if 1989 <= self._year <= 1997 else (APR, 13))
                 )
                 if 1957 <= self._year <= 1988:
                     _add_observed(dt)
