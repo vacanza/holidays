@@ -9,6 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.constants import BANK, GOVERNMENT, PUBLIC
 from holidays.countries.thailand import Thailand, TH, THA
 from tests.common import TestCase
 
@@ -99,11 +100,12 @@ class TestThailand(TestCase):
             "2023-05-05",
         )
 
-    def test_2022(self):
+    def test_2022_all(self):
         self.assertHolidays(
-            Thailand(years=2022),
+            Thailand(categories={GOVERNMENT, PUBLIC}, years=2022),
             ("2022-01-01", "วันขึ้นปีใหม่"),
             ("2022-01-03", "ชดเชยวันขึ้นปีใหม่"),
+            ("2022-01-08", "วันเด็กแห่งชาติ"),
             ("2022-02-16", "วันมาฆบูชา"),
             ("2022-04-06", "วันจักรี"),
             ("2022-04-13", "วันสงกรานต์"),
@@ -165,6 +167,33 @@ class TestThailand(TestCase):
             "2023-01-02",
             "2028-01-03",
         )
+
+    def test_national_childrens_day(self):
+        name = "วันเด็กแห่งชาติ"
+
+        dt = (
+            # First Iteration
+            "1955-10-03",
+            # Second and Current Iteration
+            "2010-01-09",
+            "2011-01-08",
+            "2012-01-14",
+            "2013-01-12",
+            "2014-01-11",
+            "2015-01-10",
+            "2016-01-09",
+            "2017-01-14",
+            "2018-01-13",
+            "2019-01-12",
+            "2020-01-11",
+            "2021-01-09",
+            "2022-01-08",
+            "2023-01-14",
+            "2024-01-13",
+            "2025-01-11",
+        )
+        self.assertHolidayName(name, dt)
+        self.assertNoHolidayName(name, 1954, 1964)
 
     def test_chakri_memorial_day(self):
         self.assertHoliday(f"{year}-04-06" for year in range(1941, 2058))
@@ -559,33 +588,79 @@ class TestThailand(TestCase):
         )
 
     def test_raeknakhwan(self):
+        # Boiler Plates
+        thai_special_in_lieu_holidays = "วันหยุดชดเชย"
+        thai_election = "วันเลือกตั้ง"
+        # Actual Tests
         name = "วันพืชมงคล"
-        dt = (
-            "2011-05-13",
-            "2012-05-09",
-            "2013-05-13",
-            "2014-05-09",
-            "2015-05-13",
-            "2016-05-09",
-            "2017-05-12",
-            "2018-05-14",
-            "2019-05-09",
-            "2020-05-11",
-            "2021-05-13",
-            "2022-05-17",
-            "2023-05-11",
+        self.assertHolidays(
+            Thailand(categories={GOVERNMENT}, years=range(1997, 2006)),
+            # Boilerplate Special Holidays Checks
+            ("1998-05-11", thai_special_in_lieu_holidays),
+            ("1998-12-07", thai_special_in_lieu_holidays),
+            ("1999-05-03", thai_special_in_lieu_holidays),
+            ("1999-05-31", thai_special_in_lieu_holidays),
+            ("1999-10-25", thai_special_in_lieu_holidays),
+            ("1999-12-06", thai_special_in_lieu_holidays),
+            ("2000-01-03", thai_special_in_lieu_holidays),
+            ("2000-02-21", thai_special_in_lieu_holidays),
+            ("2000-08-14", thai_special_in_lieu_holidays),
+            ("2000-12-11", thai_special_in_lieu_holidays),
+            ("2000-12-29", thai_election),
+            # Actual Checks
+            ("1997-05-13", name),
+            ("1998-05-13", name),
+            ("2000-05-15", name),
+            ("2001-05-16", name),
+            ("2002-05-09", name),
+            ("2003-05-08", name),
+            ("2004-05-07", name),
+            ("2005-05-11", name),
         )
-        self.assertHolidayName(name, dt)
-        self.assertNoHolidayName(name, 1956, 1999)
 
-        self.assertHolidayName(name, (f"{year}-05-13" for year in range(1957, 1997)))
+    def test_bank_holiday(self):
+        # Boiler Plates
+        thai_bridge_public_holiday = "วันหยุดพิเศษ (เพิ่มเติม)"
+        rama_ix_crem = "วันพระราชพิธีถวายพระเพลิงพระบรมศพพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช"
+        rama_x_coronation = "พระราชพิธีบรมราชาภิเษก พระบาทสมเด็จพระวชิรเกล้าเจ้าอยู่หัว"
+        songkran_festival_in_lieu_covid = "ชดเชยวันสงกรานต์"
+        # Actual Tests
+        a_name = "วันหยุดเพิ่มเติมสำหรับการปิดบัญชีประจำปีของธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร"
+        m_name = "วันหยุดภาคครึ่งปีของสถาบันการเงินและสถาบันการเงินเฉพาะกิจ"
 
-        # No Royal Ploughing Ceremony on weekend for 1997-2023
+        self.assertHolidays(
+            Thailand(categories={BANK}, years=range(2017, 2023)),
+            # Boilerplate Special Holidays Checks
+            ("2017-10-26", rama_ix_crem),
+            ("2019-05-06", rama_x_coronation),
+            ("2020-07-27", songkran_festival_in_lieu_covid),
+            ("2020-09-04", songkran_festival_in_lieu_covid),
+            ("2020-09-07", songkran_festival_in_lieu_covid),
+            ("2020-11-19", thai_bridge_public_holiday),
+            ("2020-11-20", thai_bridge_public_holiday),
+            ("2020-12-11", thai_bridge_public_holiday),
+            ("2021-02-12", thai_bridge_public_holiday),
+            ("2021-04-12", thai_bridge_public_holiday),
+            ("2021-09-24", thai_bridge_public_holiday),
+            ("2022-07-15", thai_bridge_public_holiday),
+            ("2022-07-29", thai_bridge_public_holiday),
+            ("2022-10-14", thai_bridge_public_holiday),
+            ("2022-12-30", thai_bridge_public_holiday),
+            # Actual Checks
+            ("2017-04-01", a_name),
+            ("2017-07-01", m_name),
+            ("2018-04-01", a_name),
+            ("2018-07-01", m_name),
+            ("2019-04-01", a_name),
+            ("2020-04-01", a_name),
+            ("2021-04-01", a_name),
+        )
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "วันขึ้นปีใหม่"),
             ("2022-01-03", "ชดเชยวันขึ้นปีใหม่"),
+            ("2022-01-08", "วันเด็กแห่งชาติ"),
             ("2022-02-16", "วันมาฆบูชา"),
             ("2022-04-06", "วันจักรี"),
             ("2022-04-13", "วันสงกรานต์"),
@@ -596,7 +671,6 @@ class TestThailand(TestCase):
             ("2022-05-04", "วันฉัตรมงคล"),
             ("2022-05-15", "วันวิสาขบูชา"),
             ("2022-05-16", "ชดเชยวันวิสาขบูชา"),
-            ("2022-05-17", "วันพืชมงคล"),
             (
                 "2022-06-03",
                 "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสุทิดา พัชรสุธาพิมลลักษณ พระบรมราชินี",
@@ -641,6 +715,7 @@ class TestThailand(TestCase):
             "en_US",
             ("2022-01-01", "New Year's Day"),
             ("2022-01-03", "New Year's Day (in lieu)"),
+            ("2022-01-08", "National Children's Day"),
             ("2022-02-16", "Makha Bucha"),
             ("2022-04-06", "Chakri Memorial Day"),
             ("2022-04-13", "Songkran Festival"),
@@ -651,7 +726,6 @@ class TestThailand(TestCase):
             ("2022-05-04", "Coronation Day"),
             ("2022-05-15", "Visakha Bucha"),
             ("2022-05-16", "Visakha Bucha (in lieu)"),
-            ("2022-05-17", "Royal Ploughing Ceremony"),
             ("2022-06-03", "HM Queen Suthida's Birthday"),
             ("2022-07-13", "Asarnha Bucha"),
             ("2022-07-14", "Buddhist Lent Day"),
