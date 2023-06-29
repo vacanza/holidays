@@ -652,13 +652,13 @@ class HolidayBase(Dict[date, str]):
 
         return name, dt
 
-    def _populate(self, year: int) -> Set[Optional[date]]:
-        """This is a private class that populates (generates and adds) holidays
+    def _populate(self, year: int) -> None:
+        """This is a private method that populates (generates and adds) holidays
         for a given year. To keep things fast, it assumes that no holidays for
         the year have already been populated. It is required to be called
         internally by any country populate() method, while should not be called
         directly from outside.
-        To add holidays to an object, use the update() method:
+        To add holidays to an object, use the update() method.
 
         :param year:
             The year to populate with holidays.
@@ -670,11 +670,10 @@ class HolidayBase(Dict[date, str]):
         """
 
         self._year = year
-        dates = set()
 
         # Populate items from the special holidays list.
         for month, day, name in _normalize_tuple(self.special_holidays.get(year, ())):
-            dates.add(self._add_holiday(name, date(year, month, day)))
+            self._add_holiday(name, month, day)
 
         # Populate categories holidays.
         self._populate_categories()
@@ -682,10 +681,16 @@ class HolidayBase(Dict[date, str]):
         # Populate subdivision holidays.
         self._add_subdiv_holidays()
 
-        return dates
-
     def _populate_categories(self):
         for category in self.categories:
+            # Populate items from the special holidays list for all categories.
+            special_category_holidays = getattr(self, f"special_{category}_holidays", None)
+            if special_category_holidays:
+                for month, day, name in _normalize_tuple(
+                    special_category_holidays.get(self._year, ())
+                ):
+                    self._add_holiday(name, month, day)
+
             populate_category_holidays = getattr(self, f"_populate_{category}_holidays", None)
             if populate_category_holidays and callable(populate_category_holidays):
                 populate_category_holidays()

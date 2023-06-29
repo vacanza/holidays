@@ -23,6 +23,7 @@ GOVERNMENT = "government"
 HALF_DAY = "half_day"
 PUBLIC = "public"
 SCHOOL = "school"
+WORKDAY = "workday"
 
 CHINESE = "chinese"
 CHRISTIAN = "christian"
@@ -42,4 +43,5 @@ ALL_CATEGORIES = {
     ISLAMIC,
     PUBLIC,
     SCHOOL,
+    WORKDAY,
 }
