@@ -13,7 +13,6 @@ import warnings
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars import _get_nth_weekday_of_month
 from holidays.constants import MAR, MAY, JUL, SEP, NOV, DEC, FRI
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -76,19 +75,19 @@ class HolidaysMH(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_holiday("Constitution Day", MAY, 1))
 
         # Fisherman's Day
-        self._add_holiday("Fisherman's Day", _get_nth_weekday_of_month(1, FRI, JUL, year))
+        self._add_holiday("Fisherman's Day", self._get_nth_weekday_of_month(1, FRI, JUL))
 
         # Dri-jerbal Day
-        self._add_holiday("Dri-jerbal Day", _get_nth_weekday_of_month(1, FRI, SEP, year))
+        self._add_holiday("Dri-jerbal Day", self._get_nth_weekday_of_month(1, FRI, SEP))
 
         # Manit Day
-        self._add_holiday("Manit Day", _get_nth_weekday_of_month(-1, FRI, SEP, year))
+        self._add_holiday("Manit Day", self._get_nth_weekday_of_month(-1, FRI, SEP))
 
         # President's Day
         self._add_observed(self._add_holiday("President's Day", NOV, 17))
 
         # Gospel Day
-        self._add_holiday("Gospel Day", _get_nth_weekday_of_month(1, FRI, DEC, year))
+        self._add_holiday("Gospel Day", self._get_nth_weekday_of_month(1, FRI, DEC))
 
         # Christmas Day
         name = "Christmas Day"
