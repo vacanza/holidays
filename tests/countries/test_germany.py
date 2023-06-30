@@ -98,13 +98,11 @@ class TestDE(TestCase):
 
         for province in provinces_that_have:
             self.assertHoliday(
-                self.prov_hols[province],
-                (f"{year}-01-06" for year in range(1991, 2050)),
+                self.prov_hols[province], (f"{year}-01-06" for year in range(1991, 2050))
             )
         for province in provinces_that_dont:
             self.assertNoHoliday(
-                self.prov_hols[province],
-                (f"{year}-01-06" for year in range(1991, 2050)),
+                self.prov_hols[province], (f"{year}-01-06" for year in range(1991, 2050))
             )
 
     def test_karfreitag(self):
@@ -203,28 +201,17 @@ class TestDE(TestCase):
             self.assertNoHoliday(self.prov_hols[province], known_good)
 
     def test_frauentag(self):
-        self.assertHoliday(
-            self.prov_hols["BE"],
-            (f"{year}-03-08" for year in range(2019, 2050)),
-        )
-        self.assertHoliday(
-            self.prov_hols["MV"],
-            (f"{year}-03-08" for year in range(2023, 2050)),
-        )
+        self.assertHoliday(self.prov_hols["BE"], (f"{year}-03-08" for year in range(2019, 2050)))
+        self.assertHoliday(self.prov_hols["MV"], (f"{year}-03-08" for year in range(2023, 2050)))
 
         for province in set(DE.subdivisions):
             self.assertNoHoliday(
-                self.prov_hols[province],
-                (f"{year}-03-08" for year in range(1991, 2019)),
+                self.prov_hols[province], (f"{year}-03-08" for year in range(1991, 2019))
             )
-        self.assertNoHoliday(
-            self.prov_hols["MV"],
-            (f"{year}-03-08" for year in range(2019, 2023)),
-        )
+        self.assertNoHoliday(self.prov_hols["MV"], (f"{year}-03-08" for year in range(2019, 2023)))
         for province in set(DE.subdivisions) - {"BE", "MV"}:
             self.assertNoHoliday(
-                self.prov_hols[province],
-                (f"{year}-03-08" for year in range(2023, 2050)),
+                self.prov_hols[province], (f"{year}-03-08" for year in range(2023, 2050))
             )
 
     def test_pfingstsonntag(self):
@@ -295,13 +282,11 @@ class TestDE(TestCase):
 
         for province in provinces_that_have:
             self.assertHoliday(
-                self.prov_hols[province],
-                (f"{year}-08-15" for year in range(1991, 2050)),
+                self.prov_hols[province], (f"{year}-08-15" for year in range(1991, 2050))
             )
         for province in provinces_that_dont:
             self.assertNoHoliday(
-                self.prov_hols[province],
-                (f"{year}-08-15" for year in range(1991, 2050)),
+                self.prov_hols[province], (f"{year}-08-15" for year in range(1991, 2050))
             )
 
     def test_reformationstag(self):
@@ -312,26 +297,22 @@ class TestDE(TestCase):
 
         for province in prov_yes:
             self.assertHoliday(
-                self.prov_hols[province],
-                (f"{year}-10-31" for year in range(1991, 2050)),
+                self.prov_hols[province], (f"{year}-10-31" for year in range(1991, 2050))
             )
         for province in prov_yes_since_2018:
             self.assertHoliday(
-                self.prov_hols[province],
-                (f"{year}-10-31" for year in range(2018, 2050)),
+                self.prov_hols[province], (f"{year}-10-31" for year in range(2018, 2050))
             )
         for province in DE.subdivisions:
             self.assertHoliday(self.prov_hols[province], "2017-10-31")
 
         for province in prov_not:
             self.assertNoHoliday(
-                self.prov_hols[province],
-                (f"{year}-10-31" for year in range(1991, 2017)),
+                self.prov_hols[province], (f"{year}-10-31" for year in range(1991, 2017))
             )
         for province in prov_not_since_2018:
             self.assertNoHoliday(
-                self.prov_hols[province],
-                (f"{year}-10-31" for year in range(2018, 2050)),
+                self.prov_hols[province], (f"{year}-10-31" for year in range(2018, 2050))
             )
 
     def test_allerheiligen(self):
@@ -340,13 +321,11 @@ class TestDE(TestCase):
 
         for province in provinces_that_have:
             self.assertHoliday(
-                self.prov_hols[province],
-                (f"{year}-11-01" for year in range(1991, 2050)),
+                self.prov_hols[province], (f"{year}-11-01" for year in range(1991, 2050))
             )
         for province in provinces_that_dont:
             self.assertNoHoliday(
-                self.prov_hols[province],
-                (f"{year}-11-01" for year in range(1991, 2050)),
+                self.prov_hols[province], (f"{year}-11-01" for year in range(1991, 2050))
             )
 
     def test_buss_und_bettag(self):

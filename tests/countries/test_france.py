@@ -154,10 +154,7 @@ class TestFrance(TestCase):
                 France(subdiv=subdiv),
                 "2017-05-28",
             )
-            self.assertNoHolidayName(
-                "Abolition de l'esclavage",
-                France(subdiv=subdiv, years=2017),
-            )
+            self.assertNoHolidayName("Abolition de l'esclavage", France(subdiv=subdiv, years=2017))
 
     def test_guyane(self):
         for subdiv in ("GY", "Guyane"):
@@ -196,10 +193,7 @@ class TestFrance(TestCase):
                 France(subdiv=subdiv),
                 "1980-12-20",
             )
-            self.assertNoHolidayName(
-                "Abolition de l'esclavage",
-                France(subdiv=subdiv, years=1980),
-            )
+            self.assertNoHolidayName("Abolition de l'esclavage", France(subdiv=subdiv, years=1980))
 
     def test_subdiv_deprecation(self):
         self.assertDeprecatedSubdivisions("This subdivision is deprecated and will be removed")

@@ -11,7 +11,7 @@
 
 from datetime import date
 
-from holidays.constants import MAR
+from holidays.calendars.gregorian import MAR
 from holidays.countries.guam import HolidaysGU, GU, GUM
 from tests.common import TestCase
 

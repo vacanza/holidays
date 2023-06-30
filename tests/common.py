@@ -18,7 +18,7 @@ from typing import Generator
 from dateutil.parser import parse
 
 from holidays import HolidayBase
-from holidays.constants import SUN
+from holidays.calendars.gregorian import SUN
 
 PYTHON_VERSION = (3, 11)
 

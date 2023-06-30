@@ -12,7 +12,7 @@
 from datetime import date
 from typing import Optional
 
-from holidays.calendars import _ThaiLunisolar, THAI_CALENDAR
+from holidays.calendars.thai import _ThaiLunisolar, THAI_CALENDAR
 
 
 class ThaiCalendarHolidays:

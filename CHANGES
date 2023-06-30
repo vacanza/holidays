@@ -3,11 +3,23 @@ Version 0.28
 
 Released ???????? ??, ????
 
+- Add special holidays categories support (#1347 by @KJhellico)
+- Introduce holiday categories support (#1320 by @KJhellico)
 - Fix common::TestCase methods (#1324 by @KJhellico)
 - Optimize .py files formatting (#1332 by @KJhellico)
+- Optimize .py files formatting (tests) (#1337 by @KJhellico)
+- Update Baltic countries holidays, add l10n support (#1340 by @KJhellico)
+- Update Bosnia and Herzegovina holidays, add l10n support (#1336 by @KJhellico)
 - Update PR template (#1330 by @arkid15r)
 - Update configuration files (#1327 by @arkid15r)
+- Add HolidayBase methods for relative weekdays calculation (#1334 by @KJhellico)
+- Clean up calendars (#1349 by @arkid15r)
 - Drop Python 3.7 support (#1326 by @arkid15r)
+- Migrate Ireland holidays to holiday groups (#1333 by @KJhellico)
+- Migrate Madagascar to holiday groups, add l10n support (#1335 by @KJhellico)
+- Migrate Malta to `holiday_groups`, add l10n support (#1338 by @PPsyrius, @arkid15r)
+- Migrate Marshall Islands to `holiday_groups` (#1342 by @PPsyrius)
+- Migrate United States holidays to holiday groups and subdivision holidays methods (#1331 by @KJhellico)
 - Remove redundant `#noqa E501` labels (#1322 by @PPsyrius)
 
 Version 0.27.1

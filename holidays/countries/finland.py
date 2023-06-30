@@ -13,8 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars import _get_nth_weekday_from
-from holidays.constants import JAN, MAY, JUN, OCT, NOV, DEC, FRI, SAT
+from holidays.calendars.gregorian import JAN, MAY, JUN, OCT, NOV, DEC, FRI, SAT
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -42,7 +41,7 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Epiphany.
         name = tr("Loppiainen")
         if 1973 <= year <= 1990:
-            self._add_holiday(name, _get_nth_weekday_from(1, SAT, date(year, JAN, 6)))
+            self._add_holiday(name, self._get_nth_weekday_from(1, SAT, JAN, 6))
         else:
             self._add_epiphany_day(name)
 
@@ -68,21 +67,13 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Whit Sunday.
         self._add_whit_sunday(tr("Helluntaipäivä"))
 
-        dt = (
-            _get_nth_weekday_from(1, FRI, date(year, JUN, 19))
-            if year >= 1955
-            else date(year, JUN, 23)
-        )
+        dt = self._get_nth_weekday_from(1, FRI, JUN, 19) if year >= 1955 else date(year, JUN, 23)
         # Midsummer Eve.
         self._add_holiday(tr("Juhannusaatto"), dt)
         # Midsummer Day.
         self._add_holiday(tr("Juhannuspäivä"), dt + td(days=+1))
 
-        dt = (
-            _get_nth_weekday_from(1, SAT, date(year, OCT, 31))
-            if year >= 1955
-            else date(year, NOV, 1)
-        )
+        dt = self._get_nth_weekday_from(1, SAT, OCT, 31) if year >= 1955 else date(year, NOV, 1)
         # All Saints' Day.
         self._add_holiday(tr("Pyhäinpäivä"), dt)
 

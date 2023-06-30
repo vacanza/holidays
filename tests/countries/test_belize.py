@@ -16,11 +16,7 @@ from tests.common import TestCase
 class TestBelize(TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(
-            Belize,
-            years=range(1982, 2050),
-            years_non_observed=range(1982, 2050),
-        )
+        super().setUpClass(Belize, years=range(1982, 2050), years_non_observed=range(1982, 2050))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Belize, BZ, BLZ)
@@ -43,8 +39,7 @@ class TestBelize(TestCase):
             2045,
         }
         self.assertHolidayName(
-            name,
-            (f"{year}-01-01" for year in set(range(1982, 2050)).difference(years_observed)),
+            name, (f"{year}-01-01" for year in set(range(1982, 2050)).difference(years_observed))
         )
         self.assertHolidayName(f"{name} (Observed)", (f"{year}-01-02" for year in years_observed))
 
@@ -52,8 +47,7 @@ class TestBelize(TestCase):
         name = "George Price Day"
         years_observed = {2023, 2034, 2040, 2045}
         self.assertHolidayName(
-            name,
-            (f"{year}-01-15" for year in set(range(2021, 2050)).difference(years_observed)),
+            name, (f"{year}-01-15" for year in set(range(2021, 2050)).difference(years_observed))
         )
         self.assertHolidayName(f"{name} (Observed)", (f"{year}-01-16" for year in years_observed))
         self.assertNoHoliday(f"{year}-01-15" for year in range(1982, 2021))
@@ -119,8 +113,7 @@ class TestBelize(TestCase):
             2044,
         }
         self.assertHolidayName(
-            name,
-            (f"{year}-05-01" for year in set(range(1982, 2050)).difference(years_observed)),
+            name, (f"{year}-05-01" for year in set(range(1982, 2050)).difference(years_observed))
         )
         self.assertHolidayName(f"{name} (Observed)", (f"{year}-05-02" for year in years_observed))
 
@@ -166,8 +159,7 @@ class TestBelize(TestCase):
             2045,
         }
         self.assertHolidayName(
-            name,
-            (f"{year}-09-10" for year in set(range(1982, 2050)).difference(years_observed)),
+            name, (f"{year}-09-10" for year in set(range(1982, 2050)).difference(years_observed))
         )
         self.assertHolidayName(f"{name} (Observed)", (f"{year}-09-11" for year in years_observed))
 
@@ -185,8 +177,7 @@ class TestBelize(TestCase):
             2042,
         }
         self.assertHolidayName(
-            name,
-            (f"{year}-09-21" for year in set(range(1982, 2050)).difference(years_observed)),
+            name, (f"{year}-09-21" for year in set(range(1982, 2050)).difference(years_observed))
         )
         self.assertHolidayName(f"{name} (Observed)", (f"{year}-09-22" for year in years_observed))
 
@@ -229,8 +220,7 @@ class TestBelize(TestCase):
             2045,
         }
         self.assertHolidayName(
-            name,
-            (f"{year}-11-19" for year in set(range(1982, 2050)).difference(years_observed)),
+            name, (f"{year}-11-19" for year in set(range(1982, 2050)).difference(years_observed))
         )
         self.assertHolidayName(f"{name} (Observed)", (f"{year}-11-20" for year in years_observed))
 
@@ -252,8 +242,7 @@ class TestBelize(TestCase):
             2049,
         }
         self.assertHolidayName(
-            name,
-            (f"{year}-12-26" for year in set(range(1982, 2050)).difference(years_observed)),
+            name, (f"{year}-12-26" for year in set(range(1982, 2050)).difference(years_observed))
         )
         self.assertHolidayName(f"{name} (Observed)", (f"{year}-12-27" for year in years_observed))
 

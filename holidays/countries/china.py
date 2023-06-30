@@ -11,7 +11,7 @@
 
 from datetime import timedelta as td
 
-from holidays.constants import OCT
+from holidays.calendars.gregorian import OCT
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChineseCalendarHolidays, InternationalHolidays
 

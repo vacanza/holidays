@@ -20,7 +20,8 @@ from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
 
 import holidays
-from holidays.constants import JAN, FEB, OCT, MON, TUE, SAT, SUN, HOLIDAY_NAME_DELIMITER
+from holidays.calendars.gregorian import JAN, FEB, OCT, MON, TUE, SAT, SUN
+from holidays.constants import HOLIDAY_NAME_DELIMITER
 
 
 class TestBasics(unittest.TestCase):
@@ -181,8 +182,8 @@ class TestBasics(unittest.TestCase):
         )
         self.assertEqual(
             str(holidays.US(years=1900)),
-            '{datetime.date(1900, 1, 1): "New Year\'s Day", '
-            'datetime.date(1900, 2, 22): "Washington\'s Birthday", '
+            '{datetime.date(1900, 2, 22): "Washington\'s Birthday", '
+            'datetime.date(1900, 1, 1): "New Year\'s Day", '
             "datetime.date(1900, 5, 30): 'Memorial Day', "
             "datetime.date(1900, 7, 4): 'Independence Day', "
             "datetime.date(1900, 9, 3): 'Labor Day', "
@@ -249,6 +250,18 @@ class TestBasics(unittest.TestCase):
             self.assertFalse(h._is_weekend(dt))
         for dt in ((10, 3), (10, 4)):
             self.assertFalse(h._is_weekend(*dt))
+
+    def test_get_nth_weekday_of_month(self):
+        h = holidays.HolidayBase(years=2023)
+        # 1st Monday of 2023 months
+        for month, day in enumerate((3, 7, 7, 4, 2, 6, 4, 1, 5, 3, 7, 5), 1):
+            first_monday = h._get_nth_weekday_of_month(1, 1, month)
+            self.assertEqual(first_monday.day, day)
+
+        # Last Saturday of 2023 months
+        for month, day in enumerate((28, 25, 25, 29, 27, 24, 29, 26, 30, 28, 25, 30), 1):
+            last_friday = h._get_nth_weekday_of_month(-1, 5, month)
+            self.assertEqual(last_friday.day, day)
 
     def test_append(self):
         h = holidays.HolidayBase()
@@ -683,6 +696,11 @@ class TestArgs(unittest.TestCase):
 
         with self.assertWarns(Warning):
             holidays.US(state="WY")
+
+    def test_categories(self):
+        self.assertRaises(
+            NotImplementedError, lambda: holidays.country_holidays("AT", categories={"HOME"})
+        )
 
 
 class TestKeyTransforms(unittest.TestCase):

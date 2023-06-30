@@ -11,7 +11,7 @@
 
 from datetime import date
 
-from holidays.constants import NOV
+from holidays.calendars.gregorian import NOV
 from holidays.countries.puerto_rico import HolidaysPR, PR, PRI
 from tests.common import TestCase
 
@@ -27,7 +27,4 @@ class TestPR(TestCase):
     def test_pr_only(self):
         """Check for a holiday that is not returned by US unless the
         subdivision is specified."""
-        self.assertIn(
-            "Discovery Day (Observed)",
-            self.holidays.get_list(date(2017, NOV, 20)),
-        )
+        self.assertIn("Discovery Day (Observed)", self.holidays.get_list(date(2017, NOV, 20)))

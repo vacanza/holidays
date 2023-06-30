@@ -12,7 +12,7 @@
 from datetime import date
 from typing import Optional
 
-from holidays.constants import FEB, MAR, APR, MAY, JUN, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import FEB, MAR, APR, MAY, JUN, SEP, OCT, NOV, DEC
 
 
 class _HebrewLunisolar:

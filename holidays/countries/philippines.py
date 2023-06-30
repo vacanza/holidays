@@ -9,8 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars import _get_nth_weekday_of_month
-from holidays.constants import FEB, APR, JUN, AUG, NOV, DEC, MON
+
+from holidays.calendars.gregorian import FEB, APR, JUN, AUG, NOV, DEC, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import (
     ChineseCalendarHolidays,
@@ -77,7 +77,7 @@ class Philippines(
         self._add_holiday("Ninoy Aquino Day", AUG, 21)
 
         # National Heroes Day.
-        self._add_holiday("National Heroes Day", _get_nth_weekday_of_month(-1, MON, AUG, year))
+        self._add_holiday("National Heroes Day", self._get_nth_weekday_of_month(-1, MON, AUG))
 
         # All Saints' Day.
         self._add_all_saints_day("All Saints' Day")

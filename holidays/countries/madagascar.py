@@ -9,23 +9,28 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from datetime import timedelta as td
+from gettext import gettext as tr
 
-from dateutil.easter import easter
-
-from holidays.calendars import _get_nth_weekday_of_month
-from holidays.constants import JAN, MAR, MAY, JUN, AUG, NOV, DEC, SUN
+from holidays.calendars.gregorian import MAR, MAY, JUN, DEC, SUN
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Madagascar(HolidayBase):
+class Madagascar(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     https://www.officeholidays.com/countries/madagascar
     https://www.timeanddate.com/holidays/madagascar/
     """
 
     country = "MG"
+    default_language = "mg"
+    supported_languages = ("en_US", "mg", "uk")
+
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         # Observed since 1947
@@ -34,40 +39,58 @@ class Madagascar(HolidayBase):
 
         super()._populate(year)
 
-        self[date(year, JAN, 1)] = "Taom-baovao / New Year's Day"
-        self[date(year, MAR, 8)] = "Fetin'ny vehivavy / Women's Day"
-        self[date(year, MAR, 29)] = "Fetin'ny mahery fo / Martyrs' Day"
-        self[date(year, MAY, 1)] = "Labour Day"
-        self[_get_nth_weekday_of_month(3, SUN, JUN, year)] = "Fetin'ny ray / Father's Day"
+        # New Year's Day.
+        self._add_new_years_day(tr("Taom-baovao"))
 
-        if year >= 1960:
-            self[date(year, JUN, 26)] = "Independence Day"
+        # Women's Day.
+        self._add_womens_day(tr("Fetin'ny vehivavy"))
 
-        self[date(year, AUG, 15)] = "Fiakaran'ny Masina Maria tany an-danitra / Assumption Day"
+        # Martyrs' Day.
+        self._add_holiday(tr("Fetin'ny mahery fo"), MAR, 29)
 
-        self[date(year, NOV, 1)] = "Fetin'ny olo-masina / All Saints' Day"
+        # Easter Sunday.
+        self._add_easter_sunday(tr("Fetin'ny paska"))
 
-        if year >= 2011:
-            self[date(year, DEC, 11)] = "Republic Day"
+        # Easter Monday.
+        self._add_easter_monday(tr("Alatsinain'ny paska"))
 
-        self[date(year, DEC, 25)] = "Fetin'ny noely / Christmas Day"
+        # Labor Day.
+        self._add_labor_day(tr("Fetin'ny asa"))
 
-        easter_date = easter(year)
-        self[easter_date] = "Fetin'ny paska / Easter Sunday"
-        self[easter_date + td(days=+1)] = "Alatsinain'ny paska / Easter Monday"
-        self[
-            easter_date + td(days=+39)
-        ] = "Fiakaran'ny Jesosy kristy tany an-danitra / Ascension Day"
+        # Ascension Day.
+        self._add_ascension_thursday(tr("Fiakaran'ny Jesosy kristy tany an-danitra"))
 
-        whit_sunday = easter_date + td(days=+49)
-        self[whit_sunday] = "Pentekosta / Whit Sunday"
+        # Whit Sunday.
+        whit_sunday = self._add_whit_sunday(tr("Pentekosta"))
 
-        self[easter_date + td(days=+50)] = "Alatsinain'ny pentekosta / Whit Monday"
+        # Whit Monday.
+        self._add_whit_monday(tr("Alatsinain'ny pentekosta"))
 
-        dt = _get_nth_weekday_of_month(-1, SUN, MAY, year)
+        dt = self._get_nth_weekday_of_month(-1, SUN, MAY)
         if dt == whit_sunday:
             dt += td(days=+7)
-        self[dt] = "Fetin'ny Reny / Mother's Day"
+        # Mother's Day.
+        self._add_holiday(tr("Fetin'ny reny"), dt)
+
+        # Father's Day.
+        self._add_holiday(tr("Fetin'ny ray"), self._get_nth_weekday_of_month(3, SUN, JUN))
+
+        if year >= 1960:
+            # Independence Day.
+            self._add_holiday(tr("Fetin'ny fahaleovantena"), JUN, 26)
+
+        # Assumption Day.
+        self._add_assumption_of_mary_day(tr("Fiakaran'ny Masina Maria tany an-danitra"))
+
+        # All Saints' Day.
+        self._add_all_saints_day(tr("Fetin'ny olo-masina"))
+
+        if year >= 2011:
+            # Republic Day.
+            self._add_holiday(tr("Fetin'ny Repoblika"), DEC, 11)
+
+        # Christmas Day.
+        self._add_christmas_day(tr("Fetin'ny noely"))
 
 
 class MG(Madagascar):

@@ -11,7 +11,7 @@
 
 from gettext import gettext as tr
 
-from holidays.constants import JUL
+from holidays.calendars.gregorian import JUL
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 

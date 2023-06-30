@@ -12,7 +12,7 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.constants import JAN, MAR, MAY, JUL, OCT
+from holidays.calendars.gregorian import JAN, MAR, MAY, JUL, OCT
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
