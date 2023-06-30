@@ -11,7 +11,7 @@
 
 from datetime import date
 
-from holidays.constants import DEC
+from holidays.calendars.gregorian import DEC
 from holidays.countries.american_samoa import HolidaysAS, AS, ASM
 from tests.common import TestCase
 

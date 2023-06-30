@@ -11,7 +11,7 @@
 
 from datetime import date
 
-from holidays.constants import MAR
+from holidays.calendars.gregorian import MAR
 from holidays.countries.united_states_virgin_islands import HolidaysVI, VI, VIR
 from tests.common import TestCase
 

@@ -10,7 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars import _CustomIslamicCalendar
-from holidays.constants import FRI, SAT, MAY, JUL, AUG, OCT, DEC
+from holidays.calendars.gregorian import FRI, SAT, MAY, JUL, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
 
