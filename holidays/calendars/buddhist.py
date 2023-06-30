@@ -13,7 +13,7 @@ from datetime import date
 from typing import Optional, Tuple
 
 from holidays.calendars.custom import _CustomCalendar
-from holidays.constants import MAY, JUN
+from holidays.calendars.gregorian import MAY, JUN
 
 VESAK = "VESAK"
 VESAK_MAY = "VESAK_MAY"

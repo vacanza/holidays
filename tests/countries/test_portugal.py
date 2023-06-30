@@ -189,14 +189,8 @@ class TestPortugal(TestCase):
         name_maco = "Dia da Região Autónoma da Madeira e das Comunidades Madeirenses"
 
         self.assertNoHolidayName(name_made, Portugal(years=1978, subdiv="30"))
-        self.assertNoHolidayName(
-            name_maco,
-            Portugal(years=range(1978, 1989), subdiv="30"),
-        )
-        self.assertNoHolidayName(
-            name_made,
-            Portugal(years=range(1989, 2050), subdiv="30"),
-        )
+        self.assertNoHolidayName(name_maco, Portugal(years=range(1978, 1989), subdiv="30"))
+        self.assertNoHolidayName(name_made, Portugal(years=range(1989, 2050), subdiv="30"))
         self.assertHoliday(
             Portugal(years=range(2016, 2024), subdiv="30"),
             "2016-07-01",

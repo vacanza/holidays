@@ -12,8 +12,7 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars import _get_nth_weekday_of_month
-from holidays.constants import MAR, APR, JUL, AUG, SEP, OCT, MON
+from holidays.calendars.gregorian import MAR, APR, JUL, AUG, SEP, OCT, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -86,10 +85,8 @@ class Zambia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_monday("Easter Monday")
 
         if year >= 2022:
-            self._add_observed(
-                # Kenneth Kaunda Day.
-                self._add_holiday("Kenneth Kaunda Day", APR, 28)
-            )
+            # Kenneth Kaunda Day.
+            self._add_observed(self._add_holiday("Kenneth Kaunda Day", APR, 28))
 
         # Labour Day.
         self._add_observed(self._add_labor_day("Labour Day"))
@@ -100,14 +97,14 @@ class Zambia(HolidayBase, ChristianHolidays, InternationalHolidays):
         first_mon_of_july = self._add_holiday(
             # Heroes' Day.
             "Heroes' Day",
-            _get_nth_weekday_of_month(1, MON, JUL, year),
+            self._get_nth_weekday_of_month(1, MON, JUL),
         )
 
         # Unity Day.
         self._add_holiday("Unity Day", first_mon_of_july + td(days=+1))
 
         # Farmers' Day.
-        self._add_holiday("Farmers' Day", _get_nth_weekday_of_month(1, MON, AUG, year))
+        self._add_holiday("Farmers' Day", self._get_nth_weekday_of_month(1, MON, AUG))
 
         if year >= 2015:
             # National Prayer Day.

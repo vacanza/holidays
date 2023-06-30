@@ -63,32 +63,27 @@ class TestEcuador(TestCase):
 
     def test_battle_of_pichincha(self):
         self.assertHolidayName(
-            "Batalla de Pichincha",
-            (f"{year}-05-24" for year in range(2000, 2050)),
+            "Batalla de Pichincha", (f"{year}-05-24" for year in range(2000, 2050))
         )
 
     def test_independence_of_quito(self):
         self.assertHolidayName(
-            "Primer Grito de Independencia",
-            (f"{year}-08-10" for year in range(2000, 2050)),
+            "Primer Grito de Independencia", (f"{year}-08-10" for year in range(2000, 2050))
         )
 
     def test_independence_of_guayaquil(self):
         self.assertHolidayName(
-            "Independencia de Guayaquil",
-            (f"{year}-10-09" for year in range(2000, 2050)),
+            "Independencia de Guayaquil", (f"{year}-10-09" for year in range(2000, 2050))
         )
 
     def test_all_souls_day(self):
         self.assertHolidayName(
-            "Día de los Difuntos",
-            (f"{year}-11-02" for year in range(2000, 2050)),
+            "Día de los Difuntos", (f"{year}-11-02" for year in range(2000, 2050))
         )
 
     def test_independence_of_cuenca(self):
         self.assertHolidayName(
-            "Independencia de Cuenca",
-            (f"{year}-11-03" for year in range(2000, 2050)),
+            "Independencia de Cuenca", (f"{year}-11-03" for year in range(2000, 2050))
         )
 
     def test_christmas_day(self):

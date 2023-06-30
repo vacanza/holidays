@@ -11,8 +11,8 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars import JULIAN_CALENDAR
-from holidays.constants import MAR, MAY, SEP
+from holidays.calendars.gregorian import MAR, MAY, SEP
+from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 

@@ -14,7 +14,7 @@ from gettext import gettext as tr
 
 from dateutil.easter import EASTER_ORTHODOX, easter
 
-from holidays.constants import JAN, MAR, MAY, SEP, NOV, DEC
+from holidays.calendars.gregorian import JAN, MAR, MAY, SEP, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 

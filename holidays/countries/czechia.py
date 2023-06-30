@@ -11,7 +11,7 @@
 
 from gettext import gettext as tr
 
-from holidays.constants import JAN, MAY, JUL, SEP, OCT, NOV
+from holidays.calendars.gregorian import JAN, MAY, JUL, SEP, OCT, NOV
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 

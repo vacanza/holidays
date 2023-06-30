@@ -12,8 +12,7 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars import _get_nth_weekday_of_month
-from holidays.constants import FEB, APR, AUG, DEC, MON
+from holidays.calendars.gregorian import FEB, APR, AUG, DEC, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -72,7 +71,7 @@ class Zimbabwe(HolidayBase, ChristianHolidays, InternationalHolidays):
         second_mon_of_august = self._add_holiday(
             # Zimbabwe Heroes' Day.
             "Zimbabwe Heroes' Day",
-            _get_nth_weekday_of_month(2, MON, AUG, year),
+            self._get_nth_weekday_of_month(2, MON, AUG),
         )
 
         # Defense Forces Day.

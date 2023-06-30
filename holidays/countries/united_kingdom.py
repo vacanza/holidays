@@ -13,8 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 from typing import Tuple, Union
 
-from holidays.calendars import _get_nth_weekday_of_month
-from holidays.constants import MAR, APR, MAY, JUN, JUL, AUG, SEP, NOV, DEC, MON
+from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, NOV, DEC, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -75,7 +74,7 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
                 date(year, MAY, 8)
                 # In 2020 moved to Friday to mark 75th anniversary of VE Day.
                 if year in {1995, 2020}
-                else _get_nth_weekday_of_month(1, MON, MAY, year)
+                else self._get_nth_weekday_of_month(1, MON, MAY)
             )
             self._add_holiday("May Day", dt)
 
@@ -86,7 +85,7 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
                 2012: date(year, JUN, 4),
                 2022: date(year, JUN, 2),
             }
-            dt = spring_bank_dates.get(year, _get_nth_weekday_of_month(-1, MON, MAY, year))
+            dt = spring_bank_dates.get(year, self._get_nth_weekday_of_month(-1, MON, MAY))
             self._add_holiday("Spring Bank Holiday", dt)
 
         # Christmas Day
@@ -119,7 +118,7 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Late Summer bank holiday (last Monday in August)
         if self._year >= 1971:
             self._add_holiday(
-                "Late Summer Bank Holiday", _get_nth_weekday_of_month(-1, MON, AUG, self._year)
+                "Late Summer Bank Holiday", self._get_nth_weekday_of_month(-1, MON, AUG)
             )
 
     def _add_subdiv_nir_holidays(self):
@@ -135,7 +134,7 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Late Summer bank holiday (last Monday in August)
         if self._year >= 1971:
             self._add_holiday(
-                "Late Summer Bank Holiday", _get_nth_weekday_of_month(-1, MON, AUG, self._year)
+                "Late Summer Bank Holiday", self._get_nth_weekday_of_month(-1, MON, AUG)
             )
 
     def _add_subdiv_sct_holidays(self):
@@ -155,9 +154,7 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_new_years_day_three("%s (Observed)" % name)
 
         # Summer bank holiday (first Monday in August)
-        self._add_holiday(
-            "Summer Bank Holiday", _get_nth_weekday_of_month(1, MON, AUG, self._year)
-        )
+        self._add_holiday("Summer Bank Holiday", self._get_nth_weekday_of_month(1, MON, AUG))
 
         # St. Andrew's Day
         self._add_holiday("St. Andrew's Day", NOV, 30)
@@ -169,7 +166,7 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Late Summer bank holiday (last Monday in August)
         if self._year >= 1971:
             self._add_holiday(
-                "Late Summer Bank Holiday", _get_nth_weekday_of_month(-1, MON, AUG, self._year)
+                "Late Summer Bank Holiday", self._get_nth_weekday_of_month(-1, MON, AUG)
             )
 
 

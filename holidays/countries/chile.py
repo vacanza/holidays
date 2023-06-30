@@ -14,8 +14,7 @@ from datetime import timedelta as td
 from gettext import gettext as tr
 from typing import Tuple
 
-from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
-from holidays.constants import JAN, MAY, JUN, JUL, AUG, SEP, OCT, MON
+from holidays.calendars.gregorian import JAN, MAY, JUN, JUL, AUG, SEP, OCT, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -62,9 +61,9 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
             if year >= 2000:
                 # floating Monday holiday (Law 19.668)
                 if self._is_friday(hol_date):
-                    hol_date = _get_nth_weekday_from(1, MON, hol_date)
+                    hol_date = self._get_nth_weekday_from(1, MON, hol_date)
                 elif not self._is_weekend(hol_date):
-                    hol_date = _get_nth_weekday_from(-1, MON, hol_date)
+                    hol_date = self._get_nth_weekday_from(-1, MON, hol_date)
             return hol_date
 
         # Law 2.977 established official Chile holidays in its current form.
@@ -127,7 +126,7 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Day of National Unity (Law 19.588, Law 19.793)
         elif 1999 <= year <= 2001:
             self._add_holiday(
-                tr("Día de la Unidad Nacional"), _get_nth_weekday_of_month(1, MON, SEP, year)
+                tr("Día de la Unidad Nacional"), self._get_nth_weekday_of_month(1, MON, SEP)
             )
 
         # National Holiday Friday preceding Independence Day (Law 20.983).

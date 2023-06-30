@@ -13,7 +13,7 @@ from datetime import date
 from typing import Iterable, Tuple
 
 from holidays.calendars.custom import _CustomCalendar
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.helpers import _normalize_tuple
 
 ASHURA = "ASHURA"

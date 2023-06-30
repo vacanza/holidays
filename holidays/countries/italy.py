@@ -12,8 +12,22 @@
 
 from datetime import timedelta as td
 
-from holidays.calendars import _get_nth_weekday_of_month
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC, TUE, SUN
+from holidays.calendars.gregorian import (
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+    TUE,
+    SUN,
+)
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -223,9 +237,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday("San Donato D'Arezzo", AUG, 7)
 
     def _add_subdiv_at_holidays(self):
-        self._add_holiday(
-            "San Secondo di Asti", _get_nth_weekday_of_month(1, TUE, MAY, self._year)
-        )
+        self._add_holiday("San Secondo di Asti", self._get_nth_weekday_of_month(1, TUE, MAY))
 
     def _add_subdiv_av_holidays(self):
         self._add_holiday("San Modestino", FEB, 14)
@@ -251,7 +263,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _add_subdiv_br_holidays(self):
         self._add_holiday(
             "San Teodoro d'Amasea e San Lorenzo da Brindisi",
-            _get_nth_weekday_of_month(1, SUN, SEP, self._year),
+            self._get_nth_weekday_of_month(1, SUN, SEP),
         )
 
     def _add_subdiv_bs_holidays(self):
@@ -259,9 +271,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_bt_holidays(self):
         self._add_holiday("San Nicola Pellegrino", MAY, 3)
-        self._add_holiday(
-            "San Riccardo di Andria", _get_nth_weekday_of_month(3, SUN, SEP, self._year)
-        )
+        self._add_holiday("San Riccardo di Andria", self._get_nth_weekday_of_month(3, SUN, SEP))
         self._add_holiday("San Ruggero", DEC, 30)
 
     def _add_subdiv_bz_holidays(self):
@@ -481,7 +491,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_su_holidays(self):
         self._add_holiday(
-            "San Ponziano", _get_nth_weekday_of_month(2, SUN, MAY, self._year) + td(days=+4)
+            "San Ponziano", self._get_nth_weekday_of_month(2, SUN, MAY) + td(days=+4)
         )
 
     def _add_subdiv_sv_holidays(self):
@@ -539,9 +549,7 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday("San Leoluca", MAR, 1)
 
     def _add_subdiv_andria_holidays(self):
-        self._add_holiday(
-            "San Riccardo di Andria", _get_nth_weekday_of_month(3, SUN, SEP, self._year)
-        )
+        self._add_holiday("San Riccardo di Andria", self._get_nth_weekday_of_month(3, SUN, SEP))
 
     def _add_subdiv_barletta_holidays(self):
         self._add_holiday("San Ruggero", DEC, 30)

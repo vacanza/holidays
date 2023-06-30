@@ -9,8 +9,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars import _get_nth_weekday_of_month
-from holidays.constants import FEB, MAR, MAY, JUN, JUL, SUN
+from gettext import gettext as tr
+
+from holidays.calendars.gregorian import FEB, MAR, MAY, JUN, JUL, SUN
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -25,6 +26,8 @@ class Lithuania(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "LT"
+    default_language = "lt"
+    supported_languages = ("en_US", "lt", "uk")
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
@@ -32,62 +35,67 @@ class Lithuania(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate(self, year) -> None:
+        if year <= 1989:
+            return None
         super()._populate(year)
 
         # New Year's Day.
-        self._add_new_years_day("Naujieji metai")
+        self._add_new_years_day(tr("Naujųjų metų diena"))
 
-        # Day of Restoration of the State of Lithuania (1918).
-        if year >= 1918:
-            self._add_holiday("Lietuvos valstybės atkūrimo diena", FEB, 16)
+        # Day of Restoration of the State of Lithuania.
+        self._add_holiday(tr("Lietuvos valstybės atkūrimo diena"), FEB, 16)
 
-        # Day of Restoration of Independence of Lithuania
-        # (from the Soviet Union, 1990).
-        if year >= 1990:
-            self._add_holiday("Lietuvos nepriklausomybės atkūrimo diena", MAR, 11)
+        # Day of Restoration of Independence of Lithuania.
+        self._add_holiday(tr("Lietuvos nepriklausomybės atkūrimo diena"), MAR, 11)
 
         # Easter.
-        self._add_easter_sunday("Velykos")
+        self._add_easter_sunday(tr("Šv. Velykos"))
 
         # Easter Monday.
-        self._add_easter_monday("Velykų antroji diena")
+        self._add_easter_monday(tr("Antroji šv. Velykų diena"))
 
         # International Workers' Day.
-        self._add_labor_day("Tarptautinė darbo diena")
+        self._add_labor_day(tr("Tarptautinė darbo diena"))
 
         # Mother's day. First Sunday in May.
-        self._add_holiday("Motinos diena", _get_nth_weekday_of_month(1, SUN, MAY, year))
+        self._add_holiday(tr("Motinos diena"), self._get_nth_weekday_of_month(1, SUN, MAY))
 
         # Fathers's day. First Sunday in June.
-        self._add_holiday("Tėvo diena", _get_nth_weekday_of_month(1, SUN, JUN, year))
+        self._add_holiday(tr("Tėvo diena"), self._get_nth_weekday_of_month(1, SUN, JUN))
 
-        # St. John's Day (Christian name).
-        # Day of Dew (original pagan name).
         if year >= 2003:
-            self._add_saint_johns_day("Joninės, Rasos")
+            # Day of Dew and Saint John.
+            self._add_saint_johns_day(tr("Rasos ir Joninių diena"))
 
-        # Statehood Day.
         if year >= 1991:
-            self._add_holiday("Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) diena", JUL, 6)
+            self._add_holiday(
+                # Statehood Day.
+                tr(
+                    "Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) "
+                    "ir Tautiškos giesmės diena"
+                ),
+                JUL,
+                6,
+            )
 
         # Assumption Day.
-        self._add_assumption_of_mary_day("Žolinė (Švč. Mergelės Marijos ėmimo į dangų diena)")
+        self._add_assumption_of_mary_day(tr("Žolinė (Švč. Mergelės Marijos ėmimo į dangų diena)"))
 
         # All Saints' Day.
-        self._add_all_saints_day("Visų šventųjų diena (Vėlinės)")
+        self._add_all_saints_day(tr("Visų Šventųjų diena"))
 
-        # All Souls' Day.
         if year >= 2020:
-            self._add_all_souls_day("Mirusiųjų atminimo diena (Vėlinės)")
+            # All Souls' Day.
+            self._add_all_souls_day(tr("Mirusiųjų atminimo (Vėlinių) diena"))
 
         # Christmas Eve.
-        self._add_christmas_eve("Šv. Kūčios")
+        self._add_christmas_eve(tr("Kūčių diena"))
 
         # Christmas Day.
-        self._add_christmas_day("Šv. Kalėdų pirma diena")
+        self._add_christmas_day(tr("Šv. Kalėdų pirma diena"))
 
-        # Christmas Day Two.
-        self._add_christmas_day_two("Šv. Kalėdų antra diena")
+        # Second Day of Christmas.
+        self._add_christmas_day_two(tr("Šv. Kalėdų antra diena"))
 
 
 class LT(Lithuania):

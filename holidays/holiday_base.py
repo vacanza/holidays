@@ -22,7 +22,8 @@ from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Tuple, Uni
 
 from dateutil.parser import parse
 
-from holidays.constants import HOLIDAY_NAME_DELIMITER, MON, TUE, WED, THU, FRI, SAT, SUN
+from holidays.calendars.gregorian import MON, TUE, WED, THU, FRI, SAT, SUN
+from holidays.constants import HOLIDAY_NAME_DELIMITER, ALL_CATEGORIES, PUBLIC
 from holidays.helpers import _normalize_tuple
 
 DateArg = Union[date, Tuple[int, int]]
@@ -211,6 +212,10 @@ class HolidayBase(Dict[date, str]):
     """Country weekend days."""
     default_language: Optional[str] = None
     """The entity language used by default."""
+    categories: Optional[Set[str]] = None
+    """Requested holiday categories."""
+    supported_categories: Set[str] = set()
+    """All holiday categories supported by this entity."""
     supported_languages: Tuple[str, ...] = ()
     """All languages supported by this entity."""
 
@@ -223,6 +228,7 @@ class HolidayBase(Dict[date, str]):
         prov: Optional[str] = None,  # Deprecated.
         state: Optional[str] = None,  # Deprecated.
         language: Optional[str] = None,
+        categories: Optional[Tuple[str]] = None,
     ) -> None:
         """
         :param years:
@@ -253,6 +259,9 @@ class HolidayBase(Dict[date, str]):
             language translation is not supported the original holiday names
             will be used.
 
+        :param categories:
+            Requested holiday categories.
+
         :return:
             A :class:`HolidayBase` object matching the **country**.
         """
@@ -262,6 +271,7 @@ class HolidayBase(Dict[date, str]):
         self.language = language.lower() if language else None
         self.observed = observed
         self.subdiv = subdiv or prov or state
+        self.categories = set(categories) if categories else {PUBLIC}
 
         self.tr = gettext  # Default translation method.
 
@@ -285,6 +295,12 @@ class HolidayBase(Dict[date, str]):
                     "Dec, 1 2023. The list of supported subdivisions: "
                     f"{', '.join(sorted(self.subdivisions))}.",
                     DeprecationWarning,
+                )
+
+            unknown_categories = self.categories.difference(ALL_CATEGORIES)
+            if len(unknown_categories) > 0:
+                raise NotImplementedError(
+                    f"Category is not supported: {', '.join(unknown_categories)}."
                 )
 
             name = getattr(self, "country", getattr(self, "market", None))
@@ -476,7 +492,7 @@ class HolidayBase(Dict[date, str]):
     def __setattr__(self, key: str, value: Any) -> None:
         dict.__setattr__(self, key, value)
 
-        if self and key == "observed":
+        if self and key in {"categories", "observed"}:
             self.clear()
             for year in self.years:  # Re-populate holidays for each year.
                 self._populate(year)
@@ -549,6 +565,37 @@ class HolidayBase(Dict[date, str]):
         dt = args[0] if len(args) == 1 else date(self._year, *args)
         return dt.weekday() == weekday
 
+    def _get_nth_weekday_from(self, n: int, weekday: int, *args) -> date:
+        """
+        Return date of a n-th weekday after (n is positive)
+        or before (n is negative) a specific date
+        (e.g. 1st Monday, 2nd Saturday, etc).
+        """
+        from_dt = args[0] if len(args) == 1 else date(self._year, *args)
+        if n > 0:
+            delta = (n - 1) * 7 + (weekday - from_dt.weekday()) % 7
+        else:
+            delta = (n + 1) * 7 - (from_dt.weekday() - weekday) % 7
+        return from_dt + timedelta(days=delta)
+
+    def _get_nth_weekday_of_month(self, n: int, weekday: int, month: int) -> date:
+        """
+        Return date of n-th weekday of month for current year
+        (e.g. 1st Monday of Apr, 2nd Friday of June, etc).
+        If n is negative the countdown starts at the end of month
+        (i.e. -1 is last).
+        """
+        year = self._year
+        if n < 0:
+            month += 1
+            if month > 12:
+                month = 1
+                year += 1
+            start_date = date(year, month, 1) + timedelta(days=-1)
+        else:
+            start_date = date(year, month, 1)
+        return self._get_nth_weekday_from(n, weekday, start_date)
+
     def _is_friday(self, *args) -> bool:
         return self._check_weekday(FRI, *args)
 
@@ -595,13 +642,13 @@ class HolidayBase(Dict[date, str]):
 
         return name, dt
 
-    def _populate(self, year: int) -> Set[Optional[date]]:
-        """This is a private class that populates (generates and adds) holidays
+    def _populate(self, year: int) -> None:
+        """This is a private method that populates (generates and adds) holidays
         for a given year. To keep things fast, it assumes that no holidays for
         the year have already been populated. It is required to be called
         internally by any country populate() method, while should not be called
         directly from outside.
-        To add holidays to an object, use the update() method:
+        To add holidays to an object, use the update() method.
 
         :param year:
             The year to populate with holidays.
@@ -613,16 +660,30 @@ class HolidayBase(Dict[date, str]):
         """
 
         self._year = year
-        dates = set()
 
         # Populate items from the special holidays list.
         for month, day, name in _normalize_tuple(self.special_holidays.get(year, ())):
-            dates.add(self._add_holiday(name, date(year, month, day)))
+            self._add_holiday(name, month, day)
+
+        # Populate categories holidays.
+        self._populate_categories()
 
         # Populate subdivision holidays.
         self._add_subdiv_holidays()
 
-        return dates
+    def _populate_categories(self):
+        for category in self.categories:
+            # Populate items from the special holidays list for all categories.
+            special_category_holidays = getattr(self, f"special_{category}_holidays", None)
+            if special_category_holidays:
+                for month, day, name in _normalize_tuple(
+                    special_category_holidays.get(self._year, ())
+                ):
+                    self._add_holiday(name, month, day)
+
+            populate_category_holidays = getattr(self, f"_populate_{category}_holidays", None)
+            if populate_category_holidays and callable(populate_category_holidays):
+                populate_category_holidays()
 
     def append(self, *args: Union[Dict[DateLike, str], List[DateLike], DateLike]) -> None:
         """Alias for :meth:`update` to mimic list type."""
