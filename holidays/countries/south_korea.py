@@ -15,7 +15,7 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.calendars import _CustomChineseCalendar
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, SAT, SUN
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, SAT, SUN
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import (
     ChineseCalendarHolidays,

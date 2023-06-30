@@ -14,7 +14,9 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars import _CustomIslamicCalendar, GREGORIAN_CALENDAR, JULIAN_CALENDAR
+from holidays.calendars import _CustomIslamicCalendar
+from holidays.calendars.gregorian import GREGORIAN_CALENDAR
+from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, IslamicHolidays, InternationalHolidays

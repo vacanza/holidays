@@ -11,7 +11,7 @@
 
 from datetime import date
 
-from holidays.constants import NOV
+from holidays.calendars.gregorian import NOV
 from holidays.countries.puerto_rico import HolidaysPR, PR, PRI
 from tests.common import TestCase
 

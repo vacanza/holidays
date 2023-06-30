@@ -20,7 +20,8 @@ from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
 
 import holidays
-from holidays.constants import JAN, FEB, OCT, MON, TUE, SAT, SUN, HOLIDAY_NAME_DELIMITER
+from holidays.calendars.gregorian import JAN, FEB, OCT, MON, TUE, SAT, SUN
+from holidays.constants import HOLIDAY_NAME_DELIMITER
 
 
 class TestBasics(unittest.TestCase):

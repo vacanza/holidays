@@ -11,7 +11,7 @@
 
 from datetime import timedelta as td
 
-from holidays.constants import MAR, JUL, AUG, SEP, FRI, SAT
+from holidays.calendars.gregorian import MAR, JUL, AUG, SEP, FRI, SAT
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 

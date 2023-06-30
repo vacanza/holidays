@@ -13,7 +13,7 @@ import warnings
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.constants import MAR, MAY, JUL, SEP, NOV, DEC, FRI
+from holidays.calendars.gregorian import MAR, MAY, JUL, SEP, NOV, DEC, FRI
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
