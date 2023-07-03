@@ -5,6 +5,7 @@ Released ???????? ??, ????
 
 - Add special holidays categories support (#1347 by @KJhellico)
 - Introduce holiday categories support (#1320 by @KJhellico)
+- Fix Marshall Islands tests warning (#1354 by @KJhellico)
 - Fix common::TestCase methods (#1324 by @KJhellico)
 - Optimize .py files formatting (#1332 by @KJhellico)
 - Optimize .py files formatting (tests) (#1337 by @KJhellico)
