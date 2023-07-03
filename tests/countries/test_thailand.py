@@ -102,7 +102,13 @@ class TestThailand(TestCase):
 
     def test_2022_all(self):
         self.assertHolidays(
-            Thailand(categories={GOVERNMENT, PUBLIC}, years=2022),
+            Thailand(
+                categories=(
+                    GOVERNMENT,
+                    PUBLIC,
+                ),
+                years=2022,
+            ),
             ("2022-01-01", "วันขึ้นปีใหม่"),
             ("2022-01-03", "ชดเชยวันขึ้นปีใหม่"),
             ("2022-01-08", "วันเด็กแห่งชาติ"),
@@ -588,26 +594,9 @@ class TestThailand(TestCase):
         )
 
     def test_raeknakhwan(self):
-        # Boiler Plates
-        thai_special_in_lieu_holidays = "วันหยุดชดเชย"
-        thai_election = "วันเลือกตั้ง"
-        # Actual Tests
         name = "วันพืชมงคล"
         self.assertHolidays(
-            Thailand(categories={GOVERNMENT}, years=range(1997, 2006)),
-            # Boilerplate Special Holidays Checks
-            ("1998-05-11", thai_special_in_lieu_holidays),
-            ("1998-12-07", thai_special_in_lieu_holidays),
-            ("1999-05-03", thai_special_in_lieu_holidays),
-            ("1999-05-31", thai_special_in_lieu_holidays),
-            ("1999-10-25", thai_special_in_lieu_holidays),
-            ("1999-12-06", thai_special_in_lieu_holidays),
-            ("2000-01-03", thai_special_in_lieu_holidays),
-            ("2000-02-21", thai_special_in_lieu_holidays),
-            ("2000-08-14", thai_special_in_lieu_holidays),
-            ("2000-12-11", thai_special_in_lieu_holidays),
-            ("2000-12-29", thai_election),
-            # Actual Checks
+            Thailand(categories=(GOVERNMENT,), years=range(1997, 2024)),
             ("1997-05-13", name),
             ("1998-05-13", name),
             ("2000-05-15", name),
@@ -616,37 +605,32 @@ class TestThailand(TestCase):
             ("2003-05-08", name),
             ("2004-05-07", name),
             ("2005-05-11", name),
+            ("2006-05-11", name),
+            ("2007-05-10", name),
+            ("2008-05-09", name),
+            ("2009-05-11", name),
+            ("2010-05-10", name),
+            ("2011-05-13", name),
+            ("2012-05-09", name),
+            ("2013-05-13", name),
+            ("2014-05-09", name),
+            ("2015-05-13", name),
+            ("2016-05-09", name),
+            ("2017-05-12", name),
+            ("2018-05-14", name),
+            ("2019-05-09", name),
+            ("2020-05-11", name),
+            ("2021-05-13", name),
+            ("2022-05-17", name),
+            ("2023-05-11", name),
         )
 
     def test_bank_holiday(self):
-        # Boiler Plates
-        thai_bridge_public_holiday = "วันหยุดพิเศษ (เพิ่มเติม)"
-        rama_ix_crem = "วันพระราชพิธีถวายพระเพลิงพระบรมศพพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช"
-        rama_x_coronation = "พระราชพิธีบรมราชาภิเษก พระบาทสมเด็จพระวชิรเกล้าเจ้าอยู่หัว"
-        songkran_festival_in_lieu_covid = "ชดเชยวันสงกรานต์"
-        # Actual Tests
         a_name = "วันหยุดเพิ่มเติมสำหรับการปิดบัญชีประจำปีของธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร"
         m_name = "วันหยุดภาคครึ่งปีของสถาบันการเงินและสถาบันการเงินเฉพาะกิจ"
 
         self.assertHolidays(
-            Thailand(categories={BANK}, years=range(2017, 2023)),
-            # Boilerplate Special Holidays Checks
-            ("2017-10-26", rama_ix_crem),
-            ("2019-05-06", rama_x_coronation),
-            ("2020-07-27", songkran_festival_in_lieu_covid),
-            ("2020-09-04", songkran_festival_in_lieu_covid),
-            ("2020-09-07", songkran_festival_in_lieu_covid),
-            ("2020-11-19", thai_bridge_public_holiday),
-            ("2020-11-20", thai_bridge_public_holiday),
-            ("2020-12-11", thai_bridge_public_holiday),
-            ("2021-02-12", thai_bridge_public_holiday),
-            ("2021-04-12", thai_bridge_public_holiday),
-            ("2021-09-24", thai_bridge_public_holiday),
-            ("2022-07-15", thai_bridge_public_holiday),
-            ("2022-07-29", thai_bridge_public_holiday),
-            ("2022-10-14", thai_bridge_public_holiday),
-            ("2022-12-30", thai_bridge_public_holiday),
-            # Actual Checks
+            Thailand(categories=(BANK,), years=range(2017, 2023)),
             ("2017-04-01", a_name),
             ("2017-07-01", m_name),
             ("2018-04-01", a_name),

@@ -13,8 +13,8 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.constants import MON, SAT, BANK, GOVERNMENT, PUBLIC,
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.constants import MON, SAT, BANK, GOVERNMENT, PUBLIC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import InternationalHolidays, ThaiCalendarHolidays
 
@@ -152,7 +152,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
     # Songkran Festival (in lieu).
     songkran_festival_in_lieu_covid = tr("ชดเชยวันสงกรานต์")
 
-    special_holidays = {
+    special_public_holidays = {
         # 1992-1994 (include In Lieus, Checked with Bank of Thailand Data).
         1992: (
             (MAY, 18, thai_special_in_lieu_holidays),
@@ -683,9 +683,6 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # *** NOTE: only observed by government sectors.
         # TODO: Update this annually around Dec of each year.
 
-        # Royal Ploughing Ceremony.
-        raeknakhwan = tr("วันพืชมงคล")
-
         raeknakhwan_dates = {
             1997: (MAY, 13),
             1998: (MAY, 13),
@@ -715,12 +712,9 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
             2022: (MAY, 17),
             2023: (MAY, 11),
         }
-        # For years with exact date data.
-        if self._year in raeknakhwan_dates:
-            self._add_holiday(raeknakhwan, *raeknakhwan_dates[self._year])
-        # Approx. otherwise for 1957-2013.
-        elif 1957 <= self._year <= 1996:
-            self._add_holiday(raeknakhwan, MAY, 13)
+        if 1957 <= self._year <= 2023 and self._year != 1999:
+            # Royal Ploughing Ceremony.
+            self._add_holiday(tr("วันพืชมงคล"), *raeknakhwan_dates.get(self._year, (MAY, 13)))
 
 
 class TH(Thailand):
