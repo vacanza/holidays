@@ -13,7 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.calendars import _CustomIslamicCalendar
-from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import JAN, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 
@@ -22,7 +22,7 @@ class Chad(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_Chad
-      - https://www.ilo.org/dyn/natlex/docs/ELECTRONIC/97323/115433/F-316075167/TCD-97323.pdf  # noqa: E501
+      - https://www.ilo.org/dyn/natlex/docs/ELECTRONIC/97323/115433/F-316075167/TCD-97323.pdf
     """
 
     country = "TD"
@@ -65,16 +65,12 @@ class Chad(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
         # All Saints' Day.
         self._add_all_saints_day("All Saints' Day")
 
-        self._add_observed(
-            # Republic Day.
-            self._add_holiday("Republic Day", NOV, 28)
-        )
+        # Republic Day.
+        self._add_observed(self._add_holiday("Republic Day", NOV, 28))
 
         if year >= 1991:
-            self._add_observed(
-                # Freedom and Democracy Day.
-                self._add_holiday("Freedom and Democracy Day", DEC, 1)
-            )
+            # Freedom and Democracy Day.
+            self._add_observed(self._add_holiday("Freedom and Democracy Day", DEC, 1))
 
         # Christmas Day.
         self._add_christmas_day("Christmas Day")

@@ -193,8 +193,7 @@ class TestChile(TestCase):
         )
 
         self.assertNoHolidayName(
-            "Día de la Unidad Nacional",
-            set(range(1915, 2050)).difference({1999, 2000, 2001}),
+            "Día de la Unidad Nacional", set(range(1915, 2050)).difference({1999, 2000, 2001})
         )
 
     def test_independence_holidays(self):
@@ -231,10 +230,7 @@ class TestChile(TestCase):
         )
 
         self.assertHolidayName(name, (f"{year}-10-12" for year in years))
-        self.assertHolidayName(
-            "Día del Encuentro de dos Mundos",
-            range(2000, 2050),
-        )
+        self.assertHolidayName("Día del Encuentro de dos Mundos", range(2000, 2050))
 
     def test_reformation_day(self):
         self.assertHoliday(
@@ -256,8 +252,7 @@ class TestChile(TestCase):
             "2023-10-27",
         )
         self.assertNoHolidayName(
-            "Día Nacional de las Iglesias Evangélicas y Protestantes",
-            range(1915, 2008),
+            "Día Nacional de las Iglesias Evangélicas y Protestantes", range(1915, 2008)
         )
 
     def test_all_saints(self):
@@ -371,10 +366,7 @@ class TestChile(TestCase):
             ("2022-09-18", "Día de la Independencia"),
             ("2022-09-19", "Día de las Glorias del Ejército"),
             ("2022-10-10", "Día del Encuentro de dos Mundos"),
-            (
-                "2022-10-31",
-                "Día Nacional de las Iglesias Evangélicas y Protestantes",
-            ),
+            ("2022-10-31", "Día Nacional de las Iglesias Evangélicas y Protestantes"),
             ("2022-11-01", "Día de Todos los Santos"),
             ("2022-12-08", "La Inmaculada Concepción"),
             ("2022-12-25", "Navidad"),

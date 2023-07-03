@@ -11,8 +11,8 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars import JULIAN_CALENDAR
-from holidays.constants import JAN, APR, MAY, JUL, SEP
+from holidays.calendars.gregorian import JAN, APR, MAY, JUL, SEP
+from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -23,7 +23,7 @@ class Armenia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
      - https://en.wikipedia.org/wiki/Public_holidays_in_Armenia
-     - http://www.parliament.am/legislation.php?sel=show&ID=1274&lang=arm&enc=utf8  # noqa: E501
+     - http://www.parliament.am/legislation.php?sel=show&ID=1274&lang=arm&enc=utf8
      - https://www.arlis.am/documentview.aspx?docid=259
     """
 

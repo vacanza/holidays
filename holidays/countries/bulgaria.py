@@ -14,7 +14,7 @@ from gettext import gettext as tr
 
 from dateutil.easter import EASTER_ORTHODOX, easter
 
-from holidays.constants import JAN, MAR, MAY, SEP, NOV, DEC
+from holidays.calendars.gregorian import JAN, MAR, MAY, SEP, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 
@@ -56,11 +56,7 @@ class Bulgaria(HolidayBase):
         self._add_holiday(tr("Ден на Освобождението на България от османско иго"), MAR, 3)
 
         # International Workers' Day.
-        self._add_holiday(
-            tr("Ден на труда и на международната работническа солидарност"),
-            MAY,
-            1,
-        )
+        self._add_holiday(tr("Ден на труда и на международната работническа солидарност"), MAY, 1)
 
         # Saint George's Day.
         self._add_holiday(tr("Гергьовден, Ден на храбростта и Българската армия"), MAY, 6)

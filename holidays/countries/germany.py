@@ -9,11 +9,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars import _get_nth_weekday_from
-from holidays.constants import MAY, SEP, OCT, NOV, WED
+from holidays.calendars.gregorian import MAY, SEP, OCT, NOV, WED
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -114,12 +112,8 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday(tr("Reformationstag"), OCT, 31)
 
         if year <= 1994:
-            # last wednesday before year-11-23
-            self._add_holiday(
-                # Repentance and Prayer Day.
-                tr("Buß- und Bettag"),
-                _get_nth_weekday_from(-1, WED, date(year, NOV, 22)),
-            )
+            # Repentance and Prayer Day.
+            self._add_holiday(tr("Buß- und Bettag"), self._get_nth_weekday_from(-1, WED, NOV, 22))
 
         # Christmas Day.
         self._add_christmas_day(tr("Erster Weihnachtstag"))
@@ -235,10 +229,7 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self._year >= 1995:
             # last wednesday before year-11-23
-            self._add_holiday(
-                tr("Buß- und Bettag"),
-                _get_nth_weekday_from(-1, WED, date(self._year, NOV, 22)),
-            )
+            self._add_holiday(tr("Buß- und Bettag"), self._get_nth_weekday_from(-1, WED, NOV, 22))
 
     def _add_subdiv_st_holidays(self):
         if self._year >= 1991:

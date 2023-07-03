@@ -3,7 +3,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.23\n"
+"Project-Id-Version: Python Holidays 0.28\n"
 "POT-Creation-Date: 2023-04-01 17:13+0300\n"
 "PO-Revision-Date: 2023-04-01 17:27+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
@@ -80,3 +80,18 @@ msgstr "Різдво Христове"
 #: ./holidays/countries/austria.py:78
 msgid "Stefanitag"
 msgstr "День Святого Стефана"
+
+#. Good Friday.
+#: ./holidays/countries/austria.py:82
+msgid "Karfreitag"
+msgstr "Страсна п'ятниця"
+
+#. Christmas Eve.
+#: ./holidays/countries/austria.py:85
+msgid "Heiliger Abend"
+msgstr "Святий вечір"
+
+#. New Year's Eve.
+#: ./holidays/countries/austria.py:88
+msgid "Silvester"
+msgstr "Переддень Нового року"

@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.constants import JAN, MAR, JUL, AUG, NOV
+from holidays.calendars.gregorian import JAN, MAR, JUL, AUG, NOV
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import IslamicHolidays, InternationalHolidays
 
@@ -47,9 +47,7 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
         # Independence Manifesto Day post 1944
         if year >= 1945:
             self._add_holiday(
-                "Commémoration de la présentation du manifeste de l'indépendance",
-                JAN,
-                11,
+                "Commémoration de la présentation du manifeste de l'indépendance", JAN, 11
             )
 
         # Amazigh New Year

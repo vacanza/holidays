@@ -36,27 +36,27 @@ msgid "Празник рада"
 msgstr "International Workers' Day"
 
 #. Armistice Day.
-#: ./holidays/countries/serbia.py:70
+#: ./holidays/countries/serbia.py:69
 msgid "Дан примирја у Првом светском рату"
 msgstr "Armistice Day"
 
 #. Good Friday.
-#: ./holidays/countries/serbia.py:74
+#: ./holidays/countries/serbia.py:72
 msgid "Велики петак"
 msgstr "Good Friday"
 
 #. Easter Saturday.
-#: ./holidays/countries/serbia.py:76
+#: ./holidays/countries/serbia.py:74
 msgid "Велика субота"
 msgstr "Easter Saturday"
 
 #. Easter Sunday.
-#: ./holidays/countries/serbia.py:78
+#: ./holidays/countries/serbia.py:76
 msgid "Васкрс"
 msgstr "Easter Sunday"
 
 #. Easter Monday.
-#: ./holidays/countries/serbia.py:80
+#: ./holidays/countries/serbia.py:78
 msgid "Други дан Васкрса"
 msgstr "Easter Monday"
 

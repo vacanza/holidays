@@ -13,8 +13,8 @@ import unittest
 from datetime import date
 
 from holidays import calendars
-from holidays.calendars import _get_nth_weekday_of_month, KHMER_CALENDAR
-from holidays.constants import FEB, MAR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
+from holidays.calendars.gregorian import FEB, MAR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
+from holidays.calendars.thai import KHMER_CALENDAR
 
 
 class TestThaiLunisolarCalendar(unittest.TestCase):
@@ -23,10 +23,7 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
         self.calendar = calendars._ThaiLunisolar()
 
     def test_check_calendar(self):
-        self.assertRaises(
-            ValueError,
-            lambda: calendars._ThaiLunisolar("INVALID_CALENDAR"),
-        )
+        self.assertRaises(ValueError, lambda: calendars._ThaiLunisolar("INVALID_CALENDAR"))
 
     def test_asarnha_bucha_date(self):
         # THAI_CALENDAR
@@ -39,10 +36,7 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
             2025: date(2025, JUL, 10),
         }
         for year in asarnha_bucha_year_date:
-            self.assertEqual(
-                asarnha_bucha_year_date[year],
-                self.calendar.asarnha_bucha_date(year),
-            )
+            self.assertEqual(asarnha_bucha_year_date[year], self.calendar.asarnha_bucha_date(year))
         # KHMER_CALENDAR
         asanha_bochea_year_date = {
             self.calendar.START_YEAR - 1: None,
@@ -69,10 +63,7 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
             2025: date(2025, MAY, 19),
         }
         for year in atthami_bucha_year_date:
-            self.assertEqual(
-                atthami_bucha_year_date[year],
-                self.calendar.atthami_bucha_date(year),
-            )
+            self.assertEqual(atthami_bucha_year_date[year], self.calendar.atthami_bucha_date(year))
         # KHMER_CALENDAR
         athami_bochea_year_date = {
             self.calendar.START_YEAR - 1: None,
@@ -99,10 +90,7 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
             2025: date(2025, JUL, 11),
         }
         for year in khao_phansa_year_date:
-            self.assertEqual(
-                khao_phansa_year_date[year],
-                self.calendar.khao_phansa_date(year),
-            )
+            self.assertEqual(khao_phansa_year_date[year], self.calendar.khao_phansa_date(year))
         # KHMER_CALENDAR
         bony_kanben_year_date = {
             self.calendar.START_YEAR - 1: None,
@@ -128,10 +116,7 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
             2025: date(2025, NOV, 5),
         }
         for year in loy_krathong_year_date:
-            self.assertEqual(
-                loy_krathong_year_date[year],
-                self.calendar.loy_krathong_date(year),
-            )
+            self.assertEqual(loy_krathong_year_date[year], self.calendar.loy_krathong_date(year))
 
     def test_makha_bucha_date(self):
         # THAI_CALENDAR
@@ -144,10 +129,7 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
             2025: date(2025, FEB, 12),
         }
         for year in makha_bucha_year_date:
-            self.assertEqual(
-                makha_bucha_year_date[year],
-                self.calendar.makha_bucha_date(year),
-            )
+            self.assertEqual(makha_bucha_year_date[year], self.calendar.makha_bucha_date(year))
         # KHMER_CALENDAR
         meak_bochea_year_date = {
             self.calendar.START_YEAR - 1: None,
@@ -173,10 +155,7 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
             2025: date(2025, OCT, 7),
         }
         for year in ok_phansa_year_date:
-            self.assertEqual(
-                ok_phansa_year_date[year],
-                self.calendar.ok_phansa_date(year),
-            )
+            self.assertEqual(ok_phansa_year_date[year], self.calendar.ok_phansa_date(year))
 
     def test_pchum_ben_date(self):
         pchum_ben_year_date = {
@@ -188,10 +167,7 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
             2025: date(2025, SEP, 22),
         }
         for year in pchum_ben_year_date:
-            self.assertEqual(
-                pchum_ben_year_date[year],
-                self.calendar.pchum_ben_date(year),
-            )
+            self.assertEqual(pchum_ben_year_date[year], self.calendar.pchum_ben_date(year))
 
     def test_preah_neangkoal_date(self):
         preah_neangkoal_year_date = {
@@ -204,8 +180,7 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
         }
         for year in preah_neangkoal_year_date:
             self.assertEqual(
-                preah_neangkoal_year_date[year],
-                self.calendar.preah_neangkoal_date(year),
+                preah_neangkoal_year_date[year], self.calendar.preah_neangkoal_date(year)
             )
 
     def test_visakha_bucha_date(self):
@@ -219,10 +194,7 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
             2025: date(2025, MAY, 11),
         }
         for year in visakha_bucha_year_date:
-            self.assertEqual(
-                visakha_bucha_year_date[year],
-                self.calendar.visakha_bucha_date(year),
-            )
+            self.assertEqual(visakha_bucha_year_date[year], self.calendar.visakha_bucha_date(year))
         # KHMER_CALENDAR
         visaka_bochea_year_date = {
             self.calendar.START_YEAR - 1: None,
@@ -237,16 +209,3 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
                 visaka_bochea_year_date[year],
                 self.calendar.visakha_bucha_date(year, KHMER_CALENDAR),
             )
-
-
-class TestRelativeWeekdays(unittest.TestCase):
-    def test_weekday_of_month(self):
-        # 1st Monday of 2023 months
-        for month, day in enumerate((3, 7, 7, 4, 2, 6, 4, 1, 5, 3, 7, 5), 1):
-            first_monday = _get_nth_weekday_of_month(1, 1, month, 2023)
-            self.assertEqual(first_monday.day, day)
-
-        # Last Saturday of 2023 months
-        for month, day in enumerate((28, 25, 25, 29, 27, 24, 29, 26, 30, 28, 25, 30), 1):
-            last_friday = _get_nth_weekday_of_month(-1, 5, month, 2023)
-            self.assertEqual(last_friday.day, day)

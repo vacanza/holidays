@@ -9,6 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.constants import WORKDAY
 from holidays.countries.slovakia import Slovakia, SK, SVK
 from tests.common import TestCase
 
@@ -31,8 +32,7 @@ class TestSlovakia(TestCase):
 
     def test_new_years_day(self):
         self.assertHolidayName(
-            "Deň vzniku Slovenskej republiky",
-            (f"{year}-01-01" for year in range(1993, 2050)),
+            "Deň vzniku Slovenskej republiky", (f"{year}-01-01" for year in range(1993, 2050))
         )
 
     def test_epiphany(self):
@@ -62,17 +62,11 @@ class TestSlovakia(TestCase):
         )
 
     def test_labor_day(self):
-        self.assertHolidayName(
-            "Sviatok práce",
-            (f"{year}-05-01" for year in range(1993, 2050)),
-        )
+        self.assertHolidayName("Sviatok práce", (f"{year}-05-01" for year in range(1993, 2050)))
 
     def test_day_of_victory_over_fascizm(self):
         name = "Deň víťazstva nad fašizmom"
-        self.assertHolidayName(
-            name,
-            (f"{year}-05-08" for year in range(1997, 2050)),
-        )
+        self.assertHolidayName(name, (f"{year}-05-08" for year in range(1997, 2050)))
         self.assertNoHoliday(f"{year}-05-08" for year in range(1993, 1997))
         self.assertNoHolidayName(name, range(1993, 1997))
 
@@ -90,54 +84,44 @@ class TestSlovakia(TestCase):
 
     def test_constitution_day(self):
         self.assertHolidayName(
-            "Deň Ústavy Slovenskej republiky",
-            (f"{year}-09-01" for year in range(1993, 2050)),
+            "Deň Ústavy Slovenskej republiky", (f"{year}-09-01" for year in range(1993, 2050))
         )
 
     def test_day_of_our_lady_of_the_seven_sorrows(self):
         self.assertHolidayName(
-            "Sedembolestná Panna Mária",
-            (f"{year}-09-15" for year in range(1993, 2050)),
+            "Sedembolestná Panna Mária", (f"{year}-09-15" for year in range(1993, 2050))
         )
-
-    def test_establishment_state_day(self):
-        name = "Deň vzniku samostatného česko-slovenského štátu"
-        self.assertHolidayName(name, (f"{year}-10-28" for year in range(2021, 2050)))
-        self.assertNoHoliday(f"{year}-10-28" for year in range(1993, 2021))
-        self.assertNoHolidayName(name, range(1993, 2021))
 
     def test_all_saints_day(self):
         self.assertHolidayName(
-            "Sviatok Všetkých svätých",
-            (f"{year}-11-01" for year in range(1993, 2050)),
+            "Sviatok Všetkých svätých", (f"{year}-11-01" for year in range(1993, 2050))
         )
 
     def test_day_of_freedom_and_democracy(self):
         name = "Deň boja za slobodu a demokraciu"
-        self.assertHolidayName(
-            name,
-            (f"{year}-11-17" for year in range(2001, 2050)),
-        )
+        self.assertHolidayName(name, (f"{year}-11-17" for year in range(2001, 2050)))
         self.assertNoHoliday(f"{year}-11-17" for year in range(1993, 2001))
         self.assertNoHolidayName(name, range(1993, 2001))
 
     def test_christmas_eve(self):
-        self.assertHolidayName(
-            "Štedrý deň",
-            (f"{year}-12-24" for year in range(1993, 2050)),
-        )
+        self.assertHolidayName("Štedrý deň", (f"{year}-12-24" for year in range(1993, 2050)))
 
     def test_christmas_day(self):
         self.assertHolidayName(
-            "Prvý sviatok vianočný",
-            (f"{year}-12-25" for year in range(1993, 2050)),
+            "Prvý sviatok vianočný", (f"{year}-12-25" for year in range(1993, 2050))
         )
 
     def test_stephens_day(self):
         self.assertHolidayName(
-            "Druhý sviatok vianočný",
-            (f"{year}-12-26" for year in range(1993, 2050)),
+            "Druhý sviatok vianočný", (f"{year}-12-26" for year in range(1993, 2050))
         )
+
+    def test_establishment_state_day(self):
+        name = "Deň vzniku samostatného česko-slovenského štátu"
+        holidays = Slovakia(categories=(WORKDAY,), years=range(1993, 2050))
+        self.assertHolidayName(name, holidays, (f"{year}-10-28" for year in range(2021, 2050)))
+        self.assertNoHoliday(holidays, (f"{year}-10-28" for year in range(1993, 2021)))
+        self.assertNoHolidayName(name, holidays, range(1993, 2021))
 
     def test_2021(self):
         self.assertHolidays(
@@ -155,12 +139,17 @@ class TestSlovakia(TestCase):
             ("2021-08-29", "Výročie Slovenského národného povstania"),
             ("2021-09-01", "Deň Ústavy Slovenskej republiky"),
             ("2021-09-15", "Sedembolestná Panna Mária"),
-            ("2021-10-28", "Deň vzniku samostatného česko-slovenského štátu"),
             ("2021-11-01", "Sviatok Všetkých svätých"),
             ("2021-11-17", "Deň boja za slobodu a demokraciu"),
             ("2021-12-24", "Štedrý deň"),
             ("2021-12-25", "Prvý sviatok vianočný"),
             ("2021-12-26", "Druhý sviatok vianočný"),
+        )
+
+    def test_workday_2021(self):
+        self.assertHolidays(
+            Slovakia(categories=(WORKDAY,), years=2021),
+            ("2021-10-28", "Deň vzniku samostatného česko-slovenského štátu"),
         )
 
     def test_l10n_default(self):
@@ -178,10 +167,6 @@ class TestSlovakia(TestCase):
             ("2022-08-29", "Výročie Slovenského národného povstania"),
             ("2022-09-01", "Deň Ústavy Slovenskej republiky"),
             ("2022-09-15", "Sedembolestná Panna Mária"),
-            (
-                "2022-10-28",
-                "Deň vzniku samostatného česko-slovenského štátu",
-            ),
             ("2022-11-01", "Sviatok Všetkých svätých"),
             ("2022-11-17", "Deň boja za slobodu a demokraciu"),
             ("2022-12-24", "Štedrý deň"),
@@ -192,14 +177,8 @@ class TestSlovakia(TestCase):
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
-            (
-                "2022-01-01",
-                "Day of the Establishment of the Slovak Republic",
-            ),
-            (
-                "2022-01-06",
-                "Epiphany (Three Kings' Day and Orthodox Christmas)",
-            ),
+            ("2022-01-01", "Day of the Establishment of the Slovak Republic"),
+            ("2022-01-06", "Epiphany (Three Kings' Day and Orthodox Christmas)"),
             ("2022-04-15", "Good Friday"),
             ("2022-04-18", "Easter Monday"),
             ("2022-05-01", "Labor Day"),
@@ -208,10 +187,6 @@ class TestSlovakia(TestCase):
             ("2022-08-29", "Slovak National Uprising Anniversary"),
             ("2022-09-01", "Constitution Day"),
             ("2022-09-15", "Day of Our Lady of the Seven Sorrows"),
-            (
-                "2022-10-28",
-                "Day of the Establishment of the Independent Czech-Slovak State",
-            ),
             ("2022-11-01", "All Saints' Day"),
             ("2022-11-17", "Struggle for Freedom and Democracy Day"),
             ("2022-12-24", "Christmas Eve"),
@@ -223,10 +198,7 @@ class TestSlovakia(TestCase):
         self.assertLocalizedHolidays(
             "uk",
             ("2022-01-01", "День утворення Словацької Республіки"),
-            (
-                "2022-01-06",
-                "Богоявлення (Три царі і православне Різдво Христове)",
-            ),
+            ("2022-01-06", "Богоявлення (Три царі і православне Різдво Христове)"),
             ("2022-04-15", "Страсна пʼятниця"),
             ("2022-04-18", "Великодній понеділок"),
             ("2022-05-01", "День праці"),
@@ -235,10 +207,6 @@ class TestSlovakia(TestCase):
             ("2022-08-29", "Річниця Словацького національного повстання"),
             ("2022-09-01", "День конституції Словацької Республіки"),
             ("2022-09-15", "День Божої Матері семи скорбот"),
-            (
-                "2022-10-28",
-                "День створення незалежної чесько-словацької держави",
-            ),
             ("2022-11-01", "День усіх святих"),
             ("2022-11-17", "День боротьби за свободу та демократію"),
             ("2022-12-24", "Святий вечір"),

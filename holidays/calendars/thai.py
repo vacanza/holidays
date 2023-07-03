@@ -14,7 +14,6 @@ from datetime import timedelta as td
 from functools import lru_cache
 from typing import Optional
 
-# Manual Assign to avoid circular import
 KHMER_CALENDAR = "KHMER_CALENDAR"
 THAI_CALENDAR = "THAI_CALENDAR"
 

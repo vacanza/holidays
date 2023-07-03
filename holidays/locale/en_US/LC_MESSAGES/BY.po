@@ -45,15 +45,17 @@ msgstr "Labor Day"
 msgid "Дзень Перамогі"
 msgstr "Victory Day"
 
-#: ./holidays/countries/belarus.py:71
+#. Independence Day.
+#: ./holidays/countries/belarus.py:70
 msgid "Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)"
 msgstr "Independence Day (Republic Day)"
 
 #. October Revolution Day.
-#: ./holidays/countries/belarus.py:77
+#: ./holidays/countries/belarus.py:73
 msgid "Дзень Кастрычніцкай рэвалюцыі"
 msgstr "October Revolution Day"
 
-#: ./holidays/countries/belarus.py:81
+#. Catholic Christmas Day.
+#: ./holidays/countries/belarus.py:76
 msgid "Нараджэнне Хрыстова (каталіцкае Раство)"
 msgstr "Catholic Christmas Day"

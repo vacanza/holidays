@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.constants import MAY, JUN, AUG, SEP
+from holidays.calendars.gregorian import MAY, JUN, AUG, SEP
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -17,7 +17,7 @@ from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 class ElSalvador(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
-    - https://www.transparencia.gob.sv/institutions/gd-usulutan/documents/192280/download   # noqa: E501
+    - https://www.transparencia.gob.sv/institutions/gd-usulutan/documents/192280/download
     - https://www.timeanddate.com/holidays/el-salvador
     - https://www.officeholidays.com/countries/el-salvador
     """

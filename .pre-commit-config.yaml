@@ -32,13 +32,10 @@ repos:
     rev: 5.12.0
     hooks:
       - id: isort
-        # holidays/countries/__init__.py is excluded due to a bug whereby
-        # black and isort don't agree and enter into an infinite fix loop.
-        # TODO remove this exclusion when isort and black play nice again.
-        exclude: ^(docs|holidays/countries/__init__.py)
+        exclude: ^(docs)
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.3.0
+    rev: v1.4.1
     hooks:
       - id: mypy
         additional_dependencies: [types-all]

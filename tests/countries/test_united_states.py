@@ -9,1242 +9,1612 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
-from datetime import date
-from datetime import timedelta as td
-
-import holidays
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, SEP, OCT, NOV, DEC, SAT, SUN
+from holidays.countries.united_states import UnitedStates, US, USA
+from tests.common import TestCase
 
 
-class TestUS(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.US(observed=False)
+class TestUS(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(
+            UnitedStates, years=range(1865, 2050), years_non_observed=range(2000, 2024)
+        )
+        cls.state_hols = {
+            subdiv: UnitedStates(subdiv=subdiv, years=range(1865, 2050))
+            for subdiv in UnitedStates.subdivisions
+        }
+
+    def test_country_aliases(self):
+        self.assertCountryAliases(UnitedStates, US, USA)
 
     def test_new_years(self):
-        self.assertNotIn(date(2010, 12, 31), self.holidays)
-        self.assertNotIn(date(2017, 1, 2), self.holidays)
-        self.holidays.observed = True
-        self.assertIn(date(2010, 12, 31), self.holidays)
-        self.assertIn(date(2017, 1, 2), self.holidays)
-        self.holidays.observed = False
-        for year in range(1900, 2100):
-            dt = date(year, 1, 1)
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=-1), self.holidays)
-            self.assertNotIn(dt + td(days=+1), self.holidays)
-
-    def test_Juneteenth_day(self):
-        for year in range(2010, 2020):
-            self.assertNotIn(date(year, 6, 19), self.holidays)
-        for year in range(2021, 2030):
-            self.assertIn(date(year, 6, 19), self.holidays)
-        self.holidays.observed = True
-        self.assertIn(date(2021, 6, 18), self.holidays)
-        self.assertIn(date(2022, 6, 20), self.holidays)
-
-    def test_epiphany(self):
-        pr_holidays = holidays.US(subdiv="PR")
-        for year in range(2010, 2021):
-            self.assertNotIn(date(year, 1, 6), self.holidays)
-            self.assertIn(date(year, 1, 6), pr_holidays)
-
-    def test_three_kings_day(self):
-        vi_holidays = holidays.US(subdiv="VI")
-        for year in range(2010, 2021):
-            self.assertNotIn(date(year, 1, 6), self.holidays)
-            self.assertIn(date(year, 1, 6), vi_holidays)
-
-    def test_lee_jackson_day(self):
-        va_holidays = holidays.US(subdiv="VA")
-        self.assertNotIn(date(1888, 1, 19), va_holidays)
-        self.assertNotIn(date(1983, 1, 19), va_holidays)
-        self.assertNotIn("Lee Jackson Day", va_holidays.get_list(date(2000, 1, 17)))
-        for dt in [
-            date(1889, 1, 19),
-            date(1982, 1, 19),
-            date(1983, 1, 17),
-            date(1999, 1, 18),
-            date(2000, 1, 14),
-            date(2001, 1, 12),
-            date(2013, 1, 18),
-            date(2014, 1, 17),
-            date(2018, 1, 12),
-        ]:
-            self.assertNotIn("Lee Jackson Day", self.holidays.get_list(dt))
-            self.assertIn(dt, va_holidays)
-            self.assertIn("Lee Jackson Day", va_holidays.get_list(dt))
-
-    def test_inauguration_day(self):
-        name = "Inauguration Day"
-        dc_holidays = holidays.US(subdiv="DC")
-        la_holidays = holidays.US(subdiv="LA")
-        md_holidays = holidays.US(subdiv="MD")
-        va_holidays = holidays.US(subdiv="VA")
-        for year in (1789, 1793, 1877, 1929, 1933):
-            self.assertNotIn(name, self.holidays.get_list(date(year, 3, 4)))
-            self.assertIn(name, dc_holidays.get_list(date(year, 3, 4)))
-            self.assertIn(name, la_holidays.get_list(date(year, 3, 4)))
-            self.assertIn(name, md_holidays.get_list(date(year, 3, 4)))
-            self.assertIn(name, va_holidays.get_list(date(year, 3, 4)))
-        for year in (1937, 1941, 1957, 2013, 2017):
-            self.assertNotIn(name, self.holidays.get_list(date(year, 1, 20)))
-            self.assertIn(name, dc_holidays.get_list(date(year, 1, 20)))
-            self.assertIn(name, la_holidays.get_list(date(year, 1, 20)))
-            self.assertIn(name, md_holidays.get_list(date(year, 1, 20)))
-            self.assertIn(name, va_holidays.get_list(date(year, 1, 20)))
-        for year in (1785, 1788, 2010, 2011, 2012, 2014, 2015, 2016):
-            self.assertNotIn(name, dc_holidays.get_list(date(year, 3, 4)))
-            self.assertNotIn(name, la_holidays.get_list(date(year, 3, 4)))
-            self.assertNotIn(name, md_holidays.get_list(date(year, 3, 4)))
-            self.assertNotIn(name, va_holidays.get_list(date(year, 3, 4)))
-            self.assertNotIn(name, dc_holidays.get_list(date(year, 1, 20)))
-            self.assertNotIn(name, la_holidays.get_list(date(year, 1, 20)))
-            self.assertNotIn(name, md_holidays.get_list(date(year, 1, 20)))
-            self.assertNotIn(name, va_holidays.get_list(date(year, 1, 20)))
-
-    def test_martin_luther(self):
-        for dt in [
-            date(1986, 1, 20),
-            date(1999, 1, 18),
-            date(2000, 1, 17),
-            date(2012, 1, 16),
-            date(2013, 1, 21),
-            date(2014, 1, 20),
-            date(2015, 1, 19),
-            date(2016, 1, 18),
-            date(2020, 1, 20),
-        ]:
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=-1), self.holidays)
-            self.assertNotIn(dt + td(days=+1), self.holidays)
-        self.assertNotIn("Martin Luther King Jr. Day", holidays.US(years=[1985]).values())
-        self.assertIn("Martin Luther King Jr. Day", holidays.US(years=[1986]).values())
-        self.assertEqual(
-            holidays.US(subdiv="AL").get("2015-01-19"),
-            "Robert E. Lee/Martin Luther King Birthday",
+        name = "New Year's Day"
+        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1871, 2050)))
+        self.assertNoHoliday(f"{year}-01-01" for year in range(1865, 1871))
+        self.assertNoHolidayName(name, range(1865, 1871))
+        obs_dt = (
+            "2004-12-31",
+            "2006-01-02",
+            "2010-12-31",
+            "2012-01-02",
+            "2017-01-02",
+            "2021-12-31",
+            "2023-01-02",
         )
-        self.assertEqual(
-            holidays.US(subdiv="AR").get("2015-01-19"),
-            ("Dr. Martin Luther King Jr. and Robert E. Lee's Birthdays"),
-        )
-        self.assertEqual(
-            holidays.US(subdiv="MS").get("2015-01-19"),
-            ("Dr. Martin Luther King Jr. and Robert E. Lee's Birthdays"),
-        )
-        self.assertEqual(
-            holidays.US(subdiv="AZ").get("2015-01-19"),
-            "Dr. Martin Luther King Jr./Civil Rights Day",
-        )
-        self.assertEqual(
-            holidays.US(subdiv="NH").get("2015-01-19"),
-            "Dr. Martin Luther King Jr./Civil Rights Day",
-        )
-        self.assertEqual(
-            holidays.US(subdiv="ID").get("2015-01-19"),
-            "Martin Luther King Jr. - Idaho Human Rights Day",
-        )
-        self.assertNotEqual(
-            holidays.US(subdiv="ID").get("2000-01-17"),
-            "Martin Luther King Jr. - Idaho Human Rights Day",
-        )
-        self.assertEqual(
-            holidays.US(subdiv="GA").get("2011-01-17"),
-            "Robert E. Lee's Birthday",
-        )
-
-    def test_lincolns_birthday(self):
-        ca_holidays = holidays.US(subdiv="CA")
-        ct_holidays = holidays.US(subdiv="CT")
-        il_holidays = holidays.US(subdiv="IL")
-        ia_holidays = holidays.US(subdiv="IA")
-        nj_holidays = holidays.US(subdiv="NJ")
-        ny_holidays = holidays.US(subdiv="NY")
-        for year in range(1971, 2010):
-            self.assertNotIn(date(year, 2, 12), self.holidays)
-            self.assertIn(date(year, 2, 12), ca_holidays)
-            self.assertIn(date(year, 2, 12), ct_holidays)
-            self.assertIn(date(year, 2, 12), il_holidays)
-            self.assertIn(date(year, 2, 12), ia_holidays)
-            self.assertIn(date(year, 2, 12), nj_holidays)
-            self.assertIn(date(year, 2, 12), ny_holidays)
-            if date(year, 2, 12).weekday() == SAT:
-                self.assertNotIn(date(year, 2, 11), self.holidays)
-                self.assertIn(date(year, 2, 11), ca_holidays)
-                self.assertIn(date(year, 2, 11), ct_holidays)
-                self.assertIn(date(year, 2, 11), il_holidays)
-                self.assertIn(date(year, 2, 11), ia_holidays)
-                self.assertIn(date(year, 2, 11), nj_holidays)
-                self.assertIn(date(year, 2, 11), ny_holidays)
-            else:
-                self.assertNotIn(date(year, 2, 11), ca_holidays)
-                self.assertNotIn(date(year, 2, 11), ct_holidays)
-                self.assertNotIn(date(year, 2, 11), il_holidays)
-                self.assertNotIn(date(year, 2, 11), ia_holidays)
-                self.assertNotIn(date(year, 2, 11), nj_holidays)
-                self.assertNotIn(date(year, 2, 11), ny_holidays)
-            if date(year, 2, 12).weekday() == SUN:
-                self.assertNotIn(date(year, 2, 13), self.holidays)
-                self.assertIn(date(year, 2, 13), ca_holidays)
-                self.assertIn(date(year, 2, 13), ct_holidays)
-                self.assertIn(date(year, 2, 13), il_holidays)
-                self.assertIn(date(year, 2, 13), ia_holidays)
-                self.assertIn(date(year, 2, 13), nj_holidays)
-                self.assertIn(date(year, 2, 13), ny_holidays)
-            else:
-                self.assertNotIn(date(year, 2, 13), ca_holidays)
-                self.assertNotIn(date(year, 2, 13), ct_holidays)
-                self.assertNotIn(date(year, 2, 13), il_holidays)
-                self.assertNotIn(date(year, 2, 13), ia_holidays)
-                self.assertNotIn(date(year, 2, 13), nj_holidays)
-                self.assertNotIn(date(year, 2, 13), ny_holidays)
-        for year in range(2010, 2050):
-            self.assertNotIn(date(year, 2, 12), self.holidays)
-            self.assertNotIn(date(year, 2, 12), ca_holidays)
-            self.assertIn(date(year, 2, 12), ct_holidays)
-            self.assertIn(date(year, 2, 12), il_holidays)
-            self.assertIn(date(year, 2, 12), ia_holidays)
-            self.assertIn(date(year, 2, 12), nj_holidays)
-            self.assertIn(date(year, 2, 12), ny_holidays)
-            if date(year, 2, 12).weekday() == SAT:
-                self.assertNotIn(date(year, 2, 11), self.holidays)
-                self.assertNotIn(date(year, 2, 11), ca_holidays)
-                self.assertIn(date(year, 2, 11), ct_holidays)
-                self.assertIn(date(year, 2, 11), il_holidays)
-                self.assertIn(date(year, 2, 11), ia_holidays)
-                self.assertIn(date(year, 2, 11), nj_holidays)
-                self.assertIn(date(year, 2, 11), ny_holidays)
-            else:
-                self.assertNotIn(date(year, 2, 11), ca_holidays)
-                self.assertNotIn(date(year, 2, 11), ct_holidays)
-                self.assertNotIn(date(year, 2, 11), il_holidays)
-                self.assertNotIn(date(year, 2, 11), ia_holidays)
-                self.assertNotIn(date(year, 2, 11), nj_holidays)
-                self.assertNotIn(date(year, 2, 11), ny_holidays)
-            if date(year, 2, 12).weekday() == SUN:
-                self.assertNotIn(date(year, 2, 13), self.holidays)
-                self.assertNotIn(date(year, 2, 13), ca_holidays)
-                self.assertIn(date(year, 2, 13), ct_holidays)
-                self.assertIn(date(year, 2, 13), il_holidays)
-                self.assertIn(date(year, 2, 13), ia_holidays)
-                self.assertIn(date(year, 2, 13), nj_holidays)
-                self.assertIn(date(year, 2, 13), ny_holidays)
-            else:
-                self.assertNotIn(date(year, 2, 13), ca_holidays)
-                self.assertNotIn(date(year, 2, 13), ct_holidays)
-                self.assertNotIn(date(year, 2, 13), il_holidays)
-                self.assertNotIn(date(year, 2, 13), ia_holidays)
-                self.assertNotIn(date(year, 2, 13), nj_holidays)
-                self.assertNotIn(date(year, 2, 13), ny_holidays)
-
-    def test_susan_b_anthony_day(self):
-        ca_holidays = holidays.US(subdiv="CA")
-        fl_holidays = holidays.US(subdiv="FL")
-        ny_holidays = holidays.US(subdiv="NY")
-        wi_holidays = holidays.US(subdiv="WI")
-        self.assertNotIn(date(1975, 2, 15), wi_holidays)
-        self.assertNotIn(date(2000, 2, 15), ca_holidays)
-        self.assertNotIn(date(2000, 2, 15), fl_holidays)
-        self.assertNotIn(date(2000, 2, 15), ny_holidays)
-        self.assertIn(date(2000, 2, 15), wi_holidays)
-        self.assertIn(date(2004, 2, 15), ny_holidays)
-        self.assertNotIn(date(2010, 2, 15), fl_holidays)
-        self.assertIn(date(2010, 2, 15), ny_holidays)
-        self.assertNotIn(date(2013, 2, 15), self.holidays)
-        self.assertNotIn(date(2013, 2, 15), ca_holidays)
-        self.assertIn(date(2013, 2, 15), fl_holidays)
-        self.assertIn(date(2013, 2, 15), ny_holidays)
-        self.assertNotIn(date(2014, 2, 15), self.holidays)
-        self.assertIn(date(2014, 2, 15), ca_holidays)
-        self.assertIn(date(2014, 2, 15), fl_holidays)
-        self.assertIn(date(2014, 2, 15), ny_holidays)
-        self.assertIn(date(2014, 2, 15), wi_holidays)
-
-    def test_washingtons_birthday(self):
-        de_holidays = holidays.US(subdiv="DE")
-        fl_holidays = holidays.US(subdiv="FL")
-        ga_holidays = holidays.US(subdiv="GA")
-        nm_holidays = holidays.US(subdiv="NM")
-        for dt in [
-            date(1969, 2, 22),
-            date(1970, 2, 22),
-            date(1971, 2, 15),
-            date(1997, 2, 17),
-            date(1999, 2, 15),
-            date(2000, 2, 21),
-            date(2012, 2, 20),
-            date(2013, 2, 18),
-            date(2014, 2, 17),
-            date(2015, 2, 16),
-            date(2016, 2, 15),
-            date(2020, 2, 17),
-        ]:
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=-1), self.holidays)
-            self.assertNotIn(dt + td(days=+1), self.holidays)
-            self.assertNotIn(dt, de_holidays)
-            self.assertNotEqual(fl_holidays.get(dt), "Washington's Birthday")
-            self.assertNotIn(dt, ga_holidays)
-            self.assertNotIn(dt, nm_holidays)
-        for dt in [date(2013, 12, 24), date(2014, 12, 26), date(2015, 12, 24)]:
-            self.assertIn(dt, ga_holidays)
-            self.assertIn("Washington's Birthday", ga_holidays.get_list(dt))
-        self.assertEqual(
-            holidays.US(subdiv="AL").get("2015-02-16"),
-            "George Washington/Thomas Jefferson Birthday",
-        )
-        self.assertEqual(
-            holidays.US(subdiv="AR").get("2015-02-16"),
-            ("George Washington's Birthday and Daisy Gatson Bates Day"),
-        )
-        self.assertEqual(holidays.US(subdiv="PR").get("2015-02-16"), "Presidents' Day")
-        self.assertEqual(holidays.US(subdiv="VI").get("2015-02-16"), "Presidents' Day")
-
-    def test_mardi_gras(self):
-        la_holidays = holidays.US(subdiv="LA")
-        self.assertNotIn(date(1856, 2, 5), la_holidays)
-        for dt in [
-            date(1857, 2, 24),
-            date(2008, 2, 5),
-            date(2011, 3, 8),
-            date(2012, 2, 21),
-            date(2014, 3, 4),
-            date(2018, 2, 13),
-        ]:
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, la_holidays)
-
-    def test_guam_discovery_day(self):
-        gu_holidays = holidays.US(subdiv="GU")
-        self.assertNotIn(date(1969, 3, 1), gu_holidays)
-        for dt in [
-            date(1970, 3, 2),
-            date(1971, 3, 1),
-            date(1977, 3, 7),
-            date(2014, 3, 3),
-            date(2015, 3, 2),
-            date(2016, 3, 7),
-        ]:
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, gu_holidays)
-            self.assertEqual(gu_holidays.get(dt), "Guam Discovery Day")
-
-    def test_casimir_pulaski_day(self):
-        il_holidays = holidays.US(subdiv="IL")
-        self.assertNotIn(date(1977, 3, 7), il_holidays)
-        for dt in [
-            date(1978, 3, 6),
-            date(1982, 3, 1),
-            date(1983, 3, 7),
-            date(2014, 3, 3),
-            date(2015, 3, 2),
-            date(2016, 3, 7),
-        ]:
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, il_holidays)
-            self.assertEqual(il_holidays.get(dt), "Casimir Pulaski Day")
-
-    def test_texas_independence_day(self):
-        tx_holidays = holidays.US(subdiv="TX")
-        self.assertNotIn(date(1873, 3, 2), tx_holidays)
-        for year in range(1874, 2050):
-            self.assertNotIn(date(year, 3, 2), self.holidays)
-            self.assertIn(date(year, 3, 2), tx_holidays)
-
-    def test_town_meeting_day(self):
-        vt_holidays = holidays.US(subdiv="VT")
-        self.assertNotIn(date(1799, 3, 5), vt_holidays)
-        for dt in [
-            date(1800, 3, 4),
-            date(1803, 3, 1),
-            date(1804, 3, 6),
-            date(2011, 3, 1),
-            date(2015, 3, 3),
-            date(2017, 3, 7),
-        ]:
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, vt_holidays)
-
-    def test_evacuation_day(self):
-        ma_holidays = holidays.US(subdiv="MA")
-        self.assertNotIn(date(1900, 3, 17), ma_holidays)
-        for year in range(1901, 2050):
-            self.assertNotIn(date(year, 3, 17), self.holidays)
-            self.assertIn(date(year, 3, 17), ma_holidays)
-        self.assertNotIn(date(1995, 3, 20), ma_holidays)
-        for dt in [date(2012, 3, 19), date(2013, 3, 18), date(2018, 3, 19)]:
-            self.assertIn(dt, ma_holidays)
-        ma_holidays.observed = False
-        for dt in [date(2012, 3, 19), date(2013, 3, 18), date(2018, 3, 19)]:
-            self.assertNotIn(dt, ma_holidays)
-
-    def test_emancipation_day_in_puerto_rico(self):
-        pr_holidays = holidays.US(subdiv="PR")
-        for year in range(2010, 2021):
-            self.assertNotIn(date(year, 3, 22), self.holidays)
-            self.assertIn(date(year, 3, 22), pr_holidays)
-        self.assertNotIn(date(2014, 3, 21), pr_holidays)
-        self.assertNotIn(date(2014, 3, 23), pr_holidays)
-        self.assertIn(date(2015, 3, 23), pr_holidays)
-
-    def test_prince_jonah_kuhio_kalanianaole_day(self):
-        hi_holidays = holidays.US(subdiv="HI")
-        self.assertNotIn(date(1948, 3, 26), hi_holidays)
-        for year in range(1949, 2050):
-            self.assertNotIn(date(year, 3, 26), self.holidays)
-            self.assertIn(date(year, 3, 26), hi_holidays)
-        for dt in [date(1949, 3, 25), date(2016, 3, 25), date(2017, 3, 27)]:
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, hi_holidays)
-            self.assertEqual(
-                hi_holidays.get(dt),
-                "Prince Jonah Kuhio Kalanianaole Day (Observed)",
-            )
-        hi_holidays.observed = False
-        for dt in [date(1949, 3, 25), date(2016, 3, 25), date(2017, 3, 27)]:
-            self.assertNotIn(dt, hi_holidays)
-
-    def test_sewards_day(self):
-        ak_holidays = holidays.US(subdiv="AK")
-        self.assertNotIn(date(1917, 3, 30), ak_holidays)
-        for dt in [
-            date(1918, 3, 30),
-            date(1954, 3, 30),
-            date(1955, 3, 28),
-            date(2002, 3, 25),
-            date(2014, 3, 31),
-            date(2018, 3, 26),
-        ]:
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, ak_holidays)
-
-    def test_cesar_chavez_day(self):
-        ca_holidays = holidays.US(subdiv="CA")
-        tx_holidays = holidays.US(subdiv="TX")
-        for year in range(1995, 2000):
-            self.assertNotIn(date(year, 3, 31), self.holidays)
-            self.assertIn(date(year, 3, 31), ca_holidays)
-        for year in range(2000, 2020):
-            self.assertNotIn(date(year, 3, 31), self.holidays)
-            self.assertIn(date(year, 3, 31), ca_holidays)
-            self.assertIn(date(year, 3, 31), tx_holidays)
-        for year in (1996, 2002, 2013, 2019):
-            self.assertNotIn(date(year, 4, 1), self.holidays)
-            self.assertIn(date(year, 4, 1), ca_holidays)
-            self.assertNotIn(date(year, 4, 1), tx_holidays)
-
-    def test_transfer_day(self):
-        vi_holidays = holidays.US(subdiv="VI")
-        for year in range(2010, 2021):
-            self.assertNotIn(date(year, 3, 31), self.holidays)
-            self.assertIn(date(year, 3, 31), vi_holidays)
-
-    def test_emancipation_day(self):
-        dc_holidays = holidays.US(subdiv="DC")
-        self.assertNotIn(date(2004, 4, 16), dc_holidays)
-        for year in range(2005, 2020):
-            self.assertNotIn(date(year, 4, 16), self.holidays)
-            self.assertIn(date(year, 4, 16), dc_holidays)
-        self.assertIn(date(2005, 4, 15), dc_holidays)
-        self.assertIn(date(2006, 4, 17), dc_holidays)
-        dc_holidays.observed = False
-        self.assertNotIn(date(2005, 4, 15), dc_holidays)
-        self.assertNotIn(date(2006, 4, 17), dc_holidays)
-
-    def test_patriots_day(self):
-        me_holidays = holidays.US(subdiv="ME")
-        ma_holidays = holidays.US(subdiv="MA")
-        self.assertNotIn(date(1983, 4, 19), me_holidays)
-        self.assertNotIn(date(1983, 4, 19), ma_holidays)
-        for year in range(1894, 1969):
-            self.assertNotIn(date(year, 4, 19), self.holidays)
-            self.assertIn(date(year, 4, 19), me_holidays)
-            self.assertIn(date(year, 4, 19), ma_holidays)
-        for year in range(1870, 1893):
-            self.assertNotIn(date(year, 4, 19), self.holidays)
-            self.assertNotIn(date(year, 4, 19), me_holidays)
-            self.assertNotIn(date(year, 4, 19), ma_holidays)
-        for dt in [
-            date(1969, 4, 21),
-            date(1974, 4, 15),
-            date(1975, 4, 21),
-            date(2015, 4, 20),
-            date(2016, 4, 18),
-            date(2019, 4, 15),
-        ]:
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, me_holidays)
-            self.assertIn(dt, ma_holidays)
-
-    def test_holy_thursday(self):
-        vi_holidays = holidays.US(subdiv="VI")
-        for dt in [
-            date(2010, 4, 1),
-            date(2011, 4, 21),
-            date(2013, 3, 28),
-            date(2014, 4, 17),
-            date(2015, 4, 2),
-            date(2016, 3, 24),
-        ]:
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, vi_holidays)
-
-    def test_good_friday(self):
-        ct_holidays = holidays.US(subdiv="CT")
-        de_holidays = holidays.US(subdiv="DE")
-        gu_holidays = holidays.US(subdiv="GU")
-        in_holidays = holidays.US(subdiv="IN")
-        ky_holidays = holidays.US(subdiv="IN")
-        la_holidays = holidays.US(subdiv="LA")
-        mp_holidays = holidays.US(subdiv="MP")
-        nj_holidays = holidays.US(subdiv="NJ")
-        nc_holidays = holidays.US(subdiv="NC")
-        tn_holidays = holidays.US(subdiv="TN")
-        tx_holidays = holidays.US(subdiv="TX")
-        vi_holidays = holidays.US(subdiv="VI")
-        for dt in [
-            date(1900, 4, 13),
-            date(1901, 4, 5),
-            date(1902, 3, 28),
-            date(1999, 4, 2),
-            date(2000, 4, 21),
-            date(2010, 4, 2),
-            date(2018, 3, 30),
-            date(2019, 4, 19),
-            date(2020, 4, 10),
-        ]:
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, ct_holidays)
-            self.assertIn(dt, de_holidays)
-            self.assertIn(dt, gu_holidays)
-            self.assertIn(dt, in_holidays)
-            self.assertIn(dt, ky_holidays)
-            self.assertIn(dt, la_holidays)
-            self.assertIn(dt, mp_holidays)
-            self.assertIn(dt, nj_holidays)
-            self.assertIn(dt, nc_holidays)
-            self.assertIn(dt, tn_holidays)
-            self.assertIn(dt, tx_holidays)
-            self.assertIn(dt, vi_holidays)
-
-    def test_easter_monday(self):
-        vi_holidays = holidays.US(subdiv="VI")
-        for dt in [
-            date(1900, 4, 16),
-            date(1901, 4, 8),
-            date(1902, 3, 31),
-            date(1999, 4, 5),
-            date(2010, 4, 5),
-            date(2018, 4, 2),
-            date(2019, 4, 22),
-            date(2020, 4, 13),
-        ]:
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, vi_holidays)
-
-    def test_confederate_memorial_day(self):
-        al_holidays = holidays.US(subdiv="AL")
-        ga_holidays = holidays.US(subdiv="GA")
-        ms_holidays = holidays.US(subdiv="MS")
-        sc_holidays = holidays.US(subdiv="SC")
-        tx_holidays = holidays.US(subdiv="TX")
-        self.assertNotIn(date(1865, 4, 24), self.holidays)
-        self.assertNotIn(date(1865, 4, 24), al_holidays)
-        for dt in [
-            date(1866, 4, 23),
-            date(1878, 4, 22),
-            date(1884, 4, 28),
-            date(2014, 4, 28),
-            date(2015, 4, 27),
-            date(2019, 4, 22),
-        ]:
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, al_holidays)
-            self.assertIn(dt, ga_holidays)
-            self.assertIn(dt, ms_holidays)
-            self.assertIn(dt, sc_holidays)
-        self.assertNotIn(date(1930, 1, 19), tx_holidays)
-        self.assertNotIn(date(1931, 1, 19), self.holidays)
-        self.assertIn(date(1931, 1, 19), tx_holidays)
-        self.assertIn(date(2020, 4, 10), ga_holidays)
-
-    def test_san_jacinto_day(self):
-        tx_holidays = holidays.US(subdiv="TX")
-        self.assertNotIn(date(1874, 4, 21), tx_holidays)
-        for year in (1875, 2050):
-            self.assertNotIn(date(year, 4, 21), self.holidays)
-            self.assertIn(date(year, 4, 21), tx_holidays)
-
-    def test_arbor_day(self):
-        ne_holidays = holidays.US(subdiv="NE")
-        for dt in [
-            date(1875, 4, 22),
-            date(1988, 4, 22),
-            date(1989, 4, 28),
-            date(2009, 4, 24),
-            date(2010, 4, 30),
-            date(2014, 4, 25),
-        ]:
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, ne_holidays)
-        self.assertNotIn(date(1874, 4, 22), ne_holidays)
-
-    def test_primary_election_day(self):
-        in_holidays = holidays.US(subdiv="IN")
-        self.assertNotIn(date(2004, 5, 4), in_holidays)
-        for dt in [
-            date(2006, 5, 2),
-            date(2008, 5, 6),
-            date(2010, 5, 4),
-            date(2012, 5, 8),
-            date(2014, 5, 6),
-            date(2015, 5, 5),
-            date(2016, 5, 3),
-        ]:
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, in_holidays)
-
-    def test_truman_day(self):
-        mo_holidays = holidays.US(subdiv="MO", observed=False)
-        self.assertNotIn(date(1948, 5, 8), self.holidays)
-        self.assertNotIn(date(1948, 5, 8), mo_holidays)
-        for year in range(1949, 2100):
-            dt = date(year, 5, 8)
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, mo_holidays)
-            self.assertNotIn(dt + td(days=-1), mo_holidays)
-            self.assertNotIn(dt + td(days=+1), mo_holidays)
-        self.assertNotIn(date(2004, 5, 7), mo_holidays)
-        self.assertNotIn(date(2005, 5, 9), mo_holidays)
-        mo_holidays.observed = True
-        self.assertIn(date(2004, 5, 7), mo_holidays)
-        self.assertIn(date(2005, 5, 9), mo_holidays)
+        self.assertHolidayName(f"{name} (Observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_memorial_day(self):
-        for dt in [
-            date(1969, 5, 30),
-            date(1970, 5, 30),
-            date(1971, 5, 31),
-            date(1997, 5, 26),
-            date(1999, 5, 31),
-            date(2000, 5, 29),
-            date(2012, 5, 28),
-            date(2013, 5, 27),
-            date(2014, 5, 26),
-            date(2015, 5, 25),
-            date(2016, 5, 30),
-            date(2020, 5, 25),
-        ]:
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=-1), self.holidays)
-            self.assertNotIn(dt + td(days=+1), self.holidays)
+        name = "Memorial Day"
+        self.assertHolidayName(name, (f"{year}-05-30" for year in range(1888, 1971)))
+        self.assertNoHolidayName(name, range(1865, 1888))
+        self.assertHolidayName(
+            name,
+            "1971-05-31",
+            "1972-05-29",
+            "2010-05-31",
+            "2011-05-30",
+            "2012-05-28",
+            "2013-05-27",
+            "2014-05-26",
+            "2015-05-25",
+            "2016-05-30",
+            "2017-05-29",
+            "2018-05-28",
+            "2019-05-27",
+            "2020-05-25",
+            "2021-05-31",
+            "2022-05-30",
+            "2023-05-29",
+        )
+        self.assertNoHoliday("1971-05-30", "1972-05-30")
 
-    def test_jefferson_davis_birthday(self):
-        al_holidays = holidays.US(subdiv="AL")
-        self.assertNotIn(date(1889, 6, 3), self.holidays)
-        self.assertNotIn(date(1889, 6, 3), al_holidays)
-        for dt in [
-            date(1890, 6, 2),
-            date(1891, 6, 1),
-            date(1897, 6, 7),
-            date(2014, 6, 2),
-            date(2015, 6, 1),
-            date(2016, 6, 6),
-        ]:
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, al_holidays)
-
-    def test_kamehameha_day(self):
-        hi_holidays = holidays.US(subdiv="HI")
-        self.assertNotIn(date(1871, 6, 11), hi_holidays)
-        for year in range(1872, 2050):
-            self.assertNotIn(date(year, 6, 11), self.holidays)
-            self.assertIn(date(year, 6, 11), hi_holidays)
-        self.assertNotIn(date(2006, 6, 12), hi_holidays)
-        for dt in [date(2011, 6, 10), date(2016, 6, 10), date(2017, 6, 12)]:
-            self.assertIn(dt, hi_holidays)
-            self.assertEqual(hi_holidays.get(dt), "Kamehameha Day (Observed)")
-        hi_holidays.observed = False
-        for dt in [date(2011, 6, 10), date(2016, 6, 10), date(2017, 6, 12)]:
-            self.assertNotIn(dt, hi_holidays)
-
-    def test_emancipation_day_in_texas(self):
-        tx_holidays = holidays.US(subdiv="TX")
-        self.assertNotIn(date(1979, 6, 19), tx_holidays)
-        for year in (1980, 2020):
-            self.assertNotIn(date(year, 6, 19), self.holidays)
-            self.assertIn(date(year, 6, 19), tx_holidays)
-        for year in (2021, 2050):
-            self.assertIn(date(year, 6, 19), tx_holidays)
-
-    def test_juneteenth(self):
-        # Not recognized before 2021
-        self.assertNotIn(date(2020, 6, 19), self.holidays)
-        self.assertIn(date(2021, 6, 19), self.holidays)
-
-        juneteenth_observed = [
-            date(2021, 6, 18),  # Friday prior
-            date(2022, 6, 20),  # Monday following
-        ]
-        self.holidays.observed = True
-        for observed_holiday in juneteenth_observed:
-            self.assertIn(observed_holiday, self.holidays)
-
-        self.holidays.observed = False
-        for observed_holiday in juneteenth_observed:
-            self.assertNotIn(observed_holiday, self.holidays)
-
-    def test_west_virginia_day(self):
-        wv_holidays = holidays.US(subdiv="WV")
-        self.assertNotIn(date(1926, 6, 20), wv_holidays)
-        for year in (1927, 2050):
-            self.assertNotIn(date(year, 6, 20), self.holidays)
-            self.assertIn(date(year, 6, 20), wv_holidays)
-        self.assertIn(date(2015, 6, 19), wv_holidays)
-        self.assertIn(date(2010, 6, 21), wv_holidays)
-        wv_holidays.observed = False
-        self.assertNotIn(date(2015, 6, 19), wv_holidays)
-        self.assertNotIn(date(2010, 6, 21), wv_holidays)
-
-    def test_emancipation_day_in_virgin_islands(self):
-        vi_holidays = holidays.US(subdiv="VI")
-        for year in (2010, 2021):
-            self.assertNotIn(date(year, 7, 3), self.holidays)
-            self.assertIn(date(year, 7, 3), vi_holidays)
+    def test_juneteenth_day(self):
+        name = "Juneteenth National Independence Day"
+        self.assertHolidayName(name, (f"{year}-06-19" for year in range(2021, 2050)))
+        self.assertNoHoliday(f"{year}-06-19" for year in range(1865, 2021))
+        self.assertNoHolidayName(name, range(1865, 2021))
+        obs_dt = (
+            "2021-06-18",
+            "2022-06-20",
+            "2027-06-18",
+            "2032-06-18",
+        )
+        self.assertHolidayName(f"{name} (Observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_independence_day(self):
-        for year in range(1900, 2100):
-            dt = date(year, 7, 4)
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=-1), self.holidays)
-            self.assertNotIn(dt + td(days=+1), self.holidays)
-        self.assertNotIn(date(2010, 7, 5), self.holidays)
-        self.assertNotIn(date(2020, 7, 3), self.holidays)
-        self.holidays.observed = True
-        self.assertIn(date(2010, 7, 5), self.holidays)
-        self.assertIn(date(2020, 7, 3), self.holidays)
-
-    def test_liberation_day_guam(self):
-        gu_holidays = holidays.US(subdiv="GU")
-        self.assertNotIn(date(1944, 7, 21), gu_holidays)
-        for year in range(1945, 2100):
-            self.assertNotIn(date(year, 7, 21), self.holidays)
-            self.assertIn(date(year, 7, 21), gu_holidays)
-
-    def test_pioneer_day(self):
-        ut_holidays = holidays.US(subdiv="UT")
-        self.assertNotIn(date(1848, 7, 24), ut_holidays)
-        for year in (1849, 2050):
-            self.assertNotIn(date(year, 7, 24), self.holidays)
-            self.assertIn(date(year, 7, 24), ut_holidays)
-        self.assertIn("2010-07-23", ut_holidays)
-        self.assertIn("2011-07-25", ut_holidays)
-        ut_holidays.observed = False
-        self.assertNotIn("2010-07-23", ut_holidays)
-        self.assertNotIn("2011-07-25", ut_holidays)
-
-    def test_constitution_day(self):
-        pr_holidays = holidays.US(subdiv="PR")
-        for year in range(2010, 2021):
-            self.assertNotIn(date(year, 7, 25), self.holidays)
-            self.assertIn(date(year, 7, 25), pr_holidays)
-        self.assertNotIn(date(2015, 7, 24), pr_holidays)
-        self.assertNotIn(date(2015, 7, 26), pr_holidays)
-        self.assertIn(date(2021, 7, 26), pr_holidays)
-
-    def test_victory_day(self):
-        ri_holidays = holidays.US(subdiv="RI")
-        self.assertNotIn(date(1947, 8, 11), ri_holidays)
-        for dt in [
-            date(1948, 8, 9),
-            date(1995, 8, 14),
-            date(2005, 8, 8),
-            date(2015, 8, 10),
-            date(2016, 8, 8),
-            date(2017, 8, 14),
-        ]:
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, ri_holidays)
-
-    def test_statehood_day(self):
-        hi_holidays = holidays.US(subdiv="HI")
-        self.assertNotIn(date(1958, 8, 15), hi_holidays)
-        for dt in [
-            date(1959, 8, 21),
-            date(1969, 8, 15),
-            date(1999, 8, 20),
-            date(2014, 8, 15),
-            date(2015, 8, 21),
-            date(2016, 8, 19),
-        ]:
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, hi_holidays)
-
-    def test_bennington_battle_day(self):
-        vt_holidays = holidays.US(subdiv="VT")
-        self.assertNotIn(date(1777, 8, 16), vt_holidays)
-        for year in range(1778, 2050):
-            self.assertNotIn(date(year, 8, 16), self.holidays)
-            self.assertIn(date(year, 8, 16), vt_holidays)
-        vt_holidays.observed = False
-        self.assertNotIn(
-            "Bennington Battle Day (Observed)",
-            vt_holidays.get_list(date(1997, 8, 15)),
+        name = "Independence Day"
+        self.assertHolidayName(name, (f"{year}-07-04" for year in range(1871, 2050)))
+        self.assertNoHoliday(f"{year}-07-04" for year in range(1865, 1871))
+        self.assertNoHolidayName(name, range(1865, 1871))
+        obs_dt = (
+            "2004-07-05",
+            "2009-07-03",
+            "2010-07-05",
+            "2015-07-03",
+            "2020-07-03",
+            "2021-07-05",
         )
-        vt_holidays.observed = True
-        self.assertIn(
-            "Bennington Battle Day (Observed)",
-            vt_holidays.get_list(date(1997, 8, 15)),
-        )
-        self.assertNotIn(
-            "Bennington Battle Day (Observed)",
-            vt_holidays.get_list(date(1997, 8, 17)),
-        )
-        self.assertIn(
-            "Bennington Battle Day (Observed)",
-            vt_holidays.get_list(date(1998, 8, 17)),
-        )
-        self.assertNotIn(
-            "Bennington Battle Day (Observed)",
-            vt_holidays.get_list(date(1999, 8, 15)),
-        )
-        self.assertNotIn(
-            "Bennington Battle Day (Observed)",
-            vt_holidays.get_list(date(1999, 8, 17)),
-        )
-
-    def test_lyndon_baines_johnson_day(self):
-        tx_holidays = holidays.US(subdiv="TX")
-        self.assertNotIn(date(1972, 8, 27), tx_holidays)
-        for year in (1973, 2050):
-            self.assertNotIn(date(year, 8, 27), self.holidays)
-            self.assertIn(date(year, 8, 27), tx_holidays)
+        self.assertHolidayName(f"{name} (Observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_labor_day(self):
-        for dt in [
-            date(1997, 9, 1),
-            date(1999, 9, 6),
-            date(2000, 9, 4),
-            date(2012, 9, 3),
-            date(2013, 9, 2),
-            date(2014, 9, 1),
-            date(2015, 9, 7),
-            date(2016, 9, 5),
-            date(2020, 9, 7),
-        ]:
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=-1), self.holidays)
-            self.assertNotIn(dt + td(days=+1), self.holidays)
-
-    def test_columbus_day(self):
-        ak_holidays = holidays.US(subdiv="AK")
-        de_holidays = holidays.US(subdiv="DE")
-        fl_holidays = holidays.US(subdiv="FL")
-        hi_holidays = holidays.US(subdiv="HI")
-        sd_holidays = holidays.US(subdiv="SD")
-        vi_holidays = holidays.US(subdiv="VI")
-        for dt in [
-            date(1937, 10, 12),
-            date(1969, 10, 12),
-            date(1970, 10, 12),
-            date(1999, 10, 11),
-            date(2000, 10, 9),
-            date(2001, 10, 8),
-            date(2013, 10, 14),
-            date(2018, 10, 8),
-            date(2019, 10, 14),
-        ]:
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt, ak_holidays)
-            self.assertNotIn(dt, de_holidays)
-            self.assertNotIn(dt, fl_holidays)
-            self.assertNotIn(dt, hi_holidays)
-            self.assertNotIn(dt + td(days=-1), self.holidays)
-            self.assertNotIn(dt + td(days=+1), self.holidays)
-            self.assertEqual(sd_holidays.get(dt), "Native American Day")
-            self.assertEqual(
-                vi_holidays.get(dt),
-                "Columbus Day and Puerto Rico Friendship Day",
-            )
-        self.assertNotIn(date(1936, 10, 12), self.holidays)
-
-    def test_alaska_day(self):
-        ak_holidays = holidays.US(subdiv="AK", observed=False)
-        self.assertNotIn(date(1866, 10, 18), ak_holidays)
-        for year in range(1867, 2050):
-            self.assertIn(date(year, 10, 18), ak_holidays)
-            self.assertNotIn(date(year, 10, 17), ak_holidays)
-            self.assertNotIn(date(year, 10, 19), ak_holidays)
-            self.assertNotIn(date(year, 10, 18), self.holidays)
-        ak_holidays.observed = True
-        self.assertIn(date(2014, 10, 17), ak_holidays)
-        self.assertIn(date(2015, 10, 19), ak_holidays)
-
-    def test_nevada_day(self):
-        nv_holidays = holidays.US(subdiv="NV")
-        self.assertNotIn(date(1932, 10, 31), nv_holidays)
-        for dt in [
-            date(1933, 10, 31),
-            date(1999, 10, 31),
-            date(2000, 10, 27),
-            date(2002, 10, 25),
-            date(2014, 10, 31),
-            date(2015, 10, 30),
-        ]:
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, nv_holidays)
-        self.assertIn("Nevada Day (Observed)", nv_holidays.get_list(date(1998, 10, 30)))
-        self.assertIn("Nevada Day (Observed)", nv_holidays.get_list(date(1999, 11, 1)))
-        nv_holidays.observed = False
-        self.assertNotIn("Nevada Day (Observed)", nv_holidays.get_list(date(1998, 10, 30)))
-        self.assertNotIn("Nevada Day (Observed)", nv_holidays.get_list(date(1999, 11, 1)))
-
-    def test_liberty_day(self):
-        vi_holidays = holidays.US(subdiv="VI")
-        for year in range(2010, 2021):
-            self.assertNotIn(date(year, 11, 1), self.holidays)
-            self.assertIn(date(year, 11, 1), vi_holidays)
-
-    def test_election_day(self):
-        de_holidays = holidays.US(subdiv="DE")
-        hi_holidays = holidays.US(subdiv="HI")
-        il_holidays = holidays.US(subdiv="IL")
-        in_holidays = holidays.US(subdiv="IN")
-        la_holidays = holidays.US(subdiv="LA")
-        mt_holidays = holidays.US(subdiv="MT")
-        nh_holidays = holidays.US(subdiv="NH")
-        nj_holidays = holidays.US(subdiv="NJ")
-        ny_holidays = holidays.US(subdiv="NY")
-        wv_holidays = holidays.US(subdiv="WV")
-        self.assertNotIn(date(2004, 11, 2), de_holidays)
-        for dt in [
-            date(2008, 11, 4),
-            date(2010, 11, 2),
-            date(2012, 11, 6),
-            date(2014, 11, 4),
-            date(2016, 11, 8),
-            date(2018, 11, 6),
-        ]:
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, de_holidays)
-            self.assertIn(dt, hi_holidays)
-            self.assertIn(dt, il_holidays)
-            self.assertIn(dt, in_holidays)
-            self.assertIn(dt, la_holidays)
-            self.assertIn(dt, mt_holidays)
-            self.assertIn(dt, nh_holidays)
-            self.assertIn(dt, nj_holidays)
-            self.assertIn(dt, ny_holidays)
-            self.assertIn(dt, wv_holidays)
-        self.assertNotIn(date(2015, 11, 3), self.holidays)
-        self.assertNotIn(date(2015, 11, 3), de_holidays)
-        self.assertNotIn(date(2015, 11, 3), hi_holidays)
-        self.assertNotIn(date(2015, 11, 3), il_holidays)
-        self.assertIn(date(2015, 11, 3), in_holidays)
-        self.assertNotIn(date(2015, 11, 3), la_holidays)
-        self.assertNotIn(date(2015, 11, 3), mt_holidays)
-        self.assertNotIn(date(2015, 11, 3), nh_holidays)
-        self.assertNotIn(date(2015, 11, 3), nj_holidays)
-        self.assertIn(date(2015, 11, 3), ny_holidays)
-        self.assertNotIn(date(2015, 11, 3), wv_holidays)
-
-    def test_all_souls_day(self):
-        gu_holidays = holidays.US(subdiv="GU")
-        for year in range(1945, 2100):
-            self.assertNotIn(date(year, 11, 2), self.holidays)
-            self.assertIn(date(year, 11, 2), gu_holidays)
+        name = "Labor Day"
+        self.assertNoHolidayName(name, range(1865, 1894))
+        self.assertHolidayName(
+            name,
+            "2010-09-06",
+            "2011-09-05",
+            "2012-09-03",
+            "2013-09-02",
+            "2014-09-01",
+            "2015-09-07",
+            "2016-09-05",
+            "2017-09-04",
+            "2018-09-03",
+            "2019-09-02",
+            "2020-09-07",
+            "2021-09-06",
+            "2022-09-05",
+            "2023-09-04",
+        )
 
     def test_veterans_day(self):
-        for dt in [
-            date(1938, 11, 11),
-            date(1939, 11, 11),
-            date(1970, 11, 11),
-            date(1971, 10, 25),
-            date(1977, 10, 24),
-            date(1978, 11, 11),
-            date(2012, 11, 11),
-            date(2013, 11, 11),
-            date(2014, 11, 11),
-            date(2015, 11, 11),
-            date(2016, 11, 11),
-            date(2020, 11, 11),
-        ]:
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=-1), self.holidays)
-            self.assertNotIn(dt + td(days=+1), self.holidays)
-        self.assertNotIn("Armistice Day", holidays.US(years=[1937]).values())
-        self.assertNotIn("Armistice Day", holidays.US(years=[1937]).values())
-        self.assertIn("Armistice Day", holidays.US(years=[1938]).values())
-        self.assertIn("Armistice Day", holidays.US(years=[1953]).values())
-        self.assertIn("Veterans Day", holidays.US(years=[1954]).values())
-        self.assertNotIn(date(2012, 11, 12), self.holidays)
-        self.assertNotIn(date(2017, 11, 10), self.holidays)
-        self.holidays.observed = True
-        self.assertIn(date(2012, 11, 12), self.holidays)
-        self.assertIn(date(2017, 11, 10), self.holidays)
-
-    def test_discovery_day(self):
-        pr_holidays = holidays.US(subdiv="PR")
-        for year in range(2010, 2021):
-            self.assertNotIn(date(year, 11, 19), self.holidays)
-            self.assertIn(date(year, 11, 19), pr_holidays)
-        self.assertNotIn(date(2016, 11, 18), pr_holidays)
-        self.assertNotIn(date(2016, 11, 20), pr_holidays)
-        self.assertIn(date(2017, 11, 20), pr_holidays)
+        name_1 = "Armistice Day"
+        name_2 = "Veterans Day"
+        self.assertHolidayName(name_1, (f"{year}-11-11" for year in range(1938, 1954)))
+        self.assertHolidayName(name_2, (f"{year}-11-11" for year in range(1954, 1971)))
+        self.assertHolidayName(name_2, (f"{year}-11-11" for year in range(1978, 2050)))
+        self.assertNoHolidayName(name_1, range(1865, 1938), range(1954, 2050))
+        self.assertNoHolidayName(name_2, range(1865, 1954))
+        self.assertHolidayName(
+            name_2,
+            "1971-10-25",
+            "1972-10-23",
+            "1973-10-22",
+            "1974-10-28",
+            "1975-10-27",
+            "1976-10-25",
+            "1977-10-24",
+        )
+        obs_dt = (
+            "2000-11-10",
+            "2001-11-12",
+            "2006-11-10",
+            "2007-11-12",
+            "2012-11-12",
+            "2017-11-10",
+            "2018-11-12",
+            "2023-11-10",
+        )
+        self.assertHolidayName(f"{name_2} (Observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
 
     def test_thanksgiving_day(self):
-        ca_holidays = holidays.US(subdiv="CA")
-        de_holidays = holidays.US(subdiv="DE")
-        fl_holidays = holidays.US(subdiv="FL")
-        in_holidays = holidays.US(subdiv="IN")
-        md_holidays = holidays.US(subdiv="MD")
-        nv_holidays = holidays.US(subdiv="NV")
-        nh_holidays = holidays.US(subdiv="NH")
-        nm_holidays = holidays.US(subdiv="NM")
-        nc_holidays = holidays.US(subdiv="NC")
-        ok_holidays = holidays.US(subdiv="OK")
-        pa_holidays = holidays.US(subdiv="PA")
-        tx_holidays = holidays.US(subdiv="TX")
-        wv_holidays = holidays.US(subdiv="WV")
-        for dt in [
-            date(1997, 11, 27),
-            date(1999, 11, 25),
-            date(2000, 11, 23),
-            date(2012, 11, 22),
-            date(2013, 11, 28),
-            date(2014, 11, 27),
-            date(2015, 11, 26),
-            date(2016, 11, 24),
-            date(2020, 11, 26),
-        ]:
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=-1), self.holidays)
-            self.assertNotIn(dt + td(days=+1), self.holidays)
-            self.assertIn(dt + td(days=+1), de_holidays)
-            self.assertEqual(
-                ca_holidays.get(dt + td(days=+1)),
-                "Day After Thanksgiving",
-            )
-            self.assertEqual(
-                de_holidays.get(dt + td(days=+1)),
-                "Day After Thanksgiving",
-            )
-            self.assertEqual(
-                nh_holidays.get(dt + td(days=+1)),
-                "Day After Thanksgiving",
-            )
-            self.assertEqual(
-                nc_holidays.get(dt + td(days=+1)),
-                "Day After Thanksgiving",
-            )
-            self.assertEqual(
-                ok_holidays.get(dt + td(days=+1)),
-                "Day After Thanksgiving",
-            )
-            self.assertEqual(
-                pa_holidays.get(dt + td(days=+1)),
-                "Day After Thanksgiving",
-            )
-            self.assertEqual(
-                wv_holidays.get(dt + td(days=+1)),
-                "Day After Thanksgiving",
-            )
-            self.assertIn(dt + td(days=+1), fl_holidays)
-            self.assertEqual(
-                fl_holidays.get(dt + td(days=+1)),
-                "Friday After Thanksgiving",
-            )
-            self.assertIn(dt + td(days=+1), tx_holidays)
-            self.assertEqual(
-                tx_holidays.get(dt + td(days=+1)),
-                "Friday After Thanksgiving",
-            )
-            self.assertEqual(nv_holidays.get(dt + td(days=+1)), "Family Day")
-            self.assertEqual(nm_holidays.get(dt + td(days=+1)), "Presidents' Day")
-            if dt.year >= 2008:
-                self.assertEqual(
-                    md_holidays.get(dt + td(days=+1)),
-                    "American Indian Heritage Day",
-                )
-            if dt.year >= 2010:
-                self.assertEqual(
-                    in_holidays.get(dt + td(days=+1)),
-                    "Lincoln's Birthday",
-                )
-            else:
-                self.assertNotEqual(
-                    in_holidays.get(dt + td(days=+1)),
-                    "Lincoln's Birthday",
-                )
-
-    def test_robert_lee_birthday(self):
-        ga_holidays = holidays.US(subdiv="GA")
-        self.assertNotIn(date(1985, 11, 25), ga_holidays)
-        for dt in [
-            date(2007, 11, 23),
-            date(2008, 11, 28),
-            date(2010, 11, 26),
-            date(2013, 11, 29),
-            date(2014, 11, 28),
-            date(2015, 11, 27),
-            date(2018, 11, 23),
-            date(2019, 11, 29),
-            date(2020, 11, 27),
-        ]:
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, ga_holidays)
-
-    def test_lady_of_camarin_day(self):
-        gu_holidays = holidays.US(subdiv="GU")
-        for year in range(1945, 2100):
-            self.assertNotIn(date(year, 12, 8), self.holidays)
-            self.assertIn(date(year, 12, 8), gu_holidays)
-
-    def test_christmas_eve(self):
-        as_holidays = holidays.US(subdiv="AS")
-        ks_holidays = holidays.US(subdiv="KS")
-        mi_holidays = holidays.US(subdiv="MI")
-        nc_holidays = holidays.US(subdiv="NC")
-        tx_holidays = holidays.US(subdiv="TX")
-        wi_holidays = holidays.US(subdiv="WI")
-        self.holidays.observed = False
-        for year in range(1900, 2050):
-            self.assertNotIn(date(year, 12, 24), self.holidays)
-            self.assertIn(date(year, 12, 24), as_holidays)
-            if year >= 2013:
-                f = ks_holidays.get(date(year, 12, 24)).find("Eve")
-                self.assertGreater(f, 0)
-                f = mi_holidays.get(date(year, 12, 24)).find("Eve")
-                self.assertGreater(f, 0)
-                f = nc_holidays.get(date(year, 12, 24)).find("Eve")
-                self.assertGreater(f, 0)
-            if year >= 2012:
-                f = wi_holidays.get(date(year, 12, 24)).find("Eve")
-                self.assertGreater(f, 0)
-            if year >= 1981:
-                f = tx_holidays.get(date(year, 12, 24)).find("Eve")
-                self.assertGreater(f, 0)
-            if year < 1981:
-                f = ks_holidays.get(date(year, 12, 24), "").find("Eve")
-                self.assertLess(f, 0)
-                f = mi_holidays.get(date(year, 12, 24), "").find("Eve")
-                self.assertLess(f, 0)
-                f = nc_holidays.get(date(year, 12, 24), "").find("Eve")
-                self.assertLess(f, 0)
-                f = tx_holidays.get(date(year, 12, 24), "").find("Eve")
-                self.assertLess(f, 0)
-                f = wi_holidays.get(date(year, 12, 24), "").find("Eve")
-                self.assertLess(f, 0)
-        self.assertIn(date(2016, 12, 23), as_holidays)
-        self.assertIn(date(2016, 12, 23), ks_holidays)
-        self.assertIn(date(2016, 12, 23), mi_holidays)
-        self.assertIn(date(2016, 12, 23), nc_holidays)
-        self.assertIn(date(2016, 12, 23), tx_holidays)
-        self.assertIn(date(2016, 12, 23), wi_holidays)
-        self.assertIn(
-            "Christmas Eve (Observed)",
-            as_holidays.get_list(date(2017, 12, 22)),
-        )
-        self.assertIn(
-            "Christmas Eve (Observed)",
-            ks_holidays.get_list(date(2017, 12, 22)),
-        )
-        self.assertIn(
-            "Christmas Eve (Observed)",
-            mi_holidays.get_list(date(2017, 12, 22)),
-        )
-        self.assertIn(
-            "Christmas Eve (Observed)",
-            nc_holidays.get_list(date(2017, 12, 22)),
-        )
-        self.assertIn(
-            "Christmas Eve (Observed)",
-            tx_holidays.get_list(date(2017, 12, 22)),
-        )
-        self.assertIn(
-            "Christmas Eve (Observed)",
-            wi_holidays.get_list(date(2017, 12, 22)),
+        name = "Thanksgiving"
+        self.assertHolidayName(name, range(1871, 2050))
+        self.assertNoHolidayName(name, range(1865, 1871))
+        self.assertHolidayName(
+            name,
+            "2010-11-25",
+            "2011-11-24",
+            "2012-11-22",
+            "2013-11-28",
+            "2014-11-27",
+            "2015-11-26",
+            "2016-11-24",
+            "2017-11-23",
+            "2018-11-22",
+            "2019-11-28",
+            "2020-11-26",
+            "2021-11-25",
+            "2022-11-24",
+            "2023-11-23",
         )
 
     def test_christmas_day(self):
-        for year in range(1900, 2100):
-            dt = date(year, 12, 25)
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=-1), self.holidays)
-            self.assertNotIn(dt + td(days=+1), self.holidays)
-        self.assertNotIn(date(2010, 12, 24), self.holidays)
-        self.assertNotIn(date(2016, 12, 26), self.holidays)
-        self.holidays.observed = True
-        self.assertIn(date(2010, 12, 24), self.holidays)
-        self.assertIn(date(2016, 12, 26), self.holidays)
+        name = "Christmas Day"
+        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1871, 2050)))
+        self.assertNoHoliday(f"{year}-12-25" for year in range(1865, 1871))
+        self.assertNoHolidayName(name, range(1865, 1871))
+        obs_dt = (
+            "2004-12-24",
+            "2005-12-26",
+            "2010-12-24",
+            "2011-12-26",
+            "2016-12-26",
+            "2021-12-24",
+            "2022-12-26",
+        )
+        self.assertHolidayName(f"{name} (Observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+
+    def test_martin_luther_king_day(self):
+        name = "Martin Luther King Jr. Day"
+        self.assertHolidayName(name, range(1986, 2050))
+        self.assertNoHolidayName(name, range(1865, 1986))
+        dt = (
+            "1986-01-20",
+            "2010-01-18",
+            "2011-01-17",
+            "2012-01-16",
+            "2013-01-21",
+            "2014-01-20",
+            "2015-01-19",
+            "2016-01-18",
+            "2017-01-16",
+            "2018-01-15",
+            "2019-01-21",
+            "2020-01-20",
+            "2021-01-18",
+            "2022-01-17",
+            "2023-01-16",
+        )
+        self.assertHolidayName(name, dt)
+
+        for subdiv in set(UnitedStates.subdivisions) - {"AL", "AR", "AZ", "GA", "ID", "MS", "NH"}:
+            self.assertHolidayName(name, self.state_hols[subdiv], dt)
+            self.assertNoHolidayName(name, self.state_hols[subdiv], range(1865, 1986))
+
+    def test_martin_luther_king_day_states(self):
+        dt = (
+            "1986-01-20",
+            "2010-01-18",
+            "2011-01-17",
+            "2012-01-16",
+            "2013-01-21",
+            "2014-01-20",
+            "2015-01-19",
+            "2016-01-18",
+            "2017-01-16",
+            "2018-01-15",
+            "2019-01-21",
+            "2020-01-20",
+            "2021-01-18",
+            "2022-01-17",
+            "2023-01-16",
+        )
+
+        self.assertHolidayName(
+            "Martin Luther King, Jr & Robert E. Lee's Birthday", self.state_hols["AL"], dt
+        )
+
+        self.assertHolidayName(
+            "Martin Luther King Jr. Day",
+            self.state_hols["AR"],
+            "2018-01-15",
+            "2019-01-21",
+            "2020-01-20",
+            "2021-01-18",
+            "2022-01-17",
+            "2023-01-16",
+        )
+        self.assertHolidayName(
+            "Dr. Martin Luther King Jr. and Robert E. Lee's Birthdays",
+            self.state_hols["AR"],
+            "2010-01-18",
+            "2011-01-17",
+            "2012-01-16",
+            "2013-01-21",
+            "2014-01-20",
+            "2015-01-19",
+            "2016-01-18",
+            "2017-01-16",
+        )
+
+        self.assertHolidayName(
+            "Dr. Martin Luther King Jr. / Civil Rights Day", self.state_hols["AZ"], dt
+        )
+
+        self.assertHolidayName(
+            "Martin Luther King Jr. Day",
+            self.state_hols["GA"],
+            "2012-01-16",
+            "2013-01-21",
+            "2014-01-20",
+            "2015-01-19",
+            "2016-01-18",
+            "2017-01-16",
+            "2018-01-15",
+            "2019-01-21",
+            "2020-01-20",
+            "2021-01-18",
+            "2022-01-17",
+            "2023-01-16",
+        )
+        self.assertHolidayName(
+            "Robert E. Lee's Birthday",
+            self.state_hols["GA"],
+            "2010-01-18",
+            "2011-01-17",
+        )
+
+        self.assertHolidayName(
+            "Martin Luther King Jr. / Idaho Human Rights Day",
+            self.state_hols["ID"],
+            "2006-01-16",
+            "2010-01-18",
+            "2011-01-17",
+            "2012-01-16",
+            "2013-01-21",
+            "2014-01-20",
+            "2015-01-19",
+            "2016-01-18",
+            "2017-01-16",
+            "2018-01-15",
+            "2019-01-21",
+            "2020-01-20",
+            "2021-01-18",
+            "2022-01-17",
+            "2023-01-16",
+        )
+        self.assertHolidayName(
+            "Martin Luther King Jr. Day",
+            self.state_hols["ID"],
+            "2000-01-17",
+            "2001-01-15",
+            "2002-01-21",
+            "2003-01-20",
+            "2004-01-19",
+            "2005-01-17",
+        )
+
+        self.assertHolidayName(
+            "Dr. Martin Luther King Jr. and Robert E. Lee's Birthdays", self.state_hols["MS"], dt
+        )
+
+        self.assertHolidayName(
+            "Dr. Martin Luther King Jr. / Civil Rights Day", self.state_hols["NH"], dt
+        )
+
+    def test_washingtons_birthday(self):
+        name = "Washington's Birthday"
+        self.assertNoHolidayName(name, range(1865, 1879))
+        self.assertHolidayName(name, (f"{year}-02-22" for year in range(1879, 1971)))
+        self.assertHolidayName(name, range(1971, 2050))
+        dt = (
+            "2010-02-15",
+            "2011-02-21",
+            "2012-02-20",
+            "2013-02-18",
+            "2014-02-17",
+            "2015-02-16",
+            "2016-02-15",
+            "2017-02-20",
+            "2018-02-19",
+            "2019-02-18",
+            "2020-02-17",
+            "2021-02-15",
+            "2022-02-21",
+            "2023-02-20",
+        )
+        self.assertHolidayName(name, dt)
+
+        subdiv_dont = {"AL", "AR", "DE", "FL", "GA", "NM", "PR", "VI"}
+        for subdiv in set(UnitedStates.subdivisions) - subdiv_dont:
+            self.assertHolidayName(name, self.state_hols[subdiv], dt)
+
+    def test_washingtons_birthday_states(self):
+        dt = (
+            "2010-02-15",
+            "2011-02-21",
+            "2012-02-20",
+            "2013-02-18",
+            "2014-02-17",
+            "2015-02-16",
+            "2016-02-15",
+            "2017-02-20",
+            "2018-02-19",
+            "2019-02-18",
+            "2020-02-17",
+            "2021-02-15",
+            "2022-02-21",
+            "2023-02-20",
+        )
+
+        self.assertHolidayName(
+            "George Washington & Thomas Jefferson's Birthday", self.state_hols["AL"], dt
+        )
+
+        self.assertHolidayName(
+            "George Washington's Birthday and Daisy Gatson Bates Day", self.state_hols["AR"], dt
+        )
+
+        self.assertNoHoliday(self.state_hols["DE"], dt)
+
+        self.assertNoHoliday(
+            self.state_hols["FL"],
+            "2010-02-15",
+            "2011-02-21",
+            "2012-02-20",
+            "2013-02-18",
+            "2014-02-17",
+            "2015-02-16",
+            "2017-02-20",
+            "2018-02-19",
+            "2019-02-18",
+            "2020-02-17",
+            "2022-02-21",
+            "2023-02-20",
+        )
+
+        self.assertHolidayName(
+            "Washington's Birthday",
+            self.state_hols["GA"],
+            "2010-12-24",
+            "2011-12-24",
+            "2012-12-24",
+            "2013-12-24",
+            "2014-12-26",
+            "2015-12-24",
+            "2016-12-24",
+            "2017-12-24",
+            "2018-12-24",
+            "2019-12-24",
+            "2020-12-24",
+            "2021-12-24",
+            "2022-12-24",
+            "2023-12-24",
+        )
+
+        self.assertNoHoliday(self.state_hols["NM"], dt)
+
+        self.assertHolidayName("Presidents' Day", self.state_hols["PR"], dt)
+
+        self.assertHolidayName("Presidents' Day", self.state_hols["VI"], dt)
+
+    def test_columbus_day(self):
+        name = "Columbus Day"
+        self.assertNoHolidayName(name, range(1865, 1937))
+        self.assertHolidayName(name, (f"{year}-10-12" for year in range(1937, 1970)))
+        self.assertHolidayName(name, range(1970, 2050))
+        dt = (
+            "2010-10-11",
+            "2011-10-10",
+            "2012-10-08",
+            "2013-10-14",
+            "2014-10-13",
+            "2015-10-12",
+            "2016-10-10",
+            "2017-10-09",
+            "2018-10-08",
+            "2019-10-14",
+            "2020-10-12",
+            "2021-10-11",
+            "2022-10-10",
+            "2023-10-09",
+        )
+        self.assertHolidayName(name, dt)
+
+        subdiv_dont = {"AK", "AR", "DE", "FL", "HI", "NV", "SD", "VI"}
+        for subdiv in set(UnitedStates.subdivisions) - subdiv_dont:
+            self.assertHolidayName(name, self.state_hols[subdiv], dt)
+
+    def test_columbus_day_states(self):
+        name = "Columbus Day"
+        dt = (
+            "2010-10-11",
+            "2011-10-10",
+            "2012-10-08",
+            "2013-10-14",
+            "2014-10-13",
+            "2015-10-12",
+            "2016-10-10",
+            "2017-10-09",
+            "2018-10-08",
+            "2019-10-14",
+            "2020-10-12",
+            "2021-10-11",
+            "2022-10-10",
+            "2023-10-09",
+        )
+
+        for subdiv in ("AK", "AR", "DE", "FL", "HI", "NV"):
+            self.assertNoHoliday(self.state_hols[subdiv], dt)
+            self.assertNoHolidayName(name, self.state_hols[subdiv])
+
+        self.assertHolidayName("Native American Day", self.state_hols["SD"], dt)
+
+        self.assertHolidayName(
+            "Columbus Day and Puerto Rico Friendship Day", self.state_hols["VI"], dt
+        )
+
+    def test_epiphany(self):
+        name = "Epiphany"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["PR"], (f"{year}-01-06" for year in range(1865, 2050))
+        )
+
+    def test_three_kings_day(self):
+        name = "Three Kings Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["VI"], (f"{year}-01-06" for year in range(1865, 2050))
+        )
+
+    def test_lee_jackson_day(self):
+        name = "Lee Jackson Day"
+        self.assertNoHolidayName(name)
+        self.assertNoHolidayName(name, self.state_hols["VA"], range(1865, 1889), range(2021, 2050))
+        self.assertHolidayName(
+            name, self.state_hols["VA"], (f"{year}-01-19" for year in range(1889, 1983))
+        )
+        dt = (
+            "1983-01-17",
+            "1990-01-15",
+            "1995-01-16",
+            "1999-01-18",
+            "2000-01-14",
+            "2010-01-15",
+            "2011-01-14",
+            "2012-01-13",
+            "2013-01-18",
+            "2014-01-17",
+            "2015-01-16",
+            "2016-01-15",
+            "2017-01-13",
+            "2018-01-12",
+            "2019-01-18",
+            "2020-01-17",
+        )
+        self.assertHolidayName(name, self.state_hols["VA"], dt)
+
+    def test_inauguration_day(self):
+        name = "Inauguration Day"
+        self.assertNoHolidayName(name)
+        years_1 = range(1861, 1937, 4)
+        years_2 = range(1937, 2050, 4)
+        years_no = set(range(1865, 2050)).difference(set(years_1)).difference(set(years_2))
+        obs_dt = (
+            "1877-03-05",
+            "1917-03-05",
+            "1957-01-21",
+            "1985-01-21",
+        )
+        for subdiv in ("DC", "LA", "MD", "VA"):
+            self.assertHolidayName(
+                name, self.state_hols[subdiv], (f"{year}-03-04" for year in years_1)
+            )
+            self.assertHolidayName(
+                name, self.state_hols[subdiv], (f"{year}-01-20" for year in years_2)
+            )
+            self.assertHolidayName(name, UnitedStates(subdiv=subdiv), "1789-03-04")
+            self.assertNoHolidayName(name, UnitedStates(subdiv=subdiv), "1788-03-04")
+            self.assertNoHolidayName(name, self.state_hols[subdiv], years_no)
+            self.assertHolidayName(f"{name} (Observed)", self.state_hols[subdiv], obs_dt)
+            self.assertNoNonObservedHolidayName(
+                f"{name} (Observed)", UnitedStates(subdiv=subdiv, observed=False), obs_dt
+            )
+
+    def test_lincolns_birthday(self):
+        name = "Lincoln's Birthday"
+        self.assertNoHolidayName(name)
+        obs_dt = (
+            "2011-02-11",
+            "2012-02-13",
+            "2017-02-13",
+            "2022-02-11",
+            "2023-02-13",
+        )
+        for subdiv in ("CT", "IA", "IL", "NJ", "NY"):
+            self.assertHolidayName(
+                name, self.state_hols[subdiv], (f"{year}-02-12" for year in range(1971, 2050))
+            )
+            self.assertHolidayName(f"{name} (Observed)", self.state_hols[subdiv], obs_dt)
+            self.assertNoNonObservedHolidayName(
+                f"{name} (Observed)", UnitedStates(subdiv=subdiv, observed=False), obs_dt
+            )
+        obs_dt = (
+            "1994-02-11",
+            "1995-02-13",
+            "2000-02-11",
+            "2005-02-11",
+            "2006-02-13",
+        )
+        self.assertHolidayName(
+            name, self.state_hols["CA"], (f"{year}-02-12" for year in range(1971, 2010))
+        )
+        self.assertHolidayName(f"{name} (Observed)", self.state_hols["CA"], obs_dt)
+        self.assertNoNonObservedHolidayName(
+            f"{name} (Observed)", UnitedStates(subdiv="CA", observed=False), obs_dt
+        )
+
+    def test_susan_b_anthony_day(self):
+        name = "Susan B. Anthony Day"
+        self.assertNoHolidayName(name)
+        subdiv_start_years = {
+            "CA": 2014,
+            "FL": 2011,
+            "NY": 2004,
+            "WI": 1976,
+        }
+        for subdiv in subdiv_start_years:
+            self.assertHolidayName(
+                name,
+                self.state_hols[subdiv],
+                (f"{year}-02-15" for year in range(subdiv_start_years[subdiv], 2050)),
+            )
+            self.assertNoHolidayName(
+                name, self.state_hols[subdiv], range(1865, subdiv_start_years[subdiv])
+            )
+
+    def test_mardi_gras(self):
+        name = "Mardi Gras"
+        self.assertNoHolidayName(name)
+        self.assertNoHolidayName(name, UnitedStates(subdiv="LA", years=1856))
+        dt = (
+            "2010-02-16",
+            "2011-03-08",
+            "2012-02-21",
+            "2013-02-12",
+            "2014-03-04",
+            "2015-02-17",
+            "2016-02-09",
+            "2017-02-28",
+            "2018-02-13",
+            "2019-03-05",
+            "2020-02-25",
+            "2021-02-16",
+            "2022-03-01",
+            "2023-02-21",
+        )
+        self.assertHolidayName(name, self.state_hols["LA"], dt)
+
+    def test_guam_discovery_day(self):
+        name = "Guam Discovery Day"
+        self.assertNoHolidayName(name)
+        dt = (
+            "2010-03-01",
+            "2011-03-07",
+            "2012-03-05",
+            "2013-03-04",
+            "2014-03-03",
+            "2015-03-02",
+            "2016-03-07",
+            "2017-03-06",
+            "2018-03-05",
+            "2019-03-04",
+            "2020-03-02",
+            "2021-03-01",
+            "2022-03-07",
+            "2023-03-06",
+        )
+        self.assertHolidayName(name, self.state_hols["GU"], dt)
+        self.assertNoHolidayName(name, self.state_hols["GU"], range(1865, 1970))
+
+    def test_casimir_pulaski_day(self):
+        name = "Casimir Pulaski Day"
+        self.assertNoHolidayName(name)
+        dt = (
+            "2010-03-01",
+            "2011-03-07",
+            "2012-03-05",
+            "2013-03-04",
+            "2014-03-03",
+            "2015-03-02",
+            "2016-03-07",
+            "2017-03-06",
+            "2018-03-05",
+            "2019-03-04",
+            "2020-03-02",
+            "2021-03-01",
+            "2022-03-07",
+            "2023-03-06",
+        )
+        self.assertHolidayName(name, self.state_hols["IL"], dt)
+        self.assertNoHolidayName(name, self.state_hols["IL"], range(1865, 1978))
+
+    def test_texas_independence_day(self):
+        name = "Texas Independence Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["TX"], (f"{year}-03-02" for year in range(1874, 2050))
+        )
+        self.assertNoHolidayName(name, self.state_hols["TX"], range(1865, 1874))
+
+    def test_town_meeting_day(self):
+        name = "Town Meeting Day"
+        self.assertNoHolidayName(name)
+        self.assertNoHolidayName(name, UnitedStates(subdiv="VT", years=1799))
+        dt = (
+            "2010-03-02",
+            "2011-03-01",
+            "2012-03-06",
+            "2013-03-05",
+            "2014-03-04",
+            "2015-03-03",
+            "2016-03-01",
+            "2017-03-07",
+            "2018-03-06",
+            "2019-03-05",
+            "2020-03-03",
+            "2021-03-02",
+            "2022-03-01",
+            "2023-03-07",
+        )
+        self.assertHolidayName(name, self.state_hols["VT"], dt)
+
+    def test_evacuation_day(self):
+        name = "Evacuation Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["MA"], (f"{year}-03-17" for year in range(1901, 2050))
+        )
+        self.assertNoHolidayName(name, self.state_hols["MA"], range(1865, 1901))
+        obs_dt = (
+            "2012-03-19",
+            "2013-03-18",
+            "2018-03-19",
+            "2019-03-18",
+        )
+        self.assertHolidayName(f"{name} (Observed)", self.state_hols["MA"], obs_dt)
+        self.assertNoNonObservedHolidayName(
+            f"{name} (Observed)", UnitedStates(subdiv="MA", observed=False), obs_dt
+        )
+
+    def test_emancipation_day_in_puerto_rico(self):
+        name = "Emancipation Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["PR"], (f"{year}-03-22" for year in range(1865, 2050))
+        )
+        obs_dt = (
+            "1998-03-23",
+            "2009-03-23",
+            "2015-03-23",
+            "2020-03-23",
+        )
+        self.assertHolidayName(f"{name} (Observed)", self.state_hols["PR"], obs_dt)
+        self.assertNoNonObservedHolidayName(
+            f"{name} (Observed)", UnitedStates(subdiv="PR", observed=False), obs_dt
+        )
+
+    def test_commonwealth_covenant_day(self):
+        name = "Commonwealth Covenant Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["MP"], (f"{year}-03-24" for year in range(1865, 2050))
+        )
+        obs_dt = (
+            "2012-03-23",
+            "2013-03-25",
+            "2018-03-23",
+            "2019-03-25",
+        )
+        self.assertHolidayName(f"{name} (Observed)", self.state_hols["MP"], obs_dt)
+        self.assertNoNonObservedHolidayName(
+            f"{name} (Observed)", UnitedStates(subdiv="MP", observed=False), obs_dt
+        )
+
+    def test_prince_jonah_kuhio_kalanianaole_day(self):
+        name = "Prince Jonah Kuhio Kalanianaole Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["HI"], (f"{year}-03-26" for year in range(1949, 2050))
+        )
+        self.assertNoHolidayName(name, self.state_hols["HI"], range(1865, 1949))
+        obs_dt = (
+            "2011-03-25",
+            "2016-03-25",
+            "2017-03-27",
+            "2022-03-25",
+            "2023-03-27",
+        )
+        self.assertHolidayName(f"{name} (Observed)", self.state_hols["HI"], obs_dt)
+        self.assertNoNonObservedHolidayName(
+            f"{name} (Observed)", UnitedStates(subdiv="HI", observed=False), obs_dt
+        )
+
+    def test_sewards_day(self):
+        name = "Seward's Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["AK"], (f"{year}-03-30" for year in range(1918, 1955))
+        )
+        self.assertNoHolidayName(name, self.state_hols["AK"], range(1865, 1918))
+        dt = (
+            "1955-03-28",
+            "2010-03-29",
+            "2011-03-28",
+            "2012-03-26",
+            "2013-03-25",
+            "2014-03-31",
+            "2015-03-30",
+            "2016-03-28",
+            "2017-03-27",
+            "2018-03-26",
+            "2019-03-25",
+            "2020-03-30",
+            "2021-03-29",
+            "2022-03-28",
+            "2023-03-27",
+        )
+        self.assertHolidayName(name, self.state_hols["AK"], dt)
+
+    def test_cesar_chavez_day(self):
+        name = "Cesar Chavez Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["CA"], (f"{year}-03-31" for year in range(1995, 2050))
+        )
+        self.assertNoHolidayName(name, self.state_hols["CA"], range(1865, 1995))
+        obs_dt = (
+            "1996-04-01",
+            "2002-04-01",
+            "2013-04-01",
+            "2019-04-01",
+        )
+        self.assertHolidayName(f"{name} (Observed)", self.state_hols["CA"], obs_dt)
+        self.assertNoNonObservedHolidayName(
+            f"{name} (Observed)", UnitedStates(subdiv="CA", observed=False), obs_dt
+        )
+        self.assertHolidayName(
+            name, self.state_hols["TX"], (f"{year}-03-31" for year in range(2000, 2050))
+        )
+        self.assertNoHolidayName(name, self.state_hols["TX"], range(1865, 2000))
+
+    def test_transfer_day(self):
+        name = "Transfer Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["VI"], (f"{year}-03-31" for year in range(1865, 2050))
+        )
+
+    def test_emancipation_day(self):
+        name = "Emancipation Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["DC"], (f"{year}-04-16" for year in range(2005, 2050))
+        )
+        self.assertNoHolidayName(name, self.state_hols["DC"], range(1865, 2005))
+        obs_dt = (
+            "2011-04-15",
+            "2016-04-15",
+            "2017-04-17",
+            "2022-04-15",
+            "2023-04-17",
+        )
+        self.assertHolidayName(f"{name} (Observed)", self.state_hols["DC"], obs_dt)
+        self.assertNoNonObservedHolidayName(
+            f"{name} (Observed)", UnitedStates(subdiv="DC", observed=False), obs_dt
+        )
+
+    def test_patriots_day(self):
+        name = "Patriots' Day"
+        self.assertNoHolidayName(name)
+        dt = (
+            "1969-04-21",
+            "2010-04-19",
+            "2011-04-18",
+            "2012-04-16",
+            "2013-04-15",
+            "2014-04-21",
+            "2015-04-20",
+            "2016-04-18",
+            "2017-04-17",
+            "2018-04-16",
+            "2019-04-15",
+            "2020-04-20",
+            "2021-04-19",
+            "2022-04-18",
+            "2023-04-17",
+        )
+        for subdiv in ("MA", "ME"):
+            self.assertHolidayName(
+                name, self.state_hols[subdiv], (f"{year}-04-19" for year in range(1894, 1969))
+            )
+            self.assertNoHolidayName(name, self.state_hols[subdiv], range(1865, 1894))
+            self.assertHolidayName(name, self.state_hols[subdiv], dt)
+
+    def test_holy_thursday(self):
+        name = "Holy Thursday"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(name, self.state_hols["VI"], range(1865, 2050))
+        dt = (
+            "2010-04-01",
+            "2011-04-21",
+            "2012-04-05",
+            "2013-03-28",
+            "2014-04-17",
+            "2015-04-02",
+            "2016-03-24",
+            "2017-04-13",
+            "2018-03-29",
+            "2019-04-18",
+            "2020-04-09",
+            "2021-04-01",
+            "2022-04-14",
+            "2023-04-06",
+        )
+        self.assertHolidayName(name, self.state_hols["VI"], dt)
+
+    def test_good_friday(self):
+        name = "Good Friday"
+        self.assertNoHolidayName(name)
+        dt = (
+            "2010-04-02",
+            "2011-04-22",
+            "2012-04-06",
+            "2013-03-29",
+            "2014-04-18",
+            "2015-04-03",
+            "2016-03-25",
+            "2017-04-14",
+            "2018-03-30",
+            "2019-04-19",
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+            "2023-04-07",
+        )
+        for subdiv in (
+            "CT",
+            "DE",
+            "GU",
+            "IN",
+            "KY",
+            "LA",
+            "MP",
+            "NC",
+            "NJ",
+            "PR",
+            "TN",
+            "TX",
+            "VI",
+        ):
+            self.assertHolidayName(name, self.state_hols[subdiv], range(1865, 2050))
+            self.assertHolidayName(name, self.state_hols[subdiv], dt)
+
+    def test_easter_monday(self):
+        name = "Easter Monday"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(name, self.state_hols["VI"], range(1865, 2050))
+        dt = (
+            "2010-04-05",
+            "2011-04-25",
+            "2012-04-09",
+            "2013-04-01",
+            "2014-04-21",
+            "2015-04-06",
+            "2016-03-28",
+            "2017-04-17",
+            "2018-04-02",
+            "2019-04-22",
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+        )
+        self.assertHolidayName(name, self.state_hols["VI"], dt)
+
+    def test_confederate_memorial_day(self):
+        name = "Confederate Memorial Day"
+        self.assertNoHolidayName(name)
+        dt = (
+            "2010-04-26",
+            "2011-04-25",
+            "2012-04-23",
+            "2013-04-22",
+            "2014-04-28",
+            "2015-04-27",
+            "2016-04-25",
+            "2017-04-24",
+            "2018-04-23",
+            "2019-04-22",
+            "2020-04-27",
+            "2021-04-26",
+            "2022-04-25",
+            "2023-04-24",
+        )
+        for subdiv in ("AL", "MS", "SC"):
+            self.assertHolidayName(name, self.state_hols[subdiv], range(1866, 2050))
+            self.assertNoHolidayName(name, self.state_hols[subdiv], range(1865, 1866))
+            self.assertHolidayName(name, self.state_hols[subdiv], dt)
+
+        self.assertHolidayName(
+            name, self.state_hols["TX"], (f"{year}-01-19" for year in range(1931, 2050))
+        )
+        self.assertNoHolidayName(name, self.state_hols["TX"], range(1865, 1931))
+
+        self.assertHolidayName(name, self.state_hols["GA"], range(1866, 2016))
+        self.assertNoHolidayName(name, self.state_hols["GA"], range(2016, 2050))
+        self.assertHolidayName(
+            name,
+            self.state_hols["GA"],
+            "2010-04-26",
+            "2011-04-25",
+            "2012-04-23",
+            "2013-04-22",
+            "2014-04-28",
+            "2015-04-27",
+        )
+
+        name = "State Holiday"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(name, self.state_hols["GA"], range(2016, 2050))
+        self.assertHolidayName(
+            name,
+            self.state_hols["GA"],
+            "2016-04-25",
+            "2017-04-24",
+            "2018-04-23",
+            "2019-04-22",
+            "2020-04-10",
+            "2021-04-26",
+            "2022-04-25",
+            "2023-04-24",
+        )
+
+    def test_san_jacinto_day(self):
+        name = "San Jacinto Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["TX"], (f"{year}-04-21" for year in range(1875, 2050))
+        )
+        self.assertNoHolidayName(name, self.state_hols["TX"], range(1865, 1875))
+
+    def test_arbor_day(self):
+        name = "Arbor Day"
+        self.assertNoHolidayName(name)
+        dt = (
+            "1989-04-28",
+            "2010-04-30",
+            "2011-04-29",
+            "2012-04-27",
+            "2013-04-26",
+            "2014-04-25",
+            "2015-04-24",
+            "2016-04-29",
+            "2017-04-28",
+            "2018-04-27",
+            "2019-04-26",
+            "2020-04-24",
+            "2021-04-30",
+            "2022-04-29",
+            "2023-04-28",
+        )
+        self.assertHolidayName(
+            name, self.state_hols["NE"], (f"{year}-04-22" for year in range(1875, 1989))
+        )
+        self.assertNoHolidayName(name, self.state_hols["NE"], range(1865, 1875))
+        self.assertHolidayName(name, self.state_hols["NE"], dt)
+
+    def test_primary_election_day(self):
+        name = "Primary Election Day"
+        self.assertNoHolidayName(name)
+        dt = (
+            "2006-05-02",
+            "2008-05-06",
+            "2010-05-04",
+            "2012-05-08",
+            "2014-05-06",
+            "2015-05-05",
+            "2016-05-03",
+            "2017-05-02",
+            "2018-05-08",
+            "2019-05-07",
+            "2020-05-05",
+            "2021-05-04",
+            "2022-05-03",
+            "2023-05-02",
+        )
+        self.assertHolidayName(
+            name, self.state_hols["IN"], 2006, 2008, 2010, 2012, 2014, range(2015, 2050)
+        )
+        self.assertNoHolidayName(
+            name, self.state_hols["IN"], range(1865, 2006), 2007, 2009, 2011, 2013
+        )
+        self.assertHolidayName(name, self.state_hols["IN"], dt)
+
+    def test_truman_day(self):
+        name = "Truman Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["MO"], (f"{year}-05-08" for year in range(1949, 2050))
+        )
+        self.assertNoHolidayName(name, self.state_hols["MO"], range(1865, 1949))
+        obs_dt = (
+            "2010-05-07",
+            "2011-05-09",
+            "2016-05-09",
+            "2021-05-07",
+            "2022-05-09",
+        )
+        self.assertHolidayName(f"{name} (Observed)", self.state_hols["MO"], obs_dt)
+        self.assertNoNonObservedHolidayName(
+            f"{name} (Observed)", UnitedStates(subdiv="MO", observed=False), obs_dt
+        )
+
+    def test_jefferson_davis_birthday(self):
+        name = "Jefferson Davis Birthday"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(name, self.state_hols["AL"], range(1890, 2050))
+        self.assertNoHolidayName(name, self.state_hols["AL"], range(1865, 1890))
+        dt = (
+            "2010-06-07",
+            "2011-06-06",
+            "2012-06-04",
+            "2013-06-03",
+            "2014-06-02",
+            "2015-06-01",
+            "2016-06-06",
+            "2017-06-05",
+            "2018-06-04",
+            "2019-06-03",
+            "2020-06-01",
+            "2021-06-07",
+            "2022-06-06",
+            "2023-06-05",
+        )
+        self.assertHolidayName(name, self.state_hols["AL"], dt)
+
+    def test_kamehameha_day(self):
+        name = "Kamehameha Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["HI"], (f"{year}-06-11" for year in range(1872, 2050))
+        )
+        self.assertNoHolidayName(name, self.state_hols["HI"], range(1865, 1872))
+        obs_dt = (
+            "2011-06-10",
+            "2016-06-10",
+            "2017-06-12",
+            "2022-06-10",
+            "2023-06-12",
+        )
+        self.assertHolidayName(f"{name} (Observed)", self.state_hols["HI"], obs_dt)
+        self.assertNoNonObservedHolidayName(
+            f"{name} (Observed)", UnitedStates(subdiv="HI", observed=False), obs_dt
+        )
+        self.assertNoHolidayName(f"{name} (Observed)", self.state_hols["HI"], range(1872, 2011))
+
+    def test_emancipation_day_in_texas(self):
+        name = "Emancipation Day In Texas"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["TX"], (f"{year}-06-19" for year in range(1980, 2050))
+        )
+        self.assertNoHolidayName(name, self.state_hols["TX"], range(1865, 1980))
+
+    def test_west_virginia_day(self):
+        name = "West Virginia Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["WV"], (f"{year}-06-20" for year in range(1927, 2050))
+        )
+        self.assertNoHolidayName(name, self.state_hols["WV"], range(1865, 1927))
+        obs_dt = (
+            "2010-06-21",
+            "2015-06-19",
+            "2020-06-19",
+            "2021-06-21",
+        )
+        self.assertHolidayName(f"{name} (Observed)", self.state_hols["WV"], obs_dt)
+        self.assertNoNonObservedHolidayName(
+            f"{name} (Observed)", UnitedStates(subdiv="WV", observed=False), obs_dt
+        )
+
+    def test_emancipation_day_in_virgin_islands(self):
+        name = "Emancipation Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["VI"], (f"{year}-07-03" for year in range(1865, 2050))
+        )
+
+    def test_liberation_day_guam(self):
+        name = "Liberation Day (Guam)"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["GU"], (f"{year}-07-21" for year in range(1945, 2050))
+        )
+        self.assertNoHolidayName(name, self.state_hols["WV"], range(1865, 1945))
+
+    def test_pioneer_day(self):
+        name = "Pioneer Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["UT"], (f"{year}-07-24" for year in range(1865, 2050))
+        )
+        self.assertNoHolidayName(name, UnitedStates(subdiv="UT", years=1848))
+        obs_dt = (
+            "2010-07-23",
+            "2011-07-25",
+            "2016-07-25",
+            "2021-07-23",
+            "2022-07-25",
+        )
+        self.assertHolidayName(f"{name} (Observed)", self.state_hols["UT"], obs_dt)
+        self.assertNoNonObservedHolidayName(
+            f"{name} (Observed)", UnitedStates(subdiv="UT", observed=False), obs_dt
+        )
+
+    def test_constitution_day(self):
+        name = "Constitution Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["PR"], (f"{year}-07-25" for year in range(1865, 2050))
+        )
+        obs_dt = (
+            "1999-07-26",
+            "2004-07-26",
+            "2010-07-26",
+            "2021-07-26",
+        )
+        self.assertHolidayName(f"{name} (Observed)", self.state_hols["PR"], obs_dt)
+        self.assertNoNonObservedHolidayName(
+            f"{name} (Observed)", UnitedStates(subdiv="PR", observed=False), obs_dt
+        )
+
+    def test_victory_day(self):
+        name = "Victory Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(name, self.state_hols["RI"], range(1948, 2050))
+        self.assertNoHolidayName(name, self.state_hols["RI"], range(1865, 1948))
+        dt = (
+            "2010-08-09",
+            "2011-08-08",
+            "2012-08-13",
+            "2013-08-12",
+            "2014-08-11",
+            "2015-08-10",
+            "2016-08-08",
+            "2017-08-14",
+            "2018-08-13",
+            "2019-08-12",
+            "2020-08-10",
+            "2021-08-09",
+            "2022-08-08",
+            "2023-08-14",
+        )
+        self.assertHolidayName(name, self.state_hols["RI"], dt)
+
+    def test_statehood_day(self):
+        name = "Statehood Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(name, self.state_hols["HI"], range(1959, 2050))
+        self.assertNoHolidayName(name, self.state_hols["HI"], range(1865, 1959))
+        dt = (
+            "2010-08-20",
+            "2011-08-19",
+            "2012-08-17",
+            "2013-08-16",
+            "2014-08-15",
+            "2015-08-21",
+            "2016-08-19",
+            "2017-08-18",
+            "2018-08-17",
+            "2019-08-16",
+            "2020-08-21",
+            "2021-08-20",
+            "2022-08-19",
+            "2023-08-18",
+        )
+        self.assertHolidayName(name, self.state_hols["HI"], dt)
+
+    def test_bennington_battle_day(self):
+        name = "Bennington Battle Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["VT"], (f"{year}-08-16" for year in range(1865, 2050))
+        )
+        self.assertNoHolidayName(name, UnitedStates(subdiv="VT", years=1777))
+        obs_dt = (
+            "2009-08-17",
+            "2014-08-15",
+            "2015-08-17",
+            "2020-08-17",
+        )
+        self.assertHolidayName(f"{name} (Observed)", self.state_hols["VT"], obs_dt)
+        self.assertNoNonObservedHolidayName(
+            f"{name} (Observed)", UnitedStates(subdiv="VT", observed=False), obs_dt
+        )
+
+    def test_lyndon_baines_johnson_day(self):
+        name = "Lyndon Baines Johnson Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["TX"], (f"{year}-08-27" for year in range(1973, 2050))
+        )
+        self.assertNoHolidayName(name, self.state_hols["WV"], range(1865, 1973))
+
+    def test_commonwealth_cultural_day(self):
+        name = "Commonwealth Cultural Day"
+        self.assertNoHolidayName(name)
+        dt = (
+            "2010-10-11",
+            "2011-10-10",
+            "2012-10-08",
+            "2013-10-14",
+            "2014-10-13",
+            "2015-10-12",
+            "2016-10-10",
+            "2017-10-09",
+            "2018-10-08",
+            "2019-10-14",
+            "2020-10-12",
+            "2021-10-11",
+            "2022-10-10",
+            "2023-10-09",
+        )
+        self.assertHolidayName(name, self.state_hols["MP"], dt)
+
+    def test_alaska_day(self):
+        name = "Alaska Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["AK"], (f"{year}-10-18" for year in range(1867, 2050))
+        )
+        self.assertNoHolidayName(name, self.state_hols["AK"], range(1865, 1867))
+        obs_dt = (
+            "2009-10-19",
+            "2014-10-17",
+            "2015-10-19",
+            "2020-10-19",
+        )
+        self.assertHolidayName(f"{name} (Observed)", self.state_hols["AK"], obs_dt)
+        self.assertNoNonObservedHolidayName(
+            f"{name} (Observed)", UnitedStates(subdiv="AK", observed=False), obs_dt
+        )
+
+    def test_nevada_day(self):
+        name = "Nevada Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["NV"], (f"{year}-10-31" for year in range(1933, 2000))
+        )
+        self.assertNoHolidayName(name, self.state_hols["NV"], range(1865, 1933))
+        dt = (
+            "2000-10-27",
+            "2010-10-29",
+            "2011-10-28",
+            "2012-10-26",
+            "2013-10-25",
+            "2014-10-31",
+            "2015-10-30",
+            "2016-10-28",
+            "2017-10-27",
+            "2018-10-26",
+            "2019-10-25",
+            "2020-10-30",
+            "2021-10-29",
+            "2022-10-28",
+            "2023-10-27",
+        )
+        self.assertHolidayName(name, self.state_hols["NV"], dt)
+
+        obs_dt = (
+            "1992-10-30",
+            "1993-11-01",
+            "1998-10-30",
+            "1999-11-01",
+        )
+        self.assertHolidayName(f"{name} (Observed)", self.state_hols["NV"], obs_dt)
+        self.assertNoNonObservedHolidayName(
+            f"{name} (Observed)", UnitedStates(subdiv="NV", observed=False), obs_dt
+        )
+
+    def test_liberty_day(self):
+        name = "Liberty Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["VI"], (f"{year}-11-01" for year in range(1865, 2050))
+        )
+
+    def test_election_day(self):
+        name = "Election Day"
+        self.assertNoHolidayName(name)
+        dt = (
+            "2008-11-04",
+            "2010-11-02",
+            "2012-11-06",
+            "2014-11-04",
+            "2016-11-08",
+            "2018-11-06",
+            "2020-11-03",
+            "2022-11-08",
+        )
+        for subdiv in ("DE", "HI", "IL", "LA", "MP", "MT", "NH", "NJ", "WV"):
+            self.assertHolidayName(name, self.state_hols[subdiv], dt)
+            self.assertNoHolidayName(name, self.state_hols[subdiv], range(1865, 2008))
+            self.assertNoHolidayName(name, self.state_hols[subdiv], range(2009, 2050, 2))
+
+        dt = (
+            "2008-11-04",
+            "2010-11-02",
+            "2012-11-06",
+            "2014-11-04",
+            "2015-11-03",
+            "2016-11-08",
+            "2017-11-07",
+            "2018-11-06",
+            "2019-11-05",
+            "2020-11-03",
+            "2021-11-02",
+            "2022-11-08",
+            "2023-11-07",
+        )
+        for subdiv in ("IN", "NY"):
+            self.assertHolidayName(name, self.state_hols[subdiv], dt)
+            self.assertNoHolidayName(name, self.state_hols[subdiv], range(1865, 2008))
+
+    def test_all_souls_day(self):
+        name = "All Souls' Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["GU"], (f"{year}-11-02" for year in range(1865, 2050))
+        )
+
+    def test_citizenship_day(self):
+        name = "Citizenship Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["MP"], (f"{year}-11-04" for year in range(1865, 2050))
+        )
+        obs_dt = (
+            "2012-11-05",
+            "2017-11-03",
+            "2018-11-05",
+            "2023-11-03",
+        )
+        self.assertHolidayName(f"{name} (Observed)", self.state_hols["MP"], obs_dt)
+        self.assertNoNonObservedHolidayName(
+            f"{name} (Observed)", UnitedStates(subdiv="MP", observed=False), obs_dt
+        )
+
+    def test_discovery_day(self):
+        name = "Discovery Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["PR"], (f"{year}-11-19" for year in range(1865, 2050))
+        )
+        obs_dt = (
+            "2000-11-20",
+            "2006-11-20",
+            "2017-11-20",
+            "2023-11-20",
+        )
+        self.assertHolidayName(f"{name} (Observed)", self.state_hols["PR"], obs_dt)
+        self.assertNoNonObservedHolidayName(
+            f"{name} (Observed)", UnitedStates(subdiv="PR", observed=False), obs_dt
+        )
+
+    def test_after_thanksgiving_day(self):
+        dt = (
+            "2010-11-26",
+            "2011-11-25",
+            "2012-11-23",
+            "2013-11-29",
+            "2014-11-28",
+            "2015-11-27",
+            "2016-11-25",
+            "2017-11-24",
+            "2018-11-23",
+            "2019-11-29",
+            "2020-11-27",
+            "2021-11-26",
+            "2022-11-25",
+            "2023-11-24",
+        )
+        for subdiv, name, start_year in (
+            ("CA", "Day After Thanksgiving", 1975),
+            ("DE", "Day After Thanksgiving", 1975),
+            ("FL", "Friday After Thanksgiving", 1975),
+            ("IN", "Lincoln's Birthday", 2010),
+            ("MD", "American Indian Heritage Day", 2008),
+            ("NC", "Day After Thanksgiving", 1975),
+            ("NH", "Day After Thanksgiving", 1975),
+            ("NM", "Presidents' Day", -1),
+            ("NV", "Family Day", -1),
+            ("OK", "Day After Thanksgiving", 1975),
+            ("PA", "Day After Thanksgiving", -1),
+            ("TX", "Friday After Thanksgiving", 1975),
+            ("WV", "Day After Thanksgiving", 1975),
+        ):
+            self.assertNoHolidayName(name)
+            self.assertHolidayName(name, self.state_hols[subdiv], dt)
+            self.assertHolidayName(
+                name, self.state_hols[subdiv], range(start_year if start_year > 0 else 1865, 2050)
+            )
+            if start_year > 0:
+                self.assertNoHolidayName(name, self.state_hols[subdiv], range(1865, start_year))
+
+    def test_robert_lee_birthday(self):
+        name_1 = "Robert E. Lee's Birthday"
+        name_2 = "State Holiday"
+        self.assertNoHolidayName(name_1)
+        self.assertNoHolidayName(name_2)
+        self.assertHolidayName(name_1, self.state_hols["GA"], range(1986, 2016))
+        self.assertHolidayName(name_2, self.state_hols["GA"], range(2016, 2050))
+        self.assertNoHolidayName(
+            name_1, self.state_hols["GA"], range(1865, 1986), range(2016, 2050)
+        )
+        self.assertNoHolidayName(name_2, self.state_hols["GA"], range(1865, 2016))
+        self.assertHolidayName(
+            name_1,
+            self.state_hols["GA"],
+            "2010-11-26",
+            "2011-11-25",
+            "2012-11-23",
+            "2013-11-29",
+            "2014-11-28",
+            "2015-11-27",
+        )
+        self.assertHolidayName(
+            name_2,
+            self.state_hols["GA"],
+            "2016-11-25",
+            "2017-11-24",
+            "2018-11-23",
+            "2019-11-29",
+            "2020-11-27",
+            "2021-11-26",
+            "2022-11-25",
+            "2023-11-24",
+        )
+
+    def test_lady_of_camarin_day(self):
+        name = "Lady of Camarin Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["GU"], (f"{year}-12-08" for year in range(1865, 2050))
+        )
+
+    def test_constitution_day_mp(self):
+        name = "Constitution Day"
+        self.assertNoHolidayName(name)
+        self.assertHolidayName(
+            name, self.state_hols["MP"], (f"{year}-12-08" for year in range(1865, 2050))
+        )
+        obs_dt = (
+            "2012-12-07",
+            "2013-12-09",
+            "2018-12-07",
+            "2019-12-09",
+        )
+        self.assertHolidayName(f"{name} (Observed)", self.state_hols["MP"], obs_dt)
+        self.assertNoNonObservedHolidayName(
+            f"{name} (Observed)", UnitedStates(subdiv="MP", observed=False), obs_dt
+        )
+
+    def test_christmas_eve(self):
+        name = "Christmas Eve"
+        self.assertNoHolidayName(name)
+        obs_dt = (
+            "2016-12-23",
+            "2017-12-22",
+            "2021-12-23",
+            "2022-12-23",
+            "2023-12-22",
+        )
+        for subdiv, start_year in (
+            ("AS", -1),
+            ("KS", 2013),
+            ("MI", 2013),
+            ("NC", 2013),
+            ("TX", 1981),
+            ("WI", 2012),
+        ):
+            self.assertHolidayName(
+                name,
+                self.state_hols[subdiv],
+                (f"{year}-12-24" for year in range(start_year if start_year > 0 else 1865, 2050)),
+            )
+            if start_year > 0:
+                self.assertNoHolidayName(name, self.state_hols[subdiv], range(1865, start_year))
+            self.assertHolidayName(f"{name} (Observed)", self.state_hols[subdiv], obs_dt)
+            self.assertNoNonObservedHolidayName(
+                f"{name} (Observed)", UnitedStates(subdiv=subdiv, observed=False), obs_dt
+            )
 
     def test_day_after_christmas(self):
-        nc_holidays = holidays.US(subdiv="NC", observed=False)
-        tx_holidays = holidays.US(subdiv="TX", observed=False)
-        self.assertNotIn(date(2015, 12, 28), nc_holidays)
-        self.assertNotIn(date(2016, 12, 27), nc_holidays)
-        self.assertNotIn(date(2015, 12, 28), tx_holidays)
-        self.assertNotIn(date(2016, 12, 27), tx_holidays)
-        nc_holidays.observed = True
-        self.assertIn(
-            "Day After Christmas (Observed)",
-            nc_holidays.get_list(date(2015, 12, 28)),
+        for subdiv, name, start_year in (
+            ("NC", "Day After Christmas", 2013),
+            ("TX", "Day After Christmas", 1981),
+            ("VI", "Christmas Second Day", -1),
+        ):
+            self.assertNoHolidayName(name)
+            self.assertHolidayName(
+                name,
+                self.state_hols[subdiv],
+                (f"{year}-12-26" for year in range(start_year if start_year > 0 else 1865, 2050)),
+            )
+            if start_year > 0:
+                self.assertNoHolidayName(name, self.state_hols[subdiv], range(1865, start_year))
+        obs_dt = (
+            "2015-12-28",
+            "2016-12-27",
+            "2020-12-28",
+            "2021-12-27",
+            "2022-12-27",
         )
-        self.assertIn(
-            "Day After Christmas (Observed)",
-            nc_holidays.get_list(date(2016, 12, 27)),
-        )
-        tx_holidays.observed = True
-        self.assertNotIn(
-            "Day After Christmas (Observed)",
-            tx_holidays.get_list(date(2015, 12, 28)),
-        )
-        self.assertNotIn(
-            "Day After Christmas (Observed)",
-            tx_holidays.get_list(date(2016, 12, 27)),
+        name = "Day After Christmas"
+        self.assertHolidayName(f"{name} (Observed)", self.state_hols["NC"], obs_dt)
+        self.assertNoNonObservedHolidayName(
+            f"{name} (Observed)", UnitedStates(subdiv="NC", observed=False), obs_dt
         )
 
     def test_new_years_eve(self):
-        ky_holidays = holidays.US(subdiv="KY")
-        mi_holidays = holidays.US(subdiv="MI")
-        wi_holidays = holidays.US(subdiv="WI")
-        self.assertNotIn(date(2012, 12, 31), ky_holidays)
-        self.assertNotIn(date(2012, 12, 31), mi_holidays)
-        self.assertNotIn(date(2011, 12, 31), wi_holidays)
-        self.assertIn(date(2012, 12, 31), wi_holidays)
-        for dt in [date(2013, 12, 31), date(2016, 12, 30)]:
-            self.assertNotIn(dt, self.holidays)
-            self.assertIn(dt, ky_holidays)
-            self.assertIn(dt, mi_holidays)
-            self.assertIn(dt, wi_holidays)
-
-    def test_northern_mariana_islands_2022(self):
-        """Sources:
-        https://governor.gov.mp/archived-news/executive-actions-archive/memorandum-2022-legal-holidays/
-        https://webcache.googleusercontent.com/search?q=cache:C17_7FBgPtQJ:https://governor.gov.mp/archived-news/executive-actions-archive/memorandum-2022-legal-holidays/&hl=en&gl=sg&strip=1&vwsrc=0
-        """
-        mp_holidays = holidays.US(subdiv="MP")
-
-        self.assertIn(date(2022, JAN, 1), mp_holidays)
-        self.assertIn(date(2022, JAN, 17), mp_holidays)
-        self.assertIn(date(2022, FEB, 21), mp_holidays)
-        self.assertIn(date(2022, MAR, 24), mp_holidays)
-        self.assertIn(date(2022, APR, 15), mp_holidays)
-        self.assertIn(date(2022, MAY, 30), mp_holidays)
-        self.assertIn(date(2022, JUN, 19), mp_holidays)
-        self.assertIn(date(2022, JUN, 20), mp_holidays)
-        self.assertIn(date(2022, JUL, 4), mp_holidays)
-        self.assertIn(date(2022, SEP, 5), mp_holidays)
-        self.assertIn(date(2022, OCT, 10), mp_holidays)
-        self.assertIn(date(2022, NOV, 4), mp_holidays)
-        self.assertIn(date(2022, NOV, 8), mp_holidays)
-        self.assertIn(date(2022, NOV, 11), mp_holidays)
-        self.assertIn(date(2022, NOV, 24), mp_holidays)
-        self.assertIn(date(2022, DEC, 8), mp_holidays)
-        self.assertIn(date(2022, DEC, 25), mp_holidays)
-        self.assertIn(date(2022, DEC, 26), mp_holidays)
-        # 2022: total holidays (16 + 2 falling on a Sunday)
-        self.assertEqual(
-            16 + 2,
-            len(holidays.US(subdiv="MP", years=[2022])),
+        name = "New Year's Eve"
+        self.assertNoHolidayName(name)
+        obs_dt = (
+            "2016-12-30",
+            "2022-12-30",
         )
+        for subdiv, start_year in (
+            ("KY", 2013),
+            ("MI", 2013),
+            ("WI", 2012),
+        ):
+            self.assertHolidayName(
+                name,
+                self.state_hols[subdiv],
+                (f"{year}-12-31" for year in range(start_year if start_year > 0 else 1865, 2050)),
+            )
+            if start_year > 0:
+                self.assertNoHolidayName(name, self.state_hols[subdiv], range(1865, start_year))
+            self.assertHolidayName(f"{name} (Observed)", self.state_hols[subdiv], obs_dt)
+            self.assertNoNonObservedHolidayName(
+                f"{name} (Observed)", UnitedStates(subdiv=subdiv, observed=False), obs_dt
+            )

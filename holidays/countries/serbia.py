@@ -13,8 +13,8 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars import JULIAN_CALENDAR
-from holidays.constants import FEB
+from holidays.calendars.gregorian import FEB
+from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -65,10 +65,8 @@ class Serbia(HolidayBase, ChristianHolidays, InternationalHolidays):
             days=+2 if may_1 + td(days=+1) == self._easter_sunday else +1,
         )
 
-        self._add_observed(
-            # Armistice Day.
-            self._add_remembrance_day(tr("Дан примирја у Првом светском рату"))
-        )
+        # Armistice Day.
+        self._add_observed(self._add_remembrance_day(tr("Дан примирја у Првом светском рату")))
 
         # Good Friday.
         self._add_good_friday(tr("Велики петак"))

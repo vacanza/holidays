@@ -12,7 +12,7 @@
 
 from datetime import date
 
-from holidays.constants import FEB, MAR, APR, MAY, AUG, DEC
+from holidays.calendars.gregorian import FEB, MAR, APR, MAY, AUG, DEC
 from holidays.holiday_base import HolidayBase
 
 

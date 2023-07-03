@@ -12,7 +12,7 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, DEC
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -96,16 +96,12 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays):
             (DEC, 24, public_sector_holiday),
             (DEC, 31, public_sector_holiday),
         ),
-        2016: (
-            # public sector holiday to let civil servants
-            # begin their Holy Week earlier
-            (MAR, 23, public_sector_holiday),
-        ),
-        2017: (
-            # public sector holiday to let civil servants
-            # begin their Holy Week earlier
-            (MAR, 28, public_sector_holiday),
-        ),
+        # public sector holiday to let civil servants
+        # begin their Holy Week earlier
+        2016: (MAR, 23, public_sector_holiday),
+        # public sector holiday to let civil servants
+        # begin their Holy Week earlier
+        2017: (MAR, 28, public_sector_holiday),
         2018: (
             # 2 year-end public sector holidays
             (DEC, 24, public_sector_holiday),
@@ -119,11 +115,9 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays):
             (DEC, 24, public_sector_holiday),
             (DEC, 31, public_sector_holiday),
         ),
-        2020: (
-            # public sector holiday to let civil servants
-            # begin their Holy Week earlier
-            (APR, 8, public_sector_holiday),
-        ),
+        # public sector holiday to let civil servants
+        # begin their Holy Week earlier
+        2020: (APR, 8, public_sector_holiday),
         2021: (
             # 2 year-end public sector holidays
             (DEC, 24, public_sector_holiday),
@@ -161,11 +155,8 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays):
             2018: (FEB, 26),
             2022: (FEB, 28),
         }
-        self._add_holiday(
-            # Patriots Day.
-            tr("Día de los Héroes de la Patria"),
-            *dates_obs.get(year, (MAR, 1)),
-        )
+        # Patriots Day.
+        self._add_holiday(tr("Día de los Héroes de la Patria"), *dates_obs.get(year, (MAR, 1)))
 
         # Maundy Thursday.
         self._add_holy_thursday(tr("Jueves Santo"))
@@ -192,21 +183,12 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays):
             2018: (JUN, 11),
         }
         self._move_holiday(
-            self._add_holiday(
-                # Chaco Armistice Day.
-                tr("Día de la Paz del Chaco"),
-                *dates_obs.get(year, (JUN, 12)),
-            ),
+            # Chaco Armistice Day.
+            self._add_holiday(tr("Día de la Paz del Chaco"), *dates_obs.get(year, (JUN, 12)))
         )
 
-        self._move_holiday(
-            self._add_holiday(
-                # Asuncion Foundation's Day.
-                tr("Día de la Fundación de Asunción"),
-                AUG,
-                15,
-            ),
-        )
+        # Asuncion Foundation's Day.
+        self._move_holiday(self._add_holiday(tr("Día de la Fundación de Asunción"), AUG, 15))
 
         if year >= 2000:
             dates_obs = {
@@ -221,17 +203,11 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays):
                     # Boqueron Battle Day.
                     tr("Día de la Batalla de Boquerón"),
                     *dates_obs.get(year, (SEP, 29)),
-                ),
+                )
             )
 
-        self._move_holiday(
-            self._add_holiday(
-                # Caacupe Virgin Day.
-                tr("Día de la Virgen de Caacupé"),
-                DEC,
-                8,
-            )
-        )
+        # Caacupe Virgin Day.
+        self._move_holiday(self._add_holiday(tr("Día de la Virgen de Caacupé"), DEC, 8))
 
         # Christmas.
         self._add_christmas_day(tr("Navidad"))

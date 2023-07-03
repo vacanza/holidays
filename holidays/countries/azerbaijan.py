@@ -13,7 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.calendars import _CustomIslamicCalendar
-from holidays.constants import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
 
@@ -77,11 +77,7 @@ class Azerbaijan(HolidayBase, InternationalHolidays, IslamicHolidays):
         # Republic Day
         if year >= 1992:
             observed_dates.add(
-                self._add_holiday(
-                    "Independence Day" if year >= 2021 else "Republic Day",
-                    MAY,
-                    28,
-                )
+                self._add_holiday("Independence Day" if year >= 2021 else "Republic Day", MAY, 28)
             )
 
         # National Salvation Day
@@ -142,8 +138,7 @@ class Azerbaijan(HolidayBase, InternationalHolidays, IslamicHolidays):
             if year in special_dates_obs:
                 hol_dates.add(
                     self._add_holiday(
-                        "Gurban Bayrami* (*estimated) (Observed)",
-                        *special_dates_obs[year],
+                        "Gurban Bayrami* (*estimated) (Observed)", *special_dates_obs[year]
                     )
                 )
 

@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.constants import JAN, FEB, MAR, APR, MAY, OCT, NOV
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, OCT, NOV
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays
 
@@ -18,8 +18,8 @@ class VaticanCity(HolidayBase, ChristianHolidays):
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_Vatican_City
-      - https://www.ewtn.com/catholicism/library/solemnity-of-mary-mother-of-god-5826  # noqa: E501
-      - https://www.franciscanmedia.org/saint-of-the-day/saint-joseph-the-worker/  # noqa: E501
+      - https://www.ewtn.com/catholicism/library/solemnity-of-mary-mother-of-god-5826
+      - https://www.franciscanmedia.org/saint-of-the-day/saint-joseph-the-worker/
     """
 
     country = "VA"

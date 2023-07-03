@@ -13,14 +13,14 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.constants import APR, MAY, JUL, OCT
+from holidays.calendars.gregorian import APR, MAY, JUL, OCT
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
 class Curacao(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
-    https://loketdigital.gobiernu.cw/Loket/product/571960bbe1e5fe8712b10a1323630e70  # noqa: E501
+    https://loketdigital.gobiernu.cw/Loket/product/571960bbe1e5fe8712b10a1323630e70
     https://en.wikipedia.org/wiki/Public_holidays_in_Cura%C3%A7ao
 
     New Year's Eve (Vispu di Aña Nobo) is a half-day public holiday, though

@@ -25,9 +25,7 @@ class BuddhistCalendarHolidays:
         self._show_estimated = show_estimated
 
     def _add_buddhist_calendar_holiday(
-        self,
-        name: str,
-        hol_date: Tuple[date, bool],
+        self, name: str, hol_date: Tuple[date, bool]
     ) -> Optional[date]:
         """
         Add Buddhist calendar holiday.
@@ -53,8 +51,7 @@ class BuddhistCalendarHolidays:
         https://en.wikipedia.org/wiki/Vesak
         """
         return self._add_buddhist_calendar_holiday(
-            name,
-            self._buddhist_calendar.vesak_date(self._year),
+            name, self._buddhist_calendar.vesak_date(self._year)
         )
 
     def _add_vesak_may(self, name) -> Optional[date]:
@@ -66,6 +63,5 @@ class BuddhistCalendarHolidays:
         https://en.wikipedia.org/wiki/Vesak
         """
         return self._add_buddhist_calendar_holiday(
-            name,
-            self._buddhist_calendar.vesak_may_date(self._year),
+            name, self._buddhist_calendar.vesak_may_date(self._year)
         )

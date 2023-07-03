@@ -203,8 +203,8 @@ The list of supported countries, their subdivisions and supported languages
      -
    * - Bosnia and Herzegovina
      - BA
-     - Departments: BD, FBiH, RS
-     -
+     - Entities and district: BIH, BRC, SRP
+     - **bs**, en_US, sr, uk
    * - Botswana
      - BW
      -
@@ -308,7 +308,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Estonia
      - EE
      -
-     -
+     - en_US, **et**, uk
    * - Eswatini
      - SZ
      -
@@ -408,7 +408,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Latvia
      - LV
      -
-     -
+     - en_US, **lv**, uk
    * - Lesotho
      - LS
      -
@@ -420,7 +420,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Lithuania
      - LT
      -
-     -
+     - en_US, **lt**, uk
    * - Luxembourg
      - LU
      -
@@ -428,7 +428,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Madagascar
      - MG
      -
-     -
+     - en_US, **mg**, uk
    * - Malawi
      - MW
      -
@@ -440,7 +440,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Malta
      - MT
      -
-     -
+     - en_MT, **mt**
    * - Marshall Islands (the)
      - MH
      -

@@ -25,7 +25,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macOS-latest]
-        python-version: ['3.7', '3.8', '3.9', '3.10', '3.11', 'pypy-3.7']
+        python-version: ['3.8', '3.9', '3.10', '3.11', 'pypy-3.8']
 
     steps:
       - uses: actions/checkout@v3
@@ -100,7 +100,7 @@ jobs:
           name: dist
           path: dist
       - name: Publish Package
-        uses: pypa/gh-action-pypi-publish@v1.8.6
+        uses: pypa/gh-action-pypi-publish@v1.8.7
         with:
           user: __token__
           password: ${{ secrets.pypi_password }}

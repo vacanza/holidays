@@ -13,8 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 from typing import Optional
 
-from holidays.calendars import _get_nth_weekday_from
-from holidays.constants import JAN, MAR, MAY, AUG, SEP, OCT, NOV, MON
+from holidays.calendars.gregorian import JAN, MAR, MAY, AUG, SEP, OCT, NOV, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -43,10 +42,10 @@ class Belize(HolidayBase, ChristianHolidays, InternationalHolidays):
         name, dt = self._parse_holiday(*args)
         if self.observed:
             if self._is_friday(dt) or self._is_sunday(dt):
-                dt = _get_nth_weekday_from(1, MON, dt)
+                dt = self._get_nth_weekday_from(1, MON, dt)
                 name = "%s (Observed)" % name
             elif self._is_tuesday(dt) or self._is_wednesday(dt) or self._is_thursday(dt):
-                dt = _get_nth_weekday_from(-1, MON, dt)
+                dt = self._get_nth_weekday_from(-1, MON, dt)
                 name = "%s (Observed)" % name
         self._add_holiday(name, dt)
 

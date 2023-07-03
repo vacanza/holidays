@@ -12,8 +12,7 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars import _get_nth_weekday_of_month
-from holidays.constants import FEB, APR, AUG, DEC, MON
+from holidays.calendars.gregorian import FEB, APR, AUG, DEC, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -46,12 +45,8 @@ class Zimbabwe(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 2018:
             self._add_observed(
-                self._add_holiday(
-                    # Robert Gabriel Mugabe National Youth Day.
-                    "Robert Gabriel Mugabe National Youth Day",
-                    FEB,
-                    21,
-                )
+                # Robert Gabriel Mugabe National Youth Day.
+                self._add_holiday("Robert Gabriel Mugabe National Youth Day", FEB, 21)
             )
 
         # Good Friday.
@@ -76,14 +71,11 @@ class Zimbabwe(HolidayBase, ChristianHolidays, InternationalHolidays):
         second_mon_of_august = self._add_holiday(
             # Zimbabwe Heroes' Day.
             "Zimbabwe Heroes' Day",
-            _get_nth_weekday_of_month(2, MON, AUG, year),
+            self._get_nth_weekday_of_month(2, MON, AUG),
         )
 
-        self._add_holiday(
-            # Defense Forces Day.
-            "Defense Forces Day",
-            second_mon_of_august + td(days=+1),
-        )
+        # Defense Forces Day.
+        self._add_holiday("Defense Forces Day", second_mon_of_august + td(days=+1))
 
         # Unity Day.
         self._add_observed(self._add_holiday("Unity Day", DEC, 22))

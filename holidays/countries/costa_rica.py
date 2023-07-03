@@ -12,8 +12,7 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars import _get_nth_weekday_from
-from holidays.constants import APR, MAY, JUL, AUG, SEP, OCT, DEC, MON, SUN
+from holidays.calendars.gregorian import APR, MAY, JUL, AUG, SEP, OCT, DEC, MON, SUN
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -41,15 +40,15 @@ class CostaRica(HolidayBase, ChristianHolidays, InternationalHolidays):
                     name = self.tr("%s (Observado)") % self.tr(name)
 
                 if self._is_tuesday(dt) or self._is_wednesday(dt):
-                    dt = _get_nth_weekday_from(-1, MON, dt)
+                    dt = self._get_nth_weekday_from(-1, MON, dt)
                 else:
-                    dt = _get_nth_weekday_from(1, MON, dt)
+                    dt = self._get_nth_weekday_from(1, MON, dt)
             self._add_holiday(name, dt)
 
         def add_observed_holiday(name: str, dt: date) -> None:
             if self.observed:
                 if not (self._is_monday(dt) or self._is_weekend(dt)):
-                    dt = _get_nth_weekday_from(1, MON, dt)
+                    dt = self._get_nth_weekday_from(1, MON, dt)
                     name = self.tr("%s (Observado)") % self.tr(name)
             self._add_holiday(name, dt)
 
@@ -120,7 +119,7 @@ class CostaRica(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Day of the Black Person and Afro-Costa Rican Culture.
             name = self.tr("Día de la Persona Negra y la Cultura Afrocostarricense")
             if self.observed and year in {2022, 2023}:
-                dt = _get_nth_weekday_from(1, SUN, dt)
+                dt = self._get_nth_weekday_from(1, SUN, dt)
                 name = self.tr("%s (Observado)") % name
             self._add_holiday(name, dt)
 

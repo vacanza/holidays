@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.constants import MAR, APR, MAY, JUL, OCT
+from holidays.calendars.gregorian import MAR, APR, MAY, JUL, OCT
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -18,7 +18,7 @@ class Lesotho(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     References:
     - https://en.wikipedia.org/wiki/Public_holidays_in_Lesotho
-    - https://www.ilo.org/dyn/travail/docs/2093/Public%20Holidays%20Act%201995.pdf  # noqa: E501
+    - https://www.ilo.org/dyn/travail/docs/2093/Public%20Holidays%20Act%201995.pdf
     - https://www.timeanddate.com/holidays/lesotho/
     """
 
@@ -65,11 +65,8 @@ class Lesotho(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_ascension_thursday("Ascension Day")
 
         # https://en.wikipedia.org/wiki/Letsie_III
-        self._add_holiday(
-            # King's Birthday.
-            "King's Birthday",
-            *((JUL, 17) if year >= 1998 else (MAY, 2)),
-        )
+        # King's Birthday.
+        self._add_holiday("King's Birthday", *((JUL, 17) if year >= 1998 else (MAY, 2)))
 
         # Independence Day.
         self._add_holiday("Independence Day", OCT, 4)

@@ -11,7 +11,7 @@
 
 import warnings
 
-from holidays.constants import JAN, MAR, APR, MAY, JUN, AUG, OCT, NOV
+from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, AUG, OCT, NOV
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 

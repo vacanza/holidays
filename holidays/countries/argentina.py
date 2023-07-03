@@ -12,8 +12,21 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC, MON
+from holidays.calendars.gregorian import (
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+    MON,
+)
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -159,10 +172,10 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
             """
             if self.observed:
                 if self._is_tuesday(dt) or self._is_wednesday(dt):
-                    dt = _get_nth_weekday_from(-1, MON, dt)
+                    dt = self._get_nth_weekday_from(-1, MON, dt)
                     name = self.tr("%s (Observado)") % self.tr(name)
                 elif self._is_thursday(dt) or self._is_friday(dt):
-                    dt = _get_nth_weekday_from(1, MON, dt)
+                    dt = self._get_nth_weekday_from(1, MON, dt)
                     name = self.tr("%s (Observado)") % self.tr(name)
             self._add_holiday(name, dt)
 
@@ -191,9 +204,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 2006:
             self._add_holiday(
-                tr("Día Nacional de la Memoria por la Verdad y la Justicia"),
-                MAR,
-                24,
+                tr("Día Nacional de la Memoria por la Verdad y la Justicia"), MAR, 24
             )
 
         # Veterans Day and the Fallen in the Malvinas War.
@@ -247,7 +258,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
         if year >= 1938:
             self._add_holiday(
                 tr("Paso a la Inmortalidad del General Don Manuel Belgrano"),
-                _get_nth_weekday_of_month(3, MON, JUN, year)
+                self._get_nth_weekday_of_month(3, MON, JUN)
                 if 1995 <= year <= 2010
                 else date(year, JUN, 20),
             )
@@ -291,7 +302,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
         elif 1938 <= year <= 1994:
             self._add_holiday(name, AUG, 17)
         elif 1995 <= year <= 2010:
-            self._add_holiday(name, _get_nth_weekday_of_month(3, MON, AUG, year))
+            self._add_holiday(name, self._get_nth_weekday_of_month(3, MON, AUG))
         elif year >= 2012:
             add_movable_holiday(date(year, AUG, 17), name)
 
@@ -304,8 +315,7 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_columbus_day(tr("Día de la Raza"))
         elif year >= 2010:
             add_movable_holiday(
-                date(year, OCT, 12),
-                tr("Día del Respeto a la Diversidad Cultural"),
+                date(year, OCT, 12), tr("Día del Respeto a la Diversidad Cultural")
             )
 
         # National Sovereignty Day.

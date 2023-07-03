@@ -20,7 +20,8 @@ from dateutil.relativedelta import MO
 from dateutil.relativedelta import relativedelta as rd
 
 import holidays
-from holidays.constants import JAN, FEB, OCT, MON, TUE, SAT, SUN, HOLIDAY_NAME_DELIMITER
+from holidays.calendars.gregorian import JAN, FEB, OCT, MON, TUE, SAT, SUN
+from holidays.constants import HOLIDAY_NAME_DELIMITER
 
 
 class TestBasics(unittest.TestCase):
@@ -38,66 +39,52 @@ class TestBasics(unittest.TestCase):
         self.assertIsNone(self.holidays.get(date(2014, 1, 2)))
 
         self.assertListEqual(
-            self.holidays[date(2013, 12, 31) : date(2014, 1, 2)],
-            [date(2014, 1, 1)],
+            self.holidays[date(2013, 12, 31) : date(2014, 1, 2)], [date(2014, 1, 1)]
         )
         self.assertListEqual(
             self.holidays[date(2013, 12, 24) : date(2014, 1, 2)],
             [date(2013, 12, 25), date(2014, 1, 1)],
         )
         self.assertListEqual(
-            self.holidays[date(2013, 12, 25) : date(2014, 1, 2) : 3],
-            [date(2013, 12, 25)],
+            self.holidays[date(2013, 12, 25) : date(2014, 1, 2) : 3], [date(2013, 12, 25)]
         )
         self.assertListEqual(
             self.holidays[date(2013, 12, 25) : date(2014, 1, 2) : 7],
             [date(2013, 12, 25), date(2014, 1, 1)],
         )
         self.assertListEqual(
-            self.holidays[date(2014, 1, 2) : date(2013, 12, 30)],
-            [date(2014, 1, 1)],
+            self.holidays[date(2014, 1, 2) : date(2013, 12, 30)], [date(2014, 1, 1)]
         )
         self.assertListEqual(
-            self.holidays[date(2014, 1, 2) : date(2013, 12, 25)],
-            [date(2014, 1, 1)],
+            self.holidays[date(2014, 1, 2) : date(2013, 12, 25)], [date(2014, 1, 1)]
         )
         self.assertListEqual(
             self.holidays[date(2014, 1, 2) : date(2013, 12, 24)],
             [date(2014, 1, 1), date(2013, 12, 25)],
         )
         self.assertListEqual(
-            self.holidays[date(2014, 1, 1) : date(2013, 12, 24) : 3],
-            [date(2014, 1, 1)],
+            self.holidays[date(2014, 1, 1) : date(2013, 12, 24) : 3], [date(2014, 1, 1)]
         )
         self.assertListEqual(
             self.holidays[date(2014, 1, 1) : date(2013, 12, 24) : 7],
             [date(2014, 1, 1), date(2013, 12, 25)],
         )
+        self.assertListEqual(self.holidays[date(2013, 12, 31) : date(2014, 1, 2) : -3], [])
         self.assertListEqual(
-            self.holidays[date(2013, 12, 31) : date(2014, 1, 2) : -3],
-            [],
-        )
-        self.assertListEqual(
-            self.holidays[date(2014, 1, 1) : date(2013, 12, 24) : td(days=3)],
-            [date(2014, 1, 1)],
+            self.holidays[date(2014, 1, 1) : date(2013, 12, 24) : td(days=3)], [date(2014, 1, 1)]
         )
         self.assertListEqual(
             self.holidays[date(2014, 1, 1) : date(2013, 12, 24) : td(days=7)],
             [date(2014, 1, 1), date(2013, 12, 25)],
         )
-        self.assertListEqual(
-            self.holidays[date(2013, 12, 31) : date(2014, 1, 2) : td(days=3)],
-            [],
-        )
+        self.assertListEqual(self.holidays[date(2013, 12, 31) : date(2014, 1, 2) : td(days=3)], [])
         self.assertRaises(ValueError, lambda: self.holidays[date(2014, 1, 1) :])
         self.assertRaises(ValueError, lambda: self.holidays[: date(2014, 1, 1)])
         self.assertRaises(
-            TypeError,
-            lambda: self.holidays[date(2014, 1, 1) : date(2014, 1, 2) : ""],
+            TypeError, lambda: self.holidays[date(2014, 1, 1) : date(2014, 1, 2) : ""]
         )
         self.assertRaises(
-            ValueError,
-            lambda: self.holidays[date(2014, 1, 1) : date(2014, 1, 2) : 0],
+            ValueError, lambda: self.holidays[date(2014, 1, 1) : date(2014, 1, 2) : 0]
         )
 
     def test_get(self):
@@ -146,8 +133,7 @@ class TestBasics(unittest.TestCase):
 
         self.holidays.pop_named(holiday_name_1)
         self.assertEqual(
-            self.holidays[dt],
-            HOLIDAY_NAME_DELIMITER.join((holiday_name_2, holiday_name_3)),
+            self.holidays[dt], HOLIDAY_NAME_DELIMITER.join((holiday_name_2, holiday_name_3))
         )
 
         self.holidays.pop_named(holiday_name_3)
@@ -161,23 +147,14 @@ class TestBasics(unittest.TestCase):
         dts = self.holidays.pop_named("N")
         for dt in dts:
             self.assertNotIn(dt, self.holidays)
-        self.assertRaises(
-            KeyError,
-            lambda: self.holidays.pop_named("New Year"),
-        )
+        self.assertRaises(KeyError, lambda: self.holidays.pop_named("New Year"))
 
     def test_pop_named_exception(self):
-        self.assertRaises(
-            KeyError,
-            lambda: self.holidays.pop_named("New Year's Dayz"),
-        )
+        self.assertRaises(KeyError, lambda: self.holidays.pop_named("New Year's Dayz"))
 
         self.assertIn(date(2022, 1, 1), self.holidays)
         self.holidays.pop_named("New Year's Day")
-        self.assertRaises(
-            KeyError,
-            lambda: self.holidays.pop_named("New Year's Day"),
-        )
+        self.assertRaises(KeyError, lambda: self.holidays.pop_named("New Year's Day"))
 
     def test_setitem(self):
         self.holidays = holidays.US(years=[2014])
@@ -188,20 +165,13 @@ class TestBasics(unittest.TestCase):
         self.assertEqual(self.holidays.get(date(2014, 1, 3)), "Fake Holiday")
 
     def test_repr_country(self):
+        self.assertEqual(repr(holidays.US()), "holidays.country_holidays('US')")
         self.assertEqual(
-            repr(holidays.US()),
-            "holidays.country_holidays('US')",
-        )
-        self.assertEqual(
-            repr(holidays.US(subdiv="CA")),
-            "holidays.country_holidays('US', subdiv='CA')",
+            repr(holidays.US(subdiv="CA")), "holidays.country_holidays('US', subdiv='CA')"
         )
 
     def test_repr_market(self):
-        self.assertEqual(
-            repr(holidays.NYSE()),
-            "holidays.financial_holidays('NYSE')",
-        )
+        self.assertEqual(repr(holidays.NYSE()), "holidays.financial_holidays('NYSE')")
 
     def test_str_country(self):
         self.assertEqual(
@@ -212,8 +182,8 @@ class TestBasics(unittest.TestCase):
         )
         self.assertEqual(
             str(holidays.US(years=1900)),
-            '{datetime.date(1900, 1, 1): "New Year\'s Day", '
-            'datetime.date(1900, 2, 22): "Washington\'s Birthday", '
+            '{datetime.date(1900, 2, 22): "Washington\'s Birthday", '
+            'datetime.date(1900, 1, 1): "New Year\'s Day", '
             "datetime.date(1900, 5, 30): 'Memorial Day', "
             "datetime.date(1900, 7, 4): 'Independence Day', "
             "datetime.date(1900, 9, 3): 'Labor Day', "
@@ -280,6 +250,18 @@ class TestBasics(unittest.TestCase):
             self.assertFalse(h._is_weekend(dt))
         for dt in ((10, 3), (10, 4)):
             self.assertFalse(h._is_weekend(*dt))
+
+    def test_get_nth_weekday_of_month(self):
+        h = holidays.HolidayBase(years=2023)
+        # 1st Monday of 2023 months
+        for month, day in enumerate((3, 7, 7, 4, 2, 6, 4, 1, 5, 3, 7, 5), 1):
+            first_monday = h._get_nth_weekday_of_month(1, 1, month)
+            self.assertEqual(first_monday.day, day)
+
+        # Last Saturday of 2023 months
+        for month, day in enumerate((28, 25, 25, 29, 27, 24, 29, 26, 30, 28, 25, 30), 1):
+            last_friday = h._get_nth_weekday_of_month(-1, 5, month)
+            self.assertEqual(last_friday.day, day)
 
     def test_append(self):
         h = holidays.HolidayBase()
@@ -410,15 +392,9 @@ class TestBasics(unittest.TestCase):
         self.assertIn(date(1969, 12, 25), na)
         self.assertEqual(na.get(date(1969, 7, 1)), "Dominion Day")
         self.assertEqual(na.get(date(1983, 7, 1)), "Canada Day")
-        self.assertEqual(
-            na.get(date(1969, 12, 25)),
-            "Christmas Day; Navidad",
-        )
+        self.assertEqual(na.get(date(1969, 12, 25)), "Christmas Day; Navidad")
         na = holidays.MX(language="es") + holidays.CA() + holidays.US()
-        self.assertEqual(
-            na.get(date(1969, 12, 25)),
-            "Christmas Day; Navidad",
-        )
+        self.assertEqual(na.get(date(1969, 12, 25)), "Christmas Day; Navidad")
         self.assertEqual(na, na.copy())
 
     def test_add_financial(self):
@@ -462,25 +438,16 @@ class TestBasics(unittest.TestCase):
             ["Chatham Islands Anniversary Day", "West Coast Anniversary Day"],
         )
         self.assertEqual(wild.get_list(date(1969, 1, 1)), ["New Year's Day"])
-        self.assertEqual(
-            westland.get_list(date(1969, 12, 1)),
-            ["West Coast Anniversary Day"],
-        )
+        self.assertEqual(westland.get_list(date(1969, 12, 1)), ["West Coast Anniversary Day"])
         self.assertEqual(westland.get_list(date(1969, 1, 1)), ["New Year's Day"])
-        self.assertEqual(
-            chathams.get_list(date(1969, 12, 1)),
-            ["Chatham Islands Anniversary Day"],
-        )
+        self.assertEqual(chathams.get_list(date(1969, 12, 1)), ["Chatham Islands Anniversary Day"])
         self.assertEqual(chathams.get_list(date(1969, 1, 1)), ["New Year's Day"])
         ca = holidays.CA()
         us = holidays.US()
         mx = holidays.MX(language="es")
         na = ca + us + mx
         self.assertIn(date(1969, 12, 25), na)
-        self.assertEqual(
-            na.get_list(date(1969, 12, 25)),
-            ["Christmas Day", "Navidad"],
-        )
+        self.assertEqual(na.get_list(date(1969, 12, 25)), ["Christmas Day", "Navidad"])
         self.assertEqual(na.get_list(date(1969, 7, 1)), ["Dominion Day"])
         self.assertEqual(na.get_list(date(1969, 1, 3)), [])
 
@@ -605,12 +572,7 @@ class TestBasics(unittest.TestCase):
 
         for name in ("new year's", "New Year's", "New Year's day"):
             self.assertIn(date(2020, 1, 1), us.get_named(name, lookup="istartswith"))
-        for name in (
-            "New Year Day",
-            "New Year holiday",
-            "New Year's Day Holiday",
-            "year",
-        ):
+        for name in ("New Year Day", "New Year holiday", "New Year's Day Holiday", "year"):
             self.assertNotIn(date(2020, 1, 1), us.get_named(name, lookup="istartswith"))
 
         us = holidays.UnitedStates(years=2022)
@@ -623,12 +585,7 @@ class TestBasics(unittest.TestCase):
 
         for name in ("New Year's", "New Year"):
             self.assertIn(date(2020, 1, 1), us.get_named(name, lookup="startswith"))
-        for name in (
-            "New Year Day",
-            "New Year Holiday",
-            "New Year's Day Holiday",
-            "year",
-        ):
+        for name in ("New Year Day", "New Year Holiday", "New Year's Day Holiday", "year"):
             self.assertNotIn(date(2020, 1, 1), us.get_named(name, lookup="startswith"))
 
         us = holidays.UnitedStates(years=2022)
@@ -637,10 +594,7 @@ class TestBasics(unittest.TestCase):
 
     def test_get_named_lookup_invalid(self):
         us = holidays.UnitedStates(years=2020)
-        self.assertRaises(
-            AttributeError,
-            lambda: us.get_named("Holiday name", lookup="invalid"),
-        )
+        self.assertRaises(AttributeError, lambda: us.get_named("Holiday name", lookup="invalid"))
 
 
 class TestArgs(unittest.TestCase):
@@ -742,6 +696,11 @@ class TestArgs(unittest.TestCase):
 
         with self.assertWarns(Warning):
             holidays.US(state="WY")
+
+    def test_categories(self):
+        self.assertRaises(
+            NotImplementedError, lambda: holidays.country_holidays("AT", categories={"HOME"})
+        )
 
 
 class TestKeyTransforms(unittest.TestCase):

@@ -11,7 +11,7 @@
 
 from datetime import date
 
-from holidays.constants import MAR
+from holidays.calendars.gregorian import MAR
 from holidays.countries.guam import HolidaysGU, GU, GUM
 from tests.common import TestCase
 
@@ -27,7 +27,4 @@ class TestGU(TestCase):
     def test_gu_only(self):
         """Check for a holiday that is not returned by US unless the
         subdivision is specified."""
-        self.assertIn(
-            "Guam Discovery Day",
-            self.holidays.get_list(date(2016, MAR, 7)),
-        )
+        self.assertIn("Guam Discovery Day", self.holidays.get_list(date(2016, MAR, 7)))

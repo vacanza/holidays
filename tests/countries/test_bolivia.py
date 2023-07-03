@@ -127,9 +127,7 @@ class TestBO(TestCase):
         self.assertNoHolidayName(name, range(2000, 2050))
         self.assertNoHoliday(f"{year}-05-25" for year in range(2000, 2050))
         self.assertHolidayName(
-            name,
-            Bolivia(subdiv="H"),
-            (f"{year}-05-25" for year in range(2000, 2050)),
+            name, Bolivia(subdiv="H"), (f"{year}-05-25" for year in range(2000, 2050))
         )
 
     def test_corpus_christi(self):
@@ -166,9 +164,7 @@ class TestBO(TestCase):
         self.assertNoHolidayName(name, range(2000, 2050))
         self.assertNoHoliday(f"{year}-07-16" for year in range(2000, 2050))
         self.assertHolidayName(
-            name,
-            Bolivia(subdiv="L"),
-            (f"{year}-07-16" for year in range(2000, 2050)),
+            name, Bolivia(subdiv="L"), (f"{year}-07-16" for year in range(2000, 2050))
         )
 
     def test_independence_day(self):
@@ -189,9 +185,7 @@ class TestBO(TestCase):
         self.assertNoHolidayName(name, range(2000, 2050))
         self.assertNoHoliday(f"{year}-09-14" for year in range(2000, 2050))
         self.assertHolidayName(
-            name,
-            Bolivia(subdiv="C"),
-            (f"{year}-09-14" for year in range(2000, 2050)),
+            name, Bolivia(subdiv="C"), (f"{year}-09-14" for year in range(2000, 2050))
         )
 
     def test_santa_cruz_day(self):
@@ -199,9 +193,7 @@ class TestBO(TestCase):
         self.assertNoHolidayName(name, range(2000, 2050))
         self.assertNoHoliday(f"{year}-09-24" for year in range(2000, 2050))
         self.assertHolidayName(
-            name,
-            Bolivia(subdiv="S"),
-            (f"{year}-09-24" for year in range(2000, 2050)),
+            name, Bolivia(subdiv="S"), (f"{year}-09-24" for year in range(2000, 2050))
         )
 
     def test_pando_day(self):
@@ -209,9 +201,7 @@ class TestBO(TestCase):
         self.assertNoHolidayName(name, range(2000, 2050))
         self.assertNoHoliday(f"{year}-09-24" for year in range(2000, 2050))
         self.assertHolidayName(
-            name,
-            Bolivia(subdiv="N"),
-            (f"{year}-09-24" for year in range(2000, 2050)),
+            name, Bolivia(subdiv="N"), (f"{year}-09-24" for year in range(2000, 2050))
         )
 
     def test_all_souls_day(self):
@@ -231,9 +221,7 @@ class TestBO(TestCase):
         self.assertNoHolidayName(name, range(2000, 2050))
         self.assertNoHoliday(f"{year}-11-10" for year in range(2000, 2050))
         self.assertHolidayName(
-            name,
-            Bolivia(subdiv="P"),
-            (f"{year}-11-10" for year in range(2000, 2050)),
+            name, Bolivia(subdiv="P"), (f"{year}-11-10" for year in range(2000, 2050))
         )
 
     def test_beni_day(self):
@@ -241,9 +229,7 @@ class TestBO(TestCase):
         self.assertNoHolidayName(name, range(2000, 2050))
         self.assertNoHoliday(f"{year}-11-18" for year in range(2000, 2050))
         self.assertHolidayName(
-            name,
-            Bolivia(subdiv="B"),
-            (f"{year}-11-18" for year in range(2000, 2050)),
+            name, Bolivia(subdiv="B"), (f"{year}-11-18" for year in range(2000, 2050))
         )
 
     def test_christmas_day(self):

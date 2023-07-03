@@ -16,11 +16,7 @@ from tests.common import TestCase
 class TestBrunei(TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(
-            Brunei,
-            years=range(1984, 2077),
-            years_non_observed=range(1984, 2077),
-        )
+        super().setUpClass(Brunei, years=range(1984, 2077), years_non_observed=range(1984, 2077))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Brunei, BN, BRN)
@@ -48,10 +44,7 @@ class TestBrunei(TestCase):
             ("2022-07-10", "Hari Raya Aidil Adha"),
             ("2022-07-11", "Hari Raya Aidil Adha - Diperhatikan"),
             ("2022-07-15", "Hari Keputeraan KDYMM Sultan Brunei"),
-            (
-                "2022-07-16",
-                "Hari Keputeraan KDYMM Sultan Brunei - Diperhatikan",
-            ),
+            ("2022-07-16", "Hari Keputeraan KDYMM Sultan Brunei - Diperhatikan"),
             ("2022-07-30", "Awal Tahun Hijrah"),
             ("2022-10-08", "Maulidur Rasul"),
             ("2022-12-25", "Hari Natal"),
@@ -181,10 +174,7 @@ class TestBrunei(TestCase):
             ("2023-04-25", "ชดเชยวันอีฎิ้ลฟิตริ"),
             ("2023-05-31", "วันกองทัพบรูไน"),
             ("2023-06-29", "วันอีดิ้ลอัฎฮา"),
-            (
-                "2023-07-15",
-                ("วันเฉลิมพระชนมพรรษาสมเด็จพระราชาธิบดีสุลต่านฮัสซานัล โบลเกียห์"),
-            ),
+            ("2023-07-15", "วันเฉลิมพระชนมพรรษาสมเด็จพระราชาธิบดีสุลต่านฮัสซานัล โบลเกียห์"),
             ("2023-07-19", "วันขึ้นปีใหม่อิสลาม"),
             ("2023-09-28", "วันเมาลิดนบี"),
             ("2023-12-25", "วันคริสต์มาส"),

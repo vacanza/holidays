@@ -9,80 +9,182 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
-from datetime import date
-
-import holidays
+from holidays.countries.lithuania import Lithuania, LT, LTU
+from tests.common import TestCase
 
 
-class TestLithuania(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.LT()
+class TestLithuania(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Lithuania, years=range(1990, 2050))
 
-    def test_2018(self):
-        # New Year's Day
-        self.assertIn(date(2018, 1, 1), self.holidays)
-        # Day of Restoration of the State of Lithuania
-        self.assertIn(date(2018, 2, 16), self.holidays)
-        # Day of Restoration of Independence of Lithuania
-        self.assertIn(date(2018, 3, 11), self.holidays)
-        # Easter
-        self.assertIn(date(2018, 4, 1), self.holidays)
-        # Easter 2nd day
-        self.assertIn(date(2018, 4, 2), self.holidays)
-        # International Workers' Day
-        self.assertIn(date(2018, 5, 1), self.holidays)
-        # Mother's day
-        self.assertIn(date(2018, 5, 6), self.holidays)
-        # Fathers's day
-        self.assertIn(date(2018, 6, 3), self.holidays)
-        # St. John's Day, Day of Dew
-        self.assertIn(date(2018, 6, 24), self.holidays)
-        # Statehood Day
-        self.assertIn(date(2018, 7, 6), self.holidays)
-        # Assumption Day
-        self.assertIn(date(2018, 8, 15), self.holidays)
-        # All Saints' Day
-        self.assertIn(date(2018, 11, 1), self.holidays)
-        # Christmas Eve
-        self.assertIn(date(2018, 12, 24), self.holidays)
-        # Christmas 1st day
-        self.assertIn(date(2018, 12, 25), self.holidays)
-        # Christmas 2nd day
-        self.assertIn(date(2018, 12, 26), self.holidays)
+    def test_country_aliases(self):
+        self.assertCountryAliases(Lithuania, LT, LTU)
+
+    def test_no_holidays(self):
+        self.assertNoHolidays(Lithuania(years=1989))
+
+    def test_new_years(self):
+        self.assertHolidayName(
+            "Naujųjų metų diena", (f"{year}-01-01" for year in range(1990, 2050))
+        )
+
+    def test_restoration_of_state_day(self):
+        self.assertHolidayName(
+            "Lietuvos valstybės atkūrimo diena", (f"{year}-02-16" for year in range(1990, 2050))
+        )
+
+    def test_restoration_of_independence_day(self):
+        self.assertHolidayName(
+            "Lietuvos nepriklausomybės atkūrimo diena",
+            (f"{year}-03-11" for year in range(1990, 2050)),
+        )
 
     def test_easter(self):
-        self.assertNotIn(date(2019, 4, 20), self.holidays)
-        self.assertIn(date(2019, 4, 21), self.holidays)
-        self.assertIn(date(2019, 4, 22), self.holidays)
-        self.assertNotIn(date(2019, 4, 23), self.holidays)
+        self.assertHolidayName(
+            "Šv. Velykos",
+            "2019-04-21",
+            "2020-04-12",
+            "2021-04-04",
+            "2022-04-17",
+            "2023-04-09",
+        )
+
+    def test_easter_monday(self):
+        self.assertHolidayName(
+            "Antroji šv. Velykų diena",
+            "2019-04-22",
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+            "2023-04-10",
+        )
+
+    def test_labor_day(self):
+        self.assertHolidayName(
+            "Tarptautinė darbo diena", (f"{year}-05-01" for year in range(1990, 2050))
+        )
 
     def test_mothers_day(self):
-        self.assertNotIn(date(2019, 5, 4), self.holidays)
-        self.assertIn(date(2019, 5, 5), self.holidays)
-        self.assertNotIn(date(2019, 5, 6), self.holidays)
-        self.assertIn(date(2020, 5, 3), self.holidays)
+        self.assertHolidayName(
+            "Motinos diena",
+            "2019-05-05",
+            "2020-05-03",
+            "2021-05-02",
+            "2022-05-01",
+            "2023-05-07",
+        )
 
     def test_fathers_day(self):
-        self.assertNotIn(date(2019, 6, 1), self.holidays)
-        self.assertIn(date(2019, 6, 2), self.holidays)
-        self.assertNotIn(date(2019, 6, 3), self.holidays)
-        self.assertIn(date(2020, 6, 7), self.holidays)
+        self.assertHolidayName(
+            "Tėvo diena",
+            "2019-06-02",
+            "2020-06-07",
+            "2021-06-06",
+            "2022-06-05",
+            "2023-06-04",
+        )
 
-    def test_day_of_dew(self):
-        self.assertNotIn(date(2002, 6, 24), self.holidays)
-        self.assertIn(date(2020, 6, 24), self.holidays)
+    def test_dew_and_saint_john_day(self):
+        name = "Rasos ir Joninių diena"
+        self.assertHolidayName(name, (f"{year}-06-24" for year in range(2003, 2050)))
+        self.assertNoHoliday(f"{year}-06-24" for year in range(1990, 2003))
+        self.assertNoHolidayName(name, range(1990, 2003))
 
-    def test_day_of_restoration_and_statehood(self):
-        self.assertNotIn(date(1917, 2, 16), self.holidays)
-        self.assertIn(date(1918, 2, 16), self.holidays)
+    def test_statehood_day(self):
+        name = "Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) " "ir Tautiškos giesmės diena"
+        self.assertHolidayName(name, (f"{year}-07-06" for year in range(1991, 2050)))
+        self.assertNoHoliday(f"{year}-07-06" for year in range(1990, 1991))
+        self.assertNoHolidayName(name, range(1990, 1991))
 
-        self.assertNotIn(date(1989, 3, 11), self.holidays)
-        self.assertIn(date(1990, 3, 11), self.holidays)
+    def test_assumption_day(self):
+        self.assertHolidayName(
+            "Žolinė (Švč. Mergelės Marijos ėmimo į dangų diena)",
+            (f"{year}-08-15" for year in range(1990, 2050)),
+        )
 
-        self.assertNotIn(date(1990, 7, 6), self.holidays)
-        self.assertIn(date(1991, 7, 6), self.holidays)
+    def test_all_saints_day(self):
+        self.assertHolidayName(
+            "Visų Šventųjų diena", (f"{year}-11-01" for year in range(1990, 2050))
+        )
 
     def test_all_souls_day(self):
-        self.assertNotIn(date(2018, 11, 2), self.holidays)
-        self.assertIn(date(2021, 11, 2), self.holidays)
+        name = "Mirusiųjų atminimo (Vėlinių) diena"
+        self.assertHolidayName(name, (f"{year}-11-02" for year in range(2020, 2050)))
+        self.assertNoHoliday(f"{year}-11-02" for year in range(1990, 2020))
+        self.assertNoHolidayName(name, range(1990, 2020))
+
+    def test_christmas_eve(self):
+        self.assertHolidayName("Kūčių diena", (f"{year}-12-24" for year in range(1990, 2050)))
+
+    def test_christmas_day(self):
+        self.assertHolidayName(
+            "Šv. Kalėdų pirma diena", (f"{year}-12-25" for year in range(1990, 2050))
+        )
+
+    def test_second_christmas_day(self):
+        self.assertHolidayName(
+            "Šv. Kalėdų antra diena", (f"{year}-12-26" for year in range(1990, 2050))
+        )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2022-01-01", "Naujųjų metų diena"),
+            ("2022-02-16", "Lietuvos valstybės atkūrimo diena"),
+            ("2022-03-11", "Lietuvos nepriklausomybės atkūrimo diena"),
+            ("2022-04-17", "Šv. Velykos"),
+            ("2022-04-18", "Antroji šv. Velykų diena"),
+            ("2022-05-01", "Motinos diena; Tarptautinė darbo diena"),
+            ("2022-06-05", "Tėvo diena"),
+            ("2022-06-24", "Rasos ir Joninių diena"),
+            (
+                "2022-07-06",
+                "Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) ir Tautiškos giesmės diena",
+            ),
+            ("2022-08-15", "Žolinė (Švč. Mergelės Marijos ėmimo į dangų diena)"),
+            ("2022-11-01", "Visų Šventųjų diena"),
+            ("2022-11-02", "Mirusiųjų atminimo (Vėlinių) diena"),
+            ("2022-12-24", "Kūčių diena"),
+            ("2022-12-25", "Šv. Kalėdų pirma diena"),
+            ("2022-12-26", "Šv. Kalėdų antra diena"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2022-01-01", "New Year's Day"),
+            ("2022-02-16", "Day of Restoration of the State of Lithuania"),
+            ("2022-03-11", "Day of Restoration of Independence of Lithuania"),
+            ("2022-04-17", "Easter"),
+            ("2022-04-18", "Easter Monday"),
+            ("2022-05-01", "International Workers' Day; Mother's Day"),
+            ("2022-06-05", "Father's Day"),
+            ("2022-06-24", "Day of Dew and Saint John"),
+            ("2022-07-06", "Statehood Day"),
+            ("2022-08-15", "Assumption Day"),
+            ("2022-11-01", "All Saints' Day"),
+            ("2022-11-02", "All Souls' Day"),
+            ("2022-12-24", "Christmas Eve"),
+            ("2022-12-25", "Christmas Day"),
+            ("2022-12-26", "Second Day of Christmas"),
+        )
+
+    def test_l10n_uk(self):
+        self.assertLocalizedHolidays(
+            "uk",
+            ("2022-01-01", "Новий рік"),
+            ("2022-02-16", "День відновлення Литовської держави"),
+            ("2022-03-11", "День відновлення незалежності Литви"),
+            ("2022-04-17", "Великдень"),
+            ("2022-04-18", "Великодній понеділок"),
+            ("2022-05-01", "День матері; Міжнародний день трудящих"),
+            ("2022-06-05", "День батька"),
+            ("2022-06-24", "День роси та День Івана Купала"),
+            ("2022-07-06", "День державності та День національного гімну"),
+            ("2022-08-15", "Внебовзяття Пресвятої Діви Марії"),
+            ("2022-11-01", "День усіх святих"),
+            ("2022-11-02", "День пам'яті (День всіх померлих)"),
+            ("2022-12-24", "Святий вечір"),
+            ("2022-12-25", "Різдво Христове"),
+            ("2022-12-26", "Другий день Різдва"),
+        )
