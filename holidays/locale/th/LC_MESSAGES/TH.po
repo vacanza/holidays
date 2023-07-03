@@ -234,6 +234,6 @@ msgid "วันหยุดภาคครึ่งปีของสถาบ�
 msgstr ""
 
 #. Royal Ploughing Ceremony.
-#: ./holidays/countries/thailand.py:717
+#: ./holidays/countries/thailand.py:712
 msgid "วันพืชมงคล"
 msgstr ""

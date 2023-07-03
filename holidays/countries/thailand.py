@@ -630,9 +630,9 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
                 )
 
     def _populate_bank_holidays(self):
-        # Due to Thai Calendar Migration, this is capped off at 1941.
-        # But certain holidays were implemented before 1941.
-        if self._year <= 1940:
+        # Bank of Thailand, the ones who decreed this wasn't found until December 10, 1942
+        # So it's safe to assume with that as our start date.
+        if self._year <= 1942:
             return None
 
         # Bank Holidays
@@ -667,11 +667,6 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
             )
 
     def _populate_government_holidays(self):
-        # Due to Thai Calendar Migration, this is capped off at 1941.
-        # But certain holidays were implemented before 1941.
-        if self._year <= 1940:
-            return None
-
         # No Future Fixed Date Holidays
 
         # วันพืชมงคล

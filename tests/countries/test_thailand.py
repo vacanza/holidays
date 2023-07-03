@@ -629,6 +629,13 @@ class TestThailand(TestCase):
         a_name = "วันหยุดเพิ่มเติมสำหรับการปิดบัญชีประจำปีของธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร"
         m_name = "วันหยุดภาคครึ่งปีของสถาบันการเงินและสถาบันการเงินเฉพาะกิจ"
 
+        # Start
+        self.assertHolidays(
+            Thailand(categories=(BANK,), years=range(1942, 1944)),
+            ("1943-04-01", a_name),
+            ("1943-07-01", m_name),
+        )
+        # End
         self.assertHolidays(
             Thailand(categories=(BANK,), years=range(2017, 2023)),
             ("2017-04-01", a_name),
