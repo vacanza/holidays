@@ -12,7 +12,7 @@
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.constants import MAR, APR, JUN, AUG, SEP, DEC, THU, SUN
+from holidays.calendars.gregorian import MAR, APR, JUN, AUG, SEP, DEC, THU, SUN
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 

@@ -14,8 +14,20 @@ from datetime import timedelta as td
 
 from dateutil.easter import EASTER_ORTHODOX, EASTER_WESTERN, easter
 
-from holidays.calendars import GREGORIAN_CALENDAR, JULIAN_CALENDAR
-from holidays.constants import JAN, FEB, MAR, APR, JUN, JUL, AUG, SEP, NOV, DEC
+from holidays.calendars.gregorian import (
+    GREGORIAN_CALENDAR,
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    NOV,
+    DEC,
+)
+from holidays.calendars.julian import JULIAN_CALENDAR
 
 
 class ChristianHolidays:

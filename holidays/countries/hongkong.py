@@ -13,7 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 from typing import Optional
 
-from holidays.constants import JUN, JUL, AUG, SEP, OCT, MON
+from holidays.calendars.gregorian import JUN, JUL, AUG, SEP, OCT, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import (
     ChineseCalendarHolidays,

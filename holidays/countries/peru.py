@@ -12,7 +12,7 @@
 
 from gettext import gettext as tr
 
-from holidays.constants import JUL, AUG, OCT, DEC
+from holidays.calendars.gregorian import JUL, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 

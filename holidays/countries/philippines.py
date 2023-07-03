@@ -9,7 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.constants import FEB, APR, JUN, AUG, NOV, DEC, MON
+
+from holidays.calendars.gregorian import FEB, APR, JUN, AUG, NOV, DEC, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import (
     ChineseCalendarHolidays,

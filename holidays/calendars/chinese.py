@@ -13,7 +13,7 @@ from datetime import date
 from typing import Optional, Tuple
 
 from holidays.calendars.custom import _CustomCalendar
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, SEP, OCT, NOV
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, SEP, OCT, NOV
 
 BUDDHA_BIRTHDAY = "BUDDHA_BIRTHDAY"
 DOUBLE_NINTH = "DOUBLE_NINTH"
