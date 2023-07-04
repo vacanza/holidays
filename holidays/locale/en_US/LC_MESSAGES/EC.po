@@ -17,56 +17,45 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/ecuador.py:69
 msgid "Año Nuevo"
 msgstr "New Year's Day"
 
 #. Carnival.
-#: ./holidays/countries/ecuador.py:78
 msgid "Carnaval"
 msgstr "Carnival"
 
 #. Good Friday.
-#: ./holidays/countries/ecuador.py:83
 msgid "Viernes Santo"
 msgstr "Good Friday"
 
 #. Labour Day.
-#: ./holidays/countries/ecuador.py:86
 msgid "Día del Trabajo"
 msgstr "Labour Day"
 
 #. The Battle of Pichincha.
-#: ./holidays/countries/ecuador.py:89
 msgid "Batalla de Pichincha"
 msgstr "The Battle of Pichincha"
 
 #. Declaration of Independence of Quito.
-#: ./holidays/countries/ecuador.py:92
 msgid "Primer Grito de Independencia"
 msgstr "Declaration of Independence of Quito"
 
 #. Independence of Guayaquil.
-#: ./holidays/countries/ecuador.py:95
 msgid "Independencia de Guayaquil"
 msgstr "Independence of Guayaquil"
 
 #. All Souls' Day.
-#: ./holidays/countries/ecuador.py:98
 msgid "Día de los Difuntos"
 msgstr "All Souls' Day"
 
 #. Independence of Cuenca.
-#: ./holidays/countries/ecuador.py:101
 msgid "Independencia de Cuenca"
 msgstr "Independence of Cuenca"
 
 #. Christmas Day.
-#: ./holidays/countries/ecuador.py:104
 msgid "Día de Navidad"
 msgstr "Christmas Day"
 
-#: ./holidays/countries/ecuador.py:63 ./holidays/countries/ecuador.py:75
 #, c-format
 msgid "%s (Observado)"
 msgstr "%s (Observed)"

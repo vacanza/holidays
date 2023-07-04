@@ -17,76 +17,61 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/finland.py:39
 msgid "Uudenvuodenpäivä"
 msgstr "Nyårsdagen"
 
 #. Epiphany.
-#: ./holidays/countries/finland.py:42
 msgid "Loppiainen"
 msgstr "Trettondedagen"
 
 #. Good Friday.
-#: ./holidays/countries/finland.py:49
 msgid "Pitkäperjantai"
 msgstr "Långfredagen"
 
 #. Easter Sunday.
-#: ./holidays/countries/finland.py:52
 msgid "Pääsiäispäivä"
 msgstr "Påskdagen"
 
 #. Easter Monday.
-#: ./holidays/countries/finland.py:55
 msgid "2. pääsiäispäivä"
 msgstr "Annandag påsk"
 
 #. May Day.
-#: ./holidays/countries/finland.py:58
 msgid "Vappu"
 msgstr "Vappen"
 
 #. Ascension Day.
-#: ./holidays/countries/finland.py:61
 msgid "Helatorstai"
 msgstr "Kristi himmelfärdsdag"
 
 #. Whit Sunday.
-#: ./holidays/countries/finland.py:68
 msgid "Helluntaipäivä"
 msgstr "Pingst"
 
 #. Midsummer Eve.
-#: ./holidays/countries/finland.py:72
 msgid "Juhannusaatto"
 msgstr "Midsommarafton"
 
 #. Midsummer Day.
-#: ./holidays/countries/finland.py:74
 msgid "Juhannuspäivä"
 msgstr "Midsommardagen"
 
 #. All Saints' Day.
-#: ./holidays/countries/finland.py:78
 msgid "Pyhäinpäivä"
 msgstr "Alla helgons dag"
 
 #. Independence Day.
-#: ./holidays/countries/finland.py:81
 msgid "Itsenäisyyspäivä"
 msgstr "Självständighetsdagen"
 
 #. Christmas Eve.
-#: ./holidays/countries/finland.py:84
 msgid "Jouluaatto"
 msgstr "Julafton"
 
 #. Christmas Day.
-#: ./holidays/countries/finland.py:87
 msgid "Joulupäivä"
 msgstr "Juldagen"
 
 #. Second Day of Christmas.
-#: ./holidays/countries/finland.py:90
 msgid "Tapaninpäivä"
 msgstr "Annandag jul"

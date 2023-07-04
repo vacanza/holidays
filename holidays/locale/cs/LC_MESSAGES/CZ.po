@@ -17,76 +17,61 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. Independent Czech State Restoration Day.
-#: ./holidays/countries/czechia.py:38
 msgid "Den obnovy samostatného českého státu"
 msgstr ""
 
 #. New Year's Day.
-#: ./holidays/countries/czechia.py:40
 msgid "Nový rok"
 msgstr ""
 
 #. Good Friday.
-#: ./holidays/countries/czechia.py:47
 msgid "Velký pátek"
 msgstr ""
 
 #. Easter Monday.
-#: ./holidays/countries/czechia.py:50
 msgid "Velikonoční pondělí"
 msgstr ""
 
 #. Labor Day.
-#: ./holidays/countries/czechia.py:54
 msgid "Svátek práce"
 msgstr ""
 
 #. Victory Day.
-#: ./holidays/countries/czechia.py:58
 msgid "Den vítězství"
 msgstr ""
 
 #. Day of Victory over Fascism.
-#: ./holidays/countries/czechia.py:61
 msgid "Den vítězství nad hitlerovským fašismem"
 msgstr ""
 
 #. Saints Cyril and Methodius Day.
-#: ./holidays/countries/czechia.py:65
 msgid "Den slovanských věrozvěstů Cyrila a Metoděje"
 msgstr ""
 
 #. Jan Hus Day.
-#: ./holidays/countries/czechia.py:68
 msgid "Den upálení mistra Jana Husa"
 msgstr ""
 
 #. Statehood Day.
-#: ./holidays/countries/czechia.py:72
 msgid "Den české státnosti"
 msgstr ""
 
 #. Independent Czechoslovak State Day.
-#: ./holidays/countries/czechia.py:76
 msgid "Den vzniku samostatného československého státu"
 msgstr ""
 
 #. Struggle for Freedom and Democracy Day.
-#: ./holidays/countries/czechia.py:80
 msgid "Den boje za svobodu a demokracii"
 msgstr ""
 
 #. Christmas Eve.
-#: ./holidays/countries/czechia.py:83
 msgid "Štědrý den"
 msgstr ""
 
 #. Christmas Day.
-#: ./holidays/countries/czechia.py:87
 msgid "1. svátek vánoční"
 msgstr ""
 
 #. Second Day of Christmas.
-#: ./holidays/countries/czechia.py:90
 msgid "2. svátek vánoční"
 msgstr ""

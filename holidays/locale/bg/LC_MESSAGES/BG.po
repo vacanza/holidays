@@ -17,73 +17,59 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/bulgaria.py:62
 msgid "Нова година"
 msgstr ""
 
 #. Liberation Day.
-#: ./holidays/countries/bulgaria.py:66
 msgid "Ден на Освобождението на България от османско иго"
 msgstr ""
 
 #. Good Friday.
-#: ./holidays/countries/bulgaria.py:70
 msgid "Велики петък"
 msgstr ""
 
 #. Holy Saturday.
-#: ./holidays/countries/bulgaria.py:73 ./holidays/countries/bulgaria.py:117
 msgid "Велика събота"
 msgstr ""
 
 #. Easter.
-#: ./holidays/countries/bulgaria.py:76 ./holidays/countries/bulgaria.py:117
 msgid "Великден"
 msgstr ""
 
 #. International Workers' Day.
-#: ./holidays/countries/bulgaria.py:82
 msgid "Ден на труда и на международната работническа солидарност"
 msgstr ""
 
 #. Saint George's Day.
-#: ./holidays/countries/bulgaria.py:87
 msgid "Гергьовден, Ден на храбростта и Българската армия"
 msgstr ""
 
 #. Bulgarian Education and Culture and Slavonic Literature Day.
-#: ./holidays/countries/bulgaria.py:93
 msgid ""
 "Ден на светите братя Кирил и Методий, на българската азбука, просвета и "
 "култура и на славянската книжовност"
 msgstr ""
 
 #. Unification Day.
-#: ./holidays/countries/bulgaria.py:103
 msgid "Ден на Съединението"
 msgstr ""
 
 #. Independence Day.
-#: ./holidays/countries/bulgaria.py:106
 msgid "Ден на Независимостта на България"
 msgstr ""
 
 #. Christmas Eve.
-#: ./holidays/countries/bulgaria.py:109
 msgid "Бъдни вечер"
 msgstr ""
 
 #. Christmas Day.
-#: ./holidays/countries/bulgaria.py:112
 msgid "Рождество Христово"
 msgstr ""
 
-#: ./holidays/countries/bulgaria.py:126
 #, c-format
 msgid "%s (почивен ден)"
 msgstr ""
 
 #. National Awakening Day.
-#: ./holidays/countries/bulgaria.py:130
 msgid "Ден на народните будители"
 msgstr ""

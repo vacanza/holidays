@@ -17,61 +17,49 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/belgium.py:39
 msgid "Nieuwjaar"
 msgstr ""
 
 #. Easter.
-#: ./holidays/countries/belgium.py:42
 msgid "Pasen"
 msgstr ""
 
 #. Easter Monday.
-#: ./holidays/countries/belgium.py:45
 msgid "Paasmaandag"
 msgstr ""
 
 #. Labor Day.
-#: ./holidays/countries/belgium.py:48
 msgid "Dag van de Arbeid"
 msgstr ""
 
 #. Ascension Day.
-#: ./holidays/countries/belgium.py:51
 msgid "Hemelvaart"
 msgstr ""
 
 #. Whit Sunday.
-#: ./holidays/countries/belgium.py:54
 msgid "Pinksteren"
 msgstr ""
 
 #. Whit Monday.
-#: ./holidays/countries/belgium.py:57
 msgid "Pinkstermaandag"
 msgstr ""
 
 #. National Day.
-#: ./holidays/countries/belgium.py:60
 msgid "Nationale feestdag"
 msgstr ""
 
 #. Assumption of Mary.
-#: ./holidays/countries/belgium.py:63
 msgid "Onze Lieve Vrouw hemelvaart"
 msgstr ""
 
 #. All Saints' Day.
-#: ./holidays/countries/belgium.py:66
 msgid "Allerheiligen"
 msgstr ""
 
 #. Armistice Day.
-#: ./holidays/countries/belgium.py:69
 msgid "Wapenstilstand"
 msgstr ""
 
 #. Christmas Day.
-#: ./holidays/countries/belgium.py:72
 msgid "Kerstmis"
 msgstr ""

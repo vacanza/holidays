@@ -16,52 +16,42 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: ./holidays/countries/cuba.py:53
 #, c-format
 msgid "%s (Observado)"
 msgstr ""
 
 #. Liberation Day.
-#: ./holidays/countries/cuba.py:59
 msgid "Triunfo de la Revolución"
 msgstr ""
 
 #. Victory Day.
-#: ./holidays/countries/cuba.py:66
 msgid "Día de la Victoria"
 msgstr ""
 
 #. Good Friday.
-#: ./holidays/countries/cuba.py:74
 msgid "Viernes Santo"
 msgstr ""
 
 #. Labour Day.
-#: ./holidays/countries/cuba.py:77
 msgid "Día Internacional de los Trabajadores"
 msgstr ""
 
 #. Commemoration of the Assault of the Moncada garrison.
-#: ./holidays/countries/cuba.py:80 ./holidays/countries/cuba.py:86
 msgid "Conmemoración del asalto a Moncada"
 msgstr ""
 
 #. Day of the National Rebellion.
-#: ./holidays/countries/cuba.py:83
 msgid "Día de la Rebeldía Nacional"
 msgstr ""
 
 #. Independence Day.
-#: ./holidays/countries/cuba.py:89
 msgid "Inicio de las Guerras de Independencia"
 msgstr ""
 
 #. Christmas Day.
-#: ./holidays/countries/cuba.py:101
 msgid "Día de Navidad"
 msgstr ""
 
 #. New Year's Eve.
-#: ./holidays/countries/cuba.py:106
 msgid "Fiesta de Fin de Año"
 msgstr ""

@@ -17,81 +17,65 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/madagascar.py:43
 msgid "Taom-baovao"
 msgstr "New Year's Day"
 
 #. Women's Day.
-#: ./holidays/countries/madagascar.py:46
 msgid "Fetin'ny vehivavy"
 msgstr "Women's Day"
 
 #. Martyrs' Day.
-#: ./holidays/countries/madagascar.py:49
 msgid "Fetin'ny mahery fo"
 msgstr "Martyrs' Day"
 
 #. Easter Sunday.
-#: ./holidays/countries/madagascar.py:52
 msgid "Fetin'ny paska"
 msgstr "Easter Sunday"
 
 #. Easter Monday.
-#: ./holidays/countries/madagascar.py:55
 msgid "Alatsinain'ny paska"
 msgstr "Easter Monday"
 
 #. Labor Day.
-#: ./holidays/countries/madagascar.py:58
 msgid "Fetin'ny asa"
 msgstr "Labor Day"
 
 #. Ascension Day.
-#: ./holidays/countries/madagascar.py:61
 msgid "Fiakaran'ny Jesosy kristy tany an-danitra"
 msgstr "Ascension Day"
 
 #. Whit Sunday.
-#: ./holidays/countries/madagascar.py:64
 msgid "Pentekosta"
 msgstr "Whit Sunday"
 
 #. Whit Monday.
-#: ./holidays/countries/madagascar.py:67
 msgid "Alatsinain'ny pentekosta"
 msgstr "Whit Monday"
 
 #. Mother's Day.
-#: ./holidays/countries/madagascar.py:73
 msgid "Fetin'ny reny"
 msgstr "Mother's Day"
 
 #. Father's Day.
-#: ./holidays/countries/madagascar.py:76
 msgid "Fetin'ny ray"
 msgstr "Father's Day"
 
 #. Independence Day.
-#: ./holidays/countries/madagascar.py:80
 msgid "Fetin'ny fahaleovantena"
 msgstr "Independence Day"
 
 #. Assumption Day.
-#: ./holidays/countries/madagascar.py:83
 msgid "Fiakaran'ny Masina Maria tany an-danitra"
 msgstr "Assumption Day"
 
 #. All Saints' Day.
-#: ./holidays/countries/madagascar.py:86
 msgid "Fetin'ny olo-masina"
 msgstr "All Saints' Day"
 
 #. Republic Day.
-#: ./holidays/countries/madagascar.py:90
 msgid "Fetin'ny Repoblika"
 msgstr "Republic Day"
 
 #. Christmas Day.
-#: ./holidays/countries/madagascar.py:93
 msgid "Fetin'ny noely"
 msgstr "Christmas Day"

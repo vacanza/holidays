@@ -17,81 +17,65 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/venezuela.py:48
 msgid "Año Nuevo"
 msgstr ""
 
 #. Monday of Carnival.
-#: ./holidays/countries/venezuela.py:51
 msgid "Lunes de Carnaval"
 msgstr ""
 
 #. Tuesday of Carnival.
-#: ./holidays/countries/venezuela.py:54
 msgid "Martes de Carnaval"
 msgstr ""
 
 #. Maundy Thursday.
-#: ./holidays/countries/venezuela.py:57
 msgid "Jueves Santo"
 msgstr ""
 
 #. Good Friday.
-#: ./holidays/countries/venezuela.py:60
 msgid "Viernes Santo"
 msgstr ""
 
 #. Declaration of Independence.
-#: ./holidays/countries/venezuela.py:65
 msgid "Declaración de la Independencia"
 msgstr ""
 
 #. International Worker's Day.
-#: ./holidays/countries/venezuela.py:70
 msgid "Dia Mundial del Trabajador"
 msgstr ""
 
 #. Battle of Carabobo.
-#: ./holidays/countries/venezuela.py:75
 msgid "Batalla de Carabobo"
 msgstr ""
 
 #. Independence Day.
-#: ./holidays/countries/venezuela.py:80
 msgid "Día de la Independencia"
 msgstr ""
 
 #. Birthday of Simon Bolivar.
-#: ./holidays/countries/venezuela.py:84
 msgid "Natalicio de Simón Bolívar"
 msgstr ""
 
 #. Day of Indigenous Resistance.
-#: ./holidays/countries/venezuela.py:89
 msgid "Día de la Resistencia Indígena"
 msgstr ""
 
 #. Columbus Day.
-#: ./holidays/countries/venezuela.py:92
 msgid "Día de la Raza"
 msgstr ""
 
 #. Unknown Holiday.
-#: ./holidays/countries/venezuela.py:99
 msgid "Día Festivo Desconocido"
 msgstr ""
 
 #. Christmas Eve.
-#: ./holidays/countries/venezuela.py:102
 msgid "Nochebuena"
 msgstr ""
 
 #. Christmas Day.
-#: ./holidays/countries/venezuela.py:105
 msgid "Día de Navidad"
 msgstr ""
 
 #. New Year's Eve.
-#: ./holidays/countries/venezuela.py:108
 msgid "Fiesta de Fin de Año"
 msgstr ""

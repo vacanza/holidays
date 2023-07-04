@@ -17,71 +17,57 @@ msgstr ""
 "X-Generator: Poedit 3.3.1\n"
 
 #. New Year's Day
-#: ./holidays/countries/aruba.py:52
 msgid "Aña Nobo"
 msgstr "Nieuwjaarsdag"
 
 #. Betico Day
-#: ./holidays/countries/aruba.py:60
 msgid "Dia di Betico"
 msgstr "Beticodag"
 
 #. Carnival Monday
-#: ./holidays/countries/aruba.py:71
 msgid "Dialuna despues di Carnaval Grandi"
 msgstr "Carnavalsmaandag"
 
 #. Monday before Ash Wednesday
-#: ./holidays/countries/aruba.py:74
 msgid "Dialuna prome cu diaranson di shinish"
 msgstr "Maandag voor Aswoensdag"
 
 #. National Anthem and Flag Day
-#: ./holidays/countries/aruba.py:83
 msgid "Dia di Himno y Bandera"
 msgstr "Nationale vlag en volkslied"
 
 #. Good Friday
-#: ./holidays/countries/aruba.py:89
 msgid "Bierna Santo"
 msgstr "Goede vrijdag"
 
 #. Easter Monday
-#: ./holidays/countries/aruba.py:95
 msgid "Di dos dia di Pasco di Resureccion"
 msgstr "Tweede paasdag"
 
 #. King's Day.
-#: ./holidays/countries/aruba.py:107
 msgid "Dia di Rey"
 msgstr "Koningsdag"
 
 #. King's Day.
-#: ./holidays/countries/aruba.py:111
 msgid "Aña di Rey"
 msgstr "Koningsdag"
 
 #. Queen's Day.
-#: ./holidays/countries/aruba.py:114
 msgid "Aña di La Reina"
 msgstr "Koninginnedag"
 
 #. Labor Day
-#: ./holidays/countries/aruba.py:131
 msgid "Dia di Obrero"
 msgstr "Dag van de arbeid"
 
 #. Ascension Day
-#: ./holidays/countries/aruba.py:137
 msgid "Dia di Asuncion"
 msgstr "Hemelvaartsdag"
 
 #. Christmas Day
-#: ./holidays/countries/aruba.py:143
 msgid "Pasco di Nacemento"
 msgstr "Kerst"
 
 #. Second Day of Christmas
-#: ./holidays/countries/aruba.py:149
 msgid "Di dos dia di Pasco di Nacemento"
 msgstr "Tweede kerstdag"

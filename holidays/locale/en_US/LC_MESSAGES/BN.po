@@ -16,81 +16,65 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. Sultan Hassanal Bolkiah's Golden Jubilee celebration
-#: ./holidays/countries/brunei.py:61
 msgid "Jubli Emas Sultan Hassanal Bolkiah"
 msgstr "Sultan Hassanal Bolkiah's Golden Jubilee"
 
-#: ./holidays/countries/brunei.py:56
 #, c-format
 msgid "%s* (*anggaran)"
 msgstr "%s* (*estimated)"
 
-#: ./holidays/countries/brunei.py:84 ./holidays/countries/brunei.py:186
 #, c-format
 msgid "%s - Diperhatikan"
 msgstr "%s (Observed)"
 
 #. New Year's Day
-#: ./holidays/countries/brunei.py:92
 msgid "Awal Tahun Masihi"
 msgstr "New Year's Day"
 
 #. Lunar New Year
-#: ./holidays/countries/brunei.py:98
 msgid "Tahun Baru Cina"
 msgstr "Lunar New Year"
 
 #. National Day
-#: ./holidays/countries/brunei.py:105
 msgid "Hari Kebangsaan"
 msgstr "National Day"
 
 #. Armed Forces Day
-#: ./holidays/countries/brunei.py:114
 msgid "Hari Angkatan Bersenjata Diraja Brunei"
 msgstr "Armed Forces Day"
 
 #. Sultan Hassanal Bolkiah's Birthday
-#: ./holidays/countries/brunei.py:123
 msgid "Hari Keputeraan KDYMM Sultan Brunei"
 msgstr "Sultan Hassanal Bolkiah's Birthday"
 
 #. Christmas Day
-#: ./holidays/countries/brunei.py:130
 msgid "Hari Natal"
 msgstr "Christmas Day"
 
 #. Isra Mi'raj
-#: ./holidays/countries/brunei.py:139
 msgid "Israk dan Mikraj"
 msgstr "Isra Mi'raj"
 
 #. First Day of Ramadan
-#: ./holidays/countries/brunei.py:146
 msgid "Hari Pertama Berpuasa"
 msgstr "First Day of Ramadan"
 
 #. Anniversary of the revelation of the Quran
-#: ./holidays/countries/brunei.py:153
 msgid "Hari Nuzul Al-Quran"
 msgstr "Anniversary of the revelation of the Quran"
 
 #. Eid al-Fitr
-#: ./holidays/countries/brunei.py:168
 msgid "Hari Raya Aidil Fitri"
 msgstr "Eid al-Fitr"
 
 #. Eid al-Adha
-#: ./holidays/countries/brunei.py:194
 msgid "Hari Raya Aidil Adha"
 msgstr "Eid al-Adha"
 
 #. Islamic New Year
-#: ./holidays/countries/brunei.py:201
 msgid "Awal Tahun Hijrah"
 msgstr "Islamic New Year"
 
 #. Birth of the Prophet
-#: ./holidays/countries/brunei.py:208
 msgid "Maulidur Rasul"
 msgstr "Birth of the Prophet"
