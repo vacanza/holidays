@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.constants import BANK, GOVERNMENT, PUBLIC
+from holidays.constants import ARMED_FORCES, BANK, GOVERNMENT, PUBLIC, SCHOOL
 from holidays.countries.thailand import Thailand, TH, THA
 from tests.common import TestCase
 
@@ -104,14 +104,18 @@ class TestThailand(TestCase):
         self.assertHolidays(
             Thailand(
                 categories=(
+                    ARMED_FORCES,
                     GOVERNMENT,
                     PUBLIC,
+                    SCHOOL,
                 ),
                 years=2022,
             ),
             ("2022-01-01", "วันขึ้นปีใหม่"),
             ("2022-01-03", "ชดเชยวันขึ้นปีใหม่"),
             ("2022-01-08", "วันเด็กแห่งชาติ"),
+            ("2022-01-16", "วันครู"),
+            ("2022-01-18", "วันกองทัพไทย"),
             ("2022-02-16", "วันมาฆบูชา"),
             ("2022-04-06", "วันจักรี"),
             ("2022-04-13", "วันสงกรานต์"),
@@ -625,6 +629,22 @@ class TestThailand(TestCase):
             ("2023-05-11", name),
         )
 
+    def test_armed_forces_holiday(self):
+        name = "วันกองทัพไทย"
+        self.assertHolidays(
+            Thailand(categories=(ARMED_FORCES,), years=range(1958, 1960)), ("1959-04-08", name)
+        )
+        self.assertHolidays(
+            Thailand(categories=(ARMED_FORCES,), years=range(1979, 1981)),
+            ("1979-04-08", name),
+            ("1980-01-25", name),
+        )
+        self.assertHolidays(
+            Thailand(categories=(ARMED_FORCES,), years=range(2006, 2008)),
+            ("2006-01-25", name),
+            ("2007-01-18", name),
+        )
+
     def test_bank_holiday(self):
         a_name = "วันหยุดเพิ่มเติมสำหรับการปิดบัญชีประจำปีของธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร"
         m_name = "วันหยุดภาคครึ่งปีของสถาบันการเงินและสถาบันการเงินเฉพาะกิจ"
@@ -645,6 +665,12 @@ class TestThailand(TestCase):
             ("2019-04-01", a_name),
             ("2020-04-01", a_name),
             ("2021-04-01", a_name),
+        )
+
+    def test_school_holiday(self):
+        self.assertHolidays(
+            Thailand(categories=(SCHOOL,), years=range(1956, 1958)),
+            ("1957-01-16", "วันครู"),
         )
 
     def test_l10n_default(self):

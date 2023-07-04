@@ -13,8 +13,23 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.constants import MON, SAT, BANK, GOVERNMENT, PUBLIC
+from holidays.calendars.gregorian import (
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+    MON,
+    SAT,
+)
+from holidays.constants import ARMED_FORCES, BANK, GOVERNMENT, PUBLIC, SCHOOL
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import InternationalHolidays, ThaiCalendarHolidays
 
@@ -85,7 +100,10 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         https://en.wikipedia.org/wiki/Royal_Ploughing_Ceremony
         https://www.lib.ru.ac.th/journal/may/may_phauchmongkol.html
         https://www.myhora.com/ปฏิทิน/ปฏิทิน-พ.ศ.2540.aspx
-
+    - [Royal Thai Armed Forces Day]
+        https://th.wikipedia.org/wiki/วันกองทัพไทย
+    - [Teacher's Day]
+        https://www.cabinet.soc.go.th/doc_image/2500/718941.pdf
 
     Limitations:
 
@@ -112,7 +130,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
     """
 
     country = "TH"
-    supported_categories = {BANK, GOVERNMENT, PUBLIC}
+    supported_categories = {ARMED_FORCES, BANK, GOVERNMENT, PUBLIC, SCHOOL}
     default_language = "th"
     supported_languages = ("en_US", "th")
 
@@ -629,6 +647,24 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
                     self.tr("ชดเชย%s") % self.tr("วันอาสาฬหบูชา"), asarnha_bucha_date + td(days=+2)
                 )
 
+    def _populate_armed_forces_holidays(self):
+        # วันกองทัพไทย
+        # Status: In-Use.
+        # First started in 1959 on the foundation of Ministry of Defense Day (APR 8).
+        # Moved to JAN 25 (Supposedly King Naresuan's Decisive Battle) in 1980.
+        # Corrected to the battle's actual date (JAN 18) in 2007.
+        # Only applys to members of the Royal Thai Armed Forces.
+
+        if self._year >= 1959:
+            if self._year >= 2007:
+                dt = date(self._year, JAN, 18)
+            elif self._year >= 1980:
+                dt = date(self._year, JAN, 25)
+            else:
+                dt = date(self._year, APR, 8)
+            # Royal Thai Armed Forces Day
+            self._add_holiday(tr("วันกองทัพไทย"), dt)
+
     def _populate_bank_holidays(self):
         # Bank of Thailand, the ones who decreed this wasn't found until December 10, 1942
         # So it's safe to assume with that as our start date.
@@ -710,6 +746,16 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         if 1957 <= self._year <= 2023 and self._year != 1999:
             # Royal Ploughing Ceremony.
             self._add_holiday(tr("วันพืชมงคล"), *raeknakhwan_dates.get(self._year, (MAY, 13)))
+
+    def _populate_school_holidays(self):
+        # วันครู
+        # Status: In-Use.
+        # Started in 1957.
+        # Only applies to Ministry of Education (Students, Teachers, etc.), no in-lieus are given.
+
+        if self._year >= 1957:
+            # Teacher's Day
+            self._add_holiday(tr("วันครู"), JAN, 16)
 
 
 class TH(Thailand):
