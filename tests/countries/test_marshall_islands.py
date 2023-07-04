@@ -19,6 +19,9 @@ class TestMH(TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass(HolidaysMH)
+
+    def setUp(self):
+        super().setUp()
         warnings.simplefilter("ignore")
 
     def test_country_aliases(self):
