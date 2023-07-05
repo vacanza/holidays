@@ -14,7 +14,7 @@ from datetime import timedelta as td
 from gettext import gettext as tr
 from typing import Set
 
-from holidays.constants import JAN, FEB, SEP, NOV, THU, FRI, SAT
+from holidays.calendars.gregorian import JAN, FEB, SEP, NOV, THU, FRI, SAT
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import IslamicHolidays
 

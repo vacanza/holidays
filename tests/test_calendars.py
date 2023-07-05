@@ -13,8 +13,8 @@ import unittest
 from datetime import date
 
 from holidays import calendars
-from holidays.calendars import KHMER_CALENDAR
-from holidays.constants import FEB, MAR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
+from holidays.calendars.gregorian import FEB, MAR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
+from holidays.calendars.thai import KHMER_CALENDAR
 
 
 class TestThaiLunisolarCalendar(unittest.TestCase):

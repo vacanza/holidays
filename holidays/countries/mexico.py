@@ -12,7 +12,7 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.constants import FEB, MAR, SEP, NOV, DEC, MON
+from holidays.calendars.gregorian import FEB, MAR, SEP, NOV, DEC, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 

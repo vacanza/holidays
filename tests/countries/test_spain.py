@@ -11,7 +11,7 @@
 
 from datetime import date
 
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, DEC
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, DEC
 from holidays.countries.spain import Spain, ES, ESP
 from tests.common import TestCase
 

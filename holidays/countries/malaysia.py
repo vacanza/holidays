@@ -18,7 +18,7 @@ from holidays.calendars import (
     _CustomHinduCalendar,
     _CustomIslamicCalendar,
 )
-from holidays.constants import (
+from holidays.calendars.gregorian import (
     JAN,
     FEB,
     MAR,

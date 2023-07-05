@@ -14,7 +14,7 @@ from datetime import timedelta as td
 
 from dateutil.easter import easter
 
-from holidays.constants import JAN, FEB, APR, MAY, JUN, AUG, OCT, NOV, DEC
+from holidays.calendars.gregorian import JAN, FEB, APR, MAY, JUN, AUG, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 
 

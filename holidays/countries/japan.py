@@ -14,7 +14,21 @@ from datetime import timedelta as td
 from gettext import gettext as tr
 from typing import Tuple
 
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC, MON
+from holidays.calendars.gregorian import (
+    JAN,
+    FEB,
+    MAR,
+    APR,
+    MAY,
+    JUN,
+    JUL,
+    AUG,
+    SEP,
+    OCT,
+    NOV,
+    DEC,
+    MON,
+)
 from holidays.helpers import _normalize_tuple
 from holidays.holiday_base import HolidayBase
 

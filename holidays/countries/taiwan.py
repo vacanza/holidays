@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.constants import FEB, APR, OCT
+from holidays.calendars.gregorian import FEB, APR, OCT
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChineseCalendarHolidays, InternationalHolidays
 

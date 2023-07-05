@@ -9,15 +9,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-# flake8: noqa: F403
+GREGORIAN_CALENDAR = "GREGORIAN_CALENDAR"
 
-from holidays.constants import *
-from holidays.holiday_base import *
-from holidays.registry import EntityLoader
-from holidays.utils import *
+MON, TUE, WED, THU, FRI, SAT, SUN = range(7)
+WEEKEND = (SAT, SUN)
 
-__version__ = "0.29"
-
-
-EntityLoader.load("countries", globals())
-EntityLoader.load("financial", globals())
+JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC = range(1, 13)

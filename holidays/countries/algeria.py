@@ -1,6 +1,6 @@
 from gettext import gettext as tr
 
-from holidays.constants import JAN, JUL, NOV
+from holidays.calendars.gregorian import JAN, JUL, NOV
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import IslamicHolidays, InternationalHolidays
 
