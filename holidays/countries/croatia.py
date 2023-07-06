@@ -58,9 +58,11 @@ class Croatia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_labor_day(tr("Međunarodni praznik rada"))
 
         if year >= 1996:
-            dt = (JUN, 25) if 2002 <= year <= 2019 else (MAY, 30)
-            # Statehood Day.
-            self._add_holiday(tr("Dan državnosti"), *dt)
+            self._add_holiday(
+                # Statehood Day.
+                tr("Dan državnosti"),
+                *((JUN, 25) if 2002 <= year <= 2019 else (MAY, 30)),
+            )
 
         # Anti-Fascist Struggle Day.
         self._add_holiday(tr("Dan antifašističke borbe"), JUN, 22)
