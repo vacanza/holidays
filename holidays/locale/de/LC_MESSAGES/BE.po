@@ -1,0 +1,77 @@
+# Belgium holidays de localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.28\n"
+"POT-Creation-Date: 2023-06-27 13:17+0300\n"
+"PO-Revision-Date: 2023-06-28 15:14+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+#: ./holidays/countries/belgium.py:39
+msgid "Nieuwjaar"
+msgstr "Neujahr"
+
+#. Easter.
+#: ./holidays/countries/belgium.py:42
+msgid "Pasen"
+msgstr "Ostern"
+
+#. Easter Monday.
+#: ./holidays/countries/belgium.py:45
+msgid "Paasmaandag"
+msgstr "Ostermontag"
+
+#. Labor Day.
+#: ./holidays/countries/belgium.py:48
+msgid "Dag van de Arbeid"
+msgstr "Tag der Arbeit"
+
+#. Ascension Day.
+#: ./holidays/countries/belgium.py:51
+msgid "Hemelvaart"
+msgstr "Christi Himmelfahrt"
+
+#. Whit Sunday.
+#: ./holidays/countries/belgium.py:54
+msgid "Pinksteren"
+msgstr "Pfingsten"
+
+#. Whit Monday.
+#: ./holidays/countries/belgium.py:57
+msgid "Pinkstermaandag"
+msgstr "Pfingstmontag"
+
+#. National Day.
+#: ./holidays/countries/belgium.py:60
+msgid "Nationale feestdag"
+msgstr "Nationalfeiertag"
+
+#. Assumption of Mary.
+#: ./holidays/countries/belgium.py:63
+msgid "Onze Lieve Vrouw hemelvaart"
+msgstr "Mariä Himmelfahrt"
+
+#. All Saints' Day.
+#: ./holidays/countries/belgium.py:66
+msgid "Allerheiligen"
+msgstr "Allerheiligen"
+
+#. Armistice Day.
+#: ./holidays/countries/belgium.py:69
+msgid "Wapenstilstand"
+msgstr "Waffenstillstand"
+
+#. Christmas Day.
+#: ./holidays/countries/belgium.py:72
+msgid "Kerstmis"
+msgstr "Weihnachten"

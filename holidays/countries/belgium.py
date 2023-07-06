@@ -9,63 +9,67 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
+from gettext import gettext as tr
 
-from dateutil.easter import easter
-
-from holidays.calendars.gregorian import JAN, MAY, JUL, AUG, NOV, DEC
+from holidays.calendars.gregorian import JUL
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Belgium(HolidayBase):
+class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Belgium
     https://www.belgium.be/nl/over_belgie/land/belgie_in_een_notendop/feestdagen
     https://nl.wikipedia.org/wiki/Feestdagen_in_Belgi%C3%AB
     """
 
     country = "BE"
+    default_language = "nl"
+    supported_languages = ("de", "en_US", "fr", "nl", "uk")
+
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
 
-        # New years
-        self[date(year, JAN, 1)] = "Nieuwjaarsdag"
+        # New Year's Day.
+        self._add_new_years_day(tr("Nieuwjaar"))
 
-        easter_date = easter(year)
+        # Easter.
+        self._add_easter_sunday(tr("Pasen"))
 
-        # Easter
-        self[easter_date] = "Pasen"
+        # Easter Monday.
+        self._add_easter_monday(tr("Paasmaandag"))
 
-        # Second easter day
-        self[easter_date + td(days=+1)] = "Paasmaandag"
+        # Labor Day.
+        self._add_labor_day(tr("Dag van de Arbeid"))
 
-        # Ascension day
-        self[easter_date + td(days=+39)] = "O.L.H. Hemelvaart"
+        # Ascension Day.
+        self._add_ascension_thursday(tr("Hemelvaart"))
 
-        # Pentecost
-        self[easter_date + td(days=+49)] = "Pinksteren"
+        # Whit Sunday.
+        self._add_whit_sunday(tr("Pinksteren"))
 
-        # Pentecost monday
-        self[easter_date + td(days=+50)] = "Pinkstermaandag"
+        # Whit Monday.
+        self._add_whit_monday(tr("Pinkstermaandag"))
 
-        # International Workers' Day
-        self[date(year, MAY, 1)] = "Dag van de Arbeid"
+        # National Day.
+        self._add_holiday(tr("Nationale feestdag"), JUL, 21)
 
-        # Belgian National Day
-        self[date(year, JUL, 21)] = "Nationale feestdag"
+        # Assumption of Mary.
+        self._add_assumption_of_mary_day(tr("Onze Lieve Vrouw hemelvaart"))
 
-        # Assumption of Mary
-        self[date(year, AUG, 15)] = "O.L.V. Hemelvaart"
+        # All Saints' Day.
+        self._add_all_saints_day(tr("Allerheiligen"))
 
-        # All Saints' Day
-        self[date(year, NOV, 1)] = "Allerheiligen"
+        # Armistice Day.
+        self._add_remembrance_day(tr("Wapenstilstand"))
 
-        # Armistice Day
-        self[date(year, NOV, 11)] = "Wapenstilstand"
-
-        # First christmas
-        self[date(year, DEC, 25)] = "Kerstmis"
+        # Christmas Day.
+        self._add_christmas_day(tr("Kerstmis"))
 
 
 class BE(Belgium):
