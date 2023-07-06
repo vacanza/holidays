@@ -123,9 +123,11 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday(tr("Día de las Glorias Navales"), MAY, 21)
 
         if year >= 2021:
-            dt = (JUN, 21) if year == 2021 else self._summer_solstice_date
-            # National Day of Indigenous Peoples.
-            self._add_holiday(tr("Día Nacional de los Pueblos Indígenas"), *dt)
+            self._add_holiday(
+                # National Day of Indigenous Peoples.
+                tr("Día Nacional de los Pueblos Indígenas"),
+                *((JUN, 21) if year == 2021 else self._summer_solstice_date),
+            )
 
         if year <= 1967 or year >= 1986:
             # Saint Peter and Saint Paul.
