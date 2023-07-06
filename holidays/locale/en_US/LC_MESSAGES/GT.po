@@ -1,0 +1,70 @@
+# Colombia holidays en_US localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.29\n"
+"POT-Creation-Date: 2023-02-19 17:09+0200\n"
+"PO-Revision-Date: 2023-05-03 18:38-0700\n"
+"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.3\n"
+
+#. New Year's Day.
+#: ./holidays/countries/guatemala.py:59
+msgid "Año Nuevo"
+msgstr "New Year's Day"
+
+#. Good Thursday.
+#: ./holidays/countries/guatemala.py:62
+msgid "Jueves Santo"
+msgstr "Good Thursday"
+
+#. Good Friday.
+#: ./holidays/countries/guatemala.py:65
+msgid "Viernes Santo"
+msgstr "Good Friday"
+
+#: ./holidays/countries/guatemala.py:78 ./holidays/countries/guatemala.py:80
+msgid "Dia del Ejército"
+msgstr "Army Day"
+
+#. Independence Day
+#: ./holidays/countries/guatemala.py:86
+msgid "Día de la Independencia"
+msgstr "Independence day"
+
+#. Dia de todos los Santos
+#: ./holidays/countries/guatemala.py:92
+msgid "Dia de Todos los Santos"
+msgstr "All Saints Day"
+
+#. Dia de la Asunción
+#: ./holidays/countries/guatemala.py:83
+msgid "Dia de la Asunción"
+msgstr "Assumption Day"
+
+#. Revolution Day
+#: ./holidays/countries/guatemala.py:89
+msgid "Dia de la Revolución"
+msgstr "Revolution Day"
+
+#. Good Saturday.
+#: ./holidays/countries/guatemala.py:68
+msgid "Sabado Santo"
+msgstr "Good Saturday"
+
+#: ./holidays/countries/guatemala.py:72 ./holidays/countries/guatemala.py:74
+msgid "Dia del Trabajo"
+msgstr "Labor Day"
+
+#. Christmas Day.
+#: ./holidays/countries/guatemala.py:95
+msgid "Dia de Navidad"
+msgstr "Christmas Day"

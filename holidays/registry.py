@@ -70,6 +70,7 @@ COUNTRIES: RegistryDict = {
     "germany": ("Germany", "DE", "DEU"),
     "greece": ("Greece", "GR", "GRC"),
     "guam": ("Guam", "GU", "GUM", "HolidaysGU"),
+    "guatemala": ("Guatemala", "GT", "GUA"),
     "honduras": ("Honduras", "HN", "HND"),
     "hongkong": ("HongKong", "HK", "HKG"),
     "hungary": ("Hungary", "HU", "HUN"),
