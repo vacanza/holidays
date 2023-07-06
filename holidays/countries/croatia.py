@@ -9,78 +9,92 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
+from gettext import gettext as tr
 
-from dateutil.easter import easter
-
-from holidays.calendars.gregorian import JAN, MAY, JUN, AUG, OCT, NOV, DEC
+from holidays.calendars.gregorian import MAY, JUN, AUG, OCT, NOV
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Croatia(HolidayBase):
+class Croatia(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     Updated with act 022-03 / 19-01 / 219 of 14 November 2019
     https://narodne-novine.nn.hr/clanci/sluzbeni/2019_11_110_2212.html
     https://en.wikipedia.org/wiki/Public_holidays_in_Croatia
+    https://hr.wikipedia.org/wiki/Blagdani_i_spomendani_u_Hrvatskoj
     """
 
     country = "HR"
+    default_language = "hr"
+    supported_languages = ("en_US", "hr", "uk")
+
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
 
-        # New years
-        self[date(year, JAN, 1)] = "Nova Godina"
+        # New Year's Day.
+        self._add_new_years_day(tr("Nova Godina"))
 
-        # Epiphany
-        self[date(year, JAN, 6)] = "Sveta tri kralja"
-        easter_date = easter(year)
+        if year != 2002:
+            # Epiphany.
+            self._add_epiphany_day(tr("Bogojavljenje ili Sveta tri kralja"))
 
-        # Easter
-        self[easter_date] = "Uskrs"
-        # Easter Monday
-        self[easter_date + td(days=+1)] = "Uskrsni ponedjeljak"
+        if year >= 2009:
+            # Easter.
+            self._add_easter_sunday(tr("Uskrs"))
 
-        # Corpus Christi
-        self[easter_date + td(days=+60)] = "Tijelovo"
+        # Easter Monday.
+        self._add_easter_monday(tr("Uskrsni ponedjeljak"))
 
-        # International Workers' Day
-        self[date(year, MAY, 1)] = "Međunarodni praznik rada"
+        if year >= 2002:
+            # Corpus Christi.
+            self._add_corpus_christi_day(tr("Tijelovo"))
 
-        # Statehood day (new)
+        # International Workers' Day.
+        self._add_labor_day(tr("Međunarodni praznik rada"))
+
+        if year >= 1996:
+            self._add_holiday(
+                # Statehood Day.
+                tr("Dan državnosti"),
+                *((JUN, 25) if 2002 <= year <= 2019 else (MAY, 30)),
+            )
+
+        # Anti-Fascist Struggle Day.
+        self._add_holiday(tr("Dan antifašističke borbe"), JUN, 22)
+
+        name = (
+            # Victory and Homeland Thanksgiving Day and Croatian Veterans Day.
+            tr("Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja")
+            if year >= 2008
+            # Victory and Homeland Thanksgiving Day.
+            else tr("Dan pobjede i domovinske zahvalnosti")
+        )
+        self._add_holiday(name, AUG, 5)
+
+        # Assumption of Mary.
+        self._add_assumption_of_mary_day(tr("Velika Gospa"))
+
+        if 2002 <= year <= 2019:
+            # Independence Day.
+            self._add_holiday(tr("Dan neovisnosti"), OCT, 8)
+
+        # All Saints' Day.
+        self._add_all_saints_day(tr("Svi sveti"))
+
         if year >= 2020:
-            self[date(year, MAY, 30)] = "Dan državnosti"
+            # Memorial Day.
+            self._add_holiday(tr("Dan sjećanja"), NOV, 18)
 
-        # Anti-fascist struggle day
-        self[date(year, JUN, 22)] = "Dan antifašističke borbe"
+        # Christmas Day.
+        self._add_christmas_day(tr("Božić"))
 
-        # Statehood day (old)
-        if year < 2020:
-            self[date(year, JUN, 25)] = "Dan državnosti"
-
-        # Victory and Homeland Thanksgiving Day
-        self[date(year, AUG, 5)] = "Dan pobjede i domovinske zahvalnosti"
-
-        # Assumption of Mary
-        self[date(year, AUG, 15)] = "Velika Gospa"
-
-        # Independence Day (old)
-        if year < 2020:
-            self[date(year, OCT, 8)] = "Dan neovisnosti"
-
-        # All Saints' Day
-        self[date(year, NOV, 1)] = "Svi sveti"
-
-        if year >= 2020:
-            # Memorial day
-            self[date(year, NOV, 18)] = "Dan sjećanja"
-
-        # Christmas day
-        self[date(year, DEC, 25)] = "Božić"
-
-        # St. Stephen's day
-        self[date(year, DEC, 26)] = "Sveti Stjepan"
+        # St. Stephen's Day.
+        self._add_christmas_day_two(tr("Sveti Stjepan"))
 
 
 class HR(Croatia):

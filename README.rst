@@ -264,7 +264,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Croatia
      - HR
      -
-     -
+     - en_US, **hr**, uk
    * - Cuba
      - CU
      -
@@ -280,7 +280,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Czechia
      - CZ
      -
-     -
+     - **cs**, en_US, uk
    * - Denmark
      - DK
      -
@@ -564,7 +564,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Slovenia
      - SI
      -
-     -
+     - en_US, **sl**, uk
    * - South Africa
      - ZA
      -
