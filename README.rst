@@ -220,7 +220,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Bulgaria
      - BG
      -
-     - **bg**, en_US
+     - **bg**, en_US, uk
    * - Burkina Faso
      - BF
      -
