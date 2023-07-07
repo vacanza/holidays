@@ -67,10 +67,7 @@ class Guatemala(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._move_holiday(self._add_labor_day(tr("Dia del Trabajo")))
 
         # Army Day.
-        if year >= 2021:
-            self._add_holiday_law_19_2018(tr("Dia del Ejército"), date(year, JUN, 30))
-        else:
-            self._add_holiday(tr("Dia del Ejército"), JUN, 30)
+        self._move_holiday(self._add_holiday(tr("Dia del Ejército"), JUN, 30))
 
         # Dia de la Asunción
         self._add_holiday(tr("Dia de la Asunción"), AUG, 15)
