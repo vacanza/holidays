@@ -77,10 +77,9 @@ class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays):
                 # International Workers' Solidarity Day.
                 else tr("День міжнародної солідарності трудящих")
             )
-            may_1 = self._add_labor_day(name)
-            observed_dates.add(may_1)
+            observed_dates.add(self._add_labor_day(name))
             if year <= 2017:
-                observed_dates.add(self._add_holiday(name, may_1 + td(days=+1)))
+                observed_dates.add(self._add_labor_day_two(name))
 
             name = (
                 # Day of Victory over Nazism in World War II (Victory Day).
