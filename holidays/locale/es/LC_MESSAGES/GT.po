@@ -1,4 +1,4 @@
-# Colombia holidays.
+# Guatemala holidays.
 # Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
 #
 msgid ""
