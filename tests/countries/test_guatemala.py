@@ -9,6 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from datetime import date, timedelta
+
 from holidays.countries.guatemala import Guatemala, GT, GUA
 from tests.common import TestCase
 
@@ -23,7 +25,7 @@ class TestGuatemala(TestCase):
 
     def test_2016(self):
         # https://calendariohispanohablante.com/2016/calendario-guatemala-2016.html
-        self.assertHolidayDates(
+        dt = (
             "2016-01-01",
             "2016-03-24",
             "2016-03-25",
@@ -36,10 +38,11 @@ class TestGuatemala(TestCase):
             "2016-11-01",
             "2016-12-25",
         )
+        self.assertHoliday(dt)
 
     def test_2017(self):
         # https://calendariohispanohablante.com/2017/calendario-guatemala-2017.html
-        self.assertHolidayDates(
+        dt = (
             "2017-01-01",
             "2017-04-13",
             "2017-04-14",
@@ -52,10 +55,11 @@ class TestGuatemala(TestCase):
             "2017-11-01",
             "2017-12-25",
         )
+        self.assertHoliday(dt)
 
     def test_2018(self):
         # https://calendariohispanohablante.com/2018/calendario-guatemala-2018.html
-        self.assertHolidayDates(
+        dt = (
             "2018-01-01",
             "2018-03-29",
             "2018-03-30",
@@ -68,10 +72,11 @@ class TestGuatemala(TestCase):
             "2018-11-01",
             "2018-12-25",
         )
+        self.assertHoliday(dt)
 
     def test_2019(self):
         # https://calendariohispanohablante.com/2019/calendario-guatemala-2019.html
-        self.assertHolidayDates(
+        dt = (
             "2019-01-01",
             "2019-04-18",
             "2019-04-19",
@@ -84,10 +89,11 @@ class TestGuatemala(TestCase):
             "2019-11-01",
             "2019-12-25",
         )
+        self.assertHoliday(dt)
 
     def test_2020(self):
         # https://calendariohispanohablante.com/2020/calendario-guatemala-2020.html
-        self.assertHolidayDates(
+        dt = (
             "2020-01-01",
             "2020-04-09",
             "2020-04-10",
@@ -100,10 +106,11 @@ class TestGuatemala(TestCase):
             "2020-11-01",
             "2020-12-25",
         )
+        self.assertHoliday(dt)
 
     def test_2021(self):
         # https://calendariohispanohablante.com/2021/calendario-guatemala-2021.html
-        self.assertHolidayDates(
+        dt = (
             "2021-01-01",
             "2021-04-01",
             "2021-04-02",
@@ -116,10 +123,11 @@ class TestGuatemala(TestCase):
             "2021-11-01",
             "2021-12-25",
         )
+        self.assertHoliday(dt)
 
     def test_2022(self):
         # https://publicholidays.la/guatemala/es/2022-dates/
-        self.assertHolidayDates(
+        dt = (
             "2022-01-01",
             "2022-04-14",
             "2022-04-15",
@@ -132,10 +140,11 @@ class TestGuatemala(TestCase):
             "2022-11-01",
             "2022-12-25",
         )
+        self.assertHoliday(dt)
 
     def test_2023(self):
         # https://publicholidays.la/guatemala/es/2023-dates/
-        self.assertHolidayDates(
+        dt = (
             "2023-01-01",
             "2023-04-06",
             "2023-04-07",
@@ -148,10 +157,11 @@ class TestGuatemala(TestCase):
             "2023-11-01",
             "2023-12-25",
         )
+        self.assertHoliday(dt)
 
     def test_2024(self):
         # https://publicholidays.la/guatemala/es/2024-dates/
-        self.assertHolidayDates(
+        dt = (
             "2024-01-01",
             "2024-03-28",
             "2024-03-29",
@@ -164,6 +174,7 @@ class TestGuatemala(TestCase):
             "2024-11-01",
             "2024-12-25",
         )
+        self.assertHoliday(dt)
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
@@ -195,3 +206,54 @@ class TestGuatemala(TestCase):
             ("2024-11-01", "All Saints Day"),
             ("2024-12-25", "Christmas Day"),
         )
+
+    def test_add_holiday_law_19_2018(self):
+        """
+        TestCase for method test_add_holiday_law_19_2018 and complete coverage
+        to 100%
+        """
+        tu_objeto = Guatemala()
+        tu_objeto._populate(2023)
+
+        # Test - self._is_tuesday(dt)
+        dt = date(2023, 7, 4)  # Martes
+
+        tu_objeto._add_holiday_law_19_2018("Feriado", dt)
+        # Verify that the date set is the previous day (Monday).
+        self.assertTrue(dt - timedelta(days=1) in tu_objeto)
+
+        # Test - self._is_wednesday(dt)
+        dt = date(2023, 7, 5)  # Miércoles
+        tu_objeto._add_holiday_law_19_2018("Feriado", dt)
+        # Verify that the adjusted date is two days before (Monday)
+        self.assertTrue(dt - timedelta(days=2) in tu_objeto)
+
+        # Test - self._is_thursday(dt)
+        dt = date(2023, 7, 6)  # Jueves
+        tu_objeto._add_holiday_law_19_2018("Feriado", dt)
+        # Verify that the adjusted date is four day after (Monday)
+        self.assertTrue(dt + timedelta(days=4) in tu_objeto)
+
+        # Test - self._is_friday(dt)
+        dt = date(2023, 7, 7)  # Viernes
+        tu_objeto._add_holiday_law_19_2018("Feriado", dt)
+        # Verify that the adjusted date is three day after (Monday)
+        self.assertTrue(dt + timedelta(days=3) in tu_objeto)
+
+        # Test - self._is_saturday(dt)
+        dt = date(2023, 7, 8)  # Sábado
+        tu_objeto._add_holiday_law_19_2018("Feriado", dt)
+        # Verify that the adjusted date is two day after (Monday)
+        self.assertTrue(dt + timedelta(days=2) in tu_objeto)
+
+        # Test - self._is_sunday(dt)
+        dt = date(2023, 7, 9)  # Domingo
+        tu_objeto._add_holiday_law_19_2018("Feriado", dt)
+        # Verify that the adjusted date is one day after (Monday)
+        self.assertTrue(dt + timedelta(days=1) in tu_objeto)
+
+        # Test of a case not covered under the above conditions
+        dt = date(2023, 7, 10)  # Monday
+        tu_objeto._add_holiday_law_19_2018("Feriado", dt)
+        # Verify that the date set is the same (Monday)
+        self.assertTrue(dt in tu_objeto)

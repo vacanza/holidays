@@ -34,23 +34,26 @@ class Guatemala(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _add_holiday_law_19_2018(self, name: str, dt: date) -> None:
-        if self.observed:
-            if self._is_tuesday(dt):
-                day = dt - timedelta(days=1)
-            elif self._is_wednesday(dt):
-                day = dt - timedelta(days=2)
-            elif self._is_thursday(dt):
-                day = dt + timedelta(days=4)
-            elif self._is_friday(dt):
-                day = dt + timedelta(days=3)
-            elif self._is_saturday(dt):
-                day = dt + timedelta(days=2)
-            elif self._is_sunday(dt):
-                day = dt + timedelta(days=1)
-            else:
-                day = dt
+        """
+        law 19-2018
+        https://www.minfin.gob.gt/images/downloads/leyes_acuerdos/decretocong19_101018.pdf
+        """
+        if self._is_tuesday(dt):
+            day = dt - timedelta(days=1)
+        elif self._is_wednesday(dt):
+            day = dt - timedelta(days=2)
+        elif self._is_thursday(dt):
+            day = dt + timedelta(days=4)
+        elif self._is_friday(dt):
+            day = dt + timedelta(days=3)
+        elif self._is_saturday(dt):
+            day = dt + timedelta(days=2)
+        elif self._is_sunday(dt):
+            day = dt + timedelta(days=1)
+        else:
+            day = dt
 
-            self._add_holiday(name, day)
+        self._add_holiday(name, day)
 
     def _populate(self, year):
         super()._populate(year)
