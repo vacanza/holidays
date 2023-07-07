@@ -69,8 +69,8 @@ class Guatemala(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Army Day.
         self._move_holiday(self._add_holiday(tr("Dia del Ejército"), JUN, 30))
 
-        # Dia de la Asunción
-        self._add_holiday(tr("Dia de la Asunción"), AUG, 15)
+        # Assumption Day.
+        self._add_assumption_of_mary_day(tr("Dia de la Asunción"))
 
         # Independence Day
         self._add_holiday(tr("Día de la Independencia"), SEP, 15)
