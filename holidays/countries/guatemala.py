@@ -64,10 +64,7 @@ class Guatemala(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holy_saturday(tr("Sabado Santo"))
 
         # Labor Day.
-        if year >= 2021:
-            self._add_holiday_law_19_2018(tr("Dia del Trabajo"), date(year, MAY, 1))
-        else:
-            self._add_labor_day(tr("Dia del Trabajo"))
+        self._move_holiday(self._add_labor_day(tr("Dia del Trabajo")))
 
         # Army Day.
         if year >= 2021:
