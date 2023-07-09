@@ -754,49 +754,39 @@ class HolidayBase(Dict[date, str]):
         :return:
             A list of all holiday dates matching the provided holiday name.
         """
-        holiday_date_names_mapping: Dict[date, List[str]] = {
-            key: value.split(HOLIDAY_NAME_DELIMITER) if split_multiple_names else [value]
-            for key, value in self.items()
-        }
+        holiday_name_dates: List[Tuple[date, str]]
+        if split_multiple_names:
+            holiday_name_dates = [
+                (k, name) for k, v in self.items() for name in v.split(HOLIDAY_NAME_DELIMITER)
+            ]
+        else:
+            holiday_name_dates = [(k, v) for k, v in self.items()]
 
         if lookup == "icontains":
             holiday_name_lower = holiday_name.lower()
-            return [
-                dt
-                for dt, names in holiday_date_names_mapping.items()
-                if any((holiday_name_lower in name.lower() for name in names))
-            ]
+            return [dt for dt, name in holiday_name_dates if holiday_name_lower in name.lower()]
+
         elif lookup == "exact":
-            return [
-                dt
-                for dt, names in holiday_date_names_mapping.items()
-                if any((holiday_name == name for name in names))
-            ]
+            return [dt for dt, name in holiday_name_dates if holiday_name == name]
+
         elif lookup == "contains":
-            return [
-                dt
-                for dt, names in holiday_date_names_mapping.items()
-                if any((holiday_name in name for name in names))
-            ]
+            return [dt for dt, name in holiday_name_dates if holiday_name in name]
+
         elif lookup == "startswith":
             return [
-                dt
-                for dt, names in holiday_date_names_mapping.items()
-                if any((holiday_name == name[: len(holiday_name)] for name in names))
+                dt for dt, name in holiday_name_dates if holiday_name == name[: len(holiday_name)]
             ]
+
         elif lookup == "iexact":
             holiday_name_lower = holiday_name.lower()
-            return [
-                dt
-                for dt, names in holiday_date_names_mapping.items()
-                if any((holiday_name_lower == name.lower() for name in names))
-            ]
+            return [dt for dt, name in holiday_name_dates if holiday_name_lower == name.lower()]
+
         elif lookup == "istartswith":
             holiday_name_lower = holiday_name.lower()
             return [
                 dt
-                for dt, names in holiday_date_names_mapping.items()
-                if any((holiday_name_lower == name[: len(holiday_name)].lower() for name in names))
+                for dt, name in holiday_name_dates
+                if holiday_name_lower == name[: len(holiday_name)].lower()
             ]
 
         raise AttributeError(f"Unknown lookup type: {lookup}")
