@@ -12,7 +12,7 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, AUG, SEP, OCT, NOV, MON, TUE, FRI
+from holidays.calendars.gregorian import APR, AUG, SEP, OCT, FRI, _get_nth_weekday_from
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -28,6 +28,15 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
         2022: (SEP, 22, "National Day of Mourning for Queen Elizabeth II"),
     }
     subdivisions = ("ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA")
+
+    @property
+    def sovereign_birthday(self) -> str:
+        """Sovereign's birthday holiday name."""
+        return (
+            "King's Birthday"
+            if 1902 <= self._year <= 1935 or self._year > 2022
+            else "Queen's Birthday"
+        )
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -65,17 +74,10 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Sovereign's Birthday
         if 1902 <= year <= 1935:
-            name = "King's Birthday"
             if self._year >= 1912:
-                self._add_holiday(name, JUN, 3)  # George V
+                self._add_holiday_jun_3(self.sovereign_birthday)  # George V
             else:
-                self._add_holiday(name, NOV, 9)  # Edward VII
-
-    # Sovereign's Birthday
-    def _add_sovereign_birthday(self, dt: date) -> None:
-        if self._year >= 1936:
-            name = "Queen's Birthday" if 1952 <= self._year <= 2022 else "King's Birthday"
-            self._add_holiday(name, dt)
+                self._add_holiday_nov_9(self.sovereign_birthday)  # Edward VII
 
     def _add_subdiv_holidays(self):
         # Australia Day
@@ -85,15 +87,15 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
                 if self.subdiv == "NSW" and self._year <= 1945
                 else "Australia Day"
             )
-            jan_26 = self._add_holiday(name, JAN, 26)
+            jan_26 = self._add_holiday_jan_26(name)
             if self._year >= 1946:
                 self._add_observed(jan_26)
         elif self._year >= 1888 and self.subdiv != "SA":
-            self._add_holiday("Anniversary Day", JAN, 26)
+            self._add_holiday_jan_26("Anniversary Day")
 
         # Anzac Day
         if self._year >= 1921:
-            self._add_holiday("Anzac Day", APR, 25)
+            self._add_holiday_apr_25("Anzac Day")
 
         # Christmas Day
         self._add_observed(self._add_christmas_day("Christmas Day"), days=+2)
@@ -110,10 +112,10 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_sunday("Easter Sunday")
 
         # Labour Day
-        self._add_holiday("Labour Day", self._get_nth_weekday_of_month(1, MON, OCT))
+        self._add_holiday_1st_mon_of_oct("Labour Day")
 
         # Sovereign's Birthday
-        self._add_sovereign_birthday(self._get_nth_weekday_of_month(2, MON, JUN))
+        self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
 
         # Anzac Day
         if self._year >= 1921:
@@ -123,15 +125,13 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Info from https://www.timeanddate.com/holidays/australia/canberra-day
         # and https://en.wikipedia.org/wiki/Canberra_Day
         if self._year >= 1913:
-            if self._year <= 1957:
-                dt = date(self._year, MAR, 12)
+            name = "Canberra Day"
+            if self._year <= 1957 or self._year == 2012:
+                self._add_holiday_mar_12(name)
             elif self._year <= 2007:
-                dt = self._get_nth_weekday_of_month(3, MON, MAR)
-            elif self._year == 2012:
-                dt = date(self._year, MAR, 12)
+                self._add_holiday_3rd_mon_of_mar(name)
             else:
-                dt = self._get_nth_weekday_of_month(2, MON, MAR)
-            self._add_holiday("Canberra Day", dt)
+                self._add_holiday_2nd_mon_of_mar(name)
 
         # Family & Community Day
         if 2007 <= self._year <= 2017:
@@ -149,12 +149,15 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
                 2016: date(2016, SEP, 26),
                 2017: date(2017, SEP, 25),
             }
-            dt = fc_dates.get(self._year, self._get_nth_weekday_of_month(1, TUE, NOV))
-            self._add_holiday("Family & Community Day", dt)
+            name = "Family & Community Day"
+            if self._year in fc_dates:
+                self._add_holiday(name, fc_dates[self._year])
+            else:
+                self._add_holiday_1st_tue_of_nov(name)
 
         # Reconciliation Day
         if self._year >= 2018:
-            self._add_holiday("Reconciliation Day", self._get_nth_weekday_from(1, MON, MAY, 27))
+            self._add_holiday_1st_mon_from_may_27("Reconciliation Day")
 
     def _add_subdiv_nsw_holidays(self):
         # Easter
@@ -162,31 +165,31 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_sunday("Easter Sunday")
 
         # Labour Day
-        self._add_holiday("Labour Day", self._get_nth_weekday_of_month(1, MON, OCT))
+        self._add_holiday_1st_mon_of_oct("Labour Day")
 
         # Sovereign's Birthday
-        self._add_sovereign_birthday(self._get_nth_weekday_of_month(2, MON, JUN))
+        self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
 
         # Bank Holiday
         if self._year >= 1912:
-            self._add_holiday("Bank Holiday", self._get_nth_weekday_of_month(1, MON, AUG))
+            self._add_holiday_1st_mon_of_aug("Bank Holiday")
 
     def _add_subdiv_nt_holidays(self):
         # Easter
         self._add_holy_saturday("Easter Saturday")
 
         # Labour Day
-        self._add_holiday("May Day", self._get_nth_weekday_of_month(1, MON, MAY))
+        self._add_holiday_1st_mon_of_may("May Day")
 
         # Sovereign's Birthday
-        self._add_sovereign_birthday(self._get_nth_weekday_of_month(2, MON, JUN))
+        self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
 
         # Anzac Day
         if self._year >= 1921:
             self._add_observed(date(self._year, APR, 25))
 
         # Picnic Day
-        self._add_holiday("Picnic Day", self._get_nth_weekday_of_month(1, MON, AUG))
+        self._add_holiday_1st_mon_of_aug("Picnic Day")
 
     def _add_subdiv_qld_holidays(self):
         # Easter
@@ -194,23 +197,20 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_sunday("Easter Sunday")
 
         # Labour Day
-        dt = (
-            self._get_nth_weekday_of_month(1, MON, OCT)
-            if 2013 <= self._year <= 2015
-            else self._get_nth_weekday_of_month(1, MON, MAY)
-        )
-        self._add_holiday("Labour Day", dt)
+        name = "Labour Day"
+        if 2013 <= self._year <= 2015:
+            self._add_holiday_1st_mon_of_oct(name)
+        else:
+            self._add_holiday_1st_mon_of_may(name)
 
         # Sovereign's Birthday
         if self._year == 2012:
-            self._add_holiday("Queen's Diamond Jubilee", JUN, 11)
+            self._add_holiday_jun_11("Queen's Diamond Jubilee")
 
-        dt = (
-            self._get_nth_weekday_of_month(2, MON, JUN)
-            if self._year <= 2015 and self._year != 2012
-            else self._get_nth_weekday_of_month(1, MON, OCT)
-        )
-        self._add_sovereign_birthday(dt)
+        if self._year <= 2015 and self._year != 2012:
+            self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
+        else:
+            self._add_holiday_1st_mon_of_oct(self.sovereign_birthday)
 
         # Anzac Day
         if self._year >= 1921:
@@ -224,33 +224,41 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
             2020: date(2020, AUG, 14),
             2021: date(2021, OCT, 29),
         }
-        dt = ekka_dates.get(self._year, self._get_nth_weekday_from(1, FRI, AUG, 5) + td(days=+5))
-        self._add_holiday("The Royal Queensland Show", dt)
+        name = "The Royal Queensland Show"
+        if self._year in ekka_dates:
+            self._add_holiday(name, ekka_dates[self._year])
+        else:
+            self._add_holiday(
+                name, _get_nth_weekday_from(+1, FRI, date(self._year, AUG, 5)) + td(days=+5)
+            )
 
     def _add_subdiv_sa_holidays(self):
         # Easter
         self._add_holy_saturday("Easter Saturday")
 
         # Labour Day
-        self._add_holiday("Labour Day", self._get_nth_weekday_of_month(1, MON, OCT))
+        self._add_holiday_1st_mon_of_oct("Labour Day")
 
         # Sovereign's Birthday
-        self._add_sovereign_birthday(self._get_nth_weekday_of_month(2, MON, JUN))
+        self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
 
         # Anzac Day
         if self._year >= 1921:
             self._add_observed(date(self._year, APR, 25), include_sat=False)
 
         # Adelaide Cup
-        dt = self._get_nth_weekday_of_month(2 if self._year >= 2006 else 3, MON, MAR)
-        self._add_holiday("Adelaide Cup", dt)
+        name = "Adelaide Cup"
+        if self._year >= 2006:
+            self._add_holiday_2nd_mon_of_mar(name)
+        else:
+            self._add_holiday_3rd_mon_of_mar(name)
 
     def _add_subdiv_tas_holidays(self):
         # Labour Day
-        self._add_holiday("Eight Hours Day", self._get_nth_weekday_of_month(2, MON, MAR))
+        self._add_holiday_2nd_mon_of_mar("Eight Hours Day")
 
         # Sovereign's Birthday
-        self._add_sovereign_birthday(self._get_nth_weekday_of_month(2, MON, JUN))
+        self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
 
     def _add_subdiv_vic_holidays(self):
         # Easter
@@ -258,13 +266,13 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_sunday("Easter Sunday")
 
         # Labour Day
-        self._add_holiday("Labour Day", self._get_nth_weekday_of_month(2, MON, MAR))
+        self._add_holiday_2nd_mon_of_mar("Labour Day")
 
         # Sovereign's Birthday
-        self._add_sovereign_birthday(self._get_nth_weekday_of_month(2, MON, JUN))
+        self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
 
         # Melbourne Cup
-        self._add_holiday("Melbourne Cup", self._get_nth_weekday_of_month(1, TUE, NOV))
+        self._add_holiday_1st_tue_of_nov("Melbourne Cup")
 
         if self._year >= 2015:
             # Grand Final Day
@@ -275,15 +283,18 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
                 2021: date(2021, SEP, 24),
                 2022: date(2022, SEP, 23),
             }
-            dt = grand_final_dates.get(self._year, self._get_nth_weekday_from(1, FRI, SEP, 24))
-            self._add_holiday("Grand Final Day", dt)
+            name = "Grand Final Day"
+            if self._year in grand_final_dates:
+                self._add_holiday(name, grand_final_dates[self._year])
+            else:
+                self._add_holiday_1st_fri_from_sep_24(name)
 
     def _add_subdiv_wa_holidays(self):
         # Labour Day
-        self._add_holiday("Labour Day", self._get_nth_weekday_of_month(1, MON, MAR))
+        self._add_holiday_1st_mon_of_mar("Labour Day")
 
         # Sovereign's Birthday
-        self._add_sovereign_birthday(self._get_nth_weekday_from(-1, MON, OCT, 1))
+        self._add_holiday_1st_mon_before_oct_1(self.sovereign_birthday)
 
         # Anzac Day
         if self._year >= 1921:
@@ -292,7 +303,7 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Western Australia Day
         if self._year >= 1833:
             name = "Western Australia Day" if self._year >= 2015 else "Foundation Day"
-            self._add_holiday(name, self._get_nth_weekday_of_month(1, MON, JUN))
+            self._add_holiday_1st_mon_of_jun(name)
 
 
 class AU(Australia):

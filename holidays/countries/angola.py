@@ -11,7 +11,7 @@
 
 from datetime import timedelta as td
 
-from holidays.calendars.gregorian import FEB, MAR, APR, SEP, NOV, DEC
+from holidays.calendars.gregorian import DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -58,7 +58,7 @@ class Angola(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Since 2018, if the following year's New Year's Day falls on a
         # Tuesday, the 31st of the current year is also a holiday.
         if self.observed and self._is_monday(DEC, 31) and year >= 2018:
-            self._add_holiday("Ano novo (Day off)", DEC, 31)
+            self._add_holiday_dec_31("Ano novo (Day off)")
 
         # Good Friday.
         self._add_good_friday("Sexta-feira Santa")
@@ -67,7 +67,7 @@ class Angola(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed_holiday(self._add_carnival_tuesday("Carnaval"))
 
         # Liberation Movement Day.
-        self._add_observed_holiday(self._add_holiday("Dia do Início da Luta Armada", FEB, 4))
+        self._add_observed_holiday(self._add_holiday_feb_4("Dia do Início da Luta Armada"))
 
         # Day off for International Woman's Day.
         self._add_observed_holiday(self._add_womens_day("Dia Internacional da Mulher"))
@@ -75,24 +75,24 @@ class Angola(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Southern Africa Liberation Day.
         if year >= 2019:
             self._add_observed_holiday(
-                self._add_holiday("Dia da Libertação da África Austral", MAR, 23)
+                self._add_holiday_mar_23("Dia da Libertação da África Austral")
             )
 
         # Peace Day.
-        self._add_observed_holiday(self._add_holiday("Dia da Paz e Reconciliação", APR, 4))
+        self._add_observed_holiday(self._add_holiday_apr_4("Dia da Paz e Reconciliação"))
 
         # May Day.
         self._add_observed_holiday(self._add_labor_day("Dia Mundial do Trabalho"))
 
         # National Hero Day.
         if year >= 1980:
-            self._add_observed_holiday(self._add_holiday("Dia do Herói Nacional", SEP, 17))
+            self._add_observed_holiday(self._add_holiday_sep_17("Dia do Herói Nacional"))
 
         # All Souls' Day.
         self._add_observed_holiday(self._add_all_souls_day("Dia dos Finados"))
 
         # Independence Day.
-        self._add_observed_holiday(self._add_holiday("Dia da Independência", NOV, 11))
+        self._add_observed_holiday(self._add_holiday_nov_11("Dia da Independência"))
 
         # Christmas Day.
         self._add_observed_holiday(self._add_christmas_day("Dia de Natal e da Família"))
