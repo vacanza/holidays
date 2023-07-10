@@ -78,8 +78,8 @@ class Guatemala(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Revolution Day
         self._add_holiday(tr("Dia de la Revolución"), OCT, 20)
 
-        # Dia de todos los Santos
-        self._add_holiday(tr("Dia de Todos los Santos"), NOV, 1)
+        # All Saints' Day.
+        self._add_all_saints_day(tr("Dia de Todos los Santos"))
 
         # Christmas Day.
         self._add_christmas_day(tr("Dia de Navidad"))
