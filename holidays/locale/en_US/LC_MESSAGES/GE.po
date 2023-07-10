@@ -16,82 +16,65 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/georgia.py:41
 msgid "ახალი წელი"
 msgstr "New Year's Day"
 
-#: ./holidays/countries/georgia.py:42
 msgid "ბედობა"
 msgstr "New Year's Day"
 
 #. Christmas Day (Orthodox).
-#: ./holidays/countries/georgia.py:45
 msgid "ქრისტეშობა"
 msgstr "Orthodox Christmas Day"
 
 #. Baptism Day of our Lord Jesus Christ.
-#: ./holidays/countries/georgia.py:48
 msgid "ნათლისღება"
 msgstr "Epiphany Day"
 
 #. Mother's Day.
-#: ./holidays/countries/georgia.py:51
 msgid "დედის დღე"
 msgstr "Mother's Day"
 
 #. Women's Day,
-#: ./holidays/countries/georgia.py:54
 msgid "ქალთა საერთაშორისო დღე"
 msgstr "International Women's ay"
 
 #. Easter.
-#: ./holidays/countries/georgia.py:57
 msgid "წითელი პარასკევი"
 msgstr "Orthodox Good Friday"
 
-#: ./holidays/countries/georgia.py:58
 msgid "დიდი შაბათი"
 msgstr "Orthodox Holy Saturday"
 
-#: ./holidays/countries/georgia.py:59
 msgid "აღდგომა"
 msgstr "Orthodox Easter Sunday"
 
-#: ./holidays/countries/georgia.py:60
 msgid "შავი ორშაბათი"
 msgstr "Orthodox Easter Monday"
 
 #. National Unity Day,
-#: ./holidays/countries/georgia.py:63
 msgid "ეროვნული ერთიანობის დღე"
 msgstr "National Unity Day"
 
 #. Day of Victory.
-#: ./holidays/countries/georgia.py:66
 msgid "ფაშიზმზე გამარჯვების დღე"
 msgstr "Day of Victory over Fascism"
 
 #. Saint Andrew the First-Called Day.
-#: ./holidays/countries/georgia.py:69
 msgid "წმინდა ანდრია პირველწოდებულის დღე"
 msgstr "St. Andrew's Day"
 
 #. Independence Day.
-#: ./holidays/countries/georgia.py:72
 msgid "დამოუკიდებლობის დღე"
 msgstr "Independence Day"
 
 #. Saint Mary's Day.
-#: ./holidays/countries/georgia.py:75
 msgid "მარიამობა"
 msgstr "Saint Mary's Day"
 
 #. Day of Svetitskhoveli Cathedral
-#: ./holidays/countries/georgia.py:78
 msgid "სვეტიცხოვლობა"
 msgstr "Day of Svetitskhoveli Cathedral"
 
 #. Saint George's Day
-#: ./holidays/countries/georgia.py:81
 msgid "გიორგობა"
 msgstr "Saint George's Day"

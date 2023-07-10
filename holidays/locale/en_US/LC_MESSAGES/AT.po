@@ -17,81 +17,65 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/austria.py:39
 msgid "Neujahr"
 msgstr "New Year's Day"
 
 #. Epiphany.
-#: ./holidays/countries/austria.py:42
 msgid "Heilige Drei Könige"
 msgstr "Epiphany"
 
 #. Easter Monday.
-#: ./holidays/countries/austria.py:45
 msgid "Ostermontag"
 msgstr "Easter Monday"
 
 #. Labor Day.
-#: ./holidays/countries/austria.py:48
 msgid "Staatsfeiertag"
 msgstr "Labor Day"
 
 #. Ascension Day.
-#: ./holidays/countries/austria.py:51
 msgid "Christi Himmelfahrt"
 msgstr "Ascension Day"
 
 #. Whit Monday.
-#: ./holidays/countries/austria.py:54
 msgid "Pfingstmontag"
 msgstr "Whit Monday"
 
 #. Corpus Christi.
-#: ./holidays/countries/austria.py:57
 msgid "Fronleichnam"
 msgstr "Corpus Christi"
 
 #. Assumption Day.
-#: ./holidays/countries/austria.py:60
 msgid "Mariä Himmelfahrt"
 msgstr "Assumption Day"
 
 #. National Day.
-#: ./holidays/countries/austria.py:64 ./holidays/countries/austria.py:66
 msgid "Nationalfeiertag"
 msgstr "National Day"
 
 #. All Saints' Day.
-#: ./holidays/countries/austria.py:69
 msgid "Allerheiligen"
 msgstr "All Saints' Day"
 
 #. Immaculate Conception.
-#: ./holidays/countries/austria.py:72
 msgid "Mariä Empfängnis"
 msgstr "Immaculate Conception"
 
 #. Christmas Day.
-#: ./holidays/countries/austria.py:75
 msgid "Christtag"
 msgstr "Christmas Day"
 
 #. St. Stephen's Day.
-#: ./holidays/countries/austria.py:78
 msgid "Stefanitag"
 msgstr "St. Stephen's Day"
 
 #. Good Friday.
-#: ./holidays/countries/austria.py:82
 msgid "Karfreitag"
 msgstr "Good Friday"
 
 #. Christmas Eve.
-#: ./holidays/countries/austria.py:85
 msgid "Heiliger Abend"
 msgstr "Christmas Eve"
 
 #. New Year's Eve.
-#: ./holidays/countries/austria.py:88
 msgid "Silvester"
 msgstr "New Year's Eve"

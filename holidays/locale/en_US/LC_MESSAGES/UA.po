@@ -18,87 +18,70 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. Day off (substituted from {day}.{month}).
-#: ./holidays/countries/ukraine.py:74
 #, python-format
 msgid "Вихідний день (перенесено з {day:02}.{month:02})"
 msgstr "Day off (substituted from {month}/{day})"
 
-#: ./holidays/countries/ukraine.py:305
 #, c-format
 msgid "%s (вихідний)"
 msgstr "%s (Observed)"
 
 #. New Year's Day.
-#: ./holidays/countries/ukraine.py:211
 msgid "Новий рік"
 msgstr "New Year's Day"
 
 #. Christmas (Julian calendar).
-#: ./holidays/countries/ukraine.py:216
 msgid "Різдво Христове (за юліанським календарем)"
 msgstr "Christmas (Julian calendar)"
 
 #. International Women's Day.
-#: ./holidays/countries/ukraine.py:221
 msgid "Міжнародний жіночий день"
 msgstr "International Women's Day"
 
 #. Easter Sunday (Pascha).
-#: ./holidays/countries/ukraine.py:227
 msgid "Великдень (Пасха)"
 msgstr "Easter Sunday (Pascha)"
 
 #. Holy Trinity Day.
-#: ./holidays/countries/ukraine.py:230
 msgid "Трійця"
 msgstr "Holy Trinity Day"
 
 #. Labour Day.
-#: ./holidays/countries/ukraine.py:234
 msgid "День праці"
 msgstr "Labor Day"
 
 #. International Workers' Solidarity Day.
-#: ./holidays/countries/ukraine.py:237
 msgid "День міжнародної солідарності трудящих"
 msgstr "International Workers' Solidarity Day"
 
 #. Day of Victory over Nazism in World War II (Victory Day).
-#: ./holidays/countries/ukraine.py:246
 msgid "День перемоги над нацизмом у Другій світовій війні (День перемоги)"
 msgstr "Day of Victory over Nazism in World War II (Victory Day)"
 
 #. Victory Day.
-#: ./holidays/countries/ukraine.py:249
 msgid "День перемоги"
 msgstr "Victory Day"
 
 #. Day of the Constitution of Ukraine.
-#: ./holidays/countries/ukraine.py:256
 msgid "День Конституції України"
 msgstr "Day of the Constitution of Ukraine"
 
 #. Independence Day.
-#: ./holidays/countries/ukraine.py:260
 msgid "День незалежності України"
 msgstr "Independence Day"
 
 #. Day of defenders of Ukraine.
-#: ./holidays/countries/ukraine.py:269
 msgid "День захисників і захисниць України"
 msgstr "Day of defenders of Ukraine"
 
 #. Defender of Ukraine Day.
-#: ./holidays/countries/ukraine.py:272
 msgid "День захисника України"
 msgstr "Defender of Ukraine Day"
 
 #. Anniversary of the Great October Socialist Revolution.
-#: ./holidays/countries/ukraine.py:278
 msgid "Річниця Великої Жовтневої соціалістичної революції"
 msgstr "Anniversary of the Great October Socialist Revolution"
 
 #. Christmas (Gregorian calendar).
-#: ./holidays/countries/ukraine.py:286
 msgid "Різдво Христове (за григоріанським календарем)"
 msgstr "Christmas (Gregorian calendar)"

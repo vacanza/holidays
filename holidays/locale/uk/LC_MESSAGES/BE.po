@@ -17,61 +17,49 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/belgium.py:39
 msgid "Nieuwjaar"
 msgstr "Новий рік"
 
 #. Easter.
-#: ./holidays/countries/belgium.py:42
 msgid "Pasen"
 msgstr "Великдень"
 
 #. Easter Monday.
-#: ./holidays/countries/belgium.py:45
 msgid "Paasmaandag"
 msgstr "Великодній понеділок"
 
 #. Labor Day.
-#: ./holidays/countries/belgium.py:48
 msgid "Dag van de Arbeid"
 msgstr "День праці"
 
 #. Ascension Day.
-#: ./holidays/countries/belgium.py:51
 msgid "Hemelvaart"
 msgstr "Вознесіння Господнє"
 
 #. Whit Sunday.
-#: ./holidays/countries/belgium.py:54
 msgid "Pinksteren"
 msgstr "Трійця"
 
 #. Whit Monday.
-#: ./holidays/countries/belgium.py:57
 msgid "Pinkstermaandag"
 msgstr "День Святого Духа"
 
 #. National Day.
-#: ./holidays/countries/belgium.py:60
 msgid "Nationale feestdag"
 msgstr "Національне свято"
 
 #. Assumption of Mary.
-#: ./holidays/countries/belgium.py:63
 msgid "Onze Lieve Vrouw hemelvaart"
 msgstr "Внебовзяття Пресвятої Діви Марії"
 
 #. All Saints' Day.
-#: ./holidays/countries/belgium.py:66
 msgid "Allerheiligen"
 msgstr "День усіх святих"
 
 #. Armistice Day.
-#: ./holidays/countries/belgium.py:69
 msgid "Wapenstilstand"
 msgstr "День перемирʼя"
 
 #. Christmas Day.
-#: ./holidays/countries/belgium.py:72
 msgid "Kerstmis"
 msgstr "Різдво Христове"
