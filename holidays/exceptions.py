@@ -36,7 +36,3 @@ class FinancialDoesNotExist(EntityDoesNotExist):
 
 class SubdivisionDoesNotExist(BaseError):
     """Subdivision not supported exception."""
-
-
-class YearOutOfRangeError(BaseError):
-    """Year out of range error."""
