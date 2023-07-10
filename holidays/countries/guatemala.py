@@ -9,10 +9,10 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
+from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JUN, SEP, OCT, MON
+from holidays.calendars.gregorian import JUN, SEP, OCT, NOV, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
