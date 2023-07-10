@@ -1,12 +1,12 @@
 # Colombia holidays en_US localization.
-# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+# Authors: ~Jorge C <jorge.cadena@gmail.com>, (c) 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.29\n"
 "POT-Creation-Date: 2023-02-19 17:09+0200\n"
 "PO-Revision-Date: 2023-05-03 18:38-0700\n"
-"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"Last-Translator: Jorge Cadena <jorge.cadena@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"

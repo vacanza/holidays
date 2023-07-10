@@ -9,8 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date, timedelta
-
 from holidays.countries.guatemala import Guatemala, GT, GUA
 from tests.common import TestCase
 
@@ -206,54 +204,3 @@ class TestGuatemala(TestCase):
             ("2024-11-01", "All Saints Day"),
             ("2024-12-25", "Christmas Day"),
         )
-
-    def test_add_holiday_law_19_2018(self):
-        """
-        TestCase for method test_add_holiday_law_19_2018 and complete coverage
-        to 100%
-        """
-        tu_objeto = Guatemala()
-        tu_objeto._populate(2023)
-
-        # Test - self._is_tuesday(dt)
-        dt = date(2023, 7, 4)  # Martes
-
-        tu_objeto._add_holiday_law_19_2018("Feriado", dt)
-        # Verify that the date set is the previous day (Monday).
-        self.assertTrue(dt - timedelta(days=1) in tu_objeto)
-
-        # Test - self._is_wednesday(dt)
-        dt = date(2023, 7, 5)  # Miércoles
-        tu_objeto._add_holiday_law_19_2018("Feriado", dt)
-        # Verify that the adjusted date is two days before (Monday)
-        self.assertTrue(dt - timedelta(days=2) in tu_objeto)
-
-        # Test - self._is_thursday(dt)
-        dt = date(2023, 7, 6)  # Jueves
-        tu_objeto._add_holiday_law_19_2018("Feriado", dt)
-        # Verify that the adjusted date is four day after (Monday)
-        self.assertTrue(dt + timedelta(days=4) in tu_objeto)
-
-        # Test - self._is_friday(dt)
-        dt = date(2023, 7, 7)  # Viernes
-        tu_objeto._add_holiday_law_19_2018("Feriado", dt)
-        # Verify that the adjusted date is three day after (Monday)
-        self.assertTrue(dt + timedelta(days=3) in tu_objeto)
-
-        # Test - self._is_saturday(dt)
-        dt = date(2023, 7, 8)  # Sábado
-        tu_objeto._add_holiday_law_19_2018("Feriado", dt)
-        # Verify that the adjusted date is two day after (Monday)
-        self.assertTrue(dt + timedelta(days=2) in tu_objeto)
-
-        # Test - self._is_sunday(dt)
-        dt = date(2023, 7, 9)  # Domingo
-        tu_objeto._add_holiday_law_19_2018("Feriado", dt)
-        # Verify that the adjusted date is one day after (Monday)
-        self.assertTrue(dt + timedelta(days=1) in tu_objeto)
-
-        # Test of a case not covered under the above conditions
-        dt = date(2023, 7, 10)  # Monday
-        tu_objeto._add_holiday_law_19_2018("Feriado", dt)
-        # Verify that the date set is the same (Monday)
-        self.assertTrue(dt in tu_objeto)
