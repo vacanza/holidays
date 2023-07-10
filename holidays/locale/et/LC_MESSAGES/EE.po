@@ -17,61 +17,49 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/estonia.py:33
 msgid "uusaasta"
 msgstr ""
 
 #. Independence Day.
-#: ./holidays/countries/estonia.py:36
 msgid "iseseisvuspäev"
 msgstr ""
 
 #. Good Friday.
-#: ./holidays/countries/estonia.py:39
 msgid "suur reede"
 msgstr ""
 
 #. Easter Sunday.
-#: ./holidays/countries/estonia.py:42
 msgid "ülestõusmispühade 1. püha"
 msgstr ""
 
 #. Spring Day.
-#: ./holidays/countries/estonia.py:45
 msgid "kevadpüha"
 msgstr ""
 
 #. Whit Sunday.
-#: ./holidays/countries/estonia.py:48
 msgid "nelipühade 1. püha"
 msgstr ""
 
 #. Victory Day.
-#: ./holidays/countries/estonia.py:51
 msgid "võidupüha"
 msgstr ""
 
 #. Midsummer Day.
-#: ./holidays/countries/estonia.py:54
 msgid "jaanipäev"
 msgstr ""
 
 #. Independence Restoration Day.
-#: ./holidays/countries/estonia.py:58
 msgid "taasiseseisvumispäev"
 msgstr ""
 
 #. Christmas Eve.
-#: ./holidays/countries/estonia.py:62
 msgid "jõululaupäev"
 msgstr ""
 
 #. Christmas Day.
-#: ./holidays/countries/estonia.py:65
 msgid "esimene jõulupüha"
 msgstr ""
 
 #. Second Day of Christmas.
-#: ./holidays/countries/estonia.py:68
 msgid "teine jõulupüha"
 msgstr ""

@@ -16,130 +16,86 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: ./holidays/countries/bosnia_and_herzegovina.py:63
 #, c-format
 msgid "%s (preneseno)"
 msgstr ""
 
 #. Orthodox Good Friday.
-#: ./holidays/countries/bosnia_and_herzegovina.py:71
 msgid "Veliki petak (Pravoslavni)"
 msgstr ""
 
 #. Catholic Easter Monday.
-#: ./holidays/countries/bosnia_and_herzegovina.py:74
 msgid "Uskrsni ponedjeljak (Katolički)"
 msgstr ""
 
 #. Eid al-Fitr.
-#: ./holidays/countries/bosnia_and_herzegovina.py:77
-#: ./holidays/countries/bosnia_and_herzegovina.py:155
-#: ./holidays/countries/bosnia_and_herzegovina.py:237
 msgid "Ramazanski Bajram"
 msgstr ""
 
 #. Eid al-Adha.
-#: ./holidays/countries/bosnia_and_herzegovina.py:80
-#: ./holidays/countries/bosnia_and_herzegovina.py:158
-#: ./holidays/countries/bosnia_and_herzegovina.py:240
 msgid "Kurban Bajram"
 msgstr ""
 
 #. New Year's Day.
-#: ./holidays/countries/bosnia_and_herzegovina.py:92
-#: ./holidays/countries/bosnia_and_herzegovina.py:111
-#: ./holidays/countries/bosnia_and_herzegovina.py:162
-#: ./holidays/countries/bosnia_and_herzegovina.py:189
 msgid "Nova godina"
 msgstr ""
 
 #. Orthodox Christmas.
-#: ./holidays/countries/bosnia_and_herzegovina.py:97
-#: ./holidays/countries/bosnia_and_herzegovina.py:119
-#: ./holidays/countries/bosnia_and_herzegovina.py:167
-#: ./holidays/countries/bosnia_and_herzegovina.py:197
 msgid "Božić (Pravoslavni)"
 msgstr ""
 
 #. Labor Day.
-#: ./holidays/countries/bosnia_and_herzegovina.py:100
-#: ./holidays/countries/bosnia_and_herzegovina.py:137
-#: ./holidays/countries/bosnia_and_herzegovina.py:176
-#: ./holidays/countries/bosnia_and_herzegovina.py:215
 msgid "Međunarodni praznik rada"
 msgstr ""
 
 #. Catholic Christmas.
-#: ./holidays/countries/bosnia_and_herzegovina.py:105
-#: ./holidays/countries/bosnia_and_herzegovina.py:152
-#: ./holidays/countries/bosnia_and_herzegovina.py:183
-#: ./holidays/countries/bosnia_and_herzegovina.py:234
 msgid "Božić (Katolički)"
 msgstr ""
 
 #. Orthodox Christmas Eve.
-#: ./holidays/countries/bosnia_and_herzegovina.py:116
-#: ./holidays/countries/bosnia_and_herzegovina.py:194
 msgid "Badnji dan (Pravoslavni)"
 msgstr ""
 
 #. Independence Day.
-#: ./holidays/countries/bosnia_and_herzegovina.py:122
 msgid "Dan nezavisnosti"
 msgstr ""
 
 #. Catholic Good Friday.
-#: ./holidays/countries/bosnia_and_herzegovina.py:125
-#: ./holidays/countries/bosnia_and_herzegovina.py:203
 msgid "Veliki petak (Katolički)"
 msgstr ""
 
 #. Catholic Easter.
-#: ./holidays/countries/bosnia_and_herzegovina.py:128
-#: ./holidays/countries/bosnia_and_herzegovina.py:206
 msgid "Uskrs (Katolički)"
 msgstr ""
 
 #. Orthodox Easter.
-#: ./holidays/countries/bosnia_and_herzegovina.py:131
-#: ./holidays/countries/bosnia_and_herzegovina.py:209
 msgid "Vaskrs (Pravoslavni)"
 msgstr ""
 
 #. Orthodox Easter Monday.
-#: ./holidays/countries/bosnia_and_herzegovina.py:134
-#: ./holidays/countries/bosnia_and_herzegovina.py:212
 msgid "Uskrsni ponedjeljak (Pravoslavni)"
 msgstr ""
 
 #. Victory Day.
-#: ./holidays/countries/bosnia_and_herzegovina.py:143
-#: ./holidays/countries/bosnia_and_herzegovina.py:221
 msgid "Dan pobjede nad fašizmom"
 msgstr ""
 
 #. Statehood Day.
-#: ./holidays/countries/bosnia_and_herzegovina.py:146
 msgid "Dan državnosti"
 msgstr ""
 
 #. Catholic Christmas Eve.
-#: ./holidays/countries/bosnia_and_herzegovina.py:149
-#: ./holidays/countries/bosnia_and_herzegovina.py:231
 msgid "Badnji dan (Katolički)"
 msgstr ""
 
 #. Day of establishment of Brčko District.
-#: ./holidays/countries/bosnia_and_herzegovina.py:171
 msgid "Dan uspostavljanja Brčko distrikta"
 msgstr ""
 
 #. Orthodox New Year.
-#: ./holidays/countries/bosnia_and_herzegovina.py:200
 msgid "Pravoslavna Nova godina"
 msgstr ""
 
 #. Dayton Agreement Day.
-#: ./holidays/countries/bosnia_and_herzegovina.py:225
 msgid "Dan uspostave Opšteg okvirnog sporazuma za mir u Bosni i Hercegovini"
 msgstr ""

@@ -17,61 +17,49 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/netherlands.py:40
 msgid "Nieuwjaarsdag"
 msgstr ""
 
 #. Good Friday.
-#: ./holidays/countries/netherlands.py:43
 msgid "Goede Vrijdag"
 msgstr ""
 
 #. Easter Sunday.
-#: ./holidays/countries/netherlands.py:46
 msgid "Eerste paasdag"
 msgstr ""
 
 #. Easter Monday.
-#: ./holidays/countries/netherlands.py:49
 msgid "Tweede paasdag"
 msgstr ""
 
 #. King's Day.
-#: ./holidays/countries/netherlands.py:55
 msgid "Koningsdag"
 msgstr ""
 
 #. Queen's Day.
-#: ./holidays/countries/netherlands.py:58
 msgid "Koninginnedag"
 msgstr ""
 
 #. Liberation Day.
-#: ./holidays/countries/netherlands.py:72
 msgid "Bevrijdingsdag"
 msgstr ""
 
 #. Ascension Day.
-#: ./holidays/countries/netherlands.py:75
 msgid "Hemelvaartsdag"
 msgstr ""
 
 #. Whit Sunday.
-#: ./holidays/countries/netherlands.py:78
 msgid "Eerste Pinksterdag"
 msgstr ""
 
 #. Whit Monday.
-#: ./holidays/countries/netherlands.py:81
 msgid "Tweede Pinksterdag"
 msgstr ""
 
 #. Christmas Day.
-#: ./holidays/countries/netherlands.py:84
 msgid "Eerste Kerstdag"
 msgstr ""
 
 #. Second Day of Christmas.
-#: ./holidays/countries/netherlands.py:87
 msgid "Tweede Kerstdag"
 msgstr ""

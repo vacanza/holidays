@@ -17,56 +17,45 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/luxembourg.py:37
 msgid "Neijoerschdag"
 msgstr "New Year's Day"
 
 #. Easter Monday.
-#: ./holidays/countries/luxembourg.py:40
 msgid "Ouschterméindeg"
 msgstr "Easter Monday"
 
 #. Labor Day.
-#: ./holidays/countries/luxembourg.py:43
 msgid "Dag vun der Aarbecht"
 msgstr "Labor Day"
 
 #. Europe Day.
-#: ./holidays/countries/luxembourg.py:47
 msgid "Europadag"
 msgstr "Europe Day"
 
 #. Ascension Day.
-#: ./holidays/countries/luxembourg.py:50
 msgid "Christi Himmelfaart"
 msgstr "Ascension Day"
 
 #. Whit Monday.
-#: ./holidays/countries/luxembourg.py:53
 msgid "Péngschtméindeg"
 msgstr "Whit Monday"
 
 #. National Day.
-#: ./holidays/countries/luxembourg.py:56
 msgid "Nationalfeierdag"
 msgstr "National Day"
 
 #. Assumption Day.
-#: ./holidays/countries/luxembourg.py:59
 msgid "Léiffrawëschdag"
 msgstr "Assumption Day"
 
 #. All Saints' Day.
-#: ./holidays/countries/luxembourg.py:62
 msgid "Allerhellgen"
 msgstr "All Saints' Day"
 
 #. Christmas Day.
-#: ./holidays/countries/luxembourg.py:65
 msgid "Chrëschtdag"
 msgstr "Christmas Day"
 
 #. St. Stephen's Day.
-#: ./holidays/countries/luxembourg.py:68
 msgid "Stiefesdag"
 msgstr "St. Stephen's Day"
