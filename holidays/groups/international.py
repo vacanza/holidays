@@ -11,7 +11,7 @@
 
 from datetime import date
 
-from holidays.constants import JAN, MAR, MAY, JUN, OCT, NOV, DEC
+from holidays.calendars.gregorian import JAN, MAR, MAY, JUN, OCT, NOV, DEC
 
 
 class InternationalHolidays:

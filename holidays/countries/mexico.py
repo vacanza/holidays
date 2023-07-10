@@ -12,8 +12,7 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars import _get_nth_weekday_of_month
-from holidays.constants import FEB, MAR, SEP, NOV, DEC, MON
+from holidays.calendars.gregorian import FEB, MAR, SEP, NOV, DEC, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -23,7 +22,7 @@ class Mexico(HolidayBase, ChristianHolidays, InternationalHolidays):
     References:
     - https://en.wikipedia.org/wiki/Public_holidays_in_Mexico
     - https://es.wikipedia.org/wiki/Anexo:D%C3%ADas_festivos_en_M%C3%A9xico
-    - https://www.gob.mx/cms/uploads/attachment/file/156203/1044_Ley_Federal_del_Trabajo.pdf  # noqa: E501
+    - https://www.gob.mx/cms/uploads/attachment/file/156203/1044_Ley_Federal_del_Trabajo.pdf
     - http://www.diputados.gob.mx/LeyesBiblio/ref/lft/LFT_orig_01abr70_ima.pdf
     """
 
@@ -43,19 +42,19 @@ class Mexico(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_new_years_day(tr("Año Nuevo"))
 
         if year >= 1917:
-            # Constitution Day.
             self._add_holiday(
+                # Constitution Day.
                 tr("Día de la Constitución"),
-                _get_nth_weekday_of_month(1, MON, FEB, year)
+                self._get_nth_weekday_of_month(1, MON, FEB)
                 if year >= 2006
                 else date(year, FEB, 5),
             )
 
         if year >= 1917:
-            # Benito Juárez's birthday.
             self._add_holiday(
+                # Benito Juárez's birthday.
                 tr("Natalicio de Benito Juárez"),
-                _get_nth_weekday_of_month(3, MON, MAR, year)
+                self._get_nth_weekday_of_month(3, MON, MAR)
                 # no 2006 due to celebration of the 200th anniversary
                 # of Benito Juárez in 2006
                 if year >= 2007 else date(year, MAR, 21),
@@ -69,10 +68,10 @@ class Mexico(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday(tr("Día de la Independencia"), SEP, 16)
 
         if year >= 1917:
-            # Revolution Day.
             self._add_holiday(
+                # Revolution Day.
                 tr("Día de la Revolución"),
-                _get_nth_weekday_of_month(3, MON, NOV, year)
+                self._get_nth_weekday_of_month(3, MON, NOV)
                 if year >= 2006
                 else date(year, NOV, 20),
             )

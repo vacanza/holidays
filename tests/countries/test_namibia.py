@@ -44,12 +44,10 @@ class TestNamibia(TestCase):
                 f"{year}-12-26",
             )
         self.assertNoHolidayName(
-            "Day of the Namibian Women and International Human Rights Day",
-            range(1990, 2005),
+            "Day of the Namibian Women and International Human Rights Day", range(1990, 2005)
         )
         self.assertHolidayName(
-            "International Human Rights Day",
-            (f"{year}-09-10" for year in range(1990, 2005)),
+            "International Human Rights Day", (f"{year}-09-10" for year in range(1990, 2005))
         )
 
     def test_easter(self):

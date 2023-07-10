@@ -1,0 +1,65 @@
+# Estonia holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.28\n"
+"POT-Creation-Date: 2023-06-27 13:17+0300\n"
+"PO-Revision-Date: 2023-06-27 13:39+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: et\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+msgid "uusaasta"
+msgstr ""
+
+#. Independence Day.
+msgid "iseseisvuspäev"
+msgstr ""
+
+#. Good Friday.
+msgid "suur reede"
+msgstr ""
+
+#. Easter Sunday.
+msgid "ülestõusmispühade 1. püha"
+msgstr ""
+
+#. Spring Day.
+msgid "kevadpüha"
+msgstr ""
+
+#. Whit Sunday.
+msgid "nelipühade 1. püha"
+msgstr ""
+
+#. Victory Day.
+msgid "võidupüha"
+msgstr ""
+
+#. Midsummer Day.
+msgid "jaanipäev"
+msgstr ""
+
+#. Independence Restoration Day.
+msgid "taasiseseisvumispäev"
+msgstr ""
+
+#. Christmas Eve.
+msgid "jõululaupäev"
+msgstr ""
+
+#. Christmas Day.
+msgid "esimene jõulupüha"
+msgstr ""
+
+#. Second Day of Christmas.
+msgid "teine jõulupüha"
+msgstr ""

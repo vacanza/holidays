@@ -1,0 +1,81 @@
+# Madagascar holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.28\n"
+"POT-Creation-Date: 2023-06-25 17:39+0300\n"
+"PO-Revision-Date: 2023-06-25 17:40+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: mg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+msgid "Taom-baovao"
+msgstr ""
+
+#. Women's Day.
+msgid "Fetin'ny vehivavy"
+msgstr ""
+
+#. Martyrs' Day.
+msgid "Fetin'ny mahery fo"
+msgstr ""
+
+#. Easter Sunday.
+msgid "Fetin'ny paska"
+msgstr ""
+
+#. Easter Monday.
+msgid "Alatsinain'ny paska"
+msgstr ""
+
+#. Labor Day.
+msgid "Fetin'ny asa"
+msgstr ""
+
+#. Ascension Day.
+msgid "Fiakaran'ny Jesosy kristy tany an-danitra"
+msgstr ""
+
+#. Whit Sunday.
+msgid "Pentekosta"
+msgstr ""
+
+#. Whit Monday.
+msgid "Alatsinain'ny pentekosta"
+msgstr ""
+
+#. Mother's Day.
+msgid "Fetin'ny reny"
+msgstr ""
+
+#. Father's Day.
+msgid "Fetin'ny ray"
+msgstr ""
+
+#. Independence Day.
+msgid "Fetin'ny fahaleovantena"
+msgstr ""
+
+#. Assumption Day.
+msgid "Fiakaran'ny Masina Maria tany an-danitra"
+msgstr ""
+
+#. All Saints' Day.
+msgid "Fetin'ny olo-masina"
+msgstr ""
+
+#. Republic Day.
+msgid "Fetin'ny Repoblika"
+msgstr ""
+
+#. Christmas Day.
+msgid "Fetin'ny noely"
+msgstr ""

@@ -1,0 +1,92 @@
+# Latvia holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.28\n"
+"POT-Creation-Date: 2023-06-27 13:17+0300\n"
+"PO-Revision-Date: 2023-06-27 13:39+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: lv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==0 || (n%100>=11 && n%100<=19) ? 0 : n%10==1 && n%100!=11 ? 1 : 2);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. General Latvian Song and Dance Festival closing day.
+msgid "Vispārējo latviešu Dziesmu un deju svētku noslēguma dienu"
+msgstr ""
+
+#. Day of His Holiness Pope Francis' pastoral visit to Latvia.
+msgid "Viņa Svētības pāvesta Franciska pastorālās vizītes Latvijā diena"
+msgstr ""
+
+#. Day the Latvian hockey team won the bronze medal at the 2023 World Ice
+#. Hockey Championship.
+msgid ""
+"Diena, kad Latvijas hokeja komanda ieguva bronzas medaļu 2023. gada Pasaules"
+" hokeja čempionātā"
+msgstr ""
+
+#, c-format
+msgid "%s (brīvdiena)"
+msgstr ""
+
+#. New Year's Day.
+msgid "Jaunais Gads"
+msgstr ""
+
+#. Good Friday.
+msgid "Lielā Piektdiena"
+msgstr ""
+
+#. Easter.
+msgid "Lieldienas"
+msgstr ""
+
+#. Easter Monday.
+msgid "Otrās Lieldienas"
+msgstr ""
+
+#. Labor Day.
+msgid "Darba svētki"
+msgstr ""
+
+#. Restoration of Independence Day.
+msgid "Latvijas Republikas Neatkarības atjaunošanas diena"
+msgstr ""
+
+#. Mother's Day.
+msgid "Mātes diena"
+msgstr ""
+
+#. Midsummer Day.
+msgid "Jāņu diena"
+msgstr ""
+
+#. Midsummer Eve.
+msgid "Līgo diena"
+msgstr ""
+
+#. Republic of Latvia Proclamation Day.
+msgid "Latvijas Republikas proklamēšanas diena"
+msgstr ""
+
+#. Christmas Eve.
+msgid "Ziemassvētku vakars"
+msgstr ""
+
+#. Christmas Day.
+msgid "Ziemassvētki"
+msgstr ""
+
+#. Second Day of Christmas.
+msgid "Otrie Ziemassvētki"
+msgstr ""
+
+#. New Year's Eve.
+msgid "Vecgada vakars"
+msgstr ""

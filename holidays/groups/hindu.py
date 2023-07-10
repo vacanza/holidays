@@ -25,9 +25,7 @@ class HinduCalendarHolidays:
         self._show_estimated = show_estimated
 
     def _add_hindu_calendar_holiday(
-        self,
-        name: str,
-        hol_date: Tuple[date, bool],
+        self, name: str, hol_date: Tuple[date, bool]
     ) -> Optional[date]:
         """
         Add Hindu calendar holiday.
@@ -66,6 +64,5 @@ class HinduCalendarHolidays:
         https://en.wikipedia.org/wiki/Thaipusam
         """
         return self._add_hindu_calendar_holiday(
-            name,
-            self._hindu_calendar.thaipusam_date(self._year),
+            name, self._hindu_calendar.thaipusam_date(self._year)
         )

@@ -1,0 +1,83 @@
+# Lithuania holidays en_US localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.28\n"
+"POT-Creation-Date: 2023-06-27 13:17+0300\n"
+"PO-Revision-Date: 2023-06-27 13:51+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && (n%100<11 || n%100>19) ? 0 : n%10>=2 && n%10<=9 && (n%100<11 || n%100>19) ? 1 : 2);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+msgid "Naujųjų metų diena"
+msgstr "New Year's Day"
+
+#. Day of Restoration of the State of Lithuania.
+msgid "Lietuvos valstybės atkūrimo diena"
+msgstr "Day of Restoration of the State of Lithuania"
+
+#. Day of Restoration of Independence of Lithuania.
+msgid "Lietuvos nepriklausomybės atkūrimo diena"
+msgstr "Day of Restoration of Independence of Lithuania"
+
+#. Easter.
+msgid "Šv. Velykos"
+msgstr "Easter"
+
+#. Easter Monday.
+msgid "Antroji šv. Velykų diena"
+msgstr "Easter Monday"
+
+#. International Workers' Day.
+msgid "Tarptautinė darbo diena"
+msgstr "International Workers' Day"
+
+#. Day of Dew and Saint John.
+msgid "Rasos ir Joninių diena"
+msgstr "Day of Dew and Saint John"
+
+#. Statehood Day.
+msgid ""
+"Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) ir Tautiškos giesmės "
+"diena"
+msgstr "Statehood Day"
+
+#. Assumption Day.
+msgid "Žolinė (Švč. Mergelės Marijos ėmimo į dangų diena)"
+msgstr "Assumption Day"
+
+#. All Saints' Day.
+msgid "Visų Šventųjų diena"
+msgstr "All Saints' Day"
+
+#. All Souls' Day.
+msgid "Mirusiųjų atminimo (Vėlinių) diena"
+msgstr "All Souls' Day"
+
+#. Christmas Eve.
+msgid "Kūčių diena"
+msgstr "Christmas Eve"
+
+#. Christmas Day.
+msgid "Šv. Kalėdų pirma diena"
+msgstr "Christmas Day"
+
+#. Second Day of Christmas.
+msgid "Šv. Kalėdų antra diena"
+msgstr "Second Day of Christmas"
+
+#. Mother's day. First Sunday in May.
+msgid "Motinos diena"
+msgstr "Mother's Day"
+
+#. Fathers's day. First Sunday in June.
+msgid "Tėvo diena"
+msgstr "Father's Day"

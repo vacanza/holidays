@@ -12,7 +12,7 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.constants import JAN, MAR, MAY, JUL, OCT
+from holidays.calendars.gregorian import JAN, MAR, MAY, JUL, OCT
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -33,8 +33,7 @@ class Malawi(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _add_observed(self, dt: date, days: int = +1) -> None:
         if self.observed and self._is_weekend(dt):
             self._add_holiday(
-                "%s (Observed)" % self[dt],
-                dt + td(+2 if self._is_saturday(dt) else days),
+                "%s (Observed)" % self[dt], dt + td(+2 if self._is_saturday(dt) else days)
             )
 
     def _populate(self, year):

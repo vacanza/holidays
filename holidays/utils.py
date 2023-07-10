@@ -21,7 +21,7 @@ __all__ = (
 
 import warnings
 from functools import lru_cache
-from typing import Dict, Iterable, List, Optional, Union
+from typing import Dict, Iterable, List, Optional, Tuple, Union
 
 from holidays.exceptions import CountryDoesNotExist, FinancialDoesNotExist
 from holidays.holiday_base import HolidayBase
@@ -37,6 +37,7 @@ def country_holidays(
     prov: Optional[str] = None,
     state: Optional[str] = None,
     language: Optional[str] = None,
+    categories: Optional[Tuple[str]] = None,
 ) -> HolidayBase:
     """
     Returns a new dictionary-like :py:class:`HolidayBase` object for the public
@@ -72,6 +73,9 @@ def country_holidays(
         into. It must be an ISO 639-1 (2-letter) language code. If the
         language translation is not supported the original holiday names
         will be used.
+
+    :param categories:
+        Requested holiday categories.
 
     :return:
         A :py:class:`HolidayBase` object matching the **country**.
@@ -193,6 +197,7 @@ def country_holidays(
         prov=prov,
         state=state,
         language=language,
+        categories=categories,
     )
 
 
@@ -276,15 +281,12 @@ def CountryHoliday(
     """
 
     warnings.warn(
-        "CountryHoliday is deprecated, use country_holidays instead.",
-        DeprecationWarning,
+        "CountryHoliday is deprecated, use country_holidays instead.", DeprecationWarning
     )
     return country_holidays(country, subdiv, years, expand, observed, prov, state)
 
 
-def _list_localized_entities(
-    entity_codes: Iterable[str],
-) -> Dict[str, List[str]]:
+def _list_localized_entities(entity_codes: Iterable[str]) -> Dict[str, List[str]]:
     """
     Get all localized entities and languages they support.
 
@@ -341,9 +343,7 @@ def list_localized_financial(include_aliases=True) -> Dict[str, List[str]]:
     return _list_localized_entities(EntityLoader.get_financial_codes(include_aliases))
 
 
-def _list_supported_entities(
-    entity_codes: Iterable[str],
-) -> Dict[str, List[str]]:
+def _list_supported_entities(entity_codes: Iterable[str]) -> Dict[str, List[str]]:
     """
     Get all supported entities and their subdivisions.
 

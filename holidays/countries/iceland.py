@@ -9,11 +9,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
-from holidays.constants import APR, JUN, AUG, MON, THU
+from holidays.calendars.gregorian import APR, JUN, AUG, MON, THU
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -51,11 +49,8 @@ class Iceland(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Easter Monday.
         self._add_easter_monday(tr("Annar í páskum"))
 
-        self._add_holiday(
-            # First Day of Summer.
-            tr("Sumardagurinn fyrsti"),
-            _get_nth_weekday_from(1, THU, date(year, APR, 19)),
-        )
+        # First Day of Summer.
+        self._add_holiday(tr("Sumardagurinn fyrsti"), self._get_nth_weekday_from(1, THU, APR, 19))
 
         # Labor Day.
         self._add_labor_day(tr("Verkalýðsdagurinn"))
@@ -75,7 +70,7 @@ class Iceland(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday(
             # Commerce Day.
             tr("Frídagur verslunarmanna"),
-            _get_nth_weekday_of_month(1, MON, AUG, year),
+            self._get_nth_weekday_of_month(1, MON, AUG),
         )
 
         # Christmas Eve.

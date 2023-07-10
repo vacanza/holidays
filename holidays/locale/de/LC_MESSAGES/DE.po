@@ -16,114 +16,85 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/germany.py:92
 msgid "Neujahr"
 msgstr ""
 
 #. Good Friday.
-#: ./holidays/countries/germany.py:95
 msgid "Karfreitag"
 msgstr ""
 
 #. Easter Monday.
-#: ./holidays/countries/germany.py:98
 msgid "Ostermontag"
 msgstr ""
 
 #. Labor Day.
-#: ./holidays/countries/germany.py:101
 msgid "Erster Mai"
 msgstr ""
 
 #. Ascension Day.
-#: ./holidays/countries/germany.py:104
 msgid "Christi Himmelfahrt"
 msgstr ""
 
 #. Whit Monday.
-#: ./holidays/countries/germany.py:107
 msgid "Pfingstmontag"
 msgstr ""
 
 #. German Unity Day.
-#: ./holidays/countries/germany.py:110
 msgid "Tag der Deutschen Einheit"
 msgstr ""
 
 #. Reformation Day.
-#: ./holidays/countries/germany.py:114 ./holidays/countries/germany.py:139
-#: ./holidays/countries/germany.py:188 ./holidays/countries/germany.py:196
-#: ./holidays/countries/germany.py:203 ./holidays/countries/germany.py:207
-#: ./holidays/countries/germany.py:223 ./holidays/countries/germany.py:234
-#: ./holidays/countries/germany.py:248 ./holidays/countries/germany.py:256
 msgid "Reformationstag"
 msgstr ""
 
 #. Repentance and Prayer Day.
-#: ./holidays/countries/germany.py:120 ./holidays/countries/germany.py:239
+#. last wednesday before year-11-23
 msgid "Buß- und Bettag"
 msgstr ""
 
 #. Christmas Day.
-#: ./holidays/countries/germany.py:125
 msgid "Erster Weihnachtstag"
 msgstr ""
 
 #. Second Day of Christmas.
-#: ./holidays/countries/germany.py:128
 msgid "Zweiter Weihnachtstag"
 msgstr ""
 
 #. Easter Sunday.
-#: ./holidays/countries/germany.py:133
 msgid "Ostersonntag"
 msgstr ""
 
 #. Whit Sunday.
-#: ./holidays/countries/germany.py:136
 msgid "Pfingstsonntag"
 msgstr ""
 
 #. International Women's Day.
-#: ./holidays/countries/germany.py:144 ./holidays/countries/germany.py:200
 msgid "Internationaler Frauentag"
 msgstr ""
 
 #. 75th anniversary of the liberation from Nazism and the end of the Second
 #. World War in Europe.
-#: ./holidays/countries/germany.py:150
 msgid ""
 "75. Jahrestag der Befreiung vom Nationalsozialismus und der Beendigung des "
 "Zweiten Weltkriegs in Europa"
 msgstr ""
 
 #. Epiphany.
-#: ./holidays/countries/germany.py:161 ./holidays/countries/germany.py:171
-#: ./holidays/countries/germany.py:181 ./holidays/countries/germany.py:245
 msgid "Heilige Drei Könige"
 msgstr ""
 
 #. Corpus Christi.
-#: ./holidays/countries/germany.py:164 ./holidays/countries/germany.py:172
-#: ./holidays/countries/germany.py:182 ./holidays/countries/germany.py:192
-#: ./holidays/countries/germany.py:211 ./holidays/countries/germany.py:217
-#: ./holidays/countries/germany.py:227
 msgid "Fronleichnam"
 msgstr ""
 
 #. All Saints' Day.
-#: ./holidays/countries/germany.py:167 ./holidays/countries/germany.py:177
-#: ./holidays/countries/germany.py:184 ./holidays/countries/germany.py:213
-#: ./holidays/countries/germany.py:219 ./holidays/countries/germany.py:230
 msgid "Allerheiligen"
 msgstr ""
 
 #. Assumption Day.
-#: ./holidays/countries/germany.py:175 ./holidays/countries/germany.py:228
 msgid "Mariä Himmelfahrt"
 msgstr ""
 
 #. World Children's Day.
-#: ./holidays/countries/germany.py:253
 msgid "Weltkindertag"
 msgstr ""

@@ -1,0 +1,101 @@
+# Bosnia and Herzegovina holidays sr localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.28\n"
+"POT-Creation-Date: 2023-06-26 18:31+0300\n"
+"PO-Revision-Date: 2023-06-26 18:46+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: sr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#, c-format
+msgid "%s (preneseno)"
+msgstr "%s (пренешено)"
+
+#. Orthodox Good Friday.
+msgid "Veliki petak (Pravoslavni)"
+msgstr "Велики петак (Православни)"
+
+#. Catholic Easter Monday.
+msgid "Uskrsni ponedjeljak (Katolički)"
+msgstr "Ускршњи понедељак (Католички)"
+
+#. Eid al-Fitr.
+msgid "Ramazanski Bajram"
+msgstr "Рамазански Бајрам"
+
+#. Eid al-Adha.
+msgid "Kurban Bajram"
+msgstr "Курбан Бајрам"
+
+#. New Year's Day.
+msgid "Nova godina"
+msgstr "Нова година"
+
+#. Orthodox Christmas.
+msgid "Božić (Pravoslavni)"
+msgstr "Божић (Православни)"
+
+#. Labor Day.
+msgid "Međunarodni praznik rada"
+msgstr "Међународни празник рада"
+
+#. Catholic Christmas.
+msgid "Božić (Katolički)"
+msgstr "Божић (Католички)"
+
+#. Orthodox Christmas Eve.
+msgid "Badnji dan (Pravoslavni)"
+msgstr "Бадњи дан (Православни)"
+
+#. Independence Day.
+msgid "Dan nezavisnosti"
+msgstr "Дан независности"
+
+#. Catholic Good Friday.
+msgid "Veliki petak (Katolički)"
+msgstr "Велики петак (Католички)"
+
+#. Catholic Easter.
+msgid "Uskrs (Katolički)"
+msgstr "Ускрс (Католички)"
+
+#. Orthodox Easter.
+msgid "Vaskrs (Pravoslavni)"
+msgstr "Васкрс (Православни)"
+
+#. Orthodox Easter Monday.
+msgid "Uskrsni ponedjeljak (Pravoslavni)"
+msgstr "Ускршњи понедељак (Православни)"
+
+#. Victory Day.
+msgid "Dan pobjede nad fašizmom"
+msgstr "Дан побједе над фашизмом"
+
+#. Statehood Day.
+msgid "Dan državnosti"
+msgstr "Дан државности"
+
+#. Catholic Christmas Eve.
+msgid "Badnji dan (Katolički)"
+msgstr "Бадњи дан (Католички)"
+
+#. Day of establishment of Brčko District.
+msgid "Dan uspostavljanja Brčko distrikta"
+msgstr "Дан успостављања Брчко дистрикта"
+
+#. Orthodox New Year.
+msgid "Pravoslavna Nova godina"
+msgstr "Православна Нова година"
+
+#. Dayton Agreement Day.
+msgid "Dan uspostave Opšteg okvirnog sporazuma za mir u Bosni i Hercegovini"
+msgstr "Дан успоставе Општег оквирног споразума за мир у Босни и Херцеговини"

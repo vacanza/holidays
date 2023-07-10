@@ -13,8 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 from typing import Tuple, Union
 
-from holidays.calendars import _get_nth_weekday_of_month
-from holidays.constants import MAR, APR, MAY, JUN, JUL, AUG, SEP, NOV, DEC, MON
+from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, NOV, DEC, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -60,8 +59,7 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _add_observed(self, dt: date, days: int = +1) -> None:
         if self.observed and self._is_weekend(dt):
             self._add_holiday(
-                "%s (Observed)" % self[dt],
-                dt + td(days=+2 if self._is_saturday(dt) else days),
+                "%s (Observed)" % self[dt], dt + td(days=+2 if self._is_saturday(dt) else days)
             )
 
     def _populate(self, year: int) -> None:
@@ -76,7 +74,7 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
                 date(year, MAY, 8)
                 # In 2020 moved to Friday to mark 75th anniversary of VE Day.
                 if year in {1995, 2020}
-                else _get_nth_weekday_of_month(1, MON, MAY, year)
+                else self._get_nth_weekday_of_month(1, MON, MAY)
             )
             self._add_holiday("May Day", dt)
 
@@ -87,14 +85,8 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
                 2012: date(year, JUN, 4),
                 2022: date(year, JUN, 2),
             }
-            dt = spring_bank_dates.get(year, _get_nth_weekday_of_month(-1, MON, MAY, year))
+            dt = spring_bank_dates.get(year, self._get_nth_weekday_of_month(-1, MON, MAY))
             self._add_holiday("Spring Bank Holiday", dt)
-
-        # Christmas Day
-        self._add_observed(self._add_christmas_day("Christmas Day"), days=+2)
-
-        # Boxing Day
-        self._add_observed(self._add_christmas_day_two("Boxing Day"), days=+2)
 
         if self.subdiv == "England":
             self._add_subdiv_eng_holidays()
@@ -108,8 +100,14 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _add_subdiv_holidays(self):
         if self.subdiv not in {"SCT", "Scotland"}:
             # New Year's Day
-            if self._year >= 1974:
+            if self._year >= 1975:
                 self._add_observed(self._add_new_years_day("New Year's Day"))
+
+            # Christmas Day
+            self._add_observed(self._add_christmas_day("Christmas Day"), days=+2)
+
+            # Boxing Day
+            self._add_observed(self._add_christmas_day_two("Boxing Day"), days=+2)
 
         super()._add_subdiv_holidays()
 
@@ -120,13 +118,13 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Late Summer bank holiday (last Monday in August)
         if self._year >= 1971:
             self._add_holiday(
-                "Late Summer Bank Holiday",
-                _get_nth_weekday_of_month(-1, MON, AUG, self._year),
+                "Late Summer Bank Holiday", self._get_nth_weekday_of_month(-1, MON, AUG)
             )
 
     def _add_subdiv_nir_holidays(self):
-        # St. Patrick's Day
-        self._add_observed(self._add_holiday("St. Patrick's Day", MAR, 17))
+        if self._year >= 1903:
+            # St. Patrick's Day
+            self._add_observed(self._add_holiday("St. Patrick's Day", MAR, 17))
 
         # Easter Monday
         self._add_easter_monday("Easter Monday")
@@ -137,8 +135,7 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Late Summer bank holiday (last Monday in August)
         if self._year >= 1971:
             self._add_holiday(
-                "Late Summer Bank Holiday",
-                _get_nth_weekday_of_month(-1, MON, AUG, self._year),
+                "Late Summer Bank Holiday", self._get_nth_weekday_of_month(-1, MON, AUG)
             )
 
     def _add_subdiv_sct_holidays(self):
@@ -147,8 +144,7 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
         jan_1 = self._add_new_years_day(name)
         if self.observed and self._is_weekend(jan_1):
             self._add_holiday(
-                "%s (Observed)" % name,
-                jan_1 + td(days=+3 if self._is_saturday(jan_1) else +1),
+                "%s (Observed)" % name, jan_1 + td(days=+3 if self._is_saturday(jan_1) else +1)
             )
 
         # New Year Holiday
@@ -159,13 +155,20 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_new_years_day_three("%s (Observed)" % name)
 
         # Summer bank holiday (first Monday in August)
-        self._add_holiday(
-            "Summer Bank Holiday",
-            _get_nth_weekday_of_month(1, MON, AUG, self._year),
+        self._add_holiday("Summer Bank Holiday", self._get_nth_weekday_of_month(1, MON, AUG))
+
+        if self._year >= 2006:
+            # St. Andrew's Day
+            self._add_holiday("St. Andrew's Day", NOV, 30)
+
+        # Christmas Day
+        self._add_observed(
+            self._add_christmas_day("Christmas Day"), days=+2 if self._year >= 1974 else +1
         )
 
-        # St. Andrew's Day
-        self._add_holiday("St. Andrew's Day", NOV, 30)
+        if self._year >= 1974:
+            # Boxing Day
+            self._add_observed(self._add_christmas_day_two("Boxing Day"), days=+2)
 
     def _add_subdiv_wls_holidays(self):
         # Easter Monday
@@ -174,8 +177,7 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Late Summer bank holiday (last Monday in August)
         if self._year >= 1971:
             self._add_holiday(
-                "Late Summer Bank Holiday",
-                _get_nth_weekday_of_month(-1, MON, AUG, self._year),
+                "Late Summer Bank Holiday", self._get_nth_weekday_of_month(-1, MON, AUG)
             )
 
 

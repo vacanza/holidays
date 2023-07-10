@@ -10,7 +10,6 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.countries.japan import Japan, JP, JPN
-from holidays.exceptions import YearOutOfRangeError
 from tests.common import TestCase
 
 
@@ -24,7 +23,7 @@ class TestJapan(TestCase):
 
     def test_year_out_of_range(self):
         for year in (1948, 2100):
-            with self.assertRaises(YearOutOfRangeError):
+            with self.assertRaises(NotImplementedError):
                 Japan(years=year)
 
     def test_new_years_day(self):

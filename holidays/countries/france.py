@@ -12,7 +12,7 @@
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.constants import MAR, APR, MAY, JUN, JUL, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -160,10 +160,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_good_friday(tr("Vendredi saint"))
 
         # Mi-Careme.
-        self._add_holiday(
-            tr("Mi-Carême"),
-            self._easter_sunday + td(days=-24),
-        )
+        self._add_holiday(tr("Mi-Carême"), self._easter_sunday + td(days=-24))
 
         # Abolition of slavery.
         self._add_holiday(tr("Abolition de l'esclavage"), MAY, 27)

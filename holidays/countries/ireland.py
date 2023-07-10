@@ -12,14 +12,12 @@
 from datetime import date
 from datetime import timedelta as td
 
-from dateutil.easter import easter
-
-from holidays.calendars import _get_nth_weekday_from, _get_nth_weekday_of_month
-from holidays.constants import JAN, FEB, MAR, MAY, JUN, AUG, OCT, DEC, MON
+from holidays.calendars.gregorian import FEB, MAR, MAY, JUN, AUG, OCT, MON
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Ireland(HolidayBase):
+class Ireland(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     Official holidays in Ireland, as declared in the Citizen's Information
     bulletin:
@@ -27,61 +25,64 @@ class Ireland(HolidayBase):
     """
 
     country = "IE"
-    special_holidays = {2022: (MAR, 18, "Day of Remembrance and Recognition")}
+    special_holidays = {
+        2022: (MAR, 18, "Day of Remembrance and Recognition"),
+    }
+
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
+    def _add_observed(self, dt: date, days: int = +1) -> None:
+        if self.observed and self._is_weekend(dt):
+            self._add_holiday(
+                "%s (Observed)" % self[dt], dt + td(days=+2 if self._is_saturday(dt) else days)
+            )
 
     def _populate(self, year):
         super()._populate(year)
 
-        self[date(year, JAN, 1)] = "New Year's Day"
+        # New Year's Day.
+        self._add_new_years_day("New Year's Day")
 
-        # St. Brigid's Day
+        # St. Brigid's Day.
         if year >= 2023:
             dt = date(year, FEB, 1)
-            self[
-                dt if self._is_friday(dt) else _get_nth_weekday_from(1, MON, dt)
-            ] = "St. Brigid's Day"
+            self._add_holiday(
+                "St. Brigid's Day",
+                dt if self._is_friday(dt) else self._get_nth_weekday_from(1, MON, dt),
+            )
 
-        # St. Patrick's Day
-        name = "St. Patrick's Day"
-        dt = date(year, MAR, 17)
-        self[dt] = name
-        if self.observed and self._is_weekend(dt):
-            self[_get_nth_weekday_from(1, MON, dt)] = name + " (Observed)"
+        # St. Patrick's Day.
+        self._add_observed(self._add_holiday("St. Patrick's Day", MAR, 17))
 
-        # Easter Monday
-        self[easter(year) + td(days=+1)] = "Easter Monday"
+        # Easter Monday.
+        self._add_easter_monday("Easter Monday")
 
-        # May bank holiday (first Monday in May)
+        # May Day.
         if year >= 1978:
-            name = "May Day"
-            if year == 1995:
-                dt = date(year, MAY, 8)
-            else:
-                dt = _get_nth_weekday_of_month(1, MON, MAY, year)
-            self[dt] = name
+            self._add_holiday(
+                "May Day",
+                date(year, MAY, 8)
+                if year == 1995
+                else self._get_nth_weekday_of_month(1, MON, MAY),
+            )
 
-        # June bank holiday (first Monday in June)
-        self[_get_nth_weekday_of_month(1, MON, JUN, year)] = "June Bank Holiday"
+        # June Bank holiday.
+        self._add_holiday("June Bank Holiday", self._get_nth_weekday_of_month(1, MON, JUN))
 
-        # Summer bank holiday (first Monday in August)
-        self[_get_nth_weekday_of_month(1, MON, AUG, year)] = "August Bank Holiday"
+        # Summer Bank holiday.
+        self._add_holiday("August Bank Holiday", self._get_nth_weekday_of_month(1, MON, AUG))
 
-        # October Bank Holiday (last Monday in October)
-        self[_get_nth_weekday_of_month(-1, MON, OCT, year)] = "October Bank Holiday"
+        # October Bank Holiday.
+        self._add_holiday("October Bank Holiday", self._get_nth_weekday_of_month(-1, MON, OCT))
 
-        # Christmas Day
-        name = "Christmas Day"
-        dt = date(year, DEC, 25)
-        self[dt] = name
-        if self.observed and self._is_weekend(dt):
-            self[_get_nth_weekday_from(1, MON, dt)] = name + " (Observed)"
+        # Christmas Day.
+        self._add_observed(self._add_christmas_day("Christmas Day"))
 
-        # St. Stephen's Day
-        name = "St. Stephen's Day"
-        dt = date(year, DEC, 26)
-        self[dt] = name
-        if self.observed and self._is_weekend(dt):
-            self[dt + td(days=+2)] = name + " (Observed)"
+        # St. Stephen's Day.
+        self._add_observed(self._add_christmas_day_two("St. Stephen's Day"), days=+2)
 
 
 class IE(Ireland):

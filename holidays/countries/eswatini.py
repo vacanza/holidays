@@ -13,7 +13,7 @@ import warnings
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.constants import JAN, APR, JUL, SEP, DEC
+from holidays.calendars.gregorian import JAN, APR, JUL, SEP, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -79,10 +79,7 @@ class Eswatini(HolidayBase, ChristianHolidays, InternationalHolidays):
 
 class Swaziland(Eswatini):
     def __init__(self, *args, **kwargs) -> None:
-        warnings.warn(
-            "Swaziland is deprecated, use Eswatini instead.",
-            DeprecationWarning,
-        )
+        warnings.warn("Swaziland is deprecated, use Eswatini instead.", DeprecationWarning)
 
         super().__init__(*args, **kwargs)
 

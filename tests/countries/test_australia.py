@@ -312,8 +312,7 @@ class TestAU(unittest.TestCase):
             self.assertEqual(qld_holidays[dt], holiday_name)
 
         self.assertEqual(
-            1,
-            len(holidays.Australia(subdiv="QLD", years=2020).get_named(holiday_name)),
+            1, len(holidays.Australia(subdiv="QLD", years=2020).get_named(holiday_name))
         )
 
     def test_christmas_day(self):

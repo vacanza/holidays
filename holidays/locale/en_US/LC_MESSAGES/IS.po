@@ -17,81 +17,65 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/iceland.py:40
 msgid "Nýársdagur"
 msgstr "New Year's Day"
 
 #. Maundy Thursday.
-#: ./holidays/countries/iceland.py:43
 msgid "Skírdagur"
 msgstr "Maundy Thursday"
 
 #. Good Friday.
-#: ./holidays/countries/iceland.py:46
 msgid "Föstudagurinn langi"
 msgstr "Good Friday"
 
 #. Easter Sunday.
-#: ./holidays/countries/iceland.py:49
 msgid "Páskadagur"
 msgstr "Easter Sunday"
 
 #. Easter Monday.
-#: ./holidays/countries/iceland.py:52
 msgid "Annar í páskum"
 msgstr "Easter Monday"
 
 #. First Day of Summer.
-#: ./holidays/countries/iceland.py:56
 msgid "Sumardagurinn fyrsti"
 msgstr "First Day of Summer"
 
 #. Labor Day.
-#: ./holidays/countries/iceland.py:61
 msgid "Verkalýðsdagurinn"
 msgstr "Labor Day"
 
 #. Ascension Day.
-#: ./holidays/countries/iceland.py:64
 msgid "Uppstigningardagur"
 msgstr "Ascension Day"
 
 #. Whit Sunday.
-#: ./holidays/countries/iceland.py:67
 msgid "Hvítasunnudagur"
 msgstr "Whit Sunday"
 
 #. Whit Monday.
-#: ./holidays/countries/iceland.py:70
 msgid "Annar í hvítasunnu"
 msgstr "Whit Monday"
 
 #. National Day.
-#: ./holidays/countries/iceland.py:73
 msgid "Þjóðhátíðardagurinn"
 msgstr "National Day"
 
 #. Commerce Day.
-#: ./holidays/countries/iceland.py:77
 msgid "Frídagur verslunarmanna"
 msgstr "Commerce Day"
 
 #. Christmas Eve.
-#: ./holidays/countries/iceland.py:82
 msgid "Aðfangadagur"
 msgstr "Christmas Eve"
 
 #. Christmas Day.
-#: ./holidays/countries/iceland.py:85
 msgid "Jóladagur"
 msgstr "Christmas Day"
 
 #. Second Day of Christmas.
-#: ./holidays/countries/iceland.py:88
 msgid "Annar í jólum"
 msgstr "Second Day of Christmas"
 
 #. New Year's Eve.
-#: ./holidays/countries/iceland.py:91
 msgid "Gamlársdagur"
 msgstr "New Year's Eve"

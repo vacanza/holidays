@@ -1,0 +1,72 @@
+# Malta holidays en_MT localization.
+# Authors: PPsyrius <ppsyrius@ppsyrius.dev>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.28\n"
+"POT-Creation-Date: 2023-06-27 19:10+0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: PPsyrius <ppsyrius@ppsyrius.dev>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: en_MT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.3.2\n"
+
+#. New Year's Day
+msgid "L-Ewwel tas-Sena"
+msgstr "New Year's Day"
+
+#. Feast of St. Paul's Shipwreck
+msgid "Il-Festa tan-Nawfraġju ta' San Pawl"
+msgstr "Feast of St. Paul's Shipwreck"
+
+#. Feast of St. Joseph
+msgid "Il-Festa ta' San Ġużepp"
+msgstr "Feast of St. Joseph"
+
+#. Freedom Day
+msgid "Jum il-Ħelsien"
+msgstr "Freedom Day"
+
+#. Good Friday
+msgid "Il-Ġimgħa l-Kbira"
+msgstr "Good Friday"
+
+#. Worker's Day
+msgid "Jum il-Ħaddiem"
+msgstr "Worker's Day"
+
+#. Sette Giugno
+msgid "Sette Giugno"
+msgstr "Sette Giugno"
+
+#. Feast of St. Peter and St. Paul
+msgid "Il-Festa ta' San Pietru u San Pawl"
+msgstr "Feast of St. Peter and St. Paul"
+
+#. Feast of the Assumption
+msgid "Il-Festa ta' Santa Marija"
+msgstr "Feast of the Assumption"
+
+#. Feast of Our Lady of Victories
+msgid "Jum il-Vitorja"
+msgstr "Feast of Our Lady of Victories"
+
+#. Independence Day
+msgid "Jum l-Indipendenza"
+msgstr "Independence Day"
+
+#. Feast of the Immaculate Conception
+msgid "Il-Festa tal-Immakulata Kunċizzjoni"
+msgstr "Feast of the Immaculate Conception"
+
+#. Republic Day
+msgid "Jum ir-Repubblika"
+msgstr "Republic Day"
+
+#. Christmas Day
+msgid "Il-Milied"
+msgstr "Christmas Day"

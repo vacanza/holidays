@@ -13,7 +13,6 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.calendars import _HebrewLunisolar
-from holidays.exceptions import YearOutOfRangeError
 from holidays.holiday_base import HolidayBase
 
 
@@ -25,8 +24,11 @@ class Israel(HolidayBase):
         self._add_holiday(name, dt)
 
     def _populate(self, year):
-        if year < 1948 or year > 2100:
-            raise YearOutOfRangeError("Year must be in 1948 - 2100 range.")
+        if year <= 1947:
+            return None
+
+        if year >= 2101:
+            raise NotImplementedError
 
         super()._populate(year)
 
@@ -50,20 +52,14 @@ class Israel(HolidayBase):
 
         name = "Memorial Day"
         if observed_delta != 0:
-            self._add_holiday(
-                f"{name} (Observed)",
-                memorial_day_dt + td(days=observed_delta),
-            )
+            self._add_holiday(f"{name} (Observed)", memorial_day_dt + td(days=observed_delta))
         else:
             self._add_holiday(name, memorial_day_dt)
 
         # Independence Day
         name = "Independence Day"
         if self.observed and observed_delta != 0:
-            self._add_holiday(
-                f"{name} (Observed)",
-                memorial_day_dt + td(days=observed_delta + 1),
-            )
+            self._add_holiday(f"{name} (Observed)", memorial_day_dt + td(days=observed_delta + 1))
         else:
             self._add_holiday(name, memorial_day_dt + td(days=+1))
 

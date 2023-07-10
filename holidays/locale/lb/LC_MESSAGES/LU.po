@@ -1,0 +1,61 @@
+# Luxembourg holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.28\n"
+"POT-Creation-Date: 2023-06-27 13:17+0300\n"
+"PO-Revision-Date: 2023-06-27 13:40+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: lb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+msgid "Neijoerschdag"
+msgstr ""
+
+#. Easter Monday.
+msgid "Ouschterméindeg"
+msgstr ""
+
+#. Labor Day.
+msgid "Dag vun der Aarbecht"
+msgstr ""
+
+#. Europe Day.
+msgid "Europadag"
+msgstr ""
+
+#. Ascension Day.
+msgid "Christi Himmelfaart"
+msgstr ""
+
+#. Whit Monday.
+msgid "Péngschtméindeg"
+msgstr ""
+
+#. National Day.
+msgid "Nationalfeierdag"
+msgstr ""
+
+#. Assumption Day.
+msgid "Léiffrawëschdag"
+msgstr ""
+
+#. All Saints' Day.
+msgid "Allerhellgen"
+msgstr ""
+
+#. Christmas Day.
+msgid "Chrëschtdag"
+msgstr ""
+
+#. St. Stephen's Day.
+msgid "Stiefesdag"
+msgstr ""

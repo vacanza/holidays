@@ -15,7 +15,7 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.calendars import _CustomChineseCalendar
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, SAT, SUN
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, SAT, SUN
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import (
     ChineseCalendarHolidays,
@@ -24,12 +24,7 @@ from holidays.holiday_groups import (
 )
 
 
-class SouthKorea(
-    HolidayBase,
-    ChineseCalendarHolidays,
-    ChristianHolidays,
-    InternationalHolidays,
-):
+class SouthKorea(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, InternationalHolidays):
     """
     1. https://publicholidays.co.kr/ko/2020-dates/
     2. https://en.wikipedia.org/wiki/Public_holidays_in_South_Korea
@@ -48,7 +43,7 @@ class SouthKorea(
     special_holidays = {
         # Just for year 2020 - since 2020.08.15 is Sat, the government
         # decided to make 2020.08.17 holiday, yay
-        2020: ((AUG, 17, "Alternative public holiday"),)
+        2020: (AUG, 17, "Alternative public holiday"),
     }
 
     def __init__(self, *args, **kwargs):
@@ -120,11 +115,7 @@ class SouthKorea(
 
         for delta in (-1, 0, +1):
             self._add_with_alt_holiday(
-                name,
-                new_year_date + td(days=delta),
-                add_hol=False,
-                since=2015,
-                include_sat=False,
+                name, new_year_date + td(days=delta), add_hol=False, since=2015, include_sat=False
             )
 
         # Independence Movement Day
@@ -138,10 +129,7 @@ class SouthKorea(
         # Birthday of the Buddha
         name = "Birthday of the Buddha"
         self._add_with_alt_holiday(
-            name,
-            self._add_chinese_birthday_of_buddha(name),
-            add_hol=False,
-            since=2023,
+            name, self._add_chinese_birthday_of_buddha(name), add_hol=False, since=2023
         )
 
         # Children's Day
@@ -174,11 +162,7 @@ class SouthKorea(
 
         for delta in (-1, 0, +1):
             self._add_with_alt_holiday(
-                name,
-                chuseok_date + td(days=delta),
-                add_hol=False,
-                since=2014,
-                include_sat=False,
+                name, chuseok_date + td(days=delta), add_hol=False, since=2014, include_sat=False
             )
 
         # National Foundation Day
@@ -195,10 +179,7 @@ class SouthKorea(
 
 class Korea(SouthKorea):
     def __init__(self, *args, **kwargs) -> None:
-        warnings.warn(
-            "Korea is deprecated, use SouthKorea instead.",
-            DeprecationWarning,
-        )
+        warnings.warn("Korea is deprecated, use SouthKorea instead.", DeprecationWarning)
 
         super().__init__(*args, **kwargs)
 

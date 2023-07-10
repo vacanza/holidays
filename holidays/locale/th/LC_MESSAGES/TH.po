@@ -14,171 +14,169 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: ./holidays/countries/thailand.py:117
+#. Special In Lieu Holiday.
 msgid "วันหยุดชดเชย"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:118
+#. Thai Election Day.
 msgid "วันเลือกตั้ง"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:279 ./holidays/countries/thailand.py:303
-#: ./holidays/countries/thailand.py:353 ./holidays/countries/thailand.py:592
-#: ./holidays/countries/thailand.py:597
-#, c-format
-msgid "ชดเชย%s"
+#. Thai Election Day (in lieu).
+msgid "ชดเชยวันเลือกตั้ง"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:120
+#. Bridge Public Holiday.
 msgid "วันหยุดพิเศษ (เพิ่มเติม)"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:124
+#. HM King Bhumibol Adulyadej's Golden Jubilee.
 msgid "พระราชพิธีกาญจนาภิเษก พ.ศ. 2539"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:125
+#. HM King Bhumibol Adulyadej's 60th Anniversary of Accession Event.
 msgid "พระราชพิธีฉลองสิริราชสมบัติครบ 60 ปี พ.ศ. 2549"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:126
+#. Emergency Lockdown (Thai Military Coup d'état).
 msgid "วันหยุดพิเศษ (คมช.)"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:127
+#. Emergency Lockdown (Thai Political Unrest).
 msgid "วันหยุดพิเศษ (การเมือง)"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:128
+#. Emergency Lockdown (2011 Thailand Floods).
 msgid "วันหยุดพิเศษ (มหาอุทกภัย พ.ศ. 2554)"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:129
+#. Day of Mourning for HM King Bhumibol Adulyadej.
 msgid "วันหยุดพิเศษ (ร่วมถวายอาลัย ส่งดวงพระวิญญาณพระบรมศพ)"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:130
+#. HM King Bhumibol Adulyadej's Royal Cremation Ceremony.
 msgid ""
 "วันพระราชพิธีถวายพระเพลิงพระบรมศพพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:133
+#. HM King Maha Vajiralongkorn's Coronation Celebrations.
 msgid "พระราชพิธีบรมราชาภิเษก พระบาทสมเด็จพระวชิรเกล้าเจ้าอยู่หัว"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:334
-msgid "วันสงกรานต์"
+#. Songkran Festival (in lieu).
+msgid "ชดเชยวันสงกรานต์"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:291
+#. %s (in lieu)
+#, c-format
+msgid "ชดเชย%s"
+msgstr ""
+
+#. New Year's Day.
 msgid "วันขึ้นปีใหม่"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:303 ./holidays/countries/thailand.py:540
+#. New Year's Eve.
 msgid "วันสิ้นปี"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:317
+#. Chakri Memorial Day.
 msgid "วันจักรี"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:370
+#. Songkran Festival.
+msgid "วันสงกรานต์"
+msgstr ""
+
+#. National Labour day.
 msgid "วันแรงงานแห่งชาติ"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:379
+#. National Day.
 msgid "วันชาติ"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:387
+#. Coronation Day.
 msgid "วันฉัตรมงคล"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:402
+#. HM Queen Suthida's Birthday.
 msgid ""
 "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสุทิดา พัชรสุธาพิมลลักษณ พระบรมราชินี"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:419
+#. HM King Maha Vajiralongkorn's Birthday.
 msgid ""
 "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรเมนทรรามาธิบดีศรีสินทรมหาวชิราลงกรณ "
 "พระวชิรเกล้าเจ้าอยู่หัว"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:441
+#. HM Queen Sirikit's Birthday.
 msgid "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถ"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:439
+#. HM Queen Sirikit the Queen Mother's Birthday.
 msgid "วันเฉลิมพระชนมพรรษาสมเด็จพระบรมราชชนนีพันปีหลวง"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:453
+#. National Mother's Day.
 msgid "วันแม่แห่งชาติ"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:473
+#. Anniversary for the Death of King Bhumibol Adulyadej.
 msgid "วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:468
+#. Anniversary for the Death of King Bhumibol Adulyadej the Great.
 msgid ""
 "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร มหาภูมิพลอดุลยเดชมหาราช "
 "บรมนาถบพิตร"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:483
+#. HM King Chulalongkorn Memorial Day.
 msgid "วันปิยมหาราช"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:506
+#. HM King Bhumibol Adulyadej Birthday Anniversary.
 msgid "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:501
+#. HM King Bhumibol Adulyadej Birthday Anniversary.
 msgid ""
 "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช "
 "บรมนาถบพิตร"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:495
+#. HM King Bhumibol Adulyadej's the Great's Birthday Anniversary.
 msgid ""
 "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรมชนกาธิเบศร "
 "มหาภูมิพลอดุลยเดชมหาราช บรมนาถบพิตร"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:521
+#. National Father's Day.
 msgid "วันพ่อแห่งชาติ"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:530
+#. Constitution Day.
 msgid "วันรัฐธรรมนูญ"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:550
+#. Makha Bucha.
 msgid "วันมาฆบูชา"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:558
+#. Visakha Bucha.
 msgid "วันวิสาขบูชา"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:567 ./holidays/countries/thailand.py:597
+#. Asarnha Bucha.
 msgid "วันอาสาฬหบูชา"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:574 ./holidays/countries/thailand.py:592
+#. Buddhist Lent Day.
 msgid "วันเข้าพรรษา"
 msgstr ""
 
-#: ./holidays/countries/thailand.py:613
+#. Royal Ploughing Ceremony.
 msgid "วันพืชมงคล"
-msgstr ""
-
-#: ./holidays/countries/thailand.py:119
-msgid "ชดเชยวันเลือกตั้ง"
-msgstr ""
-
-#: ./holidays/countries/thailand.py:136
-msgid "ชดเชยวันสงกรานต์"
 msgstr ""

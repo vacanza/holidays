@@ -37,9 +37,7 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Day_of_Arafah
         """
         return self._add_islamic_calendar_holiday(
-            name,
-            self._islamic_calendar.eid_al_adha_dates(self._year),
-            days_delta=-1,
+            name, self._islamic_calendar.eid_al_adha_dates(self._year), days_delta=-1
         )
 
     def _add_ashura_day(self, name) -> Set[date]:
@@ -51,8 +49,7 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Ashura
         """
         return self._add_islamic_calendar_holiday(
-            name,
-            self._islamic_calendar.ashura_dates(self._year),
+            name, self._islamic_calendar.ashura_dates(self._year)
         )
 
     def _add_ashura_eve(self, name) -> Set[date]:
@@ -64,9 +61,7 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Ashura
         """
         return self._add_islamic_calendar_holiday(
-            name,
-            self._islamic_calendar.ashura_dates(self._year),
-            days_delta=-1,
+            name, self._islamic_calendar.ashura_dates(self._year), days_delta=-1
         )
 
     def _add_eid_al_adha_day(self, name) -> Set[date]:
@@ -79,8 +74,7 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Eid_al-Adha
         """
         return self._add_islamic_calendar_holiday(
-            name,
-            self._islamic_calendar.eid_al_adha_dates(self._year),
+            name, self._islamic_calendar.eid_al_adha_dates(self._year)
         )
 
     def _add_eid_al_adha_day_two(self, name) -> Set[date]:
@@ -90,9 +84,7 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Eid_al-Adha
         """
         return self._add_islamic_calendar_holiday(
-            name,
-            self._islamic_calendar.eid_al_adha_dates(self._year),
-            days_delta=+1,
+            name, self._islamic_calendar.eid_al_adha_dates(self._year), days_delta=+1
         )
 
     def _add_eid_al_adha_day_three(self, name) -> Set[date]:
@@ -102,9 +94,7 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Eid_al-Adha
         """
         return self._add_islamic_calendar_holiday(
-            name,
-            self._islamic_calendar.eid_al_adha_dates(self._year),
-            days_delta=+2,
+            name, self._islamic_calendar.eid_al_adha_dates(self._year), days_delta=+2
         )
 
     def _add_eid_al_adha_day_four(self, name) -> Set[date]:
@@ -114,9 +104,7 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Eid_al-Adha
         """
         return self._add_islamic_calendar_holiday(
-            name,
-            self._islamic_calendar.eid_al_adha_dates(self._year),
-            days_delta=+3,
+            name, self._islamic_calendar.eid_al_adha_dates(self._year), days_delta=+3
         )
 
     def _add_eid_al_fitr_day(self, name) -> Set[date]:
@@ -129,8 +117,7 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Eid_al-Fitr
         """
         return self._add_islamic_calendar_holiday(
-            name,
-            self._islamic_calendar.eid_al_fitr_dates(self._year),
+            name, self._islamic_calendar.eid_al_fitr_dates(self._year)
         )
 
     def _add_eid_al_fitr_day_two(self, name) -> Set[date]:
@@ -140,9 +127,7 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Eid_al-Fitr
         """
         return self._add_islamic_calendar_holiday(
-            name,
-            self._islamic_calendar.eid_al_fitr_dates(self._year),
-            days_delta=+1,
+            name, self._islamic_calendar.eid_al_fitr_dates(self._year), days_delta=+1
         )
 
     def _add_eid_al_fitr_day_three(self, name) -> Set[date]:
@@ -152,9 +137,7 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Eid_al-Fitr
         """
         return self._add_islamic_calendar_holiday(
-            name,
-            self._islamic_calendar.eid_al_fitr_dates(self._year),
-            days_delta=+2,
+            name, self._islamic_calendar.eid_al_fitr_dates(self._year), days_delta=+2
         )
 
     def _add_eid_al_fitr_day_four(self, name) -> Set[date]:
@@ -164,9 +147,7 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Eid_al-Fitr
         """
         return self._add_islamic_calendar_holiday(
-            name,
-            self._islamic_calendar.eid_al_fitr_dates(self._year),
-            days_delta=+3,
+            name, self._islamic_calendar.eid_al_fitr_dates(self._year), days_delta=+3
         )
 
     def _add_hari_hol_johor(self, name) -> Set[date]:
@@ -176,15 +157,11 @@ class IslamicHolidays:
         https://publicholidays.com.my/hari-hol-almarhum-sultan-iskandar/
         """
         return self._add_islamic_calendar_holiday(
-            name,
-            self._islamic_calendar.hari_hol_johor_dates(self._year),
+            name, self._islamic_calendar.hari_hol_johor_dates(self._year)
         )
 
     def _add_islamic_calendar_holiday(
-        self,
-        name: str,
-        dates: Iterable[Tuple[date, bool]],
-        days_delta: int = 0,
+        self, name: str, dates: Iterable[Tuple[date, bool]], days_delta: int = 0
     ) -> Set[date]:
         """
         Add lunar calendar holiday.
@@ -199,8 +176,7 @@ class IslamicHolidays:
                 dt += td(days=days_delta)
 
             dt = self._add_holiday(
-                self.tr(estimated_label) % self.tr(name) if is_estimated else name,
-                dt,
+                self.tr(estimated_label) % self.tr(name) if is_estimated else name, dt
             )
             if dt:
                 added_dates.add(dt)
@@ -218,8 +194,7 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Islamic_New_Year
         """
         return self._add_islamic_calendar_holiday(
-            name,
-            self._islamic_calendar.hijri_new_year_dates(self._year),
+            name, self._islamic_calendar.hijri_new_year_dates(self._year)
         )
 
     def _add_isra_and_miraj_day(self, name):
@@ -229,8 +204,7 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Isra%27_and_Mi%27raj
         """
         return self._add_islamic_calendar_holiday(
-            name,
-            self._islamic_calendar.isra_and_miraj_dates(self._year),
+            name, self._islamic_calendar.isra_and_miraj_dates(self._year)
         )
 
     def _add_mawlid_day(self, name) -> Set[date]:
@@ -242,8 +216,7 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Mawlid
         """
         return self._add_islamic_calendar_holiday(
-            name,
-            self._islamic_calendar.mawlid_dates(self._year),
+            name, self._islamic_calendar.mawlid_dates(self._year)
         )
 
     def _add_mawlid_day_two(self, name) -> Set[date]:
@@ -255,9 +228,7 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Mawlid
         """
         return self._add_islamic_calendar_holiday(
-            name,
-            self._islamic_calendar.mawlid_dates(self._year),
-            days_delta=+1,
+            name, self._islamic_calendar.mawlid_dates(self._year), days_delta=+1
         )
 
     def _add_nuzul_al_quran_day(self, name) -> Set[date]:
@@ -270,8 +241,7 @@ class IslamicHolidays:
         https://zamzam.com/blog/nuzul-al-quran/
         """
         return self._add_islamic_calendar_holiday(
-            name,
-            self._islamic_calendar.nuzul_al_quran_dates(self._year),
+            name, self._islamic_calendar.nuzul_al_quran_dates(self._year)
         )
 
     def _add_ramadan_beginning_day(self, name) -> Set[date]:
@@ -283,6 +253,5 @@ class IslamicHolidays:
         https://en.wikipedia.org/wiki/Ramadan
         """
         return self._add_islamic_calendar_holiday(
-            name,
-            self._islamic_calendar.ramadan_beginning_dates(self._year),
+            name, self._islamic_calendar.ramadan_beginning_dates(self._year)
         )

@@ -12,8 +12,7 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars import _get_nth_weekday_from
-from holidays.constants import JAN, APR, MAY, JUN, JUL, AUG, OCT, MON
+from holidays.calendars.gregorian import JAN, APR, MAY, JUN, JUL, AUG, OCT, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -78,28 +77,19 @@ class Uruguay(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_sunday(tr("Día de Pascuas"))
 
         holiday_pairs = (
-            (
-                date(year, APR, 19),
-                # Landing of the 33 Patriots.
-                tr("Desembarco de los 33 Orientales"),
-            ),
-            (
-                date(year, MAY, 18),
-                # Battle of Las Piedras.
-                tr("Batalla de Las Piedras"),
-            ),
-            (
-                date(year, OCT, 12),
-                # Respect for Cultural Diversity Day.
-                tr("Día del Respeto a la Diversidad Cultural"),
-            ),
+            # Landing of the 33 Patriots.
+            (date(year, APR, 19), tr("Desembarco de los 33 Orientales")),
+            # Battle of Las Piedras.
+            (date(year, MAY, 18), tr("Batalla de Las Piedras")),
+            # Respect for Cultural Diversity Day.
+            (date(year, OCT, 12), tr("Día del Respeto a la Diversidad Cultural")),
         )
 
         for dt, name in holiday_pairs:
             if self._is_tuesday(dt) or self._is_wednesday(dt):
-                self._add_holiday(name, _get_nth_weekday_from(-1, MON, dt))
+                self._add_holiday(name, self._get_nth_weekday_from(-1, MON, dt))
             elif self._is_thursday(dt) or self._is_friday(dt):
-                self._add_holiday(name, _get_nth_weekday_from(1, MON, dt))
+                self._add_holiday(name, self._get_nth_weekday_from(1, MON, dt))
             else:
                 self._add_holiday(name, dt)
 

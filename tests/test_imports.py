@@ -16,10 +16,7 @@ import holidays
 
 class TestHolidaysImports(TestCase):
     def assertImport(self, name):
-        self.assertTrue(
-            hasattr(holidays, name),
-            f"Import error: `from holidays import {name}`",
-        )
+        self.assertTrue(hasattr(holidays, name), f"Import error: `from holidays import {name}`")
 
     def test_constants(self):
         for name in (

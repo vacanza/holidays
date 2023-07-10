@@ -192,7 +192,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Belgium
      - BE
      -
-     -
+     - de, en_US, fr, **nl**, uk
    * - Belize
      - BZ
      -
@@ -203,8 +203,8 @@ The list of supported countries, their subdivisions and supported languages
      -
    * - Bosnia and Herzegovina
      - BA
-     - Departments: BD, FBiH, RS
-     -
+     - Entities and district: BIH, BRC, SRP
+     - **bs**, en_US, sr, uk
    * - Botswana
      - BW
      -
@@ -220,7 +220,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Bulgaria
      - BG
      -
-     - **bg**, en_US
+     - **bg**, en_US, uk
    * - Burkina Faso
      - BF
      -
@@ -264,7 +264,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Croatia
      - HR
      -
-     -
+     - en_US, **hr**, uk
    * - Cuba
      - CU
      -
@@ -280,7 +280,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Czechia
      - CZ
      -
-     -
+     - **cs**, en_US, uk
    * - Denmark
      - DK
      -
@@ -308,7 +308,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Estonia
      - EE
      -
-     -
+     - en_US, **et**, uk
    * - Eswatini
      - SZ
      -
@@ -408,7 +408,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Latvia
      - LV
      -
-     -
+     - en_US, **lv**, uk
    * - Lesotho
      - LS
      -
@@ -420,15 +420,15 @@ The list of supported countries, their subdivisions and supported languages
    * - Lithuania
      - LT
      -
-     -
+     - en_US, **lt**, uk
    * - Luxembourg
      - LU
      -
-     -
+     - de, en_US, fr, **lb**, uk
    * - Madagascar
      - MG
      -
-     -
+     - en_US, **mg**, uk
    * - Malawi
      - MW
      -
@@ -440,7 +440,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Malta
      - MT
      -
-     -
+     - en_MT, **mt**
    * - Marshall Islands (the)
      - MH
      -
@@ -564,7 +564,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Slovenia
      - SI
      -
-     -
+     - en_US, **sl**, uk
    * - South Africa
      - ZA
      -

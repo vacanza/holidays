@@ -14,7 +14,7 @@ from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicCalendar
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import (
     ChineseCalendarHolidays,
@@ -25,23 +25,17 @@ from holidays.holiday_groups import (
 
 
 class Brunei(
-    HolidayBase,
-    ChineseCalendarHolidays,
-    ChristianHolidays,
-    InternationalHolidays,
-    IslamicHolidays,
+    HolidayBase, ChineseCalendarHolidays, ChristianHolidays, InternationalHolidays, IslamicHolidays
 ):
     """
-    A subclass of :py:class:`HolidayBase` representing public holidays
-    in Brunei Darussalam.
-
+    A subclass of :py:class:`HolidayBase` representing public holidays in Brunei Darussalam.
 
     References:
 
     - Based on: http://www.labour.gov.bn/Lists/Upcomming%20events/AllItems.aspx
                 http://www.labour.gov.bn/Download/GUIDE%20TO%20BRUNEI%20EMPLOYMENT%20LAWS%20-%20english%20version-3.pdf  # noqa: E501
-    - Checked with: https://asean.org/wp-content/uploads/2021/12/ASEAN-National-Holidays-2022.pdf  # noqa: E501
-                    https://asean.org/wp-content/uploads/2022/12/ASEAN-Public-Holidays-2023.pdf  # noqa: E501
+    - Checked with: https://asean.org/wp-content/uploads/2021/12/ASEAN-National-Holidays-2022.pdf
+                    https://asean.org/wp-content/uploads/2022/12/ASEAN-Public-Holidays-2023.pdf
                     https://www.timeanddate.com/holidays/brunei/
     - [Jubli Emas Sultan Hassanal Bolkiah]
         https://www.brudirect.com/news.php?id=28316
@@ -116,12 +110,8 @@ class Brunei(
         # Commemorates the formation of Royal Brunei Malay Regiment in 1961.
 
         _add_observed(
-            self._add_holiday(
-                # Armed Forces Day
-                tr("Hari Angkatan Bersenjata Diraja Brunei"),
-                MAY,
-                31,
-            )
+            # Armed Forces Day
+            self._add_holiday(tr("Hari Angkatan Bersenjata Diraja Brunei"), MAY, 31)
         )
 
         # Hari Keputeraan KDYMM Sultan Brunei
@@ -129,12 +119,8 @@ class Brunei(
         # Started in 1968.
 
         _add_observed(
-            self._add_holiday(
-                # Sultan Hassanal Bolkiah's Birthday
-                tr("Hari Keputeraan KDYMM Sultan Brunei"),
-                JUL,
-                15,
-            )
+            # Sultan Hassanal Bolkiah's Birthday
+            self._add_holiday(tr("Hari Keputeraan KDYMM Sultan Brunei"), JUL, 15)
         )
 
         # Hari Natal
@@ -198,12 +184,7 @@ class Brunei(
                 if obs_date:
                     self._add_islamic_calendar_holiday(
                         self.tr("%s - Diperhatikan") % self[hol_date],
-                        (
-                            (
-                                obs_date,
-                                self._year not in BruneiIslamicCalendar.EID_AL_FITR_DATES,
-                            ),
-                        ),
+                        ((obs_date, self._year not in BruneiIslamicCalendar.EID_AL_FITR_DATES),),
                     )
 
         # Hari Raya Aidil Adha

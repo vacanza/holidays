@@ -16,169 +16,126 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: ./holidays/countries/canada.py:60
 #, c-format
 msgid "%s (Observed)"
 msgstr ""
 
 #. New Year's Day.
-#: ./holidays/countries/canada.py:71
 msgid "New Year's Day"
 msgstr ""
 
 #. Good Friday.
-#: ./holidays/countries/canada.py:74
 msgid "Good Friday"
 msgstr ""
 
 #. Easter Monday.
-#: ./holidays/countries/canada.py:76
 msgid "Easter Monday"
 msgstr ""
 
 #. Dominion Day.
-#: ./holidays/countries/canada.py:80
 msgid "Dominion Day"
 msgstr ""
 
 #. Labour Day.
-#: ./holidays/countries/canada.py:85
 msgid "Labour Day"
 msgstr ""
 
 #. Christmas Day.
-#: ./holidays/countries/canada.py:91
 msgid "Christmas Day"
 msgstr ""
 
 #. Boxing Day.
-#: ./holidays/countries/canada.py:97
 msgid "Boxing Day"
 msgstr ""
 
 #. Family Day.
-#: ./holidays/countries/canada.py:104 ./holidays/countries/canada.py:174
 msgid "Family Day"
 msgstr ""
 
 #. Thanksgiving.
-#: ./holidays/countries/canada.py:119
 msgid "Thanksgiving"
 msgstr ""
 
 #. Funeral of Queen Elizabeth II.
-#: ./holidays/countries/canada.py:125
 msgid "Funeral of Her Majesty the Queen Elizabeth II"
 msgstr ""
 
 #. Memorial Day.
-#: ./holidays/countries/canada.py:136
 msgid "Memorial Day"
 msgstr ""
 
 #. Canada Day.
-#: ./holidays/countries/canada.py:139
 msgid "Canada Day"
 msgstr ""
 
 #. Victoria Day.
-#: ./holidays/countries/canada.py:155 ./holidays/countries/canada.py:179
-#: ./holidays/countries/canada.py:216 ./holidays/countries/canada.py:249
-#: ./holidays/countries/canada.py:332 ./holidays/countries/canada.py:358
-#: ./holidays/countries/canada.py:381 ./holidays/countries/canada.py:429
-#: ./holidays/countries/canada.py:466
 msgid "Victoria Day"
 msgstr ""
 
 #. Heritage Day.
-#: ./holidays/countries/canada.py:161 ./holidays/countries/canada.py:307
-#: ./holidays/countries/canada.py:459
 msgid "Heritage Day"
 msgstr ""
 
 #. Remembrance Day.
-#: ./holidays/countries/canada.py:169 ./holidays/countries/canada.py:203
-#: ./holidays/countries/canada.py:240 ./holidays/countries/canada.py:263
-#: ./holidays/countries/canada.py:298 ./holidays/countries/canada.py:324
-#: ./holidays/countries/canada.py:350 ./holidays/countries/canada.py:372
-#: ./holidays/countries/canada.py:403 ./holidays/countries/canada.py:444
-#: ./holidays/countries/canada.py:481
 msgid "Remembrance Day"
 msgstr ""
 
 #. British Columbia Day.
-#: ./holidays/countries/canada.py:185
 msgid "British Columbia Day"
 msgstr ""
 
 #. National Day for Truth and Reconciliation.
-#: ./holidays/countries/canada.py:194 ./holidays/countries/canada.py:231
-#: ./holidays/countries/canada.py:316
 msgid "National Day for Truth and Reconciliation"
 msgstr ""
 
 #. Louis Riel Day.
-#: ./holidays/countries/canada.py:209
 msgid "Louis Riel Day"
 msgstr ""
 
 #. Terry Fox Day.
-#: ./holidays/countries/canada.py:221
 msgid "Terry Fox Day"
 msgstr ""
 
 #. Civic Holiday.
-#: ./holidays/countries/canada.py:224 ./holidays/countries/canada.py:341
-#: ./holidays/countries/canada.py:386
 msgid "Civic Holiday"
 msgstr ""
 
 #. New Brunswick Day.
-#: ./holidays/countries/canada.py:255
 msgid "New Brunswick Day"
 msgstr ""
 
 #. St. Patrick's Day.
-#: ./holidays/countries/canada.py:270
 msgid "St. Patrick's Day"
 msgstr ""
 
 #. St. George's Day.
-#: ./holidays/countries/canada.py:284
 msgid "St. George's Day"
 msgstr ""
 
 #. Discovery Day.
-#: ./holidays/countries/canada.py:289 ./holidays/countries/canada.py:471
 msgid "Discovery Day"
 msgstr ""
 
 #. National Aboriginal Day.
-#: ./holidays/countries/canada.py:336
 msgid "National Aboriginal Day"
 msgstr ""
 
 #. Nunavut Day.
-#: ./holidays/countries/canada.py:364
 msgid "Nunavut Day"
 msgstr ""
 
 #. Islander Day.
-#: ./holidays/countries/canada.py:396
 msgid "Islander Day"
 msgstr ""
 
 #. National Patriots' Day.
-#: ./holidays/countries/canada.py:411
 msgid "National Patriots' Day"
 msgstr ""
 
 #. St. Jean Baptiste Day.
-#: ./holidays/countries/canada.py:416
 msgid "St. Jean Baptiste Day"
 msgstr ""
 
 #. Saskatchewan Day.
-#: ./holidays/countries/canada.py:435
 msgid "Saskatchewan Day"
 msgstr ""

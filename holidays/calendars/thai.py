@@ -16,7 +16,6 @@ from typing import Optional
 
 from holidays.exceptions import CalendarError
 
-# Manual Assign to avoid circular import
 KHMER_CALENDAR = "KHMER_CALENDAR"
 THAI_CALENDAR = "THAI_CALENDAR"
 

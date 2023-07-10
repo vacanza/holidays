@@ -9,5 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+# flake8: noqa: F401
+
 from .european_central_bank import EuropeanCentralBank, ECB, TAR
 from .ny_stock_exchange import NewYorkStockExchange, NYSE, XNYS

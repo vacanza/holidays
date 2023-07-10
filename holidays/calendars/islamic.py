@@ -13,7 +13,7 @@ from datetime import date
 from typing import Iterable, Tuple
 
 from holidays.calendars.custom import _CustomCalendar
-from holidays.constants import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.helpers import _normalize_tuple
 
 ASHURA = "ASHURA"
@@ -1436,11 +1436,7 @@ class _IslamicLunar:
 
     def _get_holiday(self, holiday: str, year: int) -> Iterable[Tuple[date, bool]]:
         estimated_dates = getattr(self, f"{holiday}_DATES", {})
-        exact_dates = getattr(
-            self,
-            f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}",
-            {},
-        )
+        exact_dates = getattr(self, f"{holiday}_DATES_{_CustomCalendar.CUSTOM_ATTR_POSTFIX}", {})
         for year in (year - 1, year):
             for dt in _normalize_tuple(exact_dates.get(year, estimated_dates.get(year, ()))):
                 yield date(year, *dt), year not in exact_dates
