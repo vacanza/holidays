@@ -17,76 +17,61 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. Independent Czech State Restoration Day.
-#: ./holidays/countries/czechia.py:38
 msgid "Den obnovy samostatného českého státu"
 msgstr "День відновлення незалежної чеської держави"
 
 #. New Year's Day.
-#: ./holidays/countries/czechia.py:40
 msgid "Nový rok"
 msgstr "Новий рік"
 
 #. Good Friday.
-#: ./holidays/countries/czechia.py:47
 msgid "Velký pátek"
 msgstr "Страсна пʼятниця"
 
 #. Easter Monday.
-#: ./holidays/countries/czechia.py:50
 msgid "Velikonoční pondělí"
 msgstr "Великодній понеділок"
 
 #. Labor Day.
-#: ./holidays/countries/czechia.py:54
 msgid "Svátek práce"
 msgstr "День праці"
 
 #. Victory Day.
-#: ./holidays/countries/czechia.py:58
 msgid "Den vítězství"
 msgstr "День перемоги"
 
 #. Day of Victory over Fascism.
-#: ./holidays/countries/czechia.py:61
 msgid "Den vítězství nad hitlerovským fašismem"
 msgstr "День перемоги над фашизмом"
 
 #. Saints Cyril and Methodius Day.
-#: ./holidays/countries/czechia.py:65
 msgid "Den slovanských věrozvěstů Cyrila a Metoděje"
 msgstr "День Святих Кирила та Мефодія"
 
 #. Jan Hus Day.
-#: ./holidays/countries/czechia.py:68
 msgid "Den upálení mistra Jana Husa"
 msgstr "День спалення Яна Гуса"
 
 #. Statehood Day.
-#: ./holidays/countries/czechia.py:72
 msgid "Den české státnosti"
 msgstr "День чеської державності"
 
 #. Independent Czechoslovak State Day.
-#: ./holidays/countries/czechia.py:76
 msgid "Den vzniku samostatného československého státu"
 msgstr "День створення незалежної чехословацької держави"
 
 #. Struggle for Freedom and Democracy Day.
-#: ./holidays/countries/czechia.py:80
 msgid "Den boje za svobodu a demokracii"
 msgstr "День боротьби за свободу і демократію"
 
 #. Christmas Eve.
-#: ./holidays/countries/czechia.py:83
 msgid "Štědrý den"
 msgstr "Святий вечір"
 
 #. Christmas Day.
-#: ./holidays/countries/czechia.py:87
 msgid "1. svátek vánoční"
 msgstr "Різдво Христове"
 
 #. Second Day of Christmas.
-#: ./holidays/countries/czechia.py:90
 msgid "2. svátek vánoční"
 msgstr "Другий день Різдва"

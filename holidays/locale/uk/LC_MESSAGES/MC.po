@@ -16,71 +16,57 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: ./holidays/countries/monaco.py:29
 msgid "Jour férié"
 msgstr "Державне свято"
 
-#: ./holidays/countries/monaco.py:39
 #, c-format
 msgid "%s (Observé)"
 msgstr "%s (вихідний)"
 
 #. New Year's Day.
-#: ./holidays/countries/monaco.py:45
 msgid "Le jour de l'An"
 msgstr "Новий рік"
 
 #. Saint Devote's Day.
-#: ./holidays/countries/monaco.py:48
 msgid "La Sainte Dévote"
 msgstr "День святої Девоти"
 
 #. Easter Monday.
-#: ./holidays/countries/monaco.py:51
 msgid "Le lundi de Pâques"
 msgstr "Великодній понеділок"
 
 #. Labour Day.
-#: ./holidays/countries/monaco.py:54
 msgid "Fête de la Travaille"
 msgstr "День праці"
 
 #. Ascension's Day.
-#: ./holidays/countries/monaco.py:57
 msgid "L'Ascension"
 msgstr "Вознесіння Господнє"
 
 #. Whit Monday.
-#: ./holidays/countries/monaco.py:60
 msgid "Le lundi de Pentecôte"
 msgstr "День Святого Духа"
 
 #. Corpus Christi.
-#: ./holidays/countries/monaco.py:63
 msgid "La Fête Dieu"
 msgstr "Свято Тіла і Крові Христових"
 
 #. Assumption's Day.
-#: ./holidays/countries/monaco.py:66
 msgid "L'Assomption de Marie"
 msgstr "Успіння Пресвятої Богородиці"
 
 #. All Saints' Day.
-#: ./holidays/countries/monaco.py:69
 msgid "La Toussaint"
 msgstr "День усіх святих"
 
 #. Prince's Day.
-#: ./holidays/countries/monaco.py:72
 msgid "La Fête du Prince"
 msgstr "День Князя"
 
 #. Immaculate Conception's Day.
-#: ./holidays/countries/monaco.py:78
 msgid "L'Immaculée Conception"
 msgstr "Непорочне зачаття Діви Марії"
 
 #. Christmas Day.
-#: ./holidays/countries/monaco.py:81
 msgid "Noël"
 msgstr "Різдво Христове"

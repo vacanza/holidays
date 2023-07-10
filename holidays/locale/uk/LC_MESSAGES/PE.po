@@ -17,76 +17,61 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/peru.py:42
 msgid "Año Nuevo"
 msgstr "Новий рік"
 
 #. Holy Thursday.
-#: ./holidays/countries/peru.py:45
 msgid "Jueves Santo"
 msgstr "Великий четвер"
 
 #. Good Friday.
-#: ./holidays/countries/peru.py:48
 msgid "Viernes Santo"
 msgstr "Страсна пʼятниця"
 
 #. Easter Sunday.
-#: ./holidays/countries/peru.py:51
 msgid "Domingo de Resurrección"
 msgstr "Великдень"
 
 #. Labor Day.
-#: ./holidays/countries/peru.py:54
 msgid "Día del Trabajo"
 msgstr "День праці"
 
 #. Feast of Saints Peter and Paul.
-#: ./holidays/countries/peru.py:57
 msgid "San Pedro y San Pablo"
 msgstr "День Святих Петра і Павла"
 
 #. Independence Day.
-#: ./holidays/countries/peru.py:60
 msgid "Día de la Independencia"
 msgstr "День незалежності"
 
 #. Great Military Parade Day.
-#: ./holidays/countries/peru.py:63
 msgid "Día de la Gran Parada Militar"
 msgstr "День Великого військового параду"
 
 #. Battle of Junín.
-#: ./holidays/countries/peru.py:67
 msgid "Batalla de Junín"
 msgstr "День битви під Хуніном"
 
 #. Santa Rosa de Lima.
-#: ./holidays/countries/peru.py:70
 msgid "Santa Rosa de Lima"
 msgstr "День Святої Рози Лімської"
 
 #. Battle of Angamos.
-#: ./holidays/countries/peru.py:73
 msgid "Combate de Angamos"
 msgstr "День битви під Ангамосом"
 
 #. All Saints Day.
-#: ./holidays/countries/peru.py:76
 msgid "Todos Los Santos"
 msgstr "День усіх святих"
 
 #. Immaculate Conception.
-#: ./holidays/countries/peru.py:79
 msgid "Inmaculada Concepción"
 msgstr "Непорочне зачаття Діви Марії"
 
 #. Battle of Ayacucho.
-#: ./holidays/countries/peru.py:83
 msgid "Batalla de Ayacucho"
 msgstr "День битви при Аякучо"
 
 #. Christmas Day.
-#: ./holidays/countries/peru.py:86
 msgid "Navidad del Señor"
 msgstr "Різдво Христове"

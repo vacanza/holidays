@@ -12,62 +12,50 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && "
-"n%100<=4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n%100<=4 ? 2 : 3);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/slovenia.py:47
 msgid "novo leto"
 msgstr ""
 
 #. Preseren's Day.
-#: ./holidays/countries/slovenia.py:53
 msgid "Prešernov dan"
 msgstr ""
 
 #. Easter Monday.
-#: ./holidays/countries/slovenia.py:56
 msgid "Velikonočni ponedeljek"
 msgstr ""
 
 #. Day of Uprising Against Occupation.
-#: ./holidays/countries/slovenia.py:59
 msgid "dan upora proti okupatorju"
 msgstr ""
 
 #. Labor Day.
-#: ./holidays/countries/slovenia.py:62
 msgid "praznik dela"
 msgstr ""
 
 #. Statehood Day.
-#: ./holidays/countries/slovenia.py:67
 msgid "dan državnosti"
 msgstr ""
 
 #. Assumption Day.
-#: ./holidays/countries/slovenia.py:70
 msgid "Marijino vnebovzetje"
 msgstr ""
 
 #. Reformation Day.
-#: ./holidays/countries/slovenia.py:74
 msgid "dan reformacije"
 msgstr ""
 
 #. Remembrance Day.
-#: ./holidays/countries/slovenia.py:77
 msgid "dan spomina na mrtve"
 msgstr ""
 
 #. Christmas Day.
-#: ./holidays/countries/slovenia.py:80
 msgid "Božič"
 msgstr ""
 
 #. Independence and Unity Day.
-#: ./holidays/countries/slovenia.py:83
 msgid "dan samostojnosti in enotnosti"
 msgstr ""
