@@ -75,7 +75,7 @@ class InternationalHolidays:
 
     def _add_labor_day_two(self, name):
         """
-        Add International Workers' Day Two (May 2st)
+        Add International Workers' Day Two (May 2nd)
 
         https://en.wikipedia.org/wiki/International_Workers%27_Day
         """
