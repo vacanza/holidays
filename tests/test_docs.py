@@ -19,7 +19,7 @@ from holidays import country_holidays, list_supported_countries, list_localized_
 class TestReadme(TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.readme_content = Path("README.rst").read_text()
+        cls.readme_content = Path("README.rst").read_text(encoding="UTF-8")
 
         super().setUpClass()
 
