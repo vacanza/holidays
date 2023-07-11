@@ -36,11 +36,12 @@ class SaudiArabia(HolidayBase, IslamicHolidays):
 
     country = "SA"
     default_language = "ar"
+    # Estimated label.
     estimated_label = tr("(تقدير*) *%s")
     supported_languages = ("ar", "en_US")
 
     special_holidays = {
-        # celebrate the country's win against Argentina in the World Cup
+        # Celebrate the country's win against Argentina in the World Cup
         2022: (NOV, 23, tr("يوم وطني")),
     }
 
@@ -78,13 +79,13 @@ class SaudiArabia(HolidayBase, IslamicHolidays):
         # holiday started at 2022; so what below works.
         self.weekend = {THU, FRI} if year <= 2012 else {FRI, SAT}
 
-        # Eid al-Fitr Holiday
         # The holiday is a 4-day holiday starting on the day following the
         # 29th day of Ramadan, the 9th month of the Islamic calendar.
         # Observed days are added to make up for any days falling on a weekend.
         # Holidays may straddle across Gregorian years, so we go back one year
         # to pick up any such occurrence.
         # Date of observance is announced yearly.
+        # Eid al-Fitr Holiday
         name = tr("عطلة عيد الفطر")
         dates = self._add_eid_al_fitr_day(name)
         self._add_eid_al_fitr_day_two(name)
@@ -92,14 +93,15 @@ class SaudiArabia(HolidayBase, IslamicHolidays):
         self._add_eid_al_fitr_day_four(name)
         self._add_islamic_observed(name, dates)
 
-        # Arafat Day & Eid al-Adha
         # The holiday is a 4-day holiday starting on Arafat Day, the 10th of
         # Dhu al-Hijjah, the 12th month of the Islamic calendar.
         # Observed days are added to make up for any days falling on a weekend.
         # Holidays may straddle across Gregorian years, so we go back one year
         # to pick up any such occurrence.
         # Date of observance is announced yearly.
+        # Arafat Day
         dates = self._add_arafah_day(tr("يوم عرفة"))
+        # Eid al-Adha Holiday
         name = tr("عطلة عيد الأضحى")
         self._add_eid_al_adha_day(name)
         self._add_eid_al_adha_day_two(name)
@@ -112,6 +114,7 @@ class SaudiArabia(HolidayBase, IslamicHolidays):
         if year >= 2005:
             dt = date(year, SEP, 23)
             if dt not in self:
+                # National Day Holiday
                 self._add_observed(self._add_holiday(tr("اليوم الوطني"), dt))
 
         # Founding Day holiday (started 2022).
@@ -120,10 +123,12 @@ class SaudiArabia(HolidayBase, IslamicHolidays):
         if year >= 2022:
             dt = date(year, FEB, 22)
             if dt not in self:
+                # Founding Day
                 self._add_observed(self._add_holiday(tr("يوم التأسيسي"), dt))
 
         # observed holidays special cases
         if self.observed and year == 2001:
+            # Eid al-Fitr Holiday (observed)
             self._add_holiday(tr("عطلة عيد الفطر (ملاحظة)"), JAN, 1)
 
 

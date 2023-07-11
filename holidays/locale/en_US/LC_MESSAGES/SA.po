@@ -16,55 +16,51 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.3.2\n"
 
-#: ./holidays/countries/saudi_arabia.py:39
+#. Estimated label.
 #, c-format
 msgid "(تقدير*) *%s"
 msgstr "%s* (*estimated)"
 
-#. celebrate the country's win against Argentina in the World Cup
-#: ./holidays/countries/saudi_arabia.py:44
+#. Celebrate the country's win against Argentina in the World Cup
 msgid "يوم وطني"
 msgstr "A National Day"
 
-#: ./holidays/countries/saudi_arabia.py:57
-#: ./holidays/countries/saudi_arabia.py:65
-#: ./holidays/countries/saudi_arabia.py:70
 #, c-format
 msgid "(ملاحظة) %s"
 msgstr "%s (observed)"
 
-#. Eid al-Fitr Holiday The holiday is a 4-day holiday starting on the day
-#. following the 29th day of Ramadan, the 9th month of the Islamic calendar.
-#. Observed days are added to make up for any days falling on a weekend.
-#. Holidays may straddle across Gregorian years, so we go back one year to
-#. pick
-#. up any such occurrence. Date of observance is announced yearly.
-#: ./holidays/countries/saudi_arabia.py:88
+#. The holiday is a 4-day holiday starting on the day following the 29th day
+#. of Ramadan, the 9th
+#. month of the Islamic calendar. Observed days are added to make up for any
+#. days falling on a
+#. weekend. Holidays may straddle across Gregorian years, so we go back one
+#. year to pick up any such
+#. occurrence. Date of observance is announced yearly. Eid al-Fitr Holiday
 msgid "عطلة عيد الفطر"
 msgstr "Eid al-Fitr Holiday"
 
-#. Arafat Day & Eid al-Adha The holiday is a 4-day holiday starting on Arafat
-#. Day, the 10th of Dhu al-Hijjah, the 12th month of the Islamic calendar.
-#. Observed days are added to make up for any days falling on a weekend.
+#. The holiday is a 4-day holiday starting on Arafat Day, the 10th of Dhu al-
+#. Hijjah, the 12th month
+#. of the Islamic calendar. Observed days are added to make up for any days
+#. falling on a weekend.
 #. Holidays may straddle across Gregorian years, so we go back one year to
-#. pick
-#. up any such occurrence. Date of observance is announced yearly.
-#: ./holidays/countries/saudi_arabia.py:102
+#. pick up any such
+#. occurrence. Date of observance is announced yearly. Arafat Day
 msgid "يوم عرفة"
 msgstr "Arafat Day"
 
-#: ./holidays/countries/saudi_arabia.py:103
+#. Eid al-Adha Holiday
 msgid "عطلة عيد الأضحى"
 msgstr "Eid al-Adha Holiday"
 
-#: ./holidays/countries/saudi_arabia.py:115
+#. National Day Holiday
 msgid "اليوم الوطني"
 msgstr "National Day Holiday"
 
-#: ./holidays/countries/saudi_arabia.py:123
+#. Founding Day
 msgid "يوم التأسيسي"
 msgstr "Founding Day Holiday"
 
-#: ./holidays/countries/saudi_arabia.py:127
+#. Eid al-Fitr Holiday (observed)
 msgid "عطلة عيد الفطر (ملاحظة)"
 msgstr "Eid al-Fitr Holiday (Observed)"

@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.28\n"
+"Project-Id-Version: Python Holidays 0.29\n"
 "POT-Creation-Date: 2023-06-28 00:13+0100\n"
-"PO-Revision-Date: 2023-06-28 00:49+0100\n"
+"PO-Revision-Date: 2023-07-11 02:08+0100\n"
 "Last-Translator: \n"
 "Language-Team: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>\n"
 "Language: en_US\n"
@@ -16,87 +16,79 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.3.2\n"
 
-#: ./holidays/countries/egypt.py:36
+#. Estimated label.
 #, c-format
 msgid "(تقدير*) *%s"
 msgstr "%s* (*estimated)"
 
 #. New Year's Day
-#: ./holidays/countries/egypt.py:50
-msgid "رأس السنة الميلادية - عطلة بنوك"
-msgstr "New Year's Day - Bank Holiday"
+msgid "رأس السنة الميلادية"
+msgstr "New Year's Day"
 
 #. Coptic Christmas
-#: ./holidays/countries/egypt.py:53
 msgid "عيد الميلاد المجيد (تقويم قبطي)"
 msgstr "Coptic Christmas"
 
-#: ./holidays/countries/egypt.py:57
+#. January 25th Revolution
 msgid "عيد ثورة 25 يناير"
-msgstr "Revolution Day - January 25"
+msgstr "January 25th Revolution Day"
 
-#: ./holidays/countries/egypt.py:59
+#. National Police Day
 msgid "عيد الشرطة"
 msgstr "Police Day"
 
 #. Coptic Easter - Orthodox Easter
-#: ./holidays/countries/egypt.py:62
 msgid "عيد الفصح القبطي"
 msgstr "Coptic Easter - Orthodox Easter"
 
 #. Spring Festival
-#: ./holidays/countries/egypt.py:63
 msgid "شم النسيم"
 msgstr "Sham El Nessim"
 
-#: ./holidays/countries/egypt.py:67
+#. Sinai Libration Day
 msgid "عيد تحرير سيناء"
 msgstr "Sinai Liberation Day"
 
 #. Labour Day
-#: ./holidays/countries/egypt.py:70
 msgid "عيد العمال"
 msgstr "Labor Day"
 
 #. Armed Forces Day
-#: ./holidays/countries/egypt.py:73
 msgid "عيد القوات المسلحة"
 msgstr "Armed Forces Day"
 
-#: ./holidays/countries/egypt.py:77
+#. June 30 Revolution Day
 msgid "عيد ثورة 30 يونيو"
-msgstr "30 June Revolution Day"
+msgstr "June 30 Revolution Day"
 
-#: ./holidays/countries/egypt.py:81
-msgid "عيد الثورة"
-msgstr "Revolution Day"
+#. July 23 Revolution Day
+msgid "عيد ثورة 23 يوليو"
+msgstr "July 23 Revolution Day"
 
 #. Eid al-Fitr - Feast Festive
-#: ./holidays/countries/egypt.py:84
 msgid "عيد الفطر"
 msgstr "Eid al-Fitr"
 
-#: ./holidays/countries/egypt.py:85 ./holidays/countries/egypt.py:86
+#. Eid al-Fitr Holiday
 msgid "عطلة عيد الفطر"
 msgstr "Eid al-Fitr Holiday"
 
-#: ./holidays/countries/egypt.py:88
+#. Arafat Day
 msgid "يوم عرفة"
 msgstr "Arafat Day"
 
-#. Arafat Day & Eid al-Adha - Scarfice Festive
-#: ./holidays/countries/egypt.py:91
+#. Eid al-Adha - Scarfice Festive
 msgid "عيد الأضحى"
 msgstr "Eid al-Adha"
 
-#: ./holidays/countries/egypt.py:92 ./holidays/countries/egypt.py:93
+#. Eid al-Adha Holiday
 msgid "عطلة عيد الأضحى"
 msgstr "Eid al-Adha Holiday"
 
-#: ./holidays/countries/egypt.py:95
+#. Islamic New Year
 msgid "رأس السنة الهجرية"
 msgstr "Islamic New Year"
 
-#: ./holidays/countries/egypt.py:97
+#. Prophet Muhammad's Birthday
 msgid "عيد المولد النبوي"
 msgstr "Prophet's Birthday"

@@ -1,74 +1,65 @@
-# United Arab Emirates holidays ar localization.
+# United Arab Emirates holidays localization.
 # Authors: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>, 2023.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.28\n"
+"Project-Id-Version: Python Holidays 0.29\n"
 "POT-Creation-Date: 2023-06-28 00:13+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2023-07-05 17:07+0100\n"
+"Last-Translator: \n"
+"Language-Team: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.3.2\n"
 
-#: ./holidays/countries/united_arab_emirates.py:45
+#. Estimated label.
 #, c-format
 msgid "(تقدير*) *%s"
 msgstr ""
 
 #. New Year's Day.
-#: ./holidays/countries/united_arab_emirates.py:58
 msgid "رأس السنة الميلادية"
 msgstr ""
 
-#: ./holidays/countries/united_arab_emirates.py:62
+#. Commemoration Day.
 msgid "يوم الشهيد"
 msgstr ""
 
 #. National Day.
-#: ./holidays/countries/united_arab_emirates.py:65
-#: ./holidays/countries/united_arab_emirates.py:66
 msgid "اليوم الوطني"
 msgstr ""
 
 #. Eid al-Fitr.
-#: ./holidays/countries/united_arab_emirates.py:69
 msgid "عيد الفطر"
 msgstr ""
 
-#: ./holidays/countries/united_arab_emirates.py:70
-#: ./holidays/countries/united_arab_emirates.py:71
+#. Eid al-Fitr Holiday.
 msgid "عطلة عيد الفطر"
 msgstr ""
 
-#. Arafat Day & Eid al-Adha.
-#: ./holidays/countries/united_arab_emirates.py:74
+#. Arafat Day.
 msgid "وقفة عرفة"
 msgstr ""
 
-#: ./holidays/countries/united_arab_emirates.py:76
+#. Eid al-Adha.
 msgid "عيد الأضحى"
 msgstr ""
 
-#: ./holidays/countries/united_arab_emirates.py:77
-#: ./holidays/countries/united_arab_emirates.py:78
+#. Eid al-Adha Holiday.
 msgid "عطلة عيد الأضحى"
 msgstr ""
 
 #. Islamic New Year.
-#: ./holidays/countries/united_arab_emirates.py:81
 msgid "رأس السنة الهجرية"
 msgstr ""
 
 #. Leilat al-Miraj. The UAE government removed this starting 2019.
-#: ./holidays/countries/united_arab_emirates.py:85
 msgid "ليلة المعراج"
 msgstr ""
 
 #. Prophet Muhammad's Birthday. The UAE government removed this starting 2020.
-#: ./holidays/countries/united_arab_emirates.py:89
 msgid "عيد المولد النبوي"
 msgstr ""

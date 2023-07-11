@@ -28,6 +28,7 @@ class Bahrain(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     country = "BH"
     default_language = "ar"
+    # Estimated label.
     estimated_label = tr("(تقدير*) *%s")
     supported_languages = ("ar", "en_US")
     weekend = {FRI, SAT}
@@ -50,11 +51,13 @@ class Bahrain(HolidayBase, InternationalHolidays, IslamicHolidays):
         eid_al_fitr = tr("عيد الفطر")
         self._add_eid_al_fitr_day(eid_al_fitr)
         self._add_eid_al_fitr_day_two(tr("عطلة عيد الفطر"))
+        # Eid Al Fitr Holiday.
         self._add_eid_al_fitr_day_three(tr("عطلة عيد الفطر"))
 
         # Eid Al Adha.
         eid_al_adha = tr("عيد الأضحى")
         self._add_eid_al_adha_day(eid_al_adha)
+        # Eid Al Adha Holiday.
         self._add_eid_al_adha_day_two(tr("عطلة عيد الأضحى"))
         self._add_eid_al_adha_day_three(tr("عطلة عيد الأضحى"))
 
@@ -64,6 +67,7 @@ class Bahrain(HolidayBase, InternationalHolidays, IslamicHolidays):
 
         # Ashura.
         ashura = tr("عاشورة")
+        # Ashura Eve.
         self._add_ashura_eve(tr("ليلة عاشورة"))
         self._add_ashura_day(ashura)
 

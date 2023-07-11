@@ -16,74 +16,67 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.3.2\n"
 
-#: ./holidays/countries/morocco.py:38
+#. Estimated label.
 #, c-format
 msgid "(تقدير*) *%s"
 msgstr "%s* (*estimated)"
 
 #. New Year's Day
-#: ./holidays/countries/morocco.py:50
 msgid "رأس السنة الميلادية"
 msgstr "New Year's Day"
 
-#: ./holidays/countries/morocco.py:55
+#. Independence Manifesto Day post 1944
 msgid "ذكرى تقديم وثيقة الاستقلال"
 msgstr "Proclamation of Independence Day"
 
-#: ./holidays/countries/morocco.py:64
+#. Amazigh New Year
 msgid "رأس السنة الأمازيغية"
 msgstr "Amazigh New Year"
 
 #. Labor day
-#: ./holidays/countries/morocco.py:67
 msgid "عيد العمال"
 msgstr "Labor Day"
 
-#: ./holidays/countries/morocco.py:76 ./holidays/countries/morocco.py:88
+#. Throne day
 msgid "عيد العرش"
 msgstr "Throne Day"
 
 #. Oued Ed-Dahab Day
-#: ./holidays/countries/morocco.py:79
 msgid "ذكرى استرجاع إقليم وادي الذهب"
 msgstr "Oued Ed-Dahab Day"
 
 #. Revolution Day
-#: ./holidays/countries/morocco.py:82
 msgid "ذكرى ثورة الملك و الشعب"
 msgstr "Revolution Day"
 
-#: ./holidays/countries/morocco.py:86
+#. Youth day
 msgid "عيد الشباب"
 msgstr "Youth Day"
 
-#: ./holidays/countries/morocco.py:92
+#. Green March
 msgid "ذكرى المسيرة الخضراء"
 msgstr "Green March"
 
-#: ./holidays/countries/morocco.py:96
+#. Independance day
 msgid "عيد الإستقلال"
 msgstr "Independence Day"
 
 #. Eid al-Fitr - Feast Festive date of observance is announced yearly, This is
-#. an estimate since having the Holiday on Weekend does change the number of
-#. days, deceided to leave it since marking a Weekend as a holiday wouldn't do
-#. much harm.
-#: ./holidays/countries/morocco.py:103
+#. an estimate since
+#. having the Holiday on Weekend does change the number of days, deceided to
+#. leave it since marking
+#. a Weekend as a holiday wouldn't do much harm.
 msgid "عيد الفطر"
 msgstr "Eid al-Fitr"
 
 #. Eid al-Adha - Sacrifice Festive date of observance is announced yearly
-#: ./holidays/countries/morocco.py:109
 msgid "عيد الأضحى"
 msgstr "Eid al-Adha"
 
 #. Islamic New Year - (hijari_year, 1, 1)
-#: ./holidays/countries/morocco.py:114
 msgid "رأس السنة الهجرية"
 msgstr "Islamic New Year"
 
 #. Prophet Muhammad's Birthday - (hijari_year, 3, 12)
-#: ./holidays/countries/morocco.py:117
 msgid "عيد المولد النبوي"
 msgstr "Prophet's Birthday"

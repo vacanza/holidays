@@ -1,11 +1,11 @@
-# Algeria holidays ar localization.
+# Algeria holidays localization.
 # Authors: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>, 2023.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.28\n"
+"Project-Id-Version: Python Holidays 0.29\n"
 "POT-Creation-Date: 2023-06-28 00:13+0100\n"
-"PO-Revision-Date: 2023-06-28 00:18+0100\n"
+"PO-Revision-Date: 2023-07-05 17:40+0100\n"
 "Last-Translator: \n"
 "Language-Team: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>\n"
 "Language: ar\n"
@@ -15,64 +15,57 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.3.2\n"
 
-#: ./holidays/countries/algeria.py:16
+#. Estimated label.
 #, c-format
 msgid "(تقدير*) *%s"
 msgstr ""
 
 #. New Year's Day.
-#: ./holidays/countries/algeria.py:28
 msgid "رأس السنة الميلادية"
 msgstr ""
 
-#: ./holidays/countries/algeria.py:33
+#. Amazigh New Year / Yennayer
 msgid "رأس السنة الأمازيغية"
 msgstr ""
 
 #. Labour Day
-#: ./holidays/countries/algeria.py:36
 msgid "عيد العمال"
 msgstr ""
 
-#: ./holidays/countries/algeria.py:40
+#. Independence Day
 msgid "عيد الإستقلال"
 msgstr ""
 
-#: ./holidays/countries/algeria.py:44
+#. Revolution Day
 msgid "عيد الثورة"
 msgstr ""
 
 #. Islamic New Year
-#: ./holidays/countries/algeria.py:47
 msgid "رأس السنة الهجرية"
 msgstr ""
 
 #. Ashura
-#: ./holidays/countries/algeria.py:50
 msgid "عاشورة"
 msgstr ""
 
 #. Mawlid / Prophet's Birthday
-#: ./holidays/countries/algeria.py:53
 msgid "عيد المولد النبوي"
 msgstr ""
 
 #. As of April 30, 2023. Algeria has 3 days of Eid holidays
 #. (https://www.horizons.dz/english/archives/amp/12021) Eid al-Fitr - Feast
 #. Festive
-#: ./holidays/countries/algeria.py:58
 msgid "عيد الفطر"
 msgstr ""
 
-#: ./holidays/countries/algeria.py:59 ./holidays/countries/algeria.py:61
+#. Eid al-Fitr Holiday
 msgid "عطلة عيد الفطر"
 msgstr ""
 
 #. Eid al-Adha - Scarfice Festive
-#: ./holidays/countries/algeria.py:64
 msgid "عيد الأضحى"
 msgstr ""
 
-#: ./holidays/countries/algeria.py:65 ./holidays/countries/algeria.py:67
+#. Eid al-Adha Holiday
 msgid "عطلة عيد الأضحى"
 msgstr ""

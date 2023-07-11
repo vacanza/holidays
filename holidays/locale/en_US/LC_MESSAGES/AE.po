@@ -16,61 +16,51 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.3.2\n"
 
-#: ./holidays/countries/united_arab_emirates.py:45
+#. Estimated label.
 #, c-format
 msgid "(تقدير*) *%s"
 msgstr "%s* (*estimated)"
 
 #. New Year's Day.
-#: ./holidays/countries/united_arab_emirates.py:58
 msgid "رأس السنة الميلادية"
 msgstr "New Year's Day"
 
-#: ./holidays/countries/united_arab_emirates.py:62
+#. Commemoration Day.
 msgid "يوم الشهيد"
 msgstr "Commemoration Day"
 
 #. National Day.
-#: ./holidays/countries/united_arab_emirates.py:65
-#: ./holidays/countries/united_arab_emirates.py:66
 msgid "اليوم الوطني"
 msgstr "National Day"
 
 #. Eid al-Fitr.
-#: ./holidays/countries/united_arab_emirates.py:69
 msgid "عيد الفطر"
 msgstr "Eid al-Fitr"
 
-#: ./holidays/countries/united_arab_emirates.py:70
-#: ./holidays/countries/united_arab_emirates.py:71
+#. Eid al-Fitr Holiday.
 msgid "عطلة عيد الفطر"
 msgstr "Eid al-Fitr Holiday"
 
-#. Arafat Day & Eid al-Adha.
-#: ./holidays/countries/united_arab_emirates.py:74
+#. Arafat Day.
 msgid "وقفة عرفة"
 msgstr "Arafat Day"
 
-#: ./holidays/countries/united_arab_emirates.py:76
+#. Eid al-Adha.
 msgid "عيد الأضحى"
 msgstr "Eid al-Adha"
 
-#: ./holidays/countries/united_arab_emirates.py:77
-#: ./holidays/countries/united_arab_emirates.py:78
+#. Eid al-Adha Holiday.
 msgid "عطلة عيد الأضحى"
 msgstr "Eid al-Adha Holiday"
 
 #. Islamic New Year.
-#: ./holidays/countries/united_arab_emirates.py:81
 msgid "رأس السنة الهجرية"
 msgstr "Islamic New Year"
 
 #. Leilat al-Miraj. The UAE government removed this starting 2019.
-#: ./holidays/countries/united_arab_emirates.py:85
 msgid "ليلة المعراج"
 msgstr "Leilat al-Miraj (Ascension of the Prophet)"
 
 #. Prophet Muhammad's Birthday. The UAE government removed this starting 2020.
-#: ./holidays/countries/united_arab_emirates.py:89
 msgid "عيد المولد النبوي"
 msgstr "Prophet's Birthday"

@@ -42,6 +42,7 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     country = "AE"
     default_language = "ar"
+    # Estimated label.
     estimated_label = tr("(تقدير*) *%s")
     supported_languages = ("ar", "en_US")
     weekend = {FRI, SAT}
@@ -57,8 +58,8 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays):
         # New Year's Day.
         self._add_new_years_day(tr("رأس السنة الميلادية"))
 
-        # Commemoration Day.
         if year >= 2015:
+            # Commemoration Day.
             self._add_holiday(tr("يوم الشهيد"), *((DEC, 1) if year >= 2019 else (NOV, 30)))
 
         # National Day.
@@ -67,13 +68,16 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays):
 
         # Eid al-Fitr.
         self._add_eid_al_fitr_day(tr("عيد الفطر"))
+        # Eid al-Fitr Holiday.
         self._add_eid_al_fitr_day_two(tr("عطلة عيد الفطر"))
         self._add_eid_al_fitr_day_three(tr("عطلة عيد الفطر"))
 
-        # Arafat Day & Eid al-Adha.
+        # Arafat Day.
         self._add_arafah_day(tr("وقفة عرفة"))
 
+        # Eid al-Adha.
         self._add_eid_al_adha_day(tr("عيد الأضحى"))
+        # Eid al-Adha Holiday.
         self._add_eid_al_adha_day_two(tr("عطلة عيد الأضحى"))
         self._add_eid_al_adha_day_three(tr("عطلة عيد الأضحى"))
 

@@ -16,59 +16,51 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.3.2\n"
 
-#: ./holidays/countries/bahrain.py:31
+#. Estimated label.
 #, c-format
 msgid "(تقدير*) *%s"
 msgstr "%s* (*estimated)"
 
 #. New Year's Day.
-#: ./holidays/countries/bahrain.py:44
 msgid "رأس السنة الميلادية"
 msgstr "New Year's Day"
 
 #. Labour day.
-#: ./holidays/countries/bahrain.py:47
 msgid "عيد العمال"
 msgstr "Labor Day"
 
 #. Eid Al Fitr.
-#: ./holidays/countries/bahrain.py:50
 msgid "عيد الفطر"
 msgstr "Eid al-Fitr"
 
-#: ./holidays/countries/bahrain.py:52 ./holidays/countries/bahrain.py:53
+#. Eid Al Fitr Holiday.
 msgid "عطلة عيد الفطر"
 msgstr "Eid al-Fitr Holiday"
 
 #. Eid Al Adha.
-#: ./holidays/countries/bahrain.py:56
 msgid "عيد الأضحى"
 msgstr "Eid al-Adha"
 
-#: ./holidays/countries/bahrain.py:58 ./holidays/countries/bahrain.py:59
+#. Eid Al Adha Holiday.
 msgid "عطلة عيد الأضحى"
 msgstr "Eid al-Adha Holiday"
 
 #. Al Hijra New Year.
-#: ./holidays/countries/bahrain.py:62
 msgid "رأس السنة الهجرية"
 msgstr "Islamic New Year"
 
 #. Ashura.
-#: ./holidays/countries/bahrain.py:66
 msgid "عاشورة"
 msgstr "Ashura"
 
-#: ./holidays/countries/bahrain.py:67
+#. Ashura Eve.
 msgid "ليلة عاشورة"
 msgstr "Ashura Eve"
 
 #. Prophets Birthday.
-#: ./holidays/countries/bahrain.py:71
 msgid "عيد المولد النبوي"
 msgstr "Prophet's Birthday"
 
 #. National Day.
-#: ./holidays/countries/bahrain.py:74
 msgid "اليوم الوطني"
 msgstr "National Day"

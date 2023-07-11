@@ -13,6 +13,7 @@ class Algeria(HolidayBase, InternationalHolidays, IslamicHolidays):
 
     country = "DZ"
     default_language = "ar"
+    # Estimated label.
     estimated_label = tr("(تقدير*) *%s")
     supported_languages = ("ar", "en_US")
 
@@ -27,20 +28,20 @@ class Algeria(HolidayBase, InternationalHolidays, IslamicHolidays):
         # New Year's Day.
         self._add_new_years_day(tr("رأس السنة الميلادية"))
 
-        # Amazigh New Year / Yennayer
         # In January 2018, Algeria declared Yennayer a national holiday
         if year >= 2018:
+            # Amazigh New Year / Yennayer
             self._add_holiday(tr("رأس السنة الأمازيغية"), JAN, 12)
 
         # Labour Day
         self._add_labor_day(tr("عيد العمال"))
 
-        # Independence Day
         if year >= 1962:
+            # Independence Day
             self._add_holiday(tr("عيد الإستقلال"), JUL, 5)
 
-        # Revolution Day
         if year >= 1963:
+            # Revolution Day
             self._add_holiday(tr("عيد الثورة"), NOV, 1)
 
         # Islamic New Year
@@ -56,12 +57,14 @@ class Algeria(HolidayBase, InternationalHolidays, IslamicHolidays):
         # (https://www.horizons.dz/english/archives/amp/12021)
         # Eid al-Fitr - Feast Festive
         self._add_eid_al_fitr_day(tr("عيد الفطر"))
+        # Eid al-Fitr Holiday
         self._add_eid_al_fitr_day_two(tr("عطلة عيد الفطر"))
         if year >= 2024:
             self._add_eid_al_fitr_day_three(tr("عطلة عيد الفطر"))
 
         # Eid al-Adha - Scarfice Festive
         self._add_eid_al_adha_day(tr("عيد الأضحى"))
+        # Eid al-Adha Holiday
         self._add_eid_al_adha_day_two(tr("عطلة عيد الأضحى"))
         if year >= 2023:
             self._add_eid_al_adha_day_three(tr("عطلة عيد الأضحى"))

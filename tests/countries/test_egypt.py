@@ -75,7 +75,7 @@ class TestEgypt(TestCase):
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            ("2019-01-01", "رأس السنة الميلادية - عطلة بنوك"),
+            ("2019-01-01", "رأس السنة الميلادية"),
             ("2019-01-07", "عيد الميلاد المجيد (تقويم قبطي)"),
             ("2019-01-25", "عيد ثورة 25 يناير"),
             ("2019-04-25", "عيد تحرير سيناء"),
@@ -86,7 +86,7 @@ class TestEgypt(TestCase):
             ("2019-06-05", "(تقدير*) *عطلة عيد الفطر"),
             ("2019-06-06", "(تقدير*) *عطلة عيد الفطر"),
             ("2019-06-30", "عيد ثورة 30 يونيو"),
-            ("2019-07-23", "عيد الثورة"),
+            ("2019-07-23", "عيد ثورة 23 يوليو"),
             ("2019-08-10", "(تقدير*) *يوم عرفة"),
             ("2019-08-11", "(تقدير*) *عيد الأضحى"),
             ("2019-08-12", "(تقدير*) *عطلة عيد الأضحى"),
@@ -99,9 +99,9 @@ class TestEgypt(TestCase):
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
-            ("2019-01-01", "New Year's Day - Bank Holiday"),
+            ("2019-01-01", "New Year's Day"),
             ("2019-01-07", "Coptic Christmas"),
-            ("2019-01-25", "Revolution Day - January 25"),
+            ("2019-01-25", "January 25th Revolution Day"),
             ("2019-04-25", "Sinai Liberation Day"),
             ("2019-04-28", "Coptic Easter - Orthodox Easter"),
             ("2019-04-29", "Sham El Nessim"),
@@ -109,8 +109,8 @@ class TestEgypt(TestCase):
             ("2019-06-04", "Eid al-Fitr* (*estimated)"),
             ("2019-06-05", "Eid al-Fitr Holiday* (*estimated)"),
             ("2019-06-06", "Eid al-Fitr Holiday* (*estimated)"),
-            ("2019-06-30", "30 June Revolution Day"),
-            ("2019-07-23", "Revolution Day"),
+            ("2019-06-30", "June 30 Revolution Day"),
+            ("2019-07-23", "July 23 Revolution Day"),
             ("2019-08-10", "Arafat Day* (*estimated)"),
             ("2019-08-11", "Eid al-Adha* (*estimated)"),
             ("2019-08-12", "Eid al-Adha Holiday* (*estimated)"),
