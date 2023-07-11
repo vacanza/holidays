@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.28\n"
+"Project-Id-Version: Python Holidays 0.29\n"
 "POT-Creation-Date: 2023-06-28 00:13+0100\n"
-"PO-Revision-Date: 2023-06-28 00:52+0100\n"
+"PO-Revision-Date: 2023-07-11 03:44+0100\n"
 "Last-Translator: \n"
 "Language-Team: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>\n"
 "Language: en_US\n"
