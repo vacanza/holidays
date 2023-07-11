@@ -16,196 +16,105 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/switzerland.py:62
 msgid "Neujahrestag"
 msgstr "Capodanno"
 
 #. Easter Sunday.
-#: ./holidays/countries/switzerland.py:65
 msgid "Ostern"
 msgstr "Pasqua"
 
 #. Ascension Day.
-#: ./holidays/countries/switzerland.py:68
 msgid "Auffahrt"
 msgstr "Ascensione di Gesù"
 
 #. Whit Sunday.
-#: ./holidays/countries/switzerland.py:71
 msgid "Pfingsten"
 msgstr "Pentecoste"
 
 #. National Day.
-#: ./holidays/countries/switzerland.py:75
 msgid "Nationalfeiertag"
 msgstr "Festa nazionale"
 
 #. Christmas Day.
-#: ./holidays/countries/switzerland.py:78
 msgid "Weihnachten"
 msgstr "Natale"
 
 #. Good Friday.
-#: ./holidays/countries/switzerland.py:86
 msgid "Karfreitag"
 msgstr "Venerdì Santo"
 
 #. Easter Monday.
-#: ./holidays/countries/switzerland.py:89
 msgid "Ostermontag"
 msgstr "Lunedì dell'Angelo"
 
 #. Whit Monday.
-#: ./holidays/countries/switzerland.py:92
 msgid "Pfingstmontag"
 msgstr "Lunedì di Pentecoste"
 
 #. St. Stephen's Day.
-#: ./holidays/countries/switzerland.py:96
-#: ./holidays/countries/switzerland.py:185
 msgid "Stephanstag"
 msgstr "Giorno di Santo Stefano"
 
 #. Berchtold's Day.
-#: ./holidays/countries/switzerland.py:102
-#: ./holidays/countries/switzerland.py:128
-#: ./holidays/countries/switzerland.py:131
-#: ./holidays/countries/switzerland.py:145
-#: ./holidays/countries/switzerland.py:161
-#: ./holidays/countries/switzerland.py:171
-#: ./holidays/countries/switzerland.py:178
-#: ./holidays/countries/switzerland.py:196
-#: ./holidays/countries/switzerland.py:209
-#: ./holidays/countries/switzerland.py:222
-#: ./holidays/countries/switzerland.py:226
-#: ./holidays/countries/switzerland.py:250
-#: ./holidays/countries/switzerland.py:267
-#: ./holidays/countries/switzerland.py:274
 msgid "Berchtoldstag"
 msgstr "Giorno di Bertoldo"
 
 #. Corpus Christi.
-#: ./holidays/countries/switzerland.py:109
-#: ./holidays/countries/switzerland.py:163
-#: ./holidays/countries/switzerland.py:172
-#: ./holidays/countries/switzerland.py:190
-#: ./holidays/countries/switzerland.py:197
-#: ./holidays/countries/switzerland.py:216
-#: ./holidays/countries/switzerland.py:233
-#: ./holidays/countries/switzerland.py:244
-#: ./holidays/countries/switzerland.py:261
-#: ./holidays/countries/switzerland.py:268
 msgid "Fronleichnam"
 msgstr "Corpus Domini"
 
 #. Assumption of Mary.
-#: ./holidays/countries/switzerland.py:112
-#: ./holidays/countries/switzerland.py:167
-#: ./holidays/countries/switzerland.py:173
-#: ./holidays/countries/switzerland.py:191
-#: ./holidays/countries/switzerland.py:198
-#: ./holidays/countries/switzerland.py:217
-#: ./holidays/countries/switzerland.py:237
-#: ./holidays/countries/switzerland.py:245
-#: ./holidays/countries/switzerland.py:262
-#: ./holidays/countries/switzerland.py:269
 msgid "Mariä Himmelfahrt"
 msgstr "Assunzione di Maria"
 
 #. All Saints' Day.
-#: ./holidays/countries/switzerland.py:115
-#: ./holidays/countries/switzerland.py:155
-#: ./holidays/countries/switzerland.py:168
-#: ./holidays/countries/switzerland.py:174
-#: ./holidays/countries/switzerland.py:192
-#: ./holidays/countries/switzerland.py:202
-#: ./holidays/countries/switzerland.py:206
-#: ./holidays/countries/switzerland.py:218
-#: ./holidays/countries/switzerland.py:238
-#: ./holidays/countries/switzerland.py:246
-#: ./holidays/countries/switzerland.py:263
-#: ./holidays/countries/switzerland.py:270
 msgid "Allerheiligen"
 msgstr "Ognissanti"
 
 #. Immaculate Conception.
-#: ./holidays/countries/switzerland.py:118
-#: ./holidays/countries/switzerland.py:175
-#: ./holidays/countries/switzerland.py:193
-#: ./holidays/countries/switzerland.py:203
-#: ./holidays/countries/switzerland.py:219
-#: ./holidays/countries/switzerland.py:239
-#: ./holidays/countries/switzerland.py:247
-#: ./holidays/countries/switzerland.py:264
-#: ./holidays/countries/switzerland.py:271
 msgid "Mariä Empfängnis"
 msgstr "Immacolata Concezione"
 
 #. Labor Day.
-#: ./holidays/countries/switzerland.py:122
-#: ./holidays/countries/switzerland.py:125
-#: ./holidays/countries/switzerland.py:162
-#: ./holidays/countries/switzerland.py:182
-#: ./holidays/countries/switzerland.py:210
-#: ./holidays/countries/switzerland.py:223
-#: ./holidays/countries/switzerland.py:227
-#: ./holidays/countries/switzerland.py:232
-#: ./holidays/countries/switzerland.py:275
 msgid "Tag der Arbeit"
 msgstr "Festa del lavoro"
 
 #. Genevan Fast.
-#: ./holidays/countries/switzerland.py:137
 msgid "Genfer Bettag"
 msgstr "Jeûne genevois"
 
 #. Restoration Day.
-#: ./holidays/countries/switzerland.py:142
 msgid "Wiederherstellung der Republik"
 msgstr "Restauration genevoise"
 
 #. Battle of Naefels Victory Day.
-#: ./holidays/countries/switzerland.py:153
 msgid "Näfelser Fahrt"
 msgstr "Battaglia di Näfels"
 
 #. Independence Day.
-#: ./holidays/countries/switzerland.py:166
 msgid "Fest der Unabhängigkeit"
 msgstr "Festa dell'Indipendenza"
 
 #. Republic Day.
-#: ./holidays/countries/switzerland.py:181
 msgid "Jahrestag der Ausrufung der Republik"
 msgstr "Giorno della Repubblica"
 
 #. St. Joseph's Day.
-#: ./holidays/countries/switzerland.py:189
-#: ./holidays/countries/switzerland.py:215
-#: ./holidays/countries/switzerland.py:231
-#: ./holidays/countries/switzerland.py:243
-#: ./holidays/countries/switzerland.py:260
 msgid "Josefstag"
 msgstr "San Giuseppe"
 
 #. St. Nicholas of Flüe.
-#: ./holidays/countries/switzerland.py:201
 msgid "Bruder Klaus"
 msgstr "Nicolao della Flüe"
 
 #. Epiphany.
-#: ./holidays/countries/switzerland.py:214
-#: ./holidays/countries/switzerland.py:230
-#: ./holidays/countries/switzerland.py:242
 msgid "Heilige Drei Könige"
 msgstr "Epifania"
 
 #. Saints Peter and Paul.
-#: ./holidays/countries/switzerland.py:236
 msgid "Peter und Paul"
 msgstr "Santi Pietro e Paolo"
 
 #. Prayer Monday.
-#: ./holidays/countries/switzerland.py:255
 msgid "Bettagsmontag"
 msgstr "Digiuno Ginevrino"

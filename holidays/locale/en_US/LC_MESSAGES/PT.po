@@ -16,161 +16,121 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: ./holidays/countries/portugal.py:86
 msgid "Ano Novo"
 msgstr "New Year's Day"
 
 #. Good Friday.
-#: ./holidays/countries/portugal.py:93
 msgid "Sexta-feira Santa"
 msgstr "Good Friday"
 
 #. Easter Sunday.
-#: ./holidays/countries/portugal.py:96
 msgid "Páscoa"
 msgstr "Easter Sunday"
 
-#: ./holidays/countries/portugal.py:100
 msgid "Corpo de Deus"
 msgstr "Corpus Christi"
 
-#: ./holidays/countries/portugal.py:102
 msgid "Implantação da República"
 msgstr "Republic Day"
 
-#: ./holidays/countries/portugal.py:103
 msgid "Dia de Todos os Santos"
 msgstr "All Saints Day"
 
-#: ./holidays/countries/portugal.py:105
 msgid "Restauração da Independência"
 msgstr "Restoration of Independence Day"
 
-#: ./holidays/countries/portugal.py:108
 msgid "Dia da Liberdade"
 msgstr "Freedom Day"
 
-#: ./holidays/countries/portugal.py:109
 msgid "Dia do Trabalhador"
 msgstr "Labour Day"
 
-#: ./holidays/countries/portugal.py:112
 msgid "Dia de Camões, de Portugal e da Raça"
 msgstr "Day of Camões, Portugal, and the Portuguese Race"
 
-#: ./holidays/countries/portugal.py:115
 msgid "Dia de Portugal, de Camões e das Comunidades Portuguesas"
 msgstr "Day of Portugal, Camões, and the Portuguese Communities"
 
-#: ./holidays/countries/portugal.py:118
 msgid "Dia de Portugal"
 msgstr "Portugal Day"
 
-#: ./holidays/countries/portugal.py:120
 msgid "Assunção de Nossa Senhora"
 msgstr "Assumption Day"
 
-#: ./holidays/countries/portugal.py:121
 msgid "Imaculada Conceição"
 msgstr "Immaculate Conception"
 
-#: ./holidays/countries/portugal.py:122
 msgid "Dia de Natal"
 msgstr "Christmas"
 
-#: ./holidays/countries/portugal.py:143
 msgid "Carnaval"
 msgstr "Carnival"
 
-#: ./holidays/countries/portugal.py:144
 msgid "Véspera de Natal"
 msgstr "Christmas Eve"
 
-#: ./holidays/countries/portugal.py:145
 msgid "26 de Dezembro"
 msgstr "Boxing Day"
 
-#: ./holidays/countries/portugal.py:146
 msgid "Véspera de Ano Novo"
 msgstr "New Year's Eve"
 
-#: ./holidays/countries/portugal.py:147 ./holidays/countries/portugal.py:182
-#: ./holidays/countries/portugal.py:200
 msgid "Dia de Santo António"
 msgstr "St. Anthony's Day"
 
-#: ./holidays/countries/portugal.py:150
 msgid "Dia de Santa Joana"
 msgstr "St. Joanna's Day"
 
-#: ./holidays/countries/portugal.py:153
 msgid "Quinta-feira da Ascensão"
 msgstr "Ascension of Jesus"
 
-#: ./holidays/countries/portugal.py:156 ./holidays/countries/portugal.py:188
 msgid "Dia de São João"
 msgstr "St. John's Day"
 
-#: ./holidays/countries/portugal.py:159
 msgid "Dia de Nossa Senhora das Graças"
 msgstr "Feast of Our Lady of Graces"
 
-#: ./holidays/countries/portugal.py:163
 msgid "Dia de Nossa Senhora de Mércoles"
 msgstr "Feast of Our Lady of Mércoles"
 
-#: ./holidays/countries/portugal.py:167
 msgid "Dia de Santa Isabel"
 msgstr "St. Elizabeth's Day"
 
-#: ./holidays/countries/portugal.py:170
 msgid "Dia de São Pedro"
 msgstr "St. Peter's Day"
 
-#: ./holidays/countries/portugal.py:173
 msgid "Dia do Município de Faro"
 msgstr "Municipal Holiday (Faro)"
 
-#: ./holidays/countries/portugal.py:176
 msgid "Dia do Município da Guarda"
 msgstr "Municipal Holiday (Guarda)"
 
-#: ./holidays/countries/portugal.py:179
 msgid "Dia do Município de Leiria"
 msgstr "Municipal Holiday (Leiria)"
 
-#: ./holidays/countries/portugal.py:185
 msgid "Dia do Município de Portalegre"
 msgstr "Municipal Holiday (Portalegre)"
 
-#: ./holidays/countries/portugal.py:191
 msgid "Dia de São José"
 msgstr "St. Joseph's Day"
 
-#: ./holidays/countries/portugal.py:194
 msgid "Dia de Bocage"
 msgstr "Bocage Day"
 
-#: ./holidays/countries/portugal.py:197
 msgid "Dia de Nossa Senhora da Agonia"
 msgstr "Feast of Our Lady of Sorrows"
 
-#: ./holidays/countries/portugal.py:203
 msgid "Dia de São Mateus"
 msgstr "St. Matthew's Day"
 
-#: ./holidays/countries/portugal.py:208
 msgid "Dia da Região Autónoma dos Açores"
 msgstr "Day of the Autonomous Region of the Azores"
 
-#: ./holidays/countries/portugal.py:213
 msgid "Dia da Região Autónoma da Madeira"
 msgstr "Day of the Autonomous Region of Madeira"
 
-#: ./holidays/countries/portugal.py:216
 msgid "Dia da Região Autónoma da Madeira e das Comunidades Madeirenses"
 msgstr "Day of the Autonomous Region of Madeira and the Madeiran Communities"
 
-#: ./holidays/countries/portugal.py:220
 msgid "Primeira Oitava"
 msgstr "1st Octave"

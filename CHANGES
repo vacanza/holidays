@@ -1,7 +1,13 @@
 Version 0.29
 ============
 
-Released ???????? ??, ????
+- Refactor movable holidays (#1357 by @KJhellico)
+- Update .po files format: remove location comments (#1362 by @KJhellico)
+- Update Ireland holidays: finish migration to holiday groups (#1350 by @KJhellico)
+- Update United Kingdom holidays: update certain holidays start years (#1353 by @KJhellico)
+- Migrate Belgium and Luxembourg to holiday groups, add l10n support (#1343 by @KJhellico)
+- Migrate Bulgaria holidays to holiday groups and categories (#1351 by @KJhellico)
+- Migrate Croatia, Czechia and Slovenia to holiday groups, add l10n support (#1344 by @KJhellico)
 
 Version 0.28
 ============

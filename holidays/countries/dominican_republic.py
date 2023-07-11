@@ -12,7 +12,7 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, FEB, MAY, JUN, AUG, SEP, NOV, MON
+from holidays.calendars.gregorian import JAN, FEB, JUN, AUG, SEP, NOV, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -27,18 +27,18 @@ class DominicanRepublic(HolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "es"
     supported_languages = ("en_US", "es", "uk")
 
-    def _add_movable_holiday(self, name: str, dt: date, include_sun: bool = False) -> None:
+    def _move_holiday(self, dt: date, include_sun: bool = False) -> None:
         # Law No. 139-97 - Holidays Dominican Republic - Jun 27, 1997
-        if dt >= date(1997, JUN, 27):
-            if self._is_tuesday(dt) or self._is_wednesday(dt):
-                dt = self._get_nth_weekday_from(-1, MON, dt)
-            elif (
-                self._is_thursday(dt)
-                or self._is_friday(dt)
-                or (include_sun and self._is_sunday(dt))
-            ):
-                dt = self._get_nth_weekday_from(1, MON, dt)
-        self._add_holiday(name, dt)
+        if dt < date(1997, JUN, 27):
+            return None
+        obs_dt = None
+        if self._is_tuesday(dt) or self._is_wednesday(dt):
+            obs_dt = self._get_nth_weekday_from(-1, MON, dt)
+        elif self._is_thursday(dt) or self._is_friday(dt) or (include_sun and self._is_sunday(dt)):
+            obs_dt = self._get_nth_weekday_from(1, MON, dt)
+        if obs_dt:
+            self._add_holiday(self[dt], obs_dt)
+            self.pop(dt)
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
@@ -51,17 +51,14 @@ class DominicanRepublic(HolidayBase, ChristianHolidays, InternationalHolidays):
         # New Year's Day.
         self._add_new_years_day(tr("Año Nuevo"))
 
-        self._add_movable_holiday(
-            # Epiphany.
-            tr("Día de los Santos Reyes"),
-            date(year, JAN, 6),
-        )
+        # Epiphany.
+        self._move_holiday(self._add_epiphany_day(tr("Día de los Santos Reyes")))
 
         # Lady of Altagracia.
         self._add_holiday(tr("Día de la Altagracia"), JAN, 21)
 
         # Juan Pablo Duarte Day.
-        self._add_movable_holiday(tr("Día de Duarte"), date(year, JAN, 26))
+        self._move_holiday(self._add_holiday(tr("Día de Duarte"), JAN, 26))
 
         # Independence Day.
         self._add_holiday(tr("Día de Independencia"), FEB, 27)
@@ -69,12 +66,8 @@ class DominicanRepublic(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Good Friday.
         self._add_good_friday(tr("Viernes Santo"))
 
-        self._add_movable_holiday(
-            # Labor Day.
-            tr("Día del Trabajo"),
-            date(year, MAY, 1),
-            include_sun=True,
-        )
+        # Labor Day.
+        self._move_holiday(self._add_labor_day(tr("Día del Trabajo")), include_sun=True)
 
         # Feast of Corpus Christi.
         self._add_corpus_christi_day(tr("Corpus Christi"))
@@ -85,16 +78,13 @@ class DominicanRepublic(HolidayBase, ChristianHolidays, InternationalHolidays):
         if year <= 2007 and year % 4 == 0:
             self._add_holiday(name, AUG, 16)
         else:
-            self._add_movable_holiday(name, date(year, AUG, 16))
+            self._move_holiday(self._add_holiday(name, AUG, 16))
 
         # Our Lady of Mercedes Day.
         self._add_holiday(tr("Día de las Mercedes"), SEP, 24)
 
-        self._add_movable_holiday(
-            # Constitution Day.
-            tr("Día de la Constitución"),
-            date(year, NOV, 6),
-        )
+        # Constitution Day.
+        self._move_holiday(self._add_holiday(tr("Día de la Constitución"), NOV, 6))
 
         # Christmas Day.
         self._add_christmas_day(tr("Día de Navidad"))

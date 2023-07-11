@@ -17,66 +17,53 @@ msgstr ""
 "X-Generator: Poedit 3.3.1\n"
 
 #. New Year's Day
-#: ./holidays/countries/curacao.py:50
 msgid "Aña Nobo"
 msgstr "Nieuwjaarsdag"
 
 #. Carnival Monday
-#: ./holidays/countries/curacao.py:57
 msgid "Dialuna despues di Carnaval Grandi"
 msgstr "De maandag na de Grote Karnaval"
 
 #. Good Friday
-#: ./holidays/countries/curacao.py:63
 msgid "Bièrnèsantu"
 msgstr "Goede Vrijdag"
 
 #. Easter Sunday
-#: ./holidays/countries/curacao.py:69
 msgid "Pasku di Resurekshon"
 msgstr "Paasdag"
 
 #. Easter Monday
-#: ./holidays/countries/curacao.py:75
 msgid "Di dos dia di Pasku di Resurekshon"
 msgstr "Tweede paasdag"
 
 #. King's Day.
-#: ./holidays/countries/curacao.py:87
 msgid "Dia di Rey"
 msgstr "Koningsdag"
 
 #. Queen's Day.
-#: ./holidays/countries/curacao.py:90
 msgid "Dia di la Reina"
 msgstr "Koninginnedag"
 
 #. Labor Day
-#: ./holidays/countries/curacao.py:108
 msgid "Dia di Obrero"
 msgstr "Dag van de Arbeid"
 
 #. Ascension Day
-#: ./holidays/countries/curacao.py:114
 msgid "Dia di Asenshon"
 msgstr "Hemelvaartsdag"
 
 #. National Anthem and Flag Day
-#: ./holidays/countries/curacao.py:122
 msgid "Dia di Himno i Bandera"
 msgstr "Nationale vlag en volkslied"
 
 #. Curaçao Day
-#: ./holidays/countries/curacao.py:130
 msgid "Dia di Pais Kòrsou"
 msgstr "Dag van Land Curaçao"
 
 #. Christmas Day
-#: ./holidays/countries/curacao.py:136
 msgid "Pasku di Nasementu"
 msgstr "Kerst"
 
 #. Second Day of Christmas
-#: ./holidays/countries/curacao.py:142
 msgid "Di dos dia di Pasku di Nasementu"
 msgstr "Tweede kerstdag"

@@ -16,73 +16,58 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.3\n"
 
-#: ./holidays/countries/costa_rica.py:40 ./holidays/countries/costa_rica.py:52
-#: ./holidays/countries/costa_rica.py:123
 #, c-format
 msgid "%s (Observado)"
 msgstr "%s (вихідний)"
 
 #. New Year's Day.
-#: ./holidays/countries/costa_rica.py:58
 msgid "Año Nuevo"
 msgstr "Новий рік"
 
 #. Maundy Thursday.
-#: ./holidays/countries/costa_rica.py:61
 msgid "Jueves Santo"
 msgstr "Великий четвер"
 
 #. Good Friday.
-#: ./holidays/countries/costa_rica.py:64
 msgid "Viernes Santo"
 msgstr "Страсна пʼятниця"
 
 #. Juan Santamaría Day.
-#: ./holidays/countries/costa_rica.py:70
 msgid "Día de Juan Santamaría"
 msgstr "День Хуана Сантамарії"
 
 #. International Labor Day.
-#: ./holidays/countries/costa_rica.py:79
 msgid "Día Internacional del Trabajo"
 msgstr "Міжнародний день трудящих"
 
 #. Annexation of the Party of Nicoya to Costa Rica.
-#: ./holidays/countries/costa_rica.py:89
 msgid "Anexión del Partido de Nicoya a Costa Rica"
 msgstr "День приєднання Нікої"
 
 #. Feast of Our Lady of the Angels.
-#: ./holidays/countries/costa_rica.py:99
 msgid "Fiesta de Nuestra Señora de los Ángeles"
 msgstr "Свято Богоматері Ангелів"
 
 #. Mother's Day.
-#: ./holidays/countries/costa_rica.py:108
 msgid "Día de la Madre"
 msgstr "День матері"
 
 #. Day of the Black Person and Afro-Costa Rican Culture.
-#: ./holidays/countries/costa_rica.py:120
 msgid "Día de la Persona Negra y la Cultura Afrocostarricense"
 msgstr "День чорношкірої людини та афро-костариканської культури"
 
 #. Independence Day.
-#: ./holidays/countries/costa_rica.py:128
 msgid "Día de la Independencia"
 msgstr "День незалежності"
 
 #. Cultures Day.
-#: ./holidays/countries/costa_rica.py:137
 msgid "Día de las Culturas"
 msgstr "День культур"
 
 #. Army Abolition Day.
-#: ./holidays/countries/costa_rica.py:143
 msgid "Día de la Abolición del Ejército"
 msgstr "День ліквідації армії"
 
 #. Christmas Day.
-#: ./holidays/countries/costa_rica.py:150
 msgid "Navidad"
 msgstr "Різдво Христове"
