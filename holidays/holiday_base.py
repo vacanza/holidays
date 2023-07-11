@@ -12,7 +12,6 @@
 __all__ = ("DateLike", "HolidayBase", "HolidaySum")
 
 import copy
-import os
 import warnings
 from calendar import isleap
 from datetime import date, datetime, timedelta, timezone
@@ -305,20 +304,20 @@ class HolidayBase(Dict[date, str]):
 
             name = getattr(self, "country", getattr(self, "market", None))
             if name:
-                locale_dir = os.path.join(os.path.dirname(__file__), "locale")
+                locale_path = Path(__file__).with_name("locale")
                 translator: NullTranslations
-                translations = sorted(
-                    (
-                        # Collect `language` part from
-                        # holidays/locale/<language>/LC_MESSAGES/country.po
-                        str(translation).split(os.sep)[-3]
-                        for translation in Path(locale_dir).rglob(f"{name}.mo")
-                    )
-                )
+                translations = {
+                    # Collect `language` part from
+                    # holidays/locale/<language>/LC_MESSAGES/country.po
+                    translation.parts[-3]
+                    for translation in locale_path.rglob(f"{name}.mo")
+                }
                 if language and language in translations:
-                    translator = translation(name, languages=[language], localedir=locale_dir)
+                    translator = translation(
+                        name, languages=[language], localedir=str(locale_path)
+                    )
                 else:
-                    translator = translation(name, fallback=True, localedir=locale_dir)
+                    translator = translation(name, fallback=True, localedir=str(locale_path))
                 self.tr = translator.gettext
 
         if isinstance(years, int):
