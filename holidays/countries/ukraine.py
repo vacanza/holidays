@@ -70,15 +70,17 @@ class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "UA"
     default_language = "uk"
     supported_languages = ("ar", "en_US", "uk")
-    # Day off (substituted from {day}.{month}).
-    substituted_label = tr("Вихідний день (перенесено з {day:02}.{month:02})")
+    # Date format (see strftime() Format Codes)
+    substituted_date_format = tr("%d.%m.%Y")
+    # Day off (substituted from %s).
+    substituted_label = tr("Вихідний день (перенесено з %s)")
     substituted_holidays = {
         2001: (
             (APR, 28, APR, 30),
             (MAY, 5, MAY, 10),
             (MAY, 6, MAY, 11),
             (JUN, 23, JUN, 29),
-            (DEC, 29, DEC, 31),
+            (2001, DEC, 29, DEC, 31),
         ),
         2002: (
             (MAY, 11, MAY, 3),

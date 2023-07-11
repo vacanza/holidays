@@ -16,10 +16,14 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#. Day off (substituted from {day}.{month}).
-#, python-format
-msgid "Вихідний день (перенесено з {day:02}.{month:02})"
-msgstr "يوم عطلة (استبدل من {day:02}/{month:02})"
+#. Date format (see strftime() Format Codes)
+msgid "%d.%m.%Y"
+msgstr "%d/%m/%Y"
+
+#. Day off (substituted from %s).
+#, c-format
+msgid "Вихідний день (перенесено з %s)"
+msgstr "يوم عطلة (استبدل من %s)"
 
 #, c-format
 msgid "%s (вихідний)"

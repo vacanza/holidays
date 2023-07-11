@@ -29,7 +29,10 @@ from holidays.helpers import _normalize_tuple
 DateArg = Union[date, Tuple[int, int]]
 DateLike = Union[date, datetime, str, float, int]
 SpecialHoliday = Union[Tuple[int, int, str], Tuple[Tuple[int, int, str], ...]]
-SubstitutedHoliday = Union[Tuple[int, int, int, int], Tuple[Tuple[int, int, int, int], ...]]
+SubstitutedHoliday = Union[
+    Union[Tuple[int, int, int, int], Tuple[int, int, int, int, int]],
+    Tuple[Union[Tuple[int, int, int, int], Tuple[int, int, int, int, int]], ...],
+]
 
 gettext = gettext
 
@@ -562,15 +565,18 @@ class HolidayBase(Dict[date, str]):
 
     def _add_substituted_holidays(self):
         """Populate substituted holidays."""
-        substituted_label = getattr(
-            self, "substituted_label", "Day off (substituted from {day}.{month})"
+        substituted_label = self.tr(
+            getattr(self, "substituted_label", "Day off (substituted from %s)")
         )
-        for from_month, from_day, to_month, to_day in _normalize_tuple(
-            self.substituted_holidays.get(self._year, ())
-        ):
-            self._add_holiday(
-                self.tr(substituted_label).format(day=from_day, month=from_month), to_month, to_day
-            )
+        substituted_date_format = self.tr(getattr(self, "substituted_date_format", "%d.%m.%Y"))
+        for hol in _normalize_tuple(self.substituted_holidays.get(self._year, ())):
+            if len(hol) == 5:
+                from_year = hol[0]
+            else:
+                from_year = self._year
+            from_month, from_day, to_month, to_day = hol[-4:]
+            from_date = date(from_year, from_month, from_day).strftime(substituted_date_format)
+            self._add_holiday(substituted_label % from_date, to_month, to_day)
 
     def _check_weekday(self, weekday: int, *args) -> bool:
         """
