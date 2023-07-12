@@ -1,4 +1,4 @@
-# Algeria holidays localization.
+# Algeria holidays.
 # Authors: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>, 2023.
 #
 msgid ""

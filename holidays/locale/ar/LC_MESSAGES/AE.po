@@ -1,4 +1,4 @@
-# United Arab Emirates holidays localization.
+# United Arab Emirates holidays.
 # Authors: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>, 2023.
 #
 msgid ""

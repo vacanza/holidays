@@ -79,12 +79,8 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
         # Revolution Day
         self._add_holiday(tr("ذكرى ثورة الملك و الشعب"), AUG, 20)
 
-        if year >= 2001:
-            dt = (AUG, 21)
-        else:
-            dt = (JUL, 9)
         # Youth day
-        self._add_holiday(tr("عيد الشباب"), *dt)
+        self._add_holiday(tr("عيد الشباب"), *((AUG, 21) if year >= 2001 else (JUL, 9)))
 
         if year >= 1976:
             # Green March
