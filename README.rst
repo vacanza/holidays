@@ -140,7 +140,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Algeria
      - DZ
      -
-     -
+     - **ar**, en_US
    * - American Samoa
      - AS
      - Can also be loaded as country US, subdivision AS
@@ -180,7 +180,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Bahrain
      - BH
      -
-     -
+     - **ar**, en_US
    * - Bangladesh
      - BD
      -
@@ -300,7 +300,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Egypt
      - EG
      -
-     -
+     - **ar**, en_US
    * - El Salvador
      - SV
      - Departments: AH, CA, CH, CU, LI, MO, PA, SA, SM, SO, SS, SV, UN, US
@@ -464,7 +464,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Morocco
      - MA
      -
-     -
+     - **ar**, en_US
    * - Mozambique
      - MZ
      -
@@ -548,7 +548,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Saudi Arabia
      - SA
      -
-     -
+     - **ar**, en_US
    * - Serbia
      - RS
      -
@@ -596,7 +596,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Tunisia
      - TN
      -
-     -
+     - **ar**, en_US
    * - Turkey
      - TR
      -
@@ -608,7 +608,7 @@ The list of supported countries, their subdivisions and supported languages
    * - United Arab Emirates
      - AE
      -
-     -
+     - **ar**, en_US
    * - United Kingdom
      - GB
      - Subdivisions: ENG, NIR, SCT, WLS

@@ -1,0 +1,65 @@
+# Saudi Arabia holidays.
+# Authors: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.29\n"
+"POT-Creation-Date: 2023-06-28 00:13+0100\n"
+"PO-Revision-Date: 2023-07-05 17:41+0100\n"
+"Last-Translator: \n"
+"Language-Team: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.3.2\n"
+
+#. Estimated label.
+#, c-format
+msgid "(تقدير*) *%s"
+msgstr ""
+
+#. Celebrate the country's win against Argentina in the World Cup
+msgid "يوم وطني"
+msgstr ""
+
+#, c-format
+msgid "(ملاحظة) %s"
+msgstr ""
+
+#. The holiday is a 4-day holiday starting on the day following the 29th day
+#. of Ramadan, the 9th
+#. month of the Islamic calendar. Observed days are added to make up for any
+#. days falling on a
+#. weekend. Holidays may straddle across Gregorian years, so we go back one
+#. year to pick up any such
+#. occurrence. Date of observance is announced yearly. Eid al-Fitr Holiday
+msgid "عطلة عيد الفطر"
+msgstr ""
+
+#. The holiday is a 4-day holiday starting on Arafat Day, the 10th of Dhu al-
+#. Hijjah, the 12th month
+#. of the Islamic calendar. Observed days are added to make up for any days
+#. falling on a weekend.
+#. Holidays may straddle across Gregorian years, so we go back one year to
+#. pick up any such
+#. occurrence. Date of observance is announced yearly. Arafat Day
+msgid "يوم عرفة"
+msgstr ""
+
+#. Eid al-Adha Holiday
+msgid "عطلة عيد الأضحى"
+msgstr ""
+
+#. National Day Holiday
+msgid "اليوم الوطني"
+msgstr ""
+
+#. Founding Day
+msgid "يوم التأسيسي"
+msgstr ""
+
+#. Eid al-Fitr Holiday (observed)
+msgid "عطلة عيد الفطر (ملاحظة)"
+msgstr ""
