@@ -16,71 +16,57 @@ msgstr ""
 "X-Generator: Poedit 3.3.2\n"
 
 #. New Year's Day
-#: ./holidays/countries/malta.py:59
 msgid "L-Ewwel tas-Sena"
 msgstr ""
 
 #. Feast of St. Paul's Shipwreck
-#: ./holidays/countries/malta.py:67
 msgid "Il-Festa tan-Nawfraġju ta' San Pawl"
 msgstr ""
 
 #. Feast of St. Joseph
-#: ./holidays/countries/malta.py:75
 msgid "Il-Festa ta' San Ġużepp"
 msgstr ""
 
 #. Freedom Day
-#: ./holidays/countries/malta.py:84
 msgid "Jum il-Ħelsien"
 msgstr ""
 
 #. Good Friday
-#: ./holidays/countries/malta.py:90
 msgid "Il-Ġimgħa l-Kbira"
 msgstr ""
 
 #. Worker's Day
-#: ./holidays/countries/malta.py:96
 msgid "Jum il-Ħaddiem"
 msgstr ""
 
 #. Sette Giugno
-#: ./holidays/countries/malta.py:104
 msgid "Sette Giugno"
 msgstr ""
 
 #. Feast of St. Peter and St. Paul
-#: ./holidays/countries/malta.py:112
 msgid "Il-Festa ta' San Pietru u San Pawl"
 msgstr ""
 
 #. Feast of the Assumption
-#: ./holidays/countries/malta.py:118
 msgid "Il-Festa ta' Santa Marija"
 msgstr ""
 
 #. Feast of Our Lady of Victories
-#: ./holidays/countries/malta.py:127
 msgid "Jum il-Vitorja"
 msgstr ""
 
 #. Independence Day
-#: ./holidays/countries/malta.py:135
 msgid "Jum l-Indipendenza"
 msgstr ""
 
 #. Feast of the Immaculate Conception
-#: ./holidays/countries/malta.py:143
 msgid "Il-Festa tal-Immakulata Kunċizzjoni"
 msgstr ""
 
 #. Republic Day
-#: ./holidays/countries/malta.py:149
 msgid "Jum ir-Repubblika"
 msgstr ""
 
 #. Christmas Day
-#: ./holidays/countries/malta.py:155
 msgid "Il-Milied"
 msgstr ""

@@ -81,7 +81,8 @@ class POGenerator:
                     "--package-version",
                     package_version,
                     "--width",
-                    "80",
+                    "100",
+                    "--no-location",
                 ),
                 standalone_mode=False,
             )

@@ -16,66 +16,53 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/greece.py:42
 msgid "Πρωτοχρονιά"
 msgstr "New Year’s Day"
 
 #. Epiphany.
-#: ./holidays/countries/greece.py:45
 msgid "Θεοφάνεια"
 msgstr "Epiphany"
 
 #. Clean Monday.
-#: ./holidays/countries/greece.py:48
 msgid "Καθαρά Δευτέρα"
 msgstr "Clean Monday"
 
 #. Independence Day.
-#: ./holidays/countries/greece.py:51
 msgid "Εικοστή Πέμπτη Μαρτίου"
 msgstr "Independence Day"
 
 #. Good Friday.
-#: ./holidays/countries/greece.py:54
 msgid "Μεγάλη Παρασκευή"
 msgstr "Good Friday"
 
 #. Easter Monday.
-#: ./holidays/countries/greece.py:57
 msgid "Δευτέρα του Πάσχα"
 msgstr "Easter Monday"
 
 #. Monday of the Holy Spirit.
-#: ./holidays/countries/greece.py:60
 msgid "Δευτέρα του Αγίου Πνεύματος"
 msgstr "Easter Monday"
 
 #. Labour Day.
-#: ./holidays/countries/greece.py:63
 msgid "Εργατική Πρωτομαγιά"
 msgstr "Labor Day"
 
-#: ./holidays/countries/greece.py:64
 #, c-format
 msgid "%s (παρατηρήθηκε)"
 msgstr "%s (Observed)"
 
 #. Assumption of Mary.
-#: ./holidays/countries/greece.py:77
 msgid "Κοίμηση της Θεοτόκου"
 msgstr "Assumption of Mary Day"
 
 #. Ochi Day.
-#: ./holidays/countries/greece.py:80
 msgid "Ημέρα του Όχι"
 msgstr "Ochi Day"
 
 #. Christmas Day.
-#: ./holidays/countries/greece.py:83
 msgid "Χριστούγεννα"
 msgstr "Christmas Day"
 
 #. Day after Christmas.
-#: ./holidays/countries/greece.py:86
 msgid "Επόμενη ημέρα των Χριστουγέννων"
 msgstr "Day After Christmas"

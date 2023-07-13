@@ -84,10 +84,9 @@ class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays):
         if year >= 1946:
             # Labor Day.
             name = tr("A Munka ünnepe")
-            may_1 = self._add_labor_day(name)
-            self._add_observed(may_1)
+            self._add_observed(self._add_labor_day(name))
             if 1950 <= year <= 1953:
-                self._add_holiday(name, may_1 + td(days=+1))
+                self._add_labor_day_two(name)
 
         self._add_observed(
             self._add_holiday(

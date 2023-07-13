@@ -17,83 +17,67 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/lithuania.py:43
 msgid "Naujųjų metų diena"
 msgstr ""
 
 #. Day of Restoration of the State of Lithuania.
-#: ./holidays/countries/lithuania.py:46
 msgid "Lietuvos valstybės atkūrimo diena"
 msgstr ""
 
 #. Day of Restoration of Independence of Lithuania.
-#: ./holidays/countries/lithuania.py:49
 msgid "Lietuvos nepriklausomybės atkūrimo diena"
 msgstr ""
 
 #. Easter.
-#: ./holidays/countries/lithuania.py:52
 msgid "Šv. Velykos"
 msgstr ""
 
 #. Easter Monday.
-#: ./holidays/countries/lithuania.py:55
 msgid "Antroji šv. Velykų diena"
 msgstr ""
 
 #. International Workers' Day.
-#: ./holidays/countries/lithuania.py:58
 msgid "Tarptautinė darbo diena"
 msgstr ""
 
 #. Day of Dew and Saint John.
-#: ./holidays/countries/lithuania.py:68
 msgid "Rasos ir Joninių diena"
 msgstr ""
 
 #. Statehood Day.
-#: ./holidays/countries/lithuania.py:73
 msgid ""
 "Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) ir Tautiškos giesmės "
 "diena"
 msgstr ""
 
 #. Assumption Day.
-#: ./holidays/countries/lithuania.py:82
 msgid "Žolinė (Švč. Mergelės Marijos ėmimo į dangų diena)"
 msgstr ""
 
 #. All Saints' Day.
-#: ./holidays/countries/lithuania.py:85
 msgid "Visų Šventųjų diena"
 msgstr ""
 
 #. All Souls' Day.
-#: ./holidays/countries/lithuania.py:89
 msgid "Mirusiųjų atminimo (Vėlinių) diena"
 msgstr ""
 
 #. Christmas Eve.
-#: ./holidays/countries/lithuania.py:92
 msgid "Kūčių diena"
 msgstr ""
 
 #. Christmas Day.
-#: ./holidays/countries/lithuania.py:95
 msgid "Šv. Kalėdų pirma diena"
 msgstr ""
 
 #. Second Day of Christmas.
-#: ./holidays/countries/lithuania.py:98
 msgid "Šv. Kalėdų antra diena"
 msgstr ""
 
 #. Mother's day. First Sunday in May.
-#: ./holidays/countries/lithuania.py:61
 msgid "Motinos diena"
 msgstr ""
 
 #. Fathers's day. First Sunday in June.
-#: ./holidays/countries/lithuania.py:64
 msgid "Tėvo diena"
 msgstr ""

@@ -17,122 +17,97 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. The Crown Prince marriage ceremony.
-#: ./holidays/countries/japan.py:44 ./holidays/countries/japan.py:47
 msgid "結婚の儀"
 msgstr ""
 
 #. State Funeral of Emperor Shōwa.
-#: ./holidays/countries/japan.py:45
 msgid "大喪の礼"
 msgstr ""
 
 #. Enthronement ceremony.
-#: ./holidays/countries/japan.py:46
 msgid "即位礼正殿の儀"
 msgstr ""
 
 #. Enthronement day.
-#: ./holidays/countries/japan.py:49
 msgid "天皇の即位の日"
 msgstr ""
 
 #. Enthronement ceremony.
-#: ./holidays/countries/japan.py:50
 msgid "即位礼正殿の儀が行われる日"
 msgstr ""
 
 #. New Year's Day.
-#: ./holidays/countries/japan.py:63
 msgid "元日"
 msgstr ""
 
 #. Coming of Age Day.
-#: ./holidays/countries/japan.py:67
 msgid "成人の日"
 msgstr ""
 
 #. Foundation Day.
-#: ./holidays/countries/japan.py:71
 msgid "建国記念の日"
 msgstr ""
 
 #. Emperor's Birthday.
-#: ./holidays/countries/japan.py:75 ./holidays/countries/japan.py:82
-#: ./holidays/countries/japan.py:163
 msgid "天皇誕生日"
 msgstr ""
 
 #. Vernal Equinox Day.
-#: ./holidays/countries/japan.py:78
 msgid "春分の日"
 msgstr ""
 
 #. Greenery Day.
-#: ./holidays/countries/japan.py:85 ./holidays/countries/japan.py:96
 msgid "みどりの日"
 msgstr ""
 
 #. Showa Day.
-#: ./holidays/countries/japan.py:88
 msgid "昭和の日"
 msgstr ""
 
 #. Constitution Day.
-#: ./holidays/countries/japan.py:92
 msgid "憲法記念日"
 msgstr ""
 
 #. Children's Day.
-#: ./holidays/countries/japan.py:99
 msgid "こどもの日"
 msgstr ""
 
 #. Marine Day.
-#: ./holidays/countries/japan.py:111
 msgid "海の日"
 msgstr ""
 
 #. Mountain Day.
-#: ./holidays/countries/japan.py:120
 msgid "山の日"
 msgstr ""
 
 #. Respect for the Aged Day.
-#: ./holidays/countries/japan.py:129
 msgid "敬老の日"
 msgstr ""
 
 #. Autumnal Equinox Day.
-#: ./holidays/countries/japan.py:132
 msgid "秋分の日"
 msgstr ""
 
 #. Physical Education Day.
-#: ./holidays/countries/japan.py:141
 msgid "体育の日"
 msgstr ""
 
 #. Sports Day.
-#: ./holidays/countries/japan.py:138
 msgid "スポーツの日"
 msgstr ""
 
 #. Culture Day.
-#: ./holidays/countries/japan.py:156
 msgid "文化の日"
 msgstr ""
 
 #. Labor Thanksgiving Day.
-#: ./holidays/countries/japan.py:159
 msgid "勤労感謝の日"
 msgstr ""
 
 #. Substitute Holiday.
-#: ./holidays/countries/japan.py:178
 msgid "振替休日"
 msgstr ""
 
 #. National Holiday.
-#: ./holidays/countries/japan.py:189
 msgid "国民の休日"
 msgstr ""

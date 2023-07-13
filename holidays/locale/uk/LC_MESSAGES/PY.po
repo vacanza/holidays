@@ -17,71 +17,57 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. Public holiday.
-#: ./holidays/countries/paraguay.py:31
 msgid "Asueto adicionale"
 msgstr "Додатковий вихідний"
 
 #. Public sector holiday.
-#: ./holidays/countries/paraguay.py:33
 msgid "Asueto de la Administración Pública"
 msgstr "Вихідний державних установ"
 
 #. New Year's Day.
-#: ./holidays/countries/paraguay.py:150
 msgid "Año Nuevo"
 msgstr "Новий рік"
 
 #. Patriots Day.
-#: ./holidays/countries/paraguay.py:159
 msgid "Día de los Héroes de la Patria"
 msgstr "День національних героїв"
 
 #. Maundy Thursday.
-#: ./holidays/countries/paraguay.py:162
 msgid "Jueves Santo"
 msgstr "Великий четвер"
 
 #. Good Friday.
-#: ./holidays/countries/paraguay.py:165
 msgid "Viernes Santo"
 msgstr "Страсна пʼятниця"
 
 #. Easter Day.
-#: ./holidays/countries/paraguay.py:168
 msgid "Día de Pascuas"
 msgstr "Великдень"
 
 #. Labour Day.
-#: ./holidays/countries/paraguay.py:171
 msgid "Día del Trabajador"
 msgstr "День трудящих"
 
 #. Independence Day.
-#: ./holidays/countries/paraguay.py:174
 msgid "Día de la Independencia Nacional"
 msgstr "День незалежності"
 
 #. Chaco Armistice Day.
-#: ./holidays/countries/paraguay.py:187
 msgid "Día de la Paz del Chaco"
 msgstr "День мирного договору в Чако"
 
 #. Asuncion Foundation's Day.
-#: ./holidays/countries/paraguay.py:191
 msgid "Día de la Fundación de Asunción"
 msgstr "День заснування Асунсьйона"
 
 #. Boqueron Battle Day.
-#: ./holidays/countries/paraguay.py:204
 msgid "Día de la Batalla de Boquerón"
 msgstr "День битви за Бокерон"
 
 #. Caacupe Virgin Day.
-#: ./holidays/countries/paraguay.py:210
 msgid "Día de la Virgen de Caacupé"
 msgstr "Успіння Пресвятої Богородиці"
 
 #. Christmas.
-#: ./holidays/countries/paraguay.py:213
 msgid "Navidad"
 msgstr "Різдво Христове"

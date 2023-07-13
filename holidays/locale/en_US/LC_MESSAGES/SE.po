@@ -17,96 +17,77 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/sweden.py:54
 msgid "Nyårsdagen"
 msgstr "New Year's Day"
 
 #. Epiphany.
-#: ./holidays/countries/sweden.py:57
 msgid "Trettondedag jul"
 msgstr "Epiphany"
 
 #. Feast of the Annunciation.
-#: ./holidays/countries/sweden.py:61
 msgid "Jungfru Marie bebådelsedag"
 msgstr "Feast of the Annunciation"
 
 #. Good Friday.
-#: ./holidays/countries/sweden.py:64
 msgid "Långfredagen"
 msgstr "Good Friday"
 
 #. Easter Sunday.
-#: ./holidays/countries/sweden.py:67
 msgid "Påskdagen"
 msgstr "Easter Sunday"
 
 #. Easter Monday.
-#: ./holidays/countries/sweden.py:70
 msgid "Annandag påsk"
 msgstr "Easter Monday"
 
 #. May Day.
-#: ./holidays/countries/sweden.py:75
 msgid "Första maj"
 msgstr "May Day"
 
 #. Ascension Day.
-#: ./holidays/countries/sweden.py:78
 msgid "Kristi himmelsfärdsdag"
 msgstr "Ascension Day"
 
 #. National Day of Sweden.
-#: ./holidays/countries/sweden.py:83
 msgid "Sveriges nationaldag"
 msgstr "National Day of Sweden"
 
 #. Whit Sunday.
-#: ./holidays/countries/sweden.py:86
 msgid "Pingstdagen"
 msgstr "Whit Sunday"
 
 #. Whit Monday.
-#: ./holidays/countries/sweden.py:90
 msgid "Annandag pingst"
 msgstr "Whit Monday"
 
 #. Midsummer Eve.
-#: ./holidays/countries/sweden.py:98
 msgid "Midsommarafton"
 msgstr "Midsummer Eve"
 
 #. Midsummer Day.
-#: ./holidays/countries/sweden.py:101
 msgid "Midsommardagen"
 msgstr "Midsummer Day"
 
 #. All Saints' Day.
-#: ./holidays/countries/sweden.py:104
 msgid "Alla helgons dag"
 msgstr "All Saints' Day"
 
 #. Christmas Eve.
-#: ./holidays/countries/sweden.py:107
 msgid "Julafton"
 msgstr "Christmas Eve"
 
 #. Christmas Day.
-#: ./holidays/countries/sweden.py:110
 msgid "Juldagen"
 msgstr "Christmas Day"
 
 #. Second Day of Christmas.
-#: ./holidays/countries/sweden.py:113
 msgid "Annandag jul"
 msgstr "Second Day of Christmas"
 
 #. New Year's Eve.
-#: ./holidays/countries/sweden.py:116
 msgid "Nyårsafton"
 msgstr "New Year's Eve"
 
 #. Sunday.
-#: ./holidays/countries/sweden.py:124
 msgid "Söndag"
 msgstr "Sunday"

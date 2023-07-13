@@ -12,7 +12,7 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars.gregorian import FEB, MAR, MAY, JUN, AUG, OCT, DEC, MON
+from holidays.calendars.gregorian import FEB, MAR, MAY, JUN, AUG, OCT, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -49,44 +49,37 @@ class Ireland(HolidayBase, ChristianHolidays, InternationalHolidays):
         # St. Brigid's Day.
         if year >= 2023:
             dt = date(year, FEB, 1)
-            self[
-                dt if self._is_friday(dt) else self._get_nth_weekday_from(1, MON, dt)
-            ] = "St. Brigid's Day"
+            self._add_holiday(
+                "St. Brigid's Day",
+                dt if self._is_friday(dt) else self._get_nth_weekday_from(1, MON, dt),
+            )
 
-        # St. Patrick's Day
-        name = "St. Patrick's Day"
-        dt = date(year, MAR, 17)
-        self[dt] = name
-        if self.observed and self._is_weekend(dt):
-            self[self._get_nth_weekday_from(1, MON, dt)] = name + " (Observed)"
+        # St. Patrick's Day.
+        self._add_observed(self._add_holiday("St. Patrick's Day", MAR, 17))
 
         # Easter Monday.
         self._add_easter_monday("Easter Monday")
 
         # May Day.
         if year >= 1978:
-            name = "May Day"
-            if year == 1995:
-                dt = date(year, MAY, 8)
-            else:
-                dt = self._get_nth_weekday_of_month(1, MON, MAY)
-            self[dt] = name
+            self._add_holiday(
+                "May Day",
+                date(year, MAY, 8)
+                if year == 1995
+                else self._get_nth_weekday_of_month(1, MON, MAY),
+            )
 
-        # June bank holiday (first Monday in June)
-        self[self._get_nth_weekday_of_month(1, MON, JUN)] = "June Bank Holiday"
+        # June Bank holiday.
+        self._add_holiday("June Bank Holiday", self._get_nth_weekday_of_month(1, MON, JUN))
 
-        # Summer bank holiday (first Monday in August)
-        self[self._get_nth_weekday_of_month(1, MON, AUG)] = "August Bank Holiday"
+        # Summer Bank holiday.
+        self._add_holiday("August Bank Holiday", self._get_nth_weekday_of_month(1, MON, AUG))
 
-        # October Bank Holiday (last Monday in October)
-        self[self._get_nth_weekday_of_month(-1, MON, OCT)] = "October Bank Holiday"
+        # October Bank Holiday.
+        self._add_holiday("October Bank Holiday", self._get_nth_weekday_of_month(-1, MON, OCT))
 
-        # Christmas Day
-        name = "Christmas Day"
-        dt = date(year, DEC, 25)
-        self[dt] = name
-        if self.observed and self._is_weekend(dt):
-            self[self._get_nth_weekday_from(1, MON, dt)] = name + " (Observed)"
+        # Christmas Day.
+        self._add_observed(self._add_christmas_day("Christmas Day"))
 
         # St. Stephen's Day.
         self._add_observed(self._add_christmas_day_two("St. Stephen's Day"), days=+2)

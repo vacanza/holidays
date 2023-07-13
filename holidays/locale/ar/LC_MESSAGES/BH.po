@@ -1,0 +1,65 @@
+# Bahrain holidays.
+# Authors: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.29\n"
+"POT-Creation-Date: 2023-06-28 00:13+0100\n"
+"PO-Revision-Date: 2023-07-05 17:40+0100\n"
+"Last-Translator: \n"
+"Language-Team: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.3.2\n"
+
+#. Estimated label.
+#, c-format
+msgid "(تقدير*) *%s"
+msgstr ""
+
+#. New Year's Day.
+msgid "رأس السنة الميلادية"
+msgstr ""
+
+#. Labour day.
+msgid "عيد العمال"
+msgstr ""
+
+#. Eid Al Fitr.
+msgid "عيد الفطر"
+msgstr ""
+
+#. Eid Al Fitr Holiday.
+msgid "عطلة عيد الفطر"
+msgstr ""
+
+#. Eid Al Adha.
+msgid "عيد الأضحى"
+msgstr ""
+
+#. Eid Al Adha Holiday.
+msgid "عطلة عيد الأضحى"
+msgstr ""
+
+#. Al Hijra New Year.
+msgid "رأس السنة الهجرية"
+msgstr ""
+
+#. Ashura.
+msgid "عاشورة"
+msgstr ""
+
+#. Ashura Eve.
+msgid "ليلة عاشورة"
+msgstr ""
+
+#. Prophets Birthday.
+msgid "عيد المولد النبوي"
+msgstr ""
+
+#. National Day.
+msgid "اليوم الوطني"
+msgstr ""

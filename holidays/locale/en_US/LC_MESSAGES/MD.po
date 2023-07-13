@@ -17,43 +17,35 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/moldova.py:42
 msgid "Anul Nou"
 msgstr "New Year's Day"
 
 #. Christmas (by old style).
-#: ./holidays/countries/moldova.py:46
 msgid "Naşterea lui Iisus Hristos (Crăciunul pe stil vechi)"
 msgstr "Christmas (by old style)"
 
 #. Christmas.
-#: ./holidays/countries/moldova.py:49
 msgid "Naşterea lui Iisus Hristos (Crăciunul)"
 msgstr "Christmas"
 
 #. International Women's Day.
-#: ./holidays/countries/moldova.py:55
 msgid "Ziua internatională a femeii"
 msgstr "International Women's Day"
 
 #. Easter.
-#: ./holidays/countries/moldova.py:58
 msgid "Paştele"
 msgstr "Easter"
 
 #. Day of Rejoicing.
-#: ./holidays/countries/moldova.py:63
 msgid "Paştele blajinilor"
 msgstr "Day of Rejoicing"
 
 #. International Workers' Solidarity Day.
-#: ./holidays/countries/moldova.py:66
 msgid "Ziua internaţională a solidarităţii oamenilor muncii"
 msgstr "International Workers' Solidarity Day"
 
 #. Victory Day and Commemoration of the heroes fallen for Independence of
 #. Fatherland.
-#: ./holidays/countries/moldova.py:71
 msgid ""
 "Ziua Victoriei şi a comemorării eroilor căzuţi pentru Independenţa Patriei"
 msgstr ""
@@ -61,26 +53,21 @@ msgstr ""
 "Fatherland"
 
 #. Europe Day.
-#: ./holidays/countries/moldova.py:76
 msgid "Ziua Europei"
 msgstr "Europe Day"
 
 #. International Children's Day
-#: ./holidays/countries/moldova.py:80
 msgid "Ziua Ocrotirii Copilului"
 msgstr "International Children's Day"
 
 #. Republic of Moldova Independence Day
-#: ./holidays/countries/moldova.py:83
 msgid "Ziua independenţei Republicii Moldova"
 msgstr "Republic of Moldova Independence Day"
 
 #. National Language Day.
-#: ./holidays/countries/moldova.py:86
 msgid "Limba noastră"
 msgstr "National Language Day"
 
 #. Christmas (by new style).
-#: ./holidays/countries/moldova.py:91
 msgid "Naşterea lui Iisus Hristos (Crăciunul pe stil nou)"
 msgstr "Christmas (by new style)"

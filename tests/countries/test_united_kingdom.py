@@ -53,8 +53,8 @@ class TestUnitedKingdom(TestCase):
 
     def test_new_years(self):
         name = "New Year's Day"
-        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1974, 2050)))
-        self.assertNoHolidayName(name, range(1950, 1974))
+        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1975, 2050)))
+        self.assertNoHolidayName(name, range(1950, 1975))
         obs_dt = (
             "2000-01-03",
             "2005-01-03",
@@ -136,6 +136,7 @@ class TestUnitedKingdom(TestCase):
             )
             self.assertHolidayName(f"{name} (Observed)", self.subdiv_holidays[subdiv], obs_dt)
             self.assertNoNonObservedHoliday(UnitedKingdom(subdiv=subdiv, observed=False), obs_dt)
+            self.assertNoHolidayName(name, UnitedKingdom(subdiv=subdiv, years=1902))
 
         for subdiv in ("ENG", "SCT", "WLS", "England", "Scotland", "Wales"):
             self.assertNoHoliday(
@@ -306,8 +307,12 @@ class TestUnitedKingdom(TestCase):
         name = "St. Andrew's Day"
         for subdiv in ("SCT", "Scotland"):
             self.assertHolidayName(
-                name, self.subdiv_holidays[subdiv], (f"{year}-11-30" for year in range(1950, 2050))
+                name, self.subdiv_holidays[subdiv], (f"{year}-11-30" for year in range(2006, 2050))
             )
+            self.assertNoHoliday(
+                self.subdiv_holidays[subdiv], (f"{year}-11-30" for year in range(1950, 2006))
+            )
+            self.assertNoHolidayName(name, self.subdiv_holidays[subdiv], range(1950, 2006))
         for subdiv in (
             "ENG",
             "NIR",
@@ -338,6 +343,16 @@ class TestUnitedKingdom(TestCase):
         self.assertHolidayName(f"{name} (Observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
+    def test_christmas_day_scotland(self):
+        name = "Christmas Day"
+        obs_dt = (
+            "1955-12-26",
+            "1960-12-26",
+            "1966-12-26",
+        )
+        self.assertHolidayName(f"{name} (Observed)", self.subdiv_holidays["SCT"], obs_dt)
+        self.assertNoHolidayName(f"{name} (Observed)", obs_dt)
+
     def test_boxing_day(self):
         name = "Boxing Day"
         self.assertHolidayName(name, (f"{year}-12-26" for year in range(1950, 2050)))
@@ -351,6 +366,13 @@ class TestUnitedKingdom(TestCase):
         )
         self.assertHolidayName(f"{name} (Observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
+
+    def test_boxing_day_scotland(self):
+        name = "Boxing Day"
+        self.assertHolidayName(
+            name, self.subdiv_holidays["SCT"], (f"{year}-12-26" for year in range(1974, 2050))
+        )
+        self.assertNoHolidayName(name, self.subdiv_holidays["SCT"], range(1950, 1974))
 
     def test_all_holidays_present(self):
         uk_2015 = sum(

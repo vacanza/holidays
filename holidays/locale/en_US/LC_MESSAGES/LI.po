@@ -17,111 +17,89 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/liechtenstein.py:39
 msgid "Neujahr"
 msgstr "New Year's Day"
 
 #. Saint Berchtold's Day.
-#: ./holidays/countries/liechtenstein.py:42
 msgid "Berchtoldstag"
 msgstr "Saint Berchtold's Day"
 
 #. Epiphany.
-#: ./holidays/countries/liechtenstein.py:45
 msgid "Heilige Drei Könige"
 msgstr "Epiphany"
 
 #. Candlemas.
-#: ./holidays/countries/liechtenstein.py:48
 msgid "Mariä Lichtmess"
 msgstr "Candlemas"
 
 #. Shrove Tuesday.
-#: ./holidays/countries/liechtenstein.py:51
 msgid "Fasnachtsdienstag"
 msgstr "Shrove Tuesday"
 
 #. Saint Joseph's Day.
-#: ./holidays/countries/liechtenstein.py:54
 msgid "Josefstag"
 msgstr "Saint Joseph's Day"
 
 #. Good Friday.
-#: ./holidays/countries/liechtenstein.py:57
 msgid "Karfreitag"
 msgstr "Good Friday"
 
 #. Easter Sunday.
-#: ./holidays/countries/liechtenstein.py:60
 msgid "Ostersonntag"
 msgstr "Easter Sunday"
 
 #. Easter Monday.
-#: ./holidays/countries/liechtenstein.py:63
 msgid "Ostermontag"
 msgstr "Easter Monday"
 
 #. Labor Day.
-#: ./holidays/countries/liechtenstein.py:66
 msgid "Tag der Arbeit"
 msgstr "Labor Day"
 
 #. Ascension Day.
-#: ./holidays/countries/liechtenstein.py:69
 msgid "Auffahrt"
 msgstr "Ascension Day"
 
 #. Whit Sunday.
-#: ./holidays/countries/liechtenstein.py:72
 msgid "Pfingstsonntag"
 msgstr "Whit Sunday"
 
 #. Whit Monday.
-#: ./holidays/countries/liechtenstein.py:75
 msgid "Pfingstmontag"
 msgstr "Whit Monday"
 
 #. Corpus Christi.
-#: ./holidays/countries/liechtenstein.py:78
 msgid "Fronleichnam"
 msgstr "Corpus Christi"
 
 #. National Day.
-#: ./holidays/countries/liechtenstein.py:81
 msgid "Staatsfeiertag"
 msgstr "National Day"
 
 #. Nativity of Mary.
-#: ./holidays/countries/liechtenstein.py:84
 msgid "Mariä Geburt"
 msgstr "Nativity of Mary"
 
 #. All Saints Day.
-#: ./holidays/countries/liechtenstein.py:87
 msgid "Allerheiligen"
 msgstr "All Saints' Day"
 
 #. Immaculate Conception.
-#: ./holidays/countries/liechtenstein.py:90
 msgid "Mariä Empfängnis"
 msgstr "Immaculate Conception"
 
 #. Christmas Eve.
-#: ./holidays/countries/liechtenstein.py:93
 msgid "Heiligabend"
 msgstr "Christmas Eve"
 
 #. Christmas Day.
-#: ./holidays/countries/liechtenstein.py:96
 msgid "Weihnachten"
 msgstr "Christmas Day"
 
 #. St. Stephen's Day.
-#: ./holidays/countries/liechtenstein.py:99
 msgid "Stefanstag"
 msgstr "St. Stephen's Day"
 
 #. New Year's Eve.
-#: ./holidays/countries/liechtenstein.py:102
 msgid "Silvester"
 msgstr "New Year's Eve"
