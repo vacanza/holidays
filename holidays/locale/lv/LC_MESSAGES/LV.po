@@ -17,95 +17,76 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. General Latvian Song and Dance Festival closing day.
-#: ./holidays/countries/latvia.py:32
 msgid "Vispārējo latviešu Dziesmu un deju svētku noslēguma dienu"
 msgstr ""
 
 #. Day of His Holiness Pope Francis' pastoral visit to Latvia.
-#: ./holidays/countries/latvia.py:36
 msgid "Viņa Svētības pāvesta Franciska pastorālās vizītes Latvijā diena"
 msgstr ""
 
 #. Day the Latvian hockey team won the bronze medal at the 2023 World Ice
-#. Hockey
-#. Championship.
-#: ./holidays/countries/latvia.py:40
+#. Hockey Championship.
 msgid ""
 "Diena, kad Latvijas hokeja komanda ieguva bronzas medaļu 2023. gada Pasaules"
 " hokeja čempionātā"
 msgstr ""
 
-#: ./holidays/countries/latvia.py:65
 #, c-format
 msgid "%s (brīvdiena)"
 msgstr ""
 
 #. New Year's Day.
-#: ./holidays/countries/latvia.py:75
 msgid "Jaunais Gads"
 msgstr ""
 
 #. Good Friday.
-#: ./holidays/countries/latvia.py:78
 msgid "Lielā Piektdiena"
 msgstr ""
 
 #. Easter.
-#: ./holidays/countries/latvia.py:81
 msgid "Lieldienas"
 msgstr ""
 
 #. Easter Monday.
-#: ./holidays/countries/latvia.py:84
 msgid "Otrās Lieldienas"
 msgstr ""
 
 #. Labor Day.
-#: ./holidays/countries/latvia.py:87
 msgid "Darba svētki"
 msgstr ""
 
 #. Restoration of Independence Day.
-#: ./holidays/countries/latvia.py:92
 msgid "Latvijas Republikas Neatkarības atjaunošanas diena"
 msgstr ""
 
 #. Mother's Day.
-#: ./holidays/countries/latvia.py:100
 msgid "Mātes diena"
 msgstr ""
 
 #. Midsummer Day.
-#: ./holidays/countries/latvia.py:103
 msgid "Jāņu diena"
 msgstr ""
 
 #. Midsummer Eve.
-#: ./holidays/countries/latvia.py:106
 msgid "Līgo diena"
 msgstr ""
 
 #. Republic of Latvia Proclamation Day.
-#: ./holidays/countries/latvia.py:109
 msgid "Latvijas Republikas proklamēšanas diena"
 msgstr ""
 
 #. Christmas Eve.
-#: ./holidays/countries/latvia.py:115
 msgid "Ziemassvētku vakars"
 msgstr ""
 
 #. Christmas Day.
-#: ./holidays/countries/latvia.py:118
 msgid "Ziemassvētki"
 msgstr ""
 
 #. Second Day of Christmas.
-#: ./holidays/countries/latvia.py:121
 msgid "Otrie Ziemassvētki"
 msgstr ""
 
 #. New Year's Eve.
-#: ./holidays/countries/latvia.py:124
 msgid "Vecgada vakars"
 msgstr ""

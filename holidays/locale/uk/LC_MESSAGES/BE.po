@@ -1,0 +1,65 @@
+# Belgium holidays uk localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.28\n"
+"POT-Creation-Date: 2023-06-27 13:17+0300\n"
+"PO-Revision-Date: 2023-06-27 14:11+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+msgid "Nieuwjaar"
+msgstr "Новий рік"
+
+#. Easter.
+msgid "Pasen"
+msgstr "Великдень"
+
+#. Easter Monday.
+msgid "Paasmaandag"
+msgstr "Великодній понеділок"
+
+#. Labor Day.
+msgid "Dag van de Arbeid"
+msgstr "День праці"
+
+#. Ascension Day.
+msgid "Hemelvaart"
+msgstr "Вознесіння Господнє"
+
+#. Whit Sunday.
+msgid "Pinksteren"
+msgstr "Трійця"
+
+#. Whit Monday.
+msgid "Pinkstermaandag"
+msgstr "День Святого Духа"
+
+#. National Day.
+msgid "Nationale feestdag"
+msgstr "Національне свято"
+
+#. Assumption of Mary.
+msgid "Onze Lieve Vrouw hemelvaart"
+msgstr "Внебовзяття Пресвятої Діви Марії"
+
+#. All Saints' Day.
+msgid "Allerheiligen"
+msgstr "День усіх святих"
+
+#. Armistice Day.
+msgid "Wapenstilstand"
+msgstr "День перемирʼя"
+
+#. Christmas Day.
+msgid "Kerstmis"
+msgstr "Різдво Христове"

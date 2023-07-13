@@ -17,76 +17,61 @@ msgstr ""
 "X-Generator: Poedit 3.3\n"
 
 #. New Year's Day.
-#: ./holidays/countries/armenia.py:46
 msgid "Նոր տարվա օր"
 msgstr "New Year's Day"
 
 #. Christmas. Epiphany Day.
-#: ./holidays/countries/armenia.py:51
 msgid "Սուրբ Ծնունդ եւ Հայտնություն"
 msgstr "Christmas and Epiphany Day"
 
 #. Christmas Eve.
-#: ./holidays/countries/armenia.py:58
 msgid "Սուրբ Ծննդյան տոներ"
 msgstr "Christmas Holidays"
 
 #. The Day of Remembrance of the Dead.
-#: ./holidays/countries/armenia.py:61
 msgid "Մեռելոց հիշատակի օր"
 msgstr "Memorial Day"
 
 #. Army Day.
-#: ./holidays/countries/armenia.py:65
 msgid "Բանակի օր"
 msgstr "Army Day"
 
 #. Women's Day.
-#: ./holidays/countries/armenia.py:68
 msgid "Կանանց տոն"
 msgstr "Women's Day"
 
 #. Motherhood and Beauty Day.
-#: ./holidays/countries/armenia.py:72
 msgid "Մայրության և գեղեցկության տոն"
 msgstr "A Holiday of Motherhood and Beauty"
 
 #. Armenian Genocide Remembrance Day,
-#: ./holidays/countries/armenia.py:75
 msgid "Եղեռնի զոհերի հիշատակի օր"
 msgstr "Genocide Memorial Day"
 
 #. International Day of Workers' Solidarity.
-#: ./holidays/countries/armenia.py:83
 msgid "Աշխատավորների համերաշխության միջազգային օր"
 msgstr "International Day of Workers' Solidarity"
 
 #. Labor Day.
-#: ./holidays/countries/armenia.py:80
 msgid "Աշխատանքի օր"
 msgstr "Labor day"
 
 #. Victory and Peace Day.
-#: ./holidays/countries/armenia.py:88
 msgid "Հաղթանակի և Խաղաղության տոն"
 msgstr "Victory and Peace Day"
 
 #. Republic Day.
-#: ./holidays/countries/armenia.py:91
 msgid "Հանրապետության օր"
 msgstr "Republic Day"
 
 #. Constitution Day.
-#: ./holidays/countries/armenia.py:95
 msgid "Սահմանադրության օր"
 msgstr "Constitution Day"
 
 #. Independence Day.
-#: ./holidays/countries/armenia.py:99
 msgid "Անկախության օր"
 msgstr "Independence Day"
 
 #. New Year's Eve.
-#: ./holidays/countries/armenia.py:102
 msgid "Նոր տարվա գիշեր"
 msgstr "New Year's Eve"

@@ -1,3 +1,19 @@
+Version 0.29
+============
+
+- Refactor HolidayBase::get_named() method (#1366 by @KJhellico)
+- Refactor movable holidays (#1357 by @KJhellico)
+- Add Arabic localization (#1341 by @abh31000)
+- Update .po files format: remove location comments (#1362 by @KJhellico)
+- Update Algeria holidays: add missing file headers (#1363 by @arkid15r)
+- Update Eid-al-Adha 2023 exact dates (#1361 by @KJhellico)
+- Update InternationalHolidays group: add May 2 and 3 (#1367 by @KJhellico)
+- Update Ireland holidays: finish migration to holiday groups (#1350 by @KJhellico)
+- Update United Kingdom holidays: update certain holidays start years (#1353 by @KJhellico)
+- Migrate Belgium and Luxembourg to holiday groups, add l10n support (#1343 by @KJhellico)
+- Migrate Bulgaria holidays to holiday groups and categories (#1351 by @KJhellico)
+- Migrate Croatia, Czechia and Slovenia to holiday groups, add l10n support (#1344 by @KJhellico)
+
 Version 0.28
 ============
 

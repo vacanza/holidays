@@ -17,83 +17,67 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/lithuania.py:43
 msgid "Naujųjų metų diena"
 msgstr "Новий рік"
 
 #. Day of Restoration of the State of Lithuania.
-#: ./holidays/countries/lithuania.py:46
 msgid "Lietuvos valstybės atkūrimo diena"
 msgstr "День відновлення Литовської держави"
 
 #. Day of Restoration of Independence of Lithuania.
-#: ./holidays/countries/lithuania.py:49
 msgid "Lietuvos nepriklausomybės atkūrimo diena"
 msgstr "День відновлення незалежності Литви"
 
 #. Easter.
-#: ./holidays/countries/lithuania.py:52
 msgid "Šv. Velykos"
 msgstr "Великдень"
 
 #. Easter Monday.
-#: ./holidays/countries/lithuania.py:55
 msgid "Antroji šv. Velykų diena"
 msgstr "Великодній понеділок"
 
 #. International Workers' Day.
-#: ./holidays/countries/lithuania.py:58
 msgid "Tarptautinė darbo diena"
 msgstr "Міжнародний день трудящих"
 
 #. Day of Dew and Saint John.
-#: ./holidays/countries/lithuania.py:68
 msgid "Rasos ir Joninių diena"
 msgstr "День роси та День Івана Купала"
 
 #. Statehood Day.
-#: ./holidays/countries/lithuania.py:73
 msgid ""
 "Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) ir Tautiškos giesmės "
 "diena"
 msgstr "День державності та День національного гімну"
 
 #. Assumption Day.
-#: ./holidays/countries/lithuania.py:82
 msgid "Žolinė (Švč. Mergelės Marijos ėmimo į dangų diena)"
 msgstr "Внебовзяття Пресвятої Діви Марії"
 
 #. All Saints' Day.
-#: ./holidays/countries/lithuania.py:85
 msgid "Visų Šventųjų diena"
 msgstr "День усіх святих"
 
 #. All Souls' Day.
-#: ./holidays/countries/lithuania.py:89
 msgid "Mirusiųjų atminimo (Vėlinių) diena"
 msgstr "День пам'яті (День всіх померлих)"
 
 #. Christmas Eve.
-#: ./holidays/countries/lithuania.py:92
 msgid "Kūčių diena"
 msgstr "Святий вечір"
 
 #. Christmas Day.
-#: ./holidays/countries/lithuania.py:95
 msgid "Šv. Kalėdų pirma diena"
 msgstr "Різдво Христове"
 
 #. Second Day of Christmas.
-#: ./holidays/countries/lithuania.py:98
 msgid "Šv. Kalėdų antra diena"
 msgstr "Другий день Різдва"
 
 #. Mother's day. First Sunday in May.
-#: ./holidays/countries/lithuania.py:61
 msgid "Motinos diena"
 msgstr "День матері"
 
 #. Fathers's day. First Sunday in June.
-#: ./holidays/countries/lithuania.py:64
 msgid "Tėvo diena"
 msgstr "День батька"

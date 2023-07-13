@@ -9,16 +9,14 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
+from gettext import gettext as tr
 
-from dateutil.easter import easter
-
-from holidays.calendars.gregorian import JAN, FEB, APR, MAY, JUN, AUG, OCT, NOV, DEC
+from holidays.calendars.gregorian import FEB, APR, JUN, OCT, DEC
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
-class Slovenia(HolidayBase):
+class Slovenia(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
     Contains all work-free public holidays in Slovenia.
     No holidays are returned before year 1991 when Slovenia became independent
@@ -30,6 +28,13 @@ class Slovenia(HolidayBase):
     """
 
     country = "SI"
+    default_language = "sl"
+    supported_languages = ("en_US", "sl", "uk")
+
+    def __init__(self, *args, **kwargs):
+        ChristianHolidays.__init__(self)
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         if year <= 1990:
@@ -37,43 +42,44 @@ class Slovenia(HolidayBase):
 
         super()._populate(year)
 
-        self[date(year, JAN, 1)] = "novo leto"
+        # New Year's Day.
+        name = tr("novo leto")
+        self._add_new_years_day(name)
+        if year <= 2012 or year >= 2017:
+            self._add_new_years_day_two(name)
 
-        # Between 2012 and 2017 2nd January was not public holiday,
-        # or at least not work-free day
-        if year < 2013 or year > 2016:
-            self[date(year, JAN, 2)] = "novo leto"
+        # Preseren's Day.
+        self._add_holiday(tr("Prešernov dan"), FEB, 8)
 
-        # Prešeren's day, slovenian cultural holiday
-        self[date(year, FEB, 8)] = "Prešernov dan"
+        # Easter Monday.
+        self._add_easter_monday(tr("Velikonočni ponedeljek"))
 
-        # Easter monday is the only easter related work-free day
-        self[easter(year) + td(days=+1)] = "Velikonočni ponedeljek"
+        # Day of Uprising Against Occupation.
+        self._add_holiday(tr("dan upora proti okupatorju"), APR, 27)
 
-        # Day of uprising against occupation
-        self[date(year, APR, 27)] = "dan upora proti okupatorju"
+        # Labor Day.
+        name = tr("praznik dela")
+        self._add_labor_day(name)
+        self._add_labor_day_two(name)
 
-        # Labour day, two days of it!
-        self[date(year, MAY, 1)] = "praznik dela"
-        self[date(year, MAY, 2)] = "praznik dela"
+        # Statehood Day.
+        self._add_holiday(tr("dan državnosti"), JUN, 25)
 
-        # Statehood day
-        self[date(year, JUN, 25)] = "dan državnosti"
+        # Assumption Day.
+        self._add_assumption_of_mary_day(tr("Marijino vnebovzetje"))
 
-        # Assumption day
-        self[date(year, AUG, 15)] = "Marijino vnebovzetje"
+        if year >= 1992:
+            # Reformation Day.
+            self._add_holiday(tr("dan reformacije"), OCT, 31)
 
-        # Reformation day
-        self[date(year, OCT, 31)] = "dan reformacije"
+        # Remembrance Day.
+        self._add_all_saints_day(tr("dan spomina na mrtve"))
 
-        # Remembrance day
-        self[date(year, NOV, 1)] = "dan spomina na mrtve"
+        # Christmas Day.
+        self._add_christmas_day(tr("Božič"))
 
-        # Christmas
-        self[date(year, DEC, 25)] = "Božič"
-
-        # Day of independence and unity
-        self[date(year, DEC, 26)] = "dan samostojnosti in enotnosti"
+        # Independence and Unity Day.
+        self._add_holiday(tr("dan samostojnosti in enotnosti"), DEC, 26)
 
 
 class SI(Slovenia):

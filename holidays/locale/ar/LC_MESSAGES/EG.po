@@ -1,0 +1,93 @@
+# Egypt holidays.
+# Authors: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.29\n"
+"POT-Creation-Date: 2023-06-28 00:13+0100\n"
+"PO-Revision-Date: 2023-07-11 02:08+0100\n"
+"Last-Translator: \n"
+"Language-Team: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.3.2\n"
+
+#. Estimated label.
+#, c-format
+msgid "(تقدير*) *%s"
+msgstr ""
+
+#. New Year's Day
+msgid "رأس السنة الميلادية"
+msgstr ""
+
+#. Coptic Christmas
+msgid "عيد الميلاد المجيد (تقويم قبطي)"
+msgstr ""
+
+#. January 25th Revolution
+msgid "عيد ثورة 25 يناير"
+msgstr ""
+
+#. National Police Day
+msgid "عيد الشرطة"
+msgstr ""
+
+#. Coptic Easter - Orthodox Easter
+msgid "عيد الفصح القبطي"
+msgstr ""
+
+#. Spring Festival
+msgid "شم النسيم"
+msgstr ""
+
+#. Sinai Libration Day
+msgid "عيد تحرير سيناء"
+msgstr ""
+
+#. Labour Day
+msgid "عيد العمال"
+msgstr ""
+
+#. Armed Forces Day
+msgid "عيد القوات المسلحة"
+msgstr ""
+
+#. June 30 Revolution Day
+msgid "عيد ثورة 30 يونيو"
+msgstr ""
+
+#. July 23 Revolution Day
+msgid "عيد ثورة 23 يوليو"
+msgstr ""
+
+#. Eid al-Fitr - Feast Festive
+msgid "عيد الفطر"
+msgstr ""
+
+#. Eid al-Fitr Holiday
+msgid "عطلة عيد الفطر"
+msgstr ""
+
+#. Arafat Day
+msgid "يوم عرفة"
+msgstr ""
+
+#. Eid al-Adha - Scarfice Festive
+msgid "عيد الأضحى"
+msgstr ""
+
+#. Eid al-Adha Holiday
+msgid "عطلة عيد الأضحى"
+msgstr ""
+
+#. Islamic New Year
+msgid "رأس السنة الهجرية"
+msgstr ""
+
+#. Prophet Muhammad's Birthday
+msgid "عيد المولد النبوي"
+msgstr ""

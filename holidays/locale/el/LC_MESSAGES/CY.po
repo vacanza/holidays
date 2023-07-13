@@ -16,81 +16,65 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Years Day.
-#: ./holidays/countries/cyprus.py:42
 msgid "Πρωτοχρονιά"
 msgstr ""
 
 #. Epiphany.
-#: ./holidays/countries/cyprus.py:45
 msgid "Θεοφάνεια"
 msgstr ""
 
 #. Clean Monday.
-#: ./holidays/countries/cyprus.py:48
 msgid "Καθαρά Δευτέρα"
 msgstr ""
 
 #. Greek Independence Day.
-#: ./holidays/countries/cyprus.py:51
 msgid "Εικοστή Πέμπτη Μαρτίου"
 msgstr ""
 
 #. Cyprus National Day.
-#: ./holidays/countries/cyprus.py:54
 msgid "1η Απριλίου"
 msgstr ""
 
 #. Good Friday.
-#: ./holidays/countries/cyprus.py:57
 msgid "Μεγάλη Παρασκευή"
 msgstr ""
 
 #. Easter Sunday.
-#: ./holidays/countries/cyprus.py:60
 msgid "Κυριακή του Πάσχα"
 msgstr ""
 
 #. Easter Monday.
-#: ./holidays/countries/cyprus.py:63
 msgid "Δευτέρα του Πάσχα"
 msgstr ""
 
 #. Labour Day.
-#: ./holidays/countries/cyprus.py:66
 msgid "Εργατική Πρωτομαγιά"
 msgstr ""
 
 #. Monday of the Holy Spirit.
-#: ./holidays/countries/cyprus.py:69
 msgid "Δευτέρα του Αγίου Πνεύματος"
 msgstr ""
 
 #. Assumption of Mary.
-#: ./holidays/countries/cyprus.py:72
 msgid "Κοίμηση της Θεοτόκου"
 msgstr ""
 
 #. Cyprus Independence Day.
-#: ./holidays/countries/cyprus.py:75
 msgid "Ημέρα Ανεξαρτησίας της Κύπρου"
 msgstr ""
 
 #. Ochi Day.
-#: ./holidays/countries/cyprus.py:78
 msgid "Ημέρα του Όχι"
 msgstr ""
 
 #. Christmas Eve.
-#: ./holidays/countries/cyprus.py:81
 msgid "Παραμονή Χριστουγέννων"
 msgstr ""
 
 #. Christmas Day.
-#: ./holidays/countries/cyprus.py:84
 msgid "Χριστούγεννα"
 msgstr ""
 
 #. Day After Christmas.
-#: ./holidays/countries/cyprus.py:87
 msgid "Δεύτερη μέρα Χριστουγέννων"
 msgstr ""

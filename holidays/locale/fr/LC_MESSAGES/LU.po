@@ -1,0 +1,61 @@
+# Luxembourg holidays fr localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.28\n"
+"POT-Creation-Date: 2023-06-27 13:17+0300\n"
+"PO-Revision-Date: 2023-06-27 18:57+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+msgid "Neijoerschdag"
+msgstr "Jour de l'an"
+
+#. Easter Monday.
+msgid "Ouschterméindeg"
+msgstr "Lundi de Pâques"
+
+#. Labor Day.
+msgid "Dag vun der Aarbecht"
+msgstr "Fête du Travail"
+
+#. Europe Day.
+msgid "Europadag"
+msgstr "Journée de l'Europe"
+
+#. Ascension Day.
+msgid "Christi Himmelfaart"
+msgstr "Ascension"
+
+#. Whit Monday.
+msgid "Péngschtméindeg"
+msgstr "Lundi de Pentecôte"
+
+#. National Day.
+msgid "Nationalfeierdag"
+msgstr "Fête nationale"
+
+#. Assumption Day.
+msgid "Léiffrawëschdag"
+msgstr "Assomption"
+
+#. All Saints' Day.
+msgid "Allerhellgen"
+msgstr "Toussaint"
+
+#. Christmas Day.
+msgid "Chrëschtdag"
+msgstr "Noël"
+
+#. St. Stephen's Day.
+msgid "Stiefesdag"
+msgstr "St. Etienne"

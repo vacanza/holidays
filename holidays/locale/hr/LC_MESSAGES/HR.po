@@ -1,0 +1,81 @@
+# Croatia holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.28\n"
+"POT-Creation-Date: 2023-06-27 13:17+0300\n"
+"PO-Revision-Date: 2023-06-27 13:39+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+msgid "Nova Godina"
+msgstr ""
+
+#. Epiphany.
+msgid "Bogojavljenje ili Sveta tri kralja"
+msgstr ""
+
+#. Easter.
+msgid "Uskrs"
+msgstr ""
+
+#. Easter Monday.
+msgid "Uskrsni ponedjeljak"
+msgstr ""
+
+#. Corpus Christi.
+msgid "Tijelovo"
+msgstr ""
+
+#. International Workers' Day.
+msgid "Međunarodni praznik rada"
+msgstr ""
+
+#. Statehood Day.
+msgid "Dan državnosti"
+msgstr ""
+
+#. Anti-Fascist Struggle Day.
+msgid "Dan antifašističke borbe"
+msgstr ""
+
+#. Victory and Homeland Thanksgiving Day and Croatian Veterans Day.
+msgid "Dan pobjede i domovinske zahvalnosti i Dan hrvatskih branitelja"
+msgstr ""
+
+#. Victory and Homeland Thanksgiving Day.
+msgid "Dan pobjede i domovinske zahvalnosti"
+msgstr ""
+
+#. Assumption of Mary.
+msgid "Velika Gospa"
+msgstr ""
+
+#. Independence Day.
+msgid "Dan neovisnosti"
+msgstr ""
+
+#. All Saints' Day.
+msgid "Svi sveti"
+msgstr ""
+
+#. Memorial Day.
+msgid "Dan sjećanja"
+msgstr ""
+
+#. Christmas Day.
+msgid "Božić"
+msgstr ""
+
+#. St. Stephen's Day.
+msgid "Sveti Stjepan"
+msgstr ""
