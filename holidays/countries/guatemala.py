@@ -12,7 +12,7 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JUN, SEP, OCT, NOV, MON
+from holidays.calendars.gregorian import JUN, SEP, OCT, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -35,10 +35,14 @@ class Guatemala(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _move_holiday(self, dt: date) -> None:
         """
-        law 19-2018
+        law 19-2018 start 18 oct 2018
         https://www.minfin.gob.gt/images/downloads/leyes_acuerdos/decretocong19_101018.pdf
+
+
+        EXPEDIENTE 5536-2018 (CC) start 17 abr 2020
+        https://leyes.infile.com/index.php?id=181&id_publicacion=81051
         """
-        if self._year <= 2020 or self._is_monday(dt):
+        if self._year <= 2018 or self._is_monday(dt):
             return None
         self._add_holiday(
             self[dt],
@@ -64,7 +68,10 @@ class Guatemala(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holy_saturday(tr("Sabado Santo"))
 
         # Labor Day.
-        self._move_holiday(self._add_labor_day(tr("Dia del Trabajo")))
+        if year == 2018:
+            self._move_holiday(self._add_labor_day(tr("Dia del Trabajo")))
+        else:
+            self._add_labor_day(tr("Dia del Trabajo"))
 
         # Army Day.
         self._move_holiday(self._add_holiday(tr("Dia del Ejército"), JUN, 30))
@@ -76,7 +83,10 @@ class Guatemala(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday(tr("Día de la Independencia"), SEP, 15)
 
         # Revolution Day
-        self._add_holiday(tr("Dia de la Revolución"), OCT, 20)
+        if year in [2018, 2019]:
+            self._move_holiday(self._add_holiday(tr("Dia de la Revolución"), OCT, 20))
+        else:
+            self._add_holiday(tr("Dia de la Revolución"), OCT, 20)
 
         # All Saints' Day.
         self._add_all_saints_day(tr("Dia de Todos los Santos"))
