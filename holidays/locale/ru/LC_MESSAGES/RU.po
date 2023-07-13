@@ -3,28 +3,32 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.20\n"
+"Project-Id-Version: Python Holidays 0.29\n"
 "POT-Creation-Date: 2023-02-15 08:13-0800\n"
-"PO-Revision-Date: 2023-02-16 09:01-0800\n"
-"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"PO-Revision-Date: 2023-07-13 15:57+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || "
+"n%100>14) ? 1 : 2);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+msgid "Новый год"
+msgstr ""
 
 #. New Year Holidays.
 msgid "Новогодние каникулы"
 msgstr ""
 
-#. Orthodox Christmas Day.
+#. Christmas Day.
 msgid "Рождество Христово"
 msgstr ""
 
-#. Bridge days for 01/Jan & 08/Jan src:
-#. https://www.consultant.ru/document/cons_doc_LAW_425407/
 #. Defender of the Fatherland Day.
 msgid "День защитника Отечества"
 msgstr ""
@@ -33,22 +37,35 @@ msgstr ""
 msgid "Международный женский день"
 msgstr ""
 
-#. Labour Day.
+#. Holiday of Spring and Labor.
 msgid "Праздник Весны и Труда"
+msgstr ""
+
+#. International Workers' Solidarity Day.
+msgid "День международной солидарности трудящихся"
 msgstr ""
 
 #. Victory Day.
 msgid "День Победы"
 msgstr ""
 
-#. Russia's Day.
+#. Russia Day.
 msgid "День России"
+msgstr ""
+
+#. Day of the Adoption of the Declaration of Sovereignty of the Russian
+#. Federation.
+msgid "День принятия Декларации о государственном суверенитете Российской Федерации"
 msgstr ""
 
 #. Unity Day.
 msgid "День народного единства"
 msgstr ""
 
-#. October Revolution Day.
-msgid "День Октябрьской революции"
+#. Day of consent and reconciliation.
+msgid "День согласия и примирения"
+msgstr ""
+
+#. Anniversary of the Great October Socialist Revolution.
+msgid "Годовщина Великой Октябрьской социалистической революции"
 msgstr ""
