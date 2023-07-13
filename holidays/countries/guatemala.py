@@ -42,7 +42,11 @@ class Guatemala(HolidayBase, ChristianHolidays, InternationalHolidays):
         EXPEDIENTE 5536-2018 (CC) start 17 abr 2020
         https://leyes.infile.com/index.php?id=181&id_publicacion=81051
         """
-        if self._year <= 2017 or self._is_monday(dt):
+        is_year_before_2018 = self._year <= 2018
+        is_month_before_october = self._year == 2018 and dt.month < 10
+        is_monday = self._is_monday(dt)
+
+        if is_year_before_2018 or is_month_before_october or is_monday:
             return None
         self._add_holiday(
             self[dt],
@@ -68,7 +72,7 @@ class Guatemala(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holy_saturday(tr("Sabado Santo"))
 
         # Labor Day.
-        if year == 2018:
+        if year == 2019:
             self._move_holiday(self._add_labor_day(tr("Dia del Trabajo")))
         else:
             self._add_labor_day(tr("Dia del Trabajo"))
