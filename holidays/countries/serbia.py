@@ -58,12 +58,9 @@ class Serbia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # International Workers' Day.
         name = tr("Празник рада")
-        may_1 = self._add_labor_day(name)
-        self._add_observed(may_1, days=+2)
-        self._add_observed(
-            self._add_holiday(name, may_1 + td(days=+1)),
-            days=+2 if may_1 + td(days=+1) == self._easter_sunday else +1,
-        )
+        self._add_observed(self._add_labor_day(name), days=+2)
+        may_2 = self._add_labor_day_two(name)
+        self._add_observed(may_2, days=+2 if may_2 == self._easter_sunday else +1)
 
         # Armistice Day.
         self._add_observed(self._add_remembrance_day(tr("Дан примирја у Првом светском рату")))

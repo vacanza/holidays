@@ -54,9 +54,8 @@ class Montenegro(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Labour Day.
         name = "Labour Day"
-        may_1 = self._add_labor_day(name)
-        self._add_observed(may_1, days=+2)
-        self._add_observed(self._add_holiday(name, may_1 + td(days=+1)))
+        self._add_observed(self._add_labor_day(name), days=+2)
+        self._add_observed(self._add_labor_day_two(name))
 
         # Good Friday.
         self._add_good_friday("Orthodox Good Friday")
