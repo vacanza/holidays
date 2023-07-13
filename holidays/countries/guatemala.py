@@ -42,7 +42,7 @@ class Guatemala(HolidayBase, ChristianHolidays, InternationalHolidays):
         EXPEDIENTE 5536-2018 (CC) start 17 abr 2020
         https://leyes.infile.com/index.php?id=181&id_publicacion=81051
         """
-        if self._year <= 2018 or self._is_monday(dt):
+        if self._year <= 2017 or self._is_monday(dt):
             return None
         self._add_holiday(
             self[dt],

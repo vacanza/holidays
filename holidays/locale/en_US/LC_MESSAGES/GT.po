@@ -1,4 +1,4 @@
-# Colombia holidays en_US localization.
+# Guatemala holidays en_US localization.
 # Authors: ~Jorge C <jorge.cadena@gmail.com>, (c) 2023.
 #
 msgid ""
