@@ -17,54 +17,54 @@ msgstr ""
 "X-Generator: Poedit 3.3\n"
 
 #. New Year's Day.
-#: ./holidays/countries/guatemala.py:55
+#: ./holidays/countries/guatemala.py:59
 msgid "Año Nuevo"
 msgstr "New Year's Day"
 
 #. Good Thursday.
-#: ./holidays/countries/guatemala.py:58
+#: ./holidays/countries/guatemala.py:62
 msgid "Jueves Santo"
 msgstr "Good Thursday"
 
 #. Good Friday.
-#: ./holidays/countries/guatemala.py:61
+#: ./holidays/countries/guatemala.py:65
 msgid "Viernes Santo"
 msgstr "Good Friday"
 
 #. Army Day.
-#: ./holidays/countries/guatemala.py:73
+#: ./holidays/countries/guatemala.py:77
 msgid "Dia del Ejército"
 msgstr "Army Day"
 
 #. Independence Day
-#: ./holidays/countries/guatemala.py:79
+#: ./holidays/countries/guatemala.py:83
 msgid "Día de la Independencia"
 msgstr "Independence day"
 
 #. All Saints' Day.
-#: ./holidays/countries/guatemala.py:88
+#: ./holidays/countries/guatemala.py:92
 msgid "Dia de Todos los Santos"
 msgstr "All Saints Day"
 
 #. Assumption Day.
-#: ./holidays/countries/guatemala.py:76
+#: ./holidays/countries/guatemala.py:80
 msgid "Dia de la Asunción"
 msgstr "Assumption Day"
 
-#: ./holidays/countries/guatemala.py:83 ./holidays/countries/guatemala.py:85
+#: ./holidays/countries/guatemala.py:87 ./holidays/countries/guatemala.py:89
 msgid "Dia de la Revolución"
 msgstr "Revolution Day"
 
 #. Good Saturday.
-#: ./holidays/countries/guatemala.py:64
+#: ./holidays/countries/guatemala.py:68
 msgid "Sabado Santo"
 msgstr "Good Saturday"
 
-#: ./holidays/countries/guatemala.py:68 ./holidays/countries/guatemala.py:70
+#: ./holidays/countries/guatemala.py:72 ./holidays/countries/guatemala.py:74
 msgid "Dia del Trabajo"
 msgstr "Labor Day"
 
 #. Christmas Day.
-#: ./holidays/countries/guatemala.py:91
+#: ./holidays/countries/guatemala.py:95
 msgid "Dia de Navidad"
 msgstr "Christmas Day"
