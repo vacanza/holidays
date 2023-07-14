@@ -1,5 +1,5 @@
 # Guatemala holidays en_US localization.
-# Authors: ~Jorge C <jorge.cadena@gmail.com>, (c) 2023.
+# Authors: Jorge Cadena <jorge.cadena@gmail.com>, (c) 2023.
 #
 msgid ""
 msgstr ""
