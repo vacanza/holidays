@@ -27,7 +27,7 @@ class Russia(HolidayBase, ChristianHolidays, InternationalHolidays):
     supported_languages = ("en_US", "ru")
 
     special_holidays = {
-        # Bridge days for 01/Jan & 08/Jan
+        # Bridge days for 01/01/2023 and 08/01/2023.
         # src: https://www.consultant.ru/document/cons_doc_LAW_425407/
         2023: (
             (FEB, 24, tr("День защитника Отечества")),
