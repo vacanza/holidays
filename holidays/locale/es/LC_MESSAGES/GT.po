@@ -1,5 +1,5 @@
 # Guatemala holidays.
-# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+# Authors: Jorge Cadena <jorge.cadena@gmail.com>, (c) 2023.
 #
 msgid ""
 msgstr ""
