@@ -58,8 +58,3 @@ msgstr ""
 msgid "Dia de Navidad"
 msgstr ""
 
-#~ msgid "Dia del trabajo"
-#~ msgstr ""
-
-#~ msgid "Dia de la Revolución de Octubre"
-#~ msgstr ""
