@@ -68,10 +68,9 @@ class Guatemala(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holy_saturday(tr("Sabado Santo"))
 
         # Labor Day.
+        dt = self._add_labor_day(tr("Dia del Trabajo"))
         if year == 2019:
-            self._move_holiday(self._add_labor_day(tr("Dia del Trabajo")))
-        else:
-            self._add_labor_day(tr("Dia del Trabajo"))
+            self._move_holiday(dt)
 
         # Army Day.
         self._move_holiday(self._add_holiday(tr("Dia del Ejército"), JUN, 30))
