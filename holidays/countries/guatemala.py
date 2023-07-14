@@ -82,10 +82,9 @@ class Guatemala(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday(tr("Día de la Independencia"), SEP, 15)
 
         # Revolution Day
-        if year in [2018, 2019]:
-            self._move_holiday(self._add_holiday(tr("Dia de la Revolución"), OCT, 20))
-        else:
-            self._add_holiday(tr("Dia de la Revolución"), OCT, 20)
+        dt = self._add_holiday(tr("Dia de la Revolución"), OCT, 20)
+        if year in {2018, 2019}:
+            self._move_holiday(dt)
 
         # All Saints' Day.
         self._add_all_saints_day(tr("Dia de Todos los Santos"))
