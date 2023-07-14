@@ -38,7 +38,7 @@ msgstr "Independence Day"
 
 #. All Saints' Day.
 msgid "Dia de Todos los Santos"
-msgstr "All Saints Day"
+msgstr "All Saints' Day"
 
 #. Assumption Day.
 msgid "Dia de la Asunción"
