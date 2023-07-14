@@ -199,8 +199,8 @@ class TestGuatemala(TestCase):
             ("2024-05-01", "Labor Day"),
             ("2024-07-01", "Army Day"),
             ("2024-08-15", "Assumption Day"),
-            ("2024-09-15", "Independence day"),
+            ("2024-09-15", "Independence Day"),
             ("2024-10-20", "Revolution Day"),
-            ("2024-11-01", "All Saints Day"),
+            ("2024-11-01", "All Saints' Day"),
             ("2024-12-25", "Christmas Day"),
         )
