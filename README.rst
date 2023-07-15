@@ -288,7 +288,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Djibouti
      - DJ
      -
-     -
+     - ar, en_US, **fr**
    * - Dominican Republic
      - DO
      -
