@@ -570,10 +570,7 @@ class HolidayBase(Dict[date, str]):
         )
         substituted_date_format = self.tr(getattr(self, "substituted_date_format", "%d.%m.%Y"))
         for hol in _normalize_tuple(self.substituted_holidays.get(self._year, ())):
-            if len(hol) == 5:
-                from_year = hol[0]
-            else:
-                from_year = self._year
+            from_year = hol[0] if len(hol) == 5 else self._year
             from_month, from_day, to_month, to_day = hol[-4:]
             from_date = date(from_year, from_month, from_day).strftime(substituted_date_format)
             self._add_holiday(substituted_label % from_date, to_month, to_day)
