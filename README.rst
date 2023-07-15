@@ -468,7 +468,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Morocco
      - MA
      -
-     - **ar**, en_US
+     - **ar**, en_US, fr
    * - Mozambique
      - MZ
      -

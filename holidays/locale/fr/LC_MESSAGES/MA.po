@@ -1,78 +1,78 @@
-# Morocco holidays en_US localization.
-# Authors: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>, 2023.
+# Morocco holidays fr localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.29\n"
-"POT-Creation-Date: 2023-06-28 00:13+0100\n"
-"PO-Revision-Date: 2023-07-11 03:44+0100\n"
-"Last-Translator: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>\n"
+"POT-Creation-Date: 2023-07-15 19:53+0300\n"
+"PO-Revision-Date: 2023-07-15 20:02+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
-"Language: en_US\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. Estimated label.
 #, c-format
 msgid "(تقدير*) *%s"
-msgstr "%s* (*estimated)"
+msgstr "%s* (*estimé)"
 
 #. New Year's Day.
 msgid "رأس السنة الميلادية"
-msgstr "New Year's Day"
+msgstr "Nouvel an"
 
 #. Proclamation of Independence Day.
 msgid "ذكرى تقديم وثيقة الاستقلال"
-msgstr "Proclamation of Independence Day"
+msgstr "Manifeste de l'indépendance"
 
 #. Amazigh New Year.
 msgid "رأس السنة الأمازيغية"
-msgstr "Amazigh New Year"
+msgstr "Nouvel an Amazigh"
 
 #. Labor Day.
 msgid "عيد العمال"
-msgstr "Labor Day"
+msgstr "Fête du Travail"
 
 #. Throne Day.
 msgid "عيد العرش"
-msgstr "Throne Day"
+msgstr "Fête du Trône"
 
 #. Oued Ed-Dahab Day.
 msgid "ذكرى استرجاع إقليم وادي الذهب"
-msgstr "Oued Ed-Dahab Day"
+msgstr "Allégeance Oued Eddahab"
 
 #. Revolution Day.
 msgid "ذكرى ثورة الملك و الشعب"
-msgstr "Revolution Day"
+msgstr "La révolution du roi et du peuple"
 
 #. Youth Day.
 msgid "عيد الشباب"
-msgstr "Youth Day"
+msgstr "Fête de la Jeunesse"
 
 #. Green March.
 msgid "ذكرى المسيرة الخضراء"
-msgstr "Green March"
+msgstr "La marche verte"
 
 #. Independence Day.
 msgid "عيد الإستقلال"
-msgstr "Independence Day"
+msgstr "Fête de l'indépendance"
 
 #. Eid al-Fitr.
 msgid "عيد الفطر"
-msgstr "Eid al-Fitr"
+msgstr "Fête de la rupture du jeûne"
 
 #. Eid al-Adha.
 msgid "عيد الأضحى"
-msgstr "Eid al-Adha"
+msgstr "Fête du sacrifice"
 
 #. Islamic New Year.
 msgid "رأس السنة الهجرية"
-msgstr "Islamic New Year"
+msgstr "Nouvel an musulman"
 
 #. Prophet's Birthday.
 msgid "عيد المولد النبوي"
-msgstr "Prophet's Birthday"
+msgstr "Anniversaire du prophète"
