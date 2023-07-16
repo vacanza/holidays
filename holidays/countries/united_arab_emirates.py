@@ -9,6 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from gettext import gettext as tr
+
 from holidays.calendars import _CustomIslamicCalendar
 from holidays.calendars.gregorian import APR, MAY, JUN, JUL, AUG, SEP, NOV, DEC, FRI, SAT
 from holidays.holiday_base import HolidayBase
@@ -23,7 +25,7 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays):
     However the law is not applied literally,
     and was amended often in the past few years.
     Sources:
-    2017: https://www.khaleejtimes.com/nation/uae-official-public-holidays-list-2017
+    2017: https://www.khaleejtimes.com/nation/uae-official-public-holidays-list-2017   # noqa: E501
     2018: https://www.thenational.ae/uae/government/uae-public-holidays-2018-announced-by-abu-dhabi-government-1.691393  # noqa: E501
     2019: https://www.thenational.ae/uae/government/uae-public-holidays-for-2019-and-2020-announced-by-cabinet-1.833425  # noqa: E501
     2020: https://u.ae/en/information-and-services/public-holidays-and-religious-affairs/public-holidays  # noqa: E501
@@ -39,6 +41,10 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays):
     """
 
     country = "AE"
+    default_language = "ar"
+    # Estimated label.
+    estimated_label = tr("(تقدير*) *%s")
+    supported_languages = ("ar", "en_US")
     weekend = {FRI, SAT}
 
     def __init__(self, *args, **kwargs):
@@ -50,40 +56,41 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays):
         super()._populate(year)
 
         # New Year's Day.
-        self._add_new_years_day("New Year's Day")
+        self._add_new_years_day(tr("رأس السنة الميلادية"))
 
-        # Commemoration Day.
         if year >= 2015:
-            self._add_holiday("Commemoration Day", *((DEC, 1) if year >= 2019 else (NOV, 30)))
+            # Commemoration Day.
+            self._add_holiday(tr("يوم الشهيد"), *((DEC, 1) if year >= 2019 else (NOV, 30)))
 
         # National Day.
-        self._add_holiday("National Day", DEC, 2)
-        self._add_holiday("National Day Holiday", DEC, 3)
+        self._add_holiday(tr("اليوم الوطني"), DEC, 2)
+        self._add_holiday(tr("اليوم الوطني"), DEC, 3)
 
         # Eid al-Fitr.
-        eid_al_fitr = "Eid al-Fitr"
-        self._add_eid_al_fitr_day(eid_al_fitr)
-        self._add_eid_al_fitr_day_two(f"{eid_al_fitr} Holiday")
-        self._add_eid_al_fitr_day_three(f"{eid_al_fitr} Holiday")
+        self._add_eid_al_fitr_day(tr("عيد الفطر"))
+        # Eid al-Fitr Holiday.
+        self._add_eid_al_fitr_day_two(tr("عطلة عيد الفطر"))
+        self._add_eid_al_fitr_day_three(tr("عطلة عيد الفطر"))
 
-        # Arafat Day & Eid al-Adha.
-        self._add_arafah_day("Arafat (Hajj) Day")
+        # Arafat Day.
+        self._add_arafah_day(tr("وقفة عرفة"))
 
-        eid_al_adha = "Eid al-Adha"
-        self._add_eid_al_adha_day(eid_al_adha)
-        self._add_eid_al_adha_day_two(f"{eid_al_adha} Holiday")
-        self._add_eid_al_adha_day_three(f"{eid_al_adha} Holiday")
+        # Eid al-Adha.
+        self._add_eid_al_adha_day(tr("عيد الأضحى"))
+        # Eid al-Adha Holiday.
+        self._add_eid_al_adha_day_two(tr("عطلة عيد الأضحى"))
+        self._add_eid_al_adha_day_three(tr("عطلة عيد الأضحى"))
 
         # Islamic New Year.
-        self._add_islamic_new_year_day("Al Hijra - Islamic New Year")
+        self._add_islamic_new_year_day(tr("رأس السنة الهجرية"))
 
         # Leilat al-Miraj.
         if year <= 2018:  # The UAE government removed this starting 2019.
-            self._add_isra_and_miraj_day("Leilat al-Miraj - The Prophet's ascension")
+            self._add_isra_and_miraj_day(tr("ليلة المعراج"))
 
         # Prophet Muhammad's Birthday.
         if year <= 2019:  # The UAE government removed this starting 2020.
-            self._add_mawlid_day("Mawlud al-Nabi - Prophet Mohammad's Birthday")
+            self._add_mawlid_day(tr("عيد المولد النبوي"))
 
 
 class AE(UnitedArabEmirates):

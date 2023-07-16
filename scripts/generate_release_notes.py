@@ -17,6 +17,7 @@ import argparse
 import os
 import re
 from datetime import date
+from pathlib import Path
 from typing import Dict, Set
 
 from git import Repo
@@ -97,10 +98,9 @@ class ReleaseNotesGenerator:
             self.latest_tag_name = None
 
     @property
-    def github_token(self, path=".github_token"):
+    def github_token(self, path=Path(".github_token")):
         """Return GitHub access token."""
-        with open(path) as gh_token_file:
-            return gh_token_file.readline().strip()
+        return path.read_text(encoding="UTF-8").strip()
 
     @property
     def is_ready(self):

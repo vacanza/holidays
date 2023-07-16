@@ -70,7 +70,7 @@ class TestPakistan(TestCase):
             date(2020, 5, 24),
             date(2021, 5, 13),
             date(2022, 5, 3),
-            date(2023, 4, 21),
+            date(2023, 4, 22),
         ):
             self.assertHoliday(dt)
             self.assertHoliday(dt + td(days=+1))
@@ -93,7 +93,7 @@ class TestPakistan(TestCase):
             date(2020, 7, 31),
             date(2021, 7, 21),
             date(2022, 7, 10),
-            date(2023, 6, 28),
+            date(2023, 6, 29),
         ):
             self.assertHoliday(dt)
             self.assertHoliday(dt + td(days=+1))

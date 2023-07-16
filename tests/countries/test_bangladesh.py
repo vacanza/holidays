@@ -9,21 +9,25 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
-from datetime import date
-
-import holidays
+from holidays.countries.bangladesh import Bangladesh, BD, BGD
+from tests.common import TestCase
 
 
-class TestBangladesh(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.BD()
+class TestBangladesh(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Bangladesh)
 
-    def test_2020(self):
-        self.assertIn(date(2020, 2, 21), self.holidays)
-        self.assertIn(date(2020, 3, 17), self.holidays)
-        self.assertIn(date(2020, 3, 26), self.holidays)
-        self.assertIn(date(2020, 4, 14), self.holidays)
-        self.assertIn(date(2020, 5, 1), self.holidays)
-        self.assertIn(date(2020, 8, 15), self.holidays)
-        self.assertIn(date(2020, 12, 16), self.holidays)
+    def test_country_aliases(self):
+        self.assertCountryAliases(Bangladesh, BD, BGD)
+
+    def test_2022(self):
+        self.assertHolidays(
+            ("2022-02-21", "International Mother's language Day"),
+            ("2022-03-17", "Sheikh Mujibur Rahman's Birthday and Children's Day"),
+            ("2022-03-26", "Independence Day"),
+            ("2022-04-14", "Bengali New Year's Day"),
+            ("2022-05-01", "May Day"),
+            ("2022-08-15", "National Mourning Day"),
+            ("2022-12-16", "Victory Day"),
+        )

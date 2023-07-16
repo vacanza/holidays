@@ -1,0 +1,81 @@
+# Morocco holidays.
+# Authors: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.29\n"
+"POT-Creation-Date: 2023-06-28 00:13+0100\n"
+"PO-Revision-Date: 2023-07-05 17:41+0100\n"
+"Last-Translator: \n"
+"Language-Team: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.3.2\n"
+
+#. Estimated label.
+#, c-format
+msgid "(تقدير*) *%s"
+msgstr ""
+
+#. New Year's Day
+msgid "رأس السنة الميلادية"
+msgstr ""
+
+#. Independence Manifesto Day post 1944
+msgid "ذكرى تقديم وثيقة الاستقلال"
+msgstr ""
+
+#. Amazigh New Year
+msgid "رأس السنة الأمازيغية"
+msgstr ""
+
+#. Labor day
+msgid "عيد العمال"
+msgstr ""
+
+#. Throne day
+msgid "عيد العرش"
+msgstr ""
+
+#. Oued Ed-Dahab Day
+msgid "ذكرى استرجاع إقليم وادي الذهب"
+msgstr ""
+
+#. Revolution Day
+msgid "ذكرى ثورة الملك و الشعب"
+msgstr ""
+
+#. Youth day
+msgid "عيد الشباب"
+msgstr ""
+
+#. Green March
+msgid "ذكرى المسيرة الخضراء"
+msgstr ""
+
+#. Independance day
+msgid "عيد الإستقلال"
+msgstr ""
+
+#. Eid al-Fitr - Feast Festive date of observance is announced yearly, This is
+#. an estimate since
+#. having the Holiday on Weekend does change the number of days, deceided to
+#. leave it since marking
+#. a Weekend as a holiday wouldn't do much harm.
+msgid "عيد الفطر"
+msgstr ""
+
+#. Eid al-Adha - Sacrifice Festive date of observance is announced yearly
+msgid "عيد الأضحى"
+msgstr ""
+
+#. Islamic New Year - (hijari_year, 1, 1)
+msgid "رأس السنة الهجرية"
+msgstr ""
+
+#. Prophet Muhammad's Birthday - (hijari_year, 3, 12)
+msgid "عيد المولد النبوي"
+msgstr ""
