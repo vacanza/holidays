@@ -55,7 +55,7 @@ class Botswana(HolidayBase, ChristianHolidays, InternationalHolidays):
         may_1 = self._add_labor_day("Labour Day")
         self._add_observed(may_1)
         if self.observed and year >= 2016 and self._is_saturday(may_1):
-            self._add_holiday("Labour Day Holiday", may_1 + td(days=+2))
+            self._add_labor_day_three("Labour Day Holiday")
 
         self._add_observed(self._add_holiday("Sir Seretse Khama Day", JUL, 1))
 

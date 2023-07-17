@@ -70,8 +70,8 @@ class TestMorocco(TestCase):
         self.assertNoHoliday("1944-01-11")
 
     def test_independence_day(self):
-        self.assertHolidayName("Fête de l'indépendance", "1957-11-18")
-        self.assertHolidayName("Fête du Trône", "1956-11-18", "1957-11-18")
+        self.assertHolidayName("عيد الإستقلال", "1957-11-18")
+        self.assertHolidayName("عيد العرش", "1956-11-18", "1957-11-18")
 
     def test_hijri_based(self):
         self.assertHoliday(
@@ -90,4 +90,45 @@ class TestMorocco(TestCase):
             # Prophet Muhammad's Birthday
             "2021-10-18",
             "2021-10-19",
+        )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2023-01-01", "رأس السنة الميلادية"),
+            ("2023-01-11", "ذكرى تقديم وثيقة الاستقلال"),
+            ("2023-04-21", "(تقدير*) *عيد الفطر"),
+            ("2023-04-22", "(تقدير*) *عيد الفطر"),
+            ("2023-05-01", "عيد العمال"),
+            ("2023-06-28", "(تقدير*) *عيد الأضحى"),
+            ("2023-06-29", "(تقدير*) *عيد الأضحى"),
+            ("2023-07-19", "(تقدير*) *رأس السنة الهجرية"),
+            ("2023-07-30", "عيد العرش"),
+            ("2023-08-14", "ذكرى استرجاع إقليم وادي الذهب"),
+            ("2023-08-20", "ذكرى ثورة الملك و الشعب"),
+            ("2023-08-21", "عيد الشباب"),
+            ("2023-09-27", "(تقدير*) *عيد المولد النبوي"),
+            ("2023-09-28", "(تقدير*) *عيد المولد النبوي"),
+            ("2023-11-06", "ذكرى المسيرة الخضراء"),
+            ("2023-11-18", "عيد الإستقلال"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2023-01-01", "New Year's Day"),
+            ("2023-01-11", "Proclamation of Independence Day"),
+            ("2023-04-21", "Eid al-Fitr* (*estimated)"),
+            ("2023-04-22", "Eid al-Fitr* (*estimated)"),
+            ("2023-05-01", "Labor Day"),
+            ("2023-06-28", "Eid al-Adha* (*estimated)"),
+            ("2023-06-29", "Eid al-Adha* (*estimated)"),
+            ("2023-07-19", "Islamic New Year* (*estimated)"),
+            ("2023-07-30", "Throne Day"),
+            ("2023-08-14", "Oued Ed-Dahab Day"),
+            ("2023-08-20", "Revolution Day"),
+            ("2023-08-21", "Youth Day"),
+            ("2023-09-27", "Prophet's Birthday* (*estimated)"),
+            ("2023-09-28", "Prophet's Birthday* (*estimated)"),
+            ("2023-11-06", "Green March"),
+            ("2023-11-18", "Independence Day"),
         )

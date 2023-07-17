@@ -59,7 +59,7 @@ class TestSaudiArabia(TestCase):
 
     def test_national_day(self):
         self.assertHoliday(f"{year}-09-23" for year in range(2005, 2050))
-        self.assertNoHolidayName("National Day Holiday", range(1950, 2005))
+        self.assertNoHolidayName("اليوم الوطني", range(1950, 2005))
 
     def test_national_day_observed(self):
         dt = (
@@ -81,11 +81,11 @@ class TestSaudiArabia(TestCase):
             "2048-09-23",
             "2074-09-23",
         ):
-            self.assertNotIn("National Day Holiday", self.holidays[dt])
+            self.assertNotIn("اليوم الوطني", self.holidays[dt])
 
     def test_founding_day(self):
         self.assertHoliday(f"{year}-02-22" for year in range(2022, 2050))
-        self.assertNoHolidayName("Founding Day Holiday", range(1950, 2022))
+        self.assertNoHolidayName("يوم التأسيسي", range(1950, 2022))
 
     def test_founding_day_observed(self):
         dt = (
@@ -98,7 +98,7 @@ class TestSaudiArabia(TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_founding_day_overlaps_hijri_holiday(self):
-        self.assertNotIn("National Day Holiday", self.holidays["2061-02-22"])
+        self.assertNotIn("اليوم الوطني", self.holidays["2061-02-22"])
 
     def test_hijri_based(self):
         self.assertHoliday(
@@ -166,4 +166,41 @@ class TestSaudiArabia(TestCase):
             # eid al-adha 2 (hijri year 1427)
             "2006-12-30",
             "2006-12-31",
+        )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2023-02-22", "يوم التأسيسي"),
+            ("2023-04-21", "(تقدير*) *عطلة عيد الفطر"),
+            ("2023-04-22", "(تقدير*) *عطلة عيد الفطر"),
+            ("2023-04-23", "(تقدير*) *عطلة عيد الفطر"),
+            ("2023-04-24", "(تقدير*) *عطلة عيد الفطر"),
+            ("2023-04-25", "(ملاحظة) عطلة عيد الفطر"),
+            ("2023-04-26", "(ملاحظة) عطلة عيد الفطر"),
+            ("2023-06-27", "(تقدير*) *يوم عرفة"),
+            ("2023-06-28", "(تقدير*) *عطلة عيد الأضحى"),
+            ("2023-06-29", "(تقدير*) *عطلة عيد الأضحى"),
+            ("2023-06-30", "(تقدير*) *عطلة عيد الأضحى"),
+            ("2023-07-01", "(ملاحظة) عطلة عيد الأضحى"),
+            ("2023-09-23", "اليوم الوطني"),
+            ("2023-09-24", "(ملاحظة) اليوم الوطني"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2023-02-22", "Founding Day Holiday"),
+            ("2023-04-21", "Eid al-Fitr Holiday* (*estimated)"),
+            ("2023-04-22", "Eid al-Fitr Holiday* (*estimated)"),
+            ("2023-04-23", "Eid al-Fitr Holiday* (*estimated)"),
+            ("2023-04-24", "Eid al-Fitr Holiday* (*estimated)"),
+            ("2023-04-25", "Eid al-Fitr Holiday (observed)"),
+            ("2023-04-26", "Eid al-Fitr Holiday (observed)"),
+            ("2023-06-27", "Arafat Day* (*estimated)"),
+            ("2023-06-28", "Eid al-Adha Holiday* (*estimated)"),
+            ("2023-06-29", "Eid al-Adha Holiday* (*estimated)"),
+            ("2023-06-30", "Eid al-Adha Holiday* (*estimated)"),
+            ("2023-07-01", "Eid al-Adha Holiday (observed)"),
+            ("2023-09-23", "National Day Holiday"),
+            ("2023-09-24", "National Day Holiday (observed)"),
         )

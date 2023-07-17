@@ -9,8 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
-
 from holidays.calendars.gregorian import OCT
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChineseCalendarHolidays, InternationalHolidays
@@ -36,10 +34,10 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
         self._add_new_years_day("New Year's Day")
 
         name = "Labour Day"
-        may_1 = self._add_labor_day(name)
+        self._add_labor_day(name)
         if 2000 <= year <= 2007:
-            self._add_holiday(name, may_1 + td(days=+1))
-            self._add_holiday(name, may_1 + td(days=+2))
+            self._add_labor_day_two(name)
+            self._add_labor_day_three(name)
 
         name = "Chinese New Year (Spring Festival)"
         self._add_chinese_new_years_day(name)

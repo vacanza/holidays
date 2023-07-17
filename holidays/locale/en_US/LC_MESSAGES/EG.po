@@ -1,0 +1,94 @@
+# Egypt holidays en_US localization.
+# Authors: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.29\n"
+"POT-Creation-Date: 2023-06-28 00:13+0100\n"
+"PO-Revision-Date: 2023-07-11 02:08+0100\n"
+"Last-Translator: \n"
+"Language-Team: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.3.2\n"
+
+#. Estimated label.
+#, c-format
+msgid "(تقدير*) *%s"
+msgstr "%s* (*estimated)"
+
+#. New Year's Day
+msgid "رأس السنة الميلادية"
+msgstr "New Year's Day"
+
+#. Coptic Christmas
+msgid "عيد الميلاد المجيد (تقويم قبطي)"
+msgstr "Coptic Christmas"
+
+#. January 25th Revolution
+msgid "عيد ثورة 25 يناير"
+msgstr "January 25th Revolution Day"
+
+#. National Police Day
+msgid "عيد الشرطة"
+msgstr "Police Day"
+
+#. Coptic Easter - Orthodox Easter
+msgid "عيد الفصح القبطي"
+msgstr "Coptic Easter - Orthodox Easter"
+
+#. Spring Festival
+msgid "شم النسيم"
+msgstr "Sham El Nessim"
+
+#. Sinai Libration Day
+msgid "عيد تحرير سيناء"
+msgstr "Sinai Liberation Day"
+
+#. Labour Day
+msgid "عيد العمال"
+msgstr "Labor Day"
+
+#. Armed Forces Day
+msgid "عيد القوات المسلحة"
+msgstr "Armed Forces Day"
+
+#. June 30 Revolution Day
+msgid "عيد ثورة 30 يونيو"
+msgstr "June 30 Revolution Day"
+
+#. July 23 Revolution Day
+msgid "عيد ثورة 23 يوليو"
+msgstr "July 23 Revolution Day"
+
+#. Eid al-Fitr - Feast Festive
+msgid "عيد الفطر"
+msgstr "Eid al-Fitr"
+
+#. Eid al-Fitr Holiday
+msgid "عطلة عيد الفطر"
+msgstr "Eid al-Fitr Holiday"
+
+#. Arafat Day
+msgid "يوم عرفة"
+msgstr "Arafat Day"
+
+#. Eid al-Adha - Scarfice Festive
+msgid "عيد الأضحى"
+msgstr "Eid al-Adha"
+
+#. Eid al-Adha Holiday
+msgid "عطلة عيد الأضحى"
+msgstr "Eid al-Adha Holiday"
+
+#. Islamic New Year
+msgid "رأس السنة الهجرية"
+msgstr "Islamic New Year"
+
+#. Prophet Muhammad's Birthday
+msgid "عيد المولد النبوي"
+msgstr "Prophet's Birthday"

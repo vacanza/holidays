@@ -10,6 +10,7 @@
 #  License: MIT (see LICENSE file)
 
 import re
+from pathlib import Path
 from unittest import TestCase
 
 from holidays import country_holidays, list_supported_countries, list_localized_countries
@@ -18,8 +19,7 @@ from holidays import country_holidays, list_supported_countries, list_localized_
 class TestReadme(TestCase):
     @classmethod
     def setUpClass(cls):
-        with open("README.rst", encoding="utf-8") as readme_file:
-            cls.readme_content = "".join(readme_file.readlines())
+        cls.readme_content = Path("README.rst").read_text(encoding="UTF-8")
 
         super().setUpClass()
 

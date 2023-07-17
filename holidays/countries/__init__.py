@@ -64,6 +64,7 @@ from .georgia import Georgia, GE, GEO
 from .germany import Germany, DE, DEU
 from .greece import Greece, GR, GRC
 from .guam import Guam, GU, GUM, HolidaysGU
+from .guatemala import Guatemala, GT, GUA
 from .honduras import Honduras, HN, HND
 from .hongkong import HongKong, HK, HKG
 from .hungary import Hungary, HU, HUN

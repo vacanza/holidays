@@ -93,9 +93,8 @@ def generate_data():
         holiday_data=holiday_data_str,
     )
 
-    f_name = Path("holidays/calendars") / OUT_FILE_NAME
-    with open(f_name, "w", encoding="UTF-8", newline="\n") as f:
-        f.write(class_str)
+    path = Path("holidays/calendars") / OUT_FILE_NAME
+    path.write_text(class_str, encoding="UTF-8")
 
 
 if __name__ == "__main__":

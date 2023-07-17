@@ -9,6 +9,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+
+from gettext import gettext as tr
+
 from holidays.calendars.gregorian import JAN, APR, JUN, JUL, OCT
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.holiday_base import HolidayBase
@@ -30,6 +33,10 @@ class Egypt(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
     # is_weekend function is there, however not activated for accuracy.
 
     country = "EG"
+    default_language = "ar"
+    # Estimated label.
+    estimated_label = tr("(تقدير*) *%s")
+    supported_languages = ("ar", "en_US")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
@@ -42,54 +49,60 @@ class Egypt(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
         super()._populate(year)
 
         # New Year's Day
-        self._add_new_years_day("New Year's Day - Bank Holiday")
+        self._add_new_years_day(tr("رأس السنة الميلادية"))
 
         # Coptic Christmas
-        self._add_christmas_day("Coptic Christmas")
+        self._add_christmas_day(tr("عيد الميلاد المجيد (تقويم قبطي)"))
 
-        # 25th of Jan
         if year >= 2012:
-            self._add_holiday("Revolution Day - January 25", JAN, 25)
+            # January 25th Revolution
+            self._add_holiday(tr("عيد ثورة 25 يناير"), JAN, 25)
         elif year >= 2009:
-            self._add_holiday("Police Day", JAN, 25)
+            # National Police Day
+            self._add_holiday(tr("عيد الشرطة"), JAN, 25)
 
         # Coptic Easter - Orthodox Easter
-        self._add_easter_sunday("Coptic Easter Sunday")
-        self._add_easter_monday("Sham El Nessim")  # Spring Festival
+        self._add_easter_sunday(tr("عيد الفصح القبطي"))
+        self._add_easter_monday(tr("شم النسيم"))  # Spring Festival
 
-        # Sinai Libration Day
         if year > 1982:
-            self._add_holiday("Sinai Liberation Day", APR, 25)
+            # Sinai Libration Day
+            self._add_holiday(tr("عيد تحرير سيناء"), APR, 25)
 
         # Labour Day
-        self._add_labor_day("Labour Day")
+        self._add_labor_day(tr("عيد العمال"))
 
         # Armed Forces Day
-        self._add_holiday("Armed Forces Day", OCT, 6)
+        self._add_holiday(tr("عيد القوات المسلحة"), OCT, 6)
 
-        # 30 June Revolution Day
         if year >= 2014:
-            self._add_holiday("30 June Revolution Day", JUN, 30)
+            # June 30 Revolution Day
+            self._add_holiday(tr("عيد ثورة 30 يونيو"), JUN, 30)
 
-        # Revolution Day
         if year > 1952:
-            self._add_holiday("Revolution Day", JUL, 23)
+            # July 23 Revolution Day
+            self._add_holiday(tr("عيد ثورة 23 يوليو"), JUL, 23)
 
         # Eid al-Fitr - Feast Festive
-        self._add_eid_al_fitr_day("Eid al-Fitr")
-        self._add_eid_al_fitr_day_two("Eid al-Fitr Holiday")
-        self._add_eid_al_fitr_day_three("Eid al-Fitr Holiday")
+        self._add_eid_al_fitr_day(tr("عيد الفطر"))
+        # Eid al-Fitr Holiday
+        self._add_eid_al_fitr_day_two(tr("عطلة عيد الفطر"))
+        self._add_eid_al_fitr_day_three(tr("عطلة عيد الفطر"))
 
-        self._add_arafah_day("Arafat Day")
+        # Arafat Day
+        self._add_arafah_day(tr("يوم عرفة"))
 
-        # Arafat Day & Eid al-Adha - Scarfice Festive
-        self._add_eid_al_adha_day("Eid al-Adha")
-        self._add_eid_al_adha_day_two("Eid al-Adha Holiday")
-        self._add_eid_al_adha_day_three("Eid al-Adha Holiday")
+        # Eid al-Adha - Scarfice Festive
+        self._add_eid_al_adha_day(tr("عيد الأضحى"))
+        # Eid al-Adha Holiday
+        self._add_eid_al_adha_day_two(tr("عطلة عيد الأضحى"))
+        self._add_eid_al_adha_day_three(tr("عطلة عيد الأضحى"))
 
-        self._add_islamic_new_year_day("Islamic New Year")
+        # Islamic New Year
+        self._add_islamic_new_year_day(tr("رأس السنة الهجرية"))
 
-        self._add_mawlid_day("Prophet Muhammad's Birthday")
+        # Prophet Muhammad's Birthday
+        self._add_mawlid_day(tr("عيد المولد النبوي"))
 
 
 class EG(Egypt):

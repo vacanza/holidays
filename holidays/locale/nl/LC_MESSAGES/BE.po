@@ -1,0 +1,65 @@
+# Belgium holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.28\n"
+"POT-Creation-Date: 2023-06-27 13:17+0300\n"
+"PO-Revision-Date: 2023-06-27 13:41+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+msgid "Nieuwjaar"
+msgstr ""
+
+#. Easter.
+msgid "Pasen"
+msgstr ""
+
+#. Easter Monday.
+msgid "Paasmaandag"
+msgstr ""
+
+#. Labor Day.
+msgid "Dag van de Arbeid"
+msgstr ""
+
+#. Ascension Day.
+msgid "Hemelvaart"
+msgstr ""
+
+#. Whit Sunday.
+msgid "Pinksteren"
+msgstr ""
+
+#. Whit Monday.
+msgid "Pinkstermaandag"
+msgstr ""
+
+#. National Day.
+msgid "Nationale feestdag"
+msgstr ""
+
+#. Assumption of Mary.
+msgid "Onze Lieve Vrouw hemelvaart"
+msgstr ""
+
+#. All Saints' Day.
+msgid "Allerheiligen"
+msgstr ""
+
+#. Armistice Day.
+msgid "Wapenstilstand"
+msgstr ""
+
+#. Christmas Day.
+msgid "Kerstmis"
+msgstr ""

@@ -98,8 +98,8 @@ class BosniaAndHerzegovina(HolidayBase, ChristianHolidays, InternationalHolidays
 
             # Labor Day.
             name = tr("Međunarodni praznik rada")
-            may_1 = self._add_labor_day(name)
-            self._add_holiday(name, may_1 + td(days=+1))
+            self._add_labor_day(name)
+            self._add_labor_day_two(name)
 
             # Catholic Christmas.
             self._add_christmas_day(tr("Božić (Katolički)"), GREGORIAN_CALENDAR)
@@ -135,9 +135,8 @@ class BosniaAndHerzegovina(HolidayBase, ChristianHolidays, InternationalHolidays
 
         # Labor Day.
         name = tr("Međunarodni praznik rada")
-        may_1 = self._add_labor_day(name)
-        self._add_holiday(name, may_1 + td(days=+1))
-        self._add_observed(may_1, include_sat=False, days=+2)
+        self._add_observed(self._add_labor_day(name), include_sat=False, days=+2)
+        self._add_labor_day_two(name)
 
         # Victory Day.
         self._add_world_war_two_victory_day(tr("Dan pobjede nad fašizmom"))
@@ -174,9 +173,8 @@ class BosniaAndHerzegovina(HolidayBase, ChristianHolidays, InternationalHolidays
 
         # Labor Day.
         name = tr("Međunarodni praznik rada")
-        may_1 = self._add_labor_day(name)
-        self._add_holiday(name, may_1 + td(days=+1))
-        self._add_observed(may_1, days=+2)
+        self._add_observed(self._add_labor_day(name), days=+2)
+        self._add_labor_day_two(name)
 
         self._add_observed(
             # Catholic Christmas.
@@ -213,9 +211,8 @@ class BosniaAndHerzegovina(HolidayBase, ChristianHolidays, InternationalHolidays
 
         # Labor Day.
         name = tr("Međunarodni praznik rada")
-        may_1 = self._add_labor_day(name)
-        self._add_holiday(name, may_1 + td(days=+1))
-        self._add_observed(may_1, include_sun=False)
+        self._add_observed(self._add_labor_day(name), include_sun=False)
+        self._add_labor_day_two(name)
 
         # Victory Day.
         self._add_world_war_two_victory_day(tr("Dan pobjede nad fašizmom"))
