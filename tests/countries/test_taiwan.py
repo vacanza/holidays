@@ -9,8 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-
 from holidays.countries.taiwan import Taiwan, TW, TWN
 from tests.common import TestCase
 
@@ -233,17 +231,19 @@ class TestTaiwan(TestCase):
         self.assertHolidayName(f"{name} (Observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
-    def test2021(self):
-        self.assertIn(date(2021, 1, 1), self.holidays)  # Founding of the Republic of China
-        self.assertIn(date(2021, 2, 11), self.holidays)  # Chinese New Year's Eve
-        self.assertIn(date(2021, 2, 12), self.holidays)  # Spring Festival
-        self.assertIn(date(2021, 2, 13), self.holidays)  # Spring Festival
-        self.assertIn(date(2021, 2, 14), self.holidays)  # Spring Festival
-        self.assertIn(date(2021, 2, 15), self.holidays)  # Spring Festival
-        self.assertIn(date(2021, 2, 16), self.holidays)  # Spring Festival
-        self.assertIn(date(2021, 2, 28), self.holidays)  # Peace Memorial Day
-        self.assertIn(date(2021, 4, 4), self.holidays)  # Children's Day
-        self.assertIn(date(2021, 6, 14), self.holidays)  # Dragon Boat Festival
-        self.assertIn(date(2021, 9, 21), self.holidays)  # Mid-Autumn Festival
-        self.assertIn(date(2021, 10, 10), self.holidays)  # National Day day 1
-        self.assertIn(date(2021, 10, 11), self.holidays)  # National Day day 2
+    def test2022(self):
+        self.assertHolidays(
+            Taiwan(years=2022),
+            ("2022-01-01", "Republic of China Founding Day / New Year's Day"),
+            ("2022-01-31", "Lunar New Year's Eve"),
+            ("2022-02-01", "Lunar New Year"),
+            ("2022-02-02", "Lunar New Year Holiday"),
+            ("2022-02-03", "Lunar New Year Holiday"),
+            ("2022-02-28", "Peace Memorial Day"),
+            ("2022-04-04", "Children's Day"),
+            ("2022-04-05", "Tomb Sweeping Day"),
+            ("2022-06-03", "Dragon Boat Festival"),
+            ("2022-09-09", "Mid-Autumn Festival (Observed)"),
+            ("2022-09-10", "Mid-Autumn Festival"),
+            ("2022-10-10", "National Day"),
+        )
