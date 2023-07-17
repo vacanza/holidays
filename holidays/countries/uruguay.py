@@ -10,88 +10,162 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
+from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, APR, MAY, JUN, JUL, AUG, OCT, MON
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, DEC, MON
+from holidays.constants import BANK, PUBLIC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
 class Uruguay(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
-    https://en.wikipedia.org/wiki/Public_holidays_in_Uruguay
+    References:
+    - https://en.wikipedia.org/wiki/Public_holidays_in_Uruguay
+    - [Law #6997] https://www.impo.com.uy/diariooficial/1919/10/25/2
+    - [Decree Law #9000] https://www.impo.com.uy/bases/decretos-ley/9000-1933
+    - [Decree Law #14977] https://www.impo.com.uy/bases/decretos-ley/14977-1979
+    - [Decree Law #15535] https://www.impo.com.uy/bases/decretos-ley/15535-1984
+    - [Law #16805] http://www.parlamento.gub.uy/leyes/AccesoTextoLey.asp?Ley=16805
+    - [Law #17414] http://www.parlamento.gub.uy/leyes/AccesoTextoLey.asp?Ley=17414
     """
 
     country = "UY"
     default_language = "es"
+    supported_categories = {BANK, PUBLIC}
     supported_languages = ("en_US", "es", "uk")
+
+    # Presidential Inauguration Day.
+    presidential_inauguration_day = tr("Inauguración del Presidente de la República")
+    special_holidays = {
+        1985: (MAR, 1, presidential_inauguration_day),
+        1990: (MAR, 1, presidential_inauguration_day),
+        1995: (MAR, 1, presidential_inauguration_day),
+        2000: (MAR, 1, presidential_inauguration_day),
+        2005: (MAR, 1, presidential_inauguration_day),
+        2010: (MAR, 1, presidential_inauguration_day),
+        2015: (MAR, 1, presidential_inauguration_day),
+        2020: (MAR, 1, presidential_inauguration_day),
+    }
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
+    def _move_holiday(self, dt: date) -> None:
+        # Decree Law #14977, # 15535, #16805.
+        if self.observed and 1980 <= self._year <= 1983 or self._year >= 1997:
+            obs_date = None
+            if self._is_tuesday(dt) or self._is_wednesday(dt):
+                obs_date = self._get_nth_weekday_from(-1, MON, dt)
+            elif self._is_thursday(dt) or self._is_friday(dt):
+                obs_date = self._get_nth_weekday_from(1, MON, dt)
+            if obs_date:
+                self._add_holiday(self[dt], obs_date)
+                self.pop(dt)
 
-        # Mandatory paid holidays:
+    def _populate(self, year):
+        # Law # 6997.
+        if year <= 1919:
+            return None
+        super()._populate(year)
 
         # New Year's Day.
         self._add_new_years_day(tr("Año Nuevo"))
 
+        if year <= 1933:
+            # Cry of Asencio.
+            self._add_holiday(tr("Grito de Asencio"), FEB, 28)
+
         # International Workers' Day.
-        self._add_labor_day(tr("Día de los Trabajadores"))
+        dt = self._add_labor_day(tr("Día de los Trabajadores"))
+        if year <= 1983:
+            self._move_holiday(dt)
+
+        if year <= 1932:
+            # Spain Day.
+            self._add_holiday(tr("Día de España"), MAY, 2)
+
+            # America Day.
+            self._add_holiday(tr("Día de América"), MAY, 25)
+
+            # Democracy Day.
+            self._add_holiday(tr("Día de la Democracia"), JUL, 4)
+
+            # Humanity Day.
+            self._add_holiday(tr("Día de la Humanidad"), JUL, 14)
 
         # Constitution Day.
         self._add_holiday(tr("Jura de la Constitución"), JUL, 18)
 
         # Independence Day.
-        self._add_holiday(tr("Día de la Independencia"), AUG, 25)
+        self._add_holiday(tr("Declaratoria de la Independencia"), AUG, 25)
+
+        if year <= 1932:
+            # Italy Day.
+            self._add_holiday(tr("Día de Italia"), SEP, 20)
+
+            # Open Town Hall.
+            self._add_holiday(tr("Cabildo Abierto"), SEP, 21)
+
+        if year <= 1932 or 1936 <= year <= 1979:
+            # Beaches Day.
+            self._add_holiday(tr("Día de las Playas"), DEC, 8)
 
         # Day of the Family.
         self._add_christmas_day(tr("Día de la Familia"))
 
-        # Partially paid holidays:
+    def _populate_bank_holidays(self):
+        # These holidays are generally observed by schools, public sector offices, banks,
+        # and a few private companies.
 
         # Children's Day.
         self._add_holiday(tr("Día de los Niños"), JAN, 6)
 
-        # Birthday of José Gervasio Artigas.
-        self._add_holiday(tr("Natalicio de José Gervasio Artigas"), JUN, 19)
-
-        # All Souls' Day.
-        self._add_all_souls_day(tr("Día de los Difuntos"))
-
-        # Moveable holidays:
-
-        # Carnival Day.
-        name = tr("Día de Carnaval")
+        # Carnival.
+        name = tr("Carnaval")
         self._add_carnival_monday(name)
         self._add_carnival_tuesday(name)
 
-        # Maundy Thursday.
-        self._add_holy_thursday(tr("Jueves Santo"))
-        # Good Friday.
-        self._add_good_friday(tr("Viernes Santo"))
-        # Easter Day.
-        self._add_easter_sunday(tr("Día de Pascuas"))
-
-        holiday_pairs = (
+        if self._year <= 1933 or self._year >= 1949:
             # Landing of the 33 Patriots.
-            (date(year, APR, 19), tr("Desembarco de los 33 Orientales")),
-            # Battle of Las Piedras.
-            (date(year, MAY, 18), tr("Batalla de Las Piedras")),
-            # Respect for Cultural Diversity Day.
-            (date(year, OCT, 12), tr("Día del Respeto a la Diversidad Cultural")),
-        )
+            self._move_holiday(self._add_holiday(tr("Desembarco de los 33 Orientales"), APR, 19))
 
-        for dt, name in holiday_pairs:
-            if self._is_tuesday(dt) or self._is_wednesday(dt):
-                self._add_holiday(name, self._get_nth_weekday_from(-1, MON, dt))
-            elif self._is_thursday(dt) or self._is_friday(dt):
-                self._add_holiday(name, self._get_nth_weekday_from(1, MON, dt))
-            else:
-                self._add_holiday(name, dt)
+        # Tourism Week.
+        name = tr("Semana de Turismo")
+        self._add_holiday(name, self._easter_sunday + td(days=-6))
+        self._add_holiday(name, self._easter_sunday + td(days=-5))
+        self._add_holiday(name, self._easter_sunday + td(days=-4))
+        self._add_holy_thursday(name)
+        self._add_good_friday(name)
+
+        if self._year <= 1932 or self._year >= 1942:
+            # Battle of Las Piedras.
+            self._move_holiday(self._add_holiday(tr("Batalla de Las Piedras"), MAY, 18))
+
+        if self._year <= 1932 or self._year >= 1940:
+            # Birthday of Artigas.
+            dt = self._add_holiday(tr("Natalicio de Artigas"), JUN, 19)
+            if self._year <= 2001:
+                self._move_holiday(dt)
+
+        if self._year <= 1932 or self._year >= 1937:
+            name = (
+                # Cultural Diversity Day.
+                tr("Día de la Diversidad Cultural")
+                if self._year >= 2014
+                # Columbus Day.
+                else tr("Día de la Raza")
+            )
+            self._move_holiday(self._add_columbus_day(name))
+
+        if self._year <= 1932 or self._year >= 1938:
+            # All Souls' Day.
+            dt = self._add_all_souls_day(tr("Día de los Difuntos"))
+            if self._year <= 2001:
+                self._move_holiday(dt)
 
 
 class UY(Uruguay):
