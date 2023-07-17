@@ -70,7 +70,7 @@ msgstr "День Святого Стефана"
 
 #. Good Friday.
 msgid "Karfreitag"
-msgstr "Страсна п'ятниця"
+msgstr "Страсна пʼятниця"
 
 #. Christmas Eve.
 msgid "Heiliger Abend"
