@@ -1,6 +1,8 @@
 Version 0.29
 ============
 
+Released July 17, 2023
+
 - Refactor movable holidays (#1357 by @KJhellico)
 - Add Guatemala holidays (#1364 by @aztrock)
 - Add Arabic localization (#1341 by @abh31000)
