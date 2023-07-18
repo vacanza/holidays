@@ -11,7 +11,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import MAR, APR, MAY, AUG, OCT, NOV
+from holidays.calendars.gregorian import MAR, APR, MAY, OCT, NOV
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -23,11 +23,12 @@ class Georgia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     References:
      - https://en.wikipedia.org/wiki/Public_holidays_in_Georgia_(country)
+     - https://matsne.gov.ge/en/document/view/1155567?publication=24
     """
 
     country = "GE"
     default_language = "ka"
-    supported_languages = ("en_US", "ka")
+    supported_languages = ("en_US", "ka", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
@@ -35,49 +36,58 @@ class Georgia(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
+        if year <= 1990:
+            return None
         super()._populate(year)
 
         # New Year's Day.
-        self._add_new_years_day(tr("ახალი წელი"))
-        self._add_new_years_day_two(tr("ბედობა"))
+        name = tr("ახალი წელი")
+        self._add_new_years_day(name)
+        self._add_new_years_day_two(name)
 
-        # Christmas Day (Orthodox).
+        # Christmas Day.
         self._add_christmas_day(tr("ქრისტეშობა"))
 
-        # Baptism Day of our Lord Jesus Christ.
+        # Epiphany.
         self._add_epiphany_day(tr("ნათლისღება"))
 
         # Mother's Day.
         self._add_holiday(tr("დედის დღე"), MAR, 3)
 
-        # Women's Day,
+        # International Women's Day.
         self._add_womens_day(tr("ქალთა საერთაშორისო დღე"))
 
-        # Easter.
+        # Good Friday.
         self._add_good_friday(tr("წითელი პარასკევი"))
+
+        # Holy Saturday.
         self._add_holy_saturday(tr("დიდი შაბათი"))
+
+        # Easter Sunday.
         self._add_easter_sunday(tr("აღდგომა"))
+
+        # Easter Monday.
         self._add_easter_monday(tr("შავი ორშაბათი"))
 
-        # National Unity Day,
+        # National Unity Day.
         self._add_holiday(tr("ეროვნული ერთიანობის დღე"), APR, 9)
 
-        # Day of Victory.
+        # Day of Victory over Fascism.
         self._add_world_war_two_victory_day(tr("ფაშიზმზე გამარჯვების დღე"))
 
-        # Saint Andrew the First-Called Day.
+        # Saint Andrew's Day.
         self._add_holiday(tr("წმინდა ანდრია პირველწოდებულის დღე"), MAY, 12)
 
         # Independence Day.
         self._add_holiday(tr("დამოუკიდებლობის დღე"), MAY, 26)
 
-        # Saint Mary's Day.
-        self._add_holiday(tr("მარიამობა"), AUG, 28)
+        # Assumption of the Virgin Mary.
+        self._add_assumption_of_mary_day(tr("მარიამობა"))
 
-        # Day of Svetitskhoveli Cathedral
-        self._add_holiday(tr("სვეტიცხოვლობა"), OCT, 14)
+        # Holiday of Svetitskhovloba, Robe of Jesus.
+        self._add_holiday(tr("მცხეთობის"), OCT, 14)
 
-        # Saint George's Day
+        # Saint George's Day.
         self._add_holiday(tr("გიორგობა"), NOV, 23)
 
 
