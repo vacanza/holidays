@@ -12,8 +12,8 @@
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import GREGORIAN_CALENDAR, MAR, OCT, MON
-from holidays.calendars.julian import JULIAN_CALENDAR
+from holidays.calendars.gregorian import MAR, OCT, MON
+from holidays.calendars.revised_julian import REVISED_JULIAN_CALENDAR
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -31,7 +31,7 @@ class Greece(HolidayBase, ChristianHolidays, InternationalHolidays):
     supported_languages = ("el", "en_US")
 
     def __init__(self, *args, **kwargs):
-        ChristianHolidays.__init__(self, JULIAN_CALENDAR)
+        ChristianHolidays.__init__(self, REVISED_JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
@@ -42,7 +42,7 @@ class Greece(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_new_years_day(tr("Πρωτοχρονιά"))
 
         # Epiphany.
-        self._add_epiphany_day(tr("Θεοφάνεια"), GREGORIAN_CALENDAR)
+        self._add_epiphany_day(tr("Θεοφάνεια"))
 
         # Clean Monday.
         self._add_ash_monday(tr("Καθαρά Δευτέρα"))
@@ -80,10 +80,10 @@ class Greece(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday(tr("Ημέρα του Όχι"), OCT, 28)
 
         # Christmas Day.
-        self._add_christmas_day(tr("Χριστούγεννα"), GREGORIAN_CALENDAR)
+        self._add_christmas_day(tr("Χριστούγεννα"))
 
         # Day after Christmas.
-        self._add_christmas_day_two(tr("Επόμενη ημέρα των Χριστουγέννων"), GREGORIAN_CALENDAR)
+        self._add_christmas_day_two(tr("Επόμενη ημέρα των Χριστουγέννων"))
 
 
 class GR(Greece):

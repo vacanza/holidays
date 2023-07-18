@@ -28,6 +28,7 @@ from holidays.calendars.gregorian import (
     DEC,
 )
 from holidays.calendars.julian import JULIAN_CALENDAR
+from holidays.calendars.revised_julian import REVISED_JULIAN_CALENDAR
 
 
 class ChristianHolidays:
@@ -47,9 +48,9 @@ class ChristianHolidays:
         self.__verify_calendar(calendar)
 
         return (
-            date(self._year, DEC, 25)
-            if self.__is_gregorian_calendar(calendar)
-            else date(self._year, JAN, 7)  # Orthodox.
+            date(self._year, JAN, 7)
+            if self.__is_julian_calendar(calendar)
+            else date(self._year, DEC, 25)
         )
 
     def __get_easter_sunday(self, calendar=None):
@@ -61,7 +62,7 @@ class ChristianHolidays:
 
         return easter(
             self._year,
-            method=EASTER_ORTHODOX if calendar == JULIAN_CALENDAR else EASTER_WESTERN,
+            method=EASTER_WESTERN if self.__is_gregorian_calendar(calendar) else EASTER_ORTHODOX,
         )
 
     @staticmethod
@@ -73,14 +74,22 @@ class ChristianHolidays:
         return calendar == GREGORIAN_CALENDAR
 
     @staticmethod
+    def __is_julian_calendar(calendar):
+        """
+        Return True if `calendar` is Julian calendar.
+        Return False otherwise.
+        """
+        return calendar == JULIAN_CALENDAR
+
+    @staticmethod
     def __verify_calendar(calendar):
         """
         Verify calendar type.
         """
-        if calendar not in {GREGORIAN_CALENDAR, JULIAN_CALENDAR}:
+        if calendar not in {GREGORIAN_CALENDAR, JULIAN_CALENDAR, REVISED_JULIAN_CALENDAR}:
             raise ValueError(
                 f"Unknown calendar name: {calendar}. "
-                "Use `GREGORIAN_CALENDAR` or `JULIAN_CALENDAR`."
+                "Use `GREGORIAN_CALENDAR`, `JULIAN_CALENDAR` or `REVISED_JULIAN_CALENDAR`."
             )
 
     @property
@@ -146,7 +155,7 @@ class ChristianHolidays:
         """
         return self._add_holiday(name, self._easter_sunday + td(days=-46))
 
-    def _add_assumption_of_mary_day(self, name) -> date:
+    def _add_assumption_of_mary_day(self, name, calendar=None) -> date:
         """
         Add Assumption Of Mary (August 15th).
 
@@ -155,7 +164,15 @@ class ChristianHolidays:
         her life.
         https://en.wikipedia.org/wiki/Assumption_of_Mary
         """
-        return self._add_holiday(name, AUG, 15)
+        calendar = calendar or self.__calendar
+        self.__verify_calendar(calendar)
+
+        return self._add_holiday(
+            name,
+            date(self._year, AUG, 28)
+            if self.__is_julian_calendar(calendar)
+            else date(self._year, AUG, 15),
+        )
 
     def _add_candlemas(self, name) -> date:
         """
@@ -197,9 +214,6 @@ class ChristianHolidays:
         Jesus Christ.
         https://en.wikipedia.org/wiki/Christmas
         """
-        calendar = calendar or self.__calendar
-        self.__verify_calendar(calendar)
-
         return self._add_holiday(name, self.__get_christmas_day(calendar))
 
     def _add_christmas_day_two(self, name, calendar=None) -> date:
@@ -210,9 +224,6 @@ class ChristianHolidays:
         https://en.wikipedia.org/wiki/Boxing_Day
         https://en.wikipedia.org/wiki/Christmas
         """
-        calendar = calendar or self.__calendar
-        self.__verify_calendar(calendar)
-
         return self._add_holiday(name, self.__get_christmas_day(calendar) + td(days=+1))
 
     def _add_christmas_day_three(self, name, calendar=None) -> date:
@@ -222,9 +233,6 @@ class ChristianHolidays:
         A holiday celebrated 2 days after Christmas Day (in some countries).
         https://en.wikipedia.org/wiki/Christmas
         """
-        calendar = calendar or self.__calendar
-        self.__verify_calendar(calendar)
-
         return self._add_holiday(name, self.__get_christmas_day(calendar) + td(days=+2))
 
     def _add_christmas_eve(self, name, calendar=None) -> date:
@@ -235,9 +243,6 @@ class ChristianHolidays:
         the festival commemorating the birth of Jesus Christ.
         https://en.wikipedia.org/wiki/Christmas_Eve
         """
-        calendar = calendar or self.__calendar
-        self.__verify_calendar(calendar)
-
         return self._add_holiday(name, self.__get_christmas_day(calendar) + td(days=-1))
 
     def _add_corpus_christi_day(self, name) -> date:
@@ -288,9 +293,9 @@ class ChristianHolidays:
 
         return self._add_holiday(
             name,
-            date(self._year, JAN, 6)
-            if self.__is_gregorian_calendar(calendar)
-            else date(self._year, JAN, 19),
+            date(self._year, JAN, 19)
+            if self.__is_julian_calendar(calendar)
+            else date(self._year, JAN, 6),
         )
 
     def _add_good_friday(self, name, calendar=None) -> date:
