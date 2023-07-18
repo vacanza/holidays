@@ -2,7 +2,7 @@
 # Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.29\n"
+"Project-Id-Version: Python Holidays 0.30\n"
 "POT-Creation-Date: 2023-07-15 20:58+0300\n"
 "PO-Revision-Date: 2023-07-15 21:00+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
