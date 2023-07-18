@@ -91,11 +91,9 @@ class Taiwan(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
                 delta = -1 if self._is_saturday(dt) else +1
                 for name in self.get_list(dt):
                     obs_date = dt + td(days=delta)
-                    if obs_date.year != year:
-                        break
-                    while obs_date in self:
+                    while obs_date in observed_dates:
                         obs_date += td(days=delta)
-                    self._add_holiday("%s (Observed)" % name, obs_date)
+                    observed_dates.add(self._add_holiday("%s (Observed)" % name, obs_date))
 
 
 class TW(Taiwan):
