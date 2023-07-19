@@ -34,7 +34,7 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
         """Sovereign's birthday holiday name."""
         return (
             "King's Birthday"
-            if 1902 <= self._year <= 1935 or self._year > 2022
+            if 1902 <= self._year <= 1951 or self._year >= 2023
             else "Queen's Birthday"
         )
 
@@ -115,7 +115,8 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_1st_mon_of_oct("Labour Day")
 
         # Sovereign's Birthday
-        self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
+        if self._year >= 1936:
+            self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
 
         # Anzac Day
         if self._year >= 1921:
@@ -168,7 +169,8 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_1st_mon_of_oct("Labour Day")
 
         # Sovereign's Birthday
-        self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
+        if self._year >= 1936:
+            self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
 
         # Bank Holiday
         if self._year >= 1912:
@@ -182,7 +184,8 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_1st_mon_of_may("May Day")
 
         # Sovereign's Birthday
-        self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
+        if self._year >= 1936:
+            self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
 
         # Anzac Day
         if self._year >= 1921:
@@ -204,13 +207,13 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday_1st_mon_of_may(name)
 
         # Sovereign's Birthday
+        if self._year >= 1936:
+            if self._year <= 2015 and self._year != 2012:
+                self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
+            else:
+                self._add_holiday_1st_mon_of_oct(self.sovereign_birthday)
         if self._year == 2012:
             self._add_holiday_jun_11("Queen's Diamond Jubilee")
-
-        if self._year <= 2015 and self._year != 2012:
-            self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
-        else:
-            self._add_holiday_1st_mon_of_oct(self.sovereign_birthday)
 
         # Anzac Day
         if self._year >= 1921:
@@ -240,7 +243,8 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_1st_mon_of_oct("Labour Day")
 
         # Sovereign's Birthday
-        self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
+        if self._year >= 1936:
+            self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
 
         # Anzac Day
         if self._year >= 1921:
@@ -258,7 +262,8 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_2nd_mon_of_mar("Eight Hours Day")
 
         # Sovereign's Birthday
-        self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
+        if self._year >= 1936:
+            self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
 
     def _add_subdiv_vic_holidays(self):
         # Easter
@@ -269,7 +274,8 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_2nd_mon_of_mar("Labour Day")
 
         # Sovereign's Birthday
-        self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
+        if self._year >= 1936:
+            self._add_holiday_2nd_mon_of_jun(self.sovereign_birthday)
 
         # Melbourne Cup
         self._add_holiday_1st_tue_of_nov("Melbourne Cup")
@@ -294,7 +300,8 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday_1st_mon_of_mar("Labour Day")
 
         # Sovereign's Birthday
-        self._add_holiday_1st_mon_before_oct_1(self.sovereign_birthday)
+        if self._year >= 1936:
+            self._add_holiday_1st_mon_before_oct_1(self.sovereign_birthday)
 
         # Anzac Day
         if self._year >= 1921:

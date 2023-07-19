@@ -16,8 +16,9 @@ from tests.common import TestCase
 
 
 class TestBahrain(TestCase):
-    def setUp(self):
-        self.holidays = Bahrain()
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Bahrain)
 
     def test_country_aliases(self):
         self.assertCountryAliases(Bahrain, BH, BAH)
@@ -81,4 +82,41 @@ class TestBahrain(TestCase):
             "2008-01-10",
             "2008-12-29",
             "2020-08-20",
+        )
+
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2023-01-01", "رأس السنة الميلادية"),
+            ("2023-04-21", "(تقدير*) *عيد الفطر"),
+            ("2023-04-22", "(تقدير*) *عطلة عيد الفطر"),
+            ("2023-04-23", "(تقدير*) *عطلة عيد الفطر"),
+            ("2023-05-01", "عيد العمال"),
+            ("2023-06-28", "(تقدير*) *عيد الأضحى"),
+            ("2023-06-29", "(تقدير*) *عطلة عيد الأضحى"),
+            ("2023-06-30", "(تقدير*) *عطلة عيد الأضحى"),
+            ("2023-07-19", "(تقدير*) *رأس السنة الهجرية"),
+            ("2023-07-27", "(تقدير*) *ليلة عاشورة"),
+            ("2023-07-28", "(تقدير*) *عاشورة"),
+            ("2023-09-27", "(تقدير*) *عيد المولد النبوي"),
+            ("2023-12-16", "اليوم الوطني"),
+            ("2023-12-17", "اليوم الوطني"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2023-01-01", "New Year's Day"),
+            ("2023-04-21", "Eid al-Fitr* (*estimated)"),
+            ("2023-04-22", "Eid al-Fitr Holiday* (*estimated)"),
+            ("2023-04-23", "Eid al-Fitr Holiday* (*estimated)"),
+            ("2023-05-01", "Labor Day"),
+            ("2023-06-28", "Eid al-Adha* (*estimated)"),
+            ("2023-06-29", "Eid al-Adha Holiday* (*estimated)"),
+            ("2023-06-30", "Eid al-Adha Holiday* (*estimated)"),
+            ("2023-07-19", "Islamic New Year* (*estimated)"),
+            ("2023-07-27", "Ashura Eve* (*estimated)"),
+            ("2023-07-28", "Ashura* (*estimated)"),
+            ("2023-09-27", "Prophet's Birthday* (*estimated)"),
+            ("2023-12-16", "National Day"),
+            ("2023-12-17", "National Day"),
         )

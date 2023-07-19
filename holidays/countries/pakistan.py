@@ -120,6 +120,7 @@ class PakistanIslamicCalendar(_CustomIslamicCalendar):
         2020: (JUL, 31),
         2021: (JUL, 21),
         2022: (JUL, 10),
+        2023: (JUN, 29),
     }
 
     # https://www.timeanddate.com/holidays/pakistan/eid-ul-fitr-1
@@ -142,6 +143,7 @@ class PakistanIslamicCalendar(_CustomIslamicCalendar):
         2020: (MAY, 24),
         2021: (MAY, 13),
         2022: (MAY, 3),
+        2023: (APR, 22),
     }
 
     # https://www.timeanddate.com/holidays/pakistan/eid-milad-un-nabi

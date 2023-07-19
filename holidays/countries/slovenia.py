@@ -9,7 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import FEB, APR, JUN, OCT, DEC
@@ -60,8 +59,8 @@ class Slovenia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Labor Day.
         name = tr("praznik dela")
-        may_1 = self._add_labor_day(name)
-        self._add_holiday(name, may_1 + td(days=+1))
+        self._add_labor_day(name)
+        self._add_labor_day_two(name)
 
         # Statehood Day.
         self._add_holiday(tr("dan državnosti"), JUN, 25)

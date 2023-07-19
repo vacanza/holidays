@@ -37,14 +37,14 @@ class Azerbaijan(HolidayBase, InternationalHolidays, IslamicHolidays):
             """
 
             next_workday = dt + td(days=+1)
-            while next_workday in dts_observed or self._is_weekend(next_workday):
+            while next_workday in dts_all or self._is_weekend(next_workday):
                 next_workday += td(days=+1)
             if name:
                 self._add_holiday(f"{name} (Observed)", next_workday)
             else:
                 for h_name in self.get_list(dt):
                     self._add_holiday(f"{h_name} (Observed)", next_workday)
-            dts_observed.add(next_workday)
+            dts_all.add(next_workday)
 
         if year <= 1989:
             return None
@@ -69,7 +69,7 @@ class Azerbaijan(HolidayBase, InternationalHolidays, IslamicHolidays):
         # Novruz
         if year >= 2007:
             for day in range(20, 25):
-                dts_observed.add(self._add_holiday("Novruz", (MAR, day)))
+                dts_observed.add(self._add_holiday("Novruz", MAR, day))
 
         # Victory Day
         dts_observed.add(self._add_world_war_two_victory_day("Victory Day over Fascism"))
@@ -127,7 +127,7 @@ class Azerbaijan(HolidayBase, InternationalHolidays, IslamicHolidays):
         # working days overlap, that rest day is immediately transferred to
         # the next working day.
         if self.observed and year >= 2006:
-            dts_observed = dts_observed.union(dts_non_observed)
+            dts_all = dts_observed.union(dts_non_observed)
 
             dt = date(year - 1, DEC, 31)
             if self._is_weekend(dt):
@@ -136,23 +136,23 @@ class Azerbaijan(HolidayBase, InternationalHolidays, IslamicHolidays):
             # observed holidays special cases
             special_dates_obs = {2007: (JAN, 3), 2072: (JAN, 5)}
             if year in special_dates_obs:
-                dts_observed.add(
+                dts_all.add(
                     self._add_holiday(
                         "Gurban Bayrami* (*estimated) (Observed)", special_dates_obs[year]
                     )
                 )
 
-            for dt in sorted(dts_observed):
-                if self._is_weekend(dt):
-                    _add_observed(dt)
+            for dt_observed in sorted(dts_observed):
+                if self._is_weekend(dt_observed):
+                    _add_observed(dt_observed)
 
                 # 6. If the holidays of Qurban and Ramadan coincide with
                 # another holiday that is not considered a working day,
                 # the next working day is considered a rest day.
-                elif len(self.get_list(dt)) > 1 and dt not in dts_non_observed:
-                    for name in self.get_list(dt):
+                elif len(self.get_list(dt_observed)) > 1 and dt_observed not in dts_non_observed:
+                    for name in self.get_list(dt_observed):
                         if "Bayrami" in name:
-                            _add_observed(dt, name)
+                            _add_observed(dt_observed, name)
 
 
 class AZ(Azerbaijan):

@@ -332,9 +332,9 @@ class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):
                 # Columbus Day.
                 else tr("Día de la Raza")
             )
-            jun_17 = self._add_columbus_day(name)
+            oct_12 = self._add_columbus_day(name)
             if year >= 2010:
-                self._move_holiday(jun_17)
+                self._move_holiday(oct_12)
 
         # Status: In-Use.
         # First observed with no holiday via Ley 20770 in 1974.

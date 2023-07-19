@@ -1,0 +1,71 @@
+# Algeria holidays.
+# Authors: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.29\n"
+"POT-Creation-Date: 2023-06-28 00:13+0100\n"
+"PO-Revision-Date: 2023-07-05 17:40+0100\n"
+"Last-Translator: \n"
+"Language-Team: Abdelkhalek Boukli Hacene <bouklihabd31@gmail.com>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.3.2\n"
+
+#. Estimated label.
+#, c-format
+msgid "(تقدير*) *%s"
+msgstr ""
+
+#. New Year's Day.
+msgid "رأس السنة الميلادية"
+msgstr ""
+
+#. Amazigh New Year / Yennayer
+msgid "رأس السنة الأمازيغية"
+msgstr ""
+
+#. Labour Day
+msgid "عيد العمال"
+msgstr ""
+
+#. Independence Day
+msgid "عيد الإستقلال"
+msgstr ""
+
+#. Revolution Day
+msgid "عيد الثورة"
+msgstr ""
+
+#. Islamic New Year
+msgid "رأس السنة الهجرية"
+msgstr ""
+
+#. Ashura
+msgid "عاشورة"
+msgstr ""
+
+#. Mawlid / Prophet's Birthday
+msgid "عيد المولد النبوي"
+msgstr ""
+
+#. As of April 30, 2023. Algeria has 3 days of Eid holidays
+#. (https://www.horizons.dz/english/archives/amp/12021) Eid al-Fitr - Feast
+#. Festive
+msgid "عيد الفطر"
+msgstr ""
+
+#. Eid al-Fitr Holiday
+msgid "عطلة عيد الفطر"
+msgstr ""
+
+#. Eid al-Adha - Scarfice Festive
+msgid "عيد الأضحى"
+msgstr ""
+
+#. Eid al-Adha Holiday
+msgid "عطلة عيد الأضحى"
+msgstr ""

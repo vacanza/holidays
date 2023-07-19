@@ -110,6 +110,7 @@ class GabonIslamicCalendar(_CustomIslamicCalendar):
         2020: (JUL, 31),
         2021: (JUL, 20),
         2022: (JUL, 9),
+        2023: (JUN, 28),
     }
 
     EID_AL_FITR_DATES = {
