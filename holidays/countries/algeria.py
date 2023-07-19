@@ -38,7 +38,6 @@ class Algeria(HolidayBase, InternationalHolidays, IslamicHolidays):
         # New Year's Day.
         self._add_new_years_day(tr("رأس السنة الميلادية"))
 
-        # Amazigh New Year / Yennayer
         # In January 2018, Algeria declared Yennayer a national holiday
         if year >= 2018:
             # Amazigh New Year / Yennayer
