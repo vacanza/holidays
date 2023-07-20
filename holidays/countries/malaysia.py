@@ -9,8 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
-
 from holidays.calendars import (
     _CustomBuddhistCalendar,
     _CustomChineseCalendar,
@@ -32,8 +30,8 @@ from holidays.calendars.gregorian import (
     DEC,
     FRI,
     SAT,
-    SUN,
 )
+from holidays.constants import FRI_TO_NEXTWORK, SAT_TO_NEXTWORK, SUN_TO_NEXTWORK
 from holidays.groups import (
     BuddhistCalendarHolidays,
     ChineseCalendarHolidays,
@@ -41,6 +39,7 @@ from holidays.groups import (
     HinduCalendarHolidays,
     InternationalHolidays,
     IslamicHolidays,
+    ObservedHolidays,
 )
 from holidays.holiday_base import HolidayBase
 
@@ -53,8 +52,10 @@ class Malaysia(
     HinduCalendarHolidays,
     InternationalHolidays,
     IslamicHolidays,
+    ObservedHolidays,
 ):
     country = "MY"
+    observed_label = "%s [In lieu]"
     special_holidays = {
         # The years 1955 1959 1995 seems to have the elections
         # one weekday but I am not sure if they were marked as
@@ -113,6 +114,13 @@ class Malaysia(
         - Prior to 2021: holidays are not accurate.
         - 2027 and later: Thaipusam dates are are estimated, and so denoted.
 
+        Section 3 of Malaysian Holidays Act:
+        "If any day specified in the Schedule falls on Sunday then the day following shall be
+        a public holiday and if such day is already a public holiday, then the day following
+        shall be a public holiday".
+        In Johor and Kedah it's Friday -> Sunday,
+        in Kelantan and Terengganu it's Saturday -> Sunday
+
         Reference: `Wikipedia
         <https://en.wikipedia.org/wiki/Public_holidays_in_Malaysia>`__
 
@@ -132,6 +140,7 @@ class Malaysia(
         HinduCalendarHolidays.__init__(self, calendar=MalaysiaHinduCalendar())
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, calendar=MalaysiaIslamicCalendar())
+        ObservedHolidays.__init__(self, rule=SUN_TO_NEXTWORK)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -307,36 +316,22 @@ class Malaysia(
 
             dts_observed.add(self._add_holiday_apr_26("Birthday of the Sultan of Terengganu"))
 
-        # Check for holidays that fall on a Sunday and
-        # implement Section 3 of Malaysian Holidays Act:
-        # "if any day specified in the Schedule falls on
-        # Sunday then the day following shall be a public
-        # holiday and if such day is already a public holiday,
-        # then the day following shall be a public holiday"
-        # In Johor and Kedah it's Friday -> Sunday,
-        # in Kelantan and Terengganu it's Saturday -> Sunday
-        if self.observed:
-            weekday_observed_days = (
-                (FRI, +2)
-                if self.subdiv in {"JHR", "KDH"}
-                else ((SAT, +1) if self.subdiv in {"KTN", "TRG"} else (SUN, +1))
-            )
-            for dt in sorted(dts_observed):
-                if dt and dt.weekday() != weekday_observed_days[0]:
-                    continue
-                dt_in_lieu = dt + td(days=weekday_observed_days[1])
-                while dt_in_lieu in dts_observed:
-                    dt_in_lieu += td(days=+1)
-                for name in self.get_list(dt):
-                    self._add_holiday(f"{name} [In lieu]", dt_in_lieu)
-                dts_observed.add(dt_in_lieu)
+        if self.subdiv in {"JHR", "KDH"}:
+            self.weekend = {FRI, SAT}
+            self._rule = FRI_TO_NEXTWORK
+        elif self.subdiv in {"KTN", "TRG"}:
+            self.weekend = {FRI, SAT}
+            self._rule = SAT_TO_NEXTWORK
 
+        self._populate_observed(dts_observed)
+
+        if self.observed:
             # Special cases observed from previous year.
             if year == 2007 and self.subdiv not in {"JHR", "KDH", "KTN", "TRG"}:
-                self._add_holiday_jan_2("Hari Raya Haji [In lieu]")
+                self._add_holiday_jan_2(self.observed_label % "Hari Raya Haji")
 
             if year == 2007 and self.subdiv == "TRG":
-                self._add_holiday_jan_2("Arafat Day [In lieu]")
+                self._add_holiday_jan_2(self.observed_label % "Arafat Day")
 
         # The last two days in May (Pesta Kaamatan).
         # (Sarawak Act)

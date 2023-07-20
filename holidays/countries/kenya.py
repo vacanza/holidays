@@ -9,15 +9,13 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
-
 from holidays.calendars.gregorian import FEB, APR, AUG, SEP
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.constants import SUN_TO_MON, SUN_TO_TUE
+from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Kenya(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Kenya(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Kenya
     http://kenyaembassyberlin.de/Public-Holidays-in-Kenya.48.0.html
@@ -25,6 +23,7 @@ class Kenya(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "KE"
+    observed_label = "%s (Observed)"
     special_holidays = {
         2020: (FEB, 11, "President Moi Celebration of Life Day"),
         2022: (
@@ -40,20 +39,17 @@ class Kenya(HolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        ObservedHolidays.__init__(self, rule=SUN_TO_MON)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
-        def _add_observed(dt: date, days: int = +1) -> None:
-            if self.observed and self._is_sunday(dt):
-                self._add_holiday("%s (Observed)" % self[dt], dt + td(days=days))
-
         if year <= 1962:
             return None
 
         super()._populate(year)
 
         # New Year's Day
-        _add_observed(self._add_new_years_day("New Year's Day"))
+        self._add_observed(self._add_new_years_day("New Year's Day"))
 
         # Good Friday
         self._add_good_friday("Good Friday")
@@ -62,31 +58,31 @@ class Kenya(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_monday("Easter Monday")
 
         # Labour Day
-        _add_observed(self._add_labor_day("Labour Day"))
+        self._add_observed(self._add_labor_day("Labour Day"))
 
         if year >= 2010:
             # Mandaraka Day
-            _add_observed(self._add_holiday_jun_1("Madaraka Day"))
+            self._add_observed(self._add_holiday_jun_1("Madaraka Day"))
 
         if 2002 <= year <= 2009 or year >= 2018:
-            _add_observed(
+            self._add_observed(
                 # Utamaduni/Moi Day
                 self._add_holiday_oct_10("Utamaduni Day" if year >= 2021 else "Moi Day")
             )
 
-        _add_observed(
+        self._add_observed(
             # Mashuja/Kenyatta Day
             self._add_holiday_oct_20("Mashujaa Day" if year >= 2010 else "Kenyatta Day")
         )
 
         # Jamhuri Day
-        _add_observed(self._add_holiday_dec_12("Jamhuri Day"))
+        self._add_observed(self._add_holiday_dec_12("Jamhuri Day"))
 
         # Christmas Day
-        _add_observed(self._add_christmas_day("Christmas Day"), days=+2)
+        self._add_observed(self._add_christmas_day("Christmas Day"), rule=SUN_TO_TUE)
 
         # Boxing Day
-        _add_observed(self._add_christmas_day_two("Boxing Day"))
+        self._add_observed(self._add_christmas_day_two("Boxing Day"))
 
 
 class KE(Kenya):

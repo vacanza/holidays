@@ -9,15 +9,15 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from datetime import timedelta as td
 
 from holidays.calendars.gregorian import JUL
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.constants import SUN_TO_MON, SUN_TO_TUE
+from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Botswana(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Botswana(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
     """
     https://www.gov.bw/public-holidays
     https://publicholidays.africa/botswana/2021-dates/
@@ -26,16 +26,14 @@ class Botswana(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "BW"
+    observed_label = "%s (Observed)"
     special_holidays = {2019: (JUL, 2, "Public Holiday")}
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        ObservedHolidays.__init__(self, rule=SUN_TO_MON, begin=1995)
         super().__init__(*args, **kwargs)
-
-    def _add_observed(self, dt: date, days: int = +1) -> None:
-        if self.observed and self._is_sunday(dt) and self._year >= 1995:
-            self._add_holiday("%s (Observed)" % self[dt], dt + td(days=days))
 
     def _populate(self, year):
         if year <= 1965:
@@ -43,7 +41,7 @@ class Botswana(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         super()._populate(year)
 
-        self._add_observed(self._add_new_years_day("New Year's Day"), days=+2)
+        self._add_observed(self._add_new_years_day("New Year's Day"), rule=SUN_TO_TUE)
         self._add_observed(self._add_new_years_day_two("New Year's Day Holiday"))
 
         # Easter and easter related calculations
@@ -63,10 +61,10 @@ class Botswana(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday("President's Day Holiday", third_mon_of_jul + td(days=+1))
 
         sep_30 = self._add_holiday_sep_30("Botswana Day")
-        self._add_observed(sep_30, days=+2)
+        self._add_observed(sep_30, rule=SUN_TO_TUE)
         self._add_observed(self._add_holiday("Botswana Day Holiday", sep_30 + td(days=+1)))
 
-        self._add_observed(self._add_christmas_day("Christmas Day"), days=+2)
+        self._add_observed(self._add_christmas_day("Christmas Day"), rule=SUN_TO_TUE)
         dec_26 = self._add_christmas_day_two("Boxing Day")
         self._add_observed(dec_26)
 

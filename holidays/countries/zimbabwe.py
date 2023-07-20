@@ -9,29 +9,27 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from datetime import timedelta as td
 
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.constants import SUN_TO_MON, SUN_TO_TUE
+from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Zimbabwe(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Zimbabwe(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Zimbabwe
     https://en.wikipedia.org/wiki/Robert_Gabriel_Mugabe_National_Youth_Day
     """
 
     country = "ZW"
+    observed_label = "%s (Observed)"
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        ObservedHolidays.__init__(self, rule=SUN_TO_MON)
         super().__init__(*args, **kwargs)
-
-    def _add_observed(self, dt: date, days: int = +1) -> None:
-        if self.observed and self._is_sunday(dt):
-            self._add_holiday("%s (Observed)" % self[dt], dt + td(days=days))
 
     def _populate(self, year):
         if year <= 1987:
@@ -59,7 +57,9 @@ class Zimbabwe(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Independence Day.
         apr_18 = self._add_holiday_apr_18("Independence Day")
-        self._add_observed(apr_18, days=+2 if apr_18 == self._easter_sunday else +1)
+        self._add_observed(
+            apr_18, rule=SUN_TO_TUE if apr_18 == self._easter_sunday else SUN_TO_MON
+        )
 
         # Workers' Day.
         self._add_observed(self._add_labor_day("Workers' Day"))
@@ -77,7 +77,7 @@ class Zimbabwe(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_holiday_dec_22("Unity Day"))
 
         # Christmas Day.
-        self._add_observed(self._add_christmas_day("Christmas Day"), days=+2)
+        self._add_observed(self._add_christmas_day("Christmas Day"), rule=SUN_TO_TUE)
 
         # Boxing Day.
         self._add_observed(self._add_christmas_day_two("Boxing Day"))

@@ -9,14 +9,20 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
-
 from holidays.calendars.julian import JULIAN_CALENDAR
-from holidays.groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
+from holidays.constants import WEEKEND_TO_NEXTWORK
+from holidays.groups import (
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    ObservedHolidays,
+)
 from holidays.holiday_base import HolidayBase
 
 
-class Kazakhstan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class Kazakhstan(
+    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, ObservedHolidays
+):
     """
     1. https://www.officeholidays.com/countries/kazakhstan/2020
     2. https://egov.kz/cms/en/articles/holidays-calend
@@ -25,11 +31,13 @@ class Kazakhstan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicH
     """
 
     country = "KZ"
+    observed_label = "%s (Observed)"
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self)
+        ObservedHolidays.__init__(self, rule=WEEKEND_TO_NEXTWORK, begin=2002)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -94,18 +102,11 @@ class Kazakhstan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicH
         if 2002 <= year <= 2021:
             dts_observed.add(self._add_holiday_dec_17(name))
 
+        self._populate_observed(dts_observed)
+
         # Kurban Ait (nonworking day, without extending)
         if year >= 2006:
             self._add_eid_al_adha_day("Kurban Ait")
-
-        if self.observed and year >= 2002:
-            for dt in sorted(dts_observed):
-                if not self._is_weekend(dt):
-                    continue
-                dt_observed = dt + td(days=+1)
-                while self._is_weekend(dt_observed) or dt_observed in dts_observed:
-                    dt_observed += td(days=+1)
-                dts_observed.add(self._add_holiday("%s (Observed)" % self[dt], dt_observed))
 
 
 class KZ(Kazakhstan):

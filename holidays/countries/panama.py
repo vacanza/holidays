@@ -9,14 +9,12 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
-
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.constants import SUN_TO_MON
+from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Panama(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Panama(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_Panama
@@ -24,15 +22,13 @@ class Panama(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "PA"
+    observed_label = "%s (Observed)"
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        ObservedHolidays.__init__(self, rule=SUN_TO_MON)
         super().__init__(*args, **kwargs)
-
-    def _add_observed(self, dt: date) -> None:
-        if self.observed and self._is_sunday(dt):
-            self._add_holiday("%s (Observed)" % self[dt], dt + td(days=+1))
 
     def _populate(self, year):
         super()._populate(year)

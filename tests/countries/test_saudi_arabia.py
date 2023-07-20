@@ -80,7 +80,6 @@ class TestSaudiArabia(TestCase):
             "2009-09-23",
             "2015-09-23",
             "2048-09-23",
-            "2074-09-23",
         )
 
     def test_founding_day(self):

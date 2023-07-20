@@ -9,15 +9,21 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
-
 from holidays.calendars import _CustomIslamicCalendar
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
+from holidays.constants import SUN_TO_NEXTWORK
+from holidays.groups import (
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    ObservedHolidays,
+)
 from holidays.holiday_base import HolidayBase
 
 
-class Cameroon(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class Cameroon(
+    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, ObservedHolidays
+):
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_Cameroon
@@ -26,6 +32,7 @@ class Cameroon(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
     """
 
     country = "CM"
+    observed_label = "%s (Observed)"
     special_holidays = {
         2021: (
             (MAY, 14, "Public Holiday"),
@@ -37,6 +44,7 @@ class Cameroon(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, calendar=CameroonIslamicCalendar())
+        ObservedHolidays.__init__(self, rule=SUN_TO_NEXTWORK)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -82,19 +90,11 @@ class Cameroon(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
         # Mawlid.
         dts_observed.update(self._add_mawlid_day("Mawlid"))
 
-        if self.observed:
-            for dt in sorted(dts_observed):
-                if not self._is_sunday(dt):
-                    continue
-                dt_observed = dt + td(days=+1)
-                while dt_observed in dts_observed:
-                    dt_observed += td(days=+1)
-                for name in self.get_list(dt):
-                    dts_observed.add(self._add_holiday("%s (Observed)" % name, dt_observed))
+        self._populate_observed(dts_observed)
 
-            # Observed holidays special cases.
-            if year == 2007:
-                self._add_holiday_jan_2("Eid al-Adha (Observed)")
+        # Observed holidays special cases.
+        if self.observed and year == 2007:
+            self._add_holiday_jan_2(self.observed_label % "Eid al-Adha")
 
 
 class CM(Cameroon):

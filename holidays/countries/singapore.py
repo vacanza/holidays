@@ -9,8 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
-
 from holidays.calendars import (
     _CustomBuddhistCalendar,
     _CustomChineseCalendar,
@@ -18,6 +16,7 @@ from holidays.calendars import (
     _CustomHinduCalendar,
 )
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.constants import SUN_TO_NEXTWORK
 from holidays.groups import (
     BuddhistCalendarHolidays,
     ChineseCalendarHolidays,
@@ -25,6 +24,7 @@ from holidays.groups import (
     HinduCalendarHolidays,
     InternationalHolidays,
     IslamicHolidays,
+    ObservedHolidays,
 )
 from holidays.holiday_base import HolidayBase
 
@@ -37,8 +37,10 @@ class Singapore(
     HinduCalendarHolidays,
     InternationalHolidays,
     IslamicHolidays,
+    ObservedHolidays,
 ):
     country = "SG"
+    observed_label = "%s (Observed)"
     special_holidays = {
         2001: (NOV, 3, "Polling Day"),
         2006: (MAY, 6, "Polling Day"),
@@ -100,6 +102,11 @@ class Singapore(
         HinduCalendarHolidays.__init__(self, calendar=SingaporeHinduCalendar())
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, calendar=SingaporeIslamicCalendar())
+        # Implement Section 4(2) of the Holidays Act:
+        # "if any day specified in the Schedule falls on a Sunday,
+        # the day next following not being itself a public holiday
+        # is declared a public holiday in Singapore."
+        ObservedHolidays.__init__(self, rule=SUN_TO_NEXTWORK, begin=1998)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year) -> None:
@@ -151,24 +158,11 @@ class Singapore(
         if year <= 1968:
             self._add_christmas_day_two("Boxing Day")
 
-        # Implement Section 4(2) of the Holidays Act:
-        # "if any day specified in the Schedule falls on a Sunday,
-        # the day next following not being itself a public holiday
-        # is declared a public holiday in Singapore."
-        if not self.observed:
-            return None
-        if year >= 1998:
-            for dt in sorted(observed_dates):
-                if not self._is_sunday(dt):
-                    continue
-                self._add_holiday(
-                    "%s (Observed)" % self[dt],
-                    dt + td(days=2 if dt + td(days=+1) in observed_dates else 1),
-                )
+        self._populate_observed(observed_dates)
 
-        # special case (observed from previous year)
-        if year == 2007:
-            self._add_holiday_jan_2("Hari Raya Haji (Observed)")
+        # observed holidays special cases (observed from previous year)
+        if self.observed and year == 2007:
+            self._add_holiday_jan_2(self.observed_label % "Hari Raya Haji")
 
 
 class SG(Singapore):

@@ -9,21 +9,26 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
-from typing import Optional
-
-from holidays.groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
+from holidays.constants import SUN_TO_MON
+from holidays.groups import (
+    ChristianHolidays,
+    IslamicHolidays,
+    InternationalHolidays,
+    ObservedHolidays,
+)
 from holidays.holiday_base import HolidayBase
 
 
-class Spain(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolidays):
+class Spain(
+    ObservedHolidays, HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolidays
+):
     """
     References:
      - https://administracion.gob.es/pag_Home/atencionCiudadana/calendarios.html
     """
 
     country = "ES"
+    observed_label = "%s (Trasladado)"
     subdivisions = (
         "AN",
         "AR",
@@ -50,17 +55,8 @@ class Spain(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self)
-        super().__init__(*args, **kwargs)
-
-    def _add_holiday(self, name: str, dt: date) -> Optional[date]:
-        if dt.year != self._year:
-            return None
-
-        if self.observed and self._is_sunday(dt):
-            dt += td(days=+1)
-            name = self.tr("%s (Trasladado)") % self.tr(name)
-
-        return super()._add_holiday(self.tr(name), dt)
+        ObservedHolidays.__init__(self, rule=SUN_TO_MON)
+        HolidayBase.__init__(self, *args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)

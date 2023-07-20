@@ -10,7 +10,6 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import (
@@ -28,11 +27,12 @@ from holidays.calendars.gregorian import (
     DEC,
 )
 from holidays.calendars.julian import JULIAN_CALENDAR
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.constants import WEEKEND_TO_NEXTWORK
+from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
     """
     Current holidays list:
     https://zakon1.rada.gov.ua/laws/show/322-08/paran454#n454
@@ -68,6 +68,8 @@ class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "UA"
     default_language = "uk"
+    # %s (Observed).
+    observed_label = "%s (вихідний)"
     supported_languages = ("ar", "en_US", "uk")
     # Date format (see strftime() Format Codes)
     substituted_date_format = tr("%d.%m.%Y")
@@ -192,7 +194,17 @@ class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)
+        ObservedHolidays.__init__(self, rule=WEEKEND_TO_NEXTWORK)
         super().__init__(*args, **kwargs)
+
+    def _is_observed_applicable(self, dt: date) -> bool:
+        # 27.01.1995: holiday on weekend move to next workday
+        # https://zakon.rada.gov.ua/laws/show/35/95-вр
+        # 10.01.1998: cancelled
+        # https://zakon.rada.gov.ua/laws/show/785/97-вр
+        # 23.04.1999: holiday on weekend move to next workday
+        # https://zakon.rada.gov.ua/laws/show/576-14
+        return date(1995, JAN, 27) <= dt <= date(1998, JAN, 9) or dt >= date(1999, APR, 23)
 
     def _populate(self, year):
         # The current set of holidays came into force in 1991
@@ -284,23 +296,7 @@ class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays):
                     )
                 )
 
-        # 27.01.1995: holiday on weekend move to next workday
-        # https://zakon.rada.gov.ua/laws/show/35/95-вр
-        # 10.01.1998: cancelled
-        # https://zakon.rada.gov.ua/laws/show/785/97-вр
-        # 23.04.1999: holiday on weekend move to next workday
-        # https://zakon.rada.gov.ua/laws/show/576-14
-        if not self.observed:
-            return None
-        for dt in sorted(dts_observed):
-            if self._is_weekend(dt) and (
-                date(1995, JAN, 27) <= dt <= date(1998, JAN, 9) or dt >= date(1999, APR, 23)
-            ):
-                dt_observed = dt + td(days=+2 if self._is_saturday(dt) else +1)
-                while dt_observed in self:
-                    dt_observed += td(days=+1)
-                for name in self.get_list(dt):
-                    self._add_holiday(self.tr("%s (вихідний)") % name, dt_observed)
+        self._populate_observed(dts_observed)
 
 
 class UA(Ukraine):

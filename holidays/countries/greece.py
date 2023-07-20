@@ -9,17 +9,15 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import MON, _get_nth_weekday_from
 from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
-from holidays.constants import HALF_DAY, PUBLIC
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.constants import HALF_DAY, PUBLIC, WEEKEND_TO_NEXTWORK
+from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Greece(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Greece(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
     """
     Greece holidays.
 
@@ -29,12 +27,15 @@ class Greece(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "GR"
     default_language = "el"
+    # %s (Observed).
+    observed_label = "%s (παρατηρήθηκε)"
     supported_categories = {HALF_DAY, PUBLIC}
     supported_languages = ("el", "en_US", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_REVISED_CALENDAR)
         InternationalHolidays.__init__(self)
+        ObservedHolidays.__init__(self, rule=WEEKEND_TO_NEXTWORK)
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -60,19 +61,7 @@ class Greece(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_whit_monday(tr("Δευτέρα του Αγίου Πνεύματος"))
 
         # Labour Day.
-        name = self.tr("Εργατική Πρωτομαγιά")
-        may_1 = self._add_labor_day(name)
-
-        if self.observed and self._is_weekend(may_1):
-            dt_observed = _get_nth_weekday_from(+1, MON, may_1)
-            # %s (Observed).
-            name_observed = self.tr("%s (παρατηρήθηκε)") % name
-            # In 2016 and 2021, Labour Day coincided with other holidays
-            # https://www.timeanddate.com/holidays/greece/labor-day
-            self._add_holiday(
-                name_observed,
-                dt_observed + td(days=+1) if dt_observed in self else dt_observed,
-            )
+        self._add_observed(self._add_labor_day(self.tr("Εργατική Πρωτομαγιά")))
 
         # Dormition of the Mother of God.
         self._add_assumption_of_mary_day(tr("Κοίμηση της Θεοτόκου"))

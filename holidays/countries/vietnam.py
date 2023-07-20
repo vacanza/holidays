@@ -9,13 +9,12 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
-
-from holidays.groups import ChineseCalendarHolidays, InternationalHolidays
+from holidays.constants import WEEKEND_TO_NEXTWORK
+from holidays.groups import ChineseCalendarHolidays, InternationalHolidays, ObservedHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Vietnam(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
+class Vietnam(HolidayBase, ChineseCalendarHolidays, InternationalHolidays, ObservedHolidays):
     """
     https://publicholidays.vn/
     http://vbpl.vn/TW/Pages/vbpqen-toanvan.aspx?ItemID=11013 Article.115
@@ -23,10 +22,12 @@ class Vietnam(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
     """
 
     country = "VN"
+    observed_label = "%s (Observed)"
 
     def __init__(self, *args, **kwargs):
         ChineseCalendarHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        ObservedHolidays.__init__(self, rule=WEEKEND_TO_NEXTWORK)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -58,14 +59,7 @@ class Vietnam(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
         # Independence Day
         observed_dates.add(self._add_holiday_sep_2("Independence Day"))
 
-        if self.observed:
-            for dt in sorted(observed_dates):
-                if not self._is_weekend(dt):
-                    continue
-                next_workday = dt + td(days=+1)
-                while self._is_weekend(next_workday) or next_workday in observed_dates:
-                    next_workday += td(days=+1)
-                observed_dates.add(self._add_holiday(f"{self[dt]} (Observed)", next_workday))
+        self._populate_observed(observed_dates)
 
 
 class VN(Vietnam):

@@ -9,15 +9,13 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
-
 from holidays.calendars.gregorian import FEB, MAR
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.constants import WEEKEND_TO_MON, WEEKEND_TO_MON_OR_TUE
+from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Ireland(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Ireland(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
     """
     Official holidays in Ireland, as declared in the Citizen's Information
     bulletin:
@@ -25,6 +23,7 @@ class Ireland(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "IE"
+    observed_label = "%s (Observed)"
     special_holidays = {
         2022: (MAR, 18, "Day of Remembrance and Recognition"),
     }
@@ -32,13 +31,8 @@ class Ireland(HolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        ObservedHolidays.__init__(self, rule=WEEKEND_TO_MON)
         super().__init__(*args, **kwargs)
-
-    def _add_observed(self, dt: date, days: int = +1) -> None:
-        if self.observed and self._is_weekend(dt):
-            self._add_holiday(
-                "%s (Observed)" % self[dt], dt + td(days=+2 if self._is_saturday(dt) else days)
-            )
 
     def _populate(self, year):
         super()._populate(year)
@@ -81,7 +75,9 @@ class Ireland(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_christmas_day("Christmas Day"))
 
         # St. Stephen's Day.
-        self._add_observed(self._add_christmas_day_two("St. Stephen's Day"), days=+2)
+        self._add_observed(
+            self._add_christmas_day_two("St. Stephen's Day"), rule=WEEKEND_TO_MON_OR_TUE
+        )
 
 
 class IE(Ireland):

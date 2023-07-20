@@ -9,21 +9,28 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
-
 from holidays.calendars.gregorian import MAR
 from holidays.calendars.julian import JULIAN_CALENDAR
-from holidays.groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
+from holidays.constants import WEEKEND_TO_NEXTWORK
+from holidays.groups import (
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    ObservedHolidays,
+)
 from holidays.holiday_base import HolidayBase
 
 
-class Albania(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
+class Albania(
+    HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays, ObservedHolidays
+):
     """
     References:
       - https://en.wikipedia.org/wiki/Public_holidays_in_Albania
     """
 
     country = "AL"
+    observed_label = "%s (Observed)"
     special_holidays = {
         2022: (MAR, 21, "Public Holiday"),
     }
@@ -32,6 +39,7 @@ class Albania(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self)
+        ObservedHolidays.__init__(self, rule=WEEKEND_TO_NEXTWORK)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -83,19 +91,11 @@ class Albania(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
         # Eid al-Adha.
         observed_dates.update(self._add_eid_al_adha_day("Eid al-Adha"))
 
-        if self.observed:
-            for dt in sorted(observed_dates):
-                if not self._is_weekend(dt):
-                    continue
-                dt_observed = dt + td(days=+1)
-                while self._is_weekend(dt_observed) or dt_observed in observed_dates:
-                    dt_observed += td(days=+1)
-                for name in self.get_list(dt):
-                    observed_dates.add(self._add_holiday("%s (Observed)" % name, dt_observed))
+        self._populate_observed(observed_dates)
 
-            # observed holidays special cases
-            if year == 2007:
-                self._add_holiday_jan_3("Eid al-Adha (Observed)")
+        # observed holidays special cases
+        if self.observed and year == 2007:
+            self._add_holiday_jan_3(self.observed_label % "Eid al-Adha")
 
 
 class AL(Albania):

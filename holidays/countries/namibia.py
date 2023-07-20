@@ -9,22 +9,27 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
-
-from holidays.calendars.gregorian import JAN, FEB, DEC
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.calendars.gregorian import JAN, DEC
+from holidays.constants import SUN_TO_MON
+from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Namibia(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Namibia(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
     """
     https://www.officeholidays.com/countries/namibia
     https://www.timeanddate.com/holidays/namibia/
 
+    https://tinyurl.com/lacorg5835
+    As of 1991/2/1, whenever a public holiday falls on a Sunday, it rolls over to the monday,
+    unless that monday is already a public holiday.
+    Since the interval from 1991/1/1 to 1991/2/1 includes only New Year's Day, and it's a Tuesday,
+    we can assume that the beginning is 1991.
     """
 
     country = "NA"
+    # %s (Observed).
+    observed_label = "%s (Observed)"
     special_holidays = {
         # https://gazettes.africa/archive/na/1999/na-government-gazette-dated-1999-11-22-no-2234.pdf
         1999: (DEC, 31, "Y2K changeover"),
@@ -34,15 +39,8 @@ class Namibia(HolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        ObservedHolidays.__init__(self, rule=SUN_TO_MON, begin=1991)
         super().__init__(*args, **kwargs)
-
-    def _add_observed(self, dt: date) -> None:
-        # https://tinyurl.com/lacorg5835
-        # As of 1991/2/1, whenever a public holiday falls on a Sunday,
-        # it rolls over to the monday, unless that monday is already
-        # a public holiday.
-        if self.observed and self._is_sunday(dt) and dt >= date(1991, FEB, 1):
-            self._add_holiday("%s (Observed)" % self[dt], dt + td(days=+1))
 
     def _populate(self, year):
         if year <= 1989:

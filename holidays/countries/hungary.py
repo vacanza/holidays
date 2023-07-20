@@ -9,16 +9,15 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import DEC
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.constants import TUE_TO_MON_AND_THU_TO_FRI, THU_TO_FRI
+from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Hungary
     Codification dates:
@@ -28,23 +27,16 @@ class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "HU"
     default_language = "hu"
+    # Day off before
+    observed_label_before = tr("%s előtti pihenőnap")
+    # Day off after
+    observed_label = tr("%s utáni pihenőnap")
     supported_languages = ("en_US", "hu", "uk")
-
-    def _add_observed(
-        self, dt: date, since: int = 2010, before: bool = True, after: bool = True
-    ) -> None:
-        if not self.observed or dt.year < since:
-            return None
-        if self._is_tuesday(dt) and before:
-            # Day off before
-            self._add_holiday(self.tr("%s előtti pihenőnap") % self[dt], dt + td(days=-1))
-        elif self._is_thursday(dt) and after:
-            # Day off after
-            self._add_holiday(self.tr("%s utáni pihenőnap") % self[dt], dt + td(days=+1))
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        ObservedHolidays.__init__(self, rule=TUE_TO_MON_AND_THU_TO_FRI, begin=2010)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -52,12 +44,14 @@ class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # New Year's Day.
         name = self.tr("Újév")
-        self._add_observed(self._add_new_years_day(name), before=False, since=2014)
+        jan_1 = self._add_new_years_day(name)
+        if year >= 2014:
+            self._add_observed(jan_1)
 
-        # The last day of the year is an observed day off if New Year's Day
-        # falls on a Tuesday.
-        if self.observed and self._is_monday(DEC, 31) and year >= 2014:
-            self._add_holiday_dec_31(self.tr("%s előtti pihenőnap") % name)
+            # The last day of the year is an observed day off if New Year's Day
+            # falls on a Tuesday.
+            if self.observed and self._is_monday(DEC, 31):
+                self._add_holiday_dec_31(self.tr(self.observed_label_before) % name)
 
         if 1945 <= year <= 1950 or year >= 1989:
             # National Day.
@@ -111,12 +105,10 @@ class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_christmas_day(tr("Karácsony"))
 
         if year != 1955:
-            self._add_observed(
-                # Second Day of Christmas.
-                self._add_christmas_day_two(tr("Karácsony másnapja")),
-                since=2013,
-                before=False,
-            )
+            # Second Day of Christmas.
+            dec_26 = self._add_christmas_day_two(tr("Karácsony másnapja"))
+            if year >= 2013:
+                self._add_observed(dec_26, rule=THU_TO_FRI)
 
         # Soviet era.
         if 1950 <= year <= 1989:

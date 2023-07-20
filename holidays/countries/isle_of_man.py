@@ -13,7 +13,8 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.calendars.gregorian import JUL
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.constants import WEEKEND_TO_MON
+from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
 from holidays.holiday_base import HolidayBase
 
 from .united_kingdom import UnitedKingdom
@@ -28,6 +29,7 @@ class IsleOfMan(UnitedKingdom):
     def __init__(self, *args, **kwargs):  # Override UnitedKingdom __init__().
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        ObservedHolidays.__init__(self, rule=WEEKEND_TO_MON)
         HolidayBase.__init__(self, *args, **kwargs)
 
     def _populate(self, year: int) -> None:

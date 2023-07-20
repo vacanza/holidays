@@ -9,23 +9,28 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicCalendar
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.constants import FRI_TO_SAT_AND_SUN_TO_MON
 from holidays.groups import (
     ChineseCalendarHolidays,
     ChristianHolidays,
     InternationalHolidays,
     IslamicHolidays,
+    ObservedHolidays,
 )
 from holidays.holiday_base import HolidayBase
 
 
 class Brunei(
-    HolidayBase, ChineseCalendarHolidays, ChristianHolidays, InternationalHolidays, IslamicHolidays
+    HolidayBase,
+    ChineseCalendarHolidays,
+    ChristianHolidays,
+    InternationalHolidays,
+    IslamicHolidays,
+    ObservedHolidays,
 ):
     """
     A subclass of :py:class:`HolidayBase` representing public holidays in Brunei Darussalam.
@@ -39,6 +44,9 @@ class Brunei(
                     https://www.timeanddate.com/holidays/brunei/
     - [Jubli Emas Sultan Hassanal Bolkiah]
         https://www.brudirect.com/news.php?id=28316
+
+    If Public Holiday falls on either Friday or Sunday, in-lieu observance is given out
+    on the following Saturday or Monday.
 
     Limitations:
 
@@ -54,6 +62,7 @@ class Brunei(
     country = "BN"
     default_language = "ms"
     estimated_label = tr("%s* (*anggaran)")
+    observed_label = tr("%s - Diperhatikan")
     supported_languages = ("en_US", "ms", "th")
 
     special_holidays = {
@@ -66,7 +75,7 @@ class Brunei(
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
         IslamicHolidays.__init__(self, calendar=BruneiIslamicCalendar())
-
+        ObservedHolidays.__init__(self, rule=FRI_TO_SAT_AND_SUN_TO_MON)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -74,42 +83,33 @@ class Brunei(
         if year <= 1983:
             return None
 
-        def _add_observed(dt: date) -> None:
-            """
-            If Public Holiday falls on either Friday or Sunday, in-lieu
-            observance is given out on the following Saturday or Monday.
-            """
-            if self.observed and (self._is_friday(dt) or self._is_sunday(dt)):
-                for name in self.get_list(dt):
-                    self._add_holiday(self.tr("%s - Diperhatikan") % name, dt + td(days=+1))
-
         super()._populate(year)
 
         # Awal Tahun Masihi
         # Status: In-Use.
 
         # New Year's Day
-        _add_observed(self._add_new_years_day(tr("Awal Tahun Masihi")))
+        self._add_observed(self._add_new_years_day(tr("Awal Tahun Masihi")))
 
         # Tahun Baru Cina
         # Status: In-Use.
 
         # Lunar New Year
-        _add_observed(self._add_chinese_new_years_day(tr("Tahun Baru Cina")))
+        self._add_observed(self._add_chinese_new_years_day(tr("Tahun Baru Cina")))
 
         # Hari Kebangsaan
         # Status: In-Use.
         # Starts in 1984.
 
         # National Day
-        _add_observed(self._add_holiday_feb_23(tr("Hari Kebangsaan")))
+        self._add_observed(self._add_holiday_feb_23(tr("Hari Kebangsaan")))
 
         # Hari Angkatan Bersenjata Diraja Brunei
         # Status: In-Use.
         # Starts in 1984.
         # Commemorates the formation of Royal Brunei Malay Regiment in 1961.
 
-        _add_observed(
+        self._add_observed(
             # Armed Forces Day
             self._add_holiday_may_31(tr("Hari Angkatan Bersenjata Diraja Brunei"))
         )
@@ -118,7 +118,7 @@ class Brunei(
         # Status: In-Use.
         # Started in 1968.
 
-        _add_observed(
+        self._add_observed(
             # Sultan Hassanal Bolkiah's Birthday
             self._add_holiday_jul_15(tr("Hari Keputeraan KDYMM Sultan Brunei"))
         )
@@ -127,7 +127,7 @@ class Brunei(
         # Status: In-Use.
 
         # Christmas Day
-        _add_observed(self._add_christmas_day(tr("Hari Natal")))
+        self._add_observed(self._add_christmas_day(tr("Hari Natal")))
 
         # Islamic Holidays are placed after Gregorian holidays to prevent
         # the duplication of observed tags. - see #1168
@@ -137,76 +137,61 @@ class Brunei(
 
         # Isra Mi'raj
         for dt in self._add_isra_and_miraj_day(tr("Israk dan Mikraj")):
-            _add_observed(dt)
+            self._add_observed(dt)
 
         # Hari Pertama Berpuasa
         # Status: In-Use.
 
         # First Day of Ramadan
         for dt in self._add_ramadan_beginning_day(tr("Hari Pertama Berpuasa")):
-            _add_observed(dt)
+            self._add_observed(dt)
 
         # Hari Nuzul Al-Quran
         # Status: In-Use.
 
         # Anniversary of the revelation of the Quran
         for dt in self._add_nuzul_al_quran_day(tr("Hari Nuzul Al-Quran")):
-            _add_observed(dt)
+            self._add_observed(dt)
 
         # Hari Raya Aidil Fitri
         # Status: In-Use.
         # This is celebrate for three days in Brunei.
         # Observed as 'Hari Raya Puasa' and only for 2 days at certain point.
-        # We utilizes a separate in-lieu trigger for this one.
-        # 1: If Wed-Thu-Fri -> Sat (+3)
-        # 2: If Thu-Fri-Sat -> Mon (+4)
-        # 3: If Fri-Sat-Sun -> Mon (+3)
-        # 4: If Sat-Sun-Mon -> Tue (+3)
-        # 5: If Sun-Mon-Tue -> Wed (+3)
+        # 1: If Wed-Thu-Fri -> Sat (3rd Day +1)
+        # 2: If Thu-Fri-Sat -> Mon (2nd Day +3)
+        # 3: If Fri-Sat-Sun -> Mon (1st Day +3)
+        # 4: If Sat-Sun-Mon -> Tue (2nd Day +2)
+        # 5: If Sun-Mon-Tue -> Wed (1st Day +3)
 
         # Eid al-Fitr
         name = tr("Hari Raya Aidil Fitri")
-
-        al_fitr_dates = self._add_eid_al_fitr_day(name)
-        self._add_eid_al_fitr_day_two(name)
-        self._add_eid_al_fitr_day_three(name)
-
-        if self.observed:
-            for dt in al_fitr_dates:
-                dt_observed = None
-                for delta in range(3):
-                    dt_delta = dt + td(days=delta)
-                    if self._is_friday(dt_delta) or self._is_sunday(dt_delta):
-                        dt_observed = dt + td(days=+3)
-                        if self._is_sunday(dt_observed):
-                            dt_observed += td(days=+1)
-                        break
-                if dt_observed:
-                    self._add_islamic_calendar_holiday(
-                        self.tr("%s - Diperhatikan") % self[dt_delta],
-                        ((dt_observed, year not in BruneiIslamicCalendar.EID_AL_FITR_DATES),),
-                    )
+        for dt in self._add_eid_al_fitr_day(name):
+            self._add_observed(dt, rule=(0, 0, 0, 0, 3, 0, 3))
+        for dt in self._add_eid_al_fitr_day_two(name):
+            self._add_observed(dt, rule=(0, 0, 0, 0, 3, 0, 2))
+        for dt in self._add_eid_al_fitr_day_three(name):
+            self._add_observed(dt, rule=(0, 0, 0, 0, 1, 0, 0))
 
         # Hari Raya Aidil Adha
         # Status: In-Use.
 
         # Eid al-Adha
         for dt in self._add_eid_al_adha_day(tr("Hari Raya Aidil Adha")):
-            _add_observed(dt)
+            self._add_observed(dt)
 
         # Awal Tahun Hijrah
         # Status: In-Use.
 
         # Islamic New Year
         for dt in self._add_islamic_new_year_day(tr("Awal Tahun Hijrah")):
-            _add_observed(dt)
+            self._add_observed(dt)
 
         # Maulidur Rasul
         # Status: In-Use.
 
         # Birth of the Prophet
         for dt in self._add_mawlid_day(tr("Maulidur Rasul")):
-            _add_observed(dt)
+            self._add_observed(dt)
 
 
 class BN(Brunei):

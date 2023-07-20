@@ -9,21 +9,21 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
 from typing import Tuple, Union
 
 from holidays.calendars.gregorian import APR, MAY, JUN, JUL, SEP, DEC
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.constants import WEEKEND_TO_MON, WEEKEND_TO_MON_OR_TUE
+from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
+class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_the_United_Kingdom
     """
 
     country = "GB"
+    observed_label = "%s (Observed)"
     special_holidays = {
         1977: (JUN, 7, "Silver Jubilee of Elizabeth II"),
         1981: (JUL, 29, "Wedding of Charles and Diana"),
@@ -54,13 +54,8 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        ObservedHolidays.__init__(self, rule=WEEKEND_TO_MON)
         super().__init__(*args, **kwargs)
-
-    def _add_observed(self, dt: date, days: int = +1) -> None:
-        if self.observed and self._is_weekend(dt):
-            self._add_holiday(
-                "%s (Observed)" % self[dt], dt + td(days=+2 if self._is_saturday(dt) else days)
-            )
 
     def _populate(self, year: int) -> None:
         super()._populate(year)
@@ -105,10 +100,14 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
                 self._add_observed(self._add_new_years_day("New Year's Day"))
 
             # Christmas Day
-            self._add_observed(self._add_christmas_day("Christmas Day"), days=+2)
+            self._add_observed(
+                self._add_christmas_day("Christmas Day"), rule=WEEKEND_TO_MON_OR_TUE
+            )
 
             # Boxing Day
-            self._add_observed(self._add_christmas_day_two("Boxing Day"), days=+2)
+            self._add_observed(
+                self._add_christmas_day_two("Boxing Day"), rule=WEEKEND_TO_MON_OR_TUE
+            )
 
         super()._add_subdiv_holidays()
 
@@ -137,19 +136,13 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_sct_holidays(self):
         # New Year's Day
-        name = "New Year's Day"
-        jan_1 = self._add_new_years_day(name)
-        if self.observed and self._is_weekend(jan_1):
-            self._add_holiday(
-                "%s (Observed)" % name, jan_1 + td(days=+3 if self._is_saturday(jan_1) else +1)
-            )
+        jan_1 = self._add_new_years_day("New Year's Day")
 
         # New Year Holiday
-        name = "New Year Holiday"
-        jan_2 = self._add_new_years_day_two(name)
-        self._add_observed(jan_2)
-        if self.observed and self._is_monday(jan_2):
-            self._add_new_years_day_three("%s (Observed)" % name)
+        self._add_observed(
+            self._add_new_years_day_two("New Year Holiday"), rule=(1, 0, 0, 0, 0, 2, 1)
+        )
+        self._add_observed(jan_1, rule=(0, 0, 0, 0, 0, 3, 1))
 
         # Summer bank holiday (first Monday in August)
         self._add_holiday_1st_mon_of_aug("Summer Bank Holiday")
@@ -160,12 +153,15 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Christmas Day
         self._add_observed(
-            self._add_christmas_day("Christmas Day"), days=+2 if self._year >= 1974 else +1
+            self._add_christmas_day("Christmas Day"),
+            rule=WEEKEND_TO_MON_OR_TUE if self._year >= 1974 else WEEKEND_TO_MON,
         )
 
         if self._year >= 1974:
             # Boxing Day
-            self._add_observed(self._add_christmas_day_two("Boxing Day"), days=+2)
+            self._add_observed(
+                self._add_christmas_day_two("Boxing Day"), rule=WEEKEND_TO_MON_OR_TUE
+            )
 
     def _add_subdiv_wls_holidays(self):
         # Easter Monday

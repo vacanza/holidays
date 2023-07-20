@@ -17,5 +17,6 @@ from holidays.groups.christian import ChristianHolidays
 from holidays.groups.hindu import HinduCalendarHolidays
 from holidays.groups.international import InternationalHolidays
 from holidays.groups.islamic import IslamicHolidays
+from holidays.groups.observed import ObservedHolidays
 from holidays.groups.persian import PersianCalendarHolidays
 from holidays.groups.thai import ThaiCalendarHolidays

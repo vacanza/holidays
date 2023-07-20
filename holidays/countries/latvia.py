@@ -9,16 +9,16 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.constants import MAY, JUL, SEP
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.calendars.gregorian import MAY, JUL, SEP
+from holidays.constants import WEEKEND_TO_MON
+from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Latvia(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Latvia(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
     """
     https://en.wikipedia.org/wiki/Public_holidays_in_Latvia
     https://information.lv/
@@ -27,6 +27,8 @@ class Latvia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "LV"
     default_language = "lv"
+    # %s (Observed).
+    observed_label = tr("%s (brīvdiena)")
 
     # General Latvian Song and Dance Festival closing day.
     song_and_dance_festival_closing_day = tr(
@@ -57,14 +59,8 @@ class Latvia(HolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        ObservedHolidays.__init__(self, rule=WEEKEND_TO_MON)
         super().__init__(*args, **kwargs)
-
-    def _add_observed(self, dt: date) -> None:
-        if self.observed and self._is_weekend(dt):
-            self._add_holiday(
-                self.tr("%s (brīvdiena)") % self[dt],
-                dt + td(days=+2 if self._is_saturday(dt) else +1),
-            )
 
     def _populate(self, year):
         if year <= 1989:

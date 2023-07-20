@@ -9,16 +9,15 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.calendars.julian import JULIAN_CALENDAR
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.constants import SUN_TO_MON, SUN_TO_TUE
+from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Serbia(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Serbia(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
     """
     Serbia holidays.
 
@@ -28,23 +27,22 @@ class Serbia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "RS"
     default_language = "sr"
+    # %s (Observed).
+    observed_label = tr("%s (слободан дан)")
     supported_languages = ("en_US", "sr")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
         InternationalHolidays.__init__(self)
+        ObservedHolidays.__init__(self, rule=SUN_TO_MON)
         super().__init__(*args, **kwargs)
-
-    def _add_observed(self, dt: date, days: int = +1) -> None:
-        if self.observed and self._is_sunday(dt):
-            self._add_holiday(self.tr("%s (слободан дан)") % self[dt], dt + td(days))
 
     def _populate(self, year):
         super()._populate(year)
 
         # New Year's Day.
         name = tr("Нова година")
-        self._add_observed(self._add_new_years_day(name), days=+2)
+        self._add_observed(self._add_new_years_day(name), rule=SUN_TO_TUE)
         self._add_observed(self._add_new_years_day_two(name))
 
         # Orthodox Christmas.
@@ -52,14 +50,14 @@ class Serbia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Statehood Day.
         name = tr("Дан државности Србије")
-        self._add_observed(self._add_holiday_feb_15(name), days=+2)
+        self._add_observed(self._add_holiday_feb_15(name), rule=SUN_TO_TUE)
         self._add_observed(self._add_holiday_feb_16(name))
 
         # International Workers' Day.
         name = tr("Празник рада")
-        self._add_observed(self._add_labor_day(name), days=+2)
+        self._add_observed(self._add_labor_day(name), rule=SUN_TO_TUE)
         may_2 = self._add_labor_day_two(name)
-        self._add_observed(may_2, days=+2 if may_2 == self._easter_sunday else +1)
+        self._add_observed(may_2, rule=SUN_TO_TUE if may_2 == self._easter_sunday else SUN_TO_MON)
 
         # Armistice Day.
         self._add_observed(self._add_remembrance_day(tr("Дан примирја у Првом светском рату")))

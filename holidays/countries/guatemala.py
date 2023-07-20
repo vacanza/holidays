@@ -12,16 +12,23 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import OCT, MON, _get_nth_weekday_from
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.calendars.gregorian import OCT
+from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Guatemala(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Guatemala(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
     """
     References:
     - http://www.bvnsa.com.gt/bvnsa/calendario_dias_festivos.php
     - https://www.minfin.gob.gt/images/downloads/leyes_acuerdos/decretocong19_101018.pdf
+
+    Moving holidays:
+        law 19-2018 start 18 oct 2018
+        https://www.minfin.gob.gt/images/downloads/leyes_acuerdos/decretocong19_101018.pdf
+
+        EXPEDIENTE 5536-2018 (CC) start 17 abr 2020
+        https://leyes.infile.com/index.php?id=181&id_publicacion=81051
     """
 
     country = "GT"
@@ -31,26 +38,11 @@ class Guatemala(HolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        ObservedHolidays.__init__(self, rule=(0, -1, -2, 4, 3, 2, 1))
         super().__init__(*args, **kwargs)
 
-    def _move_holiday(self, dt: date) -> None:
-        """
-        law 19-2018 start 18 oct 2018
-        https://www.minfin.gob.gt/images/downloads/leyes_acuerdos/decretocong19_101018.pdf
-
-
-        EXPEDIENTE 5536-2018 (CC) start 17 abr 2020
-        https://leyes.infile.com/index.php?id=181&id_publicacion=81051
-        """
-        if dt <= date(2018, OCT, 17) or self._is_monday(dt):
-            return None
-        self._add_holiday(
-            self[dt],
-            _get_nth_weekday_from(-1, MON, dt)
-            if self._is_tuesday(dt) or self._is_wednesday(dt)
-            else _get_nth_weekday_from(1, MON, dt),
-        )
-        self.pop(dt)
+    def _is_observed_applicable(self, dt: date) -> bool:
+        return dt >= date(2018, OCT, 18)
 
     def _populate(self, year):
         super()._populate(year)

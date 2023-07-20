@@ -12,12 +12,12 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JUN, MON, _get_nth_weekday_from
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.calendars.gregorian import JUN
+from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class DominicanRepublic(HolidayBase, ChristianHolidays, InternationalHolidays):
+class DominicanRepublic(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
     """
     http://ojd.org.do/Normativas/LABORAL/Leyes/Ley%20No.%20%20139-97.pdf
     https://es.wikipedia.org/wiki/Rep%C3%BAblica_Dominicana#D%C3%ADas_festivos_nacionales
@@ -27,25 +27,15 @@ class DominicanRepublic(HolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "es"
     supported_languages = ("en_US", "es", "uk")
 
-    def _move_holiday(self, dt: date, include_sun: bool = False) -> None:
-        # Law No. 139-97 - Holidays Dominican Republic - Jun 27, 1997
-        if dt < date(1997, JUN, 27):
-            return None
-
-        dt_observed = None
-        if self._is_tuesday(dt) or self._is_wednesday(dt):
-            dt_observed = _get_nth_weekday_from(-1, MON, dt)
-        elif self._is_thursday(dt) or self._is_friday(dt) or (include_sun and self._is_sunday(dt)):
-            dt_observed = _get_nth_weekday_from(+1, MON, dt)
-
-        if dt_observed:
-            self._add_holiday(self[dt], dt_observed)
-            self.pop(dt)
-
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        ObservedHolidays.__init__(self, rule=(0, -1, -2, 4, 3, 0, 0))
         super().__init__(*args, **kwargs)
+
+    def _is_observed_applicable(self, dt: date) -> bool:
+        # Law No. 139-97 - Holidays Dominican Republic - Jun 27, 1997
+        return dt >= date(1997, JUN, 27)
 
     def _populate(self, year):
         super()._populate(year)
@@ -69,7 +59,9 @@ class DominicanRepublic(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_good_friday(tr("Viernes Santo"))
 
         # Labor Day.
-        self._move_holiday(self._add_labor_day(tr("Día del Trabajo")), include_sun=True)
+        self._move_holiday(
+            self._add_labor_day(tr("Día del Trabajo")), rule=(0, -1, -2, 4, 3, 0, 1)
+        )
 
         # Feast of Corpus Christi.
         self._add_corpus_christi_day(tr("Corpus Christi"))

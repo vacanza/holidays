@@ -9,17 +9,16 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 from typing import Tuple
 
-from holidays.calendars.gregorian import JUN, SEP, OCT, MON, _get_nth_weekday_from
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.calendars.gregorian import JUN, SEP
+from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Chile(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
     """
     References:
     - https://www.feriados.cl
@@ -74,15 +73,8 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        ObservedHolidays.__init__(self, rule=(0, -1, -2, -3, 3, 0, 0), begin=2000)
         super().__init__(*args, **kwargs)
-
-    def _move_holiday(self, dt: date) -> None:
-        if self._year <= 1999 or self._is_monday(dt) or self._is_weekend(dt):
-            return None
-        self._add_holiday(
-            self[dt], _get_nth_weekday_from(+1 if self._is_friday(dt) else -1, MON, dt)
-        )
-        self.pop(dt)
 
     def _populate(self, year):
         if year <= 1914:
@@ -177,15 +169,15 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._move_holiday(self._add_columbus_day(name))
 
         if year >= 2008:
-            dt = date(year, OCT, 31)
             # This holiday is moved to the preceding Friday if it falls on a Tuesday,
             # or to the following Friday if it falls on a Wednesday.
-            if self._is_wednesday(dt):
-                dt += td(days=+2)
-            elif self._is_tuesday(dt):
-                dt += td(days=-4)
-            # National Day of the Evangelical and Protestant Churches.
-            self._add_holiday(tr("Día Nacional de las Iglesias Evangélicas y Protestantes"), dt)
+            self._move_holiday(
+                self._add_holiday_oct_31(
+                    # National Day of the Evangelical and Protestant Churches.
+                    tr("Día Nacional de las Iglesias Evangélicas y Protestantes")
+                ),
+                rule=(0, -4, 2, 0, 0, 0, 0),
+            )
 
         # All Saints Day.
         self._add_all_saints_day(tr("Día de Todos los Santos"))

@@ -10,15 +10,16 @@
 #  License: MIT (see LICENSE file)
 
 from datetime import date
-from datetime import timedelta as td
 from gettext import gettext as tr
+from typing import Tuple
 
 from holidays.calendars.gregorian import AUG, SEP, DEC
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.constants import SUN_TO_MON, TUE_TO_MON_AND_THU_TO_FRI
+from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Angola(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Angola(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
     """
     References:
     - https://en.wikipedia.org/wiki/Public_holidays_in_Angola
@@ -38,6 +39,8 @@ class Angola(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "AO"
     default_language = "pt_AO"
     supported_languages = ("en_US", "pt_AO", "uk")
+    # %s (Observed).
+    observed_label = tr("%s (Ponte)")
     special_holidays = {
         # General Election Day.
         2017: (AUG, 23, tr("Dia de eleições gerais")),
@@ -46,23 +49,19 @@ class Angola(HolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        ObservedHolidays.__init__(self, rule=TUE_TO_MON_AND_THU_TO_FRI)
         super().__init__(*args, **kwargs)
 
-    def _add_observed(self, dt: date) -> None:
-        if not self.observed:
-            return None
-        # As per Law # #11/18, from 2018/9/10, when public holiday falls on Tuesday or Thursday,
-        # the Monday or Friday is also a holiday.
-        if dt >= date(2018, SEP, 10):
-            if self._is_tuesday(dt):
-                # Day off for %s.
-                self._add_holiday(self.tr("%s (Ponte)") % self[dt], dt + td(days=-1))
-            elif self._is_thursday(dt):
-                self._add_holiday(self.tr("%s (Ponte)") % self[dt], dt + td(days=+1))
+    def _is_observed_applicable(self, dt: date) -> bool:
         # As per Law # 16/96, from 1996/9/27, when public holiday falls on Sunday,
         # it rolls over to the following Monday.
-        elif dt >= date(1996, SEP, 27) and self._is_sunday(dt):
-            self._add_holiday(self.tr("%s (Ponte)") % self[dt], dt + td(days=+1))
+        return dt >= date(1996, SEP, 27)
+
+    def _add_observed(self, dt: date, *args) -> Tuple[bool, date]:
+        # As per Law # #11/18, from 2018/9/10, when public holiday falls on Tuesday or Thursday,
+        # the Monday or Friday is also a holiday.
+        rule = SUN_TO_MON if dt < date(2018, SEP, 10) else self._rule
+        return super()._add_observed(dt, rule)
 
     def _populate(self, year):
         # Decree #5/75.
@@ -78,7 +77,7 @@ class Angola(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_observed(dt)
 
         if self.observed and self._is_monday(DEC, 31) and year >= 2018:
-            self._add_holiday(self.tr("%s (Ponte)") % name, DEC, 31)
+            self._add_holiday_dec_31(self.tr(self.observed_label) % name)
 
         # Law #16/96.
         if 1997 <= year <= 2011:

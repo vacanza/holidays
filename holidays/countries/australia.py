@@ -13,17 +13,19 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.calendars.gregorian import APR, AUG, SEP, OCT, FRI, _get_nth_weekday_from
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.constants import SUN_TO_MON, WEEKEND_TO_MON, WEEKEND_TO_MON_OR_TUE
+from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Australia(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
     """
     References:
       - https://www.qld.gov.au/recreation/travel/holidays
     """
 
     country = "AU"
+    observed_label = "%s (Observed)"
     special_holidays = {
         2022: (SEP, 22, "National Day of Mourning for Queen Elizabeth II"),
     }
@@ -41,15 +43,8 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        ObservedHolidays.__init__(self, rule=WEEKEND_TO_MON)
         super().__init__(*args, **kwargs)
-
-    def _add_observed(self, dt: date, include_sat: bool = True, days: int = +1) -> None:
-        if not self.observed:
-            return None
-        if self._is_sunday(dt) or (include_sat and self._is_saturday(dt)):
-            self._add_holiday(
-                "%s (Observed)" % self[dt], dt + td(days=+2 if self._is_saturday(dt) else days)
-            )
 
     def _populate(self, year):
         super()._populate(year)
@@ -98,11 +93,11 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday_apr_25("Anzac Day")
 
         # Christmas Day
-        self._add_observed(self._add_christmas_day("Christmas Day"), days=+2)
+        self._add_observed(self._add_christmas_day("Christmas Day"), rule=WEEKEND_TO_MON_OR_TUE)
 
         # Boxing Day
         name = "Proclamation Day" if self.subdiv == "SA" else "Boxing Day"
-        self._add_observed(self._add_christmas_day_two(name), days=+2)
+        self._add_observed(self._add_christmas_day_two(name), rule=WEEKEND_TO_MON_OR_TUE)
 
         super()._add_subdiv_holidays()
 
@@ -120,7 +115,7 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Anzac Day
         if self._year >= 1921:
-            self._add_observed(date(self._year, APR, 25), include_sat=False)
+            self._add_observed(date(self._year, APR, 25), rule=SUN_TO_MON)
 
         # Canberra Day
         # Info from https://www.timeanddate.com/holidays/australia/canberra-day
@@ -217,7 +212,7 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Anzac Day
         if self._year >= 1921:
-            self._add_observed(date(self._year, APR, 25), include_sat=False)
+            self._add_observed(date(self._year, APR, 25), rule=SUN_TO_MON)
 
         # The Royal Queensland Show (Ekka)
         # The Show starts on the first Friday of August - providing this is
@@ -248,7 +243,7 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Anzac Day
         if self._year >= 1921:
-            self._add_observed(date(self._year, APR, 25), include_sat=False)
+            self._add_observed(date(self._year, APR, 25), rule=SUN_TO_MON)
 
         # Adelaide Cup
         name = "Adelaide Cup"

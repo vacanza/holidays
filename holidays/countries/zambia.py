@@ -9,15 +9,15 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from datetime import timedelta as td
 
 from holidays.calendars.gregorian import MAR, JUL, AUG, SEP
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.constants import SUN_TO_MON
+from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Zambia(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Zambia(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
     """
     https://www.officeholidays.com/countries/zambia/
     https://www.timeanddate.com/holidays/zambia/
@@ -26,6 +26,7 @@ class Zambia(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
 
     country = "ZM"
+    observed_label = "%s (Observed)"
     special_holidays = {
         2016: (
             (AUG, 11, "General elections and referendum"),
@@ -48,13 +49,8 @@ class Zambia(HolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
+        ObservedHolidays.__init__(self, rule=SUN_TO_MON)
         super().__init__(*args, **kwargs)
-
-    def _add_observed(self, dt: date) -> None:
-        # whenever a public holiday falls on a Sunday,
-        # it rolls over to the following Monday
-        if self.observed and self._is_sunday(dt):
-            self._add_holiday("%s (Observed)" % self[dt], dt + td(days=+1))
 
     def _populate(self, year):
         # Observed since 1965

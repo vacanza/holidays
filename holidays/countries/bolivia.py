@@ -10,15 +10,15 @@
 #  License: MIT (see LICENSE file)
 #  Copyright: Kateryna Golovanova <kate@kgthreads.com>, 2022
 
-from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.groups import ChristianHolidays, InternationalHolidays
+from holidays.constants import SUN_TO_MON, TUE_TO_MON_AND_THU_TO_FRI
+from holidays.groups import ChristianHolidays, InternationalHolidays, ObservedHolidays
 from holidays.holiday_base import HolidayBase
 
 
-class Bolivia(HolidayBase, ChristianHolidays, InternationalHolidays):
+class Bolivia(HolidayBase, ChristianHolidays, InternationalHolidays, ObservedHolidays):
     """
     References:
     - [Supreme Decree #14260] https://bolivia.infoleyes.com/norma/1141/decreto-supremo-14260
@@ -52,14 +52,9 @@ class Bolivia(HolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        super().__init__(*args, **kwargs)
-
-    def _add_observed(self, dt: date) -> None:
         # Supreme Decree #14260.
-        # whenever a public holiday falls on a Sunday,
-        # it rolls over to the following Monday.
-        if self.observed and self._year >= 1977 and self._is_sunday(dt):
-            self._add_holiday(self.tr(self.observed_label) % self[dt], dt + td(days=+1))
+        ObservedHolidays.__init__(self, rule=SUN_TO_MON, begin=1977)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         if year <= 1824:
@@ -88,15 +83,10 @@ class Bolivia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_good_friday(tr("Viernes Santo"))
 
         # Labor Day.
-        name = self.tr("Día del Trabajo")
-        may_1 = self._add_labor_day(name)
-        self._add_observed(may_1)
+        self._add_observed(may_1 := self._add_labor_day(self.tr("Día del Trabajo")))
         # Supreme Decree #1210.
-        if self.observed and 2012 <= year <= 2015:
-            if self._is_tuesday(may_1):
-                self._add_holiday(self.tr(self.observed_label) % name, may_1 + td(days=-1))
-            elif self._is_thursday(may_1):
-                self._add_holiday(self.tr(self.observed_label) % name, may_1 + td(days=+1))
+        if 2012 <= year <= 2015:
+            self._add_observed(may_1, rule=TUE_TO_MON_AND_THU_TO_FRI)
 
         # Corpus Christi.
         self._add_corpus_christi_day(tr("Corpus Christi"))
