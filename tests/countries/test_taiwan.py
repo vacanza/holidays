@@ -231,7 +231,7 @@ class TestTaiwan(TestCase):
         self.assertHolidayName(f"{name} (Observed)", obs_dt)
         self.assertNoNonObservedHoliday(obs_dt)
 
-    def test2022(self):
+    def test_2022(self):
         self.assertHolidays(
             Taiwan(years=2022),
             ("2022-01-01", "Republic of China Founding Day / New Year's Day"),
