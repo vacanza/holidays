@@ -1,0 +1,106 @@
+# Angola holidays en_US localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.30\n"
+"POT-Creation-Date: 2023-07-19 18:14+0300\n"
+"PO-Revision-Date: 2023-07-19 18:20+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. General Election Day.
+msgid "Dia de eleições gerais"
+msgstr "General Election Day"
+
+#. Day off for %s.
+#, c-format
+msgid "%s (Ponte)"
+msgstr "Day off for %s"
+
+#. New Year's Day.
+msgid "Dia do Ano Novo"
+msgstr "New Year's Day"
+
+#. Martyrs of Colonial Repression Day.
+msgid "Dia dos Mártires da Repressão Colonial"
+msgstr "Martyrs of Colonial Repression Day"
+
+#. Beginning of the Armed Struggle for National Liberation Day.
+msgid "Dia do Início da Luta Armada de Libertação Nacional"
+msgstr "Liberation Movement Day"
+
+#. Beginning of the Armed Struggle Day.
+msgid "Dia do Início da Luta Armada"
+msgstr "Liberation Movement Day"
+
+#. Carnival Day.
+msgid "Dia do Carnaval"
+msgstr "Carnival Day"
+
+#. International Women's Day.
+msgid "Dia Internacional da Mulher"
+msgstr "International Women's Day"
+
+#. Southern Africa Liberation Day.
+msgid "Dia da Libertação da África Austral"
+msgstr "Southern Africa Liberation Day"
+
+#. Peace and National Reconciliation Day.
+msgid "Dia da Paz e Reconciliação Nacional"
+msgstr "Peace and National Reconciliation Day"
+
+#. Good Friday.
+msgid "Sexta-Feira Santa"
+msgstr "Good Friday"
+
+#. International Worker's Day.
+msgid "Dia Internacional do Trabalhador"
+msgstr "International Worker's Day"
+
+#. Africa Day.
+msgid "Dia da África"
+msgstr "Africa Day"
+
+#. International Children's Day.
+msgid "Dia Internacional da Criança"
+msgstr "International Children's Day"
+
+#. National Heroes' Day.
+msgid "Dia do Fundador da Nação e do Herói Nacional"
+msgstr "National Heroes' Day"
+
+#. All Souls' Day.
+msgid "Dia dos Finados"
+msgstr "All Souls' Day"
+
+#. National Independence Day.
+msgid "Dia da Independência Nacional"
+msgstr "National Independence Day"
+
+#. Independence Day.
+msgid "Dia da Independência"
+msgstr "Independence Day"
+
+#. Date of Founding of MPLA - Labor Party.
+msgid "Data da Fundacao do MPLA - Partido do Trabalho"
+msgstr "Date of Founding of MPLA - Labor Party"
+
+#. Christmas and Family Day.
+msgid "Dia de Natal e da Família"
+msgstr "Christmas and Family Day"
+
+#. Christmas Day.
+msgid "Dia do Natal"
+msgstr "Christmas Day"
+
+#. Family Day.
+msgid "Dia da Família"
+msgstr "Family Day"

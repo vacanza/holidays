@@ -152,7 +152,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Angola
      - AO
      -
-     -
+     - en_US, **pt_AO**, uk
    * - Argentina
      - AR
      -
