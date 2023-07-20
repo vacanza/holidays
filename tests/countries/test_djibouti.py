@@ -9,42 +9,87 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import importlib.util
-import unittest
-from datetime import date
-
-import holidays
+from holidays.countries.djibouti import Djibouti, DJ, DJI
+from tests.common import TestCase
 
 
-class TestDjibouti(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.DJ()
+class TestDjibouti(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass(Djibouti)
+
+    def test_country_aliases(self):
+        self.assertCountryAliases(Djibouti, DJ, DJI)
+
+    def test_no_holidays(self):
+        self.assertNoHolidays(Djibouti(years=1977))
 
     def test_2019(self):
-        self.assertIn(date(2019, 5, 1), self.holidays)
-        self.assertIn(date(2019, 6, 27), self.holidays)
-        self.assertIn(date(2019, 6, 28), self.holidays)
+        self.assertHolidays(
+            ("2019-01-01", "Nouvel an"),
+            ("2019-04-03", "Al Isra et Al Mirague* (*estimé)"),
+            ("2019-05-01", "Fête du travail"),
+            ("2019-06-04", "Eid al-Fitr* (*estimé)"),
+            ("2019-06-05", "Eid al-Fitr deuxième jour* (*estimé)"),
+            ("2019-06-27", "Fête de l'indépendance"),
+            ("2019-06-28", "Fête de l'indépendance deuxième jour"),
+            ("2019-08-10", "Arafat* (*estimé)"),
+            ("2019-08-11", "Eid al-Adha* (*estimé)"),
+            ("2019-08-12", "Eid al-Adha deuxième jour* (*estimé)"),
+            ("2019-08-31", "Nouvel an musulman* (*estimé)"),
+            ("2019-11-09", "Anniversaire du prophète Muhammad* (*estimé)"),
+            ("2019-12-25", "Noël"),
+        )
 
-    def test_labour_day(self):
-        self.assertIn(date(2019, 5, 1), self.holidays)
+    def test_l10n_default(self):
+        self.assertLocalizedHolidays(
+            ("2022-01-01", "Nouvel an"),
+            ("2022-02-28", "Al Isra et Al Mirague* (*estimé)"),
+            ("2022-05-01", "Fête du travail"),
+            ("2022-05-02", "Eid al-Fitr* (*estimé)"),
+            ("2022-05-03", "Eid al-Fitr deuxième jour* (*estimé)"),
+            ("2022-06-27", "Fête de l'indépendance"),
+            ("2022-06-28", "Fête de l'indépendance deuxième jour"),
+            ("2022-07-08", "Arafat* (*estimé)"),
+            ("2022-07-09", "Eid al-Adha* (*estimé)"),
+            ("2022-07-10", "Eid al-Adha deuxième jour* (*estimé)"),
+            ("2022-07-30", "Nouvel an musulman* (*estimé)"),
+            ("2022-10-08", "Anniversaire du prophète Muhammad* (*estimé)"),
+            ("2022-12-25", "Noël"),
+        )
 
-    def test_hijri_based(self):
-        if importlib.util.find_spec("hijri_converter"):
-            self.assertIn(date(2019, 6, 5), self.holidays)
-            self.assertIn(date(2019, 8, 10), self.holidays)
-            self.assertIn(date(2019, 8, 11), self.holidays)
-            self.assertIn(date(2019, 8, 12), self.holidays)
-            self.assertIn(date(2019, 8, 31), self.holidays)
-            self.assertIn(date(2019, 11, 9), self.holidays)
-            # eid_alfitr
-            self.assertIn(date(2019, 6, 5), self.holidays)
-            # eid_aladha
-            self.assertIn(date(2019, 8, 11), self.holidays)
-            # islamic_new_year
-            self.assertIn(date(2008, 1, 10), self.holidays)
-            self.assertIn(date(2008, 12, 29), self.holidays)
-            self.assertIn(date(2019, 8, 31), self.holidays)
-            # arafat_2019
-            self.assertIn(date(2019, 8, 10), self.holidays)
-            # muhammad's birthday 2019
-            self.assertIn(date(2019, 11, 9), self.holidays)
+    def test_l10n_ar(self):
+        self.assertLocalizedHolidays(
+            "ar",
+            ("2022-01-01", "يوم السنة الجديدة"),
+            ("2022-02-28", "(تقدير*) *الإسراء والمعراج"),
+            ("2022-05-01", "عيد العمال"),
+            ("2022-05-02", "(تقدير*) *عيد الفطر"),
+            ("2022-05-03", "(تقدير*) *أجازة عيد الفطر"),
+            ("2022-06-27", "عيد الإستقلال"),
+            ("2022-06-28", "عطلة عيد الاستقلال"),
+            ("2022-07-08", "(تقدير*) *يوم عرفة"),
+            ("2022-07-09", "(تقدير*) *عيد الأضحى"),
+            ("2022-07-10", "(تقدير*) *أجازة عيد الأضحى"),
+            ("2022-07-30", "(تقدير*) *رأس السنة الهجرية"),
+            ("2022-10-08", "(تقدير*) *عيد المولد النبوي"),
+            ("2022-12-25", "عيد الميلاد المجيد"),
+        )
+
+    def test_l10n_en_us(self):
+        self.assertLocalizedHolidays(
+            "en_US",
+            ("2022-01-01", "New Year's Day"),
+            ("2022-02-28", "Isra and Miraj* (*estimated)"),
+            ("2022-05-01", "Labor Day"),
+            ("2022-05-02", "Eid al-Fitr* (*estimated)"),
+            ("2022-05-03", "Eid al-Fitr Holiday* (*estimated)"),
+            ("2022-06-27", "Independence Day"),
+            ("2022-06-28", "Independence Day Holiday"),
+            ("2022-07-08", "Arafat* (*estimated)"),
+            ("2022-07-09", "Eid al-Adha* (*estimated)"),
+            ("2022-07-10", "Eid al-Adha Holiday* (*estimated)"),
+            ("2022-07-30", "Islamic New Year* (*estimated)"),
+            ("2022-10-08", "Prophet Muhammad's Birthday* (*estimated)"),
+            ("2022-12-25", "Christmas Day"),
+        )
