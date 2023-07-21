@@ -11,6 +11,7 @@
 
 from datetime import date
 from datetime import timedelta as td
+from gettext import gettext as tr
 
 from holidays.calendars.gregorian import FEB, APR, MAY, JUN, SEP, OCT
 from holidays.holiday_base import HolidayBase
@@ -19,6 +20,8 @@ from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 class Mozambique(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "MZ"
+    default_language = "pt_MZ"
+    supported_languages = ("en_US", "pt_MZ", "uk")
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)
@@ -29,7 +32,8 @@ class Mozambique(HolidayBase, ChristianHolidays, InternationalHolidays):
         # whenever a public holiday falls on a Sunday,
         # it rolls over to the following Monday
         if self.observed and self._is_sunday(dt):
-            self._add_holiday("%s (PONTE)" % self[dt], dt + td(days=+1))
+            # %s (Observed).
+            self._add_holiday(self.tr("%s (Ponte)") % self[dt], dt + td(days=+1))
 
     def _populate(self, year):
         if year <= 1974:
@@ -37,28 +41,35 @@ class Mozambique(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         super()._populate(year)
 
-        self._add_observed(self._add_new_years_day("Ano novo"))
+        # International Fraternalism Day.
+        self._add_observed(self._add_new_years_day(tr("Dia da Fraternidade universal")))
 
-        self._add_good_friday("Sexta-feira Santa")
+        # Heroes' Day.
+        self._add_observed(self._add_holiday(tr("Dia dos Heróis Moçambicanos"), FEB, 3))
 
-        self._add_carnival_tuesday("Carnaval")
+        # Women's Day.
+        self._add_observed(self._add_holiday(tr("Dia da Mulher Moçambicana"), APR, 7))
 
-        self._add_observed(self._add_holiday("Dia dos Heróis Moçambicanos", FEB, 3))
+        # International Workers' Day.
+        self._add_observed(self._add_holiday(tr("Dia Internacional dos Trabalhadores"), MAY, 1))
 
-        self._add_observed(self._add_holiday("Dia da Mulher Moçambicana", APR, 7))
+        # Independence Day.
+        self._add_observed(self._add_holiday(tr("Dia da Independência Nacional"), JUN, 25))
 
-        self._add_observed(self._add_holiday("Dia Mundial do Trabalho", MAY, 1))
+        # Victory Day.
+        self._add_observed(self._add_holiday(tr("Dia da Vitória"), SEP, 7))
 
-        self._add_observed(self._add_holiday("Dia da Independência Nacional", JUN, 25))
-
-        self._add_observed(self._add_holiday("Dia da Vitória", SEP, 7))
-
-        self._add_observed(self._add_holiday("Dia das Forças Armadas", SEP, 25))
+        self._add_observed(
+            # Armed Forces Day.
+            self._add_holiday(tr("Dia das Forças Armadas de Libertação Nacional"), SEP, 25)
+        )
 
         if year >= 1993:
-            self._add_observed(self._add_holiday("Dia da Paz e Reconciliação", OCT, 4))
+            # Peace and Reconciliation Day.
+            self._add_observed(self._add_holiday(tr("Dia da Paz e Reconciliação"), OCT, 4))
 
-        self._add_observed(self._add_christmas_day("Dia de Natal e da Família"))
+        # Family Day.
+        self._add_observed(self._add_christmas_day(tr("Dia da Família")))
 
 
 class MZ(Mozambique):
