@@ -44,5 +44,5 @@ Your PR description goes here.
   Thanks again for your contribution!
 -->
 
-[contributing-guidelines]: https://github.com/dr-prodigy/python-holidays/blob/beta/CONTRIBUTING.rst
-[docs]: https://github.com/dr-prodigy/python-holidays/tree/beta/docs/source
+[contributing-guidelines]: https://github.com/vacanza/python-holidays/blob/beta/CONTRIBUTING.rst
+[docs]: https://github.com/vacanza/python-holidays/tree/beta/docs/source
