@@ -813,6 +813,32 @@ class TestCountrySpecialHolidays(unittest.TestCase):
         self.assertEqual(26, len(self.us_holidays))
 
 
+class TestCountrySubstitutedHolidays(unittest.TestCase):
+    def setUp(self):
+        self.at_holidays = holidays.country_holidays("AT")
+        self.ua_holidays = holidays.country_holidays("UA", language="en_US")
+
+    def test_populate_special_holidays(self):
+        self.ua_holidays.substituted_holidays = {
+            1991: (
+                (JAN, 12, JAN, 7),
+                (1991, JAN, 13, JAN, 8),
+            ),
+        }
+        self.ua_holidays._populate(1991)
+        self.assertIn("1991-01-07", self.ua_holidays)
+        self.assertIn("1991-01-08", self.ua_holidays)
+        self.assertIn("01/12/1991", self.ua_holidays["1991-01-07"])
+        self.assertIn("01/13/1991", self.ua_holidays["1991-01-08"])
+
+        self.at_holidays.substituted_holidays = {
+            1991: (JAN, 12, JAN, 7),
+        }
+        self.assertRaises(ValueError, lambda: self.at_holidays._populate(1991))
+        self.at_holidays.substituted_label = "From %s"
+        self.assertRaises(ValueError, lambda: self.at_holidays._populate(1991))
+
+
 class TestHolidaysTranslation(unittest.TestCase):
     def test_language_unavailable(self):
         os.environ["LANGUAGE"] = "en_US"
