@@ -1,0 +1,106 @@
+# Bolivia holidays en_US localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.30\n"
+"POT-Creation-Date: 2023-07-22 18:47+0300\n"
+"PO-Revision-Date: 2023-07-22 18:51+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. %s (Observed).
+#, c-format
+msgid "%s (Observado)"
+msgstr "%s (Observed)"
+
+#. New Year's Day.
+msgid "Año Nuevo"
+msgstr "New Year's Day"
+
+#. Plurinational State Foundation Day.
+msgid "Día de la Creación del Estado Plurinacional de Bolivia"
+msgstr "Plurinational State Foundation Day"
+
+#. Carnival.
+msgid "Carnaval"
+msgstr "Carnival"
+
+#. Good Friday.
+msgid "Viernes Santo"
+msgstr "Good Friday"
+
+#. Labor Day.
+msgid "Día del Trabajo"
+msgstr "Labor Day"
+
+#. Corpus Christi.
+msgid "Corpus Christi"
+msgstr "Corpus Christi"
+
+#. Aymara New Year.
+msgid "Año Nuevo Aymara Amazónico"
+msgstr "Aymara New Year"
+
+#. Independence Day.
+msgid "Día de la Independencia de Bolivia"
+msgstr "Independence Day"
+
+#. National Dignity Day.
+msgid "Día de la Dignidad Nacional"
+msgstr "National Dignity Day"
+
+#. All Saints' Day.
+msgid "Día de Todos los Santos"
+msgstr "All Saints' Day"
+
+#. All Souls' Day.
+msgid "Día de Todos los Difuntos"
+msgstr "All Souls' Day"
+
+#. Christmas Day.
+msgid "Navidad"
+msgstr "Christmas Day"
+
+#. Beni Day.
+msgid "Día del departamento de Beni"
+msgstr "Beni Day"
+
+#. Cochabamba Day.
+msgid "Día del departamento de Cochabamba"
+msgstr "Cochabamba Day"
+
+#. Chuquisaca Day.
+msgid "Día del departamento de Chuquisaca"
+msgstr "Chuquisaca Day"
+
+#. La Paz Day.
+msgid "Día del departamento de La Paz"
+msgstr "La Paz Day"
+
+#. Pando Day.
+msgid "Día del departamento de Pando"
+msgstr "Pando Day"
+
+#. Potosí Day.
+msgid "Día del departamento de Potosí"
+msgstr "Potosí Day"
+
+#. Carnival in Oruro.
+msgid "Carnaval de Oruro"
+msgstr "Carnival in Oruro"
+
+#. Santa Cruz Day.
+msgid "Día del departamento de Santa Cruz"
+msgstr "Santa Cruz Day"
+
+#. La Tablada.
+msgid "La Tablada"
+msgstr "La Tablada"
