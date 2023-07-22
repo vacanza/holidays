@@ -818,7 +818,7 @@ class TestCountrySubstitutedHolidays(unittest.TestCase):
         self.at_holidays = holidays.country_holidays("AT")
         self.ua_holidays = holidays.country_holidays("UA", language="en_US")
 
-    def test_populate_special_holidays(self):
+    def test_populate_substituted_holidays(self):
         self.ua_holidays.substituted_holidays = {
             1991: (
                 (JAN, 12, JAN, 7),
