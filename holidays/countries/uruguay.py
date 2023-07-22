@@ -38,7 +38,7 @@ class Uruguay(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     # Presidential Inauguration Day.
     presidential_inauguration_day = tr("Inauguración del Presidente de la República")
-    special_holidays = {
+    special_public_holidays = {
         1985: (MAR, 1, presidential_inauguration_day),
         1990: (MAR, 1, presidential_inauguration_day),
         1995: (MAR, 1, presidential_inauguration_day),
@@ -66,25 +66,24 @@ class Uruguay(HolidayBase, ChristianHolidays, InternationalHolidays):
                 self._add_holiday(self[dt], obs_date)
                 self.pop(dt)
 
-    def _populate(self, year):
+    def _populate_public_holidays(self):
         # Law # 6997.
-        if year <= 1919:
+        if self._year <= 1919:
             return None
-        super()._populate(year)
 
         # New Year's Day.
         self._add_new_years_day(tr("Año Nuevo"))
 
-        if year <= 1933:
+        if self._year <= 1933:
             # Cry of Asencio.
             self._add_holiday(tr("Grito de Asencio"), FEB, 28)
 
         # International Workers' Day.
         dt = self._add_labor_day(tr("Día de los Trabajadores"))
-        if year <= 1983:
+        if self._year <= 1983:
             self._move_holiday(dt)
 
-        if year <= 1932:
+        if self._year <= 1932:
             # Spain Day.
             self._add_holiday(tr("Día de España"), MAY, 2)
 
@@ -103,14 +102,14 @@ class Uruguay(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Independence Day.
         self._add_holiday(tr("Declaratoria de la Independencia"), AUG, 25)
 
-        if year <= 1932:
+        if self._year <= 1932:
             # Italy Day.
             self._add_holiday(tr("Día de Italia"), SEP, 20)
 
             # Open Town Hall.
             self._add_holiday(tr("Cabildo Abierto"), SEP, 21)
 
-        if year <= 1932 or 1936 <= year <= 1979:
+        if self._year <= 1932 or 1936 <= self._year <= 1979:
             # Beaches Day.
             self._add_holiday(tr("Día de las Playas"), DEC, 8)
 
@@ -120,6 +119,9 @@ class Uruguay(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _populate_bank_holidays(self):
         # These holidays are generally observed by schools, public sector offices, banks,
         # and a few private companies.
+
+        if self._year <= 1919:
+            return None
 
         # Children's Day.
         self._add_holiday(tr("Día de los Niños"), JAN, 6)
