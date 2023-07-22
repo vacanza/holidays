@@ -10,7 +10,6 @@ class Barbados(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "BB"
     default_language = "en"
-    supported_languages = ("en_US", "uk")
 
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
