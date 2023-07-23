@@ -372,7 +372,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Indonesia
      - ID
      -
-     -
+     - en_US, **id**, uk
    * - Ireland
      - IE
      -

@@ -9,12 +9,15 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from gettext import gettext as tr
+
 from holidays.calendars import (
     _CustomBuddhistCalendar,
     _CustomChineseCalendar,
     _CustomIslamicCalendar,
 )
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.constants import GOVERNMENT, PUBLIC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import (
     BuddhistCalendarHolidays,
@@ -38,14 +41,49 @@ class Indonesia(
     - https://en.wikipedia.org/wiki/Public_holidays_in_Indonesia
     - https://www.timeanddate.com/holidays/indonesia
     - https://www.officeholidays.com/countries/indonesia
+    - https://en.wikipedia.org/wiki/Nyepi
     """
 
     country = "ID"
-    special_holidays = {
-        # Election Day.
-        2018: (JUN, 27, "Hari Pemilihan"),
-        2019: (APR, 17, "Hari Pemilihan"),
-        2020: (DEC, 9, "Hari Pemilihan"),
+    default_language = "id"
+    estimated_label = tr("%s* (*perkiraan)")
+    supported_languages = ("en_US", "id", "uk")
+    supported_categories = {GOVERNMENT, PUBLIC}
+
+    # Election Day.
+    election_day = tr("Hari Pemilihan")
+    # Eid al-Fitr Joint Holiday.
+    eid_al_fitr_joint_holiday = tr("Cuti Bersama Hari Raya Idulfitri")
+    # Christmas Joint Holiday.
+    christmas_joint_holiday = tr("Cuti Bersama Hari Raya Natal")
+    # Lunar New Year Joint Holiday.
+    lunar_new_year_joint_holiday = tr("Cuti Bersama Tahun Baru Imlek")
+    # Day of Silence Joint Holiday.
+    day_of_silence_joint_holiday = tr("Cuti Bersama Hari Suci Nyepi")
+
+    special_public_holidays = {
+        2018: (JUN, 27, election_day),
+        2019: (APR, 17, election_day),
+        2020: (DEC, 9, election_day),
+    }
+    special_government_holidays = {
+        2022: (
+            (APR, 29, eid_al_fitr_joint_holiday),
+            (MAY, 4, eid_al_fitr_joint_holiday),
+            (MAY, 5, eid_al_fitr_joint_holiday),
+            (MAY, 6, eid_al_fitr_joint_holiday),
+            (DEC, 26, christmas_joint_holiday),
+        ),
+        2023: (
+            (JAN, 23, lunar_new_year_joint_holiday),
+            (MAR, 23, day_of_silence_joint_holiday),
+            (APR, 19, eid_al_fitr_joint_holiday),
+            (APR, 20, eid_al_fitr_joint_holiday),
+            (APR, 21, eid_al_fitr_joint_holiday),
+            (APR, 24, eid_al_fitr_joint_holiday),
+            (APR, 25, eid_al_fitr_joint_holiday),
+            (DEC, 26, christmas_joint_holiday),
+        ),
     }
 
     def __init__(self, *args, **kwargs):
@@ -60,18 +98,18 @@ class Indonesia(
         IslamicHolidays.__init__(self, calendar=IndonesiaIslamicCalendar())
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
+    def _populate_public_holidays(self):
+        if self._year <= 1945:
+            return None
 
         # New Year's Day.
-        self._add_new_years_day("Tahun Baru Masehi")
+        self._add_new_years_day(tr("Tahun Baru Masehi"))
 
-        if year >= 2003:
-            # Chinese New Year.
-            self._add_chinese_new_years_day("Tahun Baru Imlek")
+        if self._year <= 1967 or self._year >= 2003:
+            # Lunar New Year.
+            self._add_chinese_new_years_day(tr("Tahun Baru Imlek"))
 
-        if year >= 1983:
-            # https://en.wikipedia.org/wiki/Nyepi
+        if self._year >= 1983:
             dates_obs = {
                 2009: (MAR, 26),
                 2010: (MAR, 16),
@@ -92,49 +130,78 @@ class Indonesia(
                 2025: (MAR, 29),
                 2026: (MAR, 19),
             }
-            if year in dates_obs:
+            if self._year in dates_obs:
                 # Day of Silence.
-                self._add_holiday("Hari Suci Nyepi", *dates_obs[year])
+                self._add_holiday(tr("Hari Suci Nyepi"), *dates_obs[self._year])
 
-        # Eid al-Fitr.
-        self._add_eid_al_fitr_day("Hari Raya Idul Fitri")
-        self._add_eid_al_fitr_day_two("Hari kedua dari Hari Raya Idul Fitri")
+        if 1953 <= self._year <= 1962 or self._year >= 1971:
+            # Good Friday.
+            self._add_good_friday(tr("Wafat Yesus Kristus"))
 
-        # Eid al-Adha.
-        self._add_eid_al_adha_day("Hari Raya Idul Adha")
+        if 1953 <= self._year <= 1962:
+            # Easter Monday.
+            self._add_easter_monday(tr("Hari kedua Paskah"))
 
-        # Islamic New Year.
-        self._add_islamic_new_year_day("Tahun Baru Islam")
-
-        # The Prophet's Birthday.
-        self._add_mawlid_day("Maulid Nabi Muhammad")
-
-        # The Prophet's Ascension.
-        self._add_isra_and_miraj_day("Isra' Mi'raj Nabi Muhammad")
-
-        # Good Friday.
-        self._add_good_friday("Wafat Yesus Kristus")
-
-        if year >= 1983:
+        if self._year >= 1983:
             # Buddha's Birthday.
-            self._add_vesak("Hari Raya Waisak")
+            self._add_vesak(tr("Hari Raya Waisak"))
 
-        if 1953 <= year <= 1968 or year >= 2014:
-            # Labor Day.
-            self._add_labor_day("Hari Buruh Internasional")
+        if 1953 <= self._year <= 1968 or self._year >= 2014:
+            # International Labor Day.
+            self._add_labor_day(tr("Hari Buruh Internasional"))
 
-        # Ascension Day.
-        self._add_ascension_thursday("Kenaikan Yesus Kristus")
+        if 1953 <= self._year <= 1962 or self._year >= 1968:
+            # Ascension Day.
+            self._add_ascension_thursday(tr("Kenaikan Yesus Kristus"))
 
-        if year >= 2017:
+        if 1953 <= self._year <= 1962:
+            # Whit Monday.
+            self._add_whit_monday(tr("Hari kedua Pentakosta"))
+
+        if self._year >= 2016:
             # Pancasila Day.
-            self._add_holiday("Hari Lahir Pancasila", JUN, 1)
+            self._add_holiday(tr("Hari Lahir Pancasila"), JUN, 1)
+
+        if 1968 <= self._year <= 1970:
+            # Assumption Of Mary.
+            self._add_assumption_of_mary_day(tr("Mikraj Santa Maria"))
 
         # Independence Day.
-        self._add_holiday("Hari Kemerdekaan Republik Indonesia", AUG, 17)
+        self._add_holiday(tr("Hari Kemerdekaan Republik Indonesia"), AUG, 17)
 
-        # Christmas Day.
-        self._add_christmas_day("Hari Raya Natal")
+        if self._year <= 1952:
+            # Armed Forces Day.
+            self._add_holiday(tr("Hari Angkatan Perang"), OCT, 5)
+
+            # Heroes' Day.
+            self._add_holiday(tr("Hari Pahlawan"), NOV, 10)
+
+        if self._year >= 1953:
+            # Christmas Day.
+            self._add_christmas_day(tr("Hari Raya Natal"))
+
+            # Eid al-Fitr.
+            self._add_eid_al_fitr_day(tr("Hari Raya Idulfitri"))
+
+            # Eid al-Fitr Second Day.
+            self._add_eid_al_fitr_day_two(tr("Hari kedua dari Hari Raya Idulfitri"))
+
+            # Eid al-Adha.
+            self._add_eid_al_adha_day(tr("Hari Raya Iduladha"))
+
+        if 1953 <= self._year <= 1962 or self._year >= 1968:
+            # Islamic New Year.
+            self._add_islamic_new_year_day(tr("Tahun Baru Islam"))
+
+            # The Prophet's Birthday.
+            self._add_mawlid_day(tr("Maulid Nabi Muhammad"))
+
+            # The Prophet's Ascension.
+            self._add_isra_and_miraj_day(tr("Isra Mikraj Nabi Muhammad"))
+
+        if 1953 <= self._year <= 1962:
+            # Nuzul Al Quran.
+            self._add_nuzul_al_quran_day(tr("Nuzululqur'an"))
 
 
 class ID(Indonesia):
@@ -269,6 +336,7 @@ class IndonesiaIslamicCalendar(_CustomIslamicCalendar):
         2020: (AUG, 20),
         2021: (AUG, 11),
         2022: (JUL, 30),
+        2023: (JUL, 19),
     }
 
     ISRA_AND_MIRAJ_DATES = {
@@ -294,6 +362,7 @@ class IndonesiaIslamicCalendar(_CustomIslamicCalendar):
         2020: (MAR, 22),
         2021: (MAR, 11),
         2022: (FEB, 28),
+        2023: (FEB, 18),
     }
 
     MAWLID_DATES = {
