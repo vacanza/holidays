@@ -40,6 +40,10 @@ from holidays.helpers import _normalize_tuple
 DateArg = Union[date, Tuple[int, int]]
 DateLike = Union[date, datetime, str, float, int]
 SpecialHoliday = Union[Tuple[int, int, str], Tuple[Tuple[int, int, str], ...]]
+SubstitutedHoliday = Union[
+    Union[Tuple[int, int, int, int], Tuple[int, int, int, int, int]],
+    Tuple[Union[Tuple[int, int, int, int], Tuple[int, int, int, int, int]], ...],
+]
 
 gettext = gettext
 
@@ -216,6 +220,8 @@ class HolidayBase(Dict[date, str]):
     special_holidays: Dict[int, SpecialHoliday] = {}
     """A list of the country-wide special (as opposite to regular) holidays for
     a specific year."""
+    substituted_holidays: Dict[int, SubstitutedHoliday] = {}
+    """A list of the country-wide substituted holidays for a specific year."""
     _deprecated_subdivisions: Tuple[str, ...] = ()
     """Other subdivisions whose names are deprecated or aliases of the official
     ones."""
@@ -649,6 +655,20 @@ class HolidayBase(Dict[date, str]):
             if add_subdiv_holidays and callable(add_subdiv_holidays):
                 add_subdiv_holidays()
 
+    def _add_substituted_holidays(self):
+        """Populate substituted holidays."""
+        if len(self.substituted_holidays) == 0:
+            return None
+        if not hasattr(self, "substituted_label"):
+            raise ValueError(f"Country `{self.country}` class should contain `substituted_label`")
+        substituted_label = self.tr(self.substituted_label)
+        substituted_date_format = self.tr(getattr(self, "substituted_date_format", "%d.%m.%Y"))
+        for hol in _normalize_tuple(self.substituted_holidays.get(self._year, ())):
+            from_year = hol[0] if len(hol) == 5 else self._year
+            from_month, from_day, to_month, to_day = hol[-4:]
+            from_date = date(from_year, from_month, from_day).strftime(substituted_date_format)
+            self._add_holiday(substituted_label % from_date, to_month, to_day)
+
     def _get_nth_weekday_from(self, n: int, weekday: int, *args) -> date:
         """
         Return date of a n-th weekday after (n is positive)
@@ -763,6 +783,9 @@ class HolidayBase(Dict[date, str]):
 
         # Populate subdivision holidays.
         self._add_subdiv_holidays()
+
+        # Populate substituted holidays.
+        self._add_substituted_holidays()
 
     def _populate_categories(self):
         for category in self.categories:

@@ -316,7 +316,9 @@ class TestCase(unittest.TestCase):
 
     def _assertLocalizedHolidays(self, localized_holidays, language=None):
         """Helper: assert localized holidays match expected names."""
-        instance = self.test_class(language=language)
+        instance = self.test_class(
+            language=language, categories=tuple(self.test_class.supported_categories)
+        )
 
         # Populate holidays for an entire year.
         self.assertIn(localized_holidays[0][0], instance)
