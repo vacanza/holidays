@@ -11,7 +11,7 @@
 
 from datetime import timedelta as td
 
-from holidays.calendars.gregorian import JAN, MAR, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import MAR
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
@@ -45,11 +45,11 @@ class Albania(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
 
         # Summer Day.
         if year >= 2004:
-            observed_dates.add(self._add_holiday("Summer Day", MAR, 14))
+            observed_dates.add(self._add_holiday_mar_14("Summer Day"))
 
         # Nevruz.
         if year >= 1996:
-            observed_dates.add(self._add_holiday("Nevruz", MAR, 22))
+            observed_dates.add(self._add_holiday_mar_22("Nevruz"))
 
         # Easter.
         observed_dates.add(self._add_easter_sunday("Catholic Easter"))
@@ -60,19 +60,19 @@ class Albania(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
 
         # Mother Teresa Day.
         if 2004 <= year <= 2017:
-            observed_dates.add(self._add_holiday("Mother Teresa Beatification Day", OCT, 19))
+            observed_dates.add(self._add_holiday_oct_19("Mother Teresa Beatification Day"))
         elif year >= 2018:
-            observed_dates.add(self._add_holiday("Mother Teresa Canonization Day", SEP, 5))
+            observed_dates.add(self._add_holiday_sep_5("Mother Teresa Canonization Day"))
 
         # Independence Day.
-        observed_dates.add(self._add_holiday("Independence Day", NOV, 28))
+        observed_dates.add(self._add_holiday_nov_28("Independence Day"))
 
         # Liberation Day.
-        observed_dates.add(self._add_holiday("Liberation Day", NOV, 29))
+        observed_dates.add(self._add_holiday_nov_29("Liberation Day"))
 
         # National Youth Day.
         if year >= 2009:
-            observed_dates.add(self._add_holiday("National Youth Day", DEC, 8))
+            observed_dates.add(self._add_holiday_dec_8("National Youth Day"))
 
         # Christmas Day.
         observed_dates.add(self._add_christmas_day("Christmas Day"))
@@ -84,18 +84,18 @@ class Albania(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
         observed_dates.update(self._add_eid_al_adha_day("Eid al-Adha"))
 
         if self.observed:
-            for hol_date in sorted(observed_dates):
-                if not self._is_weekend(hol_date):
+            for dt in sorted(observed_dates):
+                if not self._is_weekend(dt):
                     continue
-                obs_date = hol_date + td(days=+1)
-                while self._is_weekend(obs_date) or obs_date in observed_dates:
-                    obs_date += td(days=+1)
-                for hol_name in self.get_list(hol_date):
-                    observed_dates.add(self._add_holiday("%s (Observed)" % hol_name, obs_date))
+                dt_observed = dt + td(days=+1)
+                while self._is_weekend(dt_observed) or dt_observed in observed_dates:
+                    dt_observed += td(days=+1)
+                for name in self.get_list(dt):
+                    observed_dates.add(self._add_holiday("%s (Observed)" % name, dt_observed))
 
             # observed holidays special cases
             if year == 2007:
-                self._add_holiday("Eid al-Adha (Observed)", JAN, 3)
+                self._add_holiday_jan_3("Eid al-Adha (Observed)")
 
 
 class AL(Albania):

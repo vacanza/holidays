@@ -11,7 +11,6 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import OCT, NOV
 from holidays.constants import BANK, PUBLIC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -61,9 +60,9 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if 1919 <= self._year <= 1934:
             # National Day.
-            self._add_holiday(tr("Nationalfeiertag"), NOV, 12)
+            self._add_holiday_nov_12(tr("Nationalfeiertag"))
         if self._year >= 1967:
-            self._add_holiday(tr("Nationalfeiertag"), OCT, 26)
+            self._add_holiday_oct_26(tr("Nationalfeiertag"))
 
         # All Saints' Day.
         self._add_all_saints_day(tr("Allerheiligen"))

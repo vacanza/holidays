@@ -12,6 +12,7 @@
 __all__ = ("DateLike", "HolidayBase", "HolidaySum")
 
 import copy
+import re
 import warnings
 from calendar import isleap
 from datetime import date, datetime, timedelta, timezone
@@ -21,7 +22,18 @@ from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Tuple, Uni
 
 from dateutil.parser import parse
 
-from holidays.calendars.gregorian import MON, TUE, WED, THU, FRI, SAT, SUN
+from holidays.calendars import gregorian
+from holidays.calendars.gregorian import (
+    MON,
+    TUE,
+    WED,
+    THU,
+    FRI,
+    SAT,
+    SUN,
+    _get_nth_weekday_from,
+    _get_nth_weekday_of_month,
+)
 from holidays.constants import HOLIDAY_NAME_DELIMITER, ALL_CATEGORIES, PUBLIC
 from holidays.helpers import _normalize_tuple
 
@@ -384,6 +396,86 @@ class HolidayBase(Dict[date, str]):
 
         return dict.__eq__(self, other)
 
+    def __getattr__(self, name):
+        try:
+            return self.__getattribute__(name)
+        except AttributeError as e:
+            # This part is responsible for _add_holiday_* syntactic sugar support.
+            add_holiday_prefix = "_add_holiday_"
+            # Raise early if prefix doesn't match to avoid regex checks.
+            if name[: len(add_holiday_prefix)] != add_holiday_prefix:
+                raise e
+
+            # Handle <month> <day> patterns (e.g., _add_holiday_jun_15()).
+            month_day = re.match(r"_add_holiday_(\w{3})_(\d{1,2})", name)
+            if month_day:
+                month, day = month_day.groups()
+                return lambda name: self._add_holiday(
+                    name,
+                    date(self._year, getattr(gregorian, month.upper()), int(day)),
+                )
+
+            # Handle <last/nth> <weekday> of <month> patterns (e.g.,
+            # _add_holiday_last_mon_of_aug() or _add_holiday_3rd_fri_of_aug()).
+            nth_weekday_of_month = re.match(
+                r"_add_holiday_(last|\d\w{2})_(\w{3})_of_(\w{3})", name
+            )
+            if nth_weekday_of_month:
+                number, weekday, month = nth_weekday_of_month.groups()
+                return lambda name: self._add_holiday(
+                    name,
+                    _get_nth_weekday_of_month(
+                        -1 if number == "last" else +int(re.sub(r"\D", "", number)),
+                        getattr(gregorian, weekday.upper()),
+                        getattr(gregorian, month.upper()),
+                        self._year,
+                    ),
+                )
+
+            # Handle <n> day(s) <past/prior> <last/<nth> <weekday> of <month> patterns (e.g.,
+            # _add_holiday_1_day_past_1st_fri_of_aug() or
+            # _add_holiday_5_days_prior_last_fri_of_aug()).
+            nth_weekday_of_month_with_delta = re.match(
+                r"_add_holiday_(\d{1,2})_days?_(past|prior)_(last|\d\w{2})_(\w{3})_of_(\w{3})",
+                name,
+            )
+            if nth_weekday_of_month_with_delta:
+                (
+                    days,
+                    delta_direction,
+                    number,
+                    weekday,
+                    month,
+                ) = nth_weekday_of_month_with_delta.groups()
+                return lambda name: self._add_holiday(
+                    name,
+                    _get_nth_weekday_of_month(
+                        -1 if number == "last" else +int(re.sub(r"\D", "", number)),
+                        getattr(gregorian, weekday.upper()),
+                        getattr(gregorian, month.upper()),
+                        self._year,
+                    )
+                    + timedelta(days=+int(days) if delta_direction == "past" else -int(days)),
+                )
+
+            # Handle <nth> <weekday> <before/from> <month> <day> patterns (e.g.,
+            # _add_holiday_1st_mon_before_jun_15() or _add_holiday_1st_mon_from_jun_15()).
+            nth_weekday_from = re.match(
+                r"_add_holiday_(\d{1,2})\w{2}_(\w+)_(before|from)_(\w{3})_(\d{1,2})", name
+            )
+            if nth_weekday_from:
+                number, weekday, date_direction, month, day = nth_weekday_from.groups()
+                return lambda name: self._add_holiday(
+                    name,
+                    _get_nth_weekday_from(
+                        -int(number) if date_direction == "before" else +int(number),
+                        getattr(gregorian, weekday.upper()),
+                        date(self._year, getattr(gregorian, month.upper()), int(day)),
+                    ),
+                )
+
+            raise e  # No match.
+
     def __getitem__(self, key: DateLike) -> Any:
         if isinstance(key, slice):
             if not key.start or not key.stop:
@@ -541,13 +633,14 @@ class HolidayBase(Dict[date, str]):
         """
         return isleap(year)
 
-    def _add_holiday(self, *args) -> Optional[date]:
-        """Add a holiday.
+    def _add_holiday(self, name: str, *args) -> Optional[date]:
+        """Add a holiday."""
+        if not args:
+            raise TypeError("Incorrect number of arguments.")
 
-        This method accepts either `name: str, dt: date` or
-        `name: str, month: int, day: int` arguments.
-        """
-        name, dt = self._parse_holiday(*args)
+        dt = args if len(args) > 1 else args[0]
+        dt = dt if isinstance(dt, date) else date(self._year, *dt)
+
         if dt.year != self._year:
             return None
 
@@ -575,14 +668,6 @@ class HolidayBase(Dict[date, str]):
             from_month, from_day, to_month, to_day = hol[-4:]
             from_date = date(from_year, from_month, from_day).strftime(substituted_date_format)
             self._add_holiday(substituted_label % from_date, to_month, to_day)
-
-    def _check_weekday(self, weekday: int, *args) -> bool:
-        """
-        Returns True if `weekday` equals to the date's week day.
-        Returns False otherwise.
-        """
-        dt = args[0] if len(args) == 1 else date(self._year, *args)
-        return dt.weekday() == weekday
 
     def _get_nth_weekday_from(self, n: int, weekday: int, *args) -> date:
         """
@@ -615,20 +700,17 @@ class HolidayBase(Dict[date, str]):
             start_date = date(year, month, 1)
         return self._get_nth_weekday_from(n, weekday, start_date)
 
-    def _is_friday(self, *args) -> bool:
-        return self._check_weekday(FRI, *args)
+    def _check_weekday(self, weekday: int, *args) -> bool:
+        """
+        Returns True if `weekday` equals to the date's week day.
+        Returns False otherwise.
+        """
+        dt = args if len(args) > 1 else args[0]
+        dt = dt if isinstance(dt, date) else date(self._year, *dt)
+        return dt.weekday() == weekday
 
     def _is_monday(self, *args) -> bool:
         return self._check_weekday(MON, *args)
-
-    def _is_saturday(self, *args) -> bool:
-        return self._check_weekday(SAT, *args)
-
-    def _is_sunday(self, *args) -> bool:
-        return self._check_weekday(SUN, *args)
-
-    def _is_thursday(self, *args) -> bool:
-        return self._check_weekday(THU, *args)
 
     def _is_tuesday(self, *args) -> bool:
         return self._check_weekday(TUE, *args)
@@ -636,13 +718,25 @@ class HolidayBase(Dict[date, str]):
     def _is_wednesday(self, *args) -> bool:
         return self._check_weekday(WED, *args)
 
+    def _is_thursday(self, *args) -> bool:
+        return self._check_weekday(THU, *args)
+
+    def _is_friday(self, *args) -> bool:
+        return self._check_weekday(FRI, *args)
+
+    def _is_saturday(self, *args) -> bool:
+        return self._check_weekday(SAT, *args)
+
+    def _is_sunday(self, *args) -> bool:
+        return self._check_weekday(SUN, *args)
+
     def _is_weekend(self, *args):
         """
         Returns True if date's week day is a weekend day.
         Returns False otherwise.
         """
-        dt = args[0] if len(args) == 1 else date(self._year, *args)
-
+        dt = args if len(args) > 1 else args[0]
+        dt = dt if isinstance(dt, date) else date(self._year, *dt)
         return dt.weekday() in self.weekend
 
     def _parse_holiday(self, *args) -> Tuple[str, date]:
@@ -662,7 +756,7 @@ class HolidayBase(Dict[date, str]):
         return name, dt
 
     def _populate(self, year: int) -> None:
-        """This is a private method that populates (generates and adds) holidays
+        """This is a private class that populates (generates and adds) holidays
         for a given year. To keep things fast, it assumes that no holidays for
         the year have already been populated. It is required to be called
         internally by any country populate() method, while should not be called
@@ -682,7 +776,7 @@ class HolidayBase(Dict[date, str]):
 
         # Populate items from the special holidays list.
         for month, day, name in _normalize_tuple(self.special_holidays.get(year, ())):
-            self._add_holiday(name, month, day)
+            self._add_holiday(name, date(self._year, month, day))
 
         # Populate categories holidays.
         self._populate_categories()
@@ -701,7 +795,7 @@ class HolidayBase(Dict[date, str]):
                 for month, day, name in _normalize_tuple(
                     special_category_holidays.get(self._year, ())
                 ):
-                    self._add_holiday(name, month, day)
+                    self._add_holiday(name, date(self._year, month, day))
 
             populate_category_holidays = getattr(self, f"_populate_{category}_holidays", None)
             if populate_category_holidays and callable(populate_category_holidays):

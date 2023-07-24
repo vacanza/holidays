@@ -11,7 +11,6 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, APR, MAY, JUL, SEP
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -48,31 +47,31 @@ class Armenia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_new_years_day_two(name)
 
         # Christmas. Epiphany Day.
-        self._add_holiday(tr("Սուրբ Ծնունդ եւ Հայտնություն"), JAN, 6)
+        self._add_holiday_jan_6(tr("Սուրբ Ծնունդ եւ Հայտնություն"))
 
         if 2010 <= year <= 2021:
             self._add_new_years_day_three(name)
             self._add_new_years_day_four(name)
 
             # Christmas Eve.
-            self._add_holiday(tr("Սուրբ Ծննդյան տոներ"), JAN, 5)
+            self._add_holiday_jan_5(tr("Սուրբ Ծննդյան տոներ"))
 
             # The Day of Remembrance of the Dead.
-            self._add_holiday(tr("Մեռելոց հիշատակի օր"), JAN, 7)
+            self._add_holiday_jan_7(tr("Մեռելոց հիշատակի օր"))
 
         if year >= 2003:
             # Army Day.
-            self._add_holiday(tr("Բանակի օր"), JAN, 28)
+            self._add_holiday_jan_28(tr("Բանակի օր"))
 
         # Women's Day.
         self._add_womens_day(tr("Կանանց տոն"))
 
         if 1994 <= year <= 2001:
             # Motherhood and Beauty Day.
-            self._add_holiday(tr("Մայրության և գեղեցկության տոն"), APR, 7)
+            self._add_holiday_apr_7(tr("Մայրության և գեղեցկության տոն"))
 
         # Armenian Genocide Remembrance Day,
-        self._add_holiday(tr("Եղեռնի զոհերի հիշատակի օր"), APR, 24)
+        self._add_holiday_apr_24(tr("Եղեռնի զոհերի հիշատակի օր"))
 
         if year >= 2001:
             self._add_labor_day(
@@ -85,18 +84,18 @@ class Armenia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 1995:
             # Victory and Peace Day.
-            self._add_holiday(tr("Հաղթանակի և Խաղաղության տոն"), MAY, 9)
+            self._add_world_war_two_victory_day(tr("Հաղթանակի և Խաղաղության տոն"))
 
         # Republic Day.
-        self._add_holiday(tr("Հանրապետության օր"), MAY, 28)
+        self._add_holiday_may_28(tr("Հանրապետության օր"))
 
         if year >= 1996:
             # Constitution Day.
-            self._add_holiday(tr("Սահմանադրության օր"), JUL, 5)
+            self._add_holiday_jul_5(tr("Սահմանադրության օր"))
 
         if year >= 1992:
             # Independence Day.
-            self._add_holiday(tr("Անկախության օր"), SEP, 21)
+            self._add_holiday_sep_21(tr("Անկախության օր"))
 
         # New Year's Eve.
         self._add_new_years_eve(tr("Նոր տարվա գիշեր"))
