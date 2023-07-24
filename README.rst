@@ -21,11 +21,11 @@ flexible as possible.
         :alt: Downloads
 
 :CD/CI:
-    .. image:: https://github.com/dr-prodigy/python-holidays/workflows/Tests/badge.svg
+    .. image:: https://github.com/vacanza/python-holidays/workflows/Tests/badge.svg
         :target: actions
 
-    .. image:: http://img.shields.io/coveralls/dr-prodigy/python-holidays/master
-        :target: https://coveralls.io/r/dr-prodigy/python-holidays
+    .. image:: http://img.shields.io/coveralls/vacanza/python-holidays/master
+        :target: https://coveralls.io/r/vacanza/python-holidays
 
 :Docs:
     .. image:: https://readthedocs.org/projects/python-holidays/badge/?version=latest
@@ -695,7 +695,7 @@ The latest development (beta) version can be installed directly from GitHub:
 
 .. code-block:: bash
 
-    $ pip install --upgrade https://github.com/dr-prodigy/python-holidays/tarball/beta
+    $ pip install --upgrade https://github.com/vacanza/python-holidays/tarball/beta
 
 All new features are always first pushed to beta branch, then released on
 master branch upon official version upgrades.
@@ -704,8 +704,8 @@ master branch upon official version upgrades.
 Contributions
 -------------
 
-.. _Issues: https://github.com/dr-prodigy/python-holidays/issues
-.. _pull requests: https://github.com/dr-prodigy/python-holidays/pulls
+.. _Issues: https://github.com/vacanza/python-holidays/issues
+.. _pull requests: https://github.com/vacanza/python-holidays/pulls
 .. _here: CONTRIBUTING.rst
 
 Issues_ and `pull requests`_ are always welcome.  Please see
