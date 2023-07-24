@@ -24,8 +24,8 @@ flexible as possible.
     .. image:: https://github.com/vacanza/python-holidays/workflows/Tests/badge.svg
         :target: actions
 
-    .. image:: http://img.shields.io/coveralls/dr-prodigy/python-holidays/master
-        :target: https://coveralls.io/r/dr-prodigy/python-holidays
+    .. image:: http://img.shields.io/coveralls/vacanza/python-holidays/master
+        :target: https://coveralls.io/r/vacanza/python-holidays
 
 :Docs:
     .. image:: https://readthedocs.org/projects/python-holidays/badge/?version=latest
