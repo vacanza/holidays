@@ -5,7 +5,7 @@ Contributing
 .. _prs: https://github.com/vacanza/python-holidays/pulls
 .. _`beta branch`: https://github.com/vacanza/python-holidays/tree/beta
 .. |contributors| image:: https://img.shields.io/github/contributors/vacanza/python-holidays
-    :target: https://www.github.com/vacanza/python-holidays
+    :target: https://github.com/vacanza/python-holidays/graphs/contributors
     :alt: contributors
 
 |contributors|
