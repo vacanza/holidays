@@ -19,5 +19,5 @@ from holidays.calendars.hebrew import _HebrewLunisolar
 from holidays.calendars.hindu import _HinduLunisolar, _CustomHinduCalendar
 from holidays.calendars.islamic import _CustomIslamicCalendar, _IslamicLunar
 from holidays.calendars.julian import JULIAN_CALENDAR
-from holidays.calendars.revised_julian import REVISED_JULIAN_CALENDAR
+from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
 from holidays.calendars.thai import _ThaiLunisolar, KHMER_CALENDAR, THAI_CALENDAR

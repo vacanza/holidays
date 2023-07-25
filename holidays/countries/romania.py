@@ -12,7 +12,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JAN, NOV, DEC
-from holidays.calendars.revised_julian import REVISED_JULIAN_CALENDAR
+from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -28,7 +28,7 @@ class Romania(HolidayBase, ChristianHolidays, InternationalHolidays):
     supported_languages = ("en_US", "ro", "uk")
 
     def __init__(self, *args, **kwargs):
-        ChristianHolidays.__init__(self, REVISED_JULIAN_CALENDAR)
+        ChristianHolidays.__init__(self, JULIAN_REVISED_CALENDAR)
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 

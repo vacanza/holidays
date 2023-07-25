@@ -28,7 +28,7 @@ from holidays.calendars.gregorian import (
     DEC,
 )
 from holidays.calendars.julian import JULIAN_CALENDAR
-from holidays.calendars.revised_julian import REVISED_JULIAN_CALENDAR
+from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
 
 
 class ChristianHolidays:
@@ -86,10 +86,10 @@ class ChristianHolidays:
         """
         Verify calendar type.
         """
-        if calendar not in {GREGORIAN_CALENDAR, JULIAN_CALENDAR, REVISED_JULIAN_CALENDAR}:
+        if calendar not in {GREGORIAN_CALENDAR, JULIAN_CALENDAR, JULIAN_REVISED_CALENDAR}:
             raise ValueError(
                 f"Unknown calendar name: {calendar}. "
-                "Use `GREGORIAN_CALENDAR`, `JULIAN_CALENDAR` or `REVISED_JULIAN_CALENDAR`."
+                f"Use `{GREGORIAN_CALENDAR}`, `{JULIAN_CALENDAR}` or `{JULIAN_REVISED_CALENDAR}`."
             )
 
     @property

@@ -9,4 +9,4 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-REVISED_JULIAN_CALENDAR = "REVISED_JULIAN_CALENDAR"
+JULIAN_REVISED_CALENDAR = "JULIAN_REVISED_CALENDAR"

@@ -13,7 +13,7 @@ from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import MAR, MAY, SEP, NOV
-from holidays.calendars.revised_julian import REVISED_JULIAN_CALENDAR
+from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
 from holidays.constants import PUBLIC, SCHOOL
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -48,7 +48,7 @@ class Bulgaria(HolidayBase, ChristianHolidays, InternationalHolidays):
     supported_languages = ("bg", "en_US", "uk")
 
     def __init__(self, *args, **kwargs):
-        ChristianHolidays.__init__(self, REVISED_JULIAN_CALENDAR)
+        ChristianHolidays.__init__(self, JULIAN_REVISED_CALENDAR)
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
