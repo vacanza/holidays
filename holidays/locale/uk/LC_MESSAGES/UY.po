@@ -95,7 +95,7 @@ msgstr "День битви при Лас-Пʼєдрас"
 
 #. Birthday of Artigas.
 msgid "Natalicio de Artigas"
-msgstr "Річниця Артіґаса"
+msgstr "Річниця Артігаса"
 
 #. Cultural Diversity Day.
 msgid "Día de la Diversidad Cultural"

@@ -56,7 +56,7 @@ class Uruguay(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _move_holiday(self, dt: date) -> None:
         # Decree Law #14977, # 15535, #16805.
-        if self.observed and 1980 <= self._year <= 1983 or self._year >= 1997:
+        if self.observed and (1980 <= self._year <= 1983 or self._year >= 1997):
             obs_date = None
             if self._is_tuesday(dt) or self._is_wednesday(dt):
                 obs_date = self._get_nth_weekday_from(-1, MON, dt)
