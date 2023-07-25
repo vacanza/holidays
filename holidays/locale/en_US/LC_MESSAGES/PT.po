@@ -46,10 +46,10 @@ msgid "Dia do Trabalhador"
 msgstr "Labour Day"
 
 msgid "Dia de Camões, de Portugal e da Raça"
-msgstr "Day of Camoes, Portugal, and the Portuguese Race"
+msgstr "Day of Camões, Portugal, and the Portuguese Race"
 
 msgid "Dia de Portugal, de Camões e das Comunidades Portuguesas"
-msgstr "Day of Portugal, Camoes, and the Portuguese Communities"
+msgstr "Day of Portugal, Camões, and the Portuguese Communities"
 
 msgid "Dia de Portugal"
 msgstr "Portugal Day"

@@ -308,10 +308,7 @@ class TestPortugal(TestCase):
             ("2018-04-25", "Dia da Liberdade"),
             ("2018-05-01", "Dia do Trabalhador"),
             ("2018-05-31", "Corpo de Deus"),
-            (
-                "2018-06-10",
-                "Dia de Portugal, de Camões e das Comunidades Portuguesas",
-            ),
+            ("2018-06-10", "Dia de Portugal, de Camões e das Comunidades Portuguesas"),
             ("2018-08-15", "Assunção de Nossa Senhora"),
             ("2018-10-05", "Implantação da República"),
             ("2018-11-01", "Dia de Todos os Santos"),
@@ -329,10 +326,7 @@ class TestPortugal(TestCase):
             ("2018-04-25", "Freedom Day"),
             ("2018-05-01", "Labour Day"),
             ("2018-05-31", "Corpus Christi"),
-            (
-                "2018-06-10",
-                "Day of Portugal, Camoes, and the Portuguese Communities",
-            ),
+            ("2018-06-10", "Day of Portugal, Camões, and the Portuguese Communities"),
             ("2018-08-15", "Assumption Day"),
             ("2018-10-05", "Republic Day"),
             ("2018-11-01", "All Saints Day"),
