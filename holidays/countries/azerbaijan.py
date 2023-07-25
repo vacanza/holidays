@@ -37,76 +37,76 @@ class Azerbaijan(HolidayBase, InternationalHolidays, IslamicHolidays):
             """
 
             next_workday = dt + td(days=+1)
-            while next_workday in hol_dates or self._is_weekend(next_workday):
+            while next_workday in dts_all or self._is_weekend(next_workday):
                 next_workday += td(days=+1)
             if name:
                 self._add_holiday(f"{name} (Observed)", next_workday)
             else:
                 for h_name in self.get_list(dt):
                     self._add_holiday(f"{h_name} (Observed)", next_workday)
-            hol_dates.add(next_workday)
+            dts_all.add(next_workday)
 
         if year <= 1989:
             return None
 
         super()._populate(year)
-        observed_dates = set()
-        non_observed_dates = set()
+        dts_observed = set()
+        dts_non_observed = set()
 
         # New Year
         name = "New Year's Day"
-        observed_dates.add(self._add_new_years_day(name))
+        dts_observed.add(self._add_new_years_day(name))
         if year >= 2006:
-            observed_dates.add(self._add_new_years_day_two(name))
+            dts_observed.add(self._add_new_years_day_two(name))
 
         # Black January (without extending)
         if year >= 2000:
-            non_observed_dates.add(self._add_holiday("Black January", JAN, 20))
+            dts_non_observed.add(self._add_holiday_jan_20("Black January"))
 
         # International Women's Day
-        observed_dates.add(self._add_womens_day("International Women's Day"))
+        dts_observed.add(self._add_womens_day("International Women's Day"))
 
         # Novruz
         if year >= 2007:
-            for d in range(20, 25):
-                observed_dates.add(self._add_holiday("Novruz", MAR, d))
+            for day in range(20, 25):
+                dts_observed.add(self._add_holiday("Novruz", MAR, day))
 
         # Victory Day
-        observed_dates.add(self._add_world_war_two_victory_day("Victory Day over Fascism"))
+        dts_observed.add(self._add_world_war_two_victory_day("Victory Day over Fascism"))
 
         # Republic Day
         if year >= 1992:
-            observed_dates.add(
-                self._add_holiday("Independence Day" if year >= 2021 else "Republic Day", MAY, 28)
+            dts_observed.add(
+                self._add_holiday_may_28("Independence Day" if year >= 2021 else "Republic Day")
             )
 
         # National Salvation Day
         if year >= 1997:
-            observed_dates.add(self._add_holiday("National Salvation Day", JUN, 15))
+            dts_observed.add(self._add_holiday_jun_15("National Salvation Day"))
 
         # Memorial Day (without extending)
         if year >= 2021:
-            non_observed_dates.add(self._add_holiday("Memorial Day", SEP, 27))
+            dts_non_observed.add(self._add_holiday_sep_27("Memorial Day"))
 
         # Azerbaijan Armed Forces Day
         if year >= 1992:
             name = "Azerbaijan Armed Forces Day"
             if year <= 1997:
-                self._add_holiday(name, OCT, 9)
+                self._add_holiday_oct_9(name)
             else:
-                observed_dates.add(self._add_holiday(name, JUN, 26))
+                dts_observed.add(self._add_holiday_jun_26(name))
 
         # Independence Day
         if year <= 2005:
-            self._add_holiday("Independence Day", OCT, 18)
+            self._add_holiday_oct_18("Independence Day")
 
         # Victory Day
         if year >= 2021:
-            observed_dates.add(self._add_holiday("Victory Day", NOV, 8))
+            dts_observed.add(self._add_holiday_nov_8("Victory Day"))
 
         # Flag Day
         if year >= 2010:
-            observed_dates.add(self._add_holiday("Flag Day", NOV, 9))
+            dts_observed.add(self._add_holiday_nov_9("Flag Day"))
 
         # International Solidarity Day of Azerbaijanis
         if year >= 1993:
@@ -115,19 +115,19 @@ class Azerbaijan(HolidayBase, InternationalHolidays, IslamicHolidays):
 
         if year >= 1993:
             name = "Ramazan Bayrami"
-            observed_dates.update(self._add_eid_al_fitr_day(name))
-            observed_dates.update(self._add_eid_al_fitr_day_two(name))
+            dts_observed.update(self._add_eid_al_fitr_day(name))
+            dts_observed.update(self._add_eid_al_fitr_day_two(name))
 
             name = "Gurban Bayrami"
-            observed_dates.update(self._add_eid_al_adha_day(name))
-            observed_dates.update(self._add_eid_al_adha_day_two(name))
+            dts_observed.update(self._add_eid_al_adha_day(name))
+            dts_observed.update(self._add_eid_al_adha_day_two(name))
 
         # Article 105 of the Labor Code of the Republic of Azerbaijan states:
         # 5. If interweekly rest days and holidays that are not considered
         # working days overlap, that rest day is immediately transferred to
         # the next working day.
         if self.observed and year >= 2006:
-            hol_dates = observed_dates.union(non_observed_dates)
+            dts_all = dts_observed.union(dts_non_observed)
 
             dt = date(year - 1, DEC, 31)
             if self._is_weekend(dt):
@@ -136,23 +136,23 @@ class Azerbaijan(HolidayBase, InternationalHolidays, IslamicHolidays):
             # observed holidays special cases
             special_dates_obs = {2007: (JAN, 3), 2072: (JAN, 5)}
             if year in special_dates_obs:
-                hol_dates.add(
+                dts_all.add(
                     self._add_holiday(
-                        "Gurban Bayrami* (*estimated) (Observed)", *special_dates_obs[year]
+                        "Gurban Bayrami* (*estimated) (Observed)", special_dates_obs[year]
                     )
                 )
 
-            for hol_date in sorted(observed_dates):
-                if self._is_weekend(hol_date):
-                    _add_observed(hol_date)
+            for dt_observed in sorted(dts_observed):
+                if self._is_weekend(dt_observed):
+                    _add_observed(dt_observed)
 
                 # 6. If the holidays of Qurban and Ramadan coincide with
                 # another holiday that is not considered a working day,
                 # the next working day is considered a rest day.
-                elif len(self.get_list(hol_date)) > 1 and hol_date not in non_observed_dates:
-                    for hol_name in self.get_list(hol_date):
-                        if "Bayrami" in hol_name:
-                            _add_observed(hol_date, hol_name)
+                elif len(self.get_list(dt_observed)) > 1 and dt_observed not in dts_non_observed:
+                    for name in self.get_list(dt_observed):
+                        if "Bayrami" in name:
+                            _add_observed(dt_observed, name)
 
 
 class AZ(Azerbaijan):

@@ -1,5 +1,22 @@
+Version 0.30
+============
+
+Released ???????? ??, ????
+
+- Introduce substituted holidays [PoC] (#1365 by @KJhellico)
+- Update Morocco holidays: add fr localization (#1375 by @KJhellico)
+- Update Angola holidays, add l10n support (#1379 by @KJhellico)
+- Update Djibouti holidays, add l10n support (#1374 by @KJhellico)
+- Update Taiwan holidays (#1373 by @KJhellico)
+- Update TestCase::_assertLocalizedHolidays(): add supported_categories holidays (#1376 by @KJhellico)
+- Update some URLs after moving to an organization (#1387 by @arkid15r)
+- Add Python 3.12.0-beta.4 environment (#1385 by @arkid15r)
+- Extend `HolidayBase::_add_holiday` methods family [PoC] (#1368 by @arkid15r)
+
 Version 0.29
 ============
+
+Released July 17, 2023
 
 - Refactor movable holidays (#1357 by @KJhellico)
 - Add Guatemala holidays (#1364 by @aztrock)
