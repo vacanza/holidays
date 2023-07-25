@@ -12,7 +12,7 @@
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import GREGORIAN_CALENDAR, MAR, MAY, SEP, NOV
+from holidays.calendars.gregorian import GREGORIAN_CALENDAR
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.constants import PUBLIC, SCHOOL
 from holidays.holiday_base import HolidayBase
@@ -56,14 +56,14 @@ class Bulgaria(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year <= 1989:
             return None
 
-        observed_dates = set()
+        dts_observed = set()
 
         # New Year's Day.
-        observed_dates.add(self._add_new_years_day(tr("Нова година")))
+        dts_observed.add(self._add_new_years_day(tr("Нова година")))
 
-        observed_dates.add(
+        dts_observed.add(
             # Liberation Day.
-            self._add_holiday(tr("Ден на Освобождението на България от османско иго"), MAR, 3)
+            self._add_holiday_mar_3(tr("Ден на Освобождението на България от османско иго"))
         )
 
         # Good Friday.
@@ -77,57 +77,55 @@ class Bulgaria(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_sunday(name)
         self._add_easter_monday(name)
 
-        observed_dates.add(
+        dts_observed.add(
             # International Workers' Day.
             self._add_labor_day(tr("Ден на труда и на международната работническа солидарност"))
         )
 
-        observed_dates.add(
+        dts_observed.add(
             # Saint George's Day.
-            self._add_holiday(tr("Гергьовден, Ден на храбростта и Българската армия"), MAY, 6)
+            self._add_holiday_may_6(tr("Гергьовден, Ден на храбростта и Българската армия"))
         )
 
-        observed_dates.add(
-            self._add_holiday(
+        dts_observed.add(
+            self._add_holiday_may_24(
                 # Bulgarian Education and Culture and Slavonic Literature Day.
                 tr(
                     "Ден на светите братя Кирил и Методий, на българската азбука, "
                     "просвета и култура и на славянската книжовност"
-                ),
-                MAY,
-                24,
+                )
             )
         )
 
         # Unification Day.
-        observed_dates.add(self._add_holiday(tr("Ден на Съединението"), SEP, 6))
+        dts_observed.add(self._add_holiday_sep_6(tr("Ден на Съединението")))
 
         # Independence Day.
-        observed_dates.add(self._add_holiday(tr("Ден на Независимостта на България"), SEP, 22))
+        dts_observed.add(self._add_holiday_sep_22(tr("Ден на Независимостта на България")))
 
         # Christmas Eve.
-        observed_dates.add(self._add_christmas_eve(tr("Бъдни вечер"), GREGORIAN_CALENDAR))
+        dts_observed.add(self._add_christmas_eve(tr("Бъдни вечер"), GREGORIAN_CALENDAR))
 
         # Christmas Day.
         name = tr("Рождество Христово")
-        observed_dates.add(self._add_christmas_day(name, GREGORIAN_CALENDAR))
-        observed_dates.add(self._add_christmas_day_two(name, GREGORIAN_CALENDAR))
+        dts_observed.add(self._add_christmas_day(name, GREGORIAN_CALENDAR))
+        dts_observed.add(self._add_christmas_day_two(name, GREGORIAN_CALENDAR))
 
         if self.observed and self._year >= 2017:
             excluded_names = {self.tr("Велика събота"), self.tr("Великден")}
-            for dt in sorted(observed_dates):
+            for dt in sorted(dts_observed):
                 if not self._is_weekend(dt):
                     continue
-                obs_date = dt + td(days=+2 if self._is_saturday(dt) else +1)
-                while obs_date in self:
-                    obs_date += td(days=+1)
+                dt_observed = dt + td(days=+2 if self._is_saturday(dt) else +1)
+                while dt_observed in self:
+                    dt_observed += td(days=+1)
                 for name in self.get_list(dt):
                     if name not in excluded_names:
-                        self._add_holiday(self.tr("%s (почивен ден)") % name, obs_date)
+                        self._add_holiday(self.tr("%s (почивен ден)") % name, dt_observed)
 
     def _populate_school_holidays(self):
         # National Awakening Day.
-        self._add_holiday(tr("Ден на народните будители"), NOV, 1)
+        self._add_holiday_nov_1(tr("Ден на народните будители"))
 
 
 class BG(Bulgaria):

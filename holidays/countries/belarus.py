@@ -11,7 +11,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import GREGORIAN_CALENDAR, JUL, NOV
+from holidays.calendars.gregorian import GREGORIAN_CALENDAR
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -67,10 +67,10 @@ class Belarus(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_world_war_two_victory_day(tr("Дзень Перамогі"))
 
         # Independence Day.
-        self._add_holiday(tr("Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)"), JUL, 3)
+        self._add_holiday_jul_3(tr("Дзень Незалежнасці Рэспублікі Беларусь (Дзень Рэспублікі)"))
 
         # October Revolution Day.
-        self._add_holiday(tr("Дзень Кастрычніцкай рэвалюцыі"), NOV, 7)
+        self._add_holiday_nov_7(tr("Дзень Кастрычніцкай рэвалюцыі"))
 
         # Catholic Christmas Day.
         self._add_christmas_day(tr("Нараджэнне Хрыстова (каталіцкае Раство)"), GREGORIAN_CALENDAR)

@@ -12,7 +12,6 @@
 
 from datetime import timedelta as td
 
-from holidays.calendars.gregorian import JAN, APR, MAY, JUN, JUL, AUG, SEP, NOV
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -51,7 +50,7 @@ class Bolivia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Plurinational State Foundation Day.
         if year >= 2010:
-            self._add_holiday("Nacimiento del Estado Plurinacional de Bolivia", JAN, 22)
+            self._add_holiday_jan_22("Nacimiento del Estado Plurinacional de Bolivia")
 
         # Carnival.
         name = "Feriado por Carnaval"
@@ -69,11 +68,11 @@ class Bolivia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 2010:
             # Andean New Year.
-            observed_dates.add(self._add_holiday("Año Nuevo Andino", JUN, 21))
+            observed_dates.add(self._add_holiday_jun_21("Año Nuevo Andino"))
 
         if year >= 1825:
             # Independence Day.
-            observed_dates.add(self._add_holiday("Día de la Patria", AUG, 6))
+            observed_dates.add(self._add_holiday_aug_6("Día de la Patria"))
 
         # All Soul's Day.
         observed_dates.add(self._add_all_souls_day("Todos Santos"))
@@ -89,27 +88,27 @@ class Bolivia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_b_holidays(self):
         # Beni Day.
-        self._add_holiday("Día del departamento de Beni", NOV, 18)
+        self._add_holiday_nov_18("Día del departamento de Beni")
 
     def _add_subdiv_c_holidays(self):
         # Cochabamba Day.
-        self._add_holiday("Día del departamento de Cochabamba", SEP, 14)
+        self._add_holiday_sep_14("Día del departamento de Cochabamba")
 
     def _add_subdiv_h_holidays(self):
         # Chuquisaca Day.
-        self._add_holiday("Día del departamento de Chuquisaca", MAY, 25)
+        self._add_holiday_may_25("Día del departamento de Chuquisaca")
 
     def _add_subdiv_l_holidays(self):
         # La Paz Day.
-        self._add_holiday("Día del departamento de La Paz", JUL, 16)
+        self._add_holiday_jul_16("Día del departamento de La Paz")
 
     def _add_subdiv_n_holidays(self):
         # Pando Day.
-        self._add_holiday("Día del departamento de Pando", SEP, 24)
+        self._add_holiday_sep_24("Día del departamento de Pando")
 
     def _add_subdiv_p_holidays(self):
         # Potosí Day.
-        self._add_holiday("Día del departamento de Potosí", NOV, 10)
+        self._add_holiday_nov_10("Día del departamento de Potosí")
 
     def _add_subdiv_o_holidays(self):
         # Carnival in Oruro.
@@ -117,11 +116,11 @@ class Bolivia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_s_holidays(self):
         # Santa Cruz Day.
-        self._add_holiday("Día del departamento de Santa Cruz", SEP, 24)
+        self._add_holiday_sep_24("Día del departamento de Santa Cruz")
 
     def _add_subdiv_t_holidays(self):
         # La Tablada.
-        self._add_holiday("La Tablada", APR, 15)
+        self._add_holiday_apr_15("La Tablada")
 
 
 class BO(Bolivia):

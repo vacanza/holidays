@@ -11,7 +11,7 @@
 
 from datetime import date
 
-from holidays.calendars.gregorian import JAN, MAR, MAY, AUG, SEP, NOV, MON
+from holidays.calendars.gregorian import MON, _get_nth_weekday_from
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -39,17 +39,19 @@ class Belize(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Thursday, the preceding Monday is observed as public holiday
         if not self.observed:
             return None
-        obs_dt = None
+
+        dt_observed = None
         if sunday_only:
             if self._is_sunday(dt):
-                obs_dt = self._get_nth_weekday_from(1, MON, dt)
+                dt_observed = _get_nth_weekday_from(+1, MON, dt)
         else:
             if self._is_friday(dt) or self._is_sunday(dt):
-                obs_dt = self._get_nth_weekday_from(1, MON, dt)
+                dt_observed = _get_nth_weekday_from(+1, MON, dt)
             elif self._is_tuesday(dt) or self._is_wednesday(dt) or self._is_thursday(dt):
-                obs_dt = self._get_nth_weekday_from(-1, MON, dt)
-        if obs_dt:
-            self._add_holiday("%s (Observed)" % self[dt], obs_dt)
+                dt_observed = _get_nth_weekday_from(-1, MON, dt)
+
+        if dt_observed:
+            self._add_holiday("%s (Observed)" % self[dt], dt_observed)
             self.pop(dt)
 
     def _populate(self, year):
@@ -63,11 +65,11 @@ class Belize(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 2021:
             # George Price Day.
-            self._move_holiday(self._add_holiday("George Price Day", JAN, 15))
+            self._move_holiday(self._add_holiday_jan_15("George Price Day"))
 
         # National Heroes and Benefactors Day.
         self._move_holiday(
-            self._add_holiday("National Heroes and Benefactors Day", MAR, 9), sunday_only=False
+            self._add_holiday_mar_9("National Heroes and Benefactors Day"), sunday_only=False
         )
 
         # Good Friday.
@@ -84,24 +86,24 @@ class Belize(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year <= 2021:
             # Commonwealth Day.
-            self._move_holiday(self._add_holiday("Commonwealth Day", MAY, 24), sunday_only=False)
+            self._move_holiday(self._add_holiday_may_24("Commonwealth Day"), sunday_only=False)
 
         if year >= 2021:
             # Emancipation Day.
-            self._move_holiday(self._add_holiday("Emancipation Day", AUG, 1), sunday_only=False)
+            self._move_holiday(self._add_holiday_aug_1("Emancipation Day"), sunday_only=False)
 
         # Saint George's Caye Day.
-        self._move_holiday(self._add_holiday("Saint George's Caye Day", SEP, 10))
+        self._move_holiday(self._add_holiday_sep_10("Saint George's Caye Day"))
 
         # Independence Day.
-        self._move_holiday(self._add_holiday("Independence Day", SEP, 21))
+        self._move_holiday(self._add_holiday_sep_21("Independence Day"))
 
         # Indigenous Peoples' Resistance Day / Pan American Day.
         name = "Indigenous Peoples' Resistance Day" if year >= 2021 else "Pan American Day"
         self._move_holiday(self._add_columbus_day(name), sunday_only=False)
 
         # Garifuna Settlement Day.
-        self._move_holiday(self._add_holiday("Garifuna Settlement Day", NOV, 19))
+        self._move_holiday(self._add_holiday_nov_19("Garifuna Settlement Day"))
 
         # Christmas Day.
         self._add_christmas_day("Christmas Day")
