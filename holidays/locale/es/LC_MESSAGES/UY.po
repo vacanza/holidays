@@ -40,7 +40,7 @@ msgstr ""
 msgid "Día de los Niños"
 msgstr ""
 
-#. Birthday of Jose Gervasio Artigas.
+#. Birthday of José Gervasio Artigas.
 msgid "Natalicio de José Gervasio Artigas"
 msgstr ""
 

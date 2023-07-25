@@ -56,7 +56,7 @@ class Uruguay(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Children's Day.
         self._add_holiday(tr("Día de los Niños"), JAN, 6)
 
-        # Birthday of Jose Gervasio Artigas.
+        # Birthday of José Gervasio Artigas.
         self._add_holiday(tr("Natalicio de José Gervasio Artigas"), JUN, 19)
 
         # All Souls' Day.

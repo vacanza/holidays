@@ -177,7 +177,7 @@ class TestUY(TestCase):
             ("2021-04-19", "Landing of the 33 Patriots"),
             ("2021-05-01", "International Workers' Day"),
             ("2021-05-17", "Battle of Las Piedras"),
-            ("2021-06-19", "Birthday of Jose Gervasio Artigas"),
+            ("2021-06-19", "Birthday of José Gervasio Artigas"),
             ("2021-07-18", "Constitution Day"),
             ("2021-08-25", "Independence Day"),
             ("2021-10-11", "Respect for Cultural Diversity Day"),
