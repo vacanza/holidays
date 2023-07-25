@@ -248,7 +248,10 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
             (OCT, 14, thai_bridge_public_holiday),
             (DEC, 30, thai_bridge_public_holiday),
         ),
-        2023: (MAY, 5, thai_bridge_public_holiday),
+        2023: (
+            (MAY, 5, thai_bridge_public_holiday),
+            (JUL, 31, thai_bridge_public_holiday),
+        ),
     }
     supported_languages = ("en_US", "th")
 
