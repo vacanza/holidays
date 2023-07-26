@@ -11,7 +11,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import FRI, SAT, JUN
+from holidays.calendars.gregorian import FRI, SAT
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 
@@ -43,10 +43,10 @@ class Djibouti(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHol
         self._add_labor_day(tr("Fête du travail"))
 
         # Independence Day.
-        self._add_holiday(tr("Fête de l'indépendance"), JUN, 27)
+        self._add_holiday_jun_27(tr("Fête de l'indépendance"))
 
         # Independence Day Holiday.
-        self._add_holiday(tr("Fête de l'indépendance deuxième jour"), JUN, 28)
+        self._add_holiday_jun_28(tr("Fête de l'indépendance deuxième jour"))
 
         # Christmas Day.
         self._add_christmas_day(tr("Noël"))

@@ -12,7 +12,6 @@
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, SEP, OCT, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -88,15 +87,15 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if 1953 <= year <= 1959 or year >= 1982:
             # Victory Day.
-            self._add_holiday(tr("Fête de la Victoire"), MAY, 8)
+            self._add_holiday_may_8(tr("Fête de la Victoire"))
 
         if year >= 1880:
             # National Day.
-            self._add_holiday(tr("Fête nationale"), JUL, 14)
+            self._add_holiday_jul_14(tr("Fête nationale"))
 
         if year >= 1918:
             # Armistice Day.
-            self._add_holiday(tr("Armistice"), NOV, 11)
+            self._add_holiday_nov_11(tr("Armistice"))
 
         # Religious holidays.
 
@@ -144,7 +143,7 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
     # Saint Barthelemy.
     def _add_subdiv_bl_holidays(self):
         # Abolition of slavery.
-        self._add_holiday(tr("Abolition de l'esclavage"), OCT, 9)
+        self._add_holiday_oct_9(tr("Abolition de l'esclavage"))
 
     # Alsace, Champagne-Ardenne, Lorraine(Moselle).
     def _add_subdiv_ges_holidays(self):
@@ -163,21 +162,21 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday(tr("Mi-Carême"), self._easter_sunday + td(days=-24))
 
         # Abolition of slavery.
-        self._add_holiday(tr("Abolition de l'esclavage"), MAY, 27)
+        self._add_holiday_may_27(tr("Abolition de l'esclavage"))
 
         # Feast of Victor Schoelcher.
-        self._add_holiday(tr("Fête de Victor Schoelcher"), JUL, 21)
+        self._add_holiday_jul_21(tr("Fête de Victor Schoelcher"))
 
     # Guyane.
     def _add_subdiv_gy_holidays(self):
         # Abolition of slavery.
-        self._add_holiday(tr("Abolition de l'esclavage"), JUN, 10)
+        self._add_holiday_jun_10(tr("Abolition de l'esclavage"))
 
     # Saint Martin.
     def _add_subdiv_mf_holidays(self):
         if self._year >= 2018:
             # Abolition of slavery.
-            self._add_holiday(tr("Abolition de l'esclavage"), MAY, 28)
+            self._add_holiday_may_28(tr("Abolition de l'esclavage"))
 
     # Martinique.
     def _add_subdiv_mq_holidays(self):
@@ -185,15 +184,15 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_good_friday(tr("Vendredi saint"))
 
         # Abolition of slavery.
-        self._add_holiday(tr("Abolition de l'esclavage"), MAY, 22)
+        self._add_holiday_may_22(tr("Abolition de l'esclavage"))
 
         # Feast of Victor Schoelcher.
-        self._add_holiday(tr("Fête de Victor Schoelcher"), JUL, 21)
+        self._add_holiday_jul_21(tr("Fête de Victor Schoelcher"))
 
     # New Caledonia.
     def _add_subdiv_nc_holidays(self):
         # Citizenship Day.
-        self._add_holiday(tr("Fête de la Citoyenneté"), SEP, 24)
+        self._add_holiday_sep_24(tr("Fête de la Citoyenneté"))
 
     # French Polynesia.
     def _add_subdiv_pf_holidays(self):
@@ -201,29 +200,29 @@ class France(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_good_friday(tr("Vendredi saint"))
 
         # Missionary Day.
-        self._add_holiday(tr("Arrivée de l'Évangile"), MAR, 5)
+        self._add_holiday_mar_5(tr("Arrivée de l'Évangile"))
 
         # Internal Autonomy Day.
-        self._add_holiday(tr("Fête de l'autonomie"), JUN, 29)
+        self._add_holiday_jun_29(tr("Fête de l'autonomie"))
 
     # Reunion.
     def _add_subdiv_re_holidays(self):
         if self._year >= 1981:
             # Abolition of slavery.
-            self._add_holiday(tr("Abolition de l'esclavage"), DEC, 20)
+            self._add_holiday_dec_20(tr("Abolition de l'esclavage"))
 
     #  Wallis and Futuna.
     def _add_subdiv_wf_holidays(self):
         # Feast of Saint Peter Chanel.
-        self._add_holiday(tr("Saint Pierre Chanel"), APR, 28)
+        self._add_holiday_apr_28(tr("Saint Pierre Chanel"))
 
         # Festival of the territory.
-        self._add_holiday(tr("Fête du Territoire"), JUL, 29)
+        self._add_holiday_jul_29(tr("Fête du Territoire"))
 
     # Mayotte.
     def _add_subdiv_yt_holidays(self):
         # Abolition of slavery.
-        self._add_holiday(tr("Abolition de l'esclavage"), APR, 27)
+        self._add_holiday_apr_27(tr("Abolition de l'esclavage"))
 
 
 class FR(France):

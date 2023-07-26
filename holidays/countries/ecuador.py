@@ -13,7 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import MAY, AUG, OCT, NOV, DEC
+from holidays.calendars.gregorian import DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -38,7 +38,7 @@ class Ecuador(HolidayBase, ChristianHolidays, InternationalHolidays):
         self, dt: date, weekend_only: bool = False, before: bool = True, after: bool = True
     ) -> None:
         if self.observed and self._year >= 2017:
-            obs_date = None
+            dt_observed = None
             # Art. 1 of Law #0 from 20.12.2016
             # When holidays falls on Tuesday, the rest shall be transferred to
             # preceding Monday, and if they falls on Wednesday or Thursday,
@@ -47,20 +47,20 @@ class Ecuador(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Shrove Tuesday.
             if not weekend_only:
                 if self._is_tuesday(dt) and before:
-                    obs_date = dt + td(days=-1)
+                    dt_observed = dt + td(days=-1)
                 elif self._is_wednesday(dt):
-                    obs_date = dt + td(days=+2)
+                    dt_observed = dt + td(days=+2)
                 elif self._is_thursday(dt) and after:
-                    obs_date = dt + td(days=+1)
+                    dt_observed = dt + td(days=+1)
             # When holidays falls on Saturday or Sunday, the rest shall be
             # transferred, respectively, to the preceding Friday or the
             # following Monday.
             if self._is_saturday(dt) and before:
-                obs_date = dt + td(days=-1)
+                dt_observed = dt + td(days=-1)
             elif self._is_sunday(dt) and after:
-                obs_date = dt + td(days=+1)
-            if obs_date:
-                self._add_holiday(self.tr("%s (Observado)") % self[dt], obs_date)
+                dt_observed = dt + td(days=+1)
+            if dt_observed:
+                self._add_holiday(self.tr("%s (Observado)") % self[dt], dt_observed)
 
     def _populate(self, year):
         super()._populate(year)
@@ -85,19 +85,19 @@ class Ecuador(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_labor_day(tr("Día del Trabajo")))
 
         # The Battle of Pichincha.
-        self._add_observed(self._add_holiday(tr("Batalla de Pichincha"), MAY, 24))
+        self._add_observed(self._add_holiday_may_24(tr("Batalla de Pichincha")))
 
         # Declaration of Independence of Quito.
-        self._add_observed(self._add_holiday(tr("Primer Grito de Independencia"), AUG, 10))
+        self._add_observed(self._add_holiday_aug_10(tr("Primer Grito de Independencia")))
 
         # Independence of Guayaquil.
-        self._add_observed(self._add_holiday(tr("Independencia de Guayaquil"), OCT, 9))
+        self._add_observed(self._add_holiday_oct_9(tr("Independencia de Guayaquil")))
 
         # All Souls' Day.
         self._add_observed(self._add_all_souls_day(tr("Día de los Difuntos")), after=False)
 
         # Independence of Cuenca.
-        self._add_observed(self._add_holiday(tr("Independencia de Cuenca"), NOV, 3), before=False)
+        self._add_observed(self._add_holiday_nov_3(tr("Independencia de Cuenca")), before=False)
 
         # Christmas Day.
         self._add_observed(self._add_christmas_day(tr("Día de Navidad")), weekend_only=True)
