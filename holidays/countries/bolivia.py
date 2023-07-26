@@ -59,7 +59,7 @@ class Bolivia(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Supreme Decree #14260.
         # whenever a public holiday falls on a Sunday,
         # it rolls over to the following Monday.
-        if self.observed and self._is_sunday(dt) and self._year >= 1977:
+        if self.observed and self._year >= 1977 and self._is_sunday(dt):
             self._add_holiday(self.tr(self.observed_label) % self[dt], dt + td(days=+1))
 
     def _populate(self, year):
