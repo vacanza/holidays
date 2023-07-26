@@ -11,7 +11,6 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import MAY, JUN, AUG, OCT, NOV
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -58,14 +57,15 @@ class Croatia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_labor_day(tr("Međunarodni praznik rada"))
 
         if year >= 1996:
-            self._add_holiday(
-                # Statehood Day.
-                tr("Dan državnosti"),
-                *((JUN, 25) if 2002 <= year <= 2019 else (MAY, 30)),
-            )
+            # Statehood Day.
+            name = tr("Dan državnosti")
+            if 2002 <= year <= 2019:
+                self._add_holiday_jun_25(name)
+            else:
+                self._add_holiday_may_30(name)
 
         # Anti-Fascist Struggle Day.
-        self._add_holiday(tr("Dan antifašističke borbe"), JUN, 22)
+        self._add_holiday_jun_22(tr("Dan antifašističke borbe"))
 
         name = (
             # Victory and Homeland Thanksgiving Day and Croatian Veterans Day.
@@ -74,21 +74,21 @@ class Croatia(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Victory and Homeland Thanksgiving Day.
             else tr("Dan pobjede i domovinske zahvalnosti")
         )
-        self._add_holiday(name, AUG, 5)
+        self._add_holiday_aug_5(name)
 
         # Assumption of Mary.
         self._add_assumption_of_mary_day(tr("Velika Gospa"))
 
         if 2002 <= year <= 2019:
             # Independence Day.
-            self._add_holiday(tr("Dan neovisnosti"), OCT, 8)
+            self._add_holiday_oct_8(tr("Dan neovisnosti"))
 
         # All Saints' Day.
         self._add_all_saints_day(tr("Svi sveti"))
 
         if year >= 2020:
             # Memorial Day.
-            self._add_holiday(tr("Dan sjećanja"), NOV, 18)
+            self._add_holiday_nov_18(tr("Dan sjećanja"))
 
         # Christmas Day.
         self._add_christmas_day(tr("Božić"))

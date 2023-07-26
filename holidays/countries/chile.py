@@ -14,7 +14,7 @@ from datetime import timedelta as td
 from gettext import gettext as tr
 from typing import Tuple
 
-from holidays.calendars.gregorian import MAY, JUN, JUL, AUG, SEP, OCT, MON
+from holidays.calendars.gregorian import JUN, SEP, OCT, MON, _get_nth_weekday_from
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -80,10 +80,7 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
         if self._year <= 1999 or self._is_monday(dt) or self._is_weekend(dt):
             return None
         self._add_holiday(
-            self[dt],
-            self._get_nth_weekday_from(1, MON, dt)
-            if self._is_friday(dt)
-            else self._get_nth_weekday_from(-1, MON, dt),
+            self[dt], _get_nth_weekday_from(+1 if self._is_friday(dt) else -1, MON, dt)
         )
         self.pop(dt)
 
@@ -120,14 +117,15 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_labor_day(tr("Día Nacional del Trabajo"))
 
         # Naval Glories Day.
-        self._add_holiday(tr("Día de las Glorias Navales"), MAY, 21)
+        self._add_holiday_may_21(tr("Día de las Glorias Navales"))
 
         if year >= 2021:
-            self._add_holiday(
-                # National Day of Indigenous Peoples.
-                tr("Día Nacional de los Pueblos Indígenas"),
-                *((JUN, 21) if year == 2021 else self._summer_solstice_date),
-            )
+            # National Day of Indigenous Peoples.
+            name = tr("Día Nacional de los Pueblos Indígenas")
+            if year == 2021:
+                self._add_holiday_jun_21(name)
+            else:
+                self._add_holiday(name, self._summer_solstice_date)
 
         if year <= 1967 or year >= 1986:
             # Saint Peter and Saint Paul.
@@ -135,39 +133,38 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 2007:
             # Day of Virgin of Carmen.
-            self._add_holiday(tr("Virgen del Carmen"), JUL, 16)
+            self._add_holiday_jul_16(tr("Virgen del Carmen"))
 
         # Assumption of Mary.
         self._add_assumption_of_mary_day(tr("Asunción de la Virgen"))
 
         if 1981 <= year <= 1998:
             # Day of National Liberation.
-            self._add_holiday(tr("Día de la Liberación Nacional"), SEP, 11)
+            self._add_holiday_sep_11(tr("Día de la Liberación Nacional"))
         elif 1999 <= year <= 2001:
-            self._add_holiday(
+            self._add_holiday_1st_mon_of_sep(
                 # Day of National Unity.
-                tr("Día de la Unidad Nacional"),
-                self._get_nth_weekday_of_month(1, MON, SEP),
+                tr("Día de la Unidad Nacional")
             )
 
         if year >= 2017 and self._is_saturday(SEP, 18):
             # National Holiday.
-            self._add_holiday(tr("Fiestas Patrias"), SEP, 17)
+            self._add_holiday_sep_17(tr("Fiestas Patrias"))
 
         if year >= 2007 and self._is_tuesday(SEP, 18):
-            self._add_holiday(tr("Fiestas Patrias"), SEP, 17)
+            self._add_holiday_sep_17(tr("Fiestas Patrias"))
 
         # Independence Day.
-        self._add_holiday(tr("Día de la Independencia"), SEP, 18)
+        self._add_holiday_sep_18(tr("Día de la Independencia"))
 
         # Army Day.
-        self._add_holiday(tr("Día de las Glorias del Ejército"), SEP, 19)
+        self._add_holiday_sep_19(tr("Día de las Glorias del Ejército"))
 
         if year >= 2008 and self._is_thursday(SEP, 19):
-            self._add_holiday(tr("Fiestas Patrias"), SEP, 20)
+            self._add_holiday_sep_20(tr("Fiestas Patrias"))
 
         if 1932 <= year <= 1944:
-            self._add_holiday(tr("Fiestas Patrias"), SEP, 20)
+            self._add_holiday_sep_20(tr("Fiestas Patrias"))
 
         if year >= 1922 and year != 1973:
             name = (
@@ -206,13 +203,14 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _add_subdiv_ap_holidays(self):
         if self._year >= 2013:
             # Assault and Capture of Cape Arica.
-            self._add_holiday(tr("Asalto y Toma del Morro de Arica"), JUN, 7)
+            self._add_holiday_jun_7(tr("Asalto y Toma del Morro de Arica"))
 
     def _add_subdiv_nb_holidays(self):
         if self._year >= 2014:
             # Nativity of Bernardo O'Higgins (Chillán and Chillán Viejo communes)
-            name = tr("Nacimiento del Prócer de la Independencia (Chillán y Chillán Viejo)")
-            self._add_holiday(name, AUG, 20)
+            self._add_holiday_aug_20(
+                tr("Nacimiento del Prócer de la Independencia (Chillán y Chillán Viejo)")
+            )
 
     @property
     def _summer_solstice_date(self) -> Tuple[int, int]:

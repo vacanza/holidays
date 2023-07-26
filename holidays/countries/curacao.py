@@ -13,7 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import APR, MAY, JUL, OCT
+from holidays.calendars.gregorian import APR, MAY
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -89,12 +89,9 @@ class Curacao(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Queen's Day.
             else tr("Dia di la Reina")
         )
-        if year >= 2014:
-            dt = date(year, APR, 27)
-        else:
-            dt = date(year, APR, 30)
+        dt = date(year, APR, 27 if year >= 2014 else 30)
         if self._is_sunday(dt):
-            dt += td(days=-1) if year >= 1980 else td(days=+1)
+            dt += td(days=-1 if year >= 1980 else +1)
         self._add_holiday(name, dt)
 
         # Dia di Obrero.
@@ -119,7 +116,7 @@ class Curacao(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 1984:
             # National Anthem and Flag Day
-            self._add_holiday(tr("Dia di Himno i Bandera"), JUL, 2)
+            self._add_holiday_jul_2(tr("Dia di Himno i Bandera"))
 
         # Dia di Pais Kòrsou / Dia di autonomia.
         # Status: In-Use.
@@ -127,7 +124,7 @@ class Curacao(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 2010:
             # Curaçao Day
-            self._add_holiday(tr("Dia di Pais Kòrsou"), OCT, 10)
+            self._add_holiday_oct_10(tr("Dia di Pais Kòrsou"))
 
         # Pasku di Nasementu.
         # Status: In-Use.

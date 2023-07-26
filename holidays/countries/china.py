@@ -9,7 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import OCT
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChineseCalendarHolidays, InternationalHolidays
 
@@ -48,10 +47,10 @@ class China(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
             self._add_chinese_new_years_day_three(name)
 
         name = "National Day"
-        self._add_holiday(name, OCT, 1)
-        self._add_holiday(name, OCT, 2)
+        self._add_holiday_oct_1(name)
+        self._add_holiday_oct_2(name)
         if year >= 2000:
-            self._add_holiday(name, OCT, 3)
+            self._add_holiday_oct_3(name)
 
         if year >= 2008:
             self._add_qingming_festival("Tomb-Sweeping Day")

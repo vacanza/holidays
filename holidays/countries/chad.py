@@ -60,17 +60,17 @@ class Chad(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoliday
         self._add_observed(self._add_labor_day("Labour Day"))
 
         # Independence Day.
-        self._add_observed(self._add_holiday("Independence Day", AUG, 11))
+        self._add_observed(self._add_holiday_aug_11("Independence Day"))
 
         # All Saints' Day.
         self._add_all_saints_day("All Saints' Day")
 
         # Republic Day.
-        self._add_observed(self._add_holiday("Republic Day", NOV, 28))
+        self._add_observed(self._add_holiday_nov_28("Republic Day"))
 
         if year >= 1991:
             # Freedom and Democracy Day.
-            self._add_observed(self._add_holiday("Freedom and Democracy Day", DEC, 1))
+            self._add_observed(self._add_holiday_dec_1("Freedom and Democracy Day"))
 
         # Christmas Day.
         self._add_christmas_day("Christmas Day")
