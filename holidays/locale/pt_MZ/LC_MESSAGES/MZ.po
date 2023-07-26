@@ -1,0 +1,58 @@
+# Mozambique holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.30\n"
+"POT-Creation-Date: 2023-07-21 19:22+0300\n"
+"PO-Revision-Date: 2023-07-21 19:22+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: pt_MZ\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. %s (Observed).
+#, c-format
+msgid "%s (Ponte)"
+msgstr ""
+
+#. International Fraternalism Day.
+msgid "Dia da Fraternidade universal"
+msgstr ""
+
+#. Heroes' Day.
+msgid "Dia dos Heróis Moçambicanos"
+msgstr ""
+
+#. Women's Day.
+msgid "Dia da Mulher Moçambicana"
+msgstr ""
+
+#. International Workers' Day.
+msgid "Dia Internacional dos Trabalhadores"
+msgstr ""
+
+#. Independence Day.
+msgid "Dia da Independência Nacional"
+msgstr ""
+
+#. Victory Day.
+msgid "Dia da Vitória"
+msgstr ""
+
+#. Armed Forces Day.
+msgid "Dia das Forças Armadas de Libertação Nacional"
+msgstr ""
+
+#. Peace and Reconciliation Day.
+msgid "Dia da Paz e Reconciliação"
+msgstr ""
+
+#. Family Day.
+msgid "Dia da Família"
+msgstr ""
