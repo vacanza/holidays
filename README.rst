@@ -340,7 +340,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Greece
      - GR
      -
-     - **el**, en_US
+     - **el**, en_US, uk
    * - Guam
      - GU
      - Can also be loaded as country US, subdivision GU
