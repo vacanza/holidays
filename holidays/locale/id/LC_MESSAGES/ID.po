@@ -1,0 +1,129 @@
+# Indonesia holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.30\n"
+"POT-Creation-Date: 2023-07-23 14:09+0300\n"
+"PO-Revision-Date: 2023-07-23 14:12+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#, c-format
+msgid "%s* (*perkiraan)"
+msgstr ""
+
+#. Election Day.
+msgid "Hari Pemilihan"
+msgstr ""
+
+#. Eid al-Fitr Joint Holiday.
+msgid "Cuti Bersama Hari Raya Idulfitri"
+msgstr ""
+
+#. Christmas Joint Holiday.
+msgid "Cuti Bersama Hari Raya Natal"
+msgstr ""
+
+#. Lunar New Year Joint Holiday.
+msgid "Cuti Bersama Tahun Baru Imlek"
+msgstr ""
+
+#. Day of Silence Joint Holiday.
+msgid "Cuti Bersama Hari Suci Nyepi"
+msgstr ""
+
+#. New Year's Day.
+msgid "Tahun Baru Masehi"
+msgstr ""
+
+#. Lunar New Year.
+msgid "Tahun Baru Imlek"
+msgstr ""
+
+#. Day of Silence.
+msgid "Hari Suci Nyepi"
+msgstr ""
+
+#. Good Friday.
+msgid "Wafat Yesus Kristus"
+msgstr ""
+
+#. Easter Monday.
+msgid "Hari kedua Paskah"
+msgstr ""
+
+#. Buddha's Birthday.
+msgid "Hari Raya Waisak"
+msgstr ""
+
+#. International Labor Day.
+msgid "Hari Buruh Internasional"
+msgstr ""
+
+#. Ascension Day.
+msgid "Kenaikan Yesus Kristus"
+msgstr ""
+
+#. Whit Monday.
+msgid "Hari kedua Pentakosta"
+msgstr ""
+
+#. Pancasila Day.
+msgid "Hari Lahir Pancasila"
+msgstr ""
+
+#. Assumption Of Mary.
+msgid "Mikraj Santa Maria"
+msgstr ""
+
+#. Independence Day.
+msgid "Hari Kemerdekaan Republik Indonesia"
+msgstr ""
+
+#. Armed Forces Day.
+msgid "Hari Angkatan Perang"
+msgstr ""
+
+#. Heroes' Day.
+msgid "Hari Pahlawan"
+msgstr ""
+
+#. Christmas Day.
+msgid "Hari Raya Natal"
+msgstr ""
+
+#. Eid al-Fitr.
+msgid "Hari Raya Idulfitri"
+msgstr ""
+
+#. Eid al-Fitr Second Day.
+msgid "Hari kedua dari Hari Raya Idulfitri"
+msgstr ""
+
+#. Eid al-Adha.
+msgid "Hari Raya Iduladha"
+msgstr ""
+
+#. Islamic New Year.
+msgid "Tahun Baru Islam"
+msgstr ""
+
+#. The Prophet's Birthday.
+msgid "Maulid Nabi Muhammad"
+msgstr ""
+
+#. The Prophet's Ascension.
+msgid "Isra Mikraj Nabi Muhammad"
+msgstr ""
+
+#. Nuzul Al Quran.
+msgid "Nuzululqur'an"
+msgstr ""
