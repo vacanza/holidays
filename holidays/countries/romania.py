@@ -11,8 +11,8 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import GREGORIAN_CALENDAR, JAN, NOV, DEC
-from holidays.calendars.julian import JULIAN_CALENDAR
+from holidays.calendars.gregorian import JAN, NOV, DEC
+from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -28,7 +28,7 @@ class Romania(HolidayBase, ChristianHolidays, InternationalHolidays):
     supported_languages = ("en_US", "ro", "uk")
 
     def __init__(self, *args, **kwargs):
-        ChristianHolidays.__init__(self, JULIAN_CALENDAR)
+        ChristianHolidays.__init__(self, JULIAN_REVISED_CALENDAR)
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
@@ -42,7 +42,7 @@ class Romania(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 2024:
             # Epiphany.
-            self._add_epiphany_day(tr("Bobotează"), GREGORIAN_CALENDAR)
+            self._add_epiphany_day(tr("Bobotează"))
 
             # Saint John the Baptist.
             self._add_holiday(tr("Sfântul Ion"), JAN, 7)
@@ -86,8 +86,8 @@ class Romania(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Christmas Day.
         name = tr("Crăciunul")
-        self._add_christmas_day(name, GREGORIAN_CALENDAR)
-        self._add_christmas_day_two(name, GREGORIAN_CALENDAR)
+        self._add_christmas_day(name)
+        self._add_christmas_day_two(name)
 
 
 class RO(Romania):

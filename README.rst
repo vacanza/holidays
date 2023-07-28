@@ -200,7 +200,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Bolivia
      - BO
      - Departments: B, C, H, L, N, O, P, S, T
-     -
+     - en_US, **es**, uk
    * - Bosnia and Herzegovina
      - BA
      - Entities and district: BIH, BRC, SRP
@@ -472,7 +472,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Mozambique
      - MZ
      -
-     -
+     - en_US, **pt_MZ**, uk
    * - Namibia
      - NA
      -

@@ -12,8 +12,7 @@
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import GREGORIAN_CALENDAR
-from holidays.calendars.julian import JULIAN_CALENDAR
+from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
 from holidays.constants import PUBLIC, SCHOOL
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -48,7 +47,7 @@ class Bulgaria(HolidayBase, ChristianHolidays, InternationalHolidays):
     supported_languages = ("bg", "en_US", "uk")
 
     def __init__(self, *args, **kwargs):
-        ChristianHolidays.__init__(self, JULIAN_CALENDAR)
+        ChristianHolidays.__init__(self, JULIAN_REVISED_CALENDAR)
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
@@ -104,12 +103,12 @@ class Bulgaria(HolidayBase, ChristianHolidays, InternationalHolidays):
         dts_observed.add(self._add_holiday_sep_22(tr("Ден на Независимостта на България")))
 
         # Christmas Eve.
-        dts_observed.add(self._add_christmas_eve(tr("Бъдни вечер"), GREGORIAN_CALENDAR))
+        dts_observed.add(self._add_christmas_eve(tr("Бъдни вечер")))
 
         # Christmas Day.
         name = tr("Рождество Христово")
-        dts_observed.add(self._add_christmas_day(name, GREGORIAN_CALENDAR))
-        dts_observed.add(self._add_christmas_day_two(name, GREGORIAN_CALENDAR))
+        dts_observed.add(self._add_christmas_day(name))
+        dts_observed.add(self._add_christmas_day_two(name))
 
         if self.observed and self._year >= 2017:
             excluded_names = {self.tr("Велика събота"), self.tr("Великден")}

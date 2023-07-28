@@ -10,7 +10,9 @@
 #  License: MIT (see LICENSE file)
 #  Copyright: Kateryna Golovanova <kate@kgthreads.com>, 2022
 
+from datetime import date
 from datetime import timedelta as td
+from gettext import gettext as tr
 
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -18,21 +20,33 @@ from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 class Bolivia(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
-    https://en.wikipedia.org/wiki/Public_holidays_in_Bolivia
-    https://www.officeholidays.com/countries/bolivia
+    References:
+    - [Supreme Decree #14260] https://bolivia.infoleyes.com/norma/1141/decreto-supremo-14260
+    - [Supreme Decree #21060] https://bolivia.infoleyes.com/norma/1211/decreto-supremo-21060
+    - [Supreme Decree #22352] https://bolivia.infoleyes.com/norma/1310/decreto-supremo-22352
+    - [Supreme Decree #0173] https://bolivia.infoleyes.com/norma/829/decreto-supremo-0173
+    - [Supreme Decree #0405] https://bolivia.infoleyes.com/norma/1252/decreto-supremo-0405
+    - [Supreme Decree #1210] https://bolivia.infoleyes.com/norma/3756/decreto-supremo-1210
+    - [Supreme Decree #2750] https://bolivia.infoleyes.com/norma/6023/decreto-supremo-2750
+    - https://en.wikipedia.org/wiki/Public_holidays_in_Bolivia
+    - https://www.officeholidays.com/countries/bolivia
     """
 
     country = "BO"
+    default_language = "es"
+    supported_languages = ("en_US", "es", "uk")
+    # %s (Observed).
+    observed_label = tr("%s (Observado)")
     subdivisions = (
-        "B",
-        "C",
-        "H",
-        "L",
-        "N",
-        "O",
-        "P",
-        "S",
-        "T",
+        "B",  # El Beni
+        "C",  # Cochabamba
+        "H",  # Chuquisaca
+        "L",  # La Paz
+        "N",  # Pando
+        "O",  # Oruro
+        "P",  # Potosí
+        "S",  # Santa Cruz
+        "T",  # Tarija
     )
 
     def __init__(self, *args, **kwargs) -> None:
@@ -40,87 +54,115 @@ class Bolivia(HolidayBase, ChristianHolidays, InternationalHolidays):
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
+    def _add_observed(self, dt: date) -> None:
+        # Supreme Decree #14260.
+        # whenever a public holiday falls on a Sunday,
+        # it rolls over to the following Monday.
+        if self.observed and self._year >= 1977 and self._is_sunday(dt):
+            self._add_holiday(self.tr(self.observed_label) % self[dt], dt + td(days=+1))
+
     def _populate(self, year):
+        if year <= 1824:
+            return None
+
         super()._populate(year)
-        observed_dates = set()
 
         # New Year's Day.
-        if year >= 1825:
-            observed_dates.add(self._add_new_years_day("Año Nuevo"))
+        self._add_observed(self._add_new_years_day(tr("Año Nuevo")))
 
-        # Plurinational State Foundation Day.
+        # Supreme Decree #0405.
         if year >= 2010:
-            self._add_holiday_jan_22("Nacimiento del Estado Plurinacional de Bolivia")
+            self._add_observed(
+                self._add_holiday_jan_22(
+                    # Plurinational State Foundation Day.
+                    tr("Día de la Creación del Estado Plurinacional de Bolivia")
+                )
+            )
 
         # Carnival.
-        name = "Feriado por Carnaval"
+        name = tr("Carnaval")
         self._add_carnival_monday(name)
         self._add_carnival_tuesday(name)
 
         # Good Friday.
-        self._add_good_friday("Viernes Santo")
+        self._add_good_friday(tr("Viernes Santo"))
 
         # Labor Day.
-        observed_dates.add(self._add_labor_day("Día del trabajo"))
+        name = self.tr("Día del Trabajo")
+        may_1 = self._add_labor_day(name)
+        self._add_observed(may_1)
+        # Supreme Decree #1210.
+        if self.observed and 2012 <= year <= 2015:
+            if self._is_tuesday(may_1):
+                self._add_holiday(self.tr(self.observed_label) % name, may_1 + td(days=-1))
+            elif self._is_thursday(may_1):
+                self._add_holiday(self.tr(self.observed_label) % name, may_1 + td(days=+1))
 
         # Corpus Christi.
-        self._add_corpus_christi_day("Corpus Christi")
+        self._add_corpus_christi_day(tr("Corpus Christi"))
 
-        if year >= 2010:
-            # Andean New Year.
-            observed_dates.add(self._add_holiday_jun_21("Año Nuevo Andino"))
+        # Supreme Decree #0173.
+        if year >= 2009:
+            # Aymara New Year.
+            self._add_observed(self._add_holiday_jun_21(tr("Año Nuevo Aymara Amazónico")))
 
-        if year >= 1825:
-            # Independence Day.
-            observed_dates.add(self._add_holiday_aug_6("Día de la Patria"))
+        # Independence Day.
+        self._add_observed(self._add_holiday_aug_6(tr("Día de la Independencia de Bolivia")))
 
-        # All Soul's Day.
-        observed_dates.add(self._add_all_souls_day("Todos Santos"))
+        if year >= 2020:
+            # National Dignity Day.
+            self._add_holiday_oct_17(tr("Día de la Dignidad Nacional"))
+
+        # Supreme Decree #21060.
+        if 1985 <= year <= 1988:
+            # All Saints' Day.
+            self._add_all_saints_day(tr("Día de Todos los Santos"))
+
+        # Supreme Decree #22352.
+        if year >= 1989:
+            # All Souls' Day.
+            nov_2 = self._add_all_souls_day(tr("Día de Todos los Difuntos"))
+            if year <= 2015:
+                self._add_observed(nov_2)
 
         # Christmas Day.
-        observed_dates.add(self._add_christmas_day("Navidad"))
-
-        if self.observed:
-            for dt in sorted(observed_dates):
-                if not self._is_sunday(dt):
-                    continue
-                self._add_holiday(f"{self[dt]} (Observed)", dt + td(days=+1))
+        self._add_observed(self._add_christmas_day(tr("Navidad")))
 
     def _add_subdiv_b_holidays(self):
         # Beni Day.
-        self._add_holiday_nov_18("Día del departamento de Beni")
+        self._add_holiday_nov_18(tr("Día del departamento de Beni"))
 
     def _add_subdiv_c_holidays(self):
         # Cochabamba Day.
-        self._add_holiday_sep_14("Día del departamento de Cochabamba")
+        self._add_holiday_sep_14(tr("Día del departamento de Cochabamba"))
 
     def _add_subdiv_h_holidays(self):
         # Chuquisaca Day.
-        self._add_holiday_may_25("Día del departamento de Chuquisaca")
+        self._add_holiday_may_25(tr("Día del departamento de Chuquisaca"))
 
     def _add_subdiv_l_holidays(self):
         # La Paz Day.
-        self._add_holiday_jul_16("Día del departamento de La Paz")
+        self._add_holiday_jul_16(tr("Día del departamento de La Paz"))
 
     def _add_subdiv_n_holidays(self):
         # Pando Day.
-        self._add_holiday_sep_24("Día del departamento de Pando")
+        self._add_holiday_oct_11(tr("Día del departamento de Pando"))
 
     def _add_subdiv_p_holidays(self):
         # Potosí Day.
-        self._add_holiday_nov_10("Día del departamento de Potosí")
+        self._add_holiday_nov_10(tr("Día del departamento de Potosí"))
 
     def _add_subdiv_o_holidays(self):
         # Carnival in Oruro.
-        self._add_holiday("Carnaval de Oruro", self._easter_sunday + td(days=-51))
+        self._add_holiday(tr("Carnaval de Oruro"), self._easter_sunday + td(days=-51))
 
     def _add_subdiv_s_holidays(self):
         # Santa Cruz Day.
-        self._add_holiday_sep_24("Día del departamento de Santa Cruz")
+        self._add_holiday_sep_24(tr("Día del departamento de Santa Cruz"))
 
     def _add_subdiv_t_holidays(self):
         # La Tablada.
-        self._add_holiday_apr_15("La Tablada")
+        self._add_holiday_apr_15(tr("La Tablada"))
 
 
 class BO(Bolivia):
