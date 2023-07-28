@@ -13,7 +13,6 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, JUL, OCT
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -47,23 +46,21 @@ class Cuba(HolidayBase, ChristianHolidays, InternationalHolidays):
         if year <= 1958:
             return None
 
-        def _add_observed(hol_date: date) -> None:
-            if self.observed and self._is_sunday(hol_date):
-                self._add_holiday(
-                    self.tr("%s (Observado)") % self[hol_date], hol_date + td(days=+1)
-                )
+        def _add_observed(dt: date) -> None:
+            if self.observed and self._is_sunday(dt):
+                self._add_holiday(self.tr("%s (Observado)") % self[dt], dt + td(days=+1))
 
         super()._populate(year)
 
         # Liberation Day.
-        jan_1 = self._add_holiday(tr("Triunfo de la Revolución"), JAN, 1)
+        jan_1 = self._add_holiday_jan_1(tr("Triunfo de la Revolución"))
         if year <= 2013:
             _add_observed(jan_1)
 
         # Granted in 2007 decree.
         if year >= 2008:
             #  Victory Day.
-            self._add_holiday(tr("Día de la Victoria"), JAN, 2)
+            self._add_holiday_jan_2(tr("Día de la Victoria"))
 
         # Granted temporarily in 2012 and 2013:
         #   https://cnn.it/3v5V6GY
@@ -77,16 +74,16 @@ class Cuba(HolidayBase, ChristianHolidays, InternationalHolidays):
         _add_observed(self._add_labor_day(tr("Día Internacional de los Trabajadores")))
 
         # Commemoration of the Assault of the Moncada garrison.
-        self._add_holiday(tr("Conmemoración del asalto a Moncada"), JUL, 25)
+        self._add_holiday_jul_25(tr("Conmemoración del asalto a Moncada"))
 
         # Day of the National Rebellion.
-        self._add_holiday(tr("Día de la Rebeldía Nacional"), JUL, 26)
+        self._add_holiday_jul_26(tr("Día de la Rebeldía Nacional"))
 
         # Commemoration of the Assault of the Moncada garrison.
-        self._add_holiday(tr("Conmemoración del asalto a Moncada"), JUL, 27)
+        self._add_holiday_jul_27(tr("Conmemoración del asalto a Moncada"))
 
         # Independence Day.
-        _add_observed(self._add_holiday(tr("Inicio de las Guerras de Independencia"), OCT, 10))
+        _add_observed(self._add_holiday_oct_10(tr("Inicio de las Guerras de Independencia")))
 
         # In 1969, Christmas was cancelled for the sugar harvest but then was
         # cancelled for good:

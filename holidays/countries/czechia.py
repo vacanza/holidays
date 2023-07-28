@@ -11,7 +11,6 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, MAY, JUL, SEP, OCT, NOV
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -33,13 +32,12 @@ class Czechia(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _populate(self, year):
         super()._populate(year)
 
-        self._add_holiday(
+        self._add_holiday_jan_1(
             # Independent Czech State Restoration Day.
-            tr("Den obnovy samostatného českého státu") if year >= 2000
+            tr("Den obnovy samostatného českého státu")
+            if year >= 2000
             # New Year's Day.
             else tr("Nový rok"),
-            JAN,
-            1,
         )
 
         if year <= 1951 or year >= 2016:
@@ -55,29 +53,29 @@ class Czechia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 1992:
             # Victory Day.
-            self._add_holiday(tr("Den vítězství"), MAY, 8)
+            self._add_holiday_may_8(tr("Den vítězství"))
         elif year >= 1947:
             # Day of Victory over Fascism.
             self._add_world_war_two_victory_day(tr("Den vítězství nad hitlerovským fašismem"))
 
         if year >= 1951:
             # Saints Cyril and Methodius Day.
-            self._add_holiday(tr("Den slovanských věrozvěstů Cyrila a Metoděje"), JUL, 5)
+            self._add_holiday_jul_5(tr("Den slovanských věrozvěstů Cyrila a Metoděje"))
 
             # Jan Hus Day.
-            self._add_holiday(tr("Den upálení mistra Jana Husa"), JUL, 6)
+            self._add_holiday_jul_6(tr("Den upálení mistra Jana Husa"))
 
         if year >= 2000:
             # Statehood Day.
-            self._add_holiday(tr("Den české státnosti"), SEP, 28)
+            self._add_holiday_sep_28(tr("Den české státnosti"))
 
         if year >= 1951:
             # Independent Czechoslovak State Day.
-            self._add_holiday(tr("Den vzniku samostatného československého státu"), OCT, 28)
+            self._add_holiday_oct_28(tr("Den vzniku samostatného československého státu"))
 
         if year >= 1990:
             # Struggle for Freedom and Democracy Day.
-            self._add_holiday(tr("Den boje za svobodu a demokracii"), NOV, 17)
+            self._add_holiday_nov_17(tr("Den boje za svobodu a demokracii"))
 
             # Christmas Eve.
             self._add_christmas_eve(tr("Štědrý den"))
