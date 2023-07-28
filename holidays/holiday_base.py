@@ -659,10 +659,13 @@ class HolidayBase(Dict[date, str]):
         """Populate substituted holidays."""
         if len(self.substituted_holidays) == 0:
             return None
-        if not hasattr(self, "substituted_label"):
-            raise ValueError(f"Country `{self.country}` class should contain `substituted_label`")
+        if not hasattr(self, "substituted_label") or not hasattr(self, "substituted_date_format"):
+            raise ValueError(
+                f"Country `{self.country}` class should contain `substituted_label` "
+                "and `substituted_date_format`"
+            )
         substituted_label = self.tr(self.substituted_label)
-        substituted_date_format = self.tr(getattr(self, "substituted_date_format", "%d.%m.%Y"))
+        substituted_date_format = self.tr(self.substituted_date_format)
         for hol in _normalize_tuple(self.substituted_holidays.get(self._year, ())):
             from_year = hol[0] if len(hol) == 5 else self._year
             from_month, from_day, to_month, to_day = hol[-4:]
