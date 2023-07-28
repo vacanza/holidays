@@ -129,7 +129,7 @@ class TestSaudiArabia(TestCase):
             # observed eid al-fitr
             "2018-06-19",
             "2018-06-20",
-            "2019-06-08",
+            "2019-06-09",
             "2021-05-17",
             "2021-05-18",
             "2023-04-25",
@@ -141,7 +141,7 @@ class TestSaudiArabia(TestCase):
             "2020-08-04",
             "2022-07-12",
             "2022-07-13",
-            "2023-07-01",
+            "2023-07-02",
         )
         self.assertHoliday(dt)
         self.assertNoNonObservedHoliday(dt)
@@ -175,13 +175,13 @@ class TestSaudiArabia(TestCase):
             ("2023-04-22", "(تقدير*) *عطلة عيد الفطر"),
             ("2023-04-23", "(تقدير*) *عطلة عيد الفطر"),
             ("2023-04-24", "(تقدير*) *عطلة عيد الفطر"),
-            ("2023-04-25", "(ملاحظة) عطلة عيد الفطر"),
-            ("2023-04-26", "(ملاحظة) عطلة عيد الفطر"),
+            ("2023-04-25", "(ملاحظة) (تقدير*) *عطلة عيد الفطر"),
+            ("2023-04-26", "(ملاحظة) (تقدير*) *عطلة عيد الفطر"),
             ("2023-06-27", "(تقدير*) *يوم عرفة"),
             ("2023-06-28", "(تقدير*) *عطلة عيد الأضحى"),
             ("2023-06-29", "(تقدير*) *عطلة عيد الأضحى"),
             ("2023-06-30", "(تقدير*) *عطلة عيد الأضحى"),
-            ("2023-07-01", "(ملاحظة) عطلة عيد الأضحى"),
+            ("2023-07-02", "(ملاحظة) (تقدير*) *عطلة عيد الأضحى"),
             ("2023-09-23", "اليوم الوطني"),
             ("2023-09-24", "(ملاحظة) اليوم الوطني"),
         )
@@ -194,13 +194,13 @@ class TestSaudiArabia(TestCase):
             ("2023-04-22", "Eid al-Fitr Holiday* (*estimated)"),
             ("2023-04-23", "Eid al-Fitr Holiday* (*estimated)"),
             ("2023-04-24", "Eid al-Fitr Holiday* (*estimated)"),
-            ("2023-04-25", "Eid al-Fitr Holiday (observed)"),
-            ("2023-04-26", "Eid al-Fitr Holiday (observed)"),
+            ("2023-04-25", "Eid al-Fitr Holiday* (*estimated) (observed)"),
+            ("2023-04-26", "Eid al-Fitr Holiday* (*estimated) (observed)"),
             ("2023-06-27", "Arafat Day* (*estimated)"),
             ("2023-06-28", "Eid al-Adha Holiday* (*estimated)"),
             ("2023-06-29", "Eid al-Adha Holiday* (*estimated)"),
             ("2023-06-30", "Eid al-Adha Holiday* (*estimated)"),
-            ("2023-07-01", "Eid al-Adha Holiday (observed)"),
+            ("2023-07-02", "Eid al-Adha Holiday* (*estimated) (observed)"),
             ("2023-09-23", "National Day Holiday"),
             ("2023-09-24", "National Day Holiday (observed)"),
         )
