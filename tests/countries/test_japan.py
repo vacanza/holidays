@@ -9,6 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.constants import BANK
 from holidays.countries.japan import Japan, JP, JPN
 from tests.common import TestCase
 
@@ -26,6 +27,10 @@ class TestJapan(TestCase):
             Japan(years=1945)
         with self.assertRaises(NotImplementedError):
             Japan(years=2100)
+        with self.assertRaises(NotImplementedError):
+            Japan(categories=(BANK,), years=1945)
+        with self.assertRaises(NotImplementedError):
+            Japan(categories=(BANK,), years=2100)
 
     def test_new_years_day(self):
         self.assertHoliday(f"{year}-01-01" for year in range(1949, 2051))
@@ -723,9 +728,19 @@ class TestJapan(TestCase):
         self.assertHolidayName(name, dt)
         self.assertNoNonObservedHoliday(dt)
 
+    def test_bank_holidays(self):
+        name = "銀行休業日"
+        holidays = Japan(categories=(BANK,), years=range(1949, 2051))
+        for year in range(1949, 2051):
+            self.assertHolidayName(
+                name, holidays, f"{year}-01-02", f"{year}-01-03", f"{year}-12-31"
+            )
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "元日"),
+            ("2022-01-02", "銀行休業日"),
+            ("2022-01-03", "銀行休業日"),
             ("2022-01-10", "成人の日"),
             ("2022-02-11", "建国記念の日"),
             ("2022-02-23", "天皇誕生日"),
@@ -741,12 +756,15 @@ class TestJapan(TestCase):
             ("2022-10-10", "スポーツの日"),
             ("2022-11-03", "文化の日"),
             ("2022-11-23", "勤労感謝の日"),
+            ("2022-12-31", "銀行休業日"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
             ("2022-01-01", "New Year's Day"),
+            ("2022-01-02", "Bank Holiday"),
+            ("2022-01-03", "Bank Holiday"),
             ("2022-01-10", "Coming of Age Day"),
             ("2022-02-11", "Foundation Day"),
             ("2022-02-23", "Emperor's Birthday"),
@@ -762,4 +780,5 @@ class TestJapan(TestCase):
             ("2022-10-10", "Sports Day"),
             ("2022-11-03", "Culture Day"),
             ("2022-11-23", "Labor Thanksgiving Day"),
+            ("2022-12-31", "Bank Holiday"),
         )
