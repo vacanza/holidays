@@ -47,7 +47,7 @@ class Gabon(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
 
         # Women's Rights Day.
         if year >= 2015:
-            self._add_holiday("Women's Rights Day", APR, 17)
+            self._add_holiday_apr_17("Women's Rights Day")
 
         # Labour Day.
         self._add_labor_day("Labour Day")
@@ -62,8 +62,8 @@ class Gabon(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolida
         self._add_assumption_of_mary_day("Assumption Day")
 
         # Independence Day.
-        self._add_holiday("Independence Day", AUG, 16)
-        self._add_holiday("Independence Day Holiday", AUG, 17)
+        self._add_holiday_aug_16("Independence Day")
+        self._add_holiday_aug_17("Independence Day Holiday")
 
         # All Saints' Day.
         self._add_all_saints_day("All Saints' Day")

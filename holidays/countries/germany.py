@@ -11,7 +11,6 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import MAY, SEP, OCT, NOV, WED
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -105,15 +104,15 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_whit_monday(tr("Pfingstmontag"))
 
         # German Unity Day.
-        self._add_holiday(tr("Tag der Deutschen Einheit"), OCT, 3)
+        self._add_holiday_oct_3(tr("Tag der Deutschen Einheit"))
 
         if year == 2017:
             # Reformation Day.
-            self._add_holiday(tr("Reformationstag"), OCT, 31)
+            self._add_holiday_oct_31(tr("Reformationstag"))
 
         if year <= 1994:
             # Repentance and Prayer Day.
-            self._add_holiday(tr("Buß- und Bettag"), self._get_nth_weekday_from(-1, WED, NOV, 22))
+            self._add_holiday_1st_wed_before_nov_22(tr("Buß- und Bettag"))
 
         # Christmas Day.
         self._add_christmas_day(tr("Erster Weihnachtstag"))
@@ -130,7 +129,7 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_whit_sunday(tr("Pfingstsonntag"))
 
         if self._year != 2017:
-            self._add_holiday(tr("Reformationstag"), OCT, 31)
+            self._add_holiday_oct_31(tr("Reformationstag"))
 
     def _add_subdiv_be_holidays(self):
         if self._year >= 2019:
@@ -138,15 +137,13 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_womens_day(tr("Internationaler Frauentag"))
 
         if self._year == 2020:
-            self._add_holiday(
+            self._add_holiday_may_8(
                 # 75th anniversary of the liberation from Nazism and
                 # the end of the Second World War in Europe.
                 tr(
                     "75. Jahrestag der Befreiung vom Nationalsozialismus "
                     "und der Beendigung des Zweiten Weltkriegs in Europa"
                 ),
-                MAY,
-                8,
             )
 
     def _add_subdiv_bw_holidays(self):
@@ -179,7 +176,7 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_hb_holidays(self):
         if self._year >= 2018:
-            self._add_holiday(tr("Reformationstag"), OCT, 31)
+            self._add_holiday_oct_31(tr("Reformationstag"))
 
     def _add_subdiv_he_holidays(self):
         if self._year >= 1991:
@@ -187,18 +184,18 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_hh_holidays(self):
         if self._year >= 2018:
-            self._add_holiday(tr("Reformationstag"), OCT, 31)
+            self._add_holiday_oct_31(tr("Reformationstag"))
 
     def _add_subdiv_mv_holidays(self):
         if self._year >= 2023:
             self._add_womens_day(tr("Internationaler Frauentag"))
 
         if self._year != 2017:
-            self._add_holiday(tr("Reformationstag"), OCT, 31)
+            self._add_holiday_oct_31(tr("Reformationstag"))
 
     def _add_subdiv_ni_holidays(self):
         if self._year >= 2018:
-            self._add_holiday(tr("Reformationstag"), OCT, 31)
+            self._add_holiday_oct_31(tr("Reformationstag"))
 
     def _add_subdiv_nw_holidays(self):
         if self._year >= 1991:
@@ -214,7 +211,7 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_sh_holidays(self):
         if self._year >= 2018:
-            self._add_holiday(tr("Reformationstag"), OCT, 31)
+            self._add_holiday_oct_31(tr("Reformationstag"))
 
     def _add_subdiv_sl_holidays(self):
         if self._year >= 1991:
@@ -225,26 +222,26 @@ class Germany(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_sn_holidays(self):
         if self._year != 2017:
-            self._add_holiday(tr("Reformationstag"), OCT, 31)
+            self._add_holiday_oct_31(tr("Reformationstag"))
 
         if self._year >= 1995:
             # last wednesday before year-11-23
-            self._add_holiday(tr("Buß- und Bettag"), self._get_nth_weekday_from(-1, WED, NOV, 22))
+            self._add_holiday_1st_wed_before_nov_22(tr("Buß- und Bettag"))
 
     def _add_subdiv_st_holidays(self):
         if self._year >= 1991:
             self._add_epiphany_day(tr("Heilige Drei Könige"))
 
         if self._year != 2017:
-            self._add_holiday(tr("Reformationstag"), OCT, 31)
+            self._add_holiday_oct_31(tr("Reformationstag"))
 
     def _add_subdiv_th_holidays(self):
         if self._year >= 2019:
             # World Children's Day.
-            self._add_holiday(tr("Weltkindertag"), SEP, 20)
+            self._add_holiday_sep_20(tr("Weltkindertag"))
 
         if self._year != 2017:
-            self._add_holiday(tr("Reformationstag"), OCT, 31)
+            self._add_holiday_oct_31(tr("Reformationstag"))
 
 
 class DE(Germany):
