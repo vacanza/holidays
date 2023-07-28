@@ -9,9 +9,10 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from calendar import isleap
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import MAR, MAY, SEP
+from holidays.calendars.gregorian import SEP
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
@@ -36,8 +37,7 @@ class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
     estimated_label = tr("%s* (*ግምት)")
     supported_languages = ("am", "ar", "en_US")
 
-    @staticmethod
-    def _is_leap_year(year):
+    def _is_leap_year(self):
         """
         Ethiopian leap years are coincident with leap years in the Gregorian
         calendar until the end of February 2100. It starts earlier from new
@@ -47,7 +47,7 @@ class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
         function we intentionally add 1 to the leap year to offset the
         difference.
         """
-        return HolidayBase._is_leap_year(year + 1)
+        return isleap(self._year + 1)
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self, JULIAN_CALENDAR)
@@ -67,10 +67,10 @@ class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
         # September 12.
 
         # Ethiopian New Year.
-        self._add_holiday(tr("አዲስ ዓመት እንቁጣጣሽ"), SEP, 12 if self._is_leap_year(year) else 11)
+        self._add_holiday(tr("አዲስ ዓመት እንቁጣጣሽ"), SEP, 12 if self._is_leap_year() else 11)
 
         # Finding of True Cross.
-        self._add_holiday(tr("መስቀል"), SEP, 28 if self._is_leap_year(year) else 27)
+        self._add_holiday(tr("መስቀል"), SEP, 28 if self._is_leap_year() else 27)
 
         # Orthodox Christmas.
         self._add_christmas_day(tr("ገና"))
@@ -86,22 +86,22 @@ class Ethiopia(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
 
         if year > 1896:
             # Adwa Victory Day.
-            self._add_holiday(tr("አድዋ"), MAR, 2)
+            self._add_holiday_mar_2(tr("አድዋ"))
 
         # Labour Day.
         self._add_labor_day(tr("የሰራተኞች ቀን"))
 
         if year > 1941:
             # Patriots Day.
-            self._add_holiday(tr("የአርበኞች ቀን"), MAY, 5)
+            self._add_holiday_may_5(tr("የአርበኞች ቀን"))
 
         if year > 1991:
             # Downfall of Dergue Regime Day.
-            self._add_holiday(tr("ደርግ የወደቀበት ቀን"), MAY, 28)
+            self._add_holiday_may_28(tr("ደርግ የወደቀበት ቀን"))
 
         if year < 1991 and year > 1974:
             # Downfall of King Haile Selassie.
-            self._add_holiday(tr("ደርግ የመጣበት ቀን"), SEP, 13 if self._is_leap_year(year) else 12)
+            self._add_holiday(tr("ደርግ የመጣበት ቀን"), SEP, 13 if self._is_leap_year() else 12)
 
         # Eid al-Fitr.
         self._add_eid_al_fitr_day(tr("ኢድ አልፈጥር"))

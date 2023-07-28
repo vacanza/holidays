@@ -9,7 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import MAY, JUN, AUG, SEP
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -66,18 +65,18 @@ class ElSalvador(HolidayBase, ChristianHolidays, InternationalHolidays):
         if year >= 2016:
             # Legislative Decree #399 from Apr 14, 2016
             # Mothers' Day.
-            self._add_holiday("Mothers' Day", MAY, 10)
+            self._add_holiday_may_10("Mothers' Day")
 
         if year >= 2013:
             # Legislative Decree #208 from Jun 17, 2012
             # Fathers' Day.
-            self._add_holiday("Fathers' Day", JUN, 17)
+            self._add_holiday_jun_17("Fathers' Day")
 
         # Feast of San Salvador.
-        self._add_holiday("Feast of San Salvador", AUG, 6)
+        self._add_holiday_aug_6("Feast of San Salvador")
 
         # Independence Day.
-        self._add_holiday("Independence Day", SEP, 15)
+        self._add_holiday_sep_15("Independence Day")
 
         # All Souls' Day.
         self._add_all_souls_day("All Souls' Day")
@@ -87,10 +86,10 @@ class ElSalvador(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_ss_holidays(self):
         # San Salvador Day 1.
-        self._add_holiday("San Salvador Day 1", AUG, 3)
+        self._add_holiday_aug_3("San Salvador Day 1")
 
         # San Salvador Day 2.
-        self._add_holiday("San Salvador Day 2", AUG, 5)
+        self._add_holiday_aug_5("San Salvador Day 2")
 
 
 class SV(ElSalvador):

@@ -9,11 +9,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, MAY, JUN, OCT, NOV, DEC, FRI, SAT
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -41,7 +39,7 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Epiphany.
         name = tr("Loppiainen")
         if 1973 <= year <= 1990:
-            self._add_holiday(name, self._get_nth_weekday_from(1, SAT, JAN, 6))
+            self._add_holiday_1st_sat_from_jan_6(name)
         else:
             self._add_epiphany_day(name)
 
@@ -55,7 +53,7 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_monday(tr("2. pääsiäispäivä"))
 
         # May Day.
-        self._add_holiday(tr("Vappu"), MAY, 1)
+        self._add_holiday_may_1(tr("Vappu"))
 
         # Ascension Day.
         name = tr("Helatorstai")
@@ -67,18 +65,25 @@ class Finland(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Whit Sunday.
         self._add_whit_sunday(tr("Helluntaipäivä"))
 
-        dt = self._get_nth_weekday_from(1, FRI, JUN, 19) if year >= 1955 else date(year, JUN, 23)
         # Midsummer Eve.
-        self._add_holiday(tr("Juhannusaatto"), dt)
+        name = tr("Juhannusaatto")
+        if year >= 1955:
+            dt = self._add_holiday_1st_fri_from_jun_19(name)
+        else:
+            dt = self._add_holiday_jun_23(name)
+
         # Midsummer Day.
         self._add_holiday(tr("Juhannuspäivä"), dt + td(days=+1))
 
-        dt = self._get_nth_weekday_from(1, SAT, OCT, 31) if year >= 1955 else date(year, NOV, 1)
         # All Saints' Day.
-        self._add_holiday(tr("Pyhäinpäivä"), dt)
+        name = tr("Pyhäinpäivä")
+        if year >= 1955:
+            self._add_holiday_1st_sat_from_oct_31(name)
+        else:
+            self._add_holiday_nov_1(name)
 
         # Independence Day.
-        self._add_holiday(tr("Itsenäisyyspäivä"), DEC, 6)
+        self._add_holiday_dec_6(tr("Itsenäisyyspäivä"))
 
         # Christmas Eve.
         self._add_christmas_eve(tr("Jouluaatto"))
