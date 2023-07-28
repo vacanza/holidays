@@ -78,7 +78,7 @@ class TestIndonesia(TestCase):
         self.assertTrue(
             set(range(1946, 2050)).difference(set(range(1968, 2003))).issubset(years_found)
         )
-        self.assertEqual(0, len(years_found.intersection(set(range(1968, 2003)))))
+        self.assertFalse(set(range(1968, 2003)).intersection(years_found))
 
     def test_day_of_silence(self):
         name = "Hari Suci Nyepi"
@@ -139,7 +139,7 @@ class TestIndonesia(TestCase):
         )
         years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
         self.assertTrue(set(range(1983, 2050)).issubset(years_found))
-        self.assertEqual(0, len(years_found.intersection(set(range(1946, 1983)))))
+        self.assertFalse(set(range(1946, 1983)).intersection(years_found))
 
     def test_labor_day(self):
         name = "Hari Buruh Internasional"
@@ -241,7 +241,7 @@ class TestIndonesia(TestCase):
         )
         years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
         self.assertTrue(set(range(1953, 2050)).issubset(years_found))
-        self.assertEqual(0, len(years_found.intersection(set(range(1946, 1953)))))
+        self.assertFalse(set(range(1946, 1953)).intersection(years_found))
 
     def test_eid_al_fitr_second_day(self):
         name = "Hari kedua dari Hari Raya Idulfitri"
@@ -256,7 +256,7 @@ class TestIndonesia(TestCase):
         )
         years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
         self.assertTrue(set(range(1953, 2050)).issubset(years_found))
-        self.assertEqual(0, len(years_found.intersection(set(range(1946, 1953)))))
+        self.assertFalse(set(range(1946, 1953)).intersection(years_found))
 
     def test_eid_al_adha(self):
         name = "Hari Raya Iduladha"
@@ -271,7 +271,7 @@ class TestIndonesia(TestCase):
         )
         years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
         self.assertTrue(set(range(1953, 2050)).issubset(years_found))
-        self.assertEqual(0, len(years_found.intersection(set(range(1946, 1953)))))
+        self.assertFalse(set(range(1946, 1953)).intersection(years_found))
 
     def test_islamic_new_year(self):
         name = "Tahun Baru Islam"
@@ -289,8 +289,8 @@ class TestIndonesia(TestCase):
         years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
         self.assertTrue(set(range(1953, 1963)).issubset(years_found))
         self.assertTrue(set(range(1968, 2050)).issubset(years_found))
-        self.assertEqual(0, len(years_found.intersection(set(range(1946, 1953)))))
-        self.assertEqual(0, len(years_found.intersection(set(range(1963, 1968)))))
+        self.assertFalse(set(range(1946, 1953)).intersection(years_found))
+        self.assertFalse(set(range(1963, 1968)).intersection(years_found))
 
     def test_prophets_birthday(self):
         name = "Maulid Nabi Muhammad"
@@ -305,8 +305,8 @@ class TestIndonesia(TestCase):
         years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
         self.assertTrue(set(range(1953, 1963)).issubset(years_found))
         self.assertTrue(set(range(1968, 2050)).issubset(years_found))
-        self.assertEqual(0, len(years_found.intersection(set(range(1946, 1953)))))
-        self.assertEqual(0, len(years_found.intersection(set(range(1963, 1968)))))
+        self.assertFalse(set(range(1946, 1953)).intersection(years_found))
+        self.assertFalse(set(range(1963, 1968)).intersection(years_found))
 
     def test_prophets_ascension(self):
         name = "Isra Mikraj Nabi Muhammad"
@@ -322,8 +322,8 @@ class TestIndonesia(TestCase):
         years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
         self.assertTrue(set(range(1953, 1963)).issubset(years_found))
         self.assertTrue(set(range(1968, 2050)).issubset(years_found))
-        self.assertEqual(0, len(years_found.intersection(set(range(1946, 1953)))))
-        self.assertEqual(0, len(years_found.intersection(set(range(1963, 1968)))))
+        self.assertFalse(set(range(1946, 1953)).intersection(years_found))
+        self.assertFalse(set(range(1963, 1968)).intersection(years_found))
 
     def test_nuzul_al_quran(self):
         name = "Nuzululqur'an"
@@ -341,8 +341,8 @@ class TestIndonesia(TestCase):
         )
         years_found = {dt.year for dt in self.holidays.get_named(name, lookup="startswith")}
         self.assertTrue(set(range(1953, 1963)).issubset(years_found))
-        self.assertEqual(0, len(years_found.intersection(set(range(1946, 1953)))))
-        self.assertEqual(0, len(years_found.intersection(set(range(1963, 2050)))))
+        self.assertFalse(set(range(1946, 1953)).intersection(years_found))
+        self.assertFalse(set(range(1963, 2050)).intersection(years_found))
 
     def test_2021(self):
         self.assertHolidays(
