@@ -9,62 +9,116 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.constants import BANK, PUBLIC
 from holidays.countries.uruguay import Uruguay, UY, URY
 from tests.common import TestCase
 
 
-class TestUY(TestCase):
+class TestUruguay(TestCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass(Uruguay, years=range(1900, 2050))
+        years = range(1920, 2050)
+        super().setUpClass(Uruguay, years=years)
+        cls.bank_holidays = Uruguay(years=years, categories=(BANK,))
 
     def test_country_aliases(self):
         self.assertCountryAliases(Uruguay, UY, URY)
 
-    # Mandatory holidays.
+    def test_no_holidays(self):
+        self.assertNoHolidays(Uruguay(categories=(BANK, PUBLIC), years=1919))
+
+    def test_special_holidays(self):
+        self.assertHoliday(
+            "1985-03-01",
+            "1990-03-01",
+            "1995-03-01",
+            "2000-03-01",
+            "2005-03-01",
+            "2010-03-01",
+            "2015-03-01",
+            "2020-03-01",
+        )
 
     def test_new_years_day(self):
-        self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in range(1900, 2050)))
+        self.assertHolidayName("Año Nuevo", (f"{year}-01-01" for year in range(1920, 2050)))
+
+    def test_cry_of_asencio(self):
+        name = "Grito de Asencio"
+        self.assertHolidayName(name, (f"{year}-02-28" for year in range(1920, 1934)))
+        self.assertNoHolidayName(name, range(1934, 2050))
 
     def test_labor_day(self):
+        name = "Día de los Trabajadores"
         self.assertHolidayName(
-            "Día de los Trabajadores", (f"{year}-05-01" for year in range(1900, 2050))
+            name, (f"{year}-05-01" for year in set(range(1920, 2050)).difference({1980, 1981}))
+        )
+        self.assertHolidayName(
+            name,
+            "1980-05-05",
+            "1981-05-04",
         )
 
-    def test_jura_de_la_constitucion_day(self):
+    def test_spain_day(self):
+        name = "Día de España"
+        self.assertHolidayName(name, (f"{year}-05-02" for year in range(1920, 1933)))
+        self.assertNoHolidayName(name, range(1933, 2050))
+
+    def test_america_day(self):
+        name = "Día de América"
+        self.assertHolidayName(name, (f"{year}-05-25" for year in range(1920, 1933)))
+        self.assertNoHolidayName(name, range(1933, 2050))
+
+    def test_democracy_day(self):
+        name = "Día de la Democracia"
+        self.assertHolidayName(name, (f"{year}-07-04" for year in range(1920, 1933)))
+        self.assertNoHolidayName(name, range(1933, 2050))
+
+    def test_humanity_day(self):
+        name = "Día de la Humanidad"
+        self.assertHolidayName(name, (f"{year}-07-14" for year in range(1920, 1933)))
+        self.assertNoHolidayName(name, range(1933, 2050))
+
+    def test_constitution_day(self):
         self.assertHolidayName(
-            "Jura de la Constitución", (f"{year}-07-18" for year in range(1900, 2050))
+            "Jura de la Constitución", (f"{year}-07-18" for year in range(1920, 2050))
         )
 
-    def test_declaratoria_de_la_independencia_day(self):
+    def test_independence_day(self):
         self.assertHolidayName(
-            "Día de la Independencia", (f"{year}-08-25" for year in range(1900, 2050))
+            "Declaratoria de la Independencia", (f"{year}-08-25" for year in range(1920, 2050))
         )
+
+    def test_italy_day(self):
+        name = "Día de Italia"
+        self.assertHolidayName(name, (f"{year}-09-20" for year in range(1920, 1933)))
+        self.assertNoHolidayName(name, range(1933, 2050))
+
+    def test_open_town_hall(self):
+        name = "Cabildo Abierto"
+        self.assertHolidayName(name, (f"{year}-09-21" for year in range(1920, 1933)))
+        self.assertNoHolidayName(name, range(1933, 2050))
+
+    def test_beaches_day(self):
+        name = "Día de las Playas"
+        self.assertHolidayName(name, (f"{year}-12-08" for year in range(1920, 1933)))
+        self.assertHolidayName(name, (f"{year}-12-08" for year in range(1936, 1980)))
+        self.assertNoHolidayName(name, range(1933, 1936), range(1980, 2050))
 
     def test_christmas(self):
         self.assertHolidayName(
-            "Día de la Familia", (f"{year}-12-25" for year in range(1900, 2050))
+            "Día de la Familia", (f"{year}-12-25" for year in range(1920, 2050))
         )
 
-    # Partially paid holidays.
-
-    def test_dia_de_reyes(self):
-        self.assertHolidayName("Día de los Niños", (f"{year}-01-06" for year in range(1900, 2050)))
-
-    def test_natalicio_artigas_day(self):
+    def test_childrens_day(self):
         self.assertHolidayName(
-            "Natalicio de José Gervasio Artigas", (f"{year}-06-19" for year in range(1900, 2050))
+            "Día de los Niños", self.bank_holidays, (f"{year}-01-06" for year in range(1920, 2050))
         )
 
-    def test_dia_de_los_difuntos_day(self):
+    def test_carnival(self):
+        name = "Carnaval"
         self.assertHolidayName(
-            "Día de los Difuntos", (f"{year}-11-02" for year in range(1900, 2050))
-        )
-
-    # Moveable holidays.
-
-    def test_carnival_day(self):
-        dt = (
+            name,
+            self.bank_holidays,
             "2018-02-12",
             "2018-02-13",
             "2019-03-04",
@@ -78,41 +132,24 @@ class TestUY(TestCase):
             "2023-02-20",
             "2023-02-21",
         )
-        self.assertHolidayName("Día de Carnaval", dt)
+        self.assertHolidayName(name, self.bank_holidays, range(1920, 2050))
 
-    def test_holy_week_day(self):
-        dt = (
-            "2018-03-29",
-            "2019-04-18",
-            "2020-04-09",
-            "2021-04-01",
-            "2022-04-14",
-            "2023-04-06",
+    def test_landing_of_33_patriots(self):
+        name = "Desembarco de los 33 Orientales"
+        self.assertHolidayName(
+            name, self.bank_holidays, (f"{year}-04-19" for year in range(1920, 1933))
         )
-        self.assertHolidayName("Jueves Santo", dt)
-
-        dt = (
-            "2018-03-30",
-            "2019-04-19",
-            "2020-04-10",
-            "2021-04-02",
-            "2022-04-15",
-            "2023-04-07",
+        self.assertHolidayName(
+            name,
+            self.bank_holidays,
+            (f"{year}-04-19" for year in set(range(1949, 1997)).difference({1983})),
         )
-        self.assertHolidayName("Viernes Santo", dt)
-
-        dt = (
-            "2018-04-01",
-            "2019-04-21",
-            "2020-04-12",
-            "2021-04-04",
-            "2022-04-17",
-            "2023-04-09",
-        )
-        self.assertHolidayName("Día de Pascuas", dt)
-
-    def test_desembarco_de_los_33_orientales(self):
-        dt = (
+        self.assertNoHolidayName(name, self.bank_holidays, range(1934, 1949))
+        self.assertHolidayName(
+            name,
+            self.bank_holidays,
+            "1983-04-18",
+            "2000-04-17",
             "2018-04-23",
             "2019-04-22",
             "2020-04-19",
@@ -120,10 +157,48 @@ class TestUY(TestCase):
             "2022-04-18",
             "2023-04-17",
         )
-        self.assertHolidayName("Desembarco de los 33 Orientales", dt)
+        self.assertHolidayName(name, self.bank_holidays, range(1949, 2050))
 
-    def test_batalla_de_las_piedras_day(self):
-        dt = (
+    def test_tourism_week(self):
+        name = "Semana de Turismo"
+        self.assertHolidayName(
+            name,
+            self.bank_holidays,
+            "2020-04-06",
+            "2020-04-07",
+            "2020-04-08",
+            "2020-04-09",
+            "2020-04-10",
+            "2021-03-29",
+            "2021-03-30",
+            "2021-03-31",
+            "2021-04-01",
+            "2021-04-02",
+            "2022-04-11",
+            "2022-04-12",
+            "2022-04-13",
+            "2022-04-14",
+            "2022-04-15",
+        )
+        self.assertHolidayName(name, self.bank_holidays, range(1920, 2050))
+
+    def test_battle_of_las_piedras(self):
+        name = "Batalla de Las Piedras"
+        self.assertHolidayName(
+            name, self.bank_holidays, (f"{year}-05-18" for year in range(1920, 1933))
+        )
+        self.assertHolidayName(
+            name,
+            self.bank_holidays,
+            (f"{year}-05-18" for year in set(range(1942, 1997)).difference({1982, 1983})),
+        )
+        self.assertNoHolidayName(name, self.bank_holidays, range(1933, 1942))
+        self.assertHolidayName(
+            name,
+            self.bank_holidays,
+            "1982-05-17",
+            "1983-05-16",
+            "1999-05-17",
             "2018-05-21",
             "2019-05-18",
             "2020-05-18",
@@ -131,10 +206,60 @@ class TestUY(TestCase):
             "2022-05-16",
             "2023-05-22",
         )
-        self.assertHolidayName("Batalla de Las Piedras", dt)
+        self.assertHolidayName(name, self.bank_holidays, range(1942, 2050))
 
-    def test_dia_del_respeto_a_la_diversidad_cultural(self):
-        dt = (
+    def test_birthday_of_artigas(self):
+        name = "Natalicio de Artigas"
+        self.assertHolidayName(
+            name, self.bank_holidays, (f"{year}-06-19" for year in range(1920, 1933))
+        )
+        self.assertHolidayName(
+            name,
+            self.bank_holidays,
+            (
+                f"{year}-06-19"
+                for year in set(range(1940, 2050)).difference({1980, 1981, 1997, 1998, 2001})
+            ),
+        )
+        self.assertNoHolidayName(name, self.bank_holidays, range(1933, 1940))
+        self.assertHolidayName(
+            name,
+            self.bank_holidays,
+            "1980-06-23",
+            "1981-06-22",
+            "1997-06-23",
+            "1998-06-22",
+            "2001-06-18",
+        )
+        self.assertHolidayName(name, self.bank_holidays, range(1940, 2050))
+
+    def test_cultural_diversity_day(self):
+        name_1 = "Día de la Raza"
+        name_2 = "Día de la Diversidad Cultural"
+        self.assertHolidayName(
+            name_1, self.bank_holidays, (f"{year}-10-12" for year in range(1920, 1933))
+        )
+        self.assertHolidayName(
+            name_1,
+            self.bank_holidays,
+            (f"{year}-10-12" for year in set(range(1937, 1997)).difference({1982, 1983})),
+        )
+        self.assertNoHolidayName(name_1, self.bank_holidays, range(1933, 1937))
+        self.assertNoHolidayName(name_1, self.bank_holidays, range(2014, 2050))
+        self.assertHolidayName(
+            name_1,
+            self.bank_holidays,
+            "1982-10-11",
+            "1983-10-10",
+            "1999-10-11",
+            "2013-10-12",
+        )
+        self.assertHolidayName(name_1, self.bank_holidays, range(1937, 2014))
+
+        self.assertHolidayName(
+            name_2,
+            self.bank_holidays,
+            "2014-10-12",
             "2018-10-15",
             "2019-10-12",
             "2020-10-12",
@@ -142,66 +267,98 @@ class TestUY(TestCase):
             "2022-10-10",
             "2023-10-16",
         )
-        self.assertHolidayName("Día del Respeto a la Diversidad Cultural", dt)
+        self.assertNoHolidayName(name_2, self.bank_holidays, range(1920, 2014))
+        self.assertHolidayName(name_2, self.bank_holidays, range(2014, 2050))
+
+    def test_all_souls_day(self):
+        name = "Día de los Difuntos"
+        self.assertHolidayName(
+            name, self.bank_holidays, (f"{year}-11-02" for year in range(1920, 1933))
+        )
+        self.assertHolidayName(
+            name,
+            self.bank_holidays,
+            (
+                f"{year}-11-02"
+                for year in set(range(1938, 2050)).difference({1982, 1983, 1999, 2000, 2001})
+            ),
+        )
+        self.assertNoHolidayName(name, self.bank_holidays, range(1933, 1938))
+        self.assertHolidayName(
+            name,
+            self.bank_holidays,
+            "1982-11-01",
+            "1983-10-31",
+            "1999-11-01",
+            "2000-11-06",
+            "2001-11-05",
+        )
+        self.assertHolidayName(name, self.bank_holidays, range(1938, 2050))
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
-            ("2021-01-01", "Año Nuevo"),
-            ("2021-01-06", "Día de los Niños"),
-            ("2021-02-15", "Día de Carnaval"),
-            ("2021-02-16", "Día de Carnaval"),
-            ("2021-04-01", "Jueves Santo"),
-            ("2021-04-02", "Viernes Santo"),
-            ("2021-04-04", "Día de Pascuas"),
-            ("2021-04-19", "Desembarco de los 33 Orientales"),
-            ("2021-05-01", "Día de los Trabajadores"),
-            ("2021-05-17", "Batalla de Las Piedras"),
-            ("2021-06-19", "Natalicio de José Gervasio Artigas"),
-            ("2021-07-18", "Jura de la Constitución"),
-            ("2021-08-25", "Día de la Independencia"),
-            ("2021-10-11", "Día del Respeto a la Diversidad Cultural"),
-            ("2021-11-02", "Día de los Difuntos"),
-            ("2021-12-25", "Día de la Familia"),
+            ("2022-01-01", "Año Nuevo"),
+            ("2022-01-06", "Día de los Niños"),
+            ("2022-02-28", "Carnaval"),
+            ("2022-03-01", "Carnaval"),
+            ("2022-04-11", "Semana de Turismo"),
+            ("2022-04-12", "Semana de Turismo"),
+            ("2022-04-13", "Semana de Turismo"),
+            ("2022-04-14", "Semana de Turismo"),
+            ("2022-04-15", "Semana de Turismo"),
+            ("2022-04-18", "Desembarco de los 33 Orientales"),
+            ("2022-05-01", "Día de los Trabajadores"),
+            ("2022-05-16", "Batalla de Las Piedras"),
+            ("2022-06-19", "Natalicio de Artigas"),
+            ("2022-07-18", "Jura de la Constitución"),
+            ("2022-08-25", "Declaratoria de la Independencia"),
+            ("2022-10-10", "Día de la Diversidad Cultural"),
+            ("2022-11-02", "Día de los Difuntos"),
+            ("2022-12-25", "Día de la Familia"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
-            ("2021-01-01", "New Year's Day"),
-            ("2021-01-06", "Children's Day"),
-            ("2021-02-15", "Carnival Day"),
-            ("2021-02-16", "Carnival Day"),
-            ("2021-04-01", "Maundy Thursday"),
-            ("2021-04-02", "Good Friday"),
-            ("2021-04-04", "Easter Day"),
-            ("2021-04-19", "Landing of the 33 Patriots"),
-            ("2021-05-01", "International Workers' Day"),
-            ("2021-05-17", "Battle of Las Piedras"),
-            ("2021-06-19", "Birthday of José Gervasio Artigas"),
-            ("2021-07-18", "Constitution Day"),
-            ("2021-08-25", "Independence Day"),
-            ("2021-10-11", "Respect for Cultural Diversity Day"),
-            ("2021-11-02", "All Souls' Day"),
-            ("2021-12-25", "Day of the Family"),
+            ("2022-01-01", "New Year's Day"),
+            ("2022-01-06", "Children's Day"),
+            ("2022-02-28", "Carnival"),
+            ("2022-03-01", "Carnival"),
+            ("2022-04-11", "Tourism Week"),
+            ("2022-04-12", "Tourism Week"),
+            ("2022-04-13", "Tourism Week"),
+            ("2022-04-14", "Tourism Week"),
+            ("2022-04-15", "Tourism Week"),
+            ("2022-04-18", "Landing of the 33 Patriots"),
+            ("2022-05-01", "International Workers' Day"),
+            ("2022-05-16", "Battle of Las Piedras"),
+            ("2022-06-19", "Birthday of Artigas"),
+            ("2022-07-18", "Constitution Day"),
+            ("2022-08-25", "Independence Day"),
+            ("2022-10-10", "Cultural Diversity Day"),
+            ("2022-11-02", "All Souls' Day"),
+            ("2022-12-25", "Day of the Family"),
         )
 
     def test_l10n_uk(self):
         self.assertLocalizedHolidays(
             "uk",
-            ("2021-01-01", "Новий рік"),
-            ("2021-01-06", "День захисту дітей"),
-            ("2021-02-15", "Карнавал"),
-            ("2021-02-16", "Карнавал"),
-            ("2021-04-01", "Великий четвер"),
-            ("2021-04-02", "Страсна пʼятниця"),
-            ("2021-04-04", "Великдень"),
-            ("2021-04-19", "День висадки 33 патріотів"),
-            ("2021-05-01", "День трудящих"),
-            ("2021-05-17", "День битви при Лас-Пʼєдрас"),
-            ("2021-06-19", "Річниця Хосе Гервасіо Артіґаса"),
-            ("2021-07-18", "День присяги Конституції"),
-            ("2021-08-25", "День незалежності"),
-            ("2021-10-11", "День поваги до культурного різноманіття"),
-            ("2021-11-02", "День усіх померлих"),
-            ("2021-12-25", "День родини"),
+            ("2022-01-01", "Новий рік"),
+            ("2022-01-06", "День дітей"),
+            ("2022-02-28", "Карнавал"),
+            ("2022-03-01", "Карнавал"),
+            ("2022-04-11", "Тиждень туризму"),
+            ("2022-04-12", "Тиждень туризму"),
+            ("2022-04-13", "Тиждень туризму"),
+            ("2022-04-14", "Тиждень туризму"),
+            ("2022-04-15", "Тиждень туризму"),
+            ("2022-04-18", "День висадки 33 патріотів"),
+            ("2022-05-01", "День трудящих"),
+            ("2022-05-16", "День битви при Лас-Пʼєдрас"),
+            ("2022-06-19", "Річниця Артігаса"),
+            ("2022-07-18", "День присяги Конституції"),
+            ("2022-08-25", "День проголошення незалежності"),
+            ("2022-10-10", "День культурного різноманіття"),
+            ("2022-11-02", "День усіх померлих"),
+            ("2022-12-25", "День родини"),
         )
