@@ -64,16 +64,16 @@ class SouthKorea(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, Intern
         super().__init__(*args, **kwargs)
 
     def _add_alt_holiday(
-        self, hol_date: date, hol_name: str = "", since: int = 2014, include_sat: bool = True
+        self, dt: date, name: str = "", since: int = 2014, include_sat: bool = True
     ) -> None:
         """Add alternative holiday on first day from the date provided
         that's not already a another holiday nor a weekend.
 
-        :param hol_name:
-           The name of the holiday.
-
-        :param hol_date:
+        :param dt:
            The date of the holiday.
+
+        :param name:
+           The name of the holiday.
 
         :param since:
            Year starting from which alt holiday should be added
@@ -88,23 +88,21 @@ class SouthKorea(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, Intern
         target_weekday = {SUN}
         if include_sat:
             target_weekday.add(SAT)
-        if (
-            hol_date.weekday() in target_weekday or len(self.get_list(hol_date)) > 1
-        ) and hol_date.year >= since:
-            obs_date = hol_date + td(days=+1)
+        if (dt.weekday() in target_weekday or len(self.get_list(dt)) > 1) and dt.year >= since:
+            obs_date = dt + td(days=+1)
             while obs_date.weekday() in target_weekday or obs_date in self:
                 obs_date += td(days=+1)
-            for name in (hol_name,) if hol_name else self.get_list(hol_date):
+            for name in (name,) if name else self.get_list(dt):
                 if "Alternative holiday" not in name:
-                    self._add_holiday("Alternative holiday of %s" % name, obs_date)
+                    self._add_holiday("Alternative holiday for %s" % name, obs_date)
 
     def _add_three_day_holiday(self, name: str, hol_date: date) -> None:
         for dt in (
-            self._add_holiday("The day preceding of %s" % name, hol_date + td(days=-1)),
+            self._add_holiday("The day preceding %s" % name, hol_date + td(days=-1)),
             hol_date,
             self._add_holiday("The second day of %s" % name, hol_date + td(days=+1)),
         ):
-            self._add_alt_holiday(dt, hol_name=name, include_sat=False)  # type: ignore[arg-type]
+            self._add_alt_holiday(dt, name=name, include_sat=False)  # type: ignore[arg-type]
 
     def _populate_public_holidays(self):
         if self._year <= 1947:
@@ -127,8 +125,9 @@ class SouthKorea(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, Intern
             self._add_holiday("Tree Planting Day", APR, 5)
 
         # Buddha's Birthday.
-        name = "Buddha's Birthday"
-        self._add_alt_holiday(self._add_chinese_birthday_of_buddha(name), since=2023)
+        self._add_alt_holiday(
+            self._add_chinese_birthday_of_buddha("Buddha's Birthday"), since=2023
+        )
 
         # Children's Day.
         if self._year >= 1975:

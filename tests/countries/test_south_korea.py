@@ -52,7 +52,7 @@ class TestSouthKorea(TestCase):
     def test_lunar_new_year(self):
         name = "Lunar New Year"
         self.assertHolidayName(
-            f"The day preceding of {name}",
+            f"The day preceding {name}",
             "2014-01-30",
             "2015-02-18",
             "2016-02-07",
@@ -110,7 +110,7 @@ class TestSouthKorea(TestCase):
         )
 
         self.assertHolidayName(
-            f"Alternative holiday of {name}",
+            f"Alternative holiday for {name}",
             "2016-02-10",
             "2017-01-30",
             "2020-01-27",
@@ -126,7 +126,7 @@ class TestSouthKorea(TestCase):
         self.assertHolidayName(name, (f"{year}-03-01" for year in range(2001, 2050)))
 
         self.assertHolidayName(
-            f"Alternative holiday of {name}",
+            f"Alternative holiday for {name}",
             "2025-03-03",
             "2026-03-02",
         )
@@ -148,7 +148,7 @@ class TestSouthKorea(TestCase):
         self.assertNoHoliday("1974-05-05")
 
         self.assertHolidayName(
-            f"Alternative holiday of {name}",
+            f"Alternative holiday for {name}",
             "2018-05-07",
             "2019-05-06",
             "2024-05-06",
@@ -188,7 +188,7 @@ class TestSouthKorea(TestCase):
         )
 
         self.assertHolidayName(
-            f"Alternative holiday of {name}",
+            f"Alternative holiday for {name}",
             "2023-05-29",
             "2026-05-25",
             "2029-05-21",
@@ -210,7 +210,7 @@ class TestSouthKorea(TestCase):
         self.assertHolidayName(name, (f"{year}-08-15" for year in range(2001, 2050)))
 
         self.assertHolidayName(
-            f"Alternative holiday of {name}",
+            f"Alternative holiday for {name}",
             "2021-08-16",
             "2026-08-17",
             "2027-08-16",
@@ -218,7 +218,7 @@ class TestSouthKorea(TestCase):
 
     def test_chuseok(self):
         self.assertHolidayName(
-            "The day preceding of Chuseok",
+            "The day preceding Chuseok",
             "2014-09-07",
             "2015-09-26",
             "2016-09-14",
@@ -269,7 +269,7 @@ class TestSouthKorea(TestCase):
         )
 
         self.assertHolidayName(
-            "Alternative holiday of Chuseok",
+            "Alternative holiday for Chuseok",
             "2014-09-10",
             "2015-09-29",
             "2018-09-26",
@@ -283,7 +283,7 @@ class TestSouthKorea(TestCase):
         self.assertHolidayName(name, (f"{year}-10-03" for year in range(2001, 2050)))
 
         self.assertHolidayName(
-            f"Alternative holiday of {name}",
+            f"Alternative holiday for {name}",
             "2021-10-04",
             "2026-10-05",
             "2027-10-04",
@@ -297,7 +297,7 @@ class TestSouthKorea(TestCase):
         self.assertNoHolidayName(name, range(1991, 2013))
 
         self.assertHolidayName(
-            f"Alternative holiday of {name}",
+            f"Alternative holiday for {name}",
             "2021-10-11",
             "2022-10-10",
             "2027-10-11",
@@ -308,7 +308,7 @@ class TestSouthKorea(TestCase):
         self.assertHolidayName(name, (f"{year}-12-25" for year in range(2001, 2050)))
 
         self.assertHolidayName(
-            f"Alternative holiday of {name}",
+            f"Alternative holiday for {name}",
             "2027-12-27",
             "2032-12-27",
             "2033-12-26",
