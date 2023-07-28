@@ -13,7 +13,6 @@ from datetime import date
 from datetime import timedelta as td
 from typing import Optional
 
-from holidays.calendars.gregorian import FEB, APR, JUN, JUL, OCT
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 
@@ -23,7 +22,7 @@ class Burundi(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
     Burundian holidays
     Note that holidays falling on a sunday maybe observed
     on the following Monday.
-    This depends on formal annoucemnts by the government,
+    This depends on formal announcements by the government,
     which only happens close to the date of the holiday.
 
     Primary sources:
@@ -38,13 +37,15 @@ class Burundi(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
         IslamicHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _add_holiday(self, *args) -> Optional[date]:
-        dt = super()._add_holiday(*args)
-        if self.observed and dt and self._is_sunday(dt):
-            super()._add_holiday(
-                "%s (Observed)" % self[dt], dt + td(days=+1)  # type: ignore[index, operator]
-            )
-        return dt
+    def _add_holiday(self, name: str, *args) -> Optional[date]:
+        dt = args if len(args) > 1 else args[0]
+        dt = dt if isinstance(dt, date) else date(self._year, *dt)
+
+        dt_added = super()._add_holiday(name, dt)
+        if self.observed and dt_added and self._is_sunday(dt_added):
+            dt_added = super()._add_holiday("%s (Observed)" % self[dt], dt + td(days=+1))
+
+        return dt_added
 
     def _populate(self, year):
         if year <= 1961:
@@ -57,11 +58,11 @@ class Burundi(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
 
         # Unity Day
         if year >= 1992:
-            self._add_holiday("Unity Day", FEB, 5)
+            self._add_holiday_feb_5("Unity Day")
 
         # President Ntaryamira Day
         if year >= 1995:
-            self._add_holiday("President Ntaryamira Day", APR, 6)
+            self._add_holiday_apr_6("President Ntaryamira Day")
 
         # Labour Day
         self._add_labor_day("Labour Day")
@@ -71,20 +72,20 @@ class Burundi(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
 
         # President Nkurunziza Day
         if year >= 2022:
-            self._add_holiday("President Nkurunziza Day", JUN, 8)
+            self._add_holiday_jun_8("President Nkurunziza Day")
 
         # Independence Day
-        self._add_holiday("Independence Day", JUL, 1)
+        self._add_holiday_jul_1("Independence Day")
 
         # Assumption Day
         self._add_assumption_of_mary_day("Assumption Day")
 
         # Prince Louis Rwagasore Day
-        self._add_holiday("Prince Louis Rwagasore Day", OCT, 13)
+        self._add_holiday_oct_13("Prince Louis Rwagasore Day")
 
         # President Ndadaye's Day
         if year >= 1994:
-            self._add_holiday("President Ndadaye's Day", OCT, 21)
+            self._add_holiday_oct_21("President Ndadaye's Day")
 
         # All Saints' Day
         self._add_all_saints_day("All Saints' Day")

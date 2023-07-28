@@ -14,7 +14,6 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -74,11 +73,9 @@ class Bolivia(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Supreme Decree #0405.
         if year >= 2010:
             self._add_observed(
-                self._add_holiday(
+                self._add_holiday_jan_22(
                     # Plurinational State Foundation Day.
-                    tr("Día de la Creación del Estado Plurinacional de Bolivia"),
-                    JAN,
-                    22,
+                    tr("Día de la Creación del Estado Plurinacional de Bolivia")
                 )
             )
 
@@ -107,14 +104,14 @@ class Bolivia(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Supreme Decree #0173.
         if year >= 2009:
             # Aymara New Year.
-            self._add_observed(self._add_holiday(tr("Año Nuevo Aymara Amazónico"), JUN, 21))
+            self._add_observed(self._add_holiday_jun_21(tr("Año Nuevo Aymara Amazónico")))
 
         # Independence Day.
-        self._add_observed(self._add_holiday(tr("Día de la Independencia de Bolivia"), AUG, 6))
+        self._add_observed(self._add_holiday_aug_6(tr("Día de la Independencia de Bolivia")))
 
         if year >= 2020:
             # National Dignity Day.
-            self._add_holiday(tr("Día de la Dignidad Nacional"), OCT, 17)
+            self._add_holiday_oct_17(tr("Día de la Dignidad Nacional"))
 
         # Supreme Decree #21060.
         if 1985 <= year <= 1988:
@@ -133,27 +130,27 @@ class Bolivia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_b_holidays(self):
         # Beni Day.
-        self._add_holiday(tr("Día del departamento de Beni"), NOV, 18)
+        self._add_holiday_nov_18(tr("Día del departamento de Beni"))
 
     def _add_subdiv_c_holidays(self):
         # Cochabamba Day.
-        self._add_holiday(tr("Día del departamento de Cochabamba"), SEP, 14)
+        self._add_holiday_sep_14(tr("Día del departamento de Cochabamba"))
 
     def _add_subdiv_h_holidays(self):
         # Chuquisaca Day.
-        self._add_holiday(tr("Día del departamento de Chuquisaca"), MAY, 25)
+        self._add_holiday_may_25(tr("Día del departamento de Chuquisaca"))
 
     def _add_subdiv_l_holidays(self):
         # La Paz Day.
-        self._add_holiday(tr("Día del departamento de La Paz"), JUL, 16)
+        self._add_holiday_jul_16(tr("Día del departamento de La Paz"))
 
     def _add_subdiv_n_holidays(self):
         # Pando Day.
-        self._add_holiday(tr("Día del departamento de Pando"), OCT, 11)
+        self._add_holiday_oct_11(tr("Día del departamento de Pando"))
 
     def _add_subdiv_p_holidays(self):
         # Potosí Day.
-        self._add_holiday(tr("Día del departamento de Potosí"), NOV, 10)
+        self._add_holiday_nov_10(tr("Día del departamento de Potosí"))
 
     def _add_subdiv_o_holidays(self):
         # Carnival in Oruro.
@@ -161,11 +158,11 @@ class Bolivia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_s_holidays(self):
         # Santa Cruz Day.
-        self._add_holiday(tr("Día del departamento de Santa Cruz"), SEP, 24)
+        self._add_holiday_sep_24(tr("Día del departamento de Santa Cruz"))
 
     def _add_subdiv_t_holidays(self):
         # La Tablada.
-        self._add_holiday(tr("La Tablada"), APR, 15)
+        self._add_holiday_apr_15(tr("La Tablada"))
 
 
 class BO(Bolivia):
