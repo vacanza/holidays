@@ -152,10 +152,7 @@ class TestEcuador(TestCase):
             ("2022-10-10", "Independencia de Guayaquil (Observado)"),
             ("2022-11-02", "Día de los Difuntos"),
             ("2022-11-03", "Independencia de Cuenca"),
-            (
-                "2022-11-04",
-                "Día de los Difuntos (Observado); Independencia de Cuenca (Observado)",
-            ),
+            ("2022-11-04", "Día de los Difuntos (Observado); Independencia de Cuenca (Observado)"),
             ("2022-12-25", "Día de Navidad"),
             ("2022-12-26", "Día de Navidad (Observado)"),
         )
@@ -190,10 +187,7 @@ class TestEcuador(TestCase):
             ("2022-10-10", "Independencia de Guayaquil (Observado)"),
             ("2022-11-02", "Día de los Difuntos"),
             ("2022-11-03", "Independencia de Cuenca"),
-            (
-                "2022-11-04",
-                "Día de los Difuntos (Observado); Independencia de Cuenca (Observado)",
-            ),
+            ("2022-11-04", "Día de los Difuntos (Observado); Independencia de Cuenca (Observado)"),
             ("2022-12-25", "Día de Navidad"),
             ("2022-12-26", "Día de Navidad (Observado)"),
         )
@@ -210,18 +204,12 @@ class TestEcuador(TestCase):
             ("2022-05-23", "The Battle of Pichincha (Observed)"),
             ("2022-05-24", "The Battle of Pichincha"),
             ("2022-08-10", "Declaration of Independence of Quito"),
-            (
-                "2022-08-12",
-                "Declaration of Independence of Quito (Observed)",
-            ),
+            ("2022-08-12", "Declaration of Independence of Quito (Observed)"),
             ("2022-10-09", "Independence of Guayaquil"),
             ("2022-10-10", "Independence of Guayaquil (Observed)"),
             ("2022-11-02", "All Souls' Day"),
             ("2022-11-03", "Independence of Cuenca"),
-            (
-                "2022-11-04",
-                "All Souls' Day (Observed); Independence of Cuenca (Observed)",
-            ),
+            ("2022-11-04", "All Souls' Day (Observed); Independence of Cuenca (Observed)"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "Christmas Day (Observed)"),
         )
@@ -243,10 +231,7 @@ class TestEcuador(TestCase):
             ("2022-10-10", "День незалежності Гуаякіля (вихідний)"),
             ("2022-11-02", "День усіх померлих"),
             ("2022-11-03", "День незалежності Куенки"),
-            (
-                "2022-11-04",
-                "День незалежності Куенки (вихідний); День усіх померлих (вихідний)",
-            ),
+            ("2022-11-04", "День незалежності Куенки (вихідний); День усіх померлих (вихідний)"),
             ("2022-12-25", "Різдво Христове"),
             ("2022-12-26", "Різдво Христове (вихідний)"),
         )

@@ -25,12 +25,13 @@ class TestDE(TestCase):
 
     def test_no_data_before_1990(self):
         self.assertNoHolidays(DE(years=1989))
-        de_1989 = sum(DE(years=1989, subdiv=p) for p in DE.subdivisions)
-        self.assertEqual(len(de_1989), 0)
+        for p in DE.subdivisions:
+            self.assertNoHolidays(DE(years=1989, subdiv=p))
 
     def test_1990_present(self):
-        de_1990 = sum(DE(years=1990, subdiv=p) for p in DE.subdivisions)
-        y_1990 = set(de_1990.values())
+        y_1990 = set()
+        for p in DE.subdivisions:
+            y_1990.update(DE(years=1990, subdiv=p).values())
         all_h = {  # Holidays names in their chronological order.
             "Tag der Deutschen Einheit",
             "Reformationstag",
@@ -48,8 +49,9 @@ class TestDE(TestCase):
         )
 
     def test_all_holidays_present(self):
-        de_2015 = sum(DE(years=2015, subdiv=p) for p in DE.subdivisions)
-        y_2015 = set(de_2015.values())
+        y_2015 = set()
+        for p in DE.subdivisions:
+            y_2015.update(DE(years=2015, subdiv=p).values())
         all_h = {  # Holidays names in their chronological order.
             "Neujahr",
             "Heilige Drei Könige",

@@ -253,10 +253,7 @@ class TestPoland(TestCase):
             ("2018-08-15", "Assumption of the Virgin Mary"),
             ("2018-11-01", "All Saints' Day"),
             ("2018-11-11", "National Independence Day"),
-            (
-                "2018-11-12",
-                "National Independence Day - 100th anniversary",
-            ),
+            ("2018-11-12", "National Independence Day - 100th anniversary"),
             ("2018-12-25", "Christmas (Day 1)"),
             ("2018-12-26", "Christmas (Day 2)"),
         )
