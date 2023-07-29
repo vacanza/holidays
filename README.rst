@@ -332,7 +332,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Georgia
      - GE
      -
-     - en_US, **ka**
+     - en_US, **ka**, uk
    * - Germany
      - DE
      - States: BB, BE, BW, BY, BYP, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH
