@@ -71,7 +71,7 @@ repos:
         always_run: true
         entry: make check
         language: system
-        name: run tests
+        name: run `make check`
         pass_filenames: false
         stages:
           - push
