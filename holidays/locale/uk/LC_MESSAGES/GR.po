@@ -1,78 +1,79 @@
-# Greece holidays en_US localization.
-# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
+# Greece holidays uk localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.30\n"
 "POT-Creation-Date: 2023-07-27 18:57+0300\n"
-"PO-Revision-Date: 2023-07-27 19:01+0300\n"
+"PO-Revision-Date: 2023-07-27 19:16+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
-"Language: en_US\n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || "
+"n%100>14) ? 1 : 2);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
 msgid "Πρωτοχρονιά"
-msgstr "New Year's Day"
+msgstr "Новий рік"
 
 #. Epiphany.
 msgid "Θεοφάνεια"
-msgstr "Epiphany"
+msgstr "Богоявлення"
 
 #. Clean Monday.
 msgid "Καθαρά Δευτέρα"
-msgstr "Clean Monday"
+msgstr "Чистий понеділок"
 
 #. Independence Day.
 msgid "Εικοστή Πέμπτη Μαρτίου"
-msgstr "Independence Day"
+msgstr "День незалежності"
 
 #. Good Friday.
 msgid "Μεγάλη Παρασκευή"
-msgstr "Good Friday"
+msgstr "Страсна пʼятниця"
 
 #. Easter Monday.
 msgid "Δευτέρα του Πάσχα"
-msgstr "Easter Monday"
+msgstr "Великодній понеділок"
 
 #. Monday of the Holy Spirit.
 msgid "Δευτέρα του Αγίου Πνεύματος"
-msgstr "Easter Monday"
+msgstr "День Святого Духа"
 
 #. Labour Day.
 msgid "Εργατική Πρωτομαγιά"
-msgstr "Labor Day"
+msgstr "День праці"
 
 #. %s (Observed).
 #, c-format
 msgid "%s (παρατηρήθηκε)"
-msgstr "%s (Observed)"
+msgstr "%s (вихідний)"
 
 #. Dormition of the Mother of God.
 msgid "Κοίμηση της Θεοτόκου"
-msgstr "Dormition of the Mother of God"
+msgstr "Успіння Пресвятої Богородиці"
 
 #. Ochi Day.
 msgid "Ημέρα του Όχι"
-msgstr "Ochi Day"
+msgstr "День Охі"
 
 #. Christmas Day.
 msgid "Χριστούγεννα"
-msgstr "Christmas Day"
+msgstr "Різдво Христове"
 
 #. Glorifying of the Mother of God.
 msgid "Σύναξη της Υπεραγίας Θεοτόκου"
-msgstr "Glorifying Mother of God"
+msgstr "Собор Пресвятої Богородиці"
 
 #. Christmas Eve.
 msgid "Παραμονή Χριστουγέννων"
-msgstr "Christmas Eve"
+msgstr "Святий вечір"
 
 #. New Year's Eve.
 msgid "Παραμονή Πρωτοχρονιάς"
-msgstr "New Year's Eve"
+msgstr "Переддень Нового року"
