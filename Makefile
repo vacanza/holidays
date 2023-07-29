@@ -17,6 +17,12 @@ check:
 	make doc
 	make test
 
+clean:
+	find . -name *.mo -delete
+	find . -name *.pyc -delete
+	rm -rf .mypy_cache/*
+	rm -rf .pytest_cache/*
+
 coverage:
 	pytest --cov=. --cov-config=pyproject.toml --cov-report term-missing --dist loadscope --no-cov-on-fail --numprocesses auto
 
