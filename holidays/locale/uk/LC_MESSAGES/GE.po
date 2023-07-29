@@ -1,81 +1,82 @@
-# Georgia holidays.
-# Authors: Arkadii Yakovets <ark@cho.red>, (c) 2023.
+# Georgia holidays uk localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Python Holidays 0.30\n"
 "POT-Creation-Date: 2023-07-18 17:31+0300\n"
-"PO-Revision-Date: 2023-07-18 17:57+0300\n"
+"PO-Revision-Date: 2023-07-18 18:06+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
-"Language: ka\n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || "
+"n%100>14) ? 1 : 2);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
 msgid "ახალი წელი"
-msgstr ""
+msgstr "Новий рік"
 
 #. Christmas Day.
 msgid "ქრისტეშობა"
-msgstr ""
+msgstr "Різдво Христове"
 
 #. Epiphany.
 msgid "ნათლისღება"
-msgstr ""
+msgstr "Богоявлення"
 
 #. Mother's Day.
 msgid "დედის დღე"
-msgstr ""
+msgstr "День матері"
 
 #. International Women's Day.
 msgid "ქალთა საერთაშორისო დღე"
-msgstr ""
+msgstr "Міжнародний жіночий день"
 
 #. Good Friday.
 msgid "წითელი პარასკევი"
-msgstr ""
+msgstr "Страсна пʼятниця"
 
 #. Holy Saturday.
 msgid "დიდი შაბათი"
-msgstr ""
+msgstr "Велика субота"
 
 #. Easter Sunday.
 msgid "აღდგომა"
-msgstr ""
+msgstr "Великдень"
 
 #. Easter Monday.
 msgid "შავი ორშაბათი"
-msgstr ""
+msgstr "Великодній понеділок"
 
 #. National Unity Day.
 msgid "ეროვნული ერთიანობის დღე"
-msgstr ""
+msgstr "День національної єдності"
 
 #. Day of Victory over Fascism.
 msgid "ფაშიზმზე გამარჯვების დღე"
-msgstr ""
+msgstr "День перемоги над фашизмом"
 
 #. Saint Andrew the First-Called Day.
 msgid "წმინდა ანდრია პირველწოდებულის დღე"
-msgstr ""
+msgstr "День святого Андрія Первозваного"
 
 #. Independence Day.
 msgid "დამოუკიდებლობის დღე"
-msgstr ""
+msgstr "День незалежності"
 
 #. Assumption of the Virgin Mary Day.
 msgid "მარიამობა"
-msgstr ""
+msgstr "Успіння Пресвятої Богородиці"
 
 #. Holiday of Svetitskhovloba, Robe of Jesus.
 msgid "მცხეთობის"
-msgstr ""
+msgstr "Свято Светіцховлоба, Ризи Господньої"
 
 #. Saint George's Day
 msgid "გიორგობა"
-msgstr ""
+msgstr "День святого Георгія"
