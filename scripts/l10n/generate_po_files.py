@@ -31,9 +31,13 @@ class POGenerator:
         pot_file = pofile(pot_path)
 
         po_file.merge(pot_file)
+
+        # Update the project version if po file entries translation has changed only.
         if po_file != po_file_initial:
             po_file.metadata["Project-Id-Version"] = f"Python Holidays {package_version}"
-            po_file.save(po_path)
+
+        # Save the file each time in order to capture all other changes properly.
+        po_file.save(po_path)
 
     def process_countries(self):
         """Processes entities in specified directory."""
