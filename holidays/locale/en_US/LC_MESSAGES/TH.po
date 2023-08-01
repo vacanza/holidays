@@ -204,4 +204,4 @@ msgstr "Royal Ploughing Ceremony"
 #. Teacher's Day
 #: ./holidays/countries/thailand.py:758
 msgid "วันครู"
-msgstr ""
+msgstr "Teacher's Day"
