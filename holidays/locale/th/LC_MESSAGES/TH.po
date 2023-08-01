@@ -80,6 +80,10 @@ msgstr ""
 msgid "วันสิ้นปี"
 msgstr ""
 
+#. National Children's Day
+msgid "วันเด็กแห่งชาติ"
+msgstr ""
+
 #. Chakri Memorial Day.
 msgid "วันจักรี"
 msgstr ""
@@ -177,6 +181,25 @@ msgstr ""
 msgid "วันเข้าพรรษา"
 msgstr ""
 
+#. Royal Thai Armed Forces Day
+msgid "วันกองทัพไทย"
+msgstr ""
+
+#. Additional Closing Day for Bank for Agriculture and Agricultural
+#. Cooperatives
+msgid ""
+"วันหยุดเพิ่มเติมสำหรับการปิดบัญชีประจำปีของธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร"
+msgstr ""
+
+#. Mid-Year Closing Day
+msgid "วันหยุดภาคครึ่งปีของสถาบันการเงินและสถาบันการเงินเฉพาะกิจ"
+msgstr ""
+
 #. Royal Ploughing Ceremony.
 msgid "วันพืชมงคล"
+msgstr ""
+
+#. Teacher's Day
+#: ./holidays/countries/thailand.py:758
+msgid "วันครู"
 msgstr ""
