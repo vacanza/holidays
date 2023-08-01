@@ -11,7 +11,6 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import MAY, JUN
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -44,7 +43,7 @@ class Luxembourg(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 2019:
             # Europe Day.
-            self._add_holiday(tr("Europadag"), MAY, 9)
+            self._add_holiday_may_9(tr("Europadag"))
 
         # Ascension Day.
         self._add_ascension_thursday(tr("Christi Himmelfaart"))
@@ -53,7 +52,7 @@ class Luxembourg(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_whit_monday(tr("Péngschtméindeg"))
 
         # National Day.
-        self._add_holiday(tr("Nationalfeierdag"), JUN, 23)
+        self._add_holiday_jun_23(tr("Nationalfeierdag"))
 
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("Léiffrawëschdag"))
