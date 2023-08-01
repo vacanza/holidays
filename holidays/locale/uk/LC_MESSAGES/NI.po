@@ -17,56 +17,45 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/nicaragua.py:55
 msgid "Año Nuevo"
 msgstr "Новий рік"
 
 #. Maundy Thursday.
-#: ./holidays/countries/nicaragua.py:58
 msgid "Jueves Santo"
 msgstr "Великий четвер"
 
 #. Good Friday.
-#: ./holidays/countries/nicaragua.py:61
 msgid "Viernes Santo"
 msgstr "Страсна пʼятниця"
 
 #. Labor Day.
-#: ./holidays/countries/nicaragua.py:64
 msgid "Día del Trabajo"
 msgstr "День праці"
 
 #. Revolution Day.
-#: ./holidays/countries/nicaragua.py:68
 msgid "Día de la Revolución"
 msgstr "День революції"
 
 #. Battle of San Jacinto Day.
-#: ./holidays/countries/nicaragua.py:71
 msgid "Batalla de San Jacinto"
 msgstr "Річниця битви під Сан-Хасінто"
 
 #. Independence Day.
-#: ./holidays/countries/nicaragua.py:74
 msgid "Día de la Independencia"
 msgstr "День незалежності"
 
 #. Virgin's Day.
-#: ./holidays/countries/nicaragua.py:77
 msgid "Concepción de María"
 msgstr "Непорочне зачаття Діви Марії"
 
 #. Christmas.
-#: ./holidays/countries/nicaragua.py:80
 msgid "Navidad"
 msgstr "Різдво Христове"
 
 #. Descent of Saint Dominic.
-#: ./holidays/countries/nicaragua.py:84
 msgid "Bajada de Santo Domingo"
 msgstr "Спуск Святого Домініка"
 
 #. Ascent of Saint Dominic.
-#: ./holidays/countries/nicaragua.py:87
 msgid "Subida de Santo Domingo"
 msgstr "Підйом Святого Домініка"

@@ -9,403 +9,555 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import unittest
-from datetime import date
-from datetime import timedelta as td
-
-import holidays
+from holidays.countries.australia import Australia, AU, AUS
+from tests.common import TestCase
 
 
-class TestAU(unittest.TestCase):
-    def setUp(self):
-        self.holidays = holidays.AU(observed=True)
-        self.state_hols = {
-            state: holidays.AU(observed=True, subdiv=state) for state in holidays.AU.subdivisions
+class TestAustralia(TestCase):
+    @classmethod
+    def setUpClass(cls):
+        years = range(1900, 2050)
+        super().setUpClass(Australia, years=years, years_non_observed=range(2000, 2024))
+        cls.subdiv_holidays = {
+            subdiv: Australia(subdiv=subdiv, years=years) for subdiv in Australia.subdivisions
         }
 
-    def test_new_years(self):
-        for year in range(1900, 2100):
-            dt = date(year, 1, 1)
-            self.assertIn(dt, self.holidays)
-        for year, day in enumerate([3, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1], 2011):  # 2011-15  # 2016-21
-            dt = date(year, 1, day)
-            for state, hols in self.state_hols.items():
-                self.assertIn(dt, hols, (state, dt))
-                self.assertEqual(hols[dt][:10], "New Year's", state)
+    def test_country_aliases(self):
+        self.assertCountryAliases(Australia, AU, AUS)
 
-    def test_australia_day(self):
-        for year, day in enumerate(
-            [26, 26, 28, 27, 26, 26, 26, 26, 28, 27, 26],
-            2011,  # 2011-15  # 2016-21
-        ):
-            jan26 = date(year, 1, 26)
-            dt = date(year, 1, day)
-            self.assertIn(jan26, self.holidays, dt)
-            self.assertEqual(self.holidays[jan26], "Australia Day")
-            self.assertIn(dt, self.holidays, dt)
-            self.assertEqual(self.holidays[dt][:10], "Australia ")
-            for state in holidays.AU.subdivisions:
-                self.assertIn(jan26, self.state_hols[state], (state, dt))
-                self.assertEqual(self.state_hols[state][jan26], "Australia Day")
-                self.assertIn(dt, self.state_hols[state], (state, dt))
-                self.assertEqual(self.state_hols[state][dt][:10], "Australia ")
-        self.assertNotIn(date(2016, 1, 27), self.holidays)
-        self.assertNotIn(date(1887, 1, 26), self.holidays)
-        self.assertNotIn(date(1934, 1, 26), self.state_hols["SA"])
-        for dt in [date(1889, 1, 26), date(1936, 1, 26), date(1945, 1, 26)]:
-            self.assertIn(dt, self.state_hols["NSW"], dt)
-            self.assertEqual(self.state_hols["NSW"][dt], "Anniversary Day")
+    def test_new_years(self):
+        name = "New Year's Day"
+        self.assertHolidayName(name, (f"{year}-01-01" for year in range(1900, 2050)))
+        obs_dt = (
+            "2000-01-03",
+            "2005-01-03",
+            "2006-01-02",
+            "2011-01-03",
+            "2012-01-02",
+            "2017-01-02",
+            "2022-01-03",
+            "2023-01-02",
+        )
+        self.assertHolidayName(f"{name} (Observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+
+        for subdiv in Australia.subdivisions:
+            self.assertHolidayName(
+                name, self.subdiv_holidays[subdiv], (f"{year}-01-01" for year in range(1900, 2050))
+            )
+            self.assertHolidayName(f"{name} (Observed)", self.subdiv_holidays[subdiv], obs_dt)
+            self.assertNoNonObservedHoliday(Australia(subdiv=subdiv, observed=False), obs_dt)
 
     def test_good_friday(self):
-        for dt in [
-            date(1900, 4, 13),
-            date(1901, 4, 5),
-            date(1902, 3, 28),
-            date(1999, 4, 2),
-            date(2000, 4, 21),
-            date(2010, 4, 2),
-            date(2018, 3, 30),
-            date(2019, 4, 19),
-            date(2020, 4, 10),
-        ]:
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Good Friday")
+        name = "Good Friday"
+        dt = (
+            "1999-04-02",
+            "2000-04-21",
+            "2010-04-02",
+            "2018-03-30",
+            "2019-04-19",
+            "2020-04-10",
+            "2021-04-02",
+            "2022-04-15",
+        )
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(1900, 2050))
+        for subdiv in Australia.subdivisions:
+            self.assertHolidayName(name, self.subdiv_holidays[subdiv], dt)
 
     def test_easter_saturday(self):
-        for dt in [
-            date(1900, 4, 14),
-            date(1901, 4, 6),
-            date(1902, 3, 29),
-            date(1999, 4, 3),
-            date(2000, 4, 22),
-            date(2010, 4, 3),
-            date(2018, 3, 31),
-            date(2019, 4, 20),
-            date(2020, 4, 11),
-        ]:
-            for state in ["ACT", "NSW", "NT", "QLD", "SA", "VIC"]:
-                self.assertIn(dt, self.state_hols[state], (state, dt))
-                self.assertEqual(self.state_hols[state][dt], "Easter Saturday")
-            for state in ["TAS", "WA"]:
-                self.assertNotIn(dt, self.state_hols[state], (state, dt))
+        name = "Easter Saturday"
+        dt = (
+            "1999-04-03",
+            "2000-04-22",
+            "2010-04-03",
+            "2018-03-31",
+            "2019-04-20",
+            "2020-04-11",
+            "2021-04-03",
+            "2022-04-16",
+        )
+        for subdiv in ("ACT", "NSW", "NT", "QLD", "SA", "VIC"):
+            self.assertHolidayName(name, self.subdiv_holidays[subdiv], dt)
+        for subdiv in ("TAS", "WA"):
+            self.assertNoHolidayName(name, self.subdiv_holidays[subdiv])
+        self.assertNoHolidayName(name)
 
     def test_easter_sunday(self):
-        for dt in [
-            date(1900, 4, 15),
-            date(1901, 4, 7),
-            date(1902, 3, 30),
-            date(1999, 4, 4),
-            date(2010, 4, 4),
-            date(2018, 4, 1),
-            date(2019, 4, 21),
-            date(2020, 4, 12),
-        ]:
-            for state in ["NSW", "ACT", "QLD", "VIC"]:
-                self.assertIn(dt, self.state_hols[state], (state, dt))
-                self.assertEqual(self.state_hols[state][dt], "Easter Sunday")
-            for state in ["NT", "SA", "TAS", "WA"]:
-                self.assertNotIn(dt, self.state_hols[state], (state, dt))
+        name = "Easter Sunday"
+        dt = (
+            "1999-04-04",
+            "2000-04-23",
+            "2010-04-04",
+            "2018-04-01",
+            "2019-04-21",
+            "2020-04-12",
+            "2021-04-04",
+            "2022-04-17",
+        )
+        for subdiv in ("ACT", "NSW", "QLD", "VIC"):
+            self.assertHolidayName(name, self.subdiv_holidays[subdiv], dt)
+        for subdiv in ("NT", "SA", "TAS", "WA"):
+            self.assertNoHolidayName(name, self.subdiv_holidays[subdiv])
+        self.assertNoHolidayName(name)
 
     def test_easter_monday(self):
-        for dt in [
-            date(1900, 4, 16),
-            date(1901, 4, 8),
-            date(1902, 3, 31),
-            date(1999, 4, 5),
-            date(2010, 4, 5),
-            date(2018, 4, 2),
-            date(2019, 4, 22),
-            date(2020, 4, 13),
-        ]:
-            self.assertIn(dt, self.holidays)
-            self.assertEqual(self.holidays[dt], "Easter Monday")
-            self.assertNotIn(dt + td(days=+1), self.holidays)
+        name = "Easter Monday"
+        dt = (
+            "1999-04-05",
+            "2000-04-24",
+            "2010-04-05",
+            "2018-04-02",
+            "2019-04-22",
+            "2020-04-13",
+            "2021-04-05",
+            "2022-04-18",
+        )
+        self.assertHolidayName(name, dt)
+        self.assertHolidayName(name, range(1900, 2050))
+        for subdiv in Australia.subdivisions:
+            self.assertHolidayName(name, self.subdiv_holidays[subdiv], dt)
 
-    def test_bank_holiday(self):
-        for dt in [
-            date(1912, 8, 5),
-            date(1913, 8, 4),
-            date(1999, 8, 2),
-            date(2018, 8, 6),
-            date(2020, 8, 3),
-        ]:
-            self.assertIn(dt, self.state_hols["NSW"], dt)
-            self.assertEqual(self.state_hols["NSW"][dt], "Bank Holiday")
+    def test_australia_day(self):
+        name_1 = "Anniversary Day"
+        name_2 = "Australia Day"
+        self.assertHolidayName(name_2, (f"{year}-01-26" for year in range(1935, 2050)))
+        self.assertNoHolidayName(name_2, range(1900, 1935))
+        for subdiv in set(Australia.subdivisions) - {"NSW"}:
+            self.assertHolidayName(
+                name_2,
+                self.subdiv_holidays[subdiv],
+                (f"{year}-01-26" for year in range(1935, 2050)),
+            )
+            self.assertNoHolidayName(name_2, self.subdiv_holidays[subdiv], range(1900, 1935))
+        self.assertHolidayName(
+            name_1, self.subdiv_holidays["NSW"], (f"{year}-01-26" for year in range(1935, 1946))
+        )
+        self.assertHolidayName(
+            name_2, self.subdiv_holidays["NSW"], (f"{year}-01-26" for year in range(1946, 2050))
+        )
 
-    def test_labour_day(self):
-        for year, day in enumerate(
-            [
-                7,
-                5,
-                4,
-                3,
-                2,
-                7,
-                6,
-            ],
-            2011,
-        ):
-            dt = date(year, 3, day)
-            self.assertIn(dt, self.state_hols["WA"], dt)
-            self.assertEqual(self.state_hols["WA"][dt], "Labour Day")
-        for year, day in enumerate([10, 9, 14], 2014):
-            dt = date(year, 3, day)
-            self.assertNotIn(dt, self.holidays, dt)
-            self.assertIn(dt, self.state_hols["VIC"], dt)
-            self.assertEqual(self.state_hols["VIC"][dt], "Labour Day")
+        self.assertHolidayName(name_1, (f"{year}-01-26" for year in range(1900, 1935)))
+        self.assertNoHolidayName(name_1, Australia(years=1887))
+        for subdiv in set(Australia.subdivisions) - {"SA"}:
+            self.assertHolidayName(
+                name_1,
+                self.subdiv_holidays[subdiv],
+                (f"{year}-01-26" for year in range(1900, 1935)),
+            )
+            self.assertNoHolidayName(name_1, Australia(subdiv=subdiv, years=1887))
+
+        obs_dt = (
+            "2002-01-28",
+            "2003-01-27",
+            "2008-01-28",
+            "2013-01-28",
+            "2014-01-27",
+            "2019-01-28",
+            "2020-01-27",
+        )
+        self.assertHolidayName(f"{name_2} (Observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+        self.assertNoHolidayName(f"{name_2} (Observed)", range(1900, 1946))
 
     def test_anzac_day(self):
-        for year in range(1900, 1921):
-            dt = date(year, 4, 25)
-            self.assertNotIn(dt, self.holidays)
-        for year in range(1921, 2100):
-            dt = date(year, 4, 25)
-            self.assertIn(dt, self.holidays)
-        for dt in [date(2015, 4, 27), date(2020, 4, 27)]:
-            self.assertNotIn(dt, self.holidays, dt)
-            for state in ["NT", "WA"]:
-                self.assertIn(dt, self.state_hols[state], (state, dt))
-                self.assertEqual(self.state_hols[state][dt][:5], "Anzac")
-            for state in ["ACT", "QLD", "SA", "NSW", "TAS", "VIC"]:
-                self.assertNotIn(dt, self.state_hols[state], (state, dt))
-        dt = date(2021, 4, 26)
-        for state in ["ACT", "NT", "QLD", "SA", "WA"]:
-            self.assertIn(dt, self.state_hols[state], (state, dt))
-            self.assertEqual(self.state_hols[state][dt][:5], "Anzac")
-        for state in ["NSW", "TAS", "VIC"]:
-            self.assertNotIn(dt, self.state_hols[state], (state, dt))
-
-    def test_western_australia_day(self):
-        for year, day in enumerate([4, 3, 2], 2012):
-            dt = date(year, 6, day)
-            self.assertIn(dt, self.state_hols["WA"], dt)
-            self.assertEqual(self.state_hols["WA"][dt], "Foundation Day")
-        for year, day in enumerate([1, 6, 5], 2015):
-            dt = date(year, 6, day)
-            self.assertIn(dt, self.state_hols["WA"], dt)
-            self.assertEqual(self.state_hols["WA"][dt], "Western Australia Day")
-        self.assertNotIn("1832-06-04", self.state_hols["WA"])
-
-    def test_adelaide_cup(self):
-        for dt in [date(2015, 3, 9), date(2016, 3, 14), date(2017, 3, 13)]:
-            self.assertIn(dt, self.state_hols["SA"], dt)
-            self.assertEqual(self.state_hols["SA"][dt], "Adelaide Cup")
-
-    def test_queens_birthday(self):
-        # Western Australia
-        for dt in [
-            date(2012, 10, 1),
-            date(2013, 9, 30),
-            date(2014, 9, 29),
-            date(2015, 9, 28),
-            date(2016, 9, 26),
-            date(2017, 9, 25),
-        ]:
-            self.assertIn(dt, self.state_hols["WA"], dt)
-            self.assertEqual(self.state_hols["WA"][dt], "Queen's Birthday")
-        # Other states except Queensland
-        other_states = [
-            date(2010, 6, 14),
-            date(2011, 6, 13),
-            date(2012, 6, 11),
-            date(2013, 6, 10),
-            date(2014, 6, 9),
-            date(2015, 6, 8),
-            date(2016, 6, 13),
-            date(2017, 6, 12),
-            date(2018, 6, 11),
-        ]
-        for dt in other_states:
-            self.assertIn(dt, self.state_hols["NSW"], dt)
-            self.assertIn(dt, self.state_hols["VIC"], dt)
-            self.assertIn(dt, self.state_hols["ACT"], dt)
-        # Queensland
-        qld_dates = other_states[:-3]
-        qld_dates.remove(date(2012, 6, 11))
-        qld_dates.extend(
-            [
-                date(2012, 10, 1),
-                date(2016, 10, 3),
-                date(2017, 10, 2),
-                date(2018, 10, 1),
-            ]
-        )
-        for dt in qld_dates:
-            self.assertIn(dt, self.state_hols["QLD"], dt)
-            self.assertEqual(self.state_hols["QLD"][dt], "Queen's Birthday")
-        self.assertIn(date(2012, 6, 11), self.state_hols["QLD"])
-
-    def test_picnic_day(self):
-        for dt in [date(2015, 8, 3), date(2016, 8, 1)]:
-            self.assertIn(dt, self.state_hols["NT"], dt)
-            self.assertEqual(self.state_hols["NT"][dt], "Picnic Day")
-
-    def test_family_and_community_day(self):
-        for dt in [
-            date(2007, 11, 6),
-            date(2008, 11, 4),
-            date(2009, 11, 3),
-            date(2010, 9, 26),
-            date(2011, 10, 10),
-            date(2012, 10, 8),
-            date(2013, 9, 30),
-            date(2014, 9, 29),
-            date(2015, 9, 28),
-            date(2016, 9, 26),
-            date(2017, 9, 25),
-        ]:
-            self.assertIn(dt, self.state_hols["ACT"], dt)
-            self.assertEqual(self.state_hols["ACT"][dt], "Family & Community Day")
-
-    def test_reconciliation_day(self):
-        for dt in [date(2018, 5, 28), date(2019, 5, 27), date(2020, 6, 1)]:
-            self.assertIn(dt, self.state_hols["ACT"], dt)
-            self.assertEqual(self.state_hols["ACT"][dt], "Reconciliation Day")
-
-    def test_national_day_of_mourning_for_queen_elizabeth_II(self):
-        dt = date(2022, 9, 22)
-        for state in ["ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"]:
-            self.assertIn(dt, self.state_hols[state], (state, dt))
-            self.assertEqual(
-                self.state_hols[state][dt],
-                "National Day of Mourning for Queen Elizabeth II",
+        name = "Anzac Day"
+        self.assertHolidayName(name, (f"{year}-04-25" for year in range(1921, 2050)))
+        self.assertNoHolidayName(name, range(1900, 1921))
+        for subdiv in Australia.subdivisions:
+            self.assertHolidayName(
+                name, self.subdiv_holidays[subdiv], (f"{year}-04-25" for year in range(1921, 2050))
             )
-        self.assertIn(dt, self.holidays, dt)
-        self.assertEqual(
-            self.holidays[dt],
-            "National Day of Mourning for Queen Elizabeth II",
+            self.assertNoHolidayName(name, self.subdiv_holidays[subdiv], range(1900, 1921))
+
+        obs_dt = (
+            "2004-04-26",
+            "2010-04-26",
+            "2021-04-26",
         )
-
-    def test_grand_final_day(self):
-        dt = date(2019, 9, 27)
-        dt_2020 = date(2020, 10, 23)
-        dt_2020_old = date(2020, 9, 25)
-        dt_2021 = date(2021, 9, 24)
-        dt_2022 = date(2022, 9, 23)
-        self.assertIn(dt, self.state_hols["VIC"], dt)
-        self.assertEqual(self.state_hols["VIC"][dt], "Grand Final Day")
-        self.assertIn(dt_2020, self.state_hols["VIC"], dt_2020)
-        self.assertEqual(self.state_hols["VIC"][dt_2020], "Grand Final Day")
-        self.assertNotIn(dt_2020_old, self.state_hols["VIC"], dt_2020_old)
-        self.assertIn(dt_2021, self.state_hols["VIC"], dt_2021)
-        self.assertEqual(self.state_hols["VIC"][dt_2021], "Grand Final Day")
-        self.assertIn(dt_2022, self.state_hols["VIC"])
-        self.assertEqual(self.state_hols["VIC"][dt_2022], "Grand Final Day")
-
-    def test_melbourne_cup(self):
-        fixtures = [
-            date(2014, 11, 4),
-            date(2015, 11, 3),
-            date(2016, 11, 1),
-            date(2022, 11, 1),
-        ]
-        for dt in fixtures:
-            self.assertIn(dt, self.state_hols["VIC"], dt)
-            self.assertEqual(self.state_hols["VIC"][dt], "Melbourne Cup")
-
-    def test_royal_queensland_show(self):
-        holiday_name = "The Royal Queensland Show"
-        qld_holidays = self.state_hols["QLD"]
-        for year, day in enumerate((15, 14, 14, 29, 10, 16), 2018):
-            dt = date(year, 10 if year == 2021 else 8, day)
-            self.assertIn(dt, qld_holidays, dt)
-            self.assertEqual(qld_holidays[dt], holiday_name)
-
-        self.assertEqual(
-            1, len(holidays.Australia(subdiv="QLD", years=2020).get_named(holiday_name))
-        )
+        for subdiv in ("ACT", "NT", "QLD", "SA", "WA"):
+            self.assertHolidayName(f"{name} (Observed)", self.subdiv_holidays[subdiv], obs_dt)
+            self.assertNoNonObservedHoliday(Australia(subdiv=subdiv, observed=False), obs_dt)
+        for subdiv in ("NSW", "TAS", "VIC"):
+            self.assertNoHoliday(self.subdiv_holidays[subdiv], obs_dt)
 
     def test_christmas_day(self):
-        self.holidays.observed = False
-        for year in range(1900, 2100):
-            dt = date(year, 12, 25)
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=-1), self.holidays)
-        self.assertNotIn(date(2010, 12, 24), self.holidays)
-        self.assertNotEqual(
-            self.holidays[date(2011, 12, 26)],
-            "Christmas Day (Observed)",
+        name = "Christmas Day"
+        self.assertHolidayName(name, (f"{year}-12-25" for year in range(1900, 2050)))
+        obs_dt = (
+            "2004-12-27",
+            "2005-12-27",
+            "2010-12-27",
+            "2011-12-27",
+            "2016-12-27",
+            "2021-12-27",
+            "2022-12-27",
         )
-        self.holidays.observed = True
-        self.assertEqual(
-            self.holidays[date(2011, 12, 27)],
-            "Christmas Day (Observed)",
-        )
-        for year, day in enumerate(
-            [
-                25,
-                25,
-                25,
-                27,
-                27,  # 2001-05
-                25,
-                25,
-                25,
-                25,
-                27,  # 2006-10
-                27,
-                25,
-                25,
-                25,
-                25,  # 2011-15
-                27,
-                25,
-                25,
-                25,
-                25,
-                25,
-            ],  # 2016-21
-            2001,
-        ):
-            dt = date(year, 12, day)
-            self.assertIn(dt, self.holidays, dt)
-            self.assertEqual(self.holidays[dt][:9], "Christmas")
+        self.assertHolidayName(f"{name} (Observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+
+        for subdiv in Australia.subdivisions:
+            self.assertHolidayName(
+                name, self.subdiv_holidays[subdiv], (f"{year}-12-25" for year in range(1900, 2050))
+            )
+            self.assertHolidayName(f"{name} (Observed)", self.subdiv_holidays[subdiv], obs_dt)
+            self.assertNoNonObservedHoliday(Australia(subdiv=subdiv, observed=False), obs_dt)
 
     def test_boxing_day(self):
-        self.holidays.observed = False
-        for year in range(1900, 2100):
-            dt = date(year, 12, 26)
-            self.assertIn(dt, self.holidays)
-            self.assertNotIn(dt + td(days=+1), self.holidays)
-        self.assertNotIn(date(2009, 12, 28), self.holidays)
-        self.assertNotIn(date(2010, 12, 27), self.holidays)
-        self.holidays.observed = True
-        self.assertIn(date(2009, 12, 28), self.holidays)
-        self.assertIn(date(2010, 12, 27), self.holidays)
-        for year, day in enumerate(
-            [
-                26,
-                26,
-                26,
-                28,
-                26,  # 2001-05
-                26,
-                26,
-                26,
-                28,
-                28,  # 2006-10
-                26,
-                26,
-                26,
-                26,
-                28,  # 2011-15
-                26,
-                26,
-                26,
-                26,
-                28,
-                28,
-            ],  # 2016-21
-            2001,
-        ):
-            dt = date(year, 12, day)
-            self.assertIn(dt, self.holidays, dt)
-            self.assertEqual(self.holidays[dt][:6], "Boxing")
+        name_common = "Boxing Day"
+        name_sa = "Proclamation Day"
+        self.assertHolidayName(name_common, (f"{year}-12-26" for year in range(1900, 2050)))
+        obs_dt = (
+            "2004-12-28",
+            "2009-12-28",
+            "2010-12-28",
+            "2015-12-28",
+            "2020-12-28",
+            "2021-12-28",
+        )
+        self.assertHolidayName(f"{name_common} (Observed)", obs_dt)
+        self.assertNoNonObservedHoliday(obs_dt)
+
+        for subdiv in Australia.subdivisions:
+            name = name_sa if subdiv == "SA" else name_common
+            self.assertHolidayName(
+                name, self.subdiv_holidays[subdiv], (f"{year}-12-26" for year in range(1900, 2050))
+            )
+            self.assertHolidayName(f"{name} (Observed)", self.subdiv_holidays[subdiv], obs_dt)
+            self.assertNoNonObservedHoliday(Australia(subdiv=subdiv, observed=False), obs_dt)
+
+    def test_labour_day(self):
+        name = "Labour Day"
+        dt = (
+            "2000-10-02",
+            "2010-10-04",
+            "2018-10-01",
+            "2019-10-07",
+            "2020-10-05",
+            "2021-10-04",
+            "2022-10-03",
+        )
+        for subdiv in ("ACT", "NSW", "SA"):
+            self.assertHolidayName(name, self.subdiv_holidays[subdiv], dt)
+
+        dt = (
+            "2000-05-01",
+            "2010-05-03",
+            "2018-05-07",
+            "2019-05-06",
+            "2020-05-04",
+            "2021-05-03",
+            "2022-05-02",
+        )
+        self.assertHolidayName("May Day", self.subdiv_holidays["NT"], dt)
+
+        self.assertHolidayName(name, self.subdiv_holidays["QLD"], dt)
+        self.assertHolidayName(
+            name, self.subdiv_holidays["QLD"], "2013-10-07", "2014-10-06", "2015-10-05"
+        )
+
+        dt = (
+            "2000-03-13",
+            "2010-03-08",
+            "2018-03-12",
+            "2019-03-11",
+            "2020-03-09",
+            "2021-03-08",
+            "2022-03-14",
+        )
+        self.assertHolidayName("Eight Hours Day", self.subdiv_holidays["TAS"], dt)
+
+        self.assertHolidayName(name, self.subdiv_holidays["VIC"], dt)
+
+        dt = (
+            "2000-03-06",
+            "2010-03-01",
+            "2018-03-05",
+            "2019-03-04",
+            "2020-03-02",
+            "2021-03-01",
+            "2022-03-07",
+        )
+        self.assertHolidayName(name, self.subdiv_holidays["WA"], dt)
+
+    def test_sovereigns_birthday(self):
+        name_king = "King's Birthday"
+        name_queen = "Queen's Birthday"
+        self.assertHolidayName(name_king, (f"{year}-11-09" for year in range(1902, 1912)))
+        self.assertHolidayName(name_king, (f"{year}-06-03" for year in range(1912, 1936)))
+        for subdiv in Australia.subdivisions:
+            self.assertHolidayName(
+                name_king,
+                self.subdiv_holidays[subdiv],
+                (f"{year}-11-09" for year in range(1902, 1912)),
+            )
+            self.assertHolidayName(
+                name_king,
+                self.subdiv_holidays[subdiv],
+                (f"{year}-06-03" for year in range(1912, 1936)),
+            )
+        self.assertNoHolidayName(name_king, range(1936, 2050))
+        self.assertNoHolidayName(name_queen, range(1936, 2050))
+
+        dt = (
+            "2000-06-12",
+            "2010-06-14",
+            "2018-06-11",
+            "2019-06-10",
+            "2020-06-08",
+            "2021-06-14",
+            "2022-06-13",
+        )
+        for subdiv in ("ACT", "NSW", "NT", "SA", "TAS", "VIC"):
+            self.assertHolidayName(name_queen, self.subdiv_holidays[subdiv], dt)
+            self.assertHolidayName(name_king, self.subdiv_holidays[subdiv], "2023-06-12")
+
+        dt = (
+            "2000-06-12",
+            "2010-06-14",
+            "2012-10-01",
+            "2016-10-03",
+            "2017-10-02",
+            "2018-10-01",
+            "2019-10-07",
+            "2020-10-05",
+            "2021-10-04",
+            "2022-10-03",
+        )
+        self.assertHolidayName(name_queen, self.subdiv_holidays["QLD"], dt)
+        self.assertHolidayName(
+            "Queen's Diamond Jubilee", self.subdiv_holidays["QLD"], "2012-06-11"
+        )
+        self.assertHolidayName(name_king, self.subdiv_holidays["QLD"], "2023-10-02")
+
+        dt = (
+            "2000-09-25",
+            "2010-09-27",
+            "2018-10-01",
+            "2019-09-30",
+            "2020-09-28",
+            "2021-09-27",
+            "2022-09-26",
+        )
+        self.assertHolidayName(name_queen, self.subdiv_holidays["WA"], dt)
+        self.assertHolidayName(name_king, self.subdiv_holidays["WA"], "2023-09-25")
+
+    def test_canberra_day(self):
+        name = "Canberra Day"
+        self.assertHolidayName(
+            name, self.subdiv_holidays["ACT"], (f"{year}-03-12" for year in range(1913, 1958))
+        )
+        dt = (
+            "1958-03-17",
+            "2000-03-20",
+            "2007-03-19",
+            "2008-03-10",
+            "2010-03-08",
+            "2012-03-12",
+            "2018-03-12",
+            "2019-03-11",
+            "2020-03-09",
+            "2021-03-08",
+            "2022-03-14",
+        )
+        self.assertHolidayName(name, self.subdiv_holidays["ACT"], dt)
+        self.assertNoHolidayName(name, self.subdiv_holidays["ACT"], range(1900, 1913))
+        self.assertNoHolidayName(name)
+        for subdiv in set(Australia.subdivisions) - {"ACT"}:
+            self.assertNoHolidayName(name, self.subdiv_holidays[subdiv])
+
+    def test_family_and_community_day(self):
+        name = "Family & Community Day"
+        dt = (
+            "2007-11-06",
+            "2008-11-04",
+            "2009-11-03",
+            "2010-09-26",
+            "2011-10-10",
+            "2012-10-08",
+            "2013-09-30",
+            "2014-09-29",
+            "2015-09-28",
+            "2016-09-26",
+            "2017-09-25",
+        )
+        self.assertHolidayName(name, self.subdiv_holidays["ACT"], dt)
+        self.assertNoHolidayName(
+            name, self.subdiv_holidays["ACT"], range(1900, 2007), range(2018, 2050)
+        )
+        self.assertNoHolidayName(name)
+        for subdiv in set(Australia.subdivisions) - {"ACT"}:
+            self.assertNoHolidayName(name, self.subdiv_holidays[subdiv])
+
+    def test_reconciliation_day(self):
+        name = "Reconciliation Day"
+        dt = (
+            "2018-05-28",
+            "2019-05-27",
+            "2020-06-01",
+            "2021-05-31",
+            "2022-05-30",
+        )
+        self.assertHolidayName(name, self.subdiv_holidays["ACT"], dt)
+        self.assertNoHolidayName(name, self.subdiv_holidays["ACT"], range(1900, 2018))
+        self.assertNoHolidayName(name)
+        for subdiv in set(Australia.subdivisions) - {"ACT"}:
+            self.assertNoHolidayName(name, self.subdiv_holidays[subdiv])
+
+    def test_bank_holiday(self):
+        name = "Bank Holiday"
+        dt = (
+            "2000-08-07",
+            "2010-08-02",
+            "2018-08-06",
+            "2019-08-05",
+            "2020-08-03",
+            "2021-08-02",
+            "2022-08-01",
+        )
+        self.assertHolidayName(name, self.subdiv_holidays["NSW"], dt)
+        self.assertNoHolidayName(name, self.subdiv_holidays["NSW"], range(1900, 1912))
+        self.assertNoHolidayName(name)
+        for subdiv in set(Australia.subdivisions) - {"NSW"}:
+            self.assertNoHolidayName(name, self.subdiv_holidays[subdiv])
+
+    def test_picnic_day(self):
+        name = "Picnic Day"
+        dt = (
+            "2000-08-07",
+            "2010-08-02",
+            "2018-08-06",
+            "2019-08-05",
+            "2020-08-03",
+            "2021-08-02",
+            "2022-08-01",
+        )
+        self.assertHolidayName(name, self.subdiv_holidays["NT"], dt)
+        self.assertHolidayName(name, self.subdiv_holidays["NT"], range(1900, 2050))
+        self.assertNoHolidayName(name)
+        for subdiv in set(Australia.subdivisions) - {"NT"}:
+            self.assertNoHolidayName(name, self.subdiv_holidays[subdiv])
+
+    def test_royal_queensland_show(self):
+        name = "The Royal Queensland Show"
+        dt = (
+            "2000-08-16",
+            "2010-08-11",
+            "2018-08-15",
+            "2019-08-14",
+            "2020-08-14",
+            "2021-10-29",
+            "2022-08-10",
+        )
+        self.assertHolidayName(name, self.subdiv_holidays["QLD"], dt)
+        self.assertHolidayName(name, self.subdiv_holidays["QLD"], range(1900, 2050))
+        self.assertNoHolidayName(name)
+        for subdiv in set(Australia.subdivisions) - {"QLD"}:
+            self.assertNoHolidayName(name, self.subdiv_holidays[subdiv])
+
+    def test_adelaide_cup(self):
+        name = "Adelaide Cup"
+        dt = (
+            "2000-03-20",
+            "2005-03-21",
+            "2006-03-13",
+            "2018-03-12",
+            "2019-03-11",
+            "2020-03-09",
+            "2021-03-08",
+            "2022-03-14",
+        )
+        self.assertHolidayName(name, self.subdiv_holidays["SA"], dt)
+        self.assertHolidayName(name, self.subdiv_holidays["SA"], range(1900, 2050))
+        self.assertNoHolidayName(name)
+        for subdiv in set(Australia.subdivisions) - {"SA"}:
+            self.assertNoHolidayName(name, self.subdiv_holidays[subdiv])
+
+    def test_melbourne_cup(self):
+        name = "Melbourne Cup"
+        dt = (
+            "2000-11-07",
+            "2010-11-02",
+            "2018-11-06",
+            "2019-11-05",
+            "2020-11-03",
+            "2021-11-02",
+            "2022-11-01",
+        )
+        self.assertHolidayName(name, self.subdiv_holidays["VIC"], dt)
+        self.assertHolidayName(name, self.subdiv_holidays["VIC"], range(1900, 2050))
+        self.assertNoHolidayName(name)
+        for subdiv in set(Australia.subdivisions) - {"VIC"}:
+            self.assertNoHolidayName(name, self.subdiv_holidays[subdiv])
+
+    def test_grand_final_day(self):
+        name = "Grand Final Day"
+        dt = (
+            "2015-09-25",
+            "2016-09-30",
+            "2017-09-29",
+            "2018-09-28",
+            "2019-09-27",
+            "2020-10-23",
+            "2021-09-24",
+            "2022-09-23",
+        )
+        self.assertHolidayName(name, self.subdiv_holidays["VIC"], dt)
+        self.assertHolidayName(name, self.subdiv_holidays["VIC"], range(2015, 2050))
+        self.assertNoHolidayName(name, self.subdiv_holidays["VIC"], range(1900, 2015))
+        self.assertNoHoliday(self.subdiv_holidays["VIC"], "2020-09-25", "2022-09-30")
+        self.assertNoHolidayName(name)
+        for subdiv in set(Australia.subdivisions) - {"VIC"}:
+            self.assertNoHolidayName(name, self.subdiv_holidays[subdiv])
+
+    def test_western_australia_day(self):
+        name_1 = "Foundation Day"
+        name_2 = "Western Australia Day"
+        dt_1 = (
+            "2000-06-05",
+            "2005-06-06",
+            "2010-06-07",
+            "2011-06-06",
+            "2012-06-04",
+            "2013-06-03",
+            "2014-06-02",
+        )
+        dt_2 = (
+            "2015-06-01",
+            "2016-06-06",
+            "2017-06-05",
+            "2018-06-04",
+            "2019-06-03",
+            "2020-06-01",
+            "2021-06-07",
+            "2022-06-06",
+        )
+        self.assertHolidayName(name_1, self.subdiv_holidays["WA"], dt_1)
+        self.assertHolidayName(name_2, self.subdiv_holidays["WA"], dt_2)
+        self.assertNoHolidayName(name_1, self.subdiv_holidays["WA"], range(2015, 2050))
+        self.assertNoHolidayName(name_2, self.subdiv_holidays["WA"], range(1900, 2015))
+        self.assertNoHolidayName(name_1, Australia(subdiv="WA", years=1832))
+        self.assertNoHolidayName(name_1)
+        self.assertNoHolidayName(name_2)
+
+        for subdiv in set(Australia.subdivisions) - {"WA"}:
+            self.assertNoHolidayName(name_1, self.subdiv_holidays[subdiv])
+            self.assertNoHolidayName(name_2, self.subdiv_holidays[subdiv])
+
+    def test_national_day_of_mourning_for_queen_elizabeth_II(self):
+        name = "National Day of Mourning for Queen Elizabeth II"
+        dt = "2022-09-22"
+        self.assertHolidayName(name, dt)
+        for subdiv in Australia.subdivisions:
+            self.assertHolidayName(name, self.subdiv_holidays[subdiv], dt)
 
     def test_all_holidays(self):
-        au = sum(holidays.AU(years=[1957, 2012, 2015], subdiv=p) for p in holidays.AU.subdivisions)
-        holidays_found = sum((au.get_list(key) for key in au), [])
-        all_holidays = [
+        holidays_found = set()
+        for subdiv in Australia.subdivisions:
+            holidays_found.update(
+                Australia(subdiv=subdiv, observed=False, years=(1957, 2012, 2015)).values()
+            )
+        all_holidays = {
             "New Year's Day",
             "Australia Day",
             "Adelaide Cup",
@@ -416,16 +568,20 @@ class TestAU(unittest.TestCase):
             "Easter Monday",
             "Anzac Day",
             "Queen's Birthday",
+            "Queen's Diamond Jubilee",
+            "Bank Holiday",
+            "The Royal Queensland Show",
             "Western Australia Day",
+            "Foundation Day",
             "Family & Community Day",
             "Labour Day",
             "Eight Hours Day",
             "May Day",
             "Picnic Day",
             "Melbourne Cup",
+            "Grand Final Day",
             "Christmas Day",
             "Proclamation Day",
             "Boxing Day",
-        ]
-        for holiday in all_holidays:
-            self.assertIn(holiday, holidays_found, holiday)
+        }
+        self.assertEqual(all_holidays, holidays_found)

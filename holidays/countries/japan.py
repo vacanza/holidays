@@ -29,18 +29,23 @@ from holidays.calendars.gregorian import (
     DEC,
     MON,
 )
+from holidays.constants import BANK, PUBLIC
 from holidays.helpers import _normalize_tuple
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import InternationalHolidays
 
 
-class Japan(HolidayBase):
+class Japan(HolidayBase, InternationalHolidays):
     """
-    https://en.wikipedia.org/wiki/Public_holidays_in_Japan
+    References:
+
+    - https://en.wikipedia.org/wiki/Public_holidays_in_Japan
+    - https://www.boj.or.jp/en/about/outline/holi.htm
     """
 
     country = "JP"
     default_language = "ja"
-    special_holidays = {
+    special_public_holidays = {
         1959: (APR, 10, tr("結婚の儀")),  # The Crown Prince marriage ceremony.
         1989: (FEB, 24, tr("大喪の礼")),  # State Funeral of Emperor Shōwa.
         1990: (NOV, 12, tr("即位礼正殿の儀")),  # Enthronement ceremony.
@@ -50,27 +55,35 @@ class Japan(HolidayBase):
             (OCT, 22, tr("即位礼正殿の儀が行われる日")),  # Enthronement ceremony.
         ),
     }
+    supported_categories = {BANK, PUBLIC}
     supported_languages = ("en_US", "ja")
 
-    def _populate(self, year):
-        if year < 1949 or year > 2099:
+    def __init__(self, *args, **kwargs) -> None:
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
+    def _populate_public_holidays(self):
+        if self._year < 1949 or self._year > 2099:
             raise NotImplementedError
 
-        super()._populate(year)
         observed_dates = set()
 
         # New Year's Day.
-        observed_dates.add(self._add_holiday(tr("元日"), JAN, 1))
+        observed_dates.add(self._add_new_years_day(tr("元日")))
 
-        dt = date(year, JAN, 15) if year <= 1999 else self._get_nth_weekday_of_month(2, MON, JAN)
+        dt = (
+            date(self._year, JAN, 15)
+            if self._year <= 1999
+            else self._get_nth_weekday_of_month(2, MON, JAN)
+        )
         # Coming of Age Day.
         observed_dates.add(self._add_holiday(tr("成人の日"), dt))
 
-        if year >= 1967:
+        if self._year >= 1967:
             # Foundation Day.
             observed_dates.add(self._add_holiday(tr("建国記念の日"), FEB, 11))
 
-        if year >= 2020:
+        if self._year >= 2020:
             # Emperor's Birthday.
             observed_dates.add(self._add_holiday(tr("天皇誕生日"), FEB, 23))
 
@@ -78,9 +91,9 @@ class Japan(HolidayBase):
         observed_dates.add(self._add_holiday(tr("春分の日"), *self._vernal_equinox_date))
 
         # Showa Emperor's Birthday, Greenery Day or Showa Day.
-        if year <= 1988:
+        if self._year <= 1988:
             name = tr("天皇誕生日")
-        elif year <= 2006:
+        elif self._year <= 2006:
             # Greenery Day.
             name = tr("みどりの日")
         else:
@@ -92,38 +105,38 @@ class Japan(HolidayBase):
         observed_dates.add(self._add_holiday(tr("憲法記念日"), MAY, 3))
 
         # Greenery Day.
-        if year >= 2007:
+        if self._year >= 2007:
             observed_dates.add(self._add_holiday(tr("みどりの日"), MAY, 4))
 
         # Children's Day.
         observed_dates.add(self._add_holiday(tr("こどもの日"), MAY, 5))
 
-        if year >= 1996:
-            if year <= 2002:
-                dt = date(year, JUL, 20)
+        if self._year >= 1996:
+            if self._year <= 2002:
+                dt = date(self._year, JUL, 20)
             else:
                 dates = {
                     2020: date(2020, JUL, 23),
                     2021: date(2021, JUL, 22),
                 }
-                dt = dates.get(year, self._get_nth_weekday_of_month(3, MON, JUL))
+                dt = dates.get(self._year, self._get_nth_weekday_of_month(3, MON, JUL))
             # Marine Day.
             observed_dates.add(self._add_holiday(tr("海の日"), dt))
 
-        if year >= 2016:
+        if self._year >= 2016:
             dates = {
                 2020: date(2020, AUG, 10),
                 2021: date(2021, AUG, 8),
             }
-            dt = dates.get(year, date(year, AUG, 11))
+            dt = dates.get(self._year, date(self._year, AUG, 11))
             # Mountain Day.
             observed_dates.add(self._add_holiday(tr("山の日"), dt))
 
-        if year >= 1966:
+        if self._year >= 1966:
             dt = (
                 self._get_nth_weekday_of_month(3, MON, SEP)
-                if year >= 2003
-                else date(year, SEP, 15)
+                if self._year >= 2003
+                else date(self._year, SEP, 15)
             )
             # Respect for the Aged Day.
             observed_dates.add(self._add_holiday(tr("敬老の日"), dt))
@@ -132,11 +145,11 @@ class Japan(HolidayBase):
         observed_dates.add(self._add_holiday(tr("秋分の日"), *self._autumnal_equinox_date))
 
         # Physical Education and Sports Day.
-        if year >= 1966:
+        if self._year >= 1966:
             name = (
                 # Sports Day.
                 tr("スポーツの日")
-                if year >= 2020
+                if self._year >= 2020
                 # Physical Education Day.
                 else tr("体育の日")
             )
@@ -145,10 +158,10 @@ class Japan(HolidayBase):
                 2021: date(2021, JUL, 23),
             }
             dt = dates.get(
-                year,
+                self._year,
                 self._get_nth_weekday_of_month(2, MON, OCT)
-                if year >= 2000
-                else date(year, OCT, 10),
+                if self._year >= 2000
+                else date(self._year, OCT, 10),
             )
             observed_dates.add(self._add_holiday(name, dt))
 
@@ -159,12 +172,14 @@ class Japan(HolidayBase):
         observed_dates.add(self._add_holiday(tr("勤労感謝の日"), NOV, 23))
 
         # Regarding the Emperor of Heisei.
-        if 1989 <= year <= 2018:
+        if 1989 <= self._year <= 2018:
             observed_dates.add(self._add_holiday(tr("天皇誕生日"), DEC, 23))
 
         if self.observed:
-            for month, day, _ in _normalize_tuple(self.special_holidays.get(year, ())):
-                observed_dates.add(date(year, month, day))
+            for month, day, _ in _normalize_tuple(
+                self.special_public_holidays.get(self._year, ())
+            ):
+                observed_dates.add(date(self._year, month, day))
 
             # When a national holiday falls on Sunday, next working day
             # shall become a public holiday (振替休日) - substitute holidays.
@@ -187,6 +202,16 @@ class Japan(HolidayBase):
                     continue
                 # National Holiday.
                 self._add_holiday(tr("国民の休日"), hol_date)
+
+    def _populate_bank_holidays(self):
+        if self._year < 1949 or self._year > 2099:
+            raise NotImplementedError
+
+        # Bank Holiday.
+        name = tr("銀行休業日")
+        self._add_new_years_day_two(name)
+        self._add_new_years_day_three(name)
+        self._add_new_years_eve(name)
 
     @property
     def _vernal_equinox_date(self) -> Tuple[int, int]:

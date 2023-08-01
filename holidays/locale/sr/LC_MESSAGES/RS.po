@@ -16,51 +16,41 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/serbia.py:47
 msgid "Нова година"
 msgstr ""
 
 #. Orthodox Christmas.
-#: ./holidays/countries/serbia.py:52
 msgid "Божић"
 msgstr ""
 
 #. Statehood Day.
-#: ./holidays/countries/serbia.py:55
 msgid "Дан државности Србије"
 msgstr ""
 
 #. International Workers' Day.
-#: ./holidays/countries/serbia.py:60
 msgid "Празник рада"
 msgstr ""
 
 #. Armistice Day.
-#: ./holidays/countries/serbia.py:69
 msgid "Дан примирја у Првом светском рату"
 msgstr ""
 
 #. Good Friday.
-#: ./holidays/countries/serbia.py:72
 msgid "Велики петак"
 msgstr ""
 
 #. Easter Saturday.
-#: ./holidays/countries/serbia.py:74
 msgid "Велика субота"
 msgstr ""
 
 #. Easter Sunday.
-#: ./holidays/countries/serbia.py:76
 msgid "Васкрс"
 msgstr ""
 
 #. Easter Monday.
-#: ./holidays/countries/serbia.py:78
 msgid "Други дан Васкрса"
 msgstr ""
 
-#: ./holidays/countries/serbia.py:41
 #, c-format
 msgid "%s (слободан дан)"
 msgstr ""

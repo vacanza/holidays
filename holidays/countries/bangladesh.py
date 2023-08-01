@@ -10,13 +10,11 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-
-from holidays.calendars.gregorian import FEB, MAR, APR, MAY, AUG, DEC
 from holidays.holiday_base import HolidayBase
+from holidays.holiday_groups import InternationalHolidays
 
 
-class Bangladesh(HolidayBase):
+class Bangladesh(HolidayBase, InternationalHolidays):
     """
     https://mopa.gov.bd/sites/default/files/files/mopa.gov.bd/public_holiday/61c35b73_e335_462a_9bcf_4695b23b6d82/reg4-2019-212.PDF
     https://en.wikipedia.org/wiki/Public_holidays_in_Bangladesh
@@ -24,29 +22,33 @@ class Bangladesh(HolidayBase):
 
     country = "BD"
 
+    def __init__(self, *args, **kwargs):
+        InternationalHolidays.__init__(self)
+        super().__init__(*args, **kwargs)
+
     def _populate(self, year):
         super()._populate(year)
 
-        # 21st Feb
-        self[date(year, FEB, 21)] = "International Mother's language Day"
+        # International Mother's language Day.
+        self._add_holiday_feb_21("International Mother's language Day")
 
-        # 17th March
-        self[date(year, MAR, 17)] = "Sheikh Mujibur Rahman's Birthday and Children's Day"
+        # Sheikh Mujibur Rahman's Birthday and Children's Day.
+        self._add_holiday_mar_17("Sheikh Mujibur Rahman's Birthday and Children's Day")
 
-        # 26th March
-        self[date(year, MAR, 26)] = "Independence Day"
+        # Independence Day.
+        self._add_holiday_mar_26("Independence Day")
 
-        # 14th April
-        self[date(year, APR, 14)] = "Bengali New Year's Day"
+        # Bengali New Year's Day.
+        self._add_holiday_apr_14("Bengali New Year's Day")
 
-        # 1st May
-        self[date(year, MAY, 1)] = "May Day"
+        # May Day.
+        self._add_labor_day("May Day")
 
-        # 15th AUG
-        self[date(year, AUG, 15)] = "National Mourning Day"
+        # National Mourning Day.
+        self._add_holiday_aug_15("National Mourning Day")
 
-        # 16th Dec
-        self[date(year, DEC, 16)] = "Victory Day"
+        # Victory Day.
+        self._add_holiday_dec_16("Victory Day")
 
 
 class BD(Bangladesh):

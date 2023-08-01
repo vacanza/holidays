@@ -9,7 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-import importlib.util
 from datetime import date
 
 from holidays.countries.ethiopia import Ethiopia, ET, ETH
@@ -85,9 +84,6 @@ class TestEthiopia(TestCase):
         self.assertIn(date(1983, 9, 13), self.holidays)
 
     def test_hijri_based(self):
-        if not importlib.util.find_spec("hijri_converter"):
-            return None
-
         self.holidays = Ethiopia(years=[2019])
         # eid_alfitr
         self.assertIn(date(2019, 6, 4), self.holidays)

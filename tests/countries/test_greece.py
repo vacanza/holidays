@@ -9,6 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.constants import HALF_DAY
 from holidays.countries.greece import Greece, GR, GRC
 from tests.common import TestCase
 
@@ -31,7 +32,7 @@ class TestGreece(TestCase):
             (8, 15, "Κοίμηση της Θεοτόκου"),
             (10, 28, "Ημέρα του Όχι"),
             (12, 25, "Χριστούγεννα"),
-            (12, 26, "Επόμενη ημέρα των Χριστουγέννων"),
+            (12, 26, "Σύναξη της Υπεραγίας Θεοτόκου"),
         ):
             self.assertHolidayName(name, (f"{year}-{m}-{d}" for year in years))
 
@@ -95,6 +96,17 @@ class TestGreece(TestCase):
         self.assertNoNonObservedHoliday(dt)
         self.assertNoHolidayName(name_observed, 2017, 2018, 2019, 2020, 2023)
 
+    def test_hal_day_2022(self):
+        self.assertHolidays(
+            Greece(categories=(HALF_DAY,), years=2022),
+            ("2022-12-24", "Παραμονή Χριστουγέννων"),
+            ("2022-12-31", "Παραμονή Πρωτοχρονιάς"),
+        )
+        self.assertNoHoliday(
+            "2022-12-24",
+            "2022-12-31",
+        )
+
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "Πρωτοχρονιά"),
@@ -108,14 +120,16 @@ class TestGreece(TestCase):
             ("2022-06-13", "Δευτέρα του Αγίου Πνεύματος"),
             ("2022-08-15", "Κοίμηση της Θεοτόκου"),
             ("2022-10-28", "Ημέρα του Όχι"),
+            ("2022-12-24", "Παραμονή Χριστουγέννων"),
             ("2022-12-25", "Χριστούγεννα"),
-            ("2022-12-26", "Επόμενη ημέρα των Χριστουγέννων"),
+            ("2022-12-26", "Σύναξη της Υπεραγίας Θεοτόκου"),
+            ("2022-12-31", "Παραμονή Πρωτοχρονιάς"),
         )
 
     def test_l10n_en_us(self):
         self.assertLocalizedHolidays(
             "en_US",
-            ("2022-01-01", "New Year’s Day"),
+            ("2022-01-01", "New Year's Day"),
             ("2022-01-06", "Epiphany"),
             ("2022-03-07", "Clean Monday"),
             ("2022-03-25", "Independence Day"),
@@ -124,8 +138,30 @@ class TestGreece(TestCase):
             ("2022-05-01", "Labor Day"),
             ("2022-05-02", "Labor Day (Observed)"),
             ("2022-06-13", "Easter Monday"),
-            ("2022-08-15", "Assumption of Mary Day"),
+            ("2022-08-15", "Dormition of the Mother of God"),
             ("2022-10-28", "Ochi Day"),
+            ("2022-12-24", "Christmas Eve"),
             ("2022-12-25", "Christmas Day"),
-            ("2022-12-26", "Day After Christmas"),
+            ("2022-12-26", "Glorifying Mother of God"),
+            ("2022-12-31", "New Year's Eve"),
+        )
+
+    def test_l10n_uk(self):
+        self.assertLocalizedHolidays(
+            "uk",
+            ("2022-01-01", "Новий рік"),
+            ("2022-01-06", "Богоявлення"),
+            ("2022-03-07", "Чистий понеділок"),
+            ("2022-03-25", "День незалежності"),
+            ("2022-04-22", "Страсна пʼятниця"),
+            ("2022-04-25", "Великодній понеділок"),
+            ("2022-05-01", "День праці"),
+            ("2022-05-02", "День праці (вихідний)"),
+            ("2022-06-13", "День Святого Духа"),
+            ("2022-08-15", "Успіння Пресвятої Богородиці"),
+            ("2022-10-28", "День Охі"),
+            ("2022-12-24", "Святий вечір"),
+            ("2022-12-25", "Різдво Христове"),
+            ("2022-12-26", "Собор Пресвятої Богородиці"),
+            ("2022-12-31", "Переддень Нового року"),
         )

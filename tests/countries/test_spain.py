@@ -78,19 +78,7 @@ class TestSpain(TestCase):
                     2020: {"CM", "GA", "MC", "NC", "PV", "VC"},
                 }
                 if year <= 2014:
-                    provs = {
-                        "AR",
-                        "CL",
-                        "CM",
-                        "EX",
-                        "GA",
-                        "MC",
-                        "MD",
-                        "ML",
-                        "NC",
-                        "PV",
-                        "VC",
-                    }
+                    provs = {"AR", "CL", "CM", "EX", "GA", "MC", "MD", "ML", "NC", "PV", "VC"}
                 else:
                     provs = provs_mapping[year]
                 self.assertEqual(date(year, MAR, 19) in prov_holidays, prov in provs)

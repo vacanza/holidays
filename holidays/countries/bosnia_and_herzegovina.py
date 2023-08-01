@@ -98,8 +98,8 @@ class BosniaAndHerzegovina(HolidayBase, ChristianHolidays, InternationalHolidays
 
             # Labor Day.
             name = tr("Međunarodni praznik rada")
-            may_1 = self._add_labor_day(name)
-            self._add_holiday(name, may_1 + td(days=+1))
+            self._add_labor_day(name)
+            self._add_labor_day_two(name)
 
             # Catholic Christmas.
             self._add_christmas_day(tr("Božić (Katolički)"), GREGORIAN_CALENDAR)
@@ -119,7 +119,7 @@ class BosniaAndHerzegovina(HolidayBase, ChristianHolidays, InternationalHolidays
         self._add_christmas_day(tr("Božić (Pravoslavni)"))
 
         # Independence Day.
-        self._add_holiday(tr("Dan nezavisnosti"), MAR, 1)
+        self._add_holiday_mar_1(tr("Dan nezavisnosti"))
 
         # Catholic Good Friday.
         self._add_good_friday(tr("Veliki petak (Katolički)"), GREGORIAN_CALENDAR)
@@ -135,15 +135,14 @@ class BosniaAndHerzegovina(HolidayBase, ChristianHolidays, InternationalHolidays
 
         # Labor Day.
         name = tr("Međunarodni praznik rada")
-        may_1 = self._add_labor_day(name)
-        self._add_holiday(name, may_1 + td(days=+1))
-        self._add_observed(may_1, include_sat=False, days=+2)
+        self._add_observed(self._add_labor_day(name), include_sat=False, days=+2)
+        self._add_labor_day_two(name)
 
         # Victory Day.
         self._add_world_war_two_victory_day(tr("Dan pobjede nad fašizmom"))
 
         # Statehood Day.
-        self._add_holiday(tr("Dan državnosti"), NOV, 25)
+        self._add_holiday_nov_25(tr("Dan državnosti"))
 
         # Catholic Christmas Eve.
         self._add_christmas_eve(tr("Badnji dan (Katolički)"), GREGORIAN_CALENDAR)
@@ -164,19 +163,21 @@ class BosniaAndHerzegovina(HolidayBase, ChristianHolidays, InternationalHolidays
         self._add_new_years_day_two(name)
 
         # Orthodox Christmas.
-        self._add_observed(self._add_christmas_day(tr("Božić (Pravoslavni)")), include_sat=False)
+        self._add_observed(
+            self._add_christmas_day(tr("Božić (Pravoslavni)")),
+            include_sat=False,
+        )
 
         self._add_observed(
             # Day of establishment of Brčko District.
-            self._add_holiday(tr("Dan uspostavljanja Brčko distrikta"), MAR, 8),
+            self._add_holiday_mar_8(tr("Dan uspostavljanja Brčko distrikta")),
             include_sat=False,
         )
 
         # Labor Day.
         name = tr("Međunarodni praznik rada")
-        may_1 = self._add_labor_day(name)
-        self._add_holiday(name, may_1 + td(days=+1))
-        self._add_observed(may_1, days=+2)
+        self._add_observed(self._add_labor_day(name), days=+2)
+        self._add_labor_day_two(name)
 
         self._add_observed(
             # Catholic Christmas.
@@ -197,7 +198,7 @@ class BosniaAndHerzegovina(HolidayBase, ChristianHolidays, InternationalHolidays
         self._add_christmas_day(tr("Božić (Pravoslavni)"))
 
         # Orthodox New Year.
-        self._add_holiday(tr("Pravoslavna Nova godina"), JAN, 14)
+        self._add_holiday_jan_14(tr("Pravoslavna Nova godina"))
 
         # Catholic Good Friday.
         self._add_good_friday(tr("Veliki petak (Katolički)"), GREGORIAN_CALENDAR)
@@ -213,18 +214,15 @@ class BosniaAndHerzegovina(HolidayBase, ChristianHolidays, InternationalHolidays
 
         # Labor Day.
         name = tr("Međunarodni praznik rada")
-        may_1 = self._add_labor_day(name)
-        self._add_holiday(name, may_1 + td(days=+1))
-        self._add_observed(may_1, include_sun=False)
+        self._add_observed(self._add_labor_day(name), include_sun=False)
+        self._add_labor_day_two(name)
 
         # Victory Day.
         self._add_world_war_two_victory_day(tr("Dan pobjede nad fašizmom"))
 
-        self._add_holiday(
+        self._add_holiday_nov_21(
             # Dayton Agreement Day.
             tr("Dan uspostave Opšteg okvirnog sporazuma za mir u Bosni i Hercegovini"),
-            NOV,
-            21,
         )
 
         # Catholic Christmas Eve.

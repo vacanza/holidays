@@ -1,0 +1,77 @@
+# Czechia holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.28\n"
+"POT-Creation-Date: 2023-06-27 13:17+0300\n"
+"PO-Revision-Date: 2023-06-27 13:38+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n>=2 && n<=4 ? 1 : 2);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. Independent Czech State Restoration Day.
+msgid "Den obnovy samostatného českého státu"
+msgstr ""
+
+#. New Year's Day.
+msgid "Nový rok"
+msgstr ""
+
+#. Good Friday.
+msgid "Velký pátek"
+msgstr ""
+
+#. Easter Monday.
+msgid "Velikonoční pondělí"
+msgstr ""
+
+#. Labor Day.
+msgid "Svátek práce"
+msgstr ""
+
+#. Victory Day.
+msgid "Den vítězství"
+msgstr ""
+
+#. Day of Victory over Fascism.
+msgid "Den vítězství nad hitlerovským fašismem"
+msgstr ""
+
+#. Saints Cyril and Methodius Day.
+msgid "Den slovanských věrozvěstů Cyrila a Metoděje"
+msgstr ""
+
+#. Jan Hus Day.
+msgid "Den upálení mistra Jana Husa"
+msgstr ""
+
+#. Statehood Day.
+msgid "Den české státnosti"
+msgstr ""
+
+#. Independent Czechoslovak State Day.
+msgid "Den vzniku samostatného československého státu"
+msgstr ""
+
+#. Struggle for Freedom and Democracy Day.
+msgid "Den boje za svobodu a demokracii"
+msgstr ""
+
+#. Christmas Eve.
+msgid "Štědrý den"
+msgstr ""
+
+#. Christmas Day.
+msgid "1. svátek vánoční"
+msgstr ""
+
+#. Second Day of Christmas.
+msgid "2. svátek vánoční"
+msgstr ""

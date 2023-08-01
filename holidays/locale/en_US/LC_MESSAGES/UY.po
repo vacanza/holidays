@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.22\n"
-"POT-Creation-Date: 2023-03-05 12:23+0200\n"
-"PO-Revision-Date: 2023-03-05 13:00+0200\n"
+"Project-Id-Version: Python Holidays 0.30\n"
+"POT-Creation-Date: 2023-07-17 14:06+0300\n"
+"PO-Revision-Date: 2023-07-17 14:11+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: en_US\n"
@@ -16,77 +16,94 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.2.2\n"
 
+#. Presidential Inauguration Day.
+msgid "Inauguración del Presidente de la República"
+msgstr "Presidential Inauguration Day"
+
 #. New Year's Day.
-#: ./holidays/countries/uruguay.py:40
 msgid "Año Nuevo"
 msgstr "New Year's Day"
 
+#. Cry of Asencio.
+msgid "Grito de Asencio"
+msgstr "Cry of Asencio"
+
 #. International Workers' Day.
-#: ./holidays/countries/uruguay.py:43
 msgid "Día de los Trabajadores"
 msgstr "International Workers' Day"
 
+#. Spain Day.
+msgid "Día de España"
+msgstr "Spain Day"
+
+#. America Day.
+msgid "Día de América"
+msgstr "America Day"
+
+#. Democracy Day.
+msgid "Día de la Democracia"
+msgstr "Democracy Day"
+
+#. Humanity Day.
+msgid "Día de la Humanidad"
+msgstr "Humanity Day"
+
 #. Constitution Day.
-#: ./holidays/countries/uruguay.py:46
 msgid "Jura de la Constitución"
 msgstr "Constitution Day"
 
 #. Independence Day.
-#: ./holidays/countries/uruguay.py:49
-msgid "Día de la Independencia"
+msgid "Declaratoria de la Independencia"
 msgstr "Independence Day"
 
+#. Italy Day.
+msgid "Día de Italia"
+msgstr "Italy Day"
+
+#. Open Town Hall.
+msgid "Cabildo Abierto"
+msgstr "Open Town Hall"
+
+#. Beaches Day.
+msgid "Día de las Playas"
+msgstr "Beaches Day"
+
 #. Day of the Family.
-#: ./holidays/countries/uruguay.py:52
 msgid "Día de la Familia"
 msgstr "Day of the Family"
 
 #. Children's Day.
-#: ./holidays/countries/uruguay.py:57
 msgid "Día de los Niños"
 msgstr "Children's Day"
 
-#. Birthday of José Gervasio Artigas.
-#: ./holidays/countries/uruguay.py:60
-msgid "Natalicio de José Gervasio Artigas"
-msgstr "Birthday of José Gervasio Artigas"
+#. Carnival.
+msgid "Carnaval"
+msgstr "Carnival"
 
-#. All Souls' Day.
-#: ./holidays/countries/uruguay.py:63
-msgid "Día de los Difuntos"
-msgstr "All Souls' Day"
-
-#. Carnival Day.
-#: ./holidays/countries/uruguay.py:68
-msgid "Día de Carnaval"
-msgstr "Carnival Day"
-
-#. Maundy Thursday.
-#: ./holidays/countries/uruguay.py:73
-msgid "Jueves Santo"
-msgstr "Maundy Thursday"
-
-#. Good Friday.
-#: ./holidays/countries/uruguay.py:75
-msgid "Viernes Santo"
-msgstr "Good Friday"
-
-#. Easter Day.
-#: ./holidays/countries/uruguay.py:77
-msgid "Día de Pascuas"
-msgstr "Easter Day"
+#. Tourism Week.
+msgid "Semana de Turismo"
+msgstr "Tourism Week"
 
 #. Landing of the 33 Patriots.
-#: ./holidays/countries/uruguay.py:81
 msgid "Desembarco de los 33 Orientales"
 msgstr "Landing of the 33 Patriots"
 
 #. Battle of Las Piedras.
-#: ./holidays/countries/uruguay.py:83
 msgid "Batalla de Las Piedras"
 msgstr "Battle of Las Piedras"
 
-#. Respect for Cultural Diversity Day.
-#: ./holidays/countries/uruguay.py:85
-msgid "Día del Respeto a la Diversidad Cultural"
-msgstr "Respect for Cultural Diversity Day"
+#. Birthday of Artigas.
+msgid "Natalicio de Artigas"
+msgstr "Birthday of Artigas"
+
+#. Cultural Diversity Day.
+msgid "Día de la Diversidad Cultural"
+msgstr "Cultural Diversity Day"
+
+#. Columbus Day.
+msgid "Día de la Raza"
+msgstr "Columbus Day"
+
+#. All Souls' Day.
+msgid "Día de los Difuntos"
+msgstr "All Souls' Day"

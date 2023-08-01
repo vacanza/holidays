@@ -1,0 +1,77 @@
+# Czechia holidays uk localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.28\n"
+"POT-Creation-Date: 2023-06-27 13:17+0300\n"
+"PO-Revision-Date: 2023-06-27 16:11+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n>=2 && n<=4 ? 1 : 2);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. Independent Czech State Restoration Day.
+msgid "Den obnovy samostatného českého státu"
+msgstr "День відновлення незалежної чеської держави"
+
+#. New Year's Day.
+msgid "Nový rok"
+msgstr "Новий рік"
+
+#. Good Friday.
+msgid "Velký pátek"
+msgstr "Страсна пʼятниця"
+
+#. Easter Monday.
+msgid "Velikonoční pondělí"
+msgstr "Великодній понеділок"
+
+#. Labor Day.
+msgid "Svátek práce"
+msgstr "День праці"
+
+#. Victory Day.
+msgid "Den vítězství"
+msgstr "День перемоги"
+
+#. Day of Victory over Fascism.
+msgid "Den vítězství nad hitlerovským fašismem"
+msgstr "День перемоги над фашизмом"
+
+#. Saints Cyril and Methodius Day.
+msgid "Den slovanských věrozvěstů Cyrila a Metoděje"
+msgstr "День Святих Кирила та Мефодія"
+
+#. Jan Hus Day.
+msgid "Den upálení mistra Jana Husa"
+msgstr "День спалення Яна Гуса"
+
+#. Statehood Day.
+msgid "Den české státnosti"
+msgstr "День чеської державності"
+
+#. Independent Czechoslovak State Day.
+msgid "Den vzniku samostatného československého státu"
+msgstr "День створення незалежної чехословацької держави"
+
+#. Struggle for Freedom and Democracy Day.
+msgid "Den boje za svobodu a demokracii"
+msgstr "День боротьби за свободу і демократію"
+
+#. Christmas Eve.
+msgid "Štědrý den"
+msgstr "Святий вечір"
+
+#. Christmas Day.
+msgid "1. svátek vánoční"
+msgstr "Різдво Христове"
+
+#. Second Day of Christmas.
+msgid "2. svátek vánoční"
+msgstr "Другий день Різдва"

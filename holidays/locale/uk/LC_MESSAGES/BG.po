@@ -1,0 +1,77 @@
+# Bulgaria holidays uk localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.28\n"
+"POT-Creation-Date: 2023-06-30 20:48+0300\n"
+"PO-Revision-Date: 2023-06-30 21:19+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+msgid "Нова година"
+msgstr "Новий рік"
+
+#. Liberation Day.
+msgid "Ден на Освобождението на България от османско иго"
+msgstr "День визволення Болгарії від османського іга"
+
+#. Good Friday.
+msgid "Велики петък"
+msgstr "Страсна пʼятниця"
+
+#. Holy Saturday.
+msgid "Велика събота"
+msgstr "Велика субота"
+
+#. Easter.
+msgid "Великден"
+msgstr "Великдень"
+
+#. International Workers' Day.
+msgid "Ден на труда и на международната работническа солидарност"
+msgstr "День праці та міжнародної солідарності трудящих"
+
+#. Saint George's Day.
+msgid "Гергьовден, Ден на храбростта и Българската армия"
+msgstr "День Святого Георгія та День хоробрості і болгарської армії"
+
+#. Bulgarian Education and Culture and Slavonic Literature Day.
+msgid ""
+"Ден на светите братя Кирил и Методий, на българската азбука, просвета и "
+"култура и на славянската книжовност"
+msgstr ""
+"День святих братів Кирила і Мефодія, болгарської писемності, освіти і "
+"культури та словʼянської літератури"
+
+#. Unification Day.
+msgid "Ден на Съединението"
+msgstr "День обʼєднання"
+
+#. Independence Day.
+msgid "Ден на Независимостта на България"
+msgstr "День незалежності Болгарїі"
+
+#. Christmas Eve.
+msgid "Бъдни вечер"
+msgstr "Святий вечір"
+
+#. Christmas Day.
+msgid "Рождество Христово"
+msgstr "Різдво Христове"
+
+#, c-format
+msgid "%s (почивен ден)"
+msgstr "%s (вихідний)"
+
+#. National Awakening Day.
+msgid "Ден на народните будители"
+msgstr "День національних будителів"

@@ -1,0 +1,106 @@
+# Bolivia holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.30\n"
+"POT-Creation-Date: 2023-07-22 18:47+0300\n"
+"PO-Revision-Date: 2023-07-22 18:49+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. %s (Observed).
+#, c-format
+msgid "%s (Observado)"
+msgstr ""
+
+#. New Year's Day.
+msgid "Año Nuevo"
+msgstr ""
+
+#. Plurinational State Foundation Day.
+msgid "Día de la Creación del Estado Plurinacional de Bolivia"
+msgstr ""
+
+#. Carnival.
+msgid "Carnaval"
+msgstr ""
+
+#. Good Friday.
+msgid "Viernes Santo"
+msgstr ""
+
+#. Labor Day.
+msgid "Día del Trabajo"
+msgstr ""
+
+#. Corpus Christi.
+msgid "Corpus Christi"
+msgstr ""
+
+#. Aymara New Year.
+msgid "Año Nuevo Aymara Amazónico"
+msgstr ""
+
+#. Independence Day.
+msgid "Día de la Independencia de Bolivia"
+msgstr ""
+
+#. National Dignity Day.
+msgid "Día de la Dignidad Nacional"
+msgstr ""
+
+#. All Saints' Day.
+msgid "Día de Todos los Santos"
+msgstr ""
+
+#. All Souls' Day.
+msgid "Día de Todos los Difuntos"
+msgstr ""
+
+#. Christmas Day.
+msgid "Navidad"
+msgstr ""
+
+#. Beni Day.
+msgid "Día del departamento de Beni"
+msgstr ""
+
+#. Cochabamba Day.
+msgid "Día del departamento de Cochabamba"
+msgstr ""
+
+#. Chuquisaca Day.
+msgid "Día del departamento de Chuquisaca"
+msgstr ""
+
+#. La Paz Day.
+msgid "Día del departamento de La Paz"
+msgstr ""
+
+#. Pando Day.
+msgid "Día del departamento de Pando"
+msgstr ""
+
+#. Potosí Day.
+msgid "Día del departamento de Potosí"
+msgstr ""
+
+#. Carnival in Oruro.
+msgid "Carnaval de Oruro"
+msgstr ""
+
+#. Santa Cruz Day.
+msgid "Día del departamento de Santa Cruz"
+msgstr ""
+
+#. La Tablada.
+msgid "La Tablada"
+msgstr ""

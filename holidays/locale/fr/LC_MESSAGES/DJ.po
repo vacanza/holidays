@@ -1,0 +1,73 @@
+# Djibouti holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.30\n"
+"POT-Creation-Date: 2023-07-15 20:58+0300\n"
+"PO-Revision-Date: 2023-07-15 21:00+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. Estimated label.
+#, c-format
+msgid "%s* (*estimé)"
+msgstr ""
+
+#. New Year's Day.
+msgid "Nouvel an"
+msgstr ""
+
+#. Labor Day.
+msgid "Fête du travail"
+msgstr ""
+
+#. Independence Day.
+msgid "Fête de l'indépendance"
+msgstr ""
+
+#. Independence Day Holiday.
+msgid "Fête de l'indépendance deuxième jour"
+msgstr ""
+
+#. Christmas Day.
+msgid "Noël"
+msgstr ""
+
+#. Isra and Miraj.
+msgid "Al Isra et Al Mirague"
+msgstr ""
+
+#. Eid al-Fitr.
+msgid "Eid al-Fitr"
+msgstr ""
+
+#. Eid al-Fitr Holiday.
+msgid "Eid al-Fitr deuxième jour"
+msgstr ""
+
+#. Arafat.
+msgid "Arafat"
+msgstr ""
+
+#. Eid al-Adha.
+msgid "Eid al-Adha"
+msgstr ""
+
+#. Eid al-Adha Holiday.
+msgid "Eid al-Adha deuxième jour"
+msgstr ""
+
+#. Islamic New Year.
+msgid "Nouvel an musulman"
+msgstr ""
+
+#. Prophet Muhammad's Birthday.
+msgid "Anniversaire du prophète Muhammad"
+msgstr ""

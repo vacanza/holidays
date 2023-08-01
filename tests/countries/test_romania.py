@@ -144,10 +144,7 @@ class TestRomania(TestCase):
             "en_US",
             ("2018-01-01", "New Year's Day"),
             ("2018-01-02", "New Year's Day"),
-            (
-                "2018-01-24",
-                "Unification of the Romanian Principalities Day",
-            ),
+            ("2018-01-24", "Unification of the Romanian Principalities Day"),
             ("2018-04-06", "Easter"),
             ("2018-04-08", "Easter"),
             ("2018-04-09", "Easter"),

@@ -13,7 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, MAR, APR, AUG
+from holidays.calendars.gregorian import APR, AUG
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -57,7 +57,7 @@ class Aruba(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 1989:
             # Betico Day
-            self._add_holiday(tr("Dia di Betico"), JAN, 25)
+            self._add_holiday_jan_25(tr("Dia di Betico"))
 
         # Dialuna prome cu diaranson di shinish.
         # Status: In-Use.
@@ -80,7 +80,7 @@ class Aruba(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 1976:
             # National Anthem and Flag Day
-            self._add_holiday(tr("Dia di Himno y Bandera"), MAR, 18)
+            self._add_holiday_mar_18(tr("Dia di Himno y Bandera"))
 
         # Bierna Santo.
         # Status: In-Use.
@@ -115,13 +115,13 @@ class Aruba(HolidayBase, ChristianHolidays, InternationalHolidays):
             )
         )
         if year >= 2014:
-            dt = date(year, APR, 27)
+            dt = (APR, 27)
         elif year >= 1949:
-            dt = date(year, APR, 30)
+            dt = (APR, 30)
         else:
-            dt = date(year, AUG, 31)
+            dt = (AUG, 31)
         if self._is_sunday(dt):
-            dt += td(days=-1) if year >= 1980 else td(days=+1)
+            dt = date(self._year, *dt) + td(days=-1 if year >= 1980 else +1)
         self._add_holiday(name, dt)
 
         # Dia di Labor/Dia di Obrero.

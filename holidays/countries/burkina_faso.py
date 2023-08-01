@@ -49,7 +49,7 @@ class BurkinaFaso(HolidayBase, ChristianHolidays, InternationalHolidays, Islamic
 
         if year >= 1967:
             # Revolution Day.
-            self._add_observed(self._add_holiday("Revolution Day", JAN, 3))
+            self._add_observed(self._add_holiday_jan_3("Revolution Day"))
 
         # International Women's Day.
         self._add_observed(self._add_womens_day("International Women's Day"))
@@ -64,21 +64,21 @@ class BurkinaFaso(HolidayBase, ChristianHolidays, InternationalHolidays, Islamic
         self._add_ascension_thursday("Ascension Day")
 
         # Independence Day.
-        self._add_observed(self._add_holiday("Independence Day", AUG, 5))
+        self._add_observed(self._add_holiday_aug_5("Independence Day"))
 
         # Assumption Day.
         self._add_observed(self._add_assumption_of_mary_day("Assumption Day"))
 
         if year >= 2016:
             # Martyrs' Day.
-            self._add_observed(self._add_holiday("Martyrs' Day", OCT, 31))
+            self._add_observed(self._add_holiday_oct_31("Martyrs' Day"))
 
         # All Saints' Day.
         self._add_observed(self._add_all_saints_day("All Saints' Day"))
 
         self._add_observed(
             # Proclamation of Independence Day.
-            self._add_holiday("Proclamation of Independence Day", DEC, 11)
+            self._add_holiday_dec_11("Proclamation of Independence Day")
         )
 
         # Christmas Day.
@@ -113,6 +113,7 @@ class BurkinaFasoIslamicCalendar(_CustomIslamicCalendar):
         2020: (JUL, 31),
         2021: (JUL, 20),
         2022: (JUL, 9),
+        2023: (JUN, 28),
     }
 
     EID_AL_FITR_DATES = {

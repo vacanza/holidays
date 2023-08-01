@@ -98,6 +98,7 @@ class TestThailand(TestCase):
             "2022-10-14",
             "2022-12-30",
             "2023-05-05",
+            "2023-07-31",
         )
 
     def test_2022_all(self):

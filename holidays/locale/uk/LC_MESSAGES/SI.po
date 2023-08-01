@@ -1,0 +1,61 @@
+# Slovenia holidays uk localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.28\n"
+"POT-Creation-Date: 2023-06-27 13:17+0300\n"
+"PO-Revision-Date: 2023-06-27 17:11+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100>=3 && n%100<=4 ? 2 : 3);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+msgid "novo leto"
+msgstr "Новий рік"
+
+#. Preseren's Day.
+msgid "Prešernov dan"
+msgstr "День Прешерена"
+
+#. Easter Monday.
+msgid "Velikonočni ponedeljek"
+msgstr "Великодній понеділок"
+
+#. Day of Uprising Against Occupation.
+msgid "dan upora proti okupatorju"
+msgstr "День спротиву окупантам"
+
+#. Labor Day.
+msgid "praznik dela"
+msgstr "День праці"
+
+#. Statehood Day.
+msgid "dan državnosti"
+msgstr "День державності"
+
+#. Assumption Day.
+msgid "Marijino vnebovzetje"
+msgstr "Внебовзяття Пресвятої Діви Марії"
+
+#. Reformation Day.
+msgid "dan reformacije"
+msgstr "День Реформації"
+
+#. Remembrance Day.
+msgid "dan spomina na mrtve"
+msgstr "День памʼяті померлих"
+
+#. Christmas Day.
+msgid "Božič"
+msgstr "Різдво Христове"
+
+#. Independence and Unity Day.
+msgid "dan samostojnosti in enotnosti"
+msgstr "День незалежності та єднання"

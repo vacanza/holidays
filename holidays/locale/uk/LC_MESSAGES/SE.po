@@ -17,96 +17,77 @@ msgstr ""
 "X-Generator: Poedit 3.2.2\n"
 
 #. New Year's Day.
-#: ./holidays/countries/sweden.py:54
 msgid "Nyårsdagen"
 msgstr "Новий рік"
 
 #. Epiphany.
-#: ./holidays/countries/sweden.py:57
 msgid "Trettondedag jul"
 msgstr "Богоявлення"
 
 #. Feast of the Annunciation.
-#: ./holidays/countries/sweden.py:61
 msgid "Jungfru Marie bebådelsedag"
 msgstr "Благовіщення"
 
 #. Good Friday.
-#: ./holidays/countries/sweden.py:64
 msgid "Långfredagen"
 msgstr "Страсна пʼятниця"
 
 #. Easter Sunday.
-#: ./holidays/countries/sweden.py:67
 msgid "Påskdagen"
 msgstr "Великдень"
 
 #. Easter Monday.
-#: ./holidays/countries/sweden.py:70
 msgid "Annandag påsk"
 msgstr "Великодній понеділок"
 
 #. May Day.
-#: ./holidays/countries/sweden.py:75
 msgid "Första maj"
 msgstr "Перше травня"
 
 #. Ascension Day.
-#: ./holidays/countries/sweden.py:78
 msgid "Kristi himmelsfärdsdag"
 msgstr "Вознесіння Господнє"
 
 #. National Day of Sweden.
-#: ./holidays/countries/sweden.py:83
 msgid "Sveriges nationaldag"
 msgstr "Національний день Швеції"
 
 #. Whit Sunday.
-#: ./holidays/countries/sweden.py:86
 msgid "Pingstdagen"
 msgstr "Трійця"
 
 #. Whit Monday.
-#: ./holidays/countries/sweden.py:90
 msgid "Annandag pingst"
 msgstr "День Святого Духа"
 
 #. Midsummer Eve.
-#: ./holidays/countries/sweden.py:98
 msgid "Midsommarafton"
 msgstr "Переддень літнього сонцестояння"
 
 #. Midsummer Day.
-#: ./holidays/countries/sweden.py:101
 msgid "Midsommardagen"
 msgstr "День літнього сонцестояння"
 
 #. All Saints' Day.
-#: ./holidays/countries/sweden.py:104
 msgid "Alla helgons dag"
 msgstr "День усіх святих"
 
 #. Christmas Eve.
-#: ./holidays/countries/sweden.py:107
 msgid "Julafton"
 msgstr "Святий вечір"
 
 #. Christmas Day.
-#: ./holidays/countries/sweden.py:110
 msgid "Juldagen"
 msgstr "Різдво Христове"
 
 #. Second Day of Christmas.
-#: ./holidays/countries/sweden.py:113
 msgid "Annandag jul"
 msgstr "Другий день Різдва"
 
 #. New Year's Eve.
-#: ./holidays/countries/sweden.py:116
 msgid "Nyårsafton"
 msgstr "Переддень Нового року"
 
 #. Sunday.
-#: ./holidays/countries/sweden.py:124
 msgid "Söndag"
 msgstr "Неділя"

@@ -16,11 +16,8 @@ import warnings
 from datetime import date, datetime
 from datetime import timedelta as td
 
-from dateutil.relativedelta import MO
-from dateutil.relativedelta import relativedelta as rd
-
 import holidays
-from holidays.calendars.gregorian import JAN, FEB, OCT, MON, TUE, SAT, SUN
+from holidays.calendars.gregorian import JAN, FEB, JUL, DEC, MON, TUE, SAT, SUN
 from holidays.constants import HOLIDAY_NAME_DELIMITER
 
 
@@ -31,6 +28,24 @@ class TestBasics(unittest.TestCase):
     def test_contains(self):
         self.assertIn(date(2014, 1, 1), self.holidays)
         self.assertNotIn(date(2014, 1, 2), self.holidays)
+
+    def test_getattr(self):
+        us = holidays.US()
+        us._populate(2023)
+
+        name = "Test"
+        self.assertEqual(us._add_holiday_3rd_mon_of_jun(name), date(2023, 6, 19))
+        self.assertEqual(us._add_holiday_4th_fri_of_aug(name), date(2023, 8, 25))
+        self.assertEqual(us._add_holiday_1st_wed_of_aug(name), date(2023, 8, 2))
+        self.assertRaises(ValueError, lambda: us._add_holiday_5th_fri_of_aug(name))
+        self.assertRaises(AttributeError, lambda: us._add_holiday_4th_nam_of_aug(name))
+        self.assertRaises(AttributeError, lambda: us._add_holiday_nam_12(name))
+
+        self.assertEqual(us._add_holiday_1st_mon_before_may_24(name), date(2023, 5, 22))
+        self.assertEqual(us._add_holiday_1st_sun_from_aug_31(name), date(2023, 9, 3))
+
+        self.assertRaises(AttributeError, lambda: us._add_holiday_1st_fri_before_nam_29(name))
+        self.assertRaises(AttributeError, lambda: us._add_holiday_1st_fri_random_jan_29(name))
 
     def test_getitem(self):
         self.assertEqual(self.holidays[date(2014, 1, 1)], "New Year's Day")
@@ -244,24 +259,14 @@ class TestBasics(unittest.TestCase):
         for dt in (date(2022, 10, 1), date(2022, 10, 2)):
             self.assertTrue(h._is_weekend(dt))
         for dt in ((10, 1), (10, 2)):
+            self.assertTrue(h._is_weekend(dt))
             self.assertTrue(h._is_weekend(*dt))
 
         for dt in (date(2022, 10, 3), date(2022, 10, 4)):
             self.assertFalse(h._is_weekend(dt))
         for dt in ((10, 3), (10, 4)):
+            self.assertFalse(h._is_weekend(dt))
             self.assertFalse(h._is_weekend(*dt))
-
-    def test_get_nth_weekday_of_month(self):
-        h = holidays.HolidayBase(years=2023)
-        # 1st Monday of 2023 months
-        for month, day in enumerate((3, 7, 7, 4, 2, 6, 4, 1, 5, 3, 7, 5), 1):
-            first_monday = h._get_nth_weekday_of_month(1, 1, month)
-            self.assertEqual(first_monday.day, day)
-
-        # Last Saturday of 2023 months
-        for month, day in enumerate((28, 25, 25, 29, 27, 24, 29, 26, 30, 28, 25, 30), 1):
-            last_friday = h._get_nth_weekday_of_month(-1, 5, month)
-            self.assertEqual(last_friday.day, day)
 
     def test_append(self):
         h = holidays.HolidayBase()
@@ -284,7 +289,7 @@ class TestBasics(unittest.TestCase):
         self.assertIn("2015-04-06", h)
         self.assertIn("2015-04-07", h)
 
-    def test_eq_(self):
+    def test_eq(self):
         canada = holidays.Canada()
         united_states = holidays.UnitedStates()
         self.assertEqual(united_states, holidays.US())
@@ -410,10 +415,12 @@ class TestBasics(unittest.TestCase):
         us = holidays.UnitedStates()
         us._populate(2023)
         us._add_holiday("Test 1", date(2023, JAN, 5))
-        us._add_holiday("Test 2", JAN, 6)
+        us._add_holiday("Test 2", (JAN, 6))
+        us._add_holiday_jan_7("Test 3")
 
         self.assertIn("2023-01-05", us)
         self.assertIn("2023-01-06", us)
+        self.assertIn("2023-01-07", us)
 
         for args in (
             (date(2020, JAN, 5),),
@@ -455,45 +462,43 @@ class TestBasics(unittest.TestCase):
         self.assertRaises(TypeError, lambda: 1 + holidays.US())
 
     def test_inheritance(self):
-        class NoColumbusHolidays(holidays.countries.US):
+        class CustomNewYearHolidays(holidays.countries.US):
             def _populate(self, year):
                 super()._populate(year)
-                self.pop(date(year, OCT, 1) + rd(weekday=MO(+2)))
+                self._add_holiday_dec_31("New Year's Eve")
+                self.pop(date(year, JAN, 1))
 
-        hdays = NoColumbusHolidays()
-        self.assertIn(date(2014, 10, 13), self.holidays)
-        self.assertNotIn(date(2014, 10, 13), hdays)
-        self.assertIn(date(2014, 1, 1), hdays)
-        self.assertIn(date(2020, 10, 12), self.holidays)
-        self.assertNotIn(date(2020, 10, 12), hdays)
-        self.assertIn(date(2020, 1, 1), hdays)
+        instance = CustomNewYearHolidays()
+        self.assertIn(date(2014, JAN, 1), self.holidays)
+        self.assertNotIn(date(2014, JAN, 1), instance)
+        self.assertIn(date(2014, DEC, 31), instance)
+        self.assertNotIn(date(2014, DEC, 31), self.holidays)
+
+        self.assertIn(date(2020, JAN, 1), self.holidays)
+        self.assertNotIn(date(2020, JAN, 1), instance)
+        self.assertIn(date(2020, DEC, 31), instance)
+        self.assertNotIn(date(2020, DEC, 31), self.holidays)
 
         class NinjaTurtlesHolidays(holidays.countries.US):
             def _populate(self, year):
                 super()._populate(year)
-                self[date(year, 7, 13)] = "Ninja Turtle's Day"
+                self._add_holiday_jul_13("Ninja Turtle's Day")
 
-        hdays = NinjaTurtlesHolidays()
-        self.assertNotIn(date(2014, 7, 13), self.holidays)
-        self.assertIn(date(2014, 7, 13), hdays)
-        self.assertIn(date(2014, 1, 1), hdays)
-        self.assertNotIn(date(2020, 7, 13), self.holidays)
-        self.assertIn(date(2020, 7, 13), hdays)
-        self.assertIn(date(2020, 1, 1), hdays)
+        instance = NinjaTurtlesHolidays()
+        self.assertNotIn(date(2014, JUL, 13), self.holidays)
+        self.assertIn(date(2014, JUL, 13), instance)
+
+        self.assertNotIn(date(2020, JUL, 13), self.holidays)
+        self.assertIn(date(2020, JUL, 13), instance)
 
         class NewCountry(holidays.HolidayBase):
             def _populate(self, year):
-                self[date(year, 1, 2)] = "New New Year's"
+                super()._populate(year)
+                self._add_holiday_jan_2("New New Year's")
 
-        hdays = NewCountry()
-        self.assertNotIn(date(2014, 1, 1), hdays)
-        self.assertIn(date(2014, 1, 2), hdays)
-
-        class Dec31Holiday(holidays.HolidayBase):
-            def _populate(self, year):
-                self[date(year, 12, 31)] = "New Year's Eve"
-
-        self.assertIn(date(2014, 12, 31), Dec31Holiday())
+        instance = NewCountry()
+        self.assertNotIn(date(2014, JAN, 1), instance)
+        self.assertIn(date(2014, JAN, 2), instance)
 
     def test_get_named_contains(self):
         us = holidays.UnitedStates(years=2020)
@@ -811,6 +816,32 @@ class TestCountrySpecialHolidays(unittest.TestCase):
         self.assertIn("2222-02-02", self.us_holidays)
         self.assertIn("3333-02-02", self.us_holidays)
         self.assertEqual(26, len(self.us_holidays))
+
+
+class TestCountrySubstitutedHolidays(unittest.TestCase):
+    def setUp(self):
+        self.at_holidays = holidays.country_holidays("AT")
+        self.ua_holidays = holidays.country_holidays("UA", language="en_US")
+
+    def test_populate_substituted_holidays(self):
+        self.ua_holidays.substituted_holidays = {
+            1991: (
+                (JAN, 12, JAN, 7),
+                (1991, JAN, 13, JAN, 8),
+            ),
+        }
+        self.ua_holidays._populate(1991)
+        self.assertIn("1991-01-07", self.ua_holidays)
+        self.assertIn("1991-01-08", self.ua_holidays)
+        self.assertIn("01/12/1991", self.ua_holidays["1991-01-07"])
+        self.assertIn("01/13/1991", self.ua_holidays["1991-01-08"])
+
+        self.at_holidays.substituted_holidays = {
+            1991: (JAN, 12, JAN, 7),
+        }
+        self.assertRaises(ValueError, lambda: self.at_holidays._populate(1991))
+        self.at_holidays.substituted_label = "From %s"
+        self.assertRaises(ValueError, lambda: self.at_holidays._populate(1991))
 
 
 class TestHolidaysTranslation(unittest.TestCase):
