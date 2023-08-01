@@ -132,7 +132,7 @@ class Indonesia(
             }
             if self._year in dates_obs:
                 # Day of Silence.
-                self._add_holiday(tr("Hari Suci Nyepi"), *dates_obs[self._year])
+                self._add_holiday(tr("Hari Suci Nyepi"), dates_obs[self._year])
 
         if 1953 <= self._year <= 1962 or self._year >= 1971:
             # Good Friday.
@@ -160,21 +160,21 @@ class Indonesia(
 
         if self._year >= 2016:
             # Pancasila Day.
-            self._add_holiday(tr("Hari Lahir Pancasila"), JUN, 1)
+            self._add_holiday_jun_1(tr("Hari Lahir Pancasila"))
 
         if 1968 <= self._year <= 1970:
             # Assumption Of Mary.
             self._add_assumption_of_mary_day(tr("Mikraj Santa Maria"))
 
         # Independence Day.
-        self._add_holiday(tr("Hari Kemerdekaan Republik Indonesia"), AUG, 17)
+        self._add_holiday_aug_17(tr("Hari Kemerdekaan Republik Indonesia"))
 
         if self._year <= 1952:
             # Armed Forces Day.
-            self._add_holiday(tr("Hari Angkatan Perang"), OCT, 5)
+            self._add_holiday_oct_5(tr("Hari Angkatan Perang"))
 
             # Heroes' Day.
-            self._add_holiday(tr("Hari Pahlawan"), NOV, 10)
+            self._add_holiday_nov_10(tr("Hari Pahlawan"))
 
         if self._year >= 1953:
             # Christmas Day.

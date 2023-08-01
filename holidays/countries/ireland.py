@@ -12,7 +12,7 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars.gregorian import FEB, MAR, MAY, JUN, AUG, OCT, MON
+from holidays.calendars.gregorian import FEB, MAR
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -48,35 +48,34 @@ class Ireland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # St. Brigid's Day.
         if year >= 2023:
-            dt = date(year, FEB, 1)
-            self._add_holiday(
-                "St. Brigid's Day",
-                dt if self._is_friday(dt) else self._get_nth_weekday_from(1, MON, dt),
-            )
+            name = "St. Brigid's Day"
+            if self._is_friday(FEB, 1):
+                self._add_holiday_feb_1(name)
+            else:
+                self._add_holiday_1st_mon_from_feb_1(name)
 
         # St. Patrick's Day.
-        self._add_observed(self._add_holiday("St. Patrick's Day", MAR, 17))
+        self._add_observed(self._add_holiday_mar_17("St. Patrick's Day"))
 
         # Easter Monday.
         self._add_easter_monday("Easter Monday")
 
         # May Day.
         if year >= 1978:
-            self._add_holiday(
-                "May Day",
-                date(year, MAY, 8)
-                if year == 1995
-                else self._get_nth_weekday_of_month(1, MON, MAY),
-            )
+            name = "May Day"
+            if year == 1995:
+                self._add_holiday_may_8(name)
+            else:
+                self._add_holiday_1st_mon_of_may(name)
 
         # June Bank holiday.
-        self._add_holiday("June Bank Holiday", self._get_nth_weekday_of_month(1, MON, JUN))
+        self._add_holiday_1st_mon_of_jun("June Bank Holiday")
 
         # Summer Bank holiday.
-        self._add_holiday("August Bank Holiday", self._get_nth_weekday_of_month(1, MON, AUG))
+        self._add_holiday_1st_mon_of_aug("August Bank Holiday")
 
         # October Bank Holiday.
-        self._add_holiday("October Bank Holiday", self._get_nth_weekday_of_month(-1, MON, OCT))
+        self._add_holiday_last_mon_of_oct("October Bank Holiday")
 
         # Christmas Day.
         self._add_observed(self._add_christmas_day("Christmas Day"))
