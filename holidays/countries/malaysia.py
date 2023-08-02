@@ -160,7 +160,7 @@ class Malaysia(
             dts_observed.add(self._add_holiday_sep_9(name))
         elif year == 2020:
             # https://www.nst.com.my/news/nation/2020/03/571660/agongs-birthday-moved-june-6-june-8
-            dts_observed.add(self._add_holiday_jun_9(name))
+            dts_observed.add(self._add_holiday_jun_8(name))
         else:
             dts_observed.add(self._add_holiday_1st_mon_of_jun(name))
 
