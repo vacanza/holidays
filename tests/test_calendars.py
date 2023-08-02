@@ -209,3 +209,33 @@ class TestThaiLunisolarCalendar(unittest.TestCase):
                 visaka_bochea_year_date[year],
                 self.calendar.visakha_bucha_date(year, KHMER_CALENDAR),
             )
+
+
+class TestPersianCalendar(unittest.TestCase):
+    def setUp(self):
+        super().setUpClass()
+        self.calendar = calendars._Persian()
+
+    def test_year_bounds(self):
+        self.assertEqual(self.calendar.new_year_date(1900), None)
+        self.assertEqual(self.calendar.new_year_date(2101), None)
+        self.assertEqual(self.calendar.get_persian_date(1900, 2, 2), None)
+        self.assertEqual(self.calendar.get_persian_date(2101, 3, 3), None)
+
+    def test_new_year_date(self):
+        for year, day in (
+            (2033, 20),
+            (2066, 20),
+            (2099, 20),
+            (1904, 21),
+            (1930, 21),
+            (1961, 21),
+            (1963, 21),
+            (1992, 21),
+            (2025, 21),
+            (2058, 21),
+            (2091, 21),
+            (1922, 22),
+            (1959, 22),
+        ):
+            self.assertEqual(self.calendar.new_year_date(year), date(year, MAR, day))

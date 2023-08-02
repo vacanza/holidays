@@ -27,6 +27,46 @@ class IslamicHolidays:
     def __init__(self, calendar=_IslamicLunar()) -> None:
         self._islamic_calendar = calendar
 
+    def _add_ali_al_rida_death_day(self, name) -> Set[date]:
+        """
+        Add death of Ali al-Rida day (last (29th or 30th) day of 2nd month).
+
+        https://en.wikipedia.org/wiki/Ali_al-Rida
+        """
+        return self._add_islamic_calendar_holiday(
+            name, self._islamic_calendar.ali_al_rida_death_dates(self._year)
+        )
+
+    def _add_ali_birthday_day(self, name) -> Set[date]:
+        """
+        Add birthday of Ali ibn Abu Talib day (13th day of 7th month).
+
+        https://en.wikipedia.org/wiki/Ali
+        """
+        return self._add_islamic_calendar_holiday(
+            name, self._islamic_calendar.ali_birthday_dates(self._year)
+        )
+
+    def _add_ali_death_day(self, name) -> Set[date]:
+        """
+        Add death of Ali ibn Abu Talib day (21st day of 9th month).
+
+        https://en.wikipedia.org/wiki/Ali
+        """
+        return self._add_islamic_calendar_holiday(
+            name, self._islamic_calendar.ali_death_dates(self._year)
+        )
+
+    def _add_arbaeen_day(self, name) -> Set[date]:
+        """
+        Add Arbaeen day (20th day of 2nd month).
+
+        https://en.wikipedia.org/wiki/Arbaeen
+        """
+        return self._add_islamic_calendar_holiday(
+            name, self._islamic_calendar.arbaeen_dates(self._year)
+        )
+
     def _add_arafah_day(self, name) -> Set[date]:
         """
         Add Day of Arafah (9th day of 12th month).
@@ -150,6 +190,26 @@ class IslamicHolidays:
             name, self._islamic_calendar.eid_al_fitr_dates(self._year), days_delta=+3
         )
 
+    def _add_eid_al_ghadir_day(self, name) -> Set[date]:
+        """
+        Add Eid al-Ghadir Day (18th day of 12th month).
+
+        https://en.wikipedia.org/wiki/Eid_al-Ghadeer
+        """
+        return self._add_islamic_calendar_holiday(
+            name, self._islamic_calendar.eid_al_ghadir_dates(self._year)
+        )
+
+    def _add_fatima_death_day(self, name) -> Set[date]:
+        """
+        Add death of Fatima day (3rd day of 6th month).
+
+        https://en.wikipedia.org/wiki/Fatima
+        """
+        return self._add_islamic_calendar_holiday(
+            name, self._islamic_calendar.fatima_death_dates(self._year)
+        )
+
     def _add_hari_hol_johor(self, name) -> Set[date]:
         """
         Hari Hol Johor.
@@ -158,6 +218,26 @@ class IslamicHolidays:
         """
         return self._add_islamic_calendar_holiday(
             name, self._islamic_calendar.hari_hol_johor_dates(self._year)
+        )
+
+    def _add_hasan_al_askari_death_day(self, name) -> Set[date]:
+        """
+        Add death of Hasan_al-Askari day (8th day of 3rd month).
+
+        https://en.wikipedia.org/wiki/Hasan_al-Askari
+        """
+        return self._add_islamic_calendar_holiday(
+            name, self._islamic_calendar.hasan_al_askari_death_dates(self._year)
+        )
+
+    def _add_imam_mahdi_birthday_day(self, name) -> Set[date]:
+        """
+        Add birthday of Muhammad al-Mahdi day (15th day of 8th month).
+
+        https://en.wikipedia.org/wiki/Muhammad_al-Mahdi
+        """
+        return self._add_islamic_calendar_holiday(
+            name, self._islamic_calendar.imam_mahdi_birthday_dates(self._year)
         )
 
     def _add_islamic_calendar_holiday(
@@ -244,6 +324,16 @@ class IslamicHolidays:
             name, self._islamic_calendar.nuzul_al_quran_dates(self._year)
         )
 
+    def _add_prophet_death_day(self, name) -> Set[date]:
+        """
+        Add death of Prophet Muhammad and Hasan ibn Ali day (28th day of 2nd month).
+
+        https://en.wikipedia.org/wiki/Hasan_ibn_Ali
+        """
+        return self._add_islamic_calendar_holiday(
+            name, self._islamic_calendar.prophet_death_dates(self._year)
+        )
+
     def _add_ramadan_beginning_day(self, name) -> Set[date]:
         """
         Add First Day of Ramadan (1st day of 9th month).
@@ -254,4 +344,34 @@ class IslamicHolidays:
         """
         return self._add_islamic_calendar_holiday(
             name, self._islamic_calendar.ramadan_beginning_dates(self._year)
+        )
+
+    def _add_sadiq_birthday_day(self, name) -> Set[date]:
+        """
+        Add birthday of Prophet Muhammad and Ja'far al-Sadiq day (17th day of 3rd month).
+
+        https://en.wikipedia.org/wiki/Ja%27far_al-Sadiq
+        """
+        return self._add_islamic_calendar_holiday(
+            name, self._islamic_calendar.sadiq_birthday_dates(self._year)
+        )
+
+    def _add_sadiq_death_day(self, name) -> Set[date]:
+        """
+        Add death of Ja'far al-Sadiq day (25th day of 10th month).
+
+        https://en.wikipedia.org/wiki/Ja%27far_al-Sadiq
+        """
+        return self._add_islamic_calendar_holiday(
+            name, self._islamic_calendar.sadiq_death_dates(self._year)
+        )
+
+    def _add_tasua_day(self, name) -> Set[date]:
+        """
+        Add Tasua day (9th day of 1st month).
+
+        https://en.wikipedia.org/wiki/Tasua
+        """
+        return self._add_islamic_calendar_holiday(
+            name, self._islamic_calendar.tasua_dates(self._year)
         )

@@ -71,6 +71,7 @@ from .hungary import Hungary, HU, HUN
 from .iceland import Iceland, IS, ISL
 from .india import India, IN, IND
 from .indonesia import Indonesia, ID, IDN
+from .iran import Iran, IR, IRN
 from .ireland import Ireland, IE, IRL
 from .isle_of_man import IsleOfMan, IM, IMN
 from .israel import Israel, IL, ISR
