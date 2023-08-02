@@ -12,7 +12,6 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JUL, AUG, OCT, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -57,20 +56,20 @@ class Peru(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_saints_peter_and_paul_day(tr("San Pedro y San Pablo"))
 
         # Independence Day.
-        self._add_holiday(tr("Día de la Independencia"), JUL, 28)
+        self._add_holiday_jul_28(tr("Día de la Independencia"))
 
         # Great Military Parade Day.
-        self._add_holiday(tr("Día de la Gran Parada Militar"), JUL, 29)
+        self._add_holiday_jul_29(tr("Día de la Gran Parada Militar"))
 
         if year >= 2022:
             # Battle of Junín.
-            self._add_holiday(tr("Batalla de Junín"), AUG, 6)
+            self._add_holiday_aug_6(tr("Batalla de Junín"))
 
         # Santa Rosa de Lima.
-        self._add_holiday(tr("Santa Rosa de Lima"), AUG, 30)
+        self._add_holiday_aug_30(tr("Santa Rosa de Lima"))
 
         # Battle of Angamos.
-        self._add_holiday(tr("Combate de Angamos"), OCT, 8)
+        self._add_holiday_oct_8(tr("Combate de Angamos"))
 
         # All Saints Day.
         self._add_all_saints_day(tr("Todos Los Santos"))
@@ -80,7 +79,7 @@ class Peru(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 2022:
             # Battle of Ayacucho.
-            self._add_holiday(tr("Batalla de Ayacucho"), DEC, 9)
+            self._add_holiday_dec_9(tr("Batalla de Ayacucho"))
 
         # Christmas Day.
         self._add_christmas_day(tr("Navidad del Señor"))

@@ -11,7 +11,7 @@
 
 from datetime import timedelta as td
 
-from holidays.calendars.gregorian import FEB, MAY, JUN, OCT
+from holidays.calendars.gregorian import FEB, MAY
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 
@@ -40,61 +40,55 @@ class Nigeria(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHoli
             return None
 
         super()._populate(year)
-        observed_dates = set()
+        dts_observed = set()
 
-        # New Year's Day
-        observed_dates.add(self._add_new_years_day("New Year's Day"))
+        # New Year's Day.
+        dts_observed.add(self._add_new_years_day("New Year's Day"))
 
         self._add_good_friday("Good Friday")
         self._add_easter_monday("Easter Monday")
 
-        # Worker's day
+        # Worker's day.
         if year >= 1981:
-            observed_dates.add(self._add_labor_day("Workers' Day"))
+            dts_observed.add(self._add_labor_day("Workers' Day"))
 
-        # Democracy day moved around after its inception in 2000
-        # Initally it fell on May 29th
-        # In 2018 it was announced that the holiday
-        # will move to June 12th from 2019
+        # Democracy Day.
         if year >= 2000:
-            observed_dates.add(
-                self._add_holiday("Democracy Day", *((JUN, 12) if year >= 2019 else (MAY, 29)))
+            name = "Democracy Day"
+            dts_observed.add(
+                self._add_holiday_jun_12(name) if year >= 2019 else self._add_holiday_may_29(name)
             )
 
-        # Independence Day
-        observed_dates.add(self._add_holiday("Independence Day", OCT, 1))
+        # Independence Day.
+        dts_observed.add(self._add_holiday_oct_1("Independence Day"))
 
-        # Christmas day
-        observed_dates.add(self._add_christmas_day("Christmas Day"))
+        # Christmas day.
+        dts_observed.add(self._add_christmas_day("Christmas Day"))
 
-        # Boxing day
-        observed_dates.add(self._add_christmas_day_two("Boxing Day"))
+        # Boxing day.
+        dts_observed.add(self._add_christmas_day_two("Boxing Day"))
 
-        # Eid al-Fitr - Feast Festive
-        # This is an estimate
-        # date of observance is announced yearly
-        observed_dates.update(self._add_eid_al_fitr_day("Eid-el-Fitr"))
-        observed_dates.update(self._add_eid_al_fitr_day_two("Eid-el-Fitr Holiday"))
+        # Eid al-Fitr.
+        dts_observed.update(self._add_eid_al_fitr_day("Eid-el-Fitr"))
+        dts_observed.update(self._add_eid_al_fitr_day_two("Eid-el-Fitr Holiday"))
 
-        # Eid al-Adha - Scarfice Festive
-        # This is an estimate
-        # date of observance is announced yearly
-        observed_dates.update(self._add_eid_al_adha_day("Eid-el-Kabir"))
-        observed_dates.update(self._add_eid_al_adha_day_two("Eid-el-Kabir Holiday"))
+        # Eid al-Adha.
+        dts_observed.update(self._add_eid_al_adha_day("Eid-el-Kabir"))
+        dts_observed.update(self._add_eid_al_adha_day_two("Eid-el-Kabir Holiday"))
 
-        # Birthday of Prophet Muhammad
-        observed_dates.update(self._add_mawlid_day("Eid-el-Mawlid"))
+        # Birthday of Prophet Muhammad.
+        dts_observed.update(self._add_mawlid_day("Eid-el-Mawlid"))
 
-        # Observed holidays
+        # Observed holidays.
         if self.observed and year >= 2016:
-            for hol_date in sorted(observed_dates):
-                if not self._is_weekend(hol_date):
+            for dt in sorted(dts_observed):
+                if not self._is_weekend(dt):
                     continue
-                obs_date = hol_date + td(days=+1)
-                while self._is_weekend(obs_date) or obs_date in observed_dates:
-                    obs_date += td(days=+1)
-                for hol_name in self.get_list(hol_date):
-                    observed_dates.add(self._add_holiday("%s (Observed)" % hol_name, obs_date))
+                dt_observed = dt + td(days=+1)
+                while self._is_weekend(dt_observed) or dt_observed in dts_observed:
+                    dt_observed += td(days=+1)
+                for name in self.get_list(dt):
+                    dts_observed.add(self._add_holiday("%s (Observed)" % name, dt_observed))
 
 
 class NG(Nigeria):

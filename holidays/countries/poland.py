@@ -12,7 +12,7 @@
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import MAY, JUL, NOV
+from holidays.calendars.gregorian import NOV
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -57,15 +57,15 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 1950:
             # National Day.
-            self._add_holiday(tr("Święto Państwowe"), MAY, 1)
+            self._add_holiday_may_1(tr("Święto Państwowe"))
 
         if year <= 1950 or year >= 1990:
             # National Day of the Third of May.
-            self._add_holiday(tr("Święto Narodowe Trzeciego Maja"), MAY, 3)
+            self._add_holiday_may_3(tr("Święto Narodowe Trzeciego Maja"))
 
         if 1946 <= year <= 1950:
             # National Victory and Freedom Day.
-            self._add_holiday(tr("Narodowe Święto Zwycięstwa i Wolności"), MAY, 9)
+            self._add_holiday_may_9(tr("Narodowe Święto Zwycięstwa i Wolności"))
 
         if year <= 1950:
             # Ascension Day.
@@ -89,7 +89,7 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if 1945 <= year <= 1989:
             # National Day of Rebirth of Poland.
-            self._add_holiday(tr("Narodowe Święto Odrodzenia Polski"), JUL, 22)
+            self._add_holiday_jul_22(tr("Narodowe Święto Odrodzenia Polski"))
 
         if year <= 1960 or year >= 1989:
             # Assumption of the Virgin Mary.
@@ -100,7 +100,7 @@ class Poland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if 1937 <= year <= 1944 or year >= 1989:
             # National Independence Day.
-            self._add_holiday(tr("Narodowe Święto Niepodległości"), NOV, 11)
+            self._add_holiday_nov_11(tr("Narodowe Święto Niepodległości"))
 
         if year <= 1950:
             self._add_immaculate_conception_day(
