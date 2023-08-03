@@ -12,7 +12,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicCalendar
-from holidays.calendars.gregorian import APR, MAY, JUN, JUL, AUG, SEP, NOV, DEC, FRI, SAT
+from holidays.calendars.gregorian import APR, MAY, JUN, JUL, AUG, SEP, NOV, FRI, SAT
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
 
@@ -25,7 +25,7 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays):
     However the law is not applied literally,
     and was amended often in the past few years.
     Sources:
-    2017: https://www.khaleejtimes.com/nation/uae-official-public-holidays-list-2017   # noqa: E501
+    2017: https://www.khaleejtimes.com/nation/uae-official-public-holidays-list-2017
     2018: https://www.thenational.ae/uae/government/uae-public-holidays-2018-announced-by-abu-dhabi-government-1.691393  # noqa: E501
     2019: https://www.thenational.ae/uae/government/uae-public-holidays-for-2019-and-2020-announced-by-cabinet-1.833425  # noqa: E501
     2020: https://u.ae/en/information-and-services/public-holidays-and-religious-affairs/public-holidays  # noqa: E501
@@ -60,11 +60,15 @@ class UnitedArabEmirates(HolidayBase, InternationalHolidays, IslamicHolidays):
 
         if year >= 2015:
             # Commemoration Day.
-            self._add_holiday(tr("يوم الشهيد"), *((DEC, 1) if year >= 2019 else (NOV, 30)))
+            name = tr("يوم الشهيد")
+            if year >= 2019:
+                self._add_holiday_dec_1(name)
+            else:
+                self._add_holiday_nov_30(name)
 
         # National Day.
-        self._add_holiday(tr("اليوم الوطني"), DEC, 2)
-        self._add_holiday(tr("اليوم الوطني"), DEC, 3)
+        self._add_holiday_dec_2(tr("اليوم الوطني"))
+        self._add_holiday_dec_3(tr("اليوم الوطني"))
 
         # Eid al-Fitr.
         self._add_eid_al_fitr_day(tr("عيد الفطر"))

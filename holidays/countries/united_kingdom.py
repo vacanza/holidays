@@ -13,7 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 from typing import Tuple, Union
 
-from holidays.calendars.gregorian import MAR, APR, MAY, JUN, JUL, AUG, SEP, NOV, DEC, MON
+from holidays.calendars.gregorian import APR, MAY, JUN, JUL, SEP, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -70,23 +70,23 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # May Day bank holiday (first Monday in May)
         if year >= 1978:
-            dt = (
-                date(year, MAY, 8)
-                # In 2020 moved to Friday to mark 75th anniversary of VE Day.
-                if year in {1995, 2020}
-                else self._get_nth_weekday_of_month(1, MON, MAY)
-            )
-            self._add_holiday("May Day", dt)
+            name = "May Day"
+            if year in {1995, 2020}:
+                self._add_holiday_may_8(name)
+            else:
+                self._add_holiday_1st_mon_of_may(name)
 
         # Spring bank holiday (last Monday in May)
         if year >= 1971:
             spring_bank_dates = {
-                2002: date(year, JUN, 4),
-                2012: date(year, JUN, 4),
-                2022: date(year, JUN, 2),
+                2002: (JUN, 4),
+                2012: (JUN, 4),
+                2022: (JUN, 2),
             }
-            dt = spring_bank_dates.get(year, self._get_nth_weekday_of_month(-1, MON, MAY))
-            self._add_holiday("Spring Bank Holiday", dt)
+            name = "Spring Bank Holiday"
+            self._add_holiday(
+                name, spring_bank_dates[year]
+            ) if year in spring_bank_dates else self._add_holiday_last_mon_of_may(name)
 
         if self.subdiv == "England":
             self._add_subdiv_eng_holidays()
@@ -117,26 +117,22 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Late Summer bank holiday (last Monday in August)
         if self._year >= 1971:
-            self._add_holiday(
-                "Late Summer Bank Holiday", self._get_nth_weekday_of_month(-1, MON, AUG)
-            )
+            self._add_holiday_last_mon_of_aug("Late Summer Bank Holiday")
 
     def _add_subdiv_nir_holidays(self):
         if self._year >= 1903:
             # St. Patrick's Day
-            self._add_observed(self._add_holiday("St. Patrick's Day", MAR, 17))
+            self._add_observed(self._add_holiday_mar_17("St. Patrick's Day"))
 
         # Easter Monday
         self._add_easter_monday("Easter Monday")
 
         # Battle of the Boyne
-        self._add_holiday("Battle of the Boyne", JUL, 12)
+        self._add_holiday_jul_12("Battle of the Boyne")
 
         # Late Summer bank holiday (last Monday in August)
         if self._year >= 1971:
-            self._add_holiday(
-                "Late Summer Bank Holiday", self._get_nth_weekday_of_month(-1, MON, AUG)
-            )
+            self._add_holiday_last_mon_of_aug("Late Summer Bank Holiday")
 
     def _add_subdiv_sct_holidays(self):
         # New Year's Day
@@ -155,11 +151,11 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_new_years_day_three("%s (Observed)" % name)
 
         # Summer bank holiday (first Monday in August)
-        self._add_holiday("Summer Bank Holiday", self._get_nth_weekday_of_month(1, MON, AUG))
+        self._add_holiday_1st_mon_of_aug("Summer Bank Holiday")
 
         if self._year >= 2006:
             # St. Andrew's Day
-            self._add_holiday("St. Andrew's Day", NOV, 30)
+            self._add_holiday_nov_30("St. Andrew's Day")
 
         # Christmas Day
         self._add_observed(
@@ -176,9 +172,7 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Late Summer bank holiday (last Monday in August)
         if self._year >= 1971:
-            self._add_holiday(
-                "Late Summer Bank Holiday", self._get_nth_weekday_of_month(-1, MON, AUG)
-            )
+            self._add_holiday_last_mon_of_aug("Late Summer Bank Holiday")
 
 
 class UK(UnitedKingdom):
