@@ -367,7 +367,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # TODO: Add check for 1918 if we support earlier dates.
 
         # Chakri Memorial Day.
-        _add_observed(self._add_holiday(tr("วันจักรี"), APR, 6))
+        _add_observed(self._add_holiday_apr_6(tr("วันจักรี")))
 
         # วันสงกรานต์
         # Status: In-Use.
@@ -442,9 +442,9 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         coronation_day = tr("วันฉัตรมงคล")
 
         if 1958 <= self._year <= 2016:
-            _add_observed(self._add_holiday(coronation_day, MAY, 5))
+            _add_observed(self._add_holiday_may_5(coronation_day))
         elif self._year >= 2020:
-            _add_observed(self._add_holiday(coronation_day, MAY, 4))
+            _add_observed(self._add_holiday_may_4(coronation_day))
 
         # วันเฉลิมพระชนมพรรษา พระราชินี
         # Status: In-Use.
@@ -452,11 +452,9 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
 
         if self._year >= 2019:
             _add_observed(
-                self._add_holiday(
+                self._add_holiday_jun_3(
                     # HM Queen Suthida's Birthday.
                     tr("วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสุทิดา พัชรสุธาพิมลลักษณ พระบรมราชินี"),
-                    JUN,
-                    3,
                 )
             )
 
@@ -466,14 +464,12 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
 
         if self._year >= 2017:
             _add_observed(
-                self._add_holiday(
+                self._add_holiday_jul_28(
                     # HM King Maha Vajiralongkorn's Birthday.
                     tr(
                         "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรเมนทรรามาธิบดี"
                         "ศรีสินทรมหาวชิราลงกรณ พระวชิรเกล้าเจ้าอยู่หัว"
                     ),
-                    JUL,
-                    28,
                 )
             )
 
@@ -485,14 +481,14 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # Now acts as the Queen Mother from 2017 onwards.
 
         if self._year >= 1976:
-            name = (
+            q_sirikit_bday = (
                 # HM Queen Sirikit the Queen Mother's Birthday.
                 tr("วันเฉลิมพระชนมพรรษาสมเด็จพระบรมราชชนนีพันปีหลวง")
                 if self._year >= 2017
                 # HM Queen Sirikit's Birthday.
                 else tr("วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถ")
             )
-            _add_observed(self._add_holiday(name, AUG, 12))
+            _add_observed(self._add_holiday_aug_12(q_sirikit_bday))
 
         # วันแม่แห่งชาติ
         # Status: In-Use.
@@ -505,9 +501,9 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         thai_mothers_day = tr("วันแม่แห่งชาติ")
 
         if 1950 <= self._year <= 1957:
-            _add_observed(self._add_holiday(thai_mothers_day, APR, 15))
+            _add_observed(self._add_holiday_apr_15(thai_mothers_day))
         elif self._year >= 1976:
-            _add_observed(self._add_holiday(thai_mothers_day, AUG, 12))
+            _add_observed(self._add_holiday_aug_12(thai_mothers_day))
 
         # วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทร มหาภูมิพลอดุลยเดช บรมนาถบพิตร
         # Status: In-Use.
@@ -515,7 +511,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # Got conferred with 'the Great' title in 2019 (B.E. 2562).
 
         if self._year >= 2017:
-            name = (
+            k_bhumibol_memorial = (
                 # Anniversary for the Death of King Bhumibol Adulyadej the Great.
                 tr(
                     "วันคล้ายวันสวรรคตพระบาทสมเด็จพระบรมชนกาธิเบศร "
@@ -525,7 +521,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
                 # Anniversary for the Death of King Bhumibol Adulyadej.
                 else tr("วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร")
             )
-            _add_observed(self._add_holiday(name, OCT, 13))
+            _add_observed(self._add_holiday_oct_13(k_bhumibol_memorial))
 
         # วันปิยมหาราช
         # Status: In-Use.
@@ -533,7 +529,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # TODO: Add check for 1911 if we support earlier dates.
 
         # HM King Chulalongkorn Memorial Day.
-        _add_observed(self._add_holiday(tr("วันปิยมหาราช"), OCT, 23))
+        _add_observed(self._add_holiday_oct_23(tr("วันปิยมหาราช")))
 
         # วันเฉลิมพระชนมพรรษา รัชกาลที่ 9 (1960-2016)
         # วันคล้ายวันเฉลิมพระชนมพรรษา รัชกาลที่ 9 (2017-Present)
@@ -543,7 +539,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # Got conferred with 'the Great' title in 2019 (B.E. 2562).
 
         if self._year >= 1960:
-            name = (
+            k_bhumibol_bday = (
                 # HM King Bhumibol Adulyadej's the Great's Birthday Anniversary.
                 tr(
                     "วันคล้ายวันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระบรม"
@@ -563,7 +559,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
                     )
                 )
             )
-            _add_observed(self._add_holiday(name, DEC, 5))
+            _add_observed(self._add_holiday_dec_5(k_bhumibol_bday))
 
         # วันพ่อแห่งชาติ
         # Status: In-Use.
@@ -573,7 +569,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
 
         if self._year >= 1980:
             # National Father's Day.
-            _add_observed(self._add_holiday(tr("วันพ่อแห่งชาติ"), DEC, 5))
+            _add_observed(self._add_holiday_dec_5(tr("วันพ่อแห่งชาติ")))
 
         # วันรัฐธรรมนูญ
         # Status: In-Use.
@@ -582,7 +578,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # TODO: Add check for 1932 if we support earlier dates.
 
         # Constitution Day.
-        _add_observed(self._add_holiday(tr("วันรัฐธรรมนูญ"), DEC, 10))
+        _add_observed(self._add_holiday_dec_10(tr("วันรัฐธรรมนูญ")))
 
         # วันสิ้นปี
         # Status: In-Use.
@@ -659,14 +655,14 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # Only applys to members of the Royal Thai Armed Forces.
 
         if self._year >= 1959:
-            if self._year >= 2007:
-                dt = date(self._year, JAN, 18)
-            elif self._year >= 1980:
-                dt = date(self._year, JAN, 25)
-            else:
-                dt = date(self._year, APR, 8)
             # Royal Thai Armed Forces Day
-            self._add_holiday(tr("วันกองทัพไทย"), dt)
+            armed_forces_day = tr("วันกองทัพไทย")
+            if self._year >= 2007:
+                self._add_holiday_jan_18(armed_forces_day)
+            elif self._year >= 1980:
+                self._add_holiday_jan_25(armed_forces_day)
+            else:
+                self._add_holiday_apr_8(armed_forces_day)
 
     def _populate_bank_holidays(self):
         # Bank of Thailand, the ones who decreed this wasn't found until December 10, 1942
@@ -682,14 +678,12 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # Abandoned in 2022.
 
         if self._year <= 2021:
-            self._add_holiday(
+            self._add_holiday_apr_1(
                 # Additional Closing Day for Bank for Agriculture and Agricultural Cooperatives
                 tr(
                     "วันหยุดเพิ่มเติมสำหรับการปิดบัญชีประจำปีของ"
                     "ธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร"
                 ),
-                APR,
-                1,
             )
 
         # วันหยุดภาคครึ่งปีของสถาบันการเงินและสถาบันการเงินเฉพาะกิจ
@@ -698,11 +692,9 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # Abandoned in 2019.
 
         if self._year <= 2018:
-            self._add_holiday(
+            self._add_holiday_jul_1(
                 # Mid-Year Closing Day
                 tr("วันหยุดภาคครึ่งปีของสถาบันการเงินและสถาบันการเงินเฉพาะกิจ"),
-                JUL,
-                1,
             )
 
     def _populate_government_holidays(self):
@@ -758,7 +750,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
 
         if self._year >= 1957:
             # Teacher's Day
-            self._add_holiday(tr("วันครู"), JAN, 16)
+            self._add_holiday_jan_16(tr("วันครู"))
 
 
 class TH(Thailand):
