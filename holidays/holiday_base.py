@@ -522,28 +522,32 @@ class HolidayBase(Dict[date, str]):
         to :class:`datetime.date`, which is how it's stored by the class."""
 
         # Try to catch `date` and `str` type keys first.
-        if type(key) == date:  # Key has `date` type.
+        # Using type() here to skip date subclasses.
+        # Key is `date`.
+        if type(key) is date:
             dt = key
 
-        elif type(key) == str:  # Key has `str` type.
+        # Key is `str` instance.
+        elif isinstance(key, str):
             try:
                 dt = parse(key).date()
             except (OverflowError, ValueError):
                 raise ValueError(f"Cannot parse date from string '{key}'")
 
-        # Check all other types.
-        elif isinstance(key, datetime):  # Key type is derived from `datetime`.
+        # Key is `datetime` instance.
+        elif isinstance(key, datetime):
             dt = key.date()
 
-        # Must go after the `isinstance(key, datetime)` check
-        # as datetime is derived from `date`.
-        elif isinstance(key, date):  # Key type is derived from `date`.
+        # Must go after the `isinstance(key, datetime)` check as datetime is `date` subclass.
+        elif isinstance(key, date):
             dt = key
 
-        elif isinstance(key, (float, int)):  # Key type is derived from `float` or `int`.
+        # Key is `float` or `int` instance.
+        elif isinstance(key, (float, int)):
             dt = datetime.fromtimestamp(key, timezone.utc).date()
 
-        else:  # Key type is not supported.
+        # Key is not supported.
+        else:
             raise TypeError(f"Cannot convert type '{type(key)}' to date.")
 
         # Automatically expand for `expand=True` cases.
