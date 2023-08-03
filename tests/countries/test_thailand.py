@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.constants import ARMED_FORCES, BANK, GOVERNMENT, SCHOOL
+from holidays.constants import ARMED_FORCES, BANK, GOVERNMENT, PUBLIC, SCHOOL
 from holidays.countries.thailand import Thailand, TH, THA
 from tests.common import TestCase
 
