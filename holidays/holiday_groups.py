@@ -18,5 +18,6 @@ from holidays.groups import (
     HinduCalendarHolidays,
     InternationalHolidays,
     IslamicHolidays,
+    PersianCalendarHolidays,
     ThaiCalendarHolidays,
 )

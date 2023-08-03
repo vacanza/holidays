@@ -23,6 +23,7 @@ class TestIran(TestCase):
 
     def test_no_holidays(self):
         self.assertNoHolidays(Iran(years=1979))
+        self.assertNoHolidays(Iran(years=2102))
 
     def test_2022(self):
         self.assertHolidays(

@@ -9,15 +9,13 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.persian import _Persian
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import IslamicHolidays
+from holidays.holiday_groups import IslamicHolidays, PersianCalendarHolidays
 
 
-class Iran(HolidayBase, IslamicHolidays):
+class Iran(HolidayBase, IslamicHolidays, PersianCalendarHolidays):
     """
     References:
     - https://en.wikipedia.org/wiki/Public_holidays_in_Iran
@@ -32,7 +30,7 @@ class Iran(HolidayBase, IslamicHolidays):
 
     def __init__(self, *args, **kwargs):
         IslamicHolidays.__init__(self)
-        self.pcal = _Persian()
+        PersianCalendarHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
     def _populate(self, year):
@@ -43,32 +41,28 @@ class Iran(HolidayBase, IslamicHolidays):
 
         # Persian New Year.
         name = tr("نوروز")
-        dt = self.pcal.new_year_date(year)
-        self._add_holiday(name, dt)
-        self._add_holiday(name, dt + td(days=+1))
-        self._add_holiday(name, dt + td(days=+2))
-        self._add_holiday(name, dt + td(days=+3))
+        self._add_nowruz_day(name)
+        self._add_nowruz_day_two(name)
+        self._add_nowruz_day_three(name)
+        self._add_nowruz_day_four(name)
 
         # Islamic Republic Day.
-        self._add_holiday(tr("روز جمهوری اسلامی"), self.pcal.persian_to_gregorian(year, 1, 12))
+        self._add_islamic_republic_day(tr("روز جمهوری اسلامی"))
 
         # Nature's Day.
-        self._add_holiday(tr("روز طبیعت"), self.pcal.persian_to_gregorian(year, 1, 13))
+        self._add_natures_day(tr("روز طبیعت"))
 
-        self._add_holiday(
-            # Death of Khomeini.
-            tr("درگذشت سید روح‌الله خمینی"),
-            self.pcal.persian_to_gregorian(year, 3, 14),
-        )
+        # Death of Khomeini.
+        self._add_death_of_khomeini_day(tr("درگذشت سید روح‌الله خمینی"))
 
         # Khordad National Uprising.
-        self._add_holiday(tr("تظاهرات ۱۵ خرداد"), self.pcal.persian_to_gregorian(year, 3, 15))
+        self._add_khordad_uprising_day(tr("تظاهرات ۱۵ خرداد"))
 
         # Islamic Revolution Day.
-        self._add_holiday(tr("پیروزی انقلاب ۵۷"), self.pcal.persian_to_gregorian(year - 1, 11, 22))
+        self._add_islamic_revolution_day(tr("پیروزی انقلاب ۵۷"))
 
         # Iranian Oil Industry Nationalization Day.
-        self._add_holiday(tr("ملی‌شدن صنعت نفت"), self.pcal.persian_to_gregorian(year - 1, 12, 29))
+        self._add_oil_nationalization_day(tr("ملی‌شدن صنعت نفت"))
 
         # Tasua.
         self._add_tasua_day(tr("تاسوعا"))
