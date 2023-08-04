@@ -11,7 +11,6 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import APR, JUN, AUG, MON, THU
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -50,7 +49,7 @@ class Iceland(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_monday(tr("Annar í páskum"))
 
         # First Day of Summer.
-        self._add_holiday(tr("Sumardagurinn fyrsti"), self._get_nth_weekday_from(1, THU, APR, 19))
+        self._add_holiday_1st_thu_from_apr_19(tr("Sumardagurinn fyrsti"))
 
         # Labor Day.
         self._add_labor_day(tr("Verkalýðsdagurinn"))
@@ -65,13 +64,10 @@ class Iceland(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_whit_monday(tr("Annar í hvítasunnu"))
 
         # National Day.
-        self._add_holiday(tr("Þjóðhátíðardagurinn"), JUN, 17)
+        self._add_holiday_jun_17(tr("Þjóðhátíðardagurinn"))
 
-        self._add_holiday(
-            # Commerce Day.
-            tr("Frídagur verslunarmanna"),
-            self._get_nth_weekday_of_month(1, MON, AUG),
-        )
+        # Commerce Day.
+        self._add_holiday_1st_mon_of_aug(tr("Frídagur verslunarmanna"))
 
         # Christmas Eve.
         self._add_christmas_eve(tr("Aðfangadagur"))
