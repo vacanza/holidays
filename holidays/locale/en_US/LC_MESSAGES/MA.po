@@ -37,7 +37,7 @@ msgstr "Amazigh New Year"
 msgid "عيد العمال"
 msgstr "Labor Day"
 
-#. Throne Day.
+#. Throne day.
 msgid "عيد العرش"
 msgstr "Throne Day"
 

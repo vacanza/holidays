@@ -36,7 +36,7 @@ msgstr ""
 msgid "عيد العمال"
 msgstr ""
 
-#. Throne Day.
+#. Throne day.
 msgid "عيد العرش"
 msgstr ""
 

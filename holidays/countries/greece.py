@@ -65,6 +65,7 @@ class Greece(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self.observed and self._is_weekend(may_1):
             dt_observed = _get_nth_weekday_from(+1, MON, may_1)
+            # %s (Observed).
             name_observed = self.tr("%s (παρατηρήθηκε)") % name
             # In 2016 and 2021, Labour Day coincided with other holidays
             # https://www.timeanddate.com/holidays/greece/labor-day

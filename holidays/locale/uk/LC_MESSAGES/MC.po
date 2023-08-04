@@ -63,7 +63,7 @@ msgstr "День усіх святих"
 msgid "La Fête du Prince"
 msgstr "День Князя"
 
-#. Immaculate Conception's Day.
+#. Immaculate Conception Day.
 msgid "L'Immaculée Conception"
 msgstr "Непорочне зачаття Діви Марії"
 

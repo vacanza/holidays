@@ -54,8 +54,11 @@ msgstr "Russia Day"
 
 #. Day of the Adoption of the Declaration of Sovereignty of the Russian
 #. Federation.
-msgid "День принятия Декларации о государственном суверенитете Российской Федерации"
-msgstr "Day of the Adoption of the Declaration of Sovereignty of the Russian Federation"
+msgid ""
+"День принятия Декларации о государственном суверенитете Российской Федерации"
+msgstr ""
+"Day of the Adoption of the Declaration of Sovereignty of the Russian "
+"Federation"
 
 #. Unity Day.
 msgid "День народного единства"

@@ -44,6 +44,7 @@ msgstr "All Saints' Day"
 msgid "Dia de la Asunción"
 msgstr "Assumption Day"
 
+#. Revolution Day
 msgid "Dia de la Revolución"
 msgstr "Revolution Day"
 
@@ -51,6 +52,7 @@ msgstr "Revolution Day"
 msgid "Sabado Santo"
 msgstr "Good Saturday"
 
+#. Labor Day.
 msgid "Dia del Trabajo"
 msgstr "Labor Day"
 
