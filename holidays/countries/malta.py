@@ -11,7 +11,6 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import FEB, MAR, JUN, SEP, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -64,7 +63,7 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 1987:
             # Feast of St. Paul's Shipwreck
-            self._add_holiday(tr("Il-Festa tan-Nawfraġju ta' San Pawl"), FEB, 10)
+            self._add_holiday_feb_10(tr("Il-Festa tan-Nawfraġju ta' San Pawl"))
 
         # Il-Festa ta' San Ġużepp
         # Status: In-Use.
@@ -81,7 +80,7 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year <= 1986 or year >= 1989:
             # Freedom Day
-            self._add_holiday(tr("Jum il-Ħelsien"), MAR, 31)
+            self._add_holiday_mar_31(tr("Jum il-Ħelsien"))
 
         # Il-Ġimgħa l-Kbira
         # Status: In-Use.
@@ -101,7 +100,7 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 1989:
             # Sette Giugno
-            self._add_holiday(tr("Sette Giugno"), JUN, 7)
+            self._add_holiday_jun_7(tr("Sette Giugno"))
 
         # Il-Festa ta' San Pietru u San Pawl
         # Status: In-Use.
@@ -124,7 +123,7 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 1987:
             # Feast of Our Lady of Victories
-            self._add_holiday(tr("Jum il-Vitorja"), SEP, 8)
+            self._add_holiday_sep_8(tr("Jum il-Vitorja"))
 
         # Jum l-Indipendenza
         # Status: In-Use.
@@ -132,7 +131,7 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 1987:
             # Independence Day
-            self._add_holiday(tr("Jum l-Indipendenza"), SEP, 21)
+            self._add_holiday_sep_21(tr("Jum l-Indipendenza"))
 
         # Il-Festa tal-Immakulata Kunċizzjoni
         # Status: In-Use.
@@ -146,7 +145,7 @@ class Malta(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Status: In-Use.
 
         # Republic Day
-        self._add_holiday(tr("Jum ir-Repubblika"), DEC, 13)
+        self._add_holiday_dec_13(tr("Jum ir-Repubblika"))
 
         # Il-Milied
         # Status: In-Use.
