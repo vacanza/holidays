@@ -14,7 +14,7 @@ from datetime import timedelta as td
 
 from dateutil.easter import EASTER_ORTHODOX, EASTER_WESTERN, easter
 
-from holidays.calendars.gregorian import GREGORIAN_CALENDAR, JAN, AUG, DEC
+from holidays.calendars.gregorian import GREGORIAN_CALENDAR, JAN, DEC
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
 
@@ -155,11 +155,10 @@ class ChristianHolidays:
         calendar = calendar or self.__calendar
         self.__verify_calendar(calendar)
 
-        return self._add_holiday(
-            name,
-            date(self._year, AUG, 28)
+        return (
+            self._add_holiday_aug_28(name)
             if self.__is_julian_calendar(calendar)
-            else date(self._year, AUG, 15),
+            else self._add_holiday_aug_15(name)
         )
 
     def _add_candlemas(self, name) -> date:
@@ -279,11 +278,10 @@ class ChristianHolidays:
         calendar = calendar or self.__calendar
         self.__verify_calendar(calendar)
 
-        return self._add_holiday(
-            name,
-            date(self._year, JAN, 19)
+        return (
+            self._add_holiday_jan_19(name)
             if self.__is_julian_calendar(calendar)
-            else date(self._year, JAN, 6),
+            else self._add_holiday_jan_6(name)
         )
 
     def _add_good_friday(self, name, calendar=None) -> date:
