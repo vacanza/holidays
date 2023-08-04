@@ -52,7 +52,6 @@ msgstr "Трійця"
 msgid "Alatsinain'ny pentekosta"
 msgstr "День Святого Духа"
 
-#. Mother's Day.
 msgid "Fetin'ny reny"
 msgstr "День матері"
 

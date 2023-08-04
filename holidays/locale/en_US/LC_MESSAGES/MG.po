@@ -52,7 +52,6 @@ msgstr "Whit Sunday"
 msgid "Alatsinain'ny pentekosta"
 msgstr "Whit Monday"
 
-#. Mother's Day.
 msgid "Fetin'ny reny"
 msgstr "Mother's Day"
 
