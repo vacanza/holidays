@@ -14,19 +14,7 @@ from datetime import timedelta as td
 
 from dateutil.easter import EASTER_ORTHODOX, EASTER_WESTERN, easter
 
-from holidays.calendars.gregorian import (
-    GREGORIAN_CALENDAR,
-    JAN,
-    FEB,
-    MAR,
-    APR,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    NOV,
-    DEC,
-)
+from holidays.calendars.gregorian import GREGORIAN_CALENDAR, JAN, AUG, DEC
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
 
@@ -114,7 +102,7 @@ class ChristianHolidays:
         the Feast of All Hallows, the Solemnity of All Saints, and Hallowmas.
         https://en.wikipedia.org/wiki/All_Saints%27_Day
         """
-        return self._add_holiday(name, NOV, 1)
+        return self._add_holiday_nov_1(name)
 
     def _add_all_souls_day(self, name) -> date:
         """
@@ -124,7 +112,7 @@ class ChristianHolidays:
         departed, observed by certain Christian denominations on 2 November.
         https://en.wikipedia.org/wiki/All_Souls%27_Day
         """
-        return self._add_holiday(name, NOV, 2)
+        return self._add_holiday_nov_2(name)
 
     def _add_ascension_thursday(self, name) -> date:
         """
@@ -184,7 +172,7 @@ class ChristianHolidays:
         presentation of Jesus at the Temple.
         https://en.wikipedia.org/wiki/Candlemas
         """
-        return self._add_holiday(name, FEB, 2)
+        return self._add_holiday_feb_2(name)
 
     def _add_carnival_monday(self, name) -> date:
         """
@@ -335,7 +323,7 @@ class ChristianHolidays:
 
         https://en.wikipedia.org/wiki/Immaculate_Conception
         """
-        return self._add_holiday(name, DEC, 8)
+        return self._add_holiday_dec_8(name)
 
     def _add_nativity_of_mary_day(self, name) -> date:
         """
@@ -346,7 +334,7 @@ class ChristianHolidays:
         feast day celebrating the birth of Mary, mother of Jesus.
         https://en.wikipedia.org/wiki/Nativity_of_Mary
         """
-        return self._add_holiday(name, SEP, 8)
+        return self._add_holiday_sep_8(name)
 
     def _add_palm_sunday(self, name) -> date:
         """
@@ -379,7 +367,7 @@ class ChristianHolidays:
         accepted date of the saint's death.
         https://en.wikipedia.org/wiki/Saint_George%27s_Day
         """
-        return self._add_holiday(name, APR, 23)
+        return self._add_holiday_apr_23(name)
 
     def _add_saint_james_day(self, name) -> date:
         """
@@ -388,7 +376,7 @@ class ChristianHolidays:
         James the Great was one of the Twelve Apostles of Jesus.
         https://en.wikipedia.org/wiki/James_the_Great#Feast
         """
-        return self._add_holiday(name, JUL, 25)
+        return self._add_holiday_jul_25(name)
 
     def _add_saint_johns_day(self, name) -> date:
         """
@@ -398,7 +386,7 @@ class ChristianHolidays:
         the birth of John the Baptist.
         https://en.wikipedia.org/wiki/Nativity_of_John_the_Baptist
         """
-        return self._add_holiday(name, JUN, 24)
+        return self._add_holiday_jun_24(name)
 
     def _add_saint_josephs_day(self, name) -> date:
         """
@@ -410,7 +398,7 @@ class ChristianHolidays:
         of Jesus Christ.
         https://en.wikipedia.org/wiki/Saint_Joseph%27s_Day
         """
-        return self._add_holiday(name, MAR, 19)
+        return self._add_holiday_mar_19(name)
 
     def _add_saints_peter_and_paul_day(self, name) -> date:
         """
@@ -420,7 +408,7 @@ class ChristianHolidays:
         Saint Peter and Saint Paul, which is observed on 29 June.
         https://en.wikipedia.org/wiki/Feast_of_Saints_Peter_and_Paul
         """
-        return self._add_holiday(name, JUN, 29)
+        return self._add_holiday_jun_29(name)
 
     def _add_whit_monday(self, name) -> date:
         """

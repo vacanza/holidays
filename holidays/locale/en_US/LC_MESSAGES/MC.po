@@ -70,3 +70,7 @@ msgstr "Immaculate Conception's Day"
 #. Christmas Day.
 msgid "Noël"
 msgstr "Christmas Day"
+
+#. Immaculate Conception Day.
+msgid "L'Immaculée Conception"
+msgstr "Immaculate Conception's Day"

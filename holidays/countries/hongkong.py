@@ -48,8 +48,7 @@ class HongKong(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, Internat
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _add_holiday(self, *args) -> Optional[date]:
-        name, dt = self._parse_holiday(*args)
+    def _add_holiday(self, name: str, dt: date) -> Optional[date]:
         if self.observed and (self._is_sunday(dt) or dt in self):
             while self._is_sunday(dt) or dt in self:
                 dt += td(days=+1)
