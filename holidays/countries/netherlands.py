@@ -13,7 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import APR, MAY, AUG
+from holidays.calendars.gregorian import APR, AUG
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -69,7 +69,7 @@ class Netherlands(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 1945 and year % 5 == 0:
             # Liberation Day.
-            self._add_holiday(tr("Bevrijdingsdag"), MAY, 5)
+            self._add_holiday_may_5(tr("Bevrijdingsdag"))
 
         # Ascension Day.
         self._add_ascension_thursday(tr("Hemelvaartsdag"))

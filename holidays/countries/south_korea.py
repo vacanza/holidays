@@ -15,7 +15,7 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.calendars import _CustomChineseCalendar
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, SAT, SUN
+from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, AUG, SEP, SAT, SUN
 from holidays.constants import BANK, PUBLIC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import (
@@ -96,13 +96,13 @@ class SouthKorea(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, Intern
                 if "Alternative holiday" not in name:
                     self._add_holiday("Alternative holiday for %s" % name, obs_date)
 
-    def _add_three_day_holiday(self, name: str, hol_date: date) -> None:
-        for dt in (
-            self._add_holiday("The day preceding %s" % name, hol_date + td(days=-1)),
-            hol_date,
-            self._add_holiday("The second day of %s" % name, hol_date + td(days=+1)),
+    def _add_three_day_holiday(self, name: str, dt: date) -> None:
+        for dt_alt in (
+            self._add_holiday("The day preceding %s" % name, dt + td(days=-1)),
+            dt,
+            self._add_holiday("The second day of %s" % name, dt + td(days=+1)),
         ):
-            self._add_alt_holiday(dt, name=name, include_sat=False)  # type: ignore[arg-type]
+            self._add_alt_holiday(dt_alt, name=name, include_sat=False)  # type: ignore[arg-type]
 
     def _populate_public_holidays(self):
         if self._year <= 1947:
@@ -118,11 +118,11 @@ class SouthKorea(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, Intern
         self._add_three_day_holiday(name, self._add_chinese_new_years_day(name))
 
         # Independence Movement Day.
-        self._add_alt_holiday(self._add_holiday("Independence Movement Day", MAR, 1), since=2022)
+        self._add_alt_holiday(self._add_holiday_mar_1("Independence Movement Day"), since=2022)
 
         # Tree Planting Day.
         if 1949 <= self._year <= 2005 and self._year != 1960:
-            self._add_holiday("Tree Planting Day", APR, 5)
+            self._add_holiday_apr_5("Tree Planting Day")
 
         # Buddha's Birthday.
         self._add_alt_holiday(
@@ -131,24 +131,24 @@ class SouthKorea(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, Intern
 
         # Children's Day.
         if self._year >= 1975:
-            self._add_alt_holiday(self._add_holiday("Children's Day", MAY, 5), since=2015)
+            self._add_alt_holiday(self._add_holiday_may_5("Children's Day"), since=2015)
 
         # Memorial Day.
-        self._add_holiday("Memorial Day", JUN, 6)
+        self._add_holiday_jun_6("Memorial Day")
 
         # Constitution Day.
         if self._year <= 2007:
-            self._add_holiday("Constitution Day", JUL, 17)
+            self._add_holiday_jul_17("Constitution Day")
 
         # Liberation Day.
-        self._add_alt_holiday(self._add_holiday("Liberation Day", AUG, 15), since=2021)
+        self._add_alt_holiday(self._add_holiday_aug_15("Liberation Day"), since=2021)
 
         # National Foundation Day.
-        self._add_alt_holiday(self._add_holiday("National Foundation Day", OCT, 3), since=2021)
+        self._add_alt_holiday(self._add_holiday_oct_3("National Foundation Day"), since=2021)
 
         # Hangul Day.
         if self._year <= 1990 or self._year >= 2013:
-            self._add_alt_holiday(self._add_holiday("Hangul Day", OCT, 9), since=2021)
+            self._add_alt_holiday(self._add_holiday_oct_9("Hangul Day"), since=2021)
 
         # Chuseok.
         name = "Chuseok"
@@ -166,7 +166,7 @@ class SouthKorea(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, Intern
         if self._year >= 1994:
             self._add_labor_day(name)
         else:
-            self._add_holiday(name, MAR, 10)
+            self._add_holiday_mar_10(name)
 
 
 class Korea(SouthKorea):

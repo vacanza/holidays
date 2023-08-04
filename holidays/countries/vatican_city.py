@@ -9,7 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, OCT, NOV
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays
 
@@ -37,25 +36,25 @@ class VaticanCity(HolidayBase, ChristianHolidays):
         # This is supposedly the same as International New Year.
         # Modern adoption across the entire Latin Church in 1931 though this
         # was already celebrated in Rome as the Octave day of Christmas.
-        self._add_holiday("Solemnity of Mary Day", JAN, 1)
+        self._add_holiday_jan_1("Solemnity of Mary Day")
 
         # Epiphany.
         self._add_epiphany_day("Epiphany")
 
         # Lateran Treaty Day.
-        self._add_holiday("Lateran Treaty Day", FEB, 11)
+        self._add_holiday_feb_11("Lateran Treaty Day")
 
         if year >= 1978:
+            name = "Anniversary of the Election of the Holy Father"
             if year >= 2013:
                 # Anniversary of the election of Pope Francis.
-                dt = (MAR, 13)
+                self._add_holiday_mar_13(name)
             elif year >= 2005:
                 # Anniversary of the election of Pope Benedict XVI.
-                dt = (APR, 19)
+                self._add_holiday_apr_19(name)
             else:
                 # Anniversary of the election of Pope John Paul II.
-                dt = (OCT, 16)
-            self._add_holiday("Anniversary of the Election of the Holy Father", *dt)
+                self._add_holiday_oct_16(name)
 
         # In 2005-2013 - also name day for the civilian name of
         # Pope Benedict XVI (Josef Ratzinger)
@@ -77,7 +76,7 @@ class VaticanCity(HolidayBase, ChristianHolidays):
         if year >= 1955:
             # Saint Joseph the Worker's Day.
             # Created in response to May Day holidays by Pope Pius XII in 1955.
-            self._add_holiday("Saint Joseph the Worker's Day", MAY, 1)
+            self._add_holiday_may_1("Saint Joseph the Worker's Day")
 
         if year <= 2009:
             # Ascension of Christ.
@@ -102,7 +101,7 @@ class VaticanCity(HolidayBase, ChristianHolidays):
             # Name day for the civilian name of Pope John Paul II
             # (Karol Józef Wojtyła)
             # Saint Charles Borromeo Day.
-            self._add_holiday("Saint Charles Borromeo Day", NOV, 4)
+            self._add_holiday_nov_4("Saint Charles Borromeo Day")
 
         # Immaculate Conception.
         self._add_immaculate_conception_day("Immaculate Conception Day")

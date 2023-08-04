@@ -25,7 +25,6 @@ from holidays.calendars.gregorian import (
     AUG,
     SEP,
     OCT,
-    NOV,
     DEC,
 )
 from holidays.calendars.julian import JULIAN_CALENDAR
@@ -207,12 +206,12 @@ class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays):
             return None
 
         super()._populate(year)
-        observed_dates = set()
+        dts_observed = set()
 
         # New Year's Day.
-        observed_dates.add(self._add_new_years_day(tr("Новий рік")))
+        dts_observed.add(self._add_new_years_day(tr("Новий рік")))
 
-        observed_dates.add(
+        dts_observed.add(
             self._add_christmas_day(
                 # Christmas (Julian calendar).
                 tr("Різдво Христове (за юліанським календарем)")
@@ -220,16 +219,16 @@ class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays):
         )
 
         # International Women's Day.
-        observed_dates.add(self._add_womens_day(tr("Міжнародний жіночий день")))
+        dts_observed.add(self._add_womens_day(tr("Міжнародний жіночий день")))
 
         # There is no holidays from March 15, 2022
         # https://zakon.rada.gov.ua/laws/show/2136-20#n26
         if year <= 2021:
             # Easter Sunday (Pascha).
-            observed_dates.add(self._add_easter_sunday(tr("Великдень (Пасха)")))
+            dts_observed.add(self._add_easter_sunday(tr("Великдень (Пасха)")))
 
             # Holy Trinity Day.
-            observed_dates.add(self._add_whit_sunday(tr("Трійця")))
+            dts_observed.add(self._add_whit_sunday(tr("Трійця")))
 
             name = (
                 # Labour Day.
@@ -238,9 +237,9 @@ class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays):
                 # International Workers' Solidarity Day.
                 else tr("День міжнародної солідарності трудящих")
             )
-            observed_dates.add(self._add_labor_day(name))
+            dts_observed.add(self._add_labor_day(name))
             if year <= 2017:
-                observed_dates.add(self._add_labor_day_two(name))
+                dts_observed.add(self._add_labor_day_two(name))
 
             name = (
                 # Day of Victory over Nazism in World War II (Victory Day).
@@ -249,20 +248,20 @@ class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays):
                 # Victory Day.
                 else tr("День перемоги")
             )
-            observed_dates.add(self._add_world_war_two_victory_day(name))
+            dts_observed.add(self._add_world_war_two_victory_day(name))
 
             if year >= 1997:
-                observed_dates.add(
+                dts_observed.add(
                     # Day of the Constitution of Ukraine.
-                    self._add_holiday(tr("День Конституції України"), JUN, 28)
+                    self._add_holiday_jun_28(tr("День Конституції України"))
                 )
 
             # Independence Day.
             name = tr("День незалежності України")
             if year >= 1992:
-                observed_dates.add(self._add_holiday(name, AUG, 24))
+                dts_observed.add(self._add_holiday_aug_24(name))
             else:
-                self._add_holiday(name, JUL, 16)
+                self._add_holiday_jul_16(name)
 
             if year >= 2015:
                 name = (
@@ -272,16 +271,16 @@ class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays):
                     # Defender of Ukraine Day.
                     else tr("День захисника України")
                 )
-                observed_dates.add(self._add_holiday(name, OCT, 14))
+                dts_observed.add(self._add_holiday_oct_14(name))
 
             if year <= 1999:
                 # Anniversary of the Great October Socialist Revolution.
                 name = tr("Річниця Великої Жовтневої соціалістичної революції")
-                observed_dates.add(self._add_holiday(name, NOV, 7))
-                observed_dates.add(self._add_holiday(name, NOV, 8))
+                dts_observed.add(self._add_holiday_nov_7(name))
+                dts_observed.add(self._add_holiday_nov_8(name))
 
             if year >= 2017:
-                observed_dates.add(
+                dts_observed.add(
                     self._add_christmas_day(
                         # Christmas (Gregorian calendar).
                         tr("Різдво Христове (за григоріанським календарем)"),
@@ -296,15 +295,14 @@ class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays):
         # 23.04.1999: holiday on weekend move to next workday
         # https://zakon.rada.gov.ua/laws/show/576-14
         if self.observed:
-            for dt in sorted(observed_dates):
+            for dt in sorted(dts_observed):
                 if self._is_weekend(dt) and (
                     date(1995, JAN, 27) <= dt <= date(1998, JAN, 9) or dt >= date(1999, APR, 23)
                 ):
-                    obs_date = dt + td(days=+2 if self._is_saturday(dt) else +1)
-                    while obs_date in self:
-                        obs_date += td(days=+1)
-                    hol_name = self.tr("%s (вихідний)") % self[dt]
-                    self._add_holiday(hol_name, obs_date)
+                    dt_observed = dt + td(days=+2 if self._is_saturday(dt) else +1)
+                    while dt_observed in self:
+                        dt_observed += td(days=+1)
+                    self._add_holiday(self.tr("%s (вихідний)") % self[dt], dt_observed)
 
 
 class UA(Ukraine):

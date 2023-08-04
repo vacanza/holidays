@@ -13,7 +13,7 @@ import warnings
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars.gregorian import MAR, MAY, JUL, SEP, NOV, DEC, FRI
+from holidays.calendars.gregorian import NOV
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -66,34 +66,34 @@ class HolidaysMH(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_new_years_day("New Year's Day"))
 
         # Nuclear Victims Remembrance Day
-        self._add_observed(self._add_holiday("Nuclear Victims Remembrance Day", MAR, 1))
+        self._add_observed(self._add_holiday_mar_1("Nuclear Victims Remembrance Day"))
 
         # Good Friday
         self._add_good_friday("Good Friday")
 
         # Constitution Day
-        self._add_observed(self._add_holiday("Constitution Day", MAY, 1))
+        self._add_observed(self._add_holiday_may_1("Constitution Day"))
 
         # Fisherman's Day
-        self._add_holiday("Fisherman's Day", self._get_nth_weekday_of_month(1, FRI, JUL))
+        self._add_holiday_1st_fri_of_jul("Fisherman's Day")
 
         # Dri-jerbal Day
-        self._add_holiday("Dri-jerbal Day", self._get_nth_weekday_of_month(1, FRI, SEP))
+        self._add_holiday_1st_fri_of_sep("Dri-jerbal Day")
 
         # Manit Day
-        self._add_holiday("Manit Day", self._get_nth_weekday_of_month(-1, FRI, SEP))
+        self._add_holiday_last_fri_of_sep("Manit Day")
 
         # President's Day
-        self._add_observed(self._add_holiday("President's Day", NOV, 17))
+        self._add_observed(self._add_holiday_nov_17("President's Day"))
 
         # Gospel Day
-        self._add_holiday("Gospel Day", self._get_nth_weekday_of_month(1, FRI, DEC))
+        self._add_holiday_1st_fri_of_dec("Gospel Day")
 
         # Christmas Day
         name = "Christmas Day"
         if year == 2021:
             # special case
-            self._add_holiday(name, DEC, 24)
+            self._add_holiday_dec_24(name)
         else:
             self._add_observed(self._add_christmas_day(name))
 

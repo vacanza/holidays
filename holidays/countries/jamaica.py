@@ -12,7 +12,6 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars.gregorian import MAY, AUG, OCT, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -54,17 +53,17 @@ class Jamaica(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_monday("Easter Monday")
 
         # National Labour Day
-        self._add_observed(self._add_holiday("National Labour Day", MAY, 23), include_sat=True)
+        self._add_observed(self._add_holiday_may_23("National Labour Day"), include_sat=True)
 
         # Emancipation Day
         if year >= 1998:
-            self._add_observed(self._add_holiday("Emancipation Day", AUG, 1))
+            self._add_observed(self._add_holiday_aug_1("Emancipation Day"))
 
         # Independence Day
-        self._add_observed(self._add_holiday("Independence Day", AUG, 6))
+        self._add_observed(self._add_holiday_aug_6("Independence Day"))
 
         # National Heroes Day
-        self._add_holiday("National Heroes Day", self._get_nth_weekday_of_month(3, MON, OCT))
+        self._add_holiday_3rd_mon_of_oct("National Heroes Day")
 
         # Christmas Day
         self._add_observed(self._add_christmas_day("Christmas Day"), days=+2)

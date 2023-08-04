@@ -13,7 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, NOV, DEC
+from holidays.calendars.gregorian import JAN, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -45,7 +45,7 @@ class Monaco(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_new_years_day(tr("Le jour de l'An")))
 
         # Saint Devote's Day.
-        self._add_holiday(tr("La Sainte Dévote"), JAN, 27)
+        self._add_holiday_jan_27(tr("La Sainte Dévote"))
 
         # Easter Monday.
         self._add_easter_monday(tr("Le lundi de Pâques"))
@@ -69,13 +69,14 @@ class Monaco(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_all_saints_day(tr("La Toussaint")))
 
         # Prince's Day.
-        self._add_observed(self._add_holiday(tr("La Fête du Prince"), NOV, 19))
+        self._add_observed(self._add_holiday_nov_19(tr("La Fête du Prince")))
 
-        dt = (DEC, 8)
-        if year >= 2019 and self._is_sunday(*dt):
-            dt = (DEC, 9)
-        # Immaculate Conception's Day.
-        self._add_holiday(tr("L'Immaculée Conception"), *dt)
+        # Immaculate Conception Day.
+        name = tr("L'Immaculée Conception")
+        if year >= 2019 and self._is_sunday(DEC, 8):
+            self._add_holiday_dec_9(name)
+        else:
+            self._add_holiday_dec_8(name)
 
         # Christmas Day.
         self._add_observed(self._add_christmas_day(tr("Noël")))

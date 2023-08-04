@@ -12,7 +12,6 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars.gregorian import JAN, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -42,7 +41,7 @@ class Panama(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_new_years_day("New Year's Day"))
 
         # Martyrs' Day
-        self._add_observed(self._add_holiday("Martyrs' Day", JAN, 9))
+        self._add_observed(self._add_holiday_jan_9("Martyrs' Day"))
 
         # Carnival
         self._add_carnival_tuesday("Carnival")
@@ -54,26 +53,26 @@ class Panama(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_labor_day("Labour Day"))
 
         # Separation Day
-        self._add_holiday("Separation Day", NOV, 3)
+        self._add_holiday_nov_3("Separation Day")
 
         # National Symbols Day
-        self._add_holiday("National Symbols Day", NOV, 4)
+        self._add_holiday_nov_4("National Symbols Day")
 
         # Colon Day
-        self._add_holiday("Colon Day", NOV, 5)
+        self._add_holiday_nov_5("Colon Day")
 
         # Los Santos Uprising Day
-        self._add_holiday("Los Santos Uprising Day", NOV, 10)
+        self._add_holiday_nov_10("Los Santos Uprising Day")
 
         # Independence Day
-        self._add_observed(self._add_holiday("Independence Day", NOV, 28))
+        self._add_observed(self._add_holiday_nov_28("Independence Day"))
 
         # Mother's Day
-        self._add_observed(self._add_holiday("Mother's Day", DEC, 8))
+        self._add_observed(self._add_holiday_dec_8("Mother's Day"))
 
         # National Mourning Day
         if year >= 2022:
-            self._add_observed(self._add_holiday("National Mourning Day", DEC, 20))
+            self._add_observed(self._add_holiday_dec_20("National Mourning Day"))
 
         # Christmas Day
         self._add_observed(self._add_christmas_day("Christmas Day"))
