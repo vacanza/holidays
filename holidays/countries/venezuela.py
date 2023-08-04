@@ -11,7 +11,6 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import APR, JUN, JUL, OCT
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -62,7 +61,7 @@ class Venezuela(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Note: not sure about the start year, but this event happened in 1811
         if year >= 1811:
             # Declaration of Independence.
-            self._add_holiday(tr("Declaración de la Independencia"), APR, 19)
+            self._add_holiday_apr_19(tr("Declaración de la Independencia"))
 
         # https://bit.ly/3B4Xd1L
         if year >= 1946:
@@ -72,16 +71,16 @@ class Venezuela(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Note: not sure about the start year, but this event happened in 1824
         if year >= 1971 or 1824 <= year <= 1917:
             # Battle of Carabobo.
-            self._add_holiday(tr("Batalla de Carabobo"), JUN, 24)
+            self._add_holiday_jun_24(tr("Batalla de Carabobo"))
 
         # Note: not sure about the start year, but this event happened in 1811
         if year >= 1811:
             # Independence Day.
-            self._add_holiday(tr("Día de la Independencia"), JUL, 5)
+            self._add_holiday_jul_5(tr("Día de la Independencia"))
 
         if year >= 1918:
             # Birthday of Simon Bolivar.
-            self._add_holiday(tr("Natalicio de Simón Bolívar"), JUL, 24)
+            self._add_holiday_jul_24(tr("Natalicio de Simón Bolívar"))
 
         if year >= 1921:
             self._add_columbus_day(
@@ -96,7 +95,7 @@ class Venezuela(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Note: celebrated; the historical records are unclear
         if 1909 <= year <= 1917:
             # Unknown Holiday.
-            self._add_holiday(tr("Día Festivo Desconocido"), OCT, 28)
+            self._add_holiday_oct_28(tr("Día Festivo Desconocido"))
 
         # Christmas Eve.
         self._add_christmas_eve(tr("Nochebuena"))
