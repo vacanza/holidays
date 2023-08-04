@@ -13,7 +13,6 @@ from datetime import date
 from datetime import timedelta as td
 from typing import Optional
 
-from holidays.calendars.gregorian import FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 
@@ -57,11 +56,12 @@ class Spain(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
         name, dt = self._parse_holiday(*args)
         if dt.year != self._year:
             return None
+
         if self.observed and self._is_sunday(dt):
             dt += td(days=+1)
             name = self.tr("%s (Trasladado)") % self.tr(name)
-        self[dt] = self.tr(name)
-        return dt
+
+        return super()._add_holiday(self.tr(name), dt)
 
     def _populate(self, year):
         super()._populate(year)
@@ -81,11 +81,11 @@ class Spain(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
 
         self._add_assumption_of_mary_day("Asunción de la Virgen")
 
-        self._add_holiday("Día de la Hispanidad", OCT, 12)
+        self._add_holiday_oct_12("Día de la Hispanidad")
 
         self._add_all_saints_day("Todos los Santos")
 
-        self._add_holiday("Día de la Constitución Española", DEC, 6)
+        self._add_holiday_dec_6("Día de la Constitución Española")
 
         self._add_immaculate_conception_day("La Inmaculada Concepción")
 
@@ -95,7 +95,7 @@ class Spain(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
     def _add_subdiv_an_holidays(self):
         if self._year == 2023:
             self._add_new_years_day("Año nuevo")
-        self._add_holiday("Día de Andalucia", FEB, 28)
+        self._add_holiday_feb_28("Día de Andalucia")
         if self._year <= 2022:
             self._add_holy_thursday("Jueves Santo")
         if self._year == 2022:
@@ -119,7 +119,7 @@ class Spain(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
             self._add_new_years_day("Año nuevo")
         if self._year <= 2022:
             self._add_holy_thursday("Jueves Santo")
-        self._add_holiday("Día de Asturias", SEP, 8)
+        self._add_holiday_sep_8("Día de Asturias")
         if self._year == 2022:
             self._add_labor_day("Día del Trabajador")
             self._add_christmas_day("Navidad")
@@ -127,16 +127,16 @@ class Spain(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
     def _add_subdiv_cb_holidays(self):
         if self._year <= 2022:
             self._add_holy_thursday("Jueves Santo")
-        self._add_holiday("Día de las Instituciones de Cantabria", JUL, 28)
-        self._add_holiday("Día de la Bien Aparecida", SEP, 15)
+        self._add_holiday_jul_28("Día de las Instituciones de Cantabria")
+        self._add_holiday_sep_15("Día de la Bien Aparecida")
         if self._year == 2022:
             self._add_christmas_day("Navidad")
 
     def _add_subdiv_ce_holidays(self):
         if self._year <= 2022:
             self._add_holy_thursday("Jueves Santo")
-        self._add_holiday("Nuestra Señora de África", AUG, 5)
-        self._add_holiday("Día de la Ciudad Autónoma de Ceuta", SEP, 2)
+        self._add_holiday_aug_5("Nuestra Señora de África")
+        self._add_holiday_sep_2("Día de la Ciudad Autónoma de Ceuta")
         if self._year == 2022:
             self._add_eid_al_adha_day("Eid al-Adha")
         elif self._year == 2023:
@@ -150,7 +150,7 @@ class Spain(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
             self._add_saint_josephs_day("San José")
         if self._year <= 2022:
             self._add_holy_thursday("Jueves Santo")
-        self._add_holiday("Día de Castilla y Leon", APR, 23)
+        self._add_holiday_apr_23("Día de Castilla y Leon")
         if self._year == 2022:
             self._add_labor_day("Día del Trabajador")
             self._add_christmas_day("Navidad")
@@ -164,23 +164,23 @@ class Spain(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
             self._add_easter_monday("Lunes de Pascua")
         if self._year >= 2022:
             self._add_corpus_christi_day("Corpus Christi")
-        self._add_holiday("Día de Castilla La Mancha", MAY, 31)
+        self._add_holiday_may_31("Día de Castilla La Mancha")
         if self._year == 2022:
             self._add_christmas_day("Navidad")
 
     def _add_subdiv_cn_holidays(self):
         if self._year <= 2022:
             self._add_holy_thursday("Jueves Santo")
-        self._add_holiday("Día de Canarias", MAY, 30)
+        self._add_holiday_may_30("Día de Canarias")
         if self._year == 2022:
             self._add_christmas_day("Navidad")
 
     def _add_subdiv_ct_holidays(self):
         self._add_easter_monday("Lunes de Pascua")
         if self._year == 2022:
-            self._add_holiday("Día de la Pascua Granada", JUN, 6)
+            self._add_holiday_jun_6("Día de la Pascua Granada")
         self._add_saint_johns_day("San Juan")
-        self._add_holiday("Día Nacional de Catalunya", SEP, 11)
+        self._add_holiday_sep_11("Día Nacional de Catalunya")
         if self._year == 2022:
             self._add_christmas_day("Navidad")
         self._add_christmas_day_two("San Esteban")
@@ -190,7 +190,7 @@ class Spain(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
             self._add_saint_josephs_day("San José")
         if self._year <= 2022:
             self._add_holy_thursday("Jueves Santo")
-        self._add_holiday("Día de Extremadura", SEP, 8)
+        self._add_holiday_sep_8("Día de Extremadura")
         if self._year == 2023:
             self._add_carnival_tuesday("Carnaval")
         if self._year == 2022:
@@ -203,13 +203,13 @@ class Spain(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
         if self._year <= 2022:
             self._add_holy_thursday("Jueves Santo")
         if self._year >= 2022:
-            self._add_holiday("Día de las letras Gallegas", MAY, 17)
+            self._add_holiday_may_17("Día de las letras Gallegas")
         if self._year != 2023:
             self._add_saint_johns_day("San Juan")
-        self._add_holiday("Día Nacional de Galicia", JUL, 25)
+        self._add_holiday_jul_25("Día Nacional de Galicia")
 
     def _add_subdiv_ib_holidays(self):
-        self._add_holiday("Día de las Islas Baleares", MAR, 1)
+        self._add_holiday_mar_1("Día de las Islas Baleares")
         if self._year <= 2022:
             self._add_holy_thursday("Jueves Santo")
         self._add_easter_monday("Lunes de Pascua")
@@ -227,7 +227,7 @@ class Spain(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
             self._add_holy_thursday("Jueves Santo")
         if self._year == 2022:
             self._add_labor_day("Día del Trabajador")
-        self._add_holiday("Día de la Región de Murcia", JUN, 9)
+        self._add_holiday_jun_9("Día de la Región de Murcia")
         if self._year == 2022:
             self._add_christmas_day("Navidad")
 
@@ -236,7 +236,7 @@ class Spain(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
             self._add_saint_josephs_day("San José")
         if self._year <= 2022:
             self._add_holy_thursday("Jueves Santo")
-        self._add_holiday("Día de Comunidad de Madrid", MAY, 2)
+        self._add_holiday_may_2("Día de Comunidad de Madrid")
         if self._year == 2022:
             self._add_saint_james_day("Día de Santiago Apóstol")
             self._add_christmas_day("Navidad")
@@ -246,8 +246,8 @@ class Spain(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
             self._add_saint_josephs_day("San José")
         if self._year <= 2022:
             self._add_holy_thursday("Jueves Santo")
-        self._add_holiday("Vírgen de la victoria", SEP, 8)
-        self._add_holiday("Día de Melilla", SEP, 17)
+        self._add_holiday_sep_8("Vírgen de la victoria")
+        self._add_holiday_sep_17("Día de Melilla")
         if self._year == 2022:
             self._add_eid_al_fitr_day_two("Eid al-Fitr")
             self._add_eid_al_adha_day_three("Eid al-Adha")
@@ -276,16 +276,16 @@ class Spain(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
         if self._year >= 2022:
             self._add_saint_james_day("Día de Santiago Apóstol")
         if self._year <= 2022:
-            self._add_holiday("Día de Elcano", SEP, 6)
+            self._add_holiday_sep_6("Día de Elcano")
         if 2011 <= self._year <= 2013:
-            self._add_holiday("Día del País Vasco", OCT, 25)
+            self._add_holiday_oct_25("Día del País Vasco")
 
     def _add_subdiv_ri_holidays(self):
         if self._year <= 2022:
             self._add_holy_thursday("Jueves Santo")
         if self._year >= 2022:
             self._add_easter_monday("Lunes de Pascua")
-        self._add_holiday("Día de La Rioja", JUN, 9)
+        self._add_holiday_jun_9("Día de La Rioja")
         if self._year == 2022:
             self._add_christmas_day("Navidad")
 
@@ -297,7 +297,7 @@ class Spain(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
         self._add_easter_monday("Lunes de Pascua")
         self._add_saint_johns_day("San Juan")
         if self._year <= 2021:
-            self._add_holiday("Día de la Comunidad Valenciana", OCT, 9)
+            self._add_holiday_oct_9("Día de la Comunidad Valenciana")
 
 
 class ES(Spain):

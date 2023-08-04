@@ -9,7 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import FEB, MAR, JUL, SEP
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -37,10 +36,10 @@ class SanMarino(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_epiphany_day("Epiphany")
 
         # Feast of Saint Agatha.
-        self._add_holiday("Feast of Saint Agatha", FEB, 5)
+        self._add_holiday_feb_5("Feast of Saint Agatha")
 
         # Anniversary of the Arengo.
-        self._add_holiday("Anniversary of the Arengo", MAR, 25)
+        self._add_holiday_mar_25("Anniversary of the Arengo")
 
         # Easter Sunday.
         self._add_easter_sunday("Easter Sunday")
@@ -55,13 +54,13 @@ class SanMarino(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_corpus_christi_day("Corpus Cristi")
 
         # Liberation from Fascism Day.
-        self._add_holiday("Liberation from Fascism Day", JUL, 28)
+        self._add_holiday_jul_28("Liberation from Fascism Day")
 
         # Assumption of Mary.
         self._add_assumption_of_mary_day("Assumption Day")
 
         # The Feast of Saint Marinus and the Republic.
-        self._add_holiday("Foundation Day", SEP, 3)
+        self._add_holiday_sep_3("Foundation Day")
 
         # All Saints' Day.
         self._add_all_saints_day("All Saints' Day")

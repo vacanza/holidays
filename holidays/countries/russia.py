@@ -11,7 +11,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, FEB, MAY, JUN, NOV
+from holidays.calendars.gregorian import JAN, FEB, MAY
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -57,15 +57,15 @@ class Russia(HolidayBase, ChristianHolidays, InternationalHolidays):
             for day in range(1, 6):
                 self._add_holiday(name, JAN, day)
             if year >= 2013:
-                self._add_holiday(name, JAN, 6)
-                self._add_holiday(name, JAN, 8)
+                self._add_holiday_jan_6(name)
+                self._add_holiday_jan_8(name)
 
         # Christmas Day.
         self._add_christmas_day(tr("Рождество Христово"))
 
         if year >= 2002:
             # Defender of the Fatherland Day.
-            self._add_holiday(tr("День защитника Отечества"), FEB, 23)
+            self._add_holiday_feb_23(tr("День защитника Отечества"))
 
         # International Women's Day.
         self._add_womens_day(tr("Международный женский день"))
@@ -85,20 +85,19 @@ class Russia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_world_war_two_victory_day(tr("День Победы"))
 
         if year >= 1992:
-            self._add_holiday(
+            self._add_holiday_jun_12(
                 # Russia Day.
-                tr("День России") if year >= 2002
+                tr("День России")
+                if year >= 2002
                 # Day of the Adoption of the Declaration of Sovereignty of the Russian Federation.
                 else tr(
                     "День принятия Декларации о государственном суверенитете Российской Федерации"
-                ),
-                JUN,
-                12,
+                )
             )
 
         if year >= 2005:
             # Unity Day.
-            self._add_holiday(tr("День народного единства"), NOV, 4)
+            self._add_holiday_nov_4(tr("День народного единства"))
 
         if year <= 2004:
             name = (
@@ -108,9 +107,9 @@ class Russia(HolidayBase, ChristianHolidays, InternationalHolidays):
                 # Anniversary of the Great October Socialist Revolution.
                 else tr("Годовщина Великой Октябрьской социалистической революции")
             )
-            self._add_holiday(name, NOV, 7)
+            self._add_holiday_nov_7(name)
             if year <= 1991:
-                self._add_holiday(name, NOV, 8)
+                self._add_holiday_nov_8(name)
 
 
 class RU(Russia):
