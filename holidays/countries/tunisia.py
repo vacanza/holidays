@@ -46,9 +46,7 @@ class Tunisia(HolidayBase, InternationalHolidays, IslamicHolidays):
         self._add_new_years_day(tr("رأس السنة الميلادية"))
 
         # Revolution and Youth Day - January 14
-        self._add_holiday_jan_14(
-            tr("عيد الثورة والشباب"),
-        )
+        self._add_holiday_jan_14(tr("عيد الثورة والشباب"))
 
         # Independence Day.
         self._add_holiday_mar_20(tr("عيد الإستقلال"))

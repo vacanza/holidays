@@ -84,9 +84,10 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
                 2022: (JUN, 2),
             }
             name = "Spring Bank Holiday"
-            self._add_holiday(
-                name, spring_bank_dates[year]
-            ) if year in spring_bank_dates else self._add_holiday_last_mon_of_may(name)
+            if year in spring_bank_dates:
+                self._add_holiday(name, spring_bank_dates[year])
+            else:
+                self._add_holiday_last_mon_of_may(name)
 
         if self.subdiv == "England":
             self._add_subdiv_eng_holidays()

@@ -46,7 +46,7 @@ class Taiwan(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
         dts_observed.add(self._add_new_years_day(name))
 
         if self.observed and year >= 2015 and self._is_friday(DEC, 31):
-            self._add_holiday("%s (Observed)" % name, (DEC, 31))
+            self._add_holiday_dec_31("%s (Observed)" % name)
 
         # Lunar New Year.
         self._add_chinese_new_years_eve("Lunar New Year's Eve")

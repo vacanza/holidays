@@ -251,7 +251,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
             name = (
                 "Martin Luther King Jr. Day"
                 if self._year >= 2018
-                else "Dr. Martin Luther King Jr. " "and Robert E. Lee's Birthdays"
+                else "Dr. Martin Luther King Jr. and Robert E. Lee's Birthdays"
             )
             self._add_holiday_3rd_mon_of_jan(name)
 
@@ -498,12 +498,13 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
                 self._add_holiday_apr_19(name)
 
     def _add_subdiv_md_holidays(self):
-        # Inauguration Day
         if self._year >= 1789 and (self._year - 1789) % 4 == 0:
+            # Inauguration Day
+            name = "Inauguration Day"
             self._add_observed(
-                self._add_holiday_jan_20("Inauguration Day")
+                self._add_holiday_jan_20(name)
                 if self._year >= 1937
-                else self._add_holiday_mar_4("Inauguration Day"),
+                else self._add_holiday_mar_4(name),
                 before=False,
             )
 
