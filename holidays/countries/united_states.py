@@ -147,7 +147,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
         if year >= 1938:
             name = "Veterans Day" if year >= 1954 else "Armistice Day"
             if 1971 <= year <= 1977:
-                self._add_holiday(name, _get_nth_weekday_of_month(4, MON, OCT, self._year))
+                self._add_holiday_4th_mon_of_oct(name)
             else:
                 self._add_observed(self._add_remembrance_day(name))
 
