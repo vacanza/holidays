@@ -11,7 +11,6 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JUL, AUG, SEP
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -65,13 +64,13 @@ class Nicaragua(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 1979:
             # Revolution Day.
-            self._add_holiday(tr("Día de la Revolución"), JUL, 19)
+            self._add_holiday_jul_19(tr("Día de la Revolución"))
 
         # Battle of San Jacinto Day.
-        self._add_holiday(tr("Batalla de San Jacinto"), SEP, 14)
+        self._add_holiday_sep_14(tr("Batalla de San Jacinto"))
 
         # Independence Day.
-        self._add_holiday(tr("Día de la Independencia"), SEP, 15)
+        self._add_holiday_sep_15(tr("Día de la Independencia"))
 
         # Virgin's Day.
         self._add_immaculate_conception_day(tr("Concepción de María"))
@@ -81,10 +80,10 @@ class Nicaragua(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_mn_holidays(self):
         # Descent of Saint Dominic.
-        self._add_holiday(tr("Bajada de Santo Domingo"), AUG, 1)
+        self._add_holiday_aug_1(tr("Bajada de Santo Domingo"))
 
         # Ascent of Saint Dominic.
-        self._add_holiday(tr("Subida de Santo Domingo"), AUG, 10)
+        self._add_holiday_aug_10(tr("Subida de Santo Domingo"))
 
 
 class NI(Nicaragua):

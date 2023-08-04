@@ -156,7 +156,7 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays):
             2022: (FEB, 28),
         }
         # Patriots Day.
-        self._add_holiday(tr("Día de los Héroes de la Patria"), *dates_obs.get(year, (MAR, 1)))
+        self._add_holiday(tr("Día de los Héroes de la Patria"), dates_obs.get(year, (MAR, 1)))
 
         # Maundy Thursday.
         self._add_holy_thursday(tr("Jueves Santo"))
@@ -173,8 +173,8 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Independence Day.
         name = tr("Día de la Independencia Nacional")
         if year >= 2012:
-            self._move_holiday(self._add_holiday(name, MAY, 14))
-        may_15 = self._add_holiday(name, MAY, 15)
+            self._move_holiday(self._add_holiday_may_14(name))
+        may_15 = self._add_holiday_may_15(name)
         if year != 2021:
             self._move_holiday(may_15)
 
@@ -184,11 +184,11 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays):
         }
         self._move_holiday(
             # Chaco Armistice Day.
-            self._add_holiday(tr("Día de la Paz del Chaco"), *dates_obs.get(year, (JUN, 12)))
+            self._add_holiday(tr("Día de la Paz del Chaco"), dates_obs.get(year, (JUN, 12)))
         )
 
         # Asuncion Foundation's Day.
-        self._move_holiday(self._add_holiday(tr("Día de la Fundación de Asunción"), AUG, 15))
+        self._move_holiday(self._add_holiday_aug_15(tr("Día de la Fundación de Asunción")))
 
         if year >= 2000:
             dates_obs = {
@@ -202,12 +202,12 @@ class Paraguay(HolidayBase, ChristianHolidays, InternationalHolidays):
                 self._add_holiday(
                     # Boqueron Battle Day.
                     tr("Día de la Batalla de Boquerón"),
-                    *dates_obs.get(year, (SEP, 29)),
+                    dates_obs.get(year, (SEP, 29)),
                 )
             )
 
         # Caacupe Virgin Day.
-        self._move_holiday(self._add_holiday(tr("Día de la Virgen de Caacupé"), DEC, 8))
+        self._move_holiday(self._add_holiday_dec_8(tr("Día de la Virgen de Caacupé")))
 
         # Christmas.
         self._add_christmas_day(tr("Navidad"))
