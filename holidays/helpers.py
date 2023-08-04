@@ -17,4 +17,4 @@ def _normalize_tuple(data):
         An unchanged object for tuple of tuples, e.g., ((JAN, 10), (DEC, 31)).
         An object put into a tuple otherwise, e.g., ((JAN, 10),).
     """
-    return data if not data or type(data[0]) == tuple else (data,)
+    return data if not data or isinstance(data[0], tuple) else (data,)
