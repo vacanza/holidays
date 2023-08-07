@@ -38,11 +38,14 @@ class TestLocalization(unittest.TestCase):
 
                 raise e
 
-            entity_code = str(po_path.parts[-1]).split(".")[0]
-            entity = getattr(holidays, entity_code)
+            # Collect `<country_code>` part from
+            # holidays/locale/<locale>/LC_MESSAGES/<country_code>.po.
+            entity_code = po_path.stem
             # Collect `<locale>` part from
             # holidays/locale/<locale>/LC_MESSAGES/<country_code>.po.
             language = po_path.parts[-3]
+
+            entity = getattr(holidays, entity_code)
 
             # Skip original language files.
             if entity.default_language == language:
