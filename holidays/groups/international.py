@@ -11,8 +11,6 @@
 
 from datetime import date
 
-from holidays.calendars.gregorian import JAN, MAR, MAY, JUN, OCT, NOV, DEC
-
 
 class InternationalHolidays:
     """
@@ -28,7 +26,7 @@ class InternationalHolidays:
         of African Unity on 25 May 1963.
         https://en.wikipedia.org/wiki/Africa_Day
         """
-        return self._add_holiday(name, MAY, 25)
+        return self._add_holiday_may_25(name)
 
     def _add_childrens_day(self, name, variation="JUN"):
         """
@@ -43,12 +41,12 @@ class InternationalHolidays:
         https://en.wikipedia.org/wiki/Children's_Day
         """
         if variation == "JUN":
-            return self._add_holiday(name, JUN, 1)
+            return self._add_holiday_jun_1(name)
         elif variation == "NOV":
-            return self._add_holiday(name, NOV, 20)
+            return self._add_holiday_nov_20(name)
         else:
             raise ValueError(
-                f"Unknown variaton name: {variation}. "
+                f"Unknown variation name: {variation}. "
                 "This entry currently supports `JUN` and `NOV` variation only."
             )
 
@@ -60,7 +58,7 @@ class InternationalHolidays:
         anniversary of Christopher Columbus's arrival in the Americas.
         https://en.wikipedia.org/wiki/Columbus_Day
         """
-        return self._add_holiday(name, OCT, 12)
+        return self._add_holiday_oct_12(name)
 
     def _add_labor_day(self, name):
         """
@@ -71,7 +69,7 @@ class InternationalHolidays:
         international labour movement.
         https://en.wikipedia.org/wiki/International_Workers%27_Day
         """
-        return self._add_holiday(name, MAY, 1)
+        return self._add_holiday_may_1(name)
 
     def _add_labor_day_two(self, name):
         """
@@ -79,7 +77,7 @@ class InternationalHolidays:
 
         https://en.wikipedia.org/wiki/International_Workers%27_Day
         """
-        return self._add_holiday(name, MAY, 2)
+        return self._add_holiday_may_2(name)
 
     def _add_labor_day_three(self, name):
         """
@@ -87,7 +85,7 @@ class InternationalHolidays:
 
         https://en.wikipedia.org/wiki/International_Workers%27_Day
         """
-        return self._add_holiday(name, MAY, 3)
+        return self._add_holiday_may_3(name)
 
     def _add_new_years_day(self, name) -> date:
         """
@@ -97,7 +95,7 @@ class InternationalHolidays:
         1 January, the first day of the year in the modern Gregorian calendar.
         https://en.wikipedia.org/wiki/New_Year%27s_Day
         """
-        return self._add_holiday(name, JAN, 1)
+        return self._add_holiday_jan_1(name)
 
     def _add_new_years_day_two(self, name) -> date:
         """
@@ -107,7 +105,7 @@ class InternationalHolidays:
         1 January, the first day of the year in the modern Gregorian calendar.
         https://en.wikipedia.org/wiki/New_Year%27s_Day
         """
-        return self._add_holiday(name, JAN, 2)
+        return self._add_holiday_jan_2(name)
 
     def _add_new_years_day_three(self, name) -> date:
         """
@@ -117,7 +115,7 @@ class InternationalHolidays:
         1 January, the first day of the year in the modern Gregorian calendar.
         https://en.wikipedia.org/wiki/New_Year%27s_Day
         """
-        return self._add_holiday(name, JAN, 3)
+        return self._add_holiday_jan_3(name)
 
     def _add_new_years_day_four(self, name) -> date:
         """
@@ -127,7 +125,7 @@ class InternationalHolidays:
         1 January, the first day of the year in the modern Gregorian calendar.
         https://en.wikipedia.org/wiki/New_Year%27s_Day
         """
-        return self._add_holiday(name, JAN, 4)
+        return self._add_holiday_jan_4(name)
 
     def _add_remembrance_day(self, name):
         """
@@ -137,7 +135,7 @@ class InternationalHolidays:
         to honour armed forces members who have died in the line of duty.
         https://en.wikipedia.org/wiki/Remembrance_Day
         """
-        return self._add_holiday(name, NOV, 11)
+        return self._add_holiday_nov_11(name)
 
     def _add_new_years_eve(self, name) -> date:
         """
@@ -148,7 +146,7 @@ class InternationalHolidays:
         entire day of the last day of the year, on 31 December.
         https://en.wikipedia.org/wiki/New_Year%27s_Eve
         """
-        return self._add_holiday(name, DEC, 31)
+        return self._add_holiday_dec_31(name)
 
     def _add_womens_day(self, name):
         """
@@ -160,7 +158,7 @@ class InternationalHolidays:
         against women.
         https://en.wikipedia.org/wiki/International_Women%27s_Day
         """
-        return self._add_holiday(name, MAR, 8)
+        return self._add_holiday_mar_8(name)
 
     def _add_world_war_two_victory_day(self, name):
         """
@@ -170,4 +168,4 @@ class InternationalHolidays:
         Germany in 1945.
         https://en.wikipedia.org/wiki/Victory_Day_(9_May)
         """
-        return self._add_holiday(name, MAY, 9)
+        return self._add_holiday_may_9(name)

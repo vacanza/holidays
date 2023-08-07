@@ -52,8 +52,7 @@ class Spain(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
         IslamicHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _add_holiday(self, *args) -> Optional[date]:
-        name, dt = self._parse_holiday(*args)
+    def _add_holiday(self, name: str, dt: date) -> Optional[date]:
         if dt.year != self._year:
             return None
 

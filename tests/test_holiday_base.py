@@ -240,8 +240,12 @@ class TestBasics(unittest.TestCase):
         self.assertIn(date(2015, 12, 25), h)
 
     def test_is_leap_year(self):
-        self.assertTrue(holidays.HolidayBase._is_leap_year(2000))
-        self.assertFalse(holidays.HolidayBase._is_leap_year(2100))
+        instance = holidays.HolidayBase()
+        instance._populate(2000)
+        self.assertTrue(instance._is_leap_year())
+
+        instance._populate(2100)
+        self.assertFalse(instance._is_leap_year())
 
     def test_is_weekend(self):
         h = holidays.HolidayBase()

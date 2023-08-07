@@ -25,7 +25,7 @@ class HinduCalendarHolidays:
         self._show_estimated = show_estimated
 
     def _add_hindu_calendar_holiday(
-        self, name: str, hol_date: Tuple[date, bool]
+        self, name: str, dt_estimated: Tuple[date, bool]
     ) -> Optional[date]:
         """
         Add Hindu calendar holiday.
@@ -34,8 +34,8 @@ class HinduCalendarHolidays:
         is an estimation.
         """
         estimated_label = getattr(self, "estimated_label", "%s* (*estimated)")
+        dt, is_estimated = dt_estimated
 
-        dt, is_estimated = hol_date
         return self._add_holiday(
             self.tr(estimated_label) % self.tr(name)
             if is_estimated and self._show_estimated

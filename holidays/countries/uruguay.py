@@ -13,7 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import MAR, JUN, DEC, MON
+from holidays.calendars.gregorian import MAR, JUN, DEC, MON, _get_nth_weekday_from
 from holidays.constants import BANK, PUBLIC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -57,13 +57,13 @@ class Uruguay(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _move_holiday(self, dt: date) -> None:
         # Decree Law #14977, # 15535, #16805.
         if self.observed and (1980 <= self._year <= 1983 or self._year >= 1997):
-            obs_date = None
+            dt_observed = None
             if self._is_tuesday(dt) or self._is_wednesday(dt):
-                obs_date = self._get_nth_weekday_from(-1, MON, dt)
+                dt_observed = _get_nth_weekday_from(-1, MON, dt)
             elif self._is_thursday(dt) or self._is_friday(dt):
-                obs_date = self._get_nth_weekday_from(1, MON, dt)
-            if obs_date:
-                self._add_holiday(self[dt], obs_date)
+                dt_observed = _get_nth_weekday_from(1, MON, dt)
+            if dt_observed:
+                self._add_holiday(self[dt], dt_observed)
                 self.pop(dt)
 
     def _populate_public_holidays(self):
