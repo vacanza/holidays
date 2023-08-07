@@ -1,7 +1,7 @@
 Version 0.30
 ============
 
-Released ???????? ??, ????
+Released August 7, 2023
 
 - Introduce substituted holidays [PoC] (#1365 by @KJhellico)
 - Refactor tests (#1400 by @KJhellico)
@@ -24,7 +24,9 @@ Released ???????? ??, ????
 - Add Python 3.12.0-beta.4 environment (#1385 by @arkid15r)
 - Add Special In Lieu Holiday on July 31, 2023 for Thailand (#1396 by @PPsyrius)
 - Add substituted holidays test (#1384 by @KJhellico)
+- Automatically convert subdivision code from int to str (#1415 by @arkid15r)
 - Extend `HolidayBase::_add_holiday` family methods [PoC] (#1368 by @arkid15r)
+- Finalize HolidayBase::_add_holiday_* family methods migration (#1416 by @arkid15r)
 - Use HolidayBase::_add_holiday_* family methods [b] (#1395 by @arkid15r)
 - Use HolidayBase::_add_holiday_* family methods [c] (#1397 by @arkid15r)
 - Use HolidayBase::_add_holiday_* family methods [d-f] (#1399 by @arkid15r)
