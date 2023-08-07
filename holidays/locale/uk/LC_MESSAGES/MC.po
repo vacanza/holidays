@@ -70,7 +70,3 @@ msgstr "Непорочне зачаття Діви Марії"
 #. Christmas Day.
 msgid "Noël"
 msgstr "Різдво Христове"
-
-#. Immaculate Conception Day.
-msgid "L'Immaculée Conception"
-msgstr "Непорочне зачаття Діви Марії"
