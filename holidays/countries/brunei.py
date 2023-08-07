@@ -102,7 +102,7 @@ class Brunei(
         # Starts in 1984.
 
         # National Day
-        _add_observed(self._add_holiday(tr("Hari Kebangsaan"), FEB, 23))
+        _add_observed(self._add_holiday_feb_23(tr("Hari Kebangsaan")))
 
         # Hari Angkatan Bersenjata Diraja Brunei
         # Status: In-Use.
@@ -111,7 +111,7 @@ class Brunei(
 
         _add_observed(
             # Armed Forces Day
-            self._add_holiday(tr("Hari Angkatan Bersenjata Diraja Brunei"), MAY, 31)
+            self._add_holiday_may_31(tr("Hari Angkatan Bersenjata Diraja Brunei"))
         )
 
         # Hari Keputeraan KDYMM Sultan Brunei
@@ -120,7 +120,7 @@ class Brunei(
 
         _add_observed(
             # Sultan Hassanal Bolkiah's Birthday
-            self._add_holiday(tr("Hari Keputeraan KDYMM Sultan Brunei"), JUL, 15)
+            self._add_holiday_jul_15(tr("Hari Keputeraan KDYMM Sultan Brunei"))
         )
 
         # Hari Natal
@@ -173,18 +173,18 @@ class Brunei(
 
         if self.observed:
             for dt in al_fitr_dates:
-                obs_date = None
+                dt_observed = None
                 for delta in range(3):
-                    hol_date = dt + td(days=delta)
-                    if self._is_friday(hol_date) or self._is_sunday(hol_date):
-                        obs_date = dt + td(days=+3)
-                        if self._is_sunday(obs_date):
-                            obs_date += td(days=+1)
+                    dt_delta = dt + td(days=delta)
+                    if self._is_friday(dt_delta) or self._is_sunday(dt_delta):
+                        dt_observed = dt + td(days=+3)
+                        if self._is_sunday(dt_observed):
+                            dt_observed += td(days=+1)
                         break
-                if obs_date:
+                if dt_observed:
                     self._add_islamic_calendar_holiday(
-                        self.tr("%s - Diperhatikan") % self[hol_date],
-                        ((obs_date, self._year not in BruneiIslamicCalendar.EID_AL_FITR_DATES),),
+                        self.tr("%s - Diperhatikan") % self[dt_delta],
+                        ((dt_observed, year not in BruneiIslamicCalendar.EID_AL_FITR_DATES),),
                     )
 
         # Hari Raya Aidil Adha

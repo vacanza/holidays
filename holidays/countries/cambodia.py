@@ -12,7 +12,7 @@
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, APR, MAY, JUN, AUG, SEP, OCT, NOV, DEC
+from holidays.calendars.gregorian import MAY, AUG, SEP
 from holidays.calendars.thai import KHMER_CALENDAR
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import InternationalHolidays, ThaiCalendarHolidays
@@ -103,7 +103,7 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # Commemorates the end of the Khmer Rouge regime in 1979
 
         # Day of Victory over the Genocidal Regime.
-        self._add_holiday(tr("ទិវាជ័យជម្នះលើរបបប្រល័យពូជសាសន៍"), JAN, 7)
+        self._add_holiday_jan_7(tr("ទិវាជ័យជម្នះលើរបបប្រល័យពូជសាសន៍"))
 
         # ទិវាអន្តរជាតិនារី
         # Status: In-Use.
@@ -118,8 +118,12 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         if year != 2020:
             # Khmer New Year's Day
             sangkranta = tr("ពិធីបុណ្យចូលឆ្នាំថ្មីប្រពៃណីជាតិ")
-            sangkranta_years_apr14 = {2017, 2018, 2021, 2022, 2023}
-            dt = self._add_holiday(sangkranta, APR, 14 if year in sangkranta_years_apr14 else 13)
+            sangkranta_years_apr_14 = {2017, 2018, 2021, 2022, 2023}
+            dt = (
+                self._add_holiday_apr_14(sangkranta)
+                if year in sangkranta_years_apr_14
+                else self._add_holiday_apr_13(sangkranta)
+            )
             self._add_holiday(sangkranta, dt + td(days=+1))
             self._add_holiday(sangkranta, dt + td(days=+2))
 
@@ -139,10 +143,10 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
                 # NORODOM SIHAMONI, King of Cambodia
                 "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម ព្រះករុណា ព្រះបាទសម្តេចព្រះបរមនាថ នរោត្តម សីហមុនី"
             )
-            dt = self._add_holiday(king_sihamoni_bday, MAY, 14)
+            dt = self._add_holiday_may_14(king_sihamoni_bday)
             if year <= 2019:
-                self._add_holiday(king_sihamoni_bday, MAY, 13)
-                self._add_holiday(king_sihamoni_bday, MAY, 15)
+                self._add_holiday_may_13(king_sihamoni_bday)
+                self._add_holiday_may_15(king_sihamoni_bday)
 
         # ទិវាជាតិនៃការចងចាំ
         # Status: Defunct.
@@ -153,7 +157,7 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
 
         if 2018 <= year <= 2019:
             # National Day of Remembrance
-            self._add_holiday(tr("ទិវាជាតិនៃការចងចាំ"), MAY, 20)
+            self._add_holiday_may_20(tr("ទិវាជាតិនៃការចងចាំ"))
 
         # ទិវាកុមារអន្តរជាតិ
         # Status: Defunct.
@@ -168,14 +172,12 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # Assumed to start in 1994. A public holiday since 2015 at least.
 
         if year >= 1994:
-            self._add_holiday(
+            self._add_holiday_jun_18(
                 # Birthday of Her Majesty the Queen-Mother NORODOM MONINEATH SIHANOUK of Cambodia
                 tr(
                     "ព្រះរាជពិធីបុណ្យចម្រើនព្រះជន្ម សម្តេចព្រះមហាក្សត្រី ព្រះវររាជមាតា នរោត្តម "
                     "មុនិនាថ សីហនុ"
                 ),
-                JUN,
-                18,
             )
 
         # ទិវាប្រកាសរដ្ឋធម្មនុញ្ញ
@@ -183,7 +185,7 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # Starts in 1993
 
         # Constitution Day
-        self._add_holiday(tr("ទិវាប្រកាសរដ្ឋធម្មនុញ្ញ"), SEP, 24)
+        self._add_holiday_sep_24(tr("ទិវាប្រកាសរដ្ឋធម្មនុញ្ញ"))
 
         # ទិវាប្រារព្ឋពិធីគោរពព្រះវិញ្ញាណក្ខន្ឋ ព្រះករុណា ព្រះបាទសម្តេចព្រះ នរោត្តម សីហនុ
         # ព្រះមហាវីរក្សត្រ ព្រះវររាជបិតាឯករាជ្យ បូរណភាពទឹកដី និងឯកភាពជាតិខ្មែរ ព្រះបរមរតនកោដ្ឋ
@@ -191,7 +193,7 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # Starts in 2012.
 
         if year >= 2012:
-            self._add_holiday(
+            self._add_holiday_oct_15(
                 # Mourning Day of the Late King-Father
                 # NORODOM SIHANOUK of Cambodia
                 tr(
@@ -199,8 +201,6 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
                     "សីហនុ ព្រះមហាវីរក្សត្រ ព្រះវររាជបិតាឯករាជ្យ បូរណភាពទឹកដី និងឯកភាពជាតិខ្មែរ "
                     "ព្រះបរមរតនកោដ្ឋ"
                 ),
-                OCT,
-                15,
             )
 
         # ទិវារំលឹកសន្ធិសញ្ញាសន្តិភាពទីក្រុងប៉ារីស
@@ -209,7 +209,7 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
 
         if year <= 2019:
             # Paris Peace Agreement's Day
-            self._add_holiday(tr("ទិវារំលឹកសន្ធិសញ្ញាសន្តិភាពទីក្រុងប៉ារីស"), OCT, 23)
+            self._add_holiday_oct_23(tr("ទិវារំលឹកសន្ធិសញ្ញាសន្តិភាពទីក្រុងប៉ារីស"))
 
         # ព្រះរាជពិធីគ្រងព្រះបរមរាជសម្បត្តិ របស់ ព្រះករុណា
         # ព្រះបាទសម្តេចព្រះបរមនាថ នរោត្តម សីហមុនី
@@ -218,7 +218,7 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # Starts in 2004.
 
         if year >= 2004:
-            self._add_holiday(
+            self._add_holiday_oct_29(
                 # Coronation Day of His Majesty Preah Bat Samdech Preah
                 # Boromneath NORODOM SIHAMONI, King of Cambodia
                 tr(
@@ -226,8 +226,6 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
                     "ព្រះបាទសម្តេចព្រះបរមនាថ នរោត្តម សីហមុនី "
                     "ព្រះមហាក្សត្រនៃព្រះរាជាណាចក្រកម្ពុជា"
                 ),
-                OCT,
-                29,
             )
 
         # ពិធីបុណ្យឯករាជ្យជាតិ
@@ -235,7 +233,7 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # Starts in 1953
 
         # National Independence Day
-        self._add_holiday(tr("ពិធីបុណ្យឯករាជ្យជាតិ"), NOV, 9)
+        self._add_holiday_nov_9(tr("ពិធីបុណ្យឯករាជ្យជាតិ"))
 
         # ទិវាសិទ្ធិមនុស្សអន្តរជាតិ
         # Status: Defunct.
@@ -243,7 +241,7 @@ class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
 
         if year <= 2019:
             # International Human Rights Day
-            self._add_holiday(tr("ទិវាសិទ្ធិមនុស្សអន្តរជាតិ"), DEC, 10)
+            self._add_holiday_dec_10(tr("ទិវាសិទ្ធិមនុស្សអន្តរជាតិ"))
 
         # Cambodian Lunar Calendar Holidays
         # See `_ThaiLunisolar` in holidays/utils.py for more details.

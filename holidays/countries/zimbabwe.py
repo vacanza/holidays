@@ -12,7 +12,6 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars.gregorian import FEB, APR, AUG, DEC, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -46,7 +45,7 @@ class Zimbabwe(HolidayBase, ChristianHolidays, InternationalHolidays):
         if year >= 2018:
             self._add_observed(
                 # Robert Gabriel Mugabe National Youth Day.
-                self._add_holiday("Robert Gabriel Mugabe National Youth Day", FEB, 21)
+                self._add_holiday_feb_21("Robert Gabriel Mugabe National Youth Day")
             )
 
         # Good Friday.
@@ -59,7 +58,7 @@ class Zimbabwe(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_monday("Easter Monday")
 
         # Independence Day.
-        apr_18 = self._add_holiday("Independence Day", APR, 18)
+        apr_18 = self._add_holiday_apr_18("Independence Day")
         self._add_observed(apr_18, days=+2 if apr_18 == self._easter_sunday else +1)
 
         # Workers' Day.
@@ -68,17 +67,14 @@ class Zimbabwe(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Africa Day.
         self._add_observed(self._add_africa_day("Africa Day"))
 
-        second_mon_of_august = self._add_holiday(
-            # Zimbabwe Heroes' Day.
-            "Zimbabwe Heroes' Day",
-            self._get_nth_weekday_of_month(2, MON, AUG),
-        )
+        # Zimbabwe Heroes' Day.
+        second_mon_of_august = self._add_holiday_2nd_mon_of_aug("Zimbabwe Heroes' Day")
 
         # Defense Forces Day.
         self._add_holiday("Defense Forces Day", second_mon_of_august + td(days=+1))
 
         # Unity Day.
-        self._add_observed(self._add_holiday("Unity Day", DEC, 22))
+        self._add_observed(self._add_holiday_dec_22("Unity Day"))
 
         # Christmas Day.
         self._add_observed(self._add_christmas_day("Christmas Day"), days=+2)

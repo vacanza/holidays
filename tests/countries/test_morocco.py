@@ -132,3 +132,24 @@ class TestMorocco(TestCase):
             ("2023-11-06", "Green March"),
             ("2023-11-18", "Independence Day"),
         )
+
+    def test_l10n_fr(self):
+        self.assertLocalizedHolidays(
+            "fr",
+            ("2023-01-01", "Nouvel an"),
+            ("2023-01-11", "Manifeste de l'indépendance"),
+            ("2023-04-21", "Fête de la rupture du jeûne* (*estimé)"),
+            ("2023-04-22", "Fête de la rupture du jeûne* (*estimé)"),
+            ("2023-05-01", "Fête du Travail"),
+            ("2023-06-28", "Fête du sacrifice* (*estimé)"),
+            ("2023-06-29", "Fête du sacrifice* (*estimé)"),
+            ("2023-07-19", "Nouvel an musulman* (*estimé)"),
+            ("2023-07-30", "Fête du Trône"),
+            ("2023-08-14", "Allégeance Oued Eddahab"),
+            ("2023-08-20", "La révolution du roi et du peuple"),
+            ("2023-08-21", "Fête de la Jeunesse"),
+            ("2023-09-27", "Anniversaire du prophète* (*estimé)"),
+            ("2023-09-28", "Anniversaire du prophète* (*estimé)"),
+            ("2023-11-06", "La marche verte"),
+            ("2023-11-18", "Fête de l'indépendance"),
+        )

@@ -10,7 +10,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import FEB, MAR, APR, AUG, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import InternationalHolidays
 
@@ -31,25 +30,25 @@ class Bangladesh(HolidayBase, InternationalHolidays):
         super()._populate(year)
 
         # International Mother's language Day.
-        self._add_holiday("International Mother's language Day", FEB, 21)
+        self._add_holiday_feb_21("International Mother's language Day")
 
         # Sheikh Mujibur Rahman's Birthday and Children's Day.
-        self._add_holiday("Sheikh Mujibur Rahman's Birthday and Children's Day", MAR, 17)
+        self._add_holiday_mar_17("Sheikh Mujibur Rahman's Birthday and Children's Day")
 
         # Independence Day.
-        self._add_holiday("Independence Day", MAR, 26)
+        self._add_holiday_mar_26("Independence Day")
 
         # Bengali New Year's Day.
-        self._add_holiday("Bengali New Year's Day", APR, 14)
+        self._add_holiday_apr_14("Bengali New Year's Day")
 
         # May Day.
         self._add_labor_day("May Day")
 
         # National Mourning Day.
-        self._add_holiday("National Mourning Day", AUG, 15)
+        self._add_holiday_aug_15("National Mourning Day")
 
         # Victory Day.
-        self._add_holiday("Victory Day", DEC, 16)
+        self._add_holiday_dec_16("Victory Day")
 
 
 class BD(Bangladesh):

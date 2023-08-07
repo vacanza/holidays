@@ -12,7 +12,7 @@
 from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicCalendar
-from holidays.calendars.gregorian import FRI, SAT, MAY, JUL, AUG, OCT, DEC
+from holidays.calendars.gregorian import FRI, SAT, MAY, JUL, AUG, OCT
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
 
@@ -76,8 +76,8 @@ class Bahrain(HolidayBase, InternationalHolidays, IslamicHolidays):
 
         # National Day.
         national_day = tr("اليوم الوطني")
-        self._add_holiday(national_day, DEC, 16)
-        self._add_holiday(national_day, DEC, 17)
+        self._add_holiday_dec_16(national_day)
+        self._add_holiday_dec_17(national_day)
 
 
 class BH(Bahrain):

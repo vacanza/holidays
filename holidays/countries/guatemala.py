@@ -12,7 +12,7 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JUN, SEP, OCT, MON
+from holidays.calendars.gregorian import OCT, MON, _get_nth_weekday_from
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -46,9 +46,9 @@ class Guatemala(HolidayBase, ChristianHolidays, InternationalHolidays):
             return None
         self._add_holiday(
             self[dt],
-            self._get_nth_weekday_from(-1, MON, dt)
+            _get_nth_weekday_from(-1, MON, dt)
             if self._is_tuesday(dt) or self._is_wednesday(dt)
-            else self._get_nth_weekday_from(1, MON, dt),
+            else _get_nth_weekday_from(1, MON, dt),
         )
         self.pop(dt)
 
@@ -73,16 +73,16 @@ class Guatemala(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._move_holiday(dt)
 
         # Army Day.
-        self._move_holiday(self._add_holiday(tr("Dia del Ejército"), JUN, 30))
+        self._move_holiday(self._add_holiday_jun_30(tr("Dia del Ejército")))
 
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("Dia de la Asunción"))
 
         # Independence Day
-        self._add_holiday(tr("Día de la Independencia"), SEP, 15)
+        self._add_holiday_sep_15(tr("Día de la Independencia"))
 
         # Revolution Day
-        dt = self._add_holiday(tr("Dia de la Revolución"), OCT, 20)
+        dt = self._add_holiday_oct_20(tr("Dia de la Revolución"))
         if year in {2018, 2019}:
             self._move_holiday(dt)
 

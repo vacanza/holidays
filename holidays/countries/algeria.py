@@ -11,7 +11,6 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, JUL, NOV
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import IslamicHolidays, InternationalHolidays
 
@@ -42,18 +41,18 @@ class Algeria(HolidayBase, InternationalHolidays, IslamicHolidays):
         # In January 2018, Algeria declared Yennayer a national holiday
         if year >= 2018:
             # Amazigh New Year / Yennayer
-            self._add_holiday(tr("رأس السنة الأمازيغية"), JAN, 12)
+            self._add_holiday_jan_12(tr("رأس السنة الأمازيغية"))
 
         # Labour Day
         self._add_labor_day(tr("عيد العمال"))
 
         if year >= 1962:
             # Independence Day
-            self._add_holiday(tr("عيد الإستقلال"), JUL, 5)
+            self._add_holiday_jul_5(tr("عيد الإستقلال"))
 
         if year >= 1963:
             # Revolution Day
-            self._add_holiday(tr("عيد الثورة"), NOV, 1)
+            self._add_holiday_nov_1(tr("عيد الثورة"))
 
         # Islamic New Year
         self._add_islamic_new_year_day(tr("رأس السنة الهجرية"))

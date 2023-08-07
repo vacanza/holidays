@@ -13,7 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 from typing import Optional
 
-from holidays.calendars.gregorian import JUN, JUL, AUG, SEP, OCT, MON
+from holidays.calendars.gregorian import JUL, AUG, SEP, MON, _get_nth_weekday_of_month
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import (
     ChineseCalendarHolidays,
@@ -48,14 +48,13 @@ class HongKong(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, Internat
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _add_holiday(self, *args) -> Optional[date]:
-        name, dt = self._parse_holiday(*args)
+    def _add_holiday(self, name: str, dt: date) -> Optional[date]:
         if self.observed and (self._is_sunday(dt) or dt in self):
             while self._is_sunday(dt) or dt in self:
                 dt += td(days=+1)
             name = self.tr("The day following %s") % self.tr(name)
-        self[dt] = self.tr(name)
-        return dt
+
+        return super()._add_holiday(name, dt)
 
     def _populate(self, year):
         # Current set of holidays actually valid since 1946
@@ -64,7 +63,7 @@ class HongKong(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, Internat
 
         super()._populate(year)
 
-        day_following = "The day following "
+        day_following = "The day following"
 
         # The first day of January
         self._add_new_years_day("The first day of January")
@@ -75,20 +74,20 @@ class HongKong(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, Internat
         second_day_lunar = "The second day of Lunar New Year"
         third_day_lunar = "The third day of Lunar New Year"
         fourth_day_lunar = "The fourth day of Lunar New Year"
-        new_year_date = self._chinese_new_year
+        dt_lunar_new_year = self._chinese_new_year
         if self.observed:
-            if self._is_sunday(new_year_date):
+            if self._is_sunday(dt_lunar_new_year):
                 if year in {2006, 2007, 2010}:
                     self._add_chinese_new_years_eve(preceding_day_lunar)
                 else:
                     self._add_chinese_new_years_day_four(fourth_day_lunar)
             else:
                 self._add_chinese_new_years_day(name)
-            if self._is_saturday(new_year_date):
+            if self._is_saturday(dt_lunar_new_year):
                 self._add_chinese_new_years_day_four(fourth_day_lunar)
             else:
                 self._add_chinese_new_years_day_two(second_day_lunar)
-            if self._is_friday(new_year_date):
+            if self._is_friday(dt_lunar_new_year):
                 self._add_chinese_new_years_day_four(fourth_day_lunar)
             else:
                 self._add_chinese_new_years_day_three(third_day_lunar)
@@ -97,31 +96,29 @@ class HongKong(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, Internat
             self._add_chinese_new_years_day_two(second_day_lunar)
             self._add_chinese_new_years_day_three(third_day_lunar)
 
-        easter_monday_date = self._easter_sunday + td(days=+1)
-
         # Ching Ming Festival
         name = "Ching Ming Festival"
-        ching_ming_date = self._qingming_date
-        if self.observed and ching_ming_date == easter_monday_date:
-            self._add_holiday(f"{day_following}{name}", ching_ming_date + td(days=+1))
-        elif ching_ming_date not in {
+        dt_qingming = self._qingming_date
+        if self.observed and dt_qingming == self._easter_sunday + td(days=+1):
+            self._add_holiday(f"{day_following} {name}", dt_qingming + td(days=+1))
+        elif dt_qingming not in {
             self._easter_sunday + td(days=-2),
             self._easter_sunday + td(days=-1),
         }:
-            self._add_holiday(name, ching_ming_date)
+            self._add_holiday(name, dt_qingming)
 
         # Easter Holiday
         good_friday = "Good Friday"
         easter_monday = "Easter Monday"
         self._add_good_friday(good_friday)
-        self._add_holy_saturday(f"{day_following}{good_friday}")
+        self._add_holy_saturday(f"{day_following} {good_friday}")
         self._add_easter_monday(easter_monday)
 
-        if ching_ming_date in {
+        if dt_qingming in {
             self._easter_sunday + td(days=-2),
             self._easter_sunday + td(days=-1),
         }:
-            super()._add_holiday(name, ching_ming_date)
+            super()._add_holiday(name, dt_qingming)
 
         if year >= 1999:
             # The Birthday of the Buddha
@@ -135,7 +132,7 @@ class HongKong(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, Internat
 
         # Hong Kong Special Administrative Region Establishment Day
         if year >= 1997:
-            self._add_holiday("Hong Kong Special Administrative Region Establishment Day", JUL, 1)
+            self._add_holiday_jul_1("Hong Kong Special Administrative Region Establishment Day")
 
         # Chinese Mid-Autumn Festival
         name = "Chinese Mid-Autumn Festival"
@@ -162,21 +159,21 @@ class HongKong(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, Internat
 
         # National Day
         if year >= 1997:
-            self._add_holiday("National Day", OCT, 1)
+            self._add_holiday_oct_1("National Day")
 
             if year <= 1998:
-                self._add_holiday("National Day", OCT, 2)
+                self._add_holiday_oct_2("National Day")
 
         # Christmas Day
         name = "Christmas Day"
         first_after_christmas = f"The first weekday after {name}"
         second_after_christmas = f"The second weekday after {name}"
-        christmas_date = self._christmas_day
+        dt_christmas = self._christmas_day
         if self.observed:
-            if self._is_sunday(christmas_date):
+            if self._is_sunday(dt_christmas):
                 self._add_christmas_day_two(first_after_christmas)
                 self._add_christmas_day_three(second_after_christmas)
-            elif self._is_saturday(christmas_date):
+            elif self._is_saturday(dt_christmas):
                 self._add_christmas_day(name)
                 self._add_christmas_day_three(first_after_christmas)
             else:
@@ -189,20 +186,17 @@ class HongKong(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, Internat
         # Previous holidays
         if 1952 <= year <= 1997:
             # Queen's Birthday (June 2nd Monday)
-            self._add_holiday("Queen's Birthday", self._get_nth_weekday_of_month(2, MON, JUN))
+            self._add_holiday_2nd_mon_of_jun("Queen's Birthday")
 
         if year <= 1996:
             # Anniversary of the liberation of Hong Kong (August last Monday)
-            self._add_holiday(
-                "Anniversary of the liberation of Hong Kong",
-                self._get_nth_weekday_of_month(-1, MON, AUG),
-            )
+            self._add_holiday_last_mon_of_aug("Anniversary of the liberation of Hong Kong")
 
         if year <= 1998:
             # Anniversary of the victory in the Second Sino-Japanese War
             super()._add_holiday(
                 "Anniversary of the victory in the Second Sino-Japanese War",
-                self._get_nth_weekday_of_month(-1, MON, AUG) + td(days=-1),
+                _get_nth_weekday_of_month(-1, MON, AUG, self._year) + td(days=-1),
             )
 
 

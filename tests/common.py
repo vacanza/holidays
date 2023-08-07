@@ -91,7 +91,7 @@ class TestCase(unittest.TestCase):
         items = []
         if expand_items:
             for item_arg in item_args:
-                if type(item_arg) in {list, set, tuple}:
+                if isinstance(item_arg, (list, set, tuple)):
                     items.extend(item_arg)
                 elif isinstance(item_arg, (Generator, range)):
                     items.extend(tuple(item_arg))
@@ -200,7 +200,7 @@ class TestCase(unittest.TestCase):
         holidays, items = self._parse_arguments(args, instance_name=instance_name)
 
         arg = items[0]
-        if type(arg) == int:  # A holiday name check for a specific year.
+        if isinstance(arg, int):  # A holiday name check for a specific year.
             holiday_years = {dt.year for dt in holidays.get_named(name, lookup="exact")}
             self.assertTrue(set(items).issubset(holiday_years), name)
         elif isinstance(arg, date) or parse(arg):  # Exact date check.
@@ -278,7 +278,7 @@ class TestCase(unittest.TestCase):
             return None
 
         arg = items[0]
-        if type(arg) == int:  # A holiday name check for a specific year.
+        if isinstance(arg, int):  # A holiday name check for a specific year.
             holiday_years = {dt.year for dt in holidays.get_named(name, lookup="exact")}
             self.assertEqual(0, len(holiday_years.intersection(items)), name)
         elif isinstance(arg, date) or parse(arg):  # Exact date check.
@@ -316,7 +316,9 @@ class TestCase(unittest.TestCase):
 
     def _assertLocalizedHolidays(self, localized_holidays, language=None):
         """Helper: assert localized holidays match expected names."""
-        instance = self.test_class(language=language)
+        instance = self.test_class(
+            language=language, categories=tuple(self.test_class.supported_categories)
+        )
 
         # Populate holidays for an entire year.
         self.assertIn(localized_holidays[0][0], instance)
@@ -333,8 +335,10 @@ class TestCase(unittest.TestCase):
     def assertLocalizedHolidays(self, *args):
         """Helper: assert localized holidays match expected names."""
         arg = args[0]
-        language = arg if type(arg) == str else None
-        localized_holidays = args[1:] if type(arg) == str else args
+        is_string = isinstance(arg, str)
+
+        language = arg if is_string else None
+        localized_holidays = args[1:] if is_string else args
 
         if language:
             self.set_language(language)

@@ -40,6 +40,7 @@ msgstr ""
 msgid "Dia de la Asunción"
 msgstr ""
 
+#. Revolution Day
 msgid "Dia de la Revolución"
 msgstr ""
 
@@ -47,6 +48,7 @@ msgstr ""
 msgid "Sabado Santo"
 msgstr ""
 
+#. Labor Day.
 msgid "Dia del Trabajo"
 msgstr ""
 

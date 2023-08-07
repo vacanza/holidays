@@ -12,7 +12,7 @@
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import MAR, APR, JUN, AUG, SEP, DEC, THU, SUN
+from holidays.calendars.gregorian import APR, THU, _get_nth_weekday_of_month
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -72,7 +72,7 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 1291:
             # National Day.
-            self._add_holiday(tr("Nationalfeiertag"), AUG, 1)
+            self._add_holiday_aug_1(tr("Nationalfeiertag"))
 
         # Christmas Day.
         self._add_christmas_day(tr("Weihnachten"))
@@ -132,25 +132,23 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_ge_holidays(self):
         # Thursday after the first Sunday of September
-        self._add_holiday(
-            # Genevan Fast.
-            tr("Genfer Bettag"),
-            self._get_nth_weekday_of_month(1, SUN, SEP) + td(days=+4),
-        )
+        # Genevan Fast.
+        self._add_holiday_4_days_past_1st_sun_of_sep(tr("Genfer Bettag"))
 
         # Restoration Day.
-        self._add_holiday(tr("Wiederherstellung der Republik"), DEC, 31)
+        self._add_holiday_dec_31(tr("Wiederherstellung der Republik"))
 
     def _add_subdiv_gl_holidays(self):
         self._add_new_years_day_two(tr("Berchtoldstag"))
 
         # Näfelser Fahrt (first Thursday in April but not in Holy Week)
         if self._year >= 1835:
-            dt = self._get_nth_weekday_of_month(1, THU, APR)
-            if dt == self._easter_sunday + td(days=-3):
-                dt += td(days=+7)
-            # Battle of Naefels Victory Day.
-            self._add_holiday(tr("Näfelser Fahrt"), dt)
+            dt = _get_nth_weekday_of_month(1, THU, APR, self._year)
+            self._add_holiday(
+                # Battle of Naefels Victory Day.
+                tr("Näfelser Fahrt"),
+                dt + td(days=+7) if dt == self._easter_sunday + td(days=-3) else dt,
+            )
 
         self._add_all_saints_day(tr("Allerheiligen"))
 
@@ -163,7 +161,7 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_corpus_christi_day(tr("Fronleichnam"))
 
         # Independence Day.
-        self._add_holiday(tr("Fest der Unabhängigkeit"), JUN, 23)
+        self._add_holiday_jun_23(tr("Fest der Unabhängigkeit"))
         self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
         self._add_all_saints_day(tr("Allerheiligen"))
 
@@ -178,7 +176,7 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_new_years_day_two(tr("Berchtoldstag"))
 
         # Republic Day.
-        self._add_holiday(tr("Jahrestag der Ausrufung der Republik"), MAR, 1)
+        self._add_holiday_mar_1(tr("Jahrestag der Ausrufung der Republik"))
         self._add_labor_day(tr("Tag der Arbeit"))
 
         if self._is_sunday(self._christmas_day):
@@ -198,7 +196,7 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_assumption_of_mary_day(tr("Mariä Himmelfahrt"))
 
         # St. Nicholas of Flüe.
-        self._add_holiday(tr("Bruder Klaus"), SEP, 25)
+        self._add_holiday_sep_25(tr("Bruder Klaus"))
         self._add_all_saints_day(tr("Allerheiligen"))
         self._add_immaculate_conception_day(tr("Mariä Empfängnis"))
 
@@ -250,11 +248,8 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_new_years_day_two(tr("Berchtoldstag"))
 
         # Monday after the third Sunday of September
-        self._add_holiday(
-            # Prayer Monday.
-            tr("Bettagsmontag"),
-            self._get_nth_weekday_of_month(3, SUN, SEP) + td(days=+1),
-        )
+        # Prayer Monday.
+        self._add_holiday_1_day_past_3rd_sun_of_sep(tr("Bettagsmontag"))
 
     def _add_subdiv_vs_holidays(self):
         self._add_saint_josephs_day(tr("Josefstag"))

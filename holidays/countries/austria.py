@@ -11,7 +11,6 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import OCT, NOV
 from holidays.constants import BANK, PUBLIC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -27,11 +26,11 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        if isinstance(kwargs.get("subdiv"), int):
-            kwargs["subdiv"] = str(kwargs["subdiv"])
-        # Default subdivision to "9"
+
+        # Set the default subdivision.
         if not kwargs.get("subdiv", kwargs.get("state")):
             kwargs["subdiv"] = "9"
+
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):
@@ -61,9 +60,9 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if 1919 <= self._year <= 1934:
             # National Day.
-            self._add_holiday(tr("Nationalfeiertag"), NOV, 12)
+            self._add_holiday_nov_12(tr("Nationalfeiertag"))
         if self._year >= 1967:
-            self._add_holiday(tr("Nationalfeiertag"), OCT, 26)
+            self._add_holiday_oct_26(tr("Nationalfeiertag"))
 
         # All Saints' Day.
         self._add_all_saints_day(tr("Allerheiligen"))

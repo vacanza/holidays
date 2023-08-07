@@ -45,56 +45,56 @@ class Cameroon(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHol
             return None
 
         super()._populate(year)
-        observed_dates = set()
+        dts_observed = set()
 
         # New Year's Day.
-        observed_dates.add(self._add_new_years_day("New Year's Day"))
+        dts_observed.add(self._add_new_years_day("New Year's Day"))
 
         # Youth Day.
         if year >= 1966:
-            observed_dates.add(self._add_holiday("Youth Day", FEB, 11))
+            dts_observed.add(self._add_holiday_feb_11("Youth Day"))
 
         # Good Friday.
         self._add_good_friday("Good Friday")
 
         # Labour Day.
-        observed_dates.add(self._add_labor_day("Labour Day"))
+        dts_observed.add(self._add_labor_day("Labour Day"))
 
         # National Day.
         if year >= 1972:
-            observed_dates.add(self._add_holiday("National Day", MAY, 20))
+            dts_observed.add(self._add_holiday_may_20("National Day"))
 
         # Ascension Day.
         self._add_ascension_thursday("Ascension Day")
 
         # Assumption Day.
-        observed_dates.add(self._add_assumption_of_mary_day("Assumption Day"))
+        dts_observed.add(self._add_assumption_of_mary_day("Assumption Day"))
 
         # Christmas Day.
-        observed_dates.add(self._add_christmas_day("Christmas Day"))
+        dts_observed.add(self._add_christmas_day("Christmas Day"))
 
         # Eid al-Fitr.
-        observed_dates.update(self._add_eid_al_fitr_day("Eid al-Fitr"))
+        dts_observed.update(self._add_eid_al_fitr_day("Eid al-Fitr"))
 
         # Eid al-Adha.
-        observed_dates.update(self._add_eid_al_adha_day("Eid al-Adha"))
+        dts_observed.update(self._add_eid_al_adha_day("Eid al-Adha"))
 
         # Mawlid.
-        observed_dates.update(self._add_mawlid_day("Mawlid"))
+        dts_observed.update(self._add_mawlid_day("Mawlid"))
 
         if self.observed:
-            for dt in sorted(observed_dates):
+            for dt in sorted(dts_observed):
                 if not self._is_sunday(dt):
                     continue
-                obs_date = dt + td(days=+1)
-                while obs_date in observed_dates:
-                    obs_date += td(days=+1)
-                for hol_name in self.get_list(dt):
-                    observed_dates.add(self._add_holiday("%s (Observed)" % hol_name, obs_date))
+                dt_observed = dt + td(days=+1)
+                while dt_observed in dts_observed:
+                    dt_observed += td(days=+1)
+                for name in self.get_list(dt):
+                    dts_observed.add(self._add_holiday("%s (Observed)" % name, dt_observed))
 
-            # observed holidays special cases
+            # Observed holidays special cases.
             if year == 2007:
-                self._add_holiday("Eid al-Adha (Observed)", JAN, 2)
+                self._add_holiday_jan_2("Eid al-Adha (Observed)")
 
 
 class CM(Cameroon):

@@ -79,7 +79,7 @@ msgstr "Immaculée Conception"
 msgid "Tag der Arbeit"
 msgstr "Fête du Travail"
 
-#. Genevan Fast.
+#. Thursday after the first Sunday of September Genevan Fast.
 msgid "Genfer Bettag"
 msgstr "Jeûne genevois"
 
@@ -115,6 +115,6 @@ msgstr "Épiphanie"
 msgid "Peter und Paul"
 msgstr "Saint-Pierre et Paul"
 
-#. Prayer Monday.
+#. Monday after the third Sunday of September Prayer Monday.
 msgid "Bettagsmontag"
 msgstr "Lundi du Jeûne fédéral"

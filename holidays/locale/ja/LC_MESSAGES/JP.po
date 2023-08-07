@@ -3,10 +3,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.20\n"
-"POT-Creation-Date: 2023-02-15 08:36-0800\n"
-"PO-Revision-Date: 2023-04-06 17:39+0300\n"
-"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"Project-Id-Version: Python Holidays 0.30\n"
+"POT-Creation-Date: 2023-07-23 15:45+0300\n"
+"PO-Revision-Date: 2023-07-23 15:47+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -110,4 +110,8 @@ msgstr ""
 
 #. National Holiday.
 msgid "国民の休日"
+msgstr ""
+
+#. Bank Holiday.
+msgid "銀行休業日"
 msgstr ""

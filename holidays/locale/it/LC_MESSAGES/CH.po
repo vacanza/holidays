@@ -79,7 +79,7 @@ msgstr "Immacolata Concezione"
 msgid "Tag der Arbeit"
 msgstr "Festa del lavoro"
 
-#. Genevan Fast.
+#. Thursday after the first Sunday of September Genevan Fast.
 msgid "Genfer Bettag"
 msgstr "Jeûne genevois"
 
@@ -115,6 +115,6 @@ msgstr "Epifania"
 msgid "Peter und Paul"
 msgstr "Santi Pietro e Paolo"
 
-#. Prayer Monday.
+#. Monday after the third Sunday of September Prayer Monday.
 msgid "Bettagsmontag"
 msgstr "Digiuno Ginevrino"

@@ -12,7 +12,6 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, APR, JUN, JUL, OCT
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
@@ -56,10 +55,10 @@ class Egypt(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
 
         if year >= 2012:
             # January 25th Revolution
-            self._add_holiday(tr("عيد ثورة 25 يناير"), JAN, 25)
+            self._add_holiday_jan_25(tr("عيد ثورة 25 يناير"))
         elif year >= 2009:
             # National Police Day
-            self._add_holiday(tr("عيد الشرطة"), JAN, 25)
+            self._add_holiday_jan_25(tr("عيد الشرطة"))
 
         # Coptic Easter - Orthodox Easter
         self._add_easter_sunday(tr("عيد الفصح القبطي"))
@@ -67,21 +66,21 @@ class Egypt(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolida
 
         if year > 1982:
             # Sinai Libration Day
-            self._add_holiday(tr("عيد تحرير سيناء"), APR, 25)
+            self._add_holiday_apr_25(tr("عيد تحرير سيناء"))
 
         # Labour Day
         self._add_labor_day(tr("عيد العمال"))
 
         # Armed Forces Day
-        self._add_holiday(tr("عيد القوات المسلحة"), OCT, 6)
+        self._add_holiday_oct_6(tr("عيد القوات المسلحة"))
 
         if year >= 2014:
             # June 30 Revolution Day
-            self._add_holiday(tr("عيد ثورة 30 يونيو"), JUN, 30)
+            self._add_holiday_jun_30(tr("عيد ثورة 30 يونيو"))
 
         if year > 1952:
             # July 23 Revolution Day
-            self._add_holiday(tr("عيد ثورة 23 يوليو"), JUL, 23)
+            self._add_holiday_jul_23(tr("عيد ثورة 23 يوليو"))
 
         # Eid al-Fitr - Feast Festive
         self._add_eid_al_fitr_day(tr("عيد الفطر"))

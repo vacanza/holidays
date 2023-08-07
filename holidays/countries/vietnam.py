@@ -11,7 +11,6 @@
 
 from datetime import timedelta as td
 
-from holidays.calendars.gregorian import APR, SEP
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChineseCalendarHolidays, InternationalHolidays
 
@@ -51,13 +50,13 @@ class Vietnam(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
             observed_dates.add(self._add_hung_kings_day("Hung Kings Commemoration Day"))
 
         # Liberation Day/Reunification Day
-        observed_dates.add(self._add_holiday("Liberation Day/Reunification Day", APR, 30))
+        observed_dates.add(self._add_holiday_apr_30("Liberation Day/Reunification Day"))
 
         # International Labor Day
         observed_dates.add(self._add_labor_day("International Labor Day"))
 
         # Independence Day
-        observed_dates.add(self._add_holiday("Independence Day", SEP, 2))
+        observed_dates.add(self._add_holiday_sep_2("Independence Day"))
 
         if self.observed:
             for dt in sorted(observed_dates):

@@ -12,7 +12,7 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars.gregorian import MAR, APR, JUL, AUG, SEP, OCT, MON
+from holidays.calendars.gregorian import MAR, JUL, AUG, SEP
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -73,7 +73,7 @@ class Zambia(HolidayBase, ChristianHolidays, InternationalHolidays):
             )
 
         # Youth Day.
-        self._add_observed(self._add_holiday("Youth Day", MAR, 12))
+        self._add_observed(self._add_holiday_mar_12("Youth Day"))
 
         # Good Friday.
         self._add_good_friday("Good Friday")
@@ -86,7 +86,7 @@ class Zambia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 2022:
             # Kenneth Kaunda Day.
-            self._add_observed(self._add_holiday("Kenneth Kaunda Day", APR, 28))
+            self._add_observed(self._add_holiday_apr_28("Kenneth Kaunda Day"))
 
         # Labour Day.
         self._add_observed(self._add_labor_day("Labour Day"))
@@ -94,24 +94,21 @@ class Zambia(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Africa Freedom Day.
         self._add_observed(self._add_africa_day("Africa Freedom Day"))
 
-        first_mon_of_july = self._add_holiday(
-            # Heroes' Day.
-            "Heroes' Day",
-            self._get_nth_weekday_of_month(1, MON, JUL),
-        )
+        # Heroes' Day.
+        first_mon_of_july = self._add_holiday_1st_mon_of_jul("Heroes' Day")
 
         # Unity Day.
         self._add_holiday("Unity Day", first_mon_of_july + td(days=+1))
 
         # Farmers' Day.
-        self._add_holiday("Farmers' Day", self._get_nth_weekday_of_month(1, MON, AUG))
+        self._add_holiday_1st_mon_of_aug("Farmers' Day")
 
         if year >= 2015:
             # National Prayer Day.
-            self._add_observed(self._add_holiday("National Prayer Day", OCT, 18))
+            self._add_observed(self._add_holiday_oct_18("National Prayer Day"))
 
         # Independence Day.
-        self._add_observed(self._add_holiday("Independence Day", OCT, 24))
+        self._add_observed(self._add_holiday_oct_24("Independence Day"))
 
         # Christmas Day.
         self._add_observed(self._add_christmas_day("Christmas Day"))

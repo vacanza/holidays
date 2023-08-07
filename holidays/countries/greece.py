@@ -12,8 +12,9 @@
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import GREGORIAN_CALENDAR, MAR, OCT, MON
-from holidays.calendars.julian import JULIAN_CALENDAR
+from holidays.calendars.gregorian import MON, _get_nth_weekday_from
+from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
+from holidays.constants import HALF_DAY, PUBLIC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -28,27 +29,26 @@ class Greece(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "GR"
     default_language = "el"
-    supported_languages = ("el", "en_US")
+    supported_categories = {HALF_DAY, PUBLIC}
+    supported_languages = ("el", "en_US", "uk")
 
     def __init__(self, *args, **kwargs):
-        ChristianHolidays.__init__(self, JULIAN_CALENDAR)
+        ChristianHolidays.__init__(self, JULIAN_REVISED_CALENDAR)
         InternationalHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _populate(self, year):
-        super()._populate(year)
-
+    def _populate_public_holidays(self):
         # New Year's Day.
         self._add_new_years_day(tr("Πρωτοχρονιά"))
 
         # Epiphany.
-        self._add_epiphany_day(tr("Θεοφάνεια"), GREGORIAN_CALENDAR)
+        self._add_epiphany_day(tr("Θεοφάνεια"))
 
         # Clean Monday.
         self._add_ash_monday(tr("Καθαρά Δευτέρα"))
 
         # Independence Day.
-        self._add_holiday(tr("Εικοστή Πέμπτη Μαρτίου"), MAR, 25)
+        self._add_holiday_mar_25(tr("Εικοστή Πέμπτη Μαρτίου"))
 
         # Good Friday.
         self._add_good_friday(tr("Μεγάλη Παρασκευή"))
@@ -61,29 +61,37 @@ class Greece(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Labour Day.
         name = self.tr("Εργατική Πρωτομαγιά")
-        name_observed = self.tr("%s (παρατηρήθηκε)")
+        may_1 = self._add_labor_day(name)
 
-        dt = self._add_labor_day(name)
-        if self.observed and self._is_weekend(dt):
-            # https://en.wikipedia.org/wiki/Public_holidays_in_Greece
-            labour_day_observed_date = self._get_nth_weekday_from(1, MON, dt)
+        if self.observed and self._is_weekend(may_1):
+            dt_observed = _get_nth_weekday_from(+1, MON, may_1)
+            # %s (Observed).
+            name_observed = self.tr("%s (παρατηρήθηκε)") % name
             # In 2016 and 2021, Labour Day coincided with other holidays
             # https://www.timeanddate.com/holidays/greece/labor-day
-            if self.get(labour_day_observed_date):
-                labour_day_observed_date += td(days=+1)
-            self._add_holiday(name_observed % name, labour_day_observed_date)
+            self._add_holiday(
+                name_observed,
+                dt_observed + td(days=+1) if dt_observed in self else dt_observed,
+            )
 
-        # Assumption of Mary.
+        # Dormition of the Mother of God.
         self._add_assumption_of_mary_day(tr("Κοίμηση της Θεοτόκου"))
 
         # Ochi Day.
-        self._add_holiday(tr("Ημέρα του Όχι"), OCT, 28)
+        self._add_holiday_oct_28(tr("Ημέρα του Όχι"))
 
         # Christmas Day.
-        self._add_christmas_day(tr("Χριστούγεννα"), GREGORIAN_CALENDAR)
+        self._add_christmas_day(tr("Χριστούγεννα"))
 
-        # Day after Christmas.
-        self._add_christmas_day_two(tr("Επόμενη ημέρα των Χριστουγέννων"), GREGORIAN_CALENDAR)
+        # Glorifying of the Mother of God.
+        self._add_christmas_day_two(tr("Σύναξη της Υπεραγίας Θεοτόκου"))
+
+    def _populate_half_day_holidays(self):
+        # Christmas Eve.
+        self._add_christmas_eve(tr("Παραμονή Χριστουγέννων"))
+
+        # New Year's Eve.
+        self._add_new_years_eve(tr("Παραμονή Πρωτοχρονιάς"))
 
 
 class GR(Greece):

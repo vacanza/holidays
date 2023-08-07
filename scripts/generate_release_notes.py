@@ -32,7 +32,7 @@ Version {version}
 Released {month} {day}, {year}
 """
 IGNORED_CONTRIBUTORS = {"dependabot[bot]"}
-REPOSITORY_NAME = "dr-prodigy/python-holidays"
+REPOSITORY_NAME = "vacanza/python-holidays"
 
 
 class ReleaseNotesGenerator:

@@ -3,10 +3,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.26\n"
-"POT-Creation-Date: 2023-04-12 11:32-0700\n"
-"PO-Revision-Date: 2023-05-23 09:21-0700\n"
-"Last-Translator: Arkadii Yakovets <ark@cho.red>\n"
+"Project-Id-Version: Python Holidays 0.29\n"
+"POT-Creation-Date: 2023-07-08 19:40+0300\n"
+"PO-Revision-Date: 2023-07-09 17:35+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
@@ -14,7 +14,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
 "Generated-By: Lingua 4.15.0\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. Date format (see strftime() Format Codes)
+msgid "%d.%m.%Y"
+msgstr "%d/%m/%Y"
+
+#. Day off (substituted from %s).
+#, c-format
+msgid "Вихідний день (перенесено з %s)"
+msgstr "يوم عطلة (استبدل من %s)"
+
+#, c-format
+msgid "%s (вихідний)"
+msgstr "(يوم عطلة) %s"
 
 #. New Year's Day.
 msgid "Новий рік"
@@ -75,7 +88,3 @@ msgstr "ذكرى ثورة أكتوبر الاشتراكية العظمى"
 #. Christmas (Gregorian calendar).
 msgid "Різдво Христове (за григоріанським календарем)"
 msgstr "عيد الميلاد (حسب التقويم الغريغوري)"
-
-#, c-format
-msgid "%s (вихідний)"
-msgstr "(يوم عطلة) %s"

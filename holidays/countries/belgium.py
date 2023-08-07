@@ -11,7 +11,6 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JUL
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -57,7 +56,7 @@ class Belgium(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_whit_monday(tr("Pinkstermaandag"))
 
         # National Day.
-        self._add_holiday(tr("Nationale feestdag"), JUL, 21)
+        self._add_holiday_jul_21(tr("Nationale feestdag"))
 
         # Assumption of Mary.
         self._add_assumption_of_mary_day(tr("Onze Lieve Vrouw hemelvaart"))

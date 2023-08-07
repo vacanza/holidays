@@ -31,25 +31,25 @@ class Pakistan(HolidayBase, InternationalHolidays, IslamicHolidays):
 
         # Kashmir Solidarity Day.
         if year >= 1990:
-            self._add_holiday("Kashmir Solidarity Day", FEB, 5)
+            self._add_holiday_feb_5("Kashmir Solidarity Day")
 
         # Pakistan Day.
         if year >= 1956:
-            self._add_holiday("Pakistan Day", MAR, 23)
+            self._add_holiday_mar_23("Pakistan Day")
 
         # Labour Day.
         if year >= 1972:
             self._add_labor_day("Labour Day")
 
         # Independence Day.
-        self._add_holiday("Independence Day", AUG, 14)
+        self._add_holiday_aug_14("Independence Day")
 
         # Iqbal Day.
         if year <= 2014 or year >= 2022:
-            self._add_holiday("Iqbal Day", NOV, 9)
+            self._add_holiday_nov_9("Iqbal Day")
 
         # Quaid-e-Azam Day.
-        self._add_holiday("Quaid-e-Azam Day", DEC, 25)
+        self._add_holiday_dec_25("Quaid-e-Azam Day")
 
         name = "Eid-ul-Fitr"
         self._add_eid_al_fitr_day(name)

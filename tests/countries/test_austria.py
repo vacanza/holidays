@@ -9,6 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+import warnings
+
 from holidays.constants import BANK
 from holidays.countries.austria import Austria, AT, AUT
 from tests.common import TestCase
@@ -149,14 +151,18 @@ class TestAustria(TestCase):
             ("2022-12-31", "Silvester"),
         )
 
-    def test_subdiv(self):
-        at_holidays = Austria(subdiv=1)
-        self.assertEqual("1", at_holidays.subdiv)
+    def test_subdivisions(self):
+        warnings.simplefilter("ignore", category=DeprecationWarning)
+        for code in (9, "9", "", None):
+            self.assertEqual(AT(prov=code).subdiv, "9")
+            self.assertEqual(AT(state=code).subdiv, "9")
+            self.assertEqual(AT(subdiv=code).subdiv, "9")
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "Neujahr"),
             ("2022-01-06", "Heilige Drei Könige"),
+            ("2022-04-15", "Karfreitag"),
             ("2022-04-18", "Ostermontag"),
             ("2022-05-01", "Staatsfeiertag"),
             ("2022-05-26", "Christi Himmelfahrt"),
@@ -166,8 +172,10 @@ class TestAustria(TestCase):
             ("2022-10-26", "Nationalfeiertag"),
             ("2022-11-01", "Allerheiligen"),
             ("2022-12-08", "Mariä Empfängnis"),
+            ("2022-12-24", "Heiliger Abend"),
             ("2022-12-25", "Christtag"),
             ("2022-12-26", "Stefanitag"),
+            ("2022-12-31", "Silvester"),
         )
 
     def test_l10n_en_us(self):
@@ -175,6 +183,7 @@ class TestAustria(TestCase):
             "en_US",
             ("2022-01-01", "New Year's Day"),
             ("2022-01-06", "Epiphany"),
+            ("2022-04-15", "Good Friday"),
             ("2022-04-18", "Easter Monday"),
             ("2022-05-01", "Labor Day"),
             ("2022-05-26", "Ascension Day"),
@@ -184,8 +193,10 @@ class TestAustria(TestCase):
             ("2022-10-26", "National Day"),
             ("2022-11-01", "All Saints' Day"),
             ("2022-12-08", "Immaculate Conception"),
+            ("2022-12-24", "Christmas Eve"),
             ("2022-12-25", "Christmas Day"),
             ("2022-12-26", "St. Stephen's Day"),
+            ("2022-12-31", "New Year's Eve"),
         )
 
     def test_l10n_uk(self):
@@ -193,6 +204,7 @@ class TestAustria(TestCase):
             "uk",
             ("2022-01-01", "Новий рік"),
             ("2022-01-06", "Богоявлення"),
+            ("2022-04-15", "Страсна пʼятниця"),
             ("2022-04-18", "Великодній понеділок"),
             ("2022-05-01", "День праці"),
             ("2022-05-26", "Вознесіння Господнє"),
@@ -202,6 +214,8 @@ class TestAustria(TestCase):
             ("2022-10-26", "Національне свято"),
             ("2022-11-01", "День усіх святих"),
             ("2022-12-08", "Непорочне зачаття Діви Марії"),
+            ("2022-12-24", "Святий вечір"),
             ("2022-12-25", "Різдво Христове"),
             ("2022-12-26", "День Святого Стефана"),
+            ("2022-12-31", "Переддень Нового року"),
         )
