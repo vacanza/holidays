@@ -26,11 +26,11 @@ class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        if isinstance(kwargs.get("subdiv"), int):
-            kwargs["subdiv"] = str(kwargs["subdiv"])
-        # Default subdivision to "9"
+
+        # Set the default subdivision.
         if not kwargs.get("subdiv", kwargs.get("state")):
             kwargs["subdiv"] = "9"
+
         super().__init__(*args, **kwargs)
 
     def _populate_public_holidays(self):

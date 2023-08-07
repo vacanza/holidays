@@ -298,13 +298,18 @@ class HolidayBase(Dict[date, str]):
                 DeprecationWarning,
             )
 
+        if isinstance(self.subdiv, int):
+            self.subdiv = str(self.subdiv)
+
         if not isinstance(self, HolidaySum):
-            if subdiv and subdiv not in set(self.subdivisions + self._deprecated_subdivisions):
-                if hasattr(self, "market"):
-                    error = f"Market '{self.market}' does not have subdivision " f"'{subdiv}'"
-                else:
-                    error = f"Country '{self.country}' does not have subdivision " f"'{subdiv}'"
-                raise NotImplementedError(error)
+            if self.subdiv and self.subdiv not in set(
+                self.subdivisions + self._deprecated_subdivisions
+            ):
+                raise NotImplementedError(
+                    f"Market {self.market} does not have subdivision {self.subdiv}"
+                    if hasattr(self, "market")
+                    else f"Country {self.country} does not have subdivision {self.subdiv}"
+                )
 
             if subdiv and subdiv in self._deprecated_subdivisions:
                 warnings.warn(
