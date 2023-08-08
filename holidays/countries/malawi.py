@@ -12,7 +12,6 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars.gregorian import JAN, MAR, MAY, JUL, OCT
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -45,9 +44,9 @@ class Malawi(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         self._add_observed(self._add_new_years_day("New Year's Day"))
 
-        self._add_observed(self._add_holiday("John Chilembwe Day", JAN, 15))
+        self._add_observed(self._add_holiday_jan_15("John Chilembwe Day"))
 
-        self._add_observed(self._add_holiday("Martyrs Day", MAR, 3))
+        self._add_observed(self._add_holiday_mar_3("Martyrs Day"))
 
         self._add_good_friday("Good Friday")
 
@@ -55,11 +54,11 @@ class Malawi(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         self._add_observed(self._add_labor_day("Labour Day"))
 
-        self._add_observed(self._add_holiday("Kamuzu Day", MAY, 14))
+        self._add_observed(self._add_holiday_may_14("Kamuzu Day"))
 
-        self._add_observed(self._add_holiday("Independence Day", JUL, 6))
+        self._add_observed(self._add_holiday_jul_6("Independence Day"))
 
-        self._add_observed(self._add_holiday("Mother's Day", OCT, 15))
+        self._add_observed(self._add_holiday_oct_15("Mother's Day"))
 
         self._add_observed(self._add_christmas_day("Christmas Day"), days=+2)
 

@@ -71,7 +71,7 @@ class Ecuador(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self.observed and year >= 2017:
             if self._is_friday(DEC, 31):
-                self._add_holiday(self.tr("%s (Observado)") % name, DEC, 31)
+                self._add_holiday_dec_31(self.tr("%s (Observado)") % name)
 
         # Carnival.
         name = tr("Carnaval")

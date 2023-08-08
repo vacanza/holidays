@@ -12,7 +12,7 @@
 from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import OCT, MON
+from holidays.calendars.gregorian import OCT, MON, _get_nth_weekday_from
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -46,9 +46,9 @@ class Guatemala(HolidayBase, ChristianHolidays, InternationalHolidays):
             return None
         self._add_holiday(
             self[dt],
-            self._get_nth_weekday_from(-1, MON, dt)
+            _get_nth_weekday_from(-1, MON, dt)
             if self._is_tuesday(dt) or self._is_wednesday(dt)
-            else self._get_nth_weekday_from(1, MON, dt),
+            else _get_nth_weekday_from(1, MON, dt),
         )
         self.pop(dt)
 

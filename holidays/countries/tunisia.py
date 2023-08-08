@@ -12,7 +12,6 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, MAR, APR, JUL, AUG, OCT
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
 
@@ -43,55 +42,51 @@ class Tunisia(HolidayBase, InternationalHolidays, IslamicHolidays):
     def _populate(self, year):
         super()._populate(year)
 
-        # New Year's Day
+        # New Year's Day.
         self._add_new_years_day(tr("رأس السنة الميلادية"))
 
         # Revolution and Youth Day - January 14
-        self._add_holiday(tr("عيد الثورة والشباب"), JAN, 14)
+        self._add_holiday_jan_14(tr("عيد الثورة والشباب"))
 
-        # Independence Day
-        self._add_holiday(tr("عيد الإستقلال"), MAR, 20)
+        # Independence Day.
+        self._add_holiday_mar_20(tr("عيد الإستقلال"))
 
-        # Martyrs' Day
-        self._add_holiday(tr("عيد الشهداء"), APR, 9)
+        # Martyrs' Day.
+        self._add_holiday_apr_9(tr("عيد الشهداء"))
 
-        # Labour Day
+        # Labor Day.
         self._add_labor_day(tr("عيد العمال"))
 
-        # Republic Day
-        self._add_holiday(tr("عيد الجمهورية"), JUL, 25)
+        # Republic Day.
+        self._add_holiday_jul_25(tr("عيد الجمهورية"))
 
-        # Women's Day
-        self._add_holiday(tr("عيد المرأة"), AUG, 13)
+        # Women's Day.
+        self._add_holiday_aug_13(tr("عيد المرأة"))
 
-        # Evacuation Day
-        self._add_holiday(tr("عيد الجلاء"), OCT, 15)
+        # Evacuation Day.
+        self._add_holiday_oct_15(tr("عيد الجلاء"))
 
-        # Eid al-Fitr - Feast Festive
-        # date of observance is announced yearly, This is an estimate since
-        # having the Holiday on Weekend does change the number of days,
-        # deceided to leave it since marking a Weekend as a holiday
-        # wouldn't do much harm.
+        # Eid al-Fitr.
         name = tr("عيد الفطر")
         self._add_eid_al_fitr_day(name)
-        # Eid al-Fitr Holiday
+        # Eid al-Fitr Holiday.
         self._add_eid_al_fitr_day_two(tr("عطلة عيد الفطر"))
         self._add_eid_al_fitr_day_three(tr("عطلة عيد الفطر"))
 
-        #  Eid al-Adha - Scarfice Festive
-        # date of observance is announced yearly
-        name = tr("عيد الأضحى")
-        # Arafat Day
+        # Arafat Day.
         self._add_arafah_day(tr("يوم عرفة"))
+
+        # Eid al-Adha.
+        name = tr("عيد الأضحى")
         self._add_eid_al_adha_day(name)
         # Eid al-Adha Holiday
         self._add_eid_al_adha_day_two(tr("عطلة عيد الأضحى"))
         self._add_eid_al_adha_day_three(tr("عطلة عيد الأضحى"))
 
-        # Islamic New Year - (hijari_year, 1, 1)
+        # Islamic New Year.
         self._add_islamic_new_year_day(tr("رأس السنة الهجرية"))
 
-        # Prophet Muhammad's Birthday - (hijari_year, 3, 12)
+        # Prophet Muhammad's Birthday.
         self._add_mawlid_day(tr("عيد المولد النبوي"))
 
 

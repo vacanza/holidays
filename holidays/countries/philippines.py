@@ -10,7 +10,6 @@
 #  License: MIT (see LICENSE file)
 
 
-from holidays.calendars.gregorian import FEB, APR, JUN, AUG, NOV, DEC, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import (
     ChineseCalendarHolidays,
@@ -49,10 +48,10 @@ class Philippines(
         self._add_chinese_new_years_day("Chinese New Year")
 
         # People Power Anniversary.
-        self._add_holiday("EDSA Revolution Anniversary", FEB, 25)
+        self._add_holiday_feb_25("EDSA Revolution Anniversary")
 
         # Day of Valor.
-        self._add_holiday("Day of Valor", APR, 9)
+        self._add_holiday_apr_9("Day of Valor")
 
         # Maundy Thursday.
         self._add_holy_thursday("Maundy Thursday")
@@ -68,22 +67,22 @@ class Philippines(
         self._add_eid_al_fitr_day("Eid'l Fitr")
 
         # Independence Day.
-        self._add_holiday("Independence Day", JUN, 12)
+        self._add_holiday_jun_12("Independence Day")
 
         # Eid al-Adha.
         self._add_eid_al_adha_day("Eid'l Adha")
 
         # Ninoy Aquino Day.
-        self._add_holiday("Ninoy Aquino Day", AUG, 21)
+        self._add_holiday_aug_21("Ninoy Aquino Day")
 
         # National Heroes Day.
-        self._add_holiday("National Heroes Day", self._get_nth_weekday_of_month(-1, MON, AUG))
+        self._add_holiday_last_mon_of_aug("National Heroes Day")
 
         # All Saints' Day.
         self._add_all_saints_day("All Saints' Day")
 
         # Bonifacio Day.
-        self._add_holiday("Bonifacio Day", NOV, 30)
+        self._add_holiday_nov_30("Bonifacio Day")
 
         # Immaculate Conception Day.
         self._add_immaculate_conception_day("Immaculate Conception Day")
@@ -92,7 +91,7 @@ class Philippines(
         self._add_christmas_day("Christmas Day")
 
         # Rizal Day.
-        self._add_holiday("Rizal Day", DEC, 30)
+        self._add_holiday_dec_30("Rizal Day")
 
         # New Year's Eve.
         self._add_new_years_eve("New Year's Eve")

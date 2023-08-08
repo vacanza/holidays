@@ -12,7 +12,7 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars.gregorian import JAN, FEB, MAR, MAY, AUG, SEP, DEC
+from holidays.calendars.gregorian import JAN, FEB, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -54,7 +54,7 @@ class Namibia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_new_years_day("New Year's Day"))
 
         # Independence Day.
-        self._add_observed(self._add_holiday("Independence Day", MAR, 21))
+        self._add_observed(self._add_holiday_mar_21("Independence Day"))
 
         # Good Friday.
         self._add_good_friday("Good Friday")
@@ -66,7 +66,7 @@ class Namibia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_labor_day("Workers' Day"))
 
         # Cassinga Day.
-        self._add_observed(self._add_holiday("Cassinga Day", MAY, 4))
+        self._add_observed(self._add_holiday_may_4("Cassinga Day"))
 
         # Africa Day.
         self._add_observed(self._add_africa_day("Africa Day"))
@@ -75,16 +75,14 @@ class Namibia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_ascension_thursday("Ascension Day")
 
         # Heroes' Day.
-        self._add_observed(self._add_holiday("Heroes' Day", AUG, 26))
+        self._add_observed(self._add_holiday_aug_26("Heroes' Day"))
 
         # http://www.lac.org.na/laws/2004/3348.pdf
         self._add_observed(
-            self._add_holiday(
+            self._add_holiday_sep_10(
                 "Day of the Namibian Women and International Human Rights Day"
                 if year >= 2005
                 else "International Human Rights Day",
-                SEP,
-                10,
             )
         )
 

@@ -11,7 +11,7 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, MAY, JUL, AUG, SEP, OCT, NOV
+from holidays.calendars.gregorian import OCT
 from holidays.constants import PUBLIC, WORKDAY
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -45,7 +45,7 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays):
             return None
 
         # Day of the Establishment of the Slovak Republic.
-        self._add_holiday(tr("Deň vzniku Slovenskej republiky"), JAN, 1)
+        self._add_holiday_jan_1(tr("Deň vzniku Slovenskej republiky"))
 
         # Epiphany.
         self._add_epiphany_day(
@@ -64,26 +64,26 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Day of Victory over Fascism.
         if self._year >= 1997:
             # Day of Victory over Fascism.
-            self._add_holiday(tr("Deň víťazstva nad fašizmom"), MAY, 8)
+            self._add_holiday_may_8(tr("Deň víťazstva nad fašizmom"))
 
         # St. Cyril and Methodius Day.
-        self._add_holiday(tr("Sviatok svätého Cyrila a svätého Metoda"), JUL, 5)
+        self._add_holiday_jul_5(tr("Sviatok svätého Cyrila a svätého Metoda"))
 
         # Slovak National Uprising Anniversary.
-        self._add_holiday(tr("Výročie Slovenského národného povstania"), AUG, 29)
+        self._add_holiday_aug_29(tr("Výročie Slovenského národného povstania"))
 
         # Constitution Day.
-        self._add_holiday(tr("Deň Ústavy Slovenskej republiky"), SEP, 1)
+        self._add_holiday_sep_1(tr("Deň Ústavy Slovenskej republiky"))
 
         # Day of Our Lady of the Seven Sorrows.
-        self._add_holiday(tr("Sedembolestná Panna Mária"), SEP, 15)
+        self._add_holiday_sep_15(tr("Sedembolestná Panna Mária"))
 
         # All Saints' Day.
         self._add_all_saints_day(tr("Sviatok Všetkých svätých"))
 
         if self._year >= 2001:
             # Struggle for Freedom and Democracy Day.
-            self._add_holiday(tr("Deň boja za slobodu a demokraciu"), NOV, 17)
+            self._add_holiday_nov_17(tr("Deň boja za slobodu a demokraciu"))
 
         # Christmas Eve.
         self._add_christmas_eve(tr("Štedrý deň"))
@@ -98,7 +98,7 @@ class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays):
         # According to Law 241/1993, this state holiday is not a non-working day.
         if self._year >= 2021:
             # Day of the Establishment of the Independent Czech-Slovak State.
-            self._add_holiday(tr("Deň vzniku samostatného česko-slovenského štátu"), OCT, 28)
+            self._add_holiday_oct_28(tr("Deň vzniku samostatného česko-slovenského štátu"))
 
 
 class SK(Slovakia):

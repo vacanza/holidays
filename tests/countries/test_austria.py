@@ -9,6 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+import warnings
+
 from holidays.constants import BANK
 from holidays.countries.austria import Austria, AT, AUT
 from tests.common import TestCase
@@ -149,9 +151,12 @@ class TestAustria(TestCase):
             ("2022-12-31", "Silvester"),
         )
 
-    def test_subdiv(self):
-        at_holidays = Austria(subdiv=1)
-        self.assertEqual("1", at_holidays.subdiv)
+    def test_subdivisions(self):
+        warnings.simplefilter("ignore", category=DeprecationWarning)
+        for code in (9, "9", "", None):
+            self.assertEqual(AT(prov=code).subdiv, "9")
+            self.assertEqual(AT(state=code).subdiv, "9")
+            self.assertEqual(AT(subdiv=code).subdiv, "9")
 
     def test_l10n_default(self):
         self.assertLocalizedHolidays(

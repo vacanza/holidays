@@ -11,7 +11,6 @@
 
 from datetime import timedelta as td
 
-from holidays.calendars.gregorian import MAR, MAY, JUL, AUG, OCT, DEC
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
@@ -39,74 +38,74 @@ class Kazakhstan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicH
             return None
 
         super()._populate(year)
-        observed_dates = set()
+        dts_observed = set()
 
         # New Year's holiday (2 days)
         name = "New Year"
-        observed_dates.add(self._add_new_years_day(name))
-        observed_dates.add(self._add_new_years_day_two(name))
+        dts_observed.add(self._add_new_years_day(name))
+        dts_observed.add(self._add_new_years_day_two(name))
 
         # Orthodox Christmas (nonworking day, without extending)
         if year >= 2006:
             self._add_christmas_day("Orthodox Christmas")
 
         # International Women's Day
-        observed_dates.add(self._add_womens_day("International Women's Day"))
+        dts_observed.add(self._add_womens_day("International Women's Day"))
 
         # Nauryz holiday
         if year >= 2002:
             name = "Nauryz holiday"
-            observed_dates.add(self._add_holiday(name, MAR, 22))
+            dts_observed.add(self._add_holiday_mar_22(name))
             if year >= 2010:
-                observed_dates.add(self._add_holiday(name, MAR, 21))
-                observed_dates.add(self._add_holiday(name, MAR, 23))
+                dts_observed.add(self._add_holiday_mar_21(name))
+                dts_observed.add(self._add_holiday_mar_23(name))
 
         # Kazakhstan People Solidarity Holiday
-        observed_dates.add(self._add_labor_day("Kazakhstan People Solidarity Holiday"))
+        dts_observed.add(self._add_labor_day("Kazakhstan People Solidarity Holiday"))
 
         # Defender of the Fatherland Day
         if year >= 2013:
-            observed_dates.add(self._add_holiday("Defender of the Fatherland Day", MAY, 7))
+            dts_observed.add(self._add_holiday_may_7("Defender of the Fatherland Day"))
 
         # Victory Day
-        observed_dates.add(self._add_world_war_two_victory_day("Victory Day"))
+        dts_observed.add(self._add_world_war_two_victory_day("Victory Day"))
 
         # Capital Day
         if year >= 2009:
-            observed_dates.add(self._add_holiday("Capital Day", JUL, 6))
+            dts_observed.add(self._add_holiday_jul_6("Capital Day"))
 
         # Constitution Day of the Republic of Kazakhstan
         if year >= 1996:
-            observed_dates.add(
-                self._add_holiday("Constitution Day of the Republic of Kazakhstan", AUG, 30)
+            dts_observed.add(
+                self._add_holiday_aug_30("Constitution Day of the Republic of Kazakhstan")
             )
 
         # Republic Day
         if 1994 <= year <= 2008 or year >= 2022:
-            observed_dates.add(self._add_holiday("Republic Day", OCT, 25))
+            dts_observed.add(self._add_holiday_oct_25("Republic Day"))
 
         # First President Day
         if 2012 <= year <= 2021:
-            observed_dates.add(self._add_holiday("First President Day", DEC, 1))
+            dts_observed.add(self._add_holiday_dec_1("First President Day"))
 
         # Kazakhstan Independence Day
         name = "Kazakhstan Independence Day"
-        observed_dates.add(self._add_holiday(name, DEC, 16))
+        dts_observed.add(self._add_holiday_dec_16(name))
         if 2002 <= year <= 2021:
-            observed_dates.add(self._add_holiday(name, DEC, 17))
+            dts_observed.add(self._add_holiday_dec_17(name))
 
         # Kurban Ait (nonworking day, without extending)
         if year >= 2006:
             self._add_eid_al_adha_day("Kurban Ait")
 
         if self.observed and year >= 2002:
-            for hol_date in sorted(observed_dates):
-                if not self._is_weekend(hol_date):
+            for dt in sorted(dts_observed):
+                if not self._is_weekend(dt):
                     continue
-                obs_date = hol_date + td(days=+1)
-                while self._is_weekend(obs_date) or obs_date in observed_dates:
-                    obs_date += td(days=+1)
-                observed_dates.add(self._add_holiday("%s (Observed)" % self[hol_date], obs_date))
+                dt_observed = dt + td(days=+1)
+                while self._is_weekend(dt_observed) or dt_observed in dts_observed:
+                    dt_observed += td(days=+1)
+                dts_observed.add(self._add_holiday("%s (Observed)" % self[dt], dt_observed))
 
 
 class KZ(Kazakhstan):

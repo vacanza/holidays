@@ -12,22 +12,6 @@
 
 from datetime import timedelta as td
 
-from holidays.calendars.gregorian import (
-    JAN,
-    FEB,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-    TUE,
-    SUN,
-)
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -185,14 +169,14 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 1946:
             # Liberation Day.
-            self._add_holiday("Festa della Liberazione", APR, 25)
+            self._add_holiday_apr_25("Festa della Liberazione")
 
         # Labor Day.
         self._add_labor_day("Festa dei Lavoratori")
 
         if year >= 1948:
             # Republic Day.
-            self._add_holiday("Festa della Repubblica", JUN, 2)
+            self._add_holiday_jun_2("Festa della Repubblica")
 
         # Assumption Of Mary Day.
         self._add_assumption_of_mary_day("Assunzione della Vergine")
@@ -216,113 +200,110 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
     # Please maintain in alphabetical order for easy updating in the future.
 
     def _add_subdiv_ag_holidays(self):
-        self._add_holiday("San Gerlando", FEB, 25)
+        self._add_holiday_feb_25("San Gerlando")
 
     def _add_subdiv_al_holidays(self):
-        self._add_holiday("San Baudolino", NOV, 10)
+        self._add_holiday_nov_10("San Baudolino")
 
     def _add_subdiv_an_holidays(self):
-        self._add_holiday("San Ciriaco", MAY, 4)
+        self._add_holiday_may_4("San Ciriaco")
 
     def _add_subdiv_ao_holidays(self):
-        self._add_holiday("San Grato", SEP, 7)
+        self._add_holiday_sep_7("San Grato")
 
     def _add_subdiv_ap_holidays(self):
-        self._add_holiday("Sant'Emidio", AUG, 5)
+        self._add_holiday_aug_5("Sant'Emidio")
 
     def _add_subdiv_aq_holidays(self):
-        self._add_holiday("San Massimo D'Aveia", JUN, 10)
+        self._add_holiday_jun_10("San Massimo D'Aveia")
 
     def _add_subdiv_ar_holidays(self):
-        self._add_holiday("San Donato D'Arezzo", AUG, 7)
+        self._add_holiday_aug_7("San Donato D'Arezzo")
 
     def _add_subdiv_at_holidays(self):
-        self._add_holiday("San Secondo di Asti", self._get_nth_weekday_of_month(1, TUE, MAY))
+        self._add_holiday_1st_tue_of_may("San Secondo di Asti")
 
     def _add_subdiv_av_holidays(self):
-        self._add_holiday("San Modestino", FEB, 14)
+        self._add_holiday_feb_14("San Modestino")
 
     def _add_subdiv_ba_holidays(self):
-        self._add_holiday("San Nicola", DEC, 6)
+        self._add_holiday_dec_6("San Nicola")
 
     def _add_subdiv_bg_holidays(self):
-        self._add_holiday("Sant'Alessandro di Bergamo", AUG, 26)
+        self._add_holiday_aug_26("Sant'Alessandro di Bergamo")
 
     def _add_subdiv_bi_holidays(self):
         self._add_christmas_day_two("Santo Stefano")
 
     def _add_subdiv_bl_holidays(self):
-        self._add_holiday("San Martino", NOV, 11)
+        self._add_holiday_nov_11("San Martino")
 
     def _add_subdiv_bn_holidays(self):
-        self._add_holiday("San Bartolomeo apostolo", AUG, 24)
+        self._add_holiday_aug_24("San Bartolomeo apostolo")
 
     def _add_subdiv_bo_holidays(self):
-        self._add_holiday("San Petronio", OCT, 4)
+        self._add_holiday_oct_4("San Petronio")
 
     def _add_subdiv_br_holidays(self):
-        self._add_holiday(
-            "San Teodoro d'Amasea e San Lorenzo da Brindisi",
-            self._get_nth_weekday_of_month(1, SUN, SEP),
-        )
+        self._add_holiday_1st_sun_of_sep("San Teodoro d'Amasea e San Lorenzo da Brindisi")
 
     def _add_subdiv_bs_holidays(self):
-        self._add_holiday("Santi Faustino e Giovita", FEB, 15)
+        self._add_holiday_feb_15("Santi Faustino e Giovita")
 
     def _add_subdiv_bt_holidays(self):
-        self._add_holiday("San Nicola Pellegrino", MAY, 3)
-        self._add_holiday("San Riccardo di Andria", self._get_nth_weekday_of_month(3, SUN, SEP))
-        self._add_holiday("San Ruggero", DEC, 30)
+        self._add_holiday_may_3("San Nicola Pellegrino")
+        self._add_holiday_3rd_sun_of_sep("San Riccardo di Andria")
+        self._add_holiday_dec_30("San Ruggero")
 
     def _add_subdiv_bz_holidays(self):
         self._add_whit_monday("Lunedì di Pentecoste")
         self._add_assumption_of_mary_day("Maria Santissima Assunta")
 
     def _add_subdiv_ca_holidays(self):
-        self._add_holiday("San Saturnino di Cagliari", OCT, 30)
+        self._add_holiday_oct_30("San Saturnino di Cagliari")
 
     def _add_subdiv_cb_holidays(self):
         self._add_saint_georges_day("San Giorgio")
 
     def _add_subdiv_ce_holidays(self):
-        self._add_holiday("San Sebastiano", JAN, 20)
+        self._add_holiday_jan_20("San Sebastiano")
 
     def _add_subdiv_ch_holidays(self):
-        self._add_holiday("San Giustino di Chieti", MAY, 11)
+        self._add_holiday_may_11("San Giustino di Chieti")
 
     def _add_subdiv_cl_holidays(self):
-        self._add_holiday("San Michele Arcangelo", SEP, 29)
+        self._add_holiday_sep_29("San Michele Arcangelo")
 
     def _add_subdiv_cn_holidays(self):
-        self._add_holiday("San Michele Arcangelo", SEP, 29)
+        self._add_holiday_sep_29("San Michele Arcangelo")
 
     def _add_subdiv_co_holidays(self):
-        self._add_holiday("Sant'Abbondio", AUG, 31)
+        self._add_holiday_aug_31("Sant'Abbondio")
 
     def _add_subdiv_cr_holidays(self):
-        self._add_holiday("Sant'Omobono", NOV, 13)
+        self._add_holiday_nov_13("Sant'Omobono")
 
     def _add_subdiv_cs_holidays(self):
-        self._add_holiday("Madonna del Pilerio", FEB, 12)
+        self._add_holiday_feb_12("Madonna del Pilerio")
 
     def _add_subdiv_ct_holidays(self):
-        self._add_holiday("Sant'Agata", FEB, 5)
+        self._add_holiday_feb_5("Sant'Agata")
 
     def _add_subdiv_cz_holidays(self):
-        self._add_holiday("San Vitaliano", JUL, 16)
+        self._add_holiday_jul_16("San Vitaliano")
 
     def _add_subdiv_en_holidays(self):
-        self._add_holiday("Madonna della Visitazione", JUL, 2)
+        self._add_holiday_jul_2("Madonna della Visitazione")
 
     def _add_subdiv_fc_holidays(self):
-        self._add_holiday("Madonna del Fuoco", FEB, 4)
+        self._add_holiday_feb_4("Madonna del Fuoco")
         self._add_saint_johns_day("San Giovanni Battista")
 
     def _add_subdiv_fe_holidays(self):
         self._add_saint_georges_day("San Giorgio")
 
     def _add_subdiv_fg_holidays(self):
-        self._add_holiday("Madonna dei Sette Veli", MAR, 22)
+        self._add_holiday_mar_22("Madonna dei Sette Veli")
 
     def _add_subdiv_fi_holidays(self):
         self._add_saint_johns_day("San Giovanni Battista")
@@ -332,242 +313,240 @@ class Italy(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday("Maria Santissima Assunta", aug_15 + td(days=+1))
 
     def _add_subdiv_fr_holidays(self):
-        self._add_holiday("San Silverio", JUN, 20)
+        self._add_holiday_jun_20("San Silverio")
 
     def _add_subdiv_ge_holidays(self):
         self._add_saint_johns_day("San Giovanni Battista")
 
     def _add_subdiv_go_holidays(self):
-        self._add_holiday("Santi Ilario e Taziano", MAR, 16)
+        self._add_holiday_mar_16("Santi Ilario e Taziano")
 
     def _add_subdiv_gr_holidays(self):
-        self._add_holiday("San Lorenzo", AUG, 10)
+        self._add_holiday_aug_10("San Lorenzo")
 
     def _add_subdiv_im_holidays(self):
-        self._add_holiday("San Leonardo da Porto Maurizio", NOV, 26)
+        self._add_holiday_nov_26("San Leonardo da Porto Maurizio")
 
     def _add_subdiv_is_holidays(self):
-        self._add_holiday("San Pietro Celestino", MAY, 19)
+        self._add_holiday_may_19("San Pietro Celestino")
 
     def _add_subdiv_kr_holidays(self):
-        self._add_holiday("San Dionigi", OCT, 9)
+        self._add_holiday_oct_9("San Dionigi")
 
     def _add_subdiv_lc_holidays(self):
-        self._add_holiday("San Nicola", DEC, 6)
+        self._add_holiday_dec_6("San Nicola")
 
     def _add_subdiv_le_holidays(self):
-        self._add_holiday("Sant'Oronzo", AUG, 26)
+        self._add_holiday_aug_26("Sant'Oronzo")
 
     def _add_subdiv_li_holidays(self):
-        self._add_holiday("Santa Giulia", MAY, 22)
+        self._add_holiday_may_22("Santa Giulia")
 
     def _add_subdiv_lo_holidays(self):
-        self._add_holiday("San Bassiano", JAN, 19)
+        self._add_holiday_jan_19("San Bassiano")
 
     def _add_subdiv_lt_holidays(self):
-        self._add_holiday("San Marco evangelista", APR, 25)
+        self._add_holiday_apr_25("San Marco evangelista")
 
     def _add_subdiv_lu_holidays(self):
-        self._add_holiday("San Paolino di Lucca", JUL, 12)
+        self._add_holiday_jul_12("San Paolino di Lucca")
 
     def _add_subdiv_mb_holidays(self):
         self._add_saint_johns_day("San Giovanni Battista")
 
     def _add_subdiv_mc_holidays(self):
-        self._add_holiday("San Giuliano l'ospitaliere", AUG, 31)
+        self._add_holiday_aug_31("San Giuliano l'ospitaliere")
 
     def _add_subdiv_me_holidays(self):
-        self._add_holiday("Madonna della Lettera", JUN, 3)
+        self._add_holiday_jun_3("Madonna della Lettera")
 
     def _add_subdiv_mi_holidays(self):
-        self._add_holiday("Sant'Ambrogio", DEC, 7)
+        self._add_holiday_dec_7("Sant'Ambrogio")
 
     def _add_subdiv_mn_holidays(self):
-        self._add_holiday("Sant'Anselmo da Baggio", MAR, 18)
+        self._add_holiday_mar_18("Sant'Anselmo da Baggio")
 
     def _add_subdiv_mo_holidays(self):
-        self._add_holiday("San Geminiano", JAN, 31)
+        self._add_holiday_jan_31("San Geminiano")
 
     def _add_subdiv_ms_holidays(self):
-        self._add_holiday("San Francesco d'Assisi", OCT, 4)
+        self._add_holiday_oct_4("San Francesco d'Assisi")
 
     def _add_subdiv_mt_holidays(self):
-        self._add_holiday("Madonna della Bruna", JUL, 2)
+        self._add_holiday_jul_2("Madonna della Bruna")
 
     def _add_subdiv_na_holidays(self):
-        self._add_holiday("San Gennaro", SEP, 19)
+        self._add_holiday_sep_19("San Gennaro")
 
     def _add_subdiv_no_holidays(self):
-        self._add_holiday("San Gaudenzio", JAN, 22)
+        self._add_holiday_jan_22("San Gaudenzio")
 
     def _add_subdiv_nu_holidays(self):
-        self._add_holiday("Nostra Signora della Neve", AUG, 5)
+        self._add_holiday_aug_5("Nostra Signora della Neve")
 
     def _add_subdiv_or_holidays(self):
-        self._add_holiday("Sant'Archelao", FEB, 13)
+        self._add_holiday_feb_13("Sant'Archelao")
 
     def _add_subdiv_pa_holidays(self):
-        self._add_holiday("San Giovanni", JUL, 15)
+        self._add_holiday_jul_15("San Giovanni")
 
     def _add_subdiv_pc_holidays(self):
-        self._add_holiday("Sant'Antonino di Piacenza", JUL, 4)
+        self._add_holiday_jul_4("Sant'Antonino di Piacenza")
 
     def _add_subdiv_pd_holidays(self):
-        self._add_holiday("Sant'Antonio di Padova", JUN, 13)
+        self._add_holiday_jun_13("Sant'Antonio di Padova")
 
     def _add_subdiv_pe_holidays(self):
-        self._add_holiday("San Cetteo", OCT, 10)
+        self._add_holiday_oct_10("San Cetteo")
 
     def _add_subdiv_pg_holidays(self):
-        self._add_holiday("Sant'Ercolano e San Lorenzo", JAN, 29)
+        self._add_holiday_jan_29("Sant'Ercolano e San Lorenzo")
 
     def _add_subdiv_pi_holidays(self):
-        self._add_holiday("San Ranieri", JUN, 17)
+        self._add_holiday_jun_17("San Ranieri")
 
     def _add_subdiv_pn_holidays(self):
-        self._add_holiday("San Marco Evangelista", APR, 25)
+        self._add_holiday_apr_25("San Marco Evangelista")
         self._add_nativity_of_mary_day("Madonna delle Grazie")
 
     def _add_subdiv_po_holidays(self):
         self._add_christmas_day_two("Santo Stefano")
 
     def _add_subdiv_pr_holidays(self):
-        self._add_holiday("Sant'Ilario di Poitiers", JAN, 13)
+        self._add_holiday_jan_13("Sant'Ilario di Poitiers")
 
     def _add_subdiv_pt_holidays(self):
         self._add_saint_james_day("San Jacopo")
 
     def _add_subdiv_pu_holidays(self):
-        self._add_holiday("San Crescentino", JUN, 1)
-        self._add_holiday("San Terenzio di Pesaro", SEP, 24)
+        self._add_holiday_jun_1("San Crescentino")
+        self._add_holiday_sep_24("San Terenzio di Pesaro")
 
     def _add_subdiv_pv_holidays(self):
-        self._add_holiday("San Siro", DEC, 9)
+        self._add_holiday_dec_9("San Siro")
 
     def _add_subdiv_pz_holidays(self):
-        self._add_holiday("San Gerardo di Potenza", MAY, 30)
+        self._add_holiday_may_30("San Gerardo di Potenza")
 
     def _add_subdiv_ra_holidays(self):
-        self._add_holiday("Sant'Apollinare", JUL, 23)
+        self._add_holiday_jul_23("Sant'Apollinare")
 
     def _add_subdiv_rc_holidays(self):
         self._add_saint_georges_day("San Giorgio")
 
     def _add_subdiv_re_holidays(self):
-        self._add_holiday("San Prospero Vescovo", NOV, 24)
+        self._add_holiday_nov_24("San Prospero Vescovo")
 
     def _add_subdiv_rg_holidays(self):
         self._add_saint_georges_day("San Giorgio")
 
     def _add_subdiv_ri_holidays(self):
-        self._add_holiday("Santa Barbara", DEC, 4)
+        self._add_holiday_dec_4("Santa Barbara")
 
     def _add_subdiv_rm_holidays(self):
         self._add_saints_peter_and_paul_day("Santi Pietro e Paolo")
 
     def _add_subdiv_rn_holidays(self):
-        self._add_holiday("San Gaudenzio", OCT, 14)
+        self._add_holiday_oct_14("San Gaudenzio")
 
     def _add_subdiv_ro_holidays(self):
-        self._add_holiday("San Bellino", NOV, 26)
+        self._add_holiday_nov_26("San Bellino")
 
     def _add_subdiv_sa_holidays(self):
-        self._add_holiday("San Matteo Evangelista", SEP, 21)
+        self._add_holiday_sep_21("San Matteo Evangelista")
 
     def _add_subdiv_si_holidays(self):
-        self._add_holiday("Sant'Ansano", DEC, 1)
+        self._add_holiday_dec_1("Sant'Ansano")
 
     def _add_subdiv_so_holidays(self):
-        self._add_holiday("San Gervasio e San Protasio", JUN, 19)
+        self._add_holiday_jun_19("San Gervasio e San Protasio")
 
     def _add_subdiv_sp_holidays(self):
         self._add_saint_josephs_day("San Giuseppe")
 
     def _add_subdiv_sr_holidays(self):
-        self._add_holiday("Santa Lucia", DEC, 13)
+        self._add_holiday_dec_13("Santa Lucia")
 
     def _add_subdiv_ss_holidays(self):
-        self._add_holiday("San Nicola", DEC, 6)
+        self._add_holiday_dec_6("San Nicola")
 
     def _add_subdiv_su_holidays(self):
-        self._add_holiday(
-            "San Ponziano", self._get_nth_weekday_of_month(2, SUN, MAY) + td(days=+4)
-        )
+        self._add_holiday_4_days_past_2nd_sun_of_may("San Ponziano")
 
     def _add_subdiv_sv_holidays(self):
-        self._add_holiday("Nostra Signora della Misericordia", MAR, 18)
+        self._add_holiday_mar_18("Nostra Signora della Misericordia")
 
     def _add_subdiv_ta_holidays(self):
-        self._add_holiday("San Cataldo", MAY, 10)
+        self._add_holiday_may_10("San Cataldo")
 
     def _add_subdiv_te_holidays(self):
-        self._add_holiday("San Berardo da Pagliara", DEC, 19)
+        self._add_holiday_dec_19("San Berardo da Pagliara")
 
     def _add_subdiv_tn_holidays(self):
-        self._add_holiday("San Vigilio", JUN, 26)
+        self._add_holiday_jun_26("San Vigilio")
 
     def _add_subdiv_to_holidays(self):
         self._add_saint_johns_day("San Giovanni Battista")
 
     def _add_subdiv_tp_holidays(self):
-        self._add_holiday("Sant'Alberto degli Abati", AUG, 7)
+        self._add_holiday_aug_7("Sant'Alberto degli Abati")
 
     def _add_subdiv_tr_holidays(self):
-        self._add_holiday("San Valentino", FEB, 14)
+        self._add_holiday_feb_14("San Valentino")
 
     def _add_subdiv_ts_holidays(self):
-        self._add_holiday("San Giusto", NOV, 3)
+        self._add_holiday_nov_3("San Giusto")
 
     def _add_subdiv_tv_holidays(self):
-        self._add_holiday("San Liberale", APR, 27)
+        self._add_holiday_apr_27("San Liberale")
 
     def _add_subdiv_ud_holidays(self):
-        self._add_holiday("Santi Ermacora e Fortunato", JUL, 12)
+        self._add_holiday_jul_12("Santi Ermacora e Fortunato")
 
     def _add_subdiv_va_holidays(self):
-        self._add_holiday("San Vittore il Moro", MAY, 8)
+        self._add_holiday_may_8("San Vittore il Moro")
 
     def _add_subdiv_vb_holidays(self):
-        self._add_holiday("San Vittore il Moro", MAY, 8)
+        self._add_holiday_may_8("San Vittore il Moro")
 
     def _add_subdiv_vc_holidays(self):
-        self._add_holiday("Sant'Eusebio di Vercelli", AUG, 1)
+        self._add_holiday_aug_1("Sant'Eusebio di Vercelli")
 
     def _add_subdiv_ve_holidays(self):
-        self._add_holiday("San Marco Evangelista", APR, 25)
+        self._add_holiday_apr_25("San Marco Evangelista")
 
     def _add_subdiv_vi_holidays(self):
-        self._add_holiday("San Marco", APR, 25)
+        self._add_holiday_apr_25("San Marco")
 
     def _add_subdiv_vr_holidays(self):
-        self._add_holiday("San Zeno", MAY, 21)
+        self._add_holiday_may_21("San Zeno")
 
     def _add_subdiv_vt_holidays(self):
-        self._add_holiday("Santa Rosa da Viterbo", SEP, 4)
+        self._add_holiday_sep_4("Santa Rosa da Viterbo")
 
     def _add_subdiv_vv_holidays(self):
-        self._add_holiday("San Leoluca", MAR, 1)
+        self._add_holiday_mar_1("San Leoluca")
 
     def _add_subdiv_andria_holidays(self):
-        self._add_holiday("San Riccardo di Andria", self._get_nth_weekday_of_month(3, SUN, SEP))
+        self._add_holiday_3rd_sun_of_sep("San Riccardo di Andria")
 
     def _add_subdiv_barletta_holidays(self):
-        self._add_holiday("San Ruggero", DEC, 30)
+        self._add_holiday_dec_30("San Ruggero")
 
     def _add_subdiv_cesena_holidays(self):
         self._add_saint_johns_day("San Giovanni Battista")
 
     def _add_subdiv_forli_holidays(self):
-        self._add_holiday("Madonna del Fuoco", FEB, 4)
+        self._add_holiday_feb_4("Madonna del Fuoco")
 
     def _add_subdiv_pesaro_holidays(self):
-        self._add_holiday("San Terenzio di Pesaro", SEP, 24)
+        self._add_holiday_sep_24("San Terenzio di Pesaro")
 
     def _add_subdiv_trani_holidays(self):
-        self._add_holiday("San Nicola Pellegrino", MAY, 3)
+        self._add_holiday_may_3("San Nicola Pellegrino")
 
     def _add_subdiv_urbino_holidays(self):
-        self._add_holiday("San Crescentino", JUN, 1)
+        self._add_holiday_jun_1("San Crescentino")
 
 
 class IT(Italy):

@@ -60,7 +60,7 @@ msgstr ""
 msgid "ფაშიზმზე გამარჯვების დღე"
 msgstr ""
 
-#. Saint Andrew the First-Called Day.
+#. Saint Andrew's Day.
 msgid "წმინდა ანდრია პირველწოდებულის დღე"
 msgstr ""
 
@@ -68,7 +68,7 @@ msgstr ""
 msgid "დამოუკიდებლობის დღე"
 msgstr ""
 
-#. Assumption of the Virgin Mary Day.
+#. Assumption of the Virgin Mary.
 msgid "მარიამობა"
 msgstr ""
 
@@ -76,6 +76,6 @@ msgstr ""
 msgid "მცხეთობის"
 msgstr ""
 
-#. Saint George's Day
+#. Saint George's Day.
 msgid "გიორგობა"
 msgstr ""

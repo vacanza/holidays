@@ -298,13 +298,18 @@ class HolidayBase(Dict[date, str]):
                 DeprecationWarning,
             )
 
+        if isinstance(self.subdiv, int):
+            self.subdiv = str(self.subdiv)
+
         if not isinstance(self, HolidaySum):
-            if subdiv and subdiv not in set(self.subdivisions + self._deprecated_subdivisions):
-                if hasattr(self, "market"):
-                    error = f"Market '{self.market}' does not have subdivision " f"'{subdiv}'"
-                else:
-                    error = f"Country '{self.country}' does not have subdivision " f"'{subdiv}'"
-                raise NotImplementedError(error)
+            if self.subdiv and self.subdiv not in set(
+                self.subdivisions + self._deprecated_subdivisions
+            ):
+                raise NotImplementedError(
+                    f"Market {self.market} does not have subdivision {self.subdiv}"
+                    if hasattr(self, "market")
+                    else f"Country {self.country} does not have subdivision {self.subdiv}"
+                )
 
             if subdiv and subdiv in self._deprecated_subdivisions:
                 warnings.warn(
@@ -522,28 +527,32 @@ class HolidayBase(Dict[date, str]):
         to :class:`datetime.date`, which is how it's stored by the class."""
 
         # Try to catch `date` and `str` type keys first.
-        if type(key) == date:  # Key has `date` type.
+        # Using type() here to skip date subclasses.
+        # Key is `date`.
+        if type(key) is date:
             dt = key
 
-        elif type(key) == str:  # Key has `str` type.
+        # Key is `str` instance.
+        elif isinstance(key, str):
             try:
                 dt = parse(key).date()
             except (OverflowError, ValueError):
                 raise ValueError(f"Cannot parse date from string '{key}'")
 
-        # Check all other types.
-        elif isinstance(key, datetime):  # Key type is derived from `datetime`.
+        # Key is `datetime` instance.
+        elif isinstance(key, datetime):
             dt = key.date()
 
-        # Must go after the `isinstance(key, datetime)` check
-        # as datetime is derived from `date`.
-        elif isinstance(key, date):  # Key type is derived from `date`.
+        # Must go after the `isinstance(key, datetime)` check as datetime is `date` subclass.
+        elif isinstance(key, date):
             dt = key
 
-        elif isinstance(key, (float, int)):  # Key type is derived from `float` or `int`.
+        # Key is `float` or `int` instance.
+        elif isinstance(key, (float, int)):
             dt = datetime.fromtimestamp(key, timezone.utc).date()
 
-        else:  # Key type is not supported.
+        # Key is not supported.
+        else:
             raise TypeError(f"Cannot convert type '{type(key)}' to date.")
 
         # Automatically expand for `expand=True` cases.
@@ -626,12 +635,11 @@ class HolidayBase(Dict[date, str]):
             "years",
         )
 
-    @staticmethod
-    def _is_leap_year(year: int) -> bool:
+    def _is_leap_year(self) -> bool:
         """
         Returns True if the year is leap. Returns False otherwise.
         """
-        return isleap(year)
+        return isleap(self._year)
 
     def _add_holiday(self, name: str, *args) -> Optional[date]:
         """Add a holiday."""
@@ -672,37 +680,6 @@ class HolidayBase(Dict[date, str]):
             from_date = date(from_year, from_month, from_day).strftime(substituted_date_format)
             self._add_holiday(substituted_label % from_date, to_month, to_day)
 
-    def _get_nth_weekday_from(self, n: int, weekday: int, *args) -> date:
-        """
-        Return date of a n-th weekday after (n is positive)
-        or before (n is negative) a specific date
-        (e.g. 1st Monday, 2nd Saturday, etc).
-        """
-        from_dt = args[0] if len(args) == 1 else date(self._year, *args)
-        if n > 0:
-            delta = (n - 1) * 7 + (weekday - from_dt.weekday()) % 7
-        else:
-            delta = (n + 1) * 7 - (from_dt.weekday() - weekday) % 7
-        return from_dt + timedelta(days=delta)
-
-    def _get_nth_weekday_of_month(self, n: int, weekday: int, month: int) -> date:
-        """
-        Return date of n-th weekday of month for current year
-        (e.g. 1st Monday of Apr, 2nd Friday of June, etc).
-        If n is negative the countdown starts at the end of month
-        (i.e. -1 is last).
-        """
-        year = self._year
-        if n < 0:
-            month += 1
-            if month > 12:
-                month = 1
-                year += 1
-            start_date = date(year, month, 1) + timedelta(days=-1)
-        else:
-            start_date = date(year, month, 1)
-        return self._get_nth_weekday_from(n, weekday, start_date)
-
     def _check_weekday(self, weekday: int, *args) -> bool:
         """
         Returns True if `weekday` equals to the date's week day.
@@ -741,22 +718,6 @@ class HolidayBase(Dict[date, str]):
         dt = args if len(args) > 1 else args[0]
         dt = dt if isinstance(dt, date) else date(self._year, *dt)
         return dt.weekday() in self.weekend
-
-    def _parse_holiday(self, *args) -> Tuple[str, date]:
-        """Parse holiday data."""
-        if len(args) == 2:
-            name, dt = args
-            if not isinstance(dt, date):
-                raise TypeError(
-                    "Invalid argument type: expected <class 'date'> " f"got '{type(dt)}'."
-                )
-        elif len(args) == 3:
-            name, month, day = args
-            dt = date(self._year, month, day)
-        else:
-            raise TypeError("Incorrect number of arguments.")
-
-        return name, dt
 
     def _populate(self, year: int) -> None:
         """This is a private class that populates (generates and adds) holidays

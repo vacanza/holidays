@@ -12,8 +12,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || "
-"n%100>14) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
 
@@ -61,7 +60,7 @@ msgstr "День національної єдності"
 msgid "ფაშიზმზე გამარჯვების დღე"
 msgstr "День перемоги над фашизмом"
 
-#. Saint Andrew the First-Called Day.
+#. Saint Andrew's Day.
 msgid "წმინდა ანდრია პირველწოდებულის დღე"
 msgstr "День святого Андрія Первозваного"
 
@@ -69,7 +68,7 @@ msgstr "День святого Андрія Первозваного"
 msgid "დამოუკიდებლობის დღე"
 msgstr "День незалежності"
 
-#. Assumption of the Virgin Mary Day.
+#. Assumption of the Virgin Mary.
 msgid "მარიამობა"
 msgstr "Успіння Пресвятої Богородиці"
 
@@ -77,6 +76,6 @@ msgstr "Успіння Пресвятої Богородиці"
 msgid "მცხეთობის"
 msgstr "Свято Светіцховлоба, Ризи Господньої"
 
-#. Saint George's Day
+#. Saint George's Day.
 msgid "გიორგობა"
 msgstr "День святого Георгія"

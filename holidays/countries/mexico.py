@@ -9,10 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import FEB, MAR, SEP, NOV, DEC, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -42,43 +40,41 @@ class Mexico(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_new_years_day(tr("Año Nuevo"))
 
         if year >= 1917:
-            self._add_holiday(
-                # Constitution Day.
-                tr("Día de la Constitución"),
-                self._get_nth_weekday_of_month(1, MON, FEB)
-                if year >= 2006
-                else date(year, FEB, 5),
-            )
+            # Constitution Day.
+            name = tr("Día de la Constitución")
+            if year >= 2006:
+                self._add_holiday_1st_mon_of_feb(name)
+            else:
+                self._add_holiday_feb_5(name)
 
         if year >= 1917:
-            self._add_holiday(
-                # Benito Juárez's birthday.
-                tr("Natalicio de Benito Juárez"),
-                self._get_nth_weekday_of_month(3, MON, MAR)
-                # no 2006 due to celebration of the 200th anniversary
-                # of Benito Juárez in 2006
-                if year >= 2007 else date(year, MAR, 21),
-            )
+            # Benito Juárez's birthday.
+            name = tr("Natalicio de Benito Juárez")
+            # no 2006 due to celebration of the 200th anniversary
+            # of Benito Juárez in 2006
+            if year >= 2007:
+                self._add_holiday_3rd_mon_of_mar(name)
+            else:
+                self._add_holiday_mar_21(name)
 
         if year >= 1923:
             # Labor Day.
             self._add_labor_day(tr("Día del Trabajo"))
 
         # Independence Day.
-        self._add_holiday(tr("Día de la Independencia"), SEP, 16)
+        self._add_holiday_sep_16(tr("Día de la Independencia"))
 
         if year >= 1917:
-            self._add_holiday(
-                # Revolution Day.
-                tr("Día de la Revolución"),
-                self._get_nth_weekday_of_month(3, MON, NOV)
-                if year >= 2006
-                else date(year, NOV, 20),
-            )
+            # Revolution Day.
+            name = tr("Día de la Revolución")
+            if year >= 2006:
+                self._add_holiday_3rd_mon_of_nov(name)
+            else:
+                self._add_holiday_nov_20(name)
 
         if year >= 1970 and (year - 1970) % 6 == 0:
             # Change of Federal Government.
-            self._add_holiday(tr("Transmisión del Poder Ejecutivo Federal"), DEC, 1)
+            self._add_holiday_dec_1(tr("Transmisión del Poder Ejecutivo Federal"))
 
         # Christmas Day.
         self._add_christmas_day(tr("Navidad"))

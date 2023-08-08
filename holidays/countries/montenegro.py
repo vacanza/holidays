@@ -12,7 +12,6 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars.gregorian import MAY, JUL
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -68,13 +67,13 @@ class Montenegro(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Independence Day.
         name = "Independence Day"
-        may_21 = self._add_holiday(name, MAY, 21)
+        may_21 = self._add_holiday_may_21(name)
         self._add_observed(may_21, days=+2)
         self._add_observed(self._add_holiday(name, may_21 + td(days=+1)))
 
         # Statehood Day.
         name = "Statehood Day"
-        jul_13 = self._add_holiday(name, JUL, 13)
+        jul_13 = self._add_holiday_jul_13(name)
         self._add_observed(jul_13, days=+2)
         self._add_observed(self._add_holiday(name, jul_13 + td(days=+1)))
 

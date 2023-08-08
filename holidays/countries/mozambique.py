@@ -13,7 +13,6 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import FEB, APR, MAY, JUN, SEP, OCT
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -29,8 +28,10 @@ class Mozambique(HolidayBase, ChristianHolidays, InternationalHolidays):
         super().__init__(*args, **kwargs)
 
     def _add_observed(self, dt: date) -> None:
-        # whenever a public holiday falls on a Sunday,
-        # it rolls over to the following Monday
+        """
+        Whenever a public holiday falls on a Sunday,
+        it rolls over to the following Monday.
+        """
         if self.observed and self._is_sunday(dt):
             # %s (Observed).
             self._add_holiday(self.tr("%s (Ponte)") % self[dt], dt + td(days=+1))
@@ -45,28 +46,28 @@ class Mozambique(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_observed(self._add_new_years_day(tr("Dia da Fraternidade universal")))
 
         # Heroes' Day.
-        self._add_observed(self._add_holiday(tr("Dia dos Heróis Moçambicanos"), FEB, 3))
+        self._add_observed(self._add_holiday_feb_3(tr("Dia dos Heróis Moçambicanos")))
 
         # Women's Day.
-        self._add_observed(self._add_holiday(tr("Dia da Mulher Moçambicana"), APR, 7))
+        self._add_observed(self._add_holiday_apr_7(tr("Dia da Mulher Moçambicana")))
 
         # International Workers' Day.
-        self._add_observed(self._add_holiday(tr("Dia Internacional dos Trabalhadores"), MAY, 1))
+        self._add_observed(self._add_labor_day(tr("Dia Internacional dos Trabalhadores")))
 
         # Independence Day.
-        self._add_observed(self._add_holiday(tr("Dia da Independência Nacional"), JUN, 25))
+        self._add_observed(self._add_holiday_jun_25(tr("Dia da Independência Nacional")))
 
         # Victory Day.
-        self._add_observed(self._add_holiday(tr("Dia da Vitória"), SEP, 7))
+        self._add_observed(self._add_holiday_sep_7(tr("Dia da Vitória")))
 
         self._add_observed(
             # Armed Forces Day.
-            self._add_holiday(tr("Dia das Forças Armadas de Libertação Nacional"), SEP, 25)
+            self._add_holiday_sep_25(tr("Dia das Forças Armadas de Libertação Nacional"))
         )
 
         if year >= 1993:
             # Peace and Reconciliation Day.
-            self._add_observed(self._add_holiday(tr("Dia da Paz e Reconciliação"), OCT, 4))
+            self._add_observed(self._add_holiday_oct_4(tr("Dia da Paz e Reconciliação")))
 
         # Family Day.
         self._add_observed(self._add_christmas_day(tr("Dia da Família")))

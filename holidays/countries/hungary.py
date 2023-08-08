@@ -57,7 +57,7 @@ class Hungary(HolidayBase, ChristianHolidays, InternationalHolidays):
         # The last day of the year is an observed day off if New Year's Day
         # falls on a Tuesday.
         if self.observed and self._is_monday(DEC, 31) and year >= 2014:
-            self._add_holiday(self.tr("%s előtti pihenőnap") % name, DEC, 31)
+            self._add_holiday_dec_31(self.tr("%s előtti pihenőnap") % name)
 
         if 1945 <= year <= 1950 or year >= 1989:
             # National Day.

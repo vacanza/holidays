@@ -13,7 +13,6 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import FEB
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -53,8 +52,8 @@ class Serbia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Statehood Day.
         name = tr("Дан државности Србије")
-        self._add_observed(self._add_holiday(name, FEB, 15), days=+2)
-        self._add_observed(self._add_holiday(name, FEB, 16))
+        self._add_observed(self._add_holiday_feb_15(name), days=+2)
+        self._add_observed(self._add_holiday_feb_16(name))
 
         # International Workers' Day.
         name = tr("Празник рада")

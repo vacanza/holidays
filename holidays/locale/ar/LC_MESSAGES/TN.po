@@ -20,7 +20,7 @@ msgstr ""
 msgid "(تقدير*) *%s"
 msgstr ""
 
-#. New Year's Day
+#. New Year's Day.
 msgid "رأس السنة الميلادية"
 msgstr ""
 
@@ -28,47 +28,43 @@ msgstr ""
 msgid "عيد الثورة والشباب"
 msgstr ""
 
-#. Independence Day
+#. Independence Day.
 msgid "عيد الإستقلال"
 msgstr ""
 
-#. Martyrs' Day
+#. Martyrs' Day.
 msgid "عيد الشهداء"
 msgstr ""
 
-#. Labour Day
+#. Labor Day.
 msgid "عيد العمال"
 msgstr ""
 
-#. Republic Day
+#. Republic Day.
 msgid "عيد الجمهورية"
 msgstr ""
 
-#. Women's Day
+#. Women's Day.
 msgid "عيد المرأة"
 msgstr ""
 
-#. Evacuation Day
+#. Evacuation Day.
 msgid "عيد الجلاء"
 msgstr ""
 
-#. Eid al-Fitr - Feast Festive date of observance is announced yearly, This is
-#. an estimate since
-#. having the Holiday on Weekend does change the number of days, deceided to
-#. leave it since marking
-#. a Weekend as a holiday wouldn't do much harm.
+#. Eid al-Fitr.
 msgid "عيد الفطر"
 msgstr ""
 
-#. Eid al-Fitr Holiday
+#. Eid al-Fitr Holiday.
 msgid "عطلة عيد الفطر"
 msgstr ""
 
-#. Eid al-Adha - Scarfice Festive date of observance is announced yearly
+#. Eid al-Adha.
 msgid "عيد الأضحى"
 msgstr ""
 
-#. Arafat Day
+#. Arafat Day.
 msgid "يوم عرفة"
 msgstr ""
 
@@ -76,10 +72,10 @@ msgstr ""
 msgid "عطلة عيد الأضحى"
 msgstr ""
 
-#. Islamic New Year - (hijari_year, 1, 1)
+#. Islamic New Year.
 msgid "رأس السنة الهجرية"
 msgstr ""
 
-#. Prophet Muhammad's Birthday - (hijari_year, 3, 12)
+#. Prophet Muhammad's Birthday.
 msgid "عيد المولد النبوي"
 msgstr ""

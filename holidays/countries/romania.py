@@ -11,7 +11,6 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, NOV, DEC
 from holidays.calendars.julian_revised import JULIAN_REVISED_CALENDAR
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -45,11 +44,11 @@ class Romania(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_epiphany_day(tr("Bobotează"))
 
             # Saint John the Baptist.
-            self._add_holiday(tr("Sfântul Ion"), JAN, 7)
+            self._add_holiday_jan_7(tr("Sfântul Ion"))
 
         if year >= 2016:
             # Unification of the Romanian Principalities Day.
-            self._add_holiday(tr("Ziua Unirii Principatelor Române"), JAN, 24)
+            self._add_holiday_jan_24(tr("Ziua Unirii Principatelor Române"))
 
         # Easter.
         name = tr("Paștele")
@@ -79,10 +78,10 @@ class Romania(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Law #147/2012
         if year >= 2012:
             # Saint Andrew's Day.
-            self._add_holiday(tr("Sfantul Apostol Andrei cel Intai chemat"), NOV, 30)
+            self._add_holiday_nov_30(tr("Sfantul Apostol Andrei cel Intai chemat"))
 
         # National Day.
-        self._add_holiday(tr("Ziua Națională a României"), DEC, 1)
+        self._add_holiday_dec_1(tr("Ziua Națională a României"))
 
         # Christmas Day.
         name = tr("Crăciunul")

@@ -13,7 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.constants import MAY, JUL, SEP, NOV, SUN
+from holidays.constants import MAY, JUL, SEP
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -87,17 +87,15 @@ class Latvia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_labor_day(tr("Darba svētki"))
 
         if year >= 2002:
-            dt = self._add_holiday(
+            dt = self._add_holiday_may_4(
                 # Restoration of Independence Day.
-                tr("Latvijas Republikas Neatkarības atjaunošanas diena"),
-                MAY,
-                4,
+                tr("Latvijas Republikas Neatkarības atjaunošanas diena")
             )
             if year >= 2008:
                 self._add_observed(dt)
 
         # Mother's Day.
-        self._add_holiday(tr("Mātes diena"), self._get_nth_weekday_of_month(2, SUN, MAY))
+        self._add_holiday_2nd_sun_of_may(tr("Mātes diena"))
 
         # Midsummer Day.
         jun_24 = self._add_saint_johns_day(tr("Jāņu diena"))
@@ -106,7 +104,7 @@ class Latvia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday(tr("Līgo diena"), jun_24 + td(days=-1))
 
         # Republic of Latvia Proclamation Day.
-        dt = self._add_holiday(tr("Latvijas Republikas proklamēšanas diena"), NOV, 18)
+        dt = self._add_holiday_nov_18(tr("Latvijas Republikas proklamēšanas diena"))
         if year >= 2007:
             self._add_observed(dt)
 

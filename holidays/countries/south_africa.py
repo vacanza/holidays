@@ -12,21 +12,7 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars.gregorian import (
-    JAN,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-    MON,
-    FRI,
-)
+from holidays.calendars.gregorian import JAN, MAR, APR, MAY, JUN, AUG, NOV, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -94,7 +80,7 @@ class SouthAfrica(HolidayBase, ChristianHolidays, InternationalHolidays):
             name = "Day of the Vow"
         else:
             name = "Day of Reconciliation"
-        self._add_observed(self._add_holiday(name, DEC, 16))
+        self._add_observed(self._add_holiday_dec_16(name))
 
         self._add_christmas_day("Christmas Day")
 
@@ -103,56 +89,56 @@ class SouthAfrica(HolidayBase, ChristianHolidays, InternationalHolidays):
         )
 
         if year >= 1995:
-            self._add_observed(self._add_holiday("Human Rights Day", MAR, 21))
+            self._add_observed(self._add_holiday_mar_21("Human Rights Day"))
 
-            self._add_observed(self._add_holiday("Freedom Day", APR, 27))
+            self._add_observed(self._add_holiday_apr_27("Freedom Day"))
 
             self._add_observed(self._add_labor_day("Workers' Day"))
 
-            self._add_observed(self._add_holiday("Youth Day", JUN, 16))
+            self._add_observed(self._add_holiday_jun_16("Youth Day"))
 
-            self._add_observed(self._add_holiday("National Women's Day", AUG, 9))
+            self._add_observed(self._add_holiday_aug_9("National Women's Day"))
 
-            self._add_observed(self._add_holiday("Heritage Day", SEP, 24))
+            self._add_observed(self._add_holiday_sep_24("Heritage Day"))
 
         # Special holiday http://tiny.cc/za_y2k
         if self.observed and year == 2000:
-            self._add_holiday("Y2K changeover (Observed)", JAN, 3)
+            self._add_holiday_jan_3("Y2K changeover (Observed)")
 
         # Historic public holidays no longer observed
         if 1952 <= year <= 1973:
-            self._add_holiday("Van Riebeeck's Day", APR, 6)
+            self._add_holiday_apr_6("Van Riebeeck's Day")
         elif 1980 <= year <= 1994:
-            self._add_holiday("Founder's Day", APR, 6)
+            self._add_holiday_apr_6("Founder's Day")
 
         if 1987 <= year <= 1989:
-            self._add_holiday("Workers' Day", self._get_nth_weekday_of_month(1, FRI, MAY))
+            self._add_holiday_1st_fri_of_may("Workers' Day")
 
         if year <= 1993:
             self._add_ascension_thursday("Ascension Day")
 
         if year <= 1951:
-            self._add_holiday("Empire Day", MAY, 24)
+            self._add_holiday_may_24("Empire Day")
 
         if year <= 1960:
-            self._add_holiday("Union Day", MAY, 31)
+            self._add_holiday_may_31("Union Day")
         elif year <= 1993:
-            self._add_holiday("Republic Day", MAY, 31)
+            self._add_holiday_may_31("Republic Day")
 
         if 1952 <= year <= 1960:
-            self._add_holiday("Queen's Birthday", self._get_nth_weekday_of_month(2, MON, JUL))
+            self._add_holiday_2nd_mon_of_jul("Queen's Birthday")
 
         if 1961 <= year <= 1973:
-            self._add_holiday("Family Day", JUL, 10)
+            self._add_holiday_jul_10("Family Day")
 
         if year <= 1951:
-            self._add_holiday("King's Birthday", self._get_nth_weekday_of_month(1, MON, AUG))
+            self._add_holiday_1st_mon_of_aug("King's Birthday")
 
         if 1952 <= year <= 1979:
-            self._add_holiday("Settlers' Day", self._get_nth_weekday_of_month(1, MON, SEP))
+            self._add_holiday_1st_mon_of_sep("Settlers' Day")
 
         if 1952 <= year <= 1993:
-            self._add_holiday("Kruger Day", OCT, 10)
+            self._add_holiday_oct_10("Kruger Day")
 
 
 class ZA(SouthAfrica):
