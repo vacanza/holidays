@@ -104,7 +104,6 @@ msgstr ""
 msgid "วันฉัตรมงคล"
 msgstr ""
 
-#. HM Queen Suthida's Birthday.
 msgid ""
 "วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสุทิดา พัชรสุธาพิมลลักษณ พระบรมราชินี"
 msgstr ""

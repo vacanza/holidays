@@ -1,7 +1,7 @@
 Version 0.30
 ============
 
-Released ???????? ??, ????
+Released August 7, 2023
 
 - Introduce substituted holidays [PoC] (#1365 by @KJhellico)
 - Refactor tests (#1400 by @KJhellico)
@@ -18,16 +18,25 @@ Released ???????? ??, ????
 - Update Taiwan holidays (#1373 by @KJhellico)
 - Update TestCase::_assertLocalizedHolidays(): add supported_categories holidays (#1376 by @KJhellico)
 - Update Uruguay holidays (#1383 by @KJhellico)
+- Update internal scripts (#1403 by @arkid15r)
 - Update some URLs after moving to an organization (#1387 by @arkid15r)
 - Add JULIAN_REVISED_CALENDAR calendar (#1380 by @KJhellico)
 - Add Python 3.12.0-beta.4 environment (#1385 by @arkid15r)
 - Add Special In Lieu Holiday on July 31, 2023 for Thailand (#1396 by @PPsyrius)
 - Add substituted holidays test (#1384 by @KJhellico)
+- Automatically convert subdivision code from int to str (#1415 by @arkid15r)
 - Extend `HolidayBase::_add_holiday` family methods [PoC] (#1368 by @arkid15r)
+- Finalize HolidayBase::_add_holiday_* family methods migration (#1416 by @arkid15r)
 - Use HolidayBase::_add_holiday_* family methods [b] (#1395 by @arkid15r)
 - Use HolidayBase::_add_holiday_* family methods [c] (#1397 by @arkid15r)
 - Use HolidayBase::_add_holiday_* family methods [d-f] (#1399 by @arkid15r)
 - Use HolidayBase::_add_holiday_* family methods [g-h] (#1402 by @arkid15r)
+- Use HolidayBase::_add_holiday_* family methods [i-k] (#1405 by @arkid15r)
+- Use HolidayBase::_add_holiday_* family methods [l-m] (#1406 by @arkid15r)
+- Use HolidayBase::_add_holiday_* family methods [n-p] (#1407 by @arkid15r)
+- Use HolidayBase::_add_holiday_* family methods [q-s] (#1410 by @arkid15r)
+- Use HolidayBase::_add_holiday_* family methods [t-u] (#1411 by @arkid15r)
+- Use HolidayBase::_add_holiday_* family methods [v-z] (#1413 by @arkid15r)
 
 Version 0.29
 ============

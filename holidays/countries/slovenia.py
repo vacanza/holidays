@@ -11,7 +11,6 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import FEB, APR, JUN, OCT, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -49,13 +48,13 @@ class Slovenia(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_new_years_day_two(name)
 
         # Preseren's Day.
-        self._add_holiday(tr("Prešernov dan"), FEB, 8)
+        self._add_holiday_feb_8(tr("Prešernov dan"))
 
         # Easter Monday.
         self._add_easter_monday(tr("Velikonočni ponedeljek"))
 
         # Day of Uprising Against Occupation.
-        self._add_holiday(tr("dan upora proti okupatorju"), APR, 27)
+        self._add_holiday_apr_27(tr("dan upora proti okupatorju"))
 
         # Labor Day.
         name = tr("praznik dela")
@@ -63,14 +62,14 @@ class Slovenia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_labor_day_two(name)
 
         # Statehood Day.
-        self._add_holiday(tr("dan državnosti"), JUN, 25)
+        self._add_holiday_jun_25(tr("dan državnosti"))
 
         # Assumption Day.
         self._add_assumption_of_mary_day(tr("Marijino vnebovzetje"))
 
         if year >= 1992:
             # Reformation Day.
-            self._add_holiday(tr("dan reformacije"), OCT, 31)
+            self._add_holiday_oct_31(tr("dan reformacije"))
 
         # Remembrance Day.
         self._add_all_saints_day(tr("dan spomina na mrtve"))
@@ -79,7 +78,7 @@ class Slovenia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_christmas_day(tr("Božič"))
 
         # Independence and Unity Day.
-        self._add_holiday(tr("dan samostojnosti in enotnosti"), DEC, 26)
+        self._add_holiday_dec_26(tr("dan samostojnosti in enotnosti"))
 
 
 class SI(Slovenia):

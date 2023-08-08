@@ -207,8 +207,8 @@ class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_nb_holidays(self):
         if self._year >= 2014:
-            # Nativity of Bernardo O'Higgins (Chillán and Chillán Viejo communes)
             self._add_holiday_aug_20(
+                # Nativity of Bernardo O'Higgins (Chillán and Chillán Viejo communes)
                 tr("Nacimiento del Prócer de la Independencia (Chillán y Chillán Viejo)")
             )
 

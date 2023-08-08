@@ -14,7 +14,7 @@ from datetime import timedelta as td
 from gettext import gettext as tr
 from typing import Set
 
-from holidays.calendars.gregorian import JAN, FEB, SEP, NOV, THU, FRI, SAT
+from holidays.calendars.gregorian import FEB, SEP, NOV, THU, FRI, SAT
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import IslamicHolidays
 
@@ -49,27 +49,26 @@ class SaudiArabia(HolidayBase, IslamicHolidays):
         IslamicHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _add_islamic_observed(self, hol_name: str, hol_dates: Set[date]) -> None:
+    def _add_islamic_observed(self, name: str, dts: Set[date]) -> None:
         if not self.observed:
             return None
-        for dt in hol_dates:
+
+        for dt in dts:
             weekend_days = sum(self._is_weekend(dt + td(days=i)) for i in range(4))
             for i in range(weekend_days):
-                self._add_holiday(self.tr("(ملاحظة) %s") % self.tr(hol_name), dt + td(days=+4 + i))
+                self._add_holiday(self.tr("(ملاحظة) %s") % self.tr(name), dt + td(days=+4 + i))
 
-    def _add_observed(self, hol_date: date) -> None:
-        if self.observed:
-            weekend = sorted(self.weekend)
-            # 1st weekend day (Thursday before 2013 and Friday otherwise)
-            if hol_date.weekday() == weekend[0]:
-                self._add_holiday(
-                    self.tr("(ملاحظة) %s") % self.tr(self[hol_date]), hol_date + td(days=-1)
-                )
-            # 2nd weekend day (Friday before 2013 and Saturday otherwise)
-            elif hol_date.weekday() == weekend[1]:
-                self._add_holiday(
-                    self.tr("(ملاحظة) %s") % self.tr(self[hol_date]), hol_date + td(days=+1)
-                )
+    def _add_observed(self, dt: date) -> None:
+        if not self.observed:
+            return None
+
+        weekend = sorted(self.weekend)
+        # 1st weekend day (Thursday before 2013 and Friday otherwise)
+        if dt.weekday() == weekend[0]:
+            self._add_holiday(self.tr("(ملاحظة) %s") % self.tr(self[dt]), dt + td(days=-1))
+        # 2nd weekend day (Friday before 2013 and Saturday otherwise)
+        elif dt.weekday() == weekend[1]:
+            self._add_holiday(self.tr("(ملاحظة) %s") % self.tr(self[dt]), dt + td(days=+1))
 
     def _populate(self, year):
         super()._populate(year)
@@ -129,7 +128,7 @@ class SaudiArabia(HolidayBase, IslamicHolidays):
         # observed holidays special cases
         if self.observed and year == 2001:
             # Eid al-Fitr Holiday (observed)
-            self._add_holiday(tr("عطلة عيد الفطر (ملاحظة)"), JAN, 1)
+            self._add_holiday_jan_1(tr("عطلة عيد الفطر (ملاحظة)"))
 
 
 class SA(SaudiArabia):

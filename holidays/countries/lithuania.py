@@ -11,7 +11,6 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import FEB, MAR, MAY, JUN, JUL, SUN
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -43,10 +42,10 @@ class Lithuania(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_new_years_day(tr("Naujųjų metų diena"))
 
         # Day of Restoration of the State of Lithuania.
-        self._add_holiday(tr("Lietuvos valstybės atkūrimo diena"), FEB, 16)
+        self._add_holiday_feb_16(tr("Lietuvos valstybės atkūrimo diena"))
 
         # Day of Restoration of Independence of Lithuania.
-        self._add_holiday(tr("Lietuvos nepriklausomybės atkūrimo diena"), MAR, 11)
+        self._add_holiday_mar_11(tr("Lietuvos nepriklausomybės atkūrimo diena"))
 
         # Easter.
         self._add_easter_sunday(tr("Šv. Velykos"))
@@ -58,24 +57,22 @@ class Lithuania(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_labor_day(tr("Tarptautinė darbo diena"))
 
         # Mother's day. First Sunday in May.
-        self._add_holiday(tr("Motinos diena"), self._get_nth_weekday_of_month(1, SUN, MAY))
+        self._add_holiday_1st_sun_of_may(tr("Motinos diena"))
 
         # Fathers's day. First Sunday in June.
-        self._add_holiday(tr("Tėvo diena"), self._get_nth_weekday_of_month(1, SUN, JUN))
+        self._add_holiday_1st_sun_of_jun(tr("Tėvo diena"))
 
         if year >= 2003:
             # Day of Dew and Saint John.
             self._add_saint_johns_day(tr("Rasos ir Joninių diena"))
 
         if year >= 1991:
-            self._add_holiday(
+            self._add_holiday_jul_6(
                 # Statehood Day.
                 tr(
                     "Valstybės (Lietuvos karaliaus Mindaugo karūnavimo) "
                     "ir Tautiškos giesmės diena"
                 ),
-                JUL,
-                6,
             )
 
         # Assumption Day.

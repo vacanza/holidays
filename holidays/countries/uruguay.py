@@ -13,7 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, DEC, MON
+from holidays.calendars.gregorian import MAR, JUN, DEC, MON, _get_nth_weekday_from
 from holidays.constants import BANK, PUBLIC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -57,13 +57,13 @@ class Uruguay(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _move_holiday(self, dt: date) -> None:
         # Decree Law #14977, # 15535, #16805.
         if self.observed and (1980 <= self._year <= 1983 or self._year >= 1997):
-            obs_date = None
+            dt_observed = None
             if self._is_tuesday(dt) or self._is_wednesday(dt):
-                obs_date = self._get_nth_weekday_from(-1, MON, dt)
+                dt_observed = _get_nth_weekday_from(-1, MON, dt)
             elif self._is_thursday(dt) or self._is_friday(dt):
-                obs_date = self._get_nth_weekday_from(1, MON, dt)
-            if obs_date:
-                self._add_holiday(self[dt], obs_date)
+                dt_observed = _get_nth_weekday_from(1, MON, dt)
+            if dt_observed:
+                self._add_holiday(self[dt], dt_observed)
                 self.pop(dt)
 
     def _populate_public_holidays(self):
@@ -76,7 +76,7 @@ class Uruguay(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self._year <= 1933:
             # Cry of Asencio.
-            self._add_holiday(tr("Grito de Asencio"), FEB, 28)
+            self._add_holiday_feb_28(tr("Grito de Asencio"))
 
         # International Workers' Day.
         dt = self._add_labor_day(tr("Día de los Trabajadores"))
@@ -85,29 +85,29 @@ class Uruguay(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self._year <= 1932:
             # Spain Day.
-            self._add_holiday(tr("Día de España"), MAY, 2)
+            self._add_holiday_may_2(tr("Día de España"))
 
             # America Day.
-            self._add_holiday(tr("Día de América"), MAY, 25)
+            self._add_holiday_may_25(tr("Día de América"))
 
             # Democracy Day.
-            self._add_holiday(tr("Día de la Democracia"), JUL, 4)
+            self._add_holiday_jul_4(tr("Día de la Democracia"))
 
             # Humanity Day.
-            self._add_holiday(tr("Día de la Humanidad"), JUL, 14)
+            self._add_holiday_jul_14(tr("Día de la Humanidad"))
 
         # Constitution Day.
-        self._add_holiday(tr("Jura de la Constitución"), JUL, 18)
+        self._add_holiday_jul_18(tr("Jura de la Constitución"))
 
         # Independence Day.
-        self._add_holiday(tr("Declaratoria de la Independencia"), AUG, 25)
+        self._add_holiday_aug_25(tr("Declaratoria de la Independencia"))
 
         if self._year <= 1932:
             # Italy Day.
-            self._add_holiday(tr("Día de Italia"), SEP, 20)
+            self._add_holiday_sep_20(tr("Día de Italia"))
 
             # Open Town Hall.
-            self._add_holiday(tr("Cabildo Abierto"), SEP, 21)
+            self._add_holiday_sep_21(tr("Cabildo Abierto"))
 
         if self._year <= 1932 or 1936 <= self._year <= 1979:
             # Beaches Day.
@@ -124,7 +124,7 @@ class Uruguay(HolidayBase, ChristianHolidays, InternationalHolidays):
             return None
 
         # Children's Day.
-        self._add_holiday(tr("Día de los Niños"), JAN, 6)
+        self._add_holiday_jan_6(tr("Día de los Niños"))
 
         # Carnival.
         name = tr("Carnaval")
@@ -133,7 +133,7 @@ class Uruguay(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self._year <= 1933 or self._year >= 1949:
             # Landing of the 33 Patriots.
-            self._move_holiday(self._add_holiday(tr("Desembarco de los 33 Orientales"), APR, 19))
+            self._move_holiday(self._add_holiday_apr_19(tr("Desembarco de los 33 Orientales")))
 
         # Tourism Week.
         name = tr("Semana de Turismo")
@@ -145,7 +145,7 @@ class Uruguay(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self._year <= 1932 or self._year >= 1942:
             # Battle of Las Piedras.
-            self._move_holiday(self._add_holiday(tr("Batalla de Las Piedras"), MAY, 18))
+            self._move_holiday(self._add_holiday_may_18(tr("Batalla de Las Piedras")))
 
         if self._year <= 1932 or self._year >= 1940:
             # Birthday of Artigas.

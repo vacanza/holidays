@@ -9,11 +9,9 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from datetime import date
-from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, MAY, DEC, SUN
+from holidays.calendars.gregorian import _get_all_sundays
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -38,7 +36,7 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
     default_language = "no"
     supported_languages = ("en_US", "no", "uk")
 
-    def __init__(self, include_sundays=False, **kwargs):
+    def __init__(self, include_sundays=False, *args, **kwargs):
         """
         :param include_sundays: Whether to consider sundays as a holiday
         (which they are in Norway)
@@ -47,7 +45,7 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
         self.include_sundays = include_sundays
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
-        HolidayBase.__init__(self, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def _populate(self, year):
         super()._populate(year)
@@ -73,7 +71,7 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_labor_day(tr("Arbeidernes dag"))
 
             # Constitution Day.
-            self._add_holiday(tr("Grunnlovsdag"), MAY, 17)
+            self._add_holiday_may_17(tr("Grunnlovsdag"))
 
         # Ascension Day.
         self._add_ascension_thursday(tr("Kristi himmelfartsdag"))
@@ -96,9 +94,7 @@ class Norway(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self.include_sundays:
             # Optionally add all Sundays of the year.
-            begin = self._get_nth_weekday_of_month(1, SUN, JAN)
-            end = date(year, DEC, 31)
-            for dt in (begin + td(days=n) for n in range(0, (end - begin).days + 1, 7)):
+            for dt in _get_all_sundays(year):
                 # Sunday.
                 self._add_holiday(tr("Søndag"), dt)
 

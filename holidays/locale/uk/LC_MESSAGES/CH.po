@@ -79,7 +79,7 @@ msgstr "Непорочне зачаття Діви Марії"
 msgid "Tag der Arbeit"
 msgstr "День праці"
 
-#. Genevan Fast.
+#. Thursday after the first Sunday of September Genevan Fast.
 msgid "Genfer Bettag"
 msgstr "Женевський піст"
 
@@ -115,6 +115,6 @@ msgstr "Богоявлення"
 msgid "Peter und Paul"
 msgstr "День Святих Петра і Павла"
 
-#. Prayer Monday.
+#. Monday after the third Sunday of September Prayer Monday.
 msgid "Bettagsmontag"
 msgstr "Молитовний понеділок"

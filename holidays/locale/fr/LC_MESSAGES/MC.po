@@ -63,7 +63,7 @@ msgstr ""
 msgid "La Fête du Prince"
 msgstr ""
 
-#. Immaculate Conception's Day.
+#. Immaculate Conception Day.
 msgid "L'Immaculée Conception"
 msgstr ""
 

@@ -9,7 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import FEB, MAR, APR, MAY, AUG, NOV
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
@@ -41,34 +40,34 @@ class Kyrgyzstan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicH
         self._add_christmas_day("Christmas Day")
 
         # Feb. 23 Fatherland Defender's Day.
-        self._add_holiday("Fatherland Defender's Day", FEB, 23)
+        self._add_holiday_feb_23("Fatherland Defender's Day")
 
         # International Women's Day.
         self._add_womens_day("International Women's Day")
 
         # Nooruz Mairamy.
-        self._add_holiday("Nooruz Mairamy", MAR, 21)
+        self._add_holiday_mar_21("Nooruz Mairamy")
 
         if year >= 2016:
             # Day of the People's April Revolution.
-            self._add_holiday("Day of the People's April Revolution", APR, 7)
+            self._add_holiday_apr_7("Day of the People's April Revolution")
 
         # International Workers' Day.
         self._add_labor_day("International Workers' Day")
 
         # Constitution Day.
-        self._add_holiday("Constitution Day", MAY, 5)
+        self._add_holiday_may_5("Constitution Day")
 
         # Victory Day.
         self._add_world_war_two_victory_day("Victory Day")
 
         # Independence Day.
-        self._add_holiday("Independence Day", AUG, 31)
+        self._add_holiday_aug_31("Independence Day")
 
         # Days History and Commemoration of Ancestors.
         name = "Days of History and Commemoration of Ancestors"
-        self._add_holiday(name, NOV, 7)
-        self._add_holiday(name, NOV, 8)
+        self._add_holiday_nov_7(name)
+        self._add_holiday_nov_8(name)
 
         # New Year's Eve.
         self._add_new_years_eve("New Year's Eve")

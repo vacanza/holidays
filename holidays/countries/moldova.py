@@ -12,7 +12,7 @@
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import GREGORIAN_CALENDAR, AUG
+from holidays.calendars.gregorian import GREGORIAN_CALENDAR
 from holidays.calendars.julian import JULIAN_CALENDAR
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
@@ -80,10 +80,10 @@ class Moldova(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_childrens_day(tr("Ziua Ocrotirii Copilului"))
 
         # Republic of Moldova Independence Day
-        self._add_holiday(tr("Ziua independenţei Republicii Moldova"), AUG, 27)
+        self._add_holiday_aug_27(tr("Ziua independenţei Republicii Moldova"))
 
         # National Language Day.
-        self._add_holiday(tr("Limba noastră"), AUG, 31)
+        self._add_holiday_aug_31(tr("Limba noastră"))
 
         if year >= 2013:
             self._add_christmas_day(

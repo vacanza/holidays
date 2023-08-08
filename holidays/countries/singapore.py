@@ -136,7 +136,7 @@ class Singapore(
         observed_dates.add(self._add_vesak("Vesak Day"))  # type: ignore[arg-type]
 
         # National Day
-        observed_dates.add(self._add_holiday("National Day", AUG, 9))  # type: ignore[arg-type]
+        observed_dates.add(self._add_holiday_aug_9("National Day"))
 
         # Deepavali (Diwali)
         observed_dates.add(self._add_diwali("Deepavali"))  # type: ignore[arg-type]
@@ -165,7 +165,7 @@ class Singapore(
 
         # special case (observed from previous year)
         if year == 2007:
-            self._add_holiday("Hari Raya Haji (Observed)", JAN, 2)
+            self._add_holiday_jan_2("Hari Raya Haji (Observed)")
 
 
 class SG(Singapore):
