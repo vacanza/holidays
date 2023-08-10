@@ -61,7 +61,7 @@ class SaudiArabia(HolidayBase, IslamicHolidays):
                 if not self._is_weekend(dt + td(days=-i)):
                     continue
                 dt_observed = dt + td(days=-i + 1)
-                while (dt_observed.year == self._year) and (
+                while dt_observed.year == self._year and (
                     self._is_weekend(dt_observed) or dt_observed in self
                 ):
                     dt_observed += td(days=+1)
@@ -92,8 +92,7 @@ class SaudiArabia(HolidayBase, IslamicHolidays):
         self._add_eid_al_fitr_day(eid_al_fitr_name)
         self._add_eid_al_fitr_day_two(eid_al_fitr_name)
         self._add_eid_al_fitr_day_three(eid_al_fitr_name)
-        dates = self._add_eid_al_fitr_day_four(eid_al_fitr_name)
-        self._add_islamic_observed(dates)
+        self._add_islamic_observed(self._add_eid_al_fitr_day_four(eid_al_fitr_name))
 
         # Arafat Day
         self._add_arafah_day(tr("يوم عرفة"))
@@ -101,8 +100,7 @@ class SaudiArabia(HolidayBase, IslamicHolidays):
         name = tr("عطلة عيد الأضحى")
         self._add_eid_al_adha_day(name)
         self._add_eid_al_adha_day_two(name)
-        dates = self._add_eid_al_adha_day_three(name)
-        self._add_islamic_observed(dates)
+        self._add_islamic_observed(self._add_eid_al_adha_day_three(name))
 
         # If National Day happens within the Eid al-Fitr Holiday or
         # within Eid al-Adha Holiday, there is no extra holidays given for it.
