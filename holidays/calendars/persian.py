@@ -43,7 +43,7 @@ class _Persian:
             day = 22
         return date(year, 3, day)
 
-    def get_persian_date(self, year: int, j_month: int, j_day: int) -> Optional[date]:
+    def persian_to_gregorian(self, year: int, j_month: int, j_day: int) -> Optional[date]:
         """
         Return Gregorian date of Persian day and month in a given Gregorian year.
         """

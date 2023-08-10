@@ -3,7 +3,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.30\n"
+"Project-Id-Version: Python Holidays 0.31\n"
 "POT-Creation-Date: 2023-08-03 18:21+0300\n"
 "PO-Revision-Date: 2023-08-03 18:26+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
@@ -16,6 +16,7 @@ msgstr ""
 "Generated-By: Lingua 4.15.0\n"
 "X-Generator: Poedit 3.2.2\n"
 
+#. Estimated label.
 #, c-format
 msgid "(تخمین زده*) *%s"
 msgstr "%s* (*estimated)"

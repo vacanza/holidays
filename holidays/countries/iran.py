@@ -26,6 +26,7 @@ class Iran(HolidayBase, IslamicHolidays):
 
     country = "IR"
     default_language = "fa"
+    # Estimated label.
     estimated_label = tr("(تخمین زده*) *%s")
     supported_languages = ("en_US", "fa")
 
@@ -49,22 +50,25 @@ class Iran(HolidayBase, IslamicHolidays):
         self._add_holiday(name, dt + td(days=+3))
 
         # Islamic Republic Day.
-        self._add_holiday(tr("روز جمهوری اسلامی"), self.pcal.get_persian_date(year, 1, 12))
+        self._add_holiday(tr("روز جمهوری اسلامی"), self.pcal.persian_to_gregorian(year, 1, 12))
 
         # Nature's Day.
-        self._add_holiday(tr("روز طبیعت"), self.pcal.get_persian_date(year, 1, 13))
+        self._add_holiday(tr("روز طبیعت"), self.pcal.persian_to_gregorian(year, 1, 13))
 
-        # Death of Khomeini.
-        self._add_holiday(tr("درگذشت سید روح‌الله خمینی"), self.pcal.get_persian_date(year, 3, 14))
+        self._add_holiday(
+            # Death of Khomeini.
+            tr("درگذشت سید روح‌الله خمینی"),
+            self.pcal.persian_to_gregorian(year, 3, 14),
+        )
 
         # Khordad National Uprising.
-        self._add_holiday(tr("تظاهرات ۱۵ خرداد"), self.pcal.get_persian_date(year, 3, 15))
+        self._add_holiday(tr("تظاهرات ۱۵ خرداد"), self.pcal.persian_to_gregorian(year, 3, 15))
 
         # Islamic Revolution Day.
-        self._add_holiday(tr("پیروزی انقلاب ۵۷"), self.pcal.get_persian_date(year - 1, 11, 22))
+        self._add_holiday(tr("پیروزی انقلاب ۵۷"), self.pcal.persian_to_gregorian(year - 1, 11, 22))
 
         # Iranian Oil Industry Nationalization Day.
-        self._add_holiday(tr("ملی‌شدن صنعت نفت"), self.pcal.get_persian_date(year - 1, 12, 29))
+        self._add_holiday(tr("ملی‌شدن صنعت نفت"), self.pcal.persian_to_gregorian(year - 1, 12, 29))
 
         # Tasua.
         self._add_tasua_day(tr("تاسوعا"))

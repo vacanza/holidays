@@ -21,10 +21,10 @@ class TestPersianCalendar(unittest.TestCase):
         self.calendar = _Persian()
 
     def test_year_bounds(self):
-        self.assertEqual(self.calendar.new_year_date(1900), None)
-        self.assertEqual(self.calendar.new_year_date(2101), None)
-        self.assertEqual(self.calendar.get_persian_date(1900, 2, 2), None)
-        self.assertEqual(self.calendar.get_persian_date(2101, 3, 3), None)
+        self.assertIsNone(self.calendar.new_year_date(1900))
+        self.assertIsNone(self.calendar.new_year_date(2101))
+        self.assertIsNone(self.calendar.persian_to_gregorian(1900, 2, 2))
+        self.assertIsNone(self.calendar.persian_to_gregorian(2101, 3, 3))
 
     def test_new_year_date(self):
         for year, day in (
