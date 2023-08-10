@@ -148,6 +148,7 @@ COUNTRIES: RegistryDict = {
     "united_states": ("UnitedStates", "US", "USA"),
     "uruguay": ("Uruguay", "UY", "URY"),
     "uzbekistan": ("Uzbekistan", "UZ", "UZB"),
+    "vanuatu": ("Vanuatu", "VU", "VTU"),
     "vatican_city": ("VaticanCity", "VA", "VAT"),
     "venezuela": ("Venezuela", "VE", "VEN"),
     "vietnam": ("Vietnam", "VN", "VNM"),

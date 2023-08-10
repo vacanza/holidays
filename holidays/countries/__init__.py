@@ -142,6 +142,7 @@ from .united_states_minor_outlying_islands import (
 from .united_states_virgin_islands import UnitedStatesVirginIslands, VI, VIR, HolidaysVI
 from .uruguay import Uruguay, UY, URY
 from .uzbekistan import Uzbekistan, UZ, UZB
+from .vanuatu import Vanuatu, VU, VTU
 from .vatican_city import VaticanCity, VA, VAT
 from .venezuela import Venezuela, VE, VEN
 from .vietnam import Vietnam, VN, VNM
