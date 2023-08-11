@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.constants import FEB, MAR, JUL, OCT, NOV, DEC
+from holidays.calendars.gregorian import FEB, MAR, JUL, OCT, NOV
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -60,9 +60,8 @@ class Vanuatu(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Children's Day
         self._add_holiday("Children's Day", JUL, 24)
 
-        if year >= 1981:
-            # Independence Day
-            self._add_holiday("Independence Day", JUL, 30)
+        # Independence Day
+        self._add_holiday("Independence Day", JUL, 30)
 
         # Assumption Day
         self._add_assumption_of_mary_day("Assumption Day")
@@ -77,7 +76,7 @@ class Vanuatu(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_christmas_day("Christmas Day")
 
         # Family day
-        self._add_holiday("Family Day", DEC, 26)
+        self._add_christmas_day_two("Family Day")
 
 
 class VU(Vanuatu):
