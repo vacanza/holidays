@@ -24,17 +24,65 @@ class PersianCalendarHolidays:
     def __init__(self) -> None:
         self._persian_calendar = _Persian()
 
-    def _add_persian_calendar_holiday(
-        self, name: str, dt: Optional[date], days_delta: int = 0
-    ) -> Optional[date]:
+    def _add_death_of_khomeini_day(self, name: str) -> Optional[date]:
         """
-        Add Persian calendar holiday.
+        Add Death of Ruhollah Khomeini Day (14th day of the 3rd month).
+
+        Ayatollah Ruhollah Khomeini was an Iranian revolutionary, politician and religious leader.
+        https://en.wikipedia.org/wiki/Ruhollah_Khomeini
         """
-        if dt is None:
-            return None
-        if days_delta != 0:
-            dt += td(days=days_delta)
-        return self._add_holiday(name, dt)
+        return self._add_persian_calendar_holiday(
+            name, self._persian_calendar.persian_to_gregorian(self._year, 3, 14)
+        )
+
+    def _add_islamic_republic_day(self, name: str) -> Optional[date]:
+        """
+        Add Islamic Republic Day (12th day of the 1st month).
+
+        Iranian Islamic Republic Day is a national and a public holiday in Iran. It marks the day
+        that the results of the March 1979 Iranian Islamic Republic referendum were announced.
+        https://en.wikipedia.org/wiki/Islamic_Republic_Day
+        """
+        return self._add_persian_calendar_holiday(
+            name, self._persian_calendar.persian_to_gregorian(self._year, 1, 12)
+        )
+
+    def _add_islamic_revolution_day(self, name: str) -> Optional[date]:
+        """
+        Add Islamic Revolution Day (22nd day of the 11th month).
+
+        The anniversary of the Iranian Revolution commemorates the protests that led to
+        the downfall of the Pahlavi dynasty and the installation of the Islamic Revolutionary
+        which is headed by Imam Khomeini.
+        https://en.wikipedia.org/wiki/Anniversary_of_Islamic_Revolution
+        """
+        return self._add_persian_calendar_holiday(
+            name, self._persian_calendar.persian_to_gregorian(self._year - 1, 11, 22)
+        )
+
+    def _add_khordad_uprising_day(self, name: str) -> Optional[date]:
+        """
+        Add 15 Khordad uprising Day (15th day of the 3rd month).
+
+        The demonstrations of June 5 and 6, also called the events of June 1963 or (using
+        the Iranian calendar) the 15 Khordad uprising were protests in Iran against the arrest
+        of Ayatollah Ruhollah Khomeini.
+        https://en.wikipedia.org/wiki/June_5,_1963_demonstrations_in_Iran
+        """
+        return self._add_persian_calendar_holiday(
+            name, self._persian_calendar.persian_to_gregorian(self._year, 3, 15)
+        )
+
+    def _add_natures_day(self, name: str) -> Optional[date]:
+        """
+        Add Nature's Day, or Sizdah Bedar (13th day of the 1st month).
+
+        Nature's Day is an Iranian festival, during which people spend time picnicking outdoors.
+        https://en.wikipedia.org/wiki/Sizdah_Be-dar
+        """
+        return self._add_persian_calendar_holiday(
+            name, self._persian_calendar.persian_to_gregorian(self._year, 1, 13)
+        )
 
     def _add_nowruz_day(self, name: str) -> Optional[date]:
         """
@@ -72,66 +120,6 @@ class PersianCalendarHolidays:
             name, self._persian_calendar.new_year_date(self._year), days_delta=+3
         )
 
-    def _add_islamic_republic_day(self, name: str) -> Optional[date]:
-        """
-        Add Islamic Republic Day (12th day of the 1st month).
-
-        Iranian Islamic Republic Day is a national and a public holiday in Iran. It marks the day
-        that the results of the March 1979 Iranian Islamic Republic referendum were announced.
-        https://en.wikipedia.org/wiki/Islamic_Republic_Day
-        """
-        return self._add_persian_calendar_holiday(
-            name, self._persian_calendar.persian_to_gregorian(self._year, 1, 12)
-        )
-
-    def _add_natures_day(self, name: str) -> Optional[date]:
-        """
-        Add Nature's Day, or Sizdah Bedar (13th day of the 1st month).
-
-        Nature's Day is an Iranian festival, during which people spend time picnicking outdoors.
-        https://en.wikipedia.org/wiki/Sizdah_Be-dar
-        """
-        return self._add_persian_calendar_holiday(
-            name, self._persian_calendar.persian_to_gregorian(self._year, 1, 13)
-        )
-
-    def _add_death_of_khomeini_day(self, name: str) -> Optional[date]:
-        """
-        Add Death of Ruhollah Khomeini Day (14th day of the 3rd month).
-
-        Ayatollah Ruhollah Khomeini was an Iranian revolutionary, politician and religious leader.
-        https://en.wikipedia.org/wiki/Ruhollah_Khomeini
-        """
-        return self._add_persian_calendar_holiday(
-            name, self._persian_calendar.persian_to_gregorian(self._year, 3, 14)
-        )
-
-    def _add_khordad_uprising_day(self, name: str) -> Optional[date]:
-        """
-        Add 15 Khordad uprising Day (15th day of the 3rd month).
-
-        The demonstrations of June 5 and 6, also called the events of June 1963 or (using
-        the Iranian calendar) the 15 Khordad uprising were protests in Iran against the arrest
-        of Ayatollah Ruhollah Khomeini.
-        https://en.wikipedia.org/wiki/June_5,_1963_demonstrations_in_Iran
-        """
-        return self._add_persian_calendar_holiday(
-            name, self._persian_calendar.persian_to_gregorian(self._year, 3, 15)
-        )
-
-    def _add_islamic_revolution_day(self, name: str) -> Optional[date]:
-        """
-        Add Islamic Revolution Day (22nd day of the 11th month).
-
-        The anniversary of the Iranian Revolution commemorates the protests that led to
-        the downfall of the Pahlavi dynasty and the installation of the Islamic Revolutionary
-        which is headed by Imam Khomeini.
-        https://en.wikipedia.org/wiki/Anniversary_of_Islamic_Revolution
-        """
-        return self._add_persian_calendar_holiday(
-            name, self._persian_calendar.persian_to_gregorian(self._year - 1, 11, 22)
-        )
-
     def _add_oil_nationalization_day(self, name: str) -> Optional[date]:
         """
         Add Iranian Oil Industry Nationalization Day (29th day of the 12th month).
@@ -143,3 +131,15 @@ class PersianCalendarHolidays:
         return self._add_persian_calendar_holiday(
             name, self._persian_calendar.persian_to_gregorian(self._year - 1, 12, 29)
         )
+
+    def _add_persian_calendar_holiday(
+        self, name: str, dt: Optional[date], days_delta: int = 0
+    ) -> Optional[date]:
+        """
+        Add Persian calendar holiday.
+        """
+        if dt is None:
+            return None
+        if days_delta != 0:
+            dt += td(days=days_delta)
+        return self._add_holiday(name, dt)
