@@ -5,6 +5,7 @@ from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 class Barbados(HolidayBase, ChristianHolidays, InternationalHolidays):
     """
+    https://en.wikipedia.org/wiki/Public_holidays_in_Barbados
     https://www.timeanddate.com/holidays/barbados/
     """
 
