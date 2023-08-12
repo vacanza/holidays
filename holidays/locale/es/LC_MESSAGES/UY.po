@@ -3,9 +3,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Python Holidays 0.22\n"
-"POT-Creation-Date: 2023-03-05 12:23+0200\n"
-"PO-Revision-Date: 2023-03-05 12:44+0200\n"
+"Project-Id-Version: Python Holidays 0.30\n"
+"POT-Creation-Date: 2023-07-17 14:06+0300\n"
+"PO-Revision-Date: 2023-07-17 14:07+0300\n"
 "Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
 "Language-Team: Python Holidays localization team\n"
 "Language: es\n"
@@ -16,12 +16,36 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.2.2\n"
 
+#. Presidential Inauguration Day.
+msgid "Inauguración del Presidente de la República"
+msgstr ""
+
 #. New Year's Day.
 msgid "Año Nuevo"
 msgstr ""
 
+#. Cry of Asencio.
+msgid "Grito de Asencio"
+msgstr ""
+
 #. International Workers' Day.
 msgid "Día de los Trabajadores"
+msgstr ""
+
+#. Spain Day.
+msgid "Día de España"
+msgstr ""
+
+#. America Day.
+msgid "Día de América"
+msgstr ""
+
+#. Democracy Day.
+msgid "Día de la Democracia"
+msgstr ""
+
+#. Humanity Day.
+msgid "Día de la Humanidad"
 msgstr ""
 
 #. Constitution Day.
@@ -29,7 +53,19 @@ msgid "Jura de la Constitución"
 msgstr ""
 
 #. Independence Day.
-msgid "Día de la Independencia"
+msgid "Declaratoria de la Independencia"
+msgstr ""
+
+#. Italy Day.
+msgid "Día de Italia"
+msgstr ""
+
+#. Open Town Hall.
+msgid "Cabildo Abierto"
+msgstr ""
+
+#. Beaches Day.
+msgid "Día de las Playas"
 msgstr ""
 
 #. Day of the Family.
@@ -40,28 +76,12 @@ msgstr ""
 msgid "Día de los Niños"
 msgstr ""
 
-#. Birthday of José Gervasio Artigas.
-msgid "Natalicio de José Gervasio Artigas"
+#. Carnival.
+msgid "Carnaval"
 msgstr ""
 
-#. All Souls' Day.
-msgid "Día de los Difuntos"
-msgstr ""
-
-#. Carnival Day.
-msgid "Día de Carnaval"
-msgstr ""
-
-#. Maundy Thursday.
-msgid "Jueves Santo"
-msgstr ""
-
-#. Good Friday.
-msgid "Viernes Santo"
-msgstr ""
-
-#. Easter Day.
-msgid "Día de Pascuas"
+#. Tourism Week.
+msgid "Semana de Turismo"
 msgstr ""
 
 #. Landing of the 33 Patriots.
@@ -72,6 +92,18 @@ msgstr ""
 msgid "Batalla de Las Piedras"
 msgstr ""
 
-#. Respect for Cultural Diversity Day.
-msgid "Día del Respeto a la Diversidad Cultural"
+#. Birthday of Artigas.
+msgid "Natalicio de Artigas"
+msgstr ""
+
+#. Cultural Diversity Day.
+msgid "Día de la Diversidad Cultural"
+msgstr ""
+
+#. Columbus Day.
+msgid "Día de la Raza"
+msgstr ""
+
+#. All Souls' Day.
+msgid "Día de los Difuntos"
 msgstr ""

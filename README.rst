@@ -21,11 +21,11 @@ flexible as possible.
         :alt: Downloads
 
 :CD/CI:
-    .. image:: https://github.com/dr-prodigy/python-holidays/workflows/Tests/badge.svg
+    .. image:: https://github.com/vacanza/python-holidays/workflows/Tests/badge.svg
         :target: actions
 
-    .. image:: http://img.shields.io/coveralls/dr-prodigy/python-holidays/master
-        :target: https://coveralls.io/r/dr-prodigy/python-holidays
+    .. image:: http://img.shields.io/coveralls/vacanza/python-holidays/master
+        :target: https://coveralls.io/r/vacanza/python-holidays
 
 :Docs:
     .. image:: https://readthedocs.org/projects/python-holidays/badge/?version=latest
@@ -204,7 +204,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Bolivia
      - BO
      - Departments: B, C, H, L, N, O, P, S, T
-     -
+     - en_US, **es**, uk
    * - Bosnia and Herzegovina
      - BA
      - Entities and district: BIH, BRC, SRP
@@ -336,7 +336,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Georgia
      - GE
      -
-     - en_US, **ka**
+     - en_US, **ka**, uk
    * - Germany
      - DE
      - States: BB, BE, BW, BY, BYP, HB, HE, HH, MV, NI, NW, RP, SH, SL, SN, ST, TH
@@ -344,7 +344,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Greece
      - GR
      -
-     - **el**, en_US
+     - **el**, en_US, uk
    * - Guam
      - GU
      - Can also be loaded as country US, subdivision GU
@@ -376,7 +376,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Indonesia
      - ID
      -
-     -
+     - en_US, **id**, uk
    * - Ireland
      - IE
      -
@@ -476,7 +476,7 @@ The list of supported countries, their subdivisions and supported languages
    * - Mozambique
      - MZ
      -
-     -
+     - en_US, **pt_MZ**, uk
    * - Namibia
      - NA
      -
@@ -699,7 +699,7 @@ The latest development (beta) version can be installed directly from GitHub:
 
 .. code-block:: bash
 
-    $ pip install --upgrade https://github.com/dr-prodigy/python-holidays/tarball/beta
+    $ pip install --upgrade https://github.com/vacanza/python-holidays/tarball/beta
 
 All new features are always first pushed to beta branch, then released on
 master branch upon official version upgrades.
@@ -708,8 +708,8 @@ master branch upon official version upgrades.
 Contributions
 -------------
 
-.. _Issues: https://github.com/dr-prodigy/python-holidays/issues
-.. _pull requests: https://github.com/dr-prodigy/python-holidays/pulls
+.. _Issues: https://github.com/vacanza/python-holidays/issues
+.. _pull requests: https://github.com/vacanza/python-holidays/pulls
 .. _here: CONTRIBUTING.rst
 
 Issues_ and `pull requests`_ are always welcome.  Please see

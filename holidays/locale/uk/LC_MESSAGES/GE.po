@@ -1,0 +1,81 @@
+# Georgia holidays uk localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.30\n"
+"POT-Creation-Date: 2023-07-18 17:31+0300\n"
+"PO-Revision-Date: 2023-07-18 18:06+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. New Year's Day.
+msgid "ახალი წელი"
+msgstr "Новий рік"
+
+#. Christmas Day.
+msgid "ქრისტეშობა"
+msgstr "Різдво Христове"
+
+#. Epiphany.
+msgid "ნათლისღება"
+msgstr "Богоявлення"
+
+#. Mother's Day.
+msgid "დედის დღე"
+msgstr "День матері"
+
+#. International Women's Day.
+msgid "ქალთა საერთაშორისო დღე"
+msgstr "Міжнародний жіночий день"
+
+#. Good Friday.
+msgid "წითელი პარასკევი"
+msgstr "Страсна пʼятниця"
+
+#. Holy Saturday.
+msgid "დიდი შაბათი"
+msgstr "Велика субота"
+
+#. Easter Sunday.
+msgid "აღდგომა"
+msgstr "Великдень"
+
+#. Easter Monday.
+msgid "შავი ორშაბათი"
+msgstr "Великодній понеділок"
+
+#. National Unity Day.
+msgid "ეროვნული ერთიანობის დღე"
+msgstr "День національної єдності"
+
+#. Day of Victory over Fascism.
+msgid "ფაშიზმზე გამარჯვების დღე"
+msgstr "День перемоги над фашизмом"
+
+#. Saint Andrew's Day.
+msgid "წმინდა ანდრია პირველწოდებულის დღე"
+msgstr "День святого Андрія Первозваного"
+
+#. Independence Day.
+msgid "დამოუკიდებლობის დღე"
+msgstr "День незалежності"
+
+#. Assumption of the Virgin Mary.
+msgid "მარიამობა"
+msgstr "Успіння Пресвятої Богородиці"
+
+#. Holiday of Svetitskhovloba, Robe of Jesus.
+msgid "მცხეთობის"
+msgstr "Свято Светіцховлоба, Ризи Господньої"
+
+#. Saint George's Day.
+msgid "გიორგობა"
+msgstr "День святого Георгія"

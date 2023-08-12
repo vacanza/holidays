@@ -12,22 +12,7 @@
 from datetime import timedelta as td
 from datetime import date
 
-from holidays.calendars.gregorian import (
-    JAN,
-    FEB,
-    MAR,
-    APR,
-    MAY,
-    JUN,
-    JUL,
-    AUG,
-    SEP,
-    OCT,
-    NOV,
-    DEC,
-    FRI,
-    SUN,
-)
+from holidays.calendars.gregorian import JAN, MAR, SEP, NOV, FRI, _get_nth_weekday_from
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -89,14 +74,14 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if 1892 <= year <= 1930:
             # Republic Constitution Day.
-            self._add_holiday("Constituição da Republica", FEB, 24)
+            self._add_holiday_feb_24("Constituição da Republica")
 
         # Good Friday.
         self._add_good_friday("Sexta-feira Santa")
 
         if year not in {1931, 1932}:
             # Tiradentes' Day.
-            self._add_holiday("Tiradentes", APR, 21)
+            self._add_holiday_apr_21("Tiradentes")
 
         if year >= 1925:
             # Labor Day.
@@ -104,26 +89,26 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year <= 1930:
             # Discovery of Brazil.
-            self._add_holiday("Descobrimento do Brasil", MAY, 3)
+            self._add_holiday_may_3("Descobrimento do Brasil")
 
             # Abolition of slavery in Brazil.
-            self._add_holiday("Abolição da escravidão no Brasil", MAY, 13)
+            self._add_holiday_may_13("Abolição da escravidão no Brasil")
 
             # Freedom and Independence of American Peoples.
-            self._add_holiday("Liberdade e Independência dos Povos Americanos", JUL, 14)
+            self._add_holiday_jul_14("Liberdade e Independência dos Povos Americanos")
 
         # Independence Day.
-        self._add_holiday("Independência do Brasil", SEP, 7)
+        self._add_holiday_sep_7("Independência do Brasil")
 
         if year <= 1930 or year >= 1980:
             # Our Lady of Aparecida.
-            self._add_holiday("Nossa Senhora Aparecida", OCT, 12)
+            self._add_holiday_oct_12("Nossa Senhora Aparecida")
 
         # All Souls' Day.
         self._add_all_souls_day("Finados")
 
         # Republic Proclamation Day.
-        self._add_holiday("Proclamação da República", NOV, 15)
+        self._add_holiday_nov_15("Proclamação da República")
 
         if year >= 1922:
             # Christmas Day.
@@ -142,7 +127,7 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_corpus_christi_day("Corpus Christi")
 
         # Public Servant's Day.
-        self._add_holiday("Dia do Servidor Público", OCT, 28)
+        self._add_holiday_oct_28("Dia do Servidor Público")
 
         # Christmas Eve.
         self._add_christmas_eve("Véspera de Natal")
@@ -158,11 +143,12 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _add_subdiv_ac_holidays(self):
         def get_movable_acre(*args) -> date:
             dt = date(self._year, *args)
-            if self._year >= 2009 and (
-                self._is_tuesday(dt) or self._is_wednesday(dt) or self._is_thursday(dt)
-            ):
-                dt = self._get_nth_weekday_from(1, FRI, dt)
-            return dt
+            return (
+                _get_nth_weekday_from(+1, FRI, dt)
+                if self._year >= 2009
+                and (self._is_tuesday(dt) or self._is_wednesday(dt) or self._is_thursday(dt))
+                else dt
+            )
 
         if self._year >= 2005:
             # Evangelical Day.
@@ -173,7 +159,7 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_holiday("Dia Internacional da Mulher", get_movable_acre(MAR, 8))
 
         # Founding of Acre.
-        self._add_holiday("Aniversário do Acre", JUN, 15)
+        self._add_holiday_jun_15("Aniversário do Acre")
 
         if self._year >= 2004:
             # Amazonia Day.
@@ -190,20 +176,20 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_saints_peter_and_paul_day("São Pedro")
 
         # Political Emancipation of Alagoas.
-        self._add_holiday("Emancipação Política de Alagoas", SEP, 16)
+        self._add_holiday_sep_16("Emancipação Política de Alagoas")
 
         # Black Awareness Day.
-        self._add_holiday("Consciência Negra", NOV, 20)
+        self._add_holiday_nov_20("Consciência Negra")
 
         if self._year >= 2013:
-            self._add_holiday("Dia do Evangélico", NOV, 30)
+            self._add_holiday_nov_30("Dia do Evangélico")
 
     def _add_subdiv_am_holidays(self):
         # Elevation of Amazonas to province.
-        self._add_holiday("Elevação do Amazonas à categoria de província", SEP, 5)
+        self._add_holiday_sep_5("Elevação do Amazonas à categoria de província")
 
         if self._year >= 2010:
-            self._add_holiday("Consciência Negra", NOV, 20)
+            self._add_holiday_nov_20("Consciência Negra")
 
     def _add_subdiv_ap_holidays(self):
         if self._year >= 2003:
@@ -215,20 +201,20 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_saint_james_day("São Tiago")
 
         # Creation of the Federal Territory.
-        self._add_holiday("Criação do Território Federal", SEP, 13)
+        self._add_holiday_sep_13("Criação do Território Federal")
 
         if self._year >= 2008:
-            self._add_holiday("Consciência Negra", NOV, 20)
+            self._add_holiday_nov_20("Consciência Negra")
 
     def _add_subdiv_ba_holidays(self):
         # Bahia Independence Day.
-        self._add_holiday("Independência da Bahia", JUL, 2)
+        self._add_holiday_jul_2("Independência da Bahia")
 
     def _add_subdiv_ce_holidays(self):
         self._add_saint_josephs_day("São José")
 
         # Abolition of slavery in Ceará.
-        self._add_holiday("Abolição da escravidão no Ceará", MAR, 25)
+        self._add_holiday_mar_25("Abolição da escravidão no Ceará")
 
         if self._year >= 2004:
             # Our Lady of Assumption.
@@ -236,9 +222,9 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_df_holidays(self):
         # Founding of Brasilia.
-        self._add_holiday("Fundação de Brasília", APR, 21)
+        self._add_holiday_apr_21("Fundação de Brasília")
 
-        self._add_holiday("Dia do Evangélico", NOV, 30)
+        self._add_holiday_nov_30("Dia do Evangélico")
 
     def _add_subdiv_es_holidays(self):
         if self._year >= 2020:
@@ -247,50 +233,47 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     def _add_subdiv_go_holidays(self):
         # Foundation of Goiás city.
-        self._add_holiday("Fundação da cidade de Goiás", JUL, 26)
+        self._add_holiday_jul_26("Fundação da cidade de Goiás")
 
         # Foundation of Goiânia.
-        self._add_holiday("Pedra fundamental de Goiânia", OCT, 24)
+        self._add_holiday_oct_24("Pedra fundamental de Goiânia")
 
     def _add_subdiv_ma_holidays(self):
         # Maranhão joining to independence of Brazil.
-        self._add_holiday("Adesão do Maranhão à independência do Brasil", JUL, 28)
+        self._add_holiday_jul_28("Adesão do Maranhão à independência do Brasil")
 
     def _add_subdiv_mg_holidays(self):
         # Tiradentes' Execution.
-        self._add_holiday("Execução de Tiradentes", APR, 21)
+        self._add_holiday_apr_21("Execução de Tiradentes")
 
     def _add_subdiv_ms_holidays(self):
         # State Creation Day.
-        self._add_holiday("Criação do Estado", OCT, 11)
+        self._add_holiday_oct_11("Criação do Estado")
 
     def _add_subdiv_mt_holidays(self):
         if self._year >= 2003:
-            self._add_holiday("Consciência Negra", NOV, 20)
+            self._add_holiday_nov_20("Consciência Negra")
 
     def _add_subdiv_pa_holidays(self):
         # Grão-Pará joining to independence of Brazil.
-        self._add_holiday("Adesão do Grão-Pará à independência do Brasil", AUG, 15)
+        self._add_holiday_aug_15("Adesão do Grão-Pará à independência do Brasil")
 
     def _add_subdiv_pb_holidays(self):
         # State Founding Day.
-        self._add_holiday("Fundação do Estado", AUG, 5)
+        self._add_holiday_aug_5("Fundação do Estado")
 
     def _add_subdiv_pe_holidays(self):
         if self._year >= 2008:
-            self._add_holiday(
-                # Pernambuco Revolution.
-                "Revolução Pernambucana",
-                self._get_nth_weekday_of_month(1, SUN, MAR),
-            )
+            # Pernambuco Revolution.
+            self._add_holiday_1st_sun_of_mar("Revolução Pernambucana")
 
     def _add_subdiv_pi_holidays(self):
         # Piauí Day.
-        self._add_holiday("Dia do Piauí", OCT, 19)
+        self._add_holiday_oct_19("Dia do Piauí")
 
     def _add_subdiv_pr_holidays(self):
         # Emancipation of Paraná.
-        self._add_holiday("Emancipação do Paraná", DEC, 19)
+        self._add_holiday_dec_19("Emancipação do Paraná")
 
     def _add_subdiv_rj_holidays(self):
         if self._year >= 2008:
@@ -298,62 +281,64 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._add_saint_georges_day("São Jorge")
 
         if self._year >= 2002:
-            self._add_holiday("Consciência Negra", NOV, 20)
+            self._add_holiday_nov_20("Consciência Negra")
 
     def _add_subdiv_rn_holidays(self):
         if self._year >= 2000:
             # Rio Grande do Norte Day.
-            self._add_holiday("Dia do Rio Grande do Norte", AUG, 7)
+            self._add_holiday_aug_7("Dia do Rio Grande do Norte")
 
         if self._year >= 2007:
             # Uruaçú and Cunhaú Martyrs Day.
-            self._add_holiday("Mártires de Cunhaú e Uruaçuu", OCT, 3)
+            self._add_holiday_oct_3("Mártires de Cunhaú e Uruaçuu")
 
     def _add_subdiv_ro_holidays(self):
-        self._add_holiday("Criação do Estado", JAN, 4)
+        self._add_holiday_jan_4("Criação do Estado")
 
         if self._year >= 2002:
-            self._add_holiday("Dia do Evangélico", JUN, 18)
+            self._add_holiday_jun_18("Dia do Evangélico")
 
     def _add_subdiv_rr_holidays(self):
-        self._add_holiday("Criação do Estado", OCT, 5)
+        self._add_holiday_oct_5("Criação do Estado")
 
     def _add_subdiv_rs_holidays(self):
         # Gaucho Day.
-        self._add_holiday("Dia do Gaúcho", SEP, 20)
+        self._add_holiday_sep_20("Dia do Gaúcho")
 
     def _add_subdiv_sc_holidays(self):
         if self._year >= 2004:
-            dt = date(self._year, AUG, 11)
-            if self._year >= 2005:
-                dt = self._get_nth_weekday_from(1, SUN, dt)
             # Santa Catarina State Day.
-            self._add_holiday("Dia do Estado de Santa Catarina", dt)
+            name = "Dia do Estado de Santa Catarina"
+            if self._year >= 2005:
+                self._add_holiday_1st_sun_from_aug_11(name)
+            else:
+                self._add_holiday_aug_11(name)
 
-        dt = date(self._year, NOV, 25)
-        if 1999 <= self._year != 2004:
-            dt = self._get_nth_weekday_from(1, SUN, dt)
         # Saint Catherine of Alexandria Day.
-        self._add_holiday("Dia de Santa Catarina de Alexandria", dt)
+        name = "Dia de Santa Catarina de Alexandria"
+        if 1999 <= self._year != 2004:
+            self._add_holiday_1st_sun_from_nov_25(name)
+        else:
+            self._add_holiday_nov_25(name)
 
     def _add_subdiv_se_holidays(self):
         # Sergipe Political Emancipation Day.
-        self._add_holiday("Emancipação política de Sergipe", JUL, 8)
+        self._add_holiday_jul_8("Emancipação política de Sergipe")
 
     def _add_subdiv_sp_holidays(self):
         if self._year >= 1997:
             # Constitutionalist Revolution.
-            self._add_holiday("Revolução Constitucionalista", JUL, 9)
+            self._add_holiday_jul_9("Revolução Constitucionalista")
 
     def _add_subdiv_to_holidays(self):
         if self._year >= 1998:
             # Autonomy Day.
-            self._add_holiday("Dia da Autonomia", MAR, 18)
+            self._add_holiday_mar_18("Dia da Autonomia")
 
         # Our Lady of Nativity.
         self._add_nativity_of_mary_day("Nossa Senhora da Natividade")
 
-        self._add_holiday("Criação do Estado", OCT, 5)
+        self._add_holiday_oct_5("Criação do Estado")
 
 
 class BR(Brazil):

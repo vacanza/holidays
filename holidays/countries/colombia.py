@@ -13,7 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JUL, AUG, NOV, MON
+from holidays.calendars.gregorian import MON, _get_nth_weekday_from
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -54,7 +54,7 @@ class Colombia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if self.observed and not self._is_monday(dt) and self._year >= 1984:
             self._add_holiday(
-                self.tr("%s (Observado)") % self[dt], self._get_nth_weekday_from(1, MON, dt)
+                self.tr("%s (Observado)") % self[dt], _get_nth_weekday_from(+1, MON, dt)
             )
             self.pop(dt)
 
@@ -97,10 +97,10 @@ class Colombia(HolidayBase, ChristianHolidays, InternationalHolidays):
             self._move_holiday(self._add_saints_peter_and_paul_day(tr("San Pedro y San Pablo")))
 
         # Independence Day.
-        self._add_holiday(tr("Día de la Independencia"), JUL, 20)
+        self._add_holiday_jul_20(tr("Día de la Independencia"))
 
         # Battle of Boyaca.
-        self._add_holiday(tr("Batalla de Boyacá"), AUG, 7)
+        self._add_holiday_aug_7(tr("Batalla de Boyacá"))
 
         if year >= 1951:
             # Assumption of Mary.
@@ -115,7 +115,7 @@ class Colombia(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         self._move_holiday(
             # Independence of Cartagena.
-            self._add_holiday(tr("Independencia de Cartagena"), NOV, 11)
+            self._add_holiday_nov_11(tr("Independencia de Cartagena"))
         )
 
         if year >= 1951:

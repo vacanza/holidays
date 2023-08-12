@@ -9,7 +9,7 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import MAR, APR, MAY, JUL, OCT
+from holidays.calendars.gregorian import MAY
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -42,11 +42,11 @@ class Lesotho(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_new_years_day("New Year's Day")
 
         # Moshoeshoe's Day.
-        self._add_holiday("Moshoeshoe's Day", MAR, 11)
+        self._add_holiday_mar_11("Moshoeshoe's Day")
 
         if year <= 2002:
             # Heroes Day.
-            self._add_holiday("Heroes Day", APR, 4)
+            self._add_holiday_apr_4("Heroes Day")
 
         if year >= 2003:
             # Africa/Heroes Day.
@@ -66,10 +66,14 @@ class Lesotho(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # https://en.wikipedia.org/wiki/Letsie_III
         # King's Birthday.
-        self._add_holiday("King's Birthday", *((JUL, 17) if year >= 1998 else (MAY, 2)))
+        name = "King's Birthday"
+        if year >= 1998:
+            self._add_holiday_jul_17(name)
+        else:
+            self._add_holiday_may_2(name)
 
         # Independence Day.
-        self._add_holiday("Independence Day", OCT, 4)
+        self._add_holiday_oct_4("Independence Day")
 
         # Christmas Day.
         self._add_christmas_day("Christmas Day")

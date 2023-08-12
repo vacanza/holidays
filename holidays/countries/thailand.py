@@ -248,7 +248,10 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
             (OCT, 14, thai_bridge_public_holiday),
             (DEC, 30, thai_bridge_public_holiday),
         ),
-        2023: (MAY, 5, thai_bridge_public_holiday),
+        2023: (
+            (MAY, 5, thai_bridge_public_holiday),
+            (JUL, 31, thai_bridge_public_holiday),
+        ),
     }
     supported_languages = ("en_US", "th")
 
@@ -326,7 +329,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # TODO: Add check for 1918 if we support earlier dates.
 
         # Chakri Memorial Day.
-        _add_observed(self._add_holiday(tr("วันจักรี"), APR, 6))
+        _add_observed(self._add_holiday_apr_6(tr("วันจักรี")))
 
         # วันสงกรานต์
         # Status: In-Use.
@@ -345,7 +348,11 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
             # Songkran Festival.
             songkran_festival = tr("วันสงกรานต์")
             if year <= 1953 or (1957 <= year != 2020):
-                dt = self._add_holiday(songkran_festival, APR, 12 if 1989 <= year <= 1997 else 13)
+                dt = (
+                    self._add_holiday_apr_12(songkran_festival)
+                    if 1989 <= year <= 1997
+                    else self._add_holiday_apr_13(songkran_festival)
+                )
                 if 1957 <= year <= 1988:
                     _add_observed(dt)
                 else:
@@ -386,7 +393,10 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # TODO: Add check for 1939 if we support earlier dates.
 
         # National Day.
-        _add_observed(self._add_holiday(tr("วันชาติ"), *((JUN, 24) if year <= 1959 else (DEC, 5))))
+        name = tr("วันชาติ")
+        _add_observed(
+            self._add_holiday_jun_24(name) if year <= 1959 else self._add_holiday_dec_5(name)
+        )
 
         # วันฉัตรมงคล
         # Starts in 1958 (B.E. 2501) for Rama IX's Coronation: May 5th.
@@ -397,9 +407,9 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         coronation_day = tr("วันฉัตรมงคล")
 
         if 1958 <= year <= 2016:
-            _add_observed(self._add_holiday(coronation_day, MAY, 5))
+            _add_observed(self._add_holiday_may_5(coronation_day))
         elif year >= 2020:
-            _add_observed(self._add_holiday(coronation_day, MAY, 4))
+            _add_observed(self._add_holiday_may_4(coronation_day))
 
         # วันเฉลิมพระชนมพรรษา พระราชินี
         # Status: In-Use.
@@ -407,11 +417,9 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
 
         if year >= 2019:
             _add_observed(
-                self._add_holiday(
-                    # HM Queen Suthida's Birthday.
-                    tr("วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสุทิดา พัชรสุธาพิมลลักษณ พระบรมราชินี"),
-                    JUN,
-                    3,
+                # HM Queen Suthida's Birthday.
+                self._add_holiday_jun_3(
+                    tr("วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสุทิดา พัชรสุธาพิมลลักษณ พระบรมราชินี")
                 )
             )
 
@@ -421,14 +429,12 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
 
         if year >= 2017:
             _add_observed(
-                self._add_holiday(
+                self._add_holiday_jul_28(
                     # HM King Maha Vajiralongkorn's Birthday.
                     tr(
                         "วันเฉลิมพระชนมพรรษาพระบาทสมเด็จพระปรเมนทรรามาธิบดี"
                         "ศรีสินทรมหาวชิราลงกรณ พระวชิรเกล้าเจ้าอยู่หัว"
-                    ),
-                    JUL,
-                    28,
+                    )
                 )
             )
 
@@ -447,7 +453,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
                 # HM Queen Sirikit's Birthday.
                 else tr("วันเฉลิมพระชนมพรรษาสมเด็จพระนางเจ้าสิริกิติ์ พระบรมราชินีนาถ")
             )
-            _add_observed(self._add_holiday(name, AUG, 12))
+            _add_observed(self._add_holiday_aug_12(name))
 
         # วันแม่แห่งชาติ
         # Status: In-Use.
@@ -460,9 +466,9 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         thai_mothers_day = tr("วันแม่แห่งชาติ")
 
         if 1950 <= year <= 1957:
-            _add_observed(self._add_holiday(thai_mothers_day, APR, 15))
+            _add_observed(self._add_holiday_apr_15(thai_mothers_day))
         elif year >= 1976:
-            _add_observed(self._add_holiday(thai_mothers_day, AUG, 12))
+            _add_observed(self._add_holiday_aug_12(thai_mothers_day))
 
         # วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทร มหาภูมิพลอดุลยเดช บรมนาถบพิตร
         # Status: In-Use.
@@ -480,7 +486,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
                 # Anniversary for the Death of King Bhumibol Adulyadej.
                 else tr("วันคล้ายวันสวรรคตพระบาทสมเด็จพระปรมินทรมหาภูมิพลอดุลยเดช บรมนาถบพิตร")
             )
-            _add_observed(self._add_holiday(name, OCT, 13))
+            _add_observed(self._add_holiday_oct_13(name))
 
         # วันปิยมหาราช
         # Status: In-Use.
@@ -488,7 +494,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # TODO: Add check for 1911 if we support earlier dates.
 
         # HM King Chulalongkorn Memorial Day.
-        _add_observed(self._add_holiday(tr("วันปิยมหาราช"), OCT, 23))
+        _add_observed(self._add_holiday_oct_23(tr("วันปิยมหาราช")))
 
         # วันเฉลิมพระชนมพรรษา รัชกาลที่ 9 (1960-2016)
         # วันคล้ายวันเฉลิมพระชนมพรรษา รัชกาลที่ 9 (2017-Present)
@@ -518,7 +524,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
                     )
                 )
             )
-            _add_observed(self._add_holiday(name, DEC, 5))
+            _add_observed(self._add_holiday_dec_5(name))
 
         # วันพ่อแห่งชาติ
         # Status: In-Use.
@@ -528,7 +534,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
 
         if year >= 1980:
             # National Father's Day.
-            _add_observed(self._add_holiday(tr("วันพ่อแห่งชาติ"), DEC, 5))
+            _add_observed(self._add_holiday_dec_5(tr("วันพ่อแห่งชาติ")))
 
         # วันรัฐธรรมนูญ
         # Status: In-Use.
@@ -537,7 +543,7 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         # TODO: Add check for 1932 if we support earlier dates.
 
         # Constitution Day.
-        _add_observed(self._add_holiday(tr("วันรัฐธรรมนูญ"), DEC, 10))
+        _add_observed(self._add_holiday_dec_10(tr("วันรัฐธรรมนูญ")))
 
         # วันสิ้นปี
         # Status: In-Use.
@@ -650,10 +656,10 @@ class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):
         }
         # For years with exact date data.
         if year in raeknakhwan_dates:
-            _add_observed(self._add_holiday(raeknakhwan, *raeknakhwan_dates[year]))
+            _add_observed(self._add_holiday(raeknakhwan, raeknakhwan_dates[year]))
         # Approx. otherwise for 1957-2013.
         elif 1957 <= year <= 1996:
-            _add_observed(self._add_holiday(raeknakhwan, MAY, 13))
+            _add_observed(self._add_holiday_may_13(raeknakhwan))
 
 
 class TH(Thailand):

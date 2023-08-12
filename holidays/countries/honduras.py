@@ -12,7 +12,6 @@
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import APR, SEP, OCT, WED
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -46,32 +45,31 @@ class Honduras(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holy_saturday(tr("Sábado de Gloria"))
 
         # Panamerican Day.
-        self._add_holiday(tr("Día de las Américas"), APR, 14)
+        self._add_holiday_apr_14(tr("Día de las Américas"))
 
         # Labor Day.
         self._add_labor_day(tr("Día del Trabajo"))
 
         # Independence Day.
-        self._add_holiday(tr("Día de la Independencia"), SEP, 15)
+        self._add_holiday_sep_15(tr("Día de la Independencia"))
 
         # https://www.tsc.gob.hn/web/leyes/Decreto_78-2015_Traslado_de_Feriados_Octubre.pdf
         if year <= 2014:
             # Morazan's Day.
-            self._add_holiday(tr("Día de Morazán"), OCT, 3)
+            self._add_holiday_oct_3(tr("Día de Morazán"))
 
             # Columbus Day.
             self._add_columbus_day(tr("Día de la Raza"))
 
             # Army Day.
-            self._add_holiday(tr("Día de las Fuerzas Armadas"), OCT, 21)
+            self._add_holiday_oct_21(tr("Día de las Fuerzas Armadas"))
         else:
             # Morazan Weekend.
-            holiday_name = tr("Semana Morazánica")
+            name = tr("Semana Morazánica")
             # First Wednesday of October from 12 noon to Saturday 12 noon.
-            first_wednesday = self._get_nth_weekday_of_month(1, WED, OCT)
-            self._add_holiday(holiday_name, first_wednesday)
-            self._add_holiday(holiday_name, first_wednesday + td(days=+1))
-            self._add_holiday(holiday_name, first_wednesday + td(days=+2))
+            first_wed_of_oct = self._add_holiday_1st_wed_of_oct(name)
+            self._add_holiday(name, first_wed_of_oct + td(days=+1))
+            self._add_holiday(name, first_wed_of_oct + td(days=+2))
 
         # Christmas.
         self._add_christmas_day(tr("Navidad"))

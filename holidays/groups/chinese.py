@@ -48,7 +48,7 @@ class ChineseCalendarHolidays:
         return self._chinese_calendar.mid_autumn_date(self._year)[0]
 
     def _add_chinese_calendar_holiday(
-        self, name: str, hol_date: Tuple[date, bool], days_delta: int = 0
+        self, name: str, dt_estimated: Tuple[date, bool], days_delta: int = 0
     ) -> Optional[date]:
         """
         Add Chinese calendar holiday.
@@ -57,7 +57,8 @@ class ChineseCalendarHolidays:
         is an estimation.
         """
         estimated_label = getattr(self, "estimated_label", "%s* (*estimated)")
-        dt, is_estimated = hol_date
+        dt, is_estimated = dt_estimated
+
         if days_delta != 0:
             dt += td(days=days_delta)
 

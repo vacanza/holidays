@@ -12,7 +12,7 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars.gregorian import JUN, JUL, AUG, MON, FRI
+from holidays.calendars.gregorian import JUL
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -38,13 +38,11 @@ class IsleOfMan(UnitedKingdom):
 
         # Late Summer bank holiday (last Monday in August)
         if year >= 1971:
-            self._add_holiday(
-                "Late Summer Bank Holiday", self._get_nth_weekday_of_month(-1, MON, AUG)
-            )
+            self._add_holiday_last_mon_of_aug("Late Summer Bank Holiday")
 
         # Isle of Man exclusive holidays
         # TT bank holiday (first Friday in June)
-        self._add_holiday("TT Bank Holiday", self._get_nth_weekday_of_month(1, FRI, JUN))
+        self._add_holiday_1st_fri_of_jun("TT Bank Holiday")
 
         # Tynwald Day
         # Move to the next Monday if falls on a weekend.

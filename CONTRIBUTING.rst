@@ -2,10 +2,10 @@
 Contributing
 ============
 
-.. _prs: https://github.com/dr-prodigy/python-holidays/pulls
-.. _`beta branch`: https://github.com/dr-prodigy/python-holidays/tree/beta
-.. |contributors| image:: https://img.shields.io/github/contributors/dr-prodigy/python-holidays
-    :target: https://www.github.com/dr-prodigy/python-holidays
+.. _prs: https://github.com/vacanza/python-holidays/pulls
+.. _`beta branch`: https://github.com/vacanza/python-holidays/tree/beta
+.. |contributors| image:: https://img.shields.io/github/contributors/vacanza/python-holidays
+    :target: https://github.com/vacanza/python-holidays/graphs/contributors
     :alt: contributors
 
 |contributors|

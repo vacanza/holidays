@@ -11,7 +11,6 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, MAR, JUL, AUG, NOV
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import IslamicHolidays, InternationalHolidays
 
@@ -44,42 +43,46 @@ class Morocco(HolidayBase, InternationalHolidays, IslamicHolidays):
 
         if year >= 1945:
             # Proclamation of Independence Day.
-            self._add_holiday(tr("ذكرى تقديم وثيقة الاستقلال"), JAN, 11)
+            self._add_holiday_jan_11(tr("ذكرى تقديم وثيقة الاستقلال"))
 
-        # In May 2023, Morocco recognised Berber New Year as official holiday
+        # In May 2023, Morocco recognized Berber New Year as official holiday.
         # http://www.diplomatie.ma/en/statement-royal-office-12
         if year >= 2024:
             # Amazigh New Year.
-            self._add_holiday(tr("رأس السنة الأمازيغية"), JAN, 13)
+            self._add_holiday_jan_13(tr("رأس السنة الأمازيغية"))
 
         # Labor Day.
         self._add_labor_day(tr("عيد العمال"))
 
+        # Throne day.
+        name = tr("عيد العرش")
         if year >= 2001:
-            dt = (JUL, 30)
+            self._add_holiday_jul_30(name)
         elif year >= 1963:
-            dt = (MAR, 3)
+            self._add_holiday_mar_3(name)
         else:
-            dt = (NOV, 18)
-        # Throne Day.
-        self._add_holiday(tr("عيد العرش"), *dt)
+            self._add_holiday_nov_18(name)
 
         # Oued Ed-Dahab Day.
-        self._add_holiday(tr("ذكرى استرجاع إقليم وادي الذهب"), AUG, 14)
+        self._add_holiday_aug_14(tr("ذكرى استرجاع إقليم وادي الذهب"))
 
         # Revolution Day.
-        self._add_holiday(tr("ذكرى ثورة الملك و الشعب"), AUG, 20)
+        self._add_holiday_aug_20(tr("ذكرى ثورة الملك و الشعب"))
 
         # Youth Day.
-        self._add_holiday(tr("عيد الشباب"), *((AUG, 21) if year >= 2001 else (JUL, 9)))
+        name = tr("عيد الشباب")
+        if year >= 2001:
+            self._add_holiday_aug_21(name)
+        else:
+            self._add_holiday_jul_9(name)
 
         if year >= 1976:
             # Green March.
-            self._add_holiday(tr("ذكرى المسيرة الخضراء"), NOV, 6)
+            self._add_holiday_nov_6(tr("ذكرى المسيرة الخضراء"))
 
         if year >= 1957:
             # Independence Day.
-            self._add_holiday(tr("عيد الإستقلال"), NOV, 18)
+            self._add_holiday_nov_18(tr("عيد الإستقلال"))
 
         # Eid al-Fitr.
         name = tr("عيد الفطر")

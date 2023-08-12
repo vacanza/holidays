@@ -267,11 +267,11 @@ class TestMalaysia(TestCase):
         for col, state in enumerate(columns):
             my_holidays = Malaysia(years=2021, subdiv=state)
             # check if all holidays are in here
-            for hol_date, is_holiday in rows:
+            for dt, is_holiday in rows:
                 if is_holiday[col]:
-                    self.assertIn(hol_date, my_holidays)
+                    self.assertIn(dt, my_holidays)
                 else:
-                    self.assertNotIn(hol_date, my_holidays)
+                    self.assertNotIn(dt, my_holidays)
 
     def test_malaysia(self):
         # Federal Public Holidays

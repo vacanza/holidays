@@ -9,7 +9,6 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
-from holidays.calendars.gregorian import MAR, SEP, OCT, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
 
@@ -36,7 +35,7 @@ class Uzbekistan(HolidayBase, InternationalHolidays, IslamicHolidays):
         self._add_womens_day("Women's Day")
 
         # Nauryz Holiday
-        self._add_holiday("Nauryz", MAR, 21)
+        self._add_holiday_mar_21("Nauryz")
 
         # Ramadan Khait
         # Date of observance is announced yearly, This is an estimate.
@@ -50,13 +49,13 @@ class Uzbekistan(HolidayBase, InternationalHolidays, IslamicHolidays):
         self._add_eid_al_adha_day("Kurban Khait")
 
         # Independence Day
-        self._add_holiday("Independence Day", SEP, 1)
+        self._add_holiday_sep_1("Independence Day")
 
         # Teacher's Day
-        self._add_holiday("Teacher's Day", OCT, 1)
+        self._add_holiday_oct_1("Teacher's Day")
 
         # Constitution Day
-        self._add_holiday("Constitution Day", DEC, 8)
+        self._add_holiday_dec_8("Constitution Day")
 
 
 class UZ(Uzbekistan):

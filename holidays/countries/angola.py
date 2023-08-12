@@ -13,7 +13,7 @@ from datetime import date
 from datetime import timedelta as td
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import JAN, FEB, MAR, APR, AUG, SEP, NOV, DEC
+from holidays.calendars.gregorian import AUG, SEP, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -84,7 +84,7 @@ class Angola(HolidayBase, ChristianHolidays, InternationalHolidays):
         if 1997 <= year <= 2011:
             self._add_observed(
                 # Martyrs of Colonial Repression Day.
-                self._add_holiday(tr("Dia dos Mártires da Repressão Colonial"), JAN, 4)
+                self._add_holiday_jan_4(tr("Dia dos Mártires da Repressão Colonial"))
             )
 
         name = (
@@ -94,7 +94,7 @@ class Angola(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Beginning of the Armed Struggle Day.
             else tr("Dia do Início da Luta Armada")
         )
-        self._add_observed(self._add_holiday(name, FEB, 4))
+        self._add_observed(self._add_holiday_feb_4(name))
 
         # Law #16/96.
         if year >= 1997:
@@ -108,14 +108,14 @@ class Angola(HolidayBase, ChristianHolidays, InternationalHolidays):
         if year >= 2019:
             self._add_observed(
                 # Southern Africa Liberation Day.
-                self._add_holiday(tr("Dia da Libertação da África Austral"), MAR, 23)
+                self._add_holiday_mar_23(tr("Dia da Libertação da África Austral"))
             )
 
         # Law #7/03.
         if year >= 2003:
             self._add_observed(
                 # Peace and National Reconciliation Day.
-                self._add_holiday(tr("Dia da Paz e Reconciliação Nacional"), APR, 4)
+                self._add_holiday_apr_4(tr("Dia da Paz e Reconciliação Nacional"))
             )
 
         # Law #16/96.
@@ -140,7 +140,7 @@ class Angola(HolidayBase, ChristianHolidays, InternationalHolidays):
         if year >= 1980:
             self._add_observed(
                 # National Heroes' Day.
-                self._add_holiday(tr("Dia do Fundador da Nação e do Herói Nacional"), SEP, 17)
+                self._add_holiday_sep_17(tr("Dia do Fundador da Nação e do Herói Nacional"))
             )
 
         # All Souls' Day.
@@ -155,12 +155,12 @@ class Angola(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Independence Day.
             else tr("Dia da Independência")
         )
-        self._add_observed(self._add_holiday(name, NOV, 11))
+        self._add_observed(self._add_holiday_nov_11(name))
 
         # Decree # 7/92.
         if year <= 1991:
             # Date of Founding of MPLA - Labor Party.
-            self._add_holiday(tr("Data da Fundacao do MPLA - Partido do Trabalho"), DEC, 10)
+            self._add_holiday_dec_10(tr("Data da Fundacao do MPLA - Partido do Trabalho"))
 
         name = (
             # Christmas and Family Day.

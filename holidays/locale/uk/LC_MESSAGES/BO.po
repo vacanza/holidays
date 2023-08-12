@@ -1,0 +1,106 @@
+# Bolivia holidays uk localization.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.30\n"
+"POT-Creation-Date: 2023-07-22 18:47+0300\n"
+"PO-Revision-Date: 2023-07-22 18:59+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. %s (Observed).
+#, c-format
+msgid "%s (Observado)"
+msgstr "%s (вихідний)"
+
+#. New Year's Day.
+msgid "Año Nuevo"
+msgstr "Новий рік"
+
+#. Plurinational State Foundation Day.
+msgid "Día de la Creación del Estado Plurinacional de Bolivia"
+msgstr "День створення Багатонаціональної Держави Болівія"
+
+#. Carnival.
+msgid "Carnaval"
+msgstr "Карнавал"
+
+#. Good Friday.
+msgid "Viernes Santo"
+msgstr "Страсна пʼятниця"
+
+#. Labor Day.
+msgid "Día del Trabajo"
+msgstr "День праці"
+
+#. Corpus Christi.
+msgid "Corpus Christi"
+msgstr "Свято Тіла і Крові Христових"
+
+#. Aymara New Year.
+msgid "Año Nuevo Aymara Amazónico"
+msgstr "Новий рік Аймара"
+
+#. Independence Day.
+msgid "Día de la Independencia de Bolivia"
+msgstr "День незалежності Болівії"
+
+#. National Dignity Day.
+msgid "Día de la Dignidad Nacional"
+msgstr "День національної гідності"
+
+#. All Saints' Day.
+msgid "Día de Todos los Santos"
+msgstr "День усіх святих"
+
+#. All Souls' Day.
+msgid "Día de Todos los Difuntos"
+msgstr "День усіх померлих"
+
+#. Christmas Day.
+msgid "Navidad"
+msgstr "Різдво Христове"
+
+#. Beni Day.
+msgid "Día del departamento de Beni"
+msgstr "День департаменту Бені"
+
+#. Cochabamba Day.
+msgid "Día del departamento de Cochabamba"
+msgstr "День департаменту Кочабамба"
+
+#. Chuquisaca Day.
+msgid "Día del departamento de Chuquisaca"
+msgstr "День департаменту Чукісака"
+
+#. La Paz Day.
+msgid "Día del departamento de La Paz"
+msgstr "День департаменту Ла-Пас"
+
+#. Pando Day.
+msgid "Día del departamento de Pando"
+msgstr "День департаменту Пандо"
+
+#. Potosí Day.
+msgid "Día del departamento de Potosí"
+msgstr "День департаменту Потосі"
+
+#. Carnival in Oruro.
+msgid "Carnaval de Oruro"
+msgstr "Карнавал Оруро"
+
+#. Santa Cruz Day.
+msgid "Día del departamento de Santa Cruz"
+msgstr "День департаменту Санта-Круз"
+
+#. La Tablada.
+msgid "La Tablada"
+msgstr "Ла Таблада"

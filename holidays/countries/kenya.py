@@ -12,7 +12,7 @@
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars.gregorian import FEB, APR, JUN, AUG, SEP, OCT, DEC
+from holidays.calendars.gregorian import FEB, APR, AUG, SEP
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -66,21 +66,21 @@ class Kenya(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         if year >= 2010:
             # Mandaraka Day
-            _add_observed(self._add_holiday("Madaraka Day", JUN, 1))
+            _add_observed(self._add_holiday_jun_1("Madaraka Day"))
 
         if 2002 <= year <= 2009 or year >= 2018:
             _add_observed(
                 # Utamaduni/Moi Day
-                self._add_holiday("Utamaduni Day" if year >= 2021 else "Moi Day", OCT, 10)
+                self._add_holiday_oct_10("Utamaduni Day" if year >= 2021 else "Moi Day")
             )
 
         _add_observed(
             # Mashuja/Kenyatta Day
-            self._add_holiday("Mashujaa Day" if year >= 2010 else "Kenyatta Day", OCT, 20)
+            self._add_holiday_oct_20("Mashujaa Day" if year >= 2010 else "Kenyatta Day")
         )
 
         # Jamhuri Day
-        _add_observed(self._add_holiday("Jamhuri Day", DEC, 12))
+        _add_observed(self._add_holiday_dec_12("Jamhuri Day"))
 
         # Christmas Day
         _add_observed(self._add_christmas_day("Christmas Day"), days=+2)

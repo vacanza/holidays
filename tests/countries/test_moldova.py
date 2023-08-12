@@ -85,21 +85,12 @@ class TestMoldova(TestCase):
     def test_l10n_default(self):
         self.assertLocalizedHolidays(
             ("2022-01-01", "Anul Nou"),
-            (
-                "2022-01-07",
-                "Naşterea lui Iisus Hristos (Crăciunul pe stil vechi)",
-            ),
-            (
-                "2022-01-08",
-                "Naşterea lui Iisus Hristos (Crăciunul pe stil vechi)",
-            ),
+            ("2022-01-07", "Naşterea lui Iisus Hristos (Crăciunul pe stil vechi)"),
+            ("2022-01-08", "Naşterea lui Iisus Hristos (Crăciunul pe stil vechi)"),
             ("2022-03-08", "Ziua internatională a femeii"),
             ("2022-04-24", "Paştele"),
             ("2022-04-25", "Paştele"),
-            (
-                "2022-05-01",
-                "Ziua internaţională a solidarităţii oamenilor muncii",
-            ),
+            ("2022-05-01", "Ziua internaţională a solidarităţii oamenilor muncii"),
             ("2022-05-02", "Paştele blajinilor"),
             (
                 "2022-05-09",
@@ -109,10 +100,7 @@ class TestMoldova(TestCase):
             ("2022-06-01", "Ziua Ocrotirii Copilului"),
             ("2022-08-27", "Ziua independenţei Republicii Moldova"),
             ("2022-08-31", "Limba noastră"),
-            (
-                "2022-12-25",
-                "Naşterea lui Iisus Hristos (Crăciunul pe stil nou)",
-            ),
+            ("2022-12-25", "Naşterea lui Iisus Hristos (Crăciunul pe stil nou)"),
         )
 
     def test_l10n_en_us(self):

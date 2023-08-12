@@ -375,11 +375,10 @@ class TestUnitedKingdom(TestCase):
         self.assertNoHolidayName(name, self.subdiv_holidays["SCT"], range(1950, 1974))
 
     def test_all_holidays_present(self):
-        uk_2015 = sum(
-            UnitedKingdom(years=2015, subdiv=subdiv, observed=False)
-            for subdiv in UnitedKingdom.subdivisions
-        )
-        y_2015 = set(uk_2015.values())
+        y_2015 = set()
+        for subdiv in UnitedKingdom.subdivisions:
+            y_2015.update(UnitedKingdom(observed=False, years=2015, subdiv=subdiv).values())
+
         all_holidays = {
             "New Year's Day",
             "New Year Holiday",

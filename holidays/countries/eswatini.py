@@ -13,7 +13,7 @@ import warnings
 from datetime import date
 from datetime import timedelta as td
 
-from holidays.calendars.gregorian import JAN, APR, JUL, SEP, DEC
+from holidays.calendars.gregorian import JAN, DEC
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -58,19 +58,19 @@ class Eswatini(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_ascension_thursday("Ascension Day")
 
         if year >= 1987:
-            apr_19 = self._add_holiday("King's Birthday", APR, 19)
+            apr_19 = self._add_holiday_apr_19("King's Birthday")
             self._add_observed(apr_19, days=+2 if apr_19 == self._easter_sunday else +1)
 
         if year >= 1969:
-            apr_25 = self._add_holiday("National Flag Day", APR, 25)
+            apr_25 = self._add_holiday_apr_25("National Flag Day")
             self._add_observed(apr_25, days=+2 if apr_25 == self._easter_sunday else +1)
 
         self._add_observed(self._add_labor_day("Worker's Day"))
 
         if year >= 1983:
-            self._add_observed(self._add_holiday("Birthday of Late King Sobhuza", JUL, 22))
+            self._add_observed(self._add_holiday_jul_22("Birthday of Late King Sobhuza"))
 
-        self._add_observed(self._add_holiday("Independence Day", SEP, 6))
+        self._add_observed(self._add_holiday_sep_6("Independence Day"))
 
         self._add_observed(self._add_christmas_day("Christmas Day"), days=+2)
 

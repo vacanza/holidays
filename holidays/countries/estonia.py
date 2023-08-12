@@ -11,7 +11,6 @@
 
 from gettext import gettext as tr
 
-from holidays.calendars.gregorian import FEB, MAY, JUN, AUG
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -33,7 +32,7 @@ class Estonia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_new_years_day(tr("uusaasta"))
 
         # Independence Day.
-        self._add_holiday(tr("iseseisvuspäev"), FEB, 24)
+        self._add_holiday_feb_24(tr("iseseisvuspäev"))
 
         # Good Friday.
         self._add_good_friday(tr("suur reede"))
@@ -42,20 +41,20 @@ class Estonia(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_sunday(tr("ülestõusmispühade 1. püha"))
 
         # Spring Day.
-        self._add_holiday(tr("kevadpüha"), MAY, 1)
+        self._add_holiday_may_1(tr("kevadpüha"))
 
         # Whit Sunday.
         self._add_whit_sunday(tr("nelipühade 1. püha"))
 
         # Victory Day.
-        self._add_holiday(tr("võidupüha"), JUN, 23)
+        self._add_holiday_jun_23(tr("võidupüha"))
 
         # Midsummer Day.
         self._add_saint_johns_day(tr("jaanipäev"))
 
         if year >= 1998:
             # Independence Restoration Day.
-            self._add_holiday(tr("taasiseseisvumispäev"), AUG, 20)
+            self._add_holiday_aug_20(tr("taasiseseisvumispäev"))
 
         if year >= 2005:
             # Christmas Eve.

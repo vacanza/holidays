@@ -561,12 +561,15 @@ class TestNZ(TestCase):
 
     def test_all_holidays_present(self):
         all_subdivisions = set(NewZealand.subdivisions).union({"STC"})
-        nz_1969 = sum(NewZealand(years=1969, subdiv=p) for p in all_subdivisions)
-        holidays_in_1969 = sum((nz_1969.get_list(key) for key in nz_1969), [])
-        nz_2015 = sum(NewZealand(years=2015, subdiv=p) for p in all_subdivisions)
-        holidays_in_2015 = sum((nz_2015.get_list(key) for key in nz_2015), [])
-        nz_1974 = sum(NewZealand(years=1974, subdiv=p) for p in all_subdivisions)
-        holidays_in_1974 = sum((nz_1974.get_list(key) for key in nz_1974), [])
+        holidays_1969 = set()
+        for p in all_subdivisions:
+            holidays_1969.update(NewZealand(years=1969, subdiv=p, observed=False).values())
+        holidays_2015 = set()
+        for p in all_subdivisions:
+            holidays_2015.update(NewZealand(years=2015, subdiv=p, observed=False).values())
+        holidays_1974 = set()
+        for p in all_subdivisions:
+            holidays_1974.update(NewZealand(years=1974, subdiv=p, observed=False).values())
         all_holidays = {
             "New Year's Day",
             "Day after New Year's Day",
@@ -595,14 +598,11 @@ class TestNZ(TestCase):
             "Christmas Day",
             "Boxing Day",
         }
-        for holiday in all_holidays:
-            self.assertIn(holiday, holidays_in_1969, holiday)
-            self.assertIn(holiday, holidays_in_2015, holiday)
+        self.assertEqual(all_holidays, holidays_1969)
+        self.assertEqual(all_holidays, holidays_2015)
         all_holidays.remove("Waitangi Day")
         all_holidays.add("New Zealand Day")
-        for holiday in all_holidays:
-            self.assertIn(holiday, holidays_in_1974, holiday)
-        self.assertNotIn("Waitangi Day", holidays_in_1974)
+        self.assertEqual(all_holidays, holidays_1974)
 
     def test_deprecated(self):
         for subdiv1, subdiv2 in (
