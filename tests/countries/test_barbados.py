@@ -28,7 +28,7 @@ class TestBarbados(TestCase):
             ("2023-04-07", "Good Friday"),
             ("2023-04-10", "Easter Monday"),
             ("2023-04-28", "National Heroes Day"),
-            ("2023-05-01", "Labor Day / May Day"),
+            ("2023-05-01", "May Day"),
             ("2023-05-29", "Whit Monday"),
             ("2023-07-31", "50th Anniversary of CARICOM Holiday"),
             ("2023-08-01", "Emancipation Day"),

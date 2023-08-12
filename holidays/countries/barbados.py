@@ -11,6 +11,12 @@ class Barbados(HolidayBase, ChristianHolidays, InternationalHolidays):
 
     country = "BB"
 
+    special_holidays = {
+        # One off 50th Anniversary of CARICOM Holiday.
+        # See https://tinyurl.com/brbhol
+        2023: (JUL, 31, "50th Anniversary of CARICOM Holiday")
+    }
+
     def __init__(self, *args, **kwargs) -> None:
         ChristianHolidays.__init__(self)
         InternationalHolidays.__init__(self)
@@ -39,11 +45,6 @@ class Barbados(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Whit Monday
         self._add_whit_monday("Whit Monday")
-
-        # One off 50th Anniversary of CARICOM Holiday.
-        # See https://tinyurl.com/brbhol
-        if year == 2023:
-            self._add_holiday("50th Anniversary of CARICOM Holiday", JUL, 31)
 
         # Emancipation Day
         self._add_holiday("Emancipation Day", AUG, 1)
