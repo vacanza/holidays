@@ -75,13 +75,13 @@ class TestSaudiArabia(TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_national_day_overlaps_hijri_holiday(self):
-        for dt in (
+        self.assertNoHolidayName(
+            "اليوم الوطني",
             "2009-09-23",
             "2015-09-23",
             "2048-09-23",
             "2074-09-23",
-        ):
-            self.assertNotIn("اليوم الوطني", self.holidays[dt])
+        )
 
     def test_founding_day(self):
         self.assertHoliday(f"{year}-02-22" for year in range(2022, 2050))
@@ -98,7 +98,7 @@ class TestSaudiArabia(TestCase):
         self.assertNoNonObservedHoliday(dt)
 
     def test_founding_day_overlaps_hijri_holiday(self):
-        self.assertNotIn("اليوم الوطني", self.holidays["2061-02-22"])
+        self.assertNoHolidayName("اليوم الوطني", "2061-02-22")
 
     def test_hijri_based(self):
         self.assertHoliday(
