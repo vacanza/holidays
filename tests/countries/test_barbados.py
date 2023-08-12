@@ -21,6 +21,9 @@ class TestBarbados(TestCase):
     def test_country_aliases(self):
         self.assertCountryAliases(Barbados, BB, BRB)
 
+    def test_special_holidays(self):
+        self.assertHoliday("2023-07-31")
+
     def test_2023(self):
         self.assertHolidays(
             ("2023-01-01", "New Year's Day"),
