@@ -19,7 +19,6 @@ class Barbados(HolidayBase, ChristianHolidays, InternationalHolidays):
     def _populate(self, year):
         super()._populate(year)
 
-        # Overview: https://en.wikipedia.org/wiki/Public_holidays_in_Barbados
         # New Year's Day
         self._add_new_years_day("New Year's Day")
 
