@@ -58,7 +58,7 @@ class Barbados(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_christmas_day("Christmas Day")
 
         # Boxing Day
-        self._add_holiday("Boxing Day", DEC, 26)
+        self._add_christmas_day_two("Boxing Day")
 
 
 class BB(Barbados):
