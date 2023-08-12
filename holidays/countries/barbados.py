@@ -1,4 +1,4 @@
-from holidays.calendars.gregorian import JAN, APR, JUL, AUG, NOV, DEC
+from holidays.calendars.gregorian import JAN, APR, JUL, AUG, NOV, MON
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
