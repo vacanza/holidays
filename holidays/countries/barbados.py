@@ -34,8 +34,8 @@ class Barbados(HolidayBase, ChristianHolidays, InternationalHolidays):
         # National Heroes Day
         self._add_holiday("National Heroes Day", APR, 28)
 
-        # Labor Day / May Day
-        self._add_labor_day("Labor Day / May Day")
+        # May Day
+        self._add_labor_day("May Day")
 
         # Whit Monday
         self._add_whit_monday("Whit Monday")
