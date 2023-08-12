@@ -1,4 +1,4 @@
-from holidays.calendars.gregorian import JAN, APR, JUL, AUG, NOV, MON, _get_nth_weekday_of_month
+from holidays.calendars.gregorian import JAN, APR, JUL, AUG, NOV
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -49,8 +49,8 @@ class Barbados(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Emancipation Day
         self._add_holiday("Emancipation Day", AUG, 1)
 
-        # Kadootment Day
-        self._add_holiday("Kadooment Day", _get_nth_weekday_of_month(1, MON, AUG, self._year))
+        # Kadooment Day
+        self._add_holiday_1st_mon_of_aug("Kadooment Day")
 
         # Independence Day
         self._add_holiday("Independence Day", NOV, 30)
