@@ -49,7 +49,7 @@ class Barbados(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_holiday("Emancipation Day", AUG, 1)
 
         # Kadootment Day
-        self._add_holiday("Kadooment Day", AUG, 7)
+        self._add_holiday("Kadooment Day", self._get_nth_weekday_of_month(1, MON, AUG))
 
         # Independence Day
         self._add_holiday("Independence Day", NOV, 30)
