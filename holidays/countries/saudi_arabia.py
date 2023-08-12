@@ -60,7 +60,7 @@ class SaudiArabia(HolidayBase, IslamicHolidays):
             for i in range(4):
                 if not self._is_weekend(dt + td(days=-i)):
                     continue
-                dt_observed = dt + td(days=-i + 1)
+                dt_observed = dt + td(days=+1)
                 while dt_observed.year == self._year and (
                     self._is_weekend(dt_observed) or dt_observed in self
                 ):
