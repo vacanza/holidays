@@ -80,6 +80,10 @@ class Slovenia(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Independence and Unity Day.
         self._add_holiday_dec_26(tr("dan samostojnosti in enotnosti"))
 
+        if year == 2023:
+            # Solidarity Day. Only in 2023.
+            self._add_holiday_aug_14(tr("dan solidarnosti"))
+
 
 class SI(Slovenia):
     pass
