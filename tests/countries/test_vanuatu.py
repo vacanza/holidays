@@ -24,7 +24,7 @@ class TestVanuatu(TestCase):
     def test_no_holidays(self):
         self.assertNoHolidays(Vanuatu(years=1980))
 
-    def test_fater_lini_day(self):
+    def test_father_lini_day(self):
         name = "Father Lini Day"
         self.assertHolidayName(name, (f"{year}-02-21" for year in range(1991, 2050)))
         self.assertNoHolidayName(name, Vanuatu(years=range(1981, 1991)))
