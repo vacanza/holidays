@@ -60,6 +60,6 @@ msgstr "Різдво Христове"
 msgid "dan samostojnosti in enotnosti"
 msgstr "День незалежності та єднання"
 
-#. Solidarity Day. Only in 2023.
+#. Solidarity Day.
 msgid "dan solidarnosti"
 msgstr "День солідарності"
