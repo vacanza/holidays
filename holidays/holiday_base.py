@@ -327,14 +327,11 @@ class HolidayBase(Dict[date, str]):
 
             name: Optional[str] = getattr(self, "country", getattr(self, "market", None))
             if name:
-                locale_path = Path(__file__).with_name("locale")
                 translator: NullTranslations = translation(
                     name,
-                    fallback=True,
-                    languages=[language]
-                    if language and language in self.supported_languages
-                    else None,
-                    localedir=str(locale_path),
+                    fallback=language is None,
+                    languages=[language] if language in self.supported_languages else None,
+                    localedir=str(Path(__file__).with_name("locale")),
                 )
                 self.tr = translator.gettext
 
