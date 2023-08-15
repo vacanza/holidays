@@ -325,22 +325,14 @@ class HolidayBase(Dict[date, str]):
                     f"Category is not supported: {', '.join(unknown_categories)}."
                 )
 
-            name = getattr(self, "country", getattr(self, "market", None))
+            name: Optional[str] = getattr(self, "country", getattr(self, "market", None))
             if name:
-                locale_path = Path(__file__).with_name("locale")
-                translator: NullTranslations
-                translations = {
-                    # Collect `language` part from
-                    # holidays/locale/<language>/LC_MESSAGES/country.po
-                    translation.parts[-3]
-                    for translation in locale_path.rglob(f"{name}.mo")
-                }
-                if language and language in translations:
-                    translator = translation(
-                        name, languages=[language], localedir=str(locale_path)
-                    )
-                else:
-                    translator = translation(name, fallback=True, localedir=str(locale_path))
+                translator: NullTranslations = translation(
+                    name,
+                    fallback=language not in self.supported_languages,
+                    languages=[language] if language in self.supported_languages else None,
+                    localedir=str(Path(__file__).with_name("locale")),
+                )
                 self.tr = translator.gettext
 
         if isinstance(years, int):
@@ -617,9 +609,10 @@ class HolidayBase(Dict[date, str]):
         if self:
             return super().__str__()
 
-        parts = []
-        for attribute_name in self.__attribute_names:
-            parts.append("'%s': %s" % (attribute_name, getattr(self, attribute_name, None)))
+        parts = (
+            f"'{attribute_name}': {getattr(self, attribute_name, None)}"
+            for attribute_name in self.__attribute_names
+        )
 
         return f"{{{', '.join(parts)}}}"
 
