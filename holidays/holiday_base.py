@@ -399,7 +399,7 @@ class HolidayBase(Dict[date, str]):
             if getattr(self, attribute_name, None) != getattr(other, attribute_name, None):
                 return False
 
-        return dict.__eq__(self, other)
+        return dict.__eq__(cast("Mapping[Any, Any]", self), other)
 
     def __getattr__(self, name):
         try:
