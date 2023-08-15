@@ -36,7 +36,7 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
         "SK",
         "YT",
     )
-    supported_languages = ("ar", "en", "en_US", "fr", "th")
+    supported_languages = ("ar", "en", "fr", "th")
 
     def __init__(self, *args, **kwargs):
         # Default subdivision to ON; prov for backwards compatibility

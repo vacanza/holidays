@@ -59,3 +59,7 @@ msgstr "Різдво Христове"
 #. Independence and Unity Day.
 msgid "dan samostojnosti in enotnosti"
 msgstr "День незалежності та єднання"
+
+#. Solidarity Day.
+msgid "dan solidarnosti"
+msgstr "День солідарності"
