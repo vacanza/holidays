@@ -14,8 +14,8 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.calendars.gregorian import JAN, DEC
+from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
 class Eswatini(HolidayBase, ChristianHolidays, InternationalHolidays):

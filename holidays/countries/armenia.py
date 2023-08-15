@@ -12,8 +12,8 @@
 from gettext import gettext as tr
 
 from holidays.calendars.julian import JULIAN_CALENDAR
+from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
 class Armenia(HolidayBase, ChristianHolidays, InternationalHolidays):

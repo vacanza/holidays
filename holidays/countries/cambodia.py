@@ -14,8 +14,8 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import MAY, AUG, SEP
 from holidays.calendars.thai import KHMER_CALENDAR
+from holidays.groups import InternationalHolidays, ThaiCalendarHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import InternationalHolidays, ThaiCalendarHolidays
 
 
 class Cambodia(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):

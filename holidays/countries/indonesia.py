@@ -18,14 +18,14 @@ from holidays.calendars import (
 )
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
 from holidays.constants import GOVERNMENT, PUBLIC
-from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import (
+from holidays.groups import (
     BuddhistCalendarHolidays,
     ChineseCalendarHolidays,
     ChristianHolidays,
     InternationalHolidays,
     IslamicHolidays,
 )
+from holidays.holiday_base import HolidayBase
 
 
 class Indonesia(

@@ -14,8 +14,8 @@ from datetime import timedelta as td
 from typing import Tuple, Union
 
 from holidays.calendars.gregorian import APR, MAY, JUN, JUL, SEP, DEC
+from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
 class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):

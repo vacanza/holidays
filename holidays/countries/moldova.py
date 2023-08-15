@@ -14,8 +14,8 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import GREGORIAN_CALENDAR
 from holidays.calendars.julian import JULIAN_CALENDAR
+from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
 class Moldova(HolidayBase, ChristianHolidays, InternationalHolidays):

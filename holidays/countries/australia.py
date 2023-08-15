@@ -13,8 +13,8 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.calendars.gregorian import APR, AUG, SEP, OCT, FRI, _get_nth_weekday_from
+from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
 class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):

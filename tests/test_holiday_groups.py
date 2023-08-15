@@ -11,8 +11,8 @@
 
 from unittest import TestCase
 
+from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
 class TestChristianHolidays(TestCase):

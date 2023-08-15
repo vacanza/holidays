@@ -12,8 +12,8 @@
 from datetime import timedelta as td
 
 from holidays.calendars.gregorian import DEC
+from holidays.groups import ChineseCalendarHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChineseCalendarHolidays, InternationalHolidays
 
 
 class Taiwan(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):
