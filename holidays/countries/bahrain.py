@@ -13,8 +13,8 @@ from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicCalendar
 from holidays.calendars.gregorian import FRI, SAT, MAY, JUL, AUG, OCT
+from holidays.groups import InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
 
 
 class Bahrain(HolidayBase, InternationalHolidays, IslamicHolidays):

@@ -15,13 +15,13 @@ from gettext import gettext as tr
 
 from holidays.calendars import _CustomIslamicCalendar
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import (
+from holidays.groups import (
     ChineseCalendarHolidays,
     ChristianHolidays,
     InternationalHolidays,
     IslamicHolidays,
 )
+from holidays.holiday_base import HolidayBase
 
 
 class Brunei(

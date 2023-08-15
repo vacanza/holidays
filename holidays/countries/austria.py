@@ -12,8 +12,8 @@
 from gettext import gettext as tr
 
 from holidays.constants import BANK, PUBLIC
+from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
 class Austria(HolidayBase, ChristianHolidays, InternationalHolidays):

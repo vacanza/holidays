@@ -9,8 +9,8 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+from holidays.groups import IslamicHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import IslamicHolidays, InternationalHolidays
 
 
 class Turkey(HolidayBase, IslamicHolidays, InternationalHolidays):

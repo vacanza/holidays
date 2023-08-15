@@ -15,8 +15,8 @@ from gettext import gettext as tr
 from typing import Set
 
 from holidays.calendars.gregorian import FEB, SEP, NOV, THU, FRI, SAT
+from holidays.groups import IslamicHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import IslamicHolidays
 
 
 class SaudiArabia(HolidayBase, IslamicHolidays):

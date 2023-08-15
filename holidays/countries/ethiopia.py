@@ -14,8 +14,8 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import SEP
 from holidays.calendars.julian import JULIAN_CALENDAR
+from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 
 # Ethiopian holidays are estimated: it is common for the day to be pushed
 # if falls in a weekend, although not a rule that can be implemented.
