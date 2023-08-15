@@ -32,7 +32,7 @@ class Slovenia(HolidayBase, ChristianHolidays, InternationalHolidays):
     supported_languages = ("en_US", "sl", "uk")
 
     special_holidays = {
-        # Solidarity Day. Only in 2023.
+        # Solidarity Day.
         2023: (AUG, 14, tr("dan solidarnosti")),
     }
 
