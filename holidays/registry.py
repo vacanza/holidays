@@ -30,6 +30,7 @@ COUNTRIES: RegistryDict = {
     "azerbaijan": ("Azerbaijan", "AZ", "AZE"),
     "bahrain": ("Bahrain", "BH", "BAH"),
     "bangladesh": ("Bangladesh", "BD", "BGD"),
+    "barbados": ("Barbados", "BB", "BRB"),
     "belarus": ("Belarus", "BY", "BLR"),
     "belgium": ("Belgium", "BE", "BEL"),
     "belize": ("Belize", "BZ", "BLZ"),

@@ -185,6 +185,10 @@ The list of supported countries, their subdivisions and supported languages
      - BD
      -
      -
+   * - Barbados
+     - BB
+     -
+     -
    * - Belarus
      - BY
      -

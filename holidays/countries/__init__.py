@@ -24,6 +24,7 @@ from .austria import Austria, AT, AUT
 from .azerbaijan import Azerbaijan, AZ, AZE
 from .bahrain import Bahrain, BH, BAH
 from .bangladesh import Bangladesh, BD, BGD
+from .barbados import Barbados, BB, BRB
 from .belarus import Belarus, BY, BLR
 from .belgium import Belgium, BE, BEL
 from .belize import Belize, BZ, BLZ
