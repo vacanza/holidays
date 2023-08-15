@@ -149,11 +149,12 @@ class TestSingapore(TestCase):
         self.assertIn(date(2023, 6, 2), self.holidays)
         self.assertIn(date(2023, 6, 29), self.holidays)
         self.assertIn(date(2023, 8, 9), self.holidays)
+        self.assertIn(date(2023, 9, 1), self.holidays)
         self.assertIn(date(2023, 11, 12), self.holidays)
         self.assertIn(date(2023, 11, 13), self.holidays)
         self.assertIn(date(2023, 12, 25), self.holidays)
-        # 2023: total holidays (11 + 3 falling on a Sunday)
-        self.assertEqual(len(Singapore(years=[2023])), 11 + 3)
+        # 2023: total holidays (11 + 3 falling on a Sunday + Polling Day)
+        self.assertEqual(len(Singapore(years=[2023])), 11 + 3 + 1)
 
     def test_non_observed(self):
         self.assertNotIn(date(2023, 1, 2), Singapore(observed=False, years=2023))
