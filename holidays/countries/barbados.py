@@ -1,4 +1,4 @@
-from holidays.calendars.gregorian import JAN, APR, JUL, AUG, NOV
+from holidays.calendars.gregorian import JUL
 from holidays.holiday_base import HolidayBase
 from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
@@ -29,7 +29,7 @@ class Barbados(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_new_years_day("New Year's Day")
 
         # Errol Barrow Day
-        self._add_holiday("Errol Barrow Day", JAN, 21)
+        self._add_holiday_jan_21("Errol Barrow Day")
 
         # Good Friday
         self._add_good_friday("Good Friday")
@@ -38,7 +38,7 @@ class Barbados(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_easter_monday("Easter Monday")
 
         # National Heroes Day
-        self._add_holiday("National Heroes Day", APR, 28)
+        self._add_holiday_apr_28("National Heroes Day")
 
         # May Day
         self._add_labor_day("May Day")
@@ -47,13 +47,13 @@ class Barbados(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_whit_monday("Whit Monday")
 
         # Emancipation Day
-        self._add_holiday("Emancipation Day", AUG, 1)
+        self._add_holiday_aug_1("Emancipation Day")
 
         # Kadooment Day
         self._add_holiday_1st_mon_of_aug("Kadooment Day")
 
         # Independence Day
-        self._add_holiday("Independence Day", NOV, 30)
+        self._add_holiday_nov_30("Independence Day")
 
         # Christmas
         self._add_christmas_day("Christmas Day")
