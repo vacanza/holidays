@@ -329,7 +329,7 @@ class HolidayBase(Dict[date, str]):
             if name:
                 translator: NullTranslations = translation(
                     name,
-                    fallback=language is None,
+                    fallback=language not in self.supported_languages,
                     languages=[language] if language in self.supported_languages else None,
                     localedir=str(Path(__file__).with_name("locale")),
                 )
