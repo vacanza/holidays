@@ -13,8 +13,8 @@ from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import MAY, SUN, _get_nth_weekday_of_month
+from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
 class Madagascar(HolidayBase, ChristianHolidays, InternationalHolidays):

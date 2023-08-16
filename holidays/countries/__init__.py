@@ -24,6 +24,7 @@ from .austria import Austria, AT, AUT
 from .azerbaijan import Azerbaijan, AZ, AZE
 from .bahrain import Bahrain, BH, BAH
 from .bangladesh import Bangladesh, BD, BGD
+from .barbados import Barbados, BB, BRB
 from .belarus import Belarus, BY, BLR
 from .belgium import Belgium, BE, BEL
 from .belize import Belize, BZ, BLZ
@@ -142,6 +143,7 @@ from .united_states_minor_outlying_islands import (
 from .united_states_virgin_islands import UnitedStatesVirginIslands, VI, VIR, HolidaysVI
 from .uruguay import Uruguay, UY, URY
 from .uzbekistan import Uzbekistan, UZ, UZB
+from .vanuatu import Vanuatu, VU, VTU
 from .vatican_city import VaticanCity, VA, VAT
 from .venezuela import Venezuela, VE, VEN
 from .vietnam import Vietnam, VN, VNM

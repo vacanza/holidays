@@ -11,8 +11,9 @@
 
 from gettext import gettext as tr
 
+from holidays.calendars.gregorian import AUG
+from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
 class Slovenia(HolidayBase, ChristianHolidays, InternationalHolidays):
@@ -29,6 +30,11 @@ class Slovenia(HolidayBase, ChristianHolidays, InternationalHolidays):
     country = "SI"
     default_language = "sl"
     supported_languages = ("en_US", "sl", "uk")
+
+    special_holidays = {
+        # Solidarity Day.
+        2023: (AUG, 14, tr("dan solidarnosti")),
+    }
 
     def __init__(self, *args, **kwargs):
         ChristianHolidays.__init__(self)

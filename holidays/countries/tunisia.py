@@ -12,8 +12,8 @@
 
 from gettext import gettext as tr
 
+from holidays.groups import InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import InternationalHolidays, IslamicHolidays
 
 
 class Tunisia(HolidayBase, InternationalHolidays, IslamicHolidays):

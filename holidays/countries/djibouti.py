@@ -12,8 +12,8 @@
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import FRI, SAT
+from holidays.groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 
 
 class Djibouti(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolidays):

@@ -17,12 +17,8 @@ from datetime import timedelta as td
 from holidays.calendars import _CustomChineseCalendar
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, AUG, SEP, SAT, SUN
 from holidays.constants import BANK, PUBLIC
+from holidays.groups import ChineseCalendarHolidays, ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import (
-    ChineseCalendarHolidays,
-    ChristianHolidays,
-    InternationalHolidays,
-)
 
 
 class SouthKorea(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, InternationalHolidays):

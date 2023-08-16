@@ -28,8 +28,8 @@ from holidays.calendars.gregorian import (
     DEC,
 )
 from holidays.calendars.julian import JULIAN_CALENDAR
+from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
 class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays):
@@ -212,10 +212,8 @@ class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays):
         dts_observed.add(self._add_new_years_day(tr("Новий рік")))
 
         dts_observed.add(
-            self._add_christmas_day(
-                # Christmas (Julian calendar).
-                tr("Різдво Христове (за юліанським календарем)")
-            )
+            # Christmas (Julian calendar).
+            self._add_christmas_day(tr("Різдво Христове (за юліанським календарем)"))
         )
 
         # International Women's Day.
@@ -251,10 +249,8 @@ class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays):
             dts_observed.add(self._add_world_war_two_victory_day(name))
 
             if year >= 1997:
-                dts_observed.add(
-                    # Day of the Constitution of Ukraine.
-                    self._add_holiday_jun_28(tr("День Конституції України"))
-                )
+                # Day of the Constitution of Ukraine.
+                dts_observed.add(self._add_holiday_jun_28(tr("День Конституції України")))
 
             # Independence Day.
             name = tr("День незалежності України")
@@ -294,15 +290,17 @@ class Ukraine(HolidayBase, ChristianHolidays, InternationalHolidays):
         # https://zakon.rada.gov.ua/laws/show/785/97-вр
         # 23.04.1999: holiday on weekend move to next workday
         # https://zakon.rada.gov.ua/laws/show/576-14
-        if self.observed:
-            for dt in sorted(dts_observed):
-                if self._is_weekend(dt) and (
-                    date(1995, JAN, 27) <= dt <= date(1998, JAN, 9) or dt >= date(1999, APR, 23)
-                ):
-                    dt_observed = dt + td(days=+2 if self._is_saturday(dt) else +1)
-                    while dt_observed in self:
-                        dt_observed += td(days=+1)
-                    self._add_holiday(self.tr("%s (вихідний)") % self[dt], dt_observed)
+        if not self.observed:
+            return None
+        for dt in sorted(dts_observed):
+            if self._is_weekend(dt) and (
+                date(1995, JAN, 27) <= dt <= date(1998, JAN, 9) or dt >= date(1999, APR, 23)
+            ):
+                dt_observed = dt + td(days=+2 if self._is_saturday(dt) else +1)
+                while dt_observed in self:
+                    dt_observed += td(days=+1)
+                for name in self.get_list(dt):
+                    self._add_holiday(self.tr("%s (вихідний)") % name, dt_observed)
 
 
 class UA(Ukraine):

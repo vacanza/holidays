@@ -11,8 +11,8 @@
 
 from datetime import timedelta as td
 
+from holidays.groups import ChineseCalendarHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChineseCalendarHolidays, InternationalHolidays
 
 
 class Vietnam(HolidayBase, ChineseCalendarHolidays, InternationalHolidays):

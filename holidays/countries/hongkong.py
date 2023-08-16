@@ -14,12 +14,8 @@ from datetime import timedelta as td
 from typing import Optional
 
 from holidays.calendars.gregorian import JUL, AUG, SEP, MON, _get_nth_weekday_of_month
+from holidays.groups import ChineseCalendarHolidays, ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import (
-    ChineseCalendarHolidays,
-    ChristianHolidays,
-    InternationalHolidays,
-)
 
 
 class HongKong(HolidayBase, ChineseCalendarHolidays, ChristianHolidays, InternationalHolidays):

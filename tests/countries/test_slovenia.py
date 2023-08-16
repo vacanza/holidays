@@ -24,6 +24,12 @@ class TestSlovenia(TestCase):
     def test_no_holidays(self):
         self.assertNoHolidays(Slovenia(years=1990))
 
+    def test_special_holidays(self):
+        self.assertHoliday(
+            # Solidarity Day
+            "2023-08-14",
+        )
+
     def test_new_years_day(self):
         name = "novo leto"
         self.assertHolidayName(name, (f"{year}-01-01" for year in range(1991, 2050)))

@@ -10,13 +10,13 @@
 #  License: MIT (see LICENSE file)
 
 
-from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import (
+from holidays.groups import (
     ChineseCalendarHolidays,
     ChristianHolidays,
     InternationalHolidays,
     IslamicHolidays,
 )
+from holidays.holiday_base import HolidayBase
 
 
 class Philippines(
