@@ -96,7 +96,8 @@ class Vanuatu(HolidayBase, ChristianHolidays, InternationalHolidays):
 
         # Family Day.
         name = "Family Day"
-        if self.observed and self._is_monday(dec_26 := self._add_christmas_day_two(name)):
+        dec_26 = self._add_christmas_day_two(name)
+        if self.observed and self._is_monday(dec_26):
             self._add_holiday(self.observed_label % name, dec_26 + td(days=+1))
 
 
