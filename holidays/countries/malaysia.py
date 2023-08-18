@@ -34,8 +34,7 @@ from holidays.calendars.gregorian import (
     SAT,
     SUN,
 )
-from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import (
+from holidays.groups import (
     BuddhistCalendarHolidays,
     ChineseCalendarHolidays,
     ChristianHolidays,
@@ -43,6 +42,7 @@ from holidays.holiday_groups import (
     InternationalHolidays,
     IslamicHolidays,
 )
+from holidays.holiday_base import HolidayBase
 
 
 class Malaysia(

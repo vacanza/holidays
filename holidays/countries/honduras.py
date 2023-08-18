@@ -12,8 +12,8 @@
 from datetime import timedelta as td
 from gettext import gettext as tr
 
+from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
 class Honduras(HolidayBase, ChristianHolidays, InternationalHolidays):

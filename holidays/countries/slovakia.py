@@ -13,8 +13,8 @@ from gettext import gettext as tr
 
 from holidays.calendars.gregorian import OCT
 from holidays.constants import PUBLIC, WORKDAY
+from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
 class Slovakia(HolidayBase, ChristianHolidays, InternationalHolidays):

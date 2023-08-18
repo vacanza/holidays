@@ -10,8 +10,8 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.gregorian import FEB, MAR, JUL, OCT, NOV
+from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
 class Vanuatu(HolidayBase, ChristianHolidays, InternationalHolidays):

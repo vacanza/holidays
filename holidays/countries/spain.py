@@ -13,8 +13,8 @@ from datetime import date
 from datetime import timedelta as td
 from typing import Optional
 
+from holidays.groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 
 
 class Spain(HolidayBase, ChristianHolidays, IslamicHolidays, InternationalHolidays):

@@ -28,8 +28,8 @@ from holidays.calendars.gregorian import (
     MON,
     _get_nth_weekday_from,
 )
+from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
 class Argentina(HolidayBase, ChristianHolidays, InternationalHolidays):

@@ -10,8 +10,8 @@
 #  License: MIT (see LICENSE file)
 
 from holidays.calendars.julian import JULIAN_CALENDAR
+from holidays.groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 
 
 class Kyrgyzstan(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):
