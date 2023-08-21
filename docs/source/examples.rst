@@ -182,27 +182,29 @@ Creating custom holidays (or augmenting existing ones with private ones)
 
 Sometimes we may not be able to use the official federal statutory
 holiday list in our code. Let's pretend we work for a company that
-does not include Columbus Day as a statutory holiday but does include
+does not include New Year's Day as a statutory holiday but does include
 "Ninja Turtle Day" on July 13th. We can create a new class that inherits
-the US and the only method we need to override is :py:meth:`_populate`:
+the US (please note the base class import path) and the only method we need
+to override is :py:meth:`_populate`:
 
 .. code-block:: python
 
-   >>> class CorporateHolidays(holidays.US):
+   >>> from holidays.countries import US
+   >>> class CorporateHolidays(US):
    >>>     def _populate(self, year):
-   >>>         # Populate the holiday list with the default US holidays
-   >>>         holidays.US._populate(self, year)
-   >>>         # Remove Columbus Day
+   >>>         # Populate the holiday list with the default US holidays.
+   >>>         super()._populate(year)
+   >>>         # Remove Columbus Day.
    >>>         self.pop_named("Columbus Day")
-   >>>         # Add Ninja Turtle Day
-   >>>         self[date(year, 7, 13)] = "Ninja Turtle Day"
-   >>> date(2014, 10, 14) in holidays.country_holidays(country="US")
+   >>>         # Add Ninja Turtle Day.
+   >>>         self._add_holiday_jul_13("Ninja Turtle Day")
+   >>> date(2014, 1, 1) in holidays.country_holidays(country="US")
    True
-   >>> date(2014, 10, 14) in CorporateHolidays()
+   >>> date(2014, 1, 1) in CorporateHolidays()
    False
    >>> date(2014, 7, 13) in holidays.country_holidays(country="US")
    False
-   >>> date(2014 ,7, 13) in CorporateHolidays()
+   >>> date(2014, 7, 13) in CorporateHolidays()
    True
 
 We can also inherit from the HolidayBase class which has an empty
