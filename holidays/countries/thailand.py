@@ -14,8 +14,8 @@ from datetime import timedelta as td
 from gettext import gettext as tr
 
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.groups import InternationalHolidays, ThaiCalendarHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import InternationalHolidays, ThaiCalendarHolidays
 
 
 class Thailand(HolidayBase, InternationalHolidays, ThaiCalendarHolidays):

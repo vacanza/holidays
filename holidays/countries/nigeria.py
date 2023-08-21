@@ -12,8 +12,8 @@
 from datetime import timedelta as td
 
 from holidays.calendars.gregorian import FEB, MAY
+from holidays.groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, IslamicHolidays, InternationalHolidays
 
 
 class Nigeria(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):

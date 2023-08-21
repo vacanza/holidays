@@ -14,8 +14,8 @@ from datetime import timedelta as td
 
 from holidays.calendars import _CustomIslamicCalendar
 from holidays.calendars.gregorian import JAN, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
+from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 
 
 class BurkinaFaso(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):

@@ -14,8 +14,8 @@ from datetime import date
 from datetime import timedelta as td
 
 from holidays.calendars.gregorian import NOV
+from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
 class HolidaysMH(HolidayBase, ChristianHolidays, InternationalHolidays):

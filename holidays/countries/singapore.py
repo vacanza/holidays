@@ -18,8 +18,7 @@ from holidays.calendars import (
     _CustomHinduCalendar,
 )
 from holidays.calendars.gregorian import JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC
-from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import (
+from holidays.groups import (
     BuddhistCalendarHolidays,
     ChineseCalendarHolidays,
     ChristianHolidays,
@@ -27,6 +26,7 @@ from holidays.holiday_groups import (
     InternationalHolidays,
     IslamicHolidays,
 )
+from holidays.holiday_base import HolidayBase
 
 
 class Singapore(
@@ -51,6 +51,9 @@ class Singapore(
             (SEP, 11, "Polling Day"),
         ),
         2020: (JUL, 10, "Polling Day"),
+        # Announced in state-associated press on 12 August 2023
+        # https://www.straitstimes.com/singapore/politics/singapore-presidential-election-2023-polling-day-on-sept-1-nomination-day-on-aug-22
+        2023: (SEP, 1, "Polling Day"),
     }
 
     def __init__(self, *args, **kwargs) -> None:

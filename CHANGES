@@ -1,3 +1,23 @@
+Version 0.31
+============
+
+Released August 21, 2023
+
+- Refactor HolidayBase methods (#1425 by @KJhellico)
+- Add Barbados holidays (#1393 by @arjunanan6)
+- Add Iran holidays (#1409 by @KJhellico)
+- Add Vanuatu holidays (#1423 by @Strategos1)
+- Fix Ukraine overlapping observed holidays (#1421 by @KJhellico)
+- Update Barbados holidays (#1430 by @KJhellico)
+- Update Saudi Arabia holidays: fix Eid al-Fitr and Eid al-Adha observance (#1414 by @KJhellico)
+- Update Singapore holidays: add 2023 Polling Day (#1424 by @mborsetti)
+- Update Slovenia holidays: add 2023 Solidarity Day (#1426 by @kanobi, @PPsyrius)
+- Update Vanuatu holidays (#1431 by @KJhellico)
+- Add l10n tests (#1420 by @arkid15r)
+- Add latest Python 3.12 release to tests (#1432 by @KJhellico)
+- Use holidays.groups instead of holidays.holiday_groups (#1428 by @arkid15r)
+- Use typing cast for HolidayBase::__eq__ (#1429 by @arkid15r)
+
 Version 0.30
 ============
 

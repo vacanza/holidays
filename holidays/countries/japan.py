@@ -16,9 +16,9 @@ from typing import Tuple
 
 from holidays.calendars.gregorian import FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV
 from holidays.constants import BANK, PUBLIC
+from holidays.groups import InternationalHolidays
 from holidays.helpers import _normalize_tuple
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import InternationalHolidays
 
 
 class Japan(HolidayBase, InternationalHolidays):

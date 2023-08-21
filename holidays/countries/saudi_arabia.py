@@ -15,8 +15,8 @@ from gettext import gettext as tr
 from typing import Set
 
 from holidays.calendars.gregorian import FEB, SEP, NOV, THU, FRI, SAT
+from holidays.groups import IslamicHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import IslamicHolidays
 
 
 class SaudiArabia(HolidayBase, IslamicHolidays):
@@ -38,6 +38,8 @@ class SaudiArabia(HolidayBase, IslamicHolidays):
     default_language = "ar"
     # Estimated label.
     estimated_label = tr("(تقدير*) *%s")
+    # %s (Observed).
+    observed_label = tr("(ملاحظة) %s")
     supported_languages = ("ar", "en_US")
 
     special_holidays = {
@@ -49,14 +51,21 @@ class SaudiArabia(HolidayBase, IslamicHolidays):
         IslamicHolidays.__init__(self)
         super().__init__(*args, **kwargs)
 
-    def _add_islamic_observed(self, name: str, dts: Set[date]) -> None:
+    def _add_islamic_observed(self, dts: Set[date]) -> None:
+        # Observed days are added to make up for any days falling on a weekend.
         if not self.observed:
             return None
 
         for dt in dts:
-            weekend_days = sum(self._is_weekend(dt + td(days=i)) for i in range(4))
-            for i in range(weekend_days):
-                self._add_holiday(self.tr("(ملاحظة) %s") % self.tr(name), dt + td(days=+4 + i))
+            for i in range(4):
+                if not self._is_weekend(dt + td(days=-i)):
+                    continue
+                dt_observed = dt + td(days=+1)
+                while dt_observed.year == self._year and (
+                    self._is_weekend(dt_observed) or dt_observed in self
+                ):
+                    dt_observed += td(days=+1)
+                self._add_holiday(self.tr(self.observed_label) % self[dt], dt_observed)
 
     def _add_observed(self, dt: date) -> None:
         if not self.observed:
@@ -65,10 +74,10 @@ class SaudiArabia(HolidayBase, IslamicHolidays):
         weekend = sorted(self.weekend)
         # 1st weekend day (Thursday before 2013 and Friday otherwise)
         if dt.weekday() == weekend[0]:
-            self._add_holiday(self.tr("(ملاحظة) %s") % self.tr(self[dt]), dt + td(days=-1))
+            self._add_holiday(self.tr(self.observed_label) % self.tr(self[dt]), dt + td(days=-1))
         # 2nd weekend day (Friday before 2013 and Saturday otherwise)
         elif dt.weekday() == weekend[1]:
-            self._add_holiday(self.tr("(ملاحظة) %s") % self.tr(self[dt]), dt + td(days=+1))
+            self._add_holiday(self.tr(self.observed_label) % self.tr(self[dt]), dt + td(days=+1))
 
     def _populate(self, year):
         super()._populate(year)
@@ -78,57 +87,40 @@ class SaudiArabia(HolidayBase, IslamicHolidays):
         # holiday started at 2022; so what below works.
         self.weekend = {THU, FRI} if year <= 2012 else {FRI, SAT}
 
-        # The holiday is a 4-day holiday starting on the day following the
-        # 29th day of Ramadan, the 9th month of the Islamic calendar.
-        # Observed days are added to make up for any days falling on a weekend.
-        # Holidays may straddle across Gregorian years, so we go back one year
-        # to pick up any such occurrence.
-        # Date of observance is announced yearly.
         # Eid al-Fitr Holiday
-        name = tr("عطلة عيد الفطر")
-        dates = self._add_eid_al_fitr_day(name)
-        self._add_eid_al_fitr_day_two(name)
-        self._add_eid_al_fitr_day_three(name)
-        self._add_eid_al_fitr_day_four(name)
-        self._add_islamic_observed(name, dates)
+        eid_al_fitr_name = tr("عطلة عيد الفطر")
+        self._add_eid_al_fitr_day(eid_al_fitr_name)
+        self._add_eid_al_fitr_day_two(eid_al_fitr_name)
+        self._add_eid_al_fitr_day_three(eid_al_fitr_name)
+        self._add_islamic_observed(self._add_eid_al_fitr_day_four(eid_al_fitr_name))
 
-        # The holiday is a 4-day holiday starting on Arafat Day, the 10th of
-        # Dhu al-Hijjah, the 12th month of the Islamic calendar.
-        # Observed days are added to make up for any days falling on a weekend.
-        # Holidays may straddle across Gregorian years, so we go back one year
-        # to pick up any such occurrence.
-        # Date of observance is announced yearly.
         # Arafat Day
-        dates = self._add_arafah_day(tr("يوم عرفة"))
+        self._add_arafah_day(tr("يوم عرفة"))
         # Eid al-Adha Holiday
         name = tr("عطلة عيد الأضحى")
         self._add_eid_al_adha_day(name)
         self._add_eid_al_adha_day_two(name)
-        self._add_eid_al_adha_day_three(name)
-        self._add_islamic_observed(name, dates)
+        self._add_islamic_observed(self._add_eid_al_adha_day_three(name))
 
-        # National Day holiday (started at the year 2005).
-        # Note: if national day happens within the Eid al-Fitr Holiday or
-        # within Eid al-Fitr Holiday, there is no extra holidays given for it.
+        # If National Day happens within the Eid al-Fitr Holiday or
+        # within Eid al-Adha Holiday, there is no extra holidays given for it.
         if year >= 2005:
             dt = date(year, SEP, 23)
             if dt not in self:
                 # National Day Holiday
                 self._add_observed(self._add_holiday(tr("اليوم الوطني"), dt))
 
-        # Founding Day holiday (started 2022).
-        # Note: if founding day happens within the Eid al-Fitr Holiday or
-        # within Eid al-Fitr Holiday, there is no extra holidays given for it.
+        # If Founding Day happens within the Eid al-Fitr Holiday or
+        # within Eid al-Adha Holiday, there is no extra holidays given for it.
         if year >= 2022:
             dt = date(year, FEB, 22)
             if dt not in self:
                 # Founding Day
                 self._add_observed(self._add_holiday(tr("يوم التأسيسي"), dt))
 
-        # observed holidays special cases
+        # observed holidays special case (Eid al-Fitr Holiday (observed))
         if self.observed and year == 2001:
-            # Eid al-Fitr Holiday (observed)
-            self._add_holiday_jan_1(tr("عطلة عيد الفطر (ملاحظة)"))
+            self._add_holiday_jan_1(self.tr(self.observed_label) % self.tr(eid_al_fitr_name))
 
 
 class SA(SaudiArabia):

@@ -12,8 +12,8 @@
 import warnings
 
 from holidays.calendars.gregorian import MAR, OCT, NOV
+from holidays.groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays, IslamicHolidays
 
 
 class India(HolidayBase, ChristianHolidays, InternationalHolidays, IslamicHolidays):

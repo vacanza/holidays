@@ -15,8 +15,8 @@ from gettext import gettext as tr
 from typing import Tuple
 
 from holidays.calendars.gregorian import JUN, SEP, OCT, MON, _get_nth_weekday_from
+from holidays.groups import ChristianHolidays, InternationalHolidays
 from holidays.holiday_base import HolidayBase
-from holidays.holiday_groups import ChristianHolidays, InternationalHolidays
 
 
 class Chile(HolidayBase, ChristianHolidays, InternationalHolidays):
