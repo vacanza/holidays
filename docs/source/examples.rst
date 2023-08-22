@@ -194,8 +194,8 @@ to override is :py:meth:`_populate`:
    >>>     def _populate(self, year):
    >>>         # Populate the holiday list with the default US holidays.
    >>>         super()._populate(year)
-   >>>         # Remove Columbus Day.
-   >>>         self.pop_named("Columbus Day")
+   >>>         # Remove New Year's Day.
+   >>>         self.pop_named("New Year's Day")
    >>>         # Add Ninja Turtle Day.
    >>>         self._add_holiday_jul_13("Ninja Turtle Day")
    >>> date(2014, 1, 1) in holidays.country_holidays(country="US")
