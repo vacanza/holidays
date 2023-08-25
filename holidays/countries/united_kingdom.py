@@ -98,7 +98,7 @@ class UnitedKingdom(HolidayBase, ChristianHolidays, InternationalHolidays):
         elif self.subdiv == "Wales":
             self._add_subdiv_wls_holidays()
 
-    def _add_subdiv_holidays(self):
+    def _add_subdiv_holidays(self, category: str = None):
         if self.subdiv not in {"SCT", "Scotland"}:
             # New Year's Day
             if self._year >= 1975:

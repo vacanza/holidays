@@ -112,7 +112,7 @@ class Canada(HolidayBase, ChristianHolidays, InternationalHolidays):
             # Funeral of Queen Elizabeth II.
             self._add_holiday_sep_19(tr("Funeral of Her Majesty the Queen Elizabeth II"))
 
-    def _add_subdiv_holidays(self):
+    def _add_subdiv_holidays(self, category: str = None):
         if self._year >= 1983:
             self._add_observed(
                 self._add_holiday_jul_1(

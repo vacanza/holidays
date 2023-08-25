@@ -79,7 +79,7 @@ class Australia(HolidayBase, ChristianHolidays, InternationalHolidays):
             else:
                 self._add_holiday_nov_9(self.sovereign_birthday)  # Edward VII
 
-    def _add_subdiv_holidays(self):
+    def _add_subdiv_holidays(self, category: str = None):
         # Australia Day
         if self._year >= 1935:
             name = (

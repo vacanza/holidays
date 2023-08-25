@@ -164,7 +164,7 @@ class UnitedStates(HolidayBase, ChristianHolidays, InternationalHolidays):
             elif self._is_weekend(dec_24):
                 self._add_holiday("%s (Observed)" % name, _get_nth_weekday_from(-1, FRI, dec_24))
 
-    def _add_subdiv_holidays(self):
+    def _add_subdiv_holidays(self, category: str = None):
         # Martin Luther King Jr. Day
         if self._year >= 1986 and self.subdiv not in {"AL", "AR", "AZ", "GA", "ID", "MS", "NH"}:
             self._add_holiday_3rd_mon_of_jan("Martin Luther King Jr. Day")

@@ -135,7 +135,7 @@ class Brazil(HolidayBase, ChristianHolidays, InternationalHolidays):
         # New Year's Eve.
         self._add_new_years_eve("Véspera de Ano-Novo")
 
-    def _add_subdiv_holidays(self):
+    def _add_subdiv_holidays(self, category: str = None):
         # Lei n. 9.093, de 12.09.1995
         if self._year >= 1996:
             super()._add_subdiv_holidays()
