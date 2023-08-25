@@ -1,0 +1,114 @@
+# Iran holidays.
+# Authors: ~Jhellico <jhellico@gmail.com>, (c) 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python Holidays 0.31\n"
+"POT-Creation-Date: 2023-08-03 18:21+0300\n"
+"PO-Revision-Date: 2023-08-03 18:23+0300\n"
+"Last-Translator: ~Jhellico <jhellico@gmail.com>\n"
+"Language-Team: Python Holidays localization team\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"Generated-By: Lingua 4.15.0\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. Estimated label.
+#, c-format
+msgid "(تخمین زده*) *%s"
+msgstr ""
+
+#. Persian New Year.
+msgid "نوروز"
+msgstr ""
+
+#. Islamic Republic Day.
+msgid "روز جمهوری اسلامی"
+msgstr ""
+
+#. Nature's Day.
+msgid "روز طبیعت"
+msgstr ""
+
+#. Death of Khomeini.
+msgid "درگذشت سید روح‌الله خمینی"
+msgstr ""
+
+#. Khordad National Uprising.
+msgid "تظاهرات ۱۵ خرداد"
+msgstr ""
+
+#. Islamic Revolution Day.
+msgid "پیروزی انقلاب ۵۷"
+msgstr ""
+
+#. Iranian Oil Industry Nationalization Day.
+msgid "ملی‌شدن صنعت نفت"
+msgstr ""
+
+#. Tasua.
+msgid "تاسوعا"
+msgstr ""
+
+#. Ashura.
+msgid "کشته‌شدن حسین بن علی، عاشورا"
+msgstr ""
+
+#. Arbaeen.
+msgid "چهلم حسین بن علی اربعین"
+msgstr ""
+
+#. Demise of Prophet Muhammad and Hasan ibn Ali.
+msgid "کشته‌شدن حسن مجتبی و درگذشت محمد"
+msgstr ""
+
+#. Martyrdom of Ali al-Rida.
+msgid "کشته‌شدن علی بن موسی الرضا"
+msgstr ""
+
+#. Martyrdom of Hasan al-Askari.
+msgid "کشته‌شدن حسن عسکری"
+msgstr ""
+
+#. Birthday of Muhammad and Ja'far al-Sadiq.
+msgid "زادروز محمد و جعفر صادق"
+msgstr ""
+
+#. Martyrdom of Fatima.
+msgid "کشته‌شدن فاطمه زهرا"
+msgstr ""
+
+#. Birthday of Ali.
+msgid "زادروز علی بن ابی‌طالب"
+msgstr ""
+
+#. Ascension of Muhammad.
+msgid "مبعث"
+msgstr ""
+
+#. Birthday of Mahdi.
+msgid "زادروز حجت بن الحسن"
+msgstr ""
+
+#. Martyrdom of Ali.
+msgid "کشته‌شدن علی بن ابی‌طالب"
+msgstr ""
+
+#. Eid al-Fitr.
+msgid "عید فطر"
+msgstr ""
+
+#. Martyrdom of Ja'far al-Sadiq.
+msgid "کشته‌شدن جعفر صادق"
+msgstr ""
+
+#. Eid al-Adha.
+msgid "عید قربان"
+msgstr ""
+
+#. Eid al-Ghadeer.
+msgid "عید غدیر"
+msgstr ""

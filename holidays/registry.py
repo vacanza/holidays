@@ -78,6 +78,7 @@ COUNTRIES: RegistryDict = {
     "iceland": ("Iceland", "IS", "ISL"),
     "india": ("India", "IN", "IND"),
     "indonesia": ("Indonesia", "ID", "IDN"),
+    "iran": ("Iran", "IR", "IRN"),
     "ireland": ("Ireland", "IE", "IRL"),
     "isle_of_man": ("IsleOfMan", "IM", "IMN"),
     "israel": ("Israel", "IL", "ISR"),
