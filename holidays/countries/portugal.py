@@ -119,7 +119,7 @@ class Portugal(HolidayBase, ChristianHolidays, InternationalHolidays):
         self._add_immaculate_conception_day(tr("Imaculada Conceição"))
         self._add_christmas_day(tr("Dia de Natal"))
 
-    def _add_subdiv_holidays(self, category: str = None):
+    def _add_subdiv_holidays(self):
         if self._year >= 1911:
             super()._add_subdiv_holidays()
 

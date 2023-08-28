@@ -77,7 +77,7 @@ class Switzerland(HolidayBase, ChristianHolidays, InternationalHolidays):
         # Christmas Day.
         self._add_christmas_day(tr("Weihnachten"))
 
-    def _add_subdiv_holidays(self, category: str = None):
+    def _add_subdiv_holidays(self):
         if not self.subdiv:
             return None
 

@@ -86,7 +86,7 @@ class BosniaAndHerzegovina(HolidayBase, ChristianHolidays, InternationalHolidays
         elif self.subdiv == "RS":
             self._add_subdiv_srp_holidays()
 
-    def _add_subdiv_holidays(self, category: str = None):
+    def _add_subdiv_holidays(self):
         if not self.subdiv:
             # New Year's Day.
             name = tr("Nova godina")
