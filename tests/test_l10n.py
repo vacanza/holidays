@@ -9,9 +9,11 @@
 #  Website: https://github.com/dr-prodigy/python-holidays
 #  License: MIT (see LICENSE file)
 
+import os
 import re
 import unittest
 from pathlib import Path
+from unittest import mock
 
 from polib import pofile as create_po_file
 
@@ -19,6 +21,18 @@ import holidays
 
 
 class TestLocalization(unittest.TestCase):
+    @mock.patch.dict(os.environ, {"LANGUAGE": "en_US"})
+    def test_language_unavailable_en_us(self):
+        self.assertEqual(os.environ["LANGUAGE"], "en_US")
+        ca_xx = holidays.country_holidays("CA", language="xx")
+        self.assertEqual(ca_xx["2022-01-01"], "New Year's Day")
+
+    @mock.patch.dict(os.environ, {"LANGUAGE": "pl"})
+    def test_language_unavailable_pl(self):
+        self.assertEqual(os.environ["LANGUAGE"], "pl")
+        pl_xx = holidays.country_holidays("PL", language="xx")
+        self.assertEqual(pl_xx["2022-01-01"], "Nowy Rok")
+
     def test_localization(self):
         tests_dir = Path(__file__).parent
         locale_dir = tests_dir.parent / "holidays" / "locale"
